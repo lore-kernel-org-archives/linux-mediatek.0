@@ -7,54 +7,54 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19302C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:13:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 413BFC433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:13:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 96472619B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:13:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96472619B4
+	by mail.kernel.org (Postfix) with ESMTPS id CF67761A42
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:13:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF67761A42
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4mEJV8Jk2eD21ZFBE9v0EbTkjDo8mdaddRvqIo9BfO8=; b=WyihugpnY7PmdOPM1QRqa07hoF
-	vYX5X9T3cf+J13dsNH8ooCuI70tcuqXRVC+FsQdKB1dt21X20LaoHP7l2qQKZpNSn14aKZvy3LSSi
-	gXvikV/2fM5TK8ed43UyV5cRpvXDPmJmkrrOrAwTpMcOfxOEcVkhKqOfWX6LrTwzhrk4u0YUpRDUs
-	Ohm7H0yJRpTuYDqVh3GgfypV5HUrTZ9h5PlXmG7O7OFqgUVR5DSBl58Zboj60idxp5AIif+GFi5dr
-	eoy/GEb7dg1F0epkJLD55RxAAAJgRVoEWH1XBiSx4Tj8R2odGvUFg4Zv994lzNMAK5F426ZhGFNwU
-	fcgaG98A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=garisCQ5iKe3n3A1i0D8ktiOBU5yd36AaaV2LoGF9u4=; b=IcIL10ke3SRShnCjjLcImRFml
+	SDGVVkD6o+CclCI1igCHxsq0nXZKgN5lnkNJj8ApPXwlKSBg4CrVqd88UNbWXjnqwVJMv++GSRm3l
+	hHX8bl1M90HrUMMWQEyxyF+9/68faCi+/kZISq8Z/tnQFoFk5Zq9jOeyZVTFlN0HgaXhXRrSuUoVI
+	4SOPFLv+KwQuLSqR/vIW5ZGTlbPKURQiBlx9/0r2KW0CXjcr5okqzvzvXRDlceY8mww1DD3sV87AX
+	TTrn7SILGkvgMuBxv6QPlBmDvEMdfd1UwInZo57Vv6+kaQz3inw4dutIMqyULGc2gbdFErVHbIfsk
+	rSZ+Zo/sw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPcuR-002fQN-Av; Fri, 26 Mar 2021 03:13:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lPcub-002fRG-MS; Fri, 26 Mar 2021 03:13:26 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPcuJ-002fPA-JP; Fri, 26 Mar 2021 03:13:13 +0000
-X-UUID: b508ccefaa554eb4829cb22bfe644069-20210325
+ id 1lPcuP-002fPi-03; Fri, 26 Mar 2021 03:13:15 +0000
+X-UUID: 2c4443ef04ee49e9acc61f4b8b9b84dc-20210325
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=MAXqbFzKhOMdYr6kax9LOjHS+Ej/VLp1xk9MfPAkfXE=; 
- b=J82DHYUTGoNAbgqAHsBUMLmoCA7R32mHztIrAH80vpVvZIhAfMXv8qYKrZ5MhCScoJIFpPq5TIadAwSyyTpz2STpuaPK5oQjCaKiPrSpnuPItM+qLqUz2RTGGAZSZnr3Y7zEsFdgiU6aNryYv/AzBv4oyaONjUftgIFaWRBVcBg=;
-X-UUID: b508ccefaa554eb4829cb22bfe644069-20210325
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=CHCSQowiX1nrYaEgrPue176Tk7t0rhH3dzhmwvZF6b8=; 
+ b=iHii/zAkNx06CLnW33JRap35QqPQw7YQR7ia8Zu1zSU6um3k4kZuF1jlCqWeuqbNIvpIR4EKXzkjeU8+XgixHiHEA+12YEl28FY2CIpOJlgTc8fsQR3MPb4t1epz9FbvAi+yFY/pr/b4WsfMqumb2tmXLT0V/kzDJdP6wfjk7A8=;
+X-UUID: 2c4443ef04ee49e9acc61f4b8b9b84dc-20210325
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <seiya.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 216709566; Thu, 25 Mar 2021 19:12:54 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 400324802; Thu, 25 Mar 2021 19:13:06 -0800
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Mar 2021 20:12:53 -0700
+ 15.0.1497.2; Thu, 25 Mar 2021 20:13:04 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Mar 2021 11:12:51 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 26 Mar 2021 11:13:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 26 Mar 2021 11:12:51 +0800
+ Frontend Transport; Fri, 26 Mar 2021 11:13:02 +0800
 From: Seiya Wang <seiya.wang@mediatek.com>
 To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Viresh Kumar
  <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -63,16 +63,18 @@ CC: Seiya Wang <seiya.wang@mediatek.com>, <linux-pm@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <srv_heupstream@mediatek.com>
-Subject: [PATCH 1/2] clk: mediatek: remove deprecated CLK_INFRA_CA57SEL for
+Subject: [PATCH 2/2] dt-bindings: cpufreq: update cpu type and clock name for
  MT8173 SoC
-Date: Fri, 26 Mar 2021 11:12:26 +0800
-Message-ID: <20210326031227.2357-1-seiya.wang@mediatek.com>
+Date: Fri, 26 Mar 2021 11:12:27 +0800
+Message-ID: <20210326031227.2357-2-seiya.wang@mediatek.com>
 X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20210326031227.2357-1-seiya.wang@mediatek.com>
+References: <20210326031227.2357-1-seiya.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_031308_638021_3B6092C4 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20210326_031313_473414_A6D60EA4 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +91,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove CLK_INFRA_CA57SEL for MT8173 since it's no longer used.
+Update the cpu type of cpu2 and cpu3 since MT8173 used Cortex-a72.
 
 Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
 ---
- include/dt-bindings/clock/mt8173-clk.h | 1 -
- 1 file changed, 1 deletion(-)
+ Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-index 3acebe937bfc..3d00c98b9654 100644
---- a/include/dt-bindings/clock/mt8173-clk.h
-+++ b/include/dt-bindings/clock/mt8173-clk.h
-@@ -186,7 +186,6 @@
- #define CLK_INFRA_PMICWRAP		11
- #define CLK_INFRA_CLK_13M		12
- #define CLK_INFRA_CA53SEL               13
--#define CLK_INFRA_CA57SEL               14 /* Deprecated. Don't use it. */
- #define CLK_INFRA_CA72SEL               14
- #define CLK_INFRA_NR_CLK                15
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+index ea4994b35207..ef68711716fb 100644
+--- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
++++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+@@ -202,11 +202,11 @@ Example 2 (MT8173 SoC):
  
+ 	cpu2: cpu@100 {
+ 		device_type = "cpu";
+-		compatible = "arm,cortex-a57";
++		compatible = "arm,cortex-a72";
+ 		reg = <0x100>;
+ 		enable-method = "psci";
+ 		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA57SEL>,
++		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+ 			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 		clock-names = "cpu", "intermediate";
+ 		operating-points-v2 = <&cpu_opp_table_b>;
+@@ -214,11 +214,11 @@ Example 2 (MT8173 SoC):
+ 
+ 	cpu3: cpu@101 {
+ 		device_type = "cpu";
+-		compatible = "arm,cortex-a57";
++		compatible = "arm,cortex-a72";
+ 		reg = <0x101>;
+ 		enable-method = "psci";
+ 		cpu-idle-states = <&CPU_SLEEP_0>;
+-		clocks = <&infracfg CLK_INFRA_CA57SEL>,
++		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+ 			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+ 		clock-names = "cpu", "intermediate";
+ 		operating-points-v2 = <&cpu_opp_table_b>;
 -- 
 2.14.1
 _______________________________________________
