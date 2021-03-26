@@ -2,93 +2,68 @@ Return-Path: <SRS0=QnWu=IY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D6D5C433C1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 05:28:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 770C9C433DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:26:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 20AF361A36
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 05:28:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20AF361A36
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1763B61A42
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:26:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1763B61A42
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rfTOBDWVRCsuo5Z51tGqkWVOjwbtXc8/TJqY8uFE/zA=; b=ig+iNfqtfrHq7kycrt8zuEA0h
-	CiR0/E8/9hraBtlWwJJFGlUBv0LFF2W1UHSEdljbmAWCH+o2pyilvBvg3SrEFQYCL7z9nySvW187n
-	c1Myd3tMlaFzgc+j5RogNG6K5iewWucyvvvftVMJNXCiWuLyDaCtCKkvlYYkzbsr5ytkXhjQkvEGB
-	hPsTEq1K7Gg5/EV96BVy7BiQLyVJ1B2YuKgLmVZlmok6Al9DJBvwu8bom2pNbg3n4ydD55BDOJ2Ey
-	ATcTBUXpuHUE0W3JUB1VCPimH7BKzQHv5/rZOT5GBF23uLKFrsWuVpKNuOmIHBM5wRQyjWXfKLCH3
-	CdrVY0QWQ==;
+	 bh=J7cKSZ1puzBxzm/D9HWh4s01o1IKs6W4Ud0aUazAFlg=; b=oosxXXnozRiAu2+UlTgHdJz+V
+	0CZsdqEacaHdyj+y/aO5/HR/MgW/SQ7LgDk5A0m/ot/NW8ilp7ZNOdSSODKa13d0bRv7X8x9Drmwy
+	SPL2kCAGYnLXhHmfG56zqwIXM8arvx18TzAKkwxfTSwQuxW7Dns0z9XAw701xy3NbJbkONIQ17Fh6
+	gZ2S0/OS1z7EP3rKFcQO0xTli7ksd+81bT1zHHfeZ8yk6Yoje8LjV2JcqFyWxAKQltjdkkHSg5RnU
+	5k9NicS3Fcux3hAqT0M+wguxyoqFOPh6Kq2XyEAK1Edy6sXotfUlM6oCBeSn2+yIbwRVXYkee+qWU
+	8IrH25ieA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPf1A-002oKC-FW; Fri, 26 Mar 2021 05:28:20 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1lPfv5-002rOP-Ib; Fri, 26 Mar 2021 06:26:07 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPf0x-002oIj-Gh
- for linux-mediatek@lists.infradead.org; Fri, 26 Mar 2021 05:28:09 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id v8so356842plz.10
- for <linux-mediatek@lists.infradead.org>; Thu, 25 Mar 2021 22:28:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Wg6jUsg0M3YkhkdRzAVV3NbGB+vpbZqU99QuVAslRAA=;
- b=xvkqgsknbTJsMGYLWLXMOMuDyGiIL+HYSOxfmlrzC8pH9prf/c17KrqMLTezyaLY5z
- UFrUHgePtcdCwNfKI/L5B3dkzOP309lMmgBEaoDoimwnvAUvAVram5bw1b5c4IsOW36L
- glKK55/C9x9q+UH2sTromVPOCqZJW6gK1S5a/mg9hwfKvXSSDSO+D1rkgNDrtzKAXCCw
- 4Zlnln6+vmLQC0vhK99ogtcJPKADJOaaTYCnJhUcHp97Qgr5m3+J/+bxPBLMgi/a9Tf5
- njtm414zYbzcDpKn+6GdLoMnWlIxYSvVVnNN6w+DU/bP/6re1n5CAFD4Cg0zDSf7em2Z
- sJ7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Wg6jUsg0M3YkhkdRzAVV3NbGB+vpbZqU99QuVAslRAA=;
- b=iy7giWlMqVP29Yz3j/1DTuWsBZd9gUquZUfJEIYLc9ATLPwFopT87gXBBhVtK6kII+
- dp5mSUaC8e6lsjrxNouT1E25B7tVrAorvYUg+mSO0vACgTk3F53XdyWaNhlCEGALHOgw
- gtPHwfIZo6NSPLwBDL9F8c482tDUtZSfPrScjct6pkXMq14WFZow8Pd/Tu2BsKZovaoY
- 7IcbMw5geBaIzgBmHMZ9rs3bhaau7jVWIRKlPCwgT+QpOeUECZvpWvOCaH+O2Tbq0g85
- er5CLtPRWoE+ntgiisDotvugS7RZ6AthGLeGRwWryYiwZvaomCDO8ar2NLOtw8IS0be+
- QcKw==
-X-Gm-Message-State: AOAM532FPcmKWN1ihlylcaSaGVfqkFLgeoeempZq/U9GNQp06jXKcxdI
- QPvXqfqvFuSFM/n2AqfXKMymuw==
-X-Google-Smtp-Source: ABdhPJwpBoVDsdAvwPB+8Iw81E4aSQxXUKlwva1pexONAu6KmF6kD8g/LRd8g3u/J3em4uVil+Wm7w==
-X-Received: by 2002:a17:90b:358:: with SMTP id
- fh24mr12111965pjb.109.1616736483711; 
- Thu, 25 Mar 2021 22:28:03 -0700 (PDT)
-Received: from localhost ([136.185.154.93])
- by smtp.gmail.com with ESMTPSA id n38sm367408pgb.2.2021.03.25.22.27.57
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 25 Mar 2021 22:27:58 -0700 (PDT)
-Date: Fri, 26 Mar 2021 10:57:56 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Seiya Wang <seiya.wang@mediatek.com>
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
-Subject: Re: [PATCH 2/2] dt-bindings: cpufreq: update cpu type and clock name
- for MT8173 SoC
-Message-ID: <20210326052756.ozalnigxh7x3hvqr@vireshk-i7>
-References: <20210326031227.2357-1-seiya.wang@mediatek.com>
- <20210326031227.2357-2-seiya.wang@mediatek.com>
+ id 1lPfud-002rGn-TW; Fri, 26 Mar 2021 06:25:42 +0000
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4F6Bjc15hyzNqS0;
+ Fri, 26 Mar 2021 14:23:00 +0800 (CST)
+Received: from thunder-town.china.huawei.com (10.174.179.202) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.498.0; Fri, 26 Mar 2021 14:25:27 +0800
+From: Zhen Lei <thunder.leizhen@huawei.com>
+To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ "Joerg Roedel" <joro@8bytes.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, iommu
+ <iommu@lists.linux-foundation.org>, linux-kernel
+ <linux-kernel@vger.kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Maxime Ripard <mripard@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ "David Woodhouse" <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
+CC: Zhen Lei <thunder.leizhen@huawei.com>
+Subject: [PATCH 1/8] iommu/pamu: fix a couple of spelling mistakes
+Date: Fri, 26 Mar 2021 14:24:05 +0800
+Message-ID: <20210326062412.1262-2-thunder.leizhen@huawei.com>
+X-Mailer: git-send-email 2.26.0.windows.1
+In-Reply-To: <20210326062412.1262-1-thunder.leizhen@huawei.com>
+References: <20210326062412.1262-1-thunder.leizhen@huawei.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210326031227.2357-2-seiya.wang@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+X-Originating-IP: [10.174.179.202]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_052807_789000_424A7EB8 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20210326_062540_499746_D3B54A0E 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,51 +80,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 26-03-21, 11:12, Seiya Wang wrote:
-> Update the cpu type of cpu2 and cpu3 since MT8173 used Cortex-a72.
-> 
-> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> index ea4994b35207..ef68711716fb 100644
-> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-> @@ -202,11 +202,11 @@ Example 2 (MT8173 SoC):
->  
->  	cpu2: cpu@100 {
->  		device_type = "cpu";
-> -		compatible = "arm,cortex-a57";
-> +		compatible = "arm,cortex-a72";
->  		reg = <0x100>;
->  		enable-method = "psci";
->  		cpu-idle-states = <&CPU_SLEEP_0>;
-> -		clocks = <&infracfg CLK_INFRA_CA57SEL>,
-> +		clocks = <&infracfg CLK_INFRA_CA72SEL>,
->  			 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  		clock-names = "cpu", "intermediate";
->  		operating-points-v2 = <&cpu_opp_table_b>;
-> @@ -214,11 +214,11 @@ Example 2 (MT8173 SoC):
->  
->  	cpu3: cpu@101 {
->  		device_type = "cpu";
-> -		compatible = "arm,cortex-a57";
-> +		compatible = "arm,cortex-a72";
->  		reg = <0x101>;
->  		enable-method = "psci";
->  		cpu-idle-states = <&CPU_SLEEP_0>;
-> -		clocks = <&infracfg CLK_INFRA_CA57SEL>,
-> +		clocks = <&infracfg CLK_INFRA_CA72SEL>,
->  			 <&apmixedsys CLK_APMIXED_MAINPLL>;
->  		clock-names = "cpu", "intermediate";
->  		operating-points-v2 = <&cpu_opp_table_b>;
+There are several spelling mistakes, as follows:
+Returs  ==> Returns
+defaul ==> default
+assocaited ==> associated
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
+---
+ drivers/iommu/fsl_pamu.c        | 2 +-
+ drivers/iommu/fsl_pamu_domain.c | 2 +-
+ drivers/iommu/fsl_pamu_domain.h | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/iommu/fsl_pamu.c b/drivers/iommu/fsl_pamu.c
+index b9a974d9783113d..48ebbf0daa21cf9 100644
+--- a/drivers/iommu/fsl_pamu.c
++++ b/drivers/iommu/fsl_pamu.c
+@@ -503,7 +503,7 @@ void get_ome_index(u32 *omi_index, struct device *dev)
+  * @stash_dest_hint: L1, L2 or L3
+  * @vcpu: vpcu target for a particular cache type.
+  *
+- * Returs stash on success or ~(u32)0 on failure.
++ * Returns stash on success or ~(u32)0 on failure.
+  *
+  */
+ u32 get_stash_id(u32 stash_dest_hint, u32 vcpu)
+diff --git a/drivers/iommu/fsl_pamu_domain.c b/drivers/iommu/fsl_pamu_domain.c
+index b2110767caf49c8..be664cd18c51970 100644
+--- a/drivers/iommu/fsl_pamu_domain.c
++++ b/drivers/iommu/fsl_pamu_domain.c
+@@ -418,7 +418,7 @@ static struct iommu_domain *fsl_pamu_domain_alloc(unsigned type)
+ 		pr_debug("dma_domain allocation failed\n");
+ 		return NULL;
+ 	}
+-	/* defaul geometry 64 GB i.e. maximum system address */
++	/* default geometry 64 GB i.e. maximum system address */
+ 	dma_domain->iommu_domain. geometry.aperture_start = 0;
+ 	dma_domain->iommu_domain.geometry.aperture_end = (1ULL << 36) - 1;
+ 	dma_domain->iommu_domain.geometry.force_aperture = true;
+diff --git a/drivers/iommu/fsl_pamu_domain.h b/drivers/iommu/fsl_pamu_domain.h
+index 2865d42782e8021..4f508fa041080e3 100644
+--- a/drivers/iommu/fsl_pamu_domain.h
++++ b/drivers/iommu/fsl_pamu_domain.h
+@@ -24,7 +24,7 @@ struct fsl_dma_domain {
+ 	 */
+ 	dma_addr_t			geom_size;
+ 	/*
+-	 * Number of windows assocaited with this domain.
++	 * Number of windows associated with this domain.
+ 	 * During domain initialization, it is set to the
+ 	 * the maximum number of subwindows allowed for a LIODN.
+ 	 * Minimum value for this is 1 indicating a single PAMU
 -- 
-viresh
+1.8.3
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
