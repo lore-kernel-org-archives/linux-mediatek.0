@@ -2,80 +2,93 @@ Return-Path: <SRS0=QnWu=IY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7ED11C433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D6D5C433C1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 05:28:37 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25F2161A2A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 03:34:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25F2161A2A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 20AF361A36
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 05:28:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20AF361A36
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=iGPFZ9Ngb+pyIlzmAbayk2824geFsZkn364jLBw8yKQ=; b=fjdUDoayP6ycbqQHZ+w3nzpvJ
-	II/vFHpaibO3wL2he/3NxQC/2+bPRQz8pC43HpyqcYlYaFqcjdBOr/k41VKwtZY2p9GsQtoBJb+O5
-	eV5PZA5psZbKOUiTZfmKvOBVd+b4vh5Za149naKpgzYxq9BIw8BIySjQcgWDhVdUpsGsV/RV4wwi2
-	mdb4eC05aOiYDXW1Xswglmzkqi8WDOFZ7Pa1tjGWtEPtufdPgpfUV58XPflevGtrA0TZNWPSn+MMc
-	II1hS93YweoJj5sE4oLUByEVZl+g/z7N2eZC7bfB9MYTQk9zMAP8vQLU6N0fiYpxnYJSKQ3UmTCOt
-	U+URZjAaw==;
+	 bh=rfTOBDWVRCsuo5Z51tGqkWVOjwbtXc8/TJqY8uFE/zA=; b=ig+iNfqtfrHq7kycrt8zuEA0h
+	CiR0/E8/9hraBtlWwJJFGlUBv0LFF2W1UHSEdljbmAWCH+o2pyilvBvg3SrEFQYCL7z9nySvW187n
+	c1Myd3tMlaFzgc+j5RogNG6K5iewWucyvvvftVMJNXCiWuLyDaCtCKkvlYYkzbsr5ytkXhjQkvEGB
+	hPsTEq1K7Gg5/EV96BVy7BiQLyVJ1B2YuKgLmVZlmok6Al9DJBvwu8bom2pNbg3n4ydD55BDOJ2Ey
+	ATcTBUXpuHUE0W3JUB1VCPimH7BKzQHv5/rZOT5GBF23uLKFrsWuVpKNuOmIHBM5wRQyjWXfKLCH3
+	CdrVY0QWQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPdEy-002hcZ-Rq; Fri, 26 Mar 2021 03:34:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lPf1A-002oKC-FW; Fri, 26 Mar 2021 05:28:20 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPdEa-002ha0-On; Fri, 26 Mar 2021 03:34:09 +0000
-X-UUID: 4fd9f74556b14168b452966f2c6e5f4e-20210325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZdKM2PQmbL7mrwde6jxc8AHlKHYjpO4KMIa5NZwd7ho=; 
- b=j6SejDUm8kwuAvvU6zprAWvr09+g5oDtbbN3OJ9hXetB1Y8nWoKdhuvjZJotabcWJef5s/UQU2bnadDOKHwpjGjtVDjDWmQ67/o8DZ7CIEY9bhppcGxCYqyBlbL3jQ/TnQGuP/EQDICElwriwTkfdN8hPO1o/dWuRfzR8dtJDBk=;
-X-UUID: 4fd9f74556b14168b452966f2c6e5f4e-20210325
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1018808993; Thu, 25 Mar 2021 19:33:59 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Mar 2021 20:23:57 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Mar 2021 11:23:55 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 26 Mar 2021 11:23:54 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Joerg Roedel <joro@8bytes.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Will Deacon <will@kernel.org>
-CC: Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, Nicolas Boichat
- <drinkcat@chromium.org>, <anan.sun@mediatek.com>, <chao.hao@mediatek.com>
-Subject: [PATCH v2 2/2] iommu/mediatek: Allow building as module
-Date: Fri, 26 Mar 2021 11:23:37 +0800
-Message-ID: <20210326032337.24578-2-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210326032337.24578-1-yong.wu@mediatek.com>
-References: <20210326032337.24578-1-yong.wu@mediatek.com>
+ id 1lPf0x-002oIj-Gh
+ for linux-mediatek@lists.infradead.org; Fri, 26 Mar 2021 05:28:09 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id v8so356842plz.10
+ for <linux-mediatek@lists.infradead.org>; Thu, 25 Mar 2021 22:28:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=Wg6jUsg0M3YkhkdRzAVV3NbGB+vpbZqU99QuVAslRAA=;
+ b=xvkqgsknbTJsMGYLWLXMOMuDyGiIL+HYSOxfmlrzC8pH9prf/c17KrqMLTezyaLY5z
+ UFrUHgePtcdCwNfKI/L5B3dkzOP309lMmgBEaoDoimwnvAUvAVram5bw1b5c4IsOW36L
+ glKK55/C9x9q+UH2sTromVPOCqZJW6gK1S5a/mg9hwfKvXSSDSO+D1rkgNDrtzKAXCCw
+ 4Zlnln6+vmLQC0vhK99ogtcJPKADJOaaTYCnJhUcHp97Qgr5m3+J/+bxPBLMgi/a9Tf5
+ njtm414zYbzcDpKn+6GdLoMnWlIxYSvVVnNN6w+DU/bP/6re1n5CAFD4Cg0zDSf7em2Z
+ sJ7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Wg6jUsg0M3YkhkdRzAVV3NbGB+vpbZqU99QuVAslRAA=;
+ b=iy7giWlMqVP29Yz3j/1DTuWsBZd9gUquZUfJEIYLc9ATLPwFopT87gXBBhVtK6kII+
+ dp5mSUaC8e6lsjrxNouT1E25B7tVrAorvYUg+mSO0vACgTk3F53XdyWaNhlCEGALHOgw
+ gtPHwfIZo6NSPLwBDL9F8c482tDUtZSfPrScjct6pkXMq14WFZow8Pd/Tu2BsKZovaoY
+ 7IcbMw5geBaIzgBmHMZ9rs3bhaau7jVWIRKlPCwgT+QpOeUECZvpWvOCaH+O2Tbq0g85
+ er5CLtPRWoE+ntgiisDotvugS7RZ6AthGLeGRwWryYiwZvaomCDO8ar2NLOtw8IS0be+
+ QcKw==
+X-Gm-Message-State: AOAM532FPcmKWN1ihlylcaSaGVfqkFLgeoeempZq/U9GNQp06jXKcxdI
+ QPvXqfqvFuSFM/n2AqfXKMymuw==
+X-Google-Smtp-Source: ABdhPJwpBoVDsdAvwPB+8Iw81E4aSQxXUKlwva1pexONAu6KmF6kD8g/LRd8g3u/J3em4uVil+Wm7w==
+X-Received: by 2002:a17:90b:358:: with SMTP id
+ fh24mr12111965pjb.109.1616736483711; 
+ Thu, 25 Mar 2021 22:28:03 -0700 (PDT)
+Received: from localhost ([136.185.154.93])
+ by smtp.gmail.com with ESMTPSA id n38sm367408pgb.2.2021.03.25.22.27.57
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Mar 2021 22:27:58 -0700 (PDT)
+Date: Fri, 26 Mar 2021 10:57:56 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Seiya Wang <seiya.wang@mediatek.com>
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
+Subject: Re: [PATCH 2/2] dt-bindings: cpufreq: update cpu type and clock name
+ for MT8173 SoC
+Message-ID: <20210326052756.ozalnigxh7x3hvqr@vireshk-i7>
+References: <20210326031227.2357-1-seiya.wang@mediatek.com>
+ <20210326031227.2357-2-seiya.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210326031227.2357-2-seiya.wang@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_033405_968052_D8669115 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20210326_052807_789000_424A7EB8 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,75 +105,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The IOMMU in many SoC depends on the MM clocks and power-domain which
-are device_initcall normally, thus the subsys_init here is not helpful.
-This patch switches it to module_platform_driver which also allow the
-driver built as module.
+On 26-03-21, 11:12, Seiya Wang wrote:
+> Update the cpu type of cpu2 and cpu3 since MT8173 used Cortex-a72.
+> 
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> index ea4994b35207..ef68711716fb 100644
+> --- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> +++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
+> @@ -202,11 +202,11 @@ Example 2 (MT8173 SoC):
+>  
+>  	cpu2: cpu@100 {
+>  		device_type = "cpu";
+> -		compatible = "arm,cortex-a57";
+> +		compatible = "arm,cortex-a72";
+>  		reg = <0x100>;
+>  		enable-method = "psci";
+>  		cpu-idle-states = <&CPU_SLEEP_0>;
+> -		clocks = <&infracfg CLK_INFRA_CA57SEL>,
+> +		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+>  			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  		clock-names = "cpu", "intermediate";
+>  		operating-points-v2 = <&cpu_opp_table_b>;
+> @@ -214,11 +214,11 @@ Example 2 (MT8173 SoC):
+>  
+>  	cpu3: cpu@101 {
+>  		device_type = "cpu";
+> -		compatible = "arm,cortex-a57";
+> +		compatible = "arm,cortex-a72";
+>  		reg = <0x101>;
+>  		enable-method = "psci";
+>  		cpu-idle-states = <&CPU_SLEEP_0>;
+> -		clocks = <&infracfg CLK_INFRA_CA57SEL>,
+> +		clocks = <&infracfg CLK_INFRA_CA72SEL>,
+>  			 <&apmixedsys CLK_APMIXED_MAINPLL>;
+>  		clock-names = "cpu", "intermediate";
+>  		operating-points-v2 = <&cpu_opp_table_b>;
 
-Correspondingly switch the config to tristate, and update the
-iommu_ops's owner.
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/iommu/Kconfig     |  2 +-
- drivers/iommu/mtk_iommu.c | 17 +++++------------
- 2 files changed, 6 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/iommu/Kconfig b/drivers/iommu/Kconfig
-index bc93da48bed0..74f3e15edc14 100644
---- a/drivers/iommu/Kconfig
-+++ b/drivers/iommu/Kconfig
-@@ -349,7 +349,7 @@ config S390_AP_IOMMU
- 	  is not implemented as it is not necessary for VFIO.
- 
- config MTK_IOMMU
--	bool "MTK IOMMU Support"
-+	tristate "MediaTek IOMMU Support"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	select ARM_DMA_USE_IOMMU
- 	select IOMMU_API
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6ecc007f07cd..75375935f301 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -17,6 +17,7 @@
- #include <linux/iopoll.h>
- #include <linux/list.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/of_iommu.h>
- #include <linux/of_irq.h>
-@@ -683,6 +684,7 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.get_resv_regions = mtk_iommu_get_resv_regions,
- 	.put_resv_regions = generic_iommu_put_resv_regions,
- 	.pgsize_bitmap	= SZ_4K | SZ_64K | SZ_1M | SZ_16M,
-+	.owner		= THIS_MODULE,
- };
- 
- static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-@@ -1079,16 +1081,7 @@ static struct platform_driver mtk_iommu_driver = {
- 		.pm = &mtk_iommu_pm_ops,
- 	}
- };
-+module_platform_driver(mtk_iommu_driver);
- 
--static int __init mtk_iommu_init(void)
--{
--	int ret;
--
--	ret = platform_driver_register(&mtk_iommu_driver);
--	if (ret != 0)
--		pr_err("Failed to register MTK IOMMU driver\n");
--
--	return ret;
--}
--
--subsys_initcall(mtk_iommu_init)
-+MODULE_DESCRIPTION("IOMMU API for MediaTek M4U implementations");
-+MODULE_LICENSE("GPL v2");
 -- 
-2.18.0
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
