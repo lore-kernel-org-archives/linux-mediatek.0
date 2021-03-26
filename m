@@ -2,78 +2,95 @@ Return-Path: <SRS0=QnWu=IY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D3A4C433C1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 01:31:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9C6BC433C1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 01:41:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A602061A43
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 01:31:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A602061A43
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 89DC461A3E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 01:41:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 89DC461A3E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IIPOfh5aXXGlEpKNpYmkCaX2LKRs+uE1+7jALBV1oJ4=; b=jxG2WJDqwXkQHKiXx4sIWhBpz
-	k86MufEmPbAUMn63pIQ9WyzRYgz39klnBGvDTTD9STPRl5L/1Dfskxw7I9H02UIK3hf0mmUsmOLQz
-	pVTnccJ8IUVkpKZUumbPDSP4chnTmVCg1eGWUNrIF+021GIof15oPCpm8kh71LtBsxn0giZ6cIda3
-	X4LAC+2cMGZk1hKpQMFZgUHDT49IV/VCq8fs02u+ElVYxsI1DL1WUyg3zXMQSa+JPMjdalTzH75zu
-	J09xFc4O3tUyED3z9P8uZNI2BFB9hiQpNFs2lsuWdIMvB0gr+0GiMklvKZQLhMVGn8XgiU1zAChgx
-	mIEUdB6SA==;
+	 bh=r3Liqfm02iSof/TvvSRih2ulMAHEREpMUcYa3iWKxT4=; b=AghDhtWrGN/oYbEGzpIVIEz41
+	kFbW6i4Tzooq5BhYgx7+4c1nZW/g9N2Aw5El/PAupy5JXSJ4ZS78s4s1E68Tk6lo25Vg1sxWavwHW
+	OCZPBXb7GC81SLhvqrOIzMOpmg2vB595Ro/AFRlJJYZGScZl2OGZ+kRN+7V5ACVIuJomOtFmAppQa
+	Wpnr+YYHl5esCCVHK8WnN1LrnOtnI0u6wmkAN8ci7gIepmfPRIVga2x3RTjh/K77TWrANMotZRgIR
+	l6aLKYe0wVEfAbkQ/fUP30LvnyloyPlF77QdI7u8Gh0amKLZ/GtDM0bep5LnxLwrB4CvBPeuUapjO
+	O6gOQkISg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPbJv-002U94-6a; Fri, 26 Mar 2021 01:31:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lPbSx-002UlA-Ta; Fri, 26 Mar 2021 01:40:48 +0000
+Received: from mail-io1-f52.google.com ([209.85.166.52])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPbJg-002U7P-Cr; Fri, 26 Mar 2021 01:31:17 +0000
-X-UUID: 7bbe9e7e578c479da5f6228668d09e3d-20210325
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=VxpyOMauSLivU/LqjpxZ6z4fpqwX1nMTv/ksMPXytSA=; 
- b=ZWdWdwsB/IhhQw3ttqF6V6eQRlOtE+hfPfb8KRes2do13CIAow7ftAZAtDaIMQo1W31mY5zH91nJGaM16Crl3OsK7uMawzYxJ2q8Vft7Houd2pkFge11WIGDD+pjeyJX+6T+XskZ29BnIhAkzzzmNjdLAWYxQkXg9jwDJ3RFSYs=;
-X-UUID: 7bbe9e7e578c479da5f6228668d09e3d-20210325
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <qii.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1778906912; Thu, 25 Mar 2021 17:31:02 -0800
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 25 Mar 2021 18:31:00 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 26 Mar 2021 09:30:53 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 26 Mar 2021 09:30:52 +0800
-Message-ID: <1616722252.22957.3.camel@mhfsdcap03>
-Subject: Re: [PATCH] dt-bindings: i2c: Add device clock-stretch time via dts
-From: Qii Wang <qii.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <matthias.bgg@gmail.com>, <wsa@the-dreams.de>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>
-Date: Fri, 26 Mar 2021 09:30:52 +0800
-In-Reply-To: <20210324171217.GA3262580@robh.at.kernel.org>
-References: <1615622829-15167-1-git-send-email-qii.wang@mediatek.com>
- <20210324171217.GA3262580@robh.at.kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lPbSt-002Uk9-Sb; Fri, 26 Mar 2021 01:40:45 +0000
+Received: by mail-io1-f52.google.com with SMTP id k25so3873770iob.6;
+ Thu, 25 Mar 2021 18:40:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=/nZtzn3g/vwJOpDb+ADfWdP64r2tBwJPkLaskVNDJhA=;
+ b=fZrCTNuAFhZAkKbNOhB430G8NYanP5TOV922qgh9RNh/Lt1XMbFyIs9MMq21y6kpKW
+ NZZAt0kSkYClVJzqBtIYpDuYx0B9/NVPYUnrvjDoZuCIeV+7x8aaDXq0r1Bu0lZ+Z/wx
+ cCDYjhK3/XY1R39oLwPd5leIupbkPko22qXYRt+Cvo19qDBVL2qkc8GqHbfXWXQkMcjj
+ KE7gnDoZyHiMilEwmAFZb11XeHiwXDvgZMpi/MsQy2gYjbJTpdbCOrK/DQxA4OKcELbv
+ tt1Olu1WWnbDLvw87rgr1J2LDJXu6LoRvnHMK0tv3UISuMxyGbp6nlOEPVLxATHoVUjQ
+ nmxA==
+X-Gm-Message-State: AOAM531jF4/vKEYqbh38b9nC+TKU1gypnQtDAK+/hoRqHz9ibZtSUf/x
+ i5mG6vU62/cyEt54k+yfxw==
+X-Google-Smtp-Source: ABdhPJxT6+UsV+NLqh2ul/vKOfBtJQth8BzvthJhxtpfpmhgBPfXNzJsAHGTteI+WblAGq7BNiJNcQ==
+X-Received: by 2002:a5d:818c:: with SMTP id u12mr8546949ion.81.1616722841515; 
+ Thu, 25 Mar 2021 18:40:41 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.253])
+ by smtp.gmail.com with ESMTPSA id h2sm3394649ioj.30.2021.03.25.18.40.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Mar 2021 18:40:40 -0700 (PDT)
+Received: (nullmailer pid 2145084 invoked by uid 1000);
+ Fri, 26 Mar 2021 01:40:37 -0000
+Date: Thu, 25 Mar 2021 19:40:37 -0600
+From: Rob Herring <robh@kernel.org>
+To: Seiya Wang <seiya.wang@mediatek.com>
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, 
+ linux-watchdog@vger.kernel.org, Daniel Lezcano <daniel.lezcano@linaro.org>, 
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
+ Thomas Gleixner <tglx@linutronix.de>, Wenbin Mei <wenbin.mei@mediatek.com>, 
+ Fabien Parent <fparent@baylibre.com>, linux-arm-kernel@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-iio@vger.kernel.org, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Guenter Roeck <linux@roeck-us.net>, 
+ Jonathan Cameron <jic23@kernel.org>, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Kishon Vijay Abraham I <kishon@ti.com>,
+ linux-kernel@vger.kernel.org, Stanley Chu <stanley.chu@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, devicetree@vger.kernel.org, 
+ linux-mmc@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Vinod Koul <vkoul@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ linux-serial@vger.kernel.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [PATCH v2 3/8] dt-bindings: watchdog: Add compatible for
+ Mediatek MT8195
+Message-ID: <20210326014037.GA2144901@robh.at.kernel.org>
+References: <20210319023427.16711-1-seiya.wang@mediatek.com>
+ <20210319023427.16711-5-seiya.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9A452831894ABC2ECCDFFDB024427EA9781CA86A0FDAE166AA0BE5DD9588A5432000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210319023427.16711-5-seiya.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_013114_286581_35433F26 
-X-CRM114-Status: GOOD (  18.75  )
+X-CRM114-CacheID: sfid-20210326_014044_074861_074747B1 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,42 +107,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-03-24 at 11:12 -0600, Rob Herring wrote:
-> On Sat, Mar 13, 2021 at 04:07:09PM +0800, qii.wang@mediatek.com wrote:
-> > From: Qii Wang <qii.wang@mediatek.com>
-> > 
-> > tSU,STA/tHD,STA/tSU,STOP maybe out of spec due to device
-> > clock-stretching or circuit loss, we could get device
-> > clock-stretch time from dts to adjust these parameters
-> > to meet the spec via EXT_CONF register.
-> > 
-> > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> > index 7f0194f..97f66f0 100644
-> > --- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> > +++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
-> > @@ -32,6 +32,7 @@ Optional properties:
-> >    - mediatek,have-pmic: platform can control i2c form special pmic side.
-> >      Only mt6589 and mt8135 support this feature.
-> >    - mediatek,use-push-pull: IO config use push-pull mode.
-> > +  - clock-stretch-ns: Slave device clock-stretch time.
+On Fri, 19 Mar 2021 10:34:22 +0800, Seiya Wang wrote:
+> This commit adds dt-binding documentation of watchdog for Mediatek MT8195 SoC
+> Platform.
 > 
-> Should be a common I2C property?
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-Wolfram Sang will look at this next and think about it. I hope it would
-be a common I2C property.
-
-> >  
-> >  Example:
-> >  
-> > -- 
-> > 1.9.1
-> > 
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
