@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9CE6C433E0
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9BEFC433DB
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:26:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9711261A45
+	by mail.kernel.org (Postfix) with ESMTPS id 973A861A48
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:26:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9711261A45
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 973A861A48
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RyFwf+k7N965706S1RnqAFAji5cz7HorXskNIYNfLCM=; b=HwUwuk2vf3W6v+TsE6KNDDpM5
-	m4nYtsdj5n7QZOAxQG1wk082g8VRp0bCbdFVY/tvqoCgU0SdUmfQyX3SvPGM2MfCpsBBx9ALIkM15
-	Yv3t76/5kRxMJgv2ESDXT4bJ8tvy00lLEUhkx7vMOekm2EITmC2iZ8US67IeL9QMDwZz1M16oIVzu
-	mvOjLBVVn25jAEQtB9RHneor6sEnDRuMNOv5a6Q3kQel7aBztcLraFZLirNooJyXaUPvoCizoL268
-	IXu0KFPa6P18eeqazuij8NK8fhIVZOUcPS12MN937REw3MSw8GmlGAQE08Rv8YBOgBB8R1F/iuk5G
-	4p6SQw85g==;
+	 bh=FFb7b038X0URlm9Eb8CDR20ItlmePcpV9mY/e8SSNt8=; b=auLQy9agp2MjvEr1FZl7QUUQW
+	EDT3iLpBxDiPFEyfXrznxEWSxnJN+DSWHVeoWMSmEvbC5O2/RoRCLD/Hxd8a90qrIcMfxy9P0zHao
+	HHUVhbsxNfpMdzWJAi8Ly4eaqTfcVOoc7q83WfE/hvYTHlYDGjDf7Af5kC4loP1ix+/L6vBROMEyo
+	CzWpiyg4LQrPKcK/V6HWV2QN/80kZSqo32gNh6gIt1cxyOAEbrz9dSt4ebHqbkCTe96Bnw0/QC0Cg
+	E/yM72RPREn8nfIihipsK9IQsDDg3STzIjtZ8zpqlh6FkwXTOl84x3i0cWFVy2/K1ovcllkOGRqhT
+	cYShwf/4w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPfvb-002rWc-Ff; Fri, 26 Mar 2021 06:26:39 +0000
+	id 1lPfva-002rWB-Pc; Fri, 26 Mar 2021 06:26:38 +0000
 Received: from szxga04-in.huawei.com ([45.249.212.190])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPfue-002rHP-My; Fri, 26 Mar 2021 06:25:44 +0000
+ id 1lPfue-002rHO-MA; Fri, 26 Mar 2021 06:25:44 +0000
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F6Bjj4WrMznWsX;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F6Bjj4w3qznWsf;
  Fri, 26 Mar 2021 14:23:05 +0800 (CST)
 Received: from thunder-town.china.huawei.com (10.174.179.202) by
  DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 26 Mar 2021 14:25:28 +0800
+ 14.3.498.0; Fri, 26 Mar 2021 14:25:31 +0800
 From: Zhen Lei <thunder.leizhen@huawei.com>
 To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  "Joerg Roedel" <joro@8bytes.org>, linux-arm-kernel
@@ -52,10 +52,9 @@ To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@siol.net>,
  "David Woodhouse" <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
 CC: Zhen Lei <thunder.leizhen@huawei.com>
-Subject: [PATCH 2/8] iommu/omap: Fix spelling mistake "alignement" ->
- "alignment"
-Date: Fri, 26 Mar 2021 14:24:06 +0800
-Message-ID: <20210326062412.1262-3-thunder.leizhen@huawei.com>
+Subject: [PATCH 5/8] iommu: fix a couple of spelling mistakes
+Date: Fri, 26 Mar 2021 14:24:09 +0800
+Message-ID: <20210326062412.1262-6-thunder.leizhen@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
 In-Reply-To: <20210326062412.1262-1-thunder.leizhen@huawei.com>
 References: <20210326062412.1262-1-thunder.leizhen@huawei.com>
@@ -63,8 +62,8 @@ MIME-Version: 1.0
 X-Originating-IP: [10.174.179.202]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_062541_117869_EE895BCE 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20210326_062541_108224_AFBE946E 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,26 +80,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is a spelling mistake in a comment, fix it.
+There are several spelling mistakes, as follows:
+funcions ==> functions
+distiguish ==> distinguish
+detroyed ==> destroyed
 
 Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
 ---
- drivers/iommu/omap-iommu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iommu/iommu.c | 4 ++--
+ drivers/iommu/iova.c  | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/iommu/omap-iommu.c b/drivers/iommu/omap-iommu.c
-index 71f29c0927fc710..b2a6ab700ec43d1 100644
---- a/drivers/iommu/omap-iommu.c
-+++ b/drivers/iommu/omap-iommu.c
-@@ -1754,7 +1754,7 @@ static int __init omap_iommu_init(void)
- {
- 	struct kmem_cache *p;
- 	const slab_flags_t flags = SLAB_HWCACHE_ALIGN;
--	size_t align = 1 << 10; /* L2 pagetable alignement */
-+	size_t align = 1 << 10; /* L2 pagetable alignment */
- 	struct device_node *np;
- 	int ret;
+diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
+index d0b0a15dba8413c..0f4e9a6122ee58f 100644
+--- a/drivers/iommu/iommu.c
++++ b/drivers/iommu/iommu.c
+@@ -1453,7 +1453,7 @@ struct iommu_group *pci_device_group(struct device *dev)
  
+ 	/*
+ 	 * Look for existing groups on non-isolated functions on the same
+-	 * slot and aliases of those funcions, if any.  No need to clear
++	 * slot and aliases of those functions, if any.  No need to clear
+ 	 * the search bitmap, the tested devfns are still valid.
+ 	 */
+ 	group = get_pci_function_alias_group(pdev, (unsigned long *)devfns);
+@@ -2267,7 +2267,7 @@ struct iommu_domain *iommu_get_dma_domain(struct device *dev)
+  * iterating over the devices in a group.  Ideally we'd have a single
+  * device which represents the requestor ID of the group, but we also
+  * allow IOMMU drivers to create policy defined minimum sets, where
+- * the physical hardware may be able to distiguish members, but we
++ * the physical hardware may be able to distinguish members, but we
+  * wish to group them at a higher level (ex. untrusted multi-function
+  * PCI devices).  Thus we attach each device.
+  */
+diff --git a/drivers/iommu/iova.c b/drivers/iommu/iova.c
+index e6e2fa85271c3f8..bf710b0a3713e21 100644
+--- a/drivers/iommu/iova.c
++++ b/drivers/iommu/iova.c
+@@ -524,7 +524,7 @@ static void fq_destroy_all_entries(struct iova_domain *iovad)
+ 	int cpu;
+ 
+ 	/*
+-	 * This code runs when the iova_domain is being detroyed, so don't
++	 * This code runs when the iova_domain is being destroyed, so don't
+ 	 * bother to free iovas, just call the entry_dtor on all remaining
+ 	 * entries.
+ 	 */
 -- 
 1.8.3
 
