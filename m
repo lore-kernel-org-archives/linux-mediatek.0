@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A8C7CC433C1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 20:08:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C689C433C1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 20:17:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 685C4619D3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 20:08:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 685C4619D3
+	by mail.kernel.org (Postfix) with ESMTPS id B713661A13
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 20:17:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B713661A13
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,68 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7cB8MBlNbdUd+MmVPYP3Uk492KENU86T15dpBVhb5Mk=; b=cYBkPtGLls2hls3nCX2vfI1SX
-	oiQRysUgoi75uEMjz4lZau4uf/GRoZMfiUMfmRBzyoBId7WAmXGjuAPbZilnFTLtv8Ljh+zfhy66V
-	wKilVtzyoItgYlvyiWfz+vlKMwSUV87UXO621Zz8pWiiCCPvAP0spVn/Re0eWNXfUf/Fb8O4LMmmM
-	4QhCIGLPuF3dAPjhaZItz8MUMKgg01bZlNCIoZx3idyuf+C4it6rS2tOyU7NEDpgR9bC078u6/E37
-	RFt5u3OOllf8S4Qf0flFcMe+9+iU3EQT18nwVx+lsu2MsWcx2fO9IyzPDskbYmGGeXoqLmuNhnD0g
-	/7ZWxMScw==;
+	 bh=iO8+ZOCKMzpJ6eH/AqmJJI+X8gjV1unDTnbTdaS3DtM=; b=U9vWEvXz3T1JWjUswanpSd6OA
+	baJhOIZZoPd3NcdV4UTAIRXfOHY9YdXbB6iEBFclKe9PrlcmT2T1Z0UpmouJk0hzRopviIwmOjN6g
+	Bq5W28r7FYSkv467+UETLI82VYWV3JoEo0Lw+kgWSJ/krcCQaQSdY9y2/nMBG2PnX6sFhlI9unxPP
+	pxoX2HUMubvwLETdYafAKvk6whq6kdkUTlsOb7HNeMRIS7dnuTFgl4/MLCGW3tn0YMDD6u0JTXfRE
+	UMPwGuB0XJi3yKo5KC0orbBaz9WpS+MUOy1R4qY3HKnctXIaD9QiSD3Uu96rRoM5zDHSZEN126zC7
+	PNL+BAjsw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPskv-004H0G-4K; Fri, 26 Mar 2021 20:08:29 +0000
-Received: from mail-io1-f44.google.com ([209.85.166.44])
+	id 1lPsta-004IX2-Jm; Fri, 26 Mar 2021 20:17:26 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPsks-004Gz6-BB; Fri, 26 Mar 2021 20:08:28 +0000
-Received: by mail-io1-f44.google.com with SMTP id k8so6610242iop.12;
- Fri, 26 Mar 2021 13:08:25 -0700 (PDT)
+ id 1lPstV-004IWX-62; Fri, 26 Mar 2021 20:17:23 +0000
+Received: by mail-io1-f45.google.com with SMTP id f19so6668868ion.3;
+ Fri, 26 Mar 2021 13:17:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=DASKl11Okq61XpyLvc+74DH7y8wg+D061aTOEn3xo/4=;
- b=Dd5/5ZRiE+XQIR42mxjd8jbeHVKuqoB+9fobpaVqHDfgrokU3XAV+rZpunFp3syMD3
- HYhAiC0pIG6eNvF+SBCERTNdD8bIC3qRQePIhmL8DERRC43M+DjPRKUkQNpdW16d75bD
- eGccOMnUaXu3mkmJBQkI5WCuynPtPXG2iylBODp1bnSaztqshIsWx4EFOjFAqNMURFxK
- FiMkKCH+0sAVxcTlz84+Ev86vSAjO+0qBKnl0vSqDSOKaVGzsT4cuP9johPPEI+XpGgO
- 7zE1s6roybQ/K/sXT+twunrHznemPEvxQmghJx8NB3jSSPs/oeSQktX9QPlrDXcB5ZnQ
- JuYQ==
-X-Gm-Message-State: AOAM5308Rh7rrtAUjmcGCExLrBqm82omRrpP1zNB5EPVtofqGgHW8T86
- /U/alT/sAvaK4z/vPhSSfg==
-X-Google-Smtp-Source: ABdhPJzOMr0U8Z8VHTkdGna00jzbpA/m/ZJVl1xMmbaPPdHDWEfwemmVN983hu/qZLjWRyhejOe9Ug==
-X-Received: by 2002:a5e:d908:: with SMTP id n8mr11743371iop.121.1616789304697; 
- Fri, 26 Mar 2021 13:08:24 -0700 (PDT)
+ bh=lXhVUd2LXA0slLO6f28KGEaXuw2/vWQ0zjQm9zItTk4=;
+ b=pOgj4SJu68gFC9PoohCkak0GYP3d0B4ECamW2CqGUa1REEOQWe8NMU54BxcLBKUDpY
+ sFtYgdpltttFYw1Qhr6iJOqYlqkwOHEJ94W/tSY/l50UxcbGCg3CQpOMd4Mi0bKpbgXh
+ /TKDJKVKtaHMoaI9Lsrc5uVOlvtePG6lIQxbYgmszPoD+BCBABiI1uaKPCS7lBcgD47n
+ H+83/uLnfD3Nv7V8PNUiOyd6Fddj0eoSQvnletmI745QXhlH9FKM6bFEDDvwRkcbqL9o
+ t9P4tbkPyGd942fRLmA3j/y2CEGmAOskGMm1pUmAlDenX0fgWl+UXlaCurrc9ytJB2CD
+ kTPQ==
+X-Gm-Message-State: AOAM533HFDtbnHju4386QoX1PQMJx7kgyRWuBUgc/N/MM3RyTgrZx9Hk
+ pqVgm+x/OUoGbbwLi1aUzA==
+X-Google-Smtp-Source: ABdhPJwl6o5+wnj+LjKE0x7DY49tPHfMI2G37msHGO/RrejzHtTxVwpHGu0KtobnVONYYJROIZMCJA==
+X-Received: by 2002:a02:cd33:: with SMTP id h19mr13406054jaq.88.1616789839353; 
+ Fri, 26 Mar 2021 13:17:19 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id b4sm4677200ilj.11.2021.03.26.13.08.21
+ by smtp.gmail.com with ESMTPSA id q12sm4923274ilm.63.2021.03.26.13.17.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Mar 2021 13:08:24 -0700 (PDT)
-Received: (nullmailer pid 3784988 invoked by uid 1000);
- Fri, 26 Mar 2021 20:08:20 -0000
-Date: Fri, 26 Mar 2021 14:08:20 -0600
+ Fri, 26 Mar 2021 13:17:18 -0700 (PDT)
+Received: (nullmailer pid 3797035 invoked by uid 1000);
+ Fri, 26 Mar 2021 20:17:15 -0000
+Date: Fri, 26 Mar 2021 14:17:15 -0600
 From: Rob Herring <robh@kernel.org>
-To: Roger Lu <roger.lu@mediatek.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>,
- Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Kevin Hilman <khilman@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, linux-mediatek@lists.infradead.org,
- linux-pm@vger.kernel.org, Nicolas Boichat <drinkcat@google.com>,
- Charles Yang <Charles.Yang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, YT Lee <yt.lee@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, Fan Chen <fan.chen@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Nishanth Menon <nm@ti.com>,
- HenryC Chen <HenryC.Chen@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>
-Subject: Re: [PATCH v14 5/7] dt-bindings: soc: mediatek: add mt8192 svs
- dt-bindings
-Message-ID: <20210326200820.GA3784958@robh.at.kernel.org>
-References: <20210325025114.25842-1-roger.lu@mediatek.com>
- <20210325025114.25842-6-roger.lu@mediatek.com>
+To: Chuanjia Liu <chuanjia.liu@mediatek.com>
+Cc: bhelgaas@google.com, matthias.bgg@gmail.com, ryder.lee@mediatek.com,
+ lorenzo.pieralisi@arm.com, jianjun.wang@mediatek.com,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ yong.wu@mediatek.com, frank-w@public-files.de
+Subject: Re: [PATCH v8 2/4] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address and parse node
+Message-ID: <20210326201715.GA3787794@robh.at.kernel.org>
+References: <20210323033833.14954-1-chuanjia.liu@mediatek.com>
+ <20210323033833.14954-3-chuanjia.liu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210325025114.25842-6-roger.lu@mediatek.com>
+In-Reply-To: <20210323033833.14954-3-chuanjia.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_200826_576859_29DBA1B3 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20210326_201721_362557_CF198AC4 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,12 +95,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Mar 2021 10:51:12 +0800, Roger Lu wrote:
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/mtk-svs.yaml         | 8 ++++++++
->  1 file changed, 8 insertions(+)
+On Tue, Mar 23, 2021 at 11:38:31AM +0800, Chuanjia Liu wrote:
+> For the new dts format, add a new method to get
+> shared pcie-cfg base address and parse node.
 > 
+> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 50 +++++++++++++++++++-------
+>  1 file changed, 38 insertions(+), 12 deletions(-)
 
 Reviewed-by: Rob Herring <robh@kernel.org>
 
