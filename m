@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2764AC433DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDF4DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:27:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFA8661A3F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:27:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFA8661A3F
+	by mail.kernel.org (Postfix) with ESMTPS id 7D6F261A43
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Mar 2021 06:27:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D6F261A43
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,24 +23,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c7Z6JMw6aXhVaJVpKZGwj6PvXHwi/Y75xM3SMfNBaBk=; b=OamEI+le8HOd8wy8ZMMp7do4o
-	AvKPk8Tp8jhkhwjjpef4bgMfMO43iktNKmelzGtvZXugFvuzVGHCO+wyprvUgWUkU9swKMIzKUm4x
-	E36xzN4GQBg/wFmF2+3CxhdzYGgtQrOqLuEZyjCSkoQD2pxHNBAwVWFk3DxsMoJqOjvMv85I88Z05
-	S5vR344CLORoUWIGY3YqzS21zblKeIMhbgkRZi/r/KukHL4cB4FeE6nXx5G9LTPr97ZQkTJJ2Ljjf
-	TH6lMAMpXzFdcGKrf8xgOkrzl/9peS5jiePnElS+s4aLwf6TuU7m0A7u/U70hQ7KcgaD8H825DbcE
-	neUbpL2ZA==;
+	 bh=YVPGh5s3pW3UgbDMuwMpuCp0Tb+DfDzc22voo8DhIYA=; b=jYmOV4C5oyxSzImTpIs7xAynW
+	SAtgv0zwetX/H8NLgkaD6tg+W8d/0cwWjDGATGudKA1DHpkN/yEPtwjrlgLfhd5iHimoP/6xPezXL
+	7tnkVL+nd3T+lxHfGyDz3aEoeXVAwCWaPCo5A2OK/nLpXi9Glrc+K01zaXG7WLpmJ68ugddqSPnQY
+	tqNG9VyESHYR9BYad9tLRPovYKkXIfRa8s3Ux/Hj+jppHqae9ksGzNRZcHWtC6zIfA7xOR1rUsRt8
+	EBfOXfWOheSsX1JdNo3W3eWHd00o2pA1p5vwCVIE9OIwF9pgc1Yk8UWS6pzdY6tDtSXTwp59QWj65
+	MBmFXhQNw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPfw3-002rhB-Ph; Fri, 26 Mar 2021 06:27:07 +0000
+	id 1lPfw6-002riH-5n; Fri, 26 Mar 2021 06:27:11 +0000
 Received: from szxga04-in.huawei.com ([45.249.212.190])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPfue-002rHS-Qh; Fri, 26 Mar 2021 06:25:48 +0000
+ id 1lPfuf-002rHR-8F; Fri, 26 Mar 2021 06:25:48 +0000
 Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F6Bjj5r0mznWsn;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F6Bjj5MMXznWsV;
  Fri, 26 Mar 2021 14:23:05 +0800 (CST)
 Received: from thunder-town.china.huawei.com (10.174.179.202) by
  DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.498.0; Fri, 26 Mar 2021 14:25:32 +0800
+ 14.3.498.0; Fri, 26 Mar 2021 14:25:30 +0800
 From: Zhen Lei <thunder.leizhen@huawei.com>
 To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  "Joerg Roedel" <joro@8bytes.org>, linux-arm-kernel
@@ -52,9 +52,9 @@ To: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
  Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@siol.net>,
  "David Woodhouse" <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
 CC: Zhen Lei <thunder.leizhen@huawei.com>
-Subject: [PATCH 6/8] iommu/amd: fix a couple of spelling mistakes
-Date: Fri, 26 Mar 2021 14:24:10 +0800
-Message-ID: <20210326062412.1262-7-thunder.leizhen@huawei.com>
+Subject: [PATCH 4/8] iommu/sun50i: Fix spelling mistake "consits" -> "consists"
+Date: Fri, 26 Mar 2021 14:24:08 +0800
+Message-ID: <20210326062412.1262-5-thunder.leizhen@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
 In-Reply-To: <20210326062412.1262-1-thunder.leizhen@huawei.com>
 References: <20210326062412.1262-1-thunder.leizhen@huawei.com>
@@ -62,8 +62,9 @@ MIME-Version: 1.0
 X-Originating-IP: [10.174.179.202]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210326_062541_991607_AD26BCDB 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20210326_062541_586773_3397E870 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,70 +81,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are several spelling mistakes, as follows:
-alignement ==> alignment
-programing ==> programming
-implemtation ==> implementation
-assignement ==> assignment
-
-By the way, both "programing" and "programming" are acceptable, but the
-latter seems more formal.
+There is a spelling mistake in a comment, fix it.
 
 Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
 ---
- drivers/iommu/amd/amd_iommu_types.h | 2 +-
- drivers/iommu/amd/init.c            | 4 ++--
- drivers/iommu/amd/iommu.c           | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ drivers/iommu/sun50i-iommu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/iommu/amd/amd_iommu_types.h b/drivers/iommu/amd/amd_iommu_types.h
-index 6937e3674a16e26..dc1814c355cff77 100644
---- a/drivers/iommu/amd/amd_iommu_types.h
-+++ b/drivers/iommu/amd/amd_iommu_types.h
-@@ -446,7 +446,7 @@ struct irq_remap_table {
- /* Interrupt remapping feature used? */
- extern bool amd_iommu_irq_remap;
- 
--/* kmem_cache to get tables with 128 byte alignement */
-+/* kmem_cache to get tables with 128 byte alignment */
- extern struct kmem_cache *amd_iommu_irq_cache;
- 
- /*
-diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
-index 321f5906e6ed3a5..48799002b3571d1 100644
---- a/drivers/iommu/amd/init.c
-+++ b/drivers/iommu/amd/init.c
-@@ -1734,7 +1734,7 @@ static void __init init_iommu_perf_ctr(struct amd_iommu *iommu)
- 		goto pc_false;
- 
- 	/*
--	 * Disable power gating by programing the performance counter
-+	 * Disable power gating by programming the performance counter
- 	 * source to 20 (i.e. counts the reads and writes from/to IOMMU
- 	 * Reserved Register [MMIO Offset 1FF8h] that are ignored.),
- 	 * which never get incremented during this init phase.
-@@ -2088,7 +2088,7 @@ static int intcapxt_irqdomain_activate(struct irq_domain *domain,
- 	xt.destid_24_31 = cfg->dest_apicid >> 24;
- 
- 	/**
--	 * Current IOMMU implemtation uses the same IRQ for all
-+	 * Current IOMMU implementation uses the same IRQ for all
- 	 * 3 IOMMU interrupts.
- 	 */
- 	writeq(xt.capxt, iommu->mmio_base + MMIO_INTCAPXT_EVT_OFFSET);
-diff --git a/drivers/iommu/amd/iommu.c b/drivers/iommu/amd/iommu.c
-index a69a8b573e40d00..d14e4698f507b89 100644
---- a/drivers/iommu/amd/iommu.c
-+++ b/drivers/iommu/amd/iommu.c
-@@ -1865,7 +1865,7 @@ int __init amd_iommu_init_dma_ops(void)
-  * The following functions belong to the exported interface of AMD IOMMU
+diff --git a/drivers/iommu/sun50i-iommu.c b/drivers/iommu/sun50i-iommu.c
+index ea6db1341916524..7685b96b2d445a7 100644
+--- a/drivers/iommu/sun50i-iommu.c
++++ b/drivers/iommu/sun50i-iommu.c
+@@ -149,7 +149,7 @@ static void iommu_write(struct sun50i_iommu *iommu, u32 offset, u32 value)
+  * 4096 4-bytes Directory Table Entries (DTE), each pointing to a Page
+  * Table (PT).
   *
-  * This interface allows access to lower level functions of the IOMMU
-- * like protection domain handling and assignement of devices to domains
-+ * like protection domain handling and assignment of devices to domains
-  * which is not possible with the dma_ops interface.
+- * Each PT consits of 256 4-bytes Page Table Entries (PTE), each
++ * Each PT consists of 256 4-bytes Page Table Entries (PTE), each
+  * pointing to a 4kB page of physical memory.
   *
-  *****************************************************************************/
+  * The IOMMU supports a single DT, pointed by the IOMMU_TTB_REG
 -- 
 1.8.3
 
