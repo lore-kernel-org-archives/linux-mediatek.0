@@ -2,90 +2,74 @@ Return-Path: <SRS0=FzvZ=IZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3723AC433C1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:44:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BADE3C433C1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 20:01:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DBF826198D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:44:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBF826198D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 357526198D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 20:01:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 357526198D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
-	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KdB1UQCjXYZutTOjJ0yd+jPKEwvl4WfHVxlH7eN7i98=; b=FQjdu5tqPltai+Gbxr3t2Usfu
-	GlfxeRj5abqyrKMbkkcqaHvk2pEF0eFkwSGXympB6EDAXdVHdt0aZQywCVkeloArqHrSwe8mllWbO
-	s2VNRLfLSXOJaLLtAHfTHntNlejCBL8SWQ4GrI3JXckWr1D1I8O23dcHkbCMIypkTjOkWwVLDTeit
-	+mG89kJddxjoJWi05YHY+EopF+Efltw9oMv83mn7hLbq5hSaxi7GM+h9piBY5R73LM1Vb8uZMxXf7
-	c3G67O4byPvNOT6olKZ+m7he9I2GlNQGGlwSpr0H6oMFbIna278QBTkHCwPUzAg6XN7pttSQjY4KB
-	7McyJm0MA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tNfqV2CvuYRw5PfhkAD6dfMtpsH4VTjUBe2WvydiWtk=; b=AIvgSUUPBLzZd1uP4igPkrg6Zu
+	euV/sL71VY+8SaYRd7YmhOaDH/n4N0qummUEB6O7oTPOsjp3CDxGxsex6/dgnqBgxXZDlzMlppSz6
+	NRCx1ImJ3Fo76L10HZfB+1DL354SZx/Rcrciv5Hrz2A9RtWK6YeJ6E474CgfLZu7QmSV5NUcs4065
+	/fnD6y75aBRW44uvz4cjXnQPIuZlN7HOT4+Cyud9qNaJriL3sfdYmm2jGtv51t7XbArt1/GitQ/MH
+	k9TfsNPAfU7KTdA70EyTboS6L15ZH7al6tew2Xoh/jyd8+QcLI42JoHWgQMIK01qmdWyYnPFmItFi
+	QsoftGeg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQErY-005Sq7-9o; Sat, 27 Mar 2021 19:44:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lQF7q-005UM1-PK; Sat, 27 Mar 2021 20:01:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQErN-005SpN-FB; Sat, 27 Mar 2021 19:44:39 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0C6D86198D;
- Sat, 27 Mar 2021 19:44:34 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=wait-a-minute.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lQErH-004BIN-UC; Sat, 27 Mar 2021 19:44:32 +0000
-Date: Sat, 27 Mar 2021 19:44:30 +0000
-Message-ID: <87o8f4fkkh.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>
-Cc: Jianjun Wang <jianjun.wang@mediatek.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- youlin.pei@mediatek.com, chuanjia.liu@mediatek.com,
- qizhong.cheng@mediatek.com, sin_jieyang@mediatek.com,
- drinkcat@chromium.org, Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com,
- Krzysztof Wilczyski <kw@linux.com>
-Subject: Re: [v9,5/7] PCI: mediatek-gen3: Add MSI support
-In-Reply-To: <20210327192837.4rr46oeiuokritlc@pali>
-References: <20210324030510.29177-1-jianjun.wang@mediatek.com>
- <20210324030510.29177-6-jianjun.wang@mediatek.com>
- <20210327192837.4rr46oeiuokritlc@pali>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: pali@kernel.org, jianjun.wang@mediatek.com,
- bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com,
- ryder.lee@mediatek.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com,
- chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
- sin_jieyang@mediatek.com, drinkcat@chromium.org, Rex-BC.Chen@mediatek.com,
- anson.chuang@mediatek.com, kw@linux.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1lQF7c-005UKW-Mj
+ for linux-mediatek@lists.infradead.org; Sat, 27 Mar 2021 20:01:34 +0000
+X-UUID: 2bbf1a010913401ebcbc325b1bb3a236-20210327
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Bl3uSfuPNAKgAoFOCKwk6g+7d47whi6ikIvnYVnMy14=; 
+ b=lrl6Eg4f6fhpRTqF6bl1P11Qylyjtgc7juAIbS4hBHekFbGUHVRC1WcO3sacWXSz/b7iLxBhRXwUOpDXMUaea9VCM7Mm54l+JJ7wCS2FzouXl60a6GZ5IUcBiNYIARavs/PiKg1uT2Zb137sWf1hx8MtNgXeK0XpFUGuu/NBwVk=;
+X-UUID: 2bbf1a010913401ebcbc325b1bb3a236-20210327
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1468205414; Sat, 27 Mar 2021 12:01:21 -0800
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 27 Mar 2021 13:01:19 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 28 Mar 2021 04:01:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 28 Mar 2021 04:01:17 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2] mt76: report Rx timestamp
+Date: Sun, 28 Mar 2021 04:01:17 +0800
+Message-ID: <93c2306a9606b0bfb86ac532a0cd4271adf3747e.1616874994.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210327_194437_895459_35ACE932 
-X-CRM114-Status: GOOD (  26.21  )
+X-CRM114-CacheID: sfid-20210327_200125_514014_E32E7F6F 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +81,332 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCAyNyBNYXIgMjAyMSAxOToyODozNyArMDAwMCwKUGFsaSBSb2jDoXIgPHBhbGlAa2Vy
-bmVsLm9yZz4gd3JvdGU6Cj4gCj4gT24gV2VkbmVzZGF5IDI0IE1hcmNoIDIwMjEgMTE6MDU6MDgg
-Smlhbmp1biBXYW5nIHdyb3RlOgo+ID4gK3N0YXRpYyB2b2lkIG10a19wY2llX21zaV9oYW5kbGVy
-KHN0cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0LCBpbnQgc2V0X2lkeCkKPiA+ICt7Cj4gPiArCXN0
-cnVjdCBtdGtfbXNpX3NldCAqbXNpX3NldCA9ICZwb3J0LT5tc2lfc2V0c1tzZXRfaWR4XTsKPiA+
-ICsJdW5zaWduZWQgbG9uZyBtc2lfZW5hYmxlLCBtc2lfc3RhdHVzOwo+ID4gKwl1bnNpZ25lZCBp
-bnQgdmlycTsKPiA+ICsJaXJxX2h3X251bWJlcl90IGJpdCwgaHdpcnE7Cj4gPiArCj4gPiArCW1z
-aV9lbmFibGUgPSByZWFkbF9yZWxheGVkKG1zaV9zZXQtPmJhc2UgKyBQQ0lFX01TSV9TRVRfRU5B
-QkxFX09GRlNFVCk7Cj4gPiArCj4gPiArCWRvIHsKPiA+ICsJCW1zaV9zdGF0dXMgPSByZWFkbF9y
-ZWxheGVkKG1zaV9zZXQtPmJhc2UgKwo+ID4gKwkJCQkJICAgUENJRV9NU0lfU0VUX1NUQVRVU19P
-RkZTRVQpOwo+ID4gKwkJbXNpX3N0YXR1cyAmPSBtc2lfZW5hYmxlOwo+ID4gKwkJaWYgKCFtc2lf
-c3RhdHVzKQo+ID4gKwkJCWJyZWFrOwo+ID4gKwo+ID4gKwkJZm9yX2VhY2hfc2V0X2JpdChiaXQs
-ICZtc2lfc3RhdHVzLCBQQ0lFX01TSV9JUlFTX1BFUl9TRVQpIHsKPiA+ICsJCQlod2lycSA9IGJp
-dCArIHNldF9pZHggKiBQQ0lFX01TSV9JUlFTX1BFUl9TRVQ7Cj4gPiArCQkJdmlycSA9IGlycV9m
-aW5kX21hcHBpbmcocG9ydC0+bXNpX2JvdHRvbV9kb21haW4sIGh3aXJxKTsKPiA+ICsJCQlnZW5l
-cmljX2hhbmRsZV9pcnEodmlycSk7Cj4gPiArCQl9Cj4gPiArCX0gd2hpbGUgKHRydWUpOwo+IAo+
-IEhlbGxvIQo+IAo+IEp1c3QgYSBxdWVzdGlvbiwgY2Fubm90IHRoaXMgd2hpbGUtbG9vcCBjYXVz
-ZSBibG9jayBvZiBwcm9jZXNzaW5nIG90aGVyCj4gaW50ZXJydXB0cz8KClRoaXMgaXMgYSBsZXZl
-bCBpbnRlcnJ1cHQuIFlvdSBkb24ndCBoYXZlIG11Y2ggY2hvaWNlIGJ1dCB0byBoYW5kbGUgaXQK
-aW1tZWRpYXRlbHksIGFsdGhvdWdoIGFuIGFsdGVybmF0aXZlIHdvdWxkIGJlIHRvIG1hc2sgaXQg
-YW5kIGRlYWwgd2l0aAppdCBpbiBhIHRocmVhZC4gQW5kIHNpbmNlIExpbnV4IGRvZXNuJ3QgZGVh
-bCB3aXRoIGludGVycnVwdCBwcmlvcml0eSwKYSBzY3JlYW1pbmcgaW50ZXJydXB0IGlzIG5ldmVy
-IGEgZ29vZCB0aGluZy4KCj4gSSBoYXZlIGRvbmUgdGVzdHMgd2l0aCBkaWZmZXJlbnQgSFcgKGFh
-cmR2YXJrKSBidXQgd2l0aCBzYW1lIHdoaWxlKHRydWUpCj4gbG9vcCBsb2dpYy4gT25lIFhIQ0kg
-UENJZSBjb250cm9sbGVyIHdhcyBzZW5kaW5nIE1TSSBpbnRlcnJ1cHRzIHRvbyBmYXN0Cj4gYW5k
-IGludGVycnVwdCBoYW5kbGVyIHdpdGggdGhpcyB3aGlsZSh0cnVlKSBsb2dpYyB3YXMgaW4gaW5m
-aW5pdGUgbG9vcC4KPiBEdXJpbmcgb25lIElSUSBpdCB3YXMgY2FsbGluZyBpbmZpbml0ZSBtYW55
-IHRpbWVzIGdlbmVyaWNfaGFuZGxlX2lycSgpCj4gYXMgSFcgd2FzIGZlZWRpbmcgbmV3IGFuZCBu
-ZXcgTVNJIGh3aXJxIGludG8gc3RhdHVzIHJlZ2lzdGVyLgoKRGVmaW5lICJ0b28gZmFzdCIuIElm
-IHNvbWV0aGluZyBpbiB0aGUgc3lzdGVtIGlzIGFibGUgdG8gcHJvZ3JhbSB0aGUKWEhDSSBkZXZp
-Y2UgaW4gc3VjaCBhIHdheSB0aGF0IGl0IGNhdXNlcyBhIHNjcmVhbWluZyBpbnRlcnJ1cHQsIHRo
-YXQncwp0aGUgcGxhY2UgdG8gbG9vayBmb3IgcHJvYmxlbXMsIGFuZCBwcm9iYWJseSBub3QgaW4g
-dGhlIGludGVycnVwdApoYW5kbGluZyBpdHNlbGYsIHdoaWNoIGRvZXMgd2hhdCBpdCBpcyBzdXBw
-b3NlZCB0byBkby4KCj4gQnV0IHRoaXMgaXMgZGlmZmVyZW50IEhXLCBzbyBpdCBjYW4gaGF2ZSBk
-aWZmZXJlbnQgYmVoYXZpb3IgYW5kIGRvZXMgbm90Cj4gaGF2ZSB0byBjYXVzZSBhYm92ZSBpc3N1
-ZS4KPiAKPiBJIGhhdmUganVzdCBzcG90dGVkIHNhbWUgY29kZSBwYXR0ZXJuIGZvciBwcm9jZXNz
-aW5nIE1TSSBpbnRlcnJ1cHRzLi4uCgpUaGlzIGlzIGEgY29tbW9uIHBhdHRlcm4gdGhhdCB5b3Ug
-d2lsbCBmaW5kIGluIHByZXR0eSBtdWNoIGFueQppbnRlcnJ1cHQgaGFuZGxpbmcvZGVtdXhpbmcs
-IGFuZCBpcyBkb25lIHRoaXMgd2F5IHdoZW4gdGhlIGNvc3Qgb2YKdGFraW5nIHRoZSBleGNlcHRp
-b24gaXMgaGlnaCBjb21wYXJlZCB0byB0aGF0IG9mIGhhbmRsaW5nIGl0LgoKV2hpY2ggaXMgcHJl
-dHR5IG11Y2ggYW55IG9mIHRoZSBiYWRseSBkZXNpZ25lZCwgbGV2ZWwtZHJpdmluZywKRFctaW5z
-cGlyZWQsIHNvcnJ5IGV4Y3VzZSBmb3IgTVNJIGltcGxlbWVudGF0aW9ucyB0aGF0IGFyZSBwb3B1
-bGFyIG9uCmxvdy1lbmQgQVJNIFNvQ3MuCgpUaGFua3MsCgoJTS4KCi0tIApXaXRob3V0IGRldmlh
-dGlvbiBmcm9tIHRoZSBub3JtLCBwcm9ncmVzcyBpcyBub3QgcG9zc2libGUuCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
-aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Frame reception timestamp (low 32-bits) that indicates the value of the
+local TSF timer value at the time the first bit of the MAC header in the
+received frame (PPDU unit) arriving at the MAC.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+change since v2 - use time_after32()
+---
+ drivers/net/wireless/mediatek/mt76/agg-rx.c   |  6 ++--
+ drivers/net/wireless/mediatek/mt76/mac80211.c |  1 +
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  3 +-
+ .../net/wireless/mediatek/mt76/mt7603/mac.c   | 31 ++++++++++--------
+ .../wireless/mediatek/mt76/mt7603/mt7603.h    |  2 +-
+ .../net/wireless/mediatek/mt76/mt7615/mac.c   | 32 ++++++++++---------
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  2 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 29 +++++++++--------
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +-
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 29 +++++++++--------
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +-
+ 11 files changed, 76 insertions(+), 63 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/agg-rx.c b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+index 144e8a8910ba..72622220051b 100644
+--- a/drivers/net/wireless/mediatek/mt76/agg-rx.c
++++ b/drivers/net/wireless/mediatek/mt76/agg-rx.c
+@@ -76,9 +76,9 @@ mt76_rx_aggr_check_release(struct mt76_rx_tid *tid, struct sk_buff_head *frames)
+ 
+ 		nframes--;
+ 		status = (struct mt76_rx_status *)skb->cb;
+-		if (!time_after(jiffies,
+-				status->reorder_time +
+-				mt76_aggr_tid_to_timeo(tid->num)))
++		if (!time_after32(jiffies,
++				  status->reorder_time +
++				  mt76_aggr_tid_to_timeo(tid->num)))
+ 			continue;
+ 
+ 		mt76_rx_aggr_release_frames(tid, frames, status->seqno);
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 7684a8cf00fb..9a42b0adafaa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -761,6 +761,7 @@ mt76_rx_convert(struct mt76_dev *dev, struct sk_buff *skb,
+ 	status->signal = mstat.signal;
+ 	status->chains = mstat.chains;
+ 	status->ampdu_reference = mstat.ampdu_ref;
++	status->mactime = mstat.mactime;
+ 
+ 	BUILD_BUG_ON(sizeof(mstat) > sizeof(skb->cb));
+ 	BUILD_BUG_ON(sizeof(status->chain_signal) !=
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index b09b0f5ffd6d..3d31a47b5ded 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -498,9 +498,10 @@ struct mt76_rx_status {
+ 		u16 wcid_idx;
+ 	};
+ 
+-	unsigned long reorder_time;
++	u32 reorder_time;
+ 
+ 	u32 ampdu_ref;
++	u32 mactime;
+ 
+ 	u8 iv[6];
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index c29b60a87819..f3803a5eb950 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -532,20 +532,6 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_buff *skb)
+ 		status->flag |= RX_FLAG_MMIC_STRIPPED | RX_FLAG_MIC_STRIPPED;
+ 	}
+ 
+-	if (!(rxd2 & (MT_RXD2_NORMAL_NON_AMPDU_SUB |
+-		      MT_RXD2_NORMAL_NON_AMPDU))) {
+-		status->flag |= RX_FLAG_AMPDU_DETAILS;
+-
+-		/* all subframes of an A-MPDU have the same timestamp */
+-		if (dev->rx_ampdu_ts != rxd[12]) {
+-			if (!++dev->ampdu_ref)
+-				dev->ampdu_ref++;
+-		}
+-		dev->rx_ampdu_ts = rxd[12];
+-
+-		status->ampdu_ref = dev->ampdu_ref;
+-	}
+-
+ 	remove_pad = rxd1 & MT_RXD1_NORMAL_HDR_OFFSET;
+ 
+ 	if (rxd2 & MT_RXD2_NORMAL_MAX_LEN_ERROR)
+@@ -579,6 +565,23 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_buff *skb)
+ 			return -EINVAL;
+ 	}
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_2) {
++		status->mactime = le32_to_cpu(rxd[0]);
++		status->flag |= RX_FLAG_MACTIME_START;
++
++		if (!(rxd2 & (MT_RXD2_NORMAL_NON_AMPDU_SUB |
++			      MT_RXD2_NORMAL_NON_AMPDU))) {
++			status->flag |= RX_FLAG_AMPDU_DETAILS;
++
++			/* all subframes of an A-MPDU have the same timestamp */
++			if (dev->rx_ampdu_ts != status->mactime) {
++				if (!++dev->ampdu_ref)
++					dev->ampdu_ref++;
++			}
++			dev->rx_ampdu_ts = status->mactime;
++
++			status->ampdu_ref = dev->ampdu_ref;
++		}
++
+ 		rxd += 2;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
+index b787c56fd8d6..1df5b9fed2bb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
+@@ -120,7 +120,7 @@ struct mt7603_dev {
+ 	unsigned long last_cca_adj;
+ 
+ 	u32 ampdu_ref;
+-	__le32 rx_ampdu_ts;
++	u32 rx_ampdu_ts;
+ 	u8 rssi_offset[3];
+ 
+ 	u8 slottime;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 6a1395de3066..6ee8f6709191 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -235,7 +235,6 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	u32 rxd1 = le32_to_cpu(rxd[1]);
+ 	u32 rxd2 = le32_to_cpu(rxd[2]);
+ 	u32 csum_mask = MT_RXD0_NORMAL_IP_SUM | MT_RXD0_NORMAL_UDP_TCP_SUM;
+-	__le32 rxd12 = rxd[12];
+ 	bool unicast, hdr_trans, remove_pad, insert_ccmp_hdr = false;
+ 	int phy_idx;
+ 	int i, idx;
+@@ -329,6 +328,23 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	}
+ 
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_2) {
++		status->mactime = le32_to_cpu(rxd[0]);
++		status->flag |= RX_FLAG_MACTIME_START;
++
++		if (!(rxd2 & (MT_RXD2_NORMAL_NON_AMPDU_SUB |
++			      MT_RXD2_NORMAL_NON_AMPDU))) {
++			status->flag |= RX_FLAG_AMPDU_DETAILS;
++
++			/* all subframes of an A-MPDU have the same timestamp */
++			if (phy->rx_ampdu_ts != status->mactime) {
++				if (!++phy->ampdu_ref)
++					phy->ampdu_ref++;
++			}
++			phy->rx_ampdu_ts = status->mactime;
++
++			status->ampdu_ref = phy->ampdu_ref;
++		}
++
+ 		rxd += 2;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+@@ -372,20 +388,6 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	if (!sband->channels)
+ 		return -EINVAL;
+ 
+-	if (!(rxd2 & (MT_RXD2_NORMAL_NON_AMPDU_SUB |
+-		      MT_RXD2_NORMAL_NON_AMPDU))) {
+-		status->flag |= RX_FLAG_AMPDU_DETAILS;
+-
+-		/* all subframes of an A-MPDU have the same timestamp */
+-		if (phy->rx_ampdu_ts != rxd12) {
+-			if (!++phy->ampdu_ref)
+-				phy->ampdu_ref++;
+-		}
+-		phy->rx_ampdu_ts = rxd12;
+-
+-		status->ampdu_ref = phy->ampdu_ref;
+-	}
+-
+ 	if (rxd0 & MT_RXD0_NORMAL_GROUP_3) {
+ 		u32 rxdg0 = le32_to_cpu(rxd[0]);
+ 		u32 rxdg1 = le32_to_cpu(rxd[1]);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index dbabdeef4e0b..6a50338ec9f5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -168,7 +168,7 @@ struct mt7615_phy {
+ 	u8 rdd_state;
+ 	int dfs_state;
+ 
+-	__le32 rx_ampdu_ts;
++	u32 rx_ampdu_ts;
+ 	u32 ampdu_ref;
+ 
+ 	struct mib_stats mib;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 0924ae074db2..559f81801f53 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -389,19 +389,6 @@ int mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 		status->flag |= RX_FLAG_MMIC_STRIPPED | RX_FLAG_MIC_STRIPPED;
+ 	}
+ 
+-	if (!(rxd2 & MT_RXD2_NORMAL_NON_AMPDU)) {
+-		status->flag |= RX_FLAG_AMPDU_DETAILS;
+-
+-		/* all subframes of an A-MPDU have the same timestamp */
+-		if (phy->rx_ampdu_ts != rxd[14]) {
+-			if (!++phy->ampdu_ref)
+-				phy->ampdu_ref++;
+-		}
+-		phy->rx_ampdu_ts = rxd[14];
+-
+-		status->ampdu_ref = phy->ampdu_ref;
+-	}
+-
+ 	remove_pad = FIELD_GET(MT_RXD2_NORMAL_HDR_OFFSET, rxd2);
+ 
+ 	if (rxd2 & MT_RXD2_NORMAL_MAX_LEN_ERROR)
+@@ -440,6 +427,22 @@ int mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	}
+ 
+ 	if (rxd1 & MT_RXD1_NORMAL_GROUP_2) {
++		status->mactime = le32_to_cpu(rxd[0]);
++		status->flag |= RX_FLAG_MACTIME_START;
++
++		if (!(rxd2 & MT_RXD2_NORMAL_NON_AMPDU)) {
++			status->flag |= RX_FLAG_AMPDU_DETAILS;
++
++			/* all subframes of an A-MPDU have the same timestamp */
++			if (phy->rx_ampdu_ts != status->mactime) {
++				if (!++phy->ampdu_ref)
++					phy->ampdu_ref++;
++			}
++			phy->rx_ampdu_ts = status->mactime;
++
++			status->ampdu_ref = phy->ampdu_ref;
++		}
++
+ 		rxd += 2;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 1160d1bf8a7c..455c84cd99c2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -142,7 +142,7 @@ struct mt7915_phy {
+ 	u8 rdd_state;
+ 	int dfs_state;
+ 
+-	__le32 rx_ampdu_ts;
++	u32 rx_ampdu_ts;
+ 	u32 ampdu_ref;
+ 
+ 	struct mib_stats mib;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 6f13eef96078..3ee81afcb535 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -370,19 +370,6 @@ int mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
+ 		status->flag |= RX_FLAG_MMIC_STRIPPED | RX_FLAG_MIC_STRIPPED;
+ 	}
+ 
+-	if (!(rxd2 & MT_RXD2_NORMAL_NON_AMPDU)) {
+-		status->flag |= RX_FLAG_AMPDU_DETAILS;
+-
+-		/* all subframes of an A-MPDU have the same timestamp */
+-		if (phy->rx_ampdu_ts != rxd[14]) {
+-			if (!++phy->ampdu_ref)
+-				phy->ampdu_ref++;
+-		}
+-		phy->rx_ampdu_ts = rxd[14];
+-
+-		status->ampdu_ref = phy->ampdu_ref;
+-	}
+-
+ 	remove_pad = FIELD_GET(MT_RXD2_NORMAL_HDR_OFFSET, rxd2);
+ 
+ 	if (rxd2 & MT_RXD2_NORMAL_MAX_LEN_ERROR)
+@@ -414,6 +401,22 @@ int mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	}
+ 
+ 	if (rxd1 & MT_RXD1_NORMAL_GROUP_2) {
++		status->mactime = le32_to_cpu(rxd[0]);
++		status->flag |= RX_FLAG_MACTIME_START;
++
++		if (!(rxd2 & MT_RXD2_NORMAL_NON_AMPDU)) {
++			status->flag |= RX_FLAG_AMPDU_DETAILS;
++
++			/* all subframes of an A-MPDU have the same timestamp */
++			if (phy->rx_ampdu_ts != status->mactime) {
++				if (!++phy->ampdu_ref)
++					phy->ampdu_ref++;
++			}
++			phy->rx_ampdu_ts = status->mactime;
++
++			status->ampdu_ref = phy->ampdu_ref;
++		}
++
+ 		rxd += 2;
+ 		if ((u8 *)rxd - skb->data >= skb->len)
+ 			return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 5cedefc41416..816d54374e8b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -132,7 +132,7 @@ struct mt7921_phy {
+ 	s16 coverage_class;
+ 	u8 slottime;
+ 
+-	__le32 rx_ampdu_ts;
++	u32 rx_ampdu_ts;
+ 	u32 ampdu_ref;
+ 
+ 	struct mib_stats mib;
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
