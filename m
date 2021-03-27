@@ -8,68 +8,66 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 654CCC433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 05:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E542AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 06:08:20 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3A04619DC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 05:56:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3A04619DC
+	by mail.kernel.org (Postfix) with ESMTPS id 6DE0D619D3
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 06:08:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DE0D619D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IvmqaqOMghUQ6Igl1fWL3euP/J7F9WOeXVgD9bQP124=; b=kw5ZH51cG9aCwKO1Oel8fcR2EA
-	oOkLXw0iW51sGcymlxcRMhd2LiT8SFUdfy+HvuiOXqcgLZArXDvNv2td65zFf38KoJtHkCN0ajF0u
-	34OL68NLb78EPSnfN0kKHIUYJEW2/dRNt8HGMp+iZcZnIg/CzNq+uHtQrcyAi0jWOUPap3P3yPxyX
-	Cf9CILLfw477HixGvqXKOo6uvPApjcA7sF4zszFuS76ZAEZCYbMAbcjHPoPU83j548oSeg9sFr8qZ
-	UYoc2ITwCKljMMhTJeA4RFjYnfMQ7ZUXhnQ3M1SCV1dEAyMT9F+Jz9OFzdvv4T9CtvCiSNQKPN0z8
-	NOupYWQw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ffnWV7mtqSXsxjAHDS94tT5l3+1y1U6o7ec4sRSkbT8=; b=b9K1WC7GTuJJleKmH3i07FOLq
+	1LAqTuoOPZ7rNJVoW7rg7pL+iIcvc0xFzTjW8pR/d6q2cKRxlK6pbpJmFrydn+butrTTpgrgOt8Ku
+	OxIQaTWnVcV4K75hQXghjquMn2HvNelc/IiEb+r5R+1FPk+Dvdh/bF6tWBjbAht3KbTevU79tyAuK
+	eU/u27XsOFh+pG+R2snDpvpx5XnrABHGbTWgRu/6Qf/cgRF3F8/Hh6y4WBWRex2n5eyJHks/l7gAZ
+	rBB5AnzVil4LWQGu1RDux8ffd1xYudPVMgxb6u0vLl8ay544T2+WL4rRRv0r8AVGsFbu5FNn3gSHT
+	xUOtnnwOA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQ1wB-004ltm-Bp; Sat, 27 Mar 2021 05:56:43 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1lQ27G-004mwf-6o; Sat, 27 Mar 2021 06:08:10 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQ1w0-004lse-6E; Sat, 27 Mar 2021 05:56:34 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- cl21-20020a17090af695b02900c61ac0f0e9so6450994pjb.1; 
- Fri, 26 Mar 2021 22:56:28 -0700 (PDT)
+ id 1lQ276-004mw1-Em; Sat, 27 Mar 2021 06:08:02 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 32so6030943pgm.1;
+ Fri, 26 Mar 2021 23:07:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=212MoIVRmwK8MrQbEae/kGIbB/Uja/t6Mnpd6kWTsUU=;
- b=HbGy5MIdIAKe4cdEy4h9zPL3jYPNEHDEnmVLXXNVZkMGe/AO9bdLYBPicsmc1D6K7b
- TSl+S59c/H0nU/SfV81A+TIaoIgjOqHk+2dcWihriXQKYB4/ZiTzklSU1DEahfZB/xjc
- ERXYt2QndXOT/Gj6bUGMTAiPWG4uUhgbsyebfu9m1UnHEEYgoa2CGlv/Ue3isanBJMlG
- Y01qsuK8z/mfxdc6dh7MnEdVpW7UlQEy94DIiTBClQPIWPVqFZ0WYRDCRGOSlpxTGSZa
- qRVeVTXWW3YY7lkG2MP1+KVMwERh58/+7lwb21fGIvD/ob9SEGbXut3Cn0MnJSlwIgri
- BnFg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=OWHAq67WtUfBkQ1gKa/GLNLXtx3wsfXb42bm9Q2dUIw=;
+ b=iGuCDDCCSLzOJZLkvL8FKN4srNRaWpeJyzWh7IENO1Xsp+p/LRBaduih39M/eI9w9D
+ jFZMX9TC3yRplCoXiF0SQP9k2SPPViJisj5t8zuald885Ud4leRTx7GB/D40EHN7K8Ya
+ T/ArbEyPE+FwqKOT4/zlmwY4VnJeQLUR7mpW15VM3zShCYKUQVzjVtJTyu7rcuhMYD7n
+ oHbpwW+pPXq8efGfd9lgwx7V0ZrUYW9U1WsJiyLWy9l+AFK48CGACPcsl7StAcv0zMpl
+ 7qTxYBeO6R4Tnq4wmDhe/Fj/2Tm2HTrlOTtqnjr3Hmk3mK3HxEK4wpyKfV7ia+sDqL2f
+ SDmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=212MoIVRmwK8MrQbEae/kGIbB/Uja/t6Mnpd6kWTsUU=;
- b=fOolqASk9FEbqh4iSl+8gK71ARY3OVZDIQB0MTRMEM0ZlrE7PaCG5w9aOPfi1q6Rk1
- e0wmYR+0OeR36YhTPAvMSVNwlITlRwzO1ETnnKyQmxQsj4t6gdoxn4Xvdk9A6w292yWB
- 7OKZATwme3MAtih9bArCka2Tpe5t3SIlx1SFji66qUhXI2ILmiEDoNm/KYJMZU4uf3jo
- 6pp8AT6F4yP3tAiDXYflZuRbrycemgTxesQGtCsNGAeEdogKt2nC+phN8ld8NoeJbuEO
- eTYsAWbnUquLa0HkQLqqPBCIn5B34sgU8AVRMg0GQWHHmJlFcTCTrVGKwMzdsXC3lQY0
- FscQ==
-X-Gm-Message-State: AOAM530bxGDe3F8uAoJvxO/2HXbYCrtzy5T39GqI6W54jO24o49azmWB
- V1GniorWz3Efw5XVmJrgFEM=
-X-Google-Smtp-Source: ABdhPJxzA9XdjlCSbCP7CyG6gFx1hOmk9q2sUZ/8rk9EuAHbpFGpjIXBzMuVYbvLKRFForn/2YjhaQ==
-X-Received: by 2002:a17:90b:307:: with SMTP id
- ay7mr16895037pjb.110.1616824587295; 
- Fri, 26 Mar 2021 22:56:27 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=OWHAq67WtUfBkQ1gKa/GLNLXtx3wsfXb42bm9Q2dUIw=;
+ b=GmLfzZoS+33lW97vBvLKjoX+axEGhX0orITRQAUuF83+NqV8RBitOqM60oBbxrvQWI
+ 8RI6vak4sUfqZp2yPGfLKvohO1vVTvFaLMGpxRECwwqTiCVCGwlUhyZwKYpmyQj33ma0
+ R2rWlRiUGqillpKV+2SIgBwmx7/j54d3FbrS7/XT1P+4T2WA86TZ35BoFFr0/4/XMmAf
+ Zjd5ab/FHJAQEvgUsoccei4JV3xAkP4iqUxf7Xv4l3MljcL9As42qreGBc3gJMfVVEXL
+ 9Haz/tUrzne0cGJZKNWr1QCFQ+cxwCfc7JLpG99D/1+gX7gDXbpgExLun1LbYizAkhtE
+ XUEA==
+X-Gm-Message-State: AOAM530/Gvm6qL1s0PQgI7S/TVvqivHzW4Fpu5vJmzLevtR5YvDTeScZ
+ fqso+GReU9QTYse7fBKNSVo=
+X-Google-Smtp-Source: ABdhPJzS/Xl8JjciKMul/Yyn/G/TvKxIhsFlJU+pjB6636PT98PdIqvft5Tgm9PrUsIMyu69HChUtQ==
+X-Received: by 2002:a63:525c:: with SMTP id s28mr15118967pgl.317.1616825274706; 
+ Fri, 26 Mar 2021 23:07:54 -0700 (PDT)
 Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id q25sm10477521pfh.34.2021.03.26.22.56.24
+ by smtp.gmail.com with ESMTPSA id e131sm11531843pfh.176.2021.03.26.23.07.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 26 Mar 2021 22:56:27 -0700 (PDT)
+ Fri, 26 Mar 2021 23:07:54 -0700 (PDT)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
@@ -82,15 +80,17 @@ To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
 Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next] net: dsa: mt7530: clean up core and TRGMII clock
- setup
-Date: Fri, 26 Mar 2021 22:55:43 -0700
-Message-Id: <20210327055543.473099-1-ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next,
+ v2] net: dsa: mt7530: clean up core and TRGMII clock setup
+Date: Fri, 26 Mar 2021 23:07:52 -0700
+Message-Id: <20210327060752.474627-1-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.31.0
+In-Reply-To: <20210327055543.473099-1-ilya.lipnitskiy@gmail.com>
+References: <20210327055543.473099-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210327_055632_496868_0FD88C4A 
-X-CRM114-Status: GOOD (  15.74  )
+X-CRM114-CacheID: sfid-20210327_060800_617517_837C9C0B 
+X-CRM114-Status: GOOD (  16.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,7 +113,7 @@ Three minor changes:
   directly, use the core_write wrapper instead like the rest of the code
   in the function does. This change helps with consistency and
   readability. Move the comment to the definition of
-  core_write_mmd_indirect where it belongs.
+  core_read_mmd_indirect where it belongs.
 
 - Disable both core and TRGMII Tx clocks prior to reconfiguring.
   Previously, only the core clock was disabled, but not TRGMII Tx clock.
@@ -132,7 +132,7 @@ Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
  1 file changed, 13 insertions(+), 16 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index c442a5885fca..d779f40d46d9 100644
+index c442a5885fca..2bd1bab71497 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
 @@ -67,6 +67,11 @@ static const struct mt7530_mib_desc mt7530_mib[] = {
@@ -140,9 +140,9 @@ index c442a5885fca..d779f40d46d9 100644
  };
  
 +/* Since phy_device has not yet been created and
-+ * phy_[read,write]_mmd_indirect is not available, we provide our own
-+ * core_write_mmd_indirect with core_{clear,write,set} wrappers to
-+ * complete this function.
++ * phy_{read,write}_mmd_indirect is not available, we provide our own
++ * core_{read,write}_mmd_indirect with core_{clear,write,set} wrappers
++ * to complete this function.
 + */
  static int
  core_read_mmd_indirect(struct mt7530_priv *priv, int prtad, int devad)
