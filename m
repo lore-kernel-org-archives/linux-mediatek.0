@@ -2,78 +2,90 @@ Return-Path: <SRS0=FzvZ=IZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20AFBC433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:29:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3723AC433C1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:44:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EA1561974
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:29:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EA1561974
+	by mail.kernel.org (Postfix) with ESMTPS id DBF826198D
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 19:44:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBF826198D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=E1OFmm67q3EQBYnS5erfC8nWP35MxlLe9/qfDzi0SD4=; b=Fq9Yp1+cS/qqP4jEDsTH+oEiB
-	gcSH9q7c8jOjcJzTW7WovDF1QQB76vVEO82Ypz/OsGCN6ApvYMxo9z5XjK2Qihs4Zt3qKT/13/fLn
-	Bbr3cOOxWymJ/Y3ND0eQTRkwComyYtVKSQRZYsXlFZqHzByeIRUWCNSZ776huQ1ddbq/qoneKxgNc
-	GT6xtFkeRtyy7PCPW3kKuMBboKdqW7+6hqsni7MpDvfrJ0dFIV3DwwV2MBhA0uEn0dkxoaGgScstA
-	VkuurDxPAAx3dZYMMRlmrpdkVr21v6CM/cy+FLbVLX6EIIebQC1xyHixdxl1tjNY/iEELuTTWPrIM
-	vRjcZJRNg==;
+	 bh=KdB1UQCjXYZutTOjJ0yd+jPKEwvl4WfHVxlH7eN7i98=; b=FQjdu5tqPltai+Gbxr3t2Usfu
+	GlfxeRj5abqyrKMbkkcqaHvk2pEF0eFkwSGXympB6EDAXdVHdt0aZQywCVkeloArqHrSwe8mllWbO
+	s2VNRLfLSXOJaLLtAHfTHntNlejCBL8SWQ4GrI3JXckWr1D1I8O23dcHkbCMIypkTjOkWwVLDTeit
+	+mG89kJddxjoJWi05YHY+EopF+Efltw9oMv83mn7hLbq5hSaxi7GM+h9piBY5R73LM1Vb8uZMxXf7
+	c3G67O4byPvNOT6olKZ+m7he9I2GlNQGGlwSpr0H6oMFbIna278QBTkHCwPUzAg6XN7pttSQjY4KB
+	7McyJm0MA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQEcC-005SCd-5F; Sat, 27 Mar 2021 19:28:56 +0000
+	id 1lQErY-005Sq7-9o; Sat, 27 Mar 2021 19:44:48 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQEc1-005SBi-Ei; Sat, 27 Mar 2021 19:28:47 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6761761984;
- Sat, 27 Mar 2021 19:28:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1616873320;
- bh=wCnLXRJnoXnToeP+RQYUH5Bypi+1WeuwPi/OXoLDisw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TVt6NCGU0mQHdwaDTQY1PSp+lqJUSv1OwY+d4C+y3QlmblU9TtG29gRg5JMPqK24u
- S/AtJDE2VVPrXSV4vFM/kXzYz1c0pXLtN/D4Z6RAmq9Y0Q5dWezInkNygT+IxqbfHB
- pD3/4qRipDqUXJGz2HxSh12Od1NU20nsNh1v/jIVkwwdLzJ02PMJnZSZ0d9MAXs90u
- bIfeqKa55tVHueKBRfvJA4DN8nofrM8e0baSkHXYNXoDl1qi+vqB8Hdngcxr2RV9PI
- Uce+puhZytHYpzlMEi1NecafV1NGQtrX8yT+5p5nza2+NdkW/YvzXfPStqvbqHYwPn
- Lu4gKr5j5wBDw==
-Received: by pali.im (Postfix)
- id B5EFE95D; Sat, 27 Mar 2021 20:28:37 +0100 (CET)
-Date: Sat, 27 Mar 2021 20:28:37 +0100
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Marc Zyngier <maz@kernel.org>,
+ id 1lQErN-005SpN-FB; Sat, 27 Mar 2021 19:44:39 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0C6D86198D;
+ Sat, 27 Mar 2021 19:44:34 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=wait-a-minute.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lQErH-004BIN-UC; Sat, 27 Mar 2021 19:44:32 +0000
+Date: Sat, 27 Mar 2021 19:44:30 +0000
+Message-ID: <87o8f4fkkh.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Pali =?UTF-8?B?Um9ow6Fy?= <pali@kernel.org>
+Cc: Jianjun Wang <jianjun.wang@mediatek.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ youlin.pei@mediatek.com, chuanjia.liu@mediatek.com,
+ qizhong.cheng@mediatek.com, sin_jieyang@mediatek.com,
+ drinkcat@chromium.org, Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com,
+ Krzysztof Wilczyski <kw@linux.com>
+Subject: Re: [v9,5/7] PCI: mediatek-gen3: Add MSI support
+In-Reply-To: <20210327192837.4rr46oeiuokritlc@pali>
+References: <20210324030510.29177-1-jianjun.wang@mediatek.com>
+ <20210324030510.29177-6-jianjun.wang@mediatek.com>
+ <20210327192837.4rr46oeiuokritlc@pali>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: pali@kernel.org, jianjun.wang@mediatek.com,
+ bhelgaas@google.com, robh+dt@kernel.org, lorenzo.pieralisi@arm.com,
+ ryder.lee@mediatek.com, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
  linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com,
  chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
- sin_jieyang@mediatek.com, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com,
- Krzysztof Wilczyski <kw@linux.com>
-Subject: Re: [v9,5/7] PCI: mediatek-gen3: Add MSI support
-Message-ID: <20210327192837.4rr46oeiuokritlc@pali>
-References: <20210324030510.29177-1-jianjun.wang@mediatek.com>
- <20210324030510.29177-6-jianjun.wang@mediatek.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210324030510.29177-6-jianjun.wang@mediatek.com>
-User-Agent: NeoMutt/20180716
+ sin_jieyang@mediatek.com, drinkcat@chromium.org, Rex-BC.Chen@mediatek.com,
+ anson.chuang@mediatek.com, kw@linux.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210327_192845_729318_7149296F 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210327_194437_895459_35ACE932 
+X-CRM114-Status: GOOD (  26.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,76 +97,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 24 March 2021 11:05:08 Jianjun Wang wrote:
-> +static void mtk_pcie_msi_handler(struct mtk_pcie_port *port, int set_idx)
-> +{
-> +	struct mtk_msi_set *msi_set = &port->msi_sets[set_idx];
-> +	unsigned long msi_enable, msi_status;
-> +	unsigned int virq;
-> +	irq_hw_number_t bit, hwirq;
-> +
-> +	msi_enable = readl_relaxed(msi_set->base + PCIE_MSI_SET_ENABLE_OFFSET);
-> +
-> +	do {
-> +		msi_status = readl_relaxed(msi_set->base +
-> +					   PCIE_MSI_SET_STATUS_OFFSET);
-> +		msi_status &= msi_enable;
-> +		if (!msi_status)
-> +			break;
-> +
-> +		for_each_set_bit(bit, &msi_status, PCIE_MSI_IRQS_PER_SET) {
-> +			hwirq = bit + set_idx * PCIE_MSI_IRQS_PER_SET;
-> +			virq = irq_find_mapping(port->msi_bottom_domain, hwirq);
-> +			generic_handle_irq(virq);
-> +		}
-> +	} while (true);
-
-Hello!
-
-Just a question, cannot this while-loop cause block of processing other
-interrupts?
-
-I have done tests with different HW (aardvark) but with same while(true)
-loop logic. One XHCI PCIe controller was sending MSI interrupts too fast
-and interrupt handler with this while(true) logic was in infinite loop.
-During one IRQ it was calling infinite many times generic_handle_irq()
-as HW was feeding new and new MSI hwirq into status register.
-
-But this is different HW, so it can have different behavior and does not
-have to cause above issue.
-
-I have just spotted same code pattern for processing MSI interrupts...
-
-> +}
-> +
->  static void mtk_pcie_irq_handler(struct irq_desc *desc)
->  {
->  	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
-> @@ -405,6 +673,14 @@ static void mtk_pcie_irq_handler(struct irq_desc *desc)
->  		generic_handle_irq(virq);
->  	}
->  
-> +	irq_bit = PCIE_MSI_SHIFT;
-> +	for_each_set_bit_from(irq_bit, &status, PCIE_MSI_SET_NUM +
-> +			      PCIE_MSI_SHIFT) {
-> +		mtk_pcie_msi_handler(port, irq_bit - PCIE_MSI_SHIFT);
-> +
-> +		writel_relaxed(BIT(irq_bit), port->base + PCIE_INT_STATUS_REG);
-> +	}
-> +
->  	chained_irq_exit(irqchip, desc);
->  }
->  
-> -- 
-> 2.25.1
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gU2F0LCAyNyBNYXIgMjAyMSAxOToyODozNyArMDAwMCwKUGFsaSBSb2jDoXIgPHBhbGlAa2Vy
+bmVsLm9yZz4gd3JvdGU6Cj4gCj4gT24gV2VkbmVzZGF5IDI0IE1hcmNoIDIwMjEgMTE6MDU6MDgg
+Smlhbmp1biBXYW5nIHdyb3RlOgo+ID4gK3N0YXRpYyB2b2lkIG10a19wY2llX21zaV9oYW5kbGVy
+KHN0cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0LCBpbnQgc2V0X2lkeCkKPiA+ICt7Cj4gPiArCXN0
+cnVjdCBtdGtfbXNpX3NldCAqbXNpX3NldCA9ICZwb3J0LT5tc2lfc2V0c1tzZXRfaWR4XTsKPiA+
+ICsJdW5zaWduZWQgbG9uZyBtc2lfZW5hYmxlLCBtc2lfc3RhdHVzOwo+ID4gKwl1bnNpZ25lZCBp
+bnQgdmlycTsKPiA+ICsJaXJxX2h3X251bWJlcl90IGJpdCwgaHdpcnE7Cj4gPiArCj4gPiArCW1z
+aV9lbmFibGUgPSByZWFkbF9yZWxheGVkKG1zaV9zZXQtPmJhc2UgKyBQQ0lFX01TSV9TRVRfRU5B
+QkxFX09GRlNFVCk7Cj4gPiArCj4gPiArCWRvIHsKPiA+ICsJCW1zaV9zdGF0dXMgPSByZWFkbF9y
+ZWxheGVkKG1zaV9zZXQtPmJhc2UgKwo+ID4gKwkJCQkJICAgUENJRV9NU0lfU0VUX1NUQVRVU19P
+RkZTRVQpOwo+ID4gKwkJbXNpX3N0YXR1cyAmPSBtc2lfZW5hYmxlOwo+ID4gKwkJaWYgKCFtc2lf
+c3RhdHVzKQo+ID4gKwkJCWJyZWFrOwo+ID4gKwo+ID4gKwkJZm9yX2VhY2hfc2V0X2JpdChiaXQs
+ICZtc2lfc3RhdHVzLCBQQ0lFX01TSV9JUlFTX1BFUl9TRVQpIHsKPiA+ICsJCQlod2lycSA9IGJp
+dCArIHNldF9pZHggKiBQQ0lFX01TSV9JUlFTX1BFUl9TRVQ7Cj4gPiArCQkJdmlycSA9IGlycV9m
+aW5kX21hcHBpbmcocG9ydC0+bXNpX2JvdHRvbV9kb21haW4sIGh3aXJxKTsKPiA+ICsJCQlnZW5l
+cmljX2hhbmRsZV9pcnEodmlycSk7Cj4gPiArCQl9Cj4gPiArCX0gd2hpbGUgKHRydWUpOwo+IAo+
+IEhlbGxvIQo+IAo+IEp1c3QgYSBxdWVzdGlvbiwgY2Fubm90IHRoaXMgd2hpbGUtbG9vcCBjYXVz
+ZSBibG9jayBvZiBwcm9jZXNzaW5nIG90aGVyCj4gaW50ZXJydXB0cz8KClRoaXMgaXMgYSBsZXZl
+bCBpbnRlcnJ1cHQuIFlvdSBkb24ndCBoYXZlIG11Y2ggY2hvaWNlIGJ1dCB0byBoYW5kbGUgaXQK
+aW1tZWRpYXRlbHksIGFsdGhvdWdoIGFuIGFsdGVybmF0aXZlIHdvdWxkIGJlIHRvIG1hc2sgaXQg
+YW5kIGRlYWwgd2l0aAppdCBpbiBhIHRocmVhZC4gQW5kIHNpbmNlIExpbnV4IGRvZXNuJ3QgZGVh
+bCB3aXRoIGludGVycnVwdCBwcmlvcml0eSwKYSBzY3JlYW1pbmcgaW50ZXJydXB0IGlzIG5ldmVy
+IGEgZ29vZCB0aGluZy4KCj4gSSBoYXZlIGRvbmUgdGVzdHMgd2l0aCBkaWZmZXJlbnQgSFcgKGFh
+cmR2YXJrKSBidXQgd2l0aCBzYW1lIHdoaWxlKHRydWUpCj4gbG9vcCBsb2dpYy4gT25lIFhIQ0kg
+UENJZSBjb250cm9sbGVyIHdhcyBzZW5kaW5nIE1TSSBpbnRlcnJ1cHRzIHRvbyBmYXN0Cj4gYW5k
+IGludGVycnVwdCBoYW5kbGVyIHdpdGggdGhpcyB3aGlsZSh0cnVlKSBsb2dpYyB3YXMgaW4gaW5m
+aW5pdGUgbG9vcC4KPiBEdXJpbmcgb25lIElSUSBpdCB3YXMgY2FsbGluZyBpbmZpbml0ZSBtYW55
+IHRpbWVzIGdlbmVyaWNfaGFuZGxlX2lycSgpCj4gYXMgSFcgd2FzIGZlZWRpbmcgbmV3IGFuZCBu
+ZXcgTVNJIGh3aXJxIGludG8gc3RhdHVzIHJlZ2lzdGVyLgoKRGVmaW5lICJ0b28gZmFzdCIuIElm
+IHNvbWV0aGluZyBpbiB0aGUgc3lzdGVtIGlzIGFibGUgdG8gcHJvZ3JhbSB0aGUKWEhDSSBkZXZp
+Y2UgaW4gc3VjaCBhIHdheSB0aGF0IGl0IGNhdXNlcyBhIHNjcmVhbWluZyBpbnRlcnJ1cHQsIHRo
+YXQncwp0aGUgcGxhY2UgdG8gbG9vayBmb3IgcHJvYmxlbXMsIGFuZCBwcm9iYWJseSBub3QgaW4g
+dGhlIGludGVycnVwdApoYW5kbGluZyBpdHNlbGYsIHdoaWNoIGRvZXMgd2hhdCBpdCBpcyBzdXBw
+b3NlZCB0byBkby4KCj4gQnV0IHRoaXMgaXMgZGlmZmVyZW50IEhXLCBzbyBpdCBjYW4gaGF2ZSBk
+aWZmZXJlbnQgYmVoYXZpb3IgYW5kIGRvZXMgbm90Cj4gaGF2ZSB0byBjYXVzZSBhYm92ZSBpc3N1
+ZS4KPiAKPiBJIGhhdmUganVzdCBzcG90dGVkIHNhbWUgY29kZSBwYXR0ZXJuIGZvciBwcm9jZXNz
+aW5nIE1TSSBpbnRlcnJ1cHRzLi4uCgpUaGlzIGlzIGEgY29tbW9uIHBhdHRlcm4gdGhhdCB5b3Ug
+d2lsbCBmaW5kIGluIHByZXR0eSBtdWNoIGFueQppbnRlcnJ1cHQgaGFuZGxpbmcvZGVtdXhpbmcs
+IGFuZCBpcyBkb25lIHRoaXMgd2F5IHdoZW4gdGhlIGNvc3Qgb2YKdGFraW5nIHRoZSBleGNlcHRp
+b24gaXMgaGlnaCBjb21wYXJlZCB0byB0aGF0IG9mIGhhbmRsaW5nIGl0LgoKV2hpY2ggaXMgcHJl
+dHR5IG11Y2ggYW55IG9mIHRoZSBiYWRseSBkZXNpZ25lZCwgbGV2ZWwtZHJpdmluZywKRFctaW5z
+cGlyZWQsIHNvcnJ5IGV4Y3VzZSBmb3IgTVNJIGltcGxlbWVudGF0aW9ucyB0aGF0IGFyZSBwb3B1
+bGFyIG9uCmxvdy1lbmQgQVJNIFNvQ3MuCgpUaGFua3MsCgoJTS4KCi0tIApXaXRob3V0IGRldmlh
+dGlvbiBmcm9tIHRoZSBub3JtLCBwcm9ncmVzcyBpcyBub3QgcG9zc2libGUuCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
