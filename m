@@ -2,90 +2,87 @@ Return-Path: <SRS0=FzvZ=IZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA75DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 01:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B666EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 05:39:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E51361A1E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 01:32:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E51361A1E
+	by mail.kernel.org (Postfix) with ESMTPS id 2825F61984
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 05:39:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2825F61984
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IXqFTMOoBgXi2vkLFVxcRJoPLyiVmnIEIYsHiuQAszc=; b=V3vt4KOuRrGjeXpX/PA7Ve/Du
-	t3hJNL65L2jDWyc0llMC4wgipln/eqOlUh6yxtDEEQYKC7AKQe/3wugxsEovYjOTKxLhsZhdRkEwY
-	Y3bAdj1zUqJqd3p4ZDcsnQDRJlPK8nTp+19gPJ5CjPfSEfZfcBLUFYMIp6LFRNHd15khAdNq2xDal
-	Nxdyl42pznw7YgWmOKutKS6jwhGnZ8D0PT4+dznzJTfOxgCsdocNwv9YVpI5izL9rdZzlFDiNa7BT
-	t7I6GCx51ZtFvkQNiCZgoX8/UCIGWScHG+gJTPZ9XvXk6NP6BsXSu9KUDxvpMasTgQPEEo0HVGJFa
-	Lp4cz8Wdw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ZHq1Ahu32zbTLNtfY1HyHgdabVMOu/usu4FwQ1Mx7P0=; b=aagEOxD3pUbtr7WV/HQGfjpL+/
+	kA5XYKd1NgreIbkvJLJoh0uqfQg7YCjyP5hoPOgInM6p0pPuY68I58lY+DAErX9+oxa+5FxLppeBA
+	vFh//4+Zl4pEjahXIUXouuu3ck4icNf+jcYkpoSVHl5vm1P6D6u/moNRcCNTZynNYiZ/xWY3D0X85
+	LsbCe0+h0cne/CvJZ9B9Y8CfdVWGAz2wQF/AhvbloBNs32meAXOOBobcH3kkWlpWx/O9odHgtsExc
+	9qzUQuqkFzdOwMysbuORq414oh03kAqLsyqsJud4LVrpA8JY96NuXA+oZl8AsEUIGDk/8ohtYNaB9
+	Uvc0+gPw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lPxoC-004buH-RF; Sat, 27 Mar 2021 01:32:13 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1lQ1f4-004kqs-Sx; Sat, 27 Mar 2021 05:39:03 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lPxo7-004bt0-4y; Sat, 27 Mar 2021 01:32:09 +0000
-Received: by mail-pl1-x632.google.com with SMTP id v8so1747159plz.10;
- Fri, 26 Mar 2021 18:32:01 -0700 (PDT)
+ id 1lQ1eu-004kpw-3s; Sat, 27 Mar 2021 05:38:53 +0000
+Received: by mail-pg1-x534.google.com with SMTP id 33so110171pgy.4;
+ Fri, 26 Mar 2021 22:38:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=1qyM+1DNjW/XD7eEnuQcpKGf5iWK0Q1LvMTIkGjwSqo=;
- b=i/mXW48hpqTfUnccCboWz/o5HV7cXmnzilTBKz3NQDE1smk0rHUPdIGurb50ZnY+4n
- gLW3JR4zCuwaYeezM2FxE9yQVhBrKgps7XT5n7yLSleXrdo89vor9ZeXZ7xYoQgtUSTK
- qFdPbSm+PoRqcMslaPpxZ1vUkVH0+C9Fj3hD9xC/SWx4/r5DItxDvEhgkJPpuNhOnewY
- My1IY9M3EgVFTPs+8NtbFnyIPGMYypmnAj8Om0gP0cqMdAEwTWdMv1xA3fnipgo7sWOl
- cLhjjkt/YOQu9W29DUkib3Q5lrl+pv0llK6l1kDBzAsXgXwmXxmJNsgXlmtSoDKysn1t
- qaxQ==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6elHr9wS3U+eOcpmBW2sX0scmKlp2BHQ2gfORMO1D9I=;
+ b=Hx9qKJF2vlXl+JLiMrwH8TEugZ/+bawo8E1VhTfuOIAnl2SgJu9bmDvCTpBpLjjMF3
+ iK7AVxvwn6djDc9oU9WA2OaxfvIIoiFFhNW07Ayeh7mwvywHkO57XYZebmYoc8rEfNDr
+ nNNjQZiBXxYjEIUfXNpyRHegljFo+WKl1FTk1xYo3yJ2CYCUFvfSwTkaXrYU4P70Inku
+ gX1iqlMficNvLuNr5sQFtXQcUJF9M7XXhkP0UOzNJ4Gy4894imHXMsbxc/YqU7C2pe1I
+ XHJoOPy8wQoeWrvuU/aMaD/O2E838PoCiGYJB1IeO2w2NCj7klZsirsrQYiylAb4dLw0
+ QCFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=1qyM+1DNjW/XD7eEnuQcpKGf5iWK0Q1LvMTIkGjwSqo=;
- b=ce0s96IaOy/8xu4xqFw8J0LdzenHigsg/8jO7D/D5fK63sdIMDmh1EYxUaqQuESQ6K
- QmQ2OC9sgmWs/x147mwqCtJPrrF4QDK17oasolkcf2aaUSk0d90BtJBb9I4i6ZmxQoKy
- V0SAEt41uwkP6KQi/46HzChxCdaYWY0kLnFWPdtM+3ZOHGw4X3hmNYgCT1YFRggh1lHA
- U2lbgzOEHP0fdZ1GTfX2117XDupSK6x3mDkhb1iM9UNUePb20C4x7ozpXHfOdsg+oWPi
- RuthX3yply6QutkkRLqYOZlhqlVXMYGeXwEejlDylaAiLnKsnQq2yzzybDPG448/qVhC
- 6naw==
-X-Gm-Message-State: AOAM532UoeCHcQ91Yc5iKhfQZDdRc+zDj0FUeYgBOgc0mHkyKD917rzq
- m1sjmUOWKIM5yjNhkDlg/JV8rbGCSGliacyLjks=
-X-Google-Smtp-Source: ABdhPJzoJ6uqODnvOnrHmp+8ZL3LHGDUO8eRyRdggrOZqTpzmbp6QOamcV2AvbdiBuyayMLQ9MkOWWRlE96o7nL49QM=
-X-Received: by 2002:a17:902:b94c:b029:e6:98b9:c15b with SMTP id
- h12-20020a170902b94cb02900e698b9c15bmr18326448pls.60.1616808719912; Fri, 26
- Mar 2021 18:31:59 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=6elHr9wS3U+eOcpmBW2sX0scmKlp2BHQ2gfORMO1D9I=;
+ b=p+vV7JScCkvFVyhVxe2ssHqRMgppuauktnQSpCVradH6aeCL1ce4Sx9jiIFwVcEJei
+ dyCJczx0LP2x+nBrLZRgTybsk7cY6jbfrJqp90Ya8Wm0l2HosVcc60znW/mhmmVw3vF+
+ 4OGYNkOLduYvB1mZcB2t/T3+R5xQW5ePfEyo/HXGyeKUsHV8PebQqhqTT5TljYoD36rl
+ sVY8e1W5Pky0tkDWDf3WD7dbJbkKlyXQJbcxwIxxOWwv8LPJdevgsHYxyLC6qmDd0M9h
+ F9ZrTgjexKfjxWyHj6rd00s6w6DSEusB0ZJ36DGT4kNA/vIcHObTJn3t1SH5X0RD6DJF
+ qcMw==
+X-Gm-Message-State: AOAM533oni2+wfdw3dIrmsoR3B5lAXh/01vb7U3l/vAa9wu5MZLA8JQr
+ W9pnYhDkGGfxN9N10vypxpw=
+X-Google-Smtp-Source: ABdhPJzU5qXpd/hIC+jISW+cbPtDA42XgPMp+ggAA33zGl/07esw8SwP/gORLOkJCLZI8jzpfaYASw==
+X-Received: by 2002:a63:4c4:: with SMTP id 187mr15291676pge.187.1616823529541; 
+ Fri, 26 Mar 2021 22:38:49 -0700 (PDT)
+Received: from z640-arch.lan ([2602:61:7344:f100::678])
+ by smtp.gmail.com with ESMTPSA id k128sm10701933pfd.137.2021.03.26.22.38.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Mar 2021 22:38:48 -0700 (PDT)
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+To: John Crispin <john@phrozen.org>,
+ Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mips@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Subject: [PATCH 1/2] MIPS: ralink: annotate prom_soc_init() with __init
+Date: Fri, 26 Mar 2021 22:38:39 -0700
+Message-Id: <20210327053840.471155-1-ilya.lipnitskiy@gmail.com>
+X-Mailer: git-send-email 2.31.0
 MIME-Version: 1.0
-References: <20210325123446.v2.1.I1d9917047de06715da16e1620759f703fcfdcbcb@changeid>
- <049946ac-5263-21ee-9651-7295f0bcf387@linaro.org>
-In-Reply-To: <049946ac-5263-21ee-9651-7295f0bcf387@linaro.org>
-From: Evan Benn <evanbenn@gmail.com>
-Date: Sat, 27 Mar 2021 12:31:46 +1100
-Message-ID: <CAP8nV8rv6bKARZ31fVqcjVgMe+5UyVG8UAyNsm1hDCP2BbRSgw@mail.gmail.com>
-Subject: Re: [PATCH v2] drivers/clocksource/mediatek: Ack and disable
- interrupts on shutdown
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Evan Benn <evanbenn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Stanley Chu <stanley.chu@mediatek.com>,
- Alexey Klimov <alexey.klimov@linaro.org>, 
- Julia Lawall <Julia.Lawall@lip6.fr>, Yingjoe Chen <yingjoe.chen@mediatek.com>, 
- Thomas Gleixner <tglx@linutronix.de>, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, Viresh Kumar <viresh.kumar@linaro.org>, 
- LKML <linux-kernel@vger.kernel.org>, Fabien Parent <fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210327_013207_507789_F107BBA8 
-X-CRM114-Status: GOOD (  34.38  )
+X-CRM114-CacheID: sfid-20210327_053852_266155_B95DCD6C 
+X-CRM114-Status: GOOD (  10.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,109 +94,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgRGFuaWVsLAoKVGhhdCBpcyBhIGdvb2QgcG9pbnQsIGFuZCBJIGRpZCB0cnkgdGhhdCBhdCBm
-aXJzdCBhbmQgaXQgd29ya3MgZmluZS4gSQp1cGxvYWRlZCB0aGlzIHZlcnNpb24gYmVjYXVzZSB0
-aGUgc3VzcGVuZC9yZXN1bWUgY2FsbGJhY2tzIHdlcmUKdW5kb2N1bWVudGVkIGFuZCBtb3N0bHkg
-bm90IHVzZWQgYnkgb3RoZXIgY2xvY2tzb3VyY2UgZHJpdmVycy4gSQp0aG91Z2h0IGEgc21hbGxl
-ciBkaWZmIG1pZ2h0IGJlIHByZWZlcmFibGUuCkkgYWxzbyB0aG91Z2h0IGl0IHdvdWxkIGJlIGJl
-dHRlciB0byBzaHV0IG9mZiB0aGUgaW50ZXJydXB0IGFzIHNvb24gYXMKaXQgaXMgbm90IG5lZWRl
-ZCwgYXZvaWRpbmcgYW55IG90aGVyIHBvdGVudGlhbCBidWdzLCBpbnN0ZWFkIG9mIGp1c3QKZml4
-aW5nIHRoZSBvbmUgd2Uga25vdyBhYm91dCB3aXRoIHN1c3BlbmQuIEknbSBub3Qgc3VyZSBob3cg
-dGhlIG90aGVyCmRyaXZlciAvIHRpbWVyIGRpc2FibGUgZmxvd3MgYXJlIGludGVuZGVkIHRvIHdv
-cmsgZm9yIGV4YW1wbGUKKHNodXRkb3duLCBkZXRhY2gsIGV0YykuCgpUaGF0IHNhaWQgSSBhbSBo
-YXBweSB0byB1cGxvYWQgdGhhdCB2ZXJzaW9uIGlmIHBlb3BsZSB0aGluayBpdCBpcyBiZXR0ZXIu
-CgpodHRwczovL2VsaXhpci5ib290bGluLmNvbS9saW51eC9sYXRlc3Qvc291cmNlL2luY2x1ZGUv
-bGludXgvY2xvY2tjaGlwcy5oI0wxMjAKCgpPbiBUaHUsIDI1IE1hciAyMDIxIGF0IDE5OjEwLCBE
-YW5pZWwgTGV6Y2FubyA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4gd3JvdGU6Cj4KPiBPbiAy
-NS8wMy8yMDIxIDAyOjM1LCBFdmFuIEJlbm4gd3JvdGU6Cj4gPiBzZXRfc3RhdGVfc2h1dGRvd24g
-aXMgY2FsbGVkIGR1cmluZyBzeXN0ZW0gc3VzcGVuZCBhZnRlciBpbnRlcnJ1cHRzIGhhdmUKPiA+
-IGJlZW4gZGlzYWJsZWQuIElmIHRoZSB0aW1lciBoYXMgZmlyZWQgaW4gdGhlIG1lYW50aW1lLCB0
-aGVyZSB3aWxsIGJlCj4gPiBhIHBlbmRpbmcgSVJRLiBTbyB3ZSBhY2sgdGhhdCBub3cgYW5kIGRp
-c2FibGUgdGhlIHRpbWVyLiBXaXRob3V0IHRoaXMKPiA+IEFSTSB0cnVzdGVkIGZpcm13YXJlIHdp
-bGwgYWJvcnQgdGhlIHN1c3BlbmQgZHVlIHRvIHRoZSBwZW5kaW5nCj4gPiBpbnRlcnJ1cHQuCj4g
-Pgo+ID4gTm93IGFsd2F5cyBkaXNhYmxlIHRoZSBJUlEgaW4gc3RhdGUgdHJhbnNpdGlvbnMsIGFu
-ZCByZS1lbmFibGUgaW4KPiA+IHNldF9wZXJpb2RpYyBhbmQgbmV4dF9ldmVudC4KPgo+IFdoeSBu
-b3QgcHV0IGFkZCB0aGUgc3VzcGVuZC9yZXN1bWUgY2FsbGJhY2tzIGFuZCBwdXQgdGhlcmUgdGhl
-IHNwZWNpZmljCj4gY29kZSBhbmQgbGV0IHRoZSBpcnEgdW50b3VjaGVkIGluIHRoZSBub3JtYWwg
-ZmxvdyA/Cj4KPiA+IFNpZ25lZC1vZmYtYnk6IEV2YW4gQmVubiA8ZXZhbmJlbm5AY2hyb21pdW0u
-b3JnPgo+ID4gLS0tCj4gPgo+ID4gQ2hhbmdlcyBpbiB2MjoKPiA+IFJlbW92ZSB0aGUgcGF0Y2gg
-dGhhdCBzcGxpdHMgdGhlIGRyaXZlcnMgaW50byAyIGZpbGVzLgo+ID4KPiA+ICBkcml2ZXJzL2Ns
-b2Nrc291cmNlL3RpbWVyLW1lZGlhdGVrLmMgfCA0OSArKysrKysrKysrKysrKysrKy0tLS0tLS0t
-LS0tCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDMwIGluc2VydGlvbnMoKyksIDE5IGRlbGV0aW9ucygt
-KQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsb2Nrc291cmNlL3RpbWVyLW1lZGlhdGVr
-LmMgYi9kcml2ZXJzL2Nsb2Nrc291cmNlL3RpbWVyLW1lZGlhdGVrLmMKPiA+IGluZGV4IDkzMThl
-ZGNkODk2My4uZmJhMmY5NDk0ZDkwIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9jbG9ja3NvdXJj
-ZS90aW1lci1tZWRpYXRlay5jCj4gPiArKysgYi9kcml2ZXJzL2Nsb2Nrc291cmNlL3RpbWVyLW1l
-ZGlhdGVrLmMKPiA+IEBAIC0xMzIsMTMgKzEzMiwzMyBAQCBzdGF0aWMgdTY0IG5vdHJhY2UgbXRr
-X2dwdF9yZWFkX3NjaGVkX2Nsb2NrKHZvaWQpCj4gPiAgICAgICByZXR1cm4gcmVhZGxfcmVsYXhl
-ZChncHRfc2NoZWRfcmVnKTsKPiA+ICB9Cj4gPgo+ID4gK3N0YXRpYyB2b2lkIG10a19ncHRfZGlz
-YWJsZV9hY2tfaW50ZXJydXB0cyhzdHJ1Y3QgdGltZXJfb2YgKnRvLCB1OCB0aW1lcikKPiA+ICt7
-Cj4gPiArICAgICB1MzIgdmFsOwo+ID4gKwo+ID4gKyAgICAgLyogRGlzYWJsZSBpbnRlcnJ1cHRz
-ICovCj4gPiArICAgICB2YWwgPSByZWFkbCh0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9JUlFfRU5f
-UkVHKTsKPiA+ICsgICAgIHdyaXRlbCh2YWwgJiB+R1BUX0lSUV9FTkFCTEUodGltZXIpLCB0aW1l
-cl9vZl9iYXNlKHRvKSArCj4gPiArICAgICAgICAgICAgR1BUX0lSUV9FTl9SRUcpOwo+ID4gKwo+
-ID4gKyAgICAgLyogQWNrIGludGVycnVwdHMgKi8KPiA+ICsgICAgIHdyaXRlbChHUFRfSVJRX0FD
-Syh0aW1lciksIHRpbWVyX29mX2Jhc2UodG8pICsgR1BUX0lSUV9BQ0tfUkVHKTsKPiA+ICt9Cj4g
-PiArCj4gPiAgc3RhdGljIHZvaWQgbXRrX2dwdF9jbGtldnRfdGltZV9zdG9wKHN0cnVjdCB0aW1l
-cl9vZiAqdG8sIHU4IHRpbWVyKQo+ID4gIHsKPiA+ICAgICAgIHUzMiB2YWw7Cj4gPgo+ID4gKyAg
-ICAgLyogRGlzYWJsZSB0aW1lciAqLwo+ID4gICAgICAgdmFsID0gcmVhZGwodGltZXJfb2ZfYmFz
-ZSh0bykgKyBHUFRfQ1RSTF9SRUcodGltZXIpKTsKPiA+ICAgICAgIHdyaXRlbCh2YWwgJiB+R1BU
-X0NUUkxfRU5BQkxFLCB0aW1lcl9vZl9iYXNlKHRvKSArCj4gPiAgICAgICAgICAgICAgR1BUX0NU
-UkxfUkVHKHRpbWVyKSk7Cj4gPiArCj4gPiArICAgICAvKiBUaGlzIG1heSBiZSBjYWxsZWQgd2l0
-aCBpbnRlcnJ1cHRzIGRpc2FibGVkLAo+ID4gKyAgICAgICogc28gd2UgbmVlZCB0byBhY2sgYW55
-IGludGVycnVwdCB0aGF0IGlzIHBlbmRpbmcKPiA+ICsgICAgICAqIE9yIGZvciBleGFtcGxlIEFU
-RiB3aWxsIHByZXZlbnQgYSBzdXNwZW5kIGZyb20gY29tcGxldGluZy4KPiA+ICsgICAgICAqLwo+
-ID4gKyAgICAgbXRrX2dwdF9kaXNhYmxlX2Fja19pbnRlcnJ1cHRzKHRvLCB0aW1lcik7Cj4gPiAg
-fQo+ID4KPiA+ICBzdGF0aWMgdm9pZCBtdGtfZ3B0X2Nsa2V2dF90aW1lX3NldHVwKHN0cnVjdCB0
-aW1lcl9vZiAqdG8sCj4gPiBAQCAtMTUyLDggKzE3MiwxMCBAQCBzdGF0aWMgdm9pZCBtdGtfZ3B0
-X2Nsa2V2dF90aW1lX3N0YXJ0KHN0cnVjdCB0aW1lcl9vZiAqdG8sCj4gPiAgewo+ID4gICAgICAg
-dTMyIHZhbDsKPiA+Cj4gPiAtICAgICAvKiBBY2tub3dsZWRnZSBpbnRlcnJ1cHQgKi8KPiA+IC0g
-ICAgIHdyaXRlbChHUFRfSVJRX0FDSyh0aW1lciksIHRpbWVyX29mX2Jhc2UodG8pICsgR1BUX0lS
-UV9BQ0tfUkVHKTsKPiA+ICsgICAgIC8qIEVuYWJsZSBpbnRlcnJ1cHRzICovCj4gPiArICAgICB2
-YWwgPSByZWFkbCh0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9JUlFfRU5fUkVHKTsKPiA+ICsgICAg
-IHdyaXRlbCh2YWwgfCBHUFRfSVJRX0VOQUJMRSh0aW1lciksCj4gPiArICAgICAgICAgICAgdGlt
-ZXJfb2ZfYmFzZSh0bykgKyBHUFRfSVJRX0VOX1JFRyk7Cj4gPgo+ID4gICAgICAgdmFsID0gcmVh
-ZGwodGltZXJfb2ZfYmFzZSh0bykgKyBHUFRfQ1RSTF9SRUcodGltZXIpKTsKPiA+Cj4gPiBAQCAt
-MjI2LDIxICsyNDgsNiBAQCBfX2luaXQgbXRrX2dwdF9zZXR1cChzdHJ1Y3QgdGltZXJfb2YgKnRv
-LCB1OCB0aW1lciwgdTggb3B0aW9uKQo+ID4gICAgICAgICAgICAgIHRpbWVyX29mX2Jhc2UodG8p
-ICsgR1BUX0NUUkxfUkVHKHRpbWVyKSk7Cj4gPiAgfQo+ID4KPiA+IC1zdGF0aWMgdm9pZCBtdGtf
-Z3B0X2VuYWJsZV9pcnEoc3RydWN0IHRpbWVyX29mICp0bywgdTggdGltZXIpCj4gPiAtewo+ID4g
-LSAgICAgdTMyIHZhbDsKPiA+IC0KPiA+IC0gICAgIC8qIERpc2FibGUgYWxsIGludGVycnVwdHMg
-Ki8KPiA+IC0gICAgIHdyaXRlbCgweDAsIHRpbWVyX29mX2Jhc2UodG8pICsgR1BUX0lSUV9FTl9S
-RUcpOwo+ID4gLQo+ID4gLSAgICAgLyogQWNrbm93bGVkZ2UgYWxsIHNwdXJpb3VzIHBlbmRpbmcg
-aW50ZXJydXB0cyAqLwo+ID4gLSAgICAgd3JpdGVsKDB4M2YsIHRpbWVyX29mX2Jhc2UodG8pICsg
-R1BUX0lSUV9BQ0tfUkVHKTsKPiA+IC0KPiA+IC0gICAgIHZhbCA9IHJlYWRsKHRpbWVyX29mX2Jh
-c2UodG8pICsgR1BUX0lSUV9FTl9SRUcpOwo+ID4gLSAgICAgd3JpdGVsKHZhbCB8IEdQVF9JUlFf
-RU5BQkxFKHRpbWVyKSwKPiA+IC0gICAgICAgICAgICB0aW1lcl9vZl9iYXNlKHRvKSArIEdQVF9J
-UlFfRU5fUkVHKTsKPiA+IC19Cj4gPiAtCj4gPiAgc3RhdGljIHN0cnVjdCB0aW1lcl9vZiB0byA9
-IHsKPiA+ICAgICAgIC5mbGFncyA9IFRJTUVSX09GX0lSUSB8IFRJTUVSX09GX0JBU0UgfCBUSU1F
-Ul9PRl9DTE9DSywKPiA+Cj4gPiBAQCAtMjkyLDYgKzI5OSwxMiBAQCBzdGF0aWMgaW50IF9faW5p
-dCBtdGtfZ3B0X2luaXQoc3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+ID4gICAgICAgaWYgKHJl
-dCkKPiA+ICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiA+Cj4gPiArICAgICAvKiBJbiBjYXNl
-IHRoZSBmaXJtd2FyZSBsZWZ0IHRoZSBpbnRlcnJ1cHRzIGVuYWJsZWQKPiA+ICsgICAgICAqIGRp
-c2FibGUgYW5kIGFjayB0aG9zZSBub3cKPiA+ICsgICAgICAqLwo+ID4gKyAgICAgbXRrX2dwdF9k
-aXNhYmxlX2Fja19pbnRlcnJ1cHRzKCZ0bywgVElNRVJfQ0xLX1NSQyk7Cj4gPiArICAgICBtdGtf
-Z3B0X2Rpc2FibGVfYWNrX2ludGVycnVwdHMoJnRvLCBUSU1FUl9DTEtfRVZUKTsKPiA+ICsKPiA+
-ICAgICAgIC8qIENvbmZpZ3VyZSBjbG9jayBzb3VyY2UgKi8KPiA+ICAgICAgIG10a19ncHRfc2V0
-dXAoJnRvLCBUSU1FUl9DTEtfU1JDLCBHUFRfQ1RSTF9PUF9GUkVFUlVOKTsKPiA+ICAgICAgIGNs
-b2Nrc291cmNlX21taW9faW5pdCh0aW1lcl9vZl9iYXNlKCZ0bykgKyBHUFRfQ05UX1JFRyhUSU1F
-Ul9DTEtfU1JDKSwKPiA+IEBAIC0zMDUsOCArMzE4LDYgQEAgc3RhdGljIGludCBfX2luaXQgbXRr
-X2dwdF9pbml0KHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9kZSkKPiA+ICAgICAgIGNsb2NrZXZlbnRz
-X2NvbmZpZ19hbmRfcmVnaXN0ZXIoJnRvLmNsa2V2dCwgdGltZXJfb2ZfcmF0ZSgmdG8pLAo+ID4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBUSU1FUl9TWU5DX1RJQ0tTLCAw
-eGZmZmZmZmZmKTsKPiA+Cj4gPiAtICAgICBtdGtfZ3B0X2VuYWJsZV9pcnEoJnRvLCBUSU1FUl9D
-TEtfRVZUKTsKPiA+IC0KPiA+ICAgICAgIHJldHVybiAwOwo+ID4gIH0KPiA+ICBUSU1FUl9PRl9E
-RUNMQVJFKG10a19tdDY1NzcsICJtZWRpYXRlayxtdDY1NzctdGltZXIiLCBtdGtfZ3B0X2luaXQp
-Owo+ID4KPgo+Cj4gLS0KPiA8aHR0cDovL3d3dy5saW5hcm8ub3JnLz4gTGluYXJvLm9yZyDilIIg
-T3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBTb0NzCj4KPiBGb2xsb3cgTGluYXJvOiAgPGh0
-dHA6Ly93d3cuZmFjZWJvb2suY29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo+IDxodHRwOi8v
-dHdpdHRlci5jb20vIyEvbGluYXJvb3JnPiBUd2l0dGVyIHwKPiA8aHR0cDovL3d3dy5saW5hcm8u
-b3JnL2xpbmFyby1ibG9nLz4gQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+prom_soc_init is only called from prom_init in arch/mips/ralink/prom.c,
+which is already annotated with __init, so annotate prom_soc_init with
+__init too.
+
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+---
+ arch/mips/ralink/common.h | 2 +-
+ arch/mips/ralink/mt7620.c | 2 +-
+ arch/mips/ralink/mt7621.c | 2 +-
+ arch/mips/ralink/rt288x.c | 2 +-
+ arch/mips/ralink/rt305x.c | 2 +-
+ arch/mips/ralink/rt3883.c | 2 +-
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/arch/mips/ralink/common.h b/arch/mips/ralink/common.h
+index 4bc65b7a3241..49ae370d023d 100644
+--- a/arch/mips/ralink/common.h
++++ b/arch/mips/ralink/common.h
+@@ -27,7 +27,7 @@ extern void ralink_clk_add(const char *dev, unsigned long rate);
+ 
+ extern void ralink_rst_init(void);
+ 
+-extern void prom_soc_init(struct ralink_soc_info *soc_info);
++extern void __init prom_soc_init(struct ralink_soc_info *soc_info);
+ 
+ __iomem void *plat_of_remap_node(const char *node);
+ 
+diff --git a/arch/mips/ralink/mt7620.c b/arch/mips/ralink/mt7620.c
+index fcf010038054..53a5969e61af 100644
+--- a/arch/mips/ralink/mt7620.c
++++ b/arch/mips/ralink/mt7620.c
+@@ -639,7 +639,7 @@ mt7628_dram_init(struct ralink_soc_info *soc_info)
+ 	}
+ }
+ 
+-void prom_soc_init(struct ralink_soc_info *soc_info)
++void __init prom_soc_init(struct ralink_soc_info *soc_info)
+ {
+ 	void __iomem *sysc = (void __iomem *) KSEG1ADDR(MT7620_SYSC_BASE);
+ 	unsigned char *name = NULL;
+diff --git a/arch/mips/ralink/mt7621.c b/arch/mips/ralink/mt7621.c
+index ca0ac607b0f3..ec87ce561049 100644
+--- a/arch/mips/ralink/mt7621.c
++++ b/arch/mips/ralink/mt7621.c
+@@ -146,7 +146,7 @@ static void soc_dev_init(struct ralink_soc_info *soc_info, u32 rev)
+ 	}
+ }
+ 
+-void prom_soc_init(struct ralink_soc_info *soc_info)
++void __init prom_soc_init(struct ralink_soc_info *soc_info)
+ {
+ 	void __iomem *sysc = (void __iomem *) KSEG1ADDR(MT7621_SYSC_BASE);
+ 	unsigned char *name = NULL;
+diff --git a/arch/mips/ralink/rt288x.c b/arch/mips/ralink/rt288x.c
+index 3f096897858c..34083c70ec68 100644
+--- a/arch/mips/ralink/rt288x.c
++++ b/arch/mips/ralink/rt288x.c
+@@ -77,7 +77,7 @@ void __init ralink_of_remap(void)
+ 		panic("Failed to remap core resources");
+ }
+ 
+-void prom_soc_init(struct ralink_soc_info *soc_info)
++void __init prom_soc_init(struct ralink_soc_info *soc_info)
+ {
+ 	void __iomem *sysc = (void __iomem *) KSEG1ADDR(RT2880_SYSC_BASE);
+ 	const char *name;
+diff --git a/arch/mips/ralink/rt305x.c b/arch/mips/ralink/rt305x.c
+index 496f966c05f9..c5b63c142705 100644
+--- a/arch/mips/ralink/rt305x.c
++++ b/arch/mips/ralink/rt305x.c
+@@ -214,7 +214,7 @@ void __init ralink_of_remap(void)
+ 		panic("Failed to remap core resources");
+ }
+ 
+-void prom_soc_init(struct ralink_soc_info *soc_info)
++void __init prom_soc_init(struct ralink_soc_info *soc_info)
+ {
+ 	void __iomem *sysc = (void __iomem *) KSEG1ADDR(RT305X_SYSC_BASE);
+ 	unsigned char *name;
+diff --git a/arch/mips/ralink/rt3883.c b/arch/mips/ralink/rt3883.c
+index 8f3fe3106708..ff91f3531ad0 100644
+--- a/arch/mips/ralink/rt3883.c
++++ b/arch/mips/ralink/rt3883.c
+@@ -113,7 +113,7 @@ void __init ralink_of_remap(void)
+ 		panic("Failed to remap core resources");
+ }
+ 
+-void prom_soc_init(struct ralink_soc_info *soc_info)
++void __init prom_soc_init(struct ralink_soc_info *soc_info)
+ {
+ 	void __iomem *sysc = (void __iomem *) KSEG1ADDR(RT3883_SYSC_BASE);
+ 	const char *name;
+-- 
+2.31.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
