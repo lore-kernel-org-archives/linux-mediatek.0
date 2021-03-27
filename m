@@ -2,64 +2,66 @@ Return-Path: <SRS0=FzvZ=IZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8D05C433C1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 09:46:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA886C433C1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 09:57:05 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD9D7619FF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 09:46:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD9D7619FF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=alpha.franken.de
+	by mail.kernel.org (Postfix) with ESMTPS id 965B761976
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Mar 2021 09:57:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 965B761976
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=fKcSTxe+10kaookcHSUdg3ZhrK3VkJT+ZD1MVpsycWE=; b=BNRCGgihn/k3aeHtBTFDtEeJO
-	vX6pzYJoIvFC068VJFhfuJniNwr1neBME2eV5SbFO/vJ3xTsmHAQL4ElX6UGnJh0/PaZyHx6c6Toa
-	eSqX8N4RfpLGVFdEFeQ0CfVZbPHJC/4a3hyutjhRLt1O/0bGY1OMSBdiyamSK7q8A0MH4mrkvwiWC
-	Yb2OGgFdPsJ39JQhAqsGim+ZGMgMFGzt78cP1CBBDXfycrBtaCtbU6bDq4YyOpJk71lOyASJ+hr5g
-	iT70Zk0msw1c6LvD1v+O4hw4MWN8YvbVQ04zNyVSCu+eg5AaFIdyjidJAShuLQuZky/9EA0GdZ4i3
-	ee7brw91A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qdUg3COSgwR7I2Berd69cpjl0KqWsjO49X8cS+Avr6g=; b=pga6S6+ffn94B6WAtxZWdKj0Fy
+	34ttaIr4qvk0vknYlg8VccVsjUdmBjr18IzTJQoVnYNAoXyoJf8luS7R0fhtFEjqbSpW6lRrvFRIY
+	mlA9GpgCIDbDKBf8rE8vAeBPkWP3Xrv32DIO+OUDhDztJRiUIIcTf3x56dEECazKd66WuiQMR881i
+	P7b9CLqlG746iK4JH8TgotGMt95wiJnNEnGmYc2RKU3PWRTIcOnsxcsjSxYH5UFmSg+B2MbHclWF9
+	tQ0u2ze6goyXkIUDEcFi9uMzc+VDCk1URgUEzBIvyiKRpjXiZutiM91Fwa/7D+w623cA/DMNJRJCx
+	vxsbuJMQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQ5Wi-004xzy-I4; Sat, 27 Mar 2021 09:46:40 +0000
-Received: from elvis.franken.de ([193.175.24.41])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lQ5Wf-004xzP-2u; Sat, 27 Mar 2021 09:46:39 +0000
-Received: from uucp (helo=alpha)
- by elvis.franken.de with local-bsmtp (Exim 3.36 #1)
- id 1lQ5Wa-0005A7-00; Sat, 27 Mar 2021 10:46:32 +0100
-Received: by alpha.franken.de (Postfix, from userid 1000)
- id 8B16FC1D8B; Sat, 27 Mar 2021 10:46:20 +0100 (CET)
-Date: Sat, 27 Mar 2021 10:46:20 +0100
-From: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, John Crispin <john@phrozen.org>,
- Chuanhong Guo <gch981213@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, linux-mips@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] MIPS: ralink: mt7621: add memory detection support
-Message-ID: <20210327094620.GA4320@alpha.franken.de>
-References: <20210317055902.506773-1-ilya.lipnitskiy@gmail.com>
- <20210325095529.GA5775@alpha.franken.de>
- <CALCv0x2ni97mLEar6M9boWCrXzdsqM3JJNMbe=cDitHj+npanw@mail.gmail.com>
+	id 1lQ5gb-004yv8-6S; Sat, 27 Mar 2021 09:56:53 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lQ5gR-004yty-0q; Sat, 27 Mar 2021 09:56:44 +0000
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4F6vMJ4QHWz1BH6C;
+ Sat, 27 Mar 2021 17:54:36 +0800 (CST)
+Received: from mdc.localdomain (10.175.104.57) by
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Sat, 27 Mar 2021 17:56:28 +0800
+From: Huang Guobin <huangguobin4@huawei.com>
+To: <huangguobin4@huawei.com>, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi83@gmail.com>, Kalle Valo <kvalo@codeaurora.org>, "Jakub
+ Kicinski" <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Markus Elfring" <elfring@users.sourceforge.net>, "David S. Miller"
+ <davem@davemloft.net>
+CC: <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <kernel-janitors@vger.kernel.org>
+Subject: [PATCH net-next] mt76: mt7615: remove redundant dev_err call in
+ mt7622_wmac_probe()
+Date: Sat, 27 Mar 2021 17:56:18 +0800
+Message-ID: <1616838978-6420-1-git-send-email-huangguobin4@huawei.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CALCv0x2ni97mLEar6M9boWCrXzdsqM3JJNMbe=cDitHj+npanw@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Originating-IP: [10.175.104.57]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210327_094637_319716_567FED7A 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20210327_095643_374320_69C8C8A9 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,51 +78,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 25, 2021 at 07:45:23PM -0700, Ilya Lipnitskiy wrote:
-> On Thu, Mar 25, 2021 at 3:01 AM Thomas Bogendoerfer
-> <tsbogend@alpha.franken.de> wrote:
-> >
-> > On Tue, Mar 16, 2021 at 10:59:02PM -0700, Ilya Lipnitskiy wrote:
-> > > From: Chuanhong Guo <gch981213@gmail.com>
-> > >
-> > > mt7621 has the following memory map:
-> > > 0x0-0x1c000000: lower 448m memory
-> > > 0x1c000000-0x2000000: peripheral registers
-> > > 0x20000000-0x2400000: higher 64m memory
-> > >
-> > > detect_memory_region in arch/mips/kernel/setup.c only adds the first
-> > > memory region and isn't suitable for 512m memory detection because
-> > > it may accidentally read the memory area for peripheral registers.
-> > >
-> > > This commit adds memory detection capability for mt7621:
-> > >   1. Add the highmem area when 512m is detected.
-> > >   2. Guard memcmp from accessing peripheral registers:
-> > >      This only happens when a user decided to change kernel load address
-> > >      to 256m or higher address. Since this is a quite unusual case, we
-> > >      just skip 512m testing and return 256m as memory size.
-> > >
-> > > [...]
-> >
-> > I get
-> >
-> > WARNING: modpost: vmlinux.o(.text+0x132c): Section mismatch in reference from the function prom_soc_init() to the function .init.text:mt7621_memory_detect()
-> > The function prom_soc_init() references
-> > the function __init mt7621_memory_detect().
-> > This is often because prom_soc_init lacks a __init
-> > annotation or the annotation of mt7621_memory_detect is wrong.
-> >
-> > Can you please fix this ?
-> Thanks, I will fix it. Having trouble reproducing the error, but I
-> clearly see the issue. Are you building on a MIPS target or
-> cross-compiling (I'm cross-compiling and no errors).
+From: Guobin Huang <huangguobin4@huawei.com>
 
-I'm cross compiling, I can provide you the .config, if you want.
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
 
-Thomas.
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Guobin Huang <huangguobin4@huawei.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7615/soc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
--- 
-Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
-good idea.                                                [ RFC1925, 2.3 ]
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/soc.c b/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
+index 9aa5183c7a56..be9a69fe1b38 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/soc.c
+@@ -40,10 +40,8 @@ static int mt7622_wmac_probe(struct platform_device *pdev)
+ 		return irq;
+ 
+ 	mem_base = devm_ioremap_resource(&pdev->dev, res);
+-	if (IS_ERR(mem_base)) {
+-		dev_err(&pdev->dev, "Failed to get memory resource\n");
++	if (IS_ERR(mem_base))
+ 		return PTR_ERR(mem_base);
+-	}
+ 
+ 	return mt7615_mmio_probe(&pdev->dev, mem_base, irq, mt7615e_reg_map);
+ }
+
 
 _______________________________________________
 Linux-mediatek mailing list
