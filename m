@@ -2,19 +2,19 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93ADDC433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 17:01:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE8FEC433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 17:01:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 436D76191F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 17:01:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 436D76191F
+	by mail.kernel.org (Postfix) with ESMTPS id 419786192F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 17:01:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 419786192F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,61 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:Message-Id:From:
 	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4uJ9iUIda+SFQU5spIworhD4mwmfnfxvIIzpLcFINek=; b=Y62+1vHZRB0LuE0PbziP53Izu
-	z6CU1Xz1t8lCwMZ0mpVtScSTcOGByDFlsBkqE2CbDJJZMJsJ9bMXLryEYvjDkTC6W82ODUgcGXWhj
-	BPz5bNy5tjwoygTT5A9c1Wk/EOWxmjrucsNsDRaEJIqdFjgSv/X2dFrK7lyRt8bFZwKtspw6rDUT3
-	3Un680wT8TbwXSYFNFSwdcIaMgnaNbuWX956+zgvCNQVqP+OZB8+lxP4d6Uu12BiD78eX/uG4CMez
-	RHKQolUROpbPmkB5oeygxs995JKYASuk3xrTD7cdCbuUnUA4TEgyHZL1scVEb+mTdmvvcVIwh6ath
-	bNIt4nTEA==;
+	 bh=vo2Nhf7y2TSmrJh7F3D6jbrAPLn6LQymMoWxtjKh7Dg=; b=O6ewyIh5H3iWuGRmE1qoCkB1N
+	I8efQ+69ezcE1vtEyOjUvwqkLxCdZwqwK4lpOrY0V7g9E9UCrUIX0v3ggiJ03Ek1MYW2RDlIxbN4S
+	S3velU+dQO9d0e0AoFiUM51aLN7+Gn58AD016GkdMPuMYy0pWapIHTtFOpuje0FF05g/SlpzSDP/s
+	8+cl6cBXKRgzkR5o7ksb/V+StZ9VpArdVe3U9mGorgpVPcde3bXIsuuDp+dgRxR4MrT06TnLXlQdc
+	HQ4Rb/KejBS8DdLm4XDRcHblw2mt2eK6G89K20nYBeW8dIsHh5gFhFoXflRHh0zcQRaPMc1OMusDm
+	3e4ppcDRg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQvG9-000oyf-2F; Mon, 29 Mar 2021 17:01:01 +0000
+	id 1lQvGf-000pAk-A0; Mon, 29 Mar 2021 17:01:33 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQokY-000Z0B-IZ; Mon, 29 Mar 2021 10:03:58 +0000
+ id 1lQokq-000Z0r-NM; Mon, 29 Mar 2021 10:04:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Date:
  Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
  Sender:Reply-To:Content-ID:Content-Description;
- bh=7PbKX+CA0VkUvlQX5OOqhCXAF/fUaELJtK0/FYts2zs=; b=cpsHY++TWzf1SW9iaIdJeDBbRm
- +uvxP1+YdlBEBNB6n0T7ruRby6nDt1BzvPbSZ/m++vThaixiGRNE22bddECLiRw+eD+jtuWpEUv9S
- tcsYON+9AQn6ZyV5KygsaxWSceY9mHh3qCwtepBHWtkR9SdsqQkNZAhKKm/KlXF/Usy/0xKZ6ysuL
- QurfVWBegE7oFUoZLKliJhacaIdhNgFLrAnu8iBow1H5V7OYzPAITNjsZaZAJL40qJIttvFcH+20q
- F0+FO0f/lXeL7bxuCWqqWzwHiZ6uyP8vwNtZVI1V5bGCjlD9OgG0dplQPn95aylUWqsSccmaTNnAg
- JKSjYoLw==;
+ bh=pm/pP6egShyX4/2rxxE2vsHvetQs3aN1NBtwxdtbLL0=; b=u1uBhcBXFI36SFoqONosvZcTs6
+ 3YglEQrEhWnfiwCiFYGWwoRnM7Z+RKcQg3dcqO9fHnx8vQlL2V5UAcESNBJ+4NFD+zXEpwS6xDmIq
+ 3VEpSbIoFYxBwCNQJ8+kUvQ1c2sENrpyfWIMz6MoTqkwfHoE3Exxulb5WzZ4peIlS87wswgcdDhfl
+ /fGjLp4iZroldcALR4ciMsx5VVLgSXlQHWgfnJ8YlDv2AFihvBE+FK6r58J8DKxlxfBQDdBuQeZ/t
+ OWQVHT/Ia65pMquD0GKEUC1IyHnFKEjQsPXn/Lrm+7LjAJJj8skEpfSx7AyKz7ylnFeNVDeJ7SHAd
+ a3C9nquA==;
 Received: from mail.kernel.org ([198.145.29.99])
  by casper.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQgQ7-000ohK-3m; Mon, 29 Mar 2021 01:10:34 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPS id BEA5761951;
+ id 1lQgQ7-000ohJ-3m; Mon, 29 Mar 2021 01:10:30 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPS id B544361878;
  Mon, 29 Mar 2021 01:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1616980209;
- bh=zxQ+ZIrauQfx6GNAIlXEkCWtWQkdo2pHRfdWo9A4qdY=;
+ bh=7ZpGTszKHp/HTdmdSRY3sy5MYneNTgNrftTkGvrMlh0=;
  h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=hqvWkiVI9tnXfhugPZBa7EdOI4pI+qXJEaeOFSsd4+SnPQbMofHcLNwK0FpeoIIQx
- E3beZGFdEWYLK7mShVghnDvSqaApPpQxqC1s4/InVQGLhc+0YWIArZby4osuV4uRDh
- X7eTWio5QkdNboZi5x/sjvzd5UvldKdwIB54Bu9mpFvnsOwGbuhWj4EvPLmZCj3aQ/
- 4FptFmeXgdSqtOGbyHdJTNVJDWJz0X5YEUoqPxrt1HuEt1WCCveMTfcgoCVLnHKHh2
- 1FOrVCY1d2hNm76tSJdEaKy6JvASv8cxHKx9OHM+iCJrxeko0uBdbZzvELIYqdELbc
- MoalEJNHIMYsw==
+ b=e8g2Tgs5GUYKG4u+HXmBRnNreEUAsZtIOydjHygAkt2UGkP6d8SFB/FGEi9gfhCIr
+ jRSLPFhXZmZQ/Y8NCFWwHTEtk0SZ8GNfiJH1oymg/gng7VDPVZeGpq/Y2Z4Rlxfa8k
+ Ld0hEx21DRFLs6UL//ZOpkva2EyeXhKWrYWMBeOX0H/H9K2l4QyOxU+Z+zKMBvcS3C
+ SlD52tdRP2xT0wAHmczljWxvaIfysM68OdlWIqr/1s+jNd+gJ3K7h5mK+zXgGKMHMn
+ /skOy/vFOQ34k5oR5p11V+LkOjFS7YesxNNGP5poVpEa1y6Nr80x04e4ABBUaDnix2
+ fDPmbj7kuBlGg==
 MIME-Version: 1.0
-Subject: Re: [PATCH] mt76: Convert to DEFINE_SHOW_ATTRIBUTE
+Subject: Re: [PATCH net-next] mt76: mt7615: remove redundant dev_err call in
+ mt7622_wmac_probe()
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <161698020972.2631.5798600875086816841.git-patchwork-notify@kernel.org>
+Message-Id: <161698020967.2631.17916389081654027279.git-patchwork-notify@kernel.org>
 Date: Mon, 29 Mar 2021 01:10:09 +0000
-References: <20210327095617.1222-1-angkery@163.com>
-In-Reply-To: <20210327095617.1222-1-angkery@163.com>
-To: angkery <angkery@163.com>
-Cc: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- kvalo@codeaurora.org, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, shayne.chen@mediatek.com, yiwei.chung@mediatek.com,
- ap420073@gmail.com, sean.wang@mediatek.com, Soul.Huang@mediatek.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+References: <1616838978-6420-1-git-send-email-huangguobin4@huawei.com>
+In-Reply-To: <1616838978-6420-1-git-send-email-huangguobin4@huawei.com>
+To: Huang Guobin <huangguobin4@huawei.com>
+Cc: nbd@nbd.name, lorenzo.bianconi83@gmail.com, kvalo@codeaurora.org,
+ kuba@kernel.org, matthias.bgg@gmail.com, elfring@users.sourceforge.net,
+ davem@davemloft.net, linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, yangjunlin@yulong.com
+ kernel-janitors@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_021023_406573_83139AA6 
-X-CRM114-Status: UNSURE (   6.72  )
+X-CRM114-CacheID: sfid-20210329_021023_406781_AF9F7066 
+X-CRM114-Status: UNSURE (   5.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,20 +98,21 @@ Hello:
 
 This patch was applied to netdev/net-next.git (refs/heads/master):
 
-On Sat, 27 Mar 2021 17:56:17 +0800 you wrote:
-> From: Junlin Yang <yangjunlin@yulong.com>
+On Sat, 27 Mar 2021 17:56:18 +0800 you wrote:
+> From: Guobin Huang <huangguobin4@huawei.com>
 > 
-> Use DEFINE_SHOW_ATTRIBUTE macro to simplify the code.
+> There is a error message within devm_ioremap_resource
+> already, so remove the dev_err call to avoid redundant
+> error message.
 > 
-> Signed-off-by: Junlin Yang <yangjunlin@yulong.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt7915/debugfs.c    | 36 ++++------------------
->  .../net/wireless/mediatek/mt76/mt7921/debugfs.c    | 18 ++---------
->  2 files changed, 9 insertions(+), 45 deletions(-)
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Guobin Huang <huangguobin4@huawei.com>
+> 
+> [...]
 
 Here is the summary with links:
-  - mt76: Convert to DEFINE_SHOW_ATTRIBUTE
-    https://git.kernel.org/netdev/net-next/c/8d93a4f9ccfd
+  - [net-next] mt76: mt7615: remove redundant dev_err call in mt7622_wmac_probe()
+    https://git.kernel.org/netdev/net-next/c/8e99ca3fdb31
 
 You are awesome, thank you!
 --
