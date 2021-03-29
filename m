@@ -2,62 +2,103 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6E25C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 23:07:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25DD3C433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 23:08:13 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 58B6261987
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 23:07:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 58B6261987
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 97B3C61935
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 23:08:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97B3C61935
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qjPJqlTYTrZTzLX0Rc1hW+KYmPPSQXqnMsoIwMBtYkw=; b=OujqbfD033B1BanUuW52QqzQsC
-	pVXyITaZQ3QN0x76TyKHz9CvzhUHQn+IjfY73zvKQmsbw0Bc6Lbccy8P+rgQt85OeClIECaRUUxmz
-	JUsao8FjB+UcAAnhvtdIYapxhhFwwRBu3upPe8rdpi6YgSnE1FlY+JmITxbzvPQfbgiuZYF747TMG
-	jyGEm5o5QLuwkBIJl1Vl1prG5kxFozAILDHMj3QNKCrTzD7Ec/PCSkpgV0ilqgd2at6MA6Xbb56s6
-	W8HcPgdfDYh4yzg+IF8MvOxrWvM7g5m2w+hsr3T5yNpv1+pfl+7LXj1ZUzG9YfzSpuxYVxdxT11LP
-	n0utuGjw==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=70gz85yJ1Rq5VgnAhA3Q18fGHWMpnUA5rlyGhPtMJtM=; b=QtPLi9TeJk0+X193ugJpopOym
+	bphm7CYdnBbtUcDq184rataklLdpzA0Fce/0auVHYYiikl8X33S5MQQ0E9lxeClx84n+5DxyEWe2H
+	T5WJRKFFWwHbb4Hf6Htaony6sZRQvPdIgEjN/ZZQpN4Jb0+Tpzmv27zLgBNSrOphm1oqCy34olDYv
+	YlcQEgpxkUhTifeLGekMaYvmu8f1nSkpvedodbiMCHE5mQKiO2q6M2SKLtS8f4TIsVUWnp4FatChe
+	mw1rHgQ4AiThIFrfQvgFuoOtF4NezkEQzMIy4ukVAxPT0uGTTFWZCI1CwHgAkDiqqXT5eiqyQlu2v
+	nUnXOj6IA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR0yJ-001pwg-Gb; Mon, 29 Mar 2021 23:06:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lR0zG-001qGX-16; Mon, 29 Mar 2021 23:07:58 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQtwm-000jtx-PN
- for linux-mediatek@lists.infradead.org; Mon, 29 Mar 2021 15:37:11 +0000
-Received: from guri.fritz.box (unknown
- [IPv6:2a02:810a:880:f54:85ba:22ea:8b43:4375])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 582AD1F45543;
- Mon, 29 Mar 2021 16:36:53 +0100 (BST)
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: dafna.hirschfeld@collabora.com, kernel@collabora.com, dafna3@gmail.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
- daniel@ffwll.ch, enric.balletbo@collabora.com,
- laurent.pinchart@ideasonboard.com
-Subject: [PATCH v2 2/3] drm/mediatek: Don't support hdmi connector creation
-Date: Mon, 29 Mar 2021 17:36:31 +0200
-Message-Id: <20210329153632.17559-3-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210329153632.17559-1-dafna.hirschfeld@collabora.com>
-References: <20210329153632.17559-1-dafna.hirschfeld@collabora.com>
+ id 1lQtyl-000jyi-0T; Mon, 29 Mar 2021 15:39:11 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id x7so13311992wrw.10;
+ Mon, 29 Mar 2021 08:38:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=S1lZrYa4RgkGtFeObfBwaH9rh2684UNbDqMBiRRBdv8=;
+ b=odZbbv5rUQgy7f+7QYYAnbvqRWxOrNggdNRJaRcxvSBFtdAP0l3Efa7CY2YrLQREba
+ 06oUdKMVlKGELOWCJG/zQendxvtiLaXqHp1tQhetrGnCyPhsnzqccznG7mNIUaasgM0a
+ I2X44glX8CM6VUZ1NWnJRlx8dmMyJ31mvti/HH56/OLbpWwheX1y+6d2pfGp0SQdcT1c
+ oxuE9/W9tpDT7/zdB/KFhBtyzIpi6E56HOYO9u9YZpz+1IvahHkH+YOW3Y1/gnCOPzcW
+ fzU/tUv0vnwvjXJnHeF73IiKs8lvJwEdCKPNzFYK8do1GD4cxfabJ1YTW3VC+IB9Z3gd
+ GBXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=S1lZrYa4RgkGtFeObfBwaH9rh2684UNbDqMBiRRBdv8=;
+ b=Hwy3g+q/NtV84nJ6zbFTvdsSOONrNoY45FLv+98dRigChlwQrjLbHF1tRJ9rLUOz1s
+ b8xCIp4CuzQcOzxnVXLK7y22aAbX5xiys2/FYre5ewJruzVa4LwxOx5rPAuqi18wTC4h
+ 9drp0MUjqqc3lek1ZN9r0tTmj7LBozVKAat6A4DKaPzYhCF63ei95+ggkiu8F2g88EKk
+ 7o/UDbwVTZTVEr+Sw6RI22FFJOjSIG2QqNGhzmU4/NPXozI/cIUudSaATzQijNXOK0TL
+ CA5WH30924Us978xmvcM3Qsj1Kg/Y1CnINw1SKMYZPTbWm4rVihszr2XapDSGx46NvCC
+ DRpw==
+X-Gm-Message-State: AOAM530mCsMywzhqrg7FFXGYOuymssnMyVmvNSofwS1ez2pLmI3OofNI
+ VFUQznAhAefj8M0xB9fMJeV8dnm/YmKtRI7J
+X-Google-Smtp-Source: ABdhPJyya11CowoA7VEiWPCnbakkjzZDIiLpDg04ysh56Z7tU0L0hIE/aPfdwMl/6YmU2Gjo2Shg0Q==
+X-Received: by 2002:adf:8523:: with SMTP id 32mr15610137wrh.375.1617032338241; 
+ Mon, 29 Mar 2021 08:38:58 -0700 (PDT)
+Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
+ [80.174.240.175])
+ by smtp.gmail.com with ESMTPSA id p16sm34875137wrt.54.2021.03.29.08.38.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 29 Mar 2021 08:38:57 -0700 (PDT)
+Subject: Re: [PATCH v7 04/11] mfd: mt6360: Combine mt6360 pmic/ldo resources
+ into mt6360 regulator resources
+To: Gene Chen <gene.chen.richtek@gmail.com>, Lee Jones <lee.jones@linaro.org>
+Cc: sre@kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-pm@vger.kernel.org, devicetree <devicetree@vger.kernel.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, Wilma.Wu@mediatek.com,
+ shufan_lee@richtek.com, ChiYuan Huang <cy_huang@richtek.com>,
+ benjamin.chao@mediatek.com
+References: <1605177598-23501-1-git-send-email-gene.chen.richtek@gmail.com>
+ <1605177598-23501-5-git-send-email-gene.chen.richtek@gmail.com>
+ <74b127eb-9a3c-20c9-5692-b00b982f4da3@gmail.com>
+ <CAE+NS34qR9f2LOpvxTBDF4OR=Xq-SFP+uHdWe3dZ5x8xggS8kA@mail.gmail.com>
+ <20210115073241.GC3975472@dell>
+ <CAE+NS37hVMVJA04ZmdcfKvw05ga1-vT=fGRAf=bh17XOJHEh4A@mail.gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <496b647d-35e4-59c1-71ad-f3cc6ffee287@gmail.com>
+Date: Mon, 29 Mar 2021 17:38:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
+MIME-Version: 1.0
+In-Reply-To: <CAE+NS37hVMVJA04ZmdcfKvw05ga1-vT=fGRAf=bh17XOJHEh4A@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_163707_760999_68C6E51F 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20210329_163909_003837_757B9AAF 
+X-CRM114-Status: GOOD (  20.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,243 +110,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-commit f01195148967 ("drm/mediatek: mtk_dpi: Create connector for bridges")
-broke the display support for elm device since mtk_dpi calls
-drm_bridge_attach with the flag DRM_BRIDGE_ATTACH_NO_CONNECTOR
-while mtk_hdmi does not yet support this flag.
-
-Fix this by accepting DRM_BRIDGE_ATTACH_NO_CONNECTOR in bridge attachment.
-Implement the drm_bridge_funcs .detect() and .get_edid() operations, and
-call drm_bridge_hpd_notify() to report HPD. This provides the
-necessary API to support disabling connector creation.
-
-This patch is inspired by a similar patch for bridge/synopsys/dw-hdmi.c:
-commit ec971aaa6775 ("drm: bridge: dw-hdmi: Make connector creation optional")
-But with the difference that in mtk-hdmi only the option of not creating
-a connector is supported.
-
-Fixes: f01195148967 ("drm/mediatek: mtk_dpi: Create connector for bridges")
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi.c | 129 ++++++++++------------------
- 1 file changed, 44 insertions(+), 85 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index f2c810b767ef..1eeb211b1536 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -186,11 +186,6 @@ static inline struct mtk_hdmi *hdmi_ctx_from_bridge(struct drm_bridge *b)
- 	return container_of(b, struct mtk_hdmi, bridge);
- }
- 
--static inline struct mtk_hdmi *hdmi_ctx_from_conn(struct drm_connector *c)
--{
--	return container_of(c, struct mtk_hdmi, conn);
--}
--
- static u32 mtk_hdmi_read(struct mtk_hdmi *hdmi, u32 offset)
- {
- 	return readl(hdmi->regs + offset);
-@@ -1201,48 +1196,30 @@ mtk_hdmi_update_plugged_status(struct mtk_hdmi *hdmi)
- 	       connector_status_connected : connector_status_disconnected;
- }
- 
--static enum drm_connector_status hdmi_conn_detect(struct drm_connector *conn,
--						  bool force)
--{
--	struct mtk_hdmi *hdmi = hdmi_ctx_from_conn(conn);
--	return mtk_hdmi_update_plugged_status(hdmi);
--}
--
--static void hdmi_conn_destroy(struct drm_connector *conn)
-+static struct edid *mtk_hdmi_get_edid(struct mtk_hdmi *hdmi,
-+				      struct drm_connector *connector)
- {
--	struct mtk_hdmi *hdmi = hdmi_ctx_from_conn(conn);
--
--	mtk_cec_set_hpd_event(hdmi->cec_dev, NULL, NULL);
--
--	drm_connector_cleanup(conn);
--}
--
--static int mtk_hdmi_conn_get_modes(struct drm_connector *conn)
--{
--	struct mtk_hdmi *hdmi = hdmi_ctx_from_conn(conn);
- 	struct edid *edid;
--	int ret;
- 
- 	if (!hdmi->ddc_adpt)
--		return -ENODEV;
--
--	edid = drm_get_edid(conn, hdmi->ddc_adpt);
-+		return NULL;
-+	edid = drm_get_edid(connector, hdmi->ddc_adpt);
- 	if (!edid)
--		return -ENODEV;
--
-+		return NULL;
- 	hdmi->dvi_mode = !drm_detect_monitor_audio(edid);
-+	return edid;
-+}
- 
--	drm_connector_update_edid_property(conn, edid);
--
--	ret = drm_add_edid_modes(conn, edid);
--	kfree(edid);
--	return ret;
-+static enum drm_connector_status mtk_hdmi_detect(struct mtk_hdmi *hdmi)
-+{
-+	return mtk_hdmi_update_plugged_status(hdmi);
- }
- 
--static int mtk_hdmi_conn_mode_valid(struct drm_connector *conn,
--				    struct drm_display_mode *mode)
-+static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
-+				      const struct drm_display_info *info,
-+				      const struct drm_display_mode *mode)
- {
--	struct mtk_hdmi *hdmi = hdmi_ctx_from_conn(conn);
-+	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
- 	struct drm_bridge *next_bridge;
- 
- 	dev_dbg(hdmi->dev, "xres=%d, yres=%d, refresh=%d, intl=%d clock=%d\n",
-@@ -1267,74 +1244,50 @@ static int mtk_hdmi_conn_mode_valid(struct drm_connector *conn,
- 	return drm_mode_validate_size(mode, 0x1fff, 0x1fff);
- }
- 
--static struct drm_encoder *mtk_hdmi_conn_best_enc(struct drm_connector *conn)
--{
--	struct mtk_hdmi *hdmi = hdmi_ctx_from_conn(conn);
--
--	return hdmi->bridge.encoder;
--}
--
--static const struct drm_connector_funcs mtk_hdmi_connector_funcs = {
--	.detect = hdmi_conn_detect,
--	.fill_modes = drm_helper_probe_single_connector_modes,
--	.destroy = hdmi_conn_destroy,
--	.reset = drm_atomic_helper_connector_reset,
--	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
--	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
--};
--
--static const struct drm_connector_helper_funcs
--		mtk_hdmi_connector_helper_funcs = {
--	.get_modes = mtk_hdmi_conn_get_modes,
--	.mode_valid = mtk_hdmi_conn_mode_valid,
--	.best_encoder = mtk_hdmi_conn_best_enc,
--};
--
- static void mtk_hdmi_hpd_event(bool hpd, struct device *dev)
- {
- 	struct mtk_hdmi *hdmi = dev_get_drvdata(dev);
- 
--	if (hdmi && hdmi->bridge.encoder && hdmi->bridge.encoder->dev)
-+	if (hdmi && hdmi->bridge.encoder && hdmi->bridge.encoder->dev) {
-+		static enum drm_connector_status status;
-+
-+		status = mtk_hdmi_detect(hdmi);
- 		drm_helper_hpd_irq_event(hdmi->bridge.encoder->dev);
-+		drm_bridge_hpd_notify(&hdmi->bridge, status);
-+	}
- }
- 
- /*
-  * Bridge callbacks
-  */
- 
-+static enum drm_connector_status mtk_hdmi_bridge_detect(struct drm_bridge *bridge)
-+{
-+	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-+
-+	return mtk_hdmi_detect(hdmi);
-+}
-+
-+static struct edid *mtk_hdmi_bridge_get_edid(struct drm_bridge *bridge,
-+					     struct drm_connector *connector)
-+{
-+	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
-+
-+	return mtk_hdmi_get_edid(hdmi, connector);
-+}
-+
- static int mtk_hdmi_bridge_attach(struct drm_bridge *bridge,
- 				  enum drm_bridge_attach_flags flags)
- {
- 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
- 	int ret;
- 
--	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) {
--		DRM_ERROR("Fix bridge driver to make connector optional!");
-+	if (!(flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR)) {
-+		DRM_ERROR("%s: The flag DRM_BRIDGE_ATTACH_NO_CONNECTOR must be supplied\n",
-+			  __func__);
- 		return -EINVAL;
- 	}
- 
--	ret = drm_connector_init_with_ddc(bridge->encoder->dev, &hdmi->conn,
--					  &mtk_hdmi_connector_funcs,
--					  DRM_MODE_CONNECTOR_HDMIA,
--					  hdmi->ddc_adpt);
--	if (ret) {
--		dev_err(hdmi->dev, "Failed to initialize connector: %d\n", ret);
--		return ret;
--	}
--	drm_connector_helper_add(&hdmi->conn, &mtk_hdmi_connector_helper_funcs);
--
--	hdmi->conn.polled = DRM_CONNECTOR_POLL_HPD;
--	hdmi->conn.interlace_allowed = true;
--	hdmi->conn.doublescan_allowed = false;
--
--	ret = drm_connector_attach_encoder(&hdmi->conn,
--						bridge->encoder);
--	if (ret) {
--		dev_err(hdmi->dev,
--			"Failed to attach connector to encoder: %d\n", ret);
--		return ret;
--	}
--
- 	if (hdmi->next_bridge) {
- 		ret = drm_bridge_attach(bridge->encoder, hdmi->next_bridge,
- 					bridge, flags);
-@@ -1444,6 +1397,7 @@ static void mtk_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
- }
- 
- static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
-+	.mode_valid = mtk_hdmi_bridge_mode_valid,
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
- 	.atomic_reset = drm_atomic_helper_bridge_reset,
-@@ -1454,6 +1408,8 @@ static const struct drm_bridge_funcs mtk_hdmi_bridge_funcs = {
- 	.mode_set = mtk_hdmi_bridge_mode_set,
- 	.atomic_pre_enable = mtk_hdmi_bridge_atomic_pre_enable,
- 	.atomic_enable = mtk_hdmi_bridge_atomic_enable,
-+	.detect = mtk_hdmi_bridge_detect,
-+	.get_edid = mtk_hdmi_bridge_get_edid,
- };
- 
- static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
-@@ -1762,6 +1718,9 @@ static int mtk_drm_hdmi_probe(struct platform_device *pdev)
- 
- 	hdmi->bridge.funcs = &mtk_hdmi_bridge_funcs;
- 	hdmi->bridge.of_node = pdev->dev.of_node;
-+	hdmi->bridge.ops = DRM_BRIDGE_OP_DETECT | DRM_BRIDGE_OP_EDID
-+			   | DRM_BRIDGE_OP_HPD;
-+	hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
- 	drm_bridge_add(&hdmi->bridge);
- 
- 	ret = mtk_hdmi_clk_enable_audio(hdmi);
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAwMi8wMy8yMDIxIDA4OjE2LCBHZW5lIENoZW4gd3JvdGU6Cj4gTGVlIEpvbmVzIDxsZWUu
+am9uZXNAbGluYXJvLm9yZz4g5pa8IDIwMjHlubQx5pyIMTXml6Ug6YCx5LqUIOS4i+WNiDM6MzLl
+r6vpgZPvvJoKPj4KPj4gT24gRnJpLCAxNSBKYW4gMjAyMSwgR2VuZSBDaGVuIHdyb3RlOgo+Pgo+
+Pj4gTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhpYXMuYmdnQGdtYWlsLmNvbT4g5pa8IDIwMjHlubQx
+5pyIMTLml6Ug6YCx5LqMIOS4i+WNiDg6MzLlr6vpgZPvvJoKPj4+Pgo+Pj4+Cj4+Pj4KPj4+PiBP
+biAxMi8xMS8yMDIwIDExOjM5LCBHZW5lIENoZW4gd3JvdGU6Cj4+Pj4+IEZyb206IEdlbmUgQ2hl
+biA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+Pj4+Pgo+Pj4+PiBDb21iaW5lIG10NjM2MCBwbWlj
+L2xkbyByZXNvdXJjZXMgaW50byBtdDYzNjAgcmVndWxhdG9yIHJlc291cmNlcwo+Pj4+PiB0byBz
+aW1wbGlmeSB0aGUgc2ltaWxhciByZXNvdXJjZXMgb2JqZWN0Lgo+Pj4+Pgo+Pj4+PiBTaWduZWQt
+b2ZmLWJ5OiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPj4+Pj4gQWNrZWQtZm9y
+LU1GRC1ieTogTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4KPj4+Pj4gLS0tCj4+Pj4+
+ICBkcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jIHwgMTEgKysrLS0tLS0tLS0KPj4+Pj4gIDEgZmls
+ZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCj4+Pj4+Cj4+Pj4+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jIGIvZHJpdmVycy9tZmQvbXQ2MzYw
+LWNvcmUuYwo+Pj4+PiBpbmRleCA2OTJlNDdiLi41MTE5ZTUxIDEwMDY0NAo+Pj4+PiAtLS0gYS9k
+cml2ZXJzL21mZC9tdDYzNjAtY29yZS5jCj4+Pj4+ICsrKyBiL2RyaXZlcnMvbWZkL210NjM2MC1j
+b3JlLmMKPj4+Pj4gQEAgLTI2NSw3ICsyNjUsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJlc291
+cmNlIG10NjM2MF9sZWRfcmVzb3VyY2VzW10gPSB7Cj4+Pj4+ICAgICAgIERFRklORV9SRVNfSVJR
+X05BTUVEKE1UNjM2MF9GTEVEMV9TVFJCX1RPX0VWVCwgImZsZWQxX3N0cmJfdG9fZXZ0IiksCj4+
+Pj4+ICB9Owo+Pj4+Pgo+Pj4+PiAtc3RhdGljIGNvbnN0IHN0cnVjdCByZXNvdXJjZSBtdDYzNjBf
+cG1pY19yZXNvdXJjZXNbXSA9IHsKPj4+Pj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgcmVzb3VyY2Ug
+bXQ2MzYwX3JlZ3VsYXRvcl9yZXNvdXJjZXNbXSA9IHsKPj4+Pj4gICAgICAgREVGSU5FX1JFU19J
+UlFfTkFNRUQoTVQ2MzYwX0JVQ0sxX1BHQl9FVlQsICJidWNrMV9wZ2JfZXZ0IiksCj4+Pj4+ICAg
+ICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9CVUNLMV9PQ19FVlQsICJidWNrMV9vY19l
+dnQiKSwKPj4+Pj4gICAgICAgREVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2MzYwX0JVQ0sxX09WX0VW
+VCwgImJ1Y2sxX292X2V2dCIpLAo+Pj4+PiBAQCAtMjc4LDkgKzI3OCw2IEBAIHN0YXRpYyBjb25z
+dCBzdHJ1Y3QgcmVzb3VyY2UgbXQ2MzYwX3BtaWNfcmVzb3VyY2VzW10gPSB7Cj4+Pj4+ICAgICAg
+IERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE83X09DX0VWVCwgImxkbzdfb2NfZXZ0Iiks
+Cj4+Pj4+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE82X1BHQl9FVlQsICJs
+ZG82X3BnYl9ldnQiKSwKPj4+Pj4gICAgICAgREVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2MzYwX0xE
+TzdfUEdCX0VWVCwgImxkbzdfcGdiX2V2dCIpLAo+Pj4+PiAtfTsKPj4+Pj4gLQo+Pj4+PiAtc3Rh
+dGljIGNvbnN0IHN0cnVjdCByZXNvdXJjZSBtdDYzNjBfbGRvX3Jlc291cmNlc1tdID0gewo+Pj4+
+PiAgICAgICBERUZJTkVfUkVTX0lSUV9OQU1FRChNVDYzNjBfTERPMV9PQ19FVlQsICJsZG8xX29j
+X2V2dCIpLAo+Pj4+PiAgICAgICBERUZJTkVfUkVTX0lSUV9OQU1FRChNVDYzNjBfTERPMl9PQ19F
+VlQsICJsZG8yX29jX2V2dCIpLAo+Pj4+PiAgICAgICBERUZJTkVfUkVTX0lSUV9OQU1FRChNVDYz
+NjBfTERPM19PQ19FVlQsICJsZG8zX29jX2V2dCIpLAo+Pj4+PiBAQCAtMjk4LDEwICsyOTUsOCBA
+QCBzdGF0aWMgY29uc3Qgc3RydWN0IG1mZF9jZWxsIG10NjM2MF9kZXZzW10gPSB7Cj4+Pj4+ICAg
+ICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtY2hnIiksCj4+Pj4+
+ICAgICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtbGVkIiwgbXQ2MzYwX2xlZF9yZXNvdXJjZXMsCj4+
+Pj4+ICAgICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtbGVkIiks
+Cj4+Pj4+IC0gICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtcG1pYyIsIG10NjM2MF9wbWljX3Jlc291
+cmNlcywKPj4+Pj4gLSAgICAgICAgICAgICAgICAgTlVMTCwgMCwgMCwgIm1lZGlhdGVrLG10NjM2
+MC1wbWljIiksCj4+Pj4+IC0gICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtbGRvIiwgbXQ2MzYwX2xk
+b19yZXNvdXJjZXMsCj4+Pj4+IC0gICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRl
+ayxtdDYzNjAtbGRvIiksCj4+Pj4+ICsgICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtcmVndWxhdG9y
+IiwgbXQ2MzYwX3JlZ3VsYXRvcl9yZXNvdXJjZXMsCj4+Pj4+ICsgICAgICAgICAgICAgICAgIE5V
+TEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtcmVndWxhdG9yIiksCj4+Pj4KPj4+PiBBcyBkaXNj
+dXNzZWQgd2l0aCB0aGUgTUZEIG1haW50YWluZXIgWzFdLCB0aGUgcmVndWxhdG9yIChhbmQgcHJv
+YmFibHkgYWxsIGNlbGxzKQo+Pj4+IHNob3VsZG4ndCBoYXZlIGEgRFQgYmluZGluZy4KPj4+Pgo+
+Pj4+IFNvIHBsZWFzZSBzZW5kIGEgbmV3IHZlcnNpb24gd2hpY2ggZml4ZXMgdGhhdC4KPj4+Pgo+
+Pj4+IFJlZ2FyZHMsCj4+Pj4gTWF0dGhpYXMKPj4+Pgo+Pj4+IFsxXSBodHRwczovL2xvcmUua2Vy
+bmVsLm9yZy9saW51eC1tZWRpYXRlay8yMDIxMDExMTE2NDExOC5HRTQ3MjhAc2lyZW5hLm9yZy51
+ay8KPj4KPj4gSSBkb24ndCB0aGluayBNYXJrIGlzIGNvcnJlY3QgaGVyZS4KPj4KPj4gV2UgdXN1
+YWxseSBkbyBpbXBsZW1lbnQgY29tcGF0aWJsZSBzdHJpbmdzIGZvciBzdWItZGV2aWNlcyBhbmQg
+dGhleSBkbwo+PiB0ZW5kIHRvIGhhdmUgdGhlaXIgb3duIGRldmljZSBub2Rlcy4KPj4KPj4gSXQn
+cyBhIHZlcnkgbG9uZyB0aW1lIGFnbyBzaW5jZSBJIGNvZGVkIHRoaXMgdXAgbXlzZWxmLCBidXQg
+ZnJvbQo+PiBtZW1vcnksIHlvdSBjYW4ndCBoYXZlIDIgZGV2aWNlcyBzaGFyZSBhIGNvbXBhdGli
+bGUgc3RyaW5nLgo+Pgo+IAo+IEVpdGhlciBNYXJrIG9yIExlZSBzdWdnZXN0aW9uIGlzIHdvcmsu
+Cj4gSXMgdGhlcmUgYSBjb25jbHVzaW9uIHRoYXQgd2UgY2FuIGFwcGx5IGl0Pwo+IElmIE1GRCBp
+cyBhbHJlYWR5IHN1cHBvcnRlZCBvZl9jb21wYXRpYmxlLCB3ZSBwcmVmZXIgdXNlIG9mX2NvbXBh
+dGlibGUgbWFwcGluZy4KPiAKCkZvciByZWd1bGF0b3Igb24gUE1JQyB5b3Ugc2hvdWxkIGFkZCB0
+aGUgcmVndWxhdG9yIHRvIHRoZSBwbWljIG5vZGUgZGlyZWN0bHkuClBsZWFzZSBzZWUgdGhlIHNl
+cmllcyBmcm9tIEhzaW4tSHNpdW5nIGZvciByZWZlcmVjZToKaHR0cHM6Ly9sb3JlLmtlcm5lbC5v
+cmcvbGludXgtbWVkaWF0ZWsvMTYxNTgyOTc1Ny0zMjIzLTYtZ2l0LXNlbmQtZW1haWwtaHNpbi1o
+c2l1bmcud2FuZ0BtZWRpYXRlay5jb20vVC8jdQoKUmVnYXJkcywKTWF0dGhpYXMKCj4+PiBTaG91
+bGQgSSB1c2UgcGFyZW50J3MgZGV2aWNlIHRvIGZpbmQgc3ViLWRldmljZXMgb2Zfbm9kZSBpZiB3
+aXRob3V0Cj4+PiBjb21wYXRpYmxlIG5hbWU/Cj4+PiBJIHRyYWNlIHRoZSBmdW5jdGlvbiBtZmRf
+YWRkX2RldmljZSwKPj4+Cj4+PiBpZiAoSVNfRU5BQkxFRChDT05GSUdfT0YpICYmIHBhcmVudC0+
+b2Zfbm9kZSAmJiBjZWxsLT5vZl9jb21wYXRpYmxlKSB7Cj4+PiAgICAgLi4uLi4KPj4+ICAgICBy
+ZXQgPSBtZmRfbWF0Y2hfb2Zfbm9kZV90b19kZXYocGRldiwgbnAsIGNlbGwpOwo+Pj4gICAgIC4u
+Li4uCj4+PiB9Cj4+Pgo+Pj4gd2hpY2ggaXMgYmluZGluZyBtZmQgc3ViLWRldmljZSB3aXRoIGNv
+bXBhdGlibGUuIERvZXMgaXQgYmUgcmVtb3ZlZCBpbgo+Pj4gdGhlIGZlYXR1cmU/Cj4+Pgo+Pj4+
+PiAgICAgICBPRl9NRkRfQ0VMTCgibXQ2MzYwLXRjcGMiLCBOVUxMLAo+Pj4+PiAgICAgICAgICAg
+ICAgICAgICBOVUxMLCAwLCAwLCAibWVkaWF0ZWssbXQ2MzYwLXRjcGMiKSwKPj4+Pj4gIH07Cj4+
+Pj4+Cj4+Cj4+IC0tCj4+IExlZSBKb25lcyBb5p2O55C85pavXQo+PiBTZW5pb3IgVGVjaG5pY2Fs
+IExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKPj4gTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ug
+c29mdHdhcmUgZm9yIEFybSBTb0NzCj4+IEZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRl
+ciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+bWVkaWF0ZWsK
