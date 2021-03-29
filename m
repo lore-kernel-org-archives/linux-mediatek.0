@@ -2,86 +2,94 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD6CFC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D65C5C433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:34 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0AD6761585
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0AD6761585
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4901A6191B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4901A6191B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:Subject:
+	From:References:Cc:To:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LdF7INUO2FwYOHeDW1/ksbubGq/GTAfIkMmPrGt75zg=; b=d08RmV+ADw5B6w8QR6EU/H4K4
-	yOu3CF6x05ClD7VfAtL/pYeM2wEJmHyAWOw9kUV/kAVZjpo1o1OlA2VYYH7VHitM/GpWmOI7nQ0tI
-	3D3GL81T9x9up9iTuWl/RyRBp3t3xUlao8aQLvzBbi9tze9sT5uo/eXOqa0B8vtFWsNFXurP80Ece
-	zmbx8cEklbNa4tH/LJGT9hh6wEsj9/HEH7l0h/43trjAuEwyaNE/5uaCAxujR6+FP19zARFhv1o+N
-	c32IE2dmL9e0pxoSwL6TCR0+wqzHrpOcd9msG2EuPbTD5brmH2Y88Fr0UB/AEIlD3jr3x5iDmwT8T
-	XiCBM882g==;
+	 bh=FfEYhd+rIcnQ+1hdqHK0IJyctJMEi88lku0JioHaFRc=; b=K/Lkhqi5YJYwzuotrQ2dDrWkh
+	sl1/8AUIFa/S5Aa6wPmshIP7hlIYMb35UdG/1Xq+nYNDhaZS5KeHdQT861+ChgQgNCNtLsf65vSHS
+	fsWtvmL9nVOBmph5usEm4haZj6L3wMFMdeoxOoOTUt7LhojYGT5q1IHl6PGz7pUFnDEjJSYa0UUCq
+	riF8u4SaQWF+zE9PZqEZamzFsLFdszrJvTJ3e8m6wP88k9uUbs3796dhLC2L8zPMTE03RFfT0VfYs
+	Y/MUF95N8NO6MrmrKfsgqROqSbRkVKcQnQ2aRhy0qzwWxoUsO3W08bmrJgdtL5B+hteTwR08DZnkF
+	b/6WiFMcQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQx5f-0019KQ-OH; Mon, 29 Mar 2021 18:58:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lQx6b-0019U1-Vb; Mon, 29 Mar 2021 18:59:18 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQpqL-000bjX-Hq; Mon, 29 Mar 2021 11:14:04 +0000
-X-UUID: 80131bfcc5304d75a03c32441e2856b1-20210329
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=hFgBU9yLcCHCyobJXrDH3btoHx/jN6JEEmH0JPSgREg=; 
- b=WX22oSxft0GZSjICExjKyLPIqxBoMTb6ZM4T8tJN4gcvQjLgM3Rq4ZHz6f4KYNX7MXOW7RfRxvTbJKnZ8SP2fQZAk2jaaoWYTCTaIR3pFjFwhw/CQFaKOdtmDweMMnu5fUy834uaPeAWiUdN0bnZWBFKrkHWaWdwuUAY6pKXsJw=;
-X-UUID: 80131bfcc5304d75a03c32441e2856b1-20210329
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 543468387; Mon, 29 Mar 2021 03:13:52 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Mar 2021 04:13:50 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Mar 2021 19:13:49 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 29 Mar 2021 19:13:49 +0800
-Message-ID: <1617016429.8590.3.camel@mtksdaap41>
-Subject: Re: [PATCH v6 4/8] dt-bindings: regulator: Add document for MT6359
- regulator
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Lee Jones <lee.jones@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown
- <broonie@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, Sean Wang
- <sean.wang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>, "Alexandre
- Belloni" <alexandre.belloni@bootlin.com>, Nicolas Boichat
- <drinkcat@chromium.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, Fei Shao
- <fshao@chromium.org>, Ran Bi <ran.bi@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-rtc@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 29 Mar 2021 19:13:49 +0800
-In-Reply-To: <20210316212802.GA3670080@robh.at.kernel.org>
-References: <1615829757-3223-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1615829757-3223-5-git-send-email-hsin-hsiung.wang@mediatek.com>
- <20210316212802.GA3670080@robh.at.kernel.org>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lQpsS-000c2v-3G; Mon, 29 Mar 2021 11:16:14 +0000
+Received: by mail-wr1-x431.google.com with SMTP id x16so12429177wrn.4;
+ Mon, 29 Mar 2021 04:16:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:references:from:subject:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=AQihHYniNz1aK+Mb8EzSQ8aiiXXwcD1vtx1NnSetokE=;
+ b=CpmgBmJTBo1YRy8aVHbKgJorBDX0zR9pdgZxVHXQ+qkn0qykejsNdfBbA6JbTEICqT
+ tLelFsTDcjW0hZJ/HVvqu0xfMXOGVKqejISgBvD91ucwvjh/WAEQ3aMmbLun4ruNZBhU
+ InU4lTzZn8+I+LXrZiuwqYdLcujwlP/Q5RsdSWCsW4kqoVFXf+PL1RKp7mAKipHNmghw
+ OWO1BG/nJKx17+Sn7OQ2PdpC6mfaUt7kSB7eo0Ws1n2z9TFDPTqWQlvpXrPVV1cquZyf
+ B9rYsBncNE+qvyQH8gqP2GI5Y8Ad5/lofcaQpf3ShcTGV4GRCn63XkjUwf/ns8tvNl/8
+ 0Gjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=AQihHYniNz1aK+Mb8EzSQ8aiiXXwcD1vtx1NnSetokE=;
+ b=GRIaA7RD6Z2JSqkcW0dR5tXl9xqVW0xmqi8MvczfkUq0J5cSfTfRAgtDmu1C0xfnBl
+ wHo2Xskd3uGqpuOOwJb+2VCQB11+Ub7IMXLgY5CGH2w/6oPxjTO1L9zgCV1E6REeNu7A
+ NfEQWdF5T+/DJMqf54WJ5HY9mNFz5lsCUz2W1EJpi2y20VgYkLR4qF4z1FOaZQx5TQao
+ EGY/v+KPnhAYNjw39GFnnO9d154QgVSEiLsIJeXFI/M1KcY9GedgPYcC7A8kBEDqhmJK
+ OUs6XRc640ryyz/NMjGhiZaNJNNs/8/AhOqh84ljnOGNQNdnEQ/fZ/FA/xqOpepAImtx
+ mjJA==
+X-Gm-Message-State: AOAM532vMY9aoN3Mmn8+1bFuBnHk3FsLq8Kgo893F6tm/39mXYrhtCde
+ fWIUwIsx1S4acpDNOUx46qQ=
+X-Google-Smtp-Source: ABdhPJyxrHLcyVXpNXt4YFxuMZbcgowEBv/kwVAPs8P474s8n5AkInLUjIAR5NIAdEcj6/dIWnnAOg==
+X-Received: by 2002:a05:6000:120f:: with SMTP id
+ e15mr26989126wrx.129.1617016570758; 
+ Mon, 29 Mar 2021 04:16:10 -0700 (PDT)
+Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
+ [80.174.240.175])
+ by smtp.gmail.com with ESMTPSA id t8sm30105786wrr.10.2021.03.29.04.16.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 29 Mar 2021 04:16:10 -0700 (PDT)
+To: Nina Wu <nina-cm.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>
+Cc: Zhen Lei <thunder.leizhen@huawei.com>, Neal Liu <neal.liu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, Jackson-kt.Chang@mediatek.com
+References: <1616743871-8087-1-git-send-email-nina-cm.wu@mediatek.com>
+ <1616743871-8087-2-git-send-email-nina-cm.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 2/2] soc: mediatek: Add mt8192 devapc driver
+Message-ID: <365d12f3-3553-f560-2418-7f0ab764a81a@gmail.com>
+Date: Mon, 29 Mar 2021 13:16:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1616743871-8087-2-git-send-email-nina-cm.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_121402_162197_08B9A89D 
-X-CRM114-Status: GOOD (  26.74  )
+X-CRM114-CacheID: sfid-20210329_121612_234365_DE39E01B 
+X-CRM114-Status: GOOD (  36.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,227 +106,420 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+As a general comment:
 
-On Tue, 2021-03-16 at 15:28 -0600, Rob Herring wrote:
-> On Tue, Mar 16, 2021 at 01:35:53AM +0800, Hsin-Hsiung Wang wrote:
-> > add dt-binding document for MediaTek MT6359 PMIC
-> > 
-> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > ---
-> > changes since v5:
-> > - no change.
-> > ---
-> >  .../bindings/regulator/mt6359-regulator.yaml  | 169 ++++++++++++++++++
-> >  1 file changed, 169 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-> > new file mode 100644
-> > index 000000000000..62ff93eefd39
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/regulator/mt6359-regulator.yaml
-> > @@ -0,0 +1,169 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/regulator/mt6359-regulator.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MT6359 Regulator from MediaTek Integrated
-> > +
-> > +maintainers:
-> > +  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> > +
-> > +description: |
-> > +  List of regulators provided by this controller. It is named
-> > +  according to its regulator type, buck_<name> and ldo_<name>.
-> > +  MT6359 regulators node should be sub node of the MT6397 MFD node.
-> > +
-> > +properties:
-> > +  $nodename:
-> > +    pattern: "^pmic$"
-> 
-> The errors are because this schema will be applied to every 'pmic' node.
-> 
-> > +
-> > +  mt6359regulator:
-> 
-> The node name here should be just 'regulators', but that should be in 
-> the MFD schema and you should remove this level here. So the MFD would 
-> have:
-> 
-> properties:
->   regulators:
->     type: object
->     $ref: schemas/regulator/mt6359-regulator.yaml#
-> 
-> > +    type: object
-> > +    description:
-> > +      list of regulators provided by this controller.
-> > +
-> > +    patternProperties:
-> 
-> And this should be at the top level of this doc.
-> 
-> > +      "^buck_v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^v(s1|gpu11|modem|pu|core|s2|pa|proc2|proc1|core_sshub)$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_v(ibr|rf12|usb|camio|efuse|xo22)$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^v(ibr|rf12|usb|camio|efuse|xo22)$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_v(rfck|emc|a12|a09|ufs|bbck)$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^v(rfck|emc|a12|a09|ufs|bbck)$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^vcn(18|13|33_1_bt|13_1_wifi|33_2_bt|33_2_wifi)$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_vsram_(proc2|others|md|proc1|others_sshub)$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^vsram_(proc2|others|md|proc1|others_sshub)$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_v(fe|bif|io)28$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^v(fe|bif|io)28$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_v(aud|io|aux|rf|m)18$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^v(aud|io|aux|rf|m)18$"
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +      "^ldo_vsim[12]$":
-> > +        type: object
-> > +        $ref: "regulator.yaml#"
-> > +
-> > +        properties:
-> > +          regulator-name:
-> > +            pattern: "^vsim[12]$"
-> > +
-> > +        required:
-> > +          - regulator-name
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    pmic {
-> > +      mt6359regulator {
-> 
-> I prefer to see a single complete example in the MFD schema rather than 
-> piecemeal schemas in each sub schema.
-> 
+Please split your patch in several, one introducing changes to the existing code
+base which are needed for newer SoCs (depending on the changes more then one)
+and one which actually adds support for the new SoC.
 
-Thanks for your comment.
-However, MT6397 mfd driver supports several mediatek pmics which have
-different regulator capability, so it is hard to list all regulators of
-each pmic in the MFD schema.
+More comments below.
 
-Thanks.
 
-> > +        mt6359_vgpu11_buck_reg: buck_vgpu11 {
-> > +          regulator-name = "vgpu11";
-> > +          regulator-min-microvolt = <400000>;
-> > +          regulator-max-microvolt = <1193750>;
-> > +          regulator-enable-ramp-delay = <200>;
-> > +          regulator-always-on;
-> > +          regulator-allowed-modes = <0 1 2>;
-> > +        };
-> > +
-> > +        mt6359_vcamio_ldo_reg: ldo_vcamio {
-> > +          regulator-name = "vcamio";
-> > +          regulator-min-microvolt = <1700000>;
-> > +          regulator-max-microvolt = <1900000>;
-> > +        };
-> > +
-> > +        mt6359_vcn18_ldo_reg: ldo_vcn18 {
-> > +          regulator-name = "vcn18";
-> > +          regulator-min-microvolt = <1800000>;
-> > +          regulator-max-microvolt = <1800000>;
-> > +          regulator-enable-ramp-delay = <240>;
-> > +        };
-> > +
-> > +        mt6359_vsram_proc2_ldo_reg: ldo_vsram_proc2 {
-> > +          regulator-name = "vsram_proc2";
-> > +          regulator-min-microvolt = <500000>;
-> > +          regulator-max-microvolt = <1293750>;
-> > +          regulator-ramp-delay = <7500>;
-> > +          regulator-enable-ramp-delay = <240>;
-> > +          regulator-always-on;
-> > +        };
-> > +
-> > +        mt6359_vfe28_ldo_reg: ldo_vfe28 {
-> > +          regulator-name = "vfe28";
-> > +          regulator-min-microvolt = <2800000>;
-> > +          regulator-max-microvolt = <2800000>;
-> > +          regulator-enable-ramp-delay = <120>;
-> > +        };
-> > +
-> > +        mt6359_vaud18_ldo_reg: ldo_vaud18 {
-> > +          regulator-name = "vaud18";
-> > +          regulator-min-microvolt = <1800000>;
-> > +          regulator-max-microvolt = <1800000>;
-> > +          regulator-enable-ramp-delay = <240>;
-> > +        };
-> > +
-> > +        mt6359_vsim1_ldo_reg: ldo_vsim1 {
-> > +          regulator-name = "vsim1";
-> > +          regulator-min-microvolt = <1700000>;
-> > +          regulator-max-microvolt = <3100000>;
-> > +          regulator-enable-ramp-delay = <480>;
-> > +        };
-> > +      };
-> > +    };
-> > +...
-> > -- 
-> > 2.18.0
-> > 
+On 26/03/2021 08:31, Nina Wu wrote:
+> From: Nina Wu <Nina-CM.Wu@mediatek.com>
+> 
+> The hardware architecture of mt8192 devapc is slightly
+> different from that of the previous IC.
+> We add necessary extensions to support mt8192 and be
+> back-compatible with other ICs.
+> 
+> Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
+> ---
+>  drivers/soc/mediatek/mtk-devapc.c | 213 ++++++++++++++++++++++++++++----------
+>  1 file changed, 156 insertions(+), 57 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+> index f1cea04..1e40a52 100644
+> --- a/drivers/soc/mediatek/mtk-devapc.c
+> +++ b/drivers/soc/mediatek/mtk-devapc.c
+> @@ -15,6 +15,11 @@
+>  #define VIO_MOD_TO_REG_IND(m)	((m) / 32)
+>  #define VIO_MOD_TO_REG_OFF(m)	((m) % 32)
+>  
+> +#define FOR_EACH_SLAVE_TYPE(ctx, idx) \
+> +	for ((idx) = 0; (idx) < (ctx)->slave_type_num; (idx)++)
+
+Not really needed, please drop.
+
+> +#define BASE(i)			(ctx->base_list[i])
+
+same here.
+
+> +#define VIO_IDX_NUM(i)		(ctx->vio_idx_num[i])
+
+same here.
+
+> +
+>  struct mtk_devapc_vio_dbgs {
+>  	union {
+>  		u32 vio_dbg0;
+> @@ -26,20 +31,28 @@ struct mtk_devapc_vio_dbgs {
+>  			u32 addr_h:4;
+>  			u32 resv:4;
+>  		} dbg0_bits;
+> +
+> +		/* Not used, reference only */
+> +		struct {
+> +			u32 dmnid:6;
+> +			u32 vio_w:1;
+> +			u32 vio_r:1;
+> +			u32 addr_h:4;
+> +			u32 resv:20;
+> +		} dbg0_bits_ver2;
+>  	};
+>  
+>  	u32 vio_dbg1;
+> +	u32 vio_dbg2;
+>  };
+>  
+>  struct mtk_devapc_data {
+> -	/* numbers of violation index */
+> -	u32 vio_idx_num;
+> -
+>  	/* reg offset */
+>  	u32 vio_mask_offset;
+>  	u32 vio_sta_offset;
+>  	u32 vio_dbg0_offset;
+>  	u32 vio_dbg1_offset;
+> +	u32 vio_dbg2_offset;
+>  	u32 apc_con_offset;
+>  	u32 vio_shift_sta_offset;
+>  	u32 vio_shift_sel_offset;
+> @@ -48,7 +61,10 @@ struct mtk_devapc_data {
+>  
+>  struct mtk_devapc_context {
+>  	struct device *dev;
+> -	void __iomem *infra_base;
+> +	u32 arch_ver;
+> +	u32 slave_type_num;
+> +	void __iomem **base_list;
+> +	u32 *vio_idx_num;
+>  	struct clk *infra_clk;
+>  	const struct mtk_devapc_data *data;
+>  };
+> @@ -56,39 +72,39 @@ struct mtk_devapc_context {
+>  static void clear_vio_status(struct mtk_devapc_context *ctx)
+>  {
+>  	void __iomem *reg;
+> -	int i;
+> +	int i, j;
+>  
+> -	reg = ctx->infra_base + ctx->data->vio_sta_offset;
+> +	FOR_EACH_SLAVE_TYPE(ctx, i) {
+> +		reg = BASE(i) + ctx->data->vio_sta_offset;
+>  
+> -	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num) - 1; i++)
+> -		writel(GENMASK(31, 0), reg + 4 * i);
+> +		for (j = 0; j < VIO_MOD_TO_REG_IND(VIO_IDX_NUM(i) - 1); j++)
+> +			writel(GENMASK(31, 0), reg + 4 * j);
+> +
+> +		writel(GENMASK(VIO_MOD_TO_REG_OFF(VIO_IDX_NUM(i) - 1), 0),
+> +		       reg + 4 * j);
+> +	}
+>  
+> -	writel(GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1, 0),
+> -	       reg + 4 * i);
+>  }
+>  
+> -static void mask_module_irq(struct mtk_devapc_context *ctx, bool mask)
+> +static void mask_module_irq(void __iomem *reg, int vio_idx_num, bool mask)
+>  {
+> -	void __iomem *reg;
+>  	u32 val;
+>  	int i;
+>  
+> -	reg = ctx->infra_base + ctx->data->vio_mask_offset;
+> -
+>  	if (mask)
+>  		val = GENMASK(31, 0);
+>  	else
+>  		val = 0;
+>  
+> -	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num) - 1; i++)
+> +	for (i = 0; i < VIO_MOD_TO_REG_IND(vio_idx_num - 1); i++)
+>  		writel(val, reg + 4 * i);
+>  
+>  	val = readl(reg + 4 * i);
+>  	if (mask)
+> -		val |= GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1,
+> +		val |= GENMASK(VIO_MOD_TO_REG_OFF(vio_idx_num - 1),
+>  			       0);
+>  	else
+> -		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1,
+> +		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(vio_idx_num - 1),
+>  				0);
+>  
+>  	writel(val, reg + 4 * i);
+> @@ -108,6 +124,8 @@ static void mask_module_irq(struct mtk_devapc_context *ctx, bool mask)
+>   */
+>  static int devapc_sync_vio_dbg(struct mtk_devapc_context *ctx)
+>  {
+> +	int i;
+> +	void __iomem *reg_base;
+
+Not needed.
+
+>  	void __iomem *pd_vio_shift_sta_reg;
+>  	void __iomem *pd_vio_shift_sel_reg;
+>  	void __iomem *pd_vio_shift_con_reg;
+> @@ -115,57 +133,87 @@ static int devapc_sync_vio_dbg(struct mtk_devapc_context *ctx)
+>  	int ret;
+>  	u32 val;
+>  
+> -	pd_vio_shift_sta_reg = ctx->infra_base +
+> -			       ctx->data->vio_shift_sta_offset;
+> -	pd_vio_shift_sel_reg = ctx->infra_base +
+> -			       ctx->data->vio_shift_sel_offset;
+> -	pd_vio_shift_con_reg = ctx->infra_base +
+> -			       ctx->data->vio_shift_con_offset;
+> +	FOR_EACH_SLAVE_TYPE(ctx, i) {
+> +		reg_base = BASE(i);
+>  
+> -	/* Find the minimum shift group which has violation */
+> -	val = readl(pd_vio_shift_sta_reg);
+> -	if (!val)
+> -		return false;
+> +		pd_vio_shift_sta_reg = reg_base +
+> +				       ctx->data->vio_shift_sta_offset;
+> +		pd_vio_shift_sel_reg = reg_base +
+> +				       ctx->data->vio_shift_sel_offset;
+> +		pd_vio_shift_con_reg = reg_base +
+> +				       ctx->data->vio_shift_con_offset;
+>  
+> -	min_shift_group = __ffs(val);
+> +		/* Find the minimum shift group which has violation */
+> +		val = readl(pd_vio_shift_sta_reg);
+> +		if (!val)
+> +			continue;
+>  
+> -	/* Assign the group to sync */
+> -	writel(0x1 << min_shift_group, pd_vio_shift_sel_reg);
+> +		min_shift_group = __ffs(val);
+>  
+> -	/* Start syncing */
+> -	writel(0x1, pd_vio_shift_con_reg);
+> +		/* Assign the group to sync */
+> +		writel(0x1 << min_shift_group, pd_vio_shift_sel_reg);
+>  
+> -	ret = readl_poll_timeout(pd_vio_shift_con_reg, val, val == 0x3, 0,
+> -				 PHY_DEVAPC_TIMEOUT);
+> -	if (ret) {
+> -		dev_err(ctx->dev, "%s: Shift violation info failed\n", __func__);
+> -		return false;
+> -	}
+> +		/* Start syncing */
+> +		writel(0x1, pd_vio_shift_con_reg);
+> +
+> +		ret = readl_poll_timeout(pd_vio_shift_con_reg, val, val == 0x3,
+> +					 0, PHY_DEVAPC_TIMEOUT);
+> +		if (ret) {
+> +			dev_err(ctx->dev, "%s: Shift violation info failed\n",
+> +				__func__);
+> +			return -ETIMEDOUT;
+> +		}
+>  
+> -	/* Stop syncing */
+> -	writel(0x0, pd_vio_shift_con_reg);
+> +		/* Stop syncing */
+> +		writel(0x0, pd_vio_shift_con_reg);
+>  
+> -	/* Write clear */
+> -	writel(0x1 << min_shift_group, pd_vio_shift_sta_reg);
+> +		/* Write clear */
+> +		writel(0x1 << min_shift_group, pd_vio_shift_sta_reg);
+>  
+> -	return true;
+> +		return i;
+
+Not sure why you change that.
+
+> +	}
+> +
+> +	/* No violation found */
+> +	return -ENODATA;
+>  }
+>  
+>  /*
+>   * devapc_extract_vio_dbg - extract full violation information after doing
+>   *                          shift mechanism.
+>   */
+> -static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
+> +static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx,
+> +				   int vio_slave_type)
+>  {
+>  	struct mtk_devapc_vio_dbgs vio_dbgs;
+>  	void __iomem *vio_dbg0_reg;
+>  	void __iomem *vio_dbg1_reg;
+> +	void __iomem *vio_dbg2_reg;
+> +	u32 vio_addr, bus_id;
+>  
+> -	vio_dbg0_reg = ctx->infra_base + ctx->data->vio_dbg0_offset;
+> -	vio_dbg1_reg = ctx->infra_base + ctx->data->vio_dbg1_offset;
+> +	vio_dbg0_reg = BASE(vio_slave_type) + ctx->data->vio_dbg0_offset;
+> +	vio_dbg1_reg = BASE(vio_slave_type) + ctx->data->vio_dbg1_offset;
+> +	vio_dbg2_reg = BASE(vio_slave_type) + ctx->data->vio_dbg2_offset;
+>  
+>  	vio_dbgs.vio_dbg0 = readl(vio_dbg0_reg);
+>  	vio_dbgs.vio_dbg1 = readl(vio_dbg1_reg);
+> +	vio_dbgs.vio_dbg2 = readl(vio_dbg2_reg);
+> +
+> +	switch (ctx->arch_ver) {
+> +	case 1:
+> +		bus_id = vio_dbgs.dbg0_bits.mstid;
+> +		vio_addr = vio_dbgs.vio_dbg1;
+> +		break;
+> +	case 2:
+> +		bus_id = vio_dbgs.vio_dbg1;
+> +		vio_addr = vio_dbgs.vio_dbg2;
+> +
+> +		/* To align with the bit definition of arch_ver 1 */
+> +		vio_dbgs.vio_dbg0 = (vio_dbgs.vio_dbg0 << 16);
+> +		break;
+> +	default:
+> +		/* Not Supported */
+> +		return;
+> +	}
+>  
+>  	/* Print violation information */
+>  	if (vio_dbgs.dbg0_bits.vio_w)
+> @@ -174,8 +222,7 @@ static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
+>  		dev_info(ctx->dev, "Read Violation\n");
+>  
+>  	dev_info(ctx->dev, "Bus ID:0x%x, Dom ID:0x%x, Vio Addr:0x%x\n",
+> -		 vio_dbgs.dbg0_bits.mstid, vio_dbgs.dbg0_bits.dmnid,
+> -		 vio_dbgs.vio_dbg1);
+> +		 bus_id, vio_dbgs.dbg0_bits.dmnid, vio_addr);
+>  }
+>  
+>  /*
+> @@ -186,9 +233,10 @@ static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
+>  static irqreturn_t devapc_violation_irq(int irq_number, void *data)
+>  {
+>  	struct mtk_devapc_context *ctx = data;
+> +	int vio_slave_type;
+>  
+> -	while (devapc_sync_vio_dbg(ctx))
+> -		devapc_extract_vio_dbg(ctx);
+> +	while ((vio_slave_type = devapc_sync_vio_dbg(ctx)) >= 0)
+> +		devapc_extract_vio_dbg(ctx, vio_slave_type);
+>  
+>  	clear_vio_status(ctx);
+>  
+> @@ -200,9 +248,15 @@ static irqreturn_t devapc_violation_irq(int irq_number, void *data)
+>   */
+>  static void start_devapc(struct mtk_devapc_context *ctx)
+>  {
+> -	writel(BIT(31), ctx->infra_base + ctx->data->apc_con_offset);
+> +	int i;
+> +	void __iomem *reg_base;
+>  
+> -	mask_module_irq(ctx, false);
+> +	FOR_EACH_SLAVE_TYPE(ctx, i) {
+> +		writel(BIT(31), BASE(i) + ctx->data->apc_con_offset);
+> +
+> +		reg_base = BASE(i) + ctx->data->vio_mask_offset;
+> +		mask_module_irq(reg_base, VIO_IDX_NUM(i), false);
+> +	}
+>  }
+>  
+>  /*
+> @@ -210,13 +264,18 @@ static void start_devapc(struct mtk_devapc_context *ctx)
+>   */
+>  static void stop_devapc(struct mtk_devapc_context *ctx)
+>  {
+> -	mask_module_irq(ctx, true);
+> +	int i;
+> +	void __iomem *reg_base;
+> +
+> +	FOR_EACH_SLAVE_TYPE(ctx, i) {
+> +		reg_base = BASE(i) + ctx->data->vio_mask_offset;
+> +		mask_module_irq(reg_base, VIO_IDX_NUM(i), true);
+>  
+> -	writel(BIT(2), ctx->infra_base + ctx->data->apc_con_offset);
+> +		writel(BIT(2), BASE(i) + ctx->data->apc_con_offset);
+> +	}
+>  }
+>  
+>  static const struct mtk_devapc_data devapc_mt6779 = {
+> -	.vio_idx_num = 511,
+>  	.vio_mask_offset = 0x0,
+>  	.vio_sta_offset = 0x400,
+>  	.vio_dbg0_offset = 0x900,
+> @@ -227,11 +286,26 @@ static const struct mtk_devapc_data devapc_mt6779 = {
+>  	.vio_shift_con_offset = 0xF20,
+>  };
+>  
+> +static const struct mtk_devapc_data devapc_mt8192 = {
+> +	.vio_mask_offset = 0x0,
+> +	.vio_sta_offset = 0x400,
+> +	.vio_dbg0_offset = 0x900,
+> +	.vio_dbg1_offset = 0x904,
+> +	.vio_dbg2_offset = 0x908,
+> +	.apc_con_offset = 0xF00,
+> +	.vio_shift_sta_offset = 0xF20,
+> +	.vio_shift_sel_offset = 0xF30,
+> +	.vio_shift_con_offset = 0xF10,
+> +};
+> +
+>  static const struct of_device_id mtk_devapc_dt_match[] = {
+>  	{
+>  		.compatible = "mediatek,mt6779-devapc",
+>  		.data = &devapc_mt6779,
+>  	}, {
+> +		.compatible = "mediatek,mt8192-devapc",
+> +		.data = &devapc_mt8192,
+> +	}, {
+>  	},
+>  };
+>  
+> @@ -239,6 +313,7 @@ static int mtk_devapc_probe(struct platform_device *pdev)
+>  {
+>  	struct device_node *node = pdev->dev.of_node;
+>  	struct mtk_devapc_context *ctx;
+> +	int i;
+>  	u32 devapc_irq;
+>  	int ret;
+>  
+> @@ -252,8 +327,32 @@ static int mtk_devapc_probe(struct platform_device *pdev)
+>  	ctx->data = of_device_get_match_data(&pdev->dev);
+>  	ctx->dev = &pdev->dev;
+>  
+> -	ctx->infra_base = of_iomap(node, 0);
+> -	if (!ctx->infra_base)
+> +	if (of_property_read_u32(node, "version", &ctx->arch_ver))
+> +		return -EINVAL;
+> +
+> +	if (of_property_read_u32(node, "slave_type_num", &ctx->slave_type_num))
+
+arch_ver and slave_type_num can be ddriver internal parameters set through the
+DT data instead of through a new property.
+
+> +		return -EINVAL;
+> +
+> +	ctx->base_list = devm_kzalloc(&pdev->dev,
+> +				      sizeof(void *) * ctx->slave_type_num,
+> +				      GFP_KERNEL);
+> +	if (!ctx->base_list)
+> +		return -ENOMEM;
+> +
+> +	FOR_EACH_SLAVE_TYPE(ctx, i) {
+> +		BASE(i) = of_iomap(node, i);
+> +		if (!BASE(i))
+> +			return -EINVAL;
+> +	}
+> +
+> +	ctx->vio_idx_num = devm_kzalloc(&pdev->dev,
+> +					sizeof(u32) * ctx->slave_type_num,
+> +					GFP_KERNEL);
+> +	if (!ctx->vio_idx_num)
+> +		return -ENOMEM;
+> +
+> +	if (of_property_read_u32_array(node, "vio_idx_num",
+> +				       ctx->vio_idx_num, ctx->slave_type_num))
+>  		return -EINVAL;
+>  
+>  	devapc_irq = irq_of_parse_and_map(node, 0);
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
