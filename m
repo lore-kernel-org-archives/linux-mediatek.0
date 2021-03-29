@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C5F2C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0803CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:36:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E20B7617C9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:36:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E20B7617C9
+	by mail.kernel.org (Postfix) with ESMTPS id A83E2617C9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:36:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A83E2617C9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,55 +24,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cNWhJ0Stc/N4+LqLZ9QzqQjJN0R05uHPTfZ5EMAGCKg=; b=cu8WHrzOS8P5AaBzYLjf19aWV
-	ABr33GTLEETsNeKMbLebwJFQou8dqWrM2SnNFUNU9lEv9zW3+2u4oTUtLcGWXN7DVZ2SF8/UWeVGf
-	D0TURZ+J05YJrxQZzKmMqmYk18SJ0f5Vk/PWaiVrvZqj5yg9wtg/mPJuDjdEOuZDMYOUXea0mKAhO
-	68bNSEa70ZECSUdRjTVRUl51AvPjti/G0NmMMAGC4DaRBqlAf2MVMSqX+bExoHO6sR0bCrUOs55VW
-	DFcnjA3FuPpBhNupOpBNoX++2E2oK6ON0ierBIBXT//jePhgQIkYR2ly8BKGbEtn9DhMiOzQhqeWw
-	yIyZeXLzg==;
+	 bh=ho7nSOrd5EXNjo8v1Smnt3NdUIdc+B7ZyGs5wLsp4+g=; b=TEezq+cwj0QT3vaunlQF0uzIo
+	dkCiW6l+cj6wNyzPC6FSuj6bjpGQw/3qOPBD2MiUHa+ciaj62YjXpoKY1074sngPEduk9NBeVrhIF
+	go2+jhM5DkGn2mLWz0hTcGo+kBA/AiUYdgtYBHf5N3qJc0rUjUCbgNlukY9CZqehVUqPKktudE4G7
+	r2ulDDLfgHLTTRUG5UuyL07s25htJfpzfxPctVzQvEdQ6c5jlbjVkxHRbyUCgqj7Lbp9nuVrQhNGN
+	uvl8u4VwbvKzBYD4oezHdOkjuLyS9xNUYLW+kWIxxKRIAlcHVqBB5FzkAJEPFtZIQKXDS+IiJgClV
+	izOfmk31g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR0U9-001hKw-R0; Mon, 29 Mar 2021 22:35:50 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1lR0UP-001hRo-Qc; Mon, 29 Mar 2021 22:36:06 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQsEF-000goa-0p; Mon, 29 Mar 2021 13:46:53 +0000
-Received: by mail-wr1-x433.google.com with SMTP id j9so11209040wrx.12;
- Mon, 29 Mar 2021 06:46:49 -0700 (PDT)
+ id 1lQsEO-000gpG-76; Mon, 29 Mar 2021 13:47:01 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id j7so12965072wrd.1;
+ Mon, 29 Mar 2021 06:47:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=VSdiOrRt5A5A6ik3jTpUtYldOZfvz8Pi38YucpFr6l8=;
- b=MCxyXVvcvdvVoXMVp3fxHBlxeNbm0IApsEt53rYdfT2KvWP0Fy3id135pTc+dZdIDX
- 6QFBnBke6LhWl4locC7ajLCVbNeUazqfvD9XrUawL/6kzf1V6XNjNAFSALC3tSpoX+kR
- KaR/AMntZT04YpyR7jX3BQ1+YuPpe+yebmmeIaZ9UsI67dSoXTQLk37WTCDQnhOYrN4d
- evwlIxgxwKu25DZsI2jtFL5GI4oUY/L0SEqeAs6Lk7ItE8f3sZt+MfZsD4ZAHomL6tPs
- H9y5KR/OkI47MRN93bfq3yW2kfx4kzR6usGKGrwuCtHV4Ss9EFHrsRBzPBhpM0xPNpX1
- +VEA==
+ bh=LQo2IHbDrnsvLwx9E49b4vmdluvz5ztdZ0USfGdznpw=;
+ b=hUH2tcrxar9RPvmx9tqIwFhRkLd9FYx4Q2uANYKC+xvb26EemiLSzxn08kH+GUKWcW
+ 9vyl3yVm8rAF2icwMClFF7/tHncCDp/MuSNXAdM0kHJYtO+AhrSSNJpmVYM6RlRuJr2a
+ O7N4EqXkwFkLn8taYWfkLSRKBy/vS/v1DnlqULZJxrPr+8kKRQV6QeO4pf5Dm6DgEYuQ
+ PZiTIX8+DB9xHxPFiUoTRmmcIWNIFqMiehQhVIyteOOUJs9/Xp2eKMiiEZP5D3b4DS/b
+ JBEjIgzi0SXwDYua7diw0IGCh2zJ51u5gfb50O3+AcH49U2qgO1Lk5zpgp8yRsINOQBV
+ L7ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=VSdiOrRt5A5A6ik3jTpUtYldOZfvz8Pi38YucpFr6l8=;
- b=ODSbKsjvrbBvBFJPCvmeE0pe1Jjk4EF3JK7ebk9AJrkRWA0wceuj9u9N5ee5Rznr+2
- vAENGZydqIgd3SaZq0Z2MDeW/R3v1wz+FXPyawnlqwfL31iesjyn2aT/Mi3aa6oMEqh5
- 2XkYCu6DlqH5DYw+Y9dt/FFLAHHRNMhPILxP32aLq8xw9TR3Geom7AHX8rG95gVDB0k8
- wTMh3yl01vL4ivbdY+BkfflpBON+SsoVOm5ocXKBzQnmQzTW1TKwEmRWNMpkOMpp6v/5
- e8aTRXDe/PE6Kgw2n7HjoXtHvFv8+9UFNwl9pqP7hHePBqYEJ7C5rPQ+8VItSBPijeXY
- Rx/A==
-X-Gm-Message-State: AOAM532P4AcmyTQxI5f5IqsYHU8Jt8daHvRWMnjVh6bNKNd/5HEBcUzM
- 3eOi7w09C1Hr1ScrNvCOn9s=
-X-Google-Smtp-Source: ABdhPJzGJUBfC8jn1gAhsDG4i4XVmBFR5fUJC6pZnEJYT0DqoJ040+EuDixRc4Y8BFCQ2QHGOqdung==
-X-Received: by 2002:a05:6000:1a8a:: with SMTP id
- f10mr27951844wry.232.1617025609329; 
- Mon, 29 Mar 2021 06:46:49 -0700 (PDT)
+ bh=LQo2IHbDrnsvLwx9E49b4vmdluvz5ztdZ0USfGdznpw=;
+ b=HQZ9JLjNgWbpL0JzTBRf0KGro8tGsdb7vZrAW4AktRs9HEtoPBugJ2/zyJZ5ebY/F1
+ EwsRw1KsiYAtYyPfbiUtAOmoEbzGR8sF2cQiMzFlCSEriJcKFUknafesnb+gKR8LHll3
+ 41v+uVgCP/g5bZ0grXq0ih024+4avajy40ejjAMBVuilqYREbawiLXUwzKg8k9MblO7Y
+ k4F5pXg0JjwXk+dFewv/uWjgEy3Vx1E6NKLXU3yykSnqMGvU4pDonrFvqTSwLTHIMUbs
+ v0c/PVAONToj/fUKbhIz0VjL8+rQG/N2wxgx3chEF5FzZRpsywO75FdqTez/mVGVDlf+
+ UrkQ==
+X-Gm-Message-State: AOAM5330TFXm+QN3igPAoCGbhAzywIV++cvc/Z7FsIguHIqq7OKEhn2o
+ 97+D1UBDaFqDVbBCl1XjscN6Fyf5QYDnKA==
+X-Google-Smtp-Source: ABdhPJysDSrMY/1qPw5vBQij0RgaU13OWCnbwhhrcG2Ij3e9ZtM+LI2TTKmj3RKJAuKWx8X8klEhaA==
+X-Received: by 2002:a5d:6542:: with SMTP id z2mr17102271wrv.205.1617025619676; 
+ Mon, 29 Mar 2021 06:46:59 -0700 (PDT)
 Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
  [80.174.240.175])
- by smtp.gmail.com with ESMTPSA id x14sm29409219wrw.13.2021.03.29.06.46.48
+ by smtp.gmail.com with ESMTPSA id b12sm31428854wrf.39.2021.03.29.06.46.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Mar 2021 06:46:48 -0700 (PDT)
-Subject: Re: [PATCH v5 07/13] arm64: dts: mediatek: mt2712: harmonize node
- names
+ Mon, 29 Mar 2021 06:46:59 -0700 (PDT)
+Subject: Re: [PATCH v5 08/13] arm64: dts: mediatek: mt8516: harmonize node
+ names and compatibles
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
  Rob Herring <robh+dt@kernel.org>
 Cc: Kishon Vijay Abraham I <kishon@ti.com>,
@@ -84,18 +83,18 @@ Cc: Kishon Vijay Abraham I <kishon@ti.com>,
  linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
  linux-usb@vger.kernel.org
 References: <20210316092232.9806-1-chunfeng.yun@mediatek.com>
- <20210316092232.9806-7-chunfeng.yun@mediatek.com>
+ <20210316092232.9806-8-chunfeng.yun@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <f4ab274f-3dd4-69f3-2bd3-cc786491bad8@gmail.com>
-Date: Mon, 29 Mar 2021 15:46:47 +0200
+Message-ID: <ff4ab27b-5a76-0597-780c-7b101e1b0963@gmail.com>
+Date: Mon, 29 Mar 2021 15:46:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210316092232.9806-7-chunfeng.yun@mediatek.com>
+In-Reply-To: <20210316092232.9806-8-chunfeng.yun@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_144651_384759_843DD431 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20210329_144700_403397_D1A9ADBC 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,7 +114,9 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 16/03/2021 10:22, Chunfeng Yun wrote:
-> This is used to fix dtbs_check warning.
+> This is used to fix dtbs_check warning:
+>   harmonize node names and compatibles;
+>   add property "usb-role-switch" for connector dependence.
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
@@ -124,49 +125,56 @@ Applied now to v5.12-next/dts64
 > ---
 > v2~v5: no changes
 > ---
->  arch/arm64/boot/dts/mediatek/mt2712e.dtsi | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  arch/arm64/boot/dts/mediatek/mt8516.dtsi         | 9 +++++----
+>  arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 1 +
+>  2 files changed, 6 insertions(+), 4 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index db17d0a4ed57..a9cca9c146fd 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -805,7 +805,7 @@
->  		ranges;
->  		status = "disabled";
->  
-> -		usb_host0: xhci@11270000 {
-> +		usb_host0: usb@11270000 {
->  			compatible = "mediatek,mt2712-xhci",
->  				     "mediatek,mtk-xhci";
->  			reg = <0 0x11270000 0 0x1000>;
-> @@ -818,7 +818,7 @@
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8516.dtsi b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> index b80e95574bef..bbe5a1419eff 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8516.dtsi
+> @@ -480,7 +480,7 @@
 >  		};
->  	};
 >  
-> -	u3phy0: usb-phy@11290000 {
-> +	u3phy0: t-phy@11290000 {
->  		compatible = "mediatek,mt2712-tphy",
->  			     "mediatek,generic-tphy-v2";
->  		#address-cells = <1>;
-> @@ -869,7 +869,7 @@
->  		ranges;
->  		status = "disabled";
->  
-> -		usb_host1: xhci@112c0000 {
-> +		usb_host1: usb@112c0000 {
->  			compatible = "mediatek,mt2712-xhci",
->  				     "mediatek,mtk-xhci";
->  			reg = <0 0x112c0000 0 0x1000>;
-> @@ -882,7 +882,7 @@
+>  		usb0: usb@11100000 {
+> -			compatible = "mediatek,mtk-musb";
+> +			compatible = "mediatek,mt8516-musb", "mediatek,mtk-musb";
+>  			reg = <0 0x11100000 0 0x1000>;
+>  			interrupts = <GIC_SPI 72 IRQ_TYPE_LEVEL_LOW>;
+>  			interrupt-names = "mc";
+> @@ -493,7 +493,7 @@
 >  		};
->  	};
 >  
-> -	u3phy1: usb-phy@112e0000 {
-> +	u3phy1: t-phy@112e0000 {
->  		compatible = "mediatek,mt2712-tphy",
->  			     "mediatek,generic-tphy-v2";
->  		#address-cells = <1>;
+>  		usb1: usb@11190000 {
+> -			compatible = "mediatek,mtk-musb";
+> +			compatible = "mediatek,mt8516-musb", "mediatek,mtk-musb";
+>  			reg = <0 0x11190000 0 0x1000>;
+>  			interrupts = <GIC_SPI 210 IRQ_TYPE_LEVEL_LOW>;
+>  			interrupt-names = "mc";
+> @@ -506,8 +506,9 @@
+>  			status = "disabled";
+>  		};
+>  
+> -		usb_phy: usb@11110000 {
+> -			compatible = "mediatek,generic-tphy-v1";
+> +		usb_phy: t-phy@11110000 {
+> +			compatible = "mediatek,mt8516-tphy",
+> +				     "mediatek,generic-tphy-v1";
+>  			reg = <0 0x11110000 0 0x800>;
+>  			#address-cells = <2>;
+>  			#size-cells = <2>;
+> diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> index 63fd70086bb8..7d738f01cf8d 100644
+> --- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> @@ -188,6 +188,7 @@
+>  &usb0 {
+>  	status = "okay";
+>  	dr_mode = "peripheral";
+> +	usb-role-switch;
+>  
+>  	usb_con: connector {
+>  		compatible = "usb-c-connector";
 > 
 
 _______________________________________________
