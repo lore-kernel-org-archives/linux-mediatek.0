@@ -2,92 +2,101 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9012DC433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13089C433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:35:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23B6B6193A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:15:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23B6B6193A
+	by mail.kernel.org (Postfix) with ESMTPS id 8A40361879
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:35:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A40361879
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S69c2fZG63Q6Sw1/l2QlxiBgMLgHrrVLBBMq/IvTLew=; b=cfrCb2l6P2RFYbVBTxLo5FVQ5
-	JfCHeV1hWJDAFZWlmhP358OPyKuYZlEUBKY7+yr0rCkx0SRU+Cv8075OK1uwDbASOV20POem2U5Z3
-	urCO3CAytYxFvqVg/H7FPVhNFSfM3ZtDMgXvGGwhHyib+UmZ9/wGpRTyQCdtm2/MtbrPhtauxu2Ff
-	SCPGg/Lc1ZntWnuY8uAoHz8GJTSBwcix7K+FEji4XOgk61KDcCrzpUYqbTbAMso2B/Ke7Dtn9L0Bu
-	nNtOcLkDpF52eUx5A4cQ8j/GKLWPzj2ig9D/vp5Zfa2p13VLpAW0NpJxe0nFhmyKVfrc50Cmi8GON
-	p31IlJtqA==;
+	 bh=HEhcUqAN5uvw+54IP/ZhgZAel97UDsM9M2a8V64f7XE=; b=Ue/je/Vn2XOzf2SIql5HN3IL2
+	4nf+PwsjGFUhOmetZUEtn9JlNu8suweR9GIWKqbqapGJSK/nZ/NwUHN4QLRNXKyymZTidDm2v1VVi
+	habwKHF3uF2Myc1naJnWIpkfo6WVaEOsVS6OnU1bbb0ySeFLitga2wAM/kp4OzIroDeM1nW23rYLV
+	6+795Nw1pouabcLsnx+Zm/tVOiZgYIkO1rWG8U48UFwzL7N7ni7Ie+sNN7RvGZIDMLEhRXBWytXoC
+	Blq95bGSwb2qRw5zPu1o89RxpEwsdVcBQh2frEH4az56sxt/MvdjWp43bU9OSrWFV0dNSK3bBV8ws
+	U/2bjLSgw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR0A8-001dhC-Nm; Mon, 29 Mar 2021 22:15:08 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1lR0TC-001h4A-SI; Mon, 29 Mar 2021 22:34:51 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQqQz-000d0b-Ab; Mon, 29 Mar 2021 11:51:55 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id x26so9753795pfn.0;
- Mon, 29 Mar 2021 04:51:53 -0700 (PDT)
+ id 1lQsDy-000gnb-KM; Mon, 29 Mar 2021 13:46:36 +0000
+Received: by mail-wm1-x332.google.com with SMTP id
+ r10-20020a05600c35cab029010c946c95easo6682821wmq.4; 
+ Mon, 29 Mar 2021 06:46:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=22q/rnIFf04g2bHvYP9IaYNVB6ChoxCOoOAEpANlF8c=;
- b=PPUECpN3NaU1LOUyfkCBNOjUS7K/DWzfzhdYwYQzBIT7urdLleyKkp2NITseQblARU
- AjmYDrFj40KoDHE+MH586Q0zI7GdiLzKTUMrfrJpvW9jCHX0IDEy+qU3wk8HIJoUV+Tx
- VxcxUANtGOBZtQPnmyLdoCL/MwUA/lNQbAs+glDDsvaF5Y9eoMWqX43pCyGEQyenlYtx
- W6Yv4sApBIioMI6HWQtHrw5QPj390J8tZNk3MGEAvJkISWyyOqg0/ObPKxJRBdJyIp7M
- 9iGFm4lwX4FfCjHI/HDNKKeeh6kAc6qMPVWrat9QBtkdutHgpBJTmF5tP8bkuSrWSjkF
- Fr9w==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=rZ0ttQmQI38kgtwimwZOypMElesqYSV1+5uAEl6XReI=;
+ b=aXrEUr2HfLf/OkoGix2kXX2gaejpeIC6TS8dm/pMOZ383IzDcRMNlJIOyRWYzFe0SW
+ nySVI9Sx3U87QQwvMpsgSFraJZQ75BFpr3nCfBldspaT6JbL7NPEa+bZlishv3UfKeoU
+ d2HFDwZJ/SisxNV7yVr/uWo5Vs9kzG8DVJY4R6YJnJoEDDw5jZnMuSefFCNVHp/pONbs
+ w718mLUmn0OT4MQwg1RiUiqSdMBF1E50pYWf+rIm8q/BVQF9q3toq6AlWBPvSt8PtJ8o
+ HAe0vKWGlDaBaa6IsdtsfxIIsx7DbI+ih1d48ZA/oNahSgNmbZYOQyHcQkmfzyvrMVb/
+ Ns7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=22q/rnIFf04g2bHvYP9IaYNVB6ChoxCOoOAEpANlF8c=;
- b=bv2SggSijkcsr+8GIo+9JiKvtpttHe0iYBXY5NTW/zCtr08noULrEK7Ux2fg/6sCxd
- zy6b9AEs2wao81qnch0/JT+dfpe5hvS22ndWVujwaP9ExfzL9yT9jJnnr+GAJNuzujM1
- rjAi/iwOqVWRvnGzq0ScFq/9Fk5+YCCej9wlZBcW45R2dakrkbJm/6uQzz5OBq7oBQlc
- J9hDZN0bADvAd0HkIj3ArPTjlPUGyyNYBMwbqe7QcEpXQmJT7cWfuc6XUGGJcPy0hnWh
- AK3+byyYrTiA2a8sqVup2qgdB4XNfamS635W/AF5yHYavZHT8mazJI1txyvEk/u8SsbW
- IXNQ==
-X-Gm-Message-State: AOAM532S7FP6aJCfQqKC6zuUeFP1aMgyhmUR2HRPNs+PnvF57n7GP4QJ
- oajkoOTS79wSauzN3d+8iAmEc+JDVtbEcPC/n3w=
-X-Google-Smtp-Source: ABdhPJxeX2YKkkL1Wn3mbW30JRjOL7XccqnaAdP2WI1jlb4FtEfmc9Etd2/R693+HElvCs17nwB2CpttKjuT4fEOc9M=
-X-Received: by 2002:a63:cb44:: with SMTP id m4mr1003785pgi.4.1617018711823;
- Mon, 29 Mar 2021 04:51:51 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=rZ0ttQmQI38kgtwimwZOypMElesqYSV1+5uAEl6XReI=;
+ b=OJVE3rnofGV0d9fWN7fy5wyWlL49T+kdlTk5E3Gxdu4nnFzvsIx7pAleOtE5XortIw
+ UEpNbgF6VHZDkXeuNFKH9q9HUxe+/7m7cjQ/yPprzQGAu95mo17AinNE9KlsqSf0PAon
+ K/IwiI1jEgIZSGnbIxYX5zHhITY0dZV2cTdt0wZFRHAe+oBSUqHflkL22OCWllV6VkKG
+ ASU0oXNC/+vci71QVDQLE1C8pz//jhflev4fyu/v4KzGeoDi2fUY9QA1/xFMbVusUryF
+ DfAFlUKGDgbJJSH/KccH5MwgS/m/wGkv5ph9/i4lDgxzMiG/dh+ODpuxJNvVGohCm4OB
+ CR5A==
+X-Gm-Message-State: AOAM530BD0OZct3F2NiEzlRTuvrVjToXSx9J+PHs63NqWpUFsVa/iw6J
+ +jaqueuJQoFj2Dh9jzIWKw4=
+X-Google-Smtp-Source: ABdhPJwsFeaTfLQho0KOF6d5TsjacpYyW3Pw0n29HGyU/IuKNc+SapdcNLoG9R2gdUilBHUWOqUPCQ==
+X-Received: by 2002:a05:600c:2247:: with SMTP id
+ a7mr25237250wmm.131.1617025593712; 
+ Mon, 29 Mar 2021 06:46:33 -0700 (PDT)
+Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
+ [80.174.240.175])
+ by smtp.gmail.com with ESMTPSA id c131sm26103482wma.37.2021.03.29.06.46.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 29 Mar 2021 06:46:33 -0700 (PDT)
+Subject: Re: [PATCH v5 05/13] arm64: dts: mt8173: fix property typo of 'phys'
+ in dsi node
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Jie Qiu <jie.qiu@mediatek.com>,
+ CK Hu <ck.hu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, stable <stable@vger.kernel.org>
+References: <20210316092232.9806-1-chunfeng.yun@mediatek.com>
+ <20210316092232.9806-5-chunfeng.yun@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <849d620a-a209-f89f-8303-9d0c9b740045@gmail.com>
+Date: Mon, 29 Mar 2021 15:46:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-References: <20210329113103.11003-1-zhiyong.tao@mediatek.com>
- <CAHp75Vc7x=VoNqQKXOyxhkixR3SivQn3yGkejTkZ8bO0Tv6bDA@mail.gmail.com>
- <1617018585.10316.9.camel@mhfsdcap03>
-In-Reply-To: <1617018585.10316.9.camel@mhfsdcap03>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 29 Mar 2021 14:51:35 +0300
-Message-ID: <CAHp75Vevt4aLoCj5rFGErPjKYqs=Ve1xohYRzET1cg3LCrb3eA@mail.gmail.com>
-Subject: Re: [PATCH Resend v0 0/6] Mediatek pinctrl patch on mt8195
-To: zhiyong tao <zhiyong.tao@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- sean.wang@kernel.org, 
- srv_heupstream <srv_heupstream@mediatek.com>, hui.liu@mediatek.com, 
- Eddie Huang <eddie.huang@mediatek.com>, jg_poxu@mediatek.com,
- biao.huang@mediatek.com, 
- hongzhou.yang@mediatek.com, erin.lo@mediatek.com, 
- Sean Wang <sean.wang@mediatek.com>, seiya.wang@mediatek.com, 
- Sj Huang <sj.huang@mediatek.com>, devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
+In-Reply-To: <20210316092232.9806-5-chunfeng.yun@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_125153_652064_E78C7A9A 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20210329_144634_817726_08FBF339 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,40 +113,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 29, 2021 at 2:49 PM zhiyong tao <zhiyong.tao@mediatek.com> wrote:
-> On Mon, 2021-03-29 at 14:35 +0300, Andy Shevchenko wrote:
-> > On Mon, Mar 29, 2021 at 2:32 PM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
-> > >
-> > > This series includes 6 patches:
-> > > 1.add pinctrl file on mt8195.
-> > > 2.add pinctrl binding document on mt8195.
-> > > 3.add pinctrl device node on mt8195.
-> > > 4.add pinctrl driver on MT8195.
-> > > 5.add pinctrl drive for I2C related pins on MT8195.
-> > > 6.add pinctrl rsel setting on MT8195.
-> >
-> > Patch series w/o version is de facto v1.
-> > Dropping to v0 seems not right.
-> > You missed changelog.
-> >
-> > So, send v2 properly.
-> >
-> > Material to study:
-> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html
-> >
->
-> Hi Andy,
->
-> There is not any change between v0 and v1. so we send "Resend v0" as v2
-> in this time.Is it also properly? and we send the version which is v3 in
-> next time.
 
-Sounds good to me, just make sure you put a changelog explaining all
-these history twists.
 
--- 
-With Best Regards,
-Andy Shevchenko
+On 16/03/2021 10:22, Chunfeng Yun wrote:
+> Use 'phys' instead of 'phy'.
+> 
+> Fixes: 81ad4dbaf7af ("arm64: dts: mt8173: Add display subsystem related nodes")
+> Cc: stable <stable@vger.kernel.org>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+Applied now to v5.12-next/dts64
+
+> ---
+> v5: merged into this series, add Reviewed-by CK
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> index 7fa870e4386a..ecb37a7e6870 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+> @@ -1235,7 +1235,7 @@
+>  				 <&mmsys CLK_MM_DSI1_DIGITAL>,
+>  				 <&mipi_tx1>;
+>  			clock-names = "engine", "digital", "hs";
+> -			phy = <&mipi_tx1>;
+> +			phys = <&mipi_tx1>;
+>  			phy-names = "dphy";
+>  			status = "disabled";
+>  		};
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
