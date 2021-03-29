@@ -2,21 +2,20 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D65CC433C1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8496C433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:58:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C29356192E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:45:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C29356192E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4342B61988
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:58:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4342B61988
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -24,72 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KV68zC4t9A42djvYvSucGhxtXabSUynpiBPmHEQ+fIs=; b=ionDEz8neVxDvyVbSoGw2nWXL
-	xixZ5SHnAZX7bZ0JJKhF2VuFkDidyqws2owzW7k44nOYpK4ehlW/NENQ/puLwu18yc4fcZ4p3rhyW
-	wK/D8r3wJLDCsqMCeJ1JLqZznJAXbTotolwy25I0f3Q+oPE+zHOg6d4KCEBUHGkmMA/xd/6SA79So
-	zDHxthUiYg+ItIcKWySocNSb6En+V20tRz0PL6tVKE0f5Q2RaOqUCAc+bfV50un1HShBSlOn9x0Ba
-	kD+sT0cuM2Jj2TBQKS3zA+Wbbx9Oa85TUIo+9osgHBiqqiDz0CXqCwmTYPLDAyEmTbqfNp7OWVSG7
-	F6PvYs1Aw==;
+	 bh=1C0YQYWKxD0U1+y5Gs0YBL5uP3NmQjUMTLIDWU1blwA=; b=L/+JjKgfdg/BCjeynys6Ev5iR
+	FwmK6wM7ZJ14I7QipmNNPhz3mPFq+uvUvriqcefCPeKBoI7fXuIPyjOBOIOX8JNtL5N9EWSqb9Fqf
+	20attzY4ATsYB+aNSAct+rmUnGRgL98YGGChDPr3SjCqsH6OD5aQP7hmfsUUIcX7aP076c4W3DaM8
+	A/O5ktnHtVk8f7aN9DZ8ILQ0f012vOUrNUKozyvFWvmt2NHTRDgsRHxZTFQqQ7Eifsrn0NStiZYw7
+	fQJrhut1At7C0iuycfBc/V/oqNJd6+oBbVKZDUM7u2+AI3g4AUb/4X3Fr63BWPT7NQnKDEO8lROOE
+	egCFtFKFg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR0dC-001kRC-Fg; Mon, 29 Mar 2021 22:45:10 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1lR0pN-001nXi-Nj; Mon, 29 Mar 2021 22:57:45 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQsdS-000htX-Rp; Mon, 29 Mar 2021 14:12:57 +0000
-Received: by mail-oi1-x231.google.com with SMTP id f9so13192595oiw.5;
- Mon, 29 Mar 2021 07:12:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1lQtHu-000ipe-8A
+ for linux-mediatek@lists.infradead.org; Mon, 29 Mar 2021 14:54:56 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id p12so4920294pgj.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Mar 2021 07:54:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=6x8zAt8lnCziyXsdjiT/x+IMPqWACGtewRIKnLgJ5DM=;
- b=ep/MmVDiI62WwC0kfB6zr1ciUzNXIHklI9r7jbqki8dCE7fJLiOn4f5yZuJAAC3Qdu
- DQDDQdDtz1DXj0fcsA0KSbz6JKPHSnP8Lj/rR8gFmPWAkm5SV0xDLc46JNVbC/XfbnFF
- TfuJlEMB1rEwVrj/Ff7saAG4FyI/OXJ9SiAkKj1pOjnaaFNbiY5dZJOwsnJCxbQcGQE9
- RcBCPmrzViUik5W8gsKVvW6A3h6S1fJpMeG+DCrUrl+9EnOx+0xIVyvkVsF5yrGJKs46
- SaGtDG/KamZaeZWeI0IhoRvh3bnrvZElwafBZV+5o6ZaowAW/V5WGSZ2wPkyzGmVRd4K
- GnqA==
+ :cc; bh=5MEBgMlFtr+qxbmpKO8IW3rS99OFMlWLKykyxAuuxkw=;
+ b=iSXU1lHcTUj38J05Z9GV3nilDz0wRKt476JZoxbOrRSXRik4PcbqdzYYeizLtVJCNY
+ sNQuslsEuyQ+XvlSULwLKyM5SNpTDb+IQf44HVuPfuYF+Hf4g/UhPkxgU47vp42B075o
+ kSXlNLW0Jtyl+JpT3lE0f3ZT5GXevf5Mhqgxkj22S8EvOwzwU1iWALW5gD/xxxWXnnnk
+ C0UeWW5kA2Qq6A4UOaY+OFnBLd5rQT/vMrD59FriEiw7FmpwVUq2H9iHYvII6vFLCDuz
+ NpI2Nmh3L7jVUVNzBi9hY0iSdHshQ0PtAkfriQhzpTMMx6x4nPxhjVlDXV4GanaBEX5v
+ NUfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=6x8zAt8lnCziyXsdjiT/x+IMPqWACGtewRIKnLgJ5DM=;
- b=Qvv1UEeAam9+AZMOjyiSSpOAoIHe2NT5ngGgIMyRyt2i067W6d2uHAkg6DttA+q47T
- s+7SDUHZSmAktld0pY1WqgTTuWhjHYc+p5inNNiEP1jcvjUiHTCz4Wr1DAJjFdXwogoX
- sMmxKJK1tBUm+KRqjVQZz9j3lCX3zxMbXgDrHvxWCtjbeJ7Pzfw8YLhM4F4m8VuV52eX
- /l57KGW8IWwrVFf6DNIysAwNSyFsQS+m+trn2WOkLR3V3zfFoDFR1R5GPYgmPINka9UD
- stO8XM5QBmdDXz6ZHjL4kFd8Ubgwf/Oh6ORiDCslGdzXXqw4bHsjHMibBmavN6qTPLP6
- c65g==
-X-Gm-Message-State: AOAM533+OYUg6Bp/8Uy/kSWIfa/cOLTRVT/3spw8jVoNcXrFlZxhkMYZ
- ONwQndfxYy/YdQolkJzlvloOq/AXhtcF8kOTOE0=
-X-Google-Smtp-Source: ABdhPJx/j3y4Qh2rl6er04OVmrJwmrKdoXYya3VLSKn3yF6ACR4jSBDD4hKXJ5fiZGTjxx4t/fYTv4ernKXdjGLaEHI=
-X-Received: by 2002:aca:f084:: with SMTP id o126mr17882705oih.95.1617027170000; 
- Mon, 29 Mar 2021 07:12:50 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=5MEBgMlFtr+qxbmpKO8IW3rS99OFMlWLKykyxAuuxkw=;
+ b=aDfMSvukeuuLbwubcqaH2cVEB7sMRIY9qiaoOnF1eBJvCTUK+1KHb22kuFKbK4wJGf
+ jqs9M+7dsDPcVtWDyjGAO5KAR3bvwiH/bIrrJI12Jc+12xBnm3B1W/8WmN1Um63Cb+Su
+ JX+Zq/kn7Ax9OVQP0L8U54k1WUqRDSNTN0NU98UVIfMCziP5Gz4kujEhBPdLxORTvV2n
+ pYqjky9vF3cAdQT8rTPGHyhp9vALfkBSPLJTwk72kFtpOWT/Xha3hM1QZGm9DJGn9P/U
+ +wtD9zHRhj19SI8P5cgW51WPWPCgX0bFRBEbGkKMA4U0g0oZxXDvmg5YfalgLgFUx3eX
+ f51g==
+X-Gm-Message-State: AOAM532S+pbHU671kBFbZpXCqKW3zwSJM5KAAKmW2Z62SqTLHiW0hICa
+ anlH2U7frKPWyUenkD2yrt4J4HI5xRJt1+PovQ/Tfg==
+X-Google-Smtp-Source: ABdhPJzzV8lmH/853u2GQr5Sdz0U+AIsZJ78rGGmOSXdGUQCGk3zpC0zStZZ2upiaJ1Nge2MqpdgwsXK218jh4upu8o=
+X-Received: by 2002:a63:d841:: with SMTP id k1mr9886568pgj.440.1617029678142; 
+ Mon, 29 Mar 2021 07:54:38 -0700 (PDT)
 MIME-Version: 1.0
-References: <1610720001-15300-1-git-send-email-u0084500@gmail.com>
- <3a4a88a9-f0e3-2b65-9df4-6c1d4e3f1c14@roeck-us.net>
- <CADiBU38g_E+iH4jTwQfPvJh4=WRH4vzQ12oubGg47gj+CpTU0A@mail.gmail.com>
- <1611041874.12761.13.camel@mhfsdcap03>
- <CADiBU39fAa30pK5uNCN=sBVZ2pC-ACFqCoY8vKr3+6e+n828tw@mail.gmail.com>
-In-Reply-To: <CADiBU39fAa30pK5uNCN=sBVZ2pC-ACFqCoY8vKr3+6e+n828tw@mail.gmail.com>
-From: ChiYuan Huang <u0084500@gmail.com>
-Date: Mon, 29 Mar 2021 22:12:38 +0800
-Message-ID: <CADiBU3_==CobcGVoLBF35Hp5+5c3kNuWu4MZBxjk0ZkK-L1-bw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] usb typec: tcpci: mt6360: Add vsafe0v support and
- external vbus supply control
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Guenter Roeck <linux@roeck-us.net>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- matthias.bgg@gmail.com, Rob Herring <robh+dt@kernel.org>, 
- Greg KH <gregkh@linuxfoundation.org>,
- Linux USB List <linux-usb@vger.kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- lkml <linux-kernel@vger.kernel.org>, cy_huang <cy_huang@richtek.com>, 
- gene_chen@richtek.com, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>
+References: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
+In-Reply-To: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
+From: Andrey Konovalov <andreyknvl@google.com>
+Date: Mon, 29 Mar 2021 16:54:26 +0200
+Message-ID: <CAAeHK+zyv1=kXtKAynnJN-77dwmPG4TXpJOLv_3W0nxXe5NjXA@mail.gmail.com>
+Subject: Re: [PATCH v4] kasan: remove redundant config option
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+ Alexander Potapenko <glider@google.com>, 
+ Dmitry Vyukov <dvyukov@google.com>,
+ Nathan Chancellor <natechancellor@gmail.com>, 
+ Arnd Bergmann <arnd@arndb.de>, kasan-dev <kasan-dev@googlegroups.com>, 
+ Linux Memory Management List <linux-mm@kvack.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ wsd_upstream <wsd_upstream@mediatek.com>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Walter Wu <walter-zh.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_151255_032780_4F9B6A4C 
-X-CRM114-Status: GOOD (  45.71  )
+X-CRM114-CacheID: sfid-20210329_155454_526841_99928C3B 
+X-CRM114-Status: GOOD (  35.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,115 +96,243 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SEksIHJldmlld3M6CgpDaGlZdWFuIEh1YW5nIDx1MDA4NDUwMEBnbWFpbC5jb20+IOaWvCAyMDIx
-5bm0MeaciDE55pelIOmAseS6jCDkuIvljYg0OjIz5a+r6YGT77yaCj4KPiBDaHVuZmVuZyBZdW4g
-PGNodW5mZW5nLnl1bkBtZWRpYXRlay5jb20+IOaWvCAyMDIx5bm0MeaciDE55pelIOmAseS6jCDk
-uIvljYgzOjM45a+r6YGT77yaCj4gPgo+ID4gT24gTW9uLCAyMDIxLTAxLTE4IGF0IDE2OjI4ICsw
-ODAwLCBDaGlZdWFuIEh1YW5nIHdyb3RlOgo+ID4gPiBHdWVudGVyIFJvZWNrIDxsaW51eEByb2Vj
-ay11cy5uZXQ+IOaWvCAyMDIx5bm0MeaciDE45pelIOmAseS4gCDkuIrljYgxOjQz5a+r6YGT77ya
-Cj4gPiA+ID4KPiA+ID4gPiBPbiAxLzE1LzIxIDY6MTMgQU0sIGN5X2h1YW5nIHdyb3RlOgo+ID4g
-PiA+ID4gRnJvbTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmljaHRlay5jb20+Cj4gPiA+ID4g
-Pgo+ID4gPiA+ID4gTVQ2MzYwIG5vdCBzdXBwb3J0IGZvciBUQ1BDIGNvbW1hbmQgdG8gY29udHJv
-bCBzb3VyY2UgYW5kIHNpbmsuCj4gPiA+ID4KPiA+ID4gPiBkb2VzIG5vdAo+ID4gPiA+Cj4gPiA+
-IEFjawo+ID4gPiA+ID4gVXNlcyBleHRlcm5hbCA1ViB2YnVzIHJlZ3VsYXRvciBhcyB0aGUgdmJ1
-cyBzb3VyY2UgY29udHJvbC4KPiA+ID4gPiA+Cj4gPiA+ID4gVXNlCj4gPiA+ID4KPiA+ID4gQWNr
-Cj4gPiA+ID4gPiBBbHNvIGFkZHMgdGhlIGNhcGFiaWxpdHkgdG8gcmVwb3J0IHZzYWZlMHYuCj4g
-PiA+ID4gPgo+ID4gPiA+IGFkZAo+ID4gPiA+Cj4gPiA+IEFjawo+ID4gPiA+IFNvIGZhciB0aGlz
-IGRyaXZlciB3b3JrcyB3aXRob3V0IHJlZ3VsYXRvci4gVW5sZXNzIEkgYW0gbWlzc2luZyBzb21l
-dGhpbmcsCj4gPiA+ID4gdGhpcyBwYXRjaCBtYWtlcyByZWd1bGF0b3Igc3VwcG9ydCBtYW5kYXRv
-cnksIG1lYW5pbmcgZXhpc3RpbmcgY29kZSB3aWxsIGZhaWwuCj4gPiA+ID4gSSBhbSBub3Qgc3Vy
-ZSBpZiB0aGF0IGlzIGFwcHJvcHJpYXRlL2FjY2VwdGFibGUuIENhbiB3ZSBiZSBzdXJlIHRoYXQg
-dGhpcyB3aWxsCj4gPiA+ID4gd29yayBmb3IgZXhpc3RpbmcgdXNlcnMgb2YgdGhpcyBkcml2ZXIg
-Pwo+ID4gPiA+Cj4gPiA+IFllcywgSSBhbHJlYWR5IGNoZWNrZWQgYWxsIHRoZSBzcmMvc25rIGZ1
-bmN0aW9uYWxpdHkgYmFzZWQgb24gIHRoZQo+ID4gPiBsYXRlc3QgdHlwZWMgY29kZS4KPiA+ID4g
-SXQnbGwgYmUgY29tbW9uIGZvciBvdXIgVENQQy4gSXQgZGlkbid0IHN1cHBvcnQgZm9yIFRDUEMg
-Y29tbWFuZC4KPiA+ID4gRnJvbSB0aGUgcmVjZW50IHBhdGNoZXMsIGFjdHVhbGx5LCBJIGhhdmUg
-dGhlIGxvY2FsIGNoYW5nZSB0byB0ZXN0IHRoZQo+ID4gPiBzcmMgY2FwYWJpbGl0eS4KPiA+ID4g
-QnV0IEkgZGlkbid0IHN1Ym1pdCBpdC4gSXQncyBhbG1vc3QgdGhlIHNhbWUgdG8gYWRkIHNldF92
-YnVzIGNhbGxiYWNrLgo+ID4gPiBUaGF0J3Mgd2h5IEkgc3VibWl0IHRoaXMgY2hhbmdlIGFmdGVy
-IHRjcGNpICdzZXRfdmJ1cyBjYWxsYmFjaycgaXMgYWRkZWQuCj4gPiA+Cj4gPiA+ID4gVGhhbmtz
-LAo+ID4gPiA+IEd1ZW50ZXIKPiA+ID4gPgo+ID4gPiA+ID4gU2lnbmVkLW9mZi1ieTogQ2hpWXVh
-biBIdWFuZyA8Y3lfaHVhbmdAcmljaHRlay5jb20+Cj4gPiA+ID4gPiAtLS0KPiA+ID4gPiA+ICBk
-cml2ZXJzL3VzYi90eXBlYy90Y3BtL3RjcGNpX210NjM2MC5jIHwgMjkgKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysKPiA+ID4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMjkgaW5zZXJ0aW9ucygr
-KQo+ID4gPiA+ID4KPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi90eXBlYy90Y3Bt
-L3RjcGNpX210NjM2MC5jIGIvZHJpdmVycy91c2IvdHlwZWMvdGNwbS90Y3BjaV9tdDYzNjAuYwo+
-ID4gPiA+ID4gaW5kZXggZjFiZDllMC4uMGVkZjRiNiAxMDA2NDQKPiA+ID4gPiA+IC0tLSBhL2Ry
-aXZlcnMvdXNiL3R5cGVjL3RjcG0vdGNwY2lfbXQ2MzYwLmMKPiA+ID4gPiA+ICsrKyBiL2RyaXZl
-cnMvdXNiL3R5cGVjL3RjcG0vdGNwY2lfbXQ2MzYwLmMKPiA+ID4gPiA+IEBAIC0xMSw2ICsxMSw3
-IEBACj4gPiA+ID4gPiAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gPiA+ID4gPiAgI2luY2x1ZGUg
-PGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ID4gPiA+ID4gICNpbmNsdWRlIDxsaW51eC9yZWdt
-YXAuaD4KPiA+ID4gPiA+ICsjaW5jbHVkZSA8bGludXgvcmVndWxhdG9yL2NvbnN1bWVyLmg+Cj4g
-PiA+ID4gPiAgI2luY2x1ZGUgPGxpbnV4L3VzYi90Y3BtLmg+Cj4gPiA+ID4gPgo+ID4gPiA+ID4g
-ICNpbmNsdWRlICJ0Y3BjaS5oIgo+ID4gPiA+ID4gQEAgLTM2LDYgKzM3LDcgQEAgc3RydWN0IG10
-NjM2MF90Y3BjX2luZm8gewo+ID4gPiA+ID4gICAgICAgc3RydWN0IHRjcGNpX2RhdGEgdGRhdGE7
-Cj4gPiA+ID4gPiAgICAgICBzdHJ1Y3QgdGNwY2kgKnRjcGNpOwo+ID4gPiA+ID4gICAgICAgc3Ry
-dWN0IGRldmljZSAqZGV2Owo+ID4gPiA+ID4gKyAgICAgc3RydWN0IHJlZ3VsYXRvciAqdmJ1czsK
-PiA+ID4gPiA+ICAgICAgIGludCBpcnE7Cj4gPiA+ID4gPiAgfTsKPiA+ID4gPiA+Cj4gPiA+ID4g
-PiBAQCAtNTEsNiArNTMsMjcgQEAgc3RhdGljIGlubGluZSBpbnQgbXQ2MzYwX3RjcGNfd3JpdGUx
-NihzdHJ1Y3QgcmVnbWFwICpyZWdtYXAsCj4gPiA+ID4gPiAgICAgICByZXR1cm4gcmVnbWFwX3Jh
-d193cml0ZShyZWdtYXAsIHJlZywgJnZhbCwgc2l6ZW9mKHUxNikpOwo+ID4gPiA+ID4gIH0KPiA+
-ID4gPiA+Cj4gPiA+ID4gPiArc3RhdGljIGludCBtdDYzNjBfdGNwY19zZXRfdmJ1cyhzdHJ1Y3Qg
-dGNwY2kgKnRjcGNpLCBzdHJ1Y3QgdGNwY2lfZGF0YSAqZGF0YSwgYm9vbCBzcmMsIGJvb2wgc25r
-KQo+ID4gPiA+ID4gK3sKPiA+ID4gPiA+ICsgICAgIHN0cnVjdCBtdDYzNjBfdGNwY19pbmZvICpt
-dGkgPSBjb250YWluZXJfb2YoZGF0YSwgc3RydWN0IG10NjM2MF90Y3BjX2luZm8sIHRkYXRhKTsK
-PiA+ID4gPiA+ICsgICAgIGludCByZXQ7Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiArICAgICAvKiBU
-byBjb3JyZWN0bHkgaGFuZGxlIHRoZSBhbHJlYWR5IGVuYWJsZWQgdmJ1cyBhbmQgZGlzYWJsZSBp
-dHMgc3VwcGx5IGZpcnN0ICovCj4gPiA+ID4gPiArICAgICBpZiAocmVndWxhdG9yX2lzX2VuYWJs
-ZWQobXRpLT52YnVzKSkgewo+ID4gPiA+ID4gKyAgICAgICAgICAgICByZXQgPSByZWd1bGF0b3Jf
-ZGlzYWJsZShtdGktPnZidXMpOwo+ID4gPiA+ID4gKyAgICAgICAgICAgICBpZiAocmV0KQo+ID4g
-PiA+ID4gKyAgICAgICAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gPiA+ID4gPiArICAgICB9
-Cj4gPiA+ID4KPiA+ID4gPiBJcyBpdCByZWFsbHkgYSBnb29kIGlkZWEgdG8gZGlzYWJsZSB2YnVz
-IGlmIGl0IGhhcHBlbnMgdG8gYmUgYWxyZWFkeSBlbmFibGVkCj4gPiA+ID4gYW5kIHRoZXJlIGlz
-IChhbm90aGVyID8pIHJlcXVlc3QgdG8gZW5hYmxlIGl0ID8KPiA+ID4gPgo+ID4gPiBZZXMsIGZv
-ciAgdGhlIHN0YXRlIGNoYW5nZSBmcm9tIHNyY19hdHRhY2hfd2FpdCB0byBzcmNfYXR0YWNoLAo+
-ID4gPiBJdCBuZWVkIHRvIG1lZXQgdGhlIHJlcXVpcmVtZW50IHRoYXQgIHRoZSB2YnVzIGlzIGF0
-IHZzYWZlMHYuCj4gPiA+IFNvIHRvIGRpc2FibGUgaXQgZmlyc3QgaXMgbmVlZGVkLgo+ID4gPiBB
-bmQgdG8gcHJldmVudCBvdGhlciB1c2VycyBmcm9tIGVuYWJsaW5nL2Rpc2FibGluZyBleHRlcm5h
-bCB2YnVzCj4gPiA+IHJlZ3VsYXRvciBpbiBhbnkgY2FzZS4KPiA+ID4gSSB0aGluayB3ZSBtYXkg
-Y2hhbmdlIHJlZ3VsYXRvcl9nZXQgIHRvICdyZWd1bGF0b3JfZ2V0X2V4Y2x1c2l2ZScuCj4gPiA+
-IEZyb20gdGhlIGRlc2lnbiwgNXYgcmVndWxhdG9yIG9ubHkgY2FuIGJlIGNvbnRyb2xsZWQgdmlh
-IHR5cGVjIGZyYW1ld29yay4KPiA+ID4gSWYgb3RoZXIgdXNlciB0b3VjaCBpdCwgaXQnbGwgYWZm
-ZWN0IHRoZSB0eXBlYyBzdGF0ZSB0cmFuc2l0aW9uLgo+ID4gSG93IGFib3V0IHRvIHByb2Nlc3Mg
-dGhlIGNhc2UgdGhhdCBldmVuIHN3aXRjaCB1c2IgY29udHJvbGxlciB0byBkZXZpY2UKPiA+IG1v
-ZGUsIHBsYXRmb3JtIGFsc28gbmVlZCB0byBrZWVwIHZidXMgb24/IGUuZy4gSXBob25lIENhcnBs
-YXkKPiA+Cj4gPgo+IEl0IG11c3QgYmUgcHJvY2Vzc2VkIGJ5IFVTQlBEIGRhdGEgcm9sZSBzd2Fw
-Lgo+Cj4gVHlwZSBDIG9ubHkgZGVjaWRlIHRoZSBpbml0aWFsIHJvbGUgKFNOSzogcG93ZXIgc25r
-IGFuZCB1ZnA7IFNSQzoKPiBwb3dlciBzcmMgYW5kIERGUCkuCj4gT25seSBVU0JQRCBjYW4gY2hh
-bmdlIHRoZSBwb3dlci9kYXRhL3Zjb25uIHJvbGUgaW5kaXZpZHVhbGx5Lgo+CkknbSAgbm90IHN1
-cmUgdGhlIHN0YXR1cyBhYm91dCB0aGlzIHBhdGNoLgpCdXQgSSdtIHRyeWluZyB0byBmaWd1cmUg
-b3V0IHRoZSBwcm9ibGVtcyBhYm91dCBzb21lIFRDUENzLgoKTm90IGFsbCBUQ1BDcyBjYW4gc3Vw
-cG9ydCB0aGUgc291cmNlX3ZidXMvc2lua192YnVzIGNvbW1hbmQuCkknbSB0cnlpbmcgdG8gYWRk
-IHRoaXMgcGF0Y2ggbWFrZSBvdXIgbXQ2MzYwIHRjcGMgd29yay4KCk9yaWdpbmFsbHksIEkgYWRk
-IHNvbWUgcHJvcHJpZXRhcnkgY29kZSBpbiB1c2IgdG8gbWFrZSB0aGUgb3RnIHZidXMKb3V0cHV0
-IGR1ZSB0byBubyBzZXRfdmJ1cyBjYWxsYmFjayBoYW5kbGVkIGJ5IHZlbmRvciBvcHMuCgpFdmVu
-dHVhbGx5LCBJIGZvdW5kIHRoZSBwYXRjaApiOTM1OGEwNjg0OTAgdXNiOiB0eXBlYzogdGNwY2k6
-IEFkZCBzZXRfdmJ1cyB0Y3BjaSBjYWxsYmFjawoKSG9wZSB0byBnZXQgYW55IHJlc3BvbnNlIGZy
-b20geW91Lgo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAgICAgaWYgKHNyYykgewo+ID4gPiA+ID4g
-KyAgICAgICAgICAgICByZXQgPSByZWd1bGF0b3JfZW5hYmxlKG10aS0+dmJ1cyk7Cj4gPiA+ID4g
-PiArICAgICAgICAgICAgIGlmIChyZXQpCj4gPiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAg
-cmV0dXJuIHJldDsKPiA+ID4gPiA+ICsgICAgIH0KPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsgICAg
-IHJldHVybiAwOwo+ID4gPiA+ID4gK30KPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICBzdGF0aWMgaW50
-IG10NjM2MF90Y3BjX2luaXQoc3RydWN0IHRjcGNpICp0Y3BjaSwgc3RydWN0IHRjcGNpX2RhdGEg
-KnRkYXRhKQo+ID4gPiA+ID4gIHsKPiA+ID4gPiA+ICAgICAgIHN0cnVjdCByZWdtYXAgKnJlZ21h
-cCA9IHRkYXRhLT5yZWdtYXA7Cj4gPiA+ID4gPiBAQCAtMTM4LDcgKzE2MSwxMyBAQCBzdGF0aWMg
-aW50IG10NjM2MF90Y3BjX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4gPiA+
-ID4gPiAgICAgICBpZiAobXRpLT5pcnEgPCAwKQo+ID4gPiA+ID4gICAgICAgICAgICAgICByZXR1
-cm4gbXRpLT5pcnE7Cj4gPiA+ID4gPgo+ID4gPiA+ID4gKyAgICAgbXRpLT52YnVzID0gZGV2bV9y
-ZWd1bGF0b3JfZ2V0KCZwZGV2LT5kZXYsICJ2YnVzIik7Cj4gPiA+ID4gPiArICAgICBpZiAoSVNf
-RVJSKG10aS0+dmJ1cykpCj4gPiA+ID4gPiArICAgICAgICAgICAgIHJldHVybiBQVFJfRVJSKG10
-aS0+dmJ1cyk7Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiAgICAgICBtdGktPnRkYXRhLmluaXQgPSBt
-dDYzNjBfdGNwY19pbml0Owo+ID4gPiA+ID4gKyAgICAgbXRpLT50ZGF0YS5zZXRfdmJ1cyA9IG10
-NjM2MF90Y3BjX3NldF92YnVzOwo+ID4gPiA+ID4gKyAgICAgbXRpLT50ZGF0YS52YnVzX3ZzYWZl
-MHYgPSAxOwo+ID4gPiA+ID4gICAgICAgbXRpLT50Y3BjaSA9IHRjcGNpX3JlZ2lzdGVyX3BvcnQo
-JnBkZXYtPmRldiwgJm10aS0+dGRhdGEpOwo+ID4gPiA+ID4gICAgICAgaWYgKElTX0VSUihtdGkt
-PnRjcGNpKSkgewo+ID4gPiA+ID4gICAgICAgICAgICAgICBkZXZfZXJyKCZwZGV2LT5kZXYsICJG
-YWlsZWQgdG8gcmVnaXN0ZXIgdGNwY2kgcG9ydFxuIik7Cj4gPiA+ID4gPgo+ID4gPiA+Cj4gPgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Fri, Feb 26, 2021 at 2:25 AM Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> CONFIG_KASAN_STACK and CONFIG_KASAN_STACK_ENABLE both enable KASAN stack
+> instrumentation, but we should only need one config, so that we remove
+> CONFIG_KASAN_STACK_ENABLE and make CONFIG_KASAN_STACK workable.  see [1].
+>
+> When enable KASAN stack instrumentation, then for gcc we could do no
+> prompt and default value y, and for clang prompt and default value n.
+>
+> [1]: https://bugzilla.kernel.org/show_bug.cgi?id=210221
+>
+> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> Suggested-by: Dmitry Vyukov <dvyukov@google.com>
+> Reviewed-by: Nathan Chancellor <natechancellor@gmail.com>
+> Acked-by: Arnd Bergmann <arnd@arndb.de>
+> Reviewed-by: Andrey Konovalov <andreyknvl@google.com>
+> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> ---
+>
+> v4: After this patch sent, someone had modification about KASAN_STACK,
+>     so I need to rebase codebase. Thank Andrey for your pointing.
+>
+> ---
+>  arch/arm64/kernel/sleep.S        |  2 +-
+>  arch/x86/kernel/acpi/wakeup_64.S |  2 +-
+>  include/linux/kasan.h            |  2 +-
+>  lib/Kconfig.kasan                |  8 ++------
+>  mm/kasan/common.c                |  2 +-
+>  mm/kasan/kasan.h                 |  2 +-
+>  mm/kasan/report_generic.c        |  2 +-
+>  scripts/Makefile.kasan           | 10 ++++++++--
+>  security/Kconfig.hardening       |  4 ++--
+>  9 files changed, 18 insertions(+), 16 deletions(-)
+>
+> diff --git a/arch/arm64/kernel/sleep.S b/arch/arm64/kernel/sleep.S
+> index 5bfd9b87f85d..4ea9392f86e0 100644
+> --- a/arch/arm64/kernel/sleep.S
+> +++ b/arch/arm64/kernel/sleep.S
+> @@ -134,7 +134,7 @@ SYM_FUNC_START(_cpu_resume)
+>          */
+>         bl      cpu_do_resume
+>
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>         mov     x0, sp
+>         bl      kasan_unpoison_task_stack_below
+>  #endif
+> diff --git a/arch/x86/kernel/acpi/wakeup_64.S b/arch/x86/kernel/acpi/wakeup_64.S
+> index 56b6865afb2a..d5d8a352eafa 100644
+> --- a/arch/x86/kernel/acpi/wakeup_64.S
+> +++ b/arch/x86/kernel/acpi/wakeup_64.S
+> @@ -115,7 +115,7 @@ SYM_FUNC_START(do_suspend_lowlevel)
+>         movq    pt_regs_r14(%rax), %r14
+>         movq    pt_regs_r15(%rax), %r15
+>
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>         /*
+>          * The suspend path may have poisoned some areas deeper in the stack,
+>          * which we now need to unpoison.
+> diff --git a/include/linux/kasan.h b/include/linux/kasan.h
+> index b91732bd05d7..14f72ec96492 100644
+> --- a/include/linux/kasan.h
+> +++ b/include/linux/kasan.h
+> @@ -330,7 +330,7 @@ static inline bool kasan_check_byte(const void *address)
+>
+>  #endif /* CONFIG_KASAN */
+>
+> -#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN) && defined(CONFIG_KASAN_STACK)
+>  void kasan_unpoison_task_stack(struct task_struct *task);
+>  #else
+>  static inline void kasan_unpoison_task_stack(struct task_struct *task) {}
+> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> index 624ae1df7984..cffc2ebbf185 100644
+> --- a/lib/Kconfig.kasan
+> +++ b/lib/Kconfig.kasan
+> @@ -138,9 +138,10 @@ config KASAN_INLINE
+>
+>  endchoice
+>
+> -config KASAN_STACK_ENABLE
+> +config KASAN_STACK
+>         bool "Enable stack instrumentation (unsafe)" if CC_IS_CLANG && !COMPILE_TEST
+>         depends on KASAN_GENERIC || KASAN_SW_TAGS
+> +       default y if CC_IS_GCC
+>         help
+>           The LLVM stack address sanitizer has a know problem that
+>           causes excessive stack usage in a lot of functions, see
+> @@ -154,11 +155,6 @@ config KASAN_STACK_ENABLE
+>           CONFIG_COMPILE_TEST.  On gcc it is assumed to always be safe
+>           to use and enabled by default.
+>
+> -config KASAN_STACK
+> -       int
+> -       default 1 if KASAN_STACK_ENABLE || CC_IS_GCC
+> -       default 0
+> -
+>  config KASAN_SW_TAGS_IDENTIFY
+>         bool "Enable memory corruption identification"
+>         depends on KASAN_SW_TAGS
+> diff --git a/mm/kasan/common.c b/mm/kasan/common.c
+> index b5e08d4cefec..7b53291dafa1 100644
+> --- a/mm/kasan/common.c
+> +++ b/mm/kasan/common.c
+> @@ -63,7 +63,7 @@ void __kasan_unpoison_range(const void *address, size_t size)
+>         kasan_unpoison(address, size);
+>  }
+>
+> -#if CONFIG_KASAN_STACK
+> +#ifdef CONFIG_KASAN_STACK
+>  /* Unpoison the entire stack for a task. */
+>  void kasan_unpoison_task_stack(struct task_struct *task)
+>  {
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 8c55634d6edd..3436c6bf7c0c 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -231,7 +231,7 @@ void *kasan_find_first_bad_addr(void *addr, size_t size);
+>  const char *kasan_get_bug_type(struct kasan_access_info *info);
+>  void kasan_metadata_fetch_row(char *buffer, void *row);
+>
+> -#if defined(CONFIG_KASAN_GENERIC) && CONFIG_KASAN_STACK
+> +#if defined(CONFIG_KASAN_GENERIC) && defined(CONFIG_KASAN_STACK)
+>  void kasan_print_address_stack_frame(const void *addr);
+>  #else
+>  static inline void kasan_print_address_stack_frame(const void *addr) { }
+> diff --git a/mm/kasan/report_generic.c b/mm/kasan/report_generic.c
+> index 41f374585144..de732bc341c5 100644
+> --- a/mm/kasan/report_generic.c
+> +++ b/mm/kasan/report_generic.c
+> @@ -128,7 +128,7 @@ void kasan_metadata_fetch_row(char *buffer, void *row)
+>         memcpy(buffer, kasan_mem_to_shadow(row), META_BYTES_PER_ROW);
+>  }
+>
+> -#if CONFIG_KASAN_STACK
+> +#ifdef CONFIG_KASAN_STACK
+>  static bool __must_check tokenize_frame_descr(const char **frame_descr,
+>                                               char *token, size_t max_tok_len,
+>                                               unsigned long *value)
+> diff --git a/scripts/Makefile.kasan b/scripts/Makefile.kasan
+> index 1e000cc2e7b4..abf231d209b1 100644
+> --- a/scripts/Makefile.kasan
+> +++ b/scripts/Makefile.kasan
+> @@ -2,6 +2,12 @@
+>  CFLAGS_KASAN_NOSANITIZE := -fno-builtin
+>  KASAN_SHADOW_OFFSET ?= $(CONFIG_KASAN_SHADOW_OFFSET)
+>
+> +ifdef CONFIG_KASAN_STACK
+> +       stack_enable := 1
+> +else
+> +       stack_enable := 0
+> +endif
+> +
+>  ifdef CONFIG_KASAN_GENERIC
+>
+>  ifdef CONFIG_KASAN_INLINE
+> @@ -27,7 +33,7 @@ else
+>         CFLAGS_KASAN := $(CFLAGS_KASAN_SHADOW) \
+>          $(call cc-param,asan-globals=1) \
+>          $(call cc-param,asan-instrumentation-with-call-threshold=$(call_threshold)) \
+> -        $(call cc-param,asan-stack=$(CONFIG_KASAN_STACK)) \
+> +        $(call cc-param,asan-stack=$(stack_enable)) \
+>          $(call cc-param,asan-instrument-allocas=1)
+>  endif
+>
+> @@ -42,7 +48,7 @@ else
+>  endif
+>
+>  CFLAGS_KASAN := -fsanitize=kernel-hwaddress \
+> -               -mllvm -hwasan-instrument-stack=$(CONFIG_KASAN_STACK) \
+> +               -mllvm -hwasan-instrument-stack=$(stack_enable) \
+>                 -mllvm -hwasan-use-short-granules=0 \
+>                 $(instrumentation_flags)
+>
+> diff --git a/security/Kconfig.hardening b/security/Kconfig.hardening
+> index 269967c4fc1b..a56c36470cb1 100644
+> --- a/security/Kconfig.hardening
+> +++ b/security/Kconfig.hardening
+> @@ -64,7 +64,7 @@ choice
+>         config GCC_PLUGIN_STRUCTLEAK_BYREF
+>                 bool "zero-init structs passed by reference (strong)"
+>                 depends on GCC_PLUGINS
+> -               depends on !(KASAN && KASAN_STACK=1)
+> +               depends on !(KASAN && KASAN_STACK)
+>                 select GCC_PLUGIN_STRUCTLEAK
+>                 help
+>                   Zero-initialize any structures on the stack that may
+> @@ -82,7 +82,7 @@ choice
+>         config GCC_PLUGIN_STRUCTLEAK_BYREF_ALL
+>                 bool "zero-init anything passed by reference (very strong)"
+>                 depends on GCC_PLUGINS
+> -               depends on !(KASAN && KASAN_STACK=1)
+> +               depends on !(KASAN && KASAN_STACK)
+>                 select GCC_PLUGIN_STRUCTLEAK
+>                 help
+>                   Zero-initialize any stack variables that may be passed
+> --
+> 2.18.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20210226012531.29231-1-walter-zh.wu%40mediatek.com.
+
+Hi Andrew,
+
+Looks like my patch "kasan: fix KASAN_STACK dependency for HW_TAGS"
+that was merged into 5.12-rc causes a build time warning:
+
+include/linux/kasan.h:333:30: warning: 'CONFIG_KASAN_STACK' is not
+defined, evaluates to 0 [-Wundef]
+#if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+
+The fix for it would either be reverting the patch (which would leave
+the initial issue unfixed) or applying this "kasan: remove redundant
+config option" patch.
+
+Would it be possible to send this patch (with the fix-up you have in
+mm) for the next 5.12-rc?
+
+Here are the required tags:
+
+Fixes: d9b571c885a8 ("kasan: fix KASAN_STACK dependency for HW_TAGS")
+Cc: stable@vger.kernel.org
+
+Thanks!
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
