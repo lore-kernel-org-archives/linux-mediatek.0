@@ -2,99 +2,84 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AF02C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CEFCC433DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:43:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A83D61864
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:39:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A83D61864
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id B309961989
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 22:43:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B309961989
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bCho/IREFuvz/AouxhAUk46FAhMWfHpbylXMkZQCDd4=; b=p+78Ebda+lrmC2P7Dkwd3IOw+
-	3TmGRUfToTPdUW4CqB2RMIIEbB7o65+c/sGx7RdWudMmBlva59t3/X39VOnxfpNVUHM0kXw+L72hE
-	02RyZy0r+mHQu+GuMA/w2ubemXPNjCx9Sh7ObcY72ZjbvI7ZS9lNyhI4btIk4iOBbCdYEhFX4VyMi
-	LZiOoOk2UIsiD39x77nbO9wgnhwpPqSDyN45/J3aV5VBpz2ILBkJRtciM4YGRFN4pUqpHu3VfTlSD
-	wKE5IPxBQXRu5A8Iu4bMjNbuhBsBNolc7ci49ysScKeVxipOQt48/vV+J7qYStYHKHALSFNmKW1Pt
-	hrooesZMA==;
+	 bh=LUUdvXN/ILao2nnE/whfZc31BDswF7tOf97FT/Van1E=; b=j9MDd2ULHm8zmEN+2NqmK8gBP
+	1Z4MehkBG57IEzKiMtmCLEOCrDIV+Db4VOQEWtIB3/0O6H+ppM7BSTqiUcD1qyqMdDdfoBQp9umyv
+	s4DKJzIPbiVBC8Za4y/m9yC48T/rbbs10seyxqqBWI3OVhCnZNoQkWEG0Zc1nYDg5LsgTNnZtU0qD
+	ad5mGokH3+WM0oXkjKeqttIDBykZuHH9SmeRf1U2YIjszNMjm/WnK5DqFTcL66bSUmkEe1y5kaQU6
+	OZ0f3vB9Q+q74rv8KVjE8QSFfFBBb58mW+8i/Sm7oosGVcJkD9hkB78myi9sZherof+/Tm3i3B59W
+	yX3D2zL+Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR0Xg-001jCS-UE; Mon, 29 Mar 2021 22:39:29 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1lR0bG-001jsf-Jj; Mon, 29 Mar 2021 22:43:10 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQsF4-000gsX-OE; Mon, 29 Mar 2021 13:47:44 +0000
-Received: by mail-wr1-x430.google.com with SMTP id x16so12927494wrn.4;
- Mon, 29 Mar 2021 06:47:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LDEzUvKkjAIAvpEGtHLesvgMticNcLTXLAP3FMyOp20=;
- b=QgMv/ynDdRRfWLLD1H+6oPildJRa0NtXPSoikSLeCdIBE9YYdG9IhWa3D0NHkYueHe
- 8chQPBQz5nGPtY9fgNvn9APGFCv6tmTskaHuxDYLAJmQQ9a8TDj+H/Mds222JcgNMPdn
- UH2Jvu2nq9lc8DlHoRfJveHMdC8kgU/2tB7M65tY41CEth45jvkrap7CtyHshYRJ3VBx
- aDhyqbRUyg7O/cZBPJsVP7uLx3UMHWekrJOYgJhUIk93zpV+YhvS3Ky0ydwFcirY0E6p
- Zf7IN+mNu9Sf9MUFmyPW/CWXNWJWotMApizLID1AuUkyC5hb4QK1H++JUgU1QdLJKel2
- rFIw==
+ id 1lQsPx-000hMU-Nd; Mon, 29 Mar 2021 13:59:00 +0000
+Received: by mail-oi1-f174.google.com with SMTP id i81so13145047oif.6;
+ Mon, 29 Mar 2021 06:58:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LDEzUvKkjAIAvpEGtHLesvgMticNcLTXLAP3FMyOp20=;
- b=tNurBelK5YCe1v6OW//6Iwvj9NQCSqzMt/olfWiJXpKNhZ9S5e/7J594rhYTEpfkN9
- aY5pAjxPwW38DuOB15vAvq0o+MPDYt/CnXUeiBFObrsnojbE3UQ74JMbA9ZxiYkP8S0L
- 1y0CZZkTzSD/ipXfb22OpLTp9j4mUiGmV8OGA3IArGo2JBs/+GFIo8jGuMpNRikUmnmL
- LiYp6rI9t7LP6tsIYNHXnCqsWu9xF1PTC41rF4OD88YUsGz44i7FdRbr097ceBFzRIzf
- i7x5/CI2+f1PYV5R6qIIgmgxwc9HzfnXEkHuEDdPyPF9roXqAjEJZSXo/PqW3mYb7xY9
- 9y9Q==
-X-Gm-Message-State: AOAM533u61r8gofL/Ans321bBP1VMgkkFOzEyPF2/LuYU3ADaXgL+P8S
- 8L9p9rlOAzHjzsOI4U5SWRA=
-X-Google-Smtp-Source: ABdhPJyzByzyqLM6tlsL+vq+denDIyXkVf9F+7u6Otbf7WudUQp4OKErhkmujtGBPS5iAhA+nISOvg==
-X-Received: by 2002:adf:fd48:: with SMTP id h8mr29064992wrs.229.1617025662200; 
- Mon, 29 Mar 2021 06:47:42 -0700 (PDT)
-Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
- [80.174.240.175])
- by smtp.gmail.com with ESMTPSA id y205sm30561793wmc.18.2021.03.29.06.47.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Mar 2021 06:47:41 -0700 (PDT)
-Subject: Re: [PATCH v5 13/13] arm: dts: mt2701: harmonize node names and
- compatibles
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Jie Qiu <jie.qiu@mediatek.com>,
- CK Hu <ck.hu@mediatek.com>, Cawa Cheng <cawa.cheng@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org
-References: <20210316092232.9806-1-chunfeng.yun@mediatek.com>
- <20210316092232.9806-13-chunfeng.yun@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <b6e523bb-8991-b5e8-576d-55190e7fc49f@gmail.com>
-Date: Mon, 29 Mar 2021 15:47:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9rC/X74azzjRs0pes0OL8Iit7ird9BMRnDmRA641q6s=;
+ b=XBXaZyzLiWOFvEoR3/NXJUZjEN7Kf9iOgkX+tZyvF8k/oO+db23rgNPxFdv2zPrtTx
+ pkFCUH0Ky0xx8rdfPjQJXquzM60tPgo/ddJ7FKN6X3Ec/Jl32ndYVtV6c2crBArDAN/Y
+ brRqBcVwFHhUIDRjSPMSHLPNUbNfJjmVkXeZf0vVhqdbdaMvM+v8jKn8xNbSiFPxpo59
+ N2cAtkFc1J3ztUdh2uG4pxtKg0K74GoHRy05SHBmnWw/amAtZIe7YkOHRA+IWxdt/DLs
+ quaIUXu8ER4kG0z10+BgYIpqCo9ml5YNugINYBkbI/8trccZwKs/lUUenENZxbjVvR4y
+ OWfw==
+X-Gm-Message-State: AOAM530ICRi849l4pC1o68is7FWStVBYKvCaZvtMEnu2iCvyLkQZHdS8
+ rzf3CXzk1LpuWNr6X87VNQ==
+X-Google-Smtp-Source: ABdhPJxVlDLal90W5oTPDVrZQ7LEnLJ7XkMlsj/bLxyytDHqlctz2hufGT6GQfZKiOBW7lPE6EfWQQ==
+X-Received: by 2002:aca:4d8f:: with SMTP id
+ a137mr18442952oib.132.1617026322769; 
+ Mon, 29 Mar 2021 06:58:42 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id v30sm4430627otb.23.2021.03.29.06.58.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Mar 2021 06:58:40 -0700 (PDT)
+Received: (nullmailer pid 2477089 invoked by uid 1000);
+ Mon, 29 Mar 2021 13:58:38 -0000
+Date: Mon, 29 Mar 2021 08:58:38 -0500
+From: Rob Herring <robh@kernel.org>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: linus.walleij@linaro.org, mark.rutland@arm.com, matthias.bgg@gmail.com,
+ sean.wang@kernel.org, srv_heupstream@mediatek.com, hui.liu@mediatek.com,
+ eddie.huang@mediatek.com, jg_poxu@mediatek.com, biao.huang@mediatek.com,
+ hongzhou.yang@mediatek.com, erin.lo@mediatek.com, sean.wang@mediatek.com,
+ seiya.wang@mediatek.com, sj.huang@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
+Subject: Re: [PATCH 2/6] dt-bindings: pinctrl: mt8195: add binding document
+Message-ID: <20210329135838.GA2473026@robh.at.kernel.org>
+References: <20210329065047.8388-1-zhiyong.tao@mediatek.com>
+ <20210329065047.8388-3-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210316092232.9806-13-chunfeng.yun@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210329065047.8388-3-zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_144743_050283_9A697A52 
-X-CRM114-Status: GOOD (  16.41  )
+X-CRM114-CacheID: sfid-20210329_145858_054808_A1710ADD 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,80 +96,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 16/03/2021 10:22, Chunfeng Yun wrote:
-> This is used to fix dtbs_check warning
+On Mon, Mar 29, 2021 at 02:50:43PM +0800, Zhiyong Tao wrote:
+> The commit adds mt8195 compatible node in binding document.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-
-
-Applied now to v5.12-next/dts32
-
+> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > ---
-> v2~v5: no changes
-> ---
->  arch/arm/boot/dts/mt2701.dtsi | 19 +++++++++++--------
->  1 file changed, 11 insertions(+), 8 deletions(-)
+>  .../bindings/pinctrl/pinctrl-mt8195.yaml      | 152 ++++++++++++++++++
+>  1 file changed, 152 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
 > 
-> diff --git a/arch/arm/boot/dts/mt2701.dtsi b/arch/arm/boot/dts/mt2701.dtsi
-> index fade14284017..4776f85d6d5b 100644
-> --- a/arch/arm/boot/dts/mt2701.dtsi
-> +++ b/arch/arm/boot/dts/mt2701.dtsi
-> @@ -607,7 +607,7 @@
->  	};
->  
->  	usb0: usb@1a1c0000 {
-> -		compatible = "mediatek,mt8173-xhci";
-> +		compatible = "mediatek,mt2701-xhci", "mediatek,mtk-xhci";
->  		reg = <0 0x1a1c0000 0 0x1000>,
->  		      <0 0x1a1c4700 0 0x0100>;
->  		reg-names = "mac", "ippc";
-> @@ -620,8 +620,9 @@
->  		status = "disabled";
->  	};
->  
-> -	u3phy0: usb-phy@1a1c4000 {
-> -		compatible = "mediatek,mt2701-u3phy";
-> +	u3phy0: t-phy@1a1c4000 {
-> +		compatible = "mediatek,mt2701-tphy",
-> +			     "mediatek,generic-tphy-v1";
->  		reg = <0 0x1a1c4000 0 0x0700>;
->  		#address-cells = <2>;
->  		#size-cells = <2>;
-> @@ -646,7 +647,7 @@
->  	};
->  
->  	usb1: usb@1a240000 {
-> -		compatible = "mediatek,mt8173-xhci";
-> +		compatible = "mediatek,mt2701-xhci", "mediatek,mtk-xhci";
->  		reg = <0 0x1a240000 0 0x1000>,
->  		      <0 0x1a244700 0 0x0100>;
->  		reg-names = "mac", "ippc";
-> @@ -659,8 +660,9 @@
->  		status = "disabled";
->  	};
->  
-> -	u3phy1: usb-phy@1a244000 {
-> -		compatible = "mediatek,mt2701-u3phy";
-> +	u3phy1: t-phy@1a244000 {
-> +		compatible = "mediatek,mt2701-tphy",
-> +			     "mediatek,generic-tphy-v1";
->  		reg = <0 0x1a244000 0 0x0700>;
->  		#address-cells = <2>;
->  		#size-cells = <2>;
-> @@ -700,8 +702,9 @@
->  		status = "disabled";
->  	};
->  
-> -	u2phy0: usb-phy@11210000 {
-> -		compatible = "mediatek,generic-tphy-v1";
-> +	u2phy0: t-phy@11210000 {
-> +		compatible = "mediatek,mt2701-tphy",
-> +			     "mediatek,generic-tphy-v1";
->  		reg = <0 0x11210000 0 0x0800>;
->  		#address-cells = <2>;
->  		#size-cells = <2>;
+> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+> new file mode 100644
+> index 000000000000..7915b9568c29
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+> @@ -0,0 +1,152 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/pinctrl-mt8195.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT8195 Pin Controller
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@mediatek.com>
+> +
+> +description: |
+> +  The Mediatek's Pin controller is used to control SoC pins.
+> +
+> +properties:
+> +  compatible:
+> +    const: mediatek,mt8195-pinctrl
+> +
+> +  gpio-controller: true
+> +
+> +  '#gpio-cells':
+> +    description: |
+> +      Number of cells in GPIO specifier. Since the generic GPIO binding is used,
+> +      the amount of cells must be specified as 2. See the below
+> +      mentioned gpio binding representation for description of particular cells.
+> +    const: 2
+> +
+> +  gpio-ranges:
+> +    description: gpio valid number range.
+> +    maxItems: 1
+> +
+> +  reg:
+> +    description: |
+> +      Physical address base for gpio base registers. There are 8 GPIO
+> +      physical address base in mt8195.
+> +    maxItems: 8
+> +
+> +  reg-names:
+> +    description: |
+> +      Gpio base register names.
+> +    maxItems: 8
+> +
+> +  interrupt-controller: true
+> +
+> +  '#interrupt-cells':
+> +    const: 2
+> +
+> +  interrupts:
+> +    description: The interrupt outputs to sysirq.
+> +    maxItems: 1
+> +
+> +#PIN CONFIGURATION NODES
+> +patternProperties:
+> +  '^pins':
+
+Normally we're doing '-pins$'.
+
+> +    type: object
+> +    description: |
+> +      A pinctrl node should contain at least one subnodes representing the
+> +      pinctrl groups available on the machine. Each subnode will list the
+> +      pins it needs, and how they should be configured, with regard to muxer
+> +      configuration, pullups, drive strength, input enable/disable and
+> +      input schmitt.
+> +      An example of using macro:
+> +      pincontroller {
+> +        /* GPIO0 set as multifunction GPIO0 */
+> +        state_0_node_a {
+
+Use the node name pattern defined.
+
+> +          pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
+> +        };
+> +        /* GPIO1 set as multifunction CLKM1 */
+> +        state_0_node_b {
+> +          pinmux = <PINMUX_GPIO1__FUNC_CLKM1>;
+> +        };
+> +      };
+> +    $ref: "pinmux-node.yaml"
+> +
+> +    properties:
+> +      pinmux:
+> +        description: |
+> +          Integer array, represents gpio pin number and mux setting.
+> +          Supported pin number and mux varies for different SoCs, and are defined
+> +          as macros in dt-bindings/pinctrl/<soc>-pinfunc.h directly.
+> +
+> +      drive-strength:
+> +        description: |
+> +          It can support some arguments, such as MTK_DRIVE_4mA, MTK_DRIVE_6mA, etc. See
+> +          dt-bindings/pinctrl/mt65xx.h. It can only support 2/4/6/8/10/12/14/16mA in mt8195.
+> +        enum: [2, 4, 6, 8, 10, 12, 14, 16]
+> +
+> +      bias-pull-down: true
+> +
+> +      bias-pull-up: true
+> +
+> +      bias-disable: true
+> +
+> +      output-high: true
+> +
+> +      output-low: true
+> +
+> +      input-enable: true
+> +
+> +      input-disable: true
+> +
+> +      input-schmitt-enable: true
+> +
+> +      input-schmitt-disable: true
+> +
+> +    required:
+> +      - pinmux
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - interrupt-controller
+> +  - '#interrupt-cells'
+> +  - gpio-controller
+> +  - '#gpio-cells'
+> +  - gpio-ranges
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +            #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+> +            #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +            pio: pinctrl@10005000 {
+> +                    compatible = "mediatek,mt8195-pinctrl";
+> +                    reg = <0x10005000 0x1000>,
+> +                          <0x11d10000 0x1000>,
+> +                          <0x11d30000 0x1000>,
+> +                          <0x11d40000 0x1000>,
+> +                          <0x11e20000 0x1000>,
+> +                          <0x11e20000 0x1000>,
+> +                          <0x11eb0000 0x1000>,
+> +                          <0x11f40000 0x1000>,
+> +                          <0x1000b000 0x1000>;
+> +                    reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
+> +                          "iocfg_br", "iocfg_lm", "iocfg_rb",
+> +                          "iocfg_tl", "eint";
+> +                    gpio-controller;
+> +                    #gpio-cells = <2>;
+> +                    gpio-ranges = <&pio 0 0 144>;
+> +                    interrupt-controller;
+> +                    interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                    #interrupt-cells = <2>;
+> +
+> +                    pins {
+> +                      pinmux = <PINMUX_GPIO0__FUNC_GPIO0>;
+> +                      output-low;
+> +                    };
+> +            };
+> -- 
+> 2.18.0
 > 
 
 _______________________________________________
