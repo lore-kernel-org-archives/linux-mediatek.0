@@ -2,93 +2,87 @@ Return-Path: <SRS0=9jr7=I3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27AB5C433DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFC76C433C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 19:00:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B81206191B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 18:59:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B81206191B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8243E6195D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Mar 2021 19:00:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8243E6195D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y4FhSyOjTVgZTGFHTwDHziUW8tWxIGaJ35E0zsOAM7c=; b=WmmltNfx1SzfVpIyu5SUePBmj
-	hxb8ND3Qwgd1kSNZIKbhEnE3QFCfHFeHrsmpKVLqqgpUDRsSaQDZjBlmnRTXJwGJzFfBJ0jdShD8h
-	jF2YEqJi0COp7jbkyZj5Ol7lD9ytZnH56oiZvvwyY8/jmuxaFIsMXhd8TPR6igdEQLa17w7daKmlk
-	naiKsFgS4+qHv4Bf5x8ZLB3AKhG3VEmTX72FO0sos9mHtCQRxtjGiz1uTdgbqYICSVW1Fct2QNms0
-	2ndMjkANj2eT55xEngwoueOFUuzFJVkBo/AVmjPjVkuaQnCNLjsqlSm6fgp7RODNiVb1JhKSGAEo3
-	Emzi+cDoQ==;
+	 bh=uOmqhWEZkJe4xLKWZiX6jUYHNcQCRsfCNwj/jr6Vscg=; b=cemDDaVVIEzweNKzi4DZsdAOv
+	2LQrshKOZg5CMjAKFFWWcGqNy6yoITFlsGxJE88tUZkL9QF4XAVcFtpmkeKOd9zgd5wbwamqtQfis
+	cXe/0uzLrera1IKHeW/3HZ+bfh5dD9VBeBfwvylG5/Bu0A+bYe5J2uk7G7veS8Jq/JrPeRrkVVZ82
+	TjpYOWtqFbXxox/Q1Ledz0YZSyTW33hz7qcfLld1yhtEwLdtSZRlXO/dNPES076sC+qfAMPR7B06O
+	d6/ZF4tT3X48ldg0oLikDGSOR47h8rJIseDya99PeDfkHDW0jnirbzPG1AhCkDDZwoLCny6b7u0YX
+	HkH4vl3oQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lQx6p-0019YO-Tq; Mon, 29 Mar 2021 18:59:32 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1lQx7M-0019km-Mj; Mon, 29 Mar 2021 19:00:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lQptA-000c4I-7z; Mon, 29 Mar 2021 11:16:58 +0000
-Received: by mail-wm1-x329.google.com with SMTP id k128so6405158wmk.4;
- Mon, 29 Mar 2021 04:16:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=hZD7O7xv0sSMIqPZrXXyTfz7eN6fc6s3WRzXvCjxPyE=;
- b=uiCB4H6VmK9ryuN7AOWXE9kJq0jXWFraCJliWmzp8R2o51OVvTJ9Hd9CFLrURFQ+Oe
- CgNAldNeNvBRWloZgxyab4US69T46fK6qnSdgCgejbh96fEQHbEx7Lye6iwLqUjtoRVF
- cLpqU14xaxEhCoOJQDf2jADS5mFtVj1QP4UJ2dZeyKDy3xNNj4uEDfs+fBhb5OsYowJW
- 2wJTeMVlByRWgd/BD6RnXA5c22mCBNDJ0QT+2ancYwU9pAu05Hx0SV1+JFjLsfoE/Zg9
- jXKvJec3WMZrOUBHliFggTuuAcJogXAcUeciuWGNnX1xfZNvSTrEfLHqzY/WNArJBoUx
- 7KCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=hZD7O7xv0sSMIqPZrXXyTfz7eN6fc6s3WRzXvCjxPyE=;
- b=TS1ohXvtkiiOSmM+8QW/1T6FYZKvsO6kLGLBxXNFxphoM8hvSo7bdfzWG3ZJSO2ogw
- 9nveDDD/D+sAMw9+SofY7BsaYd/j5Lq53CWw7eqZDF0C3hWKv0IRDUGzGjFT4MtX2djW
- l5LpmibjSJ4dQb95PgYZrV8T8/6BFjVJO6HTHhBszTRJZWnZBEOqubo0QKTGXadRsMoO
- 9s4c5BbgDTGhLV0HBce+sMJ8vyibZLgylLhlqBcZjwIgJk77oxEgLbsuIVvmohkhzWDZ
- MhSZMIM8jz7o1f0wVx3+0SKRKefUpZD09UDnjHoKZqY+0rYtWg0kuROGYHdCYoGx+usG
- v4oA==
-X-Gm-Message-State: AOAM530nWTPSFeX0336N3rKD8lxjC9nD2pbHdhNkAwfgE76KVZSO6o4y
- 8ECWYDfrUoU2URwhb78q+bk=
-X-Google-Smtp-Source: ABdhPJyugFUfw8eJCOe9rGROZJLludLNJEIo1ORZ4ENfFFWuBE1UrfXXhItnm7h1TslagNU+I9GQ9A==
-X-Received: by 2002:a05:600c:4f89:: with SMTP id
- n9mr24764032wmq.133.1617016615644; 
- Mon, 29 Mar 2021 04:16:55 -0700 (PDT)
-Received: from ziggy.stardust (80.174.240.175.dyn.user.ono.com.
- [80.174.240.175])
- by smtp.gmail.com with ESMTPSA id o5sm22852011wrx.60.2021.03.29.04.16.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Mar 2021 04:16:55 -0700 (PDT)
-Subject: Re: [PATCH 1/2] dt-bindings: devapc: Update bindings
-To: Nina Wu <nina-cm.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Zhen Lei <thunder.leizhen@huawei.com>, Neal Liu <neal.liu@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, Jackson-kt.Chang@mediatek.com
-References: <1616743871-8087-1-git-send-email-nina-cm.wu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <8417423c-0462-f3af-b3a0-2af638850d51@gmail.com>
-Date: Mon, 29 Mar 2021 13:16:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ id 1lQpzY-000cCE-NW; Mon, 29 Mar 2021 11:23:35 +0000
+X-UUID: f858e9dbb6d64833a9494e18fa9778e2-20210329
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=e+j3HOJYkEgb4OFdcu6vsVJWYgl5xZHQHq7OrdvlVdk=; 
+ b=bQyxinlJkp+bNFUeNRxbwP6AMy/JfzSasVFZEu4L++mYvloTIzaswaaEMvlBsM7a0vBCCytDzTO+ccgb+es1nV+TL+rweKL6q1dtJlsC1mxVQ7XaiSFo2ex8IQJNKiWa9LSNxk2EYO4NWS1xnhzJfHkAtMa8msOyyjZt4ZgOSjM=;
+X-UUID: f858e9dbb6d64833a9494e18fa9778e2-20210329
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1383721489; Mon, 29 Mar 2021 03:23:23 -0800
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Mar 2021 04:23:21 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 29 Mar 2021 19:23:17 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 29 Mar 2021 19:23:16 +0800
+Message-ID: <1617016996.10316.5.camel@mhfsdcap03>
+Subject: Re: [PATCH Resend 0/6] Mediatek pinctrl patch on mt8195
+From: zhiyong tao <zhiyong.tao@mediatek.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+CC: Rob Herring <robh+dt@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <sean.wang@kernel.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>, Eddie Huang
+ <eddie.huang@mediatek.com>, <jg_poxu@mediatek.com>,
+ <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
+ <erin.lo@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ <seiya.wang@mediatek.com>, Sj Huang <sj.huang@mediatek.com>, devicetree
+ <devicetree@vger.kernel.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, linux-arm Mailing List
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM"
+ <linux-gpio@vger.kernel.org>
+Date: Mon, 29 Mar 2021 19:23:16 +0800
+In-Reply-To: <CAHp75Vcms=dAXcACraU4BHENee6j+CTwQtMVtURdnMHVAmTXkw@mail.gmail.com>
+References: <20210329080611.9312-1-zhiyong.tao@mediatek.com>
+ <CAHp75Vcms=dAXcACraU4BHENee6j+CTwQtMVtURdnMHVAmTXkw@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1616743871-8087-1-git-send-email-nina-cm.wu@mediatek.com>
-Content-Language: en-US
+X-TM-SNTS-SMTP: 9B1EC72129735A46A7FFA3D75144C8A618421BEB0AA235F01220821420B777472000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210329_121656_441201_A157B6DA 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20210329_122333_298143_15907853 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,99 +99,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 26/03/2021 08:31, Nina Wu wrote:
-> From: Nina Wu <Nina-CM.Wu@mediatek.com>
+On Mon, 2021-03-29 at 13:47 +0300, Andy Shevchenko wrote:
+> On Mon, Mar 29, 2021 at 11:09 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+> >
+> > This series includes 6 patches:
+> > 1.add pinctrl file on mt8195.
+> > 2.add pinctrl binding document on mt8195.
+> > 3.add pinctrl device node on mt8195.
+> > 4.add pinctrl driver on MT8195.
+> > 5.add pinctrl drive for I2C related pins on MT8195.
+> > 6.add pinctrl rsel setting on MT8195.
 > 
-> To support newer hardware architecture of devapc,
-> update device tree bindings.
+> You submitted the same version of the series twice, but it confuses people.
+> Now you have to properly send the series only one time with the
+> correct version added and changelog explains the changes done between
+> the versions.
 > 
-> Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
-> ---
->  .../devicetree/bindings/soc/mediatek/devapc.yaml   | 41 ++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
-> index 31e4d3c..489f6a9 100644
-> --- a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
-> +++ b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
-> @@ -20,9 +20,27 @@ properties:
->    compatible:
->      enum:
->        - mediatek,mt6779-devapc
-> +      - mediatek,mt8192-devapc
-> +
-> +  version:
-> +    description: The version of the hardware architecture
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    enum: [1, 2]
-> +    maxItems: 1
-> +
-> +  slave_type_num:
-> +    description: The number of the devapc set
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    enum: [1, 4]
-> +    maxItems: 1
->  
->    reg:
->      description: The base address of devapc register bank
-> +    maxItems: 4
-> +
-> +  vio_idx_num:
-> +    description: The number of the devices controlled by devapc
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
 
-This can all per compatible DT data objects in the driver. Don't add new
-properties here.
+==> Hi, Andy,
+There are no change between the two version.
+Because we get the refused mail from
+"linux-arm-kernel@lists.infradead.org".
+The error mail:
+Delivery has failed to these recipients or groups:
+linux-arm-kernel@lists.infradead.org
+A problem occurred while delivering this message to this email address.
+Try sending this message again. If the problem continues, please contact
+your helpdesk.
+The following organization rejected your message: desiato.infradead.org
+[90.155.92.199].
 
-Regards,
-Matthias
+We will send v0 version  and add v0 version in every patch next time.
 
->      maxItems: 1
->  
->    interrupts:
-> @@ -39,7 +57,10 @@ properties:
->  
->  required:
->    - compatible
-> +  - version
-> +  - slave_type_num
->    - reg
-> +  - vio_idx_num
->    - interrupts
->    - clocks
->    - clock-names
-> @@ -53,8 +74,28 @@ examples:
->  
->      devapc: devapc@10207000 {
->        compatible = "mediatek,mt6779-devapc";
-> +      version = <1>;
-> +      slave_type_num = <1>;
->        reg = <0x10207000 0x1000>;
-> +      vio_idx_num = <511>;
->        interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
->        clocks = <&infracfg_ao CLK_INFRA_DEVICE_APC>;
->        clock-names = "devapc-infra-clock";
->      };
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/mt8192-clk.h>
-> +
-> +    devapc: devapc@10207000 {
-> +        compatible = "mediatek,mt8192-devapc";
-> +        version = <2>;
-> +        slave_type_num = <4>;
-> +        reg = <0 0x10207000 0 0x1000>,
-> +            <0 0x10274000 0 0x1000>,
-> +            <0 0x10275000 0 0x1000>,
-> +            <0 0x11020000 0 0x1000>;
-> +        vio_idx_num = <367 292 242 58>;
-> +        interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
-> +        clocks = <&infracfg_ao CLK_INFRA_DEVICE_APC>;
-> +        clock-names = "devapc-infra-clock";
-> +    };
-> 
+Thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
