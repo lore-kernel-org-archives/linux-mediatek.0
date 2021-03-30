@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 843B0C433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58C15C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:25:09 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3329E6196A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3329E6196A
+	by mail.kernel.org (Postfix) with ESMTPS id 0EE08619A7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:25:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EE08619A7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XXcgu6qgQbvMR4m500cpwmbhki0hE6EXl1I8U9TKS7A=; b=M6nhJUJvzPsvS92OFGxgphACe
-	I8TI0V7g9M+UBMVcMt8flbMGeeB2rVLUu41IXKJoiTnaNBHDlggk82qPpifIxlqaK1pUJUIf2+oDu
-	uMm3m6q6yedkyTFE1CmNLs5mWbFJDpRieYOaSXXQfU3qtz1fhaiXm1xTWVYfRqm+b8vY6lRxjQGWA
-	V7RovuVJyyQ+ewMZcKUu5wlvWtsJyrj8xgqcnvBIVehFst0TW+tU/m8Ki3m5QJcA2bkRXb6LRmtcE
-	/QdUoKGs6fDDExqYYZkKPOyPm/I5QdEl4VAEeOuA8g2+bGHweIBtjdc3VApSDKnlpsbQkjv5Vvdrv
-	Tec7zerDw==;
+	 bh=R9WvvytD5L00cD2Q/tLKi2VTKI3lUfWZ6n4FxfGhWuo=; b=Z71/Sn5yGPoiHL5rlmJOD6qYU
+	f9Po5/sWIUPmmSf6dTVfcyqchKwi56gzGRYoE75ZhvlEdTzRER8NDeG+P2X08yThMfy5v1hBz6qpI
+	7bWZyDNQaDmD0QN1qSEHHFNPwQsfjiXxSF0eTJ1UG4WqPAgeipOspyvHFh7EuaY8aYAmQYWYtMqh5
+	J2WgRVx++p2cHGGwwIPYh3c0LIcFmIK1bEpQfCH9V3xSdk+VHIF3cBtixfoobPdJJ6y+wz16bJ8Np
+	srIANwGSiq0N8jDb6IBYCmOiuxXg1Ich7/Rvjgl8UD2szIupQ6qVync5ihgKRj0+a73jWzDgeuEMu
+	n116a0gdg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRGEW-004A9G-Vt; Tue, 30 Mar 2021 15:24:45 +0000
+	id 1lRGEj-004AEp-K7; Tue, 30 Mar 2021 15:24:58 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRGDZ-0049lh-Lj; Tue, 30 Mar 2021 15:23:47 +0000
+ id 1lRGDb-0049my-Pv; Tue, 30 Mar 2021 15:23:49 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 475E661957;
- Tue, 30 Mar 2021 15:23:44 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 862026024A;
+ Tue, 30 Mar 2021 15:23:46 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lRG2G-004i6i-Jk; Tue, 30 Mar 2021 16:12:04 +0100
+ id 1lRG2F-004i6i-Jr; Tue, 30 Mar 2021 16:12:03 +0100
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -67,9 +67,10 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v3 14/14] PCI: Refactor HT advertising of NO_MSI flag
-Date: Tue, 30 Mar 2021 16:11:45 +0100
-Message-Id: <20210330151145.997953-15-maz@kernel.org>
+Subject: [PATCH v3 13/14] PCI/MSI: Document the various ways of ending up with
+ NO_MSI
+Date: Tue, 30 Mar 2021 16:11:44 +0100
+Message-Id: <20210330151145.997953-14-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210330151145.997953-1-maz@kernel.org>
 References: <20210330151145.997953-1-maz@kernel.org>
@@ -90,8 +91,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_162346_157035_A826040B 
-X-CRM114-Status: GOOD (  14.99  )
+X-CRM114-CacheID: sfid-20210330_162348_229591_3BD80936 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,56 +109,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The few quirks that deal with NO_MSI tend to be copy-paste heavy.
-Refactor them so that the hierarchy of conditions is slightly
-cleaner.
+We have now three ways of ending up with NO_MSI being set.
+Document them.
 
 Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/quirks.c | 15 ++++-----------
- 1 file changed, 4 insertions(+), 11 deletions(-)
+ drivers/pci/msi.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 653660e3ba9e..972bb0f9f994 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -2585,10 +2585,8 @@ static int msi_ht_cap_enabled(struct pci_dev *dev)
- /* Check the HyperTransport MSI mapping to know whether MSI is enabled or not */
- static void quirk_msi_ht_cap(struct pci_dev *dev)
- {
--	if (dev->subordinate && !msi_ht_cap_enabled(dev)) {
--		pci_warn(dev, "MSI quirk detected; subordinate MSI disabled\n");
--		dev->subordinate->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
--	}
-+	if (!msi_ht_cap_enabled(dev))
-+		quirk_disable_msi(dev);
- }
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_SERVERWORKS, PCI_DEVICE_ID_SERVERWORKS_HT2000_PCIE,
- 			quirk_msi_ht_cap);
-@@ -2601,9 +2599,6 @@ static void quirk_nvidia_ck804_msi_ht_cap(struct pci_dev *dev)
- {
- 	struct pci_dev *pdev;
- 
--	if (!dev->subordinate)
--		return;
--
- 	/*
- 	 * Check HT MSI cap on this chipset and the root one.  A single one
- 	 * having MSI is enough to be sure that MSI is supported.
-@@ -2611,10 +2606,8 @@ static void quirk_nvidia_ck804_msi_ht_cap(struct pci_dev *dev)
- 	pdev = pci_get_slot(dev->bus, 0);
- 	if (!pdev)
- 		return;
--	if (!msi_ht_cap_enabled(dev) && !msi_ht_cap_enabled(pdev)) {
--		pci_warn(dev, "MSI quirk detected; subordinate MSI disabled\n");
--		dev->subordinate->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
--	}
-+	if (!msi_ht_cap_enabled(pdev))
-+		quirk_msi_ht_cap(dev);
- 	pci_dev_put(pdev);
- }
- DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_CK804_PCIE,
+diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
+index d9c73c173c14..217dc9f0231f 100644
+--- a/drivers/pci/msi.c
++++ b/drivers/pci/msi.c
+@@ -871,8 +871,15 @@ static int pci_msi_supported(struct pci_dev *dev, int nvec)
+ 	 * Any bridge which does NOT route MSI transactions from its
+ 	 * secondary bus to its primary bus must set NO_MSI flag on
+ 	 * the secondary pci_bus.
+-	 * We expect only arch-specific PCI host bus controller driver
+-	 * or quirks for specific PCI bridges to be setting NO_MSI.
++	 *
++	 * The NO_MSI flag can either be set directly by:
++	 * - arch-specific PCI host bus controller drivers (deprecated)
++	 * - quirks for specific PCI bridges
++	 *
++	 * or indirectly by platform-specific PCI host bridge drivers by
++	 * advertising the 'msi_domain' property, which results in
++	 * the NO_MSI flag when no MSI domain is found for this bridge
++	 * at probe time.
+ 	 */
+ 	for (bus = dev->bus; bus; bus = bus->parent)
+ 		if (bus->bus_flags & PCI_BUS_FLAGS_NO_MSI)
 -- 
 2.29.2
 
