@@ -2,69 +2,61 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6AB3C433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 08:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AEB5C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 08:47:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 616726198F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 08:43:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 616726198F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id DB13F6191B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 08:47:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB13F6191B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8Xj5c8gDxJsL2uM7Hipq0DC0pJ3lduVWqbJtxL7NPZI=; b=Qb8tf/PfKIuJrDKuOcfewfqmF
-	aPK978aNSrLTSjp4b7tGd9iRlCwDaLUadwnMxqTUdDIZGuO9VCE9z9C3HdgAktjHzIGxaBhdRIvr4
-	hJ/gQtaVCx4RbOeIbKMzI7CHKTmFytXyn6XD4GpxjkmTEGj2gMfKx3zz8JQvotgSehEhh/O5/exhD
-	23MkZkvGCC7W7BxO0jciJ0qwykN6oI85U4PSsl40qbecKWukfSJhyuiOaZTvtCfxKKSDddT01wIFi
-	fdEsqzAy+P1h7Y8eTOrUXbiI/gueGtGtTmq/Pc9J1cZoBp1kjO3xF3YEY16VspWT11s2DRdVNk+Qc
-	kiZu3lo+g==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lI3Qe2uK1lcv7zsd17hS7eSKEAk+g6ZPcrgXOHTYoi8=; b=ZJ9+zQ3srPAdhXRNgqLqa27Chk
+	dGG5rU8Z4pMYToHhP/HbQVGzrRQEkKDF9P5fO8DwoAOB/LAWVQVbSiQGN+91szBI7SMgWhZoSZ/Ar
+	dvCApNnM5iqqbv9CY/JzLe5pkzU2+Hhq3jJi/TlOlWZ2JeQyE7XaUnqoTFWk6PY9SC3mNmzfyyDn1
+	nDEkVZHQkAnc+MloE/WCieChMwGf6Smp29SZoKVSfSNOICr9TaGPoAGeIHW6AXHPogRtToQe0JBgX
+	hoAmZO+LnZ2vxaLCOXqVa0bHxUA60Os6bFSQlLc7G1cdBNLEDr2+LmolafCAFWz6RwIKPzR2pvRUD
+	4dmyyipg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR9y1-0034Iy-9P; Tue, 30 Mar 2021 08:43:17 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lR9xn-0034Dx-E3; Tue, 30 Mar 2021 08:43:06 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1BC4EED1;
- Tue, 30 Mar 2021 01:42:56 -0700 (PDT)
-Received: from [10.57.21.131] (unknown [10.57.21.131])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B45713F719;
- Tue, 30 Mar 2021 01:42:52 -0700 (PDT)
-Subject: Re: [PATCH v2] thermal: cpufreq_cooling: fix slab OOB issue
-To: Michael Kao <michael.kao@mediatek.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Zhang Rui <rui.zhang@intel.com>, fan.chen@mediatek.com,
- linux-pm@vger.kernel.org, srv_heupstream@mediatek.com,
- Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- brian-sy yang <brian-sy.yang@mediatek.com>, linux-kernel@vger.kernel.org,
- Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
+	id 1lRA2E-0035D8-Nl; Tue, 30 Mar 2021 08:47:38 +0000
+Received: from youngberry.canonical.com ([91.189.89.112])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lRA23-0035B9-0n; Tue, 30 Mar 2021 08:47:28 +0000
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+ by youngberry.canonical.com with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <colin.king@canonical.com>)
+ id 1lRA1m-0004fg-PJ; Tue, 30 Mar 2021 08:47:10 +0000
+From: Colin King <colin.king@canonical.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-References: <20201229050831.19493-1-michael.kao@mediatek.com>
- <1617072684.13941.2.camel@mtksdccf07>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <e7bf390f-c4b8-0ba0-6bab-41a8bd406046@arm.com>
-Date: Tue, 30 Mar 2021 09:42:50 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Argus Lin <argus.lin@mediatek.com>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH][next] ASoC: mediatek: mt6359: Fix spelling mistake "reate" ->
+ "create"
+Date: Tue, 30 Mar 2021 09:47:10 +0100
+Message-Id: <20210330084710.997731-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <1617072684.13941.2.camel@mtksdccf07>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_094303_835039_BFCB1EB5 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20210330_094727_152300_6452B942 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +68,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Colin Ian King <colin.king@canonical.com>
 
+There is a spelling mistake in a dev_err error message. Fix it.
 
-On 3/30/21 3:51 AM, Michael Kao wrote:
-> Dear Daniel,
-> 
-> Kindly ping.
-> Can this patch be merged? Or any comment?
-> 
-> BR,
-> Michael
-> 
-> On Tue, 2020-12-29 at 13:08 +0800, Michael Kao wrote:
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ sound/soc/codecs/mt6359-accdet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please also send it to stable@vger.kernel.org
-since it affects stable versions starting from v5.7.
-Was applied there as  9006b543384ab10 [1].
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index 0bef6eaad5ad..4222aed013f1 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -1019,7 +1019,7 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 	priv->jd_workqueue = create_singlethread_workqueue("mt6359_accdet_jd");
+ 	INIT_WORK(&priv->jd_work, mt6359_accdet_jd_work);
+ 	if (!priv->jd_workqueue) {
+-		dev_err(&pdev->dev, "Failed to reate jack detect workqueue\n");
++		dev_err(&pdev->dev, "Failed to create jack detect workqueue\n");
+ 		ret = -1;
+ 		goto err_eint_wq;
+ 	}
+-- 
+2.30.2
 
-Regards,
-Lukasz
-
-[1] https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7.8
 
 _______________________________________________
 Linux-mediatek mailing list
