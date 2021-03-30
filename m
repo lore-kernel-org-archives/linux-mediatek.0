@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9038BC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB47DC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 392626196A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 392626196A
+	by mail.kernel.org (Postfix) with ESMTPS id 6A136619AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:24:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A136619AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1lQcjTc7avPS2pT6Z3/ok7WhmKzDCjkhJvSTC31xO/o=; b=M5RKyH2IeREhTH+WohjxnX+AC
-	aJjm1iokolgDjNBkFUPLA1pHX2AIlBiQhGPtFnCrlm9WZSqlEeEMoC/9LooACAPFOKmU1LuOQWO1N
-	usOMZ3PO0xw9vSlsJ+bfCIdROfMQgAJPn4FoXdSluWF3jukkMijp6ejJvElCza/gy5lo5Q1lx471N
-	fBb5snPqq5y3motJIlZfbw5wx9ksDMhy3H9M8EEblKH+VKTVDiP1Jsjy8kCOaIcM51DQ3DLcI0QDs
-	wDhQ4RBAjoLcP167HZ+W5SyQH/ZddaNUwH2jrMqaA3xVPNLePbm1erXHyvb6QKeSJ6yvgk9P5ZEc3
-	eu6jEjdbA==;
+	 bh=8ygjdE2LKlg4oelPrGXUwCePYigXvfslGWQ8w6UGNY4=; b=dy+4F61VAzYofTfenA23PGw63
+	Ga6A+vr0kXKkzyuC67bad/F2DS7V9MPdMP5YBWuJP437QwKjLnh/tQtUpBTC+6o4HCgqwQL1r6V4Y
+	AqZbUBs3ByOK6uDe6L/gQ2JZfExC8SVO32OsyqVY5OQEvnszCKDgRys2roSObEjksKV2+tKCEiAAN
+	UN41NwVZCt0jr0vKKspF8S2JdVEhWlbqdhvUztmCRZ+/cn6yZ931HkBPOcYCEOdZ1rY2IgdpSVehh
+	44VGWIb3k+56o/yPa3DT+BUIGqaZ3WJis+CHkogXbAwLrNxqGFa78HubXmA8VCIS9taf6X8eMrcPe
+	Thnw8ePWw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRGE3-0049xK-8x; Tue, 30 Mar 2021 15:24:15 +0000
+	id 1lRGE4-0049xo-Jg; Tue, 30 Mar 2021 15:24:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRGDU-0049j9-7y; Tue, 30 Mar 2021 15:23:45 +0000
+ id 1lRGDV-0049jK-Sb; Tue, 30 Mar 2021 15:23:44 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 95412619A7;
- Tue, 30 Mar 2021 15:23:38 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8D05D619D9;
+ Tue, 30 Mar 2021 15:23:40 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lRG2E-004i6i-I7; Tue, 30 Mar 2021 16:12:02 +0100
+ id 1lRG2C-004i6i-0w; Tue, 30 Mar 2021 16:12:00 +0100
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -67,10 +67,10 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v3 12/14] PCI: mediatek: Advertise lack of built-in MSI
- handling
-Date: Tue, 30 Mar 2021 16:11:43 +0100
-Message-Id: <20210330151145.997953-13-maz@kernel.org>
+Subject: [PATCH v3 10/14] PCI/MSI: Let PCI host bridges declare their reliance
+ on MSI domains
+Date: Tue, 30 Mar 2021 16:11:41 +0100
+Message-Id: <20210330151145.997953-11-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210330151145.997953-1-maz@kernel.org>
 References: <20210330151145.997953-1-maz@kernel.org>
@@ -91,8 +91,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_162341_803510_09523769 
-X-CRM114-Status: GOOD (  17.66  )
+X-CRM114-CacheID: sfid-20210330_162342_375389_2588534C 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,61 +109,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Thomas Gleixner <tglx@linutronix.de>
+There is a whole class of host bridges that cannot know whether
+MSIs will be provided or not, as they rely on other blocks
+to provide the MSI functionnality, using MSI domains.  This is
+the case for example on systems that use the ARM GIC architecture.
 
-Some Mediatek host bridges cannot handle MSIs, which is sad.
-This also results in an ugly warning at device probe time,
-as the core PCI code wasn't told that MSIs were not available.
-
-Advertise this fact to the rest of the core PCI code by
-using the 'msi_domain' attribute, which still opens the possibility
-for another block to provide the MSI functionnality.
+Introduce a new attribute ('msi_domain') indicating that implicit
+dependency, and use this property to set the NO_MSI flag when
+no MSI domain is found at probe time.
 
 Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-Reported-by: Frank Wunderlich <frank-w@public-files.de>
-Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-[maz: commit message, switched over to msi_domain attribute]
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/controller/pcie-mediatek.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/pci/probe.c | 2 ++
+ include/linux/pci.h | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 23548b517e4b..9c10d87b6134 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -143,6 +143,7 @@ struct mtk_pcie_port;
-  * struct mtk_pcie_soc - differentiate between host generations
-  * @need_fix_class_id: whether this host's class ID needed to be fixed or not
-  * @need_fix_device_id: whether this host's device ID needed to be fixed or not
-+ * @no_msi: Bridge has no MSI support, and relies on an external block
-  * @device_id: device ID which this host need to be fixed
-  * @ops: pointer to configuration access functions
-  * @startup: pointer to controller setting functions
-@@ -151,6 +152,7 @@ struct mtk_pcie_port;
- struct mtk_pcie_soc {
- 	bool need_fix_class_id;
- 	bool need_fix_device_id;
-+	bool no_msi;
- 	unsigned int device_id;
- 	struct pci_ops *ops;
- 	int (*startup)(struct mtk_pcie_port *port);
-@@ -1087,6 +1089,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index fb04fc81a8bd..aa6fba35f5d1 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -925,6 +925,8 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
+ 	device_enable_async_suspend(bus->bridge);
+ 	pci_set_bus_of_node(bus);
+ 	pci_set_bus_msi_domain(bus);
++	if (bridge->msi_domain && !dev_get_msi_domain(&bus->dev))
++		bus->bus_flags |= PCI_BUS_FLAGS_NO_MSI;
  
- 	host->ops = pcie->soc->ops;
- 	host->sysdata = pcie;
-+	host->msi_domain = pcie->soc->no_msi;
+ 	if (!parent)
+ 		set_dev_node(bus->bridge, pcibus_to_node(bus));
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index ebf557e59d87..ede0aef2cfd4 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -550,6 +550,7 @@ struct pci_host_bridge {
+ 	unsigned int	native_dpc:1;		/* OS may use PCIe DPC */
+ 	unsigned int	preserve_config:1;	/* Preserve FW resource setup */
+ 	unsigned int	size_windows:1;		/* Enable root bus sizing */
++	unsigned int	msi_domain:1;		/* Bridge wants MSI domain */
  
- 	err = pci_host_probe(host);
- 	if (err)
-@@ -1176,6 +1179,7 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
- };
- 
- static const struct mtk_pcie_soc mtk_pcie_soc_v1 = {
-+	.no_msi = true,
- 	.ops = &mtk_pcie_ops,
- 	.startup = mtk_pcie_startup_port,
- };
+ 	/* Resource alignment requirements */
+ 	resource_size_t (*align_resource)(struct pci_dev *dev,
 -- 
 2.29.2
 
