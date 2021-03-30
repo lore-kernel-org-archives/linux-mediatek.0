@@ -2,50 +2,50 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B2E6C4345B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D70BC433E0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:13:16 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DBD19619E5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:12:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DBD19619E5
+	by mail.kernel.org (Postfix) with ESMTPS id 1F227619CD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:13:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F227619CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GSWIjy0zup5HdQil8sSVdwGFLaxm8VII7353JqKs2FA=; b=B7xM6BbdxE+BtVbAzQSrq2+hJ
-	Uxho5kB8HFLqdvRblWakAhK31G2vBMV9zMBuwqDPQkucDYZ83RcHIUALGvzLeRfTpNJCRY5M5PA29
-	0uwoEk3Mk778dm/ZdflDK8BTPAFZa+FwpjHR0b87Z4Kq81Jy5Y3OE1VQy69fvL44AYLR7bHG289pR
-	YAfeCJt+iSvkI2p12CZHDDU1cMzDTMjg33mjR+GLhKuv4W7eUkaOOZjU15hnJF2aiC55e1RVbnZRf
-	q1a00oG9Wr1kKSHHdBsyskJEgaxfIfIHSFjfrNJluxscfrwXsjMC93KExu94zSgQNtbI1Rxkc4ZZt
-	FmRHNpRHQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=GZ5dL3YxM/EA1AwaqdwqV4ZM6068MzZcAWGYxJOjRyg=; b=WUuVsdvy36fmd4+Y67XZRwl1ZU
+	yNSopjNlNElPVJiV4dOw60OGi3haPNd97yvVBsUiYpa4zSbCmCxTp4Gfh7IjeoLnB8onatOdHEXk3
+	YppMm234/cruk+DUO2LYQEnxcnL9AibTIs+M3Z5pgTQP77gZnX4hC/41gXHV6ImNvj/VWTd9Hit0q
+	4irk98xe7R6sq7pwABAk3fyfTnBF878d+7NygJZSmwaG4bkub4dSFTw6tKN6MIo+ejn6U7l0Imy4J
+	v91u5YEVGirVzuZJuoiIhQ1vUmSovRIBCPbG+KGI8S/wZikkxyMN3PM3hMbRU7ElX327u3CcJVLl0
+	6eQz1wNQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRG2y-0046vc-7b; Tue, 30 Mar 2021 15:12:48 +0000
+	id 1lRG3B-00470X-Vb; Tue, 30 Mar 2021 15:13:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRG29-0046ib-1q; Tue, 30 Mar 2021 15:12:00 +0000
+ id 1lRG27-0046iE-Tu; Tue, 30 Mar 2021 15:12:00 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C5C45619D0;
- Tue, 30 Mar 2021 15:11:55 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 35B3B619CD;
+ Tue, 30 Mar 2021 15:11:52 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lRG26-004i6i-6K; Tue, 30 Mar 2021 16:11:54 +0100
+ id 1lRG22-004i6i-4k; Tue, 30 Mar 2021 16:11:50 +0100
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -67,13 +67,11 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v3 04/14] PCI: xilinx: Don't allocate extra memory for the MSI
- capture address
-Date: Tue, 30 Mar 2021 16:11:35 +0100
-Message-Id: <20210330151145.997953-5-maz@kernel.org>
+Subject: [PATCH v3 00/14] PCI/MSI: Getting rid of msi_controller,
+ and other cleanups
+Date: Tue, 30 Mar 2021 16:11:31 +0100
+Message-Id: <20210330151145.997953-1-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210330151145.997953-1-maz@kernel.org>
-References: <20210330151145.997953-1-maz@kernel.org>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 62.31.163.78
 X-SA-Exim-Rcpt-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com,
@@ -91,8 +89,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_161158_137962_4A528824 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20210330_161156_532072_B80C1B44 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,74 +107,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A long cargo-culted behaviour of PCI drivers is to allocate memory
-to obtain an address that is fed to the controller as the MSI
-capture address (i.e. the MSI doorbell).
+This is a respin of the series described at [1].
 
-But there is no actual requirement for this address to be RAM.
-All it needs to be is a suitable aligned address that will
-*not* be DMA'd to.
+* From v2 [2]:
+  - Fixed the Xilinx driver, thanks to Bharat for testing it
+  - Dropped the no_msi attribute, and solely rely on msi_domain, which
+    has the same effect for the only platform that was using it.
+  - Fixed compilation on architectures that do not select the generic
+    MSI support
 
-Use the physical address of the 'port' data structure as the MSI
-capture address, aligned on a 4K boundary.
+* From v1:
+  - Extracted the changes dealing with the MSI capture address
+    for rcar and xilinx and moved them to separate patches
+  - Changed the rcar code to cope with c4e0fec2f7ee ("PCI: rcar: Always
+    allocate MSI addresses in 32bit space")
+  - Fixed rcar resume code
+  - Reworked commit messages
+  - Rebased onto v5.12-rc4
+  - Collected Acks, and TBs, with thanks.
 
-Tested-by: Bharat Kumar Gogada <bharatku@xilinx.com>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
----
- drivers/pci/controller/pcie-xilinx.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+[1] https://lore.kernel.org/r/20210225151023.3642391-1-maz@kernel.org
+[2] https://lore.kernel.org/r/20210322184614.802565-1-maz@kernel.org
 
-diff --git a/drivers/pci/controller/pcie-xilinx.c b/drivers/pci/controller/pcie-xilinx.c
-index fa5baeb82653..e127a7b6e535 100644
---- a/drivers/pci/controller/pcie-xilinx.c
-+++ b/drivers/pci/controller/pcie-xilinx.c
-@@ -94,7 +94,6 @@
-  * struct xilinx_pcie_port - PCIe port information
-  * @reg_base: IO Mapped Register Base
-  * @irq: Interrupt number
-- * @msi_pages: MSI pages
-  * @dev: Device pointer
-  * @msi_domain: MSI IRQ domain pointer
-  * @leg_domain: Legacy IRQ domain pointer
-@@ -103,7 +102,6 @@
- struct xilinx_pcie_port {
- 	void __iomem *reg_base;
- 	u32 irq;
--	unsigned long msi_pages;
- 	struct device *dev;
- 	struct irq_domain *msi_domain;
- 	struct irq_domain *leg_domain;
-@@ -274,10 +272,10 @@ static int xilinx_pcie_msi_setup_irq(struct msi_controller *chip,
- 
- 	irq_set_msi_desc(irq, desc);
- 
--	msg_addr = virt_to_phys((void *)port->msi_pages);
-+	msg_addr = ALIGN_DOWN(virt_to_phys(port), SZ_4K);
- 
--	msg.address_hi = 0;
--	msg.address_lo = msg_addr;
-+	msg.address_hi = upper_32_bits(msg_addr);
-+	msg.address_lo = lower_32_bits(msg_addr);
- 	msg.data = irq;
- 
- 	pci_write_msi_msg(irq, &msg);
-@@ -330,13 +328,9 @@ static int xilinx_pcie_enable_msi(struct xilinx_pcie_port *port)
- {
- 	phys_addr_t msg_addr;
- 
--	port->msi_pages = __get_free_pages(GFP_KERNEL, 0);
--	if (!port->msi_pages)
--		return -ENOMEM;
--
--	msg_addr = virt_to_phys((void *)port->msi_pages);
--	pcie_write(port, 0x0, XILINX_PCIE_REG_MSIBASE1);
--	pcie_write(port, msg_addr, XILINX_PCIE_REG_MSIBASE2);
-+	msg_addr = ALIGN_DOWN(virt_to_phys(port), SZ_4K);
-+	pcie_write(port, upper_32_bits(msg_addr), XILINX_PCIE_REG_MSIBASE1);
-+	pcie_write(port, lower_32_bits(msg_addr), XILINX_PCIE_REG_MSIBASE2);
- 
- 	return 0;
- }
+Marc Zyngier (13):
+  PCI: tegra: Convert to MSI domains
+  PCI: rcar: Don't allocate extra memory for the MSI capture address
+  PCI: rcar: Convert to MSI domains
+  PCI: xilinx: Don't allocate extra memory for the MSI capture address
+  PCI: xilinx: Convert to MSI domains
+  PCI: hv: Drop msi_controller structure
+  PCI/MSI: Drop use of msi_controller from core code
+  PCI/MSI: Kill msi_controller structure
+  PCI/MSI: Kill default_teardown_msi_irqs()
+  PCI/MSI: Let PCI host bridges declare their reliance on MSI domains
+  PCI/MSI: Make pci_host_common_probe() declare its reliance on MSI
+    domains
+  PCI/MSI: Document the various ways of ending up with NO_MSI
+  PCI: Refactor HT advertising of NO_MSI flag
+
+Thomas Gleixner (1):
+  PCI: mediatek: Advertise lack of built-in MSI handling
+
+ drivers/pci/controller/Kconfig           |   4 +-
+ drivers/pci/controller/pci-host-common.c |   1 +
+ drivers/pci/controller/pci-hyperv.c      |   4 -
+ drivers/pci/controller/pci-tegra.c       | 343 ++++++++++++----------
+ drivers/pci/controller/pcie-mediatek.c   |   4 +
+ drivers/pci/controller/pcie-rcar-host.c  | 356 +++++++++++------------
+ drivers/pci/controller/pcie-xilinx.c     | 246 +++++++---------
+ drivers/pci/msi.c                        |  45 +--
+ drivers/pci/probe.c                      |   4 +-
+ drivers/pci/quirks.c                     |  15 +-
+ include/linux/msi.h                      |  17 +-
+ include/linux/pci.h                      |   3 +-
+ 12 files changed, 484 insertions(+), 558 deletions(-)
+
 -- 
 2.29.2
 
