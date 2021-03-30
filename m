@@ -2,79 +2,98 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 56E49C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 03:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B98FC433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 04:37:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C74F86195D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 03:02:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C74F86195D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0364B61994
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 04:37:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0364B61994
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mv/ovLbhxaI6JpO4rtKdm7N0NMJCRyezbXeyWB8R3lg=; b=nQjdIN8LnPegxuhddbbS4qoCY
-	1HVVPA3Y6naLGZ8TIOEDEZNB3x1rmf8V7WuUCubkVqOAz9xnmfMaSoeTVoF0WUyibHpgFCk/dc3C6
-	aJYmWZsJEH57hac2pRZDy4I2HbQ84Hrgfvu0l4on7CsOoumu+WzB5AvddGw+dRZKQ5NhHl3FR18DD
-	I38D9TgCCQGGMbjEMXN74H6PZPvUVMORmOGzwnlF/mdXv4z3M8YUvjZvLEHhM5p+fw1saHGOrcje5
-	d3/6JudOqbcHN4NCBS0oAxCAkrymJ/TYnNH5qLsWwWqWR45p1lv4zPizNeUcZDto7VLZfJMvqI/Na
-	4nw8djvKg==;
+	 bh=EhTx/44ixbQcOGneD0ZJ8Ug9rp19cbOvdmIW6XljAEY=; b=p3NTX/6M30dLZCdbB93uxI5jg
+	DCqcStY+f5kCKckkZ/ycFyYgp4/jBJJyTOmvYZkVy+gxy35Ylj4GBNL9jcN+AGjmycvINH/4lffwd
+	XDsAsZn/TDkWVGoz72BQLXe7ejPY7iCS53O9cLz/xgZEGu5lVftZ1oKJHiTYuNHwShqBwvY/qqfhn
+	sTLuJjUWoZRJ7QuIpxk5UXrkZS54BirfAnnt/rF+6LKFkGX1QpE5V95+uM2Gbs0BhKSGd8va0kBlP
+	xwHsr7BZlRoLiY20xUOR8994G2XOC/dmaImzkFYG5WzkAn9aOmtgd907P0S/QdgtQ71ASVcM8gdDr
+	vVBtI6JyQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR4dq-002WkZ-Dl; Tue, 30 Mar 2021 03:02:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lR67R-002hVp-Vh; Tue, 30 Mar 2021 04:36:46 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lR4dJ-002WhT-Nx; Tue, 30 Mar 2021 03:01:36 +0000
-X-UUID: 1b190ff9d065450ea9655ba6a7dd464b-20210329
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=h3tgTgAhTPVHl6C7nGiDPVcZVqzWaFEKu+Mj0evMIr4=; 
- b=LI7e3Glzwpjv1aUej04C4LHb49W1O+HP+7QCPeYeNiwA4nkulkaLUAjZKbYHa+kRIPbMAy1thXHAoqgRTqNU235yUxSLgW3TvMS5vlolspzNH3jHdEQ31HWUtfeX6ONqGonQuGvD1wl5dqC1buA0UCC7mYVMLyMBDi1Ta0S9fpk=;
-X-UUID: 1b190ff9d065450ea9655ba6a7dd464b-20210329
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <michael.kao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 910363157; Mon, 29 Mar 2021 19:01:28 -0800
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Mar 2021 19:51:25 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Mar 2021 10:51:24 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 30 Mar 2021 10:51:24 +0800
-Message-ID: <1617072684.13941.2.camel@mtksdccf07>
-Subject: Re: [PATCH v2] thermal: cpufreq_cooling: fix slab OOB issue
-From: Michael Kao <michael.kao@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-CC: Zhang Rui <rui.zhang@intel.com>, <fan.chen@mediatek.com>,
- <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>, Mark Rutland
- <mark.rutland@arm.com>, <devicetree@vger.kernel.org>, brian-sy yang
- <brian-sy.yang@mediatek.com>, <linux-kernel@vger.kernel.org>, "Eduardo
- Valentin" <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- <linux-mediatek@lists.infradead.org>, <hsinyi@chromium.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 30 Mar 2021 10:51:24 +0800
-In-Reply-To: <20201229050831.19493-1-michael.kao@mediatek.com>
-References: <20201229050831.19493-1-michael.kao@mediatek.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1lR67G-002hUJ-DV
+ for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 04:36:36 +0000
+Received: by mail-pl1-x634.google.com with SMTP id d8so5498745plh.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Mar 2021 21:36:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=BvRbBZnASVdYfsaOe0CfduFdiRkLJ8niuBgOzm/MRro=;
+ b=iECcxBCZLcHI2v1Czg8SPMUOeAdilEubHiugaH6gep3GwMFvqHzkAFlHfzV/6n5d5i
+ LHAvlhvfTwVVKMtNq4F+NEC8QOj5ohxl0NWe0lCOWyOHIlCnZ5ekGlgBIiW9qHjqXwch
+ P5A3H3ZJB18TMtjD1GjTi5lo3mKTEicYIFlZ+isPWC2MNNQqcv6gg37RgOoai3Ek1+GN
+ TmGm60kgXb73h356o9Upw6ZgoPT0PcbFqGrPi5iYL6yvQ7XfLCH28QqGjvlSBm81dC3W
+ 9jjeu2dwfSOLqyf/ibNeSuPB0E66R4HvenL5m+Hzko5D3mmh4Ihgp8CD4HwptB5s78/D
+ CLCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=BvRbBZnASVdYfsaOe0CfduFdiRkLJ8niuBgOzm/MRro=;
+ b=j0JckkZ/P6O1lghHp8XkCtOt5MR2o4/y8C1hqcN5ggwiUuI9FsuLWNQBsOrYCidUNc
+ O36AVzUnj7fd/i3vLX355c85Uq/gifCnztLXuJlBAytKfoLtB62VO4Bty3sb7NrQFdDl
+ ICPzbRmTFwobBOwyXb5pPr++rb3jz3rZyB6Rfql4B2Cj/BiiKx6JHC0WKoihB98MN8AM
+ t8VfQpVm3Cz0L/pLSvJ023kRbAWb5qSu6K8lhNPJbjAZEd+Y21Uzjbw7LQG1F/CkB1vZ
+ I/p3OzdBnx9UxrW71BbmJeBBuj+oIsQtd8SBbyxI+OazqZE+48ee6mZmg8dCA74QLreI
+ OQaQ==
+X-Gm-Message-State: AOAM530QVmZgdR8xRf7p0v4psNxBOKnVSmBrfpIuXtFG82Nvq08lXoFg
+ bqt5QTlx/FlBtWElFBRlZsUOmKS/HjPkjg==
+X-Google-Smtp-Source: ABdhPJwshx2ncunskGbMt8kWnyEKe9h4R6stukSh3ZR36FNExYlVwD6kQZCJJns2C8g4gluFQJdAcw==
+X-Received: by 2002:a17:90a:c588:: with SMTP id
+ l8mr2432201pjt.120.1617078991995; 
+ Mon, 29 Mar 2021 21:36:31 -0700 (PDT)
+Received: from localhost ([136.185.154.93])
+ by smtp.gmail.com with ESMTPSA id e6sm2638506pgh.17.2021.03.29.21.36.30
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 29 Mar 2021 21:36:31 -0700 (PDT)
+Date: Tue, 30 Mar 2021 10:06:29 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>,
+ Stephen Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ srv_heupstream@mediatek.com
+Subject: Re: [PATCH V8 2/8] cpufreq: mediatek: Enable clock and regulator
+Message-ID: <20210330043629.x62j2apv2nv4mw67@vireshk-i7>
+References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <1616499241-4906-3-git-send-email-andrew-sh.cheng@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1616499241-4906-3-git-send-email-andrew-sh.cheng@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_040134_340937_06FF9745 
-X-CRM114-Status: GOOD (  20.06  )
+X-CRM114-CacheID: sfid-20210330_053634_894511_0804807C 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,71 +110,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Daniel,
-
-Kindly ping.
-Can this patch be merged? Or any comment?
-
-BR,
-Michael
-
-On Tue, 2020-12-29 at 13:08 +0800, Michael Kao wrote:
-> From: brian-sy yang <brian-sy.yang@mediatek.com>
+On 23-03-21, 19:33, Andrew-sh.Cheng wrote:
+> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
 > 
-> Slab OOB issue is scanned by KASAN in cpu_power_to_freq().
-> If power is limited below the power of OPP0 in EM table,
-> it will cause slab out-of-bound issue with negative array
-> index.
+> Need to enable regulator,
+> so that the max/min requested value will be recorded
+> even it is not applied right away.
 > 
-> Return the lowest frequency if limited power cannot found
-> a suitable OPP in EM table to fix this issue.
+> Intermediate clock is not always enabled by ccf in different projects,
+> so cpufreq should enable it by itself.
 > 
-> Backtrace:
-> [<ffffffd02d2a37f0>] die+0x104/0x5ac
-> [<ffffffd02d2a5630>] bug_handler+0x64/0xd0
-> [<ffffffd02d288ce4>] brk_handler+0x160/0x258
-> [<ffffffd02d281e5c>] do_debug_exception+0x248/0x3f0
-> [<ffffffd02d284488>] el1_dbg+0x14/0xbc
-> [<ffffffd02d75d1d4>] __kasan_report+0x1dc/0x1e0
-> [<ffffffd02d75c2e0>] kasan_report+0x10/0x20
-> [<ffffffd02d75def8>] __asan_report_load8_noabort+0x18/0x28
-> [<ffffffd02e6fce5c>] cpufreq_power2state+0x180/0x43c
-> [<ffffffd02e6ead80>] power_actor_set_power+0x114/0x1d4
-> [<ffffffd02e6fac24>] allocate_power+0xaec/0xde0
-> [<ffffffd02e6f9f80>] power_allocator_throttle+0x3ec/0x5a4
-> [<ffffffd02e6ea888>] handle_thermal_trip+0x160/0x294
-> [<ffffffd02e6edd08>] thermal_zone_device_check+0xe4/0x154
-> [<ffffffd02d351cb4>] process_one_work+0x5e4/0xe28
-> [<ffffffd02d352f44>] worker_thread+0xa4c/0xfac
-> [<ffffffd02d360124>] kthread+0x33c/0x358
-> [<ffffffd02d289940>] ret_from_fork+0xc/0x18
-> 
-> Fixes: 371a3bc79c11b ("thermal/drivers/cpufreq_cooling: Fix wrong frequency converted from power")
-> Signed-off-by: brian-sy yang <brian-sy.yang@mediatek.com>
-> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
+> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
 > ---
+>  drivers/cpufreq/mediatek-cpufreq.c | 33 +++++++++++++++++++++++++++++----
+>  1 file changed, 29 insertions(+), 4 deletions(-)
 > 
-> Changes from v1:
-> - add fixes tag
-> - add reviewed-by
-> 
->  drivers/thermal/cpufreq_cooling.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
-> index cc2959f22f01..fb33b3480a8f 100644
-> --- a/drivers/thermal/cpufreq_cooling.c
-> +++ b/drivers/thermal/cpufreq_cooling.c
-> @@ -123,7 +123,7 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
->  {
->  	int i;
->  
-> -	for (i = cpufreq_cdev->max_level; i >= 0; i--) {
-> +	for (i = cpufreq_cdev->max_level; i > 0; i--) {
->  		if (power >= cpufreq_cdev->em->table[i].power)
->  			break;
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index f2e491b25b07..432368707ea6 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -350,6 +350,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>  		ret = PTR_ERR(proc_reg);
+>  		goto out_free_resources;
 >  	}
+> +	ret = regulator_enable(proc_reg);
+> +	if (ret) {
+> +		pr_warn("enable vproc for cpu%d fail\n", cpu);
+> +		goto out_free_resources;
+> +	}
+
+Regulators are enabled by OPP core as well now, you sure this is
+required ?
+
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
