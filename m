@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C4A5C433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:14:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A046EC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:14:14 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFE6F6024A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:14:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFE6F6024A
+	by mail.kernel.org (Postfix) with ESMTPS id 429AB61987
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:14:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 429AB61987
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dyteS9IbIJRPBCj+B3LgDRcqH+/282slN7v5vsiPlAE=; b=TrY15xZs0Yup86NzhIPhNzXF4
-	QJv3Sp62vT+ImnRJ5kk+x7QWqY1JkfCPUxo1BlRAv3RwyRTmqt+3wPFTuScRou8r/UM/KetvsNO4n
-	vCtvxZ34lunqo73mMkApJt3L92CaO7BMkNhBysv7UPOsL/dxEo2fkA7/krx+5Cef4BUzLGxnExHsP
-	cFQ7G0/txTyrLVvG6XYyvuxbT9X2l4JbBd8D/MS05Xyc+5V3oFW0asdQA6v8Ofv0KdmJR+Ql0C9Ng
-	VtdIuY8ldceyZW4A8RWC7AbdbZanXxqRhhTTts47ZLruowcRoDIF4VwUo2ikzVc7yxq5cSCu2yZHq
-	W3vFCPD+g==;
+	 bh=tujVKwowfz02qZJ/wRQsPhmV6ZyXyUvLok6rwQIxrM4=; b=I4SePe6ACNhpTQP4nL0XBfX4e
+	O5QpWXLOon6btT6gWgelF6GQvD2vZrNWgE89EgwXgulS5H51G6iEMHLVtKYgkGJSkXY2kykknMExL
+	pfTHepOLlyxY/8vAd/ZQ/CcSUonqp9rAJjvDdTljA/TkIen+Gedu1RwSiEGHozRvsiWYA/15wPJ3O
+	usr8hBdGiN85eYedQDa6YLKCEtS0Zz8CXkVF057VSOwhmcT4nBOqULSlXWlw/rr8nwRRiSkuEB0Ck
+	3DTS7QY2vXCLaMyNG/gSB9CDK/G0rae4eASXLy4izbnF61+d/yncwOlHC0K+nDLca1krpNlj98hhT
+	CNukujz4w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRG47-0047P5-OK; Tue, 30 Mar 2021 15:14:00 +0000
+	id 1lRG4A-0047Qd-4v; Tue, 30 Mar 2021 15:14:02 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRG2B-0046jx-JT; Tue, 30 Mar 2021 15:12:01 +0000
+ id 1lRG2C-0046k6-75; Tue, 30 Mar 2021 15:12:03 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C9AC7619D3;
- Tue, 30 Mar 2021 15:11:57 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id C438D61987;
+ Tue, 30 Mar 2021 15:11:58 +0000 (UTC)
 Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
  helo=why.lan) by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
  (envelope-from <maz@kernel.org>)
- id 1lRG28-004i6i-4T; Tue, 30 Mar 2021 16:11:56 +0100
+ id 1lRG29-004i6i-3I; Tue, 30 Mar 2021 16:11:57 +0100
 From: Marc Zyngier <maz@kernel.org>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Bjorn Helgaas <bhelgaas@google.com>
@@ -67,9 +67,9 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-hyperv@vger.kernel.org, linux-tegra@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
  kernel-team@android.com
-Subject: [PATCH v3 06/14] PCI: hv: Drop msi_controller structure
-Date: Tue, 30 Mar 2021 16:11:37 +0100
-Message-Id: <20210330151145.997953-7-maz@kernel.org>
+Subject: [PATCH v3 07/14] PCI/MSI: Drop use of msi_controller from core code
+Date: Tue, 30 Mar 2021 16:11:38 +0100
+Message-Id: <20210330151145.997953-8-maz@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210330151145.997953-1-maz@kernel.org>
 References: <20210330151145.997953-1-maz@kernel.org>
@@ -90,8 +90,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_161200_110113_B7A4B4CB 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20210330_161200_714246_275513C3 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,42 +108,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Hyper-V PCI driver still makes use of a msi_controller structure,
-but it looks more like a distant leftover than anything actually
-useful, since it is initialised to 0 and never used for anything.
+As there is no driver using msi_controller, we can now safely
+remove its use from the PCI probe code.
 
-Just remove it.
-
-Reviewed-by: Michael Kelley <mikelley@microsoft.com>
-Tested-by: Michael Kelley <mikelley@microsoft.com>
 Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/pci/controller/pci-hyperv.c | 4 ----
- 1 file changed, 4 deletions(-)
+ drivers/pci/msi.c   | 23 +----------------------
+ drivers/pci/probe.c |  2 --
+ include/linux/pci.h |  2 --
+ 3 files changed, 1 insertion(+), 26 deletions(-)
 
-diff --git a/drivers/pci/controller/pci-hyperv.c b/drivers/pci/controller/pci-hyperv.c
-index 27a17a1e4a7c..2c014ba7ed4b 100644
---- a/drivers/pci/controller/pci-hyperv.c
-+++ b/drivers/pci/controller/pci-hyperv.c
-@@ -473,7 +473,6 @@ struct hv_pcibus_device {
- 	struct list_head dr_list;
- 
- 	struct msi_domain_info msi_info;
--	struct msi_controller msi_chip;
- 	struct irq_domain *irq_domain;
- 
- 	spinlock_t retarget_msi_interrupt_lock;
-@@ -1866,9 +1865,6 @@ static int create_root_hv_pci_bus(struct hv_pcibus_device *hbus)
- 	if (!hbus->pci_bus)
- 		return -ENODEV;
- 
--	hbus->pci_bus->msi = &hbus->msi_chip;
--	hbus->pci_bus->msi->dev = &hbus->hdev->device;
+diff --git a/drivers/pci/msi.c b/drivers/pci/msi.c
+index 3162f88fe940..79b5a995bd02 100644
+--- a/drivers/pci/msi.c
++++ b/drivers/pci/msi.c
+@@ -64,39 +64,18 @@ static void pci_msi_teardown_msi_irqs(struct pci_dev *dev)
+ /* Arch hooks */
+ int __weak arch_setup_msi_irq(struct pci_dev *dev, struct msi_desc *desc)
+ {
+-	struct msi_controller *chip = dev->bus->msi;
+-	int err;
 -
- 	pci_lock_rescan_remove();
- 	pci_scan_child_bus(hbus->pci_bus);
- 	hv_pci_assign_numa_node(hbus);
+-	if (!chip || !chip->setup_irq)
+-		return -EINVAL;
+-
+-	err = chip->setup_irq(chip, dev, desc);
+-	if (err < 0)
+-		return err;
+-
+-	irq_set_chip_data(desc->irq, chip);
+-
+-	return 0;
++	return -EINVAL;
+ }
+ 
+ void __weak arch_teardown_msi_irq(unsigned int irq)
+ {
+-	struct msi_controller *chip = irq_get_chip_data(irq);
+-
+-	if (!chip || !chip->teardown_irq)
+-		return;
+-
+-	chip->teardown_irq(chip, irq);
+ }
+ 
+ int __weak arch_setup_msi_irqs(struct pci_dev *dev, int nvec, int type)
+ {
+-	struct msi_controller *chip = dev->bus->msi;
+ 	struct msi_desc *entry;
+ 	int ret;
+ 
+-	if (chip && chip->setup_irqs)
+-		return chip->setup_irqs(chip, dev, nvec, type);
+ 	/*
+ 	 * If an architecture wants to support multiple MSI, it needs to
+ 	 * override arch_setup_msi_irqs()
+diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+index 953f15abc850..fb04fc81a8bd 100644
+--- a/drivers/pci/probe.c
++++ b/drivers/pci/probe.c
+@@ -895,7 +895,6 @@ static int pci_register_host_bridge(struct pci_host_bridge *bridge)
+ 	/* Temporarily move resources off the list */
+ 	list_splice_init(&bridge->windows, &resources);
+ 	bus->sysdata = bridge->sysdata;
+-	bus->msi = bridge->msi;
+ 	bus->ops = bridge->ops;
+ 	bus->number = bus->busn_res.start = bridge->busnr;
+ #ifdef CONFIG_PCI_DOMAINS_GENERIC
+@@ -1053,7 +1052,6 @@ static struct pci_bus *pci_alloc_child_bus(struct pci_bus *parent,
+ 		return NULL;
+ 
+ 	child->parent = parent;
+-	child->msi = parent->msi;
+ 	child->sysdata = parent->sysdata;
+ 	child->bus_flags = parent->bus_flags;
+ 
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 86c799c97b77..ebf557e59d87 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -540,7 +540,6 @@ struct pci_host_bridge {
+ 	int (*map_irq)(const struct pci_dev *, u8, u8);
+ 	void (*release_fn)(struct pci_host_bridge *);
+ 	void		*release_data;
+-	struct msi_controller *msi;
+ 	unsigned int	ignore_reset_delay:1;	/* For entire hierarchy */
+ 	unsigned int	no_ext_tags:1;		/* No Extended Tags */
+ 	unsigned int	native_aer:1;		/* OS may use PCIe AER */
+@@ -621,7 +620,6 @@ struct pci_bus {
+ 	struct resource busn_res;	/* Bus numbers routed to this bus */
+ 
+ 	struct pci_ops	*ops;		/* Configuration access functions */
+-	struct msi_controller *msi;	/* MSI controller */
+ 	void		*sysdata;	/* Hook for sys-specific extension */
+ 	struct proc_dir_entry *procdir;	/* Directory entry in /proc/bus/pci */
+ 
 -- 
 2.29.2
 
