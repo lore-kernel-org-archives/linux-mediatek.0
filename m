@@ -2,85 +2,108 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-21.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 847C1C433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 10:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16E7AC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 10:50:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E7D2761874
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 10:45:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7D2761874
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id B036161990
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 10:50:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B036161990
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zuYlJZsfc4uQDruMxKjMiUfeT0k+6721WunySoHLZUk=; b=I3X9Jmipo7ej8FJfwMalNXaRGP
-	FzK8bt3bsDq8BkSWVrM58SJppkI3VkcOPJrJA3T6PPqW5/oAyWXfULXjXtsziJUkzNJXSzGh4U4UD
-	tsnDNkKc9Ygwjt0L8aAc7yz0qrRMGCe6CeeUxKlzdzZGTc6iqPqH/t4rfgW2is7TIk+QOfQ71fBf5
-	uPEwDV+9F7ohIEAAGz9HxQQ9eQO4FcmIEDT6jlXV1p9axDZIBIfSS7swhufGgjfnV+a2TywbuNwaV
-	uKHg2I+6LRlBNrcFCkKXONj/Rl+mCvCwT2moyV0f3KrtohvecjZoKDbCILeOPpELdHSMYxecS78Rs
-	8nFUjvKw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=fXIK/Wv+vWVeAIs88g0rjLWzvBPZxpgdibaMQc8xKSA=; b=lYCncidT4RXP8HTGN6+ZrTEu4
+	eDS1rYDsXOhzdb1S0zuy3iEuMUUhg4SrmbUTpHgyoKJ9siAc59KSHrVm/YHfStsF+77btvepPyiQH
+	qypIgaqhylPQyQXGL/TnoSqTRxu/05DPXUhQZk0kOAqpYGNdADqh/W8jHiaxvUWpzixAmi7JF7Uk4
+	eSGNZ24FFzS0LEf2Mqttuo8eAYQYaeuGMqq2ewp3JWKoPBM0J+AjzCDQA7h7i9jUvSfvaaknyEKSR
+	0AwIKZldL0CFwO1+EOegH4iY8SFQgyyqPSelUJZQecIcOTXVLDRSm0VZ2OeuI47/umDiMdbiyxIq5
+	SJ+EctFJw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRBsP-003Rds-5W; Tue, 30 Mar 2021 10:45:37 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1lRBxM-003Swb-Qg; Tue, 30 Mar 2021 10:50:45 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRBrT-003RJl-7K
- for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 10:44:41 +0000
-Received: by mail-pl1-x634.google.com with SMTP id w11so5954179ply.6
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Mar 2021 03:44:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=U4UTdCcB3WVCxZspli0lltbVfgTksXjTHIiVIuKPdEc=;
- b=X81T9M1HusNIU7yzUkbMq8G+76rIBCtyQIMCX77rAbeRKgbkOPxfPjWVnbOV5U9Jff
- gQLM+3ofkKLvHQTPoOi7Tx1THZy/RWRYRKHesFoPHfTjLC0RqRzqit1HJi6Cql3RzOFD
- ECaeNpMoi7KM668vR8hQcdFJKt1mx2sqcqxOc=
+ id 1lRBvR-003SVS-DY; Tue, 30 Mar 2021 10:48:50 +0000
+Received: by mail-wm1-x335.google.com with SMTP id
+ t5-20020a1c77050000b029010e62cea9deso8162921wmi.0; 
+ Tue, 30 Mar 2021 03:48:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Q//pqem2+12d7QEjvjgaohlrsZ0f7RzdSyBP0d8mQF8=;
+ b=XAAkVB7wU7qFKtSJlIbXEuV0fqSLgWmM7CgKkpyrJZrHMLETXXA0GIEtbJDfHnrIxa
+ DnrA9/t+AGUEYEiHhrppYvAvUcj6TjuE8CVO0pcajCmO+v324od1o1qi2gphEOkIiHzZ
+ kLEhzQRZh6e2vl8RSEjU0MXkRCltLjmubLh2ad1zSg64+wFfCYXOX3oy7FotQT6jKG9f
+ Tkzk6idkrKaYy/z1NzZSKhwqossCXQ3/BsHyA/tCexS6cAus2ZG8rJvg3/H+mqcO5v/E
+ zXcTeyYRpaytvboHZ09XiFGDw+afgcrmMZYlYgkcuWsm5HJm4H4PJh1xa4hLBZhHqXSk
+ rDLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=U4UTdCcB3WVCxZspli0lltbVfgTksXjTHIiVIuKPdEc=;
- b=Xz1r4i2BiZFU5jqDmJ0c9dC9JrFCKOwyn9PCBWI8TeuyqH0piAY7ZnV5pYUfxtV5uI
- UsFYVc0iePicnB6pXMD6WM8mAiSz+pWhWl7Dg5ODNZJPZrveG1qqQ7QNiRTtWCIh+BZu
- nhaDzmQRdo6ow/qMYQtaKXlsV2RA/CZ0zQQVG7EkmgKqPqT8fSorWGnHpl1zJFXX76+3
- E+PLbD2THMhvtm2UsbnWfFU9wxsVpXRQKmdXc8RS3ThH0O907MxYZbe2mJYsWgsHWU6T
- 27FTqbwOJ7qgYlMlAZ5vdNcBnlfmdmrpSGE7ElhqbaMisbDZU0Qbadd9QwZkJmvX1aws
- eumw==
-X-Gm-Message-State: AOAM531D857FYqamRZUYrpTZu/BWlWYEIKNoIdR6p2nSJht5C5yyYWDJ
- tz1jfpj8JIHJgyv41S0DTQWOEQ==
-X-Google-Smtp-Source: ABdhPJwJqKKOmVhnPqI3eRF4RXx9ihm/N3Q4eFXU2TLtl6wIII4nsHdWykklWZV/9tWhFzoWrnvAUQ==
-X-Received: by 2002:a17:90a:1f0e:: with SMTP id
- u14mr3746666pja.155.1617101076842; 
- Tue, 30 Mar 2021 03:44:36 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:71d0:f547:14ae:a717])
- by smtp.gmail.com with ESMTPSA id t184sm1231078pgt.32.2021.03.30.03.44.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Mar 2021 03:44:36 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: linux-kernel@vger.kernel.org
-Cc: matthias.bgg@gmail.com, drinkcat@chromium.org, weiyi.lu@mediatek.com,
- ck.hu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, enric.balletbo@collabora.com
-Subject: [PATCH v2] soc: mediatek: mmsys: Add mt8183 mmsys routing table
-Date: Tue, 30 Mar 2021 18:44:32 +0800
-Message-Id: <20210330104432.3432574-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.31.0.291.g576ba9dcdaf-goog
+ bh=Q//pqem2+12d7QEjvjgaohlrsZ0f7RzdSyBP0d8mQF8=;
+ b=rDk5IJ4t8rdWyY0SUfrfhq5++I1sdG7XeT5F5qaCBim7UUriE+n21N5kzTwZ4irpuc
+ QG9zpv103ZoEy1a58hq9JshqgSVYOA26Fi98uj/R7aULyiylT3NCviu1WDL8Vkh23lUG
+ pfu4x8QKloQpMxrFT6bTuJVpaVJAcyFlIXKpenRZ6RGS7n23DPkhhF5WGFw9iEzNSWJn
+ 4pMEWrPjqmr1w0K5OLn3oNJq11XKJArAg0MnwKI7H/nGWAO2yZKrDmC2tHpsvZoPSbK+
+ Nzamj5n85Ya83tNKLMnGTJun2KcTNkxJCkkq4eSRL5JDMbfyFVp55aLyJSt6+9TyfD7p
+ 4uLg==
+X-Gm-Message-State: AOAM532JCNMe1xIRujdPGid0gwZSY3apmICEtPmCyuS0WPvPdCMdQ0gC
+ Gyzwyx9ZWfaqhlcLpocjWaA=
+X-Google-Smtp-Source: ABdhPJwvPii3xPnYowk2vyInsF26PMhunrL16Vuj5UvYFQF18+YD+34YeHDpiFXR6Zds8mztAtBjQg==
+X-Received: by 2002:a7b:cf11:: with SMTP id l17mr3360588wmg.128.1617101323947; 
+ Tue, 30 Mar 2021 03:48:43 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.126.134])
+ by smtp.gmail.com with ESMTPSA id p14sm2901836wmc.30.2021.03.30.03.48.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 30 Mar 2021 03:48:43 -0700 (PDT)
+Subject: Re: [PATCH v10 1/4] dt-bindings: mediatek: Add smi dts binding for
+ Mediatek MT6765 SoC
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Wendell Lin <Wendell.Lin@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Mars Cheng <mars.cheng@mediatek.com>, Sean Wang <Sean.Wang@mediatek.com>,
+ Owen Chen <owen.chen@mediatek.com>, Evan Green <evgreen@chromium.org>,
+ Yong.Wu@mediatek.com, Joerg Roedel <jroedel@suse.de>,
+ Shawn Guo <shawnguo@kernel.org>, Marc Zyngier <marc.zyngier@arm.com>,
+ Ryder Lee <Ryder.Lee@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, 
+ Mediatek WSD Upstream <wsd_upstream@mediatek.com>,
+ Macpaul Lin <macpaul@gmail.com>, CC Hwang <cc.hwang@mediatek.com>,
+ Loda Chou <loda.chou@mediatek.com>
+References: <1615291538-9799-1-git-send-email-macpaul.lin@mediatek.com>
+ <1615358218-6540-1-git-send-email-macpaul.lin@mediatek.com>
+ <1615358218-6540-2-git-send-email-macpaul.lin@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <5caf003d-e7c5-1f2f-d499-726788d5e490@gmail.com>
+Date: Tue, 30 Mar 2021 12:48:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+In-Reply-To: <1615358218-6540-2-git-send-email-macpaul.lin@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_114439_407058_BE520306 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20210330_114846_287607_B4865B2E 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,107 +120,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8183 has different routing registers than mt8173.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-v1->v2:
-Move mt8183 routing table to mt8183-mmsys.h
 
-This patch is based on https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git v5.12-next/soc
----
- drivers/soc/mediatek/mt8183-mmsys.h | 56 +++++++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c    |  3 ++
- 2 files changed, 59 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8183-mmsys.h
+On 10/03/2021 07:36, Macpaul Lin wrote:
+> From: Mars Cheng <mars.cheng@mediatek.com>
+> 
+> This patch adds MT6765 smi binding document
+> 
+> Signed-off-by: Mars Cheng <mars.cheng@mediatek.com>
+> Signed-off-by: Owen Chen <owen.chen@mediatek.com>
+> Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-new file mode 100644
-index 000000000000..38e9f683e5bd
---- /dev/null
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -0,0 +1,56 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT8183_MMSYS_H
-+#define __SOC_MEDIATEK_MT8183_MMSYS_H
-+
-+#include "mtk-mmsys.h"
-+
-+#define MT8183_DISP_OVL0_MOUT_EN		0xf00
-+#define MT8183_DISP_OVL0_2L_MOUT_EN		0xf04
-+#define MT8183_DISP_OVL1_2L_MOUT_EN		0xf08
-+#define MT8183_DISP_DITHER0_MOUT_EN		0xf0c
-+#define MT8183_DISP_PATH0_SEL_IN		0xf24
-+#define MT8183_DISP_DSI0_SEL_IN			0xf2c
-+#define MT8183_DISP_DPI0_SEL_IN			0xf30
-+#define MT8183_DISP_RDMA0_SOUT_SEL_IN		0xf50
-+#define MT8183_DISP_RDMA1_SOUT_SEL_IN		0xf54
-+
-+#define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
-+#define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
-+#define MT8183_OVL1_2L_MOUT_EN_RDMA1		BIT(4)
-+#define MT8183_DITHER0_MOUT_IN_DSI0		BIT(0)
-+#define MT8183_DISP_PATH0_SEL_IN_OVL0_2L	0x1
-+#define MT8183_DSI0_SEL_IN_RDMA0		0x1
-+#define MT8183_DSI0_SEL_IN_RDMA1		0x3
-+#define MT8183_DPI0_SEL_IN_RDMA0		0x1
-+#define MT8183_DPI0_SEL_IN_RDMA1		0x2
-+#define MT8183_RDMA0_SOUT_COLOR0		0x1
-+#define MT8183_RDMA1_SOUT_DSI0			0x1
-+
-+static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
-+	{
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
-+		MT8183_DISP_OVL0_MOUT_EN, MT8183_OVL0_MOUT_EN_OVL0_2L
-+	}, {
-+		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
-+		MT8183_DISP_OVL0_2L_MOUT_EN, MT8183_OVL0_2L_MOUT_EN_DISP_PATH0
-+	}, {
-+		DDP_COMPONENT_OVL_2L1, DDP_COMPONENT_RDMA1,
-+		MT8183_DISP_OVL1_2L_MOUT_EN, MT8183_OVL1_2L_MOUT_EN_RDMA1
-+	}, {
-+		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		MT8183_DISP_DITHER0_MOUT_EN, MT8183_DITHER0_MOUT_IN_DSI0
-+	}, {
-+		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
-+		MT8183_DISP_PATH0_SEL_IN, MT8183_DISP_PATH0_SEL_IN_OVL0_2L
-+	}, {
-+		DDP_COMPONENT_RDMA1, DDP_COMPONENT_DPI0,
-+		MT8183_DISP_DPI0_SEL_IN, MT8183_DPI0_SEL_IN_RDMA1
-+	}, {
-+		DDP_COMPONENT_RDMA0, DDP_COMPONENT_COLOR0,
-+		MT8183_DISP_RDMA0_SOUT_SEL_IN, MT8183_RDMA0_SOUT_COLOR0
-+	}
-+};
-+
-+#endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
-+
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index c46d8ab8b0c2..ac68a989854e 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -10,6 +10,7 @@
- #include <linux/platform_device.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
- 
-+#include "mt8183-mmsys.h"
- #include "mtk-mmsys.h"
- 
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
-@@ -40,6 +41,8 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
- 
- static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8183-mm",
-+	.routes = mmsys_mt8183_routing_table,
-+	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
- };
- 
- struct mtk_mmsys {
--- 
-2.31.0.291.g576ba9dcdaf-goog
+Patch looks good, but where is the driver part for it?
 
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  .../bindings/memory-controllers/mediatek,smi-common.yaml         | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> index a08a32340987..4a4f4377576f 100644
+> --- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> +++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+> @@ -31,6 +31,7 @@ properties:
+>        - enum:
+>            - mediatek,mt2701-smi-common
+>            - mediatek,mt2712-smi-common
+> +          - mediatek,mt6765-smi-common
+>            - mediatek,mt6779-smi-common
+>            - mediatek,mt8167-smi-common
+>            - mediatek,mt8173-smi-common
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
