@@ -2,20 +2,20 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48781C433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 09:10:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 994E2C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 09:16:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C74BC61968
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 09:10:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C74BC61968
+	by mail.kernel.org (Postfix) with ESMTPS id 2A3BF6195D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 09:16:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A3BF6195D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,70 +24,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rRKtzSj9nji5QmHFOV9rTwDFtP+riax9Xr6YruJQzUc=; b=YD5qEQQP8yzMYGWIN0/ny88ov
-	v6D2tLE9lTCLGwqVna/Td94zYeBYMiqBHhfJmFv8W+yZtkGxSpRrXHK/d1nOX6/c2Tun1k+EjzWgC
-	PwRgVGZV27Os14FPefyLsZTRRGM66xqvU4j8bCc/pYCUkPxUhU2XvlgGarGqW7xvl31d6GAEhrhPx
-	EnuUi6Xf+y/lKTOGj8bXbUefUexhOWiOUqZvhH4E/ljpKQyhO9/2lzzyVXnAJl8d5p5YGiq1qXA3f
-	qbNdPXWk7a8W3ldQY+d+BUOVrQE8eS6VNYOIcUFuL4Pa5KE+r2HcEe/ohHeAy8Nch8s4R4gtov1P8
-	WyGqMkiTg==;
+	 bh=eOJyZNfUMJ1crR5yd+hnvF6da199BF1nB9B8DwFK/PI=; b=NXDf8ttsje8MGkZLKExlyDg7s
+	r/1Eu8EEwldAqpX/bvYs5bztbUKsandxGw+RMu8U7KI+qSb668lBkXNmn71F8l8WHsYU9CyCJsYqe
+	A6w+hYPp4VeyJ1yOw/bTwCJp8Wl/AWcNbWGbb5gdbonEfpAoAgTT5nQDlE1JFo3auYcG16QgTrJR1
+	sC8mPGW40BjCr4wgzd0Ic85lm3HMtN26vDm/nl4PGgaeb5kacbcNJwlnut7d4speL2s6QiygdU06M
+	ciqF9DXlj7yfe/wBhH3Ls4fFwoXodBnmc9hFpHnOZqaqHyxOIkJjxUXD2ZSNv6/gq2IwEmjYIw/i4
+	cVFNPJwBg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRAOM-0039jg-P4; Tue, 30 Mar 2021 09:10:32 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1lRATb-003AYo-W8; Tue, 30 Mar 2021 09:15:56 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRAOI-0039ie-Gw; Tue, 30 Mar 2021 09:10:28 +0000
-Received: by mail-wr1-x436.google.com with SMTP id b9so15445952wrt.8;
- Tue, 30 Mar 2021 02:10:26 -0700 (PDT)
+ id 1lRATV-003AWJ-Nb; Tue, 30 Mar 2021 09:15:51 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id
+ d8-20020a1c1d080000b029010f15546281so9876584wmd.4; 
+ Tue, 30 Mar 2021 02:15:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=z5DCAj7NVDVNfpSZjWR8M5jLq6WPETQxdZhOG5sD1z8=;
- b=pqvv6KRbqK9UNpiG6OcQfbAr+R59ty+YH5DBQsdn8BnkaBlUPjH1FApi5Ei5VmlYyB
- zAO09LbALoY2NhIoKqNs7r5qYnslNkMOzBlTMB6ilpIy3wlXIFl76Rav0jvVmFA0SWif
- E5iIbhE4WmPWCM6pKrE2deGuEnLoxGxwztJGUVz1l+exyFTULlEIlHuQ+SE3hhnoPBaP
- UYZ/BAY/GCGLDXT5+ivGQuFlzf5TnqrUgtT6zCrcpX/0O+hjIduJhb35CcoA88K1krcU
- LMkWWzY3Tk/cQkItk7Nh0kJD8bnmvugq8ERnhrsAW4tuI92Q7SaDrk2uUrdYbi16tO3f
- Ux1Q==
+ bh=hIgRZy+uhzo2sm3mfgG8b97EVLTEtVQu0/b6m7/PEy0=;
+ b=nfJNyYMEpiF5OLVr1kgEXrnL92SfohV6IFzRb+r0IGLC/GfO5cxWFBxU2QhGb4ZR38
+ pIDJ2ouKyWDdIwJbwnUYBitt/25W8hKphRFP0MH9utQGaBDLPNkxfoKo55rDgrj0Ki1N
+ Uy5uOAKHvQ8ZFTUyd7yqknni57TUFeCaqIVDFjs4zESgG53i8qXgKCjPiPLDm+trMudW
+ KG92+MgmPNvtz7PulLYg9khQeeK+gwPl5OJt81CdO96BXO6Zmwmj41A959P0kRD7otyg
+ 54jwGZpvV2MmZtiYZOwn2JD+ZlTCpM9wRlALH6JAzlRRY4UCZf7yl1BZGgxEl6CM2Jdv
+ SZXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=z5DCAj7NVDVNfpSZjWR8M5jLq6WPETQxdZhOG5sD1z8=;
- b=nTzbYsp4qsBFAQ9N/BT8CBT0mU36O7MxFoecUoqImAXymq8G/LIIOlqizRthwDooGb
- km/RlsFUUhIgqKll6NJAJVMlS69oQKQpSyVQ5npa2zP0w5RbHoMvLlJ9VE6lqJvhNWlT
- CBAm7jSyShAGtEXxzu+VU1zhVHJ3uaw0nbksDlhZhLS+jmAl6Xk/qsQ1A9LhyFW72km7
- HVIkV4a4rd3KwiCYnElQyAtjbzjwLAi90H/xP8+WrW5bsqeqOA1Vbi50WwdeO1rZI72e
- KRpMO69XAtZn4IcjFiyDzXUhGLODCZDlhb5a8Vz3GOSCt9eNkkumBajzDy7v1cCWUfXq
- LEJg==
-X-Gm-Message-State: AOAM532a7NuQydQyGSg8QnBcMoMbT+asFzH2fpv5SRGrtUmI7GGe3yBC
- N2U2alTTwpwihGFN3raqQl0Z2vf5llGko1Ea
-X-Google-Smtp-Source: ABdhPJweDUo0yRtRVVcnq0c+GFxDoqdf6UE26XHvsMvMeuKxVRud5qkChQn9oQJZ4jqRpXO73KvK7w==
-X-Received: by 2002:a5d:6411:: with SMTP id z17mr32243825wru.119.1617095425723; 
- Tue, 30 Mar 2021 02:10:25 -0700 (PDT)
+ bh=hIgRZy+uhzo2sm3mfgG8b97EVLTEtVQu0/b6m7/PEy0=;
+ b=a92s3HHpkXFBrXiMyjJuokDWpHZsYcJZQGt2cbqhfA4QDNbmNcP83QWNiFsm7vjgG4
+ EngbuQ7Brf+dt8BLXS8mujdk3WwqldrBiFJ1WGQMFb/EqMgewuwqogrhJbQIdfcY00uz
+ QLK5ctdYSyJsYNYai1HaIUTH6gR7nuRVVsTWSjQV3ZjptNlzMlDBcB1g+9wMOKKS01FB
+ F6RWvdyIZSCOZZFC/Ly9uYAg/VC94wlgc+HJ/vmlIem0aQ6WZgNM+zsrH9rSLXwtxV8E
+ CXqSqcTXHgWdYcmPhaMhNhx9QPrt3Z09PCF32ZxBeeHaXoJhKBV/kNQk/cUjhWiljYT2
+ SI2w==
+X-Gm-Message-State: AOAM5323T03cZ4RR+BmxImSbVJ5ftob4pBKsVpdvtahKNhG4qjb8rWCg
+ 5gpWfUFeQNuU6h0dbzaADgcjzpr5IieUDTTx
+X-Google-Smtp-Source: ABdhPJzlMzoisYqiE27vtPAOQuSEopagM/LZtkENxUaO7gh2wflYciSxqGQSVHCo+T37hqWbiqZe5A==
+X-Received: by 2002:a05:600c:2109:: with SMTP id
+ u9mr3010285wml.44.1617095749128; 
+ Tue, 30 Mar 2021 02:15:49 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id j12sm33771727wrx.59.2021.03.30.02.10.24
+ by smtp.gmail.com with ESMTPSA id p17sm2328492wmd.42.2021.03.30.02.15.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Mar 2021 02:10:25 -0700 (PDT)
-Subject: Re: [PATCH v2 0/2] soc: mediatek: Prepare MMSYS for DDP routing using
- tables
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Tue, 30 Mar 2021 02:15:48 -0700 (PDT)
+Subject: Re: [PATCH 2/2] soc: mediatek: mmsys: Add support for MT8167 SoC
+To: Fabien Parent <fparent@baylibre.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org
-Cc: drinkcat@chromium.org, hsinyi@chromium.org, weiyi.lu@mediatek.com,
- Collabora Kernel ML <kernel@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20210317181711.795245-1-enric.balletbo@collabora.com>
+References: <20201027160631.608503-1-fparent@baylibre.com>
+ <20201027160631.608503-2-fparent@baylibre.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <9ae52157-c4b3-3080-6835-a6c4b349284a@gmail.com>
-Date: Tue, 30 Mar 2021 11:10:24 +0200
+Message-ID: <052990a7-673f-31f4-2453-a84b007cdbcf@gmail.com>
+Date: Tue, 30 Mar 2021 11:15:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210317181711.795245-1-enric.balletbo@collabora.com>
+In-Reply-To: <20201027160631.608503-2-fparent@baylibre.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_101026_802575_EF67EC0A 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20210330_101549_913229_2743EBD6 
+X-CRM114-Status: GOOD (  24.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +104,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Fabien,
 
+Sorry for taking so long on that patch.
+Generally the patch looks good, but I just merged a small change how we add new
+SoC to the driver.
+Please see comments below.
 
-On 17/03/2021 19:17, Enric Balletbo i Serra wrote:
-> Dear all,
+On 27/10/2020 17:06, Fabien Parent wrote:
+> Add routing table for DSI on MT8167 SoC. The registers are mostly
+> incompatible with the current defines, so new one for MT8167 are added.
 > 
-> This is the second version of this series intended to prepare the
-> mtk-mmsys driver to allow different DDP (Data Display Path) routing
-> tables per SoC. Note that the series has been tested only on MT8173 platform,
-> for MT2701 and MT2712 based devices we're using a default routing table
-> that should just work.
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+> 
+> This patch depends on the patch series
+> "soc: mediatek: Prepare MMSYS for DDP routing using tables"
+> 
+> [0] https://lore.kernel.org/patchwork/cover/1317813/
+> 
+>  drivers/soc/mediatek/mtk-mmsys.c | 50 ++++++++++++++++++++++++++++++++
+>  1 file changed, 50 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index f00d6d08c9c5..9890990a74a9 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -85,6 +85,22 @@
+>  #define DSI_SEL_IN_RDMA				0x1
+>  #define DSI_SEL_IN_MASK				0x1
+>  
+> +/* MT8167 */
+> +#define MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN	0x030
+> +#define MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN	0x038
+> +#define MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN	0x058
+> +#define MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN		0x064
+> +#define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
+> +
+> +#define MT8167_DITHER_MOUT_EN_RDMA0			BIT(0)
+> +#define MT8167_DITHER_MOUT_EN_MASK			0x7
+> +
+> +#define MT8167_RDMA0_SOUT_DSI0				0x2
+> +#define MT8167_RDMA0_SOUT_MASK				0x3
+> +
+> +#define MT8167_DSI0_SEL_IN_RDMA0			0x1
+> +#define MT8167_DSI0_SEL_IN_MASK				0x3
+> +
+>  struct mtk_mmsys_routes {
+>  	u32 from_comp;
+>  	u32 to_comp;
+> @@ -124,6 +140,30 @@ struct mtk_mmsys {
+>  	const struct mtk_mmsys_driver_data *data;
+>  };
+>  
+> +static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
 
-That's a good base to improve the driver.
-Things I'd like to see:
+Please put the defines and the routing table in a separate header file
+mt8167-mmsys.h
 
-Split the mmsys_default_routing_table in the SoC specific one. But each SoC
-specific routing table in a new header file.
-
-Whole series applied to v5.12-next/soc
-
-Thanks a lot!
+Thanks and once again sorry for the inconvenience.
 Matthias
 
-> 
-> Thanks,
->   Enric
-> 
-> Changes in v2:
-> - Use a default table for mt2701, mt2712 and mt8173.
-> - Remove the mask field from routes struct as is not needed.
-> 
-> CK Hu (2):
->   soc: mediatek: mmsys: Create struct mtk_mmsys to store context data
->   soc: mediatek: mmsys: Use an array for setting the routing registers
-> 
->  drivers/soc/mediatek/mtk-mmsys.c | 300 +++++--------------------------
->  drivers/soc/mediatek/mtk-mmsys.h | 215 ++++++++++++++++++++++
->  2 files changed, 257 insertions(+), 258 deletions(-)
->  create mode 100644 drivers/soc/mediatek/mtk-mmsys.h
+> +	{
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
+> +		MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN,
+> +		OVL0_MOUT_EN_COLOR0, OVL0_MOUT_EN_COLOR0
+> +	}, {
+> +		DDP_COMPONENT_DITHER, DDP_COMPONENT_RDMA0,
+> +		MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN,
+> +		MT8167_DITHER_MOUT_EN_MASK, MT8167_DITHER_MOUT_EN_RDMA0
+> +	}, {
+> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_COLOR0,
+> +		MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN,
+> +		COLOR0_SEL_IN_OVL0, COLOR0_SEL_IN_OVL0
+> +	}, {
+> +		DDP_COMPONENT_RDMA0, DDP_COMPONENT_DSI0,
+> +		MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN,
+> +		MT8167_DSI0_SEL_IN_MASK, MT8167_DSI0_SEL_IN_RDMA0
+> +	}, {
+> +		DDP_COMPONENT_RDMA0, DDP_COMPONENT_DSI0,
+> +		MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN,
+> +		MT8167_RDMA0_SOUT_MASK, MT8167_RDMA0_SOUT_DSI0
+> +	},
+> +};
+> +
+>  static const struct mtk_mmsys_routes mt8173_mmsys_routing_table[] = {
+>  	{
+>  		DDP_COMPONENT_BLS, DDP_COMPONENT_DSI0,
+> @@ -288,6 +328,12 @@ static const struct mtk_mmsys_routes mt8173_mmsys_routing_table[] = {
+>  	}
+>  };
+>  
+> +static const struct mtk_mmsys_driver_data mt8167_mmsys_driver_data = {
+> +	.clk_driver = "clk-mt8167-mm",
+> +	.routes = mt8167_mmsys_routing_table,
+> +	.num_routes = ARRAY_SIZE(mt8167_mmsys_routing_table),
+> +};
+> +
+>  static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+>  	.clk_driver = "clk-mt8173-mm",
+>  	.routes = mt8173_mmsys_routing_table,
+> @@ -385,6 +431,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+>  		.compatible = "mediatek,mt6797-mmsys",
+>  		.data = &mt6797_mmsys_driver_data,
+>  	},
+> +	{
+> +		.compatible = "mediatek,mt8167-mmsys",
+> +		.data = &mt8167_mmsys_driver_data,
+> +	},
+>  	{
+>  		.compatible = "mediatek,mt8173-mmsys",
+>  		.data = &mt8173_mmsys_driver_data,
 > 
 
 _______________________________________________
