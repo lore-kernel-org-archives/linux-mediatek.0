@@ -2,81 +2,83 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00A9BC433E2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E09CCC433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:54:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A08ED619B9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:29:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A08ED619B9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 66EC36196C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 15:54:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66EC36196C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=v/WgaNXGKmLxIkuRkKvU5kn79xHzZr0hRmgTRZeqF18=; b=qMG5BVxb8FgCqCL7Iqw5EMGD4
-	ZyN0nr348chx+AD0UJkNf1ZUTRmztG1KCSxMFgXb1DqB1a/iBFdG2PMgs8Gwt0T2QV337R2L9YxFw
-	7Hw54OYL7W1pYCTl2MwlsNUVNB/Cud9fp6sbVWilrKJSoOLSJiclahVr7UXX/WC28+oV/pJ7JD8r3
-	O3s1oU3dAIfUaamG6vH5Kfy1ZvxaEAIup8DThCKnlAkNMl6ejm+GtldC8u9rh9KQKN9aAI434SriS
-	VjYSteLneXt10iK4je+2fZfdHW/WhB7G/poqq3gdrEhKaQyz72cEJrXZ9TRd4/Mm1AHMK1CoXOyul
-	FYFuuRj1Q==;
+	 bh=DjyjI8g5FwggibkseI0Hz2Tcz3j2VZZqtBngPojKHRY=; b=e9y13mQlK8WK+Ml5A8SS2AD+A
+	rtOEwWhcoN+S+pLbq1cY6APOLYGJO3JJklYFqdHAyir5jseZDVjK32d38WQ1LanNBmZ7iU5I8sHX8
+	r8Ec0jsbRh5d1LyNcl5O6NpxKdZNAm7wRwJKKhQtw8fsCOZ81UDTJ30+nX+k22m7EPfgPq/D9yyBr
+	SlNhtjR8Sw00BcK1mVJ3VDAn5T0jLBsNL9XRGxwCONEO14jlEgDIYbr0gD04j/GF63+9uoCxsztvT
+	Ltf9Ob8UEB45up50w9SZ+RIy+o/qmZVP2m/O11fbwuB7Kv31+pdOrsK//t79gJ97A85F1zhwjtq4B
+	4Il4tLUEQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRGJ1-004BuX-Nl; Tue, 30 Mar 2021 15:29:23 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lRGIo-004Bqz-3N; Tue, 30 Mar 2021 15:29:12 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A653C31B;
- Tue, 30 Mar 2021 08:29:05 -0700 (PDT)
-Received: from lpieralisi (e121166-lin.cambridge.arm.com [10.1.196.255])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 263A73F719;
- Tue, 30 Mar 2021 08:29:02 -0700 (PDT)
-Date: Tue, 30 Mar 2021 16:28:57 +0100
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Marc Zyngier <maz@kernel.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thierry Reding <treding@nvidia.com>,
- Thomas Gleixner <tglx@linutronix.de>, Rob Herring <robh@kernel.org>,
- Will Deacon <will@kernel.org>, "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Bharat Kumar Gogada <bharatku@xilinx.com>,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, kernel-team@android.com
-Subject: Re: [PATCH v3 02/14] PCI: rcar: Don't allocate extra memory for the
- MSI capture address
-Message-ID: <20210330152857.GA27749@lpieralisi>
-References: <20210330151145.997953-1-maz@kernel.org>
- <20210330151145.997953-3-maz@kernel.org>
+	id 1lRGgm-004GaS-8p; Tue, 30 Mar 2021 15:53:56 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lRGgf-004GYe-CK; Tue, 30 Mar 2021 15:53:54 +0000
+X-UUID: aa6784ad708c40e9b2a370c3c3f4ddeb-20210330
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=l43RF5d75CbzhSmjnnJywgmGdgh/n0rM1Sm0c+0swbU=; 
+ b=j1mdZbibwWyji8+KTEATccww4TWCrdwiT9T5JD2rE47JkDEtmWUIOudP3fLyHbZ1AsZsj7PTgxc03MEj41Y+qouflcBCxDIp6tyFA7S+mCsddoBCvpJEiHWoYEND8HdFQk3Wuh0Pl7MNkeVmgsV74DN1sl9fOAlkOlM3ZKrLFjY=;
+X-UUID: aa6784ad708c40e9b2a370c3c3f4ddeb-20210330
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1374111346; Tue, 30 Mar 2021 07:53:38 -0800
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Mar 2021 08:53:37 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 30 Mar 2021 23:53:36 +0800
+Received: from mszsdaap41.gcn.mediatek.inc (10.16.6.141) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 30 Mar 2021 23:53:35 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <yingjoe.chen@mediatek.com>, <eddie.huang@mediatek.com>,
+ <cawa.cheng@mediatek.com>, <bibby.hsieh@mediatek.com>, <ck.hu@mediatek.com>,
+ <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH 2/3] drm/mediatek: config mt8183 driver data to support dual
+ edge sample
+Date: Tue, 30 Mar 2021 23:53:29 +0800
+Message-ID: <20210330155330.28759-3-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.12.5
+In-Reply-To: <20210330155330.28759-1-jitao.shi@mediatek.com>
+References: <20210330155330.28759-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210330151145.997953-3-maz@kernel.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-TM-SNTS-SMTP: 23E89B638CF9D689B22C63EDCEFA005AD9C41F3FC233A26809757DA39A64B9BB2000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_162910_439755_534F2758 
-X-CRM114-Status: GOOD (  27.49  )
+X-CRM114-CacheID: sfid-20210330_165349_922913_25F7E15B 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,99 +95,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 30, 2021 at 04:11:33PM +0100, Marc Zyngier wrote:
-> A long cargo-culted behaviour of PCI drivers is to allocate memory
-> to obtain an address that is fed to the controller as the MSI
-> capture address (i.e. the MSI doorbell).
-> 
-> But there is no actual requirement for this address to be RAM.
-> All it needs to be is a suitable aligned address that will
-> *not* be DMA'd to.
-> 
-> Since the rcar platform already has a requirement that this
-> address should be in the first 4GB of the physical address space,
-> use the controller's own base address as the capture address.
-> 
-> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> ---
->  drivers/pci/controller/pcie-rcar-host.c | 18 +++++++-----------
->  1 file changed, 7 insertions(+), 11 deletions(-)
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Marek, Yoshihiro,
-
-can you test this patch please and report back ? It is not fundamental
-for the rest of the series (ie the rest of the series does not depend on
-it) and we can still merge the series without it but it would be good if
-you can review and test anyway.
-
-I'd like to merge this series into -next shortly.
-
-Thanks,
-Lorenzo
-
-> diff --git a/drivers/pci/controller/pcie-rcar-host.c b/drivers/pci/controller/pcie-rcar-host.c
-> index a728e8f9ad3c..ce952403e22c 100644
-> --- a/drivers/pci/controller/pcie-rcar-host.c
-> +++ b/drivers/pci/controller/pcie-rcar-host.c
-> @@ -36,7 +36,6 @@ struct rcar_msi {
->  	DECLARE_BITMAP(used, INT_PCI_MSI_NR);
->  	struct irq_domain *domain;
->  	struct msi_controller chip;
-> -	unsigned long pages;
->  	struct mutex lock;
->  	int irq1;
->  	int irq2;
-> @@ -680,14 +679,15 @@ static void rcar_pcie_unmap_msi(struct rcar_pcie_host *host)
->  static void rcar_pcie_hw_enable_msi(struct rcar_pcie_host *host)
->  {
->  	struct rcar_pcie *pcie = &host->pcie;
-> -	struct rcar_msi *msi = &host->msi;
-> -	unsigned long base;
-> +	struct device *dev = pcie->dev;
-> +	struct resource res;
->  
-> -	/* setup MSI data target */
-> -	base = virt_to_phys((void *)msi->pages);
-> +	if (WARN_ON(of_address_to_resource(dev->of_node, 0, &res)))
-> +		return;
->  
-> -	rcar_pci_write_reg(pcie, lower_32_bits(base) | MSIFE, PCIEMSIALR);
-> -	rcar_pci_write_reg(pcie, upper_32_bits(base), PCIEMSIAUR);
-> +	/* setup MSI data target */
-> +	rcar_pci_write_reg(pcie, lower_32_bits(res.start) | MSIFE, PCIEMSIALR);
-> +	rcar_pci_write_reg(pcie, upper_32_bits(res.start), PCIEMSIAUR);
->  
->  	/* enable all MSI interrupts */
->  	rcar_pci_write_reg(pcie, 0xffffffff, PCIEMSIIER);
-> @@ -735,7 +735,6 @@ static int rcar_pcie_enable_msi(struct rcar_pcie_host *host)
->  	}
->  
->  	/* setup MSI data target */
-> -	msi->pages = __get_free_pages(GFP_KERNEL | GFP_DMA32, 0);
->  	rcar_pcie_hw_enable_msi(host);
->  
->  	return 0;
-> @@ -748,7 +747,6 @@ static int rcar_pcie_enable_msi(struct rcar_pcie_host *host)
->  static void rcar_pcie_teardown_msi(struct rcar_pcie_host *host)
->  {
->  	struct rcar_pcie *pcie = &host->pcie;
-> -	struct rcar_msi *msi = &host->msi;
->  
->  	/* Disable all MSI interrupts */
->  	rcar_pci_write_reg(pcie, 0, PCIEMSIIER);
-> @@ -756,8 +754,6 @@ static void rcar_pcie_teardown_msi(struct rcar_pcie_host *host)
->  	/* Disable address decoding of the MSI interrupt, MSIFE */
->  	rcar_pci_write_reg(pcie, 0, PCIEMSIALR);
->  
-> -	free_pages(msi->pages, 0);
-> -
->  	rcar_pcie_unmap_msi(host);
->  }
->  
-> -- 
-> 2.29.2
-> 
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index ccd681a2a4c2..87bb27649c4c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -696,6 +696,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.cal_factor = mt8183_calculate_factor,
+ 	.reg_h_fre_con = 0xe0,
++	.dual_edge = true,
+ };
+ 
+ static int mtk_dpi_probe(struct platform_device *pdev)
+-- 
+2.12.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
