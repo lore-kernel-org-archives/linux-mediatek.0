@@ -2,98 +2,76 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B98FC433C1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 04:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82AF7C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 05:24:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0364B61994
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 04:37:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0364B61994
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id CA3E461922
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 05:24:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA3E461922
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EhTx/44ixbQcOGneD0ZJ8Ug9rp19cbOvdmIW6XljAEY=; b=p3NTX/6M30dLZCdbB93uxI5jg
-	DCqcStY+f5kCKckkZ/ycFyYgp4/jBJJyTOmvYZkVy+gxy35Ylj4GBNL9jcN+AGjmycvINH/4lffwd
-	XDsAsZn/TDkWVGoz72BQLXe7ejPY7iCS53O9cLz/xgZEGu5lVftZ1oKJHiTYuNHwShqBwvY/qqfhn
-	sTLuJjUWoZRJ7QuIpxk5UXrkZS54BirfAnnt/rF+6LKFkGX1QpE5V95+uM2Gbs0BhKSGd8va0kBlP
-	xwHsr7BZlRoLiY20xUOR8994G2XOC/dmaImzkFYG5WzkAn9aOmtgd907P0S/QdgtQ71ASVcM8gdDr
-	vVBtI6JyQ==;
+	 bh=CWEjWncvsP+Q4FtBFYz5VZY9EONLWYF/Vrxbm7LSO+Q=; b=TwlqyMxWmF1jQl2O5f06weNVX
+	bh84FCRsHqikU3nx4zy8EI3r9MuIOV4uQqaL3OeXSxq+Q3+Pa1v0svPvFNqDLy8p2j+8l4t8LiVDx
+	7oVoO4SyeGShDP6hegfDEUc/NVdt8VRzgbgJirSNmoQjwUQCiR4IPWdVHJ6H+DfkdMRKMQNlo2tcd
+	BRDefjcb+jjFIvpPN+6i5cQGQkOOZ9Z7/BVzyrYAfyMlWNFUTYR2YMIyVofm7tspgEZPdTQYkJhxu
+	9+V2JeTtfuTd+cqSGIIOrnRwGkkH8OH7neMnoNejD33HNHy3s9Nwh160iDkEIYRrylPmIX/Is9ojH
+	xDTzjjFXw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR67R-002hVp-Vh; Tue, 30 Mar 2021 04:36:46 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1lR6qu-002jEz-WA; Tue, 30 Mar 2021 05:23:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lR67G-002hUJ-DV
- for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 04:36:36 +0000
-Received: by mail-pl1-x634.google.com with SMTP id d8so5498745plh.11
- for <linux-mediatek@lists.infradead.org>; Mon, 29 Mar 2021 21:36:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=BvRbBZnASVdYfsaOe0CfduFdiRkLJ8niuBgOzm/MRro=;
- b=iECcxBCZLcHI2v1Czg8SPMUOeAdilEubHiugaH6gep3GwMFvqHzkAFlHfzV/6n5d5i
- LHAvlhvfTwVVKMtNq4F+NEC8QOj5ohxl0NWe0lCOWyOHIlCnZ5ekGlgBIiW9qHjqXwch
- P5A3H3ZJB18TMtjD1GjTi5lo3mKTEicYIFlZ+isPWC2MNNQqcv6gg37RgOoai3Ek1+GN
- TmGm60kgXb73h356o9Upw6ZgoPT0PcbFqGrPi5iYL6yvQ7XfLCH28QqGjvlSBm81dC3W
- 9jjeu2dwfSOLqyf/ibNeSuPB0E66R4HvenL5m+Hzko5D3mmh4Ihgp8CD4HwptB5s78/D
- CLCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=BvRbBZnASVdYfsaOe0CfduFdiRkLJ8niuBgOzm/MRro=;
- b=j0JckkZ/P6O1lghHp8XkCtOt5MR2o4/y8C1hqcN5ggwiUuI9FsuLWNQBsOrYCidUNc
- O36AVzUnj7fd/i3vLX355c85Uq/gifCnztLXuJlBAytKfoLtB62VO4Bty3sb7NrQFdDl
- ICPzbRmTFwobBOwyXb5pPr++rb3jz3rZyB6Rfql4B2Cj/BiiKx6JHC0WKoihB98MN8AM
- t8VfQpVm3Cz0L/pLSvJ023kRbAWb5qSu6K8lhNPJbjAZEd+Y21Uzjbw7LQG1F/CkB1vZ
- I/p3OzdBnx9UxrW71BbmJeBBuj+oIsQtd8SBbyxI+OazqZE+48ee6mZmg8dCA74QLreI
- OQaQ==
-X-Gm-Message-State: AOAM530QVmZgdR8xRf7p0v4psNxBOKnVSmBrfpIuXtFG82Nvq08lXoFg
- bqt5QTlx/FlBtWElFBRlZsUOmKS/HjPkjg==
-X-Google-Smtp-Source: ABdhPJwshx2ncunskGbMt8kWnyEKe9h4R6stukSh3ZR36FNExYlVwD6kQZCJJns2C8g4gluFQJdAcw==
-X-Received: by 2002:a17:90a:c588:: with SMTP id
- l8mr2432201pjt.120.1617078991995; 
- Mon, 29 Mar 2021 21:36:31 -0700 (PDT)
-Received: from localhost ([136.185.154.93])
- by smtp.gmail.com with ESMTPSA id e6sm2638506pgh.17.2021.03.29.21.36.30
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 29 Mar 2021 21:36:31 -0700 (PDT)
-Date: Tue, 30 Mar 2021 10:06:29 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>,
- Stephen Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com
-Subject: Re: [PATCH V8 2/8] cpufreq: mediatek: Enable clock and regulator
-Message-ID: <20210330043629.x62j2apv2nv4mw67@vireshk-i7>
-References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <1616499241-4906-3-git-send-email-andrew-sh.cheng@mediatek.com>
+ id 1lR6qm-002jDc-Iw; Tue, 30 Mar 2021 05:23:40 +0000
+X-UUID: 7158e63336a94d838930b63d656bd3f3-20210329
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=k44U9dq3Avd9a8RR/i6oCY6r2Pabeyqf7JWQE7nsIQ8=; 
+ b=ANF0VODvdM2OsrZC7mKbw1lpAdnsw42TmgBJQJX6MMYZ/3rj+VrC93l1QUZ4RIsO64bpfHh7n5kqTvSg5D05LRRV3DD1lHb822fIXsKjRABRfl84E741BgO53PKMaPRe126sLYmr/HieYUTXS0dAWm9JW8NLTRRySsygM47lWPo=;
+X-UUID: 7158e63336a94d838930b63d656bd3f3-20210329
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <pk.chi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 846024154; Mon, 29 Mar 2021 21:23:25 -0800
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Mar 2021 22:23:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Mar 2021 13:23:21 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 30 Mar 2021 13:23:21 +0800
+From: Po-Kai Chi <pk.chi@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <wsd_upstream@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou
+ <loda.chou@mediatek.com>, Po-Kai Chi <pk.chi@mediatek.com>
+Subject: [PATCH v1 2/4] memory: mediatek: add DRAM controller driver
+Date: Tue, 30 Mar 2021 13:22:09 +0800
+Message-ID: <1617081731-7408-3-git-send-email-pk.chi@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1617081731-7408-1-git-send-email-pk.chi@mediatek.com>
+References: <1617081731-7408-1-git-send-email-pk.chi@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1616499241-4906-3-git-send-email-andrew-sh.cheng@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_053634_894511_0804807C 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20210330_062337_442038_F1B83F86 
+X-CRM114-Status: GOOD (  23.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,41 +88,818 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 23-03-21, 19:33, Andrew-sh.Cheng wrote:
-> From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
-> 
-> Need to enable regulator,
-> so that the max/min requested value will be recorded
-> even it is not applied right away.
-> 
-> Intermediate clock is not always enabled by ccf in different projects,
-> so cpufreq should enable it by itself.
-> 
-> Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
-> ---
->  drivers/cpufreq/mediatek-cpufreq.c | 33 +++++++++++++++++++++++++++++----
->  1 file changed, 29 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index f2e491b25b07..432368707ea6 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -350,6 +350,11 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->  		ret = PTR_ERR(proc_reg);
->  		goto out_free_resources;
->  	}
-> +	ret = regulator_enable(proc_reg);
-> +	if (ret) {
-> +		pr_warn("enable vproc for cpu%d fail\n", cpu);
-> +		goto out_free_resources;
-> +	}
+MediaTek DRAM controller (DRAMC) driver provides cross-platform features
+as below:
+  - API provided to other kernel modules for querying DRAM type,
+    rank count, rank size, channel count and mode register settings.
+  - Sysfs interface used to pass DRAM mode register settings and current
+    DRAM data rate to user-space for MediaTek ecosystem.
 
-Regulators are enabled by OPP core as well now, you sure this is
-required ?
+Signed-off-by: Po-Kai Chi <pk.chi@mediatek.com>
+---
+ drivers/memory/Kconfig              |    1 +
+ drivers/memory/Makefile             |    1 +
+ drivers/memory/mediatek/Kconfig     |    9 +
+ drivers/memory/mediatek/Makefile    |    3 +
+ drivers/memory/mediatek/mtk-dramc.c |  711 +++++++++++++++++++++++++++++++++++
+ include/memory/mediatek/dramc.h     |   18 +
+ 6 files changed, 743 insertions(+)
+ create mode 100644 drivers/memory/mediatek/Kconfig
+ create mode 100644 drivers/memory/mediatek/Makefile
+ create mode 100644 drivers/memory/mediatek/mtk-dramc.c
+ create mode 100644 include/memory/mediatek/dramc.h
 
+diff --git a/drivers/memory/Kconfig b/drivers/memory/Kconfig
+index 72c0df1..056e906 100644
+--- a/drivers/memory/Kconfig
++++ b/drivers/memory/Kconfig
+@@ -225,6 +225,7 @@ config STM32_FMC2_EBI
+ 	  devices (like SRAM, ethernet adapters, FPGAs, LCD displays, ...) on
+ 	  SOCs containing the FMC2 External Bus Interface.
+ 
++source "drivers/memory/mediatek/Kconfig"
+ source "drivers/memory/samsung/Kconfig"
+ source "drivers/memory/tegra/Kconfig"
+ 
+diff --git a/drivers/memory/Makefile b/drivers/memory/Makefile
+index bc7663e..cd4f8cf 100644
+--- a/drivers/memory/Makefile
++++ b/drivers/memory/Makefile
+@@ -25,6 +25,7 @@ obj-$(CONFIG_PL353_SMC)		+= pl353-smc.o
+ obj-$(CONFIG_RENESAS_RPCIF)	+= renesas-rpc-if.o
+ obj-$(CONFIG_STM32_FMC2_EBI)	+= stm32-fmc2-ebi.o
+ 
++obj-$(CONFIG_MTK_DRAMC)		+= mediatek/
+ obj-$(CONFIG_SAMSUNG_MC)	+= samsung/
+ obj-$(CONFIG_TEGRA_MC)		+= tegra/
+ obj-$(CONFIG_TI_EMIF_SRAM)	+= ti-emif-sram.o
+diff --git a/drivers/memory/mediatek/Kconfig b/drivers/memory/mediatek/Kconfig
+new file mode 100644
+index 0000000..a1618b0
+--- /dev/null
++++ b/drivers/memory/mediatek/Kconfig
+@@ -0,0 +1,9 @@
++# SPDX-License-Identifier: GPL-2.0
++
++config MTK_DRAMC
++	tristate "MediaTek DRAMC driver"
++	help
++	  This selects the MediaTek(R) DRAMC driver.
++	  Provide the API for DRAMC low power scenario, and the interface
++	  for reporting DRAM information, e.g. DRAM mode register (MR) for
++	  DRAM vendor ID, temperature, and density.
+diff --git a/drivers/memory/mediatek/Makefile b/drivers/memory/mediatek/Makefile
+new file mode 100644
+index 0000000..632be48
+--- /dev/null
++++ b/drivers/memory/mediatek/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++
++obj-$(CONFIG_MTK_DRAMC)	+= mtk-dramc.o
+diff --git a/drivers/memory/mediatek/mtk-dramc.c b/drivers/memory/mediatek/mtk-dramc.c
+new file mode 100644
+index 0000000..d81d311
+--- /dev/null
++++ b/drivers/memory/mediatek/mtk-dramc.c
+@@ -0,0 +1,711 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/kernel.h>
++#include <linux/module.h>
++#include <linux/device.h>
++#include <linux/platform_device.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/printk.h>
++#include <linux/slab.h>
++#include <linux/io.h>
++#include <memory/mediatek/dramc.h>
++
++#define DRAMC_DRV_NAME	"mtk-dramc"
++
++struct mr_info_t {
++	unsigned int mr_index;
++	unsigned int mr_value;
++};
++
++/*
++ * struct reg_ctrl_t - to describe the bits required in a register
++ * @offset: register address offset from a base
++ * @mask: bitmask of the target bits
++ * @shift: starting bit of the target bits
++ */
++struct reg_ctrl_t {
++	unsigned int offset;
++	unsigned int mask;
++	unsigned int shift;
++};
++
++struct fmeter_dev_t {
++	unsigned int crystal_freq;
++	unsigned int shu_of;
++	struct reg_ctrl_t shu_lv;
++	struct reg_ctrl_t pll_id;
++	struct reg_ctrl_t pll_md[2];
++	struct reg_ctrl_t sdmpcw[2];
++	struct reg_ctrl_t prediv[2];
++	struct reg_ctrl_t posdiv[2];
++	struct reg_ctrl_t ckdiv4[2];
++	struct reg_ctrl_t cldiv2[2];
++	struct reg_ctrl_t fbksel[2];
++	struct reg_ctrl_t dqopen[2];
++};
++
++struct mr4_dev_t {
++	struct reg_ctrl_t mr4_rg;
++};
++
++struct dramc_dev_t {
++	unsigned int dram_type;
++	unsigned int support_channel_cnt;
++	unsigned int channel_cnt;
++	unsigned int rank_cnt;
++	unsigned int mr_cnt;
++	unsigned int freq_cnt;
++	unsigned int *rank_size;
++	unsigned int *freq_step;
++	struct mr_info_t *mr_info_ptr;
++	void __iomem **dramc_chn_base_ao;
++	void __iomem **dramc_chn_base_nao;
++	void __iomem **ddrphy_chn_base_ao;
++	void *mr4_dev_ptr;
++	void *fmeter_dev_ptr;
++};
++
++enum DRAM_TYPE {
++	TYPE_NONE = 0,
++	TYPE_DDR1,
++	TYPE_LPDDR2,
++	TYPE_LPDDR3,
++	TYPE_PCDDR3,
++	TYPE_LPDDR4,
++	TYPE_LPDDR4X,
++	TYPE_LPDDR4P
++};
++
++static const struct fmeter_dev_t fmeter_v0_mt6779_t = {
++	.crystal_freq = 52,
++	.shu_of = 0x500,
++	.shu_lv = { .offset = 0x00e4, .mask = 0x00000006, .shift = 1 },
++	.pll_id = { .offset = 0x0510, .mask = 0x80000000, .shift = 31 },
++	.pll_md = {
++		{ .offset = 0x0d84, .mask = 0x00000100, .shift = 8 },
++		{ .offset = 0x0d84, .mask = 0x00000100, .shift = 8 },
++	},
++	.sdmpcw = {
++		{ .offset = 0x0d9c, .mask = 0xffff0000, .shift = 16 },
++		{ .offset = 0x0d94, .mask = 0xffff0000, .shift = 16 },
++	},
++	.prediv = {
++		{ .offset = 0x0da8, .mask = 0x000c0000, .shift = 18 },
++		{ .offset = 0x0da0, .mask = 0x000c0000, .shift = 18 },
++	},
++	.posdiv = {
++		{ .offset = 0x0da8, .mask = 0x00000007, .shift = 0 },
++		{ .offset = 0x0da0, .mask = 0x00000007, .shift = 0 },
++	},
++	.ckdiv4 = {
++		{ .offset = 0x0d18, .mask = 0x08000000, .shift = 27 },
++		{ .offset = 0x0d18, .mask = 0x08000000, .shift = 27 },
++	},
++	.cldiv2 = {
++		{ .offset = 0x0c38, .mask = 0x80000000, .shift = 31 },
++		{ .offset = 0x0c38, .mask = 0x80000000, .shift = 31 },
++	},
++};
++
++static const struct mr4_dev_t mr4_v1_mt6779_t = {
++	.mr4_rg = { .offset = 0x0090, .mask = 0x0000ffff, .shift = 0 },
++};
++
++struct mtk_dramc_compatible {
++	const struct fmeter_dev_t *fmeter;
++	const struct mr4_dev_t *mr4;
++};
++
++static const struct mtk_dramc_compatible mt6779_compat = {
++	.fmeter = &fmeter_v0_mt6779_t,
++	.mr4 = &mr4_v1_mt6779_t,
++};
++
++static const struct of_device_id mtk_dramc_of_ids[] = {
++	{ .compatible = "mediatek,mt6779-dramc", .data = &mt6779_compat },
++	{}
++};
++MODULE_DEVICE_TABLE(of, mtk_dramc_of_ids);
++
++/*
++ * mtk_dramc_get_drvdata_by_ids - get the dramc driver data
++ *
++ * Return the dramc driver data
++ */
++static struct dramc_dev_t *mtk_dramc_get_drvdata_by_ids(void)
++{
++	struct device_node *np;
++	struct platform_device *dramc_pdev;
++
++	np = of_find_matching_node_and_match(NULL, mtk_dramc_of_ids, NULL);
++	dramc_pdev = of_find_device_by_node(np);
++
++	if (!dramc_pdev)
++		return NULL;
++
++	return (struct dramc_dev_t *)platform_get_drvdata(dramc_pdev);
++}
++
++static ssize_t mr_show(struct device_driver *driver, char *buf)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++	struct mr_info_t *mr_info_ptr;
++	unsigned int i;
++	ssize_t ret;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	mr_info_ptr = dramc_dev_ptr->mr_info_ptr;
++
++	for (ret = 0, i = 0; i < dramc_dev_ptr->mr_cnt; i++) {
++		ret += snprintf(buf + ret, PAGE_SIZE - ret,
++				"mr%d: 0x%x\n",
++				mr_info_ptr[i].mr_index,
++				mr_info_ptr[i].mr_value);
++		if (ret >= PAGE_SIZE)
++			return strlen(buf);
++	}
++
++	return strlen(buf);
++}
++
++static ssize_t mr4_show(struct device_driver *driver, char *buf)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++	unsigned int i;
++	ssize_t ret;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	for (ret = 0, i = 0; i < dramc_dev_ptr->channel_cnt; i++) {
++		ret += snprintf(buf + ret, PAGE_SIZE - ret,
++				"mr4: ch%d 0x%x\n",
++				i, mtk_dramc_get_mr4(i));
++		if (ret >= PAGE_SIZE)
++			return strlen(buf);
++	}
++
++	return strlen(buf);
++}
++
++static ssize_t dram_data_rate_show(struct device_driver *driver, char *buf)
++{
++	return snprintf(buf, PAGE_SIZE, "DRAM data rate = %d\n",
++			mtk_dramc_get_data_rate());
++}
++
++static DRIVER_ATTR_RO(mr);
++static DRIVER_ATTR_RO(mr4);
++static DRIVER_ATTR_RO(dram_data_rate);
++
++static int dramc_probe(struct platform_device *pdev)
++{
++	struct device_node *dramc_node = pdev->dev.of_node;
++	struct dramc_dev_t *dramc_dev_ptr;
++	const struct mtk_dramc_compatible *dev_comp;
++	struct resource *res;
++	unsigned int i, size;
++	int ret;
++
++	pr_info("%s: module probe.\n", __func__);
++
++	dramc_dev_ptr = devm_kmalloc(&pdev->dev,
++				     sizeof(struct dramc_dev_t),
++				     GFP_KERNEL);
++
++	dev_comp =
++		(struct mtk_dramc_compatible *)
++			of_device_get_match_data(&pdev->dev);
++
++	if (!dramc_dev_ptr)
++		return -ENOMEM;
++
++	ret = of_property_read_u32(dramc_node,
++				   "dram_type",
++				   &dramc_dev_ptr->dram_type);
++	if (ret) {
++		pr_info("%s: get dram_type fail\n", __func__);
++		return -EINVAL;
++	}
++
++	ret = of_property_read_u32(dramc_node,
++				   "support_channel_cnt",
++				   &dramc_dev_ptr->support_channel_cnt);
++	if (ret) {
++		pr_info("%s: get support_channel_cnt fail\n", __func__);
++		return -EINVAL;
++	}
++
++	ret = of_property_read_u32(dramc_node,
++				   "channel_cnt",
++				   &dramc_dev_ptr->channel_cnt);
++	if (ret) {
++		pr_info("%s: get channel_cnt fail\n", __func__);
++		return -EINVAL;
++	}
++
++	ret = of_property_read_u32(dramc_node,
++				   "rank_cnt",
++				   &dramc_dev_ptr->rank_cnt);
++	if (ret) {
++		pr_info("%s: get rank_cnt fail\n", __func__);
++		return -EINVAL;
++	}
++
++	ret = of_property_read_u32(dramc_node,
++				   "mr_cnt",
++				   &dramc_dev_ptr->mr_cnt);
++	if (ret) {
++		pr_info("%s: get mr_cnt fail\n", __func__);
++		return -EINVAL;
++	}
++
++	ret = of_property_read_u32(dramc_node,
++				   "freq_cnt",
++				   &dramc_dev_ptr->freq_cnt);
++	if (ret) {
++		pr_info("%s: get freq_cnt fail\n", __func__);
++		return -EINVAL;
++	}
++
++	dramc_dev_ptr->mr4_dev_ptr = (void *)dev_comp->mr4;
++
++	pr_info("%s: %s(%d),%s(%d),%s(%d),%s(%d),%s(%d),%s(%d),%s(%s)\n",
++		__func__,
++		"dram_type", dramc_dev_ptr->dram_type,
++		"support_channel_cnt", dramc_dev_ptr->support_channel_cnt,
++		"channel_cnt", dramc_dev_ptr->channel_cnt,
++		"rank_cnt", dramc_dev_ptr->rank_cnt,
++		"mr_cnt", dramc_dev_ptr->mr_cnt,
++		"freq_cnt", dramc_dev_ptr->freq_cnt,
++		"mr4", (dramc_dev_ptr->mr4_dev_ptr) ? "true" : "false");
++
++	size = sizeof(unsigned int) * dramc_dev_ptr->rank_cnt;
++	dramc_dev_ptr->rank_size = devm_kmalloc(&pdev->dev, size, GFP_KERNEL);
++	if (!(dramc_dev_ptr->rank_size))
++		return -ENOMEM;
++	ret = of_property_read_u32_array(dramc_node,
++					 "rank_size",
++					 dramc_dev_ptr->rank_size,
++					 dramc_dev_ptr->rank_cnt);
++	if (ret) {
++		pr_info("%s: get rank_size fail\n", __func__);
++		return -EINVAL;
++	}
++
++	if (dramc_dev_ptr->mr_cnt) {
++		size = sizeof(struct mr_info_t) * dramc_dev_ptr->mr_cnt;
++		dramc_dev_ptr->mr_info_ptr = devm_kmalloc(&pdev->dev,
++							  size,
++							  GFP_KERNEL);
++		if (!(dramc_dev_ptr->mr_info_ptr))
++			return -ENOMEM;
++		ret =
++		    of_property_read_u32_array(dramc_node,
++					       "mr",
++					       (unsigned int *)dramc_dev_ptr->mr_info_ptr,
++					       size >> 2);
++		if (ret) {
++			pr_info("%s: get mr_info fail\n", __func__);
++			return -EINVAL;
++		}
++		for (i = 0; i < dramc_dev_ptr->mr_cnt; i++)
++			pr_info("%s: mr%d(%x)\n", __func__,
++				dramc_dev_ptr->mr_info_ptr[i].mr_index,
++				dramc_dev_ptr->mr_info_ptr[i].mr_value);
++	}
++
++	if (dramc_dev_ptr->freq_cnt) {
++		size = sizeof(unsigned int) * dramc_dev_ptr->freq_cnt * 2;
++		dramc_dev_ptr->freq_step =
++			devm_kmalloc(&pdev->dev, size, GFP_KERNEL);
++		if (!(dramc_dev_ptr->freq_step))
++			return -ENOMEM;
++		ret = of_property_read_u32_array(dramc_node,
++						 "freq_step",
++						 dramc_dev_ptr->freq_step,
++						 dramc_dev_ptr->freq_cnt * 2);
++		if (ret) {
++			pr_info("%s: get freq_step fail\n", __func__);
++			return -EINVAL;
++		}
++	}
++
++	size = sizeof(phys_addr_t) * dramc_dev_ptr->support_channel_cnt;
++	dramc_dev_ptr->dramc_chn_base_ao = devm_kmalloc(&pdev->dev,
++							size, GFP_KERNEL);
++	if (!(dramc_dev_ptr->dramc_chn_base_ao))
++		return -ENOMEM;
++	dramc_dev_ptr->dramc_chn_base_nao = devm_kmalloc(&pdev->dev,
++							 size, GFP_KERNEL);
++	if (!(dramc_dev_ptr->dramc_chn_base_nao))
++		return -ENOMEM;
++	dramc_dev_ptr->ddrphy_chn_base_ao = devm_kmalloc(&pdev->dev,
++							 size, GFP_KERNEL);
++	if (!(dramc_dev_ptr->ddrphy_chn_base_ao))
++		return -ENOMEM;
++
++	for (i = 0; i < dramc_dev_ptr->support_channel_cnt; i++) {
++		res = platform_get_resource(pdev, IORESOURCE_MEM, i);
++		dramc_dev_ptr->dramc_chn_base_ao[i] =
++			devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(dramc_dev_ptr->dramc_chn_base_ao[i])) {
++			pr_info("%s: unable to map ch%d DRAMC AO base\n",
++				__func__, i);
++			return -EINVAL;
++		}
++
++		res = platform_get_resource(pdev, IORESOURCE_MEM,
++					    i + dramc_dev_ptr->support_channel_cnt);
++		dramc_dev_ptr->dramc_chn_base_nao[i] =
++			devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(dramc_dev_ptr->dramc_chn_base_nao[i])) {
++			pr_info("%s: unable to map ch%d DRAMC NAO base\n",
++				__func__, i);
++			return -EINVAL;
++		}
++
++		res = platform_get_resource(pdev, IORESOURCE_MEM,
++					    i + dramc_dev_ptr->support_channel_cnt * 2);
++		dramc_dev_ptr->ddrphy_chn_base_ao[i] =
++			devm_ioremap_resource(&pdev->dev, res);
++		if (IS_ERR(dramc_dev_ptr->ddrphy_chn_base_ao[i])) {
++			pr_info("%s: unable to map ch%d DDRPHY AO base\n",
++				__func__, i);
++			return -EINVAL;
++		}
++	}
++
++	dramc_dev_ptr->fmeter_dev_ptr = (void *)dev_comp->fmeter;
++
++	ret = driver_create_file(pdev->dev.driver,
++				 &driver_attr_dram_data_rate);
++	if (ret) {
++		pr_info("%s: fail to create dram_data_rate sysfs\n", __func__);
++		return ret;
++	}
++
++	ret = driver_create_file(pdev->dev.driver,
++				 &driver_attr_mr);
++	if (ret) {
++		pr_info("%s: fail to create mr sysfs\n", __func__);
++		return ret;
++	}
++
++	if (dramc_dev_ptr->mr4_dev_ptr) {
++		ret = driver_create_file(pdev->dev.driver,
++					 &driver_attr_mr4);
++		if (ret) {
++			pr_info("%s: fail to create mr4 sysfs\n", __func__);
++			return ret;
++		}
++	}
++
++	platform_set_drvdata(pdev, dramc_dev_ptr);
++	pr_info("%s: DRAM data type = %d\n", __func__,
++		mtk_dramc_get_ddr_type());
++
++	pr_info("%s: DRAM data clock rate = %d\n", __func__,
++		mtk_dramc_get_data_rate());
++
++	return ret;
++}
++
++/*
++ * mtk_dramc_get_steps_freq - get the data clock rate of target DVFS step
++ * @step: the step index of DVFS
++ *
++ * Return the DRAM spec data clock rate (MHz)
++ */
++int mtk_dramc_get_steps_freq(unsigned int step)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return -ENODEV;
++
++	if (step < dramc_dev_ptr->freq_cnt)
++		return dramc_dev_ptr->freq_step[step * 2 + 1];
++
++	return -EINVAL;
++}
++EXPORT_SYMBOL(mtk_dramc_get_steps_freq);
++
++/*
++ * decode_freq - decode the spec data clock rate
++ * @vco_freq: real data clock rate
++ *
++ * Return the DRAM spec data clock rate (MHz)
++ */
++static unsigned int decode_freq(unsigned int vco_freq)
++{
++	int i;
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	for (i = 0; i < dramc_dev_ptr->freq_cnt * 2; i += 2)
++		if (vco_freq == dramc_dev_ptr->freq_step[i])
++			return dramc_dev_ptr->freq_step[i + 1];
++
++	return vco_freq;
++}
++
++static unsigned int fmeter_v0(struct dramc_dev_t *dramc_dev_ptr)
++{
++	struct fmeter_dev_t *fmeter_dev_ptr =
++		(struct fmeter_dev_t *)dramc_dev_ptr->fmeter_dev_ptr;
++	unsigned int shu_lv_val;
++	unsigned int pll_id_val;
++	unsigned int pll_md_val;
++	unsigned int sdmpcw_val;
++	unsigned int prediv_val;
++	unsigned int posdiv_val;
++	unsigned int ckdiv4_val;
++	unsigned int cldiv2_val;
++	unsigned int offset;
++	unsigned int vco_freq;
++
++	shu_lv_val = (readl(dramc_dev_ptr->dramc_chn_base_ao[0] +
++		fmeter_dev_ptr->shu_lv.offset) &
++		fmeter_dev_ptr->shu_lv.mask) >>
++		fmeter_dev_ptr->shu_lv.shift;
++
++	pll_id_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] +
++		fmeter_dev_ptr->pll_id.offset) &
++		fmeter_dev_ptr->pll_id.mask) >>
++		fmeter_dev_ptr->pll_id.shift;
++
++	offset = fmeter_dev_ptr->pll_md[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	pll_md_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->pll_md[pll_id_val].mask) >>
++		fmeter_dev_ptr->pll_md[pll_id_val].shift;
++
++	offset = fmeter_dev_ptr->sdmpcw[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	sdmpcw_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->sdmpcw[pll_id_val].mask) >>
++		fmeter_dev_ptr->sdmpcw[pll_id_val].shift;
++
++	offset = fmeter_dev_ptr->prediv[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	prediv_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->prediv[pll_id_val].mask) >>
++		fmeter_dev_ptr->prediv[pll_id_val].shift;
++
++	offset = fmeter_dev_ptr->posdiv[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	posdiv_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->posdiv[pll_id_val].mask) >>
++		fmeter_dev_ptr->posdiv[pll_id_val].shift;
++
++	offset = fmeter_dev_ptr->ckdiv4[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	ckdiv4_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->ckdiv4[pll_id_val].mask) >>
++		fmeter_dev_ptr->ckdiv4[pll_id_val].shift;
++
++	offset = fmeter_dev_ptr->cldiv2[pll_id_val].offset +
++		fmeter_dev_ptr->shu_of * shu_lv_val;
++	cldiv2_val = (readl(dramc_dev_ptr->ddrphy_chn_base_ao[0] + offset) &
++		fmeter_dev_ptr->cldiv2[pll_id_val].mask) >>
++		fmeter_dev_ptr->cldiv2[pll_id_val].shift;
++
++	vco_freq = ((fmeter_dev_ptr->crystal_freq >> prediv_val) *
++		(sdmpcw_val >> 8)) >>
++		posdiv_val >> ckdiv4_val >> pll_md_val >> cldiv2_val;
++
++	return decode_freq(vco_freq);
++}
++
++/*
++ * mtk_dramc_get_data_rate - calculate DRAM data rate
++ *
++ * Return DRAM data rate (MB/s)
++ */
++unsigned int mtk_dramc_get_data_rate(void)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++	struct fmeter_dev_t *fmeter_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	fmeter_dev_ptr = (struct fmeter_dev_t *)dramc_dev_ptr->fmeter_dev_ptr;
++	if (!fmeter_dev_ptr)
++		return 0;
++
++	return fmeter_v0(dramc_dev_ptr);
++}
++EXPORT_SYMBOL(mtk_dramc_get_data_rate);
++
++static unsigned int mr4_v1(struct dramc_dev_t *dramc_dev_ptr, unsigned int ch)
++{
++	struct mr4_dev_t *mr4_dev_ptr =
++		(struct mr4_dev_t *)dramc_dev_ptr->mr4_dev_ptr;
++
++	return (readl(dramc_dev_ptr->dramc_chn_base_nao[ch] +
++		mr4_dev_ptr->mr4_rg.offset) & mr4_dev_ptr->mr4_rg.mask) >>
++		mr4_dev_ptr->mr4_rg.shift;
++}
++
++/*
++ * mtk_dramc_get_mr4 - get the DRAM MR4 value of specific DRAM channel
++ * @ch:	the channel index
++ *
++ * Return the MR4 value
++ */
++unsigned int mtk_dramc_get_mr4(unsigned int ch)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++	struct mr4_dev_t *mr4_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	mr4_dev_ptr = (struct mr4_dev_t *)dramc_dev_ptr->mr4_dev_ptr;
++	if (!mr4_dev_ptr)
++		return 0;
++
++	if (ch >= dramc_dev_ptr->channel_cnt)
++		return 0;
++
++	return mr4_v1(dramc_dev_ptr, ch);
++}
++EXPORT_SYMBOL(mtk_dramc_get_mr4);
++
++/*
++ * mtk_dramc_get_ddr_type - get DRAM type
++ *
++ * Return the DRAM type
++ */
++unsigned int mtk_dramc_get_ddr_type(void)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	return dramc_dev_ptr->dram_type;
++}
++EXPORT_SYMBOL(mtk_dramc_get_ddr_type);
++
++/*
++ * mtk_dramc_get_channel_count - get DRAM channel count
++ *
++ * Return the DRAM channel count
++ */
++unsigned int mtk_dramc_get_channel_count(void)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	return dramc_dev_ptr->channel_cnt;
++}
++EXPORT_SYMBOL(mtk_dramc_get_channel_count);
++
++/*
++ * mtk_dramc_get_rank_count - get DRAM rank count
++ *
++ * Return the DRAM rank count
++ */
++unsigned int mtk_dramc_get_rank_count(void)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	return dramc_dev_ptr->rank_cnt;
++}
++EXPORT_SYMBOL(mtk_dramc_get_rank_count);
++
++/*
++ * mtk_dramc_get_rank_size - get size of DRAM rank
++ *
++ * Return the size of specific DRAM rank
++ */
++unsigned int mtk_dramc_get_rank_size(unsigned int rank)
++{
++	struct dramc_dev_t *dramc_dev_ptr;
++
++	dramc_dev_ptr = mtk_dramc_get_drvdata_by_ids();
++
++	if (!dramc_dev_ptr)
++		return 0;
++
++	if (rank < dramc_dev_ptr->rank_cnt)
++		return dramc_dev_ptr->rank_size[rank];
++	else
++		return 0;
++}
++EXPORT_SYMBOL(mtk_dramc_get_rank_size);
++
++static int dramc_remove(struct platform_device *pdev)
++{
++	return 0;
++}
++
++static struct platform_driver dramc_drv = {
++	.probe = dramc_probe,
++	.remove = dramc_remove,
++	.driver = {
++		.name = DRAMC_DRV_NAME,
++		.owner = THIS_MODULE,
++		.of_match_table = mtk_dramc_of_ids,
++	},
++};
++
++static int __init dramc_drv_init(void)
++{
++	int ret;
++
++	ret = platform_driver_register(&dramc_drv);
++	if (ret) {
++		pr_info("%s: init fail, ret 0x%x\n", __func__, ret);
++		return ret;
++	}
++
++	return ret;
++}
++
++static void __exit dramc_drv_exit(void)
++{
++	platform_driver_unregister(&dramc_drv);
++}
++
++module_init(dramc_drv_init);
++module_exit(dramc_drv_exit);
++
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek DRAMC Driver");
++MODULE_AUTHOR("Po-Kai Chi <pk.chi@mediatek.com>");
+diff --git a/include/memory/mediatek/dramc.h b/include/memory/mediatek/dramc.h
+new file mode 100644
+index 0000000..c8d200f
+--- /dev/null
++++ b/include/memory/mediatek/dramc.h
+@@ -0,0 +1,18 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#ifndef __DRAMC_H__
++#define __DRAMC_H__
++
++int mtk_dramc_get_steps_freq(unsigned int step);
++unsigned int mtk_dramc_get_ddr_type(void);
++unsigned int mtk_dramc_get_data_rate(void);
++unsigned int mtk_dramc_get_mr4(unsigned int ch);
++unsigned int mtk_dramc_get_channel_count(void);
++unsigned int mtk_dramc_get_rank_count(void);
++unsigned int mtk_dramc_get_rank_size(unsigned int rk);
++
++#endif /* __DRAMC_H__ */
++
 -- 
-viresh
-
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
