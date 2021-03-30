@@ -2,83 +2,66 @@ Return-Path: <SRS0=H7Ok=I4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0557FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 22:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E372C433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 22:32:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F3F2619B1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 22:15:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F3F2619B1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2A30C619D0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 22:32:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A30C619D0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AWTLnG7QfaywO4Y2zhQBh+5spGCTDA5zg3l9Lf3in7I=; b=JrOPS/iZ8qUVK9Awzc/aVuYvbV
-	K+PptMaGUOUdxVY0Q29P8mvvfUWAJe+1DAwbwjfW9Faw3cQIVRJ6XoKMQH8OoZvMtTb+riFOVrhj2
-	gEKFQBTdKACYfzh4gVXij+zDUY9LcRHSAccmWZslhrVIjEuuQvzXtmcUlOvfEmgGodgz88BNw8LoK
-	XmCTMNNrEM45Z5CoiBNcht0qzNULo2WzPMUxLCW+t7ZOsrbmilY8NOk+vqYSFYw+CGdbihplg3I7m
-	kqou0zjXwtKIqeZLvK+vKhHKo4ClC/Ky2cte+0dQ1Tgipgcdq9hzkpLc4fH785LHXC8BPw1bzZGb4
-	ZH+sCVjQ==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=w/4LBFt8arvWOQjWdPwZJw4/YQOWo1FPYMwoJALM+fE=; b=frAEtCqJaSjM/AEUdTD997kd4O
+	Wk2uF+icqwObsfcqLpBDNTfG5jRnopFy7Zb0GPCVeMptiUFg/hJRuDneW9Ag1m84RJzqi2C1fEq9n
+	vcaRFNwBvLeDtgklIwk15N18hnhp/flYnXEOrsdL0QS8Mq+t84SPfNvjg0CDLXdd1PHCkNJHvu3EL
+	wj7jXoRlGnCTukeJY9eQffR9b36zJeve4Xj6Es0DG82IXbPSq9gPBErqtzh+yZiG9HzodVLSkUpkt
+	J6odrkHI2gDghCE0nvlk7mUdUL+ZFgOq11FpEGEUm+fcK0zkzqU4l6vK3EohWY8arbXKNPC1oZlGM
+	B6pq4Jow==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRMds-004zdK-66; Tue, 30 Mar 2021 22:15:20 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1lRMuK-0050qf-QP; Tue, 30 Mar 2021 22:32:21 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRMdo-004zcW-HE
- for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 22:15:18 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id ha17so8482653pjb.2
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Mar 2021 15:15:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CEJVo99ddrzFsx+Y7vim0XaXbjg0vh0wW249qitilJc=;
- b=meUgQ8XuuGX2w/BSIG4Hz4EF7XC9+2efqf9gHbw/McANGT1S0Z0TwooXm0EwVoeeC9
- VE8+hDP4ClO6laZGUWRq3SVtNUY/kdGhkrNvjHfnz4qTguvnPvdB9sio+aLJYHTz63na
- 0F//yTUTwk/POk31IhOjDpQm/II1tGnLMgLPg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=CEJVo99ddrzFsx+Y7vim0XaXbjg0vh0wW249qitilJc=;
- b=Zcqw10P0Xg6q6p+JEcBe9wa0ndQbdt2RtM1BMYRezKFnpISuuai2tsa3Z22DugTFg4
- /ZzjhpUKic6Mby8PAFUKNmuLUE/kJ0+QVDxD1sdYY5G4olJ00zPK0VBFk4Y1Kt0QvKOg
- fVnUMbn7X5MYfRo0YKUI69hUY7jRqCp4Fh1DYb9KyUcBbeo0VaifSfwo9edNQMC4p6TW
- 2RrVxQdUvT8Zz6qHDTclSqnKdZ1HUe3Xz8WkCMRvyWOtRhX/9P2MuKLF7U939nHHIZjZ
- MmE4y5yx8CKVZaxJMxiFYHckeTtdktlzPBJm985i5f483mmzLMjeuzxzaLJlHMb8H4Ol
- e/rQ==
-X-Gm-Message-State: AOAM530XC2IhRtzr+NOlSB7Sp79QWrfuyi4VH6R7erlvle76Y2JAQUog
- QywlCRIQfZVLGTmVQqKc2AxtLQ==
-X-Google-Smtp-Source: ABdhPJwNoj3YqVLpIvr86EesTfK7j0NfYhZD74Zo1vS33U/TjjIPnrqrAU2LRkP5QexaxBFNGQ6mcQ==
-X-Received: by 2002:a17:90a:8b07:: with SMTP id y7mr439343pjn.78.1617142514280; 
- Tue, 30 Mar 2021 15:15:14 -0700 (PDT)
-Received: from localhost (201.59.83.34.bc.googleusercontent.com.
- [34.83.59.201])
- by smtp.gmail.com with UTF8SMTPSA id q66sm124518pja.27.2021.03.30.15.15.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 30 Mar 2021 15:15:13 -0700 (PDT)
-From: Fritz Koenig <frkoenig@chromium.org>
-To: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, tiffany.lin@mediatek.com,
- acourbot@chromium.org
-Cc: Fritz Koenig <frkoenig@chromium.org>
-Subject: [PATCH] media: mtk-vcodec: vdec: Reduce padding in VIDIOC_TRY_FMT
-Date: Tue, 30 Mar 2021 22:15:06 +0000
-Message-Id: <20210330221506.2278606-1-frkoenig@chromium.org>
-X-Mailer: git-send-email 2.31.0.291.g576ba9dcdaf-goog
-MIME-Version: 1.0
+ id 1lRMu5-0050oq-2G; Tue, 30 Mar 2021 22:32:07 +0000
+IronPort-SDR: HaXk0q2Jjf0OSvz4plH4V2OmnDUUe/QyP0buzD089Yy6jxCADkAliKwPnaWgEajFPYGfmN/AI/
+ jMryj8FSFwNl/afYZsx2qw2b4KXbjpksgmvPqyjW/gciFEXplPyMNRN008lBQ/9FNCy3DiOk9q
+ vmRMABQdWC16NvEMwFIoeVjWUUcnigtfKqVgK+PJW1Y99PyK6uhWmWuPPjWy1/IaIQLlKCklIv
+ f/N/HQSQyPpM51Uk8qCqF8+2a4N1xHREF6S07lY45PcZcgDIlRdvYaSB2ZLPH3SzmZs+ShjpbB
+ +do=
+X-IronPort-AV: E=Sophos;i="5.81,291,1610438400"; d="scan'208";a="29735342"
+Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
+ by labrats.qualcomm.com with ESMTP; 30 Mar 2021 15:31:58 -0700
+X-QCInternal: smtphost
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg02-sd.qualcomm.com with ESMTP; 30 Mar 2021 15:31:57 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
+ id 2DEB4210A6; Tue, 30 Mar 2021 15:31:57 -0700 (PDT)
+From: Asutosh Das <asutoshd@codeaurora.org>
+To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: Asutosh Das <asutoshd@codeaurora.org>, linux-arm-msm@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v14 0/2] Enable power management for ufs wlun 
+Date: Tue, 30 Mar 2021 15:31:51 -0700
+Message-Id: <cover.1617143113.git.asutoshd@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_231517_064156_0CD393C0 
-X-CRM114-Status: GOOD (  14.06  )
+X-CRM114-CacheID: sfid-20210330_233205_690077_ADC4D2D2 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,133 +73,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If the header has been parsed or the codec is stateless
-reduce the padding of the decoded frame.
-In stateless codecs width and height are specified by
-the application.
+This patch attempts to fix a deadlock in ufs while sending SSU.
+Recently, blk_queue_enter() added a check to not process requests if the
+queue is suspended. That leads to a resume of the associated device which
+is suspended. In ufs, that device is ufs device wlun and it's parent is
+ufs_hba. This resume tries to resume ufs device wlun which in turn tries
+to resume ufs_hba, which is already in the process of suspending, thus
+causing a deadlock.
 
-Signed-off-by: Fritz Koenig <frkoenig@chromium.org>
----
- .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 59 ++++++++++++-------
- 1 file changed, 39 insertions(+), 20 deletions(-)
+This patch takes care of:
+* Suspending the ufs device lun only after all other luns are suspended
+* Sending SSU during ufs device wlun suspend
+* Clearing uac for rpmb and ufs device wlun
+* Not sending commands to the device during host suspend
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 56d86e59421e..9c88454dc10c 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -653,7 +653,7 @@ static int vidioc_vdec_subscribe_evt(struct v4l2_fh *fh,
- 	}
- }
- 
--static int vidioc_try_fmt(struct v4l2_format *f,
-+static int vidioc_try_fmt(struct v4l2_format *f, void *priv,
- 			  const struct mtk_video_fmt *fmt)
- {
- 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
-@@ -665,6 +665,7 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 		pix_fmt_mp->plane_fmt[0].bytesperline = 0;
- 	} else if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
- 		int tmp_w, tmp_h;
-+		struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
- 
- 		pix_fmt_mp->height = clamp(pix_fmt_mp->height,
- 					MTK_VDEC_MIN_H,
-@@ -673,27 +674,45 @@ static int vidioc_try_fmt(struct v4l2_format *f,
- 					MTK_VDEC_MIN_W,
- 					MTK_VDEC_MAX_W);
- 
-+		tmp_w = pix_fmt_mp->width;
-+		tmp_h = pix_fmt_mp->height;
-+
-+		if (ctx->dev->vdec_pdata->uses_stateless_api ||
-+			ctx->state >= MTK_STATE_HEADER) {
-+			v4l_bound_align_image(&pix_fmt_mp->width,
-+						MTK_VDEC_MIN_W,
-+						MTK_VDEC_MAX_W, 4,
-+						&pix_fmt_mp->height,
-+						MTK_VDEC_MIN_H,
-+						MTK_VDEC_MAX_H, 5, 6);
-+
-+			if (pix_fmt_mp->width < tmp_w &&
-+				(pix_fmt_mp->width + 16) <= MTK_VDEC_MAX_W)
-+				pix_fmt_mp->width += 16;
-+			if (pix_fmt_mp->height < tmp_h &&
-+				(pix_fmt_mp->height + 32) <= MTK_VDEC_MAX_H)
-+				pix_fmt_mp->height += 32;
-+		} else {
- 		/*
--		 * Find next closer width align 64, heign align 64, size align
-+		 * Find next closer width align 64, height align 64, size align
- 		 * 64 rectangle
- 		 * Note: This only get default value, the real HW needed value
- 		 *       only available when ctx in MTK_STATE_HEADER state
- 		 */
--		tmp_w = pix_fmt_mp->width;
--		tmp_h = pix_fmt_mp->height;
--		v4l_bound_align_image(&pix_fmt_mp->width,
--					MTK_VDEC_MIN_W,
--					MTK_VDEC_MAX_W, 6,
--					&pix_fmt_mp->height,
--					MTK_VDEC_MIN_H,
--					MTK_VDEC_MAX_H, 6, 9);
--
--		if (pix_fmt_mp->width < tmp_w &&
--			(pix_fmt_mp->width + 64) <= MTK_VDEC_MAX_W)
--			pix_fmt_mp->width += 64;
--		if (pix_fmt_mp->height < tmp_h &&
--			(pix_fmt_mp->height + 64) <= MTK_VDEC_MAX_H)
--			pix_fmt_mp->height += 64;
-+			v4l_bound_align_image(&pix_fmt_mp->width,
-+						MTK_VDEC_MIN_W,
-+						MTK_VDEC_MAX_W, 6,
-+						&pix_fmt_mp->height,
-+						MTK_VDEC_MIN_H,
-+						MTK_VDEC_MAX_H, 6, 9);
-+
-+			if (pix_fmt_mp->width < tmp_w &&
-+				(pix_fmt_mp->width + 64) <= MTK_VDEC_MAX_W)
-+				pix_fmt_mp->width += 64;
-+			if (pix_fmt_mp->height < tmp_h &&
-+				(pix_fmt_mp->height + 64) <= MTK_VDEC_MAX_H)
-+				pix_fmt_mp->height += 64;
-+		}
- 
- 		mtk_v4l2_debug(0,
- 			"before resize width=%d, height=%d, after resize width=%d, height=%d, sizeimage=%d",
-@@ -729,7 +748,7 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
- 		fmt = mtk_vdec_find_format(f);
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(f, priv, fmt);
- }
- 
- static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
-@@ -749,7 +768,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
- 		return -EINVAL;
- 	}
- 
--	return vidioc_try_fmt(f, fmt);
-+	return vidioc_try_fmt(f, priv, fmt);
- }
- 
- static int vidioc_vdec_g_selection(struct file *file, void *priv,
-@@ -875,7 +894,7 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
- 		return -EINVAL;
- 
- 	q_data->fmt = fmt;
--	vidioc_try_fmt(f, q_data->fmt);
-+	vidioc_try_fmt(f, priv, q_data->fmt);
- 	if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
- 		q_data->sizeimage[0] = pix_mp->plane_fmt[0].sizeimage;
- 		q_data->coded_width = pix_mp->width;
+v13 -> v14:
+- Addressed Adrian's comments
+  * Rebased it on top of scsi-next
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Resume the device in ufshcd_remove()
+  * Unregister ufs_rpmb_wlun before ufs_dev_wlun
+  * hba->shutting_down moved to ufshcd_wl_shutdown()
+
+v12 -> v13:
+- Addressed Adrian's comments
+  * Paired pm_runtime_get_noresume() with pm_runtime_put()
+  * no rpm_autosuspend for ufs device wlun
+  * Moved runtime-pm init functionality to ufshcd_wl_probe()
+- Addressed Bart's comments
+  * Expanded abbrevs in commit message
+
+v11 -> v12:
+- Addressed Adrian's comments
+  * Fixed ahit for Mediatek driver
+  * Fixed error handling in ufshcd_core_init()
+  * Tested this patch and the issue is still seen.
+
+v10 -> v11:
+- Fixed supplier suspending before consumer race
+- Addressed Adrian's comments
+  * Added proper resume/suspend cb to ufshcd_auto_hibern8_update()
+  * Cosmetic changes to ufshcd-pci.c
+  * Cleaned up ufshcd_system_suspend()
+  * Added ufshcd_debugfs_eh_exit to ufshcd_core_init()
+
+v9 -> v10:
+- Addressed Adrian's comments
+  * Moved suspend/resume vops to __ufshcd_wl_[suspend/resume]()
+  * Added correct resume in ufs_bsg
+
+v8 -> v9:
+- Addressed Adrian's comments
+  * Moved link transition to __ufshcd_wl_[suspend/resume]()
+  * Fixed the other minor comments
+
+v7 -> v8:
+- Addressed Adrian's comments
+  * Removed separate autosuspend delay for ufs-device lun
+  * Fixed the ee handler getting scheduled during pm
+  * Always runtime resume in suspend_prepare()
+  * Added CONFIG_PM_SLEEP where needed
+  
+v6 -> v7:
+  * Resume the ufs device before shutting it down
+
+v5 -> v6:
+- Addressed Adrian's comments
+  * Added complete() cb
+  * Added suspend_prepare() and complete() to all drivers
+  * Moved suspend_prepare() and complete() to ufshcd
+  * .poweroff() uses ufhcd_wl_poweroff()
+  * Removed several forward declarations
+  * Moved scsi_register_driver() to ufshcd_core_init()
+
+v4 -> v5:
+- Addressed Adrian's comments
+  * Used the rpmb driver contributed by Adrian
+  * Runtime-resume the ufs device during suspend to honor spm-lvl
+  * Unregister the scsi_driver in ufshcd_remove()
+  * Currently shutdown() puts the ufs device to power-down mode
+    so, just removed ufshcd_pci_poweroff()
+  * Quiesce the scsi device during shutdown instead of remove
+
+v3 RFC -> v4:
+- Addressed Bart's comments
+  * Except that I didn't get any checkpatch failures
+- Addressed Avri's comments
+- Addressed Adrian's comments
+  * Added a check for deepsleep power mode
+  * Removed a couple of forward declarations
+  * Didn't separate the scsi drivers because in rpmb case it just sends uac
+    in resume and it seemed pretty neat to me.
+- Added sysfs changes to resume the devices before accessing
+
+Asutosh Das (2):
+  scsi: ufs: Enable power management for wlun
+  ufs: sysfs: Resume the proper scsi device
+
+ drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
+ drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
+ drivers/scsi/ufs/ufs-debugfs.c     |   6 +-
+ drivers/scsi/ufs/ufs-debugfs.h     |   2 +-
+ drivers/scsi/ufs/ufs-exynos.c      |   2 +
+ drivers/scsi/ufs/ufs-hisi.c        |   2 +
+ drivers/scsi/ufs/ufs-mediatek.c    |  12 +-
+ drivers/scsi/ufs/ufs-qcom.c        |   2 +
+ drivers/scsi/ufs/ufs-sysfs.c       |  30 +-
+ drivers/scsi/ufs/ufs_bsg.c         |   6 +-
+ drivers/scsi/ufs/ufshcd-pci.c      |  36 +--
+ drivers/scsi/ufs/ufshcd.c          | 636 ++++++++++++++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h          |   6 +
+ include/trace/events/ufs.h         |  20 ++
+ 14 files changed, 521 insertions(+), 243 deletions(-)
+
 -- 
-2.31.0.291.g576ba9dcdaf-goog
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
 
 _______________________________________________
