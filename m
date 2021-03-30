@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7187CC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B01F4C433C1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D4BE661928
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4BE661928
+	by mail.kernel.org (Postfix) with ESMTPS id 2D5DD61935
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D5DD61935
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=obU2T0TY0anu49HF2TyT1gKv0RAWRF+y7jbYn5IYPy0=; b=Kr9ymlvkLU1+5B1ZAIsM//xNw
-	yAwKUeEjxZ8wXEJSeqt9qjfsJiIaATody8e5BGDrsU/krTCqnfMFis5bbNXFhFAOqnvZRYYvo2VL7
-	rTpOeOpVMJ0A2qandTyzMY/MIj0zSUAudsPK62Sxv9DUiJgWobxGiA5JpfcpTGmoZ9RXp7Snv0LPk
-	eQVISLThE2w8SapJUDfu5groa5WrZU2W8tfGzFaSHW85NFYQIZxJ8dusg17G+pNJ1e2F8fa14ixbR
-	1+9jwHY2MAJD3G0Sm/iBp7sOC8bM7K4rJR8b4OwjxFFqR2BFCqN6xhiHl7uZcKpq9S86q0K1T0VPT
-	J6sLb+kmg==;
+	 bh=vrPljneb2RUXsrP3x3oi54+8KyTyasS1IrcJQyLi+yo=; b=irt6LDHbdh8X7vBfhgvg9YkS+
+	WEYMewOD8O9nJ00hqhvWKmsxEsb0bbvrvwvI44NRWxsxBjZzeKKGlazOlC9tWKWIk17+VGLNAomK8
+	MkWG7tSkYx+kPtDDxB2LADnKiuJwClxA2FGrTAP+ySlK36ApU1VcaPuTBt9yIT9eo3C4tI0bRELCB
+	qcesm7qdC7NoNglwBd5Hlp2GvG83QYEOL6CWn+MDeMaImhWRMFzYe4TPSaMOab6SvbugjBv8V0EVK
+	6mZL+PYQxwolxjPbuo+Rt2NqiMMkH4DMkgH3giE6+gSgt6SovBxmx9gkUihg69BjBEGCDG8a1bc7D
+	1y2u6Zltg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR7T5-002oEu-Gy; Tue, 30 Mar 2021 06:03:11 +0000
+	id 1lR7TA-002oFM-69; Tue, 30 Mar 2021 06:03:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lR7Sz-002oDE-QB
- for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 06:03:08 +0000
-X-UUID: 63abf630c28b46bea06f645997b81349-20210329
+ id 1lR7T1-002oDD-9S
+ for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 06:03:09 +0000
+X-UUID: f617a6e30c1c4d0dade39167975137a8-20210329
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=2ZuC0MzTeSbEzRwk/rCM6b9KkcreZCn9BPwNINaAX18=; 
- b=CNfOBB5W6nPNHpjYDcDmxLjXycXlByRUOgqvNXduox+T7The/KohCi34G/asREVULFySLfF5lf/BpzXfuBlW7wcAcg4EKLT7q1zJd3MK2tgJMf5U4OgFUMM/PaZwXpbfHRvdseUzgpALY4Ll4SHPGNq7i2lOd+qBVrW7OEaiFwE=;
-X-UUID: 63abf630c28b46bea06f645997b81349-20210329
+ bh=mPa9cL2V9oUMsKWC/FWck4IK+Opmcl0ho0sWnHKMQlM=; 
+ b=V8NOZOprQnezc5a92/Zabhvo/VH3pPYXAUrcqRe/c1mgOxLiLbv98uAn011wO1fduOSQGri0+AlKN5DReTbYzFTCy603Kp9QdVz93TXKt1m6scbHvpWQL/HglxIjlWKENpxN2yywL8fxWIeaj0VQrvXLfB8Qysq0RcsLPwGqKtk=;
+X-UUID: f617a6e30c1c4d0dade39167975137a8-20210329
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 573630812; Mon, 29 Mar 2021 22:02:56 -0800
+ with ESMTP id 824379424; Mon, 29 Mar 2021 22:02:56 -0800
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Mar 2021 23:02:55 -0700
+ 15.0.1497.2; Mon, 29 Mar 2021 23:02:54 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Mar 2021 14:02:50 +0800
+ 15.0.1497.2; Tue, 30 Mar 2021 14:02:49 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Tue, 30 Mar 2021 14:02:49 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 CC: <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 3/4] usb: xhci-mtk: fix broken streams issue on 0.96 xHCI
-Date: Tue, 30 Mar 2021 14:02:36 +0800
-Message-ID: <1617084157-18652-3-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 2/4] dt-bindings: usb: mtk-xhci: remove redefinitions of
+ usb3-lpm-capable
+Date: Tue, 30 Mar 2021 14:02:35 +0800
+Message-ID: <1617084157-18652-2-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1617084157-18652-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1617084157-18652-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CA07A751B66BC5448F48097BB53430BB9A42BDBEE14F14EF3D1581E626B6C64E2000:8
+X-TM-SNTS-SMTP: C91CFBDCD624F0ABB3B58D9B33BA2E569C6B2B173BACD4C277B13AA25AD915392000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_070306_912888_31B802C8 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20210330_070307_877261_26B425D2 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,47 +89,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek 0.96 xHCI controller on some platforms does not
-support bulk stream even HCCPARAMS says supporting, due to MaxPSASize
-is set a default value 1 by mistake, here use XHCI_BROKEN_STREAMS
-quirk to fix it.
+The property usb3-lpm-capable is defined in usb-xhci.yaml which is
+already referenced in this file, so no need 'description' and 'type'
+anymore.
 
-Fixes: 94a631d91ad3 ("usb: xhci-mtk: check hcc_params after adding primary hcd")
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2~3: no changes
+v3: new patch
 ---
- drivers/usb/host/xhci-mtk.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index c1bc40289833..4e3d53cc24f4 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -411,6 +411,13 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
- 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
- 	if (mtk->lpm_support)
- 		xhci->quirks |= XHCI_LPM_SUPPORT;
-+
-+	/*
-+	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
-+	 * and it's 3 when support it.
-+	 */
-+	if (xhci->hci_version < 0x100 && HCC_MAX_PSA(xhci->hcc_params) == 4)
-+		xhci->quirks |= XHCI_BROKEN_STREAMS;
- }
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index 291749f49f35..69c3e7d0f9dd 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -100,9 +100,7 @@ properties:
+   vbus-supply:
+     description: Regulator of USB VBUS5v
  
- /* called during probe() after chip reset completes */
-@@ -572,7 +579,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto put_usb3_hcd;
+-  usb3-lpm-capable:
+-    description: supports USB3.0 LPM
+-    type: boolean
++  usb3-lpm-capable: true
  
--	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
-+	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
-+	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
- 		xhci->shared_hcd->can_do_streams = 1;
+   usb2-lpm-disable: true
  
- 	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
 -- 
 2.18.0
 _______________________________________________
