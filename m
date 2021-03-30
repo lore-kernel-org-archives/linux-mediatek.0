@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF42FC433DB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 05:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7187CC433DB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:28 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 676E96192F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 05:33:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 676E96192F
+	by mail.kernel.org (Postfix) with ESMTPS id D4BE661928
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Mar 2021 06:03:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4BE661928
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,57 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=x7dulFaWkOZWHEj88ixA/EFQhLqjklaTW0rc1ZvsgD4=; b=RJ7KGA5sJvwBiONQw7VmgNd3a
-	ic++qDsum10XsKvv+n9NKWi/NBtcCFXRvtO6WmlLVyK0WLv3+t3PbZ43JQChpa5KEtQW7FGk+AqaA
-	DNdF0LictAX8gJTJxeNc+Mx1uzyRVk5tf7aF9/cPdY0K4mF1NNjwYhQWjGpNquMsoyDyQHibYBEN2
-	+XYNtv16meMgl9JTjN7X1XGi7yptlvTgu3MhW9AFcGI5a9Pcr3fB+SaP2cmYyKEN01aMNaIOItXni
-	ox6DU7mw2q/MjyPMbCNMmD6eKNYb1dG53QMEvXuu3iSd24TJ6gJsvmbM3cI7zl8Txjx3qetjOdTIa
-	kNj5Ql/Tw==;
+	 bh=obU2T0TY0anu49HF2TyT1gKv0RAWRF+y7jbYn5IYPy0=; b=Kr9ymlvkLU1+5B1ZAIsM//xNw
+	yAwKUeEjxZ8wXEJSeqt9qjfsJiIaATody8e5BGDrsU/krTCqnfMFis5bbNXFhFAOqnvZRYYvo2VL7
+	rTpOeOpVMJ0A2qandTyzMY/MIj0zSUAudsPK62Sxv9DUiJgWobxGiA5JpfcpTGmoZ9RXp7Snv0LPk
+	eQVISLThE2w8SapJUDfu5groa5WrZU2W8tfGzFaSHW85NFYQIZxJ8dusg17G+pNJ1e2F8fa14ixbR
+	1+9jwHY2MAJD3G0Sm/iBp7sOC8bM7K4rJR8b4OwjxFFqR2BFCqN6xhiHl7uZcKpq9S86q0K1T0VPT
+	J6sLb+kmg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lR6zu-002l0z-Jv; Tue, 30 Mar 2021 05:33:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lR7T5-002oEu-Gy; Tue, 30 Mar 2021 06:03:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lR6zT-002kvc-Gw; Tue, 30 Mar 2021 05:32:37 +0000
-X-UUID: b9425e0952644037a4a9e6361f881adb-20210329
+ id 1lR7Sz-002oDE-QB
+ for linux-mediatek@lists.infradead.org; Tue, 30 Mar 2021 06:03:08 +0000
+X-UUID: 63abf630c28b46bea06f645997b81349-20210329
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zBQOtn4bg5/EOJR48pDp4YZ7yX1zX439AF83TTkP2FM=; 
- b=DD415O6dNuw6KY0/yGz7ngshDVWuDp1Wan8QtFZmw/CMHStT63eCIXvQrFAsKLRINkzh+NVD9abRm54SfaJQcQOBV111i74B3/xjYdHS8/I+0abMbSsI+gZRG4kaIj//6rKarVVmJNTPp/6/TwQ0rL/T9LxVo4KtsCBOGeXiqcI=;
-X-UUID: b9425e0952644037a4a9e6361f881adb-20210329
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <pk.chi@mediatek.com>)
+ bh=2ZuC0MzTeSbEzRwk/rCM6b9KkcreZCn9BPwNINaAX18=; 
+ b=CNfOBB5W6nPNHpjYDcDmxLjXycXlByRUOgqvNXduox+T7The/KohCi34G/asREVULFySLfF5lf/BpzXfuBlW7wcAcg4EKLT7q1zJd3MK2tgJMf5U4OgFUMM/PaZwXpbfHRvdseUzgpALY4Ll4SHPGNq7i2lOd+qBVrW7OEaiFwE=;
+X-UUID: 63abf630c28b46bea06f645997b81349-20210329
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1027346302; Mon, 29 Mar 2021 21:32:22 -0800
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Mar 2021 22:23:12 -0700
+ with ESMTP id 573630812; Mon, 29 Mar 2021 22:02:56 -0800
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Mar 2021 23:02:55 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Mar 2021 13:23:10 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 30 Mar 2021 13:23:10 +0800
-From: Po-Kai Chi <pk.chi@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <wsd_upstream@mediatek.com>, CC Hwang <cc.hwang@mediatek.com>, Loda Chou
- <loda.chou@mediatek.com>, Po-Kai Chi <pk.chi@mediatek.com>
-Subject: [PATCH v1 1/4] dt-bindings: memory: Add binding for MediaTek Common
- DRAM Controller
-Date: Tue, 30 Mar 2021 13:22:08 +0800
-Message-ID: <1617081731-7408-2-git-send-email-pk.chi@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1617081731-7408-1-git-send-email-pk.chi@mediatek.com>
-References: <1617081731-7408-1-git-send-email-pk.chi@mediatek.com>
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Mar 2021 14:02:50 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Mar 2021 14:02:49 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+CC: <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 3/4] usb: xhci-mtk: fix broken streams issue on 0.96 xHCI
+Date: Tue, 30 Mar 2021 14:02:36 +0800
+Message-ID: <1617084157-18652-3-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1617084157-18652-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1617084157-18652-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1B7773B3E072068AFF43EB933B81C47B2DBED63C82C53329F7F32FFBF188551A2000:8
+X-TM-SNTS-SMTP: CA07A751B66BC5448F48097BB53430BB9A42BDBEE14F14EF3D1581E626B6C64E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210330_063236_025431_C0CC20E7 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20210330_070306_912888_31B802C8 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,179 +87,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the documentation of the device-tree binding for
-MediaTek Common DRAM Controller.
+The MediaTek 0.96 xHCI controller on some platforms does not
+support bulk stream even HCCPARAMS says supporting, due to MaxPSASize
+is set a default value 1 by mistake, here use XHCI_BROKEN_STREAMS
+quirk to fix it.
 
-Signed-off-by: Po-Kai Chi <pk.chi@mediatek.com>
+Fixes: 94a631d91ad3 ("usb: xhci-mtk: check hcc_params after adding primary hcd")
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../memory-controllers/mediatek,dramc.yaml         |  155 ++++++++++++++++++++
- 1 file changed, 155 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
+v2~3: no changes
+---
+ drivers/usb/host/xhci-mtk.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
-new file mode 100644
-index 0000000..0217ce0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,dramc.yaml
-@@ -0,0 +1,155 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (c) 2021 MediaTek Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/memory-controllers/mediatek,dramc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index c1bc40289833..4e3d53cc24f4 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -411,6 +411,13 @@ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ 	xhci->quirks |= XHCI_SPURIOUS_SUCCESS;
+ 	if (mtk->lpm_support)
+ 		xhci->quirks |= XHCI_LPM_SUPPORT;
 +
-+title: MediaTek DRAM Controller
-+
-+maintainers:
-+  - Po-Kai Chi <pk.chi@mediatek.com>
-+
-+description: |
-+  MediaTek DRAM controller (DRAMC) provides an interface to query information
-+  about DRAM which collected from bootloader and device tree.
-+  This is mainly used by MediaTek Extended Memory Interface (EMI) and DVFS Resource
-+  Control (DVFSRC).
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt6779-dramc
-+
-+  reg:
-+    description:
-+      Base address of MediaTek DRAM related hardware modules, each channel has
-+      its own base address in order of
-+      DRAMC_AO_{CH}, DRAMC_NAO_{CH}, DDRPHY_AO_{CH}.
-+    minItems: 3            # 3 * N channels
-+    maxItems: 6
-+
-+  dram_type:
-+    description:
-+      The DRAM type of current DRAM chip.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 0
-+    maximum: 7
-+
-+  support_channel_cnt:
-+    description:
-+      The maximum DRAM channel count supported by SoC.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1
-+    maximum: 4
-+
-+  channel_cnt:
-+    description:
-+      The DRAM channel count of current DRAM chip.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1
-+    maximum: 4
-+
-+  rank_cnt:
-+    description:
-+      The DRAM rank count of current DRAM chip.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1
-+    maximum: 2
-+
-+  rank_size:
-+    description:
-+      The size of each DRAM rank.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint64
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      minimum: 0x0
-+      maximum: 0x100000000    # support up to 4GB in single rank
-+
-+  mr_cnt:
-+    description:
-+      Specifies how many sets of DRAM mode register information to provide.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maximum: 40    # total 40 MRs for JEDEC LPDDR4X
-+
-+  mr:
-+    description:
-+      Pair of DRAM mode register information.
-+      This property is filled in by bootloader according to the board hardware
-+      configuration.
-+    $ref: /schemas/types.yaml#/definitions/uint32-matrix
-+    maxItems: 40    # align with mr_cnt
-+    items:
-+      items:
-+        - description:
-+            Mode register index
-+        - description:
-+            Mode register value
-+
-+  freq_cnt:
-+    description:
-+      Specifies how many sets of DRAM data clock rate supported by SoC.
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+
-+  freq_step:
-+    description:
-+      The DRAM data clock rate may be slightly different from those defined
-+      by the specification due to errors in multiples of the base frequency.
-+      This describe the mapping from real data clock rate measured by
-+      frequency meter to JEDEC data clock rate.
-+    $ref: /schemas/types.yaml#/definitions/uint32-matrix
-+    items:
-+      items:
-+        - description:
-+            Real data rate
-+        - description:
-+            Spec data rate
-+
-+required:
-+  - compatible
-+  - reg
-+  - dram_type
-+  - support_channel_cnt
-+  - channel_cnt
-+  - rank_cnt
-+  - mr_cnt
-+  - freq_cnt
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    dramc@10230000 {
-+        compatible = "mediatek,mt6779-dramc";
-+        reg = <0 0x10230000 0 0x2000>, /* DRAMC AO CHA */
-+            <0 0x10240000 0 0x2000>,   /* DRAMC AO CHB */
-+            <0 0x10234000 0 0x1000>,   /* DRAMC NAO CHA */
-+            <0 0x10244000 0 0x1000>,   /* DRAMC NAO CHB */
-+            <0 0x10238000 0 0x2000>,   /* DDRPHY AO CHA */
-+            <0 0x10248000 0 0x2000>;   /* DDRPHY AO CHB */
-+        dram_type = <0>;
-+        support_channel_cnt = <2>;
-+        channel_cnt = <2>;
-+        rank_cnt = <2>;
-+        rank_size = <0x40000000 0x40000000>;
-+        mr_cnt = <1>;
-+        mr = <0x5 0xff>;
-+        freq_cnt = <6>;
-+        freq_step = <3718 3733>,
-+                <3094 3200>,
-+                <2392 2400>,
-+                <1534 1600>,
-+                <1196 1200>,
-+                <754 800>;
-+    };
++	/*
++	 * MTK xHCI 0.96: PSA is 1 by default even if doesn't support stream,
++	 * and it's 3 when support it.
++	 */
++	if (xhci->hci_version < 0x100 && HCC_MAX_PSA(xhci->hcc_params) == 4)
++		xhci->quirks |= XHCI_BROKEN_STREAMS;
+ }
+ 
+ /* called during probe() after chip reset completes */
+@@ -572,7 +579,8 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto put_usb3_hcd;
+ 
+-	if (HCC_MAX_PSA(xhci->hcc_params) >= 4)
++	if (HCC_MAX_PSA(xhci->hcc_params) >= 4 &&
++	    !(xhci->quirks & XHCI_BROKEN_STREAMS))
+ 		xhci->shared_hcd->can_do_streams = 1;
+ 
+ 	ret = usb_add_hcd(xhci->shared_hcd, irq, IRQF_SHARED);
 -- 
-1.7.9.5
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
