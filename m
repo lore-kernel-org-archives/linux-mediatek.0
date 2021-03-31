@@ -7,15 +7,15 @@ X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EC0BC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 16:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 270EBC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 18:19:41 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 201516101A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 16:54:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 201516101A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id B15DC61029
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 18:19:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B15DC61029
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,76 +23,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Y8CJZGxyTZRmfZiAxIeJ29hxHbJop+xHwuoiOSXMVdY=; b=e5TTfiZxPI/ZCrqn05QvnyU29
-	/6xVpbkTf0H7zJYVN/aYoqVFQoO1O1AfC2n4HMLikCat/Zdp7trhCf4YPxwQ9KsaIsAR4WRubQEcI
-	LHoinEqqxenVyQF+xc4FITZopbW5A2IkYNgZRx48EJeUSRMtbhkD/2V8PlyG1xbrfCxOZBdnYLw8V
-	m8H6SXKpAWzlJ589w7wv9C48yigfKT8UvwmU1+6j0MkubdGYvzytOcehCteqWRvjh89vOcmvq8BIB
-	8fThetR0pM5hoXfoV8rtJdakhRUfUIY02rktFs83J3Xs70wOgFOPbLR7ykvQonPUKk4Mo469OF9eY
-	Y8SuTnEKg==;
+	 bh=7evJdtdT8RxZM6QEoSA+/NqMjo/lBaI/WDAbKEOIKzg=; b=Sgs2cQ9TjYuqJHFG3W9WLNvCh
+	2+Xg2LZ9+BuFYKaDJg+lEsTLRoxb9ISMd03O3t6UetUEvT5+wYII96mm+KbyA3MI4p8IcAatLm6Pb
+	Dv0tYrQLrk6ODXRlHUhJBM9IQS2fw18/qc0Y60nJI46KC28jlkzL0Ma9ibJXn39s7J9OmyGHjvtk7
+	l1XDkm9BfLlz1aVQonf4ypb0Rr1PtkO+eKDmK/0QpQE2H13Zjr7AtxlkqE4EKHH5w0c7vc3P7qMhU
+	LxGK3C9IdUrFXsmdIuxX6gyBpduTLqTBSeBVbH7/vZdzX38jvQzXLC/ZPm4uTIfPAyVVWUBEfyUds
+	dYspk748Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRe6a-0078jN-Sj; Wed, 31 Mar 2021 16:54:08 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1lRfR8-007FjC-N5; Wed, 31 Mar 2021 18:19:26 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRe6V-0078iM-HF
- for linux-mediatek@lists.infradead.org; Wed, 31 Mar 2021 16:54:05 +0000
-Received: by mail-wr1-x431.google.com with SMTP id j7so20408949wrd.1
- for <linux-mediatek@lists.infradead.org>; Wed, 31 Mar 2021 09:54:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xznif/MH/M9aiazIt+TNwkIsOPRFEi4pc4I4E7feLW4=;
- b=Wk926Zyt5NAXknc85ifZFdrd+TO9JoBNPnmY9WYuuQC33cRHUHTXCafLp14OfaJiok
- zMDuxi+Yb/lOZIUb5Rq3flGlAl8+qGNspGvohvQDQ/dLV/9RbLPegY3RSWH9PiRYgWed
- Xoo/3U7DcD62z7r/coj38fXgrNVhte++FvMmm4PsWijLOGrdGHLL9vtNNPE169Fm/1KV
- 4axDbRRbn1T0aJVToDTbKoPlpZgiUKEqnM5ihaVnBqKxwEyPLqMzBqXcHqCe85WZjeyX
- 4Xi6neCT47iRXCEEj51oa56gBGTXj4mP2dXtsCdQysbhDOdrK2XoWEt2W5Zq58wTjSgp
- sf1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=xznif/MH/M9aiazIt+TNwkIsOPRFEi4pc4I4E7feLW4=;
- b=nBPCMIf6CIq9TSyDzCd+Ri041jZWGqRGdMoNa4qa3Kc1WjJXH4iX0tJPbTVmyWb5vh
- oiwlecYXzGh2LJPYdTmLyNEaAL/mj81ozkLHtwHTyDDULHLwTTVkY8hgwA72pCuwkYy5
- WUyNnx26chWdhymdULp1U7iZC07PxfqRWunAw/uYW2hp9tit244wab6WuVwPRttndrnz
- jZDgtjABxH/HmWByYC+sI1xBRPHFWvxpjjMBS9LW/sl899YxGBpLKS0BH/+J8W0lyirw
- H1pGs15IBHkPAJrhHxF3VNqpa68JMS87VqHX35ErG6vks87dAJgiSs/rRmgzH8889NPg
- XsCg==
-X-Gm-Message-State: AOAM532CNhyXITcs/doNk/KpD2VZoOKeAKtnlhyP94LMvJ1mmorU8EOP
- lcnMVgSYJa9UVV/jXHMiCEm2WA==
-X-Google-Smtp-Source: ABdhPJz5xMvEY9p8BlcNg5+yfUOg7rpIqdqRGBYPoR4/ELJyxsX1WBqLykwzflMtZ5F7GPdFvcZwAg==
-X-Received: by 2002:a05:6000:108b:: with SMTP id
- y11mr4946180wrw.196.1617209642816; 
- Wed, 31 Mar 2021 09:54:02 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:1573:1dd5:899d:6362?
- ([2a01:e34:ed2f:f020:1573:1dd5:899d:6362])
- by smtp.googlemail.com with ESMTPSA id w6sm5388004wrl.49.2021.03.31.09.54.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 31 Mar 2021 09:54:02 -0700 (PDT)
-Subject: Re: [PATCH v2] thermal: cpufreq_cooling: fix slab OOB issue
-To: Michael Kao <michael.kao@mediatek.com>, fan.chen@mediatek.com,
- Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org,
- srv_heupstream@mediatek.com
-Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- brian-sy yang <brian-sy.yang@mediatek.com>
-References: <20201229050831.19493-1-michael.kao@mediatek.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <b3616c67-c65e-d145-c9a3-e6c209849266@linaro.org>
-Date: Wed, 31 Mar 2021 18:54:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lRfR4-007Fi8-GC; Wed, 31 Mar 2021 18:19:24 +0000
+IronPort-SDR: 2pCgl47q7+mdDgWJKD1FMwNEEa5s5lC2zZF8qJfqtTO60r5TssxIjCCUgoa+ktpU+r7KO0ljDl
+ 4yPb6dsv5vAA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9940"; a="179600058"
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="179600058"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Mar 2021 11:19:14 -0700
+IronPort-SDR: vSE+UHfnln8DPEc+WfQ9eFpbV2ybYU/2+5zCjUOJey4fP6ozlko0sZMmWZW7Xv5ulWPSCl4r1l
+ LHupYmGwxxyA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.81,293,1610438400"; d="scan'208";a="377379108"
+Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
+ ([10.237.72.174])
+ by orsmga003.jf.intel.com with ESMTP; 31 Mar 2021 11:19:03 -0700
+Subject: Re: [PATCH v14 1/2] scsi: ufs: Enable power management for wlun
+To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
+ martin.petersen@oracle.com, linux-scsi@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
+ Yue Hu <huyue2@yulong.com>, Dan Carpenter <dan.carpenter@oracle.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>, Bart van Assche <bvanassche@acm.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>
+References: <cover.1617143113.git.asutoshd@codeaurora.org>
+ <16f1bcf76ff411c70fe0e3e13f84e4b0fa7d9063.1617143113.git.asutoshd@codeaurora.org>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+Message-ID: <a385141d-324b-680e-a19c-ab6121bd6c5d@intel.com>
+Date: Wed, 31 Mar 2021 21:19:13 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20201229050831.19493-1-michael.kao@mediatek.com>
+In-Reply-To: <16f1bcf76ff411c70fe0e3e13f84e4b0fa7d9063.1617143113.git.asutoshd@codeaurora.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210331_175403_763975_A2F9ABEB 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20210331_191922_916447_F84255E3 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,44 +99,77 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjkvMTIvMjAyMCAwNjowOCwgTWljaGFlbCBLYW8gd3JvdGU6Cj4gRnJvbTogYnJpYW4tc3kg
-eWFuZyA8YnJpYW4tc3kueWFuZ0BtZWRpYXRlay5jb20+Cj4gCj4gU2xhYiBPT0IgaXNzdWUgaXMg
-c2Nhbm5lZCBieSBLQVNBTiBpbiBjcHVfcG93ZXJfdG9fZnJlcSgpLgo+IElmIHBvd2VyIGlzIGxp
-bWl0ZWQgYmVsb3cgdGhlIHBvd2VyIG9mIE9QUDAgaW4gRU0gdGFibGUsCj4gaXQgd2lsbCBjYXVz
-ZSBzbGFiIG91dC1vZi1ib3VuZCBpc3N1ZSB3aXRoIG5lZ2F0aXZlIGFycmF5Cj4gaW5kZXguCj4g
-Cj4gUmV0dXJuIHRoZSBsb3dlc3QgZnJlcXVlbmN5IGlmIGxpbWl0ZWQgcG93ZXIgY2Fubm90IGZv
-dW5kCj4gYSBzdWl0YWJsZSBPUFAgaW4gRU0gdGFibGUgdG8gZml4IHRoaXMgaXNzdWUuCj4gCj4g
-QmFja3RyYWNlOgo+IFs8ZmZmZmZmZDAyZDJhMzdmMD5dIGRpZSsweDEwNC8weDVhYwo+IFs8ZmZm
-ZmZmZDAyZDJhNTYzMD5dIGJ1Z19oYW5kbGVyKzB4NjQvMHhkMAo+IFs8ZmZmZmZmZDAyZDI4OGNl
-ND5dIGJya19oYW5kbGVyKzB4MTYwLzB4MjU4Cj4gWzxmZmZmZmZkMDJkMjgxZTVjPl0gZG9fZGVi
-dWdfZXhjZXB0aW9uKzB4MjQ4LzB4M2YwCj4gWzxmZmZmZmZkMDJkMjg0NDg4Pl0gZWwxX2RiZysw
-eDE0LzB4YmMKPiBbPGZmZmZmZmQwMmQ3NWQxZDQ+XSBfX2thc2FuX3JlcG9ydCsweDFkYy8weDFl
-MAo+IFs8ZmZmZmZmZDAyZDc1YzJlMD5dIGthc2FuX3JlcG9ydCsweDEwLzB4MjAKPiBbPGZmZmZm
-ZmQwMmQ3NWRlZjg+XSBfX2FzYW5fcmVwb3J0X2xvYWQ4X25vYWJvcnQrMHgxOC8weDI4Cj4gWzxm
-ZmZmZmZkMDJlNmZjZTVjPl0gY3B1ZnJlcV9wb3dlcjJzdGF0ZSsweDE4MC8weDQzYwo+IFs8ZmZm
-ZmZmZDAyZTZlYWQ4MD5dIHBvd2VyX2FjdG9yX3NldF9wb3dlcisweDExNC8weDFkNAo+IFs8ZmZm
-ZmZmZDAyZTZmYWMyND5dIGFsbG9jYXRlX3Bvd2VyKzB4YWVjLzB4ZGUwCj4gWzxmZmZmZmZkMDJl
-NmY5ZjgwPl0gcG93ZXJfYWxsb2NhdG9yX3Rocm90dGxlKzB4M2VjLzB4NWE0Cj4gWzxmZmZmZmZk
-MDJlNmVhODg4Pl0gaGFuZGxlX3RoZXJtYWxfdHJpcCsweDE2MC8weDI5NAo+IFs8ZmZmZmZmZDAy
-ZTZlZGQwOD5dIHRoZXJtYWxfem9uZV9kZXZpY2VfY2hlY2srMHhlNC8weDE1NAo+IFs8ZmZmZmZm
-ZDAyZDM1MWNiND5dIHByb2Nlc3Nfb25lX3dvcmsrMHg1ZTQvMHhlMjgKPiBbPGZmZmZmZmQwMmQz
-NTJmNDQ+XSB3b3JrZXJfdGhyZWFkKzB4YTRjLzB4ZmFjCj4gWzxmZmZmZmZkMDJkMzYwMTI0Pl0g
-a3RocmVhZCsweDMzYy8weDM1OAo+IFs8ZmZmZmZmZDAyZDI4OTk0MD5dIHJldF9mcm9tX2Zvcmsr
-MHhjLzB4MTgKPiAKPiBGaXhlczogMzcxYTNiYzc5YzExYiAoInRoZXJtYWwvZHJpdmVycy9jcHVm
-cmVxX2Nvb2xpbmc6IEZpeCB3cm9uZyBmcmVxdWVuY3kgY29udmVydGVkIGZyb20gcG93ZXIiKQo+
-IFNpZ25lZC1vZmYtYnk6IGJyaWFuLXN5IHlhbmcgPGJyaWFuLXN5LnlhbmdAbWVkaWF0ZWsuY29t
-Pgo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgS2FvIDxtaWNoYWVsLmthb0BtZWRpYXRlay5jb20+
-Cj4gUmV2aWV3ZWQtYnk6IEx1a2FzeiBMdWJhIDxsdWthc3oubHViYUBhcm0uY29tPgo+IC0tLQoK
-QXBwbGllZCwgdGhhbmtzCgoKLS0gCjxodHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3Jn
-IOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8
-aHR0cDovL3d3dy5mYWNlYm9vay5jb20vcGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8v
-dHdpdHRlci5jb20vIyEvbGluYXJvb3JnPiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9y
-Zy9saW5hcm8tYmxvZy8+IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+On 31/03/21 1:31 am, Asutosh Das wrote:
+> During runtime-suspend of ufs host, the scsi devices are
+> already suspended and so are the queues associated with them.
+> But the ufs host sends SSU (START_STOP_UNIT) to wlun
+> during its runtime-suspend.
+> During the process blk_queue_enter checks if the queue is not in
+> suspended state. If so, it waits for the queue to resume, and never
+> comes out of it.
+> The commit
+> (d55d15a33: scsi: block: Do not accept any requests while suspended)
+> adds the check if the queue is in suspended state in blk_queue_enter().
+> 
+> Call trace:
+>  __switch_to+0x174/0x2c4
+>  __schedule+0x478/0x764
+>  schedule+0x9c/0xe0
+>  blk_queue_enter+0x158/0x228
+>  blk_mq_alloc_request+0x40/0xa4
+>  blk_get_request+0x2c/0x70
+>  __scsi_execute+0x60/0x1c4
+>  ufshcd_set_dev_pwr_mode+0x124/0x1e4
+>  ufshcd_suspend+0x208/0x83c
+>  ufshcd_runtime_suspend+0x40/0x154
+>  ufshcd_pltfrm_runtime_suspend+0x14/0x20
+>  pm_generic_runtime_suspend+0x28/0x3c
+>  __rpm_callback+0x80/0x2a4
+>  rpm_suspend+0x308/0x614
+>  rpm_idle+0x158/0x228
+>  pm_runtime_work+0x84/0xac
+>  process_one_work+0x1f0/0x470
+>  worker_thread+0x26c/0x4c8
+>  kthread+0x13c/0x320
+>  ret_from_fork+0x10/0x18
+> 
+> Fix this by registering ufs device wlun as a scsi driver and
+> registering it for block runtime-pm. Also make this as a
+> supplier for all other luns. That way, this device wlun
+> suspends after all the consumers and resumes after
+> hba resumes.
+> 
+> Co-developed-by: Can Guo <cang@codeaurora.org>
+> Signed-off-by: Can Guo <cang@codeaurora.org>
+> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
+> ---
+
+Looks good but still doesn't seem to based on the latest tree.
+
+Also came across the issue below:
+
+<SNIP>
+
+> +#ifdef CONFIG_PM_SLEEP
+> +static int ufshcd_wl_poweroff(struct device *dev)
+> +{
+> +	ufshcd_wl_shutdown(dev);
+
+This turned out to be wrong.  This is a PM op and SCSI has already
+quiesced the sdev's.  All that is needed is:
+
+	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
+
+> +	return 0;
+> +}
+> +#endif
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
