@@ -2,68 +2,85 @@ Return-Path: <SRS0=zLKe=I5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UPPERCASE_50_75,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA695C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 09:07:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0D99C433E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 09:14:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 638FC619BB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 09:07:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 638FC619BB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5FDBE619C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 09:14:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FDBE619C1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=0zvDfgt9IbqyWh8L92OUI1mgTw/gYD4NUojtY1ZgK1Q=; b=Bds/IKJ/uX3nUcLH+6kytGzsX
-	L2jSv5Y+jDfteeBMVc3OOHbZJV+dcPByGE16PD4nJKA1QeptEvaCNoEPjUphfg58h20sM9T3350J6
-	38jrW49kHGsASEC/tSGzsj1qoXHj2ELcSWFbZzRCpkRc4okIXQN4A4JJRpVOsfcCJB4upMZknvhi9
-	FrBLK1/oakB0AIEJWZoKj9OjVcthsEw/W/jv8/yYr2TreKJu9RXTaxlTZfZwvCF+GQ38fZZX1J2Z3
-	EzK2fjqWRP1T1/nl7oaXDzjFDLN7H7FctZY8HSKiYNKjNItnqJO6sM/XrZp0KHewt2RxfQIivvTxq
-	9fliVjs9w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2+FgNPrgwCOMJCIrCiQmS1Q07B0cyjOPi6qEevQSQjs=; b=mFRAe9zY7GnUymD/zq63euycpN
+	ZVnWOBZ9XjSRARTiaOBSZM04Pbnm687Uioa7Heiqb58nZoBlXfTxuZipjWeRnhk/I+QkxMwYeTFpi
+	GXsaotrPqQRNWbl17tu4YX3hYn98n9WJlqhRBHFXFxlCqdez1gSIT/G9Wf7iF+AuQxe5mU9fLGn0Z
+	q8C/VMJTkFKWDa6ehEtfCOQNjk0bsV8zfTFmNiiq0hxZIoXmLLG5aVrwZcX78SlLtTMg9yCyvj7vp
+	1KTJ4DD9g/5CXq9/Z44IUnw43D43rsVSliqmWcSnqvn1XavdPyD7zflq6PZMrRzDmZ+ArqrZbsSbe
+	yWW6wy0A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRWp8-0063su-3D; Wed, 31 Mar 2021 09:07:38 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lRWvd-0064z0-6g; Wed, 31 Mar 2021 09:14:21 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRWoe-0063gy-7F; Wed, 31 Mar 2021 09:07:11 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 934E21F45B06
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Collabora Kernel ML <kernel@collabora.com>,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- drinkcat@chromium.org, hsinyi@chromium.org, Arnd Bergmann <arnd@arndb.de>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Catalin Marinas <catalin.marinas@arm.com>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- =?UTF-8?q?Guido=20G=C3=BCnther?= <agx@sigxcpu.org>,
- Jagan Teki <jagan@amarulasolutions.com>, Jon Hunter <jonathanh@nvidia.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- Max Krummenacher <max.oss.09@gmail.com>, Michael Walle <michael@walle.cc>,
- Nishanth Menon <nm@ti.com>, Shawn Guo <shawnguo@kernel.org>,
- Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org
-Subject: [RESEND PATCH 2/2] arm64: defconfig: Enable options to support panel
- display for Mediatek Chromebooks
-Date: Wed, 31 Mar 2021 11:06:58 +0200
-Message-Id: <20210331090659.4169966-2-enric.balletbo@collabora.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210331090659.4169966-1-enric.balletbo@collabora.com>
-References: <20210331090659.4169966-1-enric.balletbo@collabora.com>
+ id 1lRWv0-0064r2-6X
+ for linux-mediatek@lists.infradead.org; Wed, 31 Mar 2021 09:13:45 +0000
+Received: by mail-pg1-x530.google.com with SMTP id f3so4556285pgv.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 31 Mar 2021 02:13:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wSMkZYokyXMj9ctwi5eddd7Z7dKdZakXqSVex3m7s3s=;
+ b=iKyT42M8FtBBrZU64CJCqhrGn/NHfzX638A7M0468/GCD/oYHOGTnlW/HqaudcG+xA
+ R8BVx9YeAgDRgdxrmFUPG9c1T6l6OnQF6jZLNEftkYs8zMWeUrnH6rMe5L9dCPsjHlUI
+ e9MIt9uTuVNq/qkThX+Z2V+iTjQhUElC4HPCw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=wSMkZYokyXMj9ctwi5eddd7Z7dKdZakXqSVex3m7s3s=;
+ b=J3OJlIdiOAy2G9Ss7fJjBcH2po3JXYJb4h2Vtm+imBqUIAk+P+I9KeG626NlnIgr9O
+ /oXk3j+/96irI3eFRwHflMORJzmdQ2ECq3UzhcSQlEPO5VYgFKdLgxTymC1DLNKHgEv/
+ Xrezeg2PBA2NCxX431V75+tvjXgwsXgyMs9EUolYZIiC7wVfS6f5RvaCfk4aTpWiuOdF
+ u0GMiEq4jhe072o4UHHdIlpJhKdty0BVl0ol/FYjr7gKtFQsiH5a2Zbbrb8d8NlY9fMU
+ rkhYhRCDhabC8HqNpGgXUgRjIEQrL7aiHIImv997Sn9l2B7n0YIMpMwruNiRfOMVa7re
+ 7Q5Q==
+X-Gm-Message-State: AOAM53020lwvXgji9isU8147HSOqHqK0lxb3eYLbwmKlOQNFd90ARihW
+ kQriS4sIDClqmhNMhu/badg8LA==
+X-Google-Smtp-Source: ABdhPJz4SDU8/o1IrKvO9iaYz+4Maznj3uz3Ov0JJ5HmuiCTXEcgqFw51BPz0s58frC2OQS5+sBLtg==
+X-Received: by 2002:a63:6f8a:: with SMTP id k132mr2451919pgc.59.1617182011967; 
+ Wed, 31 Mar 2021 02:13:31 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:85fc:9f25:6293:28f1])
+ by smtp.gmail.com with ESMTPSA id s7sm1484723pjr.18.2021.03.31.02.13.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Mar 2021 02:13:31 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Ben Ho <Ben.Ho@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 1/4] dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-kakadu
+Date: Wed, 31 Mar 2021 17:13:24 +0800
+Message-Id: <20210331091327.1198529-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.31.0.291.g576ba9dcdaf-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210331_100709_887388_CD618BD8 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20210331_101342_475677_937B8CFA 
+X-CRM114-Status: UNSURE (   7.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,76 +98,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are some Mediatek based Chromebooks supported in the kernel. Enable the
-required config options to have the panel display working on both devices.
-This was tested on the ACER Chromebook R13 (MT8173) and the Lenovo
-Ideapad Duet (MT8183), but should also enable display support for similar
-devices.
+Kakadu is also known as ASUS Chromebook Detachable CM3.
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
-This is only a resend rebased on top of mainline to fix some trivial
-conflicts.
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
- arch/arm64/configs/defconfig | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 7b4be3807b6d..f2dc42c9b932 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -686,6 +686,7 @@ CONFIG_DRM_MSM=m
- CONFIG_DRM_TEGRA=m
- CONFIG_DRM_PANEL_LVDS=m
- CONFIG_DRM_PANEL_SIMPLE=m
-+CONFIG_DRM_PANEL_BOE_TV101WUM_NL6=m
- CONFIG_DRM_PANEL_MANTIX_MLAF057WE51=m
- CONFIG_DRM_PANEL_RAYDIUM_RM67191=m
- CONFIG_DRM_PANEL_SITRONIX_ST7703=m
-@@ -693,6 +694,7 @@ CONFIG_DRM_PANEL_TRULY_NT35597_WQXGA=m
- CONFIG_DRM_DISPLAY_CONNECTOR=m
- CONFIG_DRM_NWL_MIPI_DSI=m
- CONFIG_DRM_LONTIUM_LT9611=m
-+CONFIG_DRM_PARADE_PS8640=m
- CONFIG_DRM_SII902X=m
- CONFIG_DRM_SIMPLE_BRIDGE=m
- CONFIG_DRM_THINE_THC63LVD1024=m
-@@ -707,6 +709,8 @@ CONFIG_DRM_VC4=m
- CONFIG_DRM_ETNAVIV=m
- CONFIG_DRM_HISI_HIBMC=m
- CONFIG_DRM_HISI_KIRIN=m
-+CONFIG_DRM_MEDIATEK=m
-+CONFIG_DRM_MEDIATEK_HDMI=m
- CONFIG_DRM_MXSFB=m
- CONFIG_DRM_MESON=m
- CONFIG_DRM_PL111=m
-@@ -979,6 +983,7 @@ CONFIG_ROCKCHIP_IOMMU=y
- CONFIG_TEGRA_IOMMU_SMMU=y
- CONFIG_ARM_SMMU=y
- CONFIG_ARM_SMMU_V3=y
-+CONFIG_MTK_IOMMU=y
- CONFIG_QCOM_IOMMU=y
- CONFIG_REMOTEPROC=y
- CONFIG_QCOM_Q6V5_MSS=m
-@@ -1051,6 +1056,8 @@ CONFIG_PWM_BCM2835=m
- CONFIG_PWM_CROS_EC=m
- CONFIG_PWM_IMX27=m
- CONFIG_PWM_MESON=m
-+CONFIG_PWM_MTK_DISP=m
-+CONFIG_PWM_MEDIATEK=m
- CONFIG_PWM_RCAR=m
- CONFIG_PWM_ROCKCHIP=y
- CONFIG_PWM_SAMSUNG=y
-@@ -1095,6 +1102,7 @@ CONFIG_QCOM_L3_PMU=y
- CONFIG_NVMEM_IMX_OCOTP=y
- CONFIG_NVMEM_IMX_OCOTP_SCU=y
- CONFIG_QCOM_QFPROM=y
-+CONFIG_MTK_EFUSE=y
- CONFIG_ROCKCHIP_EFUSE=y
- CONFIG_NVMEM_SUNXI_SID=y
- CONFIG_UNIPHIER_EFUSE=y
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index cf24401edb85..9774f44b51d9 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -138,6 +138,13 @@ properties:
+           - const: google,juniper-sku16
+           - const: google,juniper
+           - const: mediatek,mt8183
++      - description: Google Kakadu (ASUS Chromebook Detachable CM3)
++        items:
++          - const: google,kakadu-rev3
++          - const: google,kakadu-rev2
++          - const: google,kakadu
++          - const: mediatek,mt8183
++
+ 
+ additionalProperties: true
+ 
 -- 
-2.30.2
+2.31.0.291.g576ba9dcdaf-goog
 
 
 _______________________________________________
