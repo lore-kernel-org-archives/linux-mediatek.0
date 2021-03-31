@@ -2,49 +2,85 @@ Return-Path: <SRS0=zLKe=I5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F0C4C433DB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 07:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F187C433C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 07:53:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2809619D3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 07:33:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2809619D3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=universalautomation.com.pk
+	by mail.kernel.org (Postfix) with ESMTPS id 2D05B61582
+	for <linux-mediatek@archiver.kernel.org>; Wed, 31 Mar 2021 07:53:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D05B61582
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hWz/OlahxKUaI3R1ms2kzScE/Us5K1x1nlI0/6vhUbw=; b=HtIhBdaeyZy9C/
-	fsFF2jc7V4rh7hI8N/puMDfy+BfEKU9dVzGoxDg359ZLDJHpZN1nrE2bttfyWBGVDCcrOQ4oDZh0q
-	8MldvpeZiwZ8MdDGEItguuPj4tX6kIFvecV2hKjli9XKBv1RW9d/p/td/c4o1vvwOFA9Nj+PmizN1
-	mAT1TJ3ir1abccsPGqQrdtrJHHqYvTKYV1VdfxKa0EH2r9yVw4xOASC/TqPAp/HDEhU0Qwxot7qmR
-	o4OL7ew+Pen+A+mW2CgehfyRmLcKCPfR4qnlL46x3c+JSLthqQjxdfceMdUEzI0wvowO5gi2Apvz8
-	SKadMLBPTCx5kIospCaQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9rEC33+H2vXYNHtg/JX+A2VVBjagqcDJ9gRDbQmKbOw=; b=DS5BuB6Ifwgj3GDGGBNRFTq3m
+	3NTMdAkyuXueioo6zk0Ys/iLesV4wjIBDraTDbNcjZ79jMpiYKBeldf+ve5tyQceZi/HHbUDR36c+
+	RgLY36kei5GkWxt6nZRc24Wkkg8GkgzzO+sM37nZ22P14gDIWCf2LYs/ZU2UFhJFY2QhI8wrHH7x/
+	2XWP4l3if4cSvg324sHO/PuL4CSsCDz/sjZd5m07JUMWUTI7CrrZfZpymB6/Wg47+eXSOmIlJu89D
+	40RDehEzVlrsqQHZ2up1tbfWVhJn5cOKMOdK8eu61IN1pIstd5ACNornBxxhrzdt89P3WFZqrSHMI
+	DQ0+D+NjQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRVLR-005mlw-Tp; Wed, 31 Mar 2021 07:32:54 +0000
-Received: from [128.199.220.203] (helo=mta0.sawafuji.co.jp)
+	id 1lRVfd-005ray-75; Wed, 31 Mar 2021 07:53:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRVLK-005mk5-Nc
- for linux-mediatek@lists.infradead.org; Wed, 31 Mar 2021 07:32:49 +0000
-From: Albert Bourla <info@universalautomation.com.pk>
-To: linux-mediatek@lists.infradead.org
-Subject: Bidding invitation
-Date: 31 Mar 2021 09:10:11 +0200
-Message-ID: <20210331091011.265668F08F1DC860@universalautomation.com.pk>
+ id 1lRVfT-005rYn-P6; Wed, 31 Mar 2021 07:53:38 +0000
+X-UUID: b1a452d5b618417398820b4e95e6cc9b-20210331
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=KzbJJ1Ta9lbpfgXvFcfFoyPIpURFpSf7aU3hafYGSns=; 
+ b=CRGnvhjHnrWLnNY5Re6332ZtoO1s8xMODIe/0vc+0c85wZgqmwvGd2OB0zNQ0V2xnERTlR0vVskR0+bQyfJIeCTJNLqU+8rvM6fxySPgwulwtp7xSVi08kGJzIMc4en+ycUyjGebS0FIeE5j0m145J/SOnqI0QfSJdNfXCjWR/I=;
+X-UUID: b1a452d5b618417398820b4e95e6cc9b-20210331
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <andrew-sh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1321624304; Wed, 31 Mar 2021 00:53:30 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 31 Mar 2021 00:53:28 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 31 Mar 2021 15:53:27 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 31 Mar 2021 15:53:26 +0800
+Message-ID: <1617177207.13332.9.camel@mtksdaap41>
+Subject: Re: [PATCH V8 7/8] devfreq: mediatek: cci devfreq register opp
+ notification for SVS support
+From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
+To: Chanwoo Choi <cw00.choi@samsung.com>
+CC: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
+ <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
+ <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J.
+ Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>
+Date: Wed, 31 Mar 2021 15:53:27 +0800
+In-Reply-To: <6f1f7bf5-54b0-d3e2-e93c-fa4a837c9222@samsung.com>
+References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <CGME20210323113413epcas1p1d3acc9ac2539da96b0757a0159bdcfc7@epcas1p1.samsung.com>
+ <1616499241-4906-8-git-send-email-andrew-sh.cheng@mediatek.com>
+ <6f1f7bf5-54b0-d3e2-e93c-fa4a837c9222@samsung.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210331_083247_389751_0DB2AEF3 
-X-CRM114-Status: UNSURE (  -0.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210331_085336_605333_D5399134 
+X-CRM114-Status: GOOD (  34.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,26 +97,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Good Day Sir/Ms,
+On Thu, 2021-03-25 at 17:11 +0900, Chanwoo Choi wrote:
+> Hi,
+> 
+> I think that you can squash this patch to patch4.
 
-We are please to invite you or your company to quote the 
-following item listed below:
- 
-Product/Model No: A702TH FYNE PRESSURE REGULATOR
-Model Number: A702TH
-Qty. 30 units
+> On 3/23/21 8:34 PM, Andrew-sh.Cheng wrote:
+> > From: "Andrew-sh.Cheng" <andrew-sh.cheng@mediatek.com>
+> > 
+> > SVS will change the voltage of opp item.
+> 
+> What it the full name of SVS?
+
+Due to the content of this patch is for SVS, so I separate it from
+patch4.
+SVS is Smart-Voltage-Scaling.
+It will check the IC quality, and then modify the voltage field of opp
+table.
+The required voltage will smaller than original signed-off voltage in
+opp table.
+This voltage will change when temperature is changed.
+cci devfreq need to raise voltage when the required voltage raise.
+
+> 
+> > CCI devfreq need to react to change frequency.
+> > 
+> > Signed-off-by: Andrew-sh.Cheng <andrew-sh.cheng@mediatek.com>
+> > ---
+> >  drivers/devfreq/mt8183-cci-devfreq.c | 27 +++++++++++++++++++++++++++
+> >  1 file changed, 27 insertions(+)
+> > 
+> > diff --git a/drivers/devfreq/mt8183-cci-devfreq.c b/drivers/devfreq/mt8183-cci-devfreq.c
+> > index 018543db7bae..6942a48f3f4f 100644
+> > --- a/drivers/devfreq/mt8183-cci-devfreq.c
+> > +++ b/drivers/devfreq/mt8183-cci-devfreq.c
+> > @@ -21,6 +21,7 @@ struct cci_devfreq {
+> >  	struct clk *cci_clk;
+> >  	int old_vproc;
+> >  	unsigned long old_freq;
+> > +	struct notifier_block opp_nb;
+> >  };
+> >  
+> >  static int mtk_cci_set_voltage(struct cci_devfreq *cci_df, int vproc)
+> > @@ -89,6 +90,26 @@ static int mtk_cci_devfreq_target(struct device *dev, unsigned long *freq,
+> >  	return 0;
+> >  }
+> >  
+> > +static int ccidevfreq_opp_notifier(struct notifier_block *nb,
+> 
+> I think that you better to change the function name as following:
+> ccidevfreq_opp_notifier -> mtk_cci_devfreq_opp_notifier
+I will change it on next patch
+
+> 
+> > +				   unsigned long event, void *data)
+> > +{
+> > +	struct dev_pm_opp *opp = data;
+> > +	struct cci_devfreq *cci_df = container_of(nb, struct cci_devfreq,
+> > +						  opp_nb);
+> > +	unsigned long	freq, volt;
+> > +
+> > +	if (event == OPP_EVENT_ADJUST_VOLTAGE) {
+> > +		freq = dev_pm_opp_get_freq(opp);
+> > +		/* current opp item is changed */
+> > +		if (freq == cci_df->old_freq) {
+> > +			volt = dev_pm_opp_get_voltage(opp);
+> > +			mtk_cci_set_voltage(cci_df, volt);
+> > +		}
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static struct devfreq_dev_profile cci_devfreq_profile = {
+> >  	.target = mtk_cci_devfreq_target,
+> >  };
+> > @@ -98,12 +119,15 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
+> >  	struct device *cci_dev = &pdev->dev;
+> >  	struct cci_devfreq *cci_df;
+> >  	struct devfreq_passive_data *passive_data;
+> > +	struct notifier_block *opp_nb;
+> >  	int ret;
+> >  
+> >  	cci_df = devm_kzalloc(cci_dev, sizeof(*cci_df), GFP_KERNEL);
+> >  	if (!cci_df)
+> >  		return -ENOMEM;
+> >  
+> > +	opp_nb = &cci_df->opp_nb;
+> 
+> Just move this code at the neighborhood of 'opp_nb->notifier_call' init code.
+I will modify it on next patch
+
+> 
+> > +
+> >  	cci_df->cci_clk = devm_clk_get(cci_dev, "cci_clock");
+> >  	ret = PTR_ERR_OR_ZERO(cci_df->cci_clk);
+> >  	if (ret) {
+> > @@ -152,6 +176,9 @@ static int mtk_cci_devfreq_probe(struct platform_device *pdev)
+> >  		goto err_opp;
+> >  	}
+> >  
+> > +	opp_nb->notifier_call = ccidevfreq_opp_notifier;
+> > +	dev_pm_opp_register_notifier(cci_dev, opp_nb);
+> 
+> Need to check whether return value is valid or not.
+I will add the check for next patch
 
 
-Compulsory,Kindly send your quotation to: 
-quotation@pfizerbvsupply.com 
-for immediate approval.
-
-Kind Regards,
-Albert Bourla
-PFIZER B.V Supply Chain Manager
-Tel: +31(0)208080 880
-ADDRESS: Rivium Westlaan 142, 2909 LD
-Capelle aan den IJssel, Netherlands
+> 
+> > +
+> >  	return 0;
+> >  
+> >  err_opp:
+> > 
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
