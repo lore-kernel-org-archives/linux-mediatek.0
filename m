@@ -2,20 +2,20 @@ Return-Path: <SRS0=qM2e=I6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAAF4C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E264BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:40:16 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 480DA61057
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:39:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 480DA61057
+	by mail.kernel.org (Postfix) with ESMTPS id 6C2726108B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:40:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C2726108B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,71 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dTiPnfGW8U6pKLZtYwjdN81s1lrulyGuqnxsdmWcuX4=; b=qjiCWtf456XAJnABt+neyU0V0
-	C+mnHtTbvDz1JeOSt6M/0NOMUXC9dPD1YEkCCaU0u6on0F7Dj084Nfy75Xb0ckYQJQVXxsP57kncN
-	gs9W0Vmxuxhm/g0u9axhKErnCr51OvK7zqDYeFxNOugXf0qXIKjJ957Af+CoIhTwOvB3qIhpycXUz
-	GLOE9okMoNjSumiDXI15pCC67SaePNyN4UNdYySLDkc901HwUsWyIhcqIrx9woXwh0jPzdtTN4IYc
-	KvRt5qMZXwPVUNWT4Rt7KymP9791/aKmsZQc87MsAVzW779/l4Pi5fEFshoU6Kk6G5RYuay4V2YMu
-	FGtGf5uQQ==;
+	 bh=L1X+jrcr8bKt8ra3i0Cn/zI9d8fDJt5I+7FeAqUh2lo=; b=pipgPIavPVeRWOI0PfigzowNE
+	zn02GidcMoWf5AF2mcNwKhLgw8T6Y795XJX2ciiG3qgF4rzq+y+QQIXMiS+SmxrovSyd3qY9K2G1x
+	hfhQJMLT525GcgjnT7tC+LUvea+p9ZmKOgyzZuJqsYYnQwmOcZdcyssRxZJgEdpfuk3qJvs+WzKoC
+	adZbrtSDF3TBVRxNzMNa3l3uXEx9IozcP7JuuKht5kBTSY3QfNYWcjvoqEtFBxrGpbcZL7d3aKuZv
+	it2ttUFgrT7Q9mS/zN/P9TM9/g5P6MEQOzlFfZfLuT24/+92Hj9q2G2QNYetSH1kmPgAetGOOueYF
+	xQg1kfEgA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRtn2-0095Vy-Oq; Thu, 01 Apr 2021 09:39:00 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1lRto6-0095nz-J3; Thu, 01 Apr 2021 09:40:07 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRtmo-0095QE-Hy; Thu, 01 Apr 2021 09:38:49 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id o16so1171625wrn.0;
- Thu, 01 Apr 2021 02:38:45 -0700 (PDT)
+ id 1lRtns-0095kB-RF; Thu, 01 Apr 2021 09:39:54 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id d191so725662wmd.2;
+ Thu, 01 Apr 2021 02:39:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=zqr07vO7upTy6e/RfoTA/s/3/fiA55XFyYEasLBQqAs=;
- b=p0kuOLQzv7pOsdzulIw0amiLHAVOfPGe5DwWjMeFJf5AzMxzaCYEMUgM9T3FypvUdv
- e/bMIZ8nI3hxskYZiOGabqQ4a+/Y2k/My3Yt/DKyaMyNASskHbtDMWQ3q8/7FH/ZPl4L
- ZCO3Q2Nu61go8RTQSXpvJB7nkG6W82+rnPyxrx29La6dgk2z/4Jg/y4LcEAmRJDzOMxu
- y5NUQuQIkAkl+CMJ8ZpHUU48CBTdBLBgCE5jpe8XiDZI+GB6tGs2zefrZXHfZl/bREwq
- VlowOiql+sUl6pTygLI9Fh98sNyvqagzrvW29OPzuieF3oUykBrV6XSh0h718fGf8Znv
- kriw==
+ bh=tVIUyZe1K8XZ+WdFPHcdsFBxCUN5Igt+uXBRDrDZlWE=;
+ b=TQbrqEciyXKtf8PEikqo7E1hSDW3qgNmyiRsHCA0IIXASwSWq9dKlJDSXBgbbxh9Yb
+ qrTWB13TlNzyDxfcV4I7H2ydX8tY+n4yfxrKwSn0Sosz1NhrkkBLdK+M/jyajOis6nxU
+ CoGyDJ0uwhKx7wPlEqAiAqBwHlIskFI4aGdjZwVEqoCCksyHemkrkA9jS7m4H0M7h3i4
+ oByH9G4/JrCeSrfuoIhL/hUBpa258Axk+OcDj7dRobCKkZL4SHD8l3bbGdDfgbaEsokq
+ FCQllsuIhpCGSzd75LqM057WasNlA5VGaDhOQ9eQNFXVRotFu7DqHtmGM7W8pFDlMGpF
+ wqhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=zqr07vO7upTy6e/RfoTA/s/3/fiA55XFyYEasLBQqAs=;
- b=OUJs7HzFWNxWh/QxFW6LXdV8s9jDvNcnOuBXJ4IMqvqQgCrCj+aBsIuTQ5veyATOAw
- aIQiKmw+KKqUfgeiSUVi0nSp1xPvfQtKku1gJu71eb6heiFX0z7ghpAed+r+0a78gtep
- x1KWD+gOqTevWbSaNxiDI3/zekrijigBxNOKPkjiaz/JM+OsdaVgJ0wtXvcdmpQT78a5
- bKEjkMOxu1Srt65uwHqMuAFkylYbAY2yaaa7zppjKp6kse8emEkWiv8aIxe9rdLPJXep
- 4o3IVZMHygIKuhk0IOVgjNLr+uDuKIdJF33zPmldbhz1qjjQ3mzGwcQelGhteavew8Ph
- sJpA==
-X-Gm-Message-State: AOAM533Kuv3YtNLcNbOEfX+h6rfY9TQB608RxVXq+a9ehscEZfTB9WqJ
- khPXA057scBerXP0/A6k/xQ=
-X-Google-Smtp-Source: ABdhPJweFebP/Y9EsngFkTBEoYEMOAIhx/IutptK0Pf+C/0UMSu2/tnCwPdU/DZEPTl2HAr4BMnZeA==
-X-Received: by 2002:adf:f587:: with SMTP id f7mr8572552wro.147.1617269925248; 
- Thu, 01 Apr 2021 02:38:45 -0700 (PDT)
+ bh=tVIUyZe1K8XZ+WdFPHcdsFBxCUN5Igt+uXBRDrDZlWE=;
+ b=GaNbkKBnWvo7hsX9OpSGR/KEPMjCH5WsJY3CXerAijFWR2v5H/M76abTCT6viX0St/
+ ZSiZuRTe31ev3THXYvhdmB/tZkr8/8ncWQYvDLdUApI0nsOa6d4m6iypG4stMYPm0dQQ
+ OdNd7LwmWK//zXygA+2QBgqN0t2Ezxvh5+U+CE6Zpo5KErexeiSkrllW7qZwTPFTinWY
+ atpNoVOUhcyX3eJ6zNDoDUkJZkuX47AwO6HrdahzDzzAAa/XKWEwVc1UHDwo9wKfYq5O
+ ui/UD3Qqh+R2fU0XVGCGr9EhdJEilSQ1HsqTqgYY/xrqCTSmdQu9m55Y+uSU0GMQH64F
+ B26g==
+X-Gm-Message-State: AOAM533MvW8smZRmGc6yINYGOUaazOgFNNR7exfIpaxA5t3fUXkDLG22
+ Smdpb/77lFDsSrSnOFmdfoo=
+X-Google-Smtp-Source: ABdhPJx7tXV7KufYJm5L5rvaDt05s6UtrVE88LDnXjIDMF0Nxw4Ld9XUNphxkTLcDKYvBCBOoMccjQ==
+X-Received: by 2002:a7b:c8d9:: with SMTP id f25mr7159186wml.157.1617269992414; 
+ Thu, 01 Apr 2021 02:39:52 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id k4sm12625016wrd.9.2021.04.01.02.38.44
+ by smtp.gmail.com with ESMTPSA id 81sm7908130wmc.11.2021.04.01.02.39.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Apr 2021 02:38:44 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: mt8183: Add power-domains properity to mfgcfg
-To: Enric Balletbo Serra <eballetbo@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Weiyi Lu <weiyi.lu@mediatek.com>
-References: <20210224091742.1060508-1-ikjn@chromium.org>
- <CAFqH_50BWF4sQnJAnVZDf3Dbuw+LaN67q39DvOh7ipzqNeNEMw@mail.gmail.com>
+ Thu, 01 Apr 2021 02:39:52 -0700 (PDT)
+Subject: Re: [PATCH] arm64: dts: mediatek: fix reset GPIO level on pumpkin
+To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: mkorpershoek@baylibre.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20210223221826.2063911-1-fparent@baylibre.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <6df6486e-89fc-6ea8-2b36-59e2bf49eb3a@gmail.com>
-Date: Thu, 1 Apr 2021 11:38:44 +0200
+Message-ID: <46f49f9e-20a6-ea3b-a3c2-2249cdd3613b@gmail.com>
+Date: Thu, 1 Apr 2021 11:39:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <CAFqH_50BWF4sQnJAnVZDf3Dbuw+LaN67q39DvOh7ipzqNeNEMw@mail.gmail.com>
+In-Reply-To: <20210223221826.2063911-1-fparent@baylibre.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_103847_585960_C48D3D70 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20210401_103953_187263_867E9C2D 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,56 +105,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 24/02/2021 11:30, Enric Balletbo Serra wrote:
-> Hi Ikjoon,
+On 23/02/2021 23:18, Fabien Parent wrote:
+> The tca6416 chip is active low. Fix the reset-gpios value.
 > 
-> Thank you for your patch.
-> 
-> Missatge de Ikjoon Jang <ikjn@chromium.org> del dia dc., 24 de febr.
-> 2021 a les 10:21:
->>
->> mfgcfg clock is under MFG_ASYNC power domain
->>
->> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
->> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
->> ---
->>
->>  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> index 5b782a4769e7..3384df5284c0 100644
->> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
->> @@ -962,6 +962,7 @@ mfgcfg: syscon@13000000 {
->>                         compatible = "mediatek,mt8183-mfgcfg", "syscon";
->>                         reg = <0 0x13000000 0 0x1000>;
->>                         #clock-cells = <1>;
->> +                       power-domains = <&scpsys MT8183_POWER_DOMAIN_MFG_ASYNC>;
-> 
-> I don't think this will work in mainline, at least, the reference name
-> should be &spm
-> 
+> Fixes: e2a8fa1e0faa ("arm64: dts: mediatek: fix tca6416 reset GPIOs in pumpkin")
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-Correct. Would you mind to resend with the comment from Enric. Apart from that,
-patch looks fine to me.
+Applied to v5.12-next/dts64
 
-Regards,
-Matthias
+Thanks!
 
-> Thanks,
->   Enric
->>                 };
->>
->>                 mmsys: syscon@14000000 {
->> --
->> 2.30.0.617.g56c4b15f3c-goog
->>
->>
->> _______________________________________________
->> Linux-mediatek mailing list
->> Linux-mediatek@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> ---
+>  arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> index 63fd70086bb8..9f27e7ed5e22 100644
+> --- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
+> @@ -56,7 +56,7 @@ &i2c0 {
+>  	tca6416: gpio@20 {
+>  		compatible = "ti,tca6416";
+>  		reg = <0x20>;
+> -		reset-gpios = <&pio 65 GPIO_ACTIVE_HIGH>;
+> +		reset-gpios = <&pio 65 GPIO_ACTIVE_LOW>;
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&tca6416_pins>;
+>  
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
