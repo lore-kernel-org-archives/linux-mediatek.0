@@ -2,83 +2,92 @@ Return-Path: <SRS0=qM2e=I6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A990CC43460
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:18:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B714EC43460
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 13:59:16 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50E3E6112D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:18:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50E3E6112D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5EB49611ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 13:59:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EB49611ED
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:Cc:To:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=bQeYpBsee2Z2Z6mpTm71u0hiOiLpOzoYVIUR+y5AVUQ=; b=mZAE0LTMb1agObxa1q80ZMBTYY
-	dvxCH3UH56VJ0v9c5ag6dWRs/PNPAOm9cfsYMshjFnkv7ECUhG6m0G9kC3icw3eS3x9vnTyXbRqY0
-	VrKIGTLp2zO7UQozfG8lw0sMA13k92uBDRqf3e/ShwY4ureBAhS+5M10ebTS90O2xefPZpfd82PSA
-	j2knsuYpdE+05jX2TWuUjX41pNJFAQcx64OmLZt/NVQ6Z6NRfXTcwYVpRmkaISE9tDDlGy2dVUmc1
-	a4AX8t7QILKcRkvfjcoicZg5jQBJbWzoCxeF+RAPHAokgxWYdQccMnZp9YR1LYVZ5WIAncuGzbyFz
-	YXkHEuSA==;
+	bh=2BaDVBmAkwGdfUZJd3AJr69cSimcDhf6oo3mRuDsf88=; b=O3szJ3L9O4KmaB7QGSRPLSp1Rt
+	oAVSYvyUc3WP5DmPZrID8lAtcg93iQDpEpY78hi0a0aZIK9KNIMmIMfFoWrv54yGAvki13QoIb92U
+	ydbM6Tg+PMJj1jevSv6uVxXs12R+Dd+KhdW6/6nybaR6K18EQ+ThVZRq4SKL1A9FaAHb7Y68PzXpW
+	o7TMHytxjzWVXq8DFB+l/ofcFsBt5lYySrb4nEJOH2e97mwTJzvkr7KSuAgbxn6Us7eHRoJN6FTpS
+	SlQdUWrq0Rk7VKoUfmuvlu9i2d/YFmGicjRhVCWbs8pZ5h6aCwe1zzJUuWjxgdgaGVf/hTY5Qx5FC
+	af+os0YQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRwHF-009ZET-Jq; Thu, 01 Apr 2021 12:18:21 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lRxqk-009leP-Us; Thu, 01 Apr 2021 13:59:07 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRwGt-009ZAY-UH; Thu, 01 Apr 2021 12:18:01 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0169F6113E;
- Thu,  1 Apr 2021 12:17:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1617279476;
- bh=wRad7N84rWD9dSoio69a4lZ1e70YET8Y/U4ELbCnnho=;
- h=From:To:Cc:Subject:Date:From;
- b=Q1xGCX8CjWBXtQC1pgo9/9vi4nDHYsR9ze0Q3GiyebU0GCkZVF2x7Dm68maSFFiUb
- aYhFb4Mtsxe3dwyRk1InCmoNe+43BkSOmz3+yXmoJlqQon680CoD7Fu0OV/kMatoKB
- POCl1bXAfQ85z4s39lkLH+3JCvV54zR+CeAxccTEvavGiJh0qGmRlyOcVNt9cvXxRq
- kYRsUf12VYN3g12XZxM/SAQ9Jf1Po6QForEFkcVk/jW0b2lIFgc1wXKAcg30pF7BC8
- U8xRKFjOp2o3cBdsuc5vEOD8ftGdy/B8MUbxDoRdCuirrnPb1300SCFtXBNU1EX6Km
- N9eYgXDgwnnkA==
-Received: by mail.kernel.org with local (Exim 4.94)
- (envelope-from <mchehab@kernel.org>)
- id 1lRwGn-001c2K-FQ; Thu, 01 Apr 2021 14:17:53 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
- =?UTF-8?q?Przemys=C5=82aw=20Gaj?= <pgaj@cadence.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Andy Whitcroft <apw@canonical.com>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Dwaipayan Ray <dwaipayanray1@gmail.com>,
- Joe Perches <joe@perches.com>, Jonathan Cameron <jic23@kernel.org>,
- Lars-Peter Clausen <lars@metafoo.de>,
- Linus Walleij <linus.walleij@linaro.org>,
- Lukas Bulwahn <lukas.bulwahn@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Vitor Soares <vitor.soares@synopsys.com>,
- alsa-devel@alsa-project.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-i3c@lists.infradead.org,
- linux-iio@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- patches@opensource.cirrus.com
-Subject: [PATCH 00/32] Fix broken documentation file references
-Date: Thu,  1 Apr 2021 14:17:20 +0200
-Message-Id: <cover.1617279355.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.30.2
+ id 1lRxqO-009lVD-G3; Thu, 01 Apr 2021 13:58:47 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id b7so3060670ejv.1;
+ Thu, 01 Apr 2021 06:58:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=xTb1jwz8SQDmyElm/xtUO1oJ/mtFdgNw0V3dZ43+jcI=;
+ b=aqsla2a/ZfdrAn8xkqcG1DykVFT8gLVzGJv3cvduLc624BYv+82eMmM1c6gIIPQZpE
+ lekvBuVdifF6zTvWL61DO3A8uNd2YZSHhmVDCdi5wdp18+AwSOZMnQ9a4/qJceZqoxR+
+ CxefkN6p6sMUZsayfdr9sE+6NMFXvWjts6M5Av9+1HRoO0PudUiN/FSsC0aE17xZ7POW
+ b4G7WiZ5ZO38C1U20A+R6/kVRNJnet1v2yTMjyQ8F9lm2mAA0f7WbbMWGGrIFcBL+L0G
+ dkzoWmcFOfht4Vg33Fa/sF3/GJeuqqEzQQ/7mu/o4M3E5ZD2NU4Tyi479bPgBpFYNLFV
+ ZL9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=xTb1jwz8SQDmyElm/xtUO1oJ/mtFdgNw0V3dZ43+jcI=;
+ b=mpC1dVmVqk47JLLLXIGOe/DhfcpAkh2hr5C/qn2yXvw/iLDImV/97jRGYobTzma3Dy
+ 7uRnyZKHKl3Y70LvA6w9b5HNeLAYvYIC9zX8wtzSaxTYkR28ujlH703Y1lNM6rRcUwd8
+ wv166pTzUQXMpNy4dwe6v7saaIyUhZaMiv1xKcBmhTyVIqpNAToup+ij8RIRUWyNo6dW
+ gMotIzh1Ss2wu+1hZN/7Oi9o8XuLQSV6BfuHy42speRwCKgnpsI8uPrKt6Di+A2niW6k
+ REWe/221qfNqymvrSV9P6ef6uwOB22sDLp1A9idya2mfucragVa6VN9+4Sfsz9DbupPn
+ cXLw==
+X-Gm-Message-State: AOAM5302rKKqW7w/u2kmphFHPXYg7dzpShFZ58y6XZDMov79cFjotlAh
+ LgdepxyzklvS3XD9ZKWcXVE=
+X-Google-Smtp-Source: ABdhPJzxMao7xjcNhb1A+vwGPbTmLoQFLDt6Kwn60PwROSaODT9ewxHmJoIKKgSazfaEXrK1mJJDXQ==
+X-Received: by 2002:a17:906:3544:: with SMTP id
+ s4mr9395502eja.73.1617285523296; 
+ Thu, 01 Apr 2021 06:58:43 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.126.134])
+ by smtp.gmail.com with ESMTPSA id hb19sm2803175ejb.11.2021.04.01.06.58.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Apr 2021 06:58:42 -0700 (PDT)
+List-Id: <soc.lore.kernel.org>
+To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] defconfig: mediatek: changes for v5.13
+Message-ID: <70f6a2ae-2a99-6861-e591-9cc71bb174af@gmail.com>
+Date: Thu, 1 Apr 2021 15:58:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_131800_307312_A3AD869C 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20210401_145844_799997_97D41E1B 
+X-CRM114-Status: UNSURE (   9.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,71 +105,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Each patch on this series can be applied independently. They fix broken
-file references.
+Hi Arnd and Olof,
 
-Most of them are due to DT binding renames, but there are also other
-unrelated changes.
+Please have a look at the following changes to defconfig. There is a small merge
+conflict with the IMX branch, but it should be trivial.
 
-This series is based on next-20210401.
+Regards,
+Matthias
+---
+The following changes since commit a38fd8748464831584a19438cbb3082b5a2dab15:
 
-Mauro Carvalho Chehab (32):
-  MAINTAINERS: update adi,ad5758.yaml reference
-  MAINTAINERS: update ste,mcde.yaml reference
-  MAINTAINERS: update brcm,bcm-v3d.yaml reference
-  MAINTAINERS: update fsl,dpaa2-console.yaml reference
-  MAINTAINERS: update st,hts221.yaml reference
-  MAINTAINERS: update dpot-dac.yaml reference
-  MAINTAINERS: update envelope-detector.yaml reference
-  MAINTAINERS: update current-sense-amplifier.yaml reference
-  MAINTAINERS: update current-sense-shunt.yaml reference
-  MAINTAINERS: update voltage-divider.yaml reference
-  MAINTAINERS: update invensense,mpu3050.yaml reference
-  MAINTAINERS: update lego,ev3-battery.yaml reference
-  MAINTAINERS: update marvell,armada-3700-utmi-phy.yaml reference
-  MAINTAINERS: update mtk-sd.yaml reference
-  MAINTAINERS: update atmel,sama5d2-adc.yaml reference
-  MAINTAINERS: update pni,rm3100.yaml reference
-  MAINTAINERS: update renesas,rcar-gyroadc.yaml reference
-  MAINTAINERS: update st,lsm6dsx.yaml reference
-  MAINTAINERS: update st,vl53l0x.yaml reference
-  MAINTAINERS: update snps,dw-axi-dmac.yaml reference
-  MAINTAINERS: update ti,dac7612.yaml reference
-  MAINTAINERS: update nxp,imx8-jpeg.yaml reference
-  MAINTAINERS: update ovti,ov2680.yaml reference
-  MAINTAINERS: update imi,rdacm2x-gmsl.yaml reference
-  dt-bindings:iio:dac: update microchip,mcp4725.yaml reference
-  dt-bindings: iommu: mediatek: update mediatek,iommu.yaml references
-  dt-bindings: i3c: update i3c.yaml references
-  dt-bindings: power: update battery.yaml reference
-  docs: dt: update writing-schema.rst references
-  Documentation: net: dsa: update configuration.rst reference
-  Documentation: update sysfs-platform_profile.rst reference
-  pinctrl: update pin-control.rst references
+  Linux 5.12-rc2 (2021-03-05 17:33:41 -0800)
 
- .../display/mediatek/mediatek,disp.txt        |  2 +-
- .../bindings/i3c/cdns,i3c-master.txt          |  6 +--
- .../bindings/i3c/snps,dw-i3c-master.txt       |  6 +--
- .../bindings/media/mediatek-jpeg-decoder.txt  |  2 +-
- .../bindings/media/mediatek-jpeg-encoder.txt  |  2 +-
- .../bindings/media/mediatek-mdp.txt           |  2 +-
- .../bindings/media/mediatek-vcodec.txt        |  2 +-
- .../bindings/submitting-patches.rst           |  2 +-
- Documentation/filesystems/cifs/cifsd.rst      |  2 +-
- Documentation/power/power_supply_class.rst    |  2 +-
- MAINTAINERS                                   | 48 +++++++++----------
- include/linux/device.h                        |  2 +-
- include/linux/iio/dac/mcp4725.h               |  2 +-
- include/linux/mfd/madera/pdata.h              |  2 +-
- include/linux/pinctrl/pinconf-generic.h       |  2 +-
- include/linux/platform_profile.h              |  2 +-
- scripts/checkpatch.pl                         |  2 +-
- 17 files changed, 44 insertions(+), 44 deletions(-)
+are available in the Git repository at:
 
--- 
-2.30.2
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.12-next-defconfig
 
+for you to fetch changes up to f6dc45610879f88b1c37c07c8342f6764bcd55f4:
 
+  arm64: defconfig: Enable options to support panel display for Mediatek
+Chromebooks (2021-03-31 12:12:59 +0200)
+
+----------------------------------------------------------------
+Enable option to boot MediaTek based chromebook (mt8173 and mt8183) with defconfig
+
+----------------------------------------------------------------
+Enric Balletbo i Serra (2):
+      arm64: defconfig: Allow mt8173-based boards to boot from usb
+      arm64: defconfig: Enable options to support panel display for Mediatek
+Chromebooks
+
+ arch/arm64/configs/defconfig | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 _______________________________________________
 Linux-mediatek mailing list
