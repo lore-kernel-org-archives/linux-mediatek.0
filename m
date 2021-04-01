@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27A7AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:28:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2250AC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:32:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B396E610A5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:28:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B396E610A5
+	by mail.kernel.org (Postfix) with ESMTPS id AFDF9610C7
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 09:32:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AFDF9610C7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,69 +24,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lz14GtIyrYMapGbU/cXUGmIR0HvvUmmDzRJs8dfcVoA=; b=nuft94R4pHjM+o6ZZhqLjJnn/
-	f0D7ubgNvH6KCck58A+G1sE9RPOPF30x4IQ57zu/vfAmtpk+/kqQ7z24XSS9icxMgHB2yH0YVE7mj
-	8MuZrQOP9Ne7x8UWChkF08Qhv/nww5WKALiESwraGxAjBxa5CMy1LrlQFGD9oG1h/oMxQK8y6tzJx
-	4o0f5v5LtPslSK36pQ0IXklF4b0Vrwx01a6f4/Gz6F4mBr3oNNtyTA8kTpm3rCE45Bk/AXkGpdzYC
-	8YQx0LxkC6gi1uc6G2oxx28O0o6NXHcAOaat4LkTjkZ2euYrqdjSkd86BR4GFwAVoZR7t2yTXVUH2
-	xhOYQ0vmQ==;
+	 bh=IIgrIBSM7lsDMlsribeIkh/Nvd3G7lP9wa7SLU9NxLE=; b=qRKAHh07QuA0tu5SrgNh2et1J
+	W+qeEBpBJvQThQ1NCn4mp468kQPbyqWNDOtOdi/Br1vIsiHk473bK3BlgGP+LD6oS6UtuZVTi8Q1d
+	sXGew68aUZ/3xIhF1+i48nI3hL0vE9JB6giSiCE8F4w2BwWQdSoMIBpfEqLoM4f6Zp410RtVcpamY
+	D1M0jHKjSOE9XhtfS5YEJBUcZdjaH98i8HpqkndWSMS99lDT3k2+4ECEvDCa1B/GdAHpWJdfwNOAc
+	zBwVPHGbfiTUbpR0daQ8DBAe5KX325C97iBpy6PTs//weNia5NDkQ+cJwPKKofdAuyS+QDPpcwb6E
+	DDeHvkm2g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRtd1-00938r-O5; Thu, 01 Apr 2021 09:28:39 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1lRtgp-0093w5-W3; Thu, 01 Apr 2021 09:32:36 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRtcw-00937y-Nh; Thu, 01 Apr 2021 09:28:37 +0000
-Received: by mail-wm1-x332.google.com with SMTP id
- y124-20020a1c32820000b029010c93864955so2479812wmy.5; 
- Thu, 01 Apr 2021 02:28:34 -0700 (PDT)
+ id 1lRtgk-0093tw-1z; Thu, 01 Apr 2021 09:32:34 +0000
+Received: by mail-wr1-x431.google.com with SMTP id j7so1133581wrd.1;
+ Thu, 01 Apr 2021 02:32:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2rkOw5Dx1TINvXjRB+SiB7YZDBdwJ+e4cTjDJv7XxLk=;
- b=Kkl/wVVY/CWcsAXD8YzUvZ68ov4zSNmqyjBFYGm67pyuuH9d4pT0MdHIOSQXv0pHOO
- ZRjZSOfiv73ln2HcUdwL39tBVytU/0N5KciME3fJJM3bC5ltdbjVPA8F+Bem8c01jOvd
- u94DIHU4ghDz9rEibwoTCPdGJYGxmNwjGkN2LJPeh+u8+wjhUO33ZQKhtqAkpINDJu6r
- uPdMbRj4AEjNaRTMpGWT1eCrnHaV94TiAJK2NORYOg7LoFgLNY5VBvMbsKyP0g7JFYAB
- LmgfQEFlHVEJNw7aYhyQndV9U4KCa7B8PZCspL7QKmjyYCTfggiJ4+vHv9pY5/rBdCMJ
- ADHQ==
+ bh=m7OrC6vj4Ru9A4xIjIuXg2uQCm2nhCLjuUpyEt8tkp4=;
+ b=doV/YsPMjbZWumawG16LSTXvaXbvbIqQJK+85kUXXkHAqlMAZVew+GoeoiCXhoOmKf
+ Wf0mAtYzU4Hd+RfB7y3yWvTvV6tKv/loIBWkpybrAz8acGW7g9XeULyIVtXWkMvcPHaS
+ 0gg1yLhXMCoP/YDMI2rzRqzpFHVsL5KTSQT4EYYoa7F0CHUkQsbvLUibPXIbz9+ABzBb
+ Y/UPM+OeR6eJbHwglanaIz6WeaKJuk8rvBXbSiBXDBZMfTjFw+Cr3vzvKJY7adgj+T17
+ 5nGyl5G2Qddu698VpYLhBVb1HyQPtrSJuTEHLjVsDsOnPEKq/4C8xFJ4QyxIQdbAUt5M
+ zoYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=2rkOw5Dx1TINvXjRB+SiB7YZDBdwJ+e4cTjDJv7XxLk=;
- b=tbDTH18ufXBB0T+ACW/cEl5JuLARjsUiz5H0kB3KktDJL6vF1wDVmdBIAGFfQVzLru
- qNssNifSo+ifioEgnvM7gFMdLjVIs6pgJIV9ffK6a46wHeJkVaRQQIHO5mi9WVTXQWen
- EwdUFFODmI/cIA6PrIj7dHlGOyfihv5TDlfD7OyE6qIXG+0k5uYFOz+BLn6Gby1eA8J+
- GHAH4PNdfkQtE4O0gHfIu0Cke0+B4oGUlHus7hBQTE7kkCTq9qk5JCCoLCaSg/83TFIs
- w+OT1t+yFBSGnG0rYzgY9FrRMOxj0hSQoUhh2vyRLEX8YfLciBBwv2C4PE/ZoCGGMidD
- v77A==
-X-Gm-Message-State: AOAM531TLAUpUt3dJCJlY14TZxhoXNHEmITLOLx+SYEzN2VmKj2AgaGj
- S59993ILHpwPfjXXNiuMEeoQtPhmw61X+A==
-X-Google-Smtp-Source: ABdhPJzPCsFAwf7ujt/gAxK0yWMBleixfbHx3YsvhYfgFARTDwByt+1NnYOjdpBffXveTask0jwj9w==
-X-Received: by 2002:a7b:c2fa:: with SMTP id e26mr7003419wmk.102.1617269314149; 
- Thu, 01 Apr 2021 02:28:34 -0700 (PDT)
+ bh=m7OrC6vj4Ru9A4xIjIuXg2uQCm2nhCLjuUpyEt8tkp4=;
+ b=rZ6J+YEogZMF6l24P0fucv1iHyxokBKDiQ4Rn6KPvPSfogIIUJyuk4sy2apJQMBYQY
+ fpbb6MQ9rFTXeP0rfwvEi4PXsYng7KDIgVKDXnySLf+zH3+08igLGlULgHEhkifaptHM
+ biOe2dF/xWcp7n1JM6rnvwCxO9W2fOXmv0rbRfoknga2Aqkz7PEOGL7EfLJcXuY51bjH
+ FTGHU/4zPDJ/TlL6u56zV5SJ/HmJOPnvs1k+B9HA68E79RyDd7Ysv75Qm0Dib1x/YkHS
+ LQz0hg92vemw36il/KHjoDu5fRmF4m+YWZRxM5WAqW1/ZZ4J4I2CB1fz+iCkQ8idwHTR
+ oqeA==
+X-Gm-Message-State: AOAM531P43689pDymBx4Xg8kzMSy3udpdElSGxZQyoDdBoJl/v0ERku6
+ 0cTSB61sxhOmn6uKaTATiruUndPZ5rIRUw==
+X-Google-Smtp-Source: ABdhPJxHaKLGzIFoJky4dcK5r6tLtS/ecHY7Cyikt6QgG4Ix4m0ncb/XjwK//QYxBmD90AOX4tGT3Q==
+X-Received: by 2002:a5d:56c9:: with SMTP id m9mr8280936wrw.422.1617269549475; 
+ Thu, 01 Apr 2021 02:32:29 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id p6sm8831324wru.2.2021.04.01.02.28.33
+ by smtp.gmail.com with ESMTPSA id u17sm8760176wrw.51.2021.04.01.02.32.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Apr 2021 02:28:33 -0700 (PDT)
-Subject: Re: [PATCH -next] soc: mediatek: Make symbol 'mtk_mutex_driver' static
-To: Wei Yongjun <weiyongjun1@huawei.com>, Hulk Robot <hulkci@huawei.com>,
- CK Hu <ck.hu@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-References: <20210210075656.1096251-1-weiyongjun1@huawei.com>
+ Thu, 01 Apr 2021 02:32:29 -0700 (PDT)
+Subject: Re: [PATCH 1/2] dt-bindings: arm64: dts: mediatek: Add mt8183-pumpkin
+ board
+To: Fabien Parent <fparent@baylibre.com>, Rob Herring <robh+dt@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: mkorpershoek@baylibre.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20210217205945.830006-1-fparent@baylibre.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <c22c6ae9-9bfc-570b-7b02-ec9c24963b89@gmail.com>
-Date: Thu, 1 Apr 2021 11:28:32 +0200
+Message-ID: <86a6d071-007d-5a20-bd59-ba09054b9fc1@gmail.com>
+Date: Thu, 1 Apr 2021 11:32:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <20210210075656.1096251-1-weiyongjun1@huawei.com>
+In-Reply-To: <20210217205945.830006-1-fparent@baylibre.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_102834_871425_117534AB 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20210401_103231_492386_A7B161E3 
+X-CRM114-Status: GOOD (  15.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,39 +106,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/02/2021 08:56, Wei Yongjun wrote:
-> The sparse tool complains as follows:
+On 17/02/2021 21:59, Fabien Parent wrote:
+> Add binding documentation for the MT8183 Pumpkin board.
 > 
-> drivers/soc/mediatek/mtk-mutex.c:464:24: warning:
->  symbol 'mtk_mutex_driver' was not declared. Should it be static?
-> 
-> This symbol is not used outside of mtk-mutex.c, so this
-> commit marks it static.
-> 
-> Reported-by: Hulk Robot <hulkci@huawei.com>
-> Signed-off-by: Wei Yongjun <weiyongjun1@huawei.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
-Applied to v5.12-next/soc
+Whole series applied to v5.12-next/dts64
 
 Thanks!
 
 > ---
->  drivers/soc/mediatek/mtk-mutex.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-> index f531b119da7a..3a315a62e783 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -461,7 +461,7 @@ static const struct of_device_id mutex_driver_dt_match[] = {
->  };
->  MODULE_DEVICE_TABLE(of, mutex_driver_dt_match);
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> index 53f0d4e3ea98..8f5a625cfb3d 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -123,6 +123,10 @@ properties:
+>            - const: google,krane-sku176
+>            - const: google,krane
+>            - const: mediatek,mt8183
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8183-pumpkin
+> +          - const: mediatek,mt8183
 >  
-> -struct platform_driver mtk_mutex_driver = {
-> +static struct platform_driver mtk_mutex_driver = {
->  	.probe		= mtk_mutex_probe,
->  	.remove		= mtk_mutex_remove,
->  	.driver		= {
+>  additionalProperties: true
+>  
 > 
 
 _______________________________________________
