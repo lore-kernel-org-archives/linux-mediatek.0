@@ -2,96 +2,80 @@ Return-Path: <SRS0=qM2e=I6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C385C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 14:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA6F9C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 14:16:14 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04A3C61355
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 14:14:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 04A3C61355
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 684EE61356
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 14:16:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 684EE61356
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:Cc:To:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dPpHBeLrg/3ePhVDMXB0Ffl/q76Ohz4OEry38xp1miU=; b=qOTKOHyl/Vu0LQsv0M8Y7IjzYf
-	WT1VYSeiR23bodCKZaXvvfosDwu8m11PC59o33+eHx8yW/zTinQ6nkbSeVtVj1zvA+ROp1nYmqNCy
-	T0O5NIs0uWi2M4k6QoznOjWhA7X2/Jso9/wf2NzB5ZKAsmxj61ys0sCxE9nKcKqkcCtKMhSs2VXh8
-	ukKyC4es0A2Uk/+Q4fGHsnX172oejaoB414JhjLLUErw/RMAm1XRnD7Mjr/3m79U5rsS3EXIFLbiZ
-	+K0LHq5mVa6QGl+EKL1ai1jJSs+MC6I8cPTx33K0hIQ27oI3+uF1N9j4nfIJFNSdYvt4y73zzoqli
-	jp3ZUcaw==;
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Bms0xEB/vrqj669xZJL41eb0ipecbL85ODG557ErfVE=; b=NdGFt4K1UvcZDt6BKqUmKRn6Z
+	v6tBr49WG9IXxV+PNi5ISBoeIdPVFs4hNaSjifOAKgecg99j61Iw4M1sunK0vjKWwwQN4cf5BDZTI
+	vaxGUB1hN7abCAgphINHVDQ4kif3e/6CC9+XFlXhGbo7Q02RE/2jIsAj98RWu1hsbPrfcF56Cjb6i
+	D42dOHJq34irhEhwcCk7TRmXy1Pzs4p1//osHUPNiPx8zwLBucFbrIhBqa+LOcSaFT9jmDuJUWW1D
+	KrDJjAmjppZxns9xcLy219bnXJWxqM8WANlsnriXECxBLIYuHSk8N28k/58wJ7rImu5bXvwHGQMfA
+	97lOvs58w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRy5j-009o8U-3R; Thu, 01 Apr 2021 14:14:35 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1lRy76-009oKk-Ol; Thu, 01 Apr 2021 14:16:00 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRy5X-009o2P-Tq; Thu, 01 Apr 2021 14:14:26 +0000
-Received: by mail-ed1-x535.google.com with SMTP id e7so2116981edu.10;
- Thu, 01 Apr 2021 07:14:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=2iPiER7+Mw9G4stxjC5v9//X5TggjLttwCChYXF8TQU=;
- b=jSM2vOBJ5p0I5wFDQI/bRmeDf0iK3BaX458RHLIENtVgxKnla4c1YHGcHkeMKo4xMs
- tYNaSRRAIuqAPLfl6c8DXpNZw3AcJ6tGhCHy3GdyqZvlFDfH0ZeEoS4OxFOHxAZrqq/V
- eNxiu/oo7ppLEtGJaDZlHsY+/Wt3p0XhitTxprnPuEM+5RGLQ9oX5iT+bFq1nyklgffK
- 2VDoKV+hkVHgj2MckFJ7LXWA2SN65Pv/EbmAIZlRKIpzO+7Xn/hCsS/VC/As1+uH5lYG
- w3e3sVdTbtSbxuQKcub6i+QnplSFrXuXSOxZptO6rM4F8vin5ddjZO1fjqI3VVKY8SjS
- URTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=2iPiER7+Mw9G4stxjC5v9//X5TggjLttwCChYXF8TQU=;
- b=HotjK0mJFLguafpjv31sgNFzn/sH4wa0Su2ulnzDRjmsJip3ty+HUwGd9HGtEdLbcs
- NPjsdILO+e3e0aHvhZjjxflnIA7e3nJA4aCo8qSKnGugCusxCMHemDg8coWFMSEFKc8J
- Ro1uYsgqqhiueRIO7OGT+K+AJwzWcdMVxUg1t0hhHChn1jx1XlItI4i3OuVm4Pf3tDAq
- /1I0yniX9PBJsyYDwdjA13T2HkuM9tA4ZKaSX+KxMN1vP1GDpnqJ1/+msTezkIm1KszS
- TzsyTe+J0YGJqW4VMFUQ0NU3OogoQRfJ72ryD93mU/LKm8321G29MYwcdtEgkkEcXLPN
- bRPQ==
-X-Gm-Message-State: AOAM531loiYNk7h8Li3ux8bOoIbTeamIJeiBIpb6rDmCRuMSb/aj4MHo
- 4siJSfgHDyHB5ZygMLVXsIQ=
-X-Google-Smtp-Source: ABdhPJyudkq44tnD6PFdxEt8sWOEruY+6c9i6HalMBGJleKVpLrfgUXQ8RA395TNZkdfJ40Z4Ctdlg==
-X-Received: by 2002:aa7:da46:: with SMTP id w6mr10348146eds.40.1617286462366; 
- Thu, 01 Apr 2021 07:14:22 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id x9sm3629842edv.22.2021.04.01.07.14.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Apr 2021 07:14:21 -0700 (PDT)
-List-Id: <soc.lore.kernel.org>
-To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, Nicolas Boichat
- <drinkcat@chromium.org>, Ryan Wu <Yz.Wu@mediatek.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>,
- Michael Kao <michael.kao@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: dts: mediatek: changes for v5.13
-Message-ID: <d1121630-5778-0955-fac7-f921174defe7@gmail.com>
-Date: Thu, 1 Apr 2021 16:14:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ id 1lRy72-009oJX-6b
+ for linux-mediatek@lists.infradead.org; Thu, 01 Apr 2021 14:15:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E00E261357
+ for <linux-mediatek@lists.infradead.org>; Thu,  1 Apr 2021 14:15:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1617286553;
+ bh=pmDesK41LONSTi91JrhFXtlnAIl5KT6c5rqTOesiqVQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=VGrY4kmH8EHHTWyxrg3HcsoR66tE4YXh6S9mePCOdTaFF339+KqpEgYXhf0wXOpps
+ B4QzWM3g3xkRxjzJDVEe96uUqAjIBLZ5tTCEC2Q48OBh0o6zIDveZmFHWJp5aL6AdY
+ tUQHpe7f1aO216OG5hDM+3xRg28LePKijAGaX/xD+0Nb3ARQigDVOIpmIvQMcJfcLE
+ 53HIvikF41lx2C0zoGUeeACL2ZFDEUcAWjOAyVXJ9IAr33ErCZzD4lubqfuXVbpblN
+ ZirOsM4TCo0f35jW90aTokhU1P4OvSL6BUdYzpmKbM/MzzfZCpqirryqP2nVSEYJTz
+ YLcjoQtXBg0Sw==
+Received: by mail-ed1-f50.google.com with SMTP id h13so2145395eds.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 01 Apr 2021 07:15:52 -0700 (PDT)
+X-Gm-Message-State: AOAM530EfXB8vgE8XVw903X1923Fx7HWFeZDIBrAKQEvC4v9t3KWCqwm
+ 2ZxnQ6DexApll6MCvIGjAZzdR/VKO5jaPm7KCw==
+X-Google-Smtp-Source: ABdhPJx/x1Pvir9uz6tNOKEPJelZRcuER41Ie69i0uJGB6GBrIi38rDSfnM6IWWeLRt5oSU65aB9EXkOeJfnHtfghlI=
+X-Received: by 2002:a05:6402:b48:: with SMTP id
+ bx8mr10450006edb.162.1617286551463; 
+ Thu, 01 Apr 2021 07:15:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Language: en-US
+References: <20210330110902.14178-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20210330110902.14178-1-dafna.hirschfeld@collabora.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 1 Apr 2021 22:15:40 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9n-VVPPEfLag7uVuPG+iM_NWccWgbyC3Eo9+DGYyz=Gw@mail.gmail.com>
+Message-ID: <CAAOTY_9n-VVPPEfLag7uVuPG+iM_NWccWgbyC3Eo9+DGYyz=Gw@mail.gmail.com>
+Subject: Re: [PATCH v3 0/2] drm/mediatek: Don't support hdmi connector creation
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Collabora Kernel ML <kernel@collabora.com>, dafna3@gmail.com, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_151424_186174_7A249F54 
-X-CRM114-Status: GOOD (  16.97  )
+X-CRM114-CacheID: sfid-20210401_151556_449397_7C07D793 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,150 +87,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Olof and Arnd,
-
-Please have a look at the updates below. As you can see we have quite some
-activity on the MT8183 based devices, with a whole bunch of new Chromebook
-bindings added this round. Apart from that the a bit older MT8173 still gets
-improvement, which is nice to see.
-
-Regards,
-Matthias
----
-
-The following changes since commit a38fd8748464831584a19438cbb3082b5a2dab15:
-
-  Linux 5.12-rc2 (2021-03-05 17:33:41 -0800)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.12-next-dts64
-
-for you to fetch changes up to a7dceafed43a4a610d340da3703653cca2c50c1d:
-
-  arm64: dts: mediatek: fix reset GPIO level on pumpkin (2021-04-01 11:39:10 +0200)
-
-----------------------------------------------------------------
-- add trivial bindings for MT8195
-- fix dtbs_check warnings
-- add pinmux for build-in Wifi on MT7622 evaluation borad
-
-MT8183:
-- fix USB wakeup register
-- add regulator for EVB board
-- add registers to mailbox consumers
-- add thermal zone and trip points for CPU cooling
-- Add new boards:
-  * ASUS Chromebook Flip CM3
-  * ASUS Chromebook Detachable CM3
-  * Acer Chromebook Spin 311
-  * Lenovo 10e Chromebook Tablet
-
-MT8173:
-- fix PHY property in DSI
-- fix power-domain for PMIC wrapper
-
-Pumkin:
-- add MT8516 based board
-- add MT8183 based board
-- fix reset pin for MT8167 and MT8516 based boards
-
-----------------------------------------------------------------
-Chunfeng Yun (8):
-      arm64: dts: mt8183: update wakeup register offset
-      arm64: dts: mt8173: fix property typo of 'phys' in dsi node
-      arm64: dts: mediatek: mt8173: fix dtbs_check warning
-      arm64: dts: mediatek: mt2712: harmonize node names
-      arm64: dts: mediatek: mt8516: harmonize node names and compatibles
-      arm64: dts: mediatek: mt7622: harmonize node names and compatibles
-      arm64: dts: mediatek: mt8183: fix dtbs_check warning
-      arm64: dts: mt8173: fix wrong power-domain phandle of pmic
-
-Fabien Parent (4):
-      dt-bindings: arm64: dts: mediatek: Add mt8516-pumpkin board
-      dt-bindings: arm64: dts: mediatek: Add mt8183-pumpkin board
-      arm64: dts: mt8183: add mt8183 pumpkin board
-      arm64: dts: mediatek: fix reset GPIO level on pumpkin
-
-Hsin-Yi Wang (9):
-      arm64: dts: mediatek: mt8183: evb: Add domain supply for mfg
-      dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-jacuzzi-damu
-      dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-jacuzzi-juniper
-      arm64: dts: mt8183: Add kukui-jacuzzi-damu board
-      arm64: dts: mt8183: Add kukui-jacuzzi-juniper board
-      arm64: dts: mt8183: Add gce client reg for display subcomponents
-      dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-kakadu
-      dt-bindings: arm64: dts: mediatek: Add mt8183-kukui-kodama
-      arm64: dts: mt8183: Add kukui kodama board
-
-Matthias Kaehlcke (1):
-      arm64: dts: mt8183: Configure CPU cooling
-
-Nicolas Boichat (1):
-      arm64: dts: mt8183: Add kukui kakadu board
-
-Ryan Wu (1):
-      dt-bindings: nvmem: mediatek: add support for MediaTek mt8192 SoC
-
-Ryder Lee (1):
-      arm64: dts: mt7622: add ePA/eLNA pinmux for built-in WiFi
-
-Seiya Wang (3):
-      dt-bindings: timer: Add compatible for Mediatek MT8195
-      dt-bindings: serial: Add compatible for Mediatek MT8195
-      dt-bindings: arm: Add compatible for Mediatek MT8195
-
-michael.kao (1):
-      arm64: dts: mt8183: add thermal zone node
-
- .../devicetree/bindings/arm/mediatek.yaml          |  36 ++
- .../devicetree/bindings/nvmem/mtk-efuse.txt        |   1 +
- .../devicetree/bindings/serial/mtk-uart.txt        |   1 +
- .../bindings/timer/mediatek,mtk-timer.txt          |   1 +
- arch/arm64/boot/dts/mediatek/Makefile              |   8 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi          |   8 +-
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts       |  12 +
- arch/arm64/boot/dts/mediatek/mt7622.dtsi           |   9 +-
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts        |   6 +-
- arch/arm64/boot/dts/mediatek/mt8173.dtsi           |  15 +-
- arch/arm64/boot/dts/mediatek/mt8183-evb.dts        |   4 +
- .../dts/mediatek/mt8183-kukui-jacuzzi-damu.dts     |  31 ++
- .../mt8183-kukui-jacuzzi-juniper-sku16.dts         |  13 +
- .../dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi |  27 ++
- .../boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi    | 474 +++++++++++++++++++++
- .../boot/dts/mediatek/mt8183-kukui-kakadu.dts      |  13 +
- .../boot/dts/mediatek/mt8183-kukui-kakadu.dtsi     | 378 ++++++++++++++++
- .../dts/mediatek/mt8183-kukui-kodama-sku16.dts     |  21 +
- .../dts/mediatek/mt8183-kukui-kodama-sku272.dts    |  21 +
- .../dts/mediatek/mt8183-kukui-kodama-sku288.dts    |  21 +
- .../dts/mediatek/mt8183-kukui-kodama-sku32.dts     |  21 +
- .../boot/dts/mediatek/mt8183-kukui-kodama.dtsi     | 343 +++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts    | 378 ++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi           | 158 ++++++-
- arch/arm64/boot/dts/mediatek/mt8516.dtsi           |   9 +-
- arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi   |   3 +-
- 26 files changed, 1982 insertions(+), 30 deletions(-)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
- create mode 100644
-arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
- create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIERhZm5hOgoKRGFmbmEgSGlyc2NoZmVsZCA8ZGFmbmEuaGlyc2NoZmVsZEBjb2xsYWJvcmEu
+Y29tPiDmlrwgMjAyMeW5tDPmnIgzMOaXpSDpgLHkuowg5LiL5Y2INzowOeWvq+mBk++8mgo+Cj4g
+Y29tbWl0IGYwMTE5NTE0ODk2NyAoImRybS9tZWRpYXRlazogbXRrX2RwaTogQ3JlYXRlIGNvbm5l
+Y3RvciBmb3IgYnJpZGdlcyIpCj4gYnJva2UgdGhlIGRpc3BsYXkgc3VwcG9ydCBmb3IgZWxtIGRl
+dmljZSBzaW5jZSBtdGtfZHBpIGNhbGxzCj4gZHJtX2JyaWRnZV9hdHRhY2ggd2l0aCB0aGUgZmxh
+ZyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IKPiB3aGlsZSBtdGtfaGRtaSBkb2VzIG5v
+dCB5ZXQgc3VwcG9ydCB0aGlzIGZsYWcuCgpGb3IgdGhpcyBzZXJpZXMsIGFwcGxpZWQgdG8gbWVk
+aWF0ZWstZHJtLW5leHQgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9w
+dWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVk
+aWF0ZWstZHJtLW5leHQKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gVGhlc2UgdGhyZWUgcGF0
+Y2hlcyBmaXggdGhhdCBieSBhZGRpbmcgc3VwcG9ydCBmb3IgRFJNX0JSSURHRV9BVFRBQ0hfTk9f
+Q09OTkVDVE9SCj4gaW4gbXRrX2hkbWkgYnJpZGdlIGF0dGFjaG1lbnQuCj4KPiBjaGFuZ2VzIHNp
+bmNlIHYyOgo+IDEuIHNxdWFzaCBwYXRjaCAzIHdpdGggcGF0Y2ggMiB0byBub3QgYnJlYWsgYmlz
+ZWN0aW9uCj4gMi4gcmVtb3ZlIHRoZSBmdW50aW9uIG10a19oZG1pX2dldF9lZGlkIGFuZCBpbmxp
+bmUgaXRzIGNvZGUgaW4gbXRrX2hkbWlfYnJpZGdlX2dldF9lZGlkCj4gMy4gc21hbGwgYWxpZ21l
+bnQKPgo+IGNoYW5nZXMgc2luY2UgdjE6Cj4gMS4gc3BsaXQgdGhlIGZpcnN0IHBhdGNoIC0gbm93
+IHRoZSBmaXJzdCBwYXRjaCBvbmx5IG1vdmVzIHRoZSBicmlkZ2Ugb3BzIHRvIHRoZSBhdG9taWMg
+QVBJCj4gd2hpbGUgdGhlIHJlcGxhY2VtZW50IG9mIHRoZSBmaWVsZCAnY29ubicgd2l0aCB0aGUg
+ZmllbGQgJypjdXJyX2Nvbm4nIGlzIGRvbmUgaW4gYSBuZXcgdGhpcmQgcGF0Y2guCj4gMi4gaW4g
+dGhlIGZ1bmN0aW9uICdnZXRfZWxkJyB1c2UgdGhlIGN1cnJlbnQgY29ubiBvbmx5IGlmICdlbmFi
+bGVkID0gdHJ1ZScuCj4KPiBEYWZuYSBIaXJzY2hmZWxkICgyKToKPiAgIGRybS9tZWRpYXRlazog
+U3dpdGNoIHRoZSBoZG1pIGJyaWRnZSBvcHMgdG8gdGhlIGF0b21pYyB2ZXJzaW9ucwo+ICAgZHJt
+L21lZGlhdGVrOiBEb24ndCBzdXBwb3J0IGhkbWkgY29ubmVjdG9yIGNyZWF0aW9uCj4KPiAgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19oZG1pLmMgfCAxNzQgKysrKysrKysrKysrLS0tLS0t
+LS0tLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNzEgaW5zZXJ0aW9ucygrKSwgMTAzIGRlbGV0
+aW9ucygtKQo+Cj4gLS0KPiAyLjE3LjEKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
