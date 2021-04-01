@@ -2,99 +2,83 @@ Return-Path: <SRS0=qM2e=I6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D71FAC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85CA0C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:18:33 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C67B61004
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:07:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C67B61004
+	by mail.kernel.org (Postfix) with ESMTPS id 31D176112D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Apr 2021 12:18:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31D176112D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
-	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kHSQiMEzl6L/4b4SyNU7K7hyanE8uDnuyPyuqpgPTW8=; b=M2KOJjeLIbnz+09D/ZdsXZhBR
-	FHkFh6zkG+yvkq5KbwcCpg8THlJDA1l9WCAJFUm7oFitwcFJ1qASl5QmBC3nWCwUf60eNiIomRKXy
-	nwiCueH0XIXtFlTZ0tUQSagORIRvhvnhTldT9UzryAL0tOM/F3lFFe1Md2JXxI3dQdQQsNVkpue4n
-	u17I+RpDmxtxybvnSgvVGkVMDjOYlryLWvzFGdUmnBojWLWNl09pT6f6B0s0HfgYumA8YMLTs+b+M
-	Tsm/p/i92n55QYt8mzAyvgFPMAD9lmFep9pM9CHcimKQBlW8bjC0b/lnBDL4hV7z31bkRcJV6DjzH
-	P73zNngGQ==;
+	 bh=/fYgGbWqIURtPwWSX4tbvU1ixlduR03/mwlRMeoliGk=; b=fwC9F7AxYyFvTbeL+mcTzeHze
+	DZiyUROONVI2FcD3XTfhWJBhh7rHz6PEiyHeKiGPsMgTXg+LjSc8hPaQBo6qtIa+FThIJprm5RoPv
+	W88bwjDhW7KAoUIRfJFQ3Z0o9Dni2KxjXW4OokqdR9Py9u+7epdfewJnAvqleOITJ8lXHlkOMlIU5
+	uOzW915UhqU6W0H9toW7ga4fQO9fycnbAgehlSupE3QhT7FObtUcfLT3+4l14SO4Hra1Pxf8G34cw
+	0FaELG5DiZkL4rk4Eg8WVQCXW9pTAohh6ir7IslezSQQDhbDuMZ6s0CEXiLbim/Y+qF6/rttmaM2x
+	Dy7gsZ01w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lRw6n-009Ygj-Tf; Thu, 01 Apr 2021 12:07:33 +0000
+	id 1lRwHE-009ZEI-UE; Thu, 01 Apr 2021 12:18:20 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lRw6e-009Yg8-8N; Thu, 01 Apr 2021 12:07:26 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7C9D0610E9;
- Thu,  1 Apr 2021 12:07:21 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lRw6Z-0056AE-Bb; Thu, 01 Apr 2021 13:07:19 +0100
-Date: Thu, 01 Apr 2021 13:07:18 +0100
-Message-ID: <87v996p5s9.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Michal Simek <michal.simek@xilinx.com>,
- "K. Y. Srinivasan" <kys@microsoft.com>, linux-pci@vger.kernel.org,
- Thierry Reding <thierry.reding@gmail.com>, linux-tegra@vger.kernel.org,
- Rob Herring <robh@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Bharat Kumar Gogada <bharatku@xilinx.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Thierry Reding <treding@nvidia.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>, Wei Liu <wei.liu@kernel.org>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
- Haiyang Zhang <haiyangz@microsoft.com>, linux-hyperv@vger.kernel.org,
- Will Deacon <will@kernel.org>, kernel-team@android.com,
- Michael Kelley <mikelley@microsoft.com>, linux-kernel@vger.kernel.org,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-renesas-soc@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 00/14] PCI/MSI: Getting rid of msi_controller,
- and other cleanups
-In-Reply-To: <161727636757.32506.11592578621890085687.b4-ty@arm.com>
-References: <20210330151145.997953-1-maz@kernel.org>
- <161727636757.32506.11592578621890085687.b4-ty@arm.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: lorenzo.pieralisi@arm.com, bhelgaas@google.com,
- frank-w@public-files.de, michal.simek@xilinx.com, kys@microsoft.com,
- linux-pci@vger.kernel.org, thierry.reding@gmail.com,
- linux-tegra@vger.kernel.org, robh@kernel.org, jonathanh@nvidia.com,
- bharatku@xilinx.com, paul.walmsley@sifive.com, treding@nvidia.com,
- marek.vasut+renesas@gmail.com, wei.liu@kernel.org, sthemmin@microsoft.com,
- ryder.lee@mediatek.com, linux-mediatek@lists.infradead.org,
- haiyangz@microsoft.com, linux-hyperv@vger.kernel.org, will@kernel.org,
- kernel-team@android.com, mikelley@microsoft.com, linux-kernel@vger.kernel.org,
- yoshihiro.shimoda.uh@renesas.com, linux-renesas-soc@vger.kernel.org,
- tglx@linutronix.de, linux-arm-kernel@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1lRwGu-009ZAl-H2; Thu, 01 Apr 2021 12:18:03 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D152561222;
+ Thu,  1 Apr 2021 12:17:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1617279477;
+ bh=0AGwy6Tl68VsWBu68wDgwZ5CzpVE/d5ORNGmhEDws2g=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=j9+6sIJKmL+XOmxe06aUOTq1k9rbWG1ko3gLDYYloZawQ+uPzb6HyLO0axwBtY/Ml
+ jEkUoJ6zUkX7bndJh8cFEKmiybNNqXDM2/N51fsLAcRv8KSFdfsOq6t2Lqw1c+7owx
+ JlUeuTdafy2N/TkneDHlThe1fAG/peHgxaKuZ5irClbtzrgNvwG8Cu6cjpJDu8Pyqw
+ VQJfPHNNFDlpcQ/t/ynxrYUdvt5ngXcTEQpbbm6CBM3/TsOtiSwbO6j9L3XnbMHcrh
+ 42PaDgiDzIgzIOab1guPYd/uAMB7PqTriadjZY+MZAe3kyHidi2bMjqQMX6tN1Jeq0
+ 7oNNkgvReRKmw==
+Received: by mail.kernel.org with local (Exim 4.94)
+ (envelope-from <mchehab@kernel.org>)
+ id 1lRwGo-001c3X-GL; Thu, 01 Apr 2021 14:17:54 +0200
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "Jonathan Corbet" <corbet@lwn.net>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Bin Liu <bin.liu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Rick Chang <rick.chang@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, Tomasz Figa <tfiga@chromium.org>,
+ Will Deacon <will@kernel.org>, Yong Wu <yong.wu@mediatek.com>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH 26/32] dt-bindings: iommu: mediatek: update mediatek,
+ iommu.yaml references
+Date: Thu,  1 Apr 2021 14:17:46 +0200
+Message-Id: <f1a798e2d5ffa829d0324333a1af91f1b3a63dad.1617279356.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1617279355.git.mchehab+huawei@kernel.org>
+References: <cover.1617279355.git.mchehab+huawei@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210401_130724_671349_90DDC7E0 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20210401_131800_933757_84C6000B 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,30 +95,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 01 Apr 2021 12:27:42 +0100,
-Lorenzo Pieralisi <lorenzo.pieralisi@arm.com> wrote:
-> 
-> On Tue, 30 Mar 2021 16:11:31 +0100, Marc Zyngier wrote:
-> > This is a respin of the series described at [1].
-> > 
-> > * From v2 [2]:
-> >   - Fixed the Xilinx driver, thanks to Bharat for testing it
-> >   - Dropped the no_msi attribute, and solely rely on msi_domain, which
-> >     has the same effect for the only platform that was using it.
-> >   - Fixed compilation on architectures that do not select the generic
-> >     MSI support
-> > 
-> > [...]
-> 
-> I have applied it to pci/msi and should be moved into -next shortly
-> for further testing/visibility, thanks a lot for putting it together.
+Changeset bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+renamed: Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
+to: Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml.
 
-Thanks Lorenzo.
+Update the cross-references accordingly.
 
-	M.
+Fixes: bca28426805d ("dt-bindings: iommu: mediatek: Convert IOMMU to DT schema")
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,disp.txt      | 2 +-
+ .../devicetree/bindings/media/mediatek-jpeg-decoder.txt         | 2 +-
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.txt         | 2 +-
+ Documentation/devicetree/bindings/media/mediatek-mdp.txt        | 2 +-
+ Documentation/devicetree/bindings/media/mediatek-vcodec.txt     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+index 93b160df3eec..fbb59c9ddda6 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+@@ -64,7 +64,7 @@ Required properties (DMA function blocks):
+ - larb: Should contain a phandle pointing to the local arbiter device as defined
+   in Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+ - iommus: Should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
+ 
+ Optional properties (RDMA function blocks):
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+index cf60c5acc0e4..39c1028b2dfb 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+@@ -19,7 +19,7 @@ Required properties:
+   Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+   for details.
+ - iommus: should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+index acfb50375b8a..5e53c6ab52d0 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+@@ -17,7 +17,7 @@ Required properties:
+   Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+   for details.
+ - iommus: should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
+ 
+ Example:
+diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+index f4798d04e925..caa24943da33 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
+@@ -25,7 +25,7 @@ Required properties (DMA function blocks, child node):
+         "mediatek,mt8173-mdp-wdma"
+         "mediatek,mt8173-mdp-wrot"
+ - iommus: should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
+ - mediatek,larb: must contain the local arbiters in the current Socs, see
+   Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+index 8217424fd4bd..a83ebc1a1c7f 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -18,7 +18,7 @@ Required properties:
+   "univpll_d2", "clk_cci400_sel", "vdec_sel", "vdecpll", "vencpll",
+   "venc_lt_sel", "vdec_bus_clk_src".
+ - iommus : should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
++  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
+ One of the two following nodes:
+ - mediatek,vpu : the node of the video processor unit, if using VPU.
 -- 
-Without deviation from the norm, progress is not possible.
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
