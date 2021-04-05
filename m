@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7132EC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Apr 2021 20:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3025C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Apr 2021 20:09:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 17A5D613BE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Apr 2021 20:09:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17A5D613BE
+	by mail.kernel.org (Postfix) with ESMTPS id 2F551613BE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Apr 2021 20:09:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F551613BE
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,67 +23,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ECTYNCFub0PSZFDx3o83l58utuT6ubs5E1oOgPxCUPA=; b=klHI2uaYI9yCV7dAn3XNzVlrZ
-	FZ6XJzrd0wJ1RLcwXbuHsLZNE/GtRbhO9841eoW5mADRNJ7eH43LJk9EaHEpLqAWjSRqUwZhk7Hdh
-	oqI0uW+sn409RUz4O8rK8863hi+h4oWQShVl2C/1BFUPh1L79NsfL0JIBlNIf3RpVQRj2UwVopXOV
-	a4aQ5psYuHZ2DlVtbwdDbaflnZugxATiLAEejRUtYlleqYDhfV58QKVgISwyngnCWzq1YKfpEz0PG
-	lvPRcXufKpnHs/a5bzE4vL95aChlLY3L6bp/Bkups4FjevHunFXlCWFngcv27RJaA6FDsy0/6Y+uu
-	RF7nxlHqg==;
+	 bh=uVi7SmkS9n/B4z+ODwddh6AJESmVSZRSDBfpCky+iVU=; b=SgTI0fr94NCDEbXJaprAO83ZA
+	LwN6I3uEDiMZSobMfHUQ4ej/PffVJF+H082UwUn31o5/AHytAxNcPJVbjmCgjzrPexZu9s4vBomFL
+	UVk5iRlMRB6duo6YrTUE6fDf6uO0r3culZu0kUkBCaRbkTnLZFDYOdOneaXSTd2OlDNnX2wVkBUK4
+	jbbYZ41rgGlP1mAJIIAfNEXlhfoawxhzh+9WALl0YnJgjPrQZRwOFSQPF5PeiykHk0MUtICEtsEgX
+	HaeDPp0XPRQrv4ugk99Ob1x/zT3OOyWc8vXrqMGwVtZe09Du/sr08XCSRm1RZpnXsRS7VQK9sEBlN
+	+uCGaLXeg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTVX5-000YHF-V3; Mon, 05 Apr 2021 20:09:12 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1lTVXI-000YLd-0p; Mon, 05 Apr 2021 20:09:24 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTVWQ-000Y34-7Z
- for linux-mediatek@lists.infradead.org; Mon, 05 Apr 2021 20:08:32 +0000
-Received: by mail-wr1-x429.google.com with SMTP id v11so11880472wro.7
- for <linux-mediatek@lists.infradead.org>; Mon, 05 Apr 2021 13:08:29 -0700 (PDT)
+ id 1lTVWR-000Y3f-Ua
+ for linux-mediatek@lists.infradead.org; Mon, 05 Apr 2021 20:08:35 +0000
+Received: by mail-wm1-x334.google.com with SMTP id
+ g18-20020a7bc4d20000b0290116042cfdd8so3009541wmk.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 05 Apr 2021 13:08:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ufQs2y0GBwgw7m0MhJTgtFAbHPutYUxFjCpTMhooQfg=;
- b=MRq1WUxPFgF+Cs5EgYUOsD3R2vpiujpm+kGD9l34xo2KTiFNld0V9y1x5GNvacaVaG
- n9kl8wT6n0xT3lTK9SVx5XeEF9GK2WxYf5bLTuMJtSjpPVsJDHq7iiG1eoezrkeHiZ0r
- dg7sI2ADz9yVJ0oJhTk/DM28PboLllHecZTVQb/jI3USzDiITW+XYI295LuZd/6C37PS
- QcKse72YV/07gLbWCVAlwQ3ThVQOjWotlP9OcB8Jnc4UOiycKQxLRXt0nRWMXVze2hHw
- moPEZ9BUSkXcwpoTYpbnQyncKhkK2KtB7Ga82MR6kbEyXlNXq1r6ooeX+/S/0Peez6VE
- XFZg==
+ bh=zBI59S0esvtyRJVOZTHC86ExpUhwst9TBLwdi/kDYn8=;
+ b=tiGffN4digjOme3ZvvrFri/s9NDzwTOWr1qHeG7BhTyV469zeXcoPoWnAOWuxGsYAi
+ Az5xcWk7WCcViBojAQEXw5P/uuykrC+FsLOcTwv9ubhKl9S3/hJRgTCCENfz+BrqWfC8
+ ba6I1hvGtwuyC8L6h+lyGyzCHxZ/QLnrrzO4Zglshtj0IhwYd2Kxug+1/FTNIYOfL3VW
+ SBUcPjQIKzojr6sSAiwT8Li40JANAE3kv9jDylR8RBujP55GTbjMeQ6Y78a9pvYvtWZN
+ cacolBfsSb0/bf5zJ145x7bvf2NLcro51gQMdpFj38C9jhg4E3+wNxMbsAD0xenGezdf
+ be3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ufQs2y0GBwgw7m0MhJTgtFAbHPutYUxFjCpTMhooQfg=;
- b=Hxu68nM/l2k5vjeh4cLK34Cd/R/wjsaLnBEKdJYFEVw0dQMragEHVo0com20z0WMSX
- Zj1S9TLB48LtS0vv6Mi7wkCLVGahMRCOTSt877oK2M5+bbbChikPoafbqykS0b4MBpsW
- RBZcvzEsXUIXocZu7m7FT74uQU96IhmPxRgHoRUGfjc8RVIqXbku3JQaS2YFZV5/rzu+
- d04S9+nFS2tQs/w+1PfrBqaj5zxl2V5ahQ5P39YaeeIQn0EP9SVmxUY62xosQEpcBAjn
- WmUIw8v42bplxKBhSQtqLdMbcqI0pBlg8/Ga5yMoO++uPNMb9iiSMGnN7DD8wQNeCdv5
- Ugkw==
-X-Gm-Message-State: AOAM5322Q6ld8UkKX2K5da+em2l8A0PRMYwZle/xxCJmNtk7mpofDyik
- 6vUk9W+KHZzeeaxOlpqCN5OjNA==
-X-Google-Smtp-Source: ABdhPJzEXHOtw1Doi7xuzKLw96hEFfLJr5a0TsJ0YqgqlCvQ2W5ad0fVOww5uP6iFptbJD0eje7BFQ==
-X-Received: by 2002:a5d:558b:: with SMTP id i11mr30210250wrv.176.1617653309236; 
- Mon, 05 Apr 2021 13:08:29 -0700 (PDT)
+ bh=zBI59S0esvtyRJVOZTHC86ExpUhwst9TBLwdi/kDYn8=;
+ b=a4K5W+MMNCpIrWi8ypk8uy0P21b7JKoszqfo/g8NWRPVWeSg9eFZvyitmrhbju0uoB
+ mwF/yln9C3nOrT5oZo2oaPaIU/b1wQM8sxX+P83idSY0o6dZva95RIZ2Q/aXaIYB7BQU
+ 3NVrOP/wE8/LySsNqHdYtb4qa2EdaQDockPXnquapKwIbO6JcP1tIfBS7VX1yKiaJhrA
+ QA/vLWR5OEscP2/LkFC1wrSX39RvJpeNLaXgROPgHDE2i0qr7tRvLINCiJcYknNYhrJK
+ BzpIrhTY7ssj1xnm/O8A+n1Y84W6t1OUupwk3efR/1ijYBJA3P7+NszEwwBXiMFKHCgj
+ 4T6A==
+X-Gm-Message-State: AOAM531GuV78Ei3fNVqrNR829bPnyJbF3wDr0ns854da2wh2Ti0kOjXs
+ EgeWlw7YftCnigJ+dteHb5GAgw==
+X-Google-Smtp-Source: ABdhPJyfy0YtdT4isJjzVUiZ5iElNhki0/lybno+DvYH9leDZPbn06qlgznbrXa6NBC610NsrAp3HA==
+X-Received: by 2002:a05:600c:228d:: with SMTP id
+ 13mr689696wmf.49.1617653310820; 
+ Mon, 05 Apr 2021 13:08:30 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id v185sm609420wmb.25.2021.04.05.13.08.28
+ by smtp.gmail.com with ESMTPSA id v185sm609420wmb.25.2021.04.05.13.08.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Apr 2021 13:08:28 -0700 (PDT)
+ Mon, 05 Apr 2021 13:08:30 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 4/5] arm64: dts: mediatek: mt8167: add iommu node
-Date: Mon,  5 Apr 2021 22:08:20 +0200
-Message-Id: <20210405200821.2203458-4-fparent@baylibre.com>
+Subject: [PATCH 5/5] arm64: dts: mediatek: mt8167: add some DRM nodes
+Date: Mon,  5 Apr 2021 22:08:21 +0200
+Message-Id: <20210405200821.2203458-5-fparent@baylibre.com>
 X-Mailer: git-send-email 2.31.0
 In-Reply-To: <20210405200821.2203458-1-fparent@baylibre.com>
 References: <20210405200821.2203458-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210405_210830_451125_762F9161 
-X-CRM114-Status: UNSURE (   9.40  )
+X-CRM114-CacheID: sfid-20210405_210833_237109_942504FA 
+X-CRM114-Status: UNSURE (   9.50  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,32 +103,187 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add node for the MT8167's IOMMU.
+Add all the DRM nodes required to get DSI to work on MT8167 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8167.dtsi | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi | 149 +++++++++++++++++++++++
+ 1 file changed, 149 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index 9b352031c5f6..3ba03ca749b2 100644
+index 3ba03ca749b2..8ca92d6b203a 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -173,5 +173,14 @@ larb2: larb@16010000 {
- 			clock-names = "apb", "smi";
- 			power-domains = <&spm MT8167_POWER_DOMAIN_VDEC>;
- 		};
+@@ -16,6 +16,19 @@
+ / {
+ 	compatible = "mediatek,mt8167";
+ 
++	aliases {
++		aal0 = &aal;
++		ccorr0 = &ccorr;
++		color0 = &color;
++		dither0 = &dither;
++		dsi0 = &dsi;
++		ovl0 = &ovl0;
++		pwm0 = &disp_pwm;
++		rdma0 = &rdma0;
++		rdma1 = &rdma1;
++		wdma0 = &wdma;
++	};
 +
-+		iommu: m4u@10203000 {
-+			cell-index = <0>;
-+			compatible = "mediatek,mt8167-m4u";
-+			reg = <0 0x10203000 0 0x1000>;
-+			mediatek,larbs = <&larb0 &larb1 &larb2>;
-+			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_LOW>;
-+			#iommu-cells = <1>;
+ 	soc {
+ 		topckgen: topckgen@10000000 {
+ 			compatible = "mediatek,mt8167-topckgen", "syscon";
+@@ -114,6 +127,13 @@ vdecsys: syscon@16000000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
++		mutex: mutex@14015000 {
++			compatible = "mediatek,mt8167-disp-mutex";
++			reg = <0 0x14015000 0 0x1000>;
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
 +		};
- 	};
- };
++
+ 		pio: pinctrl@1000b000 {
+ 			compatible = "mediatek,mt8167-pinctrl";
+ 			reg = <0 0x1000b000 0 0x1000>;
+@@ -126,6 +146,135 @@ pio: pinctrl@1000b000 {
+ 			interrupts = <GIC_SPI 134 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
++		rdma1: rdma1@1400a000 {
++			compatible = "mediatek,mt8167-disp-rdma",
++				     "mediatek,mt2701-disp-rdma";
++			reg = <0 0x1400a000 0 0x1000>;
++			interrupts = <GIC_SPI 163 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
++			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
++			mediatek,larb = <&larb0>;
++		};
++
++		disp_pwm: disp_pwm@1100f000 {
++			compatible = "mediatek,mt8167-disp-pwm",
++				     "mediatek,mt8173-disp-pwn";
++			reg = <0 0x1100f000 0 0x1000>;
++			#pwm-cells = <2>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&topckgen CLK_TOP_PWM_SEL>,
++				 <&topckgen CLK_TOP_PWM_MM>,
++				  <&mmsys CLK_MM_DISP_PWM_26M>,
++				  <&mmsys CLK_MM_DISP_PWM_MM>;
++			clock-names = "pwm_sel",
++				      "pwm_mm",
++				      "main",
++				      "mm";
++			status = "disabled";
++		};
++
++		dsi: dsi@14012000 {
++			compatible = "mediatek,mt8167-dsi",
++				     "mediatek,mt2701-dsi";
++			reg = <0 0x14012000 0 0x1000>;
++			interrupts = <GIC_SPI 171 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DSI_ENGINE>,
++				 <&mmsys CLK_MM_DSI_DIGITAL>,
++				 <&mipi_tx>;
++			clock-names = "engine", "digital", "hs";
++			phys = <&mipi_tx>;
++			phy-names = "dphy";
++			status = "disabled";
++		};
++
++		mipi_tx: mipi_dphy@14018000 {
++			compatible = "mediatek,mt8167-mipi-tx",
++				     "mediatek,mt2701-mipi-tx";
++			reg = <0 0x14018000 0 0x90>;
++			clocks = <&topckgen CLK_TOP_MIPI_26M_DBG>;
++			clock-output-names = "mipi_tx0_pll";
++			#clock-cells = <0>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++
++		ovl0: ovl0@14007000 {
++			compatible = "mediatek,mt8167-disp-ovl",
++				     "mediatek,mt8173-disp-ovl";
++			reg = <0 0x14007000 0 0x1000>;
++			interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_OVL0>;
++			iommus = <&iommu M4U_PORT_DISP_OVL0>;
++			mediatek,larb = <&larb0>;
++		};
++
++		rdma0: rdma0@14009000 {
++			compatible = "mediatek,mt8167-disp-rdma",
++				     "mediatek,mt2701-disp-rdma";
++			reg = <0 0x14009000 0 0x1000>;
++			interrupts = <GIC_SPI 162 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
++			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
++			mediatek,larb = <&larb0>;
++		};
++
++		color: color@1400c000 {
++			compatible = "mediatek,mt8167-disp-color",
++				     "mediatek,mt8173-disp-color";
++			reg = <0 0x1400c000 0 0x1000>;
++			interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_COLOR>;
++		};
++
++		ccorr: ccorr@1400d000 {
++			compatible = "mediatek,mt8167-disp-ccorr",
++				     "mediatek,mt8183-disp-ccorr";
++			reg = <0 0x1400d000 0 0x1000>;
++			interrupts = <GIC_SPI 166 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_CCORR>;
++		};
++
++		aal: aal@1400e000 {
++			compatible = "mediatek,mt8167-disp-aal";
++			reg = <0 0x1400e000 0 0x1000>;
++			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_AAL>;
++		};
++
++		gamma: gamma@1400f000 {
++			compatible = "mediatek,mt8167-disp-gamma",
++				     "mediatek,mt8173-disp-gamma";
++			reg = <0 0x1400f000 0 0x1000>;
++			interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_GAMMA>;
++		};
++
++		dither: dither@14010000 {
++			compatible = "mediatek,mt8167-disp-dither";
++			reg = <0 0x14010000 0 0x1000>;
++			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_DITHER>;
++		};
++
++		wdma: wdma0@1400b000 {
++			compatible = "mediatek,mt8167-disp-wdma";
++			reg = <0 0x1400b000 0 0x1000>;
++			interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_LOW>;
++			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
++			clocks = <&mmsys CLK_MM_DISP_WDMA>;
++			iommus = <&iommu M4U_PORT_DISP_WDMA0>;
++			mediatek,larb = <&larb0>;
++		};
++
+ 		mmsys: mmsys@14000000 {
+ 			compatible = "mediatek,mt8167-mmsys", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
 -- 
 2.31.0
 
