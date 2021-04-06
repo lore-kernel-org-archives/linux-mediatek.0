@@ -7,83 +7,83 @@ X-Spam-Status: No, score=-21.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BA78AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 11:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4042FC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 11:46:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68B24613A3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 11:45:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68B24613A3
+	by mail.kernel.org (Postfix) with ESMTPS id 83F5C613B8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 11:46:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83F5C613B8
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NPoCyr45Dl3+L3ZnLsl3cl8YSNhG9/MZ9rrCMlqKe2Q=; b=BjRsCzqdQjsZh7F0QR72IH0QQG
-	NW1tjKWnjPi/VxCe0eFV+fYfWR1naxr/CKCkNspH4jTV/ZXiufwonoz0hXIljj1v8OYhYG1q+ReqY
-	nbAPvCUXHRIzLCiKDh/RBnlHlyuMXjPt1bWTdp/T8fScx5edOguzaoe+O0ZyzuALhUQXh75uS2tF6
-	l0iO43tOjejRxZlAbWbyKyE+hYHenSRxfdHsvmaGero1XAvnbh1E2Ci0g/w0JW/9plmvyswIzlpXO
-	P0p5galI+oS9h8VVIuzqUIGZH1fYXrzfc6kgnBGKNN63VCH1idwqa0KPhV/5ltxvrbih1lW9b9GVH
-	xq8+tDnA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=HzGioIR9TE0sIWHYYPOKPuIiWif3IhrhPGOdNFhdIeY=; b=HXEAHrPcBG2CgQ1ae/3VRqCkm
+	1T/ABaWjXWLNHFEMA6I3QScXRFixnC8wy7Lc2LumrCkBjUCTmzJxilhIx2Qfcdg8dkP9B11DIz7o4
+	ryOlevCkiU8gHGUWRjlZtJtWtpo/OnRMaNkehIRKlIs166toZGQteLi1YOK8UNLMxDayH5TujlIMn
+	5ag3mUBHz+zNylJqZMRdNTqCv3Crq5EuQIW2nimLGvIa72Nk4JEdDuBViiGhOJnHbKih6ZXfjUfDx
+	poKX6k4ojfLh/vCrtfGRYhxHvAPTAm9YAZnVyk83qwVQxmxJFfsG80rKYg80xZctW5/QJDpi3jt3f
+	OEk+RE8bA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTk8W-002Q2O-1T; Tue, 06 Apr 2021 11:44:48 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1lTk9W-002QGP-RE; Tue, 06 Apr 2021 11:45:50 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTk0X-002MvB-UJ
- for linux-mediatek@lists.infradead.org; Tue, 06 Apr 2021 11:36:37 +0000
-Received: by mail-wr1-x433.google.com with SMTP id j18so13841693wra.2
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Apr 2021 04:36:33 -0700 (PDT)
+ id 1lTk0Z-002Mvw-DL
+ for linux-mediatek@lists.infradead.org; Tue, 06 Apr 2021 11:36:40 +0000
+Received: by mail-wr1-x429.google.com with SMTP id x7so13843013wrw.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Apr 2021 04:36:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=H+nH21JCvam+dYUjtR0Eymm99HB3jx355hDeinSGyzQ=;
- b=dfACU2xivv5z+PLTgQvy1TvdJbRUFa6y2RdAyY8l3qghCSlCCf9TrOMUJaX2QbqufE
- UP3Y41nF6bQ23r+Cq2oW0ZRvRrapW8H3tsQ0cMetakyEbdmucJvOouQt2MwdxYVzJPSr
- YAvemBGnWNC9u2IjB73TVWYfwstldzZNfePTi6mFVy+JW4o2MmtjakxnMVNBe3q6x2VJ
- gmH7s56rbHIZYwfK72Nl11sRp3AF8VPkb3rEUIdb+Cx1h/jiaLcWSWy6NHDwuptNLP8X
- 46C+7Kxf6HEtrUGWdQthU6XPYoAbG4YJoC0T7eJPx3jjB7oxvPu+bmAfT6PVzKkLlYrt
- Uyag==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=8P1R0vOoYt+iRLp92hKy4ER47sIrroX6pk17J519zYo=;
+ b=0K2AIi2IQdb5pGIrrn10xuntiCkPk55XqsYL3mys4hDU3VKZhQpfOosx/g3+Klx4uV
+ TFsbFZzrR8pxinBxmTvvH5PxCBheqHQjMHi9EsUm7ljXSQTzDBqOEl2K8B9VOMIoG6lj
+ c4H43xx9TlG4zuUvpaB4K6rISFfpI63gYH71NBXpvFaXobCA4EXYbvM2JvWABLzGfV1D
+ q8Yfk++i/VJaDIDgBMNlZSa/nJcNtV3e3uPG+l+iB5xEKHR6RvvNz3doJxq1j3PBfawo
+ rWGyO1YcBurBAB2RQSR5xgXFuEKiKAlDaczu1vEK2v08g4NxatP2qCkCVmgvyQ5rjEpR
+ c/Sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=H+nH21JCvam+dYUjtR0Eymm99HB3jx355hDeinSGyzQ=;
- b=MKdc3okYWG+0XjZ3eQgSXzcZM/qydg+CRG/rXoAsp8Mibi188+0bMZ5hOSQ0puIveA
- yv4HKKhyz2BNAhi/3kHXROboEyv9Pa347AjCR/QubKUI/eSlEcpfD/K7Yn6mECbaw5X4
- dW9AEuoVAVJPSusrBeE42XZsYgYdW+HW4rej1os0/uJRzFWrZXJdacqCT8fCohQmk+zZ
- v0RBAQF1CvFMTsyvx9agbjXGSuhJjA7mPKBor+sf0qa4TpuxFfitRnM+a5khRRlXkb46
- +pEwLbeu7KClQAwkJtdltlCG+BPP1xnJZ9IEqECd2MlUkOvkLnIqTsoK6NmQqJEZFYCq
- MKgA==
-X-Gm-Message-State: AOAM532kScKRCsWLy+yWiIq5mtPQBpNGs/+qakJ+oYVdoZt6CFGxvHQG
- 2ssFn1QGWFWT3wNlUB93Yn9vVQ==
-X-Google-Smtp-Source: ABdhPJxGxdN0DkHzApkTQUwPHD1Q4xSZfMoMeLq7WWOXS4qDqtTM09jiZ+TK5o3nnGduMSPPFgaAZw==
-X-Received: by 2002:a05:6000:18ab:: with SMTP id
- b11mr34067108wri.403.1617708993266; 
- Tue, 06 Apr 2021 04:36:33 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=8P1R0vOoYt+iRLp92hKy4ER47sIrroX6pk17J519zYo=;
+ b=Yom1WebBfhRNbyQve3DovG7nIraqA/ZqCCMQA6DpPCHyGj2LxeA53Q4CVjFV78CRkQ
+ YDFRAsHSFQvJ4T4TUSH0CWpJ282gUDTJqONpEcAYrgAnHBwtgcSi0rawKkvtGJJHDkVo
+ uhsIaBn+vKdAn3UxT5vSJ9/Q9/iHZor51tRJqLkpSY+YZC/tgR4K3uxaQ28kOZr34ZkE
+ iqtlLTgMqgX5Ix8pUJ4QFYYAbng8Hndjj+ufpbZwtxhZ+rT/0swZKbkBrXVlSgJMeIjX
+ CLE5g8PNTQHZjnDLvWgZ05YcnMWHhSaqgWW8i2srCzL5WI8AuRp78J0eRC0AhzZTZQwM
+ dLTQ==
+X-Gm-Message-State: AOAM532uVY28zytDeFdDpqVA1Du383dlXUedTbJ+6uX33narJV+r9A2H
+ bzXBVvrrZwdSrAFxAtRV6AOz0w==
+X-Google-Smtp-Source: ABdhPJy5ttjZp/FzT2SOjuTcZRTy3ru48FPTj495+Gc5ocBZ/liZRPJ1hrEFxiPl5jG/QXOc+E+91g==
+X-Received: by 2002:adf:fb91:: with SMTP id a17mr34993104wrr.118.1617708994692; 
+ Tue, 06 Apr 2021 04:36:34 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id k3sm11880735wrc.67.2021.04.06.04.36.32
+ by smtp.gmail.com with ESMTPSA id k3sm11880735wrc.67.2021.04.06.04.36.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 04:36:32 -0700 (PDT)
+ Tue, 06 Apr 2021 04:36:34 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/3] arm64: dts: mediatek: mt8167: add larb nodes
-Date: Tue,  6 Apr 2021 13:36:28 +0200
-Message-Id: <20210406113631.2675029-1-fparent@baylibre.com>
+Subject: [PATCH v3 2/3] arm64: dts: mediatek: mt8167: add iommu node
+Date: Tue,  6 Apr 2021 13:36:29 +0200
+Message-Id: <20210406113631.2675029-2-fparent@baylibre.com>
 X-Mailer: git-send-email 2.31.0
+In-Reply-To: <20210406113631.2675029-1-fparent@baylibre.com>
+References: <20210406113631.2675029-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_123634_490302_4686D818 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210406_123636_077800_08BF1B88 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,61 +100,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add larb nodes for MT8167:
-* larb0 is used for display (dsi and hdmi)
-* larb1 is used for camera (csi)
-* larb2 is used for the video hardware decoder
+Add node for the MT8167's IOMMU.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
-
 Note: This series is based on https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/log/?h=v5.12-next/dts64-2
 
 V3:
 	* Removed unicode character in commit summary
 V2:
-	* Removed unneeded mediatek,larb-id property
+	* Remove unneeded cell-index property
 
- arch/arm64/boot/dts/mediatek/mt8167.dtsi | 30 ++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8167.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index 4b951f81db9e..bbddd4b22d3e 100644
+index bbddd4b22d3e..9029051624a6 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -140,5 +140,35 @@ smi_common: smi@14017000 {
+@@ -170,5 +170,13 @@ larb2: larb@16010000 {
  			clock-names = "apb", "smi";
- 			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
+ 			power-domains = <&spm MT8167_POWER_DOMAIN_VDEC>;
  		};
 +
-+		larb0: larb@14016000 {
-+			compatible = "mediatek,mt8167-smi-larb";
-+			reg = <0 0x14016000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&mmsys CLK_MM_SMI_LARB0>,
-+				 <&mmsys CLK_MM_SMI_LARB0>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
-+		};
-+
-+		larb1: larb@15001000 {
-+			compatible = "mediatek,mt8167-smi-larb";
-+			reg = <0 0x15001000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&imgsys CLK_IMG_LARB1_SMI>,
-+				 <&imgsys CLK_IMG_LARB1_SMI>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8167_POWER_DOMAIN_ISP>;
-+		};
-+
-+		larb2: larb@16010000 {
-+			compatible = "mediatek,mt8167-smi-larb";
-+			reg = <0 0x16010000 0 0x1000>;
-+			mediatek,smi = <&smi_common>;
-+			clocks = <&vdecsys CLK_VDEC_CKEN>,
-+				 <&vdecsys CLK_VDEC_LARB1_CKEN>;
-+			clock-names = "apb", "smi";
-+			power-domains = <&spm MT8167_POWER_DOMAIN_VDEC>;
++		iommu: m4u@10203000 {
++			compatible = "mediatek,mt8167-m4u";
++			reg = <0 0x10203000 0 0x1000>;
++			mediatek,larbs = <&larb0 &larb1 &larb2>;
++			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_LOW>;
++			#iommu-cells = <1>;
 +		};
  	};
  };
