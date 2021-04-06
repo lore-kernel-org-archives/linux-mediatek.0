@@ -2,91 +2,66 @@ Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5E36C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 16:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5135C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 17:53:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87100613C2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 16:15:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87100613C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 68A6660FF1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 17:53:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68A6660FF1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OVcgpcexZwQIYIAtIZJ65PqOyHqu7XaEFomEAkmlVnk=; b=WjLb4R8iRD5O2iS+d2fB+PUZT
-	lR/enqjcphR0I0agxGw4Z7FkfIJ+c+EhZ4iaEqy6oUaP9BuMJJRH5DURrxt4xjyRcCk/GOTSfi4iZ
-	xHWNT554UIprMnmp6lljFj+V5ljcB5vXqaISVwxEBbCbOsKK2SEOuJgD0FIuuLAtlCA15ZDKRgV+U
-	kHMh4StJiyZ0KfVa0SOaOpSJrttdNfZN8qaBh4mP9Rw07Vh5AeCo4OiFa4LjBPxfShygf1wH+P2bM
-	AU0cuS8bi4fmVjUE9qPQhhJDiQ2aookWuXE0a1bIk2EHn6ThjdSSWoP7y+gRlexXB0gok0+TH1mZX
-	8XYQAZeBA==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VoAYDdGURxRPJwVnqadRnQqHOw0EwYpa+qacQkAocQ4=; b=Gu7chPO0MOUYabYOCgOKnmxngO
+	neTNv7YmEbCFLtJLb2ORojY0a6dk7lUKA9uq6lGLwlANpsZOHKfSo/6rLYrGZa3xC0cx9lvrcGzY3
+	qq0QsOGWp6ZW8aVmtx4qri2UGAZcS6Gx2ql7wmVHMGxFbmZTcwMGIGIva3mjXC3iIv5gaDixAe9h4
+	t5CBlsz30lqbg2eAXbXIsBkoFU6zOkzOfA7Ob/TN23TbZl2Nvzi8gwu6lFRMdy+GVKx0hl431W+to
+	niTruHFtU3DOo7tpuWv6QsSVKvSJqfbPE9708xabI8zj/w2ZyxOJ0wQN1VIA/Z2BPjUUEB9h4Wmqd
+	1qs9ZdcQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lToLx-002z5p-PM; Tue, 06 Apr 2021 16:14:57 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lTpsw-0039xU-1h; Tue, 06 Apr 2021 17:53:06 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lToLt-002z5E-Np
- for linux-mediatek@lists.infradead.org; Tue, 06 Apr 2021 16:14:55 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1DE34613CB
- for <linux-mediatek@lists.infradead.org>; Tue,  6 Apr 2021 16:14:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1617725692;
- bh=e7fZVz6b0FMgjgCkbnNmNXBn1MD/C6gNDZ3usE0y5hc=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=USE73gN/6PJf5bTwmAe+aEqN6RlKtxqQvoAKsF4cnQbuDuqs74aFV4L67qwrB1B1f
- ASAuseMeo2vKHBrzGPD5ZkjbM2PZKOgQpY5IdRvPAlgU6nHf253ygstru7Mn1kiE5u
- sUtwZxrU2QzHAcL6oaxTFfijDRsnFie0Lz8q1+efl0E+feU+vxKqM3+SHecqAXcS83
- dhDlDZUi/LxctuCNKHqqD49sBmCYAw4LkrS+WWpRGld39qSWcgzUtk196LKQc5etVQ
- PXsKhshbW02RyTa8jaoBIiQByJBgvRJcZ+nPQwDpvtC+tvBvJEIwOEhL45ssbdlo/a
- xD1V7eSe6r45w==
-Received: by mail-ej1-f42.google.com with SMTP id ap14so22918114ejc.0
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Apr 2021 09:14:52 -0700 (PDT)
-X-Gm-Message-State: AOAM531+c56SlvCYJ1AtkhawGAEO3K2eRNcM0zZGY2lTXH4Z4ioqP5f7
- PDBdyxeWryuK9wU+gMZy2ZFecQPffTg28xzhFA==
-X-Google-Smtp-Source: ABdhPJxus3vaJlBolyIDnwHcY8HUfh+bhu44dUc1lwfkvNdASWzEwWAgbEIKh7zaUEUIwYwhnk1eltD52lV6wsnPcD0=
-X-Received: by 2002:a17:906:490e:: with SMTP id
- b14mr6498315ejq.303.1617725690674; 
- Tue, 06 Apr 2021 09:14:50 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210406141819.1025864-1-dqfext@gmail.com>
- <20210406141819.1025864-2-dqfext@gmail.com>
- <CAAOTY_8snSTcguhyB9PJBWydqNaWZL3V4zXiYULVp5n48fN24w@mail.gmail.com>
- <YGyGFOrXwEsqCW/z@lunn.ch>
-In-Reply-To: <YGyGFOrXwEsqCW/z@lunn.ch>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Wed, 7 Apr 2021 00:14:39 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9feP7bBFJFVBWzNbnAK7xZQFLZJ=viFFncyS55JghP9A@mail.gmail.com>
-Message-ID: <CAAOTY_9feP7bBFJFVBWzNbnAK7xZQFLZJ=viFFncyS55JghP9A@mail.gmail.com>
-Subject: Re: [RFC net-next 1/4] net: phy: add MediaTek PHY driver
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, DENG Qingfang <dqfext@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>,
- Florian Fainelli <f.fainelli@gmail.com>, 
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
- Landen Chao <Landen.Chao@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>, 
- Vivien Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-staging@lists.linux.dev, 
- DTML <devicetree@vger.kernel.org>, netdev <netdev@vger.kernel.org>, 
- Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>, 
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
+ id 1lTpsk-0039vL-57; Tue, 06 Apr 2021 17:52:56 +0000
+IronPort-SDR: PmDl00jSoJbqRsustapc991IGg+KzllORWlxLyzbsm8GsWRKsC3L1fUU6USK7ueNPaMRG3OJ6g
+ W0HmuMX7a36JrI5pyqk94aJ8wx2jIVl9Q0qc9g1N/1VMoeJcsEODpPugdxElMufyrPbWklj0O7
+ DjufTBZ+G1CJtk7DYvVlganlD3T/QkSmdL5i79yXuJKUUlxZ/9rX3IDWrJbfGrDsXE5u8zxEr0
+ dGW9/BL0agFGHkz4r0xobUa1xZ3OfL719abAp04A0WkjRTbPLhXiEfuCF31l2geOmE1W+5FwWS
+ lyY=
+X-IronPort-AV: E=Sophos;i="5.82,201,1613462400"; d="scan'208";a="29742115"
+Received: from unknown (HELO ironmsg-SD-alpha.qualcomm.com) ([10.53.140.30])
+ by labrats.qualcomm.com with ESMTP; 06 Apr 2021 10:52:46 -0700
+X-QCInternal: smtphost
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg-SD-alpha.qualcomm.com with ESMTP; 06 Apr 2021 10:52:46 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
+ id 25D9D210FD; Tue,  6 Apr 2021 10:52:46 -0700 (PDT)
+From: Asutosh Das <asutoshd@codeaurora.org>
+To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: Asutosh Das <asutoshd@codeaurora.org>, linux-arm-msm@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v15 0/2] Enable power management for ufs wlun 
+Date: Tue,  6 Apr 2021 10:52:41 -0700
+Message-Id: <cover.1617731442.git.asutoshd@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_171454_158304_62307CDF 
-X-CRM114-Status: GOOD (  21.32  )
+X-CRM114-CacheID: sfid-20210406_185254_599890_9061DEA5 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,42 +73,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-QW5kcmV3IEx1bm4gPGFuZHJld0BsdW5uLmNoPiDmlrwgMjAyMeW5tDTmnIg35pelIOmAseS4iSDk
-uIrljYgxMjowMuWvq+mBk++8mgo+Cj4gT24gVHVlLCBBcHIgMDYsIDIwMjEgYXQgMTE6NDc6MDhQ
-TSArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPiA+IEhpLCBRaW5nZmFuZzoKPiA+Cj4gPiBE
-RU5HIFFpbmdmYW5nIDxkcWZleHRAZ21haWwuY29tPiDmlrwgMjAyMeW5tDTmnIg25pelIOmAseS6
-jCDkuIvljYgxMDoxOeWvq+mBk++8mgo+ID4gPgo+ID4gPiBBZGQgc3VwcG9ydCBmb3IgTWVkaWFU
-ZWsgUEhZcyBmb3VuZCBpbiBNVDc1MzAgYW5kIE1UNzUzMSBzd2l0Y2hlcy4KPiA+ID4gVGhlIGlu
-aXRpYWxpemF0aW9uIHByb2NlZHVyZSBpcyBmcm9tIHRoZSB2ZW5kb3IgZHJpdmVyLCBidXQgZHVl
-IHRvIGxhY2sKPiA+ID4gb2YgZG9jdW1lbnRhdGlvbiwgdGhlIGZ1bmN0aW9uIG9mIHNvbWUgcmVn
-aXN0ZXIgdmFsdWVzIHJlbWFpbnMgdW5rbm93bi4KPiA+ID4KPiA+ID4gU2lnbmVkLW9mZi1ieTog
-REVORyBRaW5nZmFuZyA8ZHFmZXh0QGdtYWlsLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJz
-L25ldC9waHkvS2NvbmZpZyAgICB8ICAgNSArKwo+ID4gPiAgZHJpdmVycy9uZXQvcGh5L01ha2Vm
-aWxlICAgfCAgIDEgKwo+ID4gPiAgZHJpdmVycy9uZXQvcGh5L21lZGlhdGVrLmMgfCAxMDkgKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ID4gPiAgMyBmaWxlcyBjaGFuZ2Vk
-LCAxMTUgaW5zZXJ0aW9ucygrKQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbmV0
-L3BoeS9tZWRpYXRlay5jCj4gPiA+Cj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9waHkv
-S2NvbmZpZyBiL2RyaXZlcnMvbmV0L3BoeS9LY29uZmlnCj4gPiA+IGluZGV4IGE2MTViMzY2MGIw
-NS4uZWRkODU4Y2VjOWVjIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL25ldC9waHkvS2NvbmZp
-Zwo+ID4gPiArKysgYi9kcml2ZXJzL25ldC9waHkvS2NvbmZpZwo+ID4gPiBAQCAtMjA3LDYgKzIw
-NywxMSBAQCBjb25maWcgTUFSVkVMTF84OFgyMjIyX1BIWQo+ID4gPiAgICAgICAgICAgU3VwcG9y
-dCBmb3IgdGhlIE1hcnZlbGwgODhYMjIyMiBEdWFsLXBvcnQgTXVsdGktc3BlZWQgRXRoZXJuZXQK
-PiA+ID4gICAgICAgICAgIFRyYW5zY2VpdmVyLgo+ID4gPgo+ID4gPiArY29uZmlnIE1FRElBVEVL
-X1BIWQo+ID4KPiA+IFRoZXJlIGFyZSBtYW55IE1lZGlhdGVrIHBoeSBkcml2ZXJzIGluIFsxXSwg
-c28gdXNlIGEgc3BlY2lmaWMgbmFtZS4KPgo+IFRob3NlIGFyZSBnZW5lcmljIFBIWSBkcml2ZXJz
-LCB3aGVyZSBhcyB0aGlzIHBhdGNoIGlzIGFkZCBhIFBIWQo+IGRyaXZlci4gVGhlIG5hbWluZyB1
-c2VkIGluIHRoaXMgcGF0Y2ggaXMgY29uc2lzdGVudCB3aXRoIG90aGVyIFBIWQo+IGRyaXZlcnMu
-IFNvIGknbSBoYXBweSB3aXRoIHRoaXMgcGF0Y2ggaW4gdGhpcyByZXNwZWN0Lgo+Cj4gUEhZIGRy
-aXZlcnMgaGF2ZSBiZWVuIGFyb3VuZCBhIGxvdCBsb25nZXIgdGhhbiBnZW5lcmljIFBIWSBkcml2
-ZXJzLiBTbwo+IGkgd291bGQgYWN0dWFsbHkgc2F5IHRoZSBnZW5lcmljIFBIWSBkcml2ZXIgbmFt
-aW5nIHNob3VsZCBtYWtlIGl0Cj4gY2xlYXIgdGhleSBhcmUgZ2VuZXJpYyBQSFlzLCBub3QgUEhZ
-cy4KPgoKT0ssIHNvIGp1c3QgaWdub3JlIG15IGNvbW1lbnQuCgo+IEJ1dCBsZXRzIG5vdCBiaWtl
-IHNoZWQgYWJvdXQgdGhpcyB0b28gbXVjaC4KPgo+ICAgICAgIEFuZHJldwoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+This patch attempts to fix a deadlock in ufs while sending SSU.
+Recently, blk_queue_enter() added a check to not process requests if the
+queue is suspended. That leads to a resume of the associated device which
+is suspended. In ufs, that device is ufs device wlun and it's parent is
+ufs_hba. This resume tries to resume ufs device wlun which in turn tries
+to resume ufs_hba, which is already in the process of suspending, thus
+causing a deadlock.
+
+This patch takes care of:
+* Suspending the ufs device lun only after all other luns are suspended
+* Sending SSU during ufs device wlun suspend
+* Clearing uac for rpmb and ufs device wlun
+* Not sending commands to the device during host suspend
+
+v14 -> v15:
+- Rebased on 5.13/scsi-staging
+
+v13 -> v14:
+- Addressed Adrian's comments
+  * Rebased it on top of scsi-next
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Resume the device in ufshcd_remove()
+  * Unregister ufs_rpmb_wlun before ufs_dev_wlun
+  * hba->shutting_down moved to ufshcd_wl_shutdown()
+
+v12 -> v13:
+- Addressed Adrian's comments
+  * Paired pm_runtime_get_noresume() with pm_runtime_put()
+  * no rpm_autosuspend for ufs device wlun
+  * Moved runtime-pm init functionality to ufshcd_wl_probe()
+- Addressed Bart's comments
+  * Expanded abbrevs in commit message
+
+v11 -> v12:
+- Addressed Adrian's comments
+  * Fixed ahit for Mediatek driver
+  * Fixed error handling in ufshcd_core_init()
+  * Tested this patch and the issue is still seen.
+
+v10 -> v11:
+- Fixed supplier suspending before consumer race
+- Addressed Adrian's comments
+  * Added proper resume/suspend cb to ufshcd_auto_hibern8_update()
+  * Cosmetic changes to ufshcd-pci.c
+  * Cleaned up ufshcd_system_suspend()
+  * Added ufshcd_debugfs_eh_exit to ufshcd_core_init()
+
+v9 -> v10:
+- Addressed Adrian's comments
+  * Moved suspend/resume vops to __ufshcd_wl_[suspend/resume]()
+  * Added correct resume in ufs_bsg
+
+v8 -> v9:
+- Addressed Adrian's comments
+  * Moved link transition to __ufshcd_wl_[suspend/resume]()
+  * Fixed the other minor comments
+
+v7 -> v8:
+- Addressed Adrian's comments
+  * Removed separate autosuspend delay for ufs-device lun
+  * Fixed the ee handler getting scheduled during pm
+  * Always runtime resume in suspend_prepare()
+  * Added CONFIG_PM_SLEEP where needed
+  
+v6 -> v7:
+  * Resume the ufs device before shutting it down
+
+v5 -> v6:
+- Addressed Adrian's comments
+  * Added complete() cb
+  * Added suspend_prepare() and complete() to all drivers
+  * Moved suspend_prepare() and complete() to ufshcd
+  * .poweroff() uses ufhcd_wl_poweroff()
+  * Removed several forward declarations
+  * Moved scsi_register_driver() to ufshcd_core_init()
+
+v4 -> v5:
+- Addressed Adrian's comments
+  * Used the rpmb driver contributed by Adrian
+  * Runtime-resume the ufs device during suspend to honor spm-lvl
+  * Unregister the scsi_driver in ufshcd_remove()
+  * Currently shutdown() puts the ufs device to power-down mode
+    so, just removed ufshcd_pci_poweroff()
+  * Quiesce the scsi device during shutdown instead of remove
+
+v3 RFC -> v4:
+- Addressed Bart's comments
+  * Except that I didn't get any checkpatch failures
+- Addressed Avri's comments
+- Addressed Adrian's comments
+  * Added a check for deepsleep power mode
+  * Removed a couple of forward declarations
+  * Didn't separate the scsi drivers because in rpmb case it just sends uac
+    in resume and it seemed pretty neat to me.
+- Added sysfs changes to resume the devices before accessing
+
+Asutosh Das (2):
+  scsi: ufs: Enable power management for wlun
+  ufs: sysfs: Resume the proper scsi device
+
+ drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
+ drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
+ drivers/scsi/ufs/ufs-debugfs.c     |   2 +-
+ drivers/scsi/ufs/ufs-debugfs.h     |   2 +-
+ drivers/scsi/ufs/ufs-exynos.c      |   2 +
+ drivers/scsi/ufs/ufs-hisi.c        |   2 +
+ drivers/scsi/ufs/ufs-mediatek.c    |  12 +-
+ drivers/scsi/ufs/ufs-qcom.c        |   2 +
+ drivers/scsi/ufs/ufs-sysfs.c       |  30 +-
+ drivers/scsi/ufs/ufs_bsg.c         |   6 +-
+ drivers/scsi/ufs/ufshcd-pci.c      |  36 +--
+ drivers/scsi/ufs/ufshcd.c          | 636 ++++++++++++++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h          |   6 +
+ include/trace/events/ufs.h         |  20 ++
+ 14 files changed, 519 insertions(+), 241 deletions(-)
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
