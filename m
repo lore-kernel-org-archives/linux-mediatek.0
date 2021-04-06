@@ -2,62 +2,135 @@ Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1B12C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 19:49:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 692C9C43611
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7358B613CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 19:49:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7358B613CC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	by mail.kernel.org (Postfix) with ESMTPS id AAB34613D2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAB34613D2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ExoXaDZBCIdHEpJgXra4Dh5QgtLJrBOjEJQMu4kk69g=; b=TW0M36V9pxJZiPQTzS1GgE35k
-	VYv01JGvbWH3M9tlImBFXX1/LAHwInpFqI5slo598YBYexGIFqvhqz14F7tx7kU5iDMVY2adENq1S
-	y0MryiHXNsoSTq89fw7DCyB+AxOLJVH/RMVDPfwc0Yt1XUPlWgL92mGsEDL62CmBinNFN6Xf7Vr3b
-	Ue8tMLkg7akZjwrVYBemq2nRXtI74E476pc3ubuqeWNSKTHaL0Miqcs9gM1aIVVH7tTGoz+dohMV/
-	G1kCxzRDnudzjkwITUd7ImjrCLKy4vQMnQj7NiWZNRQuGRNi/C9NLFuf+DGpD/qtkhLqsnZcf7eBO
-	cevGWJq4Q==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dBoKesyP5zb3YffNr6dgD2CxS+X7IkgCKCth9MZGSNE=; b=eC64XdGUIOgigBgnDBVXtkmdkL
+	KlRhAHAZySeRr9y7ywnKQm7fxK3RGiTXLR9069AhP+W+KsqX+ZnBs4sZINALCCZFpQex8vr2RG9Y0
+	/OKdkFWxZkedBF2thi54ujFtmszGJZKVfTzshtvHbM/klRMXE/Iw2jtgYE/lS0jzR+9iFabFCx340
+	onuFL7gXUXJ8NlpjPg9n+qAX5C7iwe3Oj1L+luGW6mlIEnoJNy+oMvrhZqVjRYzdb4ZJlodlT2AlI
+	BZgEo5JiVdRXQxm8g6pVoHPgRUJHGh9wgyTt7bWyGtEJT4rwTTBFL9oZ/9EJtc864gtuK1PHG+FzO
+	saixbB+A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTrhK-003MMl-Mo; Tue, 06 Apr 2021 19:49:14 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lTrh6-003MLL-5K; Tue, 06 Apr 2021 19:49:02 +0000
-Received: from localhost (p54b3309d.dip0.t-ipconnect.de [84.179.48.157])
- by pokefinder.org (Postfix) with ESMTPSA id 463B32C04D8;
- Tue,  6 Apr 2021 21:48:58 +0200 (CEST)
-Date: Tue, 6 Apr 2021 21:48:56 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: qii.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
+	id 1lTttT-003Vy4-6Y; Tue, 06 Apr 2021 22:09:55 +0000
+Received: from ssl.serverraum.org ([2a01:4f8:151:8464::1:2])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lTttI-003Vwi-UI; Tue, 06 Apr 2021 22:09:49 +0000
+Received: from mwalle01.fritz.box (unknown
+ [IPv6:2a02:810c:c200:2e91:fa59:71ff:fe9b:b851])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (2048 bits) server-digest
+ SHA256) (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id 1A8F622235;
+ Wed,  7 Apr 2021 00:09:27 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1617746983;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=nxEW2PujxHUk6M1X/+HLIMOdJBR/2jMAcclop6BOCK8=;
+ b=rY4ENVKmPeKKZzNKjl8i/SpA+m0c7PNBaggO3LmY75nxL9Jd+3TGuhNz6P4taqSouNt5Fl
+ baSwlWDEBseKj83xhDukmdOEu8uyypEhWVZeLhcuaT/4rg9AdNTWMpa8BMM0U33Os2tPCN
+ YXtdhJDpQhxH6LvrgU2KMyfKTIgrHiM=
+From: Michael Walle <michael@walle.cc>
+To: ath9k-devel@qca.qualcomm.com, UNGLinuxDriver@microchip.com,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- leilk.liu@mediatek.com
-Subject: Re: [RESEND] i2c: mediatek: Get device clock-stretch time via dts
-Message-ID: <20210406194856.GF3122@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>, qii.wang@mediatek.com,
- matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- leilk.liu@mediatek.com
-References: <1615622664-15032-1-git-send-email-qii.wang@mediatek.com>
+ linuxppc-dev@lists.ozlabs.org, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
+ linux-omap@vger.kernel.org, linux-wireless@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-staging@lists.linux.dev
+Cc: Andrew Lunn <andrew@lunn.ch>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Paul Mackerras <paulus@samba.org>, Andreas Larsson <andreas@gaisler.com>,
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>,
+ Chris Snook <chris.snook@gmail.com>,
+ =?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <rafal@milecki.pl>,
+ bcm-kernel-feedback-list@broadcom.com,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Fugang Duan <fugang.duan@nxp.com>,
+ Madalin Bucur <madalin.bucur@nxp.com>,
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Li Yang <leoyang.li@nxp.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Salil Mehta <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Vadym Kochan <vkochan@marvell.com>, Taras Chornyi <tchornyi@marvell.com>,
+ Mirko Lindner <mlindner@marvell.com>,
+ Stephen Hemminger <stephen@networkplumber.org>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ Vladimir Zapolskiy <vz@mleia.com>,
+ Sergei Shtylyov <sergei.shtylyov@gmail.com>,
+ Byungho An <bh74.an@samsung.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Kevin Hilman <khilman@baylibre.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Vinod Koul <vkoul@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Grygorii Strashko <grygorii.strashko@ti.com>,
+ Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri <m-karicheri2@ti.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Kalle Valo <kvalo@codeaurora.org>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <stf_xl@wp.pl>,
+ Helmut Schaa <helmut.schaa@googlemail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Frank Rowand <frowand.list@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Michael Walle <michael@walle.cc>
+Subject: [PATCH net-next v3 0/2] of: net: support non-platform devices in
+ of_get_mac_address()
+Date: Wed,  7 Apr 2021 00:09:19 +0200
+Message-Id: <20210406220921.24313-1-michael@walle.cc>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <1615622664-15032-1-git-send-email-qii.wang@mediatek.com>
+X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_204900_464228_1135C8B2 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20210406_230945_680386_ABC15460 
+X-CRM114-Status: GOOD (  16.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,71 +142,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6988519874867113283=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+of_get_mac_address() is commonly used to fetch the MAC address
+from the device tree. It also supports reading it from a NVMEM
+provider. But the latter is only possible for platform devices,
+because only platform devices are searched for a matching device
+node.
 
---===============6988519874867113283==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="w3uUfsyyY1Pqa/ej"
-Content-Disposition: inline
+Add a second method to fetch the NVMEM cell by a device tree node
+instead of a "struct device".
 
+Moreover, the NVMEM subsystem will return dynamically allocated
+data which has to be freed after use. Currently, this is handled
+by allocating a device resource manged buffer to store the MAC
+address. of_get_mac_address() then returns a pointer to this
+buffer. Without a device, this trick is not possible anymore.
+Thus, change the of_get_mac_address() API to have the caller
+supply a buffer.
 
---w3uUfsyyY1Pqa/ej
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+It was considered to use the network device to attach the buffer
+to, but then the order matters and netdev_register() has to be
+called before of_get_mac_address(). No driver does it this way.
 
-On Sat, Mar 13, 2021 at 04:04:24PM +0800, qii.wang@mediatek.com wrote:
-> From: Qii Wang <qii.wang@mediatek.com>
->=20
-> tSU,STA/tHD,STA/tSU,STOP maybe out of spec due to device
-> clock-stretching or circuit loss, we could get device
-> clock-stretch time from dts to adjust these parameters
-> to meet the spec via EXT_CONF register.
->=20
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+changes since v2:
+ - fixed of_get_mac_addr_nvmem() signature, which was accidentially
+   fixed in patch 2/2 again
 
-I tried to understand from the code what the new binding expresses, but
-I don't fully understand it. Is it the maximum clock stretch time?
-Because I cannot recall a device which always uses the same delay for
-clock stretching.
+changes since v1:
+ - fixed stmmac_probe_config_dt() for !CONFIG_OF
+ - added missing queue in patch subject
 
+Michael Walle (2):
+  of: net: pass the dst buffer to of_get_mac_address()
+  of: net: fix of_get_mac_addr_nvmem() for PCI and DSA nodes
 
---w3uUfsyyY1Pqa/ej
-Content-Type: application/pgp-signature; name="signature.asc"
+ arch/arm/mach-mvebu/kirkwood.c                |  3 +-
+ arch/powerpc/sysdev/tsi108_dev.c              |  5 +-
+ drivers/net/ethernet/aeroflex/greth.c         |  6 +-
+ drivers/net/ethernet/allwinner/sun4i-emac.c   | 10 +--
+ drivers/net/ethernet/altera/altera_tse_main.c |  7 +-
+ drivers/net/ethernet/arc/emac_main.c          |  8 +-
+ drivers/net/ethernet/atheros/ag71xx.c         |  7 +-
+ drivers/net/ethernet/broadcom/bcm4908_enet.c  |  7 +-
+ drivers/net/ethernet/broadcom/bcmsysport.c    |  7 +-
+ drivers/net/ethernet/broadcom/bgmac-bcma.c    | 10 +--
+ .../net/ethernet/broadcom/bgmac-platform.c    | 11 ++-
+ drivers/net/ethernet/cadence/macb_main.c      | 11 +--
+ .../net/ethernet/cavium/octeon/octeon_mgmt.c  |  8 +-
+ .../net/ethernet/cavium/thunder/thunder_bgx.c |  5 +-
+ drivers/net/ethernet/davicom/dm9000.c         | 10 +--
+ drivers/net/ethernet/ethoc.c                  |  6 +-
+ drivers/net/ethernet/ezchip/nps_enet.c        |  7 +-
+ drivers/net/ethernet/freescale/fec_main.c     |  7 +-
+ drivers/net/ethernet/freescale/fec_mpc52xx.c  |  7 +-
+ drivers/net/ethernet/freescale/fman/mac.c     |  9 +-
+ .../ethernet/freescale/fs_enet/fs_enet-main.c |  5 +-
+ drivers/net/ethernet/freescale/gianfar.c      |  8 +-
+ drivers/net/ethernet/freescale/ucc_geth.c     |  5 +-
+ drivers/net/ethernet/hisilicon/hisi_femac.c   |  7 +-
+ drivers/net/ethernet/hisilicon/hix5hd2_gmac.c |  7 +-
+ drivers/net/ethernet/lantiq_xrx200.c          |  7 +-
+ drivers/net/ethernet/marvell/mv643xx_eth.c    |  5 +-
+ drivers/net/ethernet/marvell/mvneta.c         |  6 +-
+ .../ethernet/marvell/prestera/prestera_main.c | 11 +--
+ drivers/net/ethernet/marvell/pxa168_eth.c     |  9 +-
+ drivers/net/ethernet/marvell/sky2.c           |  8 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 11 +--
+ drivers/net/ethernet/micrel/ks8851_common.c   |  7 +-
+ drivers/net/ethernet/microchip/lan743x_main.c |  5 +-
+ drivers/net/ethernet/nxp/lpc_eth.c            |  4 +-
+ drivers/net/ethernet/qualcomm/qca_spi.c       | 10 +--
+ drivers/net/ethernet/qualcomm/qca_uart.c      |  9 +-
+ drivers/net/ethernet/renesas/ravb_main.c      | 12 +--
+ drivers/net/ethernet/renesas/sh_eth.c         |  5 +-
+ .../ethernet/samsung/sxgbe/sxgbe_platform.c   | 13 +--
+ drivers/net/ethernet/socionext/sni_ave.c      | 10 +--
+ .../ethernet/stmicro/stmmac/dwmac-anarion.c   |  2 +-
+ .../stmicro/stmmac/dwmac-dwc-qos-eth.c        |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-generic.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
+ .../stmicro/stmmac/dwmac-intel-plat.c         |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-ipq806x.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-lpc18xx.c   |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-meson.c |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-meson8b.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-oxnas.c |  2 +-
+ .../stmicro/stmmac/dwmac-qcom-ethqos.c        |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-rk.c    |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-socfpga.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-sti.c   |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-stm32.c |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-sun8i.c |  2 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-sunxi.c |  2 +-
+ .../ethernet/stmicro/stmmac/dwmac-visconti.c  |  2 +-
+ drivers/net/ethernet/stmicro/stmmac/stmmac.h  |  2 +-
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |  4 +-
+ .../ethernet/stmicro/stmmac/stmmac_platform.c | 14 +--
+ .../ethernet/stmicro/stmmac/stmmac_platform.h |  2 +-
+ drivers/net/ethernet/ti/am65-cpsw-nuss.c      | 19 ++---
+ drivers/net/ethernet/ti/cpsw.c                |  7 +-
+ drivers/net/ethernet/ti/cpsw_new.c            |  7 +-
+ drivers/net/ethernet/ti/davinci_emac.c        |  8 +-
+ drivers/net/ethernet/ti/netcp_core.c          |  7 +-
+ drivers/net/ethernet/wiznet/w5100-spi.c       |  8 +-
+ drivers/net/ethernet/wiznet/w5100.c           |  2 +-
+ drivers/net/ethernet/xilinx/ll_temac_main.c   |  6 +-
+ .../net/ethernet/xilinx/xilinx_axienet_main.c | 11 +--
+ drivers/net/ethernet/xilinx/xilinx_emaclite.c |  8 +-
+ drivers/net/wireless/ath/ath9k/init.c         |  5 +-
+ drivers/net/wireless/mediatek/mt76/eeprom.c   |  9 +-
+ .../net/wireless/ralink/rt2x00/rt2x00dev.c    |  6 +-
+ drivers/of/of_net.c                           | 85 ++++++++++++-------
+ drivers/staging/octeon/ethernet.c             | 10 +--
+ drivers/staging/wfx/main.c                    |  7 +-
+ include/linux/of_net.h                        |  6 +-
+ include/net/dsa.h                             |  2 +-
+ net/dsa/dsa2.c                                |  2 +-
+ net/dsa/slave.c                               |  2 +-
+ net/ethernet/eth.c                            | 11 +--
+ 85 files changed, 241 insertions(+), 362 deletions(-)
 
------BEGIN PGP SIGNATURE-----
+-- 
+2.20.1
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmBsuygACgkQFA3kzBSg
-KbbOjw/7B8MXTjgR11P25HsLFbayUrZDnsFzJtjHOTGDx/XGm4IVlf/c0RHjInRz
-VGWqF2EyJA4cDlZTnnsYGadOBQ+SJSAo0xyDqwxmYIV5goFZdV0pFklMLuHEe4ao
-rwSeruU9SCM8VdTGMBqsZ9Sh3nApC0ydn5EU7AIwtB+UwRKL7mFwyLX2ZfpGBJDp
-gF6j+o/ag3nKMgsLdIf0l3afKMgbeTTepTkEAXYY/y+e06Ea77HuwghsLvoH0cxB
-mKPuWLsF6Pr2J8FVb+iqBT6NDwfj9yNGdu96wbFTQaHzJ8rjjXdDyykju0whq8Fe
-kux0ugGcM75AlJSxvJhhjcxjcA03LMbOrxhBCzLy6M46ho0GnFFJPFTF8deeOLwu
-ZsWI3tifh+MW6tvSKcZzrooevCHTErPncCIxbVTJgIQu3q2HQK0hXBDz/7ede/oU
-SlQSrxjU6jUzIYVkASYF3wN/eCj4e7fUuMXioyBf5v9BnMRLjJs1eHGs9c10ah1F
-YbTm0oBxADH26HU3KZkAPcWajjWDmgOyjmfcmmcx6y0jyP4k+4ysvunP7QBUgwyC
-PLEnZyI123oI9UToZY1UR9v/VEn8tkIhf1qmgI++yQtvwnFOmrvmzcvo5otc3G7b
-2x/Hwt1/skpWkj341hmYG3q7ehYX4auMBCSs66OBLYD6UzSS/jY=
-=LA70
------END PGP SIGNATURE-----
-
---w3uUfsyyY1Pqa/ej--
-
-
---===============6988519874867113283==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6988519874867113283==--
-
