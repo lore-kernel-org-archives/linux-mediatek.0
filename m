@@ -2,55 +2,56 @@ Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 692C9C43611
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE33BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AAB34613D2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAB34613D2
+	by mail.kernel.org (Postfix) with ESMTPS id 9DBEB613CF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 22:10:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DBEB613CF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=dBoKesyP5zb3YffNr6dgD2CxS+X7IkgCKCth9MZGSNE=; b=eC64XdGUIOgigBgnDBVXtkmdkL
-	KlRhAHAZySeRr9y7ywnKQm7fxK3RGiTXLR9069AhP+W+KsqX+ZnBs4sZINALCCZFpQex8vr2RG9Y0
-	/OKdkFWxZkedBF2thi54ujFtmszGJZKVfTzshtvHbM/klRMXE/Iw2jtgYE/lS0jzR+9iFabFCx340
-	onuFL7gXUXJ8NlpjPg9n+qAX5C7iwe3Oj1L+luGW6mlIEnoJNy+oMvrhZqVjRYzdb4ZJlodlT2AlI
-	BZgEo5JiVdRXQxm8g6pVoHPgRUJHGh9wgyTt7bWyGtEJT4rwTTBFL9oZ/9EJtc864gtuK1PHG+FzO
-	saixbB+A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=fZkcr7iO7tX8iAcOXNbwiyGMVcjutUxAzVZwnfCvSt4=; b=aLJl+MOrvaIDIkbJlmbOmCrFJ
+	pXkweCoLPo71ictesGeMF+WLbFCnPxtQiboKxQzk9UZPBJzsw5jJ6bq5RzCVUp3ryFGwtzD9bmjjm
+	pAsghQuna6knnfZmp7qM0GEXjKmrSgXLcC1nzLkoD+mMvKCpj5i2VRAQbXPIkFC6rQBTBXXl513HB
+	MAGWjXoIgBAnzmuijXiHL8sCHt+f+5YYP0VxRzftmXYGM/oNH79Z7F7SoAozlvlocQLCa9J7mY170
+	XZ84uDHUrZzy4lmpam8VziVR3yussKUsDGsBlqBpbp87xMNORXTC88DaNr9KAdlJxOzNiVYj0rb7N
+	Hr3GkYSpA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTttT-003Vy4-6Y; Tue, 06 Apr 2021 22:09:55 +0000
-Received: from ssl.serverraum.org ([2a01:4f8:151:8464::1:2])
+	id 1lTttd-003Vzm-KZ; Tue, 06 Apr 2021 22:10:05 +0000
+Received: from ssl.serverraum.org ([176.9.125.105])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTttI-003Vwi-UI; Tue, 06 Apr 2021 22:09:49 +0000
+ id 1lTttN-003Vwz-Ve; Tue, 06 Apr 2021 22:09:52 +0000
 Received: from mwalle01.fritz.box (unknown
  [IPv6:2a02:810c:c200:2e91:fa59:71ff:fe9b:b851])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange ECDHE (P-384) server-signature RSA-PSS (2048 bits) server-digest
  SHA256) (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id 1A8F622235;
- Wed,  7 Apr 2021 00:09:27 +0200 (CEST)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id 5A4362224F;
+ Wed,  7 Apr 2021 00:09:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1617746983;
+ s=mail2016061301; t=1617746989;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=nxEW2PujxHUk6M1X/+HLIMOdJBR/2jMAcclop6BOCK8=;
- b=rY4ENVKmPeKKZzNKjl8i/SpA+m0c7PNBaggO3LmY75nxL9Jd+3TGuhNz6P4taqSouNt5Fl
- baSwlWDEBseKj83xhDukmdOEu8uyypEhWVZeLhcuaT/4rg9AdNTWMpa8BMM0U33Os2tPCN
- YXtdhJDpQhxH6LvrgU2KMyfKTIgrHiM=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=q+28b1zyD0ipnp7X7qaRNoB7yZQlbx9y5m7NwMvG7cM=;
+ b=VpG+SaxCrsqgK5AJ1uhvjqYL1Iz1HzqgMpALtpVAFdxlIxmlhhlsMp0jMDGwL6tEuMwcYt
+ gqCojAcZb5LTi3qRkB2cRnKgQoGxBEBC4LAyNNK/cZJSH10jI46hzGor743DDIpxqYvtuU
+ vzVbTRLjt5LlEXPfhBM/l7+qzAuqI30=
 From: Michael Walle <michael@walle.cc>
 To: ath9k-devel@qca.qualcomm.com, UNGLinuxDriver@microchip.com,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
@@ -121,16 +122,17 @@ Cc: Andrew Lunn <andrew@lunn.ch>,
  =?UTF-8?q?J=C3=A9r=C3=B4me=20Pouiller?= <jerome.pouiller@silabs.com>,
  Vivien Didelot <vivien.didelot@gmail.com>,
  Vladimir Oltean <olteanv@gmail.com>, Michael Walle <michael@walle.cc>
-Subject: [PATCH net-next v3 0/2] of: net: support non-platform devices in
- of_get_mac_address()
-Date: Wed,  7 Apr 2021 00:09:19 +0200
-Message-Id: <20210406220921.24313-1-michael@walle.cc>
+Subject: [PATCH net-next v3 2/2] of: net: fix of_get_mac_addr_nvmem() for PCI
+ and DSA nodes
+Date: Wed,  7 Apr 2021 00:09:21 +0200
+Message-Id: <20210406220921.24313-3-michael@walle.cc>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20210406220921.24313-1-michael@walle.cc>
+References: <20210406220921.24313-1-michael@walle.cc>
 MIME-Version: 1.0
-X-Spam: Yes
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_230945_680386_ABC15460 
-X-CRM114-Status: GOOD (  16.13  )
+X-CRM114-CacheID: sfid-20210406_230950_471288_BE43FA2D 
+X-CRM114-Status: GOOD (  20.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,126 +149,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-of_get_mac_address() is commonly used to fetch the MAC address
-from the device tree. It also supports reading it from a NVMEM
-provider. But the latter is only possible for platform devices,
-because only platform devices are searched for a matching device
-node.
+of_get_mac_address() already supports fetching the MAC address by an
+nvmem provider. But until now, it was just working for platform devices.
+Esp. it was not working for DSA ports and PCI devices. It gets more
+common that PCI devices have a device tree binding since SoCs contain
+integrated root complexes.
 
-Add a second method to fetch the NVMEM cell by a device tree node
-instead of a "struct device".
+Use the nvmem of_* binding to fetch the nvmem cells by a struct
+device_node. We still have to try to read the cell by device first
+because there might be a nvmem_cell_lookup associated with that device.
 
-Moreover, the NVMEM subsystem will return dynamically allocated
-data which has to be freed after use. Currently, this is handled
-by allocating a device resource manged buffer to store the MAC
-address. of_get_mac_address() then returns a pointer to this
-buffer. Without a device, this trick is not possible anymore.
-Thus, change the of_get_mac_address() API to have the caller
-supply a buffer.
+Signed-off-by: Michael Walle <michael@walle.cc>
+---
+Please note, that I've kept the nvmem_get_mac_address() which operates
+on a device. The new of_get_mac_addr_nvmem() is almost identical and
+there are no users of the former function right now, but it seems to be
+the "newer" version to get the MAC address for a "struct device". Thus
+I've kept it. Please advise, if I should kill it though.
 
-It was considered to use the network device to attach the buffer
-to, but then the order matters and netdev_register() has to be
-called before of_get_mac_address(). No driver does it this way.
+ drivers/of/of_net.c | 35 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 30 insertions(+), 5 deletions(-)
 
-changes since v2:
- - fixed of_get_mac_addr_nvmem() signature, which was accidentially
-   fixed in patch 2/2 again
-
-changes since v1:
- - fixed stmmac_probe_config_dt() for !CONFIG_OF
- - added missing queue in patch subject
-
-Michael Walle (2):
-  of: net: pass the dst buffer to of_get_mac_address()
-  of: net: fix of_get_mac_addr_nvmem() for PCI and DSA nodes
-
- arch/arm/mach-mvebu/kirkwood.c                |  3 +-
- arch/powerpc/sysdev/tsi108_dev.c              |  5 +-
- drivers/net/ethernet/aeroflex/greth.c         |  6 +-
- drivers/net/ethernet/allwinner/sun4i-emac.c   | 10 +--
- drivers/net/ethernet/altera/altera_tse_main.c |  7 +-
- drivers/net/ethernet/arc/emac_main.c          |  8 +-
- drivers/net/ethernet/atheros/ag71xx.c         |  7 +-
- drivers/net/ethernet/broadcom/bcm4908_enet.c  |  7 +-
- drivers/net/ethernet/broadcom/bcmsysport.c    |  7 +-
- drivers/net/ethernet/broadcom/bgmac-bcma.c    | 10 +--
- .../net/ethernet/broadcom/bgmac-platform.c    | 11 ++-
- drivers/net/ethernet/cadence/macb_main.c      | 11 +--
- .../net/ethernet/cavium/octeon/octeon_mgmt.c  |  8 +-
- .../net/ethernet/cavium/thunder/thunder_bgx.c |  5 +-
- drivers/net/ethernet/davicom/dm9000.c         | 10 +--
- drivers/net/ethernet/ethoc.c                  |  6 +-
- drivers/net/ethernet/ezchip/nps_enet.c        |  7 +-
- drivers/net/ethernet/freescale/fec_main.c     |  7 +-
- drivers/net/ethernet/freescale/fec_mpc52xx.c  |  7 +-
- drivers/net/ethernet/freescale/fman/mac.c     |  9 +-
- .../ethernet/freescale/fs_enet/fs_enet-main.c |  5 +-
- drivers/net/ethernet/freescale/gianfar.c      |  8 +-
- drivers/net/ethernet/freescale/ucc_geth.c     |  5 +-
- drivers/net/ethernet/hisilicon/hisi_femac.c   |  7 +-
- drivers/net/ethernet/hisilicon/hix5hd2_gmac.c |  7 +-
- drivers/net/ethernet/lantiq_xrx200.c          |  7 +-
- drivers/net/ethernet/marvell/mv643xx_eth.c    |  5 +-
- drivers/net/ethernet/marvell/mvneta.c         |  6 +-
- .../ethernet/marvell/prestera/prestera_main.c | 11 +--
- drivers/net/ethernet/marvell/pxa168_eth.c     |  9 +-
- drivers/net/ethernet/marvell/sky2.c           |  8 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   | 11 +--
- drivers/net/ethernet/micrel/ks8851_common.c   |  7 +-
- drivers/net/ethernet/microchip/lan743x_main.c |  5 +-
- drivers/net/ethernet/nxp/lpc_eth.c            |  4 +-
- drivers/net/ethernet/qualcomm/qca_spi.c       | 10 +--
- drivers/net/ethernet/qualcomm/qca_uart.c      |  9 +-
- drivers/net/ethernet/renesas/ravb_main.c      | 12 +--
- drivers/net/ethernet/renesas/sh_eth.c         |  5 +-
- .../ethernet/samsung/sxgbe/sxgbe_platform.c   | 13 +--
- drivers/net/ethernet/socionext/sni_ave.c      | 10 +--
- .../ethernet/stmicro/stmmac/dwmac-anarion.c   |  2 +-
- .../stmicro/stmmac/dwmac-dwc-qos-eth.c        |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-generic.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-imx.c   |  2 +-
- .../stmicro/stmmac/dwmac-intel-plat.c         |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-ipq806x.c   |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-lpc18xx.c   |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-meson.c |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-meson8b.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-oxnas.c |  2 +-
- .../stmicro/stmmac/dwmac-qcom-ethqos.c        |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-socfpga.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-sti.c   |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-stm32.c |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-sun8i.c |  2 +-
- .../net/ethernet/stmicro/stmmac/dwmac-sunxi.c |  2 +-
- .../ethernet/stmicro/stmmac/dwmac-visconti.c  |  2 +-
- drivers/net/ethernet/stmicro/stmmac/stmmac.h  |  2 +-
- .../net/ethernet/stmicro/stmmac/stmmac_main.c |  4 +-
- .../ethernet/stmicro/stmmac/stmmac_platform.c | 14 +--
- .../ethernet/stmicro/stmmac/stmmac_platform.h |  2 +-
- drivers/net/ethernet/ti/am65-cpsw-nuss.c      | 19 ++---
- drivers/net/ethernet/ti/cpsw.c                |  7 +-
- drivers/net/ethernet/ti/cpsw_new.c            |  7 +-
- drivers/net/ethernet/ti/davinci_emac.c        |  8 +-
- drivers/net/ethernet/ti/netcp_core.c          |  7 +-
- drivers/net/ethernet/wiznet/w5100-spi.c       |  8 +-
- drivers/net/ethernet/wiznet/w5100.c           |  2 +-
- drivers/net/ethernet/xilinx/ll_temac_main.c   |  6 +-
- .../net/ethernet/xilinx/xilinx_axienet_main.c | 11 +--
- drivers/net/ethernet/xilinx/xilinx_emaclite.c |  8 +-
- drivers/net/wireless/ath/ath9k/init.c         |  5 +-
- drivers/net/wireless/mediatek/mt76/eeprom.c   |  9 +-
- .../net/wireless/ralink/rt2x00/rt2x00dev.c    |  6 +-
- drivers/of/of_net.c                           | 85 ++++++++++++-------
- drivers/staging/octeon/ethernet.c             | 10 +--
- drivers/staging/wfx/main.c                    |  7 +-
- include/linux/of_net.h                        |  6 +-
- include/net/dsa.h                             |  2 +-
- net/dsa/dsa2.c                                |  2 +-
- net/dsa/slave.c                               |  2 +-
- net/ethernet/eth.c                            | 11 +--
- 85 files changed, 241 insertions(+), 362 deletions(-)
-
+diff --git a/drivers/of/of_net.c b/drivers/of/of_net.c
+index 2d5d5e59aea5..2323c6063eaf 100644
+--- a/drivers/of/of_net.c
++++ b/drivers/of/of_net.c
+@@ -11,6 +11,7 @@
+ #include <linux/phy.h>
+ #include <linux/export.h>
+ #include <linux/device.h>
++#include <linux/nvmem-consumer.h>
+ 
+ /**
+  * of_get_phy_mode - Get phy mode for given device_node
+@@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np, const char *name, u8 *addr)
+ static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
+ {
+ 	struct platform_device *pdev = of_find_device_by_node(np);
++	struct nvmem_cell *cell;
++	const void *mac;
++	size_t len;
+ 	int ret;
+ 
+-	if (!pdev)
+-		return -ENODEV;
++	/* Try lookup by device first, there might be a nvmem_cell_lookup
++	 * associated with a given device.
++	 */
++	if (pdev) {
++		ret = nvmem_get_mac_address(&pdev->dev, addr);
++		put_device(&pdev->dev);
++		return ret;
++	}
++
++	cell = of_nvmem_cell_get(np, "mac-address");
++	if (IS_ERR(cell))
++		return PTR_ERR(cell);
++
++	mac = nvmem_cell_read(cell, &len);
++	nvmem_cell_put(cell);
++
++	if (IS_ERR(mac))
++		return PTR_ERR(mac);
++
++	if (len != ETH_ALEN || !is_valid_ether_addr(mac)) {
++		kfree(mac);
++		return -EINVAL;
++	}
+ 
+-	ret = nvmem_get_mac_address(&pdev->dev, addr);
+-	put_device(&pdev->dev);
++	ether_addr_copy(addr, mac);
++	kfree(mac);
+ 
+-	return ret;
++	return 0;
+ }
+ 
+ /**
 -- 
 2.20.1
 
