@@ -2,77 +2,69 @@ Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3C81C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 09:59:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5E10C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 10:08:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A3181613C2
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 09:59:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3181613C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8EDBE61279
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 10:08:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EDBE61279
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QjQK/0QlGCWnrmigqIsTa57jYAotiO9Lt+HJgkaurXU=; b=S3V/BzHtCIvzb8/VqQqKy/m23
-	qHzkvt6+xHgQELbxeNGGr6PCtBOXKgE1zQIAD0tX8r2iqyS5AjJ2kS/6Ds6jTQs7uQwiz4ecd17U1
-	l2SJM99DJXB6kmHGFvtyYwGy4gjtxVuo4KpWF28a59xckvk0nxKBLcLSrigoZ3BkzvXpjmwOxwgyp
-	CtToZ0VUM5GNtr2oh+IA5Fi6DQrphUIgzB8fLpe1gjaw/4P02lwEfhGY+rQKyJNJpNrvjE+JN5rEb
-	S25ftbcCa2A5b9Ukg7lBn5GYnrlTEwtjdgEyG+zQResZLGgmwSYGiqG3yaHnHFia4AAClH6yWzstn
-	B9oSOi7tA==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=/zMOPGEO78ORYJQSblYr0ncxtVoZOWJNlo1WvECvrvs=; b=E2p0KSSiWO8129J7DdnMGQXQ9
+	DuGGmDiz7ltkgrK1nroYqjokkuSPszKmWpaPFIjEz7jWZjD4cE4RhLvG01YBKYPGm5LaGR/xqQv7F
+	1HL1JbsKzvxLKR90ZeYdWn7fcwWex4tcaiXBIczVse7VMHXwjrOy7bKS74+J31l1X/ZIbCIIujd8y
+	CsmZsqMZQCij1mJwSKvAG+UgF+t5kKKqb5ofCE4EMMMPE82fdnO6R15x4cWvgwzEPX+6577ijH/pJ
+	GHmZvI0FcC8sltgIq+r2YcWiMq+7jBXIFuEQSCgyVF6M7/hE85gLdRqPQDUQJGW3ct2RHJyiRAVQ1
+	4ww9H01MQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTiUJ-0026BI-0U; Tue, 06 Apr 2021 09:59:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lTicz-0027Xw-PK; Tue, 06 Apr 2021 10:08:09 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTiUA-00267R-OK; Tue, 06 Apr 2021 09:59:05 +0000
-X-UUID: 37e2b0dc4bc74ecc920bf7c8860c1be6-20210406
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=q8UTM5AOlbDFVyOZoJJmgjgINI1RPvMjV7SGgbOPFoY=; 
- b=txL+GjLjxgLNyynJ/8LxL9eLj7m5L+QDUIcHeFzxKeEtrTU+QrcMaE2euiy/ci93yE7L5gL0cTpm1dvcoUVJCxf+EgxJuvlxykLitCw3JeR5HVjVcYp+emS4BZZbQOmMRk2JUE5/Qm3illpZCHhDTdAMn8PIb8h1FZ6yXgYIabs=;
-X-UUID: 37e2b0dc4bc74ecc920bf7c8860c1be6-20210406
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 144926482; Tue, 06 Apr 2021 02:58:55 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Apr 2021 02:58:53 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Apr 2021 17:58:51 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 6 Apr 2021 17:58:51 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <thierry.reding@gmail.com>, <u.kleine-koenig@pengutronix.de>,
- <lee.jones@linaro.org>, <matthias.bgg@gmail.com>
-CC: <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v3,PATCH 2/3] pwm: mtk_disp: convert the driver to atomic API
-Date: Tue, 6 Apr 2021 17:57:41 +0800
-Message-ID: <1617703062-4251-3-git-send-email-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1617703062-4251-1-git-send-email-rex-bc.chen@mediatek.com>
+ id 1lTicr-0027XN-1c
+ for linux-mediatek@lists.infradead.org; Tue, 06 Apr 2021 10:08:03 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lTicn-0000Ih-L1; Tue, 06 Apr 2021 12:07:57 +0200
+Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1lTicm-0004j3-7j; Tue, 06 Apr 2021 12:07:56 +0200
+Date: Tue, 6 Apr 2021 12:07:56 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: thierry.reding@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com,
+ linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Jitao Shi <jitao.shi@mediatek.com>
+Subject: Re: [v3,PATCH 1/3] pwm: mtk_disp: clear the clock operations
+Message-ID: <20210406100756.ijthlp2j3a3eygdt@pengutronix.de>
 References: <1617703062-4251-1-git-send-email-rex-bc.chen@mediatek.com>
+ <1617703062-4251-2-git-send-email-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1617703062-4251-2-git-send-email-rex-bc.chen@mediatek.com>
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_105903_193400_83E3BEEA 
-X-CRM114-Status: GOOD (  17.37  )
+X-CRM114-CacheID: sfid-20210406_110801_254945_045AE170 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,215 +76,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8048464354460983548=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch the driver to atomic API apply().
 
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
----
- drivers/pwm/pwm-mtk-disp.c | 114 +++++++++++++++++++------------------
- 1 file changed, 58 insertions(+), 56 deletions(-)
+--===============8048464354460983548==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="af63drcvcndnf3ct"
+Content-Disposition: inline
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 21416a8b6b47..502228adf718 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -20,6 +20,7 @@
- #define PWM_CLKDIV_SHIFT	16
- #define PWM_CLKDIV_MAX		0x3ff
- #define PWM_CLKDIV_MASK		(PWM_CLKDIV_MAX << PWM_CLKDIV_SHIFT)
-+#define PWM_POLARITY	BIT(2)
- 
- #define PWM_PERIOD_BIT_WIDTH	12
- #define PWM_PERIOD_MASK		((1 << PWM_PERIOD_BIT_WIDTH) - 1)
-@@ -47,6 +48,7 @@ struct mtk_disp_pwm {
- 	struct clk *clk_main;
- 	struct clk *clk_mm;
- 	void __iomem *base;
-+	bool enabled;
- };
- 
- static inline struct mtk_disp_pwm *to_mtk_disp_pwm(struct pwm_chip *chip)
-@@ -66,11 +68,11 @@ static void mtk_disp_pwm_update_bits(struct mtk_disp_pwm *mdp, u32 offset,
- 	writel(value, address);
- }
- 
--static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
--			       int duty_ns, int period_ns)
-+static int mtk_disp_pwm_enable(struct pwm_chip *chip,
-+			       const struct pwm_state *state)
- {
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
--	u32 clk_div, period, high_width, value;
-+	u32 clk_div, period, high_width, value, polarity;
- 	u64 div, rate;
- 	int err;
- 
-@@ -84,33 +86,47 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	 * period = (PWM_CLK_RATE * period_ns) / (10^9 * (clk_div + 1)) - 1
- 	 * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1))
- 	 */
-+	if (!mdp->enabled) {
-+		err = clk_prepare_enable(mdp->clk_main);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_main: %d\n",
-+				err);
-+			return err;
-+		}
-+		err = clk_prepare_enable(mdp->clk_mm);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_mm: %d\n",
-+				err);
-+			clk_disable_unprepare(mdp->clk_main);
-+			return err;
-+		}
-+	}
- 	rate = clk_get_rate(mdp->clk_main);
--	clk_div = div_u64(rate * period_ns, NSEC_PER_SEC) >>
-+	clk_div = div_u64(rate * state->period, NSEC_PER_SEC) >>
- 			  PWM_PERIOD_BIT_WIDTH;
--	if (clk_div > PWM_CLKDIV_MAX)
-+	if (clk_div > PWM_CLKDIV_MAX) {
-+		dev_err(chip->dev, "clock rate is too high: rate = %d Hz\n",
-+			rate);
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
- 		return -EINVAL;
--
-+	}
- 	div = NSEC_PER_SEC * (clk_div + 1);
--	period = div64_u64(rate * period_ns, div);
-+	period = div64_u64(rate * state->period, div);
- 	if (period > 0)
- 		period--;
- 
--	high_width = div64_u64(rate * duty_ns, div);
-+	high_width = div64_u64(rate * state->duty_cycle, div);
- 	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
--
--	err = clk_enable(mdp->clk_main);
--	if (err < 0)
--		return err;
--
--	err = clk_enable(mdp->clk_mm);
--	if (err < 0) {
--		clk_disable(mdp->clk_main);
--		return err;
--	}
-+	polarity = 0;
-+	if (state->polarity == PWM_POLARITY_INVERSED)
-+		polarity = PWM_POLARITY;
- 
- 	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
- 				 PWM_CLKDIV_MASK,
- 				 clk_div << PWM_CLKDIV_SHIFT);
-+	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
-+				 PWM_POLARITY, polarity);
- 	mtk_disp_pwm_update_bits(mdp, mdp->data->con1,
- 				 PWM_PERIOD_MASK | PWM_HIGH_WIDTH_MASK,
- 				 value);
-@@ -122,50 +138,49 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 		mtk_disp_pwm_update_bits(mdp, mdp->data->commit,
- 					 mdp->data->commit_mask,
- 					 0x0);
-+	} else {
-+		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
-+					 mdp->data->bls_debug_mask,
-+					 mdp->data->bls_debug_mask);
-+		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
-+					 mdp->data->con0_sel,
-+					 mdp->data->con0_sel);
- 	}
- 
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
--
-+	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
-+				 mdp->data->enable_mask);
-+	mdp->enabled = true;
- 	return 0;
- }
- 
--static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
-+static int mtk_disp_pwm_disable(struct pwm_chip *chip,
-+				const struct pwm_state *state)
- {
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
--	int err;
--
--	err = clk_enable(mdp->clk_main);
--	if (err < 0)
--		return err;
- 
--	err = clk_enable(mdp->clk_mm);
--	if (err < 0) {
--		clk_disable(mdp->clk_main);
--		return err;
-+	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
-+				 0x0);
-+	if (mdp->enabled) {
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
- 	}
- 
--	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
--				 mdp->data->enable_mask);
-+	mdp->enabled = false;
- 
- 	return 0;
- }
- 
--static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
-+static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      const struct pwm_state *state)
- {
--	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
-+	if (!state->enabled)
-+		return mtk_disp_pwm_disable(chip, state);
- 
--	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
--				 0x0);
--
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
-+	return mtk_disp_pwm_enable(chip, state);
- }
- 
- static const struct pwm_ops mtk_disp_pwm_ops = {
--	.config = mtk_disp_pwm_config,
--	.enable = mtk_disp_pwm_enable,
--	.disable = mtk_disp_pwm_disable,
-+	.apply = mtk_disp_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
-@@ -205,19 +220,6 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, mdp);
- 
--	/*
--	 * For MT2701, disable double buffer before writing register
--	 * and select manual mode and use PWM_PERIOD/PWM_HIGH_WIDTH.
--	 */
--	if (!mdp->data->has_commit) {
--		mtk_disp_pwm_update_bits(mdp, mdp->data->bls_debug,
--					 mdp->data->bls_debug_mask,
--					 mdp->data->bls_debug_mask);
--		mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
--					 mdp->data->con0_sel,
--					 mdp->data->con0_sel);
--	}
--
- 	return 0;
- }
- 
--- 
-2.18.0
+
+--af63drcvcndnf3ct
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+On Tue, Apr 06, 2021 at 05:57:40PM +0800, Rex-BC Chen wrote:
+> Remove the clk_prepare from mtk_disp_pwm_probe.
+> Remove the clk_unprepare from mtk_disp_pwm_remove.
+>=20
+> After using atomic API and get_state() function which are implemented
+> in PATCH [2/3], [3/3],
+
+Refering to the following patches as 2/3 and 3/3 doesn't make sense once
+these patches are applied to a tree.
+
+> clk_prepare/clk_unprepare are useless in probe/remove function.
+> So we remove clk_prepare/clk_unprepare in probe/remove fuinction.
+
+Does the driver still work with only this patch applied? If not, please
+rearrange and order this patch after the conversion to the atomic API.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--af63drcvcndnf3ct
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmBsMvkACgkQwfwUeK3K
+7Ak6aAf9H1Hh1pupjsfSXeA1E7ELdVBhmy24h4j6m4zEM5wT8FAgdrYnnX04fAhV
+qY6CquneoPnm5BvZp2CXMukAi67J0kL0C6APkjh3hpHfElyd8a//gsGID9uZ4hIj
+S7EmQEWjGBg9unsnUJdyWrUHipA4XGktfoSGSUIFIPZjQDEmOxqPaYm9dHrSt92w
+ukZ2PzqxCDIZqilIgijo3w2BARAe3n0w0pzWbB/hwjsF8a/bhCDI3ynkc45G5D2d
+nPNBv6YTQaxKcxbpn13nF4RSxUKh43T7nN79KFY7xnA6fokm+hRoZV8Rjn2/kQiO
+TZ0OO1o+NqYosUQWAJZp6kdMQ6zIaA==
+=6z2O
+-----END PGP SIGNATURE-----
+
+--af63drcvcndnf3ct--
+
+
+--===============8048464354460983548==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8048464354460983548==--
+
