@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C90E8C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 03:06:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B95F1C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 03:21:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CB36613B3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 03:06:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CB36613B3
+	by mail.kernel.org (Postfix) with ESMTPS id 4755B613B3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 03:21:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4755B613B3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,41 +23,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=M/MMUt0j5X7nKit84iSmUHIjVeeITFHtq/bCCOLzCdU=; b=H8eiRLYl5AHTMLQlHeVP6xvUs8
-	5Oik2oeTV8jxoPAmS6yCWv5Ljv/BpL80GR22dAKdruNUCvv5509d1mPHzl0x2xMW17LyE9NAKF93Z
-	NBQKXzZb1LCqBrGzbsjRUzkQiRQBlpWHNLFxqZKW2v0mePJ3EyHtbVOw6cGBtAccFdneADp0/aoI9
-	vRZYIfK3Ya2AePonCKcPFqEol5rh4pRHwhMNuY3J/6FNZEDjZoEJpYGvGCrGmlAiCyM/iVVlsQe1U
-	O5MeJGg7jriysO5KfvWPaDrFYYGs9kbowOZGIx727Yv98A/mgD0vJacXJ38IPIinPen57lWO4lIiI
-	y/2/TbmQ==;
+	bh=EvIE6veR+EyB5V63jRDQHOQiV2bk4g6SmVTeDyWwtHQ=; b=h0A9J+p/ROXVNtg63quBv6OFJ8
+	8QGRzzDi391Bfrm0ZgWVolyCJNje9x/2zbtC0t6w2MohCTFT5CxfgJysADjLpPHIaUe7byUAuTakJ
+	XGg6MuxYUD97RsUORqdF8RO+mDxBLgJmZXh28qrAiMraCAmz3USGdiehZ+xY3KxgpV4SkNV0qLVWf
+	qZDRzB7hPfBmD6UAvJv846IEg/euMZjLRYtjBhu5F3iduKzBg24jawRiOQj/QnCz8FD74NWaTFhoP
+	C56hKorEvahpXb7gQrEKbrdw+9eprIsN9apSpmwQs/T64bMMs0w1GhhPsQzxicqNjN7xz7NvgZte+
+	eGqjyWRw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTc2A-001J9f-MD; Tue, 06 Apr 2021 03:05:42 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1lTcHX-001KmO-Ks; Tue, 06 Apr 2021 03:21:35 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTc1u-001J5R-Vs; Tue, 06 Apr 2021 03:05:33 +0000
-Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4FDslq250BzwR2Z;
- Tue,  6 Apr 2021 11:03:03 +0800 (CST)
+ id 1lTcHJ-001KlU-FK; Tue, 06 Apr 2021 03:21:23 +0000
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4FDt6K1yfgz9wdL;
+ Tue,  6 Apr 2021 11:19:05 +0800 (CST)
 Received: from DESKTOP-EFRLNPK.china.huawei.com (10.174.176.196) by
- DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
- 14.3.498.0; Tue, 6 Apr 2021 11:05:05 +0800
+ DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
+ 14.3.498.0; Tue, 6 Apr 2021 11:21:05 +0800
 From: Qiheng Lin <linqiheng@huawei.com>
-To: <nbd@nbd.name>, <john@phrozen.org>, <sean.wang@mediatek.com>,
- <Mark-MC.Lee@mediatek.com>, <davem@davemloft.net>, <kuba@kernel.org>,
+To: <nbd@nbd.name>, <lorenzo.bianconi83@gmail.com>, <ryder.lee@mediatek.com>, 
+ <kvalo@codeaurora.org>, <davem@davemloft.net>, <kuba@kernel.org>,
  <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Qiheng Lin" <linqiheng@huawei.com>
-Subject: [PATCH net-next] net: ethernet: mtk_eth_soc: remove unneeded semicolon
-Date: Tue, 6 Apr 2021 11:04:33 +0800
-Message-ID: <20210406030433.6540-1-linqiheng@huawei.com>
+CC: <linux-wireless@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, Qiheng Lin <linqiheng@huawei.com>
+Subject: [PATCH net-next] mt76: mt7921: remove unneeded semicolon
+Date: Tue, 6 Apr 2021 11:20:51 +0800
+Message-ID: <20210406032051.7750-1-linqiheng@huawei.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-Originating-IP: [10.174.176.196]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_040531_603063_74899C87 
-X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-CacheID: sfid-20210406_042121_956822_B12C3250 
+X-CRM114-Status: UNSURE (   8.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,26 +76,26 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Eliminate the following coccicheck warning:
- drivers/net/ethernet/mediatek/mtk_ppe.c:270:2-3: Unneeded semicolon
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c:1402:2-3: Unneeded semicolon
 
 Signed-off-by: Qiheng Lin <linqiheng@huawei.com>
 ---
- drivers/net/ethernet/mediatek/mtk_ppe.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index a1a9959a2461..71e1ccea6e72 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -267,7 +267,7 @@ int mtk_foe_entry_set_ipv6_tuple(struct mtk_foe_entry *entry,
- 	default:
- 		WARN_ON_ONCE(1);
- 		return -EINVAL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 3f9097481a5e..e56cde3a19ec 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1399,7 +1399,7 @@ void mt7921_mac_work(struct work_struct *work)
+ 	if (++phy->sta_work_count == 10) {
+ 		phy->sta_work_count = 0;
+ 		mt7921_mac_sta_stats_work(phy);
 -	};
 +	}
  
- 	for (i = 0; i < 4; i++)
- 		src[i] = be32_to_cpu(src_addr[i]);
+ 	mt7921_mutex_release(phy->dev);
+ 
 -- 
 2.31.1
 
