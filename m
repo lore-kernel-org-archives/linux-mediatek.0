@@ -2,99 +2,82 @@ Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15855C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 01:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68E88C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 02:18:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD1DD613E9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 01:02:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD1DD613E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 021FE6139B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 02:18:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 021FE6139B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5mK26E8SZUXpm2FB/iZMLE88c0FPVmILul8CUOYErrk=; b=cllABlzmQGv97nrbNtlKwHFFY
-	Ijvc1NsAFB6HFecmcuH7awQ3eXwFOkkB9sZRZ9/dTLAg/RkzT+uOrjGu/IZEdK9HMjQK+asRDjoCW
-	89hpPzKGSf4+jRluaYJ0F9bWcjiUcvQdtDtSaVXeClsRNbT0LWzhyHxjM6hLk7hhordm6iZV8LA7N
-	PEplJMcLRerpWvCgZZsVTPpc9Ms9Lmyj9NGnP+D6M5/sk9Tm39HzfOcNwYYk4JrrHcsfTXlDyovn1
-	EidNu3gWO+YEHaa/0M1rts8WMGPsfX5AyaKIbV8ZwpfABjB8Hk8p0msOxdXiMvnveV0J3f2kEGtGN
-	zUAKu3OQQ==;
+	 bh=ld8wnJB11mW0p9rKL51RodGbelUtsW5qSqrUFvclmlw=; b=peJBgTJ6KaEb9uT6VJHQaaPxt
+	BSMLeQ3yplu0Xiavr31sZwshOJ7otUTGsfjgzuQ29M12XbUIMCUbfA2cFPZTdXRxtjTXbo93RzJ2a
+	u56o8YftdE8gUJ+f1uVo1cmsFEeV0UA6eKQShKSaeZm5KrzQzzzgPxa/aeQU93tc4UQQG+PD1KEoj
+	4ayWU4fDKKeuJldrLHWZljTAN9tSPNQY9CBwXZo4DD76a+b/PKJRbbUlGG+ZTN+w4VROlWUB/A8/f
+	nDNfgUkRhsY8mUS56gaHo2rw8zgjE2NG2SE2AYPQnKcFHk8gd5TOzg72Sn4abZGwmEqonnvp7ugD4
+	hl0Vweu6Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTa6G-0017CN-VQ; Tue, 06 Apr 2021 01:01:49 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1lTbIe-001FUU-Ox; Tue, 06 Apr 2021 02:18:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTa63-0017B6-Cy
- for linux-mediatek@lists.infradead.org; Tue, 06 Apr 2021 01:01:37 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id u9so14492146ljd.11
- for <linux-mediatek@lists.infradead.org>; Mon, 05 Apr 2021 18:01:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=5zVKmQWoY5kDCFVTKphIi89O5naAa9hmJVDmMhUdz3Q=;
- b=QegWQwg8yFEvjEQfCigibIGZ4Y4SYCt82rKXcB7nZdTouPX1K6tx0HwrMnL7qNUP5A
- iQHl4FMr64tDr0GroFsiVKYVYlrhoihPg0Sj4TxCkAQZsRt0silaTlbK6bWEm+pwPiGW
- Mry4qd38bWVMl92hpz6pwjc6VScW/Ph1BYcms=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=5zVKmQWoY5kDCFVTKphIi89O5naAa9hmJVDmMhUdz3Q=;
- b=WytBQKc2Ug6AIKHFN4cxweWxCkn2XGp14Sqt9vAruQ22nhQoCEv5KT4RYeRXtHt6bf
- S/J4Zwfy2w1rsQfGaBDCPuUPCDZaUuZ2zdS9g1Id5TCVAUyquzGmtNElEEnvOstYYoX1
- zn8gmru/k8I1x7QIILGljfp3Sq8yaLsJMf6k1+VEQTZjSntEkWlDOQpoXtzebeXirB3B
- bzwKhZERCyn6ZlidjMYSkr9eVXREJCfugT/ijR4opfo6YmkFGCE/VfsHSR8rZkeBJTTr
- OnygmsdSlvUTcOtXgjd2Ihtc5VRvx5ra5gkmroljvJcmw5lvdZ1Wmw4XBf8aA0Pq58oK
- 1mqA==
-X-Gm-Message-State: AOAM5326zD6U+RG3t/rhlu1vO/u48lR+27TrVNrXl5/Xt47puiUSjD0w
- LmjERBqAhEtN8xNaxgqtsjx/QzgaPHpU9Q==
-X-Google-Smtp-Source: ABdhPJz9sUI7iN4hhYMh8dIe+gHNn1s1g+/B1+WeYoK/zde/SElJNsz18OY8ZfzYHjf/H9RGiWQrCw==
-X-Received: by 2002:a2e:9989:: with SMTP id w9mr16970912lji.163.1617670893015; 
- Mon, 05 Apr 2021 18:01:33 -0700 (PDT)
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com.
- [209.85.167.50])
- by smtp.gmail.com with ESMTPSA id d11sm2026353ljj.79.2021.04.05.18.01.31
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Apr 2021 18:01:32 -0700 (PDT)
-Received: by mail-lf1-f50.google.com with SMTP id w28so20006565lfn.2
- for <linux-mediatek@lists.infradead.org>; Mon, 05 Apr 2021 18:01:31 -0700 (PDT)
-X-Received: by 2002:ac2:4e88:: with SMTP id o8mr2166614lfr.552.1617670891135; 
- Mon, 05 Apr 2021 18:01:31 -0700 (PDT)
+ id 1lTbIS-001FTJ-4M; Tue, 06 Apr 2021 02:18:31 +0000
+X-UUID: 8affccedc2e94673a668223b8d610fb7-20210405
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Gum8DmPKyJ1oZDVQaFVj6BihhQF1RHFD6805mHWOT9s=; 
+ b=rlcrzLAJBK/n9wRRHdh9o93Z8ea1czFDyxkhqyEvkZRCov2RH1EGc/r58AliqoRvsrFEB+Npv0CR70ZjC1Uq4rEM+2qwXB1kZA1IYeOK3RiA7TCKdSn1aSyB2nNfji3jzxagZQ18npiaLuSGNGYCqWoAEV0lPv4fSzWuEqJegaw=;
+X-UUID: 8affccedc2e94673a668223b8d610fb7-20210405
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 171040203; Mon, 05 Apr 2021 19:18:20 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Apr 2021 19:18:18 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 6 Apr 2021 10:18:12 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 6 Apr 2021 10:18:12 +0800
+Message-ID: <1617675492.22435.4.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/2] usb: xhci-mtk: remove unnecessary assignments in
+ periodic TT scheduler
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Ikjoon Jang <ikjn@chromium.org>, Yaqii Wu <Yaqii.Wu@mediatek.com>,
+ <linux-usb@vger.kernel.org>, Mathias Nyman <mathias.nyman@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Tue, 6 Apr 2021 10:18:12 +0800
+In-Reply-To: <YGq2YfURFApdJLxb@kroah.com>
+References: <20210330080617.3746932-1-ikjn@chromium.org>
+ <20210330160508.1.I797d214790033d0402d19ff6b47a34aff60d3062@changeid>
+ <1617179455.2752.1.camel@mhfsdcap03> <YGq2YfURFApdJLxb@kroah.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20210325123446.v2.1.I1d9917047de06715da16e1620759f703fcfdcbcb@changeid>
- <049946ac-5263-21ee-9651-7295f0bcf387@linaro.org>
- <CAP8nV8rv6bKARZ31fVqcjVgMe+5UyVG8UAyNsm1hDCP2BbRSgw@mail.gmail.com>
- <67eed9a2-2b97-be1b-3290-948da662ea65@linaro.org>
-In-Reply-To: <67eed9a2-2b97-be1b-3290-948da662ea65@linaro.org>
-From: Evan Benn <evanbenn@chromium.org>
-Date: Tue, 6 Apr 2021 11:01:04 +1000
-X-Gmail-Original-Message-ID: <CAKz_xw1ZSuvqnBHDRVLAV3FZKuen0F9L+gjjP=Hedo6G74ow4w@mail.gmail.com>
-Message-ID: <CAKz_xw1ZSuvqnBHDRVLAV3FZKuen0F9L+gjjP=Hedo6G74ow4w@mail.gmail.com>
-Subject: Re: [PATCH v2] drivers/clocksource/mediatek: Ack and disable
- interrupts on shutdown
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Evan Benn <evanbenn@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Stanley Chu <stanley.chu@mediatek.com>,
- Alexey Klimov <alexey.klimov@linaro.org>, 
- Julia Lawall <Julia.Lawall@lip6.fr>, Yingjoe Chen <yingjoe.chen@mediatek.com>, 
- Thomas Gleixner <tglx@linutronix.de>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, LKML <linux-kernel@vger.kernel.org>, 
- Fabien Parent <fparent@baylibre.com>
+X-TM-SNTS-SMTP: 79BB5D152F61C279504AE40E61C8FA02534BFF7A22CD66A437832A019CFDCF482000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210406_020135_553286_CE37C40C 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20210406_031828_782705_2C78503D 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,27 +94,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 3, 2021 at 1:15 AM Daniel Lezcano <daniel.lezcano@linaro.org> wrote:
-> >
-> > That said I am happy to upload that version if people think it is better.
->
-> IMO, it is not in the normal flow to disable/enable the interrupts.
+On Mon, 2021-04-05 at 09:04 +0200, Greg Kroah-Hartman wrote:
+> On Wed, Mar 31, 2021 at 04:30:55PM +0800, Chunfeng Yun wrote:
+> > cc Yaqii Wu <Yaqii.Wu@mediatek.com>
+> > 
+> > I'll test it , thanks
+> 
+> Did you test this series and find any problems?  If not, I'll go queue
+> these up...
+Yes, found an issue on the start-split transaction, but not found the
+root cause yet :(
 
-Hi Daniel, no problem.
-
-I will upload the suspend/resume version. Please note the similar fix
-to the other timer in this file:
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/1614670085-26229-2-git-send-email-Fengquan.Chen@mediatek.com/
-
-Is doing the same ack/disable.
-
->
-> Does this timer belong to an always-on power domain ?
->
-
-I'm not sure sorry, the datasheet does not seem to say. Maybe mediatek
-can answer.
+> 
+> thanks,
+> 
+> greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
