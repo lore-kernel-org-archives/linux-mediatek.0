@@ -2,83 +2,101 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83E21C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:40:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7350C43460
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 04:51:13 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25AD1613A7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:40:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25AD1613A7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4D720613A7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 04:51:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4D720613A7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BlkxnBieys9YH+XbSZqiQpS9TLdfx2AHjrwEBHeZhy4=; b=jP3F+ey65cX8cOGuX4/AvGeLu
-	jiAvUP0jd3PCWm8z/4SoMSiWSvNUofaBx/PlWbSQS9puCGRQY/WDbizP+mfCpIfxGYvTbyDs3AEOn
-	sa99oolSSOY3zwW5nnFNDS4FFN+Mpbp5i48erUKBCa3PQ+j5sFNczzwQugJJIm7Hizg8ztJJbejFD
-	N7KEfaEMEaHjEN60i4F2bEvaxWGtLZ4NEtcEiRTv6hDmPjtTPpYZuxexjMriE5WUg0kyC7kyevk9G
-	QtYBiWwnOKntnNwTo7dMIPvkk/d87o36D4oT4kyPXHnUxc5fHSLuL1IKLlF1VAGDOEkSt3RFRzAWE
-	9yDlVaAqg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qi1fbyQanHuKt9fjK6qEfPwMOccfQzXApWiHgCPC5Hc=; b=HNFsBeDPIaQ6QibyKmTPhxQQkZ
+	QRqZsZ5Gr4l5IibYc8y3JtEiqrD5fWx6d5Yzx6p9lYUUyYDsyg9+wzsb+9QsSEmddNH3VPnsojfBl
+	Fkky+xgi5Fqcp7Xa2RiopX+WCG3xVQkqFsvLt+AAsz1M9ZTo+JebMXEM9WLXvdeP3QdlgggSTYXNl
+	ZaPIG7ITr2ZU1q7ClPbqZ9crN1+5qf2EJaaEKyMXDRYEA0irCFeWG1b15QIaYq4kIarECM21iZQi8
+	PKlPQ67io0o0v+4RXLGvWYHnmYNQXhVhfq4pnNXqzegkdmgncn3GwD+yxa8iS9vuu8JAmCWKECOP0
+	nZGgNZgA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTz3A-003yUL-Mj; Wed, 07 Apr 2021 03:40:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lU09W-0043lN-Jf; Wed, 07 Apr 2021 04:50:54 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTz29-003yA9-HO; Wed, 07 Apr 2021 03:39:20 +0000
-X-UUID: 682e4a65a9c44939b4204ab7a349708a-20210406
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZTPs7QC/VQ3jJFqOtP7YClWOvbYIwYp8N0gfY+F80ok=; 
- b=ZvforSHE+na7DOdwwp2Bi4heENe2NZtmsGjyxIWpLqWq1ePfY/0SaTN6ySGv65CZIe9SgLhC6SF6gT6+8X0LRRgNRY6UtL5bd+9xKUF9X7wagKN9Tl3pDvwONZSXvdSDvRpcrcGPkd/nxTcZ6wu6TbsDFP4406bzWFJj9gPHor4=;
-X-UUID: 682e4a65a9c44939b4204ab7a349708a-20210406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1393050826; Tue, 06 Apr 2021 20:38:58 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Apr 2021 20:28:56 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 7 Apr 2021 11:28:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 7 Apr 2021 11:28:53 +0800
-From: Flora Fu <flora.fu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "Mark
- Brown" <broonie@kernel.org>
-CC: Flora Fu <flora.fu@mediatek.com>, Pi-Cheng Chen
- <pi-cheng.chen@mediatek.com>, Chiawen Lee <chiawen.lee@mediatek.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>
-Subject: [PATCH 5/8] dt-bindings: soc: mediatek: apusys: Add new document for
- APU power domain
-Date: Wed, 7 Apr 2021 11:28:03 +0800
-Message-ID: <1617766086-5502-6-git-send-email-flora.fu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1617766086-5502-1-git-send-email-flora.fu@mediatek.com>
-References: <1617766086-5502-1-git-send-email-flora.fu@mediatek.com>
+ id 1lU09S-0043jv-E5
+ for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 04:50:52 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id
+ b8-20020a17090a5508b029014d0fbe9b64so594659pji.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Apr 2021 21:50:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oHeyYOhTyr/Pj14dswoKpegMv2vJUh025+BN2sVtXu8=;
+ b=roY/yLJtJzRhg3AFY5kSDhSdJzO7TXsC74zJKVKeUspDEKjofDINCo3OIsNJ8aAIhy
+ ZqlAc69WUGI4DTk2wDz61IpEh/q8U+hB1v37/3I+9CeVRXzgQz/7liKOINnPfwD/iadg
+ ZoU6lGUBUkI3lTT2pqoD7bTUL487cp5i7vzh0WvtoFZtzOMMQgubNQF9T+ot35w6SQmf
+ CfS3Jo6JPrSprlsL6QkVpJ51y4oZDLoRcjSnSG+XUa9Etafe645llvI9mbDvAQcB0mRb
+ EF5NVOr2vF50EhBbR0AcriXLgHvMXYxgvGz7qs58yWr5HHzhtCgH+PNEjzanK223MHpt
+ 0qdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=oHeyYOhTyr/Pj14dswoKpegMv2vJUh025+BN2sVtXu8=;
+ b=ayW84mUe+sZ34iFVXO0iKv9jnTvtFH07sgNhJckTuwMonwfCM70G47hxMCXB4+gFGl
+ inhpzuxgecIOd44cdReC4UMnxFYTxKHN8WENk3RRDtiwSro5X71qWRPPShicNwrvf7Tg
+ yerlFPyiFVC0PEJQ3DQJzkZ1mq38EZjBnD5plBOF9p0KEJiFUB8dlh5+Lc3f4OxGzUi8
+ EaTVccj1i0TtBWa/tD7l2C+RZ0EFtCJJW0BCsgP+2N0OA6x+tZA+S3JO81QhYpg36toJ
+ LfZGcWWOU83Zt6AkbmhDtWtTXhgGUuioE6YSWj9fWFZKjD3Ior9SEkOhCjvG4xNM3PKS
+ KrAg==
+X-Gm-Message-State: AOAM532KwaB3V5JxonzPspu5tXzV/B7/aRy5+3O5ycjXgAU4pS63M2Hx
+ rq4VocZQ1qJ61Lq1ap3Yaf4=
+X-Google-Smtp-Source: ABdhPJypi5n57JibwUe2l03PZQJOpv/eeU/jgVCqqreTiZ/weG7cr23O4MMOTkU2gI8gQYx8/djOSw==
+X-Received: by 2002:a17:902:bd8f:b029:e6:ec5a:3a6 with SMTP id
+ q15-20020a170902bd8fb02900e6ec5a03a6mr1526114pls.31.1617771049034; 
+ Tue, 06 Apr 2021 21:50:49 -0700 (PDT)
+Received: from localhost.localdomain ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id n52sm882679pfv.13.2021.04.06.21.50.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Apr 2021 21:50:47 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org
+Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Subject: [RFC v2 net-next 0/4] MT7530 interrupt support
+Date: Wed,  7 Apr 2021 12:50:34 +0800
+Message-Id: <20210407045038.1436843-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 42B2CA7540249A853B4F08125BFC10E92DB4B6618A5B217123DDF2CF1714566A2000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_043918_601979_EB0F889F 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20210407_055050_830158_DA496AAE 
+X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,168 +113,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the bindings for APU power domain on MediaTek SoC.
+Add support for MT7530 interrupt controller.
 
-Signed-off-by: Flora Fu <flora.fu@mediatek.com>
----
- .../soc/mediatek/mediatek,apu-pm.yaml         | 146 ++++++++++++++++++
- 1 file changed, 146 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
+DENG Qingfang (4):
+  net: phy: add MediaTek PHY driver
+  net: dsa: mt7530: add interrupt support
+  dt-bindings: net: dsa: add MT7530 interrupt controller binding
+  staging: mt7621-dts: enable MT7530 interrupt controller
 
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
-new file mode 100644
-index 000000000000..c99e812977f9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
-@@ -0,0 +1,146 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,apu-pm.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek APU Power Domains
-+
-+maintainers:
-+  - Flora Fu <flora.fu@mediatek.com>
-+
-+description: |
-+  Mediatek AI Process Unit (APU) include support for power domains which can be
-+  powered up/down by software.
-+  APU subsys belonging to a power domain should contain a 'power-domains'
-+  property that is a phandle for apuspm node representing the domain.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-apu-pm
-+      - const: syscon
-+
-+  reg:
-+    description: Address range of the APU power domain controller.
-+    maxItems: 1
-+
-+  '#address-cells':
-+    const: 1
-+
-+  '#size-cells':
-+    const: 0
-+
-+  '#power-domain-cells':
-+    const: 1
-+
-+  vsram-supply:
-+    description: apu sram regulator supply.
-+
-+  mediatek,scpsys:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: |
-+      phandle to the device containing the scpsys register range.
-+
-+  mediatek,apu_conn:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: |
-+      phandle to the device containing the scpsys apu conn register range.
-+
-+  mediatek,apu_conn1:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: |
-+      phandle to the device containing the scpsys apu conn1 register range.
-+
-+  mediatek,apu_vcore:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: |
-+      phandle to the device containing the scpsys apu vcore register range.
-+
-+patternProperties:
-+  "^power-domain@[0-9a-f]+$":
-+    type: object
-+    description: |
-+      Represents the power domains within the power controller node as
-+      documented in Documentation/devicetree/bindings/power/power-domain.yaml.
-+
-+    properties:
-+      reg:
-+        description: |
-+          Power domain index. Valid values are defined in:
-+          "include/dt-bindings/power/mt8182-apu-power.h"
-+        maxItems: 1
-+
-+      '#power-domain-cells':
-+        description: |
-+          Must be 0 for nodes representing a single PM domain and 1 for nodes
-+          providing multiple PM.
-+
-+      clocks:
-+        description: |
-+          List of phandles of clocks list. Specify by order according to
-+          power-up sequence.
-+
-+      clock-names:
-+        description: |
-+          List of names of clocks. Specify by order according to power-up
-+          sequence.
-+
-+      assigned-clocks:
-+        maxItems: 2
-+
-+      assigned-clock-parents:
-+        maxItems: 2
-+
-+      domain-supply:
-+        description: domain regulator supply.
-+
-+    required:
-+      - reg
-+      - '#power-domain-cells'
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+  - '#power-domain-cells'
-+  - vsram-supply
-+  - mediatek,scpsys
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8192-clk.h>
-+    #include <dt-bindings/power/mt8192-apu-power.h>
-+    apuspm: power-domain@190f0000 {
-+        compatible = "mediatek,mt8192-apu-pm", "syscon";
-+        reg = <0x190f0000 0x1000>;
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        #power-domain-cells = <1>;
-+        vsram-supply = <&mt6359_vsram_md_ldo_reg>;
-+        mediatek,scpsys = <&scpsys>;
-+        mediatek,apu_conn = <&apu_conn>;
-+        mediatek,apu_vcore = <&apu_vcore>;
-+
-+        power-domain@MT8192_POWER_DOMAIN_APUSYS_TOP {
-+            reg = <MT8192_POWER_DOMAIN_APUSYS_TOP>;
-+            #power-domain-cells = <0>;
-+            clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+                     <&topckgen CLK_TOP_IPU_IF_SEL>,
-+                     <&clk26m>,
-+                     <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-+            clock-names = "clk_top_conn",
-+                          "clk_top_ipu_if",
-+                          "clk_off",
-+                          "clk_on_default";
-+            assigned-clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+                              <&topckgen CLK_TOP_IPU_IF_SEL>;
-+            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+                                     <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-+            domain-supply = <&mt6359_vproc1_buck_reg>;
-+        };
-+    };
+ .../devicetree/bindings/net/dsa/mt7530.txt    |   5 +
+ drivers/net/dsa/mt7530.c                      | 203 ++++++++++++++++--
+ drivers/net/dsa/mt7530.h                      |  18 +-
+ drivers/net/phy/Kconfig                       |   5 +
+ drivers/net/phy/Makefile                      |   1 +
+ drivers/net/phy/mediatek.c                    | 109 ++++++++++
+ drivers/staging/mt7621-dts/mt7621.dtsi        |   3 +
+ 7 files changed, 323 insertions(+), 21 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek.c
+
 -- 
-2.18.0
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
