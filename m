@@ -2,78 +2,78 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60E02C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:24:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA512C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:29:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E86C26139B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:24:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E86C26139B
+	by mail.kernel.org (Postfix) with ESMTPS id 94DEC613A7
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 03:29:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94DEC613A7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wWQ0xMW8+XefiBnVsU+tE6J+oGBZsJU6L/MuwmTvGoE=; b=nvO5GzX6FOfair86ud9C0d0/Y
-	AbiKZtJk3IQ4BxpneoLQUrkK/iUiQUi7lvg+GFIv51M688Nmc6wGSwFZIUv3rWESeX5/7z+EccMSI
-	dLef0vZwmQgOoCH33OsJ0VhiHbbA3TM5fyMy4GOahlIj3u8yCB3z6lcKiVFnDvcUo7xUkL7wfbyHi
-	8+2JyAqajbMdWBXrmllA5w+SzpxQw9pOxSs6gse37q8P6Dnw4N9AZe6OVEKGItrsd/TmwnVd/pcts
-	lulAPcXEPeVGKsPXtyMwajp8t+cj45cezUu4GSo5CGPsvZSdbNeyttwyKIjxtMyCuQZSJ6dLoEYJn
-	DHB7x13bg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KZuop/ygLidFFhltdvl1coeZ5Gb2VyPDCwq6jP1b08g=; b=NGnERYOUPcHAo0G3Bjj3XmFz4o
+	b6nQEtdeOuhKYnYOSK1OoTTUK4X3Ngciuhnf/virLc2ydTULp0Ki2ggD1prONnHseyEkBMvh9r/Uv
+	etHaATI3Ep+OolylFT426WAnQu0Z4UUj3Pn43Plzg2BKbz0HBx+G9rj6lrxJTdYciEKAapNZtv8/L
+	R3KhEPM2LPBoS7tbur0g0ikr6oGji3twRHefhfA+Awv9rM+5Uamnr8Kc68VKi/6AvODx5abLMOXJX
+	e0EJgTQA8aBkjRYy6bMUbBLvEgxo5SzxYgLJkGhCCqZ0b0ditXRW0lQRa1XoVb7Pf3qq0R6ZLiiHz
+	f+BsqM6Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTynZ-003ujZ-Dp; Wed, 07 Apr 2021 03:24:09 +0000
+	id 1lTyru-003vk5-TT; Wed, 07 Apr 2021 03:28:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTynA-003udI-1q; Wed, 07 Apr 2021 03:23:47 +0000
-X-UUID: 543b496c40a547a5855915a7cb26bcbc-20210406
+ id 1lTyrh-003vfc-08; Wed, 07 Apr 2021 03:28:27 +0000
+X-UUID: 9978af9d285940549b7e02be02c9a35d-20210406
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6p+Sqw+2wiM1G9Ia9wdDLxw/Y5+M1qO/dO+F1uZZDGk=; 
- b=IXXcWshEAKNEyft7pQP3wF5j9gSHIlyls3bXxSThTBGJKdyPJtvaeeszJi/+kDqKO2WmPXeGk+8AEqbYv21+bBFn2NeSRfCsq1Z43QHsW59LKfuGmWcuhAG1LQkHaKGmU5oB+wTl46ulI5MjfVmvXTx8Jf4Zvwj8fcEZ5jFxu5M=;
-X-UUID: 543b496c40a547a5855915a7cb26bcbc-20210406
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <guochun.mao@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=btCdYK1uxaFVAna3LzPtYOODxucFpp7QFPOo8BL8LUw=; 
+ b=u859Cxec7hEaKLWf4wALREb8K31KwhsnodlGQF7EBP5OQcFCQ6qFcUO2odWveS4CP1qIhkr+QsEwTkbIK+64arOhRR81Z1Kj4uTvwS2iGqaHOsw/YEcqlXth3oLPUbjRt8hpZu48oEyQZizOnBxGQfmB0zc9YrU0HnjDr32PLYU=;
+X-UUID: 9978af9d285940549b7e02be02c9a35d-20210406
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <flora.fu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 940958413; Tue, 06 Apr 2021 20:23:32 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1696935754; Tue, 06 Apr 2021 20:28:17 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Apr 2021 20:23:30 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs07n1.mediatek.inc
- (172.21.101.16) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 7 Apr 2021 11:23:29 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 7 Apr 2021 11:23:28 +0800
-Message-ID: <1617765808.4370.1.camel@mhfsdcap03>
-Subject: Re: [PATCH v1 1/1] ubifs: only check replay with inode type to
- judge if inode linked
-From: Guochun Mao <guochun.mao@mediatek.com>
-To: Richard Weinberger <richard@nod.at>
-CC: Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <srv_heupstream@mediatek.com>
-Date: Wed, 7 Apr 2021 11:23:28 +0800
-In-Reply-To: <20210316085214.25024-2-guochun.mao@mediatek.com>
-References: <20210316085214.25024-1-guochun.mao@mediatek.com>
- <20210316085214.25024-2-guochun.mao@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ 15.0.1497.2; Tue, 6 Apr 2021 20:28:15 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 7 Apr 2021 11:28:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 7 Apr 2021 11:28:14 +0800
+From: Flora Fu <flora.fu@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "Mark
+ Brown" <broonie@kernel.org>
+CC: Flora Fu <flora.fu@mediatek.com>, Pi-Cheng Chen
+ <pi-cheng.chen@mediatek.com>, Chiawen Lee <chiawen.lee@mediatek.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>
+Subject: [PATCH 0/8] Add Support for MediaTek MT8192 APU Power
+Date: Wed, 7 Apr 2021 11:27:58 +0800
+Message-ID: <1617766086-5502-1-git-send-email-flora.fu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_042345_248765_63BF2F01 
-X-CRM114-Status: GOOD (  21.17  )
+X-CRM114-CacheID: sfid-20210407_042825_810343_A1646948 
+X-CRM114-Status: GOOD (  14.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +90,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Richard,
+The MediaTek AI Processing Unit (APU) is a proprietary hardware
+in the SoC to support AI operations.
+The series is to create apusys in the SoC folder for developing
+the related drivers. Add the apu clocks, basic apu nodes and the
+power domain to provide the power controller of APU subsystem.
 
-Gentle ping.
+This series is based on MT8192 clock[1] and PMIC[2] patches.
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=454523
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=458733
 
+Flora Fu (8):
+  dt-bindings: clock: Add MT8192 APU clock bindings
+  clk: mediatek: mt8192: Add APU clocks support
+  dt-bindings: apu: Add MT8192 APU power domain
+  dt-bindings: arm: mediatek: Add new document bindings for APU
+  dt-bindings: soc: mediatek: apusys: Add new document for APU power
+    domain
+  soc: mediatek: apu: Add apusys and add apu power domain driver
+  arm64: dts: mt8192: Add APU node
+  arm64: dts: mt8192: Add APU power domain node
 
-On Tue, 2021-03-16 at 16:52 +0800, guochun.mao@mediatek.com wrote:
-> From: Guochun Mao <guochun.mao@mediatek.com>
-> 
-> Conside the following case, it just write a big file into flash,
-> when complete writing, delete the file, and then power off promptly.
-> Next time power on, we'll get a replay list like:
-> ...
-> LEB 1105:211344 len 4144 deletion 0 sqnum 428783 key type 1 inode 80
-> LEB 15:233544 len 160 deletion 1 sqnum 428785 key type 0 inode 80
-> LEB 1105:215488 len 4144 deletion 0 sqnum 428787 key type 1 inode 80
-> ...
-> In the replay list, data nodes' deletion are 0, and the inode node's
-> deletion is 1. In current logic, the file's dentry will be removed,
-> but inode and the flash space it occupied will be reserved.
-> User will see that much free space been disappeared.
-> 
-> We only need to check the deletion value of the following inode type
-> node of the replay entry.
-> 
-> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
-> ---
->  fs/ubifs/replay.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/fs/ubifs/replay.c b/fs/ubifs/replay.c
-> index 0f8a6a16421b..1929ec63a0cb 100644
-> --- a/fs/ubifs/replay.c
-> +++ b/fs/ubifs/replay.c
-> @@ -223,7 +223,8 @@ static bool inode_still_linked(struct ubifs_info *c, struct replay_entry *rino)
->  	 */
->  	list_for_each_entry_reverse(r, &c->replay_list, list) {
->  		ubifs_assert(c, r->sqnum >= rino->sqnum);
-> -		if (key_inum(c, &r->key) == key_inum(c, &rino->key))
-> +		if (key_inum(c, &r->key) == key_inum(c, &rino->key) &&
-> +		    key_type(c, &r->key) == UBIFS_INO_KEY)
->  			return r->deletion == 0;
->  
->  	}
+ .../arm/mediatek/mediatek,apusys.yaml         |  56 ++
+ .../soc/mediatek/mediatek,apu-pm.yaml         | 146 +++++
+ arch/arm64/boot/dts/mediatek/mt8192-evb.dts   |   7 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  46 ++
+ drivers/clk/mediatek/clk-mt8192.c             |  91 +++
+ drivers/soc/mediatek/Kconfig                  |  10 +
+ drivers/soc/mediatek/Makefile                 |   1 +
+ drivers/soc/mediatek/apusys/Makefile          |   2 +
+ drivers/soc/mediatek/apusys/mtk-apu-pm.c      | 613 ++++++++++++++++++
+ include/dt-bindings/clock/mt8192-clk.h        |  14 +-
+ include/dt-bindings/power/mt8192-apu-power.h  |  11 +
+ 11 files changed, 995 insertions(+), 2 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
+ create mode 100644 drivers/soc/mediatek/apusys/Makefile
+ create mode 100644 drivers/soc/mediatek/apusys/mtk-apu-pm.c
+ create mode 100644 include/dt-bindings/power/mt8192-apu-power.h
 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
