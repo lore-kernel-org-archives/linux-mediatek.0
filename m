@@ -2,64 +2,85 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6125FC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 18:20:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE88CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 21:57:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4AE2C611C1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 18:20:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4AE2C611C1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8B6FE61205
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 21:57:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B6FE61205
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dyuOk/uOiV2dWKcZ9bZ08OWN3NfUxIjNsGHwprp47JY=; b=hQNSKEMUNkXa7bgU5W7UUmY3Z
-	zluJAyGBkV9TcQe4KKuFYGV2J0Sc5wH/7ifFXLllOxfWyDe7+mjjshWb8rraba/zDybaH9cG8XZ0z
-	+Fc388tZMPTDQBTjzkNftGnUTgR+wSLVvm+nz9b9Wd6WJkz/bvgQXhwIO86cZa45pJ3TWtw9nm3pw
-	PPEEwJo5hSvz4gBl41gAVxvZGwHe2OPRPYgPBq/J8ELnfD/pLE3eVYuExjEG7zZ5Hbvd5M6kQqLpd
-	4Sa8blM1CHCfIbTt7elU4iMOzwd/mBYjPEXKVCUa+NjrdiVVLYtv9wpvbZ9Eeg/bFLrQsu5gYt6AM
-	AVuvpC7CA==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=JFQrwHjP9C27q4U/g/sleneT0PV7bReGu7+3lJeTkQY=; b=VDsqInQjfm742REfD+N5vmCZg
+	/Wka+t/CqvficXCqr2Hd9bdq9gaFCrsjGgYeWDPyqtUcoNXZ3eriRCJOQW7qAbdTeCpxLPg0M5/8u
+	ZfxG/Q3sWw0bSDerCPv3UAanAq9bsIlOVIXo5zkRiGAeEtB3GVyCZWFWtGm3i+CcX5lCjvgmM/pvj
+	zD9+v0lOswh9rwjIQjEv+R7IFEim8uV864pbMSaQMSo02DmDyfNSUByLt3INYOim6btwk36a0KIqf
+	bmvYHz1oD3KBM6wXIe37LemVHIImDMfKnfSRUXG5myAd26uq6r31tBV7F7gBnWgMtVaOOqoJaNPzw
+	Cj8KMlUuQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUCmR-005jMs-Ko; Wed, 07 Apr 2021 18:19:55 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lUCmI-005jLv-HI; Wed, 07 Apr 2021 18:19:48 +0000
-Received: from localhost (p5486cf96.dip0.t-ipconnect.de [84.134.207.150])
- by pokefinder.org (Postfix) with ESMTPSA id A2B1F2C04E4;
- Wed,  7 Apr 2021 20:19:45 +0200 (CEST)
-Date: Wed, 7 Apr 2021 20:19:36 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Qii Wang <qii.wang@mediatek.com>
-Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- leilk.liu@mediatek.com
-Subject: Re: [RESEND] i2c: mediatek: Get device clock-stretch time via dts
-Message-ID: <20210407181936.GA1614@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>,
- Qii Wang <qii.wang@mediatek.com>, matthias.bgg@gmail.com,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com
-References: <1615622664-15032-1-git-send-email-qii.wang@mediatek.com>
- <20210406194856.GF3122@kunai> <1617797706.32076.1.camel@mhfsdcap03>
+	id 1lUGAi-0067C2-EJ; Wed, 07 Apr 2021 21:57:12 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+ by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lUGAL-00678f-Bn; Wed, 07 Apr 2021 21:56:51 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id o11so5628980qvh.11;
+ Wed, 07 Apr 2021 14:56:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=A4tTVq5QiH2Xb0EtjOJdc/qbW2Gofk9WYRP/7DRJHO0=;
+ b=O7NDxYVuwAMnWgiVVttXejh4DLzj8sWFNSk+KEwa83NxE7eAytHpw7n2uNfa2AIXXz
+ iPzhO2ui5k1LsxiT1nXtMYy8g7jL/VAjbdpmETMXeRlnFXGejoWFlcXzemUYc/BTeVPk
+ ltGCiBL67Wna23PGYD+346N4FgkXHw5JYCXR1eMjLBIV+CPrgzx20p4F/Fot5ciG4h3P
+ ac3m6O6t1xQ4gGWan3VHUsgbzqt+4cxP3tjVUaCJ9tRxya75Y+xnXAm/ReclZcNgotV8
+ AJLRsbw2v8zZ+7ntTeFWD/jQvO0Pz+dXEX6I5+H0H/TI3U7DKdDDDkdTpmenJpPV9CwU
+ STVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=A4tTVq5QiH2Xb0EtjOJdc/qbW2Gofk9WYRP/7DRJHO0=;
+ b=XDcBoXUGhNsoL+gtFEr8wIhVvjRvLNQ13s/7bF4UONowr/7bDC+6iIN3AmiJDsJ6fs
+ s3fVlcvb5cuf+tfgwNJNtRYDcJkKaJ97oRZ6Bo4sEb22MklrSsNclOJNSHT15auHPmQg
+ QjPUSWGKgNWv7jsP03NKZqEFM7UBGGzK72XeAqJryEHWy6EEi4dYbAgsxGO5116LJIoU
+ STcjn3hqU0Skqqm/o6IM3L75PnUwLCj6yWMB3ed31HzDz0WA+xJk8jo0Byy0iIx+wLBA
+ ujfWITIGIxslpt1vGbTayGiqIQ8R2eGvwspR027TAgk04Y5UCNDDzkkT0JyNON0jHJPF
+ oxfg==
+X-Gm-Message-State: AOAM531eahilp006MeXXuA0UIkDyAafq2IA7YgELi/3sXSEtjOtVRdcB
+ WZFHvWtpH3+35zIHfXIpyDAP2nd7W4m1sWwD3kNLP/MX
+X-Google-Smtp-Source: ABdhPJyM6dcr4EsiCFIevT/oXml3V5GAPPZm4YReJNO+oNZDPRbebmQA8yrgtrl+4VGXuh3c2EX4KM39RkJ+61drBLA=
+X-Received: by 2002:ad4:57a5:: with SMTP id g5mr5804051qvx.60.1617832607707;
+ Wed, 07 Apr 2021 14:56:47 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1617797706.32076.1.camel@mhfsdcap03>
+References: <20210316085214.25024-1-guochun.mao@mediatek.com>
+ <20210316085214.25024-2-guochun.mao@mediatek.com>
+In-Reply-To: <20210316085214.25024-2-guochun.mao@mediatek.com>
+From: Richard Weinberger <richard.weinberger@gmail.com>
+Date: Wed, 7 Apr 2021 23:56:36 +0200
+Message-ID: <CAFLxGvygphmHbhzHJmSO=NQFO_02oSamXVjC5Loj2nCcQWWYNg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] ubifs: only check replay with inode type to judge
+ if inode linked
+To: guochun.mao@mediatek.com
+Cc: Richard Weinberger <richard@nod.at>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mtd@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_191946_679886_086BA7E2 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210407_225649_461065_A2FFE7E3 
+X-CRM114-Status: GOOD (  22.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,68 +92,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7685394860038986473=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Mar 16, 2021 at 10:00 AM <guochun.mao@mediatek.com> wrote:
+>
+> From: Guochun Mao <guochun.mao@mediatek.com>
+>
+> Conside the following case, it just write a big file into flash,
+> when complete writing, delete the file, and then power off promptly.
+> Next time power on, we'll get a replay list like:
+> ...
+> LEB 1105:211344 len 4144 deletion 0 sqnum 428783 key type 1 inode 80
+> LEB 15:233544 len 160 deletion 1 sqnum 428785 key type 0 inode 80
+> LEB 1105:215488 len 4144 deletion 0 sqnum 428787 key type 1 inode 80
+> ...
+> In the replay list, data nodes' deletion are 0, and the inode node's
+> deletion is 1. In current logic, the file's dentry will be removed,
+> but inode and the flash space it occupied will be reserved.
+> User will see that much free space been disappeared.
+>
+> We only need to check the deletion value of the following inode type
+> node of the replay entry.
+>
+> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> ---
+>  fs/ubifs/replay.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/fs/ubifs/replay.c b/fs/ubifs/replay.c
+> index 0f8a6a16421b..1929ec63a0cb 100644
+> --- a/fs/ubifs/replay.c
+> +++ b/fs/ubifs/replay.c
+> @@ -223,7 +223,8 @@ static bool inode_still_linked(struct ubifs_info *c, struct replay_entry *rino)
+>          */
+>         list_for_each_entry_reverse(r, &c->replay_list, list) {
+>                 ubifs_assert(c, r->sqnum >= rino->sqnum);
+> -               if (key_inum(c, &r->key) == key_inum(c, &rino->key))
+> +               if (key_inum(c, &r->key) == key_inum(c, &rino->key) &&
+> +                   key_type(c, &r->key) == UBIFS_INO_KEY)
 
---===============7685394860038986473==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="RnlQjJ0d97Da+TV1"
-Content-Disposition: inline
+This change makes sense. Thanks a lot for hunting this down.
+It will be part of the merge window.
 
-
---RnlQjJ0d97Da+TV1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-
-> Due to clock stretch, our HW IP cannot meet the ac-timing
-> spec(tSU;STA,tSU;STO).=20
-> There isn't a same delay for clock stretching, so we need pass a
-> parameter which can be found through measurement to meet most
-> conditions.
-
-What about using this existing binding?
-
-- i2c-scl-internal-delay-ns
-        Number of nanoseconds the IP core additionally needs to setup SCL.
-
-
---RnlQjJ0d97Da+TV1
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmBt97QACgkQFA3kzBSg
-KbZGCxAAjTn07oN3fOfLU6hpW7yIEBiz+GxSzByvRRuqIrVft8GqetCvK5oMvd7p
-diD/VhZ+4P1kw4/mA6zzsRpNJNerUBPeQ7xsF7cFMU7cfvG6A0zUuOieWM7+zwvw
-zCllS2a+a9Pld3QZQKhQKySazasct2LvhDh2HOpiNwm+mtmpWFur1c2Wra+JovF1
-soq+CYPCOB/5OkZvEGhpsXIvoCJp1/hlx3hEuAGPh34ZkOOWoZBXty6yJJsTOH+m
-r25H0sceNddaabw05fs+F90zs5Y6wgyCvaIp1mT/R51HKOHzR7dVLq+JZhy+AZKN
-uQeGtveLnr8BcS3gud44R3AhBpejil8h0DNYd2BMGp7bqOujiWbK/GkRTfT/gnZA
-w+omah9S/tGhZKT9RY/6lFjeI1mn+r1A3vmHfjT5WiONjMLcHLe9+5SvK/N4vfxw
-cqEahaLoa8TkOOD7MI5gZROtwe4BDWtFdmyujWbql9a0lO/QGzGuchKgfBCDHGZD
-WF35ChYRvunAJr3dyfbaThKS7/KpolBLQz+z4Hs2x7PkRmvyK18AIJkdv/d7c82O
-scccsm6zgp1151zd9CfFKm355CmCgfUDU/naFCEic8HsmWAjc/gxjkNYpQyUjNPP
-+BjFP14MBlLhaAC2vGVJTqKQnStBlWAfbUr8vaV6yL/0hBnamxQ=
-=zMkw
------END PGP SIGNATURE-----
-
---RnlQjJ0d97Da+TV1--
-
-
---===============7685394860038986473==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+Thanks,
+//richard
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7685394860038986473==--
-
