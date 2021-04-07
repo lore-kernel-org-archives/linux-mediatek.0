@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 82B69C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 23:24:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D001DC433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 23:24:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A14F611C9
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 23:24:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A14F611C9
+	by mail.kernel.org (Postfix) with ESMTPS id 353DC61157
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 23:24:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 353DC61157
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,23 +23,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cL1RPN61qfn2jYOzFrulw99ejBL+L4yqkbjwntzFjlU=; b=e4ilJeoCXGiCa26aR+eydIBFd
-	gmd6rp23/q3++0Lyk2lYSTzih9qe/uV/wTUqukL5dzKomffAX2NyW6hxW06qeoeOEXHPFfQAgnrhf
-	44PNUoQLywWmZcYeig74L8nFzhSYUlWnC9mOzpdtRWAlmpCWw+HxmIXvFKKsAf79JeilHlVBUeDS9
-	KLSc5AkGVVmzG9s6rK3tWgqSvc4uLZoyEvapuvSjF6lBMRLMuZChT8PN1fwFaUg6r4Xegt6VeOYj2
-	7cgTES+D18KXGxbdcBUk0TrUMCm/GFE4XP0r0k7ePve9KFzZr1Z3hHezBkFu5nMJ/jLsrBbRgVyoh
-	gDf7TZJjg==;
+	 bh=EyFJnMS5l6hOpACHWkMXzR1wy7IbfOiRgbFyWY0vih8=; b=FNCnLe/MjS0Jcx7jn9AUr6ZDW
+	YSRQniPOeOxTTYPRcEcBF1xPZ/wrG8ZNqtIz357B51sXTXvqWdFlJcdHH6nygAQTWh2C//Xpb4aQB
+	Yh2zv5V+Tkg2HVO6J/2AFAQ1u1s2LY9jeVFWzDMq5KUUAmU5xMSAc3G2fUxOjVcL6NKpdeLnz8wrc
+	HXZu72PhXpysj31t3BIdI6bE4rBjzfRO4RxT7pKAz8qyZK6kFrLN7ychxtbPuuvfXpMla1TlHQ6io
+	zW6pi/kZeY97nBb10243o1hVJ3MCRsYwDk6ugHgkX706u3sZ7/qgWpQCINOWYhEk++bS+SkEML7kZ
+	a/vvpuLuQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUHX1-006HaL-SZ; Wed, 07 Apr 2021 23:24:21 +0000
+	id 1lUHXJ-006HfS-7w; Wed, 07 Apr 2021 23:24:37 +0000
 Received: from vps0.lunn.ch ([185.16.172.187])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUHWy-006HZa-2J
- for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 23:24:17 +0000
+ id 1lUHXD-006Hcc-1a
+ for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 23:24:34 +0000
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
  (envelope-from <andrew@lunn.ch>)
- id 1lUHWu-00FP4O-Ed; Thu, 08 Apr 2021 01:24:12 +0200
-Date: Thu, 8 Apr 2021 01:24:12 +0200
+ id 1lUHXA-00FP55-2q; Thu, 08 Apr 2021 01:24:28 +0200
+Date: Thu, 8 Apr 2021 01:24:28 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: DENG Qingfang <dqfext@gmail.com>
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -58,17 +58,17 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
  Chuanhong Guo <gch981213@gmail.com>,
  =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
-Subject: Re: [RFC v2 net-next 3/4] dt-bindings: net: dsa: add MT7530
- interrupt controller binding
-Message-ID: <YG4/HAJeq8KFVaBM@lunn.ch>
+Subject: Re: [RFC v2 net-next 4/4] staging: mt7621-dts: enable MT7530
+ interrupt controller
+Message-ID: <YG4/LCpibNuiU5su@lunn.ch>
 References: <20210407045038.1436843-1-dqfext@gmail.com>
- <20210407045038.1436843-4-dqfext@gmail.com>
+ <20210407045038.1436843-5-dqfext@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210407045038.1436843-4-dqfext@gmail.com>
+In-Reply-To: <20210407045038.1436843-5-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_002416_200103_446D6DA1 
-X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-CacheID: sfid-20210408_002432_692196_28C95E8F 
+X-CRM114-Status: UNSURE (   7.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,8 +86,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 07, 2021 at 12:50:37PM +0800, DENG Qingfang wrote:
-> Add device tree binding to support MT7530 interrupt controller.
+On Wed, Apr 07, 2021 at 12:50:38PM +0800, DENG Qingfang wrote:
+> Enable MT7530 interrupt controller in the MT7621 SoC.
 > 
 > Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 
