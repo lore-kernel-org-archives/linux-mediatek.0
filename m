@@ -1,70 +1,143 @@
-Return-Path: <SRS0=k4UB=JD=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76916C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 23:30:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31965C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 01:14:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E2FE613BE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Apr 2021 23:30:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E2FE613BE
+	by mail.kernel.org (Postfix) with ESMTPS id A6F49613B3
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 01:14:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6F49613B3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:Message-Id:From:
-	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HJc+VmJw2Ot4hyQPXWyuE78+yuYwDAwhH+UV8V2vfSU=; b=AWcHIVkJG/dnig7iohdlsaLYw
-	sp77CWyYYzzpgwHu5KfG/ld1DZnf7nZ0u+rAU+0TcPGLNW7JyF5eVKeGjw/0PBjhH3in9aa0/0wOe
-	BKZjrK5C2MgJpwW+wQcHBszOzXY5cVg4nB6jsM5rbQl0lx2+x8DVHI6EViDt4bOs3qJQQjtYjOKB7
-	pbWo82vooNFLkvtRhoeISree0VkvKyxNV/ezNzp7JNY4Jm5dJ0+WRx2Wf0VbmhsTKrzu+y7aY8c8h
-	0cYPN4oraBrJvtFne6pm0LkrGnMXaEqrJz/+NnXSAEQ71+5YNpk2arLMUZ8ep7HVUTABAieqPRXqu
-	rbrdK7kIw==;
+	 bh=H++3n1ydzydX8sNvBISayYM6PJHkDYGJC5rXlO05Mic=; b=VyORY9bvhpIM6no7AI5YZysJC
+	qG7/jvNtX1sTDqJx6hhQKS7lPOL+8jSryAMzsChNeKAnoYKcrhCmOjkAj53zSu0iEeN1LBwTFEYLG
+	z6o3qkZn8pIWBTWJmQZCPupveBKKfBoHW2tZ4MXSkyugyFPCeN44EBecyl2ipNVEymkLZ3dNrP7bp
+	TAqd4kDHDSEKqzMLNRLVjNxrzrdCc1ElnSDfFgYuA4SZoW6x5c/ejiJ+TZwM0mHHC8nLMknO5Bv76
+	glQTpJwn96pmSLi0IsRuckZAr4ojbI/zktTjSkWoWXAUuARHYhhZxZXd+oLHr1xHuisqiFlSh1Vtg
+	Y8FuRLzpg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lTv9W-003cb2-Tl; Tue, 06 Apr 2021 23:30:35 +0000
+	id 1lTwlK-003jMw-4F; Wed, 07 Apr 2021 01:13:43 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lTv9C-003cZ7-5Q; Tue, 06 Apr 2021 23:30:17 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPS id 51C79613C0;
- Tue,  6 Apr 2021 23:30:10 +0000 (UTC)
+ id 1lTwl8-003jMD-DY; Wed, 07 Apr 2021 01:13:32 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7208E6124B;
+ Wed,  7 Apr 2021 01:13:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1617751810;
- bh=ZIUFsrMXmGIIHPw5n0/I5aDetMQFS18Ze+FEc3jJQjQ=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=D6FIaM2Pefyj/JFnRiRVFJGC09E4o8VZXp2EbNlRAKZPk2KOH7Zx1V+MCwu+6gNvF
- /E4tcVdAPANPtMZ7qYrcROXhFe4h40Px7k0HT7fW5LYN2NrMqn2upByNV4HTS7Dm8r
- rOrb6Od8ow87iESnVTqmIA40G88Hvbm5HT4n3MCCFb25uC4K5YDtLJdhRc1Op6rutH
- q4j0x9mrUIV6yvsXNnWcM+snkAD8kBVtmoX2WRQ+0esCaMaBCBVfqDm8yYm0GXRA6H
- WgegEfzfDc8ShT1H+C+1fCpjTd/3v2gOYS0KYl3XF6ipV0NwNjVgbqxfl6mFUsSymf
- /7pqHHXKgME0A==
+ s=k20201202; t=1617758008;
+ bh=4wmgtd3m+Ta1X4jkV88q8R8S6J8R9xiITuF0Yr6xVvE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=pRLlQVTSNNqQq6FWgIz2B7IVJb0WD4DcmH/q1OoNuEMrYaWQrNUQZE+TGHQqvO7uZ
+ 0sbEWPuyB8HyaAmOyOmuJUzxCmp1p115y8GLeeHMULg8c7AuvfXjx5Z564IDbK8lJq
+ gmbN4+vm5P6n1CiJ0TfpP9EWDKvzUd31Ix6pvdON87LVzboxcqirc6EFlZYA+M4j8G
+ jHfCtKJ3iJFDoh1b09Poyvm8SAkLWUaz66KIw278EYEG9sTTsgo5EgmZQ4PmQnu3Wd
+ /7t4s6bK6dnu7hbZeox3JOJGIH6WZmQ5XIo2AS7KlPr83ACsPhjvDPLHQqqdmOaGvc
+ LBaAPBKO1awEA==
+Received: by mail-ej1-f50.google.com with SMTP id n2so18613155ejy.7;
+ Tue, 06 Apr 2021 18:13:28 -0700 (PDT)
+X-Gm-Message-State: AOAM530DbpYdx1UQmYSjznnRNCGZtcIqToIuXo0Zea++wNg7HxSB96sg
+ 7co5OqrRP5l3dxjgKE7QNHMTMluMBPHJGy17nQ==
+X-Google-Smtp-Source: ABdhPJzl6RD27BOpLC9b+ksVgecIqSPzz04cn67QiZn3u6NF8pL8OvwlE6sLhJddWpFdEonXi5GuOvvWMqx7AYRmDLw=
+X-Received: by 2002:a17:906:1984:: with SMTP id
+ g4mr847605ejd.525.1617758006930; 
+ Tue, 06 Apr 2021 18:13:26 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next] net: ethernet: mtk_eth_soc: remove unneeded
- semicolon
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <161775181030.15996.4622517435029624196.git-patchwork-notify@kernel.org>
-Date: Tue, 06 Apr 2021 23:30:10 +0000
-References: <20210406030433.6540-1-linqiheng@huawei.com>
-In-Reply-To: <20210406030433.6540-1-linqiheng@huawei.com>
-To: Qiheng Lin <linqiheng@huawei.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
+References: <20210405164643.21130-1-michael@walle.cc>
+ <20210405164643.21130-3-michael@walle.cc>
+In-Reply-To: <20210405164643.21130-3-michael@walle.cc>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 6 Apr 2021 20:13:15 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKbxY5sCJ_8F7iF0hFr52cwRsSc2bu48H7cqcNeWytDpA@mail.gmail.com>
+Message-ID: <CAL_JsqKbxY5sCJ_8F7iF0hFr52cwRsSc2bu48H7cqcNeWytDpA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] of: net: fix of_get_mac_addr_nvmem() for PCI and DSA
+ nodes
+To: Michael Walle <michael@walle.cc>
+Cc: QCA ath9k Development <ath9k-devel@qca.qualcomm.com>, 
+ Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, 
+ netdev <netdev@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:MEDIA DRIVERS FOR RENESAS - FCP"
+ <linux-renesas-soc@vger.kernel.org>, 
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>, 
+ "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ linux-oxnas@groups.io, linux-omap <linux-omap@vger.kernel.org>, 
+ linux-wireless <linux-wireless@vger.kernel.org>, devicetree@vger.kernel.org, 
+ linux-staging@lists.linux.dev, Andrew Lunn <andrew@lunn.ch>, 
+ Gregory Clement <gregory.clement@bootlin.com>, 
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, 
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
+ Paul Mackerras <paulus@samba.org>, Andreas Larsson <andreas@gaisler.com>, 
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, 
+ Jernej Skrabec <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, 
+ Chris Snook <chris.snook@gmail.com>,
+ =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+ "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, 
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Sunil Goutham <sgoutham@marvell.com>, 
+ Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur <madalin.bucur@nxp.com>, 
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, 
+ Li Yang <leoyang.li@nxp.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
+ Salil Mehta <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Vadym Kochan <vkochan@marvell.com>, 
+ Taras Chornyi <tchornyi@marvell.com>, Mirko Lindner <mlindner@marvell.com>, 
+ Stephen Hemminger <stephen@networkplumber.org>, Felix Fietkau <nbd@nbd.name>, 
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bryan Whitehead <bryan.whitehead@microchip.com>,
+ Vladimir Zapolskiy <vz@mleia.com>, 
+ Sergei Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>, 
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, 
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman <khilman@baylibre.com>, 
+ Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Vinod Koul <vkoul@kernel.org>, 
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
+ Grygorii Strashko <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, 
+ Murali Karicheri <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Kalle Valo <kvalo@codeaurora.org>, 
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, 
+ Stanislaw Gruszka <stf_xl@wp.pl>, Helmut Schaa <helmut.schaa@googlemail.com>, 
+ Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>, 
+ Vivien Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_003015_728946_11AF84F8 
-X-CRM114-Status: UNSURE (   8.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210407_021330_958228_42674BAD 
+X-CRM114-Status: GOOD (  33.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,29 +154,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This patch was applied to netdev/net-next.git (refs/heads/master):
-
-On Tue, 6 Apr 2021 11:04:33 +0800 you wrote:
-> Eliminate the following coccicheck warning:
->  drivers/net/ethernet/mediatek/mtk_ppe.c:270:2-3: Unneeded semicolon
-> 
-> Signed-off-by: Qiheng Lin <linqiheng@huawei.com>
+On Mon, Apr 5, 2021 at 11:47 AM Michael Walle <michael@walle.cc> wrote:
+>
+> of_get_mac_address() already supports fetching the MAC address by an
+> nvmem provider. But until now, it was just working for platform devices.
+> Esp. it was not working for DSA ports and PCI devices. It gets more
+> common that PCI devices have a device tree binding since SoCs contain
+> integrated root complexes.
+>
+> Use the nvmem of_* binding to fetch the nvmem cells by a struct
+> device_node. We still have to try to read the cell by device first
+> because there might be a nvmem_cell_lookup associated with that device.
+>
+> Signed-off-by: Michael Walle <michael@walle.cc>
 > ---
->  drivers/net/ethernet/mediatek/mtk_ppe.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Please note, that I've kept the nvmem_get_mac_address() which operates
+> on a device. The new of_get_mac_addr_nvmem() is almost identical and
+> there are no users of the former function right now, but it seems to be
+> the "newer" version to get the MAC address for a "struct device". Thus
+> I've kept it. Please advise, if I should kill it though.
 
-Here is the summary with links:
-  - [net-next] net: ethernet: mtk_eth_soc: remove unneeded semicolon
-    https://git.kernel.org/netdev/net-next/c/3b2c32f96edc
+It seems kind of backwards from how we normally design this type of
+API where the API with a struct device will call a firmware specific
+version if there's a firmware handle. But certainly, I don't think we
+should be operating on platform device if we can help it.
 
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+>  drivers/of/of_net.c | 37 +++++++++++++++++++++++++++++++------
+>  1 file changed, 31 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/of/of_net.c b/drivers/of/of_net.c
+> index 2344ad7fff5e..2323c6063eaf 100644
+> --- a/drivers/of/of_net.c
+> +++ b/drivers/of/of_net.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/phy.h>
+>  #include <linux/export.h>
+>  #include <linux/device.h>
+> +#include <linux/nvmem-consumer.h>
+>
+>  /**
+>   * of_get_phy_mode - Get phy mode for given device_node
+> @@ -56,18 +57,42 @@ static int of_get_mac_addr(struct device_node *np, const char *name, u8 *addr)
+>         return -ENODEV;
+>  }
+>
+> -static int of_get_mac_addr_nvmem(struct device_node *np, u8 addr)
+> +static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
+>  {
+>         struct platform_device *pdev = of_find_device_by_node(np);
+> +       struct nvmem_cell *cell;
+> +       const void *mac;
+> +       size_t len;
+>         int ret;
+>
+> -       if (!pdev)
+> -               return -ENODEV;
+> +       /* Try lookup by device first, there might be a nvmem_cell_lookup
+> +        * associated with a given device.
+> +        */
+> +       if (pdev) {
+> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
+> +               put_device(&pdev->dev);
+> +               return ret;
+> +       }
+> +
+> +       cell = of_nvmem_cell_get(np, "mac-address");
+> +       if (IS_ERR(cell))
+> +               return PTR_ERR(cell);
+> +
+> +       mac = nvmem_cell_read(cell, &len);
+> +       nvmem_cell_put(cell);
+> +
+> +       if (IS_ERR(mac))
+> +               return PTR_ERR(mac);
+> +
+> +       if (len != ETH_ALEN || !is_valid_ether_addr(mac)) {
+> +               kfree(mac);
+> +               return -EINVAL;
+> +       }
+>
+> -       ret = nvmem_get_mac_address(&pdev->dev, addr);
+> -       put_device(&pdev->dev);
+> +       ether_addr_copy(addr, mac);
+> +       kfree(mac);
+>
+> -       return ret;
+> +       return 0;
+>  }
+>
+>  /**
+> --
+> 2.20.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
