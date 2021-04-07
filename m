@@ -2,92 +2,92 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DA9CC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 10:21:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B24D4C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 11:01:16 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24B856139E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 10:21:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24B856139E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 36786610D0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 11:01:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36786610D0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+vVrc9RtE9Qo5l1lkpy2fBQgCetei7rG2dq65vcsGs4=; b=L9iUFFfEMYQlDClQWpse0p8ij
-	w+DS2aFiwGxVYwCpl+lflaq98U3qYIql69uqYK+EICd9Tgp9LTrw9w4yoZHh/V2ylHedNH4nagiCa
-	+IiFiDhQU17xDOLcOkyAb1V07EqvmRMdGqg4Fhkkx3biXilkACx2JXebe2uJkNiMXI+fQF3KjvqV+
-	qm/QZTjv98c5C27am/IJJMc4W/FuJaoHppfcrtm/BKAQpOkk8/UzkeZJ+OmEt2Nt/CI6GVpGjKzwH
-	mImRWsYFGaPLvWWXs/JWZMU9IaVHIQh2NxDu24HpqtkLBdLLoLyyWL7ES6dm0sUCct2b6zpdIJghx
-	ZIErvNXig==;
+	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:From:Cc:To:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=I1RxTQJ0ZSLSHcLyk+JD5OYQ6H8Vp7ROjpXd8Snlxz0=; b=TQh0znFrXymj2wZUuFYIshFbbM
+	qHc8X7kWSJmly8qe/zjbMZyFvxGtDonGlAezootCQ2Kk/CVGGQjDKEuf7o9qoYI03AxpDTRCPxIrJ
+	BrjyatkbCazfVpkoH4zChhKxfGVSpCnuMOi93QFuCaI4EtQO7uUqq2+GqQ7mLWpJZV2f5yeRsaweI
+	lVuGkjA6hPjRlm3Y096dGbhDQRfqGQfpaUNMQjG07RWinigUtMDCje7xwYPd82bAs6CFcNAWuYZ3x
+	mUjXS7HmRyDqvFSJMpY5TtCTccUTYp8frTetQiU2HfyofVGdYb3dw8w0RYKvIETdINbKqIChN+Kik
+	o5tapNqg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lU5JS-004iIt-GW; Wed, 07 Apr 2021 10:21:30 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1lU5vb-004npl-SZ; Wed, 07 Apr 2021 11:00:56 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lU5JF-004iFM-FS; Wed, 07 Apr 2021 10:21:20 +0000
-IronPort-SDR: +v2YyuwdhTjA8BlapMywgVUEKhJwQ6O5nuGGlvfl4Fgy5bfXxgos69Mdf9KHRTspZYwdhb2LUW
- Dko2G6dmuouw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9946"; a="257263120"
-X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; d="scan'208";a="257263120"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Apr 2021 03:21:11 -0700
-IronPort-SDR: vW8zGoqm/s2nTUAFKkQ/Ai2NnD8T0kZb0zK95O2/dghnkBIc9kqcKW3yAjkXysbybq8Nt731Sc
- DRKQlDIDhfTw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; d="scan'208";a="441283571"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
- ([10.237.72.174])
- by fmsmga004.fm.intel.com with ESMTP; 07 Apr 2021 03:21:05 -0700
-Subject: Re: [PATCH v15 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, Yue Hu <huyue2@yulong.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ id 1lU5vA-004niA-7g; Wed, 07 Apr 2021 11:00:33 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id
+ d5-20020a17090a2a45b029014d934553c4so350087pjg.1; 
+ Wed, 07 Apr 2021 04:00:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=to:cc:from:subject:message-id:date:user-agent:mime-version
+ :content-language:content-transfer-encoding;
+ bh=Mt9KfRdpeYOA5awgbDGEbpZTSey436IhcDpa95JCGAg=;
+ b=vf+jW23hbPu165Z6rb8Wd0nORwct8v7KoxypIcLpXXeVQrrvog3xVvxx+gv6wt+DEx
+ e/I8WqC5L4yCkp/G31qtKszlE1WrkkqW1E/iuLR5P1TtoILivTLUpb73L04I3BKtgkzE
+ 9gzKBW3Pi/NGI4r6055h6Cr24Jh7VmcZ1Sr4umLb8DahZNXcBgUEGJ0xBtC4a6i40vCW
+ eQhTT680ytDOZ5nZGjW7qmhUKSZDdD77ftU+qutMQygZev8SGjB7LW0SeMpgN9BXevGn
+ SZkb/m6i8HkfUYOGo50tibGeZPLusrB9hNbqajaYqhO2J5VmYj8MCVLjclb5THJUR//T
+ WKbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
+ :mime-version:content-language:content-transfer-encoding;
+ bh=Mt9KfRdpeYOA5awgbDGEbpZTSey436IhcDpa95JCGAg=;
+ b=HO7nFmQQL3DCnTJo6qmnFY0KgANu3d66DVUerdG47kXuFr4jGTMikXXf8v59nLieha
+ R5m2R4tes5ehW6Tjx4Wd78VWN4Bc3AKLF457yY0hOEIj8WrNMF8Ox9y9ODDzDlXlSCYX
+ ZYWkpojcKgVtNF1uo+YkNKurhe0loyNKsGJhMROc3Dp659r5ugfPWgqP9Cy+R1PRm7sJ
+ hjZBrPLrOm1xWzXbUrhk3o5qVbTa5i+/qMfcmM6gSdqhoN623zkFIjFnwGCiVafQse+i
+ 5azIwxU39AWf691yRMpCHfV++/NTfBuYQzezrmArDPfT3uFuyoXzArO4Jah80VyDKbQK
+ qw7g==
+X-Gm-Message-State: AOAM533qtXtjPJTczjoOfK4H8tnSZFkQWVvLJmu2caNOOBrP8gXfziEG
+ aUXgK+kc4aaN0ZC3mBKne4Q=
+X-Google-Smtp-Source: ABdhPJyRB+ZpALjRHUybazSAfkHVNhkXiRuqBVDgggcXU4NHm1R7LFP+04DDpq2q+i/YyDMGtTM6Ig==
+X-Received: by 2002:a17:902:9b8a:b029:e6:17bb:eff0 with SMTP id
+ y10-20020a1709029b8ab02900e617bbeff0mr2550725plp.54.1617793222678; 
+ Wed, 07 Apr 2021 04:00:22 -0700 (PDT)
+Received: from ziggy.stardust ([37.223.140.37])
+ by smtp.gmail.com with ESMTPSA id q13sm1817953pjj.17.2021.04.07.04.00.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Apr 2021 04:00:21 -0700 (PDT)
+List-Id: <soc.lore.kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>
+Cc: "linux-arm-kernel@lists.infradead.org"
  <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1617731442.git.asutoshd@codeaurora.org>
- <5536f19fbbcfed1177a63458c6bd0b42ee6aa2e2.1617731442.git.asutoshd@codeaurora.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <d1e694cb-e3ba-6066-d0c0-8c17120e7ba5@intel.com>
-Date: Wed, 7 Apr 2021 13:21:25 +0300
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Fabien Parent <fparent@baylibre.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: [GIT PULL] soc: mediatek: changes for v5.12 (second round)
+Message-ID: <14104322-3a6c-e8eb-cd21-a5343a81aa0f@gmail.com>
+Date: Wed, 7 Apr 2021 13:00:14 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.8.1
 MIME-Version: 1.0
-In-Reply-To: <5536f19fbbcfed1177a63458c6bd0b42ee6aa2e2.1617731442.git.asutoshd@codeaurora.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_112118_102065_F19D6551 
-X-CRM114-Status: GOOD (  18.69  )
+X-CRM114-CacheID: sfid-20210407_120030_824893_5A11218A 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,88 +104,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/04/21 8:52 pm, Asutosh Das wrote:
-> During runtime-suspend of ufs host, the scsi devices are
-> already suspended and so are the queues associated with them.
-> But the ufs host sends SSU (START_STOP_UNIT) to wlun
-> during its runtime-suspend.
-> During the process blk_queue_enter checks if the queue is not in
-> suspended state. If so, it waits for the queue to resume, and never
-> comes out of it.
-> The commit
-> (d55d15a33: scsi: block: Do not accept any requests while suspended)
-> adds the check if the queue is in suspended state in blk_queue_enter().
-> 
-> Call trace:
->  __switch_to+0x174/0x2c4
->  __schedule+0x478/0x764
->  schedule+0x9c/0xe0
->  blk_queue_enter+0x158/0x228
->  blk_mq_alloc_request+0x40/0xa4
->  blk_get_request+0x2c/0x70
->  __scsi_execute+0x60/0x1c4
->  ufshcd_set_dev_pwr_mode+0x124/0x1e4
->  ufshcd_suspend+0x208/0x83c
->  ufshcd_runtime_suspend+0x40/0x154
->  ufshcd_pltfrm_runtime_suspend+0x14/0x20
->  pm_generic_runtime_suspend+0x28/0x3c
->  __rpm_callback+0x80/0x2a4
->  rpm_suspend+0x308/0x614
->  rpm_idle+0x158/0x228
->  pm_runtime_work+0x84/0xac
->  process_one_work+0x1f0/0x470
->  worker_thread+0x26c/0x4c8
->  kthread+0x13c/0x320
->  ret_from_fork+0x10/0x18
-> 
-> Fix this by registering ufs device wlun as a scsi driver and
-> registering it for block runtime-pm. Also make this as a
-> supplier for all other luns. That way, this device wlun
-> suspends after all the consumers and resumes after
-> hba resumes.
-> 
-> Co-developed-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
-> ---
+Hi Olof and Arnd,
 
-v15 seems to be missing the updates to ufs_debugfs_get/put_user_access
-that were in v14:
+Here comes the second round of soc drivers patches. Hope I'm not too late.
 
+Please have a look.
+Best regards,
+Matthias
 
-@@ -60,14 +60,14 @@ __acquires(&hba->host_sem)
- 		up(&hba->host_sem);
- 		return -EBUSY;
- 	}
--	pm_runtime_get_sync(hba->dev);
-+	scsi_autopm_get_device(hba->sdev_ufs_device);
- 	return 0;
- }
- 
- static void ufs_debugfs_put_user_access(struct ufs_hba *hba)
- __releases(&hba->host_sem)
- {
--	pm_runtime_put_sync(hba->dev);
-+	scsi_autopm_put_device(hba->sdev_ufs_device);
- 	up(&hba->host_sem);
- }
- 
+---
+The following changes since commit 60d93f64a851d276b23b7ef68ddc638258485d32:
 
-Also from last comments, the issue below:
+  soc: mediatek: pm-domains: Add a power domain names for mt8167 (2021-04-01
+11:36:04 +0200)
 
-<SNIP>
+are available in the Git repository at:
 
-> +#ifdef CONFIG_PM_SLEEP
-> +static int ufshcd_wl_poweroff(struct device *dev)
-> +{
-> +	ufshcd_wl_shutdown(dev);
+  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+tags/v5.12-next-soc.2
 
-This turned out to be wrong.  This is a PM op and SCSI has already
-quiesced the sdev's.  All that is needed is:
+for you to fetch changes up to 060f7875bd230df1a8f83a988faaee09d693e465:
 
-	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
+  soc: mediatek: mmsys: Add support for MT8167 SoC (2021-04-06 12:57:10 +0200)
 
+----------------------------------------------------------------
+MT8167:
+- add support for mmsys subsystem
 
+----------------------------------------------------------------
+Fabien Parent (2):
+      dt-bindings: mediatek: mmsys: add mt8167 binding
+      soc: mediatek: mmsys: Add support for MT8167 SoC
+
+ .../bindings/arm/mediatek/mediatek,mmsys.txt       |  1 +
+ drivers/soc/mediatek/mt8167-mmsys.h                | 35 ++++++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c                   | 11 +++++++
+ 3 files changed, 47 insertions(+)
+ create mode 100644 drivers/soc/mediatek/mt8167-mmsys.h
 
 _______________________________________________
 Linux-mediatek mailing list
