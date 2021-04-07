@@ -2,19 +2,19 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3BC5C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 09:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 170C3C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 09:09:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E7FC61363
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 09:06:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E7FC61363
+	by mail.kernel.org (Postfix) with ESMTPS id A5B6361205
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 09:09:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5B6361205
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VgJ3OzCYvzPvvmE0T62AgBHRDWMJLz+CgyZRIlQi2I0=; b=oJ25Wgvm35B9MQQRlpBpECeNq
-	FVMU6/KLlD9PKub+vYpMAf1ti1smlnZRWheYL6RXuEywJcX1rZaLqtThciCK3Rf4eIT/UGqQjt4Z5
-	swbvt0D2xEspFJKniuXr9mfd+lyJqZTOCcm2pZrPOBUUEb06wYHAtcqotbYsRJdbh29cSPZX1y/sI
-	nnJ3SQW3dJQOwqYJ9yFyIcSYNN5pKSAZ0osGVQeqEa0hFUtZavJqIETmsFyjjI2jTN3s69JZgR5g9
-	HKeqUgwgoWhBYoRac0ziGYFrBPxnPUdGsp7JW658Z8SW73j0lD5fJ7eALyKA4JrvXfcDHiytE7peh
-	jBCpAFtOg==;
+	 bh=GFwk8Fphd9YRO8VQcpPcZ3DhdaCWbRJ84NrvPK5N36w=; b=RNuRxhNgO4IcX6vX+ZjkpO2i9
+	d7c6SlCQwgnQXT382pDvQJcm11fz3Dcn6YtMhflQy/k5qQL95hBS87Q4dbWFBnpiO6HowiDSq0PQO
+	CD7J0xYAbygHWRjFqWhWz+BqomLBqpOxwdFNNqk2fckJX76ud/0EHy6OYybOErqoOMuppYcaesRp0
+	cVBr4O7sU8kK+25cIwgNaOyQXk64AMCH9jx/JUmJDDtIL/zg4JSKNEZXWFB3bfxZsRkmDZJ1Ndpsb
+	qPVftHgf7fGOYGusc8Xo+5D9AJ9OSbHLVvAo5IV/4punCTT4XK+cqZGsn6Uqe+RX7fAKwqQQRFaFK
+	FhD6avfVw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lU48Z-004Xw1-Mf; Wed, 07 Apr 2021 09:06:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lU4Bq-004YaA-62; Wed, 07 Apr 2021 09:09:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lU48K-004XuB-70; Wed, 07 Apr 2021 09:05:59 +0000
-X-UUID: d0290ac210ee41e684f05c51923542a1-20210407
+ id 1lU4Ar-004YNy-Ur; Wed, 07 Apr 2021 09:08:39 +0000
+X-UUID: 8cb3173d2284401c824c862476add013-20210407
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=oqD57DlmW9FeiutinF7pItU5KlzzK5pXIF6q2cyJPd0=; 
- b=ZiBg/7RQwuC4IAEFnYWIr32l8UqkknhbEkORIBR7QfEySLL90vjpHAG5R83jEhPrbPB3EvNs40ZTpAGGI4F4kscya2nLMp8IgqracBGFCYu+xb1AFFSoIidFvUpPOyHZ5GYXK1rsEIDeTRWxqjFzKZM7RfHc+qLMISHKtl/czk0=;
-X-UUID: d0290ac210ee41e684f05c51923542a1-20210407
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mason.zhang@mediatek.com>)
+ bh=CehQ1sk8BCXcCJ53lKdFrH9flH/8762tp79jx+0lkaY=; 
+ b=D05ELInCO4uG26YWu36NqXn/dPSVQd1bewW4lJ5iGTjldw75TIEgKjwCTUYnfb8vm486NRDSZpmoisJrDhG+ZxmnqWFU81niLyyXWWjzqrpnOaUY4PLiEMsAel/6VfmQMyl/N2Yi28fdhGUA0BnPFSCJCrKbmCQD/5sHsJrRyew=;
+X-UUID: 8cb3173d2284401c824c862476add013-20210407
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <michael.kao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1631130033; Wed, 07 Apr 2021 02:05:49 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 7 Apr 2021 01:59:23 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 7 Apr 2021 16:59:17 +0800
-Received: from [10.15.20.246] (10.15.20.246) by mtkcas11.mediatek.inc
+ with ESMTP id 18320696; Wed, 07 Apr 2021 02:08:29 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 7 Apr 2021 02:08:26 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 7 Apr 2021 17:08:25 +0800
+Received: from [172.21.84.99] (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 7 Apr 2021 16:59:17 +0800
-Message-ID: <1617785396.21900.5.camel@mbjsdccf07>
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: add MT6779 spi master dts node
-From: Mason Zhang <mason.zhang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: Rob Herring <robh+dt@kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <hanks.chen@mediatek.com>,
- <wsd_upstream@mediatek.com>
-Date: Wed, 7 Apr 2021 16:49:56 +0800
-In-Reply-To: <d3666864-cb46-755c-0d0d-d05ac9af0379@gmail.com>
-References: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
- <d3666864-cb46-755c-0d0d-d05ac9af0379@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Wed, 7 Apr 2021 17:08:25 +0800
+Message-ID: <1617786505.12846.1.camel@mtksdccf07>
+Subject: Re: [v3,1/3] thermal: mediatek: Relocate driver to mediatek folder
+From: Michael Kao <michael.kao@mediatek.com>
+To: Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>
+CC: <linux-pm@vger.kernel.org>, <srv_heupstream@mediatek.com>, "Eduardo
+ Valentin" <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, "Mark
+ Rutland" <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <hsinyi@chromium.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Wed, 7 Apr 2021 17:08:25 +0800
+In-Reply-To: <20210312034018.17437-2-michael.kao@mediatek.com>
+References: <20210312034018.17437-1-michael.kao@mediatek.com>
+ <20210312034018.17437-2-michael.kao@mediatek.com>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 685E9AA9F582A0743CC24CDB68AF885E381088F60B605229656993D54DBF98E12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_100556_823709_C5A70B3C 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20210407_100834_904654_20E11274 
+X-CRM114-Status: GOOD (  23.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,21 +91,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-03-29 at 17:50 +0200, Matthias Brugger wrote:
-
-> Please also update binding description accordingling and add as another patch. I
-> wasn't able to find a 2/2 neither. I foudn v1 2/2 which on a quick look seemed
-> the same as this patch.
-
-Dear Matthias:
-
-patch 2/2 in this link and this patch has been merged:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210226110109.30500-1-Mason.Zhang@mediatek.com/
-
-so, Please gentle ping on patch 1/2. Thank you~
-
+Hi Maintainers,
+ 
+Gentle pin for this patch.
+ 
 Thanks
-Mason
+
+
+On Fri, 2021-03-12 at 11:40 +0800, Michael Kao wrote:
+> Add Mediatek proprietary folder to upstream more thermal zone and cooler
+> drivers. Relocate the original thermal controller driver to it and rename
+> as soc_temp.c to show its purpose more clearly.
+> 
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> ---
+>  drivers/thermal/Kconfig                       | 14 ++++-------
+>  drivers/thermal/Makefile                      |  2 +-
+>  drivers/thermal/mediatek/Kconfig              | 23 +++++++++++++++++++
+>  drivers/thermal/mediatek/Makefile             |  1 +
+>  .../{mtk_thermal.c => mediatek/soc_temp.c}    |  0
+>  5 files changed, 29 insertions(+), 11 deletions(-)
+>  create mode 100644 drivers/thermal/mediatek/Kconfig
+>  create mode 100644 drivers/thermal/mediatek/Makefile
+>  rename drivers/thermal/{mtk_thermal.c => mediatek/soc_temp.c} (100%)
+> 
+> diff --git a/drivers/thermal/Kconfig b/drivers/thermal/Kconfig
+> index 7edc8dc6bbab..b2da0a1bda34 100644
+> --- a/drivers/thermal/Kconfig
+> +++ b/drivers/thermal/Kconfig
+> @@ -401,16 +401,10 @@ config DA9062_THERMAL
+>  	  zone.
+>  	  Compatible with the DA9062 and DA9061 PMICs.
+>  
+> -config MTK_THERMAL
+> -	tristate "Temperature sensor driver for mediatek SoCs"
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> -	depends on HAS_IOMEM
+> -	depends on NVMEM || NVMEM=n
+> -	depends on RESET_CONTROLLER
+> -	default y
+> -	help
+> -	  Enable this option if you want to have support for thermal management
+> -	  controller present in Mediatek SoCs
+> +menu "Mediatek thermal drivers"
+> +depends on ARCH_MEDIATEK || COMPILE_TEST
+> +source "drivers/thermal/mediatek/Kconfig"
+> +endmenu
+>  
+>  config AMLOGIC_THERMAL
+>  	tristate "Amlogic Thermal Support"
+> diff --git a/drivers/thermal/Makefile b/drivers/thermal/Makefile
+> index b64dd50a6629..f9e07c3f529e 100644
+> --- a/drivers/thermal/Makefile
+> +++ b/drivers/thermal/Makefile
+> @@ -55,7 +55,7 @@ obj-y				+= st/
+>  obj-$(CONFIG_QCOM_TSENS)	+= qcom/
+>  obj-y				+= tegra/
+>  obj-$(CONFIG_HISI_THERMAL)     += hisi_thermal.o
+> -obj-$(CONFIG_MTK_THERMAL)	+= mtk_thermal.o
+> +obj-$(CONFIG_MTK_THERMAL)	+= mediatek/
+>  obj-$(CONFIG_GENERIC_ADC_THERMAL)	+= thermal-generic-adc.o
+>  obj-$(CONFIG_ZX2967_THERMAL)	+= zx2967_thermal.o
+>  obj-$(CONFIG_UNIPHIER_THERMAL)	+= uniphier_thermal.o
+> diff --git a/drivers/thermal/mediatek/Kconfig b/drivers/thermal/mediatek/Kconfig
+> new file mode 100644
+> index 000000000000..0351e73170b7
+> --- /dev/null
+> +++ b/drivers/thermal/mediatek/Kconfig
+> @@ -0,0 +1,23 @@
+> +config MTK_THERMAL
+> +	tristate "Mediatek thermal drivers"
+> +	depends on THERMAL_OF
+> +	help
+> +	  This is the option for Mediatek thermal software
+> +	  solutions. Please enable corresponding options to
+> +	  get temperature information from thermal sensors or
+> +	  turn on throttle mechaisms for thermal mitigation.
+> +
+> +if MTK_THERMAL
+> +
+> +config MTK_SOC_THERMAL
+> +	tristate "Temperature sensor driver for mediatek SoCs"
+> +	depends on HAS_IOMEM
+> +	depends on NVMEM
+> +	depends on RESET_CONTROLLER
+> +	help
+> +	  Enable this option if you want to get SoC temperature
+> +	  information for Mediatek platforms. This driver
+> +	  configures thermal controllers to collect temperature
+> +	  via AUXADC interface.
+> +
+> +endif
+> diff --git a/drivers/thermal/mediatek/Makefile b/drivers/thermal/mediatek/Makefile
+> new file mode 100644
+> index 000000000000..f75313ddce5e
+> --- /dev/null
+> +++ b/drivers/thermal/mediatek/Makefile
+> @@ -0,0 +1 @@
+> +obj-$(CONFIG_MTK_SOC_THERMAL)	+= soc_temp.o
+> diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mediatek/soc_temp.c
+> similarity index 100%
+> rename from drivers/thermal/mtk_thermal.c
+> rename to drivers/thermal/mediatek/soc_temp.c
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
