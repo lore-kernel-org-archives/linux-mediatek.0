@@ -2,106 +2,83 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80C22C43460
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31962C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:55:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EBDF36105A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:47:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBDF36105A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id B952D6128D
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:55:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B952D6128D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=XB9ysVQ9jan3IO4EWjldORn9acE32VMm2QpUvZ13IzI=; b=j2h4CUJyHWshH5ORd0Ibj5sRV
-	F/qk5aIEAax4E2d6Cec2tXWIavjRYo/6ikt2d9e/KhciXC78DNRiZpgwv77cCJc5qVsFJkbyivlkm
-	0oIbyqYI1L1AWksBPKjILCW5w3DRZ8YurM6Me51Wlea28lFSmVWY/g27/zz+9KFo4Jqh7qczC5dKS
-	F4PjjbUq4jrPOBrACeaEj0W76QrUFcBKn3oGpDRul0UwrjIl7Uzzhl+8yvrwuH+mXCUgHAcvdKuj3
-	9uJxjBdqPI+2WY81oDqu3PCvdzmpvU9tdEJYXbTMNxise1jS6err7Y9gX2OX0I63gXQtNOULJYpmx
-	zovfStG6Q==;
+	 bh=8KoA6hkEjgWQJzfdAuaG1bv5iumRcBVpjYF/7tABa84=; b=WVtmgcN7THbIl7pt7NQTuEU7p
+	DiketHSFgm/18J4GheXvXn99liATmWOvSh3fYKqjISpaJGqXlVZWasiMQu/evjxswHfGaCzOxKdwR
+	yYW3LpFad4VeHqXC0jURIn+mmEAx74Arkgu7pQvokH8RMUH8Lkeir1dnQ+e64wMJx9m3hbflkbyS5
+	EFng1L2JgvG4Gl6oVwI3WrIhRwsU2lWAfAaHN6hp59Gh8VBrgxb1kZblnTRT0E7iMVjlr5JraPrys
+	t4kB6GUp8RKhCpF+cbssa7p24j7DT9+fCFBv0hZ0WFTireP/JM1j6Qy/caf0HY3GTK7rN/+tYyJQ7
+	ei1Omyiqg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUCGi-005gm9-6d; Wed, 07 Apr 2021 17:47:08 +0000
-Received: from so254-9.mailgun.net ([198.61.254.9])
+	id 1lUCP3-005h7b-DX; Wed, 07 Apr 2021 17:55:45 +0000
+Received: from mout.kundenserver.de ([212.227.126.134])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUCGe-005glr-8E
- for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 17:47:06 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1617817624; h=Content-Transfer-Encoding: Content-Type:
- In-Reply-To: MIME-Version: Date: Message-ID: From: References: Cc: To:
- Subject: Sender; bh=4mZIARSOdo9stIP1eUaunAS4d7T3T1hUnN71XRlKleo=;
- b=l4wmlz0oGh+W45FrYxd3KrECSoEgMklOIE9u/vRRi8fzIa/S6jRkTE903LBT8nVXERiE0SPp
- TDYubrlZgrQuoqMsR3SjoR7ABPPgI/RsR0fzX6EMxI96XaBlANLjBQPJt/OmdgKIXR1qGKWU
- 7vK4BeFK1XiVFqmca3slkqTyJG0=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n04.prod.us-east-1.postgun.com with SMTP id
- 606df0138166b7eff72ae47b (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 07 Apr 2021 17:46:59
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id C472EC433C6; Wed,  7 Apr 2021 17:46:58 +0000 (UTC)
-Received: from [192.168.8.168] (cpe-70-95-149-85.san.res.rr.com [70.95.149.85])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: asutoshd)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id AE43BC433CA;
- Wed,  7 Apr 2021 17:46:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org AE43BC433CA
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=asutoshd@codeaurora.org
-Subject: Re: [PATCH v15 1/2] scsi: ufs: Enable power management for wlun
-To: Adrian Hunter <adrian.hunter@intel.com>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
- <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, Yue Hu <huyue2@yulong.com>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1617731442.git.asutoshd@codeaurora.org>
- <5536f19fbbcfed1177a63458c6bd0b42ee6aa2e2.1617731442.git.asutoshd@codeaurora.org>
- <d1e694cb-e3ba-6066-d0c0-8c17120e7ba5@intel.com>
-From: "Asutosh Das (asd)" <asutoshd@codeaurora.org>
-Message-ID: <2f3126fc-9145-a190-37ab-c4814056cfba@codeaurora.org>
-Date: Wed, 7 Apr 2021 10:46:54 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ id 1lUCOv-005h6r-Ve; Wed, 07 Apr 2021 17:55:39 +0000
+Received: from mail-ot1-f53.google.com ([209.85.210.53]) by
+ mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
+ 1MCXhr-1lLdh73AP5-009hCj; Wed, 07 Apr 2021 19:55:35 +0200
+Received: by mail-ot1-f53.google.com with SMTP id
+ w21-20020a9d63950000b02901ce7b8c45b4so18898971otk.5; 
+ Wed, 07 Apr 2021 10:55:34 -0700 (PDT)
+X-Gm-Message-State: AOAM533RUv5ZqXp78Bkti1xvFSAxkyVHHs4sITm9HHTkVDkDpTmuXXos
+ Dw/f1RYTs/KPkSXTy5gAdzxdSmOVEWwYaawqFfI=
+X-Google-Smtp-Source: ABdhPJzFae5o2sDZdv1GTYiLdAFDJ0G3fZf1iRlU0eP5yGtTc46bhdPOIwOQIpCMXbLmu9KXnz8t04DTE8yeXQij0sE=
+X-Received: by 2002:a9d:316:: with SMTP id 22mr3925495otv.210.1617818133281;
+ Wed, 07 Apr 2021 10:55:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d1e694cb-e3ba-6066-d0c0-8c17120e7ba5@intel.com>
-Content-Language: en-US
+References: <22814673-e9fe-f65b-cc0f-b02be4f90d1a@gmail.com>
+ <CAK8P3a0bp3CUzOQHSX5KYt44j-Njk_u2P=0q-ZQ0HcTBiVVVSA@mail.gmail.com>
+ <01c82108-64a8-33ee-3984-5bd7056a0002@gmail.com>
+In-Reply-To: <01c82108-64a8-33ee-3984-5bd7056a0002@gmail.com>
+From: Arnd Bergmann <arnd@arndb.de>
+Date: Wed, 7 Apr 2021 19:55:17 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a37BUdHneO+9+t0Pan3UWZHub-ishcKLNxCbqO0kk0CNw@mail.gmail.com>
+Message-ID: <CAK8P3a37BUdHneO+9+t0Pan3UWZHub-ishcKLNxCbqO0kk0CNw@mail.gmail.com>
+Subject: Re: [GIT PULL] arm64: dts: mediatek: changes for v5.13 (second round)
+To: Matthias Brugger <matthias.bgg@gmail.com>
+List-Id: <soc.lore.kernel.org>
+Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Fabien Parent <fparent@baylibre.com>, 
+ Irui Wang <irui.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+ DTML <devicetree@vger.kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+X-Provags-ID: V03:K1:SbY1cRD1lpqjZrXT9mOUTzVzmPjA/Z21EcqTRF5gXQr54BrPLcx
+ BD3UD3SsBDeF33MyPhT90W9vl1gL5JO0Bg5GhzmbtRXQzXlkDqfS6SkLpDTFjERF2sNDwhL
+ gbhnGeu6BIYjDo91Y5wO2uf8fLKZs4x5O2zKLrEpR1HlBdamAP++DwcPYen4AfJ3FjHKpIh
+ wAHE5PH0b0b9d3VK+yPLQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:bSoGLQBZCew=:DaxU9mJb6kgANQyNLHgoF5
+ cCJXF3acdv4z2rNW/2WIUjLiyi7A1pw3v/2V9CrUPxD6xwGZeuaPnN4M/x40oThgXkOV/aCER
+ GQC48X9cgyUkpaFZTsEA30tUk28wAHK//G8P+HaRoygwQdj3MiymCAtD2KIYZ+MTFi+HHWMFF
+ tHsC80awQlEV/GF8mdaLstY8r91gDsXCMmeb1qdiTUkLMLqNq+2BKae5VNky4fSBByx+t8Rye
+ gJ1clH/7e+75hxbvHehtRIgv5g4MvMmiJ/zssROaHVAWoGO5S9jIcuHW/fAsPA9OPbf2ij4VU
+ suwwd0dFSXHYeIq3fXr/PjBq7RIT21ct6YK3AM1FPrlrlX0b8RcVSosB1kvS3RWPqIqJM//NC
+ U6BANIAGP0IL0zL1mUYPxYSsjzyplx5vHf9fl6a7nYGBNH0QtiIVnm39dHurwbqrfKIcvuJPZ
+ Jitask2G2cizztCSU1MBJtW1GOzPLPU=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_184704_734122_3C5DF901 
-X-CRM114-Status: GOOD (  22.62  )
+X-CRM114-CacheID: sfid-20210407_185538_148312_97A1E9FE 
+X-CRM114-Status: GOOD (  29.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,101 +90,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/7/2021 3:21 AM, Adrian Hunter wrote:
-> On 6/04/21 8:52 pm, Asutosh Das wrote:
->> During runtime-suspend of ufs host, the scsi devices are
->> already suspended and so are the queues associated with them.
->> But the ufs host sends SSU (START_STOP_UNIT) to wlun
->> during its runtime-suspend.
->> During the process blk_queue_enter checks if the queue is not in
->> suspended state. If so, it waits for the queue to resume, and never
->> comes out of it.
->> The commit
->> (d55d15a33: scsi: block: Do not accept any requests while suspended)
->> adds the check if the queue is in suspended state in blk_queue_enter().
->>
->> Call trace:
->>   __switch_to+0x174/0x2c4
->>   __schedule+0x478/0x764
->>   schedule+0x9c/0xe0
->>   blk_queue_enter+0x158/0x228
->>   blk_mq_alloc_request+0x40/0xa4
->>   blk_get_request+0x2c/0x70
->>   __scsi_execute+0x60/0x1c4
->>   ufshcd_set_dev_pwr_mode+0x124/0x1e4
->>   ufshcd_suspend+0x208/0x83c
->>   ufshcd_runtime_suspend+0x40/0x154
->>   ufshcd_pltfrm_runtime_suspend+0x14/0x20
->>   pm_generic_runtime_suspend+0x28/0x3c
->>   __rpm_callback+0x80/0x2a4
->>   rpm_suspend+0x308/0x614
->>   rpm_idle+0x158/0x228
->>   pm_runtime_work+0x84/0xac
->>   process_one_work+0x1f0/0x470
->>   worker_thread+0x26c/0x4c8
->>   kthread+0x13c/0x320
->>   ret_from_fork+0x10/0x18
->>
->> Fix this by registering ufs device wlun as a scsi driver and
->> registering it for block runtime-pm. Also make this as a
->> supplier for all other luns. That way, this device wlun
->> suspends after all the consumers and resumes after
->> hba resumes.
->>
->> Co-developed-by: Can Guo <cang@codeaurora.org>
->> Signed-off-by: Can Guo <cang@codeaurora.org>
->> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
->> ---
-> 
-> v15 seems to be missing the updates to ufs_debugfs_get/put_user_access
-> that were in v14:
-> 
-> 
-> @@ -60,14 +60,14 @@ __acquires(&hba->host_sem)
->   		up(&hba->host_sem);
->   		return -EBUSY;
->   	}
-> -	pm_runtime_get_sync(hba->dev);
-> +	scsi_autopm_get_device(hba->sdev_ufs_device);
->   	return 0;
->   }
->   
->   static void ufs_debugfs_put_user_access(struct ufs_hba *hba)
->   __releases(&hba->host_sem)
->   {
-> -	pm_runtime_put_sync(hba->dev);
-> +	scsi_autopm_put_device(hba->sdev_ufs_device);
->   	up(&hba->host_sem);
->   }
->   
-> 
-> Also from last comments, the issue below:
-> 
-> <SNIP>
-> 
->> +#ifdef CONFIG_PM_SLEEP
->> +static int ufshcd_wl_poweroff(struct device *dev)
->> +{
->> +	ufshcd_wl_shutdown(dev);
-> 
-> This turned out to be wrong.  This is a PM op and SCSI has already
-> quiesced the sdev's.  All that is needed is:
-> 
-> 	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
-> 
-> 
-Yikes! Thanks, let me fix this and push the correct series.
+On Wed, Apr 7, 2021 at 6:34 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> On 07/04/2021 18:06, Arnd Bergmann wrote:
+> > On Wed, Apr 7, 2021 at 1:00 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >>
+> >> Hi Olof and Arnd,
+> >>
+> >> Here comes the second round of arm64 DT patches. Hope I'm not too late.
+> >> Basically we add several node to MT8167.
+> >> ----------------------------------------------------------------
+> >> Fabien Parent (6):
+> >
+> >>       arm64: dts: mediatek: mt8167: add some DRM nodes
+> >
+> > I stumbled over this patch adding a lot of aliases:
+> >
+> > +       aliases {
+> > +               aal0 = &aal;
+> > +               ccorr0 = &ccorr;
+> > +               color0 = &color;
+> > +               dither0 = &dither;
+> > +               dsi0 = &dsi;
+> > +               ovl0 = &ovl0;
+> > +               pwm0 = &disp_pwm;
+> > +               rdma0 = &rdma0;
+> > +               rdma1 = &rdma1;
+> > +               wdma0 = &wdma;
+> > +       };
+> >
+> >
+> > Something doesn't quite feel right about this, and I checked with Rob,
+> > who also thinks this looks wrong. I suppose we need to have a set of
+> > well documented alias types rather than just having drivers make up
+> > new ones on the spot.
+>
+> These are needed in the DRM driver, see drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+>
+> I added Chun-Kuang who is the maintainer of the driver. I think it's a good idea
+> to have this alias described in the binding. Maybe a good excuse to move to yaml
+> as well :)
 
--asd
+The aliases certainly need to be described in the binding, I think someone
+would likely have complained earlier if that was part of the binding.
 
--- 
-The Qualcomm Innovation Center, Inc. is a member of the Code Aurora Forum,
-Linux Foundation Collaborative Project
+Moving it to yaml is also a good idea, and required for any new devices.
+
+> > I also noticed that some of the referenced nodes are missing a DT
+> > binding file, so those need to be added and reviewed as well.
+>
+> I suppose you are talking about "mediatek,mt8173-vcodec-enc-vp8". The binding
+> patches are in the media tree [1]. Maybe I supposed wrongly that they will land
+> in v5.13? Or perhaps I should have mentioned that in the pull request.
+>
+> If it wasn't about this compatible and you can still remember, please let me
+> know so that we can fix that :)
+>
+> I double checked and didn't find any missing binding. Some of them only have the
+> fallback binding described, maybe that's what you are referring to.
+
+Here is what I see for all compatible strings of the added device nodes in
+this patch, as of linux-next-20210407:
+
+$ for i in mediatek,mt8167-disp-mutex mediatek,mt8167-disp-rdma
+mediatek,mt2701-disp-rdma mediatek,mt8167-disp-pwm
+mediatek,mt8173-disp-pwn mediatek,mt8167-dsi mediatek,mt2701-dsi
+mediatek,mt8167-mipi-tx mediatek,mt2701-mipi-tx
+mediatek,mt8167-disp-ovl mediatek,mt8173-disp-ovl
+mediatek,mt8167-disp-rdma mediatek,mt2701-disp-rdma
+mediatek,mt8167-disp-color mediatek,mt8173-disp-color
+mediatek,mt8167-disp-ccorr mediatek,mt8183-disp-ccorr
+mediatek,mt8167-disp-aal mediatek,mt8167-disp-gamma
+mediatek,mt8173-disp-gamma mediatek,mt8167-disp-dither
+mediatek,mt8167-disp-wdma ; do echo === $i ;  git grep -wl $i
+Documentation/devicetree/ ; done
+
+=== mediatek,mt8167-disp-mutex
+=== mediatek,mt8167-disp-rdma
+=== mediatek,mt2701-disp-rdma
+=== mediatek,mt8167-disp-pwm
+Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+=== mediatek,mt8173-disp-pwn
+=== mediatek,mt8167-dsi
+=== mediatek,mt2701-dsi
+=== mediatek,mt8167-mipi-tx
+=== mediatek,mt2701-mipi-tx
+Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
+=== mediatek,mt8167-disp-ovl
+=== mediatek,mt8173-disp-ovl
+Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+=== mediatek,mt8167-disp-rdma
+=== mediatek,mt2701-disp-rdma
+=== mediatek,mt8167-disp-color
+=== mediatek,mt8173-disp-color
+Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+=== mediatek,mt8167-disp-ccorr
+=== mediatek,mt8183-disp-ccorr
+=== mediatek,mt8167-disp-aal
+=== mediatek,mt8167-disp-gamma
+=== mediatek,mt8173-disp-gamma
+Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+=== mediatek,mt8167-disp-dither
+=== mediatek,mt8167-disp-wdma
+
+So five of the strings are documented, the others are missing. I did not check
+the other patches in your branch.
+
+         Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
