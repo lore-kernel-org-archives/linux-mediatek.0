@@ -2,83 +2,67 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31962C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 260A3C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 18:08:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B952D6128D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 17:55:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B952D6128D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	by mail.kernel.org (Postfix) with ESMTPS id BD71E61359
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 18:08:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD71E61359
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8KoA6hkEjgWQJzfdAuaG1bv5iumRcBVpjYF/7tABa84=; b=WVtmgcN7THbIl7pt7NQTuEU7p
-	DiketHSFgm/18J4GheXvXn99liATmWOvSh3fYKqjISpaJGqXlVZWasiMQu/evjxswHfGaCzOxKdwR
-	yYW3LpFad4VeHqXC0jURIn+mmEAx74Arkgu7pQvokH8RMUH8Lkeir1dnQ+e64wMJx9m3hbflkbyS5
-	EFng1L2JgvG4Gl6oVwI3WrIhRwsU2lWAfAaHN6hp59Gh8VBrgxb1kZblnTRT0E7iMVjlr5JraPrys
-	t4kB6GUp8RKhCpF+cbssa7p24j7DT9+fCFBv0hZ0WFTireP/JM1j6Qy/caf0HY3GTK7rN/+tYyJQ7
-	ei1Omyiqg==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MQfWpWe9n/tJIwC3KqRwP1kkxLlSO6Clgmp914FF7Os=; b=EOuIeXXxCB5sQ2XCYDQVDycmAs
+	ISoiJqCf1YMTqBL3FucEk0hR3xE8wRjJMF4Ek5kl4HPTfIIFMV/Zh/dqm7jEYInjGXW7aNJiNqtYS
+	y45A7VV2XTV7KnGW9ihDiX8OkYOjBjBKj/+5hZSlw9ApHubnhY2kfM92HDCbOWoQMC9SyqCBViZVI
+	kr4iIwY3Zo+BDODtz/O+n8ZdrmEpqiDR8dqIT2D194698Isrjr+hDZ2ukDVSLahYA7LyLL8TLmeA6
+	6zSwNbRognxhp+NfwUe+sTWrCyUkIomRCG7goxA9mvs5d5ocpIwJlTpgW2oy2ni9PFC41fYpk4U0J
+	mrE9qQ+g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUCP3-005h7b-DX; Wed, 07 Apr 2021 17:55:45 +0000
-Received: from mout.kundenserver.de ([212.227.126.134])
+	id 1lUCbR-005i1K-8L; Wed, 07 Apr 2021 18:08:33 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUCOv-005h6r-Ve; Wed, 07 Apr 2021 17:55:39 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53]) by
- mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MCXhr-1lLdh73AP5-009hCj; Wed, 07 Apr 2021 19:55:35 +0200
-Received: by mail-ot1-f53.google.com with SMTP id
- w21-20020a9d63950000b02901ce7b8c45b4so18898971otk.5; 
- Wed, 07 Apr 2021 10:55:34 -0700 (PDT)
-X-Gm-Message-State: AOAM533RUv5ZqXp78Bkti1xvFSAxkyVHHs4sITm9HHTkVDkDpTmuXXos
- Dw/f1RYTs/KPkSXTy5gAdzxdSmOVEWwYaawqFfI=
-X-Google-Smtp-Source: ABdhPJzFae5o2sDZdv1GTYiLdAFDJ0G3fZf1iRlU0eP5yGtTc46bhdPOIwOQIpCMXbLmu9KXnz8t04DTE8yeXQij0sE=
-X-Received: by 2002:a9d:316:: with SMTP id 22mr3925495otv.210.1617818133281;
- Wed, 07 Apr 2021 10:55:33 -0700 (PDT)
-MIME-Version: 1.0
-References: <22814673-e9fe-f65b-cc0f-b02be4f90d1a@gmail.com>
- <CAK8P3a0bp3CUzOQHSX5KYt44j-Njk_u2P=0q-ZQ0HcTBiVVVSA@mail.gmail.com>
- <01c82108-64a8-33ee-3984-5bd7056a0002@gmail.com>
-In-Reply-To: <01c82108-64a8-33ee-3984-5bd7056a0002@gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 7 Apr 2021 19:55:17 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a37BUdHneO+9+t0Pan3UWZHub-ishcKLNxCbqO0kk0CNw@mail.gmail.com>
-Message-ID: <CAK8P3a37BUdHneO+9+t0Pan3UWZHub-ishcKLNxCbqO0kk0CNw@mail.gmail.com>
-Subject: Re: [GIT PULL] arm64: dts: mediatek: changes for v5.13 (second round)
-To: Matthias Brugger <matthias.bgg@gmail.com>
-List-Id: <soc.lore.kernel.org>
-Cc: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Fabien Parent <fparent@baylibre.com>, 
- Irui Wang <irui.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
- DTML <devicetree@vger.kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
-X-Provags-ID: V03:K1:SbY1cRD1lpqjZrXT9mOUTzVzmPjA/Z21EcqTRF5gXQr54BrPLcx
- BD3UD3SsBDeF33MyPhT90W9vl1gL5JO0Bg5GhzmbtRXQzXlkDqfS6SkLpDTFjERF2sNDwhL
- gbhnGeu6BIYjDo91Y5wO2uf8fLKZs4x5O2zKLrEpR1HlBdamAP++DwcPYen4AfJ3FjHKpIh
- wAHE5PH0b0b9d3VK+yPLQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:bSoGLQBZCew=:DaxU9mJb6kgANQyNLHgoF5
- cCJXF3acdv4z2rNW/2WIUjLiyi7A1pw3v/2V9CrUPxD6xwGZeuaPnN4M/x40oThgXkOV/aCER
- GQC48X9cgyUkpaFZTsEA30tUk28wAHK//G8P+HaRoygwQdj3MiymCAtD2KIYZ+MTFi+HHWMFF
- tHsC80awQlEV/GF8mdaLstY8r91gDsXCMmeb1qdiTUkLMLqNq+2BKae5VNky4fSBByx+t8Rye
- gJ1clH/7e+75hxbvHehtRIgv5g4MvMmiJ/zssROaHVAWoGO5S9jIcuHW/fAsPA9OPbf2ij4VU
- suwwd0dFSXHYeIq3fXr/PjBq7RIT21ct6YK3AM1FPrlrlX0b8RcVSosB1kvS3RWPqIqJM//NC
- U6BANIAGP0IL0zL1mUYPxYSsjzyplx5vHf9fl6a7nYGBNH0QtiIVnm39dHurwbqrfKIcvuJPZ
- Jitask2G2cizztCSU1MBJtW1GOzPLPU=
+ id 1lUCbE-005hzB-PO; Wed, 07 Apr 2021 18:08:22 +0000
+IronPort-SDR: gq/CSVZ96ZDnNqGIEXWdUtfYbrZpeBUdbBc+A1ilQA99DUMKvcio2RPSuQjb40UyKaer80kuYi
+ VGs8da8iGqVov1HT7afvctBHGZVUUEmu4AFeLtcJI0GeC5IawJHqvE9dcN0zhap27f+LT+HOI0
+ MYJcTyzCpWVVY36UZDdfXVUL+/S7GFCBTrf3mv0UEgfxvineq43I9JjYMwm587XePAhi7W0lCV
+ fQ/TahimvddibySKZNhdhlAfJwYVw4UREBjIKlA4Er7NfcBCdAiEQELapWSGnCv3pmP7Rnk4Xo
+ P8Y=
+X-IronPort-AV: E=Sophos;i="5.82,203,1613462400"; d="scan'208";a="29743231"
+Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
+ by labrats.qualcomm.com with ESMTP; 07 Apr 2021 11:08:17 -0700
+X-QCInternal: smtphost
+Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
+ ([192.168.140.85])
+ by ironmsg03-sd.qualcomm.com with ESMTP; 07 Apr 2021 11:08:16 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
+ id 313372102E; Wed,  7 Apr 2021 11:08:16 -0700 (PDT)
+From: Asutosh Das <asutoshd@codeaurora.org>
+To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: Asutosh Das <asutoshd@codeaurora.org>, linux-arm-msm@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v16 0/2] Enable power management for ufs wlun 
+Date: Wed,  7 Apr 2021 11:08:09 -0700
+Message-Id: <cover.1617818557.git.asutoshd@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_185538_148312_97A1E9FE 
-X-CRM114-Status: GOOD (  29.77  )
+X-CRM114-CacheID: sfid-20210407_190821_216916_764D24D1 
+X-CRM114-Status: GOOD (  16.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,117 +74,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 7, 2021 at 6:34 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> On 07/04/2021 18:06, Arnd Bergmann wrote:
-> > On Wed, Apr 7, 2021 at 1:00 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> >>
-> >> Hi Olof and Arnd,
-> >>
-> >> Here comes the second round of arm64 DT patches. Hope I'm not too late.
-> >> Basically we add several node to MT8167.
-> >> ----------------------------------------------------------------
-> >> Fabien Parent (6):
-> >
-> >>       arm64: dts: mediatek: mt8167: add some DRM nodes
-> >
-> > I stumbled over this patch adding a lot of aliases:
-> >
-> > +       aliases {
-> > +               aal0 = &aal;
-> > +               ccorr0 = &ccorr;
-> > +               color0 = &color;
-> > +               dither0 = &dither;
-> > +               dsi0 = &dsi;
-> > +               ovl0 = &ovl0;
-> > +               pwm0 = &disp_pwm;
-> > +               rdma0 = &rdma0;
-> > +               rdma1 = &rdma1;
-> > +               wdma0 = &wdma;
-> > +       };
-> >
-> >
-> > Something doesn't quite feel right about this, and I checked with Rob,
-> > who also thinks this looks wrong. I suppose we need to have a set of
-> > well documented alias types rather than just having drivers make up
-> > new ones on the spot.
->
-> These are needed in the DRM driver, see drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
->
-> I added Chun-Kuang who is the maintainer of the driver. I think it's a good idea
-> to have this alias described in the binding. Maybe a good excuse to move to yaml
-> as well :)
+This patch attempts to fix a deadlock in ufs while sending SSU.
+Recently, blk_queue_enter() added a check to not process requests if the
+queue is suspended. That leads to a resume of the associated device which
+is suspended. In ufs, that device is ufs device wlun and it's parent is
+ufs_hba. This resume tries to resume ufs device wlun which in turn tries
+to resume ufs_hba, which is already in the process of suspending, thus
+causing a deadlock.
 
-The aliases certainly need to be described in the binding, I think someone
-would likely have complained earlier if that was part of the binding.
+This patch takes care of:
+* Suspending the ufs device lun only after all other luns are suspended
+* Sending SSU during ufs device wlun suspend
+* Clearing uac for rpmb and ufs device wlun
+* Not sending commands to the device during host suspend
 
-Moving it to yaml is also a good idea, and required for any new devices.
+v15 -> v16:
+- Brought back the missing changes
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Fix ufshcd_wl_poweroff()
 
-> > I also noticed that some of the referenced nodes are missing a DT
-> > binding file, so those need to be added and reviewed as well.
->
-> I suppose you are talking about "mediatek,mt8173-vcodec-enc-vp8". The binding
-> patches are in the media tree [1]. Maybe I supposed wrongly that they will land
-> in v5.13? Or perhaps I should have mentioned that in the pull request.
->
-> If it wasn't about this compatible and you can still remember, please let me
-> know so that we can fix that :)
->
-> I double checked and didn't find any missing binding. Some of them only have the
-> fallback binding described, maybe that's what you are referring to.
+v14 -> v15:
+- Rebased on 5.13/scsi-staging
 
-Here is what I see for all compatible strings of the added device nodes in
-this patch, as of linux-next-20210407:
+v13 -> v14:
+- Addressed Adrian's comments
+  * Rebased it on top of scsi-next
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Resume the device in ufshcd_remove()
+  * Unregister ufs_rpmb_wlun before ufs_dev_wlun
+  * hba->shutting_down moved to ufshcd_wl_shutdown()
 
-$ for i in mediatek,mt8167-disp-mutex mediatek,mt8167-disp-rdma
-mediatek,mt2701-disp-rdma mediatek,mt8167-disp-pwm
-mediatek,mt8173-disp-pwn mediatek,mt8167-dsi mediatek,mt2701-dsi
-mediatek,mt8167-mipi-tx mediatek,mt2701-mipi-tx
-mediatek,mt8167-disp-ovl mediatek,mt8173-disp-ovl
-mediatek,mt8167-disp-rdma mediatek,mt2701-disp-rdma
-mediatek,mt8167-disp-color mediatek,mt8173-disp-color
-mediatek,mt8167-disp-ccorr mediatek,mt8183-disp-ccorr
-mediatek,mt8167-disp-aal mediatek,mt8167-disp-gamma
-mediatek,mt8173-disp-gamma mediatek,mt8167-disp-dither
-mediatek,mt8167-disp-wdma ; do echo === $i ;  git grep -wl $i
-Documentation/devicetree/ ; done
+v12 -> v13:
+- Addressed Adrian's comments
+  * Paired pm_runtime_get_noresume() with pm_runtime_put()
+  * no rpm_autosuspend for ufs device wlun
+  * Moved runtime-pm init functionality to ufshcd_wl_probe()
+- Addressed Bart's comments
+  * Expanded abbrevs in commit message
 
-=== mediatek,mt8167-disp-mutex
-=== mediatek,mt8167-disp-rdma
-=== mediatek,mt2701-disp-rdma
-=== mediatek,mt8167-disp-pwm
-Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-=== mediatek,mt8173-disp-pwn
-=== mediatek,mt8167-dsi
-=== mediatek,mt2701-dsi
-=== mediatek,mt8167-mipi-tx
-=== mediatek,mt2701-mipi-tx
-Documentation/devicetree/bindings/phy/mediatek,dsi-phy.yaml
-=== mediatek,mt8167-disp-ovl
-=== mediatek,mt8173-disp-ovl
-Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-=== mediatek,mt8167-disp-rdma
-=== mediatek,mt2701-disp-rdma
-=== mediatek,mt8167-disp-color
-=== mediatek,mt8173-disp-color
-Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-=== mediatek,mt8167-disp-ccorr
-=== mediatek,mt8183-disp-ccorr
-=== mediatek,mt8167-disp-aal
-=== mediatek,mt8167-disp-gamma
-=== mediatek,mt8173-disp-gamma
-Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-=== mediatek,mt8167-disp-dither
-=== mediatek,mt8167-disp-wdma
+v11 -> v12:
+- Addressed Adrian's comments
+  * Fixed ahit for Mediatek driver
+  * Fixed error handling in ufshcd_core_init()
+  * Tested this patch and the issue is still seen.
 
-So five of the strings are documented, the others are missing. I did not check
-the other patches in your branch.
+v10 -> v11:
+- Fixed supplier suspending before consumer race
+- Addressed Adrian's comments
+  * Added proper resume/suspend cb to ufshcd_auto_hibern8_update()
+  * Cosmetic changes to ufshcd-pci.c
+  * Cleaned up ufshcd_system_suspend()
+  * Added ufshcd_debugfs_eh_exit to ufshcd_core_init()
 
-         Arnd
+v9 -> v10:
+- Addressed Adrian's comments
+  * Moved suspend/resume vops to __ufshcd_wl_[suspend/resume]()
+  * Added correct resume in ufs_bsg
+
+v8 -> v9:
+- Addressed Adrian's comments
+  * Moved link transition to __ufshcd_wl_[suspend/resume]()
+  * Fixed the other minor comments
+
+v7 -> v8:
+- Addressed Adrian's comments
+  * Removed separate autosuspend delay for ufs-device lun
+  * Fixed the ee handler getting scheduled during pm
+  * Always runtime resume in suspend_prepare()
+  * Added CONFIG_PM_SLEEP where needed
+  
+v6 -> v7:
+  * Resume the ufs device before shutting it down
+
+v5 -> v6:
+- Addressed Adrian's comments
+  * Added complete() cb
+  * Added suspend_prepare() and complete() to all drivers
+  * Moved suspend_prepare() and complete() to ufshcd
+  * .poweroff() uses ufhcd_wl_poweroff()
+  * Removed several forward declarations
+  * Moved scsi_register_driver() to ufshcd_core_init()
+
+v4 -> v5:
+- Addressed Adrian's comments
+  * Used the rpmb driver contributed by Adrian
+  * Runtime-resume the ufs device during suspend to honor spm-lvl
+  * Unregister the scsi_driver in ufshcd_remove()
+  * Currently shutdown() puts the ufs device to power-down mode
+    so, just removed ufshcd_pci_poweroff()
+  * Quiesce the scsi device during shutdown instead of remove
+
+v3 RFC -> v4:
+- Addressed Bart's comments
+  * Except that I didn't get any checkpatch failures
+- Addressed Avri's comments
+- Addressed Adrian's comments
+  * Added a check for deepsleep power mode
+  * Removed a couple of forward declarations
+  * Didn't separate the scsi drivers because in rpmb case it just sends uac
+    in resume and it seemed pretty neat to me.
+- Added sysfs changes to resume the devices before accessing
+
+
+Asutosh Das (2):
+  scsi: ufs: Enable power management for wlun
+  ufs: sysfs: Resume the proper scsi device
+
+ drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
+ drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
+ drivers/scsi/ufs/ufs-debugfs.c     |   6 +-
+ drivers/scsi/ufs/ufs-debugfs.h     |   2 +-
+ drivers/scsi/ufs/ufs-exynos.c      |   2 +
+ drivers/scsi/ufs/ufs-hisi.c        |   2 +
+ drivers/scsi/ufs/ufs-mediatek.c    |  12 +-
+ drivers/scsi/ufs/ufs-qcom.c        |   2 +
+ drivers/scsi/ufs/ufs-sysfs.c       |  30 +-
+ drivers/scsi/ufs/ufs_bsg.c         |   6 +-
+ drivers/scsi/ufs/ufshcd-pci.c      |  36 +--
+ drivers/scsi/ufs/ufshcd.c          | 638 ++++++++++++++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h          |   6 +
+ include/trace/events/ufs.h         |  20 ++
+ 14 files changed, 523 insertions(+), 243 deletions(-)
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
 
 _______________________________________________
 Linux-mediatek mailing list
