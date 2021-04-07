@@ -2,103 +2,88 @@ Return-Path: <SRS0=xJt/=JE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29C06C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 04:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E1DEC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 07:32:24 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEF1F613A7
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 04:51:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CEF1F613A7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2C6F56139B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Apr 2021 07:32:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C6F56139B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pO+aK7t8iKDvqWhKjDETXPvVugKdN1HeLKSNZank2DE=; b=DrrmM4rnMGXDjvSkv3c56AK5H
-	XL2eLawQcQxZZoTEOutFpFkBKMGPDmsrkdSLM9YFG7aKYpOFhwO054rJxEXQVfXJGl3CzA6kwtujj
-	3GEk+7y5OsbbA0Nitgzf/7Nxm1YnD/TNMcDxBPkexOKJuK76ztvmBEEN6nEJOixXrA1CwvZ2UrYhI
-	wO732++ZJaAw3mU63cVIcPhUjy7HMck8iGkTeDXE3SOQPQ4YL7+Rvo1VndEb4b4AQpEoIHf8YrvbQ
-	pxE7Mdr9D6WS4tYoWcUGDD5bSete0IxAqEoS7h9a1hQJt2dnerEtaK4cDizEzxrI4JeK6TCFuvu+q
-	G9rw/x9iA==;
+	 bh=4Pqqp5fG6J7OuvqTu2j1OONbwxv1e1zxYjMERzb/vcQ=; b=PBZ8Q1SU2HcowwZ3T3D0R0AJC
+	QXEh5A4AtE3cBhdEOd3oexDVWakAQh0zVepdrR5QVFTwnFXf31t76RryMlX69kg7YyGRmFPJQBuzj
+	ElsNfPy5WIZNb90WjbO5ZXc8nfYfWjeW15rZUrQEcnYH2uD9y7ZIuTtI15T5uThxaSBUijoH9E7Ht
+	YELPVwFEVwR4V9Lz9ZDIR+b4OAZFXOdIEY6GbSu9iV9+cUQWDytf1n0fxB/a+y76D/c/E9eVJN3Uc
+	B0BYMEojTUGcm0NJ361h2PFY4zcvfLS/C/u+54qqga4TGg94XH38f0ZcTOCVztM6e+7d1c2HCTOJp
+	qlcscck7A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lU09x-0043rq-Ob; Wed, 07 Apr 2021 04:51:21 +0000
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+	id 1lU2fX-004MYQ-1e; Wed, 07 Apr 2021 07:32:07 +0000
+Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lU09r-0043pX-Ug
- for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 04:51:17 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id
- z22-20020a17090a0156b029014d4056663fso665723pje.0
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Apr 2021 21:51:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=V+6L2oYqEs/QSzIuajaQppBr7eHY4K1Hd4WvlAlIz/c=;
- b=UeAdH92teKX9nqcjZrk6pjPXGRY/rZBLvzZum7GHe0oWmKCSm4tAQ4eAOvRQAT5pgy
- PF7nSdVhu89VA+F1sjXLLRN9YSm8CeaAXQm/HThDqjJ/5qxZTBR0FRr4iPTXGv44eaAh
- mn32RaEya6zyckqOH+zEUfmh1v7kWe2tPpGev7txR5rly1tFsWI0fsbXkxy2kYwdtN6n
- rJEZFeVZV7hA743py53NBrlmr/2FAbsMfrg0Y+ugHTzfLkphin/HBXO1pEkySxvaYL3O
- Ma86/uJ93tkIAFC9A8krTtyTUfP5xZ9R/ZuHxTfrbv7ljpg4SB2C+Y4kOLzRpAWdVssR
- rg8A==
+ id 1lU2er-004ML0-Si
+ for linux-mediatek@lists.infradead.org; Wed, 07 Apr 2021 07:31:31 +0000
+Received: by mail-io1-xd36.google.com with SMTP id x16so18363277iob.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 07 Apr 2021 00:31:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Vo0QZz25bVs/2wmsHRn68V68W2L/UX3nLq5t9B4qTO4=;
+ b=CJAEOD5aeMlKoM1hzsZ82mfcFqX0wXQLRiDLPpVwA8eL6sw1FhbiTSZeDa5ZQTGHG7
+ LQkMYNnxW++y+rUKTMoFljoeCAt+uadx9x1TFj7rxa4HNYWdAmPMCF/HrZHmYwStkzTQ
+ YwAAALsXptK9Yhkho8mWNf8m17qt2IDCX001A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=V+6L2oYqEs/QSzIuajaQppBr7eHY4K1Hd4WvlAlIz/c=;
- b=WtQ8IFb8I8btcWy9jIPkajsaGLxM5nQe/KgY5G30088u2etetuMy8CPnfFiVC77nOh
- yU8rUiHP6q/Y8SczqrH8J6cwTEbP6/mj+Ptd26klXgkXpTWll57HQNX0XDUAcr5scSOU
- GMLhXzxD8CWfPdrZ7lUzdv0OadpHPD53m/o6KpD4eYuqEfk+CduaP+Y7zJgHeJBFnM+P
- l2ahno+AmY5e2xRNR3fUBSGcA8xRvcHAAzq7kiUWIsPFC0hnxkjHf8/f+1RlWQIymzCu
- IgR/Tq3H631HUfNvXVDmNeiE8uwiFGTeMv2JcFfqQIOUotCHTPnFHIpgyPAW0Ey1jeJq
- +3eg==
-X-Gm-Message-State: AOAM530Xh34vNtQk3lo3FtlZBrvuJ48hbjq0zXCAJTr5kuU+phFQonTG
- vU9PvB3/jmw5t0t8iijTFSQ=
-X-Google-Smtp-Source: ABdhPJwwV7+KRnS4AYoBBARd+AzL4vj5vm1mLsxuvTDRCFHHfrgCqfllBL734AbDkmtPtKYUoSdcVA==
-X-Received: by 2002:a17:902:ea10:b029:e8:e2e9:d9a5 with SMTP id
- s16-20020a170902ea10b02900e8e2e9d9a5mr1414313plg.22.1617771074590; 
- Tue, 06 Apr 2021 21:51:14 -0700 (PDT)
-Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id n52sm882679pfv.13.2021.04.06.21.51.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Apr 2021 21:51:14 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
- netdev@vger.kernel.org
-Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
- =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
-Subject: [RFC v2 net-next 4/4] staging: mt7621-dts: enable MT7530 interrupt
- controller
-Date: Wed,  7 Apr 2021 12:50:38 +0800
-Message-Id: <20210407045038.1436843-5-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210407045038.1436843-1-dqfext@gmail.com>
-References: <20210407045038.1436843-1-dqfext@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Vo0QZz25bVs/2wmsHRn68V68W2L/UX3nLq5t9B4qTO4=;
+ b=iSfAzi8/0+c+dD8T1i4yEb3Z+lZ+sRGXPPXIOALwu+w38PLXnmVBDOCKjJSBTDzLoE
+ Z3c2D6L8fC+TrgaqKqhtuLBfaOQP68hXnQiSmN+I2zui89XinSkV3WIkhDvwDXD1iqz0
+ cU6Fy8eoxzroMIjjxY++W31plI3AsztDIOmSzNwVtvzWZTqPmmMNn61ysktywKVERAvD
+ NJ1pizBSMgbJLOvPF+liTPkNKDr4z1g4klYVw+lF1HYHVbSzkDjJhUY5UxTiANgIIluJ
+ l9qS13wJHgdAKU72KbJziuP5gNr93BTPq7F0/Gv5Yowr0KszG499tQt5oFTDMdd3QJM+
+ DlaA==
+X-Gm-Message-State: AOAM530jpUO92rxVBVWfIEGjItHxdiyNnZcztJgYoD6SHJ1wtpa/7cbn
+ kBN4mb1oMAWQ2ue6gODzRKcahAMM7FT481DyjJvvVg==
+X-Google-Smtp-Source: ABdhPJz+T5nPKW6gbNnL+LY7rqVL5oNR3VGj+Ica36EvSu5VCzeBQypy3KADhZS8Ye27TvIjvcdTakDpI+xV315kTKY=
+X-Received: by 2002:a05:6638:43:: with SMTP id
+ a3mr2064309jap.102.1617780682970; 
+ Wed, 07 Apr 2021 00:31:22 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210308043607.957156-1-hsinyi@chromium.org>
+ <20210308043607.957156-3-hsinyi@chromium.org>
+ <20210308171644.GE4656@sirena.org.uk>
+ <CAJMQK-jZnQ1pt435Dz=xAbuU=wJcMJkSFSnTtuARTW_rGwRCFg@mail.gmail.com>
+In-Reply-To: <CAJMQK-jZnQ1pt435Dz=xAbuU=wJcMJkSFSnTtuARTW_rGwRCFg@mail.gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Wed, 7 Apr 2021 15:30:57 +0800
+Message-ID: <CAJMQK-jqrBdfROr_XZakQb4v+jB31hvLejcSBZjPo=TYqKar1w@mail.gmail.com>
+Subject: Re: [PATCH v16 2/2] i2c: core: support bus regulator controlling in
+ adapter
+To: Mark Brown <broonie@kernel.org>
+Cc: Wolfram Sang <wsa@kernel.org>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>, linux-i2c@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, lkml <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Bibby Hsieh <bibby.hsieh@mediatek.com>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210407_055116_170592_F3D901F7 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20210407_083126_494349_774D255E 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,33 +100,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable MT7530 interrupt controller in the MT7621 SoC.
+On Tue, Mar 9, 2021 at 9:34 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> On Tue, Mar 9, 2021 at 1:17 AM Mark Brown <broonie@kernel.org> wrote:
+> >
+> > On Mon, Mar 08, 2021 at 12:36:07PM +0800, Hsin-Yi Wang wrote:
+> >
+> > > +     adap->bus_regulator = devm_regulator_get(&adap->dev, "bus");
+> > > +     if (IS_ERR(adap->bus_regulator)) {
+> > > +             res = PTR_ERR(adap->bus_regulator);
+> > > +             goto out_reg;
+> > > +     }
+> >
+> > Idiomatically supplies should be named as they are by the chip datasheet
+> > rather than just a generic name like this, and I'm guessing that systems
+> > that have supplies like this will often already have something
+> > requesting the supply (eg, it's quite common for consumer drivers to do
+> > this) under that name.  I can see this being a useful thing to factor
+> > out into the core but it seems like it'd be better to have it enabled by
+> > having the controllers (or devices) pass a supply name (or possibly
+> > requested regulator) to the core rather than by just hard coding a name
+> > in the core so bindings look as expected.
+> >
+>
+> I'll move the regulator request into device instead of core in the
+> next version. Thanks.
+>
+Hi Mark,
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
-RFC v1 -> RFC v2:
-- No changes.
+v17 is sent here:
+https://patchwork.kernel.org/project/linux-mediatek/cover/20210309133131.1585838-1-hsinyi@chromium.org/
 
- drivers/staging/mt7621-dts/mt7621.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+Thanks.
 
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index 16fc94f65486..ebf8b0633e88 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -447,6 +447,9 @@ switch0: switch0@0 {
- 				mediatek,mcm;
- 				resets = <&rstctrl 2>;
- 				reset-names = "mcm";
-+				interrupt-controller;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
- 
- 				ports {
- 					#address-cells = <1>;
--- 
-2.25.1
-
+> > I do also wonder if it's better to put the feature on the clients rather
+> > than the controller, I don't think it makes much difference though.
 
 _______________________________________________
 Linux-mediatek mailing list
