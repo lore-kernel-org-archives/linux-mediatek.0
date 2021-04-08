@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4B20C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 17:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20F93C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 20:44:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 95DA461040
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 17:43:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95DA461040
+	by mail.kernel.org (Postfix) with ESMTPS id C18C66115B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 20:44:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C18C66115B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VRgli1m/ncK3ngvecyOiCV0ib1+IHQokm6LJ4WBVYls=; b=H81GBS/gdSn+8ZS5UIbfHFeKQ
-	1RpM9El1jTHVc9hDQG7Ie4vB81zb1eYn3K54OqmAsQ2jO2fiX2Wf/IuNes04nkWfmcWe8lG/O52aX
-	AJbQQlcezA7+BNxMkwc3WwdPWwThYq19+POW7queEw41jSyJ0TZqYIMMDysYGFniVAEVKzael+zUK
-	MlD8VS5/+Y4Dd+Lhb8zehyMVisSihsAaGuYTw3R2s61y9QqPeU7bMaTu5KCBhrZ7dVZ5QrhDr1b6L
-	dqWA49qO/TUZuTjuMtnrEMZXWKs7yPqGlsxrQptXKcr4dpYu0PmcYFqwNj/bAbo3m3k/oDn66ao2b
-	DU6luSF3g==;
+	 bh=0BCDQhKmAPax00yJQkQllnkmj2MDTS2KZMAapic8Vow=; b=JVZ3FkV6hXkaqBNYvt36+hGPu
+	6I5SHE1dEI63k337rI9wFrQaLMIY1RcZMCPmnX1y82073DicFacImmWUAdiTg6cARcs0vXaKrbW1P
+	w4JFx3HdLrJWo6Jr6CLp2JP3/fR9Nzu295ghjL8p+C6JDrg6Egx/kGdQF0PFnvmaEfPdEIO5YtMoD
+	hLTaUj6f1L4TCS720AYYFBcFxcL83l7iQlhykepzs2cPkMjYujpqZnXIKDE00/eGa6w/P8B4fysem
+	fAIuopzwsIrZEKSDiKGPUtW6Iby+H6fjDfVkiF+W7aJE0fcDIWDpglhNVpTrKNkeC4BdxfNrwvxT+
+	hvJ7kNmUw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUYgJ-008oOd-Hg; Thu, 08 Apr 2021 17:43:03 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1lUbVY-009F7E-3z; Thu, 08 Apr 2021 20:44:08 +0000
+Received: from mail-ot1-f41.google.com ([209.85.210.41])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUYek-008oBy-1H; Thu, 08 Apr 2021 17:41:31 +0000
-Received: by mail-oi1-f174.google.com with SMTP id n8so2983244oie.10;
- Thu, 08 Apr 2021 10:41:22 -0700 (PDT)
+ id 1lUbVN-009F5u-04; Thu, 08 Apr 2021 20:43:58 +0000
+Received: by mail-ot1-f41.google.com with SMTP id
+ h6-20020a0568300346b02901b71a850ab4so3635392ote.6; 
+ Thu, 08 Apr 2021 13:43:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MxPv9rGDLS4kNaUwF1zjTD50xd/6Z8XGBbW4dmhPKD8=;
- b=bE3oCV1v9CAD/OeqB2qUXAAjXh9zxh+rHeL6+oUFIvGWVzVUJxX2cw8r09o2HraOoe
- WSmVMKfMWBvjt6FwRfJ7MaUTqxPM3hcxSKWRsLVqB8cmBta4e8ArK75kfk1CQF0jIfR8
- SmY9rbXgb2s5cOUpcyN3/ALSccmVSAzXNOiU3Gbeep8UN3eWJDoz+VcTkwmF9NcGXS62
- bOG8vtdgfPHS5aTsZgRx8MQoKcAwYsL3sPaiKQhlIH2WjyemY8gzkA3cCzGwtlXUSBNY
- lWml0bZ3R0qmKdAY697Niv5Hxp1pCkvGnO319QuWikdPhM4Ax3Zj/C8veVeuJSol/8Og
- Zfvw==
-X-Gm-Message-State: AOAM533KJSC3iiQ0Oy9AOoWSZ9cG1eSsf+qS1ie0ShNfS89kLfLwEchW
- 7rrUve4dwsgu3l80Gt/5Q7a0Q00934HkYo0zPiI=
-X-Google-Smtp-Source: ABdhPJzwd+elJ0tSpUAZ/bAgTRpxq7RiABgs8Q08DleA2nKQdp22al42iOL7Z8aA5oAFMXMC6gZjSOTm29nDYVKPpLc=
-X-Received: by 2002:aca:5fc3:: with SMTP id t186mr6817482oib.69.1617903681158; 
- Thu, 08 Apr 2021 10:41:21 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=XBBWatDedME9VyLo4T5IHFnIvoyrnrBYPGAfSuhqOXk=;
+ b=OBnHXbQsRdkX8saDPH9bV0SgbBecSjxse8Vt39mDq/Ko/YcaFqn+zw5uWMVD5aXVzl
+ 8WBBy8rk3ESygCggL/3lbVL3pe9P2o9X9af+7urHt18eJzaPSY9UFu5kuP4V7fPu2YNZ
+ WPrhRBoyxrVW0ArMFw8uT7LaTfOvn6bydikst8BlvA/dL5M/+oskYrjvwNhOyUBmztVZ
+ dua4MGxLtjRzs2bNYCVu7GRzQa853QnOKTDnEy5nReSA3fHL/RCsoOyg30J7O/9fmUix
+ 8nHhTXnVhAigJM7xxs8Jhwm7eyOQQtQSWXkNYvnHlGlWZes/qY93tKP2umB4GMlsIsv5
+ zy+Q==
+X-Gm-Message-State: AOAM531TXVR3/TgD5LuugD/4U2s7JxvE5rr2f12g2MBsv7T/gHDwWrWX
+ gg9rwnTwBMinYRNPLNb8ww==
+X-Google-Smtp-Source: ABdhPJxwQ73CtdR2JuZH2FV4YaDwVXoMQhPH7akp4CbOyMrNAslj3Uw/VM1upErlyrG9GQqMt6FHww==
+X-Received: by 2002:a05:6830:144e:: with SMTP id
+ w14mr9442181otp.0.1617914635873; 
+ Thu, 08 Apr 2021 13:43:55 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id e20sm104197otl.15.2021.04.08.13.43.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Apr 2021 13:43:55 -0700 (PDT)
+Received: (nullmailer pid 1927882 invoked by uid 1000);
+ Thu, 08 Apr 2021 20:43:54 -0000
+Date: Thu, 8 Apr 2021 15:43:54 -0500
+From: Rob Herring <robh@kernel.org>
+To: Nina Wu <nina-cm.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Zhen Lei <thunder.leizhen@huawei.com>, Neal Liu <neal.liu@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, Jackson-kt.Chang@mediatek.com
+Subject: Re: [PATCH v2 1/6] dt-bindings: devapc: Update bindings
+Message-ID: <20210408204354.GA1926089@robh.at.kernel.org>
+References: <1617259087-5502-1-git-send-email-nina-cm.wu@mediatek.com>
 MIME-Version: 1.0
-References: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
-In-Reply-To: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 8 Apr 2021 19:41:10 +0200
-Message-ID: <CAJZ5v0gGntbfnvAP5A491_hUh-JUuqZjZRdPPLwWJjnZRtemcQ@mail.gmail.com>
-Subject: Re: [PATCH 1/6] PM: runtime: enable wake irq after runtime_suspend
- hook called
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>, 
- "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:" <linux-usb@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux PM <linux-pm@vger.kernel.org>, 
- Tony Lindgren <tony@atomide.com>, Tianping Fang <tianping.fang@mediatek.com>, 
- Eddie Hung <eddie.hung@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, 
- Nicolas Boichat <drinkcat@chromium.org>
+Content-Disposition: inline
+In-Reply-To: <1617259087-5502-1-git-send-email-nina-cm.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_184126_692189_8326E8F3 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20210408_214357_088296_7CC6A433 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,67 +94,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 8, 2021 at 11:35 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> When the dedicated wake irq is level trigger, enable it before
-> calling runtime_suspend, will trigger an interrupt.
->
-> e.g.
-> for a low level trigger type, it's low level at running time (0),
-> and becomes high level when enters suspend (runtime_suspend (1) is
-> called), a wakeup signal at (2) make it become low level, wake irq
-> will be triggered.
->
->                 ------------------
->                |           ^     ^|
-> ----------------           |     | --------------
->  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
->
-> if we enable the wake irq before calling runtime_suspend during (0),
-> an interrupt will arise, it causes resume immediately;
+On Thu, Apr 01, 2021 at 02:38:02PM +0800, Nina Wu wrote:
+> From: Nina Wu <Nina-CM.Wu@mediatek.com>
 
-But that's necessary to avoid missing a wakeup interrupt, isn't it?
+Every change is an 'update'. Perhaps mention mt8192 in the subject.
 
-> enable wake irq after calling runtime_suspend, e.g. at (3) or (4),
-> will works.
->
-> This patch seems no side effect on edge trigger wake irq.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> To support newer hardware architecture of devapc,
+> update device tree bindings.
+> 
+> Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
 > ---
->  drivers/base/power/runtime.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-> index a46a7e30881b..796739a015a5 100644
-> --- a/drivers/base/power/runtime.c
-> +++ b/drivers/base/power/runtime.c
-> @@ -619,12 +619,12 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         __update_runtime_status(dev, RPM_SUSPENDING);
->
->         callback = RPM_GET_CALLBACK(dev, runtime_suspend);
-> -
-> -       dev_pm_enable_wake_irq_check(dev, true);
->         retval = rpm_callback(callback, dev);
->         if (retval)
->                 goto fail;
->
-> +       dev_pm_enable_wake_irq_check(dev, true);
+>  Documentation/devicetree/bindings/soc/mediatek/devapc.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> index 31e4d3c..42b284e 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/devapc.yaml
+> @@ -20,11 +20,17 @@ properties:
+>    compatible:
+>      enum:
+>        - mediatek,mt6779-devapc
+> +      - mediatek,mt8192-devapc
+>  
+>    reg:
+>      description: The base address of devapc register bank
+>      maxItems: 1
+>  
+> +  vio-idx-num:
+
+Needs a vendor prefix.
+
+> +    description: The number of the devices controlled by devapc
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    maxItems: 1
 > +
->   no_callback:
->         __update_runtime_status(dev, RPM_SUSPENDED);
->         pm_runtime_deactivate_timer(dev);
-> @@ -659,7 +659,6 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         return retval;
->
->   fail:
-> -       dev_pm_disable_wake_irq_check(dev);
->         __update_runtime_status(dev, RPM_ACTIVE);
->         dev->power.deferred_resume = false;
->         wake_up_all(&dev->power.wait_queue);
-> --
-> 2.18.0
->
+>    interrupts:
+>      description: A single interrupt specifier
+>      maxItems: 1
+> @@ -40,6 +46,7 @@ properties:
+>  required:
+>    - compatible
+>    - reg
+> +  - vio-idx-num
+>    - interrupts
+>    - clocks
+>    - clock-names
+> @@ -54,6 +61,7 @@ examples:
+>      devapc: devapc@10207000 {
+>        compatible = "mediatek,mt6779-devapc";
+>        reg = <0x10207000 0x1000>;
+> +      vio-idx-num = <511>;
+>        interrupts = <GIC_SPI 168 IRQ_TYPE_LEVEL_LOW>;
+>        clocks = <&infracfg_ao CLK_INFRA_DEVICE_APC>;
+>        clock-names = "devapc-infra-clock";
+> -- 
+> 2.6.4
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
