@@ -2,81 +2,91 @@ Return-Path: <SRS0=hXrw=JF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BC84C43462
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:36:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B62E1C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:38:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B04BB61151
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:36:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B04BB61151
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2C73A61154
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:38:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C73A61154
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fJwIFaqil68jYdH3KQmiDZvWxtkwIqnkWQIl1geQAKU=; b=pm2/XlIQjnahyGWOhjHU277i/c
-	MlPB5sxZ4U5tHCKQRYPKxcc5xS/PYWpyd5iGjO5rXvRpncYKKadLD56aF00dY88HgNeGMl42QLcR9
-	+IcvXz7WlUrZMAGFv1FI16B+vv2G8Z891a42BfKOzd+OPZ7CqUMWOGEwZ6hUpGjBxerKynGGqTMPx
-	AIY9f09KZ0MP6PO23bpzF92pHrxI4frptGOhS4ObEjDawNOhDNHk0Pn3YvqeWCv9LhSUEkv5GGPv1
-	RHJRPIqgllVv3V2qnmlVGuul7HT6Q7TWqgOVkOVyATX6NiNhaSRPzu6EgIeoFyw81srdAa0cMOfDE
-	9I7zfcYw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=g9w4grT2PdDis1UXX/aLDHwNOnxzFnihtKYgX+ASd6s=; b=QLfIv1g5bhzLOAR5wUhk0zfBi
+	p/tFLQrhCVIhX1cOOLYZfv++sod74tGTVK/ByZ3p3Zt7O1mc2EkwcLxrQHcNGRw317W2p3QmVhHpp
+	6/+ZhhknVcNHBEoUFpOhZR7Xxdm/1OOyBVaj0at3Jqogh3y6+acx/pihlvfcmWBhyPv3k2RLs0V/v
+	Q6SoQ/+BZoDSFXT181cZN4cmkgzf8DRQC5oYhaUbFkMwWTKjP26stGDfJuO6PPci3jO1hTGytZ4nM
+	icjzLG/UR00J7BalLC7Kcdmp2Gad0arUxfyfGxsCJ0jyK1307Ki7yalUCkR0q+8zO2vf1d18cqnlf
+	LKR3MQDFQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUR51-007Vat-AR; Thu, 08 Apr 2021 09:36:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lUR7D-007WKV-Lo; Thu, 08 Apr 2021 09:38:19 +0000
+Received: from mga02.intel.com ([134.134.136.20])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUR4U-007VPA-LS; Thu, 08 Apr 2021 09:35:37 +0000
-X-UUID: 585746e15aa8405eae352076674e34b9-20210408
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=hjJRwZm9IeP0DTMhFlSNpR5HZHV3aVL1/+x6YsPJybM=; 
- b=lJjTcAXjuA6CIMh3DsccUNQLMcUO+vBm7h1/FQ3MrlBqbqjHeAn5QU5xa7DgIvrD3MN0W/aUsN8bJi/zGqCSXylhO3Yfez6W6EPbs1aa5rN4K5ZwiGZNDd34nc4+xjf1y4gxkzTe2TVXN6Aake9J6uSMuObUXSrhARzOsgx5uYQ=;
-X-UUID: 585746e15aa8405eae352076674e34b9-20210408
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 145607834; Thu, 08 Apr 2021 02:35:23 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Apr 2021 02:35:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Apr 2021 17:35:18 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 8 Apr 2021 17:35:17 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-pm@vger.kernel.org>, Tony Lindgren <tony@atomide.com>, Tianping Fang
- <tianping.fang@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, "Ikjoon
- Jang" <ikjn@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>
-Subject: [PATCH 1/6] PM: runtime: enable wake irq after runtime_suspend hook
- called
-Date: Thu, 8 Apr 2021 17:35:09 +0800
-Message-ID: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ id 1lUR6w-007WG1-TL; Thu, 08 Apr 2021 09:38:08 +0000
+IronPort-SDR: usi/QSGrhtvUnV1RJ1qJn0jWL4A2u/HjzEmuxgHAMRmoN8picmDKyhW0AVQyNnBs4oYUo8UR4p
+ +pltJuY3wHpg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9947"; a="180632205"
+X-IronPort-AV: E=Sophos;i="5.82,206,1613462400"; d="scan'208";a="180632205"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2021 02:37:48 -0700
+IronPort-SDR: BFpXzI0RXUfZATcKxM7hFx64JBR7Vk2GquUS4EhpRUOdB/vQoJXx3E7ConT8Lwt/z83n9oxCQn
+ yC8CBijdMkrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,206,1613462400"; d="scan'208";a="458753841"
+Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
+ ([10.237.72.174])
+ by orsmga001.jf.intel.com with ESMTP; 08 Apr 2021 02:37:42 -0700
+Subject: Re: [PATCH v16 1/2] scsi: ufs: Enable power management for wlun
+To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
+ martin.petersen@oracle.com, linux-scsi@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, Pedro Sousa <pedrom.sousa@synopsys.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Stanley Chu
+ <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>, Yue Hu <huyue2@yulong.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>
+References: <cover.1617818557.git.asutoshd@codeaurora.org>
+ <7be92c0bc3e5f07d5e17bd3b78c01496686ef31e.1617818557.git.asutoshd@codeaurora.org>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+Message-ID: <d30c2dc2-6334-1515-b548-a898939ec9ee@intel.com>
+Date: Thu, 8 Apr 2021 12:38:00 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E5C6DB1EBBB6601790860FBE2A607D826DC4ADE8017410E55972F9D1B0FDA48D2000:8
-X-MTK: N
+In-Reply-To: <7be92c0bc3e5f07d5e17bd3b78c01496686ef31e.1617818557.git.asutoshd@codeaurora.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_103531_126193_EB34E641 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20210408_103803_307929_45B7CBE1 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,61 +103,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the dedicated wake irq is level trigger, enable it before
-calling runtime_suspend, will trigger an interrupt.
+On 7/04/21 9:08 pm, Asutosh Das wrote:
+> During runtime-suspend of ufs host, the scsi devices are
+> already suspended and so are the queues associated with them.
+> But the ufs host sends SSU (START_STOP_UNIT) to wlun
+> during its runtime-suspend.
+> During the process blk_queue_enter checks if the queue is not in
+> suspended state. If so, it waits for the queue to resume, and never
+> comes out of it.
+> The commit
+> (d55d15a33: scsi: block: Do not accept any requests while suspended)
+> adds the check if the queue is in suspended state in blk_queue_enter().
+> 
+> Call trace:
+>  __switch_to+0x174/0x2c4
+>  __schedule+0x478/0x764
+>  schedule+0x9c/0xe0
+>  blk_queue_enter+0x158/0x228
+>  blk_mq_alloc_request+0x40/0xa4
+>  blk_get_request+0x2c/0x70
+>  __scsi_execute+0x60/0x1c4
+>  ufshcd_set_dev_pwr_mode+0x124/0x1e4
+>  ufshcd_suspend+0x208/0x83c
+>  ufshcd_runtime_suspend+0x40/0x154
+>  ufshcd_pltfrm_runtime_suspend+0x14/0x20
+>  pm_generic_runtime_suspend+0x28/0x3c
+>  __rpm_callback+0x80/0x2a4
+>  rpm_suspend+0x308/0x614
+>  rpm_idle+0x158/0x228
+>  pm_runtime_work+0x84/0xac
+>  process_one_work+0x1f0/0x470
+>  worker_thread+0x26c/0x4c8
+>  kthread+0x13c/0x320
+>  ret_from_fork+0x10/0x18
+> 
+> Fix this by registering ufs device wlun as a scsi driver and
+> registering it for block runtime-pm. Also make this as a
+> supplier for all other luns. That way, this device wlun
+> suspends after all the consumers and resumes after
+> hba resumes.
+> 
+> Co-developed-by: Can Guo <cang@codeaurora.org>
+> Signed-off-by: Can Guo <cang@codeaurora.org>
+> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
+> ---
 
-e.g.
-for a low level trigger type, it's low level at running time (0),
-and becomes high level when enters suspend (runtime_suspend (1) is
-called), a wakeup signal at (2) make it become low level, wake irq
-will be triggered.
+<SNIP>
 
-                ------------------
-               |           ^     ^|
-----------------           |     | --------------
- |<---(0)--->|<--(1)--|   (3)   (2)    (4)
+> +#ifdef CONFIG_PM_SLEEP
+> +static int ufshcd_wl_poweroff(struct device *dev)
+> +{
+> +	struct ufs_hba *hba = dev_get_drvdata(dev);
 
-if we enable the wake irq before calling runtime_suspend during (0),
-an interrupt will arise, it causes resume immediately;
-enable wake irq after calling runtime_suspend, e.g. at (3) or (4),
-will works.
+Should be:
 
-This patch seems no side effect on edge trigger wake irq.
+	struct scsi_device *sdev = to_scsi_device(dev);
+	struct ufs_hba *hba = shost_priv(sdev->host);
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/base/power/runtime.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> +
+> +	__ufshcd_wl_suspend(hba, UFS_SHUTDOWN_PM);
+> +	return 0;
+> +}
+> +#endif
 
-diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-index a46a7e30881b..796739a015a5 100644
---- a/drivers/base/power/runtime.c
-+++ b/drivers/base/power/runtime.c
-@@ -619,12 +619,12 @@ static int rpm_suspend(struct device *dev, int rpmflags)
- 	__update_runtime_status(dev, RPM_SUSPENDING);
- 
- 	callback = RPM_GET_CALLBACK(dev, runtime_suspend);
--
--	dev_pm_enable_wake_irq_check(dev, true);
- 	retval = rpm_callback(callback, dev);
- 	if (retval)
- 		goto fail;
- 
-+	dev_pm_enable_wake_irq_check(dev, true);
-+
-  no_callback:
- 	__update_runtime_status(dev, RPM_SUSPENDED);
- 	pm_runtime_deactivate_timer(dev);
-@@ -659,7 +659,6 @@ static int rpm_suspend(struct device *dev, int rpmflags)
- 	return retval;
- 
-  fail:
--	dev_pm_disable_wake_irq_check(dev);
- 	__update_runtime_status(dev, RPM_ACTIVE);
- 	dev->power.deferred_resume = false;
- 	wake_up_all(&dev->power.wait_queue);
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
