@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 173D7C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 11:08:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 636CEC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 11:08:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9A4C261151
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 11:08:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A4C261151
+	by mail.kernel.org (Postfix) with ESMTPS id 01491610E5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 11:08:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01491610E5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,20 +23,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jX1Hvg9eI7qE5Y+eiKaTSEfmNeTIcxCJOymoWcu+c8M=; b=POMMooZ7FJqER/80zlvZEvSE7
-	s94CmjQwbxSjLmrH2rWAoAom7j0nyhM1sszGVJzmrTqckMjaB+ROPJxU7afbYMXp7wVAFYNV1EROG
-	rmBB3hC2zMUnX8ZcW2x5m5B1sXcdpfqmigSb+YVFdpvQu9/7pza2D9eKUIrKzd+WMljwB4b2846bR
-	+9xeqZ7L7ti2yTkbhlXdL7Zcd6Ezex13pfzHfHYvaaNsFAU4+vzG7ZMJrpD4kOg7YXryZT1aSqDiE
-	iJjxgEF702hX5mzprh/BvqPKEleLfBYAgkUhEjOqcSSldSBEu1F8Cc3U6Yke9hySlrzhhZ3jz9DeJ
-	Mtdql3aLA==;
+	 bh=7iYHd7g7LIkVsQqTqtHPsaorIXNQ0D63HEiEMD5T5KY=; b=IvlXqPO0XOYwFZlNDjFKfiE9i
+	UekhMTao45BYTwGI8Tf4Ih9A2UdpScf+kJdBBTI2hbG+WGm+ReqfjgjN5s7uonuzcW4mOwpxSezfy
+	0LG2mcyijHiODkB5PkWOQqj5PWHpq1WOdbHGEIpzyyJaSEee7ZaUJFkv4XpuqFAubTeLSbXbbuQVD
+	RH/vGtOQSQA1oZZ6xj0zp1c3hh/9R11sjwh9qjclqmzDwh+3F4pShfra6E7ooyq9wErlm1Wg7sHOD
+	0eFXDZL2i1UDnGAzHub3CvqQRoVqRZRilYo9/yTvE/wFNGYFnXuOr9iAEE2MdiIIftkn5ngIKLF5n
+	T85aoWsUA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUSWH-007kmK-GM; Thu, 08 Apr 2021 11:08:17 +0000
+	id 1lUSWK-007knB-0Y; Thu, 08 Apr 2021 11:08:20 +0000
 Received: from szxga04-in.huawei.com ([45.249.212.190])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUSVD-007kVY-90; Thu, 08 Apr 2021 11:07:14 +0000
+ id 1lUSVD-007kVX-92; Thu, 08 Apr 2021 11:07:14 +0000
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FGJLv6BPTz19Kph;
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FGJLv5g4Jz19Kpc;
  Thu,  8 Apr 2021 19:04:55 +0800 (CST)
 Received: from huawei.com (10.175.127.227) by DGGEMS411-HUB.china.huawei.com
  (10.3.19.211) with Microsoft SMTP Server id 14.3.498.0; Thu, 8 Apr 2021
@@ -47,9 +47,10 @@ To: <joern@lazybastard.org>, <miquel.raynal@bootlin.com>, <richard@nod.at>,
 CC: <linux-mtd@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <yukuai3@huawei.com>, <yi.zhang@huawei.com>
-Subject: [PATCH 3/3] mtd: phram: Fix error return code in phram_setup()
-Date: Thu, 8 Apr 2021 19:15:14 +0800
-Message-ID: <20210408111514.1011020-4-yukuai3@huawei.com>
+Subject: [PATCH 2/3] mtd: plat-ram: remove redundant dev_err call in
+ platram_probe()
+Date: Thu, 8 Apr 2021 19:15:13 +0800
+Message-ID: <20210408111514.1011020-3-yukuai3@huawei.com>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20210408111514.1011020-1-yukuai3@huawei.com>
 References: <20210408111514.1011020-1-yukuai3@huawei.com>
@@ -57,8 +58,8 @@ MIME-Version: 1.0
 X-Originating-IP: [10.175.127.227]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_120711_663067_0AAF43DB 
-X-CRM114-Status: UNSURE (   7.83  )
+X-CRM114-CacheID: sfid-20210408_120711_721321_B80C24FA 
+X-CRM114-Status: UNSURE (   7.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,25 +77,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix to return a negative error code from the error handling
-case instead of 0, as done elsewhere in this function.
+There is a error message within devm_ioremap_resource
+already, so remove the dev_err call to avoid redundant
+error message.
 
 Reported-by: Hulk Robot <hulkci@huawei.com>
 Signed-off-by: Yu Kuai <yukuai3@huawei.com>
 ---
- drivers/mtd/devices/phram.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/mtd/maps/plat-ram.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/mtd/devices/phram.c b/drivers/mtd/devices/phram.c
-index 5b04ae6c3057..6ed6c51fac69 100644
---- a/drivers/mtd/devices/phram.c
-+++ b/drivers/mtd/devices/phram.c
-@@ -270,6 +270,7 @@ static int phram_setup(const char *val)
- 	if (len == 0 || erasesize == 0 || erasesize > len
- 	    || erasesize > UINT_MAX || rem) {
- 		parse_err("illegal erasesize or len\n");
-+		ret = -EINVAL;
- 		goto error;
+diff --git a/drivers/mtd/maps/plat-ram.c b/drivers/mtd/maps/plat-ram.c
+index 0bec7c791d17..cedd8ef9a6bf 100644
+--- a/drivers/mtd/maps/plat-ram.c
++++ b/drivers/mtd/maps/plat-ram.c
+@@ -127,7 +127,6 @@ static int platram_probe(struct platform_device *pdev)
+ 	info->map.virt = devm_ioremap_resource(&pdev->dev, res);
+ 	if (IS_ERR(info->map.virt)) {
+ 		err = PTR_ERR(info->map.virt);
+-		dev_err(&pdev->dev, "failed to ioremap() region\n");
+ 		goto exit_free;
  	}
  
 -- 
