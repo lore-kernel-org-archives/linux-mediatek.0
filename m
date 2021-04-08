@@ -2,86 +2,82 @@ Return-Path: <SRS0=hXrw=JF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 889EAC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 07:27:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71150C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:35:54 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0382B61178
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 07:27:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0382B61178
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	by mail.kernel.org (Postfix) with ESMTPS id 13E7661151
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Apr 2021 09:35:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13E7661151
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=O0u/YN9V07qwv7XCLXdxNI755XIVmNDD0mURgaca4Ww=; b=jkQYIccbPJkdh3uJAb4plJINx
-	B3+3WkNA8yUBcAJtjwWr4OD2C1byTU8DSTb5r0PVDEa/PRyDytu+ED+4grzCbffajyXbmSYLM2PND
-	GCTAlMyzEy61la3N/1FpvY/aN5Qmi+Acw5jCy6e5jPjGTI/zmhOlNoZa8LBLtBW6b67cBxfkD7QCC
-	Zs4T7dRZ85ZhDh5a+0sV940hpquwqssqQ0YYMY0RSwwR23cujJLhxeXWCUw2jArBcI3qxf/zcLTjS
-	rTcMnoWSgnWG0YKFRo9BV63FDKKKFqIIaYy5MRl6tXfgaUpXhB7Ge3b9W50F3DUIc58QQlSMw7hH0
-	vPxEmRz5g==;
+	 bh=WK2KEmTHRJW939tBqUeapOncrBL2b94ZF42q7FH1Lkg=; b=GflYImGP6+87xaUIXy4f1NRBK
+	GRen0GKyX43x6120v8/Fe7Hb47+j23Y3KCTlFy8D4+2OTCjAgM7PJAA062cR08RmtnNfaec7WKOy/
+	NKgPLce9uznhJ5mVSkMttLyzaYdexdAGTfzWO/TO+rO3EpYGQHLk3ypcsj4Oz6aeK5rGDwY8P/LFY
+	w0efPHTA9+I4wzx52vPYuhXj3S/NFx9Nt7XE/UZd996eJhWY199m58WlS/Ag8PyFjq1lz2bnDlBl4
+	+Vn80Jwh1t1vekrfAUov9uSHmX+6oCuIXAKpaznD/PXvMWkdgzKb+wQcH1caZ3FoCnjoolcXd4PjP
+	kQedPQVFA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUP4L-007DXz-Ut; Thu, 08 Apr 2021 07:27:17 +0000
-Received: from mout.kundenserver.de ([212.227.126.130])
+	id 1lUR4h-007VRq-HN; Thu, 08 Apr 2021 09:35:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUP3x-007DPE-Cw; Thu, 08 Apr 2021 07:26:51 +0000
-Received: from mail-oo1-f47.google.com ([209.85.161.47]) by
- mrelayeu.kundenserver.de (mreue011 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MXotA-1l58Qm0C5M-00YDZh; Thu, 08 Apr 2021 09:26:48 +0200
-Received: by mail-oo1-f47.google.com with SMTP id
- n12-20020a4ad12c0000b02901b63e7bc1b4so283328oor.5; 
- Thu, 08 Apr 2021 00:26:47 -0700 (PDT)
-X-Gm-Message-State: AOAM531MSgt0amp/mLmUdh7TaP5SaEagIlfL5ae+faxs2wTu9Q0Jdhii
- E+NgeBakUSVwsMeLkyXVEZMMI96nUHEgRYh2O0Q=
-X-Google-Smtp-Source: ABdhPJzKJmULiKJZbqIfF2zDxr9Dn4RUKtO26qlLbMKJT/5DsJBNPIXmgMgdVr4n60mmoqzCYdBdCT5pE1al5gbKDF0=
-X-Received: by 2002:a4a:244d:: with SMTP id v13mr6446430oov.66.1617866806386; 
- Thu, 08 Apr 2021 00:26:46 -0700 (PDT)
+ id 1lUR4Q-007VO8-6I; Thu, 08 Apr 2021 09:35:32 +0000
+X-UUID: 62583fc4fc694ae4a5840d3c85c54bb3-20210408
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=B2SVZSktPofKP7OEmRU/oowu4GXVpe+f1n6gyo7or9k=; 
+ b=CIU+AxgIFhjYEahvz/PLUJUWc/jxCkPXKb3DH8D6Jv0693t4y0iN/QinOtEJefWTPzkIzdFDopPPT/bw+RDT9oeim0hf0gxG2vESyt9Keq71F2mjJ8TUB8sdstIV83ciUbi+cxxKbgr/1kbYWTLIqRr0Q4+St00AfHFFmnceMFo=;
+X-UUID: 62583fc4fc694ae4a5840d3c85c54bb3-20210408
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1699443679; Thu, 08 Apr 2021 02:35:22 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Apr 2021 02:35:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Apr 2021 17:35:19 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 8 Apr 2021 17:35:18 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>, Tony Lindgren <tony@atomide.com>, Tianping Fang
+ <tianping.fang@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, "Ikjoon
+ Jang" <ikjn@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>
+Subject: [PATCH 2/6] usb: xhci-mtk: check return value in suspend/resume hooks
+Date: Thu, 8 Apr 2021 17:35:10 +0800
+Message-ID: <1617874514-12282-2-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-References: <22814673-e9fe-f65b-cc0f-b02be4f90d1a@gmail.com>
- <CAK8P3a0bp3CUzOQHSX5KYt44j-Njk_u2P=0q-ZQ0HcTBiVVVSA@mail.gmail.com>
- <01c82108-64a8-33ee-3984-5bd7056a0002@gmail.com>
- <CAK8P3a37BUdHneO+9+t0Pan3UWZHub-ishcKLNxCbqO0kk0CNw@mail.gmail.com>
- <CAOwMV_yQLWwMEQ_f_wHOAipgD1qZgNz2SA2RJDZpNozCKv4vWQ@mail.gmail.com>
-In-Reply-To: <CAOwMV_yQLWwMEQ_f_wHOAipgD1qZgNz2SA2RJDZpNozCKv4vWQ@mail.gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Thu, 8 Apr 2021 09:26:30 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a2Qg-uz0kMXFMrvRjUv3NRvZXjTwS1P5MDvFk3feYaBzg@mail.gmail.com>
-Message-ID: <CAK8P3a2Qg-uz0kMXFMrvRjUv3NRvZXjTwS1P5MDvFk3feYaBzg@mail.gmail.com>
-Subject: Re: [GIT PULL] arm64: dts: mediatek: changes for v5.13 (second round)
-To: Fabien Parent <fparent@baylibre.com>
-List-Id: <soc.lore.kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, SoC Team <soc@kernel.org>,
- arm-soc <arm@kernel.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Irui Wang <irui.wang@mediatek.com>, 
- Rob Herring <robh+dt@kernel.org>, DTML <devicetree@vger.kernel.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-X-Provags-ID: V03:K1:3iJ3FwKfbPdKycmovsr0K6C4Gkm66iqPcSy1F0MH+JIfgtd9avP
- LRv4ArBQ4ueRRleO8vtmT4rEBShBdVdHvE/P3puzDhocO8ssb0TTZ4fQk8TSP+rog826w87
- WdsYiVgATAkCNRjcaBj71Fkvy6sjWlSimuNOwuated02Fyn1udh58kBfv40qafz7rHqIj33
- bXncLb3MaOEIXrN6MzGkg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gjunnoIs9bs=:15FKe2y5vIh6o3CwAYJr5h
- 8ibi2v3g5okh4US5CipbjIoV1w9woIMNno5HSMZDH42TXeZyXZsq00F09tDA8lHTfX5B0kz8c
- F/RftUI8QLCJiehAIYx1maDUcybJU5aMmY101bX8J32XNZOlOzMifWD6oOpYUKN/T9JYRQGpc
- /ZLtsvWFXer9uuWjQ4kNlmrjqW0jv8ktaL4BAVYwiWPHLCrR1C1bvRQT+c6mj257cWwR9K9eZ
- ZqoDK7cVQnEMHvD/+Qhv8SV3+gsq12p0YEO8Coouy+gcx9Rm4sIFHKrTyhlpdaav+lKwI9o2Z
- 4qbg+5vzsoKonnbc/4UU7fk0nuKKBRbZ1l8o5EJhuoQx/c2Kz3Zxsm/QDW2EBhiup7J9HvcGs
- 3vwLHmkP2OCYfqfmrfZ8s55wGftLAesZK3BPVjeU7RiWkqDh9STiXCdyu1v6mvbTK/MuNrcNZ
- Li1CibN+I2rDKa5q41lj0swIe8QztNo=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210408_082649_783867_923B9724 
-X-CRM114-Status: GOOD (  23.09  )
+X-CRM114-CacheID: sfid-20210408_103526_691921_CB6411C2 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,44 +94,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 8, 2021 at 12:14 AM Fabien Parent <fparent@baylibre.com> wrote:
-> On Wed, Apr 7, 2021 at 7:55 PM Arnd Bergmann <arnd@arndb.de> wrote:
-> > On Wed, Apr 7, 2021 at 6:34 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> > > On 07/04/2021 18:06, Arnd Bergmann wrote:
-> >
-> > So five of the strings are documented, the others are missing. I did not check
-> > the other patches in your branch.
->
-> The binding documentation for these drivers are here [0]. The display
-> bindings are documented as:
-> - compatible: "mediatek,<chip>-disp-<function>", one of
->
-> The <chip> placeholder is never expanded for all the supported chips.
-> The 5 existings matches from your grep command comes from the example.
-> I guess these will be fixed whenever someone converts [0] to yaml.
+Return error number if encounter errors during suspend and resume.
 
-Ok. I suppose the wildcards just didn't get caught in the initial review of the
-binding. The way the binding is defined is not all that helpful since the entire
-point of having chip specific strings is to allow having different bindings for
-future chips that have different requirements.
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk.c | 37 +++++++++++++++++++++++++++----------
+ 1 file changed, 27 insertions(+), 10 deletions(-)
 
-There is still an open question on what to do to replace the aliases. At least
-since they are not part of the documented binding, it is fairly easy to argue
-that the drivers should not rely on them, and we can still change them.
-I also see that as late as last november, there were still incompatible
-code changes to the ad-hoc binding in
-drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c, so I'm not too worried
-about breaking existing dts files that relied on it.
-
-I don't claim to understand how the various blocks all fit together here,
-but I would expect that this can all be replaced with just having
-references to phandles for the other nodes in one place.
-
-Are the aliases in this case actually board specific, or do they just
-document how the SoC is wired up?
-
-       Arnd
-
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index c1bc40289833..a74764ab914a 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -630,18 +630,12 @@ static int xhci_mtk_remove(struct platform_device *dev)
+ 	return 0;
+ }
+ 
+-/*
+- * if ip sleep fails, and all clocks are disabled, access register will hang
+- * AHB bus, so stop polling roothubs to avoid regs access on bus suspend.
+- * and no need to check whether ip sleep failed or not; this will cause SPM
+- * to wake up system immediately after system suspend complete if ip sleep
+- * fails, it is what we wanted.
+- */
+ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
+ {
+ 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
+ 	struct usb_hcd *hcd = mtk->hcd;
+ 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
++	int ret;
+ 
+ 	xhci_dbg(xhci, "%s: stop port polling\n", __func__);
+ 	clear_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+@@ -649,10 +643,21 @@ static int __maybe_unused xhci_mtk_suspend(struct device *dev)
+ 	clear_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+ 	del_timer_sync(&xhci->shared_hcd->rh_timer);
+ 
+-	xhci_mtk_host_disable(mtk);
++	ret = xhci_mtk_host_disable(mtk);
++	if (ret)
++		goto restart_poll_rh;
++
+ 	xhci_mtk_clks_disable(mtk);
+ 	usb_wakeup_set(mtk, true);
+ 	return 0;
++
++restart_poll_rh:
++	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
++	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
++	usb_hcd_poll_rh_status(xhci->shared_hcd);
++	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
++	usb_hcd_poll_rh_status(hcd);
++	return ret;
+ }
+ 
+ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+@@ -660,10 +665,16 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 	struct xhci_hcd_mtk *mtk = dev_get_drvdata(dev);
+ 	struct usb_hcd *hcd = mtk->hcd;
+ 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
++	int ret;
+ 
+ 	usb_wakeup_set(mtk, false);
+-	xhci_mtk_clks_enable(mtk);
+-	xhci_mtk_host_enable(mtk);
++	ret = xhci_mtk_clks_enable(mtk);
++	if (ret)
++		goto enable_wakeup;
++
++	ret = xhci_mtk_host_enable(mtk);
++	if (ret)
++		goto disable_clks;
+ 
+ 	xhci_dbg(xhci, "%s: restart port polling\n", __func__);
+ 	set_bit(HCD_FLAG_POLL_RH, &xhci->shared_hcd->flags);
+@@ -671,6 +682,12 @@ static int __maybe_unused xhci_mtk_resume(struct device *dev)
+ 	set_bit(HCD_FLAG_POLL_RH, &hcd->flags);
+ 	usb_hcd_poll_rh_status(hcd);
+ 	return 0;
++
++disable_clks:
++	xhci_mtk_clks_disable(mtk);
++enable_wakeup:
++	usb_wakeup_set(mtk, true);
++	return ret;
+ }
+ 
+ static const struct dev_pm_ops xhci_mtk_pm_ops = {
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
