@@ -2,92 +2,97 @@ Return-Path: <SRS0=HbKG=JG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 104B0C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:33:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AACBC433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:33:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E5E161181
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:33:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E5E161181
+	by mail.kernel.org (Postfix) with ESMTPS id 2835361108
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:33:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2835361108
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HPSQlb5BoVwDm6xTUAbdKV10VkHNuHg1N0Kie/dOn14=; b=LGBqTQcmDJHKvnysNN17Y/sp+k
-	Q0TxXhI+DZcgt9MnP5IspaMiCHB50U7Po7zYYH3YO19T23hLziyw90RT2wr8RjyasK9UHB6ZKO5Gb
-	3uy4EwDmtgI5AJmixo4kl+HvaFJNgYnlbm3YZTS/OTuCd9N7xoknFtcAgfWI5xBSwYMC80RTZlBUF
-	VtLqtW32GnRbaGWwlNwiBbpzBNNjnNv6BviC9N30aDq/oBwyhDTx1B9Oe8xK1RU7JaodU34ytnVqD
-	+z5VywDfY5z1jf/Wh8BaW/sKzmUyHJItho9GuY46IvLC90f5ZbvF218fdso5UsrFowbvEtRQzkzbR
-	K+hZnwxg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=VtU+ToYA1VrsVz4hlXS5VZlyfAZCYW7koLdhabcsfQQ=; b=ayGJiqqKK7hjT1WYOqy6C1KwM
+	DPTLA8MPb9AEOur/X+7zt9G+FQ+ESfpiTBI6Du5ETGZb9IkzrtwVJ5/IdIG98+WV9C1Jte9tMivOe
+	siCobdQ0paujPIJ/mroS4nV56u6Y7yDO1YQdWF0qPWtWBiYVXLZz7RKa74ylVyopsEc9Ok6payHqE
+	n6w+P+2Ur8Ne81/7m0Pbgzy6boko/Z5srlGC/zK4e1TPFjB9oYV8tAWE54AOGVtMZbw/MPkhLcDR6
+	XesI/KwgMd492vRcMAFry7q+l3RkEIomNUxYox6WBZkI+2XefFv3o8KUaEYNANhuA4sCQsyeua8FO
+	QQeXVSGtQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUnW5-000FmM-UN; Fri, 09 Apr 2021 09:33:30 +0000
+	id 1lUnWL-000Fqy-6K; Fri, 09 Apr 2021 09:33:45 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUnVZ-000Ff2-9n; Fri, 09 Apr 2021 09:32:57 +0000
+ id 1lUnVb-000Ffi-5X; Fri, 09 Apr 2021 09:32:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=ahpjA9tCJvmzP8JNR3fN+DSmcX5nwcvUPJ21UsjNxAY=; b=dx2w9DNZaZYkbBaqJFq7gJ2RVP
- +4vD7KDS2wW6hSrVoKaA9h67JQNOjJFerYemOi15lGpAHG1o1MI2bYttDwCgVwmczWqY5wTXG0Sew
- RjyVSbu2mpMiVWvyzXQ4TGiIw995smCrfpVDjm3jwGYnXDv9tlf4TZy/0dwgDKvOXNe18QHXl8Q9V
- PypQNo3feUsuIoSvkywd2J1zGXYX1Mq4miEqKOpWYtzJRLRv0DUlxCA8q8fTiOzKUdUTH4ngXQabp
- 2+4yg5Z5kU/9AKWPaTB014AiIA/MQmCZyesSHDVCRxzCTJIEz97KdHaV4OxA0995gSRFkiHRAX47x
- TWcI0arA==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=GubPwv34T5unPbpHcAZCnn2+S6HvSwXsHz1dy3EQ39Y=; b=TrLQzfpH9KO421WZB6rWg/0E2u
+ 3zYyvFBWHfaujBxPOefLIBNM8ZEFFYEJyILz5FhCPbXaXajvBeyWW1FoWEuqQkta7Tc0b3OpqPq1e
+ P2nPLPAekEJtVcHSV+nqi6bxIvd2Gyc3ivFr8PwLiz26quRKaN8sNAMAMZYrF0h71oKsTmn7WcKPK
+ SIYtRiTCnAjQPbkbs32SWUV1MqczbVEdaEUki1E4MVBrdV7coWjRhvboCdIStqS9g6Ft+ffn2VSkX
+ /4IULiz7ww/gZViR+9F1Ir2h4+iwaYK0He+qAcosi/pL2aqOx2ySd6TNQA/juXp9T3nvFA9yBwUc9
+ ZiU97Aug==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUnVW-0042W5-Er; Fri, 09 Apr 2021 09:32:55 +0000
-X-UUID: 6a70f4921340401f859b0a664abab85f-20210409
+ id 1lUnVX-0042W5-N4; Fri, 09 Apr 2021 09:32:57 +0000
+X-UUID: 03de425d9f804082881a990fec9f790c-20210409
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=ahpjA9tCJvmzP8JNR3fN+DSmcX5nwcvUPJ21UsjNxAY=; 
- b=pVOZE9/hDrC2zJVSfbQX0Q6KsMEebeQ5cmLvnDA0HZBED6rOrfWsrZGjud5IBRqeXYp3RdN6k8n53/d+upIdN3ornTDdP8t6QONeZhLjeRrhPqnvDXHsoGZ494a6Wyz6V1Dfv6bkdK9JYxRtf3TEI9gvf4kXbX2vWUwDhpH54w0=;
-X-UUID: 6a70f4921340401f859b0a664abab85f-20210409
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=GubPwv34T5unPbpHcAZCnn2+S6HvSwXsHz1dy3EQ39Y=; 
+ b=gWeZJRUbMqAsGKLYzPh14/MpGzr5O/hVwGp63QjIo5n4xCVj8Wh1KcB299LLDSFXOuFa91H43Ucop6Rr3MTKgpXFBN0q4CiCRd6Ab8xVjHxHkqWRX1VQFehUDaWwDYNCxwrx/n0osVtUIuEPuiq1x0G40F1+9yItMljT4kgQkfI=;
+X-UUID: 03de425d9f804082881a990fec9f790c-20210409
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengquan.chen@mediatek.com>)
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2076988517; Fri, 09 Apr 2021 02:32:50 -0700
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ with ESMTP id 1909766124; Fri, 09 Apr 2021 02:32:50 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 02:22:48 -0700
+ 15.0.1497.2; Fri, 9 Apr 2021 02:28:32 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 17:22:45 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 9 Apr 2021 17:22:44 +0800
-From: Fengquan Chen <Fengquan.Chen@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
- <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-CC: <fengquan.chen@mediatek.com>, <dehui.sun@mediatek.com>, Fengquan Chen
- <Fengquan.Chen@mediatek.com>
-Subject: [v4,
- 1/1] clocksource/drivers/timer-mediatek: optimize systimer irq clear
- flow on shutdown
-Date: Fri, 9 Apr 2021 17:22:41 +0800
-Message-ID: <1617960162-1988-1-git-send-email-Fengquan.Chen@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 17:28:31 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 9 Apr 2021 17:28:31 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
+ <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v15 4/7] soc: mediatek: SVS: add debug commands
+Date: Fri, 9 Apr 2021 17:28:25 +0800
+Message-ID: <20210409092828.23939-5-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210409092828.23939-1-roger.lu@mediatek.com>
+References: <20210409092828.23939-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: EB70484A7A26ECD92D4CC487621E7357F98FB2BCBE6B52620097EDDA15F5C1962000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_023254_521647_DCD65AC0 
-X-CRM114-Status: UNSURE (   6.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210409_023255_795133_EF744ADC 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,15 +109,495 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The purpose of SVS is to help find the suitable voltages
+for DVFS. Therefore, if SVS bank voltages are concerned
+to be wrong, we can adjust SVS bank voltages by this patch.
 
-Fengquan Chen (1):
-  [v4, 1/1] clocksource/drivers/timer-mediatek: optimize systimer irq clear flow on shutdown
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-svs.c | 328 +++++++++++++++++++++++++++++++++
+ 1 file changed, 328 insertions(+)
 
- drivers/clocksource/timer-mediatek.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
-
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 7d134d47f871..39f29d9e4fc7 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -6,6 +6,7 @@
+ #include <linux/bits.h>
+ #include <linux/clk.h>
+ #include <linux/completion.h>
++#include <linux/debugfs.h>
+ #include <linux/device.h>
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
+@@ -24,6 +25,7 @@
+ #include <linux/pm_runtime.h>
+ #include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
++#include <linux/seq_file.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <linux/thermal.h>
+@@ -60,6 +62,39 @@
+ #define SVSB_INTSTS_COMPLETE		0x1
+ #define SVSB_INTSTS_CLEAN		0x00ffffff
+ 
++#define debug_fops_ro(name)						\
++	static int svs_##name##_debug_open(struct inode *inode,		\
++					   struct file *filp)		\
++	{								\
++		return single_open(filp, svs_##name##_debug_show,	\
++				   inode->i_private);			\
++	}								\
++	static const struct file_operations svs_##name##_debug_fops = {	\
++		.owner = THIS_MODULE,					\
++		.open = svs_##name##_debug_open,			\
++		.read = seq_read,					\
++		.llseek = seq_lseek,					\
++		.release = single_release,				\
++	}
++
++#define debug_fops_rw(name)						\
++	static int svs_##name##_debug_open(struct inode *inode,		\
++					   struct file *filp)		\
++	{								\
++		return single_open(filp, svs_##name##_debug_show,	\
++				   inode->i_private);			\
++	}								\
++	static const struct file_operations svs_##name##_debug_fops = {	\
++		.owner = THIS_MODULE,					\
++		.open = svs_##name##_debug_open,			\
++		.read = seq_read,					\
++		.write = svs_##name##_debug_write,			\
++		.llseek = seq_lseek,					\
++		.release = single_release,				\
++	}
++
++#define svs_dentry(name)	{__stringify(name), &svs_##name##_debug_fops}
++
+ static DEFINE_SPINLOCK(mtk_svs_lock);
+ 
+ /*
+@@ -81,6 +116,7 @@ enum svsb_phase {
+ 	SVSB_PHASE_INIT01,
+ 	SVSB_PHASE_INIT02,
+ 	SVSB_PHASE_MON,
++	SVSB_PHASE_NUM,
+ };
+ 
+ enum svs_reg_index {
+@@ -138,6 +174,7 @@ enum svs_reg_index {
+ 	SPARE2,
+ 	SPARE3,
+ 	THSLPEVEB,
++	SVS_REG_NUM,
+ };
+ 
+ static const u32 svs_regs_v2[] = {
+@@ -242,6 +279,7 @@ struct thermal_parameter {
+  * @opp_volts: signed-off voltages from default opp table
+  * @freqs_pct: percent of "opp_freqs / freq_base" for bank init
+  * @volts: bank voltages
++ * @reg_data: bank register data of each phase
+  * @freq_base: reference frequency for bank init
+  * @vboot: voltage request for bank init01 stage only
+  * @volt_step: bank voltage step
+@@ -260,6 +298,7 @@ struct thermal_parameter {
+  * @opp_count: bank opp count
+  * @int_st: bank interrupt identification
+  * @sw_id: bank software identification
++ * @hw_id: bank hardware identification
+  * @ctl0: bank thermal sensor selection
+  * @cpu_id: cpu core id for SVS CPU only
+  *
+@@ -286,6 +325,7 @@ struct svs_bank {
+ 	u32 opp_volts[16];
+ 	u32 freqs_pct[16];
+ 	u32 volts[16];
++	u32 reg_data[SVSB_PHASE_NUM][SVS_REG_NUM];
+ 	u32 freq_base;
+ 	u32 vboot;
+ 	u32 volt_step;
+@@ -323,6 +363,7 @@ struct svs_bank {
+ 	u32 opp_count;
+ 	u32 int_st;
+ 	u32 sw_id;
++	u32 hw_id;
+ 	u32 ctl0;
+ 	u32 cpu_id;
+ };
+@@ -638,11 +679,15 @@ static void svs_set_bank_phase(struct svs_platform *svsp,
+ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
++	enum svs_reg_index rg_i;
+ 
+ 	dev_info(svsb->dev, "%s: VDN74~30:0x%08x~0x%08x, DC:0x%08x\n",
+ 		 __func__, svs_readl(svsp, VDESIGN74),
+ 		 svs_readl(svsp, VDESIGN30), svs_readl(svsp, DCVALUES));
+ 
++	for (rg_i = DESCHAR; rg_i < SVS_REG_NUM; rg_i++)
++		svsb->reg_data[SVSB_PHASE_INIT01][rg_i] = svs_readl(svsp, rg_i);
++
+ 	svsb->phase = SVSB_PHASE_INIT01;
+ 	svsb->dc_voffset_in = ~(svs_readl(svsp, DCVALUES) & GENMASK(15, 0)) + 1;
+ 	if (svsb->init01_volt_flag == SVSB_INIT01_VOLT_IGNORE ||
+@@ -662,11 +707,15 @@ static inline void svs_init01_isr_handler(struct svs_platform *svsp)
+ static inline void svs_init02_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
++	enum svs_reg_index rg_i;
+ 
+ 	dev_info(svsb->dev, "%s: VOP74~30:0x%08x~0x%08x, DC:0x%08x\n",
+ 		 __func__, svs_readl(svsp, VOP74), svs_readl(svsp, VOP30),
+ 		 svs_readl(svsp, DCVALUES));
+ 
++	for (rg_i = DESCHAR; rg_i < SVS_REG_NUM; rg_i++)
++		svsb->reg_data[SVSB_PHASE_INIT02][rg_i] = svs_readl(svsp, rg_i);
++
+ 	svsb->phase = SVSB_PHASE_INIT02;
+ 	svsp->get_vops(svsp);
+ 
+@@ -677,6 +726,10 @@ static inline void svs_init02_isr_handler(struct svs_platform *svsp)
+ static inline void svs_mon_mode_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
++	enum svs_reg_index rg_i;
++
++	for (rg_i = DESCHAR; rg_i < SVS_REG_NUM; rg_i++)
++		svsb->reg_data[SVSB_PHASE_MON][rg_i] = svs_readl(svsp, rg_i);
+ 
+ 	svsb->phase = SVSB_PHASE_MON;
+ 	svsb->temp = svs_readl(svsp, TEMP) & GENMASK(7, 0);
+@@ -688,6 +741,7 @@ static inline void svs_mon_mode_isr_handler(struct svs_platform *svsp)
+ static inline void svs_error_isr_handler(struct svs_platform *svsp)
+ {
+ 	struct svs_bank *svsb = svsp->pbank;
++	enum svs_reg_index rg_i;
+ 
+ 	dev_err(svsb->dev, "%s: CORESEL = 0x%08x\n",
+ 		__func__, svs_readl(svsp, CORESEL));
+@@ -697,6 +751,9 @@ static inline void svs_error_isr_handler(struct svs_platform *svsp)
+ 		svs_readl(svsp, SMSTATE0), svs_readl(svsp, SMSTATE1));
+ 	dev_err(svsb->dev, "TEMP = 0x%08x\n", svs_readl(svsp, TEMP));
+ 
++	for (rg_i = DESCHAR; rg_i < SVS_REG_NUM; rg_i++)
++		svsb->reg_data[SVSB_PHASE_ERROR][rg_i] = svs_readl(svsp, rg_i);
++
+ 	svsb->mode_support = SVSB_MODE_ALL_DISABLE;
+ 	svsb->phase = SVSB_PHASE_ERROR;
+ 
+@@ -1406,9 +1463,271 @@ static int svs_resume(struct device *dev)
+ 	return 0;
+ }
+ 
++/*
++ * svs_dump_debug_show - dump svs/thermal efuse and svs banks' registers
++ */
++static int svs_dump_debug_show(struct seq_file *m, void *p)
++{
++	struct svs_platform *svsp = (struct svs_platform *)m->private;
++	struct svs_bank *svsb;
++	unsigned long svs_reg_addr;
++	u32 idx, i, j;
++
++	for (i = 0; i < svsp->efuse_num; i++)
++		if (svsp->efuse && svsp->efuse[i])
++			seq_printf(m, "M_HW_RES%d = 0x%08x\n",
++				   i, svsp->efuse[i]);
++
++	for (i = 0; i < svsp->tefuse_num; i++)
++		if (svsp->tefuse)
++			seq_printf(m, "THERMAL_EFUSE%d = 0x%08x\n",
++				   i, svsp->tefuse[i]);
++
++	for (idx = 0; idx < svsp->bank_num; idx++) {
++		svsb = &svsp->banks[idx];
++
++		for (i = SVSB_PHASE_INIT01; i <= SVSB_PHASE_MON; i++) {
++			seq_printf(m, "Bank_number = %u\n", svsb->hw_id);
++
++			if (i == SVSB_PHASE_INIT01 || i == SVSB_PHASE_INIT02)
++				seq_printf(m, "mode = init%d\n", i);
++			else if (i == SVSB_PHASE_MON)
++				seq_puts(m, "mode = mon\n");
++			else
++				seq_puts(m, "mode = error\n");
++
++			for (j = DESCHAR; j < SVS_REG_NUM; j++) {
++				svs_reg_addr = (unsigned long)(svsp->base +
++							       svsp->regs[j]);
++				seq_printf(m, "0x%08lx = 0x%08x\n",
++					   svs_reg_addr, svsb->reg_data[i][j]);
++			}
++		}
++	}
++
++	return 0;
++}
++
++debug_fops_ro(dump);
++
++/*
++ * svs_enable_debug_show - show svs bank current enable phase
++ */
++static int svs_enable_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++
++	if (svsb->phase == SVSB_PHASE_INIT01)
++		seq_puts(m, "init1\n");
++	else if (svsb->phase == SVSB_PHASE_INIT02)
++		seq_puts(m, "init2\n");
++	else if (svsb->phase == SVSB_PHASE_MON)
++		seq_puts(m, "mon mode\n");
++	else if (svsb->phase == SVSB_PHASE_ERROR)
++		seq_puts(m, "disabled\n");
++	else
++		seq_puts(m, "unknown\n");
++
++	return 0;
++}
++
++/*
++ * svs_enable_debug_write - we only support svs bank disable control
++ */
++static ssize_t svs_enable_debug_write(struct file *filp,
++				      const char __user *buffer,
++				      size_t count, loff_t *pos)
++{
++	struct svs_bank *svsb = file_inode(filp)->i_private;
++	struct svs_platform *svsp = dev_get_drvdata(svsb->dev);
++	unsigned long flags;
++	int enabled, ret;
++	char *buf = NULL;
++
++	if (count >= PAGE_SIZE)
++		return -EINVAL;
++
++	buf = (char *)memdup_user_nul(buffer, count);
++	if (IS_ERR(buf))
++		return PTR_ERR(buf);
++
++	ret = kstrtoint(buf, 10, &enabled);
++	if (ret)
++		return ret;
++
++	if (!enabled) {
++		spin_lock_irqsave(&mtk_svs_lock, flags);
++		svsp->pbank = svsb;
++		svsb->mode_support = SVSB_MODE_ALL_DISABLE;
++		svs_switch_bank(svsp);
++		svs_writel(svsp, SVSB_EN_OFF, SVSEN);
++		svs_writel(svsp, SVSB_INTSTS_CLEAN, INTSTS);
++		spin_unlock_irqrestore(&mtk_svs_lock, flags);
++
++		svsb->phase = SVSB_PHASE_ERROR;
++		svs_adjust_pm_opp_volts(svsb, true);
++	}
++
++	kfree(buf);
++
++	return count;
++}
++
++debug_fops_rw(enable);
++
++/*
++ * svs_status_debug_show - show svs bank's tzone_temp/voltages/freqs_pct
++ * and its corresponding opp-table's opp_freqs/opp_volts
++ */
++static int svs_status_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++	struct dev_pm_opp *opp;
++	int tzone_temp = 0, ret;
++	u32 i;
++
++	ret = svs_get_bank_zone_temperature(svsb->tzone_name, &tzone_temp);
++	if (ret)
++		seq_printf(m, "%s: no \"%s\" zone?\n", svsb->name,
++			   svsb->tzone_name);
++	else
++		seq_printf(m, "%s: temperature = %d\n", svsb->name, tzone_temp);
++
++	for (i = 0; i < svsb->opp_count; i++) {
++		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
++						 svsb->opp_freqs[i], true);
++		if (IS_ERR(opp)) {
++			seq_printf(m, "%s: cannot find freq = %u (%ld)\n",
++				   svsb->name, svsb->opp_freqs[i],
++				   PTR_ERR(opp));
++			return PTR_ERR(opp);
++		}
++
++		seq_printf(m, "opp_freqs[%02u]: %u, opp_volts[%02u]: %lu, ",
++			   i, svsb->opp_freqs[i], i,
++			   dev_pm_opp_get_voltage(opp));
++		seq_printf(m, "svsb_volts[%02u]: 0x%x, freqs_pct[%02u]: %u\n",
++			   i, svsb->volts[i], i, svsb->freqs_pct[i]);
++		dev_pm_opp_put(opp);
++	}
++
++	return 0;
++}
++
++debug_fops_ro(status);
++
++/*
++ * svs_volt_offset_debug_show - show svs bank's voltage offset
++ */
++static int svs_volt_offset_debug_show(struct seq_file *m, void *v)
++{
++	struct svs_bank *svsb = (struct svs_bank *)m->private;
++
++	seq_printf(m, "%d\n", svsb->volt_offset);
++
++	return 0;
++}
++
++/*
++ * svs_volt_offset_debug_write - write svs bank's voltage offset
++ */
++static ssize_t svs_volt_offset_debug_write(struct file *filp,
++					   const char __user *buffer,
++					   size_t count, loff_t *pos)
++{
++	struct svs_bank *svsb = file_inode(filp)->i_private;
++	char *buf = NULL;
++	s32 volt_offset;
++
++	if (count >= PAGE_SIZE)
++		return -EINVAL;
++
++	buf = (char *)memdup_user_nul(buffer, count);
++	if (IS_ERR(buf))
++		return PTR_ERR(buf);
++
++	if (!kstrtoint(buf, 10, &volt_offset)) {
++		svsb->volt_offset = volt_offset;
++		svs_adjust_pm_opp_volts(svsb, true);
++	}
++
++	kfree(buf);
++
++	return count;
++}
++
++debug_fops_rw(volt_offset);
++
++static int svs_create_svs_debug_cmds(struct svs_platform *svsp)
++{
++	struct svs_bank *svsb;
++	struct dentry *svs_dir, *svsb_dir, *file_entry;
++	const char *d = "/sys/kernel/debug/svs";
++	u32 i, idx;
++
++	struct svs_dentry {
++		const char *name;
++		const struct file_operations *fops;
++	};
++
++	struct svs_dentry svs_entries[] = {
++		svs_dentry(dump),
++	};
++
++	struct svs_dentry svsb_entries[] = {
++		svs_dentry(enable),
++		svs_dentry(status),
++		svs_dentry(volt_offset),
++	};
++
++	svs_dir = debugfs_create_dir("svs", NULL);
++	if (IS_ERR(svs_dir)) {
++		dev_err(svsp->dev, "cannot create %s: %ld\n",
++			d, PTR_ERR(svs_dir));
++		return 0;
++	}
++
++	for (i = 0; i < ARRAY_SIZE(svs_entries); i++) {
++		file_entry = debugfs_create_file(svs_entries[i].name, 0664,
++						 svs_dir, svsp,
++						 svs_entries[i].fops);
++		if (IS_ERR(file_entry)) {
++			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
++				d, svs_entries[i].name, PTR_ERR(file_entry));
++			return PTR_ERR(file_entry);
++		}
++	}
++
++	for (idx = 0; idx < svsp->bank_num; idx++) {
++		svsb = &svsp->banks[idx];
++
++		svsb_dir = debugfs_create_dir(svsb->name, svs_dir);
++		if (IS_ERR(svsb_dir)) {
++			dev_err(svsp->dev, "cannot create %s/%s: %ld\n",
++				d, svsb->name, PTR_ERR(svsb_dir));
++			return PTR_ERR(svsb_dir);
++		}
++
++		for (i = 0; i < ARRAY_SIZE(svsb_entries); i++) {
++			file_entry = debugfs_create_file(svsb_entries[i].name,
++							 0664, svsb_dir, svsb,
++							 svsb_entries[i].fops);
++			if (IS_ERR(file_entry)) {
++				dev_err(svsp->dev, "no %s/%s/%s?: %ld\n",
++					d, svsb->name, svsb_entries[i].name,
++					PTR_ERR(file_entry));
++				return PTR_ERR(file_entry);
++			}
++		}
++	}
++
++	return 0;
++}
++
+ static struct svs_bank svs_mt8183_banks[] = {
+ 	{
+ 		.sw_id			= SVSB_CPU_LITTLE,
++		.hw_id			= 0,
+ 		.cpu_id			= 0,
+ 		.tzone_name		= "tzts4",
+ 		.buck_name		= "proc",
+@@ -1444,6 +1763,7 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 	},
+ 	{
+ 		.sw_id			= SVSB_CPU_BIG,
++		.hw_id			= 1,
+ 		.cpu_id			= 4,
+ 		.tzone_name		= "tzts5",
+ 		.buck_name		= "proc",
+@@ -1479,6 +1799,7 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 	},
+ 	{
+ 		.sw_id			= SVSB_CCI,
++		.hw_id			= 2,
+ 		.tzone_name		= "tzts4",
+ 		.buck_name		= "proc",
+ 		.pd_req			= false,
+@@ -1513,6 +1834,7 @@ static struct svs_bank svs_mt8183_banks[] = {
+ 	},
+ 	{
+ 		.sw_id			= SVSB_GPU,
++		.hw_id			= 3,
+ 		.tzone_name		= "tzts2",
+ 		.buck_name		= "mali",
+ 		.pd_req			= true,
+@@ -1678,6 +2000,12 @@ static int svs_probe(struct platform_device *pdev)
+ 		goto svs_probe_iounmap;
+ 	}
+ 
++	ret = svs_create_svs_debug_cmds(svsp);
++	if (ret) {
++		dev_err(svsp->dev, "svs create debug cmds fail: %d\n", ret);
++		goto svs_probe_iounmap;
++	}
++
+ 	return 0;
+ 
+ svs_probe_iounmap:
 -- 
-1.8.1.1.dirty
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
