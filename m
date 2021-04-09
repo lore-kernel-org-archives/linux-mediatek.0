@@ -2,77 +2,77 @@ Return-Path: <SRS0=HbKG=JG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A29D4C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2E57C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:46:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F3F9610C9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:39:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F3F9610C9
+	by mail.kernel.org (Postfix) with ESMTPS id 5AAAC610CA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:46:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AAAC610CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=br51ZIcgAQ2LxqVaNHwPZuhaBUW1POqkN4EDjTR/AEI=; b=YHGBslttTXnegwNnZ3V0SrPqV4
-	2dYt2NfTnmNGs+T+gpE7uXXzlfH8k0RgvugvVQfIQz3UqFiEnutDyyRuL18wneCzhkmShEueroMWu
-	cI+cYGTxouMUw4pyhpVZYhJ02Ml4quzQVoApQVpD/LvPcCUtOgm6PWxhVsAB6csF+paXXOO6wA/+p
-	XQsHb6ahM1Dd3nTiMx5Wnv2jybSM7AX25HkB8PKTGkY2u71LFurpe0aG1RuG4XtKjhxNu8J5e+GwX
-	TlQ15D+9w6jpUznVEdn7Ow0cBQzsuDtc9FTamNB4sKrgKRnkgCrV8/P11pbqDdb1VixV1ZNjNGG/e
-	qjHuD/Wg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zEd18DXtzoG2crRY3Hxb+z9NggOtahZOu6BA9NHHU8U=; b=ZlzaIc3LELu6NMf+6Gs7SNvbS
+	VGV7p6itnKhIvLZuNhlzct5hcyTx+g926LJUTLoweL1NaEuzDU7093ApLOaKzUabsfiQNJFVTY1Ue
+	6mOnEmSF3XJF3zFCrgN9Uh1oFLlbwJxcacEhY51njP7orG4e2Wcwb/aaYx8G/dtX27JmoQ7u5RUpp
+	bt3GSFSpv16/yezo18vpPGjFVNZJPDJ4VX8cUUc6o3qzW0MrHhyMJAuFlyvoh1UvLTjGJGBtTj0o+
+	spvT/kMBFcxKDtiZETqSWWZhBLlaDUGm4a5iltfXOROU3kXXvqSjIwZcolKTNB/PIGcGg+s4Jt3Sp
+	P4+1eh2SQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUh3R-009jos-9V; Fri, 09 Apr 2021 02:39:29 +0000
+	id 1lUh9z-009kjD-RL; Fri, 09 Apr 2021 02:46:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUh3L-009jn8-BN; Fri, 09 Apr 2021 02:39:26 +0000
-X-UUID: de9ea9df03ba498ba503f880c33af9cd-20210408
+ id 1lUh9c-009kd0-PA; Fri, 09 Apr 2021 02:45:58 +0000
+X-UUID: 8d136f2c243d4c5b9d98a925ee7dd6b3-20210408
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=fWLKYaa/BIrdzkg0Wx6g87Kz2erul6CiTtn27H7R8qw=; 
- b=E9LFORheffiq/1CFbNctqhpLuf50b47rBreKPre3TEH+IqQwcHqKG707fLRATiMfAFA7meiJe47xQJ9ImcSF1t0+MgGz2V3D3CCa6uUVvDeqqOiq5zJNRn5IfUAFbL0gYlQFRnXD5NXhn2Zi8uGigtDhC3uV6P/gKtq3xZ6FKMc=;
-X-UUID: de9ea9df03ba498ba503f880c33af9cd-20210408
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8T4E01kxeJRJGPw3gtkiLtJJA6A36FPUJNhqK297rMY=; 
+ b=tMG5NX2WGYibQZEjbLW5lXAOz/3X36inEQjL7AxEskoMMg4ji91PmzNaYG5GC0PAYLUzsjaO1iGQvHy1bV3ghojofPW20Ux3JQDryj9vq9Jqg7k7+tanPhdm9gGnkc6gRJML0Nm0nlOCws2N+ThLLsfTNJI8Ub5btoI9P3LxYFs=;
+X-UUID: 8d136f2c243d4c5b9d98a925ee7dd6b3-20210408
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <mason.zhang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 899141276; Thu, 08 Apr 2021 19:39:12 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Apr 2021 19:39:11 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 10:39:09 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ with ESMTP id 29085004; Thu, 08 Apr 2021 19:45:47 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Apr 2021 19:36:51 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 10:36:50 +0800
+Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 9 Apr 2021 10:39:08 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Alan Stern
- <stern@rowland.harvard.edu>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Nishad Kamdar <nishadkamdar@gmail.com>,
- <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ Transport; Fri, 9 Apr 2021 10:36:49 +0800
+Message-ID: <1617935237.16711.6.camel@mbjsdccf07>
+Subject: Re: [PATCH 1/2] arm64: dts: mediatek: add MT6779 spi master dts node
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: Rob Herring <robh+dt@kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: [RFC PATCH] usb: core: reduce power-on-good delay time of root hub
-Date: Fri, 9 Apr 2021 10:39:07 +0800
-Message-ID: <1617935947-24045-1-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ <linux-kernel@vger.kernel.org>, <hanks.chen@mediatek.com>,
+ <wsd_upstream@mediatek.com>
+Date: Fri, 9 Apr 2021 10:27:17 +0800
+In-Reply-To: <4e39785a-06a6-4ec5-5930-8a5bf53e4f7b@gmail.com>
+References: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
+ <4e39785a-06a6-4ec5-5930-8a5bf53e4f7b@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E08103E15D8BA582B180E4E4D7CBAA8F1514BC09414DEEB178647A498EF9A0E32000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_033924_620254_387AEA3D 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20210409_034553_622362_D40E2A86 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,37 +89,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Return the exactly delay time given by root hub descriptor,
-this helps to reduce resume time etc.
+On Wed, 2021-04-07 at 13:17 +0200, Matthias Brugger wrote:
+> 
+> From the binding description:
+> - #address-cells: should be 1.
+> 
+> - #size-cells: should be 0.
+> 
+> We are missing both here. Please fix that.
+> 
+> Apart the binding description is naming PLL, clock mux and clock gate IDs which
+> do not correspond to the ones used here. It seems that this binding was tailored
+> for a specific SoC family but never made generic. If you want, please do so and
+> convert it to yaml.
 
-Due to the root hub descriptor is usually provided by the host
-controller driver, if there is compatibility for a root hub,
-we can fix it easily without affect other root hub
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/core/hub.h | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Dear Matthias:
 
-diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-index 73f4482d833a..22ea1f4f2d66 100644
---- a/drivers/usb/core/hub.h
-+++ b/drivers/usb/core/hub.h
-@@ -148,8 +148,10 @@ static inline unsigned hub_power_on_good_delay(struct usb_hub *hub)
- {
- 	unsigned delay = hub->descriptor->bPwrOn2PwrGood * 2;
- 
--	/* Wait at least 100 msec for power to become stable */
--	return max(delay, 100U);
-+	if (!hub->hdev->parent)	/* root hub */
-+		return delay;
-+	else /* Wait at least 100 msec for power to become stable */
-+		return max(delay, 100U);
- }
- 
- static inline int hub_port_debounce_be_connected(struct usb_hub *hub,
--- 
-2.18.0
+	I have update patch v2:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210409015651.11474-1-Mason.Zhang@mediatek.com/
+
+	Please gentle ping on this patch. Thanks~
+	
+Thanks
+Mason
+
+				       		
+
+
+
+
+
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
