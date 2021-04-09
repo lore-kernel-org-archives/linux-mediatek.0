@@ -2,77 +2,75 @@ Return-Path: <SRS0=HbKG=JG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2E57C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:46:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3561C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 03:07:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5AAAC610CA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 02:46:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AAAC610CA
+	by mail.kernel.org (Postfix) with ESMTPS id 3C6A9610A7
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 03:07:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C6A9610A7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zEd18DXtzoG2crRY3Hxb+z9NggOtahZOu6BA9NHHU8U=; b=ZlzaIc3LELu6NMf+6Gs7SNvbS
-	VGV7p6itnKhIvLZuNhlzct5hcyTx+g926LJUTLoweL1NaEuzDU7093ApLOaKzUabsfiQNJFVTY1Ue
-	6mOnEmSF3XJF3zFCrgN9Uh1oFLlbwJxcacEhY51njP7orG4e2Wcwb/aaYx8G/dtX27JmoQ7u5RUpp
-	bt3GSFSpv16/yezo18vpPGjFVNZJPDJ4VX8cUUc6o3qzW0MrHhyMJAuFlyvoh1UvLTjGJGBtTj0o+
-	spvT/kMBFcxKDtiZETqSWWZhBLlaDUGm4a5iltfXOROU3kXXvqSjIwZcolKTNB/PIGcGg+s4Jt3Sp
-	P4+1eh2SQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=7h28ImrhbM3PPxov2IRXzguI0ddBksWUNQrhf0zumOs=; b=nBTRT4jCKXZgWIFCL/vETBkWxD
+	tX+IEFxREqrDPqKPLJaf6tbI8GQEDf93Ssu6Umu9NCrIMgldNE2OXLHTubl+EFLRZ6TlrBPE00WQ1
+	IOEDulMr/JrpTXYxeMgiebMy3V6cxC5UdYDwmfzzkZSj5mYhHB4u0t0Ls33o7aHv+vSLKuWGLRcan
+	v7t7qZ11UMTbbZKRkLcsAD9a9glJx2AophElsecEgeArweQCuGZWtsyXErmgBT6e6kOE3z4BDJ5HE
+	d7iALQCL4pKViJ0bECytiNlghg4HC1qe/t213KUj6Zbfu0OtfH7ej8hZZhoh20GAonUZxGPYsAXpB
+	joXQDsrg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUh9z-009kjD-RL; Fri, 09 Apr 2021 02:46:18 +0000
+	id 1lUhUh-009nII-V4; Fri, 09 Apr 2021 03:07:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUh9c-009kd0-PA; Fri, 09 Apr 2021 02:45:58 +0000
-X-UUID: 8d136f2c243d4c5b9d98a925ee7dd6b3-20210408
+ id 1lUhRx-009n4b-0l; Fri, 09 Apr 2021 03:05:30 +0000
+X-UUID: cb2827191f994b449d2f17838300a24a-20210408
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8T4E01kxeJRJGPw3gtkiLtJJA6A36FPUJNhqK297rMY=; 
- b=tMG5NX2WGYibQZEjbLW5lXAOz/3X36inEQjL7AxEskoMMg4ji91PmzNaYG5GC0PAYLUzsjaO1iGQvHy1bV3ghojofPW20Ux3JQDryj9vq9Jqg7k7+tanPhdm9gGnkc6gRJML0Nm0nlOCws2N+ThLLsfTNJI8Ub5btoI9P3LxYFs=;
-X-UUID: 8d136f2c243d4c5b9d98a925ee7dd6b3-20210408
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=n3IAg+7Lq7NPu4tJAsTfeiR8hgRb5nUcr8BttqfUrXc=; 
+ b=IDZBgcoctjS2E3CdMdZhMEZE1GAdQquKmCjjSR3yf6UWKm/BaSU1RePI44ZZyZydzFddQD4Rpm3UTY8NgjwFebCQAhx7YsYdeQqgN7tpErQeQI5lZE8x0A4m+PYE+WxKMNR0tQ5nuFVF7p2VF9sGzdgBKWCPDC1RfYM6StG/dKA=;
+X-UUID: cb2827191f994b449d2f17838300a24a-20210408
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mason.zhang@mediatek.com>)
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 29085004; Thu, 08 Apr 2021 19:45:47 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1028959461; Thu, 08 Apr 2021 20:04:43 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Apr 2021 19:36:51 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 10:36:50 +0800
-Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Thu, 8 Apr 2021 20:04:41 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 11:04:36 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 9 Apr 2021 10:36:49 +0800
-Message-ID: <1617935237.16711.6.camel@mbjsdccf07>
-Subject: Re: [PATCH 1/2] arm64: dts: mediatek: add MT6779 spi master dts node
-From: Mason Zhang <mason.zhang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: Rob Herring <robh+dt@kernel.org>, <devicetree@vger.kernel.org>,
+ Transport; Fri, 9 Apr 2021 11:04:35 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Marc Zyngier <maz@kernel.org>
+CC: Thomas Gleixner <tglx@linutronix.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <hanks.chen@mediatek.com>,
- <wsd_upstream@mediatek.com>
-Date: Fri, 9 Apr 2021 10:27:17 +0800
-In-Reply-To: <4e39785a-06a6-4ec5-5930-8a5bf53e4f7b@gmail.com>
-References: <20210226105918.3057-1-Mason.Zhang@mediatek.com>
- <4e39785a-06a6-4ec5-5930-8a5bf53e4f7b@gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Chunfeng Yun <chunfeng.yun@mediatek.com>
+Subject: [PATCH] irqchip: gic-pm: remove redundant error log of clock bulk
+Date: Fri, 9 Apr 2021 11:04:34 +0800
+Message-ID: <1617937474-24630-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 82C02DB886B3FBC54326E2529E8B78A4DEC5522B254D3F3867331FD65CFD9C9A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_034553_622362_D40E2A86 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20210409_040527_425320_8C1540CA 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +87,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-04-07 at 13:17 +0200, Matthias Brugger wrote:
-> 
-> From the binding description:
-> - #address-cells: should be 1.
-> 
-> - #size-cells: should be 0.
-> 
-> We are missing both here. Please fix that.
-> 
-> Apart the binding description is naming PLL, clock mux and clock gate IDs which
-> do not correspond to the ones used here. It seems that this binding was tailored
-> for a specific SoC family but never made generic. If you want, please do so and
-> convert it to yaml.
+There is error log in clk_bulk_prepare/enable()
 
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/irqchip/irq-gic-pm.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Dear Matthias:
-
-	I have update patch v2:
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210409015651.11474-1-Mason.Zhang@mediatek.com/
-
-	Please gentle ping on this patch. Thanks~
-	
-Thanks
-Mason
-
-				       		
-
-
-
-
-
-
-
-
+diff --git a/drivers/irqchip/irq-gic-pm.c b/drivers/irqchip/irq-gic-pm.c
+index 1337cec..b60e185 100644
+--- a/drivers/irqchip/irq-gic-pm.c
++++ b/drivers/irqchip/irq-gic-pm.c
+@@ -30,10 +30,8 @@ static int gic_runtime_resume(struct device *dev)
+ 	int ret;
+ 
+ 	ret = clk_bulk_prepare_enable(data->num_clocks, chip_pm->clks);
+-	if (ret) {
+-		dev_err(dev, "clk_enable failed: %d\n", ret);
++	if (ret)
+ 		return ret;
+-	}
+ 
+ 	/*
+ 	 * On the very first resume, the pointer to chip_pm->chip_data
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
