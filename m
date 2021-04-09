@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6338C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:28:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C31FBC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:29:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6370161178
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:28:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6370161178
+	by mail.kernel.org (Postfix) with ESMTPS id 65B5E6101E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 09:29:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65B5E6101E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,72 +23,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=74Py2GQkIAOhJNKA1LdGKiFOPtiWe6y1L5jUQ6XTV30=; b=EkmLJIdJ4CmT21xfEPCYZt+5F
-	FiS4kArsS4up99Tvv6CFCkEDhTNsp+zhAp6gsYITdsuxFXz7kh85/BwMfMSC92tGGvlS/3fW24uGe
-	7p7knm01bmV39dwnr/fzd9TlHWNbMoRtHBEhG0gXNtl5GDtrgyPix8LnF+i2auhxMU3pel0jsGpv9
-	iyldGihwNeRVDpqQ50u5dcQhMb0regz4lS/v/Hu8nMvXOy4ag/ELA0Uw04+NKvk7Pj5vZlXTyDpEv
-	/1p5yFd9Mbt6GQXWGIJwoDNQXFeKUSvWSCYZSwUsBBKy6SVF9ln6m4rfnN4gcZazgq0Beqd7PTkM8
-	d9JwtWuWA==;
+	 bh=bcNyvzFEFd6oegT6XsNYyY89zSNdBAfcb+CEj1kSVPA=; b=BQcDVbsc7sz6PcgFx8mZhRjbj
+	iMnMGwauIBSZaqOIUexJQxzomjeC/8c+d+Tjn+ua5LFdkipM4O6yMEoI11cYAdkg5e6VeQBzzQRD4
+	dvJqnV0qvRa1xNvBzXIoKgMwbddLaqCTZYsnDdPgf3r80geosCuJc3qKaiyQdGGZ6mmg0hpkBzW3n
+	LjUd3zCyMO9cx8UMHxXvzMz/w5a/gURfEf3BZQ+06c20L2aOltoybAu5QO433gdb+m+rsmc459VI2
+	32UI25QYGD4ELs5TknhlhxewP9RNAAum1hFCtSVQr+cibRjWMtqToz3aARtV3cORKtoyJfVivnGlA
+	LA9ImMRXA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUnQh-000EUp-KL; Fri, 09 Apr 2021 09:27:55 +0000
+	id 1lUnRm-000Efc-FA; Fri, 09 Apr 2021 09:29:02 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUnQV-000ETf-8g; Fri, 09 Apr 2021 09:27:44 +0000
+ id 1lUnRQ-000EbB-DD; Fri, 09 Apr 2021 09:28:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=67VB2/5dOLWuJVyVMYMYzR5s2ShmPolUoXTDh7Lay8M=; b=O6eanL60QKMPfaFfea+pJbhFsa
- WL+VodTvfXADZ53X/Slbb4ijpjqoRo9skWY5lO21eoAIlOSVs6dw8K+uzc0U4+q6EhoeoMV0OTkHF
- 6pXKN+la02XoLpldgNhcks+fTO8S9vgz4cK4ZOE3L6smFYEjMt30QjQ5ll7dsss9dZx0VAlQeXIig
- OJ6Jx4H0RZeh51HYkdd7ajKIcJ5vfy3LLVv8NB28W64mXFt7Igtmml3zx8I4g0cEfwqyEid+jBAnu
- LIuoWA1Ox3qc+7N743T2jj8SGN/1DmGN8bLMwTNhJBno4q1l7VyNuPa6HkOUSTah7jq60tqVFQXJ6
- NShJ33vg==;
+ bh=cA6FqmjG/ZucJ34EKnO+FaALC4pShXue8j+eVOJDr4s=; b=M1sgbUVYFCm+QdbzVJcs9MDIyB
+ CNj3FtL51r889nRBxvEDiu5yV/+2/FAqJ/GWho/DefPrY1a+LGK2JAWjMyZwdQp3pVl0eQtPJLT/i
+ f6g28RngDF5GYNZ5QNhZlrOx4Udx+6QJ8QafrJjUPcyH06DsgLLuXpa2N3ICuF7umENvheXolE4UV
+ 9iK6iQ/71ype7kRRx9iE+tMwhf7tXV9nfxtKfX68UvIvXYbYEpehJTZEeRzYtbLjEy2C4sx7FIxzG
+ dUbonaW2h/jGSSNl28bB9k01FS1DcJolaPGg2Ky1ph3avXlJHWC0nBcCT2CQCGS1RVAqyDVu5Oqnt
+ 2CXpjNnA==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUnQS-0041Nn-0m; Fri, 09 Apr 2021 09:27:41 +0000
-X-UUID: d3c92677b958432c9e2763f11c96f298-20210409
+ id 1lUnRN-0041ho-Ge; Fri, 09 Apr 2021 09:28:38 +0000
+X-UUID: 2403d9ce9ae04100802089b08f5d6bc7-20210409
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=67VB2/5dOLWuJVyVMYMYzR5s2ShmPolUoXTDh7Lay8M=; 
- b=FVEO0PeiVJm7HJ3dojflM6omn8REKXVz4Wj2HZPw7v4C64bhxyQUHE19YzZ6fR8BvChkA9km4DsJA7L4NXSTRdIJfGQFqHszdmw/+1dfs1HIgBpVC9j6e+FvGiKdu/c89Wel4dPCcQtD2oozTTA+PCT4xUAbs/UvRj2sNlmfApE=;
-X-UUID: d3c92677b958432c9e2763f11c96f298-20210409
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <fengquan.chen@mediatek.com>)
+ bh=cA6FqmjG/ZucJ34EKnO+FaALC4pShXue8j+eVOJDr4s=; 
+ b=N2rJPisjzG9Zq+rC3cpvoOeRtCI1p8HjsO+1CtnRcS27mqjpLP+SJfpDpiDnedg/xDj5ZNampfAfwc5BWkKbz9JjQUgShS4s/bXazi/ZsPD8wrCzNgEcRD8tCaP80e84b+Xsf7mLNz2JiDUZE8EgIU6vPneAFc3OXDlP1BA7bdI=;
+X-UUID: 2403d9ce9ae04100802089b08f5d6bc7-20210409
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1422972932; Fri, 09 Apr 2021 02:27:35 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 02:22:53 -0700
+ with ESMTP id 293042187; Fri, 09 Apr 2021 02:28:35 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 02:28:33 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 17:22:48 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 9 Apr 2021 17:22:47 +0800
-From: Fengquan Chen <Fengquan.Chen@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Thomas Gleixner
- <tglx@linutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-CC: <fengquan.chen@mediatek.com>, <dehui.sun@mediatek.com>, Fengquan Chen
- <Fengquan.Chen@mediatek.com>
-Subject: [PATCH] [v4,
- 1/1] clocksource/drivers/timer-mediatek: optimize systimer irq clear
- flow on shutdown
-Date: Fri, 9 Apr 2021 17:22:42 +0800
-Message-ID: <1617960162-1988-2-git-send-email-Fengquan.Chen@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1617960162-1988-1-git-send-email-Fengquan.Chen@mediatek.com>
-References: <1617960162-1988-1-git-send-email-Fengquan.Chen@mediatek.com>
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 17:28:31 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 9 Apr 2021 17:28:31 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
+ <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v15 6/7] arm64: dts: mt8192: add svs device information
+Date: Fri, 9 Apr 2021 17:28:27 +0800
+Message-ID: <20210409092828.23939-7-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210409092828.23939-1-roger.lu@mediatek.com>
+References: <20210409092828.23939-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 826507B506F2E6CE2B0689A4825496BE862FBCB05A78F7CDF6D4B0793C0B89D32000:8
+X-TM-SNTS-SMTP: 0AAFE20FA3349A0A4F8B28CF0011CB42C41D5FB7E694B2AAF33ABA3655932CDA2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_022740_089634_A465EFC4 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20210409_022837_577357_C3A9A13C 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,56 +110,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_syst_clkevt_shutdown is called after irq disabled in suspend flow,
-clear any pending systimer irq when shutdown to avoid suspend aborted
-due to timer irq pending
+add compitable/reg/irq/clock/efuse/reset setting in svs node
 
-Also as for systimer in mediatek socs, there must be firstly enable
-timer before clear systimer irq
-
-Fixes: e3af677607d9("clocksource/drivers/timer-mediatek: Add support for system timer")
-Signed-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
-
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 ---
- drivers/clocksource/timer-mediatek.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 ++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 9318edc..6461fd3 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -60,9 +60,9 @@
-  * SYST_CON_EN: Clock enable. Shall be set to
-  *   - Start timer countdown.
-  *   - Allow timeout ticks being updated.
-- *   - Allow changing interrupt functions.
-+ *   - Allow changing interrupt status,like clear irq pending.
-  *
-- * SYST_CON_IRQ_EN: Set to allow interrupt.
-+ * SYST_CON_IRQ_EN: Set to enable interrupt.
-  *
-  * SYST_CON_IRQ_CLR: Set to clear interrupt.
-  */
-@@ -75,6 +75,7 @@
- static void mtk_syst_ack_irq(struct timer_of *to)
- {
- 	/* Clear and disable interrupt */
-+	writel(SYST_CON_EN, SYST_CON_REG(to));
- 	writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
- }
- 
-@@ -111,6 +112,9 @@ static int mtk_syst_clkevt_next_event(unsigned long ticks,
- 
- static int mtk_syst_clkevt_shutdown(struct clock_event_device *clkevt)
- {
-+	/* Clear any irq */
-+	mtk_syst_ack_irq(to_timer_of(clkevt));
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index fe24cc66ff7a..e9816a56d87b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -270,6 +270,14 @@
+ 			compatible = "mediatek,mt8192-infracfg", "syscon";
+ 			reg = <0 0x10001000 0 0x1000>;
+ 			#clock-cells = <1>;
 +
- 	/* Disable timer */
- 	writel(0, SYST_CON_REG(to_timer_of(clkevt)));
++			infracfg_rst: reset-controller {
++				compatible = "mediatek,infra-reset", "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <
++					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
++				>;
++			};
+ 		};
  
+ 		pericfg: syscon@10003000 {
+@@ -564,6 +572,20 @@
+ 			status = "disabled";
+ 		};
+ 
++		svs: svs@1100b000 {
++			compatible = "mediatek,mt8192-svs";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			clock-names = "main";
++			nvmem-cells = <&svs_calibration>,
++				      <&lvts_e_data1>;
++			nvmem-cell-names = "svs-calibration-data",
++					   "t-calibration-data";
++			resets = <&infracfg_rst 0>;
++			reset-names = "svs_rst";
++		};
++
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -681,6 +703,18 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		efuse: efuse@11c10000 {
++			compatible = "mediatek,efuse";
++			reg = <0 0x11c10000 0 0x1000>;
++
++			lvts_e_data1: data1 {
++				reg = <0x1C0 0x58>;
++			};
++			svs_calibration: calib@580 {
++				reg = <0x580 0x68>;
++			};
++		};
++
+ 		i2c3: i2c3@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
 -- 
-1.8.1.1.dirty
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
