@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73E45C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 08:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27782C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 08:32:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01C45611AD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 08:31:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01C45611AD
+	by mail.kernel.org (Postfix) with ESMTPS id C9C8F611AB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Apr 2021 08:32:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C9C8F611AB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IaXAM0v2WgNw6EIlbWWM9hNilKKkcp+ClJXAMo+T2is=; b=m7czMMwnxSoTHS5DHplB9IMY4
-	D5JL9t/vkWrzS6Th9ZmMDMpF4xgk++ybTZeARUF4ib9OkaTXHT5b1xeYexYj73jZ4il2Cd6vrYrR/
-	4FTg6gFB+SYFeWMqPWehlfAgXjW5jfLWbej0Z/XZghPO9le5b9tb2sbzcC2Dv4E2BqFohTmKPc2fp
-	6lVNeSRvV/5ajzmZv5+YzDMljxeSYsl4Rz2fZ7gfCgwNtw9M662ufp2hMfS0VShHfbvUZHPq2WzcD
-	Auy+ixWFJy/PbyWRKh5WaBTuk04MuKfaQQ7C8xwF3d+mpHQMu2gbtR6lskDv0xKC9P7N/WarFRDzz
-	rie4z11Pw==;
+	 bh=0jyAgY2XRnYru/i9THY03G+5q5vi6fEJyuz+0um0xGA=; b=aXBRLJpZINiPFUAZN0X0qncn4
+	KeSxpFd12Dh8/aZh9OJOkBHaelwjbqISTNZRGg0AHXX+Yo7ORuRDOdxPkfP6Ke+INE99b4WwO3rMg
+	GssU73pZLAHfyP7fcTbbKr9F+U6rjQBpuu0KXG+Rd/Fsw4+Y4hn0RT7Gyy9qwy4yawnXuifk5KPQF
+	nkIlhLJQ/OcZv4sl/vqmWCSsUUlYGuAyo4Gg8YRyr2uMJALLcvUbgNk9Q043s9PAc5PE5zxqCI/Qg
+	rrt2TyxGMW4qYLu+N2uA6lxLeDWz+F7mxJgYmguD7BiUvxZc4ED59iZEz1KHMYIqoV0SxS5Faew1u
+	JlXvhTFfA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lUmY6-0003WE-08; Fri, 09 Apr 2021 08:31:30 +0000
+	id 1lUmYZ-0003b3-CE; Fri, 09 Apr 2021 08:31:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lUmXx-0003Tv-30; Fri, 09 Apr 2021 08:31:23 +0000
-X-UUID: 64954132ce8e457f99ddc7fb6cb2810a-20210409
+ id 1lUmY1-0003Ti-A2; Fri, 09 Apr 2021 08:31:27 +0000
+X-UUID: c537e806a8314c9b94da6e87d059750c-20210409
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IeqqO8f1hiIGe/d5rxlROK2HoWoN70xo72brP495zpI=; 
- b=DHSyWoxBphi8ePJIw+U1uc1oAQMYrcuxSikS2yUUNj/GtYNknPa0FAH1EfWQnsXcdPluDVB/aNbtEPAjPMcDsfLP3ClQc2GGA7PNiQSfF1Y3LSiEJmNZDtuF5Xn8+rz8O6L4ICnwaCUWAJZGHxl5J2E30EQ3xKw/G/08swk2OZM=;
-X-UUID: 64954132ce8e457f99ddc7fb6cb2810a-20210409
+ bh=rIqxfym3UAMtwhob1vsDNPFUvxpogfngVsPPxUKQtlU=; 
+ b=FDFjinvF7DtIILSG9mszo2TkIxG93pZmldlShLKMyuJqAmP/3e+spiiux1kt6D2Bcqku8zQOxtkDgBoemoUIQgs7sH6JvDV1lilnzyxX7lqpOs0eJE+ui7IZgFWa2KpNhP5KzpJYjChqhoRGLhZkVFWcJjQ9DcEDcCI0d6azZhQ=;
+X-UUID: c537e806a8314c9b94da6e87d059750c-20210409
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nina-cm.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1146213665; Fri, 09 Apr 2021 01:31:18 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1755617006; Fri, 09 Apr 2021 01:31:18 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 01:21:32 -0700
+ 15.0.1497.2; Fri, 9 Apr 2021 01:21:39 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 16:21:24 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 16:21:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 9 Apr 2021 16:21:24 +0800
+ Frontend Transport; Fri, 9 Apr 2021 16:21:37 +0800
 From: Nina Wu <nina-cm.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: Nina Wu <Nina-CM.Wu@mediatek.com>, Zhen Lei <thunder.leizhen@huawei.com>, 
@@ -63,19 +63,17 @@ CC: Nina Wu <Nina-CM.Wu@mediatek.com>, Zhen Lei <thunder.leizhen@huawei.com>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <Jackson-kt.Chang@mediatek.com>
-Subject: [PATCH v3 5/7] soc: mediatek: devapc: add debug register for new IC
- support
-Date: Fri, 9 Apr 2021 16:19:35 +0800
-Message-ID: <1617956377-4075-5-git-send-email-nina-cm.wu@mediatek.com>
+Subject: [PATCH v3 7/7] arm64: dts: mt8192: Add devapc node
+Date: Fri, 9 Apr 2021 16:19:37 +0800
+Message-ID: <1617956377-4075-7-git-send-email-nina-cm.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1617956377-4075-1-git-send-email-nina-cm.wu@mediatek.com>
 References: <1617956377-4075-1-git-send-email-nina-cm.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 3C549EE1532870A94D5A7D3EFCA14F1F25D1A7FBBC15D67579D6860EE2A25D042000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_093121_645863_40E1A9D1 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20210409_093125_678981_EA06979E 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,108 +92,73 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nina Wu <Nina-CM.Wu@mediatek.com>
 
-There are 3 debug info registers in new ICs while in legacy ones,
-we have only 2. We add a 'version' field in compatible data to
-decide how we extract the debug info.
+Add devapc nodes to mt8192.
 
 Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-devapc.c | 43 +++++++++++++++++++++++++++++++++++----
- 1 file changed, 39 insertions(+), 4 deletions(-)
+This patch depends on "Add dt-bindings of MT8192 clocks" [1]
+and "Add mt8192 clock controllers" [2]
 
-diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index f5d63c5..bdc8fe9 100644
---- a/drivers/soc/mediatek/mtk-devapc.c
-+++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -26,12 +26,24 @@ struct mtk_devapc_vio_dbgs {
- 			u32 addr_h:4;
- 			u32 resv:4;
- 		} dbg0_bits;
+[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20210324104110.13383-7-chun-jie.chen@mediatek.com/
+[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20210331083854.7650-2-chun-jie.chen@mediatek.com/
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 36 ++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index fe24cc6..4f5fb62 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -518,6 +518,33 @@
+ 			clock-names = "clk13m";
+ 		};
+ 
++		devapc_infra: devapc@10207000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10207000 0 0x1000>;
++			vio-idx-num = <367>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
 +
-+		struct {
-+			u32 dmnid:6;
-+			u32 vio_w:1;
-+			u32 vio_r:1;
-+			u32 addr_h:4;
-+			u32 resv:20;
-+		} dbg0_bits_ver2;
- 	};
- 
- 	u32 vio_dbg1;
-+	u32 vio_dbg2;
- };
- 
- struct mtk_devapc_data {
-+	/* architecture version */
-+	u32 version;
++		devapc_peri: devapc@10274000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10274000 0 0x1000>;
++			vio-idx-num = <292>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
 +
- 	/* default numbers of violation index */
- 	u32 vio_idx_num;
- 
-@@ -40,6 +52,7 @@ struct mtk_devapc_data {
- 	u32 vio_sta_offset;
- 	u32 vio_dbg0_offset;
- 	u32 vio_dbg1_offset;
-+	u32 vio_dbg2_offset;
- 	u32 apc_con_offset;
- 	u32 vio_shift_sta_offset;
- 	u32 vio_shift_sel_offset;
-@@ -163,22 +176,43 @@ static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
- 	struct mtk_devapc_vio_dbgs vio_dbgs;
- 	void __iomem *vio_dbg0_reg;
- 	void __iomem *vio_dbg1_reg;
-+	void __iomem *vio_dbg2_reg;
-+	u32 vio_addr, bus_id, domain_id;
-+	u32 vio_w, vio_r;
- 
- 	vio_dbg0_reg = ctx->base + ctx->data->vio_dbg0_offset;
- 	vio_dbg1_reg = ctx->base + ctx->data->vio_dbg1_offset;
-+	vio_dbg2_reg = ctx->base + ctx->data->vio_dbg2_offset;
- 
- 	vio_dbgs.vio_dbg0 = readl(vio_dbg0_reg);
- 	vio_dbgs.vio_dbg1 = readl(vio_dbg1_reg);
-+	if (ctx->data->version == 2U)
-+		vio_dbgs.vio_dbg2 = readl(vio_dbg2_reg);
++		devapc_peri2: devapc@10275000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10275000 0 0x1000>;
++			vio-idx-num = <242>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
 +
-+	if (ctx->data->version == 1U) {
-+		/* arch version 1 */
-+		bus_id = vio_dbgs.dbg0_bits.mstid;
-+		vio_addr = vio_dbgs.vio_dbg1;
-+		domain_id = vio_dbgs.dbg0_bits.dmnid;
-+		vio_w = vio_dbgs.dbg0_bits.vio_w;
-+		vio_r = vio_dbgs.dbg0_bits.vio_r;
-+	} else {
-+		/* arch version 2 */
-+		bus_id = vio_dbgs.vio_dbg1;
-+		vio_addr = vio_dbgs.vio_dbg2;
-+		domain_id = vio_dbgs.dbg0_bits_ver2.dmnid;
-+		vio_w = vio_dbgs.dbg0_bits_ver2.vio_w;
-+		vio_r = vio_dbgs.dbg0_bits_ver2.vio_r;
-+	}
+ 		scp_adsp: syscon@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp", "syscon";
+ 			reg = <0 0x10720000 0 0x1000>;
+@@ -662,6 +689,15 @@
+ 			status = "disabled";
+ 		};
  
- 	/* Print violation information */
--	if (vio_dbgs.dbg0_bits.vio_w)
-+	if (vio_w)
- 		dev_info(ctx->dev, "Write Violation\n");
--	else if (vio_dbgs.dbg0_bits.vio_r)
-+	else if (vio_r)
- 		dev_info(ctx->dev, "Read Violation\n");
- 
- 	dev_info(ctx->dev, "Bus ID:0x%x, Dom ID:0x%x, Vio Addr:0x%x\n",
--		 vio_dbgs.dbg0_bits.mstid, vio_dbgs.dbg0_bits.dmnid,
--		 vio_dbgs.vio_dbg1);
-+		 bus_id, domain_id, vio_addr);
- }
- 
- /*
-@@ -219,6 +253,7 @@ static void stop_devapc(struct mtk_devapc_context *ctx)
- }
- 
- static const struct mtk_devapc_data devapc_mt6779 = {
-+	.version = 1,
- 	.vio_idx_num = 511,
- 	.vio_mask_offset = 0x0,
- 	.vio_sta_offset = 0x400,
++		devapc_peri_par: devapc@11020000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x11020000 0 0x1000>;
++			vio-idx-num = <58>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
++
+ 		nor_flash: spi@11234000 {
+ 			compatible = "mediatek,mt8192-nor";
+ 			reg = <0 0x11234000 0 0xe0>;
 -- 
 2.6.4
 _______________________________________________
