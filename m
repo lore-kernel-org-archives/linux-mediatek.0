@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0DACC433B4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 09:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AF32C43460
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 09:14:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6795660233
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 09:13:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6795660233
+	by mail.kernel.org (Postfix) with ESMTPS id BFE3B61165
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 09:14:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFE3B61165
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M2jJ3JZ3iQ5ACg6Xzp7oEW5xTzqW/uxtL22RUFFkwBg=; b=iaf76RAEYNqJdW21ARVjfxjbC
-	ZmSntBW8AwQ3qVAhn7rs8wGQcMiMnxB/YT7t/Zdp3visHt2HUDlhLUnQNnF4gVWlr9SEmBfJdXpij
-	Jjx1IfndGaPlShINSnn+08jW8FPSZPUf5ecxBPKVcNyg8Mv6AcIJPG9yH0uTZjfgwZMhjrHzvrviB
-	3HJJQe95DanKUIVD3KbPk5P6wNYsplZ9ik7IaLy3JWAFZBhzHaPhpjfqK5LCi/4chEqntRR/5CFqV
-	IPmZHuEDf/tCmp7B361AxdjKBUydry1bn1sTKRSi2oguduW9e3dCSgmtPMxzvvplDsRTlCVK9EtS5
-	+KMrt4qyg==;
+	 bh=o9vondI2pOgoOXc8NPv8ZBNqMP3XREyUZCXiwaLjcdk=; b=oFtYsaZ9ajHFm0Daf6JuGmAK1
+	uM8Rl+BL0EGk7HZi4Mzl4prt9t1ylqMmVxl6dgdE6vtiCccILUC1DDZkkMQYEYnqDbzpeSgx0m9Fk
+	nCqC9sHxVw2Nz88NLtSYUUuxXhuMW9bfiOg0vBMBC4IYcXf64er16cz1MLKUCPqyzqJOyynrrqgHo
+	EnCOG3v17CscS0+93Cuddy773LUQCsHKNI7Y9n4nSZ/KWvqAfVqWpcg5xiuIyL8FbyFaq2/b4ex5h
+	yg8dcqWinKhgHDU01KXNDIuG2DLo5Affyp+Ny52tLfXuS2Lti6UYCY8xGn0079NAJCnl3gE5rnRcj
+	omv2Giudg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lV9gC-002UvQ-Pl; Sat, 10 Apr 2021 09:13:24 +0000
+	id 1lV9gW-002V4u-Bv; Sat, 10 Apr 2021 09:13:46 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV9fU-002UjU-DE; Sat, 10 Apr 2021 09:12:40 +0000
+ id 1lV9fd-002Uli-GT; Sat, 10 Apr 2021 09:12:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=QAlOd7K7/vdGwAob0/U0+7kXnpz7QGqRXuec37rdtrc=; b=YmcWJGgMBlgx0qYJaC83nrz2bc
- LEilsLrkIX6m9thELU876uhSUWVcA48icbpF/5nb/5+ZWuGBf0BIiJpSdWg2AW3MkThwcofYsAyOD
- Nl/MpEXk1I/4RPanUKTydHJtQFb2yc1Vnbfkbn/EFFSnQQaD0VZK1D4sf9hdMvD0W6iPwYO/fwNh4
- nHMjZrns3N7dt0qkc054o1Ncod7SEvvv559qX00ZJVBMxu+/+n7Y6xFlDuORGrbAPXHbc6FCpABfk
- nezZ0hFLmjM+VREXY7YcGMOyRD/Ba+2+KaBJiAcfRVXJsoZM//KN0ubaTFF1HpSiyBAR+WpcHtnUJ
- jxNwo08Q==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ bh=M9Vz0FOnN+z40LckUu62C3P73ZLSQdl6aie3PsXNQ/A=; b=ta1GB6pTmHkZ2bFDTxJ3E+jat2
+ eZae5rV+TsvNaC+M5UM66nM4uP7Mg/Th8foM4DkLq1fsINQmcmh98cRQhKsk5lm9rmZ0VtTXlzFOb
+ p1JVI8qRua/wzcXctVVMeYmZD/hKaPQiMnCLDEW1EABlGhknjBd8OQ5En75VAjZiIoML5sI10b4nR
+ RjUACKT4fESSrCKbzkIcyZX1ULSjVCSeXQDU8viE3awVEqzO5okAmLqYJh0ZQJ/hmMUTxXYb8A3qz
+ giOKUNkjlfMNKFe8QxH16A/O8MB7ZbbggDrxlkMuV4WBzQTDNvSAursopgv5RMfzO3KoeN7mr13e6
+ mX+QKhaw==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV9fR-0050Hu-O6; Sat, 10 Apr 2021 09:12:39 +0000
-X-UUID: 65631a775d704837a0e66057e0466b32-20210410
+ id 1lV9fa-0050IL-Kw; Sat, 10 Apr 2021 09:12:47 +0000
+X-UUID: d2e321c8a219491c873f232751d982eb-20210410
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QAlOd7K7/vdGwAob0/U0+7kXnpz7QGqRXuec37rdtrc=; 
- b=XhUcmqlRdMy4fkuZ/X0jUPjQ5L7+m/s4+veMMYPGtWOlGYjF0kEYjYGzhK8eGQM9agNQgbUXqvfv2zwKMXYN4lTNU8gjZOeRA/ysJ11WkYzTOEj/tOZlawcnBxnmRbIHrjDb9YS/f/guW/NHits5M85lq86J6r5HUjiyD5/5rNs=;
-X-UUID: 65631a775d704837a0e66057e0466b32-20210410
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=M9Vz0FOnN+z40LckUu62C3P73ZLSQdl6aie3PsXNQ/A=; 
+ b=DH5r24jqWVTE7gyceEivhXXPQxeecx88eiFSG3+x6eq/QSMBpuRzuvc5cuuRISQHzxSum+P7E1lKQH+O00Y2+qSTeouAXVlIfeFFTjPriGDlILXDjeu0E7WVk+FpEyO7VDB5plrXnpOjLxZ6C5L/BJCs+rm604ostXqLEEuDbYI=;
+X-UUID: d2e321c8a219491c873f232751d982eb-20210410
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 656844866; Sat, 10 Apr 2021 02:12:34 -0700
+ with ESMTP id 1181329245; Sat, 10 Apr 2021 02:12:45 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 10 Apr 2021 02:12:33 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 10 Apr 2021 02:12:44 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 10 Apr 2021 17:12:31 +0800
+ 15.0.1497.2; Sat, 10 Apr 2021 17:12:42 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 10 Apr 2021 17:12:30 +0800
+ Transport; Sat, 10 Apr 2021 17:12:41 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>
@@ -80,19 +80,19 @@ CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
  <drinkcat@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
  <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
  <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>, <eizan@chromium.org>,
- <acourbot@chromium.org>
-Subject: [PATCH v5 04/16] memory: mtk-smi: Add device-link between smi-larb
- and smi-common
-Date: Sat, 10 Apr 2021 17:11:16 +0800
-Message-ID: <20210410091128.31823-5-yong.wu@mediatek.com>
+ <acourbot@chromium.org>, Xia Jiang <xia.jiang@mediatek.com>
+Subject: [PATCH v5 05/16] media: mtk-jpeg: Use pm_runtime_resume_and_get for
+ PM get_sync
+Date: Sat, 10 Apr 2021 17:11:17 +0800
+Message-ID: <20210410091128.31823-6-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210410091128.31823-1-yong.wu@mediatek.com>
 References: <20210410091128.31823-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210410_021237_812972_35653AFD 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20210410_021246_709707_A3CBF577 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,82 +109,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Normally, If the smi-larb HW need work, we should enable the smi-common
-HW power and clock firstly.
-This patch adds device-link between the smi-larb dev and the smi-common
-dev. then If pm_runtime_get_sync(smi-larb-dev), the pm_runtime_get_sync
-(smi-common-dev) will be called automatically.
+pm_runtime_get_sync will increment pm usage counter even it failed.
+This patch use pm_runtime_resume_and_get instead of pm_runtime_get
+to keep usage counter balanced.
 
-Also, Add DL_FLAG_STATELESS to avoid the smi-common clocks be gated when
-probe.
-
-CC: Matthias Brugger <matthias.bgg@gmail.com>
-Suggested-by: Tomasz Figa <tfiga@chromium.org>
+CC: Xia Jiang <xia.jiang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 19 ++++++++++---------
- 1 file changed, 10 insertions(+), 9 deletions(-)
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index b396253fcf4b..c5fb51f73b34 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -319,6 +319,7 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct device_node *smi_node;
- 	struct platform_device *smi_pdev;
-+	struct device_link *link;
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 88a23bce569d..a89c7b206eef 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -920,7 +920,7 @@ static void mtk_jpeg_enc_device_run(void *priv)
+ 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+ 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
  
- 	larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
- 	if (!larb)
-@@ -358,6 +359,12 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
- 		if (!platform_get_drvdata(smi_pdev))
- 			return -EPROBE_DEFER;
- 		larb->smi_common_dev = &smi_pdev->dev;
-+		link = device_link_add(dev, larb->smi_common_dev,
-+				       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-+		if (!link) {
-+			dev_err(dev, "Unable to link smi-common dev\n");
-+			return -ENODEV;
-+		}
- 	} else {
- 		dev_err(dev, "Failed to get the smi_common device\n");
- 		return -EINVAL;
-@@ -370,6 +377,9 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+-	ret = pm_runtime_get_sync(jpeg->dev);
++	ret = pm_runtime_resume_and_get(jpeg->dev);
+ 	if (ret < 0)
+ 		goto enc_end;
  
- static int mtk_smi_larb_remove(struct platform_device *pdev)
- {
-+	struct mtk_smi_larb *larb = platform_get_drvdata(pdev);
-+
-+	device_link_remove(&pdev->dev, larb->smi_common_dev);
- 	pm_runtime_disable(&pdev->dev);
- 	component_del(&pdev->dev, &mtk_smi_larb_component_ops);
- 	return 0;
-@@ -381,17 +391,9 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
- 	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
- 	int ret;
- 
--	/* Power on smi-common. */
--	ret = pm_runtime_resume_and_get(larb->smi_common_dev);
--	if (ret < 0) {
--		dev_err(dev, "Failed to pm get for smi-common(%d).\n", ret);
--		return ret;
--	}
--
- 	ret = mtk_smi_clk_enable(&larb->smi);
- 	if (ret < 0) {
- 		dev_err(dev, "Failed to enable clock(%d).\n", ret);
--		pm_runtime_put_sync(larb->smi_common_dev);
- 		return ret;
+@@ -973,7 +973,7 @@ static void mtk_jpeg_dec_device_run(void *priv)
+ 		return;
  	}
  
-@@ -406,7 +408,6 @@ static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
- 
- 	mtk_smi_clk_disable(&larb->smi);
--	pm_runtime_put_sync(larb->smi_common_dev);
- 	return 0;
- }
+-	ret = pm_runtime_get_sync(jpeg->dev);
++	ret = pm_runtime_resume_and_get(jpeg->dev);
+ 	if (ret < 0)
+ 		goto dec_end;
  
 -- 
 2.18.0
