@@ -2,104 +2,83 @@ Return-Path: <SRS0=+aVJ=JH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ADFF5C433ED
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 01:56:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA9DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 02:49:10 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26391611F1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 01:56:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26391611F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A10F9611AF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 02:49:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A10F9611AF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7k5GQNMCOs8UJNISjMDistWiTH3WU+prcI/7sLnT+pA=; b=YV/14j+1Bf/BNZ7FsjMwg/XPr
-	L8ETwgg0xc8V6gsWZ2S/2yyJpMh1Q/l+nLyu6DOhikNcAJAwA53eiIUmKwI21L7bIuQUAl+JhhtNl
-	7/ff1EjUiDXYV1coU31wvKYhj1d6YtqKUrW2kca9dZ2JaFYrqzcMQh6WOJixrMtUBm+CCdVsubF0V
-	SUTvUoq0EYbKnyi6NjR7p5T5GRUbcPskL93vR8Xv5Rnh9rQ7ESuZwaZE08lAvzbGD8wcE5lNA7juw
-	NEORWv++t8RoyYyrR6QxvlR+dMWHomRE2oudZDsI/+Ka9SQkG3LBNTsG3Ciok3tH6U2soo0egG9yn
-	/w1bW2PJw==;
+	List-Unsubscribe:List-Id:Date:From:MIME-Version:In-Reply-To:Subject:Cc:To:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=NTDQvjqMfbCrWb2u8JfbpPm6mVOOFl22WeRtdTXh/TE=; b=rRj0JUkyM71ZPrWHsxu+lYe9G
+	fyE5JlYNRY0IaQYBISCYMcRLKWPDbERz1BAwzG7Hq72wjLjFQJzO8cM88uQTFnb4wTGimJjbdpPqu
+	bH2oD2sQFSkx5octRjBSOw+enN/6qEAQYWGayPjjLJ96VLdCigmNNMNK4PUJLSsdm9mi5shcnvaMA
+	2z/nE2/Eo/jlnFKSpvNeWtH6oZtJ7apFR6VU+BzhAX26PnsV0S1z8i1kSNaWdmc+RYVRVzSbv5W2W
+	XPHuaLo7mTwIO2tFeFbCf5ZbeNZTThQEy9svIDXOp/jnLJGw5z6cgEL3MY9EbgMn/etLXhoEggnt+
+	NQt5a3o9g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lV2r6-001v2G-HF; Sat, 10 Apr 2021 01:56:12 +0000
+	id 1lV3g3-0020Bn-3J; Sat, 10 Apr 2021 02:48:51 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV2pT-001urX-P0; Sat, 10 Apr 2021 01:55:04 +0000
+ id 1lV3aA-001zwN-Bm; Sat, 10 Apr 2021 02:43:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=f+eHY1cO25QfYDw7qlA9DNcwvvrIIv/cae1oflaNgrU=; b=aqgTPFVul1KRHQwBybnHklFmpC
- GvPz0n1bt29EMJ9FFUtaeH6uAUAE7QHiOI0TTeLbRharCCGlp1zGx2+wtjN4k4tVI7y45CUP2TXIR
- dgVqipHC3UJQzppRhcMXvRUmlOIVlgMFZsHuNHAYNDn3581KFojiHn6AwUmFANzX9l+tgMKwWsM3J
- sU7xQe7EUKG2yG6R4im90W1loEkYVT7pMguloSQMvZBLys0UyP+Jz6zh+PHXIAegGK0ZlbfnXbheq
- IVooSVg9CNPTt91xizw/mbhuTjp4cOUzWkz16ZOgcMLVJLpu9KtC6eSquLPhFihlJJycgJbbZr9Pd
- OJvtLy5A==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=bombadil.20210309; h=Date:From:MIME-Version:In-Reply-To:
+ Subject:Cc:To:Message-ID:Content-Transfer-Encoding:Content-Type:Sender:
+ Reply-To:Content-ID:Content-Description:References;
+ bh=tk/hRv1eW3T7oToMb/E4wjMXwR8fz1/pakezdzJ4jUw=; b=Fch51V6blZqcihU1JBOzTMzVr1
+ ty+3/QRSwigcFvqYEgr7BNdEYl35DpLdE5+OwoLuDsQ4l/7GbbZrT9+dYM8EqQ1TGnBBbX1qFkye/
+ 8BdlW+nLvCO+hLQXIruI9oEumUFE8DnMtV9COqfXxuQUqGEB3A50F5Mcu0MovsNtOKoFWj5YsrpY7
+ BugdGadpafeef5GQ3U+DHwggjUkKcQrqXac268x6jGtB3owVvOK4GbpKvmfWNfYwG2yJ87niOdzbj
+ XbjvJMgBtCskJnvc1fdbPoZCeSUBL4Ot5s2dUKdBll/hIKG+Nyea690+59TReN7zy5beWALLG1GFw
+ 6WRzDMIQ==;
+Received: from m176149.mail.qiye.163.com ([59.111.176.149])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV2pQ-004u1G-6q; Sat, 10 Apr 2021 01:54:29 +0000
-X-UUID: 85436a6fcd234605bd18ec7ef9642ca0-20210409
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=f+eHY1cO25QfYDw7qlA9DNcwvvrIIv/cae1oflaNgrU=; 
- b=IsSwYmxPmfQ41pHOH1pIzZ7N5A2/f9bvVswfYyhhvwJVZzs2OguEBVfkH8OxVq9YFzdR3e7UHTFGET7KTsnq0Z/k4Wr2e5xVh7To2ktnSkLx5P49ARyjDeG2Ni7guNdS3uE6EtwFgnJdPZXl5/hP5rV9XwsuQQNShiIY7h/Ak0U=;
-X-UUID: 85436a6fcd234605bd18ec7ef9642ca0-20210409
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1389341751; Fri, 09 Apr 2021 18:54:26 -0700
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 9 Apr 2021 18:44:24 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 10 Apr 2021 09:44:22 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 10 Apr 2021 09:44:21 +0800
-Message-ID: <1618019061.12105.48.camel@mhfsdcap03>
-Subject: Re: [PATCH 1/6] PM: runtime: enable wake irq after runtime_suspend
- hook called
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>
-CC: Tony Lindgren <tony@atomide.com>, Rob Herring <robh+dt@kernel.org>,
- Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>, "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:"
- <linux-usb@vger.kernel.org>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..."
- <linux-mediatek@lists.infradead.org>, "open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, "Linux Kernel Mailing
- List" <linux-kernel@vger.kernel.org>, Linux PM <linux-pm@vger.kernel.org>,
- Tianping Fang <tianping.fang@mediatek.com>, Eddie Hung
- <eddie.hung@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, Nicolas Boichat
- <drinkcat@chromium.org>
-Date: Sat, 10 Apr 2021 09:44:21 +0800
-In-Reply-To: <CAJZ5v0ioobLt5aEm8TAcPKgJiL13OJ7KqTeJmcQCuVp8ALxBmw@mail.gmail.com>
-References: <1617874514-12282-1-git-send-email-chunfeng.yun@mediatek.com>
- <CAJZ5v0gGntbfnvAP5A491_hUh-JUuqZjZRdPPLwWJjnZRtemcQ@mail.gmail.com>
- <1617933211.12105.22.camel@mhfsdcap03> <YG/ohhh3Tyet6InQ@atomide.com>
- <1617957362.12105.27.camel@mhfsdcap03>
- <CAJZ5v0ioobLt5aEm8TAcPKgJiL13OJ7KqTeJmcQCuVp8ALxBmw@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lV3a4-004ubf-79; Sat, 10 Apr 2021 02:42:43 +0000
+Received: from vivo.com (wm-9.qy.internal [127.0.0.1])
+ by m176149.mail.qiye.163.com (Hmail) with ESMTP id 4F3A4282535;
+ Sat, 10 Apr 2021 10:42:33 +0800 (CST)
+Message-ID: <ANUA4QBkDhibiES5bK7X8Ko8.3.1618022553315.Hmail.wangqing@vivo.com>
+To: Guenter Roeck <linux@roeck-us.net>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-watchdog@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: =?UTF-8?B?UmU6UmU6IFtQQVRDSF0gd2F0Y2hkb2c6IG10azogc3VwcG9ydCBwcmUtdGltZW91dCB3aGVuIHRoZSBiYXJrIGlycSBpcyBhdmFpbGFibGU=?=
+X-Priority: 3
+X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
+X-Originating-IP: 36.152.145.182
+In-Reply-To: <58b6f50a-4522-dc21-3411-7ed18059b480@roeck-us.net>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7AC3D9FEF60E5C1132401E888149897F7B3B859953E6EA0B57D85E51DFAC66AD2000:8
-X-MTK: N
+Received: from wangqing@vivo.com( [36.152.145.182) ] by ajax-webmail (
+ [127.0.0.1] ) ; Sat, 10 Apr 2021 10:42:33 +0800 (GMT+08:00)
+From: =?UTF-8?B?546L5pOO?= <wangqing@vivo.com>
+Date: Sat, 10 Apr 2021 10:42:33 +0800 (GMT+08:00)
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
+ oVCBIfWUFZQh0aQ1ZDHx4dGk1DTEMaTxpVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
+ hKQ1VLWQY+
+X-HM-Sender-Digest: e1kJHlYWEh9ZQU1JTElDQ0hMQkxDN1dZDB4ZWUEPCQ4eV1kSHx4VD1lB
+ WUc6NS46Tyo5ED8TEhkSPihOGTBMI0MwFENVSFVKTUpDS0lJTk5ITkxKVTMWGhIXVQwaFRwKEhUc
+ Ow0SDRRVGBQWRVlXWRILWUFZSE1VSk5JVUpPTlVKQ0lZV1kIAVlBT0tPSjcG
+X-HM-Tid: 0a78b9a8d6ef9395kuws4f3a4282535
+X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_185428_281443_3B9F08F7 
-X-CRM114-Status: GOOD (  25.17  )
+X-CRM114-CacheID: sfid-20210409_194240_456111_B0986BDE 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,52 +95,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-04-09 at 13:14 +0200, Rafael J. Wysocki wrote:
-> On Fri, Apr 9, 2021 at 10:36 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> >
-> > On Fri, 2021-04-09 at 08:39 +0300, Tony Lindgren wrote:
-> > > * Chunfeng Yun <chunfeng.yun@mediatek.com> [210409 01:54]:
-> > > > On Thu, 2021-04-08 at 19:41 +0200, Rafael J. Wysocki wrote:
-> > > > > On Thu, Apr 8, 2021 at 11:35 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
-> > > > > >
-> > > > > > When the dedicated wake irq is level trigger, enable it before
-> > > > > > calling runtime_suspend, will trigger an interrupt.
-> > > > > >
-> > > > > > e.g.
-> > > > > > for a low level trigger type, it's low level at running time (0),
-> > > > > > and becomes high level when enters suspend (runtime_suspend (1) is
-> > > > > > called), a wakeup signal at (2) make it become low level, wake irq
-> > > > > > will be triggered.
-> > > > > >
-> > > > > >                 ------------------
-> > > > > >                |           ^     ^|
-> > > > > > ----------------           |     | --------------
-> > > > > >  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
-> > > > > >
-> > > > > > if we enable the wake irq before calling runtime_suspend during (0),
-> > > > > > an interrupt will arise, it causes resume immediately;
-> > > > >
-> > > > > But that's necessary to avoid missing a wakeup interrupt, isn't it?
-> > > > That's also what I worry about.
-> > >
-> > > Yeah sounds like this patch will lead into missed wakeirqs.
-> > If miss level trigger wakeirqs, that means HW doesn't latch it? is it HW
-> > limitation?
-> 
-> If it's level-triggered, it won't be missed, but then it is just
-> pointless to suspend the device when wakeup is being signaled in the
-> first place.
-Got it
-> 
-> I'm not sure if I understand the underlying problem correctly.  Is it
-> about addressing spurious wakeups?
-In fact, it's default value is the same as the wakeup signal, maybe the
-above case, using level trigger, should be avoided, it is not clear and
-causes confusion, as Ikjoon and Tony suggested, using falling edge type
-is better.
 
-Thanks a lot
+>On 4/9/21 2:55 AM, Wang Qing wrote:
+>> Use the bark interrupt as the pretimeout notifier if available.
+>> 
+>> By default, the pretimeout notification shall occur one second earlier
+>> than the timeout.
+>> 
+>> Signed-off-by: Wang Qing <wangqing@vivo.com>
+>> ---
+>>  drivers/watchdog/mtk_wdt.c | 47 +++++++++++++++++++++++++++++++++++++++++++---
+>>  1 file changed, 44 insertions(+), 3 deletions(-)
+>> 
+>> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+>> index 97ca993..8b919cc
+>> --- a/drivers/watchdog/mtk_wdt.c
+>> +++ b/drivers/watchdog/mtk_wdt.c
+>> @@ -25,6 +25,7 @@
+>>  #include <linux/reset-controller.h>
+>>  #include <linux/types.h>
+>>  #include <linux/watchdog.h>
+>> +#include <linux/interrupt.h>
+>>  
+>>  #define WDT_MAX_TIMEOUT		31
+>>  #define WDT_MIN_TIMEOUT		1
+>> @@ -234,18 +235,35 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+>>  	void __iomem *wdt_base = mtk_wdt->wdt_base;
+>>  	int ret;
+>>  
+>> -	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
+>> +	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout - wdt_dev->pretimeout);
+>
+>That looks suspiciously like the real watchdog won't happen at all.
+>What will happen if the pretimeout governor is set to none ?
+>
+>Guenter
+>
+The pretimeout governor is panic by default. If pretimeout is enabled and the governor is
+set to none, it means the timeout behavior does not need to be processed, only printing.
 
+Thanks.
+
+Qing Wang.
 
 
 _______________________________________________
