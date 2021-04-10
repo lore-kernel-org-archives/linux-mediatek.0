@@ -2,103 +2,90 @@ Return-Path: <SRS0=+aVJ=JH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6220EC433B4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 05:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C904EC433ED
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 05:29:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF2BF610CD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 05:26:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF2BF610CD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 677426101B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 05:29:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 677426101B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MydjiRgGkPt05oB/F001k6a7AYNjMmWrz1JgyrX7rIM=; b=UJdE2bZ/CaHSar8dayqtKUOUf
-	Gp44/mbyobdqtAB2+AR2fqG91KC+p0xldcYfyAVH9TD3Asx4A/8rtvDCe/bL3U5+GheIdPxbJWJ32
-	v3B/vyIuLjyuSLUsNjFc226wnKAgXplZCvMvgBpidyIkvy28VSkeaX9bygfxrjU5Ilb5Dod3oktC1
-	KA5vhyl2ugythGGZZCAtdlm3B6P4jtl4YtUJIesgL3GzAmFkPyCnMeGlmkvt4zT0QnZx5jnhMwehL
-	yjhZyBuIjkRnouDvO772tWGk2d5H1TxBVG2aD8ug1nRXo4Mr5wU1YO7teILje27++YUOEsxcXC2Oa
-	4Yf/1u7yA==;
+	 bh=wrMl0etn1GAjG3PmD12L87q9XRmhOfeAKM9A4WtOsnY=; b=p1AMgOPHOq8VjnnoKekkl1tKJ
+	utWiS6CHDfkSFvNigCPT3z78e4OMJ+b03zkZ8EPKrV1+J/tOeY9dkMX5whpT1IfrEwpg+HbxLzS7p
+	t5cUj58rt4TMQCRURk7JKhuC1d2lqMz3ulOxbw3KLpU3qUww5t5XkquQMTa1SbIG0OWUf32d72dq9
+	9TRpjMRhnhWIHfbM9nqKke6ruomFn4P4+dvRk/SN9pjl1GAYxa7njPVDdXQwiboGy3ypETo2MOOal
+	abVOgtp9E24ZhrBfu3epOO7WmPXlYmIAg/VZb2Fmv4VgGCC8tR5Q5sqTGEOCD/Zli3o8I41ESgay+
+	03U23HMcg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lV681-002EdA-AH; Sat, 10 Apr 2021 05:25:53 +0000
+	id 1lV6Ax-002F4P-Jn; Sat, 10 Apr 2021 05:28:57 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV67u-002EVl-OG
- for linux-mediatek@desiato.infradead.org; Sat, 10 Apr 2021 05:25:47 +0000
+ id 1lV6At-002F4D-ER; Sat, 10 Apr 2021 05:28:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
- MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
- bh=rN8uPmHgYp+HYktaVED9qkx5irVyPn+XQ+GV3auP+g0=; b=g3LHtOc3VTl7ERfgY+0Wm56Sml
- UmULEV80QRHGSv7/L3VcdV9bTmTIm047ca7dP/z26t1AFXrLHqPZRIfzl3xwCW6ICT8zPFpAfMPUT
- ud5wp+nxRitdSJHm8XNCPDvFayDL2BpUlw0V1vuWxo4WhEWdWiwfS0Pn4TsgTWXeigiIq4YmriDFB
- JIjFQzI6sayXs4tr0kAU9gjt0OXutZHTErWKSD9+ff4iZAaP8527jnibGfve0EAa5qxAuQPa3wpRq
- K6FWtAqWaEAV3BWTGgx+ERS+Oh19y9/0o0d0DypbyQJYbXmd0M9OdjyPn9gsxZCR/RS5XnmPeZshp
- I499sWAQ==;
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=MlIao8blKXAQsabTwL7mSrhVFjww5CHYY94qATPfwNQ=; b=E75RwzOT32D7n4Cu8gaR1ZoRPT
+ Azmv51YInNHL6VZFmOZuccG/Gb3tL75AAOeBKkuU8D5+mqA+DhoBLcNUCW6a3WlJkUdDlJPRnWKoQ
+ 9WsZgpl6kgqSGuqis0UKd6PV+X1arrmRnHR7Y0XU68wkcd58HzVxp+ILdYJTSTI8IEGKiq4bewamS
+ sl+FmJX4EEDh4mON482ljkMQLqYBAWPNcytxq3HPQtgLY8iBLGDao5m2hS56+B1/gqxXpSt3UwCLW
+ xw4xvW6bjpvlVAVULhvLE4mksxQgwa/7VPToCyY6EU6xYEn/gukI7j+ZOlXZxaCFtZYXqDgBWAc7k
+ rVvuqkBA==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lV67r-004wTb-Uz
- for linux-mediatek@lists.infradead.org; Sat, 10 Apr 2021 05:25:45 +0000
-Received: by mail-lj1-x232.google.com with SMTP id u9so8868093ljd.11
- for <linux-mediatek@lists.infradead.org>; Fri, 09 Apr 2021 22:25:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=rN8uPmHgYp+HYktaVED9qkx5irVyPn+XQ+GV3auP+g0=;
- b=Q7A+mvW5T7Io1MJ0BNeghz8UFKw+G2eDgEO0DQhPkizFVHaXWm68NB+sOLkZdA1NsP
- 7L0XF9gJADvwK3xMf5I+VSfA15B3kVTHejwHyvDGl2KQZolff7le3Pn6JFCXXQsP4Tmb
- XM9cxzqhSihbNOa9zyQpLNGEgsTykAVkWzpeFaweN1zmvKSfHBs2rNWesOOqwdvxP5me
- IlzNOAJVI+GWA4z4wVkZr4TxGBIUcIhbcGLgI7N+nqCHo81OUoenBXtNnYbnfc/lfpMf
- vywRyAijQrBN3JjGrcCoN7A1QjlsrbLtyrHdufaCeEbMdqGDVejBnUcbx/wBom6QKPqH
- hKiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=rN8uPmHgYp+HYktaVED9qkx5irVyPn+XQ+GV3auP+g0=;
- b=AnBbDpzVds/qTzBDCplkPBvaZLlinpgb4j+H5Cc4n1078Q3qp4BieObKysIGfQEXxi
- Pb17H2B+hWiAs6wmu1FNPjzejKmhbXlPz2Z6wX8RbwUpBAafAcNUQ4bVf8GXJhBjBTG5
- yXKJGdpg7hAI4y9ECElv/OVtkvI9XbTDjXgX4afklwmJwdt9MQbgKEEgSITqf+MdjHce
- 1CQaaXDEmMJ/q4eGkcuyxTmjqj3irBGzfsACkJMDvp7I02ZM9Ot/71ADVTGsrJM/p52Z
- O3c9ZehuTfbbYXPODvwzAM/FsAy6GioMNR9AnyL/eU1AiA64owxbIDP508IyOobgq8Q8
- Zemg==
-X-Gm-Message-State: AOAM530l9VNvSb0Tiab0DQz/9ExUJTGra9Gw1sbx8YTQZHRnsAuDIx8e
- JSofNaR5KlWqtelE96oVPMrBmTsbbJjOH9y3mJw=
-X-Google-Smtp-Source: ABdhPJyo+Hn11Im3Z2Ay5kJFufoe86GK/lQJ5Sg7VNdeD8K27/RKfqnL99XhKbdssnvHeaERQBUBG5gRDeMgBc/nPyw=
-X-Received: by 2002:a2e:8eda:: with SMTP id e26mr10833172ljl.457.1618032341292; 
- Fri, 09 Apr 2021 22:25:41 -0700 (PDT)
+ id 1lV6Aq-004wXi-D2; Sat, 10 Apr 2021 05:28:49 +0000
+X-UUID: 5eca691f73594dce805f2c513c4eb6b5-20210409
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=MlIao8blKXAQsabTwL7mSrhVFjww5CHYY94qATPfwNQ=; 
+ b=MizXZU8MhCqGYz+utIlfN9yzL+M+KTbkoxexrKiLY3lQqzpSLSFvIpG+i3lKRZvPn1ut054BrzxRPNvuGE297LTEZWmcGqiz2i2o83xEQtOJVvdVio30ylE+0/Z+S0SRFG5Q2BgrPkDRs2ZVNWTVjSIw0/JSqhWvUHvZVxZk6zg=;
+X-UUID: 5eca691f73594dce805f2c513c4eb6b5-20210409
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 205546777; Fri, 09 Apr 2021 22:28:40 -0700
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Apr 2021 22:28:39 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 10 Apr 2021 13:28:35 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 10 Apr 2021 13:28:34 +0800
+Message-ID: <1618032514.26944.20.camel@mhfsdcap03>
+Subject: Re: [PATCH] iommu/mediatek: always enable the clk on resume
+From: Yong Wu <yong.wu@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <matthias.bgg@gmail.com>, <will@kernel.org>, <joro@8bytes.org>,
+ <kernel@collabora.com>, <dafna3@gmail.com>, <enric.balletbo@collabora.com>
+Date: Sat, 10 Apr 2021 13:28:34 +0800
+In-Reply-To: <20210408122842.29009-1-dafna.hirschfeld@collabora.com>
+References: <20210408122842.29009-1-dafna.hirschfeld@collabora.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-References: <20210409225346.432312-1-opensource@vdorst.com>
-In-Reply-To: <20210409225346.432312-1-opensource@vdorst.com>
-From: DENG Qingfang <dqfext@gmail.com>
-Date: Sat, 10 Apr 2021 13:25:31 +0800
-Message-ID: <CALW65jZRs4DBOpWiY+CxWZmX9wXhSP1cM-qeftC=xY2=Tr+HoA@mail.gmail.com>
-Subject: Re: [PATCH net-next] net: dsa: mt7530: Add support for EEE features
-To: =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>, 
- Florian Fainelli <f.fainelli@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>,
- Jakub Kicinski <kuba@kernel.org>, Landen Chao <Landen.Chao@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Sean Wang <sean.wang@mediatek.com>, Vivien Didelot <vivien.didelot@gmail.com>, 
- Vladimir Oltean <olteanv@gmail.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- netdev <netdev@vger.kernel.org>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>
+X-TM-SNTS-SMTP: F7EA9B2BB2D8F08BC06597B904289D59BAB636E1C29EA433EE645D2BBDA110822000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210409_222544_018153_D2063C67 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20210409_222848_468296_8595E799 
+X-CRM114-Status: GOOD (  27.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,57 +97,139 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgUmVuw6ksCgpPbiBTYXQsIEFwciAxMCwgMjAyMSBhdCA2OjU0IEFNIFJlbsOpIHZhbiBEb3Jz
-dCA8b3BlbnNvdXJjZUB2ZG9yc3QuY29tPiB3cm90ZToKPiAtLS0gYS9kcml2ZXJzL25ldC9kc2Ev
-bXQ3NTMwLmMKPiArKysgYi9kcml2ZXJzL25ldC9kc2EvbXQ3NTMwLmMKPiBAQCAtMjU2OCw2ICsy
-NTY4LDExIEBAIHN0YXRpYyB2b2lkIG10NzUzeF9waHlsaW5rX21hY19saW5rX3VwKHN0cnVjdCBk
-c2Ffc3dpdGNoICpkcywgaW50IHBvcnQsCj4gICAgICAgICAgICAgICAgICAgICAgICAgbWNyIHw9
-IFBNQ1JfVFhfRkNfRU47Cj4gICAgICAgICAgICAgICAgIGlmIChyeF9wYXVzZSkKPiAgICAgICAg
-ICAgICAgICAgICAgICAgICBtY3IgfD0gUE1DUl9SWF9GQ19FTjsKPiArCj4gKyAgICAgICAgICAg
-ICAgIGlmIChtb2RlID09IE1MT19BTl9QSFkgJiYgcGh5ZGV2ICYmCj4gKyAgICAgICAgICAgICAg
-ICAgICAhKHByaXYtPmVlZV9kaXNhYmxlZCAmIEJJVChwb3J0KSkgJiYKPiArICAgICAgICAgICAg
-ICAgICAgIHBoeV9pbml0X2VlZShwaHlkZXYsIDApID49IDApCj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgbWNyIHw9IFBNQ1JfRk9SQ0VfRUVFMUcgfCBQTUNSX0ZPUkNFX0VFRTEwMDsKCllvdSBz
-aG91bGQgYWRqdXN0IHRoaXMgYWNjb3JkaW5nIHRvIGUtPmFkdmVydGlzZWQuCgo+ICAgICAgICAg
-fQo+Cj4gICAgICAgICBtdDc1MzBfc2V0KHByaXYsIE1UNzUzMF9QTUNSX1AocG9ydCksIG1jcik7
-Cj4gQEAgLTI4MDAsNiArMjgwNSw0OSBAQCBtdDc1M3hfcGh5X3dyaXRlKHN0cnVjdCBkc2Ffc3dp
-dGNoICpkcywgaW50IHBvcnQsIGludCByZWdudW0sIHUxNiB2YWwpCj4gICAgICAgICByZXR1cm4g
-cHJpdi0+aW5mby0+cGh5X3dyaXRlKGRzLCBwb3J0LCByZWdudW0sIHZhbCk7Cj4gIH0KPgo+ICtz
-dGF0aWMgaW50IG10NzUzeF9nZXRfbWFjX2VlZShzdHJ1Y3QgZHNhX3N3aXRjaCAqZHMsIGludCBw
-b3J0LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBldGh0b29sX2VlZSAq
-ZSkKPiArewo+ICsgICAgICAgc3RydWN0IG10NzUzMF9wcml2ICpwcml2ID0gZHMtPnByaXY7Cj4g
-KyAgICAgICB1MzIgZWVlY3IsIHBtc3I7Cj4gKwo+ICsgICAgICAgZS0+ZWVlX2VuYWJsZWQgPSAh
-KHByaXYtPmVlZV9kaXNhYmxlZCAmIEJJVChwb3J0KSk7Cj4gKwo+ICsgICAgICAgaWYgKGUtPmVl
-ZV9lbmFibGVkKSB7Cj4gKyAgICAgICAgICAgICAgIGVlZWNyID0gbXQ3NTMwX3JlYWQocHJpdiwg
-TVQ3NTMwX1BNRUVFQ1JfUChwb3J0KSk7Cj4gKyAgICAgICAgICAgICAgIGUtPnR4X2xwaV9lbmFi
-bGVkID0gIShlZWVjciAmIExQSV9NT0RFX0VOKTsKPiArICAgICAgICAgICAgICAgZS0+dHhfbHBp
-X3RpbWVyID0gR0VUX0xQSV9USFJFU0goZWVlY3IpOwo+ICsgICAgICAgICAgICAgICBwbXNyID0g
-bXQ3NTMwX3JlYWQocHJpdiwgTVQ3NTMwX1BNU1JfUChwb3J0KSk7Cj4gKyAgICAgICAgICAgICAg
-IGUtPmVlZV9hY3RpdmUgPSBlLT5lZWVfZW5hYmxlZCAmJiAhIShwbXNyICYgUE1TUl9FRUUxRyk7
-CgplZWVfZW5hYmxlZCBhbmQgZWVlX2FjdGl2ZSB3aWxsIGJlIHNldCBpbiBwaHlfZXRodG9vbF9n
-ZXRfZWVlLCBubyBuZWVkCnRvIHNldCB0aGVtIGhlcmUuCgo+ICsgICAgICAgfQo+ICsKPiArICAg
-ICAgIHJldHVybiAwOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IG10NzUzeF9zZXRfbWFjX2VlZShz
-dHJ1Y3QgZHNhX3N3aXRjaCAqZHMsIGludCBwb3J0LAo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIHN0cnVjdCBldGh0b29sX2VlZSAqZSkKPiArewo+ICsgICAgICAgc3RydWN0IG10NzUz
-MF9wcml2ICpwcml2ID0gZHMtPnByaXY7Cj4gKyAgICAgICB1MzIgZWVlY3I7Cj4gKwo+ICsgICAg
-ICAgaWYgKGUtPmVlZV9lbmFibGVkKSB7Cj4gKyAgICAgICAgICAgICAgIGlmIChlLT50eF9scGlf
-dGltZXIgPiAweEZGRikKPiArICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsK
-PiArICAgICAgICAgICAgICAgcHJpdi0+ZWVlX2Rpc2FibGVkICY9IH5CSVQocG9ydCk7Cj4gKyAg
-ICAgICAgICAgICAgIGVlZWNyID0gbXQ3NTMwX3JlYWQocHJpdiwgTVQ3NTMwX1BNRUVFQ1JfUChw
-b3J0KSk7Cj4gKyAgICAgICAgICAgICAgIGVlZWNyICY9IH4oTFBJX1RIUkVTSF9NQVNLIHwgTFBJ
-X01PREVfRU4pOwo+ICsgICAgICAgICAgICAgICBpZiAoIWUtPnR4X2xwaV9lbmFibGVkKQo+ICsg
-ICAgICAgICAgICAgICAgICAgICAgIC8qIEZvcmNlIExQSSBNb2RlIHdpdGhvdXQgYSBkZWxheSAq
-Lwo+ICsgICAgICAgICAgICAgICAgICAgICAgIGVlZWNyIHw9IExQSV9NT0RFX0VOOwo+ICsgICAg
-ICAgICAgICAgICBlZWVjciB8PSBTRVRfTFBJX1RIUkVTSChlLT50eF9scGlfdGltZXIpOwo+ICsg
-ICAgICAgICAgICAgICBtdDc1MzBfd3JpdGUocHJpdiwgTVQ3NTMwX1BNRUVFQ1JfUChwb3J0KSwg
-ZWVlY3IpOwo+ICsgICAgICAgfSBlbHNlIHsKPiArICAgICAgICAgICAgICAgcHJpdi0+ZWVlX2Rp
-c2FibGVkIHw9IEJJVChwb3J0KTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICByZXR1cm4gMDsK
-PiArfQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+On Thu, 2021-04-08 at 14:28 +0200, Dafna Hirschfeld wrote:
+> In mtk_iommu_runtime_resume always enable the clk, even
+> if m4u_dom is null. Otherwise the 'suspend' cb might
+> disable the clk which is already disabled causing the warning:
+
+Hi Dafna,
+
+Thanks very much for testing and report. I have reproduced this issue
+locally. It happened when iommu probe before than smi-common(iommu is
+the supplier in the dev-link).
+
+I put clk_prepare_enable in the _hw_init since I have plan to remove the
+pm_runtime_get/put in the _attach_device(This will turn off the display
+power domain if we show fastlogo at that time.) May be we should keep
+the smi-common probe always before than iommu.
+
+Anyway, This patch makes code symmetrical and it is good for now.
+
+Reviewed-by: Yong Wu <yong.wu@mediatek.com>
+
+> 
+> [    1.586104] infra_m4u already disabled
+> [    1.586133] WARNING: CPU: 0 PID: 121 at drivers/clk/clk.c:952 clk_core_disable+0xb0/0xb8
+> [    1.594391] mtk-iommu 10205000.iommu: bound 18001000.larb (ops mtk_smi_larb_component_ops)
+> [    1.598108] Modules linked in:
+> [    1.598114] CPU: 0 PID: 121 Comm: kworker/0:2 Not tainted 5.12.0-rc5 #69
+> [    1.609246] mtk-iommu 10205000.iommu: bound 14027000.larb (ops mtk_smi_larb_component_ops)
+> [    1.617487] Hardware name: Google Elm (DT)
+> [    1.617491] Workqueue: pm pm_runtime_work
+> [    1.620545] mtk-iommu 10205000.iommu: bound 19001000.larb (ops mtk_smi_larb_component_ops)
+> 
+> [    1.627229] pstate: 60000085 (nZCv daIf -PAN -UAO -TCO BTYPE=--)
+> [    1.659297] pc : clk_core_disable+0xb0/0xb8
+> [    1.663475] lr : clk_core_disable+0xb0/0xb8
+> [    1.667652] sp : ffff800011b9bbe0
+> [    1.670959] x29: ffff800011b9bbe0 x28: 0000000000000000
+> [    1.676267] x27: ffff800011448000 x26: ffff8000100cfd98
+> [    1.681574] x25: ffff800011b9bd48 x24: 0000000000000000
+> [    1.686882] x23: 0000000000000000 x22: ffff8000106fad90
+> [    1.692189] x21: 000000000000000a x20: ffff0000c0048500
+> [    1.697496] x19: ffff0000c0048500 x18: ffffffffffffffff
+> [    1.702804] x17: 0000000000000000 x16: 0000000000000000
+> [    1.708112] x15: ffff800011460300 x14: fffffffffffe0000
+> [    1.713420] x13: ffff8000114602d8 x12: 0720072007200720
+> [    1.718727] x11: 0720072007200720 x10: 0720072007200720
+> [    1.724035] x9 : ffff800011b9bbe0 x8 : ffff800011b9bbe0
+> [    1.729342] x7 : 0000000000000009 x6 : ffff8000114b8328
+> [    1.734649] x5 : 0000000000000000 x4 : 0000000000000000
+> [    1.739956] x3 : 00000000ffffffff x2 : ffff800011460298
+> [    1.745263] x1 : 1af1d7de276f4500 x0 : 0000000000000000
+> [    1.750572] Call trace:
+> [    1.753010]  clk_core_disable+0xb0/0xb8
+> [    1.756840]  clk_core_disable_lock+0x24/0x40
+> [    1.761105]  clk_disable+0x20/0x30
+> [    1.764501]  mtk_iommu_runtime_suspend+0x88/0xa8
+> [    1.769114]  pm_generic_runtime_suspend+0x2c/0x48
+> [    1.773815]  __rpm_callback+0xe0/0x178
+> [    1.777559]  rpm_callback+0x24/0x88
+> [    1.781041]  rpm_suspend+0xdc/0x470
+> [    1.784523]  rpm_idle+0x12c/0x170
+> [    1.787831]  pm_runtime_work+0xa8/0xc0
+> [    1.791573]  process_one_work+0x1e8/0x360
+> [    1.795580]  worker_thread+0x44/0x478
+> [    1.799237]  kthread+0x150/0x158
+> [    1.802460]  ret_from_fork+0x10/0x30
+> [    1.806034] ---[ end trace 82402920ef64573b ]---
+> [    1.810728] ------------[ cut here ]------------
+> 
+> In addition, we now don't need to enable the clock from the
+> function mtk_iommu_hw_init since it is already enabled by the resume.
+> 
+> Fixes: commit c0b57581b73b ("iommu/mediatek: Add power-domain operation")
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/iommu/mtk_iommu.c | 19 ++++++++-----------
+>  1 file changed, 8 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index 6ecc007f07cd..e168a682806a 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -688,13 +688,6 @@ static const struct iommu_ops mtk_iommu_ops = {
+>  static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  {
+>  	u32 regval;
+> -	int ret;
+> -
+> -	ret = clk_prepare_enable(data->bclk);
+> -	if (ret) {
+> -		dev_err(data->dev, "Failed to enable iommu bclk(%d)\n", ret);
+> -		return ret;
+> -	}
+>  
+>  	if (data->plat_data->m4u_plat == M4U_MT8173) {
+>  		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
+> @@ -760,7 +753,6 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
+>  	if (devm_request_irq(data->dev, data->irq, mtk_iommu_isr, 0,
+>  			     dev_name(data->dev), (void *)data)) {
+>  		writel_relaxed(0, data->base + REG_MMU_PT_BASE_ADDR);
+> -		clk_disable_unprepare(data->bclk);
+>  		dev_err(data->dev, "Failed @ IRQ-%d Request\n", data->irq);
+>  		return -ENODEV;
+>  	}
+> @@ -977,14 +969,19 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+>  	void __iomem *base = data->base;
+>  	int ret;
+>  
+> -	/* Avoid first resume to affect the default value of registers below. */
+> -	if (!m4u_dom)
+> -		return 0;
+>  	ret = clk_prepare_enable(data->bclk);
+>  	if (ret) {
+>  		dev_err(data->dev, "Failed to enable clk(%d) in resume\n", ret);
+>  		return ret;
+>  	}
+> +
+> +	/*
+> +	 * Uppon first resume, only enable the clk and return, since the values of the
+> +	 * registers are not yet set.
+> +	 */
+> +	if (!m4u_dom)
+> +		return 0;
+> +
+>  	writel_relaxed(reg->wr_len_ctrl, base + REG_MMU_WR_LEN_CTRL);
+>  	writel_relaxed(reg->misc_ctrl, base + REG_MMU_MISC_CTRL);
+>  	writel_relaxed(reg->dcm_dis, base + REG_MMU_DCM_DIS);
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
