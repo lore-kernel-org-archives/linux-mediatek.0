@@ -1,100 +1,95 @@
-Return-Path: <SRS0=+aVJ=JH=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=mAey=JI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93227C433B4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 19:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D90DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Apr 2021 09:27:48 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C62A6105A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Apr 2021 19:23:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C62A6105A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0A3AF611CE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Apr 2021 09:27:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A3AF611CE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c0aSNzXlpz3al+uPWVtlZoyABD/f+s7SJNcUTJARNjw=; b=G9l37bW3C5ZKDaNv2LzdaBgYf
-	6MB19GkUKYji1Yq7gR/3r8zerpAL1ld71hRqh7aVmTAWh7QvweaskJvWPohk61k4V2oasoWeTXR3Z
-	YzTvYtcIHwhcda9J+Y23jhSCEev0FcRMRDuyLLy1JDnmulPtmjDfxq8CguGIp8oi0yK4Gpb2Zi577
-	33sla+KvmRhS9edGJ71qIMQfw7cJHRN2tPH73EmftMl1FuvuHjPls8180Xx9uN9+0dwfe0wXfhXud
-	yKn2SLKdD4JGUTobcOxXNCB5T5I0tCyKG9ufiBUkgtwmB0SBIiHbYoz7puetWnXHvkAssiXZ7plPy
-	SwpTWcxSg==;
+	 bh=HRo7dqlbNF03WY3pH43FrCXge7pz2at4q6/IYzvI5rk=; b=pWyNGF88ZeNmx8QEHgXj881Tx
+	quShoqw7uo0GQ4+EIIFdmgy2UzsJ1+eIG3a9g57m37WKxFo/UCRrHd5JUjpyTFXQFBrsCkkbSRVPQ
+	cQrGOm4Pu+jcUOtbcK1JRuDWal/qEdu90M8GoNYt6PF6M9AVpxvM7WaD2sHiPQalGZ5rYS0PVQeqX
+	SyRnoCYu4kPbjOAO3WfwVgPTTM8b2AgEvgA0MO3Np44tmMi9ga9B/9wjtt6Ln5L3mz5zaliJBMODc
+	xX5/s3UwoP4RZ8wmLljOVx24faZYdkGrTa+cHCIipFHff8Ah1zZ1tGttziKtMa1zaCB1Rwst2d0in
+	Q38anfZcg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVJCf-003KiZ-7H; Sat, 10 Apr 2021 19:23:33 +0000
+	id 1lVWNT-004E35-QJ; Sun, 11 Apr 2021 09:27:35 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVJCR-003Ki5-0W; Sat, 10 Apr 2021 19:23:19 +0000
+ id 1lVWNL-004E1o-MK; Sun, 11 Apr 2021 09:27:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=75+xLDUtdrYTYgzg5osp1ETu/zD0vmodiP9QCk3otx4=; b=naBQV42lUXndEjinIXrSbCUskG
- pLenvSFMtaGnUqazzIeMdtulxmcXDGeFrUDF0PbbjrldGwmsI1ZYM7Y02i28BM5X7avedmj8vBZJZ
- DRl9qMY0jIrBG5CIHMLo6seKH0xF/WpDQO3N77iGs0wReiY4aKavgWhfaxAVIlHiVu1yWC8ZouLjH
- kcRs5nOTiA3IkVrhuSTFL7DsUA76+68yVj6dYm2mvjYEpGPbobHfWxHnFjDSgrq/qkUgFJNydme+u
- KvoQ8oORE9B+nIfyqEJSp7zLaUI0OorOKqPXcQ5m25igvCypvvnFIITjlGSxxB/aMZg3MfQnfseR5
- iiCL84Rg==;
-Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=K6Fnp8+S+3Y7afNzymyQbmZMvrXpnTuzQ8uyw4kC+ko=; b=t3ssWt2lTHVw/y6oxzu+K3qHhw
+ +vsEE074JVouKbQ6vgRjaIVSZLdkEkSHJlZsprSnDt6FrYhZzhFUv/EmitWCSpO8xSZKReh5AUsg0
+ lpfJCyfsKQFZJTFgKWEZThe1/NtOr6QOsC0T+3EeWWiziIYPMiw8AMS+8/M7eC41guXg3WPo+mYuZ
+ r/zeNoOlX8bNuTbXZkXLUv3CW2VQLt4UzO4KXTlsS1NVpzi1U0Aat6lF/VJWDpF2iVCBKQiv8gLbe
+ flnG/8YXrCga9FDqt2aczm+09yl6B0+le3OodpUYjDeRGd8LV5SOrldjGGJjcTpM7Xb0zDoqQGFFz
+ mIB5/59A==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVJCN-005EPC-QJ; Sat, 10 Apr 2021 19:23:17 +0000
-Received: by mail-ot1-x32f.google.com with SMTP id
- d3-20020a9d29030000b029027e8019067fso7051438otb.13; 
- Sat, 10 Apr 2021 12:23:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=75+xLDUtdrYTYgzg5osp1ETu/zD0vmodiP9QCk3otx4=;
- b=sJQkeuwg8jcjxcqkEbwrHFH83Uk/M1aOLpnHSiDIawn13xMkeGlcF89fe/iEPARBeG
- iz26dgKHekjIBAcl87GVnBbLsmbtd8sQSLaoQyj0HtziTEWewqIiULXQRYpqHtYmsfEU
- ilSycIjyiEHjaQOadBQsOLYJrXKW+FPlMi7L8Z/eJ4PeGAQeBjRfVm6NWR3MKpqOfnCx
- 48+YW+RVPxz/+bBQiB5uATZ9gflHnv/K8x7GlCYLjteUMa4AZ57XDwS8zsBT6X/EAePJ
- Dtq4p8P1KZt7qRTeTM7allOlQt4HHX1iO89zJZuC9Aybj41neWp3dOSZ5ZcV0ZPj4850
- l0VA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=75+xLDUtdrYTYgzg5osp1ETu/zD0vmodiP9QCk3otx4=;
- b=bR3B56je905MqSllXZTd0YvdqvIFyNRxUAPAKGhvqypi3sSSdPwIjNNx0g471S8pPQ
- Lfs0/8vqvc73e0ydWl8BzhA/nd0HI0p9hP1jje3EhBRlYiWfVbFvSFOvCwtgVGg+c361
- 7/bHx2wABO6rkNnqE7kDFFRth9f0G7/pwM7NuBheXNII3fPxiEk0BKEDv0hzXP3USO6b
- tG6sgH6mixJWKpra6buprkH57+cQPKSIMctRo3AFW2TirPP0L+pbO8tVciz3plO/zbB3
- pOHR9f9oMQvkvMdv89CxqaFhl+99TNPwiFs5e2tt/GuzhP20RmoSPPqyDOTyPyY/3BRo
- iOSA==
-X-Gm-Message-State: AOAM530HtHhwyd7cqgOD1jP/s5H2PMFl4LlHTLj6FvM8ZpFCdTCeQcLD
- 6zOMdiPCV4m48ZTRhAxAJdJHelgL9+NK2rIgjo4=
-X-Google-Smtp-Source: ABdhPJyhI5Un0JdfgY52GxZ1ETuuAoWGZpEGEy4pzifjRgY5lFMlMKznJa0Io60UwFRdydhDOANkDoiNUSGBPSxA0tY=
-X-Received: by 2002:a9d:6a0a:: with SMTP id g10mr17581138otn.236.1618082594356; 
- Sat, 10 Apr 2021 12:23:14 -0700 (PDT)
+ id 1lVWNH-005QxP-Lz; Sun, 11 Apr 2021 09:27:25 +0000
+X-UUID: 63e7e876fd874dce9f9e57bfe21d87ce-20210411
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=K6Fnp8+S+3Y7afNzymyQbmZMvrXpnTuzQ8uyw4kC+ko=; 
+ b=I0N0H7y2EeEHrFhFyRoGBteZ8iG7rr64CLBpb5g0yn0Jts7U17Z8MSv1WxrUzP1kR9ohlt9Lvi2uMRZ/EY10YJ1TENFbA0iwAp4WIIYlpEJYhRjlyfw6xxIHcXkcTFVWkYda5WK/y56kJaklDzqLO6DmNMwYRb7WDaN6yDdyWk0=;
+X-UUID: 63e7e876fd874dce9f9e57bfe21d87ce-20210411
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1459956069; Sun, 11 Apr 2021 02:27:17 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 11 Apr 2021 02:27:16 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 11 Apr 2021 17:27:14 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 11 Apr 2021 17:27:13 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
+ <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
+CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>, <jg_poxu@mediatek.com>,
+ <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
+ <erin.lo@mediatek.com>, <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
+ <sj.huang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>
+Subject: [PATCH v3 5/5] pinctrl: add rsel setting on MT8195
+Date: Sun, 11 Apr 2021 17:26:59 +0800
+Message-ID: <20210411092659.22838-6-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210411092659.22838-1-zhiyong.tao@mediatek.com>
+References: <20210411092659.22838-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-References: <20210410173331.57949-1-ilya.lipnitskiy@gmail.com>
-In-Reply-To: <20210410173331.57949-1-ilya.lipnitskiy@gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sat, 10 Apr 2021 21:23:03 +0200
-Message-ID: <CAMhs-H_GVj1DnhutUBo=Sdr38A8h9WnaJ7KX_-ge550qbujP7w@mail.gmail.com>
-Subject: Re: [PATCH] staging: mt7621-pci: stop using of_pci_range_to_resource
-To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Siddhant Gupta <siddhantgupta416@gmail.com>, 
- Selvakumar Elangovan <selvakumar16197@gmail.com>, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel <linux-kernel@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210410_122315_886753_6FDCAE35 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20210411_022723_750821_E9F2E592 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,182 +106,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ilya,
+This patch provides rsel setting on MT8195.
 
-On Sat, Apr 10, 2021 at 7:33 PM Ilya Lipnitskiy
-<ilya.lipnitskiy@gmail.com> wrote:
->
-> The logic here was already overriding the erroneous IO addresses
-> returned from of_pci_range_to_resource, which is the bulk of the logic.
->
-> So stop using it altogether and initialize the fields explicitly, as
-> done in aeba3731b150 ("powerpc/pci: Fix IO space breakage after
-> of_pci_range_to_resource() change").
->
-> Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-> Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> ---
->  drivers/staging/mt7621-pci/pci-mt7621.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
+Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 22 +++++++++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 14 ++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  | 10 +++++++++
+ drivers/pinctrl/mediatek/pinctrl-paris.c      | 16 ++++++++++++++
+ 4 files changed, 62 insertions(+)
 
-Looks good to me, thanks! I have also tested this in gnubee pc1
-platform with no regressions at all when io bars are assigned:
-
-[   16.378956] mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
-[   16.392405] mt7621-pci 1e140000.pcie:      MEM
-0x0060000000..0x006fffffff -> 0x0000000000
-[   16.408796] mt7621-pci 1e140000.pcie:       IO
-0x001e160000..0x001e16ffff -> 0x0000000000
-[   16.425264] mt7621-pci-phy 1e149000.pcie-phy: PHY for 0xbe149000
-(dual port = 1)
-[   16.440452] mt7621-pci-phy 1e14a000.pcie-phy: PHY for 0xbe14a000
-(dual port = 0)
-[   16.678713] mt7621-pci 1e140000.pcie: PCIE0 enabled
-[   16.688435] mt7621-pci 1e140000.pcie: PCIE1 enabled
-[   16.698160] mt7621-pci 1e140000.pcie: PCIE2 enabled
-[   16.707886] mt7621-pci 1e140000.pcie: PCI coherence region base:
-0x60000000, mask/settings: 0xf0000002
-[   16.726623] mt7621-pci 1e140000.pcie: PCI host bridge to bus 0000:00
-[   16.739309] pci_bus 0000:00: root bus resource [io  0x1e160000-0x1e16ffff]
-[   16.753008] pci_bus 0000:00: root bus resource [mem 0x60000000-0x6fffffff]
-[   16.766709] pci_bus 0000:00: root bus resource [bus 00-ff]
-[   16.777649] pci_bus 0000:00: root bus resource [mem
-0x60000000-0x6fffffff] (bus address [0x00000000-0x0fffffff])
-[   16.797986] pci 0000:00:00.0: [0e8d:0801] type 01 class 0x060400
-[   16.809973] pci 0000:00:00.0: reg 0x10: [mem 0x00000000-0x7fffffff]
-[   16.822467] pci 0000:00:00.0: reg 0x14: initial BAR value 0x00000000 invalid
-[   16.836511] pci 0000:00:00.0: reg 0x14: [mem size 0x00010000]
-[   16.848048] pci 0000:00:00.0: supports D1
-[   16.856051] pci 0000:00:00.0: PME# supported from D0 D1 D3hot
-[   16.867943] pci 0000:00:01.0: [0e8d:0801] type 01 class 0x060400
-[   16.879960] pci 0000:00:01.0: reg 0x10: [mem 0x00000000-0x7fffffff]
-[   16.892454] pci 0000:00:01.0: reg 0x14: initial BAR value 0x00000000 invalid
-[   16.906497] pci 0000:00:01.0: reg 0x14: [mem size 0x00010000]
-[   16.918040] pci 0000:00:01.0: supports D1
-[   16.926031] pci 0000:00:01.0: PME# supported from D0 D1 D3hot
-[   16.937903] pci 0000:00:02.0: [0e8d:0801] type 01 class 0x060400
-[   16.949915] pci 0000:00:02.0: reg 0x10: [mem 0x00000000-0x7fffffff]
-[   16.962412] pci 0000:00:02.0: reg 0x14: initial BAR value 0x00000000 invalid
-[   16.976466] pci 0000:00:02.0: reg 0x14: [mem size 0x00010000]
-[   16.987991] pci 0000:00:02.0: supports D1
-[   16.995986] pci 0000:00:02.0: PME# supported from D0 D1 D3hot
-[   17.008716] pci 0000:00:00.0: bridge configuration invalid ([bus
-00-00]), reconfiguring
-[   17.024695] pci 0000:00:01.0: bridge configuration invalid ([bus
-00-00]), reconfiguring
-[   17.040654] pci 0000:00:02.0: bridge configuration invalid ([bus
-00-00]), reconfiguring
-[   17.056868] pci 0000:01:00.0: [1b21:0611] type 00 class 0x010185
-[   17.068882] pci 0000:01:00.0: reg 0x10: [io  0x0000-0x0007]
-[   17.080003] pci 0000:01:00.0: reg 0x14: [io  0x0000-0x0003]
-[   17.091115] pci 0000:01:00.0: reg 0x18: [io  0x0000-0x0007]
-[   17.102238] pci 0000:01:00.0: reg 0x1c: [io  0x0000-0x0003]
-[   17.113350] pci 0000:01:00.0: reg 0x20: [io  0x0000-0x000f]
-[   17.124463] pci 0000:01:00.0: reg 0x24: initial BAR value 0x00000000 invalid
-[   17.138508] pci 0000:01:00.0: reg 0x24: [mem size 0x00000200]
-[   17.150115] pci 0000:01:00.0: 2.000 Gb/s available PCIe bandwidth,
-limited by 2.5 GT/s PCIe x1 link at 0000:00:00.0 (capable of 4.000
-Gb/s with 5.0 GT/s PCIe x1 link)
-[   17.204594] pci 0000:00:00.0: PCI bridge to [bus 01-ff]
-[   17.215109] pci 0000:00:00.0:   bridge window [io  0x0000-0x0fff]
-[   17.227257] pci 0000:00:00.0:   bridge window [mem 0x60000000-0x600fffff]
-[   17.240785] pci 0000:00:00.0:   bridge window [mem
-0x60000000-0x600fffff pref]
-[   17.255183] pci_bus 0000:01: busn_res: [bus 01-ff] end is updated to 01
-[   17.268648] pci 0000:02:00.0: [1b21:0611] type 00 class 0x010185
-[   17.280671] pci 0000:02:00.0: reg 0x10: [io  0x0000-0x0007]
-[   17.291785] pci 0000:02:00.0: reg 0x14: [io  0x0000-0x0003]
-[   17.302898] pci 0000:02:00.0: reg 0x18: [io  0x0000-0x0007]
-[   17.314012] pci 0000:02:00.0: reg 0x1c: [io  0x0000-0x0003]
-[   17.325127] pci 0000:02:00.0: reg 0x20: [io  0x0000-0x000f]
-[   17.336241] pci 0000:02:00.0: reg 0x24: initial BAR value 0x00000000 invalid
-[   17.350279] pci 0000:02:00.0: reg 0x24: [mem size 0x00000200]
-[   17.361893] pci 0000:02:00.0: 2.000 Gb/s available PCIe bandwidth,
-limited by 2.5 GT/s PCIe x1 link at 0000:00:01.0 (capable of 4.000
-Gb/s with 5.0 GT/s PCIe x1 link)
-[   17.414591] pci 0000:00:01.0: PCI bridge to [bus 02-ff]
-[   17.425063] pci 0000:00:01.0:   bridge window [io  0x0000-0x0fff]
-[   17.437206] pci 0000:00:01.0:   bridge window [mem 0x60000000-0x600fffff]
-[   17.450733] pci 0000:00:01.0:   bridge window [mem
-0x60000000-0x600fffff pref]
-[   17.465130] pci_bus 0000:02: busn_res: [bus 02-ff] end is updated to 02
-[   17.478583] pci 0000:03:00.0: [1b21:0611] type 00 class 0x010185
-[   17.490604] pci 0000:03:00.0: reg 0x10: [io  0x0000-0x0007]
-[   17.501717] pci 0000:03:00.0: reg 0x14: [io  0x0000-0x0003]
-[   17.512831] pci 0000:03:00.0: reg 0x18: [io  0x0000-0x0007]
-[   17.523945] pci 0000:03:00.0: reg 0x1c: [io  0x0000-0x0003]
-[   17.535060] pci 0000:03:00.0: reg 0x20: [io  0x0000-0x000f]
-[   17.546174] pci 0000:03:00.0: reg 0x24: initial BAR value 0x00000000 invalid
-[   17.560211] pci 0000:03:00.0: reg 0x24: [mem size 0x00000200]
-[   17.571825] pci 0000:03:00.0: 2.000 Gb/s available PCIe bandwidth,
-limited by 2.5 GT/s PCIe x1 link at 0000:00:02.0 (capable of 4.000
-Gb/s with 5.0 GT/s PCIe x1 link)
-[   17.624582] pci 0000:00:02.0: PCI bridge to [bus 03-ff]
-[   17.635043] pci 0000:00:02.0:   bridge window [io  0x0000-0x0fff]
-[   17.647188] pci 0000:00:02.0:   bridge window [mem 0x60000000-0x600fffff]
-[   17.660710] pci 0000:00:02.0:   bridge window [mem
-0x60000000-0x600fffff pref]
-[   17.675104] pci_bus 0000:03: busn_res: [bus 03-ff] end is updated to 03
-[   17.688358] pci 0000:00:00.0: BAR 0: no space for [mem size 0x80000000]
-[   17.701534] pci 0000:00:00.0: BAR 0: failed to assign [mem size 0x80000000]
-[   17.715406] pci 0000:00:01.0: BAR 0: no space for [mem size 0x80000000]
-[   17.728585] pci 0000:00:01.0: BAR 0: failed to assign [mem size 0x80000000]
-[   17.742456] pci 0000:00:02.0: BAR 0: no space for [mem size 0x80000000]
-[   17.755638] pci 0000:00:02.0: BAR 0: failed to assign [mem size 0x80000000]
-[   17.769514] pci 0000:00:00.0: BAR 8: assigned [mem 0x60000000-0x600fffff]
-[   17.783039] pci 0000:00:00.0: BAR 9: assigned [mem
-0x60100000-0x601fffff pref]
-[   17.797429] pci 0000:00:01.0: BAR 8: assigned [mem 0x60200000-0x602fffff]
-[   17.810958] pci 0000:00:01.0: BAR 9: assigned [mem
-0x60300000-0x603fffff pref]
-[   17.825360] pci 0000:00:02.0: BAR 8: assigned [mem 0x60400000-0x604fffff]
-[   17.838886] pci 0000:00:02.0: BAR 9: assigned [mem
-0x60500000-0x605fffff pref]
-[   17.853279] pci 0000:00:00.0: BAR 1: assigned [mem 0x60600000-0x6060ffff]
-[   17.866814] pci 0000:00:01.0: BAR 1: assigned [mem 0x60610000-0x6061ffff]
-[   17.880346] pci 0000:00:02.0: BAR 1: assigned [mem 0x60620000-0x6062ffff]
-[   17.893880] pci 0000:00:00.0: BAR 7: assigned [io  0x1e160000-0x1e160fff]
-[   17.907410] pci 0000:00:01.0: BAR 7: assigned [io  0x1e161000-0x1e161fff]
-[   17.920935] pci 0000:00:02.0: BAR 7: assigned [io  0x1e162000-0x1e162fff]
-[   17.934474] pci 0000:01:00.0: BAR 5: assigned [mem 0x60000000-0x600001ff]
-[   17.948008] pci 0000:01:00.0: BAR 4: assigned [io  0x1e160000-0x1e16000f]
-[   17.961542] pci 0000:01:00.0: BAR 0: assigned [io  0x1e160010-0x1e160017]
-[   17.975072] pci 0000:01:00.0: BAR 2: assigned [io  0x1e160018-0x1e16001f]
-[   17.988605] pci 0000:01:00.0: BAR 1: assigned [io  0x1e160020-0x1e160023]
-[   18.002138] pci 0000:01:00.0: BAR 3: assigned [io  0x1e160024-0x1e160027]
-[   18.015673] pci 0000:00:00.0: PCI bridge to [bus 01]
-[   18.025572] pci 0000:00:00.0:   bridge window [io  0x1e160000-0x1e160fff]
-[   18.039096] pci 0000:00:00.0:   bridge window [mem 0x60000000-0x600fffff]
-[   18.052623] pci 0000:00:00.0:   bridge window [mem
-0x60100000-0x601fffff pref]
-[   18.067026] pci 0000:02:00.0: BAR 5: assigned [mem 0x60200000-0x602001ff]
-[   18.080562] pci 0000:02:00.0: BAR 4: assigned [io  0x1e161000-0x1e16100f]
-[   18.094092] pci 0000:02:00.0: BAR 0: assigned [io  0x1e161010-0x1e161017]
-[   18.107625] pci 0000:02:00.0: BAR 2: assigned [io  0x1e161018-0x1e16101f]
-[   18.121158] pci 0000:02:00.0: BAR 1: assigned [io  0x1e161020-0x1e161023]
-[   18.134694] pci 0000:02:00.0: BAR 3: assigned [io  0x1e161024-0x1e161027]
-[   18.148225] pci 0000:00:01.0: PCI bridge to [bus 02]
-[   18.158117] pci 0000:00:01.0:   bridge window [io  0x1e161000-0x1e161fff]
-[   18.171643] pci 0000:00:01.0:   bridge window [mem 0x60200000-0x602fffff]
-[   18.185170] pci 0000:00:01.0:   bridge window [mem
-0x60300000-0x603fffff pref]
-[   18.199591] pci 0000:03:00.0: BAR 5: assigned [mem 0x60400000-0x604001ff]
-[   18.213127] pci 0000:03:00.0: BAR 4: assigned [io  0x1e162000-0x1e16200f]
-[   18.226664] pci 0000:03:00.0: BAR 0: assigned [io  0x1e162010-0x1e162017]
-[   18.240199] pci 0000:03:00.0: BAR 2: assigned [io  0x1e162018-0x1e16201f]
-[   18.253751] pci 0000:03:00.0: BAR 1: assigned [io  0x1e162020-0x1e162023]
-[   18.267286] pci 0000:03:00.0: BAR 3: assigned [io  0x1e162024-0x1e162027]
-[   18.280814] pci 0000:00:02.0: PCI bridge to [bus 03]
-[   18.290713] pci 0000:00:02.0:   bridge window [io  0x1e162000-0x1e162fff]
-[   18.304243] pci 0000:00:02.0:   bridge window [mem 0x60400000-0x604fffff]
-[   18.317773] pci 0000:00:02.0:   bridge window [mem
-0x60500000-0x605fffff pref]
-
-Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-
-Best regards,
-    Sergio Paracuellos
-
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+index a7500e18bb1d..66608b8d346a 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+@@ -779,6 +779,25 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
+ 	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
+ };
+ 
++static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
++	PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
++	PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
++	PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
++	PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
++	PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
++	PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
++	PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
++	PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
++	PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
++	PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
++	PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
++	PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
++	PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
++	PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
++	PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
++	PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
++};
++
+ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
+ 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
+@@ -793,6 +812,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
+ 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
+ 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
++	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
+ };
+ 
+ static const char * const mt8195_pinctrl_register_base_names[] = {
+@@ -823,6 +843,8 @@ static const struct mtk_pin_soc mt8195_data = {
+ 	.drive_get = mtk_pinconf_drive_get_rev1,
+ 	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
+ 	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
++	.rsel_set = mtk_pinconf_rsel_set,
++	.rsel_get = mtk_pinconf_rsel_get,
+ };
+ 
+ static const struct of_device_id mt8195_pinctrl_of_match[] = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 2b51f4a9b860..d1526d0c6248 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -1041,6 +1041,20 @@ int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
+ }
+ EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get_raw);
+ 
++int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
++			 const struct mtk_pin_desc *desc, u32 arg)
++{
++	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, arg);
++}
++EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_set);
++
++int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
++			 const struct mtk_pin_desc *desc, u32 *val)
++{
++	return mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_RSEL, val);
++}
++EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_get);
++
+ MODULE_LICENSE("GPL v2");
+ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+ MODULE_DESCRIPTION("Pin configuration library module for mediatek SoCs");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index fd5ce9c5dcbd..570e8da7bf38 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -67,6 +67,7 @@ enum {
+ 	PINCTRL_PIN_REG_DRV_E0,
+ 	PINCTRL_PIN_REG_DRV_E1,
+ 	PINCTRL_PIN_REG_DRV_ADV,
++	PINCTRL_PIN_REG_RSEL,
+ 	PINCTRL_PIN_REG_MAX,
+ };
+ 
+@@ -237,6 +238,10 @@ struct mtk_pin_soc {
+ 			     const struct mtk_pin_desc *desc, u32 arg);
+ 	int (*adv_drive_get)(struct mtk_pinctrl *hw,
+ 			     const struct mtk_pin_desc *desc, u32 *val);
++	int (*rsel_set)(struct mtk_pinctrl *hw,
++			const struct mtk_pin_desc *desc, u32 arg);
++	int (*rsel_get)(struct mtk_pinctrl *hw,
++			const struct mtk_pin_desc *desc, u32 *val);
+ 
+ 	/* Specific driver data */
+ 	void				*driver_data;
+@@ -320,5 +325,10 @@ int mtk_pinconf_adv_drive_set_raw(struct mtk_pinctrl *hw,
+ int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
+ 				  const struct mtk_pin_desc *desc, u32 *val);
+ 
++int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
++			 const struct mtk_pin_desc *desc, u32 arg);
++int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
++			 const struct mtk_pin_desc *desc, u32 *val);
++
+ bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
+ #endif /* __PINCTRL_MTK_COMMON_V2_H */
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index da1f19288aa6..967288c28232 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -22,6 +22,8 @@
+ #define MTK_PIN_CONFIG_PU_ADV	(PIN_CONFIG_END + 3)
+ #define MTK_PIN_CONFIG_PD_ADV	(PIN_CONFIG_END + 4)
+ #define MTK_PIN_CONFIG_DRV_ADV	(PIN_CONFIG_END + 5)
++#define MTK_PIN_CONFIG_RSEL	(PIN_CONFIG_END + 6)
++
+ 
+ static const struct pinconf_generic_params mtk_custom_bindings[] = {
+ 	{"mediatek,tdsel",	MTK_PIN_CONFIG_TDSEL,		0},
+@@ -29,6 +31,7 @@ static const struct pinconf_generic_params mtk_custom_bindings[] = {
+ 	{"mediatek,pull-up-adv", MTK_PIN_CONFIG_PU_ADV,		1},
+ 	{"mediatek,pull-down-adv", MTK_PIN_CONFIG_PD_ADV,	1},
+ 	{"mediatek,drive-strength-adv", MTK_PIN_CONFIG_DRV_ADV,	2},
++	{"mediatek,rsel",		MTK_PIN_CONFIG_RSEL,	2},
+ };
+ 
+ #ifdef CONFIG_DEBUG_FS
+@@ -38,6 +41,7 @@ static const struct pin_config_item mtk_conf_items[] = {
+ 	PCONFDUMP(MTK_PIN_CONFIG_PU_ADV, "pu-adv", NULL, true),
+ 	PCONFDUMP(MTK_PIN_CONFIG_PD_ADV, "pd-adv", NULL, true),
+ 	PCONFDUMP(MTK_PIN_CONFIG_DRV_ADV, "drive-strength-adv", NULL, true),
++	PCONFDUMP(MTK_PIN_CONFIG_RSEL, "rsel", NULL, true),
+ };
+ #endif
+ 
+@@ -176,6 +180,12 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+ 		else
+ 			err = -ENOTSUPP;
+ 		break;
++	case MTK_PIN_CONFIG_RSEL:
++		if (hw->soc->rsel_get)
++			err = hw->soc->rsel_get(hw, desc, &ret);
++		else
++			err = -EOPNOTSUPP;
++		break;
+ 	default:
+ 		err = -ENOTSUPP;
+ 	}
+@@ -295,6 +305,12 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 		else
+ 			err = -ENOTSUPP;
+ 		break;
++	case MTK_PIN_CONFIG_RSEL:
++		if (hw->soc->rsel_set)
++			err = hw->soc->rsel_set(hw, desc, arg);
++		else
++			err = -EOPNOTSUPP;
++		break;
+ 	default:
+ 		err = -ENOTSUPP;
+ 	}
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
