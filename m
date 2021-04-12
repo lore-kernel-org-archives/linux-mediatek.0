@@ -2,96 +2,92 @@ Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UPPERCASE_50_75,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14776C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 11:53:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01A0AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 12:09:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83EBF61289
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 11:52:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83EBF61289
+	by mail.kernel.org (Postfix) with ESMTPS id 78DB561287
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 12:09:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78DB561287
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DOCSrOYMyWtho/kE7yjFnyWizjoEXUMAtPt82wM1vAI=; b=GdmTe1HMeFR/izduKg6TlgJ97
-	p7xBPO+PWiba2jeY86GpsugJThCTn5h/ltMw9IUCPB1C2si/tdhe4Vlzp2wDxW701a4a9w+UpNnff
-	i1RMaFVzJNvgYRzM2+Jb7LXW3Za/vXwa2GVUCySYAFOB2GSWt5jCjLPsQchvF1hsSYDhbaJPlvx4o
-	Twye+rhvdKqOeC+GC8T+rPPn5GDXrE6t7o5ggGRoH97RwhgwsMK8DvAKJYEvokOF6J6H3x49oyxNN
-	+iPS97HuAlwm2aO+9FJNx1NVQFnyugBuCnS9yQzBUxGQR36Cx4q8+EM05LUPGAPlNb0kb8Ama3j/0
-	HIfuitSpA==;
+	 bh=AfkQOjNte3XJms1QR04mH/aaRpGpIdmYhEuhM1G/okI=; b=pWcfE42b/hBvZQ9KfVokDsw9y
+	9kizls90BvNF90zP5tYTzNIfClqVuKhOwGzryWrS4Xnn/1+8/R6lS1oR9W32TXoU+n4J6fhnIovSI
+	/NsB3R9UgQvoHR9RgTRdi6J8LgGYUAq+XaGWfBE69T6Ow8/3NTNHLzfpC4zKu8LNs0d0//Ur8MCal
+	Tr0KD/UTaekbFOnD81CtZCwiyV/MctKp7fYgKDOCb3Q+UlRUz/iS6SRTZRjf7MAzeHhhK3Prt/4ZA
+	+Fv3ssqQOFxsk9h6lCYNvCGLnAdgriaPqUB9greSAg+ZnNlpHxAlyr3GoIhjwyE40wbYSuNcCIr20
+	qvVKTYxFg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVv7a-006btr-A9; Mon, 12 Apr 2021 11:52:50 +0000
+	id 1lVvNx-006e9R-9x; Mon, 12 Apr 2021 12:09:45 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVv6p-006bkN-6r; Mon, 12 Apr 2021 11:52:04 +0000
+ id 1lVvNj-006e7r-Cu; Mon, 12 Apr 2021 12:09:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=rsK+pDL9qTaijVMqbMppuChlRiNtGvVCqf8Jye28lx0=; b=SjngWBtjoU8ECqicVL1PgZ6lcK
- gii4cqv1i/YYeTaPmLNaLsdLeWLPSeJUY2vH8L2LLbS6/QlR57+lGlYOKasLkyDulxJbpUpKcE8oP
- a+kIr0Wv+cA8Y4k1qXc7K5j8abDgchubixR2usqPzMOmmxicVOrDFO5PYkGLW5b9kDCsQRkcOx4qY
- tiLFJVDdq7znMRjpJSa2O0jDfqJF+lXF49y7H7To/BhsmwV9fprsk7WmXjvikUG4PuBONXUk7KVMh
- NsbbyUNUver3C+zYaNqP2ihWnztFOhJcBAriQ0rqDPSuT3Fmm1LrMWolEXHVQ/pb9hJGMQw9DWFZ9
- lnlkG5ig==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=xjIpJFHcvYjgEZJlihOq0w4qVxnmy2ixpDuQuCRxIzY=; b=KhgFprY5QypxeMy3cPVnJ66nJI
+ MGxsTnlKIon8Eo2B1Ur1jp4TsIAoYU1B15Q+y47bX9x8DsxSSNLdgY4AeBssjgHmJDoHZMzVNWdQW
+ 6//t+opQ70eRkpRDz9NlUMFx6V1N9Ik2jhoulEim299ckWfYp7W/rINUX6MFZ5zU7ACdWDRU0fpaS
+ cjZri+qpsR2V0tV1Z8sQkDCVi376hQ0wKeH9iRR/kSmAJsawkE+WIS8ARNN2+2XBKqF9fMwkNn19d
+ Fkf5RRpsEOqjeD7F2xZbM38CTrgZQ4u3hqo+LBiG2px7Hk7slEQyU0da1/Ecs40oyStDCYxnsE50V
+ PB5nXoXQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVv6l-006C7l-Jb; Mon, 12 Apr 2021 11:52:02 +0000
-X-UUID: baf6e8749f4c4faea7e3e4cc39bb8c38-20210412
+ id 1lVvNg-006CoJ-Dp; Mon, 12 Apr 2021 12:09:29 +0000
+X-UUID: aa0fc467405d427d844b55f9e3449527-20210412
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=rsK+pDL9qTaijVMqbMppuChlRiNtGvVCqf8Jye28lx0=; 
- b=Bljm2JK3XQwBg2qCDC2bNRFHCOD/odpHuGE3ePqSlsfuerXgu4hPFwsu9vEC5h0ntX2b2E5kicFxVBzTOrYpS6tAu1oAxmtGpEO5CmyHaLwlb43TZqbzJ4DxJWdb4zMGIQk6VTSrtd3ci2A0ZvSBW3TeXGmToWf9Y58iGQkWros=;
-X-UUID: baf6e8749f4c4faea7e3e4cc39bb8c38-20210412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=xjIpJFHcvYjgEZJlihOq0w4qVxnmy2ixpDuQuCRxIzY=; 
+ b=OMOwPMoMGgd2PQpew6blRmRm5tPg487EzvFFjRV8puBSekNrMfhWCpRssgcIAROkww5l2LWAMUSolHEiY9X+2MLZ9/peGRlGYoJd40y8lRsQC0yT1rCn26FXQayEjxK9oGLYB6NpNBar5o7dLQjYFaXyOKNuiWHXYuPMPIJTv7o=;
+X-UUID: aa0fc467405d427d844b55f9e3449527-20210412
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1938542514; Mon, 12 Apr 2021 04:51:56 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 04:51:54 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 19:51:40 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 12 Apr 2021 19:51:39 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
- <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
- <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>
-Subject: [PATCH v4, 1/3] dt-binding: gce: add gce header file for mt8192
-Date: Mon, 12 Apr 2021 19:51:28 +0800
-Message-ID: <1618228290-18413-2-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1618228290-18413-1-git-send-email-yongqiang.niu@mediatek.com>
-References: <1618228290-18413-1-git-send-email-yongqiang.niu@mediatek.com>
+ with ESMTP id 2019832906; Mon, 12 Apr 2021 05:09:23 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Apr 2021 05:03:21 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 12 Apr 2021 20:03:15 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 12 Apr 2021 20:03:14 +0800
+Message-ID: <1618228994.32225.3.camel@mhfsdcap03>
+Subject: Re: [RESEND] i2c: mediatek: Get device clock-stretch time via dts
+From: Qii Wang <qii.wang@mediatek.com>
+To: Wolfram Sang <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>
+Date: Mon, 12 Apr 2021 20:03:14 +0800
+In-Reply-To: <20210407181936.GA1614@kunai>
+References: <1615622664-15032-1-git-send-email-qii.wang@mediatek.com>
+ <20210406194856.GF3122@kunai> <1617797706.32076.1.camel@mhfsdcap03>
+ <20210407181936.GA1614@kunai>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: A7CFFEEEB61B385686FB02EAD7F2826708C53DF7161DB026B3C8B8AD5232F5922000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_045159_683615_AB46085E 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20210412_050928_488280_9FB8DE91 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,388 +104,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add documentation for the mt8192 gce.
+On Wed, 2021-04-07 at 20:19 +0200, Wolfram Sang wrote:
+> > Due to clock stretch, our HW IP cannot meet the ac-timing
+> > spec(tSU;STA,tSU;STO). 
+> > There isn't a same delay for clock stretching, so we need pass a
+> > parameter which can be found through measurement to meet most
+> > conditions.
+> 
+> What about using this existing binding?
+> 
+> - i2c-scl-internal-delay-ns
+>         Number of nanoseconds the IP core additionally needs to setup SCL.
+> 
 
-Add gce header file defined the gce hardware event,
-subsys number and constant for mt8192.
+I can't see the relationship between "i2c-scl-falling-time-ns" and clock
+stretching, is there a parameter related to clock stretching?
+If you think both of them will affect the ac-timing of SCL, at this
+point, "i2c-scl-falling-time-ns" maybe a good choice.
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- .../devicetree/bindings/mailbox/mtk-gce.txt        |   7 +-
- include/dt-bindings/gce/mt8192-gce.h               | 335 +++++++++++++++++++++
- 2 files changed, 339 insertions(+), 3 deletions(-)
- create mode 100644 include/dt-bindings/gce/mt8192-gce.h
-
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-index cf48cd8..f48ae45 100644
---- a/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-+++ b/Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-@@ -9,8 +9,8 @@ CMDQ driver uses mailbox framework for communication. Please refer to
- mailbox.txt for generic information about mailbox device-tree bindings.
- 
- Required properties:
--- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce" or
--  "mediatek,mt6779-gce".
-+- compatible: can be "mediatek,mt8173-gce", "mediatek,mt8183-gce",
-+  "mediatek,mt8192-gce" or "mediatek,mt6779-gce".
- - reg: Address range of the GCE unit
- - interrupts: The interrupt signal from the GCE block
- - clock: Clocks according to the common clock binding
-@@ -36,7 +36,8 @@ Optional properties for a client device:
-   size: the total size of register address that GCE can access.
- 
- Some vaules of properties are defined in 'dt-bindings/gce/mt8173-gce.h',
--'dt-binding/gce/mt8183-gce.h' or 'dt-bindings/gce/mt6779-gce.h'. Such as
-+'dt-binding/gce/mt8183-gce.h', 'dt-binding/gce/mt8192-gce.h' or
-+'dt-bindings/gce/mt6779-gce.h'. Such as
- sub-system ids, thread priority, event ids.
- 
- Example:
-diff --git a/include/dt-bindings/gce/mt8192-gce.h b/include/dt-bindings/gce/mt8192-gce.h
-new file mode 100644
-index 0000000..9e5a0eb
---- /dev/null
-+++ b/include/dt-bindings/gce/mt8192-gce.h
-@@ -0,0 +1,335 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Yongqiang Niu <yongqiang.niu@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_GCE_MT8192_H
-+#define _DT_BINDINGS_GCE_MT8192_H
-+
-+/* assign timeout 0 also means default */
-+#define CMDQ_NO_TIMEOUT		0xffffffff
-+#define CMDQ_TIMEOUT_DEFAULT	1000
-+
-+/* GCE thread priority */
-+#define CMDQ_THR_PRIO_LOWEST	0
-+#define CMDQ_THR_PRIO_1		1
-+#define CMDQ_THR_PRIO_2		2
-+#define CMDQ_THR_PRIO_3		3
-+#define CMDQ_THR_PRIO_4		4
-+#define CMDQ_THR_PRIO_5		5
-+#define CMDQ_THR_PRIO_6		6
-+#define CMDQ_THR_PRIO_HIGHEST	7
-+
-+/* CPR count in 32bit register */
-+#define GCE_CPR_COUNT		1312
-+
-+/* GCE subsys table */
-+#define SUBSYS_1300XXXX		0
-+#define SUBSYS_1400XXXX		1
-+#define SUBSYS_1401XXXX		2
-+#define SUBSYS_1402XXXX		3
-+#define SUBSYS_1502XXXX		4
-+#define SUBSYS_1880XXXX		5
-+#define SUBSYS_1881XXXX		6
-+#define SUBSYS_1882XXXX		7
-+#define SUBSYS_1883XXXX		8
-+#define SUBSYS_1884XXXX		9
-+#define SUBSYS_1000XXXX		10
-+#define SUBSYS_1001XXXX		11
-+#define SUBSYS_1002XXXX		12
-+#define SUBSYS_1003XXXX		13
-+#define SUBSYS_1004XXXX		14
-+#define SUBSYS_1005XXXX		15
-+#define SUBSYS_1020XXXX		16
-+#define SUBSYS_1028XXXX		17
-+#define SUBSYS_1700XXXX		18
-+#define SUBSYS_1701XXXX		19
-+#define SUBSYS_1702XXXX		20
-+#define SUBSYS_1703XXXX		21
-+#define SUBSYS_1800XXXX		22
-+#define SUBSYS_1801XXXX		23
-+#define SUBSYS_1802XXXX		24
-+#define SUBSYS_1804XXXX		25
-+#define SUBSYS_1805XXXX		26
-+#define SUBSYS_1808XXXX		27
-+#define SUBSYS_180aXXXX		28
-+#define SUBSYS_180bXXXX		29
-+
-+#define CMDQ_EVENT_VDEC_LAT_SOF_0			0
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_0		1
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_1		2
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_2		3
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_3		4
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_4		5
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_5		6
-+#define CMDQ_EVENT_VDEC_LAT_FRAME_DONE_6		7
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_0			8
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_1			9
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_2			10
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_3			11
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_4			12
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_5			13
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_6			14
-+#define CMDQ_EVENT_VDEC_LAT_ENG_EVENT_7			15
-+
-+#define CMDQ_EVENT_ISP_FRAME_DONE_A			65
-+#define CMDQ_EVENT_ISP_FRAME_DONE_B			66
-+#define CMDQ_EVENT_ISP_FRAME_DONE_C			67
-+#define CMDQ_EVENT_CAMSV0_PASS1_DONE			68
-+#define CMDQ_EVENT_CAMSV02_PASS1_DONE			69
-+#define CMDQ_EVENT_CAMSV1_PASS1_DONE			70
-+#define CMDQ_EVENT_CAMSV2_PASS1_DONE			71
-+#define CMDQ_EVENT_CAMSV3_PASS1_DONE			72
-+#define CMDQ_EVENT_MRAW_0_PASS1_DONE			73
-+#define CMDQ_EVENT_MRAW_1_PASS1_DONE			74
-+#define CMDQ_EVENT_SENINF_CAM0_FIFO_FULL		75
-+#define CMDQ_EVENT_SENINF_CAM1_FIFO_FULL		76
-+#define CMDQ_EVENT_SENINF_CAM2_FIFO_FULL		77
-+#define CMDQ_EVENT_SENINF_CAM3_FIFO_FULL		78
-+#define CMDQ_EVENT_SENINF_CAM4_FIFO_FULL		79
-+#define CMDQ_EVENT_SENINF_CAM5_FIFO_FULL		80
-+#define CMDQ_EVENT_SENINF_CAM6_FIFO_FULL		81
-+#define CMDQ_EVENT_SENINF_CAM7_FIFO_FULL		82
-+#define CMDQ_EVENT_SENINF_CAM8_FIFO_FULL		83
-+#define CMDQ_EVENT_SENINF_CAM9_FIFO_FULL		84
-+#define CMDQ_EVENT_SENINF_CAM10_FIFO_FULL		85
-+#define CMDQ_EVENT_SENINF_CAM11_FIFO_FULL		86
-+#define CMDQ_EVENT_SENINF_CAM12_FIFO_FULL		87
-+#define CMDQ_EVENT_TG_OVRUN_A_INT			88
-+#define CMDQ_EVENT_DMA_R1_ERROR_A_INT			89
-+#define CMDQ_EVENT_TG_OVRUN_B_INT			90
-+#define CMDQ_EVENT_DMA_R1_ERROR_B_INT			91
-+#define CMDQ_EVENT_TG_OVRUN_C_INT			92
-+#define CMDQ_EVENT_DMA_R1_ERROR_C_INT			93
-+#define CMDQ_EVENT_TG_OVRUN_M0_INT			94
-+#define CMDQ_EVENT_DMA_R1_ERROR_M0_INT			95
-+#define CMDQ_EVENT_TG_GRABERR_M0_INT			96
-+#define CMDQ_EVENT_TG_GRABERR_M1_INT			97
-+#define CMDQ_EVENT_TG_GRABERR_A_INT			98
-+#define CMDQ_EVENT_CQ_VR_SNAP_A_INT			99
-+#define CMDQ_EVENT_TG_GRABERR_B_INT			100
-+#define CMDQ_EVENT_CQ_VR_SNAP_B_INT			101
-+#define CMDQ_EVENT_TG_GRABERR_C_INT			102
-+#define CMDQ_EVENT_CQ_VR_SNAP_C_INT			103
-+
-+#define CMDQ_EVENT_VENC_CMDQ_FRAME_DONE			129
-+#define CMDQ_EVENT_VENC_CMDQ_PAUSE_DONE			130
-+#define CMDQ_EVENT_JPGENC_CMDQ_DONE			131
-+#define CMDQ_EVENT_VENC_CMDQ_MB_DONE			132
-+#define CMDQ_EVENT_VENC_CMDQ_128BYTE_CNT_DONE		133
-+#define CMDQ_EVENT_VENC_C0_CMDQ_WP_2ND_STAGE_DONE	134
-+#define CMDQ_EVENT_VENC_C0_CMDQ_WP_3RD_STAGE_DONE	135
-+#define CMDQ_EVENT_VENC_CMDQ_PPS_DONE			136
-+#define CMDQ_EVENT_VENC_CMDQ_SPS_DONE			137
-+#define CMDQ_EVENT_VENC_CMDQ_VPS_DONE			138
-+
-+#define CMDQ_EVENT_VDEC_CORE0_SOF_0			160
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_0		161
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_1		162
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_2		163
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_3		164
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_4		165
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_5		166
-+#define CMDQ_EVENT_VDEC_CORE0_FRAME_DONE_6		167
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_0		168
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_1		169
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_2		170
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_3		171
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_4		172
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_5		173
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_6		174
-+#define CMDQ_EVENT_VDEC_CORE0_ENG_EVENT_7		175
-+#define CMDQ_EVENT_FDVT_DONE				177
-+#define CMDQ_EVENT_FE_DONE				178
-+#define CMDQ_EVENT_RSC_DONE				179
-+#define CMDQ_EVENT_DVS_DONE_ASYNC_SHOT			180
-+#define CMDQ_EVENT_DVP_DONE_ASYNC_SHOT			181
-+
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_0		193
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_1		194
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_2		195
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_3		196
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_4		197
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_5		198
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_6		199
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_7		200
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_8		201
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_9		202
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_10		203
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_11		204
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_12		205
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_13		206
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_14		207
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_15		208
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_16		209
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_17		210
-+#define CMDQ_EVENT_IMG2_DIP_FRAME_DONE_P2_18		211
-+#define CMDQ_EVENT_IMG2_DIP_DMA_ERR_EVENT		212
-+#define CMDQ_EVENT_IMG2_AMD_FRAME_DONE			213
-+#define CMDQ_EVENT_IMG2_MFB_DONE_LINK_MISC		214
-+#define CMDQ_EVENT_IMG2_WPE_A_DONE_LINK_MISC		215
-+#define CMDQ_EVENT_IMG2_MSS_DONE_LINK_MISC		216
-+
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_0		225
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_1		226
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_2		227
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_3		228
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_4		229
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_5		230
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_6		231
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_7		232
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_8		233
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_9		234
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_10		235
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_11		236
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_12		237
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_13		238
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_14		239
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_15		240
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_16		241
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_17		242
-+#define CMDQ_EVENT_IMG1_DIP_FRAME_DONE_P2_18		243
-+#define CMDQ_EVENT_IMG1_DIP_DMA_ERR_EVENT		244
-+#define CMDQ_EVENT_IMG1_AMD_FRAME_DONE			245
-+#define CMDQ_EVENT_IMG1_MFB_DONE_LINK_MISC		246
-+#define CMDQ_EVENT_IMG1_WPE_A_DONE_LINK_MISC		247
-+#define CMDQ_EVENT_IMG1_MSS_DONE_LINK_MISC		248
-+
-+#define CMDQ_EVENT_MDP_RDMA0_SOF			256
-+#define CMDQ_EVENT_MDP_RDMA1_SOF			257
-+#define CMDQ_EVENT_MDP_AAL0_SOF				258
-+#define CMDQ_EVENT_MDP_AAL1_SOF				259
-+#define CMDQ_EVENT_MDP_HDR0_SOF				260
-+#define CMDQ_EVENT_MDP_HDR1_SOF				261
-+#define CMDQ_EVENT_MDP_RSZ0_SOF				262
-+#define CMDQ_EVENT_MDP_RSZ1_SOF				263
-+#define CMDQ_EVENT_MDP_WROT0_SOF			264
-+#define CMDQ_EVENT_MDP_WROT1_SOF			265
-+#define CMDQ_EVENT_MDP_TDSHP0_SOF			266
-+#define CMDQ_EVENT_MDP_TDSHP1_SOF			267
-+#define CMDQ_EVENT_IMG_DL_RELAY0_SOF			268
-+#define CMDQ_EVENT_IMG_DL_RELAY1_SOF			269
-+#define CMDQ_EVENT_MDP_COLOR0_SOF			270
-+#define CMDQ_EVENT_MDP_COLOR1_SOF			271
-+#define CMDQ_EVENT_MDP_WROT1_FRAME_DONE			290
-+#define CMDQ_EVENT_MDP_WROT0_FRAME_DONE			291
-+#define CMDQ_EVENT_MDP_TDSHP1_FRAME_DONE		294
-+#define CMDQ_EVENT_MDP_TDSHP0_FRAME_DONE		295
-+#define CMDQ_EVENT_MDP_RSZ1_FRAME_DONE			302
-+#define CMDQ_EVENT_MDP_RSZ0_FRAME_DONE			303
-+#define CMDQ_EVENT_MDP_RDMA1_FRAME_DONE			306
-+#define CMDQ_EVENT_MDP_RDMA0_FRAME_DONE			307
-+#define CMDQ_EVENT_MDP_HDR1_FRAME_DONE			308
-+#define CMDQ_EVENT_MDP_HDR0_FRAME_DONE			309
-+#define CMDQ_EVENT_MDP_COLOR1_FRAME_DONE		312
-+#define CMDQ_EVENT_MDP_COLOR0_FRAME_DONE		313
-+#define CMDQ_EVENT_MDP_AAL1_FRAME_DONE			316
-+#define CMDQ_EVENT_MDP_AAL0_FRAME_DONE			317
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_0		320
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_1		321
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_2		322
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_3		323
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_4		324
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_5		325
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_6		326
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_7		327
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_8		328
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_9		329
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_10		330
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_11		331
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_12		332
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_13		333
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_14		334
-+#define CMDQ_EVENT_MDP_STREAM_DONE_ENG_EVENT_15		335
-+#define CMDQ_EVENT_MDP_WROT1_SW_RST_DONE_ENG_EVENT	338
-+#define CMDQ_EVENT_MDP_WROT0_SW_RST_DONE_ENG_EVENT	339
-+#define CMDQ_EVENT_MDP_RDMA1_SW_RST_DONE_ENG_EVENT	342
-+#define CMDQ_EVENT_MDP_RDMA0_SW_RST_DONE_ENG_EVENT	343
-+
-+#define CMDQ_EVENT_DISP_OVL0_SOF			384
-+#define CMDQ_EVENT_DISP_OVL0_2L_SOF			385
-+#define CMDQ_EVENT_DISP_RDMA0_SOF			386
-+#define CMDQ_EVENT_DISP_RSZ0_SOF			387
-+#define CMDQ_EVENT_DISP_COLOR0_SOF			388
-+#define CMDQ_EVENT_DISP_CCORR0_SOF			389
-+#define CMDQ_EVENT_DISP_AAL0_SOF			390
-+#define CMDQ_EVENT_DISP_GAMMA0_SOF			391
-+#define CMDQ_EVENT_DISP_POSTMASK0_SOF			392
-+#define CMDQ_EVENT_DISP_DITHER0_SOF			393
-+#define CMDQ_EVENT_DISP_DSC_WRAP0_CORE0_SOF		394
-+#define CMDQ_EVENT_DISP_DSC_WRAP0_CORE1_SOF		395
-+#define CMDQ_EVENT_DSI0_SOF				396
-+#define CMDQ_EVENT_DISP_WDMA0_SOF			397
-+#define CMDQ_EVENT_DISP_UFBC_WDMA0_SOF			398
-+#define CMDQ_EVENT_DISP_PWM0_SOF			399
-+#define CMDQ_EVENT_DISP_OVL2_2L_SOF			400
-+#define CMDQ_EVENT_DISP_RDMA4_SOF			401
-+#define CMDQ_EVENT_DISP_DPI0_SOF			402
-+#define CMDQ_EVENT_MDP_RDMA4_SOF			403
-+#define CMDQ_EVENT_MDP_HDR4_SOF				404
-+#define CMDQ_EVENT_MDP_RSZ4_SOF				405
-+#define CMDQ_EVENT_MDP_AAL4_SOF				406
-+#define CMDQ_EVENT_MDP_TDSHP4_SOF			407
-+#define CMDQ_EVENT_MDP_COLOR4_SOF			408
-+#define CMDQ_EVENT_DISP_Y2R0_SOF			409
-+#define CMDQ_EVENT_MDP_TDSHP4_FRAME_DONE		410
-+#define CMDQ_EVENT_MDP_RSZ4_FRAME_DONE			411
-+#define CMDQ_EVENT_MDP_RDMA4_FRAME_DONE			412
-+#define CMDQ_EVENT_MDP_HDR4_FRAME_DONE			413
-+#define CMDQ_EVENT_MDP_COLOR4_FRAME_DONE		414
-+#define CMDQ_EVENT_MDP_AAL4_FRAME_DONE			415
-+#define CMDQ_EVENT_DSI0_FRAME_DONE			416
-+#define CMDQ_EVENT_DISP_WDMA0_FRAME_DONE		417
-+#define CMDQ_EVENT_DISP_UFBC_WDMA0_FRAME_DONE		418
-+#define CMDQ_EVENT_DISP_RSZ0_FRAME_DONE			419
-+#define CMDQ_EVENT_DISP_RDMA4_FRAME_DONE		420
-+#define CMDQ_EVENT_DISP_RDMA0_FRAME_DONE		421
-+#define CMDQ_EVENT_DISP_POSTMASK0_FRAME_DONE		422
-+#define CMDQ_EVENT_DISP_OVL2_2L_FRAME_DONE		423
-+#define CMDQ_EVENT_DISP_OVL0_FRAME_DONE			424
-+#define CMDQ_EVENT_DISP_OVL0_2L_FRAME_DONE		425
-+#define CMDQ_EVENT_DISP_GAMMA0_FRAME_DONE		426
-+#define CMDQ_EVENT_DISP_DSC_WRAP0_CORE1_FRAME_DONE	427
-+#define CMDQ_EVENT_DISP_DSC_WRAP0_CORE0_FRAME_DONE	428
-+#define CMDQ_EVENT_DISP_DPI0_FRAME_DONE			429
-+#define CMDQ_EVENT_DISP_DITHER0_FRAME_DONE		430
-+#define CMDQ_EVENT_DISP_COLOR0_FRAME_DONE		431
-+#define CMDQ_EVENT_DISP_CCORR0_FRAME_DONE		432
-+#define CMDQ_EVENT_DISP_AAL0_FRAME_DONE			433
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_0		434
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_1		435
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_2		436
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_3		437
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_4		438
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_5		439
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_6		440
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_7		441
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_8		442
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_9		443
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_10	444
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_11	445
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_12	446
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_13	447
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_14	448
-+#define CMDQ_EVENT_DISP_STREAM_DONE_ENG_EVENT_15	449
-+#define CMDQ_EVENT_DSI0_TE_ENG_EVENT			450
-+#define CMDQ_EVENT_DSI0_IRQ_ENG_EVENT			451
-+#define CMDQ_EVENT_DSI0_DONE_ENG_EVENT			452
-+#define CMDQ_EVENT_DISP_WDMA0_SW_RST_DONE_ENG_EVENT	453
-+#define CMDQ_EVENT_DISP_SMIASSERT_ENG_EVENT		454
-+#define CMDQ_EVENT_DISP_POSTMASK0_RST_DONE_ENG_EVENT	455
-+#define CMDQ_EVENT_DISP_OVL2_2L_RST_DONE_ENG_EVENT	456
-+#define CMDQ_EVENT_DISP_OVL0_RST_DONE_ENG_EVENT		457
-+#define CMDQ_EVENT_DISP_OVL0_2L_RST_DONE_ENG_EVENT	458
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_0		459
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_1		460
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_2		461
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_3		462
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_4		463
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_5		464
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_6		465
-+#define CMDQ_EVENT_BUF_UNDERRUN_ENG_EVENT_7		466
-+#define CMDQ_MAX_HW_EVENT				512
-+
-+#endif
--- 
-1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
