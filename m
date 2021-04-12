@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2EAEC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 05:51:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BE98C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 06:37:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43E9961207
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 05:51:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 43E9961207
+	by mail.kernel.org (Postfix) with ESMTPS id ABCA16008E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 06:37:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABCA16008E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,70 +23,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NmneNiNHzQCnoL4VoGVeXpPhkzwGYFX58Vo6QeolPaU=; b=WbDlIwSA1lBy7k6C7pUFTlbia
-	3dfxqAI8oWNux52ruQQK7JLBk9cuRGfBbDMo9BHwIfLFkfhddTPjQ9/zTuA3P3CmzXnBWwC23QexY
-	P5Itx29YnHv/EoX1QOG/d3NUEuf6F69NLqUBx95PvnT1T4E82yV/KChzOGyDtUoq25H73PUunr+kk
-	JDo/EHxuVZKH/XTDYQicM4fwHLXYi1il2MiZ3IQHqGqyqJlgw3HqAkJFqsZ0EEvjU3exLbtM1eIPJ
-	EsRg5Elb/tMT1lljsZGIzLlFhXeh9RO0ava3iK3NPx/EYw7RRmRSErjEmLmCg/iOCSQGpPe7rbgb2
-	GWHmaogLw==;
+	 bh=j6wcnqK9J6t2nxc9qEWndI7lAAinQ/7WX3bge5g1D6I=; b=B6HJXjgJXZWnCYXLxVWFP4XA+
+	xJbKUEBptDDhK53t8zwC8tMc4GDGmN+w6EsWR+eKsg8rL4xKud6ZpzYD56WLRNf4/8qpyi7tGVMZi
+	DsPH5LfS1DxC7i0rzyvmla4iHeGtWJ98uQ2hcq2o77y8l070/s1eKAejg50Xyxw27FIL3CJi0LjF3
+	AyydN4/vxe07HNWeL3GK6qc+rdsOtkWKB5Jg/uvgm62EuMJC2VYRVGId6DgFo1cQ+fxeSM6XSGYQa
+	LSEO6/PemuhZ7OaezRXfIAz3GZe4Cf2fZXbgCTuQ8NmHOUNn9FtOOsSl/BlxjO2+3zAH5Zy97fTY+
+	BY+Wf5zDA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVpTE-005lAC-6i; Mon, 12 Apr 2021 05:50:48 +0000
+	id 1lVqBn-005pF5-Gw; Mon, 12 Apr 2021 06:36:51 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVpTB-005l9e-Cn
- for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 05:50:47 +0000
+ id 1lVqBA-005pAE-Dd; Mon, 12 Apr 2021 06:36:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=yBy/htwvq1uqVNGV1wzEH1/hAEd6vwy4yTdXSEVlkpw=; b=0Y0sjQ+Ee393XlNj7WS0wio15O
- w1togtx/WFr6q75AWV+Wz4odSC92Sw2WqMRtv/ysIlTf6S1NjI/eYG1YcRRnGh6rcYZidXk4Xyiq8
- xGgu0Y+f5n2KaxybRe2unWz4vwpianTNjXjCVMUhKwcaVY/pp+rxmYXNKKzQp8y94F/kJWcj4yWCF
- qFXhbXPSeWcjZkqDN55ZAG/y5LIS+kM8LTVihOptijzu0uqjCqas5SHLfueX1C+Ls8NYhIrmVNR1f
- vxPT/klMS2TGdXq5oTbRuEwOHeqaEFUpzYKa0W0zf6htztQHUQGWYdEg75bpE40GvYHRPZY3Uu6JP
- 2UTDiRaw==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ bh=OcIUh0IDpElgVgcyZTw8UGHFPNZb91BPFhSWFpPuBNo=; b=TskkqJuZ4DYMAAP4zO/D7/IRFX
+ SqYyXmO2UJtUSmd4rfDI8s6hk7v1XkKQanF/Oh7/0j2ZLMqjP0uvYKI/QfBrzY7lqOs3MnSNDiWNh
+ NeKD3Ue0g07xT6ge859KlXmqjxzvtuOjHcdF3Nti5LH14eN0QS6j6iTXi6PN+UeJ/qXs2QPeKBrzu
+ /8XpcL4AQufoIsHeaIqsgNzLuQrZDyWWWrdGeNFDU6UTQ7GB7LXwzEL6USepDYfBBFwKDUliO3WeD
+ 7d/subG9WEHMzIUa0qJ4bX7QIrCu+G01ExxE1pkwK8gsiUprfQmWZ12JT/NGVVubJWaNt+5OdyF4J
+ 0V8SppGQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVpT6-005tJV-UG
- for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 05:50:42 +0000
-X-UUID: 2e13a18db28b475ea3ebbe314d96fcdf-20210411
+ id 1lVqB8-005u8d-1V; Mon, 12 Apr 2021 06:36:11 +0000
+X-UUID: ed33be85f5e64571b9688a3ad77f55d9-20210411
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=yBy/htwvq1uqVNGV1wzEH1/hAEd6vwy4yTdXSEVlkpw=; 
- b=DSzQ+PF1fW5CvPyPsr1bLuFoW5SHh11O7Z8eSZoo7wU3vpgynX3IXt7jDO3QjcFXxvVhsYwyE+luw+89IMQ1bdWNhBzp6QMWFkE3/qslpUT5aDbeGPKEg2pbE/PtL7aQrPz3355X9KTe3LvptZodyBGvlYdbUGRIHQ0ZT/rCwDQ=;
-X-UUID: 2e13a18db28b475ea3ebbe314d96fcdf-20210411
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
+ bh=OcIUh0IDpElgVgcyZTw8UGHFPNZb91BPFhSWFpPuBNo=; 
+ b=BlxjdTs56FI86bd12MoPEft3J2jABfVkYiRA7yT0YH9dQGXkbXYLRuvm7Dp+/AdmBG7C79tQhxhO4zpZMHpWzRZI7VFEArKwcuWLFWADpQEGqmAlBEq6qktMzLeGUutBllXpqO9j+rsOghR+E4CZAyu2gB1BuQBdu1QiECiRqX8=;
+X-UUID: ed33be85f5e64571b9688a3ad77f55d9-20210411
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 163001982; Sun, 11 Apr 2021 22:50:37 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 549587925; Sun, 11 Apr 2021 23:36:07 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 11 Apr 2021 22:40:35 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 13:40:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 12 Apr 2021 13:40:33 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH 2/3] mt76: mt7915: rework mt7915_tm_set_tx_len()
-Date: Mon, 12 Apr 2021 13:39:53 +0800
-Message-ID: <20210412053954.23544-2-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210412053954.23544-1-shayne.chen@mediatek.com>
-References: <20210412053954.23544-1-shayne.chen@mediatek.com>
+ 15.0.1497.2; Sun, 11 Apr 2021 23:36:06 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Apr 2021 14:35:59 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 12 Apr 2021 14:35:59 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>, 
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>
+Subject: [PATCH v1, 2/3] arm64: dts: mt8183: refine aal compatible name
+Date: Mon, 12 Apr 2021 14:35:46 +0800
+Message-ID: <1618209347-10816-3-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1618209347-10816-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1618209347-10816-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: EB024F227CF6011B49D821BFD4B18118BCF097E9CABD92811AB697E72BB8CF6F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210411_225041_002807_653381E7 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20210411_233610_105636_EA0860C9 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,61 +105,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Rework mt7915_tm_set_tx_len() with mt76_testmode_alloc_skb() to support
-larger packet based on a longer tx_time.
+mt8183 aal is different with mt8173
+remove mt8173 compatible name for mt8183 aal
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt7915/testmode.c  | 22 +++++--------------
- 1 file changed, 5 insertions(+), 17 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-index bd798df..f9d81e3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-@@ -257,13 +257,13 @@ mt7915_tm_set_tx_len(struct mt7915_phy *phy, u32 tx_time)
- {
- 	struct mt76_phy *mphy = phy->mt76;
- 	struct mt76_testmode_data *td = &mphy->test;
--	struct sk_buff *old = td->tx_skb, *new;
- 	struct ieee80211_supported_band *sband;
- 	struct rate_info rate = {};
- 	u16 flags = 0, tx_len;
- 	u32 bitrate;
-+	int ret;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 80519a1..ee8f87f 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1061,8 +1061,7 @@
+ 		};
  
--	if (!tx_time || !old)
-+	if (!tx_time)
- 		return 0;
- 
- 	rate.mcs = td->tx_rate_idx;
-@@ -323,21 +323,9 @@ mt7915_tm_set_tx_len(struct mt7915_phy *phy, u32 tx_time)
- 	bitrate = cfg80211_calculate_bitrate(&rate);
- 	tx_len = bitrate * tx_time / 10 / 8;
- 
--	if (tx_len < sizeof(struct ieee80211_hdr))
--		tx_len = sizeof(struct ieee80211_hdr);
--	else if (tx_len > IEEE80211_MAX_FRAME_LEN)
--		tx_len = IEEE80211_MAX_FRAME_LEN;
--
--	new = alloc_skb(tx_len, GFP_KERNEL);
--	if (!new)
--		return -ENOMEM;
--
--	skb_copy_header(new, old);
--	__skb_put_zero(new, tx_len);
--	memcpy(new->data, old->data, sizeof(struct ieee80211_hdr));
--
--	dev_kfree_skb(old);
--	td->tx_skb = new;
-+	ret = mt76_testmode_alloc_skb(phy->mt76, tx_len);
-+	if (ret)
-+		return ret;
- 
- 	return 0;
- }
+ 		aal0: aal@14010000 {
+-			compatible = "mediatek,mt8183-disp-aal",
+-				     "mediatek,mt8173-disp-aal";
++			compatible = "mediatek,mt8183-disp-aal";
+ 			reg = <0 0x14010000 0 0x1000>;
+ 			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_LOW>;
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
 -- 
-2.18.0
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
