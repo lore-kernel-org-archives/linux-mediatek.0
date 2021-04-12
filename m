@@ -2,120 +2,77 @@ Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0618DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF0D5C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:20:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A418A6128E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:09:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A418A6128E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3EE666128C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:20:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3EE666128C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:In-Reply-To:From:
+	Subject:Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ir3ky8+Io0cd/1yNYdyCZzx5mI92tlu57yIgpbnvn9c=; b=KwoHW/tWIvTlzXlDP/zbXMXR3
-	rN6LuI3ehdxALQIT06ORgzrJna8lB0LAEtFA8so69P71AYwFBPbNm1vlWFeACQcb+Dux8HBWqUY06
-	XzBPFNGl0e/nqGbUfb3xLDfhn5UXsJ0tNup/rfI257VAbyog9oiiywQwbHouNjopzQK/Yl971Iksn
-	WPfTx3H7vV9nEy5EIiX2OD90Rvz2Wh9Gfb4x8PpyyyStQULsHIokA5rOBaJcc+WTyLoq/Sy08iPNd
-	uSXchWA5wljon2jJ0iF6GW0CENKnbgZlP/NYaYu+YHpBNn0CapYBRB1XZXTbYbj7dUA6G3eAvTqhd
-	ckwGUadNQ==;
+	 bh=PYu9Q2uEjuhCkrfflDIca7bwGIU/w8ZVQ8gVJGCre/I=; b=oTlr/1AoyKRrh/yDJ1dfGSH1Z
+	ENJe7B4Rb8cxcLBJX8NKwbFwALYxK8tep1OpSIpVHmkf4h8L4WFvUx1DdV+Ls0sIUU2Arz385YX0D
+	118qZo7tiKnr5dTwLOnqwCNDuRcYKXIlUhMKDgo/Q+ch9ohbo1pI50TAzUCjjIChqbVma3BxZwCxo
+	7ehM5kfAWb3Qs8zBCVr7ZwYgKJR4IwIRmntO43uq08Cb4eD1otMPzKgC7QcvtmR5nRu1Z35voF3Yt
+	qqSnA9ZN2pQBwgrcYi5lRVx6GLbRD08akNng0n1JRZjRz0uBbDxRTjyUSL4H7RuOUWfRHjgohXKXt
+	n/F3RcbWQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVyBK-0072Bt-E5; Mon, 12 Apr 2021 15:08:54 +0000
+	id 1lVyLv-0073VX-8a; Mon, 12 Apr 2021 15:19:51 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVyBH-0072BR-Oa
- for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 15:08:52 +0000
+ id 1lVyLt-0073Uv-1d
+ for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 15:19:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=; b=le39IbnGJ81fXcP7EPrMGoLj1j
- L+EylYKre06v8DJ0kl3tnl7ffX6c+Xg8I1SnNvLomlRzNpKL6DxkfgO5rCwxmIa/FKG7XUAQApPi9
- Ry1KZYWkl4UbsWh0nY2upToy7uIhiw8m56rwtZZycDQ8NIAhJKcEfp82puy+2QDHW88LywjIyceXU
- +LV6arOeMBj4IaUOte2ekZ307QXApXYbYY/pVNE6iWzWZJalDwSDI8J5Bg4xuhgI3ZjPddPaYiP/R
- n54JSlxUN2KSNiXLH/zKGhxKgZYhLCsfVaW/A+Va7G5Hu557IkcwQHcVx3TCNN1hDIOjOeN1oxQeG
- N6M1C51g==;
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVyBF-006KcI-Bj
- for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 15:08:50 +0000
-Received: by mail-pg1-x52f.google.com with SMTP id z16so9615089pga.1
- for <linux-mediatek@lists.infradead.org>; Mon, 12 Apr 2021 08:08:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-disposition:content-transfer-encoding;
- bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=;
- b=ITLLe2DYMYPMeZVGTkOR3bOoGfykAoYj/bQy2kCNye+lBUJ4XaLgFBgV6f2/yXfdd7
- oFAVX0mQPwwymASavuDGXYqCdTXy47ZVJ/xlr9FH+qYoJ0kyvIHWC7SglHHDqrO50knq
- erVGGF9AYHklUu3pGvXTBSIB1dK/wjQF3ksPtYKoYc3UTmIXSSS5oIwQ8EYvT/rFv2Qw
- B9VpY9yz26CcM80Jg4PDwvFix5CNjmrPsjA+feH4HFT9yDVUE0HBsePWEfP2D1E6A0BC
- k9hnIqKMl0A/k7zYjwFsYK0ENESXfAjEks0+fqqa79661PTy2kc8s1fOcLNn/eQCZcR7
- 09Tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-disposition
- :content-transfer-encoding;
- bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=;
- b=a7Q7wWViI9P+tuRJMXTdsbsh9RLi5w7/3w289j+vyclSaLcUr1vvOBHmGSLLcMAIaS
- UBzERUkjD/m9Qh6QkpJMGKhQxuH/cwmf6tr/CCxTX5Ap774EBwsLkDAMnYZqUSB0+24W
- KPGC76G9WD6ELwaferHWdxOBIMivWhYtwC+eWDvmdfz9+gxENTNYcJKEZjCZMtK7GnCU
- tBs+jmChCU222vKduVVS5zHl969UG0d3VvW66GCWpdjJmOPeXbQWzOCVsxmcEeCOl5iB
- inBHSPu3II6EPwrh1uXB6vGavEGZsK8ddVa8tdjrHnhRf+DuHs4SMb/myg0bnZ0qOw+H
- dlew==
-X-Gm-Message-State: AOAM530vEV5ivXtUf5dWJNcXOZD7Nh7EcMm/9Bo98Qn5yv77z7KvnDI5
- 7fH+H8tzynCyrhKOlOwCa3U=
-X-Google-Smtp-Source: ABdhPJz7KRLv1g9bRdFHzT6lp7tQwKP2uj+NoPFEntDd1eukLWRlre8tS73iPaLZc+mPS/pqqEeSxQ==
-X-Received: by 2002:aa7:91d1:0:b029:1fe:2a02:73b9 with SMTP id
- z17-20020aa791d10000b02901fe2a0273b9mr25310238pfa.2.1618240125830; 
- Mon, 12 Apr 2021 08:08:45 -0700 (PDT)
-Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id k13sm8406233pji.14.2021.04.12.08.08.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Apr 2021 08:08:45 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
-Cc: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
- Chuanhong Guo <gch981213@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: Re: [RFC v4 net-next 1/4] net: phy: add MediaTek PHY driver
-Date: Mon, 12 Apr 2021 23:08:36 +0800
-Message-Id: <20210412150836.929610-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
-References: <20210412034237.2473017-1-dqfext@gmail.com>
- <20210412034237.2473017-2-dqfext@gmail.com>
- <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+ d=infradead.org; s=bombadil.20210309; h=To:References:Message-Id:
+ Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
+ Content-Type:Sender:Reply-To:Content-ID:Content-Description;
+ bh=STa1zScpD0qE0yyJabIpNY2dFx+S/ydGyQ+WYYnBwEI=; b=XN1ebPywpWkVexcURytT+Ot2/V
+ FTnF4crkUOScPdd0B+/ZaGL2vSEY/NkNSGVECquufHICF+1nvYaRLIwjMHYbwI2iP/9R1SEPHgsm+
+ fy5YGZTxvgoFRpExTnsBXSkwg8nV5DNFTn109KjMeLcYa4s6aiYBzHlz9v4REjzptKGtWxPxl/nwH
+ 93tgdf6SL56wPr4D2ntFqRmsrYCzJ0W3ofgSpxzk4tyhLXXG7x9LdwcqBPX2M7hL5+nJK6cZKRXgF
+ TkYb6QtD6DWHqSIUJzDnqFIjgIjuKWpyluQw5zW3AELtg0K7T8TXwts9sKmxFoWuTVWp9ivHv3C6O
+ NrRK7btQ==;
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lVyLp-006Kv9-Ew
+ for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 15:19:46 +0000
+Received: from marcel-macbook.holtmann.net (p5b3d235a.dip0.t-ipconnect.de
+ [91.61.35.90])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 8F143CED17;
+ Mon, 12 Apr 2021 17:27:23 +0200 (CEST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.60.0.2.21\))
+Subject: Re: [PATCH 1/2] Bluetooth: btusb: Fixed too many in-token issue for
+ Mediatek Chip.
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20210412150627.31913-1-mark-yw.chen@mediatek.com>
+Date: Mon, 12 Apr 2021 17:19:38 +0200
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, chris.lu@mediatek.com,
+ will-cy.lee@mediatek.com, Sean Wang <sean.wang@mediatek.com>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ rex-bc.chen@mediatek.com
+Message-Id: <B118C57F-5A40-4D50-A74D-B81AA8C270BD@holtmann.org>
+References: <20210412150627.31913-1-mark-yw.chen@mediatek.com>
+To: Mark-YW.Chen@mediatek.com
+X-Mailer: Apple Mail (2.3654.60.0.2.21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_080849_438686_8D90CDFE 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20210412_081945_678109_12FBFA18 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,39 +84,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 12, 2021 at 07:04:49AM +0000, Ren=E9 van Dorst wrote:
-> Hi Qingfang,
-> > +static void mtk_phy_config_init(struct phy_device *phydev)
-> > +{
-> > +	/* Disable EEE */
-> > +	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
-> =
+Hi Mark,
 
-> For my EEE patch I changed this line to:
-> =
+> This patch reduce in-token during download patch procedure.
+> Don't submit urb for polling event before sending hci command.
+> 
+> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+> ---
+> drivers/bluetooth/btusb.c | 10 +++++-----
+> 1 file changed, 5 insertions(+), 5 deletions(-)
 
-> genphy_config_eee_advert(phydev);
-> =
+patch has been applied to bluetooth-next tree.
 
-> So PHY EEE part is setup properly at boot, instead enable it manual via
-> ethtool.
-> This function also takes the DTS parameters "eee-broken-xxxx" in to accou=
-nt
-> while
-i> setting-up the PHY.
+Regards
 
-Thanks, I'm now testing with it.
+Marcel
 
-> =
-
-> > +
-> > +	/* Enable HW auto downshift */
-> > +	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED, 0x14, 0, BIT(4));
 
 _______________________________________________
 Linux-mediatek mailing list
