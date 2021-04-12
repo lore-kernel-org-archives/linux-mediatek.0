@@ -2,92 +2,120 @@ Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB93EC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0618DC433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:09:05 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FD966128E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:07:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FD966128E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A418A6128E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 15:09:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A418A6128E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MwYbtCH6UtbeZUFR4gJMp3N75uQYKdwNEw7dcob9GoE=; b=cCsYCdDo/vFBvgBoWDhajkI7r
-	WdB+nq5so/dwKUg7Oy5rt6rWH+g35MW/nsnYajdXrL4eRc1kfMLtd6yg9q3XcI2+M/ZEcudiizzrr
-	v1MZlHalFIlTTdhlz7MGDZByjnlGVnjM1jL2H5GDq6tBsRxw53F6ouwGFCWwsRhUEWXAIFit3HR08
-	/WdwGYQgvXNEs03fT2spvO3fNTLwKgR8XRDm0oBJ0yB73PaPoNiyh0cHtWNcb2ATzgM9io0BZOoL7
-	YUE4UhvJkZi2nVZ1+bpWbA1jQ3hMi7suVRc+PYcfk7UGdFwKh9qiKy/nyA5F6MoXQguiCPq6RfwAc
-	6eDuA76nQ==;
+	 bh=ir3ky8+Io0cd/1yNYdyCZzx5mI92tlu57yIgpbnvn9c=; b=KwoHW/tWIvTlzXlDP/zbXMXR3
+	rN6LuI3ehdxALQIT06ORgzrJna8lB0LAEtFA8so69P71AYwFBPbNm1vlWFeACQcb+Dux8HBWqUY06
+	XzBPFNGl0e/nqGbUfb3xLDfhn5UXsJ0tNup/rfI257VAbyog9oiiywQwbHouNjopzQK/Yl971Iksn
+	WPfTx3H7vV9nEy5EIiX2OD90Rvz2Wh9Gfb4x8PpyyyStQULsHIokA5rOBaJcc+WTyLoq/Sy08iPNd
+	uSXchWA5wljon2jJ0iF6GW0CENKnbgZlP/NYaYu+YHpBNn0CapYBRB1XZXTbYbj7dUA6G3eAvTqhd
+	ckwGUadNQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVy9N-0071wV-MA; Mon, 12 Apr 2021 15:06:53 +0000
+	id 1lVyBK-0072Bt-E5; Mon, 12 Apr 2021 15:08:54 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVy9I-0071vd-Dk
- for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 15:06:48 +0000
+ id 1lVyBH-0072BR-Oa
+ for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 15:08:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=LEpPfZ8RdiJrtYP7b1k2ARD7jth7/F641Hha5ocv2nI=; b=42aHeLQ7pFXUHzjMmusBazuOY8
- 14t9yzQOngHV+AvWWDwTWusOBX2poxnn2T1KhBL7xfgBEUdClM/4Q/bja6YDaTEmvBkFOzbZQcUI5
- 2KMghKsVEsfjx5x1z+gqDtuyUXNUorRf2G1TPGDxCN0QbbKlKCEIOm9mQjSOL05H70OPeWRAI799U
- cWsT/1LItMaSs8ccAk+qYf1WYo7zrQwkvc9fFDZJbGOhZzqP5tkKMQ5thfgJZ+eD51BhCy8doQy53
- prYDDP/t0BZl7ym85V/Ki6auSdSey7UvhSURHn50xLSdXaQj34auliUAoqmuQrm2YBIrW8/JKVR3B
- pTlm0SaA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=; b=le39IbnGJ81fXcP7EPrMGoLj1j
+ L+EylYKre06v8DJ0kl3tnl7ffX6c+Xg8I1SnNvLomlRzNpKL6DxkfgO5rCwxmIa/FKG7XUAQApPi9
+ Ry1KZYWkl4UbsWh0nY2upToy7uIhiw8m56rwtZZycDQ8NIAhJKcEfp82puy+2QDHW88LywjIyceXU
+ +LV6arOeMBj4IaUOte2ekZ307QXApXYbYY/pVNE6iWzWZJalDwSDI8J5Bg4xuhgI3ZjPddPaYiP/R
+ n54JSlxUN2KSNiXLH/zKGhxKgZYhLCsfVaW/A+Va7G5Hu557IkcwQHcVx3TCNN1hDIOjOeN1oxQeG
+ N6M1C51g==;
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVy9F-006KWl-Rd
- for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 15:06:47 +0000
-X-UUID: abf54fad1a744aaaa8bbc4b7b0347ff2-20210412
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LEpPfZ8RdiJrtYP7b1k2ARD7jth7/F641Hha5ocv2nI=; 
- b=PRq6zpfz7Yev4hF7NrKFS40zXBpSL04y7k+YFmM95J4Ok4G8lDST2cCDfx4tgrmFx4E093PHQ6o6pL/XA3QCUXn8zkXO6jhkp/38SGzdJt8ZRBv88+TPZmY777lQ1Vnt7HrrkPAHP3cGK5cvZ/KDw08bBI6wB7I0JGA6RrDCtoA=;
-X-UUID: abf54fad1a744aaaa8bbc4b7b0347ff2-20210412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 909876312; Mon, 12 Apr 2021 08:06:39 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 08:06:38 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 23:06:36 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 12 Apr 2021 23:06:35 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
- <sean.wang@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <rex-bc.chen@mediatek.com>, mark-yw.chen <mark-yw.chen@mediatek.com>
-Subject: [PATCH 2/2] Bluetooth: btusb: Add support for Lite-On Mediatek Chip
-Date: Mon, 12 Apr 2021 23:06:27 +0800
-Message-ID: <20210412150627.31913-2-mark-yw.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210412150627.31913-1-mark-yw.chen@mediatek.com>
-References: <20210412150627.31913-1-mark-yw.chen@mediatek.com>
+ id 1lVyBF-006KcI-Bj
+ for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 15:08:50 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id z16so9615089pga.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 12 Apr 2021 08:08:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=;
+ b=ITLLe2DYMYPMeZVGTkOR3bOoGfykAoYj/bQy2kCNye+lBUJ4XaLgFBgV6f2/yXfdd7
+ oFAVX0mQPwwymASavuDGXYqCdTXy47ZVJ/xlr9FH+qYoJ0kyvIHWC7SglHHDqrO50knq
+ erVGGF9AYHklUu3pGvXTBSIB1dK/wjQF3ksPtYKoYc3UTmIXSSS5oIwQ8EYvT/rFv2Qw
+ B9VpY9yz26CcM80Jg4PDwvFix5CNjmrPsjA+feH4HFT9yDVUE0HBsePWEfP2D1E6A0BC
+ k9hnIqKMl0A/k7zYjwFsYK0ENESXfAjEks0+fqqa79661PTy2kc8s1fOcLNn/eQCZcR7
+ 09Tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=7c5hbFDJuzW8IbaNLbCCwK5N29exubinPApJnJHDfR0=;
+ b=a7Q7wWViI9P+tuRJMXTdsbsh9RLi5w7/3w289j+vyclSaLcUr1vvOBHmGSLLcMAIaS
+ UBzERUkjD/m9Qh6QkpJMGKhQxuH/cwmf6tr/CCxTX5Ap774EBwsLkDAMnYZqUSB0+24W
+ KPGC76G9WD6ELwaferHWdxOBIMivWhYtwC+eWDvmdfz9+gxENTNYcJKEZjCZMtK7GnCU
+ tBs+jmChCU222vKduVVS5zHl969UG0d3VvW66GCWpdjJmOPeXbQWzOCVsxmcEeCOl5iB
+ inBHSPu3II6EPwrh1uXB6vGavEGZsK8ddVa8tdjrHnhRf+DuHs4SMb/myg0bnZ0qOw+H
+ dlew==
+X-Gm-Message-State: AOAM530vEV5ivXtUf5dWJNcXOZD7Nh7EcMm/9Bo98Qn5yv77z7KvnDI5
+ 7fH+H8tzynCyrhKOlOwCa3U=
+X-Google-Smtp-Source: ABdhPJz7KRLv1g9bRdFHzT6lp7tQwKP2uj+NoPFEntDd1eukLWRlre8tS73iPaLZc+mPS/pqqEeSxQ==
+X-Received: by 2002:aa7:91d1:0:b029:1fe:2a02:73b9 with SMTP id
+ z17-20020aa791d10000b02901fe2a0273b9mr25310238pfa.2.1618240125830; 
+ Mon, 12 Apr 2021 08:08:45 -0700 (PDT)
+Received: from localhost.localdomain ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id k13sm8406233pji.14.2021.04.12.08.08.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Apr 2021 08:08:45 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
+ Chuanhong Guo <gch981213@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
+Subject: Re: [RFC v4 net-next 1/4] net: phy: add MediaTek PHY driver
+Date: Mon, 12 Apr 2021 23:08:36 +0800
+Message-Id: <20210412150836.929610-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
+References: <20210412034237.2473017-1-dqfext@gmail.com>
+ <20210412034237.2473017-2-dqfext@gmail.com>
+ <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_080645_918582_C53BFB7B 
-X-CRM114-Status: UNSURE (   9.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210412_080849_438686_8D90CDFE 
+X-CRM114-Status: GOOD (  15.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,80 +127,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+On Mon, Apr 12, 2021 at 07:04:49AM +0000, Ren=E9 van Dorst wrote:
+> Hi Qingfang,
+> > +static void mtk_phy_config_init(struct phy_device *phydev)
+> > +{
+> > +	/* Disable EEE */
+> > +	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
+> =
 
-Add support for Lite-On Mediatek Chip (MT7921)
-Lite On VID = 04CA.
+> For my EEE patch I changed this line to:
+> =
 
-* /sys/kernel/debug/usb/devices
-T:  Bus=01 Lev=03 Prnt=04 Port=01 Cnt=02 Dev#=  8 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=04ca ProdID=3802 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> genphy_config_eee_advert(phydev);
+> =
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btusb.c | 5 +++++
- 1 file changed, 5 insertions(+)
+> So PHY EEE part is setup properly at boot, instead enable it manual via
+> ethtool.
+> This function also takes the DTS parameters "eee-broken-xxxx" in to accou=
+nt
+> while
+i> setting-up the PHY.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index ae36d7dc60db..58ae824fb507 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -406,6 +406,11 @@ static const struct usb_device_id blacklist_table[] = {
- 	/* Additional MediaTek MT7615E Bluetooth devices */
- 	{ USB_DEVICE(0x13d3, 0x3560), .driver_info = BTUSB_MEDIATEK},
- 
-+	/* Additional MediaTek MT7921 Bluetooth devices */
-+	{ USB_DEVICE(0x04ca, 0x3802), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
-+
- 	/* Additional Realtek 8723AE Bluetooth devices */
- 	{ USB_DEVICE(0x0930, 0x021d), .driver_info = BTUSB_REALTEK },
- 	{ USB_DEVICE(0x13d3, 0x3394), .driver_info = BTUSB_REALTEK },
--- 
-2.18.0
+Thanks, I'm now testing with it.
+
+> =
+
+> > +
+> > +	/* Enable HW auto downshift */
+> > +	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED, 0x14, 0, BIT(4));
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
