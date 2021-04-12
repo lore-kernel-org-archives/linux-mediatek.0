@@ -1,86 +1,105 @@
-Return-Path: <SRS0=mAey=JI=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBD81C433ED
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Apr 2021 22:03:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2630DC433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:22:49 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35A2D60201
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Apr 2021 22:03:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35A2D60201
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-foundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id C39C36120B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:22:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C39C36120B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:Message-Id:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=twqu8dzJb7vwqIv6fE64zjNl+prvgl2npf7GAyGVs2Y=; b=qSceM6RRUjn+IZdwjaI4gmOZj
-	eubOm7QwWstYNeHP+REDGS7g8ABIsV+3WA/tP7qCIzjUWsftEFzAySTAu+mcT45u+GCSRpBZ4g4JT
-	nCCxRY0Zzd1DrYa3cOxlLhStddD5yYjV2ngfXIpOTxn1N9ac9R22+E/qVH7Y9gxso3V+BUetpj9Ip
-	jdB1fX+1aCSZnMiPsoGvoIlcE2WELxQfXMjn6WQ0UFT7KU0W2mlwnwK3CvAzN+rUoqAchIzFgzubm
-	CR6SR7rsIXhxKpq6yuDovnNxsgJ/MvAc6WTN3c8WeKMwREvh/REtVxdNRqX2itXu3/EfW2Snsxh/U
-	57GsUpl8w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0XqC60Z01DQ2PZwMC/N68JzkAwhIipnAQF8SnerQubI=; b=QvC06RteyP5PAz4vw/qov44yOr
+	S8Hr/0UEOpWGILnakHmOPAGdMKl96YMeyTZ2OHCJk8dBtxCRA/X4grAxBAOizihAY5EREp6PmpY4l
+	LVN6ap44sXBjRBJ5eipcrVBjXXGNENVawAQ1faOoBUtY+okfSyTOdwvCVCFb1VAaWqMidlLBbBWGX
+	GXBZJvRWL1uAMXt7QepWrgK+zYsSp/lVYDFnzdFlBw2LDYyeE25t05W66+ac9gxQ80HI+j3+Q0Szv
+	xeuHoXdCvCioBSbOM06JfSwARpHCLp+ijgVLqGvPpeB97PDFhs50lHBnXZ3XzMN3VEUprAu1O/OGg
+	Yk7GDA4g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lViB8-005BZg-FC; Sun, 11 Apr 2021 22:03:38 +0000
+	id 1lVn9q-005acc-Nl; Mon, 12 Apr 2021 03:22:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lViAu-005BZC-IP; Sun, 11 Apr 2021 22:03:25 +0000
+ id 1lVn9p-005acN-1Z
+ for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 03:22:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:Mime-Version:References:In-Reply-To:Message-Id:Subject:Cc:To:
- From:Date:Sender:Reply-To:Content-ID:Content-Description;
- bh=pKgbfkgJ+Io7T9BvlIxsRcKSeSgsnh/PrgYOrtYRPyE=; b=VY6+kWVLVKrcnueNFTMKdoX7py
- 8/Rdc+kP8BcQUPkrMkMLDknPJHERGq4OBtjgn5qOwZtA9uT7donXtsvHjh/Xd5R4gtgA+9Ku3kL++
- kNCaz7QXJo7C4FNqEgKRGvkIul9/NGsMut1TpjXUlLD1R38QV+KWwlN/eSWcoOoC12EkuiLlONF+U
- WVgLAJHg93IajufcORe5SwUrkM0xhzI2RKe3tLGArSHk6Uvy1+IuVD5dJEr707rv3iSiA61u83IA+
- uJCqetioRP47XxRWGBDXCBg8s/OxGqf773gKpGi5dVDr/vwR4vEzKvH6MgMEazrO2leNHviblqZfi
- o4V4RBsg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=2MIF0iAJlOzjRFkD1X3zRNDFEO5YU1OCow9vUrQ1Ec0=; b=dlBGWaUmBptIuB+/m4aVjd8Nql
+ BtOfY0CE/2lQrBNuZvwi76D1Jif8Y0J16Wwo3pyV8O81mEtI3iY/pUSG/DIgLJevHak0WHatXz4QP
+ xvoiBsA5k6DQnPQw6/mHuGols02/FRPAxReSicoYBUHjPfW15uHNH4PBox4ZxQiOyjdGsqIMqeup8
+ 3taWBT5UVAIXkPc+6V4NEQ+179m5lIY0grobU4ySJLl/Jg0AkYa6nrTWHPA+RpkDubQgtatpZaaEE
+ KFB5NClIRNQr2i8l6SG04zmCNxuaTjYMVBW+hsE+D1n12LqvNGN0s5xB9J0/o7fHePH0jlwsVrJFd
+ QZp0/ucg==;
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lViAr-005lJ3-8a; Sun, 11 Apr 2021 22:03:23 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CE6AD610CB;
- Sun, 11 Apr 2021 22:03:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
- s=korg; t=1618178599;
- bh=xr7Bko3nkY/hQzyR34sArUT+yy4zsjhEp/ERlDlaFfw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=ASNK5lYWJnV08hEwZiPrc6I7AoSedfw99O8NVwSHpYtW/sKTUrJtRS1uIZR9R6wnF
- t038iXV/UBzK/JbJ/OAtnesctxvwAQ68TpuPYGu1G2sQbDxkDAosgxxY6G+aspKiwD
- d9vdXulvY0qHJo7ky7gEeulX+VJurJteIqXR1/1w=
-Date: Sun, 11 Apr 2021 15:03:16 -0700
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Catalin Marinas <catalin.marinas@arm.com>
-Cc: Andrey Konovalov <andreyknvl@google.com>, Andrey Ryabinin
- <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>, Dmitry
- Vyukov <dvyukov@google.com>, Nathan Chancellor <natechancellor@gmail.com>,
- Arnd Bergmann <arnd@arndb.de>, kasan-dev <kasan-dev@googlegroups.com>,
- Linux Memory Management List <linux-mm@kvack.org>, LKML
- <linux-kernel@vger.kernel.org>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>, wsd_upstream
- <wsd_upstream@mediatek.com>, "moderated list:ARM/Mediatek SoC..."
- <linux-mediatek@lists.infradead.org>, Walter Wu <walter-zh.wu@mediatek.com>
-Subject: Re: [PATCH v4] kasan: remove redundant config option
-Message-Id: <20210411150316.d60aa0b5174adf2370538809@linux-foundation.org>
-In-Reply-To: <20210411105332.GA23778@arm.com>
-References: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
- <CAAeHK+zyv1=kXtKAynnJN-77dwmPG4TXpJOLv_3W0nxXe5NjXA@mail.gmail.com>
- <20210330223637.f3c73a78c64587e615d26766@linux-foundation.org>
- <20210411105332.GA23778@arm.com>
-X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
+ id 1lVn9m-005rB7-7f
+ for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 03:22:35 +0000
+Received: by mail-pl1-x636.google.com with SMTP id t22so5290047ply.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 11 Apr 2021 20:22:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2MIF0iAJlOzjRFkD1X3zRNDFEO5YU1OCow9vUrQ1Ec0=;
+ b=eqJG/xyJz4pFsiGLXd8iRXk6L7TKPaSTVxu31AE1BxCVz/bKjGYUGV43TZ1+wXQi44
+ f5RdejpDlM1yY8aNsVhvcLc4S9AHNUxfEjzOl5E6O9WkIkBSlZJuh/akbrJ0PAIeptXm
+ IOArD+4S1RvBmvgQ6zO35TEIK/zEBSZW+scg8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=2MIF0iAJlOzjRFkD1X3zRNDFEO5YU1OCow9vUrQ1Ec0=;
+ b=TdxZ298twOT4ZVKUAL3Y4I40JXVN5w8z8c3bpRXBs73aFzJmqOoufHl80O+F4TrVzd
+ upr2WHH9GZayH443bBqgQ1TTg5rnt2XK5k62OMqJ6lXMS9BRQ6iPfM3n2WOpqkh3sCq0
+ 6sQFVGPSatlyiRenwqgbDUZn83mFVEo6q65C7nzHXYiG2jXqbYhekHqXx0taJm8VEr6F
+ ktd6BOpEvySw2G5mOHCgNaMwWA2WE8AjeNsDXkD71bvFTiprqxTuXfAnsONaLTnSUEZL
+ zn/utV5iLF/i0Np+C55tVEQYyMsY1/6KrBDvRcxqB0W7vv/2pFmdJuwDsiH2GZawYR17
+ I6/Q==
+X-Gm-Message-State: AOAM533hAludsXCV9jmUwR6oly9ByxEP6TK1pNI54hLZPuCZeQtS1mDO
+ dEn64NOYnz50vqwY8rbHK088Ew==
+X-Google-Smtp-Source: ABdhPJwmDZ638Yqs1btdo68wp/5hoyLDHJEcFhSlXcJCXASInPEUYg3KQwuvbRhg+wHRmIQqw/wkhQ==
+X-Received: by 2002:a17:902:7589:b029:e8:c011:1f28 with SMTP id
+ j9-20020a1709027589b02900e8c0111f28mr23859383pll.35.1618197752825; 
+ Sun, 11 Apr 2021 20:22:32 -0700 (PDT)
+Received: from evanbenn1.syd.corp.google.com
+ ([2401:fa00:9:15:9f69:197:25b3:20f8])
+ by smtp.gmail.com with ESMTPSA id f17sm9558020pgj.86.2021.04.11.20.22.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 11 Apr 2021 20:22:32 -0700 (PDT)
+From: Evan Benn <evanbenn@chromium.org>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Evan Benn <evanbenn@chromium.org>, linux-mediatek@lists.infradead.org,
+ Fabien Parent <fparent@baylibre.com>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, Julia Lawall <Julia.Lawall@lip6.fr>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+Subject: [PATCH v3] drivers/clocksource/mediatek: Ack and disable interrupts
+ on suspend
+Date: Mon, 12 Apr 2021 13:22:19 +1000
+Message-Id: <20210412132200.v3.1.I1d9917047de06715da16e1620759f703fcfdcbcb@changeid>
+X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210411_150321_368327_D0CB59DF 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20210411_202234_314444_D1458BE3 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,40 +116,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 11 Apr 2021 11:53:33 +0100 Catalin Marinas <catalin.marinas@arm.com> wrote:
+Interrupts are disabled during suspend before this driver disables its
+timers. ARM trusted firmware will abort suspend if the timer irq is
+pending, so ack and disable the timer interrupt during suspend.
 
-> Hi Andrew,
-> 
-> On Tue, Mar 30, 2021 at 10:36:37PM -0700, Andrew Morton wrote:
-> > On Mon, 29 Mar 2021 16:54:26 +0200 Andrey Konovalov <andreyknvl@google.com> wrote:
-> > > Looks like my patch "kasan: fix KASAN_STACK dependency for HW_TAGS"
-> > > that was merged into 5.12-rc causes a build time warning:
-> > > 
-> > > include/linux/kasan.h:333:30: warning: 'CONFIG_KASAN_STACK' is not
-> > > defined, evaluates to 0 [-Wundef]
-> > > #if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
-> > > 
-> > > The fix for it would either be reverting the patch (which would leave
-> > > the initial issue unfixed) or applying this "kasan: remove redundant
-> > > config option" patch.
-> > > 
-> > > Would it be possible to send this patch (with the fix-up you have in
-> > > mm) for the next 5.12-rc?
-> > > 
-> > > Here are the required tags:
-> > > 
-> > > Fixes: d9b571c885a8 ("kasan: fix KASAN_STACK dependency for HW_TAGS")
-> > > Cc: stable@vger.kernel.org
-> > 
-> > Got it, thanks.  I updated the changelog to mention the warning fix and
-> > moved these ahead for a -rc merge.
-> 
-> Is there a chance this patch makes it into 5.12? I still get the warning
-> with the latest Linus' tree (v5.12-rc6-408-g52e44129fba5) when enabling
-> KASAN_HW_TAGS.
+Signed-off-by: Evan Benn <evanbenn@chromium.org>
+---
 
-Trying.   We're still awaiting a tested fix for
-https://lkml.kernel.org/r/CA+fCnZf1ABrQg0dsxtoZa9zM1BSbLYq_Xbu+xi9cv8WAZxdC2g@mail.gmail.com
+Changes in v3:
+Move the ACK from the shutdown to the suspend function.
+
+Changes in v2:
+Remove the patch that splits the drivers into 2 files.
+
+ drivers/clocksource/timer-mediatek.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+index 9318edcd8963..1ae8fee639bf 100644
+--- a/drivers/clocksource/timer-mediatek.c
++++ b/drivers/clocksource/timer-mediatek.c
+@@ -241,6 +241,27 @@ static void mtk_gpt_enable_irq(struct timer_of *to, u8 timer)
+ 	       timer_of_base(to) + GPT_IRQ_EN_REG);
+ }
+ 
++static void mtk_gpt_resume(struct clock_event_device *clk)
++{
++	struct timer_of *to = to_timer_of(clk);
++
++	mtk_gpt_enable_irq(to, TIMER_CLK_EVT);
++}
++
++static void mtk_gpt_suspend(struct clock_event_device *clk)
++{
++	struct timer_of *to = to_timer_of(clk);
++
++	/* Disable all interrupts */
++	writel(0x0, timer_of_base(to) + GPT_IRQ_EN_REG);
++
++	/* This is called with interrupts disabled,
++	 * so we need to ack any interrupt that is pending
++	 * Or for example ATF will prevent a suspend from completing.
++	 */
++	writel(0x3f, timer_of_base(to) + GPT_IRQ_ACK_REG);
++}
++
+ static struct timer_of to = {
+ 	.flags = TIMER_OF_IRQ | TIMER_OF_BASE | TIMER_OF_CLOCK,
+ 
+@@ -286,6 +307,8 @@ static int __init mtk_gpt_init(struct device_node *node)
+ 	to.clkevt.set_state_oneshot = mtk_gpt_clkevt_shutdown;
+ 	to.clkevt.tick_resume = mtk_gpt_clkevt_shutdown;
+ 	to.clkevt.set_next_event = mtk_gpt_clkevt_next_event;
++	to.clkevt.suspend = mtk_gpt_suspend;
++	to.clkevt.resume = mtk_gpt_resume;
+ 	to.of_irq.handler = mtk_gpt_interrupt;
+ 
+ 	ret = timer_of_init(node, &to);
+-- 
+2.31.1.295.g9ea45b61b8-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
