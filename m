@@ -2,93 +2,83 @@ Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B1DEC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 07:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7E6DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 08:15:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D7C4C61221
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 07:31:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D7C4C61221
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8E11B61221
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 08:15:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E11B61221
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yvkvmcKquU+equoptLNv0q9ou1BhPr4gaX3D6y2+wwY=; b=FUxOo4PCHVgj2WL399D0pbUoU
-	8QIu9Z3k57Vt6C8w3eKMX1Sp7EcO5f5K9Js8TA9XofBA0c8sBZKrAjZ/AgINvtv0kuSbrrsWqQu9S
-	Ed3A+iXqB2ipBAmR1c1bOl5wEvGZEVVt2dSLtW/H/moWb1tjsVbEhrRIPo2j11/CYtap9K7GIU6KZ
-	CeqVDtIs1UxhnT+bRRkrKG3meN36Y3vqi9O/1/skQP4rq/j/7t8INwikczaaM3sw3f99orvGaOLFs
-	CPbfyjo4EEjjhrzC9B+P9jRX9uzzVlKkPiprxvBb6RBEfaT4dBzxuuCC/KF4bUHRdX54XifzydZG8
-	fdw5MXZmA==;
+	 bh=M59ygI9jQ32EIGogf3LRzmS+Ce1uXnIPL6XN+2sbhdg=; b=oPT4mghHjvGKdiGrcGqA0EdM6
+	TRmWkiSCvvXO5w9U2XWY7j1gWuuflTktx3dNfmkaxVmsYU6PwtyTwyHMAwsaAkP77HzhzjaGQ3pzp
+	xBSQp1xuLE06yIb6WgjmGoXjf3CzUFKmM6IEMopOAftD1qsFOT2jCCZgWvocHFXaPJeHH8ZxquPvd
+	13aIKM05Sk+vpcfrKvbD2yQ8SO8D787HYQdisKzsEE8Yz0n/HRwP79GR2ec7+H61Q1JkxjOaHJAQv
+	xp2doWi9p09RQx4cGfRTMN9CGUwYxtWwCKKPssrEZkxJfRgYWXdxIGGyI9IwvJawPwi7PMwLv3XFF
+	hxH97WVeQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVr2M-005z0x-EI; Mon, 12 Apr 2021 07:31:10 +0000
+	id 1lVrjX-0064kj-8m; Mon, 12 Apr 2021 08:15:47 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVr1u-005yxG-2a; Mon, 12 Apr 2021 07:30:42 +0000
+ id 1lVrjC-0064hh-LO; Mon, 12 Apr 2021 08:15:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=ZfP02XBbfkFu9I4vVBXjUQ66unvefxr8dVKoev8755E=; b=CXl1s+5u5ZXA12wqqiAAgqbZSW
- QqCyq/4Mz1anGbwc9znDJr8xecyS3xsR4QX299cdiQCTGm1fLnH4hmwjpJpMVFxRVi/JaNChIYMIX
- yvkHPE/Yu6vcsZ4NDvRefZgIZDiK8NvaYZ8eMnc1E7eNEI/5Hy0Fq5cTdcNAiE9ByLPvboyglaRhC
- thySUYVG2NxTt56E4EJJnSlAK1GyZUi3b68nmXevCclkxyBseAk3BADMuoQ9zR8AA8QFf0kRXDUnL
- LfZagH9gc7xI+elNpoyHrvI+J58D+gF2v9QxivWGnSGf2gcVjMW2yHokFglgTVGBdhuKC6tWv6Ck0
- DmtZ1rPA==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=CaFPVzFbf7fzB0behm4q3vs+AcCwPNn/fO4/oYpeYXg=; b=2f5PY66IwdDhTdA0u8sxsXzumn
+ jHU0dVH51RzcwxzEB1HYSQD6R/VdwP+MW56jjP9CZMCI0/KvBWwt29rIGBq/i5oXmAyLnPkgf9p4i
+ 1jEUOyr3+lhc38yfXhfPP2GNwKjje0W4W0X+0TEPWMGNStvJjuXSyGZ5MtPPg8B1SDcuEeZpMU/2A
+ p4Dgb0k77jzVseXyGSmTA6LbZBejlPE3wWgLHU3ZlaGCx7bEY14qk51a4t2ioxMGMwwSBa3SatOPS
+ 91ANcpmJDI7HmygzAe2GhDUzwEyt7qKcqisWDD+PDZkvJ02uIdaKj8Lfr6FjV+CXGtJpHptiZf0k5
+ 9j5oK2PA==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVr1r-005vlY-MV; Mon, 12 Apr 2021 07:30:40 +0000
-X-UUID: 22980bb9ac164402baafe4715230e189-20210412
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZfP02XBbfkFu9I4vVBXjUQ66unvefxr8dVKoev8755E=; 
- b=csIfelLflolRS5euQ7KW0WZhmJGNO4Gaec/xTCWxDxIWGbQxsow0eD/g9v8/K9GFnLInY1a/Q1ntqgr0wbwiqTYl1n6GFUDaVntt19nFIfZS7/bRNfYqJS26M0XQTc4VTYm0eHwRIcR/z2AI3EtwR0TBvgjWuxS3oyW+s88vCC4=;
-X-UUID: 22980bb9ac164402baafe4715230e189-20210412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1392859127; Mon, 12 Apr 2021 00:30:35 -0700
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 00:25:39 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 15:25:36 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 12 Apr 2021 15:25:35 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Mark Rutland <mark.rutland@arm.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>, 
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>
-Subject: [PATCH v1] drm/mediatek: adjust rdma fifo threshold calculate formula
-Date: Mon, 12 Apr 2021 15:25:32 +0800
-Message-ID: <1618212332-3547-2-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1618212332-3547-1-git-send-email-yongqiang.niu@mediatek.com>
-References: <1618212332-3547-1-git-send-email-yongqiang.niu@mediatek.com>
+ id 1lVrj9-005xuz-WD; Mon, 12 Apr 2021 08:15:25 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6F7FB600EF;
+ Mon, 12 Apr 2021 08:15:18 +0000 (UTC)
+Date: Mon, 12 Apr 2021 09:15:15 +0100
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: Andrey Konovalov <andreyknvl@gmail.com>,
+ Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+ Alexander Potapenko <glider@google.com>,
+ Dmitry Vyukov <dvyukov@google.com>,
+ Nathan Chancellor <natechancellor@gmail.com>,
+ Arnd Bergmann <arnd@arndb.de>, kasan-dev <kasan-dev@googlegroups.com>,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ wsd_upstream <wsd_upstream@mediatek.com>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ Walter Wu <walter-zh.wu@mediatek.com>
+Subject: Re: [PATCH v4] kasan: remove redundant config option
+Message-ID: <20210412081515.GB2060@arm.com>
+References: <20210226012531.29231-1-walter-zh.wu@mediatek.com>
+ <CAAeHK+zyv1=kXtKAynnJN-77dwmPG4TXpJOLv_3W0nxXe5NjXA@mail.gmail.com>
+ <20210330223637.f3c73a78c64587e615d26766@linux-foundation.org>
+ <20210411105332.GA23778@arm.com>
+ <20210411150316.d60aa0b5174adf2370538809@linux-foundation.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: DB7A3BFEED79B757735615E15A53186FA117C4AF185632B495D9651787FCF4D22000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210411150316.d60aa0b5174adf2370538809@linux-foundation.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_003039_756768_8E27AE2C 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20210412_011524_073425_5FCC4325 
+X-CRM114-Status: GOOD (  27.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,28 +95,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-the orginal formula will caused rdma fifo threshold config overflow
+On Sun, Apr 11, 2021 at 03:03:16PM -0700, Andrew Morton wrote:
+> On Sun, 11 Apr 2021 11:53:33 +0100 Catalin Marinas <catalin.marinas@arm.com> wrote:
+> > On Tue, Mar 30, 2021 at 10:36:37PM -0700, Andrew Morton wrote:
+> > > On Mon, 29 Mar 2021 16:54:26 +0200 Andrey Konovalov <andreyknvl@google.com> wrote:
+> > > > Looks like my patch "kasan: fix KASAN_STACK dependency for HW_TAGS"
+> > > > that was merged into 5.12-rc causes a build time warning:
+> > > > 
+> > > > include/linux/kasan.h:333:30: warning: 'CONFIG_KASAN_STACK' is not
+> > > > defined, evaluates to 0 [-Wundef]
+> > > > #if defined(CONFIG_KASAN) && CONFIG_KASAN_STACK
+> > > > 
+> > > > The fix for it would either be reverting the patch (which would leave
+> > > > the initial issue unfixed) or applying this "kasan: remove redundant
+> > > > config option" patch.
+> > > > 
+> > > > Would it be possible to send this patch (with the fix-up you have in
+> > > > mm) for the next 5.12-rc?
+> > > > 
+> > > > Here are the required tags:
+> > > > 
+> > > > Fixes: d9b571c885a8 ("kasan: fix KASAN_STACK dependency for HW_TAGS")
+> > > > Cc: stable@vger.kernel.org
+> > > 
+> > > Got it, thanks.  I updated the changelog to mention the warning fix and
+> > > moved these ahead for a -rc merge.
+> > 
+> > Is there a chance this patch makes it into 5.12? I still get the warning
+> > with the latest Linus' tree (v5.12-rc6-408-g52e44129fba5) when enabling
+> > KASAN_HW_TAGS.
+> 
+> Trying.   We're still awaiting a tested fix for
+> https://lkml.kernel.org/r/CA+fCnZf1ABrQg0dsxtoZa9zM1BSbLYq_Xbu+xi9cv8WAZxdC2g@mail.gmail.com
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks Andrew. I didn't realise it was sent and then dropped.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 728aaad..8c9371b 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -167,7 +167,7 @@ void mtk_rdma_config(struct device *dev, unsigned int width,
- 	 * output threshold to 6 microseconds with 7/6 overhead to
- 	 * account for blanking, and with a pixel depth of 4 bytes:
- 	 */
--	threshold = width * height * vrefresh * 4 * 7 / 1000000;
-+	threshold = rdma_fifo_size * 7 / 10;
- 	reg = RDMA_FIFO_UNDERFLOW_EN |
- 	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
- 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
+However, we should decouple (or rather reorder) the two patches. There's
+no functional dependency between removing the redundant config option (a
+fix for an existing commit) and adding support for KASAN_SW_TAGS with
+gcc-11, only a conflict in scripts/Makefile.kasan. Walter's original
+patch applies on top of vanilla 5.12-rc3:
+
+https://lkml.kernel.org/r/20210226012531.29231-1-walter-zh.wu@mediatek.com
+
 -- 
-1.8.1.1.dirty
+Catalin
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
