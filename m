@@ -2,87 +2,88 @@ Return-Path: <SRS0=8MWw=JJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEF0CC43460
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:43:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A001C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:43:13 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4627361244
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:43:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4627361244
+	by mail.kernel.org (Postfix) with ESMTPS id DE0136109E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Apr 2021 03:43:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE0136109E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Xa56/On2YXW+cc12Bx4mf7A+b2oZpgS+JUdOll/1x9U=; b=DPShncziSYUK6eIhHGXVuSJ1+7
-	zht51fXQWd68tLbtwedtu0Hn8Y4Mw+BFXqfu/yu5Z/O+CrY4j9pnpqkqrfEpg3UoeHDMrP0Yg4n8b
-	WoqX/U1cxHw9A0GcmZmfFydm4Wa8SaIVk4VOhwD67/PgpJxC7tl78V1kALf0zDMAOqmgxUbfHtHNn
-	uf3lHGvmWoSmFZ7leUDwy0RoQ/MjrTZEqfaSbx9UofdxRmr9n4zkFU4yIo4j/oCVKd1LoJ6BiwMDj
-	zDcBJe3q3FmHpzRnJzhF8reZU2rFngV2la8hYL27H+HeZ2y8PJApD0T9qhGcZy7N1t7a5p46ulBiK
-	IvXknCFA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=a6exVokofdE1W35xfIlLDCFRj6fEGaVyeY8OWdt2oJw=; b=Xj9RLJVctjeYHutXxbI0bhhHi
+	OW3QEkRJxg9psh/9oRnj3JkDkLJu3jmskhaGS4PJdU0TcGsYQjiVV5Bqrk+OJGbQx8cfmrCnXY/AW
+	YMHST9MOTsJn1wnZ+tSOVjTNOrlPHEOwE+6Zs7YzNtUIBl8J3PhfvdIecfAvQLAAsbFfM19+xYmha
+	kU6d4YSaMpHFljTPSg6MPCML1l6U6P4kpD9YILEREgso+45Y9AVOgxNfOb5jxa/pbEFFbXGjuPvx0
+	SPX5lG/QupLpRUWwVJxacSeagV8xHedO1cATziFBG2D7iJ2TVblxtVT9PQh9W3vopeRslpwwah4Si
+	Hlnf3aXBw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lVnTT-005cAj-MA; Mon, 12 Apr 2021 03:42:55 +0000
+	id 1lVnTY-005cBU-Kv; Mon, 12 Apr 2021 03:43:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVnTQ-005cAc-6A
- for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 03:42:53 +0000
+ id 1lVnTW-005cBJ-N1
+ for linux-mediatek@desiato.infradead.org; Mon, 12 Apr 2021 03:42:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=TbV7aHs7TaIhyV0H0KiEJQJbVjhXqA5DKHSoe6+ECPw=; b=O5uiUqs3Pgn9pmzLP55QUfjqkR
- UQRFrME3GEB/MISZ8ai8zOP1KQ6qoCruyYZjc0GHVarvvlg/06clSF5atWJ5tTbQgoldRiHYHd0eW
- Uby0f98kNdkVQ2C+XhS6119ZyYHZ0Vz7Z/aGokQ9otWsxQan5rfD4i/rTlHuWGNiZcl+Q6aTJaq1D
- H4yrsd0Mrgz55uh2Ej2VWjIvxOdXnRWnjtgAp39F2lOQJlR71HfBbSH/Lac9sTL6g2Ck2yhpKpTpW
- f4UIwMKBILaqFHFLimch1enE7eizqq9K4EXRxujIAiqjfpJH9UWeslJ1GvARxDvXjudk/I4dsdtEw
- 3hnv/R0w==;
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=yZ5W7oXdZ8SNpPNFFttOnaomBLVx/4n5LPa5t4ANWJ0=; b=qVEbdcfXVBJ7u5U+2NOKuFMOcu
+ ZITyMMUo6+eHNZQW5DvnE871jvskMh0dsjiCylllCKR2pPPTxkor5tcxvcnt0RpaVsyN6x1gfp2F2
+ 4GCwuKItRVRvfTWhBiKh+/3iVuLFxXje5SBuTeilxqRRqsTmCJoAs6rOn5FuE2R5VNJrEwosx090r
+ +p+dZJQf6H77rbvY+27MDbCckhi2uO0YQ7Xc0cTY+7MR2v3itY9sOwGoSMC1XyjLdzxGoeCIoPVc8
+ DXnuAqXEXqgpdxPSC1+Z1dM3aMWMHWGCoPPy4J6pgvZjlbyFu0V/HwIt1ujXfkxlN25aTIrhD1roa
+ MFqdrR1A==;
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lVnTN-005rQf-Gy
- for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 03:42:50 +0000
-Received: by mail-pl1-x632.google.com with SMTP id j7so5637481plx.2
- for <linux-mediatek@lists.infradead.org>; Sun, 11 Apr 2021 20:42:48 -0700 (PDT)
+ id 1lVnTU-005rRf-2P
+ for linux-mediatek@lists.infradead.org; Mon, 12 Apr 2021 03:42:57 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d124so8293875pfa.13
+ for <linux-mediatek@lists.infradead.org>; Sun, 11 Apr 2021 20:42:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TbV7aHs7TaIhyV0H0KiEJQJbVjhXqA5DKHSoe6+ECPw=;
- b=P49so0HJzAqTv6dJXeU7iuIOm7fDFNyyZSoqpw0IGgN2WT+OcbM9TVUJvnSps2D6FV
- ocO0sEZhJJMEU8qIE/a51GoTocEhwzbbkMoH0Cbmf+i9p+bbVlTM5qiDzKSJ37wOZC3+
- 2pUZyv/F3wPJPIoqSvt0bd2RN12rfYLYmzhOb5YGyAoZm8uFGpsriEsX+57HU1yUB7Iy
- mI8w5yu0620bLR90MrBddwfrU7ye/05QYa9LKIlsWV9iWDE99DJJVsYSU6B4PcYuMQgd
- 59B/WiVnFR7obFfZ8ZEmiSr7tMKT1M3t95asjWXeRUB4DUBYPIf4toqvDlwXT924+iyM
- MxrQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=yZ5W7oXdZ8SNpPNFFttOnaomBLVx/4n5LPa5t4ANWJ0=;
+ b=Q7B9AjeF9NMppAnZgPBNLnRMqmdegsCdvq2YpRpbdrse+fuZaDv5zijjMghvi4MwlL
+ fe1IVZN1jikUJWBsSUm5yl7bGGePathlCm5raqrH3Az1+n/A4YFEvCG0JqRdl9aX31r5
+ ByWNu2Sg/Y1sZD3EIod8MP2xOwdocVzTODczQncAueE6bhp6RZvpji2g+GTN6EYivneg
+ roU/1XdizOS0Bw9+biWE0pI0pbFedGIUaET2ZemZ4yBY/aCNdDestY0EXNWpEWPZRlE4
+ GJdDTJ785fYMAI611M22NEVDDptx2qGuYyQj/2/EEfnmcnsOycijsn4jQi3l+3HWqIq9
+ WmKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TbV7aHs7TaIhyV0H0KiEJQJbVjhXqA5DKHSoe6+ECPw=;
- b=Eysp21aLOv33JU4bPXrOxOXgxvrybhOc81GR7RiYqR18fZSnCLDgADJXkpQUUVDjfU
- wlOGCnRNqfA/yn91HcEkp4Ns7YuyVOwdhlSv+Y05iwWtrvqliCHyDOtoosd6oQ0w5YEu
- h8+WZ7VZhcgqgeJN1GwViZO6srG1a9Gvue1dSd1O7FzDXMTZNF9xV3kvp0BLAhP0wDEi
- KG05uRucz7Dt6kGrEdo4BuoVXSiy+frZsO0q/7EzGVYi9r99X75WTf2wSq3Lp4+EpiW7
- i1i9APGIyM3MTA4KsEdhhpgGQ/EdcUl4V+r89MQqlxBQUfLX5Tn8Opo4rcjemRXkTkDV
- 2xDQ==
-X-Gm-Message-State: AOAM531k9HhXXHq0wWT05tPwO1/RX3gmNeuGnAc1eH88rT2PRg4suwFl
- mgA2EiQl9QFUDn+Z2Q9dCgY=
-X-Google-Smtp-Source: ABdhPJwdVRYU3h0l1OFzieG7ZRMhsfTOWmdz910QyVB1NKZu1Di8amy5CJ8Q0tY3NgFMgooSH6PiMQ==
-X-Received: by 2002:a17:90b:390f:: with SMTP id
- ob15mr1860487pjb.100.1618198967574; 
- Sun, 11 Apr 2021 20:42:47 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=yZ5W7oXdZ8SNpPNFFttOnaomBLVx/4n5LPa5t4ANWJ0=;
+ b=HXEgM0APyCmj+UfWSJrpSsc5ilfRN+0mhUCP71sY/iz3Z3JzExyQBiiIR4uZkkWgsb
+ 9f91BJrY29qAC0O8azQ4vWU7DH29I1MNgRM5+zKM8AvkU2VXha8nrdIt1AWW1ZYsyojy
+ zBOTt1pUAphh6AgbzKE2FwnhnW0qYF7Om1ZOKY65/tHy1GKgHCYT96NVrCu7udjQ1kFK
+ NfB+d9KEdTPmnnM/suGJIbeylmmkmQhcnjcIjZY+kOCoYWW7ehblNS9bMMoChW25DNI+
+ GiUXoGjOdkjapeF6kcviOWRK1WEGIcHs+zOZF6PQDRvFVb7OsatHo+hF/tGbpW4XtkSP
+ Cmew==
+X-Gm-Message-State: AOAM530tf9zexmtH7a4PreOVWzUs5O+BpWPc9NKpwdfE+pdpcoOqnk69
+ yCD7HXFYIrU8KhJKCzfs0Sc=
+X-Google-Smtp-Source: ABdhPJwsvYhO4IziErJNUYCF3KDQeyuFzX4kE9/W+LyP7lyWchgraQcVo8Bm+Ia4zNVEPLv3dLDbmA==
+X-Received: by 2002:aa7:8817:0:b029:24e:bb8:46e1 with SMTP id
+ c23-20020aa788170000b029024e0bb846e1mr1293952pfo.0.1618198975316; 
+ Sun, 11 Apr 2021 20:42:55 -0700 (PDT)
 Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id v22sm5387185pff.105.2021.04.11.20.42.40
+ by smtp.gmail.com with ESMTPSA id v22sm5387185pff.105.2021.04.11.20.42.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Apr 2021 20:42:46 -0700 (PDT)
+ Sun, 11 Apr 2021 20:42:54 -0700 (PDT)
 From: DENG Qingfang <dqfext@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
  Florian Fainelli <f.fainelli@gmail.com>,
@@ -102,15 +103,16 @@ Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
  =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
  Frank Wunderlich <frank-w@public-files.de>,
  Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: [RFC v4 net-next 0/4] MT7530 interrupt support
-Date: Mon, 12 Apr 2021 11:42:33 +0800
-Message-Id: <20210412034237.2473017-1-dqfext@gmail.com>
+Subject: [RFC v4 net-next 1/4] net: phy: add MediaTek PHY driver
+Date: Mon, 12 Apr 2021 11:42:34 +0800
+Message-Id: <20210412034237.2473017-2-dqfext@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210412034237.2473017-1-dqfext@gmail.com>
+References: <20210412034237.2473017-1-dqfext@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210411_204249_582842_30C64535 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210411_204256_133202_F337D9C7 
+X-CRM114-Status: GOOD (  19.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,25 +129,166 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MT7530 interrupt controller.
+Add support for MediaTek PHYs found in MT7530 and MT7531 switches.
+The initialization procedure is from the vendor driver, but due to lack
+of documentation, the function of some register values remains unknown.
 
-DENG Qingfang (4):
-  net: phy: add MediaTek PHY driver
-  net: dsa: mt7530: add interrupt support
-  dt-bindings: net: dsa: add MT7530 interrupt controller binding
-  staging: mt7621-dts: enable MT7530 interrupt controller
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+---
+RFC v3 -> RFC v4:
+- Remove unused include.
 
- .../devicetree/bindings/net/dsa/mt7530.txt    |   6 +
- drivers/net/dsa/Kconfig                       |   1 +
- drivers/net/dsa/mt7530.c                      | 266 ++++++++++++++++--
- drivers/net/dsa/mt7530.h                      |  20 +-
- drivers/net/phy/Kconfig                       |   5 +
- drivers/net/phy/Makefile                      |   1 +
- drivers/net/phy/mediatek.c                    | 111 ++++++++
- drivers/staging/mt7621-dts/mt7621.dtsi        |   4 +
- 8 files changed, 385 insertions(+), 29 deletions(-)
+ drivers/net/phy/Kconfig    |   5 ++
+ drivers/net/phy/Makefile   |   1 +
+ drivers/net/phy/mediatek.c | 111 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 117 insertions(+)
  create mode 100644 drivers/net/phy/mediatek.c
 
+diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
+index a615b3660b05..edd858cec9ec 100644
+--- a/drivers/net/phy/Kconfig
++++ b/drivers/net/phy/Kconfig
+@@ -207,6 +207,11 @@ config MARVELL_88X2222_PHY
+ 	  Support for the Marvell 88X2222 Dual-port Multi-speed Ethernet
+ 	  Transceiver.
+ 
++config MEDIATEK_PHY
++	tristate "MediaTek PHYs"
++	help
++	  Supports the MediaTek switch integrated PHYs.
++
+ config MICREL_PHY
+ 	tristate "Micrel PHYs"
+ 	help
+diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
+index de683e3abe63..9ed7dbab7770 100644
+--- a/drivers/net/phy/Makefile
++++ b/drivers/net/phy/Makefile
+@@ -64,6 +64,7 @@ obj-$(CONFIG_LXT_PHY)		+= lxt.o
+ obj-$(CONFIG_MARVELL_10G_PHY)	+= marvell10g.o
+ obj-$(CONFIG_MARVELL_PHY)	+= marvell.o
+ obj-$(CONFIG_MARVELL_88X2222_PHY)	+= marvell-88x2222.o
++obj-$(CONFIG_MEDIATEK_PHY)	+= mediatek.o
+ obj-$(CONFIG_MESON_GXL_PHY)	+= meson-gxl.o
+ obj-$(CONFIG_MICREL_KS8995MA)	+= spi_ks8995.o
+ obj-$(CONFIG_MICREL_PHY)	+= micrel.o
+diff --git a/drivers/net/phy/mediatek.c b/drivers/net/phy/mediatek.c
+new file mode 100644
+index 000000000000..1627b7c04345
+--- /dev/null
++++ b/drivers/net/phy/mediatek.c
+@@ -0,0 +1,111 @@
++// SPDX-License-Identifier: GPL-2.0+
++#include <linux/module.h>
++#include <linux/phy.h>
++
++#define MTK_EXT_PAGE_ACCESS		0x1f
++#define MTK_PHY_PAGE_STANDARD		0x0000
++#define MTK_PHY_PAGE_EXTENDED		0x0001
++#define MTK_PHY_PAGE_EXTENDED_2		0x0002
++#define MTK_PHY_PAGE_EXTENDED_3		0x0003
++#define MTK_PHY_PAGE_EXTENDED_2A30	0x2a30
++#define MTK_PHY_PAGE_EXTENDED_52B5	0x52b5
++
++static int mtk_phy_read_page(struct phy_device *phydev)
++{
++	return __phy_read(phydev, MTK_EXT_PAGE_ACCESS);
++}
++
++static int mtk_phy_write_page(struct phy_device *phydev, int page)
++{
++	return __phy_write(phydev, MTK_EXT_PAGE_ACCESS, page);
++}
++
++static void mtk_phy_config_init(struct phy_device *phydev)
++{
++	/* Disable EEE */
++	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
++
++	/* Enable HW auto downshift */
++	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED, 0x14, 0, BIT(4));
++
++	/* Increase SlvDPSready time */
++	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
++	__phy_write(phydev, 0x10, 0xafae);
++	__phy_write(phydev, 0x12, 0x2f);
++	__phy_write(phydev, 0x10, 0x8fae);
++	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
++
++	/* Adjust 100_mse_threshold */
++	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x123, 0xffff);
++
++	/* Disable mcc */
++	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xa6, 0x300);
++}
++
++static int mt7530_phy_config_init(struct phy_device *phydev)
++{
++	mtk_phy_config_init(phydev);
++
++	/* Increase post_update_timer */
++	phy_write_paged(phydev, MTK_PHY_PAGE_EXTENDED_3, 0x11, 0x4b);
++
++	return 0;
++}
++
++static int mt7531_phy_config_init(struct phy_device *phydev)
++{
++	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
++		return -EINVAL;
++
++	mtk_phy_config_init(phydev);
++
++	/* PHY link down power saving enable */
++	phy_set_bits(phydev, 0x17, BIT(4));
++	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, 0xc6, 0x300);
++
++	/* Set TX Pair delay selection */
++	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x13, 0x404);
++	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x14, 0x404);
++
++	return 0;
++}
++
++static struct phy_driver mtk_phy_driver[] = {
++	{
++		PHY_ID_MATCH_EXACT(0x03a29412),
++		.name		= "MediaTek MT7530 PHY",
++		.config_init	= mt7530_phy_config_init,
++		/* Interrupts are handled by the switch, not the PHY
++		 * itself.
++		 */
++		.config_intr	= genphy_no_config_intr,
++		.handle_interrupt = genphy_handle_interrupt_no_ack,
++		.read_page	= mtk_phy_read_page,
++		.write_page	= mtk_phy_write_page,
++	},
++	{
++		PHY_ID_MATCH_EXACT(0x03a29441),
++		.name		= "MediaTek MT7531 PHY",
++		.config_init	= mt7531_phy_config_init,
++		/* Interrupts are handled by the switch, not the PHY
++		 * itself.
++		 */
++		.config_intr	= genphy_no_config_intr,
++		.handle_interrupt = genphy_handle_interrupt_no_ack,
++		.read_page	= mtk_phy_read_page,
++		.write_page	= mtk_phy_write_page,
++	},
++};
++
++module_phy_driver(mtk_phy_driver);
++
++static struct mdio_device_id __maybe_unused mtk_phy_tbl[] = {
++	{ PHY_ID_MATCH_VENDOR(0x03a29400) },
++	{ }
++};
++
++MODULE_DESCRIPTION("MediaTek switch integrated PHY driver");
++MODULE_AUTHOR("DENG, Qingfang <dqfext@gmail.com>");
++MODULE_LICENSE("GPL");
++
++MODULE_DEVICE_TABLE(mdio, mtk_phy_tbl);
 -- 
 2.25.1
 
