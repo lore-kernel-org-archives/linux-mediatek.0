@@ -2,118 +2,114 @@ Return-Path: <SRS0=dZqu=JK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC8BEC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4842C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B17B613B8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B17B613B8
+	by mail.kernel.org (Postfix) with ESMTPS id 4CBAD613BB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CBAD613BB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=S8bE5QZKEO092RXTMKwcXPFrrM8T2ZHu+yDvhYSpERw=; b=jhALBDRKoVa8flVG3djX8X6Ll
-	08INCBF8wF0tgum5SfQK/lXiaBmZVDTDuinDX7e7kmfi2e+3LKupG692Yh/L9bOi4Rpc4rLrY0m39
-	tsTWTAPD0cRMUMX19mMr1L6yEkKutqRO2v/2ftH0SI0k0Ij8LJBZqWdWTIG/lQRxqZQsioB11URtq
-	LfvvNr/QPk8QWioKZ+Q/vgbJxeNHQIki7fpAj1UVCGlPLhV7UtW7KZs9cZF8nfI+gaMMe7pkFwxn4
-	nzBVHJ259t2c6DSrcZqcKTjiLHOXl7vZuc76ZSlW+WqX4Z7ethtNiRrf7ZqS940P5PeQssLStJq8l
-	oV7CmlCvQ==;
+	 bh=rbk2p6K/RQjqLKoiJ0Bvc24fkWcq+Nls3Qaq8B4r0pE=; b=WcTG5iqjTYABH7dU+hw4/F31j
+	LsjgRo8lGJPdhasUS2d5jN/zL6mBh2imzpF1GjQfiPDvaop/TwE6+AgKP5f1unNBQ3EeAL96vNXuB
+	ROPeMGE8llRxwzjXsC7Fapcqn/v9w2zfiPWzlxpdEPqK6CL4AWdZaHmCk471x6pSmygQHbOq038zu
+	qSekytWCJEG8ZPCbrOZTChWPduGe/Tsb6fkYKcVPF+xk8DxLQiprQD7PCCSJ/u7A8QC/L+8V9gT6a
+	dtHx8ug8GTzJIuLYj6pAzinX8y1c7ecHeMFE34qd1diFR1Bz7qSriurJAOYhfi3vzmzICyK3Gb2Q5
+	Mh0YHMJug==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWKWx-009Zt2-6X; Tue, 13 Apr 2021 15:00:44 +0000
+	id 1lWKXU-009ZxP-B5; Tue, 13 Apr 2021 15:01:17 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKUd-009ZiI-VA
+ id 1lWKUs-009ZjJ-Ux
  for linux-mediatek@desiato.infradead.org; Tue, 13 Apr 2021 14:59:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=yJ2s7SvtJMvGXXT2TcTaXG1f4Lh8es6VQIDWtx4JoOk=; b=CrjY3Mio+vaoWTOUHNagKo4N9C
- ShxDdswzK8LjmJrlulcYTG55eQ2MqzXcc/S6KNmk1WkO2MDtWAqmbyNb1TZHIaYDaqD6C1YkeqBzS
- kIY/Ups5PgO0hsfdfNJr6DmBPa8BLNWJrdO4TTY1HIiabPA9VkL9kIyrt0pHFiMUdbCWgWXkfn1Yw
- okBYWgL/PubblL/foxVktYeKszsZcE4SaHfQYTLoQVj01/yCXJae1r1rsvlFDT+bDggxybItLnLvU
- R58sEPZC8MjEsLLD20py4PqFpWArIixnspQeJ+pXSxSzX2xp0bygZnJ5aq5rgzwkCNRy+Ya1aggL2
- 848FeQUQ==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=Ph9+/mYhqHgYa9Fj9YRroZ2f7XAlKgwCaPOsxelpWRE=; b=D88mGdjTR+id1LXX6h5V/hUzbh
+ uBSl20OvqEOBZi3QLZaFa/o0ji+8pqMxqbSEjMxXhEuwE5arXZS2nCH7OD1ORjh9N1obRhJ22EwSF
+ pdYUDPI2uiqRhJAfumZ0LWZE70Q6X6OqTbTF/LxGT36Tri7k71hotzOyRnaASUOMfnLnnMkIRlGeu
+ YWN+izTXXKcZJTElk+716wimHXW3pmFL7I1tjhL2yszkbGjMa/fc7b0IauywkvB53Gva2sbODifAp
+ pvh28eR/M8N2oEsadZPH5elul5IBdBRquAsAAv+pICJFslZ9bNjR6WIFhXhKTH//Wl5i7GaKlATZw
+ vNBjKyrQ==;
 Received: from youngberry.canonical.com ([91.189.89.112])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKUa-0077gp-Ps
- for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:18 +0000
-Received: from mail-lj1-f200.google.com ([209.85.208.200])
+ id 1lWKUq-0077i7-J7
+ for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:33 +0000
+Received: from mail-ed1-f70.google.com ([209.85.208.70])
  by youngberry.canonical.com with esmtps
  (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
  (envelope-from <krzysztof.kozlowski@canonical.com>)
- id 1lWKUZ-0005Ci-Gv
- for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:15 +0000
-Received: by mail-lj1-f200.google.com with SMTP id g4so489504ljn.18
- for <linux-mediatek@lists.infradead.org>; Tue, 13 Apr 2021 07:58:15 -0700 (PDT)
+ id 1lWKUo-0005Ec-V3
+ for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:31 +0000
+Received: by mail-ed1-f70.google.com with SMTP id
+ i5-20020aa7dd050000b02903830cafa575so6851edv.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yJ2s7SvtJMvGXXT2TcTaXG1f4Lh8es6VQIDWtx4JoOk=;
- b=HH21sWgUi96g0kHXK2tpVBzd2pBLkFun7OSjCqpgOLAut10zWMIVTzqNUaKwL2O/F8
- 6PUf4jdcgblYyRGyT3KH7/SsFSznuw7opgE/NBXmpQyJbf/FC9gvAIMQZVK2osN0oW3L
- 2q39PNLvG8gi7cRwaRRMatikR+DVx9eDnjVFHwl8fW3mWxdsTcefVf+hThKKwh1ZWkze
- qT7t0msDuktYkUREXgLNE24JIYXVDnZLa3a0eL8Ud9z6Xzc6lpX0J2USBrdxvXCfsrq0
- v2SNpQPxwuBDwq2lOmULwiKwV+7ucxLBCyd1CjrRH5ADx1vZw3Ofel95B1o9TIelDBev
- YrKw==
-X-Gm-Message-State: AOAM530HfU5PJYAqCTznTXrqcXiLvOFgk3Cqp/Unvhcqy/MyPqpy6Wnm
- 5X/Nq9c38Tpg6J8KgTwUKUME6KUTA1z4SZJ/33Nkw5xoi3EvPqOg5+YiJDHhu+UQ89m4mdVIzK9
- WPTSxRnu1cUmU/NOvP1aEj3rTGQVzQtfBApW9NyjGDsmzacaIyA==
-X-Received: by 2002:a17:906:f1cb:: with SMTP id
- gx11mr13865173ejb.106.1618325884645; 
- Tue, 13 Apr 2021 07:58:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBS4f8/FtSKZIitrByeXvJ1+6fxGya2GdvXhrTkGICEYkSUaRVVNDzAJfvhqZqrKTZYiywqw==
-X-Received: by 2002:a17:906:f1cb:: with SMTP id
- gx11mr13865137ejb.106.1618325884439; 
- Tue, 13 Apr 2021 07:58:04 -0700 (PDT)
-Received: from [192.168.1.115] (xdsl-188-155-192-147.adslplus.ch.
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Ph9+/mYhqHgYa9Fj9YRroZ2f7XAlKgwCaPOsxelpWRE=;
+ b=IUWQUb/ncdPncB23nvIoynxvwR+0zTJXSsLSPu/Tv16SV6M0hp3TQS2IjzojObVVKZ
+ wSLRhCz0KSOsfKeYnyG+UGQwChZAjbo6gVIQBTF4cgZV77AqOksVXL0DO+OLeAytkaV/
+ 6yz3N+J8RUna9NaWUPbZ4hOFkZ5Ut6dO7Y6RFtBHToTCJBlYLjdDwMIiMmgTRHozUb0y
+ nfsN9C01eigQE/7WbesWRHWiPq6CvZmXjov/wkkRM5JmVhyFaAeCXFCmTAa5lSL32CRZ
+ uxnsxHk1MBF/EZD6H+3onbuJTwKAw7YRHaX6q/2yCNxpvqtnS3EtcjvJEfCDIctNB2uv
+ TNCA==
+X-Gm-Message-State: AOAM5339x1c825ionYgnnTxOKZkhwtdsonG9fXqTFLkT0deJ7m/r+0Ss
+ 793PD+0+9gQw+EPSub2GKp3MxNm17UgdKdhyBA1QHAbFwqRtNxXQ6GBx9Ycle8PSyfIMWJRgG7Q
+ lowQnxolp335CKepLR8pt0EquQ2mnqspEi77emwhDL4ea9gHKIw==
+X-Received: by 2002:a17:906:c7ca:: with SMTP id
+ dc10mr13614380ejb.294.1618325910747; 
+ Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgRCGqwTKY1uXNFzYOC/YmWaq5iHZG/z/5N5f+QW5qWm9hQs1h7yWI+1JNCO0I2BVghLszFQ==
+X-Received: by 2002:a17:906:c7ca:: with SMTP id
+ dc10mr13614363ejb.294.1618325910652; 
+ Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
+Received: from localhost.localdomain (xdsl-188-155-192-147.adslplus.ch.
  [188.155.192.147])
- by smtp.gmail.com with ESMTPSA id c16sm8258136ejx.81.2021.04.13.07.58.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Apr 2021 07:58:04 -0700 (PDT)
-Subject: Re: [PATCH v5 04/16] memory: mtk-smi: Add device-link between
- smi-larb and smi-common
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel
- <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
- youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
- chao.hao@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
- eizan@chromium.org, acourbot@chromium.org
-References: <20210410091128.31823-1-yong.wu@mediatek.com>
- <20210410091128.31823-5-yong.wu@mediatek.com>
- <ea7ed30f-050d-2d38-7c61-1e0c192f6ded@canonical.com>
- <1618293876.20053.19.camel@mhfsdcap03>
+ by smtp.gmail.com with ESMTPSA id p3sm4395217ejd.65.2021.04.13.07.58.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Message-ID: <d3b5b48a-82dc-361b-91f7-df0a73629b67@canonical.com>
-Date: Tue, 13 Apr 2021 16:58:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, youlin.pei@mediatek.com,
+ acourbot@chromium.org, iommu@lists.linux-foundation.org,
+ eizan@chromium.org, linux-mediatek@lists.infradead.org,
+ yi.kuo@mediatek.com, anan.sun@mediatek.com, chao.hao@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
+ Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, ming-fan.chen@mediatek.com,
+ linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, devicetree@vger.kernel.org
+Subject: Re: (subset) [PATCH v5 00/16] Clean up "mediatek,larb"
+Date: Tue, 13 Apr 2021 16:58:24 +0200
+Message-Id: <161832589345.71964.1780926932144222450.b4-ty@canonical.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210410091128.31823-1-yong.wu@mediatek.com>
+References: <20210410091128.31823-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1618293876.20053.19.camel@mhfsdcap03>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210413_075816_985260_630543B5 
-X-CRM114-Status: GOOD (  21.02  )
+X-CRM114-CacheID: sfid-20210413_075832_777514_C8C44C14 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,49 +126,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13/04/2021 08:04, Yong Wu wrote:
-> On Sat, 2021-04-10 at 14:40 +0200, Krzysztof Kozlowski wrote:
->> On 10/04/2021 11:11, Yong Wu wrote:
->>> Normally, If the smi-larb HW need work, we should enable the smi-common
->>> HW power and clock firstly.
->>> This patch adds device-link between the smi-larb dev and the smi-common
->>> dev. then If pm_runtime_get_sync(smi-larb-dev), the pm_runtime_get_sync
->>> (smi-common-dev) will be called automatically.
->>>
->>> Also, Add DL_FLAG_STATELESS to avoid the smi-common clocks be gated when
->>> probe.
->>>
->>> CC: Matthias Brugger <matthias.bgg@gmail.com>
->>> Suggested-by: Tomasz Figa <tfiga@chromium.org>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>> ---
->>>  drivers/memory/mtk-smi.c | 19 ++++++++++---------
->>>  1 file changed, 10 insertions(+), 9 deletions(-)
->>
->> I understood this is a dependency for other patches, so:
->> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
->>
->> If I am wrong and I can take it via memory tree, let me know.
+On Sat, 10 Apr 2021 17:11:12 +0800, Yong Wu wrote:
+> MediaTek IOMMU block diagram always like below:
 > 
-> Hi Krzysztof,
+>         M4U
+>          |
+>     smi-common
+>          |
+>   -------------
+>   |         |  ...
+>   |         |
+> larb1     larb2
+>   |         |
+> vdec       venc
 > 
-> Thanks very much for your quickly review.
-> 
-> I think it is ok if it go through memory tree. In the original patch, we
-> pm_runtime_get(smi-common-dev) in the smi-larb's pm resume callback.
-> This patch only use device-link do this. thus, this patch have no
-> function change. it only adjusts the SMI internal code flow.
+> [...]
 
-Hm, okay, I took it then for v5.13.
+Applied, thanks!
 
-> 
-> In addition, [14/16] expects your Acked-by. and that one should be
-> merged with the others.
-
-Thanks for reminder.
+[04/16] memory: mtk-smi: Add device-link between smi-larb and smi-common
+        commit: 6ce2c05b21189eb17b3aa26720cc5841acf9dce8
 
 Best regards,
-Krzysztof
+-- 
+Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 
 _______________________________________________
 Linux-mediatek mailing list
