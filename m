@@ -2,94 +2,91 @@ Return-Path: <SRS0=dZqu=JK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A96CC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 06:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE720C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 06:00:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C9C7613B1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 06:00:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C9C7613B1
+	by mail.kernel.org (Postfix) with ESMTPS id 0BA22613AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 06:00:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BA22613AF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HRo7dqlbNF03WY3pH43FrCXge7pz2at4q6/IYzvI5rk=; b=kA1Tfwr5zzPWKCtxe/NKpcQxY
-	vFoEuqnd9MU8R9jVuecNhdh3gBA6MaqzLHLrFA2Cu+hJ0et7Ajt+8con03uYdfXq7Y/oFCQNA45Ja
-	FVpMs1nmymvwOlaotfRYdQuLkFdRJEjycDms6mT7AOz8akiX4BIhTTJQahCRxU8fZuTRKqet6ieoT
-	UB3vWkSa6nwNLctSn1NjKDn4emyLSoneLsXTykmePO/8smhU5mxm0MTxqdQGekI35XBAN0cMVrsni
-	uVisVLwKWzMeL0vdISo/C/Jd7WdadamPcFV86tUglQ0+9doBLj/4KSSi6GvZHrnMrKgHQGELKx87/
-	S6HjDVsxg==;
+	 bh=LQPdO40giB9CJReq8WYy8vHfaBcXSco1u6YYifNMBrE=; b=dM9sZpwCYlaGPMBiBO6fHMV2Y
+	o+feqvHavkNb5Xa/tBUCT/cmLpjdX2ugFhRZrw5NcxGfXhG64e2IKml7NypphSAvfxNpt+aizzGag
+	NJzBqebnnWB6v2mckI6VcP7OrXkGOsWctuWSHxC1kvbI/ZkwPVC+P5Go40VzRKHj6fxwXbBCZIRCi
+	lMp9KKuLcftG+EHeSsyNs3l3SEyqtmYHAIDaP+lKtZb+2tPJsrV2s49ragIsBcO0GOb31+OTbbKYW
+	YTyIgjwLS0QNwZx7geaWwpHwWZSwu3jze7VDNOUDcsRu2guo+kAKpYqtDoGbWq4fbie6qABPcYB10
+	7YgREDtCg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWC5g-008L0g-Uq; Tue, 13 Apr 2021 06:00:01 +0000
+	id 1lWC6H-008LBp-VA; Tue, 13 Apr 2021 06:00:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWC5e-008L02-6H; Tue, 13 Apr 2021 05:59:58 +0000
+ id 1lWC5j-008L1H-1g; Tue, 13 Apr 2021 06:00:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=K6Fnp8+S+3Y7afNzymyQbmZMvrXpnTuzQ8uyw4kC+ko=; b=NE0upw7vviMe5rOvERm9JZXA05
- JJq/DHNfJE8gagChrzWtPDbK0R0oc01YO0X/VxpkRxAAnV+ajEgJTDBLHH4jEvDTBVPDfDEd6072Q
- 1yGEjeGjXg2LJ8PTaKifs50DxyTU88TWXX6G5j7SwjrsWqmV/5xRY+MLOk41yPGg3qLeIhc64mHEc
- cSB7iMAEOTw7B52bcRnfzQ9op+paPUgHFc3VghNb5ajVKMvYvwvjKwSKdCR/YmuFa150UXNhwGNG3
- /ITIW5IONw0TOk8vYcpcSiAeyouE3zGlZvGOJfmtJUhT2+QdGMi6fZQPKUbkUJpnAAuFcG4t4aCld
- nxK6lX3A==;
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=lPbbht4IxUQf55fOQBKyyLn5b2+3EepSajrPXVftYY4=; b=dAUBj4BKl6lw30o87GQQo+N+t2
+ RLOzF3bBW7gna5fdCpgfGF4mSlghuuIvfbIBl4SIrQDKhuU8RhFG3LUVbpeFMW3l9esq8MuKF4mTM
+ BIVc2iGIHezOA5Sw3Co1NkDynunlMdGLUUmkvfZ4rT2yDuZT3mIN0AFn1nrLX+SQcgl1jH057+6tf
+ T1Q9MHmayRywE0TDBvfkV309kTlS1Vt63FWpYp2FwKYaYrC5P7r7w/0IR1d7eSRq4Q4/QnLscIszL
+ e+1ZEhTMFaOwlj0fARuowV9GpMNSOmV2EbVgeH83X0X2tTvbOiHKoO4+rLVwLLL2C0fPfo1CxG9sP
+ P3p1PK8Q==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWC5b-006kxv-1H; Tue, 13 Apr 2021 05:59:56 +0000
-X-UUID: 17582ef896c24a2a84db09ae3539488e-20210412
+ id 1lWC5e-006kxv-C3; Tue, 13 Apr 2021 06:00:01 +0000
+X-UUID: ab893011950441379d3ba7cc0b3d5b1b-20210412
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=K6Fnp8+S+3Y7afNzymyQbmZMvrXpnTuzQ8uyw4kC+ko=; 
- b=XlK044St4brmaQ+kTvBnJ7tQeMS+KhHFpbUJ1edIoFrPW4junCAivPVtED4QjrTajkV2r+jNMvWsEvIAO590ok+hslU+NuCOq8zoMYRlW5Q+74zMFmuJ/YHeGueFyJp2X26Mhtfth4eTGfsmuPE4MaJTG3udqASViIlKb0mG6uU=;
-X-UUID: 17582ef896c24a2a84db09ae3539488e-20210412
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=lPbbht4IxUQf55fOQBKyyLn5b2+3EepSajrPXVftYY4=; 
+ b=NVHsM2YImuWp5K9w8W0iT8ZxkKYvL6vWUhFJJFOxklbTmxj21lSi9/A1PWuYBUN3SK4Z7rH1aFuGQl4OwymxC6qkGsqFkAOSoiDaf3CJ9uiauqYkqo2r+0QJK07vYa+dVYP96Y1yuudyRFoQDMsNzCCjr2FUcTq4TWmXnULEOdM=;
+X-UUID: ab893011950441379d3ba7cc0b3d5b1b-20210412
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 707615592; Mon, 12 Apr 2021 22:59:52 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 2008872704; Mon, 12 Apr 2021 22:59:52 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 22:57:39 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Apr 2021 13:57:35 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Mon, 12 Apr 2021 22:49:50 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Apr 2021 13:49:49 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 13 Apr 2021 13:57:34 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
- <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
-CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>, <jg_poxu@mediatek.com>,
- <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
- <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-gpio@vger.kernel.org>
-Subject: [PATCH v4 4/4] pinctrl: add rsel setting on MT8195
-Date: Tue, 13 Apr 2021 13:57:02 +0800
-Message-ID: <20210413055702.27535-5-zhiyong.tao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210413055702.27535-1-zhiyong.tao@mediatek.com>
-References: <20210413055702.27535-1-zhiyong.tao@mediatek.com>
+ Transport; Tue, 13 Apr 2021 13:49:48 +0800
+Message-ID: <1618292989.4940.0.camel@mtksdaap41>
+Subject: Re: [PATCH v7 3/4] spmi: mediatek: Add support for MT6873/8192
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 13 Apr 2021 13:49:49 +0800
+In-Reply-To: <1615658453-3989-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1615658453-3989-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1615658453-3989-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_225955_124921_FE9AF486 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20210412_225958_448396_6C8D6B13 
+X-CRM114-Status: GOOD (  31.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,179 +103,527 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch provides rsel setting on MT8195.
+Hi Maintainers,
+Gentle pin for this patch.
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 22 +++++++++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 14 ++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  | 10 +++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c      | 16 ++++++++++++++
- 4 files changed, 62 insertions(+)
+Thanks.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index a7500e18bb1d..66608b8d346a 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -779,6 +779,25 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
- 	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
- };
- 
-+static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
-+	PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
-+	PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
-+	PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
-+	PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
-+	PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
-+	PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
-+	PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
-+	PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
-+	PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
-+	PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
-+};
-+
- static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
- 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
-@@ -793,6 +812,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
- 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
- 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
-+	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
- };
- 
- static const char * const mt8195_pinctrl_register_base_names[] = {
-@@ -823,6 +843,8 @@ static const struct mtk_pin_soc mt8195_data = {
- 	.drive_get = mtk_pinconf_drive_get_rev1,
- 	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
- 	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
-+	.rsel_set = mtk_pinconf_rsel_set,
-+	.rsel_get = mtk_pinconf_rsel_get,
- };
- 
- static const struct of_device_id mt8195_pinctrl_of_match[] = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 2b51f4a9b860..d1526d0c6248 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -1041,6 +1041,20 @@ int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
- }
- EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get_raw);
- 
-+int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 arg)
-+{
-+	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, arg);
-+}
-+EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_set);
-+
-+int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 *val)
-+{
-+	return mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_RSEL, val);
-+}
-+EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_get);
-+
- MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
- MODULE_DESCRIPTION("Pin configuration library module for mediatek SoCs");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index fd5ce9c5dcbd..570e8da7bf38 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -67,6 +67,7 @@ enum {
- 	PINCTRL_PIN_REG_DRV_E0,
- 	PINCTRL_PIN_REG_DRV_E1,
- 	PINCTRL_PIN_REG_DRV_ADV,
-+	PINCTRL_PIN_REG_RSEL,
- 	PINCTRL_PIN_REG_MAX,
- };
- 
-@@ -237,6 +238,10 @@ struct mtk_pin_soc {
- 			     const struct mtk_pin_desc *desc, u32 arg);
- 	int (*adv_drive_get)(struct mtk_pinctrl *hw,
- 			     const struct mtk_pin_desc *desc, u32 *val);
-+	int (*rsel_set)(struct mtk_pinctrl *hw,
-+			const struct mtk_pin_desc *desc, u32 arg);
-+	int (*rsel_get)(struct mtk_pinctrl *hw,
-+			const struct mtk_pin_desc *desc, u32 *val);
- 
- 	/* Specific driver data */
- 	void				*driver_data;
-@@ -320,5 +325,10 @@ int mtk_pinconf_adv_drive_set_raw(struct mtk_pinctrl *hw,
- int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
- 				  const struct mtk_pin_desc *desc, u32 *val);
- 
-+int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 arg);
-+int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 *val);
-+
- bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
- #endif /* __PINCTRL_MTK_COMMON_V2_H */
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index da1f19288aa6..967288c28232 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -22,6 +22,8 @@
- #define MTK_PIN_CONFIG_PU_ADV	(PIN_CONFIG_END + 3)
- #define MTK_PIN_CONFIG_PD_ADV	(PIN_CONFIG_END + 4)
- #define MTK_PIN_CONFIG_DRV_ADV	(PIN_CONFIG_END + 5)
-+#define MTK_PIN_CONFIG_RSEL	(PIN_CONFIG_END + 6)
-+
- 
- static const struct pinconf_generic_params mtk_custom_bindings[] = {
- 	{"mediatek,tdsel",	MTK_PIN_CONFIG_TDSEL,		0},
-@@ -29,6 +31,7 @@ static const struct pinconf_generic_params mtk_custom_bindings[] = {
- 	{"mediatek,pull-up-adv", MTK_PIN_CONFIG_PU_ADV,		1},
- 	{"mediatek,pull-down-adv", MTK_PIN_CONFIG_PD_ADV,	1},
- 	{"mediatek,drive-strength-adv", MTK_PIN_CONFIG_DRV_ADV,	2},
-+	{"mediatek,rsel",		MTK_PIN_CONFIG_RSEL,	2},
- };
- 
- #ifdef CONFIG_DEBUG_FS
-@@ -38,6 +41,7 @@ static const struct pin_config_item mtk_conf_items[] = {
- 	PCONFDUMP(MTK_PIN_CONFIG_PU_ADV, "pu-adv", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_PD_ADV, "pd-adv", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_DRV_ADV, "drive-strength-adv", NULL, true),
-+	PCONFDUMP(MTK_PIN_CONFIG_RSEL, "rsel", NULL, true),
- };
- #endif
- 
-@@ -176,6 +180,12 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case MTK_PIN_CONFIG_RSEL:
-+		if (hw->soc->rsel_get)
-+			err = hw->soc->rsel_get(hw, desc, &ret);
-+		else
-+			err = -EOPNOTSUPP;
-+		break;
- 	default:
- 		err = -ENOTSUPP;
- 	}
-@@ -295,6 +305,12 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case MTK_PIN_CONFIG_RSEL:
-+		if (hw->soc->rsel_set)
-+			err = hw->soc->rsel_set(hw, desc, arg);
-+		else
-+			err = -EOPNOTSUPP;
-+		break;
- 	default:
- 		err = -ENOTSUPP;
- 	}
--- 
-2.18.0
+On Sun, 2021-03-14 at 02:00 +0800, Hsin-Hsiung Wang wrote:
+> Add spmi support for MT6873/8192.
+> 
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+> changes since v6:
+> - remove unused spinlock.
+> - remove redundant check for slave id.
+> ---
+>  drivers/spmi/Kconfig         |  10 +
+>  drivers/spmi/Makefile        |   2 +
+>  drivers/spmi/spmi-mtk-pmif.c | 465 +++++++++++++++++++++++++++++++++++
+>  3 files changed, 477 insertions(+)
+>  create mode 100644 drivers/spmi/spmi-mtk-pmif.c
+> 
+> diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
+> index a53bad541f1a..692bac98a120 100644
+> --- a/drivers/spmi/Kconfig
+> +++ b/drivers/spmi/Kconfig
+> @@ -25,4 +25,14 @@ config SPMI_MSM_PMIC_ARB
+>  	  This is required for communicating with Qualcomm PMICs and
+>  	  other devices that have the SPMI interface.
+>  
+> +config SPMI_MTK_PMIF
+> +	tristate "Mediatek SPMI Controller (PMIC Arbiter)"
+> +	help
+> +	  If you say yes to this option, support will be included for the
+> +	  built-in SPMI PMIC Arbiter interface on Mediatek family
+> +	  processors.
+> +
+> +	  This is required for communicating with Mediatek PMICs and
+> +	  other devices that have the SPMI interface.
+> +
+>  endif
+> diff --git a/drivers/spmi/Makefile b/drivers/spmi/Makefile
+> index 55a94cadeffe..76fb3b3ab510 100644
+> --- a/drivers/spmi/Makefile
+> +++ b/drivers/spmi/Makefile
+> @@ -5,3 +5,5 @@
+>  obj-$(CONFIG_SPMI)	+= spmi.o
+>  
+>  obj-$(CONFIG_SPMI_MSM_PMIC_ARB)	+= spmi-pmic-arb.o
+> +obj-$(CONFIG_SPMI_MTK_PMIF)	+= spmi-mtk-pmif.o
+> +
+> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+> new file mode 100644
+> index 000000000000..94c45d46ab0c
+> --- /dev/null
+> +++ b/drivers/spmi/spmi-mtk-pmif.c
+> @@ -0,0 +1,465 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2021 MediaTek Inc.
+> +
+> +#include <linux/clk.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/spmi.h>
+> +
+> +#define SWINF_IDLE	0x00
+> +#define SWINF_WFVLDCLR	0x06
+> +
+> +#define GET_SWINF(x)	(((x) >> 1) & 0x7)
+> +
+> +#define PMIF_CMD_REG_0		0
+> +#define PMIF_CMD_REG		1
+> +#define PMIF_CMD_EXT_REG	2
+> +#define PMIF_CMD_EXT_REG_LONG	3
+> +
+> +#define PMIF_DELAY_US   10
+> +#define PMIF_TIMEOUT_US (10 * 1000)
+> +
+> +#define PMIF_CHAN_OFFSET 0x5
+> +
+> +#define PMIF_MAX_CLKS	3
+> +
+> +#define SPMI_OP_ST_BUSY 1
+> +
+> +struct ch_reg {
+> +	u32 ch_sta;
+> +	u32 wdata;
+> +	u32 rdata;
+> +	u32 ch_send;
+> +	u32 ch_rdy;
+> +};
+> +
+> +struct pmif_data {
+> +	const u32	*regs;
+> +	const u32	*spmimst_regs;
+> +	u32	soc_chan;
+> +};
+> +
+> +struct pmif {
+> +	void __iomem	*base;
+> +	void __iomem	*spmimst_base;
+> +	struct ch_reg	chan;
+> +	struct clk_bulk_data clks[PMIF_MAX_CLKS];
+> +	u32 nclks;
+> +	const struct pmif_data *data;
+> +};
+> +
+> +static const char * const pmif_clock_names[] = {
+> +	"pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
+> +};
+> +
+> +enum pmif_regs {
+> +	PMIF_INIT_DONE,
+> +	PMIF_INF_EN,
+> +	PMIF_ARB_EN,
+> +	PMIF_CMDISSUE_EN,
+> +	PMIF_TIMER_CTRL,
+> +	PMIF_SPI_MODE_CTRL,
+> +	PMIF_IRQ_EVENT_EN_0,
+> +	PMIF_IRQ_FLAG_0,
+> +	PMIF_IRQ_CLR_0,
+> +	PMIF_IRQ_EVENT_EN_1,
+> +	PMIF_IRQ_FLAG_1,
+> +	PMIF_IRQ_CLR_1,
+> +	PMIF_IRQ_EVENT_EN_2,
+> +	PMIF_IRQ_FLAG_2,
+> +	PMIF_IRQ_CLR_2,
+> +	PMIF_IRQ_EVENT_EN_3,
+> +	PMIF_IRQ_FLAG_3,
+> +	PMIF_IRQ_CLR_3,
+> +	PMIF_IRQ_EVENT_EN_4,
+> +	PMIF_IRQ_FLAG_4,
+> +	PMIF_IRQ_CLR_4,
+> +	PMIF_WDT_EVENT_EN_0,
+> +	PMIF_WDT_FLAG_0,
+> +	PMIF_WDT_EVENT_EN_1,
+> +	PMIF_WDT_FLAG_1,
+> +	PMIF_SWINF_0_STA,
+> +	PMIF_SWINF_0_WDATA_31_0,
+> +	PMIF_SWINF_0_RDATA_31_0,
+> +	PMIF_SWINF_0_ACC,
+> +	PMIF_SWINF_0_VLD_CLR,
+> +	PMIF_SWINF_1_STA,
+> +	PMIF_SWINF_1_WDATA_31_0,
+> +	PMIF_SWINF_1_RDATA_31_0,
+> +	PMIF_SWINF_1_ACC,
+> +	PMIF_SWINF_1_VLD_CLR,
+> +	PMIF_SWINF_2_STA,
+> +	PMIF_SWINF_2_WDATA_31_0,
+> +	PMIF_SWINF_2_RDATA_31_0,
+> +	PMIF_SWINF_2_ACC,
+> +	PMIF_SWINF_2_VLD_CLR,
+> +	PMIF_SWINF_3_STA,
+> +	PMIF_SWINF_3_WDATA_31_0,
+> +	PMIF_SWINF_3_RDATA_31_0,
+> +	PMIF_SWINF_3_ACC,
+> +	PMIF_SWINF_3_VLD_CLR,
+> +};
+> +
+> +static const u32 mt6873_regs[] = {
+> +	[PMIF_INIT_DONE] =	0x0000,
+> +	[PMIF_INF_EN] =		0x0024,
+> +	[PMIF_ARB_EN] =		0x0150,
+> +	[PMIF_CMDISSUE_EN] =	0x03B4,
+> +	[PMIF_TIMER_CTRL] =	0x03E0,
+> +	[PMIF_SPI_MODE_CTRL] =	0x0400,
+> +	[PMIF_IRQ_EVENT_EN_0] =	0x0418,
+> +	[PMIF_IRQ_FLAG_0] =	0x0420,
+> +	[PMIF_IRQ_CLR_0] =	0x0424,
+> +	[PMIF_IRQ_EVENT_EN_1] =	0x0428,
+> +	[PMIF_IRQ_FLAG_1] =	0x0430,
+> +	[PMIF_IRQ_CLR_1] =	0x0434,
+> +	[PMIF_IRQ_EVENT_EN_2] =	0x0438,
+> +	[PMIF_IRQ_FLAG_2] =	0x0440,
+> +	[PMIF_IRQ_CLR_2] =	0x0444,
+> +	[PMIF_IRQ_EVENT_EN_3] =	0x0448,
+> +	[PMIF_IRQ_FLAG_3] =	0x0450,
+> +	[PMIF_IRQ_CLR_3] =	0x0454,
+> +	[PMIF_IRQ_EVENT_EN_4] =	0x0458,
+> +	[PMIF_IRQ_FLAG_4] =	0x0460,
+> +	[PMIF_IRQ_CLR_4] =	0x0464,
+> +	[PMIF_WDT_EVENT_EN_0] =	0x046C,
+> +	[PMIF_WDT_FLAG_0] =	0x0470,
+> +	[PMIF_WDT_EVENT_EN_1] =	0x0474,
+> +	[PMIF_WDT_FLAG_1] =	0x0478,
+> +	[PMIF_SWINF_0_ACC] =	0x0C00,
+> +	[PMIF_SWINF_0_WDATA_31_0] =	0x0C04,
+> +	[PMIF_SWINF_0_RDATA_31_0] =	0x0C14,
+> +	[PMIF_SWINF_0_VLD_CLR] =	0x0C24,
+> +	[PMIF_SWINF_0_STA] =	0x0C28,
+> +	[PMIF_SWINF_1_ACC] =	0x0C40,
+> +	[PMIF_SWINF_1_WDATA_31_0] =	0x0C44,
+> +	[PMIF_SWINF_1_RDATA_31_0] =	0x0C54,
+> +	[PMIF_SWINF_1_VLD_CLR] =	0x0C64,
+> +	[PMIF_SWINF_1_STA] =	0x0C68,
+> +	[PMIF_SWINF_2_ACC] =	0x0C80,
+> +	[PMIF_SWINF_2_WDATA_31_0] =	0x0C84,
+> +	[PMIF_SWINF_2_RDATA_31_0] =	0x0C94,
+> +	[PMIF_SWINF_2_VLD_CLR] =	0x0CA4,
+> +	[PMIF_SWINF_2_STA] =	0x0CA8,
+> +	[PMIF_SWINF_3_ACC] =	0x0CC0,
+> +	[PMIF_SWINF_3_WDATA_31_0] =	0x0CC4,
+> +	[PMIF_SWINF_3_RDATA_31_0] =	0x0CD4,
+> +	[PMIF_SWINF_3_VLD_CLR] =	0x0CE4,
+> +	[PMIF_SWINF_3_STA] =	0x0CE8,
+> +};
+> +
+> +enum spmi_regs {
+> +	SPMI_OP_ST_CTRL,
+> +	SPMI_GRP_ID_EN,
+> +	SPMI_OP_ST_STA,
+> +	SPMI_MST_SAMPL,
+> +	SPMI_MST_REQ_EN,
+> +	SPMI_REC_CTRL,
+> +	SPMI_REC0,
+> +	SPMI_REC1,
+> +	SPMI_REC2,
+> +	SPMI_REC3,
+> +	SPMI_REC4,
+> +	SPMI_MST_DBG,
+> +};
+> +
+> +static const u32 mt6873_spmi_regs[] = {
+> +	[SPMI_OP_ST_CTRL] =	0x0000,
+> +	[SPMI_GRP_ID_EN] =	0x0004,
+> +	[SPMI_OP_ST_STA] =	0x0008,
+> +	[SPMI_MST_SAMPL] =	0x000c,
+> +	[SPMI_MST_REQ_EN] =	0x0010,
+> +	[SPMI_REC_CTRL] =	0x0040,
+> +	[SPMI_REC0] =		0x0044,
+> +	[SPMI_REC1] =		0x0048,
+> +	[SPMI_REC2] =		0x004c,
+> +	[SPMI_REC3] =		0x0050,
+> +	[SPMI_REC4] =		0x0054,
+> +	[SPMI_MST_DBG] =	0x00fc,
+> +};
+> +
+> +static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
+> +{
+> +	return readl(arb->base + arb->data->regs[reg]);
+> +}
+> +
+> +static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
+> +{
+> +	writel(val, arb->base + arb->data->regs[reg]);
+> +}
+> +
+> +static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
+> +{
+> +	writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
+> +}
+> +
+> +static bool pmif_is_fsm_vldclr(struct pmif *arb)
+> +{
+> +	u32 reg_rdata;
+> +
+> +	reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
+> +	return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
+> +}
+> +
+> +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	u32 rdata, cmd;
+> +	int ret;
+> +
+> +	/* Check the opcode */
+> +	if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
+> +		return -EINVAL;
+> +
+> +	cmd = opc - SPMI_CMD_RESET;
+> +
+> +	mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
+> +	ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
+> +					rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0)
+> +		dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
+> +
+> +	return ret;
+> +}
+> +
+> +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +			      u16 addr, u8 *buf, size_t len)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	struct ch_reg *inf_reg;
+> +	int ret;
+> +	u32 data, cmd;
+> +
+> +	/* Check for argument validation. */
+> +	if (sid & ~0xf) {
+> +		dev_err(&ctrl->dev, "exceed the max slv id\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (len > 4) {
+> +		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (opc >= 0x60 && opc <= 0x7f)
+> +		opc = PMIF_CMD_REG;
+> +	else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
+> +		opc = PMIF_CMD_EXT_REG_LONG;
+> +	else
+> +		return -EINVAL;
+> +
+> +	/* Wait for Software Interface FSM state to be IDLE. */
+> +	inf_reg = &arb->chan;
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_IDLE,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		/* set channel ready if the data has transferred */
+> +		if (pmif_is_fsm_vldclr(arb))
+> +			pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +		goto out;
+> +	}
+> +
+> +	/* Send the command. */
+> +	cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
+> +	pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +	/*
+> +	 * Wait for Software Interface FSM state to be WFVLDCLR,
+> +	 * read the data and clear the valid flag.
+> +	 */
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_WFVLDCLR,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
+> +		goto out;
+> +	}
+> +
+> +	data = pmif_readl(arb, inf_reg->rdata);
+> +	memcpy(buf, &data, len);
+> +	pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +
+> +out:
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +			       u16 addr, const u8 *buf, size_t len)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	struct ch_reg *inf_reg;
+> +	int ret;
+> +	u32 data, cmd;
+> +
+> +	if (len > 4) {
+> +		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Check the opcode */
+> +	if (opc >= 0x40 && opc <= 0x5F)
+> +		opc = PMIF_CMD_REG;
+> +	else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
+> +		opc = PMIF_CMD_EXT_REG_LONG;
+> +	else if (opc >= 0x80)
+> +		opc = PMIF_CMD_REG_0;
+> +	else
+> +		return -EINVAL;
+> +
+> +	/* Wait for Software Interface FSM state to be IDLE. */
+> +	inf_reg = &arb->chan;
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_IDLE,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		/* set channel ready if the data has transferred */
+> +		if (pmif_is_fsm_vldclr(arb))
+> +			pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +		goto out;
+> +	}
+> +
+> +	/* Set the write data. */
+> +	memcpy(&data, buf, len);
+> +	pmif_writel(arb, data, inf_reg->wdata);
+> +
+> +	/* Send the command. */
+> +	cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
+> +	pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +out:
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct pmif_data mt6873_pmif_arb = {
+> +	.regs = mt6873_regs,
+> +	.spmimst_regs = mt6873_spmi_regs,
+> +	.soc_chan = 2,
+> +};
+> +
+> +static int mtk_spmi_probe(struct platform_device *pdev)
+> +{
+> +	struct pmif *arb;
+> +	struct spmi_controller *ctrl;
+> +	int err, i;
+> +	u32 chan_offset;
+> +
+> +	ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*arb));
+> +	if (!ctrl)
+> +		return -ENOMEM;
+> +
+> +	arb = spmi_controller_get_drvdata(ctrl);
+> +	arb->data = of_device_get_match_data(&pdev->dev);
+> +	if (!arb->data) {
+> +		err = -EINVAL;
+> +		dev_err(&pdev->dev, "Cannot get drv_data\n");
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	arb->base = devm_platform_ioremap_resource_byname(pdev, "pmif");
+> +	if (IS_ERR(arb->base)) {
+> +		err = PTR_ERR(arb->base);
+> +		dev_err(&pdev->dev, "pmif failed to get the remappped memory\n");
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	arb->spmimst_base = devm_platform_ioremap_resource_byname(pdev, "spmimst");
+> +	if (IS_ERR(arb->spmimst_base)) {
+> +		err = PTR_ERR(arb->spmimst_base);
+> +		dev_err(&pdev->dev, "spmimst failed to get the remappped memory\n");
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	arb->nclks = ARRAY_SIZE(pmif_clock_names);
+> +	if (arb->nclks > PMIF_MAX_CLKS) {
+> +		err = -EINVAL;
+> +		dev_err(&pdev->dev, "exceed the max clock numbers\n");
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	for (i = 0; i < arb->nclks; i++)
+> +		arb->clks[i].id = pmif_clock_names[i];
+> +
+> +	err = devm_clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
+> +	if (err) {
+> +		dev_err(&pdev->dev, "Failed to get clocks: %d\n", err);
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	err = clk_bulk_prepare_enable(arb->nclks, arb->clks);
+> +	if (err) {
+> +		dev_err(&pdev->dev, "Failed to enable clocks: %d\n", err);
+> +		goto err_put_ctrl;
+> +	}
+> +
+> +	ctrl->cmd = pmif_arb_cmd;
+> +	ctrl->read_cmd = pmif_spmi_read_cmd;
+> +	ctrl->write_cmd = pmif_spmi_write_cmd;
+> +
+> +	chan_offset = PMIF_CHAN_OFFSET * arb->data->soc_chan;
+> +	arb->chan.ch_sta = PMIF_SWINF_0_STA + chan_offset;
+> +	arb->chan.wdata = PMIF_SWINF_0_WDATA_31_0 + chan_offset;
+> +	arb->chan.rdata = PMIF_SWINF_0_RDATA_31_0 + chan_offset;
+> +	arb->chan.ch_send = PMIF_SWINF_0_ACC + chan_offset;
+> +	arb->chan.ch_rdy = PMIF_SWINF_0_VLD_CLR + chan_offset;
+> +
+> +	platform_set_drvdata(pdev, ctrl);
+> +
+> +	err = spmi_controller_add(ctrl);
+> +	if (err)
+> +		goto err_domain_remove;
+> +
+> +	return 0;
+> +
+> +err_domain_remove:
+> +	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
+> +err_put_ctrl:
+> +	spmi_controller_put(ctrl);
+> +	return err;
+> +}
+> +
+> +static int mtk_spmi_remove(struct platform_device *pdev)
+> +{
+> +	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +
+> +	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
+> +	spmi_controller_remove(ctrl);
+> +	spmi_controller_put(ctrl);
+> +	return 0;
+> +}
+> +
+> +static const struct of_device_id mtk_spmi_match_table[] = {
+> +	{
+> +		.compatible = "mediatek,mt6873-spmi",
+> +		.data = &mt6873_pmif_arb,
+> +	}, {
+> +		/* sentinel */
+> +	},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_spmi_match_table);
+> +
+> +static struct platform_driver mtk_spmi_driver = {
+> +	.driver		= {
+> +		.name	= "spmi-mtk",
+> +		.of_match_table = of_match_ptr(mtk_spmi_match_table),
+> +	},
+> +	.probe		= mtk_spmi_probe,
+> +	.remove		= mtk_spmi_remove,
+> +};
+> +module_platform_driver(mtk_spmi_driver);
+> +
+> +MODULE_AUTHOR("Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>");
+> +MODULE_DESCRIPTION("MediaTek SPMI Driver");
+> +MODULE_LICENSE("GPL");
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
