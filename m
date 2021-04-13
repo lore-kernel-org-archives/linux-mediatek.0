@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A299DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 05:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D1B1C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 05:58:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 48472613AF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 05:36:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 48472613AF
+	by mail.kernel.org (Postfix) with ESMTPS id E36C06102A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 05:58:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E36C06102A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,71 +24,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=knxHNECPdJAqKd6k8OgEDWj5bK5L6vjnbZMn7mMRAxs=; b=meY9auSHpus2Cdbpg6ysmpSwr
-	u7HaCv7uB7Dq9tzqxkzFL6TeHi121kXuQW0SdvJXRxhxi7Qz3M9lUiJHMa7rR1VM4BYs3RwTqkkAk
-	1VQxYTgC0xhHObC5mF/i94MhF5NFZ1BlpJT/B73ckeQxQ6B8QXS8QPEyyKAt+fs2mzdeBpucx7WCf
-	hhpoeZwzG9weJ3yPbi0RN14y/c6Kr+7XTrNwD0vBbjaOSzPbkG+Sor/Jo/S8nC3MYFlpcHzmYNiGR
-	itufN3v/id8AerXIW+a8oVgpQXOo28/ErYNjkQow5SnZ6rK3k2PJIcPPoeaeAgQvKS55iuqw4c/FG
-	UVQGbKuhg==;
+	 bh=BYourh25pymYoDRMIosEXByiE/VNTOILJ/WEpsHBUJw=; b=PWUmFSGIXKqAYjJicXohCyvv3
+	DtJkl7h2h+hfeUUngaJpgkPwVY264sm0rmKbzzkh4XvqOLsAEuCBEZOICYQGNhKAsFdaboJwW4kqG
+	H3SXDP4GTFi/MsZgfywZVe7b2K3rdgRlg274E7GoIKRCncOkxI4Gu9+xDISRNqUoUCDz5+3YBsMrT
+	na2dx1kqSIF0a6ri61M2pntYa6w4TqHmw6dFvKH+S24HiyIBBdR4fSLzJS+gIDGm68fr7XiC5Up0R
+	4YAHSbI0aAYOXnkJIBJJP8yay0h9/ra7hVsc/V2RqdlgFUq+3Lo5LJ6z9MPJ6RTM+0z7bVCl60/kO
+	eU4z2vOKg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWBiG-008JHa-60; Tue, 13 Apr 2021 05:35:49 +0000
+	id 1lWC3m-008Kcw-6T; Tue, 13 Apr 2021 05:58:02 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWBhf-008JEx-OB
- for linux-mediatek@desiato.infradead.org; Tue, 13 Apr 2021 05:35:22 +0000
+ id 1lWC3R-008KbC-Uv; Tue, 13 Apr 2021 05:57:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=Duhom3brMv4t49JPUBeN+Va8GkjWJzQOsnbO33IMV4c=; b=OKr7cQFBiZzcu9sOSFiwy979Ys
- GWQRTT9U6Xibx2B0Q59jptjCsJtmZB4ZTKcRZvoJvWcsWpkv/h+J8Alek2aV9lU4XkYfEHCFWZiWj
- a6zuyt+mzQT3CbDOTjzHlF/sxsWCp4KtHY7sl7weUPvoS6NkPcJ7sulJa0j043UUFu8yyqpI6E5GI
- CB2jtRLPULn7/UHcWzEGEFwPGAxmCwthL5ATmuPts/9d4aqzJBQR2blT+CLnveE2ieptenhY0MKqf
- +B8sdk49ks+hgRNR4S3aNxvDzetBbWqwZI/RbwzxuN9TrnDQ9GVV0AfqGp2IYR6CPtzejsRn5YP7e
- 1xd01m4w==;
+ bh=iE2IBBF1NTR8xVhsmDLOl8lVIqE7rxe5QagDJ0qVi2c=; b=T2S8JkITl3MBcHY02+HimfpKWq
+ +YvDeoKFo+sC8IlQPSP8pC6FgTL+Mi0XChQtDF3vCbWri5gfPzHZTr6402OvZXW0WZ641OskPM3XI
+ CFLhf+cHE72eetIi/nvQ9CALyTchBLSf4eXtNGBkDTbIsCzDZvq3FfHuQyasmDbPM/6EmAeQa77bU
+ 6t0xdssccc7qSgmoCbwBcF7Vq1X8pQ/Rvura8KQjRZKEs7MP9rP4WNtqZTc33GhJNt4l3kqk+cMkM
+ 4pHlKK48MUO3qHEl+GYhftAfNJ25kW29c+7WxxlpEZruuCrTptRs72YpdHiIJjaUzpUSeAsN/5ra+
+ MIPzJzMA==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWBhc-006kJU-A4
- for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 05:35:09 +0000
-X-UUID: 62a8b38a7ff042838b99ae19a4bbce0e-20210412
+ id 1lWC3P-006ks6-7L; Tue, 13 Apr 2021 05:57:40 +0000
+X-UUID: 63b01dda954f4be5bc2a6174e7131987-20210412
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Duhom3brMv4t49JPUBeN+Va8GkjWJzQOsnbO33IMV4c=; 
- b=ti63yeWwTzLSvXnki130CNvHAQSdb/zzIcRdPmVeFjLRYTheHY6c9Nrq9BpSlOvEQrJ4PgQ0HBeHVe8MRuGhZr5ip3d+poj4pzoIARtAgeHeyKvyqvMb+71hyJW5sjNJamceId9w3KD+7z6hdcipXhYYvF7pDI9BWxtZHw9vUJs=;
-X-UUID: 62a8b38a7ff042838b99ae19a4bbce0e-20210412
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
+ bh=iE2IBBF1NTR8xVhsmDLOl8lVIqE7rxe5QagDJ0qVi2c=; 
+ b=ryte+uvvXXWNiB1rwr1SyzddYqKMm4oOBPk4tDAEruhhEwlZ/+FIZ6mW9oelnZsqETIqr8XwNzD6N7rEky0YNueGlhtI/KWkG2Js/Zvq4G5XPEHlIBCndm/8uwIQBoBuEe79oQ9ksDIUGYjWXxrHEjs3j0ukBi8FyewKv9D/Qr0=;
+X-UUID: 63b01dda954f4be5bc2a6174e7131987-20210412
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 527192626; Mon, 12 Apr 2021 22:35:02 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Apr 2021 22:35:00 -0700
+ with ESMTP id 128916173; Mon, 12 Apr 2021 22:57:37 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Apr 2021 22:57:35 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Apr 2021 13:34:58 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 13 Apr 2021 13:34:58 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
- <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] mt76: mt7915: fix memleak when mt7915_unregister_device()
-Date: Tue, 13 Apr 2021 13:34:57 +0800
-Message-ID: <3bf5d5df8fcd20a8a093c2de849f527c28c6fc54.1618290080.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <519a81d0c36ab64750a39b1eac3cb86a09cb2f1d.1618290080.git.ryder.lee@mediatek.com>
-References: <519a81d0c36ab64750a39b1eac3cb86a09cb2f1d.1618290080.git.ryder.lee@mediatek.com>
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Apr 2021 13:57:34 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 13 Apr 2021 13:57:32 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
+ <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
+CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>, <jg_poxu@mediatek.com>,
+ <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
+ <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-gpio@vger.kernel.org>
+Subject: [PATCH v4 3/4] pinctrl: add drive for I2C related pins on MT8195
+Date: Tue, 13 Apr 2021 13:57:01 +0800
+Message-ID: <20210413055702.27535-4-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210413055702.27535-1-zhiyong.tao@mediatek.com>
+References: <20210413055702.27535-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 1C05952F9C6A380AA889A5D17CC999E72F6B5A0625C5EB7C02979FA5D022D8B62000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210412_223508_380970_51DD980A 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210412_225739_291764_F301F19B 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,29 +106,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7915_tx_token_put() should get call before mt76_free_pending_txwi().
+This patch provides the advanced drive raw data setting version
+for I2C used pins on MT8195.
 
-Fixes: f285dfb98562 ("mt76: mt7915: reset token when mac_reset happens")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/init.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 22 +++++++++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 14 ++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  5 +++++
+ 3 files changed, 41 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 3f9f74aa8399..6322a92fd2d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -744,9 +744,8 @@ void mt7915_unregister_device(struct mt7915_dev *dev)
- 	mt7915_unregister_ext_phy(dev);
- 	mt76_unregister_device(&dev->mt76);
- 	mt7915_mcu_exit(dev);
--	mt7915_dma_cleanup(dev);
--
- 	mt7915_tx_token_put(dev);
-+	mt7915_dma_cleanup(dev);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+index 063f164d7c9b..a7500e18bb1d 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+@@ -760,6 +760,25 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_range[] = {
+ 	PIN_FIELD_BASE(143, 143, 1, 0x020, 0x10, 24, 3),
+ };
  
- 	mt76_free_device(&dev->mt76);
++static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
++	PIN_FIELD_BASE(8, 8, 4, 0x020, 0x10, 15, 3),
++	PIN_FIELD_BASE(9, 9, 4, 0x020, 0x10, 0, 3),
++	PIN_FIELD_BASE(10, 10, 4, 0x020, 0x10, 18, 3),
++	PIN_FIELD_BASE(11, 11, 4, 0x020, 0x10, 3, 3),
++	PIN_FIELD_BASE(12, 12, 4, 0x020, 0x10, 21, 3),
++	PIN_FIELD_BASE(13, 13, 4, 0x020, 0x10, 6, 3),
++	PIN_FIELD_BASE(14, 14, 4, 0x020, 0x10, 24, 3),
++	PIN_FIELD_BASE(15, 15, 4, 0x020, 0x10, 9, 3),
++	PIN_FIELD_BASE(16, 16, 4, 0x020, 0x10, 27, 3),
++	PIN_FIELD_BASE(17, 17, 4, 0x020, 0x10, 12, 3),
++	PIN_FIELD_BASE(29, 29, 2, 0x020, 0x10, 0, 3),
++	PIN_FIELD_BASE(30, 30, 2, 0x020, 0x10, 3, 3),
++	PIN_FIELD_BASE(34, 34, 1, 0x040, 0x10, 0, 3),
++	PIN_FIELD_BASE(35, 35, 1, 0x040, 0x10, 3, 3),
++	PIN_FIELD_BASE(44, 44, 1, 0x040, 0x10, 6, 3),
++	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
++};
++
+ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
+ 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
+@@ -773,6 +792,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt8195_pin_pupd_range),
+ 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
+ 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
++	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
+ };
+ 
+ static const char * const mt8195_pinctrl_register_base_names[] = {
+@@ -801,6 +821,8 @@ static const struct mtk_pin_soc mt8195_data = {
+ 	.bias_get_combo = mtk_pinconf_bias_get_combo,
+ 	.drive_set = mtk_pinconf_drive_set_rev1,
+ 	.drive_get = mtk_pinconf_drive_get_rev1,
++	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
++	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
+ };
+ 
+ static const struct of_device_id mt8195_pinctrl_of_match[] = {
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index 72f17f26acd8..2b51f4a9b860 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -1027,6 +1027,20 @@ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
  }
+ EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get);
+ 
++int mtk_pinconf_adv_drive_set_raw(struct mtk_pinctrl *hw,
++				  const struct mtk_pin_desc *desc, u32 arg)
++{
++	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DRV_ADV, arg);
++}
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_set_raw);
++
++int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
++				  const struct mtk_pin_desc *desc, u32 *val)
++{
++	return mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV_ADV, val);
++}
++EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get_raw);
++
+ MODULE_LICENSE("GPL v2");
+ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+ MODULE_DESCRIPTION("Pin configuration library module for mediatek SoCs");
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index e2aae285b5fc..fd5ce9c5dcbd 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -66,6 +66,7 @@ enum {
+ 	PINCTRL_PIN_REG_DRV_EN,
+ 	PINCTRL_PIN_REG_DRV_E0,
+ 	PINCTRL_PIN_REG_DRV_E1,
++	PINCTRL_PIN_REG_DRV_ADV,
+ 	PINCTRL_PIN_REG_MAX,
+ };
+ 
+@@ -314,6 +315,10 @@ int mtk_pinconf_adv_drive_set(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 arg);
+ int mtk_pinconf_adv_drive_get(struct mtk_pinctrl *hw,
+ 			      const struct mtk_pin_desc *desc, u32 *val);
++int mtk_pinconf_adv_drive_set_raw(struct mtk_pinctrl *hw,
++				  const struct mtk_pin_desc *desc, u32 arg);
++int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
++				  const struct mtk_pin_desc *desc, u32 *val);
+ 
+ bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
+ #endif /* __PINCTRL_MTK_COMMON_V2_H */
 -- 
 2.18.0
 _______________________________________________
