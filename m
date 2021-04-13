@@ -2,20 +2,20 @@ Return-Path: <SRS0=dZqu=JK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4842C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EBDEC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:29:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4CBAD613BB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:01:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CBAD613BB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
+	by mail.kernel.org (Postfix) with ESMTPS id B2CA261353
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Apr 2021 15:29:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2CA261353
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,93 +23,102 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rbk2p6K/RQjqLKoiJ0Bvc24fkWcq+Nls3Qaq8B4r0pE=; b=WcTG5iqjTYABH7dU+hw4/F31j
-	LsjgRo8lGJPdhasUS2d5jN/zL6mBh2imzpF1GjQfiPDvaop/TwE6+AgKP5f1unNBQ3EeAL96vNXuB
-	ROPeMGE8llRxwzjXsC7Fapcqn/v9w2zfiPWzlxpdEPqK6CL4AWdZaHmCk471x6pSmygQHbOq038zu
-	qSekytWCJEG8ZPCbrOZTChWPduGe/Tsb6fkYKcVPF+xk8DxLQiprQD7PCCSJ/u7A8QC/L+8V9gT6a
-	dtHx8ug8GTzJIuLYj6pAzinX8y1c7ecHeMFE34qd1diFR1Bz7qSriurJAOYhfi3vzmzICyK3Gb2Q5
-	Mh0YHMJug==;
+	 bh=1wJ59GY2r76x6VFygBfTefhd1J0ceLXvBLkiKwG7a9g=; b=X8YWll0Z/Bo05Bln5ORd5DDzd
+	P0A+7VuFwFYlkituZik7E57PWjr7E49pEFDMML78wlCxI6o66kTVBBnf518feWP9/zn/m/wIzHgNv
+	NFNtW5cTmpuYp2/8J9kOInMQGXwojyoJIBK7ylUgvJk/LkO3pG+0zscfqTDUuXY7D4LCFcC6WZrS7
+	Oq0KA7trDDOwsutHbC/xBw8l2hvgoSduZHzYKzwi06o9BmO2BuPMwKaMqarSPL4M9oO3ub4Xe1aje
+	2g1cPPqixD3YkH7XTH5KHjjk+D9OtdDOywWTp7OoIvGNZEAWvFc3MPbB0NQDZx//6cv7YoiZ1G4OD
+	p3o8WLTIQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWKXU-009ZxP-B5; Tue, 13 Apr 2021 15:01:17 +0000
+	id 1lWKyw-009esi-9k; Tue, 13 Apr 2021 15:29:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKUs-009ZjJ-Ux
- for linux-mediatek@desiato.infradead.org; Tue, 13 Apr 2021 14:59:05 +0000
+ id 1lWKyu-009esC-Bx
+ for linux-mediatek@desiato.infradead.org; Tue, 13 Apr 2021 15:29:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=Ph9+/mYhqHgYa9Fj9YRroZ2f7XAlKgwCaPOsxelpWRE=; b=D88mGdjTR+id1LXX6h5V/hUzbh
- uBSl20OvqEOBZi3QLZaFa/o0ji+8pqMxqbSEjMxXhEuwE5arXZS2nCH7OD1ORjh9N1obRhJ22EwSF
- pdYUDPI2uiqRhJAfumZ0LWZE70Q6X6OqTbTF/LxGT36Tri7k71hotzOyRnaASUOMfnLnnMkIRlGeu
- YWN+izTXXKcZJTElk+716wimHXW3pmFL7I1tjhL2yszkbGjMa/fc7b0IauywkvB53Gva2sbODifAp
- pvh28eR/M8N2oEsadZPH5elul5IBdBRquAsAAv+pICJFslZ9bNjR6WIFhXhKTH//Wl5i7GaKlATZw
- vNBjKyrQ==;
-Received: from youngberry.canonical.com ([91.189.89.112])
+ bh=Tzst4teGsUoIZnd0R8IxVImn0/EL/BJJDcQq4MQFjo4=; b=YzsCrEgL2+xPdeA8dtwAHMABI7
+ wlO/2dfERaPZmSh5iGREGOn6k1MUbUc631TT9Ay4beDZVZJjdoYXVBje6BCkF70PJYg+X8QlIAp9W
+ VM4jPCV8T32nwAYSCslwRm9xeRaDOWdBCDhiamy/Dm8VCHQ4ANNp3ktP5HQz0+/NN/Y4HI7o0ZD6h
+ HX5ggCvF7iqBHT4kLj6gtSvn9NsToh34ZwJ4flUc/YYX0XGHFuR00wZAyIJOXopicUSL6Nr4dVijW
+ hfueJ50n2M6pStym5oTL9n9mOPAa3DbRVtE6VeAf5z9IZDq319f50b21hwgfEx3cX/UX1BOT4kwwW
+ WtLs+oDw==;
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWKUq-0077i7-J7
- for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:33 +0000
-Received: from mail-ed1-f70.google.com ([209.85.208.70])
- by youngberry.canonical.com with esmtps
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <krzysztof.kozlowski@canonical.com>)
- id 1lWKUo-0005Ec-V3
- for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 14:58:31 +0000
-Received: by mail-ed1-f70.google.com with SMTP id
- i5-20020aa7dd050000b02903830cafa575so6851edv.6
- for <linux-mediatek@lists.infradead.org>; Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
+ id 1lWKyq-00791P-Lh
+ for linux-mediatek@lists.infradead.org; Tue, 13 Apr 2021 15:29:35 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ em21-20020a17090b0155b029014e204a81e6so1475355pjb.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 13 Apr 2021 08:29:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=Tzst4teGsUoIZnd0R8IxVImn0/EL/BJJDcQq4MQFjo4=;
+ b=S3zmzlLlDts+/gEFYumbHLX8X8Rqk/4FnMtLjuXf4L718dbKhoPzjH8zhXtIOQkflS
+ Y8edxv/En47poNL0GJVtLjpfb7dQP2kJKH4wKemMoEA1ARslDPSaooNJRFal0iE2UuGV
+ NemLLy+CofV/dML0jLBe6e6XFpkFzko+n4gK8X9kAhEMm9jXapQyHRIv0aS0DEz+7JuX
+ FqkiwdFOcHfwwCqCRbq0JeBiC6ilqfXJNdv99SI0mXpaqUq9Ms+t+DW84pCrednE5fpK
+ mADBd+KVY8nBuBWQpZ5e+OVT6RIBnEVokaYZnDrRQHNSY2LGN8vTqgqsJL9zYS4g6o/E
+ M0Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Ph9+/mYhqHgYa9Fj9YRroZ2f7XAlKgwCaPOsxelpWRE=;
- b=IUWQUb/ncdPncB23nvIoynxvwR+0zTJXSsLSPu/Tv16SV6M0hp3TQS2IjzojObVVKZ
- wSLRhCz0KSOsfKeYnyG+UGQwChZAjbo6gVIQBTF4cgZV77AqOksVXL0DO+OLeAytkaV/
- 6yz3N+J8RUna9NaWUPbZ4hOFkZ5Ut6dO7Y6RFtBHToTCJBlYLjdDwMIiMmgTRHozUb0y
- nfsN9C01eigQE/7WbesWRHWiPq6CvZmXjov/wkkRM5JmVhyFaAeCXFCmTAa5lSL32CRZ
- uxnsxHk1MBF/EZD6H+3onbuJTwKAw7YRHaX6q/2yCNxpvqtnS3EtcjvJEfCDIctNB2uv
- TNCA==
-X-Gm-Message-State: AOAM5339x1c825ionYgnnTxOKZkhwtdsonG9fXqTFLkT0deJ7m/r+0Ss
- 793PD+0+9gQw+EPSub2GKp3MxNm17UgdKdhyBA1QHAbFwqRtNxXQ6GBx9Ycle8PSyfIMWJRgG7Q
- lowQnxolp335CKepLR8pt0EquQ2mnqspEi77emwhDL4ea9gHKIw==
-X-Received: by 2002:a17:906:c7ca:: with SMTP id
- dc10mr13614380ejb.294.1618325910747; 
- Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwgRCGqwTKY1uXNFzYOC/YmWaq5iHZG/z/5N5f+QW5qWm9hQs1h7yWI+1JNCO0I2BVghLszFQ==
-X-Received: by 2002:a17:906:c7ca:: with SMTP id
- dc10mr13614363ejb.294.1618325910652; 
- Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
-Received: from localhost.localdomain (xdsl-188-155-192-147.adslplus.ch.
- [188.155.192.147])
- by smtp.gmail.com with ESMTPSA id p3sm4395217ejd.65.2021.04.13.07.58.29
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=Tzst4teGsUoIZnd0R8IxVImn0/EL/BJJDcQq4MQFjo4=;
+ b=DTy+65IP3Se/86SRYivfg0tfjjDFsZzJ5R50/d2uhJ6evvMchVIu4BrGByrresy18A
+ 7GcZOWZavv3YvD7OuJP3XCYLnXsuvbXIrsHMRs+BlFGGvb0kUy6mqoTo55vn8cd97KJa
+ AywsdiJJdAS6VjBCuGtUj/w2bnRRtXQQmrWi3NlwR8MGt4LgZ7xOZwaz2IlKxLA90+gU
+ YT/rLdwDXvAM9/AiL6vAGKVicuy4/aJwN1myW6fqKDsfX/ZolB7fxZNTUdOVYuQ+p6wx
+ IuVio/SrqCusekMH4oa+pJXw7/RhquKsj/TizP5H2O61dSDCF6dCvtKIAzArSlp+mmbq
+ ymhg==
+X-Gm-Message-State: AOAM530t6syM9wWYftfDPUWY0TTOhdUWw+rhLPDXXHuzmmLdTiAbBlH5
+ jQzspnnkbZkHmSrL4xSRcd0=
+X-Google-Smtp-Source: ABdhPJwYeKgUkvJZKeaa5VJTZBxqfvRjLXKooh+l9jFPdIugJz+CK1Rw/1dRmLCAvQuTmAGRkjejTg==
+X-Received: by 2002:a17:90b:1bce:: with SMTP id
+ oa14mr587690pjb.9.1618327771605; 
+ Tue, 13 Apr 2021 08:29:31 -0700 (PDT)
+Received: from localhost.localdomain ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id g4sm14852078pgu.46.2021.04.13.08.29.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Apr 2021 07:58:30 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Tomasz Figa <tfiga@chromium.org>, youlin.pei@mediatek.com,
- acourbot@chromium.org, iommu@lists.linux-foundation.org,
- eizan@chromium.org, linux-mediatek@lists.infradead.org,
- yi.kuo@mediatek.com, anan.sun@mediatek.com, chao.hao@mediatek.com,
- Evan Green <evgreen@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
- Will Deacon <will.deacon@arm.com>, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, ming-fan.chen@mediatek.com,
- linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>,
- Nicolas Boichat <drinkcat@chromium.org>, devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH v5 00/16] Clean up "mediatek,larb"
-Date: Tue, 13 Apr 2021 16:58:24 +0200
-Message-Id: <161832589345.71964.1780926932144222450.b4-ty@canonical.com>
+ Tue, 13 Apr 2021 08:29:30 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Marc Zyngier <maz@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
+ Chuanhong Guo <gch981213@gmail.com>,
+ =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Greg Ungerer <gerg@kernel.org>
+Subject: Re: [RFC v4 net-next 2/4] net: dsa: mt7530: add interrupt support
+Date: Tue, 13 Apr 2021 23:29:20 +0800
+Message-Id: <20210413152920.2190769-1-dqfext@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210410091128.31823-1-yong.wu@mediatek.com>
-References: <20210410091128.31823-1-yong.wu@mediatek.com>
+In-Reply-To: <YHWUK+tG3v9ZU/DT@lunn.ch>
+References: <20210412034237.2473017-1-dqfext@gmail.com>
+ <20210412034237.2473017-3-dqfext@gmail.com> <87fszvoqvb.wl-maz@kernel.org>
+ <20210412152210.929733-1-dqfext@gmail.com> <YHTgu1+6GZFdFgWJ@lunn.ch>
+ <8735vuobfo.wl-maz@kernel.org> <YHWUK+tG3v9ZU/DT@lunn.ch>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210413_075832_777514_C8C44C14 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210413_082932_732799_871B424F 
+X-CRM114-Status: GOOD (  25.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,30 +135,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 10 Apr 2021 17:11:12 +0800, Yong Wu wrote:
-> MediaTek IOMMU block diagram always like below:
+On Tue, Apr 13, 2021 at 02:52:59PM +0200, Andrew Lunn wrote:
+> > I guess this is depends whether the most usual case is to have all
+> > these interrupts being actively in use or not. Most interrupts only
+> > use a limited portion of their interrupt space at any given time.
+> > Allocating all interrupts and creating mappings upfront is a waste of
+> > memory.
+> > 
+> > If the use case here is that all these interrupts will be wired and
+> > used in most cases, then upfront allocation is probably not a problem.
 > 
->         M4U
->          |
->     smi-common
->          |
->   -------------
->   |         |  ...
->   |         |
-> larb1     larb2
->   |         |
-> vdec       venc
+> Hi Marc
 > 
-> [...]
+> The interrupts are generally used. Since this is an Ethernet switch,
+> generally the port is administratively up, even if there is no cable
+> plugged in. Once/if a cable is plugged in and there is a link peer,
+> the PHY will interrupt to indicate this.
+> 
+> The only real case i can think of when the interrupts are not used is
+> when the switch has more ports than connected to the front panel. This
+> can happen in industrial settings, but not SOHO. Those ports which
+> don't go anywhere are never configured up and so the interrupt is
+> never used.
 
-Applied, thanks!
+Hi Andrew
 
-[04/16] memory: mtk-smi: Add device-link between smi-larb and smi-common
-        commit: 6ce2c05b21189eb17b3aa26720cc5841acf9dce8
+This is what the extra check (BIT(p) & ds->phys_mii_mask) avoids.
 
-Best regards,
--- 
-Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Currently the mv88e6xxx driver does not have this check, and creates
+15 PHY IRQ mappings on my 88E6176 unconditionally, leaving a gap in
+/proc/interrupts:
+
+...
+ 57:          0          0  mv88e6xxx-g1   3 Edge      mv88e6xxx-f1072004.mdio-mii:00-g1-atu-prob
+ 59:          0          0  mv88e6xxx-g1   5 Edge      mv88e6xxx-f1072004.mdio-mii:00-g1-vtu-prob
+ 61:          8          5  mv88e6xxx-g1   7 Edge      mv88e6xxx-f1072004.mdio-mii:00-g2
+ 63:          8          4  mv88e6xxx-g2   0 Edge      mv88e6xxx-1:00
+ 64:          0          0  mv88e6xxx-g2   1 Edge      mv88e6xxx-1:01
+ 65:          0          0  mv88e6xxx-g2   2 Edge      mv88e6xxx-1:02
+ 66:          0          0  mv88e6xxx-g2   3 Edge      mv88e6xxx-1:03
+ 67:          0          2  mv88e6xxx-g2   4 Edge      mv88e6xxx-1:04
+// IRQ 68~77 are created but not used
+ 78:          0          0  mv88e6xxx-g2  15 Edge      mv88e6xxx-f1072004.mdio-mii:00-watchdog
+...
+
+You may as well add irq_set_nested_thread(irq, true) to irq_domain_map
+so all IRQs share a single thread.
+
+> 
+>       Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
