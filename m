@@ -2,149 +2,87 @@ Return-Path: <SRS0=Strr=JL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C8BCC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 12:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DFBCC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 12:57:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9DA0B6105A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 12:13:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DA0B6105A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	by mail.kernel.org (Postfix) with ESMTPS id 05E6761179
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 12:57:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05E6761179
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bRQIlbaweLLYlKANxq5b5Ti/Kp3ggM1wjMxO7ePmt3I=; b=bKyjQpI7eE/hfgfaGNkgIgal8
-	3JnQDBBZpCggEIlaBrN4o/u4iIokYCtumneionMDBSUivlmNQ64EfarHO2N4ZLAviEfymeYEd71tF
-	0HGxdxD4+/8Ov74BcJVMc7rtw8V0+HCMtGzjTypC1EZJru8KsQPruMKmefbD/IZYNGRXgSx4k/8Uj
-	Hp5sAS/IShXmU42M3ZQZTQPL7U+ff+Iv3xcNl7mXfpGMrOBTsDyQday+c4NM+nswDM9/h4Ivf7IEg
-	/1W7hoXOcEdQsP8W3fIxq/W9ax7VV5GmP0WGZ0JymteD6yrRtpSXPEW78tInrsHplyfZ7UcxmRld+
-	AWCrvKDbA==;
+	 bh=P8gQedrg9ZUICw0KgaNbWNX6wqUhwb08XS4vnieiAn8=; b=R48w5RjyOeGKB+kevuZFOdXv2
+	axuAfuB1Xo3qhsWi8a39zP9vbyNbN4L7pGJZwZpOEtq1UzAuoA3bdYCZPZgE5cGnS0S+0ZUygaAru
+	zlGjA9a7x0He28LnLXjgMpw/yNbPW1y3gU+HsnQY6PrUtyWgtEt87B5w+M1b3mX2+IUK/gaNweKdH
+	4/9u39UabJVKkAPzLQRpivdBnGuaJJuP3r9Z1Qei34XVgwy1RMfmRG+jG41Ct2NXARrum9nIzC4Cu
+	h0os4XAMY0z1uqnOxLbtNI8VQu2XG8fH7r7hb+7Wa61axXcGVRPyBmfVvRbPxH/7hSztJueYezaDG
+	su+4BJSrQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWeOQ-00CY5B-Mz; Wed, 14 Apr 2021 12:13:14 +0000
+	id 1lWf4p-00CeeV-OF; Wed, 14 Apr 2021 12:57:03 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWeOK-00CY3d-RV; Wed, 14 Apr 2021 12:13:11 +0000
+ id 1lWf4R-00CeaX-Ai; Wed, 14 Apr 2021 12:56:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:
- Subject:Sender:Reply-To:Cc:Content-ID:Content-Description;
- bh=BJCIiw4lvDY8QcfmAqos4Br1GHRmqU8+KnDAmYMsa0Y=; b=VRyDlSfG48hvezkGyRvxJ28eF/
- IFzkhVtmAUW7+PSvKuBKGUgg8zIk7MDR47K6T6pC0eWSK0c1+dh+d+nkFY9TbPFfjGGR8B2tD0h7I
- nNVgTYJqKg94imaE8QMugmEvYoF6woPS/ywHHHvCv1aWBseTomXYYnzvtQ+SqiKPLR2QFmmZUjs/O
- 1p/1gr/BP7/hMMGbxim+TQAe+9OfEQ1RwGERWJ00x2VudQhO3dbiMF7X7g7GW+BCJlONy9peJE83h
- 63byP9OxyMfQ/5st+Moot8GeQPcpHTCV/VPiKAcECm3+SjhO7G96NHq4BatGH4zIDrDORAgC+0dii
- mPr/AG5g==;
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+ d=infradead.org; s=bombadil.20210309; h=Message-ID:References:In-Reply-To:
+ Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=nIqcTyZ0aGklq+mdSHotuPklBOhZa+ud8+bN5Q5+CPw=; b=lojQOCUCefpMRvGW/xx/VDdwQI
+ NbXTjba3ub0vcoukuA9XIBjkWPikO+4iXtqZrVlNr0svArf8zaZMGVVl1MbCe/8RSDTFL6iXZoVwH
+ wyEnSJNSG8lzkY8Bkzdz8A0/+JPo9VYHXcqFPVluO1R4JVk/ZoQKhdfevbfZk4SqSYq3V4fF87jpV
+ LSjprDVXrba4ulTg3ghy2VDVSfly/SpiuFUd/tF+83pOhnXAOhmVIfqiRptB92v260kXnMWyFT4fa
+ 7swqEF23FWzicDnj1JUp+knOHqAFgT/wrmnUJMggrVDSQoOP0uUfvI2X5DnSDZQZWUZKOJ3Lz9PR0
+ /XxB67oA==;
+Received: from ssl.serverraum.org ([2a01:4f8:151:8464::1:2])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWeOI-007jzb-1m; Wed, 14 Apr 2021 12:13:07 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id
- k14-20020a9d7dce0000b02901b866632f29so19120478otn.1; 
- Wed, 14 Apr 2021 05:13:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BJCIiw4lvDY8QcfmAqos4Br1GHRmqU8+KnDAmYMsa0Y=;
- b=Ktg2QsirKgHi58sYbj2DJJstMd8yO5miMDpeCz3quI0+jrTxqzObGuroj0qWlA0sgz
- hwo91nEQwHCMl/LBswlqcI3GTfi6g+dJMyUfWI3pessxplmRkH/FTewkHHQCy1xHA/hd
- PQ6oerKvYWbz+5ZlC7enOfMCE89r8ak/JgoycCvILsSSzwaS5EuI/fsgwx7ORvVnPhkE
- 0tTCt+OsHFKUlKZuuZFoCJfGpAPE348uok4JiiC2muFoBn6I8OhNBfxzTCGPFLEtWglY
- phZO3BpuihlJqxOmia8QiCO7Iy0pF+kk4QgMHA788JMSTMlblJD1c4jS36zJRMpp7AIT
- 8Gbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=BJCIiw4lvDY8QcfmAqos4Br1GHRmqU8+KnDAmYMsa0Y=;
- b=MYyar9HuDQPegWy8o2+PfnmmAb8Wvv5vK29ojtx3zyWRlKMAxuWZ/yKtPV7+wISok2
- pE/SeUiS5N2GmebArtrjGfP4+VGLAkiNj86XghTM5USFSMgCyJ2NNqY4/gj56KKtrLNb
- Dsh4VN4ljBpNHvhzpNBsHVFvT6FY3TQ50NjVLO7q5cECJi4kyRoL8q8HtfR95YSeIcuv
- YT511VN3/xcmpvR18igWy6vvwV9cdEFoX6Ydx2wTv40JBYXDcfM4DBzWd2JQeYhettfL
- 60wkDIQAi4szwNW6Few+gMHIdnuRIdDAxmU/1wkGilaqKWjzYRi/wjcbBt12lDg4EQP7
- SuRg==
-X-Gm-Message-State: AOAM532dluhfvT6rrTqcIwxq6t9BNpi1F/xdgfe+P1MBfpeXnI99JI6r
- +38oKcqVx9PkkdLy+5gN+/A=
-X-Google-Smtp-Source: ABdhPJxJSHIiJ+QR0vrNldKM4BXT9QZPa73m+YjRSzS373vnRmswr9RIejc8dCuCYeMqf207N0CDbw==
-X-Received: by 2002:a9d:2929:: with SMTP id d38mr25180646otb.121.1618402384127; 
- Wed, 14 Apr 2021 05:13:04 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- d2sm4195303otl.48.2021.04.14.05.13.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Apr 2021 05:13:03 -0700 (PDT)
-Subject: Re: [PATCH V3] watchdog: mtk: support pre-timeout when the bark irq
- is available
-To: Wang Qing <wangqing@vivo.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-References: <1618400929-17013-1-git-send-email-wangqing@vivo.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <1e60551b-4961-91d6-1ea8-7e3b6becd385@roeck-us.net>
-Date: Wed, 14 Apr 2021 05:13:01 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lWf4O-007lxx-Ei; Wed, 14 Apr 2021 12:56:37 +0000
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id E331F22236;
+ Wed, 14 Apr 2021 14:56:30 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1618404993;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nIqcTyZ0aGklq+mdSHotuPklBOhZa+ud8+bN5Q5+CPw=;
+ b=VZL40Qx/ZFqrvlYpNa+CpUnri3A5IcdLrj+2SxpxVHAI8fYpizPcSIOU0o4IGsNgU2L8zb
+ buzdqfa91h/T+Kc3jCccsyXkXKwvO0deOpvm1xgmDARKkJkG9wKdcW8QSFZ/zWqZRgSGou
+ k2tTqyTzN0TuoPWxydGMvbSU0aMYGjo=
 MIME-Version: 1.0
-In-Reply-To: <1618400929-17013-1-git-send-email-wangqing@vivo.com>
-Content-Language: en-US
+Date: Wed, 14 Apr 2021 14:56:30 +0200
+From: Michael Walle <michael@walle.cc>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: kbuild@lists.01.org, ath9k-devel@qca.qualcomm.com,
+ UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-amlogic@lists.infradead.org, lkp@intel.com, kbuild-all@lists.01.org
+Subject: Re: [PATCH net-next v2 1/2] of: net: pass the dst buffer to
+ of_get_mac_address()
+In-Reply-To: <20210414053336.GQ6021@kadam>
+References: <20210414053336.GQ6021@kadam>
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <cf5c86dd6492b9c1907ea69e2d660eb2@walle.cc>
+X-Sender: michael@walle.cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_051306_120368_BCE4B318 
-X-CRM114-Status: GOOD (  37.16  )
+X-CRM114-CacheID: sfid-20210414_055636_683518_8AB572A5 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,184 +94,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 4/14/21 4:48 AM, Wang Qing wrote:
-> Use the bark interrupt as the pretimeout notifier if available.
+Hi Dan,
+
+Am 2021-04-14 07:33, schrieb Dan Carpenter:
+> url:
+> https://github.com/0day-ci/linux/commits/Michael-Walle/of-net-support-non-platform-devices-in-of_get_mac_address/20210406-234030
+> base:
+> https://git.kernel.org/pub/scm/linux/kernel/git/davem/net-next.git
+> cc0626c2aaed8e475efdd85fa374b497a7192e35
+> config: x86_64-randconfig-m001-20210406 (attached as .config)
+> compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
 > 
-> By default, the pretimeout notification shall occur one second earlier
-> than the timeout.
+> If you fix the issue, kindly add following tag as appropriate
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
 > 
-> V2:
-> - panic() by default if WATCHDOG_PRETIMEOUT_GOV is not enabled.
+> smatch warnings:
+> drivers/net/ethernet/xilinx/xilinx_axienet_main.c:2069 axienet_probe()
+> warn: passing a valid pointer to 'PTR_ERR'
 > 
-> V3:
-> - Modify the pretimeout behavior, manually reset after the pretimeout
-> - is processed and wait until timeout.
+> vim +/PTR_ERR +2069 drivers/net/ethernet/xilinx/xilinx_axienet_main.c
 > 
-> Signed-off-by: Wang Qing <wangqing@vivo.com>
-> ---
->  drivers/watchdog/mtk_wdt.c | 62 ++++++++++++++++++++++++++++++++++++++++++----
->  1 file changed, 57 insertions(+), 5 deletions(-)
+> 522856cefaf09d Robert Hancock      2019-06-06  2060  	/* Check for
+> Ethernet core IRQ (optional) */
+> 522856cefaf09d Robert Hancock      2019-06-06  2061  	if (lp->eth_irq 
+> <= 0)
+> 522856cefaf09d Robert Hancock      2019-06-06  2062
+> 		dev_info(&pdev->dev, "Ethernet core IRQ not defined\n");
+> 522856cefaf09d Robert Hancock      2019-06-06  2063
+> 8a3b7a252dca9f Daniel Borkmann     2012-01-19  2064  	/* Retrieve the
+> MAC address */
+> 411b125c6ace1f Michael Walle       2021-04-06  2065  	ret =
+> of_get_mac_address(pdev->dev.of_node, mac_addr);
+> 411b125c6ace1f Michael Walle       2021-04-06  2066  	if (!ret) {
+> 411b125c6ace1f Michael Walle       2021-04-06  2067
+> 		axienet_set_mac_address(ndev, mac_addr);
+> 411b125c6ace1f Michael Walle       2021-04-06  2068  	} else {
+> d05a9ed5c3a773 Robert Hancock      2019-06-06 @2069
+> 		dev_warn(&pdev->dev, "could not find MAC address property: %ld\n",
+> d05a9ed5c3a773 Robert Hancock      2019-06-06  2070  			 
+> PTR_ERR(mac_addr));
 > 
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 97ca993..7bef1e3
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -25,6 +25,7 @@
->  #include <linux/reset-controller.h>
->  #include <linux/types.h>
->  #include <linux/watchdog.h>
-> +#include <linux/interrupt.h>
->  
->  #define WDT_MAX_TIMEOUT		31
->  #define WDT_MIN_TIMEOUT		1
-> @@ -234,18 +235,46 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
->  	void __iomem *wdt_base = mtk_wdt->wdt_base;
->  	int ret;
->  
-> -	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout);
-> +	ret = mtk_wdt_set_timeout(wdt_dev, wdt_dev->timeout - wdt_dev->pretimeout);
->  	if (ret < 0)
->  		return ret;
->  
->  	reg = ioread32(wdt_base + WDT_MODE);
-> -	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-> +	reg &= ~WDT_MODE_IRQ_EN;
-> +	if (wdt_dev->pretimeout)
-> +		reg |= WDT_MODE_IRQ_EN;
-> +	else
-> +		reg &= ~WDT_MODE_IRQ_EN;
->  	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
->  	iowrite32(reg, wdt_base + WDT_MODE);
->  
->  	return 0;
->  }
->  
-> +static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
-> +				   unsigned int timeout)
-> +{
-> +	wdd->pretimeout = timeout;
-> +	return mtk_wdt_start(wdd);
+>   ^^^^^^^^^^^^^^^^^
+> This should print "ret".
 
-The watchdog is not necessarily active here.
+Thanks, this was fixed (in the now merged) v4. I forgot
+to add you to that huge CC list. Sorry for that.
 
-> +}
-> +
-> +static irqreturn_t mtk_wdt_isr(int irq, void *arg)
-> +{
-> +	struct watchdog_device *wdd = arg;
-> +	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
-> +	void __iomem *wdt_base = mtk_wdt->wdt_base;
-> +
-> +	watchdog_notify_pretimeout(wdd);
-> +	/*
-> +	 * Guaranteed to be reset when the timeout
-> +	 * expires under any situations
-> +	 */
-> +	mdelay(1000*wdd->pretimeout);
-
-That is not how this is supposed to work. The idea with a pretimeout is that the
-real watchdog reset will happen under all circumstances, and that executing
-the pretimeout (and changing some hardware registers) is not a prerequisite
-for the real timeout to happen. After all, the system could be stuck hard, with
-interrupts disabled.
-
-On top of that, just sleeping here while waiting for the real timeout and
-then resetting the system isn't the idea either. On a single core system this
-will just hang. On a multi-core system, who knows if userspace managed to ping
-the watchdog in the meantime.
-
-Unless there is a means to trigger the watchdog twice, without intervention,
-the first time generating an interrupt and the second time resetting the system,
-there is no way for this to work. I don't see how this chip really supports
-pretimeout. It seems that it supports either a hard reset or generating an
-interrupt on watchdog timeout, and there is only a single timeout.
-
-If you have a use case for generating an interrupt and resetting the system via
-software (ie panic) _instead_ of having it generate a hard reset, please feel
-free to submit a patch along that line, together with a description of its use
-case.
-
-Thanks,
-Guenter
-
-> +	writel(WDT_SWRST_KEY, wdt_base + WDT_SWRST);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
->  static const struct watchdog_info mtk_wdt_info = {
->  	.identity	= DRV_NAME,
->  	.options	= WDIOF_SETTIMEOUT |
-> @@ -253,12 +282,21 @@ static const struct watchdog_info mtk_wdt_info = {
->  			  WDIOF_MAGICCLOSE,
->  };
->  
-> +static const struct watchdog_info mtk_wdt_pt_info = {
-> +	.identity	= DRV_NAME,
-> +	.options	= WDIOF_SETTIMEOUT |
-> +			  WDIOF_PRETIMEOUT |
-> +			  WDIOF_KEEPALIVEPING |
-> +			  WDIOF_MAGICCLOSE,
-> +};
-> +
->  static const struct watchdog_ops mtk_wdt_ops = {
->  	.owner		= THIS_MODULE,
->  	.start		= mtk_wdt_start,
->  	.stop		= mtk_wdt_stop,
->  	.ping		= mtk_wdt_ping,
->  	.set_timeout	= mtk_wdt_set_timeout,
-> +	.set_pretimeout	= mtk_wdt_set_pretimeout,
->  	.restart	= mtk_wdt_restart,
->  };
->  
-> @@ -267,7 +305,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  	struct device *dev = &pdev->dev;
->  	struct mtk_wdt_dev *mtk_wdt;
->  	const struct mtk_wdt_data *wdt_data;
-> -	int err;
-> +	int err, irq;
->  
->  	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
->  	if (!mtk_wdt)
-> @@ -279,7 +317,22 @@ static int mtk_wdt_probe(struct platform_device *pdev)
->  	if (IS_ERR(mtk_wdt->wdt_base))
->  		return PTR_ERR(mtk_wdt->wdt_base);
->  
-> -	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq > 0) {
-> +		err = devm_request_irq(&pdev->dev, irq, mtk_wdt_isr, 0, "wdt_bark",
-> +							&mtk_wdt->wdt_dev);
-> +		if (err)
-> +			return err;
-> +
-> +		mtk_wdt->wdt_dev.info = &mtk_wdt_pt_info;
-> +		mtk_wdt->wdt_dev.pretimeout = 1;
-> +	} else {
-> +		if (irq == -EPROBE_DEFER)
-> +			return -EPROBE_DEFER;
-> +
-> +		mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-> +	}
-> +
->  	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
->  	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
->  	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = WDT_MAX_TIMEOUT * 1000;
-> @@ -360,7 +413,6 @@ static struct platform_driver mtk_wdt_driver = {
->  };
->  
->  module_platform_driver(mtk_wdt_driver);
-> -
->  module_param(timeout, uint, 0);
->  MODULE_PARM_DESC(timeout, "Watchdog heartbeat in seconds");
->  
-> 
-
+-michael
 
 _______________________________________________
 Linux-mediatek mailing list
