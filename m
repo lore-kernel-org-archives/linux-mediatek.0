@@ -4,100 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC2D8C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 07:31:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 399C9C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 07:43:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C47C613F0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 07:31:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C47C613F0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8196E613A9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 07:43:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8196E613A9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cOwSYMAX/7vt7R7q61+vmrW/nwdlVPSik4O0R6oBkDo=; b=NH0fR8ipv0j8PGsbpspl14sq+X
-	7R8rvjGtzhSGRlKvtCECa/9ep0F7sqjYMXyntsWZCZBqAKE/rsEL41KwoM1HOQ/0II3nILvPgc8L2
-	m9/J2eW+gGeu/mXTHVPjh88H/oRq4FT7Q1NWqU1hqHtrcUoEn51K+PSgRy2Up91Dj6RPsDO0e35VV
-	u1C5KEolbIN7nXD/qXMScVA8Ax9euk1FV76rOP6VKOUFMC29tCzJkte/4SDkg8qvQh5d4pZL5Ld9e
-	NnowTYae+MTwFERmb2GrYUEO8bnWLLcQtE/pSOMqLMwBsVamLwZVSeG09UO4sjevU3jAK1aIquflz
-	S7+c+WQA==;
+	bh=PO5vMLZgc0mGWKzmwy0FtEHvdHHJMVgYhVZARrXAupY=; b=YOX3H8rSD36KfSZvZzvBHnAtBc
+	XhUPemz32t9Xhy5wDAQASPs42jZMmAuPwUgRw8GIZW3LISzrCibI5fSaVg2CuvKxggQQJi+T4FHQZ
+	q4B09404Gtfjglc2CteZeuItLT1AROTjMbZKzynHO79AsRrUPWebnKuJWuHabVtvl7lg5JFfKgQzw
+	1IW77B5OgGOiENW78kMaiZd8WiSohsU3AAkNIBIqWePe5mSMQX9gQcZZTQyaz5r4pDJlI+AOuq6ig
+	BtAu0uJHGCbet7XvrCM8xndxUcc2hEd1wwxRsTpwqqyOYTLVUL8n2MfUArANNpNYatRc0cfVTVeTb
+	q1uaKQ9A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWZzq-00BqYG-Sf; Wed, 14 Apr 2021 07:31:34 +0000
+	id 1lWaB5-00BsJh-TT; Wed, 14 Apr 2021 07:43:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWZzY-00BqV1-PW
- for linux-mediatek@desiato.infradead.org; Wed, 14 Apr 2021 07:31:16 +0000
+ id 1lWaB1-00BsJF-JW
+ for linux-mediatek@desiato.infradead.org; Wed, 14 Apr 2021 07:43:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=fkE+tUp6UsBCCxbBvu8r9DHfy7MsyvFZbkTXtiMUc7Y=; b=xAXQqwSBJuaIRzcmK1wvpvyjyS
- JqE5h9hycQ5zdqL/MtEQkRxvmFmWEHvGyGTSUag5CffR+ROY7VTA1s1Z8jiP0hth1J5TCqSxoM4DS
- dMDs47aZ7v7yAV5PoUj+DAZeiDriZxMFkP1kpnWXfBBaekEiDMh422m+u0yyQJcyKzJZqpG9F8hcx
- 18PSSNZ5ysQC8Nf5tb8NFNYDWVa7DzmhT8OXcp/BGOTwmvpz7Rns473r77KbLTTB6/Udm0JVncls6
- aZCqDRsR/fUNK0n6C1PA7326rnvB6bblkEJOIrjb40A7T1TbkDNS/nXft2Q4He+xaRKuEwmlEUwOh
- vAgFZANQ==;
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ bh=gacchJh/514qrOf8YAdjsFhqG6N8ttlDLpYlez6s/rI=; b=Zm6yzY5QYceK7Cm5SQvuQ4Y9xa
+ rJ8z2TELW0ySF0tswUNl/Z3soUi5POlWvjCVzo2IxgDZxvZXvMmPDPuMVN0v4ERhuPX8KLJfj3D6e
+ VJo4c1nRQBtC6tyvzgxAbTnhiSZS3Tv3QB0GyVEkyGPPa1cicyJ1pc8fqk9XFp8WTg2oJR8Ha07Dk
+ nuVqvy5v4mGby+fVivxO5uC8FWIqtU1dwinLimbxGChemWHzKeYgW7uf02IT44UHu/xg7UGXLlLHO
+ vOViDtb+qr1WFp/7yCt1EYUPER4EwbWCECP3nJCprmajgkZNw1i9UfLlOGsKBP5JwqkFgOLko0aD0
+ 4OBHenjQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWZzW-007Zad-80
- for linux-mediatek@lists.infradead.org; Wed, 14 Apr 2021 07:31:15 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id g35so13752517pgg.9
- for <linux-mediatek@lists.infradead.org>; Wed, 14 Apr 2021 00:31:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fkE+tUp6UsBCCxbBvu8r9DHfy7MsyvFZbkTXtiMUc7Y=;
- b=gii7RoZ49IIoSWVe1COL5vMS71V3xnCWPJjnK+lTr1qBusdSeBx5/8V+yzGPc/g/zW
- 36Jc8phM8bogF+m/VxLxaLnMholBZ0tvVsteluUatQPvkfsoFzOGONobtt3BLX6J7SGi
- UfkrMpW87Odp4LZFLp39NCQ85WAcRNbQYM+Jk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fkE+tUp6UsBCCxbBvu8r9DHfy7MsyvFZbkTXtiMUc7Y=;
- b=EuLf4sJIK/spAso+aTCmU6tMzbisFiLaUU1qeogJu4WAO09DJJQj/omrZpxz0HhHTM
- NxFc9YB649vUe1qRCfSmCgi/XTAC6PgFEw0/lsYqoPOpJRzTC1kWpberGcuhf2bnvflO
- PG+WLhj8++kV3i2rfRRbyNh8lUKQ1oKkGjyfW7P+Y6msm4C1NnFFVvb+ZPDhqoKbqxCB
- PgrCu1Zo3iUwxs12q+OC0Pvoj23wARY4NSNSHj7IBZINrypLj57cJwHPYzcpy+drx/58
- GBVhQxojGYzEabMjHkflD9rj2NsvE8Oe9mGAbZRrvtjrnKg4ynVaf+vaf/hH4QQf28DF
- xAPA==
-X-Gm-Message-State: AOAM530+nQ5rs1tcsg1kXLuJau4UEUORH6xdS+C+oKDxpEJvprPcE1IS
- PkOpjuP4ygyy8hGB9sxzKI08BXmmcspWLg==
-X-Google-Smtp-Source: ABdhPJwEGnEqaexqjkmF0jnwqOT/4IqXEYg+VEHsl4HeRmez+g7eLeJt2uCKLuvltEbqrAcE2HBnew==
-X-Received: by 2002:aa7:83d8:0:b029:249:79c9:fd49 with SMTP id
- j24-20020aa783d80000b029024979c9fd49mr19643098pfn.72.1618385473359; 
- Wed, 14 Apr 2021 00:31:13 -0700 (PDT)
-Received: from ikjn-p920.tpe.corp.google.com
- ([2401:fa00:1:b:bd66:f13a:bfbf:21fa])
- by smtp.gmail.com with ESMTPSA id w191sm15632757pfd.25.2021.04.14.00.31.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Apr 2021 00:31:13 -0700 (PDT)
-From: Ikjoon Jang <ikjn@chromium.org>
-To: linux-mediatek@lists.infradead.org
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Weiyi Lu <weiyi.lu@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: mt8183: Add power-domains properity to mfgcfg
-Date: Wed, 14 Apr 2021 15:31:08 +0800
-Message-Id: <20210414073108.3899082-1-ikjn@chromium.org>
-X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
+ id 1lWaAw-007ZyX-Iw
+ for linux-mediatek@lists.infradead.org; Wed, 14 Apr 2021 07:43:05 +0000
+X-UUID: d384aaba78ff4fd5b889a49608ad3ac5-20210414
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=gacchJh/514qrOf8YAdjsFhqG6N8ttlDLpYlez6s/rI=; 
+ b=NfCCYd7CZ6UbjFlftFpQgrEpZUEdx8bh5Tz5Ll8OJATdBgu4AGO0QwspVqMeLpqLgAq7A1ypT3xI/tlGMf1o7Lnc9ixDxiFvF5q9spC4GN6YRCQE288Q+4OwCom4bzDR2V3EXMknU2jBQPwkGDhTQlWuXs17WPcQTYd8f0pbtN8=;
+X-UUID: d384aaba78ff4fd5b889a49608ad3ac5-20210414
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1109420377; Wed, 14 Apr 2021 00:42:57 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Apr 2021 00:41:19 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Apr 2021 15:41:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 14 Apr 2021 15:41:09 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: mt7915: add support for applying pre-calibraion data
+Date: Wed, 14 Apr 2021 15:41:08 +0800
+Message-ID: <027dda4e6182bf1c6794540a29c3a2a186908706.1618374535.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: ECC4E72F68A33545AC70C992B4AB548A725911B45238D1E068B07BCCF5CF7A102000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_003114_290801_F4003D29 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210414_004302_664519_E3827C5F 
+X-CRM114-Status: GOOD (  21.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,37 +101,397 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mfgcfg clock is under MFG_ASYNC power domain
+When the EEPROM data is read from flash, it can contain pre-calibration
+data, which can save calibration time.
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+Note that group_cal can save 30% bootup calibration time, and dpd_cal can
+save 75% channel switching time.
+
+Tested-by: Bo Jiao <bo.jiao@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
+ drivers/net/wireless/mediatek/mt76/eeprom.c   |  11 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   1 +
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    |  25 ++-
+ .../wireless/mediatek/mt76/mt7915/eeprom.h    |  11 +-
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |   7 +
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |   6 +
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 145 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |   2 +
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |   4 +
+ 9 files changed, 202 insertions(+), 10 deletions(-)
 
-Changes in v2:
-Fix a wrong power domain reference (scpsys to spm).
-
-Link(v1): https://patchwork.kernel.org/project/linux-mediatek/patch/20210224091742.1060508-1-ikjn@chromium.org/#23997681
-
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 0ff7b67a6806..64813634c3df 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1116,6 +1116,7 @@ mfgcfg: syscon@13000000 {
- 			compatible = "mediatek,mt8183-mfgcfg", "syscon";
- 			reg = <0 0x13000000 0 0x1000>;
- 			#clock-cells = <1>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_MFG_ASYNC>;
- 		};
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index 665b54c5c8ae..3f7a5a508605 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -9,8 +9,7 @@
+ #include <linux/etherdevice.h>
+ #include "mt76.h"
  
- 		mmsys: syscon@14000000 {
+-static int
+-mt76_get_of_eeprom(struct mt76_dev *dev, int len)
++int mt76_get_of_eeprom(struct mt76_dev *dev, void *eep, int offset, int len)
+ {
+ #if defined(CONFIG_OF) && defined(CONFIG_MTD)
+ 	struct device_node *np = dev->dev->of_node;
+@@ -18,7 +17,6 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+ 	const __be32 *list;
+ 	const char *part;
+ 	phandle phandle;
+-	int offset = 0;
+ 	int size;
+ 	size_t retlen;
+ 	int ret;
+@@ -54,7 +52,7 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+ 	}
+ 
+ 	offset = be32_to_cpup(list);
+-	ret = mtd_read(mtd, offset, len, &retlen, dev->eeprom.data);
++	ret = mtd_read(mtd, offset, len, &retlen, eep);
+ 	put_mtd_device(mtd);
+ 	if (ret)
+ 		goto out_put_node;
+@@ -65,7 +63,7 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+ 	}
+ 
+ 	if (of_property_read_bool(dev->dev->of_node, "big-endian")) {
+-		u8 *data = (u8 *)dev->eeprom.data;
++		u8 *data = (u8 *)eep;
+ 		int i;
+ 
+ 		/* convert eeprom data in Little Endian */
+@@ -86,6 +84,7 @@ mt76_get_of_eeprom(struct mt76_dev *dev, int len)
+ 	return -ENOENT;
+ #endif
+ }
++EXPORT_SYMBOL_GPL(mt76_get_of_eeprom);
+ 
+ void
+ mt76_eeprom_override(struct mt76_phy *phy)
+@@ -119,6 +118,6 @@ mt76_eeprom_init(struct mt76_dev *dev, int len)
+ 	if (!dev->eeprom.data)
+ 		return -ENOMEM;
+ 
+-	return !mt76_get_of_eeprom(dev, len);
++	return !mt76_get_of_eeprom(dev, dev->eeprom.data, 0, len);
+ }
+ EXPORT_SYMBOL_GPL(mt76_eeprom_init);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index b09b0f5ffd6d..1b290d3bd7aa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -828,6 +828,7 @@ void mt76_seq_puts_array(struct seq_file *file, const char *str,
+ 
+ int mt76_eeprom_init(struct mt76_dev *dev, int len);
+ void mt76_eeprom_override(struct mt76_phy *phy);
++int mt76_get_of_eeprom(struct mt76_dev *dev, void *data, int offset, int len);
+ 
+ struct mt76_queue *
+ mt76_init_queue(struct mt76_dev *dev, int qid, int idx, int n_desc,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 738ecf8f4fa2..353f8d8497d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -14,6 +14,23 @@ static u32 mt7915_eeprom_read(struct mt7915_dev *dev, u32 offset)
+ 	return data[offset];
+ }
+ 
++static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
++{
++	struct mt76_dev *mdev = &dev->mt76;
++	u32 val;
++
++	val = mt7915_eeprom_read(dev, MT_EE_DO_PRE_CAL);
++	if (val != (MT_EE_WIFI_CAL_DPD | MT_EE_WIFI_CAL_GROUP))
++		return 0;
++
++	val = MT_EE_CAL_GROUP_SIZE + MT_EE_CAL_DPD_SIZE;
++	dev->cal = devm_kzalloc(mdev->dev, val, GFP_KERNEL);
++	if (!dev->cal)
++		return -ENOMEM;
++
++	return mt76_get_of_eeprom(mdev, dev->cal, MT_EE_PRECAL, val);
++}
++
+ static int mt7915_eeprom_load(struct mt7915_dev *dev)
+ {
+ 	int ret;
+@@ -22,12 +39,14 @@ static int mt7915_eeprom_load(struct mt7915_dev *dev)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	if (ret)
++	if (ret) {
+ 		dev->flash_mode = true;
+-	else
++		ret = mt7915_eeprom_load_precal(dev);
++	} else {
+ 		memset(dev->mt76.eeprom.data, -1, MT7915_EEPROM_SIZE);
++	}
+ 
+-	return 0;
++	return ret;
+ }
+ 
+ static int mt7915_check_eeprom(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index 3ee8c27bb61b..8ef5ebfad706 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -17,14 +17,23 @@ enum mt7915_eeprom_field {
+ 	MT_EE_MAC_ADDR =	0x004,
+ 	MT_EE_MAC_ADDR2 =	0x00a,
+ 	MT_EE_DDIE_FT_VERSION =	0x050,
++	MT_EE_DO_PRE_CAL =	0x062,
+ 	MT_EE_WIFI_CONF =	0x190,
+ 	MT_EE_TX0_POWER_2G =	0x2fc,
+ 	MT_EE_TX0_POWER_5G =	0x34b,
+ 	MT_EE_ADIE_FT_VERSION =	0x9a0,
+ 
+-	__MT_EE_MAX =		0xe00
++	__MT_EE_MAX =		0xe00,
++	/* 0xe10 ~ 0x5780 used to save group cal data */
++	MT_EE_PRECAL =		0xe10
+ };
+ 
++#define MT_EE_WIFI_CAL_GROUP			BIT(0)
++#define MT_EE_WIFI_CAL_DPD			GENMASK(2, 1)
++#define MT_EE_CAL_UNIT				1024
++#define MT_EE_CAL_GROUP_SIZE			(44 * MT_EE_CAL_UNIT)
++#define MT_EE_CAL_DPD_SIZE			(54 * MT_EE_CAL_UNIT)
++
+ #define MT_EE_WIFI_CONF0_TX_PATH		GENMASK(2, 0)
+ #define MT_EE_WIFI_CONF0_BAND_SEL		GENMASK(7, 6)
+ #define MT_EE_WIFI_CONF1_BAND_SEL		GENMASK(7, 6)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 1b688bd5c52c..3f9f74aa8399 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -378,6 +378,13 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 	if (ret < 0)
+ 		return ret;
+ 
++
++	if (dev->flash_mode) {
++		ret = mt7915_mcu_apply_group_cal(dev);
++		if (ret)
++			return ret;
++	}
++
+ 	/* Beacon and mgmt frames should occupy wcid 0 */
+ 	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA - 1);
+ 	if (idx)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 2fd87987312e..413abbca3246 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -313,6 +313,12 @@ int mt7915_set_channel(struct mt7915_phy *phy)
+ 	mt7915_init_dfs_state(phy);
+ 	mt76_set_channel(phy->mt76);
+ 
++	if (dev->flash_mode) {
++		ret = mt7915_mcu_apply_tx_dpd(phy);
++		if (ret)
++			goto out;
++	}
++
+ 	ret = mt7915_mcu_set_chan_info(phy, MCU_EXT_CMD(CHANNEL_SWITCH));
+ 	if (ret)
+ 		goto out;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 0b739ed8ce33..2f17b8ff6cf4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3327,6 +3327,151 @@ int mt7915_mcu_get_eeprom(struct mt7915_dev *dev, u32 offset)
+ 	return 0;
+ }
+ 
++static int mt7915_mcu_set_pre_cal(struct mt7915_dev *dev, u8 idx,
++				  u8 *data, u32 len, int cmd)
++{
++	struct {
++		u8 dir;
++		u8 valid;
++		__le16 bitmap;
++		s8 precal;
++		u8 action;
++		u8 band;
++		u8 idx;
++		u8 rsv[4];
++		__le32 len;
++	} req;
++	struct sk_buff *skb;
++
++	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL, sizeof(req) + len);
++	if (!skb)
++		return -ENOMEM;
++
++	req.idx = idx;
++	req.len = cpu_to_le32(len);
++	skb_put_data(skb, &req, sizeof(req));
++	skb_put_data(skb, data, len);
++
++	return mt76_mcu_skb_send_msg(&dev->mt76, skb, cmd, false);
++}
++
++int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev)
++{
++	u8 idx = 0, *cal = dev->cal, *eep = dev->mt76.eeprom.data;
++	u32 total = MT_EE_CAL_GROUP_SIZE;
++
++	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_GROUP))
++		return 0;
++
++	/*
++	 * Items: Rx DCOC, RSSI DCOC, Tx TSSI DCOC, Tx LPFG
++	 * Tx FDIQ, Tx DCIQ, Rx FDIQ, Rx FIIQ, ADCDCOC
++	 */
++	while (total > 0) {
++		int ret, len;
++
++		if (total >= MT_EE_CAL_UNIT)
++			len = MT_EE_CAL_UNIT;
++		else
++			len = total % MT_EE_CAL_UNIT;
++
++		ret = mt7915_mcu_set_pre_cal(dev, idx, cal, len,
++					     MCU_EXT_CMD(GROUP_PRE_CAL_INFO));
++		if (ret)
++			return ret;
++
++		total -= len;
++		cal += len;
++		idx++;
++	}
++
++	return 0;
++}
++
++static int mt7915_find_freq_idx(const u16 *freqs, int n_freqs, u16 cur)
++{
++	int i;
++
++	for (i = 0; i < n_freqs; i++)
++		if (cur == freqs[i])
++			return i;
++
++	return -1;
++}
++
++static int mt7915_dpd_freq_idx(u16 freq, u8 bw)
++{
++	static const u16 freq_list[] = {
++		5180, 5200, 5220, 5240,
++		5260, 5280, 5300, 5320,
++		5500, 5520, 5540, 5560,
++		5580, 5600, 5620, 5640,
++		5660, 5680, 5700, 5745,
++		5765, 5785, 5805, 5825
++	};
++	int offset_2g = ARRAY_SIZE(freq_list);
++	int idx;
++
++	if (freq < 4000) {
++		if (freq < 2432)
++			return offset_2g;
++		if (freq < 2457)
++			return offset_2g + 1;
++
++		return offset_2g + 2;
++	}
++
++	if (bw == NL80211_CHAN_WIDTH_80P80 || bw == NL80211_CHAN_WIDTH_160)
++		return -1;
++
++	if (bw != NL80211_CHAN_WIDTH_20) {
++		idx = mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list),
++					   freq + 10);
++		if (idx >= 0)
++			return idx;
++
++		idx = mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list),
++					   freq - 10);
++		if (idx >= 0)
++			return idx;
++	}
++
++	return mt7915_find_freq_idx(freq_list, ARRAY_SIZE(freq_list), freq);
++}
++
++int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
++{
++	struct mt7915_dev *dev = phy->dev;
++	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
++	u16 total = 2, idx, center_freq = chandef->center_freq1;
++	u8 *cal = dev->cal, *eep = dev->mt76.eeprom.data;
++
++	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_DPD))
++		return 0;
++
++	idx = mt7915_dpd_freq_idx(center_freq, chandef->width);
++	if (idx < 0)
++		return -EINVAL;
++
++	/* Items: Tx DPD, Tx Flatness */
++	idx = idx * 2;
++	cal += MT_EE_CAL_GROUP_SIZE;
++
++	while (total--) {
++		int ret;
++
++		cal += (idx * MT_EE_CAL_UNIT);
++		ret = mt7915_mcu_set_pre_cal(dev, idx, cal, MT_EE_CAL_UNIT,
++					     MCU_EXT_CMD(DPD_PRE_CAL_INFO));
++		if (ret)
++			return ret;
++
++		idx++;
++	}
++
++	return 0;
++}
++
+ int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index)
+ {
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 4a932140a7c3..42582a66e42d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -284,6 +284,8 @@ enum {
+ 	MCU_EXT_CMD_FW_DBG_CTRL = 0x95,
+ 	MCU_EXT_CMD_SET_RDD_TH = 0x9d,
+ 	MCU_EXT_CMD_SET_SPR = 0xa8,
++	MCU_EXT_CMD_GROUP_PRE_CAL_INFO = 0xab,
++	MCU_EXT_CMD_DPD_PRE_CAL_INFO = 0xac,
+ 	MCU_EXT_CMD_PHY_STAT_INFO = 0xad,
+ };
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 3df1d3e95b25..15e88179ab62 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -201,6 +201,8 @@ struct mt7915_dev {
+ 	bool flash_mode;
+ 	bool fw_debug;
+ 	bool ibf;
++
++	void *cal;
+ };
+ 
+ enum {
+@@ -359,6 +361,8 @@ int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
+ 			    const struct mt7915_dfs_pulse *pulse);
+ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
+ 			    const struct mt7915_dfs_pattern *pattern);
++int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
++int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
+ int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index);
+ int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx);
+ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
 -- 
-2.31.1.295.g9ea45b61b8-goog
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
