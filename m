@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB792C43461
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 17:31:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D06AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 17:32:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2DCF16113D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 17:31:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2DCF16113D
+	by mail.kernel.org (Postfix) with ESMTPS id A485161164
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Apr 2021 17:32:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A485161164
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NSDMOTOCQQriLAkWCOQ3LXTCGHJLfT/5Fwhp1WxRTOI=; b=IlextyeaLd3w/IfdYXl/UWIxr
-	3iXRcOEsu/w+rqC8gZTSz82qITMpfu3+gPZ6TaTg99orM8S0mA2aAtpt5XREtjKSC+F0pCu0s+1iW
-	CXxbe9NT0ivkZSwg7mLrKremCuXd6YO/c/kmQMgGDU7yLJJQyE8a/Nd/MLgYbJ2oJfuDXCT+7Eiz9
-	zp6sDu8RE8fU10S8eDXFvYQ1tymTM2w7sCM+IEt3JN26KRjq8p32bR27oWwJHzdOWBoK9O7zgwIAt
-	LhOojEvw5gS/icSycSUCWUfd+lfedyJ6z6aYm+EovXLkuQV/8/Dm2s2o9k4UDuodieVoFQ1wWVfuF
-	zZzajDa+Q==;
+	 bh=SVdYxIyAm7KxbbKqHtAKxLws7PM1b0ZhuDJlE+m642s=; b=LJkBc+f8dI4OxE8XPUHEbESA2
+	24V79fyPn8blanmH0mri4+TlxbLPU8SRhX4JuIrxXlK53t3CyPzFrHOUvhRLKyvrjdjp5diUN3I05
+	P3FLmi09cl0wWhvVmuksIW1wPX3Y6LZ/alLUQRqc/hKlnN8L6t//zPvnYKdYlCX96aUG7Ids0AbOX
+	faavsLo4qE1BIl0wF1cDFysHGGE2Bcql5eDfcalAOx1lEO/e5OSOxcLKc7Gcm4X+Cec4RyhR2yoIe
+	kSOZCCK9uN4GouG0nnA6qR7gOUxb/Yg1/Y9Ww03fcxIf785VQzKfPtra5CjKJQEY3LzZNOsXiQusI
+	JdkB5XTuQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWjMA-00DGmn-Gq; Wed, 14 Apr 2021 17:31:16 +0000
+	id 1lWjMy-00DH5x-D1; Wed, 14 Apr 2021 17:32:04 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWjKe-00DGS5-LF
- for linux-mediatek@desiato.infradead.org; Wed, 14 Apr 2021 17:29:41 +0000
+ id 1lWjKi-00DGSc-96
+ for linux-mediatek@desiato.infradead.org; Wed, 14 Apr 2021 17:29:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=SDiflsGvBCYCoVMBt0Fyo3zuZR1BmIQO6zXHXOu40Mw=; b=llnS4mR8q4lDQe+ZSuICtgErnM
- Dba3o7/ELt8Vs9GwJnxQl2we5/RxxHtA85zHd7+CJ+rfB9FxX9ClgjpeHf9QPKNDmu5b7hqaKmskq
- uzHjHTK1Py7x83rRK+FobC5UxWw12j7RCbETnQvXSh8xzAM1ZZUE2iw5V2iwW7MM1taEFoPThRZb+
- KVFII1DBNNOeNdpk0eM/ISI6rbzTTotoq+9WNSWaWBH9BKJ0Fi4DX/5bvYCAd4h4J+qyJKKomoOYT
- 9HQRF8W9sRCB4a1dffbDWh0lyiFcVLUQ2JjWg+mSDP65N8EAWXkGcBJR1b+A82NlsdFfphQGCC2qI
- 5UgTJrnw==;
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+ bh=70dSAhdvNf9rW7naVyB8FacZo/tKpmgYTIzZpzN71Cs=; b=ytwyHyPrUWfnOmxzSCuYUYsr1I
+ 0qUAlDQH0jToA1NiIc8etpQb/cAfIwE0qUfKMts6BEMe+H28WVqv4fcHPq5QRhNZeZ6wQs+lgUi6b
+ oT3I/ig4A4UG5bWi3HM+PQxhJjVQqIDC3G8Sk57+RyMSP38gpbbgCRmtQ1MOW8SRIIyO51rp6+yrC
+ fs6zwRBGRKlo8lRGXEy9AbqaueauDRe5RcYydWaOeQyOANAgbWdDXMlI7iz9aE0MxL2F+onjZptkM
+ 8pdKbFUGvrX5TIw2hSrfF1GuJliU0/NW2RiTDj79fUWJt2+7wrxYZexPWyi8LYf4ckYRI/gfOgVX4
+ lRiSbtmw==;
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWjKc-007ycw-3w
- for linux-mediatek@lists.infradead.org; Wed, 14 Apr 2021 17:29:39 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- q14-20020a17090a430eb02901503aaee02bso144324pjg.3
- for <linux-mediatek@lists.infradead.org>; Wed, 14 Apr 2021 10:29:37 -0700 (PDT)
+ id 1lWjKe-007ydm-Oh
+ for linux-mediatek@lists.infradead.org; Wed, 14 Apr 2021 17:29:43 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id lt13so1776564pjb.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 14 Apr 2021 10:29:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SDiflsGvBCYCoVMBt0Fyo3zuZR1BmIQO6zXHXOu40Mw=;
- b=bXgPeL+8QRF9Gjxpyiun2OlMg3Of3XNusHjUl10Do3tPZf0xCI4aDB2CRppJls5vCo
- cQZrEVi7aWWJZUwv0C5LOB+dx0PcrY8Q6BfrgGB9OUU8NfN7SFS2zO5jCmIGYunfeawR
- ywMgma3p50C1zJmwfplwwtgbrNeGp+IuyCWhA=
+ bh=70dSAhdvNf9rW7naVyB8FacZo/tKpmgYTIzZpzN71Cs=;
+ b=LsiMLszNVSqTMFSOmT7Vt7BL2HWjYpQnn9/Ah8Ahmt14VXi38iwnxuRRnAMd7nV+F4
+ L8OiYKIW4vYpw8N0fUeTwgUCiDMq5+HbPF+3sOym2H36ZFwtvq4PnCKSeplaTzdczwh+
+ M1/M+ijlrnFtXNjeEsgG7aN63y8Ce7LLt8uSE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SDiflsGvBCYCoVMBt0Fyo3zuZR1BmIQO6zXHXOu40Mw=;
- b=A89y9ceXXzKQymhajv53Qb5ESUK1fJ1uEsHqK5SMxIK2d8ApBU1KiM6PiYycYOCIyM
- Drs+2CslvvOWD8AvWi8FrDM7PFWj0UB7ChGu2c71qA+D0LOSTAoRcTXz2aE52pqPOehT
- aN/Z7abOmCv88nEXyGs6vWtdQoJ9KTxiHSOJ5NVntFcTy9XhBb1SECxqQrkcE79VqypO
- 0xEzYCznDr765IrM8lJgXkDAmN6QzRxnyZv68YM4qT6jwZuuq0f+Y/8YzqLlujCBrBJ7
- UjCUElqpNDNj1wXolz5RdVRfyxUtmF4ZMioEhMdx7jAlC0Ny2RhE/DT+Q8CfqudhKATa
- FGZQ==
-X-Gm-Message-State: AOAM531eurmPmf1aOcFIuwWCn8vXUTAuM+Ogxe/KQYbcwUM8J0fJvjAT
- 8JYmLETwQ4jSJySkFaaLHskQNA==
-X-Google-Smtp-Source: ABdhPJwM/DI2o34F+WDaWrZsOlue0b7UjEhkAxTdz2w/M4qUcKAuHYkMB4oCu8X13AIH9xl4tSLwfg==
-X-Received: by 2002:a17:90a:df17:: with SMTP id
- gp23mr2497950pjb.7.1618421377192; 
- Wed, 14 Apr 2021 10:29:37 -0700 (PDT)
+ bh=70dSAhdvNf9rW7naVyB8FacZo/tKpmgYTIzZpzN71Cs=;
+ b=e71etT5A9JoJaN3W2kKc4eStW8XO6auVsIAzQA6QVCRJOKe62EVyKDTLcOmxe8Pd7F
+ 4YKK4hgSQ1S+l1V6x8W5PE5QfUaxpECVs/TO+wdxuqfbIZ4LRPnbssJHyL3xzDYMuE+e
+ timjJ/ncx2DjF2sWThOmWmrk9nEMc57lzgncpBiMOKhRHHDiQOiW5XNsi6LSb1PBFdkj
+ 86ZLAWbk2Xr9zD9DL2avGRrvAEOBlQQrr+2Vt6DQWyHrVIiLxH6bCHnW+jqFc4+7Uufw
+ +mXh6lmR+kFNKtxHZ+xBmJ/3M6KHUd/d8lVKQfhdHZJgZ9rTcis3ZAvL5Fg0sZNdIfgn
+ hykQ==
+X-Gm-Message-State: AOAM530S7o2tskl/kWKXTUjEd0gKhJrwL8B0RXUAaZPQZZ7Mh05w6+VF
+ TzHS6vNJt61QXQv+/G6oG/QQ7A==
+X-Google-Smtp-Source: ABdhPJwqy6xfsxSkXZwh4yhPlR+yx5Kxrr/lleQqawAAaqaYA9AZc2k7rgE80MSaJDQAOD1ejSDS8w==
+X-Received: by 2002:a17:90a:ca83:: with SMTP id
+ y3mr4896192pjt.191.1618421380273; 
+ Wed, 14 Apr 2021 10:29:40 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:bae3:4af0:9792:1539])
- by smtp.gmail.com with ESMTPSA id e31sm63460pjk.4.2021.04.14.10.29.34
+ by smtp.gmail.com with ESMTPSA id e31sm63460pjk.4.2021.04.14.10.29.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Apr 2021 10:29:36 -0700 (PDT)
+ Wed, 14 Apr 2021 10:29:39 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Wolfram Sang <wsa@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Rob Herring <robh+dt@kernel.org>,
@@ -96,16 +95,16 @@ Cc: linux-i2c@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
  Jani Nikula <jani.nikula@linux.intel.com>,
  Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
  intel-gfx@lists.freedesktop.org
-Subject: [PATCH v19 5/6] arm64: dts: mt8183: add supply name for eeprom
-Date: Thu, 15 Apr 2021 01:29:15 +0800
-Message-Id: <20210414172916.2689361-6-hsinyi@chromium.org>
+Subject: [PATCH v19 6/6] drm/i915/selftests: Rename functions names
+Date: Thu, 15 Apr 2021 01:29:16 +0800
+Message-Id: <20210414172916.2689361-7-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
 In-Reply-To: <20210414172916.2689361-1-hsinyi@chromium.org>
 References: <20210414172916.2689361-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_102938_189613_5D604829 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20210414_102940_808664_05F0947A 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,111 +121,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add supplies for eeprom for mt8183 boards.
+pm_resume and pm_suspend might be conflict with the ones defined in
+include/linux/suspend.h. Rename pm_resume{suspend} to
+i915_pm_resume{suspend} since they are only used here.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reported-by: kernel test robot <lkp@intel.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi  | 4 ++++
- 3 files changed, 12 insertions(+)
+ drivers/gpu/drm/i915/selftests/i915_gem.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-index b442e38a3156..28966a65391b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-@@ -88,11 +88,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
+diff --git a/drivers/gpu/drm/i915/selftests/i915_gem.c b/drivers/gpu/drm/i915/selftests/i915_gem.c
+index dc394fb7ccfa..525afda9d31f 100644
+--- a/drivers/gpu/drm/i915/selftests/i915_gem.c
++++ b/drivers/gpu/drm/i915/selftests/i915_gem.c
+@@ -94,7 +94,7 @@ static int pm_prepare(struct drm_i915_private *i915)
+ 	return 0;
+ }
  
- 	eeprom@58 {
- 		compatible = "atmel,24c32";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcama2_reg>;
- 	};
- };
+-static void pm_suspend(struct drm_i915_private *i915)
++static void i915_pm_suspend(struct drm_i915_private *i915)
+ {
+ 	intel_wakeref_t wakeref;
  
-@@ -101,11 +103,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
+@@ -116,7 +116,7 @@ static void pm_hibernate(struct drm_i915_private *i915)
+ 	}
+ }
  
- 	eeprom@54 {
- 		compatible = "atmel,24c32";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
+-static void pm_resume(struct drm_i915_private *i915)
++static void i915_pm_resume(struct drm_i915_private *i915)
+ {
+ 	intel_wakeref_t wakeref;
  
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-index 2f5234a16ead..3aa79403c0c2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-@@ -62,11 +62,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
+@@ -152,12 +152,12 @@ static int igt_gem_suspend(void *arg)
+ 	if (err)
+ 		goto out;
  
- 	eeprom@58 {
- 		compatible = "atmel,24c64";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcamio_reg>;
- 	};
- };
+-	pm_suspend(i915);
++	i915_pm_suspend(i915);
  
-@@ -75,11 +77,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
+ 	/* Here be dragons! Note that with S3RST any S3 may become S4! */
+ 	simulate_hibernate(i915);
  
- 	eeprom@54 {
- 		compatible = "atmel,24c64";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
+-	pm_resume(i915);
++	i915_pm_resume(i915);
  
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-index fbc471ccf805..30c183c96a54 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-@@ -71,11 +71,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
+ 	err = switch_to_context(ctx);
+ out:
+@@ -192,7 +192,7 @@ static int igt_gem_hibernate(void *arg)
+ 	/* Here be dragons! */
+ 	simulate_hibernate(i915);
  
- 	eeprom@58 {
- 		compatible = "atmel,24c32";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcama2_reg>;
- 	};
- };
+-	pm_resume(i915);
++	i915_pm_resume(i915);
  
-@@ -84,11 +86,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
- 
- 	eeprom@54 {
- 		compatible = "atmel,24c32";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
- 
+ 	err = switch_to_context(ctx);
+ out:
 -- 
 2.31.1.295.g9ea45b61b8-goog
 
