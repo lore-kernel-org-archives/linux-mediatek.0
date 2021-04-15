@@ -2,98 +2,103 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F5D8C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 21:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B901C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 23:03:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6BC960FDB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 21:25:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6BC960FDB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D0327600EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 23:03:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0327600EF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WJKr/5hkxC/IoHvsgCp6n4cxsf6JQoItclkCTX3tWrQ=; b=h0bSnN8e7XvpUoHUHNMY1akir
-	Q0IVGWr072DsQRDKQ/yGP8NFseIvN1D9hStVvizTw/q1HI4iR8hBwkTFVhSi67yEFo5Sqcg6BIR6C
-	QH2RcFQf8CireRdhnMr9ial6hjM5Twdtdq8ejkl6VO+fJa04OyfjdQq97T80iIM3/gSpGCpGjnxbn
-	nveg/xN7sNWRmRM8A7rNtfakTRVaU9+gmmzB15zOOe0Jjp+tRlNGnCXnqSSLBGCk8GDPaVbCnCrX9
-	68obKvYVMLAGRTQ47Y8Z4SkkutHwqiVmryS2yCNNYnccP5ZgpiEnjbcCrdDaSYwce+tYOV1jNrC0A
-	aCutdGc1w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gtNOjV/smOQqjJyEfqDQJC3CKzCOTtqNjs9yM6b2XqU=; b=knuzjvLHV16dm/Q5fw75d6Juu9
+	h2zI9k6OfIoAbNXZtP/DMTU7+Hcom2zCWdl879xXsW6U9WP1IyASjCxhQrbyY5YTxX9dWslY80Hax
+	kSQHwVCzv8PYjV31vzOB6Qg5qS+0USN13Wqx/H5TQJKml6vOVz+tcFrTJ4sf4y1vEvs9og2h1ibPh
+	rvXa5QgDC7D27Wvl8dR7u7GgMWu84g1jLRCx3txk0ilZ1KI5tLcZPlJtnvOXft6R+ru+YUn0yWyzb
+	rtFy/JrfwiM0j6rgvm3tfinJmIZ5QsxCRhdPVwz+NQF8CoPbY4PQhzVWaJaqQkCsne/h0U+k+3xrI
+	jk/j3oUg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lX9UE-00HOyi-1M; Thu, 15 Apr 2021 21:25:18 +0000
+	id 1lXB18-0000Sk-He; Thu, 15 Apr 2021 23:03:22 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lX9U1-00HOwP-Mb; Thu, 15 Apr 2021 21:25:06 +0000
+ id 1lXB0u-0000Rr-2M; Thu, 15 Apr 2021 23:03:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=c9scaIssXdq/UWor4TPj5fBHM3FwG50NkM/glSUGJA8=; b=p87VKF4huLBtGbzrBYZmTL1hJY
- bv2IpFUO41QYcsXhhiUqlkvmLpAo+HoqTbe2Xnvok+VvdVOmTGnU6Z72AeRUMijlhXsapApM1RR62
- QO4fpFZcPvxhUdvvdSGgc+Yam4bCK/sXFOrqEcChwEV4/qnGh6nYhDhSwiqr37s0b+CI3VcQmPjDW
- jEVx+7cdx4bp+sYAaL5cT86oHD1X9TLJhKZh/yRHgHRPz70VY3eSexP0Ec/4CVwye6OsjYWVJcZpu
- yU8d/lh22oM7jCqCy3EZwc5ZfEKN8OV2bGlslZN8lEO0TEt8SHrP1mwvNtGIafCgh0Pmgf2Jw+CHU
- rSbZlXxA==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=VEsA/vSJtUoYWrO4uAbtIW1LBwaGDshRVIPmviTWMZg=; b=FZJpWxvnHVNGyuM5vaFvcZnQMt
+ +Z8wHqvAvWoAFttS1EvAXyJLlJtVhYcaW4pFKqaIZ91TBf19Bq9zrrUi/PYELgMgsuipcpj3QwrCy
+ g+eJ/psVga5JZ6cT2PWml2/xATOmyV3n3a3H0UFYtT5RVDMydCP33/MYyYA/UNb0voLis8FiizbrU
+ /aNDZbkUKuLrYmG+BAsOEPKGB2Rwg/3U5e6HlUPxXXTO9S0SBTnbw/3xJjgfo4U148KZ81aJYyoY1
+ 3MBOcBY+5aIuVJk1NZSpiDuf5P0ZaDX2wE9lK6gKyOUgXsFvIKpZqoyiquF34fP1YZMRtW46+sT6E
+ NE4wt0GA==;
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lX9Ty-008u35-V0; Thu, 15 Apr 2021 21:25:04 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 91BDE60FDB;
- Thu, 15 Apr 2021 21:25:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618521902;
- bh=wAzWz1t/6xImauPcT3XLaMkS802uQtcKstpMe9mSozY=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=E/51QtVt+JZLl5YJKUji4jjUv0dBmA0cmazs/5w6+Bc4wZzO5QnL2dejEJKPWm3Nz
- blOgsYGjclj6JlD5IGboMfeGiQ+yiXB0FaNPitc6n+Pgc/BPT4z4QUAn8LElc43w2p
- DW0iYl09HZIPMm0/dSBmP6P7h0NNhw9kIp61XrB2T4R+z31rL4dpIhDyAXI0P+/egD
- PKDC65q1VxcwFiaRYagT0Ob/+o2VdMqInrUvQpaSh8X9S4oseMskkKhQEu7aHiu4Pa
- Rjns9bJQt/R4aYcJnf1arUZqeetP5o8esJ0rxv9BXDiQWIGv52jx2HETOIhpRi/JxD
- Q8daW7WZwkObA==
-Received: by mail-qk1-f177.google.com with SMTP id o5so26865337qkb.0;
- Thu, 15 Apr 2021 14:25:02 -0700 (PDT)
-X-Gm-Message-State: AOAM53282vE1mpUdGca/IzgEMGdr9gbC2M9bpCvAa+0NywcRd9DgZbKd
- dmRZ/gdnpbWfOirT/aZY0bldGkboD+CWUCAx1Q==
-X-Google-Smtp-Source: ABdhPJwEOtVU/PBX8pl5Ub9lOQ0rQ9elsjO6RSPqK7TVDKWJEeKEiIDMHMw6Ipuhxv6/Qi8T03BgwK/XvLFUmMN9Nds=
-X-Received: by 2002:a37:84b:: with SMTP id 72mr5665420qki.464.1618521901808;
- Thu, 15 Apr 2021 14:25:01 -0700 (PDT)
+ id 1lXB0r-008xRl-CZ; Thu, 15 Apr 2021 23:03:06 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id n10so1803857plc.0;
+ Thu, 15 Apr 2021 16:03:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VEsA/vSJtUoYWrO4uAbtIW1LBwaGDshRVIPmviTWMZg=;
+ b=sTY43m/J0eQ1mveMQ0MibuFp5oZf0LZCRmqg4cCRYn0G2Su5DkBrOctoP1pYz2RDYk
+ BOPrfaZ60KA9xirVL7WeZms9PlqikmRhClL26Od4u0I0VjIt0Y8p7JWId+JHC0F4f8Ux
+ dKvvKixr6qsJqVuQ2eobuojielaJfhM8b3A5yNBlURA0Og7OFB+oIvIoXp426W2GOYv5
+ 6A/T2XYmKE4gQXAjJd8iES7zbennj5VdzUGlwry8O5ZSVk+0duoacUarPlIrfOpWwaMu
+ 0VK84C8hyAz8ms0f4LHRMMZVEV7xw29dQzWhZacgIW5J7gFtCA7jUoiM0n2o2PkYF47A
+ IPDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VEsA/vSJtUoYWrO4uAbtIW1LBwaGDshRVIPmviTWMZg=;
+ b=Qp5GEauzsgheb0iifLkks9X4/DG9cyKcv6FJKf+E+7J6Gl/cTQWyaYdf3KlEq448aQ
+ QtAeSE53e/onxoNYuAsLeDcIH2DjoOeY7KE5fRxiszmHYv900AFdYY1cH1YX36gfalvS
+ cNhpubEwHKEw8Esf8A8ZMfs0G2VkauojUpGHJpeuEQto8qHcem841Emliu9ckrfSiB8s
+ w9QdqK0We4g/tdCx1m5WgUZ1M2TxfgXFidpTgU0KEo0RdqgS4tRVRrL/28RxbhqpLz8u
+ BTTJHv3b9mShRKvhJQW2chPW82t+gu98oz0EsdXDdk9DeW0DQrZvX/M3e0iPuXiodZLQ
+ MVOw==
+X-Gm-Message-State: AOAM530Dnpg87aOvl+svSzZSkep+fzm8SH8VxkoSjzgMvcBxLPdEf4qX
+ ruX29IVlcKppBLoYquJBTHI=
+X-Google-Smtp-Source: ABdhPJzvCvR+LUagBVcV1BGlfgoA/0OIIsUcxnNmR0cY9uYIsczoVfDFBbwaGep2Kn8Hf1LBAOsx6A==
+X-Received: by 2002:a17:902:8504:b029:e9:ab75:3938 with SMTP id
+ bj4-20020a1709028504b02900e9ab753938mr6536729plb.24.1618527783953; 
+ Thu, 15 Apr 2021 16:03:03 -0700 (PDT)
+Received: from ilya-fury.hpicorp.net ([2602:61:7344:f100::b87])
+ by smtp.gmail.com with ESMTPSA id e23sm3004019pfd.48.2021.04.15.16.03.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 16:03:03 -0700 (PDT)
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next] net: ethernet: mediatek: ppe: fix busy wait loop
+Date: Thu, 15 Apr 2021 16:02:34 -0700
+Message-Id: <20210415230234.14895-1-ilya.lipnitskiy@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-References: <1617766086-5502-1-git-send-email-flora.fu@mediatek.com>
- <1617766086-5502-5-git-send-email-flora.fu@mediatek.com>
- <20210409182538.GA3913794@robh.at.kernel.org>
- <1618209895.25062.11.camel@mtksdccf07>
-In-Reply-To: <1618209895.25062.11.camel@mtksdccf07>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 15 Apr 2021 16:24:50 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLKaYY=NHm1hD=YaQgvDOBTtraoUqcycA7tu7n-f2GVDw@mail.gmail.com>
-Message-ID: <CAL_JsqLKaYY=NHm1hD=YaQgvDOBTtraoUqcycA7tu7n-f2GVDw@mail.gmail.com>
-Subject: Re: [PATCH 4/8] dt-bindings: arm: mediatek: Add new document bindings
- for APU
-To: Flora Fu <flora.fu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, 
- Pi-Cheng Chen <pi-cheng.chen@mediatek.com>,
- Chiawen Lee <chiawen.lee@mediatek.com>, 
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, devicetree@vger.kernel.org, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-clk <linux-clk@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_142503_066143_8E6427F4 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20210415_160305_488808_1FF3215E 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,83 +115,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 12, 2021 at 1:45 AM Flora Fu <flora.fu@mediatek.com> wrote:
->
-> On Fri, 2021-04-09 at 13:25 -0500, Rob Herring wrote:
-> > On Wed, Apr 07, 2021 at 11:28:02AM +0800, Flora Fu wrote:
-> > > Document the apusys bindings.
-> > >
-> > > Signed-off-by: Flora Fu <flora.fu@mediatek.com>
-> > > ---
-> > >  .../arm/mediatek/mediatek,apusys.yaml         | 56 +++++++++++++++++++
-> > >  1 file changed, 56 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > > new file mode 100644
-> > > index 000000000000..dc04a46f1bad
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > > @@ -0,0 +1,56 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,apusys.yaml*__;Iw!!CTRNKA9wMg0ARbw!3ryKFTA2CvsVss4Pt2ZOG7wv4jgR-2LPxuGn30IxFmpxoxSRdzNdf8FrAYYvZWcw$
-> > > +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!3ryKFTA2CvsVss4Pt2ZOG7wv4jgR-2LPxuGn30IxFmpxoxSRdzNdf8FrARlhCQ0w$
-> > > +
-> > > +title: MediaTek APUSYS Controller
-> > > +
-> > > +maintainers:
-> > > +  - Flora Fu <flora.fu@mediatek.com>
-> > > +
-> > > +description:
-> > > +  The Mediatek apusys controller provides functional configurations and clocks
-> > > +  to the system.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    items:
-> > > +      - enum:
-> > > +          - mediatek,mt8192-apu_mbox
-> > > +          - mediatek,mt8192-apu_conn
-> > > +          - mediatek,mt8192-apu_vcore
-> >
-> > s/_/-/
-> >
->
-> OK. I will update expression strings in the next version.
->
-> > > +      - const: syscon
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  '#clock-cells':
-> > > +    const: 1
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    apu_mbox: apu_mbox@19000000 {
-> >
-> > mailbox@...? Is this a mailbox provider?
-> >
->
-> Yes, the apu_mbox is the for setup mailbox in the APU hardware.
+The intention is for the loop to timeout if the body does not succeed.
+The current logic calls time_is_before_jiffies(timeout) which is false
+until after the timeout, so the loop body never executes.
 
-Then you need #mbox-cells here.
+time_is_after_jiffies(timeout) will return true until timeout is less
+than jiffies, which is the intended behavior here.
 
-And in that case, what makes it a syscon?
+Fixes: ba37b7caf1ed ("net: ethernet: mtk_eth_soc: add support for initializing the PPE")
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>
+---
+ drivers/net/ethernet/mediatek/mtk_ppe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->
-> > > +        compatible = "mediatek,mt8192-apu_mbox", "syscon";
-> > > +        reg = <0x19000000 0x1000>;
-> > > +    };
+diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+index 71e1ccea6e72..af3c266297aa 100644
+--- a/drivers/net/ethernet/mediatek/mtk_ppe.c
++++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+@@ -46,7 +46,7 @@ static int mtk_ppe_wait_busy(struct mtk_ppe *ppe)
+ {
+ 	unsigned long timeout = jiffies + HZ;
+ 
+-	while (time_is_before_jiffies(timeout)) {
++	while (time_is_after_jiffies(timeout)) {
+ 		if (!(ppe_r32(ppe, MTK_PPE_GLO_CFG) & MTK_PPE_GLO_CFG_BUSY))
+ 			return 0;
+ 
+-- 
+2.31.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
