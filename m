@@ -2,96 +2,93 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00F0FC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 06:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F674C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 06:15:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 65D4D6144B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 06:02:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 65D4D6144B
+	by mail.kernel.org (Postfix) with ESMTPS id 059CF61490
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 06:15:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 059CF61490
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Hh59t1lYAc1ys/ud3KV9EWkEXthAkxeUzxKTbJx/4Js=; b=Lr0E5SvqbuKzzHtepKEU1BwgP
-	WA935ZRlFAJX6Y3FFcTix2S147kepliT3Wkom6VX8DRq4OD0Ss82pHGuG5sAY1SnqMOOFmtqkYUBp
-	d8VaKyTiQF0uhgNl1ltKUVAiz9g6JXAp0vjznm1ky99GJr6pydAskmny94DvGH/V3u1AFs+SU28S3
-	s70L5cXeo43k9uOYlV3VpnrAYxPZA4bs8ma6REVzEYKQ4UM7c5H2A+PN8hFryI3clI72ar0RlGGQk
-	ygHJLx9fT4F7ssqAaXBdK8/7QAF3r9nN8HtY1tMsYIp2XL2TcsowXkdl4nWxiCh7CwbdNDCkMbdlK
-	/ufkAQOOg==;
+	 bh=H6c/iqnVfBOBVHI3J9yWSYzDkI4pkTH5knPW+/hARNI=; b=bVzcqOS0eq1RifFZMdhxgzjpr
+	p8S9xCbFsdcvwWfOfHQ9LSeeCBrIlzXaAp4JuW1kU05vKAfvG4oX9gwQMcpGyIKJ/JShVJCTxiniP
+	GTeK2GjLcbLPCbDwdd2ZXJuSwknsE6jYr5qjbw7zKIhblLj+1xQre97RN1T+lXZ2c9dDcPzoc0zxw
+	nD5cLbtIlbR2+PDj9QpyQe54QmumGIjp1dzeHMpLNBDbpizn0C1STAxrqGcmFJnri6XsbE5xO+s8M
+	t91skZckfYqW3RRkXCdoxkCSLYBAqkrrUODsA2MEfigiMg5rx3aALHrcOWN5cMQ5FUYUlX5XiAZlJ
+	597y2e7Rg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWv5R-00EzNj-50; Thu, 15 Apr 2021 06:02:45 +0000
+	id 1lWvHY-00F1tQ-V2; Thu, 15 Apr 2021 06:15:18 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWv4M-00Ez87-Lj; Thu, 15 Apr 2021 06:01:39 +0000
+ id 1lWvHS-00F1sQ-LW; Thu, 15 Apr 2021 06:15:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=uhryOuPuEs7VpVhtnSY1XoY42wLcI/yzC+ShSY894nU=; b=PblQyFChnSZud2frH2Y+kts59e
- LvdR7++U3L/sQK7vYgw8bKSlKGXBjhdQuFH4P76/VXZQWB6umUg1N+Ok7iZTRn/MQGl05C3gFO7mn
- SRIM7c0xI7S97IYTKD/mnJ/EA9ELYPcfDWFimIRZW6u2NeAhdaFp2jZx9nWlmod2ItmixzOqhjUoZ
- UNjixuouqus3G6eD93K1MocJpOWk1hU2HNFKP4NlkwvuOtyBvcPLmoURQtmPJCtcByYHSAVRi03G4
- u3/AFeP90PB0DWi2AWFLgsMqEiKCU964DPww4Dx6XUgavRj1F8KU2JPyf2ISIGDaEESxC1iChIFR0
- JKR8dc0g==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=7nqwvLXN57IfVWkLubO4CqCCp4Oc2JeJo76hJYSoOUU=; b=u6qMdJID/hHYThXx2AfAt88XT2
+ 7w1FgEURavqP/vEniHddeky1/+ETqgSzSOE9k+NjhRzcvIdkLUNs+ZYKaY5qwDw5CtsnF+ASUfKdb
+ W55EwWa2Z3oasNWymUw6WmjQXmTB+DkQF33/tkpKqyoOLecBHPkfCqcOhQsyg8RX9Z/STQrWc/WXV
+ pb8KxPAF2Q0bZiThKx4gGHLQkm+BwgHxZedObted+i4YT9rBOvodF63CfGJqOLvd2ec4ggFYGbtw4
+ uatYiFNZqHvSaAWQ9XoVQMpxwyRHAKXNpwJXe6+bNKF7h1QuvOA4DIXiKDf/twOrAcV6Ve1i3jNJ5
+ r7Y4V1+g==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWv4J-008IPa-V6; Thu, 15 Apr 2021 06:01:37 +0000
-X-UUID: db352344709e4928ba3570db75261892-20210414
+ id 1lWvHP-008Ixl-1s; Thu, 15 Apr 2021 06:15:08 +0000
+X-UUID: ab659d4283dd4147b77f9beba4aa825e-20210414
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=uhryOuPuEs7VpVhtnSY1XoY42wLcI/yzC+ShSY894nU=; 
- b=A2NA2vR+NtW+yK+TrlIAndGR6WVW286luWR88Op0LED0l28zkhZ4bl+VdsSYMEchYKdL/SZV2EmT63t/RK9YWatxCZjDCOicElJFw7Z6k3h6h0YZ/FmZj/AOxTnb33aXW9sxtwEMcgO7FCryO6lReCl1PwEqrC1DZTGoOUkwOgc=;
-X-UUID: db352344709e4928ba3570db75261892-20210414
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=7nqwvLXN57IfVWkLubO4CqCCp4Oc2JeJo76hJYSoOUU=; 
+ b=o+cmZXPpzKNld2fkOAQSl5wIY/ER6cFLz8p2DLB7GcynkMkYhaZ0+wLWE1nuiLjzknSY/U7TR952ZVwFpmoImDuAXM6iFXm3nlzY0mJpmO77lkVtZUBZWoWBLq5ELso9ig+stgI3pzIzcL1hcm4V3rU/8Tz6CUgES3ISHcf8dbY=;
+X-UUID: ab659d4283dd4147b77f9beba4aa825e-20210414
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1242225444; Wed, 14 Apr 2021 23:01:27 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Apr 2021 22:52:58 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Apr 2021 13:52:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 15 Apr 2021 13:52:54 +0800
-From: Flora Fu <flora.fu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>
-CC: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Flora Fu <flora.fu@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@mediatek.com>, 
- Chiawen Lee <chiawen.lee@mediatek.com>, Chun-Jie Chen
- <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-Subject: [PATCH v2 7/7] arm64: dts: mt8192: Add APU power domain node
-Date: Thu, 15 Apr 2021 13:52:40 +0800
-Message-ID: <1618465960-3013-8-git-send-email-flora.fu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1618465960-3013-1-git-send-email-flora.fu@mediatek.com>
-References: <1618465960-3013-1-git-send-email-flora.fu@mediatek.com>
+ with ESMTP id 1805836183; Wed, 14 Apr 2021 23:15:04 -0700
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Apr 2021 23:15:02 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS33N1.mediatek.inc (172.27.4.75) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 15 Apr 2021 14:14:58 +0800
+Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 15 Apr 2021 14:14:58 +0800
+Message-ID: <1618467298.4349.3.camel@mtksdccf07>
+Subject: Re: [SPAM][v2,PATCH 3/3] drm/mediatek: dpi: add bus format negotiation
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: <chunkuang.hu@kernel.org>
+CC: <matthias.bgg@gmail.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+ <jitao.shi@mediatek.com>
+Date: Thu, 15 Apr 2021 14:14:58 +0800
+In-Reply-To: <1618448968.29238.1.camel@mtksdaap41>
+References: <1618407316-10042-1-git-send-email-rex-bc.chen@mediatek.com>
+ <1618407316-10042-4-git-send-email-rex-bc.chen@mediatek.com>
+ <1618448968.29238.1.camel@mtksdaap41>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9D8029BC1D72AC5253A108D378D8BE10E10239E313A5DFE914921084B05E37CD2000:8
+X-TM-SNTS-SMTP: AB26C5B3636FBFAFCF2350F1176B41F4EBFA1279DAAD8767BA7C438DF3C8AB8C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210414_230136_028254_719FB15C 
-X-CRM114-Status: GOOD (  10.84  )
+X-CRM114-CacheID: sfid-20210414_231507_125044_341157A2 
+X-CRM114-Status: GOOD (  23.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,75 +105,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add APU power domain node to MT8192.
+On Thu, 2021-04-15 at 09:09 +0800, CK Hu wrote:
+Hello CK,
+> Hi, Rex:
+> 
+> On Wed, 2021-04-14 at 21:35 +0800, Rex-BC Chen wrote:
+> > Add the atomic_get_output_bus_fmts, atomic_get_input_bus_fmts to negotiate
+> > the possible output and input formats for the current mode and monitor,
+> > and use the negotiated formats in a basic atomic_check callback.
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > ---
+> >  drivers/gpu/drm/mediatek/mtk_dpi.c | 89 ++++++++++++++++++++++++++++--
+> >  1 file changed, 84 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > index 76431fe849b8..b4e9c6c8d706 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> > @@ -536,6 +536,87 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+> >  	return 0;
+> >  }
+> >  
+> > +#define MAX_OUTPUT_SEL_FORMATS	2
+> > +
+> > +static u32 *mtk_dpi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+> > +					struct drm_bridge_state *bridge_state,
+> > +					struct drm_crtc_state *crtc_state,
+> > +					struct drm_connector_state *conn_state,
+> > +					unsigned int *num_output_fmts)
+> > +{
+> > +	struct drm_display_mode *mode = &crtc_state->mode;
+> > +	u32 *output_fmts;
+> > +	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+> > +
+> > +	*num_output_fmts = 0;
+> > +
+> > +	output_fmts = kcalloc(MAX_OUTPUT_SEL_FORMATS, sizeof(*output_fmts),
+> > +			      GFP_KERNEL);
+> > +	if (!output_fmts)
+> > +		return NULL;
+> > +
+> > +	/* Default 8bit RGB fallback */
+> > +	if (dpi->conf->dual_edge) {
+> > +		output_fmts[0] =  MEDIA_BUS_FMT_RGB888_2X12_LE;
+> > +		output_fmts[1] =  MEDIA_BUS_FMT_RGB888_2X12_BE;
+> 
+> MT8183 does not support MEDIA_BUS_FMT_RGB888_1X24?
+> 
+> Regards,
+> CK
+> 
+Yes, MT8183 only support MEDIA_BUS_FMT_RGB888_1X24
 
-Signed-off-by: Flora Fu <flora.fu@mediatek.com>
----
-Note:
-This patch depends on MT8192 clock[1] and PMIC[2] patches which haven't yet been accepted.
-[1] https://patchwork.kernel.org/project/linux-mediatek/patch/20210324104110.13383-7-chun-jie.chen@mediatek.com/
-[2] https://patchwork.kernel.org/project/linux-mediatek/patch/1617188527-3392-9-git-send-email-hsin-hsiung.wang@mediatek.com/
----
- arch/arm64/boot/dts/mediatek/mt8192-evb.dts |  7 ++++++
- arch/arm64/boot/dts/mediatek/mt8192.dtsi    | 28 +++++++++++++++++++++
- 2 files changed, 35 insertions(+)
+BRs,
+Rex-BC
+> > +		*num_output_fmts = 2;
+> > +	} else {
+> > +		output_fmts[0] =  MEDIA_BUS_FMT_RGB888_1X24;
+> > +		*num_output_fmts = 1;
+> > +	}
+> > +
+> > +	return output_fmts;
+> > +}
+> > +
+> > +#define MAX_INPUT_SEL_FORMATS	1
+> > +
+> > +static u32 *mtk_dpi_bridge_atomic_get_input_bus_fmts(struct drm_bridge *bridge,
+> > +					struct drm_bridge_state *bridge_state,
+> > +					struct drm_crtc_state *crtc_state,
+> > +					struct drm_connector_state *conn_state,
+> > +					u32 output_fmt,
+> > +					unsigned int *num_input_fmts)
+> > +{
+> > +	u32 *input_fmts;
+> > +
+> > +	*num_input_fmts = 0;
+> > +
+> > +	input_fmts = kcalloc(MAX_INPUT_SEL_FORMATS, sizeof(*input_fmts),
+> > +			     GFP_KERNEL);
+> > +	if (!input_fmts)
+> > +		return NULL;
+> > +
+> > +	*num_input_fmts = 1;
+> > +	input_fmts[0] = MEDIA_BUS_FMT_RGB888_1X24;
+> > +
+> > +	return input_fmts;
+> > +}
+> > +
+> > +static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
+> > +				       struct drm_bridge_state *bridge_state,
+> > +				       struct drm_crtc_state *crtc_state,
+> > +				       struct drm_connector_state *conn_state)
+> > +{
+> > +	struct mtk_dpi *dpi = bridge->driver_private;
+> > +	unsigned int out_bus_format;
+> > +
+> > +	out_bus_format = bridge_state->output_bus_cfg.format;
+> > +
+> > +	dev_dbg(dpi->dev, "input format 0x%04x, output format 0x%04x\n",
+> > +		bridge_state->input_bus_cfg.format,
+> > +		bridge_state->output_bus_cfg.format);
+> > +
+> > +	dpi->ddr_edge_sel = (out_bus_format == MEDIA_BUS_FMT_RGB888_2X12_LE) ?
+> > +		 		true : false;
+> > +
+> > +	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
+> > +	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
+> > +	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
+> > +	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> >  static int mtk_dpi_bridge_attach(struct drm_bridge *bridge,
+> >  				 enum drm_bridge_attach_flags flags)
+> >  {
+> > @@ -574,6 +655,9 @@ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
+> >  	.mode_set = mtk_dpi_bridge_mode_set,
+> >  	.disable = mtk_dpi_bridge_disable,
+> >  	.enable = mtk_dpi_bridge_enable,
+> > +	.atomic_check = mtk_dpi_bridge_atomic_check,
+> > +	.atomic_get_output_bus_fmts = mtk_dpi_bridge_atomic_get_output_bus_fmts,
+> > +	.atomic_get_input_bus_fmts = mtk_dpi_bridge_atomic_get_input_bus_fmts,
+> >  };
+> >  
+> >  void mtk_dpi_start(struct device *dev)
+> > @@ -620,11 +704,6 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
+> >  	}
+> >  	drm_connector_attach_encoder(dpi->connector, &dpi->encoder);
+> >  
+> > -	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
+> > -	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
+> > -	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
+> > -	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
+> > -
+> >  	return 0;
+> >  
+> >  err_cleanup:
+> 
+> 
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-index 1769f3a9b510..688c97c46d44 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
-@@ -65,3 +65,10 @@
- &mt6359_vrf12_ldo_reg {
- 	regulator-always-on;
- };
-+
-+&apuspm {
-+	vsram-supply = <&mt6359_vsram_md_ldo_reg>;
-+	apu_top: power-domain@0 {
-+		domain-supply = <&mt6359_vproc1_buck_reg>;
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 561025d2ebab..90436757386e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -1033,6 +1033,34 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		apuspm: power-domain@190f0000 {
-+			compatible = "mediatek,mt8192-apu-pm", "syscon";
-+			reg = <0 0x190f0000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			#power-domain-cells = <1>;
-+			mediatek,scpsys = <&scpsys>;
-+			mediatek,apu-conn = <&apu_conn>;
-+			mediatek,apu-vcore = <&apu_vcore>;
-+
-+			apu_top: power-domain@0 {
-+				reg = <0>;
-+				#power-domain-cells = <0>;
-+				clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+					 <&topckgen CLK_TOP_IPU_IF_SEL>,
-+					 <&clk26m>,
-+					 <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-+				clock-names = "clk_top_conn",
-+					      "clk_top_ipu_if",
-+					      "clk_off",
-+					      "clk_on_default";
-+				assigned-clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+						  <&topckgen CLK_TOP_IPU_IF_SEL>;
-+				assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+							 <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-+			};
-+		};
-+
- 		larb13: larb@1a001000 {
- 			compatible = "mediatek,mt8192-smi-larb";
- 			reg = <0 0x1a001000 0 0x1000>;
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
