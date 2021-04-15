@@ -2,75 +2,79 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1267FC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 08:36:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AECAC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 08:38:44 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C45FA611AD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 08:36:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C45FA611AD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
+	by mail.kernel.org (Postfix) with ESMTPS id 59C6C611C0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 08:38:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59C6C611C0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Jq6bqHvOteCZcheU+FmWcBtkUdVv23Z/zcvOp97vfRc=; b=NwVMVLzUPMPayf+gSQWsNgRJaM
-	yCD9SB8E0LfDq7yqq/0RWTpXeOXCleSmC/um5T006YTspXWEZmQKpZKoMR5FQW+rX93visvXEUrCl
-	PFJQY4DBxFlmsEfjzfP68bpsxkIBBgGEBE4bz9/a7cNxbinAGS/Tc6oSqrjEmtnjh4xRJVvNjMgdi
-	jYBn+mnAg/EtkFux3CS0RA9WgFPSHizd1NOb/+K6wvSj8Jb/R5jw+w50X7Hckz7AtJZEOkZYF2rts
-	au/2msiwyuqwUVyIGdWQ4lgXYzzkZ0gKcXje3/DHXwq3eipRL1NG91w8PoCcLnnoh3h6BXV1xuiJD
-	KihbU/PQ==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ANZtNnZyjlXevjxDfsEQTRVgA//ww7XoQ6vnTr9vzj4=; b=jsQ2xn8u8pCegdpOWcYOknXXg
+	v8uc0AG0+TyWel229aML3S/1m9zgxFQRty0tcB6oTNnpBPfw2IdkzdHZXD9sLEqp5tL+yvPW46KBo
+	BxKEBIVLJbzisvR5NZrFimD38mSzmqZe+y54MznZybDft+/u7bC48VI7HwwPW4oGcdep8zzmmPAvs
+	DBS903iBkz2XfQCDb2nQscjcqNBXyk5VVwdkTp6P0FYnNyhRMf4bFNTPXUJqqu7QlFeMLWmFvA2s8
+	VZjPTPgr70N1o03C8DiVDKLxeMspW1Y+BSSe9P6jMaRB5qKDfmOpogdxAceyiAvpyVQGg6owa0KfA
+	8mVKrcnoQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWxU7-00FN4D-8Q; Thu, 15 Apr 2021 08:36:23 +0000
+	id 1lWxWE-00FNXe-I7; Thu, 15 Apr 2021 08:38:34 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWxTp-00FN26-Pz; Thu, 15 Apr 2021 08:36:06 +0000
+ id 1lWxVr-00FNSW-B2; Thu, 15 Apr 2021 08:38:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=Y+gxG/K4BKCF0iUg2WWlIf86k1/lgqGqJ8DPMPTp//o=; b=a9UzgP8eSBy4kroifLvSXkmyqz
- NqeDF3XF39Dhxnvfy5mUbIczJB1+X9kMO1hCQLAMazZMyzFsGTehF5rfBsXNKMxb7CGatujMxkmRX
- xLLex9r0Rx6juccsmsAPB6yQUl+JXdef9yZgdpsI/YVpqDbfqaKkiJF1hd9QxC5cqzvYv0Wr3UurX
- Yw5b9iM6yT77IIuNe9EeBkYwXm0r6GAtGywWZwgwEhBF8iafVbWqlIFIqWNmotKy7AaNoDpsMBGga
- fZekgc6H2bgi1LSZQmKXOskIm8+oq52d3S4Dzj36+9ng+T1YWSgVRaL4Y4ehZ9AMiZKihiTOXYS41
- jfHNn2QA==;
-Received: from out30-130.freemail.mail.aliyun.com ([115.124.30.130])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=hsxY7yFG9/dzr3NAqi1lNpn2kWlRTcdXcwXkSlGbHdA=; b=YTzTLhReEk5ElVLif1JeTyolHm
+ P1f3Co/w2qQC66+zGputzTkBvIIdSGn23IlOl3MghKX1ZrBAi0t4ytKc8+I2Zhe0xylShxxpA7LU5
+ xvkVXTng4cn6A3nZjEQtDi4+ThzUnIwGpCrC2u34PmL2LopB2RpiOWzNeZImeN/n4kUfBmDVlZef5
+ 1xm/hcIZWobgA/uEQpB7cgGZ2bOQjXtCAxYhrbGxwSy391IUbkPinxhs34IaLAUFX/GcjrMa4ZCtG
+ EInlXytaR2le58dQFDhV7UAarAf7GZzxexzw6TI3RYPo1FESJoX7b4CmGaOnRgQ1ozm052inn/UKh
+ eB8uziRQ==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWxTn-008Ng2-A7; Thu, 15 Apr 2021 08:36:04 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R141e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04426;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=9; SR=0;
- TI=SMTPD_---0UVdfZCq_1618475754; 
-Received: from
- j63c13417.sqa.eu95.tbsite.net(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0UVdfZCq_1618475754) by smtp.aliyun-inc.com(127.0.0.1);
- Thu, 15 Apr 2021 16:36:00 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: thierry.reding@gmail.com
-Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- matthias.bgg@gmail.com, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Subject: [PATCH] pwm: mediatek: remove unused function
-Date: Thu, 15 Apr 2021 16:35:53 +0800
-Message-Id: <1618475753-102123-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 1.8.3.1
+ id 1lWxVo-008Nq6-I4; Thu, 15 Apr 2021 08:38:10 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 432ED1F42C47
+Subject: Re: [PATCH 3/3] arm64: dts: mt8183-kukui: fix dtbs_check warnings
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, matthias.bgg@kernel.org
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fabien Parent <fparent@baylibre.com>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ lkml <linux-kernel@vger.kernel.org>
+References: <20210414144643.17435-1-matthias.bgg@kernel.org>
+ <20210414144643.17435-3-matthias.bgg@kernel.org>
+ <CANMq1KAxZ+QiRR7LgR22pvhs4us=ne_VtSM-S_byCC0N__6BZA@mail.gmail.com>
+ <d87f20bd-2195-663b-dd0b-ea1fa2f28a46@gmail.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <82fdfa6e-9c4d-7146-fd90-353e350159c2@collabora.com>
+Date: Thu, 15 Apr 2021 10:37:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.9.0
+MIME-Version: 1.0
+In-Reply-To: <d87f20bd-2195-663b-dd0b-ea1fa2f28a46@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_013603_536068_5F7719C4 
-X-CRM114-Status: UNSURE (   5.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210415_013808_761487_B9E55B29 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,43 +86,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix the following clang warning:
+Hi Matthias,
 
-drivers/pwm/pwm-mediatek.c:110:19: warning: unused function
-'pwm_mediatek_readl' [-Wunused-function].
+On 15/4/21 9:47, Matthias Brugger wrote:
+> Hi Nicolas,
+> 
+> On 15/04/2021 02:29, Nicolas Boichat wrote:
+>> On Wed, Apr 14, 2021 at 10:46 PM <matthias.bgg@kernel.org> wrote:
+>>>
+>>> From: Matthias Brugger <matthias.bgg@gmail.com>
+>>>
+>>> The dsi children don't have any reg property,
+>>
+>> Confused, see below.
+>>
+>>> so we don't need address and
+>>> size cells. This makes dtbs_check happy.
+>>>
+>>> CC: Hsin-Yi Wang <hsinyi@chromium.org>
+>>> CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>>> CC: Nicolas Boichat <drinkcat@chromium.org>
+>>> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+>>>
+>>> ---
+>>>
+>>>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 3 +--
+>>>  1 file changed, 1 insertion(+), 2 deletions(-)
+>>>
+>>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>>> index ff56bcfa3370..f4dca6a33168 100644
+>>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+>>> @@ -251,8 +251,7 @@ &cpu7 {
+>>>
+>>>  &dsi0 {
+>>>         status = "okay";
+>>> -       #address-cells = <1>;
+>>> -       #size-cells = <0>;
+>>> +
+>>>         panel: panel@0 {
+>>>                 /* compatible will be set in board dts */
+>>>                 reg = <0>;
+>>
+>> ^^ isn't that... a reg property?
+>>
+> 
+> Yes, that's my fault. I'm not quite sure why we would need this reg property. In
+> any case also we have it present "dtbs_check W=1" throws the following warning:
+> mediatek/mt8183.dtsi:1234.22-1246.5: Warning (avoid_unnecessary_addr_size):
+> /soc/dsi@14014000: unnecessary #address-cells/#size-cells without "ranges" or
+> child "reg" property
+> 
+> 
+> Can you have a look at that?
+> 
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/pwm/pwm-mediatek.c | 6 ------
- 1 file changed, 6 deletions(-)
+I think it is needed reg. See at
+Documentation/devicetree/bindings/display/dsi-controller.yaml
 
-diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-index fcfc3b1..cae0f48 100644
---- a/drivers/pwm/pwm-mediatek.c
-+++ b/drivers/pwm/pwm-mediatek.c
-@@ -107,12 +107,6 @@ static void pwm_mediatek_clk_disable(struct pwm_chip *chip,
- 	clk_disable_unprepare(pc->clk_top);
- }
- 
--static inline u32 pwm_mediatek_readl(struct pwm_mediatek_chip *chip,
--				     unsigned int num, unsigned int offset)
--{
--	return readl(chip->regs + pwm_mediatek_reg_offset[num] + offset);
--}
--
- static inline void pwm_mediatek_writel(struct pwm_mediatek_chip *chip,
- 				       unsigned int num, unsigned int offset,
- 				       u32 value)
--- 
-1.8.3.1
+Regards,
+Enric
 
+> Regards,
+> Matthias
+> 
+>>> --
+>>> 2.30.2
+>>>
 
 _______________________________________________
 Linux-mediatek mailing list
