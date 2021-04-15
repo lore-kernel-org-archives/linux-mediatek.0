@@ -2,81 +2,102 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7513BC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 10B6CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:35:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3DCAC61073
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:06:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DCAC61073
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8D6316113B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:35:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D6316113B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xh0NuSE03dQnKamVWwRO0QdrC+SVNiWalQiCy32uHws=; b=PWTRS/LF7DYs3QsPw4JyxNlqS
-	lVTEW/O6j00E4tLvrSb9c+jgNP9hV6IQMkdDqmw9a+t2flU1O0mtY6BP0tfznXjQ3uHuptRofBdQs
-	loEm3eWrmOxtyyZPorUaFiVd0q013DvL83Q67pzuPdjw2T6vSe4b5UXcn/JqjtYrChUeIcxOzRz9i
-	VyiwDi2ca+s2hjPCFX48c7GreFWJSG/wMeMHgleqQCzunwTtFn9z4jagkyNcubLIjerLh96qXurg9
-	OvaxqGZqAYaR6I/7r0tPlpDxTzrMmivBStkBGp7I3Za4C6W05ebJxs9JCjz7WStGpitsKm8i/yBIr
-	+kgopuDow==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8WfX8WA5nFPwjGNBpdys8YOcs573XGri+RYxzpdofBc=; b=j6koww3ZpIZQYMa9vM4cP/rqbu
+	5Htn4PWxfnb3NbbVG8P8vDX4Lq+LqTu5dCx6n+VGY8x04pkB9wv0UlQ1HUGcVly6JN4K1ZfukGnpP
+	/XCQt5R6g/tPrYVZisM1hLzjkgEr1/fnwmcbNOB9L2AwaavXjPCnSqS4Gv61htw+N5DLLeMJROuyr
+	AcMd9yxJcfTqYXMHFqdaI1KReVTK16pBRalAq/+uo6QzYB0B+L4iSrq6nmtzvjymAW0rL5vUL/jxQ
+	Mu27KTDmUiwZyO/aHksOP+KiylYsB2B3f78a3eVYTReQCryLc3FBEiHCuhWyTeoChZXZ4blWi62rv
+	joSh4B7g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWxxA-00FSCL-LX; Thu, 15 Apr 2021 09:06:24 +0000
+	id 1lWyPL-00FXhM-Fk; Thu, 15 Apr 2021 09:35:31 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWxx9-00FSBy-CT
- for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:06:23 +0000
+ id 1lWyPI-00FXgf-PV
+ for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:35:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=DezIAH4AmDcqIUTrS4PPiemjpPDDsxciut5qyuzdSI0=; b=bqsZi2YQqUBmm6hCCrkFKpuHdn
- pTSDjyCCovOZ816Ac8BAv7cV8w+1GZOBSMvUXwHdib4zH6HTwfKRiw1Y35h39B965bF1fOzViTn4B
- 8Pf4MDsGMj9ZPwqz+doFk4V3/lqc8P+phA8SqsCf4CULgJSWEUPxOOwZQA7fjGu/0d81whDHHvsPd
- /HddN6Qev8Mnpvm2yyJBQ5YFrLgYzkPL5SOhur5dgvlBJLA1kLGwanizR8P3rlieI5TlXJ7ZcLISJ
- QE9UB45Jx7NDb5shtjCGiPj3XEYTQBVgGAYEV8qG1qF2iICEPyPnpLyAL+1uaMcXHKnOVTc1d+Xgk
- ZHS1IJwg==;
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=; b=ucbZv7yD7DJD/jdFS9R8/kIPjG
+ Q0BkoaUHLFh/aUSS1PnTQuZhnjl/Zi7KvBpfMKvFwNUWgKbwcQOWi1WEh17tkFMLxa92joVUxWO7I
+ Ozqsz33uyBCdIk1eprT/o1DXmLiOckbPJN2fo+tpc9TDSegct0dEP4dcJW7fOnt3sUrbg/ElFgQKe
+ X7a3Fe0jLw36nO9dqkMj4doDZnqmiP9EokTN2dZ45HbHgOmaODPrbY/Kq9KcK2Joq0tJ23JJEuUcG
+ SaflYsMEF10k3uzs9HVtt3RgdYIIyFODeVuvGBBwsztvZEpkTJBV+ACOhySbZJ56oaglA5HYB9O2F
+ Nsb49XQg==;
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWxx6-008PRG-Lt
- for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:06:22 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lWxwy-0001Uy-K8; Thu, 15 Apr 2021 11:06:12 +0200
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lWxwx-0007rB-Fc; Thu, 15 Apr 2021 11:06:11 +0200
-Date: Thu, 15 Apr 2021 11:06:11 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Cc: thierry.reding@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] pwm: mediatek: remove unused function
-Message-ID: <20210415090611.jjbwoz2nbcam3kct@pengutronix.de>
-References: <1618475753-102123-1-git-send-email-jiapeng.chong@linux.alibaba.com>
+ id 1lWyPG-008Qh5-85
+ for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:35:27 +0000
+Received: by mail-pl1-x632.google.com with SMTP id t22so11412225ply.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=;
+ b=f/a4F6+veKHqWHp3c65ip8d8mqjOeh1lEQsyDOeZ41/LakIrgaBTP0ZEpSOZI+0IHa
+ U45srKBFRuBlw3G3tZBKwEWpf7UaGNR128ZdAI8wOQcSbqeVkperNDE4dLoYdM51j5Oo
+ SuhWzy7wph4un1f2SuhtgO1Ryige3CWzWEUd0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=;
+ b=SrQEckP7WWfVWyhihIdjMCT2+cphkCfXQdIDnAIsAGsi7AeAOm+zOKNl43CL9HROK3
+ S6+gOoFMVjanhs2NrUW6DGIyYUlRCRIJ3dxYIKZWMqdwTNog+R/lbekPV7P2O6//DAed
+ hNCRWJ0Zzyq6FLIbHD19x9zrOfLeKbzB5oPd8QFefnLXVA+4JKt/bPHw22Ed+2cUPROd
+ O+ERGgYrLklCCNg2OoCJuDWoOUEDKMYk8TbmWbZfKp2qaEXX42gXnSge8DqpN1IeA7fV
+ xvlp8n+YLi95RfGRZ+vj1hqlT7Pg8PhmQO+1jWRfIpLHQPC1hYsWoVDvyZ1m+jnB/g+m
+ lhyw==
+X-Gm-Message-State: AOAM532y2Ex/XtwxNIzkuu/4RJRGdE/82hAqWx+A+2/4ANS0v9zr4BRo
+ Ae5O4OgMmHtgKRRXybGcFJp0mw==
+X-Google-Smtp-Source: ABdhPJxIL1LMg/3+/Ru1IretOlvAMNJ2751PLJGu15xRh8Lu3qBxQXABg4DLvO8WkYRUIxl8Mr8qQw==
+X-Received: by 2002:a17:90a:5806:: with SMTP id
+ h6mr2844408pji.17.1618479324339; 
+ Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:6432:a6cb:91d2:5e32])
+ by smtp.gmail.com with ESMTPSA id a13sm1849502pgm.43.2021.04.15.02.35.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
+ Ben Ho <Ben.Ho@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 1/8] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-kappa
+Date: Thu, 15 Apr 2021 17:35:12 +0800
+Message-Id: <20210415093519.1920877-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
 MIME-Version: 1.0
-In-Reply-To: <1618475753-102123-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_020620_745738_221C8D92 
-X-CRM114-Status: GOOD (  11.47  )
+X-CRM114-CacheID: sfid-20210415_023526_304724_148F82F8 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,71 +109,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6004191533370059513=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Kappa is known as HP Chromebook 11a.
 
---===============6004191533370059513==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7bpyeb4yz3dyj6pq"
-Content-Disposition: inline
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index aff57a8c8c30..81b86b189a8d 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -144,6 +144,10 @@ properties:
+           - const: google,kakadu-rev2
+           - const: google,kakadu
+           - const: mediatek,mt8183
++      - description: Google Kappa (HP Chromebook 11a)
++        items:
++          - const: google,kappa
++          - const: mediatek,mt8183
+       - description: Google Kodama (Lenovo 10e Chromebook Tablet)
+         items:
+           - enum:
+-- 
+2.31.1.295.g9ea45b61b8-goog
 
---7bpyeb4yz3dyj6pq
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Apr 15, 2021 at 04:35:53PM +0800, Jiapeng Chong wrote:
-> Fix the following clang warning:
->=20
-> drivers/pwm/pwm-mediatek.c:110:19: warning: unused function
-> 'pwm_mediatek_readl' [-Wunused-function].
->=20
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-
-Looks right, even though I would prefer to see a patch implementing
-=2Eget_state instead (which probably would make use of this function).
-
-Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---7bpyeb4yz3dyj6pq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmB4AgAACgkQwfwUeK3K
-7Ak5AAf7BTvu8rSzXv1FOdNJdLxf7+YfcvZs28wu+8AjrB4lxsn3KmModBJ0Zd3S
-kWP2SjRYH6z6yufXwBLo+hePxCVf4ZXwtNcpjX3KS2DMiDNh3W4maCwdWwuLbuVq
-Tkwvbw55qamozBBxcMvNO2NeQMk1NRoS5H5kG3sJbOppG7zaALoNz4WEEu8ByNXt
-1v8d+FWjdAAfaVQnLI1ndYC1AWVkdKEjQLO6FkMQ2F/hVzRzZqnFoxAqgqYyZe8f
-F4cAA9JWdK5MC5uAtCm0QfL1FFs39AZ5Y0jRkZDug5swopt6nSHS6zm6HZhJydTo
-nWOhe9Ugom7Yq1L+XSiWIO8NWhq4XQ==
-=wl9M
------END PGP SIGNATURE-----
-
---7bpyeb4yz3dyj6pq--
-
-
---===============6004191533370059513==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6004191533370059513==--
-
