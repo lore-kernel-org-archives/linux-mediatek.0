@@ -2,124 +2,106 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9162C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96870C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 10:06:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 552E66101B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:49:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 552E66101B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 08DBA6137D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 10:06:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08DBA6137D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IYd+60rJfBiVgKPW6nxZykSpc3JDa+fcDTjAHRAhPQM=; b=Ao39GSbBhLbkHdyWjWCOuOLD5
-	MXM206seBlW6LUbqG69GaBDCQWzp04cp9H/lyNx1t1MuxqaDbvbvYI1EHxf8zAm4zHQWJqP7IRnne
-	kRLyEOPfjKfmgCQEvjRBAYNN6EMbj6VJ5MCuwMIyZwzmjrtYMix4dvyHxAV7MfJt7s/C/0zCN8s6T
-	vHv+THWck04ojYtpFcYeI++vCOUcH9nP/rYyVxUGjZVoZQ1cpKCEwH8UYf9Pe2JdtVPXqbfAW28Kk
-	l7Y7iQYb33HSwxWiu55UGOYRIElDSBWEhBx1lqobXsnij5cZn7TixZALDTkypZiqQII0Chj3j89hF
-	jL9zV9Dyw==;
+	List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject:MIME-Version:
+	References:In-Reply-To:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XaveASFVIcATNiexnrKolInFJtGkKb+Nu4kQJve+798=; b=T/EGEiFMLlQfni
+	4wa1MjhE4OfFOVYKBNl0josrKa69vaTHFs31ZS787Bs/gx9G7SEDmMDg3AaIXYjbBoS57NbQmYVd2
+	9hX3fRJJfNOlTLRisWpEZsTvFdIudjeFCdRibYIbgXHc9bRR6DDc4PbJzs/qPLH9oNWz7OJiu+N9o
+	pY2pb50qeCYV54MlngpaoGlflER2fw5a02naGQmKYrnYm/FzoqZg/yelojQt3XKtKFr6EUGYoa1N0
+	Hk9G/zhdrrNZwZYAYfhBrg9AM+erS5AFzuB+nij8PpB41JIX7n+rc/3pZgua0GAutC9FB6UwaOoIg
+	AkAIqdYesiOgktQEy7rw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWyd5-00FcHd-Vw; Thu, 15 Apr 2021 09:49:44 +0000
+	id 1lWysr-00FeRz-1R; Thu, 15 Apr 2021 10:06:01 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWycd-00FcDA-VW
- for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:49:16 +0000
+ id 1lWysp-00FeRW-Sm; Thu, 15 Apr 2021 10:06:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=; b=pnYFhqh9qbrpRFJ52tUpn/RnTf
- ZdTJBkxtAbgc6bDu93HtgTsAtvEUxC9vW95v00HRhPZv3+mboDIDlzb/PwNrj9UwTstovcpVmYDQ9
- dhk3O108KNaXGJ9DNwDfYTye/PvXhycCXGsY140xrcOqKw305+3vvwpR6NjlXTe8dT0JFUagpL45k
- aV/h0/Smf5kGRvNDPSEsOw0ablylT7sJG8IYkLz0eAjBhNe7fHQKilbf0Mdu0KSmq+cvpBqJwiZcc
- jOgY9X+IAY+NRNjd+UAMbfp1bg9/Wa2c73r1WPr2V47SBHehWvkapdboobTqeaSdbexMTRB7I4/br
- mFeNDBEg==;
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+ d=infradead.org; s=bombadil.20210309; h=Message-ID:From:CC:To:Subject:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+ Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=+kUA0a4ZwMlKKIjn9JGeCEsofiYmSw4pSDq5hmtIq2I=; b=DvhZnzyrWM5Uyvf2n5Z7D3G7yu
+ IT0M5prYA1FAk2ZTLHOpb+R7UZkynEZoxfdQQNAa3IllqAHQxGZsH5Hx8mM5rsH6T6dwErSUSvTYL
+ zxGaEFL+Y+MO4BhLI+oa12RiaVxz7Nsksoshagw5RPLudfMgFpKfSN/lzWYJJIVJBmXJ7s+s6+4CH
+ Pu3O3x3XlAUzFmxfB2LVBPaYK2jUgfocSa3trzgnkjbvFNZIWB/FWMH9fYwkF1APRMCr+WFA+ffYR
+ mFx/kLCdZ/4A5Z587VUJlqNz3MHqbIPOjfv+ZuJfZbD70Nf2/YNQNIjNxIS4d8m8zcZElI3k3JNC8
+ buVanKRA==;
+Received: from mout.gmx.net ([212.227.15.15])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWycb-008RYn-EM
- for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:49:14 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id w10so16545503pgh.5
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:49:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-disposition:content-transfer-encoding;
- bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=;
- b=pRp6PcDwdUPowwS48+n5Vcn7b/Qu7Q0Bq2YvCP3A8ZlqeThBV3w1DUWLE2e8USg8pm
- p56e0NTf8FPp/4keeaxSxU8itqoXcygZWccJHjzPYw6twkrPCaCeIa7t8UWAaOi13xiX
- Ve6vDa0hTMEKVIEsbLjuxRulV/n9kQ+m5aOD6Vkf6r2/Bwusr+eQ/S2dwwn2oMFwp3Lc
- 2GkmtQYNPNgQcVe/+isx2vnEXxpY4KB3qC1LUVEX/QDmUFhh3+H3Qlnrawi6wO8qPSXX
- n9LXQW/2cwdJBiHYuTEtqQ1QFQjXIxdEl7Z+WptTF8OVwNjIWlQO0gCPwfl0HQmBLn9z
- KTxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-disposition
- :content-transfer-encoding;
- bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=;
- b=WS+EdFryMapoNNl2VsUnVEjYY41uOa3E7FkFx+vB5d11qf6sYjjYXCk53WiFbplQ/o
- wJtsbypQVtUtsg7VjxrylslGdgGZI2YEr0SUKXDACYp4gGiCDBH95MSBWti7Ua6DA76Y
- JzUww2bTbBJBEa+7w3uhXGg+8qYhLwGofjgSxxWd1SlIQ/R9tp+uiJFlLBdsLXIvZoGk
- p1IGQHCJxZyxWNk2F9M4/ft4UeVNskgZMeMTJfrLnvg88benn+BaaDXOMrbgEquVAZ1I
- 5VETqyH08xyyF0X36D9St8DnXZ8i1xHR2odY4VsHKQVCSp8Rhk/nu3/vorA+U7RCJCLs
- XjqA==
-X-Gm-Message-State: AOAM531r6eTvwWVPVwZsUJECEdZgssq/yOzoUsBxQhYH5iGen3KCEEEf
- 0cAyWWSx28LcE1JmcGuXPh4=
-X-Google-Smtp-Source: ABdhPJz/296Ukvru+pRPqrOVz6BD93FwhsGWGwnliuGvZd2ixls4Ij1dvumbp8/IpFDe3RglPXeWtw==
-X-Received: by 2002:a62:7d07:0:b029:21b:d1bc:f6c8 with SMTP id
- y7-20020a627d070000b029021bd1bcf6c8mr2278450pfc.45.1618480152634; 
- Thu, 15 Apr 2021 02:49:12 -0700 (PDT)
-Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id g10sm1581765pfj.137.2021.04.15.02.49.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 02:49:11 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
-Cc: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
- "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
- Chuanhong Guo <gch981213@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: Re: [RFC v4 net-next 1/4] net: phy: add MediaTek PHY driver
-Date: Thu, 15 Apr 2021 17:49:02 +0800
-Message-Id: <20210415094902.2946-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210413131259.GP1463@shell.armlinux.org.uk>
-References: <20210412034237.2473017-1-dqfext@gmail.com>
- <20210412034237.2473017-2-dqfext@gmail.com>
- <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
- <20210412150836.929610-1-dqfext@gmail.com>
- <20210413035920.1422364-1-dqfext@gmail.com>
- <20210413131259.GP1463@shell.armlinux.org.uk>
+ id 1lWysn-008SFx-3S; Thu, 15 Apr 2021 10:05:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1618481132;
+ bh=+kUA0a4ZwMlKKIjn9JGeCEsofiYmSw4pSDq5hmtIq2I=;
+ h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:To:CC:From;
+ b=QuPPBRiENJoCcijPjvZcehy4ig2VOX3F66I2kOgs/vJFAbu8+rKBAGMfkS9y51vXB
+ Qn5gDOQSDEvgZWUuNQ5EEFtH81pRpUqBh0iC6+KQptIxJ/1CigUqydmPRjMQR9EMfV
+ 8SSnKuex4gojzwa1SAAqkMBNtVSmJDEWCYsEXDh8=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from frank-s9 ([80.245.79.33]) by mail.gmx.net (mrgmx004
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MQMyZ-1lBLGH0N3x-00MIeU; Thu, 15
+ Apr 2021 12:05:32 +0200
+Date: Thu, 15 Apr 2021 12:05:26 +0200
+User-Agent: K-9 Mail for Android
+In-Reply-To: <20210415094005.2673-1-dqfext@gmail.com>
+References: <20210415094005.2673-1-dqfext@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
+Subject: Re: [PATCH net-next] net: ethernet: mediatek: fix typo in offload code
+To: linux-mediatek@lists.infradead.org, DENG Qingfang <dqfext@gmail.com>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Pablo Neira Ayuso <pablo@netfilter.org>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+CC: Alex Ryabchenko <d3adme4t@gmail.com>
+From: Frank Wunderlich <frank-w@public-files.de>
+Message-ID: <86DA3F5B-32B2-446B-B83D-AFDC5EE6BF53@public-files.de>
+X-Provags-ID: V03:K1:PlTSyeEjvd5QpR+8/glb3oZRAAoeP/sVZ46rDI8ff51bte7qAzo
+ 0y2loCGZIEppur0KEOWHSPNx8Y9tDeluhuV/o4OqnexoiTupD728MW1s2fpWZKDBuxOvXfb
+ C/vrQFUlaGuEhSHV/Gx7EM64seFRytvCQFMaQu8S9QIUd5pDZ2TZvfgBDdmNf9K6zt1bbxJ
+ iuY9NS+J6LMaZX07t2W2A==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:LO/CZ9QTzDI=:TYoFxZWYwdEgCCGxcK3MPf
+ i0vOKpwaIvIrvkV1M0tkhAKn7sKMGNM9MpwEM9N79U05yJ7fh7KDk6ytrZCeoTEkEeu/p9hUz
+ zFUP+jIKSB7OkeKUGdF+HJEblIFk4jZknfZtUCtVVyA77U8gL6aVsV0Fd3TsJNCNvTHAbOVFN
+ xYh1G+Je+q6EapArZY9YWSKJw+Za2MXSWZYcuqF3QJHwRm5RekNw1lSO5ihVcavLu4NNKW/hz
+ fIXKxYK/h4VaPK2ZQ7l4JwrnK70w2MtKTeOUsN1KNRZ8GBqE7Z+hKUJBUD2yzrmiSQZ9ycD5M
+ lUc/m7UGN7b4bC+Z0ODNfwdSm4f1ghEB7G0dCUffelaFN9x1mRhnFuuDoziX6hQneCKVt+CoS
+ KenOiEcQt8w44+rJ8T9DpGvszeuC8MzOHZSF5/u/WV5XSxh8L0V0xlsAw3dyWa03figFU8Js1
+ +8wSayeVS/hGr2KPxksqF/xIQ4GTg7cw7Meu9/LHvVwrMty//jzV+ItunAWrYBcqjztkqraMN
+ oSUGTlxlYSdISUd9UZdtHRr+nIfSwtQVWcwvR1bIV0TQfnWEXG9dx+enkG0u9rhwiKztKppb5
+ iNyydbFT5EqfR4Yz19WhIzukxwMZnH0aO5xrfXLO//Rz+FmeUER/hghpdGWoDxJQawi/WeJDr
+ rszR7gnOwXj0HyQTDPwgQQ8bpEr8FVf6M5suG+EtMx2XXruZkdB1grvFX4f1GmnlF1m0aHfN4
+ HmN086lOjt8gZocbSS8mB+pythc2ptrT8ZxuhyzBFubW2Tp0r2d+mgGYa4joZFhhDCu2XMfJ4
+ IK+VPsx4dukuWSeI2P8IRUxbmoBETGdiYbKG9G0ZE1rmOtmqY4zFp7HLlkNCa/YJkIa5xYDVl
+ r/XB4XLFkBupHKz0JLfMs1CgjsTXjdAhuNGupbi+nekHtj+siSV6pMdmbl+2tFs8/bWeF+blA
+ LGZsR0wHfG1hix/WzpiHNuT0Ct59EUEmq6y/hQxorW7Gv3uYFx8Gp/ej6ivoaKqjp7r5ChNCJ
+ +Sa4UKwUeYGQ91oCRcqNc4jOJsFR9KobtIqot9f3jNS7ZBwIpDu++c9fbIH+vRjdXcyN+C29D
+ pAlOnygQnwO4m6rFW26M+b60irT9wQqUF+LWYIPQ6H8fnQ0M2BDMJAjfxcR88HKfwc4cozygB
+ G6yaHjWcfuQR7Lg8CPSnnz4zCwQDsVplG8XQH+gTiuYhGtGsjWyzodKEAF/no2UMobZIYpyzf
+ 5eB6pZ2/vrYv3/I6K
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_024913_525882_4F8C8EF4 
-X-CRM114-Status: GOOD (  18.73  )
+X-CRM114-CacheID: sfid-20210415_030557_503890_44ECC3EB 
+X-CRM114-Status: UNSURE (   6.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,28 +118,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 13, 2021 at 02:12:59PM +0100, Russell King - ARM Linux admin wrote:
-> On Tue, Apr 13, 2021 at 11:59:20AM +0800, DENG Qingfang wrote:
-> > Within 12 hours, I got some spontaneous link down/ups when EEE is enabled:
-> > 
-> > [16334.236233] mt7530 mdio-bus:1f wan: Link is Down
-> > [16334.241340] br-lan: port 3(wan) entered disabled state
-> > [16337.355988] mt7530 mdio-bus:1f wan: Link is Up - 1Gbps/Full - flow control rx/tx
-> > [16337.363468] br-lan: port 3(wan) entered blocking state
-> > [16337.368638] br-lan: port 3(wan) entered forwarding state
-> > 
-> > The cable is a 30m Cat.6 and never has such issue when EEE is disabled.
-> > Perhaps WAKEUP_TIME_1000/100 or some PHY registers need to be fine-tuned,
-> > but for now I think it should be disabled by default.
-> 
-> Experience with Atheros AR8035 which has a very similar issue would
-> suggest that before resorting to the blunt hammer of disabling
-> SmartEEE, one should definitely experiment with the 1G Tw settings.
-> 
-> Using 24us for 1G speeds on AR8035 helps a great deal, whereas the PHY
-> defaults to 17us for 1G and 23us for 100M.
+Am 15. April 2021 11:40:05 MESZ schrieb DENG Qingfang <dqfext@gmail.com>:
+>.key_offset was assigned to .head_offset instead. Fix the typo.
+>
+>Fixes: 502e84e2382d ("net: ethernet: mtk_eth_soc: add flow offloading
+>support")
+>Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 
-I set the 1G Tw to maximum 255us and still got the link issue..
+Thanks for posting the fix,but imho commit-message is not good.
+
+Issue were traffic problems after a while with increased ping times if flow offload is active.
+
+It turns out that key_offset with cookie is needed in rhashtable_params and head_offset was defined twice.
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
