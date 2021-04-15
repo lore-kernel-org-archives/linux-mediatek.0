@@ -2,82 +2,124 @@ Return-Path: <SRS0=QSA9=JM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EF3AC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9162C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:49:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 20B0A61166
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:42:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20B0A61166
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
+	by mail.kernel.org (Postfix) with ESMTPS id 552E66101B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:49:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 552E66101B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Date:From:MIME-Version:In-Reply-To:Subject:Cc:To:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=5Yer5pzOe8soOubE1O8+nztcpwvvUx23Bo6zVgOrD2c=; b=n8f0CFPWeMwkOCMm+WWld0apq
-	2Xsj0RqgYiBWOMabnyOpudKgVpJR1/8GIMqhJh959dd/iCPnB1lLm8UvSKaoadq+mNYmGX65LaLzX
-	Ga5zwZFOFYtN0qSAUD9mGJGozJ1mDQAKawOWjW1bBbLkxNaDw9qsTR7YVyum87rO5aATI1ITI5EDK
-	jTxsK5MZ1NTuDrXfH9yNzfon3SVv0DwI0xec9/2woo4FV0FK70t8cCfQUA+uA/046Mg/uc0Zw2GkA
-	9M33SiZttnJm84kgwEJ1Y78KMxhwqISbrcRxDxeKNhWLlnRMSH8EqOAhjz8OnfAvmAaXcBgLN8Xv5
-	HEon/mDsA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=IYd+60rJfBiVgKPW6nxZykSpc3JDa+fcDTjAHRAhPQM=; b=Ao39GSbBhLbkHdyWjWCOuOLD5
+	MXM206seBlW6LUbqG69GaBDCQWzp04cp9H/lyNx1t1MuxqaDbvbvYI1EHxf8zAm4zHQWJqP7IRnne
+	kRLyEOPfjKfmgCQEvjRBAYNN6EMbj6VJ5MCuwMIyZwzmjrtYMix4dvyHxAV7MfJt7s/C/0zCN8s6T
+	vHv+THWck04ojYtpFcYeI++vCOUcH9nP/rYyVxUGjZVoZQ1cpKCEwH8UYf9Pe2JdtVPXqbfAW28Kk
+	l7Y7iQYb33HSwxWiu55UGOYRIElDSBWEhBx1lqobXsnij5cZn7TixZALDTkypZiqQII0Chj3j89hF
+	jL9zV9Dyw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWyVx-00FaPC-Vg; Thu, 15 Apr 2021 09:42:22 +0000
+	id 1lWyd5-00FcHd-Vw; Thu, 15 Apr 2021 09:49:44 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyTw-00FZk6-Vj; Thu, 15 Apr 2021 09:40:17 +0000
+ id 1lWycd-00FcDA-VW
+ for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:49:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Date:From:MIME-Version:In-Reply-To:
- Subject:Cc:To:Message-ID:Content-Transfer-Encoding:Content-Type:Sender:
- Reply-To:Content-ID:Content-Description:References;
- bh=f7ppJHvR8jCpjvl12mH3Cu/zhEtImNvwtQZGHLiCPXQ=; b=20InZsSHEHuzrRofvTfw8c4ZfJ
- B3DB0UXdkT3oJBcJwXJ3g4/MLb4WmCOq7oxkZ/YDLjSdlSHapiWxrXZHaIGoYGuf/XxpG8Sai8g7V
- LIWgTlN1OYKvK1FPMMa1zoKsXlSUA4IgCveiy2X0XvMcPCM/WdTYJpqG0eKMuE1WH7TgFEH+H242X
- Tqq8GU59962sNoZLBIHl5WSp2fkUpiJ3gJAhXFDwCl35s9YaMmr84Vq4/wQcyGQeF/D2hatU6f9Iq
- K8YnqpoCmSqsWvMuS8dGuRHxWdiolWTAPOpimw8v4iBHQ/XdOa7R5mCZNPzv1aS9yNPVfmuGqRFkd
- A0v2f9uw==;
-Received: from m176149.mail.qiye.163.com ([59.111.176.149])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=; b=pnYFhqh9qbrpRFJ52tUpn/RnTf
+ ZdTJBkxtAbgc6bDu93HtgTsAtvEUxC9vW95v00HRhPZv3+mboDIDlzb/PwNrj9UwTstovcpVmYDQ9
+ dhk3O108KNaXGJ9DNwDfYTye/PvXhycCXGsY140xrcOqKw305+3vvwpR6NjlXTe8dT0JFUagpL45k
+ aV/h0/Smf5kGRvNDPSEsOw0ablylT7sJG8IYkLz0eAjBhNe7fHQKilbf0Mdu0KSmq+cvpBqJwiZcc
+ jOgY9X+IAY+NRNjd+UAMbfp1bg9/Wa2c73r1WPr2V47SBHehWvkapdboobTqeaSdbexMTRB7I4/br
+ mFeNDBEg==;
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyTs-008R2Y-Gm; Thu, 15 Apr 2021 09:40:14 +0000
-Received: from vivo.com (wm-9.qy.internal [127.0.0.1])
- by m176149.mail.qiye.163.com (Hmail) with ESMTP id 6E7C128308B;
- Thu, 15 Apr 2021 17:40:05 +0800 (CST)
-Message-ID: <AAgApgCdDjCicbWFGpPmeaor.3.1618479605424.Hmail.wangqing@vivo.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-watchdog@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: =?UTF-8?B?UmU6UmU6IFtQQVRDSCBWM10gd2F0Y2hkb2c6IG10azogc3VwcG9ydCBwcmUtdGltZW91dCB3aGVuIHRoZSBiYXJrIGlycSBpcyBhdmFpbGFibGU=?=
-X-Priority: 3
-X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
-X-Originating-IP: 36.152.145.182
-In-Reply-To: <1e60551b-4961-91d6-1ea8-7e3b6becd385@roeck-us.net>
+ id 1lWycb-008RYn-EM
+ for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:49:14 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id w10so16545503pgh.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:49:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=;
+ b=pRp6PcDwdUPowwS48+n5Vcn7b/Qu7Q0Bq2YvCP3A8ZlqeThBV3w1DUWLE2e8USg8pm
+ p56e0NTf8FPp/4keeaxSxU8itqoXcygZWccJHjzPYw6twkrPCaCeIa7t8UWAaOi13xiX
+ Ve6vDa0hTMEKVIEsbLjuxRulV/n9kQ+m5aOD6Vkf6r2/Bwusr+eQ/S2dwwn2oMFwp3Lc
+ 2GkmtQYNPNgQcVe/+isx2vnEXxpY4KB3qC1LUVEX/QDmUFhh3+H3Qlnrawi6wO8qPSXX
+ n9LXQW/2cwdJBiHYuTEtqQ1QFQjXIxdEl7Z+WptTF8OVwNjIWlQO0gCPwfl0HQmBLn9z
+ KTxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=MLJSeXjPoZhwM9OSDgG8lC1iJnB13aPm/yKl+/yfCV4=;
+ b=WS+EdFryMapoNNl2VsUnVEjYY41uOa3E7FkFx+vB5d11qf6sYjjYXCk53WiFbplQ/o
+ wJtsbypQVtUtsg7VjxrylslGdgGZI2YEr0SUKXDACYp4gGiCDBH95MSBWti7Ua6DA76Y
+ JzUww2bTbBJBEa+7w3uhXGg+8qYhLwGofjgSxxWd1SlIQ/R9tp+uiJFlLBdsLXIvZoGk
+ p1IGQHCJxZyxWNk2F9M4/ft4UeVNskgZMeMTJfrLnvg88benn+BaaDXOMrbgEquVAZ1I
+ 5VETqyH08xyyF0X36D9St8DnXZ8i1xHR2odY4VsHKQVCSp8Rhk/nu3/vorA+U7RCJCLs
+ XjqA==
+X-Gm-Message-State: AOAM531r6eTvwWVPVwZsUJECEdZgssq/yOzoUsBxQhYH5iGen3KCEEEf
+ 0cAyWWSx28LcE1JmcGuXPh4=
+X-Google-Smtp-Source: ABdhPJz/296Ukvru+pRPqrOVz6BD93FwhsGWGwnliuGvZd2ixls4Ij1dvumbp8/IpFDe3RglPXeWtw==
+X-Received: by 2002:a62:7d07:0:b029:21b:d1bc:f6c8 with SMTP id
+ y7-20020a627d070000b029021bd1bcf6c8mr2278450pfc.45.1618480152634; 
+ Thu, 15 Apr 2021 02:49:12 -0700 (PDT)
+Received: from localhost.localdomain ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id g10sm1581765pfj.137.2021.04.15.02.49.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 02:49:11 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Russell King - ARM Linux admin <linux@armlinux.org.uk>
+Cc: =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org, Weijie Gao <weijie.gao@mediatek.com>,
+ Chuanhong Guo <gch981213@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
+Subject: Re: [RFC v4 net-next 1/4] net: phy: add MediaTek PHY driver
+Date: Thu, 15 Apr 2021 17:49:02 +0800
+Message-Id: <20210415094902.2946-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210413131259.GP1463@shell.armlinux.org.uk>
+References: <20210412034237.2473017-1-dqfext@gmail.com>
+ <20210412034237.2473017-2-dqfext@gmail.com>
+ <20210412070449.Horde.wg9CWXW8V9o0P-heKYtQpVh@www.vdorst.com>
+ <20210412150836.929610-1-dqfext@gmail.com>
+ <20210413035920.1422364-1-dqfext@gmail.com>
+ <20210413131259.GP1463@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Received: from wangqing@vivo.com( [36.152.145.182) ] by ajax-webmail (
- [127.0.0.1] ) ; Thu, 15 Apr 2021 17:40:05 +0800 (GMT+08:00)
-From: =?UTF-8?B?546L5pOO?= <wangqing@vivo.com>
-Date: Thu, 15 Apr 2021 17:40:05 +0800 (GMT+08:00)
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZGk9NSFZDGE0eShlPSh5JTxlVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
- hKTFVLWQY+
-X-HM-Sender-Digest: e1kJHlYWEh9ZQU1JQ0hPSUlCSEJIN1dZDB4ZWUEPCQ4eV1kSHx4VD1lB
- WUc6Ohw6Cxw4Hz8ROBIYGSw9PAsrFh4aFAlVSFVKTUpDT0xCTUtOTExDVTMWGhIXVQwaFRwKEhUc
- Ow0SDRRVGBQWRVlXWRILWUFZSE1VSk5JVUpPTlVKQ0lZV1kIAVlBTEJDQjcG
-X-HM-Tid: 0a78d4e6e6cf9395kuws6e7c128308b
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_024012_922513_B695D486 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20210415_024913_525882_4F8C8EF4 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,87 +131,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cj5PbiA0LzE0LzIxIDQ6NDggQU0sIFdhbmcgUWluZyB3cm90ZToKPj4gVXNlIHRoZSBiYXJrIGlu
-dGVycnVwdCBhcyB0aGUgcHJldGltZW91dCBub3RpZmllciBpZiBhdmFpbGFibGUuCj4+IAo+PiBC
-eSBkZWZhdWx0LCB0aGUgcHJldGltZW91dCBub3RpZmljYXRpb24gc2hhbGwgb2NjdXIgb25lIHNl
-Y29uZCBlYXJsaWVyCj4+IHRoYW4gdGhlIHRpbWVvdXQuCj4+IAo+PiBWMjoKPj4gLSBwYW5pYygp
-IGJ5IGRlZmF1bHQgaWYgV0FUQ0hET0dfUFJFVElNRU9VVF9HT1YgaXMgbm90IGVuYWJsZWQuCj4+
-IAo+PiBWMzoKPj4gLSBNb2RpZnkgdGhlIHByZXRpbWVvdXQgYmVoYXZpb3IsIG1hbnVhbGx5IHJl
-c2V0IGFmdGVyIHRoZSBwcmV0aW1lb3V0Cj4+IC0gaXMgcHJvY2Vzc2VkIGFuZCB3YWl0IHVudGls
-IHRpbWVvdXQuCj4+IAo+PiBTaWduZWQtb2ZmLWJ5OiBXYW5nIFFpbmcgPHdhbmdxaW5nQHZpdm8u
-Y29tPgo+PiAtLS0KPj4gIGRyaXZlcnMvd2F0Y2hkb2cvbXRrX3dkdC5jIHwgNjIgKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0tLQo+PiAgMSBmaWxlIGNoYW5nZWQs
-IDU3IGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pCj4+IAo+PiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy93YXRjaGRvZy9tdGtfd2R0LmMgYi9kcml2ZXJzL3dhdGNoZG9nL210a193ZHQuYwo+PiBp
-bmRleCA5N2NhOTkzLi43YmVmMWUzCj4+IC0tLSBhL2RyaXZlcnMvd2F0Y2hkb2cvbXRrX3dkdC5j
-Cj4+ICsrKyBiL2RyaXZlcnMvd2F0Y2hkb2cvbXRrX3dkdC5jCj4+IEBAIC0yNSw2ICsyNSw3IEBA
-Cj4+ICAjaW5jbHVkZSA8bGludXgvcmVzZXQtY29udHJvbGxlci5oPgo+PiAgI2luY2x1ZGUgPGxp
-bnV4L3R5cGVzLmg+Cj4+ICAjaW5jbHVkZSA8bGludXgvd2F0Y2hkb2cuaD4KPj4gKyNpbmNsdWRl
-IDxsaW51eC9pbnRlcnJ1cHQuaD4KPj4gIAo+PiAgI2RlZmluZSBXRFRfTUFYX1RJTUVPVVQJCTMx
-Cj4+ICAjZGVmaW5lIFdEVF9NSU5fVElNRU9VVAkJMQo+PiBAQCAtMjM0LDE4ICsyMzUsNDYgQEAg
-c3RhdGljIGludCBtdGtfd2R0X3N0YXJ0KHN0cnVjdCB3YXRjaGRvZ19kZXZpY2UgKndkdF9kZXYp
-Cj4+ICAJdm9pZCBfX2lvbWVtICp3ZHRfYmFzZSA9IG10a193ZHQtPndkdF9iYXNlOwo+PiAgCWlu
-dCByZXQ7Cj4+ICAKPj4gLQlyZXQgPSBtdGtfd2R0X3NldF90aW1lb3V0KHdkdF9kZXYsIHdkdF9k
-ZXYtPnRpbWVvdXQpOwo+PiArCXJldCA9IG10a193ZHRfc2V0X3RpbWVvdXQod2R0X2Rldiwgd2R0
-X2Rldi0+dGltZW91dCAtIHdkdF9kZXYtPnByZXRpbWVvdXQpOwo+PiAgCWlmIChyZXQgPCAwKQo+
-PiAgCQlyZXR1cm4gcmV0Owo+PiAgCj4+ICAJcmVnID0gaW9yZWFkMzIod2R0X2Jhc2UgKyBXRFRf
-TU9ERSk7Cj4+IC0JcmVnICY9IH4oV0RUX01PREVfSVJRX0VOIHwgV0RUX01PREVfRFVBTF9FTik7
-Cj4+ICsJcmVnICY9IH5XRFRfTU9ERV9JUlFfRU47Cj4+ICsJaWYgKHdkdF9kZXYtPnByZXRpbWVv
-dXQpCj4+ICsJCXJlZyB8PSBXRFRfTU9ERV9JUlFfRU47Cj4+ICsJZWxzZQo+PiArCQlyZWcgJj0g
-fldEVF9NT0RFX0lSUV9FTjsKPj4gIAlyZWcgfD0gKFdEVF9NT0RFX0VOIHwgV0RUX01PREVfS0VZ
-KTsKPj4gIAlpb3dyaXRlMzIocmVnLCB3ZHRfYmFzZSArIFdEVF9NT0RFKTsKPj4gIAo+PiAgCXJl
-dHVybiAwOwo+PiAgfQo+PiAgCj4+ICtzdGF0aWMgaW50IG10a193ZHRfc2V0X3ByZXRpbWVvdXQo
-c3RydWN0IHdhdGNoZG9nX2RldmljZSAqd2RkLAo+PiArCQkJCSAgIHVuc2lnbmVkIGludCB0aW1l
-b3V0KQo+PiArewo+PiArCXdkZC0+cHJldGltZW91dCA9IHRpbWVvdXQ7Cj4+ICsJcmV0dXJuIG10
-a193ZHRfc3RhcnQod2RkKTsKPgo+VGhlIHdhdGNoZG9nIGlzIG5vdCBuZWNlc3NhcmlseSBhY3Rp
-dmUgaGVyZS4KPgo+PiArfQo+PiArCj4+ICtzdGF0aWMgaXJxcmV0dXJuX3QgbXRrX3dkdF9pc3Io
-aW50IGlycSwgdm9pZCAqYXJnKQo+PiArewo+PiArCXN0cnVjdCB3YXRjaGRvZ19kZXZpY2UgKndk
-ZCA9IGFyZzsKPj4gKwlzdHJ1Y3QgbXRrX3dkdF9kZXYgKm10a193ZHQgPSB3YXRjaGRvZ19nZXRf
-ZHJ2ZGF0YSh3ZGQpOwo+PiArCXZvaWQgX19pb21lbSAqd2R0X2Jhc2UgPSBtdGtfd2R0LT53ZHRf
-YmFzZTsKPj4gKwo+PiArCXdhdGNoZG9nX25vdGlmeV9wcmV0aW1lb3V0KHdkZCk7Cj4+ICsJLyoK
-Pj4gKwkgKiBHdWFyYW50ZWVkIHRvIGJlIHJlc2V0IHdoZW4gdGhlIHRpbWVvdXQKPj4gKwkgKiBl
-eHBpcmVzIHVuZGVyIGFueSBzaXR1YXRpb25zCj4+ICsJICovCj4+ICsJbWRlbGF5KDEwMDAqd2Rk
-LT5wcmV0aW1lb3V0KTsKPgo+VGhhdCBpcyBub3QgaG93IHRoaXMgaXMgc3VwcG9zZWQgdG8gd29y
-ay4gVGhlIGlkZWEgd2l0aCBhIHByZXRpbWVvdXQgaXMgdGhhdCB0aGUKPnJlYWwgd2F0Y2hkb2cg
-cmVzZXQgd2lsbCBoYXBwZW4gdW5kZXIgYWxsIGNpcmN1bXN0YW5jZXMsIGFuZCB0aGF0IGV4ZWN1
-dGluZwo+dGhlIHByZXRpbWVvdXQgKGFuZCBjaGFuZ2luZyBzb21lIGhhcmR3YXJlIHJlZ2lzdGVy
-cykgaXMgbm90IGEgcHJlcmVxdWlzaXRlCj5mb3IgdGhlIHJlYWwgdGltZW91dCB0byBoYXBwZW4u
-IEFmdGVyIGFsbCwgdGhlIHN5c3RlbSBjb3VsZCBiZSBzdHVjayBoYXJkLCB3aXRoCj5pbnRlcnJ1
-cHRzIGRpc2FibGVkLgo+Cj5PbiB0b3Agb2YgdGhhdCwganVzdCBzbGVlcGluZyBoZXJlIHdoaWxl
-IHdhaXRpbmcgZm9yIHRoZSByZWFsIHRpbWVvdXQgYW5kCj50aGVuIHJlc2V0dGluZyB0aGUgc3lz
-dGVtIGlzbid0IHRoZSBpZGVhIGVpdGhlci4gT24gYSBzaW5nbGUgY29yZSBzeXN0ZW0gdGhpcwo+
-d2lsbCBqdXN0IGhhbmcuIE9uIGEgbXVsdGktY29yZSBzeXN0ZW0sIHdobyBrbm93cyBpZiB1c2Vy
-c3BhY2UgbWFuYWdlZCB0byBwaW5nCj50aGUgd2F0Y2hkb2cgaW4gdGhlIG1lYW50aW1lLgo+Cj5V
-bmxlc3MgdGhlcmUgaXMgYSBtZWFucyB0byB0cmlnZ2VyIHRoZSB3YXRjaGRvZyB0d2ljZSwgd2l0
-aG91dCBpbnRlcnZlbnRpb24sCj50aGUgZmlyc3QgdGltZSBnZW5lcmF0aW5nIGFuIGludGVycnVw
-dCBhbmQgdGhlIHNlY29uZCB0aW1lIHJlc2V0dGluZyB0aGUgc3lzdGVtLAo+dGhlcmUgaXMgbm8g
-d2F5IGZvciB0aGlzIHRvIHdvcmsuIEkgZG9uJ3Qgc2VlIGhvdyB0aGlzIGNoaXAgcmVhbGx5IHN1
-cHBvcnRzCj5wcmV0aW1lb3V0LiBJdCBzZWVtcyB0aGF0IGl0IHN1cHBvcnRzIGVpdGhlciBhIGhh
-cmQgcmVzZXQgb3IgZ2VuZXJhdGluZyBhbgo+aW50ZXJydXB0IG9uIHdhdGNoZG9nIHRpbWVvdXQs
-IGFuZCB0aGVyZSBpcyBvbmx5IGEgc2luZ2xlIHRpbWVvdXQuCj4KPklmIHlvdSBoYXZlIGEgdXNl
-IGNhc2UgZm9yIGdlbmVyYXRpbmcgYW4gaW50ZXJydXB0IGFuZCByZXNldHRpbmcgdGhlIHN5c3Rl
-bSB2aWEKPnNvZnR3YXJlIChpZSBwYW5pYykgX2luc3RlYWRfIG9mIGhhdmluZyBpdCBnZW5lcmF0
-ZSBhIGhhcmQgcmVzZXQsIHBsZWFzZSBmZWVsCj5mcmVlIHRvIHN1Ym1pdCBhIHBhdGNoIGFsb25n
-IHRoYXQgbGluZSwgdG9nZXRoZXIgd2l0aCBhIGRlc2NyaXB0aW9uIG9mIGl0cyB1c2UKPmNhc2Uu
-Cj4KPlRoYW5rcywKPkd1ZW50ZXIKPgoKWWVzLCBhcyBtZW50aW9uZWQgYmVmb3JlLCB0aGUgYmVo
-YXZpb3Igb2YgV0RUX01PREVfSVJRX0VOIGlzIHVzZSBpcnEgaW5zdGVhZCBvZgpyZXNldCwgc28g
-d2UgbXVzdCB1c2UgV0RUX01PREVfSVJRX0VOIHwgV0RUX01PREVfRFVBTF9FTiBpZiBsaWtlIHlv
-dSBzYWlkCiJ0aGUgZmlyc3QgdGltZSBnZW5lcmF0aW5nIGFuIGludGVycnVwdCBhbmQgdGhlIHNl
-Y29uZCB0aW1lIHJlc2V0dGluZyB0aGUgc3lzdGVtIiAuIAoKVGhlIER1YWwgbW9kZSBpcyBtZW50
-aW9uZWQgaW4gdGhlIE1USyBkYXRhc2hlZXQ6CkluIHRoaXMgbW9kZSwgdGhlIHdhdGNoZG9nIHdp
-bGwgYmUgQVVUTy1SRVNUQVJUIGFmdGVyIGludGVycnVwdCBpcyB0cmlnZ2VyZWQuIApBUCBuZWVk
-IHRvIGNsZWFyIFdEVF9TVEEgYWZ0ZXIgcmVjZWl2aW5nIGludGVycnVwdCBmcm9tIFRPUFJHVSwg
-b3Igc3lzdGVtIHJlc2V0CndpbGwgYmUgdHJpZ2dlcmVkIGFmdGVyIHdhdGNoZG9nIHRpbWVyIGV4
-cGlyZXMuCkluc3RydWN0aW9ucyBmb3IgdXNl77yaClNldCB3ZHRfZW4gPSAxJ2IxLgpTZXQgZHVh
-bF9tb2RlID0gMSdiMS4KU2V0IHdkdF9pcnEgPSAxJ2IxLgoKV2UgY2FuIHVzZSBEdWFsIG1vZGUg
-dG8gYWNoaWV2ZSBwcmV0aW1lb3V0IGJlaGF2aW9yLCBvbmx5IGluIHRoaXMgd2F5IGNhbiB3ZQpn
-ZXQgbW9yZSBpbmZvcm1hdGlvbiBkdXJpbmcgcHJldGltZW91dCBwcm9jZXNzaW5nLCBpbnN0ZWFk
-IG9mIGRpcmVjdGx5IHJlc2V0dGluZy4KClRoYW5rcywKUWluZw0KDQpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Tue, Apr 13, 2021 at 02:12:59PM +0100, Russell King - ARM Linux admin wrote:
+> On Tue, Apr 13, 2021 at 11:59:20AM +0800, DENG Qingfang wrote:
+> > Within 12 hours, I got some spontaneous link down/ups when EEE is enabled:
+> > 
+> > [16334.236233] mt7530 mdio-bus:1f wan: Link is Down
+> > [16334.241340] br-lan: port 3(wan) entered disabled state
+> > [16337.355988] mt7530 mdio-bus:1f wan: Link is Up - 1Gbps/Full - flow control rx/tx
+> > [16337.363468] br-lan: port 3(wan) entered blocking state
+> > [16337.368638] br-lan: port 3(wan) entered forwarding state
+> > 
+> > The cable is a 30m Cat.6 and never has such issue when EEE is disabled.
+> > Perhaps WAKEUP_TIME_1000/100 or some PHY registers need to be fine-tuned,
+> > but for now I think it should be disabled by default.
+> 
+> Experience with Atheros AR8035 which has a very similar issue would
+> suggest that before resorting to the blunt hammer of disabling
+> SmartEEE, one should definitely experiment with the 1G Tw settings.
+> 
+> Using 24us for 1G speeds on AR8035 helps a great deal, whereas the PHY
+> defaults to 17us for 1G and 23us for 100M.
+
+I set the 1G Tw to maximum 255us and still got the link issue..
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
