@@ -7,80 +7,80 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 10B6CC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:35:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C81EDC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D6316113B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:35:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D6316113B
+	by mail.kernel.org (Postfix) with ESMTPS id 413ED6113B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 413ED6113B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=8WfX8WA5nFPwjGNBpdys8YOcs573XGri+RYxzpdofBc=; b=j6koww3ZpIZQYMa9vM4cP/rqbu
-	5Htn4PWxfnb3NbbVG8P8vDX4Lq+LqTu5dCx6n+VGY8x04pkB9wv0UlQ1HUGcVly6JN4K1ZfukGnpP
-	/XCQt5R6g/tPrYVZisM1hLzjkgEr1/fnwmcbNOB9L2AwaavXjPCnSqS4Gv61htw+N5DLLeMJROuyr
-	AcMd9yxJcfTqYXMHFqdaI1KReVTK16pBRalAq/+uo6QzYB0B+L4iSrq6nmtzvjymAW0rL5vUL/jxQ
-	Mu27KTDmUiwZyO/aHksOP+KiylYsB2B3f78a3eVYTReQCryLc3FBEiHCuhWyTeoChZXZ4blWi62rv
-	joSh4B7g==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=PH0mmaBPKWCQFxi+cYbG3/YxQW6+4sUWE2EvFVqvhlg=; b=Z9D0zyW4QZH1ld9strmXRKgf/
+	s890EIzFf6nwJKZtjUmWrpPwKxmP3CgcuZUNm5T10qZOAAD//wmHCfp14ZAU5qrAeyBFH5lDZmSlv
+	1jfw6Ge30jyvE9HDsGABFRfw5Zt1wO+TtwkDYf7TejlJMd0F+jMLiZelyNx4pkkyaIn88YwqXg7L+
+	vd8wHYNugLoGKs41Byvva+5m8ifX1hDb4jX97q//HlZP2pW3A/CPQo4Gu1G8wVbJT4hjFkdjfNG9G
+	Wf46DlIFiDKfqk03rsDo3z6IZ2m+iRm5z1nCdjaeCw4DZrEGmRcYfGGQAU8oJNqgCFcrnJfzpP7rk
+	NLdZgfymA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWyPL-00FXhM-Fk; Thu, 15 Apr 2021 09:35:31 +0000
+	id 1lWyPi-00FXlt-4Z; Thu, 15 Apr 2021 09:35:54 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyPI-00FXgf-PV
- for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:35:29 +0000
+ id 1lWyPJ-00FXgi-Uc
+ for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:35:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=; b=ucbZv7yD7DJD/jdFS9R8/kIPjG
- Q0BkoaUHLFh/aUSS1PnTQuZhnjl/Zi7KvBpfMKvFwNUWgKbwcQOWi1WEh17tkFMLxa92joVUxWO7I
- Ozqsz33uyBCdIk1eprT/o1DXmLiOckbPJN2fo+tpc9TDSegct0dEP4dcJW7fOnt3sUrbg/ElFgQKe
- X7a3Fe0jLw36nO9dqkMj4doDZnqmiP9EokTN2dZ45HbHgOmaODPrbY/Kq9KcK2Joq0tJ23JJEuUcG
- SaflYsMEF10k3uzs9HVtt3RgdYIIyFODeVuvGBBwsztvZEpkTJBV+ACOhySbZJ56oaglA5HYB9O2F
- Nsb49XQg==;
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=xu1g0DrI9LJa2kS8BINPf/ZvT/OZnLUEWclCoz5qqF0=; b=dDrrjlfUrUb1rzLa0Xi5H8susE
+ A4Xgwt7EeFZjAIL9Koju+rGh7dStuH/hkt2CIQb5uPe0n4R1OWBkTzEAWApFVtJW2FCOv/CODuzww
+ 0vRqRkXkjfi0eY/wGsp0dsclRljBwGoeC8pNWRsvrrYWZ/SeG2jw5KbshLqM7i8agTzhjv18BhIe/
+ f9huifvB9FZf4y9j6v3ASQ+VwPL1RvLn3bPr4xhKZFKShd8x7XIlAMWkEbAhH2/1hHT4rcCG5YNiB
+ XS3yLRmuEm4dM4uMNKEtugmzXsiCw23gnoF9z4aKoNwVWlrV2cpTba2D4SPdm/2mTVnWqC5rTTlqr
+ /r3pA1zg==;
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyPG-008Qh5-85
- for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:35:27 +0000
-Received: by mail-pl1-x632.google.com with SMTP id t22so11412225ply.1
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+ id 1lWyPH-008QhX-EV
+ for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:35:28 +0000
+Received: by mail-pf1-x430.google.com with SMTP id a85so15244086pfa.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:35:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=;
- b=f/a4F6+veKHqWHp3c65ip8d8mqjOeh1lEQsyDOeZ41/LakIrgaBTP0ZEpSOZI+0IHa
- U45srKBFRuBlw3G3tZBKwEWpf7UaGNR128ZdAI8wOQcSbqeVkperNDE4dLoYdM51j5Oo
- SuhWzy7wph4un1f2SuhtgO1Ryige3CWzWEUd0=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=xu1g0DrI9LJa2kS8BINPf/ZvT/OZnLUEWclCoz5qqF0=;
+ b=blT9RXOZKFYnIi7je/or3L0tNwJe6lh95mzApIRr8It2+ZZMTzYHs316gZz9Yxaxp2
+ kLL1nlMGtX3oubf63tj3PI+f+Y9lSbnMISXQUicRFs7KZlJZEAiycZZIDhuqyNC5Jlga
+ FJYrxLetHLeBxn25y/I5eIFtcyP91XqvHV1jQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ZyoS2ZBG8ahkdIChoIs4gLo+docOh48ixE/wuajUrXs=;
- b=SrQEckP7WWfVWyhihIdjMCT2+cphkCfXQdIDnAIsAGsi7AeAOm+zOKNl43CL9HROK3
- S6+gOoFMVjanhs2NrUW6DGIyYUlRCRIJ3dxYIKZWMqdwTNog+R/lbekPV7P2O6//DAed
- hNCRWJ0Zzyq6FLIbHD19x9zrOfLeKbzB5oPd8QFefnLXVA+4JKt/bPHw22Ed+2cUPROd
- O+ERGgYrLklCCNg2OoCJuDWoOUEDKMYk8TbmWbZfKp2qaEXX42gXnSge8DqpN1IeA7fV
- xvlp8n+YLi95RfGRZ+vj1hqlT7Pg8PhmQO+1jWRfIpLHQPC1hYsWoVDvyZ1m+jnB/g+m
- lhyw==
-X-Gm-Message-State: AOAM532y2Ex/XtwxNIzkuu/4RJRGdE/82hAqWx+A+2/4ANS0v9zr4BRo
- Ae5O4OgMmHtgKRRXybGcFJp0mw==
-X-Google-Smtp-Source: ABdhPJxIL1LMg/3+/Ru1IretOlvAMNJ2751PLJGu15xRh8Lu3qBxQXABg4DLvO8WkYRUIxl8Mr8qQw==
-X-Received: by 2002:a17:90a:5806:: with SMTP id
- h6mr2844408pji.17.1618479324339; 
- Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=xu1g0DrI9LJa2kS8BINPf/ZvT/OZnLUEWclCoz5qqF0=;
+ b=MXOMKyEXIbgupIQR/5sCPYjNNZIMQwJ8wQ3S+f7TmqNb1fwdeXcTVbS01UGGqrQK/w
+ bVBV56vfC6r6qqYHbFXJH2h+Fw7ZXQn9RnYmWW0GIA85nK8RytFBd+tAhZVwVKrcVKtc
+ WA9h1P/J9za/H2c1CnLBOxcYecP5T7biK04wT0swSyMtEMtY66GR+vyMzlIy5cPee6c0
+ RksxVOGnDfUTqrqHNrool3lVog3CO42ZHlXgLhNVaI1WH35CwbOgxxyRxRSAcpvlX1kl
+ uFL0hzVpSuB1CYWuHCEpSd4RKkhPRDQFSM553eQzn2I6AZQR5XBayKESP3qDtFk0QGHG
+ HQLw==
+X-Gm-Message-State: AOAM531SJBA3eIa0FwgJcX8RkbKdbh/CWFQSdzpNcIc8BCFzJVRuKIr9
+ Qi4jCpUNWrQhL1cBrwRaKMCq4A==
+X-Google-Smtp-Source: ABdhPJwBsLfLN3ng+D52RhMEcqV4qApLtFAf+1PjbHX87Zk1naeywUoQLBfR6alZ9YijRGgI8yYXZA==
+X-Received: by 2002:aa7:950d:0:b029:244:4dd5:cd0a with SMTP id
+ b13-20020aa7950d0000b02902444dd5cd0amr2335784pfp.59.1618479326295; 
+ Thu, 15 Apr 2021 02:35:26 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:6432:a6cb:91d2:5e32])
- by smtp.gmail.com with ESMTPSA id a13sm1849502pgm.43.2021.04.15.02.35.22
+ by smtp.gmail.com with ESMTPSA id a13sm1849502pgm.43.2021.04.15.02.35.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 02:35:24 -0700 (PDT)
+ Thu, 15 Apr 2021 02:35:25 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
@@ -88,15 +88,17 @@ Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
  Ben Ho <Ben.Ho@mediatek.com>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 1/8] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-jacuzzi-kappa
-Date: Thu, 15 Apr 2021 17:35:12 +0800
-Message-Id: <20210415093519.1920877-1-hsinyi@chromium.org>
+Subject: [PATCH 2/8] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-willow
+Date: Thu, 15 Apr 2021 17:35:13 +0800
+Message-Id: <20210415093519.1920877-2-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
+In-Reply-To: <20210415093519.1920877-1-hsinyi@chromium.org>
+References: <20210415093519.1920877-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_023526_304724_148F82F8 
-X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-CacheID: sfid-20210415_023527_501425_40359BC5 
+X-CRM114-Status: UNSURE (   8.83  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,28 +116,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kappa is known as HP Chromebook 11a.
+Willow is known as Acer Chromebook 311 (C722/C722T).
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index aff57a8c8c30..81b86b189a8d 100644
+index 81b86b189a8d..96c401597bd8 100644
 --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
 +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -144,6 +144,10 @@ properties:
-           - const: google,kakadu-rev2
-           - const: google,kakadu
+@@ -157,6 +157,13 @@ properties:
+               - google,kodama-sku32
+           - const: google,kodama
            - const: mediatek,mt8183
-+      - description: Google Kappa (HP Chromebook 11a)
++      - description: Google Willow (Acer Chromebook 311 C722/C722T)
 +        items:
-+          - const: google,kappa
++          - enum:
++              - google,willow-sku0
++              - google,willow-sku1
++          - const: google,willow
 +          - const: mediatek,mt8183
-       - description: Google Kodama (Lenovo 10e Chromebook Tablet)
-         items:
+       - items:
            - enum:
+               - mediatek,mt8183-pumpkin
 -- 
 2.31.1.295.g9ea45b61b8-goog
 
