@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05061C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C28C2C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 75ECE61153
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75ECE61153
+	by mail.kernel.org (Postfix) with ESMTPS id 3105461158
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Apr 2021 09:36:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3105461158
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=i4c2JTq9hqppy/1arvwrWSx+GWeBNs5DqaxLYF7sXnA=; b=mjxHNbXko2blLM9eNSXPWz0ML
-	D8ph0nHKIDPM3q9OrkMf56JITVr0hV+9hNUqiUcGZo9YxPieJuImpgoqkc+fdiuT6Jl8I0PRRMGMN
-	3eaSOTS0uH7sEVs9/viNSnjkqrU7FY1/1QmHsyc0WfQOtn1c4Fq1Q5iClVWVrFznLpNhH7bMTRNIM
-	DhXXzw0zsusLkqApnkiRnvXwKJSVegPlBhwIpoCiIIJPmzRm+gLidh19j0vPKXId4+Wi65xqGNiMy
-	DNAEj72UgGfKQf6t4R/o2u3UQGoRzSmidXd1iVGc2dYeKG644Bu1aOAgSPYcW8b9p4+hOQbY+YjJ1
-	Kmq2Qrefw==;
+	 bh=bA+q6Raf59eaYjennlN3jwSjsSyKKvF5f3GwAnWAVWs=; b=VR4Cxl9Gwr2LdYLOKramNJuZ1
+	wmVLr4cRJi1TRnfmKcHbXYxNsf5ikzlo92Lr6odU8tXxwLNyp4Zz4KWZ3/aA6/uUhtCLNKGYMzk7+
+	6OuEr6mkI+C05JYQpiJ68uRqDPEJ47+LoLxFH6R87AsDbLaHgG34DahtdGPxWuhu04ousIrHpRuVj
+	Yjum8HRkk+3bDGm2TKPamMO1PvhPirJy/6u8FfLNDnOV4dIRrIiAyjA/6BhZKZ1gsl9dSyzrsWohb
+	K0398xaiUY2OG7rbtX+c/KxRqGj+e6mLYbupEpyk5lxOuPz6HaW8eykWpdW4mnKl31VB9JuYwbpuq
+	vyCeaHlxA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lWyQ5-00FXrn-0T; Thu, 15 Apr 2021 09:36:17 +0000
+	id 1lWyQU-00FY0P-BH; Thu, 15 Apr 2021 09:36:42 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyPN-00FXha-31
- for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:35:33 +0000
+ id 1lWyPP-00FXi9-LR
+ for linux-mediatek@desiato.infradead.org; Thu, 15 Apr 2021 09:35:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=8nK9tfz3NVekxo0c4TpGRd2q1g2g0nUPwHfUPo4fv7U=; b=hxEmHJTFWoctfUYm+mL9IuWy9l
- 7mOOEz6EMZ6J4LBV5o4VWa/tGfl8iQ2aw4bMCTJrqwxsgQf8OGBBaw+PbUd/ejDKn+4RNpsP9WD3c
- mLfgk5199cjtXL7bC72VLyYsHe0H0HWDUM5fI/Btv5JnZgUnH5/gScGPJY2VFrW53Q+fZEW28HP8e
- dHknmkB7M9F6DjvBb1SWfPWcDZRRqxz5QX3ieA678Odf+n/ilpOfz+2gJi3XaoePBhgretR1UAdJT
- 3X4ZHAzTPGMlQNQmKpdlD5hGeyysxCt8T9z41w7FtihX6MuAu8RbopcMDdRsreHahQMcmHqKE0tA2
- 4xzhphLA==;
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ bh=wMjBnZVcviRSoI/fJCL0g5fel6FhaOBmtY6DkO6xXxY=; b=nWc8jDehGZHa0cC+MQ8IFTkloj
+ 5g/iffZz5fQoBxcTUJ9qYfCY6FrbVzkTn8qlPuq/C+3m/I+CCaz7ooK+YgG6TX1TnDXkKZG/K+ooT
+ H4kxxPH3EaOtb282HZNOOJoyoiVFOcr/fV21YCPspaeMCfa03WNLgoFCFh4up79OkYbI8n5ckk+h+
+ oo9u8OtGlesB4ca9NpNb34KMvUQ20Qx+UWicXDdP9aMNS1QZN9AH4qUcIwoP/3V9ROK1OquXUiMRX
+ XiowKk2tJrxF/o0SEuJiTSeFG4EPFLPbPikkjywguM7UYBXELyvw/wHDad4a67u8R8U3lhNsHdQi+
+ sZcpiB7Q==;
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lWyPK-008Qj3-MU
- for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:35:31 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id
- j6-20020a17090adc86b02900cbfe6f2c96so12381755pjv.1
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:35:30 -0700 (PDT)
+ id 1lWyPM-008Qjl-L7
+ for linux-mediatek@lists.infradead.org; Thu, 15 Apr 2021 09:35:34 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ u14-20020a17090a1f0eb029014e38011b09so7543009pja.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Apr 2021 02:35:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8nK9tfz3NVekxo0c4TpGRd2q1g2g0nUPwHfUPo4fv7U=;
- b=d+H0aUou1mmX8YmV9TXJKHFFrAikaPsf0u0BJxftbdF94VgnyL7ojpDzqXFYzTEc7D
- Ttdk9zcoWolsXWeG/UCWTRcFUVyEXC/Hx2CbqXeZjDCFZr42CSPMdKDirRd5GYDl+eDE
- Y/5LjvYRJcB9vdq8c3b4FFTh4I9p/PibiCng4=
+ bh=wMjBnZVcviRSoI/fJCL0g5fel6FhaOBmtY6DkO6xXxY=;
+ b=h7u0EG2oQomUTpNXieEyKJqrlltD5arbBXhy5eiszP06AOd2iO8qgA0l8phkMady0h
+ RXy9ualjzfyUH1mVHjK6sWlRVzvyQzyz7FMmZOYklSvBZxeYa553SWRx6gDBlrF9QclM
+ yaWAoKzrqK9iHo82ft0OdCffwP+vbZ3wyjwEM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8nK9tfz3NVekxo0c4TpGRd2q1g2g0nUPwHfUPo4fv7U=;
- b=aMhO0xytjmPGW0KTpGFsAsh7M5iSxv5g1PMYxHe2x9Dnl36XNM78QmNdk5tXur7nrL
- iGRLhp+ivun10jS66TueINDZgT7UDG7sSQWtimFFTot4hrFG3+J0Z2/OEaUlKV2mgwqV
- Yp2q9XC9I0k9gkLEm7BezsIcJZ1teUdbxFIf7eH1g+Plo0Phm3km/Hn5ZEyFH1AEgWD8
- Wdi3M++M5nxJ0vQRIRT9fK0IG7jh9k+A80AFVtwzZs1ubXGcs65O1mv370nlu6RvCTK0
- n2CRx3zOmnuNMxn+BEOw4K3ZGOPjAxtEO88Ad5RLsUJE4CrG4ImtdHracPIgFMx2TnZq
- xnuw==
-X-Gm-Message-State: AOAM533psPGShT55bKD+CuGMNWP7fgeujqvDpyeBSeXF09WXeBQtK2+C
- DIM2D3B1Cp1kRNMCiVeelLb0BA==
-X-Google-Smtp-Source: ABdhPJz8kFU5VfkPAeCLfeTkC6GhBXLlvbYC5C3lJFMiqzy47wA3ye0Sw2vDePOkEKm9vP1kxREt4A==
-X-Received: by 2002:a17:90a:fb4c:: with SMTP id
- iq12mr2869691pjb.121.1618479330163; 
- Thu, 15 Apr 2021 02:35:30 -0700 (PDT)
+ bh=wMjBnZVcviRSoI/fJCL0g5fel6FhaOBmtY6DkO6xXxY=;
+ b=inIFuhwYtjc1fDo/Pr6IqFNTI47BblMPrx3V01SFnxUIlwYiH32rGjFNGWl31C7qKC
+ bPCesB7GYDa64gBqguEmZ79Fc1s0sXPzaA0efY2b0sOB1D7N51UXjqkzZulZ+hkC9imb
+ QNkeFb//CGOhoXelBcvPe58cPdPgsCryP1zAiqYhPg+qYRuP+8FoJbvIL1+h0he04HyA
+ ZLM7pqGVSSA/RtZqQDGvScmO1lcRnRJC7WOCrRm+w/G/nkLauhPZjiwlqzebOE+MbiY8
+ TebsL8K++u2JN+HCCi/4Y+oYBxFMSz/DAdq+X8fTimRrUYTpaE5DLPGNvj8v9b2eNnec
+ YRgw==
+X-Gm-Message-State: AOAM5316j5AkCFOCZ/2LpCOpfM3dQusSPJiPBy1mqcCMxj3TO2WmfbT/
+ 02dq5iWKdEMIFeH7pFAXp0YlYQ==
+X-Google-Smtp-Source: ABdhPJwKP4wSfoYB0NTaL8DCzzFiEbrj1tlgDGva13KPsgrDRbYyepCR8GYmJblM/4ysaLF0o+vdZQ==
+X-Received: by 2002:a17:90a:f2cd:: with SMTP id
+ gt13mr2815027pjb.43.1618479332053; 
+ Thu, 15 Apr 2021 02:35:32 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:6432:a6cb:91d2:5e32])
- by smtp.gmail.com with ESMTPSA id a13sm1849502pgm.43.2021.04.15.02.35.28
+ by smtp.gmail.com with ESMTPSA id a13sm1849502pgm.43.2021.04.15.02.35.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Apr 2021 02:35:29 -0700 (PDT)
+ Thu, 15 Apr 2021 02:35:31 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
@@ -89,18 +89,16 @@ Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
  Ben Ho <Ben.Ho@mediatek.com>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH 4/8] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-jacuzzi-kenzo
-Date: Thu, 15 Apr 2021 17:35:15 +0800
-Message-Id: <20210415093519.1920877-4-hsinyi@chromium.org>
+Subject: [PATCH 5/8] arm64: dts: mt8183: Add kukui-jacuzzi-kappa board
+Date: Thu, 15 Apr 2021 17:35:16 +0800
+Message-Id: <20210415093519.1920877-5-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.31.1.295.g9ea45b61b8-goog
 In-Reply-To: <20210415093519.1920877-1-hsinyi@chromium.org>
 References: <20210415093519.1920877-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_023530_754856_AF238351 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210415_023532_708887_53A7D704 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,31 +115,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Kenzo is known as Acer Chromebook 311.
+Kappa is known as HP Chromebook 11a
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/Makefile            |  1 +
+ .../dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts  | 16 ++++++++++++++++
+ 2 files changed, 17 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 0870490aa350..39e4a99ebb37 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -137,9 +137,11 @@ properties:
-         items:
-           - const: google,damu
-           - const: mediatek,mt8183
--      - description: Google Juniper (Acer Chromebook Spin 311)
-+      - description: Google Juniper (Acer Chromebook Spin 311) / Kenzo (Acer Crhomebook 311)
-         items:
--          - const: google,juniper-sku16
-+          - enum:
-+              - google,juniper-sku16
-+              - google,juniper-sku17
-           - const: google,juniper
-           - const: mediatek,mt8183
-       - description: Google Kakadu (ASUS Chromebook Detachable CM3)
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index a1c50adc98fa..df70674949ce 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -15,6 +15,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-damu.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-juniper-sku16.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kappa.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku272.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
+new file mode 100644
+index 000000000000..b3f46c16e5d7
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi.dtsi"
++
++/ {
++	model = "Google kappa board";
++	compatible = "google,kappa", "mediatek,mt8183";
++};
++
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
 -- 
 2.31.1.295.g9ea45b61b8-goog
 
