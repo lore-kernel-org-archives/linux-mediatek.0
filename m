@@ -2,92 +2,91 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87FBDC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:41:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52593C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:58:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9C5C611C2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:41:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9C5C611C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0E948611C2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:58:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E948611C2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fu4TtevA0zSApMzXS9df+k1OSd/lv4JFtGYzsF9Wg3w=; b=n7ty4l9aZ0jNXGW6OfuUwZPjPf
-	2gZ+HFjHrCM4nR6nkoPlLmiKOX2i0dOitySUAZzZZcPCvY+zJAqM/4qPTbvAA6iRdm8ofCj05gvY0
-	V5dMeQ97zj7VmPlLh8cIt/j9GYjQuYD/AubekNZdTkoyU0sFek3Isl3gZjIvWoPAT1F4leATQP+h2
-	1Dgh9tADnuZ8wq/uFjzxTD1WF1SVyLXlMGkKtpgy/Xczg2TpGXprPsA46GKfqsTO/ff/58A4rMXjB
-	neSt37L3bhSLuG3+zuaSS0CKQuQekYgdsZYdoIU1gxagZV7KKcM79YmqXL8gyHiU4nXacS8ScEdlF
-	K25TWCTA==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=TfBT2CScE0srrmFPupy0erK/JNCwZYkg8oYBIzULPQA=; b=Vxm2RS0V1Yk/s0a0qrYi9ZBlb
+	ifx/rRN4i3WAlh1ECTuzU4RUO3tZTvWQUHpHpW11Bi/qsGSNdx2Q2foBroHuuPX1RnG8BLwImUUcx
+	3x++oJ+YppXPiWg3S4QMuCbS6hMesMau1qQ9QY6mWZSFf0Rur1ZiIBrCDBGq8zWdkU43UK8+6ovwP
+	SN4X8vdaJY082zgtDuGaHbR/ykC3wif/Xc7s9Hi5Jb3AzLb7FvtKUKPq5H7Dazdcnyvvr/kfyGsqK
+	gye/dVePOZ3drX0tVUPAU/a3QRwD9Q+UGNwbmZq6RsPzZD9VUI9nMFOYLu3O3eQ3wBPaToN6N+BS3
+	IVvNX+shA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXQac-002eo6-5Q; Fri, 16 Apr 2021 15:41:02 +0000
+	id 1lXQrf-002iGV-HJ; Fri, 16 Apr 2021 15:58:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXQaa-002enf-QF
- for linux-mediatek@desiato.infradead.org; Fri, 16 Apr 2021 15:41:01 +0000
+ id 1lXQrP-002iF7-Cu; Fri, 16 Apr 2021 15:58:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=GKMQ0omkAaWiKYfRI3blQrQKGj5ZSxNYbxDuEEPTYuM=; b=Bak2t+7JHU9OUaIOBH2Hw/u2fl
- HXj7SqwmQViRwLX4mH+hGhyNfDSPZ69dlkfl2yMI3Tenex6WFgR0gihsN6GvtsD0gD2Daow+5C6WW
- v6HtsdXoz7RaC/lNGYuXqKGVBhY1uWtp0Q4+aAeDIv1XS43siP2JQs401KCUWloWlZ+GkP80KoY35
- Sy9+l06DF+FYgaun5+Lq5t3OR8X49dCsPC+9bqD/+/CIvP754BSBUm/Wkye5jLRWaj4eOZ6Y7pgy3
- eXlabgO45fUHSTFRVxEVXiLsrdCpA2XSWnSq+Tdl58Bm3fUeq7XyJqJc+Oa8Sv/rP62b4mpNgcbDu
- 4zNYY0hg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:
+ Subject:Sender:Reply-To:Cc:Content-ID:Content-Description;
+ bh=mdX10Ys3CENup/n2J4b6wSqE/0yKOn4gC7rqdpd1SyM=; b=4J6rBeBYTJLTNHHvSTkQpFNI3q
+ 5nPQKqO+Z1zDfyI+eTLyWjyYaDfgeNJovp7KE825+PYmrZObXqWcz3um7hbG5gxAI4q7r5hxDPpd3
+ bcvGccwkrRwbSDhogo27qkBI/9g6ye1pwYTjjpduSvqXo4J4SH1L2OuMRVgshpZehqaWL6NoDzjGE
+ gAoYCp4uZOq1GjMN4BaGBoEFsCgJFV9we6YxcOyWP4UtUTOWTeBur/IRs/XV+iDk+Eepq37nTOjps
+ sGM0y4Nk8cv74kIfyRXb2RazBcqOybC0SAQ7kn+eyEyrCHUPsOvSM2ls/tRWkgf4ibRRDY+JktwOv
+ ULAcr7cQ==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXQaY-009VpD-92
- for linux-mediatek@lists.infradead.org; Fri, 16 Apr 2021 15:40:59 +0000
-X-UUID: 660e9784816c404da989ce5e278dae15-20210416
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GKMQ0omkAaWiKYfRI3blQrQKGj5ZSxNYbxDuEEPTYuM=; 
- b=ckMciMT6jYgC7qLlGgXZkty38R83NH07Fb9TOqjflEbjXeTxtW2JzLjzm//q8+/B3jJWfwhReB66B3AJMaN3rU8s1vrGqCo8NKOYRKKrPqEDWPnxllDQMDAa+mRIoYz55dJeuwqyPQZ+vMQaYDeGayh1WqhwiLCZGj4RbrFr86A=;
-X-UUID: 660e9784816c404da989ce5e278dae15-20210416
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 147410637; Fri, 16 Apr 2021 08:40:55 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 08:30:53 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 23:30:37 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 16 Apr 2021 23:30:37 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/2] mt76: mt7921: add wifisys reset support in debugfs
-Date: Fri, 16 Apr 2021 23:30:35 +0800
-Message-ID: <1618587036-17143-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1lXQrL-009Wwp-F4; Fri, 16 Apr 2021 15:58:22 +0000
+Received: from fraeml706-chm.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4FMLFz435Yz68B1x;
+ Fri, 16 Apr 2021 23:48:07 +0800 (CST)
+Received: from lhreml724-chm.china.huawei.com (10.201.108.75) by
+ fraeml706-chm.china.huawei.com (10.206.15.55) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2106.2; Fri, 16 Apr 2021 17:58:05 +0200
+Received: from [10.47.83.179] (10.47.83.179) by lhreml724-chm.china.huawei.com
+ (10.201.108.75) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Fri, 16 Apr
+ 2021 16:58:05 +0100
+Subject: Re: [PATCH 5/8] iommu: fix a couple of spelling mistakes
+To: Zhen Lei <thunder.leizhen@huawei.com>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Joerg Roedel <joro@8bytes.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, iommu
+ <iommu@lists.linux-foundation.org>, linux-kernel
+ <linux-kernel@vger.kernel.org>, Yong Wu <yong.wu@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Maxime Ripard <mripard@kernel.org>,
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ "David Woodhouse" <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
+References: <20210326062412.1262-1-thunder.leizhen@huawei.com>
+ <20210326062412.1262-6-thunder.leizhen@huawei.com>
+From: John Garry <john.garry@huawei.com>
+Message-ID: <e04d117a-4832-7f95-7adf-dbece21aad8c@huawei.com>
+Date: Fri, 16 Apr 2021 16:55:29 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.2
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 84D286E04426F2F02A4F9A502085D6E3F0D8BF0ABEFDFD84E245B3A78CAD577F2000:8
-X-MTK: N
+In-Reply-To: <20210326062412.1262-6-thunder.leizhen@huawei.com>
+Content-Language: en-US
+X-Originating-IP: [10.47.83.179]
+X-ClientProxiedBy: lhreml727-chm.china.huawei.com (10.201.108.78) To
+ lhreml724-chm.china.huawei.com (10.201.108.75)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_084058_345082_849F89E8 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20210416_085819_680357_4484F9E1 
+X-CRM114-Status: UNSURE (   7.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,75 +98,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 26/03/2021 06:24, Zhen Lei wrote:
+> There are several spelling mistakes, as follows:
+> funcions ==> functions
+> distiguish ==> distinguish
+> detroyed ==> destroyed
+> 
+> Signed-off-by: Zhen Lei<thunder.leizhen@huawei.com>
 
-Introduce chip_reset knob in mt7921 debugfs to export a way to users
-able to trigger wifi reset, and group the similar operations
-previously defined in chip_config in the same knob.
+I think that there should be a /s/appropriatley/appropriately/ in iommu.c
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: reuse the same knob previously defined in chip_config
----
- .../wireless/mediatek/mt76/mt7921/debugfs.c   | 25 +++++++++++++------
- 1 file changed, 17 insertions(+), 8 deletions(-)
+Thanks,
+john
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-index 024524173115..7ced843b30b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-@@ -288,19 +288,28 @@ mt7921_pm_idle_timeout_get(void *data, u64 *val)
- DEFINE_DEBUGFS_ATTRIBUTE(fops_pm_idle_timeout, mt7921_pm_idle_timeout_get,
- 			 mt7921_pm_idle_timeout_set, "%lld\n");
- 
--static int mt7921_config(void *data, u64 val)
-+static int mt7921_chip_reset(void *data, u64 val)
- {
- 	struct mt7921_dev *dev = data;
--	int ret;
--
--	mt7921_mutex_acquire(dev);
--	ret = mt76_connac_mcu_chip_config(&dev->mt76);
--	mt7921_mutex_release(dev);
-+	int ret = 0;
-+
-+	switch (val) {
-+	case 1:
-+		/* Reset wifisys directly. */
-+		mt7921_reset(&dev->mt76);
-+		break;
-+	default:
-+		/* Collect the core dump before reset wifisys. */
-+		mt7921_mutex_acquire(dev);
-+		ret = mt76_connac_mcu_chip_config(&dev->mt76);
-+		mt7921_mutex_release(dev);
-+		break;
-+	}
- 
- 	return ret;
- }
- 
--DEFINE_DEBUGFS_ATTRIBUTE(fops_config, NULL, mt7921_config, "%lld\n");
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_reset, NULL, mt7921_chip_reset, "%lld\n");
- 
- int mt7921_init_debugfs(struct mt7921_dev *dev)
- {
-@@ -321,7 +330,7 @@ int mt7921_init_debugfs(struct mt7921_dev *dev)
- 	debugfs_create_file("runtime-pm", 0600, dir, dev, &fops_pm);
- 	debugfs_create_file("idle-timeout", 0600, dir, dev,
- 			    &fops_pm_idle_timeout);
--	debugfs_create_file("chip_config", 0600, dir, dev, &fops_config);
-+	debugfs_create_file("chip_reset", 0600, dir, dev, &fops_reset);
- 
- 	return 0;
- }
--- 
-2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
