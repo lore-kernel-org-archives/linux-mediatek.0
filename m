@@ -2,100 +2,122 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8081AC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96FF3C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:39:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EDA0761107
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:01:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDA0761107
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C62EA611AC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:39:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C62EA611AC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kernel.crashing.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=G837XteIrroQwzvkHdTWWNjjHCRxa8SENYSx3ww8NX4=; b=eEmSawVK7dPX+C/z26tt++o7+
-	Po0KE4IoSSKzpIi2KsNJHnnq9pST6DVJWxTO1bgdxJYfGm5od82Q2N0+jgOQii+7vSw6J47s1RSxH
-	KeA8IGzNFXZMA0dw4Xned/+Ova+ib5J8O4uBV1rrGpwxOAsit0AtFAII8VWl+j8+zdEl3AnYgciYr
-	h2iAAKupcBn8o2zwyXRhpq8+w0bEGiTxqqkM5FzhwLOf9pP/dsDkNNUSJ/s7NXHGLeAxF/F7LFrRy
-	6akzm+pgELHssjsLJurQsorwtRG+8ICefzvX0GVaCC/j827Y2wQQKPN+JwJA36r+7tsODj9jhIngj
-	zFawyz7kw==;
+	 bh=AriCtymns/AOoWROFNgcWtdlCdVYQOd+YqQkMy7Ik3w=; b=p4/SJ4kjUc2fqUdQ13Kj7eXYz
+	+MyBERi1XrCAO+xuVKZaXphCrE/mEouyDEDCIBkRegbfvmpnK8sEljf9w7B5y+glDUhAQ4KWUwtlL
+	/CDz76MpjZLSg8T0atwerpEdPX1JcSKgPsUz7IZ690iFsYPHeuTG7Q/SZhVavTrGDHyTec0cdfM77
+	k2VylyzeSjd1/nOPYzGDUvsi8apmlx4ZlQFwknw9Oy4noJBEv5NPqSgNAt0m6Utxfitxhms/YjGp4
+	+xf9j58UlhTpXDkRH4TOXbef3gZlTddX9/HAHrTMgjxaPM229FvBW24p0j0DV4ZNf3RSZYYkEVCQe
+	/A1QLNxKA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXEje-000ZYw-Qm; Fri, 16 Apr 2021 03:01:35 +0000
+	id 1lXFK2-000ekg-SG; Fri, 16 Apr 2021 03:39:10 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXEjZ-000ZXW-SQ; Fri, 16 Apr 2021 03:01:30 +0000
+ id 1lXFJv-000ejw-GA; Fri, 16 Apr 2021 03:39:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
  Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=MTAy3dK7ZeeTqAFn6CDQfuUe2LUsEJXiuvm05pj0FSo=; b=YqtC2zpb9npBJCqOpDUtapwD49
- gzL9uOSiE2IrIapTKC0fyNQ167BTgeWKV6MLHc4spmUh6p0BmBj8wa/DW2HejjkgMerxIuIfC5yFF
- DYOYBZIQpmxzobDtWhczvfL1EIoxo3lF/j1RFhN0MaPkB1Q8y7il5dAxzd9zWY30KxeQeY0XX3ATQ
- 4QSVuotFUCHQopHutm3VBTzmb7Zcjc6Sl7t4pYqX6zm3MWuOzLCcFTpNZkv07BXd8P3A88JWxoIN7
- TM8gslNt7zyrKAPji5WUSpiib8RdMz0s3NQl6lrUARZZsvVj67RVItQrs5fLGGnVudzHdGf+E5HoA
- oh0W3Ibg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXEjU-0092pq-W7; Fri, 16 Apr 2021 03:01:28 +0000
-X-UUID: 3a2442c8ec5b4d00b6ac7a3ecc57a4ec-20210415
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=MTAy3dK7ZeeTqAFn6CDQfuUe2LUsEJXiuvm05pj0FSo=; 
- b=KRDqCfuCAN6kvJxmqjtLn83qxuYVTBV73wN+hQvJ1XYN5LqOOoEAAqan8vhDhjUutIHtyhD9x4/nf/+aDSwMY3gspbcx6XqVn0iuCm/rBJvLIeUhPJNX4pSf8dq0mieRUMtOJ7KBdA6WAsC8flmh1UPN3JvDWzMA9YEtnvKNrVw=;
-X-UUID: 3a2442c8ec5b4d00b6ac7a3ecc57a4ec-20210415
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 289828540; Thu, 15 Apr 2021 20:01:14 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Apr 2021 20:01:13 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 11:01:10 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 16 Apr 2021 11:01:10 +0800
-Message-ID: <1618542070.27491.15.camel@mtksdccf07>
-Subject: Re: [PATCH 4/8] dt-bindings: arm: mediatek: Add new document
- bindings for APU
-From: Flora Fu <flora.fu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Pi-Cheng Chen
- <pi-cheng.chen@mediatek.com>, Chiawen Lee <chiawen.lee@mediatek.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-clk <linux-clk@vger.kernel.org>
-Date: Fri, 16 Apr 2021 11:01:10 +0800
-In-Reply-To: <CAL_JsqLKaYY=NHm1hD=YaQgvDOBTtraoUqcycA7tu7n-f2GVDw@mail.gmail.com>
-References: <1617766086-5502-1-git-send-email-flora.fu@mediatek.com>
- <1617766086-5502-5-git-send-email-flora.fu@mediatek.com>
- <20210409182538.GA3913794@robh.at.kernel.org>
- <1618209895.25062.11.camel@mtksdccf07>
- <CAL_JsqLKaYY=NHm1hD=YaQgvDOBTtraoUqcycA7tu7n-f2GVDw@mail.gmail.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ bh=ysXj6ZgEJG3sQeYIiScZhz+IEYBc1d93YMh/1TEvbM0=; b=olymLH7hSW0g1TFGNUKPq/ftWe
+ Siiv0rW9K0+qkwJEaw3VfN6jeyQbggBjMRb2Ypmxrm4qXNHuc2jFlqcy1e33dzEeuSpZJO88J2vwe
+ CrL0/PLpticSKIKaWVMIzrLcKyZwTEHgUQG2y8iPb7btbqKdHPCxljhXGJA97ab1d9ch0uI57SjCm
+ WaWx1QEcrQrWzqpR2wfsEhVvs9qj2shoWZJjQdRo4rSqVSKi9AnpnuOqJU0Qk5M2llMfAnIhhgV1O
+ CyKzC8OXjwasjqQRxvgYODcYpQY3zvYs6Qi0y+p/Vkn+2/TzdZz//G0tQx2xnkhCEgJbEELFCoMj6
+ JJlUvP7A==;
+Received: from gate.crashing.org ([63.228.1.57])
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lXFJr-0093ht-Mb; Fri, 16 Apr 2021 03:39:01 +0000
+Received: from ip6-localhost (localhost.localdomain [127.0.0.1])
+ by gate.crashing.org (8.14.1/8.14.1) with ESMTP id 13G3Onft032125;
+ Thu, 15 Apr 2021 22:24:50 -0500
+Message-ID: <730d603b12e590c56770309b4df2bd668f7afbe3.camel@kernel.crashing.org>
+Subject: Re: [PATCH net-next v4 2/2] of: net: fix of_get_mac_addr_nvmem()
+ for non-platform devices
+From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
+To: Michael Walle <michael@walle.cc>, ath9k-devel@qca.qualcomm.com,
+ UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
+ linux-omap@vger.kernel.org, linux-wireless@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-staging@lists.linux.dev
+Cc: Andrew Lunn <andrew@lunn.ch>, Gregory Clement
+ <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Michael Ellerman <mpe@ellerman.id.au>, Paul Mackerras <paulus@samba.org>,
+ Andreas Larsson <andreas@gaisler.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, Chris Snook
+ <chris.snook@gmail.com>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <rafal@milecki.pl>, bcm-kernel-feedback-list@broadcom.com, Florian Fainelli
+ <f.fainelli@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>, Sunil Goutham
+ <sgoutham@marvell.com>, Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur
+ <madalin.bucur@nxp.com>, Pantelis Antoniou <pantelis.antoniou@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>, Li Yang <leoyang.li@nxp.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta
+ <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>, Thomas
+ Petazzoni <thomas.petazzoni@bootlin.com>, Vadym Kochan
+ <vkochan@marvell.com>, Taras Chornyi <tchornyi@marvell.com>, Mirko Lindner
+ <mlindner@marvell.com>, Stephen Hemminger <stephen@networkplumber.org>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Sergei
+ Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Jose
+ Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
+ <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman
+ <khilman@baylibre.com>, Neil Armstrong <narmstrong@baylibre.com>, Jerome
+ Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Vinod Koul <vkoul@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Grygorii Strashko
+ <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri
+ <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>, Radhey Shyam
+ Pandey <radhey.shyam.pandey@xilinx.com>, Kalle Valo <kvalo@codeaurora.org>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <stf_xl@wp.pl>,
+ Helmut Schaa <helmut.schaa@googlemail.com>, Heiner Kallweit
+ <hkallweit1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand
+ <frowand.list@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>, Vivien
+ Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>
+Date: Fri, 16 Apr 2021 13:24:49 +1000
+In-Reply-To: <20210412174718.17382-3-michael@walle.cc>
+References: <20210412174718.17382-1-michael@walle.cc>
+ <20210412174718.17382-3-michael@walle.cc>
+User-Agent: Evolution 3.36.4-0ubuntu1 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9F4E1F87D3F9E72542DAD2DF050407D939B7DB684CFA915AFE9C5AC433219D722000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_200126_414467_111FA5C3 
-X-CRM114-Status: GOOD (  28.28  )
+X-CRM114-CacheID: sfid-20210415_203900_590171_8D145AE2 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,91 +134,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-04-15 at 16:24 -0500, Rob Herring wrote:
-> On Mon, Apr 12, 2021 at 1:45 AM Flora Fu <flora.fu@mediatek.com> wrote:
-> >
-> > On Fri, 2021-04-09 at 13:25 -0500, Rob Herring wrote:
-> > > On Wed, Apr 07, 2021 at 11:28:02AM +0800, Flora Fu wrote:
-> > > > Document the apusys bindings.
-> > > >
-> > > > Signed-off-by: Flora Fu <flora.fu@mediatek.com>
-> > > > ---
-> > > >  .../arm/mediatek/mediatek,apusys.yaml         | 56 +++++++++++++++++++
-> > > >  1 file changed, 56 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..dc04a46f1bad
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apusys.yaml
-> > > > @@ -0,0 +1,56 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,apusys.yaml*__;Iw!!CTRNKA9wMg0ARbw!3ryKFTA2CvsVss4Pt2ZOG7wv4jgR-2LPxuGn30IxFmpxoxSRdzNdf8FrAYYvZWcw$
-> > > > +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!3ryKFTA2CvsVss4Pt2ZOG7wv4jgR-2LPxuGn30IxFmpxoxSRdzNdf8FrARlhCQ0w$
-> > > > +
-> > > > +title: MediaTek APUSYS Controller
-> > > > +
-> > > > +maintainers:
-> > > > +  - Flora Fu <flora.fu@mediatek.com>
-> > > > +
-> > > > +description:
-> > > > +  The Mediatek apusys controller provides functional configurations and clocks
-> > > > +  to the system.
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    items:
-> > > > +      - enum:
-> > > > +          - mediatek,mt8192-apu_mbox
-> > > > +          - mediatek,mt8192-apu_conn
-> > > > +          - mediatek,mt8192-apu_vcore
-> > >
-> > > s/_/-/
-> > >
-> >
-> > OK. I will update expression strings in the next version.
-> >
-> > > > +      - const: syscon
-> > > > +
-> > > > +  reg:
-> > > > +    maxItems: 1
-> > > > +
-> > > > +  '#clock-cells':
-> > > > +    const: 1
-> > > > +
-> > > > +required:
-> > > > +  - compatible
-> > > > +  - reg
-> > > > +
-> > > > +additionalProperties: false
-> > > > +
-> > > > +examples:
-> > > > +  - |
-> > > > +    apu_mbox: apu_mbox@19000000 {
-> > >
-> > > mailbox@...? Is this a mailbox provider?
-> > >
-> >
-> > Yes, the apu_mbox is the for setup mailbox in the APU hardware.
+On Mon, 2021-04-12 at 19:47 +0200, Michael Walle wrote:
 > 
-> Then you need #mbox-cells here.
-> 
-> And in that case, what makes it a syscon?
-> 
-The apu_mbox are registers for setup mail box communications between apu
-processor and the AP side kernel drivers. It also has spare registers
-that reserved for keep specific information between apu and AP side.
-That's why I set it as syscon to avoid ioremap from users. Do you think
-it is reasonable or it is better to be kept inside the user nodes when
-using it?
+>  /**
+>   * of_get_phy_mode - Get phy mode for given device_node
+> @@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np, const char *name, u8 *addr)
+>  static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
+>  {
+>         struct platform_device *pdev = of_find_device_by_node(np);
+> +       struct nvmem_cell *cell;
+> +       const void *mac;
+> +       size_t len;
+>         int ret;
+>  
+> -       if (!pdev)
+> -               return -ENODEV;
+> +       /* Try lookup by device first, there might be a nvmem_cell_lookup
+> +        * associated with a given device.
+> +        */
+> +       if (pdev) {
+> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
+> +               put_device(&pdev->dev);
+> +               return ret;
+> +       }
+> +
 
-> >
-> > > > +        compatible = "mediatek,mt8192-apu_mbox", "syscon";
-> > > > +        reg = <0x19000000 0x1000>;
-> > > > +    };
+This smells like the wrong band aid :)
+
+Any struct device can contain an OF node pointer these days.
+
+This seems all backwards. I think we are dealing with bad evolution.
+
+We need to do a lookup for the device because we get passed an of_node.
+We should just get passed a device here... or rather stop calling
+of_get_mac_addr() from all those drivers and instead call
+eth_platform_get_mac_address() which in turns calls of_get_mac_addr().
+
+Then the nvmem stuff gets put in eth_platform_get_mac_address().
+
+of_get_mac_addr() becomes a low-level thingy that most drivers don't
+care about.
+
+Cheers,
+Ben.
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
