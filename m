@@ -2,88 +2,80 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4DD3C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 19:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51B62C43461
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 19:50:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 241DE613B0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 19:24:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 241DE613B0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8A0B1613C5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 19:50:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A0B1613C5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=eV2o7zl+aQSrGINxatUftSG4jkF2fZfFvDcjNK4dlbA=; b=RpHc/SZt0GVlqcdJXYQtLYcHb
-	6A003/SmKxZ9XXjQV/MsZLxaQJOcPV8Y2nPO+7mcmvarRa93A9hUTN9T39iiRNDTJ4wnTbVjBJ8eK
-	KaX+Grta1L928qHWdlXzjPAr4jsKhGcDTw5Kx/xGIdT9c+ZF9Wc9JUOqis3gBzDUTKBlB5Vgxz5/m
-	bos8tDWv3z6K2YUROmsf5k4qTD7jcaJKX30LekS9U0P/A2QG6pDn80ola455rSnE2/Fl/Nb90vP/P
-	4SRZMnvdemNoQv1uM401+7lPwaMYLY0isBcFlsGS9Nx11BdW5HCVyY7GroFN6TExUYFFKGrU+Y9Kr
-	AQFF5lv5w==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t2LSVpJFcwGX2pMrJ12ILPq7oghjV4moM9kIQx4LgPs=; b=R9DE5YK9kOeuSEE/4vzaRzazJi
+	jCtcbr1N70pF1RZBX0XODkcVtRjkveei5AZKHv9YO5waZ9qtHT4r79EUkySzMr7kUC025Oo1qJS9Y
+	y46PIB8agJ+dqPYB/R6E4cEXa57m27kUZ8K4u/1JMZyuXDqqCTtwP+NnVpyOLyrJpecrgsjM5N5g1
+	5jSPouaaGn1+iY2OEC0wHFYD3vhPCpexHnhkNPG7TL2CnxyCFVFvm9mykN0OgShfUqxJajcYyl3pk
+	KtRHc/CYMpivYwCOot84EYVq4pAgRgBJ2sbrakt4uGH9RvcovHr6vZGGdvnyj7dxDDDF3Ii9C2hmv
+	XPWFVc0g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXU4o-003DAE-VV; Fri, 16 Apr 2021 19:24:27 +0000
+	id 1lXUTK-003GPq-4k; Fri, 16 Apr 2021 19:49:46 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXU4b-003D7M-Hm; Fri, 16 Apr 2021 19:24:13 +0000
+ id 1lXUT9-003GP7-Eq; Fri, 16 Apr 2021 19:49:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To
- :Content-ID:Content-Description:References;
- bh=Y4CGOQ3VVzVOoh+l3/YBmQlewKvatoJkaq/GIU/YJuU=; b=JHJWc0gvVaN9uvkH+msk4TWR/K
- 5xx/ZwG8xYt2ZVQJXDxlu2/omLX0XkKhLbkwzSLdQhZ3hbWk8Mj/rsdYNVS5DkmnUuyrVo5JbK5Ra
- Jvn6H0wGXkqDPdXpyLkJsfNuuVtkeJRWaZ5cavWL9OOrM/KZbMiYzHRWopiqfbLqf13PHeLHY5AcZ
- J9T56B8s4JIPSAQ9CKpWIfI0Vh56oMN+5GfkHrXrAfaCHOMF4nonIGHBdzQ7LyfHy5xC//wjub0G+
- 3Mi/J+qgrVtg9zq+4S2eXGY+v1agV/lcU7ID0p0KDfc0lsBG68pGrsbjawNM3xYMAA7BkAxqw3K1E
- gC2yPo/w==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=oM/WS/J38RInl5wMhtwvCPFSiHBjulHHssRHlVAKQGA=; b=dHnRFQqCeergisXPMeiwvuWQfR
+ Sl0uYvHTK0c6xyQNhi/pRn0k0i3KwwgtQ8YQVC6zGaeAdVozW7GwFRh9Zc3XOu43nRIALQDrwFAnr
+ BRSSzPvBdJgdBRkINHlNQT4syfcuDkFcFzdB57E92ScrUuzqK1St4yf4EE42edFw5+pD3cLQZs7qP
+ Y837N6LPJXisIGsmfU/FOtey46p8RbVK42O3TldvQF/H0clCE+u/hp60vAMLC1V77tVhIDZQP08JW
+ PydxYP8p1+Olk9rofqjIR3nWXRyjkY3h67EX1I3V7DYc5C3PInoC/7lMd8ytSzEa2kjjx5qBXWhaj
+ eNum32iw==;
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXU4Z-009ecW-2W; Fri, 16 Apr 2021 19:24:12 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3B84B6137D;
- Fri, 16 Apr 2021 19:24:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618601050;
- bh=qHawK0oSTOLvJhEkLLbelkvEtYDRemD5y/71PvXJsow=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=i+nsE09tHA0GPcdM2/MeTaNM0szdQ0WdGtOryocd2mlqAtBAPS//L0i0bzZXsO8/u
- fkLV7Gvab0QGNzDId6j792QJPu/gog3Dicsi9l6jZFfqUa3Plj723IeLds1pJpEKyr
- 6OgPJZied02D4CRJM27ck/2DbUH0P6noqZEX7ncjo7RzthjBNAzaObjGEgxy17r7VL
- +SzfZO2eKYv3O9Q0TMm2hz5GTNKJ/yfV2ONFoik610B/49nvK59V7cy8m7CfnUYsqV
- 5lioX2gDeS8C6LthsG8R30YIzz9snIrCPJCSf5aLBXNxUvo3ks8yjt+OS6lELHHJwv
- 0hfkytCmujThA==
-Date: Fri, 16 Apr 2021 14:24:09 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Marc Zyngier <maz@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ id 1lXUT3-009fEw-De; Fri, 16 Apr 2021 19:49:34 +0000
+IronPort-SDR: yEGHPUEBsQUrfeshkypGDcZ3MLRjnQ4C12LgtraP4KrN/CXA14X8ldsEXILpdWit7bTAPUmZCG
+ aJv282gaN3RD3dXwQ2PnqWmH61b533qHD/niNXA+mQcRGqKH1Ag+WEgwpWQC7XfC702QJ1AWMO
+ UUUelnT+2rHFMfL/baeOMrWnfKVZJlKf7g3LrwW5uJlluqydnWlSkd7yj8SdFZmldsZqRiLpyx
+ gwo54iykIomtX1aew43a33gATq/sV/uSzN8MCdGGhu4Ps9H4sUfHMIVxTFF+Z6YdVjzRxyADvc
+ vNw=
+X-IronPort-AV: E=Sophos;i="5.82,228,1613462400"; d="scan'208";a="29752530"
+Received: from unknown (HELO ironmsg02-sd.qualcomm.com) ([10.53.140.142])
+ by labrats.qualcomm.com with ESMTP; 16 Apr 2021 12:49:28 -0700
+X-QCInternal: smtphost
+Received: from wsp769891wss.qualcomm.com (HELO stor-presley.qualcomm.com)
+ ([192.168.140.85])
+ by ironmsg02-sd.qualcomm.com with ESMTP; 16 Apr 2021 12:49:28 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 92687)
+ id 34BD5213F9; Fri, 16 Apr 2021 12:49:28 -0700 (PDT)
+From: Asutosh Das <asutoshd@codeaurora.org>
+To: cang@codeaurora.org, martin.petersen@oracle.com, adrian.hunter@intel.com,
+ linux-scsi@vger.kernel.org
+Cc: Asutosh Das <asutoshd@codeaurora.org>, linux-arm-msm@vger.kernel.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com,
- chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
- sin_jieyang@mediatek.com, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com,
- Krzysztof Wilczyski <kw@linux.com>
-Subject: Re: [v9,2/7] PCI: Export pci_pio_to_address() for module use
-Message-ID: <20210416192409.GA2744791@bjorn-Precision-5520>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210413095257.GA21802@lpieralisi>
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v20 0/2] Enable power management for ufs wlun 
+Date: Fri, 16 Apr 2021 12:49:24 -0700
+Message-Id: <cover.1618600985.git.asutoshd@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_122411_172698_600CB567 
-X-CRM114-Status: GOOD (  21.83  )
+X-CRM114-CacheID: sfid-20210416_124929_511222_607B10F8 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,58 +87,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 13, 2021 at 10:53:05AM +0100, Lorenzo Pieralisi wrote:
-> On Wed, Mar 24, 2021 at 10:09:42AM +0100, Pali Roh=E1r wrote:
-> > On Wednesday 24 March 2021 11:05:05 Jianjun Wang wrote:
-> > > This interface will be used by PCI host drivers for PIO translation,
-> > > export it to support compiling those drivers as kernel modules.
-> > > =
+This patch attempts to fix a deadlock in ufs while sending SSU.
+Recently, blk_queue_enter() added a check to not process requests if the
+queue is suspended. That leads to a resume of the associated device which
+is suspended. In ufs, that device is ufs device wlun and it's parent is
+ufs_hba. This resume tries to resume ufs device wlun which in turn tries
+to resume ufs_hba, which is already in the process of suspending, thus
+causing a deadlock.
 
-> > > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > > ---
-> > >  drivers/pci/pci.c | 1 +
-> > >  1 file changed, 1 insertion(+)
-> > > =
+This patch takes care of:
+* Suspending the ufs device lun only after all other luns are suspended
+* Sending SSU during ufs device wlun suspend
+* Clearing uac for rpmb and ufs device wlun
+* Not sending commands to the device during host suspend
 
-> > > diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> > > index 16a17215f633..12bba221c9f2 100644
-> > > --- a/drivers/pci/pci.c
-> > > +++ b/drivers/pci/pci.c
-> > > @@ -4052,6 +4052,7 @@ phys_addr_t pci_pio_to_address(unsigned long pi=
-o)
-> > >  =
+v19 -> v20:
+- Addressed Adrian's comments
+- Addressed Bart's comments
 
-> > >  	return address;
-> > >  }
-> > > +EXPORT_SYMBOL(pci_pio_to_address);
-> > =
+v18 -> v19:
+- Addressed Adrian's comments
+- Fixed smatch warnings
 
-> > Hello! I'm not sure if EXPORT_SYMBOL is correct because file has GPL-2.0
-> > header. Should not be in this case used only EXPORT_SYMBOL_GPL? Maybe
-> > other people would know what is correct?
-> =
+v17 -> v18:
+- Addressed Adrian's comments
 
-> I think this should be EXPORT_SYMBOL_GPL(), I can make this change
-> but this requires Bjorn's ACK to go upstream (Bjorn, it is my fault,
-> it was assigned to me on patchwork, now updated, please have a look).
+v16 -> v17:
+- Addressed Adrian's & Daejun's comments
 
-Yep, looks good to me, and I agree it should be EXPORT_SYMBOL_GPL().
+v15 -> v16:
+- Brought back the missing changes
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Fix ufshcd_wl_poweroff()
 
-Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+v14 -> v15:
+- Rebased on 5.13/scsi-staging
 
-> > >  =
+v13 -> v14:
+- Addressed Adrian's comments
+  * Rebased it on top of scsi-next
+  * Added scsi_autopm_[get/put] to ufs_debugfs[get/put]_user_access()
+  * Resume the device in ufshcd_remove()
+  * Unregister ufs_rpmb_wlun before ufs_dev_wlun
+  * hba->shutting_down moved to ufshcd_wl_shutdown()
 
-> > >  unsigned long __weak pci_address_to_pio(phys_addr_t address)
-> > >  {
-> > > -- =
+v12 -> v13:
+- Addressed Adrian's comments
+  * Paired pm_runtime_get_noresume() with pm_runtime_put()
+  * no rpm_autosuspend for ufs device wlun
+  * Moved runtime-pm init functionality to ufshcd_wl_probe()
+- Addressed Bart's comments
+  * Expanded abbrevs in commit message
 
-> > > 2.25.1
-> > > =
+v11 -> v12:
+- Addressed Adrian's comments
+  * Fixed ahit for Mediatek driver
+  * Fixed error handling in ufshcd_core_init()
+  * Tested this patch and the issue is still seen.
+
+v10 -> v11:
+- Fixed supplier suspending before consumer race
+- Addressed Adrian's comments
+  * Added proper resume/suspend cb to ufshcd_auto_hibern8_update()
+  * Cosmetic changes to ufshcd-pci.c
+  * Cleaned up ufshcd_system_suspend()
+  * Added ufshcd_debugfs_eh_exit to ufshcd_core_init()
+
+v9 -> v10:
+- Addressed Adrian's comments
+  * Moved suspend/resume vops to __ufshcd_wl_[suspend/resume]()
+  * Added correct resume in ufs_bsg
+
+v8 -> v9:
+- Addressed Adrian's comments
+  * Moved link transition to __ufshcd_wl_[suspend/resume]()
+  * Fixed the other minor comments
+
+v7 -> v8:
+- Addressed Adrian's comments
+  * Removed separate autosuspend delay for ufs-device lun
+  * Fixed the ee handler getting scheduled during pm
+  * Always runtime resume in suspend_prepare()
+  * Added CONFIG_PM_SLEEP where needed
+  
+v6 -> v7:
+  * Resume the ufs device before shutting it down
+
+v5 -> v6:
+- Addressed Adrian's comments
+  * Added complete() cb
+  * Added suspend_prepare() and complete() to all drivers
+  * Moved suspend_prepare() and complete() to ufshcd
+  * .poweroff() uses ufhcd_wl_poweroff()
+  * Removed several forward declarations
+  * Moved scsi_register_driver() to ufshcd_core_init()
+
+v4 -> v5:
+- Addressed Adrian's comments
+  * Used the rpmb driver contributed by Adrian
+  * Runtime-resume the ufs device during suspend to honor spm-lvl
+  * Unregister the scsi_driver in ufshcd_remove()
+  * Currently shutdown() puts the ufs device to power-down mode
+    so, just removed ufshcd_pci_poweroff()
+  * Quiesce the scsi device during shutdown instead of remove
+
+v3 RFC -> v4:
+- Addressed Bart's comments
+  * Except that I didn't get any checkpatch failures
+- Addressed Avri's comments
+- Addressed Adrian's comments
+  * Added a check for deepsleep power mode
+  * Removed a couple of forward declarations
+  * Didn't separate the scsi drivers because in rpmb case it just sends uac
+    in resume and it seemed pretty neat to me.
+- Added sysfs changes to resume the devices before accessing
+
+
+Asutosh Das (2):
+  scsi: ufs: Enable power management for wlun
+  ufs: sysfs: Resume the proper scsi device
+
+ drivers/scsi/ufs/cdns-pltfrm.c     |   2 +
+ drivers/scsi/ufs/tc-dwc-g210-pci.c |   2 +
+ drivers/scsi/ufs/ufs-debugfs.c     |   6 +-
+ drivers/scsi/ufs/ufs-debugfs.h     |   2 +-
+ drivers/scsi/ufs/ufs-exynos.c      |   2 +
+ drivers/scsi/ufs/ufs-hisi.c        |   2 +
+ drivers/scsi/ufs/ufs-mediatek.c    |  12 +-
+ drivers/scsi/ufs/ufs-qcom.c        |   2 +
+ drivers/scsi/ufs/ufs-sysfs.c       |  24 +-
+ drivers/scsi/ufs/ufs_bsg.c         |   6 +-
+ drivers/scsi/ufs/ufshcd-pci.c      |  36 +-
+ drivers/scsi/ufs/ufshcd.c          | 719 ++++++++++++++++++++++++++-----------
+ drivers/scsi/ufs/ufshcd.h          |  21 ++
+ include/trace/events/ufs.h         |  20 ++
+ 14 files changed, 592 insertions(+), 264 deletions(-)
+
+-- 
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
 
 
 _______________________________________________
