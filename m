@@ -2,92 +2,106 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26794C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 09:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3357FC433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 10:09:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C231610E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 09:53:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C231610E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8E13F6115B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 10:09:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E13F6115B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
+	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vj7k3GZFr88qzxTeo8IQB111BCjbbCmh73R3XRJx+i8=; b=Le/WYq4N6pJId8OXEoHFy3udH
-	puNdEeNJ7uAvEzsYFgsXXxyQTaZTe7rDiig77++7Y9dtW1lHWGTkGhiPSiy7WirtcpTYgX3G2HT2L
-	hoBSrpp109aoB4P1giMxwQCyrawKB86/f2gtl1PZa4x6fbrnljpG5o4jnjv2m19nVEjqVkMq37yuL
-	qKXJYtE3JyfsmDPFFS8YonVkCO/PNqsinSyJJi8VHHHf9dCUaEFwbzK97ls5NjkaVTFgnL1NVWIpn
-	C3Le2LhYIb/ffymAVeuzip1XTM2Ye2Bdim8qns+HtsAirdkjjuRQ5av4kmGAjcOuaIRn7S8dRvBj2
-	d4Bv5Z8CQ==;
+	 bh=2L/3PBtvcLjNg1FBe9sPJi1yUDG4PdkkIlh8eYO7hCI=; b=kCRUjq8KaHS2W/QyUuaci7qo2
+	IpzwrIVMadCxjhYJzvNKOTlfzpRiTE2QTQ39r7H62gcdU99kG9trPpaSdrHsnEyo91ITYxztvej5F
+	eXo9B924sJyrq4ffIlwXfh4e9u/9FT0kYrSGjfPe4r1/PxY6D7WD4eBJ6YGtMuVxVI8AAPY161yEc
+	u1CVLwrre3+lJy9kveZiFgmccvGbEHEv7VGLKcAxckY21oiJfC0Hu0llGzwX3K8pfkCyIf+Qbkxaz
+	Uue60HRNOQPMX43B/4DtoZnjGGRTg4PP+caiFgUbErEhaih+z6lEPUevJhXnPlNRyzE0corOLAtqV
+	RagO3NIyw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXL9l-001cx6-5F; Fri, 16 Apr 2021 09:52:57 +0000
+	id 1lXLPq-001ghi-IB; Fri, 16 Apr 2021 10:09:35 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXKzk-001aQV-C4
- for linux-mediatek@desiato.infradead.org; Fri, 16 Apr 2021 09:42:38 +0000
+ id 1lXLOr-001gaL-Vh; Fri, 16 Apr 2021 10:08:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=Hy95d7HVkEITJjeYMQ/9TEtbJgMH0jMHwQbDF9iu4EU=; b=fXYx/c4za7CASn4uD7+VeDBCj6
- pIX8yJBIR7P8nxWxsnwEKzKKB4pStESkzAqJp819CzzeSJWy4lgdUGTD2J1cztE36kY5Woh5kTDvM
- u7jWbYZP6RcruyM/tNyXNfclLUC3+k/IgNaqsp5aPRuP5+IweVhGZaxQL7lQ2F5WZx2dxy8V6qb1d
- pZ3dJ/l9mzFCDkoOKdWMMvsJphEmkjhImLUEZk+sm1BisTbA8RSx4aL5tKr6lBglEoRHeMfCj1R6m
- TqS4prDnl90mlTOayUmOAYvGBOqoAFWCExY+ezjt/8bQLPAbYbPyI+2AxdTgMpO6akM4F+cFOfn0J
- HCH0CqsQ==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:References:Cc:To:From:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=B3uEE06LdK0+1xXveQ4Us5ECiiJQbQAizX8Ih4TY1xc=; b=tAMcYDYkR/dOCwwtfWbrBWo/Qp
+ iyUW59TwjvkeUVVizbxRDJLIJlU6Ns1Ibv+RLF8kQdEPyE0BXjUpgt1fZxmWOTeDXzfSJKdZw0F6E
+ ebAn7rF5y+oHdX4TPHAKexZ5jXXA0Acyblo1D2Qbuj6rpE9x4vsfeYEphMqNa+dPLddp4qpr+5uB3
+ p/DOW5nXBJFuJ+QT96884cRMAxrfGTZjgPiexxl82ksfUxvyzhdF+7QS6alhaNwF6tKprxlc5l8+B
+ XRbhk+InPV4iUONrX005Em+LCvpFwbJW70HiCHE6TXD6hmo1GtdEKVcGazL1eQh1lxkoCsXROp6TD
+ /HpkFypg==;
+Received: from mga02.intel.com ([134.134.136.20])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXKzh-009FaH-Mk
- for linux-mediatek@lists.infradead.org; Fri, 16 Apr 2021 09:42:35 +0000
-X-UUID: c49bb9902d424abe8408bf474a0945a5-20210416
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Hy95d7HVkEITJjeYMQ/9TEtbJgMH0jMHwQbDF9iu4EU=; 
- b=GNPXMwobhWjGZk97/IzlkhAwoq0p/Myl8xqs1HKqDz/7mvSGCgL2THxpieBKNLxUPefIaWxlDUFFLTPfcXljY2E00sp5JqQ5Wje41AxpYGpFcTGbkVzcr+fwidQR/HXEXWCtfa5wnxv+Kj6S7FTdZMYFFEpAza+1e4xIYjeneLY=;
-X-UUID: c49bb9902d424abe8408bf474a0945a5-20210416
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <pk.chi@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1611854497; Fri, 16 Apr 2021 02:42:28 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 02:32:26 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 17:32:24 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 16 Apr 2021 17:32:24 +0800
-From: Po-Kai Chi <pk.chi@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <wsd_upstream@mediatek.com>, CC Hwang
- <cc.hwang@mediatek.com>, Po-Kai Chi <pk.chi@mediatek.com>
-Subject: [PATCH v2 3/4] arm64: dts: add DRAMC node for MT6779
-Date: Fri, 16 Apr 2021 17:32:17 +0800
-Message-ID: <1618565538-6972-4-git-send-email-pk.chi@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1618565538-6972-1-git-send-email-pk.chi@mediatek.com>
-References: <1618565538-6972-1-git-send-email-pk.chi@mediatek.com>
+ id 1lXLOn-009Gg2-6G; Fri, 16 Apr 2021 10:08:30 +0000
+IronPort-SDR: BA+U6JDdN8mT/g2dOUpOVjGYieEOkPfgzmeAUiJ+0i0S/8tRbhStwmdDNXJD/J2F1XgRyu4ito
+ qJcqp7Z8JO9A==
+X-IronPort-AV: E=McAfee;i="6200,9189,9955"; a="182144908"
+X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="182144908"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2021 03:08:22 -0700
+IronPort-SDR: 2NHE6dFPoJopDNLgjraxVzoPpmdNQMZLwLirE3tGsqdB6ozwshofsDuNR9CgQon8++q2DhWaeH
+ lut7yczl1yzw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="461924450"
+Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
+ ([10.237.72.174])
+ by orsmga001.jf.intel.com with ESMTP; 16 Apr 2021 03:08:15 -0700
+Subject: Re: [PATCH v19 1/2] scsi: ufs: Enable power management for wlun
+From: Adrian Hunter <adrian.hunter@intel.com>
+To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
+ martin.petersen@oracle.com, linux-scsi@vger.kernel.org
+Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
+ <jejb@linux.ibm.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
+ Colin Ian King <colin.king@canonical.com>, Yue Hu <huyue2@yulong.com>,
+ Wei Yongjun <weiyongjun1@huawei.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
+ <linux-mediatek@lists.infradead.org>
+References: <cover.1618529652.git.asutoshd@codeaurora.org>
+ <48ab92db5b0d3c11b8357f0faa99a4473465099d.1618529652.git.asutoshd@codeaurora.org>
+ <d28cb2d4-8f24-c2c4-e87e-bb51ac73af6e@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+Message-ID: <9ea33def-e2c0-7899-5d47-f9ade59a0dcd@intel.com>
+Date: Fri, 16 Apr 2021 13:08:31 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.8.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <d28cb2d4-8f24-c2c4-e87e-bb51ac73af6e@intel.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_024233_769445_A94FFFDD 
-X-CRM114-Status: UNSURE (   9.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210416_030829_311230_4907804F 
+X-CRM114-Status: GOOD (  39.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,75 +118,237 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the DRAMC node for the DRAMC kernel driver.
+On 16/04/21 12:22 pm, Adrian Hunter wrote:
+> On 16/04/21 2:36 am, Asutosh Das wrote:
+>> During runtime-suspend of ufs host, the scsi devices are
+>> already suspended and so are the queues associated with them.
+>> But the ufs host sends SSU (START_STOP_UNIT) to wlun
+>> during its runtime-suspend.
+>> During the process blk_queue_enter checks if the queue is not in
+>> suspended state. If so, it waits for the queue to resume, and never
+>> comes out of it.
+>> The commit
+>> (d55d15a33: scsi: block: Do not accept any requests while suspended)
+>> adds the check if the queue is in suspended state in blk_queue_enter().
+>>
+>> Call trace:
+>>  __switch_to+0x174/0x2c4
+>>  __schedule+0x478/0x764
+>>  schedule+0x9c/0xe0
+>>  blk_queue_enter+0x158/0x228
+>>  blk_mq_alloc_request+0x40/0xa4
+>>  blk_get_request+0x2c/0x70
+>>  __scsi_execute+0x60/0x1c4
+>>  ufshcd_set_dev_pwr_mode+0x124/0x1e4
+>>  ufshcd_suspend+0x208/0x83c
+>>  ufshcd_runtime_suspend+0x40/0x154
+>>  ufshcd_pltfrm_runtime_suspend+0x14/0x20
+>>  pm_generic_runtime_suspend+0x28/0x3c
+>>  __rpm_callback+0x80/0x2a4
+>>  rpm_suspend+0x308/0x614
+>>  rpm_idle+0x158/0x228
+>>  pm_runtime_work+0x84/0xac
+>>  process_one_work+0x1f0/0x470
+>>  worker_thread+0x26c/0x4c8
+>>  kthread+0x13c/0x320
+>>  ret_from_fork+0x10/0x18
+>>
+>> Fix this by registering ufs device wlun as a scsi driver and
+>> registering it for block runtime-pm. Also make this as a
+>> supplier for all other luns. That way, this device wlun
+>> suspends after all the consumers and resumes after
+>> hba resumes.
+>> This also registers a new scsi driver for rpmb wlun.
+>> This new driver is mostly used to clear rpmb uac.
+>> With this design, the driver would always be runtime resumed
+>> before system suspend.
+> 
+> I thought some more about that and I think we can still support
+> allowing runtime suspend to work with system suspend, without
+> too much difficulty. See ufshcd_suspend_prepare() below.
+> 
+>>
+>> Fixed smatch warnings:
+>> Reported-by: kernel test robot <lkp@intel.com>
+>> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+>>
+>> Co-developed-by: Can Guo <cang@codeaurora.org>
+>> Signed-off-by: Can Guo <cang@codeaurora.org>
+>> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
+>> ---
+> 
+> <SNIP>
+> 
+>> -static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>> +static int __ufshcd_wl_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>>  {
+>>  	int ret;
+>> -	enum uic_link_state old_link_state;
+>> +	enum uic_link_state old_link_state = hba->uic_link_state;
+>>  
+>> -	hba->pm_op_in_progress = 1;
+>> -	old_link_state = hba->uic_link_state;
+>> -
+>> -	ufshcd_hba_vreg_set_hpm(hba);
+>> -	ret = ufshcd_vreg_set_hpm(hba);
+>> -	if (ret)
+>> -		goto out;
+>> -
+>> -	/* Make sure clocks are enabled before accessing controller */
+>> -	ret = ufshcd_setup_clocks(hba, true);
+>> -	if (ret)
+>> -		goto disable_vreg;
+>> -
+>> -	/* enable the host irq as host controller would be active soon */
+>> -	ufshcd_enable_irq(hba);
+>> +	hba->pm_op_in_progress = true;
+>>  
+>>  	/*
+>>  	 * Call vendor specific resume callback. As these callbacks may access
+>> @@ -8868,7 +8858,7 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>>  	 */
+>>  	ret = ufshcd_vops_resume(hba, pm_op);
+>>  	if (ret)
+>> -		goto disable_irq_and_vops_clks;
+>> +		goto out;
+>>  
+>>  	/* For DeepSleep, the only supported option is to have the link off */
+>>  	WARN_ON(ufshcd_is_ufs_dev_deepsleep(hba) && !ufshcd_is_link_off(hba));
+>> @@ -8916,42 +8906,219 @@ static int ufshcd_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
+>>  	if (hba->ee_usr_mask)
+>>  		ufshcd_write_ee_control(hba);
+>>  
+>> -	hba->clk_gating.is_suspended = false;
+>> -
+>>  	if (ufshcd_is_clkscaling_supported(hba))
+>> -		ufshcd_clk_scaling_suspend(hba, false);
+>> -
+>> -	/* Enable Auto-Hibernate if configured */
+>> -	ufshcd_auto_hibern8_enable(hba);
+>> +		ufshcd_resume_clkscaling(hba);
+> 
+> This still doesn't look right. ufshcd_resume_clkscaling()
+> doesn't update hba->clk_scaling.is_allowed whereas
+> ufshcd_clk_scaling_suspend() does.
+> 
+>>  
+>>  	if (hba->dev_info.b_rpm_dev_flush_capable) {
+>>  		hba->dev_info.b_rpm_dev_flush_capable = false;
+>>  		cancel_delayed_work(&hba->rpm_dev_flush_recheck_work);
+>>  	}
+>>  
+>> -	ufshcd_clear_ua_wluns(hba);
+>> -
+>> -	/* Schedule clock gating in case of no access to UFS device yet */
+>> -	ufshcd_release(hba);
+>> -
+>> +	/* Enable Auto-Hibernate if configured */
+>> +	ufshcd_auto_hibern8_enable(hba);
+>>  	goto out;
+>>  
+>>  set_old_link_state:
+>>  	ufshcd_link_state_transition(hba, old_link_state, 0);
+>>  vendor_suspend:
+>>  	ufshcd_vops_suspend(hba, pm_op);
+>> -disable_irq_and_vops_clks:
+>> +out:
+>> +	if (ret)
+>> +		ufshcd_update_evt_hist(hba, UFS_EVT_WL_RES_ERR, (u32)ret);
+>> +	hba->clk_gating.is_suspended = false;
+>> +	ufshcd_release(hba);
+>> +	hba->pm_op_in_progress = false;
+>> +	return ret;
+>> +}
+> 
+> <SNIP>
+> 
+>> +void ufshcd_resume_complete(struct device *dev)
+>> +{
+>> +	struct ufs_hba *hba = dev_get_drvdata(dev);
+>> +
+>> +	ufshcd_rpm_put(hba);
+>> +}
+>> +EXPORT_SYMBOL_GPL(ufshcd_resume_complete);
+>> +
+>> +int ufshcd_suspend_prepare(struct device *dev)
+>> +{
+>> +	struct ufs_hba *hba = dev_get_drvdata(dev);
+>> +
+>> +	/*
+>> +	 * SCSI assumes that runtime-pm and system-pm for scsi drivers
+>> +	 * are same. And it doesn't wake up the device for system-suspend
+>> +	 * if it's runtime suspended. But ufs doesn't follow that.
+>> +	 * The rpm-lvl and spm-lvl can be different in ufs.
+>> +	 * Force it to honor system-suspend.
+>> +	 * Refer ufshcd_resume_complete()
+>> +	 */
+>> +	ufshcd_rpm_get_sync(hba);
+>> +
+>> +	return 0;
+>> +}
+> 
+> I think we can support allowing runtime suspend to work with
+> system suspend.  ufshcd_resume_complete() remains the same,
+> and ufshcd_suspend_prepare() is like this:
+> 
+> 
+> /*
+>  * SCSI assumes that runtime-pm and system-pm for scsi drivers are same, and it
+>  * doesn't wake up the device for system-suspend if it's runtime suspended.
+>  * However UFS doesn't follow that. The rpm-lvl and spm-lvl can be different in
+>  * UFS, so special care is needed.
+>  * Refer also ufshcd_resume_complete()
+>  */
+> int ufshcd_suspend_prepare(struct device *dev)
+> {
+> 	struct ufs_hba *hba = dev_get_drvdata(dev);
+> 	struct device *ufs_dev = &hba->sdev_ufs_device->sdev_gendev;
+> 	enum ufs_dev_pwr_mode spm_pwr_mode;
+> 	enum uic_link_state spm_link_state;
+> 	unsigned long flags;
+> 	bool rpm_state_ok;
+> 
+> 	/*
+> 	 * First prevent runtime suspend. Note this does not prevent runtime
+> 	 * resume e.g. pm_runtime_get_sync() will still do the right thing.
+> 	 */
+> 	pm_runtime_get_noresume(ufs_dev);
+> 
+> 	/* Now check if the rpm state is ok to use for spm */
+> 	spin_lock_irqsave(&ufs_dev->power.lock, flags);
+> 
+> 	spm_pwr_mode = ufs_get_pm_lvl_to_dev_pwr_mode(hba->spm_lvl);
+> 	spm_link_state = ufs_get_pm_lvl_to_link_pwr_state(hba->spm_lvl);
+> 
+> 	rpm_state_ok = pm_runtime_suspended(ufs_dev) &&
+> 		       hba->curr_dev_pwr_mode == spm_pwr_mode &&
+> 		       hba->uic_link_state == spm_link_state &&
+> 		       !hba->dev_info.b_rpm_dev_flush_capable;
+> 
+> 	spin_unlock_irqrestore(&ufs_dev->power.lock, flags);
+> 
+> 	/* If is isn't, do a runtime resume */
+> 	if (!rpm_state_ok)
+> 		pm_runtime_resume(ufs_dev);
 
-Properties are divided into three categories:
+But we should return an error if runtime resume
+fails.
 
-- Platform DTS:
-    MediaTek DRAMC platform common part.
+ 	if (!rpm_state_ok) {
+ 		int ret = pm_runtime_resume(ufs_dev);
 
-- Project DTS:
-    Runtime filled in by bootloader according to the board
-    hardware configuration.
+		if (ret < 0 && ret != EACCES) {
+			pm_runtime_put(ufs_dev);
+			return ret;
+		}
+	}
 
-- Driver level:
-    Hardware-specific register settings, encapsulated as
-    compatible data for better DTS compatibility.
+> 
+> 	return 0;
+> }
+> 
 
-Signed-off-by: Po-Kai Chi <pk.chi@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt6779-evb.dts |    9 +++++++++
- arch/arm64/boot/dts/mediatek/mt6779.dtsi    |   18 ++++++++++++++++++
- 2 files changed, 27 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6779-evb.dts b/arch/arm64/boot/dts/mediatek/mt6779-evb.dts
-index 164f5cb..5d2dde7 100644
---- a/arch/arm64/boot/dts/mediatek/mt6779-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt6779-evb.dts
-@@ -29,3 +29,12 @@
- &uart0 {
- 	status = "okay";
- };
-+
-+&dramc {
-+	mediatek,dram-type = <0>;
-+	mediatek,channel-cnt = <2>;
-+	mediatek,rank-cnt = <2>;
-+	mediatek,rank-size = <0x0 0x0>;
-+	mediatek,mr-cnt = <1>;
-+	mediatek,mr = <0x5 0xff>;
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-index 9bdf514..28492a0 100644
---- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
-@@ -206,6 +206,24 @@
- 			clock-names = "devapc-infra-clock";
- 		};
- 
-+		dramc: dramc@10230000 {
-+			compatible = "mediatek,mt6779-dramc";
-+			reg = <0 0x10230000 0 0x2000>, /* DRAMC AO CHA */
-+				<0 0x10240000 0 0x2000>, /* DRAMC AO CHB */
-+				<0 0x10234000 0 0x1000>, /* DRAMC NAO CHA */
-+				<0 0x10244000 0 0x1000>, /* DRAMC NAO CHB */
-+				<0 0x10238000 0 0x2000>, /* DDRPHY AO CHA */
-+				<0 0x10248000 0 0x2000>; /* DDRPHY AO CHB */
-+			mediatek,support-channel-cnt = <2>;
-+			mediatek,freq-cnt = <6>;
-+			mediatek,freq-step = <3718 3733>,
-+				<3094 3200>,
-+				<2392 2400>,
-+				<1534 1600>,
-+				<1196 1200>,
-+				<754 800>;
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt6779-uart",
- 				     "mediatek,mt6577-uart";
--- 
-1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
