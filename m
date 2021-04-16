@@ -2,89 +2,89 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8769DC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:24:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29BC3C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:31:13 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5159610FC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:24:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5159610FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8EAFD610FC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:31:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EAFD610FC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aWKCjmqhJx/i/ePI36SYvfbZLAkphmV0clvGLzAquis=; b=pkoPUV4++oH8KWmWIy11i9xq6
-	R6CuVagTXTXuOuMh+1cs9lJX+zjJuJhypKcwJKtYbsyFMx+bBXZ5ms2aGDpeFkhmiu9crQIuhXyQq
-	+r3K8YAbFOMFfXrO9rZtJ+h56EtMf2+PVuF8pHJpfjjaFO5QRlAa4L3sMJn10qYFstOHN/fLL8XID
-	/wIKCeOXFmvolaJd1GrnjWypQU/xojl1RLQTghhf4Ag20ky24nFR8u9flD48nto2WoIQhwYc7IFXo
-	/wTnRBkvYpURXTK4wmktbtf6rmUZx4xnopKY4ULN3HmNOVfnShcXkFOjJVxQzXcyiMIKDnUkrZR5c
-	vgtQBr7Yw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=14w3I4zF9FQhaYIrvvkiuoE3YkdRZdq7JQ8jZ2BQDcI=; b=BjG2vdaGo+FypWqsRPsFDYWUQ5
+	FMHcyLNA5tQzVMEHBICED7TWv7Q/NArUExvVqXYkqkzAzqnXagjWB/PMrcGBZ5blm20lFcc33Ekfx
+	seWpt6qSbLN78gyZB7iiSmM0Qprt80pS1fmlnvfWKKGGMHZ0ZbTZkyr5SiJ24xggqjBrLJ6KH8683
+	GEYk34z0wZWECEHd5r1mLIVMSJug457wAfjwQSY0b9kgDKebbUdm2QbZSWXp3KLSWdurdNUmP+Qhd
+	2s2zFtk6p/iowniUZzcY3N6ukVU0bvypZ6k07lItIz5PEXV9NUvoyCrK9lGO+/RpZ39voK9XklZp4
+	cYkNUTbg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXPOX-002O6T-Hm; Fri, 16 Apr 2021 14:24:29 +0000
+	id 1lXPUq-002Pea-M5; Fri, 16 Apr 2021 14:31:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXPNz-002Nsi-Jv; Fri, 16 Apr 2021 14:23:55 +0000
+ id 1lXPUn-002Pdn-CV; Fri, 16 Apr 2021 14:30:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:Message-ID:
- Date:References:In-Reply-To:Subject:Cc:To:From:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=O/J5mGCQPFSimO8CyoBTFlMKq1oaHWOqDrXmwcobRtw=; b=fyO23ilSAkVJE7IxBKsRIOx/Lp
- SgQg7LnDAvws0rf1n45Sg7XI44MfUPRIbJt2xWBQhzw2YyD6pk4CUdpnQSFswxD6CSEOxLvetizNd
- +sDDB4a5b9sSqq60zg5jjrrI1XRGZCQT/XuOqV4CQb4IGPtbN4ktno8UuHBRClSUVJTmrDoS+mgDR
- M2gR6dedptkPrdDN//YwjsSedVUkb9E1IGLYzgeqlnvvkymzNab1m60/nGCI/QXupFbyVVmqB7wgM
- 5pj2VkKvWLG0ReseKG9gYBhu8vZoGp7lxjT3j5IjmS71uvYBx6zE4vOiElufqiFy7a7jGhirlqTdF
- 3bF/7c6w==;
-Received: from mga09.intel.com ([134.134.136.24])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=Z5IpLt7xrf8EDpdf3JxzQcR6go21eD5GCN6JRoT7qUM=; b=qIMHX/Zf5YHK98jPzr1SaVLMoF
+ 1qe3K+QdOLnDEY8GJLXSouWklN6xEmGE9YecigJ0n7z1ZHRP3mn/Al5v8wiDG34KritsXyuQsBfMo
+ VvHmS1nFQkIXqhTQU1Ic8OqK2dkhYFNoBkbqrShf1Zr02CY2zHmQW3TWMCUtf7S22G7hRQq6H42Jl
+ xZJyLwFqv1VH6ltQSreL1czP9LEvph73vi3LjtIInDadVSDE5LFDh8JAwU5tsewgYOsthpH2Vvgbr
+ AvCuWuoW+TntCEHdzt6rVHJh1jTYY7rHrgULlwulQOP0hC8v351lERnjVMm/2Hk6xRGLcgURTqhI7
+ oilBn+Ow==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXPNt-009RGm-3E; Fri, 16 Apr 2021 14:23:53 +0000
-IronPort-SDR: xzHgAL77cW+BjXj/M/KFJod5muH3wNHXGixM1LTlGcMv4WSdyPqQboCNozvuVY64ibYmdlmXtG
- v1lAvcYbwAiA==
-X-IronPort-AV: E=McAfee;i="6200,9189,9956"; a="195158283"
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="195158283"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2021 07:23:46 -0700
-IronPort-SDR: c+FI3oydeo1UnYvVMy7D0CuxTiDIzFiG/ULHSqqKGuFXsu/k0ae4CcJ8Zv7aU0bzsx9FKqgiGB
- TrXX879pyXsQ==
-X-IronPort-AV: E=Sophos;i="5.82,226,1613462400"; d="scan'208";a="425615875"
-Received: from lelicken-mobl2.ger.corp.intel.com (HELO localhost)
- ([10.249.37.239])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2021 07:23:40 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Wolfram Sang <wsa@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Cc: linux-i2c@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mark Brown <broonie@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Arnd Bergmann <arnd@arndb.de>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v19 6/6] drm/i915/selftests: Rename functions names
-In-Reply-To: <20210414172916.2689361-7-hsinyi@chromium.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20210414172916.2689361-1-hsinyi@chromium.org>
- <20210414172916.2689361-7-hsinyi@chromium.org>
-Date: Fri, 16 Apr 2021 17:23:37 +0300
-Message-ID: <87y2dicnpy.fsf@intel.com>
+ id 1lXPUh-009Rcs-PF; Fri, 16 Apr 2021 14:30:55 +0000
+X-UUID: 9be8a37941ca49a2bee811bf42f8e4e4-20210416
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Z5IpLt7xrf8EDpdf3JxzQcR6go21eD5GCN6JRoT7qUM=; 
+ b=EF4W2vIf28WtihZi+ffxZDPw7b0ZsXCnPYXrbIZUk2KJ5HivUG1xAx6IGQoRqy8CnHCWwacVbUhRez4M7rdB987wGQUL/IHjY/CIj0q0e2xe4KdM/W1kGX9vS9DPmTCBU3Gxy2VtP3+rT6FSP85nmp+kM9D8AcnU87sgVDwPqZo=;
+X-UUID: 9be8a37941ca49a2bee811bf42f8e4e4-20210416
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1812654431; Fri, 16 Apr 2021 07:30:47 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 16 Apr 2021 07:30:46 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 16 Apr 2021 22:30:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 16 Apr 2021 22:30:43 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, chun-jie.chen
+ <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
+Subject: [PATCH v2] soc: mediatek: Fix the clock prepared issue
+Date: Fri, 16 Apr 2021 22:30:37 +0800
+Message-ID: <20210416143037.27318-1-chun-jie.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 75163C9860890CFDF70F36ED7EB893C35810B970D4445E5B4FA92C9E55AA44592000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_072349_196437_B0F51DB1 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20210416_073051_860707_8CD5996F 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,78 +101,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 15 Apr 2021, Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> pm_resume and pm_suspend might be conflict with the ones defined in
-> include/linux/suspend.h. Rename pm_resume{suspend} to
-> i915_pm_resume{suspend} since they are only used here.
+From: "chun-jie.chen" <chun-jie.chen@mediatek.com>
 
-I agree with the rationale here.
+In this new power domain driver, when adding one power domain
+it will prepare the depenedent clocks at the same.
+So we only do clk_bulk_enable/disable control during power ON/OFF.
+When system suspend, the pm runtime framework will forcely power off
+power domains. However, the dependent clocks are disabled but kept
+preapred.
 
-Do you need this to be part of your series, or shall we just pick this
-up for i915? (We might consider renaming to something else or prefix the
-functions with _ though, as we also have existing i915_pm_suspend and
-i915_pm_resume elsewhere.)
+In MediaTek clock drivers, PLL would be turned ON when we do
+clk_bulk_prepare control.
 
-BR,
-Jani.
+Clock hierarchy:
+PLL -->
+       DIV_CK -->
+                 CLK_MUX
+                 (may be dependent clocks)
+                         -->
+                             SUBSYS_CG
+                             (may be dependent clocks)
 
->
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Reported-by: kernel test robot <lkp@intel.com>
-> ---
->  drivers/gpu/drm/i915/selftests/i915_gem.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/selftests/i915_gem.c b/drivers/gpu/drm/i915/selftests/i915_gem.c
-> index dc394fb7ccfa..525afda9d31f 100644
-> --- a/drivers/gpu/drm/i915/selftests/i915_gem.c
-> +++ b/drivers/gpu/drm/i915/selftests/i915_gem.c
-> @@ -94,7 +94,7 @@ static int pm_prepare(struct drm_i915_private *i915)
->  	return 0;
->  }
->  
-> -static void pm_suspend(struct drm_i915_private *i915)
-> +static void i915_pm_suspend(struct drm_i915_private *i915)
->  {
->  	intel_wakeref_t wakeref;
->  
-> @@ -116,7 +116,7 @@ static void pm_hibernate(struct drm_i915_private *i915)
->  	}
->  }
->  
-> -static void pm_resume(struct drm_i915_private *i915)
-> +static void i915_pm_resume(struct drm_i915_private *i915)
->  {
->  	intel_wakeref_t wakeref;
->  
-> @@ -152,12 +152,12 @@ static int igt_gem_suspend(void *arg)
->  	if (err)
->  		goto out;
->  
-> -	pm_suspend(i915);
-> +	i915_pm_suspend(i915);
->  
->  	/* Here be dragons! Note that with S3RST any S3 may become S4! */
->  	simulate_hibernate(i915);
->  
-> -	pm_resume(i915);
-> +	i915_pm_resume(i915);
->  
->  	err = switch_to_context(ctx);
->  out:
-> @@ -192,7 +192,7 @@ static int igt_gem_hibernate(void *arg)
->  	/* Here be dragons! */
->  	simulate_hibernate(i915);
->  
-> -	pm_resume(i915);
-> +	i915_pm_resume(i915);
->  
->  	err = switch_to_context(ctx);
->  out:
+It will lead some unexpected clock states during system suspend.
+This patch will fix by doing prepare_enable/disable_unprepare on
+dependent clocks at the same time while we are going to power on/off
+any power domain.
 
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
+---
+The capacity of regulator supply in power domain is provided by
+the patch series [1], so resend [2] as a standalone patch.
+
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=410535
+[2] https://patchwork.kernel.org/project/linux-mediatek/patch/1609757093-30618-3-git-send-email-weiyi.lu@mediatek.com/
+---
+ drivers/soc/mediatek/mtk-pm-domains.c | 31 +++++++--------------------
+ 1 file changed, 8 insertions(+), 23 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index b7f697666bdd..bb466363f14f 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -211,7 +211,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = clk_bulk_enable(pd->num_clks, pd->clks);
++	ret = clk_bulk_prepare_enable(pd->num_clks, pd->clks);
+ 	if (ret)
+ 		goto err_reg;
+ 
+@@ -229,7 +229,7 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_ISO_BIT);
+ 	regmap_set_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+ 
+-	ret = clk_bulk_enable(pd->num_subsys_clks, pd->subsys_clks);
++	ret = clk_bulk_prepare_enable(pd->num_subsys_clks, pd->subsys_clks);
+ 	if (ret)
+ 		goto err_pwr_ack;
+ 
+@@ -246,9 +246,9 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
+ err_disable_sram:
+ 	scpsys_sram_disable(pd);
+ err_disable_subsys_clks:
+-	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
++	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+ err_pwr_ack:
+-	clk_bulk_disable(pd->num_clks, pd->clks);
++	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
+ err_reg:
+ 	scpsys_regulator_disable(pd->supply);
+ 	return ret;
+@@ -269,7 +269,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	clk_bulk_disable(pd->num_subsys_clks, pd->subsys_clks);
++	clk_bulk_disable_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+ 
+ 	/* subsys power off */
+ 	regmap_clear_bits(scpsys->base, pd->data->ctl_offs, PWR_RST_B_BIT);
+@@ -284,7 +284,7 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	clk_bulk_disable(pd->num_clks, pd->clks);
++	clk_bulk_disable_unprepare(pd->num_clks, pd->clks);
+ 
+ 	scpsys_regulator_disable(pd->supply);
+ 
+@@ -405,14 +405,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		pd->subsys_clks[i].clk = clk;
+ 	}
+ 
+-	ret = clk_bulk_prepare(pd->num_clks, pd->clks);
+-	if (ret)
+-		goto err_put_subsys_clocks;
+-
+-	ret = clk_bulk_prepare(pd->num_subsys_clks, pd->subsys_clks);
+-	if (ret)
+-		goto err_unprepare_clocks;
+-
+ 	/*
+ 	 * Initially turn on all domains to make the domains usable
+ 	 * with !CONFIG_PM and to get the hardware in sync with the
+@@ -427,7 +419,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		ret = scpsys_power_on(&pd->genpd);
+ 		if (ret < 0) {
+ 			dev_err(scpsys->dev, "%pOF: failed to power on domain: %d\n", node, ret);
+-			goto err_unprepare_clocks;
++			goto err_put_subsys_clocks;
+ 		}
+ 	}
+ 
+@@ -435,7 +427,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 		ret = -EINVAL;
+ 		dev_err(scpsys->dev,
+ 			"power domain with id %d already exists, check your device-tree\n", id);
+-		goto err_unprepare_subsys_clocks;
++		goto err_put_subsys_clocks;
+ 	}
+ 
+ 	pd->genpd.name = node->name;
+@@ -451,10 +443,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+ 
+ 	return scpsys->pd_data.domains[id];
+ 
+-err_unprepare_subsys_clocks:
+-	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+-err_unprepare_clocks:
+-	clk_bulk_unprepare(pd->num_clks, pd->clks);
+ err_put_subsys_clocks:
+ 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+ err_put_clocks:
+@@ -532,10 +520,7 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 			"failed to remove domain '%s' : %d - state may be inconsistent\n",
+ 			pd->genpd.name, ret);
+ 
+-	clk_bulk_unprepare(pd->num_clks, pd->clks);
+ 	clk_bulk_put(pd->num_clks, pd->clks);
+-
+-	clk_bulk_unprepare(pd->num_subsys_clks, pd->subsys_clks);
+ 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+ }
+ 
 -- 
-Jani Nikula, Intel Open Source Graphics Center
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
