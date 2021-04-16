@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB156C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:40:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64FEDC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:40:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A74D260FE5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:40:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A74D260FE5
+	by mail.kernel.org (Postfix) with ESMTPS id 1BD256113D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 14:40:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BD256113D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,43 +23,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M2RxJpistoeOeS3OPT5E4QSK/KuKJZBg3mEtJfJ0ipQ=; b=VMfa+8dU3Fvw2RP82Sri5S9Nc
-	7dRaZ9v/+QO4WK/368J03iCUju/l/B033bjOnOfOI/cm3Uy4snBUSG0D+0EOAsDYNFZ6syB+QdkN6
-	AeveWtqEypQa6DXuDP3BqZskdTyvnwaEyfB5TThWoeh1JOKvslzc3Ffqd1ayQE0QaJsUXqUYvEHKJ
-	AUY5qpiAzomtVpnv/M1b/gIW8+AMZAAFyaG0tCXG+sNmGRdn64RhviB47ZMaulDhtUZGtk/iARNj4
-	5SLXTt4bC7bWdOWVmKOInr/ij6WDWyyCKGy9lmlU+kduY0wV9YV52ojuubPYtPISK/bk0TU9dIcRf
-	4YZySB5Qw==;
+	 bh=bQA/q/D2I2CXyfjWi8xzRW287bZU3sIYVCHShfXAITM=; b=ex79fR3C64hGvrS+cubDBeNdp
+	dJmRGSQpWji6Bg5Mf92kQuRCD1TfwMTuSQoetDr30ZJbXd0Y1lUFGwUEmldef68nvPi96bpE3VO0T
+	XfOnninGXdD74U1KWWgZNnkNSRav+RtpOHWrPxpUKCvp1+Si5QpuJEoVHeKVcUvhBweIv4ZFtspE7
+	GRpWv8k1iL2mxZtvSOPFTimBoczh+P+RxTPmjWZkWoU5SDnXBnKvXw7nuoMqBdqUgMjMt6Xkkzhem
+	ENAuNHmHL9rFGGliOvDU+6CcGEWmezdWKRCd6ou7BRyALXt7CZx4N+elTJvjLtYFPHqf7hD4nMaAQ
+	Xww8oQM7A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXPdh-002RLI-6Z; Fri, 16 Apr 2021 14:40:09 +0000
+	id 1lXPdw-002RTn-8A; Fri, 16 Apr 2021 14:40:24 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXPdD-002R9q-2V; Fri, 16 Apr 2021 14:39:39 +0000
+ id 1lXPdG-002RBk-9p; Fri, 16 Apr 2021 14:39:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:List-Id:
  From:Sender:Reply-To:Content-Type:Content-ID:Content-Description;
- bh=h4yT09gtOPwJmvCzcn2SyBTjNFwqbhO6mt/UfjGdg/c=; b=JL+IZ2eTSgySy0dRamQ42KfY5j
- PBz3N5wOXnHy7Q0J9+ORmzjwr+UtFXK0uPgcQIOAvO6EybedwPQY6CMZhzbYjWhePtWbCA8CEo2+o
- yEzvk8T5OlX2YItDIeILHujpKi2Yns8D0CciQ5BhmPbI5texeXNfmVZYGERh0MUlRw5II/a3l5iYo
- JJRPOsG0AZp8d2Czoq4Ghas5qrltKWMZD62ai4On56t2qsPvtY75K04xXN+MkQeYYpDxOcc6lVQki
- tP5lpK4h62C6VB6m9WtEO7JS3uVgFaxqq3A1HHQnvzILRhmY84xlkRcVfKto2vtuCttEIB9yVO64Z
- 4IIE+Utg==;
+ bh=mwmo9RTaSPmXS8kJi+WCULDJlnKsElr57ksw3WFcngE=; b=HBH5cATlNayPZaFr87aLQQWTXy
+ /jRK1bzxC/Jv+eBdiS9HOjnQTLWxNQYfB4DsM/gfyiZXdBnh4pa5PNHy5rq7SK8MCy9rCN8bwLWaR
+ 7AVurr/G2ppX+nVOggMGFo7TsNKgRz590xic/24I1xNyJkMS4jEQbkNAe/Vjb8L15zEwL8xg6Nlbg
+ QOa+ywa2mLlfl2YJ7AfLQ8DkKI9BqTQMFWB/mMn2uob/eK1MUKp4hIB1t/E+/ThE2xxDx0pMoPy1+
+ TgEFKnzcvKIDxEriSuxfGntasw2USZqfE6mUJo8CF19dxKVzaXQrQf+jW3ANa+0VXfZN2NQWPvLyt
+ YSM3qRWg==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXPdA-009Sbq-Eg; Fri, 16 Apr 2021 14:39:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 21F6861166;
- Fri, 16 Apr 2021 14:39:33 +0000 (UTC)
+ id 1lXPdD-009Scb-0w; Fri, 16 Apr 2021 14:39:41 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9F938613B4;
+ Fri, 16 Apr 2021 14:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618583976;
- bh=58vezcahFy6vxtKIO3Bsb/7Nc5SiDgR7ddh2WchddHQ=;
+ s=k20201202; t=1618583978;
+ bh=iR54IzMf1S6kuxyIla+yy1tc43W+FXsmvIuG/2BQeqI=;
  h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=r96BDK+csmTKWg7xLLHTvz8NkDa2MqhsFwkYxT6JycAUoNqzSkavXd4P21Dvv0y1Q
- 7N9IS27BqGw2P/r+M7kPsCAHDvkycmkART2gkvwJNQhbfiz7zB0CqeONqj6QEjXf9+
- xeawciVo6Gx17O/w4VKue0+mlSGwyHodMW1tFDmjkuS8w/eUVp9aMDZOgcYHsn1vrr
- k/hIisWV6YnqDn8aiLro2xdM/9xp+Dd/PSKbv2sGDVecM+BlgTwWxm//Pze9EuWdgy
- ZNhcfHLAIuHjQ5ky6vRJNy9yIvJT77jytrRSrMjXoSGmlLuqjatsH1Akb4TztKQEW4
- n1W8TSyAX4yww==
+ b=cwQBpC5q+qTkUAqpGv3l8e+mkhSp4zH53rc/2YUp+yJEVYyKZ0Hrba2IxG3MYG5Kn
+ +apVvMR/cv/jJgSZz8zbOhlRLk+s/ZffuyPjYB+PK1TmN15x1YurjgSIdDlWggWS9+
+ hf+mMipckFclqk9qukrS76JV9JSQAblGLcSON/27Tu3nAr6haJHr4jT+HeKUhi0CVO
+ bbf/FGEiwCFXe8wUfkXFOilG0aaozsMj+Z9l/uf//vD5exQlGKkK7j3767cyjfYWi/
+ dDGxr8rB59rHPww3r1Gat0VpAVCl/h7BjI/+VxiCDZjKZGgJUWHY1UFY/sWvznImlG
+ cigyZCJGLojmw==
 From: matthias.bgg@kernel.org
 List-Id: <soc.lore.kernel.org>
 To: soc@kernel.org,
@@ -69,16 +69,16 @@ Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] arm64: dts: mt8183-pumpkin: fix dtbs_check warning
-Date: Fri, 16 Apr 2021 16:39:22 +0200
-Message-Id: <20210416143923.23406-2-matthias.bgg@kernel.org>
+Subject: [PATCH 2/2] arm64: dts: mt8183: fix dtbs_check warning
+Date: Fri, 16 Apr 2021 16:39:23 +0200
+Message-Id: <20210416143923.23406-3-matthias.bgg@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210416143923.23406-1-matthias.bgg@kernel.org>
 References: <20210416143923.23406-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_073936_530080_E6B94D92 
-X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-CacheID: sfid-20210416_073939_103380_DCE6AF5D 
+X-CRM114-Status: UNSURE (   9.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,35 +101,43 @@ From: Matthias Brugger <matthias.bgg@gmail.com>
 Fix unit names to make dtbs_check happy.
 
 Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Link: https://lore.kernel.org/r/20210414144643.17435-1-matthias.bgg@kernel.org
+Link: https://lore.kernel.org/r/20210414144643.17435-2-matthias.bgg@kernel.org
 Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+
 ---
 
- arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index eb6e595c2975..0aff5eb52e88 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -32,7 +32,7 @@ reserved-memory {
- 		#size-cells = <2>;
- 		ranges;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 0ff7b67a6806..c5e822b6b77a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -681,13 +681,13 @@ cpu_thermal: cpu_thermal {
+ 				sustainable-power = <5000>;
  
--		scp_mem_reserved: scp_mem_region {
-+		scp_mem_reserved: scp_mem_region@50000000 {
- 			compatible = "shared-dma-pool";
- 			reg = <0 0x50000000 0 0x2900000>;
- 			no-map;
-@@ -55,7 +55,7 @@ led-green {
- 		};
- 	};
+ 				trips {
+-					threshold: trip-point@0 {
++					threshold: trip-point0 {
+ 						temperature = <68000>;
+ 						hysteresis = <2000>;
+ 						type = "passive";
+ 					};
  
--	ntc@0 {
-+	ntc {
- 		compatible = "murata,ncp03wf104";
- 		pullup-uv = <1800000>;
- 		pullup-ohm = <390000>;
+-					target: trip-point@1 {
++					target: trip-point1 {
+ 						temperature = <80000>;
+ 						hysteresis = <2000>;
+ 						type = "passive";
+@@ -1103,7 +1103,7 @@ u2port0: usb-phy@0 {
+ 				status = "okay";
+ 			};
+ 
+-			u3port0: usb-phy@0700 {
++			u3port0: usb-phy@700 {
+ 				reg = <0x0700 0x900>;
+ 				clocks = <&clk26m>;
+ 				clock-names = "ref";
 -- 
 2.30.2
 
