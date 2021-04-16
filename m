@@ -2,155 +2,77 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B31CC433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:20:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0512C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:25:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 704D561026
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:20:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 704D561026
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8BDB4611AF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 15:25:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BDB4611AF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=8bytes.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qMxFNozRI+gjSmHCS3Db56+tXa4s6q3c+ywVsrk4QYY=; b=ariRuD9eMaQCQUEXao4lEaSQs
-	j5a+8guBi/cnOsreImoTf1q+yj2hEZ7DtEJ1IWYYEPT9OVYcHIC0b6ZYIa7lS8OyDu210qRJQWFTV
-	c9GguO01nrc14IRIvw8vP8hx9R5rFKnLry2qAFr/3Wj4Jhr6L0m5+P0ElZnYXC1hfYneuFcvuOhop
-	VjuaFN3HXNELLY085WDsdx0GeWYA4RxIpvWzrDM41px7YFxCBulQsrvweTZ5JUFwdHJjoH7WRiswC
-	qyMIAByA/KQMwfqdVk5Rsy/f/oiVlPBXBaLFM2bKsPFr6jXnR20CwFsvB1HS2vb5TI7aqnUJZY9aB
-	hZOqKVGyg==;
+	 bh=Ge6TKfA0B/iP7zxLUKOU3W0h6YeNCc7sHjlSkacDgwE=; b=amFRV96IAV43j6RQyco9aIFP7
+	SxskcFrL+/H/ZEp+eqBtr+al5w+ChhCQsyT1dd5/mxMzXC92MG9CUKOUEV/nqMjz+iRnv+zVYqzkE
+	xqr5/QYD2abMQo1QBT1v/IPVefHIOhWGbS3RgTku3OQp+Nmlq9OWbnp16nZREQwekrfC56Cs2U9zp
+	geZQv7+vlwYaAAtISI4pTcSGOuq5PTGb+XLm/J0bYYjYQTcaXvzRJfaRfN2tjQUI/dapY7G5M5gWP
+	E0yug4r3fY8x2V6cxFwRPQ5dkWvV5HLYHsP+N/eOrQr8viIFGzp9XdNKu7V4MC0Y6DUHzp/9FlcoD
+	LojU5u3Uw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXQGJ-002azw-Df; Fri, 16 Apr 2021 15:20:03 +0000
+	id 1lXQLG-002cBg-A4; Fri, 16 Apr 2021 15:25:10 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXQGD-002ayC-BV; Fri, 16 Apr 2021 15:19:57 +0000
+ id 1lXQL3-002c7V-Hi; Fri, 16 Apr 2021 15:24:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=QcUB8OcY0OFI2GZ9rPJTFfyzVo+EtDxHmjFIfF342jg=; b=vSjEIJGOvdTviFrrDRmS7g28wK
- IrazJxqQeukR2SLDd2PL8KjsfTg+g82BHyTmVR0Mn33b+T9PBdKtCGkMEaGBei8GGh4pFVf6Vf3t5
- BkWTUmW4j7GnT6q9LeP4P3dpDV4eaOAYvZ9/NF0JeQG4qDiRdM2XPguarRpbjsXKnzcPJ7+4jK0Bn
- HJ24J6Xep33OZlWC0I0sloQ4ZMLKAUYCyyMKz6cfrBKEZedSP6aNjpSnQ0OVeUKzIj3ku98owzlph
- 6k4U1SuefKcxVOTi04nVOGzq0fTRzFNDC22HsaIEaP2+4lrvgNCUAVcomKQ3U/Ipoj3aR65FnmMwA
- fbRRoK2g==;
-Received: from mail.kernel.org ([198.145.29.99])
+ bh=B4eEZsz9/yINYzZvAZRhVtj3/DAaD2tqAzlZ9AO0pTY=; b=fL/beRcdFL+0bZo62aSPG8ZzOH
+ U7GApzzClVdxw6YkcAYNt58eLTG62XuLcfQh/lMEtA4Ta4d/x0P0kHp9078BO7GEY4GgORO9nIT5t
+ Vsrv32x4uy8pv9reBHeo/2a3KGXfhBq5Q18gqa7vSeH/MjGm/lBtFcY4Tv3lKpK9o3yMEEDqkvxxw
+ 6hdToZunv6xydBQIlyBkr++E8x06N7UhkMAWIZRFcfnKKjFRqq3OUdzeiqhO3uzMTvAfdDc6bP1ay
+ msbuQ+KDlRmLH6/cqnfSxOSWg6AHTuQi7utp4VSKrMw7KBlG2pkHdiMY43FQSRpO41RSoRvq1B/Ic
+ M0Lwv+Dw==;
+Received: from 8bytes.org ([81.169.241.247] helo=theia.8bytes.org)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXQGA-009UwK-DP; Fri, 16 Apr 2021 15:19:56 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 34CFB613C1;
- Fri, 16 Apr 2021 15:19:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618586393;
- bh=pSsgz6SFE9awjWhpCd9doKdNFULnoUddJE0eDHwlPEw=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=UxAqG9OtRb+QQxIjEDiDCQjDyuQCAA2d4ZFOE0N0q01hfecceetNP30Wn2cpoOVE9
- WzIl3RlQROaX8eslzhr1HB02OC63p5qRAgAuwInnYgmiv5fbcBC9TWTmYo232GGxlq
- zl187zQg298hyuS7vBp9IbYu6DRnXQnCKamPIPA4bmh5K0mikLKCBT6to2dCP1x8ty
- zZx9ADxRCSv4iMzbDba1VKhTd/WRazgU+F/ual3PjLXwH8R3NcS540TNXA2d3csxLQ
- 52sEoFTMSZBaj5Io5xR7NND2H/FGQQX/xOraxhVAgnOADPCX7A2gJRiZJ6UQi8EIca
- qbHUW/1etaTZw==
-Received: by mail-qv1-f47.google.com with SMTP id x27so13617127qvd.2;
- Fri, 16 Apr 2021 08:19:53 -0700 (PDT)
-X-Gm-Message-State: AOAM530fxY5n1ro1NtIY5go0SVan95b91NChDbXG4PV4fiCUHElcs2Ia
- 6NQ8PphUKE3RFkU9Bi5FNU3P0swAF20kUr+5nQ==
-X-Google-Smtp-Source: ABdhPJwFV5j0PpR0OOvbKTHrtQGM0/UHlnjLPz7IjIHFauq3IAwfsuj1+lSbzphYfDXiggRtdMYLzMTYnQvOIyCHQj8=
-X-Received: by 2002:ad4:5a07:: with SMTP id ei7mr8951384qvb.50.1618586391992; 
- Fri, 16 Apr 2021 08:19:51 -0700 (PDT)
+ id 1lXQKz-009VEO-9b; Fri, 16 Apr 2021 15:24:56 +0000
+Received: by theia.8bytes.org (Postfix, from userid 1000)
+ id D3E01223; Fri, 16 Apr 2021 17:24:51 +0200 (CEST)
+Date: Fri, 16 Apr 2021 17:24:50 +0200
+From: Joerg Roedel <joro@8bytes.org>
+To: Zhen Lei <thunder.leizhen@huawei.com>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ iommu <iommu@lists.linux-foundation.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>
+Subject: Re: [PATCH 0/8] iommu: fix a couple of spelling mistakes detected by
+ codespell tool
+Message-ID: <YHmsQtm4o5f7fAru@8bytes.org>
+References: <20210326062412.1262-1-thunder.leizhen@huawei.com>
 MIME-Version: 1.0
-References: <20210412174718.17382-1-michael@walle.cc>
- <20210412174718.17382-3-michael@walle.cc>
- <730d603b12e590c56770309b4df2bd668f7afbe3.camel@kernel.crashing.org>
- <8157eba9317609294da80472622deb28@walle.cc>
-In-Reply-To: <8157eba9317609294da80472622deb28@walle.cc>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 16 Apr 2021 10:19:40 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
-Message-ID: <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
-Subject: Re: [PATCH net-next v4 2/2] of: net: fix of_get_mac_addr_nvmem() for
- non-platform devices
-To: Michael Walle <michael@walle.cc>
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>, 
- QCA ath9k Development <ath9k-devel@qca.qualcomm.com>, 
- Microchip Linux Driver Support <UNGLinuxDriver@microchip.com>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, 
- netdev <netdev@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:MEDIA DRIVERS FOR RENESAS - FCP"
- <linux-renesas-soc@vger.kernel.org>, 
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>, 
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- linux-oxnas@groups.io, linux-omap <linux-omap@vger.kernel.org>, 
- linux-wireless <linux-wireless@vger.kernel.org>, devicetree@vger.kernel.org, 
- linux-staging@lists.linux.dev, Andrew Lunn <andrew@lunn.ch>, 
- Gregory Clement <gregory.clement@bootlin.com>, 
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Russell King <linux@armlinux.org.uk>, 
- Michael Ellerman <mpe@ellerman.id.au>, Paul Mackerras <paulus@samba.org>, 
- Andreas Larsson <andreas@gaisler.com>, "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Maxime Ripard <mripard@kernel.org>,
- Chen-Yu Tsai <wens@csie.org>, 
- Jernej Skrabec <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, 
- Chris Snook <chris.snook@gmail.com>,
- =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
- "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, 
- Florian Fainelli <f.fainelli@gmail.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Sunil Goutham <sgoutham@marvell.com>, 
- Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur <madalin.bucur@nxp.com>, 
- Pantelis Antoniou <pantelis.antoniou@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, 
- Li Yang <leoyang.li@nxp.com>, Yisen Zhuang <yisen.zhuang@huawei.com>, 
- Salil Mehta <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>, 
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Vadym Kochan <vkochan@marvell.com>, 
- Taras Chornyi <tchornyi@marvell.com>, Mirko Lindner <mlindner@marvell.com>, 
- Stephen Hemminger <stephen@networkplumber.org>, Felix Fietkau <nbd@nbd.name>, 
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bryan Whitehead <bryan.whitehead@microchip.com>,
- Vladimir Zapolskiy <vz@mleia.com>, 
- Sergei Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>, 
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@st.com>, 
- Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, 
- NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman <khilman@baylibre.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Vinod Koul <vkoul@kernel.org>, 
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, 
- Grygorii Strashko <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, 
- Murali Karicheri <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Kalle Valo <kvalo@codeaurora.org>, 
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, 
- Stanislaw Gruszka <stf_xl@wp.pl>, Helmut Schaa <helmut.schaa@googlemail.com>, 
- Heiner Kallweit <hkallweit1@gmail.com>, Frank Rowand <frowand.list@gmail.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>, 
- Vivien Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20210326062412.1262-1-thunder.leizhen@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210416_081954_540722_53271589 
-X-CRM114-Status: GOOD (  31.74  )
+X-CRM114-CacheID: sfid-20210416_082453_505319_3CEFE164 
+X-CRM114-Status: UNSURE (   7.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -167,112 +89,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 16, 2021 at 2:30 AM Michael Walle <michael@walle.cc> wrote:
->
-> Am 2021-04-16 05:24, schrieb Benjamin Herrenschmidt:
-> > On Mon, 2021-04-12 at 19:47 +0200, Michael Walle wrote:
-> >>
-> >>  /**
-> >>   * of_get_phy_mode - Get phy mode for given device_node
-> >> @@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np,
-> >> const char *name, u8 *addr)
-> >>  static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
-> >>  {
-> >>         struct platform_device *pdev = of_find_device_by_node(np);
-> >> +       struct nvmem_cell *cell;
-> >> +       const void *mac;
-> >> +       size_t len;
-> >>         int ret;
-> >>
-> >> -       if (!pdev)
-> >> -               return -ENODEV;
-> >> +       /* Try lookup by device first, there might be a
-> >> nvmem_cell_lookup
-> >> +        * associated with a given device.
-> >> +        */
-> >> +       if (pdev) {
-> >> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
-> >> +               put_device(&pdev->dev);
-> >> +               return ret;
-> >> +       }
-> >> +
-> >
-> > This smells like the wrong band aid :)
-> >
-> > Any struct device can contain an OF node pointer these days.
->
-> But not all nodes might have an associated device, see DSA for example.
+On Fri, Mar 26, 2021 at 02:24:04PM +0800, Zhen Lei wrote:
+> This detection and correction covers the entire driver/iommu directory.
+> 
+> Zhen Lei (8):
+>   iommu/pamu: fix a couple of spelling mistakes
+>   iommu/omap: Fix spelling mistake "alignement" -> "alignment"
+>   iommu/mediatek: Fix spelling mistake "phyiscal" -> "physical"
+>   iommu/sun50i: Fix spelling mistake "consits" -> "consists"
+>   iommu: fix a couple of spelling mistakes
+>   iommu/amd: fix a couple of spelling mistakes
+>   iommu/arm-smmu: Fix spelling mistake "initally" -> "initially"
+>   iommu/vt-d: fix a couple of spelling mistakes
 
-I believe what Ben is saying and what I said earlier is going from dev
--> OF node is right and OF node -> dev is wrong. If you only have an
-OF node, then use an of_* function.
+This patch-set doesn't apply. Please re-send it as a single patch when
+v5.13-rc1 is released.
 
-> And as the name suggests of_get_mac_address() operates on a node. So
-> if a driver calls of_get_mac_address() it should work on the node. What
-> is wrong IMHO, is that the ethernet drivers where the corresponding
-> board
-> has a nvmem_cell_lookup registered is calling of_get_mac_address(node).
-> It should rather call eth_get_mac_address(dev) in the first place.
->
-> One would need to figure out if there is an actual device (with an
-> assiciated of_node), then call eth_get_mac_address(dev) and if there
-> isn't a device call of_get_mac_address(node).
+Thanks,
 
-Yes, I think we're all in agreement.
-
-> But I don't know if that is easy to figure out. Well, one could start
-> with just the device where nvmem_cell_lookup is used. Then we could
-> drop the workaround above.
-
-Start with the ones just passing dev.of_node directly:
-
-$ git grep 'of_get_mac_address(.*of_node)'
-drivers/net/ethernet/aeroflex/greth.c:          addr =
-of_get_mac_address(ofdev->dev.of_node);
-drivers/net/ethernet/altera/altera_tse_main.c:  macaddr =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/arc/emac_main.c:   mac_addr =
-of_get_mac_address(dev->of_node);
-drivers/net/ethernet/broadcom/bgmac-bcma.c:             mac =
-of_get_mac_address(bgmac->dev->of_node);
-drivers/net/ethernet/cavium/octeon/octeon_mgmt.c:       mac =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/ethoc.c:           mac =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/ezchip/nps_enet.c: mac_addr =
-of_get_mac_address(dev->of_node);
-drivers/net/ethernet/freescale/fs_enet/fs_enet-main.c:  mac_addr =
-of_get_mac_address(ofdev->dev.of_node);
-drivers/net/ethernet/marvell/pxa168_eth.c:              mac_addr =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/marvell/sky2.c:    iap =
-of_get_mac_address(hw->pdev->dev.of_node);
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:    mac_addr =
-of_get_mac_address(mac->of_node);
-drivers/net/ethernet/microchip/lan743x_main.c:  mac_addr =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/qualcomm/qca_spi.c:        mac =
-of_get_mac_address(spi->dev.of_node);
-drivers/net/ethernet/qualcomm/qca_uart.c:       mac =
-of_get_mac_address(serdev->dev.of_node);
-drivers/net/ethernet/wiznet/w5100-spi.c:        const void *mac =
-of_get_mac_address(spi->dev.of_node);
-drivers/net/ethernet/xilinx/xilinx_axienet_main.c:      mac_addr =
-of_get_mac_address(pdev->dev.of_node);
-drivers/net/ethernet/xilinx/xilinx_emaclite.c:  mac_address =
-of_get_mac_address(ofdev->dev.of_node);
-drivers/net/wireless/ralink/rt2x00/rt2x00dev.c: mac_addr =
-of_get_mac_address(rt2x00dev->dev->of_node);
-drivers/staging/octeon/ethernet.c:              mac =
-of_get_mac_address(priv->of_node);
-drivers/staging/wfx/main.c:             macaddr =
-of_get_mac_address(wdev->dev->of_node);
-net/ethernet/eth.c:             addr = of_get_mac_address(dev->of_node);
-
-Then this will find most of the rest:
-git grep -W 'of_get_mac_address([a-z]*)'| grep -E '(node|np)'
-
-Rob
+	Joerg
 
 _______________________________________________
 Linux-mediatek mailing list
