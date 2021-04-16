@@ -2,122 +2,99 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96FF3C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A642C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:47:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C62EA611AC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:39:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C62EA611AC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kernel.crashing.org
+	by mail.kernel.org (Postfix) with ESMTPS id B16EF61166
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:47:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B16EF61166
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:Cc:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AriCtymns/AOoWROFNgcWtdlCdVYQOd+YqQkMy7Ik3w=; b=p4/SJ4kjUc2fqUdQ13Kj7eXYz
-	+MyBERi1XrCAO+xuVKZaXphCrE/mEouyDEDCIBkRegbfvmpnK8sEljf9w7B5y+glDUhAQ4KWUwtlL
-	/CDz76MpjZLSg8T0atwerpEdPX1JcSKgPsUz7IZ690iFsYPHeuTG7Q/SZhVavTrGDHyTec0cdfM77
-	k2VylyzeSjd1/nOPYzGDUvsi8apmlx4ZlQFwknw9Oy4noJBEv5NPqSgNAt0m6Utxfitxhms/YjGp4
-	+xf9j58UlhTpXDkRH4TOXbef3gZlTddX9/HAHrTMgjxaPM229FvBW24p0j0DV4ZNf3RSZYYkEVCQe
-	/A1QLNxKA==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=t7hAHk5bTx10u1vKy1xUWasiyq5BYxFNRsyyS25xq0I=; b=Tq0NsAvI4uJVzlSE4F2/7uU7AD
+	FSNecgUgwC3yR9cmUuwW+qDMkdfgTgnogpjc6XbV5/PzxTmrZA5XVv9phu2B6RWTJ1+nMEet9IlDN
+	+/a4VMxirRtNw/ZI6yc8du0aTn3tNanCunajquhK/57lCjfs5L/8qNG/wl6sJrL7MJMTRrTqFGiW+
+	116RxNN/+/j53fh+1b/FNE1fuQ0oS5uD8uleovJBlAx4h26pbvMpe8BiHuhYIo9fxi0M2UwxHp0el
+	mb9IK5f4Jkfpjj/IjL0l4WtQQra0r8MUY46pf67+CBytPMUa/EunIi8kYaPUEGojw60YIxEx8+Q9o
+	GLoao4DQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXFK2-000ekg-SG; Fri, 16 Apr 2021 03:39:10 +0000
+	id 1lXFSH-000fkD-DC; Fri, 16 Apr 2021 03:47:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXFJv-000ejw-GA; Fri, 16 Apr 2021 03:39:05 +0000
+ id 1lXFS0-000fj0-A0; Fri, 16 Apr 2021 03:47:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=ysXj6ZgEJG3sQeYIiScZhz+IEYBc1d93YMh/1TEvbM0=; b=olymLH7hSW0g1TFGNUKPq/ftWe
- Siiv0rW9K0+qkwJEaw3VfN6jeyQbggBjMRb2Ypmxrm4qXNHuc2jFlqcy1e33dzEeuSpZJO88J2vwe
- CrL0/PLpticSKIKaWVMIzrLcKyZwTEHgUQG2y8iPb7btbqKdHPCxljhXGJA97ab1d9ch0uI57SjCm
- WaWx1QEcrQrWzqpR2wfsEhVvs9qj2shoWZJjQdRo4rSqVSKi9AnpnuOqJU0Qk5M2llMfAnIhhgV1O
- CyKzC8OXjwasjqQRxvgYODcYpQY3zvYs6Qi0y+p/Vkn+2/TzdZz//G0tQx2xnkhCEgJbEELFCoMj6
- JJlUvP7A==;
-Received: from gate.crashing.org ([63.228.1.57])
- by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lXFJr-0093ht-Mb; Fri, 16 Apr 2021 03:39:01 +0000
-Received: from ip6-localhost (localhost.localdomain [127.0.0.1])
- by gate.crashing.org (8.14.1/8.14.1) with ESMTP id 13G3Onft032125;
- Thu, 15 Apr 2021 22:24:50 -0500
-Message-ID: <730d603b12e590c56770309b4df2bd668f7afbe3.camel@kernel.crashing.org>
-Subject: Re: [PATCH net-next v4 2/2] of: net: fix of_get_mac_addr_nvmem()
- for non-platform devices
-From: Benjamin Herrenschmidt <benh@kernel.crashing.org>
-To: Michael Walle <michael@walle.cc>, ath9k-devel@qca.qualcomm.com,
- UNGLinuxDriver@microchip.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- netdev@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-amlogic@lists.infradead.org, linux-oxnas@groups.io,
- linux-omap@vger.kernel.org, linux-wireless@vger.kernel.org,
- devicetree@vger.kernel.org, linux-staging@lists.linux.dev
-Cc: Andrew Lunn <andrew@lunn.ch>, Gregory Clement
- <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Michael Ellerman <mpe@ellerman.id.au>, Paul Mackerras <paulus@samba.org>,
- Andreas Larsson <andreas@gaisler.com>, "David S . Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Maxime Ripard
- <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
- <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, Chris Snook
- <chris.snook@gmail.com>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
- <rafal@milecki.pl>, bcm-kernel-feedback-list@broadcom.com, Florian Fainelli
- <f.fainelli@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>, Sunil Goutham
- <sgoutham@marvell.com>, Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur
- <madalin.bucur@nxp.com>, Pantelis Antoniou <pantelis.antoniou@gmail.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>, Li Yang <leoyang.li@nxp.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, Salil Mehta
- <salil.mehta@huawei.com>, Hauke Mehrtens <hauke@hauke-m.de>, Thomas
- Petazzoni <thomas.petazzoni@bootlin.com>, Vadym Kochan
- <vkochan@marvell.com>, Taras Chornyi <tchornyi@marvell.com>, Mirko Lindner
- <mlindner@marvell.com>, Stephen Hemminger <stephen@networkplumber.org>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Bryan Whitehead
- <bryan.whitehead@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Sergei
- Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Jose
- Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
- <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman
- <khilman@baylibre.com>, Neil Armstrong <narmstrong@baylibre.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Vinod Koul <vkoul@kernel.org>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Grygorii Strashko
- <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri
- <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>, Radhey Shyam
- Pandey <radhey.shyam.pandey@xilinx.com>, Kalle Valo <kvalo@codeaurora.org>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Stanislaw Gruszka <stf_xl@wp.pl>,
- Helmut Schaa <helmut.schaa@googlemail.com>, Heiner Kallweit
- <hkallweit1@gmail.com>, Rob Herring <robh+dt@kernel.org>, Frank Rowand
- <frowand.list@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>, Vivien
- Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>
-Date: Fri, 16 Apr 2021 13:24:49 +1000
-In-Reply-To: <20210412174718.17382-3-michael@walle.cc>
-References: <20210412174718.17382-1-michael@walle.cc>
- <20210412174718.17382-3-michael@walle.cc>
-User-Agent: Evolution 3.36.4-0ubuntu1 
-MIME-Version: 1.0
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=Jvn+FcPs/a8mF8oTY+ng564VcLse+XohALlgtHB3uwo=; b=dyaNrmK/7KLErMvgA9EP29FLOC
+ Nh38404b/y/+sulHjJVJjDuHbT8wIry1y49QwQQ1uOzCj3jRadn4tGjjSlP0Px0vlheNOD6MQSE/E
+ okg9bC6u8m8Y+1KWM6F5jTHU7QoDTuYwrH2x5SmxzmFXELaYliLaREirlfkKncKy6zc/FAKCaW/EA
+ uDvmeAWOl8Pwo6l79qhZwhexnpULptCPPAjezv0D7A69lA57U27JCoauZgFVSboNPmiB/ndPXWMLe
+ VQHHMz3N021DYbfTzWjXV4kuFNxob31ycfZ4Y6AjEvbRf2jxzVX3hm4cdZCr13AJLY1QrH0DixvVS
+ Tj35Ru9A==;
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+ by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lXFRw-0093my-W6; Fri, 16 Apr 2021 03:47:22 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id
+ k23-20020a17090a5917b02901043e35ad4aso15564345pji.3; 
+ Thu, 15 Apr 2021 20:47:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=Jvn+FcPs/a8mF8oTY+ng564VcLse+XohALlgtHB3uwo=;
+ b=fVtzqO2Oan3mRRwUs6ytpq9WeFjhRKIeSqlX275fOf6HbWmZHvPwxONXFNFxRyatyE
+ wZSz2oOyXqRqEvqeOmNaVOFKTwnBlbuMCbXJNqHzeahF10FO2tEU2zteKY5MoRtSAceL
+ MJD6S1zb4K6/B8renhWJu4/Ln1ufTBcV8Fo6u37Uea8nEf/Jp/RcYFDe4JsSx4tEADnP
+ mcBIN9EMTBmyvZIRhGnJSqRB2+AX2V4QcrDusA7CTyFbXr9bHiGAT6YCS0OrFjNZ/YXQ
+ kVaXmTzublVV/LfJ+6rYWRdM1TVTRw85loS9mB4WHpVfpruaKpXZ3S0M2wOXFW16nYuq
+ aH5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=Jvn+FcPs/a8mF8oTY+ng564VcLse+XohALlgtHB3uwo=;
+ b=jBTrE3UsnpExeMzcr5XSV2iBvwBjY9H1SB+YqGiOcG0YXTx4bZUKWCDP6+UolfWcZV
+ BkRMdJOIYzE97ZI9TFUmCySOK/N8TTRrdvzXsuSxj1f1+qN9/DwoGHyKxEjMiNPRnQbu
+ +zMbmKhisy22E9vDV3FQ52G4Frdo78xBcBrBZtNsWXVOStrd2OxOdRjKV4jY5f5zuM9+
+ ZkqcOhqdIzuDD52PxgNyBFjSXDNVwtRqRErN2ot5pzh3w4ukbIt3nCXKr+8CyGUNEdK/
+ QQx9gulSH/vDCNspBnwnNMgZ4MhGjitLt0+z2W7xDbkscCvLbXkJ4ysEM7cG2Rq2Wqu+
+ qFaw==
+X-Gm-Message-State: AOAM532oECj726QtWrSSsFrohdJzDzYELTDWImwC64JTQz15hgdQSH1m
+ MjAAHP1//YiRl1JD23fefnE=
+X-Google-Smtp-Source: ABdhPJyPo6utWxE0Gwapva5Ja+v1DD4LsFNIwStS89Rfk+n5ieosIu/rgOG6S9Fsd8Ze2p2t8fv2zA==
+X-Received: by 2002:a17:902:e051:b029:eb:4411:db58 with SMTP id
+ x17-20020a170902e051b02900eb4411db58mr7387386plx.11.1618544839034; 
+ Thu, 15 Apr 2021 20:47:19 -0700 (PDT)
+Received: from mi-OptiPlex-7060.mioffice.cn ([43.224.245.180])
+ by smtp.gmail.com with ESMTPSA id q25sm3326239pfh.83.2021.04.15.20.47.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Apr 2021 20:47:18 -0700 (PDT)
+From: zhuguangqing83@gmail.com
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ Guangqing Zhu <zhuguangqing83@gmail.com>
+Subject: [PATCH] regulator: mt6360: Fix missing IRQF_ONESHOT as only threaded
+ handler
+Date: Fri, 16 Apr 2021 11:47:12 +0800
+Message-Id: <20210416034712.7891-1-zhuguangqing83@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_203900_590171_8D145AE2 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20210415_204721_068837_4F64B10E 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,55 +106,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-04-12 at 19:47 +0200, Michael Walle wrote:
-> 
->  /**
->   * of_get_phy_mode - Get phy mode for given device_node
-> @@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np, const char *name, u8 *addr)
->  static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
->  {
->         struct platform_device *pdev = of_find_device_by_node(np);
-> +       struct nvmem_cell *cell;
-> +       const void *mac;
-> +       size_t len;
->         int ret;
->  
-> -       if (!pdev)
-> -               return -ENODEV;
-> +       /* Try lookup by device first, there might be a nvmem_cell_lookup
-> +        * associated with a given device.
-> +        */
-> +       if (pdev) {
-> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
-> +               put_device(&pdev->dev);
-> +               return ret;
-> +       }
-> +
+From: Guangqing Zhu <zhuguangqing83@gmail.com>
 
-This smells like the wrong band aid :)
+Coccinelle noticed:
+drivers/regulator/mt6360-regulator.c:386:8-33: ERROR: Threaded IRQ with no
+primary handler requested without IRQF_ONESHOT
 
-Any struct device can contain an OF node pointer these days.
+Signed-off-by: Guangqing Zhu <zhuguangqing83@gmail.com>
+---
+ drivers/regulator/mt6360-regulator.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-This seems all backwards. I think we are dealing with bad evolution.
-
-We need to do a lookup for the device because we get passed an of_node.
-We should just get passed a device here... or rather stop calling
-of_get_mac_addr() from all those drivers and instead call
-eth_platform_get_mac_address() which in turns calls of_get_mac_addr().
-
-Then the nvmem stuff gets put in eth_platform_get_mac_address().
-
-of_get_mac_addr() becomes a low-level thingy that most drivers don't
-care about.
-
-Cheers,
-Ben.
-
+diff --git a/drivers/regulator/mt6360-regulator.c b/drivers/regulator/mt6360-regulator.c
+index 4d34be94d166..34c354721ef0 100644
+--- a/drivers/regulator/mt6360-regulator.c
++++ b/drivers/regulator/mt6360-regulator.c
+@@ -383,8 +383,8 @@ static int mt6360_regulator_irq_register(struct platform_device *pdev,
+ 		if (irq < 0)
+ 			return irq;
+ 
+-		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL, irq_desc->handler, 0,
+-						irq_desc->name, rdev);
++		ret = devm_request_threaded_irq(&pdev->dev, irq, NULL, irq_desc->handler,
++						IRQF_ONESHOT, irq_desc->name, rdev);
+ 		if (ret) {
+ 			dev_err(&pdev->dev, "Fail to request %s irq\n", irq_desc->name);
+ 			return ret;
+-- 
+2.17.1
 
 
 _______________________________________________
