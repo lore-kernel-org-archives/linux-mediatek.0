@@ -2,97 +2,103 @@ Return-Path: <SRS0=rcQv=JN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB4A7C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D89AC433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 05:57:33 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C8E4610FB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 03:54:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C8E4610FB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D422A61184
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Apr 2021 05:57:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D422A61184
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=By01wmSnJ94n3vWVyCpvYa5CwZS2XaKEZY4HxDuuqkE=; b=aCG5wSNa0OKbOCTvQKZnxa6n5
-	RTT3IXemHQPOD0hHdV/VdCeouunMsH7EXR30SGlr6hBWrjx8PmqOKKSkjPEDnt/izG8RS2wdwM5yr
-	pkJLAbaNr4v6jLQpqk0OkKOb61Y86E0AF8rD5g+WgEBYjQV8lhS3Pt8JbNuT1g8IMDKjM8lTC69OP
-	IwJGZprtxrMgT9SB4kU5La1c/FDvhM4fQNv21z8G0J2u24hGC/1+oNAIWsU+UsnyrwbW3pZfjMEF/
-	jpxGCGRN6Saq5qtHqAYM8blu5a4+bsoljZuQRfp20bUi4pEL6qrcju8BVc84OI8Zqu3ktlhXS9Jw2
-	9kkUAi7uA==;
+	 bh=qxamzrw8uYPFRfBday40dFgok+4LA36nD81mW8n3no4=; b=HuO49vJhwbfF32oQNPD/s7ZMy
+	gSxgxiBCOqdxcTpHDYp1bai7ibTX9O3vHFgz+3XLeBcKVe/TyX39RJtnA5kGPHHp0O+YJqhWCgrtJ
+	Meqy57nzjZlSUOkQoqJNs84sUFj1bjkfBQs2T3qrYwxtntKm107MJ4swuPrgB0Tz4McnKsi11kpjO
+	JoQxaZHtnAkXR4UM9k+KE7G9F79Wy/8n7QX67UV44o3Mm00hxvzpG4KQJxhe57+MbW7ESReS8HYIt
+	X8Mi9LrOrg2m8ZAJ0Q3VpJnvLEpzDsmPlkAVHepElVcUCzPQ/u81I5BzfycnTJDT2m8eFDoeaVo8i
+	8UCb7SsLg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXFYm-000glW-Pj; Fri, 16 Apr 2021 03:54:24 +0000
+	id 1lXHSe-000veN-Hb; Fri, 16 Apr 2021 05:56:23 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXFYk-000gky-V2; Fri, 16 Apr 2021 03:54:23 +0000
+ id 1lXHPD-000vTZ-M3; Fri, 16 Apr 2021 05:53:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=NDHFGcF3B1jg010RNKdlQbBkhOaYGmBmo6W0xffwExI=; b=I5cKMo/XdHAZq5OlhiY1NkljKV
- WnCw09mNnCofy3VldxoIT67O76vyqqudzpbG0op2UPlnlJN3iV0bBjIlvII6Gt+1N3wdvZeURaKK4
- H0Plrl/yhX04sNXEa8ZRs6hsqYruipH82FldxhGE/oHP/ylxg6hgDVyAxpebdbk/3/xou0837PaQN
- CRsh9chLLlcFTeytweyjEL0ahwsXpnsqnQgcyHkLifnk642JqpnBfC0vr63Oyu5p10wANZ4FJ3kUC
- oWYp0OjFvoBrKMsjZQVa3Uhee6tnN0gLaVP6lUbCXVO3VygTWR7M3hbsnkkFJ9UV42tnrIhODN5c1
- O3w4OXfg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
+ bh=Sz5AkDEHXoTdhaWqNa4aiq2JXP5rqPnHAGXR8ZCTKAg=; b=igh0sDkdkOCibNFQsqP4bVr23a
+ KsUB5a1hPhDvhp7paAN6EaGl+PI1gOaHbDA56D4ZNNrDVNVCrBZVRORr1d1yQjQQuhsHQ2iQ+FYV/
+ yvDe6jhdNFKuKPOvVbNbVEIKgsTBBujOpyeAuCFw5fMYDecMDxzU1gvKUWaKHyEHUUABvCa/vprl8
+ zIOhbbBXpEDNxaTXy5Cx2i0WVFlw1mGeMWFzut4t3dzUgXMCDqvBmUDdRX8r1kHSSwaMP3yWo9I+V
+ 2XqugtWfTRxIwJPONRbqA04zFZzZzA0RykE28wz94c51/slXbv/3cGfKDAq6iXYFFa180zeFOaLil
+ hpZZrAEQ==;
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXFYh-0093tZ-1G; Fri, 16 Apr 2021 03:54:21 +0000
-X-UUID: 6ec0353d4dad44999b6627b1c4743a44-20210415
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=NDHFGcF3B1jg010RNKdlQbBkhOaYGmBmo6W0xffwExI=; 
- b=KOfBYwZAH/4s8EboFVTNasZe9Z/dHfIhDpfG3fYnG9Zf6qFFBPFonO9l6mjHynXIvPdiqyjzi2kc/DeSyfw0uVM7MiQx0UhtzayJ0GNNO4QRu6gegrrXO/Io5zbW0afPTylx5c5BTr3minyKNRZKCxPr8KAhzDwc8bf6Yz7I7Jw=;
-X-UUID: 6ec0353d4dad44999b6627b1c4743a44-20210415
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 283086904; Thu, 15 Apr 2021 20:54:17 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Apr 2021 20:54:16 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Apr 2021 11:54:07 +0800
-Received: from [172.21.84.99] (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 16 Apr 2021 11:54:07 +0800
-Message-ID: <1618545247.1478.21.camel@mtksdccf07>
-Subject: Re: [PATCH v2 4/7] dt-bindings: soc: mediatek: apusys: Add new
- document for APU power domain
-From: Flora Fu <flora.fu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Pi-Cheng Chen
- <pi-cheng.chen@mediatek.com>, Chiawen Lee <chiawen.lee@mediatek.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-Date: Fri, 16 Apr 2021 11:54:07 +0800
-In-Reply-To: <20210415152500.GA1424680@robh.at.kernel.org>
-References: <1618465960-3013-1-git-send-email-flora.fu@mediatek.com>
- <1618465960-3013-5-git-send-email-flora.fu@mediatek.com>
- <20210415152500.GA1424680@robh.at.kernel.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1lXHPB-00969w-3r; Fri, 16 Apr 2021 05:52:38 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id
+ 101-20020a9d0d6e0000b02902816815ff62so18881798oti.9; 
+ Thu, 15 Apr 2021 22:52:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Sz5AkDEHXoTdhaWqNa4aiq2JXP5rqPnHAGXR8ZCTKAg=;
+ b=hhN8uGqIBz9cbQV+JtKoeYJC9DF8KbPYfeHcv2sRSlO7JlsQh7YxfMBbjgZ7ulVU4n
+ na6SYs8pHd2P8eOTE5PXPufwsGafk901JlRrzkz4JmUCYL4n0t3zlBU0knmbGTk9WR12
+ 8jwqVa1OV4JzgzU5Goyq3DGuWpOIv4R4hHJ68tMh/4TyG1sfNVU/ekXA23B6CDU0RQXV
+ lSM7UetSayuuegUyc4iSYy8L5uU79VHyYL9C2hJJLwbmPEOP6pNVa/BqNy2NnUAEaQe8
+ kYzH0kYJd01auSpFTa7CK408VdX2rdUYSyopNFU6VwFkbH6bSaFmnH7B0lSj+gMhlVX2
+ XRHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Sz5AkDEHXoTdhaWqNa4aiq2JXP5rqPnHAGXR8ZCTKAg=;
+ b=bIketXi99tzqOnfBh1fIG2o5CGGetTYMclFnfa8lQ/Gim3gq9HdK+oYLa5U0HPomvn
+ guBSN4pJ494Lt8mayV60iVdQg4jdAdiOAYdesDGDxhGusMm24sNgLAGX51c6cg0SFMS1
+ SSXB52ec/Ab6TEtJWSBz47e5jIcP7ZSKZ+2dr1zFQqGQWqVTwJmGh6b1s2hRHD0yu/gG
+ J8XE/BHpPMLeYRf3blxqrWYjs8gvlGT3ZJ+jnKgLR4q4D8FQb15sb+JHiNOcYO4T3c/t
+ yy96SQ2OB+pCcoSG6r9f1Zp5NCF1EgeClyrkj8ufRDKGPJSbRdmWle6DK8+RGnmi1rlj
+ aq8A==
+X-Gm-Message-State: AOAM532E7XVraQyYVwpebl0SElSVmyWITl/P+FznLjcVFuZls7wHNLWN
+ QCDtRP+lUlJIzdZOOI7mSuHtOcRFkxQhTH++S68=
+X-Google-Smtp-Source: ABdhPJzai2AZUpqMlxmUdFMD8/LL884tQ/+a9LNwb5D3Cdt4KsiydVj2riIrDLj6ZLQCSuXQ/lT10T3IqFFyC1PY+/Q=
+X-Received: by 2002:a05:6830:1398:: with SMTP id
+ d24mr2479119otq.281.1618552355449; 
+ Thu, 15 Apr 2021 22:52:35 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D0E2C189EE26BC0DE04A52CF893FE75B3723BC096B505982667A1212E4CA59372000:8
-X-MTK: N
+References: <20210414144643.17435-1-matthias.bgg@kernel.org>
+In-Reply-To: <20210414144643.17435-1-matthias.bgg@kernel.org>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Fri, 16 Apr 2021 07:52:26 +0200
+Message-ID: <CAFqH_53TOM6oyByRaMb8d7caX+u5Wn5DyrXuXHYKVUwBCfrkZg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] arm64: dts: mt8183-pumpkin: fix dtbs_check warning
+To: matthias.bgg@kernel.org
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, 
+ Fabien Parent <fparent@baylibre.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210415_205419_105157_6D0274FA 
-X-CRM114-Status: GOOD (  31.57  )
+X-CRM114-CacheID: sfid-20210415_225237_178758_CFAC8A19 
+X-CRM114-Status: GOOD (  15.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,196 +110,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-04-15 at 10:25 -0500, Rob Herring wrote:
-> On Thu, Apr 15, 2021 at 01:52:37PM +0800, Flora Fu wrote:
-> > Document the bindings for APU power domain on MediaTek SoC.
-> > 
-> > Signed-off-by: Flora Fu <flora.fu@mediatek.com>
-> > ---
-> > Note:
-> > This patch depends on MT8192 clock[1] patches which haven't yet been accepted.
-> > [1] https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210324104110.13383-7-chun-jie.chen@mediatek.com/__;!!CTRNKA9wMg0ARbw!zINTC3jweo4_C2yxqf9kHaxAXhO-k-I_JplIY4OQ390IeSfk5QCR4ojmFz2gPbBV$ 
-> > ---
-> >  .../soc/mediatek/mediatek,apu-pm.yaml         | 145 ++++++++++++++++++
-> >  1 file changed, 145 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
-> > new file mode 100644
-> > index 000000000000..6ff966920917
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
-> > @@ -0,0 +1,145 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/soc/mediatek/mediatek,apu-pm.yaml*__;Iw!!CTRNKA9wMg0ARbw!zINTC3jweo4_C2yxqf9kHaxAXhO-k-I_JplIY4OQ390IeSfk5QCR4ojmF_yHpQUx$ 
-> > +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!zINTC3jweo4_C2yxqf9kHaxAXhO-k-I_JplIY4OQ390IeSfk5QCR4ojmFy1L2FzU$ 
-> > +
-> > +title: Mediatek APU Power Domains
-> > +
-> > +maintainers:
-> > +  - Flora Fu <flora.fu@mediatek.com>
-> > +
-> > +description: |
-> > +  Mediatek AI Process Unit (APU) include support for power domains which can be
-> > +  powered up/down by software.
-> > +  APU subsys belonging to a power domain should contain a 'power-domains'
-> > +  property that is a phandle for apuspm node representing the domain.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8192-apu-pm
-> > +      - const: syscon
-> > +
-> > +  reg:
-> > +    description: Address range of the APU power domain controller.
-> > +    maxItems: 1
-> > +
-> > +  '#address-cells':
-> > +    const: 1
-> > +
-> > +  '#size-cells':
-> > +    const: 0
-> > +
-> > +  '#power-domain-cells':
-> > +    const: 1
-> > +
-> > +  vsram-supply:
-> > +    description: apu sram regulator supply.
-> > +
-> > +  mediatek,scpsys:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: |
-> > +      phandle to the device containing the scpsys register range.
-> > +
-> > +  mediatek,apu-conn:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: |
-> > +      phandle to the device containing the scpsys apu conn register range.
-> > +
-> > +  mediatek,apu-conn1:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: |
-> > +      phandle to the device containing the scpsys apu conn1 register range.
-> > +
-> > +  mediatek,apu-vcore:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description: |
-> > +      phandle to the device containing the scpsys apu vcore register range.
-> > +
-> > +patternProperties:
-> > +  "^power-domain@[0-9a-f]+$":
-> > +    type: object
-> > +    description: |
-> > +      Represents the power domains within the power controller node as
-> > +      documented in Documentation/devicetree/bindings/power/power-domain.yaml.
-> > +
-> > +    properties:
-> > +      reg:
-> > +        description: |
-> > +          Power domain index. Valid values are defined in:
-> > +          "include/dt-bindings/power/mt8182-apu-power.h"
-> > +        maxItems: 1
-> > +
-> > +      '#power-domain-cells':
-> > +        description: |
-> > +          Must be 0 for nodes representing a single PM domain and 1 for nodes
-> > +          providing multiple PM.
-> > +
-> > +      clocks:
-> > +        description: |
-> > +          List of phandles of clocks list. Specify by order according to
-> > +          power-up sequence.
-> > +
-> > +      clock-names:
-> > +        description: |
-> > +          List of names of clocks. Specify by order according to power-up
-> > +          sequence.
-> > +
-> > +      assigned-clocks:
-> > +        maxItems: 2
-> > +
-> > +      assigned-clock-parents:
-> > +        maxItems: 2
-> > +
-> > +      domain-supply:
-> > +        description: domain regulator supply.
-> > +
-> > +    required:
-> > +      - reg
-> > +      - '#power-domain-cells'
-> > +
-> > +    additionalProperties: false
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - '#power-domain-cells'
-> > +  - vsram-supply
-> > +  - mediatek,scpsys
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt8192-clk.h>
-> > +    apuspm: power-domain@190f0000 {
-> > +        compatible = "mediatek,mt8192-apu-pm", "syscon";
-> > +        reg = <0x190f0000 0x1000>;
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +        #power-domain-cells = <1>;
-> 
-> So you have domains provided by this node and then...
-> 
-> > +        vsram-supply = <&mt6359_vsram_md_ldo_reg>;
-> > +        mediatek,scpsys = <&scpsys>;
-> > +        mediatek,apu-conn = <&apu_conn>;
-> > +        mediatek,apu-vcore = <&apu_vcore>;
-> > +
-> > +        apu_top: power-domain@0 {
-> > +            reg = <0>;
-> > +            #power-domain-cells = <0>;
-> 
-> ...each child node provides a domain. What's the difference?
-
-The hardware @190f0000 have controller for several child power domains
-in apu subsys and now only one domain (apu_top) is exposed to mt8192
-kernel. For the software extension purpose, the driver parses child
-nodes even if it has only one child. In previous v1 patch, I add a
-domain id index in a header file but it seems not necessary to create a
-standalone file for the case. So I just set the index in the device tree
-but keep dts structure to present hardware design.
-
-> 
-> > +            clocks = <&topckgen CLK_TOP_DSP_SEL>,
-> > +                     <&topckgen CLK_TOP_IPU_IF_SEL>,
-> > +                     <&clk26m>,
-> > +                     <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-> > +            clock-names = "clk_top_conn",
-> > +                          "clk_top_ipu_if",
-> > +                          "clk_off",
-> > +                          "clk_on_default";
-> > +            assigned-clocks = <&topckgen CLK_TOP_DSP_SEL>,
-> > +                              <&topckgen CLK_TOP_IPU_IF_SEL>;
-> > +            assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-> > +                                     <&topckgen CLK_TOP_UNIVPLL_D6_D2>;
-> > +            domain-supply = <&mt6359_vproc1_buck_reg>;
-> > +        };
-> > +    };
-> > -- 
-> > 2.18.0
-> > 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgTWF0dGhpYXMsCgpUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2guCgpNaXNzYXRnZSBkZSBsJ2Fk
+cmXDp2EgPG1hdHRoaWFzLmJnZ0BrZXJuZWwub3JnPiBkZWwgZGlhIGRjLiwgMTQgZOKAmWFici4K
+MjAyMSBhIGxlcyAxNjo0ODoKPgo+IEZyb206IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJn
+Z0BnbWFpbC5jb20+Cj4KPiBGaXggdW5pdCBuYW1lcyB0byBtYWtlIGR0YnNfY2hlY2sgaGFwcHku
+Cj4KPiBTaWduZWQtb2ZmLWJ5OiBNYXR0aGlhcyBCcnVnZ2VyIDxtYXR0aGlhcy5iZ2dAZ21haWwu
+Y29tPgo+IC0tLQo+Cj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLXB1bXBr
+aW4uZHRzIHwgNCArKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVs
+ZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9t
+dDgxODMtcHVtcGtpbi5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My1w
+dW1wa2luLmR0cwo+IGluZGV4IGViNmU1OTVjMjk3NS4uMGFmZjVlYjUyZTg4IDEwMDY0NAo+IC0t
+LSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLXB1bXBraW4uZHRzCj4gKysr
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxODMtcHVtcGtpbi5kdHMKPiBAQCAt
+MzIsNyArMzIsNyBAQCByZXNlcnZlZC1tZW1vcnkgewo+ICAgICAgICAgICAgICAgICAjc2l6ZS1j
+ZWxscyA9IDwyPjsKPiAgICAgICAgICAgICAgICAgcmFuZ2VzOwo+Cj4gLSAgICAgICAgICAgICAg
+IHNjcF9tZW1fcmVzZXJ2ZWQ6IHNjcF9tZW1fcmVnaW9uIHsKPiArICAgICAgICAgICAgICAgc2Nw
+X21lbV9yZXNlcnZlZDogc2NwX21lbV9yZWdpb25ANTAwMDAwMDAgewo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGNvbXBhdGlibGUgPSAic2hhcmVkLWRtYS1wb29sIjsKPiAgICAgICAgICAgICAg
+ICAgICAgICAgICByZWcgPSA8MCAweDUwMDAwMDAwIDAgMHgyOTAwMDAwPjsKPiAgICAgICAgICAg
+ICAgICAgICAgICAgICBuby1tYXA7Cj4gQEAgLTU1LDcgKzU1LDcgQEAgbGVkLWdyZWVuIHsKPiAg
+ICAgICAgICAgICAgICAgfTsKPiAgICAgICAgIH07Cj4KPiAtICAgICAgIG50Y0AwIHsKPiArICAg
+ICAgIG50YyB7Cj4gICAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAibXVyYXRhLG5jcDAzd2Yx
+MDQiOwo+ICAgICAgICAgICAgICAgICBwdWxsdXAtdXYgPSA8MTgwMDAwMD47Cj4gICAgICAgICAg
+ICAgICAgIHB1bGx1cC1vaG0gPSA8MzkwMDAwPjsKPiAtLQo+IDIuMzAuMgo+Cj4KPiBfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVr
+IG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpS
+ZXZpZXdlZC1ieTogRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
+b3JhLmNvbT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+bWVkaWF0ZWsK
