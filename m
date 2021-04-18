@@ -1,91 +1,104 @@
-Return-Path: <SRS0=E/q6=JO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=IoHK=JP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EC9DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Apr 2021 20:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C0C1C433ED
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 12:04:29 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7497E61241
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Apr 2021 20:52:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7497E61241
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A657B61019
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 12:04:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A657B61019
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n9rh7I+X4HqQys5dHoOK5RvezlacmdpOYhHSv5eQ+RU=; b=mTEAyxsQlcYN5xFn3xUJMYT5hI
-	JF55itlHtz9IKXoGL3BQ2le6hLfueiWk3x9nR6mVkC+6bBOgo1SEtpGLBNYiofaCLYTRB9cJtSNmq
-	s+0pYL9tcykn2WJnCEefvQMprR/MwNjj215NdAAq00yZtgaAlnHAY1eA+TthPesYJG8CuSjkLhbYL
-	zNthrZxuiB8eUdrELXpZIfKcgXidCg649WGMr2KPFjt9qvXFARg7mG5d981BaWyw8zWEmwBcQTttt
-	Crk0dsx0QAIW7xUsp/x3V6lbymvXwH41VeZrtgWOvXCSz1l61ZpoxDX5PsXQlxqFtKcjGU89LSFEJ
-	sHcLrUKg==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=BEJUNpBQQe8JnYtutSk+KCRx0oO2RwQx7BWuzjwn1DM=; b=WsZUd7GE1EumQAv8uzng6mv5L
+	Pzsr0E6NlRTZR+lWYCihJJY1ICOIp0+yjtd9lbxn4cEGvFa0upcv6VTJXj5IMn9Bp52Lu1OT+lsto
+	pEMg98W3cncuRxft3HmB1qNll+cc3KtRza5q77FiPhyDsyBrmRyMpzWJEpck+IDFPRlVSfCkIWdj/
+	lI1qO57fC3DdcjV+f1nYiTl95lUMCl3pjRrV8RJlkdxbaH0/hBLNbRAWXzKkD3ZHhXKXgPDFzLndU
+	//zWIeTHN2tG8pJCSc+XlJkJJN/gG2R4NoaM/Xk01E0FWFDB+4Aye0Z+jG5ioXw3s6cBP399E1Jpy
+	2FchdqOBg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lXrvj-006EdP-F2; Sat, 17 Apr 2021 20:52:39 +0000
+	id 1lY69s-007sHr-JT; Sun, 18 Apr 2021 12:04:12 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXrvh-006Ecg-PU
- for linux-mediatek@desiato.infradead.org; Sat, 17 Apr 2021 20:52:38 +0000
+ id 1lY69q-007sHY-9c; Sun, 18 Apr 2021 12:04:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=gXT7RrgdhyY4EPqGsMoX5r/og8qQ6coyLLuurY3O15o=; b=q+A3muUbPFPMDZpeZskg9836cH
- Bm8qldHTJd0yfO7palwbp5kPoEGQvUcs2rywny16REB4Mw4XqUY80KLj1I934Yvr90OXHJfwwP7A3
- cvPvvD6lkgJQouSBnqPEerojZqlKqJCC5nxU9EepNflCsTVbXNJB1z4yoWu9ey0WXBiURZ0pSz+pu
- G2vwaXPYHOBTuCAMKOOjtCBxiUPXJ/gV+/REri+X7TsRhKlqsxrG1LpVv1KxQ0ouwW/4sjm4edwaR
- 9SEH0aBAF2fVSO+TPl+jpM7p4iC31LPeiHRWL3vn2rXed6PPdMOV3fqJbU1v8v8TM4bQmPEL9rWvu
- ds30sY/w==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=UJsT5aV+MxRbho8JhRzNBpNeMbZUN3ULqGnvmwYqqo8=; b=FR0C6tw3DBJYskYkeYUd1NyZ6e
+ +1KSNln2CPYIOM4O4M/aklnJtZQPMQRDfzcbtjoiGFdID7FRdu/EccR9LqQk2d7JijqUssPw+a4pg
+ ZI+cJJAOQtC8LIcJsJBrNktScUA1rWDbfPauCCPyHc2j8M69OevzmgX3yBaaYpsoBWNCHEz19frfn
+ z5TMdmhJv6f4eqN00JsbJBVt0/G3DljCMOsxbe9KmMY30MGjDdzleZ8LityIBrAsTqjyKM8xlIddR
+ eVyaBPP3E3qRfHcsnsgqMSUQ2XYI3YnLPm6XB6yK77UuqUOUvhQ+lNZXUW4/scaED2c+kGrvKyzbK
+ RIwoLiig==;
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lXrvd-00ABHi-89
- for linux-mediatek@lists.infradead.org; Sat, 17 Apr 2021 20:52:35 +0000
-X-UUID: 363158cce403405398508ded949430e2-20210417
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=gXT7RrgdhyY4EPqGsMoX5r/og8qQ6coyLLuurY3O15o=; 
- b=uxHsO+hia6P16up/L8NIzQwBdIqzA8HlQ0H/BEoOjDyIAnKC+fyrCIFYnuXyf7i7VEQ1z6+AswU28h1whtJ09AittYvRZNvwVNycXMf8ZTH0v0/chGTANXwIRtuZFOMUApawHGy1N2U6ECHnXfmmqknmfAOsNvP3wbRK4mqMlWA=;
-X-UUID: 363158cce403405398508ded949430e2-20210417
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 193671495; Sat, 17 Apr 2021 13:52:30 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 17 Apr 2021 13:42:28 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 18 Apr 2021 04:42:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 18 Apr 2021 04:42:26 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
- <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] mt76: mt7915: add thermal sensor device support
-Date: Sun, 18 Apr 2021 04:42:23 +0800
-Message-ID: <b51d79d257e150a09d51029e3465e2ce925d6cfe.1618691395.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lY69k-00APmM-Cg; Sun, 18 Apr 2021 12:04:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1618747428;
+ bh=UJsT5aV+MxRbho8JhRzNBpNeMbZUN3ULqGnvmwYqqo8=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=gtWAMLhVANHc5fa/MEW9QtadcRt6E3XfLkUMwhO75vFNJ9hSiCIcdBXyh19j4Glvx
+ xlP1dPLK+L+gfju2A+suqWIgK1cDu7nk/k+Hk8vya2JdjeXOowr3KojS5rMCxKfH0l
+ k494tuyFNJv4jIqxdj0i2T9ANWf8U/auoWtHGEaE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.75.88] ([80.245.75.88]) by web-mail.gmx.net
+ (3c-app-gmx-bap31.server.lan [172.19.172.101]) (via HTTP); Sun, 18 Apr 2021
+ 14:03:48 +0200
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D59C00394B710C6E8C283C631551D662974E6C55E0B5C683F1D4B8843299E1E52000:8
-X-MTK: N
+Message-ID: <trinity-93ab11dc-32c6-4e6b-8617-6bfff1a1b42d-1618747428085@3c-app-gmx-bap31>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, Zhang Rui <rui.zhang@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria
+ <amitk@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Aw: [PATCH] thermal: mediatek: add sensors-support
+Date: Sun, 18 Apr 2021 14:03:48 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20210320080646.49615-1-linux@fw-web.de>
+References: <20210320080646.49615-1-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:NpJG2XS0uVpmsDDBMEbodtzzfxpTnTBa8p1RkMykjqag/W3Gxr2tax05+zGq5AUWfZw8Y
+ UR2I0pxvM9MHe0r8VhdDWkgQGBL1SI+8mAdYtMqgypfgy6RLOSe0qt1nK7c6agDFY5PfxSqpyO4Z
+ wuBrnzufOyhYmZnoAymsyPyAXn2DXmF91+zeC+t21fCSauEkUxk78mx99SIl3IWAzCGwm7sT9tOV
+ qAI+rAIGkZY8+FqJkyyuAffLkkKWZ7AsT6wur+yubLVNmz8hfao5kD5mi04EgQYx2wDkuWpwzz5T
+ Is=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:I5KzL9OLaQU=:3OPO7RKu+UrbJhyuN6QKpU
+ 4BFYTNIp75gm+rV0iVvIjAnrZ4rj3UrvsoLuay+pCtGrHP3kS1gyMDoKaExubD2BtRxmnDcFP
+ EXKFerqtjTB04wqUrO88LfpaXR73l0pGklAIgozu0o1JwZcj0Umk3S/bG6qd2vhka6gZH3jKh
+ qRu0q85YFDxkMoCR6UUPpVEPnVYXeqHPNTdFN37xLgMWQ6okybKiy8tUUE+bUyeT2ZSVPD1yk
+ 2at67rwVhXuVNRDnpguJsZvuCBq9MJa5fWUHc/BZ4u54VHhg5HH6Qir6G8J48GSr6ZgzVdfWF
+ p1FA/423VEpjXaXcAtA3tBTHaZAk59UAaiEn8hsDVE+UUwrb60yU3LAmxv8g0UrhJfDmYHsrh
+ Gl4F4Cn9dkJEs266ePIsPs5U8XZ8yIBRtVlm/DYT+Ge3FHzqx90mSDbru7P8Cb72TdhZb4stC
+ zb+HotaIeKhlrhZ7IbA57k62MuPtnAjeyawwjbZqzPnkb42UGomNLhwhjTnDyEFNvjezFFpfD
+ y5rD4nGv3MbX/iTa+hRpzw5YKZVeCdbli2KhM3KWeQ8GEP5WQaBF9Eruhdvw1L3CE2jyPSMCz
+ 7K8Icw0Cf8kRzGRPxjMNukY07zv3tUyfUnBba8wMSmmdn8CcArkicuPi0i8/5ZZu5jVyN6+K1
+ X+qLouCPOYByILOHs2fiFZVxcieOhdrk4fND/9bOBTRStLouXPo0aYprAGKXFpg2Yw7ZvHxDZ
+ xFsPCVLNJE6nY/vdcN3WQViWdSHZK4iqsfTkN1eZUHW0WF2ORC5TDQOELbuapp321t3PbRyYK
+ Bw3XYc3GqeMj2QKSR1+0lg4XQnhRLrXuuWUmN0DTw18tK/eZV4tCyn4MnqM9rUWjA178rfI81
+ oX9ZfsAH+dh6HQ+BoZgsyLstw8Wrc5NgE3NKpQkJv+j1dSkcAiZcwjlHyVnblA5CKZ7/vcTyt
+ VDaQZgQnZ+Q==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210417_135233_367950_50BBBE28 
-X-CRM114-Status: GOOD (  14.93  )
+X-CRM114-CacheID: sfid-20210418_050404_784263_5F06EAC4 
+X-CRM114-Status: UNSURE (   5.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,185 +110,16 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This provides userspace with a unified interface, hwmon sysfs, to monitor
-temperature in the hardware and can be adaped to system monitoring tools.
-
-For reading temperature, cat /sys/class/ieee80211/phy*/hwmon*/temp1_input
-
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 14 -----
- .../net/wireless/mediatek/mt76/mt7915/init.c  | 56 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   |  7 ++-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +-
- 4 files changed, 61 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 6a8ddeeecbe9..f1e8b076d54c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -224,18 +224,6 @@ mt7915_tx_stats_show(struct seq_file *file, void *data)
- 
- DEFINE_SHOW_ATTRIBUTE(mt7915_tx_stats);
- 
--static int mt7915_read_temperature(struct seq_file *s, void *data)
--{
--	struct mt7915_dev *dev = dev_get_drvdata(s->private);
--	int temp;
--
--	/* cpu */
--	temp = mt7915_mcu_get_temperature(dev, 0);
--	seq_printf(s, "Temperature: %d\n", temp);
--
--	return 0;
--}
--
- static int
- mt7915_queues_acq(struct seq_file *s, void *data)
- {
-@@ -390,8 +378,6 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- 	debugfs_create_file("radar_trigger", 0200, dir, dev,
- 			    &fops_radar_trigger);
- 	debugfs_create_file("ser_trigger", 0200, dir, dev, &fops_ser_trigger);
--	debugfs_create_devm_seqfile(dev->mt76.dev, "temperature", dir,
--				    mt7915_read_temperature);
- 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower_sku", dir,
- 				    mt7915_read_rate_txpower);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index c13b932b0a44..cccb3df339de 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -2,6 +2,8 @@
- /* Copyright (C) 2020 MediaTek Inc. */
- 
- #include <linux/etherdevice.h>
-+#include <linux/hwmon.h>
-+#include <linux/hwmon-sysfs.h>
- #include "mt7915.h"
- #include "mac.h"
- #include "mcu.h"
-@@ -67,6 +69,52 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 	}
- };
- 
-+static ssize_t mt7915_thermal_show_temp(struct device *dev,
-+					struct device_attribute *attr,
-+					char *buf)
-+{
-+	struct mt7915_phy *phy = dev_get_drvdata(dev);
-+	int temperature;
-+
-+	mutex_lock(&phy->dev->mt76.mutex);
-+	temperature = mt7915_mcu_get_temperature(phy);
-+	mutex_unlock(&phy->dev->mt76.mutex);
-+
-+	if (temperature < 0)
-+		return temperature;
-+
-+	/* display in millidegree celcius */
-+	return sprintf(buf, "%u\n", temperature * 1000);
-+}
-+
-+static SENSOR_DEVICE_ATTR(temp1_input, 0444, mt7915_thermal_show_temp,
-+			  NULL, 0);
-+
-+static struct attribute *mt7915_hwmon_attrs[] = {
-+	&sensor_dev_attr_temp1_input.dev_attr.attr,
-+	NULL,
-+};
-+ATTRIBUTE_GROUPS(mt7915_hwmon);
-+
-+static int mt7915_thermal_init(struct mt7915_phy *phy)
-+{
-+	struct wiphy *wiphy = phy->mt76->hw->wiphy;
-+	struct device *hwmon;
-+
-+	/* TODO: add cooling device for throttling */
-+
-+	if (!IS_REACHABLE(CONFIG_HWMON))
-+		return 0;
-+
-+	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev,
-+						       wiphy_name(wiphy), phy,
-+						       mt7915_hwmon_groups);
-+	if (IS_ERR(hwmon))
-+		return PTR_ERR(hwmon);
-+
-+	return 0;
-+}
-+
- static void
- mt7915_init_txpower(struct mt7915_dev *dev,
- 		    struct ieee80211_supported_band *sband)
-@@ -286,6 +334,10 @@ static int mt7915_register_ext_phy(struct mt7915_dev *dev)
- 	if (ret)
- 		goto error;
- 
-+	ret = mt7915_thermal_init(phy);
-+	if (ret)
-+		goto error;
-+
- 	return 0;
- 
- error:
-@@ -739,6 +791,10 @@ int mt7915_register_device(struct mt7915_dev *dev)
- 	if (ret)
- 		return ret;
- 
-+	ret = mt7915_thermal_init(&dev->phy);
-+	if (ret)
-+		return ret;
-+
- 	ieee80211_queue_work(mt76_hw(dev), &dev->init_work);
- 
- 	ret = mt7915_register_ext_phy(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 559ad230eabe..17a617df6dba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3469,16 +3469,17 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
- 	return 0;
- }
- 
--int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index)
-+int mt7915_mcu_get_temperature(struct mt7915_phy *phy)
- {
-+	struct mt7915_dev *dev = phy->dev;
- 	struct {
- 		u8 ctrl_id;
- 		u8 action;
--		u8 band;
-+		u8 dbdc_idx;
- 		u8 rsv[5];
- 	} req = {
- 		.ctrl_id = THERMAL_SENSOR_TEMP_QUERY,
--		.action = index,
-+		.dbdc_idx = phy != &dev->phy,
- 	};
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_CTRL), &req,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 80eb35231a1a..d5296e2d481b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -357,7 +357,7 @@ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
- 			    const struct mt7915_dfs_pattern *pattern);
- int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
- int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
--int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index);
-+int mt7915_mcu_get_temperature(struct mt7915_phy *phy);
- int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx);
- int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta, struct rate_info *rate);
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksCgphbnkgb3BpbmlvbiAoZXhjZXB0IHR5cG8pPwoKdGhlcm1hbmwgPT4gdGhlcm1hbAoKcmVn
+YXJkcyBGcmFuawoKCj4gR2VzZW5kZXQ6IFNhbXN0YWcsIDIwLiBNw6RyeiAyMDIxIHVtIDEwOjA2
+IFVocgo+IFZvbjogIkZyYW5rIFd1bmRlcmxpY2giIDxsaW51eEBmdy13ZWIuZGU+Cj4gYWRkIEhX
+TU9OLXN1cHBvcnQgdG8gbWVkaWF0ZWtzIHRoZXJtYW5sIGRyaXZlciB0byBhbGxvdyBsbS1zZW5z
+b3JzCj4gdXNlcnNwYWNlIHRvb2xzIHJlYWQgc29jIHRlbXBlcmF0dXJlCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
