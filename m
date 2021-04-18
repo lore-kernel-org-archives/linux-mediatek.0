@@ -2,19 +2,20 @@ Return-Path: <SRS0=IoHK=JP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5A2AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 16:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 755B3C433B4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 21:28:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FDCD61245
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 16:48:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FDCD61245
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id D807F610CA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Apr 2021 21:28:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D807F610CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
@@ -22,64 +23,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=InVFiqPaTbtDaXbzPsRttCoQxr/2xofaorBDPv95bXI=; b=BGye7EXkUKBH6kLllql4Z5KBD
-	TKNlU7v9GHVa2Lo67xVO5Nhb/1Eg/pIj8hghEnmAgXKNNc8TSxolUHlHNfhkb932ze0oP/Dpu655x
-	vG66yGorLZm6tB5AD0tSDnIwUv1Qzxu2s1Ok/KclYDCoaqUaTfe9MhwCkEG59yxuIuF1gxBjIxK4L
-	9eX7lHMkB+6ihpbP+3IC4yRyW6hmeTz5L8nnIvE6Wafdm+2vxoa+neKybfD9TXj466Tmwr6rQVKbO
-	VZjQSqz73wGZopGS2E9Fvs31NETendkNtL7JFPEq+Re8/vM7hZSVVeUMGOrpil52FP+bz2AZIne30
-	15mB+nhyA==;
+	 bh=VnpPgaD50rnneEeA6rWfx4LBzsL93pV7t9QXrU0xLpM=; b=iyhi7KZ+kT8uBoj97gmoph31n
+	6FFPFtcVrNKG4i86i/5On3SoGPhkVgkD8IhUQMka0u3Pqu/Tm2mbWTq41vHfBPb+zUUy/f7DTSMGD
+	nrYRxFAgKIzQYTNhz/JKGGgpAHHJ3R1FVLHRa3yVaatZdiC1M64BuJVzI3R5hu77MJkymqBRYAo9x
+	Z0cGxclGGd8qixhyrm3hJzm6TyYFMe0qeeEeUQdlgqfoRKKrrLY7DqhU+Z77DVnRq4SOY5YVQpwNs
+	Be0TiDjDeop3xYWjxvKVeZX0Z695M3nJBkmSma0Va70494YTDcnwfE+oUSbTZzrNlfFFUTqKbGmX2
+	OLC2CcCtg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYAb6-008KSt-U2; Sun, 18 Apr 2021 16:48:37 +0000
+	id 1lYExv-008cpI-DS; Sun, 18 Apr 2021 21:28:27 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYAb4-008KSm-Os
- for linux-mediatek@desiato.infradead.org; Sun, 18 Apr 2021 16:48:35 +0000
+ id 1lYExs-008coB-UR
+ for linux-mediatek@desiato.infradead.org; Sun, 18 Apr 2021 21:28:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:In-Reply-To:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=UiMW9oz7yJekBPfHBRSQun47GmrfjZjjKAGcbuh70tA=; b=CLQCujjAmBF72K1a3hdc48nGGD
- vak3DDgFZjbRFYCaQR9U62CkDN7qtparkcCOO8ZAi7EJ+DNe7GZbGjpip2G6xEJvMTnJKfdxfyWEt
- urr0bNblE7psqKfLoWfD8TD2nNrsJHmexoX0OaBhsbNPgW7qbeEPUgOF16mJOLj7dJ/cwZQ1mhc8D
- bg4aHpSEs6KxVoI8WRzS5NgKyLlEqI+UQayi11L0FVx0qZ1zRxSW+hq5Em80MBUbJbGxmfBh7+qNp
- qVPfE4ce7pm56WSukA1j8ZCODKPZgixbXxV+QnCd9Tx/Jt9zlIEtBjK4016FscfdwRaiBKFII+3Km
- wY6Bz1Yg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ bh=xy0uRT9DuQa5KkmgsGXM+reDf4nP2NkCt7+xgBCiMQg=; b=NGBQ0Pu9SES4Css8kdWruJcFFa
+ e/zjO4CWAwPF47untasUuwIU4oW+pC0hy8E667PjgjRLpFvPZzkAGAItaYlrxVdLqCxIJqEP/hlB/
+ bxpo9QfLXjYKkZTSguFpKPHMtJrcgX926jIUanHhY9wroDt8vjQmETRKyl3IxqddoCi64wLJslwqY
+ 75nseUO7oemGrbO09hXPFJ2sT6OAMivGy6ViN2HZX0N0nsyMAMLI0QxyYrj1ough8wGOgfjb3tTu0
+ S3bOKao788+PJDZxwwLSsl0h5z1VS2UzCAjucijc+Fp5B64qY2hEFZMQRfYI+ObdMwm89WCbm0U/b
+ 4DWD7S+w==;
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYAaz-00AWJQ-0j
- for linux-mediatek@lists.infradead.org; Sun, 18 Apr 2021 16:48:33 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0B66E61245;
- Sun, 18 Apr 2021 16:48:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618764508;
- bh=hGK/bKp5Rc2fWGkeOakaqJlW7ekqkPbHFVW5k9rfNss=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pkwhqnwj0EnmZo/2nGY1yHlc60munrbGIyicCBgB6ITJEt8tWOVn5I+PitFgSN0pF
- y6DAwOmRjAzQ4aJZ5fLrA/xi9l4ZR3ZcnvzWYg+Skc36vL8HYajzQSeo2tsygZX2fx
- ge+19jEQ+8v2ZWXR8bkX4oPrMGjNDQ+Cmr40sY6clGUxNJZ4kmuHm1I6gRoFX6NKNn
- 5LpDBs+MwAovEttBOPjWZHa8MFZ3W+IwNVmSLL0Xqt/nQWZhaCCU41maKYP1tVDAA0
- mUzh4oaMZpwcHKJwdkiA83r7KherA5q6naYkn9guqGzGwrm1BOA/DwREgyUE6AuMUZ
- 4m8DYrRz6TJyw==
-Date: Sun, 18 Apr 2021 18:48:23 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 4/6] mt76: mt7921: introduce mt7921_wpdma_reinit_cond
- utility routine
-Message-ID: <YHxi1+jRHIfAuKJa@lore-desk>
-References: <1618763767-1292-1-git-send-email-sean.wang@mediatek.com>
- <1618763767-1292-5-git-send-email-sean.wang@mediatek.com>
+ id 1lYExn-00AhPZ-6d
+ for linux-mediatek@lists.infradead.org; Sun, 18 Apr 2021 21:28:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1618781296;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=xy0uRT9DuQa5KkmgsGXM+reDf4nP2NkCt7+xgBCiMQg=;
+ b=I+g4aAZJn3dyYb3ueIJwhxqAO7vORo06wvheOp+TFIAn9cxCWjhj6S4YlqkivSh5kabmHm
+ MEqrPl6BLsH9zNomRlEYAcnbPcUQG2pmd7Nw3mkBwjKiD/C9CkSdTtqph3L9NNfJlh2iT3
+ x40IM1x4H40PgQ7I9VfkmKDVl3AbOr0=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-412-cdtUD_lvPXCspvneZYOJ7Q-1; Sun, 18 Apr 2021 17:26:17 -0400
+X-MC-Unique: cdtUD_lvPXCspvneZYOJ7Q-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ r14-20020a50d68e0000b0290385504d6e4eso108278edi.7
+ for <linux-mediatek@lists.infradead.org>; Sun, 18 Apr 2021 14:26:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=TPcs5TB0ONhcFVAEw0E0MCP+R2+YREZ08wBbXd6m+0c=;
+ b=NPK/KkmKSER66S4wWJormqrLbrof4qbnZuEaqBaKP0gg2UtQ3MGzbB/S1PLuN4kppD
+ 9qZ6HzdPjzIOegCzwvVVwQUVikgXMAPLmixlG+PshCGWhm0SK2GfJb2FO6xh9aNYf4/l
+ Fro7592popzGfy4nb7lmIeasV1Es/71l6VlZYbisl522Wi7/IGMl/tTgvH1B1lWYruRm
+ zILNX8lFTXtrNTIpgNQpNCwvYm7S58xweCCrXWx6fTCkeBaaL2F9jfQMpdsvScH+i48L
+ d8JMQhIFouCznoKZQCV8IZiV4b41wvVScLOBxFhV1QBziARiuv9z0XGdhEKP/5iaRFHq
+ YaLw==
+X-Gm-Message-State: AOAM533Um0HDBmejh5GhUzvxKut+LUbcSkmptPZblQEWVLL/EVhB6UQd
+ xTjR6MuM7Q3f/qOV8WnxnV4nVKVZ7ZDfoK/mynawYSfmOi01QbDEVa654bSsa0tToGy6FqKt3Tj
+ w3yMsBWUE1isaVZo+qx4HkhPikIy9gyzf
+X-Received: by 2002:a17:906:3e54:: with SMTP id
+ t20mr18905025eji.53.1618781176568; 
+ Sun, 18 Apr 2021 14:26:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBKJZIgQlc9hQywL+WtI+KLt35fb6/JZtjFfLmtl/EiX87D0fiTdVmmH6NDI4Gb6cbNDZ6cQ==
+X-Received: by 2002:a17:906:3e54:: with SMTP id
+ t20mr18905020eji.53.1618781176413; 
+ Sun, 18 Apr 2021 14:26:16 -0700 (PDT)
+Received: from localhost ([151.66.28.185])
+ by smtp.gmail.com with ESMTPSA id s20sm11194233edu.93.2021.04.18.14.26.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 18 Apr 2021 14:26:15 -0700 (PDT)
+Date: Sun, 18 Apr 2021 23:26:12 +0200
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] mt76: mt7915: add thermal sensor device support
+Message-ID: <YHyj9H52zgoDXWbN@lore-desk>
+References: <b51d79d257e150a09d51029e3465e2ce925d6cfe.1618691395.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1618763767-1292-5-git-send-email-sean.wang@mediatek.com>
+In-Reply-To: <b51d79d257e150a09d51029e3465e2ce925d6cfe.1618691395.git.ryder.lee@mediatek.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210418_094829_133140_D6FCE285 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20210418_142819_376619_C133F8BA 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,177 +119,166 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2971736744268392350=="
+Content-Type: multipart/mixed; boundary="===============8488985803891092222=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============2971736744268392350==
+--===============8488985803891092222==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="P/CfuldqDC55MrOp"
+	protocol="application/pgp-signature"; boundary="TFPJU7dGCv8470U4"
 Content-Disposition: inline
 
-
---P/CfuldqDC55MrOp
+--TFPJU7dGCv8470U4
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> From: Sean Wang <sean.wang@mediatek.com>
+[...]
+> =20
+> +static ssize_t mt7915_thermal_show_temp(struct device *dev,
+> +=09=09=09=09=09struct device_attribute *attr,
+> +=09=09=09=09=09char *buf)
+> +{
+> +=09struct mt7915_phy *phy =3D dev_get_drvdata(dev);
+> +=09int temperature;
+> +
+> +=09mutex_lock(&phy->dev->mt76.mutex);
+> +=09temperature =3D mt7915_mcu_get_temperature(phy);
+> +=09mutex_unlock(&phy->dev->mt76.mutex);
 
-I guess here we should use my 'From' tag
+I guess we do not need this lock here since mcu already has its own lock (m=
+cu
+mutex) and mt7915 does not support runtime-pm.
 
 Regards,
 Lorenzo
 
->=20
-> Add mt7921_wpdma_reinit_cond to check dummy reg if driver needs to
-> reinitialized WPDMA after driver_own operation
->=20
-> Co-developed-by: Leon Yen <leon.yen@mediatek.com>
-> Signed-off-by: Leon Yen <leon.yen@mediatek.com>
-> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt76_connac.h  |  4 +++
->  .../wireless/mediatek/mt76/mt7921/debugfs.c   | 13 ++++++++++
->  .../net/wireless/mediatek/mt76/mt7921/dma.c   | 25 +++++++++++++++++++
->  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  6 +++++
->  4 files changed, 48 insertions(+)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/n=
-et/wireless/mediatek/mt76/mt76_connac.h
-> index b811f3c410a1..3b5bff80a462 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -58,6 +58,10 @@ struct mt76_connac_pm {
->  	struct delayed_work ps_work;
->  	unsigned long last_activity;
->  	unsigned long idle_timeout;
 > +
-> +	struct {
-> +		unsigned int lp_wake;
-> +	} stats;
->  };
+> +=09if (temperature < 0)
+> +=09=09return temperature;
+> +
+> +=09/* display in millidegree celcius */
+> +=09return sprintf(buf, "%u\n", temperature * 1000);
+> +}
+> +
+> +static SENSOR_DEVICE_ATTR(temp1_input, 0444, mt7915_thermal_show_temp,
+> +=09=09=09  NULL, 0);
+> +
+> +static struct attribute *mt7915_hwmon_attrs[] =3D {
+> +=09&sensor_dev_attr_temp1_input.dev_attr.attr,
+> +=09NULL,
+> +};
+> +ATTRIBUTE_GROUPS(mt7915_hwmon);
+> +
+> +static int mt7915_thermal_init(struct mt7915_phy *phy)
+> +{
+> +=09struct wiphy *wiphy =3D phy->mt76->hw->wiphy;
+> +=09struct device *hwmon;
+> +
+> +=09/* TODO: add cooling device for throttling */
+> +
+> +=09if (!IS_REACHABLE(CONFIG_HWMON))
+> +=09=09return 0;
+> +
+> +=09hwmon =3D devm_hwmon_device_register_with_groups(&wiphy->dev,
+> +=09=09=09=09=09=09       wiphy_name(wiphy), phy,
+> +=09=09=09=09=09=09       mt7915_hwmon_groups);
+> +=09if (IS_ERR(hwmon))
+> +=09=09return PTR_ERR(hwmon);
+> +
+> +=09return 0;
+> +}
+> +
+>  static void
+>  mt7915_init_txpower(struct mt7915_dev *dev,
+>  =09=09    struct ieee80211_supported_band *sband)
+> @@ -286,6 +334,10 @@ static int mt7915_register_ext_phy(struct mt7915_dev=
+ *dev)
+>  =09if (ret)
+>  =09=09goto error;
 > =20
->  struct mt76_connac_coredump {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c b/driver=
-s/net/wireless/mediatek/mt76/mt7921/debugfs.c
-> index 5a54cd8d2ce4..bd2aca654767 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/debugfs.c
-> @@ -256,6 +256,17 @@ mt7921_pm_get(void *data, u64 *val)
+> +=09ret =3D mt7915_thermal_init(phy);
+> +=09if (ret)
+> +=09=09goto error;
+> +
+>  =09return 0;
 > =20
->  DEFINE_DEBUGFS_ATTRIBUTE(fops_pm, mt7921_pm_get, mt7921_pm_set, "%lld\n"=
+>  error:
+> @@ -739,6 +791,10 @@ int mt7915_register_device(struct mt7915_dev *dev)
+>  =09if (ret)
+>  =09=09return ret;
+> =20
+> +=09ret =3D mt7915_thermal_init(&dev->phy);
+> +=09if (ret)
+> +=09=09return ret;
+> +
+>  =09ieee80211_queue_work(mt76_hw(dev), &dev->init_work);
+> =20
+>  =09ret =3D mt7915_register_ext_phy(dev);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7915/mcu.c
+> index 559ad230eabe..17a617df6dba 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -3469,16 +3469,17 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *ph=
+y)
+>  =09return 0;
+>  }
+> =20
+> -int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index)
+> +int mt7915_mcu_get_temperature(struct mt7915_phy *phy)
+>  {
+> +=09struct mt7915_dev *dev =3D phy->dev;
+>  =09struct {
+>  =09=09u8 ctrl_id;
+>  =09=09u8 action;
+> -=09=09u8 band;
+> +=09=09u8 dbdc_idx;
+>  =09=09u8 rsv[5];
+>  =09} req =3D {
+>  =09=09.ctrl_id =3D THERMAL_SENSOR_TEMP_QUERY,
+> -=09=09.action =3D index,
+> +=09=09.dbdc_idx =3D phy !=3D &dev->phy,
+>  =09};
+> =20
+>  =09return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_CTRL), &req,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers=
+/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> index 80eb35231a1a..d5296e2d481b 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+> @@ -357,7 +357,7 @@ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, i=
+nt index,
+>  =09=09=09    const struct mt7915_dfs_pattern *pattern);
+>  int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
+>  int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
+> -int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index);
+> +int mt7915_mcu_get_temperature(struct mt7915_phy *phy);
+>  int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx=
 );
-> =20
-> +static int
-> +mt7921_pm_stats(struct seq_file *s, void *data)
-> +{
-> +	struct mt7921_dev *dev =3D dev_get_drvdata(s->private);
-> +	struct mt76_connac_pm *pm =3D &dev->pm;
-> +
-> +	seq_printf(s, "low power wakes: %9d\n", pm->stats.lp_wake);
-> +
-> +	return 0;
-> +}
-> +
->  static int
->  mt7921_pm_idle_timeout_set(void *data, u64 val)
->  {
-> @@ -322,6 +333,8 @@ int mt7921_init_debugfs(struct mt7921_dev *dev)
->  	debugfs_create_file("idle-timeout", 0600, dir, dev,
->  			    &fops_pm_idle_timeout);
->  	debugfs_create_file("chip_reset", 0600, dir, dev, &fops_reset);
-> +	debugfs_create_devm_seqfile(dev->mt76.dev, "runtime_pm_stats", dir,
-> +				    mt7921_pm_stats);
-> =20
->  	return 0;
->  }
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/dma.c
-> index 8c556ff3ae93..72f5704f8f11 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-> @@ -329,6 +329,31 @@ int mt7921_wpdma_reset(struct mt7921_dev *dev, bool =
-force)
->  	return 0;
->  }
-> =20
-> +int mt7921_wpdma_reinit_cond(struct mt7921_dev *dev)
-> +{
-> +	struct mt76_connac_pm *pm =3D &dev->pm;
-> +	int err;
-> +
-> +	/* check if the wpdma must be reinitialized */
-> +	if (mt7921_dma_need_reinit(dev)) {
-> +		/* disable interrutpts */
-> +		mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA, 0);
-> +		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0x0);
-> +
-> +		err =3D mt7921_wpdma_reset(dev, false);
-> +		if (err) {
-> +			dev_err(dev->mt76.dev, "wpdma reset failed\n");
-> +			return err;
-> +		}
-> +
-> +		/* enable interrutpts */
-> +		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-> +		pm->stats.lp_wake++;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  int mt7921_dma_init(struct mt7921_dev *dev)
->  {
->  	/* Increase buffer size to receive large VHT/HE MPDUs */
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers=
-/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> index 06a85d2d1c6f..bb4961d3969a 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> @@ -254,6 +254,7 @@ int mt7921_eeprom_get_target_power(struct mt7921_dev =
-*dev,
->  void mt7921_eeprom_init_sku(struct mt7921_dev *dev);
->  int mt7921_dma_init(struct mt7921_dev *dev);
->  int mt7921_wpdma_reset(struct mt7921_dev *dev, bool force);
-> +int mt7921_wpdma_reinit_cond(struct mt7921_dev *dev);
->  void mt7921_dma_cleanup(struct mt7921_dev *dev);
->  int mt7921_run_firmware(struct mt7921_dev *dev);
->  int mt7921_mcu_init(struct mt7921_dev *dev);
-> @@ -317,6 +318,11 @@ mt7921_l1_rmw(struct mt7921_dev *dev, u32 addr, u32 =
-mask, u32 val)
->  #define mt7921_l1_set(dev, addr, val)	mt7921_l1_rmw(dev, addr, 0, val)
->  #define mt7921_l1_clear(dev, addr, val)	mt7921_l1_rmw(dev, addr, val, 0)
-> =20
-> +static inline bool mt7921_dma_need_reinit(struct mt7921_dev *dev)
-> +{
-> +	return !mt76_get_field(dev, MT_WFDMA_DUMMY_CR, MT_WFDMA_NEED_REINIT);
-> +}
-> +
->  void mt7921_mac_init(struct mt7921_dev *dev);
->  bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask);
->  void mt7921_mac_reset_counters(struct mt7921_phy *phy);
+>  int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif =
+*vif,
+>  =09=09=09   struct ieee80211_sta *sta, struct rate_info *rate);
 > --=20
-> 2.25.1
+> 2.18.0
 >=20
 
---P/CfuldqDC55MrOp
+--TFPJU7dGCv8470U4
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYHxi0wAKCRA6cBh0uS2t
-rIccAP9f22Fh/Hgkh5U4dHrEZ1CL0QW1qBlhR5ixaZEb8dVmewD+LiyFwP0xi52s
-3M//eDzUTLAdcWShx9DQl/5SHJN/dAs=
-=NgMi
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYHyj8gAKCRA6cBh0uS2t
+rFc1AP0TzFM9UeSoGdkc3dw0YHYpaI+eTfh5nH0oLez6fUqLYgEAmuffVpsIXLN9
+vSsV+rGBbRwtmHzZoNXIQqCWZRrHdg8=
+=5nH8
 -----END PGP SIGNATURE-----
 
---P/CfuldqDC55MrOp--
+--TFPJU7dGCv8470U4--
 
 
---===============2971736744268392350==
+
+--===============8488985803891092222==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -272,5 +289,6 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============2971736744268392350==--
+--===============8488985803891092222==--
+
 
