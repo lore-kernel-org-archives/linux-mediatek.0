@@ -2,77 +2,73 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF60EC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 07:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AFB3C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:06:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26ED9610A1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 07:51:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26ED9610A1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
+	by mail.kernel.org (Postfix) with ESMTPS id C3F5861107
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:06:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3F5861107
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netfilter.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mBmCJrG59H7lsSkdKuBvUZ/eJBcJswffV20BkKL5Bww=; b=jg2+125lfDGe110mmwBOX7Fu/W
-	eyouN/9xenl3TG99nG9JdZhOJerdU8eUDtiueHy4uXTh3ZGblAS8P8KmgQzHalul9RtJ823/Tyiv5
-	OQ0z7QNcBsZTDTj0LqRLUmsIVzx4xFifGPXirSySAHanTPXCnNFlpb+KirlLZkjIo6QXCZ6CwQG7G
-	KzlrNUUwGjXLYMWG+aKYe2CLTTIKOBw889XITEIFPNJVytB57j6niN3vnOm6qm7Lc4RcQV5wt6Shb
-	CEee1HOUISi4TDGJAW01W3F58o7xsmZSzdjE2EuvDSDyiaOvigCNjIrl0r164Zf6xMdJFwMVsf5sX
-	b86dKsxQ==;
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=s2ZKclHHdLyAKUYfd7F8f3NzTSz4DUWzmwgiN4SKYsI=; b=iEUd/pFNZBAFwFZ+l2jQhUS5U
+	ldZtkNLx5bOUfubuCTFdiBJAq992ycmHzaM3zNWVkjESZv0hR1YLdQnI0BcO+slmEnkbOrswm3N9e
+	vxDjHsGbXfh9zXt2uTEHBmS58QT/AKaaF1fAlc2NMo2VsZZ0FSDHf8P3s76zl9GqMq8Hn1DpultVZ
+	chyHTBZWgMs451zb2EJZc1GVHKWvas+Z4qmh5NENcfbEFADVlrO6uWJuIGPHaiyeCcM59ThqqhTWn
+	4S/Stvr0EQnUoUYmvth/C2fwwLAQJYANPrTqLCvAY+Kjm4RACxbjxnp1zxRU5Gy+0QWIaKSDb3V1Q
+	Vqzfn5nIg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYOgo-009OS3-Lw; Mon, 19 Apr 2021 07:51:26 +0000
+	id 1lYOvQ-009P8X-L4; Mon, 19 Apr 2021 08:06:32 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYOgf-009ORE-5F; Mon, 19 Apr 2021 07:51:17 +0000
+ id 1lYOvG-009P7x-QR; Mon, 19 Apr 2021 08:06:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=bcaIMOd77rZZ3KrQfNLHYIUaaILXkba+iEIBHBwJ/u0=; b=1MzgX4vnTRlOvukI40Vg3HLKdl
- WHbsXk0RhjvEIhoY9mqCg4YHA1oi3VMS6XY8JvCQ3CJYlokfb0l01pdgnAPWHjBCGjWuzzYIZFmto
- 6nBbcCzHZEzAaD27aziTruM3/PlLS9Nnm6rzlkvHR9c9nQ7frEMQrTWvdvzAr7tcueZi1VjSDSsaw
- Hi6CXTJESnsP2s4/RGeB1nlcsxVkRUdSUhcgJWWBP0UEqvp5RJIOkKMZPh4pf3OD209p7xp9lbYZx
- oelb1FRyZy9ixzU6dBkHpM/cves1He4ftHLNyIt6Mscgavw7fYsAmq1iTxedvaMe0puKerjo7y1u0
- KrFb6pyA==;
-Received: from mail-m121145.qiye.163.com ([115.236.121.145])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYOgY-00B9iN-T2; Mon, 19 Apr 2021 07:51:15 +0000
-Received: from vivo-HP-ProDesk-680-G4-PCI-MT.vivo.xyz (unknown [58.251.74.232])
- by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 5509C8000C5;
- Mon, 19 Apr 2021 15:51:01 +0800 (CST)
-From: Wang Qing <wangqing@vivo.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Wang Qing <wangqing@vivo.com>
-Subject: [PATCH V4] watchdog: mtk: support dual mode when the bark irq is
- available
-Date: Mon, 19 Apr 2021 15:50:56 +0800
-Message-Id: <1618818656-32410-1-git-send-email-wangqing@vivo.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZQkpKTFZLHUJMGU0YQhlNSB9VEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
- hKTFVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PCo6ETo6GD8cDhQQKTgBERMq
- MU4KCyFVSlVKTUpDQ0pDTU1JSklNVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
- SU5KVUxPVUlISVlXWQgBWUFPT0pNNwY+
-X-HM-Tid: 0a78e91c7d15b03akuuu5509c8000c5
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
+ :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=OCWt1hkNl/QTqD2tSUx56uautrqcqnCVc8c+EVejDWs=; b=WpqOcqoenAeJcyU6LaXoDb5i28
+ LkjY/vD2MXOv3hcO/oZ2jiFQXzAcM9w77YsNL6pXu7qcl/tcmYHmwoWG/TRzOJc4CM/Qf8BuSlkpw
+ HG0fK92L69qCjOaD4WOstBtZy58orVtn8tbNy62r35Aea25dBp0xQeVX5M+yPydek9cLyd4kac9Kx
+ CGrxbIZ61M5pkTHaABam0J8AcFwKj2ESGjyEGgN/0DyHv5nFouwn0QXLnFovXZ+9g8u1NgIomfda5
+ jUk5C986pYnrr9CCGyrmGOe7RoOBV5IUoia/ezfTH/M5zGvDrLrSJJAPyY/OZZZsb/1hlmDsrpgjK
+ 2QBXvcHw==;
+Received: from mail.netfilter.org ([217.70.188.207])
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lYOvB-00BAT9-CK; Mon, 19 Apr 2021 08:06:21 +0000
+Received: from us.es (unknown [90.77.255.23])
+ by mail.netfilter.org (Postfix) with ESMTPSA id C36A063E49;
+ Mon, 19 Apr 2021 10:05:42 +0200 (CEST)
+Date: Mon, 19 Apr 2021 10:06:10 +0200
+From: Pablo Neira Ayuso <pablo@netfilter.org>
+To: Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>
+Cc: Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>,
+ Christoph Hellwig <hch@infradead.org>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: drivers/net/ethernet/mediatek/mtk_ppe_offload.c - suspicious code?
+Message-ID: <20210419080610.GA24040@salvia>
+References: <526789.1618794132@turing-police>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <526789.1618794132@turing-police>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_005111_123945_AE63C8AD 
-X-CRM114-Status: GOOD (  17.30  )
+X-CRM114-CacheID: sfid-20210419_010617_598180_D96E26BD 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,126 +80,26 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Support using irq handling wdt bark first instead of directly resetting.
-
-When the watchdog timer expires in Dual mode, an interrupt will be
-triggered first, then the timing restarts. The reset signal will be
-initiated when the timer expires, to prevent the system is stuck hard.
-
-The dual mode is disabled by default.
-
-V2:
-- panic() by default if WATCHDOG_PRETIMEOUT_GOV is not enabled.
-
-V3:
-- Modify the pretimeout behavior, manually reset after the pretimeout
-- is processed and wait until timeout.
-
-V4:
-- Remove pretimeout related processing. 
-- Add dual mode control separately.
-
-Signed-off-by: Wang Qing <wangqing@vivo.com>
----
- drivers/watchdog/mtk_wdt.c | 33 +++++++++++++++++++++++++++++++--
- 1 file changed, 31 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 97ca993..a1f34b5
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -25,6 +25,7 @@
- #include <linux/reset-controller.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
-+#include <linux/interrupt.h>
- 
- #define WDT_MAX_TIMEOUT		31
- #define WDT_MIN_TIMEOUT		1
-@@ -57,6 +58,7 @@
- 
- static bool nowayout = WATCHDOG_NOWAYOUT;
- static unsigned int timeout;
-+static bool dual_mode;
- 
- struct mtk_wdt_dev {
- 	struct watchdog_device wdt_dev;
-@@ -239,13 +241,23 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 		return ret;
- 
- 	reg = ioread32(wdt_base + WDT_MODE);
--	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	if (dual_mode)
-+		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	else
-+		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
- 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
- 	iowrite32(reg, wdt_base + WDT_MODE);
- 
- 	return 0;
- }
- 
-+static irqreturn_t mtk_wdt_isr(int irq, void *arg)
-+{
-+	panic("wdt bark!\n");
-+
-+	return IRQ_HANDLED;
-+}
-+
- static const struct watchdog_info mtk_wdt_info = {
- 	.identity	= DRV_NAME,
- 	.options	= WDIOF_SETTIMEOUT |
-@@ -267,7 +279,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mtk_wdt_dev *mtk_wdt;
- 	const struct mtk_wdt_data *wdt_data;
--	int err;
-+	int err, irq;
- 
- 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
- 	if (!mtk_wdt)
-@@ -279,6 +291,20 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	if (IS_ERR(mtk_wdt->wdt_base))
- 		return PTR_ERR(mtk_wdt->wdt_base);
- 
-+	if (dual_mode) {
-+		irq = platform_get_irq(pdev, 0);
-+		if (irq > 0) {
-+			err = devm_request_irq(&pdev->dev, irq, mtk_wdt_isr, 0, "wdt_bark",
-+									&mtk_wdt->wdt_dev);
-+			if (err)
-+				return err;
-+		} else {
-+			dual_mode = 0;
-+			dev_err(&pdev->dev,
-+			"couldn't get wdt irq, set dual_mode = 0\n");
-+		}
-+	}
-+
- 	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
- 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
- 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
-@@ -368,6 +394,9 @@ module_param(nowayout, bool, 0);
- MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started (default="
- 			__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
- 
-+module_param(dual_mode, bool, 0);
-+MODULE_PARM_DESC(dual_mode, "Watchdog dual mode triggers irq before reset(default=0)");
-+
- MODULE_LICENSE("GPL");
- MODULE_AUTHOR("Matthias Brugger <matthias.bgg@gmail.com>");
- MODULE_DESCRIPTION("Mediatek WatchDog Timer Driver");
--- 
-2.7.4
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gU3VuLCBBcHIgMTgsIDIwMjEgYXQgMDk6MDI6MTJQTSAtMDQwMCwgVmFsZGlzIEtsxJN0bmll
+a3Mgd3JvdGU6Cj4gV2hpbGUgZG9pbmcgc29tZSBjb2RlIGF1ZGl0aW5nIGZvciAtV292ZXJyaWRl
+X2luaXQsIEkgc3BvdHRlZCBzb21lIHF1ZXN0aW9uYWJsZSBjb2RlCj4gCj4gY29tbWl0IDUwMmU4
+NGUyMzgyZDkyNjU0YTJlY2JjNTJjZGJkYjVhMTFjZGNlYzcKPiBBdXRob3I6IEZlbGl4IEZpZXRr
+YXUgPG5iZEBuYmQubmFtZT4KPiBEYXRlOiAgIFdlZCBNYXIgMjQgMDI6MzA6NTQgMjAyMSArMDEw
+MAo+IAo+ICAgICBuZXQ6IGV0aGVybmV0OiBtdGtfZXRoX3NvYzogYWRkIGZsb3cgb2ZmbG9hZGlu
+ZyBzdXBwb3J0Cj4gCj4gSW4gZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX3BwZV9v
+ZmZsb2FkLmM6Cj4gCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcmhhc2h0YWJsZV9wYXJhbXMgbXRr
+X2Zsb3dfaHRfcGFyYW1zID0gewo+ICsgICAgICAgLmhlYWRfb2Zmc2V0ID0gb2Zmc2V0b2Yoc3Ry
+dWN0IG10a19mbG93X2VudHJ5LCBub2RlKSwKPiArICAgICAgIC5oZWFkX29mZnNldCA9IG9mZnNl
+dG9mKHN0cnVjdCBtdGtfZmxvd19lbnRyeSwgY29va2llKSwKPiArICAgICAgIC5rZXlfbGVuID0g
+c2l6ZW9mKHVuc2lnbmVkIGxvbmcpLAo+ICsgICAgICAgLmF1dG9tYXRpY19zaHJpbmtpbmcgPSB0
+cnVlLAo+ICt9Owo+IAo+IFdoYXQncyBpbnRlbmRlZCBmb3IgaGVhZF9vZmZzZXQgaGVyZT8KCkl0
+J3MgYSBidWcsIHRoZXJlJ3MgYSBmaXggaGVyZToKCmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xp
+c3RzL25ldGRldi9tc2c3MzYzNjguaHRtbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
