@@ -2,98 +2,89 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A77CC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:22:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5893CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 06:24:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91CF861090
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:22:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91CF861090
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 55C7961157
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 06:24:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55C7961157
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mork.no
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:From:Subject:Mime-Version:Message-Id:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Cag8etwR99B/gPUqIQtMFg9rACAOllmLBng1e/ZDWuI=; b=av0tHYY0om9bIO0A64iVdwhz8Z
-	AAmuKfAoLauYEbuP51RFBZEg7AR0Pjr5PZhlon0Fat1zCL5B9tNJlmn7tpED3SlFvW7gyQS2z66X+
-	MujsxdebaM3cfWnuiZhd5BhfhnCVnK2OF60k3xCBmdvZrt/D+CO3sqlWeWGR88CVKhfwjRqfvF748
-	CGqLgT+J8wLTg4qbb6HNiSkZXr66xYSAev61vVlVB7i3s9qid+psRWBuZtu+3BImezLbZ1l5RyFyR
-	zBIIinsQzw4OSS5GHufjpHfSnAnZYguufbSeehUv46WbvVCvcrSV4gggiEM26xMXD+dxw/LW4HnDN
-	TrMxwkvQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=g60S+II+BzyXeKOHLHThChWIH9nH0WSoE+qbr8Wi2fs=; b=kfFfyVVParLKADfXPZ4mP9FWH
+	0zEQ0EUdIrA8TRORc0dmZhoEW/LDLm+7MGUp3ZzuyFFy9m30OOrh77FKfGhvLIIU7wWQOCtiNeqD9
+	V+l5slzxD0kXUu4Vz537zKESg4wagwVJwHcoUdSdAW5qstMndlGhwVPUUtgGyTUdrSxI6W6jsiue7
+	Nv86O1vCQdov0tjVrztsB29KDfWe28CBad3yhRTK7YGWm213pz0sosln5gE+cEf7ciVt7Ps/mtLZy
+	y8ue5DWXf0hXYTh6grFrimmXFtq4jYHzZqow+IQ6DwfxWC2Wh/ErGRaZf6lEZ0+A9XR2X19/SBzXx
+	IvUUtYT5w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYMML-0098u7-HJ; Mon, 19 Apr 2021 05:22:09 +0000
+	id 1lYNKl-009Cvp-25; Mon, 19 Apr 2021 06:24:35 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYMMI-0098tn-AF
- for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 05:22:06 +0000
+ id 1lYNKj-009CvG-VF; Mon, 19 Apr 2021 06:24:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:From:Subject:
- Mime-Version:Message-Id:Date:Sender:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=1jlzay7NrHhIzm+rkAGcTage5tjUJRiEa0qA/fxcnjY=; b=k3Q4cZxWEPPFp6zTsAK9Qy+s1i
- WSWq5wpMJVqTjWlQQzvmf4yzGq7jXpjU/XdTh/dV7oPiskSg4w67JhWxHJdsupNETCXYmmB5JWmmL
- 7KQrlVtp4F8+Bj+kH3Vk+XZ5sc6YmVdcx/RRMp46KzuCPeA/AvzIMCReAWgrLH/H9zSxKEwQDERfN
- cWkbwENXBzk0cbhbnCt1VzPa2aHf2ceMbKSDQnOzOUiCAEE8kuIG42QvkdnnZSxW7AFQjKTH7yqqa
- +DQ/WUozychEesYLdihTEE7WaUNUeopu/Yzk//ZZwHYBlFiYRcsov8uw2PKF0BkgPBvy5IGGBKDKa
- 1RTL3WyQ==;
-Received: from mail-pf1-x449.google.com ([2607:f8b0:4864:20::449])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Message-ID:In-Reply-To:Date:References:Subject:Cc:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=E7X1Z/C7m4uTr61eYxZTSepR9nL5wv+XsO96GsmyN1o=; b=gERa+sx0buTeUsx9N290sEzk8M
+ bzdp5IOrDPOzGFSYbvOOnHZU4E6qQZDzviQGZrAuYOfLiGRxn8HfepOLjOm5w2ixDchvt77IRhjLP
+ N8ydD/9appNL8APZSYZ/OzEpWrZ5zBUfQDIJOnNx8iYif9evEh0GfYxVmRe43CbWNXVs+dY/QxsbR
+ 7NQVU9+XJ7dy/oCopiduUbaQtd0tuFXRXizDXIe5fZrE8caSo9rOyabgaBX1+N1Gr1iHUPuYJ1N54
+ mSb8aJ6WCF4GmJdw5mxAuCn+faUxBCo1nG0POLw/iYM+aZjtU5w446a44d2ygWMvs02aHm97IAvS3
+ 3FCbGsjw==;
+Received: from canardo.mork.no ([2001:4641::1])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYMMC-00B0tI-FK
- for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 05:22:05 +0000
-Received: by mail-pf1-x449.google.com with SMTP id
- j184-20020a6255c10000b0290214249d921cso6033032pfb.17
- for <linux-mediatek@lists.infradead.org>; Sun, 18 Apr 2021 22:21:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=1jlzay7NrHhIzm+rkAGcTage5tjUJRiEa0qA/fxcnjY=;
- b=Pphg5mXOZuX6oJxCRM8EBukui/4NuJxx07jOJDaZz1oq1vh72/E4kIv/Afhn6yyAcR
- EfMdqJvIT67EtmxeEPcppHNgvSaIQPOIWJEKuAvixPXl6NcyUGtSYF2ZOumOjk2NKp7e
- /gPLjB7hfPzcBXywKFCqzY+pgCwsh4yuzTFPt4gBvldEG0jf2Eg5ZjUF4azjaFlsZbtQ
- xqnx/wTz86t8j22AGehRmp06JWUlH0D8OubZVltZ2Jq+ZUyDzdm9SsUffrads5P6bSb7
- zJbv6Ewjm3nbOqwseOVLNuIztevd8+pl8nABP/jwcrxuT2ucfO4javgEgVWTw29tqmMx
- YWzg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=1jlzay7NrHhIzm+rkAGcTage5tjUJRiEa0qA/fxcnjY=;
- b=oGNXz3OsagdOm1QclCI7Pu8jdnixIkmw73+DTFQDqC/P1cF+Rs6ATIFdy2/LtAbz0q
- F8x+xL1GNGFuf1R2J+Yr/ohSAaDcjwJpa1hM/QnWovuBWVdeaYPUUgjDmsgTTKdxbBZI
- 78dzjQDdUBGpWYMmvO/duTntzMLhClq3qDKUzXmOZKD/Jm72pEm4u+8qMHNLqMFHyyPK
- r+dIaUyxDnoo4064pt2zNT97dLcDnTF189IDg2RyN2Tlq/C6jiAUMJF1rHCxQA8SjhPV
- aXync4Ef4z/o0h8ABbdO3g76X36SgwdrwtZOQucM3YcvwFZCpN6igVrLrlRcGgcV73ou
- gNMg==
-X-Gm-Message-State: AOAM5335SKhbGDhJlhV/3bqn5yUK0ouxW1GRxgaQ4zyg/VH6XIplUjnD
- Xg4WH93JDAvS3g3IVebJSTl673nCJ+w7
-X-Google-Smtp-Source: ABdhPJzi09lEATgb9ztaNjHZI+V7lwptJqTFm+vZoxp1DMfaZ2W5dklVTK8P6wG5Z0mHX0ArfOEsBq9To+nA
-X-Received: from tzungbi-z840.tpe.corp.google.com
- ([2401:fa00:1:b:b01e:e82b:cf1:a8ce])
- (user=tzungbi job=sendgmr) by 2002:a17:90a:e2d7:: with SMTP id
- fr23mr22096275pjb.29.1618809718810; Sun, 18 Apr 2021 22:21:58 -0700 (PDT)
-Date: Mon, 19 Apr 2021 13:21:36 +0800
-Message-Id: <20210419052136.2475373-1-tzungbi@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.31.1.368.gbe11c130af-goog
-Subject: [RESEND PATCH] pinctrl: mediatek: use spin lock in mtk_rmw
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, 
- zhiyong.tao@mediatek.com, broonie@kernel.org
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org, 
- tzungbi@google.com
+ id 1lYNKe-00B3ln-7i; Mon, 19 Apr 2021 06:24:32 +0000
+Received: from miraculix.mork.no (fwa161.mork.no [192.168.9.161])
+ (authenticated bits=0)
+ by canardo.mork.no (8.15.2/8.15.2) with ESMTPSA id 13J6OA33005567
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
+ Mon, 19 Apr 2021 08:24:10 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+ t=1618813450; bh=E7X1Z/C7m4uTr61eYxZTSepR9nL5wv+XsO96GsmyN1o=;
+ h=From:To:Cc:Subject:References:Date:Message-ID:From;
+ b=Ik288FpI4+tP3NUif79juWd79WI9mF6EwixRHDNl9pM365SLN/2YUjFGhP517DrAq
+ iLKyA9hXRV4N1CNtUMM0qq9onUb9jv5Jpf3XyXpHfg8L0Qpk+MtZXnF0Otd1cyAcmB
+ tak3jj60+xS63bbFXtSk0SkE9+bzRGtYPXIk7s6M=
+Received: from bjorn by miraculix.mork.no with local (Exim 4.94)
+ (envelope-from <bjorn@mork.no>)
+ id 1lYNKL-000bQN-NA; Mon, 19 Apr 2021 08:24:09 +0200
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Greg Ungerer <gerg@kernel.org>, Florian
+ Fainelli <f.fainelli@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: net: mediatek: support MT7621 SoC
+Organization: m
+References: <20210419034253.21322-1-ilya.lipnitskiy@gmail.com>
+Date: Mon, 19 Apr 2021 08:24:09 +0200
+In-Reply-To: <20210419034253.21322-1-ilya.lipnitskiy@gmail.com> (Ilya
+ Lipnitskiy's message of "Sun, 18 Apr 2021 20:42:53 -0700")
+Message-ID: <878s5e94hi.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+MIME-Version: 1.0
+X-Virus-Scanned: clamav-milter 0.102.4 at canardo
+X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210418_222200_550604_B10057F4 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20210418_232428_815533_0E3348F8 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,106 +96,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Commit 42a46434e9b1 ("pinctrl: add lock in mtk_rmw function.") uses
-mutex lock in mtk_rmw.  However the function is possible called from
-atomic context.
-
-For example call trace:
-  mutex_lock+0x28/0x64
-  mtk_rmw+0x38/0x80
-  mtk_hw_set_value+0x100/0x138
-  mtk_gpio_set+0x48/0x58
-  gpiod_set_raw_value_commit+0xf4/0x110
-  gpiod_set_value_nocheck+0x4c/0x80
-  gpiod_set_value+0x4c/0x6c
-  max98357a_daiops_trigger+0x8c/0x9c
-  soc_pcm_trigger+0x5c/0x10c
-
-The max98357a_daiops_trigger() could run in either atomic or non-atomic
-context.  As a result, dmesg shows some similar messages: "BUG: sleeping
-function called from invalid context at kernel/locking/mutex.c:254".
-
-Uses spin lock in mtk_rmw instead.
-
-Fixes: 42a46434e9b1 ("pinctrl: add lock in mtk_rmw function.")
-Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
----
- drivers/pinctrl/mediatek/pinctrl-moore.c         | 2 +-
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 4 ++--
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h | 2 +-
- drivers/pinctrl/mediatek/pinctrl-paris.c         | 2 +-
- 4 files changed, 5 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-index f77921957f15..3a4a23c40a71 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-@@ -619,7 +619,7 @@ int mtk_moore_pinctrl_probe(struct platform_device *pdev,
- 
- 	hw->nbase = hw->soc->nbase_names;
- 
--	mutex_init(&hw->lock);
-+	spin_lock_init(&hw->lock);
- 
- 	/* Copy from internal struct mtk_pin_desc to register to the core */
- 	pins = devm_kmalloc_array(&pdev->dev, hw->soc->npins, sizeof(*pins),
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index fcf7c3eeee4a..9ffe01a8ceca 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -58,14 +58,14 @@ void mtk_rmw(struct mtk_pinctrl *pctl, u8 i, u32 reg, u32 mask, u32 set)
- {
- 	u32 val;
- 
--	mutex_lock(&pctl->lock);
-+	spin_lock(&pctl->lock);
- 
- 	val = mtk_r32(pctl, i, reg);
- 	val &= ~mask;
- 	val |= set;
- 	mtk_w32(pctl, i, reg, val);
- 
--	mutex_unlock(&pctl->lock);
-+	spin_unlock(&pctl->lock);
- }
- 
- static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index 65eac708a3b3..13836bb188b7 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -252,7 +252,7 @@ struct mtk_pinctrl {
- 	struct mtk_pinctrl_group	*groups;
- 	const char          **grp_names;
- 	/* lock pin's register resource to avoid multiple threads issue*/
--	struct mutex lock;
-+	spinlock_t lock;
- };
- 
- void mtk_rmw(struct mtk_pinctrl *pctl, u8 i, u32 reg, u32 mask, u32 set);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 48e823f6d293..85db2e4377f0 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -970,7 +970,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
- 
- 	hw->nbase = hw->soc->nbase_names;
- 
--	mutex_init(&hw->lock);
-+	spin_lock_init(&hw->lock);
- 
- 	err = mtk_pctrl_build_state(pdev);
- 	if (err) {
--- 
-2.31.1.368.gbe11c130af-goog
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWx5YSBMaXBuaXRza2l5IDxpbHlhLmxpcG5pdHNraXlAZ21haWwuY29tPiB3cml0ZXM6Cgo+IEFk
+ZCBtaXNzaW5nIGJpbmRpbmcgZG9jdW1lbnRhdGlvbiBmb3IgU29DIHN1cHBvcnQgdGhhdCBoYXMg
+YmVlbiBpbiBwbGFjZQo+IHNpbmNlIHY1LjEKPgo+IEZpeGVzOiA4ODliY2JkZWVlNTcgKCJuZXQ6
+IGV0aGVybmV0OiBtZWRpYXRlazogc3VwcG9ydCBNVDc2MjEgU29DIGV0aGVybmV0IGhhcmR3YXJl
+IikKPiBDYzogQmrDuHJuIE1vcmsgPGJqb3JuQG1vcmsubm8+Cj4gU2lnbmVkLW9mZi1ieTogSWx5
+YSBMaXBuaXRza2l5IDxpbHlhLmxpcG5pdHNraXlAZ21haWwuY29tPgo+IC0tLQo+ICBEb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L21lZGlhdGVrLW5ldC50eHQgfCAxICsKPiAg
+MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9tZWRpYXRlay1uZXQudHh0IGIvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9tZWRpYXRlay1uZXQudHh0Cj4gaW5kZXggNzJk
+MDNlMDdjZjdjLi45NTBlZjZhZjIwYjEgMTAwNjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL25ldC9tZWRpYXRlay1uZXQudHh0Cj4gKysrIGIvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL25ldC9tZWRpYXRlay1uZXQudHh0Cj4gQEAgLTEwLDYgKzEw
+LDcgQEAgUmVxdWlyZWQgcHJvcGVydGllczoKPiAgLSBjb21wYXRpYmxlOiBTaG91bGQgYmUKPiAg
+CQkibWVkaWF0ZWssbXQyNzAxLWV0aCI6IGZvciBNVDI3MDEgU29DCj4gIAkJIm1lZGlhdGVrLG10
+NzYyMy1ldGgiLCAibWVkaWF0ZWssbXQyNzAxLWV0aCI6IGZvciBNVDc2MjMgU29DCj4gKwkJIm1l
+ZGlhdGVrLG10NzYyMS1ldGgiOiBmb3IgTVQ3NjIxIFNvQwo+ICAJCSJtZWRpYXRlayxtdDc2MjIt
+ZXRoIjogZm9yIE1UNzYyMiBTb0MKPiAgCQkibWVkaWF0ZWssbXQ3NjI5LWV0aCI6IGZvciBNVDc2
+MjkgU29DCj4gIAkJInJhbGluayxydDUzNTAtZXRoIjogZm9yIFJhbGluayBSdDUzNTBGIGFuZCBN
+VDc2MjgvODggU29DCgoKVGhhbmtzIGZvciB0YWtpbmcgY2FyZSBvZiB0aGlzIQoKTm90ZSwgaG93
+ZXZlciwgdGhhdCB0aGlzIGNvbXBhdGlibGUgdmFsdWUgaXMgZGVmaW5lZCBpbgpEb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbmV0L3JhbGluayxydDI4ODAtbmV0LnR4dAoKSSBiZWxp
+ZXZlIHRoYXQgZmlsZSBzaG91bGQgZ28gYXdheS4gVGhlc2UgdHdvIGZpbGVzIGFyZSBib3RoIGRv
+Y3VtZW50aW5nCnRoZSBzYW1lIGNvbXBhdGlibGUgcHJvcGVydHkgQUZBSUNTLgoKCkJqw7hybgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
