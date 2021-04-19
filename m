@@ -2,130 +2,98 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B319BC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:34:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 545C5C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:35:39 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 281FC6101D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:34:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 281FC6101D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=atmark-techno.com
+	by mail.kernel.org (Postfix) with ESMTPS id AB4126101D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:35:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB4126101D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5ojHqwpS3tNN7JYr5YagpYIJhMeaSpdRy77gn8DqCoc=; b=eE0XmtZeGyxuwLGSmTW5R9rS5
-	zGOEbQ4wAhIBImzoiJ70cp78dQ+xC1ZOuiHAs5WOKJoVNQVY38HSEU/0+2TX2n472vMRurR0MNy4P
-	UC41HnhbSYVoRSdQaRTXPm6+yaFowFf+9T+F/leLc7lInMguyBguZduU0jfS5UGMLmkz454BjfST7
-	qVKfYkE4n1qcTXmzAw4qMi2SpQ0lqHppZpZMyMtwGtWfftc/9Lqu/0+ODHxkHIL2X5mZH3H9nqxZb
-	N/a/XCSdHaOXyCMypwG+5fXfv8uy9eyTTYXY1NCUGFUc7ExoJfJ83aQ9kMdldFfWPa76Bwm1YIw/8
-	qVtscd4HA==;
+	List-Unsubscribe:List-Id:Cc:To:From:Subject:Mime-Version:Message-Id:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/2SdupKEhMkF1XdQpM0lB2RUPWDB+I17OWCgph6U+FY=; b=RDJHZiA/ZzX+uPPjBdgpRA4FAr
+	3fYL+yswY/cyc8pWi5J9fnmBZ0onwIiYTHqN/Mj/qOutzcdRXX6uJ5pEftWtefIJjU5ENKnktD4EL
+	Y770nRQ+HPPDYAglJf1f3/6P25qjGOTyHb5+rZgWwNwhDLAWT6ZelC96+11DHtVq9t3md2vZ7bfvs
+	uvVTrmCmR9RaYmNbzCq1ijNqPIvBNZvk8hnqyk67xM7SdPECMinEjGJ5SatOVu7gz4x23Kg3Imhtc
+	9dr1NAMFFScveG176RX4R0Qbx2fWS77DV4beCx85jB7BYgZLX3uqoEn6A3TG44bOuHYYuPt7coL3G
+	9rBPAn8g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYQIS-009Ysx-Db; Mon, 19 Apr 2021 09:34:24 +0000
+	id 1lYQJT-009Z5j-EV; Mon, 19 Apr 2021 09:35:27 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYQIO-009Yrt-J9
- for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 09:34:20 +0000
+ id 1lYQJS-009Z5J-12
+ for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 09:35:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=f9v+Sm8mKFEbQyXi/sN2tJHr2LOa9v0CsJoz/H5l6cU=; b=kaQa/AbeFluWEL1g4bjzwaRow8
- yXqSwa46A+gZEm4zoKnEIJXxcrDNvfQU+tuCrUePruxaaSObME882ZfGQufXF3gRp2DNjbZeR2Z/m
- E6cTn53sGJ4KJY/UkrTEps9vMJepxE4AReRwZSb5vVzWgLpsZ9CMoP13Gy1zqIjJV90SYlrxKv3t2
- ftYnANI1/x7e4WQiVu0W4GzIBhHxk4vxxoAkgOYN1WlyeT7gq3dn1g1eFFu5MW9OTyDuFC/WUDWKE
- kWFosyKmEwPydot5gQM6oNn2jn3YylssPEsYFUBlDEfZQP44EX86E2HRVYEZ+XOj0so0NMTSyRvjO
- A5kodCQQ==;
-Received: from gw.atmark-techno.com ([13.115.124.170])
- by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lYQIE-00BERZ-Sm
- for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 09:34:19 +0000
-Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
- [209.85.166.198])
- by gw.atmark-techno.com (Postfix) with ESMTPS id A2B158049B
- for <linux-mediatek@lists.infradead.org>; Mon, 19 Apr 2021 18:34:08 +0900 (JST)
-Received: by mail-il1-f198.google.com with SMTP id
- c10-20020a92cf0a0000b029016baf18aee1so10864119ilo.16
- for <linux-mediatek@lists.infradead.org>; Mon, 19 Apr 2021 02:34:08 -0700 (PDT)
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:From:Subject:
+ Mime-Version:Message-Id:Date:Sender:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=8WNrhjLyGdyDWHM865ZCSJ0+zVt77fNMyFmGjFGrnl4=; b=QomYXTmOE59/DLz54Dfy/NaKB0
+ IPVeHZkruG4qAkelahGjLNWMRsjZlolf/gk8oMo4NcWnQ8dRL76vqJvCw0Iu4QNBrer/EgIx1zzLH
+ i/Eu+Z0Z6rzCw2jacn8X1taygTMVSaI9LV4bCV59tiZGYLY0oqmobf400FsAjbRa2TyCFy/auXFzn
+ I6vtwYuR19uUhDQDPBh44O4HvRTQCXyXvR8LtPrtNNKUIErSw7+xEWpgqGMlXJw4v1xqXcVPnenXq
+ 8Huz6Mw6Odj1ykt+/Ea4vnj3IHoHxOLm/sVYm3a41/fQGtLgu0EzSQI/98PTDXpd43OxHisMe5v41
+ JhWPDCjQ==;
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lYQJM-00BEWF-NA
+ for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 09:35:24 +0000
+Received: by mail-yb1-xb49.google.com with SMTP id
+ s34-20020a252d620000b02904e34d3a48abso7090079ybe.13
+ for <linux-mediatek@lists.infradead.org>; Mon, 19 Apr 2021 02:35:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=8WNrhjLyGdyDWHM865ZCSJ0+zVt77fNMyFmGjFGrnl4=;
+ b=CAEt3s53rOTQrQyMSGDziVgDrIyTUMOlQuNe0Tk+6QH1Nu046WxDAwSUeb9ImRFQGA
+ gwnNZctQXHXthNf0nIiNzSkO1yyVNd7JyYGFcUiZSM9ode7MlEr2n0iXKxYwbcx+Pzh/
+ XvMNKjhb+Xy5sy5L79ZtyNattUmxFOurOIWY/cOiNtuYyIlCXDo7f04rUtepM47IF0Mw
+ PVSBmF+iSKx5R4XGmgTO3FgwzZkKtfzMhr1ftR4qXtZcwydVWlaKh9BOJWbQz6CuUEKD
+ DfhH7sdV8GxzSOQXKWz58LIze6jme/Qq7B9mGDLtpkm/RKrg9sDrte+mRbFBS6BgT481
+ Jt9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=f9v+Sm8mKFEbQyXi/sN2tJHr2LOa9v0CsJoz/H5l6cU=;
- b=kFQwDH66z3fkbfr1bqs6mkOBuisqKJKABXu+1MnEImTXwb7A5SlWmqTE+UglWIBnNU
- Xeuyrq9+v2qenfzHQDzHGlUXfMA56vovs2f9gVgWcC//jyDWa33x4RYTjG+O2dL9NRDi
- egYqbWbcDkVCHWe4P5DNvzaZHrMyqqeBs9egC5BU4G6RctG4K5KjzfdoUuqM+BYeJvQX
- wGVjkFnTtMjzHx7Ro9NAsndzlsX/FOLOQa8DM5nJz54ywMyNdFHWYBvd/duwgCalJCJf
- F1tTJnFZcrxfuLvAnkD4i8w4RolHvQxeoXm5mOusFtajU7G3W1DzBSUIKJM/m8afDlzc
- K/5A==
-X-Gm-Message-State: AOAM533kHDuol2stutlT+9yXu4njbPXJjsqYsC88C4PiZjl5E+8RS0of
- Z6EH61qEZYEDA99DDdfhBk06xPl5BE1tiyLNcIDIbUYTD+IQen2yelHIyOpeo0FfeF5IucrJy47
- 0vRFn3QZ+WlaEqEes/m/A/dn1eDUSGJSDLq32
-X-Received: by 2002:a63:1665:: with SMTP id 37mr11208883pgw.31.1618824837068; 
- Mon, 19 Apr 2021 02:33:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw3BVfHB/Iu3InVzb+YLUkuY7/BfcYMlC0sOGsbJiks+G4SQp5aPsproxuobb7vRE8Qif9k+g==
-X-Received: by 2002:a63:1665:: with SMTP id 37mr11208853pgw.31.1618824836841; 
- Mon, 19 Apr 2021 02:33:56 -0700 (PDT)
-Received: from pc-0115 (103.131.189.35.bc.googleusercontent.com.
- [35.189.131.103])
- by smtp.gmail.com with ESMTPSA id x18sm10982637pjn.51.2021.04.19.02.33.56
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 19 Apr 2021 02:33:56 -0700 (PDT)
-Received: from martinet by pc-0115 with local (Exim 4.94)
- (envelope-from <martinet@pc-0115>)
- id 1lYQHy-002k7D-3h; Mon, 19 Apr 2021 18:33:54 +0900
-Date: Mon, 19 Apr 2021 18:33:44 +0900
-From: Dominique MARTINET <dominique.martinet@atmark-techno.com>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: "Alice Guo (OSS)" <alice.guo@oss.nxp.com>, gregkh@linuxfoundation.org,
- rafael@kernel.org, horia.geanta@nxp.com, aymen.sghaier@nxp.com,
- herbert@gondor.apana.org.au, davem@davemloft.net, tony@atomide.com,
- geert+renesas@glider.be, mturquette@baylibre.com, sboyd@kernel.org,
- vkoul@kernel.org, peter.ujfalusi@gmail.com, a.hajda@samsung.com,
- narmstrong@baylibre.com, robert.foss@linaro.org, airlied@linux.ie,
- daniel@ffwll.ch, khilman@baylibre.com, tomba@kernel.org,
- jyri.sarha@iki.fi, joro@8bytes.org, will@kernel.org,
- mchehab@kernel.org, ulf.hansson@linaro.org, adrian.hunter@intel.com,
- kishon@ti.com, kuba@kernel.org, linus.walleij@linaro.org,
- Roy.Pledge@nxp.com, leoyang.li@nxp.com, ssantosh@kernel.org,
- matthias.bgg@gmail.com, edubezval@gmail.com, j-keerthy@ti.com,
- balbi@kernel.org, linux@prisktech.co.nz, stern@rowland.harvard.edu,
- wim@linux-watchdog.org, linux@roeck-us.net,
- linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- linux-clk@vger.kernel.org, dmaengine@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, linux-media@vger.kernel.org,
- linux-mmc@vger.kernel.org, netdev@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-gpio@vger.kernel.org,
- linuxppc-dev@lists.ozlabs.org, linux-staging@lists.linux.dev,
- linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org,
- Arnd Bergmann <arnd@arndb.de>
-Subject: Re: [RFC v1 PATCH 3/3] driver: update all the code that use
- soc_device_match
-Message-ID: <YH1OeFy+SepIYYG0@atmark-techno.com>
-References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
- <20210419042722.27554-4-alice.guo@oss.nxp.com>
- <YH0O907dfGY9jQRZ@atmark-techno.com>
- <CAMuHMdVY1SLZ0K30T2pimyrR6Mm=VoSTO=L-xxCy2Bj7_kostw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMuHMdVY1SLZ0K30T2pimyrR6Mm=VoSTO=L-xxCy2Bj7_kostw@mail.gmail.com>
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=8WNrhjLyGdyDWHM865ZCSJ0+zVt77fNMyFmGjFGrnl4=;
+ b=r0Z90311FNmdQXqKXANiSEl8DuoHM4U4j1YjS/bcIumov0udZnB5rS/p+pHNQJ/8lP
+ Etzh/Qwk6OrS91cJU5IFbMYA1RMYqfRyKbdwj2IqgQl7gLhNFcgjDWhy40UGwAESGNej
+ RwmpFXUB6XGg2HtdyqL/322a0w4sT7fr9a2/gn8sqtfQnerQDBkJEzqErDkZRWnpm7L0
+ y6W/e0L4fBMpb4aoK7pqXq/a05ZA+6BCo0A4U65eiKfC/Y9ufMd6Kmsfoho0ifvyXxBt
+ ghprSw8zqUZO3mq/aolu8TuL10B8BJk2Ax5wa/irxObJl3w05O52r0fl+i4AXRKkCRaw
+ 70Fg==
+X-Gm-Message-State: AOAM531U9FMA4K/JK4Vgg6chPzIcNTTC3D+sIizM2yNCHmEvRmqvKrtU
+ PnUaq+jOM8g7HftfSrS5GOnrJ93uBmXE
+X-Google-Smtp-Source: ABdhPJzBRm7VdHEJmg0TVEqWdqGpo383048pfypHGJSkLrWN945dqM4Gi1tsqSwWKdDgxo8u869CRLRnuG9a
+X-Received: from tzungbi-z840.tpe.corp.google.com
+ ([2401:fa00:1:b:907f:7138:4a1f:7db])
+ (user=tzungbi job=sendgmr) by 2002:a25:c754:: with SMTP id
+ w81mr15258408ybe.492.1618824919014; Mon, 19 Apr 2021 02:35:19 -0700 (PDT)
+Date: Mon, 19 Apr 2021 17:34:49 +0800
+Message-Id: <20210419093449.3125704-1-tzungbi@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.31.1.368.gbe11c130af-goog
+Subject: [PATCH v2] pinctrl: mediatek: use spin lock in mtk_rmw
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: broonie@kernel.org, sean.wang@kernel.org, linus.walleij@linaro.org, 
+ matthias.bgg@gmail.com, zhiyong.tao@mediatek.com
+Cc: alsa-devel@alsa-project.org, tzungbi@google.com, 
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, andy.shevchenko@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_023411_058836_CD69CB16 
-X-CRM114-Status: GOOD (  26.00  )
+X-CRM114-CacheID: sfid-20210419_023520_799479_A580D204 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,52 +110,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Commit 42a46434e9b1 ("pinctrl: add lock in mtk_rmw function.") uses
+mutex lock in mtk_rmw.  However the function is possible called from
+atomic context.
 
-Geert Uytterhoeven wrote on Mon, Apr 19, 2021 at 11:03:24AM +0200:
-> > This is going to need quite some more work to be acceptable, in my
-> > opinion, but I think it should be possible.
-> 
-> In general, this is very hard to do, IMHO. Some drivers may be used on
-> multiple platforms, some of them registering an SoC device, some of
-> them not registering an SoC device.  So there is no way to know the
-> difference between "SoC device not registered, intentionally", and
-> "SoC device not yet registered".
+For example call trace:
+  mutex_lock+0x28/0x64
+  mtk_rmw+0x38/0x80
+  [snip]
+  max98357a_daiops_trigger+0x8c/0x9c
+  soc_pcm_trigger+0x5c/0x10c
 
-Hm, good point, I was probably a bit too optimistic if there are devices
-which don't register any soc yet have drivers which want one; I don't
-see how to make the difference indeed... And that does mean we can't
-just defer all the time.
+The max98357a_daiops_trigger() could run in either atomic or non-atomic
+context.  As a result, dmesg shows some similar messages: "BUG: sleeping
+function called from invalid context at kernel/locking/mutex.c:254".
 
-> soc_device_match() should only be used as a last resort, to identify
-> systems that cannot be identified otherwise.  Typically this is used for
-> quirks, which should only be enabled on a very specific subset of
-> systems.  IMHO such systems should make sure soc_device_match()
-> is available early, by registering their SoC device early.
+Uses spin lock in mtk_rmw instead.
 
-I definitely agree there, my suggestion to defer was only because I know
-of no other way to influence the ordering of drivers loading reliably
-and gave up on soc being init'd early.
+Fixes: 42a46434e9b1 ("pinctrl: add lock in mtk_rmw function.")
+Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+---
 
-In this particular case the problem is that since 7d981405d0fd ("soc:
-imx8m: change to use platform driver") the soc probe tries to use the
-nvmem driver for ocotp fuses for imx8m devices, which isn't ready yet.
-So soc loading gets pushed back to the end of the list because it gets
-defered and other drivers relying on soc_device_match get confused
-because they wrongly think a device doesn't match a quirk when it
-actually does.
+Changes from v1[1]:
+- Snip call trace.
+- Use _irqsave and _irqrestore version of spin lock.
 
-If there is a way to ensure the nvmem driver gets loaded before the soc,
-that would also solve the problem nicely, and avoid the need to mess
-with all the ~50 drivers which use it.
+[1]: https://patchwork.ozlabs.org/project/linux-gpio/list/?series=239749
 
+ drivers/pinctrl/mediatek/pinctrl-moore.c         | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 5 +++--
+ drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h | 2 +-
+ drivers/pinctrl/mediatek/pinctrl-paris.c         | 2 +-
+ 4 files changed, 6 insertions(+), 5 deletions(-)
 
-Is there a way to control in what order drivers get loaded? Something in
-the dtb perhaps?
-
-
-Thanks,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+index f77921957f15..3a4a23c40a71 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-moore.c
++++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+@@ -619,7 +619,7 @@ int mtk_moore_pinctrl_probe(struct platform_device *pdev,
+ 
+ 	hw->nbase = hw->soc->nbase_names;
+ 
+-	mutex_init(&hw->lock);
++	spin_lock_init(&hw->lock);
+ 
+ 	/* Copy from internal struct mtk_pin_desc to register to the core */
+ 	pins = devm_kmalloc_array(&pdev->dev, hw->soc->npins, sizeof(*pins),
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+index fcf7c3eeee4a..fc79b3a7a188 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+@@ -57,15 +57,16 @@ static u32 mtk_r32(struct mtk_pinctrl *pctl, u8 i, u32 reg)
+ void mtk_rmw(struct mtk_pinctrl *pctl, u8 i, u32 reg, u32 mask, u32 set)
+ {
+ 	u32 val;
++	unsigned long flags;
+ 
+-	mutex_lock(&pctl->lock);
++	spin_lock_irqsave(&pctl->lock, flags);
+ 
+ 	val = mtk_r32(pctl, i, reg);
+ 	val &= ~mask;
+ 	val |= set;
+ 	mtk_w32(pctl, i, reg, val);
+ 
+-	mutex_unlock(&pctl->lock);
++	spin_unlock_irqrestore(&pctl->lock, flags);
+ }
+ 
+ static int mtk_hw_pin_field_lookup(struct mtk_pinctrl *hw,
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+index 65eac708a3b3..13836bb188b7 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+@@ -252,7 +252,7 @@ struct mtk_pinctrl {
+ 	struct mtk_pinctrl_group	*groups;
+ 	const char          **grp_names;
+ 	/* lock pin's register resource to avoid multiple threads issue*/
+-	struct mutex lock;
++	spinlock_t lock;
+ };
+ 
+ void mtk_rmw(struct mtk_pinctrl *pctl, u8 i, u32 reg, u32 mask, u32 set);
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index 48e823f6d293..85db2e4377f0 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -970,7 +970,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
+ 
+ 	hw->nbase = hw->soc->nbase_names;
+ 
+-	mutex_init(&hw->lock);
++	spin_lock_init(&hw->lock);
+ 
+ 	err = mtk_pctrl_build_state(pdev);
+ 	if (err) {
 -- 
-Dominique
+2.31.1.368.gbe11c130af-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
