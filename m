@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47286C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 04:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC642C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 04:05:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B710561106
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 04:04:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B710561106
+	by mail.kernel.org (Postfix) with ESMTPS id 5547961104
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 04:05:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5547961104
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,63 +24,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A872W2Na01vr8V95OUYbNDnWMW2jt+wXXNyIs3QI/1M=; b=qWUwakl3Hzl3MHsrKBZQvrzrz
-	hvJi2snBe6VcGMhfDfYILvHzhk4H3ykbSbr6Fhzl21PzUXjEP6ewslIQjEB9l1tWW86NCQs4IZ7qh
-	+kPsGF1eom1qOT621iIyFV3DQXdvyiiF3D+wW0jnAr6k+/i13zzj40wnXVzBriaPiQ3pj6JgUdZH6
-	JO0E+m1Am2EK4GdtsSy4vQa0Yp9R+/jUPYwdZ2kS8DrUpxQN7027ptJnfzRZzA3SNqhPJ8U2F5wCW
-	W83p2dcTjdjpAHFOqY9q97fXGdJpGRMTc8VElyez4iyko5LkQKOGskn7VLy5uxkYgMrSnagTj99IM
-	SVeK2fT9Q==;
+	 bh=6YS2B/yCs7L1MQXpVWG75W5+ajpj49bEwb7wWUyWuwk=; b=Svkl6lJljOVz6XV3WWn4EmLuZ
+	eMAG0+St1/CBN78CX9ky+OwfHo/291WXWCuvbTxbo9ACcKtASc9jtfwnN4pcrJy+XiG7qW4WPq4yI
+	e5VjZnTCnau2SRkku3rjtcFp6/2uTbKGSMOljvcJ6/iKKg8+3k9BKmgE/yRsEjAWwbwcIhkql1ToK
+	IY++35F0hzBFJN23/SQifvSRq9KCpnuR3t6bKtTb9ME/YW9xG1yIISo4wMDc4L6giN1jrm6s16MWC
+	czPHvT5Z1gqppY5DTEB/jP6GSBKT1dIFaHK44bPW0kSj/cMEdOeSpM8F2OlDNRJV+R2yoshmiJcqq
+	vTAg0w45w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYL9H-00922h-ET; Mon, 19 Apr 2021 04:04:35 +0000
+	id 1lYL9S-00924r-UE; Mon, 19 Apr 2021 04:04:47 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYL8u-00920p-Kr; Mon, 19 Apr 2021 04:04:12 +0000
+ id 1lYL8x-00921D-Tb; Mon, 19 Apr 2021 04:04:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=d6IeN222L2AvMC3BWodguJL4uvfgEGERLTNiOfhrG14=; b=ANOIjEGVw2z3BGEkb6Z6HVRAiH
- Tp3OR11j5b99QUPCk4xLTQaoTIUF0FaTRJUuMBlZn4ZFiThjcf8ACKRTNw0AKTSL9mXIE5EBbefBT
- LX+zcgQFyIFSSQpH8ZnYVBFupWitsqOVLgzrFaxEzfCrH02y/h5DWWMI+0YssH8l9FIOUjjvyd1Og
- KCHYMJBXlwMKx/qQUmqblWbYm65ZAxmjQ+4uxL7ZwHthbXRH38xpWL67TbyAOmNbwx/oJdkpn09KO
- qYTqzcRewyZDvH66XTotaCblIgQuEsXtojxmlb3Zrn0YC2cEwgmplwUiZwtUy1GDRAuVdVxGjJ4s6
- G2BFbsUA==;
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=nooF0bh3uQe/ilf/ttra6OUts5vU91KPBygIK+rN8CU=; b=Rs07f4amdW34dT8Zxmhebb87w/
+ ZfOLpVeSDcy2wib2S/kCHkCleqcWAHg1K+XN/qcfsoZrox7b/QqdD2HblNUBPxrnPWD92dfWhNnPh
+ 4pc27XzLAkHrAWKa0wE+1Eeq9qurDs1npE8p6/6m8LiFA2lq8zUYB46C+kHXir/06jFEPiw2F4tJo
+ Kpq2b7eXSgLS3yyRQLPkDY5PYQNICh6rhuTUjhfIj3djGoMqZEn7oJx8RU538CXM8TehRXlo+qpiW
+ puq5KnTqpJSrIV8iJP0cXv6/MzLsxP9dEXDB9fmFniup/iDytZ9pV2VSJI611arNsrSpJ/cvMEhob
+ nhjGr4Bw==;
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYL8r-00Awy7-2a; Mon, 19 Apr 2021 04:04:10 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id y32so23317563pga.11;
- Sun, 18 Apr 2021 21:04:08 -0700 (PDT)
+ id 1lYL8s-00AwyY-CH; Mon, 19 Apr 2021 04:04:14 +0000
+Received: by mail-pf1-x434.google.com with SMTP id w6so7760990pfc.8;
+ Sun, 18 Apr 2021 21:04:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=d6IeN222L2AvMC3BWodguJL4uvfgEGERLTNiOfhrG14=;
- b=hp1kcgZxFWT8L4BFkOKZifS1WtozMEz2JHpzcAYKcXyohrFfbFPqyKBqsn6UVaaE92
- ujAG3bWmhL7fMQVAsynqU56t4V8rqWcZM2VbZgtgwennO/CJhtf1sTkk6FGc3altf0Ke
- 1UwCM7LXFIO9ZJSvQcL2W0XjXxaG3YIjDYXnPO1G4BE4HKn4BKET0yY9EiWLcBlntNmS
- 1S6AyBdFKVYPoAwXDqWVaD5gSI8grL8VtmgZ3YMIEgEFDklO0tDT8J4YWoy+/VZ/ExRZ
- XtHqAm4SXDdMYLHfBTTo4Axxo02/L/eko/10X4PPiPJsffZ4902yw7hixvGgfRFgB1H5
- i9XQ==
+ bh=nooF0bh3uQe/ilf/ttra6OUts5vU91KPBygIK+rN8CU=;
+ b=lAE1M2kH8mYGvH4QI2ZOpm39wWa82gcbp2UhP0pd8YfHtS/cOHPn9k/+8vBbmYjPJQ
+ B7YLOHcKKQodQni2ID6ZRG2C0cTCaYNx0r8PsACXLeUGRwGlqUl6sFPiguWqasIDKqv7
+ 9sQbY2hmfpnYLHWq9rpDcQ8NcaTO9VZfmP6dzOiwAOykn5lV7XDx4ktxT1rTQzVPy/K8
+ EoGHHeIwtJ2vkaSTMK03l0Ffalq/2ItfJ/UjGYt33pY8UzUOtJc4ki8GM+TECddbVxH9
+ gZBsQUe370IvM+hutvbSC+uZlHx4BTSlVKqXbdZ4kLdJaD68OVyJoBhG9DWErIBZWrLm
+ Ucbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=d6IeN222L2AvMC3BWodguJL4uvfgEGERLTNiOfhrG14=;
- b=CvMhuqm3Rowo5rc///MrrnPd3nz6eVqkHHFk2Yavxm6qTdfVLvdedvchKtjr8oijj4
- E0XJxBXgKyIYdRlrYX5LOXDif1ACBfR6q5siTDEQGKbDIP7wZuFmugHrUQoOL21jbdZc
- AbjoAMQ8Oj+j7NMka3xbZmq2/zX/T5os73Q0uzd4B0QBg6b6IStG/fkC2sY7azJiHTpT
- MkmKw9BPdApIhklIcoxMQO5xaAgQ7mKR2RtH3qwSwkyrHUe7qVeeHNtQRGgl9G4dvLZd
- /pkMLpyeR9YcD0RWPFyKrbwmDXXvmMIasmeYZtfRsIgYgTuy4oAdeCi+aqcWmBz3KVMM
- sKug==
-X-Gm-Message-State: AOAM5328VJ73GqFmY8+MK5nJjai/PAAe5y7P8xuCyGXaQLB2RavWKbVN
- f0LtG6NsJTLCdLDInnTBUcc=
-X-Google-Smtp-Source: ABdhPJySGEplzNOMXbX8mZJ9ih1HgpaLsQcB9orNv5Od5eujgBSB/bPGQSA2iseT8Vp27TAWSqWWcQ==
-X-Received: by 2002:a65:42c3:: with SMTP id l3mr8072387pgp.258.1618805047563; 
- Sun, 18 Apr 2021 21:04:07 -0700 (PDT)
+ bh=nooF0bh3uQe/ilf/ttra6OUts5vU91KPBygIK+rN8CU=;
+ b=Xd77az0tUDVP5af6Sw9Z6QHzyoV3+YXxbWhaATJFUSYomnFvMa8aDGVcImOehQ1ern
+ yjxCijdzH7pSlnNcsLJapkAJfE2VsiQx7MotQGunMEzZQiQ5r/sOlLjJiSZvzDlCBDgw
+ rGf5kV+nSGRDD+mrKmuDmUa7UITky1B0jPCDf5LqLDl6F02szEvGOtn1hqsuk3WTRg5z
+ otuCVtrnR0QNzQFF83GhyBtHiJUzb1Uw6L4oykHsyVuRRMSPtge2QbTUdtMwq6+n70P0
+ 5OWQW/Ubb/dqx7YbVlGMqSP/4gP1xNxunPI8QZjJCt1agiasuvQFhDU4Yvx2ivZefzL3
+ Q9Mg==
+X-Gm-Message-State: AOAM533nspRjlFVI+zaH2baKQUoYmGDYk3KC7LZiIsKf/nVo60O0Ogw5
+ hIA1kgRlmjZjEqptT4Bra44=
+X-Google-Smtp-Source: ABdhPJz2bKhFE3qPTDDPaQXc8tpwKJvnnZWr0+4qR2uTa5yoJE0Y33ONufXaKA1nPG7HARQ8c5C9Tw==
+X-Received: by 2002:a63:5f54:: with SMTP id t81mr3727918pgb.286.1618805048816; 
+ Sun, 18 Apr 2021 21:04:08 -0700 (PDT)
 Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id 25sm12169423pgx.72.2021.04.18.21.04.05
+ by smtp.gmail.com with ESMTPSA id 25sm12169423pgx.72.2021.04.18.21.04.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Apr 2021 21:04:07 -0700 (PDT)
+ Sun, 18 Apr 2021 21:04:08 -0700 (PDT)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Rob Herring <robh+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
@@ -90,18 +90,19 @@ To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next 1/2] dt-bindings: net: mediatek: add optional GMAC
- labels
-Date: Sun, 18 Apr 2021 21:03:51 -0700
-Message-Id: <20210419040352.2452-2-ilya.lipnitskiy@gmail.com>
+Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>
+Subject: [PATCH net-next 2/2] net: ethernet: mediatek: support custom GMAC
+ label
+Date: Sun, 18 Apr 2021 21:03:52 -0700
+Message-Id: <20210419040352.2452-3-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210419040352.2452-1-ilya.lipnitskiy@gmail.com>
 References: <20210419040352.2452-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210418_210409_142988_9BAC1BF1 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20210418_210410_458588_4F2E440C 
+X-CRM114-Status: GOOD (  14.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,54 +114,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the mediatek ethernet driver change that adds support for
-custom labels and provide an example.
-
-Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
----
- Documentation/devicetree/bindings/net/mediatek-net.txt | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index 72d03e07cf7c..500bf9351010 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -51,6 +51,10 @@ Required properties:
- 	is equal to 0 and the MAC uses fixed-link to connect
- 	with internal switch such as MT7530.
- 
-+Optional properties:
-+- label: overrides the default netdevice name. Useful when a custom name for the
-+	DSA master interface is desired.
-+
- Example:
- 
- eth: ethernet@1b100000 {
-@@ -74,12 +78,14 @@ eth: ethernet@1b100000 {
- 
- 	gmac1: mac@0 {
- 		compatible = "mediatek,eth-mac";
-+		label = "gmac1";
- 		reg = <0>;
- 		phy-handle = <&phy0>;
- 	};
- 
- 	gmac2: mac@1 {
- 		compatible = "mediatek,eth-mac";
-+		label = "gmac2";
- 		reg = <1>;
- 		phy-handle = <&phy1>;
- 	};
--- 
-2.31.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+VGhlIE1BQyBkZXZpY2UgbmFtZSBjYW4gbm93IGJlIHNldCB3aXRoaW4gRFRTIGZpbGUgaW5zdGVh
+ZCBvZiBhbHdheXMKYmVpbmcgImV0aFgiLiBUaGlzIGlzIGhlbHBmdWwgZm9yIERTQSB0byBjbGVh
+cmx5IGxhYmVsIHRoZSBEU0EgbWFzdGVyCmRldmljZSBhbmQgZGlzdGluZ3Vpc2ggaXQgZnJvbSBE
+U0Egc2xhdmUgcG9ydHMuCgpGb3IgZXhhbXBsZSwgc29tZSBkZXZpY2VzLCBzdWNoIGFzIHRoZSBV
+YmlxdWl0aSBFZGdlUm91dGVyIFgsIG1heSBoYXZlCnBvcnRzIGxhYmVsZWQgZXRoWC4gTGFiZWxp
+bmcgdGhlIG1hc3RlciBHTUFDIHdpdGggYSBkaWZmZXJlbnQgcHJlZml4CnRoYW4gRFNBIHBvcnRz
+IGhlbHBzIHdpdGggY2xhcml0eS4KClN1Z2dlc3RlZC1ieTogUmVuw6kgdmFuIERvcnN0IDxvcGVu
+c291cmNlQHZkb3JzdC5jb20+ClNpZ25lZC1vZmYtYnk6IElseWEgTGlwbml0c2tpeSA8aWx5YS5s
+aXBuaXRza2l5QGdtYWlsLmNvbT4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9t
+dGtfZXRoX3NvYy5jIHwgNCArKysrCiAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCgpk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX2V0aF9zb2MuYyBi
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L21lZGlhdGVrL210a19ldGhfc29jLmMKaW5kZXggNmIwMGMx
+MmM2YzQzLi40YzBjZTRmYjc3MzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L21l
+ZGlhdGVrL210a19ldGhfc29jLmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsv
+bXRrX2V0aF9zb2MuYwpAQCAtMjg0NSw2ICsyODQ1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBu
+ZXRfZGV2aWNlX29wcyBtdGtfbmV0ZGV2X29wcyA9IHsKIAogc3RhdGljIGludCBtdGtfYWRkX21h
+YyhzdHJ1Y3QgbXRrX2V0aCAqZXRoLCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQogeworCWNvbnN0
+IGNoYXIgKmxhYmVsID0gb2ZfZ2V0X3Byb3BlcnR5KG5wLCAibGFiZWwiLCBOVUxMKTsKIAljb25z
+dCBfX2JlMzIgKl9pZCA9IG9mX2dldF9wcm9wZXJ0eShucCwgInJlZyIsIE5VTEwpOwogCXBoeV9p
+bnRlcmZhY2VfdCBwaHlfbW9kZTsKIAlzdHJ1Y3QgcGh5bGluayAqcGh5bGluazsKQEAgLTI5NDAs
+NiArMjk0MSw5IEBAIHN0YXRpYyBpbnQgbXRrX2FkZF9tYWMoc3RydWN0IG10a19ldGggKmV0aCwg
+c3RydWN0IGRldmljZV9ub2RlICpucCkKIAllbHNlCiAJCWV0aC0+bmV0ZGV2W2lkXS0+bWF4X210
+dSA9IE1US19NQVhfUlhfTEVOR1RIXzJLIC0gTVRLX1JYX0VUSF9ITEVOOwogCisJaWYgKGxhYmVs
+KQorCQlzdHJzY3B5KGV0aC0+bmV0ZGV2W2lkXS0+bmFtZSwgbGFiZWwsIElGTkFNU0laKTsKKwog
+CXJldHVybiAwOwogCiBmcmVlX25ldGRldjoKLS0gCjIuMzEuMQoKCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
+dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
+YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
