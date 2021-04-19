@@ -2,108 +2,109 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 432FFC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2166C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:04:04 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A7F5861159
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:45:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7F5861159
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3B3D961151
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 09:04:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B3D961151
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nh/coU+laHu6Pf7x2v0mLW17l6Bfd845ui8NiDw4+54=; b=EzQ7Npd39Xmjt/TUCwQOgQwhu
-	CMljDm/hj+qd58lIGb0bLUd4EBbD6D1xjZzNssYnNwwO81UToExjYmHESWBp9c6K0tcYiRN6jbvwD
-	m3bowP5+sYnYyvu4lumBZd71c6G+o311HMmv7kndy2PkqP+reNh5V+3jLAp1Gt0nxQEW3icWtVRYm
-	Qvz1tbkLW//Lz1/L0x2joY0gB13ra90hdSBkTyHWpTkNgOHDMVKcgxGIZvOvpdVNK6EwlsZs+IhRd
-	a/0RApo5UpRlKquHtBvLWslBi7HWXTMNvtpG/fXF7R688mC+aL+v/4CLDiV9yzt8cqzDPJwZthZRc
-	QbWa3XLQQ==;
+	 bh=qUjGNMdBqnGU6w1mHejpiJQqv8J5slQSNC6Ts5ME5hM=; b=lecb3yWINWJi4tcy9Ct9WsJZu
+	ypSgrPNt2nN8JPiyeIuL/YQ17lzTzxM3nlhkRo0Y6MBxCYjrmVX+LInw0pMA/ZgmQI7r3b2Wwx2GI
+	p+PVgjJRdvZpZH+CEWFmi/dhfRBDr3LXx8TizFWGIPAUDlg+xYg4UnucPENQP3mLgvkz38M0mCweK
+	HPm3LPTLVPBd1JvXLfG3c73yxdwGVgQxmAqr2DcYz2rbDBt1xPspI72WHYE8+HmIoc8UGbHV/27ij
+	qbZ6vghPoIPfNbFtIUuHGH2c9p5hfo9p5xr7iNMjnqMP6WjGtgtjLeG/yXCgGY0BVTh3U9kms8WCE
+	lNnFA7wjQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYPWY-009TxQ-Ho; Mon, 19 Apr 2021 08:44:54 +0000
+	id 1lYPos-009Vzq-OF; Mon, 19 Apr 2021 09:03:50 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYPWN-009Tw7-RA
- for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 08:44:44 +0000
+ id 1lYPoo-009VzK-Sg; Mon, 19 Apr 2021 09:03:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=WTUicYn2ZPNcfjliuOy4sPKfu2P1IFAME69ExWOzQFU=; b=ZGIiZqzhYFLl1D/nBJ/raBqbso
- klEJPAU7UvUe1uVn3C4GQOvD90ffeo1YSoJDMxXMYRFJkDxXQajLWaALWp3RhFt9Xn+1qoZwty5hw
- /DXEuPXkWKgZG1h++7AzF541YICX26bI2HnAHryDGUdyL1tojVuImhuanNAupuWJs3IRuotVjwQWt
- Snzr90Pkjd1/vDbHq/5SdrftHpR328j0we+Fy9cVj33L4HaYljwMvwhhMCIcbg2mBiCtjH42hEmRg
- V5ISC2ujDJTd/XCIXOX+ZUW0CZw6gmST5XX6eEOHMBcsxixZ4wxARhiNELmw94Rw07yhtfpPn7wKL
- de8218cg==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=YToQwZXN38nw8LU8icFLB58IB4Z2bfPdJB1gmWWtNj8=; b=0JDWmvZG4NqAgLpIjlN08s5Hst
+ KBAZvnrLeKgQea59DdqdLfeKdWae/Ut60pP7B/+3HOA7Ni9YEWkn4/CAjaLy6to3Qy4mBg4jmzIJC
+ q5MOGMMkIebMEmFtp5h5m4YBDu3Y7enITH6lNdiN/48/ZFl0xKTwAznm84iUDSZiCA0nklQljgYul
+ HtrcKgY9jBnJoolgKvVzRnNVl6ccAUfFUJbbd45ZM2CBFme/PRhNo+XkTj9xQl4znjrIy0ceWf1NY
+ S4M9u2vE7jvyNi9f25SOeOajxqGb8pL1JbEWqJ0QN6o6QsTo1CIFCFUACKZCO2KL7s2P9+Pljml2s
+ 4NL1JVIg==;
+Received: from mail-vs1-f46.google.com ([209.85.217.46])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYPWI-00BCes-50
- for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 08:44:42 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id x7so33047665wrw.10
- for <linux-mediatek@lists.infradead.org>; Mon, 19 Apr 2021 01:44:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WTUicYn2ZPNcfjliuOy4sPKfu2P1IFAME69ExWOzQFU=;
- b=zGvLLCwASa/kobu7RHCgl7wBZKFpMqcCJRufnfk8f/6fp+9P+8qO3UhXpogbyPseUW
- g7TwuxKH/3p2IEcg09BPdxnuoY8dGLRIUL0yl2bOjXU1+o3/luQo3sb5mUQhAeLOOq2m
- puZCuv2XIqz+6E6LUTa4+chF5F0jKIzUkQbJWwPG2uUEfb3WuflcJ/vn8MeBxN6PI9n/
- EbP6tBM3ssjvyB7P9sRLvZQADteggAc7XsflDg9tGYnHmtpSJtHBI3cSJCa95JTPYwwp
- 69Dr+3EbA1synqCnZSvr7F8oiQGhUmZ8n+6C9HIC0MY4yDk2Xt/5AIKUjV7B6a0dIRXX
- dOYQ==
+ id 1lYPoi-00BDOT-63; Mon, 19 Apr 2021 09:03:45 +0000
+Received: by mail-vs1-f46.google.com with SMTP id i9so2313184vsb.13;
+ Mon, 19 Apr 2021 02:03:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WTUicYn2ZPNcfjliuOy4sPKfu2P1IFAME69ExWOzQFU=;
- b=VxC+f+wj4qc6z3WYa1LnF4oi4wacdy3ChS7go8EKCDoi29MD5+KmAVfXMo0Bl/eDmq
- YhqonXC0AWAgBZPh5W1myHjb+2xdOrUZXGUiz47OOvHb9RoE4wBGxELCttpIb8mRmFCS
- 1BhOamXlbEeRhflRnzxJILuFnhuuTFaONAtge5CG9q6ZBPEVZm4H3/qz3GpEz8FiA5Ce
- kBCJNEknBWU3jVdi0EFzjaGTUErlnM5Hb/w8TiEZBrsBAfPzrY7ZA9r5LoimeIh+Kd4R
- eMYdV+qfyRvYVq0F/iJVgoq2lBv+cgQ+HTSmtquhM26qMePrPSxBzHku3637Aa7R/q5x
- 2RKQ==
-X-Gm-Message-State: AOAM530sBtJdS6+sXazR2yxGOCwqbGaWnSN6BbHoVxyatVLdpAgd2Osg
- /J8UixQ6N3YoQ6e+m65yqgVdVw==
-X-Google-Smtp-Source: ABdhPJx5D7lFlk4bYnmVatrdb6C9VwXdtuKYfFdSCdhFeMhpry0kZfvdOfbAYm1RBT/wBm2fQGzjdA==
-X-Received: by 2002:a5d:6ace:: with SMTP id u14mr13075902wrw.322.1618821876115; 
- Mon, 19 Apr 2021 01:44:36 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:796f:a096:3809:6fc5?
- ([2a01:e34:ed2f:f020:796f:a096:3809:6fc5])
- by smtp.googlemail.com with ESMTPSA id h5sm3245015wmq.23.2021.04.19.01.44.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Apr 2021 01:44:35 -0700 (PDT)
-Subject: Re: [PATCH] [v4, 1/1] clocksource/drivers/timer-mediatek: optimize
- systimer irq clear flow on shutdown
-To: Fengquan Chen <Fengquan.Chen@mediatek.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: dehui.sun@mediatek.com, Evan Benn <evanbenn@chromium.org>
-References: <1617960162-1988-1-git-send-email-Fengquan.Chen@mediatek.com>
- <1617960162-1988-2-git-send-email-Fengquan.Chen@mediatek.com>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <4d3b342c-a14f-f4ac-6860-9f6a88a24501@linaro.org>
-Date: Mon, 19 Apr 2021 10:44:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YToQwZXN38nw8LU8icFLB58IB4Z2bfPdJB1gmWWtNj8=;
+ b=eL1ufYCDL0+9AZQR5sJMAKYTxr8mN/GSUWxDUBr7glPYXLrJMCbgtsWbeqH+U5yRVT
+ ScnHIuV8WDNs00ax+GrUnsSKVj5qJOCLfI1fKTVm/t02Z7KHrrbxQFe5FZ6wU1Vrl1QK
+ 1zqJOV6Qcym66RaKydw69d6x0Fe3a+B3qYpAzAPGOGsegrQwKYieHtFdvO+BW9voBQH+
+ vteMEnRIlCkLByHswifiNhg+hz/+33ehI1a50a7kJukoW0XtGI9EbTAWWknHmsrFzTsh
+ VsIyBYopzW/8idNXOkUg3JemByiBB01KKHhul/idHrUqOoiBqHKLkv1sNDPqrgUNW22R
+ Dprg==
+X-Gm-Message-State: AOAM531dsCuaGsTNw6jTM/Xhy4dKbmtrGDXVSjQ5nbQJyrmr3PEK11xD
+ Qc7R3iu8MPJ0SAGbJt9lwo7OHxqcGWew0gC5XOs=
+X-Google-Smtp-Source: ABdhPJxHtnj/DXie9H0wxpzVZlSTyniokdUb/gsNNsMkANVtAtzr2mFBhczBYEoBurfSWsjRkBkPBhRAOOMrjVGBWsw=
+X-Received: by 2002:a67:7c8c:: with SMTP id x134mr13821818vsc.40.1618823016409; 
+ Mon, 19 Apr 2021 02:03:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1617960162-1988-2-git-send-email-Fengquan.Chen@mediatek.com>
-Content-Language: en-US
+References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
+ <20210419042722.27554-4-alice.guo@oss.nxp.com>
+ <YH0O907dfGY9jQRZ@atmark-techno.com>
+In-Reply-To: <YH0O907dfGY9jQRZ@atmark-techno.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 19 Apr 2021 11:03:24 +0200
+Message-ID: <CAMuHMdVY1SLZ0K30T2pimyrR6Mm=VoSTO=L-xxCy2Bj7_kostw@mail.gmail.com>
+Subject: Re: [RFC v1 PATCH 3/3] driver: update all the code that use
+ soc_device_match
+To: Dominique MARTINET <dominique.martinet@atmark-techno.com>
+Cc: "Alice Guo (OSS)" <alice.guo@oss.nxp.com>, gregkh@linuxfoundation.org,
+ rafael@kernel.org, 
+ horia.geanta@nxp.com, aymen.sghaier@nxp.com, herbert@gondor.apana.org.au, 
+ davem@davemloft.net, tony@atomide.com, geert+renesas@glider.be, 
+ mturquette@baylibre.com, sboyd@kernel.org, vkoul@kernel.org, 
+ peter.ujfalusi@gmail.com, a.hajda@samsung.com, narmstrong@baylibre.com, 
+ robert.foss@linaro.org, airlied@linux.ie, daniel@ffwll.ch, 
+ khilman@baylibre.com, tomba@kernel.org, jyri.sarha@iki.fi, joro@8bytes.org, 
+ will@kernel.org, mchehab@kernel.org, ulf.hansson@linaro.org, 
+ adrian.hunter@intel.com, kishon@ti.com, kuba@kernel.org, 
+ linus.walleij@linaro.org, Roy.Pledge@nxp.com, leoyang.li@nxp.com, 
+ ssantosh@kernel.org, matthias.bgg@gmail.com, edubezval@gmail.com, 
+ j-keerthy@ti.com, balbi@kernel.org, linux@prisktech.co.nz, 
+ stern@rowland.harvard.edu, wim@linux-watchdog.org, linux@roeck-us.net, 
+ linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org, 
+ linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+ linux-clk@vger.kernel.org, dmaengine@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org, 
+ linux-media@vger.kernel.org, linux-mmc@vger.kernel.org, 
+ netdev@vger.kernel.org, linux-phy@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, 
+ linux-staging@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+ linux-pm@vger.kernel.org, linux-usb@vger.kernel.org, 
+ linux-watchdog@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_014438_218271_FE44F9F6 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20210419_020340_237625_07D52D16 
+X-CRM114-Status: GOOD (  47.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,56 +116,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDkvMDQvMjAyMSAxMToyMiwgRmVuZ3F1YW4gQ2hlbiB3cm90ZToKPiBtdGtfc3lzdF9jbGtl
-dnRfc2h1dGRvd24gaXMgY2FsbGVkIGFmdGVyIGlycSBkaXNhYmxlZCBpbiBzdXNwZW5kIGZsb3cs
-Cj4gY2xlYXIgYW55IHBlbmRpbmcgc3lzdGltZXIgaXJxIHdoZW4gc2h1dGRvd24gdG8gYXZvaWQg
-c3VzcGVuZCBhYm9ydGVkCj4gZHVlIHRvIHRpbWVyIGlycSBwZW5kaW5nCj4gCj4gQWxzbyBhcyBm
-b3Igc3lzdGltZXIgaW4gbWVkaWF0ZWsgc29jcywgdGhlcmUgbXVzdCBiZSBmaXJzdGx5IGVuYWJs
-ZQo+IHRpbWVyIGJlZm9yZSBjbGVhciBzeXN0aW1lciBpcnEKPiAKPiBGaXhlczogZTNhZjY3NzYw
-N2Q5KCJjbG9ja3NvdXJjZS9kcml2ZXJzL3RpbWVyLW1lZGlhdGVrOiBBZGQgc3VwcG9ydCBmb3Ig
-c3lzdGVtIHRpbWVyIikKPiBTaWduZWQtb2ZmLWJ5OiBGZW5ncXVhbiBDaGVuIDxmZW5ncXVhbi5j
-aGVuQG1lZGlhdGVrLmNvbT4KPiAKPiAtLS0KPiAgZHJpdmVycy9jbG9ja3NvdXJjZS90aW1lci1t
-ZWRpYXRlay5jIHwgOCArKysrKystLQo+ICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCsp
-LCAyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsb2Nrc291cmNlL3Rp
-bWVyLW1lZGlhdGVrLmMgYi9kcml2ZXJzL2Nsb2Nrc291cmNlL3RpbWVyLW1lZGlhdGVrLmMKPiBp
-bmRleCA5MzE4ZWRjLi42NDYxZmQzIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvY2xvY2tzb3VyY2Uv
-dGltZXItbWVkaWF0ZWsuYwo+ICsrKyBiL2RyaXZlcnMvY2xvY2tzb3VyY2UvdGltZXItbWVkaWF0
-ZWsuYwo+IEBAIC02MCw5ICs2MCw5IEBACj4gICAqIFNZU1RfQ09OX0VOOiBDbG9jayBlbmFibGUu
-IFNoYWxsIGJlIHNldCB0bwo+ICAgKiAgIC0gU3RhcnQgdGltZXIgY291bnRkb3duLgo+ICAgKiAg
-IC0gQWxsb3cgdGltZW91dCB0aWNrcyBiZWluZyB1cGRhdGVkLgo+IC0gKiAgIC0gQWxsb3cgY2hh
-bmdpbmcgaW50ZXJydXB0IGZ1bmN0aW9ucy4KPiArICogICAtIEFsbG93IGNoYW5naW5nIGludGVy
-cnVwdCBzdGF0dXMsbGlrZSBjbGVhciBpcnEgcGVuZGluZy4KPiAgICoKPiAtICogU1lTVF9DT05f
-SVJRX0VOOiBTZXQgdG8gYWxsb3cgaW50ZXJydXB0Lgo+ICsgKiBTWVNUX0NPTl9JUlFfRU46IFNl
-dCB0byBlbmFibGUgaW50ZXJydXB0Lgo+ICAgKgo+ICAgKiBTWVNUX0NPTl9JUlFfQ0xSOiBTZXQg
-dG8gY2xlYXIgaW50ZXJydXB0Lgo+ICAgKi8KPiBAQCAtNzUsNiArNzUsNyBAQAo+ICBzdGF0aWMg
-dm9pZCBtdGtfc3lzdF9hY2tfaXJxKHN0cnVjdCB0aW1lcl9vZiAqdG8pCj4gIHsKPiAgCS8qIENs
-ZWFyIGFuZCBkaXNhYmxlIGludGVycnVwdCAqLwo+ICsJd3JpdGVsKFNZU1RfQ09OX0VOLCBTWVNU
-X0NPTl9SRUcodG8pKTsKPiAgCXdyaXRlbChTWVNUX0NPTl9JUlFfQ0xSIHwgU1lTVF9DT05fRU4s
-IFNZU1RfQ09OX1JFRyh0bykpOwo+ICB9CgpJSVJDLCB0aGVyZSBpcyBhIGhhcmR3YXJlIGlzc3Vl
-IGhlcmUuIElmIGl0IGlzIHRoZSBjYXNlLCBwbGVhc2UgZGVzY3JpYmUKaXQgYW5kIHJlZmVyIHRv
-IGFuIGVycmF0YSBpZiBhbnkuCgpBbHNvIEV2YW4gQmVubiBjb21tZW50ZWQgeW91ciBjb2RlIGFu
-ZCBhc2tlZCBhIGNvdXBsZSBvZiBxdWVzdGlvbnMgWzFdLApwbGVhc2UgYW5zd2VyIGJlZm9yZSBy
-ZXBvc3RpbmcgYSBuZXcgdmVyc2lvbi4KCkNvbW1lbnRzIGlnbm9yZWQgPT0gcGF0Y2ggaWdub3Jl
-ZAoKPiBAQCAtMTExLDYgKzExMiw5IEBAIHN0YXRpYyBpbnQgbXRrX3N5c3RfY2xrZXZ0X25leHRf
-ZXZlbnQodW5zaWduZWQgbG9uZyB0aWNrcywKPiAgCj4gIHN0YXRpYyBpbnQgbXRrX3N5c3RfY2xr
-ZXZ0X3NodXRkb3duKHN0cnVjdCBjbG9ja19ldmVudF9kZXZpY2UgKmNsa2V2dCkKPiAgewo+ICsJ
-LyogQ2xlYXIgYW55IGlycSAqLwo+ICsJbXRrX3N5c3RfYWNrX2lycSh0b190aW1lcl9vZihjbGtl
-dnQpKTsKPiArCj4gIAkvKiBEaXNhYmxlIHRpbWVyICovCj4gIAl3cml0ZWwoMCwgU1lTVF9DT05f
-UkVHKHRvX3RpbWVyX29mKGNsa2V2dCkpKTsKClBsZWFzZSBjaGVjayBvdXQgdGhlIHBhdGNoIHNl
-bnQgYnkgRXZhbiBCZW5uIFsyXSwgaWYgeW91IGFncmVlLCBhY2sgaXQuCgpUaGFua3MKCiAgLS0g
-RGFuaWVsCgpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9jb21tZW50LzI0MDU5Mjc3
-LwpbMl0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtYXJtLWtlcm5lbC8yMDIxMDQxMjEz
-MjIwMC52My4xLkkxZDk5MTcwNDdkZTA2NzE1ZGExNmUxNjIwNzU5ZjcwM2ZjZmRjYmNiQGNoYW5n
-ZWlkLwoKLS0gCjxodHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNv
-dXJjZSBzb2Z0d2FyZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5m
-YWNlYm9vay5jb20vcGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20v
-IyEvbGluYXJvb3JnPiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxv
-Zy8+IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-bWVkaWF0ZWsK
+Hi Dominique,
+
+CC Arnd (soc_device_match() author)
+
+On Mon, Apr 19, 2021 at 7:03 AM Dominique MARTINET
+<dominique.martinet@atmark-techno.com> wrote:
+> Alice Guo (OSS) wrote on Mon, Apr 19, 2021 at 12:27:22PM +0800:
+> > From: Alice Guo <alice.guo@nxp.com>
+> > Update all the code that use soc_device_match
+>
+> A single patch might be difficult to accept for all components, a each
+> maintainer will probably want to have a say on their subsystem?
+>
+> I would suggest to split these for a non-RFC version; a this will really
+> need to be case-by-case handling.
+>
+> > because add support for soc_device_match returning -EPROBE_DEFER.
+>
+> (English does not parse here for me)
+>
+> I've only commented a couple of places in the code itself, but this
+> doesn't seem to add much support for errors, just sweep the problem
+> under the rug.
+>
+> > Signed-off-by: Alice Guo <alice.guo@nxp.com>
+> > ---
+> >
+> > diff --git a/drivers/bus/ti-sysc.c b/drivers/bus/ti-sysc.c
+> > index 5fae60f8c135..00c59aa217c1 100644
+> > --- a/drivers/bus/ti-sysc.c
+> > +++ b/drivers/bus/ti-sysc.c
+> > @@ -2909,7 +2909,7 @@ static int sysc_init_soc(struct sysc *ddata)
+> >       }
+> >
+> >       match = soc_device_match(sysc_soc_feat_match);
+> > -     if (!match)
+> > +     if (!match || IS_ERR(match))
+> >               return 0;
+>
+> This function handles errors, I would recommend returning the error as
+> is if soc_device_match returned one so the probe can be retried later.
+
+Depends...
+
+> > --- a/drivers/clk/renesas/r8a7795-cpg-mssr.c
+> > +++ b/drivers/clk/renesas/r8a7795-cpg-mssr.c
+> > @@ -439,6 +439,7 @@ static const unsigned int r8a7795es2_mod_nullify[] __initconst = {
+> >
+> >  static int __init r8a7795_cpg_mssr_init(struct device *dev)
+> >  {
+> > +     const struct soc_device_attribute *match;
+> >       const struct rcar_gen3_cpg_pll_config *cpg_pll_config;
+> >       u32 cpg_mode;
+> >       int error;
+> > @@ -453,7 +454,8 @@ static int __init r8a7795_cpg_mssr_init(struct device *dev)
+> >               return -EINVAL;
+> >       }
+> >
+> > -     if (soc_device_match(r8a7795es1)) {
+> > +     match = soc_device_match(r8a7795es1);
+> > +     if (!IS_ERR(match) && match) {
+>
+> Same, return the error.
+> Assuming an error means no match will just lead to hard to debug
+> problems because the driver potentially assumed the wrong device when
+> it's just not ready yet.
+
+When running on R-Car H3, there will always be a match device, as
+the SoC device is registered early.
+
+>
+> >               cpg_core_nullify_range(r8a7795_core_clks,
+> >                                      ARRAY_SIZE(r8a7795_core_clks),
+> >                                      R8A7795_CLK_S0D2, R8A7795_CLK_S0D12);
+> > [...]
+> > diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+> > index eaaec0a55cc6..13a06b613379 100644
+> > --- a/drivers/iommu/ipmmu-vmsa.c
+> > +++ b/drivers/iommu/ipmmu-vmsa.c
+> > @@ -757,17 +757,20 @@ static const char * const devices_allowlist[] = {
+> >
+> >  static bool ipmmu_device_is_allowed(struct device *dev)
+> >  {
+> > +     const struct soc_device_attribute *match1, *match2;
+> >       unsigned int i;
+> >
+> >       /*
+> >        * R-Car Gen3 and RZ/G2 use the allow list to opt-in devices.
+> >        * For Other SoCs, this returns true anyway.
+> >        */
+> > -     if (!soc_device_match(soc_needs_opt_in))
+> > +     match1 = soc_device_match(soc_needs_opt_in);
+> > +     if (!IS_ERR(match1) && !match1)
+>
+> I'm not sure what you intended to do, but !match1 already means there is
+> no error so the original code is identical.
+>
+> In this case ipmmu_device_is_allowed does not allow errors so this is
+> one of the "difficult" drivers that require slightly more thinking.
+> It is only called in ipmmu_of_xlate which does return errors properly,
+> so in this case the most straightforward approach would be to make
+> ipmmu_device_is_allowed return an int and forward errors as well.
+>
+> ...
+> This is going to need quite some more work to be acceptable, in my
+> opinion, but I think it should be possible.
+
+In general, this is very hard to do, IMHO. Some drivers may be used on
+multiple platforms, some of them registering an SoC device, some of
+them not registering an SoC device.  So there is no way to know the
+difference between "SoC device not registered, intentionally", and
+"SoC device not yet registered".
+
+soc_device_match() should only be used as a last resort, to identify
+systems that cannot be identified otherwise.  Typically this is used for
+quirks, which should only be enabled on a very specific subset of
+systems.  IMHO such systems should make sure soc_device_match()
+is available early, by registering their SoC device early.
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
