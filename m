@@ -2,96 +2,105 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7BC1C43460
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 14:21:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36BF7C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 15:04:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 51B6D6023E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 14:21:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51B6D6023E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A68E9611CE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 15:04:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A68E9611CE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3KVCxRw+pBX2wMFXtTxf095X5imiRRqN9GRuMpodqbc=; b=Srk6yFDwysqR0EM8savbN3AwK
-	zbwfnFIKb1hOiXDpOE4v1CgdZLIh7Dp6g415j4fMXuUYnhUiFYI6aCraCVIShy1k12QkS4bafMuux
-	NSjQKNgB3FW36vM8paIF4AXAZkQh7lUkjYskks0F5xORI5hezwFo6whKe8OM/W8wOaELrVzqf9rux
-	aZd+c5C7C+3aCNtlYCUJhPe0IvT/zJ3+MEoYZebiZIanOUvxWcuGMctsvlJQ21AzjV+zwB/AR80kB
-	Yc7rBGh4ZczB4w+Ve1LMu0X3p5pDMF8QpK2onEzOEvHMdG3AQHD2X9ZcdACQq3/oMjCnVP4SyVibg
-	iDgf0DjCw==;
+	 bh=NxXIkJgBxg/K+4UqgFKWfaDRkF2zUOidPp+HNQ6rwP8=; b=qBK0DHZvoOjMIXCTujVs5RkGy
+	Ct4ySQ7pOX3CThgLqq197zy1dzOi0x8SKonBKDPAwF+bHzDKB551G2BNvdDDe+SgjEZdNXfx8pNs2
+	Z3LH4qIAiSnC1Y1mW0vDp6ObNQbbTljRsr0nCDtSRaM8WqTen8J00Yf2j5Q/CJYLAHkicP2FKL9Bf
+	vuvr3pqxjTJS8Crqy6vDwho5a3VJ3uH2Q5jCwZXtl5fhw4jzUICMoNOpg6tmx8p5KNEDlfDos8BNE
+	cUo+Ac5GX2XESIPVrPwkBvwxDSWZNY3cEM9QZICROIZFkjyR2xJMaAp2pMoMAj1f2+P7jjMoR7TyF
+	oPmL9SqoQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYUmM-00A4u6-Pe; Mon, 19 Apr 2021 14:21:34 +0000
+	id 1lYVS5-00A9eB-BA; Mon, 19 Apr 2021 15:04:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYUmJ-00A4sw-Hj
- for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 14:21:32 +0000
+ id 1lYVRu-00A9dL-3K; Mon, 19 Apr 2021 15:04:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=LSWfKTQTIdGrD/p6RD1eDrs0nzKGQlJGRhFdt9IN1hY=; b=1yYi7m1bY+KI+RDA4WSqoymayc
- lV51pD13YGR5nsN7/BEjImbPaGeS/EMzZgHUoX5VGuJaxnVr1jZokRLEvp81qm+ERQg1OfSotqEX3
- /zVQpTBFZ1/rCm57vOP5R+mZY1n24+LojgdwLViOzQiyiSoiMKCjlNSvETvIh+DTBXhoE8qadUDKh
- Z+vG0e4J1e67ZrCGfzlFiJq5K6k1uG4Pt/3Ussv23c6hvfHiNBBCQlb8Xiep3Wjl7bDVjyiE97vXe
- pa8XL2OO2Z8/KA1cajWaEr9u56wib9BtUhKImt1s55UdU/T0zZ8OMzm1I1cqdaJjZTLUTml1AY/EL
- MEaU3BxA==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+ MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
+ bh=sK9kJH32/DEKrA6KoYri3PZGBlZT1dWah2hqamZZ9Cc=; b=1LX9IR5zFPr3ax9q/fKtO58n1r
+ TF67IBa2chfjpY9+LPWneeJfP+vjPoGtUE9tYkWueZ+bxHC/T7gbPiIZFchNvWV+RHVjIuj3WV0ha
+ WrgiUd0UgESminmT0A/J1ACbdnamGoJ4E7e3KgVFZ3OURO5J/kwT7JNN+BML9ioeLscULqmB4gXdB
+ RrwKPXthDbJ5uQ2p4bGLspkxEPDfYODiCdQUrRPI4fNixhPIcWCzNOsa4dIqbrrMbDfvWkDK4BrnH
+ K+tqD2qC4IQ4ziSco8QrMtMJtEcWHRoLRJ3/iOgliwJTMvAHarPTVBdLCijn1Zlo67XarYjSCxDQz
+ QaMzj+LQ==;
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYUmG-00BRk3-Mp
- for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 14:21:30 +0000
-X-UUID: 6fb4336041c542c389f644c74cd42712-20210419
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LSWfKTQTIdGrD/p6RD1eDrs0nzKGQlJGRhFdt9IN1hY=; 
- b=GfwjT1+B/oPPH4PiicCG2IsuSwsNxCOfrTAhksRRCmBvdeaGHlDnV9mwxLGkW5dspUdAhY58HC6a6ku7NiKjkpgU+2Go4jKHlgHhTpyeKtf3Xoj8aSNhqt9ng/a6ZAVPmBw447A3x3LfrNrp1OfgS4eSSrjSHNMRoIzXu/PIvvs=;
-X-UUID: 6fb4336041c542c389f644c74cd42712-20210419
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 20339555; Mon, 19 Apr 2021 07:21:26 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Apr 2021 07:21:02 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Apr 2021 22:21:00 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 19 Apr 2021 22:21:00 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>, <Deren.Wu@mediatek.com>,
- <km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH v2 3/6] mt76: mt7921: introduce mt7921_dma_{enable,
- disable} utilities
-Date: Mon, 19 Apr 2021 22:20:56 +0800
-Message-ID: <1618842059-8192-4-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <1618842059-8192-1-git-send-email-sean.wang@mediatek.com>
-References: <1618842059-8192-1-git-send-email-sean.wang@mediatek.com>
+ id 1lYVRo-00BTO0-4U; Mon, 19 Apr 2021 15:04:28 +0000
+Received: by mail-io1-xd31.google.com with SMTP id z14so1690228ioc.12;
+ Mon, 19 Apr 2021 08:04:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=sK9kJH32/DEKrA6KoYri3PZGBlZT1dWah2hqamZZ9Cc=;
+ b=s7wVo0vApXU/OM1jt4+gMA9B0M0TVD8p1XDGpgxiXAxuyzaHz2Gj1uaR28sDh9Meyq
+ M+ZPjuGWqIFb91kh+t5jJbJhqs8vxijOqlUhQ4V3TEo8yK7ZobGdz5Hr1JHP3AjtAn59
+ Re249SBEmo/8oNw//lAyJDppVQ0CHLS5EtwgWyNYZNNCIRMuCnfCXdAvTdD4zSc/vpbc
+ vTMTAbEzFLOBOQTWIt4/WlgQzt3Iahmlb6W8ItRJAayJiQUHk2q6qO7zju/SgZJ6EGFn
+ YBYjVlEXIUwLGeNoNGzxjQ0CwwpVAeSLagMmZf0XzsRv0HX/+FQoSJGxYUlm4OUkYYnA
+ TiBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=sK9kJH32/DEKrA6KoYri3PZGBlZT1dWah2hqamZZ9Cc=;
+ b=EM+uCKeV6KXdWCihbbTWsculTV84y6B3MjEXUGHtBWTpdNmTjC3qsJfTCiu3VmSPPE
+ lolR5xY8GjwuxB/MXgbjTi4rWlcI465gnR5JC9ao5GsZ1RhKTkB1oy3QL4TmQkC8bRSP
+ KDDSxDny5v1LhmlwazSRndOQjuTGjZBspWgq01bqSCHUQ3DF7GHAhlzRpGb6vMGc9t1F
+ fWOcdHlS87qQTHXaOkLn8na+2mIedsa5fU1BBRtXsjYayhytBu4UH1Y2WMartlj6zb2m
+ buowluKbirAHBCSLEdpa9V4CjNt2PZ7cngIB8DD1nJntQ7IQGui8SdssRPbaAqPjzhJV
+ S4+A==
+X-Gm-Message-State: AOAM5330zvFLIa+yT9cBVknFKQLjCrqLXhOcLMSgTttv/DR827tbKHA2
+ nt1JvWPi8WkC01Uep+i6T8/5EhtfVdso4wCnRcw=
+X-Google-Smtp-Source: ABdhPJzEZQjUJvUvF+QDBgYHgewS1rUZVS39JXLXF5zSRaqhTgFexQhrwFdP/SIkUu/RjU+JN91KzcVrPuuY0GRWz/U=
+X-Received: by 2002:a02:a487:: with SMTP id d7mr2653012jam.84.1618844661634;
+ Mon, 19 Apr 2021 08:04:21 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: D313CF67F8EEFB128D56CE4EEE4ECAE5CBE9FEB55ED205ACA51F34D28659EEE02000:8
-X-MTK: N
+References: <20210419040352.2452-1-ilya.lipnitskiy@gmail.com>
+ <20210419040352.2452-3-ilya.lipnitskiy@gmail.com> <YH10UNuJZ5s7dfLh@lunn.ch>
+In-Reply-To: <YH10UNuJZ5s7dfLh@lunn.ch>
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Mon, 19 Apr 2021 08:04:10 -0700
+Message-ID: <CALCv0x2SSGjiqKOBhK1GT2ksjc9J--Qm3Uq-0xc3sgHvDju5-A@mail.gmail.com>
+Subject: Re: [PATCH net-next 2/2] net: ethernet: mediatek: support custom GMAC
+ label
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ John Crispin <john@phrozen.org>, 
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ netdev@vger.kernel.org, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_072128_785308_860AC173 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20210419_080424_199470_EF8EE755 
+X-CRM114-Status: GOOD (  26.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,186 +112,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-
-Introduce mt7921_dma_enable and mt7921_dma_disable utilities routine in
-order for code reusing between mt7921_dma_reset and mt7921_dma_init.
-This is a preliminary patch to reset dma during device driver_own
-request.
-
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
----
- .../net/wireless/mediatek/mt76/mt7921/dma.c   | 108 ++++++------------
- 1 file changed, 35 insertions(+), 73 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-index af4b6cf38929..fb7f98d92377 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-@@ -221,18 +221,8 @@ static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
- 	return dev->bus_ops->rmw(mdev, addr, mask, val);
- }
- 
--static int mt7921_dmashdl_disabled(struct mt7921_dev *dev)
-+static int mt7921_dma_disable(struct mt7921_dev *dev, bool force)
- {
--	mt76_clear(dev, MT_WFDMA0_GLO_CFG_EXT0, MT_WFDMA0_CSR_TX_DMASHDL_ENABLE);
--	mt76_set(dev, MT_DMASHDL_SW_CONTROL, MT_DMASHDL_DMASHDL_BYPASS);
--
--	return 0;
--}
--
--static int mt7921_dma_reset(struct mt7921_dev *dev, bool force)
--{
--	int i;
--
- 	if (force) {
- 		/* reset */
- 		mt76_clear(dev, MT_WFDMA0_RST,
-@@ -244,6 +234,11 @@ static int mt7921_dma_reset(struct mt7921_dev *dev, bool force)
- 			 MT_WFDMA0_RST_LOGIC_RST);
- 	}
- 
-+	/* disable dmashdl */
-+	mt76_clear(dev, MT_WFDMA0_GLO_CFG_EXT0,
-+		   MT_WFDMA0_CSR_TX_DMASHDL_ENABLE);
-+	mt76_set(dev, MT_DMASHDL_SW_CONTROL, MT_DMASHDL_DMASHDL_BYPASS);
-+
- 	/* disable WFDMA0 */
- 	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
- 		   MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN |
-@@ -257,18 +252,11 @@ static int mt7921_dma_reset(struct mt7921_dev *dev, bool force)
- 		       MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000))
- 		return -ETIMEDOUT;
- 
--	/* reset hw queues */
--	for (i = 0; i < __MT_TXQ_MAX; i++)
--		mt76_queue_reset(dev, dev->mphy.q_tx[i]);
--
--	for (i = 0; i < __MT_MCUQ_MAX; i++)
--		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
--
--	mt76_for_each_q_rx(&dev->mt76, i)
--		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
--
--	mt76_tx_status_check(&dev->mt76, NULL, true);
-+	return 0;
-+}
- 
-+static int mt7921_dma_enable(struct mt7921_dev *dev)
-+{
- 	/* configure perfetch settings */
- 	mt7921_dma_prefetch(dev);
- 
-@@ -300,6 +288,29 @@ static int mt7921_dma_reset(struct mt7921_dev *dev, bool force)
- 	return 0;
- }
- 
-+static int mt7921_dma_reset(struct mt7921_dev *dev, bool force)
-+{
-+	int i, err;
-+
-+	err = mt7921_dma_disable(dev, force);
-+	if (err)
-+		return err;
-+
-+	/* reset hw queues */
-+	for (i = 0; i < __MT_TXQ_MAX; i++)
-+		mt76_queue_reset(dev, dev->mphy.q_tx[i]);
-+
-+	for (i = 0; i < __MT_MCUQ_MAX; i++)
-+		mt76_queue_reset(dev, dev->mt76.q_mcu[i]);
-+
-+	mt76_for_each_q_rx(&dev->mt76, i)
-+		mt76_queue_reset(dev, &dev->mt76.q_rx[i]);
-+
-+	mt76_tx_status_check(&dev->mt76, NULL, true);
-+
-+	return mt7921_dma_enable(dev);
-+}
-+
- int mt7921_wfsys_reset(struct mt7921_dev *dev)
- {
- 	mt76_set(dev, 0x70002600, BIT(0));
-@@ -362,32 +373,10 @@ int mt7921_dma_init(struct mt7921_dev *dev)
- 
- 	mt76_dma_attach(&dev->mt76);
- 
--	/* reset */
--	mt76_clear(dev, MT_WFDMA0_RST,
--		   MT_WFDMA0_RST_DMASHDL_ALL_RST |
--		   MT_WFDMA0_RST_LOGIC_RST);
--
--	mt76_set(dev, MT_WFDMA0_RST,
--		 MT_WFDMA0_RST_DMASHDL_ALL_RST |
--		 MT_WFDMA0_RST_LOGIC_RST);
--
--	ret = mt7921_dmashdl_disabled(dev);
-+	ret = mt7921_dma_disable(dev, true);
- 	if (ret)
- 		return ret;
- 
--	/* disable WFDMA0 */
--	mt76_clear(dev, MT_WFDMA0_GLO_CFG,
--		   MT_WFDMA0_GLO_CFG_TX_DMA_EN |
--		   MT_WFDMA0_GLO_CFG_RX_DMA_EN |
--		   MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
--		   MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
--		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO |
--		   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
--
--	mt76_poll(dev, MT_WFDMA0_GLO_CFG,
--		  MT_WFDMA0_GLO_CFG_TX_DMA_BUSY |
--		  MT_WFDMA0_GLO_CFG_RX_DMA_BUSY, 0, 1000);
--
- 	/* init tx queue */
- 	ret = mt7921_init_tx_queues(&dev->phy, MT7921_TXQ_BAND0,
- 				    MT7921_TX_RING_SIZE);
-@@ -439,34 +428,7 @@ int mt7921_dma_init(struct mt7921_dev *dev)
- 			  mt7921_poll_tx, NAPI_POLL_WEIGHT);
- 	napi_enable(&dev->mt76.tx_napi);
- 
--	/* configure perfetch settings */
--	mt7921_dma_prefetch(dev);
--
--	/* reset dma idx */
--	mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
--
--	/* configure delay interrupt */
--	mt76_wr(dev, MT_WFDMA0_PRI_DLY_INT_CFG0, 0);
--
--	mt76_set(dev, MT_WFDMA0_GLO_CFG,
--		 MT_WFDMA0_GLO_CFG_TX_WB_DDONE |
--		 MT_WFDMA0_GLO_CFG_FIFO_LITTLE_ENDIAN |
--		 MT_WFDMA0_GLO_CFG_CLK_GAT_DIS |
--		 MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
--		 MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
--		 MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
--
--	mt76_set(dev, MT_WFDMA0_GLO_CFG,
--		 MT_WFDMA0_GLO_CFG_TX_DMA_EN | MT_WFDMA0_GLO_CFG_RX_DMA_EN);
--
--	mt76_set(dev, MT_WFDMA_DUMMY_CR, MT_WFDMA_NEED_REINIT);
--
--	/* enable interrupts for TX/RX rings */
--	mt7921_irq_enable(dev, MT_INT_RX_DONE_ALL | MT_INT_TX_DONE_ALL |
--			  MT_INT_MCU_CMD);
--	mt76_set(dev, MT_MCU2HOST_SW_INT_ENA, MT_MCU_CMD_WAKE_RX_PCIE);
--
--	return 0;
-+	return mt7921_dma_enable(dev);
- }
- 
- void mt7921_dma_cleanup(struct mt7921_dev *dev)
--- 
-2.25.1
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gTW9uLCBBcHIgMTksIDIwMjEgYXQgNToxNSBBTSBBbmRyZXcgTHVubiA8YW5kcmV3QGx1bm4u
+Y2g+IHdyb3RlOgo+Cj4gT24gU3VuLCBBcHIgMTgsIDIwMjEgYXQgMDk6MDM6NTJQTSAtMDcwMCwg
+SWx5YSBMaXBuaXRza2l5IHdyb3RlOgo+ID4gVGhlIE1BQyBkZXZpY2UgbmFtZSBjYW4gbm93IGJl
+IHNldCB3aXRoaW4gRFRTIGZpbGUgaW5zdGVhZCBvZiBhbHdheXMKPiA+IGJlaW5nICJldGhYIi4g
+VGhpcyBpcyBoZWxwZnVsIGZvciBEU0EgdG8gY2xlYXJseSBsYWJlbCB0aGUgRFNBIG1hc3Rlcgo+
+ID4gZGV2aWNlIGFuZCBkaXN0aW5ndWlzaCBpdCBmcm9tIERTQSBzbGF2ZSBwb3J0cy4KPiA+Cj4g
+PiBGb3IgZXhhbXBsZSwgc29tZSBkZXZpY2VzLCBzdWNoIGFzIHRoZSBVYmlxdWl0aSBFZGdlUm91
+dGVyIFgsIG1heSBoYXZlCj4gPiBwb3J0cyBsYWJlbGVkIGV0aFguIExhYmVsaW5nIHRoZSBtYXN0
+ZXIgR01BQyB3aXRoIGEgZGlmZmVyZW50IHByZWZpeAo+ID4gdGhhbiBEU0EgcG9ydHMgaGVscHMg
+d2l0aCBjbGFyaXR5Lgo+ID4KPiA+IFN1Z2dlc3RlZC1ieTogUmVuw6kgdmFuIERvcnN0IDxvcGVu
+c291cmNlQHZkb3JzdC5jb20+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBJbHlhIExpcG5pdHNraXkgPGls
+eWEubGlwbml0c2tpeUBnbWFpbC5jb20+Cj4gPiAtLS0KPiA+ICBkcml2ZXJzL25ldC9ldGhlcm5l
+dC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jIHwgNCArKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDQg
+aW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9t
+ZWRpYXRlay9tdGtfZXRoX3NvYy5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRr
+X2V0aF9zb2MuYwo+ID4gaW5kZXggNmIwMGMxMmM2YzQzLi40YzBjZTRmYjc3MzUgMTAwNjQ0Cj4g
+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jCj4gPiAr
+KysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9tZWRpYXRlay9tdGtfZXRoX3NvYy5jCj4gPiBAQCAt
+Mjg0NSw2ICsyODQ1LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBuZXRfZGV2aWNlX29wcyBtdGtf
+bmV0ZGV2X29wcyA9IHsKPiA+Cj4gPiAgc3RhdGljIGludCBtdGtfYWRkX21hYyhzdHJ1Y3QgbXRr
+X2V0aCAqZXRoLCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wKQo+ID4gIHsKPiA+ICsgICAgIGNvbnN0
+IGNoYXIgKmxhYmVsID0gb2ZfZ2V0X3Byb3BlcnR5KG5wLCAibGFiZWwiLCBOVUxMKTsKPiA+ICAg
+ICAgIGNvbnN0IF9fYmUzMiAqX2lkID0gb2ZfZ2V0X3Byb3BlcnR5KG5wLCAicmVnIiwgTlVMTCk7
+Cj4gPiAgICAgICBwaHlfaW50ZXJmYWNlX3QgcGh5X21vZGU7Cj4gPiAgICAgICBzdHJ1Y3QgcGh5
+bGluayAqcGh5bGluazsKPiA+IEBAIC0yOTQwLDYgKzI5NDEsOSBAQCBzdGF0aWMgaW50IG10a19h
+ZGRfbWFjKHN0cnVjdCBtdGtfZXRoICpldGgsIHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApCj4gPiAg
+ICAgICBlbHNlCj4gPiAgICAgICAgICAgICAgIGV0aC0+bmV0ZGV2W2lkXS0+bWF4X210dSA9IE1U
+S19NQVhfUlhfTEVOR1RIXzJLIC0gTVRLX1JYX0VUSF9ITEVOOwo+ID4KPiA+ICsgICAgIGlmIChs
+YWJlbCkKPiA+ICsgICAgICAgICAgICAgc3Ryc2NweShldGgtPm5ldGRldltpZF0tPm5hbWUsIGxh
+YmVsLCBJRk5BTVNJWik7Cj4KPiBJdCBpcyBiZXR0ZXIgdG8gdXNlIGFsbG9jX25ldGRldl9tcXMo
+KSBzbyB5b3UgZ2V0IHZhbGlkYXRpb24gdGhlIG5hbWUKPiBpcyB1bmlxdWUuCkl0IGRvZXNuJ3Qg
+bG9vayBsaWtlIHRoZSBuYW1lIHZhbGlkYXRpb24gaGFwcGVucyB1bnRpbCB0aGUgbmV0ZGV2IGlz
+CnJlZ2lzdGVyZWQsIGFuZCBpdCBkb2VzIG5vdCBnZXQgcmVnaXN0ZXJlZCBhdCBhbGxvYywgcmln
+aHQ/CgpJIGRvIGFncmVlIHRoYXQgaXQncyBiZXR0ZXIgdG8gdXNlIHRoZSBjb3JyZWN0IG5hbWUg
+aW4gdGhlIGZpcnN0IHBsYWNlCmluc3RlYWQgb2YgcmVuYW1pbmcsIHJlZ2FyZGxlc3MsIHNvIHVz
+aW5nIGFsbG9jX25ldGRldl9tcXMoKSBzZWVtcwpsaWtlIGEgYmV0dGVyIHNvbHV0aW9uIC0gSSds
+bCBtYWtlIHRoZSBjaGFuZ2UuCgpJbHlhCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
