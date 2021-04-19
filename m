@@ -2,106 +2,150 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7801AC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 18:37:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8965FC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 19:20:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAAC861246
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 18:37:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAAC861246
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id CA91A61354
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 19:20:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CA91A61354
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	References:CC:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vAK0A/6/EGTvsnSMkgL3u3nh1QrnuFHnkVc1l0SXg7I=; b=bZ+jREPNiY3CagFus4WjHd19p
-	uHrtK0TDX4iyqBKk86MNvdk7Z03dQz4fsRbIFp2/yefOmaGwcVcVxJf8IWl7HYMRUM0FoTmjDlZ3Z
-	o/5Xl9XqpuPZc7hp3M2BXXCv6MypQd2jbMHo6z/ctk5rgOX/5F1QbxJ3VGDBO2SfY12RYzP5JTwir
-	raMUuSwqieCbSpRV/9hRrfy6QTa3EXvqlLzVtkO5I69TV8K/1Jis5bGartZvqk6COE6havo5217gt
-	c1Vit3kq/N6ot3MHe4gHagGgca5ObLeXHXddOXVMiQOLXJ22FZvRTxj/wpVwBbYdPz4YN5q8zDAW8
-	oInF/lgGQ==;
+	 bh=ulTUb3M3bE8uVb07D0tG3/JkL9Nr/c6og6X4qCrwau0=; b=KQzEkYYuPYbzuwpf/dOuwERqo
+	/nKIe9kl+WdAYG+O5Tire4YTRbgMbp9zjoz65BFGYcLGyfJ+Td20CghcJ254GllBWV3LFRmWHKOWd
+	SyowVM71SNeQkxWmn+Skns5Ghh8Gqvd1Aex/oxz/6UlDqB5xhus4XoJ4NxL3upi5B7fCuUSrirvBY
+	dowDT+H4s05hJgfyhwevTx7NduTwzODPAU+GxUocpwoPhmC6o+GDGfqlarXUkjkQ9JV/HGJxylcfP
+	U4sSz8CYePrZs8bzsSSUVi6jEcjP3281cAN+2IF7GhAuF4b0fgtzUHLLHnS0AgUV+91UjaflEOmKF
+	0nPdmiO6A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYYmC-00ASOV-KL; Mon, 19 Apr 2021 18:37:40 +0000
+	id 1lYZRW-00AUBS-P8; Mon, 19 Apr 2021 19:20:22 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYYm1-00ASO9-4D; Mon, 19 Apr 2021 18:37:29 +0000
+ id 1lYZRT-00AUB2-65; Mon, 19 Apr 2021 19:20:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
  Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=ZPOmobRjcv7IQzwVSmVWdEyaH7QTwGtUqDg+swchP2k=; b=IkXEkuu+NW45uhzzFO8KR8OWnx
- 0Ezu94uKQfEC9NZwnTVKvKePvrUn9/9RxuO4NViEJ0zDhOlhKuP4OeO35NxekZp502cS/AZCfDoeJ
- goWJ+evq1qA4HLUTxkXABJaHURdOtlpSXhLWRB8rSNiPRgh3/5f87k8ZpNIzvj3Y/EiE87AxZVJsl
- hKPKC+jPc0HhOphIV5SthQg9deLkLtMkeHKzUEeDr84qYDr64MgPpVhByBS0N471m8E3MSi1Z/XLo
- m7dMFeQToJMx17iyQk2yx2uLSFy6CvIRqX+Ko9nKqlA8Ld3QzSKrvutnaAR+DN9y8w4RRMPyIdRt3
- g1TokGmw==;
-Received: from mga18.intel.com ([134.134.136.126])
+ bh=ISmqrdj1URDv+uQeVPT8kvwRML6vBgNKgBToVY52o3o=; b=JCFNBO0mZS5HXi1xDhK8+WJHf+
+ 3IZBpHoX2q3sKIdMLX/Giz7SoLJFQFy3nCfQChdsHr4VnefmJ+VRrQnofsRTH5nyBAds3yY3NVtTk
+ 9hJPcAoWDqfoEagdPtjQGiKOBy0inYaTQdfYK0fT8AqgSfgktvTSBwQKkspo5QxzPbZQv13XFM2ao
+ 7S+r64kKqSu4cZ0NHYiSzUFO5DvbmT/YmEnwY5cHh74/IzD/s/99II8SYFzxOSBa/Tur2M1iJ6CU3
+ tqJ4ovGWMawehgAFqatJuWeqNUO6aCQx1xsz86qn5Ru9t+vye7Nh+FpEqvfcMV/G1P1cFsx6I15rR
+ VbUZl2rg==;
+Received: from mail-dm6nam10on2051.outbound.protection.outlook.com
+ ([40.107.93.51] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYYlt-00BasY-Cy; Mon, 19 Apr 2021 18:37:26 +0000
-IronPort-SDR: vvqnrP0AzWNFT5ju8M2mwJLnjB0egQXhyM6Cp0lE+CXvkCcJtxEDku9V0kcam1axazp4lUmp0x
- QPRVIL7zLp6A==
-X-IronPort-AV: E=McAfee;i="6200,9189,9959"; a="182873674"
-X-IronPort-AV: E=Sophos;i="5.82,234,1613462400"; d="scan'208";a="182873674"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Apr 2021 11:37:19 -0700
-IronPort-SDR: mVnC+7o/ux30dgipxuCPMQsRxirpqDL70m7B/udEKgj4RQEgeyqfuV8cNyuXo9lVBQPOv0TWk1
- HU6sC2AH2gvQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,234,1613462400"; d="scan'208";a="420108005"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
- ([10.237.72.174])
- by fmsmga008.fm.intel.com with ESMTP; 19 Apr 2021 11:37:12 -0700
-Subject: Re: [PATCH v20 1/2] scsi: ufs: Enable power management for wlun
-To: Asutosh Das <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Colin Ian King <colin.king@canonical.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, Yue Hu <huyue2@yulong.com>,
- Bart van Assche <bvanassche@acm.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1618600985.git.asutoshd@codeaurora.org>
- <d660b8d4e1fb192810abd09a8ff0ef4d9f6b96cd.1618600985.git.asutoshd@codeaurora.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <fdadd467-b613-d800-18c5-be064396fd10@intel.com>
-Date: Mon, 19 Apr 2021 21:37:27 +0300
+ id 1lYZRO-00BbyN-6C; Mon, 19 Apr 2021 19:20:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=n5+lsChP8yhkSjhasvokymzzF0oEBwBt8/zPbxbdn5xHeo5A2pUgYOcIDq9afYVfaYufzwxPFYDjJVBOM5x5HqhPK6w/IC8HeXvy+dEoJTmJ55U2EWPDA3RiqY9JpIjCVlAmlm6V7U6x+U67mx9xehQiRQU9I2wST4fAaChFStulCPJaXKxkyuHwmX7ZHtuN5N+clAZ0iaFG/mMtjeB7AZDasG//1RP3CKGdcUWFVvCvbp53rxt943YgyngqhkLRVYs+oDhlkku8YQnCRD+q7wZSuh6spctfw7fulGBnZ9+ZGpeOJ2SCsosP1SlyCfDXq3o8xbejIQHmrneWI9xl7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ISmqrdj1URDv+uQeVPT8kvwRML6vBgNKgBToVY52o3o=;
+ b=nyGJJSTsQED6MZ2g3KzqEHvJ1QND8IVC2w8G8ZozrZh8h4R2RoGZr9ibuPRG02LZ+f0KOjs8qm4t3leI+9BKqFKimshq7vY4wI92d4SSebE1XCqls/LHFmi26wfBr75CDKHu+4YU9mXOmVTHxcPRYFrnpqqir7O+S6QiioeD/uerX4EmbUO0hrnB7+/RL2LA9qcLrwPk1ilpfdYT3s2q+UZXcMjzEiULrtmpfWI38y5jB7j935xP3P3GZwe7RViiF46/77UeZeRZ+mpUkAoTmV67XU7oBM7vWX9o3kINRbnQ9zVCIQZNU070T4UJAw/mqsglIjDxfhHfrDFmFGNlAA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.112.34) smtp.rcpttodomain=microsoft.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ISmqrdj1URDv+uQeVPT8kvwRML6vBgNKgBToVY52o3o=;
+ b=CtdJ+QWZvwHYScZMLzgt0hosDY6BWxBee980DKfBZT0ExlkV86of2wVie87rc8gTQuD6nZBEPmz6/48prNqG/ci4265IY5At5BAdtp8jOZbG73yCAs7dohPCTg03+C5V0oBJygrcCSs2MQfxhrowQVd7Ww/BQ2bbd37PCQRcPEL/7UAlyFwmqZTo8BL1pxIOnnwHaU+UBYlnnOpcXtwIiBSOhGO0FVWouSbAgdXHN63zCZXo06SQWuxf1hbWCpP8PsPenxuHToosgHubXAXdcD5kIBl33bsnthr/WNs0hLqwVE5uwHKQbCycwHiWS0MawWqKOZzhEjR4bjv3OkOXwA==
+Received: from MWHPR13CA0009.namprd13.prod.outlook.com (2603:10b6:300:16::19)
+ by MWHPR12MB1408.namprd12.prod.outlook.com (2603:10b6:300:12::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.16; Mon, 19 Apr
+ 2021 19:20:03 +0000
+Received: from CO1NAM11FT022.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:300:16:cafe::77) by MWHPR13CA0009.outlook.office365.com
+ (2603:10b6:300:16::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4065.8 via Frontend
+ Transport; Mon, 19 Apr 2021 19:20:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
+ smtp.mailfrom=nvidia.com; microsoft.com; dkim=none (message not signed)
+ header.d=none;microsoft.com; dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.112.34; helo=mail.nvidia.com;
+Received: from mail.nvidia.com (216.228.112.34) by
+ CO1NAM11FT022.mail.protection.outlook.com (10.13.175.199) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.4042.16 via Frontend Transport; Mon, 19 Apr 2021 19:20:03 +0000
+Received: from [10.26.49.10] (172.20.145.6) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Mon, 19 Apr
+ 2021 19:19:57 +0000
+Subject: Re: [PATCH v3 01/14] PCI: tegra: Convert to MSI domains
+To: Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>
+CC: Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
+ <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring
+ <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
+ <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, "Stephen
+ Hemminger" <sthemmin@microsoft.com>, Michael Kelley <mikelley@microsoft.com>, 
+ Wei Liu <wei.liu@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@xilinx.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bharat Kumar Gogada
+ <bharatku@xilinx.com>, <linux-pci@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-hyperv@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+ <kernel-team@android.com>
+References: <20210330151145.997953-1-maz@kernel.org>
+ <20210330151145.997953-2-maz@kernel.org>
+From: Jon Hunter <jonathanh@nvidia.com>
+Message-ID: <316e8be4-fa70-75e8-8483-ae38036306e0@nvidia.com>
+Date: Mon, 19 Apr 2021 20:19:55 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <d660b8d4e1fb192810abd09a8ff0ef4d9f6b96cd.1618600985.git.asutoshd@codeaurora.org>
+In-Reply-To: <20210330151145.997953-2-maz@kernel.org>
 Content-Language: en-US
+X-Originating-IP: [172.20.145.6]
+X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: afbbfe3d-5971-4f2a-b109-08d903682205
+X-MS-TrafficTypeDiagnostic: MWHPR12MB1408:
+X-LD-Processed: 43083d15-7273-40c1-b7db-39efd9ccc17a,ExtAddr
+X-Microsoft-Antispam-PRVS: <MWHPR12MB1408AC4A25A0E3219E06A516D9499@MWHPR12MB1408.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: fa0zNif5H6T2ITVud9jwHXdnIcO3hgXEeE96McLTVm6+eZz5eB7wAxXFzfxB6XMhdpnoORq6ZBTwXI4fH0ph99Gf3iaMCikpk2ssvSXOH8DUL1GFHNiObvInVd2FgVJzz5bBLU9eGCmP0nPhO24XJsNJNNetcA+AbKsRfV9Hpp6qwf+YlPEwheg8V6RFMN9mrVfeaZifG1OY7DK+XapUkdUhnBD0WwmiHANof4mtpaZyKDgjHy6r1l3iBzjAVwg9LGWvdfgsykItvhhRTTv/kFu8ncn89Oioe6KNJ4gUlGZ2K23PKU3udfr7kqHfn90/PZP2s6patel0vl2DQJwnI4PHgn/YTt4G7sKeQB0Q1qkSFJDA8Ih1yY4WJck8f44PYYG1mL+uhVoxVnRVl7yRkG/n0IcoxP1grZM26Gwgcv2iFgVXPO+TEPT+rsba5e5ne12uRKM3aKqUcUkEbrNLPkdz4QoDTXL7rbjiFKghSBYiw76RKjk8Fed+yeqprfqGbX1iMdkAzZynCoGbRlmn/jti2rvQL1pDx5T01ZxtVsjKgFa7DCSOrGWu0Yts282VG6huzGNGPV0vCxG5r4RUwf+kRtzpRR4jUwx+5w4cNdxaFUkqvgLclSxUvNZgN6YAL6SSbl8kJmDDdzsYWcpl6hmo/m7yRVWByEtbXByFvANpjtUzG5QCZ08bS8TzHSs3
+X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
+ SFS:(4636009)(376002)(346002)(39860400002)(136003)(396003)(46966006)(36840700001)(53546011)(36860700001)(478600001)(36906005)(82310400003)(316002)(86362001)(16576012)(31696002)(336012)(16526019)(47076005)(426003)(110136005)(36756003)(186003)(5660300002)(7636003)(2616005)(70206006)(31686004)(70586007)(356005)(82740400003)(4326008)(2906002)(26005)(8936002)(54906003)(83380400001)(8676002)(7416002)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Apr 2021 19:20:03.0886 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: afbbfe3d-5971-4f2a-b109-08d903682205
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT022.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1408
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_113721_518814_3E770F41 
-X-CRM114-Status: GOOD (  35.60  )
+X-CRM114-CacheID: sfid-20210419_122014_261052_B795504D 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,184 +162,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 16/04/21 10:49 pm, Asutosh Das wrote:
-> During runtime-suspend of ufs host, the scsi devices are
-> already suspended and so are the queues associated with them.
-> But the ufs host sends SSU (START_STOP_UNIT) to wlun
-> during its runtime-suspend.
-> During the process blk_queue_enter checks if the queue is not in
-> suspended state. If so, it waits for the queue to resume, and never
-> comes out of it.
-> The commit
-> (d55d15a33: scsi: block: Do not accept any requests while suspended)
-> adds the check if the queue is in suspended state in blk_queue_enter().
+Hi Marc,
+
+On 30/03/2021 16:11, Marc Zyngier wrote:
+> In anticipation of the removal of the msi_controller structure, convert
+> the Tegra host controller driver to MSI domains.
 > 
-> Call trace:
->  __switch_to+0x174/0x2c4
->  __schedule+0x478/0x764
->  schedule+0x9c/0xe0
->  blk_queue_enter+0x158/0x228
->  blk_mq_alloc_request+0x40/0xa4
->  blk_get_request+0x2c/0x70
->  __scsi_execute+0x60/0x1c4
->  ufshcd_set_dev_pwr_mode+0x124/0x1e4
->  ufshcd_suspend+0x208/0x83c
->  ufshcd_runtime_suspend+0x40/0x154
->  ufshcd_pltfrm_runtime_suspend+0x14/0x20
->  pm_generic_runtime_suspend+0x28/0x3c
->  __rpm_callback+0x80/0x2a4
->  rpm_suspend+0x308/0x614
->  rpm_idle+0x158/0x228
->  pm_runtime_work+0x84/0xac
->  process_one_work+0x1f0/0x470
->  worker_thread+0x26c/0x4c8
->  kthread+0x13c/0x320
->  ret_from_fork+0x10/0x18
+> We end-up with the usual two domain structure, the top one being a
+> generic PCI/MSI domain, the bottom one being Tegra-specific and handling
+> the actual HW interrupt allocation.
 > 
-> Fix this by registering ufs device wlun as a scsi driver and
-> registering it for block runtime-pm. Also make this as a
-> supplier for all other luns. That way, this device wlun
-> suspends after all the consumers and resumes after
-> hba resumes. This also registers a new scsi driver for rpmb wlun.
-> This new driver is mostly used to clear rpmb uac.
+> While at it, convert the normal interrupt handler to a chained handler,
+> handle the controller's MSI IRQ edge triggered, support multiple MSIs
+> per device and use the AFI_MSI_EN_VEC* registers to provide MSI masking.
 > 
-> Fixed smatch warnings:
-> Reported-by: kernel test robot <lkp@intel.com>
-> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> 
-> Co-developed-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Can Guo <cang@codeaurora.org>
-> Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
-> ---
+> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+> [treding@nvidia.com: fix, clean up and address TODOs from Marc's draft]
+> Signed-off-by: Thierry Reding <treding@nvidia.com>
+> Signed-off-by: Marc Zyngier <maz@kernel.org>
 
-I came across 3 issues while testing.  See comments below.
 
-<SNIP>
+This change is breaking a suspend test that we are running on Tegra124
+Jetson-TK1. The Tegra124 Jetson TK1 uses a PCI based ethernet device ...
 
-> @@ -5753,12 +5797,13 @@ static void ufshcd_clk_scaling_suspend(struct ufs_hba *hba, bool suspend)
->  
->  static void ufshcd_err_handling_prepare(struct ufs_hba *hba)
->  {
-> -	pm_runtime_get_sync(hba->dev);
-> -	if (pm_runtime_status_suspended(hba->dev) || hba->is_sys_suspended) {
-> +	ufshcd_rpm_get_sync(hba);
+$ lspci
+00:02.0 PCI bridge: NVIDIA Corporation TegraK1 PCIe x1 Bridge (rev a1)
+01:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
+RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 0c)
 
-hba->sdev_ufs_device could be NULL.
-Need to add a check for that in ufshcd_err_handling_should_stop()
+After resuming from suspend, networking is no longer working. The reason
+why this breaks our suspend test is because that setup is using NFS for
+the rootfs. I am looking into it, but if anyone has any thoughts please
+let me know.
 
-> +	if (pm_runtime_status_suspended(&hba->sdev_ufs_device->sdev_gendev) ||
-> +	    hba->is_sys_suspended) {
->  		enum ufs_pm_op pm_op;
->  
->  		/*
-> -		 * Don't assume anything of pm_runtime_get_sync(), if
-> +		 * Don't assume anything of resume, if
->  		 * resume fails, irq and clocks can be OFF, and powers
->  		 * can be OFF or in LPM.
->  		 */
-> @@ -5794,7 +5839,7 @@ static void ufshcd_err_handling_unprepare(struct ufs_hba *hba)
->  	if (ufshcd_is_clkscaling_supported(hba))
->  		ufshcd_clk_scaling_suspend(hba, false);
->  	ufshcd_clear_ua_wluns(hba);
+Jon
 
-ufshcd_clear_ua_wluns() deadlocks trying to clear UFS_UPIU_RPMB_WLUN
-if sdev_rpmb is suspended and sdev_ufs_device is suspending.
-e.g. ufshcd_wl_suspend() is waiting on host_sem while ufshcd_err_handler()
-is running, at which point sdev_rpmb has already suspended.
-
-> -	pm_runtime_put(hba->dev);
-> +	ufshcd_rpm_put(hba);
->  }
-
-<SNIP>
-
-> +void ufshcd_resume_complete(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +
-> +	ufshcd_rpm_put(hba);
-> +}
-> +EXPORT_SYMBOL_GPL(ufshcd_resume_complete);
-> +
-> +int ufshcd_suspend_prepare(struct device *dev)
-> +{
-> +	struct ufs_hba *hba = dev_get_drvdata(dev);
-> +	struct device *ufs_dev = &hba->sdev_ufs_device->sdev_gendev;
-> +	enum ufs_dev_pwr_mode spm_pwr_mode;
-> +	enum uic_link_state spm_link_state;
-> +	unsigned long flags;
-> +	bool rpm_state_ok;
-> +
-> +	/*
-> +	 * SCSI assumes that runtime-pm and system-pm for scsi drivers
-> +	 * are same. And it doesn't wake up the device for system-suspend
-> +	 * if it's runtime suspended. But ufs doesn't follow that.
-> +	 * The rpm-lvl and spm-lvl can be different in ufs.
-> +	 * However, if the current_{pwr_mode, link_state} is same as the
-> +	 * desired_{pwr_mode, link_state}, there's no need to rpm resume
-> +	 * the device.
-> +	 * Refer ufshcd_resume_complete()
-> +	 */
-> +	pm_runtime_get_noresume(ufs_dev);
-> +
-> +	spin_lock_irqsave(&ufs_dev->power.lock, flags);
-> +
-> +	spm_pwr_mode = ufs_get_pm_lvl_to_dev_pwr_mode(hba->spm_lvl);
-> +	spm_link_state = ufs_get_pm_lvl_to_link_pwr_state(hba->spm_lvl);
-> +
-> +	rpm_state_ok = pm_runtime_suspended(ufs_dev) &&
-> +		hba->curr_dev_pwr_mode == spm_pwr_mode &&
-> +		hba->uic_link_state == spm_link_state &&
-> +		!hba->dev_info.b_rpm_dev_flush_capable;
-> +
-> +	spin_unlock_irqrestore(&ufs_dev->power.lock, flags);
-> +
-> +	if (!rpm_state_ok) {
-> +		int ret = pm_runtime_resume(ufs_dev);
-> +
-> +		if (ret < 0 && ret != -EACCES) {
-> +			pm_runtime_put(ufs_dev);
-> +			return ret;
-> +		}
-> +	}
-> +	return 0;
-> +}
-
-Unfortunately this does not work because SCSI PM forcibly sets
-the sdevs to runtime active after system resume.  Really we should
-change SCSI PM to call the driver's .prepare / .complete then we could
-use direct complete, but let's leave that for now and go back to
-before, but allowing for errors and !hba->sdev_ufs_device. e.g.
-
-void ufshcd_resume_complete(struct device *dev)
-{
-	struct ufs_hba *hba = dev_get_drvdata(dev);
-
-	if (hba->complete_put) {
-		hba->complete_put = false;
-		ufshcd_rpm_put(hba);
-	}
-}
-EXPORT_SYMBOL_GPL(ufshcd_resume_complete);
-
-int ufshcd_suspend_prepare(struct device *dev)
-{
-	struct ufs_hba *hba = dev_get_drvdata(dev);
-	int ret;
-
-	if (!hba->sdev_ufs_device)
-		return 0;
-
-	ret = ufshcd_rpm_get_sync(hba);
-	if (ret < 0 && ret != -EACCES) {
-		ufshcd_rpm_put(hba);
-		return ret;
-	}
-	hba->complete_put = true;
-	return 0;
-}
-EXPORT_SYMBOL_GPL(ufshcd_suspend_prepare);
-
+-- 
+nvpublic
 
 _______________________________________________
 Linux-mediatek mailing list
