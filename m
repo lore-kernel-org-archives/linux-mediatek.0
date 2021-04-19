@@ -2,20 +2,20 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DE3AC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:02:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26B07C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:03:35 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DED8261107
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:02:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DED8261107
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 75ECB6113C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 05:03:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75ECB6113C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=atmark-techno.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,45 +23,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rQNcN0Q69V8TQnlU5vPvE8kFv2YLEcgmyWuFu8fHSys=; b=Kj6Qs8CfO/+VUrbo4MVgauzb8
-	s/mRdHf/W7XyrtnhPH0uBE0wLoFA4wIFEd01pUNvS6p4tkGQ/Drf7yCrXP4Ahqfu1/gWozBI1cfzp
-	ZjM4C/gCNHHLV7nPPKwZHUF7l4SiYWLjOKgPPt+g3wLd0bN0+tBtr/njgjDsn9C3JnU4U0c2SfEpn
-	jEn5Zu0euAkzNgN6ZzOpSoiKVTC3DRuHr+XTiv8RwtTTEjFG/khXu34yJWASuIxYIcV8nQb7xPvS7
-	+H36Ki36gNjEXY0b6LX7Zs4cs93CLavP9bXnY8u0bEFVjNPz2OZFhZvOdJBB/KEGG4r87dnsh37g1
-	jWdGCv6CQ==;
+	 bh=Tbv3dO0SU5ZbI89Xm8sq64a9JK4AYEkJLZje9vucafk=; b=UBmLLKKSR7fOv4gQvOzWMe9Ko
+	MPYFOUU8YtqjQS/kFl/RFCswIkwr0TAQHdBqcyPdBhGSI2IjlIaALC3sG1EYfp+n0hHQziMltTW0U
+	cvN5311MAh18SjD8bc09SFmOZfn2kfbTgCozGZrK6XRIHURlvt4r2jBdS5zrpBtZvacNvMiZx8EaP
+	usKseWNtN0RV1NPrSU5dvQLacTT+h5vEYv9tUHS7SFJRL/bpXFrYSg/S1S2ahj5TNlDc/xjG31bab
+	K89QBRsROqd2eg6z1spMy68bAuTgs3WfN9OWxOH4WaBABmoEtCLd3GEPebyCT9kRVM6jVBdVhNK2C
+	C06Piv5EQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYM3I-0097Lo-8I; Mon, 19 Apr 2021 05:02:28 +0000
+	id 1lYM4B-0097Rf-2A; Mon, 19 Apr 2021 05:03:23 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYM3C-0097LC-E4; Mon, 19 Apr 2021 05:02:23 +0000
+ id 1lYM45-0097Qj-VQ
+ for linux-mediatek@desiato.infradead.org; Mon, 19 Apr 2021 05:03:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=2978PzJtFVeN8phleYNVMXVxo8if5FUPf8rC7Eh3/e4=; b=oW9AMmu7cX3RmsvCGJiCWSNryi
- tq5oYV0bze8rYhqDm7/IbigzJ5sCU2U9L1L1+BnKIhiy9qielT0FBT9hihx98ENOcgofYuYo8y9mF
- OZQeWbBEk2xFmaYwKbhLO/C3f+515qVfD11v9bxdXcDz0xjUglVq+HOCROOTBQ38ZE/VM5xWmBsgp
- v82GQvPz6qhryCZDaddYGTangfY/gvkiBYBGf+BU38jLmq4m4YYDt8/H/3TDQbuBuVqyLwqi5AyYM
- YTg/T29T/8029PJLiIjS2elvPb3cw7b44gA1Tgvj1tPsjPatV8cXYj/RtxOD6SKo9j+w2lPKbtO1E
- K1UCxDJQ==;
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYM39-00Azx5-Li; Mon, 19 Apr 2021 05:02:21 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 65BC961078;
- Mon, 19 Apr 2021 05:02:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618808539;
- bh=srAR5o/oGq5ioibP/eXNEOXMJgehSJWXVDMJHT8j86M=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Q2aSyWKadyluHjWWN1SwyxF3iNnBxBRV4eFwfMyHPgeuOCbx3zVu4VA/PQblKt1mX
- LG/8Qa12wOxexoPdM1AtRUqEwffA6hhUzg5XvoNYf5i8CVaEzIb5aHKsxdmdIZ0VNh
- EB/GtCUOovxwGQ5QiY5CwzbiGBepA6YRCHaOc9bFp2O+m0lnHel/QMKuqas1XJG+Ml
- vece3azY0OPvilnrF9TxEM4Y2QEUh42RCB/qgDYU4n+IIRFMdKunRACTXFpDc2oJTx
- Tw4u0mxUHQNeAMruPlzpJF4CCm1VJVvyur9NU2SbLDowYlZY9RFqgpKroyAxadDiZV
- 1t4tD3zjj0ZKQ==
-Date: Mon, 19 Apr 2021 08:02:15 +0300
-From: Leon Romanovsky <leon@kernel.org>
+ bh=bLr973ENjFZQNNz5/z+BmoCFuTDVovYaAYguOO0YOc4=; b=FqCUaH/m4o36EybObw8kYfxjc3
+ jM8bp7G1PfxE3kdBhTXbhnbTcUUY3ZeohBhZf/hE6bILLoB+A4Lyk2cTPdPbR18wJtxm01rRpL4d0
+ QrKLjig1TqarAcBJwKm22Xlf7obXxgVgXFa0sx2HonPUr+GWSHWu9eVnMsh2HdFJnXg5QbeYWTb3A
+ 2OJhJpMuTns2elyGngOnkEmVhSmj6tVP8u8PGzhCq3e7nDX4zyEc0HsQIgV9jaav/XfwNEGBURHln
+ 2UukyNl7wS6OKLxWQpXVvdGP9luQnMgy7W6BnVTQNHm3O9t1Z0mTBI36tqz0FTTNphxJruM4UCqnO
+ /rhRPZjw==;
+Received: from gw.atmark-techno.com ([13.115.124.170])
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lYM40-00B029-F3
+ for linux-mediatek@lists.infradead.org; Mon, 19 Apr 2021 05:03:16 +0000
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69])
+ by gw.atmark-techno.com (Postfix) with ESMTPS id AD121804AF
+ for <linux-mediatek@lists.infradead.org>; Mon, 19 Apr 2021 14:03:11 +0900 (JST)
+Received: by mail-qv1-f69.google.com with SMTP id
+ w20-20020a0562140b34b029019c9674180fso8569907qvj.0
+ for <linux-mediatek@lists.infradead.org>; Sun, 18 Apr 2021 22:03:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bLr973ENjFZQNNz5/z+BmoCFuTDVovYaAYguOO0YOc4=;
+ b=kb6OPUs4gHy9F5umBV94cq9Myh5ypFNo9XTBAvd0O6MUB2yObNDZWEXAu0WLyBmwfr
+ mr5PvCEtmCY2Sj504bijH76yxCXD/7qLiFK5sb7tMJcNKepgw5CBg/t/Q3TL+XY8ydDq
+ PzhgMup6RcL8/X718hwkbber7HCVNluhfUEf6xpRjaTOKKU2aaxueynLJvj81gVasn0e
+ QgGUIePNSHLHwdIMw5vX75xWjErLP31uGRrTmN+FeqtJPOKyfW45VA3Ul81xxvc4aJ36
+ cK8X43VxC8YTfpVi0G1x72ii7SZwvJJNqYOPxPN8ZAGjTOzFBYLmvx2ASOdXvWahK5lY
+ abMA==
+X-Gm-Message-State: AOAM533eS8WnNbCws5eJH2ehEYdAithxftemjYgw28fEx+jSRvZrovhe
+ qQ75bUPzgq+ZHb/W44E7e+Vp9Pbk/KGmSVxAAlCwYmi58ZmmtBUtysPYLRcg5dRu041kSLAqXVr
+ WIhgBhZ+jgp8700KKFIOxf7ubkXaPw21Uj6o2
+X-Received: by 2002:a17:902:d645:b029:e8:ec90:d097 with SMTP id
+ y5-20020a170902d645b02900e8ec90d097mr21074831plh.47.1618808579511; 
+ Sun, 18 Apr 2021 22:02:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyI1MeNQhpXnytM5xmVsw3ZCkrTxMPyrxhKroAVtmGUaPe01xpWL31HOX4hl1pxmvtORo+KDQ==
+X-Received: by 2002:a17:902:d645:b029:e8:ec90:d097 with SMTP id
+ y5-20020a170902d645b02900e8ec90d097mr21074765plh.47.1618808579243; 
+ Sun, 18 Apr 2021 22:02:59 -0700 (PDT)
+Received: from pc-0115 (103.131.189.35.bc.googleusercontent.com.
+ [35.189.131.103])
+ by smtp.gmail.com with ESMTPSA id ga21sm2553351pjb.5.2021.04.18.22.02.58
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 18 Apr 2021 22:02:58 -0700 (PDT)
+Received: from martinet by pc-0115 with local (Exim 4.94)
+ (envelope-from <martinet@pc-0115>)
+ id 1lYM3l-0016Ra-6N; Mon, 19 Apr 2021 14:02:57 +0900
+Date: Mon, 19 Apr 2021 14:02:47 +0900
+From: Dominique MARTINET <dominique.martinet@atmark-techno.com>
 To: "Alice Guo (OSS)" <alice.guo@oss.nxp.com>
 Cc: gregkh@linuxfoundation.org, rafael@kernel.org, horia.geanta@nxp.com,
  aymen.sghaier@nxp.com, herbert@gondor.apana.org.au,
@@ -90,15 +116,15 @@ Cc: gregkh@linuxfoundation.org, rafael@kernel.org, horia.geanta@nxp.com,
  linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org
 Subject: Re: [RFC v1 PATCH 3/3] driver: update all the code that use
  soc_device_match
-Message-ID: <YH0O1104YEdjY9mb@unreal>
+Message-ID: <YH0O907dfGY9jQRZ@atmark-techno.com>
 References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
  <20210419042722.27554-4-alice.guo@oss.nxp.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20210419042722.27554-4-alice.guo@oss.nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210418_220219_760731_129EA694 
-X-CRM114-Status: GOOD (  16.43  )
+X-CRM114-CacheID: sfid-20210418_220312_629579_3A11DBF9 
+X-CRM114-Status: GOOD (  28.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,63 +141,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 19, 2021 at 12:27:22PM +0800, Alice Guo (OSS) wrote:
+Alice Guo (OSS) wrote on Mon, Apr 19, 2021 at 12:27:22PM +0800:
 > From: Alice Guo <alice.guo@nxp.com>
 > 
-> Update all the code that use soc_device_match because add support for
-> soc_device_match returning -EPROBE_DEFER.
-> 
+> Update all the code that use soc_device_match
+
+A single patch might be difficult to accept for all components, a each
+maintainer will probably want to have a say on their subsystem?
+
+I would suggest to split these for a non-RFC version; a this will really
+need to be case-by-case handling.
+
+> because add support for soc_device_match returning -EPROBE_DEFER.
+
+(English does not parse here for me)
+
+I've only commented a couple of places in the code itself, but this
+doesn't seem to add much support for errors, just sweep the problem
+under the rug.
+
 > Signed-off-by: Alice Guo <alice.guo@nxp.com>
 > ---
->  drivers/bus/ti-sysc.c                         |  2 +-
->  drivers/clk/renesas/r8a7795-cpg-mssr.c        |  4 +++-
->  drivers/clk/renesas/rcar-gen2-cpg.c           |  2 +-
->  drivers/clk/renesas/rcar-gen3-cpg.c           |  2 +-
->  drivers/dma/fsl-dpaa2-qdma/dpaa2-qdma.c       |  7 ++++++-
->  drivers/dma/ti/k3-psil.c                      |  3 +++
->  drivers/dma/ti/k3-udma.c                      |  2 +-
->  drivers/gpu/drm/bridge/nwl-dsi.c              |  2 +-
->  drivers/gpu/drm/meson/meson_drv.c             |  4 +++-
->  drivers/gpu/drm/omapdrm/dss/dispc.c           |  2 +-
->  drivers/gpu/drm/omapdrm/dss/dpi.c             |  4 +++-
->  drivers/gpu/drm/omapdrm/dss/dsi.c             |  3 +++
->  drivers/gpu/drm/omapdrm/dss/dss.c             |  3 +++
->  drivers/gpu/drm/omapdrm/dss/hdmi4_core.c      |  3 +++
->  drivers/gpu/drm/omapdrm/dss/venc.c            |  4 +++-
->  drivers/gpu/drm/omapdrm/omap_drv.c            |  3 +++
->  drivers/gpu/drm/rcar-du/rcar_du_crtc.c        |  4 +++-
->  drivers/gpu/drm/rcar-du/rcar_lvds.c           |  2 +-
->  drivers/gpu/drm/tidss/tidss_dispc.c           |  4 +++-
->  drivers/iommu/ipmmu-vmsa.c                    |  7 +++++--
->  drivers/media/platform/rcar-vin/rcar-core.c   |  2 +-
->  drivers/media/platform/rcar-vin/rcar-csi2.c   |  2 +-
->  drivers/media/platform/vsp1/vsp1_uif.c        |  4 +++-
->  drivers/mmc/host/renesas_sdhi_core.c          |  2 +-
->  drivers/mmc/host/renesas_sdhi_internal_dmac.c |  2 +-
->  drivers/mmc/host/sdhci-of-esdhc.c             | 21 ++++++++++++++-----
->  drivers/mmc/host/sdhci-omap.c                 |  2 +-
->  drivers/mmc/host/sdhci_am654.c                |  2 +-
->  drivers/net/ethernet/renesas/ravb_main.c      |  4 +++-
->  drivers/net/ethernet/ti/am65-cpsw-nuss.c      |  2 +-
->  drivers/net/ethernet/ti/cpsw.c                |  2 +-
->  drivers/net/ethernet/ti/cpsw_new.c            |  2 +-
->  drivers/phy/ti/phy-omap-usb2.c                |  4 +++-
->  drivers/pinctrl/renesas/core.c                |  2 +-
->  drivers/pinctrl/renesas/pfc-r8a7790.c         |  5 ++++-
->  drivers/pinctrl/renesas/pfc-r8a7794.c         |  5 ++++-
->  drivers/soc/fsl/dpio/dpio-driver.c            | 13 ++++++++----
->  drivers/soc/renesas/r8a774c0-sysc.c           |  5 ++++-
->  drivers/soc/renesas/r8a7795-sysc.c            |  2 +-
->  drivers/soc/renesas/r8a77990-sysc.c           |  5 ++++-
->  drivers/soc/ti/k3-ringacc.c                   |  2 +-
->  drivers/staging/mt7621-pci/pci-mt7621.c       |  2 +-
->  drivers/thermal/rcar_gen3_thermal.c           |  4 +++-
->  drivers/thermal/ti-soc-thermal/ti-bandgap.c   | 10 +++++++--
->  drivers/usb/gadget/udc/renesas_usb3.c         |  2 +-
->  drivers/usb/host/ehci-platform.c              |  4 +++-
->  drivers/usb/host/xhci-rcar.c                  |  2 +-
->  drivers/watchdog/renesas_wdt.c                |  2 +-
->  48 files changed, 131 insertions(+), 52 deletions(-)
 > 
 > diff --git a/drivers/bus/ti-sysc.c b/drivers/bus/ti-sysc.c
 > index 5fae60f8c135..00c59aa217c1 100644
@@ -184,6 +174,10 @@ On Mon, Apr 19, 2021 at 12:27:22PM +0800, Alice Guo (OSS) wrote:
 > -	if (!match)
 > +	if (!match || IS_ERR(match))
 >  		return 0;
+
+This function handles errors, I would recommend returning the error as
+is if soc_device_match returned one so the probe can be retried later.
+
 >  
 >  	if (match->data)
 > diff --git a/drivers/clk/renesas/r8a7795-cpg-mssr.c b/drivers/clk/renesas/r8a7795-cpg-mssr.c
@@ -206,9 +200,52 @@ On Mon, Apr 19, 2021 at 12:27:22PM +0800, Alice Guo (OSS) wrote:
 > +	match = soc_device_match(r8a7795es1);
 > +	if (!IS_ERR(match) && match) {
 
-"if (!IS_ERR_OR_NULL(match))" in all places.
+Same, return the error.
+Assuming an error means no match will just lead to hard to debug
+problems because the driver potentially assumed the wrong device when
+it's just not ready yet.
 
-Thanks
+>  		cpg_core_nullify_range(r8a7795_core_clks,
+>  				       ARRAY_SIZE(r8a7795_core_clks),
+>  				       R8A7795_CLK_S0D2, R8A7795_CLK_S0D12);
+> [...]
+> diff --git a/drivers/iommu/ipmmu-vmsa.c b/drivers/iommu/ipmmu-vmsa.c
+> index eaaec0a55cc6..13a06b613379 100644
+> --- a/drivers/iommu/ipmmu-vmsa.c
+> +++ b/drivers/iommu/ipmmu-vmsa.c
+> @@ -757,17 +757,20 @@ static const char * const devices_allowlist[] = {
+>  
+>  static bool ipmmu_device_is_allowed(struct device *dev)
+>  {
+> +	const struct soc_device_attribute *match1, *match2;
+>  	unsigned int i;
+>  
+>  	/*
+>  	 * R-Car Gen3 and RZ/G2 use the allow list to opt-in devices.
+>  	 * For Other SoCs, this returns true anyway.
+>  	 */
+> -	if (!soc_device_match(soc_needs_opt_in))
+> +	match1 = soc_device_match(soc_needs_opt_in);
+> +	if (!IS_ERR(match1) && !match1)
+
+I'm not sure what you intended to do, but !match1 already means there is
+no error so the original code is identical.
+
+In this case ipmmu_device_is_allowed does not allow errors so this is
+one of the "difficult" drivers that require slightly more thinking.
+It is only called in ipmmu_of_xlate which does return errors properly,
+so in this case the most straightforward approach would be to make
+ipmmu_device_is_allowed return an int and forward errors as well.
+
+
+
+...
+This is going to need quite some more work to be acceptable, in my
+opinion, but I think it should be possible.
+
+Thanks,
+-- 
+Dominique
 
 _______________________________________________
 Linux-mediatek mailing list
