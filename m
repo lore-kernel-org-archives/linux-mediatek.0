@@ -2,73 +2,107 @@ Return-Path: <SRS0=CMHm=JQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AFB3C433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:06:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3C96C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:20:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3F5861107
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:06:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3F5861107
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=netfilter.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4B8226101C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Apr 2021 08:20:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B8226101C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=s2ZKclHHdLyAKUYfd7F8f3NzTSz4DUWzmwgiN4SKYsI=; b=iEUd/pFNZBAFwFZ+l2jQhUS5U
-	ldZtkNLx5bOUfubuCTFdiBJAq992ycmHzaM3zNWVkjESZv0hR1YLdQnI0BcO+slmEnkbOrswm3N9e
-	vxDjHsGbXfh9zXt2uTEHBmS58QT/AKaaF1fAlc2NMo2VsZZ0FSDHf8P3s76zl9GqMq8Hn1DpultVZ
-	chyHTBZWgMs451zb2EJZc1GVHKWvas+Z4qmh5NENcfbEFADVlrO6uWJuIGPHaiyeCcM59ThqqhTWn
-	4S/Stvr0EQnUoUYmvth/C2fwwLAQJYANPrTqLCvAY+Kjm4RACxbjxnp1zxRU5Gy+0QWIaKSDb3V1Q
-	Vqzfn5nIg==;
+	 bh=rB4+HEe4eZx7tQtpMJErrMkWnGTjbVLRccH8xKXpbUU=; b=gr13on/3NCMfYCW6xeCy576kZ
+	y6GxvxJX3oQidlY6QVrKDUk83DgmD9uY23CqgX9/RyahYR46J+K7cAnx0ZjQhtvlb0TD7/xv26qb2
+	PVSmxECEmzRHHSt/ZeI5gQmW026QR0eC8MupPsQxQd2uJV+s2Y8e7ZpEHpMJeTMb8che/YYn0KhBj
+	rYdMYhDvo5KvP9L8TKnqybSDiICHdkmC4QUS475I+nHea3JyWUSboeZbhOmTz05U7DYqDPpzb5s6f
+	vC9L2stWNZAqgUn/wDTPkLbCqtwu1EOdlXfjhPMhz+I2KeAVik4Qbgu2a/eaebhU/q39DYhyJO33P
+	sBEszsOYQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYOvQ-009P8X-L4; Mon, 19 Apr 2021 08:06:32 +0000
+	id 1lYP97-009PzG-9O; Mon, 19 Apr 2021 08:20:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYOvG-009P7x-QR; Mon, 19 Apr 2021 08:06:23 +0000
+ id 1lYP91-009Pxt-MB; Mon, 19 Apr 2021 08:20:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=OCWt1hkNl/QTqD2tSUx56uautrqcqnCVc8c+EVejDWs=; b=WpqOcqoenAeJcyU6LaXoDb5i28
- LkjY/vD2MXOv3hcO/oZ2jiFQXzAcM9w77YsNL6pXu7qcl/tcmYHmwoWG/TRzOJc4CM/Qf8BuSlkpw
- HG0fK92L69qCjOaD4WOstBtZy58orVtn8tbNy62r35Aea25dBp0xQeVX5M+yPydek9cLyd4kac9Kx
- CGrxbIZ61M5pkTHaABam0J8AcFwKj2ESGjyEGgN/0DyHv5nFouwn0QXLnFovXZ+9g8u1NgIomfda5
- jUk5C986pYnrr9CCGyrmGOe7RoOBV5IUoia/ezfTH/M5zGvDrLrSJJAPyY/OZZZsb/1hlmDsrpgjK
- 2QBXvcHw==;
-Received: from mail.netfilter.org ([217.70.188.207])
- by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
- id 1lYOvB-00BAT9-CK; Mon, 19 Apr 2021 08:06:21 +0000
-Received: from us.es (unknown [90.77.255.23])
- by mail.netfilter.org (Postfix) with ESMTPSA id C36A063E49;
- Mon, 19 Apr 2021 10:05:42 +0200 (CEST)
-Date: Mon, 19 Apr 2021 10:06:10 +0200
-From: Pablo Neira Ayuso <pablo@netfilter.org>
-To: Valdis =?utf-8?Q?Kl=C4=93tnieks?= <valdis.kletnieks@vt.edu>
-Cc: Felix Fietkau <nbd@nbd.name>, "David S. Miller" <davem@davemloft.net>,
- Christoph Hellwig <hch@infradead.org>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: drivers/net/ethernet/mediatek/mtk_ppe_offload.c - suspicious code?
-Message-ID: <20210419080610.GA24040@salvia>
-References: <526789.1618794132@turing-police>
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=ltv54OOOgcKhPoH7oRaigoXMRi+Z2QqH7bQ4dTNkEvU=; b=XVY+t5xQ0TgVFtqpc9p43cW6PV
+ KG0iDnunKbEnFgh3M4FMrpPEINQw8296UQ04BWEZfGWy0WO73wLt9W47iPSKkrJV+DI8Nbnomhv/u
+ X8fzR1kF9fVJ4p1ZcyGQ8/P5/sj4Ny5n9Jcp4RJ97lfAsrSjY59diujRLLzrbK/hiRWTH+xKc0Rca
+ d+oVjc5tiR7sxuk1+0Nrq0OoEP2BJAjgTdARf2SS42mvLSiyzkosS91+nCJ4QBzkjCONCGmAMfPfA
+ mMdQHfKYMTOgMiUUrbCICiDCPUJ7NfY6pED2s1IL2A4jS44vWlegnHtwQvHa/opNLXaWqqzgXraQQ
+ VXu3UOFQ==;
+Received: from mail-vs1-f41.google.com ([209.85.217.41])
+ by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
+ id 1lYP8v-00BBFL-TH; Mon, 19 Apr 2021 08:20:34 +0000
+Received: by mail-vs1-f41.google.com with SMTP id u22so6173773vsu.6;
+ Mon, 19 Apr 2021 01:20:25 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ltv54OOOgcKhPoH7oRaigoXMRi+Z2QqH7bQ4dTNkEvU=;
+ b=GG2LBldalzQHEUYB1Ctr0NASLwFy2AKoIiR93glWlwDQmQZC5A0RkJpgmEPOhWYR4K
+ Bv9Lw0Xb0sQy/dbCw5ffdv4IYfHoZd9xcSkY7lka2+nUx600m3H3ff+J7mPk/S15w+rN
+ mJhmopU7iBaareSdEm3oPgm9X6MtvfuPw+DxBzD6ZCzD8/ng/rEXT4R0V0gg9P51ByJ3
+ lJVB3jd4lPPxSyeSuuXTeI251NIqiml6NEDRNHFXxti6G/Fcpm4lfhx/n+1GvbSZLwQ2
+ tvpTy5s2HU1kGqhhFgZxjzNz/0Qt5fsfjEFUn8zhHaIeigQYRho2yeHKckhPKoKoSlTG
+ iLyg==
+X-Gm-Message-State: AOAM5333vZKsO55I/EDzDOHaIA67HA4GyA7JCIOeLYwfqb/b5nM/zpps
+ sbVcu28OEnpYDt/eApagGJz3Hc3k8x3IFhuryDs=
+X-Google-Smtp-Source: ABdhPJw0QI7XOFx1TPnFrXWAlR/QW1v6zaWS/KnYbAtB/CEX2DsVVO2yNBv9r1VAA3kWmuOXuQwF2fQGH/J1go6B4oc=
+X-Received: by 2002:a67:f503:: with SMTP id u3mr12373252vsn.3.1618820424835;
+ Mon, 19 Apr 2021 01:20:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <526789.1618794132@turing-police>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
+ <20210419042722.27554-2-alice.guo@oss.nxp.com>
+In-Reply-To: <20210419042722.27554-2-alice.guo@oss.nxp.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 19 Apr 2021 10:20:13 +0200
+Message-ID: <CAMuHMdUbrPxtJ9DCP0_nFrReuuO4vFY2J79LrKY82D7bCOfzRw@mail.gmail.com>
+Subject: Re: [RFC v1 PATCH 1/3] drivers: soc: add support for soc_device_match
+ returning -EPROBE_DEFER
+To: "Alice Guo (OSS)" <alice.guo@oss.nxp.com>
+Cc: gregkh@linuxfoundation.org, rafael@kernel.org, horia.geanta@nxp.com, 
+ aymen.sghaier@nxp.com, herbert@gondor.apana.org.au, davem@davemloft.net, 
+ tony@atomide.com, geert+renesas@glider.be, mturquette@baylibre.com, 
+ sboyd@kernel.org, vkoul@kernel.org, peter.ujfalusi@gmail.com, 
+ a.hajda@samsung.com, narmstrong@baylibre.com, robert.foss@linaro.org, 
+ airlied@linux.ie, daniel@ffwll.ch, khilman@baylibre.com, tomba@kernel.org, 
+ jyri.sarha@iki.fi, joro@8bytes.org, will@kernel.org, mchehab@kernel.org, 
+ ulf.hansson@linaro.org, adrian.hunter@intel.com, kishon@ti.com, 
+ kuba@kernel.org, linus.walleij@linaro.org, Roy.Pledge@nxp.com, 
+ leoyang.li@nxp.com, ssantosh@kernel.org, matthias.bgg@gmail.com, 
+ edubezval@gmail.com, j-keerthy@ti.com, balbi@kernel.org, 
+ linux@prisktech.co.nz, stern@rowland.harvard.edu, wim@linux-watchdog.org, 
+ linux@roeck-us.net, linux-kernel@vger.kernel.org, 
+ linux-crypto@vger.kernel.org, linux-omap@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org, linux-clk@vger.kernel.org, 
+ dmaengine@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ iommu@lists.linux-foundation.org, linux-media@vger.kernel.org, 
+ linux-mmc@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-phy@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linuxppc-dev@lists.ozlabs.org, linux-staging@lists.linux.dev, 
+ linux-mediatek@lists.infradead.org, linux-pm@vger.kernel.org, 
+ linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org, 
+ Arnd Bergmann <arnd@arndb.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_010617_598180_D96E26BD 
-X-CRM114-Status: UNSURE (   7.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210419_012029_956281_3B2C7EC1 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +114,79 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBBcHIgMTgsIDIwMjEgYXQgMDk6MDI6MTJQTSAtMDQwMCwgVmFsZGlzIEtsxJN0bmll
-a3Mgd3JvdGU6Cj4gV2hpbGUgZG9pbmcgc29tZSBjb2RlIGF1ZGl0aW5nIGZvciAtV292ZXJyaWRl
-X2luaXQsIEkgc3BvdHRlZCBzb21lIHF1ZXN0aW9uYWJsZSBjb2RlCj4gCj4gY29tbWl0IDUwMmU4
-NGUyMzgyZDkyNjU0YTJlY2JjNTJjZGJkYjVhMTFjZGNlYzcKPiBBdXRob3I6IEZlbGl4IEZpZXRr
-YXUgPG5iZEBuYmQubmFtZT4KPiBEYXRlOiAgIFdlZCBNYXIgMjQgMDI6MzA6NTQgMjAyMSArMDEw
-MAo+IAo+ICAgICBuZXQ6IGV0aGVybmV0OiBtdGtfZXRoX3NvYzogYWRkIGZsb3cgb2ZmbG9hZGlu
-ZyBzdXBwb3J0Cj4gCj4gSW4gZHJpdmVycy9uZXQvZXRoZXJuZXQvbWVkaWF0ZWsvbXRrX3BwZV9v
-ZmZsb2FkLmM6Cj4gCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcmhhc2h0YWJsZV9wYXJhbXMgbXRr
-X2Zsb3dfaHRfcGFyYW1zID0gewo+ICsgICAgICAgLmhlYWRfb2Zmc2V0ID0gb2Zmc2V0b2Yoc3Ry
-dWN0IG10a19mbG93X2VudHJ5LCBub2RlKSwKPiArICAgICAgIC5oZWFkX29mZnNldCA9IG9mZnNl
-dG9mKHN0cnVjdCBtdGtfZmxvd19lbnRyeSwgY29va2llKSwKPiArICAgICAgIC5rZXlfbGVuID0g
-c2l6ZW9mKHVuc2lnbmVkIGxvbmcpLAo+ICsgICAgICAgLmF1dG9tYXRpY19zaHJpbmtpbmcgPSB0
-cnVlLAo+ICt9Owo+IAo+IFdoYXQncyBpbnRlbmRlZCBmb3IgaGVhZF9vZmZzZXQgaGVyZT8KCkl0
-J3MgYSBidWcsIHRoZXJlJ3MgYSBmaXggaGVyZToKCmh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xp
-c3RzL25ldGRldi9tc2c3MzYzNjguaHRtbAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Alice,
+
+CC Arnd (soc_device_match() author)
+
+On Mon, Apr 19, 2021 at 6:28 AM Alice Guo (OSS) <alice.guo@oss.nxp.com> wrote:
+> From: Alice Guo <alice.guo@nxp.com>
+>
+> In i.MX8M boards, the registration of SoC device is later than caam
+> driver which needs it. Caam driver needs soc_device_match to provide
+> -EPROBE_DEFER when no SoC device is registered and no
+> early_soc_dev_attr.
+
+I'm wondering if this is really a good idea: soc_device_match() is a
+last-resort low-level check, and IMHO should be made available early on,
+so there is no need for -EPROBE_DEFER.
+
+>
+> Signed-off-by: Alice Guo <alice.guo@nxp.com>
+
+Thanks for your patch!
+
+> --- a/drivers/base/soc.c
+> +++ b/drivers/base/soc.c
+> @@ -110,6 +110,7 @@ static void soc_release(struct device *dev)
+>  }
+>
+>  static struct soc_device_attribute *early_soc_dev_attr;
+> +static bool soc_dev_attr_init_done = false;
+
+Do you need this variable?
+
+>
+>  struct soc_device *soc_device_register(struct soc_device_attribute *soc_dev_attr)
+>  {
+> @@ -157,6 +158,7 @@ struct soc_device *soc_device_register(struct soc_device_attribute *soc_dev_attr
+>                 return ERR_PTR(ret);
+>         }
+>
+> +       soc_dev_attr_init_done = true;
+>         return soc_dev;
+>
+>  out3:
+> @@ -246,6 +248,9 @@ const struct soc_device_attribute *soc_device_match(
+>         if (!matches)
+>                 return NULL;
+>
+> +       if (!soc_dev_attr_init_done && !early_soc_dev_attr)
+
+if (!soc_bus_type.p && !early_soc_dev_attr)
+
+> +               return ERR_PTR(-EPROBE_DEFER);
+> +
+>         while (!ret) {
+>                 if (!(matches->machine || matches->family ||
+>                       matches->revision || matches->soc_id))
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
