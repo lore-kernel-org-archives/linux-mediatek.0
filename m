@@ -7,101 +7,148 @@ X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 599B1C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 12:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25E4BC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 12:46:35 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8286613BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 12:08:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8286613BF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6DD48613C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 12:46:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DD48613C2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	References:CC:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uzLn8fKVgFQHvw5CiIhxcmAjd+ab+E8eXD1i9/z5igI=; b=D2lasWGiwRSM8KyZ8F57/xfAr
-	S4pFXFJ+7cAamOu0rxl8/n1ZI73tDqKKM8ttivbXj1t1yvVWcbpV09GBBZo6m787kgY1HHjnIFH8S
-	ISK6MjRibcILg0Vk7Bia9AKhQIWJwVXbBU4UwRZ+/CbmiB9qbwc8y+wQSw3olAjktXu/YN2YK9t5V
-	CFPHrj+bCQRF5MMrMIx25lfnMB5pNTwtdQ3FJRYCSLNcLYHGbaiv/Hiyj3ezeYcEyo3LusWZd5fhJ
-	DUBuiWvHcnuolJ6KCc/cCZOyWJ6/3VHEIZwABqiCnQ9ou6p/Tv2a4kEoNIRKCNB+n/8mx19sSsxgw
-	p9fabJkuw==;
+	 bh=caJEb0en8zp4fE8beyXc491YRUOU1SKbdjwiKiwGTwg=; b=QUcZUG/6bAyESfS+MtYnNIGJ1
+	0O1uCvbh/8qXRy/MZAW1uWz/1UPYEpousyd8O39ojbiKw66PCI/SE+sXYKtHEKSv17OD7ztuOXV4v
+	H4/OMj4YxgmPq6Amr69G0BnO+xhAU4Fu3h7BAMw6jdozgZiY0+ghrkAqWQZJ3oobCf1eJBZV8Q7QW
+	340Pe5xNFrlFXFVA9lxti9jitMkjtgXLpq/zdPJKImbHTqDYVZRKMcA3++ClLNAkkhZg2WTy3Lv5Y
+	1m8OXLI4BMEeSkDyvEtvnMqt+8hqL8TQJ9rnbcQRJdqJVQdbG3/0tyJ2vBxX+IREQgsdKsAVYJjZT
+	ikgjq96ew==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYpAR-00C1wG-0K; Tue, 20 Apr 2021 12:07:47 +0000
+	id 1lYplg-00C7Uz-2E; Tue, 20 Apr 2021 12:46:16 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYpA6-00C1tx-3N
- for linux-mediatek@desiato.infradead.org; Tue, 20 Apr 2021 12:07:26 +0000
+ id 1lYple-00C7Uf-DH; Tue, 20 Apr 2021 12:46:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:CC:To:
  Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=fdjavbbnG38i/vDHVgTWk3tsDsi63+Qg6p2AfSLSokM=; b=RlkToMHmzZC+i8XEkh0pA48pyy
- w+MeZlxAzHjRaYLmItaMYfzUnEVT16Al7+jZ2lhIg6LB8LBa/MkIm1SsGnseHeMEqVuDV2g2/N5AJ
- cK8StWUTqTCYQadpzn1o1Gb3hgp/Fy1EBz/PBTbYnapzt+3MPgW3j56p7YihvzwgsmhtUXBB+Udfr
- tmeic/kUSs6C4WqmHKeuxCFm4BDHukgL52pPJxiaUFlHe7eIu22KsWgmyUZC3IPo+FVoxrIWpOXlf
- 9DDPWUFEFlvBh1khn9gmgQotK9AUByQLIAgMZI9NCRermE7rUI/hmuozI9WGogdnY+6WcjeaQx7RN
- tqx0bddA==;
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ bh=cdnUslMBQ46HBWwPjvFsxYOnVpl1I3MEcutv78h1erg=; b=qKUigPOixJUP1c4lLN/iRiafZu
+ Ti8CkVoVQPOkYIikRp+nTx76Ellw3aOYCLxZZDaYJBHuJDmlkrRQK405Aw80jiFqLw1GEZXdWvPh5
+ Bika4UvxH/k/bEKLAduJX3fL3Jt3IEZszpqxVLvj0b0jz+T97WH10P7fYKYjLQgbxtcaIGjGK3+0G
+ XBr5bwSlfuVcJrNWtmhN3h5JP5nD/Do9Srz0rT8HIUM0+CoSbg5jGoPvy47U0h2fsE70GHRgrJHuk
+ Czv7/nL2QEGGCb9jmAg/tcNVzk2XBsSkbfLcIbXXHGZwyMKW4ydXMEzUKqlKLlmukQ1zLuLp0Nvli
+ EW1k7kNg==;
+Received: from mail-co1nam11on2057.outbound.protection.outlook.com
+ ([40.107.220.57] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYpA1-00C5TU-ES
- for linux-mediatek@lists.infradead.org; Tue, 20 Apr 2021 12:07:24 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id r7so25337878wrm.1
- for <linux-mediatek@lists.infradead.org>; Tue, 20 Apr 2021 05:07:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=fdjavbbnG38i/vDHVgTWk3tsDsi63+Qg6p2AfSLSokM=;
- b=RWbQtV2xG8MQvtq5DQkUl4ClHY7MHwzMjFdlaJqjkzqrAzQwu0/vhsDJPHDqrWrzt5
- yxeN4ErznjF7lzZ7E6ugBbEg0SJpEQIk82KoadIqfB/JmGZKj67z/BO2MzI9GKu7xfSV
- KJkQtAf5s9TAz7ovZgbghlQKOn/zO8MjUjWXh9fG2YiGmYCYRFxclYfFKLXmB3xr4/Em
- XsU7bkCfjSEAX0buiKDTgIv9ChpTTY2YpHcnisji9/5nbaNkKwqzj1UPQzFExpqZBrdM
- Q2IgIZF1W3H4ZkQJsUhlXPG4zF7ly8p0rmCSMjkRm+gyz2ruVW8Ysz1BuNn2Uioz8mWg
- 0Odg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=fdjavbbnG38i/vDHVgTWk3tsDsi63+Qg6p2AfSLSokM=;
- b=Cr2RoW18GeGsk3lWnic5+B8Wc9nx+hRFjynqbnvetTj9+XqShfJih613scERZncaZt
- AMFWYP5nhW0DHuiRFDUuKAMcPLbGBZGGh152/hgI1fmjVidvKTT4J4vR6gGMYN6uQ1bK
- 9p8QVZvXiNTSexuzkZdsAwYF5qg520oeARQ4/PTQHs5v147FzYrMlTM/sDiGte9pCsIu
- EcBi+vRmkTW2Nnf5Kr76wyTBp5VnhOCRAXFW2caN4h0wgwgQHbfiDTVFLA5UsZeF63Qi
- +BnmjFTMr4bqNRhq2LLvosr+xOxGecwVIkdYkEfBcSakh6EamObkGFWUBSoZQ3bDo9QD
- uMWA==
-X-Gm-Message-State: AOAM530uJmlykdPk7ezFcMFoy3Ctn9blKNKUzTkTH/UQBN+ncVCOk3Ll
- ls86emWW6Sg4Wj2iL7YYiDX9Gw==
-X-Google-Smtp-Source: ABdhPJz9J06FgmbJBAc678ICMLMmla+1EpbzsDA86Wii4YsPgv6y7FvJ0jnuRN5ZORqgbcqEgWao9g==
-X-Received: by 2002:adf:dd51:: with SMTP id u17mr20088833wrm.32.1618920438781; 
- Tue, 20 Apr 2021 05:07:18 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:a079:f96:da87:2d00?
- ([2a01:e34:ed2f:f020:a079:f96:da87:2d00])
- by smtp.googlemail.com with ESMTPSA id b12sm8989862wmj.1.2021.04.20.05.07.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Apr 2021 05:07:18 -0700 (PDT)
-Subject: Re: [PATCH] thermal: mediatek: add sensors-support
-To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Zhang Rui <rui.zhang@intel.com>, Amit Kucheria <amitk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20210320080646.49615-1-linux@fw-web.de>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <f4329b1a-02e0-aad5-55bd-82d30a38fc55@linaro.org>
-Date: Tue, 20 Apr 2021 14:07:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lYplZ-00C76q-Uh; Tue, 20 Apr 2021 12:46:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aEMSyW1A/uIhB7gq4FiRJZR+xjaF2MSMswzIOOKhcLA4Wgi0KW45e7uHJlG9glCktnuwcwAQ6b2rFB80ZoIj2SZPttoqwAfyrbubeLzgikmzoJ7WRBGcWWPe2tMPVXxPm8zDX+MpNLE9e3w0ggf5kpvihTDT7VUryP4XpdkHo9KltD9IoJ+l0ic8xjgAWhSrzgFmLK+jroO8/LIjELG8arYgQpWAqFKODetzPklo4PvNsKjgDGNGeJ9h1nQ/j+D1+NpTfXn+auZRFS/dwYvRR+bHE76xGOupBan/74mV+HJT0XiHpuoLWa9S+YgG/jdILC/S+TU1CIaa6ngN0LFk9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cdnUslMBQ46HBWwPjvFsxYOnVpl1I3MEcutv78h1erg=;
+ b=Lb+m3pFvz1A7M+wh8WvPX9upGajHybPzM7Bh53h7uxoj6bmQVjxP6QY+kKR21+c39Jn/BzbztVXzbPapXo8EJRD+lkIW4TpsRQX0y4ewQJkZNcOzS85umWvkWdjNtwsd/7HI51vDg26+cUT4V8GdCMbPP4dKU8RD7Cf3E8mlukMYgkKPObaeqEjd9X6pvV4vliIHc0dB/J5Xqlvu/l8LyK6eWmNw/uMVoctCsG991O6G61he9T/olBWtEWvNlw4eXaYPgIpNNInT2YWhglESGh2CaDZl8wq2AZ3HNm/kWAFQrGCAkb8DrnhUuwMSV6WvMsRXh83CUizhnyx7YylpPw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.112.34) smtp.rcpttodomain=microsoft.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=none sp=none pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=cdnUslMBQ46HBWwPjvFsxYOnVpl1I3MEcutv78h1erg=;
+ b=PjGrwVO3O5iDt1lEVXw0bsJOTdC7ImitATk0KoWvmGRiaaPSvt/8tlpOUgVWBZus09ZSD2hT9um5F97fJTALxStXKZxoDhegBmDS1xHJs+IwUqrFd450D+KUTDmjFvwpZNCP17R335owj0Dw91ER9FWdPlnK6E0YO46FySy2a02e00VBKYWV+kXDpU60Go8VbVEuuLW6dUiiF1sDQKRNnn3wKBGYaIVtSRatIgQuNcH9eNA3HhVZ1xROLiln4sI4hjXjwzLpEYQ7CGwt8y3Lg0KhIiYmOEv+AGJR0+ObNI4VWj6HPd2l7trF/sH7o2d950/qFdS1aZIabMtGw5QTdw==
+Received: from MW4PR04CA0152.namprd04.prod.outlook.com (2603:10b6:303:85::7)
+ by DM6PR12MB4484.namprd12.prod.outlook.com (2603:10b6:5:28f::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.16; Tue, 20 Apr
+ 2021 12:46:03 +0000
+Received: from CO1NAM11FT005.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:85:cafe::1b) by MW4PR04CA0152.outlook.office365.com
+ (2603:10b6:303:85::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4042.18 via Frontend
+ Transport; Tue, 20 Apr 2021 12:46:03 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
+ smtp.mailfrom=nvidia.com; microsoft.com; dkim=none (message not signed)
+ header.d=none;microsoft.com; dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.112.34; helo=mail.nvidia.com;
+Received: from mail.nvidia.com (216.228.112.34) by
+ CO1NAM11FT005.mail.protection.outlook.com (10.13.174.147) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.4042.16 via Frontend Transport; Tue, 20 Apr 2021 12:46:02 +0000
+Received: from [10.26.49.10] (172.20.145.6) by HQMAIL107.nvidia.com
+ (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Tue, 20 Apr
+ 2021 12:45:57 +0000
+Subject: Re: [PATCH v3 01/14] PCI: tegra: Convert to MSI domains
+To: Marc Zyngier <maz@kernel.org>
+CC: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Frank Wunderlich <frank-w@public-files.de>, "Thierry
+ Reding" <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, "Rob
+ Herring" <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
+ <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, "Stephen
+ Hemminger" <sthemmin@microsoft.com>, Michael Kelley <mikelley@microsoft.com>, 
+ Wei Liu <wei.liu@kernel.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@xilinx.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bharat Kumar Gogada
+ <bharatku@xilinx.com>, <linux-pci@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-hyperv@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+ <kernel-team@android.com>
+References: <20210330151145.997953-1-maz@kernel.org>
+ <20210330151145.997953-2-maz@kernel.org>
+ <316e8be4-fa70-75e8-8483-ae38036306e0@nvidia.com>
+ <638a9996-c762-fa11-b740-6a41d4a83bcc@nvidia.com>
+ <87fszlqria.wl-maz@kernel.org>
+From: Jon Hunter <jonathanh@nvidia.com>
+Message-ID: <67ecea13-3036-0d2d-fa89-46f896a06693@nvidia.com>
+Date: Tue, 20 Apr 2021 13:45:55 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210320080646.49615-1-linux@fw-web.de>
+In-Reply-To: <87fszlqria.wl-maz@kernel.org>
 Content-Language: en-US
+X-Originating-IP: [172.20.145.6]
+X-ClientProxiedBy: HQMAIL101.nvidia.com (172.20.187.10) To
+ HQMAIL107.nvidia.com (172.20.187.13)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: fc0a6703-f7ae-4c5b-d2e8-08d903fa41c6
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4484:
+X-LD-Processed: 43083d15-7273-40c1-b7db-39efd9ccc17a,ExtAddr
+X-Microsoft-Antispam-PRVS: <DM6PR12MB44847EAAA5C0251B60467682D9489@DM6PR12MB4484.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ygVCLWN/DeK6M2Eb8daDTh3PECA7xPve8aVF+TLy7zhyTnp8BKK+d31qk8hqgj3WQ+V06bfTxzY2XSigpNE3cbxbkE56SUXy5Rmpo4UHmKkgg90vZVyYC1U0bzx4Q6tD5DsyrKVDy40KxsUX/X6PYnkZsA1BbsLM/N36/2e5TRnHUFVBaunuFFivr6qYF63kfiGtbPRDCYlCcQWHE7nuQ17GjLo+kQ8SAL3sVtdppnHQJGy00S1PRYcmp4bgsWng+tDwhns2hYnyXdz7butLwsRaGpDfOREk6cr3KXXq269WUHUMjW0jqAcwJjUkER3LnKDtfCE7AUb+hysl/oF1xLNyOIkJswLTfk4nM6PtSR8aaIU3O9xyvNOiDdrSSaOOZcxJnqhJy5TI/Trd8ZOBJEfttrM1/yfNws1hQVBOCi4DvR7UTupPG1AVCiB3d0xQJEikGFk6ZfjKhNMrw8RdYEcGqrL/LPVCbAS8YA9ql4IXmOZ2tw9H8DezBKXQcVundPt+TTIzitduu4zEvffNEA1gNhXMge39t+HB6YmUSf3Sib7hUh0mu8VTJHiOFRO0yojMdYU9m+8KgdX2kmXtr1buDkjI1g6n5XK/qLavrJDYJP1FHV+eFqPGGilAa3tcEk82o7mWtg+9HMhFlZL4LDsqqsuDWO6XjXgEnQTGuYOwLQCcL12xMxXxm4yGScEu
+X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
+ SFS:(4636009)(376002)(346002)(396003)(39860400002)(136003)(46966006)(36840700001)(7636003)(7416002)(2616005)(70206006)(47076005)(54906003)(53546011)(426003)(36906005)(70586007)(82740400003)(31686004)(8936002)(6916009)(478600001)(336012)(5660300002)(2906002)(86362001)(31696002)(316002)(82310400003)(16576012)(26005)(8676002)(16526019)(4326008)(36860700001)(186003)(36756003)(356005)(83380400001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2021 12:46:02.8842 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fc0a6703-f7ae-4c5b-d2e8-08d903fa41c6
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CO1NAM11FT005.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4484
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_050721_546679_664B8367 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20210420_054610_023517_F35E1B47 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,47 +160,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjAvMDMvMjAyMSAwOTowNiwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiBGcm9tOiBGcmFu
-ayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiAKPiBhZGQgSFdNT04tc3Vw
-cG9ydCB0byBtZWRpYXRla3MgdGhlcm1hbmwgZHJpdmVyIHRvIGFsbG93IGxtLXNlbnNvcnMKPiB1
-c2Vyc3BhY2UgdG9vbHMgcmVhZCBzb2MgdGVtcGVyYXR1cmUKPiAKPiBTaWduZWQtb2ZmLWJ5OiBG
-cmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiAtLS0KPiAgZHJpdmVy
-cy90aGVybWFsL210a190aGVybWFsLmMgfCAyMiArKysrKysrKysrKysrKysrKysrKysrCj4gIDEg
-ZmlsZSBjaGFuZ2VkLCAyMiBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-dGhlcm1hbC9tdGtfdGhlcm1hbC5jIGIvZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMKPiBp
-bmRleCAxNDljNmQ3ZmQ1YTAuLmUyMmQ3N2Q1NzQ1OCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3Ro
-ZXJtYWwvbXRrX3RoZXJtYWwuYwo+ICsrKyBiL2RyaXZlcnMvdGhlcm1hbC9tdGtfdGhlcm1hbC5j
-Cj4gQEAgLTIzLDYgKzIzLDggQEAKPiAgI2luY2x1ZGUgPGxpbnV4L3Jlc2V0Lmg+Cj4gICNpbmNs
-dWRlIDxsaW51eC90eXBlcy5oPgo+ICAKPiArI2luY2x1ZGUgInRoZXJtYWxfaHdtb24uaCIKPiAr
-Cj4gIC8qIEFVWEFEQyBSZWdpc3RlcnMgKi8KPiAgI2RlZmluZSBBVVhBRENfQ09OMV9TRVRfVgkw
-eDAwOAo+ICAjZGVmaW5lIEFVWEFEQ19DT04xX0NMUl9WCTB4MDBjCj4gQEAgLTk4Myw2ICs5ODUs
-MTMgQEAgc3RhdGljIHZvaWQgbXRrX3RoZXJtYWxfcmVsZWFzZV9wZXJpb2RpY190cyhzdHJ1Y3Qg
-bXRrX3RoZXJtYWwgKm10LAo+ICAJd3JpdGVsKCh0bXAgJiAofjB4MTBlKSksIG10LT50aGVybWFs
-X2Jhc2UgKyBURU1QX01TUkNUTDEpOwo+ICB9Cj4gIAo+ICtzdGF0aWMgdm9pZCBtdGtfdGhlcm1h
-bF9od21vbl9hY3Rpb24odm9pZCAqZGF0YSkKPiArewo+ICsJc3RydWN0IHRoZXJtYWxfem9uZV9k
-ZXZpY2UgKnpvbmUgPSBkYXRhOwo+ICsKPiArCXRoZXJtYWxfcmVtb3ZlX2h3bW9uX3N5c2ZzKHpv
-bmUpOwo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50IG10a190aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIHsKPiAgCWludCByZXQsIGksIGN0cmxfaWQ7Cj4gQEAgLTEw
-ODcsNiArMTA5NiwxOSBAQCBzdGF0aWMgaW50IG10a190aGVybWFsX3Byb2JlKHN0cnVjdCBwbGF0
-Zm9ybV9kZXZpY2UgKnBkZXYpCj4gIAkJZ290byBlcnJfZGlzYWJsZV9jbGtfcGVyaV90aGVybTsK
-PiAgCX0KPiAgCj4gKyNpZmRlZiBDT05GSUdfVEhFUk1BTF9IV01PTgoKTm8gI2lmZGVmIGluIEMg
-ZmlsZS4KCj4gKwl0emRldi0+dHpwLT5ub19od21vbiA9IGZhbHNlOwo+ICsJcmV0ID0gdGhlcm1h
-bF9hZGRfaHdtb25fc3lzZnModHpkZXYpOwo+ICsJaWYgKHJldCkKPiArCQlkZXZfZXJyKCZwZGV2
-LT5kZXYsICJlcnJvciBpbiB0aGVybWFsX2FkZF9od21vbl9zeXNmcyIpOwo+ICsKPiArCXJldCA9
-IGRldm1fYWRkX2FjdGlvbigmcGRldi0+ZGV2LCBtdGtfdGhlcm1hbF9od21vbl9hY3Rpb24sIHR6
-ZGV2KTsKCmRldm1fdGhlcm1hbF9hZGRfaHdtb25fc3lzZnMoKSA/Cgo+ICsJaWYgKHJldCkgewo+
-ICsJCWRldl9lcnIoJnBkZXYtPmRldiwgImVycm9yIGluIGRldm1fYWRkX2FjdGlvbiIpOwo+ICsJ
-CW10a190aGVybWFsX2h3bW9uX2FjdGlvbih0emRldik7Cj4gKwl9Cj4gKyNlbmRpZgo+ICsKPiAg
-CXJldHVybiAwOwo+ICAKPiAgZXJyX2Rpc2FibGVfY2xrX3BlcmlfdGhlcm06Cj4gCgoKLS0gCjxo
-dHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2Fy
-ZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9vay5jb20v
-cGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGluYXJvb3Jn
-PiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJsb2cKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlh
-dGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Hi Marc,
+
+On 20/04/2021 09:39, Marc Zyngier wrote:
+
+...
+
+> The following should hopefully cure it (compile tested only). Please
+> let me know.
+> 
+> 	M.
+> 
+> diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
+> index eaba7b2fab4a..507b23d43ad1 100644
+> --- a/drivers/pci/controller/pci-tegra.c
+> +++ b/drivers/pci/controller/pci-tegra.c
+> @@ -1802,13 +1802,19 @@ static void tegra_pcie_enable_msi(struct tegra_pcie *pcie)
+>  {
+>  	const struct tegra_pcie_soc *soc = pcie->soc;
+>  	struct tegra_msi *msi = &pcie->msi;
+> -	u32 reg;
+> +	u32 reg, msi_state[INT_PCI_MSI_NR / 32];
+> +	int i;
+>  
+>  	afi_writel(pcie, msi->phys >> soc->msi_base_shift, AFI_MSI_FPCI_BAR_ST);
+>  	afi_writel(pcie, msi->phys, AFI_MSI_AXI_BAR_ST);
+>  	/* this register is in 4K increments */
+>  	afi_writel(pcie, 1, AFI_MSI_BAR_SZ);
+>  
+> +	/* Restore the MSI allocation state */
+> +	bitmap_to_arr32(msi_state, msi->used, INT_PCI_MSI_NR);
+> +	for (i = 0; i < ARRAY_SIZE(msi_state); i++)
+> +		afi_writel(pcie, msi_state[i], AFI_MSI_EN_VEC(i));
+> +
+>  	/* and unmask the MSI interrupt */
+>  	reg = afi_readl(pcie, AFI_INTR_MASK);
+>  	reg |= AFI_INTR_MASK_MSI_MASK;
+> 
+
+
+Thanks, that does fix it indeed!
+
+Tested-by: Jon Hunter <jonathanh@nvidia.com>
+
+Cheers
+Jon
+
+-- 
+nvpublic
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
