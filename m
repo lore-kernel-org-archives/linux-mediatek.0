@@ -2,85 +2,94 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB167C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 15:54:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5127AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 16:25:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 562EF61003
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 15:54:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 562EF61003
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
+	by mail.kernel.org (Postfix) with ESMTPS id E0208613D2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 16:25:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E0208613D2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=AmoXhIoIXYd4A6UnY12a9gEeLyL+Vzf3Pip4jlYQYPk=; b=Ovk9RJxk0ZF6Mvyol0fdskUETo
-	gUn1u0gN2Ex8aMzSeguYw+6SweCdRZCuBlx/i2ky9Lpvs82ZUrYp2ojVjepX+tchoriOedPAQ+nt9
-	cuevrKzLqB1NSYTqKtd24AB4emnlOFzkGFK/MRXJ9obVQieWxY3B9uMkfoUPCIPDZzOuatEHri5bB
-	ujh6f+mdRRxIx1WTqcGGTqrjv2bzmpewlhVilb8SAleVMHk5IrMt4iT6nMhVRzPjPhnNJjBudNSSN
-	aAo3K8uMDDY8zjDSpeacb/pEhvacnYJ7i+qcS+58SXYag/evjd2qdA2t+erRwwB035Gnhoojx5ymy
-	axuULqVw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vG0t0I6WbF7B+TqsHRqXyKxNf6vpcZXXZDEtvyaSiBU=; b=HGwZB393ygldBv9FTuS8Bbm1H
+	8wwUYMesZ4OGSS+IvhQBLV76DiQW1QUyKxD1+aqQ5ypbFufYEYHabpXS57/HFLkbuKIeBSln4VivS
+	uGLdTMrgdLe8XmeqAZNVWATjCd18qwfSVUrkVEPehOR7WALPEHIwveXDYgPR0aI0BvH0mS8/MZ05O
+	qxdvLVFfZ9KJN4G5sGZrRPhNkVDCicNbRMrJNr9aAr7dxDKs3K7TNw8W7AGdAi8Y6kMpKocpBePos
+	qscgGtcOCn7/1R5ZG2/yOhISUtpKpeaCPXdHB9/VXZkTBzPFHIoFdD7kiRgHr+vWfAEjcLy/U3GeZ
+	xIg1vx/Bg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYsi0-00CWOa-8t; Tue, 20 Apr 2021 15:54:40 +0000
+	id 1lYtBZ-00CZLt-Pm; Tue, 20 Apr 2021 16:25:14 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYsho-00CWNn-L5; Tue, 20 Apr 2021 15:54:29 +0000
+ id 1lYtBO-00CZKg-A7; Tue, 20 Apr 2021 16:25:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=kQYv4OtNr6e//YkMopHLbwWlrJMzWOHnE8M1UCzYfGU=; b=XBkTX/fgwbYR173CbdpIjSsqfm
- dcvuaaOneRl11x3ZuWOKlJeCMQuwgErmH6UvwST/PS80FVM7ZBDcjQKNuNl2HB3rqULANlVy/WH0H
- orVJee5YP9xeZsJLvvOt0fsgvVyTkMgsmyFATVf+Gn+cewf1dl/d15JvrZ1WOu7f3Yto8elj8Z2Pq
- eWEQGtsH4c7kGHq94wVC8NfLaj8knW7/8/Od0T1S0jca095YBpj3l2t/UiwH5rfZgo+VnYeNx0pS2
- t4a4JovPBNLr/IX0jPoYmJVN8mTWNt//WlvwLRTwOjdW/nLnfLZ3cTD76CLpQcegTrLqesz2WJiIy
- c7aRh2jQ==;
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=A8dVyfjRQex2uU+PHTE48uLGNVgNmujkBe81Of/rrYw=; b=wmBssqNXXqW5x3zFUg5sXVxuxL
+ yDCZ/uk4CWIIilC89N8WHqvRucGcIKkxhR4y38Fo8yXL/UCcN+Iwlo6cXQ40c5zXFHY+NMpIQyNGa
+ T0sV4KsZ1p30ckveiNRZzwqJyOPRMG3kSvhz3UPci4B8lgK3mgWNZIpO14ao5LUmup4U5f+gKL67H
+ YncMuULgm6s6AQOFfsp4UbuDq9XgjnFrq2sIHXuT1cxlGy3uIPnZm8iSnRDK03StiwNg7FNGdqiyI
+ JfpTNtsIMvEN3Eixzqoa9bhtR4Bn7Xo+4sIfqUAHs1uXoW+wx/wtrgpXwai8uTewq2zFL3fkBSMxM
+ YgWv/HVQ==;
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYshi-00CFcN-TO; Tue, 20 Apr 2021 15:54:27 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
- by mxout1.routing.net (Postfix) with ESMTP id 7B6583FE0A;
- Tue, 20 Apr 2021 15:54:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1618934057;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=kQYv4OtNr6e//YkMopHLbwWlrJMzWOHnE8M1UCzYfGU=;
- b=NFmpEG8uJGS8FmvRAXIb9Ilqih45UNHL7PMvflMewmrdAAN+fveZC0qe0TIkbKNKjHreuX
- uySf7rYOuumh3KADGmogaJ1lkRutiRxOE8XN8e3xbgWhNvGayANhpv1Hg/TpczHP778rGR
- mqS+7i9INHrirEqcbbZOCS7aNyB/FKE=
-Received: from localhost.localdomain (fttx-pool-80.245.77.151.bambit.de
- [80.245.77.151])
- by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 88927100396;
- Tue, 20 Apr 2021 15:54:16 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Amit Kucheria <amitk@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] thermal: mediatek: add sensors-support
-Date: Tue, 20 Apr 2021 17:54:10 +0200
-Message-Id: <20210420155410.132141-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
+ id 1lYtBL-00CGtI-Il; Tue, 20 Apr 2021 16:25:00 +0000
+Received: by mail-oi1-f177.google.com with SMTP id i81so39509890oif.6;
+ Tue, 20 Apr 2021 09:24:58 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=A8dVyfjRQex2uU+PHTE48uLGNVgNmujkBe81Of/rrYw=;
+ b=OnSSxdk+lS55jpa/8OZUPhcYFq0k0kllDRflW3mPLBk0+EfWyvQkzN+NOCA9n1ecWT
+ ECweuZJHx/uI/+JQBDvkuHjM60dngiSq9sjVEtDHCfCzM2jOnOs9NxbDOLYLsT8hZCwJ
+ 8YJlHeTI7tNRicr89lJzv1rqVSkhjpNiG8UfzyP/JKwcO55CA2bmB3Uv5IlCPW7rea+/
+ bEqvbDI4OMBwR1m5Z+Idk9UhvhMCOZcWKXQW6ypctqWXesUryuclga7FOF3fsc7NSoAT
+ M7srJB5Qv0qfpGFDM3Wx2sCuZN+J8yuWSKZgJq8d1zHPmcfMitgwvkqBTRk5qWJlW8/C
+ 0zpA==
+X-Gm-Message-State: AOAM531eD1ozeSQNYIF/OkJs8u+gCFAOlcE/Burt48M8l5rfN80/twot
+ dLE+N+4hrX4O3sU8M5poZA==
+X-Google-Smtp-Source: ABdhPJzwYqxFN2+jlPlIrVKF+pkBftc8P1b64ffzN6SRSJxNtkEw2eWPlANKkhIUOyrz343BVhv/gQ==
+X-Received: by 2002:aca:b387:: with SMTP id c129mr3598986oif.30.1618935898028; 
+ Tue, 20 Apr 2021 09:24:58 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id i25sm4370603otf.37.2021.04.20.09.24.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Apr 2021 09:24:57 -0700 (PDT)
+Received: (nullmailer pid 3431205 invoked by uid 1000);
+ Tue, 20 Apr 2021 16:24:55 -0000
+Date: Tue, 20 Apr 2021 11:24:55 -0500
+From: Rob Herring <robh@kernel.org>
+To: Neil Armstrong <narmstrong@baylibre.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ p.zabel@pengutronix.de, chunkuang.hu@kernel.org
+Subject: Re: [PATCH v3 1/5] dt-bindings: display: mediatek, hdmi: Convert to
+ use graph schema
+Message-ID: <20210420162455.GA3431175@robh.at.kernel.org>
+References: <20210419073244.2678688-1-narmstrong@baylibre.com>
+ <20210419073244.2678688-2-narmstrong@baylibre.com>
 MIME-Version: 1.0
-X-Mail-ID: a26884df-a290-43e7-8bcd-1a1379261d7e
+Content-Disposition: inline
+In-Reply-To: <20210419073244.2678688-2-narmstrong@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_085423_277653_A1B97886 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210420_092459_642863_C6BA4805 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,46 +106,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Mon, 19 Apr 2021 09:32:40 +0200, Neil Armstrong wrote:
+> Update the mediatek,dpi binding to use the graph schema.
+> 
+> Signed-off-by: Neil Armstrong <narmstrong@baylibre.com>
+> ---
+>  .../display/mediatek/mediatek,cec.yaml        |  51 +++++++
+>  .../display/mediatek/mediatek,hdmi-ddc.yaml   |  57 ++++++++
+>  .../display/mediatek/mediatek,hdmi.txt        | 136 ------------------
+>  .../display/mediatek/mediatek,hdmi.yaml       | 132 +++++++++++++++++
+>  4 files changed, 240 insertions(+), 136 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,cec.yaml
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.txt
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
+> 
 
-add HWMON-support to mediateks thermal driver to allow lm-sensors
-userspace tools read soc temperature
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v2: drop ifdef and used devm_thermal_add_hwmon_sysfs
----
- drivers/thermal/mtk_thermal.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 149c6d7fd5a0..32be8a715c7d 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -23,6 +23,8 @@
- #include <linux/reset.h>
- #include <linux/types.h>
- 
-+#include "thermal_hwmon.h"
-+
- /* AUXADC Registers */
- #define AUXADC_CON1_SET_V	0x008
- #define AUXADC_CON1_CLR_V	0x00c
-@@ -1087,6 +1089,11 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 		goto err_disable_clk_peri_therm;
- 	}
- 
-+	tzdev->tzp->no_hwmon = false;
-+	ret = devm_thermal_add_hwmon_sysfs(tzdev);
-+	if (ret)
-+		dev_err(&pdev->dev, "error in thermal_add_hwmon_sysfs");
-+
- 	return 0;
- 
- err_disable_clk_peri_therm:
--- 
-2.25.1
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
