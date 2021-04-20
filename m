@@ -2,19 +2,20 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2227C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AAF7DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:28:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAA2360FE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:28:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAA2360FE9
+	by mail.kernel.org (Postfix) with ESMTPS id 20E8D610CC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:28:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20E8D610CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +24,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9pzRJ4FZmrZskW9h9Xdwzhv+q9xaJcz+19bxTWbH2Bw=; b=g+mK2/utoLgF64AFsUI3G/cmn
-	uqNqM6jhgRExBdJOXjsvY825MjRQA4w+eVRhH/HhhWvdAQzUxyZ4gfIcZV3nc3ZzjFLwtQm0yAR54
-	CgvpJCNKHBh7bGn8pZZJBzXKnVTfMvXSl8fN38iOwJ9F+DwBD1d0Mt16X093Mi20bnBz7cEFQwest
-	O6ukYNyhdDW6Q/OcMP+PkVnfbfU/kChWTw0zWEj8RSJaW0OP+J3JRzCpsV/jqKaBL1b3EGFeRRqDi
-	X9/Zsg8X0mNy2ibK+3+Dvl/SScDM1doH5/k2s//n1d1yrYFbNjkqb++Ki3FP0q0xwBWTSns4j9R4G
-	kvN2XsMsw==;
+	 bh=x8hPrVWL+LPSrTTaDL/5KsAZhpKIk39uGqW4qPBp03s=; b=ooRbQ+dKqyeUopWpUI0foFTY9
+	w2EWzVaIZk0G3dfb7kHcViJu0Sj3z0ykoEFkOVdbjWtJOg480pnoNn4SpV+3oHzdSH1WFdR6JNsua
+	JIaX3B5VHgItbFWlaNz/PMztTMX+On77weX/YqBtYejIEC1m8W9RHdEDAQNFKovwu1CgFng0j3dAI
+	nRvZu82oj+F6DY/0xn0wuqnVGpHlqTgrZ0NDNYJmL7srS5OiMg9SCC4njP8oKZ5j8OGgTg7hSHWh2
+	ED3de2EsQC5XJnAGVVjwBimeDDiy2ryMFGwGLDJDij1Sokq3yuPmW9OUSa3Sm97WW1xkBTN5/+DMD
+	8SI/bAVPQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYjri-00BLbu-PO; Tue, 20 Apr 2021 06:28:06 +0000
+	id 1lYjru-00BLep-65; Tue, 20 Apr 2021 06:28:18 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYjrX-00BLZE-ML; Tue, 20 Apr 2021 06:27:55 +0000
+ id 1lYjra-00BLZh-A9; Tue, 20 Apr 2021 06:27:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=Z6nt8ENh/H9M5EyRImVgc5keRKZ/uVR/ONGWllSfyKM=; b=YsvHX/9m/2Ig3KuX2ZULWwljh9
- Y0Kv1n+WXRA0z5EvY0GWBaibK9+mvQkBagTR6TacikgS6Qy1cMtbGpQqeGLXmX6glAIehMroNtzS/
- XT8x7sIczuNplm1HLsRtbC9Gwj7mVO5QTHg1IN0lcPWK8U76grINE9bukh+Wqx56VLjCNd/U3tGQc
- z0295Vy9nji0EzQPefKQwDxLGOc57UtaLiGOc7GIq2lcEOVArRfieqYAvXLH3y6S2OBkDWiQr9UTX
- JJW8T5OEjfdBAjBuvoJyONMt8J5hzcDEohZPKVHhCdjcRxlDd/G3Mhqgj7ab/uJtUjGsedQSCmzwj
- GBtXoshg==;
+ bh=HGgprltJ85YaND6F7WhylIhGjYQUx/cW4xrGb9kWDxI=; b=2iHrgS+5zqiMPL7pFeq+WNoM71
+ PqCUbtXZChP0oO5A0yxs9cPgeuxgKoUt7GFbpInN/51uU6oP4OLf5iKK206b+PtKkmdyKPNROtwC3
+ BpbbZXtx1xm6za2+fAmHJgLQC9i/XhXsKR4DWUHPFtW3j4++cQpHnGUYlE0mByQmiH3PNk59OTIQb
+ c+kH0PBwWB0UtmLYnXlUxMjwe9pMSU37cYhodv9BR3AO3E4tTH9y6kIVQJ7eB4EJuhogLnwWWXG6W
+ hFng0kcx7zVjKfQn6cLVoeQSXl1OJIamXbJwPrT5HsClu0NvX/KvuEnU+hvmYO8sJjbj4FuwKNwu7
+ Puqv9QWQ==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYjrS-00BqZS-Rg; Tue, 20 Apr 2021 06:27:54 +0000
-X-UUID: e8dc89cc56ed487b8943a136aaf6ea5a-20210419
+ id 1lYjrW-00BqZS-HT; Tue, 20 Apr 2021 06:27:57 +0000
+X-UUID: 037f2643f20e4d15b372b549d17f5147-20210419
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Z6nt8ENh/H9M5EyRImVgc5keRKZ/uVR/ONGWllSfyKM=; 
- b=A5GjALEgcnIfqfByEO/3hwe6JkebfAsQetWCpGpnrAiVDv7WLfGill3u8azhN34Q6lRtzotaKUnDaVK8Fc7exhtr0rgxc8iZoTUy/2QP2e8FwJe1wB3KFsOch3mDmkOS2FmbmFSk27z/4Khn6bXjGm+azVIpQPGEpRRz8tp0npo=;
-X-UUID: e8dc89cc56ed487b8943a136aaf6ea5a-20210419
+ bh=HGgprltJ85YaND6F7WhylIhGjYQUx/cW4xrGb9kWDxI=; 
+ b=WUD46+Rf0D7SenlpCGkHUAvq7mksw0b5528wvAc2B5rUReX6Y5xNCdioA/UuCfDlOAHfDBH3UjFsS0tKshbXxQqKbqfpLY7jfEgrtvVZk4YlwyPs+hjBqLP+SsauWC2laWFqWQ7q/VP5RMgvMZnKYIsVDOTVLPNaaGsh52VCZxg=;
+X-UUID: 037f2643f20e4d15b372b549d17f5147-20210419
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2056277910; Mon, 19 Apr 2021 23:27:45 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Apr 2021 23:17:43 -0700
+ with ESMTP id 329465923; Mon, 19 Apr 2021 23:27:46 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Apr 2021 23:17:46 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Apr 2021 14:17:40 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Apr 2021 14:17:44 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Apr 2021 14:17:39 +0800
+ Transport; Tue, 20 Apr 2021 14:17:43 +0800
 From: Jianjun Wang <jianjun.wang@mediatek.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
@@ -81,18 +82,17 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
  <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
  <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>, Krzysztof Wilczyski
  <kw@linux.com>, =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>
-Subject: [PATCH v10 1/7] dt-bindings: PCI: mediatek-gen3: Add YAML schema
-Date: Tue, 20 Apr 2021 14:17:17 +0800
-Message-ID: <20210420061723.989-2-jianjun.wang@mediatek.com>
+Subject: [PATCH v10 4/7] PCI: mediatek-gen3: Add INTx support
+Date: Tue, 20 Apr 2021 14:17:20 +0800
+Message-ID: <20210420061723.989-5-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210420061723.989-1-jianjun.wang@mediatek.com>
 References: <20210420061723.989-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 7EFF32C5B26547AC7174EEF9D9BCC61A9E7B0B854FB2BC2E676178368908215F2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_232750_930998_BD5BDB92 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20210419_232754_611217_2F5667B1 
+X-CRM114-Status: GOOD (  22.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,204 +109,254 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add YAML schemas documentation for Gen3 PCIe controller on
-MediaTek SoCs.
+Add INTx support for MediaTek Gen3 PCIe controller.
 
 Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 Acked-by: Ryder Lee <ryder.lee@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Marc Zyngier <maz@kernel.org>
 ---
- .../bindings/pci/mediatek-pcie-gen3.yaml      | 181 ++++++++++++++++++
- 1 file changed, 181 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+ drivers/pci/controller/pcie-mediatek-gen3.c | 172 ++++++++++++++++++++
+ 1 file changed, 172 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-new file mode 100644
-index 000000000000..e7b1f9892da4
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -0,0 +1,181 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/mediatek-pcie-gen3.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 3546e53b3c85..ff91ad587461 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -9,6 +9,9 @@
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/iopoll.h>
++#include <linux/irq.h>
++#include <linux/irqchip/chained_irq.h>
++#include <linux/irqdomain.h>
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/pci.h>
+@@ -45,6 +48,13 @@
+ #define PCIE_LINK_STATUS_REG		0x154
+ #define PCIE_PORT_LINKUP		BIT(8)
+ 
++#define PCIE_INT_ENABLE_REG		0x180
++#define PCIE_INTX_SHIFT			24
++#define PCIE_INTX_ENABLE \
++	GENMASK(PCIE_INTX_SHIFT + PCI_NUM_INTX - 1, PCIE_INTX_SHIFT)
 +
-+title: Gen3 PCIe controller on MediaTek SoCs
++#define PCIE_INT_STATUS_REG		0x184
 +
-+maintainers:
-+  - Jianjun Wang <jianjun.wang@mediatek.com>
+ #define PCIE_TRANS_TABLE_BASE_REG	0x800
+ #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+ #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
+@@ -73,6 +83,9 @@
+  * @phy: PHY controller block
+  * @clks: PCIe clocks
+  * @num_clks: PCIe clocks count for this port
++ * @irq: PCIe controller interrupt number
++ * @irq_lock: lock protecting IRQ register access
++ * @intx_domain: legacy INTx IRQ domain
+  */
+ struct mtk_pcie_port {
+ 	struct device *dev;
+@@ -83,6 +96,10 @@ struct mtk_pcie_port {
+ 	struct phy *phy;
+ 	struct clk_bulk_data *clks;
+ 	int num_clks;
 +
-+description: |+
-+  PCIe Gen3 MAC controller for MediaTek SoCs, it supports Gen3 speed
-+  and compatible with Gen2, Gen1 speed.
++	int irq;
++	raw_spinlock_t irq_lock;
++	struct irq_domain *intx_domain;
+ };
+ 
+ /**
+@@ -198,6 +215,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ 	val |= PCI_CLASS(PCI_CLASS_BRIDGE_PCI << 8);
+ 	writel_relaxed(val, port->base + PCIE_PCI_IDS_1);
+ 
++	/* Mask all INTx interrupts */
++	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
++	val &= ~PCIE_INTX_ENABLE;
++	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
 +
-+  This PCIe controller supports up to 256 MSI vectors, the MSI hardware
-+  block diagram is as follows:
+ 	/* Assert all reset signals */
+ 	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+ 	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+@@ -261,6 +283,150 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ 	return 0;
+ }
+ 
++static int mtk_pcie_set_affinity(struct irq_data *data,
++				 const struct cpumask *mask, bool force)
++{
++	return -EINVAL;
++}
 +
-+                    +-----+
-+                    | GIC |
-+                    +-----+
-+                       ^
-+                       |
-+                   port->irq
-+                       |
-+               +-+-+-+-+-+-+-+-+
-+               |0|1|2|3|4|5|6|7| (PCIe intc)
-+               +-+-+-+-+-+-+-+-+
-+                ^ ^           ^
-+                | |    ...    |
-+        +-------+ +------+    +-----------+
-+        |                |                |
-+  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
-+  |0|1|...|30|31|  |0|1|...|30|31|  |0|1|...|30|31| (MSI sets)
-+  +-+-+---+--+--+  +-+-+---+--+--+  +-+-+---+--+--+
-+   ^ ^      ^  ^    ^ ^      ^  ^    ^ ^      ^  ^
-+   | |      |  |    | |      |  |    | |      |  |  (MSI vectors)
-+   | |      |  |    | |      |  |    | |      |  |
++static void mtk_intx_mask(struct irq_data *data)
++{
++	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
++	unsigned long flags;
++	u32 val;
 +
-+    (MSI SET0)       (MSI SET1)  ...   (MSI SET7)
++	raw_spin_lock_irqsave(&port->irq_lock, flags);
++	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
++	val &= ~BIT(data->hwirq + PCIE_INTX_SHIFT);
++	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
++	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
++}
 +
-+  With 256 MSI vectors supported, the MSI vectors are composed of 8 sets,
-+  each set has its own address for MSI message, and supports 32 MSI vectors
-+  to generate interrupt.
++static void mtk_intx_unmask(struct irq_data *data)
++{
++	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
++	unsigned long flags;
++	u32 val;
 +
-+allOf:
-+  - $ref: /schemas/pci/pci-bus.yaml#
++	raw_spin_lock_irqsave(&port->irq_lock, flags);
++	val = readl_relaxed(port->base + PCIE_INT_ENABLE_REG);
++	val |= BIT(data->hwirq + PCIE_INTX_SHIFT);
++	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
++	raw_spin_unlock_irqrestore(&port->irq_lock, flags);
++}
 +
-+properties:
-+  compatible:
-+    const: mediatek,mt8192-pcie
++/**
++ * mtk_intx_eoi() - Clear INTx IRQ status at the end of interrupt
++ * @data: pointer to chip specific data
++ *
++ * As an emulated level IRQ, its interrupt status will remain
++ * until the corresponding de-assert message is received; hence that
++ * the status can only be cleared when the interrupt has been serviced.
++ */
++static void mtk_intx_eoi(struct irq_data *data)
++{
++	struct mtk_pcie_port *port = irq_data_get_irq_chip_data(data);
++	unsigned long hwirq;
 +
-+  reg:
-+    maxItems: 1
++	hwirq = data->hwirq + PCIE_INTX_SHIFT;
++	writel_relaxed(BIT(hwirq), port->base + PCIE_INT_STATUS_REG);
++}
 +
-+  reg-names:
-+    items:
-+      - const: pcie-mac
++static struct irq_chip mtk_intx_irq_chip = {
++	.irq_mask		= mtk_intx_mask,
++	.irq_unmask		= mtk_intx_unmask,
++	.irq_eoi		= mtk_intx_eoi,
++	.irq_set_affinity	= mtk_pcie_set_affinity,
++	.name			= "INTx",
++};
 +
-+  interrupts:
-+    maxItems: 1
++static int mtk_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
++			     irq_hw_number_t hwirq)
++{
++	irq_set_chip_data(irq, domain->host_data);
++	irq_set_chip_and_handler_name(irq, &mtk_intx_irq_chip,
++				      handle_fasteoi_irq, "INTx");
++	return 0;
++}
 +
-+  ranges:
-+    minItems: 1
-+    maxItems: 8
++static const struct irq_domain_ops intx_domain_ops = {
++	.map = mtk_pcie_intx_map,
++};
 +
-+  resets:
-+    minItems: 1
-+    maxItems: 2
++static int mtk_pcie_init_irq_domains(struct mtk_pcie_port *port)
++{
++	struct device *dev = port->dev;
++	struct device_node *intc_node, *node = dev->of_node;
 +
-+  reset-names:
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      - const: phy
-+      - const: mac
++	raw_spin_lock_init(&port->irq_lock);
 +
-+  clocks:
-+    maxItems: 6
++	/* Setup INTx */
++	intc_node = of_get_child_by_name(node, "interrupt-controller");
++	if (!intc_node) {
++		dev_err(dev, "missing interrupt-controller node\n");
++		return -ENODEV;
++	}
 +
-+  clock-names:
-+    items:
-+      - const: pl_250m
-+      - const: tl_26m
-+      - const: tl_96m
-+      - const: tl_32k
-+      - const: peri_26m
-+      - const: top_133m
++	port->intx_domain = irq_domain_add_linear(intc_node, PCI_NUM_INTX,
++						  &intx_domain_ops, port);
++	if (!port->intx_domain) {
++		dev_err(dev, "failed to create INTx IRQ domain\n");
++		return -ENODEV;
++	}
 +
-+  assigned-clocks:
-+    maxItems: 1
++	return 0;
++}
 +
-+  assigned-clock-parents:
-+    maxItems: 1
++static void mtk_pcie_irq_teardown(struct mtk_pcie_port *port)
++{
++	irq_set_chained_handler_and_data(port->irq, NULL, NULL);
 +
-+  phys:
-+    maxItems: 1
++	if (port->intx_domain)
++		irq_domain_remove(port->intx_domain);
 +
-+  '#interrupt-cells':
-+    const: 1
++	irq_dispose_mapping(port->irq);
++}
 +
-+  interrupt-controller:
-+    description: Interrupt controller node for handling legacy PCI interrupts.
-+    type: object
-+    properties:
-+      '#address-cells':
-+        const: 0
-+      '#interrupt-cells':
-+        const: 1
-+      interrupt-controller: true
++static void mtk_pcie_irq_handler(struct irq_desc *desc)
++{
++	struct mtk_pcie_port *port = irq_desc_get_handler_data(desc);
++	struct irq_chip *irqchip = irq_desc_get_chip(desc);
++	unsigned long status;
++	unsigned int virq;
++	irq_hw_number_t irq_bit = PCIE_INTX_SHIFT;
 +
-+    required:
-+      - '#address-cells'
-+      - '#interrupt-cells'
-+      - interrupt-controller
++	chained_irq_enter(irqchip, desc);
 +
-+    additionalProperties: false
++	status = readl_relaxed(port->base + PCIE_INT_STATUS_REG);
++	for_each_set_bit_from(irq_bit, &status, PCI_NUM_INTX +
++			      PCIE_INTX_SHIFT) {
++		virq = irq_find_mapping(port->intx_domain,
++					irq_bit - PCIE_INTX_SHIFT);
++		generic_handle_irq(virq);
++	}
 +
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - interrupts
-+  - ranges
-+  - clocks
-+  - '#interrupt-cells'
-+  - interrupt-controller
++	chained_irq_exit(irqchip, desc);
++}
 +
-+unevaluatedProperties: false
++static int mtk_pcie_setup_irq(struct mtk_pcie_port *port)
++{
++	struct device *dev = port->dev;
++	struct platform_device *pdev = to_platform_device(dev);
++	int err;
 +
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
++	err = mtk_pcie_init_irq_domains(port);
++	if (err)
++		return err;
 +
-+    bus {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
++	port->irq = platform_get_irq(pdev, 0);
++	if (port->irq < 0)
++		return port->irq;
 +
-+        pcie: pcie@11230000 {
-+            compatible = "mediatek,mt8192-pcie";
-+            device_type = "pci";
-+            #address-cells = <3>;
-+            #size-cells = <2>;
-+            reg = <0x00 0x11230000 0x00 0x4000>;
-+            reg-names = "pcie-mac";
-+            interrupts = <GIC_SPI 251 IRQ_TYPE_LEVEL_HIGH 0>;
-+            bus-range = <0x00 0xff>;
-+            ranges = <0x82000000 0x00 0x12000000 0x00
-+                      0x12000000 0x00 0x1000000>;
-+            clocks = <&infracfg 44>,
-+                     <&infracfg 40>,
-+                     <&infracfg 43>,
-+                     <&infracfg 97>,
-+                     <&infracfg 99>,
-+                     <&infracfg 111>;
-+            clock-names = "pl_250m", "tl_26m", "tl_96m",
-+                          "tl_32k", "peri_26m", "top_133m";
-+            assigned-clocks = <&topckgen 50>;
-+            assigned-clock-parents = <&topckgen 91>;
++	irq_set_chained_handler_and_data(port->irq, mtk_pcie_irq_handler, port);
 +
-+            phys = <&pciephy>;
-+            phy-names = "pcie-phy";
++	return 0;
++}
 +
-+            resets = <&infracfg_rst 2>,
-+                     <&infracfg_rst 3>;
-+            reset-names = "phy", "mac";
+ static int mtk_pcie_parse_port(struct mtk_pcie_port *port)
+ {
+ 	struct device *dev = port->dev;
+@@ -391,6 +557,10 @@ static int mtk_pcie_setup(struct mtk_pcie_port *port)
+ 	if (err)
+ 		goto err_setup;
+ 
++	err = mtk_pcie_setup_irq(port);
++	if (err)
++		goto err_setup;
 +
-+            #interrupt-cells = <1>;
-+            interrupt-map-mask = <0 0 0 0x7>;
-+            interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+                            <0 0 0 2 &pcie_intc 1>,
-+                            <0 0 0 3 &pcie_intc 2>,
-+                            <0 0 0 4 &pcie_intc 3>;
-+            pcie_intc: interrupt-controller {
-+                      #address-cells = <0>;
-+                      #interrupt-cells = <1>;
-+                      interrupt-controller;
-+            };
-+        };
-+    };
+ 	return 0;
+ 
+ err_setup:
+@@ -424,6 +594,7 @@ static int mtk_pcie_probe(struct platform_device *pdev)
+ 
+ 	err = pci_host_probe(host);
+ 	if (err) {
++		mtk_pcie_irq_teardown(port);
+ 		mtk_pcie_power_down(port);
+ 		return err;
+ 	}
+@@ -441,6 +612,7 @@ static int mtk_pcie_remove(struct platform_device *pdev)
+ 	pci_remove_root_bus(host->bus);
+ 	pci_unlock_rescan_remove();
+ 
++	mtk_pcie_irq_teardown(port);
+ 	mtk_pcie_power_down(port);
+ 
+ 	return 0;
 -- 
 2.25.1
 _______________________________________________
