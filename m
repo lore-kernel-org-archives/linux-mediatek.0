@@ -2,19 +2,20 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC71DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 11:09:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BE3CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 11:23:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1811160232
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 11:09:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1811160232
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id AD4F5613B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 11:23:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD4F5613B2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -22,73 +23,110 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hv9g8yex94bRFUJTLjASZSlG4fasuuJFTkRmHxiFcWY=; b=bnbIWi/qhJo25uaorZEY2Z5Ps
-	j7g9yhJPcPx9z2CjIYxYaiW0cRzyX06Rg6dljj+vQDooZKBwaQecYddF+MZbZ1FDKTu3qonzm90aN
-	vXTh/YRzGaLdBQaRQgN5rr37fcFSafbUm5SAvpxUo2c2j+ntPpdfJX5sfZJQjrW7HZJSCv9DzttHT
-	iIC7XcMTPOxhYDb39aEA4CShMpO+XA048D7FXpmBv96ktKdC71a5Um8sXik1zwx5HHCFihQpUCBfI
-	3bET2nZ30LXktXuqEy7WpHHcLytn6fIrM76LSj4N6CEmIbP/i2J+31Pn9JeJ7nVIGfbMOAu//+0rU
-	jQtOjPHdA==;
+	 bh=NGVLHzA0y1Ss/VMlkahi8DTyRk/BWfeJKuaSixMac1c=; b=IjGZ0T/jijkhnFbxt+BBUMvkO
+	iRWiADbkfrLAl147OnScCpMxa0gCtuFsUBND/htpH/DfyZAjfdKxpVxYee32C99V0UYe8yiHZ2Of6
+	TuKip5Fm5QMZcHh7ghtlQ0jbwne1SPc1W3WqqShtGPRaO87olHuMfBthmp2hMS3zwgocjWTAUUQXz
+	nVwVGmRWNRz1y7OgB+ABKfzyVbaOjD+OPsd0yMGp3GKVfCE1wt0WAVCQafRRLJVOmDAela1EQ5j7L
+	1ync/bkgzUp5pXYWPMsfqv1eBT8PUYJBjSpbBKLKVgyCdHZzkGGvcQsmiQp2ojVtklYVW5aEJaPsm
+	0SoBsd7wg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYoFO-00Bw71-N3; Tue, 20 Apr 2021 11:08:50 +0000
+	id 1lYoTd-00By4C-Rh; Tue, 20 Apr 2021 11:23:33 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYoFD-00Bw5h-Tp; Tue, 20 Apr 2021 11:08:39 +0000
+ id 1lYoTV-00By0z-GT; Tue, 20 Apr 2021 11:23:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=aj2JEAwTkE4hLwGtXJNjRx4OF4u7gryo40Aqh8DMwf8=; b=SlDdJ1VjfOBNaELlAvxmxvUDWF
- dm0tsbIzidlH6UB1XprBi3ZE92ASRcCYlBJSXVWNHPk4FTIG34/uYQu8NCcWP9OiJqbLELB+4rOxD
- Y7ummn8SsSDLLybhoFn2AJH5oY/zeTYkPn6y1CvEIQHGFw1tyx5HmxctI0GmqJ7/ePDrBeTLvGQuO
- RN4avXTNrr3A6xT6bhSTUhpn67eIntqDlkc6QM30MtjrRInHHhMTWJKztoW3MGG/kDAMAu5fZNbE4
- W4PUMGrYC68X2i5CW58s89GRCIAcPRjmWIk/ZrN0vttX5yvGY7EThRG5/mNPqy77LKfoBhfAwSGvs
- sLc7acTA==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=R7JGUmF3J71wLA6dPwUce8FwqmxU6JTnhs1XaoTWtpc=; b=MeSHY3ZTrMB1uwH2ggmP8A9ZZr
+ HD5F0Gx6gqm3XXI9FnDeitx8FGX6tev7/9n+oduYisrQHePueUBoUy1QbHYCw3jsCzfK3aWFauCRP
+ QmpfaM8W4e4GQo49ZuWyhEdaNcLu1rcMfVbfGD52P5w693bJ8o6Dzmqr7s/k9d+jesC0NOlhARQXb
+ exV1bLFZJE8xth5ywc1+hDwSBldot7u1GSjuC0CWI1SGyHsVwiEuOZJtqJXyJKhjJC95g+9GUBF8O
+ AKiN5C1hPdljcPtiKmNby/5Zl2p6Ay5WQY87W21qe3YM+162WnNHxM8QLbmZ9U4edu3ILncuVORnt
+ 1lWB95QA==;
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYoF9-00C3Mr-Fd; Tue, 20 Apr 2021 11:08:36 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7E1D86135F;
- Tue, 20 Apr 2021 11:08:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618916914;
- bh=tXNrVitqe9y0c4Nre12+HdYi0aoTIvIA9p8ok75STd0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OJT5uKEZWaLIAkjrQec3Kjt2ltJrVRIvQG7xBxcfY2hLdBOPOQ7Khc8DHxndVE+Na
- 5IM+xOPitZ7Fk0NrjEc8Ij23WEXGyh7E//elp6fExjfi0KEVKiDoAVLkUt3NQAOH2+
- 82zHkS4yWt6w/11jtKN6cKbgNOdIXh51BbOmGg+MgUwIIMq0kgdpq+zSs+AzkPGb/P
- SDfyjb7U20ih6qyOKSgiPvX6c5AWZdJceGc7DvYka5aIBkzeJreqJC8Hauvh2nFPQo
- Tzc8Tfy6uyHuIr7BJ803PdhZ8SKiMiOi1Gxfs03cpOtBRvpCMa+7NpUXskc+xDadSL
- /5i1hOiMnEq/Q==
-Received: by pali.im (Postfix)
- id 31C55A2D; Tue, 20 Apr 2021 13:08:32 +0200 (CEST)
-Date: Tue, 20 Apr 2021 13:08:32 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Marc Zyngier <maz@kernel.org>
-Cc: Jianjun Wang <jianjun.wang@mediatek.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, youlin.pei@mediatek.com,
- chuanjia.liu@mediatek.com, qizhong.cheng@mediatek.com,
- sin_jieyang@mediatek.com, drinkcat@chromium.org,
- Rex-BC.Chen@mediatek.com, anson.chuang@mediatek.com,
- Krzysztof Wilczyski <kw@linux.com>
-Subject: Re: [PATCH v10 5/7] PCI: mediatek-gen3: Add MSI support
-Message-ID: <20210420110832.iyjck2m2s5jlit26@pali>
-References: <20210420061723.989-1-jianjun.wang@mediatek.com>
- <20210420061723.989-6-jianjun.wang@mediatek.com>
- <20210420094402.hwdkbspl5wu4rtex@pali>
- <87bla9qky1.wl-maz@kernel.org>
+ id 1lYoTQ-00C461-4I; Tue, 20 Apr 2021 11:23:24 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 13KBMmuM012376; Tue, 20 Apr 2021 11:22:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=R7JGUmF3J71wLA6dPwUce8FwqmxU6JTnhs1XaoTWtpc=;
+ b=mzrAyP3z3vTbOYF05fKTtm1FSfsRhaXIMtNI32junvaq2xixqdu4DFtiOEnKHMCjmDAu
+ pzOmg6bFqIFulJfFAK3gAc4G1ubri2zL7y+ukl2ZTNZd4enmkHEeJ6kOxa09vXbI9Cau
+ pxckDe5aQNXRp1SihBx1WvxHHU5bOAl0qwzbdRlKb6bAcGZRRvbBEvMsbe3h/AM/l6mO
+ 6K0B0emzos5cXJDAWeD+zogdWeN4yukpTfk465biG7Agf/JhaT7Tq2FLJjNIss62qUS9
+ j74qQsLbz2k9Dn5eRznUZ+6NPhFOVGc2XKyCruqh+CG4TG6qi4y3ofFXm87t+4F6DYgG CQ== 
+Received: from oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 381bjn86tg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 11:22:48 +0000
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
+ by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 13KBKXsp006877;
+ Tue, 20 Apr 2021 11:22:47 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by aserp3020.oracle.com with ESMTP id 3809k06m19-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 11:22:47 +0000
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 13KBKAbB005467;
+ Tue, 20 Apr 2021 11:22:46 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by aserp3020.oracle.com with ESMTP id 3809k06m07-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Apr 2021 11:22:46 +0000
+Received: from abhmp0005.oracle.com (abhmp0005.oracle.com [141.146.116.11])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13KBMEHV030572;
+ Tue, 20 Apr 2021 11:22:18 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 20 Apr 2021 04:22:13 -0700
+Date: Tue, 20 Apr 2021 14:21:52 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: "Alice Guo (OSS)" <alice.guo@oss.nxp.com>, gregkh@linuxfoundation.org,
+ rafael@kernel.org, horia.geanta@nxp.com, aymen.sghaier@nxp.com,
+ herbert@gondor.apana.org.au, davem@davemloft.net, tony@atomide.com,
+ geert+renesas@glider.be, mturquette@baylibre.com, sboyd@kernel.org,
+ vkoul@kernel.org, peter.ujfalusi@gmail.com, a.hajda@samsung.com,
+ narmstrong@baylibre.com, robert.foss@linaro.org, airlied@linux.ie,
+ daniel@ffwll.ch, khilman@baylibre.com, tomba@kernel.org,
+ jyri.sarha@iki.fi, joro@8bytes.org, will@kernel.org,
+ mchehab@kernel.org, ulf.hansson@linaro.org, adrian.hunter@intel.com,
+ kishon@ti.com, kuba@kernel.org, linus.walleij@linaro.org,
+ Roy.Pledge@nxp.com, leoyang.li@nxp.com, ssantosh@kernel.org,
+ matthias.bgg@gmail.com, edubezval@gmail.com, j-keerthy@ti.com,
+ balbi@kernel.org, linux@prisktech.co.nz, stern@rowland.harvard.edu,
+ wim@linux-watchdog.org, linux@roeck-us.net,
+ linux-kernel@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-omap@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-clk@vger.kernel.org, dmaengine@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
+ linux-media@vger.kernel.org, linux-mmc@vger.kernel.org,
+ netdev@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-staging@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>
+Subject: Re: [RFC v1 PATCH 1/3] drivers: soc: add support for
+ soc_device_match returning -EPROBE_DEFER
+Message-ID: <20210420112151.GE1981@kadam>
+References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
+ <20210419042722.27554-2-alice.guo@oss.nxp.com>
+ <CAMuHMdUbrPxtJ9DCP0_nFrReuuO4vFY2J79LrKY82D7bCOfzRw@mail.gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <87bla9qky1.wl-maz@kernel.org>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <CAMuHMdUbrPxtJ9DCP0_nFrReuuO4vFY2J79LrKY82D7bCOfzRw@mail.gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-GUID: e0r_GcH24oUhB4PQiI_vI2-dauff_ZRM
+X-Proofpoint-ORIG-GUID: e0r_GcH24oUhB4PQiI_vI2-dauff_ZRM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_040835_630337_314BC5DE 
-X-CRM114-Status: GOOD (  27.56  )
+X-CRM114-CacheID: sfid-20210420_042320_304965_F932ACDC 
+X-CRM114-Status: GOOD (  24.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,63 +138,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlc2RheSAyMCBBcHJpbCAyMDIxIDEyOjAxOjEwIE1hcmMgWnluZ2llciB3cm90ZToKPiBP
-biBUdWUsIDIwIEFwciAyMDIxIDEwOjQ0OjAyICswMTAwLAo+IFBhbGkgUm9ow6FyIDxwYWxpQGtl
-cm5lbC5vcmc+IHdyb3RlOgo+ID4gCj4gPiBIZWxsbyEKPiA+IAo+ID4gT24gVHVlc2RheSAyMCBB
-cHJpbCAyMDIxIDE0OjE3OjIxIEppYW5qdW4gV2FuZyB3cm90ZToKPiA+ID4gK3N0YXRpYyB2b2lk
-IG10a19wY2llX2VuYWJsZV9tc2koc3RydWN0IG10a19wY2llX3BvcnQgKnBvcnQpCj4gPiA+ICt7
-Cj4gPiA+ICsJaW50IGk7Cj4gPiA+ICsJdTMyIHZhbDsKPiA+ID4gKwo+ID4gPiArCWZvciAoaSA9
-IDA7IGkgPCBQQ0lFX01TSV9TRVRfTlVNOyBpKyspIHsKPiA+ID4gKwkJc3RydWN0IG10a19tc2lf
-c2V0ICptc2lfc2V0ID0gJnBvcnQtPm1zaV9zZXRzW2ldOwo+ID4gPiArCj4gPiA+ICsJCW1zaV9z
-ZXQtPmJhc2UgPSBwb3J0LT5iYXNlICsgUENJRV9NU0lfU0VUX0JBU0VfUkVHICsKPiA+ID4gKwkJ
-CQlpICogUENJRV9NU0lfU0VUX09GRlNFVDsKPiA+ID4gKwkJbXNpX3NldC0+bXNnX2FkZHIgPSBw
-b3J0LT5yZWdfYmFzZSArIFBDSUVfTVNJX1NFVF9CQVNFX1JFRyArCj4gPiA+ICsJCQkJICAgIGkg
-KiBQQ0lFX01TSV9TRVRfT0ZGU0VUOwo+ID4gPiArCj4gPiA+ICsJCS8qIENvbmZpZ3VyZSB0aGUg
-TVNJIGNhcHR1cmUgYWRkcmVzcyAqLwo+ID4gPiArCQl3cml0ZWxfcmVsYXhlZChsb3dlcl8zMl9i
-aXRzKG1zaV9zZXQtPm1zZ19hZGRyKSwgbXNpX3NldC0+YmFzZSk7Cj4gPiA+ICsJCXdyaXRlbF9y
-ZWxheGVkKHVwcGVyXzMyX2JpdHMobXNpX3NldC0+bXNnX2FkZHIpLAo+ID4gPiArCQkJICAgICAg
-IHBvcnQtPmJhc2UgKyBQQ0lFX01TSV9TRVRfQUREUl9ISV9CQVNFICsKPiA+ID4gKwkJCSAgICAg
-ICBpICogUENJRV9NU0lfU0VUX0FERFJfSElfT0ZGU0VUKTsKPiA+IAo+ID4gVGhpcyBsb29rcyBs
-aWtlIGFzIHNldHRpbmcgTVNJIGRvb3JiZWxsIGFkZHJlc3MgdG8gTVNJIGRvb3JiZWxsIGFkZHJl
-c3MuCj4gPiAKPiA+ID4gK3N0YXRpYyB2b2lkIG10a19jb21wb3NlX21zaV9tc2coc3RydWN0IGly
-cV9kYXRhICpkYXRhLCBzdHJ1Y3QgbXNpX21zZyAqbXNnKQo+ID4gPiArewo+ID4gPiArCXN0cnVj
-dCBtdGtfbXNpX3NldCAqbXNpX3NldCA9IGlycV9kYXRhX2dldF9pcnFfY2hpcF9kYXRhKGRhdGEp
-Owo+ID4gPiArCXN0cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0ID0gZGF0YS0+ZG9tYWluLT5ob3N0
-X2RhdGE7Cj4gPiA+ICsJdW5zaWduZWQgbG9uZyBod2lycTsKPiA+ID4gKwo+ID4gPiArCWh3aXJx
-ID0JZGF0YS0+aHdpcnEgJSBQQ0lFX01TSV9JUlFTX1BFUl9TRVQ7Cj4gPiA+ICsKPiA+ID4gKwlt
-c2ctPmFkZHJlc3NfaGkgPSB1cHBlcl8zMl9iaXRzKG1zaV9zZXQtPm1zZ19hZGRyKTsKPiA+ID4g
-Kwltc2ctPmFkZHJlc3NfbG8gPSBsb3dlcl8zMl9iaXRzKG1zaV9zZXQtPm1zZ19hZGRyKTsKPiA+
-ID4gKwltc2ctPmRhdGEgPSBod2lycTsKPiA+ID4gKwlkZXZfZGJnKHBvcnQtPmRldiwgIm1zaSMl
-I2x4IGFkZHJlc3NfaGkgJSN4IGFkZHJlc3NfbG8gJSN4IGRhdGEgJWRcbiIsCj4gPiA+ICsJCWh3
-aXJxLCBtc2ctPmFkZHJlc3NfaGksIG1zZy0+YWRkcmVzc19sbywgbXNnLT5kYXRhKTsKPiA+IAo+
-ID4gLi4uIHdoaWNoIGlzIGxhdGVyIHVzZWQgaW4gY29tcG9zZV9tc2lfbXNnKCkuCj4gPiAKPiA+
-IE1hcmMgaW4gc29tZSBvdGhlciBwYXRjaGVzIGZvciBvdGhlciBwY2kgY29udHJvbGxlciBkcml2
-ZXJzIGNoYW5nZWQgdGhpcwo+ID4gYWRkcmVzcyB0byBqdXN0IG1haW4gInBvcnQiIHN0cnVjdHVy
-ZS4gSXQgc2ltcGxpZmllZCBpbXBsZW1lbnRhdGlvbnMgYW5kCj4gPiBhbHNvIGF2b2lkZWQgbmVl
-ZCB0byBkZWNsYXJlIGFkZGl0aW9uYWwgbWVtYmVyICJtc2dfYWRkciIuCj4gPiAKPiA+IE1hcmMs
-IHdvdWxkIGl0IGJlIHBvc3NpYmxlIHRvIHNpbXBsaWZ5IGl0IGFsc28gZm9yIHRoaXMgZHJpdmVy
-IGFuZCBqdXN0Cj4gPiBzZXQgbXNnX2FkZHIgdG8gdmlydF90b19waHlzKHBvcnQpPwo+IAo+IE1h
-eWJlLiBJdCByZWFsbHkgZGVwZW5kcyBvbiB3aGF0IHJhbmdlIHRoZSBIVyBhY2NlcHRzLCBhbmQg
-dGhlIHNvbGUKPiByZXF1aXJlbWVudCBpcyB0byB1c2UgYW4gYWRkcmVzcyB0aGF0IHRoZSBlbmRw
-b2ludCBjYW5ub3QgRE1BCj4gdG8uIEhlcmUsIHRoZSBkcml2ZXIgc2VlbXMgdG8gYmUgdXNpbmcg
-c29tZXRoaW5nIGJhc2VkIG9uIHRoZSBwb3J0Cj4gYmFzZSBhZGRyZXNzLCB3aGljaCBpcyBnb29k
-IGVub3VnaCBhcyBmYXIgYXMgSSBhbSBjb25jZXJuZWQgKHRoZSB0aGluZwo+IEkgdXN1YWxseSBv
-YmplY3QgdG8gaXMgdGhlIGFsbG9jYXRpb24gb2YgbWVtb3J5IGp1c3QgZm9yIHRoZSBzYWtlIG9m
-Cj4gZ2V0dGluZyBhIGNhcHR1cmUgYWRkcmVzcykuCj4gCj4gSWYgeW91IHdhbnQgdG8gZnVydGhl
-ciBzaW1wbGlmeSBpdCwgeW91IGNvdWxkIHNpbXBseSB1c2UgcG9ydC5yZWdfYmFzZQo+IGFzIHRo
-ZSBNU0kgYWRkcmVzcyBmb3IgYWxsIHNldHMsIGFzIEkgZG9uJ3QgdGhpbmsgdGhleSBoYXZlIHRv
-IGJlCj4gZGlzdGluY3QuIEJ1dCBzb21lb25lIHdpdGggYWNjZXNzIHRvIHRoZSBUUk0gZm9yIHRo
-aXMgc2hvdWxkIGdvIGFuZAo+IGNoZWNrIGl0Lgo+IAo+IEkgZG9uJ3QgYmVsaWV2ZSB0aGlzIHNo
-b3VsZCBnYXRlIHRoZSBtZXJnaW5nIG9kIHRoaXMgZHJpdmVyIHRob3VnaC4KCk9mIGNvdXJzZSEg
-SSdtIGp1c3QgYXNraW5nIGRldGFpbHMgdG8gdW5kZXJzdGFuZCBiZXN0IHByYWN0aXNlcyBhbmQg
-aG93Cml0IHdvcmtzLiBTbyB0aGFua3MgZm9yIGluZm9ybWF0aW9uIQoKPiAJTS4KPiAKPiAtLSAK
-PiBXaXRob3V0IGRldmlhdGlvbiBmcm9tIHRoZSBub3JtLCBwcm9ncmVzcyBpcyBub3QgcG9zc2li
-bGUuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+On Mon, Apr 19, 2021 at 10:20:13AM +0200, Geert Uytterhoeven wrote:
+> Hi Alice,
+> 
+> CC Arnd (soc_device_match() author)
+> 
+> On Mon, Apr 19, 2021 at 6:28 AM Alice Guo (OSS) <alice.guo@oss.nxp.com> wrote:
+> > From: Alice Guo <alice.guo@nxp.com>
+> >
+> > In i.MX8M boards, the registration of SoC device is later than caam
+> > driver which needs it. Caam driver needs soc_device_match to provide
+> > -EPROBE_DEFER when no SoC device is registered and no
+> > early_soc_dev_attr.
+> 
+> I'm wondering if this is really a good idea: soc_device_match() is a
+> last-resort low-level check, and IMHO should be made available early on,
+> so there is no need for -EPROBE_DEFER.
+> 
+> >
+> > Signed-off-by: Alice Guo <alice.guo@nxp.com>
+> 
+> Thanks for your patch!
+> 
+> > --- a/drivers/base/soc.c
+> > +++ b/drivers/base/soc.c
+> > @@ -110,6 +110,7 @@ static void soc_release(struct device *dev)
+> >  }
+> >
+> >  static struct soc_device_attribute *early_soc_dev_attr;
+> > +static bool soc_dev_attr_init_done = false;
+> 
+> Do you need this variable?
+> 
+> >
+> >  struct soc_device *soc_device_register(struct soc_device_attribute *soc_dev_attr)
+> >  {
+> > @@ -157,6 +158,7 @@ struct soc_device *soc_device_register(struct soc_device_attribute *soc_dev_attr
+> >                 return ERR_PTR(ret);
+> >         }
+> >
+> > +       soc_dev_attr_init_done = true;
+> >         return soc_dev;
+> >
+> >  out3:
+> > @@ -246,6 +248,9 @@ const struct soc_device_attribute *soc_device_match(
+> >         if (!matches)
+> >                 return NULL;
+> >
+> > +       if (!soc_dev_attr_init_done && !early_soc_dev_attr)
+> 
+> if (!soc_bus_type.p && !early_soc_dev_attr)
+
+There is one place checking this already.  We could wrap it in a helper
+function:
+
+static bool device_init_done(void)
+{
+	return soc_bus_type.p ? true : false;
+}
+
+regards,
+dan carpenter
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
