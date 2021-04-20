@@ -2,96 +2,96 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E816C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43DBBC43460
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:26:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD43760C3F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:01:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD43760C3F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id A0B3C6023C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:26:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0B3C6023C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9rTPFFdNHGph5HwOrlcfyrWUSrCyF66ICYv+ae/+vbQ=; b=Fp6wZc2QkszFP+uKlVnGBKT3u
-	qils8B4OfkD7A5y/e4sNrv9OnYjRwnLdQDxSKTcv1ipl8GoGFTUBZEPr9LOSTmbL7VtjQYR26ivXL
-	Tcimi55hQT8uMfORD2Of1ghi6aRN734CZui9CwwsYQDbfPrOXmjCYdjI05awYq5bWM5teSyLZjDLi
-	d1bnqVRJgG8m23SdNE+ItaPVe0J7ioMI3ebUrzUT7Fm3D4o02XkNWYcfIKchrHUyvqCrY9jmMq+BX
-	g4u4Xjrb4h+INnIqIj1rCMQ6QmLB/OldrneR1gbEXbcGXDbhE3YtldIEv7Ta7GNkhOxw0PHI69qLE
-	z4nU4UUkg==;
+	 bh=VtNJeaeX37Ne0U3zPtAFWQsoz/JzIMAimQ6EoIhZcGE=; b=BdDYWRjXxQzT7puNx5+b2EgGp
+	oseuV7g0jTWsl0x0jP+w/ajjYOnoHXwuEnIXarCUx4jtBnu9ulS7DnHum0C3HzBgyFsJmP9qumWCS
+	woLoSu9LIqog5R9byfAe5jQj6Nnw8VvOKTYlN66duKQODbqwph2dWZ4JpfzTf8FfOE6AKcfu4A6wm
+	QhcS5zF+IOSh0wkw5saJ9FTaHwqlPbrlcwXh7dCazESOwIK0SptGS6rsplRSQ8f3YtN7X91VYS2fn
+	xxYIsp5t8o6IRiVpAZ7xro5HTS58umXRTLEti8EkHBWevfADlO6c7JxqS09YvuO23m8ecTugoJyXt
+	fEOVRpOcA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYq0d-00C9Mp-V3; Tue, 20 Apr 2021 13:01:44 +0000
+	id 1lYqOp-00CCuJ-CI; Tue, 20 Apr 2021 13:26:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYq0Q-00C9K8-0A; Tue, 20 Apr 2021 13:01:30 +0000
+ id 1lYqOl-00CCte-AG; Tue, 20 Apr 2021 13:26:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=oI3WLoc16emqFSJUBXgZsDmVKNulmKDlxyGPVJHIlck=; b=nuAtdCxJD/xUcpgNoALzZTw62T
- nLtxbJl9otDI/KSQPfpbcUgJekvSdcXvVS0T2JyQHlXoPZpFSMTVSMxAutFed8y2tQbpQvc4vLNTy
- fVyd8VUzhjFBWwOBZZNmre8lNGdHE8Et8DHvhB2jXYDoBhvhascijSG2Sc4LwtwVWI+WcqdkZ5aN+
- 3M6YIyG+t9YdBcrWl64YIjp8JCtokkbq8CVt913nvoEXWjtlwfqXbUkM7qJRPdmYN0AMCU/5jju/D
- wC9tmnLcN4FQSudPVaZyHJOTxi8esg3e4BciYDbFEVM6UfUM2syI83fC+V0h02VfY6Ov3B9eKxAcE
- HkVSDsNw==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=Q1Yw7il2MClM4mQcrsnzuY1x1dqtCZCR9HbDGp8SKAI=; b=QDjo5+ToMGYkojG+SKpmzFczTy
+ fs3PH/C8NpU1um3338jFYzv0ZvZ9dvj8QBaB3Idlb6ZCK4GJO5Z95uESQEBUC+d6dJOAFfd5VzObl
+ Z+NfIUrX5MqhEc16l5JvCHz8gFSMELiSrTU8JI4sRA/xxbaGS/5spJk3ueM/SinbXnGsoeGABYV3O
+ P0T+vazhGOUsLlNJPHusoH3Uuaecj3KoGbrckT3QZzx2AyXk5kbAQIOFtr8P3jD3+o38YQnyEGjFh
+ VswqprZpa/PQ3PDAV2fAORUHBgTHbT1dbRSqRi/DnokjvD6/qb3b1Y2hjKVDrilmPa/quZTwLCGd4
+ 9eLM1oLg==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYq0N-00C7bi-CH; Tue, 20 Apr 2021 13:01:28 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CC08B613C8;
- Tue, 20 Apr 2021 13:01:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1618923686;
- bh=rtORbGc3mPMhlArrUrjghPvRhVtKXaf7d9TRrasS6l0=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=VMumAygSE2Ss89tpuyftaMuLsWVlHbuUiOCbE8Ai7UM5E6RsNHIG9Vf4xtaC5qwKr
- O/qTpB4pkucmnZ3hez0dd3jHy+B2ziZ24j2pdzihRTrnG631AEEeFTonndrokzneRV
- fAlejQkAack3j+VindxNlgBzaFt6E33gc8tfDylJhzkcXhrUMNnxV+lZ6QtSmdN5EQ
- +1QNhVUNNq7EWbL1+0+jlludkTmVA2DTA/EPQmmN7+A2XDrkH6E/Edh5Is/S5zN1UY
- Dm+m093pRdDh3yhZFuuV6lxhG7ADpLJlcxGCBoTiokyTGU3rhh236EaQmxjuveju2R
- kvvrKuGcEAYbA==
-Received: by mail-qk1-f170.google.com with SMTP id 8so5407421qkv.8;
- Tue, 20 Apr 2021 06:01:26 -0700 (PDT)
-X-Gm-Message-State: AOAM531n5LUhDJ+PGVl/MxQb/S/kgmt3F3/KBYyza9iqCHFjNVfyLvOo
- KmcQbK1eqIiYabn8A2H0eRJJH5vqhLdTWCoJ8A==
-X-Google-Smtp-Source: ABdhPJytCtVfQJCSrxQnJlrByY2ajWXURyVePKmlcnaE97mOqQU4IvcMx9ee78uVQZawM9qyCusf98X4PqudjDjJq+I=
-X-Received: by 2002:ae9:f819:: with SMTP id x25mr9783240qkh.68.1618923685847; 
- Tue, 20 Apr 2021 06:01:25 -0700 (PDT)
+ id 1lYqOf-00C8yb-PA; Tue, 20 Apr 2021 13:26:38 +0000
+X-UUID: bc8d070aa680414cad715a97f2e5d8b4-20210420
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=Q1Yw7il2MClM4mQcrsnzuY1x1dqtCZCR9HbDGp8SKAI=; 
+ b=f3Fo92J5a+C5ZrVaQ8lZ0Awr10s3MGFx96ETF+J0WbxEwWHtaxh43fLLmHQb0Uads9bOEdVa3+FCcHwYMnjpz/6GZ5cLnL74HB/goT7MrSOypS1Rm1/VCWu/A57KktXy/4I3hYJ2mpeHJ8Vr+J8rBcwPnBYpB0CVDK/G4xYcEnU=;
+X-UUID: bc8d070aa680414cad715a97f2e5d8b4-20210420
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 113093701; Tue, 20 Apr 2021 06:26:30 -0700
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Apr 2021 06:26:29 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 20 Apr 2021 21:26:18 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 20 Apr 2021 21:26:17 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, <dri-devel@lists.freedesktop.org>,
+ <linux-kernel@vger.kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <yingjoe.chen@mediatek.com>, <eddie.huang@mediatek.com>,
+ <cawa.cheng@mediatek.com>, <bibby.hsieh@mediatek.com>, <ck.hu@mediatek.com>,
+ <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
+ Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH 2/4] drm/panel: boe-tv101wum-n16 seperate the panel power
+ control
+Date: Tue, 20 Apr 2021 21:26:11 +0800
+Message-ID: <20210420132614.150242-2-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210420132614.150242-1-jitao.shi@mediatek.com>
+References: <20210420132614.150242-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-References: <20210126011759.1605641-1-drinkcat@chromium.org>
- <20210126091747.v11.1.Ie74d3355761aab202d4825ac6f66d990bba0130e@changeid>
-In-Reply-To: <20210126091747.v11.1.Ie74d3355761aab202d4825ac6f66d990bba0130e@changeid>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 20 Apr 2021 08:01:13 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+gWm+94zF1XN2KiRYgAZewiDkCk5B5bhLB=M+-HbD=fA@mail.gmail.com>
-Message-ID: <CAL_Jsq+gWm+94zF1XN2KiRYgAZewiDkCk5B5bhLB=M+-HbD=fA@mail.gmail.com>
-Subject: Re: [PATCH v11 1/4] dt-bindings: gpu: mali-bifrost: Add Mediatek
- MT8183
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Steven Price <steven.price@arm.com>, 
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Fei Shao <fshao@chromium.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, 
- "Kristian H. Kristensen" <hoegsberg@chromium.org>,
- Boris Brezillon <boris.brezillon@collabora.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, 
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+X-TM-SNTS-SMTP: 45751ACB09465B252BD553B0B387AFEC38F4F85E73F60BF298E6246B4BC675732000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_060127_503400_25B3B715 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20210420_062633_854119_6BCF20D2 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,111 +108,158 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 25, 2021 at 7:18 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
->
-> Define a compatible string for the Mali Bifrost GPU found in
-> Mediatek's MT8183 SoCs.
->
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
->
-> Changes in v11:
->  - binding: power-domain-names not power-domainS-names
->
-> Changes in v10:
->  - Fix the binding to make sure sram-supply property can be provided.
->
-> Changes in v9: None
-> Changes in v8: None
-> Changes in v7: None
-> Changes in v6:
->  - Rebased, actually tested with recent mesa driver.
->
-> Changes in v5:
->  - Rename "2d" power domain to "core2"
->
-> Changes in v4:
->  - Add power-domain-names description
->    (kept Alyssa's reviewed-by as the change is minor)
->
-> Changes in v3: None
-> Changes in v2: None
->
->  .../bindings/gpu/arm,mali-bifrost.yaml        | 28 +++++++++++++++++++
->  1 file changed, 28 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> index 184492162e7e..3e758f88e2cd 100644
-> --- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> +++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
-> @@ -17,6 +17,7 @@ properties:
->      items:
->        - enum:
->            - amlogic,meson-g12a-mali
-> +          - mediatek,mt8183-mali
->            - realtek,rtd1619-mali
->            - rockchip,px30-mali
->        - const: arm,mali-bifrost # Mali Bifrost GPU model/revision is fully discoverable
-> @@ -41,6 +42,8 @@ properties:
->
->    mali-supply: true
->
-> +  sram-supply: true
-> +
->    operating-points-v2: true
->
->    power-domains:
-> @@ -87,6 +90,31 @@ allOf:
->      then:
->        required:
->          - resets
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: mediatek,mt8183-mali
-> +    then:
-> +      properties:
-> +        power-domains:
-> +          description:
-> +            List of phandle and PM domain specifier as documented in
-> +            Documentation/devicetree/bindings/power/power_domain.txt
-> +          minItems: 3
-> +          maxItems: 3
+Seperate the panel power control from prepare/unprepare.
 
-This won't work because the top level schema restricts this to 1. The
-top level needs to say:
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    | 72 +++++++++++++------
+ 1 file changed, 50 insertions(+), 22 deletions(-)
 
-power-domains:
-  minItems: 1
-  maxItems: 3
-
-And you need just 'minItems: 3' here and 'maxItems: 1' in the else clause.
-
-And drop the description. That's every 'power-domains' property.
-
-> +        power-domain-names:
-> +          items:
-> +            - const: core0
-> +            - const: core1
-> +            - const: core2
-
-Blank line
-
-> +      required:
-> +        - sram-supply
-> +        - power-domains
-> +        - power-domain-names
-> +    else:
-> +      properties:
-> +        sram-supply: false
->
->  examples:
->    - |
-> --
-> 2.30.0.280.ga3ce27912f-goog
->
-
+diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+index db9d0b86d542..dc49079a74d1 100644
+--- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
++++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+@@ -50,6 +50,7 @@ struct boe_panel {
+ 	struct regulator *avdd;
+ 	struct gpio_desc *enable_gpio;
+ 
++	bool prepared_power;
+ 	bool prepared;
+ };
+ 
+@@ -488,22 +489,13 @@ static int boe_panel_enter_sleep_mode(struct boe_panel *boe)
+ 	return 0;
+ }
+ 
+-static int boe_panel_unprepare(struct drm_panel *panel)
++static int boe_panel_unprepare_power(struct drm_panel *panel)
+ {
+ 	struct boe_panel *boe = to_boe_panel(panel);
+-	int ret;
+ 
+-	if (!boe->prepared)
++	if (!boe->prepared_power)
+ 		return 0;
+ 
+-	ret = boe_panel_enter_sleep_mode(boe);
+-	if (ret < 0) {
+-		dev_err(panel->dev, "failed to set panel off: %d\n", ret);
+-		return ret;
+-	}
+-
+-	msleep(150);
+-
+ 	if (boe->desc->discharge_on_disable) {
+ 		regulator_disable(boe->avee);
+ 		regulator_disable(boe->avdd);
+@@ -512,6 +504,7 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+ 		usleep_range(5000, 7000);
+ 		regulator_disable(boe->pp1800);
+ 	} else {
++		msleep(150);
+ 		gpiod_set_value(boe->enable_gpio, 0);
+ 		usleep_range(500, 1000);
+ 		regulator_disable(boe->avee);
+@@ -520,17 +513,39 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+ 		regulator_disable(boe->pp1800);
+ 	}
+ 
++	boe->prepared_power = false;
++
++	return 0;
++}
++
++static int boe_panel_unprepare(struct drm_panel *panel)
++{
++	struct boe_panel *boe = to_boe_panel(panel);
++	int ret;
++
++	if (!boe->prepared)
++		return 0;
++
++	if (!boe->desc->discharge_on_disable) {
++		ret = boe_panel_enter_sleep_mode(boe);
++		if (ret < 0) {
++			dev_err(panel->dev, "failed to set panel off: %d\n",
++				ret);
++			return ret;
++		}
++	}
++
+ 	boe->prepared = false;
+ 
+ 	return 0;
+ }
+ 
+-static int boe_panel_prepare(struct drm_panel *panel)
++static int boe_panel_prepare_power(struct drm_panel *panel)
+ {
+ 	struct boe_panel *boe = to_boe_panel(panel);
+ 	int ret;
+ 
+-	if (boe->prepared)
++	if (boe->prepared_power)
+ 		return 0;
+ 
+ 	gpiod_set_value(boe->enable_gpio, 0);
+@@ -558,18 +573,10 @@ static int boe_panel_prepare(struct drm_panel *panel)
+ 	gpiod_set_value(boe->enable_gpio, 1);
+ 	usleep_range(6000, 10000);
+ 
+-	ret = boe_panel_init_dcs_cmd(boe);
+-	if (ret < 0) {
+-		dev_err(panel->dev, "failed to init panel: %d\n", ret);
+-		goto poweroff;
+-	}
+-
+-	boe->prepared = true;
++	boe->prepared_power = true;
+ 
+ 	return 0;
+ 
+-poweroff:
+-	regulator_disable(boe->avee);
+ poweroffavdd:
+ 	regulator_disable(boe->avdd);
+ poweroff1v8:
+@@ -580,6 +587,25 @@ static int boe_panel_prepare(struct drm_panel *panel)
+ 	return ret;
+ }
+ 
++static int boe_panel_prepare(struct drm_panel *panel)
++{
++	struct boe_panel *boe = to_boe_panel(panel);
++	int ret;
++
++	if (boe->prepared)
++		return 0;
++
++	ret = boe_panel_init_dcs_cmd(boe);
++	if (ret < 0) {
++		dev_err(panel->dev, "failed to init panel: %d\n", ret);
++		return ret;
++	}
++
++	boe->prepared = true;
++
++	return 0;
++}
++
+ static int boe_panel_enable(struct drm_panel *panel)
+ {
+ 	msleep(130);
+@@ -749,7 +775,9 @@ static int boe_panel_get_modes(struct drm_panel *panel,
+ 
+ static const struct drm_panel_funcs boe_panel_funcs = {
+ 	.unprepare = boe_panel_unprepare,
++	.unprepare_power = boe_panel_unprepare_power,
+ 	.prepare = boe_panel_prepare,
++	.prepare_power = boe_panel_prepare_power,
+ 	.enable = boe_panel_enable,
+ 	.get_modes = boe_panel_get_modes,
+ };
+-- 
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
