@@ -2,107 +2,94 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65562C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 04:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 474F0C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:18:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD2246109E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 04:15:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD2246109E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id AB66C613B2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 06:18:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB66C613B2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xpMf1/3QZFAx8jqar29nzU9J3J9mFirlV36ShuEndoc=; b=cY48JFU4ITE5uGMWF3Jq8kfGM
-	6lTOL47doBUTN21EdVhRUQDnOroFJEvwNml9Hk1QRBNh5g2gsJc3ib6HBWgEqzcY3ij/xVhy6soqR
-	PLDj10yNyOEZMFoghMLDCQxIVXDDI+TKG+u7XiDHq067qF6l1bI7AP1hRlp1SHfGsJv7hc+kOJxTE
-	mkuvcZrKkvlr5koQaaQRYIg9Nkjk6gDxi0kBl6UHosn1SN2KC/Ae5aE47R34dBNMC3QWizDcY4AlV
-	EIcsQuzQfEq6+BeXuN/Irqjnhp2zyDZ0Db13pcpl1LK0aefxUjkBvBE+o4dBjlUjyAa/7u4K5brGI
-	Xov5GOZlw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=trkzQudtO+4NYsecxu7kcgYGxEnc+PiiRdnv+Mkgu4Q=; b=eemnKdC6AA5VRcT4AE6swCEmQu
+	itc51w0w38kLuBI4uwX8rJ766JGB63KCvTWBaJajIFLvobzvwrAm4CJBoEt0sThM3v+fHi5tgsCal
+	Us9Sbz850rk0DXSvKlO8vaieXv20HgHrqOONYd+9QglQbyWu8PrIh/ezHZn5VYUVMezXXRauqhBEY
+	UmZpyYy6XLObq+BjyWBKeq76PuDMW4NE2W079JpS0wADqCK3mKzp76j0P0Zk0/FFudRMOZdeXr/zl
+	0B0DHJL3Bq9YWbGr8tCj9rrFv8IfAGZPjx5FyVxL+uVQ22z2R1fOk0E/aqJqFggPgmo1ElU24/c6H
+	xh0L08XA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYhnZ-00B9LN-Lm; Tue, 20 Apr 2021 04:15:41 +0000
+	id 1lYjhv-00BJ4F-VQ; Tue, 20 Apr 2021 06:18:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYhnP-00B9Kk-Aw; Tue, 20 Apr 2021 04:15:31 +0000
+ id 1lYjhs-00BJ2z-88; Tue, 20 Apr 2021 06:17:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=Hm4Z6oaQgs3twXmrYS3T+fDV5rlZoFGQ7Y/U36Iw/7c=; b=oL5xuxqZQX1CEdC/mLsveJLDTZ
- OuXDUAzqeF45ZZ263Hz54feAVatd/pokWDaaHto2yse86SzbiqC1AsCWpdT1hLTk0iCN1BF6bHfFD
- UTZQdRwnMiE8XEd3oZPCObJTcyq3CSU7D47fBX/p7Pp2fovl77lZiNlZgyVeEByxBlhHUWCKKgM2B
- XAoarleIatfBxAqisV9lZLAyWO1kmnJ8URmWZPUHV7C3K2GBZLLThcG/TvyhA7wnLy2x7m9INb/PI
- 2MzlFMyf1xUvA84CPau/mAy9vuKC6pOsBmRQFosJG9XRAHxjTAxFoOpPB3zrsfrAXdYG720J37Z0j
- SieiE+sw==;
-Received: from mga03.intel.com ([134.134.136.65])
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=r36BGif7LWzzFXYgg7Iio9ttxDEIqdn1hXwqlKoe+KU=; b=Z+EuJcKMMrPIAtIgKtFLvh93kG
+ Lnpj67xqw8q+mVfZIhgE8AFDBXCHCDtILDSdPyYcPglep7j2F0EnBSHt30gaQmJ5C4eRakr6py1Nr
+ u2KCdLaUjxuLcayjGvwGnvjtpXOsE1g/uFcR/f/ytn6KWC2vAzTtOQwjOSv46A8sBNEGKMVo/kfth
+ lpnwDcvSZlTbllSm1wLt2FN9vb841Q4EsPha2pWW0oIhcAbEuqXbNBUNoAqKXydMelp/aLOVt06Mn
+ 0VZ+c4ARmIfng9iTiBQCEl3eT9g7sY2cmn7JODYzB8SXUMQVbme/htp/8r0J6NXo5Zq4gUBZfljrq
+ uGZulTkw==;
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYhnL-00BnsK-Q3; Tue, 20 Apr 2021 04:15:29 +0000
-IronPort-SDR: iC/h93WLyR1syXymIefA1wBCGM8lGfInrf8BhelmUkFT3lDJSJmxBvIremFmM9JZEZhQKbK5gB
- IUO12wOwDxYw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9959"; a="195466730"
-X-IronPort-AV: E=Sophos;i="5.82,236,1613462400"; d="scan'208";a="195466730"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Apr 2021 21:15:16 -0700
-IronPort-SDR: 6rAbk6FueexjTrFKkwcckZGJwZ+VFfmCi4dOdTEvAZsYOeRXNbxB+x28s3fHPtKOddNihST939
- DqZQceaPM7zg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,236,1613462400"; d="scan'208";a="420249358"
-Received: from ahunter-desktop.fi.intel.com (HELO [10.237.72.174])
- ([10.237.72.174])
- by fmsmga008.fm.intel.com with ESMTP; 19 Apr 2021 21:15:09 -0700
-Subject: Re: [PATCH v20 1/2] scsi: ufs: Enable power management for wlun
-To: "Asutosh Das (asd)" <asutoshd@codeaurora.org>, cang@codeaurora.org,
- martin.petersen@oracle.com, linux-scsi@vger.kernel.org
-Cc: linux-arm-msm@vger.kernel.org, Alim Akhtar <alim.akhtar@samsung.com>,
- Avri Altman <avri.altman@wdc.com>, "James E.J. Bottomley"
- <jejb@linux.ibm.com>, Krzysztof Kozlowski <krzk@kernel.org>,
- Stanley Chu <stanley.chu@mediatek.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Steven Rostedt <rostedt@goodmis.org>, Ingo Molnar <mingo@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bean Huo <beanhuo@micron.com>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Colin Ian King <colin.king@canonical.com>,
- Wei Yongjun <weiyongjun1@huawei.com>, Yue Hu <huyue2@yulong.com>,
- Bart van Assche <bvanassche@acm.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Dinghao Liu <dinghao.liu@zju.edu.cn>, Jaegeuk Kim <jaegeuk@kernel.org>,
- Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "moderated list:UNIVERSAL FLASH STORAGE HOST CONTROLLER DRIVER..."
- <linux-mediatek@lists.infradead.org>
-References: <cover.1618600985.git.asutoshd@codeaurora.org>
- <d660b8d4e1fb192810abd09a8ff0ef4d9f6b96cd.1618600985.git.asutoshd@codeaurora.org>
- <fdadd467-b613-d800-18c5-be064396fd10@intel.com>
- <07e3ea07-e1c3-7b8c-e398-8b008f873e6d@codeaurora.org>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-Message-ID: <90809796-1c32-3709-13d3-65e4d5c387cc@intel.com>
-Date: Tue, 20 Apr 2021 07:15:24 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ id 1lYjhm-00Bq23-8e; Tue, 20 Apr 2021 06:17:54 +0000
+X-UUID: dafba5ea21b64bf48ed1a97b09557803-20210419
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=r36BGif7LWzzFXYgg7Iio9ttxDEIqdn1hXwqlKoe+KU=; 
+ b=Fgqruh840sIVnuvpwE3+0B4ybbDn0S9BJzxA+p/dC1naxd1Fx6ejS5kBLtbBYfpQiMitRq+lN5viSG5kUvNVgko0pw+7JN5SCfAN4rKB9jiVMiox3shpCV/cW0UbWo++tiC7CPXM11jXY9bSUKNgAMPIa2yywuTUAY2eqq0zsWU=;
+X-UUID: dafba5ea21b64bf48ed1a97b09557803-20210419
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 966524791; Mon, 19 Apr 2021 23:17:42 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Apr 2021 23:17:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Apr 2021 14:17:39 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 20 Apr 2021 14:17:38 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>
+CC: Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, <youlin.pei@mediatek.com>,
+ <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+ <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
+ <Rex-BC.Chen@mediatek.com>, <anson.chuang@mediatek.com>, Krzysztof Wilczyski
+ <kw@linux.com>, =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>
+Subject: [PATCH v10 0/7] PCI: mediatek: Add new generation controller support
+Date: Tue, 20 Apr 2021 14:17:16 +0800
+Message-ID: <20210420061723.989-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <07e3ea07-e1c3-7b8c-e398-8b008f873e6d@codeaurora.org>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210419_211527_909170_C3AFB674 
-X-CRM114-Status: GOOD (  18.15  )
+X-CRM114-CacheID: sfid-20210419_231750_347558_7C85CA50 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,42 +101,96 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjAvMDQvMjEgMTI6NTMgYW0sIEFzdXRvc2ggRGFzIChhc2QpIHdyb3RlOgo+IE9uIDQvMTkv
-MjAyMSAxMTozNyBBTSwgQWRyaWFuIEh1bnRlciB3cm90ZToKPj4gT24gMTYvMDQvMjEgMTA6NDkg
-cG0sIEFzdXRvc2ggRGFzIHdyb3RlOgo+Pj4KPj4+IENvLWRldmVsb3BlZC1ieTogQ2FuIEd1byA8
-Y2FuZ0Bjb2RlYXVyb3JhLm9yZz4KPj4+IFNpZ25lZC1vZmYtYnk6IENhbiBHdW8gPGNhbmdAY29k
-ZWF1cm9yYS5vcmc+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBBc3V0b3NoIERhcyA8YXN1dG9zaGRAY29k
-ZWF1cm9yYS5vcmc+Cj4+PiAtLS0KPj4KPj4gSSBjYW1lIGFjcm9zcyAzIGlzc3VlcyB3aGlsZSB0
-ZXN0aW5nLsKgIFNlZSBjb21tZW50cyBiZWxvdy4KPj4KPiBIaSBBZHJpYW4KPiBUaGFua3MgZm9y
-IHRoZSBjb21tZW50cy4KPj4gPFNOSVA+Cj4+Cj4+PiBAQCAtNTc5NCw3ICs1ODM5LDcgQEAgc3Rh
-dGljIHZvaWQgdWZzaGNkX2Vycl9oYW5kbGluZ191bnByZXBhcmUoc3RydWN0IHVmc19oYmEgKmhi
-YSkKPj4+IMKgwqDCoMKgwqAgaWYgKHVmc2hjZF9pc19jbGtzY2FsaW5nX3N1cHBvcnRlZChoYmEp
-KQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHVmc2hjZF9jbGtfc2NhbGluZ19zdXNwZW5kKGhiYSwg
-ZmFsc2UpOwo+Pj4gwqDCoMKgwqDCoCB1ZnNoY2RfY2xlYXJfdWFfd2x1bnMoaGJhKTsKPj4KPj4g
-dWZzaGNkX2NsZWFyX3VhX3dsdW5zKCkgZGVhZGxvY2tzIHRyeWluZyB0byBjbGVhciBVRlNfVVBJ
-VV9SUE1CX1dMVU4KPj4gaWYgc2Rldl9ycG1iIGlzIHN1c3BlbmRlZCBhbmQgc2Rldl91ZnNfZGV2
-aWNlIGlzIHN1c3BlbmRpbmcuCj4+IGUuZy4gdWZzaGNkX3dsX3N1c3BlbmQoKSBpcyB3YWl0aW5n
-IG9uIGhvc3Rfc2VtIHdoaWxlIHVmc2hjZF9lcnJfaGFuZGxlcigpCj4+IGlzIHJ1bm5pbmcsIGF0
-IHdoaWNoIHBvaW50IHNkZXZfcnBtYiBoYXMgYWxyZWFkeSBzdXNwZW5kZWQuCj4+Cj4gVW1tLCBJ
-IGRpZG4ndCB1bmRlcnN0YW5kIHRoaXMgZGVhZGxvY2suCj4gV2hlbiB5b3Ugc2F5LCBzZGV2X3Jw
-bWIgaXMgc3VzcGVuZGVkLCBkb2VzIGl0IG1lYW4gcnVudGltZV9zdXNwZW5kZWQ/Cj4gc2Rldl91
-ZnNfZGV2aWNlIGlzIHN1c3BlbmRpbmcgLSB0aGlzIGNhbid0IGJlIHJ1bnRpbWVfc3VzcGVuZGlu
-Zywgd2hpbGUgdWZzaGNkX2Vycl9oYW5kbGluZ191bnByZXBhcmUgaXMgcnVubmluZy4KPiAKPiBJ
-ZiB5b3UndmUgYSBjYWxsLXN0YWNrIG9mIHRoaXMgZGVhZGxvY2ssIHBsZWFzZSBjYW4geW91IHNo
-YXJlIGl0IHdpdGggbWUuIEknbGwgYWxzbyB0cnkgdG8gcmVwcm9kdWNlIHRoaXMuCgpZZXMgaXQg
-aXMgc3lzdGVtIHN1c3BlbmQuIHNkZXZfcnBtYiBoYXMgc3VzcGVuZGVkLCBzZGV2X3Vmc19kZXZp
-Y2UgaXMgd2FpdGluZyBvbiBob3N0X3NlbS4KdWZzaGNkX2Vycl9oYW5kbGVyKCkgaG9sZHMgaG9z
-dF9zZW0uIHVmc2hjZF9jbGVhcl91YV93bHVuKFVGU19VUElVX1JQTUJfV0xVTikgZ2V0cyBzdHVj
-ay4KSSB3aWxsIGdldCBzb21lIGNhbGwtc3RhY2tzLgoKPiAKPiBJJ2xsIGFkZHJlc3MgdGhlIG90
-aGVyIGNvbW1lbnRzIGluIHRoZSBuZXh0IHZlcnNpb24uCj4gCj4gCj4gVGhhbmsgeW91IQo+IAo+
-Pj4gLcKgwqDCoCBwbV9ydW50aW1lX3B1dChoYmEtPmRldik7Cj4+PiArwqDCoMKgIHVmc2hjZF9y
-cG1fcHV0KGhiYSk7Cj4+PiDCoCB9Cj4+Cj4+IDxTTklQPgo+Pgo+Pj4gK3ZvaWQgdWZzaGNkX3Jl
-c3VtZV9jb21wbGV0ZShzdHJ1Y3QgZGV2aWNlICpkZXYpCj4+PiArewo+IAoKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+From: mtk15901 <jianjun.wang@mediatek.com>
+
+These series patches add pcie-mediatek-gen3.c and dt-bindings file to
+support new generation PCIe controller.
+
+Changes in v10:
+1. Fix the subject line format in commit message;
+2. Use EXPORT_SYMBOL_GPL() to export pci_pio_to_address().
+
+Changes in v9:
+1. Use mtk_pcie_parse_port() to get the hw resources;
+2. Remove unnecessary logs;
+3. Add local IRQ enable status save/restore instead of
+   the enable/disable callbacks;
+4. Fix typos.
+
+Changes in v8:
+1. Add irq_clock to protect IRQ register access;
+2. Mask all INTx interrupt when startup port;
+3. Remove activate/deactivate callbacks from bottom_domain_ops;
+4. Add unmask/mask callbacks in mtk_msi_bottom_irq_chip;
+5. Add property information for reg-names.
+
+Changes in v7:
+1. Split the driver patch to core PCIe, INTx, MSI and PM patches;
+2. Reshape MSI init and handle flow,
+   use msi_bottom_domain to cover all sets;
+3. Replace readl/writel with their relaxed version;
+4. Add MSI description in binding document;
+5. Add pl_250m clock in binding document.
+
+Changes in v6:
+1. Export pci_pio_to_address() to support compiling as kernel module;
+2. Replace usleep_range(100 * 1000, 120 * 1000) with msleep(100);
+3. Replace dev_notice with dev_err;
+4. Fix MSI get hwirq flow;
+5. Fix warning for possible recursive locking in mtk_pcie_set_affinity.
+
+Changes in v5:
+1. Remove unused macros
+2. Modify the config read/write callbacks, set the config byte field
+   in TLP header and use pci_generic_config_read32/write32
+   to access the config space
+3. Fix the settings of translation window, both MEM and IO regions
+   works properly
+4. Fix typos
+
+Changes in v4:
+1. Fix PCIe power up/down flow
+2. Use "mac" and "phy" for reset names
+3. Add clock names
+4. Fix the variables type
+
+Changes in v3:
+1. Remove standard property in binding document
+2. Return error number when get_optional* API throws an error
+3. Use the bulk clk APIs
+
+Changes in v2:
+1. Fix the typo of dt-bindings patch
+2. Remove the unnecessary properties in binding document
+3. dispos the irq mappings of msi top domain when irq teardown
+
+Jianjun Wang (7):
+  dt-bindings: PCI: mediatek-gen3: Add YAML schema
+  PCI: Export pci_pio_to_address() for module use
+  PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192
+  PCI: mediatek-gen3: Add INTx support
+  PCI: mediatek-gen3: Add MSI support
+  PCI: mediatek-gen3: Add system PM support
+  MAINTAINERS: Add Jianjun Wang as MediaTek PCI co-maintainer
+
+ .../bindings/pci/mediatek-pcie-gen3.yaml      |  181 +++
+ MAINTAINERS                                   |    1 +
+ drivers/pci/controller/Kconfig                |   13 +
+ drivers/pci/controller/Makefile               |    1 +
+ drivers/pci/controller/pcie-mediatek-gen3.c   | 1025 +++++++++++++++++
+ drivers/pci/pci.c                             |    1 +
+ 6 files changed, 1222 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+ create mode 100644 drivers/pci/controller/pcie-mediatek-gen3.c
+
+-- 
+2.25.1
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
