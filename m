@@ -2,19 +2,19 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_NONE autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B2356C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40B8EC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:42 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A9706101E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:08:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A9706101E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arndb.de
+	by mail.kernel.org (Postfix) with ESMTPS id 99CB56101E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:11:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99CB56101E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -22,41 +22,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tSc41Tk/uz0Vndr0hVkGFUq7V18s4zyoG6Nqgbw1Y0s=; b=VhKc2CO2A4qsmEQTJngx90seg
-	8xwQ7pa6dwFGEyFEgpAmZ03PcNp8yXJ3nHdl+7TSCCRYsLOsfQuzG+j5VyQD7+DGDtGm3OdpOpERe
-	TDcKCpHk8Sc+EZZkVTQu4XTv5JeNTf6keRkgdKmmHyLU4+q+qEcLmqNF44StjO2n0cXzYmCaBZ1Zl
-	3hMTQ2rYsJpX8mKe3BRgRaj8H13iMaq8nJXWl4wRNZcgLZX/MqemCMG+cDOaOem+1JwLA0cyyD9kw
-	LzHJNeBRsvQ3Cdn/M9mBff7PP9EEAcMgCicxHaiAG94nBCxcqr7/i3hiId4bLYnG0AEXwbmDfWS/f
-	bb/FlxK7w==;
+	 bh=tSc41Tk/uz0Vndr0hVkGFUq7V18s4zyoG6Nqgbw1Y0s=; b=QUhnpC9yAg6dTRbKRo4qj1NqP
+	waZpyBz6mWpc6rn0KTJEl4Ni6F6jfFM9zq3X8DcaOCV005W6GiXhpBOX6CF8XlOVuJz0CdkXNdOUW
+	P+D34IOk/wp2WRR+IxLBdEwgpuhzBVFFIL2kMvXdNjoA7a5/qjVs4G44tVYsryNZpbvPiopjukIWV
+	qzlmBwM3ORF6unybbe2R58MgNIrnCDncbwWiRsE2XNSb0CtFWpbMpOezF8ooUXUhE2f9pP3zxr/+2
+	K6Qvux8gnwpTAKzaMJKXXsEkVqAk5WNOu6sKdh3EBpCZ/rPWJPwIjiqSiUxvczMXuv1ZA2CQWj1lg
+	WDhCq7Pfw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYmMV-00BfkH-EM; Tue, 20 Apr 2021 09:08:03 +0000
+	id 1lYmPm-00BgDb-6C; Tue, 20 Apr 2021 09:11:26 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYmMP-00Bfj8-Lr; Tue, 20 Apr 2021 09:07:57 +0000
+ id 1lYmPY-00Bg9O-Ux; Tue, 20 Apr 2021 09:11:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
  :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=c2AVdai4BL/owZZ4etPrGHyWpLyjk0ZB86A88EL3k+c=; b=P4QZnUljTQykXJIMVzH6RqZxLB
- dRjPDkZfVMolZpzNn34uFJdazYngH2q06jwzjkc/5X1lW34+1w+LA8c8mj/I1LCx/vLaIxEEi9E1k
- 7yzf6drkmNNqiHEaTc7wQVfOqeJN/QWEzo3JkZe8i9fu++RFJFXmKN6ZePd6RxCbN4D/bk6qNdxxO
- oZ8NigGL2NuLgMaI++NRrWh3abIbz2jxvBmQpVXo/C6s7kBkASTL4B8oTQn1j3W5105fnae2d49uS
- 40vY8mK7BJeRG1x75JRZjBZR91nUIThST0dsOpGWn6eH7DyIqx6THK+okBNlubz41N3p0Z0UEgDwG
- /SVHWalg==;
-Received: from mout.kundenserver.de ([217.72.192.75])
+ bh=c2AVdai4BL/owZZ4etPrGHyWpLyjk0ZB86A88EL3k+c=; b=WAOSuEyu+/fWFqx8YboM0hbRFc
+ 8PgK2xXIV2rgIJu1ot7BqrWZYOWFRsboQhUQSCfuBcJQOOBO8aryFjwl4wiq/EmzCRYTDuboYvzje
+ ltDAWew8P95LdrEKl2UtLHyBHvK0wqVoYqqUpLhAsir4RjLw7Mjrj4gTa1CCwvMIdZCmMaXdH0StX
+ 7H9ZAriwtdxyCUWrGLCeBkLWfj2M2/7w34OxAc85wKNrZ0CcU6EbrgJgitVfmmNAmWRBTmKOhrycb
+ lYE6uJr/JuDioUkQP/ufItef44GDNJp44K99vxd8aB/6z9UiGAR6TPQNTvngvP69FZRdKj5am1urs
+ j7LY8cxQ==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYmMJ-00BxJi-QX; Tue, 20 Apr 2021 09:07:56 +0000
-Received: from mail-ed1-f42.google.com ([209.85.208.42]) by
- mrelayeu.kundenserver.de (mreue107 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1M2wbS-1lVTV51RqG-003KPP; Tue, 20 Apr 2021 11:07:43 +0200
-Received: by mail-ed1-f42.google.com with SMTP id j7so7214310eds.8;
- Tue, 20 Apr 2021 02:07:43 -0700 (PDT)
-X-Gm-Message-State: AOAM532rE1Rx9swKpidi4hArrm3V2W/OycGVgDBUdV3tpkgQ/J45EnuP
- fyEq1d9KH6KsH1Pgzv2inucBSznv01p26u8RgDk=
-X-Google-Smtp-Source: ABdhPJwSiNwlZ27l6d0oeVOJMjBIBpaEf6fV+Kr02yQOCGa6DdHdokE+eIs4+TiyDD+ybgS8jO4hGYikHl0QAhmuRDs=
-X-Received: by 2002:adf:db4f:: with SMTP id f15mr19571156wrj.99.1618909652608; 
- Tue, 20 Apr 2021 02:07:32 -0700 (PDT)
+ id 1lYmPW-00BxY3-BK; Tue, 20 Apr 2021 09:11:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E32E613B4;
+ Tue, 20 Apr 2021 09:11:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1618909869;
+ bh=DeGQ9vUDRCVhA8t5Ph+0N53DtPOXi7alQM8lRrwQwKo=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=p0qaMXJByFvnmnNzygjG+wVqrEysTLgHvDiIGpK52K9aQUKK6M3BGjSLyePqEb3Qf
+ oR3oMBtOgJOCh7RcSvkCcBVicfY9CiiXQqSuj3vuq6dpjOGhCmYNVuVfPR+/WjSa8y
+ OjKCkD+Jeiy0rF7z8u1J4LpfnlrCGE/G9N0ySag4aO+wDqsFogGqXT9eHwLSIlfmwd
+ swm8rATrWZ8IwfA14qwCGkgWO/i7lHh6bqTFbABgi05Ale1G4PAajc6jL8bk5XXXNG
+ JygWwRlWhDmLm13ceBOy+pmk9GoTtnNMy2CUIErVU0FqckDVw6S1F+GjMgloAzJarS
+ aElCDGbhH7RTw==
+Received: by mail-ej1-f44.google.com with SMTP id r20so7387506ejo.11;
+ Tue, 20 Apr 2021 02:11:09 -0700 (PDT)
+X-Gm-Message-State: AOAM531yMrBQ8qcA1MLIGkYl6fTm9cnPDfAQWMTgxcrhpcxTQS9aCq1W
+ 1QPSY6Me0dY19xmW/vEsQJyu70xlCI9qmrzrgcU=
+X-Google-Smtp-Source: ABdhPJyHjUN6C0/sUkUlP+4nedtBBPWCDMG4VnGKqPhVa1uJB5nLQGViYOHp7TNdMb76BpIs8GkQPbFl+yNnVewK4NU=
+X-Received: by 2002:a5d:6dc4:: with SMTP id d4mr20219548wrz.105.1618909856639; 
+ Tue, 20 Apr 2021 02:10:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
  <20210419042722.27554-4-alice.guo@oss.nxp.com>
@@ -66,10 +75,10 @@ References: <20210419042722.27554-1-alice.guo@oss.nxp.com>
  <CAK8P3a1Mu2F0irDDCL-50HiHth29iYFL5b7WHZ=UX6W7zzoxAg@mail.gmail.com>
  <YH4VdPNO9cdzc5MD@atmark-techno.com>
 In-Reply-To: <YH4VdPNO9cdzc5MD@atmark-techno.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Tue, 20 Apr 2021 11:07:16 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a1GjeHyMCworQYVtp5U0uu2B9VBHmf9y0hGn-o8aKSJZw@mail.gmail.com>
-Message-ID: <CAK8P3a1GjeHyMCworQYVtp5U0uu2B9VBHmf9y0hGn-o8aKSJZw@mail.gmail.com>
+From: Arnd Bergmann <arnd@kernel.org>
+Date: Tue, 20 Apr 2021 11:10:40 +0200
+X-Gmail-Original-Message-ID: <CAK8P3a1tPQm1Qj2KZu2jOM=TUP0dJgP4G9eKkWfv-PZEAWEhyA@mail.gmail.com>
+Message-ID: <CAK8P3a1tPQm1Qj2KZu2jOM=TUP0dJgP4G9eKkWfv-PZEAWEhyA@mail.gmail.com>
 Subject: Re: [RFC v1 PATCH 3/3] driver: update all the code that use
  soc_device_match
 To: Dominique MARTINET <dominique.martinet@atmark-techno.com>
@@ -114,24 +123,9 @@ Cc: Geert Uytterhoeven <geert@linux-m68k.org>,
  "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
  Linux PM list <linux-pm@vger.kernel.org>, USB list <linux-usb@vger.kernel.org>,
  LINUXWATCHDOG <linux-watchdog@vger.kernel.org>
-X-Provags-ID: V03:K1:tAJdx7VczOYWC0DXQ1M9Q6KHIEo3nDPDigKI29IOaYi8K7DG46U
- Ezx1c1iQDVUybkBHgdu8ephr6qs4jWonH7Dv5yEA4SZ6ui9XRct1IC94omUQAa3LRWz2diS
- tGh7P23biWZo73umacfPi1S1OXgxmXXO2MrSZO6lKCeFddAMZU7n986+s6OF5y1/ZtOiJNH
- 8VxrWLAQ3eW9PXYgsRNsQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:jlUKshQuJnM=:TkZU3lP+sNZOQme8rUpryi
- XMG/yMzbmAWqNPRdqMBxduci/y6EI0Nc4X0eRwPJcqNWTpxIPidSOy/TywDUViQ3Su6517DpJ
- 1jxq9p52Tgu5tsRvjziLFg9t7HZWpQAr8scs2BvzUA9oeMX36TFllYxj53EPmG/9FN7W2NnlH
- pEXEWd+7D+1zRgVnBU3Qmp7Fs7DgjDaw6RlJ8LzC/pHwj75NzAZXgkq2tjV0TfSA0aVv04rlY
- qQ1EfONymOkFOzHB6tBZVMmUAmcD6nw7BHNjx7/NQnmuds3rQNf29pnYN/bvzknEVC7m4XRwP
- tHVhTCXhdxPuSHnpx4cc1CjItRFzAN7hvzhXQRozySjh88M7rQMAI0KNhcGkZ5HzIpsPvT5UR
- 5H5BnPPqqEvKCMLWLP9bnCGM1GKJhQ4mP3O9dVKlwEPXQNbxcq4MvtMKWzXUJZsrm29WASGcs
- qHICDLCW3jeO2vHv297bmz/stPCOo36xn9c1e9rug8uF33k8W4ouGVS/PA8OmgW9e63ENPR6f
- 4XXcqkgNh+vNZOcpxKt1gvPhR6tkHlPGOzkLyaN9A9pu54SqL2aRvFvZJJbZh2exc9U2uKtn2
- b7zW2kvhapX7bVjT8lmyzfnaP0kD/tPDbTovEe0Uw6+FzCACZ2wR6sxscKTOLN/xdIMrs76P3
- G96Y=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_020752_164823_82CF35AA 
-X-CRM114-Status: GOOD (  29.16  )
+X-CRM114-CacheID: sfid-20210420_021110_467821_949D268B 
+X-CRM114-Status: GOOD (  27.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
