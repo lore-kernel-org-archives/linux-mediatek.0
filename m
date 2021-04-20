@@ -2,113 +2,99 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDE2AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94C5FC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:06:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67D1460FE3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:40:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67D1460FE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id F1853611F0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 09:06:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1853611F0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
-	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u+UJ3UhFs7nK6eiyjtkk/VuQh0zpT5o7XJw7meBRf88=; b=omHBfpriLsj351cgYcohHiYXE
-	xL6Sx7psCcG/X1jTox9eDBAip1J8B5YKtrLcT359bgMEkGaTs4lulPT5ADCL5533Uj6N/9MvO4lyj
-	9lMxfD7o2vk1BQCRctC+GVP76AyZBodJrcKqti/5QEq5XgsCKiUUq3Hwj+iBsz42PG7tfN52w6Mn9
-	Vj4YSZ9SxwJXS0hJOSxPTuKk5wVYKScNOZM2Wr3kbxfSlMSPa8WePD0xOw4z6RrDuSr5nsyeqQLPI
-	uYNgMhzBPNy39GBZ3eC2MvQkhhx+yXTNgB3pIGnpdyh9z6CwESVrgXLmkzD4GM+2Id5JQjtDidc8u
-	zDPahusmw==;
+	 bh=9nl77uASGWf8OvZUZlS1Hi4IU7ep4S2E5mQPGj4zLr0=; b=nlOWQwHYEuScm8aLFnaj58dbt
+	5GDbdPU9uv5NyiTVSmK142Hh6ZYMG4nMOcVurxVuwoYOgHIR3Mi1ND3r9rOCxYFHTiny4LVHv00D8
+	0dNYFuX8oGOQ81Zen+At4kXhapEUeXPZbk42mC+kvdFlHQCxFz7XeHtKOuvLXxEg2bDvmJkJRDSxu
+	88hMuXtuCYjzG+fy6fT/3J5SFj5v5al14dM6/iVZVZvoXC+i/zq/1500VoZICCGSIyPxnZ1ce+o1M
+	0WaX8nQYwEjaNpIYiBzmBvYL2mxrPoh5X6J9NOAsPdd1+fcGAt2hffC+ZWx8NmHV28ETh6i57dQoi
+	CMiJIfGug==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYlv9-00BbnY-AA; Tue, 20 Apr 2021 08:39:47 +0000
+	id 1lYmKP-00Bfag-AJ; Tue, 20 Apr 2021 09:05:53 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYluw-00BblM-Ku; Tue, 20 Apr 2021 08:39:34 +0000
+ id 1lYmKC-00BfZz-Vc
+ for linux-mediatek@desiato.infradead.org; Tue, 20 Apr 2021 09:05:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:References:
- In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=fDcfQHZJ6E0CFUL2ptCgtMuSZn0zblt2TMJnrOkMnTc=; b=ekVNxtzWJ6YlWmEX00KzNWup7o
- mystH3rgeV+MyJUWAkSLk8HWI0gBcFNafuyGzfU1aG+UnXjSFEWWda+SDpTFae1lc6czXTLa7oeiB
- y27r3ONqe+3R9wLC0yUqRsV2QEj4pOP2lBnvFO4ldXGdRLFjtTbEmEQ1+lN6mp2G52fONLM0IV9yo
- +InNRetIKYbz4/7CNwNhO19kt80AYSTqBN6TNur1XoOaHwERzCS27gcfH4D/uThXdJbyKQeA6YH4B
- KJdMgZnlJkwigiYNI2xn5VEJLiX5VVsTOKCWHNd2r5bgWKmdwBUcmHWwl5E0q96yLjwIiReAOd1kM
- xLDg916g==;
-Received: from mail.kernel.org ([198.145.29.99])
+ bh=Sky0InoRGfz08ZIPfmMoicP8h0LTiiMAffpNGDgYJbs=; b=iA3Sdoj4z4QeA1sOf7wSQHKLNM
+ /xx/hc927wbyCynNontIfFX3bmSJU8cVCLOMpSDDbph7YIvpUdenUFiRZC8Ke0mnw3u2oYV/lKVEq
+ 6gJcoZ9siEKMrL4M8WNh4HG0EiHn71pkCPHssAosoOWOKd9uyte9SZ7/zRcxJEPUgzxR8l9lMCXnm
+ xfukZFlMKuJFqurWlejP9/S219M2N8zstWBgaPdKyckgqMvgoGTAr+GXRJV1n7E+CogHhSDbcFbry
+ kKMu6eU02bkBwoC3zmwSU97qLanFEl+GDNpdOxMDqhXeKTczJJ0W3/Dj4TE3Ey2Kt0JhhERc0LJLA
+ a3PcksAg==;
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYlut-00BvnZ-T0; Tue, 20 Apr 2021 08:39:33 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BEBFB60FE3;
- Tue, 20 Apr 2021 08:39:30 +0000 (UTC)
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
- (envelope-from <maz@kernel.org>)
- id 1lYluq-008S7B-EZ; Tue, 20 Apr 2021 09:39:28 +0100
-Date: Tue, 20 Apr 2021 09:39:25 +0100
-Message-ID: <87fszlqria.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Jon Hunter <jonathanh@nvidia.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
- <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring
- <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
- <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, "Stephen\
- Hemminger" <sthemmin@microsoft.com>,
- Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut
- <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@xilinx.com>,
- Paul Walmsley <paul.walmsley@sifive.com>, Bharat Kumar Gogada
- <bharatku@xilinx.com>, <linux-pci@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-hyperv@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
- <kernel-team@android.com>
-Subject: Re: [PATCH v3 01/14] PCI: tegra: Convert to MSI domains
-In-Reply-To: <638a9996-c762-fa11-b740-6a41d4a83bcc@nvidia.com>
-References: <20210330151145.997953-1-maz@kernel.org>
- <20210330151145.997953-2-maz@kernel.org>
- <316e8be4-fa70-75e8-8483-ae38036306e0@nvidia.com>
- <638a9996-c762-fa11-b740-6a41d4a83bcc@nvidia.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: jonathanh@nvidia.com, lorenzo.pieralisi@arm.com,
- bhelgaas@google.com, frank-w@public-files.de, treding@nvidia.com,
- tglx@linutronix.de, robh@kernel.org, will@kernel.org, kys@microsoft.com,
- haiyangz@microsoft.com, sthemmin@microsoft.com, mikelley@microsoft.com,
- wei.liu@kernel.org, thierry.reding@gmail.com, ryder.lee@mediatek.com,
- marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
- michal.simek@xilinx.com, paul.walmsley@sifive.com, bharatku@xilinx.com,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, kernel-team@android.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1lYmK7-00BxEA-25
+ for linux-mediatek@lists.infradead.org; Tue, 20 Apr 2021 09:05:39 +0000
+Received: by mail-io1-xd2b.google.com with SMTP id v123so30882732ioe.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 20 Apr 2021 02:05:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Sky0InoRGfz08ZIPfmMoicP8h0LTiiMAffpNGDgYJbs=;
+ b=nXMxTLh0sKp6GpxETText2EprCJ00h2r68bNjyo/IF5LUKD5vBUWvHwARRPAn+uyrJ
+ kQjDZ0KCSUQEIki+oYck1Elb/FO48FaV2LtgbHDizELXrrlpNqUAtUVQ5tTUE9mHKyB5
+ ZbQXnv+ZIdsOqZz8tjBc7JlTrPQwcxVciypAE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Sky0InoRGfz08ZIPfmMoicP8h0LTiiMAffpNGDgYJbs=;
+ b=r1b9W7qPYre5r2TZmvBaWD97xGaMJg2iJCuJTYPRo+SCnqWYqDzWx90GZA/JmyjjKo
+ qgsqvui5yx6cppTF5Qlvtgdf/JKxvXJMsz7C5v81w6ba4yVem/JuCgq1NsiSeVyuOTOA
+ s99tmWEANtkgVaKnFEgJVCkI9g2ZPsS9Z4lh6YdED5LRUfI6FtZ1XSdAtqKsjeWhvjPi
+ YCS3vuZatFo/8b5kYz6gL8frrBVSJ53b5Y9+zIUqSUpiEIZCyTnduN9rmX39ks1J9Z3O
+ FYpOXztD5h4W2HaFhCWDBH1/SDS5MHPTJz9CEZNRBsQwKCOm4xFPDjSUSwZNu9/auMal
+ bDoQ==
+X-Gm-Message-State: AOAM530qxSxn+dDx6Du5+VxjfxhUYg7yJ6fXbwELux/YDltYynY5DfTG
+ UBXSr1c0aUpqKU1Mn2pWYVLF7E+du3ZUl2jOVjL9Fg==
+X-Google-Smtp-Source: ABdhPJzFCTPxONwGXoOnArB99NKE78wLC243d0eUdaQKA1eYD2nbVDr80hIVXEpRVLb15Vj/6o9+Igu1fSkXz87MjDc=
+X-Received: by 2002:a5d:9682:: with SMTP id m2mr18657371ion.20.1618909533198; 
+ Tue, 20 Apr 2021 02:05:33 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210409045314.3420733-1-hsinyi@chromium.org>
+In-Reply-To: <20210409045314.3420733-1-hsinyi@chromium.org>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Tue, 20 Apr 2021 17:05:06 +0800
+Message-ID: <CAJMQK-gFk8WV0W2TTP7=OTsBqgWmy_eKSd42Xa5dJzvUFDTAXQ@mail.gmail.com>
+Subject: Re: [PATCH 1/2] drm/mediatek: set panel orientation before
+ drm_dev_register().
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Devicetree List <devicetree@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_013932_039144_210B101A 
-X-CRM114-Status: GOOD (  36.53  )
+X-CRM114-CacheID: sfid-20210420_020535_144251_824AD1F0 
+X-CRM114-Status: GOOD (  19.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,135 +111,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jon,
+On Fri, Apr 9, 2021 at 12:53 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> drm_dev_register() sets connector->registration_state to
+> DRM_CONNECTOR_REGISTERED and dev->registered to true. If
+> drm_connector_set_panel_orientation() is first called after
+> drm_dev_register(), it will fail several checks and results in following
+> warning. So set panel orientation in dsi before drm_dev_register() is
+> called.
+>
+> [    4.480976] ------------[ cut here ]------------
+> [    4.485603] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:45 __drm_mode_object_add+0xb4/0xbc
+> <snip>
+> [    4.609772] Call trace:
+> [    4.612208]  __drm_mode_object_add+0xb4/0xbc
+> [    4.616466]  drm_mode_object_add+0x20/0x2c
+> [    4.620552]  drm_property_create+0xdc/0x174
+> [    4.624723]  drm_property_create_enum+0x34/0x98
+> [    4.629241]  drm_connector_set_panel_orientation+0x64/0xa0
+> [    4.634716]  boe_panel_get_modes+0x88/0xd8
+> [    4.638802]  drm_panel_get_modes+0x2c/0x48
+> [    4.642887]  panel_bridge_get_modes+0x1c/0x28
+> [    4.647233]  drm_bridge_connector_get_modes+0xa0/0xd4
+> [    4.652273]  drm_helper_probe_single_connector_modes+0x218/0x700
+> [    4.658266]  drm_mode_getconnector+0x1b4/0x45c
+> [    4.662699]  drm_ioctl_kernel+0xac/0x128
+> [    4.666611]  drm_ioctl+0x268/0x410
+> [    4.670002]  drm_compat_ioctl+0xdc/0xf0
+> [    4.673829]  __arm64_compat_sys_ioctl+0xc8/0x100
+> [    4.678436]  el0_svc_common+0xf4/0x1c0
+> [    4.682174]  do_el0_svc_compat+0x28/0x3c
+> [    4.686088]  el0_svc_compat+0x10/0x1c
+> [    4.689738]  el0_sync_compat_handler+0xa8/0xcc
+> [    4.694171]  el0_sync_compat+0x178/0x180
+> [    4.698082] ---[ end trace b4f2db9d9c88610b ]---
+> [    4.702721] ------------[ cut here ]------------
+> [    4.707329] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:243 drm_object_attach_property+0x48/0xb8
+> <snip>
+> [    4.833830] Call trace:
+> [    4.836266]  drm_object_attach_property+0x48/0xb8
+> [    4.840958]  drm_connector_set_panel_orientation+0x84/0xa0
+> [    4.846432]  boe_panel_get_modes+0x88/0xd8
+> [    4.850516]  drm_panel_get_modes+0x2c/0x48
+> [    4.854600]  panel_bridge_get_modes+0x1c/0x28
+> [    4.858946]  drm_bridge_connector_get_modes+0xa0/0xd4
+> [    4.863984]  drm_helper_probe_single_connector_modes+0x218/0x700
+> [    4.869978]  drm_mode_getconnector+0x1b4/0x45c
+> [    4.874410]  drm_ioctl_kernel+0xac/0x128
+> [    4.878320]  drm_ioctl+0x268/0x410
+> [    4.881711]  drm_compat_ioctl+0xdc/0xf0
+> [    4.885536]  __arm64_compat_sys_ioctl+0xc8/0x100
+> [    4.890142]  el0_svc_common+0xf4/0x1c0
+> [    4.893879]  do_el0_svc_compat+0x28/0x3c
+> [    4.897791]  el0_svc_compat+0x10/0x1c
+> [    4.901441]  el0_sync_compat_handler+0xa8/0xcc
+> [    4.905873]  el0_sync_compat+0x178/0x180
+> [    4.909783] ---[ end trace b4f2db9d9c88610c ]---
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-On Mon, 19 Apr 2021 21:02:10 +0100,
-Jon Hunter <jonathanh@nvidia.com> wrote:
-> 
-> 
-> On 19/04/2021 20:19, Jon Hunter wrote:
-> > Hi Marc,
-> > 
-> > On 30/03/2021 16:11, Marc Zyngier wrote:
-> >> In anticipation of the removal of the msi_controller structure, convert
-> >> the Tegra host controller driver to MSI domains.
-> >>
-> >> We end-up with the usual two domain structure, the top one being a
-> >> generic PCI/MSI domain, the bottom one being Tegra-specific and handling
-> >> the actual HW interrupt allocation.
-> >>
-> >> While at it, convert the normal interrupt handler to a chained handler,
-> >> handle the controller's MSI IRQ edge triggered, support multiple MSIs
-> >> per device and use the AFI_MSI_EN_VEC* registers to provide MSI masking.
-> >>
-> >> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
-> >> [treding@nvidia.com: fix, clean up and address TODOs from Marc's draft]
-> >> Signed-off-by: Thierry Reding <treding@nvidia.com>
-> >> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> > 
-> > 
-> > This change is breaking a suspend test that we are running on Tegra124
-> > Jetson-TK1. The Tegra124 Jetson TK1 uses a PCI based ethernet device ...
-> > 
-> > $ lspci
-> > 00:02.0 PCI bridge: NVIDIA Corporation TegraK1 PCIe x1 Bridge (rev a1)
-> > 01:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
-> > RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 0c)
-> > 
-> > After resuming from suspend, networking is no longer working. The reason
-> > why this breaks our suspend test is because that setup is using NFS for
-> > the rootfs. I am looking into it, but if anyone has any thoughts please
-> > let me know.
-> 
-> 
-> So the following does appear to fix it ...
-> 
-> diff --git a/drivers/pci/controller/pci-tegra.c
-> b/drivers/pci/controller/pci-tegra.c
-> index eaba7b2fab4a..558f02e0693d 100644
-> --- a/drivers/pci/controller/pci-tegra.c
-> +++ b/drivers/pci/controller/pci-tegra.c
-> @@ -1802,13 +1802,17 @@ static void tegra_pcie_enable_msi(struct
-> tegra_pcie *pcie)
->  {
->         const struct tegra_pcie_soc *soc = pcie->soc;
->         struct tegra_msi *msi = &pcie->msi;
-> -       u32 reg;
-> +       u32 i, reg;
-> 
->         afi_writel(pcie, msi->phys >> soc->msi_base_shift,
-> AFI_MSI_FPCI_BAR_ST);
->         afi_writel(pcie, msi->phys, AFI_MSI_AXI_BAR_ST);
->         /* this register is in 4K increments */
->         afi_writel(pcie, 1, AFI_MSI_BAR_SZ);
-> 
-> +       /* enable all MSI vectors */
-> +       for (i = 0; i < 8; i++)
-> +               afi_writel(pcie, 0xffffffff, AFI_MSI_EN_VEC(i));
-> +
->         /* and unmask the MSI interrupt */
->         reg = afi_readl(pcie, AFI_INTR_MASK);
->         reg |= AFI_INTR_MASK_MSI_MASK;
-> @@ -1837,13 +1841,17 @@ static void tegra_pcie_msi_teardown(struct
-> tegra_pcie *pcie)
-> 
->  static int tegra_pcie_disable_msi(struct tegra_pcie *pcie)
->  {
-> -       u32 value;
-> +       u32 i, value;
-> 
->         /* mask the MSI interrupt */
->         value = afi_readl(pcie, AFI_INTR_MASK);
->         value &= ~AFI_INTR_MASK_MSI_MASK;
->         afi_writel(pcie, value, AFI_INTR_MASK);
-> 
-> +       /* disable all MSI vectors */
-> +       for (i = 0; i < 8; i++)
-> +               afi_writel(pcie, 0, AFI_MSI_EN_VEC(i));
+ping on the thread, thanks.
+
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> index ae403c67cbd9..45a702ee09f3 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -205,6 +205,7 @@ struct mtk_dsi {
+>         u32 irq_data;
+>         wait_queue_head_t irq_wait_queue;
+>         const struct mtk_dsi_driver_data *driver_data;
+> +       enum drm_panel_orientation orientation;
+>  };
+>
+>  static inline struct mtk_dsi *bridge_to_dsi(struct drm_bridge *b)
+> @@ -966,6 +967,8 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+>         }
+>         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
+>
+> +       drm_connector_set_panel_orientation(dsi->connector, dsi->orientation);
 > +
 >         return 0;
->  }
-> 
-> 
-> Any reason why that code was removed?
-
-Two reasons spring to mind: it obviously wasn't tested enough, and
-part of the above code isn't quite right. You can't just blindly
-enable all MSIs, irrespective of what has been actually enabled.
-
-The following should hopefully cure it (compile tested only). Please
-let me know.
-
-	M.
-
-diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
-index eaba7b2fab4a..507b23d43ad1 100644
---- a/drivers/pci/controller/pci-tegra.c
-+++ b/drivers/pci/controller/pci-tegra.c
-@@ -1802,13 +1802,19 @@ static void tegra_pcie_enable_msi(struct tegra_pcie *pcie)
- {
- 	const struct tegra_pcie_soc *soc = pcie->soc;
- 	struct tegra_msi *msi = &pcie->msi;
--	u32 reg;
-+	u32 reg, msi_state[INT_PCI_MSI_NR / 32];
-+	int i;
- 
- 	afi_writel(pcie, msi->phys >> soc->msi_base_shift, AFI_MSI_FPCI_BAR_ST);
- 	afi_writel(pcie, msi->phys, AFI_MSI_AXI_BAR_ST);
- 	/* this register is in 4K increments */
- 	afi_writel(pcie, 1, AFI_MSI_BAR_SZ);
- 
-+	/* Restore the MSI allocation state */
-+	bitmap_to_arr32(msi_state, msi->used, INT_PCI_MSI_NR);
-+	for (i = 0; i < ARRAY_SIZE(msi_state); i++)
-+		afi_writel(pcie, msi_state[i], AFI_MSI_EN_VEC(i));
-+
- 	/* and unmask the MSI interrupt */
- 	reg = afi_readl(pcie, AFI_INTR_MASK);
- 	reg |= AFI_INTR_MASK_MSI_MASK;
-
--- 
-Without deviation from the norm, progress is not possible.
+>
+>  err_cleanup_encoder:
+> @@ -1029,6 +1032,12 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+>                         ret = PTR_ERR(dsi->next_bridge);
+>                         goto err_unregister_host;
+>                 }
+> +
+> +               ret = of_drm_get_panel_orientation(panel->dev->of_node, &dsi->orientation);
+> +               if (ret) {
+> +                       dev_err(dev, "failed to get panel orientation %d\n", ret);
+> +                       return ret;
+> +               }
+>         }
+>
+>         dsi->driver_data = of_device_get_match_data(dev);
+> --
+> 2.31.1.295.g9ea45b61b8-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
