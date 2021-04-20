@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5EC9C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:27:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BB34C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:27:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 344846044F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:27:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 344846044F
+	by mail.kernel.org (Postfix) with ESMTPS id CD4FB60E08
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 13:27:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD4FB60E08
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,51 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=H7G7u3STM2QFhs4sJLHKrcmeNiF3URB8/ci4iU1vBxo=; b=aqZ6cmzKegnlaerOR2OY5U5Hz
-	0okdBpAMHbJCrxShvvD6TIE/6Q/45qIZLFKYytvzxPe1m8TG91uH6Z08TX9CvNEPYO9xwawFoZq3r
-	pfFf/tNOM8Utjlp/q38nIMCVAfX3VvFIgyEII3ppvZYrir2YfI+bZs+/RXudftiehdzKWz3elmjfs
-	gFhLP8r9ZyGHjizu7USjmIvWrWstgablFztWuKdFSJfE4d2kh+5bzKAAU2GeZ5qOSb8236Jsk2G3j
-	VQXZKuzVFKtl+KkMCdZxPZOlt+jdIFafl14Bc3sicDRkNIowctVWV+QhxcTpQj/3c/uqYLd6wbQMr
-	3j0lRbi+A==;
+	 bh=VX8y5MxJMQVnz4oC8KTac4mCeIynEnvZz+i1lT/HebM=; b=h1ebbhlQTzweyFrm/IK7IxevO
+	/j9kyaF4YibUp0U8ma47nPeKzCgc5Vk/dCdUaQHXSmJ5gbRWj5Bw7I9VzoADqHkLD9T0L7xwqCEAf
+	0vRyAZa+k0S960hKzyUqHxavE8ifMZlQrlWksT1qRF70I7g6WB1YGI7zJ6FiFRayKAW8A5qvPMPO6
+	prtCOqDbTcgX34ps9Gkq5lRExVLeMs1TxVRoikR7y9F+mcq80aRwNfzKo7CHoQF6lMTj/V02VTlHk
+	Rqs4c3uhfqojMQFITY1I8s+fuSjgJ64h153Ief0iOzwL9YqvF15V4N5cB0xIVh2iLV0CGYyJDX3S/
+	tAnMIIAjA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYqPD-00CCxX-EJ; Tue, 20 Apr 2021 13:27:07 +0000
+	id 1lYqPS-00CD0V-CW; Tue, 20 Apr 2021 13:27:22 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYqOn-00CCty-Eo; Tue, 20 Apr 2021 13:26:41 +0000
+ id 1lYqOr-00CCud-Qu; Tue, 20 Apr 2021 13:26:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=F/Ns6WIK2Dy0aPedbYy3llJMXtmG+SMNazBAvgRMihY=; b=OXUDoqg5EOiai3Y3quoKLQvqXv
- TtqZE9xHXvSYQvNV/ltbyIo9HKN2OR7QwuogH2nJocESGd+obmH82tkbyUzrOV2+Am2v2Ic6+yu4q
- dcsgTnAFzaKCKFUbTMjrCEcmXahDzyOP427T1sv+uZQYv4R9P7pyzEs3F5xUzjKgbnN+SsePmXBqa
- YjK0h4c57RmvywCx3daLLREAaiB2+AuSGA6s3XZS92ZJSbb523kbcSBMzE1rV+9v3THX0PIn9OpB2
- U3/DPcQGV0+hVudFDWenl1xUI1BEk/cUOk32/nDuYS4LEWSF9TQkFd5kf4ldedbLqwQ8uoyH+Z1dr
- Gfk2Kj3Q==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ bh=x4PC10VWjynceWQKGlyruq1xHVfMHe0q+ks95eUDcMM=; b=WPtncAsAui950PHC9F06AqwxOD
+ utMklSuvbdW+T9typhnnfrgiLRTAUqJLx+US/OclF6CkiV+45nM4SpImU9iKvBk5KkXNAaYYiZPKB
+ T7sRUccOTbALJGZVbgqaNQ+FSuciEalHYX733U8snyhvYXr6z8sI/BT1aBY0zQsh8T44YNDABe2TK
+ S6TDufXl3Tp8u0B+kwiek62h1XpbH/3d4wVtrJ7wY4kM+3yEpY3iEiDQ/oX4mwBi6fcSD67DNnahc
+ qAonE/jaxHlET2VnMGb0hjdR+J/albgblpWUH5vQo1vxFdXH0GW/e1i31aPlcmCa3rC0ubJdCrDx+
+ ShhvcZaw==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYqOi-00C8zX-9e; Tue, 20 Apr 2021 13:26:40 +0000
-X-UUID: 54f85fcdcba2401c8c420f812a8d2751-20210420
+ id 1lYqOp-00C91k-C0; Tue, 20 Apr 2021 13:26:44 +0000
+X-UUID: 32624907e7b94ba9af384ad8e6801bb4-20210420
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=F/Ns6WIK2Dy0aPedbYy3llJMXtmG+SMNazBAvgRMihY=; 
- b=o0UFIGtF7B5l+zpZ/eonUMjp4IyVrBz4SJ+o6C1z6gZde/pSxgrVv04K313rlg+ePenX7Dlg1KHOp9jf8PVjKNBIJJJ8KWRe84pjKGf9dWuDqGTJ++lgzPRMwQmg56W91edZA3uBAjqgKD0bLYzKZwpxs8qbs4Zbps07DkEuBCk=;
-X-UUID: 54f85fcdcba2401c8c420f812a8d2751-20210420
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=x4PC10VWjynceWQKGlyruq1xHVfMHe0q+ks95eUDcMM=; 
+ b=h4Amvf4zV4EtMkX2uOL4XqdQaDatxwvRwb5ngk9VPSOOCnHO5ReevrLdvhAn5RpAgTGbB5wpolNxmbFt+WEr/9H2fsGIk2bu9IoBdpwuMGd208bbXNW7Etcr83p6wkRXEVwqERMWhDQH5gSKCjU6igqkGVGEemsietuXaU9M0dQ=;
+X-UUID: 32624907e7b94ba9af384ad8e6801bb4-20210420
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1946939592; Tue, 20 Apr 2021 06:26:32 -0700
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Apr 2021 06:26:30 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 20 Apr 2021 21:26:21 +0800
+ with ESMTP id 607982649; Tue, 20 Apr 2021 06:26:39 -0700
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Apr 2021 06:26:38 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 20 Apr 2021 21:26:20 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 20 Apr 2021 21:26:20 +0800
+ 15.0.1497.2 via Frontend Transport; Tue, 20 Apr 2021 21:26:18 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
@@ -79,18 +79,18 @@ CC: <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <cawa.cheng@mediatek.com>, <bibby.hsieh@mediatek.com>, <ck.hu@mediatek.com>,
  <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
  Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH 4/4] drm/mediatek: add dsi module reset driver
-Date: Tue, 20 Apr 2021 21:26:13 +0800
-Message-ID: <20210420132614.150242-4-jitao.shi@mediatek.com>
+Subject: [PATCH 3/4] drm/mediatek: fine tune the dsi panel's power sequence
+Date: Tue, 20 Apr 2021 21:26:12 +0800
+Message-ID: <20210420132614.150242-3-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210420132614.150242-1-jitao.shi@mediatek.com>
 References: <20210420132614.150242-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CDD0EDBC07D217E939DC5558E2076778B137CA9F9ABA7EDE162356D70FBDF6E02000:8
+X-TM-SNTS-SMTP: DE26EABE28240C1980E352A0A7E176B5B54C70B4B01E7B5C108E2A0C6A821C082000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_062636_361938_0702AEE8 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20210420_062643_433508_A7A48159 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,107 +107,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reset dsi HW to default when power on. Prevent the setting differet
-between bootloader and kernel.
+Add the drm_panel_prepare_power and drm_panel_unprepare_power control.
+Turn on panel power(drm_panel_prepare_power) and control before dsi
+enable. And then dsi enable, send dcs cmd in drm_panel_prepare, last
+turn on backlight.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 36 +++++++++++++++++++++++++++++-
- 1 file changed, 35 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 455fe582c6b5..113438ddd4cc 100644
+index a1ff152ef468..455fe582c6b5 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -7,10 +7,12 @@
- #include <linux/component.h>
- #include <linux/iopoll.h>
- #include <linux/irq.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/of.h>
- #include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
-+#include <linux/regmap.h>
+@@ -615,10 +615,13 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	dsi->data_rate = DIV_ROUND_UP_ULL(dsi->vm.pixelclock * bit_per_pixel,
+ 					  dsi->lanes);
  
- #include <video/mipi_display.h>
- #include <video/videomode.h>
-@@ -143,6 +145,8 @@
- #define DATA_0				(0xff << 16)
- #define DATA_1				(0xff << 24)
- 
-+#define MMSYS_SW_RST_DSI_B BIT(25)
++	if (panel_bridge_prepare_power(dsi->next_bridge))
++		DRM_INFO("can't prepare power the panel\n");
 +
- #define NS_TO_CYCLE(n, c)    ((n) / (c) + (((n) % (c)) ? 1 : 0))
- 
- #define MTK_DSI_HOST_IS_READ(type) \
-@@ -186,7 +190,8 @@ struct mtk_dsi {
- 	struct drm_bridge *next_bridge;
- 	struct drm_connector *connector;
- 	struct phy *phy;
--
-+	struct regmap *mmsys_sw_rst_b;
-+	u32 sw_rst_b;
- 	void __iomem *regs;
- 
- 	struct clk *engine_clk;
-@@ -272,6 +277,16 @@ static void mtk_dsi_disable(struct mtk_dsi *dsi)
- 	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_EN, 0);
- }
- 
-+static void mtk_dsi_reset_all(struct mtk_dsi *dsi)
-+{
-+	regmap_update_bits(dsi->mmsys_sw_rst_b, dsi->sw_rst_b,
-+			   MMSYS_SW_RST_DSI_B, 0);
-+	usleep_range(1000, 1100);
-+
-+	regmap_update_bits(dsi->mmsys_sw_rst_b, dsi->sw_rst_b,
-+			   MMSYS_SW_RST_DSI_B, MMSYS_SW_RST_DSI_B);
-+}
-+
- static void mtk_dsi_reset_engine(struct mtk_dsi *dsi)
- {
- 	mtk_dsi_mask(dsi, DSI_CON_CTRL, DSI_RESET, DSI_RESET);
-@@ -985,6 +1000,8 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
- 
- 	ret = mtk_dsi_encoder_init(drm, dsi);
- 
-+	mtk_dsi_reset_all(dsi);
-+
- 	return ret;
- }
- 
-@@ -1007,6 +1024,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct drm_panel *panel;
- 	struct resource *regs;
-+	struct regmap *regmap;
- 	int irq_num;
- 	int ret;
- 
-@@ -1022,6 +1040,22 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 		return ret;
+ 	ret = clk_set_rate(dsi->hs_clk, dsi->data_rate);
+ 	if (ret < 0) {
+ 		dev_err(dev, "Failed to set data rate: %d\n", ret);
+-		goto err_refcount;
++		goto err_prepare_power;
  	}
  
-+	regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
-+						 "mediatek,syscon-dsi");
-+	ret = of_property_read_u32_index(dev->of_node, "mediatek,syscon-dsi", 1,
-+					 &dsi->sw_rst_b);
+ 	phy_power_on(dsi->phy);
+@@ -661,7 +664,9 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
+ 	clk_disable_unprepare(dsi->engine_clk);
+ err_phy_power_off:
+ 	phy_power_off(dsi->phy);
+-err_refcount:
++err_prepare_power:
++	if (panel_bridge_unprepare_power(dsi->next_bridge))
++		DRM_INFO("Can't unprepare power the panel\n");
+ 	dsi->refcount--;
+ 	return ret;
+ }
+@@ -694,6 +699,9 @@ static void mtk_dsi_poweroff(struct mtk_dsi *dsi)
+ 	clk_disable_unprepare(dsi->digital_clk);
+ 
+ 	phy_power_off(dsi->phy);
 +
-+	if (IS_ERR(regmap))
-+		ret = PTR_ERR(regmap);
-+
-+	if (ret) {
-+		ret = PTR_ERR(regmap);
-+		dev_err(dev, "Failed to get mmsys registers: %d\n", ret);
-+		return ret;
-+	}
-+
-+	dsi->mmsys_sw_rst_b = regmap;
-+
- 	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
- 					  &panel, &dsi->next_bridge);
- 	if (ret)
++	if (panel_bridge_unprepare_power(dsi->next_bridge))
++		DRM_INFO("Can't unprepare power the panel\n");
+ }
+ 
+ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
 -- 
 2.25.1
 _______________________________________________
