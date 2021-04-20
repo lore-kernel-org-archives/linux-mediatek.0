@@ -2,93 +2,113 @@ Return-Path: <SRS0=wye3=JR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E095C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDE2AC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:40:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D8DB60FE3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:37:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D8DB60FE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 67D1460FE3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Apr 2021 08:40:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67D1460FE3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Subject:Cc:To:
+	From:Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RI/8Ulj614cq7MMa1QwD99WiBI5Ez+7bNJXgF5GkOzw=; b=dAKi/dl6dyrQwbnhEy4PklV9M
-	7fnGp4qvNTrJZaq1Ed9YUXql2Kc1lMhEiog7zSRkQRrhyVBPdLvAVpRxXevMOt03vEaXBII36kXr8
-	RPIR59++zq0EZaJhOhzO/MLrWd4yzDGN2L/6lyGXSzlPIttzdFmbYtG3kQ4xKDLoIwTOdCNHg9UuU
-	9rZftcnuqiIU8pBiG7hCPSgktLIZ17ibSI9/gRd4j15hkpRELDMJVSJ18mf382Ei+NtrEmzUbZ2bi
-	YndAHjWTzakgv3wDxl5sUMyPzGS6UY6eK+83CG9tpfBqZFD+X5z+7BkJkT8iRP/JLjloCaX7vspFu
-	eJMZKZdQg==;
+	 bh=u+UJ3UhFs7nK6eiyjtkk/VuQh0zpT5o7XJw7meBRf88=; b=omHBfpriLsj351cgYcohHiYXE
+	xL6Sx7psCcG/X1jTox9eDBAip1J8B5YKtrLcT359bgMEkGaTs4lulPT5ADCL5533Uj6N/9MvO4lyj
+	9lMxfD7o2vk1BQCRctC+GVP76AyZBodJrcKqti/5QEq5XgsCKiUUq3Hwj+iBsz42PG7tfN52w6Mn9
+	Vj4YSZ9SxwJXS0hJOSxPTuKk5wVYKScNOZM2Wr3kbxfSlMSPa8WePD0xOw4z6RrDuSr5nsyeqQLPI
+	uYNgMhzBPNy39GBZ3eC2MvQkhhx+yXTNgB3pIGnpdyh9z6CwESVrgXLmkzD4GM+2Id5JQjtDidc8u
+	zDPahusmw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lYlsG-00BbEf-P5; Tue, 20 Apr 2021 08:36:48 +0000
+	id 1lYlv9-00BbnY-AA; Tue, 20 Apr 2021 08:39:47 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYlsD-00BbD3-Rw; Tue, 20 Apr 2021 08:36:46 +0000
+ id 1lYluw-00BblM-Ku; Tue, 20 Apr 2021 08:39:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=bEi19MMWdiYxkcCE7//Lg6WJ3XtDQ/8uQ8YN722hzQA=; b=AOGH9vntv+Ucf6uGQua3N5iznR
- twZ+C7tZoeHVNPFmHWxG8BVneAK5tuvA0tyxbpavMpxFaDBkQHDu1gmhC3POyVXb2iWh9kOKSfKwh
- DJRzh3UrUYeL+808M6lvliH6gLGhoRf09o2mJXzijeiCVa1TMMEPBGFJ6uvr+dP8UpWsODs2R1o/Y
- G7FzT1+Ey3Zod+cT3Jw0z/MFETdr+UCCVJ/UIXOQMNsccX4cSb9I3H2jXp3i72uuDRHl7/eJjYfll
- 0GY9ncQvYnHZ2yfOlQ1TDc04eHJJ74TuHr9wBZ5oOCEFAR4kRQeJXAixRRFRSOLLWJipe9h6PJWHp
- jBFCsDUQ==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:References:
+ In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=fDcfQHZJ6E0CFUL2ptCgtMuSZn0zblt2TMJnrOkMnTc=; b=ekVNxtzWJ6YlWmEX00KzNWup7o
+ mystH3rgeV+MyJUWAkSLk8HWI0gBcFNafuyGzfU1aG+UnXjSFEWWda+SDpTFae1lc6czXTLa7oeiB
+ y27r3ONqe+3R9wLC0yUqRsV2QEj4pOP2lBnvFO4ldXGdRLFjtTbEmEQ1+lN6mp2G52fONLM0IV9yo
+ +InNRetIKYbz4/7CNwNhO19kt80AYSTqBN6TNur1XoOaHwERzCS27gcfH4D/uThXdJbyKQeA6YH4B
+ KJdMgZnlJkwigiYNI2xn5VEJLiX5VVsTOKCWHNd2r5bgWKmdwBUcmHWwl5E0q96yLjwIiReAOd1kM
+ xLDg916g==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lYls8-00Bve7-IZ; Tue, 20 Apr 2021 08:36:44 +0000
-X-UUID: 4f0ef86dcddc480eb4fd09a4d05c32dd-20210420
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=bEi19MMWdiYxkcCE7//Lg6WJ3XtDQ/8uQ8YN722hzQA=; 
- b=QaozOP3/DYysLOyDvpiNswGue7yA4razgWVGfHTXpHw22xBixbxJs9r8V2a6Wjbbs5zLAQTXdo2nLcf5EGp8muat39iAFagmUA8dW8qrJcChM9W0CkL3OtTCuxfgWqj2zRurVW7lN5a6dKCPX7mHZ7Cfzo81wItFie7SszUovB4=;
-X-UUID: 4f0ef86dcddc480eb4fd09a4d05c32dd-20210420
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 803854235; Tue, 20 Apr 2021 01:36:34 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Apr 2021 01:31:12 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Apr 2021 16:31:11 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Apr 2021 16:31:11 +0800
-Message-ID: <1618907471.11505.2.camel@mtksdaap41>
-Subject: Re: [SPAM]Re: [SPAM][v2,PATCH 3/3] drm/mediatek: dpi: add bus
- format negotiation
-From: CK Hu <ck.hu@mediatek.com>
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>
-CC: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
- <jitao.shi@mediatek.com>
-Date: Tue, 20 Apr 2021 16:31:11 +0800
-In-Reply-To: <1618467298.4349.3.camel@mtksdccf07>
-References: <1618407316-10042-1-git-send-email-rex-bc.chen@mediatek.com>
- <1618407316-10042-4-git-send-email-rex-bc.chen@mediatek.com>
- <1618448968.29238.1.camel@mtksdaap41> <1618467298.4349.3.camel@mtksdccf07>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1lYlut-00BvnZ-T0; Tue, 20 Apr 2021 08:39:33 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BEBFB60FE3;
+ Tue, 20 Apr 2021 08:39:30 +0000 (UTC)
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94)
+ (envelope-from <maz@kernel.org>)
+ id 1lYluq-008S7B-EZ; Tue, 20 Apr 2021 09:39:28 +0100
+Date: Tue, 20 Apr 2021 09:39:25 +0100
+Message-ID: <87fszlqria.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Jon Hunter <jonathanh@nvidia.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Frank Wunderlich <frank-w@public-files.de>, Thierry Reding
+ <treding@nvidia.com>, Thomas Gleixner <tglx@linutronix.de>, Rob Herring
+ <robh@kernel.org>, Will Deacon <will@kernel.org>, "K. Y. Srinivasan"
+ <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, "Stephen\
+ Hemminger" <sthemmin@microsoft.com>,
+ Michael Kelley <mikelley@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Marek Vasut
+ <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Michal Simek <michal.simek@xilinx.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>, Bharat Kumar Gogada
+ <bharatku@xilinx.com>, <linux-pci@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-hyperv@vger.kernel.org>, <linux-tegra@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-renesas-soc@vger.kernel.org>,
+ <kernel-team@android.com>
+Subject: Re: [PATCH v3 01/14] PCI: tegra: Convert to MSI domains
+In-Reply-To: <638a9996-c762-fa11-b740-6a41d4a83bcc@nvidia.com>
+References: <20210330151145.997953-1-maz@kernel.org>
+ <20210330151145.997953-2-maz@kernel.org>
+ <316e8be4-fa70-75e8-8483-ae38036306e0@nvidia.com>
+ <638a9996-c762-fa11-b740-6a41d4a83bcc@nvidia.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: jonathanh@nvidia.com, lorenzo.pieralisi@arm.com,
+ bhelgaas@google.com, frank-w@public-files.de, treding@nvidia.com,
+ tglx@linutronix.de, robh@kernel.org, will@kernel.org, kys@microsoft.com,
+ haiyangz@microsoft.com, sthemmin@microsoft.com, mikelley@microsoft.com,
+ wei.liu@kernel.org, thierry.reding@gmail.com, ryder.lee@mediatek.com,
+ marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
+ michal.simek@xilinx.com, paul.walmsley@sifive.com, bharatku@xilinx.com,
+ linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, kernel-team@android.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210420_013640_643624_9972FF66 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20210420_013932_039144_210B101A 
+X-CRM114-Status: GOOD (  36.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,163 +125,135 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Rex:
+Hi Jon,
 
-On Thu, 2021-04-15 at 14:14 +0800, Rex-BC Chen wrote:
-> On Thu, 2021-04-15 at 09:09 +0800, CK Hu wrote:
-> Hello CK,
-> > Hi, Rex:
-> > 
-> > On Wed, 2021-04-14 at 21:35 +0800, Rex-BC Chen wrote:
-> > > Add the atomic_get_output_bus_fmts, atomic_get_input_bus_fmts to negotiate
-> > > the possible output and input formats for the current mode and monitor,
-> > > and use the negotiated formats in a basic atomic_check callback.
-> > > 
-> > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/mediatek/mtk_dpi.c | 89 ++++++++++++++++++++++++++++--
-> > >  1 file changed, 84 insertions(+), 5 deletions(-)
-> > > 
-> > > diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > index 76431fe849b8..b4e9c6c8d706 100644
-> > > --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> > > @@ -536,6 +536,87 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
-> > >  	return 0;
-> > >  }
-> > >  
-> > > +#define MAX_OUTPUT_SEL_FORMATS	2
-> > > +
-> > > +static u32 *mtk_dpi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
-> > > +					struct drm_bridge_state *bridge_state,
-> > > +					struct drm_crtc_state *crtc_state,
-> > > +					struct drm_connector_state *conn_state,
-> > > +					unsigned int *num_output_fmts)
-> > > +{
-> > > +	struct drm_display_mode *mode = &crtc_state->mode;
-> > > +	u32 *output_fmts;
-> > > +	struct mtk_dpi *dpi = bridge_to_dpi(bridge);
-> > > +
-> > > +	*num_output_fmts = 0;
-> > > +
-> > > +	output_fmts = kcalloc(MAX_OUTPUT_SEL_FORMATS, sizeof(*output_fmts),
-> > > +			      GFP_KERNEL);
-> > > +	if (!output_fmts)
-> > > +		return NULL;
-> > > +
-> > > +	/* Default 8bit RGB fallback */
-> > > +	if (dpi->conf->dual_edge) {
-> > > +		output_fmts[0] =  MEDIA_BUS_FMT_RGB888_2X12_LE;
-> > > +		output_fmts[1] =  MEDIA_BUS_FMT_RGB888_2X12_BE;
-> > 
-> > MT8183 does not support MEDIA_BUS_FMT_RGB888_1X24?
-> > 
-> > Regards,
-> > CK
-> > 
-> Yes, MT8183 only support MEDIA_BUS_FMT_RGB888_1X24
-
-I'm confused with this answer. dpi->conf->dual_edge is true only in
-mt8183, but you say 'MT8183 only support MEDIA_BUS_FMT_RGB888_1X24',
-your answer looks conflict with these code.
-
-Regards,
-CK
-
+On Mon, 19 Apr 2021 21:02:10 +0100,
+Jon Hunter <jonathanh@nvidia.com> wrote:
 > 
-> BRs,
-> Rex-BC
-> > > +		*num_output_fmts = 2;
-> > > +	} else {
-> > > +		output_fmts[0] =  MEDIA_BUS_FMT_RGB888_1X24;
-> > > +		*num_output_fmts = 1;
-> > > +	}
-> > > +
-> > > +	return output_fmts;
-> > > +}
-> > > +
-> > > +#define MAX_INPUT_SEL_FORMATS	1
-> > > +
-> > > +static u32 *mtk_dpi_bridge_atomic_get_input_bus_fmts(struct drm_bridge *bridge,
-> > > +					struct drm_bridge_state *bridge_state,
-> > > +					struct drm_crtc_state *crtc_state,
-> > > +					struct drm_connector_state *conn_state,
-> > > +					u32 output_fmt,
-> > > +					unsigned int *num_input_fmts)
-> > > +{
-> > > +	u32 *input_fmts;
-> > > +
-> > > +	*num_input_fmts = 0;
-> > > +
-> > > +	input_fmts = kcalloc(MAX_INPUT_SEL_FORMATS, sizeof(*input_fmts),
-> > > +			     GFP_KERNEL);
-> > > +	if (!input_fmts)
-> > > +		return NULL;
-> > > +
-> > > +	*num_input_fmts = 1;
-> > > +	input_fmts[0] = MEDIA_BUS_FMT_RGB888_1X24;
-> > > +
-> > > +	return input_fmts;
-> > > +}
-> > > +
-> > > +static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
-> > > +				       struct drm_bridge_state *bridge_state,
-> > > +				       struct drm_crtc_state *crtc_state,
-> > > +				       struct drm_connector_state *conn_state)
-> > > +{
-> > > +	struct mtk_dpi *dpi = bridge->driver_private;
-> > > +	unsigned int out_bus_format;
-> > > +
-> > > +	out_bus_format = bridge_state->output_bus_cfg.format;
-> > > +
-> > > +	dev_dbg(dpi->dev, "input format 0x%04x, output format 0x%04x\n",
-> > > +		bridge_state->input_bus_cfg.format,
-> > > +		bridge_state->output_bus_cfg.format);
-> > > +
-> > > +	dpi->ddr_edge_sel = (out_bus_format == MEDIA_BUS_FMT_RGB888_2X12_LE) ?
-> > > +		 		true : false;
-> > > +
-> > > +	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
-> > > +	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
-> > > +	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
-> > > +	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > >  static int mtk_dpi_bridge_attach(struct drm_bridge *bridge,
-> > >  				 enum drm_bridge_attach_flags flags)
-> > >  {
-> > > @@ -574,6 +655,9 @@ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
-> > >  	.mode_set = mtk_dpi_bridge_mode_set,
-> > >  	.disable = mtk_dpi_bridge_disable,
-> > >  	.enable = mtk_dpi_bridge_enable,
-> > > +	.atomic_check = mtk_dpi_bridge_atomic_check,
-> > > +	.atomic_get_output_bus_fmts = mtk_dpi_bridge_atomic_get_output_bus_fmts,
-> > > +	.atomic_get_input_bus_fmts = mtk_dpi_bridge_atomic_get_input_bus_fmts,
-> > >  };
-> > >  
-> > >  void mtk_dpi_start(struct device *dev)
-> > > @@ -620,11 +704,6 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
-> > >  	}
-> > >  	drm_connector_attach_encoder(dpi->connector, &dpi->encoder);
-> > >  
-> > > -	dpi->bit_num = MTK_DPI_OUT_BIT_NUM_8BITS;
-> > > -	dpi->channel_swap = MTK_DPI_OUT_CHANNEL_SWAP_RGB;
-> > > -	dpi->yc_map = MTK_DPI_OUT_YC_MAP_RGB;
-> > > -	dpi->color_format = MTK_DPI_COLOR_FORMAT_RGB;
-> > > -
-> > >  	return 0;
-> > >  
-> > >  err_cleanup:
-> > 
-> > 
 > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!wSbSRrRV87zBpi29W3qMJC0hPE5QwMj2oVUgPcq4538Poo-n0KFyM14woxJZbA$ 
+> On 19/04/2021 20:19, Jon Hunter wrote:
+> > Hi Marc,
+> > 
+> > On 30/03/2021 16:11, Marc Zyngier wrote:
+> >> In anticipation of the removal of the msi_controller structure, convert
+> >> the Tegra host controller driver to MSI domains.
+> >>
+> >> We end-up with the usual two domain structure, the top one being a
+> >> generic PCI/MSI domain, the bottom one being Tegra-specific and handling
+> >> the actual HW interrupt allocation.
+> >>
+> >> While at it, convert the normal interrupt handler to a chained handler,
+> >> handle the controller's MSI IRQ edge triggered, support multiple MSIs
+> >> per device and use the AFI_MSI_EN_VEC* registers to provide MSI masking.
+> >>
+> >> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
+> >> [treding@nvidia.com: fix, clean up and address TODOs from Marc's draft]
+> >> Signed-off-by: Thierry Reding <treding@nvidia.com>
+> >> Signed-off-by: Marc Zyngier <maz@kernel.org>
+> > 
+> > 
+> > This change is breaking a suspend test that we are running on Tegra124
+> > Jetson-TK1. The Tegra124 Jetson TK1 uses a PCI based ethernet device ...
+> > 
+> > $ lspci
+> > 00:02.0 PCI bridge: NVIDIA Corporation TegraK1 PCIe x1 Bridge (rev a1)
+> > 01:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd.
+> > RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 0c)
+> > 
+> > After resuming from suspend, networking is no longer working. The reason
+> > why this breaks our suspend test is because that setup is using NFS for
+> > the rootfs. I am looking into it, but if anyone has any thoughts please
+> > let me know.
+> 
+> 
+> So the following does appear to fix it ...
+> 
+> diff --git a/drivers/pci/controller/pci-tegra.c
+> b/drivers/pci/controller/pci-tegra.c
+> index eaba7b2fab4a..558f02e0693d 100644
+> --- a/drivers/pci/controller/pci-tegra.c
+> +++ b/drivers/pci/controller/pci-tegra.c
+> @@ -1802,13 +1802,17 @@ static void tegra_pcie_enable_msi(struct
+> tegra_pcie *pcie)
+>  {
+>         const struct tegra_pcie_soc *soc = pcie->soc;
+>         struct tegra_msi *msi = &pcie->msi;
+> -       u32 reg;
+> +       u32 i, reg;
+> 
+>         afi_writel(pcie, msi->phys >> soc->msi_base_shift,
+> AFI_MSI_FPCI_BAR_ST);
+>         afi_writel(pcie, msi->phys, AFI_MSI_AXI_BAR_ST);
+>         /* this register is in 4K increments */
+>         afi_writel(pcie, 1, AFI_MSI_BAR_SZ);
+> 
+> +       /* enable all MSI vectors */
+> +       for (i = 0; i < 8; i++)
+> +               afi_writel(pcie, 0xffffffff, AFI_MSI_EN_VEC(i));
+> +
+>         /* and unmask the MSI interrupt */
+>         reg = afi_readl(pcie, AFI_INTR_MASK);
+>         reg |= AFI_INTR_MASK_MSI_MASK;
+> @@ -1837,13 +1841,17 @@ static void tegra_pcie_msi_teardown(struct
+> tegra_pcie *pcie)
+> 
+>  static int tegra_pcie_disable_msi(struct tegra_pcie *pcie)
+>  {
+> -       u32 value;
+> +       u32 i, value;
+> 
+>         /* mask the MSI interrupt */
+>         value = afi_readl(pcie, AFI_INTR_MASK);
+>         value &= ~AFI_INTR_MASK_MSI_MASK;
+>         afi_writel(pcie, value, AFI_INTR_MASK);
+> 
+> +       /* disable all MSI vectors */
+> +       for (i = 0; i < 8; i++)
+> +               afi_writel(pcie, 0, AFI_MSI_EN_VEC(i));
+> +
+>         return 0;
+>  }
+> 
+> 
+> Any reason why that code was removed?
+
+Two reasons spring to mind: it obviously wasn't tested enough, and
+part of the above code isn't quite right. You can't just blindly
+enable all MSIs, irrespective of what has been actually enabled.
+
+The following should hopefully cure it (compile tested only). Please
+let me know.
+
+	M.
+
+diff --git a/drivers/pci/controller/pci-tegra.c b/drivers/pci/controller/pci-tegra.c
+index eaba7b2fab4a..507b23d43ad1 100644
+--- a/drivers/pci/controller/pci-tegra.c
++++ b/drivers/pci/controller/pci-tegra.c
+@@ -1802,13 +1802,19 @@ static void tegra_pcie_enable_msi(struct tegra_pcie *pcie)
+ {
+ 	const struct tegra_pcie_soc *soc = pcie->soc;
+ 	struct tegra_msi *msi = &pcie->msi;
+-	u32 reg;
++	u32 reg, msi_state[INT_PCI_MSI_NR / 32];
++	int i;
+ 
+ 	afi_writel(pcie, msi->phys >> soc->msi_base_shift, AFI_MSI_FPCI_BAR_ST);
+ 	afi_writel(pcie, msi->phys, AFI_MSI_AXI_BAR_ST);
+ 	/* this register is in 4K increments */
+ 	afi_writel(pcie, 1, AFI_MSI_BAR_SZ);
+ 
++	/* Restore the MSI allocation state */
++	bitmap_to_arr32(msi_state, msi->used, INT_PCI_MSI_NR);
++	for (i = 0; i < ARRAY_SIZE(msi_state); i++)
++		afi_writel(pcie, msi_state[i], AFI_MSI_EN_VEC(i));
++
+ 	/* and unmask the MSI interrupt */
+ 	reg = afi_readl(pcie, AFI_INTR_MASK);
+ 	reg |= AFI_INTR_MASK_MSI_MASK;
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-mediatek mailing list
