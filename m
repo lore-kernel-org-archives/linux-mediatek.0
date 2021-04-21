@@ -2,111 +2,94 @@ Return-Path: <SRS0=vHqv=JS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38032C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 10:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FD1CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 10:28:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 955B361427
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 10:20:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 955B361427
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id EAAE46140F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 10:28:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAAE46140F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=WVyHBR3kSiMwgxITrd2idRIFF1dX8UUav8nE56Z+pm0=; b=KVtB8N39z5Thtk3sOsB7jOLH16
-	1ymhqS3bcqLL1WWOMLyIEJ++XDgJsX6Oxk8vkbGGTGdSpTQODmM/+aPEeSSie+WLEouFHj9CunZIp
-	JBpbfsM40/MHVcxhgaQJne6TA9RuZYzB9LH6tS3RwSDBvLpD2GMuAJFBPxpCke0HGkcDH08uomkK2
-	AGsloczvzv/mLJUL7nORI4/yKJQAi2FezuQVZePiiSISsGks/UdvWD1SbwzGqOQTo94hIiyDKDqhV
-	MFEtY9xojcoYQQAHGNwiIP3sLsnoscwgiyxf66HDJfSzTI3NhEpa0s8pEgl/5iOMj8riiW0q94c0e
-	7rKunp5w==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=yGYMYs+cmaW3FkV0P3zXOzdVHdCiCSofyIdXlMuePcc=; b=nKPt3dNkiSfzdXkX2n1hAjFTn
+	bE+3OdRooO5bY/5KTQ+WIfP1NpxyGbXwo0hz1E02SCZXrconpnxjb0G4TeqCDPPmtlTJwIP2QlUIY
+	On3uLaqXhfUhKJDGjBAS0e3+sYPiY1o5XiaScJQ5I6SCZz4VyPV5ZGZcjagjzkOw43kWIU+mEHsBW
+	IPg3jhsi6SYz5lpqK2Qn12fZFwIvkJsLApK4hPci27KrwH0avTvv2S+tB6+so2oX0eOj8mxZKId7Z
+	8DPKMg5B8CkoOYFgVfjOqg97sKlpBXPBv6zQ1oXTrYcjrv07XxckzzlEhvjFWar+LuN1tG+PNWIvz
+	H35a9kAJw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZ9yG-00EDOd-RI; Wed, 21 Apr 2021 10:20:36 +0000
+	id 1lZA57-00EDy6-Hr; Wed, 21 Apr 2021 10:27:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZ9yD-00EDOE-OM
- for linux-mediatek@desiato.infradead.org; Wed, 21 Apr 2021 10:20:34 +0000
+ id 1lZA4r-00EDx3-5X; Wed, 21 Apr 2021 10:27:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:MIME-Version:Message-ID:
- Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description:In-Reply-To:References;
- bh=aW2XV99ki74xagENX2uKtHc0R0vvRO3bFUoVvlCTYu8=; b=VN2Rx/zLf5BNgbfa36y7ei9Ii9
- cKKWSK/ZHauADd+pXQ18ltQykPhxFyHb8bBGrS7E77DuYdalDZLiCJz+y9OykExsampF+/v0PGZlV
- byKHgfyTD8QkHUz0IkAWjYs7UvdFxcZws8V49sywaLMPfOn8jLpYdnUW0KvqQWHusfQb3uhm0U0lI
- o95jFEcxtsS50L0nThpU0IJlHtidlmas2OdwjqMjPSRCKjgBRaVWUPKtCtYYHWJ1FDRYbZ2GZYUzI
- 4GEgWaU+fGMk9RYafZfMhv/P1KjGBL5Ui+oKI1lF5oameMQ1OIZnDCn5IoTEhVdpaS5P5Zcgp5gll
- PwW6CDaA==;
-Received: from aserp2120.oracle.com ([141.146.126.78])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=9IoeKBla8pN9WE4+y5GJhke4Dy+p0ylLEjnf88v7Uqk=; b=z8LxCFgyI/PhWdslUQuD8FLPin
+ CXlfsx1RWU+XMfjWzPeuvyQ+ZCFI5HCWnYFu2pnIAcGpwTc3IbQzSQCn2Zun6eqiDJGWzLDZwyyVv
+ ztq76viXqJCBjyBXtlF0YV9ZTbc1GsVpyHCmML1+P0nr21NouEysUwtVLFaY+1zB0HjF9CirRJFGC
+ CQ2sNi4aMeRP1Pk6T+VxalWWvxPk/a8rQ5plviESjJjSZqtUbEBAqfb6IaMmppb7k215vluKC+qqk
+ jx/tZBiiUFas83QJxqJmcMu97t83aNvkmBPhA1TvBEfYf6nCF/eHPNlpexLmpL5c+Yz1UowODVG6+
+ CjUKysxg==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZ9y8-00Cnnb-8A
- for linux-mediatek@lists.infradead.org; Wed, 21 Apr 2021 10:20:32 +0000
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13LAJGiM135897;
- Wed, 21 Apr 2021 10:20:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=aW2XV99ki74xagENX2uKtHc0R0vvRO3bFUoVvlCTYu8=;
- b=xHss9sp7t5iGALFvdj6bCiIbKlNueJhBwn99P/AnYUO9fzWeciAg//OzPEzxac8yVGWN
- r4RUgRstc6flGUPvKwEKw5r/DGAdfrItSNTBXCmR6KkLPdC3Kg9z+X54xr/QvwuApLvm
- nM5QiH18d3QHglci07LTuYfZ8HERz5RZNeaZa6Mzh8eYFVkVP/dcztMr7oEddMWGh1ct
- LJnWi8p1exD4cNUTc8oKyBaQzbPc9vU58X0XMKZwaAegGAdUnRMYw2YS1NABlxh3MtxR
- UwmdwW5UTYOG7LeDXGIC9QAZFdt7pnV/fw3XO5X8W6xW7UXtGdod8JbZMSXovYNMni8w zA== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 37yqmnhttd-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 21 Apr 2021 10:20:19 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13LAAwug050948;
- Wed, 21 Apr 2021 10:20:19 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by aserp3030.oracle.com with ESMTP id 38098rhfrc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 21 Apr 2021 10:20:19 +0000
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 13LAKIcA087538;
- Wed, 21 Apr 2021 10:20:18 GMT
-Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
- by aserp3030.oracle.com with ESMTP id 38098rhfqp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 21 Apr 2021 10:20:18 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13LAKG8t025239;
- Wed, 21 Apr 2021 10:20:16 GMT
-Received: from mwanda (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 21 Apr 2021 03:20:15 -0700
-Date: Wed, 21 Apr 2021 13:20:10 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: ryder.lee@mediatek.com
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] mt76: mt7615: fix CSA notification for DBDC
-Message-ID: <YH/8WvgUZtp51WEP@mwanda>
+ id 1lZA4n-00Co5P-Q8; Wed, 21 Apr 2021 10:27:23 +0000
+X-UUID: d6f8a71cb1fd4c518e71b9ac7a3f5fb0-20210421
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=9IoeKBla8pN9WE4+y5GJhke4Dy+p0ylLEjnf88v7Uqk=; 
+ b=fQNY8k1jcr1ai4RxVlKGqy4Sh6iY16HRZ+oA0gEszTI+/RS/kDRdk0rscojYm9Xgs2GFggVQqxEKSGUkzPDGhZOdSQnUPQrk/jNJQ1YywVuZ/U6S5V8mhh1k+tV14lM83t2bo5TjaDiApMlM60cbUG9cd515Uk6JBtNtBz0naIo=;
+X-UUID: d6f8a71cb1fd4c518e71b9ac7a3f5fb0-20210421
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <fengquan.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 593962591; Wed, 21 Apr 2021 03:27:18 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Apr 2021 03:17:15 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 21 Apr 2021 18:17:07 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 21 Apr 2021 18:17:07 +0800
+Message-ID: <1619000227.25707.20.camel@mhfsdcap03>
+Subject: Re: [PATCH] clocksource/drivers/timer-mediatek: optimize systimer
+ irq clear flow on Mediatek Socs
+From: Fengquan Chen <fengquan.chen@mediatek.com>
+To: Evan Benn <evanbenn@chromium.org>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Thomas Gleixner <tglx@linutronix.de>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <dehui.sun@mediatek.com>
+CC: LKML <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX /
+ MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Date: Wed, 21 Apr 2021 18:17:07 +0800
+In-Reply-To: <CAKz_xw2abQyS9Vvx7DUppGGd-AaDQAfdAOwi46fB9yLPJWJeUA@mail.gmail.com>
+References: <1614670085-26229-1-git-send-email-Fengquan.Chen@mediatek.com>
+ <1614670085-26229-2-git-send-email-Fengquan.Chen@mediatek.com>
+ <CAKz_xw2abQyS9Vvx7DUppGGd-AaDQAfdAOwi46fB9yLPJWJeUA@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Proofpoint-ORIG-GUID: -CnXcfGQpXtifIJymuKOpR6hO9cycBEO
-X-Proofpoint-GUID: -CnXcfGQpXtifIJymuKOpR6hO9cycBEO
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9960
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxscore=0 adultscore=0
- impostorscore=0 spamscore=0 malwarescore=0 clxscore=1011
- lowpriorityscore=0 priorityscore=1501 suspectscore=0 mlxlogscore=723
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104210079
+X-TM-SNTS-SMTP: BDB2F9AC03454462D38628DCDC4993140A01337F80411D53696602FA182485272000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_032028_402773_3C4201FF 
-X-CRM114-Status: UNSURE (   8.40  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210421_032721_876577_10DC7422 
+X-CRM114-Status: GOOD (  28.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,41 +106,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Ryder Lee,
+On Tue, 2021-03-23 at 11:48 +1100, Evan Benn wrote:
+> On Thu, Mar 4, 2021 at 11:07 AM Fengquan Chen
+> <Fengquan.Chen@mediatek.com> wrote:
+> >
+> > 1)ensure systimer is enabled before clear and disable interrupt, which only
+> > for systimer in Mediatek Socs.
+> 
+> Why does the timer need to be enabled before the interrupt can be
+> disabled? The datasheet I have does not suggest that this is required.
+> 
 
-The patch 402a695b1ae6: "mt76: mt7615: fix CSA notification for DBDC"
-from Feb 27, 2021, leads to the following static checker warning:
+Thanks for review. For systimer, you must enable timer before clear
+irq,it's a hw limitation that would be easily neglected.
 
-	drivers/net/wireless/mediatek/mt76/mt7615/mcu.c:385 mt7615_mcu_rx_csa_notify()
-	error: undefined (user controlled) shift '(((1))) << (c->omac_idx)'
+> >
+> > 2)clear any pending timer-irq when shutdown to keep suspend flow clean,
+> > when use systimer as tick-broadcast timer
+> >
+> > Change-Id: Ia3eda83324af2fdaf5cbb3569a9bf020a11f8009
+> > Signed-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
+> > ---
+> >  drivers/clocksource/timer-mediatek.c | 4 ++++
+> >  1 file changed, 4 insertions(+)
+> >
+> > diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> > index 9318edc..9f1f095dc 100644
+> > --- a/drivers/clocksource/timer-mediatek.c
+> > +++ b/drivers/clocksource/timer-mediatek.c
+> > @@ -75,6 +75,7 @@
+> >  static void mtk_syst_ack_irq(struct timer_of *to)
+> 
+> This function seems to be mis-named. It does more than just ack the irq.
+> 
+> >  {
+> >         /* Clear and disable interrupt */
+> > +       writel(SYST_CON_EN, SYST_CON_REG(to));
+> 
+> This line seems to enable the timer and disable the interrupt.
+> 
+> >         writel(SYST_CON_IRQ_CLR | SYST_CON_EN, SYST_CON_REG(to));
+> 
+> This line acks the interrupt and enables the timer and disables the interrupt.
+> Are these lines both necessary?
+> Maybe this function should just ack the interrupt without changing the
+> other bits.
 
-drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-   376  static void
-   377  mt7615_mcu_rx_csa_notify(struct mt7615_dev *dev, struct sk_buff *skb)
-   378  {
-   379          struct mt7615_phy *ext_phy = mt7615_ext_phy(dev);
-   380          struct mt76_phy *mphy = &dev->mt76.phy;
-   381          struct mt7615_mcu_csa_notify *c;
-   382  
-   383          c = (struct mt7615_mcu_csa_notify *)skb->data;
-                ^                                   ^^^^^^^^^
-c is random data from the network
+Thanks for review. 
 
-   384  
-   385          if (ext_phy && ext_phy->omac_mask & BIT_ULL(c->omac_idx))
-                                                            ^^^^^^^^^^^
-Any value more than 61 will lead to undefined behavior.  (shift wrapping
-mostly).
+it's necessary.
 
-   386                  mphy = dev->mt76.phy2;
-   387  
-   388          ieee80211_iterate_active_interfaces_atomic(mphy->hw,
-   389                          IEEE80211_IFACE_ITER_RESUME_ALL,
-   390                          mt7615_mcu_csa_finish, mphy->hw);
-   391  }
+As described above,we must enable timer before clear
+irq, so here is just want to ensure irq clear successfully.
 
-regards,
-dan carpenter
+We always disable irq here, and will be re-enable in
+mtk_syst_clkevt_next_event.
+
+> 
+> >  }
+> >
+> > @@ -111,6 +112,9 @@ static int mtk_syst_clkevt_next_event(unsigned long ticks,
+> >
+> >  static int mtk_syst_clkevt_shutdown(struct clock_event_device *clkevt)
+> >  {
+> > +       /* Clear any irq */
+> > +       mtk_syst_ack_irq(to_timer_of(clkevt));
+> > +
+> >         /* Disable timer */
+> >         writel(0, SYST_CON_REG(to_timer_of(clkevt)));
+> 
+> This is a third write to the same register, I believe all 3 writes can
+> be combined into 1. Is that possible?
+
+Thanks for review. 
+
+there's a hw limitation here, we can not clear irq while timer is
+disabled, and SYST_CON_EN&SYST_CON_IRQ_CLR bit must be write at the same
+time or can not  write SYST_CON_IRQ_CLR bit seperately.
+
+
+> 
+> >
+> > --
+> > 1.8.1.1.dirty
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
