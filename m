@@ -2,109 +2,113 @@ Return-Path: <SRS0=vHqv=JS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 965DDC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 13:41:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79BB4C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 14:05:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DFB9061445
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 13:41:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFB9061445
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id D270461453
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Apr 2021 14:05:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D270461453
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=x42VPMz2ZmHR5bdnHAmnUC2IpqvGta5nm+6ibRTCJSY=; b=hAZu64JkLyI9D2jQoxJgft1sW
-	xE6hXffCCrxPw5fL7C9XYpZb7DCEZ0HvqZuXsZoJeAuwmyo8GfaaTsW545eJRQt0HOUa/IEa/S1TN
-	nI8xeoUXgovUU0ZzvH19vSy7aaxKlS9PJTDIsf+k+D6HZQ1c08S/VMKXLevtwRywlCFeYFhmmBGRb
-	DmXevnKgeFWAs7/Bb3Qr9V2aS3Pd4RGSNIrcS+e/7LkJewPqx9eTCnBxKRFAomp3Ki5PEtIBj/9SM
-	jBujpgxsgTLDvCtWTItlOtZjI7uznRbTT3glD1PGWRNRI6/hUuxGyC9l29xGuepmKhAEK9xge///7
-	fW8Qe+PsA==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Gw0b6jG7fckN7nMVN3PmUQNBEHd0dpmC7Gm/bgkn4Vs=; b=V0JuAdVodeLm/qV/TgXc98/4x
+	7GXXegFcFepIXboNndFfphosx4Vo2zODXn99FDNaXzxdxy22UmKKazHGCF6c/b4KXcKXT/efaDL5k
+	3FvpUMFOHd/5A45RVVHXH/bW3Km/rij9lqImacHaBShcccE6qyzJZaMVf8+wf2L9NeBREQ2k/gSil
+	AQEyTEJp+zP+UKGZqtVifbpmEmyDW3uP0Fo4iw5aA2875vr15ebLTXfPECVRAv85AmXVAU95wDg8T
+	0sr9oU/B+1EPbHSPGBxXSICSGVtuZJ7moh29cklMXFdf3YbTYMAOLXLZZtx0AKcBPVVOInUF8n2AF
+	p/g/0R7pw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZD6A-00EU8K-MI; Wed, 21 Apr 2021 13:40:58 +0000
+	id 1lZDTh-00EWyJ-VT; Wed, 21 Apr 2021 14:05:18 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZD68-00EU82-77
- for linux-mediatek@desiato.infradead.org; Wed, 21 Apr 2021 13:40:56 +0000
+ id 1lZDTV-00EWxI-9s; Wed, 21 Apr 2021 14:05:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
- :Content-ID:Content-Description:References;
- bh=CiyY0TY/FT7GLJEH1shy+3dTJnAndDqr1nVXcawFzIM=; b=1Brcqfdv3IJY8Jmo1hFfnzG/yZ
- ffqFnDiBrddIdODFy11vQ83jw6A4TQjC0t505MyIr5mqG//H+S+zEzDxtHhDxQ8CyFtdjBWbMVz1q
- mwmFWYvc6kncREZXxWqQm4igrnmTjzgKee2fODn2x8ejE9TQrw3kRVeerAKDfs8E0AwE3m5lvlzCF
- vih/QHDoy/GPNa0G3tx1BdOsur1l0++D2wdMd0vt9qjPu6wzemcrTk557TaQObetFiZnFYAhRVnof
- 3z5NrnpnPItUc2OQ6YOoXgfqbtYWBka99PUzhdI80nakF76NRZz/crDaHnTrFW3X/VZTLlZIE52Kf
- 8JkLPfyg==;
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+ d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Date:
+ Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=eo1nK0UD2a7QXD/BCB5NO5zSj3zAXmk7v82G2w6ov4I=; b=j8Fc9yOl/91uLGDey1APOosUIR
+ O7y4IWF8TijSPutu9SUtjvZYCkpW+/rye8k0G+EH4un9pHQ+XqdZKyt7g2Wbvp+vEik/154bqHqC+
+ qwThwzdHJ7SEYPWGKnPd4McVbZg8da/TK05NUd4PvuuKvC4M9yRt73aYToq8TowOrIpvVhZqNSRtG
+ ytJiFPt85gXfEzKyPNOaBa11w/u+2G25+yCCXiHDgZhdQJ3pJVJcENA/Fw33cP8qk+qYfRlO4wy/Y
+ MhE7zmQJWXFckfbr+VZ+arcPMwrm2TXZ0OPMdVLqBqdR1p50FoIlLjEypIvv5Fb/xCjGips/73cqN
+ frpLPehQ==;
+Received: from mout.gmx.net ([212.227.17.22])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZD65-00CvOY-GH
- for linux-mediatek@lists.infradead.org; Wed, 21 Apr 2021 13:40:54 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 13LDcNHu006382; Wed, 21 Apr 2021 13:40:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type : in-reply-to;
- s=corp-2020-01-29; bh=CiyY0TY/FT7GLJEH1shy+3dTJnAndDqr1nVXcawFzIM=;
- b=QHTo7GuamBfRfZRfAZidoFKXUVHvYIvfxo+GTvRkMjq1NS1k4fGwhFxw2ynR5WTCTfK6
- +DWwokTQtnMRkkuW0lkeNd6QDM6TaJzgij+6k0Z+lJ/y0W4LXrdUGNUJb3l6qZRub7ko
- Cd+Or1zg0ED+3uH/oT+5mELGKIVeyR9jXp2r/yKbt1CF3c7RglG8EDMKCNHg2dvxjT7a
- 00+I8ltgiq5M8IugRVJEzlIUrWIG589kQcOUivfUVCJJPZOuP683bCBMq2N7FKXjDmD0
- Ep4v/iz2qjlA2POrM6bdTWf10mIB/Q1TIKdib5EgEm3d58ZqbKjTFkXcUoGamvqdXGtv vQ== 
-Received: from oracle.com (userp3020.oracle.com [156.151.31.79])
- by mx0b-00069f02.pphosted.com with ESMTP id 3818whgr19-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 21 Apr 2021 13:40:50 +0000
-Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
- by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 13LDbYmI048456;
- Wed, 21 Apr 2021 13:40:49 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 3809eu9qy1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 21 Apr 2021 13:40:49 +0000
-Received: from abhmp0009.oracle.com (abhmp0009.oracle.com [141.146.116.15])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13LDellH009579;
- Wed, 21 Apr 2021 13:40:48 GMT
-Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Wed, 21 Apr 2021 06:40:47 -0700
-Date: Wed, 21 Apr 2021 16:40:40 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH 2/3 v2] mt76: mt7915: fix a precision vs width bug in printk
-Message-ID: <20210421134040.GI1959@kadam>
+ id 1lZDTP-00CwQQ-Re; Wed, 21 Apr 2021 14:05:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1619013874;
+ bh=eo1nK0UD2a7QXD/BCB5NO5zSj3zAXmk7v82G2w6ov4I=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=G+fxJoRkgDWQqoVA/oCFNizQN28RLwvucCkG4u4LUS13DuzyCAR10TCUyD06nCofG
+ ktc2+sk1UiidCDYbv0oth/EwiWC8eym5yn/GmOCsMA9NdU0NWWicPpnSZjYjm93O9s
+ KF+ZykHc+hPXTY42qP9sVj0rp1RujzEaHoeKMbM4=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.77.133] ([80.245.77.133]) by web-mail.gmx.net
+ (3c-app-gmx-bs34.server.lan [172.19.170.86]) (via HTTP); Wed, 21 Apr 2021
+ 16:04:34 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87ecf5b648ea6d42994abbef8d9cde7e15a0a837.camel@sipsolutions.net>
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9961
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxscore=0
- mlxlogscore=999 malwarescore=0 adultscore=0 phishscore=0 bulkscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104210106
-X-Proofpoint-ORIG-GUID: 65bgiovjOKDKye3hix_FCzryIttMqmp3
-X-Proofpoint-GUID: 65bgiovjOKDKye3hix_FCzryIttMqmp3
+Message-ID: <trinity-47c2d588-093d-4054-a16f-81d76aa667e0-1619013874284@3c-app-gmx-bs34>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Felix Fietkau <nbd@nbd.name>, John
+ Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org, "open
+ list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
+ <opensource@vdorst.com>
+Subject: Aw: Re: [PATCH net-next v2 2/2] net: ethernet: mediatek: support
+ custom GMAC label
+Date: Wed, 21 Apr 2021 16:04:34 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CALCv0x2SG=0kBRnxfSPxi+FvaBK=QGPHQkHWHvTXOw64KawPUQ@mail.gmail.com>
+References: <20210419154659.44096-1-ilya.lipnitskiy@gmail.com>
+ <20210419154659.44096-3-ilya.lipnitskiy@gmail.com>
+ <20210420195132.GA3686955@robh.at.kernel.org>
+ <CALCv0x2SG=0kBRnxfSPxi+FvaBK=QGPHQkHWHvTXOw64KawPUQ@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:sV5Mlbn73eWH7aiVlwaybpsQCFZyxd8vwbmUGt69EWlA1fnqNSM9XL/OwUTnRLA5pwmJ2
+ gQkOKxpSNkq6/G3e221sldSrvVJLEN4B49Qny4npb20S0MhCGfh0wrdacbeBD/nargGhUw2I7I5m
+ I99HhDGPZSLFTC/zJEQhrTf4sJ7+6nT2AQu9uZLnD84WejyQBaFQZMMuNpHJdGVRAYllNzG7loj4
+ Gf6K304Da2vxOZP1JyzFMtzwfeh81dRZHl+2GW69itbKKoKMzWtgkXQ1d2CHNHQaHTbgHAVGY+rW
+ P0=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Z2mfGzqKo3A=:7BgbnqxAImJaah8rUDd72I
+ qd9iee+wk72p/Y+dXXy+REOgl5yfZHwf4KOIwbXQ4SOZPHo3dgu7MNwpkGTS0N+4iNTbwggOX
+ ctORwLVkjE7QoBlZLU0RBC6JpGFZb0gVOoLpALJwzHV9kfwhyTq0YwdecwIennA5diIsyFl6u
+ +eDtmPFQAGVrcusQ2RngtfIftgPhmiZ4aMkfWzV+QfaUx9wjCf4sLpw6+KBAaXSLymW6FLCOt
+ u67DE3xm5QTYs3rZfoKBFNM5oAx5FiY1pjUV76MWmsUZFXsPxU6voxOh15CH5t9esDGdb6Cyj
+ 54qZ+K5QuGVsSpLgUC9xGtbBi/BQjMkM+Zr2b0exGKaeyniIaeTi3vDuuRX1Z/ZgrICmO7w+G
+ /lSqUT9dnFfBBfYzxNfNBJTpKHeUCNDtKHqK/QM+KJRvFdCaeV7Wo4HrM4R47Ymp6Em7RiT8r
+ k12pTc/fB0ZQnFEVhSPmIAcGBMRbRWqQffoHJTsD6B0nH69C+PcgsqFGNyli89FXqPZuJ1pLr
+ DCITTDUsUy1TfhafZOMiw+AqNh7fOQPazWrpSmr0ui8Darhm+dEw6U/lNLBlhqWFLAfOlarvi
+ q5Dn1CNvLeRjGKRnq6v4KdWrogCp5dLFQrlpzMORRtkpHyAwTsPj8mBAp42ltz/kfqBp0H/Dt
+ 6cZr5FZhVMceWm6R+P8m505ySlRkX/MsnPnKRT57l5fa4XxLYdAEQRS1Jy+pfoA69A8j44Byw
+ YRi4CtB4eiB/JKOptodiWl5nnYIs6H6DIRGXZgrhZCDFiElEVj572TAKYmMWAGi+q90VkzIm5
+ N3YMTjWFekP3kFSV9/ZR372038pW0j+0ijryhNruduR4LIjCXJY2J6OrIFAUzTM68Y7hjCuBq
+ ZWyWRmxE0zfwVUlIHTCJBmMaSaZcQiHhPA5qzSfJE+vAatagR1ewYZ2yDZFoO81/25igrac+K
+ 9DcCk+d7Igg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_064053_567457_7E0EBBB4 
-X-CRM114-Status: GOOD (  15.62  )
+X-CRM114-CacheID: sfid-20210421_070500_248548_19EA26CD 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,32 +125,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Precision %.*s was intended instead of width %*s.  The original code
-will still print unintended data from beyond the end of skb->data.
+Hi,
 
-Fixes: 665b2c780d63 ("mt76: mt7915: limit firmware log message printk to buffer length")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
-v2: fix a typo in the commit message
+for dsa slave-ports there is already a property "label", but not for master/cpu-ports
 
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+https://elixir.bootlin.com/linux/v5.12-rc8/source/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts#L163
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 908e74a6b8e6..94195a1ad3b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -521,7 +521,7 @@ mt7915_mcu_rx_log_message(struct mt7915_dev *dev, struct sk_buff *skb)
- 		break;
- 	}
- 
--	wiphy_info(mt76_hw(dev)->wiphy, "%s: %*s", type,
-+	wiphy_info(mt76_hw(dev)->wiphy, "%s: %.*s", type,
- 		   (int)(skb->len - sizeof(*rxd)), data);
- }
- 
--- 
-2.30.2
+handled here:
+
+https://elixir.bootlin.com/linux/v5.12-rc8/source/net/dsa/dsa2.c#L1113
+
+@ilya maybe you can rename slave-ports instead of master-port without code change?
+
+i also prefer a more generic way to name interfaces in dts, not only in the mtk-driver, but the udev-approach is a way too, but this needs to be configured on each system manually...a preset by kernel/dts will be nice (at least to distinguish master/cpu- and user-ports).
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
