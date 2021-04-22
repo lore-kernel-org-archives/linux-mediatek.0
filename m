@@ -2,94 +2,79 @@ Return-Path: <SRS0=s7tg=JT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CCFACC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 08:48:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3616EC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 09:10:23 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26E2B613ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 08:48:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 26E2B613ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8B833613D5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 09:10:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B833613D5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1kqc4NaiAVhHPwvZa0ABBtlio0jxsq4+RzimP/NzE6I=; b=Ua3Hm5s7opOFaKfrBhcoB0Iii
-	cy1/TzhXLlrnuGnqDySX16ZC4Cuy0Oaexz2gje6PrSdUm8nk4fcxvkL0xLSococ01X4+4yXDz+JVP
-	S7EXSzSnQo+URRbMD/UgRVptwOxgi9GEEjdkZgT/rgvFj5zxvrAOnkZomgWmKJyDVITad5wbiKMt8
-	0Q4Q6qX9R2ul68y8oeSblKQnMSH4HAQCYhfC0lR7t7f5V996ZmlUjgakZ8ZgNEqs9l36W/MfnrRTQ
-	khoMKMaCJA9p9/E7ffb2Ox/GF3QFKRE0LZJQqzfiw8XF1k0RyMcXwMFf1GT9syRKVp9S3LDQsZP3b
-	q5llPSSTg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aTa4iL7OBgX4RHzuJdTAL1+DKPrnBRuNIg9lePTnMfk=; b=n9mflGjRSt+8jnEjO8+oxpch9o
+	NaQwD94nK+rpP4G0vVU8tX0tAb/Vp+Gu7j8EuNE+hYeyZO0us8wSm9PON1Uw1cGA8xvAm/hatYCWl
+	CG2A5bNuIKj2eCqlC33wDG3CIb0pvPjqefbDY2H8ofd45KmVKJjsgFxy5Rnla9ZGHhrGBn2XAHq5q
+	HX33DtGK9oY1IcQZNzzRMiiHKuYw/8hH34TxOkDRDal1gAxJ7Ty1DHHLIbFP3GEiYLN9rzhs3e69q
+	bp4Y0Bn+iu0lh2b56kLGeGRMx3/lTTnuOOhTSsFRBw19sk2QvbgTmSmuU28f2tmWel/DCn0HLCdCp
+	TVKh7Neg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZUzx-00GJI2-JC; Thu, 22 Apr 2021 08:47:45 +0000
+	id 1lZVLe-00GLTK-94; Thu, 22 Apr 2021 09:10:10 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZUzu-00GJHZ-6W; Thu, 22 Apr 2021 08:47:43 +0000
+ id 1lZVLT-00GLQC-Ie; Thu, 22 Apr 2021 09:09:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=lgjhrko7voA+5hsxOvNsIZmAxBpH3ReDLI988ioHR74=; b=bEjh0jePxSk9A9ANFvlLUOOdJz
- d+FiL3yjdJzFvikF3e5yKuwwkbfUrlOmrvr/Z2MUChBk9s2NUkxOFcndlSO5OkMrpUQf6BI0nzvHJ
- AHe0i/aaHPjDQ8faFmzXYhfEBiyeHpU6KJLlnMa6cswzC2eCsokeRBHn4N7thpJKmZxpB8VnTmvwP
- JkZ+mtBDX97CbYZ7AUjvvRa/X5OAa4l242Bs21LO8c+Q2MuBKd7ScqK8RroBWkAH3HMgMsszCudH2
- anjPxADSaFOmM8n6ac++k9V7OVf090UGqR6dxU7zgGM531Etfp24ZVVmHUudB3VhO5OfN7wPFk67+
- 9qLXIl9g==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+ Sender:Reply-To:Content-ID:Content-Description:In-Reply-To:References;
+ bh=LtKfLenrGbNib+oramueMYsEOwH9Lq7CH8hV1OdCreg=; b=zQTU0KBt8kRj+eVjLmj1FNzjwE
+ 64FZc+iEHNfGqQL4PqpFavv8MWeeIraWgfWw/7Ajex+juIh74s5LqWsHv/ehGXoHa9Xrn0GJFcfn8
+ fCDp7/d0wM69uLQQjJ5gKH5k+YlzW351w0Fp5Wi/KgUMXKFWYbA/9vBPwtBcVKQsMJf/4TQZ6Zcct
+ 3vnyiob4K4xsAhoPCJrIc9WvOI7x4sEeFvzXMcUWK3tXcqcabnZ/4USPfgbpz88CVzUiHATSefRoa
+ wA5P53ujSqllsloftA+8lbSAXysyVnXf5Pl3AheBbFADeuq/G/XW2gX3fjtINswwMF1EDK/RqJGu1
+ pfaM8Jhg==;
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZUzq-00DW3a-QS; Thu, 22 Apr 2021 08:47:40 +0000
-X-UUID: 7d59eb3e0d9c4eb6b44528bef5397a2a-20210422
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=lgjhrko7voA+5hsxOvNsIZmAxBpH3ReDLI988ioHR74=; 
- b=GDbtABg/bqPK4i5D3Rj4ErPPlokcSctZ0uujYopggvPH6Wjt69vap6rgqz8ZB9cYL5geNJzFPJgvGCOgZzr8Y/Z8UKOg0j956y8Hrp7k+NM0FgRczQUp1sTg4bMjY7WyVeDaJaUC0pI2kmp+9gOUBh5vo0ee5sGHxf8n/jUESjM=;
-X-UUID: 7d59eb3e0d9c4eb6b44528bef5397a2a-20210422
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <michael.kao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1935579793; Thu, 22 Apr 2021 01:47:31 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Apr 2021 01:47:29 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Apr 2021 16:47:28 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Apr 2021 16:47:27 +0800
-Message-ID: <6db776994f939cd5403addeffdc78fc82bc98e7a.camel@mediatek.com>
-Subject: Re: [v3,1/3] thermal: mediatek: Relocate driver to mediatek folder
-From: Michael Kao <michael.kao@mediatek.com>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui
- <rui.zhang@intel.com>, <linux-pm@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 22 Apr 2021 16:47:28 +0800
-In-Reply-To: <836581c1-0738-8e42-b168-b54d0bd078a5@linaro.org>
-References: <20210312034018.17437-1-michael.kao@mediatek.com>
- <20210312034018.17437-2-michael.kao@mediatek.com>
- <836581c1-0738-8e42-b168-b54d0bd078a5@linaro.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1lZVLQ-00DWy1-P0; Thu, 22 Apr 2021 09:09:58 +0000
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4FQs4r1MY9z16Ljm;
+ Thu, 22 Apr 2021 17:07:24 +0800 (CST)
+Received: from thunder-town.china.huawei.com (10.174.177.72) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.498.0; Thu, 22 Apr 2021 17:09:39 +0800
+From: Zhen Lei <thunder.leizhen@huawei.com>
+To: Rob Herring <robh+dt@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-serial <linux-serial@vger.kernel.org>, devicetree
+ <devicetree@vger.kernel.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, linux-kernel
+ <linux-kernel@vger.kernel.org>
+CC: Zhen Lei <thunder.leizhen@huawei.com>, Lubomir Rintel <lkundrak@v3.sk>
+Subject: [PATCH 1/1] dt-bindings: serial: 8250: Remove duplicated compatible
+ strings
+Date: Thu, 22 Apr 2021 17:08:57 +0800
+Message-ID: <20210422090857.583-1-thunder.leizhen@huawei.com>
+X-Mailer: git-send-email 2.26.0.windows.1
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [10.174.177.72]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210422_014738_882030_CF5A97F3 
-X-CRM114-Status: GOOD (  26.37  )
+X-CRM114-CacheID: sfid-20210422_020956_989510_73A2EB04 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,93 +91,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-04-20 at 23:22 +0200, Daniel Lezcano wrote:
-> On 12/03/2021 04:40, Michael Kao wrote:
-> > Add Mediatek proprietary folder to upstream more thermal zone and
-> > cooler
-> > drivers. Relocate the original thermal controller driver to it and
-> > rename
-> > as soc_temp.c to show its purpose more clearly.
-> 
-> We already know the purpose :)
-> 
-> soc_temp gives no additional information.
-> 
-> Either keep the name or give the hardware sensor name. It is a driver
-> directory.
-> 
+The compatible strings "mediatek,*" appears two times, remove one of them.
 
-Dear Daniel,
-The new thermal hardware design called lvts (Low voltage thermal
-sensor).
-Instead of original one using auxadc, the lvts use lvts device to
-access thermal senosrs.
-It will save power and be more efficient.
-We use the config CONFIG_MTK_THERMAL and CONFIG_MTK_SOC_THERMAL_LVTS[1]
-to select the different hardware archtecture.
+Fixes: e69f5dc623f9 ("dt-bindings: serial: Convert 8250 to json-schema")
+Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
+---
+ Documentation/devicetree/bindings/serial/8250.yaml | 5 -----
+ 1 file changed, 5 deletions(-)
 
-[1] [v3,2/3] thermal: mediatek: Add LVTS drivers for SoC theraml zones
+diff --git a/Documentation/devicetree/bindings/serial/8250.yaml b/Documentation/devicetree/bindings/serial/8250.yaml
+index f54cae9ff7b2..d3f87f2bfdc2 100644
+--- a/Documentation/devicetree/bindings/serial/8250.yaml
++++ b/Documentation/devicetree/bindings/serial/8250.yaml
+@@ -93,11 +93,6 @@ properties:
+               - mediatek,mt7622-btif
+               - mediatek,mt7623-btif
+           - const: mediatek,mtk-btif
+-      - items:
+-          - enum:
+-              - mediatek,mt7622-btif
+-              - mediatek,mt7623-btif
+-          - const: mediatek,mtk-btif
+       - items:
+           - const: mrvl,mmp-uart
+           - const: intel,xscale-uart
+-- 
+2.21.1
 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210312034018.17437-3-michael.kao@mediatek.com/
 
-> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-> > ---
-> >  drivers/thermal/Kconfig                       | 14 ++++-------
-> >  drivers/thermal/Makefile                      |  2 +-
-> >  drivers/thermal/mediatek/Kconfig              | 23
-> > +++++++++++++++++++
-> >  drivers/thermal/mediatek/Makefile             |  1 +
-> >  .../{mtk_thermal.c => mediatek/soc_temp.c}    |  0
-> 
-> [ ... ]
-> 
-> vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-> 
-> 
-> > +config MTK_THERMAL
-> > +	tristate "Mediatek thermal drivers"
-> > +	depends on THERMAL_OF
-> > +	help
-> > +	  This is the option for Mediatek thermal software
-> > +	  solutions. Please enable corresponding options to
-> > +	  get temperature information from thermal sensors or
-> > +	  turn on throttle mechaisms for thermal mitigation.
-> > +
-> > +if MTK_THERMAL
-> 
-> 
-> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> 
-> All the above not needed.
-> 
-> > +config MTK_SOC_THERMAL
-> > +	tristate "Temperature sensor driver for mediatek SoCs"
-> > +	depends on HAS_IOMEM
-> > +	depends on NVMEM
-> > +	depends on RESET_CONTROLLER
-> > +	help
-> > +	  Enable this option if you want to get SoC temperature
-> > +	  information for Mediatek platforms. This driver
-> > +	  configures thermal controllers to collect temperature
-> > +	  via AUXADC interface.
-> > +
-> > +endif
-> > diff --git a/drivers/thermal/mediatek/Makefile
-> > b/drivers/thermal/mediatek/Makefile
-> > new file mode 100644
-> > index 000000000000..f75313ddce5e
-> > --- /dev/null
-> > +++ b/drivers/thermal/mediatek/Makefile
-> > @@ -0,0 +1 @@
-> > +obj-$(CONFIG_MTK_SOC_THERMAL)	+= soc_temp.o
-> > diff --git a/drivers/thermal/mtk_thermal.c
-> > b/drivers/thermal/mediatek/soc_temp.c
-> > similarity index 100%
-> > rename from drivers/thermal/mtk_thermal.c
-> > rename to drivers/thermal/mediatek/soc_temp.c
-> 
-> 
-> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
