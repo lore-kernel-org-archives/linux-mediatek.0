@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FFB7C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:11:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A2DAC43461
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:12:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B978F613FB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:11:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B978F613FB
+	by mail.kernel.org (Postfix) with ESMTPS id 8154361002
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:12:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8154361002
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=VSQdzP0Vc9PVfqVxqwv52BxSaTZJd05aL1kEXpbVmqo=; b=Qc9uDpGUNB0lQOEWtlJPRFbYK
-	3MuIasepYjrnlMTOle3A5LXmdS4euD024GqNz6RHt2R3ADlgZwAugKRDG4vMROrdobp6zPFUQ9xX4
-	Tf9WvSEt3NvDcx5e3QM41yyC7guBOJgjwB/iTB2fzs0L6R1EJRcJ8rIedj6gKSoLkc7TvA4HDK2ZI
-	9p0Mb3LlpBDZk7y3TBsD0KFEfAgz1WbJLlZOhIVIdpqjyFoMfjfJigJCS7dECP+YdWU1VVORno6SQ
-	8DcyiAPWKTPuYcyxdCtLNETfVsCdhuBDRAvoE2TjD+Sj1W5DCN48d0E5zhw1YlecT2ahxxkVO8eFO
-	POspRTniQ==;
+	 bh=bD/3i+6eZs4kc/G7/xtxnMlhld/hDab0n1YAHHEzkcY=; b=WsnzGmaKErK4mdm/9Sukxl+yY
+	qRDhFm/FmwBQaclLI7zmrO0QBNots2hTeLG64DNv/zimjVJjoqy52hhwWCD1Gvlws/m3s8U1Fi/0M
+	3fvKDPZZGA5G5XIBjBwWZYxM9XCHEOOeq9p+5xhZKKqUQLUxvXHbieFRTHCi5x8rSBZVNQ3nZ9NV+
+	eIUzRy+clct7YjrsXEko0QQ6gFdGoc6UxwiYeEeIEhhayhSVnfcWdwdZbfcpgjnyXtAePfAzC6Rvb
+	NeGtLOVf2pGONOLlWBuFG8QY0sbBO3x+1EqpNZxMNZw3d5lOPYJorwKRW99Vj6QVrFdZVUwnGfvas
+	dBKFlZlRQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZQfw-00Flc3-2V; Thu, 22 Apr 2021 04:10:48 +0000
+	id 1lZQh0-00Flwl-Sp; Thu, 22 Apr 2021 04:11:55 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZQes-00FlQ4-E4; Thu, 22 Apr 2021 04:09:42 +0000
+ id 1lZQeu-00FlQJ-4V; Thu, 22 Apr 2021 04:09:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=IhMuV7pk/e6sV7VUIyv8mgUtfEot/XwuLzvlzQOD9tE=; b=d9xULUlFdSarIJ+aEJv5MTcmja
- y133R3lMg+z2qPp7o0SfQSki2iQnwdIBYrqADsqCLQY7DbR64D2bolc8sPWqw55ZbOQGTMhchIEoe
- 3Z8hkGdrc+fWR90lgU+pj8bVFexooFwy7vmWM/TAKdycLWiYH7jxu2S3DEBiUWKGDLHt2gaJnPq6H
- LzUwAvKPK4HdEZXnH9HHwud1AKUHdiE1RUnDgidqvhVa+98lupTgjbm1XH0+61EqzriOZo+EZjL5k
- ToawY5CTloIcmTm6oDNH5EDFhk53yimDmV5SMwGgIlMg5Wg61+K2Nz8enPg36PjMW1beCKBZSsTYU
- JFrkEm4Q==;
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+ bh=VddRnX0bE97CmvaALzam+ApYpCJ5QzcFqH5F34H/Njg=; b=mhtbNINZnGIUkRTVfYuYctGqYF
+ Mc5dLURg1yclJ1Z8bJuUVTZsnzm7Mj79XYXkVJsRnj2r/Razu3HNVFv98cmOu6xK4B8mnhgC/KlJm
+ YoAgbyF9gjwacjZWc5369PRDh+TRHZdl8jEvda+e4mGXOes0iE14KHxzXt56yt6hbYP5/xStCycQN
+ caceAZZkcspEbmo7zf8hBEBGu3p2p8HwfJMHaYaBVJK370hDQY088uKBEN1j9Hjtz7+MlPKCzDX3Y
+ P5FHd8rvIqKRI2A+HzG+drNouFMTiFIvAMqUBmtxRmX7vkIFGK48N2wR4U2TyjrvUGh3c+4ljp9JQ
+ T1g43dvA==;
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZQeq-00DLcw-1O; Thu, 22 Apr 2021 04:09:41 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id nk8so7434447pjb.3;
- Wed, 21 Apr 2021 21:09:39 -0700 (PDT)
+ id 1lZQer-00DLdS-Jd; Thu, 22 Apr 2021 04:09:42 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id
+ f2-20020a17090a4a82b02900c67bf8dc69so246865pjh.1; 
+ Wed, 21 Apr 2021 21:09:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IhMuV7pk/e6sV7VUIyv8mgUtfEot/XwuLzvlzQOD9tE=;
- b=Qk50RbXnIUW3ik6C9BPq9pGE/g7IPmSF/zub/U4v6eFD9JYzpDwkpMh2dWa4LYF0Lz
- 54kiRiI1+SrUhtd1xZEMQIF/luZ56IJBvynQzQgOFLegROKwyJWKS040JzeiMUEzbDq4
- hEGRAI3JbZclg1+zCKkPbE9gdEKnOg91hFQmkTDhHA09FRWQwq1lGwvV4yorElKuwCsY
- bq+foLDZHdCbyB8+XvO5L/qh0q2rbIUy0DgHc+V08aIdUkQSBZ0QRktS3BatdlhT7Q23
- l8Ih/fNd+vWMy2OweWy31wcVjSlqLxpR6vcmHFznz5eouZnqPHeRFi7uMYP56ZduOVm0
- JOvg==
+ bh=VddRnX0bE97CmvaALzam+ApYpCJ5QzcFqH5F34H/Njg=;
+ b=OC1c6YzvFa23FAL/pDrjpfiIHhd4LbVftEgeZu10htyxa3D2HLXIcV/IK2zjfuGkQ0
+ p7qs0zFMFgEH4GD0lO21HSL3aNG716uIKTiBehI4t0T3kRMzZ9FTC8ARTTtdjmdkLEly
+ kcTsgYbQR/nl7odAWxFVm0X2+KgrzZST/HsxFxJMIVJwXyAU9EKP/Dso8FlpCPodUPiF
+ xNJ0cbpnoq+XPExtBEocFtJ5bWaAMIQRiJY7bT1nV4v1ujzii/B/O0sRUbFQtugvbALs
+ uzdr5n0sU2oDeSfGjqAPH1PTrldw7/7zaVuiSftGPnjUZLFl11E8LmgM+mO9kOj0LmTm
+ 1S0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IhMuV7pk/e6sV7VUIyv8mgUtfEot/XwuLzvlzQOD9tE=;
- b=C0nZNtL906qwy1FZzbalStOcEdvbCjJTgBYO4Ol4ZB69rkzUzGergI3+Ecr83TtoC0
- bt+k9rOhgeiSNwSTQZa/PSi8yBR1bCmSALCLXGE3QU5Fy7MK0DgmnEwhVM906nR0Blv1
- 0zWOt/iTU4f8TZx4nfWZVJ2QhXO1wow46MsEPV7CiXRu5LqB2+3CHnOcurTkpwALEx0f
- Xrzrf0C2MMH8QedA8wU0zAFLvVIYUQqWAF6FVIDyy9Vka971ZQUV6u0kOz0KpjTYnOpG
- 6a8t+247pFoTr5iy498igKpF7YXIEYuLCnm8Vy7c5sjLYGpReZ93mctflw0JAYJnB0Oe
- lpSw==
-X-Gm-Message-State: AOAM533aazlAmWk0vT9lsxKTQckiIBDUPyadbgdKP1y0ayoigcb+vWvI
- cRK2mywZBPeWiiJk7ZdkEMU=
-X-Google-Smtp-Source: ABdhPJzg3V/PbtiIRa3CF472CaR81Ax8xdtPWol7R5JM+E25Dw25nASa8kWgFBbWcDd0jFjpUa+sLg==
-X-Received: by 2002:a17:902:8693:b029:eb:53f:1336 with SMTP id
- g19-20020a1709028693b02900eb053f1336mr1466781plo.52.1619064579325; 
- Wed, 21 Apr 2021 21:09:39 -0700 (PDT)
+ bh=VddRnX0bE97CmvaALzam+ApYpCJ5QzcFqH5F34H/Njg=;
+ b=G5u7bOb/7YNSmi38KEPXadpbfeNw2Bp/6WpJrxaTSxhzRFuketnzNnoMonhJ3QJ6KK
+ P+bATq2X2tZ10av1oYaw+pijQ0szAqCXa5QtAq8IbWo9JaLgq5PVPAVQR4il4yLmNUFv
+ wRpPtYRorxGs32oo0xL/VpNJAUomZEdqr+V6WvUqe4d/+YzBRlU5XWLWIe7rDlLGsWCO
+ shs2+s00qgmRGbpoVMui1hnvb8n4VkQEM3StmowrpdE2pplQDABU3O1+cOOONyeYEfXw
+ 1J7nsJojEl6V4nkfa5lixiT6VBm35pF67A0P4Y3Dwp6fY0qvxPfuHYcA/mhO2EXFQehm
+ 8zOQ==
+X-Gm-Message-State: AOAM532zyDdaOSElpI1+RokOiDEsHPslxAbUzbTV/PEv/vyEs0zmZ6W7
+ Rd87e+lW7aSZ3UE2UchM6rI=
+X-Google-Smtp-Source: ABdhPJxd4KNi/Xrd2gMVsnisMzoprD9mj//cMmuHvr1XiE3yzrkkSh+87wCc4+casFD6zSp4KEAxUQ==
+X-Received: by 2002:a17:902:9886:b029:e6:2bc6:b74 with SMTP id
+ s6-20020a1709029886b02900e62bc60b74mr1404270plp.13.1619064580913; 
+ Wed, 21 Apr 2021 21:09:40 -0700 (PDT)
 Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id i17sm635354pfd.84.2021.04.21.21.09.38
+ by smtp.gmail.com with ESMTPSA id i17sm635354pfd.84.2021.04.21.21.09.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Apr 2021 21:09:39 -0700 (PDT)
+ Wed, 21 Apr 2021 21:09:40 -0700 (PDT)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
@@ -90,17 +91,17 @@ To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next 02/14] net: ethernet: mtk_eth_soc: unmap RX data
- before calling build_skb
-Date: Wed, 21 Apr 2021 21:09:02 -0700
-Message-Id: <20210422040914.47788-3-ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next 04/14] net: ethernet: mtk_eth_soc: use
+ napi_consume_skb
+Date: Wed, 21 Apr 2021 21:09:04 -0700
+Message-Id: <20210422040914.47788-5-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
 References: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_210940_104923_2EAEC78B 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20210421_210941_665160_ABD5E996 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,39 +120,79 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Felix Fietkau <nbd@nbd.name>
 
-Since build_skb accesses the data area (for initializing shinfo), dma unmap
-needs to happen before that call
+Should improve performance, since it can use bulk free
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
-[Ilya: split build_skb cleanup fix into a separate commit]
 Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index b2175ec451ab..540003f3fcb8 100644
+index 07daa5de8bec..5cf64de3ddf8 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1298,6 +1298,9 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 			goto release_desc;
+@@ -858,7 +858,8 @@ static int txd_to_idx(struct mtk_tx_ring *ring, struct mtk_tx_dma *dma)
+ 	return ((void *)dma - (void *)ring->dma) / sizeof(*dma);
+ }
+ 
+-static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf)
++static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf,
++			 bool napi)
+ {
+ 	if (MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA)) {
+ 		if (tx_buf->flags & MTK_TX_FLAGS_SINGLE0) {
+@@ -890,8 +891,12 @@ static void mtk_tx_unmap(struct mtk_eth *eth, struct mtk_tx_buf *tx_buf)
+ 
+ 	tx_buf->flags = 0;
+ 	if (tx_buf->skb &&
+-	    (tx_buf->skb != (struct sk_buff *)MTK_DMA_DUMMY_DESC))
+-		dev_kfree_skb_any(tx_buf->skb);
++	    (tx_buf->skb != (struct sk_buff *)MTK_DMA_DUMMY_DESC)) {
++		if (napi)
++			napi_consume_skb(tx_buf->skb, napi);
++		else
++			dev_kfree_skb_any(tx_buf->skb);
++	}
+ 	tx_buf->skb = NULL;
+ }
+ 
+@@ -1069,7 +1074,7 @@ static int mtk_tx_map(struct sk_buff *skb, struct net_device *dev,
+ 		tx_buf = mtk_desc_to_tx_buf(ring, itxd);
+ 
+ 		/* unmap dma */
+-		mtk_tx_unmap(eth, tx_buf);
++		mtk_tx_unmap(eth, tx_buf, false);
+ 
+ 		itxd->txd3 = TX_DMA_LS0 | TX_DMA_OWNER_CPU;
+ 		if (!MTK_HAS_CAPS(eth->soc->caps, MTK_QDMA))
+@@ -1388,7 +1393,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 			done[mac]++;
+ 			budget--;
+ 		}
+-		mtk_tx_unmap(eth, tx_buf);
++		mtk_tx_unmap(eth, tx_buf, true);
+ 
+ 		ring->last_free = desc;
+ 		atomic_inc(&ring->free_count);
+@@ -1425,7 +1430,7 @@ static int mtk_poll_tx_pdma(struct mtk_eth *eth, int budget,
+ 			budget--;
  		}
  
-+		dma_unmap_single(eth->dev, trxd.rxd1,
-+				 ring->buf_size, DMA_FROM_DEVICE);
-+
- 		/* receive data */
- 		skb = build_skb(data, ring->frag_size);
- 		if (unlikely(!skb)) {
-@@ -1307,8 +1310,6 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		}
- 		skb_reserve(skb, NET_SKB_PAD + NET_IP_ALIGN);
+-		mtk_tx_unmap(eth, tx_buf);
++		mtk_tx_unmap(eth, tx_buf, true);
  
--		dma_unmap_single(eth->dev, trxd.rxd1,
--				 ring->buf_size, DMA_FROM_DEVICE);
- 		pktlen = RX_DMA_GET_PLEN0(trxd.rxd2);
- 		skb->dev = netdev;
- 		skb_put(skb, pktlen);
+ 		desc = &ring->dma[cpu];
+ 		ring->last_free = desc;
+@@ -1627,7 +1632,7 @@ static void mtk_tx_clean(struct mtk_eth *eth)
+ 
+ 	if (ring->buf) {
+ 		for (i = 0; i < MTK_DMA_SIZE; i++)
+-			mtk_tx_unmap(eth, &ring->buf[i]);
++			mtk_tx_unmap(eth, &ring->buf[i], false);
+ 		kfree(ring->buf);
+ 		ring->buf = NULL;
+ 	}
 -- 
 2.31.1
 
