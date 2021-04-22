@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3650C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 073DFC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:13:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5194C613FB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:12:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5194C613FB
+	by mail.kernel.org (Postfix) with ESMTPS id 62FC861424
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 04:13:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62FC861424
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,64 +24,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=o/xZGoCH/ZMtsmpvGD4lZKM5q4WxGGFK+Y6sV8F+bTA=; b=ntV2W4NxBGu3M282gmMGGVvvA
-	trBZNL7JrelfQYT+pGuRezZ4sOQXpR5ilFYNt9mgM7OuoX7yV/ZIxC7aXDolyqW13zPKrBSzqYMdQ
-	CaEkauluW6IXE48+YCqXcQVA18ohTyxHiSx+1HBEMFmoMeNpily5leyvxEc2AmnqxsSW89ue1yHu7
-	eYcpyOOvps6SUUFk1AA/58cCjIGzcI2XWT0M63bGgJAx1d8opGOMj1Ptk0Desx1ecFs2XJ/p5eRmj
-	OZkg6MAYPBg4coH8by27SUKhQ4ysjPJuR1BL3zN+eB+KmAt6gEsFr0iKDpYV0EW2AFPKiIAgbOD1J
-	EkO8rhUNQ==;
+	 bh=QCSGd9u+ekDmAEfTtS//OOvJ0R/aYYtla3lS5AzoRG8=; b=FKq73uXg1et2tnggcSkzTU/nD
+	o2zq7iAjf+2BOrXo2KSM2XubhY8WQBx/wpeJGwtkg3+N0ZgovtkruNnQL55BVf82TNNT33hWxHTcC
+	M20nAh5cegtXJBhZONwjV55lNFFOnQDm+OBE7lk+qnAdeZTgtj9lpnc6Gh94bfDwTadD4ZOVHJRBu
+	6y42hx2D05lKtyRY9gNxfjw/r6eQRxwAiOfNVXYoct7CvivbgGSg8n6Vw4e8TgJ2MYuZ6z1TXjoqD
+	tuI8NmNF12MZxxj7WNvbOpdzeOhyUouapNCvL9tcAiUnO3uXDkBf7daSPKuZv7oMsF4XQhqBJQ5/1
+	8dd2n3jwQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZQhH-00Fm5Z-Oq; Thu, 22 Apr 2021 04:12:12 +0000
+	id 1lZQi9-00FmXM-3u; Thu, 22 Apr 2021 04:13:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZQew-00FlR1-Vm; Thu, 22 Apr 2021 04:09:47 +0000
+ id 1lZQey-00FlRv-S4; Thu, 22 Apr 2021 04:09:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=afUBNnLCnALHd7nnFx3FLIxkkAO2cCALl7BKYrqLlkY=; b=2t+3D6vkI5xI54aTmS28+GpfNd
- rD5b15m8eFLyWTeWtbcWPp2f7kQq1pZHBTZOTCxUz2iXvHO+WsM+F7WMOzuhaCitV+16sfgim7jAg
- l4gewzYVa/6qTe0JKtoV+W9mqK91lHOo3VcIIKJmiu9DBad5fvyXJIbCMAQIVXXenhkbwLiDPrJSY
- 14U8mp3rS03hFfO4PsEIl3aVJk+xBA0MX4LsjzrV+ZPSq2xDnjHCJe0KNmeqq+m/UaQ9ifCeaadE7
- m0AAD/ea1cb62miaHlZagflPxg2YrOK21J4tIkV1ICaujK2sP5441s68XqAW5qU+oHHyavQenbUhP
- h6tPJnSA==;
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ bh=Smtj4gwdxb0ZLZIeEWGZNPNrgYDMaUuIXb1nAA+jADw=; b=mDgEDLNe0auUKNl18dj1z2fXt1
+ 497J/htqkb4tEXRmlXZaW+fU5My6aEapP82DcrMb6zVIsxNmQXb6HH+In2DEChB13Qea/PQmOXyaR
+ 0WTUVvnapu43HhPrQYtRoUW0YK68JCdN7xm6d89BV1DRaCVr3NuaCWq+Lf+STyc/F5EogD8z1Wz9r
+ a9kVrJJYYUQR2Yyf945XA29KX1hC0PbUxgT2d8knnwcLReUaAWvlK0IOb4oQGj3brzfI/6lhxqIPW
+ 928Rluq0fAIRW3u5U7m+bve/ht57OMICLGoG949EtBqIoO1dlL1ri/Bt48jPcb2n2vfosfuUGIA8m
+ A7Rlui7g==;
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZQeu-00DLeh-IK; Thu, 22 Apr 2021 04:09:45 +0000
-Received: by mail-pl1-x630.google.com with SMTP id t22so22517709ply.1;
- Wed, 21 Apr 2021 21:09:44 -0700 (PDT)
+ id 1lZQew-00DLfP-Bq; Thu, 22 Apr 2021 04:09:47 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id
+ f6-20020a17090a6546b029015088cf4a1eso240313pjs.2; 
+ Wed, 21 Apr 2021 21:09:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=afUBNnLCnALHd7nnFx3FLIxkkAO2cCALl7BKYrqLlkY=;
- b=NYPusNMiIJkw5Pdj0XLU0ZWAtBJ0PRpny5fTeVCaCzLnmSQcEDHAq7Vi7RNZjCpNTQ
- I5AampDypMlwhKH63+UIQ9Rqo0b/ucLYFYhkqmpcZsvN0/tElVkYsN0c4svAcDAHxaZH
- 4y8FzJ9y1M2kNkuLvnfpGPkgqxcOJ2VAIjBdBcHb7mwcpCShQdGbUKnHrJtWkteMN4IT
- w0NS/kGQzmcUKU0MKLeAUh/x0Bih+w1G8WEM+2c3MmDaYDJKoJvqrQ0XUsWFC6iBdpKw
- TcVeoTYNjvy5iMlkQjl2/duH/+wQRLDvC3YQMzrCLRGU004SfgDZs4LUh6xvY9khhGJY
- 89PQ==
+ bh=Smtj4gwdxb0ZLZIeEWGZNPNrgYDMaUuIXb1nAA+jADw=;
+ b=m2/PbzI84d6d9OgipdUa6ooqlmZ1yTJHHypRkqQkG2bpVUy3ScKdKsanBUcLcxPxe1
+ 49Kl7GHhccN4bfMUvm5TbmHyZOKAy0qg1/Lkgd4NpuXTRdVO447y3T1pUIZNBFe+LkVB
+ X2sHi/hwQvHU3pJJ8ahjC6omiel2gEdz77r1GYe90YLzLabr0xm7vqS7hBAison6UqOv
+ 1BUr3umNN7qJe3cJGP4m7zsIIndBNxgYdCrODgwC1Lwzkt4BXbwzaPs9/jhbmsg2+mM8
+ 0dH7Ab68oGanlDKPvEZLj18t06rr10OH3gBzdHJghF7LbzlSlKd2MXyLZtPiVMow5lUH
+ T4dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=afUBNnLCnALHd7nnFx3FLIxkkAO2cCALl7BKYrqLlkY=;
- b=iWcn8Cjstza4nZo12PJu1xjYhr6KGDwN6wDT21bCxQPqV7FE95yrGnWn0XXYw7CR+q
- jkMmSKr7QcicmHx+NTw2qrweeTcJH7xQUYe8o0WK655cZRwyu8In9R0rz9+RN+YZw66C
- e702joXEfIpESlrguL9uOTbN5YpRtHLHdyrngsz/1TPFtcBfwpkpqgZkA4DbygrWb3H9
- T+UgcaDzWMEXpglmnNrbVcZVLroYnQa86q7FgoZK/wPHMwQxicb/JjFbr/Hqk4NhHnu3
- 6CuzQXHYgiLJDPslFBw1M6j5pl+Xuv76DAeE4/sLOSC4zO7O5LwYa/Osjgqmb7YMAsGi
- +yeA==
-X-Gm-Message-State: AOAM532fsfzbX5Lmk9IEah/QKT8CHt4DaPWuuGrm+kGPodGap9Q5MFAv
- ZaZchLHVWskRbvZDE7nOcyA=
-X-Google-Smtp-Source: ABdhPJyT3tO2UDDnQGbg/SV0FqbB8c0SOkNZA3M1yGxzusU3coNCVsdmTqvxDM6990gfNcEuqYSXXg==
-X-Received: by 2002:a17:902:e34b:b029:ec:9a57:9cba with SMTP id
- p11-20020a170902e34bb02900ec9a579cbamr1505555plc.56.1619064583871; 
- Wed, 21 Apr 2021 21:09:43 -0700 (PDT)
+ bh=Smtj4gwdxb0ZLZIeEWGZNPNrgYDMaUuIXb1nAA+jADw=;
+ b=SMckl3mL7SYXIAVMcaLX4Fj78e4569umUDVpGGIr6sbJlJGie2RlSUEVtE0Whq/VYJ
+ f1dYlh6nNummpZ3XOCPHecOiCiS29qAyomJevDspboVyjK8LCzEc733ZR5vYk6/rGuAq
+ FMs8QoWpNeZ3tfUq4cfQMwvxY3fKGz5TdeRNIpOYDYR9iOXnSSJgBKCsAN8DBy47eaRw
+ 3Bq+nqgdNoLgjaOe9YOXw5rAXpnuRl59gz6syZJg+ZrVGbzoirtTfWw+C5UpgTaQUf3E
+ 4o1TksuY1MipkwCqY/e1f3fS6WxHvMw5wGuyrOfgR5/MJWtfZBg3ZKdx4N9w4miMnM/J
+ lHYQ==
+X-Gm-Message-State: AOAM532oD8uoWOq1ETucxV0/hw9kHlWag7JmsnAvgX+ta9wqDnXvufrj
+ GWeAHyzZ4YZxU7TaQ7ymijk=
+X-Google-Smtp-Source: ABdhPJw/RJBg5z72O0mNnzutjMCrzGHJDTgHgizsfQ9xv1oCCJjoF/x/bDrceXqjOabCBFD3JsC4ew==
+X-Received: by 2002:a17:902:edc4:b029:eb:159f:32b7 with SMTP id
+ q4-20020a170902edc4b02900eb159f32b7mr1461172plk.11.1619064585968; 
+ Wed, 21 Apr 2021 21:09:45 -0700 (PDT)
 Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id i17sm635354pfd.84.2021.04.21.21.09.43
+ by smtp.gmail.com with ESMTPSA id i17sm635354pfd.84.2021.04.21.21.09.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 21 Apr 2021 21:09:43 -0700 (PDT)
+ Wed, 21 Apr 2021 21:09:45 -0700 (PDT)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
@@ -90,17 +91,17 @@ To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next 08/14] net: ethernet: mtk_eth_soc: increase DMA ring
- sizes
-Date: Wed, 21 Apr 2021 21:09:08 -0700
-Message-Id: <20210422040914.47788-9-ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next 10/14] net: ethernet: mtk_eth_soc: cache HW pointer
+ of last freed TX descriptor
+Date: Wed, 21 Apr 2021 21:09:10 -0700
+Message-Id: <20210422040914.47788-11-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
 References: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210421_210944_624945_31923726 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20210421_210946_427930_4153ECF9 
+X-CRM114-Status: GOOD (  15.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,28 +120,76 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Felix Fietkau <nbd@nbd.name>
 
-256 descriptors is not enough for multi-gigabit traffic under load on
-MT7622. Bump it to 512 to improve performance.
+The value is only updated by the CPU, so it is cheaper to access from the
+ring data structure than from a hardware register.
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 8 ++++----
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 2 ++
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 043ab5446524..01ad10c76d53 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1362,7 +1362,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 	struct mtk_tx_buf *tx_buf;
+ 	u32 cpu, dma;
+ 
+-	cpu = mtk_r32(eth, MTK_QTX_CRX_PTR);
++	cpu = ring->last_free_ptr;
+ 	dma = mtk_r32(eth, MTK_QTX_DRX_PTR);
+ 
+ 	desc = mtk_qdma_phys_to_virt(ring, cpu);
+@@ -1396,6 +1396,7 @@ static int mtk_poll_tx_qdma(struct mtk_eth *eth, int budget,
+ 		cpu = next_cpu;
+ 	}
+ 
++	ring->last_free_ptr = cpu;
+ 	mtk_w32(eth, cpu, MTK_QTX_CRX_PTR);
+ 
+ 	return budget;
+@@ -1596,6 +1597,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 	atomic_set(&ring->free_count, MTK_DMA_SIZE - 2);
+ 	ring->next_free = &ring->dma[0];
+ 	ring->last_free = &ring->dma[MTK_DMA_SIZE - 1];
++	ring->last_free_ptr = (u32)(ring->phys + ((MTK_DMA_SIZE - 1) * sz));
+ 	ring->thresh = MAX_SKB_FRAGS;
+ 
+ 	/* make sure that all changes to the dma ring are flushed before we
+@@ -1609,9 +1611,7 @@ static int mtk_tx_alloc(struct mtk_eth *eth)
+ 		mtk_w32(eth,
+ 			ring->phys + ((MTK_DMA_SIZE - 1) * sz),
+ 			MTK_QTX_CRX_PTR);
+-		mtk_w32(eth,
+-			ring->phys + ((MTK_DMA_SIZE - 1) * sz),
+-			MTK_QTX_DRX_PTR);
++		mtk_w32(eth, ring->last_free_ptr, MTK_QTX_DRX_PTR);
+ 		mtk_w32(eth, (QDMA_RES_THRES << 8) | QDMA_RES_THRES,
+ 			MTK_QTX_CFG(0));
+ 	} else {
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 039c39d750e0..4999f8123180 100644
+index a8d388b02558..214da569e869 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -22,7 +22,7 @@
- #define MTK_MAX_RX_LENGTH	1536
- #define MTK_MAX_RX_LENGTH_2K	2048
- #define MTK_TX_DMA_BUF_LEN	0x3fff
--#define MTK_DMA_SIZE		256
-+#define MTK_DMA_SIZE		512
- #define MTK_NAPI_WEIGHT		64
- #define MTK_MAC_COUNT		2
- #define MTK_RX_ETH_HLEN		(ETH_HLEN + ETH_FCS_LEN)
+@@ -642,6 +642,7 @@ struct mtk_tx_buf {
+  * @phys:		The physical addr of tx_buf
+  * @next_free:		Pointer to the next free descriptor
+  * @last_free:		Pointer to the last free descriptor
++ * @last_free_ptr:	Hardware pointer value of the last free descriptor
+  * @thresh:		The threshold of minimum amount of free descriptors
+  * @free_count:		QDMA uses a linked list. Track how many free descriptors
+  *			are present
+@@ -652,6 +653,7 @@ struct mtk_tx_ring {
+ 	dma_addr_t phys;
+ 	struct mtk_tx_dma *next_free;
+ 	struct mtk_tx_dma *last_free;
++	u32 last_free_ptr;
+ 	u16 thresh;
+ 	atomic_t free_count;
+ 	int dma_size;
 -- 
 2.31.1
 
