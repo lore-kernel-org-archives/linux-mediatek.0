@@ -2,73 +2,76 @@ Return-Path: <SRS0=s7tg=JT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B989EC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 12:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09CC6C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 12:19:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E2846140F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 12:04:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E2846140F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
+	by mail.kernel.org (Postfix) with ESMTPS id DC2BE613FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 12:19:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC2BE613FA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZiORr32/91z/6BIqSpLSjl/83n2n2kovwBJgPLGarvo=; b=G0YmTkQL6SZ7LKJnYJ4g3GPNIu
-	S326qHZHcgp7xNuJ4i/Ok9YAtGVoGeucnwtC02y99Hqk8QuBQtv+hKlRF7ShR8NL5S/aG9H70G3ss
-	dhr3zcoGfdHM72oU9yw5E+h1jWM9aRN9nugSvmgNYhyqmk+4AfH8nArp8vBLb6esB3Z2FNcyLPdxB
-	8f2yMhMHMqP5HQR/kimdCsWKvwJZrYEiQzQjn8299s3uhVmCoYx3PjrNBlyffa5j+X36wSeJCzobq
-	NrPF2JqMFz/uouDef1eJLqC/c/RzBfm0qGuP2UaafuJXIMojKkNgIEfSqh+TITymC0D71+SZ/pAJx
-	jEcr7wjQ==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=5ftjTF2NCQNWXnii97R/PGrAfTjqhsy/wlZdGI/AZxk=; b=mAqCwklrLEwpbMplSFkTBjhgT
+	luKsz3TkC6eQ0bOnW2wFH3UYcX6gwwo2rnZMrUw4KgBbgGOrLeTCK3IddfWFIzCgWzY9GGWEP38zj
+	ILI1RHTLOHBsAfU63Ei/d2VoNUi0+VM6Ap4+8TinZGb02OycTR2ViOXXTjKFzWB/MwOPATufXPEk7
+	F9H9MknQAk8WBcI5FjngypfYqBK2qeagxI5wHuvEj270RvFvXzU/6BlthoRcjcmvuUQuze6EPRZdh
+	kF0DOzsVXsfoE/TAdgeSoUt5KqiU6HL8W+e7fn+HpMUEFsYNMNys6ad/v1QZ4Swl2PA/MyYxeExmm
+	zT4m5x50g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZY4R-00GeNd-M6; Thu, 22 Apr 2021 12:04:35 +0000
+	id 1lZYIu-00Gfvg-O8; Thu, 22 Apr 2021 12:19:32 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZY4G-00GeN2-C5; Thu, 22 Apr 2021 12:04:24 +0000
+ id 1lZYIg-00Gfus-9O; Thu, 22 Apr 2021 12:19:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=+3Kzd9ZhSeiD+dhbC8WlXWjTP7FVzy0eQUYx0BsyDxo=; b=vHseYbN24JfE+3qeX4VSBLn+6x
- 05iM4iPFeiC78xzC0g9mgdDtAdFwnvzWulWitqVtpvzN12dAtRO03v0ltsukzJDWj9aYqTLMC10do
- bNFWZFlXed8y/Fiu1baQou4r+xP5CLW1ez3E/PgaWrrd+MyDLGhNzus0YmqDRLhPcPhGzVzzCcDSE
- B8mAGwYKh9d3gvfiElIdOhOp+qbynSy9/bDNHt8N6cjJB6UTvss0YKEz3FAfytXHdBLk6t1Yisjbz
- 4qXUqauENSvSF1c4yvYT4ZJ7FmSZd1gFgwcHQFLy2KA7s2N2QbfBmWZDd/b51GMoL+DkYQFyHCXl0
- pRi2YT5g==;
-Received: from youngberry.canonical.com ([91.189.89.112])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=UrYnyGTCCxyN2/jKEP5GreCc5IAqvJnszjWMM5BM604=; b=YtjYMJwdZW+ylt0b/jxO+SLAhx
+ DHoUwolKZlMUSJRcYCTyt0NpcB8mtm+wzQd/XExjvKy6gkqHLZo0/659WZy36yZe/MOQ4v7B+kG6T
+ k1RpMA0tfP/tmj9ukQZqIhXDhciBEYzis9KOm3SxLSltJAHeDcyCBhAQL/fca/eocgYQiKmsQhIA8
+ dm/FOUs9CbF/xfMTOrAXp/yzVWqf4UBkWEv4aDExDHZLia/Tu5pQHXCj+nMZBexcMaZNmo+xXDQlI
+ cPUWzGcgt2N4iszCX2Zl4OsSyPH+OhlpByL5k9x/oXLntJwux82FtZnw3BQGaemR2NM1G4TDfFgKy
+ WXRa2OiQ==;
+Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZY4B-00DeMF-H2; Thu, 22 Apr 2021 12:04:21 +0000
-Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
- by youngberry.canonical.com with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
- (envelope-from <colin.king@canonical.com>)
- id 1lZY44-00040i-Ua; Thu, 22 Apr 2021 12:04:13 +0000
-From: Colin King <colin.king@canonical.com>
-To: Zhang Rui <rui.zhang@intel.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] thermal: mtk_thermal: remove redundant initializations of
- several variables
-Date: Thu, 22 Apr 2021 13:04:12 +0100
-Message-Id: <20210422120412.246291-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.30.2
+ id 1lZYId-00DfHJ-N8; Thu, 22 Apr 2021 12:19:17 +0000
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
+ (envelope-from <andrew@lunn.ch>)
+ id 1lZYIM-000Uj3-4U; Thu, 22 Apr 2021 14:18:58 +0200
+Date: Thu, 22 Apr 2021 14:18:58 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net-next 05/14] net: ethernet: mtk_eth_soc: reduce MDIO
+ bus access latency
+Message-ID: <YIFpsjiqhqEeVXNd@lunn.ch>
+References: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
+ <20210422040914.47788-6-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210422040914.47788-6-ilya.lipnitskiy@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210422_050419_714614_B1E05D3F 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20210422_051915_775951_CB563D22 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +88,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+On Wed, Apr 21, 2021 at 09:09:05PM -0700, Ilya Lipnitskiy wrote:
+> From: Felix Fietkau <nbd@nbd.name>
+> 
+> usleep_range often ends up sleeping much longer than the 10-20us provided
+> as a range here. This causes significant latency in mdio bus acceses,
 
-Several variables are being initialized with values that is never
-read and being updated later with a new value. The initializations
-are redundant and can be removed.
+I found the same with the FEC driver, and make the same change.
 
-Addresses-Coverity: ("Unused value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/thermal/mtk_thermal.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+> Signed-off-by: Felix Fietkau <nbd@nbd.name>
+> [Ilya: use readx_poll_timeout_atomic instead of cond_resched]
+> Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index 149c6d7fd5a0..97e8678ccf0e 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -573,12 +573,12 @@ static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw)
- 
- static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw)
- {
--	s32 format_1 = 0;
--	s32 format_2 = 0;
--	s32 g_oe = 1;
--	s32 g_gain = 1;
--	s32 g_x_roomt = 0;
--	s32 tmp = 0;
-+	s32 format_1;
-+	s32 format_2;
-+	s32 g_oe;
-+	s32 g_gain;
-+	s32 g_x_roomt;
-+	s32 tmp;
- 
- 	if (raw == 0)
- 		return 0;
--- 
-2.30.2
 
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+
+    Andrew
 
 _______________________________________________
 Linux-mediatek mailing list
