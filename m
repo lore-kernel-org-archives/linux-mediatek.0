@@ -2,83 +2,94 @@ Return-Path: <SRS0=s7tg=JT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 31F68C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 07:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D303C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 08:33:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 99296613CB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 07:06:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99296613CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
+	by mail.kernel.org (Postfix) with ESMTPS id CAAC6613C2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Apr 2021 08:33:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAAC6613C2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Date:From:MIME-Version:In-Reply-To:Subject:Cc:To:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=mGN5gk3D2K2eGrz3rkF6osUancPcYlYQQPZhK2hm3Ig=; b=Wf8nNO3GtB6+4DMYYorCK9iS1
-	g/xf9b43th6fJzkScEQvsFmAEE+pNKQXcTbnFG4xXrSZUcmHlcVh/Wed6r+VdzzunLUgOd0kDDB9v
-	krxPpSNUtBPjWytV2N6cSm3q2dJQFUc18Y3bF5OFhvboieJdsHcRTUwqGordSP8i/re08vuz91RO/
-	tUvRex/kxuWKVQqNa2kWvkWPysZhCsxzTRTMf/IWGsvP7jaEMyoxlBKtTPGiKyae/z5Fbg2IbP2g8
-	xIsZsG7D5TwdHC0DHelFmhZzG3zdgZG/hRToD8a+qIN4J2ZueN4e4ZcKas5WqzFucCb/KUSrbU0MO
-	+v6a1GgUg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=9qLH7sZYb2hNOWav/wbOX5QoWqy8j/f/Vp0oW/1nPyI=; b=S6zz1HmqoxgXNSY4k9PY9sDVN
+	0FFNOH6F8Ut6tmCdGc24vcX+oXCpiNH1kGf5hQD6BTSsbvLTW73sL2aTcTX2966p4jxhVv81Jx/vd
+	6rlFJA6w7lI8EJEB/Wr5crRCIc2bAoASckvUZjuVllVIFwxpX2L49t2NmmU8CpPFZppkZEX7+Y+qM
+	FiRf5cuTHamZb/WGjEBzYLkxlmSeZVMyIOIjImoQJuNVJzD7JvFrBbztdbTmvsyuEzWXSo/5ptrQE
+	W+KNW+0LJkGgTGvRZUQh0XBwQGahsceKTiuQS/H1AlKbaOdfExPjVdoYIU7c3ycxv0sZAjE9y0LHL
+	6ifyDewbw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZTPi-00G671-U0; Thu, 22 Apr 2021 07:06:15 +0000
+	id 1lZUlf-00GHQ3-Tg; Thu, 22 Apr 2021 08:33:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZTPS-00G64m-P1; Thu, 22 Apr 2021 07:05:59 +0000
+ id 1lZUlW-00GHM9-Fu; Thu, 22 Apr 2021 08:32:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Date:From:MIME-Version:In-Reply-To:
- Subject:Cc:To:Message-ID:Content-Transfer-Encoding:Content-Type:Sender:
- Reply-To:Content-ID:Content-Description:References;
- bh=uWgz1DnLJlwFJsJQ/5UXIZ+6y/60gOyBMUcwFzLxd2w=; b=wcRWj+cZstpREd4PFkGAkrJhtM
- F0OIRcSpiv0bLWRe746seJtGBU+9BK7OmI69D4eojsRcx3rMKlzpuK1U5ViYHaFlXb9v0t8lOcfpc
- vL75Lk1xsLcQYBsVtwZxbNzRIjRjDhQc66ifNX05iA/Dj+7kXUmDL+fXVRnQRo8ck4mvU6gTGpFvT
- r6zAvE3aZ8SCYDgzWhqKUS4bcU4s2GBQfu3qPFJ3tVhzeu8IxhzLJxBiv0DG7uh1PVTeRH5BdDuB0
- oKPMAbNNDi9fNpDdCeMgPx50qc0syr0l6qnLvMwDJelCTSUUGLn8yR6r9apjBsHaFQ7AIV7htxLhm
- wYcZ11HQ==;
-Received: from m176149.mail.qiye.163.com ([59.111.176.149])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=8OCuYAoKRzyNIrFHDh0JFHLltn0XV5hbwr2yNVi0Wv0=; b=kFdh6XgSH5bpaE78eK/CYb7Dqx
+ vzPPSs/HAyRNAEh2LhiKRJdP4KS7hFfGvlzDNXec0NSMTcBL+586JEHqQg4xFu8y7NjiNyL+FV8Gp
+ YUwrmKVyU7h/VLzcucE1+XkdhoXZpnE39qO31h8XLbanAwa20owhogW+lBYI407wDXkVO8jahvMxY
+ uaaQTlSzWdMEF7rP+f7cffEh5zxEyPwCCR8nlu739ExoJEFw85AzgCfTcJHUHuii+LPZahEle96Eq
+ g5sQFED7hzWvMbG6o+wkFF/c3M1Uo37awtdtJ2j+A0qSrqF9d5KNuqPjJsqeCduro5WFbZd4JNV6N
+ 4ukkOG2w==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZTPO-00DR2w-3m; Thu, 22 Apr 2021 07:05:56 +0000
-Received: from vivo.com (wm-9.qy.internal [127.0.0.1])
- by m176149.mail.qiye.163.com (Hmail) with ESMTP id AAFAD282E38;
- Thu, 22 Apr 2021 15:05:49 +0800 (CST)
-Message-ID: <AHkAYwDkDhOuqx67*F9EB4r-.3.1619075149689.Hmail.wangqing@vivo.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: =?UTF-8?B?UmU6UmU6IFtQQVRDSCBWNiAxLzJdIHdhdGNoZG9nOiBtdGs6IHN1cHBvcnQgcHJlLXRpbWVvdXQgd2hlbiB0aGUgYmFyayBpcnEgaXMgYXZhaWxhYmxl?=
-X-Priority: 3
-X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com
-X-Originating-IP: 36.152.145.182
-In-Reply-To: <26bed2e5-6ec8-72ae-ff2c-c707c00d5125@roeck-us.net>
+ id 1lZUlT-00DVU0-19; Thu, 22 Apr 2021 08:32:48 +0000
+X-UUID: 4658482b16b24d7481cc733b8d9f4a94-20210422
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8OCuYAoKRzyNIrFHDh0JFHLltn0XV5hbwr2yNVi0Wv0=; 
+ b=jKG0rinnyhbZPdIEZimqhhz23phdv1EdmpqnlmVIMg/lOguXU676OoXN0H+NTbp3B/eAE2GPZEFMi3eGvg0cYdbGjJDwuZD4v0o/2PKl3SfseEJNAPxqH4LG8cxF+rRgpPx3SwctIZrbTmbpmD4y0igaMOCvRiNU9Eb+3pQX+kQ=;
+X-UUID: 4658482b16b24d7481cc733b8d9f4a94-20210422
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <michael.kao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1068341220; Thu, 22 Apr 2021 01:32:41 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Apr 2021 01:32:39 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Apr 2021 16:32:38 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Apr 2021 16:32:38 +0800
+Message-ID: <8532c21e518530d06a37c25bbcbc08d97147769a.camel@mediatek.com>
+Subject: Re: [v3,1/3] thermal: mediatek: Relocate driver to mediatek folder
+From: Michael Kao <michael.kao@mediatek.com>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui
+ <rui.zhang@intel.com>, <linux-pm@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>
+CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Thu, 22 Apr 2021 16:32:38 +0800
+In-Reply-To: <836581c1-0738-8e42-b168-b54d0bd078a5@linaro.org>
+References: <20210312034018.17437-1-michael.kao@mediatek.com>
+ <20210312034018.17437-2-michael.kao@mediatek.com>
+ <836581c1-0738-8e42-b168-b54d0bd078a5@linaro.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Received: from wangqing@vivo.com( [36.152.145.182) ] by ajax-webmail (
- [127.0.0.1] ) ; Thu, 22 Apr 2021 15:05:49 +0800 (GMT+08:00)
-From: =?UTF-8?B?546L5pOO?= <wangqing@vivo.com>
-Date: Thu, 22 Apr 2021 15:05:49 +0800 (GMT+08:00)
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZGh4aGlYYGhpNTBlCGk0ZT0tVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
- hKTFVLWQY+
-X-HM-Sender-Digest: e1kJHlYWEh9ZQU1IS09OQk9CSENIN1dZDB4ZWUEPCQ4eV1kSHx4VD1lB
- WUc6MxA6Igw*ED8TNA4KA01MUT1CPjlPCVZVSFVKTUpCS0xOSk5LSk9PVTMWGhIXVQwaFRwKEhUc
- Ow0SDRRVGBQWRVlXWRILWUFZSE1VSk5JVUpPTlVKQ0lZV1kIAVlBTUNOTDcG
-X-HM-Tid: 0a78f8662f879395kuwsaafad282e38
-X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210422_000554_500242_E4D63D74 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20210422_013247_101679_2FC89E9B 
+X-CRM114-Status: GOOD (  25.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,71 +101,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Cj5PbiA0LzIxLzIxIDg6NDYgUE0sIOeOi+aTjiB3cm90ZToKPj4gCj4+PiBPbiA0LzIxLzIxIDc6
-NDUgUE0sIFdhbmcgUWluZyB3cm90ZToKPj4+PiBVc2UgdGhlIGJhcmsgaW50ZXJydXB0IGFzIHRo
-ZSBwcmV0aW1lb3V0IG5vdGlmaWVyIGlmIGF2YWlsYWJsZS4KPj4+Pgo+Pj4+IFdoZW4gdGhlIHdh
-dGNoZG9nIHRpbWVyIGV4cGlyZXMgaW4gZHVhbCBtb2RlLCBhbiBpbnRlcnJ1cHQgd2lsbCBiZQo+
-Pj4+IHRyaWdnZXJlZCBmaXJzdCwgdGhlbiB0aGUgdGltaW5nIHJlc3RhcnRzLiBUaGUgcmVzZXQg
-c2lnbmFsIHdpbGwgYmUKPj4+PiBpbml0aWF0ZWQgd2hlbiB0aGUgdGltZXIgZXhwaXJlcyBhZ2Fp
-bi4KPj4+Pgo+Pj4+IFRoZSBwcmV0aW1lb3V0IG5vdGlmaWNhdGlvbiBzaGFsbCBvY2N1ciBhdCB0
-aW1lb3V0LXNlYy8yLgo+Pj4+Cj4+Pj4gVjI6Cj4+Pj4gLSBwYW5pYygpIGJ5IGRlZmF1bHQgaWYg
-V0FUQ0hET0dfUFJFVElNRU9VVF9HT1YgaXMgbm90IGVuYWJsZWQuCj4+Pj4KPj4+PiBWMzoKPj4+
-PiAtIE1vZGlmeSB0aGUgcHJldGltZW91dCBiZWhhdmlvciwgbWFudWFsbHkgcmVzZXQgYWZ0ZXIg
-dGhlIHByZXRpbWVvdXQKPj4+PiAtIGlzIHByb2Nlc3NlZCBhbmQgd2FpdCB1bnRpbCB0aW1lb3V0
-Lgo+Pj4+Cj4+Pj4gVjQ6Cj4+Pj4gLSBSZW1vdmUgcHJldGltZW91dCByZWxhdGVkIHByb2Nlc3Np
-bmcuIAo+Pj4+IC0gQWRkIGR1YWwgbW9kZSBjb250cm9sIHNlcGFyYXRlbHkuCj4+Pj4KPj4+PiBW
-NToKPj4+PiAtIEZpeCBzb21lIGZvcm1hdHRpbmcgYW5kIHByaW50aW5nIHByb2JsZW1zLgo+Pj4+
-Cj4+Pj4gVjY6Cj4+Pj4gLSBSZWFsaXplIHByZXRpbWVvdXQgcHJvY2Vzc2luZyB0aHJvdWdoIGR1
-YWxtb2RlLgo+Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogV2FuZyBRaW5nIDx3YW5ncWluZ0B2aXZv
-LmNvbT4KPj4+PiAtLS0KPj4+PiAgZHJpdmVycy93YXRjaGRvZy9tdGtfd2R0LmMgfCA1MyArKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKy0tLS0tCj4+Pj4gIDEgZmlsZSBj
-aGFuZ2VkLCA0OCBpbnNlcnRpb25zKCspLCA1IGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvd2F0Y2hkb2cvbXRrX3dkdC5jIGIvZHJpdmVycy93YXRjaGRvZy9tdGtf
-d2R0LmMKPj4+PiBpbmRleCA5N2NhOTkzLi5lYmM2NDhiCj4+Pj4gLS0tIGEvZHJpdmVycy93YXRj
-aGRvZy9tdGtfd2R0LmMKPj4+PiArKysgYi9kcml2ZXJzL3dhdGNoZG9nL210a193ZHQuYwo+Pj4+
-IEBAIC0yNSw2ICsyNSw3IEBACj4+Pj4gICNpbmNsdWRlIDxsaW51eC9yZXNldC1jb250cm9sbGVy
-Lmg+Cj4+Pj4gICNpbmNsdWRlIDxsaW51eC90eXBlcy5oPgo+Pj4+ICAjaW5jbHVkZSA8bGludXgv
-d2F0Y2hkb2cuaD4KPj4+PiArI2luY2x1ZGUgPGxpbnV4L2ludGVycnVwdC5oPgo+Pj4+ICAKPj4+
-PiAgI2RlZmluZSBXRFRfTUFYX1RJTUVPVVQJCTMxCj4+Pj4gICNkZWZpbmUgV0RUX01JTl9USU1F
-T1VUCQkxCj4+Pj4gQEAgLTE4NCwxNSArMTg1LDIyIEBAIHN0YXRpYyBpbnQgbXRrX3dkdF9zZXRf
-dGltZW91dChzdHJ1Y3Qgd2F0Y2hkb2dfZGV2aWNlICp3ZHRfZGV2LAo+Pj4+ICB7Cj4+Pj4gIAlz
-dHJ1Y3QgbXRrX3dkdF9kZXYgKm10a193ZHQgPSB3YXRjaGRvZ19nZXRfZHJ2ZGF0YSh3ZHRfZGV2
-KTsKPj4+PiAgCXZvaWQgX19pb21lbSAqd2R0X2Jhc2UgPSBtdGtfd2R0LT53ZHRfYmFzZTsKPj4+
-PiArCXVuc2lnbmVkIGludCB0aW1lb3V0X2ludGVydmFsOwo+Pj4+ICAJdTMyIHJlZzsKPj4+PiAg
-Cj4+Pj4gLQl3ZHRfZGV2LT50aW1lb3V0ID0gdGltZW91dDsKPj4+PiArCXRpbWVvdXRfaW50ZXJ2
-YWwgPSB3ZHRfZGV2LT50aW1lb3V0ID0gdGltZW91dDsKPj4+PiArCS8qCj4+Pj4gKwkgKiBJbiBk
-dWFsIG1vZGUsIGlycSB3aWxsIGJlIHRyaWdnZXJlZCBhdCB0aW1lb3V0LzIKPj4+PiArCSAqIHRo
-ZSByZWFsIHRpbWVvdXQgb2NjdXJzIGF0IHRpbWVvdXQKPj4+PiArCSAqLwo+Pj4+ICsJaWYgKHdk
-dF9kZXYtPnByZXRpbWVvdXQpCj4+Pj4gKwkJdGltZW91dF9pbnRlcnZhbCA9IHdkdF9kZXYtPnBy
-ZXRpbWVvdXQgPSB0aW1lb3V0LzI7Cj4+Pgo+Pj4gUGxlYXNlIHJ1biBjaGVja3BhdGNoIC0tc3Ry
-aWN0IGFuZCBmaXggd2hhdCBpdCByZXBvcnRzLgo+Pj4gQWxzbywgdGhlcmUgc2hvdWxkIGJlIGEg
-c2V0X3ByZXRpbWVvdXQgZnVuY3Rpb24gdG8gc2V0IHRoZQo+Pj4gcHJldGltZW91dC4gSXQgaXMg
-b2sgdG8gdXBkYXRlIGl0IGhlcmUsIGJ1dCBpdCBzaG91bGQgYmUgc2V0Cj4+PiBpbiBpdHMgb3du
-IGZ1bmN0aW9uIHRvIG1ha2Ugc3VyZSB0aGF0IHRoZSBhY3R1YWwgdmFsdWUKPj4+IGlzIHJlcG9y
-dGVkIGJhY2sgdG8gdXNlcnNwYWNlLgo+Pj4KPj4+IFRoYW5rcywKPj4+IEd1ZW50ZXIKPj4gCj4+
-IFRoZSByZWFzb24gd2h5IHRoZSBzZXRfcHJldGltZW91dCBpbnRlcmZhY2UgaXMgbm90IHByb3Zp
-ZGVkIGlzIAo+PiBiZWNhdXNlIHRoZSBwcmV0aW1lb3V0IGlzIGZpeGVkIGFmdGVyIHRoZSB0aW1l
-b3V0IGlzIHNldCwgIHdlIG5lZWQKPj4gdG8gbW9kaWZ5IHRpbWVvdXQgYWZ0ZXIgc2V0dGluZyBw
-cmV0aW1lb3V0LCB3aGljaCBpcyBwdXp6bGluZy4KPj4gCj4KPldoYXQgeW91IG5lZWQgdG8gZG8g
-aXMgdG8gc2V0IHByZXRpbWVvdXQgPSB0aW1lb3V0IC8gMiBpZiBhIHByZXRpbWVvdXQKPmlzIHNl
-dCB0byBhIHZhbHVlICE9IDAuIEp1c3QgbGlrZSB3ZSBhZGp1c3QgdGltZW91dCB0byB2YWxpZCB2
-YWx1ZXMKPndoZW4gc2V0LCB3ZSBhZGp1c3QgcHJldGltZW91dCBhcyB3ZWxsLiBJIGRvbid0IHNl
-ZSBhIHByb2JsZW0gd2l0aCB0aGF0Lgo+Cj5HdWVudGVyCgpUaGFua3MsIEd1ZW50ZXIuIEJ1dCB0
-aGlzIHdpbGwgY29tcGxpY2F0ZSB0aGUgc2l0dWF0aW9uOgpGaXJzdCwgc2V0X3ByZXRpbWVvdXQg
-d2lsbCBiZWNvbWUgYW4gaW50ZXJmYWNlIGZvciBkeW5hbWljYWxseSBlbmFibGUgYW5kCmRpc2Fi
-bGUgdGhlIHByZS10aW1lb3V0IGZ1bmMsIGluc3RlYWQgb2YgYWRqdXN0aW5nIHRoZSBwcmV0aW1l
-b3V0IHRpbWUuIAoKU2Vjb25kbHksIHdoZW4gdGhlIGlycSBpcyBub3QgcmVnaXN0ZXJlZCwgdGhl
-IHVzZXIgY2Fubm90IGJlIGFsbG93ZWQgdG8gc2V0CnRoZSBwcmV0aW1lb3V0IHRvIG5vbi16ZXJv
-LiBXaGVuIGlycSBpcyByZWdpc3RlcmVkLCBpdCBkb2Vzbid0IG1ha2UgYW55IHNlbnNlCnRvIHR1
-cm4gb2ZmIHByZS10aW1lb3V0IGZ1bmMuIAoKQmVjYXVzZSBvZiB0aGUgcGFydGljdWxhcml0eSBv
-ZiBkdWFsIG1vZGUsIEkgc3RpbGwgaW5zaXN0IG9uIGVuYWJsaW5nIHRoZQpwcmV0aW1lb3V0IG9y
-IG5vdCB0aHJvdWdoIGRldmljZXRyZWUuIEFuZCBsb29raW5nIGZvcndhcmQgdG8geW91ciBzdWdn
-ZXN0aW9ucy4KClRoYW5rcywKUWluZwoNCg0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Tue, 2021-04-20 at 23:22 +0200, Daniel Lezcano wrote:
+> On 12/03/2021 04:40, Michael Kao wrote:
+> > Add Mediatek proprietary folder to upstream more thermal zone and
+> > cooler
+> > drivers. Relocate the original thermal controller driver to it and
+> > rename
+> > as soc_temp.c to show its purpose more clearly.
+> 
+> We already know the purpose :)
+> 
+> soc_temp gives no additional information.
+> 
+> Either keep the name or give the hardware sensor name. It is a driver
+> directory.
+> 
+Dear Daniel,
+
+We introduce the new thermal hardware design called lvts in the new
+project. The new project will desgin with lvts will enable the
+CONFIG_MTK_SOC_THERMAL_LVTS to build lvts driver[1].
+The old project will use CONFIG_MTK_THERMAL to build soc_temp.c.
+
+The new design use lvts device to access thermal sensors in the soc.
+The original design access thermal sensors by auxadc.
+
+[1] [v3,2/3] thermal: mediatek: Add LVTS drivers for SoC theraml zones
+
+
+> > Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> > ---
+> >  drivers/thermal/Kconfig                       | 14 ++++-------
+> >  drivers/thermal/Makefile                      |  2 +-
+> >  drivers/thermal/mediatek/Kconfig              | 23
+> > +++++++++++++++++++
+> >  drivers/thermal/mediatek/Makefile             |  1 +
+> >  .../{mtk_thermal.c => mediatek/soc_temp.c}    |  0
+> 
+> [ ... ]
+> 
+> vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+> 
+> 
+> > +config MTK_THERMAL
+> > +	tristate "Mediatek thermal drivers"
+> > +	depends on THERMAL_OF
+> > +	help
+> > +	  This is the option for Mediatek thermal software
+> > +	  solutions. Please enable corresponding options to
+> > +	  get temperature information from thermal sensors or
+> > +	  turn on throttle mechaisms for thermal mitigation.
+> > +
+> > +if MTK_THERMAL
+> 
+> 
+> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 
+> All the above not needed.
+> 
+> > +config MTK_SOC_THERMAL
+> > +	tristate "Temperature sensor driver for mediatek SoCs"
+> > +	depends on HAS_IOMEM
+> > +	depends on NVMEM
+> > +	depends on RESET_CONTROLLER
+> > +	help
+> > +	  Enable this option if you want to get SoC temperature
+> > +	  information for Mediatek platforms. This driver
+> > +	  configures thermal controllers to collect temperature
+> > +	  via AUXADC interface.
+> > +
+> > +endif
+> > diff --git a/drivers/thermal/mediatek/Makefile
+> > b/drivers/thermal/mediatek/Makefile
+> > new file mode 100644
+> > index 000000000000..f75313ddce5e
+> > --- /dev/null
+> > +++ b/drivers/thermal/mediatek/Makefile
+> > @@ -0,0 +1 @@
+> > +obj-$(CONFIG_MTK_SOC_THERMAL)	+= soc_temp.o
+> > diff --git a/drivers/thermal/mtk_thermal.c
+> > b/drivers/thermal/mediatek/soc_temp.c
+> > similarity index 100%
+> > rename from drivers/thermal/mtk_thermal.c
+> > rename to drivers/thermal/mediatek/soc_temp.c
+> 
+> 
+> 
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
