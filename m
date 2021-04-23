@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45916C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C48D7C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:31:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB791610A1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:31:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB791610A1
+	by mail.kernel.org (Postfix) with ESMTPS id 3B93B613F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:31:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B93B613F5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,51 +24,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TiRzYmj4dQKL7ioVEUu8iY6zqvMuA2QIyW0DDqZ1cmA=; b=btpfJ5N43sll5HCuhpPlWRyPe
-	YKDk8Z959XCKWGABdnwxBoJxXgU2kAfk8euvOwaATmchbkJK+3Jxc7Hwbe/M5uUFPwB90Ad7tbNZ8
-	O4MbQ+1RbDdcVwxKHFo48tv/IbTHkOsMLxNft0kea/HKpcBLPjdjsCls2PJfhx7lZQxe0O9Y9WFUD
-	iuQsDgcvg0LIagBa9ZO5chhqA+xYnTsRNRKtfNSQEx1pedR8UdR9BFI9Yedts4NLSMxYjEuvY3c5Z
-	WrnbphhaKaWI2AjBnOPuCPwhoM2ZzG/jyvI5RpN9FCKLo0Gov5VIJHdBHmvzdMjw8JTrlDx1cPJGZ
-	fmLcicnGA==;
+	 bh=PIXrXkEdALPUU6gnkgSz9KNWIPztE/HrnIw0OPUr++c=; b=lhd2zhBb8fHKih61cTnNP865I
+	LCANBg8eW+MUvEm2qUAoAokMW4Ghj4vgmnpW3A2xwYnfPsi/rCssxExP6Yb1eDiVPQpSKA6d3XRm1
+	w5PujRgUa+LY7VPFHwKsONNc7irEtK8477ppwk7nfz3W0kgA/dIfsxioRTL16+18Kqt0dKd7jTdyg
+	+zHHt3HMVNXDKX4Tn+ZC9iT8emqRdjfF3Hycl/TJBh57KESYhqibeVyGOLU712gAIm9UmlYQNeSEU
+	oRrnsmUh0ansoppTAayOttf0RN/7BZN3YAzVguwGKfAZ1D0R/UQCULvYhPIXwTRdqRTs3IMfHFY1w
+	EVqVvvMkA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZoPS-000hZ1-N9; Fri, 23 Apr 2021 05:31:23 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1lZoPY-000hca-37; Fri, 23 Apr 2021 05:31:28 +0000
+Received: from mail-pg1-f181.google.com ([209.85.215.181])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZoHi-000fbM-BE; Fri, 23 Apr 2021 05:23:44 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id s14so17666380pjl.5;
- Thu, 22 Apr 2021 22:23:21 -0700 (PDT)
+ id 1lZoHz-000fdd-9c; Fri, 23 Apr 2021 05:24:07 +0000
+Received: by mail-pg1-f181.google.com with SMTP id t22so2974649pgu.0;
+ Thu, 22 Apr 2021 22:23:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=M+UkxRcksnApyVs6XRntELHRkRUhOfWnYDnO1ZqRoWc=;
- b=YqR5wBCEG4LdcLo0lZg6cH+tcklWyskvWaWbqu3+m41OjiOI0vJfgBt8WaINceHnHp
- FyU+z+yV8z6xoqI++d8hQxrn2BQRnF0Y/1jqkBP9miOh28YC9KpipS3bkSPuce6xDvYg
- /Lyf+fM6U9AE0wjboQyGDvrSAgRqgL8PfTA3DCD/JPO3wLZwurni51LBzh3/SFygeGPB
- 2Y8/q/NVfGeScdqCN7s+CpIYqaYw+/RP3YawQueSHLhJt+j//ecPbtNd4+27FX6tTvHg
- bBqiKmamHW3XgihuVB4P0t4EqDgrOkMjoMS0Ayb+Of0uKKHYIYb5lYJDhurCt1TBjlx3
- aTMg==
+ bh=1zBsYlQcq61seY0imZReAqd25ZKjbgbucT8yzndF0G8=;
+ b=mXObVk0IL/7DFMTpyCRPZqGetBuk3drJ5M/Obl1C6xlK7NDyhWWCkl+KNYiQutboxo
+ kW6NaspOYeE4qWwHpjbIUz5ErGST9GY4/eGwtQc2odt1wMZD2IcUhPqD7dBy4NkNPGp6
+ tLrU2REcLNeOdDmQFXDupVzyomCI8NOfpFEHRpNz4ig38eg/mrkEcIXxjnR0osGV2q0+
+ xDwo2ZK2B8OGp7uC4aJhP7+Udx313yhxFi88+DxnbG/lTvoUAMI1y+IIfQ540dy3P3I3
+ h2xF0CqSDfBDDUk1QwMwVSTt5nZm7ixz/P7ca/S9n6Ac0i6+Ji+RlmRQgNyh98fCyjxt
+ /fsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=M+UkxRcksnApyVs6XRntELHRkRUhOfWnYDnO1ZqRoWc=;
- b=iwtCsDOrcO5J/Tp2Mm2RR9Wp5nLwyMUYZZxFPBrs5p+dG23WKm7ZiVU6WhRWvHj7l0
- tE1QrBgmGqyB3mJNozViJ0J+BkyEwLOgNE3DmpFnsjyBB6BaanTiDTdgd1OmYdzJup1Y
- woFgoN9thTQqZx8I3tBzBywFwTVHocUyucGE9TNJ+CEbWS4eeKm00rtI8Da92kYcouO/
- 1hmrDi7uRyAik37Yf6jY0fVmrSahLXP+lnjQLi04QBzOzfyJFgOpD7fKNEFz/Ef4hRBZ
- qbG5wjJiP2v6swu9fd5+5mvG4Bwr2hjKqLxnXSrbm3qTGaZXXnb4pJehs59MjuxDJ3R4
- 7Ljg==
-X-Gm-Message-State: AOAM532MvPh6eAAiu1XdnVbeBYSKbgWD5JCNzNnATnvtF3oTI+hATUmj
- HglPv/f9b1R4xedwWx8qv2Q=
-X-Google-Smtp-Source: ABdhPJwQ6kWQAIGJ3oAZPqiZa98jRvYL+nHMV0pr0QOfpb87dPhNaXXKFCC4UGF13r43UlsVmHXS3Q==
-X-Received: by 2002:a17:902:dac9:b029:eb:732:d914 with SMTP id
- q9-20020a170902dac9b02900eb0732d914mr2058741plx.85.1619155277945; 
- Thu, 22 Apr 2021 22:21:17 -0700 (PDT)
+ bh=1zBsYlQcq61seY0imZReAqd25ZKjbgbucT8yzndF0G8=;
+ b=R1JZO8rDbgauKjZUO6/8P6brAuVlf7iy/Of+DWkqoH7ZZAgkF/JdUyuPWtDo5hhfCu
+ LXX8RGNoKO2/CZgsw4hrH9B7ZEYETB5JZ+XvqPQMSIZ6PoFUVPfKGWXD6FWAxMKSkFrp
+ 9/LDjOKtkqm9SdKPCCJ9MjegIYRWrDekeGqX/hUr5Iq9Ut8bKu9HvHRqnssRznBkpsSL
+ it/azfoKZK6Pr2P/iL7KUttZKdU8nrZ9sBc5TR6P+wPafIKIDXmVsH3TEMKLKDITIGak
+ 4s0kpI0yTVHchhanaUPAT3T53hhtHc+2yYfz3oMORFiNPaVO2VvAt1FFjVhVIWwZ0yQw
+ HS6Q==
+X-Gm-Message-State: AOAM531zrN2t4w4ywb0XRAoN9CjCz52rNYDqsaprEE19jvncW5kjm+un
+ wsUUzKDMv5eneq0l0jVfq4o=
+X-Google-Smtp-Source: ABdhPJzYTtLTrv/HN8NBYaCqVRueYZcK2ZzzlX8xhlJjUZfD3Gdzp3iB1pwBdX68Cwy/NGXiEfx9FQ==
+X-Received: by 2002:a62:1b50:0:b029:257:da1e:837f with SMTP id
+ b77-20020a621b500000b0290257da1e837fmr2066529pfb.57.1619155290331; 
+ Thu, 22 Apr 2021 22:21:30 -0700 (PDT)
 Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id y24sm6238825pjp.26.2021.04.22.22.21.17
+ by smtp.gmail.com with ESMTPSA id y24sm6238825pjp.26.2021.04.22.22.21.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Apr 2021 22:21:17 -0700 (PDT)
+ Thu, 22 Apr 2021 22:21:29 -0700 (PDT)
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
@@ -77,17 +77,17 @@ To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next v2 01/15] net: ethernet: mtk_eth_soc: fix RX VLAN
- offload
-Date: Thu, 22 Apr 2021 22:20:54 -0700
-Message-Id: <20210423052108.423853-2-ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next v2 14/15] net: ethernet: mtk_eth_soc: set PPE flow
+ hash as skb hash if present
+Date: Thu, 22 Apr 2021 22:21:07 -0700
+Message-Id: <20210423052108.423853-15-ilya.lipnitskiy@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
 References: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_062343_215668_7541B340 
-X-CRM114-Status: GOOD (  13.10  )
+X-CRM114-CacheID: sfid-20210423_062403_319430_84143122 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,42 +106,48 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Felix Fietkau <nbd@nbd.name>
 
-The VLAN ID in the rx descriptor is only valid if the RX_DMA_VTAG bit is
-set. Fixes frames wrongly marked with VLAN tags.
+This improves GRO performance
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
-[Ilya: fix commit message]
+[Ilya: Use MTK_RXD4_FOE_ENTRY instead of GENMASK(13, 0)]
 Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
- drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 6b00c12c6c43..b2175ec451ab 100644
+index 8faf8fb1c83a..37e50a2e7d0e 100644
 --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
 +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -1319,7 +1319,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+@@ -19,6 +19,7 @@
+ #include <linux/interrupt.h>
+ #include <linux/pinctrl/devinfo.h>
+ #include <linux/phylink.h>
++#include <linux/jhash.h>
+ #include <net/dsa.h>
+ 
+ #include "mtk_eth_soc.h"
+@@ -1250,6 +1251,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		struct net_device *netdev;
+ 		unsigned int pktlen;
+ 		dma_addr_t dma_addr;
++		u32 hash;
+ 		int mac;
+ 
+ 		ring = mtk_get_rx_ring(eth);
+@@ -1319,6 +1321,12 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
  		skb->protocol = eth_type_trans(skb, netdev);
+ 		bytes += pktlen;
  
++		hash = trxd.rxd4 & MTK_RXD4_FOE_ENTRY;
++		if (hash != MTK_RXD4_FOE_ENTRY) {
++			hash = jhash_1word(hash, 0);
++			skb_set_hash(skb, hash, PKT_HASH_TYPE_L4);
++		}
++
  		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX &&
--		    RX_DMA_VID(trxd.rxd3))
-+		    (trxd.rxd2 & RX_DMA_VTAG))
+ 		    (trxd.rxd2 & RX_DMA_VTAG))
  			__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
- 					       RX_DMA_VID(trxd.rxd3));
- 		skb_record_rx_queue(skb, 0);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 1a6750c08bb9..875e67b41561 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -301,6 +301,7 @@
- #define RX_DMA_LSO		BIT(30)
- #define RX_DMA_PLEN0(_x)	(((_x) & 0x3fff) << 16)
- #define RX_DMA_GET_PLEN0(_x)	(((_x) >> 16) & 0x3fff)
-+#define RX_DMA_VTAG		BIT(15)
- 
- /* QDMA descriptor rxd3 */
- #define RX_DMA_VID(_x)		((_x) & 0xfff)
 -- 
 2.31.1
 
