@@ -2,19 +2,19 @@ Return-Path: <SRS0=ZZ2m=JU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DDAE4C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 04:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2AECC43460
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 04:21:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C026611CB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 04:19:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C026611CB
+	by mail.kernel.org (Postfix) with ESMTPS id 5ED4B6100B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 04:21:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5ED4B6100B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,78 +23,79 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pZhB/lSqbWFDKUOffV0bO5fiiJkVNL005sy0swCAv7Q=; b=eDpGQ429BipzIxtxGOgqKeQQ8
-	UxsdnUgoDIr+38RshcW6qwgjB+Ai5yWr98SKc3U/V6mJnk+iWKkMQauTzibkWUu5SyRhD6Y+AZ/XJ
-	c5M9ai6QgkaYQ8UPRZZdEFj3xJswwDVdKiQk1JAFFWak2RNGTl5tXybY0kyKRFnbBPvBcYCJ7SFrh
-	pmwHcXORkBKTDYTRHOBBlqw8Ij/BjnEyLVTqzqlFLi9kB9q4z9fDVOHq5/RBboiCcnfB51MMqLc1x
-	bMuUyUt+T2LfYhQHleWjOLF1v/ORG3Zz7XxiSXLOINZjZnn2N30kD6Z/BHvpX//Hw74Q67IeKau4u
-	wcQUTdAzg==;
+	 bh=pvKOfLk7G6EG5BfRSmWe6BT2XjwLUg2JqvCgzsw2j5Y=; b=c/EyIUvF+OfXm73d+TPVjGxdU
+	VGg1HRK57/cSSizm/lUPCmDDu7oqV3PTeRT2r7tQvhD30GyDt6AyCvN+K/r1QmvcKZyAHt3APPacW
+	1NoTbJ90Bas7Jm89+GtJfAUuQG100QEOVys6SXMWO+4xovFcxiSTbxBZbTvH5qomaQoo4pHH1vY05
+	HiWu7XXVqsieLBYlaBGqI0hU6qC6q6O0V+20HJG8PIntKSTgLcZnFJMKamawHWKDGEoI2626lX2R+
+	r45VEkg15KRweWLdh8qapiyyBBzc2n9QrH2RA/Maq9fSDaf67r38jvq/+DXUkli3qnZcSJe4Mo+VM
+	wrjYTrKUw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZnHf-000ZW8-Ns; Fri, 23 Apr 2021 04:19:15 +0000
+	id 1lZnJV-000ZlS-CE; Fri, 23 Apr 2021 04:21:09 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZnHE-000ZPo-3G; Fri, 23 Apr 2021 04:18:52 +0000
+ id 1lZnIx-000Zhg-Lo; Fri, 23 Apr 2021 04:20:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
  :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=9rzZYVq39OR6Qkj8gqXLwD19tpWV3cWzF0YtPe2dTjM=; b=o4KFRDUxejy/S6fk7q82RrNT6z
- 7btIf+iGVFMxODhpSkNPhL4LK3B0T4Y+Hst6WYbz4D74VJxJzJzH66VQpGgJXsnaa1uDFXUld5c63
- F5HsBLHpIt3jDWRjX5njnEUxC5c9IU4UxiEePSSTquLTUy5nB0AVLjyrap4ri0PRvzJs8xY2C3RKt
- 3YwYCaR923WCVaE/k9F0VyI9Cm4Namz6Cegs/hjxq+iK/dV+tQ6jkjtxd3yxIZMr/B61GJQ+KOYST
- eq12esXwccJCUmDk+omIICxk54H0Sq6nNM0kFaRp7PuXPCntPAl9fxb0BNxk48E7WTfxBIk/CZbO3
- vc411iQg==;
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+ bh=bfLVBnTZtbCXme7JICbwC7/NBVO0O2WQqtAPYxM3Q/I=; b=4LqAV6FOzrhChYYeNH8873yh/P
+ ZY/v7JVMpzvEtRkjhvAh0+a5Ba50eOL5u/4I1cQwWKJzbjTQ8YgJvTryuVjrFG3146CGAhhmH+Lqi
+ EDm1Zah3ydkSFeSRX09lNkWN8fLZam9cGscXQA6PoC8FH19Gz3sqNNpC3043w6EByolxpsH6oBYDo
+ jPbZvv1I861wzhQRBYPK/UH5DnTNRu+jwTcRkloUISG+AH9cedcqp9VBBTlnAt8DcSFc2XpFmG7PA
+ toJRSm56dqI/r17ZgzOafQyi1yvV1xaE53ebhnRylOXf0hGDN79pTxI/bSew459PeT69al6jjnWae
+ +vNXVmlg==;
+Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZnHB-00E8bK-L3; Fri, 23 Apr 2021 04:18:46 +0000
-Received: by mail-io1-xd31.google.com with SMTP id k25so4713349iob.6;
- Thu, 22 Apr 2021 21:18:43 -0700 (PDT)
+ id 1lZnIv-00E8eA-3n; Fri, 23 Apr 2021 04:20:34 +0000
+Received: by mail-il1-x12a.google.com with SMTP id l9so3937088ilh.10;
+ Thu, 22 Apr 2021 21:20:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9rzZYVq39OR6Qkj8gqXLwD19tpWV3cWzF0YtPe2dTjM=;
- b=gfiLm60zKUk0E1zjwnRq9DTjBqTOJGkVuT/xyApI/WUJtQsSoVgNpWkk5muLdXHtPZ
- iaxN97bnFWE5dYHZVhlwtuOXyi5h+3dngh5nOFHQSxnVmxIPQCYtPSD2bNKQnmbTU6Cs
- tiumUx7v+M2AFRxhO896b5HRTtk44zo/gPNtONClSTt+W7seilUxqpED7411za6x3RZn
- CO8v9NP6J1XUmiFmwzlIIHAfRx51hm7CJSv+D3BRHiAzfWfVdtzhiC5r7mlaNagv6rOv
- QN5dEgkIISngYr3eVGAECrZXyuV6o2HYZAnwIZ9Xf2Mr4yH237OkGinM/kIW7KuhNlHY
- DfHg==
+ :cc; bh=bfLVBnTZtbCXme7JICbwC7/NBVO0O2WQqtAPYxM3Q/I=;
+ b=FgmcuGZ0syuiKLzYWl2tuYsRKGXhNCUX+7CwwZNf0P0+0SeVPUnX1ETJYReka0munu
+ HGb15hd/AoairCHbvNG3ESn6iZzopAD5/5Au6grcEdN8TQqKlxg/GLaNzagsNd+PmnnE
+ jzt/ljnomKZ02LXGrJvaJoZ1mltntuqhRX38vzvBC30cef9rFbWElUDEeNBZ1Xgz5OIc
+ /SD7afADmlslfruHyI37qaaQ18225zzso5yNvoLBm06YX79qq+6KidIHRX59lhu4IFma
+ uSBqATRoqZ3U+65kJspcIrZxiPBfEox7te0MzAhikMv0IfKXUTozvD/82ApZUEe4Byso
+ o7ZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=9rzZYVq39OR6Qkj8gqXLwD19tpWV3cWzF0YtPe2dTjM=;
- b=Bw1KUbT/qRp9hjPKAXvEnuqwe4Cs5sWcz+Nf2s9qzYZN7ckQE9GNE6LbxqGT5/0d4n
- qdljc94pGpoIX5cjibPJAHS/eVDF+MCPfdfVQ2LVh6YiKMNiuP4Do21bMBkPCVPPrX/m
- W7iptaz7vooWnYeaz2tpdib1DFOjd1cMlEXJ2CX6xRTZHRbjANk+ztHI0qa6a74jI5XL
- R4OvTAdxw3IXof3qw50PLR8AqelVs/ZAuVcsHGw4A02pbAWthMbsqPuGj8pu4OIqSCpd
- qQfpjkQnaCuU9Tfrb2x/I/zaRCyZhOvWDM8irfMga9W2RqQK6gJ0vn5BHLmMHuZJDvYb
- sU0A==
-X-Gm-Message-State: AOAM5318P+5csfTPsOxCKPuqaNZujM31bvb+K4zpFg4MenfFEXTMP9Bz
- QSlBbeQ5j41VO5RWU2TKfs80gvyfFnVNoK02dEg=
-X-Google-Smtp-Source: ABdhPJyvoO2pw2VSnbVSN1Ed7gAtROTBAk1433lH3abSM0SN9hl7oYq1cfZ0OGgovzbh24m6f97C5qqpgJP+XR0Eh+E=
-X-Received: by 2002:a02:662b:: with SMTP id k43mr1903647jac.139.1619151522887; 
- Thu, 22 Apr 2021 21:18:42 -0700 (PDT)
+ bh=bfLVBnTZtbCXme7JICbwC7/NBVO0O2WQqtAPYxM3Q/I=;
+ b=FXKg/zGYQOTSOtE8YcSXVnDgn4kctiEx6eMALYQgQS/3i+zCiFgL5mP1fJTJnJlHw8
+ 1Y4aYEHo2/PrKA74wiqEd8qa73Tz43B/xAh7RlBC73/Wr47PSsdZGEiD2ZpdzrYspVNS
+ l2xID1PPDdAwxyMv37GrNPFXw2M5xY7Gnfg5hEDcQqg2CNderzutOO88+oUXJ7jGh6zH
+ niMhUHpl4JrIcApLRUuvyWlTsp1hAPZB8sir0wTtnL3EcW/TrV59lJ3HyyN4HLIyt+q7
+ TAZHsTweVBab/eUL3ApTsXFM/DwF7lHwC48WNQ80qnthpE/BJAQXPzp4TGrbyXtvQtQ1
+ H43A==
+X-Gm-Message-State: AOAM533B+flh1yqy1yEugxtAh8Z5XqoKC6I+7PENvSqR/rQZHun0rQCT
+ VU3BsxQ5dZykegs/DA720Wkz81CdwhjczMB/NmM=
+X-Google-Smtp-Source: ABdhPJwgV4flQel9CUZ9T70WOiNqK8DPdVt/s0KlhhI3DsBu+w2Fia8e2pMJJA4xV/XzlTD1p/X6G3/CLSvRhF19uzw=
+X-Received: by 2002:a05:6e02:cad:: with SMTP id
+ 13mr1352525ilg.77.1619151632322; 
+ Thu, 22 Apr 2021 21:20:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210422040914.47788-1-ilya.lipnitskiy@gmail.com>
- <YIFq2NIhdMWTDshX@lunn.ch>
-In-Reply-To: <YIFq2NIhdMWTDshX@lunn.ch>
+ <20210422040914.47788-13-ilya.lipnitskiy@gmail.com>
+ <20210422092608.6b8ed5ff@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210422092608.6b8ed5ff@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Date: Thu, 22 Apr 2021 21:18:31 -0700
-Message-ID: <CALCv0x1k+Bi+nCY+yJ-n+EYbRW1keRgF35QDNPe-WCO-z8qxBw@mail.gmail.com>
-Subject: Re: [PATCH net-next 00/14] mtk_eth_soc: fixes and performance
- improvements
-To: Andrew Lunn <andrew@lunn.ch>
+Date: Thu, 22 Apr 2021 21:20:21 -0700
+Message-ID: <CALCv0x0vVzdtr=yezvHsq9TSx-nd76NiT2zYqQOuOa2W86VEqQ@mail.gmail.com>
+Subject: Re: [PATCH net-next 12/14] net: ethernet: mtk_eth_soc: reduce
+ unnecessary interrupts
+To: Jakub Kicinski <kuba@kernel.org>
 Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
  Sean Wang <sean.wang@mediatek.com>, 
  Mark Lee <Mark-MC.Lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- netdev@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, 
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210422_211845_714555_59C2B658 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20210422_212033_179452_ED3E1BBD 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,22 +112,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 22, 2021 at 5:23 AM Andrew Lunn <andrew@lunn.ch> wrote:
+On Thu, Apr 22, 2021 at 9:26 AM Jakub Kicinski <kuba@kernel.org> wrote:
 >
-> On Wed, Apr 21, 2021 at 09:09:00PM -0700, Ilya Lipnitskiy wrote:
-> > Most of these changes come from OpenWrt where they have been present and
-> > tested for months.
-> >
-> > First three patches are bug fixes. The rest are performance
-> > improvements. The last patch is a cleanup to use the iopoll.h macro for
-> > busy-waiting instead of a custom loop.
+> On Wed, 21 Apr 2021 21:09:12 -0700 Ilya Lipnitskiy wrote:
+> > @@ -1551,8 +1551,9 @@ static int mtk_napi_rx(struct napi_struct *napi, int budget)
+> >               remain_budget -= rx_done;
+> >               goto poll_again;
+> >       }
+> > -     napi_complete(napi);
+> > -     mtk_rx_irq_enable(eth, MTK_RX_DONE_INT);
+> > +
+> > +     if (napi_complete(napi))
+> > +             mtk_rx_irq_enable(eth, MTK_RX_DONE_INT);
 >
-> Do you have any benchmark numbers you can share?
-No. Felix, do you have anything handy?
-
-If needed, I'll run some tests before and after the patch series on
-OpenWrt against v5.10, but I only have an MT7621 device - should be
-better than nothing though...
+> Why not napi_complete_done(napi, rx_done + budget - remain_budget)?
+> (Modulo possible elimination of rx_done in this function.)
+No reason, I think. Thanks for pointing it out. I will clean up both
+TX and RX NAPI callbacks to use napi_complete_done and to get rid of
+that ugly goto...
 
 Ilya
 
