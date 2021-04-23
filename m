@@ -2,92 +2,90 @@ Return-Path: <SRS0=ZZ2m=JU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EBDBC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E4FE0C43460
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 06:02:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3EC09613E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 05:32:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3EC09613E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A027161404
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 06:02:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A027161404
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kYchn6S5/D4t0b2rIdocqO6UG2OfvEtFBbU6JZDxuLg=; b=bQQ5E/7r+486dDxC5TSjFgqIw
-	OlaceyNJ9OubiiatO9YW7PIAjjo+8Mb3zm0Ozca9wotijP5ajgRC9XlknOrBiDKiprk7VRjRfuxUl
-	BRHzVsiVlyxwIjELezJL+QXXekURFI4S1AoZiFoPf/thiUBuALrD83tsGO+Xg8LjSVWtTlrPhtc8r
-	NO6J9wSPQtbIoiI+cVvSf0IXHJlLXH2UwhJkCI7u0n2Mby6aPWhF0ejF85J06AHYDMMJBoCH+yb/r
-	tqVE2xyGZHbe2kZB+IoTx/YbQoR4ASTkrKDO5Hwj7FDw1qiGY1rK73MfQbMMELeEG9tZkVJvimnLD
-	kKQ8Igvvw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rWccQgKObbgHMSfx0XLQes4bvz3WPbj1f5VLcFPzeNo=; b=qXcp5qwQnGPlY8yVJeb8VtYlWJ
+	jM56q1+ISeBNzMZ29sUeBO0YesFISG/Sa4rOrt9KQNZ6sPbMZ2oOAUIEYB83shb+GrwSuWm6sjkA0
+	z9sb6BBRD1N2cfznfjc4qr9Q7iXVuZAvA0MA/nSHap9ggrc58AYFrcQn8TYnhKbL/FkrxZ6gpGYAR
+	TZyciRSuQFSGJgmvfWV1Rjpwm9xZtzq9MZT1EX6o9N8bVgktWxuZ98+3+LiIyt95QeGR06xPKenhX
+	JTWpGkftFZkDHIKbiyIpUJgElExDP19rbcAzdwdvSWHG0oDt+mRP49HRC1erc53Y3LPot++a+GxSG
+	TytP3g7Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZoQQ-000i5h-Al; Fri, 23 Apr 2021 05:32:22 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1lZoth-000nKh-6N; Fri, 23 Apr 2021 06:02:37 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZoHp-000fbb-5g; Fri, 23 Apr 2021 05:26:03 +0000
-Received: by mail-pl1-x631.google.com with SMTP id u15so16121259plf.10;
- Thu, 22 Apr 2021 22:23:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ZjOoYVT7YenRNOA8qc+XyIjvt2WMHLDSuOV16uduX+U=;
- b=U3CLhQ7h0Dxhy+BHEyMa6zfMvJ1QXxRb+OUfRqHbNtc1NYbaDgTwPylzJd10DHemPK
- tgWtd/XNQy2NjW+hjsqDm0i1SQ2Xxp18zBvNSjOCJT+gVK1/N3e9xqszGy2w/QvEDCPV
- jbI7uyGCWysHHK1M6rVrHmh9QaOjHYrQhkRG28spyUgikNXbwXwGtTrm7G1DVa/1Tm3t
- v/LFb26rxLKf+u3Oe7aQcGUrtF5Wo6iJgxezNiAHiVPaIw52CGvzAsHrmqhbkZ1nj9Vg
- GP7J6xfG0yl8mPgav+RxuFbSCAXXbsgrPA7K/DvT1E0Y2DYpVEtj6oi2e3wPIIYUSfsi
- P8Ow==
+ id 1lZor6-000n51-TB
+ for linux-mediatek@lists.infradead.org; Fri, 23 Apr 2021 06:00:04 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id
+ gq23-20020a17090b1057b0290151869af68bso602313pjb.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 22 Apr 2021 22:59:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WojFyUuBmlCNfO5VcU3mpAXT/QOV485quirzDWuFiHI=;
+ b=nEn0d/cITJwCov5cPnJMctSmaLJUrt8L/kVGZa3Mly7ka+SlPVJ9hl5z5Npj6PQ8lm
+ CHRZZ1dcQyvoWw0dUVqcLAkJrOb5kJO/cxJQCNA7xsQQi/5Th52yb4YUn0RAoGq3lnAJ
+ G+mr9b7dgd2/9zEotik+afdfzYS1OvLXhLluU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=ZjOoYVT7YenRNOA8qc+XyIjvt2WMHLDSuOV16uduX+U=;
- b=oNWA3lCQfKee0Lwfqs1TFPDrzwLOsMe1hEW71JjBAPli5KkgbLDYGNoRBuckmitmWa
- /Xwzn9Nj65hbvowgvz8XITix5HLlzbbQHvJQPfQHXcHZlwVxAhbgJbC4IRwExWkegifj
- aAeDxBRFQCd97LLRb5TvdZYgMRBBqw/pqjzVV9KjWLkGyw+HOrRMfSYIUTmGlZfxcShF
- KDaaglBOb59qsNzFQ+3VDSKPEtiGlxMgJLs3tl5CBVSiNUSgVP2hIvl8BVE29S5jiIEE
- sUDNJbjLrk5GbaF7BWihujKHQ422zJV/vERVZbsx9GViKcHhZIH9P3RQL72APurJM2Ui
- UmYw==
-X-Gm-Message-State: AOAM532OFkDVE5x06xUGRbp1N1MhJnV4ZrXCim0APKe+n5VON//gXP1a
- v4ptJ5ZiIaUXSQyrgJbMmwc=
-X-Google-Smtp-Source: ABdhPJwpbeLxgmvWdgaaDoj1/CFLwGXveStOfAhuLSfGsDI2iAwOKlTiAC7TMO1Pm1GYVNkff3cfVw==
-X-Received: by 2002:a17:902:4c:b029:ec:a39a:41ad with SMTP id
- 70-20020a170902004cb02900eca39a41admr2348006pla.52.1619155287923; 
- Thu, 22 Apr 2021 22:21:27 -0700 (PDT)
-Received: from z640-arch.lan ([2602:61:7344:f100::678])
- by smtp.gmail.com with ESMTPSA id y24sm6238825pjp.26.2021.04.22.22.21.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 22 Apr 2021 22:21:27 -0700 (PDT)
-From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=WojFyUuBmlCNfO5VcU3mpAXT/QOV485quirzDWuFiHI=;
+ b=GleoM1Xv7ahMhggyRYbNRIf92m1T0ab17GVw5uzsS99nFEJlmWMnsYA9NxJ+N843ti
+ Tu1wRXzU+EeFOmsbDjqBsCjyprdrN7DBDXE+EJn0xZsgJmGMslNztpKE5OPv7zD2oGVO
+ tXmcQtcKUJZwUW89/CO/M5joviQkSrwk/sJTCSKdciKt/g14xzglqSnZKzdKD+TuKzjH
+ 1wWGznPnUMD3coL9GHvcgy3NPEl3DoNxnxM+MM5VJUyCf6Tbqa/wdfA1EncsMwkQBxen
+ TKw02zk7dTxiR3Hhj7pMhbl1P/3mpEpN0VOieTUG0e+zXmQvapN+WBg/AEGj9a16gIu/
+ Syww==
+X-Gm-Message-State: AOAM530pOGBb1ruxeQ5yZo7R+H+GHDOK40IG1V+3KNjyVBxIePG19kVp
+ JmDTtADvvnxBmarVNTHxUDUYSg==
+X-Google-Smtp-Source: ABdhPJwYbk0jpbFk5VmmfOeLYVgcuWObCMUM6VNScD01vj0LdoNVakoEYINA9YdZxs7LcXJ3tQFLag==
+X-Received: by 2002:a17:903:244:b029:ec:9666:9fc6 with SMTP id
+ j4-20020a1709030244b02900ec96669fc6mr2176469plh.63.1619157530312; 
+ Thu, 22 Apr 2021 22:58:50 -0700 (PDT)
+Received: from localhost ([2401:fa00:9:14:308c:235d:f7a2:53a1])
+ by smtp.gmail.com with UTF8SMTPSA id m11sm6254433pjs.34.2021.04.22.22.58.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Apr 2021 22:58:49 -0700 (PDT)
+From: Eizan Miyamoto <eizan@chromium.org>
+To: linux-kernel@vger.kernel.org
+Cc: enric.balletbo@collabora.com, chunkuang.hu@kernel.org,
+ yong.wu@mediatek.com, Eizan Miyamoto <eizan@chromium.org>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-Cc: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next v2 11/15] net: ethernet: mtk_eth_soc: only read the
- full RX descriptor if DMA is done
-Date: Thu, 22 Apr 2021 22:21:04 -0700
-Message-Id: <20210423052108.423853-12-ilya.lipnitskiy@gmail.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
-References: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
+Subject: [PATCH v1 0/4] Refactor MTK MDP driver into core/components
+Date: Fri, 23 Apr 2021 15:58:37 +1000
+Message-Id: <20210423055842.2490679-1-eizan@chromium.org>
+X-Mailer: git-send-email 2.31.1.498.g6c1eba8ee3d-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_062403_322098_B58BC855 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20210423_070000_566077_2E465101 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,54 +102,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+This is an update to
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=283075
+To address some comments and fixes.
 
-Uncached memory access is expensive, and there is no need to access all
-descriptor words if we can't process them anyway
+This series has been verified to work on 5.11.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+It has been rebased on top of the series
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=464873
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index 6d23118b7a6c..4735942ed283 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -777,13 +777,18 @@ static inline int mtk_max_buf_size(int frag_size)
- 	return buf_size;
- }
- 
--static inline void mtk_rx_get_desc(struct mtk_rx_dma *rxd,
-+static inline bool mtk_rx_get_desc(struct mtk_rx_dma *rxd,
- 				   struct mtk_rx_dma *dma_rxd)
- {
--	rxd->rxd1 = READ_ONCE(dma_rxd->rxd1);
- 	rxd->rxd2 = READ_ONCE(dma_rxd->rxd2);
-+	if (!(rxd->rxd2 & RX_DMA_DONE))
-+		return false;
-+
-+	rxd->rxd1 = READ_ONCE(dma_rxd->rxd1);
- 	rxd->rxd3 = READ_ONCE(dma_rxd->rxd3);
- 	rxd->rxd4 = READ_ONCE(dma_rxd->rxd4);
-+
-+	return true;
- }
- 
- /* the qdma core needs scratch memory to be setup */
-@@ -1255,8 +1260,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
- 		rxd = &ring->dma[idx];
- 		data = ring->data[idx];
- 
--		mtk_rx_get_desc(&trxd, rxd);
--		if (!(trxd.rxd2 & RX_DMA_DONE))
-+		if (!mtk_rx_get_desc(&trxd, rxd))
- 			break;
- 
- 		/* find out which mac the packet come from. values start at 1 */
+The first two patches are unchanged from the previous series submission.
+
+
+Eizan Miyamoto (4):
+  mtk-mdp: add driver to probe mdp components
+  mtk-mdp: use pm_runtime in MDP component driver
+  media: mtk-mdp: don't pm_run_time_get/put for master comp in clock_on
+  mtk-mdp: soc: mediatek: register mdp from mmsys
+
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 191 ++++++++++++++--
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  35 +--
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 214 +++++++++++-------
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.h |   3 +
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |   4 +-
+ drivers/soc/mediatek/mtk-mmsys.c              |  20 +-
+ 6 files changed, 345 insertions(+), 122 deletions(-)
+
 -- 
-2.31.1
+2.31.1.498.g6c1eba8ee3d-goog
 
 
 _______________________________________________
