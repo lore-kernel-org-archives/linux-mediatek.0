@@ -2,80 +2,91 @@ Return-Path: <SRS0=ZZ2m=JU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B19FFC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 21:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B10E7C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33C9D61450
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 21:00:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33C9D61450
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1FEB9611BD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FEB9611BD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:Message-Id:From:
-	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MAuoBuCfJNvlRuqKa/2jwtbQmyrFlxHEV+6ZLKMKb40=; b=qinHh/QCBZ8kjxDW/rtx/dVKX
-	B6O6m1xR3Gf5bz4TwkDTAZ9ZPSypMYJmTg2RFhTc+VYMH027MkHx6fZudY+4tpPLf7iFRgxjaT6Ne
-	ZLFE8dMqnAqCsrn2Jgoc7D+nU1VZrAHKqHZIPPK9gyHPpZHpPmRSsNKcEABeTgBANVW4h0+bmh1f+
-	By20+PvNV4aLeA6BchP9EHJ9CyqPSF6vEtOfucsrIDlAhmvQXq4dxiDHLB8QDTEtfpgE0csyrzBrD
-	R56XQLmxTwZQjn7vDP7dmYk6z5iOCA7R7oF7loQDrqpcofF/gPUp4BtxXcZCDe7Cic23MANvPJ085
-	hUvsOMCxg==;
+	 bh=iCyK961ZdELPeMEreFD7WEw1SChvAbBY0ckAXNllgSo=; b=OJu1VK8lbnJeaIseceaQe2Zai
+	pEB5D+PT8QDmEf5fNthrd+kgcsGOfmQ9DfJZ6xIbC4Y30lw0TKeDpF+ioTl1c5FV24aVW5tWSRV+8
+	IdzRUF7qViEawVcTaCj5Erb/uWF8sNsPB5YPOqba3yvHPLM0iRms1ZnEPmGswcpctKLxqKXPyt2Op
+	MTVrIh65WnBouxW3gSMDzJlRxKTiqJqKq9dOBuLo5sUoctHlY7iTnGKwyj3Vq3UPZPRY0I8xb1Vm7
+	6D0KTNkKugKzKYCH7DDTnIRZfVdbSpRE/5MHm6XYD9vBOeF+Dh8f2dUNV62NoetsJgi7Il/+61uOG
+	xoFV8Vj6w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1la2uc-002MDb-Gw; Fri, 23 Apr 2021 21:00:30 +0000
+	id 1la3sa-002Sr6-8m; Fri, 23 Apr 2021 22:02:28 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la2uP-002MB7-Jn; Fri, 23 Apr 2021 21:00:17 +0000
+ id 1la3sS-002SqI-K8
+ for linux-mediatek@desiato.infradead.org; Fri, 23 Apr 2021 22:02:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Cc:To:In-Reply-To:References:Date:
- Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=8ARxZoc8cT8DwCdxIz/ZVcZYt2PRclYruF5Crog+Rwk=; b=AI30ngHFKfv1U+Z10AD9gHuJwA
- EQcyq8DsGj2NYotjEZ42iN2u9pgynzoI/bYVLwucZnOq7SiBzqgW/nfcz/h8MX8e50WX2bVBX1F+N
- ID12agi7WKD/04N+kGFCiT9dUS3fo+etI8lvPfHRgSxPVd5pz3CarpkykEMnzan+px6hpBoPS9eH4
- UIApnrKkg1FJzl3WRPHunlqeve1WFJ4m9A1jKXH9pe7KVewUd4E7ckZcDZzY5aS+UEwa4pmtWgMYY
- iLWjjCw5x1P35fcN7uxMOuqPZ5HdQVCTNuOIlH2hZPa+jW7pARxchrPs/KvKlh/JdDxvhA6PEtHND
- r+cSyqEQ==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=txAzaFOGFCQDhsIPqyEE0AiA5rJd4gPHct4Ha2du4oQ=; b=Jed2/A+gGcOLTCHg3Yc4wKrIhA
+ HTLJKOsd0v+BG27AGld5Feoz5Yvs92QMkfXTsj4RA0JGuSf3FZU0wLZkbDtG+IKejPgGhWl9mugjQ
+ KtJY2SCXFzAVLGd425Y4vrCe5+2R34PDn6HmvowK6+oTk7KXjG8oJVWB/oHN9CIPJl0iXohpBvBO4
+ skWKkxQF6t1PowvL3FLMeHsoT6DzjfSTVduIMvf4/0dH1ZqWbjCJVf8lHMSieUTOxwb5Am+L06dKq
+ ZwE9QAzmds8gK1ekmdDBkjB50iFOT7dkHZbVCEl8+Td4NXNgPWpgdWaxLIr6onLMf38OutNOhZhP3
+ oGM3nQvQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la2uM-00EhKA-GL; Fri, 23 Apr 2021 21:00:16 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPS id 321E66144E;
- Fri, 23 Apr 2021 21:00:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619211613;
- bh=qcnWhsG+IuHq4y2rRfmfmfF8Z9Aj2JAVCwOhPjy8g14=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=EFT8Wyk/V1LL6Z7jEhG8NHusjEBjeFvkxQGuJHGHLlRaSWp23pSpzYsC5Ioi8jG+y
- R+iW/2pxr4eFtEg6BpE8d/M/fHgRfoF5kneann+UGytYAPMD/MMqjVetzjdwg53hxU
- 2wJz7VnhgAC6UQXyr9f522tdiDf3ek/E3c8In2PNXqV9r6L+H+/23kUxp70piq78vs
- xUEOhZSsBK7+6dgS/LNy/oVFzHD5I4YwnDWd4jaz9246F5G+tXO6t8lOPhPl667Oae
- fUgMtstFXIv3PAlgkSBOlnz4vfE6PXxGCXCtoXq2jjij3u/YIk1pPPTxmCINyXpGG4
- Hho8zOG/uLglQ==
+ id 1la3sO-00EizL-BW
+ for linux-mediatek@lists.infradead.org; Fri, 23 Apr 2021 22:02:19 +0000
+X-UUID: df50e5722a5741ce8f492f7947bf3650-20210423
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=txAzaFOGFCQDhsIPqyEE0AiA5rJd4gPHct4Ha2du4oQ=; 
+ b=OC1MYwL7MZ4I+5KeyG9A6JZmLOCsgoUOb50NGqTfCNAVyuPkCThD2iQMVj5rvbjUd+gMbh72BZauJuxHe9kmgDd31iOePFbEb611QVI4CICBlqnM1ufXzx4rZoBLcVlqzNk29ZEbTyEM7Xi90AYEGPp9S42o+54JsUMU2SyZuRM=;
+X-UUID: df50e5722a5741ce8f492f7947bf3650-20210423
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 453822839; Fri, 23 Apr 2021 15:02:11 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 23 Apr 2021 15:02:09 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 24 Apr 2021 06:02:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 24 Apr 2021 06:02:07 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v3 3/3] mt76: mt7615: add thermal sensor device support
+Date: Sat, 24 Apr 2021 06:02:06 +0800
+Message-ID: <44af7f8bfd4d801108aed04a5494a552e4ca2c00.1619214926.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <202e3d430a232592c1194d4fdec1adb1b3703588.1619214926.git.ryder.lee@mediatek.com>
+References: <202e3d430a232592c1194d4fdec1adb1b3703588.1619214926.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next v2 00/15] mtk_eth_soc: fixes and performance
- improvements
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <161921161314.19917.14237701035571279323.git-patchwork-notify@kernel.org>
-Date: Fri, 23 Apr 2021 21:00:13 +0000
-References: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
-In-Reply-To: <20210423052108.423853-1-ilya.lipnitskiy@gmail.com>
-To: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_140014_609037_0FBFF38B 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210423_150216_423358_A3629E55 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,59 +103,184 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+Similar to mt7915, switching to use standard hwmon sysfs.
+For reading temperature, cat /sys/class/ieee80211/phy*/hwmon*/temp1_input
 
-This series was applied to netdev/net-next.git (refs/heads/master):
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+changes since v3 - none
+changes since v2 - fix build error
+---
+ .../wireless/mediatek/mt76/mt7615/debugfs.c   | 20 --------
+ .../net/wireless/mediatek/mt76/mt7615/init.c  | 50 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |  6 +--
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  3 +-
+ .../wireless/mediatek/mt76/mt7615/pci_init.c  |  4 ++
+ 5 files changed, 58 insertions(+), 25 deletions(-)
 
-On Thu, 22 Apr 2021 22:20:53 -0700 you wrote:
-> Most of these changes come from OpenWrt where they have been present and
-> tested for months.
-> 
-> First three patches are bug fixes. The rest are performance
-> improvements. The last patch is a cleanup to use the iopoll.h macro for
-> busy-waiting instead of a custom loop.
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v2,01/15] net: ethernet: mtk_eth_soc: fix RX VLAN offload
-    https://git.kernel.org/netdev/net-next/c/3f57d8c40fea
-  - [net-next,v2,02/15] net: ethernet: mtk_eth_soc: unmap RX data before calling build_skb
-    https://git.kernel.org/netdev/net-next/c/5196c4178549
-  - [net-next,v2,03/15] net: ethernet: mtk_eth_soc: fix build_skb cleanup
-    https://git.kernel.org/netdev/net-next/c/787082ab9f7b
-  - [net-next,v2,04/15] net: ethernet: mtk_eth_soc: use napi_consume_skb
-    https://git.kernel.org/netdev/net-next/c/c30c4a827390
-  - [net-next,v2,05/15] net: ethernet: mtk_eth_soc: reduce MDIO bus access latency
-    https://git.kernel.org/netdev/net-next/c/3630d519d7c3
-  - [net-next,v2,06/15] net: ethernet: mtk_eth_soc: remove unnecessary TX queue stops
-    https://git.kernel.org/netdev/net-next/c/16ef670789b2
-  - [net-next,v2,07/15] net: ethernet: mtk_eth_soc: use larger burst size for QDMA TX
-    https://git.kernel.org/netdev/net-next/c/59555a8d0dd3
-  - [net-next,v2,08/15] net: ethernet: mtk_eth_soc: increase DMA ring sizes
-    https://git.kernel.org/netdev/net-next/c/6b4423b258b9
-  - [net-next,v2,09/15] net: ethernet: mtk_eth_soc: implement dynamic interrupt moderation
-    https://git.kernel.org/netdev/net-next/c/e9229ffd550b
-  - [net-next,v2,10/15] net: ethernet: mtk_eth_soc: cache HW pointer of last freed TX descriptor
-    https://git.kernel.org/netdev/net-next/c/4e6bf609569c
-  - [net-next,v2,11/15] net: ethernet: mtk_eth_soc: only read the full RX descriptor if DMA is done
-    https://git.kernel.org/netdev/net-next/c/816ac3e6e67b
-  - [net-next,v2,12/15] net: ethernet: mtk_eth_soc: reduce unnecessary interrupts
-    https://git.kernel.org/netdev/net-next/c/16769a8923fa
-  - [net-next,v2,13/15] net: ethernet: mtk_eth_soc: rework NAPI callbacks
-    https://git.kernel.org/netdev/net-next/c/db2c7b353db3
-  - [net-next,v2,14/15] net: ethernet: mtk_eth_soc: set PPE flow hash as skb hash if present
-    https://git.kernel.org/netdev/net-next/c/fa817272c37e
-  - [net-next,v2,15/15] net: ethernet: mtk_eth_soc: use iopoll.h macro for DMA init
-    https://git.kernel.org/netdev/net-next/c/3bc8e0aff23b
-
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+index 1b414220521a..96b75f316071 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/debugfs.c
+@@ -291,24 +291,6 @@ mt7615_radio_read(struct seq_file *s, void *data)
+ 	return 0;
+ }
+ 
+-static int mt7615_read_temperature(struct seq_file *s, void *data)
+-{
+-	struct mt7615_dev *dev = dev_get_drvdata(s->private);
+-	int temp;
+-
+-	if (!mt7615_wait_for_mcu_init(dev))
+-		return 0;
+-
+-	/* cpu */
+-	mt7615_mutex_acquire(dev);
+-	temp = mt7615_mcu_get_temperature(dev, 0);
+-	mt7615_mutex_release(dev);
+-
+-	seq_printf(s, "Temperature: %d\n", temp);
+-
+-	return 0;
+-}
+-
+ static int
+ mt7615_queues_acq(struct seq_file *s, void *data)
+ {
+@@ -536,8 +518,6 @@ int mt7615_init_debugfs(struct mt7615_dev *dev)
+ 
+ 	debugfs_create_file("reset_test", 0200, dir, dev,
+ 			    &fops_reset_test);
+-	debugfs_create_devm_seqfile(dev->mt76.dev, "temperature", dir,
+-				    mt7615_read_temperature);
+ 	debugfs_create_file("ext_mac_addr", 0600, dir, dev, &fops_ext_mac_addr);
+ 
+ 	debugfs_create_u32("rf_wfidx", 0600, dir, &dev->debugfs_rf_wf);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index d84662fb0304..515933d239ba 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -8,11 +8,61 @@
+  */
+ 
+ #include <linux/etherdevice.h>
++#include <linux/hwmon.h>
++#include <linux/hwmon-sysfs.h>
+ #include "mt7615.h"
+ #include "mac.h"
+ #include "mcu.h"
+ #include "eeprom.h"
+ 
++static ssize_t mt7615_thermal_show_temp(struct device *dev,
++					struct device_attribute *attr,
++					char *buf)
++{
++	struct mt7615_dev *mdev = dev_get_drvdata(dev);
++	int temperature;
++
++	if (!mt7615_wait_for_mcu_init(mdev))
++		return 0;
++
++	mt7615_mutex_acquire(mdev);
++	temperature = mt7615_mcu_get_temperature(mdev);
++	mt7615_mutex_release(mdev);
++
++	if (temperature < 0)
++		return temperature;
++
++	/* display in millidegree celcius */
++	return sprintf(buf, "%u\n", temperature * 1000);
++}
++
++static SENSOR_DEVICE_ATTR(temp1_input, 0444, mt7615_thermal_show_temp,
++			  NULL, 0);
++
++static struct attribute *mt7615_hwmon_attrs[] = {
++	&sensor_dev_attr_temp1_input.dev_attr.attr,
++	NULL,
++};
++ATTRIBUTE_GROUPS(mt7615_hwmon);
++
++int mt7615_thermal_init(struct mt7615_dev *dev)
++{
++	struct wiphy *wiphy = mt76_hw(dev)->wiphy;
++	struct device *hwmon;
++
++	if (!IS_REACHABLE(CONFIG_HWMON))
++		return 0;
++
++	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev,
++						       wiphy_name(wiphy), dev,
++						       mt7615_hwmon_groups);
++	if (IS_ERR(hwmon))
++		return PTR_ERR(hwmon);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(mt7615_thermal_init);
++
+ static void
+ mt7615_phy_init(struct mt7615_dev *dev)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index be976fe97290..67af2e2d4779 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -2301,14 +2301,12 @@ int mt7615_mcu_set_chan_info(struct mt7615_phy *phy, int cmd)
+ 	return mt76_mcu_send_msg(&dev->mt76, cmd, &req, sizeof(req), true);
+ }
+ 
+-int mt7615_mcu_get_temperature(struct mt7615_dev *dev, int index)
++int mt7615_mcu_get_temperature(struct mt7615_dev *dev)
+ {
+ 	struct {
+ 		u8 action;
+ 		u8 rsv[3];
+-	} req = {
+-		.action = index,
+-	};
++	} req = {};
+ 
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_GET_TEMP, &req,
+ 				 sizeof(req), true);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+index 6a50338ec9f5..68c844527f65 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
+@@ -359,6 +359,7 @@ static inline int mt7622_wmac_init(struct mt7615_dev *dev)
+ }
+ #endif
+ 
++int mt7615_thermal_init(struct mt7615_dev *dev);
+ int mt7615_mmio_probe(struct device *pdev, void __iomem *mem_base,
+ 		      int irq, const u32 *map);
+ u32 mt7615_reg_map(struct mt7615_dev *dev, u32 addr);
+@@ -497,7 +498,7 @@ u32 mt7615_rf_rr(struct mt7615_dev *dev, u32 wf, u32 reg);
+ int mt7615_rf_wr(struct mt7615_dev *dev, u32 wf, u32 reg, u32 val);
+ int mt7615_mcu_set_dbdc(struct mt7615_dev *dev);
+ int mt7615_mcu_set_eeprom(struct mt7615_dev *dev);
+-int mt7615_mcu_get_temperature(struct mt7615_dev *dev, int index);
++int mt7615_mcu_get_temperature(struct mt7615_dev *dev);
+ int mt7615_mcu_set_tx_power(struct mt7615_phy *phy);
+ void mt7615_mcu_exit(struct mt7615_dev *dev);
+ void mt7615_mcu_fill_msg(struct mt7615_dev *dev, struct sk_buff *skb,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+index 49540b00519d..10bd2c2bbf1c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
+@@ -153,6 +153,10 @@ int mt7615_register_device(struct mt7615_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
++	ret = mt7615_thermal_init(dev);
++	if (ret)
++		return ret;
++
+ 	ieee80211_queue_work(mt76_hw(dev), &dev->mcu_work);
+ 	mt7615_init_txpower(dev, &dev->mphy.sband_2g.sband);
+ 	mt7615_init_txpower(dev, &dev->mphy.sband_5g.sband);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
