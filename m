@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C57FDC43460
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 02:57:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5AA1C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 02:57:28 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F10261452
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 02:57:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F10261452
+	by mail.kernel.org (Postfix) with ESMTPS id 7865761452
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 02:57:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7865761452
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z/gKCmUw6mlV5dy2kPnsxOQ870tJYenSbONTG2A/JR0=; b=Z8M5JETlgicoxDoWPEMQhwPCFh
-	RxiG7ahZC65FgTGBQGGBNBlzccmC4EDr9pbWfRazLKSnaZpBPW63YIq2wrorpWl834nMuaykXcfL9
-	Var31KbOlDb6A1joZZYrDr6jrLNJAcQVc0e4WasWqf4is2Ks8o4ip4YK0ehd2MQ3SM9MHjxv69fK3
-	5mvGBcbfZPUhqGTRa1WWb0aDm79aYC7Yli1z6Bs0V4/QqsaYXlwEjP1vP6ZUHdbYFVq5X8JqVgsSd
-	f4MIL1UdHuJSKeGknanijHkbccTgSGD+YoGjPZQvyGzsUbOqp3MhcU11PeA/IT/uXsL4FHjMBQIe0
-	/XNn1Gdw==;
+	bh=bNLnBO5TSr2twcQje+6OLIu0KzoHaoVIo8/SjXeP04E=; b=nFZ77olfbaIDXg3jj1Hzsr0K+6
+	tIuPM+vmrtrJfVMlH00QbkdxD7WL0nm1upooLY3bvfzA1gvgkQ5MjEiiIMkr3mF0ViS/CbF4J46UK
+	W+sWW5YZIcOIjL8Mg9OViWFPu2zZZcuVxANxz6Ox8vrNC6FWq1dsZRqoNDB3Hhg/BWacrZBlLbbHN
+	CKNC07OboyA2GYU3MZoaZIP9gkTi8k42hhqoJ9WpXpAK2PXLnqhsK6+ZaNMXjT1Dkc5EA6QJxe8EM
+	nfMhob895vBsbTC60B1n7llWg/ZA8V98XXmQH+jaKm1BZKO4pVtFFexDqNdcap1RYKiQV5aEiVr2J
+	2nc8jeAw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZlyi-000PX2-HR; Fri, 23 Apr 2021 02:55:36 +0000
+	id 1lZlyl-000PXi-I6; Fri, 23 Apr 2021 02:55:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZlx1-000PNx-Pw; Fri, 23 Apr 2021 02:54:13 +0000
+ id 1lZlx1-000PNy-Pw; Fri, 23 Apr 2021 02:54:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
  Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=BaYE7Js1pscfgqB83RUR3C0/Cl0mTbWr4bGIeWeNIjo=; b=ScpKEDsLe1jWBW5VkaI57uPPmJ
- QwI4fN5rb8pr8lx1sjyFaqkkbjpgKDoOoEkZ519jU5IUVF9vKC+d1SvF8XLx7zun4NtKrlUR8mYE4
- mO5TlVLWj+VWjj+LIfZhwaZX4SYmRKXTm/KPfmnAxmBQvDcEZTUpTZrpechWLHg31aFjXs9BoTEFp
- E5EB31YlLybuvzWd+W+UvAunPg/2W14b7omAFNRiLjzqEiOZItHOj65L1qz3S3YRrZtvzVh85U+JX
- vqtbMyXYCQvUdDBDP29zNPipQWiyURJAiiU90nnSn225oh0yePhVsOhG+YuyXQ9UTvRo1z4m5AG4/
- s1R55IDg==;
+ bh=sF3TYttvqDC+eXilc/crk4dkuMmLh17J6dvFL/UUtGQ=; b=RR5qwA0boWrRB+8xJ+JxwgQkvm
+ RHUWkM1zDfsrfG3UbDEIvZ9O+PPGIPy2pXo6sVddhtb/6GB2RTQ/mMcuJXY/yB0aD8MmaR23K4hOe
+ I+sq0YCbonq9+azJQc7IaG1nG/si+aPrWTAwO6kNW7zFrsc6UxyY/PhfBjmR82g4nPssa974eNrVS
+ aSlNx4kSp2jS9a42U3C+vFslH1VuqztnSSf7zT7+grYpU0M7hXgCi0itpqhcODyFJGCopeBou6N5n
+ VMfBEyi4PJkvtXfzkFYKkvyMmJz3sWRT3LKR6GnwzxMCdR8DbTAqf/EbQT3MBRT5EUTLyUnAmd0jd
+ OMo9G+PQ==;
 Received: from mail-m17640.qiye.163.com ([59.111.176.40])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZlww-00E6b7-Qf; Fri, 23 Apr 2021 02:53:48 +0000
+ id 1lZlwy-00E6bM-8K; Fri, 23 Apr 2021 02:53:49 +0000
 Received: from vivo-HP-ProDesk-680-G4-PCI-MT.vivo.xyz (unknown
  [58.250.176.229])
- by mail-m17640.qiye.163.com (Hmail) with ESMTPA id 3ABE2540162;
- Fri, 23 Apr 2021 10:53:41 +0800 (CST)
+ by mail-m17640.qiye.163.com (Hmail) with ESMTPA id DE7BE540418;
+ Fri, 23 Apr 2021 10:53:43 +0800 (CST)
 From: Wang Qing <wangqing@vivo.com>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
  Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
@@ -59,23 +59,24 @@ To: Wim Van Sebroeck <wim@linux-watchdog.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: Wang Qing <wangqing@vivo.com>
-Subject: [PATCH V7 1/2] watchdog: mtk: support pre-timeout when the bark irq
- is available
-Date: Fri, 23 Apr 2021 10:53:22 +0800
-Message-Id: <1619146403-12769-2-git-send-email-wangqing@vivo.com>
+Subject: [PATCH V7 2/2] doc: mtk-wdt: support pre-timeout when the bark irq is
+ available
+Date: Fri, 23 Apr 2021 10:53:23 +0800
+Message-Id: <1619146403-12769-3-git-send-email-wangqing@vivo.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1619146403-12769-1-git-send-email-wangqing@vivo.com>
 References: <1619146403-12769-1-git-send-email-wangqing@vivo.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZGR8dTFZKH0JPH0hMTxpDTB9VEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
+ oVCBIfWUFZGRhJQlYaGh9CTUtPT0sZGklVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
  hKTFVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRA6Aww*SD8KHg03FjcxEC5W
- UU0KCRlVSlVKTUpCSk9NT0lJTkJNVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
- SU5LVUpMTVVJSUJZV1kIAVlBTU5KTTcG
-X-HM-Tid: 0a78fca5b60fd995kuws3abe2540162
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MUk6Qzo6Mj8OLA0eFjELECMS
+ PzhPFANVSlVKTUpCSk9NT0lPTUlDVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
+ SU5LVUpMTVVJSUJZV1kIAVlBSU1NTDcG
+X-HM-Tid: 0a78fca5bf90d995kuwsde7be540418
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210422_195347_221164_C85FEEDB 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20210422_195348_477295_0D61088C 
+X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,180 +94,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the bark interrupt as the pretimeout notifier if available.
-
-When the watchdog timer expires in dual mode, an interrupt will be
-triggered first, then the timing restarts. The reset signal will be
-initiated when the timer expires again.
-
-The pretimeout notification shall occur at timeout-sec/2.
-
-V2:
-- panic() by default if WATCHDOG_PRETIMEOUT_GOV is not enabled.
-
-V3:
-- Modify the pretimeout behavior, manually reset after the pretimeout
-- is processed and wait until timeout.
-
-V4:
-- Remove pretimeout related processing. 
-- Add dual mode control separately.
-
-V5:
-- Fix some formatting and printing problems.
-
-V6:
-- Realize pretimeout processing through dualmode.
-
-V7:
-- Add set_pretimeout().
+Add description of pre-timeout in mtk-wdt.
 
 Signed-off-by: Wang Qing <wangqing@vivo.com>
 ---
- drivers/watchdog/mtk_wdt.c | 76 +++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 71 insertions(+), 5 deletions(-)
+ Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 97ca993..ab3ac5d
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -25,6 +25,7 @@
- #include <linux/reset-controller.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
-+#include <linux/interrupt.h>
+diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+index e36ba60..8e27777
+--- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
++++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+@@ -1,5 +1,8 @@
+ Mediatek SoCs Watchdog timer
  
- #define WDT_MAX_TIMEOUT		31
- #define WDT_MIN_TIMEOUT		1
-@@ -184,15 +185,23 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
- {
- 	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdt_dev);
- 	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	unsigned int timeout_interval = timeout;
- 	u32 reg;
++The watchdog supports a pre-timeout interrupt that fires timeout-sec/2
++before the expiry.
++
+ Required properties:
  
- 	wdt_dev->timeout = timeout;
--
-+	/*
-+	 * In dual mode, irq will be triggered at timeout / 2
-+	 * the real timeout occurs at timeout
-+	 */
-+	if (wdt_dev->pretimeout) {
-+		wdt_dev->pretimeout = timeout / 2;
-+		timeout_interval = wdt_dev->pretimeout;
-+	}
- 	/*
- 	 * One bit is the value of 512 ticks
- 	 * The clock has 32 KHz
- 	 */
--	reg = WDT_LENGTH_TIMEOUT(timeout << 6) | WDT_LENGTH_KEY;
-+	reg = WDT_LENGTH_TIMEOUT(timeout_interval << 6) | WDT_LENGTH_KEY;
- 	iowrite32(reg, wdt_base + WDT_LENGTH);
+ - compatible should contain:
+@@ -17,6 +20,7 @@ Required properties:
+ - reg : Specifies base physical address and size of the registers.
  
- 	mtk_wdt_ping(wdt_dev);
-@@ -239,13 +248,46 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 		return ret;
+ Optional properties:
++- interrupts: Watchdog pre-timeout (bark) interrupt.
+ - timeout-sec: contains the watchdog timeout in seconds.
+ - #reset-cells: Should be 1.
  
- 	reg = ioread32(wdt_base + WDT_MODE);
--	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	if (wdt_dev->pretimeout)
-+		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	else
-+		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
- 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
- 	iowrite32(reg, wdt_base + WDT_MODE);
- 
- 	return 0;
- }
- 
-+static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
-+					unsigned int timeout)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
-+	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	u32 reg = ioread32(wdt_base + WDT_MODE);
-+
-+	if (timeout && !wdd->pretimeout) {
-+		wdd->pretimeout = wdd->timeout / 2;
-+		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	} else if (!timeout && wdd->pretimeout) {
-+		wdd->pretimeout = 0;
-+		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	} else
-+		return 0;
-+
-+	iowrite32(reg, wdt_base + WDT_MODE);
-+
-+	return mtk_wdt_set_timeout(wdd, wdd->timeout);
-+}
-+
-+static irqreturn_t mtk_wdt_isr(int irq, void *arg)
-+{
-+	struct watchdog_device *wdd = arg;
-+
-+	watchdog_notify_pretimeout(wdd);
-+
-+	return IRQ_HANDLED;
-+}
-+
- static const struct watchdog_info mtk_wdt_info = {
- 	.identity	= DRV_NAME,
- 	.options	= WDIOF_SETTIMEOUT |
-@@ -253,12 +295,21 @@ static const struct watchdog_info mtk_wdt_info = {
- 			  WDIOF_MAGICCLOSE,
+@@ -26,6 +30,7 @@ watchdog: watchdog@10007000 {
+ 	compatible = "mediatek,mt8183-wdt",
+ 		     "mediatek,mt6589-wdt";
+ 	reg = <0 0x10007000 0 0x100>;
++	interrupts = <GIC_SPI 139 IRQ_TYPE_NONE>;
+ 	timeout-sec = <10>;
+ 	#reset-cells = <1>;
  };
- 
-+static const struct watchdog_info mtk_wdt_pt_info = {
-+	.identity	= DRV_NAME,
-+	.options	= WDIOF_SETTIMEOUT |
-+			  WDIOF_PRETIMEOUT |
-+			  WDIOF_KEEPALIVEPING |
-+			  WDIOF_MAGICCLOSE,
-+};
-+
- static const struct watchdog_ops mtk_wdt_ops = {
- 	.owner		= THIS_MODULE,
- 	.start		= mtk_wdt_start,
- 	.stop		= mtk_wdt_stop,
- 	.ping		= mtk_wdt_ping,
- 	.set_timeout	= mtk_wdt_set_timeout,
-+	.set_pretimeout	= mtk_wdt_set_pretimeout,
- 	.restart	= mtk_wdt_restart,
- };
- 
-@@ -267,7 +318,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mtk_wdt_dev *mtk_wdt;
- 	const struct mtk_wdt_data *wdt_data;
--	int err;
-+	int err, irq;
- 
- 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
- 	if (!mtk_wdt)
-@@ -279,7 +330,22 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	if (IS_ERR(mtk_wdt->wdt_base))
- 		return PTR_ERR(mtk_wdt->wdt_base);
- 
--	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq > 0) {
-+		err = devm_request_irq(&pdev->dev, irq, mtk_wdt_isr, 0, "wdt_bark",
-+					&mtk_wdt->wdt_dev);
-+		if (err)
-+			return err;
-+
-+		mtk_wdt->wdt_dev.info = &mtk_wdt_pt_info;
-+		mtk_wdt->wdt_dev.pretimeout = WDT_MAX_TIMEOUT / 2;
-+	} else {
-+		if (irq == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+
-+		mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-+	}
-+
- 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
- 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
- 	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = WDT_MAX_TIMEOUT * 1000;
 -- 
 2.7.4
 
