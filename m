@@ -8,65 +8,65 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D4D3C43460
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B603BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10CF76134F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10CF76134F
+	by mail.kernel.org (Postfix) with ESMTPS id 22B7D6134F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 22:02:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22B7D6134F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=QkaT/+D7NwOaOazacGuiwgYB4xpyrdkj7/OEbMNt0b8=; b=mEGrWkuqc2YV0vtIIsZFLCUIgO
-	wPxt9XvONx5w86lT2vVE95hRUM1oDBrfJTo+KQ3POTZD+xexDZ2pkLbOxM3E5Eu/852oQOWxVS12p
-	kMCMEL+uW30W+tcEY22W2NXxmyc33dwGABXDw5unca/OVkJSr8+pEK5PZ9CjpLiSMGgcNlFJyYy6R
-	MJ7RpHHVzWR1ENo+SxeWRYQN/17F+Wyprl47B/xxqAZYT9s3SBrkIrxNEqcJ5aZKJlYVfN0lF/mHV
-	5Jv5URR0C5d+IwWzvJxaEqJFgz6jpJspwcmbDBdl0SFV4J4OzCkF0XNJe3DW0w3dA7h28pM64oGVL
-	iYj6dS1A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aXoGn6b+uZeW/z6bfZsLOQDY084QKM/K8oqlHz/Htpg=; b=biCcD7G5l+poWtrmsYZj/N24y
+	Xmz++27xGxasAn0K82ATSVySTPqKae1RswgDwrireHq5zSLKIHsw9H1jU1bVa7sBAczZh7eV5dMqr
+	uErhjczu1tOkkpIR8Y5O/jdECQmSbUBvHZnHa5vXtLgn8nqB9fgSur67MeY161NtKRMLh283Gv3iv
+	ltzEBhYL+jpuAHhzCK02TzHTYZxzXCDwm3u19IPkC5o+UupcsbVMGuy0MLtKitpxlZ8fCaQPJG+hG
+	Ah/qXX+EA5lNJ2cTbJvRzLBH74B3jDI8+zqiogmtyvcFfuYmgf6GSMZ4M99MJkMq9r2EiKLM+m5KR
+	WdFflnklQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1la3sb-002SrB-7N; Fri, 23 Apr 2021 22:02:29 +0000
+	id 1la3sc-002SrS-Sm; Fri, 23 Apr 2021 22:02:30 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la3sR-002Sq9-Sg
+ id 1la3sR-002SqA-Sm
  for linux-mediatek@desiato.infradead.org; Fri, 23 Apr 2021 22:02:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=eCAch79qqY7cp1IAp4i0SIu5iCxsavPRppFvv2aqhCI=; b=H2tQX0Ob+9lYJ+O/XJMwnavQcc
- 7AcRG5X0BSYuxb/shJrUi4utx5upWGaM3TRApaqG+yI5FVfr62oBKcItaEca3EMrUTbGw8Vvg6H4I
- 1v7ALYi7gZleHFvZ7l3zFEF/afdycLq7er4KPYG7eb7JUx5EjOjKGpS7NA4kL8tdDcF5UvieK9PxM
- qHRmf3vsBzcNFBfEq7TpViweNBrRBnFbl05xfeAaoN2VMm1WgSq7Htwl9mgFiqw2c5jJ44weClnVb
- 6HiiWuNbS5ZOXDi44ptAGiTzXVX7UPqg5AaLMJ+pE3Jp2te2YOK2WkQO/3shUV/6pasAGBe0pfeJ6
- 8VO7RRvA==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=AlC7/S7rpx5T/TKNlZtgWdCQP/3CsZAzQoWkpxvkJZo=; b=qtmf6UTkNfhge3tcu/Y3ljtoLo
+ rwyyJvAjgov7wERLpJjkTycPbNoNJwdLOrm9cVce6dcZVk+qJRtXF8xcyiTE1GG0mSHKpO4e+h/mQ
+ f4e1IPphbt5BX/WVfhe05YfEiToM3aQ57np+NPQQ8LQ901gqDultKjcZH36Fa9UUC996jWCNEARKZ
+ 8jCgKsUbj6U+ft1tNeRBRFlC/+fj7g7YORalqvH+niM6LdQbky2v0Jufhdr+uaA3+TVSyQjO8j28S
+ Q1PtaUn+BbiFk2ubmH02zkpLmeNOL1rZJNhOXlIqAhMXCnZpRDg2pr+cACF1ltEz2Dj6mA8af3KY9
+ K7+W9Y8w==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1la3sO-00EizK-11
- for linux-mediatek@lists.infradead.org; Fri, 23 Apr 2021 22:02:17 +0000
-X-UUID: cd3754ae350640f68d2eab1f868943a0-20210423
+ id 1la3sO-00EizO-0e
+ for linux-mediatek@lists.infradead.org; Fri, 23 Apr 2021 22:02:18 +0000
+X-UUID: 2135e7fcc0d34c9f9b734b8d98b5a516-20210423
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=eCAch79qqY7cp1IAp4i0SIu5iCxsavPRppFvv2aqhCI=; 
- b=uiHY45XktLkB31QmVHBZXnNWh2m0G6cAc+HuuIfQEDr6T73I4I2MGILdoDj+P3IK+fbdYSkQ/UoruORarKqkSyp4y1WsL3YlXvID3VcGsqvT2KMCLi4XGHEGywmi8tPO+y4hU1eJiwyAkraRyjH+m0UBBAAHNz4RJ3IuTDzKRns=;
-X-UUID: cd3754ae350640f68d2eab1f868943a0-20210423
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=AlC7/S7rpx5T/TKNlZtgWdCQP/3CsZAzQoWkpxvkJZo=; 
+ b=SoxGwHdeXxdH7emEckDzbR6EKStjEAXS7rh+qjFH3NwatWnjpNcIWGhwk+boq0Qpu6gpqyobil32k6us1vQdWXKcn+t3eNGqb6tGvNx9zfUwj3v0TJpimckTPsN+KW8TPTDFUSLfppkPB5WZoZx+u3nFbMAbxtRmCbZjkNxJdWw=;
+X-UUID: 2135e7fcc0d34c9f9b734b8d98b5a516-20210423
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 664229417; Fri, 23 Apr 2021 15:02:10 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ with ESMTP id 1356815034; Fri, 23 Apr 2021 15:02:10 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 23 Apr 2021 15:02:09 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sat, 24 Apr 2021 06:02:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -76,16 +76,17 @@ To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>
 CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
  <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH v3 1/3] mt76: mt7915: add thermal sensor device support
-Date: Sat, 24 Apr 2021 06:02:04 +0800
-Message-ID: <202e3d430a232592c1194d4fdec1adb1b3703588.1619214926.git.ryder.lee@mediatek.com>
+Subject: [PATCH v3 2/3] mt76: mt7915: add thermal cooling device support
+Date: Sat, 24 Apr 2021 06:02:05 +0800
+Message-ID: <c21127ddd35fc2d2ce80c2b658eaa6f616dfa488.1619214926.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <202e3d430a232592c1194d4fdec1adb1b3703588.1619214926.git.ryder.lee@mediatek.com>
+References: <202e3d430a232592c1194d4fdec1adb1b3703588.1619214926.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: CAA27CE2FFD9A62DD4FE03E90B9CDCD29B5ACCADBCD2FB7CDFFD8C88975A8DE32000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_150216_098300_D679EA6A 
-X-CRM114-Status: GOOD (  15.10  )
+X-CRM114-CacheID: sfid-20210423_150216_097330_0A4A5452 
+X-CRM114-Status: GOOD (  22.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,172 +103,349 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This provides userspace with a unified interface, hwmon sysfs, to monitor
-temperature in the hardware and can be adapted to system monitoring tools.
+Thermal cooling device support is added to control the temperature by
+throttling the data transmission for the given duration. Throttling is
+done by adjusting Tx period by given percentage of time. The thermal
+device allows user to configure duty cycle.
 
-For reading temperature, cat /sys/class/ieee80211/phy*/hwmon*/temp1_input
+Throttling can be disabled by setting the duty cycle to 0. The cooling
+device can be found under /sys/class/thermal/cooling_deviceX/.
+Corresponding soft link to this device can be found under phy folder
+
+To set duty cycle as 80%,
+echo 80 > /sys/class/ieee80211/phy*/cooling_device/cur_state
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-changes since v3 - none
-changes since v2 - drop mutex
+changes since v3 - update phy->throttle_state from event
 ---
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 14 -----
- .../net/wireless/mediatek/mt76/mt7915/init.c  | 51 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   |  7 +--
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 +-
- 4 files changed, 56 insertions(+), 18 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 83 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 80 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 35 ++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  6 ++
+ 4 files changed, 202 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index 6a8ddeeecbe9..f1e8b076d54c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -224,18 +224,6 @@ mt7915_tx_stats_show(struct seq_file *file, void *data)
- 
- DEFINE_SHOW_ATTRIBUTE(mt7915_tx_stats);
- 
--static int mt7915_read_temperature(struct seq_file *s, void *data)
--{
--	struct mt7915_dev *dev = dev_get_drvdata(s->private);
--	int temp;
--
--	/* cpu */
--	temp = mt7915_mcu_get_temperature(dev, 0);
--	seq_printf(s, "Temperature: %d\n", temp);
--
--	return 0;
--}
--
- static int
- mt7915_queues_acq(struct seq_file *s, void *data)
- {
-@@ -390,8 +378,6 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- 	debugfs_create_file("radar_trigger", 0200, dir, dev,
- 			    &fops_radar_trigger);
- 	debugfs_create_file("ser_trigger", 0200, dir, dev, &fops_ser_trigger);
--	debugfs_create_devm_seqfile(dev->mt76.dev, "temperature", dir,
--				    mt7915_read_temperature);
- 	debugfs_create_devm_seqfile(dev->mt76.dev, "txpower_sku", dir,
- 				    mt7915_read_rate_txpower);
- 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index c13b932b0a44..b1c4dbad837c 100644
+index b1c4dbad837c..2a8a904d7246 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -2,6 +2,8 @@
- /* Copyright (C) 2020 MediaTek Inc. */
- 
+@@ -4,6 +4,7 @@
  #include <linux/etherdevice.h>
-+#include <linux/hwmon.h>
-+#include <linux/hwmon-sysfs.h>
+ #include <linux/hwmon.h>
+ #include <linux/hwmon-sysfs.h>
++#include <linux/thermal.h>
  #include "mt7915.h"
  #include "mac.h"
  #include "mcu.h"
-@@ -67,6 +69,47 @@ static const struct ieee80211_iface_combination if_comb[] = {
- 	}
+@@ -93,10 +94,80 @@ static struct attribute *mt7915_hwmon_attrs[] = {
  };
+ ATTRIBUTE_GROUPS(mt7915_hwmon);
  
-+static ssize_t mt7915_thermal_show_temp(struct device *dev,
-+					struct device_attribute *attr,
-+					char *buf)
++static int
++mt7915_thermal_get_max_throttle_state(struct thermal_cooling_device *cdev,
++				      unsigned long *state)
 +{
-+	struct mt7915_phy *phy = dev_get_drvdata(dev);
-+	int temperature;
-+
-+	temperature = mt7915_mcu_get_temperature(phy);
-+	if (temperature < 0)
-+		return temperature;
-+
-+	/* display in millidegree celcius */
-+	return sprintf(buf, "%u\n", temperature * 1000);
-+}
-+
-+static SENSOR_DEVICE_ATTR(temp1_input, 0444, mt7915_thermal_show_temp,
-+			  NULL, 0);
-+
-+static struct attribute *mt7915_hwmon_attrs[] = {
-+	&sensor_dev_attr_temp1_input.dev_attr.attr,
-+	NULL,
-+};
-+ATTRIBUTE_GROUPS(mt7915_hwmon);
-+
-+static int mt7915_thermal_init(struct mt7915_phy *phy)
-+{
-+	struct wiphy *wiphy = phy->mt76->hw->wiphy;
-+	struct device *hwmon;
-+
-+	if (!IS_REACHABLE(CONFIG_HWMON))
-+		return 0;
-+
-+	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev,
-+						       wiphy_name(wiphy), phy,
-+						       mt7915_hwmon_groups);
-+	if (IS_ERR(hwmon))
-+		return PTR_ERR(hwmon);
++	*state = MT7915_THERMAL_THROTTLE_MAX;
 +
 +	return 0;
 +}
 +
- static void
- mt7915_init_txpower(struct mt7915_dev *dev,
- 		    struct ieee80211_supported_band *sband)
-@@ -286,6 +329,10 @@ static int mt7915_register_ext_phy(struct mt7915_dev *dev)
- 	if (ret)
- 		goto error;
- 
-+	ret = mt7915_thermal_init(phy);
-+	if (ret)
-+		goto error;
++static int
++mt7915_thermal_get_cur_throttle_state(struct thermal_cooling_device *cdev,
++				      unsigned long *state)
++{
++	struct mt7915_phy *phy = cdev->devdata;
 +
- 	return 0;
- 
- error:
-@@ -739,6 +786,10 @@ int mt7915_register_device(struct mt7915_dev *dev)
- 	if (ret)
- 		return ret;
- 
-+	ret = mt7915_thermal_init(&dev->phy);
++	*state = phy->throttle_state;
++
++	return 0;
++}
++
++static int
++mt7915_thermal_set_cur_throttle_state(struct thermal_cooling_device *cdev,
++				      unsigned long state)
++{
++	struct mt7915_phy *phy = cdev->devdata;
++	int ret;
++
++	if (state > MT7915_THERMAL_THROTTLE_MAX)
++		return -EINVAL;
++
++	if (state == phy->throttle_state)
++		return 0;
++
++	ret = mt7915_mcu_set_thermal_throttling(phy, state);
 +	if (ret)
 +		return ret;
 +
- 	ieee80211_queue_work(mt76_hw(dev), &dev->init_work);
++	phy->throttle_state = state;
++
++	return 0;
++}
++
++static const struct thermal_cooling_device_ops mt7915_thermal_ops = {
++	.get_max_state = mt7915_thermal_get_max_throttle_state,
++	.get_cur_state = mt7915_thermal_get_cur_throttle_state,
++	.set_cur_state = mt7915_thermal_set_cur_throttle_state,
++};
++
++static void mt7915_unregister_thermal(struct mt7915_phy *phy)
++{
++	struct wiphy *wiphy = phy->mt76->hw->wiphy;
++
++	sysfs_remove_link(&wiphy->dev.kobj, "cooling_device");
++	thermal_cooling_device_unregister(phy->cdev);
++}
++
+ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ {
+ 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
++	struct thermal_cooling_device *cdev;
+ 	struct device *hwmon;
++	int ret = 0;
++
++	cdev = thermal_cooling_device_register(wiphy_name(wiphy), phy,
++					       &mt7915_thermal_ops);
++	if (IS_ERR(cdev))
++		return PTR_ERR(cdev);
++
++	ret = sysfs_create_link(&wiphy->dev.kobj, &cdev->device.kobj,
++				"cooling_device");
++	if (ret)
++		goto err;
++
++	phy->cdev = cdev;
  
- 	ret = mt7915_register_ext_phy(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 559ad230eabe..17a617df6dba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3469,16 +3469,17 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
+ 	if (!IS_REACHABLE(CONFIG_HWMON))
+ 		return 0;
+@@ -104,10 +175,16 @@ static int mt7915_thermal_init(struct mt7915_phy *phy)
+ 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev,
+ 						       wiphy_name(wiphy), phy,
+ 						       mt7915_hwmon_groups);
+-	if (IS_ERR(hwmon))
+-		return PTR_ERR(hwmon);
++	if (IS_ERR(hwmon)) {
++		ret = PTR_ERR(hwmon);
++		goto err;
++	}
+ 
  	return 0;
++
++err:
++	mt7915_unregister_thermal(phy);
++	return ret;
  }
  
--int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index)
-+int mt7915_mcu_get_temperature(struct mt7915_phy *phy)
- {
-+	struct mt7915_dev *dev = phy->dev;
- 	struct {
- 		u8 ctrl_id;
- 		u8 action;
--		u8 band;
-+		u8 dbdc_idx;
- 		u8 rsv[5];
- 	} req = {
- 		.ctrl_id = THERMAL_SENSOR_TEMP_QUERY,
--		.action = index,
-+		.dbdc_idx = phy != &dev->phy,
- 	};
+ static void
+@@ -740,6 +817,7 @@ static void mt7915_unregister_ext_phy(struct mt7915_dev *dev)
+ 	if (!phy)
+ 		return;
  
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_CTRL), &req,
++	mt7915_unregister_thermal(phy);
+ 	mt76_unregister_phy(mphy);
+ 	ieee80211_free_hw(mphy->hw);
+ }
+@@ -802,6 +880,7 @@ int mt7915_register_device(struct mt7915_dev *dev)
+ void mt7915_unregister_device(struct mt7915_dev *dev)
+ {
+ 	mt7915_unregister_ext_phy(dev);
++	mt7915_unregister_thermal(&dev->phy);
+ 	mt76_unregister_device(&dev->mt76);
+ 	mt7915_mcu_exit(dev);
+ 	mt7915_tx_token_put(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 17a617df6dba..e4f5f72fff29 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -349,6 +349,24 @@ mt7915_mcu_rx_csa_notify(struct mt7915_dev *dev, struct sk_buff *skb)
+ 			mt7915_mcu_csa_finish, mphy->hw);
+ }
+ 
++static void
++mt7915_mcu_rx_thermal_notify(struct mt7915_dev *dev, struct sk_buff *skb)
++{
++	struct mt76_phy *mphy = &dev->mt76.phy;
++	struct mt7915_mcu_thermal_notify *t;
++	struct mt7915_phy *phy;
++
++	t = (struct mt7915_mcu_thermal_notify *)skb->data;
++	if (t->ctrl.ctrl_id != THERMAL_PROTECT_ENABLE)
++		return;
++
++	if (t->ctrl.band_idx && dev->mt76.phy2)
++		mphy = dev->mt76.phy2;
++
++	phy = (struct mt7915_phy *)mphy->priv;
++	phy->throttle_state = t->ctrl.duty.duty_cycle;
++}
++
+ static void
+ mt7915_mcu_rx_radar_detected(struct mt7915_dev *dev, struct sk_buff *skb)
+ {
+@@ -531,6 +549,9 @@ mt7915_mcu_rx_ext_event(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	struct mt7915_mcu_rxd *rxd = (struct mt7915_mcu_rxd *)skb->data;
+ 
+ 	switch (rxd->ext_eid) {
++	case MCU_EXT_EVENT_THERMAL_PROTECT:
++		mt7915_mcu_rx_thermal_notify(dev, skb);
++		break;
+ 	case MCU_EXT_EVENT_RDD_REPORT:
+ 		mt7915_mcu_rx_radar_detected(dev, skb);
+ 		break;
+@@ -3486,6 +3507,65 @@ int mt7915_mcu_get_temperature(struct mt7915_phy *phy)
+ 				 sizeof(req), true);
+ }
+ 
++int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state)
++{
++	struct mt7915_dev *dev = phy->dev;
++	struct {
++		struct mt7915_mcu_thermal_ctrl ctrl;
++
++		__le32 trigger_temp;
++		__le32 restore_temp;
++		__le16 sustain_time;
++		u8 rsv[2];
++	} __packed req = {
++		.ctrl = {
++			.band_idx = phy != &dev->phy,
++		},
++	};
++	int level;
++
++#define TRIGGER_TEMPERATURE	122
++#define RESTORE_TEMPERATURE	116
++#define SUSTAIN_PERIOD		10
++
++	if (!state) {
++		req.ctrl.ctrl_id = THERMAL_PROTECT_DISABLE;
++		goto out;
++	}
++
++	/* set duty cycle and level */
++	for (level = 0; level < 4; level++) {
++		int ret;
++
++		req.ctrl.ctrl_id = THERMAL_PROTECT_DUTY_CONFIG;
++		req.ctrl.duty.duty_level = level;
++		req.ctrl.duty.duty_cycle = state;
++		state = state * 4 / 5;
++
++		ret = mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_PROT),
++					&req, sizeof(req.ctrl), false);
++		if (ret)
++			return ret;
++	}
++
++	/* currently use fixed values for throttling, and would be better
++	 * to implement thermal zone for dynamic trip in the long run.
++	 */
++
++	/* set high-temperature trigger threshold */
++	req.ctrl.ctrl_id = THERMAL_PROTECT_ENABLE;
++	req.trigger_temp = cpu_to_le32(TRIGGER_TEMPERATURE);
++	req.restore_temp = cpu_to_le32(RESTORE_TEMPERATURE);
++	req.sustain_time = cpu_to_le16(SUSTAIN_PERIOD);
++
++out:
++	req.ctrl.type.protect_type = 1;
++	req.ctrl.type.trigger_type = 1;
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(THERMAL_PROT),
++				 &req, sizeof(req), false);
++}
++
+ int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx)
+ {
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 42582a66e42d..453e34754c86 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -68,6 +68,29 @@ struct mt7915_mcu_rxd {
+ 	u8 s2d_index;
+ };
+ 
++struct mt7915_mcu_thermal_ctrl {
++	u8 ctrl_id;
++	u8 band_idx;
++	union {
++		struct {
++			u8 protect_type; /* 1: duty admit, 2: radio off */
++			u8 trigger_type; /* 0: low, 1: high */
++		} __packed type;
++		struct {
++			u8 duty_level;	/* level 0~3 */
++			u8 duty_cycle;
++		} __packed duty;
++	};
++} __packed;
++
++struct mt7915_mcu_thermal_notify {
++	struct mt7915_mcu_rxd rxd;
++
++	struct mt7915_mcu_thermal_ctrl ctrl;
++	__le32 temperature;
++	u8 rsv[8];
++} __packed;
++
+ struct mt7915_mcu_csa_notify {
+ 	struct mt7915_mcu_rxd rxd;
+ 
+@@ -262,6 +285,7 @@ enum {
+ 	MCU_EXT_CMD_FW_LOG_2_HOST = 0x13,
+ 	MCU_EXT_CMD_TXBF_ACTION = 0x1e,
+ 	MCU_EXT_CMD_EFUSE_BUFFER_MODE = 0x21,
++	MCU_EXT_CMD_THERMAL_PROT = 0x23,
+ 	MCU_EXT_CMD_STA_REC_UPDATE = 0x25,
+ 	MCU_EXT_CMD_BSS_INFO_UPDATE = 0x26,
+ 	MCU_EXT_CMD_EDCA_UPDATE = 0x27,
+@@ -1066,6 +1090,17 @@ enum {
+ 	THERMAL_SENSOR_TASK_CTRL,
+ };
+ 
++enum {
++	THERMAL_PROTECT_PARAMETER_CTRL,
++	THERMAL_PROTECT_BASIC_INFO,
++	THERMAL_PROTECT_ENABLE,
++	THERMAL_PROTECT_DISABLE,
++	THERMAL_PROTECT_DUTY_CONFIG,
++	THERMAL_PROTECT_MECH_INFO,
++	THERMAL_PROTECT_DUTY_INFO,
++	THERMAL_PROTECT_STATE_ACT,
++};
++
+ enum {
+ 	MT_EBF = BIT(0),	/* explicit beamforming */
+ 	MT_IBF = BIT(1)		/* implicit beamforming */
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 80eb35231a1a..d5296e2d481b 100644
+index d5296e2d481b..43e3d977cdb2 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -357,7 +357,7 @@ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
- 			    const struct mt7915_dfs_pattern *pattern);
+@@ -39,6 +39,8 @@
+ #define MT7915_5G_RATE_DEFAULT		0x4b	/* OFDM 6M */
+ #define MT7915_2G_RATE_DEFAULT		0x0	/* CCK 1M */
+ 
++#define MT7915_THERMAL_THROTTLE_MAX	100
++
+ struct mt7915_vif;
+ struct mt7915_sta;
+ struct mt7915_dfs_pulse;
+@@ -127,6 +129,9 @@ struct mt7915_phy {
+ 
+ 	struct ieee80211_vif *monitor_vif;
+ 
++	struct thermal_cooling_device *cdev;
++	u8 throttle_state;
++
+ 	u32 rxfilter;
+ 	u64 omac_mask;
+ 
+@@ -358,6 +363,7 @@ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
  int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
  int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
--int mt7915_mcu_get_temperature(struct mt7915_dev *dev, int index);
-+int mt7915_mcu_get_temperature(struct mt7915_phy *phy);
+ int mt7915_mcu_get_temperature(struct mt7915_phy *phy);
++int mt7915_mcu_set_thermal_throttling(struct mt7915_phy *phy, u8 state);
  int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx);
  int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
  			   struct ieee80211_sta *sta, struct rate_info *rate);
