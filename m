@@ -2,102 +2,74 @@ Return-Path: <SRS0=ZZ2m=JU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF187C43461
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 16:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64B8FC433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 17:28:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37A8B61482
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 16:47:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37A8B61482
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E577C608FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Apr 2021 17:28:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E577C608FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tw+MR68Y16rqgImtYs+0TsMCj0TjW2asQr9xIG3RzQg=; b=hKku79Z9pdKPctsGR66HjQJlx
-	cIqIhCh+sNV1cYLOBjhQCtVf7KjI4nrVfOfC1IeogyK2p58AiMoUhWhmqzskmr4bZhu6mVfvbAxpM
-	fjhNZmvTE2V4wJhfHYjGh/Cz3roQfXQc+AZnO8SvmvqCj96EbrQbQftU2rDficiftFyFJAA9sKPSV
-	o/RlSmRqW15LxUxC6WmamRSOlY2H8WDGzGSKx7qNZvEcJByMZXcbVPbx/Mo+Ev4j2le3Ge99gsfo6
-	kfjx5TuOL1TvRPRMpBZiSwnofPNa8WpnYN5OxAUis4eIF3Xwnak3XokFgCbilOJUIpiraQsNBaWbU
-	1ynXNmB5Q==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hZZm8H3df0x2S0cPQCc1/1BV5sKmtJfxCy74ZYeqZrw=; b=L/qqc38PTCo9Ircp8WYbv8nGwG
+	6SgtJoTWL5RXYYM0vr4VFmGNvkanBbfD1mvOEw0lYjKRlkiCg+v+aFya6lUw9dGEQ2R2IyyZV+EPP
+	kHaoG3Ii3Ik/1/nOcrPIAm1XNZ9o1aWf0dRU/VxBmCgOgBVm5QcP+GeEvsnux/bImYy8JhEskTLLE
+	zUZ5kfCMyEUZktqcy7dve6xbHIfY7s7ReP/XePLy0W5yU6Nq/jh7RzAVnuOjnvJYaB9rg7c1CfgvA
+	xaRYqwiacyLaboQj4YV77ESNDmwuHXThImoUHJb8Mtp6rmzaCIiP2NSfNep10myCCgJXXDKw0ICCA
+	dzAF5NbA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZyxj-001vL8-7P; Fri, 23 Apr 2021 16:47:27 +0000
+	id 1lZzbB-0020m1-6M; Fri, 23 Apr 2021 17:28:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZyxT-001vJY-5V; Fri, 23 Apr 2021 16:47:11 +0000
+ id 1lZzax-0020kk-Oe; Fri, 23 Apr 2021 17:27:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Jiu2CnPrgJlZKOacLkwJ8LJ+LZThWvCdLjqGPP9/CBQ=; b=CDBrnAjnGWn+2WtmZ8VUZdOBdc
- SnTlDL874JPkAKzdZsPf1M3+JvK5FXJ+I6259LgE/2QIMu4Gd3vpRPIB1ZAgYQTIOVry/y+JQcF2D
- a1DgbGb9JUSWFo9a62KYBcS/2EFiFBNxU3EWonpAGnsHKZ1Rpd3sr9ZA8KPsWYMoQPPGYUXip7Fdm
- 7Pm9l7CPTVxJbFdHcrWsmD2CvBcr77a/yMRP6smV8T23mA3rGeRJcxHRM2Hz1XJSnkDVsPSEouvvg
- aErbWQo1qWocFyhrClTlt0e7b2CziVYSNppBV5IYJz9y5+TwNZxGSOW1/H3YUZ9Wr1yvAFcfgii5R
- VpEt8bFA==;
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=gvl56fYnLpHhLJvB6UVqd/NKK076ova45HsUmXI7OmQ=; b=kM34yf7hey3jkW8QUB3oYHu6bn
+ mSFUKzgzPPrbYq+uOdBPk8itj385NdeP71B64xkKzhc64e/omMc0UuVbSmhxO+28T3scS8p1HdjzD
+ bxjHlYwB6IN18aQEAsGq0+kJpRB3e9TCAo3SDKFw/F8wqTj0VOS6/vmnyNwg4sXUWUoKODxlyKUEJ
+ jWEpNsrUtreiVGvaEIqRVvQ/TzOMG4IN7WhQsHjuIR4jNBrzGOdfVUBpVER23GJbu32U9MUb/jNbM
+ wGW/XAmKXuWjyGJy60H0K06FoVkVa5ljg1GkYoGXT8yH+II3CINcg7hLwsEAM504GwAHcTphXsACn
+ TJx8kQuQ==;
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lZyxP-00EYwx-TR; Fri, 23 Apr 2021 16:47:09 +0000
-Received: by mail-ed1-x533.google.com with SMTP id h10so58132258edt.13;
- Fri, 23 Apr 2021 09:47:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Jiu2CnPrgJlZKOacLkwJ8LJ+LZThWvCdLjqGPP9/CBQ=;
- b=I6GEuDgJNDT+Qs+mwBu0cU71fDssIorLBZ+1WPka/mh9dnoBGLeT7q/KdEOE2rZdmB
- GYrLgQj7tnit4o5Qw+rhee/H1vLmV5m1RgBufwd8rtvVGXWNO26QrJfvzj5drP8EQlY8
- m3iRLYayyxnn0S58d3zLrK83tSjBAO+UN6r/8ERJpAT0QLm3FQivr6dZq037/RlugCQL
- 4CbD6wfzCnoLL5mQxtde1Sng+r30b3+p3JW5m9QEzMQ11E8oV43/YiTQuLNORSRCy2kh
- 85Nc2QB2j8UfEZfQNawxVEofGTE1yupGLwuyEwplalE//d9aljwJh4Hd77f4ozTqhI3h
- JuKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Jiu2CnPrgJlZKOacLkwJ8LJ+LZThWvCdLjqGPP9/CBQ=;
- b=K/UJrdMdblKjDpjGpDGGTYq3fAEn+6kdY5sjonHuuYuXq1gft4dBrDtc1BLCkorPd3
- nWXwlx/9kS64uQu20h6WG3adSqWpBCixZHWE4co7jmABnYgfmcSptAlVl48YMB8nd92/
- mU6/X1h4o2FqQwDKDRHpOCTfSuA0wZo5aaEMEdE0WUe4OYno9AtNR1kXMwm063F3yTW3
- HK5phJqilo6fTgCyfFJVu/IcD3D1Cgei4fAl5hYdhOWZ1JuwXr7Ri+0opXAOthuje3p7
- PzdpofvpBKjTOMmFPDY0/IZfm7hgogPu6b5XxfT1pt2eTPYGyn77SzdgTAC/7VGpNbQ7
- MNfA==
-X-Gm-Message-State: AOAM530IQxaBSY1cXLBpjvyeGfGL8GdTVTsdpQzb+ODGbnZfUJwOI4j/
- eOcQB2OyhXWAi4vj6vCmPnk=
-X-Google-Smtp-Source: ABdhPJztzmxtzdsfzQYgnh3Csc0vESlubuEhwO8pHyjkXw6UK6ImN6Go/GxbiALYAyrZX1X72TORdQ==
-X-Received: by 2002:a05:6402:c:: with SMTP id
- d12mr5556664edu.100.1619196426033; 
- Fri, 23 Apr 2021 09:47:06 -0700 (PDT)
-Received: from localhost ([62.96.65.119])
- by smtp.gmail.com with ESMTPSA id mm8sm4456113ejb.28.2021.04.23.09.47.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Apr 2021 09:47:04 -0700 (PDT)
-Date: Fri, 23 Apr 2021 18:47:54 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Cc: u.kleine-koenig@pengutronix.de, lee.jones@linaro.org,
- matthias.bgg@gmail.com, linux-pwm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] pwm: mediatek: remove unused function
-Message-ID: <YIL6OoqF+CtGyi1p@orome.fritz.box>
-References: <1618475753-102123-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-MIME-Version: 1.0
-In-Reply-To: <1618475753-102123-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-User-Agent: Mutt/2.0.6 (98f8cb83) (2021-03-06)
+ id 1lZzav-00EajD-1p; Fri, 23 Apr 2021 17:27:58 +0000
+Received: from guri.fritz.box (unknown
+ [IPv6:2a02:810a:880:f54:79a2:c598:7744:783a])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 735381F43D84;
+ Fri, 23 Apr 2021 18:27:52 +0100 (BST)
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: dafna.hirschfeld@collabora.com, kernel@collabora.com, dafna3@gmail.com,
+ enric.balletbo@collabora.com, tiffany.lin@mediatek.com,
+ andrew-ct.chen@mediatek.com, minghsiu.tsai@mediatek.com,
+ houlong.wei@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com,
+ linux-media@vger.kernel.org
+Subject: [PATCH] media: mtk-vpu: on suspend,
+ read/write regs only if vpu is running
+Date: Fri, 23 Apr 2021 19:27:45 +0200
+Message-Id: <20210423172745.30092-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210423_094707_976735_3FC19D68 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20210423_102757_227075_C4FA84BE 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,71 +81,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8358257957554019204=="
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+If the vpu is not running, we should not relay on VPU_IDLE_REG
+value. In this case, the suspend cb should only unprepare the
+clock. This fixes a system-wide suspend to ram failure:
 
---===============8358257957554019204==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="UDuYcdOPnu8vXxWU"
-Content-Disposition: inline
+[  273.073363] PM: suspend entry (deep)
+[  273.410502] mtk-msdc 11230000.mmc: phase: [map:ffffffff] [maxlen:32] [final:10]
+[  273.455926] Filesystems sync: 0.378 seconds
+[  273.589707] Freezing user space processes ... (elapsed 0.003 seconds) done.
+[  273.600104] OOM killer disabled.
+[  273.603409] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+[  273.613361] mwifiex_sdio mmc2:0001:1: None of the WOWLAN triggers enabled
+[  274.784952] mtk_vpu 10020000.vpu: vpu idle timeout
+[  274.789764] PM: dpm_run_callback(): platform_pm_suspend+0x0/0x70 returns -5
+[  274.796740] mtk_vpu 10020000.vpu: PM: failed to suspend: error -5
+[  274.802842] PM: Some devices failed to suspend, or early wake event detected
+[  275.426489] OOM killer enabled.
+[  275.429718] Restarting tasks ...
+[  275.435765] done.
+[  275.447510] PM: suspend exit
 
+Fixes: 1f565e263c3e ("media: mtk-vpu: VPU should be in idle state before system is suspended")
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ drivers/media/platform/mtk-vpu/mtk_vpu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
---UDuYcdOPnu8vXxWU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index 043894f7188c..f49f6d53a941 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -987,6 +987,12 @@ static int mtk_vpu_suspend(struct device *dev)
+ 		return ret;
+ 	}
+ 
++	if (!vpu_running(vpu)) {
++		vpu_clock_disable(vpu);
++		clk_unprepare(vpu->clk);
++		return 0;
++	}
++
+ 	mutex_lock(&vpu->vpu_mutex);
+ 	/* disable vpu timer interrupt */
+ 	vpu_cfg_writel(vpu, vpu_cfg_readl(vpu, VPU_INT_STATUS) | VPU_IDLE_STATE,
+-- 
+2.17.1
 
-On Thu, Apr 15, 2021 at 04:35:53PM +0800, Jiapeng Chong wrote:
-> Fix the following clang warning:
->=20
-> drivers/pwm/pwm-mediatek.c:110:19: warning: unused function
-> 'pwm_mediatek_readl' [-Wunused-function].
->=20
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-> ---
->  drivers/pwm/pwm-mediatek.c | 6 ------
->  1 file changed, 6 deletions(-)
-
-Applied, thanks.
-
-Thierry
-
---UDuYcdOPnu8vXxWU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmCC+joACgkQ3SOs138+
-s6GMFA/+Ov/ZsslM92MqD1LXtllAdQoyXgyArwL6x6OfuwJlg9S/tgH94R2efhpR
-JuMMyW/E/zpvLI+22EgS/ASWtGE2R+Y6NnjHz65mRBiDgo1WLhHOn2b90YbIN7wG
-C7usfcDOex1KKJxYPBboKkcqyKpU60eGkPI8Wu/H9tNgLz2KnzUSxy3vvI6nI70d
-SP9341phubwxTsvV8hABZsmeKLg89UfsnvQ9IdEQBcvvDnHBlb3R4oTqkGdvy906
-Z1EOrtD3BrCQjTm6H2FlSLdlpNiy4jAa5ptfsaAUhA88Wyawf0KWN7kpX1pT5BkI
-mieOLbsEPWiCnIzktGt9TvAQ80pyAu/vWiaO1jnadYGwOLIUT8Eb/K1rJjnvfiO/
-IjbjIkWz68LCA+qZ0lPQPRbL0ZmeaBL5RDdj7npFLutLHOCptRbHgg3BfI7SZHrY
-N6B89MRIJlRhsqCGbyGCAVzqftQdaytGfx0AwHCsvTRHTxrPKNxuY7JYP/iaVJo9
-mF+nPNhcTxdH/RJaI5qVnJhIYvb1yr6cpXSkjSsesHJBRqP++SEyeBeyzFFw6j2s
-kECJtkMjw39eNAFcg5Pfol8pFp0PCdHkCr2THp24qNy8PGTuo7Fy+kwbEndP/I7l
-RyeY8duMnJ+8uHw7PTwwU30hynY2nqk9hTo/XTB/jBNBeJ8u7uM=
-=Z3fH
------END PGP SIGNATURE-----
-
---UDuYcdOPnu8vXxWU--
-
-
---===============8358257957554019204==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8358257957554019204==--
-
