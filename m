@@ -2,143 +2,87 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA81FC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 10:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5708C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 11:56:58 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 495E960FE9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 10:55:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 495E960FE9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
+	by mail.kernel.org (Postfix) with ESMTPS id 867C061178
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 11:56:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 867C061178
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=z/bbfytfNqBFRN4zMFkhBVrvGx5Jlow9KmHdJHlMdno=; b=Ypk+eEr6duUE5uzSEHUSlWPYK
-	X5kKpzl+gZ4mX0zpqrFA0XNDsiJGphmEFbsCGHTvnuG75+1bqKtVC5nOrXmv8nYARUZPNYUFgko1p
-	aywDMPA+wqI1/faXQnlxdVQmdJazu00sF35/i2taklaO+1u9yBupVUVXRkqQ3kgsRSaU4fWzYAjrM
-	1dP0TANcOV8+Eg5aOPBi0oRV6FoQI07pH0TAbxZyiJvVjcowaenbEcLvOPmM3UjZtCxE5qxOd1/Ot
-	c9oRPoJbe4MWmMI0sH2U2bOPtyHZGT3zbG1N90Jsp5EygexMoYtg6UNfWeQNRWbHu24IB6nM5kZyR
-	YUeHQ8f6Q==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SMS5GyeIajG6fXtE5uP5IUmMwsaW06LoZM816x3tt50=; b=gtn+QioovLx4I+6LfeIDTDWUmK
+	Hf3vePxKuKGdp8a/u+dPDEobHwS+YZonyqjxqtX4R+5jSJPpTATvfi9hoF6K8H6CCmeprA15eksFt
+	XZoR2n3Wmz6MyZP3jP0lJj5GFvqq4JD0Fl5hxhBWIqJ1lfnJGFboVQvmsy0yeC7xKPbTFJEpNSyb6
+	lVVs2zi746RfAJeunBeW5FIEbPOnuYbOKpPDsYCQr1MEYPML+/ucz+6/iour+qhz5qmMHTb9SW1AQ
+	97Q25ewwwdhIG3hOrZqY5Bbq8oSIl7XLYEZ949L6NJQ92Z3LTQFOK1a9tYrW+A3gW83IuvQst3vff
+	b2l7dt3g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1layt1-007Seq-B1; Mon, 26 Apr 2021 10:54:43 +0000
+	id 1lazr5-007Xnr-FR; Mon, 26 Apr 2021 11:56:47 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1laysw-007SeQ-Ta; Mon, 26 Apr 2021 10:54:39 +0000
+ id 1lazqt-007Xle-7K; Mon, 26 Apr 2021 11:56:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-ID:References:In-Reply-To:
- Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=Wk++B/L7nejW/Tu85IzTL8HKq5haXmWBuSRGMq5G9Vc=; b=eZQOKXOZKb+o5jdMltpFeOvHZR
- PaFQt1XvTbzvB0YncdWNSi2kAJ06I4Ho+olT9YpA9iFroWNqoqHnLFABCF7JF87x1p5tlbqUmHwHF
- s4K/Dl+anFcAD+fyQ6UJR17RO70qOo/7u8e4oqC6hA6q3htSWjlID9UxiTbfMMDFr/r2RcyEo6yWN
- sd+nhiRG1mi8ygwoKVIN5fhpZ58PBhAidQQAiUUfA23ssyo2ZzQJgGQJhDf8i7wqpF/pAXPWIA5KQ
- LUIjoIN2XGGFiM4TvjsDZCw2dwhbiExY9OvkKyBOuwOekczrIzCtMwbXsFk+39NO9+XtdiPALPpGu
- usdaEuyw==;
-Received: from ssl.serverraum.org ([176.9.125.105])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=O1BkcKCnTvCbuoEYkLMRDYyeDiUJ63VH5SsbNsf6VCo=; b=npofQ9uYfsj7uQaRoViO4JEVX3
+ nOknsDHlRjo/csDgQaH5W/ftML28RjytD3/FQiCsDNosYq+SAyngr1uyNB5htSEYglK8WYYb+836X
+ s8hLaQmX/eKA73qOeAR+5YyjUyI/0cXE+L0kAeBEVeybVhqLvo8qNGsIL+QDLLAUjn8KmOSU2RdSf
+ U6jrb/V8SE9FIjX2DwbtKD0iG+EWURobqggdfi0ojsAhy8g3CnmdllkW7xu5P3F/0rMYIMByMKEeh
+ oTBvyS/Mc5pV6GvRO/EG9oC6XtkJd3T5Z/qDRz9xzSxISatgsUBBN2XDJpnBoTYeIRpUeJ1dsjxQH
+ r01arbiQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1layst-00FuT9-PD; Mon, 26 Apr 2021 10:54:37 +0000
-Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ssl.serverraum.org (Postfix) with ESMTPSA id C353C22236;
- Mon, 26 Apr 2021 12:54:08 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
- s=mail2016061301; t=1619434464;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Wk++B/L7nejW/Tu85IzTL8HKq5haXmWBuSRGMq5G9Vc=;
- b=aBLItzwTpMLhnbBUfRwBioPVMyZiTU0Pj1H6UNIlRFQlCvrRQC9+sCwg7Wn5J+XsvHZln5
- Tw13ybstx1ba3ts9pwi2ty81rvOdnoEZ8zIsZqSHZ7psnqzBT46f85vFqJlTddaAXCPvqK
- P1t1rcsQHgB7iSTeBLTyQ5gE26gcAtQ=
+ id 1lazqq-00FwAX-0o; Mon, 26 Apr 2021 11:56:33 +0000
+X-UUID: be7bbb99c41d4ed79e0178e6a4d59f6a-20210426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=O1BkcKCnTvCbuoEYkLMRDYyeDiUJ63VH5SsbNsf6VCo=; 
+ b=tCSTRGJbWdh2QTCOWp01Fde8j73Fd0iRs8oTE4OEUxJyhx7uYqDfAJ7Du5Y9jBy+MLYFy8wNTy43Mz7UH9QTQWFptzw/6QU9MKFWsSW9M997rjD1Sa+JjdO4V2j6DPsG+IdMpiI6OkiLcfM+loWSURmILBIslt1C9QK6W+LdzeI=;
+X-UUID: be7bbb99c41d4ed79e0178e6a4d59f6a-20210426
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 720530267; Mon, 26 Apr 2021 04:56:25 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Apr 2021 04:46:23 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Apr 2021 19:46:22 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 26 Apr 2021 19:46:19 +0800
+From: <qii.wang@mediatek.com>
+To: <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>
+Subject: [PATCH] i2c: mediatek: Rename i2c irq name
+Date: Mon, 26 Apr 2021 19:46:15 +0800
+Message-ID: <1619437575-23482-1-git-send-email-qii.wang@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-Date: Mon, 26 Apr 2021 12:54:08 +0200
-From: Michael Walle <michael@walle.cc>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>, QCA ath9k Development
- <ath9k-devel@qca.qualcomm.com>, Microchip Linux Driver Support
- <UNGLinuxDriver@microchip.com>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, linux-kernel@vger.kernel.org,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, netdev
- <netdev@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, "open list:MEDIA DRIVERS FOR RENESAS -
- FCP" <linux-renesas-soc@vger.kernel.org>, "moderated list:ARM/STM32
- ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, "open
- list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- linux-oxnas@groups.io, linux-omap <linux-omap@vger.kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>, devicetree@vger.kernel.org,
- linux-staging@lists.linux.dev, Andrew Lunn <andrew@lunn.ch>, Gregory Clement
- <gregory.clement@bootlin.com>, Sebastian Hesselbarth
- <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Michael Ellerman <mpe@ellerman.id.au>, Paul Mackerras <paulus@samba.org>,
- Andreas Larsson <andreas@gaisler.com>, "David S . Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Maxime Ripard
- <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
- <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, Chris Snook
- <chris.snook@gmail.com>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
- <rafal@milecki.pl>, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu
- Beznea <claudiu.beznea@microchip.com>, Sunil Goutham <sgoutham@marvell.com>,
- Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur <madalin.bucur@nxp.com>,
- Pantelis Antoniou <pantelis.antoniou@gmail.com>, Claudiu Manoil
- <claudiu.manoil@nxp.com>, Li Yang <leoyang.li@nxp.com>, Yisen Zhuang
- <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Hauke
- Mehrtens <hauke@hauke-m.de>, Thomas Petazzoni
- <thomas.petazzoni@bootlin.com>, Vadym Kochan <vkochan@marvell.com>, Taras
- Chornyi <tchornyi@marvell.com>, Mirko Lindner <mlindner@marvell.com>,
- Stephen Hemminger <stephen@networkplumber.org>, Felix Fietkau
- <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
- <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Bryan Whitehead
- <bryan.whitehead@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Sergei
- Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Jose
- Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
- <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman
- <khilman@baylibre.com>, Neil Armstrong <narmstrong@baylibre.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Vinod Koul <vkoul@kernel.org>,
- Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Grygorii Strashko
- <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri
- <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>, Radhey Shyam
- Pandey <radhey.shyam.pandey@xilinx.com>, Kalle Valo <kvalo@codeaurora.org>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Stanislaw Gruszka <stf_xl@wp.pl>, Helmut Schaa
- <helmut.schaa@googlemail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank
- Rowand <frowand.list@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, =?UTF-8?Q?J=C3=A9r=C3=B4me_Pouiller?=
- <jerome.pouiller@silabs.com>, Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>
-Subject: Re: [PATCH net-next v4 2/2] of: net: fix of_get_mac_addr_nvmem() for
- non-platform devices
-In-Reply-To: <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
-References: <20210412174718.17382-1-michael@walle.cc>
- <20210412174718.17382-3-michael@walle.cc>
- <730d603b12e590c56770309b4df2bd668f7afbe3.camel@kernel.crashing.org>
- <8157eba9317609294da80472622deb28@walle.cc>
- <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
-User-Agent: Roundcube Webmail/1.4.11
-Message-ID: <108f268a35843368466004f7fe5f9f88@walle.cc>
-X-Sender: michael@walle.cc
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_035436_161677_5661C5D0 
-X-CRM114-Status: GOOD (  32.93  )
+X-CRM114-CacheID: sfid-20210426_045632_091125_41951C2F 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,99 +94,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 2021-04-16 17:19, schrieb Rob Herring:
-> On Fri, Apr 16, 2021 at 2:30 AM Michael Walle <michael@walle.cc> wrote:
->> 
->> Am 2021-04-16 05:24, schrieb Benjamin Herrenschmidt:
->> > On Mon, 2021-04-12 at 19:47 +0200, Michael Walle wrote:
->> >>
->> >>  /**
->> >>   * of_get_phy_mode - Get phy mode for given device_node
->> >> @@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np,
->> >> const char *name, u8 *addr)
->> >>  static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
->> >>  {
->> >>         struct platform_device *pdev = of_find_device_by_node(np);
->> >> +       struct nvmem_cell *cell;
->> >> +       const void *mac;
->> >> +       size_t len;
->> >>         int ret;
->> >>
->> >> -       if (!pdev)
->> >> -               return -ENODEV;
->> >> +       /* Try lookup by device first, there might be a
->> >> nvmem_cell_lookup
->> >> +        * associated with a given device.
->> >> +        */
->> >> +       if (pdev) {
->> >> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
->> >> +               put_device(&pdev->dev);
->> >> +               return ret;
->> >> +       }
->> >> +
->> >
->> > This smells like the wrong band aid :)
->> >
->> > Any struct device can contain an OF node pointer these days.
->> 
->> But not all nodes might have an associated device, see DSA for 
->> example.
-> 
-> I believe what Ben is saying and what I said earlier is going from dev
-> -> OF node is right and OF node -> dev is wrong. If you only have an
-> OF node, then use an of_* function.
-> 
->> And as the name suggests of_get_mac_address() operates on a node. So
->> if a driver calls of_get_mac_address() it should work on the node. 
->> What
->> is wrong IMHO, is that the ethernet drivers where the corresponding
->> board
->> has a nvmem_cell_lookup registered is calling 
->> of_get_mac_address(node).
->> It should rather call eth_get_mac_address(dev) in the first place.
->> 
->> One would need to figure out if there is an actual device (with an
->> assiciated of_node), then call eth_get_mac_address(dev) and if there
->> isn't a device call of_get_mac_address(node).
-> 
-> Yes, I think we're all in agreement.
-> 
->> But I don't know if that is easy to figure out. Well, one could start
->> with just the device where nvmem_cell_lookup is used. Then we could
->> drop the workaround above.
-> 
-> Start with the ones just passing dev.of_node directly:
-> 
-> $ git grep 'of_get_mac_address(.*of_node)'
+From: Qii Wang <qii.wang@mediatek.com>
 
-[..]
+Rename i2c irq name with dev_name() which can provide unique
+naming in /proc/interrupts for each instance of the I2C IP core.
 
-Before I'll try to come up with a patch for this, I'd like to get
-your opinion on it.
+Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-(1) replacing of_get_mac_address(node) with eth_get_mac_address(dev)
-     might sometimes lead to confusing comments like in
-     drivers/net/ethernet/allwinner/sun4i-emac.c:
-
-     /* Read MAC-address from DT */
-     ret = of_get_mac_address(np, ndev->dev_addr);
-
-     Do we live with that or should the new name somehow reflect that
-     it is taken from the device tree.
-
-(2) What do you think of eth_get_mac_address(ndev). That is, the
-     second argument is missing and ndev->dev_addr is used.
-     I'm unsure about it. We'd still need a second function for drivers
-     which don't write ndev->dev_addr directly, but have some custom
-     logic in between. OTOH it would be like eth_hw_addr_random(ndev).
-
--michael
-
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index 5ddfa4e..ea337ba 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -1281,7 +1281,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 
+ 	ret = devm_request_irq(&pdev->dev, irq, mtk_i2c_irq,
+ 			       IRQF_NO_SUSPEND | IRQF_TRIGGER_NONE,
+-			       I2C_DRV_NAME, i2c);
++			       dev_name(&pdev->dev), i2c);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev,
+ 			"Request I2C IRQ %d fail\n", irq);
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
