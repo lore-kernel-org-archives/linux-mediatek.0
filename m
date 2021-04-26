@@ -2,114 +2,143 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EEB2DC433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 09:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA81FC433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 10:55:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 35297610C8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 09:59:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35297610C8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 495E960FE9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 10:55:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 495E960FE9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=walle.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vkX7QltZ1gDCsXXG5+99Ptcl5GA/Y7jpjHsQZN/Lh5E=; b=er15+h0rp0IIC6Pd2XlPv5kPU
-	211ZEQhwBmTgUHLHLVIvMOf5OULBX6girL9vtXepGu8vkYNfTToj6VSwlp9/Do6OgkximSfdhS5eW
-	RMud5aiuuFLC8DX3Pf8Ht1n5WGluf/XusafqctbuhuJ0/ersvDy6yBI0ykvViCXUMcXjR29CiCABy
-	XJ8hhU7wDQQpZWuCeVMwF+4dwWtBP0br+WGlQk+9gl+1nz5ICDJwnI6wab49D1qOj7VzXyVx15MAY
-	MZlhSinpNyGdNKFZ5x65mc6CdgQlG1wAQj2g56+s+hZWoJbITtqTZeWhqRiyzW24xGtrP7UjotTgE
-	nnxEg9J5w==;
+	 bh=z/bbfytfNqBFRN4zMFkhBVrvGx5Jlow9KmHdJHlMdno=; b=Ypk+eEr6duUE5uzSEHUSlWPYK
+	X5kKpzl+gZ4mX0zpqrFA0XNDsiJGphmEFbsCGHTvnuG75+1bqKtVC5nOrXmv8nYARUZPNYUFgko1p
+	aywDMPA+wqI1/faXQnlxdVQmdJazu00sF35/i2taklaO+1u9yBupVUVXRkqQ3kgsRSaU4fWzYAjrM
+	1dP0TANcOV8+Eg5aOPBi0oRV6FoQI07pH0TAbxZyiJvVjcowaenbEcLvOPmM3UjZtCxE5qxOd1/Ot
+	c9oRPoJbe4MWmMI0sH2U2bOPtyHZGT3zbG1N90Jsp5EygexMoYtg6UNfWeQNRWbHu24IB6nM5kZyR
+	YUeHQ8f6Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lay1O-007MiM-In; Mon, 26 Apr 2021 09:59:18 +0000
+	id 1layt1-007Seq-B1; Mon, 26 Apr 2021 10:54:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lay1C-007Mgi-Mz
- for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 09:59:07 +0000
+ id 1laysw-007SeQ-Ta; Mon, 26 Apr 2021 10:54:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=; b=g0OJGUk3+hJvTGcRSgu2CHzDJV
- RbQhDnH2WiEXcw8D1G3YgRXj5+hm7mLcohcNz9raROJmhaU4lE4J/TLgz77zZ7G+5lAzY3UM70iy/
- 0KT73WnS30ClgLP4M3On6z4aQ4st5u8uCv8nKUxEsk9iejHNnGA2LJ9g/DWRcbZhhf+hVq0Hz+a29
- 7XFG423OUVxjpsHU1X2jO7ZMhGvG90kMlRNE+wcATT+ty5x1+qdMQ0kOzUQFRh6Sw6KQLagPbct7m
- SLImzptn2xOg7OHrXiGnaamWlrRKF3V0uJnJXM2iPh1NWnw+kEHSzl+HXmFHddZEYVh1DNNtfnsrn
- Hrb3UqIg==;
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ d=infradead.org; s=bombadil.20210309; h=Message-ID:References:In-Reply-To:
+ Subject:Cc:To:From:Date:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=Wk++B/L7nejW/Tu85IzTL8HKq5haXmWBuSRGMq5G9Vc=; b=eZQOKXOZKb+o5jdMltpFeOvHZR
+ PaFQt1XvTbzvB0YncdWNSi2kAJ06I4Ho+olT9YpA9iFroWNqoqHnLFABCF7JF87x1p5tlbqUmHwHF
+ s4K/Dl+anFcAD+fyQ6UJR17RO70qOo/7u8e4oqC6hA6q3htSWjlID9UxiTbfMMDFr/r2RcyEo6yWN
+ sd+nhiRG1mi8ygwoKVIN5fhpZ58PBhAidQQAiUUfA23ssyo2ZzQJgGQJhDf8i7wqpF/pAXPWIA5KQ
+ LUIjoIN2XGGFiM4TvjsDZCw2dwhbiExY9OvkKyBOuwOekczrIzCtMwbXsFk+39NO9+XtdiPALPpGu
+ usdaEuyw==;
+Received: from ssl.serverraum.org ([176.9.125.105])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lay19-00FsgG-D8
- for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 09:59:05 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id x7so55147307wrw.10
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Apr 2021 02:59:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:organization:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=;
- b=AEIsnJHXmaziJJTcgjFu6iegjOYSLr4FvBPv8J6WWXQxKc3lc6++Dy3OIInY1TdP/n
- MLwhkUhLB4HB61oGv0Vc8PgQL+cvIZ0o3Apk6vGrtY25BHIgJJoMdFgao9oqWHJOQcFe
- rdSVpyh7fixWesbou2peoQ28bg3JUeMSbErXv2EHJh79B+Nrf6LvpW7tfgbDO9tg19Fo
- DPiALE+fVXvMDIHYe30066lKYfmo5V5WQVEdS4J6mv75o6GN443YeEaEa+aaC4kZnP3J
- jyJcCw+LXQ2w4gUnZ0kPgsTl8YZNPTM1GyUhqsd13uQ6NzESdxMZse2nicVNzBYFSQ5m
- vGBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:organization
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=;
- b=TjIdlgwlWcOC1eXkAj+fLg4RaQ7OQNWCGRLKvwb/LdMY1Q1aWKekSNtr9zvbPJmsvp
- WHDZCymEL6XxwmUhAA5sLuVrX6mVTQdWAIigwvGmvsZLB/BD1dhTu24FimybgeuA43HN
- VxYtmfA48/n1zUpl6hF4YI8T4iyExZyp373Bv9EGKgLm/qrXMSwevTllpoDJY3A7CwTx
- Sp1AWg0e3WbAc/NnbwaW7WxWOsUgL+2D7iAzGxw2s3YnMijwfyd9eAK79ZeqbOoHFRxM
- OS7m8opPiATqse1ys+xjmbrTwEF/WlWDI3uZq9EIxROOX1LDLwWxFz2m1latAkFS8x0e
- zVhQ==
-X-Gm-Message-State: AOAM531V+H3qGVuyW96CD2dikLlWOMhDbtKcNcqsKIBzi73FMcmLISk0
- Wo97XADUh9aZNAMbv/RQOKiACoU5kMurXX8z
-X-Google-Smtp-Source: ABdhPJxYhyoXc/WYgqEkHVidVk+IAkNDRwY4zw/XR8iI1ER3qAtb06MVw/1o5q4L+sF01UOiVWbjng==
-X-Received: by 2002:adf:bc49:: with SMTP id a9mr22362575wrh.109.1619431141308; 
- Mon, 26 Apr 2021 02:59:01 -0700 (PDT)
-Received: from ?IPv6:2a01:e0a:90c:e290:b76e:7362:77c0:ddc3?
- ([2a01:e0a:90c:e290:b76e:7362:77c0:ddc3])
- by smtp.gmail.com with ESMTPSA id g12sm7617152wmh.24.2021.04.26.02.58.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Apr 2021 02:59:00 -0700 (PDT)
-Subject: Re: [PATCH v13 0/4] drm/panfrost: Add support for mt8183 GPU
-To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>,
- Steven Price <steven.price@arm.com>,
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Cc: fshao@chromium.org, hsinyi@chromium.org, hoegsberg@chromium.org,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, boris.brezillon@collabora.com,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20210421052855.1279713-1-drinkcat@chromium.org>
-From: Neil Armstrong <narmstrong@baylibre.com>
-Organization: Baylibre
-Message-ID: <c91746ce-88b6-5612-74a5-74600c7761e8@baylibre.com>
-Date: Mon, 26 Apr 2021 11:58:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.7.1
+ id 1layst-00FuT9-PD; Mon, 26 Apr 2021 10:54:37 +0000
+Received: from ssl.serverraum.org (web.serverraum.org [172.16.0.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ssl.serverraum.org (Postfix) with ESMTPSA id C353C22236;
+ Mon, 26 Apr 2021 12:54:08 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=walle.cc;
+ s=mail2016061301; t=1619434464;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Wk++B/L7nejW/Tu85IzTL8HKq5haXmWBuSRGMq5G9Vc=;
+ b=aBLItzwTpMLhnbBUfRwBioPVMyZiTU0Pj1H6UNIlRFQlCvrRQC9+sCwg7Wn5J+XsvHZln5
+ Tw13ybstx1ba3ts9pwi2ty81rvOdnoEZ8zIsZqSHZ7psnqzBT46f85vFqJlTddaAXCPvqK
+ P1t1rcsQHgB7iSTeBLTyQ5gE26gcAtQ=
 MIME-Version: 1.0
-In-Reply-To: <20210421052855.1279713-1-drinkcat@chromium.org>
-Content-Language: en-US
+Date: Mon, 26 Apr 2021 12:54:08 +0200
+From: Michael Walle <michael@walle.cc>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Benjamin Herrenschmidt <benh@kernel.crashing.org>, QCA ath9k Development
+ <ath9k-devel@qca.qualcomm.com>, Microchip Linux Driver Support
+ <UNGLinuxDriver@microchip.com>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, linux-kernel@vger.kernel.org,
+ linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, netdev
+ <netdev@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, "open list:MEDIA DRIVERS FOR RENESAS -
+ FCP" <linux-renesas-soc@vger.kernel.org>, "moderated list:ARM/STM32
+ ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, "open
+ list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
+ linux-oxnas@groups.io, linux-omap <linux-omap@vger.kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>, devicetree@vger.kernel.org,
+ linux-staging@lists.linux.dev, Andrew Lunn <andrew@lunn.ch>, Gregory Clement
+ <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Michael Ellerman <mpe@ellerman.id.au>, Paul Mackerras <paulus@samba.org>,
+ Andreas Larsson <andreas@gaisler.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Maxime Ripard
+ <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec
+ <jernej.skrabec@siol.net>, Joyce Ooi <joyce.ooi@intel.com>, Chris Snook
+ <chris.snook@gmail.com>, =?UTF-8?Q?Rafa=C5=82_Mi=C5=82ecki?=
+ <rafal@milecki.pl>, "maintainer:BROADCOM BCM7XXX ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli
+ <f.fainelli@gmail.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Claudiu
+ Beznea <claudiu.beznea@microchip.com>, Sunil Goutham <sgoutham@marvell.com>,
+ Fugang Duan <fugang.duan@nxp.com>, Madalin Bucur <madalin.bucur@nxp.com>,
+ Pantelis Antoniou <pantelis.antoniou@gmail.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, Li Yang <leoyang.li@nxp.com>, Yisen Zhuang
+ <yisen.zhuang@huawei.com>, Salil Mehta <salil.mehta@huawei.com>, Hauke
+ Mehrtens <hauke@hauke-m.de>, Thomas Petazzoni
+ <thomas.petazzoni@bootlin.com>, Vadym Kochan <vkochan@marvell.com>, Taras
+ Chornyi <tchornyi@marvell.com>, Mirko Lindner <mlindner@marvell.com>,
+ Stephen Hemminger <stephen@networkplumber.org>, Felix Fietkau
+ <nbd@nbd.name>, John Crispin <john@phrozen.org>, Sean Wang
+ <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Bryan Whitehead
+ <bryan.whitehead@microchip.com>, Vladimir Zapolskiy <vz@mleia.com>, Sergei
+ Shtylyov <sergei.shtylyov@gmail.com>, Byungho An <bh74.an@samsung.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@st.com>, Jose
+ Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam
+ <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, Kevin Hilman
+ <khilman@baylibre.com>, Neil Armstrong <narmstrong@baylibre.com>, Jerome
+ Brunet <jbrunet@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Vinod Koul <vkoul@kernel.org>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>, Grygorii Strashko
+ <grygorii.strashko@ti.com>, Wingman Kwok <w-kwok2@ti.com>, Murali Karicheri
+ <m-karicheri2@ti.com>, Michal Simek <michal.simek@xilinx.com>, Radhey Shyam
+ Pandey <radhey.shyam.pandey@xilinx.com>, Kalle Valo <kvalo@codeaurora.org>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Stanislaw Gruszka <stf_xl@wp.pl>, Helmut Schaa
+ <helmut.schaa@googlemail.com>, Heiner Kallweit <hkallweit1@gmail.com>, Frank
+ Rowand <frowand.list@gmail.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, =?UTF-8?Q?J=C3=A9r=C3=B4me_Pouiller?=
+ <jerome.pouiller@silabs.com>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>
+Subject: Re: [PATCH net-next v4 2/2] of: net: fix of_get_mac_addr_nvmem() for
+ non-platform devices
+In-Reply-To: <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
+References: <20210412174718.17382-1-michael@walle.cc>
+ <20210412174718.17382-3-michael@walle.cc>
+ <730d603b12e590c56770309b4df2bd668f7afbe3.camel@kernel.crashing.org>
+ <8157eba9317609294da80472622deb28@walle.cc>
+ <CAL_JsqLrx6nFZrKiEtm2a1vDvQGG+FkpGtJCG2osM8hhGo3P=Q@mail.gmail.com>
+User-Agent: Roundcube Webmail/1.4.11
+Message-ID: <108f268a35843368466004f7fe5f9f88@walle.cc>
+X-Sender: michael@walle.cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_025903_459759_20CAA093 
-X-CRM114-Status: GOOD (  30.51  )
+X-CRM114-CacheID: sfid-20210426_035436_161677_5661C5D0 
+X-CRM114-Status: GOOD (  32.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,116 +150,98 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Am 2021-04-16 17:19, schrieb Rob Herring:
+> On Fri, Apr 16, 2021 at 2:30 AM Michael Walle <michael@walle.cc> wrote:
+>> 
+>> Am 2021-04-16 05:24, schrieb Benjamin Herrenschmidt:
+>> > On Mon, 2021-04-12 at 19:47 +0200, Michael Walle wrote:
+>> >>
+>> >>  /**
+>> >>   * of_get_phy_mode - Get phy mode for given device_node
+>> >> @@ -59,15 +60,39 @@ static int of_get_mac_addr(struct device_node *np,
+>> >> const char *name, u8 *addr)
+>> >>  static int of_get_mac_addr_nvmem(struct device_node *np, u8 *addr)
+>> >>  {
+>> >>         struct platform_device *pdev = of_find_device_by_node(np);
+>> >> +       struct nvmem_cell *cell;
+>> >> +       const void *mac;
+>> >> +       size_t len;
+>> >>         int ret;
+>> >>
+>> >> -       if (!pdev)
+>> >> -               return -ENODEV;
+>> >> +       /* Try lookup by device first, there might be a
+>> >> nvmem_cell_lookup
+>> >> +        * associated with a given device.
+>> >> +        */
+>> >> +       if (pdev) {
+>> >> +               ret = nvmem_get_mac_address(&pdev->dev, addr);
+>> >> +               put_device(&pdev->dev);
+>> >> +               return ret;
+>> >> +       }
+>> >> +
+>> >
+>> > This smells like the wrong band aid :)
+>> >
+>> > Any struct device can contain an OF node pointer these days.
+>> 
+>> But not all nodes might have an associated device, see DSA for 
+>> example.
+> 
+> I believe what Ben is saying and what I said earlier is going from dev
+> -> OF node is right and OF node -> dev is wrong. If you only have an
+> OF node, then use an of_* function.
+> 
+>> And as the name suggests of_get_mac_address() operates on a node. So
+>> if a driver calls of_get_mac_address() it should work on the node. 
+>> What
+>> is wrong IMHO, is that the ethernet drivers where the corresponding
+>> board
+>> has a nvmem_cell_lookup registered is calling 
+>> of_get_mac_address(node).
+>> It should rather call eth_get_mac_address(dev) in the first place.
+>> 
+>> One would need to figure out if there is an actual device (with an
+>> assiciated of_node), then call eth_get_mac_address(dev) and if there
+>> isn't a device call of_get_mac_address(node).
+> 
+> Yes, I think we're all in agreement.
+> 
+>> But I don't know if that is easy to figure out. Well, one could start
+>> with just the device where nvmem_cell_lookup is used. Then we could
+>> drop the workaround above.
+> 
+> Start with the ones just passing dev.of_node directly:
+> 
+> $ git grep 'of_get_mac_address(.*of_node)'
 
-On 21/04/2021 07:28, Nicolas Boichat wrote:
-> Hi!
-> 
-> This is just a rebase of the v11, untested (but it seems like
-> Neil Armstrong recently tested it), with small changes in
-> binding and dts. v11 cover follows:
-> 
-> Follow-up on the v5 [1], things have gotten significantly
-> better in the last year, thanks to the efforts on Bifrost
-> support by the Collabora team (and probably others I'm not
-> aware of).
-> 
-> I've been testing this series on a MT8183/kukui device, with a
-> chromeos-5.10 kernel [2], and got basic Chromium OS UI up with
-> mesa 20.3.2 (lots of artifacts though).
-> 
-> devfreq is currently not supported, as we'll need:
->  - Clock core support for switching the GPU core clock (see 2/4).
->  - Platform-specific handling of the 2-regulator (see 3/4).
-> 
-> Since the latter is easy to detect, patch 3/4 just disables
-> devfreq if the more than one regulator is specified in the
-> compatible matching table.
-> 
-> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/20200306041345.259332-1-drinkcat@chromium.org/
-> [2] https://crrev.com/c/2608070
-> 
-> Changes in v13:
->  - devfreq: Fix conflict resolution mistake when rebasing, didn't
->    even compile. Oops.
-> 
-> Changes in v12:
->  - binding: Fix min/maxItems logic (Rob Herring)
->  - Add gpu node to mt8183-pumpkin.dts as well (Neil Armstrong).
-> 
-> Changes in v11:
->  - binding: power-domain-names not power-domainS-names
->  - mt8183*.dts: remove incorrect supply-names
-> 
-> Changes in v10:
->  - Fix the binding to make sure sram-supply property can be provided.
-> 
-> Changes in v9:
->  - Explain why devfreq needs to be disabled for GPUs with >1
->    regulators.
-> 
-> Changes in v8:
->  - Use DRM_DEV_INFO instead of ERROR
-> 
-> Changes in v7:
->  - Fix GPU ID in commit message
->  - Fix GPU ID in commit message
-> 
-> Changes in v6:
->  - Rebased, actually tested with recent mesa driver.
->  - Add gpu regulators to kukui dtsi as well.
->  - Power domains are now attached to spm, not scpsys
->  - Drop R-B.
->  - devfreq: New change
->  - Context conflicts, reflow the code.
->  - Use ARRAY_SIZE for power domains too.
-> 
-> Changes in v5:
->  - Rename "2d" power domain to "core2"
->  - Rename "2d" power domain to "core2" (keep R-B again).
->  - Change power domain name from 2d to core2.
-> 
-> Changes in v4:
->  - Add power-domain-names description
->    (kept Alyssa's reviewed-by as the change is minor)
->  - Add power-domain-names to describe the 3 domains.
->    (kept Alyssa's reviewed-by as the change is minor)
->  - Add power domain names.
-> 
-> Changes in v3:
->  - Match mt8183-mali instead of bifrost, as we require special
->    handling for the 2 regulators and 3 power domains.
-> 
-> Changes in v2:
->  - Use sram instead of mali_sram as SRAM supply name.
->  - Rename mali@ to gpu@.
-> 
-> Nicolas Boichat (4):
->   dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
->   arm64: dts: mt8183: Add node for the Mali GPU
->   drm/panfrost: devfreq: Disable devfreq when num_supplies > 1
->   drm/panfrost: Add mt8183-mali compatible string
-> 
->  .../bindings/gpu/arm,mali-bifrost.yaml        |  30 ++++-
->  arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   5 +
->  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   5 +
->  .../boot/dts/mediatek/mt8183-pumpkin.dts      |   5 +
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 ++++++++++++++++++
->  drivers/gpu/drm/panfrost/panfrost_devfreq.c   |   9 ++
->  drivers/gpu/drm/panfrost/panfrost_drv.c       |  10 ++
->  7 files changed, 168 insertions(+), 1 deletion(-)
-> 
+[..]
 
-Seems this version is ready to be applied if we get a review on the DT ?
+Before I'll try to come up with a patch for this, I'd like to get
+your opinion on it.
 
-Mathias ? could you have a look ?
+(1) replacing of_get_mac_address(node) with eth_get_mac_address(dev)
+     might sometimes lead to confusing comments like in
+     drivers/net/ethernet/allwinner/sun4i-emac.c:
 
-Neil
+     /* Read MAC-address from DT */
+     ret = of_get_mac_address(np, ndev->dev_addr);
+
+     Do we live with that or should the new name somehow reflect that
+     it is taken from the device tree.
+
+(2) What do you think of eth_get_mac_address(ndev). That is, the
+     second argument is missing and ndev->dev_addr is used.
+     I'm unsure about it. We'd still need a second function for drivers
+     which don't write ndev->dev_addr directly, but have some custom
+     logic in between. OTOH it would be like eth_hw_addr_random(ndev).
+
+-michael
 
 _______________________________________________
 Linux-mediatek mailing list
