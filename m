@@ -2,92 +2,99 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8C26C433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 02:49:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD330C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 05:07:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56F1B6128A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 02:49:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56F1B6128A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1923F6112F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 05:07:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1923F6112F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=U/tTYLJEiXy2mWMzYeqNH9xSEj073aPgVCDEXKGuiWo=; b=OxwBnGWUrMnJhQ6ERltGemKUn
-	yPm6v04KdXt8l9QmsGwELCnzw9kR1hXET5uTxKq5EhozaqWbZB9OBKI2W7u8pmlZ81FkyyuckFA9L
-	yxi8qYEl+CMWNuie1P8ei3kVUqgMVmvafYYjfJvmRAPB2qt2TTqJYIFslu3R7n8chZIuQT/25OW6N
-	dMY6Q1/a0W5O7/hzagnfx7zOCH001ZfylC8VSJpBmyd7sG334lqasqZrJ6NohLXs50RBK43WyXAr5
-	b2X9fpxJP3F/ypmG0ffMD5PsmabxgpsO2xksPAWEuofnw0w39Kvzg6ns5fmQiipJNmhOHJbPE7ewO
-	vafCsSmsQ==;
+	 bh=fJLpD34qE8nAjPLqxB8o8iMueBo7g7tpaq85q6mGtHg=; b=lx1knZognJUwk/bC1ssg9KTbt
+	WXR7pT1+X0W8W8kvQiWJXK8A3dl0tfQ0SkVueSjBWgj81zmYHE7ciEmIFRPW6lQa4dvuGb/4L470I
+	EXf55w0KhnFCI3gjvVE2+h/dGrS0lHQhZBipb7bZDIxyDu8pRsigkDq037kaoWLz70AlC6FV0pGQA
+	hnDejl9jWW3ZLchWKGSIhUw39tCs9CXzz0RRtkVLiJWioqGvS8PH9uJ9j/T44lL8CFKJcCKEardYY
+	z6zS8/XdEcfmXi1qOwHr5ShUJmwPuE52ej53WKeo2Dn0U98byYK5VR/zlZ3H2deOzrgAftwE7U7l2
+	xfSjXp6+A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1larJN-006kEm-Td; Mon, 26 Apr 2021 02:49:25 +0000
+	id 1latSL-006uWf-98; Mon, 26 Apr 2021 05:06:49 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1larJ0-006kBd-Aa; Mon, 26 Apr 2021 02:49:02 +0000
+ id 1latSB-006uWE-6u
+ for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 05:06:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=0l0LeZrPIfb298Q15kAk2b8IG0eKCtJb39bGXClN4Do=; b=YiMJbG6kPwfIg248diz0Ku8kA+
- EfD9+zT/52JTwzRsrI2UHainQmQQZguyVyoFJHrWf5s6LFhT3hN4KerVSjfs+k1Rt52+W4zRyxFd1
- D6KZOrQ3oyGI+7AzgU7e4NOd4amlwiQXuoXu55OFF+rX+3O/zauddziWm56/InMXMXacMWL96KwHj
- yCCgRXTcEcdojlIgGeZH3UIajjUg6pYtucETGVdT4tA378zbq5es7mgq/DzeWd5LMVo7+Hlo8mEtY
- 8HsrV6nMSPoXFxj36R0772KusSIl7V5Qpe9B3O4vta3zLYsB8UZOOSeZb2r0MaX6qy+M9Fz5nWgP0
- lTiOguWw==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=lhZaODxqN9w5BWIbem3PBfmTTnp3Tc+zpO8RECDcnck=; b=QZ/bDfT+ATZ8OBKudc2e6holpD
+ yoERSG36TaOKf0CEVnuJxeQvfsDeHPk+JD25yolLp9w8t5wVfTjhMEsaDo4f8Hohird2gxeDlD0sH
+ wJthDKwWm/AjYYkTBBr2nDMIOttHb2X2mWrCMwz81izpWfHgy/x12JOYof/HMPaXCss6D5P8jGif3
+ qng++DLeOYh6Nnr7YsZLg7i4Q77LYRIdLRbc3PklqnFBMGiMh5CU100HMC+3Pq46JmHwO4yi7TUPq
+ jciPD5ijKGgiySkcn9fnjsJspdpdFCrIHDT9zXV88i00kM9dkrJ9vDgg5qga//LdDixQJNDOadT3J
+ 8k3JkcqA==;
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1larIx-00FhMG-Gb; Mon, 26 Apr 2021 02:49:01 +0000
-X-UUID: 9305bdbb08ba473697f94dda4706183e-20210425
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=0l0LeZrPIfb298Q15kAk2b8IG0eKCtJb39bGXClN4Do=; 
- b=quqzE2duMcKHlf1qzgdvzEp9mLb8sytXgn0+xkxMXv/ybP/EyPPEuV1uEOWDNZDV4YeBrJHed5WhAT+B9bSTBzfcyLj+A0pjkhpkvZsfxeWn4Yi0WIcHM6CEJl8/DWFDVnqJkHqVarnFxonEL2FwlM/Ndvr6nFpn8XBTtvIIMlA=;
-X-UUID: 9305bdbb08ba473697f94dda4706183e-20210425
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 838066096; Sun, 25 Apr 2021 19:48:54 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 25 Apr 2021 19:45:37 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Apr 2021 10:45:36 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 26 Apr 2021 10:45:35 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
- <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
-CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>,
- <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
- <sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>
-Subject: [PATCH v7] pinctrl: mediatek: add rsel setting on MT8195
-Date: Mon, 26 Apr 2021 10:45:33 +0800
-Message-ID: <20210426024533.20840-2-zhiyong.tao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210426024533.20840-1-zhiyong.tao@mediatek.com>
-References: <20210426024533.20840-1-zhiyong.tao@mediatek.com>
+ id 1latS7-00FjNp-IE
+ for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 05:06:37 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id
+ m6-20020a17090a8586b02901507e1acf0fso4561675pjn.3
+ for <linux-mediatek@lists.infradead.org>; Sun, 25 Apr 2021 22:06:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=lhZaODxqN9w5BWIbem3PBfmTTnp3Tc+zpO8RECDcnck=;
+ b=JVbpT3UXCl4pqh1lPbrs7oiW8zT93eZ10YNQbbi732zPA5ddUaFSBpnQBjws0z3ZAf
+ w500yc2qElu3kuOHGiPUOnYr2khNF+CH71/XLgh+fdxxn+TbecChxCP5JFfv7ZIGGWzV
+ l4mL+6ew4bouLKV/K6qlmcjl+hrE6E+PvBd78=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=lhZaODxqN9w5BWIbem3PBfmTTnp3Tc+zpO8RECDcnck=;
+ b=tIGMRoNpLg7ywFaGTAc71D7xPVVW3VZ15eBHsPmfg2+k42csMXKrfW3zlJqv41QL66
+ JjXDRrlbiIa70NXt/8m4Q/8a2TrLZgbZUVrKbSmhXAhhuVPmX/rNDdAk/77hP+9cJwr1
+ xIq3y/lxb+0VpccPldSQ9xtOHDPMgVPdGGqSlFkLkCNHoGgLJaMKhNzRbF0VpGFR9d6k
+ 9ygD2y0XbabKOKPSQBEQKjiuaNpoHBtqhE43hEq+64U27G00MtzIoT4+eCvkI8bpiZAe
+ qoqGQTAPcmJSOSrZtf22dv5xMBx9RYs2hP1PYs0SiJImXDXlc9sGl0/gPT4RrCdmIMmj
+ q6Dg==
+X-Gm-Message-State: AOAM53138VdRKomKnq2pfeI9yfG4QrWvm+QqYa3Lq8lQgYa2I965w1v+
+ 06uQfjaJs18e4U5Y4dEVlfKFgJwp8iGzIUkLoNmURA==
+X-Google-Smtp-Source: ABdhPJwAtTkGkLEqNAMjhq9yXWrHFTQ7TYqELP+yZd5u+0rnLD3WlQPG20w5TjTBRPB4RHY/5Zns5fR//eXNedKWiXQ=
+X-Received: by 2002:a17:90a:be10:: with SMTP id
+ a16mr915936pjs.112.1619413593036; 
+ Sun, 25 Apr 2021 22:06:33 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210323113512.4980-1-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210323113512.4980-1-chun-jie.chen@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Mon, 26 Apr 2021 13:06:22 +0800
+Message-ID: <CAATdQgD8zGGsW0fDpba5Bf-Xv-DFAwuVSFpKgB33Qxy=5Ds5cg@mail.gmail.com>
+Subject: Re: [PATCH v7 00/22] Mediatek MT8192 clock support
+To: "chun-jie.chen" <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-clk@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210425_194859_572548_8978092E 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20210425_220635_942071_6DB87EB5 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,179 +111,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch provides rsel setting on MT8195.
+On Tue, Mar 23, 2021 at 7:36 PM chun-jie.chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> change since v6:
+> - update from series below
+> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405295
+> - fix DT bindings fail
+> - fix checkpatch warning
+> - update mux ops without gate control
+>
+> change since v5:
+> - remove unused clocks by rolling Tinghan's patches[1][2] into series
+> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=398781
+> [2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405143
+> - remove dts related patches from series
+>
+> change since v4:
+> - merge some subsystem into same driver
+> - add a generic probe function to reduce duplicated code
+>
+> changes since v3:
+> - add critical clocks
+> - split large patches into small ones
+>
+> changes since v2:
+> - update and split dt-binding documents by functionalities
+> - add error checking in probe() function
+> - fix incorrect clock relation and add critical clocks
+> - update license identifier and minor fix of coding style
+>
+> changes since v1:
+> - fix asymmetrical control of PLL
+> - have en_mask used as divider enable mask on all MediaTek SoC
+>
+> chun-jie.chen (22):
+>   dt-bindings: ARM: Mediatek: Add new document bindings of imp i2c
+>     wrapper controller
+>   dt-bindings: ARM: Mediatek: Add new document bindings of mdpsys
+>     controller
+>   dt-bindings: ARM: Mediatek: Add new document bindings of msdc
+>     controller
+>   dt-bindings: ARM: Mediatek: Add new document bindings of scp adsp
+>     controller
+>   dt-bindings: ARM: Mediatek: Document bindings of MT8192 clock
+>     controllers
+>   clk: mediatek: Add dt-bindings of MT8192 clocks
+>   clk: mediatek: Fix asymmetrical PLL enable and disable control
+>   clk: mediatek: Add configurable enable control to mtk_pll_data
+>   clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers
+>   clk: mediatek: Add MT8192 basic clocks support
+>   clk: mediatek: Add MT8192 audio clock support
+>   clk: mediatek: Add MT8192 camsys clock support
+>   clk: mediatek: Add MT8192 imgsys clock support
+>   clk: mediatek: Add MT8192 imp i2c wrapper clock support
+>   clk: mediatek: Add MT8192 ipesys clock support
+>   clk: mediatek: Add MT8192 mdpsys clock support
+>   clk: mediatek: Add MT8192 mfgcfg clock support
+>   clk: mediatek: Add MT8192 mmsys clock support
+>   clk: mediatek: Add MT8192 msdc clock support
+>   clk: mediatek: Add MT8192 scp adsp clock support
+>   clk: mediatek: Add MT8192 vdecsys clock support
+>   clk: mediatek: Add MT8192 vencsys clock support
+>
+>  .../arm/mediatek/mediatek,apmixedsys.txt      |    1 +
+>  .../bindings/arm/mediatek/mediatek,audsys.txt |    1 +
+>  .../bindings/arm/mediatek/mediatek,camsys.txt |   22 +
+>  .../bindings/arm/mediatek/mediatek,imgsys.txt |    2 +
+>  .../arm/mediatek/mediatek,imp_iic_wrap.yaml   |   80 +
+>  .../arm/mediatek/mediatek,infracfg.txt        |    1 +
+>  .../bindings/arm/mediatek/mediatek,ipesys.txt |    1 +
+>  .../arm/mediatek/mediatek,mdpsys.yaml         |   40 +
+>  .../bindings/arm/mediatek/mediatek,mfgcfg.txt |    1 +
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt  |    1 +
+>  .../bindings/arm/mediatek/mediatek,msdc.yaml  |   48 +
+>  .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
+>  .../arm/mediatek/mediatek,scp-adsp.yaml       |   40 +
+>  .../arm/mediatek/mediatek,topckgen.txt        |    1 +
+>  .../arm/mediatek/mediatek,vdecsys.txt         |    8 +
+>  .../arm/mediatek/mediatek,vencsys.txt         |    1 +
+>  drivers/clk/mediatek/Kconfig                  |   80 +
+>  drivers/clk/mediatek/Makefile                 |   13 +
+>  drivers/clk/mediatek/clk-mt8192-aud.c         |  118 ++
+>  drivers/clk/mediatek/clk-mt8192-cam.c         |  107 ++
+>  drivers/clk/mediatek/clk-mt8192-img.c         |   70 +
+>  .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |  119 ++
+>  drivers/clk/mediatek/clk-mt8192-ipe.c         |   57 +
+>  drivers/clk/mediatek/clk-mt8192-mdp.c         |   82 +
+>  drivers/clk/mediatek/clk-mt8192-mfg.c         |   50 +
+>  drivers/clk/mediatek/clk-mt8192-mm.c          |  108 ++
+>  drivers/clk/mediatek/clk-mt8192-msdc.c        |   85 ++
+>  drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |   50 +
+>  drivers/clk/mediatek/clk-mt8192-vdec.c        |   94 ++
+>  drivers/clk/mediatek/clk-mt8192-venc.c        |   53 +
+>  drivers/clk/mediatek/clk-mt8192.c             | 1326 +++++++++++++++++
+>  drivers/clk/mediatek/clk-mtk.c                |   23 +
+>  drivers/clk/mediatek/clk-mtk.h                |   28 +-
+>  drivers/clk/mediatek/clk-mux.c                |    9 +-
+>  drivers/clk/mediatek/clk-mux.h                |   18 +-
+>  drivers/clk/mediatek/clk-pll.c                |   31 +-
+>  include/dt-bindings/clock/mt8192-clk.h        |  585 ++++++++
+>  37 files changed, 3335 insertions(+), 20 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mdpsys.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-aud.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-cam.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-img.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-ipe.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-mdp.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-mfg.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-mm.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-msdc.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-scp_adsp.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-vdec.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192-venc.c
+>  create mode 100644 drivers/clk/mediatek/clk-mt8192.c
+>  create mode 100644 include/dt-bindings/clock/mt8192-clk.h
+>
+> --
+> 2.18.0
+>
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
----
- drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 22 +++++++++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 14 ++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  | 10 +++++++++
- drivers/pinctrl/mediatek/pinctrl-paris.c      | 16 ++++++++++++++
- 4 files changed, 62 insertions(+)
+A gentle ping on this series.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index a7500e18bb1d..66608b8d346a 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -779,6 +779,25 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
- 	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
- };
- 
-+static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
-+	PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
-+	PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
-+	PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
-+	PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
-+	PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
-+	PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
-+	PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
-+	PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
-+	PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
-+	PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
-+};
-+
- static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
- 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
-@@ -793,6 +812,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
- 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
- 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
-+	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
- };
- 
- static const char * const mt8195_pinctrl_register_base_names[] = {
-@@ -823,6 +843,8 @@ static const struct mtk_pin_soc mt8195_data = {
- 	.drive_get = mtk_pinconf_drive_get_rev1,
- 	.adv_drive_get = mtk_pinconf_adv_drive_get_raw,
- 	.adv_drive_set = mtk_pinconf_adv_drive_set_raw,
-+	.rsel_set = mtk_pinconf_rsel_set,
-+	.rsel_get = mtk_pinconf_rsel_get,
- };
- 
- static const struct of_device_id mt8195_pinctrl_of_match[] = {
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 2b51f4a9b860..d1526d0c6248 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -1041,6 +1041,20 @@ int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
- }
- EXPORT_SYMBOL_GPL(mtk_pinconf_adv_drive_get_raw);
- 
-+int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 arg)
-+{
-+	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, arg);
-+}
-+EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_set);
-+
-+int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 *val)
-+{
-+	return mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_RSEL, val);
-+}
-+EXPORT_SYMBOL_GPL(mtk_pinconf_rsel_get);
-+
- MODULE_LICENSE("GPL v2");
- MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
- MODULE_DESCRIPTION("Pin configuration library module for mediatek SoCs");
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index fd5ce9c5dcbd..570e8da7bf38 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -67,6 +67,7 @@ enum {
- 	PINCTRL_PIN_REG_DRV_E0,
- 	PINCTRL_PIN_REG_DRV_E1,
- 	PINCTRL_PIN_REG_DRV_ADV,
-+	PINCTRL_PIN_REG_RSEL,
- 	PINCTRL_PIN_REG_MAX,
- };
- 
-@@ -237,6 +238,10 @@ struct mtk_pin_soc {
- 			     const struct mtk_pin_desc *desc, u32 arg);
- 	int (*adv_drive_get)(struct mtk_pinctrl *hw,
- 			     const struct mtk_pin_desc *desc, u32 *val);
-+	int (*rsel_set)(struct mtk_pinctrl *hw,
-+			const struct mtk_pin_desc *desc, u32 arg);
-+	int (*rsel_get)(struct mtk_pinctrl *hw,
-+			const struct mtk_pin_desc *desc, u32 *val);
- 
- 	/* Specific driver data */
- 	void				*driver_data;
-@@ -320,5 +325,10 @@ int mtk_pinconf_adv_drive_set_raw(struct mtk_pinctrl *hw,
- int mtk_pinconf_adv_drive_get_raw(struct mtk_pinctrl *hw,
- 				  const struct mtk_pin_desc *desc, u32 *val);
- 
-+int mtk_pinconf_rsel_set(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 arg);
-+int mtk_pinconf_rsel_get(struct mtk_pinctrl *hw,
-+			 const struct mtk_pin_desc *desc, u32 *val);
-+
- bool mtk_is_virt_gpio(struct mtk_pinctrl *hw, unsigned int gpio_n);
- #endif /* __PINCTRL_MTK_COMMON_V2_H */
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index da1f19288aa6..392fdfcb5b87 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -22,6 +22,8 @@
- #define MTK_PIN_CONFIG_PU_ADV	(PIN_CONFIG_END + 3)
- #define MTK_PIN_CONFIG_PD_ADV	(PIN_CONFIG_END + 4)
- #define MTK_PIN_CONFIG_DRV_ADV	(PIN_CONFIG_END + 5)
-+#define MTK_PIN_CONFIG_RSEL	(PIN_CONFIG_END + 6)
-+
- 
- static const struct pinconf_generic_params mtk_custom_bindings[] = {
- 	{"mediatek,tdsel",	MTK_PIN_CONFIG_TDSEL,		0},
-@@ -29,6 +31,7 @@ static const struct pinconf_generic_params mtk_custom_bindings[] = {
- 	{"mediatek,pull-up-adv", MTK_PIN_CONFIG_PU_ADV,		1},
- 	{"mediatek,pull-down-adv", MTK_PIN_CONFIG_PD_ADV,	1},
- 	{"mediatek,drive-strength-adv", MTK_PIN_CONFIG_DRV_ADV,	2},
-+	{"mediatek,rsel",		MTK_PIN_CONFIG_RSEL,	2},
- };
- 
- #ifdef CONFIG_DEBUG_FS
-@@ -38,6 +41,7 @@ static const struct pin_config_item mtk_conf_items[] = {
- 	PCONFDUMP(MTK_PIN_CONFIG_PU_ADV, "pu-adv", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_PD_ADV, "pd-adv", NULL, true),
- 	PCONFDUMP(MTK_PIN_CONFIG_DRV_ADV, "drive-strength-adv", NULL, true),
-+	PCONFDUMP(MTK_PIN_CONFIG_RSEL, "rsel", NULL, true),
- };
- #endif
- 
-@@ -176,6 +180,12 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case MTK_PIN_CONFIG_RSEL:
-+		if (hw->soc->rsel_get)
-+			err = hw->soc->rsel_get(hw, desc, &ret);
-+		else
-+			err = -ENOTSUPP;
-+		break;
- 	default:
- 		err = -ENOTSUPP;
- 	}
-@@ -295,6 +305,12 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case MTK_PIN_CONFIG_RSEL:
-+		if (hw->soc->rsel_set)
-+			err = hw->soc->rsel_set(hw, desc, arg);
-+		else
-+			err = -ENOTSUPP;
-+		break;
- 	default:
- 		err = -ENOTSUPP;
- 	}
--- 
-2.18.0
+Thanks!
+
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
