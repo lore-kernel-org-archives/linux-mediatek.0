@@ -2,101 +2,114 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30057C433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 05:20:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEB2DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 09:59:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8A8261003
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 05:20:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8A8261003
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 35297610C8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 09:59:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35297610C8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=IZec8ld1/6edtVe99KidMSd4ZPpPVqIxqOHsXT6Vo2k=; b=Vhy4/qz9ldaccwJiB0bqE4ggS
-	jbuQs2W/uOs4hsVkTtS3aWTimQg4PLXM9qS/BjnqXKxSYNg/mz42D4j++IrSSGRFxM+QhIZRr2Nk1
-	JQQnvlcV1c7bQC8Vf7WqppIu4nCxFW24v+8s5AlFVY2ZbpAVPxRSjvAPtj7K89kIlyk6SYjnKz8pv
-	RSkKe160zu8VDNiC+BvJgRg0dR5G5nCRy5KgwUYmsqnYAoo42BM6LGNPx0Yp+/HVvS+reGZw6NWZi
-	dcjUJDviP1VT0mhxM29+NiiMrsrh4To0rqh3NfRt5UxHnnrramy4ulUSzCMXcSktwJ8W2A8b1QwDi
-	1ULGhPQog==;
+	 bh=vkX7QltZ1gDCsXXG5+99Ptcl5GA/Y7jpjHsQZN/Lh5E=; b=er15+h0rp0IIC6Pd2XlPv5kPU
+	211ZEQhwBmTgUHLHLVIvMOf5OULBX6girL9vtXepGu8vkYNfTToj6VSwlp9/Do6OgkximSfdhS5eW
+	RMud5aiuuFLC8DX3Pf8Ht1n5WGluf/XusafqctbuhuJ0/ersvDy6yBI0ykvViCXUMcXjR29CiCABy
+	XJ8hhU7wDQQpZWuCeVMwF+4dwWtBP0br+WGlQk+9gl+1nz5ICDJwnI6wab49D1qOj7VzXyVx15MAY
+	MZlhSinpNyGdNKFZ5x65mc6CdgQlG1wAQj2g56+s+hZWoJbITtqTZeWhqRiyzW24xGtrP7UjotTgE
+	nnxEg9J5w==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1latfl-006w20-G3; Mon, 26 Apr 2021 05:20:41 +0000
+	id 1lay1O-007MiM-In; Mon, 26 Apr 2021 09:59:18 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1latfZ-006vyE-Gt
- for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 05:20:29 +0000
+ id 1lay1C-007Mgi-Mz
+ for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 09:59:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=zpMkjz9KyykiFO6l5ZQQuINgIfMM9OaiAAxRnjrTqLo=; b=o95NHl8PBMRcnO9tY8lnbvbaD1
- tvHjrZTQVXdeGakJY3Pure7CEbIGVK1HPBGl+HT9iC5U3IJ4ygtpMg3oAzxqpL/KAQM2o5EDt70iN
- yEp0nkrbHJF+qk3rvq464pBjSbBU4rRN+1STI1Wb3kVCGKZkffBrjC35Sgb2Q1CL48sxFqBZj3Wje
- PgmidLebx+57wlnFLdlq3dijfp40jfnurqD4ANKbUmSg+5vrU5T3UYcaj4gLFj2rednLPTWwyKLlU
- V+s0ubzl1YUqF26Twt6h/f/n0TUSqKVDsQog40tgQEAyEpnXPQ+6bmgjgCfJO4kP4XESa7hyDsm66
- EmHX4WLA==;
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=; b=g0OJGUk3+hJvTGcRSgu2CHzDJV
+ RbQhDnH2WiEXcw8D1G3YgRXj5+hm7mLcohcNz9raROJmhaU4lE4J/TLgz77zZ7G+5lAzY3UM70iy/
+ 0KT73WnS30ClgLP4M3On6z4aQ4st5u8uCv8nKUxEsk9iejHNnGA2LJ9g/DWRcbZhhf+hVq0Hz+a29
+ 7XFG423OUVxjpsHU1X2jO7ZMhGvG90kMlRNE+wcATT+ty5x1+qdMQ0kOzUQFRh6Sw6KQLagPbct7m
+ SLImzptn2xOg7OHrXiGnaamWlrRKF3V0uJnJXM2iPh1NWnw+kEHSzl+HXmFHddZEYVh1DNNtfnsrn
+ Hrb3UqIg==;
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1latfW-00FjmA-Os
- for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 05:20:28 +0000
-Received: by mail-io1-xd36.google.com with SMTP id t21so3918250iob.2
- for <linux-mediatek@lists.infradead.org>; Sun, 25 Apr 2021 22:20:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zpMkjz9KyykiFO6l5ZQQuINgIfMM9OaiAAxRnjrTqLo=;
- b=diwNewPbdQFBq8nbfkdx9BlVdn6q+QQ7rkY5vw2F1FJFAl9k5Sx3CJGLUbm8kEplp1
- pKV4i/aMsoZXuMwyoElTvs0J6OWy9/je+pyvdyU40uSSP2iAOhtOnWp73VtHbaYdOvF5
- /almRjcvW7teXIf1nHh/cuafbPEmiyXMjiWfA=
+ id 1lay19-00FsgG-D8
+ for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 09:59:05 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id x7so55147307wrw.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Apr 2021 02:59:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:organization:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=;
+ b=AEIsnJHXmaziJJTcgjFu6iegjOYSLr4FvBPv8J6WWXQxKc3lc6++Dy3OIInY1TdP/n
+ MLwhkUhLB4HB61oGv0Vc8PgQL+cvIZ0o3Apk6vGrtY25BHIgJJoMdFgao9oqWHJOQcFe
+ rdSVpyh7fixWesbou2peoQ28bg3JUeMSbErXv2EHJh79B+Nrf6LvpW7tfgbDO9tg19Fo
+ DPiALE+fVXvMDIHYe30066lKYfmo5V5WQVEdS4J6mv75o6GN443YeEaEa+aaC4kZnP3J
+ jyJcCw+LXQ2w4gUnZ0kPgsTl8YZNPTM1GyUhqsd13uQ6NzESdxMZse2nicVNzBYFSQ5m
+ vGBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=zpMkjz9KyykiFO6l5ZQQuINgIfMM9OaiAAxRnjrTqLo=;
- b=iDvmII8PtenO1PuoPq3ioeSz6sCXvfOrIntMbqt+5ks7Zbj1VFFt3h7asFMDD7uF0S
- DfDvUHD0ili9od1ZQWlqaJLKBN8GkxKOQyqqbq12cxGJUSnydtBJW9zkkNdFihWOJlDT
- mxFUWfK2TeUtqqsCdB+yuHlmMAX/OK49roXpy9R0eY+6ta128ikM6eLEXFr+67SSObUB
- 56Zc6DNo27pJMgxhkBMwSsSNCAaC45eLh3odw5C+qhh3ul49IWbm2uyemwbrQET2KmxM
- KMHmW5S93TZ717c2bAS5H/8Fpc5VCHKvls4oRr4C6RFicci+3SnHdyCz7L2wOb/Qap/r
- v6yg==
-X-Gm-Message-State: AOAM532zhk1PheNuTehrV9c+klqVWSO4m2mJyZJu2BHy8YDFUYWWnM0Y
- sN3u9/zntf92gxojhjOREqUhx588LhgpO27VFp42XA==
-X-Google-Smtp-Source: ABdhPJzl+nlI65EpIE3bLCS7G3KC95MAVHm0nvQs80CqTwdYNWAv1l/fLJqKJxUcdszePkWtP+JyptF55LMMQziX0SY=
-X-Received: by 2002:a02:a40a:: with SMTP id c10mr14239901jal.98.1619414424923; 
- Sun, 25 Apr 2021 22:20:24 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=+nTBzmgMD86ImXMmoPl5Di6Ae0iGMljkfREQq3cZsyk=;
+ b=TjIdlgwlWcOC1eXkAj+fLg4RaQ7OQNWCGRLKvwb/LdMY1Q1aWKekSNtr9zvbPJmsvp
+ WHDZCymEL6XxwmUhAA5sLuVrX6mVTQdWAIigwvGmvsZLB/BD1dhTu24FimybgeuA43HN
+ VxYtmfA48/n1zUpl6hF4YI8T4iyExZyp373Bv9EGKgLm/qrXMSwevTllpoDJY3A7CwTx
+ Sp1AWg0e3WbAc/NnbwaW7WxWOsUgL+2D7iAzGxw2s3YnMijwfyd9eAK79ZeqbOoHFRxM
+ OS7m8opPiATqse1ys+xjmbrTwEF/WlWDI3uZq9EIxROOX1LDLwWxFz2m1latAkFS8x0e
+ zVhQ==
+X-Gm-Message-State: AOAM531V+H3qGVuyW96CD2dikLlWOMhDbtKcNcqsKIBzi73FMcmLISk0
+ Wo97XADUh9aZNAMbv/RQOKiACoU5kMurXX8z
+X-Google-Smtp-Source: ABdhPJxYhyoXc/WYgqEkHVidVk+IAkNDRwY4zw/XR8iI1ER3qAtb06MVw/1o5q4L+sF01UOiVWbjng==
+X-Received: by 2002:adf:bc49:: with SMTP id a9mr22362575wrh.109.1619431141308; 
+ Mon, 26 Apr 2021 02:59:01 -0700 (PDT)
+Received: from ?IPv6:2a01:e0a:90c:e290:b76e:7362:77c0:ddc3?
+ ([2a01:e0a:90c:e290:b76e:7362:77c0:ddc3])
+ by smtp.gmail.com with ESMTPSA id g12sm7617152wmh.24.2021.04.26.02.58.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Apr 2021 02:59:00 -0700 (PDT)
+Subject: Re: [PATCH v13 0/4] drm/panfrost: Add support for mt8183 GPU
+To: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>,
+ Steven Price <steven.price@arm.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Cc: fshao@chromium.org, hsinyi@chromium.org, hoegsberg@chromium.org,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, boris.brezillon@collabora.com,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20210421052855.1279713-1-drinkcat@chromium.org>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Organization: Baylibre
+Message-ID: <c91746ce-88b6-5612-74a5-74600c7761e8@baylibre.com>
+Date: Mon, 26 Apr 2021 11:58:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-References: <20210409045314.3420733-1-hsinyi@chromium.org>
- <CAMavQKJUpYP8jo2JDGMYNBGtbPSSO7z9BAComm5JQoty=HPtJg@mail.gmail.com>
-In-Reply-To: <CAMavQKJUpYP8jo2JDGMYNBGtbPSSO7z9BAComm5JQoty=HPtJg@mail.gmail.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Mon, 26 Apr 2021 13:19:59 +0800
-Message-ID: <CAJMQK-govRgDfKhzxhe-GPBQ27EEfpmsxbbNH6X=6CTni=uqRA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] drm/mediatek: set panel orientation before
- drm_dev_register().
-To: Sean Paul <sean@poorly.run>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, devicetree <devicetree@vger.kernel.org>
+In-Reply-To: <20210421052855.1279713-1-drinkcat@chromium.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210425_222026_816538_A8DE6631 
-X-CRM114-Status: GOOD (  30.34  )
+X-CRM114-CacheID: sfid-20210426_025903_459759_20CAA093 
+X-CRM114-Status: GOOD (  30.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,129 +126,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 23, 2021 at 9:53 PM Sean Paul <sean@poorly.run> wrote:
->
-> On Fri, Apr 9, 2021 at 12:53 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> >
-> > drm_dev_register() sets connector->registration_state to
-> > DRM_CONNECTOR_REGISTERED and dev->registered to true. If
-> > drm_connector_set_panel_orientation() is first called after
-> > drm_dev_register(), it will fail several checks and results in following
-> > warning. So set panel orientation in dsi before drm_dev_register() is
-> > called.
-> >
-> > [    4.480976] ------------[ cut here ]------------
-> > [    4.485603] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:45 __drm_mode_object_add+0xb4/0xbc
-> > <snip>
-> > [    4.609772] Call trace:
-> > [    4.612208]  __drm_mode_object_add+0xb4/0xbc
-> > [    4.616466]  drm_mode_object_add+0x20/0x2c
-> > [    4.620552]  drm_property_create+0xdc/0x174
-> > [    4.624723]  drm_property_create_enum+0x34/0x98
-> > [    4.629241]  drm_connector_set_panel_orientation+0x64/0xa0
-> > [    4.634716]  boe_panel_get_modes+0x88/0xd8
-> > [    4.638802]  drm_panel_get_modes+0x2c/0x48
-> > [    4.642887]  panel_bridge_get_modes+0x1c/0x28
-> > [    4.647233]  drm_bridge_connector_get_modes+0xa0/0xd4
-> > [    4.652273]  drm_helper_probe_single_connector_modes+0x218/0x700
-> > [    4.658266]  drm_mode_getconnector+0x1b4/0x45c
-> > [    4.662699]  drm_ioctl_kernel+0xac/0x128
-> > [    4.666611]  drm_ioctl+0x268/0x410
-> > [    4.670002]  drm_compat_ioctl+0xdc/0xf0
-> > [    4.673829]  __arm64_compat_sys_ioctl+0xc8/0x100
-> > [    4.678436]  el0_svc_common+0xf4/0x1c0
-> > [    4.682174]  do_el0_svc_compat+0x28/0x3c
-> > [    4.686088]  el0_svc_compat+0x10/0x1c
-> > [    4.689738]  el0_sync_compat_handler+0xa8/0xcc
-> > [    4.694171]  el0_sync_compat+0x178/0x180
-> > [    4.698082] ---[ end trace b4f2db9d9c88610b ]---
-> > [    4.702721] ------------[ cut here ]------------
-> > [    4.707329] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:243 drm_object_attach_property+0x48/0xb8
-> > <snip>
-> > [    4.833830] Call trace:
-> > [    4.836266]  drm_object_attach_property+0x48/0xb8
-> > [    4.840958]  drm_connector_set_panel_orientation+0x84/0xa0
-> > [    4.846432]  boe_panel_get_modes+0x88/0xd8
-> > [    4.850516]  drm_panel_get_modes+0x2c/0x48
-> > [    4.854600]  panel_bridge_get_modes+0x1c/0x28
-> > [    4.858946]  drm_bridge_connector_get_modes+0xa0/0xd4
-> > [    4.863984]  drm_helper_probe_single_connector_modes+0x218/0x700
-> > [    4.869978]  drm_mode_getconnector+0x1b4/0x45c
-> > [    4.874410]  drm_ioctl_kernel+0xac/0x128
-> > [    4.878320]  drm_ioctl+0x268/0x410
-> > [    4.881711]  drm_compat_ioctl+0xdc/0xf0
-> > [    4.885536]  __arm64_compat_sys_ioctl+0xc8/0x100
-> > [    4.890142]  el0_svc_common+0xf4/0x1c0
-> > [    4.893879]  do_el0_svc_compat+0x28/0x3c
-> > [    4.897791]  el0_svc_compat+0x10/0x1c
-> > [    4.901441]  el0_sync_compat_handler+0xa8/0xcc
-> > [    4.905873]  el0_sync_compat+0x178/0x180
-> > [    4.909783] ---[ end trace b4f2db9d9c88610c ]---
-> >
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index ae403c67cbd9..45a702ee09f3 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -205,6 +205,7 @@ struct mtk_dsi {
-> >         u32 irq_data;
-> >         wait_queue_head_t irq_wait_queue;
-> >         const struct mtk_dsi_driver_data *driver_data;
-> > +       enum drm_panel_orientation orientation;
-> >  };
-> >
-> >  static inline struct mtk_dsi *bridge_to_dsi(struct drm_bridge *b)
-> > @@ -966,6 +967,8 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
-> >         }
-> >         drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-> >
-> > +       drm_connector_set_panel_orientation(dsi->connector, dsi->orientation);
-> > +
-> >         return 0;
-> >
-> >  err_cleanup_encoder:
-> > @@ -1029,6 +1032,12 @@ static int mtk_dsi_probe(struct platform_device *pdev)
-> >                         ret = PTR_ERR(dsi->next_bridge);
-> >                         goto err_unregister_host;
-> >                 }
-> > +
-> > +               ret = of_drm_get_panel_orientation(panel->dev->of_node, &dsi->orientation);
-> > +               if (ret) {
-> > +                       dev_err(dev, "failed to get panel orientation %d\n", ret);
-> > +                       return ret;
-> > +               }
->
-> I don't think this is the right place to mine orientation since it
-> duplicates the call from the panel driver.
->
-> Instead, how about splitting out
-> property_create_enum/attach_orientation_property from
-> set_panel_orientation such that you can attach the property (with
-> UNKNOWN value) in the connector init and then leave the panel to set
-> it properly in get_modes (I kind of disagree with populating this in
-> get_modes as well, but I don't think there's anywhere else to stick it
-> right now)?
->
-> AFAICT orientation is the only property which has the create/attach
-> calls in the set function which seems like a perfect recipe for this
-> type of failure.
->
->
-> Sean
->
+Hi,
 
-Thanks for the review. It is updated in v2.
+On 21/04/2021 07:28, Nicolas Boichat wrote:
+> Hi!
+> 
+> This is just a rebase of the v11, untested (but it seems like
+> Neil Armstrong recently tested it), with small changes in
+> binding and dts. v11 cover follows:
+> 
+> Follow-up on the v5 [1], things have gotten significantly
+> better in the last year, thanks to the efforts on Bifrost
+> support by the Collabora team (and probably others I'm not
+> aware of).
+> 
+> I've been testing this series on a MT8183/kukui device, with a
+> chromeos-5.10 kernel [2], and got basic Chromium OS UI up with
+> mesa 20.3.2 (lots of artifacts though).
+> 
+> devfreq is currently not supported, as we'll need:
+>  - Clock core support for switching the GPU core clock (see 2/4).
+>  - Platform-specific handling of the 2-regulator (see 3/4).
+> 
+> Since the latter is easy to detect, patch 3/4 just disables
+> devfreq if the more than one regulator is specified in the
+> compatible matching table.
+> 
+> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/20200306041345.259332-1-drinkcat@chromium.org/
+> [2] https://crrev.com/c/2608070
+> 
+> Changes in v13:
+>  - devfreq: Fix conflict resolution mistake when rebasing, didn't
+>    even compile. Oops.
+> 
+> Changes in v12:
+>  - binding: Fix min/maxItems logic (Rob Herring)
+>  - Add gpu node to mt8183-pumpkin.dts as well (Neil Armstrong).
+> 
+> Changes in v11:
+>  - binding: power-domain-names not power-domainS-names
+>  - mt8183*.dts: remove incorrect supply-names
+> 
+> Changes in v10:
+>  - Fix the binding to make sure sram-supply property can be provided.
+> 
+> Changes in v9:
+>  - Explain why devfreq needs to be disabled for GPUs with >1
+>    regulators.
+> 
+> Changes in v8:
+>  - Use DRM_DEV_INFO instead of ERROR
+> 
+> Changes in v7:
+>  - Fix GPU ID in commit message
+>  - Fix GPU ID in commit message
+> 
+> Changes in v6:
+>  - Rebased, actually tested with recent mesa driver.
+>  - Add gpu regulators to kukui dtsi as well.
+>  - Power domains are now attached to spm, not scpsys
+>  - Drop R-B.
+>  - devfreq: New change
+>  - Context conflicts, reflow the code.
+>  - Use ARRAY_SIZE for power domains too.
+> 
+> Changes in v5:
+>  - Rename "2d" power domain to "core2"
+>  - Rename "2d" power domain to "core2" (keep R-B again).
+>  - Change power domain name from 2d to core2.
+> 
+> Changes in v4:
+>  - Add power-domain-names description
+>    (kept Alyssa's reviewed-by as the change is minor)
+>  - Add power-domain-names to describe the 3 domains.
+>    (kept Alyssa's reviewed-by as the change is minor)
+>  - Add power domain names.
+> 
+> Changes in v3:
+>  - Match mt8183-mali instead of bifrost, as we require special
+>    handling for the 2 regulators and 3 power domains.
+> 
+> Changes in v2:
+>  - Use sram instead of mali_sram as SRAM supply name.
+>  - Rename mali@ to gpu@.
+> 
+> Nicolas Boichat (4):
+>   dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+>   arm64: dts: mt8183: Add node for the Mali GPU
+>   drm/panfrost: devfreq: Disable devfreq when num_supplies > 1
+>   drm/panfrost: Add mt8183-mali compatible string
+> 
+>  .../bindings/gpu/arm,mali-bifrost.yaml        |  30 ++++-
+>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   5 +
+>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   5 +
+>  .../boot/dts/mediatek/mt8183-pumpkin.dts      |   5 +
+>  arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 ++++++++++++++++++
+>  drivers/gpu/drm/panfrost/panfrost_devfreq.c   |   9 ++
+>  drivers/gpu/drm/panfrost/panfrost_drv.c       |  10 ++
+>  7 files changed, 168 insertions(+), 1 deletion(-)
+> 
 
-> >         }
-> >
-> >         dsi->driver_data = of_device_get_match_data(dev);
-> > --
-> > 2.31.1.295.g9ea45b61b8-goog
-> >
+Seems this version is ready to be applied if we get a review on the DT ?
+
+Mathias ? could you have a look ?
+
+Neil
 
 _______________________________________________
 Linux-mediatek mailing list
