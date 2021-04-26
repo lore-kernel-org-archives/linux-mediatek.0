@@ -2,93 +2,88 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1720C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 19:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43CE0C433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 23:15:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3AD7A61154
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 19:12:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3AD7A61154
+	by mail.kernel.org (Postfix) with ESMTPS id A7A4E61151
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 23:15:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A7A4E61151
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3Ik/gDPuF+ydl2AeXOGl0B6qocRTBkpThbNwXLAaShA=; b=aiJha6L3FxlP+SRy2PFOYr5Ql
-	S40f32hWqFDVH5fvLARlfpos7kulKHgggE63M+uP6siwEEb6LokhUp1AgxUxBtQKK0m0FASo8pQii
-	8gB7mzBdJZ4AKbPLTx7sRCXhKuzDF/T+1fzn5INqt+8Bj9BoeArDTFgjOlL70oCBUCGt4aEXOL2rK
-	GTbF71KWHScX5+ey2TMHwJK+1hqdCV6qL6sR3rGVxFQ0PLEczY/DLO2TNZxh3JwwwU4LymIk4ExSA
-	RV/Rw/I3SikT2LxE4ZcCcMKRLZRZETUpm29KiLBV3WUutfqq5LIpdKioYbu0Ssp6JGppBihT0y7da
-	lMA0rjMpA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Y2EEWMFmqi+kup9HQilcxFKjBy2OE7kv1fFr9BqZuck=; b=diW5GU1476Y//8pBWhX4oEjtW0
+	jft1z5LIF2Ehh16Wk5hmHdjkERAAyOhkjpn2b+9oMbNdG23Inxiyc1Zlr+mTPAFIJq/0KGwDoxSK0
+	N6VHTNt5SXsGFIViWtAyBO4wnVlWgjv37k1r1ewPOmQg4yGdilD62yr9QHFJ1OqicluA8UdMGy9Uu
+	yaDEX9T+zta6vFuVR0DjBqumUeTgmpeIZkNFJPJLiqC3kRE6yt3bcLn2DtJvOsKSe/+qNHor/iLUP
+	d20xVZLtlGtX63yAYhgEyoRNIYc59fdBplBdvM9L4/GZib+9SHoaJTWb5aADa1+zrVvF9WwkTaNsv
+	mA4fdGng==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lb6e6-008M1F-KA; Mon, 26 Apr 2021 19:11:50 +0000
-Received: from bombadil.infradead.org ([198.137.202.133])
+	id 1lbARG-000B7W-3y; Mon, 26 Apr 2021 23:14:50 +0000
+Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lb6e3-008M0n-Lg
- for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 19:11:47 +0000
+ id 1lbARA-000B6W-Mw
+ for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 23:14:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=CQizQsUhJwGeUX8UCIeiU1Bi7+NJCgQWE99CedcvQtU=; b=0cnF/3dAlcP0jdoiCClxKBFY2K
- 8YypWI/tzh+RBxjk/e0wIGVLk29T3eTHHRKwJuuPelSXCIA6QPWd4sgetPji9X2NgTTU6CYdm0iZ9
- Q6mFkYnpz6rD041Yz+QzK9YGeAOUNKi7rgYDpAxSz54IKkvfZFMCaab5FP2BHdDJ5KVhQOiYERfnE
- DX+f+CLwZeHqDJUURWxu+pxSlqnQs4fRQ43APw7z/WS4iI13yp6qUjPG/gLv1i1f/eVKzy/Fkdeck
- nw0/iY9ygGCQNZG040eIhY8wr+WXUMy57fF7sK+55tyx3MqlQm0P7brngSr53Zh8zyUu0Qopw3ypT
- mQosn/qg==;
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=lA+s9CeLD9/9PNN3z3iNU8Q3RoCILEkPkm0t423V/gs=; b=HgGG7lRaaDZjJwcsSiKvPw3eK2
+ DNrZvPiQepgi5TP5QRkb70lNesyACQeVc3wJyJYurWUhiKzfGyC7WTJ5d0d/o1KrQXretGHoLKlHR
+ s5PY//vmu/+27R+3p7hT9FHxpyxEHx+JHFVxED0+2NHbkIx0SIFro4QfLh/BqHqEJtxC4hnMdkvnQ
+ +cA2OkXmZuVcurOO8EIU+CoaPxgozBXVoekATFyqWRMsKvxI1BBrWD9DDi7sP0Q9CryCGCULGGG45
+ MDdYX3YM8bbR1n5D3CoN4BHXReQ/LD9QING7zTHtN0f+iyPgpYOz8M/wWBpmctbEypBerxpzifuec
+ RXKNPEyw==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lb6dx-00G88I-Dj
- for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 19:11:45 +0000
-X-UUID: 54eee18a10a246ef9ef58d69cd7adc9d-20210426
+ id 1lbAR3-00GIOy-9B
+ for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 23:14:41 +0000
+X-UUID: 498cf14f358348929e84212fabd3f482-20210426
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=CQizQsUhJwGeUX8UCIeiU1Bi7+NJCgQWE99CedcvQtU=; 
- b=TqWWWwhkjBYvtkxlVswuEHL3f1S5h2abOj4IBiohQK9slv8cqIa0/u3X3IygzN9WF5iiJSlgEvylaNDRiwn6KlmSBN6o70yoYj4CW4b5LurjKgo+I1BXlO+ghi6S+NkATPx70ALHHAWW5Jn1V0I2p1+ZW1fQKNKYmUjGyseGgUg=;
-X-UUID: 54eee18a10a246ef9ef58d69cd7adc9d-20210426
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=lA+s9CeLD9/9PNN3z3iNU8Q3RoCILEkPkm0t423V/gs=; 
+ b=TIKFgVPoYoSg5xECBjQPKOFSqfMeKd88pCIFNoBzf7C50EpQY3hIiNyb+Hk6oBfXik5Aur4SK3LK0VlY/yzZ6qMhn49Ln/jiduhbl2Ipdnp89SJwCwEwdoZHHYdhHspYidf8l3pn6mP3+ZIiKZItA8S/jd5ZUKgASQdSmFgI7J0=;
+X-UUID: 498cf14f358348929e84212fabd3f482-20210426
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 953009266; Mon, 26 Apr 2021 12:11:30 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Apr 2021 12:11:29 -0700
+ with ESMTP id 615570758; Mon, 26 Apr 2021 16:14:31 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Apr 2021 16:14:30 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Apr 2021 03:11:27 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 27 Apr 2021 03:11:27 +0800
-Message-ID: <1619464287.15845.2.camel@mtkswgap22>
-Subject: Re: [PATCH 2/2] mt76: mt7915: add .set_bitrate_mask() callback
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Apr 2021 07:14:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 27 Apr 2021 07:14:28 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
-To: Ben Greear <greearb@candelatech.com>
-CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 27 Apr 2021 03:11:27 +0800
-In-Reply-To: <7776c0d1-0578-5922-1003-f8498cc0357a@candelatech.com>
-References: <22e4a169831b6b54661b6eb4ef4f3a4a18dceb19.1619453772.git.ryder.lee@mediatek.com>
- <d422f0c844c5da1ee027250820b67f615a8b50e5.1619453772.git.ryder.lee@mediatek.com>
- <7776c0d1-0578-5922-1003-f8498cc0357a@candelatech.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH v2 1/2] mt76: mt7915: cleanup mt7915_mcu_sta_rate_ctrl_tlv()
+Date: Tue, 27 Apr 2021 07:14:26 +0800
+Message-ID: <03a1bc7eaea3e5818ca8268f72077a10f85a8bc9.1619473996.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0D5CD2055A3D98DF91B752F15436670F9F853D1953D45325ABD51BB99ACBC1CF2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_121141_487540_67B1631C 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20210426_161438_728676_A8245069 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,28 +100,194 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-04-26 at 11:41 -0700, Ben Greear wrote:
-> On 4/26/21 9:29 AM, Ryder Lee wrote:
-> > Add runtime configuration for bitrate mask. Note that GI cannot be setup.
-> > 
-> > Example:
-> > iw dev wlan0 set bitrates vht-mcs-5 1:9 he-mcs-5 2:7
-> > iw dev wlan0 set bitrates legacy-5 6 he-mcs-5 2:0-11
-> 
-> Is this only for data frames?  In other words, is it OK to
-> set exactly one HE/VHT MCS rate and let mgt, bcast, mcast, still
-> work OK at legacy rates?
-> 
-> Thanks,
-> Ben
-> 
-Yes. And this's more like a 'limit', and it actually re-initializes
-firmware rate control for each peer to add a boundry on top of rate
-table. When you specify something like 'iw dev wlan0 set bitrates
-vht-mcs-5 1:9', which means nss=1 mcs0-9 actually. If you would like
-stick to a fixed rate then there's a knob in mt7915 debugfs.
-As for other the mgmt, mcast, bcast should sill remain in low rate.
+Remove obsoleted codes. This is the preparation for .set_bitrate_mask().
 
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+changes since v2 - keep ra->phy.bw = sta->bandwidth 
+---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 74 +++++--------------
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  2 +-
+ 2 files changed, 21 insertions(+), 55 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index e4f5f72fff29..90bca50be099 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -147,10 +147,10 @@ mt7915_get_he_phy_cap(struct mt7915_phy *phy, struct ieee80211_vif *vif)
+ }
+ 
+ static u8
+-mt7915_get_phy_mode(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+-		    struct ieee80211_sta *sta)
++mt7915_get_phy_mode(struct ieee80211_vif *vif, struct ieee80211_sta *sta)
+ {
+-	enum nl80211_band band = mphy->chandef.chan->band;
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	enum nl80211_band band = mvif->phy->mt76->chandef.chan->band;
+ 	struct ieee80211_sta_ht_cap *ht_cap;
+ 	struct ieee80211_sta_vht_cap *vht_cap;
+ 	const struct ieee80211_sta_he_cap *he_cap;
+@@ -163,7 +163,7 @@ mt7915_get_phy_mode(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 	} else {
+ 		struct ieee80211_supported_band *sband;
+ 
+-		sband = mphy->hw->wiphy->bands[band];
++		sband = mvif->phy->mt76->hw->wiphy->bands[band];
+ 
+ 		ht_cap = &sband->ht_cap;
+ 		vht_cap = &sband->vht_cap;
+@@ -754,7 +754,7 @@ mt7915_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 		memcpy(bss->bssid, vif->bss_conf.bssid, ETH_ALEN);
+ 		bss->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
+ 		bss->dtim_period = vif->bss_conf.dtim_period;
+-		bss->phy_mode = mt7915_get_phy_mode(phy->mt76, vif, NULL);
++		bss->phy_mode = mt7915_get_phy_mode(vif, NULL);
+ 	} else {
+ 		memcpy(bss->bssid, phy->mt76->macaddr, ETH_ALEN);
+ 	}
+@@ -2100,47 +2100,39 @@ static void
+ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 			     struct ieee80211_vif *vif, struct ieee80211_sta *sta)
+ {
+-	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+-	struct mt76_phy *mphy = &dev->mphy;
+-	enum nl80211_band band;
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = &mvif->phy->mt76->chandef;
++	enum nl80211_band band = chandef->chan->band;
+ 	struct sta_rec_ra *ra;
+ 	struct tlv *tlv;
+-	u32 supp_rate, n_rates, cap = sta->wme ? STA_CAP_WMM : 0;
+-	u8 i, nss = sta->rx_nss, mcs = 0;
++	u32 supp_rate = sta->supp_rates[band];
++	u32 cap = sta->wme ? STA_CAP_WMM : 0;
++	u8 i, nss = sta->rx_nss;
+ 
+ 	tlv = mt7915_mcu_add_tlv(skb, STA_REC_RA, sizeof(*ra));
+ 	ra = (struct sta_rec_ra *)tlv;
+ 
+-	if (msta->wcid.ext_phy && dev->mt76.phy2)
+-		mphy = dev->mt76.phy2;
+-
+-	band = mphy->chandef.chan->band;
+-	supp_rate = sta->supp_rates[band];
+-	n_rates = hweight32(supp_rate);
+-
+ 	ra->valid = true;
+ 	ra->auto_rate = true;
+-	ra->phy_mode = mt7915_get_phy_mode(mphy, vif, sta);
+-	ra->channel = mphy->chandef.chan->hw_value;
++	ra->phy_mode = mt7915_get_phy_mode(vif, sta);
++	ra->channel = chandef->chan->hw_value;
+ 	ra->bw = sta->bandwidth;
+-	ra->rate_len = n_rates;
+ 	ra->phy.bw = sta->bandwidth;
+ 
+-	if (n_rates) {
++	if (supp_rate) {
++		ra->rate_len = hweight32(supp_rate);
++
+ 		if (band == NL80211_BAND_2GHZ) {
+ 			ra->supp_mode = MODE_CCK;
+ 			ra->supp_cck_rate = supp_rate & GENMASK(3, 0);
+-			ra->phy.type = MT_PHY_TYPE_CCK;
+ 
+-			if (n_rates > 4) {
++			if (ra->rate_len > 4) {
+ 				ra->supp_mode |= MODE_OFDM;
+ 				ra->supp_ofdm_rate = supp_rate >> 4;
+-				ra->phy.type = MT_PHY_TYPE_OFDM;
+ 			}
+ 		} else {
+ 			ra->supp_mode = MODE_OFDM;
+ 			ra->supp_ofdm_rate = supp_rate;
+-			ra->phy.type = MT_PHY_TYPE_OFDM;
+ 		}
+ 	}
+ 
+@@ -2150,7 +2142,6 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 
+ 		ra->supp_ht_mcs = *(__le32 *)ra->ht_mcs;
+ 		ra->supp_mode |= MODE_HT;
+-		mcs = hweight32(le32_to_cpu(ra->supp_ht_mcs)) - 1;
+ 		ra->af = sta->ht_cap.ampdu_factor;
+ 		ra->ht_gf = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_GRN_FLD);
+ 
+@@ -2170,7 +2161,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 	if (sta->vht_cap.vht_supported) {
+ 		u16 mcs_map = le16_to_cpu(sta->vht_cap.vht_mcs.rx_mcs_map);
+ 		u16 vht_mcs;
+-		u8 af, mcs_prev;
++		u8 af;
+ 
+ 		af = FIELD_GET(IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK,
+ 			       sta->vht_cap.cap);
+@@ -2189,7 +2180,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 			cap |= STA_CAP_VHT_LDPC;
+ 
+ 		ra->supp_mode |= MODE_VHT;
+-		for (mcs = 0, i = 0; i < nss; i++, mcs_map >>= 2) {
++		for (i = 0; i < nss; i++, mcs_map >>= 2) {
+ 			switch (mcs_map & 0x3) {
+ 			case IEEE80211_VHT_MCS_SUPPORT_0_9:
+ 				vht_mcs = GENMASK(9, 0);
+@@ -2206,10 +2197,6 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 
+ 			ra->supp_vht_mcs[i] = cpu_to_le16(vht_mcs);
+ 
+-			mcs_prev = hweight16(vht_mcs) - 1;
+-			if (mcs_prev > mcs)
+-				mcs = mcs_prev;
+-
+ 			/* only support 2ss on 160MHz */
+ 			if (i > 1 && (ra->bw == CMD_CBW_160MHZ ||
+ 				      ra->bw == CMD_CBW_8080MHZ))
+@@ -2222,28 +2209,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 		cap |= STA_CAP_HE;
+ 	}
+ 
+-	ra->sta_status = cpu_to_le32(cap);
+-
+-	switch (BIT(fls(ra->supp_mode) - 1)) {
+-	case MODE_VHT:
+-		ra->phy.type = MT_PHY_TYPE_VHT;
+-		ra->phy.mcs = mcs;
+-		ra->phy.nss = nss;
+-		ra->phy.stbc = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_TXSTBC);
+-		ra->phy.ldpc = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC);
+-		ra->phy.sgi =
+-			!!(sta->vht_cap.cap & IEEE80211_VHT_CAP_SHORT_GI_80);
+-		break;
+-	case MODE_HT:
+-		ra->phy.type = MT_PHY_TYPE_HT;
+-		ra->phy.mcs = mcs;
+-		ra->phy.ldpc = sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING;
+-		ra->phy.stbc = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_TX_STBC);
+-		ra->phy.sgi = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_SGI_20);
+-		break;
+-	default:
+-		break;
+-	}
++	ra->sta_cap = cpu_to_le32(cap);
+ }
+ 
+ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 453e34754c86..7e3432384633 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -943,7 +943,7 @@ struct sta_rec_ra {
+ 	u8 op_vht_rx_nss;
+ 	u8 op_vht_rx_nss_type;
+ 
+-	__le32 sta_status;
++	__le32 sta_cap;
+ 
+ 	struct ra_phy phy;
+ } __packed;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
