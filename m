@@ -2,88 +2,89 @@ Return-Path: <SRS0=gQ79=JX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B274C433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 15:33:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A1B8C43461
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 16:30:01 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A6B7D61396
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 15:33:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6B7D61396
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id B6799613A9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Apr 2021 16:30:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6799613A9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8TAF6VrYJBf+0plTN4xk1Ukwd7IxReieqi3PE7h+2XM=; b=GXy6kSoNT4sjmh8eGu3PCxW94
-	tL440M2g9YKKDdrZsDPAmyvT1GTRbihS1BV76AjbyGcQjT//2rhoRuP7ylNmpPbhLSXUOPgOKsRVV
-	joQFamOj46bl93FTsENshytmzZhSF3qydcjx67s4Ce7/lP8XjnwjhEPJJDmhKk62fHwcKdeukxWnw
-	ZZ4JDFGBEi7E23kbj7li5JKgIiS2DRNJkOw4DnWqoryg5RxyGAIv6vDSrdqDIpm9pxHKQXfik/FMm
-	C4qiHi7aNc+bZ43E/zqPeqdFiSkUYf1gILdlEaN34gu0Rled0hSn+5KIBJRQmRlxQS8lvHBbiciE4
-	2Wlg20mGA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LMl8zk+i91s5nk0ETs5tcDUMnEXZcJe8/xb6j8W7m7s=; b=fP0cpef9xornRmc06mGXNveiLp
+	oUkEUluTd1RKtUkG41VPKbf7AzhzKJL4yXf21kEMbcaIAeiPAuzLvUO3D4AuRrKqZqNI4cAlo4RXa
+	UXZ7QSPkQalBJMQsluctubdQjuMKB3FYCcDKOSQ+8boXZBAoH135YkxsFIbeRfUT+Xm75IcybMOU+
+	2zE4EhHFWwX3KmENalukVV6vN/CJdM1r/kpphzTdOacQszxdxP+Ewg3YEN5MFHcrtBSDZqU8uqQGt
+	8deEaqNLoIBi5RXDKQkB/181Wfgxkt7B0ctP2xEM81oOZ04dUo3J1xCIHNLGc3nSZND0XHAIDJNJa
+	YsJFDqHQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lb3Eq-007yua-El; Mon, 26 Apr 2021 15:33:32 +0000
+	id 1lb47J-0085Mz-H6; Mon, 26 Apr 2021 16:29:49 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lb3Eo-007yuN-Uw; Mon, 26 Apr 2021 15:33:31 +0000
+ id 1lb47G-0085Mb-D4
+ for linux-mediatek@desiato.infradead.org; Mon, 26 Apr 2021 16:29:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=7B1GdiH8EmAzQf5da4Itx3fv+pLrbVza/q9t2EKHO10=; b=3RpJYmaYG6EiE8c4h7Hm7dUW2Z
- c3yP+5x2dZc5+PkjFsfxIEsqu3luJWVbVGzqpRZ3VF66HoJLBjidIYYRhpQfIgYxCp+g02XDpEWTP
- U2ZlFqFveNfd4izYZxFA9wQGhyWn19+D8Wq4/R6RdGGg1MHstoaYfzYkSQqAlGsU/0nUkBBrCinh7
- FVssbpdkE7sYPqDcrLpCP3brkwJO2OgeMy80uRoOfY17tKeh6Aa1+9UIiamWd4rdzrZnycJSZpCFt
- lmcwpJS3AJDSA1ihs1PitH9PmOtSy6uOzB9vqyGPo+KaLBsGILGfm6sDce5Ee/MTpzcnqne+RAKHA
- W157DwLg==;
-Received: from mga02.intel.com ([134.134.136.20])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=XlPGY6SWEYsbD6mdsnirXVY5DNQZGFRB5MdFJQfCzKg=; b=3nVHkN8gnuTVvKLn54597m4vWA
+ YvElv6IM6rQx3Gn9PR4HYuC2XVb5REQviJ3PfRSSLlJW71H9Iy99dq/4TvDHCQ3bd9o64BpqLigVB
+ 3sTyN+e91YFQXdWKCR3OxxQSyBHwQOAw7OSjbg7W9gCPrf+lg7rqYJf+EvsScxbjdczlRemyrsWuB
+ fdqYU7EcG5Ap62EH8PVQxnPDGSDLGRYm/+A6z2wYo5C4n8XWO0REW+JJW2l/xm052WZZ3ngxYjFhB
+ n3O2Z7g1bGZ9TqXZdzONuZXLf+Pptd/KjNRWgg+tOWsUqj8cIk3rFbmvlmJ1UT7NRlwLQye8gJesc
+ SAC1YI7w==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lb3Em-00G3Br-04; Mon, 26 Apr 2021 15:33:29 +0000
-IronPort-SDR: NpLevcXMebNz5SRw4UTiUbp69msAZWC1i6T8LJJ6CB76so3CJQ4NeEMcSan8lQ3E6OsHxcimOR
- o/8UarbdQ8Yw==
-X-IronPort-AV: E=McAfee;i="6200,9189,9966"; a="183487476"
-X-IronPort-AV: E=Sophos;i="5.82,252,1613462400"; d="scan'208";a="183487476"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Apr 2021 08:33:24 -0700
-IronPort-SDR: u5UbAlc/iLH+5DnGDngndvxBpa4w15K1qC8094iscTGEiRcuExLiQ8FOfd5rw/QS5eNkvOgY45
- 8HH//XYxDYXQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.82,252,1613462400"; d="scan'208";a="457220251"
-Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.171])
- by fmsmga002.fm.intel.com with SMTP; 26 Apr 2021 08:33:19 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Mon, 26 Apr 2021 18:33:18 +0300
-Date: Mon, 26 Apr 2021 18:33:18 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: dri-devel@lists.freedesktop.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, devicetree@vger.kernel.org,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 1/2] gpu: drm: init set panel orientation property
- earlier
-Message-ID: <YIbdPqolop6cBnYH@intel.com>
-References: <20210426051848.2600890-1-hsinyi@chromium.org>
+ id 1lb47C-00G5et-4f
+ for linux-mediatek@lists.infradead.org; Mon, 26 Apr 2021 16:29:43 +0000
+X-UUID: 24292b2aed79479685514638f1fe1115-20210426
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=XlPGY6SWEYsbD6mdsnirXVY5DNQZGFRB5MdFJQfCzKg=; 
+ b=l3EZU16so7lDOE0mSbfMQCzV3HwaZdrokZyVQP4469CNmTZZ6aDn9wAgqwkYl3ICA4HvZFapq41jRXw8rJbctIfrnt5iKbdSWOut4aaszvKArj/kfCw2P5n71v80ZapB0OSbil3LbWJdqTp4z7RceSq1Pbmal+G45ZYfXAnBdC8=;
+X-UUID: 24292b2aed79479685514638f1fe1115-20210426
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1423302059; Mon, 26 Apr 2021 09:29:36 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Apr 2021 09:29:34 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Apr 2021 00:29:32 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 27 Apr 2021 00:29:32 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Shayne Chen <shayne.chen@mediatek.com>, <linux-wireless@vger.kernel.org>, 
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] mt76: mt7915: cleanup mt7915_mcu_sta_rate_ctrl_tlv()
+Date: Tue, 27 Apr 2021 00:29:28 +0800
+Message-ID: <22e4a169831b6b54661b6eb4ef4f3a4a18dceb19.1619453772.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210426051848.2600890-1-hsinyi@chromium.org>
-X-Patchwork-Hint: comment
+X-TM-SNTS-SMTP: A59D6560AB4527EB7EB7E8A8F15E5BA29B3DA0A8F6B9F8E5B2339CB75BA24CD02000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_083328_132467_AB0A3F07 
-X-CRM114-Status: GOOD (  29.01  )
+X-CRM114-CacheID: sfid-20210426_092942_217381_5D908E10 
+X-CRM114-Status: GOOD (  14.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,173 +96,198 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 26, 2021 at 01:18:47PM +0800, Hsin-Yi Wang wrote:
-> drm_dev_register() sets connector->registration_state to
-> DRM_CONNECTOR_REGISTERED and dev->registered to true. If
-> drm_connector_set_panel_orientation() is first called after
-> drm_dev_register(), it will fail several checks and results in following
-> warning.
-> =
+Remove obsoleted codes. This is the preparation for .set_bitrate_mask().
 
-> Create panel orientation property in drm_connector_init()
-> and set default value to UNKNOWN. Let the panel set the real value
-> later.
-> =
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 76 +++++--------------
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  2 +-
+ 2 files changed, 22 insertions(+), 56 deletions(-)
 
-> [    4.480976] ------------[ cut here ]------------
-> [    4.485603] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_objec=
-t.c:45 __drm_mode_object_add+0xb4/0xbc
-> <snip>
-> [    4.609772] Call trace:
-> [    4.612208]  __drm_mode_object_add+0xb4/0xbc
-> [    4.616466]  drm_mode_object_add+0x20/0x2c
-> [    4.620552]  drm_property_create+0xdc/0x174
-> [    4.624723]  drm_property_create_enum+0x34/0x98
-> [    4.629241]  drm_connector_set_panel_orientation+0x64/0xa0
-> [    4.634716]  boe_panel_get_modes+0x88/0xd8
-> [    4.638802]  drm_panel_get_modes+0x2c/0x48
-> [    4.642887]  panel_bridge_get_modes+0x1c/0x28
-> [    4.647233]  drm_bridge_connector_get_modes+0xa0/0xd4
-> [    4.652273]  drm_helper_probe_single_connector_modes+0x218/0x700
-> [    4.658266]  drm_mode_getconnector+0x1b4/0x45c
-> [    4.662699]  drm_ioctl_kernel+0xac/0x128
-> [    4.666611]  drm_ioctl+0x268/0x410
-> [    4.670002]  drm_compat_ioctl+0xdc/0xf0
-> [    4.673829]  __arm64_compat_sys_ioctl+0xc8/0x100
-> [    4.678436]  el0_svc_common+0xf4/0x1c0
-> [    4.682174]  do_el0_svc_compat+0x28/0x3c
-> [    4.686088]  el0_svc_compat+0x10/0x1c
-> [    4.689738]  el0_sync_compat_handler+0xa8/0xcc
-> [    4.694171]  el0_sync_compat+0x178/0x180
-> [    4.698082] ---[ end trace b4f2db9d9c88610b ]---
-> [    4.702721] ------------[ cut here ]------------
-> [    4.707329] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_objec=
-t.c:243 drm_object_attach_property+0x48/0xb8
-> <snip>
-> [    4.833830] Call trace:
-> [    4.836266]  drm_object_attach_property+0x48/0xb8
-> [    4.840958]  drm_connector_set_panel_orientation+0x84/0xa0
-> [    4.846432]  boe_panel_get_modes+0x88/0xd8
-> [    4.850516]  drm_panel_get_modes+0x2c/0x48
-> [    4.854600]  panel_bridge_get_modes+0x1c/0x28
-> [    4.858946]  drm_bridge_connector_get_modes+0xa0/0xd4
-> [    4.863984]  drm_helper_probe_single_connector_modes+0x218/0x700
-> [    4.869978]  drm_mode_getconnector+0x1b4/0x45c
-> [    4.874410]  drm_ioctl_kernel+0xac/0x128
-> [    4.878320]  drm_ioctl+0x268/0x410
-> [    4.881711]  drm_compat_ioctl+0xdc/0xf0
-> [    4.885536]  __arm64_compat_sys_ioctl+0xc8/0x100
-> [    4.890142]  el0_svc_common+0xf4/0x1c0
-> [    4.893879]  do_el0_svc_compat+0x28/0x3c
-> [    4.897791]  el0_svc_compat+0x10/0x1c
-> [    4.901441]  el0_sync_compat_handler+0xa8/0xcc
-> [    4.905873]  el0_sync_compat+0x178/0x180
-> [    4.909783] ---[ end trace b4f2db9d9c88610c ]---
-> =
-
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
-> v1:
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20210409045314.=
-3420733-1-hsinyi@chromium.org/
-> ---
->  drivers/gpu/drm/drm_connector.c | 28 +++++++++++++++-------------
->  1 file changed, 15 insertions(+), 13 deletions(-)
-> =
-
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
-tor.c
-> index 7631f76e7f34..a1acb4af0ef4 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -303,6 +303,10 @@ int drm_connector_init(struct drm_device *dev,
->  				   config->tile_property,
->  				   0);
->  =
-
-> +	drm_object_attach_property(&connector->base,
-> +				   config->panel_orientation_property,
-> +				   DRM_MODE_PANEL_ORIENTATION_UNKNOWN);
-> +
-
-A bit silly to add this to every connector. I think you should just
-fix the driver/bridge stuff to set up the orientaion earlier.
-
->  	if (drm_core_check_feature(dev, DRIVER_ATOMIC)) {
->  		drm_object_attach_property(&connector->base, config->prop_crtc_id, 0);
->  	}
-> @@ -1210,7 +1214,7 @@ static const struct drm_prop_enum_list dp_colorspac=
-es[] =3D {
->   *	INPUT_PROP_DIRECT) will still map 1:1 to the actual LCD panel
->   *	coordinates, so if userspace rotates the picture to adjust for
->   *	the orientation it must also apply the same transformation to the
-> - *	touchscreen input coordinates. This property is initialized by calling
-> + *	touchscreen input coordinates. This property value is set by calling
->   *	drm_connector_set_panel_orientation() or
->   *	drm_connector_set_panel_orientation_with_quirk()
->   *
-> @@ -1298,6 +1302,14 @@ int drm_connector_create_standard_properties(struc=
-t drm_device *dev)
->  		return -ENOMEM;
->  	dev->mode_config.hdr_output_metadata_property =3D prop;
->  =
-
-> +	prop =3D drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
-> +					"panel orientation",
-> +					drm_panel_orientation_enum_list,
-> +					ARRAY_SIZE(drm_panel_orientation_enum_list));
-> +	if (!prop)
-> +		return -ENOMEM;
-> +	dev->mode_config.panel_orientation_property =3D prop;
-> +
->  	return 0;
->  }
->  =
-
-> @@ -2205,19 +2217,9 @@ int drm_connector_set_panel_orientation(
->  	info->panel_orientation =3D panel_orientation;
->  =
-
->  	prop =3D dev->mode_config.panel_orientation_property;
-> -	if (!prop) {
-> -		prop =3D drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
-> -				"panel orientation",
-> -				drm_panel_orientation_enum_list,
-> -				ARRAY_SIZE(drm_panel_orientation_enum_list));
-> -		if (!prop)
-> -			return -ENOMEM;
-> -
-> -		dev->mode_config.panel_orientation_property =3D prop;
-> -	}
->  =
-
-> -	drm_object_attach_property(&connector->base, prop,
-> -				   info->panel_orientation);
-> +	drm_object_property_set_value(&connector->base, prop,
-> +				      info->panel_orientation);
->  	return 0;
->  }
->  EXPORT_SYMBOL(drm_connector_set_panel_orientation);
-> -- =
-
-> 2.31.1.498.g6c1eba8ee3d-goog
-> =
-
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index e4f5f72fff29..ed36eaf047b4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -147,10 +147,10 @@ mt7915_get_he_phy_cap(struct mt7915_phy *phy, struct ieee80211_vif *vif)
+ }
+ 
+ static u8
+-mt7915_get_phy_mode(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+-		    struct ieee80211_sta *sta)
++mt7915_get_phy_mode(struct ieee80211_vif *vif, struct ieee80211_sta *sta)
+ {
+-	enum nl80211_band band = mphy->chandef.chan->band;
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	enum nl80211_band band = mvif->phy->mt76->chandef.chan->band;
+ 	struct ieee80211_sta_ht_cap *ht_cap;
+ 	struct ieee80211_sta_vht_cap *vht_cap;
+ 	const struct ieee80211_sta_he_cap *he_cap;
+@@ -163,7 +163,7 @@ mt7915_get_phy_mode(struct mt76_phy *mphy, struct ieee80211_vif *vif,
+ 	} else {
+ 		struct ieee80211_supported_band *sband;
+ 
+-		sband = mphy->hw->wiphy->bands[band];
++		sband = mvif->phy->mt76->hw->wiphy->bands[band];
+ 
+ 		ht_cap = &sband->ht_cap;
+ 		vht_cap = &sband->vht_cap;
+@@ -754,7 +754,7 @@ mt7915_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 		memcpy(bss->bssid, vif->bss_conf.bssid, ETH_ALEN);
+ 		bss->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
+ 		bss->dtim_period = vif->bss_conf.dtim_period;
+-		bss->phy_mode = mt7915_get_phy_mode(phy->mt76, vif, NULL);
++		bss->phy_mode = mt7915_get_phy_mode(vif, NULL);
+ 	} else {
+ 		memcpy(bss->bssid, phy->mt76->macaddr, ETH_ALEN);
+ 	}
+@@ -2100,47 +2100,39 @@ static void
+ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 			     struct ieee80211_vif *vif, struct ieee80211_sta *sta)
+ {
+-	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+-	struct mt76_phy *mphy = &dev->mphy;
+-	enum nl80211_band band;
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = &mvif->phy->mt76->chandef;
++	enum nl80211_band band = chandef->chan->band;
+ 	struct sta_rec_ra *ra;
+ 	struct tlv *tlv;
+-	u32 supp_rate, n_rates, cap = sta->wme ? STA_CAP_WMM : 0;
+-	u8 i, nss = sta->rx_nss, mcs = 0;
++	u32 supp_rate = sta->supp_rates[band];
++	u32 cap = sta->wme ? STA_CAP_WMM : 0;
++	u8 i, nss = sta->rx_nss;
+ 
+ 	tlv = mt7915_mcu_add_tlv(skb, STA_REC_RA, sizeof(*ra));
+ 	ra = (struct sta_rec_ra *)tlv;
+ 
+-	if (msta->wcid.ext_phy && dev->mt76.phy2)
+-		mphy = dev->mt76.phy2;
+-
+-	band = mphy->chandef.chan->band;
+-	supp_rate = sta->supp_rates[band];
+-	n_rates = hweight32(supp_rate);
+-
+ 	ra->valid = true;
+ 	ra->auto_rate = true;
+-	ra->phy_mode = mt7915_get_phy_mode(mphy, vif, sta);
+-	ra->channel = mphy->chandef.chan->hw_value;
++	ra->phy_mode = mt7915_get_phy_mode(vif, sta);
++	ra->channel = chandef->chan->hw_value;
+ 	ra->bw = sta->bandwidth;
+-	ra->rate_len = n_rates;
+-	ra->phy.bw = sta->bandwidth;
++	ra->phy.bw = mt7915_mcu_chan_bw(chandef);
++
++	if (supp_rate) {
++		ra->rate_len = hweight32(supp_rate);
+ 
+-	if (n_rates) {
+ 		if (band == NL80211_BAND_2GHZ) {
+ 			ra->supp_mode = MODE_CCK;
+ 			ra->supp_cck_rate = supp_rate & GENMASK(3, 0);
+-			ra->phy.type = MT_PHY_TYPE_CCK;
+ 
+-			if (n_rates > 4) {
++			if (ra->rate_len > 4) {
+ 				ra->supp_mode |= MODE_OFDM;
+ 				ra->supp_ofdm_rate = supp_rate >> 4;
+-				ra->phy.type = MT_PHY_TYPE_OFDM;
+ 			}
+ 		} else {
+ 			ra->supp_mode = MODE_OFDM;
+ 			ra->supp_ofdm_rate = supp_rate;
+-			ra->phy.type = MT_PHY_TYPE_OFDM;
+ 		}
+ 	}
+ 
+@@ -2150,7 +2142,6 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 
+ 		ra->supp_ht_mcs = *(__le32 *)ra->ht_mcs;
+ 		ra->supp_mode |= MODE_HT;
+-		mcs = hweight32(le32_to_cpu(ra->supp_ht_mcs)) - 1;
+ 		ra->af = sta->ht_cap.ampdu_factor;
+ 		ra->ht_gf = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_GRN_FLD);
+ 
+@@ -2170,7 +2161,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 	if (sta->vht_cap.vht_supported) {
+ 		u16 mcs_map = le16_to_cpu(sta->vht_cap.vht_mcs.rx_mcs_map);
+ 		u16 vht_mcs;
+-		u8 af, mcs_prev;
++		u8 af;
+ 
+ 		af = FIELD_GET(IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK,
+ 			       sta->vht_cap.cap);
+@@ -2189,7 +2180,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 			cap |= STA_CAP_VHT_LDPC;
+ 
+ 		ra->supp_mode |= MODE_VHT;
+-		for (mcs = 0, i = 0; i < nss; i++, mcs_map >>= 2) {
++		for (i = 0; i < nss; i++, mcs_map >>= 2) {
+ 			switch (mcs_map & 0x3) {
+ 			case IEEE80211_VHT_MCS_SUPPORT_0_9:
+ 				vht_mcs = GENMASK(9, 0);
+@@ -2206,10 +2197,6 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 
+ 			ra->supp_vht_mcs[i] = cpu_to_le16(vht_mcs);
+ 
+-			mcs_prev = hweight16(vht_mcs) - 1;
+-			if (mcs_prev > mcs)
+-				mcs = mcs_prev;
+-
+ 			/* only support 2ss on 160MHz */
+ 			if (i > 1 && (ra->bw == CMD_CBW_160MHZ ||
+ 				      ra->bw == CMD_CBW_8080MHZ))
+@@ -2222,28 +2209,7 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 		cap |= STA_CAP_HE;
+ 	}
+ 
+-	ra->sta_status = cpu_to_le32(cap);
+-
+-	switch (BIT(fls(ra->supp_mode) - 1)) {
+-	case MODE_VHT:
+-		ra->phy.type = MT_PHY_TYPE_VHT;
+-		ra->phy.mcs = mcs;
+-		ra->phy.nss = nss;
+-		ra->phy.stbc = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_TXSTBC);
+-		ra->phy.ldpc = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC);
+-		ra->phy.sgi =
+-			!!(sta->vht_cap.cap & IEEE80211_VHT_CAP_SHORT_GI_80);
+-		break;
+-	case MODE_HT:
+-		ra->phy.type = MT_PHY_TYPE_HT;
+-		ra->phy.mcs = mcs;
+-		ra->phy.ldpc = sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING;
+-		ra->phy.stbc = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_TX_STBC);
+-		ra->phy.sgi = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_SGI_20);
+-		break;
+-	default:
+-		break;
+-	}
++	ra->sta_cap = cpu_to_le32(cap);
+ }
+ 
+ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 453e34754c86..7e3432384633 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -943,7 +943,7 @@ struct sta_rec_ra {
+ 	u8 op_vht_rx_nss;
+ 	u8 op_vht_rx_nss_type;
+ 
+-	__le32 sta_status;
++	__le32 sta_cap;
+ 
+ 	struct ra_phy phy;
+ } __packed;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
