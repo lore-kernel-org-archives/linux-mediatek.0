@@ -2,105 +2,86 @@ Return-Path: <SRS0=NJpa=JY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4277FC433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 05:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CEBAFC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:11:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF8FD611BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 05:39:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF8FD611BE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1DE35613BD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:11:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DE35613BD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=e2B6JS/u8vNDzrwjvoYt7io8w1T2QVO1DMJUwZxGxWo=; b=OoUxgcbdhMKPgEMqS4jJCN4rI
-	252JTdo6lc213fffGDuBNm+IBq8jXW+x26TV++pridZQdMkBbNp0/JePyNlP5E4zXKr+1Fx641uI8
-	twVPhiGOxqghrjCeGgCip8DbuosAIDYRTA1ex3xCpgHT1VmdIHEZVbffx0558cfbDwTRf26pPFiAX
-	qIvfXKByTgGJhxcS19kiWBDh2tDof8ga0w+vVmj3pjB/trc+cdofNAsbEaVWKbnIVjaT5+llmBReo
-	gZEJ+I7oQMVxEuSlkgL5AongwrE0+DhWAcyRNLol/aJxrayNmev/K0toM55NVEqBntzIe38LbpEtd
-	6Mnj7Dv+A==;
+	 bh=wX3syPisMNkcEsNfQvWJyYa1YmFNDK/Z/SAfPSGtUhA=; b=XmaNM5Yx8J96xHDXyVYe1fmRy
+	R8FG2KiyrUnZVYLCnLTG5zSzQEd/OG/TbzgCmJ8xeLt8WKJ4iRsZTbQJq2b8o5+8M9eGez+UfjleY
+	75zvHttBxffj0gGPNXRqw4oEvsebyW6BgYdCVkAN2KCORzPOajsotFjW5wH5whAzv2adF8B4dK/v1
+	2OPc8tG8/4yyl51bdbJU2Csm3GhlOHtikC9WjBiwGJbx1hwmcSyUWlZ++WrKTdftsVqVA+MeuGff9
+	qDiEHsvQnlccZwcbiC0ameIwgTW1V9wBWXFUTsu4JoQA7P9W0pg4Go/fUsLbdLwsorFv59rB/5xeC
+	0KCsBQ+Fg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbGQm-000lUH-Ez; Tue, 27 Apr 2021 05:38:49 +0000
+	id 1lbIoL-0014yF-J3; Tue, 27 Apr 2021 08:11:14 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbGOl-000l8r-Am
- for linux-mediatek@desiato.infradead.org; Tue, 27 Apr 2021 05:36:41 +0000
+ id 1lbIoH-0014xu-L2
+ for linux-mediatek@desiato.infradead.org; Tue, 27 Apr 2021 08:11:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=Mf+Xin/ho3m/2nW1BN5PGSEYhY3Bvm9mBCODztoibK0=; b=ToyQl0MTwY8d0Eyg8mSLX6VOaS
- H6XAgjsnlWYLXogqce4cUUppncaorUTvEdBw91kdQRrvYhVbOV6wjqL1YakLXITCgKaAys9v073j/
- smYqqr4VPGe7ehj25oC9HU+Jvz86evHN24pD0ELJx79nB+q4mP9h0WZDZ/Vt+HoQ4E0IFbY4Qp6Uv
- YtLnCuRbLPTRwSIlNRDGWHzx8V7VZxb4VRrOUsKnt7DSe+tgYxgaF2bfoZ/YczDlvz1CNmqcsJXoz
- jmYLyZ/lWkF3Qg9/dMAcBGPaMsx4QMOOQYOtl/v50y/lhb0BW01apoSOU1k2Wl8sHMRXk4/But3qX
- NN8sjCCA==;
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=07RKmapJWTopIz2gVmzJzG36kGAwBXId0uiyJDLJlZA=; b=RAq6GyXLSDdNCm8eYu186ScOox
+ VoHvrUQIoXhIvZxqlnblS+zoyIIMGnqSTWqFTYNvOWauR4Gwp9YsVTHfn/Cbu699PqnvS6ppo1zMT
+ BZVkbDTWAZWh2RZVOCA9EJVyu9nZF97Lor5Fk/HOV+Q51pIhQ5EOboFb61a4GV3jVGJEW0PATBcH7
+ PpsQjoZ4abIM8qE0so1WIItQdY5327YxWIQfIayG4f5Iaqyub65OzFdYaA1rKnYNMy16q5Lk4w4Z9
+ Xl/LLo+wDTattiFQVSs07uvNvmFMl4BLsfKiBZUA6leqF+4PxSOoIQZOgaNwUw7tmOBB/jD6fjwa7
+ yOThoZXA==;
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbGOi-00GSG8-Pa
- for linux-mediatek@lists.infradead.org; Tue, 27 Apr 2021 05:36:38 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id m11so169034pfc.11
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Apr 2021 22:36:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Mf+Xin/ho3m/2nW1BN5PGSEYhY3Bvm9mBCODztoibK0=;
- b=mFo6Q6astEid9lzM4tH2tLTIfuRO8190tH4pQby7aD6Xjz3iEcdD4+CaGJNRQS40Zv
- NGpPcx/yldF9N9pornYCYSWrB4wRH4VhlC6YyGjAGdqTHKqMKSbvSUrJc/ycmOsxXp37
- b1dtQNKNuf0hLaUu6O2C5/GdQGQXe3VNQUFjM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Mf+Xin/ho3m/2nW1BN5PGSEYhY3Bvm9mBCODztoibK0=;
- b=bK/po8p4z9YeFqqGy/tJdtgL2l+cte5nBeqnv/lf+672yXBr0sypvAB4/YE94MRpOI
- 0/N1kIicUzUTZXn+RsND0bGPHi+UWuhV+GnASm1nIbLd5ftTchUIxyMpRv7jYvuv7UXM
- +tSUuTMgxzcULKWV51vT9jydn5/vsMOwzHBrwECgmeRK2lPKGd6dtJbkKrGlitUFaykX
- f/KDQJzDnm27FHGFF8pCXxEWUgSmDwvlGdzftRiGBQ8b84kyYw4NaqFdNpxr7eFaL474
- 286m9bxZ6ugWiPkkbdqSt5CQm50xbxGhGdHOn1cytKPf6fHx3iZ90cJNX8ftxEee7gV4
- uLWQ==
-X-Gm-Message-State: AOAM5325QEgyi5EYBchJ0JzELMX95k4z4PG16q7YfeYnHNsrsBai4zOS
- jtabwNdkmmtyeN3BUhnp3S98yQ==
-X-Google-Smtp-Source: ABdhPJw7IUrkT9sMt8TQGVJztlGXNlq68D0ZPwkzlCLKxbhYQpzkQtPHPlRFY443XD+KQKDrcIPjuQ==
-X-Received: by 2002:a63:3c59:: with SMTP id i25mr19819929pgn.366.1619501796147; 
- Mon, 26 Apr 2021 22:36:36 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:3984:c4f5:8612:6b3e])
- by smtp.gmail.com with ESMTPSA id gc15sm993529pjb.2.2021.04.26.22.36.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Apr 2021 22:36:35 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Wolfram Sang <wsa@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Cc: linux-i2c@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mark Brown <broonie@kernel.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
-Subject: [PATCH v20 5/5] arm64: dts: mt8183: add supply name for eeprom
-Date: Tue, 27 Apr 2021 13:36:17 +0800
-Message-Id: <20210427053617.27972-6-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.31.1.498.g6c1eba8ee3d-goog
-In-Reply-To: <20210427053617.27972-1-hsinyi@chromium.org>
-References: <20210427053617.27972-1-hsinyi@chromium.org>
+ id 1lbIoE-00GWz9-Tr
+ for linux-mediatek@lists.infradead.org; Tue, 27 Apr 2021 08:11:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=07RKmapJWTopIz2gVmzJzG36kGAwBXId0uiyJDLJlZA=; b=QKE+33mVv6Ype/XoL1Jfx2uShW
+ a9pMlZl9eLxgXzOwVuCNBwGkznYSA5xN7xmlMd5uS7w5qcUyFvPmbacYwWc5znKHp9DvduMz9qHUk
+ a2KOwH+x39ms+yA9LMxPTiNoh8T4fqgYQe732OM/6R1cMYsXPRSQIawxsJi0fBRm5mSg=;
+Received: from p4ff13bc6.dip0.t-ipconnect.de ([79.241.59.198] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1lbIo7-00077p-VZ; Tue, 27 Apr 2021 10:11:00 +0200
+Subject: Re: [PATCH] mac80211: minstrel_ht: fix minstrel_aggr_check for encap
+ offload
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Johannes Berg <johannes.berg@intel.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <d5303cd9935a9a2f44b76070d191e753895da516.1619489753.git.ryder.lee@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <6d94a83a-c807-13a5-a2aa-d5adb780ba80@nbd.name>
+Date: Tue, 27 Apr 2021 10:10:58 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.0
 MIME-Version: 1.0
+In-Reply-To: <d5303cd9935a9a2f44b76070d191e753895da516.1619489753.git.ryder.lee@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210426_223636_836356_D567930D 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20210427_011107_195094_BEFF57B6 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,114 +98,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add supplies for eeprom for mt8183 boards.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi  | 4 ++++
- 3 files changed, 12 insertions(+)
+On 2021-04-27 04:20, Ryder Lee wrote:
+> Avoid checking ieee80211_hdr to support encap offload.
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  net/mac80211/rc80211_minstrel_ht.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/net/mac80211/rc80211_minstrel_ht.c b/net/mac80211/rc80211_minstrel_ht.c
+> index ecad9b10984f..02a6648aba54 100644
+> --- a/net/mac80211/rc80211_minstrel_ht.c
+> +++ b/net/mac80211/rc80211_minstrel_ht.c
+> @@ -1180,20 +1180,19 @@ minstrel_downgrade_rate(struct minstrel_ht_sta *mi, u16 *idx, bool primary)
+>  static void
+>  minstrel_aggr_check(struct ieee80211_sta *pubsta, struct sk_buff *skb)
+>  {
+> -	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
+>  	struct sta_info *sta = container_of(pubsta, struct sta_info, sta);
+>  	u16 tid;
+>  
+>  	if (skb_get_queue_mapping(skb) == IEEE80211_AC_VO)
+>  		return;
+>  
+> -	if (unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
+> +	if (unlikely(!pubsta->wme))
+The ieee80211_is_data_qos check should still be performed for
+non-offloaded packets to avoid triggering on management frames.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-index b442e38a3156..28966a65391b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-@@ -88,11 +88,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
- 
- 	eeprom@58 {
- 		compatible = "atmel,24c32";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcama2_reg>;
- 	};
- };
- 
-@@ -101,11 +103,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
- 
- 	eeprom@54 {
- 		compatible = "atmel,24c32";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-index 2f5234a16ead..3aa79403c0c2 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-@@ -62,11 +62,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
- 
- 	eeprom@58 {
- 		compatible = "atmel,24c64";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcamio_reg>;
- 	};
- };
- 
-@@ -75,11 +77,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
- 
- 	eeprom@54 {
- 		compatible = "atmel,24c64";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-index fbc471ccf805..30c183c96a54 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-@@ -71,11 +71,13 @@ &i2c2 {
- 	pinctrl-0 = <&i2c2_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcamio_reg>;
- 
- 	eeprom@58 {
- 		compatible = "atmel,24c32";
- 		reg = <0x58>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcama2_reg>;
- 	};
- };
- 
-@@ -84,11 +86,13 @@ &i2c4 {
- 	pinctrl-0 = <&i2c4_pins>;
- 	status = "okay";
- 	clock-frequency = <400000>;
-+	vbus-supply = <&mt6358_vcn18_reg>;
- 
- 	eeprom@54 {
- 		compatible = "atmel,24c32";
- 		reg = <0x54>;
- 		pagesize = <32>;
-+		vcc-supply = <&mt6358_vcn18_reg>;
- 	};
- };
- 
--- 
-2.31.1.498.g6c1eba8ee3d-goog
-
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
