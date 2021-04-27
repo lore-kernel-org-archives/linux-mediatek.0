@@ -2,95 +2,83 @@ Return-Path: <SRS0=NJpa=JY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5018BC433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 15:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50FEDC433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 21:02:11 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C4D0660BBB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 15:34:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4D0660BBB
+	by mail.kernel.org (Postfix) with ESMTPS id 12AE061076
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 21:02:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12AE061076
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OQZX5+wN5dWffI5nTItNNchIXaagJ+rg3NyEtnSk0ew=; b=C/NuRLOOHP2kdqDawp3waFan3
-	sK2bIRO18Q6Kc2TdlaSsMU4av60+UMAhJEr9qncNHvlTPdRPdRckHwhbn9YfFLITTxJOiObWU69of
-	mNYR7zq/wI3PXej69uoST7ByzOCwCiB62/pDRMoC5orGpZ/ppkOs8NiKMu2YSNLnba84TpQu9xYPY
-	EUwJ+VIqTC9vvNhz9DHS3GOC0P89ya1Nyj/oQ9HoIYl1EN2LRTv6Ks2OWTdQA9TBXHnusc8XAVakA
-	/cZ2n1takikAXOf78/L7BvSHFIoUY+ZDIFoflLprrgU8gHW+uSxDjk/gRVBy38MKYbeIjEQ6w4IhJ
-	4WWDvLtow==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=952z27Xig4xH93fGvuQ1GWM5MEd9wE76OvG/ucJw/Uo=; b=Rz4iN9nS+DbQNhpgHqn3SaUE7n
+	NY+J2jAcK6a0BiFwy3F2lDbDrUXoIYCJeFnOkPIsymgi9GKfrSjTwAxnoqfCS2UKx3SOjKU27LK4O
+	DWBExkDiwEvzaFV2jglEyqPaztXHCt4JVx4pqDhZ551XG/7cagsKXNSaLe0t8dDb4FucrMJ7Esr0C
+	c1iDnpocFYHlKj9aemD9uGi9SsHtWXe676s//gOCBSL9UrVhV2T/1uKULnX4NgqxEC0XSn3TSNyG3
+	TkXWpY0/ygHxX61a+7usC+V0kVpEzSOfoQyKNbGrhAaRIGo8wZA0VjaM077uFC00iQDpVRs28N4tr
+	JtVAsExA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbPjI-001q04-GF; Tue, 27 Apr 2021 15:34:28 +0000
+	id 1lbUqC-002G0u-HB; Tue, 27 Apr 2021 21:01:56 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbPj6-001pzR-Sb; Tue, 27 Apr 2021 15:34:17 +0000
+ id 1lbUq1-002G0a-Vs; Tue, 27 Apr 2021 21:01:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
- MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
- bh=PLL6y35m7wlIM+hkwyA4x+e1SdGOh3UNOB+fy2kCe94=; b=STuLKUMN1ptkKOMiXRuAOwSOSu
- AlUC+mndD3sm9HW7hdbXVh4fXlDc0BggOt3+7JGu1d7Pex4JIYqXg6HZmC85wrPM93k2haE/n0cWL
- CKJkXWTXoSPO8J8rZIwvarPMFISL8ks3qCYrJUjAKmGL1XzZAnHn/BkhGLUAIlvwddoB7QIJyHKID
- nyab8dlB9sPJ54egwZIrcESVzg88wTPb+sjv0G2QhMig65NSybU7fzsodr3RMAMUP5X3l9WEXzdC9
- xOXmBUxvdCoqdoIjHjrcouBPk7Lo5KHvarnwdS/K3Z52+xMbsQSQe6Bfe5LiPxQCNX6Ku6WrKaNmZ
- WqL2fDxg==;
+ MIME-Version:Message-Id:Date:Subject:Cc:List-Id:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description:In-Reply-To:References;
+ bh=UZPJ+ss5XIjpYSN0k+GId1TVtOc2wLjVqBC24dS9fKs=; b=hlOgKXGom4iV3XfCkzYNQvCEuB
+ ecWxCeSUX4u67SbSQWGnHZUaVlhf8Mx1NV9phXTRQ+xeRH4vG2Bg6DfYBWlP6ffXk+21QdvhEOJow
+ fnZ2avTJ7Zh7wTf8H7+h7Z1L1/h/k8IZzDXZbVc87/V0IGGf6Bn+/xpapFmjDH0pHGY66YbdHjMof
+ 6fJ4KMG41ipLZyFlYo3IZxtNEX02zIpW7/2wL2OHG3N/+dymJCOlITit1tf4eMe+kU7L9XvI1WryP
+ erH437D7pGOPn4gyRMRmIPNgP7pZOoAKFq9vGOcCKP6lQsF7kgDPdphy6yHp+bsK7X/2+IiCApMYv
+ /OsWJi1A==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbPj4-00Gp9A-GZ; Tue, 27 Apr 2021 15:34:15 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A2788613DD;
- Tue, 27 Apr 2021 15:34:13 +0000 (UTC)
+ id 1lbUpz-00H0bI-Hy; Tue, 27 Apr 2021 21:01:44 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EBB3B61007;
+ Tue, 27 Apr 2021 21:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619537653;
- bh=nRjupLfRtOC1jx4QARvFWp92/DopAWZE+CYvOd1QYs4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Xf7xrFh15+85qDBGqvjtGZcA6XAk5idTyN4iVWB48cXzrK1wlXyVc9fouKZpB7AjH
- Jju0aYIUHCE1wy6WooMwCPVUeU0XUTFgWWc2B6rxq66IPYL0EjamfS70sXohNoCjQu
- NnnZvlExEMa0rr0Gn+7tchsamcn0byq8AZWrmucpVvK6eA+nRoQriSQi2F5cDM7ZSD
- WRrLRplQZVpE/CgPnxzjtuGINBoM4Kj4DmyYSlEj2Fphte4bBeR/TcFlnXQ17+WxLD
- LZYSucpWRR0mxfQQWuN/FQm/zphGSBo/NYdKMb7+S+x6RRgGZwtIsbY9qUJpjY3tTI
- 1eeJ5KyxyiIFg==
-Received: by mail-ej1-f44.google.com with SMTP id ja3so14227305ejc.9;
- Tue, 27 Apr 2021 08:34:13 -0700 (PDT)
-X-Gm-Message-State: AOAM5316aY+FmiTcYmnzfZDbKpzHPx4ThDpz9Uxtt2QUZZUsaqqtY47Q
- 3Jr2h7wo7PkbF2hn+ZSjGJu0PRocWzSifWbQLQ==
-X-Google-Smtp-Source: ABdhPJwN/fh94a1wvQ0KAftdjjUovYxqjRpSBzYoykWjVdlI+hza7uurmQ86UUDbKXyp07MoytDPBVCc0xoBWlV1ncY=
-X-Received: by 2002:a17:906:b0cb:: with SMTP id
- bk11mr2818134ejb.310.1619537652286; 
- Tue, 27 Apr 2021 08:34:12 -0700 (PDT)
+ s=k20201202; t=1619557302;
+ bh=NibKqGfbz0ggVjPdtiJlKt4ooaw/9XutwuciM3Cur+A=;
+ h=From:To:List-Id:Cc:Subject:Date:From;
+ b=gacBkO/OADbWS4U66IO9J2wRBtpwVLfuZ3RnzzOrFZ13XLfrzPO6C0mJpOTWgLHU9
+ Qsl4nMI2xONrI/PfZ6hfGyHE3+gyF9s1w0MJEo7ezB2jjWtPbI57tusNP307a5H+J/
+ WtX6K7hruZiCWYoZTfjbyN2o6NLcQc3LOZnWmjHGdKQOyN9UDrOK607V02fgry2kwX
+ FACuKdD9A72kqNr4Lt/BiDHxWpkAdtz3koenHvqc7pBuetQgMNYb/YhJ5gMo2nwsdX
+ bDFpDyFd0cY+NEQvQ1nPaLZGn/qnDdmalWObIE0LdXcfVuyFKse1B68A33CfYjSEZ3
+ wtz06W3DeRMbg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ryan Wu <Yz.Wu@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+List-Id: <soc.lore.kernel.org>
+Cc: soc@kernel.org, Arnd Bergmann <arnd@arndb.de>,
+ Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] dt-bindings: nvmem: mediatek: remove duplicate mt8192 line
+Date: Tue, 27 Apr 2021 23:01:08 +0200
+Message-Id: <20210427210121.1080364-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-References: <20210427044948.12596-1-hsinyi@chromium.org>
- <20210427044948.12596-2-hsinyi@chromium.org>
-In-Reply-To: <20210427044948.12596-2-hsinyi@chromium.org>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 27 Apr 2021 23:34:01 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__6agGjApVEkAyhPdV46qTjWdHODBGD_VQcYf5PRhF-hA@mail.gmail.com>
-Message-ID: <CAAOTY__6agGjApVEkAyhPdV46qTjWdHODBGD_VQcYf5PRhF-hA@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] drm/mediatek: init panel orientation property
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: DRI Development <dri-devel@lists.freedesktop.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, 
- linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, DTML <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_083414_591326_E70B1B2F 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20210427_140143_654385_DA7F0B97 
+X-CRM114-Status: UNSURE (   8.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,30 +90,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEhzaW4tWWk6CgpIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1bS5vcmc+IOaWvCAyMDIx
-5bm0NOaciDI35pelIOmAseS6jCDkuIvljYgxMjo0OeWvq+mBk++8mgo+Cj4gSW5pdCBwYW5lbCBv
-cmllbnRhdGlvbiBwcm9wZXJ0eSBhZnRlciBjb25uZWN0b3IgaXMgaW5pdGlhbGl6ZWQuIExldCB0
-aGUKPiBwYW5lbCBkcml2ZXIgZGVjaWRlcyB0aGUgb3JpZW50YXRpb24gdmFsdWUgbGF0ZXIuCj4K
-PiBTaWduZWQtb2ZmLWJ5OiBIc2luLVlpIFdhbmcgPGhzaW55aUBjaHJvbWl1bS5vcmc+Cj4gLS0t
-Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAxICsKPiAgMSBmaWxlIGNo
-YW5nZWQsIDEgaW5zZXJ0aW9uKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21l
-ZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBp
-bmRleCBhZTQwM2M2N2NiZDkuLjBiZDI3ODcyZjJhNCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kc2kuYwo+IEBAIC05NjQsNiArOTY0LDcgQEAgc3RhdGljIGludCBtdGtfZHNpX2VuY29k
-ZXJfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+ICAg
-ICAgICAgICAgICAgICByZXQgPSBQVFJfRVJSKGRzaS0+Y29ubmVjdG9yKTsKPiAgICAgICAgICAg
-ICAgICAgZ290byBlcnJfY2xlYW51cF9lbmNvZGVyOwo+ICAgICAgICAgfQo+ICsgICAgICAgZHJt
-X2Nvbm5lY3Rvcl9pbml0X3BhbmVsX29yaWVudGF0aW9uX3Byb3BlcnR5KGRzaS0+Y29ubmVjdG9y
-KTsKClByb2Nlc3MgdGhlIHJldHVybiB2YWx1ZS4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+ICAg
-ICAgICAgZHJtX2Nvbm5lY3Rvcl9hdHRhY2hfZW5jb2Rlcihkc2ktPmNvbm5lY3RvciwgJmRzaS0+
-ZW5jb2Rlcik7Cj4KPiAgICAgICAgIHJldHVybiAwOwo+IC0tCj4gMi4zMS4xLjQ5OC5nNmMxZWJh
-OGVlM2QtZ29vZwo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LW1lZGlhdGVrCg==
+From: Arnd Bergmann <arnd@arndb.de>
+
+The same patch was accidentally merged twice, resulting in a
+duplicate line for the mt8192 SoC.
+
+Fixes: f2674c0c7488 ("dt-bindings: nvmem: mediatek: add support for MediaTek mt8192 SoC")
+Fixes: 2a1405a14c3a ("dt-bindings: nvmem: mediatek: add support for MediaTek mt8192 SoC")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+index d479ad977e24..2f2895b1f06d 100644
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+@@ -7,7 +7,6 @@ Required properties:
+ 	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+ 	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+ 	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+-	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+ 	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
+ 	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+ - reg: Should contain registers location and length
+-- 
+2.29.2
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
