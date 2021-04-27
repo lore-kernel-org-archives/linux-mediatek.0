@@ -2,86 +2,114 @@ Return-Path: <SRS0=NJpa=JY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CEBAFC433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A0A9C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:13:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DE35613BD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:11:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DE35613BD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
+	by mail.kernel.org (Postfix) with ESMTPS id E566661289
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Apr 2021 08:13:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E566661289
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wX3syPisMNkcEsNfQvWJyYa1YmFNDK/Z/SAfPSGtUhA=; b=XmaNM5Yx8J96xHDXyVYe1fmRy
-	R8FG2KiyrUnZVYLCnLTG5zSzQEd/OG/TbzgCmJ8xeLt8WKJ4iRsZTbQJq2b8o5+8M9eGez+UfjleY
-	75zvHttBxffj0gGPNXRqw4oEvsebyW6BgYdCVkAN2KCORzPOajsotFjW5wH5whAzv2adF8B4dK/v1
-	2OPc8tG8/4yyl51bdbJU2Csm3GhlOHtikC9WjBiwGJbx1hwmcSyUWlZ++WrKTdftsVqVA+MeuGff9
-	qDiEHsvQnlccZwcbiC0ameIwgTW1V9wBWXFUTsu4JoQA7P9W0pg4Go/fUsLbdLwsorFv59rB/5xeC
-	0KCsBQ+Fg==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aq83CCf2f6+X6XwIvKJo/6xsoqL0ypS77O32k3oVgyM=; b=CqEljzTpxr16D8E5oqcepDQCN
+	LIlwkV90TPX781VtW2vr/rbsQRnptnaSNYqdnvJWl99uApnMP70vTtb3PE3/NEiV6RcY2lH1hiedG
+	SuRd/Ed3ZvEWEqVLiFrtrhFYbgLQ6ZGBonovI0T4FKqfkTWO0IZD89yxIeq9dVWd6IyG5q/GY11za
+	SoqSCQQtS1DFKqy1EOWLewijrPxGcTeEOPZVK3TJlM4zN7IjSkWA4yrZMpPyI3bbzHWcWOFBVdRu8
+	m6tGjHoIq0BU4UGmMowfEjvv+zCa/35piVeTwPusW3X3xbXdrXivV2+jjtQSjactjkAisb1mtDUAw
+	3Z20SkX3A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbIoL-0014yF-J3; Tue, 27 Apr 2021 08:11:14 +0000
+	id 1lbIq6-00159J-FA; Tue, 27 Apr 2021 08:13:02 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbIoH-0014xu-L2
- for linux-mediatek@desiato.infradead.org; Tue, 27 Apr 2021 08:11:10 +0000
+ id 1lbIq3-001587-UD
+ for linux-mediatek@desiato.infradead.org; Tue, 27 Apr 2021 08:13:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=07RKmapJWTopIz2gVmzJzG36kGAwBXId0uiyJDLJlZA=; b=RAq6GyXLSDdNCm8eYu186ScOox
- VoHvrUQIoXhIvZxqlnblS+zoyIIMGnqSTWqFTYNvOWauR4Gwp9YsVTHfn/Cbu699PqnvS6ppo1zMT
- BZVkbDTWAZWh2RZVOCA9EJVyu9nZF97Lor5Fk/HOV+Q51pIhQ5EOboFb61a4GV3jVGJEW0PATBcH7
- PpsQjoZ4abIM8qE0so1WIItQdY5327YxWIQfIayG4f5Iaqyub65OzFdYaA1rKnYNMy16q5Lk4w4Z9
- Xl/LLo+wDTattiFQVSs07uvNvmFMl4BLsfKiBZUA6leqF+4PxSOoIQZOgaNwUw7tmOBB/jD6fjwa7
- yOThoZXA==;
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:In-Reply-To:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=oxEBttOl4a1kKljaNatNbnTnmbpYDtvagxJJe5Etukg=; b=VWDnppsjlz+j95DAUmhWFNoTHS
+ LDMi/i51fVFJrGnnd6ELomQetNwQaimQijP+Oo3miWRTAECOHCi4l7TZx01kf95a2iHJEKbl54SXf
+ Yk2OGH5WNIpSTeSYOmkRDFhlLCrVLMlvpih6gDoELUTdoRDRYmIdIg+W2kBipZHsTV9tkPdJVdNX+
+ pfK4Ix9FfN/rr5SFXYndC9QYvAj/ll3mgViSXnznD0pBM0fOb3CgST1ddneGljqQN0C2H/6ncPE63
+ QFCAUmvALQ8GtTHX7gqBSNPPgscWs3dumyb6dDRKq9l+k7TiRyCesEiLIRE6rZfYSCNRCYxVH+unW
+ g11sJ2Yg==;
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbIoE-00GWz9-Tr
- for linux-mediatek@lists.infradead.org; Tue, 27 Apr 2021 08:11:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
- MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=07RKmapJWTopIz2gVmzJzG36kGAwBXId0uiyJDLJlZA=; b=QKE+33mVv6Ype/XoL1Jfx2uShW
- a9pMlZl9eLxgXzOwVuCNBwGkznYSA5xN7xmlMd5uS7w5qcUyFvPmbacYwWc5znKHp9DvduMz9qHUk
- a2KOwH+x39ms+yA9LMxPTiNoh8T4fqgYQe732OM/6R1cMYsXPRSQIawxsJi0fBRm5mSg=;
-Received: from p4ff13bc6.dip0.t-ipconnect.de ([79.241.59.198] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1lbIo7-00077p-VZ; Tue, 27 Apr 2021 10:11:00 +0200
+ id 1lbIq1-00GX93-BE
+ for linux-mediatek@lists.infradead.org; Tue, 27 Apr 2021 08:12:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1619511174;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oxEBttOl4a1kKljaNatNbnTnmbpYDtvagxJJe5Etukg=;
+ b=TDXu0x/QoCFzPYJq/G7x/s33GvgdqdW+V0vGorkOCE3wSsZG2a0ILWiYQwwc1xD9lKmyJy
+ hhSH7R/xBNvV9vg/tjy2hlUgtlxCywiuq6EHZp8AMNPXmG5gnUCsLJfKdG5pvXwWHPJlJl
+ Fx8LeC7JNeCONIqS1/zWJj3wHWija+U=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-197-CoLGH40dPqmwV1F5fejN4A-1; Tue, 27 Apr 2021 04:12:51 -0400
+X-MC-Unique: CoLGH40dPqmwV1F5fejN4A-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ 16-20020a1709063010b029037417ca2d43so10962028ejz.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Apr 2021 01:12:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=SiYctwTe5i2KDXxaksxLTUtLgydwhlO+q4SO9irAoxA=;
+ b=ftOOPJRBRB8B/0WZWcg3eTt5+QQfx2KBPAydIzK4XleFBSCGP/Z7PcsX/0BzKBeNzq
+ 7tkEQb25xUD8AbfMIzLZTbNNmet5NcOI2FDVu1v29pIqPAvvFaAQMjKIRIYadZTr+AF6
+ Imb+8ZjnqiadXn8GKohEtu1jJVtro1taqu3WKnQkQRYGISnNOxlcC9QRSRrruzERNJ44
+ 95yP2nKemddoVHPGS6NGdeyZ9ArwblbZdYNkWzEgCfoblA/GjAJINN0ZoasH/F6aCUhk
+ GCQ3yb2rFWn8bWrjXRMvwksUQYEkaBvDpDWpH8wmMAOfXoo31q5weSuQ+HNRyq3URFzP
+ +nLw==
+X-Gm-Message-State: AOAM5308Jw963xMSWd+SbWe+Y2CXXTaRTxYIS9OE6vGl1q72ShyF85Qv
+ lv59pH3/EWet5UxIUUS5DZNO2d8rIA3p1poguYnPsOgUuv2kG9599ApHNpDb7nftfq5X0x8+VSM
+ VuDWNEyOJ7f+ThVnuzJvYoPfxsw2jXIlc
+X-Received: by 2002:a17:906:a017:: with SMTP id
+ p23mr22649642ejy.460.1619511170463; 
+ Tue, 27 Apr 2021 01:12:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxZlfwMstp/CiemD9GPBlDqRtHbbZ+zfzP5hC6bxcB2k6kTlac1UNxQ4XfJLVC58lCcHrhavg==
+X-Received: by 2002:a17:906:a017:: with SMTP id
+ p23mr22649633ejy.460.1619511170289; 
+ Tue, 27 Apr 2021 01:12:50 -0700 (PDT)
+Received: from localhost ([151.66.28.185])
+ by smtp.gmail.com with ESMTPSA id f3sm12601516eje.45.2021.04.27.01.12.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Apr 2021 01:12:49 -0700 (PDT)
+Date: Tue, 27 Apr 2021 10:12:43 +0200
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH] mac80211: minstrel_ht: fix minstrel_aggr_check for encap
  offload
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Johannes Berg <johannes.berg@intel.com>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <YIfHe6d5IskhogTX@lore-desk>
 References: <d5303cd9935a9a2f44b76070d191e753895da516.1619489753.git.ryder.lee@mediatek.com>
-From: Felix Fietkau <nbd@nbd.name>
-Message-ID: <6d94a83a-c807-13a5-a2aa-d5adb780ba80@nbd.name>
-Date: Tue, 27 Apr 2021 10:10:58 +0200
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.10.0
 MIME-Version: 1.0
 In-Reply-To: <d5303cd9935a9a2f44b76070d191e753895da516.1619489753.git.ryder.lee@mediatek.com>
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_011107_195094_BEFF57B6 
-X-CRM114-Status: GOOD (  13.14  )
+X-CRM114-CacheID: sfid-20210427_011257_595344_63A7C6BB 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,43 +121,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============9072492066507571549=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+--===============9072492066507571549==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="83y9azwuOsjwp1b/"
+Content-Disposition: inline
 
-On 2021-04-27 04:20, Ryder Lee wrote:
+--83y9azwuOsjwp1b/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
 > Avoid checking ieee80211_hdr to support encap offload.
-> 
+>=20
 > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 > ---
 >  net/mac80211/rc80211_minstrel_ht.c | 5 ++---
 >  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/net/mac80211/rc80211_minstrel_ht.c b/net/mac80211/rc80211_minstrel_ht.c
+>=20
+> diff --git a/net/mac80211/rc80211_minstrel_ht.c b/net/mac80211/rc80211_mi=
+nstrel_ht.c
 > index ecad9b10984f..02a6648aba54 100644
 > --- a/net/mac80211/rc80211_minstrel_ht.c
 > +++ b/net/mac80211/rc80211_minstrel_ht.c
-> @@ -1180,20 +1180,19 @@ minstrel_downgrade_rate(struct minstrel_ht_sta *mi, u16 *idx, bool primary)
+> @@ -1180,20 +1180,19 @@ minstrel_downgrade_rate(struct minstrel_ht_sta *m=
+i, u16 *idx, bool primary)
 >  static void
 >  minstrel_aggr_check(struct ieee80211_sta *pubsta, struct sk_buff *skb)
 >  {
-> -	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
->  	struct sta_info *sta = container_of(pubsta, struct sta_info, sta);
->  	u16 tid;
->  
->  	if (skb_get_queue_mapping(skb) == IEEE80211_AC_VO)
->  		return;
->  
-> -	if (unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
-> +	if (unlikely(!pubsta->wme))
-The ieee80211_is_data_qos check should still be performed for
-non-offloaded packets to avoid triggering on management frames.
+> -=09struct ieee80211_hdr *hdr =3D (struct ieee80211_hdr *) skb->data;
+>  =09struct sta_info *sta =3D container_of(pubsta, struct sta_info, sta);
+>  =09u16 tid;
+> =20
+>  =09if (skb_get_queue_mapping(skb) =3D=3D IEEE80211_AC_VO)
+>  =09=09return;
+> =20
+> -=09if (unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
+> +=09if (unlikely(!pubsta->wme))
 
-- Felix
+I guess we are changing the behaviour here since the check is done per-pack=
+et
+and non per-sta
+
+Regards,
+Lorenzo
+
+>  =09=09return;
+> =20
+>  =09if (unlikely(skb->protocol =3D=3D cpu_to_be16(ETH_P_PAE)))
+>  =09=09return;
+> =20
+> -=09tid =3D ieee80211_get_tid(hdr);
+> +=09tid =3D skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+>  =09if (likely(sta->ampdu_mlme.tid_tx[tid]))
+>  =09=09return;
+> =20
+> --=20
+> 2.18.0
+>=20
+
+--83y9azwuOsjwp1b/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYIfHeAAKCRA6cBh0uS2t
+rJ40AP9s6SLk4IcjrZzQrwyK7qXNgfz7YsCNihD0/e/z6jszdgD8CnpJET02ahT0
+lLNlUKno+70LFeDa4y8N6vJVnne3YQ4=
+=So7w
+-----END PGP SIGNATURE-----
+
+--83y9azwuOsjwp1b/--
+
+
+
+--===============9072492066507571549==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============9072492066507571549==--
+
+
