@@ -2,105 +2,81 @@ Return-Path: <SRS0=j19f=JZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3D71C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32D70C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 06:12:40 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 105B361408
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 105B361408
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id CD152613B3
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 06:12:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD152613B3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FiOUDYcMxMkt6CX8Q/opm5xcJ7TE7HqO4oHitrnBMl4=; b=Mk6zcG7rQ2SfGO3mAjKATJFss
-	MF6xIfY7AY3T7TTnOjrud5ptLrnmSewfyd1jOSIB0ozXsiPDC0hlKv31kk3koLhsvBr6306ym/GCO
-	grQ7bANT6VD+8ApcXj7lO+UlIr/ZFz4EpTRVg+OsEXSFu5bcvPNUlsuBvAQS8eHPocT5M/9WpeHLM
-	rQqSub0ubnBT7Jkl/Wf47qQTnqxSMHzf0iNtgFu+yYkhMKvqVXlYIUv1ACwbvRkjUZtpvoPFKKdPu
-	36YxXi2jfXav4sQ8ctWImOfB5BhW/s0XR9BHuYPtmf1np7GnKCtADBXLb8DpGqeWy1+o7ZSGk9pkt
-	RnIrB0XAg==;
+	 bh=Wbsf/wCSjaAgseXPIgDzr6FcCD0P77hPsp/oEb+jYdU=; b=RfT1m+5+6uNH6W4C9cdX2QcSi
+	OpTVbX7vFnc3OUoXi6oeWHRQCm2PYZGQw10pFhGasWB4HcOYy15dH8XdzQ6dzAFo3j8VoatKQqiZl
+	NJ6R1llRXM3jcpfxXt8UPXG64lhsLzxW8Kw+eO5GFhGlbQQ0NRvIOBpJz//Pzy5asL9M7JJe1peA5
+	yMln1SUhz5RISNBGGvJGABM2LZo6bAWe8f/D4LACBTdFfUGNPSSYiCzmwYN4E3Z6dYRjC4eAtJpkk
+	UB6BETvyvGVxCTO8l9ViZSWYqw21K5PUupcR4zLcqnYI6lrEzV/74kwZRQvevsCnLSQTkLvobZ6OJ
+	gKxVm+Z3A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbcFV-002nNp-K9; Wed, 28 Apr 2021 04:56:33 +0000
+	id 1lbdQt-002tzI-EC; Wed, 28 Apr 2021 06:12:23 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbcEk-002nCq-7b
- for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 04:55:46 +0000
+ id 1lbdQh-002tyP-Gi; Wed, 28 Apr 2021 06:12:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=; b=zVwM2bHsKX4FN6r5NOLg1+5ron
- xKpO/ILL3UJwAHIarjunfs5j9LQOXhocNnTSWQkGQXS178qoyPYjSIkcZ3Jyb6lUWGYEdH2TpQbMm
- LkZo9w07kycx3qTLDmq9NCNlghGkVr8upFT/d7405rA2sSoVIhtJePh+Zg2B6MmklZbMJ9uaPofD0
- uWEhSv2OoeQhRTOVArwq8eoXtFM8euVgasPe+N4cJJN1rt4otE+cLh9rxu5M8I9d3QTzP7Lf4/DvP
- gwQ4jyzw11FSvGmjVMc7DHzz+Hh6TYFklsNFEkoxs7V4ilwbj6JajcLY++3rz9Cru0E7lw0I4zWA9
- KxGdrUrQ==;
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:List-Id:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=exIWfyp5DP6MJ8raFiGS6RVBMJA413odfmn/lrQ5Ne0=; b=cnb+EQqPObeLpYCeXDX1omcWA6
+ gtjLnVGj3aX+BSHti2Acw+Rh9jP/XjD9NTqSUwF5enaIuT0cX62klVmg+KVbSP/ua8hCl7wBw04KO
+ 5Ozz8q1L7Gxp3WdSC5f4f9jgwc/ME3rXKXkNcmf/eSYkDmfG6rXRSIp7s4y/MIYe+F3FwC2weoabB
+ urK5lNaclhu1g9Fjhqo0wLFtusD3DB6wHGFEYYN1Y3kcitAr5vPOPMp4E3cqMPQNkQdx7QKS4Al1n
+ w1oDtn/VmKhqjp2QXiub5TLPOz85T92PaG/QFCYlgZLEhbif7CFm2huyTDKg+M7jww9xtoNveFAet
+ cqGFFcEw==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbcEh-00HB9g-S3
- for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 04:55:45 +0000
-Received: by mail-pf1-x436.google.com with SMTP id v191so1122515pfc.8
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Apr 2021 21:55:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=;
- b=oXkcL1lHMS9/atp/1M+2S4oUJFLqrFv1wWQ5I09WWZB5DvznwYznRkUaU8SkfqTGEs
- UYeW43uZrTmQYfz++FpfwhzLxXJ4rtEN+on9zjE9ohFbgKvRHbzOENyfiyVyRz37eJiR
- BFTrFfuAi9YJzDjhgAmeckvfyV99TbMfYgsZ0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=;
- b=riGREea70mEPBFD+GCEHBPwCHdZUor+gzU97xAzYFceyYnT0b3x/JnyXnIhYmacaEW
- EV7eqCo9UkRN9enaMmHasbd0fApeCc3oZJBR4J0bUNM4A7FHAhRAiM8TXviHKlK6kuq+
- tLXs5tzWADn/EJtyUssa/ipKqNuMqX9LPjdRiQi8eJ020zr2GONXilQVn51hzGGl7SO0
- MeRc7liB2ckRkGQ36geZMEMY+ZvLnPvYENPt/WqVNi9LE0xGYgJl/1sKUY3gHWGmIvAN
- 1Vb+Redz1y62xsa2oAyBpNPvT/EqeZRs2RrL5kXRQAAsqmG1vfTkj9xSq/CrNx2ndFiO
- Farg==
-X-Gm-Message-State: AOAM533H/yxC4ZqVik6/DHzGVtMLqjkKoJkfAy/RTu6EJghxNJiwHS0Q
- k1eyAS/yJwOtycyO0NAZXjlFlA==
-X-Google-Smtp-Source: ABdhPJy6K5CdM/3nHF3p+/2eE4TdGymi9eYrEEqROe+kZTRJZLv9zhp0SI6/MmsV0uYFWsxTx8DpSg==
-X-Received: by 2002:a62:1b88:0:b029:1fb:d3d0:343a with SMTP id
- b130-20020a621b880000b02901fbd3d0343amr26649171pfb.76.1619585743151; 
- Tue, 27 Apr 2021 21:55:43 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:8076:36e5:2db0:967])
- by smtp.gmail.com with ESMTPSA id x13sm1193170pgf.13.2021.04.27.21.55.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Apr 2021 21:55:42 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, linux-kernel@vger.kernel.org,
+ id 1lbdQe-00HCu9-QX; Wed, 28 Apr 2021 06:12:10 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8197B613B3;
+ Wed, 28 Apr 2021 06:12:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1619590327;
+ bh=dJJ0tvZ5MJ3qeFn4UO9q5Pg1l0TALUdby7ve1eM2grQ=;
+ h=Date:From:To:List-Id:Cc:Subject:References:In-Reply-To:From;
+ b=FeMJIPqH4b6pi+6ue39y49E6677v535gJxnDBnSZ5VfWYi7BftKP4VUX5fFNlK8wN
+ 6AxDX48ar/lHxOnMsGAlL5Uv9+Tb/kIbeyCnaLnEGJd1oBb/ar09eo5bhxIQ+BsW0V
+ a9CFOL67dDEAQZlsHU1Vkx9YtcE6PqW0+fGM6e4w=
+Date: Wed, 28 Apr 2021 08:12:03 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Arnd Bergmann <arnd@kernel.org>
+List-Id: <soc.lore.kernel.org>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
  Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 3/3] arm64: dts: mt8183: Add panel rotation
-Date: Wed, 28 Apr 2021 12:55:33 +0800
-Message-Id: <20210428045533.564724-3-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.31.1.498.g6c1eba8ee3d-goog
-In-Reply-To: <20210428045533.564724-1-hsinyi@chromium.org>
-References: <20210428045533.564724-1-hsinyi@chromium.org>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Ryan Wu <Yz.Wu@mediatek.com>, soc@kernel.org,
+ Arnd Bergmann <arnd@arndb.de>, Fabien Parent <fparent@baylibre.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: nvmem: mediatek: remove duplicate mt8192 line
+Message-ID: <YIj8sySF3W0x8E+/@kroah.com>
+References: <20210427210121.1080364-1-arnd@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210427210121.1080364-1-arnd@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_215543_924314_0FC9B04C 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20210427_231208_904883_9441606C 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,28 +93,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-krane, kakadu, and kodama boards have a default panel rotation.
+On Tue, Apr 27, 2021 at 11:01:08PM +0200, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+> 
+> The same patch was accidentally merged twice, resulting in a
+> duplicate line for the mt8192 SoC.
+> 
+> Fixes: f2674c0c7488 ("dt-bindings: nvmem: mediatek: add support for MediaTek mt8192 SoC")
+> Fixes: 2a1405a14c3a ("dt-bindings: nvmem: mediatek: add support for MediaTek mt8192 SoC")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+>  Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> index d479ad977e24..2f2895b1f06d 100644
+> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> +++ b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> @@ -7,7 +7,6 @@ Required properties:
+>  	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+>  	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+>  	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+> -	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+>  	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
+>  	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+Shouldn't you drop the bottom one here to keep this in sorted order?
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index ff56bcfa3370..793cc9501337 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -263,6 +263,7 @@ panel: panel@0 {
- 		avee-supply = <&ppvarp_lcd>;
- 		pp1800-supply = <&pp1800_lcd>;
- 		backlight = <&backlight_lcd0>;
-+		rotation = <270>;
- 		port {
- 			panel_in: endpoint {
- 				remote-endpoint = <&dsi_out>;
--- 
-2.31.1.498.g6c1eba8ee3d-goog
+thanks,
 
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
