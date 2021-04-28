@@ -2,102 +2,105 @@ Return-Path: <SRS0=j19f=JZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 630DEC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 19:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F519C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 20:22:05 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 943FF61419
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 19:53:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 943FF61419
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 49FA2613EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 20:22:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49FA2613EF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vTTMiwKwY/JsYOrkyJqby5MESDnCKdhE13Eu01EEOBE=; b=Hv0KrFrdRQxrf/+N0iWkMAQJh
-	kZ0LOb1/NVTl8Np9edqEHsWhOyLkq/pEAwHemu14XKF+vmG/3IwO3D15od1KB3BXJgK9arM1Yy+fn
-	vYEUQgseJcDZQ4DsXl8/7KYUWmk4swumrGK+fhSwUzG7sqheKcAHRMnHHFAp1YyW9C0PSEVgXcrN2
-	5VZ2cjGpfr8fpDpfXfnniOZ3526RhBgx9EK9GaW1fbNnFboY3PqWeFnnX9XW22WF04rMXaaVCa7eC
-	Vm+GsqkMnAko3njGASAkAJmWIX36XrkZqPWSCRA7wJZ9Fw89RA1999KQOS2btLBGoc77s3ytpolf8
-	C4IgSow7w==;
+	 bh=fy5TXbpkvOcIj5RE/OdEMptcl2+Bcj+hvHB9N3qem9s=; b=bTIQXNgcIo9sotw0tP/vWPfng
+	ijDXxxQwb1vqZu5qbtth5x8CMspSoM9/Un2VQqpjgKf7YCmNOewEVWMkVifcCS0ddZ5EhkBMDCP7S
+	TBxixURptoZFy2vViorDMk14Ch1caXb4bgHgU4Tn3AARy5fnzsMEZursu0KMGiFbFl/qUdzqvXLCE
+	lrvkPmFgDZeB7kg9H9wzXewO/oyYc1sXRSUIsg8irGC4oQBbAQfqXbTDGzBUhsXFjDGDHXOkpB0/S
+	J4smJ6Wjj5DZPyXT9hMlG4uvOIGdEhP0g25wvThINooScPOvRQneg0b1/LHCg6eHCNhtT1azYPmyw
+	O1Ur4guDw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbqF7-004BSY-Tu; Wed, 28 Apr 2021 19:53:06 +0000
+	id 1lbqgy-004E3J-P7; Wed, 28 Apr 2021 20:21:53 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbqEn-004BRA-NQ; Wed, 28 Apr 2021 19:52:45 +0000
+ id 1lbqgk-004E1v-5r
+ for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 20:21:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=/pKytGN9W8sMrVQvaOgwD5WVJi+L1fCKHCS1G7ffXOI=; b=HfMwNQlsYQbjIPzqbiXapAeFi/
- H2ekOuGbb4KpnZaGf9cVFvxZ00Lunh5eK5cAgfrl+e4/WAbAbgvgF6/Kn0U+gHsfx1DACzwKcgf5M
- oxHDl9OCXdcYYTaTVlyxThjrNg0pi5NxjuGJyPNtCeLZEoU6AnEfqeu/KG3xAooU4CwrUihGUBEgD
- S88L2nG2edTopIQx1q/LRccLa5L98Szv4lr14eD019A/NhfiuddQLauluHl43Ro4OhSUM5BNCMubK
- Tv1neqzgJ8C89lmVN9FQRspya1vIjXxFCg4ZUu9IWmDCR0B/VhbGTvwskJ9WlGU6Y5iYkAaCGxX4L
- J/wKtqug==;
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ bh=3FlfJuCO/i0lHXz9Yi8JuX0LHEp/FCSt5EvXf/XQhbw=; b=ZDNo1eAvCptxppEbAOc2slS3/6
+ tnJg1wObvJlh03NCLvsLa38mY/zesMoW63Vdde09w3LZ8K0aSmIaQmDY+0zx5MaKrtrgBTXBQECYB
+ NsXNJD2PD2pEztn2o0ZCYMuvLZb72IBLcHH3+AnASO88pQqsDW1t4KGP6JjT7NKaOJ1pO5ntKpuHG
+ YbLenxQoi4JL/Qk3bD1EBFS3Z+Q7fA3aaGUOhhGplRfmHZrzq/stvAjWJgWjsK0Dr7506Qghbweul
+ hLj9RgqQqLKE9zdVb805iCdt19n82faMn+AkZ21kYWj16cNeE46IsMCyCHOCBAtUW8b0Oy7qIvcUa
+ 6SVf2XSQ==;
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbqEk-0009YJ-R6; Wed, 28 Apr 2021 19:52:44 +0000
-Received: by mail-pg1-x536.google.com with SMTP id j7so36103050pgi.3;
- Wed, 28 Apr 2021 12:52:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=/pKytGN9W8sMrVQvaOgwD5WVJi+L1fCKHCS1G7ffXOI=;
- b=JdOCV6VmnRIbLKx6LWiszLtHYvAkv+YliD1uLto2Y6DskP5feuZ1MAw4DS5RW+HFJ4
- 8zokwR1WHii0SuYzgFVWPHNRgWI2AhhKkMrVqbnzSEaj6wOzopLJEtFfaSPgjJw5s+n4
- TqSWWAyy/KhkQhxPCVoRPlPl/7SgukqcyWd29bGs7Xqy+ieZDwu73MCwq3zdFz7Ptv4m
- em525mqmueFIEMONZbRdU4RmW47dKUG3CSlM58KGTgefI2jgeiuNd3EDF9xy+/XBg0Tn
- EHOVhT6zqINh0wW8wIEmpoX7xxxNP5C3fZngAkZfSz5954/GGsLV+kCtrhoV1hk/hYXc
- OM+g==
+ id 1lbqgg-000AUb-AZ
+ for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 20:21:37 +0000
+Received: by mail-il1-x12d.google.com with SMTP id v13so3923640ilj.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 13:21:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3FlfJuCO/i0lHXz9Yi8JuX0LHEp/FCSt5EvXf/XQhbw=;
+ b=Twe/v+kPHslIBdnujIpFoTmjqKiXz3Qw86igYBt6JKw9MRVlLASnJezyH+2HX0D5/y
+ 1S+ZoIf/DhA5jzqOmWyOdNWhi372TPnKzo2U1odOVbpIh9peetD1cWRUTXNOuHiur8RF
+ CTAf8QNFFktBK+T6i7jMTFhiGslZ/9XyFimZ73V5HSutx9tH2bKP85o42syoYOj9MinU
+ N7vUUXLASROmijnkzZEYDKhs1CIZcc88YyxWOpDVZ46m4dn3JJAqyEJPLohCA9ebVbju
+ OYL1e2aCMN1Gi1lP9HTfavKkJuXnOqd3N6Tdd5CHP0iPUiI120LMpSdC1aXMgJjhs6dD
+ oW4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=/pKytGN9W8sMrVQvaOgwD5WVJi+L1fCKHCS1G7ffXOI=;
- b=Eb9XBW5rMOMZChjUtLVpRUijI1f5seJtsvZduV9HxAKUAgIdWK6sKrdQX+L/bj4skg
- XwH8TB2GXf0RhwT5ne5HC4VV9tnEeKEW9c4QZ1BeTQw9E6W2kTr0oguz4WP7/hUGRT7a
- ptG19CwTaaR6vlVf78BkYswQnNc8t7WC/urbf7gTq+SgBAEHX0j5I9uC//CyFk7U3Iub
- JyKCp19OgvYbO2OlFvZ7rpPafF728TjB5rwYh6Sq37OFFQPbh3Hk22pQfEFETVSgI+tu
- dJqc6UrlJivJwucHxG6NyvzBdIFUPoxf4djhViAnU+075dDx6eSyl7U/OgF6b6bQDiFN
- Evkg==
-X-Gm-Message-State: AOAM533IrwUINrgIUkHtPSq317c613hifKUxIo6eG0ew+OOMuj9yrT+n
- TViKSQfMZnFC2+IcDNMFtV4=
-X-Google-Smtp-Source: ABdhPJyR42PL2NF7XSqxdOxYCe5B8OyzbVldVe5KhSgU38V4lHZ6FgoTjWcNp+kqYN7WP3BqdhkR9w==
-X-Received: by 2002:a63:5d18:: with SMTP id r24mr29461665pgb.94.1619639561456; 
- Wed, 28 Apr 2021 12:52:41 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:84c0:9bcd:2e20:f79d])
- by smtp.gmail.com with ESMTPSA id 123sm430826pfz.127.2021.04.28.12.52.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Apr 2021 12:52:40 -0700 (PDT)
-Date: Wed, 28 Apr 2021 12:52:37 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, fparent@baylibre.com,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/7] Input: mtk-pmic-keys - check for NULL on
- of_match_device()
-Message-ID: <YIm9Bb3eBjYwY53R@google.com>
-References: <20210428164219.1115537-1-mkorpershoek@baylibre.com>
- <20210428164219.1115537-2-mkorpershoek@baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3FlfJuCO/i0lHXz9Yi8JuX0LHEp/FCSt5EvXf/XQhbw=;
+ b=O+LWCFXMpjnn5COcuf7YDKsNQjTLk52X/2ogsSDP83f3JueYxN1a41CvS+689Xhjc8
+ LK0t0z4XLO03nNGFd9F5ceMhEs6FtJiTqrcF5u/V5y7R95vRGa+nBtydRoksv26X+bqa
+ aQLvtetQfmoLQxdkZXuKjXSX/7WHhe5YGyWWISyBhmYAnV4gIrPisOfaAHVQ9XVS7tpj
+ kPVb1dcbkWaj2Gf0doVxM28YqlztYe4PGfUX1vcFMrwuMmaL4PECFdQTE/KZV4a3IXSk
+ bRGX4KZj/OO5Gv3jd91+EWpy8nRU7NyocmeffP9Xw6v5WGoIaVGLcLp4pqCdNt7xagiU
+ r3HQ==
+X-Gm-Message-State: AOAM531EcuDMsNQWzb72vIWolND7DQQrbBUYNT1sB5yk6zSKn2t2n8nU
+ BlcwRwEzoNZLOBA0Rz84mbStako21FJjyrkIi0kkYA==
+X-Google-Smtp-Source: ABdhPJxW0HbA94ewF7F3weEGbYhyR1USNUWGh56KyTn6uWBkUkN9dCEH3OgkE9YeiRwCBSERhbC4leLYiC4JNncqOlo=
+X-Received: by 2002:a05:6e02:1d06:: with SMTP id
+ i6mr24290849ila.165.1619641292908; 
+ Wed, 28 Apr 2021 13:21:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210428164219.1115537-2-mkorpershoek@baylibre.com>
+References: <20210428170416.1027484-1-hsinyi@chromium.org>
+ <20210428170416.1027484-3-hsinyi@chromium.org>
+In-Reply-To: <20210428170416.1027484-3-hsinyi@chromium.org>
+From: Sean Paul <sean@poorly.run>
+Date: Wed, 28 Apr 2021 16:20:56 -0400
+Message-ID: <CAMavQK+RJATzOVfgRhpU5i3kGsYM2-y4whgZMTdwNnK=z63nYA@mail.gmail.com>
+Subject: Re: [PATCH v5 3/4] drm/i915: init panel orientation property
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, 
+ LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_125242_900609_942356E4 
-X-CRM114-Status: GOOD (  26.30  )
+X-CRM114-CacheID: sfid-20210428_132134_458489_C61F760F 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,62 +117,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mattijs,
+On Wed, Apr 28, 2021 at 1:04 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> Creating the panel orientation property first since we separate the
+> property creating and value setting.
 
-On Wed, Apr 28, 2021 at 06:42:13PM +0200, Mattijs Korpershoek wrote:
-> mtk-pmic-keys being a child device of mt6397, it will always get probed
-> when mt6397_probe() is called.
-> 
-> This also happens when we have no device tree node matching
-> mediatek,mt6397-keys.
+This should probably be included in patch 1 so you don't regress i915
+in between patches.
 
-It sounds for me that creating a platform device instance in case where
-we know need OF node, but do not have one, is wasteful. Can
-mt6397-core.c and/or MFD core be adjusted to not do that.
+Sean
 
-> 
-> In that case, the mfd core warns us:
-> 
->   [    0.352175] mtk-pmic-keys: Failed to locate of_node [id: -1]
-> 
-> Check return value from call to of_match_device()
-> in order to prevent a NULL pointer dereference.
-> 
-> In case of NULL print error message and return -ENODEV
-> 
-> Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
->  drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-> index 62391d6c7da6..12c449eed026 100644
-> --- a/drivers/input/keyboard/mtk-pmic-keys.c
-> +++ b/drivers/input/keyboard/mtk-pmic-keys.c
-> @@ -247,6 +247,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
->  	const struct of_device_id *of_id =
->  		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
->  
-> +	if (!of_id)
-> +		return -ENODEV;
-> +
-
-So if we make MFD/6396 core smarter we would not be needing this. I
-guess there is still a possibility of someone stuffing "mtk-pmic-keys"
-into "driver_override" attribute of a random platform device but I
-wonder if we really need to take care of such scenarios...
-
->  	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
->  	if (!keys)
->  		return -ENOMEM;
-> -- 
-> 2.27.0
-> 
-
-Thanks.
-
--- 
-Dmitry
+>  drivers/gpu/drm/i915/display/icl_dsi.c  | 1 +
+>  drivers/gpu/drm/i915/display/intel_dp.c | 1 +
+>  drivers/gpu/drm/i915/display/vlv_dsi.c  | 1 +
+>  3 files changed, 3 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/i915/display/icl_dsi.c b/drivers/gpu/drm/i915/display/icl_dsi.c
+> index 9282978060b0..162fb3cf0f5a 100644
+> --- a/drivers/gpu/drm/i915/display/icl_dsi.c
+> +++ b/drivers/gpu/drm/i915/display/icl_dsi.c
+> @@ -1903,6 +1903,7 @@ static void icl_dsi_add_properties(struct intel_connector *connector)
+>
+>         connector->base.state->scaling_mode = DRM_MODE_SCALE_ASPECT;
+>
+> +       drm_connector_attach_scaling_mode_property(&connector->base);
+>         drm_connector_set_panel_orientation_with_quirk(&connector->base,
+>                                 intel_dsi_get_panel_orientation(connector),
+>                                 connector->panel.fixed_mode->hdisplay,
+> diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
+> index a5231ac3443a..f1d664e5abb2 100644
+> --- a/drivers/gpu/drm/i915/display/intel_dp.c
+> +++ b/drivers/gpu/drm/i915/display/intel_dp.c
+> @@ -5263,6 +5263,7 @@ static bool intel_edp_init_connector(struct intel_dp *intel_dp,
+>         intel_panel_setup_backlight(connector, pipe);
+>
+>         if (fixed_mode) {
+> +               drm_connector_init_panel_orientation_property(connector);
+>                 drm_connector_set_panel_orientation_with_quirk(connector,
+>                                 dev_priv->vbt.orientation,
+>                                 fixed_mode->hdisplay, fixed_mode->vdisplay);
+> diff --git a/drivers/gpu/drm/i915/display/vlv_dsi.c b/drivers/gpu/drm/i915/display/vlv_dsi.c
+> index 9bee99fe5495..853855482af1 100644
+> --- a/drivers/gpu/drm/i915/display/vlv_dsi.c
+> +++ b/drivers/gpu/drm/i915/display/vlv_dsi.c
+> @@ -1632,6 +1632,7 @@ static void vlv_dsi_add_properties(struct intel_connector *connector)
+>
+>                 connector->base.state->scaling_mode = DRM_MODE_SCALE_ASPECT;
+>
+> +               drm_connector_init_panel_orientation_property(&connector->base);
+>                 drm_connector_set_panel_orientation_with_quirk(
+>                                 &connector->base,
+>                                 intel_dsi_get_panel_orientation(connector),
+> --
+> 2.31.1.498.g6c1eba8ee3d-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
