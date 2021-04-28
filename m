@@ -2,133 +2,104 @@ Return-Path: <SRS0=j19f=JZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76213C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 15:50:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8D27C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:17:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE32E610FA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 15:50:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE32E610FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 21CD4613DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:17:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21CD4613DC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6Ib4NkNAtq/pUKeXNmezGngaEkHCjO+9ghzriC6IH+Q=; b=Dx/FpxoDlH2s1/hUX1pSFmpSB
-	h480wcgitThDyjDRUpSpMwOsEQUCh10KWbxJ4MEvb5miZhrXcpBwcveo5dEzuaKwdMIibOLeUgk1q
-	uIFt2vRk5QDcVLgPyFAzFbpEs07YyUsHYlRvLS2DDBO83OHjeCAvBJp4p94kuOdkX3BAMFkruZgbc
-	wpJzOg7s2NHaz3WdLQUQBjZi6Ub4U64iAz4dxCosee6hcEDC1r38wDLCU9bXwY2VC+B25SJiz/D1o
-	UvKxbVCU4UIse7X6f+RSN87Y0lAY+5FUD23K6jDipglF021ZO8fBlQvYZ2h9ogaeot+ylO1Z7p0fk
-	iJObU2rcg==;
+	 bh=URCbf7pYkzQ/PuuSTrWdWDJ+dYgqZiEbEdDCVOTYhLg=; b=BgwjY+ffA+NsrfRBazx3fnHJn
+	2j7SfaI5d8FDyoWLh8gIym/ZLSs6iMv0lxdAmbTCYidRUWjX+LNlyYIhkMSPCQUeoquTh7K9rqPcP
+	XmI6HdbIKnJ9XNb1QTfbHS+EHNCcR8iXSBrYwR61KklAhzRNCyoacfr7KoPnce4AifvZ+ybc9Z8wW
+	i1TwDaJO0Gnnk2Swnv8bavGRKrB3fFpF5bBINj8t2K7rhKYeUn6ETHaGZ7YAjsip6f7YgljlVNQYM
+	OIRQFo7qldc42tYf9hDLlqA0YCE9gM/4ZFwp8r9E7viCcFssosCfuAx6UxsntpzO//Z4YiIqY8K7R
+	zGYcC77hQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbmRx-003meM-7n; Wed, 28 Apr 2021 15:50:05 +0000
+	id 1lbmrj-003olD-F4; Wed, 28 Apr 2021 16:16:44 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbmRt-003mdr-I3; Wed, 28 Apr 2021 15:50:01 +0000
+ id 1lbmrg-003oky-7O
+ for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 16:16:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=bZMjXdeyUCsjpWOTokx/+KHmT0z04nF+Qli+4VLwCUY=; b=ZYvNfV9Pcuo+pfzuttwdssYgIu
- GG2oywkIUX7e1G9Rr7Xw11nfpDKgboYWzr+tp/6OazByddegayhSkVS7enPdBLL/dBkyp3xw/jFG5
- QMoMi/M+xqaLWQGTjdE/LtQqlLKsfkA/IGbJOt3q89WYHVgH8oyLVlFi3MSpMqxsRJ/A1fw+VNlyJ
- 08ax+hUy8B5aDJIxyJEZCE2vQ3zqprx7Wq1dPt/ht+eSOcWkxZtW0Orp8ruRuDTP1B3Kvx90ZuWtg
- 9PQGLsPNuIoxQeqkI93VX0/kHrOVVcJnIlLJ0hRNq6t1bXUEz0XfjZFEEMWZ34vkm+MTLM5NF/gRo
- 8N6oyClg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ bh=6XXKhWivBSiK0NUKDt4xItDduSTkSI/DwmkHBVIryfE=; b=C2bndhkA7mS+MW0goa9BPYvMKF
+ ZRONtd2zX1pUCBe65Y2LAT3KVgl8e/MeUw9qa+2zB/pOr/JwC5mYNMlyldUhbL90uRIuLZXpuDLBc
+ hO+v7cA+9AvPhLvDKnfdXQC/ym0QxZyu0dKwZ6yVj9bHYU25xyLhl0PXjoG9uaK7B9Kzrm5UC6ODz
+ BX5kWJgE0XQnEgsHQBcE7rsm9Zcx0KdX2jUAuhB5HgyhYcC6OKdHrikF3OBzjXAxvxs2Kjyr6ogNs
+ a9k3vKtab3lIvfY3NQmSR2dSzXSXmVjAP4r6zbB3nGNLH9dk4anWlwUDJ21lu8b3TOEmEq8rqv00E
+ wqdQPlSA==;
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbmRp-00HaXT-DA; Wed, 28 Apr 2021 15:50:00 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B3364610A2;
- Wed, 28 Apr 2021 15:49:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619624996;
- bh=6/CoqHvXA5fOpA3A5RVJksN1jb3qc28vss2bW2Ps1h4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=u/FPy0GSqykv7UbP1eGyuKva4OKLzag9Bw/Jd4D0kbJTEf9nFrUMmEvhv5EK6vzMK
- BjB3VRHy0SWTGSvkxD+onAV4Fieqtf2ZXtTiexGI+RyxJutQZq8VxflGKixqYFOpUz
- On6PoASK7Vh8yjg3wm62eMFNCYbQtk5gn6WgkeIV2oMUglcpz/AqBzcYM/M4tD51cu
- QunLw6fSqD+ZQ8VF44WRxVz+8sqWccc8jGe1cZAgUj2axVmUS0f3tcXnA28yKRMb0f
- 56N8MN7/SJV9CcbdLHAoqFUGEthzX/mxeThJcNnMD8j9mKUhq91Kz9hVw+Gg5LOHLo
- GhnW8kKeIOrcw==
-Received: from johan by xi.lan with local (Exim 4.93.0.4)
- (envelope-from <johan@kernel.org>)
- id 1lbmS0-000592-V7; Wed, 28 Apr 2021 17:50:09 +0200
-Date: Wed, 28 Apr 2021 17:50:08 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Shawn Tu <shawnx.tu@intel.com>, Ricardo Ribalda <ribalda@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linuxarm@huawei.com,
- Todor Tomov <todor.too@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Dmitry Osipenko <digetx@gmail.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Leon Luo <leonl@leopardimaging.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- Matt Ranostay <matt.ranostay@konsulko.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Bingbu Cao <bingbu.cao@intel.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, devel@driverdev.osuosl.org,
- Jacopo Mondi <jacopo@jmondi.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-tegra@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Wenyou Yang <wenyou.yang@microchip.com>,
- Manivannan Sadhasivam <mani@kernel.org>, linux-arm-msm@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- linux-media@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Benoit Parrot <bparrot@ti.com>, Helen Koike <helen.koike@collabora.com>,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>, mauro.chehab@huawei.com,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Chiranjeevi Rapolu <chiranjeevi.rapolu@intel.com>,
- linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Hyungwoo Yang <hyungwoo.yang@intel.com>,
- linux-kernel@vger.kernel.org, Robert Foss <robert.foss@linaro.org>,
- Dan Scally <djrscally@gmail.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- linux-renesas-soc@vger.kernel.org, Yong Zhi <yong.zhi@intel.com>,
- Shawn Guo <shawnguo@kernel.org>
-Subject: Re: [PATCH v4 00/79] Address some issues with PM runtime at media
- subsystem
-Message-ID: <YImEMN/POW5C8lG7@hovoldconsulting.com>
-References: <cover.1619621413.git.mchehab+huawei@kernel.org>
+ id 1lbmrd-0000t8-37
+ for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 16:16:38 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id s9so16272428ybe.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 09:16:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6XXKhWivBSiK0NUKDt4xItDduSTkSI/DwmkHBVIryfE=;
+ b=YD7+rQwZcFk9G5WfMpF2SXvysZJiFPSNUB3ux7Ts9/pxBovPkuuYtjCpojtGEwY0zf
+ /kkrBf94JI9OFohX2Vu1j7vth1Ang5WI3vJKsFfby8hG6HRoj5fDAVQR+wG+J0HTU1Fx
+ 6WETSMYtWrCaC+3T2iIL10+a43BNMyUKmazERfc21vzI+zSj88vK4HbAoW6MDAeCH8Y2
+ aAfDMyns5pgBnV6tOx1hfniDKHe3HXlJmCgSY8rZFuAf5FrYbga6vhoUITc+aDFeM5nH
+ ay+BaVxn0K/jK+e+rN45JiDT90J8yhCdXE8dQms+0o295Gr+GCfVdzDZWnytjy1ArE3M
+ rmNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6XXKhWivBSiK0NUKDt4xItDduSTkSI/DwmkHBVIryfE=;
+ b=h0yFtuj2gs1KpuyJPXNCrPgbKUrcPoYQDJdKfzcrWLRI68Ifl5pGeezwklYvYMdzzq
+ zf4DW+XLgYUkmwypzwfBY8Utb2H8iBxo0M+RAJZXaPeNKxktUNR/z6aNG53TU6iJlXuT
+ hgU4FPRvdiTGerX9eLiNFYYpn+WBxsmJg6YMfjJj50fk216qLJHzv1HvgnT0HPLVBOWJ
+ yNV6EXjG37wAg5F37iGtbQLKVNct+7hGAxLpY6SLPpGefS8i69ySVYRn4lrIV9hmoOq6
+ 3/CO/eN6+0tN5pXJIQyhRKhDQ4J2dJAEuq2Cnjgvl3BD28j02RHmZrrRx+6Lw64itlQ3
+ Rjdw==
+X-Gm-Message-State: AOAM530B0EsYxdWAQx7ncuUV4VJkiE6TyZValGNFpsVnIGvaVsALb90j
+ fJwIQgzty31mo7DSVR8fYfrDd65a1R8hqZThfJnLmg==
+X-Google-Smtp-Source: ABdhPJyk+0pdGni0YhDJHRrFSzkV+84hkmtaaAKvqYezlshGZOUwoDR3b5BQB/gwJO2y45E+fpNGPMjUpRVSeso7ysM=
+X-Received: by 2002:a25:be09:: with SMTP id h9mr42591798ybk.239.1619626595052; 
+ Wed, 28 Apr 2021 09:16:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1619621413.git.mchehab+huawei@kernel.org>
+References: <20210428045533.564724-1-hsinyi@chromium.org>
+In-Reply-To: <20210428045533.564724-1-hsinyi@chromium.org>
+From: Sean Paul <sean@poorly.run>
+Date: Wed, 28 Apr 2021 12:15:59 -0400
+Message-ID: <CAMavQKKJp-d-ji6Ao8=1Mnx0pA0+YBregZ4aS0OS1sEqKCoE8w@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] gpu: drm: separate panel orientation property
+ creating and value setting
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, 
+ LKML <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_084957_547416_2298E2CE 
-X-CRM114-Status: GOOD (  39.34  )
+X-CRM114-CacheID: sfid-20210428_091637_168888_39E5E08B 
+X-CRM114-Status: GOOD (  25.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,123 +116,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 28, 2021 at 04:51:21PM +0200, Mauro Carvalho Chehab wrote:
-> During the review of the patches from unm.edu, one of the patterns
-> I noticed is the amount of patches trying to fix pm_runtime_get_sync()
-> calls.
-> 
-> After analyzing the feedback from version 1 of this series, I noticed
-> a few other weird behaviors at the PM runtime resume code. So, this
-> series start addressing some bugs and issues at the current code.
-> Then, it gets rid of pm_runtime_get_sync() at the media subsystem
-> (with 2 exceptions).
-> 
-> It should be noticed that
-> Commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
-> added a new method to does a pm_runtime get, which increments
-> the usage count only on success.
-> 
-> The rationale of getting rid of pm_runtime_get_sync() is:
-> 
-> 1. despite its name, this is actually a PM runtime resume call,
->    but some developers didn't seem to realize that, as I got this
->    pattern on some drivers:
-> 
->         pm_runtime_get_sync(&client->dev);
->         pm_runtime_disable(&client->dev);
->         pm_runtime_set_suspended(&client->dev);
->         pm_runtime_put_noidle(&client->dev);
-> 
->    It makes no sense to resume PM just to suspend it again ;-)
+On Wed, Apr 28, 2021 at 12:55 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
 
-This is perfectly alright. Take a look at ov7740_remove() for example:
 
-	pm_runtime_get_sync(&client->dev);
-	pm_runtime_disable(&client->dev);
-	pm_runtime_set_suspended(&client->dev);
-	pm_runtime_put_noidle(&client->dev);
-	
-	ov7740_set_power(ov7740, 0);
+Thank you for revising the patchset, this looks much better to me!
 
-There's an explicit power-off after balancing the PM count and this will
-work regardless of the power state when entering this function.
 
-So this has nothing to do with pm_runtime_get_sync() per se.
+/snip
 
-> 2. Usual *_get() methods only increment their use count on success,
->    but pm_runtime_get_sync() increments it unconditionally. Due to
->    that, several drivers were mistakenly not calling
->    pm_runtime_put_noidle() when it fails;
+>
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 7631f76e7f34..cda83314d7ad 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
 
-Sure, but pm_runtime_get_async() also works this way. You just won't be
-notified if the async resume fails.
+/snip
 
-> 3. The name of the new variant is a lot clearer:
-> 	pm_runtime_resume_and_get()
->     As its same clearly says that this is a PM runtime resume function,
->     that also increments the usage counter on success;
+> @@ -2173,8 +2173,8 @@ EXPORT_SYMBOL(drm_connector_set_vrr_capable_property);
+>   * @connector: connector for which to set the panel-orientation property.
+>   * @panel_orientation: drm_panel_orientation value to set
+>   *
+> - * This function sets the connector's panel_orientation and attaches
+> - * a "panel orientation" property to the connector.
+> + * This function sets the connector's panel_orientation value. If the property
+> + * doesn't exist, it will create one first.
 
-It also introduced an inconsistency in the API and does not pair as well
-with the pm_runtime_put variants.
+I still don't think this function should overload initialization and
+assignment. I'd prefer we just removed the creation from
+set_panel_orientation entirely so this WARN can't be hit.
 
-> 4. Consistency: we did similar changes subsystem wide with
->    for instance strlcpy() and strcpy() that got replaced by
->    strscpy(). Having all drivers using the same known-to-be-safe
->    methods is a good thing;
 
-It's not known to be safe; there are ways to get also this interface
-wrong as for example this series has shown.
-
-> 5. Prevent newer drivers to copy-and-paste a code that it would
->    be easier to break if they don't truly understand what's behind
->    the scenes.
-
-Cargo-cult programming always runs that risk.
-
-> This series replace places  pm_runtime_get_sync(), by calling
-> pm_runtime_resume_and_get() instead.
-> 
-> This should help to avoid future mistakes like that, as people
-> tend to use the existing drivers as examples for newer ones.
-
-The only valid point about and use for pm_runtime_resume_and_get() is to
-avoid leaking a PM usage count reference in the unlikely case that
-resume fails (something which hardly any driver implements recovery
-from anyway).
-
-It's a convenience wrapper that saves you from writing one extra line in
-some cases (depending on how you implement runtime-pm support) and not a
-silver bullet against bugs.
- 
-> compile-tested only.
-> 
-> Patches 1 to 7 fix some issues that already exists at the current
-> PM runtime code;
-> 
-> patches 8 to 20 fix some usage_count problems that still exists
-> at the media subsystem;
-> 
-> patches 21 to 78 repaces pm_runtime_get_sync() by 
-> pm_runtime_resume_and_get();
-> 
-> Patch 79 (and a hunk on patch 78) documents the two exceptions
-> where pm_runtime_get_sync() will still be used for now.
-> 
-> ---
-> 
-> v4:
->     - Added a couple of additional fixes at existing PM runtime code;
->     - Some patches are now more conservative in order to avoid causing
->      regressions.
-> v3:
->     - fix a compilation error;
-> v2:
->     - addressed pointed issues and fixed a few other PM issues.
-
-This really doesn't say much more than "changed stuff" so kinda hard to
-track if review feedback has been taken into account for example.
-
-Johan
+>   *
+>   * Calling this function on a connector where the panel_orientation has
+>   * already been set is a no-op (e.g. the orientation has been overridden with
+> @@ -2206,18 +2206,16 @@ int drm_connector_set_panel_orientation(
+>
+>         prop = dev->mode_config.panel_orientation_property;
+>         if (!prop) {
+> -               prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
+> -                               "panel orientation",
+> -                               drm_panel_orientation_enum_list,
+> -                               ARRAY_SIZE(drm_panel_orientation_enum_list));
+> -               if (!prop)
+> -                       return -ENOMEM;
+> +               int ret;
+>
+> -               dev->mode_config.panel_orientation_property = prop;
+> +               ret = drm_connector_init_panel_orientation_property(connector);
+> +               if (ret)
+> +                       return ret;
+> +               prop = dev->mode_config.panel_orientation_property;
+>         }
+>
+> -       drm_object_attach_property(&connector->base, prop,
+> -                                  info->panel_orientation);
+> +       drm_object_property_set_value(&connector->base, prop,
+> +                                     info->panel_orientation);
+>         return 0;
+>  }
+>  EXPORT_SYMBOL(drm_connector_set_panel_orientation);
+> @@ -2225,7 +2223,7 @@ EXPORT_SYMBOL(drm_connector_set_panel_orientation);
+>  /**
+>   * drm_connector_set_panel_orientation_with_quirk -
+>   *     set the connector's panel_orientation after checking for quirks
+> - * @connector: connector for which to init the panel-orientation property.
+> + * @connector: connector for which to set the panel-orientation property.
+>   * @panel_orientation: drm_panel_orientation value to set
+>   * @width: width in pixels of the panel, used for panel quirk detection
+>   * @height: height in pixels of the panel, used for panel quirk detection
+> @@ -2252,6 +2250,40 @@ int drm_connector_set_panel_orientation_with_quirk(
+>  }
+>  EXPORT_SYMBOL(drm_connector_set_panel_orientation_with_quirk);
+>
+> +/**
+> + * drm_connector_init_panel_orientation_property -
+> + *     create the connector's panel orientation property
+> + *
+> + * This function attaches a "panel orientation" property to the connector
+> + * and initializes its value to DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
+> + *
+> + * The value of the property can be set by drm_connector_set_panel_orientation()
+> + * or drm_connector_set_panel_orientation_with_quirk() later.
+> + *
+> + * Returns:
+> + * Zero on success, negative errno on failure.
+> + */
+> +int drm_connector_init_panel_orientation_property(
+> +       struct drm_connector *connector)
+> +{
+> +       struct drm_device *dev = connector->dev;
+> +       struct drm_property *prop;
+> +
+> +       prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
+> +                       "panel orientation",
+> +                       drm_panel_orientation_enum_list,
+> +                       ARRAY_SIZE(drm_panel_orientation_enum_list));
+> +       if (!prop)
+> +               return -ENOMEM;
+> +
+> +       dev->mode_config.panel_orientation_property = prop;
+> +       drm_object_attach_property(&connector->base, prop,
+> +                                  DRM_MODE_PANEL_ORIENTATION_UNKNOWN);
+> +
+> +       return 0;
+> +}
+> +EXPORT_SYMBOL(drm_connector_init_panel_orientation_property);
+> +
+>  int drm_connector_set_obj_prop(struct drm_mode_object *obj,
+>                                     struct drm_property *property,
+>                                     uint64_t value)
+> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> index 1922b278ffad..4396c1c4a5db 100644
+> --- a/include/drm/drm_connector.h
+> +++ b/include/drm/drm_connector.h
+> @@ -1696,6 +1696,8 @@ int drm_connector_set_panel_orientation_with_quirk(
+>         struct drm_connector *connector,
+>         enum drm_panel_orientation panel_orientation,
+>         int width, int height);
+> +int drm_connector_init_panel_orientation_property(
+> +       struct drm_connector *connector);
+>  int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
+>                                           int min, int max);
+>
+> --
+> 2.31.1.498.g6c1eba8ee3d-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
