@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 839BFC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3D71C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0801161408
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0801161408
+	by mail.kernel.org (Postfix) with ESMTPS id 105B361408
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 04:56:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 105B361408
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/bTGpQDjoE6twSUHm+qNXqx5PIRVx4vG7B18bmSp/Xc=; b=OeAphIDbghQtFTqFH4XLMlqi5
-	XXbf0PMNdbA9/qV9bsmd0mRxWrfTJCv1dV7qJ5a5SNqRsgzOd+G4efCNa6A2EloIRXVVDFtKMBclx
-	CUEBHiYEwGOnuQaSgB3FTLoblStfl2H/pcauDo1mvMPLPAqAVw1x1zlFic7ALjsYpAb1go59VxxQ7
-	JN6I5g5EZ+dux2OyLOixWDL7ZDaJCmT9HuKqMx/5jzM+iId3AVRydpgcZmNEq1UDhG5FAQ+DTdce2
-	kdWlSPCvdIFo+Ju9+kwn6eREWfDO8E0rACoYupyH9FsCnrbKYCuet9Q2ExbsT8LOcU6SqAu7EPgbA
-	LY7sln0sA==;
+	 bh=FiOUDYcMxMkt6CX8Q/opm5xcJ7TE7HqO4oHitrnBMl4=; b=Mk6zcG7rQ2SfGO3mAjKATJFss
+	MF6xIfY7AY3T7TTnOjrud5ptLrnmSewfyd1jOSIB0ozXsiPDC0hlKv31kk3koLhsvBr6306ym/GCO
+	grQ7bANT6VD+8ApcXj7lO+UlIr/ZFz4EpTRVg+OsEXSFu5bcvPNUlsuBvAQS8eHPocT5M/9WpeHLM
+	rQqSub0ubnBT7Jkl/Wf47qQTnqxSMHzf0iNtgFu+yYkhMKvqVXlYIUv1ACwbvRkjUZtpvoPFKKdPu
+	36YxXi2jfXav4sQ8ctWImOfB5BhW/s0XR9BHuYPtmf1np7GnKCtADBXLb8DpGqeWy1+o7ZSGk9pkt
+	RnIrB0XAg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbcF5-002nGG-Em; Wed, 28 Apr 2021 04:56:07 +0000
+	id 1lbcFV-002nNp-K9; Wed, 28 Apr 2021 04:56:33 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbcEh-002nCX-R9
- for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 04:55:44 +0000
+ id 1lbcEk-002nCq-7b
+ for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 04:55:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=Q5arbhYfGXT82qjQUTN0xccKMerRCIU7+UPVnm07W9Y=; b=PZKgtO/ZJNMulddFlmB7VIsgGF
- 5zoMQT86jEVJZVHFy5vS0sjO52gAAbDn42JOfHiJOv2446y8AEtx2H727abS0wq3Ms9qLKzMQedk+
- rNCfeH6fIqVxJFMQOMNnIz4gVIlof4ZEw+2RViLMtzTuMpE5CwthkzGWjSkW+0r3d4tTktfLoPrQU
- 4NJLMS+bX6Cuq8HjNmn0H9V/B550llbu9g0xGvyqbV/KFwl6PRPTPQSdEKOth6vZzSedOujS3KhHD
- d3gBCwjRlUPWeTRdzNT9pV46HsuxI3Yffsgbrlk+ibnMTqOk/vUSNPYjsgoSa9oZDw4BdYlYV5S3f
- kEjWWiDA==;
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=; b=zVwM2bHsKX4FN6r5NOLg1+5ron
+ xKpO/ILL3UJwAHIarjunfs5j9LQOXhocNnTSWQkGQXS178qoyPYjSIkcZ3Jyb6lUWGYEdH2TpQbMm
+ LkZo9w07kycx3qTLDmq9NCNlghGkVr8upFT/d7405rA2sSoVIhtJePh+Zg2B6MmklZbMJ9uaPofD0
+ uWEhSv2OoeQhRTOVArwq8eoXtFM8euVgasPe+N4cJJN1rt4otE+cLh9rxu5M8I9d3QTzP7Lf4/DvP
+ gwQ4jyzw11FSvGmjVMc7DHzz+Hh6TYFklsNFEkoxs7V4ilwbj6JajcLY++3rz9Cru0E7lw0I4zWA9
+ KxGdrUrQ==;
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbcEf-00HB8u-CS
- for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 04:55:42 +0000
-Received: by mail-pf1-x433.google.com with SMTP id c17so8275665pfn.6
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Apr 2021 21:55:41 -0700 (PDT)
+ id 1lbcEh-00HB9g-S3
+ for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 04:55:45 +0000
+Received: by mail-pf1-x436.google.com with SMTP id v191so1122515pfc.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Apr 2021 21:55:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Q5arbhYfGXT82qjQUTN0xccKMerRCIU7+UPVnm07W9Y=;
- b=VTFFF9OFqyw2YMLqAax+N1JMxY/fNr/W5AB4MeQ5uAC48RGc0An02b+Se479ddBizx
- XD/X1KjCcrsMtSQlNf2LW5waQiFV1rfGU+052WMVU0QQcBCnRqMhDXmhEWMSBSbhd1iI
- 2p/YqB6CSg/fIreO6cajKo9N3kjiKV7dDgsHk=
+ bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=;
+ b=oXkcL1lHMS9/atp/1M+2S4oUJFLqrFv1wWQ5I09WWZB5DvznwYznRkUaU8SkfqTGEs
+ UYeW43uZrTmQYfz++FpfwhzLxXJ4rtEN+on9zjE9ohFbgKvRHbzOENyfiyVyRz37eJiR
+ BFTrFfuAi9YJzDjhgAmeckvfyV99TbMfYgsZ0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Q5arbhYfGXT82qjQUTN0xccKMerRCIU7+UPVnm07W9Y=;
- b=oiwweJFb9ZnyWaO+DqlY3erCdX4ogIMx9plMMN4WN4q115JGDerxKUH1uPuy6PX5bE
- a8aJ583FkdtS3YWUb3a617RF89+d2XBqZI4cKdK+/hoQrafYegK0sIrkDou7zUxQ+86s
- 9AiEFbXPJl+Gnlx3UyhWuK+hoFXTOf28VDhvZV1mnYwe4lP7IMlC/24Z47tyzZrlCoEi
- 0sLmPwRW3KT6vRr5UJ1c5vHMGAdzo29OgslEs/l7y0ca4BsaYhApMBFyY7//h7e6H6AB
- oy3fDk41CMefJ//1eQqgUIIx3kNm8yzRyaChIdZzyKbi3AztIdXZfcFwTKnIHu3P6hzX
- aJfg==
-X-Gm-Message-State: AOAM530db8OLplhuvADKqacR3Esg0U4RIlVOfUQzt9AY6ODnqbR/6v6w
- nTqBmzlceerwytDuNZN2dLM5aA==
-X-Google-Smtp-Source: ABdhPJzGs2DXC6vNxlFEZ8RvRfGO4uOiE+lprziJ7+wryJ2YehvrOUkYJqxr2cPuDE5cVXFo3KiZsw==
-X-Received: by 2002:a63:942:: with SMTP id 63mr25683673pgj.67.1619585740596;
- Tue, 27 Apr 2021 21:55:40 -0700 (PDT)
+ bh=gt4pb5bT5mW/MToENIuo4Jt8VqUlSnyGRgKvmw6yKp0=;
+ b=riGREea70mEPBFD+GCEHBPwCHdZUor+gzU97xAzYFceyYnT0b3x/JnyXnIhYmacaEW
+ EV7eqCo9UkRN9enaMmHasbd0fApeCc3oZJBR4J0bUNM4A7FHAhRAiM8TXviHKlK6kuq+
+ tLXs5tzWADn/EJtyUssa/ipKqNuMqX9LPjdRiQi8eJ020zr2GONXilQVn51hzGGl7SO0
+ MeRc7liB2ckRkGQ36geZMEMY+ZvLnPvYENPt/WqVNi9LE0xGYgJl/1sKUY3gHWGmIvAN
+ 1Vb+Redz1y62xsa2oAyBpNPvT/EqeZRs2RrL5kXRQAAsqmG1vfTkj9xSq/CrNx2ndFiO
+ Farg==
+X-Gm-Message-State: AOAM533H/yxC4ZqVik6/DHzGVtMLqjkKoJkfAy/RTu6EJghxNJiwHS0Q
+ k1eyAS/yJwOtycyO0NAZXjlFlA==
+X-Google-Smtp-Source: ABdhPJy6K5CdM/3nHF3p+/2eE4TdGymi9eYrEEqROe+kZTRJZLv9zhp0SI6/MmsV0uYFWsxTx8DpSg==
+X-Received: by 2002:a62:1b88:0:b029:1fb:d3d0:343a with SMTP id
+ b130-20020a621b880000b02901fbd3d0343amr26649171pfb.76.1619585743151; 
+ Tue, 27 Apr 2021 21:55:43 -0700 (PDT)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:8076:36e5:2db0:967])
- by smtp.gmail.com with ESMTPSA id x13sm1193170pgf.13.2021.04.27.21.55.38
+ by smtp.gmail.com with ESMTPSA id x13sm1193170pgf.13.2021.04.27.21.55.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Apr 2021 21:55:40 -0700 (PDT)
+ Tue, 27 Apr 2021 21:55:42 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: dri-devel@lists.freedesktop.org
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
@@ -90,16 +91,16 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sean Paul <sean@poorly.run>,
  Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 2/3] drm/mediatek: init panel orientation property
-Date: Wed, 28 Apr 2021 12:55:32 +0800
-Message-Id: <20210428045533.564724-2-hsinyi@chromium.org>
+Subject: [PATCH v4 3/3] arm64: dts: mt8183: Add panel rotation
+Date: Wed, 28 Apr 2021 12:55:33 +0800
+Message-Id: <20210428045533.564724-3-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.31.1.498.g6c1eba8ee3d-goog
 In-Reply-To: <20210428045533.564724-1-hsinyi@chromium.org>
 References: <20210428045533.564724-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_215541_443644_9829BE7D 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20210427_215543_924314_0FC9B04C 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,32 +117,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Init panel orientation property after connector is initialized. Let the
-panel driver decides the orientation value later.
+krane, kakadu, and kodama boards have a default panel rotation.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index ae403c67cbd9..9da1fd649131 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -964,6 +964,13 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
- 		ret = PTR_ERR(dsi->connector);
- 		goto err_cleanup_encoder;
- 	}
-+
-+	ret = drm_connector_init_panel_orientation_property(dsi->connector);
-+	if (ret) {
-+		DRM_ERROR("Unable to init panel orientation\n");
-+		goto err_cleanup_encoder;
-+	}
-+
- 	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
- 
- 	return 0;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ff56bcfa3370..793cc9501337 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -263,6 +263,7 @@ panel: panel@0 {
+ 		avee-supply = <&ppvarp_lcd>;
+ 		pp1800-supply = <&pp1800_lcd>;
+ 		backlight = <&backlight_lcd0>;
++		rotation = <270>;
+ 		port {
+ 			panel_in: endpoint {
+ 				remote-endpoint = <&dsi_out>;
 -- 
 2.31.1.498.g6c1eba8ee3d-goog
 
