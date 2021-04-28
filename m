@@ -2,72 +2,72 @@ Return-Path: <SRS0=j19f=JZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 454C5C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 02:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D661C43460
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 02:09:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F2D3E61029
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 02:09:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2D3E61029
+	by mail.kernel.org (Postfix) with ESMTPS id 6B38F61407
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 02:09:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B38F61407
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5WShLG628pbkeX7Q+A3QqqiuRqiwqv4vWgJZF63Mx4Q=; b=GbSyFL2L53dT4SNeWy5waIEK5f
-	hfyp35vxzQun2Z6R5gOM+Iron8/FoyFLbKzcQ5Vmbnu2Y8zx2MFmczVrz1LSGVScLPC6z2DYCyMzw
-	rYmZ1bWAA8fu36qg8IgMz/TUtBtx3bhHtWJvX9waIBkC04lwGXZgq+YjBgo2lxqcptZaDEzJf/DMn
-	D5B2MPLvsmjzk45QhvBEqIDg5pgU4p4f38XULXnkDtC01ZCMpFH+VJVoEXhWAEsmSyeeLsYoUw5oX
-	+MTe5Dcl+0IwHsPonVI82hzF+J5NselQaK0/KVmY0OwVFO211R6qAsz1CzkeL7HedcANjS2jaSkk3
-	neInGu0A==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Qv/VArT1tmAMzDeKImpESVnAF3VUSUWS5uqwfmd/Wtg=; b=Yn5OfWSnFsuvVFBtM5btdm4qp
+	HTStIeIbJslg3/RnqszcYOPM6d4Ggr59IVccIjyOLhPgCA2O3IVM0WRKT7Euzor9NLEn414R5Z1MD
+	KleHuljp5gM636NSy6Ised5kH98H+JIR7AgGvsrOZPFKmE6bnaBJJoe6ib1GrQRGfaHdpIhfCYUqC
+	YFFyX/Sr5/az3J52Sbk4V8Bj5pDX9/ftU6xkrQrBlXg58ZBLWHcYIvlVzGGnXr/q01fjcUNZzd0jS
+	We/F/8hhTtJuX0cOZrmxK2OeYDtYKxIf3QOwnxPm5v0gh/FL37QuG44WKk9TueTqPRCDi9hFqgml5
+	FI9ukifrA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbZdt-002axc-R0; Wed, 28 Apr 2021 02:09:33 +0000
+	id 1lbZdu-002axs-PE; Wed, 28 Apr 2021 02:09:34 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbZdT-002avp-Jg; Wed, 28 Apr 2021 02:09:11 +0000
+ id 1lbZdT-002avq-Jg; Wed, 28 Apr 2021 02:09:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=IPkOMYXc7DgG9ZSGuECXB7JjH85JM56dXYeTSv43iD0=; b=ktdqVYCqJsNUj98xJLIMC5s9X6
- G9TaBgPOH3nJ7i/Eyk4DshGACyTXfAF8pcD1MslMJ7kzCEXsIBEJA9D8MNMUyT2jwiplg59O7Eaj1
- jwqXiAzAi5KRhTpWbs/njFJV5lcTVf6udEdFec7NvH8iKpghOrkNoH5BwBxQjorIy82zPs0AbDmAO
- kwGzZDgZgdAN6ChBAxn4aAWslTyk8RY+3SZllLlLtlyaQMp/PbYV4WHxJaF5pIihqBPViju6PItvI
- 9Y3P53Rj+vjCr72RNSbR7C5ZNmk0t9aPU4HsXb4sDEVR15kksattczDSY2J8piFNA2SrK3638bXKO
- bULh9NrA==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=fm5qC5TlC8KRETLKll6bok1TfwAM4YoTKi+atb8rdo8=; b=lk3DbMbNoWJkO3q4TYWNUT5tXw
+ uQVairEv4m8U2AUQOEIwO8dAsOzJVWzNGPqDb0AQc9vQdJgqO0Q21iRg1f7VRypwPYd1Bt51QpP34
+ T1gmCeKXopUrV+2lZmbYir7+jkA9NOaEBqf26VZ9wXVaS4ogD9PsVXvmGNO7tsxyP0ETUhrkUnACz
+ O1gdRSiQwjb9G6gxvlP09KCWBlVJG+hC7Oa28V40k4pbhrtHvYHdEnAc1W/AdoDNPwJ1hbpjRf8A+
+ g8AbFUYf9KtmRE6wty+K+icDvAzxWCgDJWiZBk4pkTMPB0vQ/AFb7m3JtEO8h4Ua5Pe5jSoeZNxky
+ kHJpuwGw==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbZdQ-00H8p8-DS; Wed, 28 Apr 2021 02:09:05 +0000
-X-UUID: 01ede44390dc47e395fe6a798b8134e5-20210427
+ id 1lbZdQ-00H8p9-W5; Wed, 28 Apr 2021 02:09:06 +0000
+X-UUID: bbca28c579644bf4b8a7b52708d76efe-20210427
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=IPkOMYXc7DgG9ZSGuECXB7JjH85JM56dXYeTSv43iD0=; 
- b=ZKaF9dk+GdVDykn2jOqXEtSuePUk+XcHOplRKy3DxqwctoSe4irDj+o96Q90yZkaoGKqjLqiiNDqUoU92l+DVF1wD7gZFuwo/F4Nmrs0d78zzp8YB2zKKEY/cv7m3gWb3kUrbzc3gYqoJSEtO0zvhSu5uPLpd8J1ZbYmEnODcNo=;
-X-UUID: 01ede44390dc47e395fe6a798b8134e5-20210427
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=fm5qC5TlC8KRETLKll6bok1TfwAM4YoTKi+atb8rdo8=; 
+ b=lZzB2z35pY4Cb3jMW45/dE1p+VKX+UxhhHJuf8do6arzty83PY3Nv4cpjfunxCHRSejVB6ABZqs2y0PqClMraWxvbgnGdk5yGsedHV2DbKQb072mK5bul0fsq/xuHhPIBI9DEbMsW9ZVIua0ziFNrs5gqNq4ldDyV6EckPEvv1c=;
+X-UUID: bbca28c579644bf4b8a7b52708d76efe-20210427
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1352435227; Tue, 27 Apr 2021 19:08:59 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Apr 2021 19:08:57 -0700
+ with ESMTP id 1890692314; Tue, 27 Apr 2021 19:09:00 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Apr 2021 19:08:58 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Apr 2021 10:08:55 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Apr 2021 10:08:56 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 28 Apr 2021 10:08:53 +0800
+ Transport; Wed, 28 Apr 2021 10:08:55 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>
 CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
@@ -77,16 +77,17 @@ CC: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Hung Wu
  <chun-hung.wu@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
-Subject: [PATCH v1] MTK_MMSYS tristrate support
-Date: Wed, 28 Apr 2021 10:08:50 +0800
-Message-ID: <1619575731-23388-1-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v1] soc: mediatek: MTK_MMSYS tristrate support
+Date: Wed, 28 Apr 2021 10:08:51 +0800
+Message-ID: <1619575731-23388-2-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1619575731-23388-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1619575731-23388-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210427_190904_477122_51840135 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210427_190905_056809_8617D330 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,15 +104,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MTK_MMSYS tristrate support
+From: Chun-Hung Wu <chun-hung.wu@mediatek.com>
 
-Chun-Hung Wu (1):
-  [ALPS05103552] soc: mediatek: MTK_MMSYS tristrate support
+MTK_MMSYS driver tristrate support.
 
+Signed-off-by: Chun-Hung Wu <chun-hung.wu@mediatek.com>
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
  drivers/soc/mediatek/Kconfig     | 2 +-
  drivers/soc/mediatek/mtk-mmsys.c | 7 ++++++-
  2 files changed, 7 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index fdd8bc0..1437ed0 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -66,7 +66,7 @@ config MTK_SCPSYS_PM_DOMAINS
+ 	  tasks in the system.
+ 
+ config MTK_MMSYS
+-	bool "MediaTek MMSYS Support"
++	tristate "MediaTek MMSYS Support"
+ 	default ARCH_MEDIATEK
+ 	depends on HAS_IOMEM
+ 	help
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 18f9397..55a104e 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -6,6 +6,7 @@
+ 
+ #include <linux/device.h>
+ #include <linux/io.h>
++#include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+@@ -370,4 +371,8 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 	.probe = mtk_mmsys_probe,
+ };
+ 
+-builtin_platform_driver(mtk_mmsys_drv);
++module_platform_driver(mtk_mmsys_drv);
++
++MODULE_AUTHOR("Yongqiang Niu, MediaTek");
++MODULE_DESCRIPTION("MediaTek MMSYS Driver");
++MODULE_LICENSE("GPL v2");
 -- 
 1.8.1.1.dirty
 _______________________________________________
