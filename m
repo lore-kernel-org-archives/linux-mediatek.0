@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14901C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 14:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35E3BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 14:55:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B206A61441
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 14:54:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B206A61441
+	by mail.kernel.org (Postfix) with ESMTPS id D61D461008
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 14:55:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D61D461008
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,67 +23,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sINwvV7gle8EJNLTadDpJfeOfBPlP+WmQO5BxJ8JXY4=; b=Ru9Qq9yvXGKSzpWpvdgjpR9Yf
-	97pzgEUZyFxkYrO6clTPXOkOqDkIf6w+n0dn26MKnhdtYRKtr54FqQsUBAToXhIZ7aGMDwd0pWSO3
-	eX7AUZyi4FGf5Zq1Rj6jldY1Qb1hugJehatLmcLvN5dAkHZ16KtHltyZjcQ7CmXwvgBjuTtvGlYmV
-	GIx3k5WFwT1RJSC7hR1X6za5EBtiYZBmIf5Yk5ErDrUylqjwIcBnhLnrkL9seAciD+G+jt8Y+nLIW
-	7BBdWqUZ+JjxLlzjVRxKM3bLrgMk397KZU3AoYJaYOPvOKOyJlAsRfjeZxsYKyIQWuRy4Gfq04122
-	eyQHceE9g==;
+	 bh=KjjZN+bhGcmBE20eR4jBUpPuy5OcAPO+McvLyCcSobI=; b=ObkWfD93WWBrDZyKMiN1vas8c
+	HbMXoV42Tb6HTbiGhZ6pvQgV5CdonY98Pro6qgAro0FmFZbSFtwjTEj9NIWfywMQpH0ceWDhQW2Da
+	BnZrpNIznzClG/hH2AxMbsjyuSc6bW12bQ5EY8IwaI7A0CY0kL0lmqiRD762SO+700FOd6FjHjBTL
+	scGIJ9CcbSJ6IHtLHr2L707azsyNLZz/c/ipgHEjjdXRanuzzJR6+yTr79Tif/hROPfR7KrOhSnqm
+	ntWTAPUJwcKQMXVh+ERjlhERtA3qM9TeYLyZbNubAeZIqq9pK0QlCt3WJ2Awnuq5WcexJWIUUcmHI
+	CJtjnYWGw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lblaJ-003fvh-Er; Wed, 28 Apr 2021 14:54:39 +0000
+	id 1lblb8-003gB4-Du; Wed, 28 Apr 2021 14:55:30 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lblYW-003fPl-RT; Wed, 28 Apr 2021 14:52:49 +0000
+ id 1lblYa-003fRs-3y; Wed, 28 Apr 2021 14:52:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
  Reply-To:Content-Type:Content-ID:Content-Description;
- bh=CkzDiRgPy8iejVwPrfGJj8JwW/3IpRiOAho8UUQxXuo=; b=lnsM/mYf76c+BrcV/37xQR/og1
- 6tdZ71S7BiUkkGlwKnrZF8ZeuIna3llM0HHhj61Rq5mrIzJDJVVZTn3d/66XwcG0vpxqr5pUBCMTZ
- tUhHLquGGscNFJc0iU//uNELUiC40eyL4V/NK185dhINpR8r0jqRdulNjw8yv2MxAkz+KtpnUSmPb
- Aft491w0R0XxwrjQdZg0IFcVzP/smHo9gdyL40SNZw68HCDCp7gMyl064WZtZsei5wbZxW8CbyX0P
- 1ssSdIDBUKh1Y/qQKSnzX/ZpbOggE1yXjXWMtmRLds9ND0GaRyeco5yF8ukKnyDN+MGOcPdKsofF4
- cfAIDAWA==;
+ bh=uvxTCk9qFVRZeWu4OWV5nbuso6Js4+D7jvAIh37TJlk=; b=Vj0XLxQ8MFbTRNFQdjXQsntnPt
+ e35+WSLRm1GzYtSof/Apoc3JGP++anGjC9pWLbjKF6zZw9XK25Q5UPaKf5m6cImmksj++v00KF6nc
+ enASnybDIGlgwN5UJNvvyDMXT46/AMcwAF6dZYGljyWP/JIRG5+rG69zb/AGzk2/r0avgxAKRaq+9
+ AEnK+zSQtZ/79D24/epUx2+v9RyMYO+0mKopVoj3ObZRGMiIJmsRj7eHzorlNykTdczh/Mf8ETii0
+ /hD7hGkF7Ef2Tjv21q8kKY8uFWoWb0QmirSm50LASYxXvsDe+XzRfq4zN//4C7EWloJ65lAsa/hPt
+ vp1LUB2g==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lblYT-00HVON-ID; Wed, 28 Apr 2021 14:52:47 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D39F46144E;
+ id 1lblYV-00HVQU-Dw; Wed, 28 Apr 2021 14:52:50 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 22A4F61554;
  Wed, 28 Apr 2021 14:52:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1619621564;
- bh=XfZSeMotNFyXbfT608pw1ECU5JJkssXPopFyWbltzaE=;
+ bh=dO1gD2vCTyNaQMmr4CD5RrufRsq5HOpPc9z13n0Rohk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gQMN97eC7BEDIz1pxwojfxcjha4oPcG+hRlJfly/9mEn3EVUjF6A17eUhRaUV4Av6
- 9llNqcINPObifS7R+KKJzcq9sElWMQUcLuEgUGm4dEcPAo7WPuTsJBo8FAKaKUj9Hk
- VsE0m0+uaGwgEcNcCKy4FE+EybZisDq15Xlqw+m72JjyXstPa88Kj6is8ypDBGKPdI
- X5k3QuLFiBcmGJ+6I0pWZTX0FzZ3AimINfu9/sQCxIkKFaooCIrQkh6kuh/y12/DqV
- q/M582iW3kDaTv+n6EwJSHs1PeakpZmbEzfwaSOI0e14HbJuwkIcKyqgVAiYfHvp5V
- b2Ttn7u9UJXRw==
+ b=kCX5EGCo/+tl8FiqD+iNAbou4vWiupP08Ja8L3uTC65gi9JfE/CQToRBSiYRBXdk0
+ Yw2U+kLbsDYq/XQzgAkCxFm72cVF/5JmFhTv1h4X1tfjAV/hScgHc2YCPzGWFCeGfQ
+ JIT+/ymvxUOJ2xHTBMTy1xo8ACpTLPdnt0UYsDie+L4PRYifDpexKYGHf+2BrTWP+j
+ 3D47LMx6DT+8/l1DAYIjaWS8yV8QCKuXDo8vOibUBAyxBLTQ2oj6O/I64F6hSHNC5p
+ ATCeTtSBNZo1zWs8rhdRgNsPwd7kiww9HFQS0W26E1NYNcGyjxuzjG2yeBylpJ3vC8
+ XL4KE9+6Np9Kg==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1lblYP-001Dq4-RV; Wed, 28 Apr 2021 16:52:41 +0200
+ id 1lblYQ-001DqM-0u; Wed, 28 Apr 2021 16:52:42 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v4 10/79] media: mdk-mdp: fix pm_runtime_get_sync() usage count
-Date: Wed, 28 Apr 2021 16:51:31 +0200
-Message-Id: <39851c54046fa0d63f34549803df3388361828b7.1619621413.git.mchehab+huawei@kernel.org>
+Subject: [PATCH v4 16/79] media: mtk-vcodec: fix pm_runtime_get_sync() usage
+ count
+Date: Wed, 28 Apr 2021 16:51:37 +0200
+Message-Id: <b2f5f6e6287d4b56530dcf51b25b5a1c009381f8.1619621413.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1619621413.git.mchehab+huawei@kernel.org>
 References: <cover.1619621413.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_075245_685247_9BD4CAEC 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20210428_075247_584200_4DAED4C9 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,35 +107,27 @@ commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with us
 in order to properly decrement the usage counter and avoid memory
 leaks.
 
-While here, fix the return contition of mtk_mdp_m2m_start_streaming(),
-as it doesn't make any sense to return 0 if the PM runtime failed
-to resume.
-
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-index ace4528cdc5e..f14779e7596e 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
-@@ -391,12 +391,12 @@ static int mtk_mdp_m2m_start_streaming(struct vb2_queue *q, unsigned int count)
- 	struct mtk_mdp_ctx *ctx = q->drv_priv;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index ddee7046ce42..fe096fe61c9d 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -92,9 +92,9 @@ void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+ {
  	int ret;
  
--	ret = pm_runtime_get_sync(&ctx->mdp_dev->pdev->dev);
-+	ret = pm_runtime_resume_and_get(&ctx->mdp_dev->pdev->dev);
- 	if (ret < 0)
--		mtk_mdp_dbg(1, "[%d] pm_runtime_get_sync failed:%d",
-+		mtk_mdp_dbg(1, "[%d] pm_runtime_resume_and_get failed:%d",
- 			    ctx->id, ret);
- 
--	return 0;
-+	return ret;
+-	ret = pm_runtime_get_sync(pm->dev);
++	ret = pm_runtime_resume_and_get(pm->dev);
+ 	if (ret)
+-		mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
++		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
  }
  
- static void *mtk_mdp_m2m_buf_remove(struct mtk_mdp_ctx *ctx,
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
 -- 
 2.30.2
 
