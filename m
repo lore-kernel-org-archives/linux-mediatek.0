@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11856C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C48EAC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:43:27 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F70B613FF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:43:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F70B613FF
+	by mail.kernel.org (Postfix) with ESMTPS id 0C56C613FF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Apr 2021 16:43:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C56C613FF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,83 +23,83 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=puVv4yDBGc5tTG5tEN4Um5DU+yRd9Xh1n0spNI1Nl0M=; b=YrWzkiR0Pscy5b0mu3W2/J3h8
-	oOS/vflErtdChrJAZuTIItaYzVFCCXgQf4qMznlQMju+eyBtcUehZtAzeX4ywENx+X3K1mbOCy3K9
-	JsVkFVKLIGKada6tytEDBJdDGZuW0DHwf/0nH0iGT9b3btm25jOPo9Y5gGlrkcAviOZz0u4xCkjlM
-	LbkuySsbk0jweNCjFtDS97UzWxA+Y71y3PX2M8aIDaPbYjoMayXGWZc/Yo9pr4hK+AbO1Zl0SF6cT
-	dJ+QDe23SCjuy1np1GMXfd6TETGf3HnbrH+SfYTcXjdFOGWOpgbyyT4jJu1LUsjJjNB1KvEcRDckX
-	36aXH0Pzw==;
+	 bh=YR8mhfCT6WOmW6L60t5jxRTBfU45BYoDzYm/bpIho2I=; b=bPNppJki977OLucI9cJSlQwa/
+	GgxN9rcBi4ItVN+rnRswM8zVsu+fQeNc0brfC39kkfvy8y0qWu4X+N23eArWdX+jjaiND8UUcl7g9
+	m1KQR8uP54YMSDzZ96+/k04tYg60VOnGfKGhZsewYc4yC+oXG2NJuR2574G6PCNYtVJNZ1igKZMTY
+	sHsCVBJOx6BXsfVHFJ8cBeVOEKGIZ7QKRsKwFATgnrJ0RqjJmARxQzQOEefnMUF/ChSQN4c3VXy33
+	UNOaOxkdxBcfhe8I6VVMpdmmRxOblEwOGdgPhYRdZqFucm4qTcPsQX7PWVvGfGqeEqYy5yDPn0IHw
+	uDeRHvViw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lbnH9-003rLU-Nl; Wed, 28 Apr 2021 16:42:59 +0000
+	id 1lbnHM-003rPO-HU; Wed, 28 Apr 2021 16:43:12 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbnGh-003rGj-Lc
+ id 1lbnGh-003rGV-Ke
  for linux-mediatek@desiato.infradead.org; Wed, 28 Apr 2021 16:42:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=1Npsra9lTv9v4xN59JKhYP3YKsTPHiSIJ0ifDE3Owq0=; b=250FTZRSx04DgTLeGDznxrc08w
- Qg5b6VVgSxBu0P6nJAyWOdKbqRjU+BKGEXdWto9MVrbaKR3jcDKv0OmOCKzTEjsLLt7y3hn5kpedq
- g7PI9349OxWkSgHrh265gwKIZHGVokT3bRN1zYKB2n/DNdb4TaE7oqEGfMdO+WDrA6SR0vmoqad6e
- YyvGpG7r03YwpsnjKFg/cfHVa/DhR5ErbUS9LF99RpFdYxVriRu2gKmMQMlTzEIi8Pfc8LUZOsR2S
- WNmRFGYArp9g6QZBdE15sPPyE+AVs+ck1wM47hLTFhA4ELR4rwVAXPTDfk5yxpKgi30qJ9UCKRgLR
- JHxb691Q==;
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ bh=KSF6Pij+oCZWv8GIdJGXO9GyJLWrt789k7MQt6XyiRs=; b=P7sg0AD3gjLpicvnLMJdy9maR+
+ Ex+z3hs8SdLZV1/kHb33NzxC/sk/Qf9Tkz1IazLEBI8BzhTTyngMwuMJC80PtqrznapwlfQqGlA8H
+ pSagKGz5gHzyBn7ghWOMSpjv2p4xGdymCNxRaQHUk/DeC9bT+C4k1VoGS/8QNFeUKpUpdv1r1WOsm
+ m5P3okPD5ULVGGKAxlwhf6YpokFHqzNQIGgI40RIzdPHfCC2WC8rCOHqtZag6hWszs0GhVt6bZ72D
+ ZoLKIBjJO7MfHZwYQzsNdxqC7qUn2I9+HnyhBLmgsih/Q8Fq/+q5pDPaLovsezW1Bd6l9Gq4aEFel
+ RiC/571w==;
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lbnGd-0001db-HA
+ id 1lbnGe-0001e3-Mh
  for linux-mediatek@lists.infradead.org; Wed, 28 Apr 2021 16:42:30 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- l189-20020a1cbbc60000b0290140319ad207so7233466wmf.2
- for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 09:42:26 -0700 (PDT)
+Received: by mail-wm1-x32d.google.com with SMTP id
+ a22-20020a05600c2256b029014294520f18so4854839wmm.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 09:42:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1Npsra9lTv9v4xN59JKhYP3YKsTPHiSIJ0ifDE3Owq0=;
- b=zUDZjIL2usIB5WXxK/ye4NbuH9+DXS1SfA9xQTM8vq1Dg0Otmpvz9GfHi2opbHEsnK
- FtLetrva6yDTWEssMBaO0U1BGKu97PDRbGkJBJCDLlUCeISqVJmyWvx1rcNZPpd1+en+
- o0onKxEcPszCkG9gC2SOsLJOxZZReh10HmEK7H/qlFs7ED2RMTn2SlGocO3l3cHc8XbZ
- KK/dK54ZXBxKYeRoYlLePgwqmFjTe1BapwtnFKBapqOxVM5xOokZITRx2tA6uypu+T0G
- 1jbos3guoOsApl4T+3WXTPmXArr5SGKpUxcJlQ1rxIydrMJX8rMpHjkeit0G9StsQ1bq
- Wkew==
+ bh=KSF6Pij+oCZWv8GIdJGXO9GyJLWrt789k7MQt6XyiRs=;
+ b=OQOO4MY6aSibgH++lNkvFpbOmvNXA7h9sW8y6dafOcjjjW1+d6WJP3VgTNCRmFVG3W
+ nRGU4J90kEj+nRDYYxk74wirKyfsHKxJf6qYuScw4/b8WKyeSFP+jyTIeRgZI2EufLvU
+ 7pR7yKWfFsbYo5y3KQxC4USfsByJuNPnGVRlyv6oa+fZX/EZumWGOih904DSSWVzC21W
+ maaxVK1Kp4+ZqUvRybJ9hHrR9Ugs4ewdv5u/7zjPxLWqnsML7vB/i7DIK7hISSreCEPv
+ Gc9PW/z2fcc2alytzLatTnrdZSQUF7EpkTiRdCnhA5XhHKYZJtHCPiVw8uY5RDPiRCqj
+ hE8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1Npsra9lTv9v4xN59JKhYP3YKsTPHiSIJ0ifDE3Owq0=;
- b=UIBlECl/r3Tnn0c/2JnsEKh8VvvE1NE0YXn1K5pSfUi8iYdEy86Ns56u9sEae7evO4
- 3jkwEKk7gpxOiz/FtaE0cmRcHUfnbbHPHp7j0zNuX/LQNeBZV4YZ72S7FiRzH27nagel
- dKnzd5Oen8FI/m3Rxm1xBjEpQ/bbn18ui8fVI08RCqzhawDMZSJbLKmkwJm3lbL1yuiZ
- xX/AcxWlg/b6gTemZqz7lx2PpbUfhBRtboGp2U57knxZQHwJ+UmezOH56VDOCg6US08E
- WrRZflv8WLEufq85ApA8X5WTBf0cPwdJwXVs9rVpZRMKL6L8k3oaYWxLDfDutXRVZiQf
- m4sA==
-X-Gm-Message-State: AOAM530fZ3ih2R2JZeMilF1w6pWEDCf/6BquZp+ONaNsmcSUzcc2N63Z
- dvhzMAI/0rFsWvm9fRNueI7qvNwgC7Mb6w==
-X-Google-Smtp-Source: ABdhPJyWnC5LYX8PDdAFYQdLJOpHsPJILkQ2WJwopTaZ8WFEeAxhvmHUVeqf21SzpLPRGkU+Tw2Sow==
-X-Received: by 2002:a1c:f708:: with SMTP id v8mr5666235wmh.133.1619628145900; 
- Wed, 28 Apr 2021 09:42:25 -0700 (PDT)
+ bh=KSF6Pij+oCZWv8GIdJGXO9GyJLWrt789k7MQt6XyiRs=;
+ b=FX8ggTGSFUvSmkJOCQ1C4lBE0on1yh22lmjU+tTvHXVSWYVi69yJsIBBu89mdW/kOV
+ uAeEjJkL42jXN1zYqReFdCjnfrV7GWV3XCwyco0Ozw4I3CUmzrFi37GjAUR9g2FsIfn9
+ jUO/iui0mLrtUnOd/6UaUN94o08EqIxmhqjiblRGNnStoqaUyPfInI8RlzAy/IhzzJNQ
+ 2EyjOetaOrVR/TJkTZxEjWRJ4Kq7mHsyFBbAA+rn9CL4FmwrRXQo7MEUhFeLLxN4MPN9
+ jcIQD+FsYvaKpz8MhiJhw+9cws17MZNY+6KMnjt5C7tvKbF6OrbveaOqMyGzE/4/mY9j
+ xB4A==
+X-Gm-Message-State: AOAM531/02n6MHOnAK9fVqAl+BA74gVRIsyR7O1ffhYZOdHOecHLqCJl
+ u0e9BiGOwddl/QrH3Gg3RRV6dA==
+X-Google-Smtp-Source: ABdhPJyVSmNvzgpTISSckOFTwPe4BMSsBwptn//otLjLQhK4nnPGDJcuWxnqMK5HD5OOqGqB/b8sVg==
+X-Received: by 2002:a7b:c156:: with SMTP id z22mr5652648wmi.86.1619628146887; 
+ Wed, 28 Apr 2021 09:42:26 -0700 (PDT)
 Received: from groot.home ([2a01:cb19:826e:8e00:5864:ddd1:d623:f912])
- by smtp.gmail.com with ESMTPSA id o10sm351299wrx.35.2021.04.28.09.42.25
+ by smtp.gmail.com with ESMTPSA id o10sm351299wrx.35.2021.04.28.09.42.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Apr 2021 09:42:25 -0700 (PDT)
+ Wed, 28 Apr 2021 09:42:26 -0700 (PDT)
 From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
+To: Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: fparent@baylibre.com, Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- linux-input@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/7] Input: mtk-pmic-keys - check for NULL on of_match_device()
-Date: Wed, 28 Apr 2021 18:42:13 +0200
-Message-Id: <20210428164219.1115537-2-mkorpershoek@baylibre.com>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 2/7] mfd: mt6397: add mt6358 register definitions for power key
+Date: Wed, 28 Apr 2021 18:42:14 +0200
+Message-Id: <20210428164219.1115537-3-mkorpershoek@baylibre.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20210428164219.1115537-1-mkorpershoek@baylibre.com>
 References: <20210428164219.1115537-1-mkorpershoek@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_094227_585845_B87B66F7 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20210428_094228_745078_47F7A53D 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,40 +116,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk-pmic-keys being a child device of mt6397, it will always get probed
-when mt6397_probe() is called.
+In order to support power/home key detection, add definitions for
+two more MT6358 PMIC registers:
 
-This also happens when we have no device tree node matching
-mediatek,mt6397-keys.
-
-In that case, the mfd core warns us:
-
-  [    0.352175] mtk-pmic-keys: Failed to locate of_node [id: -1]
-
-Check return value from call to of_match_device()
-in order to prevent a NULL pointer dereference.
-
-In case of NULL print error message and return -ENODEV
+- TOPSTATUS: homekey and powerkey debounce status
+- TOP_RST_MISC: controls homekey,powerkey long press reset time
 
 Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 ---
- drivers/input/keyboard/mtk-pmic-keys.c | 3 +++
- 1 file changed, 3 insertions(+)
+ include/linux/mfd/mt6358/registers.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index 62391d6c7da6..12c449eed026 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -247,6 +247,9 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 	const struct of_device_id *of_id =
- 		of_match_device(of_mtk_pmic_keys_match_tbl, &pdev->dev);
+diff --git a/include/linux/mfd/mt6358/registers.h b/include/linux/mfd/mt6358/registers.h
+index 2ad0b312aa28..201139b12140 100644
+--- a/include/linux/mfd/mt6358/registers.h
++++ b/include/linux/mfd/mt6358/registers.h
+@@ -8,6 +8,8 @@
  
-+	if (!of_id)
-+		return -ENODEV;
-+
- 	keys = devm_kzalloc(&pdev->dev, sizeof(*keys), GFP_KERNEL);
- 	if (!keys)
- 		return -ENOMEM;
+ /* PMIC Registers */
+ #define MT6358_SWCID                          0xa
++#define MT6358_TOPSTATUS                      0x28
++#define MT6358_TOP_RST_MISC                   0x14c
+ #define MT6358_MISC_TOP_INT_CON0              0x188
+ #define MT6358_MISC_TOP_INT_STATUS0           0x194
+ #define MT6358_TOP_INT_STATUS0                0x19e
 -- 
 2.27.0
 
