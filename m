@@ -2,135 +2,78 @@ Return-Path: <SRS0=2Vnt=J2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95B39C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 15:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E64BAC433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 15:47:25 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAFDC61411
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 15:17:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAFDC61411
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 35C176143E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 15:47:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35C176143E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WccRxqWSWor9xAIXFmwxvT8TYwNzu8RHYsneTZu/wg4=; b=nNTGv5WZJUQnvpevuJ4CBkZbX
-	yuOVBM/w5tcneGn6fnzv70qdMkzdfkZOf5kx1qmZIltMdKV29yuMlQXfmtP9n6OIMp/BU4R0Uutlv
-	jPwGpa2SO3lXoiIzqWXxlsHWn0+mFAm/8t2cJ9L66O9rmnVcxnWWtnViI7T5DqNYPFSkEu3AgrCBT
-	uY2QvAsE2qaizmQsonmdGtXh/xvVhD22Ot6f78J47lpdC2oobi6TNjWmI0j7CMsD3kmLDZ3EWxejN
-	WKK82p4Y5yomaCpxTgKJKZSB5xEl4Ua37UyIn0pGIpysCycxvr8oaalrYdTqnONDtDgOIc7ZvuCF2
-	tk/uIRiYg==;
+	 bh=e2Eo/3m9XjoRP1uNokgpwC36zU5TVbIrU8zQAj79cHY=; b=Y9IgvHwnQW6j26rSU286q4jPs
+	Dr3g5+w7KIkqLZDDXrHRL5/UUge1CP/LzSZOcV7P5MXrN4wYDUIEsTOA1xAz2whR/iVJrnKeI9vRa
+	UJICdDAkbqWOAqitIzmk0q1iUefy7YEKB4CvYVGvLfgPrSZmOfUeSckcRT6x4vZH5GBeViFjfgsC6
+	ofDZgiRIymuDBU0R9Ih1VFB6JjGgGjvn1e19EWp3FrGP8vxIhQ16HFwuVoqa9h8PQHCxeAW+P3BOX
+	qCYbMbVIVqbZ1JwgQCjdVhOuy3Zl/Key/R2a+rHEKxXL5wykw9c/ny+gqCoTxvUnvmUeXBvq3y6eD
+	YuDbVmkxg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc8Pf-005vwL-Rn; Thu, 29 Apr 2021 15:17:11 +0000
+	id 1lc8si-0060MO-MW; Thu, 29 Apr 2021 15:47:12 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc8Pb-005vvm-F5; Thu, 29 Apr 2021 15:17:07 +0000
+ id 1lc8sO-0060LN-Cp; Thu, 29 Apr 2021 15:46:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=jJ48jMIp0hSfiCLziKFhP9eV9v1tPJ0WIyCQG8H3xMI=; b=veu8asuw6K56NcBelT6Hw1nAQG
- sJi0G+4AdJyvQRNvHgQCdFJU06FBZ8buNx5k0EhH2YjOo9eMiw3od7tkV9oe5we01PwfT9JG4HFoo
- HnFPE+H9/Z4njr2x0f4CtGlYK+2f/LSTDf/YH9nf1EP2CrT+7QgF1mHS3eCGglEvD/UEgIrF44+j2
- edBiyhdqPBAPqFQOx3KOav3xl11A3SYZ+Zd60ELqt9fIxl5IrXYquIWpzU1mPmHcQnSaYwC5dE1Lf
- 0kPBKGwsS2s8u7lIh/0j5ryKw64ZuK1FTS5WdW/iXdDlT9WCOECjNHDwMvzi3ectRHNQJRNiMkm7L
- 3O7yE5Rg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=ddKDC2Ffh/vARxLrYlIRorTq1AqL+2UQSY1h0oionmk=; b=vf/kh090j+CY0z+Vb/68u9er+z
+ aoiA8JP4dNGtrK4AnMzQ2AQKUxr21eMsPeAD3/H41B26mLL8Aw9eHyi2bd693Z6wM/Q1XeGHu5CiT
+ wJ3fBR4mMZyeByJ02Ur2VhAA/bHct7F44CaOVj6oBEdzhXEYtPHAoyvr6mI25ClUkMu/dgJHRoaYj
+ aHqd1P692k5NbtUL7qm8u8yjxHcVnEJiLRmW/c9w2aYQzPLi++9Q2zbdqFvkqEeLpq+1nz+PAPg5+
+ 2IHLE+cjyaew9Q4SFe5fDmthmAxTPDgZxzZpJXhuTcjf7Oe2Jr8bkHNJvvEdTT2zGXOwFeBpe+sat
+ NriOKj3A==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc8PW-000iew-PX; Thu, 29 Apr 2021 15:17:06 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id DADC8613F8;
- Thu, 29 Apr 2021 15:17:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619709421;
- bh=0TF/rgI+kIrUM4ucLgyoRQVNDZwjwMCttPCbdF1J2ts=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TNblwH+As0w11JRNen3DEa/sKtquJO7N/ed+Wi2cPt5DPo/pzApjHeB4CYlT9czKN
- RFJnIUjSlU/iXNkujkJ9GfUIBpZYvUPaxBLDLGXBQdVlv5qb6mSpE1DcETxlBJLjdH
- 3g63qgtE3JXAaoo4Aq3ZJQdiRo/RBYWmOp0+Glxzsc1YjsicyiOaSi7GIhQYDFx0Ss
- xxX7tIodOuoDf+uK3PdOkr9EHdavuGSGLxTjoqehEjaUHaupkr1YkvsH7C4pSmGQvt
- kJLY88R3n7qjm+eBETbZXRLROLJk7BZhgXtoeO/pKC8+dHkhcGgjRgK0xEL1TOs1c0
- knRtXQpP0PexA==
-Received: from johan by xi.lan with local (Exim 4.93.0.4)
- (envelope-from <johan@kernel.org>)
- id 1lc8Ph-0006kM-4M; Thu, 29 Apr 2021 17:17:13 +0200
-Date: Thu, 29 Apr 2021 17:17:13 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Shawn Tu <shawnx.tu@intel.com>, Ricardo Ribalda <ribalda@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linuxarm@huawei.com,
- Todor Tomov <todor.too@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Andrzej Hajda <a.hajda@samsung.com>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Dmitry Osipenko <digetx@gmail.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Leon Luo <leonl@leopardimaging.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ id 1lc8sJ-000jYG-7D; Thu, 29 Apr 2021 15:46:51 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 621441F435E6
+Subject: Re: [PATCH v1 4/4] mtk-mdp: soc: mediatek: register mdp from mmsys
+To: Eizan Miyamoto <eizan@chromium.org>, linux-kernel@vger.kernel.org
+Cc: chunkuang.hu@kernel.org, yong.wu@mediatek.com,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- Matt Ranostay <matt.ranostay@konsulko.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
- Andy Gross <agross@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Dongchun Zhu <dongchun.zhu@mediatek.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Bingbu Cao <bingbu.cao@intel.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>,
- Tianshu Qiu <tian.shu.qiu@intel.com>, NXP Linux Team <linux-imx@nxp.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, devel@driverdev.osuosl.org,
- Jacopo Mondi <jacopo@jmondi.org>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>, linux-tegra@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@st.com>,
- Wenyou Yang <wenyou.yang@microchip.com>,
- Manivannan Sadhasivam <mani@kernel.org>, linux-arm-msm@vger.kernel.org,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- linux-media@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Benoit Parrot <bparrot@ti.com>, Helen Koike <helen.koike@collabora.com>,
- linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>, mauro.chehab@huawei.com,
- Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Chiranjeevi Rapolu <chiranjeevi.rapolu@intel.com>,
- linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Hyungwoo Yang <hyungwoo.yang@intel.com>,
- linux-kernel@vger.kernel.org, Robert Foss <robert.foss@linaro.org>,
- Dan Scally <djrscally@gmail.com>,
- Sowjanya Komatineni <skomatineni@nvidia.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- linux-renesas-soc@vger.kernel.org, Yong Zhi <yong.zhi@intel.com>,
- Shawn Guo <shawnguo@kernel.org>
-Subject: Re: [PATCH v4 00/79] Address some issues with PM runtime at media
- subsystem
-Message-ID: <YIrN+VEY9Sf+eztR@hovoldconsulting.com>
-References: <cover.1619621413.git.mchehab+huawei@kernel.org>
- <YImEMN/POW5C8lG7@hovoldconsulting.com>
- <20210429121215.64a7cbdb@coco.lan>
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20210423055842.2490679-1-eizan@chromium.org>
+ <20210423155824.v1.4.I558dcbaa17bf00243951a8ceb6d0e98758aacfa4@changeid>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <ecf9ab25-779d-01c7-97e3-76aa09b69415@collabora.com>
+Date: Thu, 29 Apr 2021 17:46:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210429121215.64a7cbdb@coco.lan>
+In-Reply-To: <20210423155824.v1.4.I558dcbaa17bf00243951a8ceb6d0e98758aacfa4@changeid>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_081702_926296_5B9566AA 
-X-CRM114-Status: GOOD (  51.17  )
+X-CRM114-CacheID: sfid-20210429_084647_539951_0F852894 
+X-CRM114-Status: GOOD (  44.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,153 +90,325 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 29, 2021 at 12:18:16PM +0200, Mauro Carvalho Chehab wrote:
-> Em Wed, 28 Apr 2021 17:50:08 +0200
-> Johan Hovold <johan@kernel.org> escreveu:
+Hi Eizan,
+
+Thank you for your patch.
+
+On 23/4/21 7:58, Eizan Miyamoto wrote:
+> Rather than hanging the MDP master component driver off of the rdma0
+> device, create a "virtual" device by the mmsys driver instead which is
+> probed by the mtk_mdp_core driver.
 > 
-> > On Wed, Apr 28, 2021 at 04:51:21PM +0200, Mauro Carvalho Chehab wrote:
+> Broadly, four interdependent things are done by this change:
+> - A virtual device that is probed by the mtk_mdp_core driver is
+>   instantiated by the mtk_mmsys driver.
+> - Presence of a mediatek,vpu property in a child node to the mmsys
+>   device node is used to determine what device to use when dispatching
+>   dma ops from the relevant ioctl.
+> - v4l-related setup is moved into from the mtk_mdp_core driver to the
+>   mtk_mdp_comp driver.
 > 
-> > > 1. despite its name, this is actually a PM runtime resume call,
-> > >    but some developers didn't seem to realize that, as I got this
-> > >    pattern on some drivers:
-> > > 
-> > >         pm_runtime_get_sync(&client->dev);
-> > >         pm_runtime_disable(&client->dev);
-> > >         pm_runtime_set_suspended(&client->dev);
-> > >         pm_runtime_put_noidle(&client->dev);
-> > > 
-> > >    It makes no sense to resume PM just to suspend it again ;-)  
-> > 
-> > This is perfectly alright. Take a look at ov7740_remove() for example:
-> > 
-> > 	pm_runtime_get_sync(&client->dev);
-> > 	pm_runtime_disable(&client->dev);
-> > 	pm_runtime_set_suspended(&client->dev);
-> > 	pm_runtime_put_noidle(&client->dev);
-> > 	
-> > 	ov7740_set_power(ov7740, 0);
-> > 
-> > There's an explicit power-off after balancing the PM count and this will
-> > work regardless of the power state when entering this function.
+> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+> ---
 > 
-> Ok, but this should equally work:
+>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 47 +++++++++-----
+>  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 62 ++++++-------------
+>  drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 +
+>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  4 +-
+>  drivers/soc/mediatek/mtk-mmsys.c              | 20 +++++-
+>  5 files changed, 75 insertions(+), 60 deletions(-)
 > 
->  	pm_runtime_disable(&client->dev);
->  	pm_runtime_set_suspended(&client->dev);
->  	
->  	ov7740_set_power(ov7740, 0);
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> index d447bfaadef4..dc5231a1fcfd 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> @@ -106,8 +106,41 @@ static int mtk_mdp_comp_bind(struct device *dev, struct device *master,
+>  {
+>  	struct mtk_mdp_comp *comp = dev_get_drvdata(dev);
+>  	struct mtk_mdp_dev *mdp = data;
+> +	struct device_node *vpu_node;
+>  
+>  	mtk_mdp_register_component(mdp, comp);
+> +
+> +	// If this component has a "mediatek-vpu" property, it is responsible for
+> +	// notifying the mdp master driver about it so it can be further initialized
+> +	// later.
+
+Please use c-style comments here.
+
+> +	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
+
+That's a bit confusing to me, please correct me if I am wrong, so, the
+mediatek,vpu property is used to tell the code that this component should be the
+'vpu master', not to point a vpu node in the DT? I understood correctly?
+
+
+> +	if (vpu_node) {
+> +		int ret;
+> +
+> +		mdp->vpu_dev = of_find_device_by_node(vpu_node);
+> +		if (WARN_ON(!mdp->vpu_dev)) {
+> +			dev_err(dev, "vpu pdev failed\n");
+> +			of_node_put(vpu_node);
+> +		}
+> +
+> +		ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to register v4l2 device\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		ret = vb2_dma_contig_set_max_seg_size(dev, DMA_BIT_MASK(32));
+> +		if (ret) {
+> +			dev_err(dev, "Failed to set vb2 dma mag seg size\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		// presence of the "mediatek,vpu" property in a device node
+> +		// indicates that it is the primary MDP rdma device and MDP DMA
+> +		// ops should be handled by its DMA callbacks.
+
+Isn't rdma0 always the primary MDP device? or there are SoCs or configurations
+where this is different? At least I think it is for MT8173 and MT8183.
+
+> +		mdp->rdma_dev = dev;
+> +	}
+> +
+>  	pm_runtime_enable(dev);
+>  
+>  	return 0;
+> @@ -164,23 +197,9 @@ int mtk_mdp_comp_init(struct mtk_mdp_comp *comp, struct device *dev)
+>  static int mtk_mdp_comp_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> -	struct device_node *vpu_node;
+>  	int status;
+>  	struct mtk_mdp_comp *comp;
+>  
+> -	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
+> -	if (vpu_node) {
+> -		of_node_put(vpu_node);
+> -		/*
+> -		 * The device tree node with a mediatek,vpu property is deemed
+> -		 * the MDP "master" device, we don't want to add a component
+> -		 * for it in this function because the initialization for the
+> -		 * master is done elsewhere.
+> -		 */
+> -		dev_info(dev, "vpu node found, not probing\n");
+> -		return -ENODEV;
+> -	}
+> -
+>  	comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
+>  	if (!comp)
+>  		return -ENOMEM;
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> index 5e71496e2517..4d7aa4e26be6 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> @@ -121,6 +121,17 @@ static int mtk_mdp_master_bind(struct device *dev)
+>  		goto err_component_bind_all;
+>  	}
+>  
+> +	if (mdp->vpu_dev) {
+> +		int ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
+> +					  VPU_RST_MDP);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to register reset handler\n");
+> +			goto err_wdt_reg;
+> +		}
+> +	} else {
+> +		dev_err(dev, "no vpu_dev found\n");
+> +	}
+> +
+>  	status = mtk_mdp_register_m2m_device(mdp);
+>  	if (status) {
+>  		dev_err(dev, "Failed to register m2m device: %d\n", status);
+> @@ -133,6 +144,8 @@ static int mtk_mdp_master_bind(struct device *dev)
+>  	return 0;
+>  
+>  err_mtk_mdp_register_m2m_device:
+> +
+> +err_wdt_reg:
+>  	component_unbind_all(dev, mdp);
+>  
+>  err_component_bind_all:
+> @@ -191,8 +204,13 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  		of_node_put(node);
+>  		parent = dev->of_node;
+>  		dev_warn(dev, "device tree is out of date\n");
+> -	} else {
+> +	} else if (dev->of_node) {
+>  		parent = dev->of_node->parent;
+> +	} else if (dev->parent) {
+> +		// maybe we were created from a call to platform_device_register_data()
+> +		parent = dev->parent->parent->of_node;
+> +	} else {
+> +		return -ENODEV;
+>  	}
+>  
+>  	/* Iterate over sibling MDP function blocks */
+> @@ -225,16 +243,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> -	/*
+> -	 * Create a component for myself so that clocks can be toggled in
+> -	 * clock_on().
+> -	 */
+> -	ret = mtk_mdp_comp_init(&mdp->comp_self, dev);
+> -	if (ret) {
+> -		dev_err(dev, "Failed to initialize component\n");
+> -		goto err_comp;
+> -	}
+> -
+>  	mdp->job_wq = create_singlethread_workqueue(MTK_MDP_MODULE_NAME);
+>  	if (!mdp->job_wq) {
+>  		dev_err(&pdev->dev, "unable to alloc job workqueue\n");
+> @@ -250,29 +258,8 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  	}
+>  	INIT_WORK(&mdp->wdt_work, mtk_mdp_wdt_worker);
+>  
+> -	ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
+> -		ret = -EINVAL;
+> -		goto err_dev_register;
+> -	}
+> -
+> -	mdp->vpu_dev = vpu_get_plat_device(pdev);
+> -	ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
+> -				  VPU_RST_MDP);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to register reset handler\n");
+> -		goto err_wdt_reg;
+> -	}
+> -
+>  	platform_set_drvdata(pdev, mdp);
+>  
+> -	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
+> -		goto err_set_max_seg_size;
+> -	}
+> -
+>  	ret = component_master_add_with_match(dev, &mtk_mdp_com_ops, match);
+>  	if (ret) {
+>  		dev_err(dev, "Component master add failed\n");
+> @@ -284,22 +271,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  	return 0;
+>  
+>  err_component_master_add:
+> -	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
+> -
+> -err_set_max_seg_size:
+> -
+> -err_wdt_reg:
+> -	v4l2_device_unregister(&mdp->v4l2_dev);
+> -
+> -err_dev_register:
+>  	destroy_workqueue(mdp->wdt_wq);
+>  
+>  err_alloc_wdt_wq:
+>  	destroy_workqueue(mdp->job_wq);
+>  
+>  err_alloc_job_wq:
+> -
+> -err_comp:
+>  	dev_dbg(dev, "err %d\n", ret);
+>  	return ret;
+>  }
+> @@ -371,7 +348,6 @@ static struct platform_driver mtk_mdp_driver = {
+>  	.driver = {
+>  		.name	= MTK_MDP_MODULE_NAME,
+>  		.pm	= &mtk_mdp_pm_ops,
+> -		.of_match_table = mtk_mdp_of_ids,
+>  	}
+>  };
+>  
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> index 230f531400ca..78c3c77cd226 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> @@ -133,6 +133,7 @@ struct mtk_mdp_variant {
+>   * struct mtk_mdp_dev - abstraction for image processor entity
+>   * @lock:	the mutex protecting this data structure
+>   * @vpulock:	the mutex protecting the communication with VPU
+> + * @rdma_dev:  device pointer to rdma device for MDP
+>   * @pdev:	pointer to the image processor platform device
+>   * @variant:	the IP variant information
+>   * @id:		image processor device index (0..MTK_MDP_MAX_DEVS)
+> @@ -151,6 +152,7 @@ struct mtk_mdp_variant {
+>  struct mtk_mdp_dev {
+>  	struct mutex			lock;
+>  	struct mutex			vpulock;
+> +	struct device			*rdma_dev;
+>  	struct platform_device		*pdev;
+>  	struct mtk_mdp_variant		*variant;
+>  	u16				id;
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> index d351e5a44768..c80ad8299c5e 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> @@ -932,7 +932,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
+>  	src_vq->mem_ops = &vb2_dma_contig_memops;
+>  	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>  	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> -	src_vq->dev = &ctx->mdp_dev->pdev->dev;
+> +	src_vq->dev = ctx->mdp_dev->rdma_dev;
+>  	src_vq->lock = &ctx->mdp_dev->lock;
+>  
+>  	ret = vb2_queue_init(src_vq);
+> @@ -947,7 +947,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
+>  	dst_vq->mem_ops = &vb2_dma_contig_memops;
+>  	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>  	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> -	dst_vq->dev = &ctx->mdp_dev->pdev->dev;
+> +	dst_vq->dev = ctx->mdp_dev->rdma_dev;
+>  	dst_vq->lock = &ctx->mdp_dev->lock;
+>  
+>  	return vb2_queue_init(dst_vq);
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 18f93979e14a..6f9cf7725529 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -305,6 +305,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>  	struct device *dev = &pdev->dev;
+>  	struct platform_device *clks;
+>  	struct platform_device *drm;
+> +	struct platform_device *mdp;
+>  	void __iomem *config_regs;
+>  	int ret;
+>  
+> @@ -328,10 +329,27 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>  					    PLATFORM_DEVID_AUTO, NULL, 0);
+>  	if (IS_ERR(drm)) {
+>  		platform_device_unregister(clks);
+> -		return PTR_ERR(drm);
+> +		ret = PTR_ERR(drm);
+> +		goto err_drm;
+> +	}
+> +
+> +	mdp = platform_device_register_data(&pdev->dev, "mtk-mdp",
+> +					    PLATFORM_DEVID_AUTO, NULL, 0);
+> +	if (IS_ERR(mdp)) {
+> +		ret = PTR_ERR(mdp);
+> +		dev_err(dev, "Failed to register mdp: %d\n", ret);
+> +		goto err_mdp;
+>  	}
+>  
+>  	return 0;
+> +
+> +err_mdp:
+> +	platform_device_unregister(drm);
+> +
+> +err_drm:
+> +	platform_device_unregister(clks);
+> +
+> +	return ret;
+>  }
+>  
+>  static const struct of_device_id of_match_mtk_mmsys[] = {
 > 
-> as there's no additional cleanup made on this particular driver
-> between pm_runtime_get_sync() and pm_runtime_put_noidle().
-
-No, that would break the driver as I pointed out to you yesterday:
-
-	https://lore.kernel.org/r/YImG1klSPkFSaS3a@hovoldconsulting.com
-
-If the device is already suspended when remove is called then you'll
-end up with an unbalanced call to ov7740_set_power() that will try to
-disable an already disabled clock.
-
-> > So this has nothing to do with pm_runtime_get_sync() per se.
-> 
-> Yes, but some patches on this series are cleaning up the driver release
-> logic.
-
-You mentioned this example as an argument against using
-pm_runtime_get_sync(), which I don't think makes sense.
-
-> > > 2. Usual *_get() methods only increment their use count on success,
-> > >    but pm_runtime_get_sync() increments it unconditionally. Due to
-> > >    that, several drivers were mistakenly not calling
-> > >    pm_runtime_put_noidle() when it fails;  
-> > 
-> > Sure, but pm_runtime_get_async() also works this way. You just won't be
-> > notified if the async resume fails.
-> 
-> Granted, it makes sense along the pm_runtime kAPI.
-> 
-> It is inconsistent with the behavior of kobject_get*() and other
-> *_get*() methods that are based or inspired on it, as, on those, the
-> operations are atomic: either everything succeeds and it doesn't return
-> an error, or the usage counter is not incremented and the object
-> state doesn't change after the call.
-
-Right, and I'm aware that some people have overlooked this. But its not
-the end of the world since hardly any driver can handle resume failures
-properly anyway. 
-
-This is mostly just an exercise to shut up static checkers.
-
-> > > 3. The name of the new variant is a lot clearer:
-> > > 	pm_runtime_resume_and_get()
-> > >     As its same clearly says that this is a PM runtime resume function,
-> > >     that also increments the usage counter on success;  
-> > 
-> > It also introduced an inconsistency in the API and does not pair as well
-> > with the pm_runtime_put variants.
-> 
-> Agreed. A name that would be more consistent with PM runtime would
-> probably be:
-> 
-> 	pm_runtime_resume_if_get()
-
-Naw, since the get part always succeeds.
-
-It should start with pm_runtime_get, but pm_runtime_get_sync() is
-unfortunately taken.
-
-> as there are already:
-> 
-> 	pm_runtime_get_if_in_use()
-> 	pm_runtime_get_if_active()
-> 
-> But any such discussions are out of the scope of this patchset ;-)
-
-Right.
-
-> > > 4. Consistency: we did similar changes subsystem wide with
-> > >    for instance strlcpy() and strcpy() that got replaced by
-> > >    strscpy(). Having all drivers using the same known-to-be-safe
-> > >    methods is a good thing;  
-> > 
-> > It's not known to be safe; there are ways to get also this interface
-> > wrong as for example this series has shown.
-> 
-> Very true. Yet, it is a lot simpler to use functions that won't change
-> the state of the objects when returning an error, as this is by far
-> the most common pattern within the Kernel.
-
-A resume failure does change the state (and needs to be recovered from),
-but I get what you're saying.
-
-> Human brains are trained to identify certain patterns. When there's
-> something using a similar pattern, but with a different behavior, 
-> our brains are more subject to fail identifying problems.
-
-Sure. But I'm not sure that having two interfaces with different
-semantics to do the job is doing us any favours here. But again, that
-discussion has already been had.
-
-And I realise that this is partly also your motive here (even if the old
-interface isn't going to go away).
-
-> > > compile-tested only.
-> > > Patches 1 to 7 fix some issues that already exists at the current
-> > > PM runtime code;
-> > > 
-> > > patches 8 to 20 fix some usage_count problems that still exists
-> > > at the media subsystem;
-> > > 
-> > > patches 21 to 78 repaces pm_runtime_get_sync() by 
-> > > pm_runtime_resume_and_get();
-> > > 
-> > > Patch 79 (and a hunk on patch 78) documents the two exceptions
-> > > where pm_runtime_get_sync() will still be used for now.
-
-80 patches in one series (posted to lkml) is a bit excessive. Perhaps
-you can break it up in a fixes part and one or more cleanups parts?
-
-Johan
 
 _______________________________________________
 Linux-mediatek mailing list
