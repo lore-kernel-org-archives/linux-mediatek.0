@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73722C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 21:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B169C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 21:31:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E0306113D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 21:31:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E0306113D
+	by mail.kernel.org (Postfix) with ESMTPS id F3CDF61441
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 21:31:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3CDF61441
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,37 +23,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5xYmLAWHU/HSHLajufQZIiyWbgmH8Oz7ADPrhQnn6d0=; b=mx4EY68geKu0RTB0OSBJBXpf8
-	H+AmW2VQoNLRa4C5ZQBwHw1dNpGDHgxkck+GRb05NerlCE925kPeyZuXFMwLWn40qg/4fxJwTR6f8
-	gG9LNEu9XrBWw0SViYWVjq4RRORHbcWBsHCMDmQzTADZYcgmuW9LEbetIB/hiB1akidhuoVY+sDet
-	6iPYFruWGNI8/ZhbOHBgtjNQlCuoAps8zJU/G9uVsh1RI1iy/ijFbRUk3Xn8mrIM6GUmgedKFnqGx
-	eZYwcYVsfSu9tfrS5W17bPqXKDwAwjRMc7NpBft6bh8I5zydBXXkgRJOMZ2IyF/GUsh67QxR3boyZ
-	NyFueyvCw==;
+	 bh=1SVAd/Wgc60Txp0Ls9pdN0woPQW4Vf0kmoJvjq5bm+M=; b=RhTo28vLKNeRnTX8QQZ5gZgpv
+	5GytOrs1vg7YyHWH29Ji2sri9BD+iOKPkvQW+W9O0t1cqzx8NX0UItVueNUgHW39BmdKCTknOWSSQ
+	xWqpC4vVCdWWbokCDdtFLj2moqKDSV1OJ7j1e/Issfpqga1y9s6B3Wb1xv+ncW54k09sGUX6Q7S35
+	WUt086D2uK6lMXm2AnZDHrgyiPZzIGi1i1+AAQq1w2Wlgfc6EAG/Sl6WjJ3kYTTRPl2fhRwzSS9AO
+	JRyGIOlXnrZjckmWio+ZoBu7dB8+bMA8n4u1UYt7j3gh5WddoKk0Roo9CDx/btcjPExbyLTx9Xq47
+	ALQGzHmxA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcEFG-006ZZG-DB; Thu, 29 Apr 2021 21:30:50 +0000
+	id 1lcEFZ-006Zbb-0w; Thu, 29 Apr 2021 21:31:09 +0000
 Received: from [2607:7c80:54:e::133] (helo=bombadil.infradead.org)
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcEFD-006ZXq-MI
- for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 21:30:47 +0000
+ id 1lcEFV-006ZZt-DZ
+ for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 21:31:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=pnbY1T4/HxGLo6q4HkM9vWKaup9mO6zy3OGJNCaPhEA=; b=WoBZ6jMzgvYEX2uDSdfCd5dmsg
- 3bGeHllvGceXJmRPxVbOTIIQvyzSq+LzCoD9K7VFi8RZXEePMw+84F+Yga32QvmYPojoPPUsHsLW3
- VELe1sve1n3fUMfCH8Qa8kna2fZN7FCQcZ2mYZjfl+IpMEm6YnPp3PVH/9R+2XHfSyBPV3fvpoLig
- vp6zIErQNX/osSKVIva+/QEqApscnZeI70kFHAisqJFNV46Hfa8xO2Wmh7GReIFnGt/6F6rJlOiRk
- 4V77GaFLZtKnOGOpg0rQf0k1zWT/FHih4Geb8K4cWUkkwSLvwQswo4y6mMwG9uay0mmflKGK8i0Fu
- mN7jwaSQ==;
+ bh=wEjyC06ii3dCwTCAT/qPducM0WGUmq305cPDsW5uTyI=; b=W/xRzyw2mc9+oa4J39yuPoyihO
+ 8hyhbfynffo7vUF28SgVIXCLL7zy+V441lazXwNxtYxvv0xg45QiMAio28VWup6Xm22oroZiVba5g
+ T6UWjWNokhknLjpJuDem1sC1jdBCMJxyIFhMrrpLAiQaORtOm2EFzO47eclQrkNDkrKR6ei98UpWX
+ oe16dNM+Qnk/zsVr6HZB/SMZwKSje4paJwALg6LcIxrU+IhPZqLa2iopFX2ASfZg0uXTNagLmN3f+
+ Ijzr/QsTPxTtQZUyoJ53Ik8qhEV44Yeiuh145b2Rx0WxQW6CIZk8x0LTQLAo3A2fjwtwxur57Wa5z
+ COGDGeww==;
 Received: from vps0.lunn.ch ([185.16.172.187])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcEF1-000z5f-BX
- for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 21:30:36 +0000
+ id 1lcEFJ-000z79-4Z
+ for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 21:30:54 +0000
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
  (envelope-from <andrew@lunn.ch>)
- id 1lcEEy-001iMK-1T; Thu, 29 Apr 2021 23:30:32 +0200
-Date: Thu, 29 Apr 2021 23:30:32 +0200
+ id 1lcEFG-001iMo-7I; Thu, 29 Apr 2021 23:30:50 +0200
+Date: Thu, 29 Apr 2021 23:30:50 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: DENG Qingfang <dqfext@gmail.com>
 Cc: "David S. Miller" <davem@davemloft.net>,
@@ -74,17 +74,17 @@ Cc: "David S. Miller" <davem@davemloft.net>,
  =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
  Frank Wunderlich <frank-w@public-files.de>,
  Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: Re: [PATCH net-next 3/4] dt-bindings: net: dsa: add MT7530 interrupt
- controller binding
-Message-ID: <YIsleJ8K/vad3vFE@lunn.ch>
+Subject: Re: [PATCH net-next 4/4] staging: mt7621-dts: enable MT7530
+ interrupt controller
+Message-ID: <YIslin0UThINIe+Z@lunn.ch>
 References: <20210429062130.29403-1-dqfext@gmail.com>
- <20210429062130.29403-4-dqfext@gmail.com>
+ <20210429062130.29403-5-dqfext@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210429062130.29403-4-dqfext@gmail.com>
+In-Reply-To: <20210429062130.29403-5-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_143035_416492_5D3B2DC2 
-X-CRM114-Status: UNSURE (   6.68  )
+X-CRM114-CacheID: sfid-20210429_143053_193741_217A0CC1 
+X-CRM114-Status: UNSURE (   6.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,8 +102,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 29, 2021 at 02:21:29PM +0800, DENG Qingfang wrote:
-> Add device tree binding to support MT7530 interrupt controller.
+On Thu, Apr 29, 2021 at 02:21:30PM +0800, DENG Qingfang wrote:
+> Enable MT7530 interrupt controller in the MT7621 SoC.
 > 
 > Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 
