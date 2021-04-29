@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79822C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 06:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12EC5C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 06:22:15 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D87FF61446
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 06:22:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D87FF61446
+	by mail.kernel.org (Postfix) with ESMTPS id 610BB6143F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 06:22:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 610BB6143F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,67 +24,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wBzMcGd5ldB6E745X6mfqnWvp2YPqCnlbCepNT4X7YM=; b=cO+/On/Xb0UUl+i6hlCwT3Eib
-	tjUoSAuYW9HFO1aZ0lFbY0gzDzp4bYqxZ+1qaKljm2uA58+Cx0iUWNuMczQvueUGzdyWXGLO142tP
-	3HzpeDg8RJuWLQ9mscSHP37nxlMi1NALRdxKSuXvQsGki2g+F9JRVFtqpM5+uK55a0X/xhyGieDzL
-	NV66GRy++vXKTx3UCzCrUlZC9QD5L/hP0p6yiyS/1rBcV1+87oHtr4Tf0ZDaz3bIAdkYdWhDPGG0z
-	PCKMQS4Rlb/QrXCQIYY571ThvgRI4VCxVv7TU36dDtzMM5A3MBRg1xncLZiBjPo1bC00n5eOOyZmg
-	utfrEHY9g==;
+	 bh=EXr+RXWFQyAaUKQqtbGcBFy4SC+Vwv3mikrCE3OdCfE=; b=XZQAuoYxtBu+cxubBpIuEiM+R
+	YPaNQJvj8/0kyQ4Ders3bJGWw7hE8fKFq68assusYK+CydJ2sWawLZW/GdT151ovFdA5da18BUN6R
+	xDe7NrpgJGUoR/TttHjjDQ9EeLgY+AbotGmJQ0JMcgPYw4lLSils5Crt2EZVydR7X/gmobse9emiW
+	MfV6j1N+c1DJe3CiCp0U4zH5cHvKbWyHCbSD2hMx+o4VE0Kb7D0FxFKqGvKjBAOvfk0fNTJZfnd7F
+	naSfbIlwZwJXNE3VkoY1ko1CLtrXTfRahk1ZX9gu2bqx9JgUKrc5lyRJb30UcNvFGvqzreF7KtOTq
+	hk5AM+frA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc03e-0053FO-UN; Thu, 29 Apr 2021 06:21:55 +0000
+	id 1lc03n-0053Gv-Pl; Thu, 29 Apr 2021 06:22:04 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc03d-0053F5-B5
- for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 06:21:53 +0000
+ id 1lc03m-0053Gb-8U
+ for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 06:22:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=8jKutUVGpVfileb/sr7n7FoAcrS0nc0ttO8jr2zjdgQ=; b=IT//lRxTVZMpqKiz9lAgmhfJuv
- 3QqOWEnz/BOrpMAwk+b1GskpG1h8aoJBYVythtv7GiAMKjPiI292H2fSz2kJ3CxOKiJWRddPMUw0g
- 48eWujwn5XD+9W/epLTROZoDMNENSmzCx7Iymk3dhAVA2059JxOxOMdHde5fwpuLbAjWti8VHu0O/
- jY/5sBaOMr5eF07H9gHRvEA4gnXzVFaXRQRVJIxzU+DmFe864krV+1xm/ZvVbhPgteUvEdiy8xLUY
- GhMzhtoGjjbe77DONHK6j1h3cGuR0rkiVUNH7l2me+ZKrkW+cSM0SjTZkUOXOW9tu0lYMeMZtHVre
- pUtzh5cg==;
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ bh=UZW7hbTvFCBFV/xY1mN22xCr/wG0Xy/iLauf7oHiAGo=; b=ZAPMZkIrYvKLtLbSFZX/kSOsNa
+ 7k1VXnHHH5Ndy0FNnxUNvQwGhiPCuAbLDuowodzPIobwsTusTePqovku/USfe6r4g13jJ6juovwlb
+ JfyrMxLc/ugokEy1m/RnIhP94QdmcqE3RwajzGAumkWnSDwDWzw/N0tH0Jnosd9v8QG6WFjGk1JZm
+ bdr++rmt/mpFSAFWjsZ7e2J3xcmb5QNW8YUcIY/XOdg02RHvzi/qgeGYpNiyG87ZSUUUKXh+0MbFg
+ quIgelUr1oaSyK1sTMRbl63ZIWfvkGMxpo4bAxTp1nQFs1o3rSCNblnUUEOKFYfGb6ZKd455dWr0k
+ outroGHQ==;
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc03a-000PDO-Lm
- for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 06:21:52 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id
- f2-20020a17090a4a82b02900c67bf8dc69so10337299pjh.1
- for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 23:21:49 -0700 (PDT)
+ id 1lc03j-000PEG-2X
+ for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 06:22:01 +0000
+Received: by mail-pl1-x62a.google.com with SMTP id p17so8290067plf.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 28 Apr 2021 23:21:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=8jKutUVGpVfileb/sr7n7FoAcrS0nc0ttO8jr2zjdgQ=;
- b=cFKN8xgJjczDPe2typGjc/NE5Da1qvVHZxC8K+QwMChacBC7x2VE4CFuJDvEMBnSH/
- 8dwu8ItRr7uu0WI85J6XJ6s4rIsRQeQmycCHmPFaSfz6KVZE5rL/gE42rC2cVEdN5JCz
- GQhhMwhPwr8JJnz85ObL9KfCC0GYAWhSLbtv6Ew4BV4VmlIrZAIg9Ctxf3LrstWhZpRy
- JzHR5mWHMS3h1yTd5EUvWAejmY9Hf6UxaLJyjQ85Abm3kbNRrnIYlyRU3cMQ+tDxysA9
- +VBh7FdKWjQTUboyQaV/5UEcKfO0kbBDay4IoJWuU7FfV/HpcsOLSIww2O/fYXtuyxiz
- /wvg==
+ bh=UZW7hbTvFCBFV/xY1mN22xCr/wG0Xy/iLauf7oHiAGo=;
+ b=QR4QkDRBZjadKNjKv7pD68TbbzsCOA3UNmqbE1nskSPHR1/W0Pbb9GSyPfiKJDUi+b
+ kMk5XHXC1J6RSSIK/O5g8Y3Q5NfU8VHa8Dd0vkFZxV+r8bTKPbNqbAS2CoGKSc5eZUfN
+ pbXPNaFiJY2zqPCDsRX1D0umMKhG79K3aoLImDa1qtKoPlRV2r06o8GQUhwaXq4s1uqT
+ 2ukaSc9T/59n1cqi8eWrWFSFfJqMuBBRj5IKroRUA1187V4vIkZF6qoEI7A5E0YQ/hL6
+ G5wycPK6bbV4iOvCBkuZGOHRRl9ODesBRqJeUsuzqtPb2+BEBncsr1PfQ/Yv+RuTpNLW
+ sPYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=8jKutUVGpVfileb/sr7n7FoAcrS0nc0ttO8jr2zjdgQ=;
- b=rNSawC3z+8Vl0R/NQQ9NV0r9D0Pb8bTUcIa+M+6hXwA/+rn0AWeLXsc3RtILNRpIXj
- gVXESrO3tGDApQpV9hWn7AZYE8dq8PR3IntOZwdTHPNPpcbzQZm0RpO/Ve24OEH9wsae
- 5cceYh0wIUprHVyDlPwejBg8OsVeFcIc5G+Pu0KQbOrOexypQNF1cATe7F4mEZ2yXA4N
- dFK1HxmvQVamoZ4Toi17akXIcSCLBaYK0/J6ipmi1AmcSofamjc/gOHdg7UiOWa+R9le
- GTQNfU5Y0KjPKJeOVDs/X6wdYG5RvM5HKgi0aO/dmShJDo+TU/RCGeRF9+F2cZlJ1y7B
- OG9A==
-X-Gm-Message-State: AOAM5330MFHW5yX2oMOFFkXeJp+926fdCjoJkbrRjP0DVbhvOnt3R6R2
- QGUJFpWYuNlfN2K55uEaMxPuk3PIgvJybHlIxhU=
-X-Google-Smtp-Source: ABdhPJyWa8M7Ws3aRkZD9kFRimDoHvrF0CZjtf7kjnrWQjWf3eVr9TQj6tFnXen8WOnP2vKKJshO6g==
-X-Received: by 2002:a17:90b:958:: with SMTP id
- dw24mr7612996pjb.185.1619677309495; 
- Wed, 28 Apr 2021 23:21:49 -0700 (PDT)
+ bh=UZW7hbTvFCBFV/xY1mN22xCr/wG0Xy/iLauf7oHiAGo=;
+ b=dSw2g7b5/V0jIkSVdQwjNdoqctLTUm8aLKg3Z3H/XH+Xu7Ea57B3poAnzkNNVIId/Y
+ Q15kxCyTrUIR/MNnsBeFnUf2DS6Anza4JmXX1bDQroaagau474xbt4qGeNLvbuppOpiF
+ WKS+s7OY9W9OefVoBrFgrw8FwpJ29hLE1KZLQP/Qy9Rh3gIFf8t9AXuEM1F4SUi0PTU4
+ 3XwXTKVRfX9U4LKy/yslLJ1/0sEQXmFwz/2kcER6kzlOQihilzbQGP3Kg5t6DnKCA3Ny
+ 9Xw8bxxiYp76QCr3svrdSnYcS0We0qya4TPikV2tsp5d/uhVV/j8v5EpoNtJRf45mj3g
+ A+aw==
+X-Gm-Message-State: AOAM532FckUhyHt7ZyMaaEomJtyTE0FPhN7/pobAR51mUhuiH/oGNN0H
+ YmTeOyv0eLgkUwOvc4EnKqI=
+X-Google-Smtp-Source: ABdhPJyYVJOwo3KhnT5q9dGrdmDY99dKUq68F4uTjRgMK+wubgr0f0G9DUqet1vS007muVdvr76CjA==
+X-Received: by 2002:a17:90a:6396:: with SMTP id
+ f22mr7874920pjj.91.1619677317041; 
+ Wed, 28 Apr 2021 23:21:57 -0700 (PDT)
 Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id b7sm1431008pfi.42.2021.04.28.23.21.42
+ by smtp.gmail.com with ESMTPSA id b7sm1431008pfi.42.2021.04.28.23.21.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Apr 2021 23:21:48 -0700 (PDT)
+ Wed, 28 Apr 2021 23:21:56 -0700 (PDT)
 From: DENG Qingfang <dqfext@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
  Florian Fainelli <f.fainelli@gmail.com>,
@@ -104,16 +103,16 @@ Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
  =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
  Frank Wunderlich <frank-w@public-files.de>,
  Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: [PATCH net-next 1/4] net: phy: add MediaTek PHY driver
-Date: Thu, 29 Apr 2021 14:21:27 +0800
-Message-Id: <20210429062130.29403-2-dqfext@gmail.com>
+Subject: [PATCH net-next 2/4] net: dsa: mt7530: add interrupt support
+Date: Thu, 29 Apr 2021 14:21:28 +0800
+Message-Id: <20210429062130.29403-3-dqfext@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210429062130.29403-1-dqfext@gmail.com>
 References: <20210429062130.29403-1-dqfext@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210428_232150_734927_95A0F9CF 
-X-CRM114-Status: GOOD (  18.93  )
+X-CRM114-CacheID: sfid-20210428_232159_145697_32488125 
+X-CRM114-Status: GOOD (  27.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,167 +129,442 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for MediaTek PHYs found in MT7530 and MT7531 switches.
-The initialization procedure is from the vendor driver, but due to lack
-of documentation, the function of some register values remains unknown.
+Add support for MT7530 interrupt controller to handle internal PHYs.
+In order to assign an IRQ number to each PHY, the registration of MDIO bus
+is also done in this driver.
 
 Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 ---
 RFC v4 -> PATCH v1:
-- No changes.
+- Cosmetic fixes.
 
- drivers/net/phy/Kconfig    |   5 ++
- drivers/net/phy/Makefile   |   1 +
- drivers/net/phy/mediatek.c | 112 +++++++++++++++++++++++++++++++++++++
- 3 files changed, 118 insertions(+)
- create mode 100644 drivers/net/phy/mediatek.c
+ drivers/net/dsa/Kconfig  |   1 +
+ drivers/net/dsa/mt7530.c | 264 +++++++++++++++++++++++++++++++++++----
+ drivers/net/dsa/mt7530.h |  20 ++-
+ 3 files changed, 257 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/net/phy/Kconfig b/drivers/net/phy/Kconfig
-index 288bf405ebdb..9db39fb443e6 100644
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
-@@ -207,6 +207,11 @@ config MARVELL_88X2222_PHY
- 	  Support for the Marvell 88X2222 Dual-port Multi-speed Ethernet
- 	  Transceiver.
- 
-+config MEDIATEK_PHY
-+	tristate "MediaTek PHYs"
-+	help
-+	  Supports the MediaTek switch integrated PHYs.
-+
- config MICREL_PHY
- 	tristate "Micrel PHYs"
+diff --git a/drivers/net/dsa/Kconfig b/drivers/net/dsa/Kconfig
+index a5f1aa911fe2..264384449f09 100644
+--- a/drivers/net/dsa/Kconfig
++++ b/drivers/net/dsa/Kconfig
+@@ -36,6 +36,7 @@ config NET_DSA_LANTIQ_GSWIP
+ config NET_DSA_MT7530
+ 	tristate "MediaTek MT753x and MT7621 Ethernet switch support"
+ 	select NET_DSA_TAG_MTK
++	select MEDIATEK_PHY
  	help
-diff --git a/drivers/net/phy/Makefile b/drivers/net/phy/Makefile
-index bcda7ed2455d..ab512cb3592b 100644
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
-@@ -64,6 +64,7 @@ obj-$(CONFIG_LXT_PHY)		+= lxt.o
- obj-$(CONFIG_MARVELL_10G_PHY)	+= marvell10g.o
- obj-$(CONFIG_MARVELL_PHY)	+= marvell.o
- obj-$(CONFIG_MARVELL_88X2222_PHY)	+= marvell-88x2222.o
-+obj-$(CONFIG_MEDIATEK_PHY)	+= mediatek.o
- obj-$(CONFIG_MESON_GXL_PHY)	+= meson-gxl.o
- obj-$(CONFIG_MICREL_KS8995MA)	+= spi_ks8995.o
- obj-$(CONFIG_MICREL_PHY)	+= micrel.o
-diff --git a/drivers/net/phy/mediatek.c b/drivers/net/phy/mediatek.c
-new file mode 100644
-index 000000000000..86e6c466b0e9
---- /dev/null
-+++ b/drivers/net/phy/mediatek.c
-@@ -0,0 +1,112 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+#include <linux/bitfield.h>
-+#include <linux/module.h>
-+#include <linux/phy.h>
-+
-+#define MTK_EXT_PAGE_ACCESS		0x1f
-+#define MTK_PHY_PAGE_STANDARD		0x0000
-+#define MTK_PHY_PAGE_EXTENDED		0x0001
-+#define MTK_PHY_PAGE_EXTENDED_2		0x0002
-+#define MTK_PHY_PAGE_EXTENDED_3		0x0003
-+#define MTK_PHY_PAGE_EXTENDED_2A30	0x2a30
-+#define MTK_PHY_PAGE_EXTENDED_52B5	0x52b5
-+
-+static int mtk_phy_read_page(struct phy_device *phydev)
+ 	  This enables support for the MediaTek MT7530, MT7531, and MT7621
+ 	  Ethernet switch chips.
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 96f7c9eede35..db838343fb05 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -10,6 +10,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/netdevice.h>
++#include <linux/of_irq.h>
+ #include <linux/of_mdio.h>
+ #include <linux/of_net.h>
+ #include <linux/of_platform.h>
+@@ -596,18 +597,14 @@ mt7530_mib_reset(struct dsa_switch *ds)
+ 	mt7530_write(priv, MT7530_MIB_CCR, CCR_MIB_ACTIVATE);
+ }
+ 
+-static int mt7530_phy_read(struct dsa_switch *ds, int port, int regnum)
++static int mt7530_phy_read(struct mt7530_priv *priv, int port, int regnum)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+-
+ 	return mdiobus_read_nested(priv->bus, port, regnum);
+ }
+ 
+-static int mt7530_phy_write(struct dsa_switch *ds, int port, int regnum,
++static int mt7530_phy_write(struct mt7530_priv *priv, int port, int regnum,
+ 			    u16 val)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+-
+ 	return mdiobus_write_nested(priv->bus, port, regnum, val);
+ }
+ 
+@@ -785,9 +782,8 @@ mt7531_ind_c22_phy_write(struct mt7530_priv *priv, int port, int regnum,
+ }
+ 
+ static int
+-mt7531_ind_phy_read(struct dsa_switch *ds, int port, int regnum)
++mt7531_ind_phy_read(struct mt7530_priv *priv, int port, int regnum)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+ 	int devad;
+ 	int ret;
+ 
+@@ -803,10 +799,9 @@ mt7531_ind_phy_read(struct dsa_switch *ds, int port, int regnum)
+ }
+ 
+ static int
+-mt7531_ind_phy_write(struct dsa_switch *ds, int port, int regnum,
++mt7531_ind_phy_write(struct mt7530_priv *priv, int port, int regnum,
+ 		     u16 data)
+ {
+-	struct mt7530_priv *priv = ds->priv;
+ 	int devad;
+ 	int ret;
+ 
+@@ -822,6 +817,22 @@ mt7531_ind_phy_write(struct dsa_switch *ds, int port, int regnum,
+ 	return ret;
+ }
+ 
++static int
++mt753x_phy_read(struct mii_bus *bus, int port, int regnum)
 +{
-+	return __phy_read(phydev, MTK_EXT_PAGE_ACCESS);
++	struct mt7530_priv *priv = bus->priv;
++
++	return priv->info->phy_read(priv, port, regnum);
 +}
 +
-+static int mtk_phy_write_page(struct phy_device *phydev, int page)
++static int
++mt753x_phy_write(struct mii_bus *bus, int port, int regnum, u16 val)
 +{
-+	return __phy_write(phydev, MTK_EXT_PAGE_ACCESS, page);
++	struct mt7530_priv *priv = bus->priv;
++
++	return priv->info->phy_write(priv, port, regnum, val);
 +}
 +
-+static void mtk_phy_config_init(struct phy_device *phydev)
+ static void
+ mt7530_get_strings(struct dsa_switch *ds, int port, u32 stringset,
+ 		   uint8_t *data)
+@@ -1828,6 +1839,210 @@ mt7530_setup_gpio(struct mt7530_priv *priv)
+ }
+ #endif /* CONFIG_GPIOLIB */
+ 
++static irqreturn_t
++mt7530_irq_thread_fn(int irq, void *dev_id)
 +{
-+	/* Disable EEE */
-+	phy_write_mmd(phydev, MDIO_MMD_AN, MDIO_AN_EEE_ADV, 0);
++	struct mt7530_priv *priv = dev_id;
++	bool handled = false;
++	u32 val;
++	int p;
 +
-+	/* Enable HW auto downshift */
-+	phy_modify_paged(phydev, MTK_PHY_PAGE_EXTENDED, 0x14, 0, BIT(4));
++	mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
++	val = mt7530_mii_read(priv, MT7530_SYS_INT_STS);
++	mt7530_mii_write(priv, MT7530_SYS_INT_STS, val);
++	mutex_unlock(&priv->bus->mdio_lock);
 +
-+	/* Increase SlvDPSready time */
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_52B5);
-+	__phy_write(phydev, 0x10, 0xafae);
-+	__phy_write(phydev, 0x12, 0x2f);
-+	__phy_write(phydev, 0x10, 0x8fae);
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
++	for (p = 0; p < MT7530_NUM_PHYS; p++) {
++		if (BIT(p) & val) {
++			unsigned int irq;
 +
-+	/* Adjust 100_mse_threshold */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x123, 0xffff);
++			irq = irq_find_mapping(priv->irq_domain, p);
++			handle_nested_irq(irq);
++			handled = true;
++		}
++	}
 +
-+	/* Disable mcc */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xa6, 0x300);
++	return IRQ_RETVAL(handled);
 +}
 +
-+static int mt7530_phy_config_init(struct phy_device *phydev)
++static void
++mt7530_irq_mask(struct irq_data *d)
 +{
-+	mtk_phy_config_init(phydev);
++	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
 +
-+	/* Increase post_update_timer */
-+	phy_write_paged(phydev, MTK_PHY_PAGE_EXTENDED_3, 0x11, 0x4b);
++	priv->irq_enable &= ~BIT(d->hwirq);
++}
++
++static void
++mt7530_irq_unmask(struct irq_data *d)
++{
++	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
++
++	priv->irq_enable |= BIT(d->hwirq);
++}
++
++static void
++mt7530_irq_bus_lock(struct irq_data *d)
++{
++	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
++
++	mutex_lock_nested(&priv->bus->mdio_lock, MDIO_MUTEX_NESTED);
++}
++
++static void
++mt7530_irq_bus_sync_unlock(struct irq_data *d)
++{
++	struct mt7530_priv *priv = irq_data_get_irq_chip_data(d);
++
++	mt7530_mii_write(priv, MT7530_SYS_INT_EN, priv->irq_enable);
++	mutex_unlock(&priv->bus->mdio_lock);
++}
++
++static struct irq_chip mt7530_irq_chip = {
++	.name = KBUILD_MODNAME,
++	.irq_mask = mt7530_irq_mask,
++	.irq_unmask = mt7530_irq_unmask,
++	.irq_bus_lock = mt7530_irq_bus_lock,
++	.irq_bus_sync_unlock = mt7530_irq_bus_sync_unlock,
++};
++
++static int
++mt7530_irq_map(struct irq_domain *domain, unsigned int irq,
++	       irq_hw_number_t hwirq)
++{
++	irq_set_chip_data(irq, domain->host_data);
++	irq_set_chip_and_handler(irq, &mt7530_irq_chip, handle_simple_irq);
++	irq_set_nested_thread(irq, true);
++	irq_set_noprobe(irq);
 +
 +	return 0;
 +}
 +
-+static int mt7531_phy_config_init(struct phy_device *phydev)
++static const struct irq_domain_ops mt7530_irq_domain_ops = {
++	.map = mt7530_irq_map,
++	.xlate = irq_domain_xlate_onecell,
++};
++
++static void
++mt7530_setup_mdio_irq(struct mt7530_priv *priv)
 +{
-+	if (phydev->interface != PHY_INTERFACE_MODE_INTERNAL)
-+		return -EINVAL;
++	struct dsa_switch *ds = priv->ds;
++	int p;
 +
-+	mtk_phy_config_init(phydev);
++	for (p = 0; p < MT7530_NUM_PHYS; p++) {
++		if (BIT(p) & ds->phys_mii_mask) {
++			unsigned int irq;
 +
-+	/* PHY link down power saving enable */
-+	phy_set_bits(phydev, 0x17, BIT(4));
-+	phy_clear_bits_mmd(phydev, MDIO_MMD_VEND1, 0xc6, 0x300);
++			irq = irq_create_mapping(priv->irq_domain, p);
++			ds->slave_mii_bus->irq[p] = irq;
++		}
++	}
++}
 +
-+	/* Set TX Pair delay selection */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x13, 0x404);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x14, 0x404);
++static int
++mt7530_setup_irq(struct mt7530_priv *priv)
++{
++	struct device *dev = priv->dev;
++	struct device_node *np = dev->of_node;
++	int ret;
++
++	if (!of_property_read_bool(np, "interrupt-controller")) {
++		dev_info(dev, "no interrupt support\n");
++		return 0;
++	}
++
++	priv->irq = of_irq_get(np, 0);
++	if (priv->irq <= 0) {
++		dev_err(dev, "failed to get parent IRQ: %d\n", priv->irq);
++		return priv->irq ? : -EINVAL;
++	}
++
++	priv->irq_domain = irq_domain_add_linear(np, MT7530_NUM_PHYS,
++						 &mt7530_irq_domain_ops, priv);
++	if (!priv->irq_domain) {
++		dev_err(dev, "failed to create IRQ domain\n");
++		return -ENOMEM;
++	}
++
++	/* This register must be set for MT7530 to properly fire interrupts */
++	if (priv->id != ID_MT7531)
++		mt7530_set(priv, MT7530_TOP_SIG_CTRL, TOP_SIG_CTRL_NORMAL);
++
++	ret = request_threaded_irq(priv->irq, NULL, mt7530_irq_thread_fn,
++				   IRQF_ONESHOT, KBUILD_MODNAME, priv);
++	if (ret) {
++		irq_domain_remove(priv->irq_domain);
++		dev_err(dev, "failed to request IRQ: %d\n", ret);
++		return ret;
++	}
 +
 +	return 0;
 +}
 +
-+static struct phy_driver mtk_phy_driver[] = {
-+	{
-+		PHY_ID_MATCH_EXACT(0x03a29412),
-+		.name		= "MediaTek MT7530 PHY",
-+		.config_init	= mt7530_phy_config_init,
-+		/* Interrupts are handled by the switch, not the PHY
-+		 * itself.
-+		 */
-+		.config_intr	= genphy_no_config_intr,
-+		.handle_interrupt = genphy_handle_interrupt_no_ack,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
-+	},
-+	{
-+		PHY_ID_MATCH_EXACT(0x03a29441),
-+		.name		= "MediaTek MT7531 PHY",
-+		.config_init	= mt7531_phy_config_init,
-+		/* Interrupts are handled by the switch, not the PHY
-+		 * itself.
-+		 */
-+		.config_intr	= genphy_no_config_intr,
-+		.handle_interrupt = genphy_handle_interrupt_no_ack,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
-+	},
-+};
++static void
++mt7530_free_mdio_irq(struct mt7530_priv *priv)
++{
++	int p;
 +
-+module_phy_driver(mtk_phy_driver);
++	for (p = 0; p < MT7530_NUM_PHYS; p++) {
++		if (BIT(p) & priv->ds->phys_mii_mask) {
++			unsigned int irq;
 +
-+static struct mdio_device_id __maybe_unused mtk_phy_tbl[] = {
-+	{ PHY_ID_MATCH_VENDOR(0x03a29400) },
-+	{ }
-+};
++			irq = irq_find_mapping(priv->irq_domain, p);
++			irq_dispose_mapping(irq);
++		}
++	}
++}
 +
-+MODULE_DESCRIPTION("MediaTek switch integrated PHY driver");
-+MODULE_AUTHOR("DENG, Qingfang <dqfext@gmail.com>");
-+MODULE_LICENSE("GPL");
++static void
++mt7530_free_irq_common(struct mt7530_priv *priv)
++{
++	free_irq(priv->irq, priv);
++	irq_domain_remove(priv->irq_domain);
++}
 +
-+MODULE_DEVICE_TABLE(mdio, mtk_phy_tbl);
++static void
++mt7530_free_irq(struct mt7530_priv *priv)
++{
++	mt7530_free_mdio_irq(priv);
++	mt7530_free_irq_common(priv);
++}
++
++static int
++mt7530_setup_mdio(struct mt7530_priv *priv)
++{
++	struct dsa_switch *ds = priv->ds;
++	struct device *dev = priv->dev;
++	struct mii_bus *bus;
++	static int idx;
++	int ret;
++
++	bus = devm_mdiobus_alloc(dev);
++	if (!bus)
++		return -ENOMEM;
++
++	ds->slave_mii_bus = bus;
++	bus->priv = priv;
++	bus->name = KBUILD_MODNAME "-mii";
++	snprintf(bus->id, MII_BUS_ID_SIZE, KBUILD_MODNAME "-%d", idx++);
++	bus->read = mt753x_phy_read;
++	bus->write = mt753x_phy_write;
++	bus->parent = dev;
++	bus->phy_mask = ~ds->phys_mii_mask;
++
++	if (priv->irq)
++		mt7530_setup_mdio_irq(priv);
++
++	ret = mdiobus_register(bus);
++	if (ret) {
++		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
++		if (priv->irq)
++			mt7530_free_mdio_irq(priv);
++	}
++
++	return ret;
++}
++
+ static int
+ mt7530_setup(struct dsa_switch *ds)
+ {
+@@ -2791,24 +3006,20 @@ static int
+ mt753x_setup(struct dsa_switch *ds)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
++	int ret = priv->info->sw_setup(ds);
+ 
+-	return priv->info->sw_setup(ds);
+-}
+-
+-static int
+-mt753x_phy_read(struct dsa_switch *ds, int port, int regnum)
+-{
+-	struct mt7530_priv *priv = ds->priv;
++	if (ret)
++		return ret;
+ 
+-	return priv->info->phy_read(ds, port, regnum);
+-}
++	ret = mt7530_setup_irq(priv);
++	if (ret)
++		return ret;
+ 
+-static int
+-mt753x_phy_write(struct dsa_switch *ds, int port, int regnum, u16 val)
+-{
+-	struct mt7530_priv *priv = ds->priv;
++	ret = mt7530_setup_mdio(priv);
++	if (ret && priv->irq)
++		mt7530_free_irq_common(priv);
+ 
+-	return priv->info->phy_write(ds, port, regnum, val);
++	return ret;
+ }
+ 
+ static int mt753x_get_mac_eee(struct dsa_switch *ds, int port,
+@@ -2845,8 +3056,6 @@ static const struct dsa_switch_ops mt7530_switch_ops = {
+ 	.get_tag_protocol	= mtk_get_tag_protocol,
+ 	.setup			= mt753x_setup,
+ 	.get_strings		= mt7530_get_strings,
+-	.phy_read		= mt753x_phy_read,
+-	.phy_write		= mt753x_phy_write,
+ 	.get_ethtool_stats	= mt7530_get_ethtool_stats,
+ 	.get_sset_count		= mt7530_get_sset_count,
+ 	.set_ageing_time	= mt7530_set_ageing_time,
+@@ -3029,6 +3238,9 @@ mt7530_remove(struct mdio_device *mdiodev)
+ 		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
+ 			ret);
+ 
++	if (priv->irq)
++		mt7530_free_irq(priv);
++
+ 	dsa_unregister_switch(priv->ds);
+ 	mutex_destroy(&priv->reg_mutex);
+ }
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 0204da486f3a..334d610a503d 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -7,6 +7,7 @@
+ #define __MT7530_H
+ 
+ #define MT7530_NUM_PORTS		7
++#define MT7530_NUM_PHYS			5
+ #define MT7530_CPU_PORT			6
+ #define MT7530_NUM_FDB_RECORDS		2048
+ #define MT7530_ALL_MEMBERS		0xff
+@@ -393,6 +394,12 @@ enum mt7531_sgmii_force_duplex {
+ #define  SYS_CTRL_SW_RST		BIT(1)
+ #define  SYS_CTRL_REG_RST		BIT(0)
+ 
++/* Register for system interrupt */
++#define MT7530_SYS_INT_EN		0x7008
++
++/* Register for system interrupt status */
++#define MT7530_SYS_INT_STS		0x700c
++
+ /* Register for PHY Indirect Access Control */
+ #define MT7531_PHY_IAC			0x701C
+ #define  MT7531_PHY_ACS_ST		BIT(31)
+@@ -714,6 +721,8 @@ static const char *p5_intf_modes(unsigned int p5_interface)
+ 	}
+ }
+ 
++struct mt7530_priv;
++
+ /* struct mt753x_info -	This is the main data structure for holding the specific
+  *			part for each supported device
+  * @sw_setup:		Holding the handler to a device initialization
+@@ -738,8 +747,8 @@ struct mt753x_info {
+ 	enum mt753x_id id;
+ 
+ 	int (*sw_setup)(struct dsa_switch *ds);
+-	int (*phy_read)(struct dsa_switch *ds, int port, int regnum);
+-	int (*phy_write)(struct dsa_switch *ds, int port, int regnum, u16 val);
++	int (*phy_read)(struct mt7530_priv *priv, int port, int regnum);
++	int (*phy_write)(struct mt7530_priv *priv, int port, int regnum, u16 val);
+ 	int (*pad_setup)(struct dsa_switch *ds, phy_interface_t interface);
+ 	int (*cpu_port_config)(struct dsa_switch *ds, int port);
+ 	bool (*phy_mode_supported)(struct dsa_switch *ds, int port,
+@@ -773,6 +782,10 @@ struct mt753x_info {
+  *			registers
+  * @p6_interface	Holding the current port 6 interface
+  * @p5_intf_sel:	Holding the current port 5 interface select
++ *
++ * @irq:		IRQ number of the switch
++ * @irq_domain:		IRQ domain of the switch irq_chip
++ * @irq_enable:		IRQ enable bits, synced to SYS_INT_EN
+  */
+ struct mt7530_priv {
+ 	struct device		*dev;
+@@ -794,6 +807,9 @@ struct mt7530_priv {
+ 	struct mt7530_port	ports[MT7530_NUM_PORTS];
+ 	/* protect among processes for registers access*/
+ 	struct mutex reg_mutex;
++	int irq;
++	struct irq_domain *irq_domain;
++	u32 irq_enable;
+ };
+ 
+ struct mt7530_hw_vlan_entry {
 -- 
 2.25.1
 
