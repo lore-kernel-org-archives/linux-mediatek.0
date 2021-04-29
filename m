@@ -2,83 +2,124 @@ Return-Path: <SRS0=2Vnt=J2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 12F59C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 22:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D8DDC433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 23:32:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDD5B61463
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 22:39:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CDD5B61463
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CCCF861477
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 23:32:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCCF861477
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=vbvJfxqB1NtDbpSG5lNhb/zM91r7l5y+fZiaEZO6oVs=; b=dLrOMPfuXi8wMmbNp95V1xM82
-	6MaSfO7sJoI6Jg1SweFVj1kOLHKrTK+yl1af4sWrB0n866t2S3uwT5LcsB3Wnenlr0SEdWXBNvRSW
-	Wj1A4ely+150KBfEpF4hTr0IlIRplwQu7QLi6hiNg0L0uH3pGdE8vADJAUlHOxW04oGpYn2OIB/WQ
-	On4rqdaZchftvgch32CQosML2aBvggmzjaN96vx6VG5LppSwPiLsk1PGikk3lJMCi4pn9YoDICTQR
-	9ORqtxR2Vhf21y/DE3VvCHy1Ok9ELiuUj7jEpSkMDVftKQNrhJl9Rwrv8YV3kYSHRmmQycVtxPXSc
-	BEehlEO1w==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=qjQpPmPafqKuYXSsGL1CgEmCJAsw7VOuqpObCMPtt6w=; b=E6eCJRnFRfAxtt37ET8ueqikZ
+	K2lroXjZovDaMJqvGoMlxA51MDYoPhDl9tiACCKCHmXyY962kQgihZxonbfXLQusH7MyockuHsE/t
+	36Fw7YHeo+m5mTIIyFGPUOpncYJL3jJtjl7/c04R3EJdDRQ6aXLjiGwommTS8cfVOC+xu/zXLMmxM
+	CLF+9DKwmxJvCwVKKk0PxU52Mc1Q/L5F8A1kKyKIEmK7eb2Bw3Xz8hkO4YrFfY2PRGjRw4ZbJ8qor
+	lL2bRa1NgqNJY9k9vCBmmgCsZQB4HltfCjZ74IYEpFFEgcOMRGpU+YFGSuAx/9WrBUuTD4JxY6RLF
+	Ha8592Oag==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcFJM-006eOh-4z; Thu, 29 Apr 2021 22:39:08 +0000
+	id 1lcG8K-006j6E-Pv; Thu, 29 Apr 2021 23:31:49 +0000
 Received: from [2607:7c80:54:e::133] (helo=bombadil.infradead.org)
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcFJ7-006eKd-C4; Thu, 29 Apr 2021 22:38:54 +0000
+ id 1lcG8G-006j5Y-9S
+ for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 23:31:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
- :Content-ID:Content-Description:References;
- bh=goLQw1v3dhb+PKhIuYeTbTJl+hOVIz2fLpl2tx6M77M=; b=U3rCXe937gnSmWzviJDOe8WpkI
- ikdgHB5gHpl32G5OjjrV3928GRfUdZ1DBvDbu0hTlQFZR5D2ZYpxpM0VmBlhO5b9Qg0/MfKA3Gb2e
- d23BcrywfK2vYWNcqLmIw3qJHwsncqGyeOWsEy3+WsR3Ij7WnuatOmkschKIx+k+Sv6Jixa2YUxv7
- 52DLMG9KHQWF4MzdgTK9CYF789MgKnlJTmTZYIZMNP62NAop5iCN+Uam4D0GdPPqNz6DSEzp34it/
- XgfTRQaa9eVkQrWlzYF5/i0u+lUEcOkoKo3d0pfq8Ixh02oLtqZhsQAvPtbxSmA2/6/nsf9APmDJv
- QQS6hluA==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=fzrD8zY4T8i1Ckg0kK2XoOEO/bZAqdILp4zvyRz37iw=; b=fmvCpdVh23+Dmv+fE6/8bnZPBq
+ oNTJ5rH0RCbF1uEqB5YNLGuSxP9h9LKw43C2Lu7q0K9nIeRnSAyv9CstAvFk0lEZ2AgVS/FvQfalW
+ /YgYPoZfRhB2OH59bk0r6D7ep0Gb8yUSizEWx7bYQJEOFL+gKQo/Hd3QZ9ZoDVdoqBhXKwg8zJpbd
+ 1wuZ/jr94AyXUS+KrjxKSQupqv+ThR4x5dwmC5wIPA1V4QyZIdI0XcXutWChvWTWgEBLr2IfKzpgx
+ pNScHMDUy5Uo2JCxVma18hglJudmYnn3dR/u48UJz2/Qz1O5z5pSRGhOWbV3RmoFgiSJvw1yW/XIS
+ RRrjcTSw==;
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcFIu-0010pd-Oz; Thu, 29 Apr 2021 22:38:42 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 069696143A;
- Thu, 29 Apr 2021 22:38:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1619735920;
- bh=FJMABtH4cJ+ulkHtvdjpFRnQDT287AnLQBcU7uZ3HuE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=gbNHxJKNLFLiIv667svdxfipXsmqwezyoKN/2QseSq68pQHGrhCXFI1k5WYaonlPa
- HRSLQp0J02skiT876VSW68SmZQKq9ghR3q9P79Hg0lp9ExFqadO+4CPN1Qx1FxKINA
- +CQnaHo4GEKHUeY8JMU8SZJDOyqBHvtM/8k4+1kM18OL90GlTkbJQkfCu/yzf9UBIO
- uiR5Uiiv+Bk9uhNQqii6u4+AKkw7/V2ndzQx3rhOGODbDkUoz8ImsgsK7cf5b+yAj2
- TRaTD0P0MPnV/JFKoQVCsruDhTwD4eHs505iuu97gvowpVPYBDnw8X2rjCdAS7wewv
- l0KQ29yN4laxA==
-Date: Thu, 29 Apr 2021 17:38:38 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Amey Narkhede <ameynarkhede03@gmail.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
+ id 1lcG83-0011s1-Ji
+ for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 23:31:32 +0000
+Received: by mail-pl1-x633.google.com with SMTP id y1so19977616plg.11
+ for <linux-mediatek@lists.infradead.org>; Thu, 29 Apr 2021 16:31:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=fzrD8zY4T8i1Ckg0kK2XoOEO/bZAqdILp4zvyRz37iw=;
+ b=b43WsVVuC1Pa50Rdjt8xEgtfv2ddcX3sBZP9uXpmXZei6HzUJv6Kb2Zx3106FHcadr
+ tuH3onKSd8k5gRaJ3cWKe3cqJJkF2m+lgoeLAo5PJft50r0MAKLTTHFS57FWn6QPh8h5
+ TbsEva+ro8/iG0OiPU2uu4GLupnkow4ERibmjggcbM4DqWPcLDiAFryJ2slFzdxtgqUu
+ ltgIbphu5kWu2oV7c4it4iISb7LgvHIiS6vTYWoRQzhYvrtfHRMkbcc+6vCeK6SdvpaK
+ DQIX+pVPkP8Rsh2/J3AGRbn4/+KkCYendHKmUrwt5TQZOJ7ZwipRT8v/HgWJzTv28vME
+ 8pEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fzrD8zY4T8i1Ckg0kK2XoOEO/bZAqdILp4zvyRz37iw=;
+ b=LOUpxYfrMc7TWwLH9snuJxaB5+zJljln3u7mZYQvRH77ZoQfROBcuxU6anw53BINnh
+ Uqk2T0iPpzA89ynQnnq8T1JpZWGZWGQInJSGliel+45sE+jUNafOLjShNcSRv/M/r0CV
+ MdPZ1e6FeyZM4ICzTXDAES1aL4ncFqd3RLDd4ELCRGXAJ+9yRnJoVXC2LO8sNZ3+1bGv
+ aibfHjO6Z5YQB7AHJ/BrqbCfE51s7SffBOuPO6e4ZtkmfaRq00TanX6ywb6ZtYR/pGbd
+ yNdU6ueBMGgena6jrl0oPnpIF4EY7FCj4k62w1G984HUB51HxTV0FwNRAZu8sES8ai0N
+ 2w9A==
+X-Gm-Message-State: AOAM532J3kA1/KBBdYI9npB6zJkc2PC+BLbSi2t7cJpUcb8M0WbtyzYA
+ WTs9QG4SIhSv19/idT87mRE=
+X-Google-Smtp-Source: ABdhPJxQFWHd9h1MRuUh+9kk8UbYLL3eHDb36/Y5upxqrmZxsITxtsK/7ISTVNxcSJgTeLL+/GEDmg==
+X-Received: by 2002:a17:90b:3686:: with SMTP id
+ mj6mr12127837pjb.116.1619739087898; 
+ Thu, 29 Apr 2021 16:31:27 -0700 (PDT)
+Received: from [192.168.1.67] (99-44-17-11.lightspeed.irvnca.sbcglobal.net.
+ [99.44.17.11])
+ by smtp.gmail.com with ESMTPSA id q19sm101794pfl.171.2021.04.29.16.31.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Apr 2021 16:31:27 -0700 (PDT)
+Subject: Re: [PATCH net-next 4/4] staging: mt7621-dts: enable MT7530 interrupt
+ controller
+To: DENG Qingfang <dqfext@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ Landen Chao <Landen.Chao@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] PCI: mediatek: Verify whether the free_ck clock is
- ungated or not
-Message-ID: <20210429223838.GA588275@bjorn-Precision-5520>
+ Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
+ netdev@vger.kernel.org
+Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo
+ <gch981213@gmail.com>, =?UTF-8?Q?Ren=c3=a9_van_Dorst?=
+ <opensource@vdorst.com>, Frank Wunderlich <frank-w@public-files.de>,
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
+References: <20210429062130.29403-1-dqfext@gmail.com>
+ <20210429062130.29403-5-dqfext@gmail.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Message-ID: <f397c8e2-7ee0-f67c-6ea0-412fc671d418@gmail.com>
+Date: Thu, 29 Apr 2021 16:31:22 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210429134749.75157-1-ameynarkhede03@gmail.com>
+In-Reply-To: <20210429062130.29403-5-dqfext@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_153840_868123_38C92DAA 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20210429_163131_697258_906E2A3F 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,49 +136,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Can you make the subject say something at a higher level instead of
-just paraphrasing the C code?  I'm guessing this means resume will now
-fail if the clock isn't turned on?
 
-On Thu, Apr 29, 2021 at 07:17:49PM +0530, Amey Narkhede wrote:
-> Verify that the free_ck clock is ungated on device resume
-> by checking return value of clk_prepare_enable().
 
-Also the commit log -- this doesn't say anything more than the code
-itself.  Did you find this by tripping over it?  Or just by code
-inspection?  I guess without the check, we continue on and try to
-resume, but accesses to PCI devices fail and maybe return ~0 data or
-cause machine checks or something?
-
-> Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+On 4/28/2021 11:21 PM, DENG Qingfang wrote:
+> Enable MT7530 interrupt controller in the MT7621 SoC.
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 23548b517..9b13214bf 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -1154,11 +1154,14 @@ static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
->  {
->  	struct mtk_pcie *pcie = dev_get_drvdata(dev);
->  	struct mtk_pcie_port *port, *tmp;
-> +	int ret;
-> 
->  	if (list_empty(&pcie->ports))
->  		return 0;
-> 
-> -	clk_prepare_enable(pcie->free_ck);
-> +	ret = clk_prepare_enable(pcie->free_ck);
-> +	if (ret)
-> +		return ret;
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 
-Most callers print an error message when clk_prepare_enable() fails.
-
->  	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
->  		mtk_pcie_enable_port(port);
-> --
-> 2.31.1
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
