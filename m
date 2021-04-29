@@ -2,21 +2,20 @@ Return-Path: <SRS0=2Vnt=J2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45101C433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 13:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AA9BC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 14:39:09 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 805626144B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 13:48:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 805626144B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id CCB3F61447
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 14:39:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCB3F61447
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -24,82 +23,83 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kOlufHFKjNu0z02G5S0UH8oBR/X731A7RZ5KaCdjjNg=; b=cmDXHXG99MrUDyzlALVKLt+8gJ
-	mw2Dv/2C0iZmQOtLIF2ApCF60tiM1O+Ls1IYOcZGepk32YWs4ESnSbZ2qF5w4p3GK4WCby6SHFB0p
-	Z9RjWVvcjrtTkO10fKRrDIAKc8C3AfjpaHFmP+K59Pn4S1iWMVeXKrHZcI9AbMM3m7+vrAWivuG4N
-	Kca7MTGEGgqMy2YWqX8wM7eeHxMpb47miDUXG26X1BVMgNNQcF5u83UZi/cx6ePzdS/g+5q5qcxJJ
-	E+xBTZbvLIy59I7CTKQVlSe0ZdufevaRetl+V/bW4v1OZ0ORnlpp9eFRIVDdF4V35/PS2Gz23ILoJ
-	Y2OjtPPg==;
+	bh=YxYH5ytj7ZPr6cexbFE8aRX/nvOS1Kstxpu7F//o0Kw=; b=hVxDen7uPI/YnSV6Fy04jxILYQ
+	j5bm6WitFkYebYYvjvoA7rgJhMBSSjmGHj/dGN4AI5Ic10e0JtHZojHxYf+/hBivwuEllPAveDXsz
+	Ta8MPKabu1DFUfkyDo3zUHlQa5pq3o4qo+NugjOto+zTguQVWGIhIq2o44p6RORJXiAO6sTfNUp80
+	BWkXEO17JogJJQV5L7t0eW6OlCFTAiU0Bdgr/u+Q9XeCErrfuJZqDivzWxwIPG3G2flGdYTyRcFF1
+	b9f4x4ynonhGCbrAncP4Lruc60dencV5TKbKiEM3LIsj37emWB2nwHFh9ZPY2gBXaz9m3/A0pjFEB
+	CwEDs9sQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc71R-005j0J-QK; Thu, 29 Apr 2021 13:48:05 +0000
+	id 1lc7oa-005qHb-Ng; Thu, 29 Apr 2021 14:38:52 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc71Q-005j09-6f; Thu, 29 Apr 2021 13:48:04 +0000
+ id 1lc7oF-005qDb-AG
+ for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 14:38:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=PlH3+2vfZTyuFfAqFBDTmRaRDdNNygl3Tgthx29aiWE=; b=ppp3HxOldXVhwEWDixtsxpaTv8
- 7HJvZH16QH3WepkqqoK9dnVN0nJZQLWHi6dcIKcVVOqCksuAcBibsQL7WH+XLntboFqx59RcEBxO+
- mTMaPAlp7RsJfGLpUA4nQYdjX7uCYQgX2nBYJQI+wAAuzH33ah7CTk2Ykw2TaCXdXy2/dzE7NvGbI
- /SoWyrksNL0+m7VbxljFkQJheIAJAMvCdKi7qT0kWB6v6FGvwdw2Y0vgBSZ79tF+SMJNePbbAgDl8
- kvdNoDj0TfobL2Ne9StKmMzsHuZBGfa7omuuwE4XlIVtPho2H4HWpge20n/CzC0Kk18SoieXwWwrI
- EATY8AHw==;
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ bh=nvlXRyFYaeeyIwO6szvQsWjtbPP+qdyXO2BDXR8A9/8=; b=VTAgI3j3z8BiA1UTjsnyUgT+7/
+ NQ1BdXrKKvnJfsyAlW8guZiLGiGd0/etUNm2qMceCfsqBIpA8DB2lKagLPrcYhA9FJ9V8I9Y93UH5
+ 5tENpUY7Z+IK6pw0oHCu2pktNopzLKeyFqFcbp5EN2ws42SNTKEv4jqSrvK+nbT8S4UvI19Z60Xmu
+ BQQ3ze3+4yaV4DsNH6feuComEj38hpFEC62ur9u1gtAseWzPCx0oooCxRPcCx/x+qJOMtnTcfpCuM
+ MK+lb8PpvIWH+dBlaxqMbxRM52XHxpHCxkJLMRmdD60o2m7nJ8n8iqgc9fzWKvcmsUHZKCNY14hu5
+ VVz05AfQ==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc71N-000f6i-OK; Thu, 29 Apr 2021 13:48:02 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id p17so8862616plf.12;
- Thu, 29 Apr 2021 06:48:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1lc7oB-000hCI-KN
+ for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 14:38:30 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id
+ o26-20020a1c4d1a0000b0290146e1feccdaso286138wmh.0
+ for <linux-mediatek@lists.infradead.org>; Thu, 29 Apr 2021 07:38:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=PlH3+2vfZTyuFfAqFBDTmRaRDdNNygl3Tgthx29aiWE=;
- b=C0AkQKD0SAMi4Wyu71J5JywvoQzblYpGXd4pTiwkoBY3JmovzQKSQaKYVb8Jd2UDHb
- gagiQtYRjqKVBxw5zTR5vGN9ucSKnzuNWiixecHwx1D3q8E/JwwKH0/T8E6ykWJUi+nQ
- Mw1IKlzIchnCInVjXwXRkae3CUsX4B+aiyTTIj403sEi+K+vg9TPyE5UeCM8lRNv6Fc2
- SgOmVEVGVw1relf9JjfDWdz8RGkMkkKvi08uw/nO1aYBW0eqEH1kiHS4xlBtjIqjLBSV
- hRVXwGw6I2qcFtYYJ28dVdWrOvJOMRmiwKkcTYwZIDsjcfeGXkP4QeO6FLzIUCzjThOg
- 8Cdg==
+ bh=nvlXRyFYaeeyIwO6szvQsWjtbPP+qdyXO2BDXR8A9/8=;
+ b=CTBsw0zEqYpNO1IjM8aFVM6MLCxN6LQLNQXkIC9OsaOSGWnb/RbFJWycx2If4u4pdM
+ u7LCQbFVd358Tit6j/gy93z3Qq2H3nkjMYVtUDTiucVPFLSM1GPHdmnAAR8tjADSYJne
+ r/xyB13RGDKYOdcVVDk5mQzKqGjOMy34nohurpBYaFkfy+resbSItmJDq0bNQ563skf0
+ LCOSIMYI1sTQFYkKbiN8k73UIDX2K2jI5PnzbpPHTAghIZHDE10/Udrpz7Jrna/ah1XD
+ fKAJ74nYjd41jnqYfFuuhbY25ymEPco0zQp7FGON2zNjTO6qhP5AQV6oR8qJDxQMnywP
+ Nf2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=PlH3+2vfZTyuFfAqFBDTmRaRDdNNygl3Tgthx29aiWE=;
- b=Nsxj90dUhE/L31/VxCaWN8uGWKhFZv8H3pu/wcQGbUT/cxCHE1rMttBLMCtfKNemJk
- i5ZNMzctK9tzaO69DGSowdr95H1pUbWAiUqLbdPTAYlbuye4tmWHrxoSTqSL+4dwOaO5
- DGo3GsS7/Vc3iqGEC0UrawE3ZIHm9zStynl+s5o9OO9cBJ8BoeXakYKsWLpi/1PFnzQs
- 4r1h/iHXxw/ghEmzzCuNP+qENCJT6XLgxrk81OE/qc2ykVc+ko2Z2996ZIQ7djk0ltX+
- mbI+KyAdy2skqPwONCrZ9V+A86LIL2h9JYU7vQJ2RZ5SjSFhAtRjb3lnb9H8KOXFIUcv
- 2HGg==
-X-Gm-Message-State: AOAM533PDKiMBY8beM/4qQnACXHhm3ojvh3FURhCrnaolWAErG1W2w8i
- SISL4PTg7olv7zaGS+0tFsU=
-X-Google-Smtp-Source: ABdhPJxcrHPq0Yh2vzbld5D+XYsyxSrLVwVp1i8jSMbpNjL77MDoBAE9H02D6VqQOX42z8fGsjVxsA==
-X-Received: by 2002:a17:903:1243:b029:ed:8298:7628 with SMTP id
- u3-20020a1709031243b02900ed82987628mr6112715plh.11.1619704080057; 
- Thu, 29 Apr 2021 06:48:00 -0700 (PDT)
-Received: from localhost.localdomain ([103.248.31.149])
- by smtp.googlemail.com with ESMTPSA id n9sm37175pgt.35.2021.04.29.06.47.56
+ bh=nvlXRyFYaeeyIwO6szvQsWjtbPP+qdyXO2BDXR8A9/8=;
+ b=rpu0rGIf9SIJ9xsCxXcVs53hYdYEqgohFj0s0o5PKsTXhEjMSi+iR012IDLOQFQDyl
+ wA1LrEleBo2pT/vTfryv1FakGy0Tsn68Y4LZlUel7EumDVjjjvSygxBsbD4U6eO5liOZ
+ hik/6zIBl7AyBSKttJMKVVweso6yfmVs80AYB4NxEBcFgmrPyQq/qosWJzGei8T88cfu
+ cdtoSNgvA2jNizULwYq5sHRILOHUB4tUViEFw0qkSI6Wn+jZtocWuO1kHS9dtaSCaPG6
+ wr/TMoFWMiXVkaTyKQso05fV0CTJMAq1AHXNuIaSRrYxmq5XBX3UcvfoQQQErTYbtJMz
+ pE+Q==
+X-Gm-Message-State: AOAM531+UzCMZSLSrH0I28qQyDvJ9n4IHoZ4a9OQzia2S+AKp3tTnFvO
+ o0GJPY0pyYNJ4PHLJAHJl5SBKQ==
+X-Google-Smtp-Source: ABdhPJzxai37BCFbsjEPDgcJce53BzDsodpZRG2jq6v0LEhp4mkGCjah3cYW3LSkNzEjW74rnZwnZQ==
+X-Received: by 2002:a1c:7209:: with SMTP id n9mr398838wmc.60.1619707105655;
+ Thu, 29 Apr 2021 07:38:25 -0700 (PDT)
+Received: from groot.home ([2a01:cb19:826e:8e00:f37e:9091:b397:6f48])
+ by smtp.gmail.com with ESMTPSA id d6sm5025602wrr.77.2021.04.29.07.38.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Apr 2021 06:47:59 -0700 (PDT)
-From: Amey Narkhede <ameynarkhede03@gmail.com>
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,
- Amey Narkhede <ameynarkhede03@gmail.com>
-Subject: [PATCH] PCI: mediatek: Verify whether the free_ck clock is ungated or
- not
-Date: Thu, 29 Apr 2021 19:17:49 +0530
-Message-Id: <20210429134749.75157-1-ameynarkhede03@gmail.com>
-X-Mailer: git-send-email 2.31.1
+ Thu, 29 Apr 2021 07:38:25 -0700 (PDT)
+From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+To: Lee Jones <lee.jones@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen Zhong <chen.zhong@mediatek.com>
+Cc: fparent@baylibre.com, dmitry.torokhov@gmail.com,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] mfd: mt6397: rename mtk-pmic-keys cells to avoid OOPS
+Date: Thu, 29 Apr 2021 16:38:11 +0200
+Message-Id: <20210429143811.2030717-1-mkorpershoek@baylibre.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_064801_814224_8A9CAC70 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20210429_073827_749897_2BE58F76 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,36 +116,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Verify that the free_ck clock is ungated on device resume
-by checking return value of clk_prepare_enable().
+When booting with CONFIG_KEYBOARD_MTK_PMIC=y, we have the following oops:
 
-Signed-off-by: Amey Narkhede <ameynarkhede03@gmail.com>
+[    0.384359] Unable to handle kernel NULL pointer dereference at virtual address 00000000000000c0
+[    0.385471] Mem abort info:
+[    0.385826]   ESR = 0x96000004
+[    0.386214]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    0.386886]   SET = 0, FnV = 0
+[    0.387282]   EA = 0, S1PTW = 0
+[    0.387681] Data abort info:
+[    0.388047]   ISV = 0, ISS = 0x00000004
+[    0.388533]   CM = 0, WnR = 0
+[    0.388910] [00000000000000c0] user address but active_mm is swapper
+[    0.389712] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+[    0.390419] Modules linked in:
+[    0.390812] CPU: 4 PID: 1 Comm: swapper/0 Not tainted 5.12.0-mtk-04316-g7f74036c9b47 #58
+[    0.391835] Hardware name: Pumpkin MT8183 (DT)
+[    0.392399] pstate: 60000005 (nZCv daif -PAN -UAO -TCO BTYPE=--)
+[    0.393160] pc : mtk_pmic_keys_probe+0x8c/0x57c
+[    0.393744] lr : mtk_pmic_keys_probe+0x70/0x57c
+[    0.394318] sp : ffff80001008bb10
+[    0.394738] x29: ffff80001008bb10 x28: 0000000000000000
+[    0.395414] x27: ffff8000117f04b0 x26: ffff80001121aa88
+[    0.396089] x25: ffff0000031ea400 x24: ffff0000031ea410
+[    0.396763] x23: 0000000000000000 x22: ffff00000342ad80
+[    0.397438] x21: ffff000003589780 x20: 0000000000000000
+[    0.398112] x19: ffff80001129d0d0 x18: 0000000000003ca8
+[    0.398786] x17: ffff800010bad620 x16: ffff800010bacc44
+[    0.399460] x15: 0000000000000040 x14: ffffffffffffffff
+[    0.400134] x13: ffff800011df2728 x12: 0000000000000030
+[    0.400808] x11: 0101010101010101 x10: 7f7f7f7f7f7f7f7f
+[    0.401482] x9 : 0000000000000000 x8 : ffff000003589800
+[    0.402155] x7 : 0000000000000000 x6 : 000000000000003f
+[    0.402829] x5 : 0000000000000040 x4 : ffff0000031ea610
+[    0.403503] x3 : ffff0000031ea6b8 x2 : 0000000000000000
+[    0.404176] x1 : ffff000002d8d800 x0 : ffff0000031ea410
+[    0.404850] Call trace:
+[    0.405162]  mtk_pmic_keys_probe+0x8c/0x57c
+[    0.405694]  platform_probe+0x68/0xe0
+[    0.406162]  really_probe+0x1c0/0x480
+[    0.406631]  driver_probe_device.part.0+0xd8/0x118
+[    0.407239]  device_driver_attach+0xcc/0xd4
+[    0.407773]  __driver_attach+0x60/0x12c
+[    0.408261]  bus_for_each_dev+0x70/0xc4
+[    0.408749]  driver_attach+0x24/0x30
+[    0.409204]  bus_add_driver+0x118/0x200
+[    0.409692]  driver_register+0x78/0x130
+[    0.410180]  __platform_driver_register+0x28/0x34
+[    0.410779]  pmic_keys_pdrv_init+0x1c/0x28
+[    0.411301]  do_one_initcall+0x54/0x1c0
+[    0.411791]  kernel_init_freeable+0x1d4/0x23c
+[    0.412347]  kernel_init+0x14/0x118
+[    0.412792]  ret_from_fork+0x10/0x34
+[    0.413251] Code: aa1803e0 f90006b8 f94006c1 f9000aa1 (f9406281)
+[    0.414032] ---[ end trace ad605d8d1790625c ]---
+[    0.414630] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
+[    0.415600] SMP: stopping secondary CPUs
+[    0.416103] Kernel Offset: 0x80000 from 0xffff800010000000
+[    0.416796] PHYS_OFFSET: 0x40000000
+[    0.417238] CPU features: 0x00240002,2188200c
+[    0.417791] Memory Limit: none
+[    0.418181] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+
+This happens when we don't have a matching device-tree entry
+(such as mediatek,mt6323-keys) for the driver.
+In that case, we dereference of_id->data with of_id == NULL
+
+The mfd core warns us about this:
+   [    0.352175] mtk-pmic-keys: Failed to locate of_node [id: -1]
+
+mtk_pmic_keys gets probed() anyways because its mfd_cell->name:
+    }, {
+            .name = "mtk-pmic-keys",
+            .num_resources = ARRAY_SIZE(mt6323_keys_resources),
+            .resources = mt6323_keys_resources,
+            .of_compatible = "mediatek,mt6323-keys"
+    }, {
+
+.name is used by mfd_add_device() and becomes the name of the platform
+device:
+
+    pdev = platform_device_alloc(cell->name, platform_id);
+
+Later, in initcall, we do:
+
+[    0.296114] calling  pmic_keys_pdrv_init+0x0/0x28 @ 1
+[    0.296142] bus: 'platform': add driver mtk-pmic-keys
+
+Then, to check if we should call mtk_pmic_keys_probe(), we call
+
+      platform_match(drv, dev)
+
+which will return true since drv->name and pdev->name match.
+
+Since both the platform device is named mtk-pmic-keys and the driver is
+called mtk-pmic-keys, we call probe(), which triggers the oops.
+
+Fix it by renaming the mtk-pmic-key subdevices to right side of
+their compatible.
+
+This way, probe() will only be called when we have a valid dts entry for
+mtk-pmic-keys.
+
+Note: this is also more consistent naming with the other subdevices
+such as mt6397-rtc and mt6397-codec.
+
+Fixes: 55d1d1547ab5 ("mfd: mt6397: Add PMIC keys support to MT6397 driver")
+Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
 ---
- drivers/pci/controller/pcie-mediatek.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 23548b517..9b13214bf 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -1154,11 +1154,14 @@ static int __maybe_unused mtk_pcie_resume_noirq(struct device *dev)
- {
- 	struct mtk_pcie *pcie = dev_get_drvdata(dev);
- 	struct mtk_pcie_port *port, *tmp;
-+	int ret;
+This is a replacement for:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210428164219.1115537-2-mkorpershoek@baylibre.com/
 
- 	if (list_empty(&pcie->ports))
- 		return 0;
+ drivers/mfd/mt6397-core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
--	clk_prepare_enable(pcie->free_ck);
-+	ret = clk_prepare_enable(pcie->free_ck);
-+	if (ret)
-+		return ret;
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 7518d74c3b4c..a83fbc486d26 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -72,7 +72,7 @@ static const struct mfd_cell mt6323_devs[] = {
+ 		.name = "mt6323-led",
+ 		.of_compatible = "mediatek,mt6323-led"
+ 	}, {
+-		.name = "mtk-pmic-keys",
++		.name = "mt6323-keys",
+ 		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
+ 		.resources = mt6323_keys_resources,
+ 		.of_compatible = "mediatek,mt6323-keys"
+@@ -118,7 +118,7 @@ static const struct mfd_cell mt6397_devs[] = {
+ 		.name = "mt6397-pinctrl",
+ 		.of_compatible = "mediatek,mt6397-pinctrl",
+ 	}, {
+-		.name = "mtk-pmic-keys",
++		.name = "mt6397-keys",
+ 		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
+ 		.resources = mt6397_keys_resources,
+ 		.of_compatible = "mediatek,mt6397-keys"
 
- 	list_for_each_entry_safe(port, tmp, &pcie->ports, list)
- 		mtk_pcie_enable_port(port);
---
-2.31.1
+base-commit: 4a0225c3d208cfa6e4550f2210ffd9114a952a81
+-- 
+2.27.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
