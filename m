@@ -2,93 +2,99 @@ Return-Path: <SRS0=2Vnt=J2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C892AC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 07:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F7C4C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 07:26:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F1D361289
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 07:25:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F1D361289
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 94C9361289
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Apr 2021 07:26:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94C9361289
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6xs8+stnwgsIgmvdHpsqtD2kPWb3gIROwnl5AJ+7Zbg=; b=AdTl8aj5rqHTnOiecQjyJ77gB
-	yo7c101ggzTl3bSCXmO6v3mp0I6kYHYygsUCV2I8VJLy4IjtYPQRGx7lyNhmqXxtKi8DYmsomjzDz
-	KMV/ZH+ObWkJAAiEFbn07jcfLqXgVtz0MzMlwBbVxJUmQe8x/m4Y5TENujM4BqILnXxIvKv7gWUZV
-	uKIA1CLsnoazVinQlWqJvzPjoL7tZzlBcJC6I5gLui98AnfCwK/DmdF+591qmmwDzQd++ZoHklAwx
-	WLc9t/LeFdaslvZbSkQDLF/lbp+ilR3M3yNu3XjN0mnGdIMVD9K/Pu6lnuQows2cGklIshve+qKNo
-	AgeBc6EYg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=G1ow1tUtdt+0YT6ZooMIvbYi4j7P6aWACBVNtAZIxPw=; b=NrqWIR2jWgisP4MjBJ9S3IbqN9
+	x4/ro+fmk19yry7GrUjX+EFILCF11KblyF0/hK/n9VdyB8dc5Ln9JCcF46YbBNxxRvUcTl/QIoKAO
+	X4qTSyU3r5VNKSwT6kvLKfaZrZzI8Yd7yk1eEBIBw18z7hEysN9I2AjeROrTqN+1Vim+BmB3U5i86
+	+GddGOeVfa5JUeySojWEt+Cut07zaWLA/VtmibrLodhB3PbeXFVvp575pMF6e8ZBJafNAJLOsV3sH
+	yZJUa71mAsunmRayDq/S+Cj3YnBl/s9bxHuXA0KXEl7taP8zIDufdZzNC5QAwGJDGX0RuH2lbOdS5
+	s/r/T8hg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lc13B-005Cav-Th; Thu, 29 Apr 2021 07:25:30 +0000
+	id 1lc13l-005CkG-A5; Thu, 29 Apr 2021 07:26:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc0uz-005Azx-Ef
- for linux-mediatek@desiato.infradead.org; Thu, 29 Apr 2021 07:17:01 +0000
+ id 1lc11h-005CDI-4K; Thu, 29 Apr 2021 07:24:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=xnnCKfyaJF/eAf+XEZujExVF4AzU7qrZb69GBTxgIEg=; b=T6TsOCpLaowHRYU0Z4FgtlVEza
- UywrhyCcRs4zSCuf0/SapYPH8X6GQDxEbstzN1OkKMHa4oj8aYbNtym8Q1H1Qz9Z5feCycOg9/F6N
- 3JYP3KgduOi8fKQH35vyDWwdFZcx3t+9jebeSRKsrF4LhKv1xNwsrU7t1qyUQ1AkcHlJu9Zt0godz
- C+4yPX4IWhnklKQVtI82L0OYX3+mpRomOdHLrY093AO2PhF0+2ayA3DADAnDIhHE9F5wmoy0Hxfeq
- kZ6qz156Nd1knWV+yRvlXEmOaSX5oQcAFbnq5GMz4xs78eIvT9WQkW34R6/4p2ByTY/NgRMUBEzHp
- g8VpHI3A==;
-Received: from lb1-smtp-cloud8.xs4all.net ([194.109.24.21])
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=RmFlwXAIoCTZTXrIutKkpYoN6EfXED3fci0Fhaiqvgc=; b=zMcB6KbesHzSdIiF+Kx/49p1jJ
+ Q2YS+bmDT2fzzhE31i9ZKmnlJe+QzZTCIRzghVG/2uJFaIfem0S81tQ6zB2QW5+f11vlRjCI32zWc
+ rQ80vSPcvwEKU2o0T6DiBYXbWulc3qTXXz9zw705jaMOWESHw6sE8ilX5fWZvaSDBCNu50kROoEZ+
+ SZHzecbXy3L99CSXPODmv0OrwW+Ov70lmpsD9ODfkwzqThf70kR6GYVOpL5jWD4726OIo6awMvt2f
+ zfQQwh/bbHYqBR6dnG7mqDvHCWUkcT3Pz0LspT5DjD5gfIDuKZB4wsdx2tBQLTfyqRSpuJhWBcgVx
+ KJJ4MpsQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lc0uu-000RJw-3A
- for linux-mediatek@lists.infradead.org; Thu, 29 Apr 2021 07:17:00 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id c0ublp8LfiDzSc0uflkOHR; Thu, 29 Apr 2021 09:16:45 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1619680605; bh=xnnCKfyaJF/eAf+XEZujExVF4AzU7qrZb69GBTxgIEg=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=wsclS3CMRp2+5ueH/aaPIVYdhexV0rultZnjXTgu6xoe+fEAJhXJa8lyOTEK6nwHg
- G8ZdfBVfbchlRru5O/Q3C1EwlizqAnlqlK/72aVlsl1YhrEIsByJMjdsSBbRtsNlPh
- 8sCEGmWCb6UP9Qp89p1LesWZaNPxmnt7jR2NRS2Emfnjdet+CE+AYsjN77xFJHoRG4
- ITiqKhwtHRzYUjQfAxXJHkTX2257RjB07q3kEBLpba6uHQ9Vi534Ab47yps2QeCvps
- bre6RqtzTNEqsvBiBpPeiIdo60d3VBZkPfcH0uJ6JwOzG6wYAMbVQ+WJlahV1pGirB
- PZ1k9cm6D/opg==
-Subject: Re: [PATCH v4 04/15] media: add Mediatek's MM21 format
-To: Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20210427111526.1772293-1-acourbot@chromium.org>
- <20210427111526.1772293-5-acourbot@chromium.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <25f9bfc5-7e69-20cc-7078-8783bba2f877@xs4all.nl>
-Date: Thu, 29 Apr 2021 09:16:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+ id 1lc11d-000Rb8-Uy; Thu, 29 Apr 2021 07:23:55 +0000
+X-UUID: a91ffd64c1064aa495c1ee96e2f3f7a8-20210429
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=RmFlwXAIoCTZTXrIutKkpYoN6EfXED3fci0Fhaiqvgc=; 
+ b=cK1XrW3U95jJDtQ0Od3TXTw796sOBku7PQFCNmKHReaqgcnGnQPuHZf9YJn/h81AdpSDN7hNWicDse4JP+naS4rCroW0lNDQV6tBha3b4b87GiJhdNN9TR5TEy42gIEMrycRbZJtbho8oLSTxXeX82Lt1/RE1pFqgjP91oU0MS4=;
+X-UUID: a91ffd64c1064aa495c1ee96e2f3f7a8-20210429
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1394397435; Thu, 29 Apr 2021 00:23:48 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Apr 2021 00:14:40 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkcas07.mediatek.inc
+ (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 29 Apr 2021 15:14:38 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Apr 2021 15:14:36 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Masahiro Yamada <masahiroy@kernel.org>, "Nick
+ Desaulniers" <ndesaulniers@google.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, <peterz@infradead.org>
+CC: Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>, Peter Enderborg
+ <peter.enderborg@sony.com>, Thomas Gleixner <tglx@linutronix.de>, "Anshuman
+ Khandual" <anshuman.khandual@arm.com>, Vitor Massaru Iha <vitor@massaru.org>, 
+ Sedat Dilek <sedat.dilek@gmail.com>, Wei Yang <richard.weiyang@gmail.com>,
+ Cong Wang <cong.wang@bytedance.com>, Di Zhu <zhudi21@huawei.com>, "Stephen
+ Hemminger" <stephen@networkplumber.org>, Francis Laniel
+ <laniel_francis@privacyrequired.com>, Roopa Prabhu
+ <roopa@cumulusnetworks.com>, Andrii Nakryiko <andrii@kernel.org>,
+ <linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <wsd_upsream@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
+Subject: [PATCH] rtnetlink: add rtnl_lock debug log
+Date: Thu, 29 Apr 2021 15:02:36 +0800
+Message-ID: <20210429070237.3012-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20210427111526.1772293-5-acourbot@chromium.org>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfEjD42wv31KGxQzYuQpkZN3n+BoYeNWkPjTUn1ucJATssoAXLUWM7q0ypLRz+BKn1G02eTkdC+wuEYSoJ64rvGv2sJzFfpmT5jae5uqrLqWeGrI5leBn
- 8/L1IZVhwJQlnjhvDc8qYadwWEm8AvuUDp/rB22FkDdU0aBH0vJx9Hy/USDlIrSciCSVhJMiaG6Ia5QERb2duaZbOhbaC6JR8pBHqxbu4tEDI+jOeP5zOTQu
- CK1rKHHPJ9QA5PoVsoVdOWMAYgLH7QwIbAtSsb7eO3f/bZ5qU5yuWjVXSfjTmZf70Hin6JQGXay4/NNIwt21H8r0sbNcX+vWb1e3yaoo7+t/SsOYGZC0M85I
- P/bhVlD8lXg6hTw02/Eo45Pnc1Iuuc1fKHo/X2p/amfv3+SsWcK86Xj0b12yYn5+MXiOdO2c02ZzDfmV5Dh7xI61iCcmOh/dtoo+KYqyVxefl7I/91tdhmrU
- UPglvFXIR/vL+Mjrg2TeXh0ETenpPprLH1gkAQ==
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210429_001656_293524_0F5B2689 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20210429_002354_030327_9CBD9A05 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,72 +111,206 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27/04/2021 13:15, Alexandre Courbot wrote:
-> Add Mediatek's non-compressed 8 bit block video mode. This format is
-> produced by the MT8183 codec and can be converted to a non-proprietary
-> format by the MDP3 component.
-> 
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> ---
->  Documentation/userspace-api/media/v4l/pixfmt-reserved.rst | 7 +++++++
->  drivers/media/v4l2-core/v4l2-ioctl.c                      | 1 +
->  include/uapi/linux/videodev2.h                            | 1 +
->  3 files changed, 9 insertions(+)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> index 0b879c0da713..42357b0b3535 100644
-> --- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> +++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
-> @@ -246,6 +246,13 @@ please make a proposal on the linux-media mailing list.
->  	It is an opaque intermediate format and the MDP hardware must be
->  	used to convert ``V4L2_PIX_FMT_MT21C`` to ``V4L2_PIX_FMT_NV12M``,
->  	``V4L2_PIX_FMT_YUV420M`` or ``V4L2_PIX_FMT_YVU420``.
-> +    * .. _V4L2-PIX-FMT-MM21:
-> +
-> +      - ``V4L2_PIX_FMT_MM21``
-> +      - 'MM21'
-> +      - Non-compressed, tiled two-planar format used by Mediatek MT8183.
-> +	This is an opaque intermediate format and the MDP3 hardware can be
-> +	used to convert it to other formats.
->      * .. _V4L2-PIX-FMT-SUNXI-TILED-NV12:
->  
->        - ``V4L2_PIX_FMT_SUNXI_TILED_NV12``
-> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-> index 6a5d1c6d11d6..608e3ddc0f42 100644
-> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
-> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-> @@ -1385,6 +1385,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
->  	case V4L2_PIX_FMT_TM6000:	descr = "A/V + VBI Mux Packet"; break;
->  	case V4L2_PIX_FMT_CIT_YYVYUY:	descr = "GSPCA CIT YYVYUY"; break;
->  	case V4L2_PIX_FMT_KONICA420:	descr = "GSPCA KONICA420"; break;
-> +	case V4L2_PIX_FMT_MM21:		descr = "Mediatek 8-bit block format"; break;
+We often encounter system hangs caused by certain processes
+holding rtnl_lock for a long time. Even if there is a lock
+detection mechanism in Linux, it is a bit troublesome and
+affects the system performance. We hope to add a lightweight
+debugging mechanism for detecting rtnl_lock.
 
-block format -> Block Format
+Up to now, we have discovered and solved some potential bugs
+through such debug information of this lightweight rtnl_lock,
+which is helpful for us.
 
-(to be consistent with the other descriptions)
+When you say Y for RTNL_LOCK_DEBUG, then the kernel will detect
+if any function hold rtnl_lock too long and some key information
+will be printed to help identify the issue point.
 
-Regards,
+i.e: from the following logs, we can clear know that the pid=5546
+RfxSender_4 process hold rtnl_lock for a long time, causing the
+system hang. And we can also speculate that the delay operation
+may be performed in devinet_ioctl(), resulting in rtnl_lock was
+not released in time.
 
-	Hans
+<6>[  141.151364] ----------- rtnl_print_btrace start -----------
+<6>[  141.152079] RfxSender_4[5546][R] hold rtnl_lock more than 2 sec,
+start time: 139129481562
+<4>[  141.153114]  rtnl_lock+0x88/0xfc
+<4>[  141.153523]  devinet_ioctl+0x190/0x1268
+<4>[  141.154007]  inet_ioctl+0x108/0x1f4
+<4>[  141.154449]  sock_do_ioctl+0x88/0x200
+<4>[  141.154911]  sock_ioctl+0x4b0/0x884
+<4>[  141.155367]  do_vfs_ioctl+0x6b0/0xcc4
+<4>[  141.155830]  __arm64_sys_ioctl+0xc0/0xec
+<4>[  141.156326]  el0_svc_common+0x130/0x2c0
+<4>[  141.156810]  el0_svc_handler+0xd0/0xe0
+<4>[  141.157283]  el0_svc+0x8/0xc
+<4>[  141.157646] Call trace:
+<4>[  141.157956]  dump_backtrace+0x0/0x240
+<4>[  141.158418]  show_stack+0x18/0x24
+<4>[  141.158836]  rtnl_print_btrace+0x138/0x1cc
+<4>[  141.159362]  call_timer_fn+0x120/0x47c
+<4>[  141.159834]  expire_timers+0x28c/0x420
+<4>[  141.160306]  __run_timers+0x3d0/0x494
+<4>[  141.160768]  run_timer_softirq+0x24/0x48
+<4>[  141.161262]  __do_softirq+0x26c/0x968
+<4>[  141.161725]  irq_exit+0x1f8/0x2b4
+<4>[  141.162145]  __handle_domain_irq+0xdc/0x15c
+<4>[  141.162672]  gic_handle_irq+0xe4/0x188
+<4>[  141.163144]  el1_irq+0x104/0x200
+<4>[  141.163559]  __const_udelay+0x118/0x1b0
+<4>[  141.164044]  devinet_ioctl+0x1a0/0x1268
+<4>[  141.164527]  inet_ioctl+0x108/0x1f4
+<4>[  141.164968]  sock_do_ioctl+0x88/0x200
+<4>[  141.165428]  sock_ioctl+0x4b0/0x884
+<4>[  141.165868]  do_vfs_ioctl+0x6b0/0xcc4
+<4>[  141.166330]  __arm64_sys_ioctl+0xc0/0xec
+<4>[  141.166825]  el0_svc_common+0x130/0x2c0
+<4>[  141.167308]  el0_svc_handler+0xd0/0xe0
+<4>[  141.167786]  el0_svc+0x8/0xc
+<6>[  141.168153] ------------ rtnl_print_btrace end -----------
 
->  	case V4L2_PIX_FMT_HSV24:	descr = "24-bit HSV 8-8-8"; break;
->  	case V4L2_PIX_FMT_HSV32:	descr = "32-bit XHSV 8-8-8-8"; break;
->  	case V4L2_SDR_FMT_CU8:		descr = "Complex U8"; break;
-> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-> index 311a01cc5775..db04e37da1a8 100644
-> --- a/include/uapi/linux/videodev2.h
-> +++ b/include/uapi/linux/videodev2.h
-> @@ -733,6 +733,7 @@ struct v4l2_pix_format {
->  #define V4L2_PIX_FMT_Y12I     v4l2_fourcc('Y', '1', '2', 'I') /* Greyscale 12-bit L/R interleaved */
->  #define V4L2_PIX_FMT_Z16      v4l2_fourcc('Z', '1', '6', ' ') /* Depth data 16-bit */
->  #define V4L2_PIX_FMT_MT21C    v4l2_fourcc('M', 'T', '2', '1') /* Mediatek compressed block mode  */
-> +#define V4L2_PIX_FMT_MM21     v4l2_fourcc('M', 'M', '2', '1') /* Mediatek 8-bit block mode, two non-contiguous planes */
->  #define V4L2_PIX_FMT_INZI     v4l2_fourcc('I', 'N', 'Z', 'I') /* Intel Planar Greyscale 10-bit and Depth 16-bit */
->  #define V4L2_PIX_FMT_SUNXI_TILED_NV12 v4l2_fourcc('S', 'T', '1', '2') /* Sunxi Tiled NV12 Format */
->  #define V4L2_PIX_FMT_CNF4     v4l2_fourcc('C', 'N', 'F', '4') /* Intel 4-bit packed depth confidence information */
-> 
+<6>[  147.321389] rtnl_lock is held by [5546] from
+[139129481562] to [147321378812]
 
+Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
+---
+ lib/Kconfig.debug    |  9 +++++
+ net/core/rtnetlink.c | 86 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 95 insertions(+)
 
+diff --git a/lib/Kconfig.debug b/lib/Kconfig.debug
+index 2c7f46b366f1..d0d7457fa394 100644
+--- a/lib/Kconfig.debug
++++ b/lib/Kconfig.debug
+@@ -2019,6 +2019,15 @@ config KCOV_IRQ_AREA_SIZE
+ 	  soft interrupts. This specifies the size of those areas in the
+ 	  number of unsigned long words.
+ 
++config RTNL_LOCK_DEBUG
++	bool "rtnl_lock debugging, deadlock detection"
++	select STACKTRACE
++	help
++	  If you say Y here then the kernel will detect whether any process
++	  hold rtnl_lock too long and some key information will be printed
++	  to help identify the issue point.
++	  If unsure, say N.
++
+ menuconfig RUNTIME_TESTING_MENU
+ 	bool "Runtime Testing"
+ 	def_bool y
+diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+index 3485b16a7ff3..ddf374aec6af 100644
+--- a/net/core/rtnetlink.c
++++ b/net/core/rtnetlink.c
+@@ -57,6 +57,86 @@
+ #define RTNL_MAX_TYPE		50
+ #define RTNL_SLAVE_MAX_TYPE	40
+ 
++#ifdef CONFIG_RTNL_LOCK_DEBUG
++#include <linux/sched/debug.h>
++#include <linux/stacktrace.h>
++
++/* Debug log and btrace will be printed when the rtnl_lock
++ * is held for more than RTNL_LOCK_MAX_HOLD_TIME seconds
++ */
++#define RTNL_LOCK_MAX_HOLD_TIME 2
++
++#define RTNL_LOCK_MAX_TRACE     10    /* stack trace length */
++
++struct rtnl_debug_btrace_t {
++	struct task_struct *task;
++	int pid;
++	unsigned long long start_time;
++	unsigned long long end_time;
++	unsigned long   addrs[RTNL_LOCK_MAX_TRACE];
++	unsigned int    nr_entries;
++};
++
++static struct rtnl_debug_btrace_t rtnl_instance = {
++	.task		= NULL,
++	.pid		= 0,
++	.start_time	= 0,
++	.end_time	= 0,
++	.nr_entries	= 0,
++};
++
++static void rtnl_print_btrace(struct timer_list *unused);
++static DEFINE_TIMER(rtnl_chk_timer, rtnl_print_btrace);
++
++/* Save stack trace to the given array of RTNL_LOCK_MAX_TRACE size.
++ */
++static int __save_stack_trace(unsigned long *trace)
++{
++	return stack_trace_save(trace, RTNL_LOCK_MAX_TRACE, 0);
++}
++
++static void rtnl_get_btrace(struct task_struct *who)
++{
++	unsigned long expires;
++
++	rtnl_instance.task = who;
++	rtnl_instance.pid = who->pid;
++	rtnl_instance.start_time = sched_clock();
++	rtnl_instance.end_time = 0;
++	rtnl_instance.nr_entries = __save_stack_trace(rtnl_instance.addrs);
++
++	expires = jiffies + RTNL_LOCK_MAX_HOLD_TIME * HZ;
++	mod_timer(&rtnl_chk_timer, expires);
++}
++
++static void rtnl_print_btrace(struct timer_list *unused)
++{
++	pr_info("----------- %s start -----------\n", __func__);
++	pr_info("%s[%d][%c] hold rtnl_lock more than 2 sec, start time: %llu\n",
++		rtnl_instance.task->comm,
++		rtnl_instance.pid,
++		task_state_to_char(rtnl_instance.task),
++		rtnl_instance.start_time);
++	stack_trace_print(rtnl_instance.addrs, rtnl_instance.nr_entries, 0);
++	show_stack(rtnl_instance.task, NULL, KERN_DEBUG);
++	pr_info("------------ %s end -----------\n", __func__);
++}
++
++static void rtnl_relase_btrace(void)
++{
++	rtnl_instance.end_time = sched_clock();
++
++	if (rtnl_instance.end_time - rtnl_instance.start_time > 2000000000ULL) {
++		pr_info("rtnl_lock is held by [%d] from [%llu] to [%llu]\n",
++			rtnl_instance.pid,
++			rtnl_instance.start_time,
++			rtnl_instance.end_time);
++	}
++
++	del_timer(&rtnl_chk_timer);
++}
++#endif
++
+ struct rtnl_link {
+ 	rtnl_doit_func		doit;
+ 	rtnl_dumpit_func	dumpit;
+@@ -70,6 +150,9 @@ static DEFINE_MUTEX(rtnl_mutex);
+ void rtnl_lock(void)
+ {
+ 	mutex_lock(&rtnl_mutex);
++#ifdef CONFIG_RTNL_LOCK_DEBUG
++	rtnl_get_btrace(current);
++#endif
+ }
+ EXPORT_SYMBOL(rtnl_lock);
+ 
+@@ -104,6 +187,9 @@ void __rtnl_unlock(void)
+ 		cond_resched();
+ 		head = next;
+ 	}
++#ifdef CONFIG_RTNL_LOCK_DEBUG
++	rtnl_relase_btrace();
++#endif
+ }
+ 
+ void rtnl_unlock(void)
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
