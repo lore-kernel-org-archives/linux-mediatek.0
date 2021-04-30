@@ -2,85 +2,104 @@ Return-Path: <SRS0=r4MK=J3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB3FEC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 13:14:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5348AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 13:31:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67996610FB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 13:14:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67996610FB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
+	by mail.kernel.org (Postfix) with ESMTPS id 8D57261418
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 13:31:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D57261418
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UhkDJw17rmATu19P7G5hLXk26aeiDzopfviC+OW19vM=; b=SEIJbJhpJUuKbXgqanbQyjTIJ
-	Da4GbXwKcGpUyDw5u8LXXBZGR6aSX4/Etosno6A2lEVQ6XVdfvU64q5ej1Cy0dvWJGJikRTtn0Jzz
-	3b0UDV5cjRRPT7PP5QPmsIVo7krSdtNHeocpP8l1hTzAshEUFqosAw/ID3MWmxHyAq/PFP9awulw+
-	tBIuO/5g2cJePQpVm0ObNrn945ynHzs27A+M1f/4RFqYs4x7P7k2OZftRyX3lHCGbEDgNPVssRPRM
-	eapbiWMhAa4GQKnIMbjTBUoqXEU8VQxwkVNDHFUOfR+m7oz9RoLeKEQj5r2n2kGl0T9OJR97Xns7m
-	ulBvq5+gg==;
+	 bh=pd/SS2H1rK84qkyZ+i81qsL+OXTsTGdE16l8dD6olqE=; b=j6eH7kM8UYRwZnj+NrT5LEA5J
+	MX47cjwhSdyANGv+XsBoGzIdRNEqyYhuZAXZPd9noz4VppCNFGw3Zb4VFDSuDuV2hV7+t5wenoUGt
+	Y2UV6XIpI9MV5zFZ1nUcx+qvA7zkgWkbbbuSlNQnv/q4c5T79D6JIxZqYh7rCvD6HrkYGauKGkfLr
+	FunXnpqjm4wgDAuwze/pXfpIsY+ucya0u6eX3t1/Ea5M1R+q5R0fXFKs4iS6Up+nzVNET1jVloyq4
+	VkybLYGzQPGwCNlKVsRHcGjHDI/F+NaTH5hP22O3OHH+CnCXpSfW/LMk6g3fXdEDjRIE8LvKTAngA
+	TBp31xciQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcSyB-007tSg-HR; Fri, 30 Apr 2021 13:14:11 +0000
+	id 1lcTEz-007v9Z-EX; Fri, 30 Apr 2021 13:31:33 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcSy9-007tS9-D5
- for linux-mediatek@desiato.infradead.org; Fri, 30 Apr 2021 13:14:09 +0000
+ id 1lcTEM-007upe-Fl; Fri, 30 Apr 2021 13:30:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Wsc6AoRCqpEGoiIuYsEX5aAkEhX0DF8eJbhKbx/D4/o=; b=jVC4TcPP+FqHW6Ad1zRY9E+NFr
- L5p6YK9RrcYESisc6YjZdVJynQLLBrqvVMVRl5o3su1MwxEE2EyTT1ssOESc8WLohFqM6eH4Fo9Hf
- oSJiUKqEQDhL2OGz3bVnTqRMCDYVEvdFxuVc8oTwSwaL6T+AjKEWoBcR8O0dkOvAYcc3kzcRjV5QW
- gjRX8ndumBaASrmeQtUaGUKY9/YE9A3qhKyZ8/DBm9VxxiUtfy69PsHnkbl3BxQ4C1eSwfLK825aN
- XiUfgaKW2ePUO8NFlQckveiOtfIGNtFx7Nn1HwM9+Pl6kfWH149+VzfO6ScQNxVUynPNGn33IcVP3
- GVL1S9Zg==;
-Received: from vps0.lunn.ch ([185.16.172.187])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:References:
+ In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
+ Sender:Reply-To:Content-ID:Content-Description;
+ bh=KC3Cfzh00/GCad7BT77MVJxkEnenVAuRPp/QwwA36jE=; b=lYQUjXN+KEjoQSe4TqkVt8CGnf
+ MsdWvr6XCO/tRV1qaOEMD3E6ZerA7/WTlqKtlVtlY7Mwwf9onL1GlBSt8EwIovxuXqANc4gu2ggw+
+ UZnHV8xDx8R3hdUA8tkAjYZV4W4UE15+XWJKEn/hOcJyRvt0j0IIbp1B7mTsbrVHPcWyVcVNymbNP
+ wKtap6aNfwR30EUSazZ9A2iygAzYDCHTfM8CMgdUDkO4dtV5BG7vD3igi9EtjnVwcaI6aeHxeH7hD
+ jA+VyXXEvGKX9LFticUREQi+HH5efDl/5d9whlT3mLtH8peyowiptmjljEZq01TzosMrKdBJYmBQB
+ Dvu4TZoA==;
+Received: from mout.gmx.net ([212.227.17.22])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcSy6-001Ogy-PQ
- for linux-mediatek@lists.infradead.org; Fri, 30 Apr 2021 13:14:07 +0000
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1lcSxy-001obc-OV; Fri, 30 Apr 2021 15:13:58 +0200
-Date: Fri, 30 Apr 2021 15:13:58 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: DENG Qingfang <dqfext@gmail.com>, David Miller <davem@davemloft.net>,
- f.fainelli@gmail.com, hkallweit1@gmail.com, kuba@kernel.org,
- Landen.Chao@mediatek.com, matthias.bgg@gmail.com,
- linux@armlinux.org.uk, sean.wang@mediatek.com,
- vivien.didelot@gmail.com, olteanv@gmail.com, robh+dt@kernel.org,
- linus.walleij@linaro.org, gregkh@linuxfoundation.org,
- sergio.paracuellos@gmail.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-staging@lists.linux.dev,
- devicetree@vger.kernel.org, netdev@vger.kernel.org,
- weijie.gao@mediatek.com, gch981213@gmail.com, opensource@vdorst.com,
- tglx@linutronix.de, maz@kernel.org
-Subject: Re: Re: Re: [PATCH net-next 0/4] MT7530 interrupt support
-Message-ID: <YIwCliT5NZT713WD@lunn.ch>
-References: <20210429062130.29403-1-dqfext@gmail.com>
- <20210429.170815.956010543291313915.davem@davemloft.net>
- <20210430023839.246447-1-dqfext@gmail.com>
- <YIv28APpOP9tnuO+@lunn.ch>
- <trinity-843c99ce-952a-434e-95e4-4ece3ba6b9bd-1619786236765@3c-app-gmx-bap03>
- <YIv7w8Wy81fmU5A+@lunn.ch>
- <trinity-611ff023-c337-4148-a215-98fd5604eac2-1619787382934@3c-app-gmx-bap03>
+ id 1lcTEJ-001PO5-EQ; Fri, 30 Apr 2021 13:30:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1619789440;
+ bh=wBWV1n40caDOgrQ2BfyJAqo0nMeqSBjp9jDoQLpvWHM=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=ghF7UPIJNA0JfQgR6cQD+g/WrjD2mNmkMTWtc+i1ysnKCw8mz6o4SSLkuYFhMNExU
+ eg4ptKk1bntw/zkqWBxYBg8Rz4ZBRg6Zr1MrdthtGkSntIi8L8r2JLzQNUmi4jpXpJ
+ PZMS9LJ5bOGfVE2SKETtMy5mQV2cZlOrfuaADgS0=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [157.180.225.50] ([157.180.225.50]) by web-mail.gmx.net
+ (3c-app-gmx-bap03.server.lan [172.19.172.73]) (via HTTP); Fri, 30 Apr 2021
+ 15:30:39 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <trinity-611ff023-c337-4148-a215-98fd5604eac2-1619787382934@3c-app-gmx-bap03>
+Message-ID: <trinity-5166e76d-779d-4b05-870b-59971bd1571c-1619789439850@3c-app-gmx-bap03>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ Bin Liu <b-liu@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, David Miller <davem@davemloft.net>,
+ DENG Qingfang <dqfext@gmail.com>
+Subject: Aw: Re: [PATCH] musb: mediatek: rename driver
+Date: Fri, 30 Apr 2021 15:30:39 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <YIv969BCnPgXzrcg@kroah.com>
+References: <20210430124317.97376-1-linux@fw-web.de>
+ <YIv969BCnPgXzrcg@kroah.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:O2hp7OW+fifRI8eAdwQTGlSRc7RQGQRHjGKV7R+/sfpy5gS5/3HrXkKQT+/QdPXYlj0cx
+ jb1M3oKXGQUTU6Jw656MGBfepLAMqcqq3H/TAoCwGASuAN6sV2EzXgCYYhcYzH15I/64jtnHj8tp
+ dI+bLsar/LUg245vGdek/qNb+QPSe0pwYfb76G80fw3HerDmyOwwVf608ElQMODVxOkERnY/yLRa
+ SyFJLYNe32O3839JWez1ljV1ebiTkSFQmrg8nxZNg6y0ihsEko3lkM3aVlRd4lxCTBVXooLBFVe9
+ 5I=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:vG56YfbUZuM=:bj8W/P3We5md9A0oKJW09R
+ jTPqjDabgXGHdAlPgSsnVXy4PgxdlAVJmG/ZP3016sB6XZjDdCszTimYBl5YqkhAWXNRcTDpd
+ lA8hcOam3O0Ih9dWXnyDKaIINl7ods7yasDBBb4JFZrNOCaaVqzZEGfZinUCf+o584pIT+XgC
+ fD/DFXYJMGupqzDIVd8CI+V8NIzCLiTRIU3TpeW3w2YmqaUvcIPQ5iBE+VD6I0ps7WW1Moq4r
+ PI16/CwJyV+76npULFPkjfEQcn+8hxxCGckkurfm9iXjG5d/+8TMVEdhW2WbTz9hKcuAGSl6P
+ PtJwD0WXW3mV1bRMtUmf5EQ90gFy0+nl4Ow+lAzs3k1hz1vlnFxEy4nfY+tegaGFrvAZjBS2Q
+ rxopa7/pgK3RQHYUPdyCgXbhvPgJO8bINPi3JvG32DdXODm7RfoZ7ypHFtDaKo6jIXAInrmPd
+ lAXDMvpLRGlpypXA2NJTMR0VF7o9xiPnX4vqqjYZz3XJdqfTQTKhDUgQmkjfWt6woLAPBvr5i
+ RSjaID0mxKsLeazhcfh+TM1TPzAHrofkFxIncbUf4J9w3Z/TP9Qjv492ReDX98xjUIEeAnkTA
+ QxM02RAedKz17tt8OS7073efxerGtN4xBjbzLZcE0eqSp3vUsYHrGjmLeZV6ZK9SklHRwd7LX
+ Zix4uciA5OomNivSTdfgjM4Ays7cPLfRzTrXmA0fKnk/EwXvHB4h9Pmu0RU3a0/R/l4q6dhOT
+ cLbNLIz7hEAqWI5FiTsk33pvRJdRYta1b5NtTEadRFLiWer1lHCLCE7FbmtfhGTZAJsO0Srmf
+ 3nPBUa0bjGSWU4ErKJulBjud6FxLiG3O6wkdidAOWcux6Rf4UfBzn3yBv0ijXQvo3Cq2w0qWt
+ e1TyprCbQnXyLYuBBJpds88WLa/VGIYrw8WukP4pBPQmQlbQJEmwzlXKbh02Xf3Bm2SqhNS8/
+ UadVRkQ2Izg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_061406_842720_8B7BAF0D 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20210430_063051_837541_12D5D5D8 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,36 +116,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 30, 2021 at 02:56:22PM +0200, Frank Wunderlich wrote:
-> Hi
-> 
-> which ethernet-phy drivers do you mean?
+Hi Grek
 
-drivers/net/phy.
+the problem is that the name mediatek.ko does not point to musb-subsystem. I had discussed with Min Gao (author of this driver) some time ago about this as the name may conflict with other modules (don't remember which was that).
+We have searched issue using the driver on my board (not yet resolved).
 
-> i found only combined phy-drivers with ethernet-handling (marvell,xilinx,mscc,ti) having the "phy-" prefix too
-> 
-> as i see something like this in drivers/phy/intel/
-> 
-> phy-intel-keembay-emmc.c
-> phy-intel-keembay-usb.c
-> 
-> maybe this in drivers/phy/mediatek/
-> 
-> phy-mediatek-mt753x.c
-> 
-> ? maybe with additional -eth, but this seems redundant, as mt753x is an ethernet-switch
-> 
-> or like the other mtk-phys
-> 
-> phy-mtk-eth-mt7531.c (like phy-mtk-mipi-dsi.c,phy-mtk-hdmi.c,phy-mtk-hdmi-mt8173.c)
+if the module is loaded it shows (based on name) only "mediatek" and user does not know that is the mediatek musb driver, not very good in my eyes as mediatek is a vendor designing many different hardware and so drivers. Imho the module-name should at least give a clue to the subsystem to avoid confusion/conflicts
 
-These are all examples of generic PHY drivers, not PHY drivers.
+Now the discussion comes up again here for a new driver:
+https://patchwork.kernel.org/project/linux-mediatek/cover/20210429062130.29403-1-dqfext@gmail.com/#24148777
 
-There is a lot of confusion between PHY drivers and generic PHY
-drivers :-(
+so i decided to rebase and post my patch created in past to clean this up.
 
-	Andrew
+and yes this can result in user-space issues depending on the name...because of this i have not added stable-tag ;)
+
+regards Frank
+
+
+> Gesendet: Freitag, 30. April 2021 um 14:54 Uhr
+> Von: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+
+> On Fri, Apr 30, 2021 at 02:43:17PM +0200, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > currently unspecific mediatek.ko is built,
+> > change this by adding subsystem
+>
+> I am sorry, I do not understand this changelog text.  What are you doing
+> here and why?
+>
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >  drivers/usb/musb/Makefile                   | 2 +-
+> >  drivers/usb/musb/{mediatek.c => musb_mtk.c} | 0
+>
+> Why rename this file, will that not break existing setups that expect
+> the module to be named this?
+>
+> thanks,
+>
+> greg k-h
+
 
 _______________________________________________
 Linux-mediatek mailing list
