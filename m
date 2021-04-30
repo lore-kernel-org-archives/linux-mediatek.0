@@ -2,88 +2,83 @@ Return-Path: <SRS0=r4MK=J3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C852DC43460
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 16:35:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49C77C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 16:35:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9103E61449
+	by mail.kernel.org (Postfix) with ESMTPS id C536D60233
 	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 16:35:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9103E61449
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=lunn.ch
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C536D60233
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9PJcMswSvNKhKtffjTLLkR89D+Lg5QG+M5PyW83k/4A=; b=QdP1CSg1i5zRNkscn5b0j6h2I
-	LEy6XdgUon7kpkbNWlTsPk3v1vLerPfzOp/rOAL9nyT9H8WbzxYtHI2Ko0jjARtsfN9sNjjDVL/xB
-	P3sgRsVCpDiVaFAJ9cj0BKHkn8Mbytmq88ifo1VF/ezriqhe16pOZKNIqAsPnB+c12+xTrHa+4wGN
-	1KPDNYw4y1mL4m+UOhemmOFwQ3B9IEjklPtbTSSqfbItw2qMiZ4UJE0yifaQOiotWRKQ2rKyWdze1
-	o7xqX5LTXoLmxon+ufci0Qz5dZUvVxS0xYDhm+n4dJyIjyI8nuWzhHdmMGLnvFkd7FyinEUOWD63X
-	Pqw7C7KBA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=iTUa1GLk98CP56SX12FPGvrFmKVBk1Lqh3EUbFjaQkY=; b=mjMNsnX7LwmI0oOeOgiIHtAEW
+	4RjaNCYgfRaHrzms6/sVYe4ReZP8tHPmYvfbEp14VuAlhUcfPx+2OSLgToedl9USs4h3SrMuZX5Hv
+	5qJbiPhD/H0khTWSDbJ5ve/uzxlMIKxMmELfdsD8Ze1+CAZA1/BkCIdkkmHd530B85PW3/CSpgxFZ
+	LRBVL6g/Zz/vuG35MAqnegK609DPQgfnkDbqpsTpd7/IG9PQ8+xZmqMm03+GDuFnf95shL5SPNiZh
+	h6PPHy9hRuyD2nRHhGpy++xN1bZV8WLdJHHITHbojr3jVLj3sKYLSJoBErQU90Fx9FyaLoyAihCdB
+	RDVvVaWOg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcW6f-008Cd2-6d; Fri, 30 Apr 2021 16:35:09 +0000
+	id 1lcW6e-008Cci-2I; Fri, 30 Apr 2021 16:35:08 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcW6R-008CaQ-LQ
- for linux-mediatek@desiato.infradead.org; Fri, 30 Apr 2021 16:34:55 +0000
+ id 1lcW6Q-008CaL-Vx; Fri, 30 Apr 2021 16:34:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=EyxuFs0lxLvebXKyk1zLZelkWEzekkVKq8fhA2+VSU4=; b=k6TNIlnMNqER64RRYL761f6ju5
- /r9820uEAanIK6xWvg3PxME5k5lf2pMv48r10sYu9TyMbFeZTRJCFIrQ1pvvKR7sDa4/ZW8o6hpq3
- kNwayJtxdJ13/aWbETmZMVBWbdECWHU5PmF68rHvXasQxHhcdz4u2ZppLv59JGGu9SVNaBYUAaJIC
- /izA+fiEfQA22wqEo8uHAv+9CgBXMF/9aZ05C9GExTqVc0AkSPzQ8IC36UBOXVAqBAaaFFTmD8Zo+
- g9imr7/QhQlK8BV81HsFNbR95zpG7P22FlFuMEA6qaxB0RIyqvEq0JezPcub+YQT3oUQFpENRdgQA
- Vt7HM9zw==;
-Received: from vps0.lunn.ch ([185.16.172.187])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
+ :Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To
+ :Content-ID:Content-Description:References;
+ bh=HwbXm3kw7lRhkn/zHkvNcxUj/t3dvmO36nGD1FbN5Lw=; b=dSr4z6CwtPMRK0DeJZhkNFYWqK
+ ihw17IEcvYAiM1oRKV37r6EjVe93rRb8++yJ82OJvhR95xIoJSrTvDTOCgm1oNe3dV4dG2+xIllxT
+ 3cT03tuEXWxV0+jqSYKzYG3RnXyx2p9mnYxdwUQP54IweS9GOhwHR99az6x/SxuvEpcLvfggfc1Lo
+ wRIafD+xi0FLtHnuj3Ydi5lkEfopNneQ/b/q6L7hnMqTfuXUG8eX/8btA0wPoFjiiBiRtRBTGxDR2
+ 6KT38iZe3WKtpr89QlkCyR9abLb5QJCUdzYP9RfidgLX79m4UD9vp3G+bB+lAqafXouODVtggeqpC
+ WeuammyQ==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcW6O-001WWJ-Vv
- for linux-mediatek@lists.infradead.org; Fri, 30 Apr 2021 16:34:54 +0000
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94)
- (envelope-from <andrew@lunn.ch>)
- id 1lcW6H-001pzm-9A; Fri, 30 Apr 2021 18:34:45 +0200
-Date: Fri, 30 Apr 2021 18:34:45 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: DENG Qingfang <dqfext@gmail.com>, David Miller <davem@davemloft.net>,
- f.fainelli@gmail.com, hkallweit1@gmail.com, kuba@kernel.org,
- Landen.Chao@mediatek.com, matthias.bgg@gmail.com,
- linux@armlinux.org.uk, sean.wang@mediatek.com,
- vivien.didelot@gmail.com, olteanv@gmail.com, robh+dt@kernel.org,
- linus.walleij@linaro.org, gregkh@linuxfoundation.org,
- sergio.paracuellos@gmail.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-staging@lists.linux.dev,
- devicetree@vger.kernel.org, netdev@vger.kernel.org,
- weijie.gao@mediatek.com, gch981213@gmail.com, opensource@vdorst.com,
- tglx@linutronix.de, maz@kernel.org
-Subject: Re: Re: Re: Re: [PATCH net-next 0/4] MT7530 interrupt support
-Message-ID: <YIwxpYD1jnFMPQz+@lunn.ch>
-References: <20210429062130.29403-1-dqfext@gmail.com>
- <20210429.170815.956010543291313915.davem@davemloft.net>
- <20210430023839.246447-1-dqfext@gmail.com>
- <YIv28APpOP9tnuO+@lunn.ch>
- <trinity-843c99ce-952a-434e-95e4-4ece3ba6b9bd-1619786236765@3c-app-gmx-bap03>
- <YIv7w8Wy81fmU5A+@lunn.ch>
- <trinity-611ff023-c337-4148-a215-98fd5604eac2-1619787382934@3c-app-gmx-bap03>
- <YIwCliT5NZT713WD@lunn.ch>
- <trinity-c45bbeec-5b7c-43a2-8e86-7cb22ad61558-1619794787680@3c-app-gmx-bap03>
+ id 1lcW6O-001WWI-9y; Fri, 30 Apr 2021 16:34:53 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 881D860233;
+ Fri, 30 Apr 2021 16:34:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1619800491;
+ bh=CTKqzMvOc6YCJvRdNUuExGC6a82/6LKQAJ0WVAxwTHI=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=HcVnRRoN6PJV0PZxkh2SBFKELhCNx2XmJ+OJDu3mRyWzYHMRNkMciQVXCumFAekqC
+ YCz6QclpGMiYgurI5/ZjQrZ9zmHcdXaeyiKGLpfyUTpMM7OMPMgwdK2TDpGcDd8kAc
+ XUQ9koyWLfJaF7xjXZDy2tW/LjUkZCdLu71d/NtQXmv0brxgoTVAyDHIwHzc7XOL9F
+ jTn2O6wUqTjEGEUSVBFo8aJRlP74s1/s7K3xkGcYSNVrurbvKkboyKRAHgNOFB1rhn
+ FexsQ7BigHsIs+5nRzS8RgccqusV/3IgXfVj7yy+xYxJKdC2RcqNpxHvJBn4DBru9b
+ 4yeikauXWCrbg==
+Date: Fri, 30 Apr 2021 11:34:50 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Cc: Colin King <colin.king@canonical.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH][next] PCI: mediatek-gen3: Add missing null pointer check
+Message-ID: <20210430163450.GA657994@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <trinity-c45bbeec-5b7c-43a2-8e86-7cb22ad61558-1619794787680@3c-app-gmx-bap03>
+In-Reply-To: <7a512e3a-2897-ac12-ac6e-06be28735279@wanadoo.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_093453_046386_CD098938 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20210430_093452_390162_9241273C 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,40 +90,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> mhm, maybe the naming should differ if generic phy and net-phy are
-> that different. i guess there is no way to merge the net phys to the
-> generic phys (due to linking to the net device drivers) to have only
-> 1 phy section, right?
+On Fri, Apr 30, 2021 at 09:47:06AM +0200, Christophe JAILLET wrote:
+> Le 29/04/2021 =E0 13:00, Colin King a =E9crit=A0:
+> > From: Colin Ian King <colin.king@canonical.com>
+> > =
 
-phys and generic PHYs are very different things, completely different
-API etc. They cannot be merged.
+> > The call to platform_get_resource_byname can potentially return null, so
+> > add a null pointer check to avoid a null pointer dereference issue.
+> > =
 
-> but if phy- prefix is used by generic phys, maybe eth- or net- can be used here (maybe with "phy" added)
-> 
-> something like
-> 
-> eth-phy-mt753x.ko
-> 
-> else i have no idea now...my patch renaming the musb-module seems not
-> to be accepted due to possible breakage
+> > Addresses-Coverity: ("Dereference null return")
+> > Fixes: 441903d9e8f0 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for =
+MT8192")
+> > Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> > ---
+> >   drivers/pci/controller/pcie-mediatek-gen3.c | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > =
 
-The usb module has been around for a long time, so it cannot be
-changed. The phy driver is new, not in a released kernel. So we can
-still rename it without causing problems.
+> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/=
+controller/pcie-mediatek-gen3.c
+> > index 20165e4a75b2..3c5b97716d40 100644
+> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> > @@ -721,6 +721,8 @@ static int mtk_pcie_parse_port(struct mtk_pcie_port=
+ *port)
+> >   	int ret;
+> >   	regs =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-ma=
+c");
+> > +	if (!regs)
+> > +		return -EINVAL;
+> >   	port->base =3D devm_ioremap_resource(dev, regs);
+> >   	if (IS_ERR(port->base)) {
+> >   		dev_err(dev, "failed to map register base\n");
+> > =
 
-I still want to understand the naming here. If you look at most
-Ethernet switches with integrated PHYs, the PHYs have their own naming
-scheme, separate from the switch, because they are independent IP. So
-i would prefer this driver by named after the PHY name, not the switch
-name. That might solve the naming conflict, mt123x for the PHY, mt7530
-for the switch driver.
+> =
 
-	Andrew
+> Nitpick:
+>    Using 'devm_platform_ioremap_resource_byname' is slightly less verbose
+> and should please Coverity.
+
+Not a nitpick at all.  Jianjun is correct that devm_ioremap_resource()
+does check "regs" for NULL and it fails gracefully before trying to
+dereference it, so the extra check shouldn't be needed.  And most
+cases in drivers/pci/ look like this, without the extra check:
+
+  res =3D platform_get_resource_byname(pdev, IORESOURCE_MEM, "app");
+  base =3D devm_ioremap_resource(dev, res);
+  if (IS_ERR(base))
+    ...
+
+If devm_platform_ioremap_resource_byname() keeps Coverity happy, I
+think that's what we should be doing across drivers/pci/.  Coverity
+false positives are a hassle.
+
+Seems like something for next cycle since we're in the middle of the
+merge window.
+
+> Also, which git repo are you using? On linux-next ([1)], your proposed pa=
+tch
+> is already part of "PCI: mediatek-gen3: Add MediaTek Gen3 driver for
+> MT8192".
+> =
+
+> [1]: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/=
+log/drivers/pci/controller/pcie-mediatek-gen3.c
+
+I think this is because Lorenzo already squashed Colin's change in.
+
+Bjorn
 
 _______________________________________________
 Linux-mediatek mailing list
