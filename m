@@ -2,92 +2,82 @@ Return-Path: <SRS0=r4MK=J3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61B88C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 07:34:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 86D73C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 07:55:07 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 999ED61434
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 07:34:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 999ED61434
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 03B7A610A0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Apr 2021 07:55:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03B7A610A0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=wanadoo.fr
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UBOSrZZvwZmsNJ7itfoY1HwF+bLZC8fOVF8fGfSISJc=; b=YCn6+SHsa92UHVJsU3x05nrg8
-	rCAeP4v2aZXYdAWF+ivBg/DkR2KBOn8VfdC3vfrByzZlrMIScKfWAJ7ZBwlefpeEz7lAtvlfyFdKJ
-	gT0ymIR0z4u/OW6pQWJHSSB30Ij8DaHeBohSjyA8yt5lQjmATVLEocBbWiZvpkE50qbudfqTDVQrT
-	Sc9GjBQ+o1vr26Z0HlOfFYR1WYMTlv05dhs2aoQNIjv+fz78P95OxqmqRGQ+z3UnTzhmPndL/npzq
-	fpoTs8z3WDRrtJqFE8b2CkkhzWQRY1YyCoH4C8Rhvtr7fIWP9/+mLzfMsnqMm2nLNg54Tj2O2l9Pt
-	KvoyObKGw==;
+	 bh=/GyoF4EsipXIIJ6BjnKsJGfbZym8iK58lsowfUTW5cE=; b=hqdLwJM3v0GUM6ggDabjMvhCg
+	MMMoFkgX7GMGzn5fAqsj/APmY/AD4dSycVXNL3ik/pma2WU69OUW0JXzdPJqxavIM3BeYPXWjDYD0
+	rQvKQ7kuza3saiP5qzIIrd1+Gvr8ztdH3DDoFYwriJef0HluiWCbZNZhBodt1CnWBdMQzyUY6FMVs
+	N333fBl4mBfKWxo9PP+zQeEoOadxyuo/RRHOaZMJnzUk3dYTYEHpvVjw7JJ6bneXJMZEKqoNjtU9J
+	amdQrsQRFS//3UcDw4cgVjiyBCDNtfCz0zrst1GjvT5IiBk4gJ+o476Vd++5hGJa2E5La9w3fgjG5
+	JzRpO8HcA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lcNel-007R8a-4I; Fri, 30 Apr 2021 07:33:47 +0000
+	id 1lcNzA-007Sg2-0v; Fri, 30 Apr 2021 07:54:52 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcNei-007R8J-Bv; Fri, 30 Apr 2021 07:33:44 +0000
+ id 1lcNz7-007Sfl-Cp
+ for linux-mediatek@desiato.infradead.org; Fri, 30 Apr 2021 07:54:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=fYnTZjtZi+ChPsBsoKvCFsCx7AX5XBrzMnGC25v6LBM=; b=Xs1F2Oz/DK7l94eSGfROtc2Q5D
- w2pr8qRCkH9Y4SOm7+fcK+tR0DaFldqglgF0QXubY8VcI6BP32nGkGGXNQH3oAHENDJSMTfbXg8sA
- qIoDrmGStTG4+tJvEeIfnIZcOSSDy3SkqAxef2A1z1SZFhbob2dU0Vdf7x9GN9yYBufmTV3uTt6kG
- Xzoi9XeuPL/UKd0KdD5RA2o9530NkmBFXQUrKCcZtrn/neEL8CNgaaESRZZ/azcjs4yR9aSFbaV8y
- mlnjWIFaob4zQ4B4fYz/Eedf93Ok2lkF71gTpE9p6Iu8iR+Vmt5EnPzJ4Hm9Bg6GpytqJ6W/wBl2g
- 3xQoTf4A==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lcNef-001CWB-Cz; Fri, 30 Apr 2021 07:33:42 +0000
-X-UUID: 403df6e4aaf741caac31aa6d3200539c-20210430
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=fYnTZjtZi+ChPsBsoKvCFsCx7AX5XBrzMnGC25v6LBM=; 
- b=mvXaxDuDdgyPXqi2LZaYW4uD81lp8SmL5kiv8z/Cc5t8Iwq6hG65og37ozLGgqoIVExkVXvoocYZsFXc4RpOGnuqESAST7+ThDxQS/OgkRPZhxiVNFXkFHeOFQYwXqI01rQ3gp2a1U3Hn8qVaQPXkvonVh4QlfKEv0C7uokzYfo=;
-X-UUID: 403df6e4aaf741caac31aa6d3200539c-20210430
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1148638086; Fri, 30 Apr 2021 00:33:38 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Apr 2021 00:25:03 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs08n2.mediatek.inc
- (172.21.101.56) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 30 Apr 2021 15:24:55 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 30 Apr 2021 15:24:54 +0800
-Message-ID: <1619767494.1027.3.camel@mhfsdcap03>
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=92hc+HRLu35ANa2X0DRAKPIP2CSkzjLzsir5c4y49XU=; b=cz5TYsajlZCpmhmEEZF9/6nD62
+ 2YqIF7X4daV7BQ1yfUY3RpRO82SW2HiXi5LPB0lTtdOHoH+cYK63P0/+fBa2gwMrDrehksJ4l4Iud
+ BD4BVj0iaGfPJmifxd7p+Ubw9tgCXG6CwsWp4opgK+a+RgM5DAGfxrd/+Us4jAuAFnDh+3DkTkaBD
+ FQexJrukHqeoE+shRyhgqi+WfG09sR0JVxoJs6dKrxst6M8UeeljYoZs9+kwq4u0nvkyUMpKLhsa7
+ CIhFEgU2GJAT+tQ0cTS4U//tAe8IlNFgGMzWV6WOAGqIJm5+81lUSkq16CV2+E8j+ufRBojn9mDx/
+ tNaD+1oQ==;
+Received: from smtp07.smtpout.orange.fr ([80.12.242.129]
+ helo=smtp.smtpout.orange.fr)
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lcNz4-001DTE-4F
+ for linux-mediatek@lists.infradead.org; Fri, 30 Apr 2021 07:54:48 +0000
+Received: from [192.168.1.18] ([86.243.172.93]) by mwinf5d87 with ME
+ id yvn72400521Fzsu03vn7oy; Fri, 30 Apr 2021 09:47:08 +0200
+X-ME-Helo: [192.168.1.18]
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Fri, 30 Apr 2021 09:47:08 +0200
+X-ME-IP: 86.243.172.93
 Subject: Re: [PATCH][next] PCI: mediatek-gen3: Add missing null pointer check
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Colin King <colin.king@canonical.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas
- <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <kernel-janitors@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>
-Date: Fri, 30 Apr 2021 15:24:54 +0800
-In-Reply-To: <20210429110040.63119-1-colin.king@canonical.com>
+To: Colin King <colin.king@canonical.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
+ <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 References: <20210429110040.63119-1-colin.king@canonical.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Message-ID: <7a512e3a-2897-ac12-ac6e-06be28735279@wanadoo.fr>
+Date: Fri, 30 Apr 2021 09:47:06 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 8410CB59BBA8CE1684706891C6FE72A498F1C9DD1D6662302587175341C90FE22000:8
-X-MTK: N
+In-Reply-To: <20210429110040.63119-1-colin.king@canonical.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210430_003341_472825_1E5550F1 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20210430_005446_463494_94948A2C 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,50 +89,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Colin,
-
-On Thu, 2021-04-29 at 12:00 +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> The call to platform_get_resource_byname can potentially return null, so
-> add a null pointer check to avoid a null pointer dereference issue.
-> 
-> Addresses-Coverity: ("Dereference null return")
-> Fixes: 441903d9e8f0 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/pci/controller/pcie-mediatek-gen3.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> index 20165e4a75b2..3c5b97716d40 100644
-> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> @@ -721,6 +721,8 @@ static int mtk_pcie_parse_port(struct mtk_pcie_port *port)
->  	int ret;
->  
->  	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
-> +	if (!regs)
-> +		return -EINVAL;
-
-Thanks for your patch.
-
-devm_ioremap_resource() will check and decode this null pointer
-dereference error, so I don't think we need to check here.
-
-Thanks.
-
->  	port->base = devm_ioremap_resource(dev, regs);
->  	if (IS_ERR(port->base)) {
->  		dev_err(dev, "failed to map register base\n");
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGUgMjkvMDQvMjAyMSDDoCAxMzowMCwgQ29saW4gS2luZyBhIMOpY3JpdMKgOgo+IEZyb206IENv
+bGluIElhbiBLaW5nIDxjb2xpbi5raW5nQGNhbm9uaWNhbC5jb20+Cj4gCj4gVGhlIGNhbGwgdG8g
+cGxhdGZvcm1fZ2V0X3Jlc291cmNlX2J5bmFtZSBjYW4gcG90ZW50aWFsbHkgcmV0dXJuIG51bGws
+IHNvCj4gYWRkIGEgbnVsbCBwb2ludGVyIGNoZWNrIHRvIGF2b2lkIGEgbnVsbCBwb2ludGVyIGRl
+cmVmZXJlbmNlIGlzc3VlLgo+IAo+IEFkZHJlc3Nlcy1Db3Zlcml0eTogKCJEZXJlZmVyZW5jZSBu
+dWxsIHJldHVybiIpCj4gRml4ZXM6IDQ0MTkwM2Q5ZThmMCAoIlBDSTogbWVkaWF0ZWstZ2VuMzog
+QWRkIE1lZGlhVGVrIEdlbjMgZHJpdmVyIGZvciBNVDgxOTIiKQo+IFNpZ25lZC1vZmYtYnk6IENv
+bGluIElhbiBLaW5nIDxjb2xpbi5raW5nQGNhbm9uaWNhbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJz
+L3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWstZ2VuMy5jIHwgMiArKwo+ICAgMSBmaWxlIGNo
+YW5nZWQsIDIgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUtbWVkaWF0ZWstZ2VuMy5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LW1lZGlhdGVrLWdlbjMuYwo+IGluZGV4IDIwMTY1ZTRhNzViMi4uM2M1Yjk3NzE2ZDQwIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay1nZW4zLmMKPiAr
+KysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWstZ2VuMy5jCj4gQEAgLTcy
+MSw2ICs3MjEsOCBAQCBzdGF0aWMgaW50IG10a19wY2llX3BhcnNlX3BvcnQoc3RydWN0IG10a19w
+Y2llX3BvcnQgKnBvcnQpCj4gICAJaW50IHJldDsKPiAgIAo+ICAgCXJlZ3MgPSBwbGF0Zm9ybV9n
+ZXRfcmVzb3VyY2VfYnluYW1lKHBkZXYsIElPUkVTT1VSQ0VfTUVNLCAicGNpZS1tYWMiKTsKPiAr
+CWlmICghcmVncykKPiArCQlyZXR1cm4gLUVJTlZBTDsKPiAgIAlwb3J0LT5iYXNlID0gZGV2bV9p
+b3JlbWFwX3Jlc291cmNlKGRldiwgcmVncyk7Cj4gICAJaWYgKElTX0VSUihwb3J0LT5iYXNlKSkg
+ewo+ICAgCQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBtYXAgcmVnaXN0ZXIgYmFzZVxuIik7Cj4g
+CgpOaXRwaWNrOgogICAgVXNpbmcgJ2Rldm1fcGxhdGZvcm1faW9yZW1hcF9yZXNvdXJjZV9ieW5h
+bWUnIGlzIHNsaWdodGx5IGxlc3MgCnZlcmJvc2UgYW5kIHNob3VsZCBwbGVhc2UgQ292ZXJpdHku
+CgoKQWxzbywgd2hpY2ggZ2l0IHJlcG8gYXJlIHlvdSB1c2luZz8gT24gbGludXgtbmV4dCAoWzEp
+XSwgeW91ciBwcm9wb3NlZCAKcGF0Y2ggaXMgYWxyZWFkeSBwYXJ0IG9mICJQQ0k6IG1lZGlhdGVr
+LWdlbjM6IEFkZCBNZWRpYVRlayBHZW4zIGRyaXZlciAKZm9yIE1UODE5MiIuCgpbMV06IApodHRw
+czovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xpbnV4LW5l
+eHQuZ2l0L2xvZy9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWstZ2VuMy5jCgpD
+SgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
+awo=
