@@ -2,104 +2,97 @@ Return-Path: <SRS0=onLQ=J6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B777CC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 May 2021 05:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 213EAC433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 May 2021 05:07:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23C7A613B3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 May 2021 05:06:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23C7A613B3
+	by mail.kernel.org (Postfix) with ESMTPS id 9444A61244
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 May 2021 05:07:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9444A61244
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NfxEw2mfMTBUsb5ztymeNMA49to4RR+p8zc3lwxCc6A=; b=WgHNmc9vZx99lG1p2DeNUmSK9
-	Rj1Uk21Y+WFR0ArVXJra1HFlRUxv9+c5swyyRg5YHkDCAM2HwNKQge/60jqMZEJ5yF/NTOezug8IN
-	MN/nMsyfdE8b2JVL//ZS4gkqJQEAPO9131x8aWqV4swBgrasuXPLzkY4s4OlcoDP3HO/lE0BnWM93
-	1lFc9FPG0dM4itWNXwgWVTivDD+naKpyEANEszW0gWdH2UaqGjrw7Zbmaf9tWUAo9xXEM29OxuZL8
-	2xVfxuq2/jVqN4ATB9eQSwWjHlhRLJB0BWs3gy+HbkrMq/AsLmSrdTjG/UXfD6h+/ZtSqV6NasSY2
-	kZ2mLRmsg==;
+	 bh=wy9UVTpEYX3/XVky1NkelcaluG1IUUTyLEbJbpFMeyk=; b=ASd0mPw6qs+03TpyfJYJzkSp7
+	lBYtXobP6Y8nxawGfg1ywoS/m3FepyFWTh9qZU/MgxFbikkiSIzUX8cZLVHdSS7EhVQ5tuy0k09/7
+	PzxfwEu4DCsiiixrvc1cZaw8s6RDH8ub8yXO4mR4guGVO0vxzPEoxowVUaB2pdFBPuLHrTbY2OYqz
+	Q0T3wIcwF6A1StxYSGw3IVl7jYAEoC2fKNXhc2Usk5uRUoTfoGMlXIGtwzjPlVHjtxdw/8zLXRsXr
+	sI9GYZdb2ZhQ53r3EGmclTnLLqJNRtIhHr1goKfG68vM9n325cch219JFqdvmwjzzWSxET2gZGdsH
+	F2AneQqNA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ldQmg-00DCBZ-IG; Mon, 03 May 2021 05:06:20 +0000
+	id 1ldQnM-00DCJ7-C6; Mon, 03 May 2021 05:07:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ldQly-00DBzi-Jw
- for linux-mediatek@desiato.infradead.org; Mon, 03 May 2021 05:05:39 +0000
+ id 1ldQn5-00DCFA-57
+ for linux-mediatek@desiato.infradead.org; Mon, 03 May 2021 05:06:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Sender:
- Reply-To:Cc:Content-Type:Content-ID:Content-Description;
- bh=Gd+q5isoBTEaO167JYZlFPuozG7kopSgX/B2WmZT4CU=; b=fQ1bCBNry0h8TLJ0iGz5xOjUkH
- LCWDyx4J/G4P/OuK1a4CmfMnUu0fPkvCq7x4snEdCGREUjXS3bkRLPsBdj/dQ9rUVE8bJwypFust2
- RXQWBz+R7B6YkowzR1pzZzMUGnZcl/wzKIu5Ku3oikoTwzGYEkgIBMFc1a/TPj1DrjuL7m4hdHVLp
- XVsJZJD/xL9ieOW2W6u66CupSid+d7BUAYx1KGR00PqY0hIyfGDuljaByeVSMmoiNzjAQ7iPev22E
- qYMFcva7xCTSQigZ/a6wzqOS0YMrC6ePGGtng3hbD/CXn/K1RIjK8fbbPbPMXLCygfWV3rq86xLyy
- bOewG46Q==;
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=siZxirsKcvAyDsxwYv2Y0WOcvC8VgXLaF+KpmP1I61A=; b=2fjHdJCAIfZxot3mjOSmvfiwwU
+ MO4V93M0g/MR4nF0H+ZC4o8XYn8RNYvtRCvoGMgyotbT+sY7jVGEjkjbjM+RQbGKdYObKM2ON0y/O
+ xdl1gzSlbWDFKSuUmFbx/ePNvtXsRKlr27Nt5vAppekm6W87FO2yDKoh/6dc7CCA58zgPEl3xsr/A
+ UnKFEBCetFqnvMlT4tOOqJnL7KLIVC2poohGIBIy/MC8a1jNnrhAJIqOHX6wmtDf+5HFRXIZQExS9
+ YdDory+/xkWQles0XA60QkgX09pX5rFO6f4pJVuXxx8HAI7ZR2Rs3lkq9oEg8h9PYha860wrb9KrF
+ +Rau1ebA==;
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ldQlu-002pXt-Ez
- for linux-mediatek@lists.infradead.org; Mon, 03 May 2021 05:05:33 +0000
-Received: by mail-pl1-x633.google.com with SMTP id b21so2199827plz.0
- for <linux-mediatek@lists.infradead.org>; Sun, 02 May 2021 22:05:29 -0700 (PDT)
+ id 1ldQn2-002pdN-M2
+ for linux-mediatek@lists.infradead.org; Mon, 03 May 2021 05:06:41 +0000
+Received: by mail-io1-xd31.google.com with SMTP id b9so3148415iod.13
+ for <linux-mediatek@lists.infradead.org>; Sun, 02 May 2021 22:06:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=Gd+q5isoBTEaO167JYZlFPuozG7kopSgX/B2WmZT4CU=;
- b=lSkSIsRdhK8drnieHGaWU5Z3g0S5yMaBlkNsgsDMY3lvBXhgUlv0SUc4MJ1Xqe5GAB
- evI5zV66b80zQU0tftjWz08/TIs9qYdfswLM3vDfLBeGrNDwfJJbppalGGEYeTMGsdsP
- 40SVzfFobjxQAC/vuSSP1ApIuSeidLvTdWZpE=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=siZxirsKcvAyDsxwYv2Y0WOcvC8VgXLaF+KpmP1I61A=;
+ b=mgS0glfnCT8eoMAEyZGezk85iJY7xyPQvKSfM5A9XtRTcW3dgMjOGbMHKPIE5fkok0
+ p1WK5h3vXYXscSt46dYI3bmRSNiP0coNcJlGlZtzv74usrebeO0DsXBHxQpuAYXsjWX2
+ 81WuziISp7m7FqtuFssOmD0+g0Ih617T5D+Wk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Gd+q5isoBTEaO167JYZlFPuozG7kopSgX/B2WmZT4CU=;
- b=uGspPu16g2SFGM09/2vm5/1adnZyORMTlAWU/75/6LSGGVNneN9w/aNvwu7bAJSNrW
- Up7CLSwJNTYHo2YEI3bQlp9KeKQJBT8zGChw4jGzZj/MIIypraN36Lgm4HNrFtI1dbNw
- MlcRXlGCf17KMj7gmYVjdkcPh/s1U8xdKkNxnQ4j7uFB53RK7q9zGT1gl0YvfDwN86aQ
- xYZEPyag2l3cw+B4kUMp/mgGoRK+oG9P3+voofqogzKalKK/eixmFFZP33We1UOIPfaK
- EFqlexBAunF5iP6tSZYKVLi7CfG+jTsWTAR+W6DT11Z6wnPu0OXTLjrJgemurjznxFjt
- laeQ==
-X-Gm-Message-State: AOAM533A0mOyyOkIxPxzRl+x5Fga6/Z5ja3dLAWk+ZfISzdfZ512LrLa
- dqkd5BZhV4vqWINKb/b+OJkLBA==
-X-Google-Smtp-Source: ABdhPJzr0YgdF6zJDMGKSd8q835/nBnu4xKXG1psfhQlDWIKQuWD9DbhfQLmkZ2QLfxMzWvV/OJmcg==
-X-Received: by 2002:a17:902:d204:b029:ed:19aa:c364 with SMTP id
- t4-20020a170902d204b02900ed19aac364mr18594442ply.34.1620018329259; 
- Sun, 02 May 2021 22:05:29 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:63a0:c726:475a:ace5])
- by smtp.gmail.com with ESMTPSA id 14sm7854600pfi.145.2021.05.02.22.05.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 02 May 2021 22:05:28 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- devicetree@vger.kernel.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/2] dt-bindings: mediatek: Add optional mediatek,
- gce-events property
-Date: Mon,  3 May 2021 13:05:23 +0800
-Message-Id: <20210503050523.2571758-2-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.31.1.527.g47e6f16901-goog
-In-Reply-To: <20210503050523.2571758-1-hsinyi@chromium.org>
-References: <20210503050523.2571758-1-hsinyi@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=siZxirsKcvAyDsxwYv2Y0WOcvC8VgXLaF+KpmP1I61A=;
+ b=iIE7xLFGfqkWekwj9DJ2pNTwkjRFpkxt2TYd6/uifOtGmTTmFIOJ97ShOdbsIfRmFZ
+ W9kn8TnM4J6n8Iek8Qzj8JQrYGlT2kGJLigQjQ1BNRoZuv/8fFod0pSQHXlYqFHB9xpt
+ Ix+G6NqwlMn9t377H3bqX2f25c8UgjcInbBaiBXw6w4w+rIQbFbjucv0bzfFifvyk2Mk
+ 8/cItADg/6qEgU6mOy1tjWECdnbzacOhsOl/pGjqXrNVnM3VzLWtEby7Wslu7ynCXzvt
+ IEbTGU7Y8iPxkPpdgw/rSk0OAB82fFphBKynxpGMVmqUTyPl+pgWXXDY0vZ+CdBDccrW
+ YtsQ==
+X-Gm-Message-State: AOAM531dMQmdJ/xhuB+Xr0WQEswDmsUOSz9pdAoHruV00hcAv+OAlouU
+ EUMP11KxdfWDR4yMhdv/XxNruBk669uXYFpDMgDOoQ==
+X-Google-Smtp-Source: ABdhPJzn7Y0sAseQkQfOM+fsmzHK9fRfrpX2TeHpHY9qrHf8bXHvuPgZryeTezCNykMdNGD+4wYQGXMrCwf6UBCLsoc=
+X-Received: by 2002:a05:6638:f11:: with SMTP id
+ h17mr5692188jas.102.1620018399221; 
+ Sun, 02 May 2021 22:06:39 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210423065327.1596075-1-hsinyi@chromium.org>
+ <846d2a7a-d9c2-7d9e-9d7e-843ff604be44@collabora.com>
+In-Reply-To: <846d2a7a-d9c2-7d9e-9d7e-843ff604be44@collabora.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Mon, 3 May 2021 13:06:13 +0800
+Message-ID: <CAJMQK-iUzarwbvY3R-ezZWmZaDK58JzhEtzG+uyuZAJbsKmE1g@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: add mediatek,gce-events in mutex
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Devicetree List <devicetree@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ lkml <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210502_220530_521976_FD6594D5 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210502_220640_733763_77B2BF98 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,40 +109,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mediatek,gce-events property is used by gce clients.
+On Fri, Apr 23, 2021 at 9:00 PM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> Hi Hsin-Yi,
+>
+> Thank you for your patch.
+>
+> On 23/4/21 8:53, Hsin-Yi Wang wrote:
+> > mediatek,gce-events is read by mutex node.
+> >
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+>
+> Although I know this property is used and needed I didn't find documentation
+> about it. It would be really nice document in the bindings this mediatek property.
+>
+> In any case this patch LGTM, so
+>
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- .../devicetree/bindings/display/mediatek/mediatek,disp.txt  | 6 ++++++
- 1 file changed, 6 insertions(+)
+I added the bindings in v2, thanks.
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-index fbb59c9ddda6..939b2da3bdc5 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-@@ -75,6 +75,10 @@ Optional properties (RDMA function blocks):
-   mediatek,rdma-fifo-size of mt8183-rdma0 is 5K
-   mediatek,rdma-fifo-size of mt8183-rdma1 is 2K
- 
-+Optional properties for display mutex:
-+- mediatek,gce-events: GCE events used by clients. The event numbers are
-+  defined in 'dt-bindings/gce/<chip>-gce.h'.
-+
- Examples:
- 
- mmsys: clock-controller@14000000 {
-@@ -209,6 +213,8 @@ mutex: mutex@14020000 {
- 	interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_MUTEX_32K>;
-+	mediatek,gce-events = <CMDQ_EVENT_MUTEX0_STREAM_EOF>,
-+			      <CMDQ_EVENT_MUTEX1_STREAM_EOF>;
- };
- 
- od@14023000 {
--- 
-2.31.1.527.g47e6f16901-goog
-
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index c5e822b6b77a..cf22d71161e5 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -1250,6 +1250,8 @@ mutex: mutex@14016000 {
+> >                       reg = <0 0x14016000 0 0x1000>;
+> >                       interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
+> >                       power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+> > +                     mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
+> > +                                           <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
+> >               };
+> >
+> >               larb0: larb@14017000 {
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
