@@ -2,20 +2,19 @@ Return-Path: <SRS0=osr7=J7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7845AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 May 2021 12:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77F19C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 May 2021 13:57:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E81BF61040
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 May 2021 12:56:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E81BF61040
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id DE40861027
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 May 2021 13:57:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE40861027
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,89 +22,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ARzHqJaJUST2JAy2IEvxonVrDupwoNmZzMnGiCob/I0=; b=D4ik7aHXaSk07KOlTZ0UZc2lO
-	ygpJEZDziK77TuTTSy9R2mNXB4u0fOBhFtzloagipnWhTsDa5L4NIqvnOphCVWc414sVl9f4p42ky
-	SlkYOo7HveNN8jGialuvQFOwYaRqE6gw175QgWfsgjejYrMW7rEXyUMWpzZFKkb9I2hO13sWVn1X1
-	C7EfRq3IfRMS6MiZTowrbnsd1lnpu4d9FMA4nzJX/Ekc/1ODtjIs1M/I/9CwD9dOsQmwWiyA/wH4A
-	mq/wtz7+dpg1L9kMtM1KL9f4eZm9mL7wmzsx7EyB96PXtxFfWivGeQpSjnUdInpOy1wgMxdsl6ePW
-	GGtUihu+w==;
+	 bh=7Tm9fYEkkJwNE4ox9iKROuZUmII5Sbp6RV3eg4b8dlA=; b=mVru2QRYhC9+Tki5pIPLFfMN1
+	oAeBLr2aEAoovN/soxcxSTK9wjm0odY4GYt5sSnnb4B9DmrfH3VpPSD4uMv47IULEKlExWFSMAkal
+	ECfYLw6zcTtcEi9Va3xGRUdcWC1qJgM3GwAdwSsR+fMIfSwBPp07iApCYg5ndXsbpr3nwe2XX/mzt
+	lEDkERRIX/pmcbwWBok7XlDKCvl3pbqDczaFO0SxCQ4kmjWU/OnEz9mGlCpGAFWMn0EpjGgohtHOD
+	X/j59AzOpym98DhzzowHVAQ1M1mLw7Sl7NWDC9g8JMQL27kKvfiq1cBNWOnq39hJlTbd2bQstyw7q
+	A48THoyOQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lduax-00GEQq-Ez; Tue, 04 May 2021 12:56:11 +0000
+	id 1ldvXo-00GK46-8F; Tue, 04 May 2021 13:57:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lduaw-00GEQh-Es
- for linux-mediatek@desiato.infradead.org; Tue, 04 May 2021 12:56:10 +0000
+ id 1ldvXm-00GK3u-Sr
+ for linux-mediatek@desiato.infradead.org; Tue, 04 May 2021 13:56:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
  :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=1ZEIfQIWplyJsRjhAB9oJ0mVxCOsZMQEFoeb6pJvTqk=; b=wZiAA1OvYDfYkS5qN0Gkf4KOmb
- 3XyAQceUY7mFWLydDecHbgJO8EALWwv59s92sjBSTEnN1npUw9BAw4A8q34AqvvCjWiS4Uen8uhZ8
- J7D+ex+S/fHTWzfQ/Z9hHv9eQRaqmw8RfR4sxvc7qFLcbTYYUlxn1lQavG7zOhO9xCtlHxSj8lrhM
- hW7XjBygMl7Lf1FLUWuVQIUHAfFHFL3nQELlURKYAuixFn2jHMmdJHANciUZoM0PqIaYjU9y5rJnS
- gfLrKVnbTbJvsacIm1Xqql3grh2sN/AM8TMMvA5X+M/v5vwwBG5e1ANkfyJtAyJC8CW5oNxbtZmb0
- 2Zzt3T0w==;
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ bh=GfObCui0DNH8ZR0/I1fHume4Rr+O0CCZkfpjxN4kucY=; b=GYIm0dPF8eYVLDDKAP8AxhBxi9
+ 1Qgr964Hbw1Uojug93qa0rd3l1tuEJSwrc7myy3ra1ClH447NoEc2Brzw7NElU6pNez4HMLXVZU9b
+ nPWBCZzMv7awKDM0rRyYzg9hV73qnrlELQTcJeNYY+AsfuVmi1U9drAGnkVIlPW/1omre3ki200lv
+ Dc85IiScrAO12Te5FqlUkjBXAFR82zIAruOKx+epHlWUe5/hlffcTDCiGQMc1hVdyb+f4fp/CfIyn
+ rfPaEZEMPA2pRPcP0dyMw/a9qVTGrd2cmBlt57NwhaJ9k8cqW+E0wtCL34yf4sKSLMuNwLB8yFHM/
+ ou+UHMlA==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lduat-003yp2-K4
- for linux-mediatek@lists.infradead.org; Tue, 04 May 2021 12:56:08 +0000
-Received: by mail-lf1-x136.google.com with SMTP id z13so13139466lft.1
- for <linux-mediatek@lists.infradead.org>; Tue, 04 May 2021 05:56:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1ZEIfQIWplyJsRjhAB9oJ0mVxCOsZMQEFoeb6pJvTqk=;
- b=P2xiwxC9N7JTjuvp40yQtJbPylijakcYl1ZZ7HGbdTWla3UaPkanl5AEiQcR4rhrM3
- WjaO3gBAyqKEHCnQ34sF3SBIAPXIuO35j963dIxZRlM7Nb+22HonRKQL2nb6aHKYp/gS
- I/5u/1nThzvX3AOyBptLIhReutJxeW15knqcI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1ZEIfQIWplyJsRjhAB9oJ0mVxCOsZMQEFoeb6pJvTqk=;
- b=mQ9t0ga5k7A3kDtoWfQZ/vNuQC6xkACKpxbYnE8/UUwCEjD3MmQ76IUiaS7UHt+8XH
- ypImchJlTZPL8a4ClkMi35AuYTlHdLx9WX/1QK85MVZlbMG3FjXOnx2yVVTlnEFrkm3p
- YOMxm6G2evUqJkzpkMZCKD5oiYq3SXcpYLSkX+CfQuRzXUfWxT0zlWX3iT+yyeOPXIhp
- qnG6DEbxAixU0z0m5b91AQES/z6Ckh38zBC6qp6DHcZwSAZ7uDdMNBSpF5xmJHLScokX
- +xl7GLuJE959zc+iv62KNDjZLzChjJn7HkL+GAlXN3YUi+gtgWxOhsjAVlvs3FpppPrk
- Homw==
-X-Gm-Message-State: AOAM530pzbRXIZGvDP5XVe08h+I4qmnyloopYzF8GecQlcuBtKQu8kFF
- eYZiqWS2tfgh1RbFcsvdVLxhfySI8bl77w==
-X-Google-Smtp-Source: ABdhPJxeiv++hT1Nhi5diAFHDQ9tUGEZ7FfWCTts1p/1LbYhfzNCWrifZxYyQjP4f2igKbi7rT092A==
-X-Received: by 2002:ac2:44d7:: with SMTP id d23mr15891093lfm.221.1620132964637; 
- Tue, 04 May 2021 05:56:04 -0700 (PDT)
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com.
- [209.85.167.50])
- by smtp.gmail.com with ESMTPSA id w15sm1658497ljm.76.2021.05.04.05.56.03
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 May 2021 05:56:04 -0700 (PDT)
-Received: by mail-lf1-f50.google.com with SMTP id c3so9071329lfs.7
- for <linux-mediatek@lists.infradead.org>; Tue, 04 May 2021 05:56:03 -0700 (PDT)
-X-Received: by 2002:a05:6512:108c:: with SMTP id
- j12mr16512793lfg.403.1620132963589; 
- Tue, 04 May 2021 05:56:03 -0700 (PDT)
+ id 1ldvXk-0041DG-9T
+ for linux-mediatek@lists.infradead.org; Tue, 04 May 2021 13:56:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 32FD2610FB
+ for <linux-mediatek@lists.infradead.org>; Tue,  4 May 2021 13:56:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620136615;
+ bh=b2AeokgYv9BBNOB9kdU8IH5+Ru9PhpBrRTY6A59eIxw=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=EvejC2252e2Zl+OmgVpDTt2QniEI2j/aZi0nxrm5tVAKnUdDBiChcy3beCRGx854k
+ AyfcApo0828t1WAq2RsjmIWG05msuLQJ72QkaqzrgSPG9tLRccEE8kfvmrbiecN4xe
+ EXHni88bKs2i3y4hqa0nSy7OjN8FisMDGbNIO3NoAXD7or5xFJqbj4cwZYgzCzOUNF
+ xLJf5sG1OXztno2rLSpoFKlqCzZQ+Qxe3wXTH3pyQUVtYjJFQBNdLr39aESK/oyAjj
+ bhyAMz98EXmblhaKp7ApVLFjpak1kJXeR8b2vmp7i+mcAVXIt6tcCSDac2vW+D1QSi
+ TmIs5QFZ0sLgQ==
+Received: by mail-ed1-f43.google.com with SMTP id b17so7529262ede.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 04 May 2021 06:56:55 -0700 (PDT)
+X-Gm-Message-State: AOAM533Gyhj7JkLCB8GU8OpPm0XwTPijopqJF6gz02SQOo3cd5KCMA7U
+ zT82g0Z6myb4QsK+DS7I/BNlBKn/SWk3Gr8cd7k=
+X-Google-Smtp-Source: ABdhPJxj2ZxVi8v0/3asz2FqD9vZBl4BAkavlevVxCat2TqvVFsZdO9hzV3Jap0mmoo+TMnsiVtcLhdsWKFzrcWhkGw=
+X-Received: by 2002:a05:6402:441:: with SMTP id
+ p1mr26213488edw.298.1620136613729; 
+ Tue, 04 May 2021 06:56:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210427111526.1772293-1-acourbot@chromium.org>
- <20210427111526.1772293-9-acourbot@chromium.org>
-In-Reply-To: <20210427111526.1772293-9-acourbot@chromium.org>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Tue, 4 May 2021 21:55:51 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MWhP+uJSHzMHuH93fxgFosw=FPUoHOLuDX1ZYGunWX11g@mail.gmail.com>
-Message-ID: <CAPBb6MWhP+uJSHzMHuH93fxgFosw=FPUoHOLuDX1ZYGunWX11g@mail.gmail.com>
-Subject: Re: [PATCH v4 08/15] dt-bindings: media: document mediatek,
- mt8183-vcodec-dec
-To: Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Yunfei Dong <yunfei.dong@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+References: <1618565538-6972-1-git-send-email-pk.chi@mediatek.com>
+In-Reply-To: <1618565538-6972-1-git-send-email-pk.chi@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Date: Tue, 4 May 2021 09:56:41 -0400
+X-Gmail-Original-Message-ID: <CAJKOXPdpBjmHgcE1=vox9YbdtR82LT5F8anx0dKP_fp1JstTpg@mail.gmail.com>
+Message-ID: <CAJKOXPdpBjmHgcE1=vox9YbdtR82LT5F8anx0dKP_fp1JstTpg@mail.gmail.com>
+Subject: Re: [PATCH v2] memory: mediatek: add DRAM controller driver
+To: Po-Kai Chi <pk.chi@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, 
+ devicetree@vger.kernel.org, wsd_upstream@mediatek.com, 
+ CC Hwang <cc.hwang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210504_055607_684459_5AC3D0D7 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20210504_065656_379717_F508440F 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,38 +102,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-On Tue, Apr 27, 2021 at 8:16 PM Alexandre Courbot <acourbot@chromium.org> wrote:
+On Fri, 16 Apr 2021 at 06:30, Po-Kai Chi <pk.chi@mediatek.com> wrote:
 >
-> MT8183's decoder is instantiated similarly to MT8173's.
-
-Gentle ping on this, could we get your Acked-by for this minor change?
-
-Thanks,
-Alex.
-
+> These patch series introduces the MediaTek DRAM controller driver (DRAMC)
+> on MT6779 SoC, and enables to be built as a module by default for the
+> ARM64 builds.
 >
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> ---
->  Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
->  1 file changed, 1 insertion(+)
+> MediaTek DRAMC driver provides cross-platform features as below:
+>   - API provided to other kernel modules for querying DRAM type,
+>     rank count, rank size, channel count and mode register settings.
+>   - Sysfs interface used to pass DRAM mode register settings and current
+>     DRAM data rate to user-space for MediaTek ecosystem.
 >
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> index 06db6837cefd..a2a2a9e2ade3 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> @@ -9,6 +9,7 @@ Required properties:
->    "mediatek,mt8173-vcodec-enc" for mt8173 avc encoder.
->    "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
->    "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
-> +  "mediatek,mt8183-vcodec-dec" for MT8183 decoder.
->  - reg : Physical base address of the video codec registers and length of
->    memory mapped region.
->  - interrupts : interrupt number to the cpu.
-> --
-> 2.31.1.498.g6c1eba8ee3d-goog
+> The API user includes MediaTek External Memory Interface (EMI) and
+> DVFS Resource Control (DVFSRC), which will be sent to mainline later.
 >
+> Changes since v1:
+> - add prefix to vendor properties in device tree, dt-binding and drivers
+> - fix dt-binding check fail
+>
+> Po-Kai Chi (4):
+>   dt-bindings: memory: Add binding for MediaTek DRAM Controller
+>   memory: mediatek: add DRAM controller driver
+>   arm64: dts: add DRAMC node for MT6779
+>   arm64: defconfig: Enable MediaTek DRAMC common driver
+>
+>  .../memory-controllers/mediatek,dramc.yaml    | 162 ++++
+>  arch/arm64/boot/dts/mediatek/mt6779-evb.dts   |   9 +
+>  arch/arm64/boot/dts/mediatek/mt6779.dtsi      |  18 +
+>  arch/arm64/configs/defconfig                  |   1 +
+>  drivers/memory/Kconfig                        |   1 +
+>  drivers/memory/Makefile                       |   1 +
+>  drivers/memory/mediatek/Kconfig               |   9 +
+>  drivers/memory/mediatek/Makefile              |   3 +
+>  drivers/memory/mediatek/mtk-dramc.c           | 711 ++++++++++++++++++
+>  include/memory/mediatek/dramc.h               |  18 +
+
+I found this patchset by coincidence as you never cc-ed me. Please use
+scripts/get_maintainer.pl to get the list of people you need to Cc.
+
+All this should go via memory drivers tree.
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
