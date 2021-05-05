@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26106C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E689C43460
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:54:53 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C86F6613B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:54:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C86F6613B4
+	by mail.kernel.org (Postfix) with ESMTPS id D6F636188B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:54:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6F636188B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ynM5JR3zA1h5fX1c5fM98jEBa92tSColsaTAUiIANrw=; b=bc9ZvTlxqak23RHgqhoBFK2pd
-	0iUHh0ktwe16gnVQYm3G6mLl/iXhYkmZrdal+QVoZdN68cBYwYER+fO2FL0vvgsJDfKS5jwSpKLxT
-	7JMK8o6V06RXY5QdJsvX1n+MrgGyrBYJPYvYKQ5UfrRhgsd2GAWDMBvsfQ3tdb8nLrqxuId0HXvV+
-	Bi+Lu1fEMgf4q575ZlwiXv518cyCOwHndUXd7ib/InKKB55rpVENuRRMQkdR01lkkIJR77vtD9dJZ
-	g6x4Lk7zzsLfTvnbqa7igllD/jo7YCZ8Lo1IkX6fGCyLgjjMG9dydWIxyLxck+H/CKA9DWvGifLGH
-	E+CChD4DQ==;
+	 bh=LNuFs2dAgPUys52kab+RjvPFZgzxEanSQV2JpvthBeE=; b=GCWaoaO60AO5iYwxE9mRG7aRc
+	PCG6Mjmt8lBc8dmOmDQ2tKepGVEcqCq/bgqRcOlLU5YJxLe8Ld2JLwsOZnVhRU46QQOKQk966Sg9f
+	Zmsykv00LlZia4IemHHzmbYI9kNaiNqHplFgrGGzWXclSUJqfoHlDu0//lkekzIGhvM5+oOtbN2jS
+	mgrAGLNtz9Grpe2zLiM6VUOSObVmDSe5xWpQ9vAAHEZ+MseHpEcYwKF+BwiAHRMndllO5jlJCMNqr
+	2hbFW4Ufo2ZvdL5EZ03+wfUzT+s6gyvIyHQXp3gPFRmLreLUZECwHgUry7ZTbeAvEjpAm2CHHKCGi
+	bit1Eaoww==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leKme-001mp8-5c; Wed, 05 May 2021 16:54:00 +0000
+	id 1leKnH-001n4G-NF; Wed, 05 May 2021 16:54:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKXi-001gyh-FF; Wed, 05 May 2021 16:38:34 +0000
+ id 1leKXr-001h2J-KJ; Wed, 05 May 2021 16:38:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=VQoO3oCApZ3pKKm/W6X/a8FrJWlV1CnhnDGiQRRBacw=; b=hW17uRDauuUYOAFXNUtxdFI5K+
- hGSbJOF4XKAeVfIMTZXn1BbdyFggM/8QXg1Hm03PSfD9IBTbZ2jCa9LwQZqy6Rsog4+M7UsbMj/uu
- Z+27AZRrFtlG9bthJ7/jXwT3OdUCkelpbKIj3o9/UBbw7ArN5l/kskxeIz2fFi/k84N9VyPznqI5b
- WJXQlmY8He2X0conKHcGrptOg8VFRue92rBPGx5IwDlMC6N8X2HZq9Uaq9C4zs02rUwGgyI0KGNeG
- bfC4NINqqNRb0//FA6UJ9+nK035ugdwHnT0etuF8TyLIEQMU2VyWBvstvC+W4DnxkzB+Q1+16SsQ7
- VUq8aRpQ==;
+ bh=6e+dK4ivWlUVjEbdFS0cvkGnXyp00JBbfmxhTYH+Ewc=; b=4acRT9WxCfiMp1BVtyAkfvbz9L
+ 2cU95CmZgbgJfBbfddsEkXVyhULL80x8aB3DncacJdwt6O4NS74ipexsE3cPrrQF6Nr3URbQq+czU
+ +gkn+6Y8nLNPaNKEz0B634TjBgk5PeSxrufmVPQRnMopVBUtwlMbJjhK6kumaFhS2tuY7O8RZ4+4c
+ riTfCRliZjI7Wp6xjgoIgKzh01Bpelvh+45tOiiOum4nogyiqFC5pq3K+SrN5ej396FQdW9UPps75
+ tgTyzX8qg7+a31S+mxBv/WDmO1y3CeldHgCZE3wctwOT4nfro/Vx1BRewJvd8/GVH8fSoDjmgjLes
+ SVBK84QA==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKXe-004xk9-SL; Wed, 05 May 2021 16:38:33 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6DB8D61461;
- Wed,  5 May 2021 16:38:29 +0000 (UTC)
+ id 1leKXp-004xn6-0b; Wed, 05 May 2021 16:38:42 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 71CDE61991;
+ Wed,  5 May 2021 16:38:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232710;
- bh=VWFWm5cUN1jSxsItT/U9HhoMnGvxh07KV69SrLyK5ns=;
+ s=k20201202; t=1620232720;
+ bh=zIWO+613aa93ZZ/vIAzAca28AJUUZ1Qux+x+xGm+ZvE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=f8LuGWZ0CFj/j9LrHALciQam79aHAsxzB46F5Zd+SozCbu61OLfawa3NqI4nGC9vc
- uO/fjc3WFz8z1p/ui/kiXc1LIWmlvdXUkDsAGCHSEFVQTCN9wYZgJw0dLThgsmOFpB
- HRNIo5MXFVNX8Z+bfkcQc0yRfYpWYBWmI9tvLkJx6358qnA8G+sYmDWG11db2pViYQ
- 1/GQc/1UkMp9nTwhVGwbmDIiIMkpOXk11UOQ7m55Iofw4vPCe+MiqkLeUex2CP+qkb
- Lc26wgxXCzxoXUN1FzXA/mzNwBU8i64JP0DxAHgmyds6GrNT+/RlHLKZfJKmSO/ern
- VpobiP70NR+hg==
+ b=vJzK3pC5HZdC8Q9Zsmc2OJpMtR+twLcrHtBLh5BImQf8ZVMT/J38rQsAw3AabpSy9
+ ARZtThtp/4ojCwx9nyqQMBgva8QqC0ih9RrzHrRETY3O424N6LXrBoQre6sQyo7CqB
+ bH/5KNbmugbh6WR89pJJ8bVPsbpuDPWtBYtz52RBSv/OLptZm84vPRrZ9kZudXD8Jk
+ 9TP8VHXpdF6m+/l6emkNoi/kKbTjmyQghLSc82pC+bi/TlAjlrWg0pWwVYCzmS+cgW
+ slFkEji7XLxxgtfkJNEr8gwcMf8jY9i8Vw5ctacPAIkwOe8gkEvazKEBgT7mmlbYjd
+ ggWVCF/lo2Z2g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 69/85] mt76: mt7615: fix entering driver-own
- state on mt7663
-Date: Wed,  5 May 2021 12:36:32 -0400
-Message-Id: <20210505163648.3462507-69-sashal@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>, Sasha Levin <sashal@kernel.org>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 76/85] net: ethernet: mtk_eth_soc: fix RX VLAN
+ offload
+Date: Wed,  5 May 2021 12:36:39 -0400
+Message-Id: <20210505163648.3462507-76-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210505163648.3462507-1-sashal@kernel.org>
 References: <20210505163648.3462507-1-sashal@kernel.org>
@@ -77,9 +78,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_093830_982139_3A12F946 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210505_093841_090979_F15DDB89 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +98,46 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 5c7d374444afdeb9dd534a37c4f6c13af032da0c ]
+[ Upstream commit 3f57d8c40fea9b20543cab4da12f4680d2ef182c ]
 
-Fixes hardware wakeup issues
+The VLAN ID in the rx descriptor is only valid if the RX_DMA_VTAG bit is
+set. Fixes frames wrongly marked with VLAN tags.
 
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
+[Ilya: fix commit message]
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mcu.c | 12 ++++++++++--
- 1 file changed, 10 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index c31036f57aef..62a971660da7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -341,12 +341,20 @@ static int mt7615_mcu_drv_pmctrl(struct mt7615_dev *dev)
- 	u32 addr;
- 	int err;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 6d2d60675ffd..d930fcda9c3b 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1319,7 +1319,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		skb->protocol = eth_type_trans(skb, netdev);
  
--	addr = is_mt7663(mdev) ? MT_PCIE_DOORBELL_PUSH : MT_CFG_LPCR_HOST;
-+	if (is_mt7663(mdev)) {
-+		/* Clear firmware own via N9 eint */
-+		mt76_wr(dev, MT_PCIE_DOORBELL_PUSH, MT_CFG_LPCR_HOST_DRV_OWN);
-+		mt76_poll(dev, MT_CONN_ON_MISC, MT_CFG_LPCR_HOST_FW_OWN, 0, 3000);
-+
-+		addr = MT_CONN_HIF_ON_LPCTL;
-+	} else {
-+		addr = MT_CFG_LPCR_HOST;
-+	}
-+
- 	mt76_wr(dev, addr, MT_CFG_LPCR_HOST_DRV_OWN);
+ 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX &&
+-		    RX_DMA_VID(trxd.rxd3))
++		    (trxd.rxd2 & RX_DMA_VTAG))
+ 			__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
+ 					       RX_DMA_VID(trxd.rxd3));
+ 		skb_record_rx_queue(skb, 0);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 454cfcd465fd..73ce1f0f307a 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -295,6 +295,7 @@
+ #define RX_DMA_LSO		BIT(30)
+ #define RX_DMA_PLEN0(_x)	(((_x) & 0x3fff) << 16)
+ #define RX_DMA_GET_PLEN0(_x)	(((_x) >> 16) & 0x3fff)
++#define RX_DMA_VTAG		BIT(15)
  
- 	mt7622_trigger_hif_int(dev, true);
- 
--	addr = is_mt7663(mdev) ? MT_CONN_HIF_ON_LPCTL : MT_CFG_LPCR_HOST;
- 	err = !mt76_poll_msec(dev, addr, MT_CFG_LPCR_HOST_FW_OWN, 0, 3000);
- 
- 	mt7622_trigger_hif_int(dev, false);
+ /* QDMA descriptor rxd3 */
+ #define RX_DMA_VID(_x)		((_x) & 0xfff)
 -- 
 2.30.2
 
