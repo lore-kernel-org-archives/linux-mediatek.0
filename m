@@ -4,93 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E3D5C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 11:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63824C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 12:35:22 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6BD3361175
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 11:24:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6BD3361175
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C25DE613BC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 12:35:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C25DE613BC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=Huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GT4OXomwE/sNR6uYLLMBJwuR8Ylm1i92tV8dYQxqsGQ=; b=ZXKO3jajGnMqwxjh8gbaLP5+4
-	5kG7tBzMDiZ1yzu0hl3acFfDtdCosdLgVzqlmM8VOHZgEe9vNoAtQ9+WMyKirw/BY197DCR0iY/Do
-	KZIDsrnnKN8JAcNMJJkQMNPGudfy94Glk0Z4ZLBWOgy0x5dr5AUy/wI4zt3XcCCJp16mmhxpeVY7u
-	bXTnM3nsqzE/88XP6AFXKkXygZMPOQhfKCfdbi1cFqvWw1dMHWlGQwIw7ThqIQ+v5oK0hrWrDhNsM
-	mrLm8pt5ZBB4Xf3TiacluTaxveHWap0NT5Y7CL1LHcUJaN3Sk7uOWARUJK2kJmo9G6R9A2SZ3xK3d
-	JDsVN5BPA==;
+	 bh=XUeUo6cbXRA9ZhHwm9Jv5+Ki3Ky/bm0+qwzoA10x+jU=; b=neKMXRoXR7W2pO5IdAuD9pwHq
+	roCGiJY2MZiW1bNzyNXjcHPlq1vRlbyNK7Te7v1yson+maEfdtB58Ect4IpOgruIPUtop4vJtNTd+
+	kaqrRKM0SB0pe7cBNVJUK68Eduqp/E8Qb1qALBnhfzKNxdvvgEdYVHq5iaJ3ky6DRWsbD1MAP95DY
+	yfdJhvDXYwML99Gw+gkFVeNOEEUQO/c6VLu3ft/1cfTrdx/nlkcwMVv29ZvGc50PdPCDZP1lmyYJW
+	x5B4WycEAArh4IUjvGOaYAVUXGjK+hKpUwP4W5xo5gG7w2d4T5CTXhIS9udopz+1YMBUGzWmMkr7w
+	0F4yyJbSQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leFdR-0014xx-Cg; Wed, 05 May 2021 11:24:09 +0000
+	id 1leGk0-001DAF-8n; Wed, 05 May 2021 12:35:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leFd5-0014w3-DU; Wed, 05 May 2021 11:23:47 +0000
+ id 1leGjm-001D8g-Nt; Wed, 05 May 2021 12:34:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=ZZSRvaP/49Ep7TPtTRRXVzuw75YzKkuiLQ1Eftb+0ek=; b=tZKDXmh3UagcPQGtDNgjpTAgTV
- h+F9yj5WqbKpPI5fpgvAiLZ0jrVTaOBbLZkK2W8Zd6/3dJrYl+v8tCDBLbFWeWRAaCgdo2JcjIycl
- NMBryqtqaLHJq5nJtODsmIMMfkZGwwOEkUA8PoXHJYZfGwSHOxCYlljyT2sW2hzFJhzqKrCOnC0zT
- crBrKjZ2Vo9VLT3OZcDHFOvEYjz4+iZOYbcBoY7xna6jhR16FnQqwmhOmiPiYF4ioVsbbF8IDT9+N
- Sz34N83ZbN4Ascvrg6F7+OI3Pnevsazpu51jIAAzTHeOxSwnFyQe+xCtPHu8eiTqYsOh6i2ieWbGh
- 5BxmPicA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:CC:To:
+ From:Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=LGttcvBGhPHsxu3WFvrp4fbzp00qhsZZFYepa2h7u0M=; b=K8J4jdXZd4iOycVwmx0T+mZW04
+ tDSISYs9BPuXMADnt4s2pe8oUEcv13RoUvfghVCVr5HlA+qpuExgEAUj8PUXUzqJYI2DTR4hAWCfe
+ vbyiKzp/O9ACyVevM0bJtqmzPORBf0OF8jKHc5YyQFBfJNHMtnISQ+LnsykWzYOtWIpvSyEhRzc+D
+ /w2twUJq3DdDi2zANGPnnMrlKZdQXH8k5jToMcL7uuYBQtdvhHd4SQmuuECEbiUJ0QM9TMZJ4zPDA
+ E3VB/5EgkIpsqWQspHP07OC+vr7p6WIaq6texyQKZ20zOoK1pyEXWaAoeSkHCAy4u8B6pa0fYfDmY
+ 7soA7lrw==;
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leFd1-004hYU-K6; Wed, 05 May 2021 11:23:45 +0000
-X-UUID: 09275f8daf6c47bbb5deb7188a608c02-20210505
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ZZSRvaP/49Ep7TPtTRRXVzuw75YzKkuiLQ1Eftb+0ek=; 
- b=jbJyDhGWd9m3+7KCmLHHAHfhLwow5FwSKD9sFsJxvKVkZOu5uNv7n2rO/9aUigq/+Z7syai9iPTcscsahYsQBfHzGv4V1FPRGDgw3VzY2ozjP/9eDxXOdeL1ovOxasNOu+UyUWiVBu9W3BdUcwLCsJPCbZRZpc0yzTNv67nxmiw=;
-X-UUID: 09275f8daf6c47bbb5deb7188a608c02-20210505
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1047414680; Wed, 05 May 2021 04:23:38 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 May 2021 04:23:30 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 May 2021 19:23:29 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 5 May 2021 19:23:29 +0800
-Message-ID: <5b25f903ea4d6e81662e6565f309f578d75f212e.camel@mediatek.com>
-Subject: Re: [RESEND PATCH v7 01/22] dt-bindings: ARM: Mediatek: Add new
- document bindings of imp i2c wrapper controller
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, <devicetree@vger.kernel.org>
-Date: Wed, 5 May 2021 19:23:29 +0800
-In-Reply-To: <161974692707.177949.4882672793905809142@swboyd.mtv.corp.google.com>
-References: <20210324104110.13383-1-chun-jie.chen@mediatek.com>
- <20210324104110.13383-2-chun-jie.chen@mediatek.com>
- <161974692707.177949.4882672793905809142@swboyd.mtv.corp.google.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1leGjj-004kYE-IC; Wed, 05 May 2021 12:34:45 +0000
+Received: from fraeml708-chm.china.huawei.com (unknown [172.18.147.207])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4FZwxF3yppz6yhyt;
+ Wed,  5 May 2021 20:28:49 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml708-chm.china.huawei.com (10.206.15.36) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.2; Wed, 5 May 2021 14:34:38 +0200
+Received: from localhost (10.52.120.138) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2176.2; Wed, 5 May 2021
+ 13:34:37 +0100
+Date: Wed, 5 May 2021 13:32:58 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: <linuxarm@huawei.com>, <mauro.chehab@huawei.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 18/25] media: mtk-vcodec: fix PM runtime get logic
+Message-ID: <20210505133258.00002ae4@Huawei.com>
+In-Reply-To: <b8d69ce52e4e455aa8c6e629e215a52847c7c9e0.1620207353.git.mchehab+huawei@kernel.org>
+References: <cover.1620207353.git.mchehab+huawei@kernel.org>
+ <b8d69ce52e4e455aa8c6e629e215a52847c7c9e0.1620207353.git.mchehab+huawei@kernel.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; i686-w64-mingw32)
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [10.52.120.138]
+X-ClientProxiedBy: lhreml725-chm.china.huawei.com (10.201.108.76) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_042343_687466_79AD7A26 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20210505_053443_903316_0F8C0973 
+X-CRM114-Status: GOOD (  21.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,132 +99,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-the mail list in patchwork seems to no update even I add more reviewer
-by replying mail,
-so I will send v8 for adding device tree reviewer, sorry for the
-inconvenience.
+On Wed,  5 May 2021 11:42:08 +0200
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-On Thu, 2021-04-29 at 18:42 -0700, Stephen Boyd wrote:
-> Please Cc devicetree@vger.kernel.org and use robh+dt@kernel.org for
-> DT
-> bindings. This was waiting for DT review but because the right lists
-> weren't Cced it fell off the queue.
+> Currently, the driver just assumes that PM runtime logic
+> succeded resuming the device.
 > 
-> Quoting chun-jie.chen (2021-03-24 03:40:49)
-> > This patch adds the new binding documentation of imp i2c wrapper
-> > controller
-> > for Mediatek MT8192.
-> > 
-> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> > Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
-> > ---
-> >  .../arm/mediatek/mediatek,imp_iic_wrap.yaml   | 80
-> > +++++++++++++++++++
-> >  1 file changed, 80 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wra
-> > p.yaml
-> > 
-> > diff --git
-> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_w
-> > rap.yaml
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_w
-> > rap.yaml
-> > new file mode 100644
-> > index 000000000000..fb6cb9e60ee2
-> > --- /dev/null
-> > +++
-> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_w
-> > rap.yaml
-> > @@ -0,0 +1,80 @@
-> > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml*__;Iw!!CTRNKA9wMg0ARbw!zBjsgUmEFn39CiAYbdvjgfS-ucvRLXrZkdtlMOnVKeNDFyjwC3IIoNkKYdm_kZGjQbbv$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!zBjsgUmEFn39CiAYbdvjgfS-ucvRLXrZkdtlMOnVKeNDFyjwC3IIoNkKYdm_kTIaPcIk$
-> >  
-> > +
-> > +title: MediaTek IMP I2C Wrapper Controller
-> > +
-> > +maintainers:
-> > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > +
-> > +description:
-> > +  The Mediatek imp i2c wrapper controller provides functional
-> > configurations and clocks to the system.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8192-imp_iic_wrap_c
-> > +          - mediatek,mt8192-imp_iic_wrap_e
-> > +          - mediatek,mt8192-imp_iic_wrap_s
-> > +          - mediatek,mt8192-imp_iic_wrap_ws
-> > +          - mediatek,mt8192-imp_iic_wrap_w
-> > +          - mediatek,mt8192-imp_iic_wrap_n
-> > +      - const: syscon
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  '#clock-cells':
-> > +    const: 1
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +
-> > +additionalProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    imp_iic_wrap_c: syscon@11007000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
-> > +        reg = <0x11007000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > +
-> > +  - |
-> > +    imp_iic_wrap_e: syscon@11cb1000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_e", "syscon";
-> > +        reg = <0x11cb1000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > +
-> > +  - |
-> > +    imp_iic_wrap_s: syscon@11d03000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_s", "syscon";
-> > +        reg = <0x11d03000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > +
-> > +  - |
-> > +    imp_iic_wrap_ws: syscon@11d23000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_ws", "syscon";
-> > +        reg = <0x11d23000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > +
-> > +  - |
-> > +    imp_iic_wrap_w: syscon@11e01000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_w", "syscon";
-> > +        reg = <0x11e01000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > +
-> > +  - |
-> > +    imp_iic_wrap_n: syscon@11f02000 {
-> > +        compatible = "mediatek,mt8192-imp_iic_wrap_n", "syscon";
-> > +        reg = <0x11f02000 0x1000>;
-> > +        #clock-cells = <1>;
-> > +    };
-> > -- 
-> > 2.18.0
-> > 
+> That may not be the case, as pm_runtime_get_sync()
+> can fail (but keeping the usage count incremented).
+> 
+> Replace the code to use pm_runtime_resume_and_get(),
+> and letting it return the error code.
+> 
+> This way, if mtk_vcodec_dec_pw_on() fails, the logic
+> under fops_vcodec_open() will do the right thing and
+> return an error, instead of just assuming that the
+> device is ready to be used.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 4 +++-
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c  | 8 +++++---
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h  | 2 +-
+>  3 files changed, 9 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index 147dfef1638d..f87dc47d9e63 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -126,7 +126,9 @@ static int fops_vcodec_open(struct file *file)
+>  	mtk_vcodec_dec_set_default_params(ctx);
+>  
+>  	if (v4l2_fh_is_singular(&ctx->fh)) {
+> -		mtk_vcodec_dec_pw_on(&dev->pm);
+> +		ret = mtk_vcodec_dec_pw_on(&dev->pm);
+> +		if (ret < 0)
+> +			goto err_load_fw;
+>  		/*
+>  		 * Does nothing if firmware was already loaded.
+>  		 */
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> index ddee7046ce42..6038db96f71c 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> @@ -88,13 +88,15 @@ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
+>  	put_device(dev->pm.larbvdec);
+>  }
+>  
+> -void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+> +int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+>  {
+>  	int ret;
+>  
+> -	ret = pm_runtime_get_sync(pm->dev);
+> +	ret = pm_runtime_resume_and_get(pm->dev);
+>  	if (ret)
+> -		mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
+> +		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
+> +
+> +	return ret;
+>  }
+>  
+>  void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> index 872d8bf8cfaf..280aeaefdb65 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> @@ -12,7 +12,7 @@
+>  int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
+>  void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
+>  
+> -void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+> +int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+>  void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
+>  void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm);
+>  void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm);
 
 
 _______________________________________________
