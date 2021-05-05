@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4197C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 10:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B762C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 10:15:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 347AF61222
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 10:14:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 347AF61222
+	by mail.kernel.org (Postfix) with ESMTPS id 03D8361077
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 10:14:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03D8361077
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,48 +23,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WiSnW4xQBHWsJyZIKdyzbg0JUk79neZ5jtaJ/PofMLc=; b=l10HeGsX8TUSMp5bcH+NDUzoC
-	BMTk7ovWYOfWWrhXrBIjBpRc4JnEUQray91jMtiK6mMC5csRxsqidsGoNPXuhc40xO7szFUCSe2De
-	jyxoKKiVvVOMoBrxHIqolKoIMGdcQHPsSEqA9RV/m4jl2veUy2HNj4bCWNCsMPVB7iRrxe3kPs5rz
-	f+lCL//G6oeAMHhtxpIsTqz1aDkJkCMecuCishbMjiJnZ6p0Sd4JU3Nc8WbNDVTqK2XKkV+NfJ1Ob
-	49yRhq8ptnPpQ8ERaMKVeYDdNs2dP77uaGQP7H3gj5sgO0akupiftDQ5qTe/qy1AIWQ6jqYyxAel0
-	TySzWB8Ww==;
+	 bh=57e4TSF8oETx0i/UeQBgaXoVm6QZwU0LItBRS7v63qw=; b=h+o7nse7W29seX8Hbw8s72uvW
+	N2DB8aZwRn+7KTB7ikn/mz6QWVUKszM20uuevE+e3F4lCyqE1TQ+6YomhpSioUPjZ4M8KpOzkZrHz
+	MvacnashyBF7fvKHLU1EWtFyTKzpIf7ktjuB19lpnDtii93y9yPy7JtBxKbGjXkstcLddLTEL2zxo
+	EDGVjY+L2qBw/wKBFDZQlEzpvxvMpLK92MKWdkm/FaGAkGJxjNuzh7n+lHPC+JtfFeo5wTYog7R8R
+	OGGKTDGl9LTNjnenS6uCs7AElzfI3yajjTIyJGr37NEs9RjaFTgwljAXWVQtX0r5yQX+71bfiEbm9
+	Q1t0mDRvg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leEY1-000rY4-Kt; Wed, 05 May 2021 10:14:29 +0000
+	id 1leEYE-000rbQ-EZ; Wed, 05 May 2021 10:14:42 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leEXO-000rMH-7s; Wed, 05 May 2021 10:13:50 +0000
+ id 1leEXP-000rMc-8q; Wed, 05 May 2021 10:13:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=jrfCp8ArrJfpROsJXHi5WMVWf1bg3np/ju0qKM6cV1s=; b=lv+jPlJ4DnZFmgDtu/nAd/B8Qp
- 4OLxcZqgnVO/K/EEPTqE3Ts4FEsnINUX284gz1ypp7N1s85SbsBDOrLqXFWyXzOPLtS5bwMxBWJKd
- f7TRKuh/WVaoQNRca6HxAJtUCvZdwdy8fWrSwyKocP5NWKJqKuUHGyamJssaAEegpd/zul/jMb9Xp
- cmgtPF7PDMXYpX1r3WRH3SbzgcJ8ZOJvpGuElkL30QIkoOKgCjsqXwfG736hc1J+MzicKl62oQQ3x
- L9hxi2ydjWcncXzOOuQThEAUP+edI7XcYs1if1ecSs+DwHl0vsg0TMdNopv/DokYbjdzSNTI8ZzJu
- Mpn8xqqg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ bh=cSeuf1RW0pGya77lGCR5R7iAnfaqPMyugQVG8l7CC6w=; b=TgjnXfsdSp/96tNjkTzpZXHDs8
+ des8EpFugndJMCbyOVGDzAqimHSlCuUIBRQVo6ijyYJjoZJ6QcIS6mzKxenMdF+f8I+JwyqMCIadK
+ SP9XXYhrZziKNfB1cnPqZxhSqDi0N7GLCjHp2NYwDRU5rOTSsbl92RlJYc21rtU5EXNIilwquwGNO
+ 5BsuTttQQxzw16w8+f4Edm0RofrwcmJRW5T9grGhQ0eyyC+tuRD5qJvZRxMzhpt2vuknoeLtpt8dw
+ 8rSxMmPUhLVEzGdk1WegP8aox3iKdeNwnLhf/RFEHh0M+S3GLx8y6lyfNh3XDKduG5pxfEsw2kyuS
+ VDDoSWrQ==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leEXL-004ehK-HQ; Wed, 05 May 2021 10:13:49 +0000
-X-UUID: b33ac9aedc1e44a288828865685c1506-20210505
+ id 1leEXL-004ehs-Tl; Wed, 05 May 2021 10:13:50 +0000
+X-UUID: 146da2d419fd401bae55ba9b961f4987-20210505
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jrfCp8ArrJfpROsJXHi5WMVWf1bg3np/ju0qKM6cV1s=; 
- b=ndZgZ6XNM7n+91kU+dHt7jGg/8Y4g9eAo0uxOZvBDzIDHy0Qw8/T1zRWOe4lGqCfN1qJluUSBKp7Iz8wtRzNo1r/72co+ra/u1fuyQZ1uRzULJ6hXGeWXBkNDWaMyy7i1pTe8ZiTpdCZah4W+qlZK/a3Ir9cYuFVv5kWH1yYgjE=;
-X-UUID: b33ac9aedc1e44a288828865685c1506-20210505
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=cSeuf1RW0pGya77lGCR5R7iAnfaqPMyugQVG8l7CC6w=; 
+ b=lci+JD6PcyzzprYQO8w3WwuSiqqSLc1ly9kfHGHDZOjAGdK86lEPcG1VEqkf7BIa+88j9hvQpPlqrW7s8MxjHpDCz2iLTOA9x85HdxPs4NoNVi0Ti80GjOfmQsWQ00dvZ3H0d2ZWjt0H2H5dmV1TwrvmkCEbPukvKXyrrUHetRo=;
+X-UUID: 146da2d419fd401bae55ba9b961f4987-20210505
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1688571304; Wed, 05 May 2021 03:13:44 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 May 2021 03:13:43 -0700
+ with ESMTP id 721885055; Wed, 05 May 2021 03:13:44 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 5 May 2021 03:13:42 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 May 2021 18:13:40 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 5 May 2021 18:13:41 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Wed, 5 May 2021 18:13:40 +0800
@@ -77,19 +77,18 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, chun-jie.chen
  <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: [PATCH v8 04/22] dt-bindings: ARM: Mediatek: Add new document
- bindings of scp adsp controller
-Date: Wed, 5 May 2021 18:06:56 +0800
-Message-ID: <20210505100714.3582-5-chun-jie.chen@mediatek.com>
+Subject: [PATCH v8 09/22] clk: mediatek: Add mtk_clk_simple_probe() to
+ simplify clock providers
+Date: Wed, 5 May 2021 18:07:01 +0800
+Message-ID: <20210505100714.3582-10-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210505100714.3582-1-chun-jie.chen@mediatek.com>
 References: <20210505100714.3582-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: C6256E87149CAFFEF7FC962320F2584339E0E8D7E2905B6524838E56FA7D79562000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_031347_605313_2CC6B7B8 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20210505_031347_988155_F6A08407 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,62 +105,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the new binding documentation of scp adsp controller
-for Mediatek MT8192.
+Most of subsystem clock providers only need to register clock gates
+in their probe() function.
+To reduce the duplicated code by add a generic function.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
 ---
- .../arm/mediatek/mediatek,scp-adsp.yaml       | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+ drivers/clk/mediatek/clk-mtk.c | 23 +++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h |  8 ++++++++
+ 2 files changed, 31 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
-new file mode 100644
-index 000000000000..1b4335c054f9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
-@@ -0,0 +1,40 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,scp-adsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index cec1c8a27211..67693b7d66b5 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -13,6 +13,7 @@
+ #include <linux/clkdev.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/device.h>
++#include <linux/of_device.h>
+ 
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+@@ -286,3 +287,25 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+ 			clk_data->clks[mcd->id] = clk;
+ 	}
+ }
 +
-+title: MediaTek SCP ADSP Controller
++int mtk_clk_simple_probe(struct platform_device *pdev)
++{
++	const struct mtk_clk_desc *mcd;
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
 +
-+maintainers:
-+  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
++	mcd = of_device_get_match_data(&pdev->dev);
++	if (!mcd)
++		return -EINVAL;
 +
-+description:
-+  The Mediatek scp adsp controller provides functional configurations and clocks to the system.
++	clk_data = mtk_alloc_clk_data(mcd->num_clks);
++	if (!clk_data)
++		return -ENOMEM;
 +
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-scp_adsp
-+      - const: syscon
++	r = mtk_clk_register_gates(node, mcd->clks, mcd->num_clks, clk_data);
++	if (r)
++		return r;
 +
-+  reg:
-+    maxItems: 1
++	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++}
+diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
+index 31c7cb304508..7de41c3b3206 100644
+--- a/drivers/clk/mediatek/clk-mtk.h
++++ b/drivers/clk/mediatek/clk-mtk.h
+@@ -10,6 +10,7 @@
+ #include <linux/regmap.h>
+ #include <linux/bitops.h>
+ #include <linux/clk-provider.h>
++#include <linux/platform_device.h>
+ 
+ struct clk;
+ struct clk_onecell_data;
+@@ -250,4 +251,11 @@ void mtk_register_reset_controller(struct device_node *np,
+ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	unsigned int num_regs, int regofs);
+ 
++struct mtk_clk_desc {
++	const struct mtk_gate *clks;
++	size_t num_clks;
++};
 +
-+  '#clock-cells':
-+    const: 1
++int mtk_clk_simple_probe(struct platform_device *pdev);
 +
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    scp_adsp: syscon@10720000 {
-+        compatible = "mediatek,mt8192-scp_adsp", "syscon";
-+        reg = <0x10720000 0x1000>;
-+        #clock-cells = <1>;
-+    };
+ #endif /* __DRV_CLK_MTK_H */
 -- 
 2.18.0
 _______________________________________________
