@@ -2,107 +2,87 @@ Return-Path: <SRS0=WaF/=KA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A341DC43460
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 09:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3122FC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 09:45:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 079AE613D6
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 09:45:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 079AE613D6
+	by mail.kernel.org (Postfix) with ESMTPS id 9E10D613D6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 09:45:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E10D613D6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5Hg+LpkGg07hwO4d+cBFs9nnm3o1+go/eQ+xKqmQEmI=; b=mwHWqag+fBxZ/VYyFX1H3+g7gL
-	CETFAqIu5FNJoSaneguhVUKO5X8vwbLdP2IfYd/+BZu4q/RPih2eLR8jJxmlNM5n4lUcnE5+hJoxA
-	AE9UI1K/N416h7cMPog7rwmDdIonpMjvfUEGP9oJOuosve6uvXyoRVTXDyi8Y7l4OTyyukEFhOQzl
-	nSMhLVpRIkNZR0pyF9nVFQaZzqi8y4LOQzqNMNZ6idHmqBs0Xv3PpKxvkgKjJWPUJuEiaX0MOYePC
-	vcf6uY6K/pduyPudyvQxtTjRHzqliluNYEQB+47Cwd9BSPLu/pAEbDR/kD2cYLat6gmLG3ZAR9PCE
-	Bbh+fSsg==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=jsel0UxRUpW5cDUx17Sl7E7HmYL4Tna2MCluRxSXTtg=; b=d0HroWPiM9HxEoCOYgWovGlLZ
+	vGwqRSmnF9evMCXbz7GRFf+brY8zBRDkFVK8HCVE/EgDHtnwadaB1t5LLOXfy9X7qggz+gwffrkja
+	fdKb62MZG3AOHnWANcyI2k1nBFuSYid8t6uMHjeAyAjWJ34KU3IHUlcbyyEWInz6Hr7wfraZM8IPH
+	A99kExoLwg+za9ek7JtQIk+Py4VXxtOTQSPt4rX7o05JXbWyUKY5l/MWTXoKdqCe1czTI+H/gRVXb
+	PDI0ANPH8kZlHlKj7kAmMK2jKZBELQ/7kpQIqtVwR18eQBXf0yLQxWPOitH6ZdpopYwsrpiARy5+R
+	B3AFlEsRA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leE5x-000mFw-C1; Wed, 05 May 2021 09:45:29 +0000
+	id 1leE63-000mIB-Ak; Wed, 05 May 2021 09:45:36 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leE2z-000l5o-Es; Wed, 05 May 2021 09:42:29 +0000
+ id 1leE30-000l5r-J7; Wed, 05 May 2021 09:42:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Sender:Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=rszBJj9aV+Fgnfu5GSJRaCm2qYnVL6C1ZOvh5PSg1Z4=; b=q9HNzfdQMGfbpyf5IKXSWVcbkC
- aipYl57y6gCSYzDFG06VywtdHII1KFDTBPL1gsGuF0NwFOvVTZVpEu9x1lSShb81WyZGdwSDFQp49
- KGVm1Gpk/iHg0J97K5kyB3g9IXoditRP0/5QLRZAhtiZMLpYsjSQnfeyqyaVwNafPmsBZu5no8UYh
- Gy2rR3DyCFGQXu670kGRNHg2SuZFh+wF9GnuBfHrtBu33F8hfgtt95eOShNGzJazhSkrHFJIUxv5K
- IHYitlPTGE21djgQkGCx9h0WxakLIyWQQ3DVKzRxERd7ehq8YArVRzWcBTGdNrFfLswzAupq/s42+
- wnNvieHg==;
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+ Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=NuW+KAd/xrl2dTshnq8aqOIb+0lzuagTY5SYke9WJ/w=; b=tHrN3thGvOUKVEyHYIYkIThF3K
+ wM6A4RiJ11M3twh1OjFkiLQelOxecBXPQNn59LzsQ5s7CGQBaJGVxwCwIHrVtX6ufhVthh66EvLdK
+ tHPS5e614tJuHIpw+aiVJD0+/KnYlBppBWVgWLhxT2Ulc7QopV6rUNh9lv3tZsa72CjTbFOXiwMeg
+ cDmImC98k+l4LKBGA/lIRnRF3JR6v4xwaCqENQge2OEpZqIFwgtwA96iS3n6DHeU2jTsEjaQHtVc2
+ KRPMXJHsMMciPhQWjDYAmN7swNAA2G6KdeCmMoC8Uo8+AZf4V1el+wgJ4uL/MKCdzzj960+QSQfL0
+ Atp8CHog==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leE2u-004cd1-ML; Wed, 05 May 2021 09:42:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0602D61401;
+ id 1leE2w-004cg6-HD; Wed, 05 May 2021 09:42:25 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 745C861442;
  Wed,  5 May 2021 09:42:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1620207739;
- bh=yt06NNHz8DnYKToINWX+kvUyHzX2tR5CxsEbiivgk9Q=;
- h=From:To:Cc:Subject:Date:From;
- b=aqDRmaF3drwaIh64M6SmLAXcURg7md3/lxLq6hY7zb9NqADehFDhLwTfZdBs7O+Ua
- PrWk1xzp0TuIUKCqW49WlvukyoTfR5zgDGz7Uu2PZqSgv1pEGUUxNbyoLUBf8HZnu5
- qRdm6t31xE9TWLgGFmfaTYQA8hMkY0ziRes30XuBsRHwKIVlQv7wfSkyxIpDYtEO+h
- OCd1Y0Rg6YCyxJf0fUjbsEoL8cTStyP6CBORWLMbL183NygQ2Jt0qsW8FwH+QN9AJO
- UNaAIvqUS7AS4O6rIj0PTrvaAvgGwleAAphalHt9KMZmiBAzijNKMWxdBLmzF/O1Jj
- VRSlJc4wK+6AA==
+ bh=jUOSb8B9UNKJb4CE+kKLFa5IDIlxTUV4my+V18i70ck=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=pvz3y1mbOSUJt0QSW0upnvSm2Y3anXrjyUxdYZ3k0aLlwT4LaZaNha8HUW0mZdlbr
+ Q92lXHYKY4fS8BRySZyoX2vBkayQSyKr1O67BmOX9WrmpLGEdgs+v27T1qsYyrdg0P
+ CJvdWltm/ibL4jPbaO08LScm2ScyAxPJLuE68I18mwCFd7qPAsvv373PqBq95774I0
+ df+q6EMijreBjWVwxEN3nFk5n7BzdAYBTmHypk52NiqahPgJs6i5IiUVdWqdFWTGrh
+ tL6RYsE4S4sCgs0nhiUobH/14oMJrduz1/UelMcpaAT6K32ktvObSS9SPb36egAAJB
+ SnyiNSbFfXJ/g==
 Received: by mail.kernel.org with local (Exim 4.94)
  (envelope-from <mchehab@kernel.org>)
- id 1leE2q-00AHvp-Hf; Wed, 05 May 2021 11:42:16 +0200
+ id 1leE2r-00AHwg-C1; Wed, 05 May 2021 11:42:17 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
- "Paul J. Murphy" <paul.j.murphy@intel.com>,
- Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Daniele Alessandrelli <daniele.alessandrelli@intel.com>,
- Ezequiel Garcia <ezequiel@collabora.com>,
- Fabio Estevam <festevam@gmail.com>,
- Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Rui Miguel Silva <rmfrfs@gmail.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- Steve Longerbeam <slongerbeam@gmail.com>,
- Sylwester Nawrocki <s.nawrocki@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev
-Subject: [PATCH 00/25] Fix some PM runtime issues at the media subsystem
-Date: Wed,  5 May 2021 11:41:50 +0200
-Message-Id: <cover.1620207353.git.mchehab+huawei@kernel.org>
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH 18/25] media: mtk-vcodec: fix PM runtime get logic
+Date: Wed,  5 May 2021 11:42:08 +0200
+Message-Id: <b8d69ce52e4e455aa8c6e629e215a52847c7c9e0.1620207353.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1620207353.git.mchehab+huawei@kernel.org>
+References: <cover.1620207353.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_024220_810770_84B06BD4 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210505_024222_707373_ABE76695 
+X-CRM114-Status: GOOD (  14.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,94 +99,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As part of an effort to cleanup pm_runtime*get* calls, I detected a number
-of issues at the media subsystem.
+Currently, the driver just assumes that PM runtime logic
+succeded resuming the device.
 
-Most of the patches here were submitted previously at:
+That may not be the case, as pm_runtime_get_sync()
+can fail (but keeping the usage count incremented).
 
-	https://lore.kernel.org/linux-media/cover.1619621413.git.mchehab+huawei@kernel.org/
+Replace the code to use pm_runtime_resume_and_get(),
+and letting it return the error code.
 
-This series contain just the bug fixes and other related issues that are
-present with the current code on media.
+This way, if mtk_vcodec_dec_pw_on() fails, the logic
+under fops_vcodec_open() will do the right thing and
+return an error, instead of just assuming that the
+device is ready to be used.
 
-It address the points from the existing reviews. I also did my own
-set of reviews, in order to avoid regressions.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 4 +++-
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c  | 8 +++++---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h  | 2 +-
+ 3 files changed, 9 insertions(+), 5 deletions(-)
 
-Changes from v4 of the previous changeset:
-
-- reworked i2c/css RPM get logic;
-- dropped two patches that could cause regressions;
-- am437x: keep using pm_runtime_get_sync on suspend/resume;
-- atmel: fix the returned code and add a print on failures at start streaming;
-- simplify some checks for return code > 0;
-- mdk-vcodec: properly handle RPM errors at device on logic;
-- venus: rework venus_sys_error_handler() logic;
-- sti/delta: fix an issue at the error checking logic.
-
-Mauro Carvalho Chehab (25):
-  staging: media: rkvdec: fix pm_runtime_get_sync() usage count
-  staging: media: imx7-mipi-csis: fix pm_runtime_get_sync() usage count
-  media: venus: Rework error fail recover logic
-  media: s5p_cec: decrement usage count if disabled
-  media: i2c: ccs-core: return the right error code at suspend
-  media: i2c: imx334: fix the pm runtime get logic
-  media: exynos-gsc: don't resume at remove time
-  media: atmel: properly get pm_runtime
-  media: hantro: do a PM resume earlier
-  media: marvel-ccic: fix some issues when getting pm_runtime
-  media: mdk-mdp: fix pm_runtime_get_sync() usage count
-  media: rcar_fdp1: simplify error check logic at fdp_open()
-  media: rcar_fdp1: fix pm_runtime_get_sync() usage count
-  media: renesas-ceu: Properly check for PM errors
-  media: s5p: fix pm_runtime_get_sync() usage count
-  media: am437x: fix pm_runtime_get_sync() usage count
-  media: sh_vou: fix pm_runtime_get_sync() usage count
-  media: mtk-vcodec: fix PM runtime get logic
-  media: s5p-jpeg: fix pm_runtime_get_sync() usage count
-  media: sti/delta: use pm_runtime_resume_and_get()
-  media: sunxi: fix pm_runtime_get_sync() usage count
-  media: sti/bdisp: fix pm_runtime_get_sync() usage count
-  media: exynos4-is: fix pm_runtime_get_sync() usage count
-  media: exynos-gsc: fix pm_runtime_get_sync() usage count
-  media: i2c: ccs-core: fix pm_runtime_get_sync() usage count
-
- drivers/media/cec/platform/s5p/s5p_cec.c      |  7 ++-
- drivers/media/i2c/ccs/ccs-core.c              | 41 ++++++++-----
- drivers/media/i2c/imx334.c                    |  7 ++-
- drivers/media/platform/am437x/am437x-vpfe.c   | 15 ++++-
- drivers/media/platform/atmel/atmel-isc-base.c | 30 +++++++---
- drivers/media/platform/atmel/atmel-isi.c      | 19 ++++--
- drivers/media/platform/exynos-gsc/gsc-core.c  | 11 ++--
- drivers/media/platform/exynos-gsc/gsc-m2m.c   |  4 +-
- .../media/platform/exynos4-is/fimc-capture.c  |  6 +-
- drivers/media/platform/exynos4-is/fimc-is.c   |  4 +-
- .../platform/exynos4-is/fimc-isp-video.c      |  3 +-
- drivers/media/platform/exynos4-is/fimc-isp.c  |  7 +--
- drivers/media/platform/exynos4-is/fimc-lite.c |  5 +-
- drivers/media/platform/exynos4-is/fimc-m2m.c  |  5 +-
- drivers/media/platform/exynos4-is/media-dev.c |  9 +--
- drivers/media/platform/exynos4-is/mipi-csis.c | 10 ++--
- .../media/platform/marvell-ccic/mcam-core.c   |  9 ++-
- drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  6 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  4 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  8 ++-
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  2 +-
- drivers/media/platform/qcom/venus/core.c      | 59 +++++++++++++++----
- drivers/media/platform/rcar_fdp1.c            | 28 ++++++---
- drivers/media/platform/renesas-ceu.c          |  4 +-
- drivers/media/platform/s5p-jpeg/jpeg-core.c   |  5 +-
- drivers/media/platform/sh_vou.c               |  6 +-
- drivers/media/platform/sti/bdisp/bdisp-v4l2.c |  7 ++-
- drivers/media/platform/sti/delta/delta-v4l2.c |  8 +--
- .../sunxi/sun8i-rotate/sun8i_rotate.c         |  2 +-
- drivers/staging/media/hantro/hantro_drv.c     |  7 ++-
- drivers/staging/media/imx/imx7-mipi-csis.c    |  7 +--
- drivers/staging/media/rkvdec/rkvdec.c         |  2 +-
- 32 files changed, 220 insertions(+), 127 deletions(-)
-
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 147dfef1638d..f87dc47d9e63 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -126,7 +126,9 @@ static int fops_vcodec_open(struct file *file)
+ 	mtk_vcodec_dec_set_default_params(ctx);
+ 
+ 	if (v4l2_fh_is_singular(&ctx->fh)) {
+-		mtk_vcodec_dec_pw_on(&dev->pm);
++		ret = mtk_vcodec_dec_pw_on(&dev->pm);
++		if (ret < 0)
++			goto err_load_fw;
+ 		/*
+ 		 * Does nothing if firmware was already loaded.
+ 		 */
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index ddee7046ce42..6038db96f71c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -88,13 +88,15 @@ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
+ 	put_device(dev->pm.larbvdec);
+ }
+ 
+-void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
++int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+ {
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(pm->dev);
++	ret = pm_runtime_resume_and_get(pm->dev);
+ 	if (ret)
+-		mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
++		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
++
++	return ret;
+ }
+ 
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+index 872d8bf8cfaf..280aeaefdb65 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+@@ -12,7 +12,7 @@
+ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
+ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
+ 
+-void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
++int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm);
 -- 
 2.30.2
-
 
 
 _______________________________________________
