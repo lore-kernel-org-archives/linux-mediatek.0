@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63D7AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1953CC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:47 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF41D613C3
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF41D613C3
+	by mail.kernel.org (Postfix) with ESMTPS id 8E77961423
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E77961423
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YyMNlHtc0BtdLtgIIz/NAAulQRD/JRFVLW8ZKHfhYE0=; b=LiKZzaNvRNY2W7N1bIqTmvK7k
-	BhyW3NXynlulxkq2vtsFpk9LFqG2vGMNpPm54UJc68uJUuG6pSrgcMUmZ+qY2dLm7UFVPz5ZS1nec
-	qaozq0UBwb8uqghMcoVaE7c0nrFIl24Flq16l3O4FYjk3TePaDHyQNObqOQAriFke224vJvrQW5Z2
-	2Bm0AXd0+vgFzU0xKOzRDGHAGOkXsoEcEealcRDZjDJRJ8xwBxr/+alheA4WEVRQtGjKb+zAt2fqE
-	edzu5c5lKrka23wS33kPcYwpldTDNleKk2eWo5/cZCIkFKRyNtdjQeJkhx/MGWtCnlQdIfr+uNmTr
-	j4gGWhPkA==;
+	 bh=zYsOwjTMp8Ib+WPtNy1mYmXfSydCYS6PrnSoXkz4Kro=; b=jiJBOx86qbcY13ensfOhpyBQR
+	XjGu+cBantPxfhIwlnAxLTQfjgqnoBvVnZVRcV6MGNgYwETHlf6cUiJ7P73NvTPE4lAlOe7yJU493
+	RfwclHtiSHCgospTr3jTYoHh8ZzgGkZpvQC9imEirF44Uf3v1ZbWXiKHAV6Hx2mWMeF5EUPZRu90J
+	TD4+5WYGk+/vn0EttmJMus+8ntaX3CEaZ7tm2qdYZGHyg+3xhLM2pjaUh8JCiv4Bv2l+SOGMtP3J3
+	brfU9F6BU0M1hb7bL+Laah3QUIedfL9tE/W58/v5SLTsUbwni3SScS7BnoKToXploeZTqd4JiOlqU
+	NuvKGmWvw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leKdx-001jRr-6b; Wed, 05 May 2021 16:45:02 +0000
+	id 1leKeY-001jgi-2y; Wed, 05 May 2021 16:45:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUk-001fc7-St; Wed, 05 May 2021 16:35:33 +0000
+ id 1leKUp-001fdT-8z; Wed, 05 May 2021 16:35:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=kEtDitHQNiamTDepFlU9XLM1jHKZrdbGkr/A1bsNo/g=; b=fQJx1+AfSxVEghUFXHc01TOXr6
- D8Psb9XNmgkDSxUcitV1mOQtTvAiIKzosnAHBPuzP4QNWncbTJST/Zbp5htgRIZlbmMc7ZHhztyQ0
- 6b20sNBv5dlNJ2jzEFIVyupfPGPQWzjoeksYPqoLEZrymvswm1IvdcgbLneAkwLbh+g1TMQcxgxpi
- ZEZmPZSwh/WwCJvCqgkS5uv0G5+qFyc48jidclsa29ThXYzym103Ea4tE/Bwxk/xK9S/dbH0A5fiM
- 1omxtnphYmBTnB/VtYcjL9DEiuwbzG1y0IKwlr+nn6aQP30eesvhAjo92aSn/TecvK0jTwjZaquEW
- G1wTTTNg==;
+ bh=1FJCUdsq6huqRWGgmuLgcRDyPqGy3gzDFWo106WjOZ0=; b=EaUgW72Ad55ck5zf/uo+aD7OMu
+ nUcsqG5PHC3iibFDsMTmPREKndpLFsLaxj3xk1cTdZTJZ2QLwsSjwa8dmYsTok2eqagXcehpiKwsJ
+ tFubu9p1SW0zZKXge1CTs0zO1FlZW9XowhM50JOizTDjDx+UTHiyYmJaNv/qCZlFo7JkuB8erpC3m
+ al8kYQrTx2CgsEgCmrprhSBbfkt+kLvKXKBqfcGTFx5+N/+qvxjNv9YuoBYYthPqUPuLyYn2+/hF9
+ lbL1YpjMyxPkEHIlSzzFUNQjSVeh/gkhtsoTp6SWG9CzY8yahfn0CKQnuhMU14FMItyXazOQ+uKtV
+ 5aIdbrXQ==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUh-004x3j-SP; Wed, 05 May 2021 16:35:29 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 694EB61920;
- Wed,  5 May 2021 16:35:26 +0000 (UTC)
+ id 1leKUm-004x5p-ML; Wed, 05 May 2021 16:35:34 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 54D806191E;
+ Wed,  5 May 2021 16:35:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232527;
- bh=Kd7D8PFW+DSGc8biqFjBqL3PHkhfWns6Z/UBvsA9KEU=;
+ s=k20201202; t=1620232532;
+ bh=QJ+YkKBhnjMB154wdrYAXSTMHCG8sjOU2BZsUExpeco=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fdWMz8DTkBOC6pJuLeJZjK85Pgqe3MnRPtwfNVkdHutlqM9n1S7qc9I6+VZ4wjFB7
- hfrC3mH7eqoGWpwuIA4noFH3C63Y1U5DGj3BJ1SSIBQWjKGVQ6VT0F5JJu5+xlnG4S
- jeNosnmC2mkntUaKOrpHVO7oeCCCCSCVnECaMKG+7NzGkLbnlV8+wJuOGTahYDUdEM
- YuYh5CfvG00/H6lfWoeEDBF0WZu8YXcu3CdABrzj9nnAOnTZdTE/5euUi4OjV35ok6
- g1aHo1NBz1jC2aV5TDN5h2nZxgkzZ1eGv7783r7ZSMbwuIMyedwFCOByy0sdpClPbM
- S4cX5KaRQW1Yg==
+ b=eNxOK18PZdz2niZXbLKtJqDuSZobOfksc5LnP/d3jWdJZQk9S5XewdCyjtQ2twfV7
+ +99apIRTyfmzD6f1Mk0+mlSrI6Y1S9cGx/Gh0ufTiylBOOw8gjr87nfjXCWHKgccRs
+ /HdCvpO8jDAqEGWg0BN5GgjevkKvSRBJ8QK1tNFq1yRSqXPMq05i+QGgtW90K1x35J
+ P4MXL0HRMe0cQaTzDZLRycueJf+Ike5jHoGSiZLgk8j8SptyNoxuiK9vcLAh/6D7Cc
+ i9gllcpusMNMTt0azEcoqrc3rWTwDQuon5/+1REO9dFi7DA7QDuSV/BZPi8/5ykVTu
+ 76FrflM8PFJ/A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.11 051/104] mt76: mt7615: fix key set/delete issues
-Date: Wed,  5 May 2021 12:33:20 -0400
-Message-Id: <20210505163413.3461611-51-sashal@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.11 054/104] mt76: mt7915: always check return value
+ from mt7915_mcu_alloc_wtbl_req
+Date: Wed,  5 May 2021 12:33:23 -0400
+Message-Id: <20210505163413.3461611-54-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210505163413.3461611-1-sashal@kernel.org>
 References: <20210505163413.3461611-1-sashal@kernel.org>
@@ -76,8 +78,9 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_093528_018850_0DEB79E8 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20210505_093532_774870_ADC3BE31 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,255 +97,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Lorenzo Bianconi <lorenzo@kernel.org>
 
-[ Upstream commit 730d6d0da8d8f5905faafe645a5b3c08ac3f5a8f ]
+[ Upstream commit 45f93e368211fbbd247e1ece254ffb121e20fa10 ]
 
-There were multiple issues in the current key set/remove code:
-- deleting a key with the previous key index deletes the current key
-- BIP key would only be uploaded correctly initially and corrupted on rekey
+As done for mt76_connac_mcu_alloc_wtbl_req, even if this is not a real
+bug since mt7915_mcu_alloc_wtbl_req routine can fails just if nskb is NULL,
+always check return value from mt7915_mcu_alloc_wtbl_req in order to avoid
+possible future mistake.
 
-Rework the code to better keep track of multiple keys and check for the
-key index before deleting the current key
-
+Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     |  1 +
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 97 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt7615/main.c  | 18 ++--
- 3 files changed, 65 insertions(+), 51 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 3e496a188bf0..deaeff3713f5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -221,6 +221,7 @@ struct mt76_wcid {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index e211a2bd4d3c..1cbae0eacfe9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -1170,6 +1170,9 @@ mt7915_mcu_sta_ba(struct mt7915_dev *dev,
  
- 	u16 idx;
- 	u8 hw_key_idx;
-+	u8 hw_key_idx2;
- 
- 	u8 sta:1;
- 	u8 ext_phy:1;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index fb10a6497ed0..ea17bbeb10f7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1031,7 +1031,7 @@ EXPORT_SYMBOL_GPL(mt7615_mac_set_rates);
- static int
- mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 			   struct ieee80211_key_conf *key,
--			   enum mt7615_cipher_type cipher,
-+			   enum mt7615_cipher_type cipher, u16 cipher_mask,
- 			   enum set_key_cmd cmd)
- {
- 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx) + 30 * 4;
-@@ -1048,22 +1048,22 @@ mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 			memcpy(data + 16, key->key + 24, 8);
- 			memcpy(data + 24, key->key + 16, 8);
- 		} else {
--			if (cipher != MT_CIPHER_BIP_CMAC_128 && wcid->cipher)
--				memmove(data + 16, data, 16);
--			if (cipher != MT_CIPHER_BIP_CMAC_128 || !wcid->cipher)
-+			if (cipher_mask == BIT(cipher))
- 				memcpy(data, key->key, key->keylen);
--			else if (cipher == MT_CIPHER_BIP_CMAC_128)
-+			else if (cipher != MT_CIPHER_BIP_CMAC_128)
-+				memcpy(data, key->key, 16);
-+			if (cipher == MT_CIPHER_BIP_CMAC_128)
- 				memcpy(data + 16, key->key, 16);
- 		}
- 	} else {
--		if (wcid->cipher & ~BIT(cipher)) {
--			if (cipher != MT_CIPHER_BIP_CMAC_128)
--				memmove(data, data + 16, 16);
-+		if (cipher == MT_CIPHER_BIP_CMAC_128)
- 			memset(data + 16, 0, 16);
--		} else {
-+		else if (cipher_mask)
-+			memset(data, 0, 16);
-+		if (!cipher_mask)
- 			memset(data, 0, sizeof(data));
--		}
- 	}
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
+ 					     &skb);
++	if (IS_ERR(wtbl_hdr))
++		return PTR_ERR(wtbl_hdr);
 +
- 	mt76_wr_copy(dev, addr, data, sizeof(data));
+ 	mt7915_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
  
- 	return 0;
-@@ -1071,7 +1071,7 @@ mt7615_mac_wtbl_update_key(struct mt7615_dev *dev, struct mt76_wcid *wcid,
+ 	ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
+@@ -1686,6 +1689,9 @@ int mt7915_mcu_sta_update_hdr_trans(struct mt7915_dev *dev,
+ 		return -ENOMEM;
  
- static int
- mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
--			  enum mt7615_cipher_type cipher,
-+			  enum mt7615_cipher_type cipher, u16 cipher_mask,
- 			  int keyidx, enum set_key_cmd cmd)
- {
- 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx), w0, w1;
-@@ -1081,20 +1081,23 @@ mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 
- 	w0 = mt76_rr(dev, addr);
- 	w1 = mt76_rr(dev, addr + 4);
--	if (cmd == SET_KEY) {
--		w0 |= MT_WTBL_W0_RX_KEY_VALID |
--		      FIELD_PREP(MT_WTBL_W0_RX_IK_VALID,
--				 cipher == MT_CIPHER_BIP_CMAC_128);
--		if (cipher != MT_CIPHER_BIP_CMAC_128 ||
--		    !wcid->cipher)
--			w0 |= FIELD_PREP(MT_WTBL_W0_KEY_IDX, keyidx);
--	}  else {
--		if (!(wcid->cipher & ~BIT(cipher)))
--			w0 &= ~(MT_WTBL_W0_RX_KEY_VALID |
--				MT_WTBL_W0_KEY_IDX);
--		if (cipher == MT_CIPHER_BIP_CMAC_128)
--			w0 &= ~MT_WTBL_W0_RX_IK_VALID;
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, NULL, &skb);
++	if (IS_ERR(wtbl_hdr))
++		return PTR_ERR(wtbl_hdr);
 +
-+	if (cipher_mask)
-+		w0 |= MT_WTBL_W0_RX_KEY_VALID;
-+	else
-+		w0 &= ~(MT_WTBL_W0_RX_KEY_VALID | MT_WTBL_W0_KEY_IDX);
-+	if (cipher_mask & BIT(MT_CIPHER_BIP_CMAC_128))
-+		w0 |= MT_WTBL_W0_RX_IK_VALID;
-+	else
-+		w0 &= ~MT_WTBL_W0_RX_IK_VALID;
+ 	mt7915_mcu_wtbl_hdr_trans_tlv(skb, vif, sta, NULL, wtbl_hdr);
+ 
+ 	return mt76_mcu_skb_send_msg(&dev->mt76, skb, MCU_EXT_CMD_WTBL_UPDATE,
+@@ -1710,6 +1716,9 @@ int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
+ 					     &skb);
++	if (IS_ERR(wtbl_hdr))
++		return PTR_ERR(wtbl_hdr);
 +
-+	if (cmd == SET_KEY &&
-+	    (cipher != MT_CIPHER_BIP_CMAC_128 ||
-+	     cipher_mask == BIT(cipher))) {
-+		w0 &= ~MT_WTBL_W0_KEY_IDX;
-+		w0 |= FIELD_PREP(MT_WTBL_W0_KEY_IDX, keyidx);
- 	}
+ 	mt7915_mcu_wtbl_smps_tlv(skb, sta, sta_wtbl, wtbl_hdr);
+ 
+ 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
+@@ -2279,6 +2288,9 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 
+ 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_RESET_AND_SET,
+ 					     sta_wtbl, &skb);
++	if (IS_ERR(wtbl_hdr))
++		return PTR_ERR(wtbl_hdr);
 +
- 	mt76_wr(dev, MT_WTBL_RICR0, w0);
- 	mt76_wr(dev, MT_WTBL_RICR1, w1);
- 
-@@ -1107,24 +1110,25 @@ mt7615_mac_wtbl_update_pk(struct mt7615_dev *dev, struct mt76_wcid *wcid,
- 
- static void
- mt7615_mac_wtbl_update_cipher(struct mt7615_dev *dev, struct mt76_wcid *wcid,
--			      enum mt7615_cipher_type cipher,
-+			      enum mt7615_cipher_type cipher, u16 cipher_mask,
- 			      enum set_key_cmd cmd)
- {
- 	u32 addr = mt7615_mac_wtbl_addr(dev, wcid->idx);
- 
--	if (cmd == SET_KEY) {
--		if (cipher != MT_CIPHER_BIP_CMAC_128 || !wcid->cipher)
--			mt76_rmw(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE,
--				 FIELD_PREP(MT_WTBL_W2_KEY_TYPE, cipher));
--	} else {
--		if (cipher != MT_CIPHER_BIP_CMAC_128 &&
--		    wcid->cipher & BIT(MT_CIPHER_BIP_CMAC_128))
--			mt76_rmw(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE,
--				 FIELD_PREP(MT_WTBL_W2_KEY_TYPE,
--					    MT_CIPHER_BIP_CMAC_128));
--		else if (!(wcid->cipher & ~BIT(cipher)))
--			mt76_clear(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE);
-+	if (!cipher_mask) {
-+		mt76_clear(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE);
-+		return;
- 	}
-+
-+	if (cmd != SET_KEY)
-+		return;
-+
-+	if (cipher == MT_CIPHER_BIP_CMAC_128 &&
-+	    cipher_mask & ~BIT(MT_CIPHER_BIP_CMAC_128))
-+		return;
-+
-+	mt76_rmw(dev, addr + 2 * 4, MT_WTBL_W2_KEY_TYPE,
-+		 FIELD_PREP(MT_WTBL_W2_KEY_TYPE, cipher));
- }
- 
- int __mt7615_mac_wtbl_set_key(struct mt7615_dev *dev,
-@@ -1133,25 +1137,30 @@ int __mt7615_mac_wtbl_set_key(struct mt7615_dev *dev,
- 			      enum set_key_cmd cmd)
- {
- 	enum mt7615_cipher_type cipher;
-+	u16 cipher_mask = wcid->cipher;
- 	int err;
- 
- 	cipher = mt7615_mac_get_cipher(key->cipher);
- 	if (cipher == MT_CIPHER_NONE)
- 		return -EOPNOTSUPP;
- 
--	mt7615_mac_wtbl_update_cipher(dev, wcid, cipher, cmd);
--	err = mt7615_mac_wtbl_update_key(dev, wcid, key, cipher, cmd);
-+	if (cmd == SET_KEY)
-+		cipher_mask |= BIT(cipher);
-+	else
-+		cipher_mask &= ~BIT(cipher);
-+
-+	mt7615_mac_wtbl_update_cipher(dev, wcid, cipher, cipher_mask, cmd);
-+	err = mt7615_mac_wtbl_update_key(dev, wcid, key, cipher, cipher_mask,
-+					 cmd);
- 	if (err < 0)
- 		return err;
- 
--	err = mt7615_mac_wtbl_update_pk(dev, wcid, cipher, key->keyidx, cmd);
-+	err = mt7615_mac_wtbl_update_pk(dev, wcid, cipher, cipher_mask,
-+					key->keyidx, cmd);
- 	if (err < 0)
- 		return err;
- 
--	if (cmd == SET_KEY)
--		wcid->cipher |= BIT(cipher);
--	else
--		wcid->cipher &= ~BIT(cipher);
-+	wcid->cipher = cipher_mask;
- 
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index 56dd0b4e4460..7c631520e8f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -350,7 +350,8 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	struct mt7615_sta *msta = sta ? (struct mt7615_sta *)sta->drv_priv :
- 				  &mvif->sta;
- 	struct mt76_wcid *wcid = &msta->wcid;
--	int idx = key->keyidx, err;
-+	int idx = key->keyidx, err = 0;
-+	u8 *wcid_keyidx = &wcid->hw_key_idx;
- 
- 	/* The hardware does not support per-STA RX GTK, fallback
- 	 * to software mode for these.
-@@ -365,6 +366,7 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	/* fall back to sw encryption for unsupported ciphers */
- 	switch (key->cipher) {
- 	case WLAN_CIPHER_SUITE_AES_CMAC:
-+		wcid_keyidx = &wcid->hw_key_idx2;
- 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIE;
- 		break;
- 	case WLAN_CIPHER_SUITE_TKIP:
-@@ -382,12 +384,13 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 
- 	mt7615_mutex_acquire(dev);
- 
--	if (cmd == SET_KEY) {
--		key->hw_key_idx = wcid->idx;
--		wcid->hw_key_idx = idx;
--	} else if (idx == wcid->hw_key_idx) {
--		wcid->hw_key_idx = -1;
--	}
-+	if (cmd == SET_KEY)
-+		*wcid_keyidx = idx;
-+	else if (idx == *wcid_keyidx)
-+		*wcid_keyidx = -1;
-+	else
-+		goto out;
-+
- 	mt76_wcid_key_setup(&dev->mt76, wcid,
- 			    cmd == SET_KEY ? key : NULL);
- 
-@@ -396,6 +399,7 @@ static int mt7615_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	else
- 		err = __mt7615_mac_wtbl_set_key(dev, wcid, key, cmd);
- 
-+out:
- 	mt7615_mutex_release(dev);
- 
- 	return err;
+ 	if (enable) {
+ 		mt7915_mcu_wtbl_generic_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
+ 		mt7915_mcu_wtbl_hdr_trans_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
 -- 
 2.30.2
 
