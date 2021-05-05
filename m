@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_NONE,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D3CC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:56:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3ADCC43600
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:57:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CD5FA613EB
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:56:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD5FA613EB
+	by mail.kernel.org (Postfix) with ESMTPS id AA6A0613FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:57:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA6A0613FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5JsdHQ423fyBXTwEdiYESlKvaHD5EhunnJheHkPvFRA=; b=IAsavyyBP6bR6LGwusPby5fc0
-	33QTOWj/YhNegXloTAhSZwxwwavB8hEL0B9RQ4JMV8/gOAKUc6yhp0T292IrB6gPq7zP4iFrtqJiK
-	zr07ahAfHdUgO0sGqwAsQsVfvYBkPnpRKSi9dwsQcgvoCV+7jWjUVbpl/9AtN3uNlTXXd59NVMOjt
-	ch4dQNrPKXYx3kniROdZ8B17sm7VBGP1lHok+O1v7je8mgsN7AoviSgxcVDbf7e26LD0vXJxcBJYB
-	EOlYEVOlm131FU4CbE+EfEvVJd3WDy73nqq8k1amySXTrvKRdkjQMkuIID/pVyC8RocPsGgrcXXFy
-	Q7cmhAIkA==;
+	 bh=fvz02K8UP+WI5Ggf6SlqzHvB6VmS/b9TUwf+ZuVF6TM=; b=RiXDrIe8oA4zajGMrArv5ghCn
+	JIQ0ImJGKXbZQuJPfAm+aS4mPQTRFrpK7667HlBUbQ9vATEQ5GuZngadhlSlBQ4bVDqgzYhfR9/Sv
+	hL/Tg2AqXni/zYak/xzKr+Ud+tumcbrKilOUZUacAlLwwCAfhlnUv0rvS1qMMYjNxAuDoOOb6WV9e
+	HNy9JNCPc4DO+wEUu4gXJQ+AuK6E0SqkuOM+bbxvmATi3zD56YalBjTMpB258bwOw5K5+45KLKpsw
+	T73i/8ut07KLEaKfwUGACIQsG6lRqd0TtDTN7conlvQEHWRN869Lo6aCJl6Rk8aryC3+UxE/u3qhl
+	49a0DFp3A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leKox-001nhA-N3; Wed, 05 May 2021 16:56:23 +0000
+	id 1leKpY-001nuV-HE; Wed, 05 May 2021 16:57:00 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKYd-001hOC-9W; Wed, 05 May 2021 16:39:31 +0000
+ id 1leKZ9-001hbD-Rb; Wed, 05 May 2021 16:40:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=3kMIRmN20xPNRozmagyMKX7PRiZyuwFmfg3B2rKEUlw=; b=u2enSeulXsoXzupwu1XlwxGbhb
- h/ombRCBdpQrzgNGGJ4tked5DXTLVQcCEW7RSi7zqhGkeFzPmHgDvqAZL2zOQVu07BtQMCjE5Uy7j
- c6CUsg7A+EAgWQZH/vCHbVOUO/MgI5/w8VbF71FzqD/mSGmKOAixH8VGjc37+NtSPwfuYRGojOYiL
- y8GeL0fKmFiOILl0dimHkTiw+VJFsRFuEd0CNcfOCckNqMw0qPSkUvHIOLDRFUsSI5mQM6mQXBGDX
- DhqjdMYBwa8MWMfF+EsE52U1jxBBwkTeWMEpw9IOEj6GshWNM6vezMyFPF1j9GzrmplBO1LrX6Sun
- o4nGCAkw==;
+ bh=4AYASpm5V49RZXv9cmuRa0MytIx53STDRUx9RIzZvXc=; b=stdHOEC0R+DEAWakVbqqifwr6h
+ TxBeP69g7T5OnOLe0rKcAKFBzyUUd/5obQpXB/NJVl5tl1RLeiyOXdt52otZT+OMUrawZb36iFarH
+ h9cRTp/2kn2JOzIX3F3FwIzWhsqjxRey4E6Pa1LmL3Ds/uGI1lExu080l/2w3xayf/6/s0ya+a80Y
+ PVVcTvoCHCS91QExaLHX2a6K/tx6xfu76nuuSGezxzL5rTy/Pinod3SEfVEdjLtFtqhettaGIQGGK
+ h0J4ZZOrEE6bSwWudvCcddk8AQr2K1UENkr3Y4WW2XwwL+JR9KBG4WLZgpfpxdoJEaFh5E+Ilw6E7
+ O6WhP0Sw==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKYZ-004xxA-Op; Wed, 05 May 2021 16:39:29 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 484C76198E;
- Wed,  5 May 2021 16:39:26 +0000 (UTC)
+ id 1leKZ7-004y5S-Bf; Wed, 05 May 2021 16:40:02 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E1BDA61997;
+ Wed,  5 May 2021 16:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232767;
- bh=Eg/G/UjjFFu407dQzUK3rl62N3J47c9o9i1w6JqNAWA=;
+ s=k20201202; t=1620232801;
+ bh=uhJonWH3UFMxyXpuKpf7hxkAMmIAbWNq6vh6ZFFOgA8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cPqmf2zLuas0GpCMgUssGfQzMKsyJbWo7W5qnWYVUWfJ0/Cl3wmPlJUR9bFrvh4NB
- OkGOH7gYWWEkxo7KolQr09OYrwA3u1SkCqNwQ/TtgqGlyysEdOpCeFr3krR6SOVBmo
- u4d2vP1OEDmhn6l5+qfMdjmT4+MGdWoref8+/F86WC5hx35Qad6O3XHs12RJxfgGq+
- Q172cnvH4ohQqZcAK7Nygl8oMLz0ojALFvy1xh33Qp+fdaV6X3cLeFO7kgAuFNtJs6
- ZO68kbl5eCoG5k8N1tjNisi080WSqcgcWPVZjdWkCRhYnr2HQOy8qlOdFV/G0Ft5hF
- bSWdew+OklPFA==
+ b=fyBVi+Cki16QxDFO40k9D0aUEfIAwyeoyF+SkOL/gh69+6kJoyW/RLH9dKNUOY98r
+ BhnSRPl9XIWHhQWwod9JzWR21HpzzWwntvyOHIYqyFMB/jjMTDXPRp8CtlKUwOzkuS
+ wyCILNR0JYLg4ULT0S5XC9UNg7GZiB4bIh53N77pXQzL5C9s8JLOfu394IbDx0WE80
+ YPnBJ9KMmZPAFIbfCYHV06a0FYR7Fqbfy3ANwy/6f9rVJxXn02YdEdCpZ532jwWYyI
+ x6wT0KQBlpHoBPm+/4+xPl9R4s/os5XeMqIqbHV+LepKR/G0d3y2mZFArVEgdXq4pX
+ LOMqUGWzVy2ZQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: David Bauer <mail@david-bauer.net>, Felix Fietkau <nbd@nbd.name>,
- Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
+Cc: Felix Fietkau <nbd@nbd.name>, Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>, Sasha Levin <sashal@kernel.org>,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 21/46] mt76: mt76x0: disable GTK offloading
-Date: Wed,  5 May 2021 12:38:31 -0400
-Message-Id: <20210505163856.3463279-21-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 44/46] net: ethernet: mtk_eth_soc: fix RX VLAN
+ offload
+Date: Wed,  5 May 2021 12:38:54 -0400
+Message-Id: <20210505163856.3463279-44-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210505163856.3463279-1-sashal@kernel.org>
 References: <20210505163856.3463279-1-sashal@kernel.org>
@@ -77,8 +78,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_093927_878474_D98B31EC 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20210505_094001_443606_F3AC56AA 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,44 +96,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: David Bauer <mail@david-bauer.net>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 4b36cc6b390f18dbc59a45fb4141f90d7dfe2b23 ]
+[ Upstream commit 3f57d8c40fea9b20543cab4da12f4680d2ef182c ]
 
-When operating two VAP on a MT7610 with encryption (PSK2, SAE, OWE),
-only the first one to be created will transmit properly encrypteded
-frames.
+The VLAN ID in the rx descriptor is only valid if the RX_DMA_VTAG bit is
+set. Fixes frames wrongly marked with VLAN tags.
 
-All subsequently created VAPs will sent out frames with the payload left
-unencrypted, breaking multicast traffic (ICMP6 NDP) and potentially
-disclosing information to a third party.
-
-Disable GTK offloading and encrypt these frames in software to
-circumvent this issue. THis only seems to be necessary on MT7610 chips,
-as MT7612 is not affected from our testing.
-
-Signed-off-by: David Bauer <mail@david-bauer.net>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
+[Ilya: fix commit message]
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_util.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index de0d6f21c621..075871f52bad 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -450,6 +450,10 @@ int mt76x02_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	    !(key->flags & IEEE80211_KEY_FLAG_PAIRWISE))
- 		return -EOPNOTSUPP;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index d01b3a1b40f4..7e3806fd70b2 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -1315,7 +1315,7 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
+ 		skb->protocol = eth_type_trans(skb, netdev);
  
-+	/* MT76x0 GTK offloading does not work with more than one VIF */
-+	if (is_mt76x0(dev) && !(key->flags & IEEE80211_KEY_FLAG_PAIRWISE))
-+		return -EOPNOTSUPP;
-+
- 	msta = sta ? (struct mt76x02_sta *)sta->drv_priv : NULL;
- 	wcid = msta ? &msta->wcid : &mvif->group_wcid;
+ 		if (netdev->features & NETIF_F_HW_VLAN_CTAG_RX &&
+-		    RX_DMA_VID(trxd.rxd3))
++		    (trxd.rxd2 & RX_DMA_VTAG))
+ 			__vlan_hwaccel_put_tag(skb, htons(ETH_P_8021Q),
+ 					       RX_DMA_VID(trxd.rxd3));
+ 		skb_record_rx_queue(skb, 0);
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+index 1e787f3577aa..1e9202b34d35 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+@@ -293,6 +293,7 @@
+ #define RX_DMA_LSO		BIT(30)
+ #define RX_DMA_PLEN0(_x)	(((_x) & 0x3fff) << 16)
+ #define RX_DMA_GET_PLEN0(_x)	(((_x) >> 16) & 0x3fff)
++#define RX_DMA_VTAG		BIT(15)
  
+ /* QDMA descriptor rxd3 */
+ #define RX_DMA_VID(_x)		((_x) & 0xfff)
 -- 
 2.30.2
 
