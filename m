@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1953CC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E49E5C43603
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E77961423
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:45:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E77961423
+	by mail.kernel.org (Postfix) with ESMTPS id 69D7A613F1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69D7A613F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zYsOwjTMp8Ib+WPtNy1mYmXfSydCYS6PrnSoXkz4Kro=; b=jiJBOx86qbcY13ensfOhpyBQR
-	XjGu+cBantPxfhIwlnAxLTQfjgqnoBvVnZVRcV6MGNgYwETHlf6cUiJ7P73NvTPE4lAlOe7yJU493
-	RfwclHtiSHCgospTr3jTYoHh8ZzgGkZpvQC9imEirF44Uf3v1ZbWXiKHAV6Hx2mWMeF5EUPZRu90J
-	TD4+5WYGk+/vn0EttmJMus+8ntaX3CEaZ7tm2qdYZGHyg+3xhLM2pjaUh8JCiv4Bv2l+SOGMtP3J3
-	brfU9F6BU0M1hb7bL+Laah3QUIedfL9tE/W58/v5SLTsUbwni3SScS7BnoKToXploeZTqd4JiOlqU
-	NuvKGmWvw==;
+	 bh=dcMtCSKyiHO8+Fm+HBRyk4LBv0VV1Av+f3+AAlftUXY=; b=WDsd5/SiLAaGO8PTV630tNXyK
+	qtzr/zUjmJ3IQ4No/E5IC5gp1qBQRbt6yg4Q0PJFn3OG0vdYvDXzW/sZZ50+yZzkPaoDaL3Crq+Nx
+	0iXxjmzu6m7o/6qYvXOc7MvgjuvJTwVn3ymczerSNgVyUR5mje13VtWhiWhZ/HjeehlKUPIyNuc6l
+	ToN28pkcngo+AiishgGueFcSTrq5SaF0+MbduWKEq/J9aBt5Jt85qU3uKiKksoO4tcX8YWsqYFkb+
+	br/rstWT9VKVCrKZuZP9aIaZP/Te/Yru5Teb4iX6g9P3fxmcPmbLm1DiZ/VYkmcbZPqZdRAs7RMLj
+	sLlsutNsQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leKeY-001jgi-2y; Wed, 05 May 2021 16:45:38 +0000
+	id 1leKf7-001jtK-BV; Wed, 05 May 2021 16:46:13 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUp-001fdT-8z; Wed, 05 May 2021 16:35:35 +0000
+ id 1leKUq-001feQ-Sy; Wed, 05 May 2021 16:35:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=1FJCUdsq6huqRWGgmuLgcRDyPqGy3gzDFWo106WjOZ0=; b=EaUgW72Ad55ck5zf/uo+aD7OMu
- nUcsqG5PHC3iibFDsMTmPREKndpLFsLaxj3xk1cTdZTJZ2QLwsSjwa8dmYsTok2eqagXcehpiKwsJ
- tFubu9p1SW0zZKXge1CTs0zO1FlZW9XowhM50JOizTDjDx+UTHiyYmJaNv/qCZlFo7JkuB8erpC3m
- al8kYQrTx2CgsEgCmrprhSBbfkt+kLvKXKBqfcGTFx5+N/+qvxjNv9YuoBYYthPqUPuLyYn2+/hF9
- lbL1YpjMyxPkEHIlSzzFUNQjSVeh/gkhtsoTp6SWG9CzY8yahfn0CKQnuhMU14FMItyXazOQ+uKtV
- 5aIdbrXQ==;
+ bh=arehUmzUY/LglN8e6XBlYVdVHexm99v5B4MIfUsXJ44=; b=f1G0mCYQnT0ULxS4zPnAoJ5VM9
+ 6qZTeXetMDSOwMQpTFKi1deqPBeY/AcJ59OIrJ95wMTY6jK3ZFSJ32gzS7ZWjjtY3VcUtdu4GSsd+
+ KGxbQhSZPPbJrrRUoNsJ3QFNCg61mDz+C9RQmY2N+jAFrlD598paXjJSQeG+o/XnbjZ16mZtilO9y
+ mZ+94DVUmQ1TmVsKde6IPuS8l4dp49AykOzkXDs0FsaU/+Ujy0YINzTT67WT6mlAxHpJ8t6/2Be/8
+ tUzekCop+3vnt9Y27hFZfkgjHSjLlUq2MIScfIXPVn+FwgL9IA1/ux0zjdzxo2v/w5DhZR5h6mWFq
+ mXtI2t6g==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUm-004x5p-ML; Wed, 05 May 2021 16:35:34 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 54D806191E;
- Wed,  5 May 2021 16:35:31 +0000 (UTC)
+ id 1leKUo-004x68-Ah; Wed, 05 May 2021 16:35:35 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D26B061874;
+ Wed,  5 May 2021 16:35:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232532;
- bh=QJ+YkKBhnjMB154wdrYAXSTMHCG8sjOU2BZsUExpeco=;
+ s=k20201202; t=1620232533;
+ bh=GsWVx2TWKCIrL5inlj2AYPPNbMQvBe2WbhYn+taTPsc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eNxOK18PZdz2niZXbLKtJqDuSZobOfksc5LnP/d3jWdJZQk9S5XewdCyjtQ2twfV7
- +99apIRTyfmzD6f1Mk0+mlSrI6Y1S9cGx/Gh0ufTiylBOOw8gjr87nfjXCWHKgccRs
- /HdCvpO8jDAqEGWg0BN5GgjevkKvSRBJ8QK1tNFq1yRSqXPMq05i+QGgtW90K1x35J
- P4MXL0HRMe0cQaTzDZLRycueJf+Ike5jHoGSiZLgk8j8SptyNoxuiK9vcLAh/6D7Cc
- i9gllcpusMNMTt0azEcoqrc3rWTwDQuon5/+1REO9dFi7DA7QDuSV/BZPi8/5ykVTu
- 76FrflM8PFJ/A==
+ b=UU8IoALC3WSCUQOv2eK1afDWT9cKND277qQYqb2FBSkuSVoJcW5j/bM+/wxXgbTc/
+ u+eZ1DGUYNxC6B0T2ysTKkRDDHnbVYZVCiFq9Fzfi9GnvJTbsatcQel7dj2u5Ccjap
+ GlhD4z63DuLIhuPNpcc8rd0dt3au1kWU3A09tu7t4ioIwK2J1NvRN8jq1DGs0SGUIx
+ GQGSgm7QmbZZXA5S59xicxiuav/Z1NJKNyRtpCF8TalG4SsCW1sMg9FV0rydc2ZHYy
+ 6Q7FBPqTdsfWyUGpqenWgRzmKwWF6SI+0axniHHXji4eKrG917zYHUP7SlWAYIEwen
+ GvM1lsIak7r1g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.11 054/104] mt76: mt7915: always check return value
- from mt7915_mcu_alloc_wtbl_req
-Date: Wed,  5 May 2021 12:33:23 -0400
-Message-Id: <20210505163413.3461611-54-sashal@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.11 055/104] mt76: mt7915: fix key set/delete issue
+Date: Wed,  5 May 2021 12:33:24 -0400
+Message-Id: <20210505163413.3461611-55-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210505163413.3461611-1-sashal@kernel.org>
 References: <20210505163413.3461611-1-sashal@kernel.org>
@@ -78,9 +76,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_093532_774870_ADC3BE31 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210505_093534_421645_2D779E14 
+X-CRM114-Status: GOOD (  13.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,66 +94,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 45f93e368211fbbd247e1ece254ffb121e20fa10 ]
+[ Upstream commit 1da4fd48d28436f8b690cdc2879603dede6d8355 ]
 
-As done for mt76_connac_mcu_alloc_wtbl_req, even if this is not a real
-bug since mt7915_mcu_alloc_wtbl_req routine can fails just if nskb is NULL,
-always check return value from mt7915_mcu_alloc_wtbl_req in order to avoid
-possible future mistake.
+Deleting a key with the previous key index deletes the current key
+Rework the code to better keep track of multiple keys and check for the
+key index before deleting the current key
 
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7915/main.c  | 25 +++++++++++++------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index e211a2bd4d3c..1cbae0eacfe9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1170,6 +1170,9 @@ mt7915_mcu_sta_ba(struct mt7915_dev *dev,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 0c82aa2ef219..2c75a5987544 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -314,7 +314,9 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 	struct mt7915_sta *msta = sta ? (struct mt7915_sta *)sta->drv_priv :
+ 				  &mvif->sta;
+ 	struct mt76_wcid *wcid = &msta->wcid;
++	u8 *wcid_keyidx = &wcid->hw_key_idx;
+ 	int idx = key->keyidx;
++	int err = 0;
  
- 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
- 					     &skb);
-+	if (IS_ERR(wtbl_hdr))
-+		return PTR_ERR(wtbl_hdr);
+ 	/* The hardware does not support per-STA RX GTK, fallback
+ 	 * to software mode for these.
+@@ -329,6 +331,7 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 	/* fall back to sw encryption for unsupported ciphers */
+ 	switch (key->cipher) {
+ 	case WLAN_CIPHER_SUITE_AES_CMAC:
++		wcid_keyidx = &wcid->hw_key_idx2;
+ 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIE;
+ 		break;
+ 	case WLAN_CIPHER_SUITE_TKIP:
+@@ -344,16 +347,24 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	if (cmd == SET_KEY) {
+-		key->hw_key_idx = wcid->idx;
+-		wcid->hw_key_idx = idx;
+-	} else if (idx == wcid->hw_key_idx) {
+-		wcid->hw_key_idx = -1;
+-	}
++	mutex_lock(&dev->mt76.mutex);
 +
- 	mt7915_mcu_wtbl_ba_tlv(skb, params, enable, tx, sta_wtbl, wtbl_hdr);
- 
- 	ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
-@@ -1686,6 +1689,9 @@ int mt7915_mcu_sta_update_hdr_trans(struct mt7915_dev *dev,
- 		return -ENOMEM;
- 
- 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, NULL, &skb);
-+	if (IS_ERR(wtbl_hdr))
-+		return PTR_ERR(wtbl_hdr);
++	if (cmd == SET_KEY)
++		*wcid_keyidx = idx;
++	else if (idx == *wcid_keyidx)
++		*wcid_keyidx = -1;
++	else
++		goto out;
 +
- 	mt7915_mcu_wtbl_hdr_trans_tlv(skb, vif, sta, NULL, wtbl_hdr);
+ 	mt76_wcid_key_setup(&dev->mt76, wcid,
+ 			    cmd == SET_KEY ? key : NULL);
  
- 	return mt76_mcu_skb_send_msg(&dev->mt76, skb, MCU_EXT_CMD_WTBL_UPDATE,
-@@ -1710,6 +1716,9 @@ int mt7915_mcu_add_smps(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 
- 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_SET, sta_wtbl,
- 					     &skb);
-+	if (IS_ERR(wtbl_hdr))
-+		return PTR_ERR(wtbl_hdr);
+-	return mt7915_mcu_add_key(dev, vif, msta, key, cmd);
++	err = mt7915_mcu_add_key(dev, vif, msta, key, cmd);
 +
- 	mt7915_mcu_wtbl_smps_tlv(skb, sta, sta_wtbl, wtbl_hdr);
- 
- 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
-@@ -2279,6 +2288,9 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 
- 	wtbl_hdr = mt7915_mcu_alloc_wtbl_req(dev, msta, WTBL_RESET_AND_SET,
- 					     sta_wtbl, &skb);
-+	if (IS_ERR(wtbl_hdr))
-+		return PTR_ERR(wtbl_hdr);
++out:
++	mutex_unlock(&dev->mt76.mutex);
 +
- 	if (enable) {
- 		mt7915_mcu_wtbl_generic_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
- 		mt7915_mcu_wtbl_hdr_trans_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
++	return err;
+ }
+ 
+ static int mt7915_config(struct ieee80211_hw *hw, u32 changed)
 -- 
 2.30.2
 
