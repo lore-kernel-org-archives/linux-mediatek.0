@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E49E5C43603
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D40EC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:52 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 69D7A613F1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69D7A613F1
+	by mail.kernel.org (Postfix) with ESMTPS id DF3A8613BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 May 2021 16:46:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF3A8613BE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dcMtCSKyiHO8+Fm+HBRyk4LBv0VV1Av+f3+AAlftUXY=; b=WDsd5/SiLAaGO8PTV630tNXyK
-	qtzr/zUjmJ3IQ4No/E5IC5gp1qBQRbt6yg4Q0PJFn3OG0vdYvDXzW/sZZ50+yZzkPaoDaL3Crq+Nx
-	0iXxjmzu6m7o/6qYvXOc7MvgjuvJTwVn3ymczerSNgVyUR5mje13VtWhiWhZ/HjeehlKUPIyNuc6l
-	ToN28pkcngo+AiishgGueFcSTrq5SaF0+MbduWKEq/J9aBt5Jt85qU3uKiKksoO4tcX8YWsqYFkb+
-	br/rstWT9VKVCrKZuZP9aIaZP/Te/Yru5Teb4iX6g9P3fxmcPmbLm1DiZ/VYkmcbZPqZdRAs7RMLj
-	sLlsutNsQ==;
+	 bh=++IfwLSz+YA1dvH3Odo6aDU6uu9ALFVGrgreuGiAbD4=; b=cmbZURT8S4eRMcgZGVfrC+i8R
+	bZooFMI6D/lLzm1O2yM//J1I1YkToRhbJqR+bQpl4xTjvH7NgPfQe9PQjWKWsZdY2tUTiXvUGSxRi
+	bjePbKkN/T/InkTKNLACnhab5GtVvmo/wIe/Wj6IvimsvFzNCn2tt4gPHfLMldj5oddozRa2vSKEF
+	mC3U5kKlbuLFCyBH7LwJf3ANz/uuqhalCY64b4VN/k8cHnVuuGc0cF2VHCNTLDulLH8P3V2iWj3kI
+	U6jnsA8EWoOR4cxA/Ppxi26j4aAy2qRXZioHojdWl7UIu/bfKDtV2OCBpIatNzwgxDLM2zOMX/kAs
+	teSnUAx4A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leKf7-001jtK-BV; Wed, 05 May 2021 16:46:13 +0000
+	id 1leKfZ-001k5E-L3; Wed, 05 May 2021 16:46:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUq-001feQ-Sy; Wed, 05 May 2021 16:35:37 +0000
+ id 1leKUs-001ff4-Df; Wed, 05 May 2021 16:35:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=arehUmzUY/LglN8e6XBlYVdVHexm99v5B4MIfUsXJ44=; b=f1G0mCYQnT0ULxS4zPnAoJ5VM9
- 6qZTeXetMDSOwMQpTFKi1deqPBeY/AcJ59OIrJ95wMTY6jK3ZFSJ32gzS7ZWjjtY3VcUtdu4GSsd+
- KGxbQhSZPPbJrrRUoNsJ3QFNCg61mDz+C9RQmY2N+jAFrlD598paXjJSQeG+o/XnbjZ16mZtilO9y
- mZ+94DVUmQ1TmVsKde6IPuS8l4dp49AykOzkXDs0FsaU/+Ujy0YINzTT67WT6mlAxHpJ8t6/2Be/8
- tUzekCop+3vnt9Y27hFZfkgjHSjLlUq2MIScfIXPVn+FwgL9IA1/ux0zjdzxo2v/w5DhZR5h6mWFq
- mXtI2t6g==;
+ bh=qYLU8fjZrfZffRMfCmOtVmlNVNoY7WdvRrHLjaJxSFo=; b=UCcbw0tIiZSjx4uscJVJa37qbY
+ UII+jvwlBwxBjXJfP91zYftKzoIbH/0soLpLE2sbg7v00yCO8T5ZhsNgThCoMVqJwuth4Sbjsfb2G
+ 59CLGLhwOF19npQPaLBDLavCiCJfcSfS6sUaS8YFbQlxhf2/NXHhVrwyiZNa0K3A0tw6CCCofkpqM
+ Yj152c1lzzXdFixmSn49KcFj9XmJH4br3Jsh6ArffVGFrTGn/5pynQg56wMffqRQ+iZc39sCsAWFa
+ 97JnugDjqJmZ4nEGTnmw46ZRHvqfWXQranjfOeCWOgDK7pBJqVCYbg+LXp9fkZL2qfN5dio5FHFLg
+ R7uiYbLA==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leKUo-004x68-Ah; Wed, 05 May 2021 16:35:35 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D26B061874;
- Wed,  5 May 2021 16:35:32 +0000 (UTC)
+ id 1leKUp-004x6x-Nz; Wed, 05 May 2021 16:35:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 525AD61922;
+ Wed,  5 May 2021 16:35:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620232533;
- bh=GsWVx2TWKCIrL5inlj2AYPPNbMQvBe2WbhYn+taTPsc=;
+ s=k20201202; t=1620232535;
+ bh=lDeIC7HMZT78ZG5J+zGkBUCrnVQ7apnh8xm8hSQ2pc8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=UU8IoALC3WSCUQOv2eK1afDWT9cKND277qQYqb2FBSkuSVoJcW5j/bM+/wxXgbTc/
- u+eZ1DGUYNxC6B0T2ysTKkRDDHnbVYZVCiFq9Fzfi9GnvJTbsatcQel7dj2u5Ccjap
- GlhD4z63DuLIhuPNpcc8rd0dt3au1kWU3A09tu7t4ioIwK2J1NvRN8jq1DGs0SGUIx
- GQGSgm7QmbZZXA5S59xicxiuav/Z1NJKNyRtpCF8TalG4SsCW1sMg9FV0rydc2ZHYy
- 6Q7FBPqTdsfWyUGpqenWgRzmKwWF6SI+0axniHHXji4eKrG917zYHUP7SlWAYIEwen
- GvM1lsIak7r1g==
+ b=Gf/yM5HeQemEqLUSu5ceNOATFyDFanTSykJmJ/GTfZlWRzhF1Oyy6ZYY8EsTA/Gc9
+ bLNlqAhZ/RqAegZrX4k9mcY1GNkFYp9kF0lzyKi+1m6vPMVb3ZaRTqsVLICMCMuyOV
+ Gj6kLlSbc7DGTX+k+8+GT0WAVr9rzsenod+fQxOELtLGc4jsCYDQL7e9y1QYAwGA/6
+ fnQhfzpDKnbEbhsbcJZXJgc6PP9UGPZthdkJA4O6j/2WeDtoH9HbOzUD/JbMvapm7e
+ wLSMorSLL6YWpNPd1IxHse0XnqqYlZ39wuw7bJ2ApcECTNkTbRl5udNoCRN840hxca
+ M1g+EeDmDZ3VA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.11 055/104] mt76: mt7915: fix key set/delete issue
-Date: Wed,  5 May 2021 12:33:24 -0400
-Message-Id: <20210505163413.3461611-55-sashal@kernel.org>
+Cc: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.11 056/104] mt76: mt7915: fix txpower init for TSSI
+ off chips
+Date: Wed,  5 May 2021 12:33:25 -0400
+Message-Id: <20210505163413.3461611-56-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210505163413.3461611-1-sashal@kernel.org>
 References: <20210505163413.3461611-1-sashal@kernel.org>
@@ -76,8 +78,9 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210505_093534_421645_2D779E14 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20210505_093535_839446_B6A4DAAD 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,74 +97,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Shayne Chen <shayne.chen@mediatek.com>
 
-[ Upstream commit 1da4fd48d28436f8b690cdc2879603dede6d8355 ]
+[ Upstream commit a226ccd04c479ccd23d6927c64bad1b441707f70 ]
 
-Deleting a key with the previous key index deletes the current key
-Rework the code to better keep track of multiple keys and check for the
-key index before deleting the current key
+Fix incorrect txpower init value for TSSI off chips which causes
+too small txpower.
 
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../net/wireless/mediatek/mt76/mt7915/main.c  | 25 +++++++++++++------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 0c82aa2ef219..2c75a5987544 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -314,7 +314,9 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	struct mt7915_sta *msta = sta ? (struct mt7915_sta *)sta->drv_priv :
- 				  &mvif->sta;
- 	struct mt76_wcid *wcid = &msta->wcid;
-+	u8 *wcid_keyidx = &wcid->hw_key_idx;
- 	int idx = key->keyidx;
-+	int err = 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index 7a2be3f61398..c3e32555cf24 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -114,7 +114,7 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 				   struct ieee80211_channel *chan,
+ 				   u8 chain_idx)
+ {
+-	int index;
++	int index, target_power;
+ 	bool tssi_on;
  
- 	/* The hardware does not support per-STA RX GTK, fallback
- 	 * to software mode for these.
-@@ -329,6 +331,7 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 	/* fall back to sw encryption for unsupported ciphers */
- 	switch (key->cipher) {
- 	case WLAN_CIPHER_SUITE_AES_CMAC:
-+		wcid_keyidx = &wcid->hw_key_idx2;
- 		key->flags |= IEEE80211_KEY_FLAG_GENERATE_MMIE;
- 		break;
- 	case WLAN_CIPHER_SUITE_TKIP:
-@@ -344,16 +347,24 @@ static int mt7915_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
- 		return -EOPNOTSUPP;
+ 	if (chain_idx > 3)
+@@ -123,15 +123,22 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 	tssi_on = mt7915_tssi_enabled(dev, chan->band);
+ 
+ 	if (chan->band == NL80211_BAND_2GHZ) {
+-		index = MT_EE_TX0_POWER_2G + chain_idx * 3 + !tssi_on;
++		index = MT_EE_TX0_POWER_2G + chain_idx * 3;
++		target_power = mt7915_eeprom_read(dev, index);
++
++		if (!tssi_on)
++			target_power += mt7915_eeprom_read(dev, index + 1);
+ 	} else {
+-		int group = tssi_on ?
+-			    mt7915_get_channel_group(chan->hw_value) : 8;
++		int group = mt7915_get_channel_group(chan->hw_value);
++
++		index = MT_EE_TX0_POWER_5G + chain_idx * 12;
++		target_power = mt7915_eeprom_read(dev, index + group);
+ 
+-		index = MT_EE_TX0_POWER_5G + chain_idx * 12 + group;
++		if (!tssi_on)
++			target_power += mt7915_eeprom_read(dev, index + 8);
  	}
  
--	if (cmd == SET_KEY) {
--		key->hw_key_idx = wcid->idx;
--		wcid->hw_key_idx = idx;
--	} else if (idx == wcid->hw_key_idx) {
--		wcid->hw_key_idx = -1;
--	}
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	if (cmd == SET_KEY)
-+		*wcid_keyidx = idx;
-+	else if (idx == *wcid_keyidx)
-+		*wcid_keyidx = -1;
-+	else
-+		goto out;
-+
- 	mt76_wcid_key_setup(&dev->mt76, wcid,
- 			    cmd == SET_KEY ? key : NULL);
- 
--	return mt7915_mcu_add_key(dev, vif, msta, key, cmd);
-+	err = mt7915_mcu_add_key(dev, vif, msta, key, cmd);
-+
-+out:
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return err;
+-	return mt7915_eeprom_read(dev, index);
++	return target_power;
  }
  
- static int mt7915_config(struct ieee80211_hw *hw, u32 changed)
+ static const u8 sku_cck_delta_map[] = {
 -- 
 2.30.2
 
