@@ -2,93 +2,123 @@ Return-Path: <SRS0=vvwr=KC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48D34C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 07:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9AD2C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 07:56:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92468613C2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 07:50:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92468613C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F1AE161430
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 07:56:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F1AE161430
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=SlaXtjAogRZXjB0p7anjfwopao8PBzhTHRbEtNnbaGM=; b=bekAOxF5doPTAZcNrZHJsskhN
-	4c6a41CTj/XDyZLnEn5XOzsqDPDtbQToOjtw4c1MtTE+nPkf/Ku2Xr1J7SBgk5gJ2AZY45ciBfqQx
-	e6TjlH8q6Efm+xH2FV7HDBZzvB5oWHr/ntEJ/87YKLu2Izayz4Mlu8K6YiKKOK/jQcYZOFvo8k1xC
-	AHLtLXCPZkackv9d6WXATS8NSi0r7cL3LJZ3AbZV3CKWIan1Mu0edVOePnNd1RYyXIBkFAFYnWjGN
-	e98ISZd3vGeU8RKNHkzF7OaMco/sqA42uLS1ndEZgO//JqTdBiL/ZTaugiZ3QK4Eg+oJPbgkm3Md4
-	YxkgH3QJw==;
+	 bh=IHfrqLX/r6p+kFXLDIGhZijKWLdrgyNox6+dDbgeARI=; b=qBEFAB6f6Ac90GANGxrNq/UG3
+	1OzQzPbArPZn0fzTJryiDjw4u5ZLSSlD+4pDAtdJTruNg32sipCn3ew1/Zd7Ajr2toXUlJJvp0uEl
+	iEhkoUFX3dFJtWnYGl6Z9sdEZD+/TV+e9UdGT/ietJ9vv0bjU/OLT0xLsEwyREmTYGbkr+sWKuftg
+	Ccpwv6iomQOihro3E4sh1TjvKKIGnyegmsEXfZZfvlDZxMSdIIUYjNEj4O8GuktcK2QktljOptJ1q
+	zxpZv5542jB+M/q/H96rA2i0O/iNoMbBFXQOhJARmRthGkIgTT8H1Jossj15glPJ2d83X7Z9u4ux5
+	RBUGBVkgw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1levFG-006Qoq-MJ; Fri, 07 May 2021 07:49:58 +0000
+	id 1levKw-006S6N-4s; Fri, 07 May 2021 07:55:50 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1levEp-006QiU-VZ; Fri, 07 May 2021 07:49:32 +0000
+ id 1levKu-006S5p-DH
+ for linux-mediatek@desiato.infradead.org; Fri, 07 May 2021 07:55:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=KNnUA6V6+eBMeqrvnHn7hFApZozuNBmSCEONxX0zPCQ=; b=AgQQNn62gpCQHZ/tHGvLZeogtZ
- iTyXEgW3EWSXajIp4XQJ08g3jQfON/HY6avN8n715JN3szF0l4hlNpSybB3in9HGjxrByRE9iukP3
- OazJaGhU7vNDbi5qih5eaMhdiNkzoCe8XQRBVf1zkDw5HVvn8UGHtKRoJgB2BQaEAJjgtpeLjaKlq
- 9R6L5xNwP77Z/+NE8l+lZt/ZR0q4FwNlkLO7GOwBzJd/BMLdhyJG8rF14a02Ybn943IuUZFBgW+Jj
- ANFC5jULL16j2YOJsKs2pN3WeAXdJVfh6833fTu9c7QkswzraSrPgS5m2AaJe10skP/jJCSluMpqB
- f+KBSuXQ==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=d1FrNuovi6qchn9VoSrH/ZZcEV9n4ZW2UXgmvYmjE+g=; b=V7t703iPtKM9eQhNvEt9nDvb+a
+ knZf6gkyg+fFYe1WuFcB0twNcU8AGVniXDZVJedpkUWTmbxyPahqx7DakPJ1Tljn2BzCp2YYybLay
+ h92fbe9TIj2g8D1P8q7FW7JwmFLthNesyu4Y500JS+YZp3jyKk3WUtwYdK8jwdtPzlYdquOlzoicq
+ eJ3Lf5LXA2V6xbOO2KeoL8riJNo+qg8MbknJmN7kzhWPVaKeoF/6fTuJmDMwQGEfN/bLa0oWF1KF7
+ NT2PVO/GwCKQNyAkjkAWVVMxjxiA+3+/ie04KCiBo1dkj3r+M+8p9MnT5to0dDicvnvEL64MzhEKm
+ MlWwiU2A==;
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1levEm-006fJK-Hg; Fri, 07 May 2021 07:49:30 +0000
-X-UUID: 9d60adad95d64811af33b4dc2abe0e22-20210507
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KNnUA6V6+eBMeqrvnHn7hFApZozuNBmSCEONxX0zPCQ=; 
- b=iIMhQi/LScKuUaz3fon4W9y6TwCym+UBDmylnxJkcgWzr2ECvJuNvLTotBxY3ij9WVnYnINKm5DERxvICN9xzwmaD5pY8PSAMhLuvAg2COQF3+q62ob6NM1tROwIo2pTuhbn3/XzvUNWNx+giiM3WJOVqrn79rgbBN7DZo90vXA=;
-X-UUID: 9d60adad95d64811af33b4dc2abe0e22-20210507
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <louis.kuo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 788091128; Fri, 07 May 2021 00:49:25 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 May 2021 00:46:13 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 May 2021 15:46:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 7 May 2021 15:46:11 +0800
-From: Louis Kuo <louis.kuo@mediatek.com>
-To: <sakari.ailus@linux.intel.com>, <laurent.pinchart@ideasonboard.com>,
- <mchehab@kernel.org>, <matthias.bgg@gmail.com>, <hverkuil-cisco@xs4all.nl>,
- <arnd@arndb.de>, <louis.kuo@mediatek.com>, <sergey.senozhatsky@gmail.com>,
- <helen.koike@collabora.com>, <niklas.soderlund+renesas@ragnatech.se>,
- <yepeilin.cs@gmail.com>
-CC: <frederic.chen@mediatek.com>, <linux-media@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [RESENT PATCH V0 4/4] media: pixfmt: Add ISP Camsys formats
-Date: Fri, 7 May 2021 15:46:04 +0800
-Message-ID: <20210507074604.15079-5-louis.kuo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210507074604.15079-1-louis.kuo@mediatek.com>
-References: <20210507074604.15079-1-louis.kuo@mediatek.com>
+ id 1levKr-006ffp-Ow
+ for linux-mediatek@lists.infradead.org; Fri, 07 May 2021 07:55:46 +0000
+Received: by mail-lf1-x132.google.com with SMTP id 2so11548440lft.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 07 May 2021 00:55:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=d1FrNuovi6qchn9VoSrH/ZZcEV9n4ZW2UXgmvYmjE+g=;
+ b=u/fBwS9p8+ZJ1uzUyj9xWfncK+l0n+O3W0A4tJwhN9+RVhbt/VxvDgu1xrwj2TQchS
+ T/WPQv24Xe7/GAMWEocVZZ+VeKuAueYMPejrAQ4dHHkQAaQ0f9lWCavmcbn4ZeuMHtyd
+ G0q3a5q2xnS7zV2HZgTnSwnhjlmYBHQujJe9LsIZ5vndhGoSOKiL7mXJZ78Qr6SDkgkk
+ I2yUR6lRzrz7o/PcVSpNT+6WPcHUdg3M6VcLyoKjuCE8zy3empFn+fAyPxxgJbGbFFzG
+ gedCmZnjFIIrU9ayPlv9omPusy40prB3L31vMgUr0/mQKWtGrPNBiYiQJ67pkAMJZj0h
+ Oj5g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=d1FrNuovi6qchn9VoSrH/ZZcEV9n4ZW2UXgmvYmjE+g=;
+ b=kcI/ZCHP2vnwJkJDwaad5T1pIVcOHf5xKuHR+I1fOdOIA/ild9G2QJ4LMUd4goKZKF
+ 4ZtNmf9Goh4AXmoKrc8qndMNIDQI91cS0ymAAklHIrLPoIp/o0PTa9Fy7eDg7MVTX6Hv
+ a3kZ86lGWM5EW9ysZr1ZITsULSex1InRKEoxffVa7Bl85cxy9HEAY+dyNpuGpXyF+Vbi
+ B6OLTqmq5Fa6qK0zFEt+QVr45U/gWOX4ISBzACqNxfXkAPjOgdtqcNNyhgcxh/M5UjmX
+ U5o3ecbjE06HtvKhKG5Snpb8HFMud+CN8mFCkLmCw8Ke2clRAm0sK7YrnhSSkKZ7gBK5
+ lN/Q==
+X-Gm-Message-State: AOAM530RKnbPNqfU70Zpfe2vOcJIGiExywMo7Sl/t1TI9rTLu9L2WFtW
+ DxImPTaXdfgyuCgMgUkVeRka5VHAKbGjoRLE3AI=
+X-Google-Smtp-Source: ABdhPJxmOfmHUfXXyaTbU88iBMHRGJL5QKoxgPRItgy6u662XlJ1CgzE8LYRu4JF7W41BVjOUogeB1Zoj1BFMzNjYeM=
+X-Received: by 2002:a05:6512:3f27:: with SMTP id
+ y39mr5490221lfa.166.1620374142511; 
+ Fri, 07 May 2021 00:55:42 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210429062130.29403-1-dqfext@gmail.com>
+ <20210429.170815.956010543291313915.davem@davemloft.net>
+ <20210430023839.246447-1-dqfext@gmail.com> <YIv28APpOP9tnuO+@lunn.ch>
+ <trinity-843c99ce-952a-434e-95e4-4ece3ba6b9bd-1619786236765@3c-app-gmx-bap03>
+ <YIv7w8Wy81fmU5A+@lunn.ch>
+ <trinity-611ff023-c337-4148-a215-98fd5604eac2-1619787382934@3c-app-gmx-bap03>
+ <YIwCliT5NZT713WD@lunn.ch>
+ <trinity-c45bbeec-5b7c-43a2-8e86-7cb22ad61558-1619794787680@3c-app-gmx-bap03>
+ <YIwxpYD1jnFMPQz+@lunn.ch>
+ <fc962daf8b7babc22b043b2b0878a206780b55f3.camel@mediatek.com>
+ <CALW65ja5mRPoNM2EZsONMh8Kda5OgQg79R=Xp71CaQcp4cprnQ@mail.gmail.com>
+ <f3f5167f60b7897b952f5fff7bcaef976c3c6531.camel@mediatek.com>
+In-Reply-To: <f3f5167f60b7897b952f5fff7bcaef976c3c6531.camel@mediatek.com>
+From: DENG Qingfang <dqfext@gmail.com>
+Date: Fri, 7 May 2021 15:55:31 +0800
+Message-ID: <CALW65jaPO52vX02KGqEooE2LRUMNMgFoHYMfyXUtOa7SPS-jqg@mail.gmail.com>
+Subject: Re: Re: Re: Re: [PATCH net-next 0/4] MT7530 interrupt support
+To: Landen Chao <landen.chao@mediatek.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Frank Wunderlich <frank-w@public-files.de>, 
+ David Miller <davem@davemloft.net>, Florian Fainelli <f.fainelli@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Russell King - ARM Linux admin <linux@armlinux.org.uk>,
+ Sean Wang <sean.wang@mediatek.com>, 
+ Vivien Didelot <vivien.didelot@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-staging@lists.linux.dev, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, netdev <netdev@vger.kernel.org>, 
+ Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
+ Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210507_004928_625488_C7FAB6B9 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20210507_005545_829057_9F13F7BE 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,322 +135,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add packed bayer formats with 10/12/14 bit for image output.
-Add packed/unpacked yuv formats with 10/12 bit for image output.
-Add specific meta formats for parameter processing and 3A/other
-statistics.
+On Thu, May 6, 2021 at 8:54 PM Landen Chao <landen.chao@mediatek.com> wrote:
+> MT7620's FE PHY HW is different from MT753x's GE PHY. Vendor registers
+> of these two PHY are totally different.
 
-Signed-off-by: Louis Kuo <louis.kuo@mediatek.com>
----
- drivers/media/v4l2-core/v4l2-ioctl.c | 145 ++++++++++++++++++++++++++-
- include/uapi/linux/videodev2.h       | 101 +++++++++++++++++++
- 2 files changed, 245 insertions(+), 1 deletion(-)
+Okay. So if the FE PHY is added later, it can be named mediatek-fe.c.
 
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index 823ebd175f3a..00dba596893a 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1259,6 +1259,30 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_YVYU:		descr = "YVYU 4:2:2"; break;
- 	case V4L2_PIX_FMT_UYVY:		descr = "UYVY 4:2:2"; break;
- 	case V4L2_PIX_FMT_VYUY:		descr = "VYUY 4:2:2"; break;
-+	case V4L2_PIX_FMT_YUYV10:
-+		descr = "YUYV 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_YVYU10:
-+		descr = "YVYU 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_UYVY10:
-+		descr = "UYVY 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_VYUY10:
-+		descr = "VYUY 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_YUYV12:
-+		descr = "YUYV 4:2:2 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_YVYU12:
-+		descr = "YVYU 4:2:2 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_UYVY12:
-+		descr = "UYVY 4:2:2 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_VYUY12:
-+		descr = "VYUY 4:2:2 12 bits";
-+		break;
- 	case V4L2_PIX_FMT_YUV422P:	descr = "Planar YUV 4:2:2"; break;
- 	case V4L2_PIX_FMT_YUV411P:	descr = "Planar YUV 4:1:1"; break;
- 	case V4L2_PIX_FMT_Y41P:		descr = "YUV 4:1:1 (Packed)"; break;
-@@ -1282,6 +1306,30 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV61:		descr = "Y/CrCb 4:2:2"; break;
- 	case V4L2_PIX_FMT_NV24:		descr = "Y/CbCr 4:4:4"; break;
- 	case V4L2_PIX_FMT_NV42:		descr = "Y/CrCb 4:4:4"; break;
-+	case V4L2_PIX_FMT_NV12_10:
-+		descr = "Y/CbCr 4:2:0 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV21_10:
-+		descr = "Y/CrCb 4:2:0 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV16_10:
-+		descr = "Y/CbCr 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV61_10:
-+		descr = "Y/CrCb 4:2:2 10 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV12_12:
-+		descr = "Y/CbCr 4:2:0 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV21_12:
-+		descr = "Y/CrCb 4:2:0 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV16_12:
-+		descr = "Y/CbCr 4:2:2 12 bits";
-+		break;
-+	case V4L2_PIX_FMT_NV61_12:
-+		descr = "Y/CrCb 4:2:2 12 bits";
-+		break;
- 	case V4L2_PIX_FMT_NV12M:	descr = "Y/CbCr 4:2:0 (N-C)"; break;
- 	case V4L2_PIX_FMT_NV21M:	descr = "Y/CrCb 4:2:0 (N-C)"; break;
- 	case V4L2_PIX_FMT_NV16M:	descr = "Y/CbCr 4:2:2 (N-C)"; break;
-@@ -1348,6 +1396,90 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_KONICA420:	descr = "GSPCA KONICA420"; break;
- 	case V4L2_PIX_FMT_HSV24:	descr = "24-bit HSV 8-8-8"; break;
- 	case V4L2_PIX_FMT_HSV32:	descr = "32-bit XHSV 8-8-8-8"; break;
-+	case V4L2_PIX_FMT_MTISP_SBGGR10:
-+		descr = "10-bit Bayer BGGR MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGBRG10:
-+		descr = "10-bit Bayer GBRG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGRBG10:
-+		descr = "10-bit Bayer GRBG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SRGGB10:
-+		descr = "10-bit Bayer RGGB MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SBGGR12:
-+		descr = "12-bit Bayer BGGR MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGBRG12:
-+		descr = "12-bit Bayer GBRG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGRBG12:
-+		descr = "12-bit Bayer GRBG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SRGGB12:
-+		descr = "12-bit Bayer RGGB MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SBGGR14:
-+		descr = "14-bit Bayer BGGR MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGBRG14:
-+		descr = "14-bit Bayer GBRG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SGRBG14:
-+		descr = "14-bit Bayer GRBG MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_SRGGB14:
-+		descr = "14-bit Bayer RGGB MTISP Packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV12_10P:
-+		descr = "Y/CbCr 4:2:0 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV21_10P:
-+		descr = "Y/CrCb 4:2:0 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV16_10P:
-+		descr = "Y/CbCr 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV61_10P:
-+		descr = "Y/CrCb 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_YUYV10P:
-+		descr = "YUYV 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_YVYU10P:
-+		descr = "YVYU 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_UYVY10P:
-+		descr = "UYVY 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_VYUY10P:
-+		descr = "VYUY 4:2:2 10 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV12_12P:
-+		descr = "Y/CbCr 4:2:0 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV21_12P:
-+		descr = "Y/CrCb 4:2:0 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV16_12P:
-+		descr = "Y/CbCr 4:2:2 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_NV61_12P:
-+		descr = "Y/CrCb 4:2:2 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_YUYV12P:
-+		descr = "YUYV 4:2:2 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_YVYU12P:
-+		descr = "YVYU 4:2:2 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_UYVY12P:
-+		descr = "UYVY 4:2:2 12 bits packed";
-+		break;
-+	case V4L2_PIX_FMT_MTISP_VYUY12P:
-+		descr = "VYUY 4:2:2 12 bits packed";
-+		break;
- 	case V4L2_SDR_FMT_CU8:		descr = "Complex U8"; break;
- 	case V4L2_SDR_FMT_CU16LE:	descr = "Complex U16LE"; break;
- 	case V4L2_SDR_FMT_CS8:		descr = "Complex S8"; break;
-@@ -1367,7 +1499,18 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_META_FMT_VIVID:       descr = "Vivid Metadata"; break;
- 	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A Parameters"; break;
- 	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A Statistics"; break;
--
-+	case V4L2_META_FMT_MTISP_AF:
-+		descr = "AF Histogram";
-+		break;
-+	case V4L2_META_FMT_MTISP_LCS:
-+		descr = "Local Contrast Enhancement Stat";
-+		break;
-+	case V4L2_META_FMT_MTISP_LMV:
-+		descr = "Local Motion Vector Histogram";
-+		break;
-+	case V4L2_META_FMT_MTISP_PARAMS:
-+		descr = "MTK ISP Tuning Metadata";
-+		break;
- 	default:
- 		/* Compressed formats */
- 		flags = V4L2_FMT_FLAG_COMPRESSED;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 6641194b3fab..c86ab1c18284 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -593,6 +593,22 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_VUYA32  v4l2_fourcc('V', 'U', 'Y', 'A') /* 32  VUYA-8-8-8-8  */
- #define V4L2_PIX_FMT_VUYX32  v4l2_fourcc('V', 'U', 'Y', 'X') /* 32  VUYX-8-8-8-8  */
- #define V4L2_PIX_FMT_M420    v4l2_fourcc('M', '4', '2', '0') /* 12  YUV 4:2:0 2 lines y, 1 line uv interleaved */
-+#define V4L2_PIX_FMT_YUYV10  v4l2_fourcc('Y', 'U', 'Y', 'A')
-+/* 16  YUV 4:2:2 10-bit */
-+#define V4L2_PIX_FMT_YVYU10  v4l2_fourcc('Y', 'V', 'Y', 'A')
-+/* 16  YUV 4:2:2 10-bit */
-+#define V4L2_PIX_FMT_UYVY10  v4l2_fourcc('U', 'Y', 'V', 'A')
-+/* 16  YUV 4:2:2 10-bit */
-+#define V4L2_PIX_FMT_VYUY10  v4l2_fourcc('V', 'Y', 'U', 'A')
-+/* 16  YUV 4:2:2 10-bit */
-+#define V4L2_PIX_FMT_YUYV12  v4l2_fourcc('Y', 'U', 'Y', 'C')
-+/* 16  YUV 4:2:2 12-bit */
-+#define V4L2_PIX_FMT_YVYU12  v4l2_fourcc('Y', 'V', 'Y', 'C')
-+/* 16  YUV 4:2:2 12-bit */
-+#define V4L2_PIX_FMT_UYVY12  v4l2_fourcc('U', 'Y', 'V', 'C')
-+/* 16  YUV 4:2:2 12-bit */
-+#define V4L2_PIX_FMT_VYUY12  v4l2_fourcc('V', 'Y', 'U', 'C')
-+/* 16  YUV 4:2:2 12-bit */
- 
- /* two planes -- one Y, one Cr + Cb interleaved  */
- #define V4L2_PIX_FMT_NV12    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/CbCr 4:2:0  */
-@@ -602,6 +618,22 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
- #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
- #define V4L2_PIX_FMT_HM12    v4l2_fourcc('H', 'M', '1', '2') /*  8  YUV 4:2:0 16x16 macroblocks */
-+#define V4L2_PIX_FMT_NV12_10 v4l2_fourcc('1', '2', 'A', 'U')
-+	/* 12  Y/CbCr 4:2:0 10 bits un-packed */
-+#define V4L2_PIX_FMT_NV21_10 v4l2_fourcc('2', '1', 'A', 'U')
-+	/* 12  Y/CrCb 4:2:0 10 bits un-packed */
-+#define V4L2_PIX_FMT_NV16_10 v4l2_fourcc('1', '6', 'A', 'U')
-+	/* 16  Y/CbCr 4:2:2 10 bits un-packed */
-+#define V4L2_PIX_FMT_NV61_10 v4l2_fourcc('6', '1', 'A', 'U')
-+	/* 16  Y/CrCb 4:2:2 10 bits un-packed */
-+#define V4L2_PIX_FMT_NV12_12 v4l2_fourcc('1', '2', 'C', 'U')
-+	/* 12  Y/CbCr 4:2:0 12 bits un-packed */
-+#define V4L2_PIX_FMT_NV21_12 v4l2_fourcc('2', '1', 'C', 'U')
-+	/* 12  Y/CrCb 4:2:0 12 bits un-packed */
-+#define V4L2_PIX_FMT_NV16_12 v4l2_fourcc('1', '6', 'C', 'U')
-+	/* 16  Y/CbCr 4:2:2 12 bits un-packed */
-+#define V4L2_PIX_FMT_NV61_12 v4l2_fourcc('6', '1', 'C', 'U')
-+	/* 16  Y/CrCb 4:2:2 12 bits un-packed */
- 
- /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
- #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
-@@ -743,6 +775,75 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_IPU3_SGBRG10	v4l2_fourcc('i', 'p', '3', 'g') /* IPU3 packed 10-bit GBRG bayer */
- #define V4L2_PIX_FMT_IPU3_SGRBG10	v4l2_fourcc('i', 'p', '3', 'G') /* IPU3 packed 10-bit GRBG bayer */
- #define V4L2_PIX_FMT_IPU3_SRGGB10	v4l2_fourcc('i', 'p', '3', 'r') /* IPU3 packed 10-bit RGGB bayer */
-+	/* Vendor specific - Mediatek ISP bayer formats */
-+#define V4L2_PIX_FMT_MTISP_SBGGR10  v4l2_fourcc('M', 'B', 'B', 'A')
-+	/*  Packed 10-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGBRG10  v4l2_fourcc('M', 'B', 'G', 'A')
-+	/*  Packed 10-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGRBG10  v4l2_fourcc('M', 'B', 'g', 'A')
-+	/*  Packed 10-bit  */
-+#define V4L2_PIX_FMT_MTISP_SRGGB10  v4l2_fourcc('M', 'B', 'R', 'A')
-+	/*  Packed 10-bit  */
-+#define V4L2_PIX_FMT_MTISP_SBGGR12  v4l2_fourcc('M', 'B', 'B', 'C')
-+	/*  Packed 12-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGBRG12  v4l2_fourcc('M', 'B', 'G', 'C')
-+	/*  Packed 12-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGRBG12  v4l2_fourcc('M', 'B', 'g', 'C')
-+	/*  Packed 12-bit  */
-+#define V4L2_PIX_FMT_MTISP_SRGGB12  v4l2_fourcc('M', 'B', 'R', 'C')
-+	/*  Packed 12-bit  */
-+#define V4L2_PIX_FMT_MTISP_SBGGR14  v4l2_fourcc('M', 'B', 'B', 'E')
-+	/*  Packed 14-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGBRG14  v4l2_fourcc('M', 'B', 'G', 'E')
-+	/*  Packed 14-bit  */
-+#define V4L2_PIX_FMT_MTISP_SGRBG14  v4l2_fourcc('M', 'B', 'g', 'E')
-+	/*  Packed 14-bit  */
-+#define V4L2_PIX_FMT_MTISP_SRGGB14  v4l2_fourcc('M', 'B', 'R', 'E')
-+	/*  Packed 14-bit  */
-+/* Vendor specific - Mediatek Luminance+Chrominance formats */
-+#define V4L2_PIX_FMT_MTISP_YUYV10P v4l2_fourcc('Y', 'U', 'A', 'P')
-+/* YUV 4:2:2 10-bit packed */
-+#define V4L2_PIX_FMT_MTISP_YVYU10P v4l2_fourcc('Y', 'V', 'A', 'P')
-+/* YUV 4:2:2 10-bit packed */
-+#define V4L2_PIX_FMT_MTISP_UYVY10P v4l2_fourcc('U', 'Y', 'A', 'P')
-+/* YUV 4:2:2 10-bit packed */
-+#define V4L2_PIX_FMT_MTISP_VYUY10P v4l2_fourcc('V', 'Y', 'A', 'P')
-+/* YUV 4:2:2 10-bit packed */
-+#define V4L2_PIX_FMT_MTISP_NV12_10P v4l2_fourcc('1', '2', 'A', 'P')
-+/* Y/CbCr 4:2:0 10 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV21_10P v4l2_fourcc('2', '1', 'A', 'P')
-+/* Y/CrCb 4:2:0 10 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV16_10P v4l2_fourcc('1', '6', 'A', 'P')
-+/* Y/CbCr 4:2:2 10 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV61_10P v4l2_fourcc('6', '1', 'A', 'P')
-+/* Y/CrCb 4:2:2 10 bits packed */
-+#define V4L2_PIX_FMT_MTISP_YUYV12P v4l2_fourcc('Y', 'U', 'C', 'P')
-+/* YUV 4:2:2 12-bit packed */
-+#define V4L2_PIX_FMT_MTISP_YVYU12P v4l2_fourcc('Y', 'V', 'C', 'P')
-+/* YUV 4:2:2 12-bit packed */
-+#define V4L2_PIX_FMT_MTISP_UYVY12P v4l2_fourcc('U', 'Y', 'C', 'P')
-+/* YUV 4:2:2 12-bit packed */
-+#define V4L2_PIX_FMT_MTISP_VYUY12P v4l2_fourcc('V', 'Y', 'C', 'P')
-+/* YUV 4:2:2 12-bit packed */
-+#define V4L2_PIX_FMT_MTISP_NV12_12P v4l2_fourcc('1', '2', 'C', 'P')
-+/* Y/CbCr 4:2:0 12 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV21_12P v4l2_fourcc('2', '1', 'C', 'P')
-+/* Y/CrCb 4:2:0 12 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV16_12P v4l2_fourcc('1', '6', 'C', 'P')
-+/* Y/CbCr 4:2:2 12 bits packed */
-+#define V4L2_PIX_FMT_MTISP_NV61_12P v4l2_fourcc('6', '1', 'C', 'P')
-+/* Y/CrCb 4:2:2 12 bits packed */
-+/* Vendor specific - Mediatek ISP parameters for firmware */
-+#define V4L2_META_FMT_MTISP_PARAMS v4l2_fourcc('M', 'T', 'f', 'p')
-+	/* ISP tuning parameters */
-+#define V4L2_META_FMT_MTISP_3A     v4l2_fourcc('M', 'T', 'f', 'a')
-+	/* AE/AWB histogram */
-+#define V4L2_META_FMT_MTISP_AF     v4l2_fourcc('M', 'T', 'f', 'f')
-+	/* AF histogram */
-+#define V4L2_META_FMT_MTISP_LCS    v4l2_fourcc('M', 'T', 'f', 'c')
-+	/* Local contrast enhanced statistics */
-+#define V4L2_META_FMT_MTISP_LMV    v4l2_fourcc('M', 'T', 'f', 'm')
-+	/* Local motion vector histogram */
- 
- /* SDR formats - used only for Software Defined Radio devices */
- #define V4L2_SDR_FMT_CU8          v4l2_fourcc('C', 'U', '0', '8') /* IQ u8 */
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
