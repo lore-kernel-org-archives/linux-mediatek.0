@@ -2,68 +2,68 @@ Return-Path: <SRS0=vvwr=KC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C5B2C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 02:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B618C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 03:03:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C43561177
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 02:54:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C43561177
+	by mail.kernel.org (Postfix) with ESMTPS id 7BF96613C2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 May 2021 03:03:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BF96613C2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pyrQl/VzYvu9UZd6KSNkv5pwVgITlLG9grREe0tANOA=; b=Cdnt0VztQdME9ax1dPmKDoJSCD
-	KaoGIdsarW4A6vvn3XizAGmwCnKE771QOR6wyoJuCoReLnVyAy/24of5J3KAGmuoCPVsAXfP5pLfJ
-	cOUJlaJ9sF/PTfqthjfbD6Bb6CZT9/TATPLQDR79Ps+F7xdcjLNZs/UIpBLKPDYc243kcdWuinv1b
-	EoBRUfB/wwqVYN27+KURmd3rz97NR870Llkjgj7garf3b6W81hNfmpQ275W3/KXhCVNwsNDTmuxEM
-	9t7cq5NrgIE3x3PRCZ+/v7VYOJoLZ/PPE3WJNvGEri+H9b9383NlRcTH5yIiVJMUrIQ+5Idp5/g4i
-	3eqk0YkA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=nscLuCmcbInMDrKfP+4vporcWhfDmzdJaED6bILV3HI=; b=Yw11F5pmAjbLJFqKugQlqpzQe
+	DBFJu9XW+YJq6ABiBfJp5yKNLVxoOI9l0jdZnuOn1lFUtiSfxp5GGV0ijEDODVWpKiGQoNI0LxvfW
+	3fVHAb0xhsQPGZ/3Ybr6qNspjPizB/Ll13pqiTpEY3AwQU0HGwVlCZ/lDMLzXb1jHp/3p89hjyNLw
+	1LLOtBojkQAUYOE4gHRpMTeN/nreDhazk3b3qQPgoBbxkhNIMXvkrNTo8en183TSVf6wwpgE4fdmv
+	Ujmdfi+9elwCdZenwpJwR1RUI3DOyWGkJtfHe1eg0Yko8lPw6NYXeEy7LIkHBIExoghQkMuYuA9hX
+	3DMhkVFbg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1leqcu-005unx-M2; Fri, 07 May 2021 02:54:04 +0000
+	id 1leqm5-005w0S-8C; Fri, 07 May 2021 03:03:33 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leqcn-005unK-Ct; Fri, 07 May 2021 02:54:00 +0000
+ id 1leqm2-005vzs-Rn; Fri, 07 May 2021 03:03:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=JiN/MiXefRDk9SXOY2/gstlWVbgWl3/rhFDYVlL4bso=; b=vtF2ornM0dfAYl7zvSAfPD68d9
- UlNN9n4i1WMPEuGQZ9fbSOhPa3ljbwsEv3RFb7lTepK6auL1nIfm7+x9QxZKeFvUsokftYD/IsIpr
- yD/x1KRfoxVxjA14/IubGj/qqlrpwvJez31ExKUBdODaOvI+yodAO+lK2ELYgfT4TWZgwFkdGDS6v
- r8xltNv7uuMZYYfwbutDPaCD615SafVeynrjwHuOwg0u8Wm4oIqdZsvaUrz9c7QsEdbNQyRmXAu5b
- KiqNCvLqVg5087Jw32KzyOIWvzhs+5ApSaATntMml5ww3MuhkPvSbr5MHnDQTEAG0iXahy39b+hwu
- A0XbSGJQ==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=IkwCjg9ngEuEj284NCds/hqbOsTd44oUB9SHU2oh2zg=; b=IQ8CM0+PMLXi5JEruefreT1UQe
+ DuYGzT11XnOAeYqLJihyh7H7hTuidkcw1ayga1Qlkt+ETRbFECRy9orbgb1BuW1/PXAHAxb2lWDnJ
+ 6E/iF3l5srfHbz/4KXQZF5stkJiS9xgpZXo9vrZHg0+sIwa4OoXkAJoymVQRyB6MUpyEt/k8gatPv
+ KAtgIxHlY0edIedMDlppHQcoH1Tov00ZxODyT97udyZNQIMsegC7XQdLV9KSykbQbsJB2VnJyCsoL
+ M8LFDWVOf8MYRPU1XVm7t41DfwVhSFtHt2zDB+6yeZnF94XdWT851SfbtbytxafPoO+SfFh56kdSY
+ dOCmsSzw==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1leqcj-006XOR-CP; Fri, 07 May 2021 02:53:55 +0000
-X-UUID: 1a7b479dcb2a4dfb83d49d210c82c627-20210506
+ id 1leqlz-006XbH-ES; Fri, 07 May 2021 03:03:28 +0000
+X-UUID: de4d3332969c4a06b3877ef7ffad8abf-20210506
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=JiN/MiXefRDk9SXOY2/gstlWVbgWl3/rhFDYVlL4bso=; 
- b=G+MQB8J9sCSwvwK5Mhw+gb8kbkbTUJyqoRSfboooXuQg5ZZgB1pxCi2Pfv0cI0DU1BjGj5+x5sBnH90ln7rQfQ7rpRYDF6I9B8QijyqqkpTCzqrih5fNs9lY+ZxJch4kb9+S4rrz4GfCXKxEC0XPprng/AK+l8K4s1z6sZ4zsWM=;
-X-UUID: 1a7b479dcb2a4dfb83d49d210c82c627-20210506
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=IkwCjg9ngEuEj284NCds/hqbOsTd44oUB9SHU2oh2zg=; 
+ b=GY2/CJFmy5YmMCpyOZrEsAEBkXo8TI382DWicguzLRDQuQQ7yhquBVgw5a48Tuim920bwBGBIJsfkDFTNqSfidIiQPG8MT4pbg72CJtmU8p9PQ0Q6QVfU/i/yumWH079OTq1MQ998710F6jCaKXBYnCoyO59S8PvEX3S2hk6eac=;
+X-UUID: de4d3332969c4a06b3877ef7ffad8abf-20210506
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <john.wei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2119194679; Thu, 06 May 2021 19:53:47 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 May 2021 19:53:46 -0700
+ with ESMTP id 301714373; Thu, 06 May 2021 20:03:23 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 May 2021 19:53:52 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 7 May 2021 10:53:44 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -74,16 +74,17 @@ To: <john.wei@mediatek.com>, <louis.kuo@mediak.com>, <mchehab@kernel.org>,
 CC: <linux-media@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <wsd_upstream@mediatek.com>
-Subject: [RFC PATCH V0 0/2] media: v4l2: extend framework to support advanced
- feature of Mediatek Camsys driver
-Date: Fri, 7 May 2021 10:53:35 +0800
-Message-ID: <1620356017-26486-1-git-send-email-john.wei@mediatek.com>
+Subject: [RFC PATCH V0 1/2] media: v4l2: Add fields to frame descriptors
+Date: Fri, 7 May 2021 10:53:36 +0800
+Message-ID: <1620356017-26486-2-git-send-email-john.wei@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <1620356017-26486-1-git-send-email-john.wei@mediatek.com>
+References: <1620356017-26486-1-git-send-email-john.wei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210506_195353_450133_C54DDC84 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20210506_200327_515469_390CBECE 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,58 +101,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+From: John Wei <john.wei@mediatek.com>
 
-This is the first version of the RFC patch series to v4l2 and media framework
-to support virtual channel (an advanced feature of MIPI CSI). Virtual channel
-was used commonly among modern image sensor. It was used to transfer
-metadata of an image such as statistical data of AE or AF.Some advanced
-features of camera such as HDR (High dynamic range), PDAF (Phase Detection
-Auto Focus) were achieved by virtual channel. Medaitek made some modification
-to frame descriptor based on https://patchwork.kernel.org/patch/10875875/ and
-https://patchwork.kernel.org/patch/10875875/.We extend the struct
-v4l2_mbus_frame_desc_entry by add enable, hsize, vsize and user_data_desc.
-With this modification, frame descriptor are now more powerful to meet all
-kinds of need among different applications. Here is an example that we use
-frame descriptor to describe all data streams in a frame output by a
- stagger sensor.
+Add enable, hsize, vsize, user_data_desc to frame descriptors
 
-static struct v4l2_mbus_frame_desc_entry frame_desc_cus1[] = {
-        {
-                .bus.csi2 = {
-                        .channel = 0,
-                        .data_type = 0x2b,
-                        .enable = 1,
-                        .hsize = 0xF00,
-                        .vsize = 0x870,
-                        .user_data_desc = V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_LE,
-                },
-        },
-        {
-                .bus.csi2 = {
-                        .channel = 1,
-                        .data_type = 0x2b,
-                        .enable = 1,
-                        .hsize = 0xF00,
-                        .vsize = 0x870,
-                        .user_data_desc = V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_SE,
-                },
-        },
-};
+This patch is derived from following patches
+https://patchwork.kernel.org/patch/10875875/
+https://patchwork.kernel.org/patch/10875869/
 
-The first data stream, data for long exposure was transfer by channel 0 with
-data type 0x2b and the resolution was 0xF00 by horizontal and 0x870 by vertical.
-The second data stream, data for short exposure was transfer by channel 1
-with data type 0x2b and the resolution was also 0xF00 by horizontal and 0x870
-by vertical. Both long exposure and short exposure data will be fused in ISP
-stage to output a HDR image.
+Signed-off-by: John Wei <john.wei@mediatek.com>
+---
+ include/media/v4l2-subdev.h |   25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
-  media: v4l2: Add fields to frame descriptors
-  media: v4l2-ctrl: Add user defined base for ISP user control
-
- include/media/v4l2-subdev.h        |   25 ++++++++++++++++++++++++-
- include/uapi/linux/v4l2-controls.h |   10 ++++++++++
- 2 files changed, 34 insertions(+), 1 deletion(-)
+diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
+index 30ec011..f603831 100644
+--- a/include/media/v4l2-subdev.h
++++ b/include/media/v4l2-subdev.h
+@@ -308,15 +308,38 @@ struct v4l2_subdev_audio_ops {
+ 	int (*s_stream)(struct v4l2_subdev *sd, int enable);
+ };
+ 
++enum v4l2_mbus_csi2_user_defined_data_desc {
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_NONE,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_Y_HIST,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_AE_HIST,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_FLICKER,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_GYRO,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_PDAF_PIXEL,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_PDAF_DIFF,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_LE,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_ME,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_SE,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_SSE,
++	V4L2_MBUS_CSI2_USER_DEFINED_DATA_DESC_HDR_SSSE,
++};
++
+ /**
+  * struct v4l2_mbus_frame_desc_entry_csi2
+  *
+  * @channel: CSI-2 virtual channel
+  * @data_type: CSI-2 data type ID
++ * @enable: enable this data identifier
++ * @hsize: horizontal size
++ * @vsize: vertical size
++ * @user_data_desc: the description of user defined data
+  */
+ struct v4l2_mbus_frame_desc_entry_csi2 {
+ 	u8 channel;
+ 	u8 data_type;
++	u8 enable;
++	u16 hsize;
++	u16 vsize;
++	enum v4l2_mbus_csi2_user_defined_data_desc user_data_desc;
+ };
+ 
+ /**
+@@ -354,7 +377,7 @@ struct v4l2_mbus_frame_desc_entry {
+ 	} bus;
+ };
+ 
+-#define V4L2_FRAME_DESC_ENTRY_MAX	4
++#define V4L2_FRAME_DESC_ENTRY_MAX	8
+ 
+ enum v4l2_mbus_frame_desc_type {
+ 	V4L2_MBUS_FRAME_DESC_TYPE_PLATFORM,
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
