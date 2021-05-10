@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49603C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 09:22:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6651EC433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 09:25:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E576D61108
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 09:22:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E576D61108
+	by mail.kernel.org (Postfix) with ESMTPS id 0039E6142D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 09:25:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0039E6142D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,36 +23,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5azOlSDbsH2Aaj0eT21lwTCsUToqQMU8CmywX2UJWoA=; b=JMWLBE3C/v9oGIDtDMHtD9HNq
-	i7muCslTCcCCR0wMjv8vb7kG2Ni7Fnje4ylvSTQlPCO3tPppimh7Rt40INAkH1kxs/+r1It4cujyb
-	inxlqiABYp0QAWnoOsAUn4MvGUZ0z4fUGiOihKJddbirMkqo83PBWxUCDwLh9xllsMiUVwRk7LYMk
-	/oNt1EmYIYhKLFXZDbGid113/DTtB7ZxE/64K8ZbMXCRug68tvKsjAVwEzNQVSu/GQ4gPquNr1OE/
-	tl63hf8cNHsqz7+OunEdmJyUYatinqs7Chh2h2iQ8IevlfhuDcXbCmhEtV9KtDhhWA57v2yXli0Ed
-	T+CuC6euw==;
+	 bh=n4SWvV5LVEuS3jr071dHAE9Qw3gwTWTB3ImTpLREjDY=; b=OcUlcUHNBflcHaSaTa0v+b2jN
+	TlxdfiDKMh9HBdebIQ9jW8VNvbEE94Kzd1raS7z/fnaN5yHIRX1gspo0hfuXZHTRaLl0TzVW+08kM
+	AyxJbs0GcNdsbmgtObmf/NR+VJJ3xfQbn+E9mmmAfWcmeSUgb0u+dKpMyKwj6P+h2jsxyOqL3kAFr
+	y9P+x8QQcCMGPPkuGR3fecnOjBYf4U4Xm9uRmu7CC5NKUStoM1OYeEq3KZ9Sj9CcQW510EPL1i/yT
+	FGWiJ+pC1LJ49HS//TY9nRnwwxW/3uVaRgl5yC217dUttB6Ygpus3m/FdBlLgjvc02s3zzh1sKvIf
+	971xitk+A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lg26i-00DkXO-TD; Mon, 10 May 2021 09:21:45 +0000
+	id 1lg2AJ-00Dl6w-DZ; Mon, 10 May 2021 09:25:27 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg1vY-00DiRy-O8; Mon, 10 May 2021 09:10:12 +0000
+ id 1lg1vf-00DiTI-6c; Mon, 10 May 2021 09:10:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=dK5nNu9QGzTBeT6vatvyfy6a9OeTUIOFCfeuKdBdXlI=; b=bnaY+9babMFyTtOOXh7kw26iyZ
- /dP65A65Bt6COB9CXhkpNghWUN7GBqcxv9jAuBV6TCzWyEqCJ1Pxrld1vixeQwd+jFx8MOKyizJSz
- rD0trz4T1ezS0SJpgUqVeEqqFFzUFniTEAHXjdqG8BiKDxRsDNEtaBL5qpyzuYcyobPSuuo18YW22
- khH/4pcQ5Yyp7BY/hW/O+AZ0lJsuK+TxH9L1sBfdMJRihwiQHHPdXTnj+ij/Oy6Z/KCbgqlW4Lp4X
- zvtWqA5SVNG+7ArAro6agEM5B5sHQ7qGrYqBw5cW7ZnthntjX6nt2KUqe+fmvDvLJciSUE7N+1jmh
- bW8MF2zQ==;
+ bh=v4p+hdy62DIOvpzGIG8tjZVpe0WL0fzCM6YjdzCbeyU=; b=iAwSjAwV2gYxtx/Ctu1GSsf1O/
+ /lXYTX8fmqQpa22bpiC7HmOjuMOO17tN7xmG8ric4aCIRtQPoMw0aLRvyaRYVpFgjnb7DGKDD65zd
+ 36yjfCmJOqBBi78XENlEN2PKXEIKuHRVR3+rp3mS6c5P/mZmt0Fi2WfbP1nhLgQiVRYqkv8W02yLl
+ D75dXbm3o/xZ43JyL7WziUOz3ve2xmgfn2VdZeml53tc56f6JlSgTS1/1TttXlIe3wY0+fNwmPaJ1
+ W3+0cMM1eeoD2FhEZ9F5FRSf8eJ4mq3/dwwkfK2EReTz43MjhhtX9YBUoIDx/OvIftyAD8r45YtTy
+ PDCp8Rzw==;
 Received: from relay1-d.mail.gandi.net ([217.70.183.193])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg1vW-008RZj-4q; Mon, 10 May 2021 09:10:11 +0000
+ id 1lg1vc-008Ran-Gl; Mon, 10 May 2021 09:10:18 +0000
 X-Originating-IP: 90.89.138.59
 Received: from xps13.home (lfbn-tou-1-1325-59.w90-89.abo.wanadoo.fr
  [90.89.138.59]) (Authenticated sender: miquel.raynal@bootlin.com)
- by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id AA974240018;
- Mon, 10 May 2021 09:10:06 +0000 (UTC)
+ by relay1-d.mail.gandi.net (Postfix) with ESMTPSA id F1321240010;
+ Mon, 10 May 2021 09:10:12 +0000 (UTC)
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Yu Kuai <yukuai3@huawei.com>, joern@lazybastard.org,
  miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
@@ -60,19 +60,19 @@ To: Yu Kuai <yukuai3@huawei.com>, joern@lazybastard.org,
 Cc: linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  yi.zhang@huawei.com
-Subject: Re: [PATCH 2/3] mtd: plat-ram: remove redundant dev_err call in
- platram_probe()
-Date: Mon, 10 May 2021 11:10:05 +0200
-Message-Id: <20210510091005.4100-1-miquel.raynal@bootlin.com>
+Subject: Re: [PATCH 1/3] mtd: rawnand: mtk: remove redundant dev_err call in
+ mtk_ecc_probe()
+Date: Mon, 10 May 2021 11:10:12 +0200
+Message-Id: <20210510091012.4165-1-miquel.raynal@bootlin.com>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210408111514.1011020-3-yukuai3@huawei.com>
+In-Reply-To: <20210408111514.1011020-2-yukuai3@huawei.com>
 References: 
 MIME-Version: 1.0
 X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'c054de10ae5d6d8b3f417cb8d29e67a7cd686f36'
+X-linux-mtd-patch-commit: b'e101bd30456111d46bf4c54df122314ce96e4180'
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210510_021010_337408_0F134DB2 
-X-CRM114-Status: UNSURE (   5.26  )
+X-CRM114-CacheID: sfid-20210510_021016_708214_30E42EB8 
+X-CRM114-Status: UNSURE (   5.47  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,7 +90,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-04-08 at 11:15:13 UTC, Yu Kuai wrote:
+On Thu, 2021-04-08 at 11:15:12 UTC, Yu Kuai wrote:
 > There is a error message within devm_ioremap_resource
 > already, so remove the dev_err call to avoid redundant
 > error message.
@@ -98,7 +98,7 @@ On Thu, 2021-04-08 at 11:15:13 UTC, Yu Kuai wrote:
 > Reported-by: Hulk Robot <hulkci@huawei.com>
 > Signed-off-by: Yu Kuai <yukuai3@huawei.com>
 
-Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git mtd/next, thanks.
+Applied to https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git nand/next, thanks.
 
 Miquel
 
