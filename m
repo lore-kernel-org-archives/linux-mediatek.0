@@ -2,105 +2,107 @@ Return-Path: <SRS0=zzne=KF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C4DCC433ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 12:20:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1E92C43462
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 13:22:33 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7AED961424
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 12:20:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7AED961424
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2244C6121E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 May 2021 13:22:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2244C6121E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:Subject:
+	From:References:Cc:To:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WH8pWLWE93Z5uT6BQ4DPczzYYE7qECAE82aNQSa208I=; b=Sd92/BXmE60ZXc1pRA9P51s5P
-	3tgLBTAOwmC641zyzyfT8frbHEOHG1k1zVhLqmyFhS/OO6W57dlcEcrU66RcAtMn7bmt2Gvoxwjo5
-	uL9+Y3fjKxdRru6sJ3eo1eEz0N2nbCBtTCDqKjLHlNamBp/gqTxXdJUusefnzB8lfof1xLBUz+b3L
-	B87Wgp1lig3c6+ozs++JUsfXSKkTvH+gPvtaarFuz6pLNeyz+aLldqlD5qHIZCmPWIii+/oNz4mF/
-	pVhvKNkUIjBSLQ6JCd/+Jb67MvzvXP087dmozEdtTMUzgop6RdcbtXdNDJ569wztc7zok1QN5CKGz
-	EhR/Rk8lw==;
+	 bh=rCpN+jse6ec3DCQyXi2yoFkvoz1L6NP1D2t1/rCVQQk=; b=O95OneOV9V93uL4jwrmAAG1I0
+	Wk2bgrfpjN+zTHa2nNqMJk2wtszU8j7plZe+YERc3Zf4diEBgqXrmYv943T5Mwi+SbW85tyqLcz2z
+	C/0WNf0xhmi1/amf7JaK8M7zr5IpLCuXK1UtX9QdspyjqQvnsLU1rw9znzmKvy36dZ+92BDYwgZzd
+	tr8PRL3D7wzK0T1mvKRM5L3CIcGSmGTZ+1bvAjMK9VMOzZYeKlUMiVw1Kb2guBEBsPxqmrgLI5lKz
+	SvbStv4CY6scm1x6aQvyfOmKURTr2mfXbkqLgTzp+lZ1K18/d8wW34POEuGFdRMjlar7JMIL43xDL
+	gr8XnDrqw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lg4tB-00EFBl-6h; Mon, 10 May 2021 12:19:57 +0000
+	id 1lg5rV-00ERLk-HQ; Mon, 10 May 2021 13:22:17 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg4sx-00EF9T-Em; Mon, 10 May 2021 12:19:43 +0000
+ id 1lg5rG-00ERIR-3G
+ for linux-mediatek@desiato.infradead.org; Mon, 10 May 2021 13:22:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=GLh0mrZgEMV8uCKtdZxi8FRirgZQFF8C22C3Zf7j/X4=; b=pcHzbQ8JI++JrQiNwbCTR49zAZ
- /P5kE+ZJouREJh3BLrgXHC2/IJAA4p4HLRhCppS8TcSFiU0trLPhga0xe+T5dtIZAGRnifW3olXa5
- XdyGR+acomiXPuzEZJazGys3bj/6nYXVAwkjrk9d2dShU0DKGOvzqe5iKl98Y1M7ro+HxT2bgriAu
- jQZvYntZrXmeg2uqHzkxIetICZZKfR0J2+qh9qCsnsU1+1OJ4Zbro7o465nFYM14cGDIUCUTOz2qr
- gLlW+INSl8MOkCFFMzhF4JQtsNI2HuOnirRM9Bsv8Z1X+MOq2v477+lGzIuK93+u3h3KzhSxe8gcz
- pNqlqGlg==;
-Received: from mga01.intel.com ([192.55.52.88])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:Subject:From:References
+ :Cc:To:Sender:Reply-To:Content-ID:Content-Description;
+ bh=+jxkwaOUOJ3jFOmcNvz3Tue0IZGQ5BF7JUsr74h1aJw=; b=oBO67UaCIG/GYsSGEEv+Dis+Kp
+ nx8kxQ3+yamux1yHSdJ5OAmjqy+RFih82Ej29I64kWNguHI0p9FyL+r83XZX+86xZ68egVZsY9U0w
+ +eC+/Z2CZqi9KEzugm6n7xKehUj50BABAP6cEokuGOqoLlPwmdP70vLRVYxnPYvxn5CcM+1hCbkq6
+ +o+A2+yjDReku2QSJvMI51M2ljpYFwWk5fzUuHGeNFFA6sUrDQlMcRKGzPxMVVKftDV1wXOkDY+vE
+ f5H787PwGryJxVgSskdXifbduNBEqkqOKJbrBHuK7PzZ0m/bUdOLcyyzB4UzO6z5Pd8Y3CZk2wbGq
+ ewP8xweQ==;
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lg4su-008gUu-Be; Mon, 10 May 2021 12:19:41 +0000
-IronPort-SDR: bfk+HbhY5sE2NYGdWSZC+l+hoDmj/eGuQ2SLMQCe1b7EtzjafG98m0nSJEJYhhK2dKpzaQEVqQ
- 9DA6DJdWmwng==
-X-IronPort-AV: E=McAfee;i="6200,9189,9979"; a="220126458"
-X-IronPort-AV: E=Sophos;i="5.82,287,1613462400"; d="scan'208";a="220126458"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 May 2021 05:19:38 -0700
-IronPort-SDR: ao4yB93p+glGus/p+7LqlVOo/UzoL00iN6fQNdv79r/4ZwcIE5umGx34UpIlUVegZIcG2R+z+i
- pNhno4LPORtg==
-X-IronPort-AV: E=Sophos;i="5.82,287,1613462400"; d="scan'208";a="391900373"
-Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 May 2021 05:19:32 -0700
-Received: from andy by smile with local (Exim 4.94)
- (envelope-from <andy.shevchenko@gmail.com>)
- id 1lg4sg-00BAFq-NY; Mon, 10 May 2021 15:19:26 +0300
-Date: Mon, 10 May 2021 15:19:26 +0300
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-To: "Rocco.Yue" <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Masahiro Yamada <masahiroy@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- "Peter Zijlstra (Intel)" <peterz@infradead.org>,
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
- Peter Enderborg <peter.enderborg@sony.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Anshuman Khandual <anshuman.khandual@arm.com>,
- Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
- Wei Yang <richard.weiyang@gmail.com>,
- Cong Wang <cong.wang@bytedance.com>, Di Zhu <zhudi21@huawei.com>,
- Stephen Hemminger <stephen@networkplumber.org>,
- Francis Laniel <laniel_francis@privacyrequired.com>,
- Roopa Prabhu <roopa@cumulusnetworks.com>,
- Andrii Nakryiko <andrii@kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- netdev <netdev@vger.kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- wsd_upsream@mediatek.com
-Subject: Re: [PATCH][v2] rtnetlink: add rtnl_lock debug log
-Message-ID: <YJkkzlJQPWXjanxe@smile.fi.intel.com>
-References: <20210508085738.6296-1-rocco.yue@mediatek.com>
- <CAHp75VftbW7pgkfrSB6teKZO4EfGH9UWkhy1SAtijCLvKz8HTQ@mail.gmail.com>
- <1620631421.29475.106.camel@mbjsdccf07>
+ id 1lg5rD-008kE5-6C
+ for linux-mediatek@lists.infradead.org; Mon, 10 May 2021 13:22:00 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id b25so10520420oic.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 10 May 2021 06:21:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:to:cc:references:from:subject:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+jxkwaOUOJ3jFOmcNvz3Tue0IZGQ5BF7JUsr74h1aJw=;
+ b=RDP3aUcQ3kfWJ2qNsoh+IhGWdL0LuMa+Msfecy1hzGlXdu2bJDPgswWy3KCwJZlNsZ
+ bAsc+xlFYhZwQPB5yW9mBLSEkciE60xZIceBINttFLL6brqq7SU/AGT+wFJKoA6c/JV9
+ mNZTwH9/XOl5eYDCTMrTvCXpZJK+SVjYNmpMQTc/g/7iI03K2S7VtAVlD7WSJBLM/rsC
+ FwOlnPwf0RPbxDMZoLq9xaMbSLfHCkZCxGQaXMNBk5D0cU7pdZ99OC+b7Tb+/9ON3Xpe
+ pvWY1uGjSQ3Qrthyl1Ty/1JycRK2CkC5JAptvd5EGCb/CKjGTC32uGe7dgltbqjScrBe
+ Ialg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:to:cc:references:from:subject:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+jxkwaOUOJ3jFOmcNvz3Tue0IZGQ5BF7JUsr74h1aJw=;
+ b=XJFDp6HS6FDEKgQGnqnxauJ4NUKVaPb0RhfiwgFt4ikytsI70cvIbZF0g5HqL+a4xz
+ o+vl8DK5uvGMgqT2Cb+fQ1rRHmh7Wk3wW7DBcKZKTdFFYQ4ShiGKv64oXhUknH8Jg2im
+ yrxOQtMNFg0qQhgg7uEYvXCx5EeREvG9bE5aAb0FqvF/9WzNNXi8iBor9tOumTfz9aSj
+ ONvVsrm5FLJsOY0LWOxaR/B7o8Wix07gTGMP+ubDZAmYpJ+GKb0n7y0d3QUzJOX1jg06
+ XYcJD9lNqs7KL1d93yQ6/V4350d4d65bE0VkUbWGMZxRYeeWy5gg5/mTW+G4CH6ukyNJ
+ /B6g==
+X-Gm-Message-State: AOAM532FJFhg4WfhoaGKA1vIY51X/HmAqnq/GgehnlWWP52RkT0XOD/D
+ CSykS65xM1maCP0m+Ugoc+8DsueusFE=
+X-Google-Smtp-Source: ABdhPJy6MymDO0PEDyxboMgM9f8P8uVZk6fkPf+AT8vff060kvAGClf/HK1lRNlxk11rM2Jjyczt1Q==
+X-Received: by 2002:aca:2402:: with SMTP id n2mr11119448oic.113.1620652916908; 
+ Mon, 10 May 2021 06:21:56 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ r2sm3128956otq.28.2021.05.10.06.21.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 May 2021 06:21:56 -0700 (PDT)
+To: Boris Lysov <arzamas-16@mail.ee>, matthias.bgg@gmail.com,
+ robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20210131234425.9773-1-arzamas-16@mail.ee>
+ <20210509211702.549-1-arzamas-16@mail.ee>
+ <20210509211702.549-2-arzamas-16@mail.ee>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v2 1/3] watchdog: mtk_wdt: Refactor code to support more
+ SoCs
+Message-ID: <efdce3a5-e5b4-19a8-35f1-8a536220bb3f@roeck-us.net>
+Date: Mon, 10 May 2021 06:21:54 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1620631421.29475.106.camel@mbjsdccf07>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20210509211702.549-2-arzamas-16@mail.ee>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210510_051940_433470_5C2FDBBB 
-X-CRM114-Status: GOOD (  30.93  )
+X-CRM114-CacheID: sfid-20210510_062159_256844_EBE25627 
+X-CRM114-Status: GOOD (  24.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,110 +114,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 10, 2021 at 03:23:41PM +0800, Rocco.Yue wrote:
-> On Sun, 2021-05-09 at 12:42 +0300, Andy Shevchenko wrote:
-> > On Sat, May 8, 2021 at 12:11 PM Rocco Yue <rocco.yue@mediatek.com> wrote:
-> > >
-> > > We often encounter system hangs caused by certain process
-> > > holding rtnl_lock for a long time. Even if there is a lock
-> > > detection mechanism in Linux, it is a bit troublesome and
-> > > affects the system performance. We hope to add a lightweight
-> > > debugging mechanism for detecting rtnl_lock.
-> > >
-> > > Up to now, we have discovered and solved some potential bugs
-> > > through this lightweight rtnl_lock debugging mechanism, which
-> > > is helpful for us.
-> > >
-> > > When you say Y for RTNL_LOCK_DEBUG, then the kernel will detect
-> > > if any function hold rtnl_lock too long and some key information
-> > > will be printed out to help locate the problem.
-> > >
-> > > i.e: from the following logs, we can clearly know that the pid=2206
-> > > RfxSender_4 process holds rtnl_lock for a long time, causing the
-> > > system to hang. And we can also speculate that the delay operation
-> > > may be performed in devinet_ioctl(), resulting in rtnl_lock was
-> > > not released in time.
-> > >
-> > > <6>[   40.191481][    C6] rtnetlink: -- rtnl_print_btrace start --
-> > 
-> > You don't seem to get it. It's a quite long trace for the commit
-> > message. Do you need all those lines below? Why?
-> > 
+On 5/9/21 2:17 PM, Boris Lysov wrote:
+> This patch makes some constants SoC-dependent to support more watchdogs
+> in the future. It adds shifts of WDT_MODE_KEY and SWSYSRST_KEY to
+> mtk_wdt_data struct. This is done to bring support for various Mediatek
+> watchdogs which use same register structure but slightly different field
+> offsets in the UNLOCK_KEY registers. For example, mt6577 watchdog has
+> WDT_MODE_KEY and SWSYSRST_KEY at [15:8] instead of currently (and only)
+> supported [31:24].
+> Moreover, this patch adds SWSYSRST_KEY value to mtk_wdt_data because this
+> value also depends on specific SoC watchdog, for example mt6577 uses 0x15
+> instead of 0x88.
 > 
-> The contents shown in all the lines below are the original printed after
-> adding this patch, I pasted these lines into commit message to
-> illustrate this patch as a case.
+> Signed-off-by: Boris Lysov <arzamas-16@mail.ee>
+> ---
+>   drivers/watchdog/mtk_wdt.c | 76 ++++++++++++++++++++++++++++----------
+>   1 file changed, 57 insertions(+), 19 deletions(-)
 > 
-> It now appears that some of following are indeed unnecessary, I am going
-> to condense a lot of following contents as follows.
-> 
-> Could you please help to take a look at it again? many thanks :-)
-> 
-> [   40.191481] rtnetlink: -- rtnl_print_btrace start --
-> [   40.191494] RfxSender_4[2206][R] hold rtnl_lock more than 2 sec,
-> start time: 38181400013
-> [   40.191571] Call trace:
-> [   40.191586]  rtnl_print_btrace+0xf0/0x124
-> [   40.191656]  __delay+0xc0/0x180
-> [   40.191663]  devinet_ioctl+0x21c/0x75c
-> [   40.191668]  inet_ioctl+0xb8/0x1f8
-> [   40.191675]  sock_do_ioctl+0x70/0x2ac
-> [   40.191682]  sock_ioctl+0x5dc/0xa74
-> [   40.191715] rtnetlink: -- rtnl_print_btrace end --
-> [   42.181879] rtnetlink: rtnl_lock is held by [2206] from
-> [38181400013] to [42181875177]
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index 97ca993bd009..9d3091b12c06 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -44,13 +44,27 @@
+>   #define WDT_MODE_IRQ_EN		(1 << 3)
+>   #define WDT_MODE_AUTO_START	(1 << 4)
+>   #define WDT_MODE_DUAL_EN	(1 << 6)
+> -#define WDT_MODE_KEY		0x22000000
+> +#define WDT_MODE_KEY		0x22
+>   
+>   #define WDT_SWRST		0x14
+>   #define WDT_SWRST_KEY		0x1209
+> -
+>   #define WDT_SWSYSRST		0x18U
+> -#define WDT_SWSYS_RST_KEY	0x88000000
+> +
+> +#define MT2712_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT2712_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT2712_SWSYSRST_KEY		0x88
+> +
+> +#define MT6589_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT6589_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT6589_SWSYSRST_KEY		0x88
+> +
+> +#define MT8183_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT8183_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT8183_SWSYSRST_KEY		0x88
+> +
+> +#define MT8192_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT8192_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
+> +#define MT8192_SWSYSRST_KEY		0x88
+>   
+>   #define DRV_NAME		"mtk-wdt"
+>   #define DRV_VERSION		"1.0"
+> @@ -60,6 +74,7 @@ static unsigned int timeout;
+>   
+>   struct mtk_wdt_dev {
+>   	struct watchdog_device wdt_dev;
+> +	const struct mtk_wdt_data *data;
+>   	void __iomem *wdt_base;
+>   	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+>   	struct reset_controller_dev rcdev;
+> @@ -67,18 +82,37 @@ struct mtk_wdt_dev {
+>   
+>   struct mtk_wdt_data {
+>   	int toprgu_sw_rst_num;
+> +	u8 wdt_mode_key_shift;
+> +	u8 wdt_swsys_rst_key;
+> +	u8 wdt_swsys_rst_key_shift;
+>   };
+>   
+>   static const struct mtk_wdt_data mt2712_data = {
+> -	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
+> +	.toprgu_sw_rst_num =		MT2712_TOPRGU_SW_RST_NUM,
+> +	.wdt_mode_key_shift =		MT2712_WDT_MODE_KEY_SHIFT,
+> +	.wdt_swsys_rst_key_shift =	MT2712_SWSYSRST_KEY_SHIFT,
+> +	.wdt_swsys_rst_key =		MT2712_SWSYSRST_KEY,
+> +};
+> +
+> +static const struct mtk_wdt_data mt6589_data = {
+> +	.toprgu_sw_rst_num =		-1,
+> +	.wdt_mode_key_shift =		MT6589_WDT_MODE_KEY_SHIFT,
+> +	.wdt_swsys_rst_key_shift =	MT6589_SWSYSRST_KEY_SHIFT,
+> +	.wdt_swsys_rst_key =		MT6589_SWSYSRST_KEY,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8183_data = {
+> -	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
+> +	.toprgu_sw_rst_num =		MT8183_TOPRGU_SW_RST_NUM,
+> +	.wdt_mode_key_shift =		MT8183_WDT_MODE_KEY_SHIFT,
+> +	.wdt_swsys_rst_key_shift =	MT8183_SWSYSRST_KEY_SHIFT,
+> +	.wdt_swsys_rst_key =		MT8183_SWSYSRST_KEY,
+>   };
+>   
+>   static const struct mtk_wdt_data mt8192_data = {
+> -	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
+> +	.toprgu_sw_rst_num =		MT8192_TOPRGU_SW_RST_NUM,
+> +	.wdt_mode_key_shift =		MT8192_WDT_MODE_KEY_SHIFT,
+> +	.wdt_swsys_rst_key_shift =	MT8192_SWSYSRST_KEY_SHIFT,
+> +	.wdt_swsys_rst_key =		MT8192_SWSYSRST_KEY,
+>   };
+>   
+>   static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+> @@ -86,20 +120,20 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+>   {
+>   	unsigned int tmp;
+>   	unsigned long flags;
+> -	struct mtk_wdt_dev *data =
+> +	struct mtk_wdt_dev *wdev =
 
-Much better, thanks!
+Please do not rename variables. If you dislike that the name matches the name
+of the newly introduced structure element, find a different name for that.
 
-(You still need a real review on the contents of the change)
-
-> > > <6>[   40.191494][    C6] rtnetlink: RfxSender_4[2206][R] hold rtnl_lock
-> > > more than 2 sec, start time: 38181400013
-> > > <4>[   40.191510][    C6]  devinet_ioctl+0x1fc/0x75c
-> > > <4>[   40.191517][    C6]  inet_ioctl+0xb8/0x1f8
-> > > <4>[   40.191527][    C6]  sock_do_ioctl+0x70/0x2ac
-> > > <4>[   40.191533][    C6]  sock_ioctl+0x5dc/0xa74
-> > > <4>[   40.191541][    C6]  __arm64_sys_ioctl+0x178/0x1fc
-> > > <4>[   40.191548][    C6]  el0_svc_common+0xc0/0x24c
-> > > <4>[   40.191555][    C6]  el0_svc+0x28/0x88
-> > > <4>[   40.191560][    C6]  el0_sync_handler+0x8c/0xf0
-> > > <4>[   40.191566][    C6]  el0_sync+0x198/0x1c0
-> > > <6>[   40.191571][    C6] Call trace:
-> > > <6>[   40.191586][    C6]  rtnl_print_btrace+0xf0/0x124
-> > > <6>[   40.191595][    C6]  call_timer_fn+0x5c/0x3b4
-> > > <6>[   40.191602][    C6]  expire_timers+0xe0/0x49c
-> > > <6>[   40.191609][    C6]  __run_timers+0x34c/0x48c
-> > > <6>[   40.191616][    C6]  run_timer_softirq+0x28/0x58
-> > > <6>[   40.191621][    C6]  efi_header_end+0x168/0x690
-> > > <6>[   40.191628][    C6]  __irq_exit_rcu+0x108/0x124
-> > > <6>[   40.191635][    C6]  __handle_domain_irq+0x130/0x1b4
-> > > <6>[   40.191643][    C6]  gic_handle_irq.29882+0x6c/0x2d8
-> > > <6>[   40.191648][    C6]  el1_irq+0xdc/0x1c0
-> > > <6>[   40.191656][    C6]  __delay+0xc0/0x180
-> > > <6>[   40.191663][    C6]  devinet_ioctl+0x21c/0x75c
-> > > <6>[   40.191668][    C6]  inet_ioctl+0xb8/0x1f8
-> > > <6>[   40.191675][    C6]  sock_do_ioctl+0x70/0x2ac
-> > > <6>[   40.191682][    C6]  sock_ioctl+0x5dc/0xa74
-> > > <6>[   40.191688][    C6]  __arm64_sys_ioctl+0x178/0x1fc
-> > > <6>[   40.191694][    C6]  el0_svc_common+0xc0/0x24c
-> > > <6>[   40.191699][    C6]  el0_svc+0x28/0x88
-> > > <6>[   40.191705][    C6]  el0_sync_handler+0x8c/0xf0
-> > > <6>[   40.191710][    C6]  el0_sync+0x198/0x1c0
-> > > <6>[   40.191715][    C6] rtnetlink: -- rtnl_print_btrace end --
-> > >
-> > > <6>[   42.181879][ T2206] rtnetlink: rtnl_lock is held by [2206] from
-> > > [38181400013] to [42181875177]
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+Thanks,
+Guenter
 
 _______________________________________________
 Linux-mediatek mailing list
