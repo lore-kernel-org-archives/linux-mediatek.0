@@ -2,103 +2,115 @@ Return-Path: <SRS0=qC7P=KG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3838DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 May 2021 17:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F163C433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 May 2021 18:55:38 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9D65A61159
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 May 2021 17:02:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9D65A61159
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6048A611AE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 May 2021 18:55:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6048A611AE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:To:From:
+	Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MNi3HuJWrlg0XFppQOH2X4GAlffIj1Mx3PneMq8jWNA=; b=KsT0/TuKVi6XC6JAkBaxKvleX
-	BlMLboKbPJyKY8bjSQVmMQAR7tcbvjbsPVxBu8kbq+dYANBtld0jLeZuk7YCDzqJZjlboWcFvOJNJ
-	ptLsGKtusCIKwVGjXmia4eiE7YPt+UQzXAU3P1lrKnvwI3o49tyDJoRyhzvBrxlP/EzYWzrtjXFqh
-	ithtpYvtSVuSEUd8stfaxJ8Dfd/IDALCbcNiMwhETEZw3/A3LZY5QIs1PxI6jQQwN8vodJpvc6SRl
-	oPn05Zywkss/R/NQ4dS3xiQyUQ+J3lF6a2UuJtuQEJimqunY1B8MqEVBCucfivGiB6YrE4fBQNJKO
-	1oVjfFqqQ==;
+	 bh=TwD6fNWSyLnhoTKI86E8o86xX2Sca7yIXPGM9t0xtnA=; b=Pno1r9uhkjc7ePd99xSoM9GnG
+	GIHP81l4HWbSLFEFf4r/oyWuw99YqSg9sKcSyIbSyt53dOpLiD2Oh437VeD5/SbyoZB5xLiy0J0MJ
+	E4srJu97TFHJtELGjm0cCrRKo/gBSepcsPq7o8rnbMKjTblIpYI2QouQVKTPC+6l/+P83rOdom+0f
+	ghLZP3h09cORyPTLHQQz6xRPEuSihBtOaZDcUWocU4SxAMwBJskF3gC2CbBEPqGngiEy9tFPNtQ6n
+	oyU8EtBMAYwuJdGFc7XooelsbIZg/c+ZKaPs/0XelWp+DjmHiGTV+YfrAaZBB5smgDZxEGgCRdnFZ
+	s3DJx3lwg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgVlX-000r9z-26; Tue, 11 May 2021 17:01:51 +0000
+	id 1lgXXM-0013Zz-T1; Tue, 11 May 2021 18:55:21 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgVkh-000qzU-Cl; Tue, 11 May 2021 17:01:00 +0000
+ id 1lgXXB-0013Yp-2S; Tue, 11 May 2021 18:55:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Date:
+ Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=fmFyHNnUFHNuAVxbIzn7lHV9kvhWQzN1eSc9Pbf0XcQ=; b=hw5excp9opXfRXAg39nccJbgrA
- 1EUc03Rx4LxmAv4K/d9TR6RdudyOJDX08Gxz2eO0hyigIhMX6mrWA6lv7Gv208lDHIQ5VRIHeNlj1
- zKPcpLwJfgsHU5krehjM2cqa794Prj6oFshbR9GYP3nUJdHHgfruKR0FxCg0pGztJoXTW6PfS+l/Z
- 8ZOlU99RE3DK65wYOFUI89CHdgpoHa9MNmMwAFAJtLEzAjfDAu6+YyT1ZxlXDUuUeQvZCX9UnsQbS
- xZab/UAK2sh9psi0J6MMHWcd5yUge9tOEYF4DP/RxLBN8u3k+9qfloSdxg7ki1t94whYYnru3Naek
- xYHrK5ig==;
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ bh=45zpZEi3uWnaoxbve/2Atv3Y+btxOtqcAIeab35aQf8=; b=4hU/P6XPHyWzURA3kI1FeTUWkT
+ U0OfM1MDWeUDUK0zKnj2ga+s9ni3NxCdut5YS7yAhjHjJGUuPpNAXoNNj9yYaBJt/rkUUhTSQ9Hdd
+ 5hEiyulYpY1Ssm01vcCeMm8Hc6wzlyPUwYYxNjDJI/KklK+uSEAtqXYajX891QDBfAQrj3pm/WVjw
+ 1JbvQOwhmukLGuIR2WiY+3n4WopXDEinm4uygTwq5V5hdUYjT/hqyWQkaIEygsenHDX2CgrVH2xt4
+ yeMYQ61pjDy2tbT4IJq19kRl5ltvR+sKmZxZad7yFvcgnZkRNnbfsmX9oijIT3yfmqW9ZfYHWSAaF
+ e47mq88A==;
+Received: from mout.gmx.net ([212.227.15.18])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgVke-009n82-T3; Tue, 11 May 2021 17:00:58 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id b3so11115533plg.11;
- Tue, 11 May 2021 10:00:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=fmFyHNnUFHNuAVxbIzn7lHV9kvhWQzN1eSc9Pbf0XcQ=;
- b=myLkImHXOezSotuuATiOAEM8rI4bn/KntJijmRm0HOQeeHwV6aTGsPD7nv0BjqQoH1
- 3L+W86p3VkFFKF1vCivgZ0qDY4CZ1J9P3bAUYxierHIchWRD2cjkCBTXhAgs0oZtHK8E
- f/zSe/dcSO79CEJDcjuxvyV9AGAixNGBTyGehW/EyGOmO0qoxUzxVIjKjJjsRpCsvrQ9
- IV3J4d5IfaH/91hgpUNr80AqexKcSdABwYoGz4zngIkqisK4mcn4V+nSvrjZZiEkbJ8E
- Fn4f9Ons6kvYNmL5aBZXFCVScrB4uAxETd2UTttxRQkelZq+5WueHFxRmL/wJTjHalaa
- 8+rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=fmFyHNnUFHNuAVxbIzn7lHV9kvhWQzN1eSc9Pbf0XcQ=;
- b=hiexcr/MroujrqgyZ374BtRxD1MjBXybt+ENe6OOELX2e58IZDK5NxG96GUAjOb7mz
- z/yoEHrTR/IdtyU4sG/Hj6BpHbH8MftyPYAbG/fqkc2pG7TLi7E/Kda+r7wW0IuLrRcw
- HGdfQzo2dXoAhMG1i1gLJbmpA2Xr47hrCmmj3DpOQWAlbcdHilx8l2ae94/xfljhCZXF
- e3v+oAVkNy810H93ScHmoushBxLxvokqc3pl8WbwXpztd/6hPWTxFEaAaW5An51URqZF
- V76YBkAcMnADV3W3wIwX8uGByhAnCSjhI+keP51xt0HL7o9FDpr/kvF5Nyrm0tLwhbsE
- tK4A==
-X-Gm-Message-State: AOAM530YKyKqmS3RGZfk+X1Bk+CqF7xxuhthfBjXRGNrzRuZrcHompC3
- 5xmjsMobz3GtO/1wi5GeQV5qlj8WFBgZ7uXTOpg=
-X-Google-Smtp-Source: ABdhPJzmu1ezMUQi6YlVmGSO8GpWvroaYz0PCIlp5rMRht3gY+s4xQHOXqACOfoh44yUmzfbgFNkExgUPr7+XNncE0c=
-X-Received: by 2002:a17:902:10b:b029:ed:2b3e:beb4 with SMTP id
- 11-20020a170902010bb02900ed2b3ebeb4mr31789999plb.64.1620752454532; Tue, 11
- May 2021 10:00:54 -0700 (PDT)
+ id 1lgXX8-009r9s-6Q; Tue, 11 May 2021 18:55:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1620759241;
+ bh=WENqI3vsyBY6Che+sULK//xoiDEcerYKhusYaYmV+Jo=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=Wm7uyMFH3ntYOc7siUqnRWJyQKqP/L/GemZ32U41cZtFpWvRPGw8LRUeA5Wc8VxGv
+ 3lshu0OpGSbCZPFkc/z39jHh6HxlNPAyP64coKYwkRUqUwObUdhdz4GzqgVuo7XDYn
+ Wq/zbHxl2T5QmIu9gnRtj6TSO4gUOC64b9OA36ps=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.149.187] ([217.61.149.187]) by web-mail.gmx.net
+ (3c-app-gmx-bs62.server.lan [172.19.170.146]) (via HTTP); Tue, 11 May 2021
+ 20:54:01 +0200
 MIME-Version: 1.0
-References: <20210511113257.2094-1-rocco.yue@mediatek.com>
-In-Reply-To: <20210511113257.2094-1-rocco.yue@mediatek.com>
-From: Cong Wang <xiyou.wangcong@gmail.com>
-Date: Tue, 11 May 2021 10:00:43 -0700
-Message-ID: <CAM_iQpVWSJ8BdRoLDX0MdiqmJn2dp+U9JM4mcfzRbVn4MZbzcg@mail.gmail.com>
-Subject: Re: [PATCH][v3] rtnetlink: add rtnl_lock debug log
-To: Rocco yue <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew Morton <akpm@linux-foundation.org>, 
- Masahiro Yamada <masahiroy@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Peter Zijlstra <peterz@infradead.org>, 
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
- LKML <linux-kernel@vger.kernel.org>, 
- Linux Kernel Network Developers <netdev@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com
+Message-ID: <trinity-da507ec7-f0ec-4d64-b7fe-1c9d13dbead8-1620759241263@3c-app-gmx-bs62>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Rocco Yue <rocco.yue@mediatek.com>
+Cc: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Masahiro Yamada <masahiroy@kernel.org>, Nick
+ Desaulniers <ndesaulniers@google.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, peterz@infradead.org, Tetsuo Handa
+ <penguin-kernel@I-love.SAKURA.ne.jp>, Peter Enderborg
+ <peter.enderborg@sony.com>, Thomas Gleixner <tglx@linutronix.de>, Anshuman
+ Khandual <anshuman.khandual@arm.com>, Vitor Massaru Iha
+ <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>, Wei Yang
+ <richard.weiyang@gmail.com>, Cong Wang <cong.wang@bytedance.com>, Di Zhu
+ <zhudi21@huawei.com>, Stephen Hemminger <stephen@networkplumber.org>,
+ Francis Laniel <laniel_francis@privacyrequired.com>, Roopa Prabhu
+ <roopa@cumulusnetworks.com>, Andrii Nakryiko <andrii@kernel.org>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upsream@mediatek.com, Rocco Yue <rocco.yue@mediatek.com>
+Subject: Aw: [PATCH][v2] rtnetlink: add rtnl_lock debug log
+Date: Tue, 11 May 2021 20:54:01 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20210508085738.6296-1-rocco.yue@mediatek.com>
+References: <20210508085738.6296-1-rocco.yue@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:vPtDeKS2EkjkBFhCI0MTeN8+oyPoFuj1CethO+QBiXE32fotLiQj3aR78hUsvSvNgQveJ
+ 5Vk3+k2e4Uy1jjeU113UmzFfxe+2rx6KN6XBpfqCkB2aytuVjsjTTNga6VErcNnELg1CQ2tSCdxH
+ KGima4m2jsQu8qxpK4/EClBBlbyipfhQlCqZqJZ1wiC4nsYcoR2rZ+Y3X4csKHww9z/Q7kG7msZl
+ T3OO17Vc+cXzSxBTGrm5dXMILZmPRsj0mJqFWC7z7z5sxY/vnfv7M/HLGOMmHmCGX8BIeSS07Khc
+ kk=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:1dioUG1R8SQ=:hob++s0902VF7y5u+td1EZ
+ sw+23yXRodDzF2z2T9xOFfVMS99mkk5kUjw2ux8ozYAMOs35z8M39epNx9J9VbRKRIaPSP9vE
+ odEAjxv3m3HwWC4kCwBcweqwGrGMhevXTKfYJeZrORadT8yGabxSWTM8j39w44vc2UwEkukyo
+ H96t6aPJsl4kOfyq1PoEIxCvcGZTjSNCWzg1dj9MJNP78FeKEoWsGRDDhd4KwTWpaCsrVSwhJ
+ T45wYSxgtSphuJBiTny7xFz58TAVkVcyBb4ZPUuliO2Q0Hpg4UvS0b6XNWN6mDlru/DLH0oQ9
+ nJgYOdNPc9Xl3bid/u8tmw191g2TASRi/iCiH78pnSu122f2/hpH4Ner3NVE7szdKNSNlnUAJ
+ tBqMWemXG/dJ/Zsrg79lE1DWpmsUIuVnAyqtFZBBC0yIq7AxFL5m16U0eOt8PDJ1UsB1q03mA
+ +VFI1Y4zUPixCP36Y34vWP05m3m7cmuXpbgn2bh4vOdO/4xoY2zljqRQg1+d24vUYO0tHll4c
+ inj4eEY/7E593OGi1YF4Wf7cZnhahAwixwIeBmvVOSHYOxfHhTuGlzwxvdPop34zOQVlgBnA9
+ 2QW/ulESpmSg7iWOh36butorJGlClRm5XJjFEV7lufqTVugy4dcwjiKDQfVjufsb0Xj2XAON+
+ K7XRKw0c1JzvvVwkVnHlHQLzWoAuc+leU341ft5AP5WxSqfpUUl9Lm1chzvxRLNnetxCZSiV2
+ atf9H7D7tKjZ6JI8A0rXoN82Go9vyMk3Cv0v+re3DZLE/GgkGi20226pN5vErMKK2qBjWTwzL
+ 50PtqGKn12cVKtHlXt2X3mnUh2/FoYcdxDEbH0ZENbKng+A4Vjvy1ziAyBPrEmZVESV68p4L7
+ BTPds5r/9pUmA3Lkbkv8lX3Zk/ViQ6+d7DuVRHwibja2JdicGhxrf8YiJLrrTOM0Nz11lvDk8
+ sJqwim7iQ0w==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210511_100056_954349_37F1F5C6 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20210511_115506_589221_32CB9774 
+X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,22 +127,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 11, 2021 at 4:46 AM Rocco yue <rocco.yue@mediatek.com> wrote:
->
-> From: Rocco Yue <rocco.yue@mediatek.com>
->
-> We often encounter system hangs caused by certain process
-> holding rtnl_lock for a long time. Even if there is a lock
-> detection mechanism in Linux, it is a bit troublesome and
-> affects the system performance. We hope to add a lightweight
-> debugging mechanism for detecting rtnl_lock.
+> Gesendet: Samstag, 08. Mai 2021 um 10:57 Uhr
+> Von: "Rocco Yue" <rocco.yue@mediatek.com>
+> Betreff: [PATCH][v2] rtnetlink: add rtnl_lock debug log
 
-Any reason why this is specific to RTNL lock? To me holding
-a mutex lock for a long time is problematic for any mutex.
-I have seen some fs mutex being held for a long time caused
-many hung tasks in the system.
+> <6>[   40.191481][    C6] rtnetlink: -- rtnl_print_btrace start --
+> <6>[   40.191494][    C6] rtnetlink: RfxSender_4[2206][R] hold rtnl_lock
+> more than 2 sec, start time: 38181400013
+it would be good to have same time-format (seconds.nanosec)
 
-Thanks.
+> <6>[   42.181879][ T2206] rtnetlink: rtnl_lock is held by [2206] from
+> [38181400013] to [42181875177]
+same as above
+
+> +static void rtnl_relase_btrace(void)
+should this be release_btrace?
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
