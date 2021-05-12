@@ -2,105 +2,83 @@ Return-Path: <SRS0=1nN3=KH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_NONE,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A93E6C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 15:28:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F40EBC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 15:39:46 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E15FF61C1E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 15:28:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E15FF61C1E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8C68961D35
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 15:39:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C68961D35
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4aj1ou4fChixGN6BjeNz6P5vEeCpYTblfLZdqAZPrDo=; b=d12zbrgoaYUjUhOqnJSIJUfZs
-	q3LJt63F/aX8eoGO8MDdXtUTR62LcH1stiorhXwGswkmMyac37zAaG/6a8Oaiy9e+0AVc6p9P1aOs
-	0MWCs6YhwyN1rojLcmIDiFRsmctQRqxyeXVqq36XB9hx7JCn/oI4cPAnFUoeyi7NB50+NatASkVkZ
-	JyKZGk0vGirgVQ+AicepuvpTg0gAmpc+AWd1CuenYTY9eLxXeVf3QnyYqcVqRsGlq1XrK+3OOM7OU
-	R8L2Zd7ga53zgE6ST4QgROH+eiT5TfoTVc/NhSYklmrn+saQydU2RKOVy5a9gsWfkNMANZ/EynWD5
-	5iGrzG1cw==;
+	 bh=Cq+Hgyr6BF8+ZuXgublSVsg5P6rK6OdCQPwZrDucj9I=; b=FhuOGFUClBjgsC7lTaOt5+J0f
+	g/IRtoOjgLUV7hw3BMFmYSjeNTAu6PodQAvF2yT79fnMh8qz6ldn1rdsmKhAT7pit/dvHTjLuBB0a
+	88+ualVyMfHFxZ5b854mZe2w4T+ofYa+NykQxNhGjbd+eAlvHBHDCYXG9GzGfvIPIoYuF0B/3/tHs
+	EWefeImp/QISfR+UPbTkMoVaB9hh62y3d/bBxhIRraPaN4+pujE//gPIxqQO8tv9KqehAIRW/iftX
+	vzXYDus2SUopwxYFbpdtMKUstZIKvrnC5wOU1knb4HuaCemhBCGc/py809x/cvX+JX/21VkIDkKZr
+	bxaVkeaiw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgqmW-003C6z-FV; Wed, 12 May 2021 15:28:16 +0000
+	id 1lgqxP-003E2S-0x; Wed, 12 May 2021 15:39:31 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgqlI-003Bo6-4U
- for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 15:27:00 +0000
+ id 1lgqxD-003DzH-W5; Wed, 12 May 2021 15:39:20 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=IEDSCcz9DuURhhNfs/tK0QYp1lnSjVV5pxew10G8dSk=; b=4XhRqnVzYE9hvhjDojqiGLCJnm
- 2JlGEsEVYkWd7UsnCD6PjCvLIEReJMrzlZgPNRZ/46WprPteT23grWHfiOqSL4GwwZ6eqDw8kLAW7
- yXJFN2U3iCEkEsLurlYhWNxfshOCymkfywAsSSI/ddlQm6wq+Txd3BHqdSp76zzdgW3JgQCx70iJ/
- WXyJ6vZhNSfyKdoX/Eei0ml7Pb557zlYfQA/O6E5RKlaMKzUs9x+AaR3hivGfWzd2P1J1LF8KJCh+
- Ha9v8DyANHEeT18BR/u5vF12TIYmv3q2b3xqWjNc7eE9oEWFS8F3NuLCJexMcKNpYm7cfEopl3Qn2
- u3l5AyZA==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+ From:Date:Sender:Reply-To:Content-ID:Content-Description;
+ bh=3RRNtQw/MGQ2xNnrJry8Z8iWUSxHJrYB11eenbS0sNk=; b=3WrNHckV/9wPJKd+sjhmIAdKSJ
+ m4DRWgjCtacsfD+4pfq6DAjB16+5sY6bL83UI2RQAD0PpLJtmX1H3aUACLgwTeij7QEQDrC4aahFj
+ uPrhRQad1CSNp5/tZR/6Nj51kIT25QcL9lxexGNt9XuwH6FLS9AQQ7/3d0oRLgWYvZK4KeOeoUNyF
+ Ns8oxOJeQsk1nXlN0KlI6/VstTJ9n/HfoAoPIcWATIEnRKUpc4h22Sed+DK4WGtp2tiCr+IQMkTew
+ JljKcEHRLHdC0JozHLStvuEUOnahy6wXMPdfu8jNBS4RBDrExFdxlTtMET9Lv1AilnpH+LinVytDv
+ Xg6QufAg==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgqlF-00AW8T-Fg
- for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 15:26:58 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id t18so24061197wry.1
- for <linux-mediatek@lists.infradead.org>; Wed, 12 May 2021 08:26:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=IEDSCcz9DuURhhNfs/tK0QYp1lnSjVV5pxew10G8dSk=;
- b=CG7ddyfb3MJ4mflSM2j6jsjXSDK0jc/4+713mBdgzZLahUwj9xU1qBq3tVbUZlOhlF
- fXUgpuXkILMZbznzaUMp8o+y75a1Pyj76CYD9j6gBYZHUQg+lsrOPSh3QK8JzYMwMSV3
- 9pgx7uJltO/doD6GJ+GoR2q5skrCbFuebIwR8giwNWAQLLGIRAXKcL2tXNR1/JtcatLt
- ZM22Qsm/oGAt94hGxt1IFdBqSPLjChptmmcY/O9XoTnSaPf+to8y706uZ5mkjDCtglls
- iNep62hfW0vRpCpn1+YmTQiaOAMAPsg/FH4N/UgYH5GZNqw6U7OO6VEt2devTqWUK+6f
- T67A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=IEDSCcz9DuURhhNfs/tK0QYp1lnSjVV5pxew10G8dSk=;
- b=sj6J5IrqfZIhwPf1PWjP1/yhBXz9O7DPu0BKx/xo9ELs31f1IZJPPFzcqiMn6QBKQ1
- iyLe21KnkaZd64hcGQjFuVMMznqOFrOetmOVl8mBkXwgI747bp4jiRL/IiH37lx66A3Y
- kmFSMKvsrJ26fCXmBcX0KRSiwpH8NgMhO6duOZUHBhaujvCPyd+G+d2S9SIN4Wjw9FI+
- aE7iJxuu8w6z3x3fWkRybabSndWHtfBXS90fZ8UE58G4RlF+zaG9mDGvzxSII2PDHGrC
- pYch/50U69ToNJ7EqbhG4dbF0N+SyoEk5FG7e7g7xhBQSlOeWxw7MznyvAwe9rHxCqUB
- tgvg==
-X-Gm-Message-State: AOAM532LXgHINij4SqHlXnvLo1oBrwp3LNTOf8mUEq4DVP1m5b/ljFZQ
- 8BU92OuMo3NeWwtDLi893qrqhg==
-X-Google-Smtp-Source: ABdhPJzkz7qyyf/PvRK8FEXDTG23yu94463YY7AS2T5Ra/L04pD4Rp7Xr9jE4wGckz5kM8vYCbJr3Q==
-X-Received: by 2002:adf:f3cd:: with SMTP id g13mr39081412wrp.94.1620833216152; 
- Wed, 12 May 2021 08:26:56 -0700 (PDT)
-Received: from mkorpershoek-XPS-13-9370.home
- (lfbn-tou-1-1465-169.w90-89.abo.wanadoo.fr. [90.89.34.169])
- by smtp.gmail.com with ESMTPSA id b7sm30931256wri.83.2021.05.12.08.26.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 May 2021 08:26:55 -0700 (PDT)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-input@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Subject: [PATCH v2 3/3] Input: mtk-pmic-keys - add support for MT6358
-Date: Wed, 12 May 2021 17:26:48 +0200
-Message-Id: <20210512152648.39961-4-mkorpershoek@baylibre.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210512152648.39961-1-mkorpershoek@baylibre.com>
-References: <20210512152648.39961-1-mkorpershoek@baylibre.com>
+ id 1lgqxB-00AXFJ-CN; Wed, 12 May 2021 15:39:18 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BDC2261447;
+ Wed, 12 May 2021 15:39:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620833956;
+ bh=3OKE5hvIdwuXgAtAcX9qP9UHIBPfVufpxaoy+qmN7ik=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=ax9+eTqIZr/T8ny36CIMXGA9hNYiTeTt9XbyhxfEPDGXfPAWU5nG5S/zjLcbQdn2T
+ qPOwqL20LTk856KlTtKDU367ck3i3dA3AxM4oeR6uX48dP/RFymAX834uZPxeBcu8w
+ eUcelaBUPJW2GP0qFvlCmVOjyJtRYoBeyK/GD7wHbr1RbbuwdOc6IS4l25COBK2Ja7
+ iu+uG26ufHxyBoZgBdISpfOm8q7sTncmgVeSdropTh79gPy81Kfu0hcfLyGW9KcCnc
+ r5pDV9LfJZzg1KLwXF88yxTD8qEgSGadtSIACQ4/iSl9w0RmSOm7AVqyHtG8gaKCby
+ 4IP1ixvg62zpg==
+Date: Wed, 12 May 2021 08:39:13 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Rocco yue <rocco.yue@mediatek.com>
+Cc: "David S . Miller" <davem@davemloft.net>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Masahiro Yamada <masahiroy@kernel.org>, Nick Desaulniers
+ <ndesaulniers@google.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Peter Zijlstra <peterz@infradead.org>,
+ Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
+ <linux-kernel@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>
+Subject: Re: [PATCH][v3] rtnetlink: add rtnl_lock debug log
+Message-ID: <20210512083913.733f9803@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210511113257.2094-1-rocco.yue@mediatek.com>
+References: <20210511113257.2094-1-rocco.yue@mediatek.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_082657_532913_435909D3 
-X-CRM114-Status: GOOD (  19.25  )
+X-CRM114-CacheID: sfid-20210512_083917_487873_F93087E9 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,133 +95,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT6358 pmic keys behave differently than mt6397 and mt6323: there are
-two interrupts per key: one for press, the other one for release (_r)
+On Tue, 11 May 2021 19:32:57 +0800 Rocco yue wrote:
+> We often encounter system hangs caused by certain process
+> holding rtnl_lock for a long time. Even if there is a lock
+> detection mechanism in Linux, it is a bit troublesome and
+> affects the system performance. We hope to add a lightweight
+> debugging mechanism for detecting rtnl_lock.
+> 
+> Up to now, we have discovered and solved some potential bugs
+> through this lightweight rtnl_lock debugging mechanism, which
+> is helpful for us.
+> 
+> When you say Y for RTNL_LOCK_DEBUG, then the kernel will
+> detect if any function hold rtnl_lock too long and some key
+> information will be printed out to help locate the problem.
+> 
+> i.e: from the following logs, we can clearly know that the
+> pid=2206 RfxSender_4 process holds rtnl_lock for a long time,
+> causing the system to hang. And we can also speculate that the
+> delay operation may be performed in devinet_ioctl(), resulting
+> in rtnl_lock was not released in time.
 
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
----
- drivers/input/keyboard/mtk-pmic-keys.c | 49 ++++++++++++++++++++++++--
- 1 file changed, 47 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index d1abf95d5701..5496a7020104 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -9,6 +9,7 @@
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
- #include <linux/mfd/mt6323/registers.h>
-+#include <linux/mfd/mt6358/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
-@@ -74,11 +75,22 @@ static const struct mtk_pmic_regs mt6323_regs = {
- 	.pmic_rst_reg = MT6323_TOP_RST_MISC,
- };
- 
-+static const struct mtk_pmic_regs mt6358_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+		0x2, MT6358_PSC_TOP_INT_CON0, 0x5),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+		0x8, MT6358_PSC_TOP_INT_CON0, 0xa),
-+	.pmic_rst_reg = MT6358_TOP_RST_MISC,
-+};
-+
- struct mtk_pmic_keys_info {
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_keys_regs *regs;
- 	unsigned int keycode;
- 	int irq;
-+	int irq_r; /* optional: release irq if different */
- 	bool wakeup:1;
- };
- 
-@@ -188,6 +200,19 @@ static int mtk_pmic_key_setup(struct mtk_pmic_keys *keys,
- 		return ret;
- 	}
- 
-+	if (info->irq_r > 0) {
-+		ret = devm_request_threaded_irq(
-+			keys->dev, info->irq_r, NULL,
-+			mtk_pmic_keys_irq_handler_thread,
-+			IRQF_ONESHOT | IRQF_TRIGGER_HIGH, "mtk-pmic-keys",
-+			info);
-+		if (ret) {
-+			dev_err(keys->dev, "Failed to request IRQ_r: %d: %d\n",
-+				info->irq, ret);
-+			return ret;
-+		}
-+	}
-+
- 	input_set_capability(keys->input_dev, EV_KEY, info->keycode);
- 
- 	return 0;
-@@ -199,8 +224,11 @@ static int __maybe_unused mtk_pmic_keys_suspend(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			enable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				enable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -212,8 +240,11 @@ static int __maybe_unused mtk_pmic_keys_resume(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			disable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				disable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -229,6 +260,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6323-keys",
- 		.data = &mt6323_regs,
-+	}, {
-+		.compatible = "mediatek,mt6358-keys",
-+		.data = &mt6358_regs,
- 	}, {
- 		/* sentinel */
- 	}
-@@ -242,6 +276,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
- 	struct device_node *node = pdev->dev.of_node, *child;
- 	static const char *const irqnames[] = { "powerkey", "homekey" };
-+	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_regs *mtk_pmic_regs;
- 	struct input_dev *input_dev;
-@@ -285,6 +320,16 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 			return keys->keys[index].irq;
- 		}
- 
-+		if (of_device_is_compatible(node, "mediatek,mt6358-keys")) {
-+			keys->keys[index].irq_r = platform_get_irq_byname(
-+				pdev, irqnames_r[index]);
-+
-+			if (keys->keys[index].irq_r < 0) {
-+				of_node_put(child);
-+				return keys->keys[index].irq_r;
-+			}
-+		}
-+
- 		error = of_property_read_u32(child,
- 			"linux,keycodes", &keys->keys[index].keycode);
- 		if (error) {
--- 
-2.27.0
-
+You can achieve that with a pair of fexit/fentry hooks or kprobes,
+and maybe a bit of BPF. No need for config options, and hardcoded
+parameters..
 
 _______________________________________________
 Linux-mediatek mailing list
