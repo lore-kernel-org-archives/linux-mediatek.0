@@ -2,106 +2,105 @@ Return-Path: <SRS0=1nN3=KH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F5BEC433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 16:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDEA0C43462
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 16:42:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB15461006
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 16:39:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB15461006
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 45FC461040
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 16:42:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45FC461040
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/xCrYgvj/HmigOzHAVhXvV1C0OL88qdwAeLwrd3/A4Q=; b=JpnL549Er+xsxju/4UT5OgSrQ
-	f9muPrNEzy0AV/L0cfeuOfzGn/I0kcx+j8Gpiopd0tLQZiISorN7hBKvv2nW+rjAYK+sEz0w+CY1e
-	YWR9jI/lG4ia+DOEgarPH6eMaVZvj8M+4htA3uSsG0OuFPLTEmjz660QHmWFc8pQlj/c0dBc3tXhV
-	ZU7DnZNBs31LAdXMoqFQYacnILKftq+ms5CdDmRmTnY4FsiSObOwqF9uX9Qe/Pup6oSsbK/0+DmGP
-	OpgRWkRFYYMAG8J5bNdLkTnvq4KXzZgXwE2RCgJd5S0kpBeTyYXNftd0s9DhTK2B+XZOXya7uv9mk
-	oJFSC2VfQ==;
+	 bh=nsun20bnOH6tpJHoqo/sKxuayw39Y9veloUoh15gpSg=; b=BJsYAo3BbVi921A0Rp2W+38qH
+	4/IIYtCI8F/74q5wqY+y+vT8HfaFJfLZTE9fp3U5/SwcNEHnFGOHKrnznXdNnYkkv+5TZBcvDGS+p
+	S8kYOa6aQeUH0cnbBSCk9SI8a3t17M7YI/rjrTR/jyAiSkxx4uNaeRmN2cciJKaTZZ/0NLttnFq14
+	kkNgCHhlNypZXmXwNnQx1fc9dVIXDFt6WP7oDwx1jhkp/kX0eE1v2QMV03kvp+L4/yzxQF4gol0Os
+	/pFxTtGNDWrCqJBpFPlsWg0s789lZIMKu8dYwqB/PEyQWs0IdykAydqv1l4WeNP4NibAQtappxL40
+	lPc6x6/JQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgrtA-003MTk-0Y; Wed, 12 May 2021 16:39:12 +0000
+	id 1lgrw8-003N6W-Vw; Wed, 12 May 2021 16:42:17 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgrsx-003MSR-He; Wed, 12 May 2021 16:38:59 +0000
+ id 1lgrw6-003N6F-Mx
+ for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 16:42:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=YMb7uN/QWY5kpiEORQpOCJvo0plM7mzHsaNeBHSjrWg=; b=vAwAlhtyF/9uFFXEvw6HK3yxUO
- INhSzCYbKpYCgAx83e+tU9K27mBNfYUEEHgbRyD6sNT+NWFlmN7pR+WBGAygHxu63nTSJtPLSu75V
- VOnoadaxcapFGia237U9KhVJ5Mv2On6P1YcNgf1QtEPQDrb/ahvwIGS5GidPNmai9/dC9U1k9NrFl
- qDHVIFh5HeSCexQRoT7tAdV2m+x5fAzheTgu7KSsZAan16IQRD5gG5Eim6r/afKuQ1YOW1WABR3b0
- To13YzO0Rn4VbsspQozGsGJOlm9cqM0wmuT/KXlkH74c9htHOrcWZwey13eYt98jt87UbcKCOeRr+
- 5jNhI6OA==;
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=c0VLlOA4O95JRL4lKkh9nBVXdg9khLB5Tb87tWSnVRw=; b=qNu4DkVCZqT8AKR66AbgDNGEfR
+ h5Ex01Xv1wWcK5bWS3T7yerBUCs1U1tQpflpoaOdkbypsApm4/F5yQ14voPsNdJkvW7sfcxISkgJX
+ W4PJh9PhGIjWPDebDSS8PBoNxBEUzpWUwdibNZLlz87sSBKxty0q20b+YHbfkzb2YqptqD9XEr6DB
+ 8bpmKB8oqQ4axXmVPnuB9fP4w2N/FyT4RxeqnHbWZIPtXKmaQHo96ECMK/yohePLnUheFk+i1CmpF
+ iEJrgERvdXb25GuvtXasPortjIaLLHXU24/2ouanVTaZV4c5zCgNWnKMQQK1H99BM1/mlMlJArIAm
+ 9nPNJ9bA==;
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgrsu-00AbdO-Pg; Wed, 12 May 2021 16:38:58 +0000
-Received: by mail-wr1-x431.google.com with SMTP id h4so24268558wrt.12;
- Wed, 12 May 2021 09:38:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YMb7uN/QWY5kpiEORQpOCJvo0plM7mzHsaNeBHSjrWg=;
- b=pxjAbg1WrLWOXCdwri/iyguoBHX06bS+zsC1ZbzXBKincC3w+e7sr8NUhh4kg8fw0J
- g/3VpiDSYjgo3NqDU462rHTuSpM51uDXm9sY0RvYOfP73vWjoKxYX8UNfRNz258pUL3t
- xCtiDTUk0UjlU5qmi/sVccDAYCY4BlEz44Br9BR1qazP6d/2EdDdN42asYTVkXVsm0MJ
- zOkrzjMl153Y0OhqSMnlHVWtqV0Kxb6XapepjSFHo9aR4rhOHLChqHtubpNBKaUu7IIa
- Lr2UQahSAsbve/8abe41aR1lplbAuX1AkSz+gaUNSyE8FuvMlORnLz1WjTv6oapQt5f/
- VLVA==
+ id 1lgrw4-00AbuF-38
+ for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 16:42:13 +0000
+Received: by mail-pf1-x431.google.com with SMTP id h127so18926421pfe.9
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 May 2021 09:42:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=c0VLlOA4O95JRL4lKkh9nBVXdg9khLB5Tb87tWSnVRw=;
+ b=GLyllHtwAmx2LbR5f2ncGAhINUHQKpdLq0Va8A1jrEEH4iKxyi8yPxjQgDESkJIxI8
+ sgoLTQVM7dgUoN+y2VlM6E/Bw5o4DjbV/YhVFPA0LnMq0wbCkCTecSfv6o4de75oC4YH
+ Za+cMwPJonToYd5+eHdZv9MjkDrusuoKNZRgO+4txsra0GzgH0ZKK+r+2SQ4qhaKEsEy
+ BZz4C1Wy5j+1iGlQWVlY368VZYQ8G82YQHoSKQMXhYNhcbuA08OH9xoUZ49vl/hWDUnc
+ OlnJB/RukALauzfpxqTJekUSL0z1GfxqrbmZAZ8WATDNa0pCbh2J9jeF3PqUqvF2ZlQ/
+ KcEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=YMb7uN/QWY5kpiEORQpOCJvo0plM7mzHsaNeBHSjrWg=;
- b=bWRsU7hj9gldLBWgLjd1HEggdmg6Y0rFnbJcIf4HpRszv1Qd3dFKTCEusvHPrrVzSG
- SVlcqrIPaeF4KwEaLSlTm58eIg2ZXZyPVnOT+69UsxxXzqlKVKI5lhDv0WDrFWd5U697
- EnIiGCp4BdNzc454qjLv0oGOHOhRRS0/pEzwsKO34IN/oyEHDLOTR/WUBJUNtTI9iChT
- quDhKeCShiAFsDS4luk2aP7a7A6xfFNlvAOEXfXcbt5qAuZeMl55TEQnyvf/34dCNT6v
- knuAMG3lt92tKrfwf2iJKeT8pGrkeyx7gyvTv0cVHB6+JSBelRjxuqdZERh0LwYKtcQd
- JLJw==
-X-Gm-Message-State: AOAM532JO4vUz4++8v3rxKgYQFi1cCUkgpkBm6ya86vZ+IWubNR5PfD+
- /xKAsahM5KUCol6m+uMR1/E=
-X-Google-Smtp-Source: ABdhPJxFNrKOWVPM0JkDbkwH3AwuL6kakoN+0Qnbn/3gkIZ1tbCKYCw8x+nyqNJtJr7PUf/fvUK6Lg==
-X-Received: by 2002:adf:cc85:: with SMTP id p5mr46235148wrj.75.1620837535360; 
- Wed, 12 May 2021 09:38:55 -0700 (PDT)
-Received: from ziggy.stardust ([37.223.140.37])
- by smtp.gmail.com with ESMTPSA id z5sm179335wrn.69.2021.05.12.09.38.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 May 2021 09:38:54 -0700 (PDT)
-Subject: Re: [PATCH] arm64: dts: mt8183: add cbas node under cros_ec
-To: Ikjoon Jang <ikjn@chromium.org>, linux-mediatek@lists.infradead.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: Jiri Kosina <jikos@kernel.org>, linux-input@vger.kernel.org,
- Benjamin Tissoires <benjamin.tissoires@redhat.com>,
- Hsinyi Wang <hsinyi@chromium.org>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210510092631.3141204-1-ikjn@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <c5a253ba-6451-c538-39ea-c339c176afbb@gmail.com>
-Date: Wed, 12 May 2021 18:38:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=c0VLlOA4O95JRL4lKkh9nBVXdg9khLB5Tb87tWSnVRw=;
+ b=Z2aNk4jRVpFbfkk5pLZSFPIGRqK4x8PrXkBBPO4EO1Pnf61Ckgfik8zrzczi7S9nZB
+ duRz6oRMHb2ZwCc+wuIU2l4w/IXx4Y+ZB1OadZXENIFJrTu/NaxbaIzKLfDhdnhFcgfx
+ xwqqIePv/wRtBMQmyDJ7XPvvlFD3sDMhczak6y1urUFRbHxa8rKXEuOo4s5C1krXw6F1
+ PL+4Dnst+zjAIav4pSYvf42lEOzuZSW4HINaCDLzPjzRJWVNXtUmzoAdxpZZchzZxNju
+ jAQwmLIFpahaY3nsOvvE6gU03PxlPujyfOmNYcSx341h6tnvvJqJBazf7mkSmEOqIALM
+ k67w==
+X-Gm-Message-State: AOAM533MjhxjfXIqThA8UhtjeSEy1h23nhwtjkoP0Z4rjUY9ijBatMBH
+ AmiGsT56/HNXl3fZPN4W9moamw==
+X-Google-Smtp-Source: ABdhPJzgnbgnzOYlNJGD1LlShrIF+jXPWbxIzI+AR97Zitg5NpGAK4/drZctKAFXCgiOqJMxGrmBPA==
+X-Received: by 2002:a63:6387:: with SMTP id x129mr36767474pgb.58.1620837730005; 
+ Wed, 12 May 2021 09:42:10 -0700 (PDT)
+Received: from xps15 (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id n25sm299936pfo.92.2021.05.12.09.42.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 May 2021 09:42:08 -0700 (PDT)
+Date: Wed, 12 May 2021 10:42:06 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Zhen Lei <thunder.leizhen@huawei.com>
+Cc: Ohad Ben-Cohen <ohad@wizery.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-remoteproc <linux-remoteproc@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Subject: Re: [PATCH 1/1] remoteproc/mediatek: Remove redundant error printing
+ in scp_probe()
+Message-ID: <20210512164206.GA186911@xps15>
+References: <20210511120426.5834-1-thunder.leizhen@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20210510092631.3141204-1-ikjn@chromium.org>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210511120426.5834-1-thunder.leizhen@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_093856_865177_F16D54B2 
-X-CRM114-Status: GOOD (  19.08  )
+X-CRM114-CacheID: sfid-20210512_094212_166715_2601F7EC 
+X-CRM114-Status: GOOD (  21.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,46 +117,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ikjoon,
+Hi Lei,
 
-On 10/05/2021 11:26, Ikjoon Jang wrote:
-> Add a 'cbas' device node for supporting table mode switch in
-> kukui devices.
+On Tue, May 11, 2021 at 08:04:26PM +0800, Zhen Lei wrote:
+> When devm_ioremap_resource() fails, a clear enough error message will be
+> printed by its subfunction __devm_ioremap_resource(). The error
+> information contains the device name, failure cause, and possibly resource
+> information.
 > 
-> Kukui platforms with detacheable base have an additional input
-> device under cros-ec, which reports SW_TABLET_MODE regarding
-> its base state (e.g. base flipped or detached).
-> 
-> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> Therefore, remove the error printing here to simplify code and reduce the
+> binary size.
+>
+> Reported-by: Hulk Robot <hulkci@huawei.com>
+> Signed-off-by: Zhen Lei <thunder.leizhen@huawei.com>
 > ---
+>  drivers/remoteproc/mtk_scp.c | 1 -
+>  1 file changed, 1 deletion(-)
 > 
->  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index ff56bcfa3370..40030ed48854 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -816,6 +816,10 @@ usbc_extcon: extcon0 {
->  			compatible = "google,extcon-usbc-cros-ec";
->  			google,usb-port-id = <0>;
->  		};
-> +
-> +		base_detection: cbas {
-> +			compatible = "google,cros-cbas";
+> diff --git a/drivers/remoteproc/mtk_scp.c b/drivers/remoteproc/mtk_scp.c
+> index 9679cc26895e578..edb7f7842cb12ad 100644
+> --- a/drivers/remoteproc/mtk_scp.c
+> +++ b/drivers/remoteproc/mtk_scp.c
+> @@ -749,7 +749,6 @@ static int scp_probe(struct platform_device *pdev)
+>  	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "sram");
+>  	scp->sram_base = devm_ioremap_resource(dev, res);
+>  	if (IS_ERR((__force void *)scp->sram_base)) {
+> -		dev_err(dev, "Failed to parse and map sram memory\n");
 
-I'm not able to find any binding description for this. It seems linux-next has
-driver binding to this compatible, but the description is missing.
+This kind of construct can be found several times in the remoteproc subsystem
+and is also ubiquitous throughout the kernel.  Moveover removing the error
+notification does not simplify the code and does little to reduce the binary
+size.
 
-Can you please clarify.
+As such I do not think this patch is warranted and will not move forward with
+it.
 
 Thanks,
-Mathias
+Mathieu
 
-> +		};
->  	};
->  };
->  
+>  		ret = PTR_ERR((__force void *)scp->sram_base);
+>  		goto free_rproc;
+>  	}
+> -- 
+> 2.26.0.106.g9fadedd
+> 
 > 
 
 _______________________________________________
