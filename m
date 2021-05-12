@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22662C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36A24C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:01:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60CD661413
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:00:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60CD661413
+	by mail.kernel.org (Postfix) with ESMTPS id 64F0561417
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:01:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64F0561417
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:From:Cc:To:Subject:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=C24fNWH3rOjfX260HO6UyNdhWwZxH+5v4egM1Qx2f5I=; b=OpLYm6HTOLKOTAnH+O48R8kDdp
-	QdwVJ2Bx+7uxbSlAXZKXWvebLnjV8hLqlfybricU0XbskXQ3qmGX4J1Q6CpAo7TIQyqs/Cy/eUcQo
-	wnOVXydkLES2u1g8iK2Q0VPKgxrkOyxHU4E6UUDMEiffZruCMs2eiMgwEvQ2BLe0POTItQPdkpzgO
-	bg3+1nBnZbXR9xNdWi8zrb9lJVx25I3ea8f2Xh9Eb/Wxai8dgKERH/mxC4xCi5zlMuMSfYB47Evey
-	pxY5rQQjE1LCGD0sRE66WvNHFWouAweks2LR3XPIViHkLjQqqgf/KlwxOVQIz6Ug70ogIhlHjE0u2
-	OdnCdDgg==;
+	bh=mWFRPubKnXmiIYpzwWNEN2uqICqO9UmjP1I/xORRUuI=; b=fogXrS/jFqg46UP5RNJsDE/5Nl
+	GqunC0/jvdOGuPg7AXRmC+OJFq87/RKBO10p2Ees27WZOk+/SEyAYFnkspszUW4idJryB1IEJc09o
+	VfDJC0QAbHXTFW8S0HF4o1xWnRtgevzTgT/GOLpUL4vwqvkObkfe+7/nTGaB1QCw3GehdLcWsW2Pw
+	ihk8wsRFdHx2ehhbilPIqQ2IF73hYNnsoOgW9YV3245ANv+2mzrZhK9Ucyh7e+Zm3+nW4XccLgKdy
+	e2W0DPyS/qB74iytvJAM2YW9lbpAD3hv4j+z0+gFUoSfHzzQ4RObrfWtFOicwOPsQhcOb2hRWvonh
+	50q4LlyA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgkjN-002Nvs-Fh; Wed, 12 May 2021 09:00:37 +0000
+	id 1lgkkI-002O23-Go; Wed, 12 May 2021 09:01:34 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgkjL-002NvD-Qy
- for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 09:00:36 +0000
+ id 1lgkkG-002O1p-Ls
+ for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 09:01:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:Message-ID:Date:From:Cc:To:Subject:Sender:Reply-To:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=8eBhNBE31ADoyqG/GfhAFRgaQgr/vMmsdgoDpFDzopg=; b=Vh7y4lmdosxt9pXQ6kDF91Mj00
- MPhl/LUFt6C8w4KNbQ2bn3kmbsJeF4WPjfFpnlenPguvnE4YF+h3xfmOLh9wTCFIShNheHwfcLipV
- +Jib73JTIS1qqWXvyzW2P1MEC8CwQ1GqZFDRTlJuf7wb+k2QEpvW434wlEkTQSX+/ELdddabu1QrZ
- 7Kowa/WY721t2xwpz7WpDhxt4Svawn/cxtOqOw4un81oUWUoEHlqxMfGLAT0POxfu3+O4Dpbo90FH
- YYvOeDPQQVslSxuVVlaeZQ8iN+unHm6JWxEqwR/FgoTfLQazuSmrVFLLwuq8llsTKNAefJoCdjBPy
- dnHVYMVg==;
+ bh=XRh8DBuFsdI64SvvJXJZTgr1aPDj2Ap2L96RwKJSdCs=; b=QczqahFolqoXBjVDfzV4cYKt0p
+ gO5RmPG0BCuh0TFiX7kwjbkXTr6VSsPABGeC1BLvjC+vK/xtkWswUrONyWvuiBCL8tZdX2qZkzbqx
+ EdC7cuOkVN1GWsQqRXYs1WFVTkfK/QH9n5Q+DvsJRB9G+tq9DER0S/0eqPRG9Kz1XU4RTRUi8D7TL
+ EidA3JLjC3Pvb6hkpbSd0mG7oZwYOFPMya0X/nDCac/MSm+D6F6klfxepSI9DHaRvjMuj0QvMCBgU
+ shlDDCdMrri+2enGtRWbmCdS1ZI/7S54F3oz6wmTmJRCvVhU7BvkslvjnqLRKkpCHwhjDR7aqdPDr
+ xKv9G1Dw==;
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgkjI-00AEbd-VO
- for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 09:00:34 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id ED4A361413;
- Wed, 12 May 2021 09:00:31 +0000 (UTC)
+ id 1lgkkD-00AEeN-Do
+ for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 09:01:31 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7FF2361403;
+ Wed, 12 May 2021 09:01:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1620810032;
- bh=1B5AKL/u95HDbijahWP3DI8OcmwzLINR/7xIulHtPuI=;
+ s=korg; t=1620810089;
+ bh=LrJfcvYmwNPVG5K756hAp+n6HVtvRBSzV4I71YDecc0=;
  h=Subject:To:Cc:From:Date:From;
- b=mBmka5L6mEEFiXAEjJL7SHfc8evN7NPNbWkk1Di/0/U5RM1//VF59UfzxdIcuKvbt
- 5CFL2YSROxdLJBaW4lNJeLA3hiQFYqkOJA4Ps8In6GQHPf9tO091HD9eHSDy78YYsH
- s2Vv0gAyacAQyJ57SMN8QNfbJHTVWp32ZKGxk26A=
+ b=Y1QRGKVHASEwfuAJBIH0s1G2qIQG55JWLd93RvOGO62MDoPAQvT7aruSvn2b+x3BP
+ yo2MSS8y24PfdjU8W+VDOtG8Np2SHQjva6Gz7N7DM9fxSRmfG6GcmZjXWi8CUnFUJp
+ 7PjoqQDpR1CA9wGCsbmdOqKErdWsHrIkhJhmx1a0=
 Subject: Patch "MIPS: pci-mt7620: fix PLL lock check" has been added to the
- 5.11-stable tree
+ 5.12-stable tree
 To: gregkh@linuxfoundation.org, ilya.lipnitskiy@gmail.com, john@phrozen.org,
  linux-mediatek@lists.infradead.org, tsbogend@alpha.franken.de
 Cc: <stable-commits@vger.kernel.org>
 From: <gregkh@linuxfoundation.org>
-Date: Wed, 12 May 2021 10:58:11 +0200
-Message-ID: <162080989198136@kroah.com>
+Date: Wed, 12 May 2021 10:58:29 +0200
+Message-ID: <162080990912714@kroah.com>
 MIME-Version: 1.0
 X-stable: commit
 X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_020033_086428_6B17E555 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20210512_020129_537105_3AEC98B0 
+X-CRM114-Status: GOOD (  14.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,12 +94,12 @@ This is a note to let you know that I've just added the patch titled
 
     MIPS: pci-mt7620: fix PLL lock check
 
-to the 5.11-stable tree which can be found at:
+to the 5.12-stable tree which can be found at:
     http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
 The filename of the patch is:
      mips-pci-mt7620-fix-pll-lock-check.patch
-and it can be found in the queue-5.11 subdirectory.
+and it can be found in the queue-5.12 subdirectory.
 
 If you, or anyone else, feels it should not be added to the stable tree,
 please let <stable@vger.kernel.org> know about it.
@@ -164,8 +164,8 @@ Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 Patches currently in stable-queue which might be from ilya.lipnitskiy@gmail.com are
 
-queue-5.11/mips-pci-mt7620-fix-pll-lock-check.patch
-queue-5.11/mips-pci-rt2880-fix-slot-0-configuration.patch
+queue-5.12/mips-pci-mt7620-fix-pll-lock-check.patch
+queue-5.12/mips-pci-rt2880-fix-slot-0-configuration.patch
 
 _______________________________________________
 Linux-mediatek mailing list
