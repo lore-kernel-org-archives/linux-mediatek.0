@@ -2,97 +2,77 @@ Return-Path: <SRS0=1nN3=KH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEB05C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:39:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3F92C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:57:55 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01019613C5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:39:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01019613C5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E86E8613EE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:57:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E86E8613EE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Qpt65RihFf5LsSD+B/GRJ+NZC+x8YxkmODwoL4lgyug=; b=XyDrfOlFTqjmjM6vLs+VDREFr
-	36Px7tVGktQ/9cyx8eMYFbxPb/wsTVVPJ9OJF3pIUklDsdULnecLw2pyoD6B4PEytRYfNsVgtmN3B
-	k3D6Li3Et5dsrRcbiTxPDdVD6s/tq4+f1YelnHL/hL9azDV+efDGMF60zHIVDuRol21RRPjv9kRFT
-	eUU9fFAbc37yh0I0LaIEDXmmO2JIYmxXA1wUsi8oagu0vKJJXqreXnh2tRaXuQbsMYX6stzvuwDIf
-	DxifwYU2Pc7DP4MkGUb0Q+1Lg3LJva/z1uB3NwiVKi6sXD2FwiwvvIr02tTsdEZpHAf9wd2i+cxe8
-	Ab7V4k5pQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:From:Cc:To:Subject:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=j70cvW4tMRpNxMWrG/YniksvUsy/fCg/Af0tO9FfWRk=; b=GE9/Vp4XdQ87X6eSM5TRr5Hwlh
+	/aPp8jMU8eLZdnLxeFN174yxtuzjh6E0bmhC+KttTiQuUEwPluIiwuddqdN6BZfgFPRLCo+tLFdlI
+	Hwo7LaFaQj4WWox/YRApk+jif22ybmeOnrjUgXWLMJhMfj4vySkg60e9e3FRfUYRSFhqeHraYSqVl
+	MZ9q4ZbrVLb9xyyBDkvuR5uNYvlrzmLKLijvRMCLrPYMV7I2bgcwPBOolsF5uyf8691kvlI006Vtw
+	sKBAmnIXLbk1DkmFBevR7QhN/YNj343foaams2Uu2PYGD3HQqY/bwE7iIOlNWoKg3ecryipFNnXSd
+	VPq5kNxw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgkOZ-002LG5-I8; Wed, 12 May 2021 08:39:07 +0000
+	id 1lgkgU-002NYE-OU; Wed, 12 May 2021 08:57:38 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgkOM-002LBR-07; Wed, 12 May 2021 08:38:54 +0000
+ id 1lgkgT-002NY0-5c
+ for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 08:57:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=F7GCMG4LGnBHyhgH0fMXkvEutGoXK6lxgQV819IY7hk=; b=i1WRY78QwvwbjPOSd8UokmDpKG
- nZfhiXm2733AL27542r+1uQ5XL/6O/wBik8kxfDH5xoKocSek94/Ww4Xri8vUCTrr3wvpoX8qpzQR
- YzsCq5NH3lRdFPA8kKR2/yGN72ENLk8Y3fBj3+4BlFbpVnaz7Xq2bPOCUx7fWWrnlbCOzKWt8bxh5
- lZOSXI6H2KYBu6iMLQQPDUxl6EmXbTI4h16vMPX/J4gSngDRk9FKVrStiCnbULkiKZr05ikbvpp/R
- dQyRZsmzwkbH3/cnihN4Ykzf7ZnnYc8SOZRTGcCEWVTeDh7RhO7iBT+hoTJwFTTM69CxOlSaBdhmI
- yyxQKGlA==;
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+ Content-Type:MIME-Version:Message-ID:Date:From:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=2aKtMpBcfY5uVWXg2gMzEUjpTbgqRAoOskm5wSqo72E=; b=FycyM19uMJIMCFVh05yzKzuuwX
+ uPJRTSn3DejHpMBeopRWa1IXYBphnNJ9PqjuTBn+VJH1Cr/N/+vQd+G4G9P5MgwU8zgaXUEOxoVOI
+ zoxPar59gHlaOHZjelKwO7PN4VQhzBK9ret7OCp+EDfJoucl2vxu1VVBbioO7ReTDKz+A9NQTVE9z
+ Lag/dqJxUzbYd4jNR80cEpJ22x7uPTLkIT9sRnQuXkgYpGeJfEfXny35kCxxPInsKv9w8JjUX0l/o
+ nqVJjXLnPE4HWzlG7ldLBYdUIUhRe4hHcB1q09U/JvIBq/HxZrWsgfe2ZZ5+bLUxPeoJyoTS78zT7
+ kP72tXeA==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgkOG-00ADfA-2P; Wed, 12 May 2021 08:38:51 +0000
-X-UUID: 300faea398c04924be674937a5b429e1-20210512
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=F7GCMG4LGnBHyhgH0fMXkvEutGoXK6lxgQV819IY7hk=; 
- b=ah0cU7hT25BZVRTWDap4tZwD0mbOw8+koKniYl7/pbWWjOOTg6VjnqyldD/5QlI5BqZNsempm8jDRWRkSIQ6I0rNd47AVwG/b1yRla3O4f6KpXEx1EBaqoPoHJECffSNEmY4VxfYEnmRWZBZPl7dex0C8UzuYfzK8rWYngRK9zw=;
-X-UUID: 300faea398c04924be674937a5b429e1-20210512
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 673486075; Wed, 12 May 2021 01:38:42 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 May 2021 01:38:41 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 May 2021 16:38:32 +0800
-Received: from [10.17.3.153] (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 12 May 2021 16:38:32 +0800
-Message-ID: <1620808712.30754.62.camel@mhfsdcap03>
-Subject: Re: [PATCH][v3] rtnetlink: add rtnl_lock debug log
-From: Rocco.Yue <rocco.yue@mediatek.com>
-To: Cong Wang <xiyou.wangcong@gmail.com>, <linux-kernel@vger.kernel.org>
-CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton
- <akpm@linux-foundation.org>, Masahiro Yamada <masahiroy@kernel.org>, "Nick
- Desaulniers" <ndesaulniers@google.com>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Peter Zijlstra <peterz@infradead.org>,
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>, LKML
- <linux-kernel@vger.kernel.org>, Linux Kernel Network Developers
- <netdev@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <wsd_upstream@mediatek.com>
-Date: Wed, 12 May 2021 16:38:32 +0800
-In-Reply-To: <CAM_iQpVWSJ8BdRoLDX0MdiqmJn2dp+U9JM4mcfzRbVn4MZbzcg@mail.gmail.com>
-References: <20210511113257.2094-1-rocco.yue@mediatek.com>
- <CAM_iQpVWSJ8BdRoLDX0MdiqmJn2dp+U9JM4mcfzRbVn4MZbzcg@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lgkgQ-00AEPz-6v
+ for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 08:57:35 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E352613EE;
+ Wed, 12 May 2021 08:57:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1620809853;
+ bh=gn07GmIXL/cld1jQmgyYRhp8cacAGBiKJGjACQTV5r4=;
+ h=Subject:To:Cc:From:Date:From;
+ b=bhgQz9fCWq5yOJdD/Du/6S9sqsZyCmB3FiBsquXFXP07MeHedX4cEtuawcxGsCbXS
+ 1uMDRBNV2sClB9+jIckG6KtwdP5XDAw/23yWB07Vn/i8ZUdLuyIXMECVLSOayb5JMt
+ p0yIj+mbE7PFY9zaVN1yRA6vB9Dg8xn6V1PEJ0qU=
+Subject: Patch "MIPS: pci-mt7620: fix PLL lock check" has been added to the
+ 4.19-stable tree
+To: gregkh@linuxfoundation.org, ilya.lipnitskiy@gmail.com, john@phrozen.org,
+ linux-mediatek@lists.infradead.org, tsbogend@alpha.franken.de
+Cc: <stable-commits@vger.kernel.org>
+From: <gregkh@linuxfoundation.org>
+Date: Wed, 12 May 2021 10:57:16 +0200
+Message-ID: <1620809836212217@kroah.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2A9A11B506E22992C9FA6257C88DB58DA55B784EAB31817063BCF46E6A1B99952000:8
-X-MTK: N
+X-stable: commit
+X-Patchwork-Hint: ignore 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_013848_142771_0922BC3B 
-X-CRM114-Status: GOOD (  19.03  )
+X-CRM114-CacheID: sfid-20210512_015734_340126_14856E1A 
+X-CRM114-Status: GOOD (  14.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,56 +89,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-05-11 at 10:00 -0700, Cong Wang wrote:
-> On Tue, May 11, 2021 at 4:46 AM Rocco yue <rocco.yue@mediatek.com> wrote:
-> >
-> > From: Rocco Yue <rocco.yue@mediatek.com>
-> >
-> > We often encounter system hangs caused by certain process
-> > holding rtnl_lock for a long time. Even if there is a lock
-> > detection mechanism in Linux, it is a bit troublesome and
-> > affects the system performance. We hope to add a lightweight
-> > debugging mechanism for detecting rtnl_lock.
-> 
-> Any reason why this is specific to RTNL lock? To me holding
-> a mutex lock for a long time is problematic for any mutex.
-> I have seen some fs mutex being held for a long time caused
-> many hung tasks in the system.
-> 
-> Thanks.
 
-Thank you for a good question.
+This is a note to let you know that I've just added the patch titled
 
-It's a problem to hold rtnl_lock for a long time, and other locks are no
-exception.
+    MIPS: pci-mt7620: fix PLL lock check
 
-the reason for adding rtnl_lock debug log:
+to the 4.19-stable tree which can be found at:
+    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
 
-1.rtnl_lock is a widely used lock:
+The filename of the patch is:
+     mips-pci-mt7620-fix-pll-lock-check.patch
+and it can be found in the queue-4.19 subdirectory.
 
-In my view, for some other mutex locks, such as "f2fs_stat_mutex" in the
-fs/f2fs/debug.c , there are not many codes that use this lock, and the
-module involved is relatively single.
-
-But when we search for rtnl_lock in the entire Linux kernel, we will get
-a lot of matching results. Obviously this lock is a widely used lock,
-which makes it difficult for us to locate the problem. If we do not
-enable CONFIG_DEBUG_LOCKDEP and CONFIG_PROVE_LOCKING, it is often
-difficult for us to find out where went wrong.
-
-2.codes that use rtnl_lock include some basic functions of networking:
-
-There are many networking modules that use rtnl_lock, and some functions
-that use rtnl_lock are infrastructure part, such as unregister_netdev(),
-dev_ioctl(). Perhaps this can also explain to a certain extent the
-importance of adding a lightweight debug mechanism for rtnl_lock. And
-mediatek and our customer have benefited a lot from such log.
+If you, or anyone else, feels it should not be added to the stable tree,
+please let <stable@vger.kernel.org> know about it.
 
 
-Hope above contents can answer your question.
+From c15b99ae2ba9ea30da3c7cd4765b8a4707e530a6 Mon Sep 17 00:00:00 2001
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Date: Sat, 6 Mar 2021 20:17:24 -0800
+Subject: MIPS: pci-mt7620: fix PLL lock check
 
-Best Regards
-Rocco
+From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+
+commit c15b99ae2ba9ea30da3c7cd4765b8a4707e530a6 upstream.
+
+Upstream a long-standing OpenWrt patch [0] that fixes MT7620 PCIe PLL
+lock check. The existing code checks the wrong register bit: PPLL_SW_SET
+is not defined in PPLL_CFG1 and bit 31 of PPLL_CFG1 is marked as reserved
+in the MT7620 Programming Guide. The correct bit to check for PLL lock
+is PPLL_LD (bit 23).
+
+Also reword the error message for clarity.
+
+Without this change it is unlikely that this driver ever worked with
+mainline kernel.
+
+[0]: https://lists.infradead.org/pipermail/lede-commits/2017-July/004441.html
+
+Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Cc: John Crispin <john@phrozen.org>
+Cc: linux-mips@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: stable@vger.kernel.org
+Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ arch/mips/pci/pci-mt7620.c |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+--- a/arch/mips/pci/pci-mt7620.c
++++ b/arch/mips/pci/pci-mt7620.c
+@@ -33,6 +33,7 @@
+ #define RALINK_GPIOMODE			0x60
+ 
+ #define PPLL_CFG1			0x9c
++#define PPLL_LD				BIT(23)
+ 
+ #define PPLL_DRV			0xa0
+ #define PDRV_SW_SET			BIT(31)
+@@ -242,8 +243,8 @@ static int mt7620_pci_hw_init(struct pla
+ 	rt_sysc_m32(0, RALINK_PCIE0_CLK_EN, RALINK_CLKCFG1);
+ 	mdelay(100);
+ 
+-	if (!(rt_sysc_r32(PPLL_CFG1) & PDRV_SW_SET)) {
+-		dev_err(&pdev->dev, "MT7620 PPLL unlock\n");
++	if (!(rt_sysc_r32(PPLL_CFG1) & PPLL_LD)) {
++		dev_err(&pdev->dev, "pcie PLL not locked, aborting init\n");
+ 		reset_control_assert(rstpcie0);
+ 		rt_sysc_m32(RALINK_PCIE0_CLK_EN, 0, RALINK_CLKCFG1);
+ 		return -1;
+
+
+Patches currently in stable-queue which might be from ilya.lipnitskiy@gmail.com are
+
+queue-4.19/mips-pci-mt7620-fix-pll-lock-check.patch
+queue-4.19/mips-pci-rt2880-fix-slot-0-configuration.patch
 
 _______________________________________________
 Linux-mediatek mailing list
