@@ -2,107 +2,81 @@ Return-Path: <SRS0=1nN3=KH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 494CCC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:21:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8A2AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:38:30 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 94B3761166
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:21:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 94B3761166
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3A2D06108D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 09:38:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A2D06108D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ic7SqVQ8Ye459EvsJjnEA2Yu/3bD19by59SxRKbVAYE=; b=pO6FWMUdeWX3kcdWqNnv0EvFD
-	3LZns9kAgJMx634OdMmHUOyCBb6O1DhyA+58mRJmR5uxOBNc/+jxwHP1K951akyGJQ8wPIr4DiFmc
-	BxH5zgRq6wOnBDuKXrxfmfR1U/n2CJX/BAO0FyILIi9L3EV9EO+yRfomAcMsWiFybJZjRgHo81Blw
-	0KEgjHrqgTW0XltyiLJD4ddp1WCwpM/FaD82l0J6FuYtQwH7WibxA3MaZ3F+cO2Ivch06BcTIPZsc
-	mhJALibdlvuKvxtLpZw+C41TnCPoHbBaXDrf/7Q/3sro24kgaGX34OxIG0ZvaztrXO/mbl/9SyA7v
-	FWv8N/DMw==;
+	 bh=BEQJOQz5V6f3PRTWT7hFN1h+fyWQuKj//qMgSPB9Y4A=; b=n5X8GrFp4OgmNkME4X4GQTWId
+	XuoRiJQH89rJtw215UQpW8KS1JNZ9rwDhcmvfNMLd3F7y9oOtIwNSKGX1atrx6JxegyzuEsH7UR/4
+	FbM498WuwVx0VlE9dTA1f6WqU3zjOxcvGJCiO3jIVvrcpGxXyMfj0EGAruIuro9UjByWc+0Ui9nDZ
+	F2OJs6JdkLD5H1AM6x0IChsKnMy7EgAmS0hwjHvfNBTrEMqEtVVMCpAlg2tHm+tQK7GwbnUztkw26
+	r6nHk4bunwMcp6b+9o2+u97JBO1kpCNExsgObf0TnbGlxylV8jzQNZ32phCb9TSdk2c/9t0N5XIKQ
+	uAlwf99rw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgl2s-002Q7u-9V; Wed, 12 May 2021 09:20:46 +0000
+	id 1lglJi-002Rv5-Ef; Wed, 12 May 2021 09:38:10 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgl2g-002Q5I-NH
- for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 09:20:35 +0000
+ id 1lglJg-002Rus-Q8
+ for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 09:38:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=Rw5bi1SAPL1hZNfoVXmGUyA3xV1P1F1OYsNK09HU+a0=; b=RFcR4zDOgnU9VYC4rj8q3fSAAR
- jQ13CEAFC7w88t7rKwG8WEEWpvtT2yzj4zSSYLXjQMoymffW/4JdsKLZfNgAOAXWYIm3KceaGQWsT
- 6p0nW3k7jTMXvI2gHP4oK4W3WiRGYaz0dLReLr1YupkBTNSBFR3Xcgz+IvvX+WKvE6pRSaYN6C48r
- B5x2acwGWV7YlrpRX0Mh31wGL1EVc4ANKqVdJCTaijJybI1GP2CPA0zCdiZ/QE6XDbchIay1Ye65J
- tFSuYA6e2N0haQgP+kAQRNRskFR59f97rEAqrV9r/HadQA3h+jumoQ/ru5dZ34Fi+oo0j1ObLnrsR
- ul0yaeSA==;
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
+ bh=yyRub9Fy93DcXEg0Nwp9ayP6yVyWdQAPqp6nphJcLkk=; b=l4WReXKeeXNitUU9qW1Hlh81qE
+ Yc0SkuQkohLOLa6Ka9gevUd7KiCghs9JpQ1xc7O+c3WZRWGmLWbMm/IUbKeL9MQxjrA8ylzve5Nyl
+ iJtssWu47P7cHq05JcchDc6FWBPuaKSdTxRI8rLW+oP+YOP6u0kXwluk/OpI1KlQvZiHqAmf4vQEQ
+ 8lieb0ab7YbXQs6s1ysNqBtEp5TUrH8kVITbGummHQjMCkhD/mBJJ1d7sSKrEneIeDZap7N67TsjH
+ xcXQYVrf9bYrXylaVLM4H4mQjmRSYmCnHr2TQMezhHON7+1umIDNYy5GsMiUDKeSRi50i9hQxWnTA
+ XxHES3Sw==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgl2d-00AFK8-Jh
- for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 09:20:33 +0000
-Received: by mail-io1-xd34.google.com with SMTP id n40so5185103ioz.4
- for <linux-mediatek@lists.infradead.org>; Wed, 12 May 2021 02:20:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Rw5bi1SAPL1hZNfoVXmGUyA3xV1P1F1OYsNK09HU+a0=;
- b=gqYpnE/lrAatuhlH0xLuX+Ye+d+UxsP6NP14t+2gblbyF65xPmr1mYDmqPtUIsIL8Z
- NGqT2siml8zsT/+GjnMinVr2ht+4InfIycF46nZ481jEqCxSMP3FE3k8hVRTkZ2fA2Ih
- Zpp3c+EoX6nY//nNe6CT2pzwKdFA+JivEzM40=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Rw5bi1SAPL1hZNfoVXmGUyA3xV1P1F1OYsNK09HU+a0=;
- b=X9VTa25AYZ5ZoNwE9M2dSB4hHM1CpAS0lxknnGFCjyECGf13NNdi6TJ69rnFXysrqV
- wiJe7IRHvN+5lx6Z9FLu8eOO745dxu7zIef8YsUiObUdNzoZ2HgS2x83c4CUXMMnpxFH
- zErVLZ2yYzmv7dOPjEHSOHlB/TUzaoRdl1ER6pgRh8IUAsObloP5fPtmBoeMI6FXwHfy
- vdq1zNg8uSJQ2pMvBktg0uEEeTkS2HT7+LDdgNNRf19jRVrutfik8YtvziViIIusISeC
- V2cO96/02KEq9No48csbb7WXc1kHflGse9Vz9a/T7exvD/0lcSBu/tSyxJ9lwdlXDAzs
- oDAA==
-X-Gm-Message-State: AOAM533HYx3vdMU3ut3xeUwjXqEfWZZVRsq1Ztp8RJt+mfe7RRG6Nu9h
- ApwqYRcZFVDL6PQNj1684LNXcaxBnZ12x0S2B2XOSg==
-X-Google-Smtp-Source: ABdhPJz4D4taavm63iD2SKLxbMnILL72N/Np1EaOYKVanFw2BuKIj5CwmD6/ksD8F9i292URXw+KTxWjgrqcMFmbXfE=
-X-Received: by 2002:a6b:f815:: with SMTP id o21mr24594979ioh.0.1620811229435; 
- Wed, 12 May 2021 02:20:29 -0700 (PDT)
+ id 1lglJe-00AFxD-1y
+ for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 09:38:07 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B5AC36108D;
+ Wed, 12 May 2021 09:38:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1620812285;
+ bh=tqgKfZd5eAqp6cVMkA0XQQJMOf1WNvOS68bGJkxaR4s=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fOyvoamv42OGaF94Cdum5zLM86Gu2MamUxIsxkUy+Wl/h5zv792c56BsXFugzVAwm
+ 1a41QoJzvtSwIsbyZwFYW8gcVWwGmWnGqT2L7dKeDuuvCLGzE3Uy2yzCHyWouYczuy
+ BoIiaCBCdgkge3nWLXfm3bA2o4fZuc8z8b6lvCQtToCFBaH8mK09hLqRnu7QtsKROP
+ H7U+7sPABDHL/erCae0nZQyv8HJ59hAJcFTMl+IbyTMGzUmhBzyBWMiQi9P7a7TU0e
+ 9zQVpLR5Kv0tIDKQ6CuYmtZQh+4iJVTVUApTNtkUznBMLhI2/8FTAY8izu+drMKKId
+ 8b5RP7jgQ5bww==
+Date: Wed, 12 May 2021 12:37:59 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com
+Subject: Re: [PATCH] mm/sparse: fix check_usemap_section_nr warnings
+Message-ID: <YJuh90iYeZ8F4Ain@kernel.org>
+References: <20210511093114.15123-1-miles.chen@mediatek.com>
+ <YJpbWVrgJFLRpzl3@kernel.org> <1620797600.14730.7.camel@mtkswgap22>
 MIME-Version: 1.0
-References: <20210410091128.31823-1-yong.wu@mediatek.com>
- <20210410091128.31823-14-yong.wu@mediatek.com>
-In-Reply-To: <20210410091128.31823-14-yong.wu@mediatek.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 12 May 2021 17:20:03 +0800
-Message-ID: <CAJMQK-iTrQRDDm_=LNqSpvXFd431LYRxXMasJHUpN+K8rJ=Qpg@mail.gmail.com>
-Subject: Re: [PATCH v5 13/16] media: mtk-vcodec: Get rid of
- mtk_smi_larb_get/put
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Evan Green <evgreen@chromium.org>, 
- Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>, 
- Will Deacon <will.deacon@arm.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- srv_heupstream@mediatek.com, Devicetree List <devicetree@vger.kernel.org>,
- lkml <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org, 
- youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, 
- Matthias Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
- chao.hao@mediatek.com, 
- ming-fan.chen@mediatek.com, yi.kuo@mediatek.com, eizan@chromium.org, 
- Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <1620797600.14730.7.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_022031_677210_4048DF15 
-X-CRM114-Status: GOOD (  24.09  )
+X-CRM114-CacheID: sfid-20210512_023806_205106_EEFCEEEA 
+X-CRM114-Status: GOOD (  33.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,286 +93,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 10, 2021 at 5:14 PM Yong Wu <yong.wu@mediatek.com> wrote:
->
-> MediaTek IOMMU has already added the device_link between the consumer
-> and smi-larb device. If the vcodec device call the pm_runtime_get_sync,
-> the smi-larb's pm_runtime_get_sync also be called automatically.
->
-> CC: Tiffany Lin <tiffany.lin@mediatek.com>
-> CC: Irui Wang <irui.wang@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
-> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> ---
->  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 ++-------------
->  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
->  .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
->  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 46 ++-----------------
->  4 files changed, 10 insertions(+), 77 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> index 32e1858e9f1d..2b3562e47f4f 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> @@ -8,14 +8,12 @@
->  #include <linux/of_address.h>
->  #include <linux/of_platform.h>
->  #include <linux/pm_runtime.h>
-> -#include <soc/mediatek/smi.h>
->
->  #include "mtk_vcodec_dec_pm.h"
->  #include "mtk_vcodec_util.h"
->
->  int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->  {
-> -       struct device_node *node;
->         struct platform_device *pdev;
->         struct mtk_vcodec_pm *pm;
->         struct mtk_vcodec_clk *dec_clk;
-> @@ -26,18 +24,7 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->         pm = &mtkdev->pm;
->         pm->mtkdev = mtkdev;
->         dec_clk = &pm->vdec_clk;
-> -       node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
-> -       if (!node) {
-> -               mtk_v4l2_err("of_parse_phandle mediatek,larb fail!");
-> -               return -1;
-> -       }
->
-> -       pdev = of_find_device_by_node(node);
-> -       of_node_put(node);
-> -       if (WARN_ON(!pdev)) {
-> -               return -1;
-> -       }
-> -       pm->larbvdec = &pdev->dev;
->         pdev = mtkdev->plat_dev;
->         pm->dev = &pdev->dev;
->
-> @@ -47,14 +34,11 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->                 dec_clk->clk_info = devm_kcalloc(&pdev->dev,
->                         dec_clk->clk_num, sizeof(*clk_info),
->                         GFP_KERNEL);
-> -               if (!dec_clk->clk_info) {
-> -                       ret = -ENOMEM;
-> -                       goto put_device;
-> -               }
-> +               if (!dec_clk->clk_info)
-> +                       return -ENOMEM;
->         } else {
->                 mtk_v4l2_err("Failed to get vdec clock count");
-> -               ret = -EINVAL;
-> -               goto put_device;
-> +               return -EINVAL;
->         }
->
->         for (i = 0; i < dec_clk->clk_num; i++) {
-> @@ -63,29 +47,24 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->                         "clock-names", i, &clk_info->clk_name);
->                 if (ret) {
->                         mtk_v4l2_err("Failed to get clock name id = %d", i);
-> -                       goto put_device;
-> +                       return ret;
->                 }
->                 clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
->                         clk_info->clk_name);
->                 if (IS_ERR(clk_info->vcodec_clk)) {
->                         mtk_v4l2_err("devm_clk_get (%d)%s fail", i,
->                                 clk_info->clk_name);
-> -                       ret = PTR_ERR(clk_info->vcodec_clk);
-> -                       goto put_device;
-> +                       return PTR_ERR(clk_info->vcodec_clk);
->                 }
->         }
->
->         pm_runtime_enable(&pdev->dev);
->         return 0;
-> -put_device:
-> -       put_device(pm->larbvdec);
-> -       return ret;
->  }
->
->  void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
->  {
->         pm_runtime_disable(dev->pm.dev);
-> -       put_device(dev->pm.larbvdec);
->  }
->
->  void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
-> @@ -121,11 +100,6 @@ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
->                 }
->         }
->
-> -       ret = mtk_smi_larb_get(pm->larbvdec);
-> -       if (ret) {
-> -               mtk_v4l2_err("mtk_smi_larb_get larbvdec fail %d", ret);
-> -               goto error;
-> -       }
->         return;
->
->  error:
-> @@ -138,7 +112,6 @@ void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
->         struct mtk_vcodec_clk *dec_clk = &pm->vdec_clk;
->         int i = 0;
->
-> -       mtk_smi_larb_put(pm->larbvdec);
->         for (i = dec_clk->clk_num - 1; i >= 0; i--)
->                 clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
->  }
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index 869d958d2b99..659790398809 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -189,10 +189,7 @@ struct mtk_vcodec_clk {
->   */
->  struct mtk_vcodec_pm {
->         struct mtk_vcodec_clk   vdec_clk;
-> -       struct device   *larbvdec;
-> -
->         struct mtk_vcodec_clk   venc_clk;
-> -       struct device   *larbvenc;
->         struct device   *dev;
->         struct mtk_vcodec_dev   *mtkdev;
->  };
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 4831052f475d..59816981735b 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -8,7 +8,6 @@
->  #include <media/v4l2-event.h>
->  #include <media/v4l2-mem2mem.h>
->  #include <media/videobuf2-dma-contig.h>
-> -#include <soc/mediatek/smi.h>
->  #include <linux/pm_runtime.h>
->
->  #include "mtk_vcodec_drv.h"
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> index 1b2e4930ed27..78b99ff882ae 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> @@ -8,58 +8,36 @@
->  #include <linux/of_address.h>
->  #include <linux/of_platform.h>
->  #include <linux/pm_runtime.h>
-> -#include <soc/mediatek/smi.h>
->
->  #include "mtk_vcodec_enc_pm.h"
->  #include "mtk_vcodec_util.h"
->
->  int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
->  {
-> -       struct device_node *node;
->         struct platform_device *pdev;
->         struct mtk_vcodec_pm *pm;
->         struct mtk_vcodec_clk *enc_clk;
->         struct mtk_vcodec_clk_info *clk_info;
->         int ret = 0, i = 0;
-> -       struct device *dev;
->
->         pdev = mtkdev->plat_dev;
->         pm = &mtkdev->pm;
->         memset(pm, 0, sizeof(struct mtk_vcodec_pm));
->         pm->mtkdev = mtkdev;
->         pm->dev = &pdev->dev;
-> -       dev = &pdev->dev;
->         enc_clk = &pm->venc_clk;
->
-> -       node = of_parse_phandle(dev->of_node, "mediatek,larb", 0);
-> -       if (!node) {
-> -               mtk_v4l2_err("no mediatek,larb found");
-> -               return -ENODEV;
-> -       }
-> -       pdev = of_find_device_by_node(node);
-> -       of_node_put(node);
-> -       if (!pdev) {
-> -               mtk_v4l2_err("no mediatek,larb device found");
-> -               return -ENODEV;
-> -       }
-> -       pm->larbvenc = &pdev->dev;
-> -       pdev = mtkdev->plat_dev;
-> -       pm->dev = &pdev->dev;
-> -
->         enc_clk->clk_num = of_property_count_strings(pdev->dev.of_node,
->                 "clock-names");
->         if (enc_clk->clk_num > 0) {
->                 enc_clk->clk_info = devm_kcalloc(&pdev->dev,
->                         enc_clk->clk_num, sizeof(*clk_info),
->                         GFP_KERNEL);
-> -               if (!enc_clk->clk_info) {
-> -                       ret = -ENOMEM;
-> -                       goto put_larbvenc;
-> -               }
-> +               if (!enc_clk->clk_info)
-> +                       return -ENOMEM;
->         } else {
->                 mtk_v4l2_err("Failed to get venc clock count");
-> -               ret = -EINVAL;
-> -               goto put_larbvenc;
-> +               return -EINVAL;
->         }
->
->         for (i = 0; i < enc_clk->clk_num; i++) {
-> @@ -68,29 +46,23 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
->                         "clock-names", i, &clk_info->clk_name);
->                 if (ret) {
->                         mtk_v4l2_err("venc failed to get clk name %d", i);
-> -                       goto put_larbvenc;
-> +                       return ret;
->                 }
->                 clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
->                         clk_info->clk_name);
->                 if (IS_ERR(clk_info->vcodec_clk)) {
->                         mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
->                                 clk_info->clk_name);
-> -                       ret = PTR_ERR(clk_info->vcodec_clk);
-> -                       goto put_larbvenc;
-> +                       return PTR_ERR(clk_info->vcodec_clk);
->                 }
->         }
->
->         return 0;
-> -
-> -put_larbvenc:
-> -       put_device(pm->larbvenc);
-> -       return ret;
->  }
->
->  void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
->  {
->         pm_runtime_disable(mtkdev->pm.dev);
-> -       put_device(mtkdev->pm.larbvenc);
->  }
->
->
-> @@ -108,13 +80,6 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
->                 }
->         }
->
-> -       ret = mtk_smi_larb_get(pm->larbvenc);
-> -       if (ret) {
-> -               mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
-> -               goto clkerr;
-> -       }
-> -       return;
+On Wed, May 12, 2021 at 01:33:20PM +0800, Miles Chen wrote:
+> On Tue, 2021-05-11 at 13:24 +0300, Mike Rapoport wrote:
+> > On Tue, May 11, 2021 at 05:31:14PM +0800, Miles Chen wrote:
+> > > In current implementation of node_data, if CONFIG_NEED_MULTIPLE_NODES=y,
+> > > node_data is allocated by kzmalloc. If CONFIG_NEED_MULTIPLE_NODES=n,
+> > > we use a global variable named "contig_page_data".
+> > > 
+> > > If CONFIG_DEBUG_VIRTUAL is not enabled. __pa() can handle both kzalloc and
+> > > symbol cases. But if CONFIG_DEBUG_VIRTUAL is set, we will have the
+> > > "virt_to_phys used for non-linear address" warning when booting.
+> > 
+> > Maybe we'll just allocate pgdat for CONFIG_NEED_MULTIPLE_NODES=n (which is
+> > essentially !NUMA) case in, say, free_area_init()?
+> 
+> 
+> thanks for your comment.
+> 
+> I check the source tree and found that contig_page_data is used by
+> crash_core.c as a symbol. I am not familiar with crash_core but I guess
+> allocate pgdat may break this crash_core users.
+> 
+> For example: some userspace scripts want to read the address of
+> contig_page_data symbol from a corefile.
+> 
+> kernel/crash_core.c:460:        VMCOREINFO_SYMBOL(contig_page_data);
+> 
+> #ifndef CONFIG_NEED_MULTIPLE_NODES
+>         VMCOREINFO_SYMBOL(mem_map);
+>         VMCOREINFO_SYMBOL(contig_page_data);
+> #endif
 
-You can't delete the return; here, otherwise vcodec_clk will be turned
-off immediately after they are turned on.
+My understanding is that VMCOREINFO_SYMBOL() should correspond to actual
+symbol. If there is no contig_page_data symbol, there is no need for
+VMCOREINFO_SYMBOL() either.
+ 
+> Perhaps we should use current simple approach?
+> 
+> 
+> >  
+> > > To fix it, create a small function to handle both translation.
+> > > 
+> > > Warning message:
+> > > [    0.000000] ------------[ cut here ]------------
+> > > [    0.000000] virt_to_phys used for non-linear address: (____ptrval____) (contig_page_data+0x0/0x1c00)
+> > > [    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/physaddr.c:15 __virt_to_phys+0x58/0x68
+> > > [    0.000000] Modules linked in:
+> > > [    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W         5.13.0-rc1-00074-g1140ab592e2e #3
+> > > [    0.000000] Hardware name: linux,dummy-virt (DT)
+> > > [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO BTYPE=--)
+> > > [    0.000000] pc : __virt_to_phys+0x58/0x68
+> > > [    0.000000] lr : __virt_to_phys+0x54/0x68
+> > > [    0.000000] sp : ffff800011833e70
+> > > [    0.000000] x29: ffff800011833e70 x28: 00000000418a0018 x27: 0000000000000000
+> > > [    0.000000] x26: 000000000000000a x25: ffff800011b70000 x24: ffff800011b70000
+> > > [    0.000000] x23: fffffc0001c00000 x22: ffff800011b70000 x21: 0000000047ffffb0
+> > > [    0.000000] x20: 0000000000000008 x19: ffff800011b082c0 x18: ffffffffffffffff
+> > > [    0.000000] x17: 0000000000000000 x16: ffff800011833bf9 x15: 0000000000000004
+> > > [    0.000000] x14: 0000000000000fff x13: ffff80001186a548 x12: 0000000000000000
+> > > [    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 0000000000000000
+> > > [    0.000000] x8 : ffff8000115c9000 x7 : 737520737968705f x6 : ffff800011b62ef8
+> > > [    0.000000] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
+> > > [    0.000000] x2 : 0000000000000000 x1 : ffff80001159585e x0 : 0000000000000058
+> > > [    0.000000] Call trace:
+> > > [    0.000000]  __virt_to_phys+0x58/0x68
+> > > [    0.000000]  check_usemap_section_nr+0x50/0xfc
+> > > [    0.000000]  sparse_init_nid+0x1ac/0x28c
+> > > [    0.000000]  sparse_init+0x1c4/0x1e0
+> > > [    0.000000]  bootmem_init+0x60/0x90
+> > > [    0.000000]  setup_arch+0x184/0x1f0
+> > > [    0.000000]  start_kernel+0x78/0x488
+> > > [    0.000000] ---[ end trace f68728a0d3053b60 ]---
+> > > 
+> > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > > ---
+> > >  mm/sparse.c | 13 +++++++++++--
+> > >  1 file changed, 11 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/mm/sparse.c b/mm/sparse.c
+> > > index b2ada9dc00cb..55c18aff3e42 100644
+> > > --- a/mm/sparse.c
+> > > +++ b/mm/sparse.c
+> > > @@ -344,6 +344,15 @@ size_t mem_section_usage_size(void)
+> > >  	return sizeof(struct mem_section_usage) + usemap_size();
+> > >  }
+> > >  
+> > > +static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
+> > > +{
+> > > +#ifndef CONFIG_NEED_MULTIPLE_NODES
+> > > +	return __pa_symbol(pgdat);
+> > > +#else
+> > > +	return __pa(pgdat);
+> > > +#endif
+> > > +}
+> > > +
+> > >  #ifdef CONFIG_MEMORY_HOTREMOVE
+> > >  static struct mem_section_usage * __init
+> > >  sparse_early_usemaps_alloc_pgdat_section(struct pglist_data *pgdat,
+> > > @@ -362,7 +371,7 @@ sparse_early_usemaps_alloc_pgdat_section(struct pglist_data *pgdat,
+> > >  	 * from the same section as the pgdat where possible to avoid
+> > >  	 * this problem.
+> > >  	 */
+> > > -	goal = __pa(pgdat) & (PAGE_SECTION_MASK << PAGE_SHIFT);
+> > > +	goal = pgdat_to_phys(pgdat) & (PAGE_SECTION_MASK << PAGE_SHIFT);
+> > >  	limit = goal + (1UL << PA_SECTION_SHIFT);
+> > >  	nid = early_pfn_to_nid(goal >> PAGE_SHIFT);
+> > >  again:
+> > > @@ -390,7 +399,7 @@ static void __init check_usemap_section_nr(int nid,
+> > >  	}
+> > >  
+> > >  	usemap_snr = pfn_to_section_nr(__pa(usage) >> PAGE_SHIFT);
+> > > -	pgdat_snr = pfn_to_section_nr(__pa(pgdat) >> PAGE_SHIFT);
+> > > +	pgdat_snr = pfn_to_section_nr(pgdat_to_phys(pgdat) >> PAGE_SHIFT);
+> > >  	if (usemap_snr == pgdat_snr)
+> > >  		return;
+> > >  
+> > > -- 
+> > > 2.18.0
+> > 
+> 
 
-> -
->  clkerr:
->         for (i -= 1; i >= 0; i--)
->                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
-> @@ -125,7 +90,6 @@ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
->         struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
->         int i = 0;
->
-> -       mtk_smi_larb_put(pm->larbvenc);
->         for (i = enc_clk->clk_num - 1; i >= 0; i--)
->                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
->  }
-> --
-> 2.18.0
->
+-- 
+Sincerely yours,
+Mike.
 
 _______________________________________________
 Linux-mediatek mailing list
