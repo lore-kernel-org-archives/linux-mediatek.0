@@ -2,116 +2,97 @@ Return-Path: <SRS0=1nN3=KH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C726C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 06:25:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEB05C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:39:26 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C24DE6192B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 06:25:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C24DE6192B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 01019613C5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 May 2021 08:39:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01019613C5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Oq9N014pVMpa0QTtj1y81apxNeDpfOuzkKQ6/S5oOA4=; b=mePWpAwAGW9TqE+GIcNqMFOO1
-	CbF4i/r1ytRkaXQcbXQZBdeHHfgNbHPQ5+87Qjh/JfiIpVxP0Hn2eund81pwIX/2GOcFlWUl/nq4g
-	EIXnVxl97kNlh0DgUPOoHJPG+LXHw9CtZu+jKtPI7xLz8J/8Gx4W6Vw+YjNykRGF/uCPsOWeLPc1D
-	5YF8CfNOm0Wff1E/pehAaSgwNyqMwlQ8xF0uapwdsrNE9kjCX7BAqgnUb96id0RvIqPngC3yz89FO
-	K8Uc4w+kQonz0HUv5BixT8NgwJ1KWxJOHpuHCm7rCBDFCLl99o3/VLc7pb6Cfzs0jGouj/7vHE0AC
-	aUXGH8vLw==;
+	 bh=Qpt65RihFf5LsSD+B/GRJ+NZC+x8YxkmODwoL4lgyug=; b=XyDrfOlFTqjmjM6vLs+VDREFr
+	36Px7tVGktQ/9cyx8eMYFbxPb/wsTVVPJ9OJF3pIUklDsdULnecLw2pyoD6B4PEytRYfNsVgtmN3B
+	k3D6Li3Et5dsrRcbiTxPDdVD6s/tq4+f1YelnHL/hL9azDV+efDGMF60zHIVDuRol21RRPjv9kRFT
+	eUU9fFAbc37yh0I0LaIEDXmmO2JIYmxXA1wUsi8oagu0vKJJXqreXnh2tRaXuQbsMYX6stzvuwDIf
+	DxifwYU2Pc7DP4MkGUb0Q+1Lg3LJva/z1uB3NwiVKi6sXD2FwiwvvIr02tTsdEZpHAf9wd2i+cxe8
+	Ab7V4k5pQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgiId-0028wK-0F; Wed, 12 May 2021 06:24:51 +0000
+	id 1lgkOZ-002LG5-I8; Wed, 12 May 2021 08:39:07 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgiIR-0028ua-F7
- for linux-mediatek@desiato.infradead.org; Wed, 12 May 2021 06:24:39 +0000
+ id 1lgkOM-002LBR-07; Wed, 12 May 2021 08:38:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=t7gDJaqgoZsHb6DiIXvZKpSg+LB+FrrnWDOpfg5m9L8=; b=hnjAs4Tq0LSBJ21OQ8h1HRlybg
- 7Lrp1ZCF3bpnSW4Xmk+ChONbF9WXKc1MM+MSFTlckl5mW3WpG2L5CrYreRq2eEMI/+CCLNw30mIis
- 0Lq2MXVAoxH4CRf0qCi/L+ucw2xH8KJw03YvzderSUp+U2J4+GuGgKIHJx41tMHEhM/QgpCbJreA+
- xRqYzCJ+BidYkmpLVdTABTIic8CAcDAAc6LLQOFlFrUr72FCGUxI5XEOLnfur2ZGLk6jfQQbzs8z8
- YaCAQZSIKtBnQk+gRUEZ/i6SPul8VW7RfBW0zlgwR58AWIzp2j6ayTzVFBq9K+8wOjQvb99tQAXIi
- +c5IpdyA==;
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
+ Message-ID:Sender:Reply-To:Content-ID:Content-Description;
+ bh=F7GCMG4LGnBHyhgH0fMXkvEutGoXK6lxgQV819IY7hk=; b=i1WRY78QwvwbjPOSd8UokmDpKG
+ nZfhiXm2733AL27542r+1uQ5XL/6O/wBik8kxfDH5xoKocSek94/Ww4Xri8vUCTrr3wvpoX8qpzQR
+ YzsCq5NH3lRdFPA8kKR2/yGN72ENLk8Y3fBj3+4BlFbpVnaz7Xq2bPOCUx7fWWrnlbCOzKWt8bxh5
+ lZOSXI6H2KYBu6iMLQQPDUxl6EmXbTI4h16vMPX/J4gSngDRk9FKVrStiCnbULkiKZr05ikbvpp/R
+ dQyRZsmzwkbH3/cnihN4Ykzf7ZnnYc8SOZRTGcCEWVTeDh7RhO7iBT+hoTJwFTTM69CxOlSaBdhmI
+ yyxQKGlA==;
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgiIO-00A969-Fi
- for linux-mediatek@lists.infradead.org; Wed, 12 May 2021 06:24:38 +0000
-Received: by mail-wr1-x430.google.com with SMTP id m9so22386410wrx.3
- for <linux-mediatek@lists.infradead.org>; Tue, 11 May 2021 23:24:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=t7gDJaqgoZsHb6DiIXvZKpSg+LB+FrrnWDOpfg5m9L8=;
- b=WO34k/7Bk2+xQd/jUD6S9ebWfCkyB6ieU4Ksl96o0Jdyk/ZifZVp+9xmgXEFZAvFDL
- DRyFrzDiZliI6/m1dDyzahGZxG/N1wOPkEEm7p6OXE2u6lJRGWKQxhlGNQFFTb9s7tjO
- hu2jvDjE93nyvARnR+BTfs6ROwqkhuCsu+SwEBiH1TaUvvibri4tk0deYUVsP8w8Vuyq
- 8yWmrSq3uBnW5DOA7CE2BGExecvSagvWHNpKvjE+980YXT3zPKQqNgtjsGXhNjsENAHb
- uC2VECmmSHdTnO9fdeeU3znOI/8PmOZ6sUUvOhox4smOi9sqfKRtSOZJcGOOIEN0OrIT
- j++A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=t7gDJaqgoZsHb6DiIXvZKpSg+LB+FrrnWDOpfg5m9L8=;
- b=VqTIhClaoWi5ZWKH+eNnd4EVXUbg2NHA00HrTSQZFzC2lBbv1boN/K/Q0jA6mL6AcN
- tAVSlAPEJk/G2xEhKxmwSsp6k23LmQgiU0bqI/ha3zqRWtFmsl4P/52rBQ9xCORnKf3N
- f3xVgqkYPtcAuKfpx2DbC40qPDICZ4rBI63+EpS3wBWWcRytjhX49p5fWxMugeIPCd+S
- BEDApKlRjua5ThO6jv31kX/JENB5sHHPYn8yCmpdcRXUleVrvPjVvdgcPfLu3eNM7c0z
- YwfU5f1IUCng12Ijopw8d2VLFNS5c97IAOlgjmt9T2vWtQbVvEBJSG/3Q3Z0I0BHod1s
- FeFw==
-X-Gm-Message-State: AOAM531vV8Z/Vnm2O/YTr6xpefXk4l0vofTMsw12VutB4Wpf6tqNehBH
- NYjTjkBmKRCb5UZuR5RiG6wVUg==
-X-Google-Smtp-Source: ABdhPJyXUCtio5iJ3s1PQFdvFz5rXvEBSNTrEg78ueKFXw5VVxcuzOCeqYEf2Kds9CfywK/Zy3FcBw==
-X-Received: by 2002:adf:facf:: with SMTP id a15mr43701962wrs.53.1620800674099; 
- Tue, 11 May 2021 23:24:34 -0700 (PDT)
-Received: from dell ([91.110.221.215])
- by smtp.gmail.com with ESMTPSA id z5sm324183wrn.69.2021.05.11.23.24.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 May 2021 23:24:33 -0700 (PDT)
-Date: Wed, 12 May 2021 07:24:31 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, sre@kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-pm@vger.kernel.org,
- devicetree <devicetree@vger.kernel.org>,
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Gene Chen <gene_chen@richtek.com>, Wilma.Wu@mediatek.com,
- shufan_lee@richtek.com, ChiYuan Huang <cy_huang@richtek.com>,
- benjamin.chao@mediatek.com
-Subject: Re: [PATCH v7 04/11] mfd: mt6360: Combine mt6360 pmic/ldo resources
- into mt6360 regulator resources
-Message-ID: <20210512062431.GB805368@dell>
-References: <1605177598-23501-1-git-send-email-gene.chen.richtek@gmail.com>
- <1605177598-23501-5-git-send-email-gene.chen.richtek@gmail.com>
- <74b127eb-9a3c-20c9-5692-b00b982f4da3@gmail.com>
- <CAE+NS34qR9f2LOpvxTBDF4OR=Xq-SFP+uHdWe3dZ5x8xggS8kA@mail.gmail.com>
- <20210115073241.GC3975472@dell>
- <CAE+NS37hVMVJA04ZmdcfKvw05ga1-vT=fGRAf=bh17XOJHEh4A@mail.gmail.com>
- <20210323093806.GR2916463@dell>
- <CAE+NS37jmcyr2w9Z22-m5Ug7rF3Twq20poOLjptDX6E9E_7NLg@mail.gmail.com>
+ id 1lgkOG-00ADfA-2P; Wed, 12 May 2021 08:38:51 +0000
+X-UUID: 300faea398c04924be674937a5b429e1-20210512
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=F7GCMG4LGnBHyhgH0fMXkvEutGoXK6lxgQV819IY7hk=; 
+ b=ah0cU7hT25BZVRTWDap4tZwD0mbOw8+koKniYl7/pbWWjOOTg6VjnqyldD/5QlI5BqZNsempm8jDRWRkSIQ6I0rNd47AVwG/b1yRla3O4f6KpXEx1EBaqoPoHJECffSNEmY4VxfYEnmRWZBZPl7dex0C8UzuYfzK8rWYngRK9zw=;
+X-UUID: 300faea398c04924be674937a5b429e1-20210512
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 673486075; Wed, 12 May 2021 01:38:42 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 May 2021 01:38:41 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 May 2021 16:38:32 +0800
+Received: from [10.17.3.153] (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 12 May 2021 16:38:32 +0800
+Message-ID: <1620808712.30754.62.camel@mhfsdcap03>
+Subject: Re: [PATCH][v3] rtnetlink: add rtnl_lock debug log
+From: Rocco.Yue <rocco.yue@mediatek.com>
+To: Cong Wang <xiyou.wangcong@gmail.com>, <linux-kernel@vger.kernel.org>
+CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Masahiro Yamada <masahiroy@kernel.org>, "Nick
+ Desaulniers" <ndesaulniers@google.com>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Peter Zijlstra <peterz@infradead.org>,
+ Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>, LKML
+ <linux-kernel@vger.kernel.org>, Linux Kernel Network Developers
+ <netdev@vger.kernel.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <wsd_upstream@mediatek.com>
+Date: Wed, 12 May 2021 16:38:32 +0800
+In-Reply-To: <CAM_iQpVWSJ8BdRoLDX0MdiqmJn2dp+U9JM4mcfzRbVn4MZbzcg@mail.gmail.com>
+References: <20210511113257.2094-1-rocco.yue@mediatek.com>
+ <CAM_iQpVWSJ8BdRoLDX0MdiqmJn2dp+U9JM4mcfzRbVn4MZbzcg@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAE+NS37jmcyr2w9Z22-m5Ug7rF3Twq20poOLjptDX6E9E_7NLg@mail.gmail.com>
+X-TM-SNTS-SMTP: 2A9A11B506E22992C9FA6257C88DB58DA55B784EAB31817063BCF46E6A1B99952000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210511_232436_617095_D23E65D9 
-X-CRM114-Status: GOOD (  28.88  )
+X-CRM114-CacheID: sfid-20210512_013848_142771_0922BC3B 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,92 +104,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAxMSBNYXkgMjAyMSwgR2VuZSBDaGVuIHdyb3RlOgoKPiBMZWUgSm9uZXMgPGxlZS5q
-b25lc0BsaW5hcm8ub3JnPiDmlrwgMjAyMeW5tDPmnIgyM+aXpSDpgLHkuowg5LiL5Y2INTozOOWv
-q+mBk++8mgo+ID4KPiA+IE9uIFR1ZSwgMDIgTWFyIDIwMjEsIEdlbmUgQ2hlbiB3cm90ZToKPiA+
-Cj4gPiA+IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+IOaWvCAyMDIx5bm0MeaciDE1
-5pelIOmAseS6lCDkuIvljYgzOjMy5a+r6YGT77yaCj4gPiA+ID4KPiA+ID4gPiBPbiBGcmksIDE1
-IEphbiAyMDIxLCBHZW5lIENoZW4gd3JvdGU6Cj4gPiA+ID4KPiA+ID4gPiA+IE1hdHRoaWFzIEJy
-dWdnZXIgPG1hdHRoaWFzLmJnZ0BnbWFpbC5jb20+IOaWvCAyMDIx5bm0MeaciDEy5pelIOmAseS6
-jCDkuIvljYg4OjMy5a+r6YGT77yaCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+
-Cj4gPiA+ID4gPiA+IE9uIDEyLzExLzIwMjAgMTE6MzksIEdlbmUgQ2hlbiB3cm90ZToKPiA+ID4g
-PiA+ID4gPiBGcm9tOiBHZW5lIENoZW4gPGdlbmVfY2hlbkByaWNodGVrLmNvbT4KPiA+ID4gPiA+
-ID4gPgo+ID4gPiA+ID4gPiA+IENvbWJpbmUgbXQ2MzYwIHBtaWMvbGRvIHJlc291cmNlcyBpbnRv
-IG10NjM2MCByZWd1bGF0b3IgcmVzb3VyY2VzCj4gPiA+ID4gPiA+ID4gdG8gc2ltcGxpZnkgdGhl
-IHNpbWlsYXIgcmVzb3VyY2VzIG9iamVjdC4KPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+IFNp
-Z25lZC1vZmYtYnk6IEdlbmUgQ2hlbiA8Z2VuZV9jaGVuQHJpY2h0ZWsuY29tPgo+ID4gPiA+ID4g
-PiA+IEFja2VkLWZvci1NRkQtYnk6IExlZSBKb25lcyA8bGVlLmpvbmVzQGxpbmFyby5vcmc+Cj4g
-PiA+ID4gPiA+ID4gLS0tCj4gPiA+ID4gPiA+ID4gIGRyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMg
-fCAxMSArKystLS0tLS0tLQo+ID4gPiA+ID4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRp
-b25zKCspLCA4IGRlbGV0aW9ucygtKQo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvbWZkL210NjM2MC1jb3JlLmMgYi9kcml2ZXJzL21mZC9tdDYzNjAtY29y
-ZS5jCj4gPiA+ID4gPiA+ID4gaW5kZXggNjkyZTQ3Yi4uNTExOWU1MSAxMDA2NDQKPiA+ID4gPiA+
-ID4gPiAtLS0gYS9kcml2ZXJzL21mZC9tdDYzNjAtY29yZS5jCj4gPiA+ID4gPiA+ID4gKysrIGIv
-ZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYwo+ID4gPiA+ID4gPiA+IEBAIC0yNjUsNyArMjY1LDcg
-QEAgc3RhdGljIGNvbnN0IHN0cnVjdCByZXNvdXJjZSBtdDYzNjBfbGVkX3Jlc291cmNlc1tdID0g
-ewo+ID4gPiA+ID4gPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9GTEVEMV9T
-VFJCX1RPX0VWVCwgImZsZWQxX3N0cmJfdG9fZXZ0IiksCj4gPiA+ID4gPiA+ID4gIH07Cj4gPiA+
-ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiAtc3RhdGljIGNvbnN0IHN0cnVjdCByZXNvdXJjZSBtdDYz
-NjBfcG1pY19yZXNvdXJjZXNbXSA9IHsKPiA+ID4gPiA+ID4gPiArc3RhdGljIGNvbnN0IHN0cnVj
-dCByZXNvdXJjZSBtdDYzNjBfcmVndWxhdG9yX3Jlc291cmNlc1tdID0gewo+ID4gPiA+ID4gPiA+
-ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9CVUNLMV9QR0JfRVZULCAiYnVjazFf
-cGdiX2V2dCIpLAo+ID4gPiA+ID4gPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2
-MF9CVUNLMV9PQ19FVlQsICJidWNrMV9vY19ldnQiKSwKPiA+ID4gPiA+ID4gPiAgICAgICBERUZJ
-TkVfUkVTX0lSUV9OQU1FRChNVDYzNjBfQlVDSzFfT1ZfRVZULCAiYnVjazFfb3ZfZXZ0IiksCj4g
-PiA+ID4gPiA+ID4gQEAgLTI3OCw5ICsyNzgsNiBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJlc291
-cmNlIG10NjM2MF9wbWljX3Jlc291cmNlc1tdID0gewo+ID4gPiA+ID4gPiA+ICAgICAgIERFRklO
-RV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE83X09DX0VWVCwgImxkbzdfb2NfZXZ0IiksCj4gPiA+
-ID4gPiA+ID4gICAgICAgREVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2MzYwX0xETzZfUEdCX0VWVCwg
-ImxkbzZfcGdiX2V2dCIpLAo+ID4gPiA+ID4gPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVE
-KE1UNjM2MF9MRE83X1BHQl9FVlQsICJsZG83X3BnYl9ldnQiKSwKPiA+ID4gPiA+ID4gPiAtfTsK
-PiA+ID4gPiA+ID4gPiAtCj4gPiA+ID4gPiA+ID4gLXN0YXRpYyBjb25zdCBzdHJ1Y3QgcmVzb3Vy
-Y2UgbXQ2MzYwX2xkb19yZXNvdXJjZXNbXSA9IHsKPiA+ID4gPiA+ID4gPiAgICAgICBERUZJTkVf
-UkVTX0lSUV9OQU1FRChNVDYzNjBfTERPMV9PQ19FVlQsICJsZG8xX29jX2V2dCIpLAo+ID4gPiA+
-ID4gPiA+ICAgICAgIERFRklORV9SRVNfSVJRX05BTUVEKE1UNjM2MF9MRE8yX09DX0VWVCwgImxk
-bzJfb2NfZXZ0IiksCj4gPiA+ID4gPiA+ID4gICAgICAgREVGSU5FX1JFU19JUlFfTkFNRUQoTVQ2
-MzYwX0xETzNfT0NfRVZULCAibGRvM19vY19ldnQiKSwKPiA+ID4gPiA+ID4gPiBAQCAtMjk4LDEw
-ICsyOTUsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG1mZF9jZWxsIG10NjM2MF9kZXZzW10gPSB7
-Cj4gPiA+ID4gPiA+ID4gICAgICAgICAgICAgICAgICAgTlVMTCwgMCwgMCwgIm1lZGlhdGVrLG10
-NjM2MC1jaGciKSwKPiA+ID4gPiA+ID4gPiAgICAgICBPRl9NRkRfQ0VMTCgibXQ2MzYwLWxlZCIs
-IG10NjM2MF9sZWRfcmVzb3VyY2VzLAo+ID4gPiA+ID4gPiA+ICAgICAgICAgICAgICAgICAgIE5V
-TEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtbGVkIiksCj4gPiA+ID4gPiA+ID4gLSAgICAgT0Zf
-TUZEX0NFTEwoIm10NjM2MC1wbWljIiwgbXQ2MzYwX3BtaWNfcmVzb3VyY2VzLAo+ID4gPiA+ID4g
-PiA+IC0gICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtcG1pYyIp
-LAo+ID4gPiA+ID4gPiA+IC0gICAgIE9GX01GRF9DRUxMKCJtdDYzNjAtbGRvIiwgbXQ2MzYwX2xk
-b19yZXNvdXJjZXMsCj4gPiA+ID4gPiA+ID4gLSAgICAgICAgICAgICAgICAgTlVMTCwgMCwgMCwg
-Im1lZGlhdGVrLG10NjM2MC1sZG8iKSwKPiA+ID4gPiA+ID4gPiArICAgICBPRl9NRkRfQ0VMTCgi
-bXQ2MzYwLXJlZ3VsYXRvciIsIG10NjM2MF9yZWd1bGF0b3JfcmVzb3VyY2VzLAo+ID4gPiA+ID4g
-PiA+ICsgICAgICAgICAgICAgICAgIE5VTEwsIDAsIDAsICJtZWRpYXRlayxtdDYzNjAtcmVndWxh
-dG9yIiksCj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+IEFzIGRpc2N1c3NlZCB3aXRoIHRoZSBNRkQg
-bWFpbnRhaW5lciBbMV0sIHRoZSByZWd1bGF0b3IgKGFuZCBwcm9iYWJseSBhbGwgY2VsbHMpCj4g
-PiA+ID4gPiA+IHNob3VsZG4ndCBoYXZlIGEgRFQgYmluZGluZy4KPiA+ID4gPiA+ID4KPiA+ID4g
-PiA+ID4gU28gcGxlYXNlIHNlbmQgYSBuZXcgdmVyc2lvbiB3aGljaCBmaXhlcyB0aGF0Lgo+ID4g
-PiA+ID4gPgo+ID4gPiA+ID4gPiBSZWdhcmRzLAo+ID4gPiA+ID4gPiBNYXR0aGlhcwo+ID4gPiA+
-ID4gPgo+ID4gPiA+ID4gPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0
-ZWsvMjAyMTAxMTExNjQxMTguR0U0NzI4QHNpcmVuYS5vcmcudWsvCj4gPiA+ID4KPiA+ID4gPiBJ
-IGRvbid0IHRoaW5rIE1hcmsgaXMgY29ycmVjdCBoZXJlLgo+ID4gPiA+Cj4gPiA+ID4gV2UgdXN1
-YWxseSBkbyBpbXBsZW1lbnQgY29tcGF0aWJsZSBzdHJpbmdzIGZvciBzdWItZGV2aWNlcyBhbmQg
-dGhleSBkbwo+ID4gPiA+IHRlbmQgdG8gaGF2ZSB0aGVpciBvd24gZGV2aWNlIG5vZGVzLgo+ID4g
-PiA+Cj4gPiA+ID4gSXQncyBhIHZlcnkgbG9uZyB0aW1lIGFnbyBzaW5jZSBJIGNvZGVkIHRoaXMg
-dXAgbXlzZWxmLCBidXQgZnJvbQo+ID4gPiA+IG1lbW9yeSwgeW91IGNhbid0IGhhdmUgMiBkZXZp
-Y2VzIHNoYXJlIGEgY29tcGF0aWJsZSBzdHJpbmcuCj4gPiA+ID4KPiA+ID4KPiA+ID4gRWl0aGVy
-IE1hcmsgb3IgTGVlIHN1Z2dlc3Rpb24gaXMgd29yay4KPiA+ID4gSXMgdGhlcmUgYSBjb25jbHVz
-aW9uIHRoYXQgd2UgY2FuIGFwcGx5IGl0Pwo+ID4gPiBJZiBNRkQgaXMgYWxyZWFkeSBzdXBwb3J0
-ZWQgb2ZfY29tcGF0aWJsZSwgd2UgcHJlZmVyIHVzZSBvZl9jb21wYXRpYmxlIG1hcHBpbmcuCj4g
-Pgo+ID4gSSB3b3VsZCByZXN1Ym1pdCB0aGUgc2V0LiAgV2UgY2FuIHN0YXJ0IGFmcmVzaCBmcm9t
-IHRoZXJlLgo+IAo+IERlYXIgSm9uZXMsCj4gCj4gICAgIFNob3VsZCBJIHNlbmQgZml4ZWQgcGF0
-Y2ggYWJvdXQgYWRkaW5nIHJlZ3VsYXRvciBub2RlIGRpcmVjdGx5IGNhbgo+IG1ha2UgZWFzaWVy
-IGZvciB5b3UgdG8gcmUtc3VibWl0IG5ldyBwYXRjaD8KCkRvbid0IHdvcnJ5IGFib3V0IG1lLiAg
-RG8gd2hhdCdzIGJlc3QgZm9yIHlvdS4KCkkgbG9vayBmb3J3YXJkIHRvIHJlY2VpdmluZyB0aGUg
-bmV3IHNldCBzb29uLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3IgVGVjaG5pY2Fs
-IExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29m
-dHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJs
-b2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
-ZWsK
+On Tue, 2021-05-11 at 10:00 -0700, Cong Wang wrote:
+> On Tue, May 11, 2021 at 4:46 AM Rocco yue <rocco.yue@mediatek.com> wrote:
+> >
+> > From: Rocco Yue <rocco.yue@mediatek.com>
+> >
+> > We often encounter system hangs caused by certain process
+> > holding rtnl_lock for a long time. Even if there is a lock
+> > detection mechanism in Linux, it is a bit troublesome and
+> > affects the system performance. We hope to add a lightweight
+> > debugging mechanism for detecting rtnl_lock.
+> 
+> Any reason why this is specific to RTNL lock? To me holding
+> a mutex lock for a long time is problematic for any mutex.
+> I have seen some fs mutex being held for a long time caused
+> many hung tasks in the system.
+> 
+> Thanks.
+
+Thank you for a good question.
+
+It's a problem to hold rtnl_lock for a long time, and other locks are no
+exception.
+
+the reason for adding rtnl_lock debug log:
+
+1.rtnl_lock is a widely used lock:
+
+In my view, for some other mutex locks, such as "f2fs_stat_mutex" in the
+fs/f2fs/debug.c , there are not many codes that use this lock, and the
+module involved is relatively single.
+
+But when we search for rtnl_lock in the entire Linux kernel, we will get
+a lot of matching results. Obviously this lock is a widely used lock,
+which makes it difficult for us to locate the problem. If we do not
+enable CONFIG_DEBUG_LOCKDEP and CONFIG_PROVE_LOCKING, it is often
+difficult for us to find out where went wrong.
+
+2.codes that use rtnl_lock include some basic functions of networking:
+
+There are many networking modules that use rtnl_lock, and some functions
+that use rtnl_lock are infrastructure part, such as unregister_netdev(),
+dev_ioctl(). Perhaps this can also explain to a certain extent the
+importance of adding a lightweight debug mechanism for rtnl_lock. And
+mediatek and our customer have benefited a lot from such log.
+
+
+Hope above contents can answer your question.
+
+Best Regards
+Rocco
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
