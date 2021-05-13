@@ -2,91 +2,95 @@ Return-Path: <SRS0=rIjB=KI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E7ADC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 00:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA28AC433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 01:17:32 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD92C61412
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 00:07:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD92C61412
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1A1BF613E9
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 01:17:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A1BF613E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Etteo5IRQAzesL1jJB/Tyi+3sG0N0Q5GefoqDz3qJZs=; b=jFSqY4pXtFzddYEAQYhPYDnPs
-	UumOGuRYAbw18p2Lxpmh3jgt2vJyLAg1o9obuLdXFAzUCqHy8mvYs0F3Ei7SWyrRPXnUjkrq8Zi0J
-	eYsUsQmFbjMRqPsiaRvK9EgZ8UHkzi1cNQRxGfz+JKZZM+L+0NwO9Ur1qtxHq4zJ0nYq0m3IBrsfL
-	gaLw5JGlDpx4amf7rsjN+W7KuA3lFLndW5vhRRo0t5ZehhH9wGN8pdCW0/Z+8NRXWE0ROtB/yFwus
-	h6Xk0qsAtoHlpxw50ceiZEOXesEZXbxOmpTNz471mkrw+/elaVzA5vloYFAbj00BS/fmTDRTjkdk3
-	xbDDqIEdw==;
+	 bh=gd73ngcF5JUpQs1ki+AbcVbx9KnVnG5pmdXs16Ow+aU=; b=pSRlAX1sfAipT8BEbddQcRg4Y
+	zqwAWzIr1ue7veGS8dYz0hbbziqIKCdTFE2t+D2qZ7uHLDQtVSiMfAgBCuIZFk1Ee+dCRN8mu1jLq
+	jnATbtsMj/JcONAZoCDOov8Zu5NXrhWF+fvS5hkOW59jmCKhT8ARhDy+7aNbiwmZ//n2C+sCHGcnU
+	6ukx+gTPC6WLqYxvTmXgOkfDOI0tm3fC7iV7FMWmEYeNGla5OWQ6ETm7VPkG5heXVAFkYRlHW/YjQ
+	+vC9Pn59jv7Q+Gq0bQBtb7Wc0q3AgEaRDqs2Cj3I2N5/zFAnrCEVZi1Zzp1u3lyDSJt12hBDRV8i/
+	asFznXEHQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lgysw-004HlK-O3; Thu, 13 May 2021 00:07:27 +0000
+	id 1lgzyK-004MfC-Si; Thu, 13 May 2021 01:17:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgysg-004Hk2-7P; Thu, 13 May 2021 00:07:10 +0000
+ id 1lgzyJ-004Mf3-6m
+ for linux-mediatek@desiato.infradead.org; Thu, 13 May 2021 01:17:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
- MIME-Version:Sender:Reply-To:Content-ID:Content-Description;
- bh=mtsZQjBZ4Kn2gA4I7stRuzSsrzZRsTIVV5x2h3wk2lU=; b=4+Zh+Y3Ze3Rr3PWO7IAbpcSDWC
- JWhs4wlT+aAhfZEUbH1iGawCSRq4xUEPXEXz3uKBR5f7gvkRci2/XQBHqUlgBF7nY23dw2Cb4qgq1
- wRt5s+0ptVkRjq9djXoDTbtS8zQmz3u1fUfo8W0OSRVTAVlfv+MXR6avwQvcWFvIqIhp4XJ1Dr/QZ
- Z9v4pCeiMz/vjPyDJHZxtK1uSszZZk16qruZP6yYZO1cv5jBYTvf7Ix0Y6qTfZmBm2VsdPQ+uOkMI
- S9AAtJNKGV5D2wlasiDjehREsXxetJ3+rY7k5GoFbzehDpUg3YOdTDswBsWkv3SiCw1C2jBB2PKhD
- qqNN5o3Q==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=8rIOlce/5RXrT16ramfLpoZjAAz9w2C7JWd/JQK5isA=; b=sULy7yOImGXthy9rhx8TPohMFQ
+ ch6Nnt/D2WZMm+8oiDrswFDGvWdRWIC/7uSvJlloNP46A5Pl7JlJOnxSWecitvNfXn6OxWd02+17/
+ FHDxXiH79c2c323NEEEZNDq6DvKY7ZiEiwfunyoz9UT/6Emu6eZXTPzCMcgvvUG7XgtiyiEP8NbN/
+ 0rAu2EWPwcsOoz7Hxn99lPxgHNuex5uJCDWX/z7btc1IGoxqS9BvuAhkOjVbw0NenbUG20gTVNNKO
+ sjEzXutbmPrxg3Z10/qPuz5inXa/6Xr5mMwGLeMWirgjio41kG79Fnu56agv7fqKsBJGlefRNj/3z
+ ImqYqOjA==;
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lgysd-00AvG3-A3; Thu, 13 May 2021 00:07:08 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3AA7361405;
- Thu, 13 May 2021 00:07:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1620864426;
- bh=v2Nqrzk8IMsTBDnwOsCTq2LatPsRSKHVbANck2rKQ8o=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=QITqSl9VhSZwPCtmR6nhxI1fDkmIBopcdtEI0C2u5AFCsqvKozQIeO1AfTOKvm73I
- JHxXVjs6V1Fkl+tgfvxkv9HRu1FPEq7ZK+MGeQGN4WIqDP/hWBwP+hI953RjlgO26r
- 3ofNU3OLpGJNDSbemkAQsCStml7pzuMgN1bplo2yrzaXQydqd1pijrdwUEK0JtzEK1
- Qf9xiQT8Gt/ftUr39L7fWm/G31VcT2/zDKGDjxnd6MCWtBiW+HCjrHuzSaESKpbS2f
- QdP1Hhqo4bdqGPPFzE2Us/Ha/udH91kWHfNPUe+CBdlx3qH8II1PVmhSnF0Lej6muD
- 5DKHY63tzl3Jg==
-Received: by mail-ej1-f47.google.com with SMTP id n2so37487182ejy.7;
- Wed, 12 May 2021 17:07:06 -0700 (PDT)
-X-Gm-Message-State: AOAM533oxEgK1hCS5MrM6bJTOAw8CK5a16ztFaM//06Qncxl9h1uWD7A
- Jy+7c2cayivF3hnQy6fnRVVlYyYA4HogHjnNNg==
-X-Google-Smtp-Source: ABdhPJyfh9opbiHkboCndggh2+uLHJvaZkDGaqHLCtZT/4YagZu6vDBz+VrubRjLiXkTfTnqyKa2x9kZeO9mRpM4LKo=
-X-Received: by 2002:a17:906:b755:: with SMTP id
- fx21mr941485ejb.267.1620864424849; 
- Wed, 12 May 2021 17:07:04 -0700 (PDT)
+ id 1lgzyF-00AxBw-TW
+ for linux-mediatek@lists.infradead.org; Thu, 13 May 2021 01:17:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1620868617;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=8rIOlce/5RXrT16ramfLpoZjAAz9w2C7JWd/JQK5isA=;
+ b=Sz87xDnH113sWSHdeLObUgq6frhPNvVcr/FYNy+VTQimg0j87ykJSENRXaTQIkhiwzoPHF
+ VvLZsdw5G3uj0yn05owGhPPU22sJRk/XbJ8bo9mFw4dl24w0jd/2rbrj1V8xircJpLlei8
+ RYDXJFLj1ZyNi6Lwqjiju0CN1zbn5CU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-466-mgF-RyesNwGIJLXXb7cNcw-1; Wed, 12 May 2021 21:16:53 -0400
+X-MC-Unique: mgF-RyesNwGIJLXXb7cNcw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 14FC9801B12;
+ Thu, 13 May 2021 01:16:52 +0000 (UTC)
+Received: from localhost (ovpn-12-82.pek2.redhat.com [10.72.12.82])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 15A0B63BA7;
+ Thu, 13 May 2021 01:16:50 +0000 (UTC)
+Date: Thu, 13 May 2021 09:16:48 +0800
+From: Baoquan He <bhe@redhat.com>
+To: Mike Rapoport <rppt@kernel.org>, Miles Chen <miles.chen@mediatek.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>, linux-mm@kvack.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, k-hagio-ab@nec.com
+Subject: Re: [PATCH] mm/sparse: fix check_usemap_section_nr warnings
+Message-ID: <20210513011648.GA6776@MiWiFi-R3L-srv>
+References: <20210511093114.15123-1-miles.chen@mediatek.com>
+ <YJpbWVrgJFLRpzl3@kernel.org> <1620797600.14730.7.camel@mtkswgap22>
+ <YJuh90iYeZ8F4Ain@kernel.org>
 MIME-Version: 1.0
-References: <20210419073244.2678688-1-narmstrong@baylibre.com>
-In-Reply-To: <20210419073244.2678688-1-narmstrong@baylibre.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 13 May 2021 08:06:54 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-amQXXF2Opi6vddosnx94TMPw5xDQy5peHpsrXSp0h4g@mail.gmail.com>
-Message-ID: <CAAOTY_-amQXXF2Opi6vddosnx94TMPw5xDQy5peHpsrXSp0h4g@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] mediatek: hdmi: add MT8167 configuration
-To: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <YJuh90iYeZ8F4Ain@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_170707_434472_2DCEF91F 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20210512_181700_056085_D33E3A3F 
+X-CRM114-Status: GOOD (  28.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,44 +102,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5laWw6CgpOZWlsIEFybXN0cm9uZyA8bmFybXN0cm9uZ0BiYXlsaWJyZS5jb20+IOaWvCAy
-MDIx5bm0NOaciDE55pelIOmAseS4gCDkuIvljYgzOjMz5a+r6YGT77yaCj4KPiBUaGUgTVQ4MTY3
-IFNvQyBoYXZlIGEgaGFyZCBsaW1pdCBvbiB0aGUgbWF4aW1hbCBzdXBwb3J0ZWQgSERNSSBUTURT
-IGNsb2NrLAo+IGFuZCBpcyBub3QgdmFsaWRhdGVkIGFuZCBzdXBwb3J0ZWQgZm9yIEhETUkgbW9k
-ZXMgb3V0IG9mIEhETUkgQ0VBIG1vZGVzLgoKRm9yIHRoaXMgc2VyaWVzLCBhcHBsaWVkIHRvIG1l
-ZGlhdGVrLWRybS1uZXh0IFsxXSwgdGhhbmtzLgoKWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcv
-cHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L2NodW5rdWFuZy5odS9saW51eC5naXQvbG9nLz9oPW1l
-ZGlhdGVrLWRybS1uZXh0CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPgo+IFRvIGFjaGlldmUgdGhp
-czoKPiAtIHN3aXRjaCB0aGUgbWVkaWF0ZWsgSERNSSBiaW5kaW5ncyB0byBZQU1MCj4gLSBhZGQg
-dGhlIE1UODE2NyBjb21wYXRpYmxlCj4gLSBhZGQgYSBib29sZWFuIHRvIGRpc2NhcmQgdGhlIG5v
-bi1DRUEgbW9kZXMKPiAtIGFkZCBhIHZhbHVlIHRvIHNwZWNpZnkgbWFjIFRNRFMgc3VwcG9ydGVk
-IGNsb2NrCj4gLSBhZGQgYSBjb25mIGVudHJ5IGZvciB0aGUgTVQ4MTY3IGNvbXBhdGlibGUKPgo+
-IENoYW5nZXMgc2luY2UgdjQ6Cj4gLSBmaXhlZCBiaW5kaW5ncwo+Cj4gTmVpbCBBcm1zdHJvbmcg
-KDUpOgo+ICAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IG1lZGlhdGVrLGhkbWk6IENvbnZlcnQgdG8g
-dXNlIGdyYXBoIHNjaGVtYQo+ICAgZHQtYmluZGluZ3M6IG1lZGlhdGVrOiBhZGQgbXQ4MTY3IHRv
-IGhkbWksIGhkbWktZGRjIGFuZCBjZWMgYmluZGluZ3MKPiAgIGdwdS9kcm06IG1lZGlhdGVrOiBo
-ZG1pOiBhZGQgY2hlY2sgZm9yIENFQSBtb2RlcyBvbmx5Cj4gICBncHUvZHJtOiBtZWRpYXRlazog
-aGRtaTogYWRkIG9wdGlvbmFsIGxpbWl0IG9uIG1heGltYWwgSERNSSBtb2RlIGNsb2NrCj4gICBn
-cHUvZHJtOiBtZWRpYXRlazogaGRtaTogYWRkIE1UODE2NyBjb25maWd1cmF0aW9uCj4KPiAgLi4u
-L2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssY2VjLnlhbWwgICAgICAgIHwgIDUyICsrKysrKysK
-PiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssaGRtaS1kZGMueWFtbCAgIHwgIDU4ICsr
-KysrKysrCj4gIC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0ICAgICAgICB8
-IDEzNiAtLS0tLS0tLS0tLS0tLS0tLS0KPiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWss
-aGRtaS55YW1sICAgICAgIHwgMTMzICsrKysrKysrKysrKysrKysrCj4gIGRyaXZlcnMvZ3B1L2Ry
-bS9tZWRpYXRlay9tdGtfaGRtaS5jICAgICAgICAgICB8ICAxNyArKysKPiAgNSBmaWxlcyBjaGFu
-Z2VkLCAyNjAgaW5zZXJ0aW9ucygrKSwgMTM2IGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAx
-MDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsv
-bWVkaWF0ZWssY2VjLnlhbWwKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWktZGRjLnlhbWwK
-PiAgZGVsZXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9k
-aXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGhkbWkudHh0Cj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRl
-ayxoZG1pLnlhbWwKPgo+IC0tCj4gMi4yNS4xCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1t
-ZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On 05/12/21 at 12:37pm, Mike Rapoport wrote:
+> On Wed, May 12, 2021 at 01:33:20PM +0800, Miles Chen wrote:
+> > On Tue, 2021-05-11 at 13:24 +0300, Mike Rapoport wrote:
+> > > On Tue, May 11, 2021 at 05:31:14PM +0800, Miles Chen wrote:
+> > > > In current implementation of node_data, if CONFIG_NEED_MULTIPLE_NODES=y,
+> > > > node_data is allocated by kzmalloc. If CONFIG_NEED_MULTIPLE_NODES=n,
+> > > > we use a global variable named "contig_page_data".
+> > > > 
+> > > > If CONFIG_DEBUG_VIRTUAL is not enabled. __pa() can handle both kzalloc and
+> > > > symbol cases. But if CONFIG_DEBUG_VIRTUAL is set, we will have the
+> > > > "virt_to_phys used for non-linear address" warning when booting.
+> > > 
+> > > Maybe we'll just allocate pgdat for CONFIG_NEED_MULTIPLE_NODES=n (which is
+> > > essentially !NUMA) case in, say, free_area_init()?
+> > 
+> > 
+> > thanks for your comment.
+> > 
+> > I check the source tree and found that contig_page_data is used by
+> > crash_core.c as a symbol. I am not familiar with crash_core but I guess
+> > allocate pgdat may break this crash_core users.
+> > 
+> > For example: some userspace scripts want to read the address of
+> > contig_page_data symbol from a corefile.
+> > 
+> > kernel/crash_core.c:460:        VMCOREINFO_SYMBOL(contig_page_data);
+> > 
+> > #ifndef CONFIG_NEED_MULTIPLE_NODES
+> >         VMCOREINFO_SYMBOL(mem_map);
+> >         VMCOREINFO_SYMBOL(contig_page_data);
+> > #endif
+> 
+> My understanding is that VMCOREINFO_SYMBOL() should correspond to actual
+> symbol. If there is no contig_page_data symbol, there is no need for
+> VMCOREINFO_SYMBOL() either.
+
+Yeah, it's exported for makedumpfile and crash utility to parse and get
+the memory layout of the corrupted kernel. If removing it, makedumpfile
+will get it from node_data[]. Looks like a good idea to unify code for
+numa|!numa on pglist_data instances.
+
+Add Kazu to CC since he maintain makedumpfile and Crash utilities.
+
+My concern is that that only happens on arm/arm64/riscv, does it mean the
+warning is not necessary, so can be removed? Or we need to check if
+CONFIG_DEBUG_VIRTUAL doesn't work well in this case.
+
+Thanks
+Baoquan
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
