@@ -2,20 +2,21 @@ Return-Path: <SRS0=rIjB=KI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D40FC433B4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 01:54:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A6A2C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 02:14:14 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B0DD3613F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 01:54:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0DD3613F6
+	by mail.kernel.org (Postfix) with ESMTPS id 80D9061413
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 May 2021 02:14:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80D9061413
 Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=mail.ee
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,75 +25,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yRxgN5OUEa7EFY/cQ0ib7kTXPK8nZ+WBUX9jKXg8aUc=; b=KV1BwwhsMVWb/lZW91qbYUo69
-	BAkDXLTIl7xTEnh5JQO91tnACt4ET1g/n5Ax826NJTon0FvTyQxRWWnty2fUTEPwHhDC2djOqxj/5
-	njmsRIF8HuTOR+IOEmUcE4S0nbwOJ2YuBYUqLigcB184nlTbcIYdAPbDlPdTluCnlHpRUs287iMtC
-	m0XDHjveLfkOxBlrM6DkgTBSbA77Ex7mlwzTdmKJms+73JvapXGyfoimYi58e94bMAPhgFHkkBp2x
-	hqrEeAV97ad3+dEwqPGtE/NVXZQaLnmQDL3a2CF014cl0aT53GPakUe0Df2ZuEdYJeWGpqUbDER75
-	7i0nsyveQ==;
+	 bh=bCh34PETZawXT4xVJuHzf6oOnkt6C8XsVIvX4m7h6bA=; b=P5FckExGInyFMrf1i9TUSotiv
+	hvMgJ6ynElJ5Nw9tm6Uwto0NZvOjbOohzA8je+Kltvfri3i4idLqUccPq3nTx/CC2K5tU5LZaIdd2
+	q15Taznsm9j/cqLyY9uO97phYbafxPLqOZstQYicJ7Jjxw6Uuf14BmrGxUhayIy9+CIS7qdEe2Ern
+	8gDjzUfA3Kcxn7J+m7k96Uu4tx3OwJ8AI64ZU88eGwx4thvo2lJ7AxXmMbUdRZP3F1BKBn6BFuvhW
+	eHxoCDleV64waixKpdHy+PQ9HLOgjTlepL5pjNv/Z+dw+7sQfh6G3CfOhr4NkLGab5N4hAVpfaKP/
+	H4ikbEDzA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lh0Y0-004Qj5-DH; Thu, 13 May 2021 01:53:58 +0000
+	id 1lh0rN-004TAA-DO; Thu, 13 May 2021 02:13:57 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lh0Xx-004Qif-Ge
- for linux-mediatek@desiato.infradead.org; Thu, 13 May 2021 01:53:53 +0000
+ id 1lh0rK-004T9i-VM
+ for linux-mediatek@desiato.infradead.org; Thu, 13 May 2021 02:13:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=34VzXed8Kgnel45ijfIuHRVvR2WQNHxzGVweg14wlj8=; b=HzmYc6ZV8XJsY+XFx9Xe4sDyQ+
- vuK2jQ9Q7P+Qb7nGnxddakMCWCeimu1efuuiqhdunl4dTDRAvi+IqZ2ltEiu1TAObiiJW+6hPMgod
- wdGjg9I++oFwDPNyLh8UmTqkvA44AyO2b5TbMbahyCmIiCbMa2m68Md81f9NThzOb6D0C7VciApbS
- WonoYzxW6Ypoehea6H9xbDKlsmarv8guZitvDWJ6RVEr8YeClEvhVIulPoy8l/OFF0d52OHKwIk9D
- fMNG5CZpNmAakgZZZC8fJo0n01UHs7XuhjmKyF1oBra5/f1LLWYZNreXgAsciO3FDXGR/qlFmQdh8
- wZYdrmfA==;
-Received: from eu-shark2.inbox.eu ([195.216.236.82])
+ bh=PzZDgY11MU25ehljrlPRyh/hq42yaemwL/0TP3bNWN4=; b=j/MHpZ3wMXTcAEyMXZe6xofDLF
+ +7pr3eu6MpK2FxPKkgPeyHjbyxnsDnR4UalSXkL3wFMK1XNWqEaWfkwfsubbGTjtQQa9oM85chnIz
+ WCcMNPPVFTnvYTKOY5P3cvPusDhyViYcJUtWCPb+C+zZOXffbWyl90Xipa4peMM0YkKfFOlv+jG9J
+ Zx+YJ5HIWwukodRYXsMkygTqVp/WF33+VeQ3GaVXMU9xI97klfxo5PpvCb8qfrBNJOByiBAdbeGat
+ zO0Vw7Eu1IiPL53pu3c98YrN8MpNUR0txsTDGj87XqNcXbfNQQUd4SvmghfPEAZwZh+pSpc12uhum
+ vk/mLptw==;
+Received: from eu-shark1.inbox.eu ([195.216.236.81])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lh0Xu-00Axk6-Ug
- for linux-mediatek@lists.infradead.org; Thu, 13 May 2021 01:53:52 +0000
-Received: from eu-shark2.inbox.eu (localhost [127.0.0.1])
- by eu-shark2-out.inbox.eu (Postfix) with ESMTP id 7004D1E0072D;
- Thu, 13 May 2021 04:53:49 +0300 (EEST)
+ id 1lh0rH-00Ay20-Ki
+ for linux-mediatek@lists.infradead.org; Thu, 13 May 2021 02:13:53 +0000
+Received: from eu-shark1.inbox.eu (localhost [127.0.0.1])
+ by eu-shark1-out.inbox.eu (Postfix) with ESMTP id 3A9186C00896;
+ Thu, 13 May 2021 05:13:49 +0300 (EEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.ee; s=20150108;
- t=1620870829; bh=pb32XrLr2f8ZsH/s6jvd/OiiD3RMHBuJn7UkoYGE4U0=;
+ t=1620872029; bh=3wLB08fq9NSSwxvzfBo2mqWPmaGRQULHTC2u8gKK8Eg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=tjGbfW5Rv+VuOmm1qj+wGU1A82+PtfGxr+Pl1mLWZ5hJ9OFPkRIwNEjuCTQCoEPC4
- M9op0lxs+po/a+rfEe5o2zeSHarWI8d59zAysRjywTV5jw1LftfpijJJF4UG0sn7/O
- beRXJ/sYFtbW72fyXcUuPSkIh9bjbEwEUkVG/1dU=
+ b=pmktNKL01jMtzuePOktWB1BcfY82WqnVtd/ygar12/pYAXLrBy7HD2jAcupwTw75N
+ +5LSTZXZdZ1jmgrnauidmCC1/PWqP2FPGfTZc6V3VdTQcfnKs8Gs6TROFPeYz1QaqW
+ aMELRr8KgaraRvKEvMo+ZA1DtcJUm4aRYRiuk65A=
 Received: from localhost (localhost [127.0.0.1])
- by eu-shark2-in.inbox.eu (Postfix) with ESMTP id 559BA1E006FB;
- Thu, 13 May 2021 04:53:49 +0300 (EEST)
-Received: from eu-shark2.inbox.eu ([127.0.0.1])
- by localhost (eu-shark2.inbox.eu [127.0.0.1]) (spamfilter, port 35)
- with ESMTP id vtwWD3FOazRc; Thu, 13 May 2021 04:53:49 +0300 (EEST)
+ by eu-shark1-in.inbox.eu (Postfix) with ESMTP id 21A8F6C00889;
+ Thu, 13 May 2021 05:13:49 +0300 (EEST)
+Received: from eu-shark1.inbox.eu ([127.0.0.1])
+ by localhost (eu-shark1.inbox.eu [127.0.0.1]) (spamfilter, port 35)
+ with ESMTP id W5pSN36srbjt; Thu, 13 May 2021 05:13:48 +0300 (EEST)
 Received: from mail.inbox.eu (eu-pop1 [127.0.0.1])
- by eu-shark2-in.inbox.eu (Postfix) with ESMTP id 2588D1E0072D;
- Thu, 13 May 2021 04:53:49 +0300 (EEST)
+ by eu-shark1-in.inbox.eu (Postfix) with ESMTP id A56EE6C00896;
+ Thu, 13 May 2021 05:13:48 +0300 (EEST)
 Received: from localhost.localdomain (unknown [134.19.185.34])
  (Authenticated sender: arzamas-16@mail.ee)
- by mail.inbox.eu (Postfix) with ESMTPA id 14F0C1BE00D4;
- Thu, 13 May 2021 04:35:21 +0300 (EEST)
+ by mail.inbox.eu (Postfix) with ESMTPA id 4D98E1BE00D1;
+ Thu, 13 May 2021 04:35:20 +0300 (EEST)
 From: Boris Lysov <arzamas-16@mail.ee>
 To: matthias.bgg@gmail.com,
 	linux@roeck-us.net,
 	robh+dt@kernel.org
 Cc: devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v3 2/3] dt-bindings: watchdog: mediatek: add support for
- mt6577 SoC
-Date: Thu, 13 May 2021 04:35:14 +0300
-Message-Id: <20210513013515.31329-3-arzamas-16@mail.ee>
+Subject: [PATCH v3 1/3] watchdog: mtk_wdt: Refactor code to support more SoCs
+Date: Thu, 13 May 2021 04:35:13 +0300
+Message-Id: <20210513013515.31329-2-arzamas-16@mail.ee>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20210513013515.31329-1-arzamas-16@mail.ee>
 References: <20210513013515.31329-1-arzamas-16@mail.ee>
 MIME-Version: 1.0
 X-Virus-Scanned: OK
-X-ESPOL: +d1m6vZSeEqpi1uoRXnWAQIzrDYrL+Dg557a3RxamGX7ODCFdk0TUxSr7hJ7DSP4og==
+X-ESPOL: 6NpmlY9HHDysjlqlQGetewt38GpVJY3o+uS+zhxQgnryNDCHelRvIx2ygR8FQALEog==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210512_185351_169196_27434572 
-X-CRM114-Status: UNSURE (   6.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210512_191351_867822_AD431130 
+X-CRM114-Status: GOOD (  18.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,26 +108,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for Mediatek mt6577 SoC to device tree binding
-documentation.
+This patch makes some constants SoC-dependent to support more watchdogs
+in the future. It adds shifts of WDT_MODE_KEY and SWSYSRST_KEY to
+mtk_wdt_data struct. This is done to bring support for various Mediatek
+watchdogs which use same register structure but slightly different field
+offsets in the UNLOCK_KEY registers. For example, mt6577 watchdog has
+WDT_MODE_KEY and SWSYSRST_KEY at [15:8] instead of currently (and only)
+supported [31:24].
+Moreover, this patch adds SWSYSRST_KEY value to mtk_wdt_data because this
+value also depends on specific SoC watchdog, for example mt6577 uses 0x15
+instead of 0x88.
 
 Signed-off-by: Boris Lysov <arzamas-16@mail.ee>
 ---
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
- 1 file changed, 1 insertion(+)
+Changes since v2 [3]:
+- rename the newly introduced structure element ('data' -> 'config') to
+  avoid changing the names of already existing variables; suggested [4]
+  by Guenter Roeck.
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index e36ba60de829..f5a5404523a3 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -5,6 +5,7 @@ Required properties:
- - compatible should contain:
- 	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
- 	"mediatek,mt2712-wdt": for MT2712
-+	"mediatek,mt6577-wdt": for MT6577
- 	"mediatek,mt6589-wdt": for MT6589
- 	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
- 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+Changes since v1 [1]:
+- a complete rewrite to get rid of the configuration flags which made
+  the watchdog not support other SoCs; suggested [2] by Guenter Roeck.
+
+[1] https://lore.kernel.org/linux-mediatek/20210131234425.9773-3-arzamas-16@mail.ee/
+[2] https://lore.kernel.org/linux-mediatek/050f2f8e-9c3c-10e3-05ef-cd84e949b98f@roeck-us.net/
+[3] https://lore.kernel.org/linux-mediatek/20210509211702.549-2-arzamas-16@mail.ee/
+[4] https://lore.kernel.org/linux-mediatek/efdce3a5-e5b4-19a8-35f1-8a536220bb3f@roeck-us.net/
+
+ drivers/watchdog/mtk_wdt.c | 66 ++++++++++++++++++++++++++++++--------
+ 1 file changed, 52 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 97ca993bd009..0878fa33dffe 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -44,13 +44,27 @@
+ #define WDT_MODE_IRQ_EN		(1 << 3)
+ #define WDT_MODE_AUTO_START	(1 << 4)
+ #define WDT_MODE_DUAL_EN	(1 << 6)
+-#define WDT_MODE_KEY		0x22000000
++#define WDT_MODE_KEY		0x22
+ 
+ #define WDT_SWRST		0x14
+ #define WDT_SWRST_KEY		0x1209
+-
+ #define WDT_SWSYSRST		0x18U
+-#define WDT_SWSYS_RST_KEY	0x88000000
++
++#define MT2712_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT2712_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT2712_SWSYSRST_KEY		0x88
++
++#define MT6589_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT6589_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT6589_SWSYSRST_KEY		0x88
++
++#define MT8183_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT8183_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT8183_SWSYSRST_KEY		0x88
++
++#define MT8192_WDT_MODE_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT8192_SWSYSRST_KEY_SHIFT	24		// unlock_key [31:24]
++#define MT8192_SWSYSRST_KEY		0x88
+ 
+ #define DRV_NAME		"mtk-wdt"
+ #define DRV_VERSION		"1.0"
+@@ -60,6 +74,7 @@ static unsigned int timeout;
+ 
+ struct mtk_wdt_dev {
+ 	struct watchdog_device wdt_dev;
++	const struct mtk_wdt_data *config;
+ 	void __iomem *wdt_base;
+ 	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+ 	struct reset_controller_dev rcdev;
+@@ -67,18 +82,37 @@ struct mtk_wdt_dev {
+ 
+ struct mtk_wdt_data {
+ 	int toprgu_sw_rst_num;
++	u8 wdt_mode_key_shift;
++	u8 wdt_swsys_rst_key;
++	u8 wdt_swsys_rst_key_shift;
+ };
+ 
+ static const struct mtk_wdt_data mt2712_data = {
+-	.toprgu_sw_rst_num = MT2712_TOPRGU_SW_RST_NUM,
++	.toprgu_sw_rst_num =		MT2712_TOPRGU_SW_RST_NUM,
++	.wdt_mode_key_shift =		MT2712_WDT_MODE_KEY_SHIFT,
++	.wdt_swsys_rst_key_shift =	MT2712_SWSYSRST_KEY_SHIFT,
++	.wdt_swsys_rst_key =		MT2712_SWSYSRST_KEY,
++};
++
++static const struct mtk_wdt_data mt6589_data = {
++	.toprgu_sw_rst_num =		-1,
++	.wdt_mode_key_shift =		MT6589_WDT_MODE_KEY_SHIFT,
++	.wdt_swsys_rst_key_shift =	MT6589_SWSYSRST_KEY_SHIFT,
++	.wdt_swsys_rst_key =		MT6589_SWSYSRST_KEY,
+ };
+ 
+ static const struct mtk_wdt_data mt8183_data = {
+-	.toprgu_sw_rst_num = MT8183_TOPRGU_SW_RST_NUM,
++	.toprgu_sw_rst_num =		MT8183_TOPRGU_SW_RST_NUM,
++	.wdt_mode_key_shift =		MT8183_WDT_MODE_KEY_SHIFT,
++	.wdt_swsys_rst_key_shift =	MT8183_SWSYSRST_KEY_SHIFT,
++	.wdt_swsys_rst_key =		MT8183_SWSYSRST_KEY,
+ };
+ 
+ static const struct mtk_wdt_data mt8192_data = {
+-	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
++	.toprgu_sw_rst_num =		MT8192_TOPRGU_SW_RST_NUM,
++	.wdt_mode_key_shift =		MT8192_WDT_MODE_KEY_SHIFT,
++	.wdt_swsys_rst_key_shift =	MT8192_SWSYSRST_KEY_SHIFT,
++	.wdt_swsys_rst_key =		MT8192_SWSYSRST_KEY,
+ };
+ 
+ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+@@ -96,7 +130,7 @@ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 		tmp |= BIT(id);
+ 	else
+ 		tmp &= ~BIT(id);
+-	tmp |= WDT_SWSYS_RST_KEY;
++	tmp |= data->config->wdt_swsys_rst_key << data->config->wdt_swsys_rst_key_shift;
+ 	writel(tmp, data->wdt_base + WDT_SWSYSRST);
+ 
+ 	spin_unlock_irqrestore(&data->lock, flags);
+@@ -221,7 +255,7 @@ static int mtk_wdt_stop(struct watchdog_device *wdt_dev)
+ 
+ 	reg = readl(wdt_base + WDT_MODE);
+ 	reg &= ~WDT_MODE_EN;
+-	reg |= WDT_MODE_KEY;
++	reg |= WDT_MODE_KEY << mtk_wdt->config->wdt_mode_key_shift;
+ 	iowrite32(reg, wdt_base + WDT_MODE);
+ 
+ 	return 0;
+@@ -240,7 +274,7 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+ 
+ 	reg = ioread32(wdt_base + WDT_MODE);
+ 	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
+-	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
++	reg |= (WDT_MODE_EN | (WDT_MODE_KEY << mtk_wdt->config->wdt_mode_key_shift));
+ 	iowrite32(reg, wdt_base + WDT_MODE);
+ 
+ 	return 0;
+@@ -266,7 +300,6 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_wdt_dev *mtk_wdt;
+-	const struct mtk_wdt_data *wdt_data;
+ 	int err;
+ 
+ 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
+@@ -279,6 +312,12 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	if (IS_ERR(mtk_wdt->wdt_base))
+ 		return PTR_ERR(mtk_wdt->wdt_base);
+ 
++	mtk_wdt->config = of_device_get_match_data(dev);
++	if (!mtk_wdt->config) {
++		dev_err(dev, "watchdog data is not defined\n");
++		return -EINVAL;
++	}
++
+ 	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
+ 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
+ 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
+@@ -302,10 +341,9 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	dev_info(dev, "Watchdog enabled (timeout=%d sec, nowayout=%d)\n",
+ 		 mtk_wdt->wdt_dev.timeout, nowayout);
+ 
+-	wdt_data = of_device_get_match_data(dev);
+-	if (wdt_data) {
++	if (mtk_wdt->config->toprgu_sw_rst_num > -1) {
+ 		err = toprgu_register_reset_controller(pdev,
+-						       wdt_data->toprgu_sw_rst_num);
++						       mtk_wdt->config->toprgu_sw_rst_num);
+ 		if (err)
+ 			return err;
+ 	}
+@@ -338,7 +376,7 @@ static int mtk_wdt_resume(struct device *dev)
+ 
+ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt2712-wdt", .data = &mt2712_data },
+-	{ .compatible = "mediatek,mt6589-wdt" },
++	{ .compatible = "mediatek,mt6589-wdt", .data = &mt6589_data },
+ 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+ 	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
+ 	{ /* sentinel */ }
 -- 
 2.20.1
 
