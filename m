@@ -2,107 +2,104 @@ Return-Path: <SRS0=SQT7=KJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D51F6C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 12:05:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F39A2C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 12:22:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 543B0613F2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 12:05:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 543B0613F2
+	by mail.kernel.org (Postfix) with ESMTPS id 7B79F6145A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 12:22:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B79F6145A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dXG2VlZCJBwt2nq+rntlmTtuMuQ7ZorNILa0y2JFzyY=; b=pxnhm2lZ5rroRuSOcTiix729+
-	kJA4cy1an3/PjWlApeEQMfcUESs+hhwdFgfPI6BedhV1qGdIetcEz/rrp1EegwB0YySPcs5bwKCMx
-	SkH/d6aleVQFCj+ahZEpvr50jymzrf3w1vv7Zz25TmVZX+vSzyj/IvrODMPAN2J8jBLoD0XIRu9Ia
-	XoOJhsZTW7/u2VrWzGBVisXosQLGXfojA45YVXhsXMapJ/zHHhwerKJW3LsB2Qio21gmG2XPRTdI2
-	SRf7+DVzAUHVrOhuuCNrozW4W8BULKU/VnhF+DEMU4QqD3gnB/LDygxv41OPU7stue669FLm/1M+W
-	zebuMy+MQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=TrSD1JMd0wk3SPmgQrsKvVtpy82V7AcDW0FNRjMZ4dM=; b=TlTYDEwI6VWMYZyy4XLF3vbw6m
+	XzmJ7MvYx0WgbYJQ3jhF2HTUEoxWwZQxGoNCX71M3ibEqIRhKTWCHfoghhhRDBh0JqWCAFDElw1QI
+	udRaNlrS9glS+eU/YxvHrIBkd2a1G3K+jBgAZe3eXsGX+9gvnI7AZp7Rz7YGkU/gjMjvd7eHw2wYW
+	AzIHSf7XaiGJAFJQpGwUQLWK1GI2Hz8ch0xJBfe+VXUaMbvpm3oZ6HreiO2HTOAk+ehMoiC8jPtzM
+	DcRsOBUPv2CBArPqhB6IDc/WDlbGWmQbJfbHjovKJsecPbz517x+jX95WijHrGeKHhVG2SsZGhx3L
+	DQ9GpebA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhWZO-007zEX-Jt; Fri, 14 May 2021 12:05:30 +0000
+	id 1lhWpO-0080uO-IE; Fri, 14 May 2021 12:22:02 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhWZE-007zE6-Ps
- for linux-mediatek@desiato.infradead.org; Fri, 14 May 2021 12:05:20 +0000
+ id 1lhWp9-0080rL-St
+ for linux-mediatek@desiato.infradead.org; Fri, 14 May 2021 12:21:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=LQYcCupFxg8InoP1/2l4FLzi8zH3ZsXDMqBqASZIVVw=; b=Vk5PvGdSZ/DEAGn0SSGUCbjpEd
- DNK7ypMDVsirMjl3zAQX05M+fQqqla7qOFHeo1QGBw9yEfWmAK9pq06422akvFBpyp2wbM/AQxggs
- Pz2zBRq28+CtaT1UqNTyy+9Pdv6G/pZXl7qiy/vfAJvWZrE6OSAilLmMb1xhIHF9KhcgPGBhpM8iE
- a8owyhfZfdTm02VqAYcFlRU/zNnnkeZAP04T+u0eSwODeiQ4ByeQ1x8HJ5hng6uEHkYL6KOafN3W8
- Qw6dZIlKvyptFoPVyAbfl+swrEjsqUtBHCGnq9PpwHPE7SGJmybj8TjZOXYY1Wgxn/eaY0bYClKzu
- duxM13jw==;
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=KAk0g8z1opxg9hfh3kwLSOD5nwvqQ9x4A08bZ0cKY9w=; b=DIF+DiQWeyEsnWvuffjfoZvVF3
+ ZUKaAIecEKvMYOIXDEpC7Ie0UvP73Y3RbgqXfpgjbmM6rIRy8XcQ50QpZtYqpa6VrdOwQJTNLMBvs
+ mPZIi5VidPbqpTUqKeMHQMsfu6mLxQtsQAFvJiMmAZ4yKIlaGx8nc7ODJsBgOPzZhjlaJ9rTE9Nlq
+ 0+xYu7adkBNiEoDOwhDNURhZbgRk5OH4Lnt2U7mCRTPc1VUNGroH0BfzlYij4y0xkDueNDBXoNogQ
+ 0/CBb5eG8KEpZPJlUAPQfrv5SmM5zYoEC9bksrhbcF0Ogl3Z9cZHFYuVvy91NOl2MKrujUXFeQjBc
+ YYq5jY8g==;
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhWZC-00BxU4-25
- for linux-mediatek@lists.infradead.org; Fri, 14 May 2021 12:05:19 +0000
-Received: by mail-pj1-x1036.google.com with SMTP id
- b13-20020a17090a8c8db029015cd97baea9so1250835pjo.0
- for <linux-mediatek@lists.infradead.org>; Fri, 14 May 2021 05:05:17 -0700 (PDT)
+ id 1lhWp7-00By5d-EI
+ for linux-mediatek@lists.infradead.org; Fri, 14 May 2021 12:21:46 +0000
+Received: by mail-pf1-x432.google.com with SMTP id e19so6265208pfv.3
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 May 2021 05:21:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=LQYcCupFxg8InoP1/2l4FLzi8zH3ZsXDMqBqASZIVVw=;
- b=h+oc/D3mYJDcntABEZ7Xencts0Pcq4IP1wsAn22ViNoE8u10MaXUcYFxtvJdiEfiV9
- XrKR63MUl98qE31wy4jHiZXJQ9su4mubotYfQ8BdnhRvX2w546zD6PISKWPSNJypKdDd
- o5pPKzmyociU/gI83QN42ywVCdKDNG6V50DYE=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KAk0g8z1opxg9hfh3kwLSOD5nwvqQ9x4A08bZ0cKY9w=;
+ b=Vv7GxJ+avWscMnlmLiMf6D2oS3wGO1ZcpThAMmHGb1DHdUM4W5Rz5+MqtZQQpZRUrS
+ xrc1dl/g5MLarwNbqEr652jU1Pt96IEPpDYjqr0wJ916PYRX8DkDHb6EAbvUZ1vg2G5i
+ yZi63vZzjFy+3tC6zNYdS35rQF71aPLopWObk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LQYcCupFxg8InoP1/2l4FLzi8zH3ZsXDMqBqASZIVVw=;
- b=cn/KvvT44NUuwLlazp1aQiyz7OTPfx6uLXP+lLys6GaYDWXudVUKqRrmjOidt48M3K
- 8xgkUdg+8t0wmVIADHV5naxW4gqfDp0YiwI2+hlFJY6FxViJYcqUk2i9v3Dh6ICqn+d1
- Mp38OoMjHxQVK9KtrEcjoIsfNFsW9reWjaO1aUJ+kbt9QppR2ribLx1fboSaamzkgrFh
- X9GGInesgJh+2iRbSn/N1rwcPydJYvjuCOgf4prwIkDQTCN0K39xGAUY75R7SlUjt50D
- r7EwUm9P/hu4dskBG43LnNVjUe1Mq5f378nYnvMcJ/691TPflqRM3JFXmsi+Zg8JndFE
- 421g==
-X-Gm-Message-State: AOAM532N10//dYC+TzN4WTcf9FH/RU5JQirLYu74MQcLCJoiZhPnwAQS
- 7dPIfUOfRoOjvJWisP71KCVL+Q==
-X-Google-Smtp-Source: ABdhPJxTGEutiLz4dIZ95IKEFr/dFQx3NVMgYvn0N6sOU8DscXO53wP3u6K6hMm1/3zSOWBZprpNdQ==
-X-Received: by 2002:a17:902:d508:b029:ef:b008:f4ad with SMTP id
- b8-20020a170902d508b02900efb008f4admr4040933plg.8.1620993916755; 
- Fri, 14 May 2021 05:05:16 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KAk0g8z1opxg9hfh3kwLSOD5nwvqQ9x4A08bZ0cKY9w=;
+ b=ZoXB6JGWn/3k/qmv+oHNgyFBMVlKvPQ7wUHa/VPxenh+Vf3PlJYwcld8Sqgkp85xVh
+ b2kPmKYwycspIgW/5LDzreADKjeYn81mZwIWPRQ/M4aEb1cOqL5dNm8msV50InynJy9w
+ A/C7vhe74OcfHLUnQntXS3F0N3oWvHFth0ciyvjWQ8m8IUOfEzOS6ui1EoYUH0Nqjjyu
+ GoC7UFVn2LmQNgogUDvkbvuJYwVZ1Q1PUJqkf8lZwM964PdMg5dVjGS37LpRvyBlHw3e
+ BDl+Ks1WL8FUzxf+9QsRu3hgDu8AHU4IRUQCZXaNc8hZLcr9s2XPCepcTQqPxbMtUmkd
+ aGMw==
+X-Gm-Message-State: AOAM532XbbIWQjGAg2igLbM2SiV0lGVvtBgaOndu7iboDwlDcPDMjUVi
+ RQmHniEOQGTm249ljmgtAU/PqQ==
+X-Google-Smtp-Source: ABdhPJwt4o8oA04eyCHn4vJGf09Zt3E8GowUbhMUPyQDnK9/ps6C0oIEWEaLnH+zB0o3wMGm5mLzZQ==
+X-Received: by 2002:a65:68d5:: with SMTP id k21mr40662150pgt.383.1620994901377; 
+ Fri, 14 May 2021 05:21:41 -0700 (PDT)
 Received: from ikjn-p920.tpe.corp.google.com
  ([2401:fa00:1:b:7641:4b1d:694e:6ea2])
- by smtp.gmail.com with ESMTPSA id q24sm4117786pgb.19.2021.05.14.05.05.14
+ by smtp.gmail.com with ESMTPSA id u17sm4010117pfm.113.2021.05.14.05.21.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 May 2021 05:05:16 -0700 (PDT)
+ Fri, 14 May 2021 05:21:41 -0700 (PDT)
 From: Ikjoon Jang <ikjn@chromium.org>
 To: devicetree@vger.kernel.org,
 	Lee Jones <lee.jones@linaro.org>
-Cc: Stephen Boyd <sboyd@chromium.org>, linux-kernel@vger.kernel.org,
- linux-input@vger.kernel.org, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>, Jiri Kosina <jikos@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Ikjoon Jang <ikjn@chromium.org>,
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v7 2/2] arm64: dts: mt8183: add cbas node under cros_ec
-Date: Fri, 14 May 2021 20:05:06 +0800
-Message-Id: <20210514120506.264838-2-ikjn@chromium.org>
+ linux-arm-kernel@lists.infradead.org, Guenter Roeck <groeck@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Benson Leung <bleung@chromium.org>, linux-input@vger.kernel.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Jiri Kosina <jikos@kernel.org>,
+ Stephen Boyd <swboyd@chromium.org>, Ikjoon Jang <ikjn@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>
+Subject: [RESEND PATCH v7 0/2] Add support cbas tablet mode switch to mt8183
+Date: Fri, 14 May 2021 20:20:48 +0800
+Message-Id: <20210514122051.266169-1-ikjn@chromium.org>
 X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
-In-Reply-To: <20210514120506.264838-1-ikjn@chromium.org>
-References: <20210514120506.264838-1-ikjn@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_050518_146558_878B744D 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20210514_052145_489304_50EB23AE 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,40 +116,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a 'cbas' device node for supporting tablet mode switch in
-kukui devices.
 
-Kukui platforms with detacheable base have an additional input
-device under cros-ec, which reports SW_TABLET_MODE regarding
-its base state (e.g. base flipped or detached).
-
-Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+Adding a cbas support for kukui platforms which has a tablet mode
+switch through cros-ec interface.
 
 ---
+Sorry for resending v7, I found some CCs were missing
+and errata in email addresses.
 
 Changes in v7:
-- remove a label from cbas node
+- remove a label in cbas node in mt8183-kukui.dtsi
 - fix an erratum in commit message (table --> tablet)
-- dt-binding patchess merged altogether with mt8183 dts
+- dt-binding patche merged altogether with mt8183 dts
 
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
+Changes in v6:
+ - Remove a label for cbas node in a example of dt-binding doc
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index ff56bcfa3370..1512605a438e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -816,6 +816,10 @@ usbc_extcon: extcon0 {
- 			compatible = "google,extcon-usbc-cros-ec";
- 			google,usb-port-id = <0>;
- 		};
-+
-+		cbas {
-+			compatible = "google,cros-cbas";
-+		};
- 	};
- };
- 
+Changes in v5:
+ - Add missing blank lines and change the description property's position.
+ - Add a note to description: "this device cannot be detected at runtime."
+
+Changes in v4:
+ - Define cros-cbase bindings inside google,cros-ec.yaml instead of
+   a separated binding document.
+
+Ikjoon Jang (2):
+  mfd: google,cros-ec: add DT bindings for a baseboard's switch device
+  arm64: dts: mt8183: add cbas node under cros_ec
+
+ .../bindings/mfd/google,cros-ec.yaml          | 20 +++++++++++++++++++
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  4 ++++
+ 2 files changed, 24 insertions(+)
+
 -- 
 2.31.1.751.gd2f1c929bd-goog
 
