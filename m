@@ -2,21 +2,20 @@ Return-Path: <SRS0=SQT7=KJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65DEEC433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 13:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D28AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 14:49:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 24C4561442
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 13:24:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 24C4561442
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id B343B61458
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 14:49:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B343B61458
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -24,56 +23,99 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4bfvGesBXmveBsPOGHr8adU7Vi/Mm9SmgOiC0jNGjmw=; b=SX50w02jt9re5RA3fqHudgo5J
-	4AduVf1XDwzw/yIz1gGWM18IYcg23EM3DuRoZyUN875vHu8EtexCwgxi/t5mTNjzFSIFEaUThZt/c
-	1njuUMAB7aHvEsNt6BG+mdpCOGJOWU/Od+2c1Z5lvsRMjDHhMHPcgxF5NE4NZPhaNNAvemC/kduEA
-	J1nZQQdbPV09fhxD6xTGW+mR6jae2bJzbip4A2mJN9h1ZAx+CgftAb9E4kHpNaP8hrfZiaH9AQ9tw
-	6B060AcvX831J3A4MWfNiqNa5Sjo0QpcEOEG35f0hW0EJ3RexExYwkc1xxezuCFyRrp77XkOyBFBi
-	bQTZZPFvA==;
+	 bh=89wXT9on3xlJfLos9PNtnCpgIiu5UQAHhIGBYOnPdMA=; b=kBAo/N0attxvq/iP3DtmK/iwG
+	wXvZu0r/o5NNaD+WQ4MUvz+4iiNoDWuS2Cvu8yfCJ3me0yBWO33N0p6j1hIKiY/K1T3sz9cdpHkW5
+	h1bQ75fkmJyTAMUFCEt7q2CN13TBSw7xxP4RAh969T23gxy8dcMLhbowLBIbR3M+KYacb0kl1cw3C
+	Ubb4D0HqmHQcL3I9jBY1dlDQVLIX8ewL9pQmy0KYzR2oe1f0N1G5Ef4IJQEncZHx3fpx4Qwy9hMLH
+	OOt/nPf9y3LxARCqJfgYcHbDMNTXGl244tddCzy9sZYq02V8oge4xe6cdltjxZsdZMv60eRMMAhlR
+	7EkJiHyfg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhXnM-0087t2-Ry; Fri, 14 May 2021 13:24:00 +0000
+	id 1lhZ7h-008KzD-QG; Fri, 14 May 2021 14:49:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhXnC-0087sG-S9; Fri, 14 May 2021 13:23:50 +0000
+ id 1lhZ7f-008Kyz-K3
+ for linux-mediatek@desiato.infradead.org; Fri, 14 May 2021 14:49:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
  Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=MJSIp09ECV8rL9J6NF35Vv/0TJVA/r7GX9NFshXJLRU=; b=p9ITKcfxfFqFKyL8rZ7PlgpPXT
- wtutsCZbawysokmE9Mx9J1yiYxfhKL6LZyl16MPC4ab4PqL/KTKBj1UcWREfd9XDnEWPikpgPrBtu
- m49DINw4ujK627/qQZuA4AI2b8RBu4Jy3UlD4UWkDnuDEL+7AXIQp51RiY5j7IXC/vblbcagNm2h9
- fc9URsa+kxNmEkB59VZOmZ4DBGljaO1TR0GDCk+tXxVZAs6ziI4xPN5xn4fbfdaD5+Mee+k2IZNhz
- Xijeg6d4DMbQBcCA5AVcY25vpX/dsyjL9dEga7ZkuPdawwinfx9klL49OHCkKxfCAOn5ByVYfytKH
- CpBKXfRg==;
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ bh=qk8PAC7djaeBU0jQbfU6OXoqZvIZrKqv6YILZJB9cnA=; b=khjNVUEmKpHqJ3WSgtWayGSRRE
+ QVgy4DAYqz+M9du5PxxGI5eDgDmwvyAF/idNx/XxOSaC6F9rLO9n2gXbcnFJSZcnY4eDPYcnu4FFy
+ oGP0EcieUadrI6Y6C1edvv79e4xc7PUQOI87zUlg6ushUMhdMFg2fgmlkVFXhU/fCVkBTROW8CMWg
+ U9YEdnPCieltIEfCCD3khpyViHB9SSw9DrMcb4EiX+AlQ0MDfG/4TZ2/vEcRhoD8/VYA9nj1FGxwt
+ jdFbeQjBt2ttMiAExKUNjlADkltcSzVAbcTaNW9rLGcXe2IJD+AL+inekouKb9kdPVibICMtj6AjO
+ cFe3hwTg==;
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhXnA-00C078-4L; Fri, 14 May 2021 13:23:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 39A851F432DE
-Subject: Re: [RESEND PATCH v7 2/2] arm64: dts: mt8183: add cbas node under
- cros_ec
-To: Ikjoon Jang <ikjn@chromium.org>, devicetree@vger.kernel.org,
- Lee Jones <lee.jones@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, Guenter Roeck <groeck@chromium.org>,
- Benson Leung <bleung@chromium.org>, linux-input@vger.kernel.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Jiri Kosina <jikos@kernel.org>,
- Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>
-References: <20210514122051.266169-1-ikjn@chromium.org>
- <20210514122051.266169-3-ikjn@chromium.org>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <2a216922-c93b-0e1b-0dee-add6cdc9a3c9@collabora.com>
-Date: Fri, 14 May 2021 15:23:42 +0200
+ id 1lhZ7b-00C3iP-L2
+ for linux-mediatek@lists.infradead.org; Fri, 14 May 2021 14:49:02 +0000
+Received: by mail-wr1-x433.google.com with SMTP id z17so11215165wrq.7
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 May 2021 07:48:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=subject:to:cc:references:from:organization:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qk8PAC7djaeBU0jQbfU6OXoqZvIZrKqv6YILZJB9cnA=;
+ b=SRRFKOjiz8E6BpghVkf4BD/7Hy6Ww6utNWhgkoOjIgDkazwsehD1+1Qnij9JuiFmDN
+ R0KQHKVWP284nUW0/NkesvWYQUHODAjQvPyA6G63Kk0af8kvYYNQHlT1x0BMSSdZDXhl
+ x0IXQ6jP4nnBXJ66Mv4bBeJ8aJ8Aexe1wJNp//Jc2adK4VbIXI4vK4fe0AJTZJ19nktZ
+ p2fDweM7h+0FEvWnplH4FnKSzuV/aLlXyeW+esOWB0bfmXVwNze4qCe0scO5npn7xxR5
+ X6mcmCLOFfWh5mxBG2NlA2kTOrsgFu1JItRSKLmPcNY5nZK7QmLIQ4/jXdCvkZOEnhc9
+ rYMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:organization
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=qk8PAC7djaeBU0jQbfU6OXoqZvIZrKqv6YILZJB9cnA=;
+ b=M3yYbu6i/C1nZEOhtIYk64iLJllx8UdiSoxzgrhyxjiwxxMOY2moeB4jWXPj6zIsRj
+ tYr3wh2tU/JLZkbRVlQuqL7DxLroj+2SUnahKyJsZv+hoFXrhghXEijqmUOWk0azi2uz
+ axlbOT9hFK/A3mMWeZD+E5C0zSBDGxlUqevTgvPIlvdyQgiM+25oBLmjoU4VLl6zSyjz
+ V0+JSdp9A5RXtGKq7ydcAsPlax9rRXG4lnsgM0p05UiD8G2Sn2iZ9oi5mQUilQkZoT8y
+ zBiOUBkP2bZaBJ2lc4EMMUZtaOc0JmBqGzB0HjHsG2c94Xs1ZxuaWuGSjAkDAvkbJDHF
+ A85g==
+X-Gm-Message-State: AOAM533RpG+y3DMfcGmhjURhudbqsf+kNhyXuUER+KwAkJ+TdSa+e/1t
+ z3x7GRZt6LrvtgJPZtPQjVqo/w==
+X-Google-Smtp-Source: ABdhPJzYQH6oCQ9mAhLNbVN2ZPyuNnylKHjaDnUSi8bBDD6blzpCMfsh/3lCmfcN5vC6DXrQ+dnB1A==
+X-Received: by 2002:adf:bc46:: with SMTP id a6mr21290203wrh.232.1621003735286; 
+ Fri, 14 May 2021 07:48:55 -0700 (PDT)
+Received: from [172.20.10.7] ([37.173.48.34])
+ by smtp.gmail.com with ESMTPSA id k11sm11599007wmj.1.2021.05.14.07.48.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 May 2021 07:48:54 -0700 (PDT)
+Subject: Re: [PATCH v13 0/4] drm/panfrost: Add support for mt8183 GPU
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh@kernel.org>,
+ Steven Price <steven.price@arm.com>,
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, fshao@chromium.org,
+ David Airlie <airlied@linux.ie>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, hsinyi@chromium.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, hoegsberg@chromium.org,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+References: <20210421052855.1279713-1-drinkcat@chromium.org>
+ <c91746ce-88b6-5612-74a5-74600c7761e8@baylibre.com>
+ <CAAEAJfD3i+L4w1NuE5pUkMuH=R3CfBztDn-ZLcYR=onkcZ4Gxg@mail.gmail.com>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Organization: Baylibre
+Message-ID: <373d0803-8658-9413-2f51-1e9804c39126@baylibre.com>
+Date: Fri, 14 May 2021 16:48:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ Thunderbird/78.7.1
 MIME-Version: 1.0
-In-Reply-To: <20210514122051.266169-3-ikjn@chromium.org>
+In-Reply-To: <CAAEAJfD3i+L4w1NuE5pUkMuH=R3CfBztDn-ZLcYR=onkcZ4Gxg@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_062348_336462_38E75EA6 
-X-CRM114-Status: GOOD (  18.55  )
+X-CRM114-CacheID: sfid-20210514_074859_703729_A139E929 
+X-CRM114-Status: GOOD (  27.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +132,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ikjoon,
+On 13/05/2021 16:55, Ezequiel Garcia wrote:
+> Hi Neil,
+> 
+> On Mon, 26 Apr 2021 at 06:59, Neil Armstrong <narmstrong@baylibre.com> wrote:
+>>
+>> Hi,
+>>
+>> On 21/04/2021 07:28, Nicolas Boichat wrote:
+>>> Hi!
+>>>
+>>> This is just a rebase of the v11, untested (but it seems like
+>>> Neil Armstrong recently tested it), with small changes in
+>>> binding and dts. v11 cover follows:
+>>>
+>>> Follow-up on the v5 [1], things have gotten significantly
+>>> better in the last year, thanks to the efforts on Bifrost
+>>> support by the Collabora team (and probably others I'm not
+>>> aware of).
+>>>
+>>> I've been testing this series on a MT8183/kukui device, with a
+>>> chromeos-5.10 kernel [2], and got basic Chromium OS UI up with
+>>> mesa 20.3.2 (lots of artifacts though).
+>>>
+>>> devfreq is currently not supported, as we'll need:
+>>>  - Clock core support for switching the GPU core clock (see 2/4).
+>>>  - Platform-specific handling of the 2-regulator (see 3/4).
+>>>
+>>> Since the latter is easy to detect, patch 3/4 just disables
+>>> devfreq if the more than one regulator is specified in the
+>>> compatible matching table.
+>>>
+>>> [1] https://patchwork.kernel.org/project/linux-mediatek/cover/20200306041345.259332-1-drinkcat@chromium.org/
+>>> [2] https://crrev.com/c/2608070
+>>>
+>>> Changes in v13:
+>>>  - devfreq: Fix conflict resolution mistake when rebasing, didn't
+>>>    even compile. Oops.
+>>>
+>>> Changes in v12:
+>>>  - binding: Fix min/maxItems logic (Rob Herring)
+>>>  - Add gpu node to mt8183-pumpkin.dts as well (Neil Armstrong).
+>>>
+>>> Changes in v11:
+>>>  - binding: power-domain-names not power-domainS-names
+>>>  - mt8183*.dts: remove incorrect supply-names
+>>>
+>>> Changes in v10:
+>>>  - Fix the binding to make sure sram-supply property can be provided.
+>>>
+>>> Changes in v9:
+>>>  - Explain why devfreq needs to be disabled for GPUs with >1
+>>>    regulators.
+>>>
+>>> Changes in v8:
+>>>  - Use DRM_DEV_INFO instead of ERROR
+>>>
+>>> Changes in v7:
+>>>  - Fix GPU ID in commit message
+>>>  - Fix GPU ID in commit message
+>>>
+>>> Changes in v6:
+>>>  - Rebased, actually tested with recent mesa driver.
+>>>  - Add gpu regulators to kukui dtsi as well.
+>>>  - Power domains are now attached to spm, not scpsys
+>>>  - Drop R-B.
+>>>  - devfreq: New change
+>>>  - Context conflicts, reflow the code.
+>>>  - Use ARRAY_SIZE for power domains too.
+>>>
+>>> Changes in v5:
+>>>  - Rename "2d" power domain to "core2"
+>>>  - Rename "2d" power domain to "core2" (keep R-B again).
+>>>  - Change power domain name from 2d to core2.
+>>>
+>>> Changes in v4:
+>>>  - Add power-domain-names description
+>>>    (kept Alyssa's reviewed-by as the change is minor)
+>>>  - Add power-domain-names to describe the 3 domains.
+>>>    (kept Alyssa's reviewed-by as the change is minor)
+>>>  - Add power domain names.
+>>>
+>>> Changes in v3:
+>>>  - Match mt8183-mali instead of bifrost, as we require special
+>>>    handling for the 2 regulators and 3 power domains.
+>>>
+>>> Changes in v2:
+>>>  - Use sram instead of mali_sram as SRAM supply name.
+>>>  - Rename mali@ to gpu@.
+>>>
+>>> Nicolas Boichat (4):
+>>>   dt-bindings: gpu: mali-bifrost: Add Mediatek MT8183
+>>>   arm64: dts: mt8183: Add node for the Mali GPU
+>>>   drm/panfrost: devfreq: Disable devfreq when num_supplies > 1
+>>>   drm/panfrost: Add mt8183-mali compatible string
+>>>
+>>>  .../bindings/gpu/arm,mali-bifrost.yaml        |  30 ++++-
+>>>  arch/arm64/boot/dts/mediatek/mt8183-evb.dts   |   5 +
+>>>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   5 +
+>>>  .../boot/dts/mediatek/mt8183-pumpkin.dts      |   5 +
+>>>  arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 105 ++++++++++++++++++
+>>>  drivers/gpu/drm/panfrost/panfrost_devfreq.c   |   9 ++
+>>>  drivers/gpu/drm/panfrost/panfrost_drv.c       |  10 ++
+>>>  7 files changed, 168 insertions(+), 1 deletion(-)
+>>>
+>>
+>> Seems this version is ready to be applied if we get a review on the DT ?
+>>
+>> Mathias ? could you have a look ?
+>>
+> 
+> Given Rob has Acked the DT bindings, I think it's OK to apply patches
+> 1, 3 and 4 via drm-misc, letting Mediatek people sort out the DT changes.
+> 
+> My two unsolicited cents :-)
 
-Thank you for the patch.
+Yeah sure, is there a panfrost maintainer in the room ? I can apply them if you ack me.
 
-On 14/5/21 14:20, Ikjoon Jang wrote:
-> Add a 'cbas' device node for supporting tablet mode switch in
-> kukui devices.
+Neil
+
 > 
-> Kukui platforms with detacheable base have an additional input
-> device under cros-ec, which reports SW_TABLET_MODE regarding
-> its base state (e.g. base flipped or detached).
-> 
-> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> Ezequiel
 > 
 
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-> ---
-> 
-> Changes in v7:
-> - remove a label in cbas node
-> - fix an erratum in commit message (table --> tablet)
-> - dt-binding patchess merged altogether with mt8183 dts
-> 
->  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index ff56bcfa3370..1512605a438e 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -816,6 +816,10 @@ usbc_extcon: extcon0 {
->  			compatible = "google,extcon-usbc-cros-ec";
->  			google,usb-port-id = <0>;
->  		};
-> +
-> +		cbas {
-> +			compatible = "google,cros-cbas";
-> +		};
->  	};
->  };
->  
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
