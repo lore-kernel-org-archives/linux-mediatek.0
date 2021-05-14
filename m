@@ -2,82 +2,102 @@ Return-Path: <SRS0=SQT7=KJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-20.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A087C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 10:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F2B8C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 11:14:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A6FCD61458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 10:15:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6FCD61458
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id EDD18613D3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 May 2021 11:14:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EDD18613D3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JTvALk5OVRZLyWwBbYo/XaWwcyomN6j9FbSw00v0JGs=; b=ZbPqKJ2Jkpgw4O7FtL5UQGek1
-	1VH6U7qU2XTd+pOUeHljDixwFBOWCDn6tOjG+FhG/4wYZ89qWO0fhjgQtUMszh5K1gFbz3zvWfRTd
-	YWid3CD/aFb1VCmdxRYW0pu3Gg8y7O96Xgr8aVo53DZozX8s25yxhV7M5Fmr/18MODZSs2xSESIYb
-	LbifSBrIvdl0n/X/xIi2jKAyN9sOsdTMA+AFSXy5s60QJHmHDuQxFWjt+LVo47Y5ex8mfczg0XtsD
-	MpRqMdG8lhrUN4av8vzfWIaM3f2VofuM5gM2y3wFlzYN699cByKToFzmKgjddaMSHpnqLs8wxZAeb
-	D6VZAr03w==;
+	 bh=fTwAUduvSMA+Df8R0zAg6PSptfGuqWSkZ3v7AsZAmmY=; b=LRlXdZX2Qnzrcj0LXU6mF7POm
+	RuNeSV7FWycmVmetfGP58wN8oDtg6AwuAT8jFNdnpF+wyN6TIEUxvIIQGjzLo4xqmcPgSbfRFhi8y
+	gaBG+PIwRAvXZFqute2XJDIuiC9mBkq1TBd9oC76s3PsxRkPyrTRzfJQbAQoHYmP9AQhss4k+h8QP
+	3+FlAEcCfpV4U2FMY1BQHOyhRarOU2elnkA7y2zp8U62SUZAoBNDtHCTbICmBmLsL6z71domDfQXx
+	aaj7YosyuMyFQ73SIo4GLr9+PTJuk4Rt3VXw2WoQXwyQWK2wld6/EQZ5Zx8bKzspHqUDk3wVR3tjv
+	6H9JLj7wQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lhUqX-007k1O-Oe; Fri, 14 May 2021 10:15:05 +0000
+	id 1lhVmG-007sB7-HN; Fri, 14 May 2021 11:14:44 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhUqL-007k0C-65; Fri, 14 May 2021 10:14:53 +0000
+ id 1lhVmF-007sAZ-3i
+ for linux-mediatek@desiato.infradead.org; Fri, 14 May 2021 11:14:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
- Subject:Sender:Reply-To:Content-ID:Content-Description;
- bh=hkMhV9cgJDidZ8SR07m6SW1F1z72qrQJDHVu5Ip3gok=; b=Klu90bcfmEskBG6t8jqZuH+RyA
- HiNUr/wRs8zrwO0JsmJlUWkseuwC+/Ug2aDUTtuunPOpSzJ4/6IoC9Uk4xyrDikSh5fKw2oS78v1T
- c4/bRqDTL648X1kJsqV630X0CW8CRfK6q1Nx1ITYL/HhZcxD1GXVGBSyhBr7Ki/Z82J3jhtQrge+3
- UHT+TE5JA3mMCRYnWCOMUXFrgp3J6XEnFc2wbu7qtuis1+0imlUWwVC4MSJsYGyyItGnIMzhSLhvu
- TvJ2PSnzjK201Fd3H87NXk+rp8i6luwGVLK144tTSKNTnMujK6ltLZ/eZG/jO6/joTYtTUMApYIB2
- x+QONdUA==;
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=AobE3rqWzAR5whOCqPuXrD/28KwqAfI01k8Xsr9LaIQ=; b=yotIlJVD3jACExqLrdw4Rj/jBE
+ 81gucMK73YJvuOvrAdhfoRS85Ifmp1L9EAKmnXeFw3Vi0C0i5Hg5cGTqNuAQiDBePomT1W2j25s48
+ rYM/pjTmfUCaR4E/GOJGDluf4rpVKsboQ130NZ8BNRnD2ru2655ItwyCutZE9YJ/aBRCUWnrO1zEB
+ THvFQnPqVkvPPSqfr9D6EMnhH6K9wrKLa3AmUgMki3/Z5jwk7bkl2qFAOlTZ7notd+tVNjaP1BEKH
+ DKuyJphOAzuX/l/Kgl7l16/YcgWly0XXSPV/6XH44WqsDsG9QNH5GnEFcKazDNcWVgcx45cQC5Mc5
+ QDIXIJOg==;
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lhUqF-00BtI1-2x; Fri, 14 May 2021 10:14:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id D3A231F43141
-Subject: Re: [PATCH v1 4/4] mtk-mdp: soc: mediatek: register mdp from mmsys
-To: Eizan Miyamoto <eizan@google.com>
-Cc: Eizan Miyamoto <eizan@chromium.org>, LKML <linux-kernel@vger.kernel.org>, 
- chunkuang.hu@kernel.org, yong.wu@mediatek.com,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-media@vger.kernel.org, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20210423055842.2490679-1-eizan@chromium.org>
- <20210423155824.v1.4.I558dcbaa17bf00243951a8ceb6d0e98758aacfa4@changeid>
- <ecf9ab25-779d-01c7-97e3-76aa09b69415@collabora.com>
- <CAOak1e82j+j_1pWACS5j5cZ2ZZhN+C-6kJYCg5q_bCarTPqHww@mail.gmail.com>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <63b4568d-55bc-e88e-be9d-9a2fecddeb3c@collabora.com>
-Date: Fri, 14 May 2021 12:14:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+ id 1lhVmC-00BvlQ-0r
+ for linux-mediatek@lists.infradead.org; Fri, 14 May 2021 11:14:41 +0000
+Received: by mail-pg1-x530.google.com with SMTP id t30so2539585pgl.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 May 2021 04:14:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AobE3rqWzAR5whOCqPuXrD/28KwqAfI01k8Xsr9LaIQ=;
+ b=oYiFUcpoI5mc4qXcCTHNdjkzQyGcqlPV2dBqIpLLg1p1i6pV0e8esUCkHWl6GOs3+L
+ HtrYY2xNR1Sob1F68xp3HluEr+snyZTiOYThD47YrOQv+cVfNsqWy/pMfe3aJIL5ZcQu
+ R2X7KK4wFkgCHgxGRnnixEsSXJGGistXO3dc4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AobE3rqWzAR5whOCqPuXrD/28KwqAfI01k8Xsr9LaIQ=;
+ b=ARRQh3OpVg2KASwtK4/gYjPV07tEJp3EQML+XHkSWaPM7FO5cmjPua3XWF7N0Vj0qw
+ jgGC2DSngWFxCFgL05iu4DMGWpdfPRCkZs1zqhLkwP3b1zGyY+gMAohmHbCSVQN22+pD
+ 5vZ+COlZPObzzW2uLzQsBnjS8S2VuprwetuG95DylJYi1vgXqc5cZDWP8pFXRoD08/1T
+ ElNDt0X9mPccgtKnZ2L65wquhJf5TNRxWs5rfUmE/iKEK2ff1GA1+8AziFT7T5+Iwc/u
+ Bd4OWm0WJZpKOlcWE6ktkw65izG/71Uo4TFIfPeTkVlAx/tvaLGOz7higpBjRthGx480
+ ftHw==
+X-Gm-Message-State: AOAM531t9SjXOek9qZVxrAUeb4l9Z95HNC49Nj0CFWb1Eb82feLdA4Yd
+ Rog6gtopkXLQsJNbBsnnw2WmwBUB8BOFx4CKqr2vHQ==
+X-Google-Smtp-Source: ABdhPJwjE+6SUc2igDiKD6aOkPfhQ+moPvTk2uBOhn2pCVuVe74ruIEn3ws/XYYPLnK6BryC/P/y8TZxqH/yf+1UFQc=
+X-Received: by 2002:a63:8149:: with SMTP id t70mr46454849pgd.299.1620990878139; 
+ Fri, 14 May 2021 04:14:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAOak1e82j+j_1pWACS5j5cZ2ZZhN+C-6kJYCg5q_bCarTPqHww@mail.gmail.com>
-Content-Language: en-US
+References: <20210510092631.3141204-1-ikjn@chromium.org>
+ <c5a253ba-6451-c538-39ea-c339c176afbb@gmail.com>
+ <CAATdQgDfQUVQQwL1KQZvRffUgE+ADcwjBReWhCnmNL3SSgoE-A@mail.gmail.com>
+ <daeb031a-1992-704b-49bf-c935078f15f8@collabora.com>
+In-Reply-To: <daeb031a-1992-704b-49bf-c935078f15f8@collabora.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Fri, 14 May 2021 19:14:27 +0800
+Message-ID: <CAATdQgAK3VL69DuyWziYi=4ZTXTd1r7fuOXTHgw33Xu6HCvTXA@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: add cbas node under cros_ec
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Input <linux-input@vger.kernel.org>, 
+ Benjamin Tissoires <benjamin.tissoires@redhat.com>,
+ Hsinyi Wang <hsinyi@chromium.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ open list <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210514_031447_409764_0E924522 
-X-CRM114-Status: GOOD (  48.64  )
+X-CRM114-CacheID: sfid-20210514_041440_124083_08684BBE 
+X-CRM114-Status: GOOD (  32.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,371 +114,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Eizan,
+On Fri, May 14, 2021 at 4:55 PM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> Hi Ikjoon,
+>
+> Thank you for the patch.
+>
+> On 13/5/21 3:45, Ikjoon Jang wrote:
+> > On Thu, May 13, 2021 at 12:38 AM Matthias Brugger
+> > <matthias.bgg@gmail.com> wrote:
+> >>
+> >> Hi Ikjoon,
+> >>
+> >> On 10/05/2021 11:26, Ikjoon Jang wrote:
+> >>> Add a 'cbas' device node for supporting table mode switch in
+> >
+> > tablet
+> >
+> >>> kukui devices.
+> >>>
+> >>> Kukui platforms with detacheable base have an additional input
+> >>> device under cros-ec, which reports SW_TABLET_MODE regarding
+> >>> its base state (e.g. base flipped or detached).
+> >>>
+> >>> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> >>> ---
+> >>>
+> >>>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+> >>>  1 file changed, 4 insertions(+)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >>> index ff56bcfa3370..40030ed48854 100644
+> >>> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >>> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> >>> @@ -816,6 +816,10 @@ usbc_extcon: extcon0 {
+> >>>                       compatible = "google,extcon-usbc-cros-ec";
+> >>>                       google,usb-port-id = <0>;
+> >>>               };
+> >>> +
+> >>> +             base_detection: cbas {
+>
+>
+> This should be just cbas, remove base_detection. It was a bit confusing follow
+> these series. If [v5, 2/2] is already applied in hid tree, I'd suggest send a v7
+> version including:
+>
+> [v7, 1/2] mfd: google,cros-ec: add DT bindings for a baseboard's switch device
+> [v7, 2/2] arm64: dts: mt8183: add cbas node under cros_ec
 
+sure, let me upload v7 with dt-bindings + mt8183.dtsi together.
 
-On 3/5/21 8:42, Eizan Miyamoto wrote:
-> On Fri, Apr 30, 2021 at 1:46 AM Enric Balletbo i Serra
-> <enric.balletbo@collabora.com> wrote:
->>
->> Hi Eizan,
->>
->> Thank you for your patch.
->>
->> On 23/4/21 7:58, Eizan Miyamoto wrote:
->>> Rather than hanging the MDP master component driver off of the rdma0
->>> device, create a "virtual" device by the mmsys driver instead which is
->>> probed by the mtk_mdp_core driver.
->>>
->>> Broadly, four interdependent things are done by this change:
->>> - A virtual device that is probed by the mtk_mdp_core driver is
->>>   instantiated by the mtk_mmsys driver.
->>> - Presence of a mediatek,vpu property in a child node to the mmsys
->>>   device node is used to determine what device to use when dispatching
->>>   dma ops from the relevant ioctl.
->>> - v4l-related setup is moved into from the mtk_mdp_core driver to the
->>>   mtk_mdp_comp driver.
->>>
->>> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
->>> ---
->>>
->>>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 47 +++++++++-----
->>>  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 62 ++++++-------------
->>>  drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 +
->>>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  4 +-
->>>  drivers/soc/mediatek/mtk-mmsys.c              | 20 +++++-
->>>  5 files changed, 75 insertions(+), 60 deletions(-)
->>>
->>> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->>> index d447bfaadef4..dc5231a1fcfd 100644
->>> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->>> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->>> @@ -106,8 +106,41 @@ static int mtk_mdp_comp_bind(struct device *dev, struct device *master,
->>>  {
->>>       struct mtk_mdp_comp *comp = dev_get_drvdata(dev);
->>>       struct mtk_mdp_dev *mdp = data;
->>> +     struct device_node *vpu_node;
->>>
->>>       mtk_mdp_register_component(mdp, comp);
->>> +
->>> +     // If this component has a "mediatek-vpu" property, it is responsible for
->>> +     // notifying the mdp master driver about it so it can be further initialized
->>> +     // later.
->>
->> Please use c-style comments here.
-> 
-> Thank you for the reminder, I'll update these in the next version of
-> this patch series.
-> 
->>
->>> +     vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
->>
->> That's a bit confusing to me, please correct me if I am wrong, so, the
->> mediatek,vpu property is used to tell the code that this component should be the
->> 'vpu master', not to point a vpu node in the DT? I understood correctly?
-> 
-> Is what you mean by 'vpu master' is that it is the device whose driver
-> implements the wdt reset function? In that case, the mtk_mdp_core
-> driver is still the 'vpu master' because mtk_mdp_reset_handler
-> (contained in mtk_mdp_core) is passed to vpu_wdt_reg_handler(). The
-> presence of the property in any MDP component device node can do the
-> job of passing the vpu device (obtained from the node being pointed
-> to) back mtk_mdp_core's mtk_mdp_master_bind() function.
-> 
-> *However*, I'm using the presence of that property to indicate another
-> thing: this is the device that the mdp filesystem device node in /dev
-> should be registered against for v4l2. We will need to save this
-> device for later (in mdp->rdma_dev) to be used to find the DMA
-> callbacks when a call to mtk_mdp_m2m_queue_init is made from the file
-> open() callback (mtk_mdp_m2m_open) attached to the filesystem device
-> node.
-> 
-> Before this change, the mtk_mdp_core driver was serving triple duty as
-> the driver for the device that provided DMA op callbacks, the vpu
-> master, and the MDP component master. Now it is the vpu master and the
-> MDP component master, but not the driver for the device that provides
-> DMA op callbacks.
-> 
->>
->>
->>> +     if (vpu_node) {
->>> +             int ret;
->>> +
->>> +             mdp->vpu_dev = of_find_device_by_node(vpu_node);
->>> +             if (WARN_ON(!mdp->vpu_dev)) {
->>> +                     dev_err(dev, "vpu pdev failed\n");
->>> +                     of_node_put(vpu_node);
->>> +             }
->>> +
->>> +             ret = v4l2_device_register(dev, &mdp->v4l2_dev);
->>> +             if (ret) {
->>> +                     dev_err(dev, "Failed to register v4l2 device\n");
->>> +                     return -EINVAL;
->>> +             }
->>> +
->>> +             ret = vb2_dma_contig_set_max_seg_size(dev, DMA_BIT_MASK(32));
->>> +             if (ret) {
->>> +                     dev_err(dev, "Failed to set vb2 dma mag seg size\n");
->>> +                     return -EINVAL;
->>> +             }
->>> +
->>> +             // presence of the "mediatek,vpu" property in a device node
->>> +             // indicates that it is the primary MDP rdma device and MDP DMA
->>> +             // ops should be handled by its DMA callbacks.
->>
->> Isn't rdma0 always the primary MDP device? or there are SoCs or configurations
->> where this is different? At least I think it is for MT8173 and MT8183.
-> 
-> I suppose you're right, though now it seems to be called mdp_rdma0 in
-> the device tree?
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/mediatek/mt8173.dtsi?id=9ccce092fc64d19504fa54de4fd659e279cc92e7#n1004
-> 
-> Maybe somebody from MediaTek can confirm this?
+>
+> Both patches can go through the Matthias tree, but the first one also needs an
+> Ack from Lee Jones, MFD maintainer, which I think is not cc'ied, so unlikely to
+> give you the needed ack.
 
-That's the case on all the devices that are upstream, so maybe we can just
-assume that for now if nobody from MediaTek confirms. I am in the opinion that
-we should avoid use the mediatek,vpu property if is possible.
+Oops.. :-S
+(Why did I think this should go through hid?)
+Thanks a lot for pointing out the basic but critical mistake.
 
-> 
->>
->>> +             mdp->rdma_dev = dev;
->>> +     }
->>> +
->>>       pm_runtime_enable(dev);
->>>
->>>       return 0;
->>> @@ -164,23 +197,9 @@ int mtk_mdp_comp_init(struct mtk_mdp_comp *comp, struct device *dev)
->>>  static int mtk_mdp_comp_probe(struct platform_device *pdev)
->>>  {
->>>       struct device *dev = &pdev->dev;
->>> -     struct device_node *vpu_node;
->>>       int status;
->>>       struct mtk_mdp_comp *comp;
->>>
->>> -     vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
->>> -     if (vpu_node) {
->>> -             of_node_put(vpu_node);
->>> -             /*
->>> -              * The device tree node with a mediatek,vpu property is deemed
->>> -              * the MDP "master" device, we don't want to add a component
->>> -              * for it in this function because the initialization for the
->>> -              * master is done elsewhere.
->>> -              */
->>> -             dev_info(dev, "vpu node found, not probing\n");
->>> -             return -ENODEV;
->>> -     }
->>> -
->>>       comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
->>>       if (!comp)
->>>               return -ENOMEM;
->>> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> index 5e71496e2517..4d7aa4e26be6 100644
->>> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->>> @@ -121,6 +121,17 @@ static int mtk_mdp_master_bind(struct device *dev)
->>>               goto err_component_bind_all;
->>>       }
->>>
->>> +     if (mdp->vpu_dev) {
->>> +             int ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
->>> +                                       VPU_RST_MDP);
->>> +             if (ret) {
->>> +                     dev_err(dev, "Failed to register reset handler\n");
->>> +                     goto err_wdt_reg;
->>> +             }
->>> +     } else {
->>> +             dev_err(dev, "no vpu_dev found\n");
->>> +     }
->>> +
->>>       status = mtk_mdp_register_m2m_device(mdp);
->>>       if (status) {
->>>               dev_err(dev, "Failed to register m2m device: %d\n", status);
->>> @@ -133,6 +144,8 @@ static int mtk_mdp_master_bind(struct device *dev)
->>>       return 0;
->>>
->>>  err_mtk_mdp_register_m2m_device:
->>> +
->>> +err_wdt_reg:
->>>       component_unbind_all(dev, mdp);
->>>
->>>  err_component_bind_all:
->>> @@ -191,8 +204,13 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>>               of_node_put(node);
->>>               parent = dev->of_node;
->>>               dev_warn(dev, "device tree is out of date\n");
->>> -     } else {
->>> +     } else if (dev->of_node) {
->>>               parent = dev->of_node->parent;
->>> +     } else if (dev->parent) {
->>> +             // maybe we were created from a call to platform_device_register_data()
->>> +             parent = dev->parent->parent->of_node;
->>> +     } else {
->>> +             return -ENODEV;
->>>       }
->>>
->>>       /* Iterate over sibling MDP function blocks */
->>> @@ -225,16 +243,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>>               }
->>>       }
->>>
->>> -     /*
->>> -      * Create a component for myself so that clocks can be toggled in
->>> -      * clock_on().
->>> -      */
->>> -     ret = mtk_mdp_comp_init(&mdp->comp_self, dev);
->>> -     if (ret) {
->>> -             dev_err(dev, "Failed to initialize component\n");
->>> -             goto err_comp;
->>> -     }
->>> -
->>>       mdp->job_wq = create_singlethread_workqueue(MTK_MDP_MODULE_NAME);
->>>       if (!mdp->job_wq) {
->>>               dev_err(&pdev->dev, "unable to alloc job workqueue\n");
->>> @@ -250,29 +258,8 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>>       }
->>>       INIT_WORK(&mdp->wdt_work, mtk_mdp_wdt_worker);
->>>
->>> -     ret = v4l2_device_register(dev, &mdp->v4l2_dev);
->>> -     if (ret) {
->>> -             dev_err(&pdev->dev, "Failed to register v4l2 device\n");
->>> -             ret = -EINVAL;
->>> -             goto err_dev_register;
->>> -     }
->>> -
->>> -     mdp->vpu_dev = vpu_get_plat_device(pdev);
->>> -     ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
->>> -                               VPU_RST_MDP);
->>> -     if (ret) {
->>> -             dev_err(&pdev->dev, "Failed to register reset handler\n");
->>> -             goto err_wdt_reg;
->>> -     }
->>> -
->>>       platform_set_drvdata(pdev, mdp);
->>>
->>> -     ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
->>> -     if (ret) {
->>> -             dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
->>> -             goto err_set_max_seg_size;
->>> -     }
->>> -
->>>       ret = component_master_add_with_match(dev, &mtk_mdp_com_ops, match);
->>>       if (ret) {
->>>               dev_err(dev, "Component master add failed\n");
->>> @@ -284,22 +271,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
->>>       return 0;
->>>
->>>  err_component_master_add:
->>> -     vb2_dma_contig_clear_max_seg_size(&pdev->dev);
->>> -
->>> -err_set_max_seg_size:
->>> -
->>> -err_wdt_reg:
->>> -     v4l2_device_unregister(&mdp->v4l2_dev);
->>> -
->>> -err_dev_register:
->>>       destroy_workqueue(mdp->wdt_wq);
->>>
->>>  err_alloc_wdt_wq:
->>>       destroy_workqueue(mdp->job_wq);
->>>
->>>  err_alloc_job_wq:
->>> -
->>> -err_comp:
->>>       dev_dbg(dev, "err %d\n", ret);
->>>       return ret;
->>>  }
->>> @@ -371,7 +348,6 @@ static struct platform_driver mtk_mdp_driver = {
->>>       .driver = {
->>>               .name   = MTK_MDP_MODULE_NAME,
->>>               .pm     = &mtk_mdp_pm_ops,
->>> -             .of_match_table = mtk_mdp_of_ids,
->>>       }
->>>  };
->>>
->>> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
->>> index 230f531400ca..78c3c77cd226 100644
->>> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
->>> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
->>> @@ -133,6 +133,7 @@ struct mtk_mdp_variant {
->>>   * struct mtk_mdp_dev - abstraction for image processor entity
->>>   * @lock:    the mutex protecting this data structure
->>>   * @vpulock: the mutex protecting the communication with VPU
->>> + * @rdma_dev:  device pointer to rdma device for MDP
->>>   * @pdev:    pointer to the image processor platform device
->>>   * @variant: the IP variant information
->>>   * @id:              image processor device index (0..MTK_MDP_MAX_DEVS)
->>> @@ -151,6 +152,7 @@ struct mtk_mdp_variant {
->>>  struct mtk_mdp_dev {
->>>       struct mutex                    lock;
->>>       struct mutex                    vpulock;
->>> +     struct device                   *rdma_dev;
->>>       struct platform_device          *pdev;
->>>       struct mtk_mdp_variant          *variant;
->>>       u16                             id;
->>> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->>> index d351e5a44768..c80ad8299c5e 100644
->>> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->>> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
->>> @@ -932,7 +932,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
->>>       src_vq->mem_ops = &vb2_dma_contig_memops;
->>>       src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
->>>       src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
->>> -     src_vq->dev = &ctx->mdp_dev->pdev->dev;
->>> +     src_vq->dev = ctx->mdp_dev->rdma_dev;
->>>       src_vq->lock = &ctx->mdp_dev->lock;
->>>
->>>       ret = vb2_queue_init(src_vq);
->>> @@ -947,7 +947,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
->>>       dst_vq->mem_ops = &vb2_dma_contig_memops;
->>>       dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
->>>       dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
->>> -     dst_vq->dev = &ctx->mdp_dev->pdev->dev;
->>> +     dst_vq->dev = ctx->mdp_dev->rdma_dev;
->>>       dst_vq->lock = &ctx->mdp_dev->lock;
->>>
->>>       return vb2_queue_init(dst_vq);
->>> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
->>> index 18f93979e14a..6f9cf7725529 100644
->>> --- a/drivers/soc/mediatek/mtk-mmsys.c
->>> +++ b/drivers/soc/mediatek/mtk-mmsys.c
->>> @@ -305,6 +305,7 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->>>       struct device *dev = &pdev->dev;
->>>       struct platform_device *clks;
->>>       struct platform_device *drm;
->>> +     struct platform_device *mdp;
->>>       void __iomem *config_regs;
->>>       int ret;
->>>
->>> @@ -328,10 +329,27 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->>>                                           PLATFORM_DEVID_AUTO, NULL, 0);
->>>       if (IS_ERR(drm)) {
->>>               platform_device_unregister(clks);
->>> -             return PTR_ERR(drm);
->>> +             ret = PTR_ERR(drm);
->>> +             goto err_drm;
->>> +     }
->>> +
->>> +     mdp = platform_device_register_data(&pdev->dev, "mtk-mdp",
->>> +                                         PLATFORM_DEVID_AUTO, NULL, 0);
->>> +     if (IS_ERR(mdp)) {
->>> +             ret = PTR_ERR(mdp);
->>> +             dev_err(dev, "Failed to register mdp: %d\n", ret);
->>> +             goto err_mdp;
->>>       }
->>>
->>>       return 0;
->>> +
->>> +err_mdp:
->>> +     platform_device_unregister(drm);
->>> +
->>> +err_drm:
->>> +     platform_device_unregister(clks);
->>> +
->>> +     return ret;
->>>  }
->>>
->>>  static const struct of_device_id of_match_mtk_mmsys[] = {
->>>
+>
+> Thanks,
+>   Enric
+>
+>
+> >>> +                     compatible = "google,cros-cbas";
+> >>
+> >> I'm not able to find any binding description for this. It seems linux-next has
+> >> driver binding to this compatible, but the description is missing.
+> >>
+> >> Can you please clarify.
+> >
+> > Yep, that's correct.
+> > Let me resend this with v2 after the dt-binding patch is applied.
+> >
+> > In this series, I requested queueing these to hid tree:
+> >
+> > [v5, 1/2] mfd: google,cros-ec: add DT bindings for a baseboard's switch device
+> > https://patchwork.kernel.org/project/linux-input/patch/20210415032958.740233-2-ikjn@chromium.org/
+> >
+> > [v5, 2/2] HID: google: Add of_match table to Whiskers switch device.
+> > https://patchwork.kernel.org/project/linux-input/patch/20210415032958.740233-3-ikjn@chromium.org/
+> >
+> > Later I found that I missed a comment from [v5, 1/2]
+> > But only [v5, 2/2] part is already applied to hid tree as I asked for it.
+> >
+> > I sent a v6 dt-binding patch is here (not yet applied)
+> > https://patchwork.kernel.org/project/linux-input/patch/20210512100832.3878138-1-ikjn@chromium.org/
+> >
+> >>
+> >> Thanks,
+> >> Mathias
+> >>
+> >>> +             };
+> >>>       };
+> >>>  };
+> >>>
+> >>>
 
 _______________________________________________
 Linux-mediatek mailing list
