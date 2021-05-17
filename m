@@ -2,102 +2,88 @@ Return-Path: <SRS0=4pGO=KM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE6F9C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 10:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44332C433ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 13:24:51 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C855611ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 10:55:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C855611ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0AFDE61059
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 13:24:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0AFDE61059
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=loongson.cn
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RC+RtDaK7ZeFn5pMGMLI74Cw1129ijO24oyTj+ZIt7g=; b=hteIOUI7yRDNAp8dgvBtE988m7
-	E1UVPYwbk6SgVBRCcCD+YQpMsSTRbc98qfej0wJcA2/cflYpx5V4J6Ljj4aWWr0kzqEduPkic1azh
-	P92mElKIsT8xls2n6gkZ3Q4c8NJvhMqZ0zFOhQpViDFcyh3XC8op+roXMvlP1Zkj1C7hcrnj7HQ7Z
-	HKAcqMFZ2goHZX9CTX3s9aNgOU6vzqBWVm8Ndh4Ozov6MPVTV/zo8K3j6uZDXWGbqk6XDvPtjrRpO
-	ZT6CVubOxt+tuYpaUkP5ZUw64lQwEJyzse3Zpuz1ho4nBvBJtPmD8cTb+hivUxtBhwmZ+9mFYDxyF
-	/ye6GwnA==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HrZsaPdBDo8iUSAHUx9GM5p6iLTY2WYCS50TTrrqtDI=; b=YGgafbhpuRvwGFu6tBUxbL6h+J
+	jeKrkbACLocQ+nzEXnsRYoMcCaMFjk8PWVqMxOCxi8Ch/h3rSoC1ffCw+xHoR3I3cwzgQ39/qeQrc
+	K16D3FCTCaJcHyIo5Nc6GvYBp3VAOV9/SCQ7zJww8Ss1BGfmfoXcRO0rN2aLcrbM8XKcHmGOGoLAs
+	aEfaU7kDDwnexHXY395nh+gRsmaheKqWnEOaVjsO2w5CoQ/hk4fQIC5q218qk0JUBOVQWVIBW6mZf
+	vEDJGSRXcX5pj5QFRD0rOvcIJ2JxhWcdhYrj+UmpQHsyEs8TWd/7qUXi2XFGFzIbnv4uGcJ6bRIwK
+	E0t/sN9Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1liatj-00Eeil-6o; Mon, 17 May 2021 10:54:56 +0000
+	id 1lidEZ-00F3uu-V2; Mon, 17 May 2021 13:24:36 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liate-00Eei4-Pq
- for linux-mediatek@desiato.infradead.org; Mon, 17 May 2021 10:54:53 +0000
+ id 1lidAO-00F2tl-5p; Mon, 17 May 2021 13:20:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:In-Reply-To:References;
- bh=yzBuMiC2XaLs/j1LpNGe2K8TP7QRiNZvMg2908xwCXA=; b=NSEkMiS/9Bhf5EI1nnAIt8jkrW
- 1u02PDtPBDdvyIAYslV3wTHFuiSIrd2m7GEnmIUC7mpC6qkpaAgB5oviAC1Rsf/9z2/Z0t976K79H
- 2Xeh/RIClxUjcpMZB+KcKJhFIkM3RzeidNcVJLcWWaB26zRgBjnUozgTLoIXnwCiYHc0+PtM3648R
- D90QW7vHmC0ChcNyrHpkL/eQPIuHioNuU/SiiNZ9ZStqCU++rL/Mbmr79lXsZJbQX8v9qTcaT9UgN
- IgT9825wFMWEHbJvC3YSmv98nImhq5g7D/IAJrSys2AbAG7k0GPVjlPuUl2/WkjBRn/6+M2TfK6kB
- ls18/SQQ==;
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liatc-00DhAo-AH
- for linux-mediatek@lists.infradead.org; Mon, 17 May 2021 10:54:49 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- g6-20020a17090adac6b029015d1a9a6f1aso4323707pjx.1
- for <linux-mediatek@lists.infradead.org>; Mon, 17 May 2021 03:54:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yzBuMiC2XaLs/j1LpNGe2K8TP7QRiNZvMg2908xwCXA=;
- b=ZRu4cOsTud8oyRg8K/dNWXVOFRjhDkEt6GER7grMfhXnJs1Oe2H0kBBbDt7DdT7bXb
- 7BYgb+0rL9PrK/4hWSLNuM1XWyontoVNyc0e1t51rEA1r3t3wzzxsTN9g/4CDJSGODQk
- fzknAvXky0Jj5hN5zKWjFt32Yg9z/EzGxlagzAhOMkA2s4gYrA3SrX2H3CvE8uqVdYyt
- JlI4DuQ7MteCjHcXQhO/2lk05O2qxHZSK90Aa6GSfnbFeUptfOdTXX6x2BDZL4GFAjD2
- dZqbel5mgzh7EcPF64NZTP6l8Iuu2m6KoE87aC8BmdKQqIMAgyniPIJZ8Cr0cYobs67t
- W0tg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=yzBuMiC2XaLs/j1LpNGe2K8TP7QRiNZvMg2908xwCXA=;
- b=J4I74yrn5qytuVaWwMAIwWlj0r5X1rjyO/Has4ka4ZoUtWOQFJhI0lODfdcROoDpiv
- GAw9gTCIScruAuR9MdE+KXNEGQyDeWUa0BXkibC0mYVtew4ra/usNQ5Orj6zqMzMP104
- TbWloVBsQ4+fP/SuUoFoH8Dcq18f7lyfaMxCyTxS0mYYbQi73Ftk8kg6HizNUFCFgyDK
- CatYeugpnQXVpfb9tDQvefYjtF29k7B3nmwrzPfeFwr/ODsRjsJOV2ah4DKvpngOm7cB
- uOiVkd4FIPAGMbNPyV5YUpCAql44IQoWKFDXvAzbCUsk+QxPQH9RKcI16j6YwiW8XPRz
- hTnQ==
-X-Gm-Message-State: AOAM532WG8mDKSx8anH+V5inA22vDssnN97NaBs+J1hixpi/Nj6mqR86
- p5yxheKjmzVhTHYewwzkMLw=
-X-Google-Smtp-Source: ABdhPJwkEw1HtZdsBPLVsJMejfuHolPdJBtBxADQ2kfLqLczA1fjfWTMnR8aQE8eC/N6TVolDm43GA==
-X-Received: by 2002:a17:90b:fc5:: with SMTP id
- gd5mr24334538pjb.99.1621248887281; 
- Mon, 17 May 2021 03:54:47 -0700 (PDT)
-Received: from tj.ccdomain.com ([103.220.76.197])
- by smtp.gmail.com with ESMTPSA id w8sm10855074pgf.81.2021.05.17.03.54.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 May 2021 03:54:46 -0700 (PDT)
-From: Yue Hu <zbestahu@gmail.com>
-To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org, matthias.bgg@gmail.com
-Cc: linux-mmc@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, huyue2@yulong.com, zbestahu@163.com
-Subject: [PATCH] mmc: mediatek: remove useless data parameter from
- msdc_data_xfer_next()
-Date: Mon, 17 May 2021 18:54:32 +0800
-Message-Id: <20210517105432.1682-1-zbestahu@gmail.com>
-X-Mailer: git-send-email 2.29.2.windows.3
-MIME-Version: 1.0
+ bh=DMZMz9ugGBXkoKCwmBbR40flsKXt+rGpdXgSQkZS0/o=; b=ZucmrVGYKIfGTc0oV/cr16aPaG
+ Wizsmv9aaD06b9/E4I/4KGqF37sENSNECQiI5OlU/7P2I3i8ddV7WFafgYEZ5TBx/3dza0RMTB2ES
+ N0+wpz1QYAAIrRutEpgrCI1EswVeHsEm4A+epjdjPVF/KKlwoMfrag5m3yH0ElUsi0OagF7t5EWvV
+ kTsUPN4ZG03VvzD6jcSuT4PSAzR5Jh6ZeZfeJRhqjZifbns6w7u8OmFIdWFNSqvbksvmC+OPMtO5O
+ 7E8KS/WeT8j4OIE/FG7IxJN4aJ6ZYuJG1tYiCC0VtnrN5yKBfgquEEyx8I9nDROt2s2hB0T5xMFeN
+ 4oKvYxMA==;
+Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1lidAG-00DnIN-Bg; Mon, 17 May 2021 13:20:13 +0000
+Received: from linux.localdomain (unknown [113.200.148.30])
+ by mail.loongson.cn (Coremail) with SMTP id AQAAf9Cx6cmAbaJg5GwYAA--.37607S2; 
+ Mon, 17 May 2021 21:20:01 +0800 (CST)
+From: Tiezhu Yang <yangtiezhu@loongson.cn>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, lkp@intel.com,
+ Dan Carpenter <dan.carpenter@oracle.com>, Heiko Stuebner <heiko@sntech.de>,
+ kbuild@lists.01.org
+Subject: [PATCH] phy: phy-mtk-tphy: Fix some resource leaks in mtk_phy_init()
+Date: Mon, 17 May 2021 21:20:00 +0800
+Message-Id: <1621257600-15046-1-git-send-email-yangtiezhu@loongson.cn>
+X-Mailer: git-send-email 2.1.0
+X-CM-TRANSID: AQAAf9Cx6cmAbaJg5GwYAA--.37607S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtr43Kw1fZF1kKw4UuF1rJFb_yoWfurc_uF
+ 1vgwnxWan8WF1akw1UKr1xZFyI93W0qFykGrySy3yFkryjgw1Y9rsFvFZ3uF4DCan3CF13
+ J3s09ana9r4xAjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbsxYjsxI4VWkCwAYFVCjjxCrM7AC8VAFwI0_Gr0_Xr1l1xkIjI8I
+ 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
+ 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW8JVW5JwA2z4x0Y4vE2Ix0
+ cI8IcVCY1x0267AKxVW8JVWxJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z2
+ 80aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAK
+ zVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Cr0_Gr1UMc
+ vjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACI402YVCY1x02628vn2kIc2xK
+ xwCY02Avz4vE14v_Xr4l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2
+ IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v2
+ 6r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2
+ IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWrZr1j6s0DMIIF0xvEx4A2
+ jsIE14v26r4j6F4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0x
+ ZFpf9x07j5_-9UUUUU=
+X-CM-SenderInfo: p1dqw3xlh2x3gn0dqz5rrqw2lrqou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210517_035448_376256_B92241BD 
-X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-CacheID: sfid-20210517_062008_785017_2E3A940A 
+X-CRM114-Status: UNSURE (   6.19  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,45 +96,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yue Hu <huyue2@yulong.com>
+Use clk_disable_unprepare() in the error path of mtk_phy_init() to fix
+some resource leaks.
 
-We do not use the 'data' in msdc_data_xfer_next().
-
-Signed-off-by: Yue Hu <huyue2@yulong.com>
+Fixes: cd4ec4b03dc1 ("phy: phy-mt65xx-usb3: add mediatek directory and rename file")
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
 ---
- drivers/mmc/host/mtk-sd.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index c4db944..4dfc246 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1347,8 +1347,7 @@ static void msdc_post_req(struct mmc_host *mmc, struct mmc_request *mrq,
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index cdbcc49..731c483 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -949,6 +949,8 @@ static int mtk_phy_init(struct phy *phy)
+ 		break;
+ 	default:
+ 		dev_err(tphy->dev, "incompatible PHY type\n");
++		clk_disable_unprepare(instance->ref_clk);
++		clk_disable_unprepare(instance->da_ref_clk);
+ 		return -EINVAL;
  	}
- }
  
--static void msdc_data_xfer_next(struct msdc_host *host,
--				struct mmc_request *mrq, struct mmc_data *data)
-+static void msdc_data_xfer_next(struct msdc_host *host, struct mmc_request *mrq)
- {
- 	if (mmc_op_multi(mrq->cmd->opcode) && mrq->stop && !mrq->stop->error &&
- 	    !mrq->sbc)
-@@ -1407,7 +1406,7 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
- 				(int)data->error, data->bytes_xfered);
- 		}
- 
--		msdc_data_xfer_next(host, mrq, data);
-+		msdc_data_xfer_next(host, mrq);
- 		done = true;
- 	}
- 	return done;
 -- 
-1.9.1
+2.1.0
 
 
 _______________________________________________
