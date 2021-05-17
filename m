@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E48D0C433B4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 08:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B50CAC433B4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 08:19:34 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 458C861042
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 08:06:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 458C861042
+	by mail.kernel.org (Postfix) with ESMTPS id 3CA02610A1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 May 2021 08:19:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CA02610A1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,80 +23,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
 	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=01eZFboIOW2NsmkQBqYYy3sw/85YoLkchqFZ11lKnFw=; b=lLvZeDg18Itp4XcUnATC66vvp
-	iOoiWG9lb24yP3cNBR46MiCVN7+pRu0GzVm0hbEKvgkzurGHo2aouM0YTJZIf8giEaw+m3Bh/35ZG
-	Obz7rGwtmEkh8JSzL3GKvOhYYVuNWJF96rgy4jA79i5RmEmC1QFdlDQ1Z5uzIaoo+CCmZD1p4ZRgy
-	7ZZ+sp2OJkMDapHPqVVb4uE9tndg/LZ79EuU7Uzc+tvSoYVFMvIV6KeVMKCyYWfygrIIKYCeQ16fP
-	YEg5620uKd61PPBJFy5oxbJFc8P0I1oHB8ePp5cv9MZLox3UaIz5BXHFX5IX2htBcLjoTlGnFE6FU
-	aSRnf6asw==;
+	 bh=ZmB5Ma7VWNgOgBvtrToOeoknfz5fnlVwbxE306TgGGA=; b=UDLBHs5iggfQ9CTwmiWFJDZ4M
+	SvKTveArvZIuG/6MU6J699oGX9iV2UYwJXEjuwwM8tfisV4r8Wf3qWLpTj2k1DtIuAr3zoqHL8dLq
+	UaM9NTLvWbcf6NFO8p5BRvS/swD6VxY8EbbLU/WIEtVxmN91qMEgFz380o/+ToRRu82iGE1DnEoEb
+	fWME+Mu3E8zo11RdcSO+5CCXjFznhltTmLcPl5ueLUqnDbfsXZA+E5jF7Fj5sgYdfdYWyAcPyhYcj
+	052dimu3iNLMpiCWybrAt0Ekqnj9N3Zy/MrT5t0ai5v+l/biKAOqz1NEQHWAOCCaW/ub4DewW9Ke7
+	WlTL3mSFA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1liYG7-00EA9D-PC; Mon, 17 May 2021 08:05:51 +0000
+	id 1liYT7-00ECg6-JD; Mon, 17 May 2021 08:19:17 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liY2t-00E6l6-UL; Mon, 17 May 2021 07:52:12 +0000
+ id 1liYHN-00EAMu-Ve; Mon, 17 May 2021 08:07:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
  Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=h+98Z93ZAZ7sxTZlhBFEYtH38irCUScH0nEBanpBnHA=; b=URip+EEprywZ9Y/2bsHv4UIOnX
- lh90CkiUvvXgln5wbxkSEvXGyn1QuWUivnxn/cBuYO1yPrI2aMMr7bahFYjVpXZDkcrDWxGq+GvqV
- 9okAC6Wu1ps4VpAsGhhvZKjM8WD9iBh+pltisJt9vAZ1Lp6JHai5ZDih1sLi1PuZY2KZWK0+2yeYc
- RMxQ3JIJlUpOJS1qawUvvvDv+bWjWwnqKCTqHFAVbe4/kcH0dDk3X3ffY3x4l8Um3pSSx2miPnxdj
- jPPQyshwT9xX7TOZwyeXlBg28xw7G6DHDzjNXr8UiXllj08eHIJoZeN3O+ny2FkOCSyKbY+uudCO7
- GSoQJd3w==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ bh=zLyMCemFhgBqwL7usnjoYVnjjOx47JZAGAfTiTk0jK0=; b=W6VE8eAuwD4CvCdsa9Ig3iyb/6
+ 6zL21QgnnNovA2HtfpHSk+WXXcym/l1MiomOyErPH7o+yCEW4iGhWEgOHtNUCx3+36tV31AR8xFOz
+ NSWNamCHKMfp77MX5YWcnxEPxcE+nXXUy2K2IVDKDF479Z221DVCK/rZ2AfoRnhLHBkEo1x1+YUU3
+ LQ6UOay6eoUrVbdLXHydOl4sbKFVch54KTl6k9u4mO+FBfkbcZxPeKxTDIJGGpItK4bpeT6zfReR0
+ 2bjUvKznXv0sP1gEvA13iCH1pyJms7cwVxBW+KP4VO8s9Ef0LZUS+G4STB7zeSH3a3fyuhEPaFsdg
+ 3ZProfig==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liY2q-00DZ1H-Ms; Mon, 17 May 2021 07:52:10 +0000
-X-UUID: 70f045f3457b4b9ca1420bcd68ffa17c-20210517
+ id 1liYHI-00DZr0-GO; Mon, 17 May 2021 08:07:08 +0000
+X-UUID: 885cf9712d714dd3abe67dadca2e7a48-20210517
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=h+98Z93ZAZ7sxTZlhBFEYtH38irCUScH0nEBanpBnHA=; 
- b=i6N3nGDgqSMlIAIVNEN4LRA8veMXn1siggz7ICJvOKUPq+bY5c7kpwcxPmuvHYpcanz/kh0gvTy8fJDyHaiPNEtKpvp5CjSpXPhpf0X6L54/HxZwJzmEK/0L6DIkl9mtjvFZ0LfwRnV99ZdHWJAHkrJ5X0HocgQ22AtAp3+mEfQ=;
-X-UUID: 70f045f3457b4b9ca1420bcd68ffa17c-20210517
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
+ bh=zLyMCemFhgBqwL7usnjoYVnjjOx47JZAGAfTiTk0jK0=; 
+ b=psCxGPqpqOzkAfdtwOkYznbslWDrNMU7GUj+x0fm7PPH8QEoRYeBWFPQE2Fw3Zijxqbs6SojQLvKEAgMovxAxGz2SeotV6Njo5fZ5vN1ZUHNERvMYiYdOtTCr/tGc96vq2RdEU3+BUEsf1PY2cFbY+9HT3FVd6PcA6cfLplDUD8=;
+X-UUID: 885cf9712d714dd3abe67dadca2e7a48-20210517
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 333086180; Mon, 17 May 2021 00:52:03 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 May 2021 00:52:01 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 17 May 2021 15:51:58 +0800
+ with ESMTP id 896944106; Mon, 17 May 2021 01:06:59 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 May 2021 01:06:58 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs07n2.mediatek.inc
+ (172.21.101.141) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 17 May 2021 16:06:56 +0800
 Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
  (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 May 2021 15:51:57 +0800
-Message-ID: <1621237917.25594.7.camel@mhfsdcap03>
-Subject: Re: [PATCH 1/5] dt-bindings: media: mtk-vcodec: Add dma-ranges
- property
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-CC: Rob Herring <robh@kernel.org>, Alexandre Courbot <acourbot@chromium.org>, 
- Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Fritz Koenig
- <frkoenig@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>, Maoguang Meng
- <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>
-Date: Mon, 17 May 2021 15:51:57 +0800
-In-Reply-To: <2b97b41c-d5d8-ac32-a9cf-c7bef09ed8ef@xs4all.nl>
-References: <20210203083752.12586-1-irui.wang@mediatek.com>
- <20210203083752.12586-2-irui.wang@mediatek.com>
- <20210210225323.GA2961490@robh.at.kernel.org>
- <1614581129.14457.0.camel@mhfsdcap03>
- <2b97b41c-d5d8-ac32-a9cf-c7bef09ed8ef@xs4all.nl>
+ Transport; Mon, 17 May 2021 16:06:53 +0800
+Message-ID: <1621238813.24305.5.camel@mhfsdcap03>
+Subject: Re: [PATCH v21 3/5] i2c: mediatek: mt65xx: add optional vbus-supply
+From: Qii Wang <qii.wang@mediatek.com>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+CC: Wolfram Sang <wsa@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, Bartosz Golaszewski
+ <bgolaszewski@baylibre.com>, <linux-i2c@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Mark Brown <broonie@kernel.org>, 
+ Marek Szyprowski <m.szyprowski@samsung.com>, Bibby Hsieh
+ <bibby.hsieh@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
+Date: Mon, 17 May 2021 16:06:53 +0800
+In-Reply-To: <20210507131406.2224177-4-hsinyi@chromium.org>
+References: <20210507131406.2224177-1-hsinyi@chromium.org>
+ <20210507131406.2224177-4-hsinyi@chromium.org>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: AC0AA144FDC81F6D769A28429EE706EB2A987DF65EC0BB169DF477EAD59927522000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210517_005208_756883_B263650A 
-X-CRM114-Status: GOOD (  26.14  )
+X-CRM114-CacheID: sfid-20210517_010704_572471_78E952E0 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,75 +106,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Hans, Rob and Maintainers,
+On Fri, 2021-05-07 at 21:14 +0800, Hsin-Yi Wang wrote:
+> Add vbus-supply which provides power to SCL/SDA. Pass this regulator
+> into core so it can be turned on/off for low power mode support.
+> 
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-Much appreciated for reviewing this patchset, we have sent PATCH-V3 for
-the patchset with Rob's comments:
-https://patchwork.kernel.org/project/linux-mediatek/cover/20210412124555.26897-1-irui.wang@mediatek.com/
+Reviewed-by: Qii Wang <qii.wang@mediatek.com>
 
-Just Gentle ping for this V3 patch.
-
-Thanks,
-Best Regards
-
-On Thu, 2021-04-29 at 13:15 +0200, Hans Verkuil wrote:
-> Hi Rob,
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
 > 
-> On 01/03/2021 07:45, Irui Wang wrote:
-> > On Wed, 2021-02-10 at 16:53 -0600, Rob Herring wrote:
-> >> On Wed, Feb 03, 2021 at 04:37:48PM +0800, Irui Wang wrote:
-> >>> Adds dma-ranges property for DMA addresses translation.
-> >>>
-> >>> Signed-off-by: Irui Wang <irui.wang@mediatek.com>
-> >>> ---
-> >>>  Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 2 ++
-> >>>  1 file changed, 2 insertions(+)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> >>> index f85276e629bf..e4644f8caee9 100644
-> >>> --- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> >>> +++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-> >>> @@ -23,6 +23,8 @@ Required properties:
-> >>>  - iommus : should point to the respective IOMMU block with master port as
-> >>>    argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.txt
-> >>>    for details.
-> >>> +- dma-ranges : describes how the physical address space of the IOMMU maps
-> >>> +  to memory.
-> >>
-> >> dma-ranges is supposed to be in a bus/parent node.
-> > Dear Rob,
-> > 
-> > The mt8192 iommu support 0~16GB iova. We separate it to four banks:
-> > 0~4G; 4G~8G; 8G~12G; 12G~16G.
-> > 
-> > The "dma-ranges" could be used to adjust the bank we locate.
-> > If we don't set this property. The default range always is 0~4G.
-> > 
-> > Here we don't have actual bus/parent concept here.  And the iova
-> > requirement is for our HW. Thus put the property in our node.
-> > 
-> > Is this OK? If this is ok for you, I will put this message in the commit
-> > message and binding in next version.
-> 
-> Can you answer Irui's question? Just a reminder...
-> 
-> Much appreciated!
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > 
-> > Regards
-> >>
-> >>>  One of the two following nodes:
-> >>>  - mediatek,vpu : the node of the video processor unit, if using VPU.
-> >>>  - mediatek,scp : the node of the SCP unit, if using SCP.
-> >>> -- 
-> >>> 2.25.1
-> >>>
-> > 
-> 
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 5ddfa4e56ee2..22d1d14b5de5 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -1220,6 +1220,13 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+>  	i2c->adap.quirks = i2c->dev_comp->quirks;
+>  	i2c->adap.timeout = 2 * HZ;
+>  	i2c->adap.retries = 1;
+> +	i2c->adap.bus_regulator = devm_regulator_get_optional(&pdev->dev, "vbus");
+> +	if (IS_ERR(i2c->adap.bus_regulator)) {
+> +		if (PTR_ERR(i2c->adap.bus_regulator) == -ENODEV)
+> +			i2c->adap.bus_regulator = NULL;
+> +		else
+> +			return PTR_ERR(i2c->adap.bus_regulator);
+> +	}
+>  
+>  	ret = mtk_i2c_parse_dt(pdev->dev.of_node, i2c);
+>  	if (ret)
 
 _______________________________________________
 Linux-mediatek mailing list
