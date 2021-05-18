@@ -2,72 +2,72 @@ Return-Path: <SRS0=DTMy=KN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F21FC433ED
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FCF3C433B4
 	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 09:40:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90B4F61353
+	by mail.kernel.org (Postfix) with ESMTPS id 71D176109E
 	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 09:40:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90B4F61353
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71D176109E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EYjVK3U/pOkTcC0lbxrqeQSL8z9vBBTQ3g8MF2krAHY=; b=cRkF1rRPn6pKr1Z7MBxEoTfJM7
-	3SpLJHCjyx7TR0jgRdtIRB+1RbtxIHD8i5RtEE6YZ/WPcsGUl+JOwD9Q3i1xIH7RFMMsleoBJd7eV
-	Cwcjk0/7pe16reOsJZg1LWJ5cJ0B4puztWYrvHCe64dvmUFajFb0N0UTrCSYKN2PXCZJyyzq4/uFT
-	XH1kJ5+Cjn8dzRtphAwm8wcdWgoAJ0tN2cwnUO1eB+vgzEszq/9r4ruttt5aD+PpTwjuBtK8OMkqP
-	DvvTkE7IsAfkiOcrua3y1DDM3tO11JdMbQKaskQC5LioNZCVlKTX4XelXaUbjwTy3fuMeBlufnVA+
-	tJidF1IA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1MdqVQMpBtBpgN6y1UMXvYs2twiDB5Yw/ZHOaCysf7w=; b=T2iJu2yi5IBhiaHDZPxW2/cgp
+	xmaFRqZz5tNNS8sWZ1kjWWTqObWlVYMhEC/ZRmH43BN2Av/+ZgSyjA37q2z2psbi12ps9P5Ero3B8
+	UT+V9l0/pLStRqzkkyIoMutDMUflD/rff4jqI7RQ8TaYDt3wGssnYa67gFaHjRHfeizxL6q67Pydq
+	OA/eR+VgoUzye5o0ajmb1rBMfUEohlvuqqBq0ga6CekCcWMMkklYWom6I9pkM9qlG5ZITRiDTelE7
+	ANtZejb9Tp3o7z+/9dU8Kiux3PWXA2/RwD/ZYdetIFJhbHpSEybDlrWZGSy/wiK/J14HaLUiEj3uQ
+	pZ3SIfQyw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1liwDC-000Bca-3F; Tue, 18 May 2021 09:40:26 +0000
+	id 1liwDF-000BdV-Ed; Tue, 18 May 2021 09:40:29 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liwD8-000BbS-Kn; Tue, 18 May 2021 09:40:23 +0000
+ id 1liwD7-000BbE-Ty; Tue, 18 May 2021 09:40:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=d+riBQgSqs2G+wl0ukQcn5Ovjj2Flf7ONxklhZAuy4A=; b=DFkWEahBaXQKpFfdr/+Yk7kdAm
- E5AXmsKc2Le6GgadCqrTbD6JxQP+AcuFX+aD/P+/RFcAu2ZoY9GPRfINdqmNG7SY/r/xL88M8kMhL
- 5sy8Hzgy/UWHFxWFDWBJJMVkJB/Z17JIvUrtaJFKMo34XLNTgg9DAGd0JJuPPnbOsT0Pb2lDYcAeL
- GtScW2kb/hhoq9SaptKbMaK1l4/UrJDGsVmqo5C3sIBpcM78Bv5RpMAx1Mg0q9d8rtQy+AxlzlqiN
- CP4y5alpZvwVhLSvC+lsyP40iGmKW1EPdaXQtZBkiwW0foYGYDWNSLMtjfuSnEQiGJtyQp5XIoK97
- XrpGTvOw==;
+ Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
+ To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=RlXBu9WGDcuUMnuchsjRfVTAyAWHFfW/wxkPyQQf21Y=; b=A7fBcudzQcY9PocoilGGvNEjyI
+ MJXmySWGbMdL87dTBatHHSqILf+IxCcz3o4PO6sC0muDp3CXnsFcUvtk0aHjWSB/bkXoaBKQHRYqO
+ AivJIE4K390n6lnt/G362NOgdtsNZ0g3B+akDBevIAIhLOOucVpmC3KU+4hSGT3A8Z8pj+y7Ih68N
+ s+rlggNqFOqAu61hQSGFw9wQ5KG+QMYdtMtlClekkAKXzMTpgoqavS96lR2y9LNzkDQsA4HoAPG9n
+ i9mePSYpz+9G8XaZR60zm00NNMTCoaNDwHzxC6zj4ZyQl+QjHbCuK4yQmpqZ1bt3zHM2imsy+ktXh
+ 3xvcVoLA==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1liwD4-00EWBD-Ol; Tue, 18 May 2021 09:40:21 +0000
-X-UUID: 730d835563134aa5a6f4fc375b2d3ee1-20210518
+ id 1liwD4-00EWBE-On; Tue, 18 May 2021 09:40:20 +0000
+X-UUID: 765181ab518c4fea8661bf0f52f8dae7-20210518
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=d+riBQgSqs2G+wl0ukQcn5Ovjj2Flf7ONxklhZAuy4A=; 
- b=rswuSQPg6Uw3lgSXNMMP1DQm34yK+opTxgm+9OPQxleQ9XvG7GNYLyJeWnOttst7iMbA5Lc7Q1UyNNBO9ie6cHmSQSCK+W2pvEOrx00NQyitjNHQrI8s3Plp+9gGaXD83d9nRDJVmnBad++mddK6gX7cONMvqVuF0DWD9BiNztw=;
-X-UUID: 730d835563134aa5a6f4fc375b2d3ee1-20210518
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=RlXBu9WGDcuUMnuchsjRfVTAyAWHFfW/wxkPyQQf21Y=; 
+ b=PdcLmyPbo80q2ftDuKo8qdElV2vyhWyqITUE2xD30uQYWvT6fRdAlVt1YMiSx4U2PaeKOkPs9MnruUqS2nWUCjVdTujkHQ/VuaC7+kSTP6c+uN4UhQtPyaI5mDgjnTqNBGjFB9EkhAsja4YPx/J5gHy/pn1gCDWX8X99yhv5kFo=;
+X-UUID: 765181ab518c4fea8661bf0f52f8dae7-20210518
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 541981679; Tue, 18 May 2021 02:40:11 -0700
+ with ESMTP id 150858819; Tue, 18 May 2021 02:40:11 -0700
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 18 May 2021 02:40:10 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 18 May 2021 17:40:08 +0800
+ 15.0.1497.2; Tue, 18 May 2021 17:40:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 18 May 2021 17:40:08 +0800
+ Frontend Transport; Tue, 18 May 2021 17:40:09 +0800
 From: Miles Chen <miles.chen@mediatek.com>
 To: Dave Young <dyoung@redhat.com>, Baoquan He <bhe@redhat.com>, Vivek Goyal
  <vgoyal@redhat.com>, Jonathan Corbet <corbet@lwn.net>, Michael Ellerman
@@ -77,16 +77,18 @@ To: Dave Young <dyoung@redhat.com>, Baoquan He <bhe@redhat.com>, Vivek Goyal
 CC: <kexec@lists.infradead.org>, <linux-doc@vger.kernel.org>,
  <linuxppc-dev@lists.ozlabs.org>, <linux-mm@kvack.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH v2 0/2] mm: unify the allocation of pglist_data instances
-Date: Tue, 18 May 2021 17:24:44 +0800
-Message-ID: <20210518092446.16382-1-miles.chen@mediatek.com>
+ Miles Chen <miles.chen@mediatek.com>, Kazu <k-hagio-ab@nec.com>
+Subject: [PATCH v2 2/2] mm: replace contig_page_data with node_data
+Date: Tue, 18 May 2021 17:24:46 +0800
+Message-ID: <20210518092446.16382-3-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210518092446.16382-1-miles.chen@mediatek.com>
+References: <20210518092446.16382-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_024018_859643_AD083809 
-X-CRM114-Status: GOOD (  13.44  )
+X-CRM114-CacheID: sfid-20210518_024018_859479_E7E58E2F 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,75 +105,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patches is created to fix the __pa() warning messages when
-CONFIG_DEBUG_VIRTUAL=y by unifying the allocation of pglist_data
-instances.
+Replace contig_page_data with node_data. Change the definition
+of NODE_DATA(nid) from (&contig_page_data) to (node_data[0]).
 
-In current implementation of node_data, if CONFIG_NEED_MULTIPLE_NODES=y,
-pglist_data is allocated by a memblock API. If CONFIG_NEED_MULTIPLE_NODES=n,
-we use a global variable named "contig_page_data".
+Remove contig_page_data from the tree.
 
-If CONFIG_DEBUG_VIRTUAL is not enabled. __pa() can handle both
-allocation and symbol cases. But if CONFIG_DEBUG_VIRTUAL is set,
-we will have the "virt_to_phys used for non-linear address" warning
-when booting.
-
-To fix the warning, always allocate pglist_data by memblock APIs and
-remove the usage of contig_page_data.
-
-Warning message:
-[    0.000000] ------------[ cut here ]------------
-[    0.000000] virt_to_phys used for non-linear address: (____ptrval____) (contig_page_data+0x0/0x1c00)
-[    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/physaddr.c:15 __virt_to_phys+0x58/0x68
-[    0.000000] Modules linked in:
-[    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W         5.13.0-rc1-00074-g1140ab592e2e #3
-[    0.000000] Hardware name: linux,dummy-virt (DT)
-[    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO BTYPE=--)
-[    0.000000] pc : __virt_to_phys+0x58/0x68
-[    0.000000] lr : __virt_to_phys+0x54/0x68
-[    0.000000] sp : ffff800011833e70
-[    0.000000] x29: ffff800011833e70 x28: 00000000418a0018 x27: 0000000000000000
-[    0.000000] x26: 000000000000000a x25: ffff800011b70000 x24: ffff800011b70000
-[    0.000000] x23: fffffc0001c00000 x22: ffff800011b70000 x21: 0000000047ffffb0
-[    0.000000] x20: 0000000000000008 x19: ffff800011b082c0 x18: ffffffffffffffff
-[    0.000000] x17: 0000000000000000 x16: ffff800011833bf9 x15: 0000000000000004
-[    0.000000] x14: 0000000000000fff x13: ffff80001186a548 x12: 0000000000000000
-[    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 0000000000000000
-[    0.000000] x8 : ffff8000115c9000 x7 : 737520737968705f x6 : ffff800011b62ef8
-[    0.000000] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
-[    0.000000] x2 : 0000000000000000 x1 : ffff80001159585e x0 : 0000000000000058
-[    0.000000] Call trace:
-[    0.000000]  __virt_to_phys+0x58/0x68
-[    0.000000]  check_usemap_section_nr+0x50/0xfc
-[    0.000000]  sparse_init_nid+0x1ac/0x28c
-[    0.000000]  sparse_init+0x1c4/0x1e0
-[    0.000000]  bootmem_init+0x60/0x90
-[    0.000000]  setup_arch+0x184/0x1f0
-[    0.000000]  start_kernel+0x78/0x488
-[    0.000000] ---[ end trace f68728a0d3053b60 ]---
-
-[1] https://lore.kernel.org/patchwork/patch/1425110/
-
-Change since v1:
-- use memblock_alloc() to create pglist_data when CONFIG_NUMA=n
-
-Miles Chen (2):
-  mm: introduce prepare_node_data
-  mm: replace contig_page_data with node_data
-
+Cc: Mike Rapoport <rppt@kernel.org>
+Cc: Baoquan He <bhe@redhat.com>
+Cc: Kazu <k-hagio-ab@nec.com>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
  Documentation/admin-guide/kdump/vmcoreinfo.rst | 13 -------------
  arch/powerpc/kexec/core.c                      |  5 -----
  include/linux/gfp.h                            |  3 ---
- include/linux/mm.h                             |  2 ++
- include/linux/mmzone.h                         |  4 ++--
+ include/linux/mmzone.h                         |  3 +--
  kernel/crash_core.c                            |  1 -
- mm/memblock.c                                  |  3 +--
- mm/page_alloc.c                                | 16 ++++++++++++++++
- mm/sparse.c                                    |  2 ++
- 9 files changed, 23 insertions(+), 26 deletions(-)
+ mm/memblock.c                                  |  2 --
+ 6 files changed, 1 insertion(+), 26 deletions(-)
 
-
-base-commit: 8ac91e6c6033ebc12c5c1e4aa171b81a662bd70f
+diff --git a/Documentation/admin-guide/kdump/vmcoreinfo.rst b/Documentation/admin-guide/kdump/vmcoreinfo.rst
+index 3861a25faae1..74185245c580 100644
+--- a/Documentation/admin-guide/kdump/vmcoreinfo.rst
++++ b/Documentation/admin-guide/kdump/vmcoreinfo.rst
+@@ -81,14 +81,6 @@ into that mem_map array.
+ 
+ Used to map an address to the corresponding struct page.
+ 
+-contig_page_data
+-----------------
+-
+-Makedumpfile gets the pglist_data structure from this symbol, which is
+-used to describe the memory layout.
+-
+-User-space tools use this to exclude free pages when dumping memory.
+-
+ mem_section|(mem_section, NR_SECTION_ROOTS)|(mem_section, section_mem_map)
+ --------------------------------------------------------------------------
+ 
+@@ -531,11 +523,6 @@ node_data|(node_data, MAX_NUMNODES)
+ 
+ See above.
+ 
+-contig_page_data
+-----------------
+-
+-See above.
+-
+ vmemmap_list
+ ------------
+ 
+diff --git a/arch/powerpc/kexec/core.c b/arch/powerpc/kexec/core.c
+index 56da5eb2b923..41f31dfb540c 100644
+--- a/arch/powerpc/kexec/core.c
++++ b/arch/powerpc/kexec/core.c
+@@ -68,13 +68,8 @@ void machine_kexec_cleanup(struct kimage *image)
+ void arch_crash_save_vmcoreinfo(void)
+ {
+ 
+-#ifdef CONFIG_NEED_MULTIPLE_NODES
+ 	VMCOREINFO_SYMBOL(node_data);
+ 	VMCOREINFO_LENGTH(node_data, MAX_NUMNODES);
+-#endif
+-#ifndef CONFIG_NEED_MULTIPLE_NODES
+-	VMCOREINFO_SYMBOL(contig_page_data);
+-#endif
+ #if defined(CONFIG_PPC64) && defined(CONFIG_SPARSEMEM_VMEMMAP)
+ 	VMCOREINFO_SYMBOL(vmemmap_list);
+ 	VMCOREINFO_SYMBOL(mmu_vmemmap_psize);
+diff --git a/include/linux/gfp.h b/include/linux/gfp.h
+index 11da8af06704..ba8c511c402f 100644
+--- a/include/linux/gfp.h
++++ b/include/linux/gfp.h
+@@ -493,9 +493,6 @@ static inline int gfp_zonelist(gfp_t flags)
+  * This zone list contains a maximum of MAX_NUMNODES*MAX_NR_ZONES zones.
+  * There are two zonelists per node, one for all zones with memory and
+  * one containing just zones from the node the zonelist belongs to.
+- *
+- * For the normal case of non-DISCONTIGMEM systems the NODE_DATA() gets
+- * optimized to &contig_page_data at compile-time.
+  */
+ static inline struct zonelist *node_zonelist(int nid, gfp_t flags)
+ {
+diff --git a/include/linux/mmzone.h b/include/linux/mmzone.h
+index 557918dcc755..c0769292187c 100644
+--- a/include/linux/mmzone.h
++++ b/include/linux/mmzone.h
+@@ -1043,9 +1043,8 @@ extern char numa_zonelist_order[];
+ 
+ #ifndef CONFIG_NEED_MULTIPLE_NODES
+ 
+-extern struct pglist_data contig_page_data;
+-#define NODE_DATA(nid)		(&contig_page_data)
+ extern struct pglist_data *node_data[];
++#define NODE_DATA(nid)		(node_data[0])
+ #define NODE_MEM_MAP(nid)	mem_map
+ 
+ #else /* CONFIG_NEED_MULTIPLE_NODES */
+diff --git a/kernel/crash_core.c b/kernel/crash_core.c
+index 825284baaf46..d1e324be67f9 100644
+--- a/kernel/crash_core.c
++++ b/kernel/crash_core.c
+@@ -457,7 +457,6 @@ static int __init crash_save_vmcoreinfo_init(void)
+ 
+ #ifndef CONFIG_NEED_MULTIPLE_NODES
+ 	VMCOREINFO_SYMBOL(mem_map);
+-	VMCOREINFO_SYMBOL(contig_page_data);
+ #endif
+ #ifdef CONFIG_SPARSEMEM
+ 	VMCOREINFO_SYMBOL_ARRAY(mem_section);
+diff --git a/mm/memblock.c b/mm/memblock.c
+index ebddb57ea62d..7cfc9a9d6243 100644
+--- a/mm/memblock.c
++++ b/mm/memblock.c
+@@ -93,8 +93,6 @@
+  */
+ 
+ #ifndef CONFIG_NEED_MULTIPLE_NODES
+-struct pglist_data __refdata contig_page_data;
+-EXPORT_SYMBOL(contig_page_data);
+ struct pglist_data *node_data[MAX_NUMNODES];
+ #endif
+ 
 -- 
 2.18.0
 _______________________________________________
