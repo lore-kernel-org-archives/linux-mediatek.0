@@ -2,60 +2,60 @@ Return-Path: <SRS0=DTMy=KN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2153DC433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50797C433ED
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:22:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E00FE6112F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:21:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E00FE6112F
+	by mail.kernel.org (Postfix) with ESMTPS id D9AB860E09
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:21:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D9AB860E09
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DARakBHR7xkSxiQiPuxjdJneKGP0TX4V+IyBFil7dxs=; b=NBekrycrVMD3h4z0gsARg/zsVD
-	2tEe1Dj8yGKEJqZBMYJPcRPV+A9ih2F9be4W3IVJR+1zUpMr5HN8+V/UnROcXewf2zZh0lWPGznLt
-	RlxBPRZ/yvAlWorEoQC1UpAR+CP38wRu7ncdX92CnpiDkVAcTdjZS3Orz9CVWIQMJaO1/jTgoh3OL
-	R7FBWjc/hCh8xzql1RUJKTrbfD8gxRixaNCtTRr9uXbkvy9YpMywtMxrkxze4M6VblsIU7r+snkI3
-	1fNeN7Bgu9MKmHErI9XeQqCbj+96pkzHdPc10769ejMOpXFhX3Y+/CMkOmxkdnXf2/hWk3K0tBPjo
-	RVvN2hsA==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1bjW2Xa09GcYrnzLnLewnshELzxSbSmlcXT6Gq+QY78=; b=G8p8B14n/tF3D5i3L0Eyd97EH7
+	1SbxKi6wUrH4fU7wlL3fDwe61pR4zCkI1EOMCeEyoUhq81TBT3BdDm3dPGT4Uk2hdOAftDxqvixJW
+	0vpbeYxbNZGa9DGwxWbDPm+KMxGo0RrP/I7HMTqZtieDowVnJ5nhaT7aeS9sg4S6zXYjcVOaqE4d8
+	Nal1StZt2QYL4G/xGiMNRYyadw+6OG+p4lT1a8VxfBPH7OMuD9rm7WPvOc+LvVNGTkbh5lhdKVJ+M
+	yBF6/TnjhC8xi1Qnv9eLMRU4fBxC+8g1rNJHTPpdEY0FyPrkkhHB343uliXKyH25YA/RFiKVwo6Ep
+	hGJyH5tQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lj0bL-0010TH-EQ; Tue, 18 May 2021 14:21:39 +0000
+	id 1lj0bP-0010UP-0G; Tue, 18 May 2021 14:21:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lj0ZX-000zsI-5N
+ id 1lj0ZX-000zsM-Db
  for linux-mediatek@desiato.infradead.org; Tue, 18 May 2021 14:19:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:In-Reply-To:References;
- bh=6l+fOgRHVXYTbt6GdJ5SI1B3WlaYCXRQFdlh2uABWsQ=; b=UYv5TKdNJj8e+TR3PW1lzhliNJ
- M6GXot1QF3FXNPzLURsgZzKpIaFRqJc9AeGsclEFoTa87rArFMcWRwF0kdR3M3n/+/M1Rur/izl30
- IVBn19Hu6Ya3GnqGl47KxVFY88J8rrih2KXo64Si+iaZticE8tvJFouWfgqNbsdKwg/ipMnxbg3Xn
- o/CyLLwirB7at9lY5hLHFo+yADb1za2mX9nbKRjwtruabn0IBlCzi3wMnO8bxzalzSW3/RCY2Eqfw
- KW+gyMImxju6Nmn3R9R2xcT5tIFEFsKVH9M0YgzKNMS7fe7AHT6p6Mfwy3YpgsypmfqdculbwqfVV
- FfpsTUXw==;
+ d=infradead.org; s=bombadil.20210309; h=References:In-Reply-To:Message-Id:
+ Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=5mGRYOjmxYHK+P6Bw1YKCcRa7tLRX9MJudJPLVEKWnw=; b=SBxvdnleR0SrWPpwTZ3xRGdgst
+ JWX2SfhDjdpyO0JqL9+GTIlFB6DUruaU7zg31iymaz16R1mTAOxTRh5UJEciVsVyTtD6E/qr+UWMg
+ GrlEyqpmENpvs1dhKNL56bGD+UW1uRyf7d3MRAWNxBJ7b43sL471c0hwSIiAaLft04RFoyl8qvytM
+ lQE8/MW9hSk5voOB4ucijDG9WPHc07u9E3lCnMHxGr0ncQNjK7H6cZX6RLeEn3Z1TB/rCcAZXbS53
+ CMHO75hgaepxX0MGW1IH6OP+IBUgVwtU1RNj2qaNz7uYhypmZoOcFhasis+ZWuAokmR3in9V4o2FL
+ 33RqZoKA==;
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lj0ZT-00Eikj-3L
- for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 14:19:45 +0000
+ id 1lj0ZT-00Eil2-Dw
+ for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 14:19:46 +0000
 Received: from guri.fritz.box (unknown
  [IPv6:2a02:810a:880:f54:8085:99d1:d3e8:47cc])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 93F001F42B04;
- Tue, 18 May 2021 15:19:39 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 4FADF1F42B0D;
+ Tue, 18 May 2021 15:19:41 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
@@ -66,13 +66,16 @@ Cc: megous@megous.com, linux-usb@vger.kernel.org, a.hajda@samsung.com,
  enric.balletbo@collabora.com, drinkcat@chromium.org, hsinyi@chromium.org,
  kernel@collabora.com, dafna3@gmail.com, dafna.hirschfeld@collabora.com,
  robh+dt@kernel.org
-Subject: [PATCH v6 RESEND 0/2] Add support for ANX7688
-Date: Tue, 18 May 2021 16:19:25 +0200
-Message-Id: <20210518141927.24795-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v6 RESEND 2/2] drm/bridge: Add ChromeOS EC ANX7688 bridge
+ driver support
+Date: Tue, 18 May 2021 16:19:27 +0200
+Message-Id: <20210518141927.24795-3-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20210518141927.24795-1-dafna.hirschfeld@collabora.com>
+References: <20210518141927.24795-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_071943_293290_4FDD214D 
-X-CRM114-Status: GOOD (  14.79  )
+X-CRM114-CacheID: sfid-20210518_071943_760594_BABF47B6 
+X-CRM114-Status: GOOD (  25.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,49 +93,263 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-(resending patchset with Rb tags)
-ANX7688 is a typec port controller that also converts HDMI to DP.
-It is found on Acer Chromebook R13 (elm) and on Pine64 PinePhone.
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-On Acer Chromebook R13 (elm), the device is powered-up and controller by the
-Embedded Controller. Therefore its operation is transparent
-to the SoC. It is used in elm only as a display bridge driver.
-The bridge driver only reads some values using i2c and use them to
-implement the mode_fixup cb.
+This driver adds support for the ChromeOS EC ANX7688 HDMI to DP converter
 
-On v5 we added the full dt-binding of the generic Analogix anx7688 device.
-The problem is that for elm, most of the fields are not needed since
-the anx7688 sits behind the EC. After a discussion on v5 (see [1])
-we decided to go back to the original approach and send the dt binding
-as specific to the elm. So in this version we rename the device to cros_ec_anx7688
-and use the compatible 'google,cros-ec-anx7688'.
+For our use case, the only reason the Linux kernel driver is necessary is
+to reject resolutions that require more bandwidth than what is available
+on the DP side. DP bandwidth and lane count are reported by the bridge via
+2 registers and, as far as we know, only chips that have a firmware
+version greater than 0.85 support these two registers.
 
-[1] https://patchwork.kernel.org/project/dri-devel/patch/20210305124351.15079-3-dafna.hirschfeld@collabora.com/
-
-Changes since v5:
-* treat the device as a specific combination of an ANX7688 behind the EC and
-call it 'cros-ec-anx7688'
-
-Changes since v4:
-In v4 of this set, the device was added as an 'mfd' device
-and an additional 'bridge' device for the HDMI-DP conversion, see [2].
-
-[2] https://lkml.org/lkml/2020/3/18/64
-
-Dafna Hirschfeld (1):
-  dt-bindings: display: add google,cros-ec-anx7688.yaml
-
-Enric Balletbo i Serra (1):
-  drm/bridge: Add ChromeOS EC ANX7688 bridge driver support
-
- .../bridge/google,cros-ec-anx7688.yaml        |  82 ++++++++
- drivers/gpu/drm/bridge/Kconfig                |  12 ++
- drivers/gpu/drm/bridge/Makefile               |   1 +
- drivers/gpu/drm/bridge/cros-ec-anx7688.c      | 191 ++++++++++++++++++
- 4 files changed, 286 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
+Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+[The driver is OF only so should depends on CONFIG_OF]
+Reported-by: kbuild test robot <lkp@intel.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+[convert to i2c driver, rename to cros_ec_anx7688, add err checks]
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ drivers/gpu/drm/bridge/Kconfig           |  12 ++
+ drivers/gpu/drm/bridge/Makefile          |   1 +
+ drivers/gpu/drm/bridge/cros-ec-anx7688.c | 191 +++++++++++++++++++++++
+ 3 files changed, 204 insertions(+)
  create mode 100644 drivers/gpu/drm/bridge/cros-ec-anx7688.c
 
+diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+index 630072f3ab59..7e9df06bae19 100644
+--- a/drivers/gpu/drm/bridge/Kconfig
++++ b/drivers/gpu/drm/bridge/Kconfig
+@@ -50,6 +50,18 @@ config DRM_CHRONTEL_CH7033
+ 
+ 	  If in doubt, say "N".
+ 
++config DRM_CROS_EC_ANX7688
++	tristate "ChromeOS EC ANX7688 bridge"
++	depends on OF
++	select DRM_KMS_HELPER
++	select REGMAP_I2C
++	help
++	  ChromeOS EC ANX7688 is an ultra-low power
++	  4K Ultra-HD (4096x2160p60) mobile HD transmitter
++	  designed for ChromeOS devices. It converts HDMI
++	  2.0 to DisplayPort 1.3 Ultra-HD. It is connected
++	  to the ChromeOS Embedded Controller.
++
+ config DRM_DISPLAY_CONNECTOR
+ 	tristate "Display connector support"
+ 	depends on OF
+diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+index b017ec182b8f..ae27ef374ef3 100644
+--- a/drivers/gpu/drm/bridge/Makefile
++++ b/drivers/gpu/drm/bridge/Makefile
+@@ -2,6 +2,7 @@
+ obj-$(CONFIG_DRM_CDNS_DSI) += cdns-dsi.o
+ obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
+ obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
++obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
+ obj-$(CONFIG_DRM_DISPLAY_CONNECTOR) += display-connector.o
+ obj-$(CONFIG_DRM_LONTIUM_LT8912B) += lontium-lt8912b.o
+ obj-$(CONFIG_DRM_LONTIUM_LT9611) += lontium-lt9611.o
+diff --git a/drivers/gpu/drm/bridge/cros-ec-anx7688.c b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+new file mode 100644
+index 000000000000..0f6d907432e3
+--- /dev/null
++++ b/drivers/gpu/drm/bridge/cros-ec-anx7688.c
+@@ -0,0 +1,191 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * CrOS EC ANX7688 HDMI->DP bridge driver
++ *
++ * Copyright 2020 Google LLC
++ */
++
++#include <drm/drm_bridge.h>
++#include <drm/drm_print.h>
++#include <linux/i2c.h>
++#include <linux/module.h>
++#include <linux/regmap.h>
++#include <linux/types.h>
++
++/* Register addresses */
++#define ANX7688_VENDOR_ID_REG		0x00
++#define ANX7688_DEVICE_ID_REG		0x02
++
++#define ANX7688_FW_VERSION_REG		0x80
++
++#define ANX7688_DP_BANDWIDTH_REG	0x85
++#define ANX7688_DP_LANE_COUNT_REG	0x86
++
++#define ANX7688_VENDOR_ID		0x1f29
++#define ANX7688_DEVICE_ID		0x7688
++
++/* First supported firmware version (0.85) */
++#define ANX7688_MINIMUM_FW_VERSION	0x0085
++
++static const struct regmap_config cros_ec_anx7688_regmap_config = {
++	.reg_bits = 8,
++	.val_bits = 8,
++};
++
++struct cros_ec_anx7688 {
++	struct i2c_client *client;
++	struct regmap *regmap;
++	struct drm_bridge bridge;
++	bool filter;
++};
++
++static inline struct cros_ec_anx7688 *
++bridge_to_cros_ec_anx7688(struct drm_bridge *bridge)
++{
++	return container_of(bridge, struct cros_ec_anx7688, bridge);
++}
++
++static bool cros_ec_anx7688_bridge_mode_fixup(struct drm_bridge *bridge,
++					      const struct drm_display_mode *mode,
++					      struct drm_display_mode *adjusted_mode)
++{
++	struct cros_ec_anx7688 *anx = bridge_to_cros_ec_anx7688(bridge);
++	int totalbw, requiredbw;
++	u8 dpbw, lanecount;
++	u8 regs[2];
++	int ret;
++
++	if (!anx->filter)
++		return true;
++
++	/* Read both regs 0x85 (bandwidth) and 0x86 (lane count). */
++	ret = regmap_bulk_read(anx->regmap, ANX7688_DP_BANDWIDTH_REG, regs, 2);
++	if (ret < 0) {
++		DRM_ERROR("Failed to read bandwidth/lane count\n");
++		return false;
++	}
++	dpbw = regs[0];
++	lanecount = regs[1];
++
++	/* Maximum 0x19 bandwidth (6.75 Gbps Turbo mode), 2 lanes */
++	if (dpbw > 0x19 || lanecount > 2) {
++		DRM_ERROR("Invalid bandwidth/lane count (%02x/%d)\n", dpbw,
++			  lanecount);
++		return false;
++	}
++
++	/* Compute available bandwidth (kHz) */
++	totalbw = dpbw * lanecount * 270000 * 8 / 10;
++
++	/* Required bandwidth (8 bpc, kHz) */
++	requiredbw = mode->clock * 8 * 3;
++
++	DRM_DEBUG_KMS("DP bandwidth: %d kHz (%02x/%d); mode requires %d Khz\n",
++		      totalbw, dpbw, lanecount, requiredbw);
++
++	if (totalbw == 0) {
++		DRM_ERROR("Bandwidth/lane count are 0, not rejecting modes\n");
++		return true;
++	}
++
++	return totalbw >= requiredbw;
++}
++
++static const struct drm_bridge_funcs cros_ec_anx7688_bridge_funcs = {
++	.mode_fixup = cros_ec_anx7688_bridge_mode_fixup,
++};
++
++static int cros_ec_anx7688_bridge_probe(struct i2c_client *client)
++{
++	struct device *dev = &client->dev;
++	struct cros_ec_anx7688 *anx7688;
++	u16 vendor, device, fw_version;
++	u8 buffer[4];
++	int ret;
++
++	anx7688 = devm_kzalloc(dev, sizeof(*anx7688), GFP_KERNEL);
++	if (!anx7688)
++		return -ENOMEM;
++
++	anx7688->client = client;
++	i2c_set_clientdata(client, anx7688);
++
++	anx7688->regmap = devm_regmap_init_i2c(client, &cros_ec_anx7688_regmap_config);
++	if (IS_ERR(anx7688->regmap)) {
++		ret = PTR_ERR(anx7688->regmap);
++		dev_err(dev, "regmap i2c init failed: %d\n", ret);
++		return ret;
++	}
++
++	/* Read both vendor and device id (4 bytes). */
++	ret = regmap_bulk_read(anx7688->regmap, ANX7688_VENDOR_ID_REG,
++			       buffer, 4);
++	if (ret) {
++		dev_err(dev, "Failed to read chip vendor/device id\n");
++		return ret;
++	}
++
++	vendor = (u16)buffer[1] << 8 | buffer[0];
++	device = (u16)buffer[3] << 8 | buffer[2];
++	if (vendor != ANX7688_VENDOR_ID || device != ANX7688_DEVICE_ID) {
++		dev_err(dev, "Invalid vendor/device id %04x/%04x\n",
++			vendor, device);
++		return -ENODEV;
++	}
++
++	ret = regmap_bulk_read(anx7688->regmap, ANX7688_FW_VERSION_REG,
++			       buffer, 2);
++	if (ret) {
++		dev_err(dev, "Failed to read firmware version\n");
++		return ret;
++	}
++
++	fw_version = (u16)buffer[0] << 8 | buffer[1];
++	dev_info(dev, "ANX7688 firmware version 0x%04x\n", fw_version);
++
++	anx7688->bridge.of_node = dev->of_node;
++
++	/* FW version >= 0.85 supports bandwidth/lane count registers */
++	if (fw_version >= ANX7688_MINIMUM_FW_VERSION)
++		anx7688->filter = true;
++	else
++		/* Warn, but not fail, for backwards compatibility */
++		DRM_WARN("Old ANX7688 FW version (0x%04x), not filtering\n",
++			 fw_version);
++
++	anx7688->bridge.funcs = &cros_ec_anx7688_bridge_funcs;
++	drm_bridge_add(&anx7688->bridge);
++
++	return 0;
++}
++
++static int cros_ec_anx7688_bridge_remove(struct i2c_client *client)
++{
++	struct cros_ec_anx7688 *anx7688 = i2c_get_clientdata(client);
++
++	drm_bridge_remove(&anx7688->bridge);
++
++	return 0;
++}
++
++static const struct of_device_id cros_ec_anx7688_bridge_match_table[] = {
++	{ .compatible = "google,cros-ec-anx7688" },
++	{ }
++};
++MODULE_DEVICE_TABLE(of, cros_ec_anx7688_bridge_match_table);
++
++static struct i2c_driver cros_ec_anx7688_bridge_driver = {
++	.probe_new = cros_ec_anx7688_bridge_probe,
++	.remove = cros_ec_anx7688_bridge_remove,
++	.driver = {
++		.name = "cros-ec-anx7688-bridge",
++		.of_match_table = cros_ec_anx7688_bridge_match_table,
++	},
++};
++
++module_i2c_driver(cros_ec_anx7688_bridge_driver);
++
++MODULE_DESCRIPTION("ChromeOS EC ANX7688 HDMI->DP bridge driver");
++MODULE_AUTHOR("Nicolas Boichat <drinkcat@chromium.org>");
++MODULE_AUTHOR("Enric Balletbo i Serra <enric.balletbo@collabora.com>");
++MODULE_LICENSE("GPL");
 -- 
 2.17.1
 
