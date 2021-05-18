@@ -2,109 +2,77 @@ Return-Path: <SRS0=DTMy=KN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28AE9C433ED
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 11:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2153DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:21:56 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A41AB6124C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 11:23:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A41AB6124C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id E00FE6112F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 14:21:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E00FE6112F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=LrnTWdkyyvvf7tvzD/ZlKjp1gCjUBlULHOEVge1yYUc=; b=ZEOG4mqLgkgY7WDDumgZzKOYm
-	ARqgsuUej4TgKSb4mxmA+kufmVpfXQ1uU7HMAmgMZQ7O0+OTiRKcqTDwKY5uQ2S/UbnX3uyfsEXUH
-	UHX06ufHWOjWuS08h4ENjMqyD6rYqxRu+T3ONLuVeOKEwNQ4P9rcrE14xUPQoxNreU7cCl6mib6HH
-	3VdEmE0RD7UUSfMCSaXURgZfXNA6v3fACP5ozGEMGXM6zuD1L5MJzbrchb8xnsDJVrnjGWrSD9dTS
-	Uo+iT/YLdAQ5Lc+G2lEvTnhzsbwz96GLjIjRLxK53eOLgwB3NPkQQnqWigol0TxSN6DPH3kTz2L0n
-	posTXhj7A==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=DARakBHR7xkSxiQiPuxjdJneKGP0TX4V+IyBFil7dxs=; b=NBekrycrVMD3h4z0gsARg/zsVD
+	2tEe1Dj8yGKEJqZBMYJPcRPV+A9ih2F9be4W3IVJR+1zUpMr5HN8+V/UnROcXewf2zZh0lWPGznLt
+	RlxBPRZ/yvAlWorEoQC1UpAR+CP38wRu7ncdX92CnpiDkVAcTdjZS3Orz9CVWIQMJaO1/jTgoh3OL
+	R7FBWjc/hCh8xzql1RUJKTrbfD8gxRixaNCtTRr9uXbkvy9YpMywtMxrkxze4M6VblsIU7r+snkI3
+	1fNeN7Bgu9MKmHErI9XeQqCbj+96pkzHdPc10769ejMOpXFhX3Y+/CMkOmxkdnXf2/hWk3K0tBPjo
+	RVvN2hsA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lixou-000XET-Az; Tue, 18 May 2021 11:23:28 +0000
+	id 1lj0bL-0010TH-EQ; Tue, 18 May 2021 14:21:39 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lixoY-000XBC-3p
- for linux-mediatek@desiato.infradead.org; Tue, 18 May 2021 11:23:06 +0000
+ id 1lj0ZX-000zsI-5N
+ for linux-mediatek@desiato.infradead.org; Tue, 18 May 2021 14:19:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=oaLFELdmsSuj6jGUpLjdC3C6Wd7IWhp+KmWoppj+Ots=; b=0e8KI1fUcqnqRXqYodxurIfK67
- W2npht8nBkP24DMzOEpnjkEnq2ntvuyjE30minTPG8GN+E4ZGglYkYfTfM66XHGcIsQVYf0XoZg6F
- Syyop61YMnKr0rRRvSQmMBQUamhOKp/lWNVXLTXJHa2wAlSnsws+U0L++QriXxtRJpGGOITJ7Fpdd
- 1s3hwabasJM75pZPgtJC9jau4TFkeLZpmXL+miqcQLh3ADZ4iaZx948Up28gOVmyl+p2XBgeJ1Vm9
- BYEQFWLIxRJJW4ldsY8cj36sQmbVEv66KjhFzc0aJX4hXsGbYv1FVssclhPAW1J21yAB527gzai0m
- /he4+MLg==;
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=6l+fOgRHVXYTbt6GdJ5SI1B3WlaYCXRQFdlh2uABWsQ=; b=UYv5TKdNJj8e+TR3PW1lzhliNJ
+ M6GXot1QF3FXNPzLURsgZzKpIaFRqJc9AeGsclEFoTa87rArFMcWRwF0kdR3M3n/+/M1Rur/izl30
+ IVBn19Hu6Ya3GnqGl47KxVFY88J8rrih2KXo64Si+iaZticE8tvJFouWfgqNbsdKwg/ipMnxbg3Xn
+ o/CyLLwirB7at9lY5hLHFo+yADb1za2mX9nbKRjwtruabn0IBlCzi3wMnO8bxzalzSW3/RCY2Eqfw
+ KW+gyMImxju6Nmn3R9R2xcT5tIFEFsKVH9M0YgzKNMS7fe7AHT6p6Mfwy3YpgsypmfqdculbwqfVV
+ FfpsTUXw==;
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lixoT-00EbC6-RM
- for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 11:23:04 +0000
-Received: by mail-wm1-x331.google.com with SMTP id
- u5-20020a7bc0450000b02901480e40338bso1378999wmc.1
- for <linux-mediatek@lists.infradead.org>; Tue, 18 May 2021 04:23:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=oaLFELdmsSuj6jGUpLjdC3C6Wd7IWhp+KmWoppj+Ots=;
- b=VKSM0kO2iOln9CQUfzNDIsaTFKxbenOaoUvS60FBMhhB5nYExLkbpuY82iCC+ohbQX
- F7cHamO4ub1tlhjaLWntbt8A677LWvQxZWIWTWuKA2x6L9yFn+IFCd43RLTbl4mW3RhI
- whmFtFv3pH0pvFuKOKFL8HveAo1pQPXXjIB1/x54gENVkwDGlwCPT4H94WN3/B4dm0V0
- U8iT7kCQ+m1pxzgvAYMYqIVbvl/I5vB22MaaAJnGZdczQh01NYNY6deiijmc6zJNcgcb
- 4fx66hXYMQzIfDyZ9mVjCtIh7T/bpJkidlDjcaiFvK1kVRsDxzK59s29Y7sfTYt7fpcu
- AObw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=oaLFELdmsSuj6jGUpLjdC3C6Wd7IWhp+KmWoppj+Ots=;
- b=lppfC82B/8sSXxr4eUkn5Vl7jwsC/PfLpbva/kjo5/3EcWRz5jHdGg1ZT8DG9Zu2aa
- sz5c8a0ucYFCy/xG3LcIjU0xxW8w/6aE3lYa0A15wdCdVqcXrU9aMGyjr39W3pzyeyE2
- oH4BVwXEVhTpLAPiHGxAB2dpdP6hTeIi6WHzz4e9Y220bBGAWeJEUv4jO2hXi0dBLXRC
- t1S2Usd4I2xnxGWVlD+shGOb2jQuXN76CrA7Sqw4gnIPNk2bwPm409aLKrMqJW5ha7me
- /sLhDjsqKkUCP9357WME4zSVVJ9su59fkl9tMzYYgfswlVRi43MZ8UNVsgAC7T7BhhlO
- Nxsw==
-X-Gm-Message-State: AOAM53129dOEuf6ksT+MjjMWjayhuN8GOvhW3rdikrAjVPVbzI+QOgWy
- HMMDauDR4+01GHBkuO2t3qbAng==
-X-Google-Smtp-Source: ABdhPJzl2Utkm0LkpJMg42RFFaMV0xPUsR/PlhE1Hxe69g5OBNLG/XNR5HueBpJgHnFR0O56vHEiXg==
-X-Received: by 2002:a05:600c:4a23:: with SMTP id
- c35mr4408392wmp.130.1621336980047; 
- Tue, 18 May 2021 04:23:00 -0700 (PDT)
-Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id y20sm2881337wmi.0.2021.05.18.04.22.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 May 2021 04:22:59 -0700 (PDT)
-From: Fabien Parent <fparent@baylibre.com>
-To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
- linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] dt-bindings: rng: mediatek: add mt8365 to mtk rng binding
-Date: Tue, 18 May 2021 13:22:50 +0200
-Message-Id: <20210518112250.2146819-2-fparent@baylibre.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210518112250.2146819-1-fparent@baylibre.com>
-References: <20210518112250.2146819-1-fparent@baylibre.com>
-MIME-Version: 1.0
+ id 1lj0ZT-00Eikj-3L
+ for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 14:19:45 +0000
+Received: from guri.fritz.box (unknown
+ [IPv6:2a02:810a:880:f54:8085:99d1:d3e8:47cc])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 93F001F42B04;
+ Tue, 18 May 2021 15:19:39 +0100 (BST)
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: megous@megous.com, linux-usb@vger.kernel.org, a.hajda@samsung.com,
+ narmstrong@baylibre.com, Laurent.pinchart@ideasonboard.com,
+ jonas@kwiboo.se, jernej.skrabec@siol.net, airlied@linux.ie,
+ daniel@ffwll.ch, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ enric.balletbo@collabora.com, drinkcat@chromium.org, hsinyi@chromium.org,
+ kernel@collabora.com, dafna3@gmail.com, dafna.hirschfeld@collabora.com,
+ robh+dt@kernel.org
+Subject: [PATCH v6 RESEND 0/2] Add support for ANX7688
+Date: Tue, 18 May 2021 16:19:25 +0200
+Message-Id: <20210518141927.24795-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_042301_890687_0D6E29D7 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210518_071943_293290_4FDD214D 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,34 +84,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add RNG binding for MT8365 SoC.
+(resending patchset with Rb tags)
+ANX7688 is a typec port controller that also converts HDMI to DP.
+It is found on Acer Chromebook R13 (elm) and on Pine64 PinePhone.
 
-Signed-off-by: Fabien Parent <fparent@baylibre.com>
----
- Documentation/devicetree/bindings/rng/mtk-rng.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+On Acer Chromebook R13 (elm), the device is powered-up and controller by the
+Embedded Controller. Therefore its operation is transparent
+to the SoC. It is used in elm only as a display bridge driver.
+The bridge driver only reads some values using i2c and use them to
+implement the mode_fixup cb.
 
-diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
-index d9731f0ae47d..ccff10b27f73 100644
---- a/Documentation/devicetree/bindings/rng/mtk-rng.yaml
-+++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
-@@ -20,6 +20,9 @@ properties:
-       - items:
-           - const: mediatek,mt7629-rng
-           - const: mediatek,mt7623-rng
-+      - items:
-+          - const: mediatek,mt8365-rng
-+          - const: mediatek,mt7623-rng
-       - items:
-           - const: mediatek,mt8516-rng
-           - const: mediatek,mt7623-rng
+On v5 we added the full dt-binding of the generic Analogix anx7688 device.
+The problem is that for elm, most of the fields are not needed since
+the anx7688 sits behind the EC. After a discussion on v5 (see [1])
+we decided to go back to the original approach and send the dt binding
+as specific to the elm. So in this version we rename the device to cros_ec_anx7688
+and use the compatible 'google,cros-ec-anx7688'.
+
+[1] https://patchwork.kernel.org/project/dri-devel/patch/20210305124351.15079-3-dafna.hirschfeld@collabora.com/
+
+Changes since v5:
+* treat the device as a specific combination of an ANX7688 behind the EC and
+call it 'cros-ec-anx7688'
+
+Changes since v4:
+In v4 of this set, the device was added as an 'mfd' device
+and an additional 'bridge' device for the HDMI-DP conversion, see [2].
+
+[2] https://lkml.org/lkml/2020/3/18/64
+
+Dafna Hirschfeld (1):
+  dt-bindings: display: add google,cros-ec-anx7688.yaml
+
+Enric Balletbo i Serra (1):
+  drm/bridge: Add ChromeOS EC ANX7688 bridge driver support
+
+ .../bridge/google,cros-ec-anx7688.yaml        |  82 ++++++++
+ drivers/gpu/drm/bridge/Kconfig                |  12 ++
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ drivers/gpu/drm/bridge/cros-ec-anx7688.c      | 191 ++++++++++++++++++
+ 4 files changed, 286 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/google,cros-ec-anx7688.yaml
+ create mode 100644 drivers/gpu/drm/bridge/cros-ec-anx7688.c
+
 -- 
-2.31.1
+2.17.1
 
 
 _______________________________________________
