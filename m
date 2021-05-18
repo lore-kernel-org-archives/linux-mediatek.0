@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D125C433B4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 17:54:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A97EAC433B4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 17:55:19 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE693611B0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 17:54:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE693611B0
+	by mail.kernel.org (Postfix) with ESMTPS id 13066611BF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 May 2021 17:55:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13066611BF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,66 +23,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9KO4a/zU5O0K+koMWKBBm4hkQIUsgekMoj1ZaFIrOmo=; b=qZZ0ar8NAjN3ThdDwPlHJ43eJ
-	7lF8giKqrVpae+ZNWl5EYlXv5QGgWx4sAc0WK3rfukpsvaY1sQmkVwjxsMGOYLwfFEH6kxRQw3OPx
-	IenWK1khDnb+NcAPvp13uMB6qSE1WzjYDYeHxa2q49K4UjOC8ZvtrOxt7q/KaxrvE+cfCJU71paLh
-	4jJDAODAFgDxgqhocyLT0pzf7oot/CwzFSmEBhF4opFDH+CP5bUTx2uveQ0a6stPMnTYKmSsX87y0
-	Ia3QnD/chUW6Lf/56DfSbSr1skLT/F6DOK2YM7ooLuuYeSqkkPnMbCGQVwBKzyd5fxVk3eLO/hgaK
-	XJu1S2Wjg==;
+	 bh=wzJDyuWjJ7ckZ3p/uZk9j69Pz+kwHC7R1WbFDTgwwTQ=; b=MBPAzGtWJm0fAijjJ40ILDGkd
+	PjqlwYV78DHIfOo96oy61i6dlDaD7SJ/g4sf0BQ8Eewp0CIvRtVKWNVtCcK95p0P31HLI7ComsLbp
+	iz9OnnPa8HT39wFTUHeLy4ut70Ttc+Lhbq6C9yK7XWWY3jFPM9BypFvg32d7+KVJZHchL2sNG2D0y
+	6q0XdGZqiE7Z8mQDtEIa+yJwomEkgh+ALUCtiKlMgi+1znCRwrU/XLWKf/jYmo1oHXMP9EPLW28+x
+	kSI7FZkPVJpj+XrZo9hADfUUV0bQUB8ySsYO30/eMptpzJRqHVK3ephjB5d4Emhz3oz1lxzJRxTzA
+	q3QsgWILA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1lj3vY-001XXa-95; Tue, 18 May 2021 17:54:44 +0000
+	id 1lj3vu-001XbT-Ud; Tue, 18 May 2021 17:55:07 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lj3vK-001XVL-Fb
- for linux-mediatek@desiato.infradead.org; Tue, 18 May 2021 17:54:30 +0000
+ id 1lj3vL-001XVh-LW
+ for linux-mediatek@desiato.infradead.org; Tue, 18 May 2021 17:54:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=PLVQ7hIqXEULCgZ/4wiK8+ueeFxBJlxUXknsRaEIBHA=; b=tQF25KtDmbUnPPR/2k9+KPlt0s
- 2h7aESw97pMGXAwe7WJ0SMufWhxr1Hb4BCuXUJphSZPIJNfAVE++UXB+kNQ9xi5+EqHThBXnNtFR/
- MKtxTBgHSgmNBxIuLBFaBGW2MzuzeG5HMpDEYhcuC2T5jNvLqQ9j1ewkLsb29BykpVVSIALl8N9z3
- O2g941ALH9VB0UvaDeXZjCs0w1smJPCuEWo8kWCC15RMiqk6wSbV7m+x+Z8b1uuLQb7Y/TDH1hzXo
- /h0eZ37bftyg9b/k30pqNrfklJ6ycmBnAXyx1ofewfDXU+77XnzN7oVunKgpM0ree7AYeEpMhmXS+
- SxuYM2YA==;
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ bh=oTjBUDtJCB1J9ynhq80z5EUfzEOQqX8trIBK7k8vqMA=; b=oy14EGz9YvcoO4Ew4Te/sCMJXa
+ zsSdVjotfpWL9QmnHLoLx/Fee3TP86v+Ghdi7f6OIX1Hfot484mO3imIoB4d0szmp/Nv0zd60XSOP
+ zbhzdQcyD+WKS5XEOuRi1ZJAGbuIMRrcCoPMRIpYfmKoRnNHRwIwyMrLFfimsLBk609XODxQ8MDJ8
+ QoeTzYqWHpdFaL+lIIZh9Isjq9Tjn6tjcyoSlIGWTZHZyAmnoJos+4sVQA/FD5HU7fvgBWyQpS1bC
+ 65hU5KBiW9bc+IoXiaFHTj6LMkjEWqotU7I4FoC9rcpLuEqo50bSxosmHr9ZUVB5isDYmaRgtpOtb
+ sWBLUPNA==;
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lj3vH-00Er08-Pi
- for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 17:54:29 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id j14so9462309wrq.5
- for <linux-mediatek@lists.infradead.org>; Tue, 18 May 2021 10:54:27 -0700 (PDT)
+ id 1lj3vJ-00Er0f-5b
+ for linux-mediatek@lists.infradead.org; Tue, 18 May 2021 17:54:30 +0000
+Received: by mail-wr1-x430.google.com with SMTP id a4so11229992wrr.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 18 May 2021 10:54:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PLVQ7hIqXEULCgZ/4wiK8+ueeFxBJlxUXknsRaEIBHA=;
- b=Fw1hiSEKJwwWL4NurL0SjZg9GALsBP+nS9UPU6oFcZOXSdUM3c25El70ylGrJ7XPBZ
- JplQI+zkgEdFTLbJ/DJEEry6En7TI1P2kUM1wDrZKIS5FMp60iwF5y/5ctYpLqEdfaje
- zsP5m/516eJcdr/aVZFMEMVSC0yrRLz7zrhbHDnU40OQk+UyYTmT9KczAfN1pQWBW2mm
- /nnyQfkzFsOt9EGCaNN/4q5lFYd3XHKk6oD+cXu7nC5V6xBma4pFnwYn/V/cZckuQ7ao
- 6zuKdep4qJflBGTs7ddu+uh7vP5JsONiuRJAnLp0ZF2CL/Y9jJzPo2HAMFppOfxgfMux
- prrw==
+ bh=oTjBUDtJCB1J9ynhq80z5EUfzEOQqX8trIBK7k8vqMA=;
+ b=K4IpbOBeRCDOgQiM6FDeJT3mk1uhIKsw0dzbEbSPM1skpiUAk+nb9km8r3h/745grb
+ /HLeM3mmZwtutSsG50RHiRis51y6YQei9vpzPt8Lz9jAJqcfh5T27atB3JxEUtZjZyIb
+ xMIILo0/85wryKnJD9jmv10XAaEHukZ9NYvIoHRzrz42g50p/R5atl2iYlftxJ1zxyoz
+ M2Rk93DnSuW1Ijfh2DKwFhi0Fd1VGPcgdrSTH9Pyqp5Ndn7ec4NMbKncBdhIR0ydireS
+ Pz3rXpQ4XtkJya2vrNQ8kN0ETSPtXT2znaP1BFE7odo+p+DhnDd2CyGdUumOQ3vp1C8S
+ UX/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PLVQ7hIqXEULCgZ/4wiK8+ueeFxBJlxUXknsRaEIBHA=;
- b=En9bLT+GokVgBswCzjSPnoXqWU0cvYODjEAs0CqvBJmrcGnwot3oXPt7aLZI15N7qf
- ebMcc0LnggQCTQxElAE6OVWHxbZLc3rIIa64vMVy1vwKZmXLQeWvP9Y1hIFF2hqKpgv1
- Lxyu6S/ngAmtwV3o6O0lUKY8ABDSyFWi6y4y3pr3DuA3JAIYCrQxBDmv0pIuqTeZYOC6
- l7mkEPKzHIHIPKIDJMgDXM5CmdA3B1hvk0kIHPICMuZ841NX79zdkj25NHzbDq1HYURb
- 00Fl8Qrjn+tNsKauqXWEzpUm0cTGtFZvP3rP1aJneVgEvhz6wNpUhvzDzn48ALZ2IfKN
- KtFA==
-X-Gm-Message-State: AOAM530nMlJ94RJ4m2ZFTXEyaCuDk2Tpa59MJleULbg52nHcffVf/Mq4
- cA9x2+/gkL+DQtxXC9nBBrUOdQ==
-X-Google-Smtp-Source: ABdhPJwm91GbLiu6awzKvHAEIvP7ZGY0aWkr8qz5BvRRbbR/Sgfv5RR/wmv+HKpYkgxbUn5hDqfw8w==
-X-Received: by 2002:adf:fd04:: with SMTP id e4mr8455935wrr.116.1621360466340; 
- Tue, 18 May 2021 10:54:26 -0700 (PDT)
+ bh=oTjBUDtJCB1J9ynhq80z5EUfzEOQqX8trIBK7k8vqMA=;
+ b=cn9QJifasV0gFaoyP0mYBf+OWb43b9DH+C6CTpi5Rl04lne7SNh7lyztTKSRh9siHp
+ 53/RebMzTJyBfbQfvAGl5fgPBuWcW7SrsY8LkBdztUNgy+9sumdImD1U9xuyuvKprIFD
+ zbgpvAmmFXJIuczx/niCwGEc14GvbWZvuMSqrUwelCzh6SSsZ7t5rFcVi/ZGmoNZzFeP
+ ImtRXOab2SrMlNy6npvNvC8UAD1SExPq/v+dGihY572kDT8O4Awt/SR5gDpO3l+WPtcS
+ k94UNI8AJaqpm3+jOj6XWVe5QmmCKL3gYB4hH1UqoJagDdPrdWrUwxSkBS3UzOaLC9yi
+ UH/Q==
+X-Gm-Message-State: AOAM532Vw0lz9VjbGxqHfanc1R69O+alXMr5p43ODWyCMHgwDcxqFY7N
+ BXcJtTK0PR8ounB1xan459dPsg==
+X-Google-Smtp-Source: ABdhPJw8Tr0azrXxw/3cA5XoNuS3GO362ZVgSmK+kMj5HqdWeyqVqXBzGMEbV+QpbfMIDmo1+rvA8A==
+X-Received: by 2002:a5d:4346:: with SMTP id u6mr8631720wrr.304.1621360467692; 
+ Tue, 18 May 2021 10:54:27 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id a17sm14458963wrt.53.2021.05.18.10.54.25
+ by smtp.gmail.com with ESMTPSA id a17sm14458963wrt.53.2021.05.18.10.54.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 May 2021 10:54:25 -0700 (PDT)
+ Tue, 18 May 2021 10:54:27 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
 To: Thierry Reding <thierry.reding@gmail.com>,
  =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
@@ -92,16 +92,16 @@ Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
  linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] dt-bindings: pwm: pwm-mtk-disp: add binding for MT8183 SoC
-Date: Tue, 18 May 2021 19:54:20 +0200
-Message-Id: <20210518175422.2678665-2-fparent@baylibre.com>
+Subject: [PATCH 3/3] dt-bindings: pwm: pwm-mtk-disp: add binding for MT8365 SoC
+Date: Tue, 18 May 2021 19:54:21 +0200
+Message-Id: <20210518175422.2678665-3-fparent@baylibre.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210518175422.2678665-1-fparent@baylibre.com>
 References: <20210518175422.2678665-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_105427_851362_21F24918 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20210518_105429_238310_C46830FD 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,26 +118,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding documentation to the pwm-mtk-disp driver for the MT8183
+Add binding documentation to the pwm-mtk-disp driver for the MT8365
 SoC.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
-index 0f016c81cd53..85bca1c59f95 100644
+index 85bca1c59f95..548ec7e06028 100644
 --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
 +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
-@@ -18,6 +18,7 @@ properties:
-           - mediatek,mt2701-disp-pwm
-           - mediatek,mt6595-disp-pwm
-           - mediatek,mt8173-disp-pwm
-+          - mediatek,mt8183-disp-pwm
+@@ -22,6 +22,9 @@ properties:
        - items:
            - const: mediatek,mt8167-disp-pwm
            - const: mediatek,mt8173-disp-pwm
++      - items:
++          - const: mediatek,mt8365-disp-pwm
++          - const: mediatek,mt8183-disp-pwm
+ 
+   reg:
+     maxItems: 1
 -- 
 2.31.1
 
