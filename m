@@ -2,93 +2,95 @@ Return-Path: <SRS0=GdzH=KO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AF31C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 19:57:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13D4DC433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 22:05:08 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A851611C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 19:57:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A851611C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7BBDD611BD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 22:05:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BBDD611BD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HZ20Zau2ZUiSypw4rbXJab4RS1muGqZC1w00PIT9oJQ=; b=aeOLm1iDUZL3U8RB+YTl6K2sE
-	Gp0PomjafY/JgmXp0nxcVLAiwdoqbwvjtA7Ym92iuX7vGdJ3VaHM/rHy0FB4oacbSrNK7hwkXdWHf
-	Ij0vzNUmDXHaXtZe4uaG7LR3zD/R8D+r/r0ed+yjKtOtjvPq9xHJjeLj3Zj39s9yzbWDR1REiTg1k
-	TOvrivJioT9ofXibTlvzpK/Ru+w2Tq6iV7s0zyVR7pibF6qHUY4/eX0Vq+41Z92qQDtz4PlwphSpz
-	gJJHdOa+MvXFSht9YMDE3qm5f4A92LRYYp3N7Fzo8kYpK6k9UVSEYUPyZ8IkSP6ciqcbYxQYD4pOF
-	73Q2fGh/g==;
+	 bh=SavkYGLDimVPduf9EbljdCElTek7hByx16t63aKBzms=; b=d9wU4SoVMDRoxSfXkRhN0dbw5
+	/ohe49Ercj0frC4nrglhqR+mb35fUmRITdwuOeGyn/4Y/tOZJreGTJDAXXhlQP4r9ggR3VyHdXOmF
+	hD+PzpKyuJBGoXV/n9lE8j6NrUL8uzC3rOeN1oh1HQkmS3tMRSWlqmtTsWVfXAXZn/XbQdIrtr/GY
+	QfJtnzSNsMdKopjGcKkqy/uSA7W34q6CzFX4O8s+Pz2LUBhB6rAa5IfjXn51R79zLOqQlw8E8YZpr
+	+Km0niZ/pXOnn5EUakW9yT+V2WH5e/v1F3kXBwGLwhW7DKc9rl6on7dL1kS7Xtfq/6O9WIvnW0FJE
+	9bdknle+Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljSJN-004xXg-GZ; Wed, 19 May 2021 19:56:57 +0000
+	id 1ljUJ1-005CiS-5A; Wed, 19 May 2021 22:04:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSJK-004xWu-VX
- for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 19:56:55 +0000
+ id 1ljUIm-005Ch6-SX; Wed, 19 May 2021 22:04:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=+3vIawo1FXjA1sxDM7urzQJdTpT6hOw4ruKEenZJlG0=; b=fGRP4WQ4CwVyw4G1LmNxDOMz3j
- OZGyy5ekYQ9ZCxslU77QZnvqi1d7rj0FPSz583yPWmDW4HSYsGryvMT2COwMbvLXEgfkEM7lYFvyM
- OZTZ3Au4R8pxMq/qjmsQffuTtVqsHtp9YU8L1r5HcLU+xXry3ZEkzoLV6KGJv8jNDcEpkpA3GzF9P
- hpu/qutTp3Lw4ALIkq6eZI0m1W3eSjtM83YY+nq8F3MpnqpVpwgpIkg3g9yMiBtiKrf2U3tOB9ZMr
- PtYJ0a4gwsNgfUKwEE33JoE6nIALK9PwgdIdNVAdcOLCE+eO7ZGjrbksHHcnqs3s4ZFC6GZmeo1qz
- fH52ItQg==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=4Qxjx7gPKuv7WGl/fdRuh5TjzSYI1WNwx1W5A71DrYw=; b=ES7CwUTch69LQlRqSAHvCnPEd2
+ 9JIWODTyMOiRWtYABWanrvb0Q00OT5uonBhv5fD5yKcl2o9P9TGIUuv2DDVSY83fm8kZWA3hdKXLx
+ KikzeWvkNdFfY9Rav7UiWCnxklZhAFH7OqyfuJYmUFtaUru+SXe23so/cvSCOr/QPrbcFstleh5ym
+ VVzb9Zc8lHzgdabbZH3lPlbLjNs0rXV8fC75RqqDJ5lxSb+WMGn+PFJo+Olcz1m6rA8043LBRaBEx
+ nXXxzD6UnnlJwp9VEM00j5B1taNcsaYfTDfYKPkNDSZsxPsSm46Fi5tzRiW2eLl6ofVknJ7qfkcFc
+ KCdWYguQ==;
+Received: from mail-ot1-f49.google.com ([209.85.210.49])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSJG-00Fkh7-IT
- for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 19:56:53 +0000
-X-UUID: 9b927423650f4565af4d9a7e24bdb671-20210519
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+3vIawo1FXjA1sxDM7urzQJdTpT6hOw4ruKEenZJlG0=; 
- b=HbGNQVUOuRosSMlPXOepA44gofJI43pECcOZFofr5n0yzxn2tRzoPI9qpw8q4kKz7cbHm2N4i/4Ci+XDtCDuBm2+UWbNjCVPUQ5MRf3uFNMoXhAfhuri9B17BkCz8khSoKsDHSxSEYOAjGMtaL/XFPmOZXyykHW+vA35O6ZYGME=;
-X-UUID: 9b927423650f4565af4d9a7e24bdb671-20210519
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 783608543; Wed, 19 May 2021 12:56:43 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 May 2021 12:56:40 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 20 May 2021 03:56:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 20 May 2021 03:56:27 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao
- <bo.jiao@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [RFC PATCH 4/4] mt76: mt7615: add 802.11 encap offload support
-Date: Thu, 20 May 2021 03:56:24 +0800
-Message-ID: <fce1b46c817bd0a9d79418ace13b6f518e0bddaa.1621453091.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
-References: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
+ id 1ljUIk-00FoY2-1l; Wed, 19 May 2021 22:04:27 +0000
+Received: by mail-ot1-f49.google.com with SMTP id
+ 69-20020a9d0a4b0000b02902ed42f141e1so13127454otg.2; 
+ Wed, 19 May 2021 15:04:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4Qxjx7gPKuv7WGl/fdRuh5TjzSYI1WNwx1W5A71DrYw=;
+ b=elBf3SFYtSmJRDNsFRAqTOLXq8qSde0i9kRKpKgh7KX6b2P5DrnFqf5vY97KZ10wSP
+ c4xYaUvCzTv5Qshld58LIRDHVUTVh69+AG/Pfnnmde/jzjcmtTZ5q72BYNMC1FQFwSf+
+ kKAkIxm/1kFNrB4hI2cEiKqGr4/YxGbvdw/dPZqb/sjRwz5Shl8oX6GLOuvmo0qqYsHk
+ hJv5GHa5J55UdMaGFkuB1myTiMbguR0na/CQT0jhmLeqsZVIl+uD8qjdIErXgFB9cQJd
+ 1XO99LiqeoAPPRmROgWcBMOnQMK17n6KI1+W8Jd0XrtV0YPzSqWjjOA/thzgvFZmTIL5
+ YxCA==
+X-Gm-Message-State: AOAM533kCYhCiyQyQQ8SjlrYYvysaHjvOTS11Hxwb4kJQANZYfyrrM3u
+ LYKQ49Y4xwBp/1WRE6LGaA==
+X-Google-Smtp-Source: ABdhPJxNQG8BfqDgptett9J/WmF6f63g6IaewjwZ5C5UO1H0AxgNr1cBxWbDBUOwYk8H8qTcx7FSGg==
+X-Received: by 2002:a9d:57cd:: with SMTP id q13mr1384580oti.23.1621461863492; 
+ Wed, 19 May 2021 15:04:23 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id x31sm228279ota.24.2021.05.19.15.04.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 May 2021 15:04:22 -0700 (PDT)
+Received: (nullmailer pid 3741422 invoked by uid 1000);
+ Wed, 19 May 2021 22:04:21 -0000
+Date: Wed, 19 May 2021 17:04:21 -0500
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ mkorpershoek@baylibre.com, linux-crypto@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] dt-bindings: rng: mediatek: convert to yaml schema
+Message-ID: <20210519220421.GA3738290@robh.at.kernel.org>
+References: <20210518112250.2146819-1-fparent@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210518112250.2146819-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_125650_665345_F6E570E7 
-X-CRM114-Status: GOOD (  16.59  )
+X-CRM114-CacheID: sfid-20210519_150426_122751_82DF3ADF 
+X-CRM114-Status: GOOD (  20.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,325 +107,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It is currently limited to 3-address mode AP and STA interfaces,
-and needs to integrate with software ASMDU.
+On Tue, May 18, 2021 at 01:22:49PM +0200, Fabien Parent wrote:
+> Convert the RNG binding for MediaTek to use YAML schema.
+> 
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  .../devicetree/bindings/rng/mtk-rng.txt       | 22 --------
+>  .../devicetree/bindings/rng/mtk-rng.yaml      | 53 +++++++++++++++++++
+>  2 files changed, 53 insertions(+), 22 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/rng/mtk-rng.txt
+>  create mode 100644 Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.txt b/Documentation/devicetree/bindings/rng/mtk-rng.txt
+> deleted file mode 100644
+> index dfdcb5cd2ea8..000000000000
+> --- a/Documentation/devicetree/bindings/rng/mtk-rng.txt
+> +++ /dev/null
+> @@ -1,22 +0,0 @@
+> -Device-Tree bindings for Mediatek random number generator
+> -found in MediaTek SoC family
+> -
+> -Required properties:
+> -- compatible	    : Should be
+> -			"mediatek,mt7622-rng", 	"mediatek,mt7623-rng" : for MT7622
+> -			"mediatek,mt7629-rng",  "mediatek,mt7623-rng" : for MT7629
+> -			"mediatek,mt7623-rng" : for MT7623
+> -			"mediatek,mt8516-rng", "mediatek,mt7623-rng" : for MT8516
+> -- clocks	    : list of clock specifiers, corresponding to
+> -		      entries in clock-names property;
+> -- clock-names	    : Should contain "rng" entries;
+> -- reg 		    : Specifies base physical address and size of the registers
+> -
+> -Example:
+> -
+> -rng: rng@1020f000 {
+> -	compatible = "mediatek,mt7623-rng";
+> -	reg = <0 0x1020f000 0 0x1000>;
+> -	clocks = <&infracfg CLK_INFRA_TRNG>;
+> -	clock-names = "rng";
+> -};
+> diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> new file mode 100644
+> index 000000000000..d9731f0ae47d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+> @@ -0,0 +1,53 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/rng/mtk-rng.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: MediaTek Random number generator
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@mediatek.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt7623-rng
+> +      - items:
+> +          - const: mediatek,mt7622-rng
+> +          - const: mediatek,mt7623-rng
+> +      - items:
+> +          - const: mediatek,mt7629-rng
+> +          - const: mediatek,mt7623-rng
+> +      - items:
+> +          - const: mediatek,mt8516-rng
+> +          - const: mediatek,mt7623-rng
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7615/init.c  |   1 +
- .../net/wireless/mediatek/mt76/mt7615/mac.c   | 189 ++++++++++++------
- .../net/wireless/mediatek/mt76/mt7615/mac.h   |   1 +
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   |   4 +-
- .../wireless/mediatek/mt76/mt7615/pci_mac.c   |   3 +-
- 5 files changed, 132 insertions(+), 66 deletions(-)
+The last 3 can be:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index a41a14f6d599..800ba10ee67e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -348,6 +348,7 @@ mt7615_init_wiphy(struct ieee80211_hw *hw)
- 	ieee80211_hw_set(hw, TX_STATUS_NO_AMPDU_LEN);
- 	ieee80211_hw_set(hw, WANT_MONITOR_VIF);
- 	ieee80211_hw_set(hw, SUPPORTS_RX_DECAP_OFFLOAD);
-+	ieee80211_hw_set(hw, SUPPORTS_TX_ENCAP_OFFLOAD);
- 
- 	if (is_mt7615(&phy->dev->mt76))
- 		hw->max_tx_fragments = MT_TXP_MAX_BUF_NUM;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index bef43c871908..71af122a0b38 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -567,24 +567,128 @@ mt7615_mac_tx_rate_val(struct mt7615_dev *dev,
- 	return rateval;
- }
- 
-+static void
-+mt7615_mac_write_txwi_8023(struct mt7615_dev *dev, __le32 *txwi,
-+			   struct sk_buff *skb, struct mt76_wcid *wcid)
-+{
-+
-+	bool is_mmio = mt76_is_mmio(&dev->mt76);
-+	u8 fc_type, fc_stype;
-+	bool wmm = false;
-+	u32 val;
-+
-+	if (wcid->sta) {
-+		struct ieee80211_sta *sta;
-+
-+		sta = container_of((void *)wcid, struct ieee80211_sta, drv_priv);
-+		wmm = sta->wme;
-+	}
-+
-+	val = FIELD_PREP(MT_TXD1_HDR_FORMAT, MT_HDR_FORMAT_802_3);
-+	if (be16_to_cpu(skb->protocol) >= ETH_P_802_3_MIN)
-+		val |= MT_TXD1_ETH_802_3;
-+
-+	txwi[1] |= cpu_to_le32(val);
-+
-+	fc_type = IEEE80211_FTYPE_DATA >> 2;
-+	fc_stype = wmm ? IEEE80211_STYPE_QOS_DATA >> 4 : 0;
-+
-+	val = FIELD_PREP(MT_TXD2_FRAME_TYPE, fc_type) |
-+	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype);
-+	txwi[2] |= cpu_to_le32(val);
-+
-+	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
-+	      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
-+	txwi[7] |= cpu_to_le32(val);
-+
-+	if (!is_mmio) {
-+		val = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
-+		      FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
-+		txwi[8] |= cpu_to_le32(val);
-+	}
-+}
-+
-+static void
-+mt7615_mac_write_txwi_80211(struct mt7615_dev *dev, __le32 *txwi,
-+			    struct sk_buff *skb, struct ieee80211_key_conf *key)
-+{
-+	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-+	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-+	bool multicast = is_multicast_ether_addr(hdr->addr1);
-+	bool is_mmio = mt76_is_mmio(&dev->mt76);
-+	__le16 fc = hdr->frame_control;
-+	u8 fc_type, fc_stype;
-+	u32 val;
-+
-+	val = FIELD_PREP(MT_TXD1_HDR_FORMAT, MT_HDR_FORMAT_802_11) |
-+	      FIELD_PREP(MT_TXD1_HDR_INFO,
-+			 ieee80211_get_hdrlen_from_skb(skb) / 2);
-+	txwi[1] |= cpu_to_le32(val);
-+
-+	fc_type = (le16_to_cpu(fc) & IEEE80211_FCTL_FTYPE) >> 2;
-+	fc_stype = (le16_to_cpu(fc) & IEEE80211_FCTL_STYPE) >> 4;
-+
-+	val = FIELD_PREP(MT_TXD2_FRAME_TYPE, fc_type) |
-+	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype) |
-+	      FIELD_PREP(MT_TXD2_MULTICAST, multicast);
-+
-+	if (key && multicast && ieee80211_is_robust_mgmt_frame(skb) &&
-+	    key->cipher == WLAN_CIPHER_SUITE_AES_CMAC) {
-+		val |= MT_TXD2_BIP;
-+		txwi[3] &= ~cpu_to_le32(MT_TXD3_PROTECT_FRAME);
-+	}
-+
-+	txwi[2] |= cpu_to_le32(val);
-+
-+	if (ieee80211_is_beacon(fc)) {
-+		val = MT_TXD5_TX_STATUS_HOST | MT_TXD5_SW_POWER_MGMT |
-+		      MT_TXD5_PID;
-+		txwi[5] &= ~cpu_to_le32(val);
-+		txwi[3] |= cpu_to_le32(MT_TXD3_REM_TX_COUNT);
-+	}
-+
-+	if (info->flags & IEEE80211_TX_CTL_INJECTED) {
-+		u16 seqno = le16_to_cpu(hdr->seq_ctrl);
-+
-+		if (ieee80211_is_back_req(hdr->frame_control)) {
-+			struct ieee80211_bar *bar;
-+
-+			bar = (struct ieee80211_bar *)skb->data;
-+			seqno = le16_to_cpu(bar->start_seq_num);
-+		}
-+
-+		val = MT_TXD3_SN_VALID |
-+		      FIELD_PREP(MT_TXD3_SEQ, IEEE80211_SEQ_TO_SN(seqno));
-+		txwi[3] |= cpu_to_le32(val);
-+	}
-+
-+	val = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
-+	      FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype);
-+	txwi[7] |= cpu_to_le32(val);
-+
-+	if (!is_mmio) {
-+		val = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
-+		      FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
-+		txwi[8] |= cpu_to_le32(val);
-+	}
-+}
-+
- int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 			  struct sk_buff *skb, struct mt76_wcid *wcid,
- 			  struct ieee80211_sta *sta, int pid,
- 			  struct ieee80211_key_conf *key, bool beacon)
- {
--	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
--	u8 fc_type, fc_stype, p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_tx_rate *rate = &info->control.rates[0];
-+	struct ieee80211_hw *hw = mt76_hw(dev);
- 	bool ext_phy = info->hw_queue & MT_TX_HW_QUEUE_EXT_PHY;
--	bool multicast = is_multicast_ether_addr(hdr->addr1);
- 	struct ieee80211_vif *vif = info->control.vif;
-+	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
- 	bool is_mmio = mt76_is_mmio(&dev->mt76);
- 	u32 val, sz_txd = is_mmio ? MT_TXD_SIZE : MT_USB_TXD_SIZE;
-+	u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
- 	struct mt76_phy *mphy = &dev->mphy;
--	__le16 fc = hdr->frame_control;
- 	int tx_count = 8;
--	u16 seqno = 0;
- 
- 	if (vif) {
- 		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
-@@ -602,9 +706,6 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 	if (ext_phy && dev->mt76.phy2)
- 		mphy = dev->mt76.phy2;
- 
--	fc_type = (le16_to_cpu(fc) & IEEE80211_FCTL_FTYPE) >> 2;
--	fc_stype = (le16_to_cpu(fc) & IEEE80211_FCTL_STYPE) >> 4;
--
- 	if (beacon) {
- 		p_fmt = MT_TX_TYPE_FW;
- 		q_idx = ext_phy ? MT_LMAC_BCN1 : MT_LMAC_BCN0;
-@@ -624,37 +725,20 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 
- 	val = MT_TXD1_LONG_FORMAT |
- 	      FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
--	      FIELD_PREP(MT_TXD1_HDR_FORMAT, MT_HDR_FORMAT_802_11) |
--	      FIELD_PREP(MT_TXD1_HDR_INFO,
--			 ieee80211_get_hdrlen_from_skb(skb) / 2) |
- 	      FIELD_PREP(MT_TXD1_TID,
- 			 skb->priority & IEEE80211_QOS_CTL_TID_MASK) |
- 	      FIELD_PREP(MT_TXD1_PKT_FMT, p_fmt) |
- 	      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
- 	txwi[1] = cpu_to_le32(val);
- 
--	val = FIELD_PREP(MT_TXD2_FRAME_TYPE, fc_type) |
--	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype) |
--	      FIELD_PREP(MT_TXD2_MULTICAST, multicast);
--	if (key) {
--		if (multicast && ieee80211_is_robust_mgmt_frame(skb) &&
--		    key->cipher == WLAN_CIPHER_SUITE_AES_CMAC) {
--			val |= MT_TXD2_BIP;
--			txwi[3] = 0;
--		} else {
--			txwi[3] = cpu_to_le32(MT_TXD3_PROTECT_FRAME);
--		}
--	} else {
--		txwi[3] = 0;
--	}
--	txwi[2] = cpu_to_le32(val);
-+	txwi[2] = 0;
-+	txwi[4] = 0;
-+	txwi[6] = 0;
-+	txwi[7] = cpu_to_le32(FIELD_PREP(MT_TXD7_SPE_IDX, 0x18));
- 
- 	if (!(info->flags & IEEE80211_TX_CTL_AMPDU))
- 		txwi[2] |= cpu_to_le32(MT_TXD2_BA_DISABLE);
- 
--	txwi[4] = 0;
--	txwi[6] = 0;
--
- 	if (rate->idx >= 0 && rate->count &&
- 	    !(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE)) {
- 		bool stbc = info->flags & IEEE80211_TX_CTL_STBC;
-@@ -682,45 +766,24 @@ int mt7615_mac_write_txwi(struct mt7615_dev *dev, __le32 *txwi,
- 		tx_count = rate->count;
- 	}
- 
--	if (!ieee80211_is_beacon(fc)) {
--		struct ieee80211_hw *hw = mt76_hw(dev);
--
--		val = MT_TXD5_TX_STATUS_HOST | FIELD_PREP(MT_TXD5_PID, pid);
--		if (!ieee80211_hw_check(hw, SUPPORTS_PS))
--			val |= MT_TXD5_SW_POWER_MGMT;
--		txwi[5] = cpu_to_le32(val);
--	} else {
--		txwi[5] = 0;
--		/* use maximum tx count for beacons */
--		tx_count = 0x1f;
--	}
--
- 	val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, tx_count);
--	if (info->flags & IEEE80211_TX_CTL_INJECTED) {
--		seqno = le16_to_cpu(hdr->seq_ctrl);
-+	if (key)
-+		val |= MT_TXD3_PROTECT_FRAME;
-+	if (info->flags & IEEE80211_TX_CTL_NO_ACK)
-+		val |= MT_TXD3_NO_ACK;
- 
--		if (ieee80211_is_back_req(hdr->frame_control)) {
--			struct ieee80211_bar *bar;
-+	txwi[3] = cpu_to_le32(val);
- 
--			bar = (struct ieee80211_bar *)skb->data;
--			seqno = le16_to_cpu(bar->start_seq_num);
--		}
--
--		val |= MT_TXD3_SN_VALID |
--		       FIELD_PREP(MT_TXD3_SEQ, IEEE80211_SEQ_TO_SN(seqno));
--	}
-+	val = MT_TXD5_TX_STATUS_HOST | FIELD_PREP(MT_TXD5_PID, pid);
-+	if (!ieee80211_hw_check(hw, SUPPORTS_PS))
-+		val |= MT_TXD5_SW_POWER_MGMT;
- 
--	txwi[3] |= cpu_to_le32(val);
-+	txwi[5] = cpu_to_le32(val);
- 
--	if (info->flags & IEEE80211_TX_CTL_NO_ACK)
--		txwi[3] |= cpu_to_le32(MT_TXD3_NO_ACK);
--
--	txwi[7] = FIELD_PREP(MT_TXD7_TYPE, fc_type) |
--		  FIELD_PREP(MT_TXD7_SUB_TYPE, fc_stype) |
--		  FIELD_PREP(MT_TXD7_SPE_IDX, 0x18);
--	if (!is_mmio)
--		txwi[8] = FIELD_PREP(MT_TXD8_L_TYPE, fc_type) |
--			  FIELD_PREP(MT_TXD8_L_SUB_TYPE, fc_stype);
-+	if (is_8023)
-+		mt7615_mac_write_txwi_8023(dev, txwi, skb, wcid);
-+	else
-+		mt7615_mac_write_txwi_80211(dev, txwi, skb, key);
- 
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-index 6bf9da040196..d17bf200d8de 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.h
-@@ -186,6 +186,7 @@ enum tx_phy_bandwidth {
- #define MT_TXD1_LONG_FORMAT		BIT(15)
- #define MT_TXD1_HDR_FORMAT		GENMASK(14, 13)
- #define MT_TXD1_HDR_INFO		GENMASK(12, 8)
-+#define MT_TXD1_ETH_802_3		BIT(12)
- #define MT_TXD1_WLAN_IDX		GENMASK(7, 0)
- 
- #define MT_TXD2_FIX_RATE		BIT(31)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 32090e01b4d2..0bef108507db 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1034,11 +1034,11 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	if (enable) {
- 		mt76_connac_mcu_wtbl_generic_tlv(&dev->mt76, wskb, vif, sta,
- 						 NULL, wtbl_hdr);
-+		mt76_connac_mcu_wtbl_hdr_trans_tlv(wskb, vif, &msta->wcid,
-+						   NULL, wtbl_hdr);
- 		if (sta)
- 			mt76_connac_mcu_wtbl_ht_tlv(&dev->mt76, wskb, sta,
- 						    NULL, wtbl_hdr);
--		mt76_connac_mcu_wtbl_hdr_trans_tlv(wskb, vif, &msta->wcid,
--						   NULL, wtbl_hdr);
- 	}
- 
- 	cmd = enable ? MCU_EXT_CMD_WTBL_UPDATE : MCU_EXT_CMD_STA_REC_UPDATE;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-index cc278d8cb888..f62a072dc24d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-@@ -112,7 +112,8 @@ mt7615_write_fw_txp(struct mt7615_dev *dev, struct mt76_tx_info *tx_info,
- 	if (!key)
- 		txp->flags |= cpu_to_le16(MT_CT_INFO_NONE_CIPHER_FRAME);
- 
--	if (ieee80211_is_mgmt(hdr->frame_control))
-+	if (!(info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP) &&
-+	    ieee80211_is_mgmt(hdr->frame_control))
- 		txp->flags |= cpu_to_le16(MT_CT_INFO_MGMT_FRAME);
- 
- 	if (vif) {
--- 
-2.18.0
+- items:
+    - enum:
+        - mediatek,mt7622-rng
+        - mediatek,mt7629-rng
+        - mediatek,mt8516-rng
+    - const: mediatek,mt7623-rng
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: rng
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt2701-clk.h>
+> +    rng: rng@1020f000 {
+> +            compatible = "mediatek,mt7623-rng";
+> +            reg = <0x1020f000 0x1000>;
+> +            clocks = <&infracfg CLK_INFRA_TRNG>;
+> +            clock-names = "rng";
+> +    };
+> -- 
+> 2.31.1
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
