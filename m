@@ -2,118 +2,85 @@ Return-Path: <SRS0=GdzH=KO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B12EAC433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 03:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41916C433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 03:49:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E04060FD8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 03:33:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E04060FD8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A5BC160698
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 03:49:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5BC160698
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qM7lubWe1PgLRXpbdN4H6TPRX6Y2nKtzI1/qU4Vm/ro=; b=M8Ym8UMhyMhGCSnn75tldktZ1
-	+Q335Lt7z7jO+ja9QlYIJ7egc5fTkE7OPljxeSymw1iw5QKAGlEfTZAAWUMKvWNX4NZrDR3noGbqA
-	SqQZ5iy9nIY0Ho8wOHq9AKExznX4AQj/kOhur5F4kHNZaqfmV1P8QgB/l1qOQPwAvMnezaNwHiPeU
-	S6S6O9NuK4/HGCNz1XE0DrSAumddildktZ3SMYboinCPZ3B58RcM68/GAc1g2lb6a1fBbs2Jv0riQ
-	NIVzvfP98OQ2FbyxYTIlcVnyweWbM6t/Ky2XrCr3VFP4jcs/XXapEAKmHvSpLBGlVt5nK8hpVy7x5
-	e11S3utoQ==;
+	 bh=+xLOdUAJQ3ZG1W7P8Bd80GlbxVcLQXXlHpGzTBw08nk=; b=Wt7tuljwWd8zwOpmakBENekRG
+	8v+VBtEY3ihphDbGF7h0n7JgpjTtseXm4iWF0JM2bOLd2zHMuwvRI5rEeHKCGWzX1Awz9wD2nffh8
+	r7xz0PsBrbYoKXv2oZHlm7HkbbZpYM8Ob6k/PU1dptTIcc1LXnuTsNEz4l4jg74a8CLfd7RB5iWhP
+	XsYSnnFyahqYrhu7GQfAL1T9QWBZeoA+eyrRTnikotoHoGKtHDpWpmHGeQWsoDT1cv6EYknKi9/jy
+	0EkImimRAzDoUd7HbtJbIi2NVJidBuwNY8QzcKRYQm7hT0O+NzH4FpZCfPOz1d1F655ITpjRyZJQA
+	M0Fybdxjg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljCx2-002anf-UA; Wed, 19 May 2021 03:32:52 +0000
+	id 1ljDD4-002dT5-Gp; Wed, 19 May 2021 03:49:26 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljCx0-002an3-AC
- for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 03:32:50 +0000
+ id 1ljDCp-002dRW-SG; Wed, 19 May 2021 03:49:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=cU46aoQaP3zsCAzQqoMqrX6Zi5wdFXKEcbXbGkFJHJg=; b=YZtZDDY++WX3uVcqK/cfFJk/A3
- kTnJ2Suqn57q01IHuYTtxLp0Qj75yr+VqCyj3d/2sohwythBCAwOphlCXiN2lqEcDGse0l+zM4rgO
- DTYLRDLvM4CP7Ikw90i29dNVpAkvRVdh5KFjCLDNoW0qTOL67QpAkDwIjmew8Yl6zLUTfSEL7TWoh
- xmdFpgudZKuYy+ZhTuZq8mizB0A+eB/Qu8Rv41jWDMRfwTSd32sic0CbJDL7rScp6z73BLn0r+caH
- /8oE5Ciy+td1D2pPqAp/m0VEvRo5ves9LkkkRleOiu6nwhkP9Q1FSe7z7B5g4jkGHuFiLVHBi/y6F
- fATUvcAw==;
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=QKZQ1+SeHjDQOcCb9ZZoZGeNsXj6SQFEcTib4EreA1Q=; b=MMFhrGF5Ox6ZV1Tn09ZjC0ZpKL
+ pyhWn1k/EMXwgd41Mnf1zi2F0ByyiuedB4nj2kQtE4Po295OpWQxZvAsXNUE14bVdbDzqjk10OTJM
+ WW8jTsS3irT3ICrmTsCzW1o/AQbjVKQsLnEN4tnlnRRkRCwtaZ8yyvlkX84v/bQXkZnUqfk9D7xRG
+ KG9X1AnLbraxZ0FZJNlIbxt7nGagC8wOVu9zEKTBZm+W30yS+FWOUs2nLMsQW/usF7W2uo07C6Zj2
+ Lid1NzK2I7y4LSQwDpt7Lp1NS6fAZVf6aY3vaCHwRIvMykVgMiOwVEvH45jAT5zYdej+Vbt22Upx2
+ KG6T+LBQ==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljCwx-00F5bV-TP
- for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 03:32:49 +0000
-Received: by mail-pg1-x533.google.com with SMTP id v14so5732695pgi.6
- for <linux-mediatek@lists.infradead.org>; Tue, 18 May 2021 20:32:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=cU46aoQaP3zsCAzQqoMqrX6Zi5wdFXKEcbXbGkFJHJg=;
- b=Py2UV9AnBv1/ncNmbnmTRHpSvk0WbcHX9zQmnaASFi6ATMOgoSsXAsOAMjegTa3vBH
- rSzQrZOXF17nMS98S7SoQT8kLVR5p7G2AO3hetRK6dTeHVG39sNdYXxI+CtlWUkeYyr/
- Q3f0qNRvqK8fB91FNP1hi7W2H4kNHynfovvdtyyI5CgkZ+BYskpmwAL/wb7qHdZf2TQa
- 6HNF5dHPDvIdhT5z2GKZzC3p+KVaulPugVp+nFtz9LJyHTwq6rZqiJ2gAqf/FXIGAE2L
- vlaiwOmWMFgS938CHSzTrmujuMoYlX46SOKpl88ba9j5NTuBIHSY3pa0mIZeiE2/R2Z0
- i5bA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=cU46aoQaP3zsCAzQqoMqrX6Zi5wdFXKEcbXbGkFJHJg=;
- b=IKsDYBJQWNYgK62Rck1G0x/rVlHIbkeMG4tbxcNyhxrcC85NIzJWF+L1nm0wVF6egP
- lX+TGBV90v/vbEaDag3odpXza/6nRPg/4zHNZgkCziWEFXKdTJaCy3eRS3yNa170jT1q
- hzuywBOKeWf/iQB+7796/djWIP+r1YJ7gexLphf/+jTCj0+OlS9rKuA3YWcLJz1S0sr/
- h1J57ZQqo20J7QUGmhDKFRd4i0xpkIvp6lDCj+mTgAO57WlqYnqtuFLt1HnILhtb1/Wj
- o/+rlo4vSoW2dYwaJ6kpJVOosWow1vnp5JcGwK1BWhmjLOs9BaTON04O3SYNx/Iehc9E
- m4YQ==
-X-Gm-Message-State: AOAM532ksug+sfsQifpzCaTcqXUbV4vsCNqo0t16Zikg/TpxBAJCSQsd
- Zk6XwY1GCX5D+JsBkDfY1Oc=
-X-Google-Smtp-Source: ABdhPJyg3qe/ZpL5oLW+mOEa0aXvCaTmjpc+MZIEIy7hvq34/CDsFAbCKFaESSa4EpddYj5LR1b8sQ==
-X-Received: by 2002:aa7:88c8:0:b029:2de:7b37:7d23 with SMTP id
- k8-20020aa788c80000b02902de7b377d23mr5902108pff.59.1621395167152; 
- Tue, 18 May 2021 20:32:47 -0700 (PDT)
-Received: from localhost.localdomain ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id g13sm8244587pfr.75.2021.05.18.20.32.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 May 2021 20:32:46 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew@lunn.ch>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Landen Chao <Landen.Chao@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-staging@lists.linux.dev, devicetree@vger.kernel.org,
- netdev@vger.kernel.org
-Cc: Weijie Gao <weijie.gao@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>,
- =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
-Subject: [PATCH net-next v2 4/4] staging: mt7621-dts: enable MT7530 interrupt
- controller
-Date: Wed, 19 May 2021 11:32:02 +0800
-Message-Id: <20210519033202.3245667-5-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210519033202.3245667-1-dqfext@gmail.com>
-References: <20210519033202.3245667-1-dqfext@gmail.com>
+ id 1ljDCm-00F6Nk-Pg; Wed, 19 May 2021 03:49:10 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7945C60698;
+ Wed, 19 May 2021 03:49:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1621396148;
+ bh=szJ3NX+yHVQpb/7H98ib4HuC8uRgZ7nHYDGYCubOeY8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=uVZVIumdcmHqmcUyvF/hN9qHNtM7Vv+HV2INDM2o+28+26uJJXy9+hRscH7MtzmzA
+ q9mF8yMs+3MebWQ3YaHmtzrCVPEfg+EpaxBDHSonhumlBJW3af2HWWg8JMZymEUP0w
+ g9K7GIHAtBY6U70V5GYa8I3+Wo75bWAU4PN6XYq8eSf9B+yeAtbIjYp5g5NzlYaarD
+ EcBMBNzd304Bl2nVu7wltWWvju4cvH/0MZmgKu40E5ImtPAoUdENNjOp4oO63oLLRz
+ o3IJ4D7xOTrTBgoVfss8JeBNyXS8azIbN4+2TMcCf5qq9RZ5fVpKpec9omaDHOfJrZ
+ 5SRQ6CIW/7Hcg==
+Date: Wed, 19 May 2021 06:48:59 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Dave Young <dyoung@redhat.com>, Baoquan He <bhe@redhat.com>,
+ Vivek Goyal <vgoyal@redhat.com>, Jonathan Corbet <corbet@lwn.net>,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Paul Mackerras <paulus@samba.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ kexec@lists.infradead.org, linux-doc@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-mm@kvack.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 0/2] mm: unify the allocation of pglist_data instances
+Message-ID: <YKSKq68E9Ompn0vE@kernel.org>
+References: <20210518092446.16382-1-miles.chen@mediatek.com>
+ <YKPmxEu6YFDXRyTg@kernel.org> <1621383126.12301.4.camel@mtkswgap22>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1621383126.12301.4.camel@mtkswgap22>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_203247_964795_0E79159F 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20210518_204908_898348_D5AC9313 
+X-CRM114-Status: GOOD (  29.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,37 +97,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable MT7530 interrupt controller in the MT7621 SoC.
+On Wed, May 19, 2021 at 08:12:06AM +0800, Miles Chen wrote:
+> On Tue, 2021-05-18 at 19:09 +0300, Mike Rapoport wrote:
+> > Hello Miles,
+> > 
+> > On Tue, May 18, 2021 at 05:24:44PM +0800, Miles Chen wrote:
+> > > This patches is created to fix the __pa() warning messages when
+> > > CONFIG_DEBUG_VIRTUAL=y by unifying the allocation of pglist_data
+> > > instances.
+> > > 
+> > > In current implementation of node_data, if CONFIG_NEED_MULTIPLE_NODES=y,
+> > > pglist_data is allocated by a memblock API. If CONFIG_NEED_MULTIPLE_NODES=n,
+> > > we use a global variable named "contig_page_data".
+> > > 
+> > > If CONFIG_DEBUG_VIRTUAL is not enabled. __pa() can handle both
+> > > allocation and symbol cases. But if CONFIG_DEBUG_VIRTUAL is set,
+> > > we will have the "virt_to_phys used for non-linear address" warning
+> > > when booting.
+> > > 
+> > > To fix the warning, always allocate pglist_data by memblock APIs and
+> > > remove the usage of contig_page_data.
+> > 
+> > Somehow I was sure that we can allocate pglist_data before it is accessed
+> > in sparse_init() somewhere outside mm/sparse.c. It's really not the case
+> > and having two places that may allocated this structure is surely worth
+> > than your previous suggestion.
+> > 
+> > Sorry about that.
+> 
+> Do you mean taht to call allocation function arch/*, somewhere after
+> paging_init() (so we can access pglist_data) and before sparse_init()
+> and free_area_init()?
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
----
-v1 -> v2:
-No changes.
-
- drivers/staging/mt7621-dts/mt7621.dtsi | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/drivers/staging/mt7621-dts/mt7621.dtsi b/drivers/staging/mt7621-dts/mt7621.dtsi
-index f0c9ae757bcd..093a7f8091b5 100644
---- a/drivers/staging/mt7621-dts/mt7621.dtsi
-+++ b/drivers/staging/mt7621-dts/mt7621.dtsi
-@@ -437,6 +437,10 @@ switch0: switch0@0 {
- 				mediatek,mcm;
- 				resets = <&rstctrl 2>;
- 				reset-names = "mcm";
-+				interrupt-controller;
-+				#interrupt-cells = <1>;
-+				interrupt-parent = <&gic>;
-+				interrupts = <GIC_SHARED 23 IRQ_TYPE_LEVEL_HIGH>;
+No, I meant that your original patch is better than adding allocation of
+NODE_DATA(0) in two places.
  
- 				ports {
- 					#address-cells = <1>;
--- 
-2.25.1
+> Miles
+> 
+> >  
+> > > Warning message:
+> > > [    0.000000] ------------[ cut here ]------------
+> > > [    0.000000] virt_to_phys used for non-linear address: (____ptrval____) (contig_page_data+0x0/0x1c00)
+> > > [    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/physaddr.c:15 __virt_to_phys+0x58/0x68
+> > > [    0.000000] Modules linked in:
+> > > [    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W         5.13.0-rc1-00074-g1140ab592e2e #3
+> > > [    0.000000] Hardware name: linux,dummy-virt (DT)
+> > > [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO BTYPE=--)
+> > > [    0.000000] pc : __virt_to_phys+0x58/0x68
+> > > [    0.000000] lr : __virt_to_phys+0x54/0x68
+> > > [    0.000000] sp : ffff800011833e70
+> > > [    0.000000] x29: ffff800011833e70 x28: 00000000418a0018 x27: 0000000000000000
+> > > [    0.000000] x26: 000000000000000a x25: ffff800011b70000 x24: ffff800011b70000
+> > > [    0.000000] x23: fffffc0001c00000 x22: ffff800011b70000 x21: 0000000047ffffb0
+> > > [    0.000000] x20: 0000000000000008 x19: ffff800011b082c0 x18: ffffffffffffffff
+> > > [    0.000000] x17: 0000000000000000 x16: ffff800011833bf9 x15: 0000000000000004
+> > > [    0.000000] x14: 0000000000000fff x13: ffff80001186a548 x12: 0000000000000000
+> > > [    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 0000000000000000
+> > > [    0.000000] x8 : ffff8000115c9000 x7 : 737520737968705f x6 : ffff800011b62ef8
+> > > [    0.000000] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
+> > > [    0.000000] x2 : 0000000000000000 x1 : ffff80001159585e x0 : 0000000000000058
+> > > [    0.000000] Call trace:
+> > > [    0.000000]  __virt_to_phys+0x58/0x68
+> > > [    0.000000]  check_usemap_section_nr+0x50/0xfc
+> > > [    0.000000]  sparse_init_nid+0x1ac/0x28c
+> > > [    0.000000]  sparse_init+0x1c4/0x1e0
+> > > [    0.000000]  bootmem_init+0x60/0x90
+> > > [    0.000000]  setup_arch+0x184/0x1f0
+> > > [    0.000000]  start_kernel+0x78/0x488
+> > > [    0.000000] ---[ end trace f68728a0d3053b60 ]---
+> > > 
+> > > [1] https://urldefense.com/v3/__https://lore.kernel.org/patchwork/patch/1425110/__;!!CTRNKA9wMg0ARbw!x-wGFEC1wLzXho2kI1CrC2fjXNaQm5f-n0ADQyJDckCOKZHAP_q055DCSWYcQ7Zdcw$ 
+> > > 
+> > > Change since v1:
+> > > - use memblock_alloc() to create pglist_data when CONFIG_NUMA=n
+> > > 
+> > > Miles Chen (2):
+> > >   mm: introduce prepare_node_data
+> > >   mm: replace contig_page_data with node_data
+> > > 
+> > >  Documentation/admin-guide/kdump/vmcoreinfo.rst | 13 -------------
+> > >  arch/powerpc/kexec/core.c                      |  5 -----
+> > >  include/linux/gfp.h                            |  3 ---
+> > >  include/linux/mm.h                             |  2 ++
+> > >  include/linux/mmzone.h                         |  4 ++--
+> > >  kernel/crash_core.c                            |  1 -
+> > >  mm/memblock.c                                  |  3 +--
+> > >  mm/page_alloc.c                                | 16 ++++++++++++++++
+> > >  mm/sparse.c                                    |  2 ++
+> > >  9 files changed, 23 insertions(+), 26 deletions(-)
+> > > 
+> > > 
+> > > base-commit: 8ac91e6c6033ebc12c5c1e4aa171b81a662bd70f
+> > > -- 
+> > > 2.18.0
+> > > 
+> > 
+> 
 
+-- 
+Sincerely yours,
+Mike.
 
 _______________________________________________
 Linux-mediatek mailing list
