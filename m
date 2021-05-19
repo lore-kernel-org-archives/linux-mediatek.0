@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF694C43461
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 14:31:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D27EC43600
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 14:31:02 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 360AB613BF
+	by mail.kernel.org (Postfix) with ESMTPS id EB0EB6135C
 	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 14:31:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 360AB613BF
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB0EB6135C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vGn+ni8pLrkaAop4jHp0hCYsqrMtiPjeYsf9RetZOFQ=; b=lfR/Vem/yB+f7ZxLROGnPwmmr
-	W1hNxPljxFj9y28HXU+N03GYIvSItFBR0+57xlN/Z0s3Cs4kZnzI71RUm8JakUoT/fEmCfWhmU35i
-	0tXcx0IHd6gVnHzelUfgHaDBpK6jITUo9gE4ljd0LT3QYOaxrQlIzztBVbZa4u298f/Y+ZaajOhpP
-	JLjVC0Or05P5jw3E61fMK9S2E0uwgIRjh3Ag8DT6AQtvuazvappz9le+0yyXTZrIXBLQaPW/Nizer
-	Cu1kIqgIc3FNByEtZ3l32Hm85//bMsLx6mskI7DXgPv5lG0BHsA/+LP0LKxvRDfJIrekVVWtZl1nA
-	klYogO/9w==;
+	 bh=93W935fa5ANZmOXB/9EWOh2kOelwdpKnQKrc56kY4s0=; b=fJFdlROodZ3fhe98v5fZE27Kb
+	LT/CXGJMaF2VldzmOoLI/9qI7z+3XUzIqViTCXMfymQ8RmCCrlJ6QqfhmFtJRICRkByVW8px7M14M
+	zhC5B7oLEOzu9s6DmM0fIRi4yoZaBkNpsy58U8pMxxTjb79ZPKFKCJpV0cYPz1Lrt/8Qvm9ncRhld
+	1IE08jjawThNsc7HfwAaloBmYlKA8hhjbF/3QzwdblhDK56TpsRN9lCfx8B8TKnnUdcjN2Insxsr3
+	7qVHIYKlX055ARH/UADXOT4SP9HS87PMaRgh/Cmajl1as2LqDUXz6+I2UhdfoQsch46Hmix+9nTHl
+	+tVD+Y9vg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljNDi-004GeD-9Z; Wed, 19 May 2021 14:30:46 +0000
+	id 1ljNDk-004Geg-BD; Wed, 19 May 2021 14:30:48 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljNDf-004Gdh-RO
- for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 14:30:43 +0000
+ id 1ljNDi-004Ge7-Ho
+ for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 14:30:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=H/JegrmtPw3esG/3ONCAiiuwrewSM2bmGc32IKl+Wak=; b=YWG06Qkx8YL6iqNTTFSSpswp93
- AGobMNNE3L/0hEZnWRx6oTgzquL3fuZq/o5NEIEafzH4fISSG4Ha8lo1vu58cwKOCegmmDYjmsdyN
- k4phy8I6Q9pzC0hZAkDuHjzTwGJH9aIVxEjxvTUpp/FXX3RsY0V769SM9O5ab2nQNHdf7WtBYtIrL
- 0JNavikKy0NDNmmm6mkEMIAqXBwjw/DKwSqEDfMJO9gmAojajIO6dS05xzXaN8qN4xMSNxhW6qnsi
- 1mrOxOmqcxfA9l5TVfiqaSm9nf095MCKeRYkswaw99d2wQeRpFpwtyWsEVyiEEJ54Zt891KcS3BZH
- HD6TVrZg==;
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ bh=R+qFAFfMoc0Yucgu6eUD8mX568+obmb19D6ELlcRmjM=; b=tJIaPz657QEXbCjFGe7zlf7s6f
+ OQg38yzWEmuKsPQZA9FMnB8+un0oRQJGjQQfSYjI+9dyeNQ+Ixo+m/CX04mQfpPp6gaYtM69s0Qjn
+ 6KS2OHxEWZfru3Hh9XYFa4rnCrmwf/ryeU2CAGeCZyy+P/ZZ0XVi97JoSYIj8SRf2tQnRqxmGQo9M
+ 0Gmp82Dy5Ar3KILtvMVBIBGda4x0jJPPaAFBJnAXTlt3WBahMrYkmNkvVsHwzgUPNI6dCOOuSwhHE
+ mGs6cxFwxg/td93Zng4/Oa17Kmqb9K+5dz/fWBqU5C8HaZksKDVe/ULBsfoeQ2dgkgWxVeHjLE7yp
+ UPGYtpkw==;
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljNDd-00FXnC-6n
- for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 14:30:42 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d16so10006330pfn.12
- for <linux-mediatek@lists.infradead.org>; Wed, 19 May 2021 07:30:40 -0700 (PDT)
+ id 1ljNDf-00FXnn-UG
+ for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 14:30:45 +0000
+Received: by mail-pf1-x433.google.com with SMTP id b13so6276211pfv.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 19 May 2021 07:30:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=H/JegrmtPw3esG/3ONCAiiuwrewSM2bmGc32IKl+Wak=;
- b=e/0683k5vnhao0MCIfGZACYaPEVYU2bl/WZxt7NjbMOfkAlfCxAViAbId0UB7Odl5V
- SsztA8+oVVyffcTEsp5QwfYpVYqZk+652QCCg/MwyMdZO/HdZY071TP+ofLANRFg7oFM
- pcjAJ9UprGKmqPVzdvMePFt3nDM7UKv2N3RiM=
+ bh=R+qFAFfMoc0Yucgu6eUD8mX568+obmb19D6ELlcRmjM=;
+ b=iR+E7LPFefwqCp1itb4p/NP06ls686VNt/KWEA8X2O02aXe8wy/Oe1MZ1x8deyZ6hN
+ ogf0kcoaqIV+x3AQPvXw2xzAlj4yUk8fZ8/bafIlyhT5HI81p4B0sulvkmO1RHO4TQJU
+ kn+P+N8ADTLtpTkrYBYBDUOgYwAXQRZw5ec2g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=H/JegrmtPw3esG/3ONCAiiuwrewSM2bmGc32IKl+Wak=;
- b=FLh960F/awe2qPt9EpO16CoYpRyfi8u2fTDD3xm43OMUCZ26N3Y7vhgtUwWY70RW14
- Bcjw9oNQ/ncI2Y0du8W7r6G1oKjkKNIzpSh6PReQvol4WlSQuhFOIbg6AJk6D5KBd70p
- rFY8OP4bIjKz9MMWi2LVkOmenQvNLfHDmFEkbqfexz39sn1r2qnp6SCzuQzSj2TNOa5G
- MiM7nZNbMHG6MfSNLdCLpM+sC4JATiInoT0mjHVx5Idfinn30YmJQ3Zw/P9trNpbU7JS
- JI7nqK61VFS34xuGxwYik+PXajhV1PY7kDMmxs3zp4Rzxke/qf49prEK/q+lPn8vqmia
- FR3g==
-X-Gm-Message-State: AOAM533d3DqB8FbWPp2sJgvdsEifsBGDJrlpH+zsuKZXt3DMr0EgqQuz
- B+XkjKvY0nkQ3yNNl0dscztrbA==
-X-Google-Smtp-Source: ABdhPJwj+dDw2M/xBSoFiLwfOMAGPnq2OgavxTLnltYVk7rgjWKTjHRU0Xtzoj+g2ZXxX7RNqOlCsw==
-X-Received: by 2002:a63:38d:: with SMTP id 135mr11417309pgd.285.1621434640225; 
- Wed, 19 May 2021 07:30:40 -0700 (PDT)
+ bh=R+qFAFfMoc0Yucgu6eUD8mX568+obmb19D6ELlcRmjM=;
+ b=F3afijN877uZmrddMiLWtyT+I3gOIHOKcyn55ShTW+0km5VRiKEf2K1hl3J6Jz3zJf
+ fWHn9FHks43y8ioTPRnXs2fFd/S4ybvCmqK2fJe1W/uPbC2Xp8bBWsi8jiMrEsyOmB8c
+ nYBLxBOuqt8ZOjQxDvoRmuh3Z+7cnMhkrGGm+TWr5k5wWx6ypouulnS1PsWXAW3tStZ3
+ tf2c2XZSYjBRmPxqLD5CEQ9uFyHpq+MdWDtLRjX42Og96oO7Psdr3rdeghoRHUbocOsR
+ 0z7uX9CNcJ7fFXiKmsPKK9TGsZse9cF/t1Up8fFvmf5c1UDAgSWkzJ5uVM/VuN+jhY0a
+ gPSw==
+X-Gm-Message-State: AOAM5313mIIEpIBTCuTrXoPNU3L+hGLuCpr6LAQ7UK5QEKDvANmasLbJ
+ mc7TkDYIbddoUbBY1Jrm7UabAw==
+X-Google-Smtp-Source: ABdhPJzE9m0ahz3wmyrv0dEBy0FOLET41SMlFMBOWhO5fu66APdGn1l+PQfBNwdSBI2gkwx01qJj1g==
+X-Received: by 2002:a05:6a00:134b:b029:2bf:2c30:ebbd with SMTP id
+ k11-20020a056a00134bb02902bf2c30ebbdmr11118765pfu.74.1621434642909; 
+ Wed, 19 May 2021 07:30:42 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:87ab:ff82:1544:697])
- by smtp.gmail.com with ESMTPSA id 3sm14337661pff.132.2021.05.19.07.30.37
+ by smtp.gmail.com with ESMTPSA id 3sm14337661pff.132.2021.05.19.07.30.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 07:30:39 -0700 (PDT)
+ Wed, 19 May 2021 07:30:42 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
@@ -88,18 +89,18 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Hirokazu Honda <hiroh@chromium.org>,
  Alexandre Courbot <acourbot@chromium.org>
-Subject: [PATCH v5 01/14] media: mtk-vcodec: vdec: Support H264 profile control
-Date: Wed, 19 May 2021 23:29:58 +0900
-Message-Id: <20210519143011.1175546-2-acourbot@chromium.org>
+Subject: [PATCH v5 02/14] media: mtk-vcodec: vdec: use helpers in
+ VIDIOC_(TRY_)DECODER_CMD
+Date: Wed, 19 May 2021 23:29:59 +0900
+Message-Id: <20210519143011.1175546-3-acourbot@chromium.org>
 X-Mailer: git-send-email 2.31.1.751.gd2f1c929bd-goog
 In-Reply-To: <20210519143011.1175546-1-acourbot@chromium.org>
 References: <20210519143011.1175546-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_073041_253172_2CD13381 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20210519_073043_980780_EF0310C6 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,38 +117,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hirokazu Honda <hiroh@chromium.org>
+Let's use the dedicated helpers to make sure we get the expected
+behavior and remove redundant code.
 
-Add H264 profiles supported by the MediaTek 8173 decoder.
-
-Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
-[acourbot: fix commit log a bit, move to mtk_vcodec_dec.c]
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-index 56d86e59421e..8df8bcfe5e9c 100644
+index 8df8bcfe5e9c..1a633b485a69 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
-@@ -1421,6 +1421,16 @@ int mtk_vcodec_dec_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 				V4L2_CID_MPEG_VIDEO_VP9_PROFILE,
- 				V4L2_MPEG_VIDEO_VP9_PROFILE_0,
- 				0, V4L2_MPEG_VIDEO_VP9_PROFILE_0);
-+	/*
-+	 * H264. Baseline / Extended decoding is not supported.
-+	 */
-+	v4l2_ctrl_new_std_menu(&ctx->ctrl_hdl,
-+			       &mtk_vcodec_dec_ctrl_ops,
-+			       V4L2_CID_MPEG_VIDEO_H264_PROFILE,
-+			       V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
-+			       BIT(V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE) |
-+			       BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
-+			       V4L2_MPEG_VIDEO_H264_PROFILE_MAIN);
+@@ -484,18 +484,7 @@ static void mtk_vdec_worker(struct work_struct *work)
+ static int vidioc_try_decoder_cmd(struct file *file, void *priv,
+ 				struct v4l2_decoder_cmd *cmd)
+ {
+-	switch (cmd->cmd) {
+-	case V4L2_DEC_CMD_STOP:
+-	case V4L2_DEC_CMD_START:
+-		if (cmd->flags != 0) {
+-			mtk_v4l2_err("cmd->flags=%u", cmd->flags);
+-			return -EINVAL;
+-		}
+-		break;
+-	default:
+-		return -EINVAL;
+-	}
+-	return 0;
++	return v4l2_m2m_ioctl_try_decoder_cmd(file, priv, cmd);
+ }
  
- 	if (ctx->ctrl_hdl.error) {
- 		mtk_v4l2_err("Adding control failed %d",
+ 
 -- 
 2.31.1.751.gd2f1c929bd-goog
 
