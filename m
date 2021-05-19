@@ -2,105 +2,100 @@ Return-Path: <SRS0=GdzH=KO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAB93C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 14:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EF4CC433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 16:19:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FAB861042
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 14:56:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FAB861042
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id DB49A61244
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 16:19:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB49A61244
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=f0Aj3wuT8MCjinOYd7iqd/zD+3YkOFolALC62nrni5k=; b=VJhGY92Gg0bdWtDvIr0IoLqnf
-	l/YpIpefO+PH/nyE+U5N30/77KucM4u73JiHZr8iqPF5L7fHugpP3iUfaw7RwXhDoYHwrhQqMRG0Y
-	ngwLZKHXEv4U0ixQ7UAUSOLE1ADx1goq4+u+kCduJ2d1rFU2b2QP2d6XXAak0xVoJjFE3IifBx2q+
-	72JgVKszyomaRQA5myLtlYnFKbFNDVZBmCQQyMrVEYw4hjY3d+01zdG1wm1zG7JK1FobeibkxxQUA
-	Qhl1cVOUDUj/XcSUS/1zenT5AFyL0phS/zuIIoFicbAeih7qDF3DTThxRUJP6L9iJKCbUAEKrtroo
-	ShSib4WBA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ML4UT4lg0D6pE0i0gpcR88rb1xp+Mz/q8FlQUfqGU6E=; b=OjdXWFwOtGVw/jtpi74GkmsFPg
+	xQriu+RrKZ7ye89IOCws16YzZ33PChfrYz/41IARkF+qBjTLpGfkaXSsENDQXTB6TpL37AqZTuZBJ
+	CwWbqfrqhyzCoOJj0+bfkuRs8M8g+ssAatcT/3w5LE+BrR4J9ub32lqp/9CHoJB9uviR12SgjiiSW
+	MKARv5uHeH7fb9B62Rsa32W7c2QpreLBtcSuAnkB758ph0XiziXc/prGMErF/65z52KLyUcPWZfK4
+	yvOEYWjAUQb2nY33v8veHQ3B0/9gsVMEWwUJPuTY98Kr15TL5pkywspoAz3sWZsDP37eFvYGf0b70
+	SjjLEz9g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljNcj-004K6Z-FK; Wed, 19 May 2021 14:56:37 +0000
+	id 1ljOuQ-004UfK-W1; Wed, 19 May 2021 16:18:59 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljNcg-004K5u-D5
- for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 14:56:35 +0000
+ id 1ljOuO-004Uer-Is
+ for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 16:18:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Transfer-Encoding
- :Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=TcnLMgk3EMo9jkH9TpEZzuKiB04bPbCebMcwHrbD+qg=; b=XD0h6bWNeoP0eN2lw250T72hFb
- bWFbVZAzahBY+vTfCJXQVEYo1cZy3r9O0LecEzB7WHIjbhyAGPxN8iUIZof8+ERZdtrM/Sb668AyR
- JQBbABbmtlXgZy3nhswABN+G4NCA2TRJwLShj2o5ovdUOoHpS4f4V0r06K3xBMLCJlfQgvxfH18i1
- 7RbkF0h1QvCIlkuLi92EM2rbk0bmC1ud6nkZgsM8+Ss2I6F+SyQ+5cy5pJzkzcKW58DzsMdQsRcxs
- P7pLo9C0hdWBwm7HvjQaEap2Fqp3iuLadej4q87oZY4T12YH/vx4UDxRT7d400B6PcP2fa4aA9gD2
- LWLOOrTQ==;
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=llPfZ8AOPilzKmViev4XTbmhiuGiojY0tKb8nEMUYB4=; b=q7szZM2bwlzDUDzrPMtpFWNQSr
+ Rjk9/ywHJnOgkmh0PCDqW+THpVgJW1VAwRjP9YG6fQpxcFEKNRhoxDCUfaaIC1bBTk1InZfT5lokj
+ WvslQ6ZeaJOKJI6v3bvEZePODqezfFqNcyPSIZ5EjaWIrGOVi0TK4FMAvY2yDVpTjAYQ0wzZxgq8R
+ AId0y2XsvWRyjQZFXTP2Psn27o5s+qeTGmKsFjHDJ0Y5G7WOS+ypMsyIWvWdHlQSqJHHN8QzzL0r+
+ nsNlQBxGs7NUeGAx9kcCGWId0KvdeV6Q7Te5iQuOpdgZNUyZPxY+1PkbtfNlBl0RUPtkzvzeIYv5p
+ vIK7lyDQ==;
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljNcc-00FZS1-Nd
- for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 14:56:32 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id b7so6867453wmh.5
- for <linux-mediatek@lists.infradead.org>; Wed, 19 May 2021 07:56:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=TcnLMgk3EMo9jkH9TpEZzuKiB04bPbCebMcwHrbD+qg=;
- b=V+SdtypE4xlpNcukUIz7+rnbigJFfOWbTMO57yxPG7ZwijggmeShDYnwqZmmn56KxZ
- idYhyY742I/LYbfmVgqBm2hKUEzhVOhzAru6YtQ0DRnO2hWkI992SviytwV7DTSHB8Pp
- l5to2stUz2kFIVynuNcTQusV72v/brYjINEeRPg7HpyQB5GqJl72iyzyvRafD2ECViZf
- eyVJbGs/73jq4OTjuphwh7F4IPFLEnN3nOaoKeT+HnXRMfvhl8heKON+dMVgavWM6NX5
- AQp3zxzo8o9SJAI8tmlm4zzDfuUrCv8Dy006PFxiyjBD9tff3T8TYYdaWFlaja2/kwFs
- jooQ==
+ id 1ljOuL-00FcWn-4F
+ for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 16:18:55 +0000
+Received: by mail-wr1-x429.google.com with SMTP id a4so14683232wrr.2
+ for <linux-mediatek@lists.infradead.org>; Wed, 19 May 2021 09:18:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=llPfZ8AOPilzKmViev4XTbmhiuGiojY0tKb8nEMUYB4=;
+ b=YpumUkT2zhUhb1gcFON7vhnOA6X+5Sc0KNC5HjSjNRgyCNI122racDg6XFNc5l6psP
+ G1TV099JaWISOPvAoo6zW4/kbkKFp7KMqc1WKIIRRB1lgp2AIUmW8kKHa5F65Zj0Su0x
+ peumpe9ZTdBGm1CCLnpKK0jpgmMlHbROIf108f3gXbrEO5MxZR4kVnsNXyFusDdb3Gjh
+ ZEzpZTUW1T7g23c9FbHRQwg0PyFj8FSB2u2aaKjmlhXtTqD5pAUmBfhr32A4WDZRJMQO
+ pQs38URDfHtMqlVagVLQfPW1H//NtNp2LhulTCU27QoB7Ktdpiygp30XGBL5p3nMqA3/
+ +6lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=TcnLMgk3EMo9jkH9TpEZzuKiB04bPbCebMcwHrbD+qg=;
- b=AV9jh0/piaBwBEtggrJWR1AC8B/tVWVxRZdpP13NuWjXnXOEYU40VdyizcVHkcxhFB
- DpwXs5II5mQ8z23zOm0yX2xBlGgUwQjCgxwutGSc0IXny81r1ZjXPjPJvgJ8+8wzHTwe
- a7eqY/NBG6tkYZb6wtsaIpH7se60ij+m4gTsH0FSJq6aijIr5c3DsXN/pFkWkhl9NN2x
- GxYYjleF0kQMbMhkLQZIk5RdisLYrmNICzW8+6K50hHbqzuhGPgohFKTktB6wk9nMR4u
- usXjquknTq3K9Pkou0J24yzhIC3wjX7riNya6167O9f6W56eky7IiDCqqDACZzaR4Ljo
- aPtQ==
-X-Gm-Message-State: AOAM531UwZ88/u0EpdhUi+AAct060StR8Qc+t+20/DWK4CKYad1Cr7fm
- /yEjQIa4uAAyqj1kx5k1S7RdMA==
-X-Google-Smtp-Source: ABdhPJwWi8UfWY+BRIFIIJjxTyVXDEB86reqO42x2vcnTAmYtjeygpZmvCXKoTSMEvPTxFwYAC0MJw==
-X-Received: by 2002:a7b:c8ce:: with SMTP id f14mr12017892wml.81.1621436188766; 
- Wed, 19 May 2021 07:56:28 -0700 (PDT)
-Received: from dell ([91.110.221.215])
- by smtp.gmail.com with ESMTPSA id i1sm19318338wmb.46.2021.05.19.07.56.28
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=llPfZ8AOPilzKmViev4XTbmhiuGiojY0tKb8nEMUYB4=;
+ b=stiw5HxM043BEKl2KPF8N6dcMs9y1htu0yyFXKoz7grTqAzlDj+HDsIaEn6JvbzuTK
+ IKxLUsv+DJX+Zed9353cn/Arwp7HdGR6LDnKJpr4W0kNjjcDr8P19KaBF5jhO3P+S5NN
+ RzoGcmb55/O5xa9yh0sdLrTLlmIH1v8hfFfas5SdieoU9WrK3LLB5PT/LDgWJvKic5c7
+ /A2VoFcAPQba4e9slm2FR8spve2uyJCMQM/Dd2Sa0JgZhXW3wJufOzDPm2E+CEXIpn/r
+ /Huf3qUv8OVw3TckIzWj4iuKjOXSiBpKfTiqVO6beNEOB8pC3z8gk/DPtIWgbMqA6UHT
+ 8STQ==
+X-Gm-Message-State: AOAM533zOFQrMy+owiIjK1/ikFBZ/rIqOZVNk/CjuzLR+UOPzjEYmguQ
+ OLhi4d9/PR4Hsy4Mfn15Efq4Dg==
+X-Google-Smtp-Source: ABdhPJy53K9D1kmFCUpC/PIf+b5cYVmChTkcnu+yAIk6l/+kiu3PmLWiqS1kjyM5UzZgnnvapssAuA==
+X-Received: by 2002:adf:f9ce:: with SMTP id w14mr15784947wrr.387.1621441130604; 
+ Wed, 19 May 2021 09:18:50 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+ by smtp.gmail.com with ESMTPSA id m9sm5638547wmq.40.2021.05.19.09.18.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 May 2021 07:56:28 -0700 (PDT)
-Date: Wed, 19 May 2021 15:56:26 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Cc: matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- gene_chen@richtek.com, Wilma.Wu@mediatek.com,
- shufan_lee@richtek.com, cy_huang@richtek.com
-Subject: Re: [PATCH v8 0/10] mfd: mt6360: Merge different sub-devices I2C
- read/write
-Message-ID: <20210519145626.GH2549456@dell>
-References: <20210517173314.140912-1-gene.chen.richtek@gmail.com>
+ Wed, 19 May 2021 09:18:50 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/3] dt-bindings: arm: mediatek: mmsys: convert to YAML format
+Date: Wed, 19 May 2021 18:18:44 +0200
+Message-Id: <20210519161847.3747352-1-fparent@baylibre.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210517173314.140912-1-gene.chen.richtek@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_075630_800246_B5CB8C2C 
-X-CRM114-Status: UNSURE (   7.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210519_091853_212537_D0DA9982 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,28 +107,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAxOCBNYXkgMjAyMSwgR2VuZSBDaGVuIHdyb3RlOgoKPiBUaGlzIHBhdGNoIHNlcmll
-cyBtZXJnZSBkaWZmZXJlbnQgc3ViLWRldmljZSBJMkMgcmVhZC93cml0ZSBpbnRvIG9uZSBSZWdt
-YXAgYW5kCj4gZml4IGNvZGluZyBzdHlsZSBmb3Igd2VsbC1vcmdhbml6ZWQuCj4gCj4gR2VuZSBD
-aGVuICgxMCkKPiAgIG1mZDogbXQ2MzYwOiBSZWFycmFuZ2UgaW5jbHVkZSBmaWxlCj4gICBtZmQ6
-IG10NjM2MDogUmVtb3ZlIHJlZHVuZGFudCBicmFja2V0cyBhcm91bmQgcmF3IG51bWJlcnMKPiAg
-IG1mZDogbXQ2MzYwOiBJbmRpY2F0ZSBzdWItZGV2IGNvbXBhdGlibGUgbmFtZSBieSB1c2luZwo+
-ICAgbWZkOiBtdDYzNjA6IENvbWJpbmUgbXQ2MzYwIHBtaWMvbGRvIHJlc291cmNlcyBpbnRvIG10
-NjM2MAo+ICAgbWZkOiBtdDYzNjA6IFJlbmFtZSBtdDYzNjBfcG11X2RhdGEgYnkgbXQ2MzYwX2Rk
-YXRhCj4gICBtZmQ6IG10NjM2MDogUmVuYW1lIG10NjM2MF9wbXUgYnkgbXQ2MzYwCj4gICBtZmQ6
-IG10NjM2MDogUmVtb3ZlIGhhbmRsZV9wb3N0X2lycSBjYWxsYmFjayBmdW5jdGlvbgo+ICAgbWZk
-OiBtdDYzNjA6IEZpeCBmbG93IHdoaWNoIGlzIHVzZWQgdG8gY2hlY2sgaWMgZXhpc3QKPiAgIG1m
-ZDogbXQ2MzYwOiBNZXJnZSBoZWFkZXIgZmlsZSBpbnRvIGRyaXZlciBhbmQgcmVtb3ZlIHVudXNl
-IHJlZ2lzdGVyIGRlZmluZQo+ICAgbWZkOiBtdDYzNjA6IE1lcmdlIGRpZmZlcmVudCBzdWItZGV2
-aWNlcyBJMkMgcmVhZC93cml0ZQoKQWxsIGFwcGxpZWQsIHRoYW5rcy4KCi0tIApMZWUgSm9uZXMg
-W+adjueQvOaWr10KU2VuaW9yIFRlY2huaWNhbCBMZWFkIC0gRGV2ZWxvcGVyIFNlcnZpY2VzCkxp
-bmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBcm0gU29DcwpGb2xsb3cgTGlu
-YXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Convert the mmsys bindings to the YAML format.
+
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
+ .../bindings/arm/mediatek/mediatek,mmsys.txt  | 31 ----------
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 57 +++++++++++++++++++
+ 2 files changed, 57 insertions(+), 31 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+deleted file mode 100644
+index 78c50733985c..000000000000
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
++++ /dev/null
+@@ -1,31 +0,0 @@
+-Mediatek mmsys controller
+-============================
+-
+-The Mediatek mmsys system controller provides clock control, routing control,
+-and miscellaneous control in mmsys partition.
+-
+-Required Properties:
+-
+-- compatible: Should be one of:
+-	- "mediatek,mt2701-mmsys", "syscon"
+-	- "mediatek,mt2712-mmsys", "syscon"
+-	- "mediatek,mt6765-mmsys", "syscon"
+-	- "mediatek,mt6779-mmsys", "syscon"
+-	- "mediatek,mt6797-mmsys", "syscon"
+-	- "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
+-	- "mediatek,mt8167-mmsys", "syscon"
+-	- "mediatek,mt8173-mmsys", "syscon"
+-	- "mediatek,mt8183-mmsys", "syscon"
+-- #clock-cells: Must be 1
+-
+-For the clock control, the mmsys controller uses the common clk binding from
+-Documentation/devicetree/bindings/clock/clock-bindings.txt
+-The available clocks are defined in dt-bindings/clock/mt*-clk.h.
+-
+-Example:
+-
+-mmsys: syscon@14000000 {
+-	compatible = "mediatek,mt8173-mmsys", "syscon";
+-	reg = <0 0x14000000 0 0x1000>;
+-	#clock-cells = <1>;
+-};
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+new file mode 100644
+index 000000000000..a419da33e10b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/arm/mediatek/mediatek,mmsys.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
++
++title: MediaTek mmsys controller
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description:
++  The MediaTek mmsys system controller provides clock control, routing control,
++  and miscellaneous control in mmsys partition.
++
++properties:
++  $nodename:
++    pattern: "^syscon@[0-9a-f]+$"
++
++  compatible:
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt2701-mmsys
++              - mediatek,mt2712-mmsys
++              - mediatek,mt6765-mmsys
++              - mediatek,mt6779-mmsys
++              - mediatek,mt6797-mmsys
++              - mediatek,mt8167-mmsys
++              - mediatek,mt8173-mmsys
++              - mediatek,mt8183-mmsys
++          - const: syscon
++      - items:
++          - const: mediatek,mt7623-mmsys
++          - const: mediatek,mt2701-mmsys
++          - const: syscon
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    mmsys: syscon@14000000 {
++        compatible = "mediatek,mt8173-mmsys", "syscon";
++        reg = <0x14000000 0x1000>;
++        #clock-cells = <1>;
++    };
+-- 
+2.31.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
