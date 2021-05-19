@@ -2,19 +2,20 @@ Return-Path: <SRS0=GdzH=KO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A79B2C433B4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 19:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A9DFFC43460
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 19:57:12 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 285DE611C2
+	by mail.kernel.org (Postfix) with ESMTPS id 95C4461059
 	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 19:57:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 285DE611C2
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 95C4461059
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +24,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5cYQhS9+lAFNpJsNDlcgJoz35XbOEGRc2r9PzVlYEwc=; b=OED4dV63LXzsXxR8mqtJ/+U6O
-	xZRKxyyUe1tw405Na2okU4f9FB45pqBPZAmgTEAw/MjypTipl52R/1kKuXV3ex05DqHwdBQWUocop
-	xb4tVe0vZqrj97/J/EtQHV5gB2KuuM4SKIbXuSyGKmvSKqMx22A9o45xm4bWqULZLOaIaSDdATc6p
-	ivMd9HoeMkEuuiMGN5o4UEmrCd1OpdMLDvcGpciCs11/T8eDXPCtW97JUqsax70yk1Dtj4UStifaR
-	ARg5TeV4vrdZ8fZrhR+NxAaNWAH5S56aEHNH38X5+CbVvPYMxK/NbQ1g9g5ewNb+xaJBKmVi7OL5y
-	LBnsbWOfw==;
+	 bh=GuYAJTAdMNJRXLZ8AwhVjag/twgBhq2z/95WLKqLNN4=; b=qxMsa260/Ey6+HW7pNNzBsnbC
+	8VuKMm0y7QqzIOeL0UD+RYnSaKbDgySTWnI+DWFc1eN2bLwGVL0M2zGQ/bwEkDjKA+rYDeiAG8FIp
+	DNfEc6501djnCfI5IWH1hEf2LsM8OtD1PR4VRyWcywaSOViVyzVx7Rxmm01Q/aO4MeNVU4Y3i+Wj9
+	yA0EL2G2L4jvFHSpeWj64O0inYAfElGh3voIjkN2ixOiFryCrMIskaItyAPIRLXkil0l9nH+eNutq
+	9cU5BJBIgH6zftZVrz255yQv0sEuwokQzGthTpd1MxkycDHs0bMe9SvYK9uztlol8d9GZ7t3bayjO
+	Gr27wC65A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljSJI-004xWW-6l; Wed, 19 May 2021 19:56:52 +0000
+	id 1ljSJJ-004xWk-E3; Wed, 19 May 2021 19:56:53 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSJD-004xTk-RF
+ id 1ljSJD-004xTj-RF
  for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 19:56:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
  To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=QWt4y0Prspqwseq17BFV/hKHvu072YPMYoLn10GWIno=; b=STeYE3mSfxWGDGbW7F2SMD7XWU
- AKcJssEfOq1hpoK7ro5llMaVBoreyaU1PJ4VoABkK4XN8QtBRzkbSiF2ivXG/gvxMprluwPskJuzf
- bv7W+XMH4bAuKoZOwFan87ubUPpPForfPgeA5+BAno59W/EWQpBxfROqhjyaVwCs6YcmF+Q2gmGdy
- 5wpii+rCA0zeNYz8EEp3JWW00sYcmovmUtfTarQnALHNCObejXIn4OghQkPtlmKtxO/O0SaDgwLBu
- qpWr8OG06ryDDW6dvmySeDro+g6tYB8KqZzjZHPrGJzCfL96ed9JY2gYHzTi6Rw2NweBfCnvMZ5BG
- 2eThVSiA==;
+ bh=lSEi+qHhgMiwnmoz1Sx2TCpt+7MGiWwHxRzn27AOE8I=; b=xMQKIClhoh4PoKvQfmP+JsammM
+ 1GgSGnnhi14g2tCsxOWJAg7Pa30ecih3rfi9mD+qt2JnqPvkP/87b4U4IFvcebVd6UusCN+VYUTcV
+ o3qWEei+89QKwElCeJZFwtmifDnTsGeL7wTLbMywD/xFZeql0YlYLuHwE/Xv7AlwVpqv9GyPOkiVb
+ vHHPBahtDD6t6lpyWosMhUkEvROMJ2+2EH2WfrmncN4GxuBc1kszY6MkaWHnKezJNA5SdzrLLkE4s
+ dH31Sbth9oF6/cpGJwrgv0fdlKpQzWiwyunuk6RESwYJj7XLe1GFVccml9FkH1ymdsQQd6/3xJi8x
+ eGnDz1Jg==;
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljSJA-00FkgD-S3
+ id 1ljSJ7-00FkgC-Uo
  for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 19:56:46 +0000
-X-UUID: d283d9db617e4dcfb75e375de177fba0-20210519
+X-UUID: 921fabaebe934f32be271a61295df8b1-20210519
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QWt4y0Prspqwseq17BFV/hKHvu072YPMYoLn10GWIno=; 
- b=Pi0r5h17oFYCSSqeKsFfmqoJ36wli/CIvtm90molXPT2AeT2fOboJjx6OwfsBKxhtnnYEm2GTlzBWzXER9inDdQOo9W3NXick57KkFjxEhsEQGmzAtYZrfV03docQD70rjNV3bDm3/lGiqzqUgRSXzygBkWw3XGBD5mrGMohmVU=;
-X-UUID: d283d9db617e4dcfb75e375de177fba0-20210519
+ bh=lSEi+qHhgMiwnmoz1Sx2TCpt+7MGiWwHxRzn27AOE8I=; 
+ b=dyhOI7PuJldajsFmbZfpFMUENMwhJX4N/waf6QjTy3m/63D4C/V3R0Jklz8x3OJRG+NyAzzAkgxDwL4KwYNmgO3qI7H1rvCDK/DBDb2SuFBjYDOySlTSycei9lH8MJpPPR3Q9WZ9tNRkRFS18I2MY0Mrq5eif0cc0SjeEVFYfMQ=;
+X-UUID: 921fabaebe934f32be271a61295df8b1-20210519
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 107767945; Wed, 19 May 2021 12:56:41 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 May 2021 12:56:39 -0700
+ with ESMTP id 1940444699; Wed, 19 May 2021 12:56:35 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 May 2021 12:56:34 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 20 May 2021 03:56:26 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -77,18 +78,17 @@ CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <bo.jiao@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [RFC PATCH 2/4] mac80211: minstrel_ht: fix minstrel_aggr_check for
- encap offload
-Date: Thu, 20 May 2021 03:56:22 +0800
-Message-ID: <4e50d38c98c407825c6897a034fee3ba6366b0ad.1621453091.git.ryder.lee@mediatek.com>
+Subject: [RFC PATCH 3/4] mac80211: add rate control support for encap offload
+Date: Thu, 20 May 2021 03:56:23 +0800
+Message-ID: <7fd4b92a277d1dab7435d310c5b12f1393e1d710.1621453091.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
 References: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_125644_937894_082994B2 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20210519_125643_427332_BB4FD35B 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,44 +105,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Avoid checking ieee80211_hdr to support encap offload.
+The software rate control cannot deal with encap offload, so fix it.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- net/mac80211/rc80211_minstrel_ht.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ net/mac80211/ieee80211_i.h |  9 +++++++++
+ net/mac80211/rate.c        |  9 ++-------
+ net/mac80211/tx.c          | 18 ++++++++++++++----
+ 3 files changed, 25 insertions(+), 11 deletions(-)
 
-diff --git a/net/mac80211/rc80211_minstrel_ht.c b/net/mac80211/rc80211_minstrel_ht.c
-index 6487b05da6fa..55ff93c803ac 100644
---- a/net/mac80211/rc80211_minstrel_ht.c
-+++ b/net/mac80211/rc80211_minstrel_ht.c
-@@ -1179,19 +1179,24 @@ static void
- minstrel_aggr_check(struct ieee80211_sta *pubsta, struct sk_buff *skb)
- {
- 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
+diff --git a/net/mac80211/ieee80211_i.h b/net/mac80211/ieee80211_i.h
+index 8fcbaa1eedf3..ba780c749e36 100644
+--- a/net/mac80211/ieee80211_i.h
++++ b/net/mac80211/ieee80211_i.h
+@@ -2030,6 +2030,15 @@ static inline void ieee80211_tx_skb(struct ieee80211_sub_if_data *sdata,
+ 	ieee80211_tx_skb_tid(sdata, skb, 7);
+ }
+ 
++static inline bool ieee80211_is_tx_data(struct sk_buff *skb)
++{
++	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
 +	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct sta_info *sta = container_of(pubsta, struct sta_info, sta);
- 	u16 tid;
- 
- 	if (skb_get_queue_mapping(skb) == IEEE80211_AC_VO)
- 		return;
- 
--	if (unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
-+	if (unlikely(!pubsta->wme))
-+		return;
 +
-+	if (!(info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP) &&
-+	    unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
- 		return;
++	return info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP ||
++	       ieee80211_is_data(hdr->frame_control);
++}
++
+ u32 ieee802_11_parse_elems_crc(const u8 *start, size_t len, bool action,
+ 			       struct ieee802_11_elems *elems,
+ 			       u64 filter, u32 crc, u8 *transmitter_bssid,
+diff --git a/net/mac80211/rate.c b/net/mac80211/rate.c
+index 63652c39c8e0..8c6416129d5b 100644
+--- a/net/mac80211/rate.c
++++ b/net/mac80211/rate.c
+@@ -297,15 +297,11 @@ void ieee80211_check_rate_mask(struct ieee80211_sub_if_data *sdata)
+ static bool rc_no_data_or_no_ack_use_min(struct ieee80211_tx_rate_control *txrc)
+ {
+ 	struct sk_buff *skb = txrc->skb;
+-	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-	__le16 fc;
+-
+-	fc = hdr->frame_control;
  
- 	if (unlikely(skb->protocol == cpu_to_be16(ETH_P_PAE)))
- 		return;
+ 	return (info->flags & (IEEE80211_TX_CTL_NO_ACK |
+ 			       IEEE80211_TX_CTL_USE_MINRATE)) ||
+-		!ieee80211_is_data(fc);
++		!ieee80211_is_tx_data(skb);
+ }
  
--	tid = ieee80211_get_tid(hdr);
-+	tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
- 	if (likely(sta->ampdu_mlme.tid_tx[tid]))
- 		return;
+ static void rc_send_low_basicrate(struct ieee80211_tx_rate *rate,
+@@ -870,7 +866,6 @@ void ieee80211_get_tx_rates(struct ieee80211_vif *vif,
+ 			    int max_rates)
+ {
+ 	struct ieee80211_sub_if_data *sdata;
+-	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 	struct ieee80211_supported_band *sband;
  
+@@ -882,7 +877,7 @@ void ieee80211_get_tx_rates(struct ieee80211_vif *vif,
+ 	sdata = vif_to_sdata(vif);
+ 	sband = sdata->local->hw.wiphy->bands[info->band];
+ 
+-	if (ieee80211_is_data(hdr->frame_control))
++	if (ieee80211_is_tx_data(skb))
+ 		rate_control_apply_mask(sdata, sta, sband, dest, max_rates);
+ 
+ 	if (dest[0].idx < 0)
+diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
+index b3ef6aaece31..a0143a8003d2 100644
+--- a/net/mac80211/tx.c
++++ b/net/mac80211/tx.c
+@@ -666,6 +666,7 @@ ieee80211_tx_h_rate_ctrl(struct ieee80211_tx_data *tx)
+ 	u32 len;
+ 	struct ieee80211_tx_rate_control txrc;
+ 	struct ieee80211_sta_rates *ratetbl = NULL;
++	bool encap = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
+ 	bool assoc = false;
+ 
+ 	memset(&txrc, 0, sizeof(txrc));
+@@ -707,7 +708,7 @@ ieee80211_tx_h_rate_ctrl(struct ieee80211_tx_data *tx)
+ 	 * just wants a probe response.
+ 	 */
+ 	if (tx->sdata->vif.bss_conf.use_short_preamble &&
+-	    (ieee80211_is_data(hdr->frame_control) ||
++	    (ieee80211_is_tx_data(tx->skb) ||
+ 	     (tx->sta && test_sta_flag(tx->sta, WLAN_STA_SHORT_PREAMBLE))))
+ 		txrc.short_preamble = true;
+ 
+@@ -729,7 +730,8 @@ ieee80211_tx_h_rate_ctrl(struct ieee80211_tx_data *tx)
+ 		 "%s: Dropped data frame as no usable bitrate found while "
+ 		 "scanning and associated. Target station: "
+ 		 "%pM on %d GHz band\n",
+-		 tx->sdata->name, hdr->addr1,
++		 tx->sdata->name,
++		 encap ? ((struct ethhdr *)hdr)->h_dest : hdr->addr1,
+ 		 info->band ? 5 : 2))
+ 		return TX_DROP;
+ 
+@@ -763,7 +765,7 @@ ieee80211_tx_h_rate_ctrl(struct ieee80211_tx_data *tx)
+ 
+ 	if (txrc.reported_rate.idx < 0) {
+ 		txrc.reported_rate = tx->rate;
+-		if (tx->sta && ieee80211_is_data(hdr->frame_control))
++		if (tx->sta && ieee80211_is_tx_data(tx->skb))
+ 			tx->sta->tx_stats.last_rate = txrc.reported_rate;
+ 	} else if (tx->sta)
+ 		tx->sta->tx_stats.last_rate = txrc.reported_rate;
+@@ -3653,8 +3655,16 @@ struct sk_buff *ieee80211_tx_dequeue(struct ieee80211_hw *hw,
+ 	else
+ 		info->flags &= ~IEEE80211_TX_CTL_AMPDU;
+ 
+-	if (info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP)
++	if (info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP) {
++		if (!ieee80211_hw_check(&local->hw, HAS_RATE_CONTROL)) {
++			r = ieee80211_tx_h_rate_ctrl(&tx);
++			if (r != TX_CONTINUE) {
++				ieee80211_free_txskb(&local->hw, skb);
++				goto begin;
++			}
++		}
+ 		goto encap_out;
++	}
+ 
+ 	if (info->control.flags & IEEE80211_TX_CTRL_FAST_XMIT) {
+ 		struct sta_info *sta = container_of(txq->sta, struct sta_info,
 -- 
 2.18.0
 _______________________________________________
