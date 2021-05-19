@@ -2,93 +2,90 @@ Return-Path: <SRS0=GdzH=KO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19516C43470
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 08:33:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A108AC433ED
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 10:38:18 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8B4FE61363
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 08:33:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8B4FE61363
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 595A061355
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 10:38:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 595A061355
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=loongson.cn
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
-	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:CC:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=16GLf+YPShieSNZLtMEsuz0b+NWZoRwYl04+fHEhwSY=; b=kEKX2ORwDg9ZeRCicR/Jd9VKK
-	RxWLgp3yBFbZOWw6LPXzd3eF7G55Aka75rvlfWD7zP8Dlu7fQMXGXLW9Z2BWTz+2X/FZu6m3Ys7+Z
-	yeG4FwZDPp+jao56kYNPrHJRSsiY4fpMyFOKxXi9ckEUAUKgf66E3lPQTQZ49v88v07GfONVU1ia3
-	AMMYpS77r/1RFnnArY+k1T/dWVKkgwc3Fj4nBwFcNXryBXYLagN3RLrJp67r6iDOUorQH9VDoQqpI
-	t6QpHnYAT0oMNRXZ86LjW6HrAcDaBaCO54GKzH1pqtKU946cCzhxsCvihq3vHFrhGn9is9oekiGJu
-	RPQHuNAqg==;
+	:Content-Type:MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=J94WoU7NCrY85DUYyJovVcpi1ICbsZLU+c3fjRIUKUc=; b=WvB4Z2d95on+Cy+5IvWEhnwg0G
+	VLjNpu3C2QlVO1mnYU7YNPF2rvjG1o6E4tonNuPReUC/5NYIVbHSvPssOnJIqBiQMjtR+3sSbdtSD
+	Pbq4nXwfUqKFv2Qgs5egM5M7V25jBrFbcHtNOcogozh4wnR8s/bAO9Akojtu0JHUUwZRuG5vNpAzK
+	ClDDROFsC+RKwzVgGhRnCBZmXlDzpgXPnobtVHiVAxzBa7zOv/NVL5xVXR2KYChVCgkAnPB1EtEma
+	dL6D85EZKO8iWruR9+cjvx1pwLn+TjkNgkK5TZVAHf3IggCnwSjByiOT6zrdAxiFiK6vRbOnO+ell
+	bG3FD/lA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljHdY-003L1e-Jx; Wed, 19 May 2021 08:33:05 +0000
+	id 1ljJab-003bgb-3A; Wed, 19 May 2021 10:38:09 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljHdT-003L0c-VJ
- for linux-mediatek@desiato.infradead.org; Wed, 19 May 2021 08:33:00 +0000
+ id 1ljJaQ-003bfm-5B; Wed, 19 May 2021 10:37:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:
- Message-ID:Sender:Reply-To:Content-ID:Content-Description;
- bh=79l6X1uE0HO2OQx85d60C15Qe3uDBb+Qxr5urDNIQgA=; b=em1am+1F33VV+E1J9QgJd9i/Gf
- 5bms+u8JNMojH7uUzoUhoYalXYceuDZN6vLmi/+zxJ5i8X9y1YmyQ8GhIqf87q1wsz5i6FIyw2dn+
- hllIR9pe+7CXjFFIgu0MtPgA8eg7sKtFyhsRzgi1BgZWQ56e/0ee699Ue7gdLIXh6Iy1g+YXSVYfz
- 4CeFNgIgHYF8gcHi4VvjYNV2SgwZ3TiAvlnKLgxWaxB/91aj40sm0GW6si03YZmRcutQd3dVhQuD5
- gJtrVhLqm1l2ChoUiytHZtP5cW5nE8n7mHs+pJhVFuCQ8ovJ+opumXjYU6OdDqULitRTJtVGATqwX
- kZrn6hbA==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljHdQ-00FHpn-9W
- for linux-mediatek@lists.infradead.org; Wed, 19 May 2021 08:32:58 +0000
-X-UUID: 668b934ee5c544f09a1c774ed9eb0f16-20210519
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=79l6X1uE0HO2OQx85d60C15Qe3uDBb+Qxr5urDNIQgA=; 
- b=JtxoNgkPVN1CFa86Zsph317kH/w8sRHjfFDHO5A3fHoDMyALDL7uvPo7+pDuH93jGM72P6oGVWo70fl+kBUeIMaUI/awMUHTZOJMVF5qw0ScBNpZtc+mH8tL0H8SWtvaLgwdywikZLbf443F9FGH9TjD077xTfbtbZnq4OqRc90=;
-X-UUID: 668b934ee5c544f09a1c774ed9eb0f16-20210519
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1544157358; Wed, 19 May 2021 01:32:54 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 May 2021 01:32:34 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 May 2021 16:32:27 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 19 May 2021 16:32:27 +0800
-Message-ID: <1621413147.12301.45.camel@mtkswgap22>
-Subject: Re: [PATCH] mm/sparse: fix check_usemap_section_nr warnings
-From: Miles Chen <miles.chen@mediatek.com>
-To: Mike Rapoport <rppt@kernel.org>
-CC: Andrew Morton <akpm@linux-foundation.org>, <linux-mm@kvack.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <wsd_upstream@mediatek.com>, Catalin Marinas <catalin.marinas@arm.com>, "Will
- Deacon" <will@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Date: Wed, 19 May 2021 16:32:27 +0800
-In-Reply-To: <YKTEpPXj+Hpm48Yt@kernel.org>
-References: <20210511093114.15123-1-miles.chen@mediatek.com>
- <YKSigC4UAQAARX4L@kernel.org> <1621408729.12301.34.camel@mtkswgap22>
- <YKTEpPXj+Hpm48Yt@kernel.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
-MIME-Version: 1.0
-X-MTK: N
+ d=infradead.org; s=bombadil.20210309; h=Message-Id:Date:Subject:Cc:To:From:
+ Sender:Reply-To:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=fSQxLIF+SSmuLxcr9AktDMU7JtES+LcxCeHLO/dMRSc=; b=JBlReU8lwTKDcAnCj4Wm2Coinm
+ 622pLghw4Oj2yhdsZFYs8WbgvGz9i6bJyBhtADznuGm9GA1Gd2GYBs3P74Vws83lZWySm2zMf16Y/
+ sfdxm5xKKgCbbLIuIEZEUYDBZm2Tah/P+mCjfnIr3WiJ7zjb06MTQ/80gmROS9oj061QimOZyZQjd
+ lv0DjWWgk7YRkfyvo2OBPhTAFPl6XpEOcnQLbWHwdmZ73PvYd/6X96XzpXNFHBV/3bvMaqIf4ko9H
+ CgKaglfFt4h7PC75cUQ7mU0f0RuTNsdLyzKjAjnx9i/PrPZVBfSq5EEfu8+0X8wr8CNQcF9YFNvFo
+ z0ViNiSw==;
+Received: from mail.loongson.cn ([114.242.206.163] helo=loongson.cn)
+ by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
+ id 1ljJaM-00FMLi-1M; Wed, 19 May 2021 10:37:55 +0000
+Received: from linux.localdomain (unknown [113.200.148.30])
+ by mail.loongson.cn (Coremail) with SMTP id AQAAf9Bx0OJz6qRgrKcAAA--.3389S2;
+ Wed, 19 May 2021 18:37:41 +0800 (CST)
+From: Tiezhu Yang <yangtiezhu@loongson.cn>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org, lkp@intel.com,
+ Dan Carpenter <dan.carpenter@oracle.com>, Heiko Stuebner <heiko@sntech.de>,
+ kbuild@lists.01.org
+Subject: [PATCH v2] phy: phy-mtk-tphy: Fix some resource leaks in
+ mtk_phy_init()
+Date: Wed, 19 May 2021 18:37:39 +0800
+Message-Id: <1621420659-15858-1-git-send-email-yangtiezhu@loongson.cn>
+X-Mailer: git-send-email 2.1.0
+X-CM-TRANSID: AQAAf9Bx0OJz6qRgrKcAAA--.3389S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtr43Kw48urWUJFykZF1kKrg_yoWftrX_CF
+ 1vgwnxZan8WF1akw1UKF17ZF97u3W0qF1kGr9ay34Fkryjgr1Ygr1qvFZ3Gay7Cws3uF13
+ Jwn8u3Z29r47ZjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbsxYjsxI4VWDJwAYFVCjjxCrM7AC8VAFwI0_Gr0_Xr1l1xkIjI8I
+ 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
+ 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW8JVW5JwA2z4x0Y4vE2Ix0
+ cI8IcVCY1x0267AKxVWxJVW8Jr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4
+ A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IE
+ w4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r4j6F4UMc
+ vjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACI402YVCY1x02628vn2kIc2xK
+ xwCY02Avz4vE14v_Gw1l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2
+ IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v2
+ 6r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2
+ IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWrZr1j6s0DMIIF0xvEx4A2
+ jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0x
+ ZFpf9x07jOgAwUUUUU=
+X-CM-SenderInfo: p1dqw3xlh2x3gn0dqz5rrqw2lrqou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210519_013256_365458_6002B466 
-X-CRM114-Status: GOOD (  43.91  )
+X-CRM114-CacheID: sfid-20210519_033754_516298_4184F115 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,169 +97,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-05-19 at 10:56 +0300, Mike Rapoport wrote:
-> On Wed, May 19, 2021 at 03:18:49PM +0800, Miles Chen wrote:
-> > On Wed, 2021-05-19 at 08:30 +0300, Mike Rapoport wrote:
-> > > (add arm64 people)
-> > > 
-> > > On Tue, May 11, 2021 at 05:31:14PM +0800, Miles Chen wrote:
-> > > > In current implementation of node_data, if CONFIG_NEED_MULTIPLE_NODES=y,
-> > > > node_data is allocated by kzmalloc. If CONFIG_NEED_MULTIPLE_NODES=n,
-> > > 
-> > > The node structures are allocated from memblock rather than kzmalloc, so
-> > > I'd suggest to use "dynamically allocated":
-> > > 
-> > > ... node_data is dynamically allocated
-> > 
-> > 
-> > no problem. "dynamically allocated" is better.
-> > 
-> > > 
-> > > > we use a global variable named "contig_page_data".
-> > > > 
-> > > > If CONFIG_DEBUG_VIRTUAL is not enabled. __pa() can handle both kzalloc and
-> > > 
-> > >                                         ^ coma
-> > > 
-> > > And here as well, rather then mention kzalloc
-> > 
-> > 
-> > ok, will fix this in v3
-> > 
-> > > 
-> > > 	... __pa() can handle both dynamic allocation and symbol cases.
-> > > 
-> > > > symbol cases. But if CONFIG_DEBUG_VIRTUAL is set, we will have the
-> > > > "virt_to_phys used for non-linear address" warning when booting.
-> > > > 
-> > > > To fix it, create a small function to handle both translation.
-> > > 
-> > > More generally, I wonder how other architectures than support DEBUG_VIRTUAL
-> > > cope with this?
-> > 
-> > arm64 support DEBUG_VIRTUAL since v4.11. Before v4.11, a driver can get
-> > incorrect PA by using __pa() for non-linear addresses and create
-> > hard-to-debug issues.
-> > 
-> > arm32...I remember an old issue in ext4: __pa() is used to convert
-> > non-linear kmap'ed addresses (when CONFIG_HIGHMEM=y).
-> > 
-> > There are multiple architectures which support CONFIG_DEBUG_VIRTUAL.
-> > It helps people to catch non-linear addresses at the first place.
-> > 
-> > find arch -name 'physaddr.c'
-> > arch/arm/mm/physaddr.c
-> > arch/arm64/mm/physaddr.c
-> > arch/mips/mm/physaddr.c
-> > arch/riscv/mm/physaddr.c
-> > arch/x86/mm/physaddr.c
-> 
-> Right, but it seems they check for different things on different
-> architectures...
-> 
-> Just to make it clear, I'm Ok with your patch.
-> All I'm saying is that we probably need to revisit DEBUG_VIRTUAL to make it
-> consistent across architectures.
->  
+Use clk_disable_unprepare() in the error path of mtk_phy_init() to fix
+some resource leaks.
 
-Understood, thanks your reviewing.
+Reported-by: kernel test robot <lkp@intel.com>
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
+Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
 
-(I think different things are checked because that the "linear address
-space" is architecture-dependent and may be changed over time. For
-example, arm64, symbol addresses was in linear address space and moved
-to "non-linear address space" for address randomization.)
+v2: remove Fixes tag and add Reviewed-by tag
 
-Miles
+ drivers/phy/mediatek/phy-mtk-tphy.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index cdbcc49..731c483 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -949,6 +949,8 @@ static int mtk_phy_init(struct phy *phy)
+ 		break;
+ 	default:
+ 		dev_err(tphy->dev, "incompatible PHY type\n");
++		clk_disable_unprepare(instance->ref_clk);
++		clk_disable_unprepare(instance->da_ref_clk);
+ 		return -EINVAL;
+ 	}
+ 
+-- 
+2.1.0
 
-> > > 
-> > > Maybe such lack of consistency between debug and no-debug version of
-> > > arm64::virt_to_phys() is what needs to be fixed at the first place?
-> > >  
-> > > > Warning message:
-> > > > [    0.000000] ------------[ cut here ]------------
-> > > > [    0.000000] virt_to_phys used for non-linear address: (____ptrval____) (contig_page_data+0x0/0x1c00)
-> > > > [    0.000000] WARNING: CPU: 0 PID: 0 at arch/arm64/mm/physaddr.c:15 __virt_to_phys+0x58/0x68
-> > > > [    0.000000] Modules linked in:
-> > > > [    0.000000] CPU: 0 PID: 0 Comm: swapper Tainted: G        W         5.13.0-rc1-00074-g1140ab592e2e #3
-> > > > [    0.000000] Hardware name: linux,dummy-virt (DT)
-> > > > [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO BTYPE=--)
-> > > > [    0.000000] pc : __virt_to_phys+0x58/0x68
-> > > > [    0.000000] lr : __virt_to_phys+0x54/0x68
-> > > > [    0.000000] sp : ffff800011833e70
-> > > > [    0.000000] x29: ffff800011833e70 x28: 00000000418a0018 x27: 0000000000000000
-> > > > [    0.000000] x26: 000000000000000a x25: ffff800011b70000 x24: ffff800011b70000
-> > > > [    0.000000] x23: fffffc0001c00000 x22: ffff800011b70000 x21: 0000000047ffffb0
-> > > > [    0.000000] x20: 0000000000000008 x19: ffff800011b082c0 x18: ffffffffffffffff
-> > > > [    0.000000] x17: 0000000000000000 x16: ffff800011833bf9 x15: 0000000000000004
-> > > > [    0.000000] x14: 0000000000000fff x13: ffff80001186a548 x12: 0000000000000000
-> > > > [    0.000000] x11: 0000000000000000 x10: 00000000ffffffff x9 : 0000000000000000
-> > > > [    0.000000] x8 : ffff8000115c9000 x7 : 737520737968705f x6 : ffff800011b62ef8
-> > > > [    0.000000] x5 : 0000000000000000 x4 : 0000000000000001 x3 : 0000000000000000
-> > > > [    0.000000] x2 : 0000000000000000 x1 : ffff80001159585e x0 : 0000000000000058
-> > > > [    0.000000] Call trace:
-> > > > [    0.000000]  __virt_to_phys+0x58/0x68
-> > > > [    0.000000]  check_usemap_section_nr+0x50/0xfc
-> > > > [    0.000000]  sparse_init_nid+0x1ac/0x28c
-> > > > [    0.000000]  sparse_init+0x1c4/0x1e0
-> > > > [    0.000000]  bootmem_init+0x60/0x90
-> > > > [    0.000000]  setup_arch+0x184/0x1f0
-> > > > [    0.000000]  start_kernel+0x78/0x488
-> > > > [    0.000000] ---[ end trace f68728a0d3053b60 ]---
-> > > > 
-> > > > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > > > ---
-> > > >  mm/sparse.c | 13 +++++++++++--
-> > > >  1 file changed, 11 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/mm/sparse.c b/mm/sparse.c
-> > > > index b2ada9dc00cb..55c18aff3e42 100644
-> > > > --- a/mm/sparse.c
-> > > > +++ b/mm/sparse.c
-> > > > @@ -344,6 +344,15 @@ size_t mem_section_usage_size(void)
-> > > >  	return sizeof(struct mem_section_usage) + usemap_size();
-> > > >  }
-> > > >  
-> > > > +static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
-> > > > +{
-> > > > +#ifndef CONFIG_NEED_MULTIPLE_NODES
-> > > > +	return __pa_symbol(pgdat);
-> > > > +#else
-> > > > +	return __pa(pgdat);
-> > > > +#endif
-> > > > +}
-> > > > +
-> > > >  #ifdef CONFIG_MEMORY_HOTREMOVE
-> > > >  static struct mem_section_usage * __init
-> > > >  sparse_early_usemaps_alloc_pgdat_section(struct pglist_data *pgdat,
-> > > > @@ -362,7 +371,7 @@ sparse_early_usemaps_alloc_pgdat_section(struct pglist_data *pgdat,
-> > > >  	 * from the same section as the pgdat where possible to avoid
-> > > >  	 * this problem.
-> > > >  	 */
-> > > > -	goal = __pa(pgdat) & (PAGE_SECTION_MASK << PAGE_SHIFT);
-> > > > +	goal = pgdat_to_phys(pgdat) & (PAGE_SECTION_MASK << PAGE_SHIFT);
-> > > >  	limit = goal + (1UL << PA_SECTION_SHIFT);
-> > > >  	nid = early_pfn_to_nid(goal >> PAGE_SHIFT);
-> > > >  again:
-> > > > @@ -390,7 +399,7 @@ static void __init check_usemap_section_nr(int nid,
-> > > >  	}
-> > > >  
-> > > >  	usemap_snr = pfn_to_section_nr(__pa(usage) >> PAGE_SHIFT);
-> > > > -	pgdat_snr = pfn_to_section_nr(__pa(pgdat) >> PAGE_SHIFT);
-> > > > +	pgdat_snr = pfn_to_section_nr(pgdat_to_phys(pgdat) >> PAGE_SHIFT);
-> > > >  	if (usemap_snr == pgdat_snr)
-> > > >  		return;
-> > > >  
-> > > > -- 
-> > > > 2.18.0
-> > > 
-> > 
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
