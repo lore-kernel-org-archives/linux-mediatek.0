@@ -5,69 +5,70 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 17B80C433ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 06:39:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8328C433B4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 06:45:21 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87FED611C2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 06:39:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87FED611C2
+	by mail.kernel.org (Postfix) with ESMTPS id 55B2761042
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 May 2021 06:45:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55B2761042
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=JZ7HW1DPO7SkWzGgmtJIxiB1Hv9Lo8lbPMecOppH79A=; b=ZKQyOkvB3GRIbZuSXsr+W//rY
-	ORNpcz/Gv2Foc0AYL80z/ASVG81/Tb5CCGaxcLFdUzIzXYzx9iqxb+8ADgHhwrpY2GRGoShuwQOmM
-	H4vZHeuxf/MIgfIJ7YVUNvZmmrvDCSTsE0KAryqT9jCcuvkMa9Bz9NC6wZXsXDl9VsSOApIzOeZu+
-	23k61ExQ6a0CqucpNJjq2vYi7qYxA1PS5TSm2VTr3bbLSGLvCN5c+ujkBXCEPmDsCOpBUiTNejuLu
-	kGPQ7OFvDvvmhblWW7S1OINqplWA+JlnX9vEnIwNNYOHPInIRMouFGw/cA1oJWXunJe6z+3jUmN/1
-	GmOP5oPMA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5Y+vOcveWZ+tUHLMKmXh5pnLDBdkYp5zhLufn7M62qs=; b=WLk/vbDUD+3WA/yJkfo9WjAc0m
+	GhKjqsgCD5KrgUEEQO7LwqqE1o7XMFd21SeG3IExE6OuP1kYyIgbxQxB/mv5tqs9qKrEKBdFNwkhI
+	SfN3SLpfxytTsKnI4arXPN7El1SPdVKN296IAZvt4LRY71TrX5VeDl5R7AZ34Z6tlJBX3nZcseRSA
+	NuwIru1AC3f8ijMINd4JG0BfWGT62VcpWY77BD5WYC9tC6EzYDwC+MiYq6rbR5FYbH/y6Sq8voMbf
+	/5y5peemZ++Y6ESwblihp2KmgvjgyTADCOpyenSe1vWLEup8HmdIcIE2ve/MPNs2R88X2TSFU0Oub
+	3Me/wI8A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1ljFrL-00316E-3q; Wed, 19 May 2021 06:39:11 +0000
+	id 1ljFx3-00325y-Rj; Wed, 19 May 2021 06:45:05 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljFr5-00314J-D2; Wed, 19 May 2021 06:38:55 +0000
+ id 1ljFwd-00321q-Hw; Wed, 19 May 2021 06:44:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=jYh7zL2Ctfmwpb/jYXcNM13KNhb4dHl5kzVLMnmkvAc=; b=1A0bErRZBI6ZwO8/Vc0ZWnYfAd
- StSHLNjt9juVfJq5WVf4Wl1WlP7xx7DW+Jic4gbppaFGfLLlTZDWOlOIl3200dlGc+fsQ5CDCfPnH
- wlKfLsDLX6o+irjHrxK+FPqbXJxXuXO02CUUrwANHo2GrBcjAj0rHjuY2BQd6V0y12OTl8tKYe3+Z
- mEKCy512B6u9l9NfYv9/76A/TE5poFFfpB48rMhfmNMY+nWTXv73CV/gH2MUO/5SHkovMBkQzFZiq
- eZYAvx+tMtfOGrtf0K9UiJh+TYBC4RU7Ff2Sj9zeqJ5p98/jZwKIh5LcKHkCLdnBQ/7fElPIOhW8+
- o2kyWmOQ==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=8z++B8XVLCARu24JUi0rTZSYSrWtbXfC5DOMZvKLaJ4=; b=sMYODdC8N4WJPBecB86aUuImyV
+ hkg6CqUoRB8M+9xb+nVby7Q/t0AR9rGoIv0mva8R2hiU4ygleZd8AFi/qMsgdwEhXZIV5bNtnWd3e
+ qA00nqZuEWr5dgT2zzJSLIgc77GtUzV8ttlGFnQzfyrAMWDLW26YMMTUKNa+yBH/FzoDQsZyB0WXu
+ JMcAHf+rZkfvlmKZDCFVWOoXEMPoGu68B4H2o8fv5yASz5pYhsHOGgvLa+BM1kMD/eHxQuvZRtIbw
+ R+21LXyYYiwYWhlG+aTZgCsirrQ19d48v2Blht3G+YHOhUw41QhauMtPKNDzZJfaBpU9tN9YNOQ5V
+ f4yc4wkQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljFr1-00FBYF-0s; Wed, 19 May 2021 06:38:53 +0000
-X-UUID: 4342b91610624556843afba3642e5394-20210518
+ id 1ljFwa-00FBni-VB; Wed, 19 May 2021 06:44:38 +0000
+X-UUID: 0fed63a3924e4d57b510175f88a1b383-20210518
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jYh7zL2Ctfmwpb/jYXcNM13KNhb4dHl5kzVLMnmkvAc=; 
- b=bTTjLbCoaYAAmjHmRSaYmPcZZEMtNZSW0Ad8wzgw0LprNtYXCOsHTqOEXbrRJQQv9LoIMvzaWgGQ92ANlURZUFD2IMvXv1HUtg30Q+KMm5kRNQH/Jnay98/wvnNr3YS99qaNC4J/dI+Y4LfXa3wPGI5BIGWguBfrBWU5M8oYpBc=;
-X-UUID: 4342b91610624556843afba3642e5394-20210518
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=8z++B8XVLCARu24JUi0rTZSYSrWtbXfC5DOMZvKLaJ4=; 
+ b=K8jje7riaa8K9W+veRlDF7Ug/SbjQOJ7MOTcJ0a1IzBGYE5B8bs7XtMKI8y/cHkhoc0NnU4tbbWgRuxk6PzZhilhF++cn+siB8UQ+tYUTj8vfS5FbZ5YKesqk10+cuC3Kep+OagVQMKhqjM0Ll+7wZmXRNk37yW4Yo58DS6qeyo=;
+X-UUID: 0fed63a3924e4d57b510175f88a1b383-20210518
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1648345234; Tue, 18 May 2021 23:38:48 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 18 May 2021 23:34:22 -0700
+ with ESMTP id 303085790; Tue, 18 May 2021 23:44:28 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 18 May 2021 23:34:26 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 19 May 2021 14:34:18 +0800
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 May 2021 14:34:17 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 19 May 2021 14:34:18 +0800
+ Transport; Wed, 19 May 2021 14:34:16 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Thierry Reding
  <treding@nvidia.com>
@@ -77,19 +78,17 @@ CC: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
  <lee.jones@linaro.org>, <linux-usb@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/3] usb: common: usb-conn-gpio: use dev_err_probe() to print
- log
-Date: Wed, 19 May 2021 14:34:14 +0800
-Message-ID: <1621406055-18749-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/3] usb: common: usb-conn-gpio: fix NULL pointer dereference
+ of charger
+Date: Wed, 19 May 2021 14:34:13 +0800
+Message-ID: <1621406055-18749-1-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1621406055-18749-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1621406055-18749-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 834019DAF55A3585D8007107D5C15830EA56476F357C7886A1BAC557F4CD4F1F2000:8
+X-TM-SNTS-SMTP: 53867D13806BE60B2B21A7355853E7694597F6E76BB9D625F402C7EDB8800A432000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210518_233852_570487_8250514A 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20210518_234437_038428_9924D764 
+X-CRM114-Status: GOOD (  18.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,42 +105,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe() to print debug or error message depending on
-whether the error value is -DPROBE_DEFER or not.
+When power on system with OTG cable, IDDIG's interrupt arises before
+the charger registration, it will cause a NULL pointer dereference,
+fix the issue by registering the power supply before requesting
+IDDIG/VBUS irq.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/common/usb-conn-gpio.c | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ drivers/usb/common/usb-conn-gpio.c | 44 ++++++++++++++++++------------
+ 1 file changed, 26 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/usb/common/usb-conn-gpio.c b/drivers/usb/common/usb-conn-gpio.c
-index c9545a4eff66..dfbbc4f51ed6 100644
+index 6c4e3a19f42c..c9545a4eff66 100644
 --- a/drivers/usb/common/usb-conn-gpio.c
 +++ b/drivers/usb/common/usb-conn-gpio.c
-@@ -223,18 +223,14 @@ static int usb_conn_probe(struct platform_device *pdev)
+@@ -149,14 +149,32 @@ static int usb_charger_get_property(struct power_supply *psy,
+ 	return 0;
+ }
+ 
+-static int usb_conn_probe(struct platform_device *pdev)
++static int usb_conn_psy_register(struct usb_conn_info *info)
+ {
+-	struct device *dev = &pdev->dev;
+-	struct power_supply_desc *desc;
+-	struct usb_conn_info *info;
++	struct device *dev = info->dev;
++	struct power_supply_desc *desc = &info->desc;
+ 	struct power_supply_config cfg = {
+ 		.of_node = dev->of_node,
+ 	};
++
++	desc->name = "usb-charger";
++	desc->properties = usb_charger_properties;
++	desc->num_properties = ARRAY_SIZE(usb_charger_properties);
++	desc->get_property = usb_charger_get_property;
++	desc->type = POWER_SUPPLY_TYPE_USB;
++	cfg.drv_data = info;
++
++	info->charger = devm_power_supply_register(dev, desc, &cfg);
++	if (IS_ERR(info->charger))
++		dev_err(dev, "Unable to register charger\n");
++
++	return PTR_ERR_OR_ZERO(info->charger);
++}
++
++static int usb_conn_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct usb_conn_info *info;
+ 	bool need_vbus = true;
+ 	int ret = 0;
+ 
+@@ -218,6 +236,10 @@ static int usb_conn_probe(struct platform_device *pdev)
+ 		return PTR_ERR(info->role_sw);
  	}
  
- 	if (IS_ERR(info->vbus)) {
--		if (PTR_ERR(info->vbus) != -EPROBE_DEFER)
--			dev_err(dev, "failed to get vbus: %ld\n", PTR_ERR(info->vbus));
--		return PTR_ERR(info->vbus);
-+		ret = PTR_ERR(info->vbus);
-+		return dev_err_probe(dev, ret, "failed to get vbus :%d\n", ret);
++	ret = usb_conn_psy_register(info);
++	if (ret)
++		goto put_role_sw;
++
+ 	if (info->id_gpiod) {
+ 		info->id_irq = gpiod_to_irq(info->id_gpiod);
+ 		if (info->id_irq < 0) {
+@@ -252,20 +274,6 @@ static int usb_conn_probe(struct platform_device *pdev)
+ 		}
  	}
  
- 	info->role_sw = usb_role_switch_get(dev);
--	if (IS_ERR(info->role_sw)) {
--		if (PTR_ERR(info->role_sw) != -EPROBE_DEFER)
--			dev_err(dev, "failed to get role switch\n");
+-	desc = &info->desc;
+-	desc->name = "usb-charger";
+-	desc->properties = usb_charger_properties;
+-	desc->num_properties = ARRAY_SIZE(usb_charger_properties);
+-	desc->get_property = usb_charger_get_property;
+-	desc->type = POWER_SUPPLY_TYPE_USB;
+-	cfg.drv_data = info;
 -
--		return PTR_ERR(info->role_sw);
+-	info->charger = devm_power_supply_register(dev, desc, &cfg);
+-	if (IS_ERR(info->charger)) {
+-		dev_err(dev, "Unable to register charger\n");
+-		return PTR_ERR(info->charger);
 -	}
-+	if (IS_ERR(info->role_sw))
-+		return dev_err_probe(dev, PTR_ERR(info->role_sw),
-+				     "failed to get role switch\n");
+-
+ 	platform_set_drvdata(pdev, info);
  
- 	ret = usb_conn_psy_register(info);
- 	if (ret)
+ 	/* Perform initial detection */
 -- 
 2.18.0
 _______________________________________________
