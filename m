@@ -2,20 +2,19 @@ Return-Path: <SRS0=cSMM=KP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA05AC433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:22:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5D776C433B4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:22:36 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4964D613AD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:22:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4964D613AD
+	by mail.kernel.org (Postfix) with ESMTPS id D02006135A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:22:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D02006135A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,83 +23,82 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6GLtiFgdy4WnLvXqlExnXpc8bJqvClejENkQD23O36M=; b=G+mQ/e/9FEqo+ry11bKopB7sm5
-	NppD++2UigGHGnJr35d+RM0WpXnBScXsTYTY9ZXNLaO1qrP3uiFuXfaDu7YF4CoP29zMfXX2gQMOC
-	hrLZ2FNv/0jEsdi8zhQf5mvbxdFsiARmlVdwgzDtKFqyPqf+jhibv76b+6vmkBHsXflB6+ZIMYTgh
-	V3GAHvahaUj2xO5fAqTAL+mxy2tIGAnnmtDWyPEKHYCVdze5E4KuMRb6f+lh8cBwOeWAcWPBoDKoQ
-	2iKhddfpM1tvOroPwLMWSlPx1zG2vOgq2o75+P2apNvIEyxe3YIvJk27VFjSQIKA92Kr+GNIRT8nQ
-	A5Rt9viQ==;
+	bh=zGtN9foAEmMtlr5j9xwzKgJPigNAEhE6DCXs7sQSTus=; b=KB+EQO3GKTKuH/cmQOeqmWgHLh
+	hUsNwDZ6k7eBNjVv4nu6qBG4dtnIeLPUnfqYc7pjHJpninoKcBE7gyEOQvPScGk+KCU6Nq1X5eIDx
+	TU67RlMUp1gllohrBOw83o8pthkxKbg1l8fswFDmXH+CX2PITc5yCVan6jQuZ4rzJSZ09IzEYKkkB
+	XWk5n8fpwvoWN1W63dQMiIe8FgVJ0jLQ1Yynlk//ZZx0nngGHBDcgMB58IlcSTYJwncT3sIc1gVDo
+	aj1HykJpb0xCOm/rwMUedF4mjYBTRvx12Lp9QqmOSgTleG/wReVYkh5JcQZnTqgILv7ZZosTQYu5E
+	nxADy9Kg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljgkU-000QQE-4G; Thu, 20 May 2021 11:21:54 +0000
+	id 1ljgkq-000Qew-1h; Thu, 20 May 2021 11:22:16 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljgjr-000QBJ-D0
- for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 11:21:16 +0000
+ id 1ljgjt-000QBt-6t
+ for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 11:21:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
  :Reply-To:Content-Type:Content-ID:Content-Description;
- bh=SYtTHed5+bcflT7W1MwJxVtTplHwdof5DPlJCzKg/GU=; b=PSQW+qA2Nm1RpGAwx7wYaeo0L1
- Hg3Pwau29l9Wt8mb/erpwUfVJouGAT2aB9nG0SgsFoG3o/z70zH2PTwQoRj93MirMeZquKx0OF70N
- 5Qa68esRcQ7ncU93VwEPQP3GR4V702FDVmwb47YPCXDCJu+E4aKOJjLhx9qTM++PPj+LNC7uFR4eS
- gr/mUlACOQlylVXHnqpoLT03pmhFZUMuF1d7HLpgJRP8iy1BLtm/da7yTZebdc4c7FIcKraLRmR6o
- PA7hfdLNcla/nqbOYr5GIZp6WF3qO0g3rF/RoEE++vRXco53URrOdO9ED0/puOy8cSz9rwqPLLb7Y
- YendqCpw==;
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ bh=I1s2g7mZiKD+3vqbYSRNmdSX/CMtcVBGAGHbX0P5N+Y=; b=EvFMyF/SyZp+kGJhMdWeprOK0w
+ vxSAZFfqcIz4tBIXaL8GYTFdmtOHcDpOMph7BvSlizFEU4gHwl79osTf2uEM6eoujXCjQS83ktsh/
+ e+FCE0jc6c2o1tWFf5Xgah5Vo8J7cnXZnUdSbi4aZOx+H8gd2haSVzXSc2/l8+nRYejTvXp4RtZp/
+ Af4o2MbbO6hMJMcZU/fbd2HFwUuvroZNqxuXEnVPlwlJR7ufkiVlq1HFqxNT75NpZOhfrFo6S3wSn
+ EzkbfCHWdqC5NVkfeL9VJOkjzb3Rd0Y+v0vM86hpxtIs8InHWHo/kB2236agRZsnbw1d5VMgkJ3RL
+ G1xvgXdg==;
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljgjo-00GEjz-RA
- for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 11:21:14 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id
- z19-20020a7bc7d30000b029017521c1fb75so5204417wmk.0
- for <linux-mediatek@lists.infradead.org>; Thu, 20 May 2021 04:21:12 -0700 (PDT)
+ id 1ljgjq-00GEl1-Ma
+ for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 11:21:16 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 62so7919076wmb.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 20 May 2021 04:21:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SYtTHed5+bcflT7W1MwJxVtTplHwdof5DPlJCzKg/GU=;
- b=wHzSjTiwKXBcRbEJoWYfBbHsBACdQyin173EJ35ibk/Le84pDQz22+ydLN+s2rjISy
- I+JQrHpSULjWpslolZhZ5oNzuFn6Jm4Xfez874QzyEF3o1vjZLDKl5RfL6iEpjDpTU6E
- GsWAE200CVFWmzZB0jBnSHQiysNZqmuHA4QBYeUZNk7kY6BB8Z9W7JH+a6/3a+lWNf1q
- aiDoJJPNe7khmZ6EHXZO1bhn6GXd4F7Hp/o3NyaiFDPEhbKCcue5aqXjPfe0cBmp8TKB
- DNHKneadShb9fVu0FQOnKh4P481VVKGXrk6C+/s6sN3zz62tMKeeqha/+VCFc2gHYup/
- yVdQ==
+ bh=I1s2g7mZiKD+3vqbYSRNmdSX/CMtcVBGAGHbX0P5N+Y=;
+ b=dQXS0Q9+oZRSBGRK9IhEcny+g10qxP56m7wQL+S2aq4svKPeRJkuV1BHZlLHSQNs1B
+ woNjvZXc2ckEW/Kl8q78BIRa6upPdqxeGocCHpS5/JL53eYZErgAtR6zBZar3EdqH6NN
+ xVOlHbRmDlUXGA8OK5xXHyFW0p/B68RYExjov+c0N9uX9Jn/ZhoFGf2UZ7KhmceSQofR
+ mUdNAG992HfUBXokhiuWG/b0q5QIpRtAcKir4Dtrigr6OuWcm5VQ8IdB/EodtZwe5FOU
+ 5zDqO3qxJBRWkX/8OUMSffv6if7yrcPbxGjzY6vJ8axrb4YjVBpe3HFM4YEnxqVeLccs
+ BO6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SYtTHed5+bcflT7W1MwJxVtTplHwdof5DPlJCzKg/GU=;
- b=ascdHJMk8SdEptmxfqtkX/4rSBSOf0qLzCXdKu/LHDgh2K483JZAO3bd/SD5b+U8li
- VoLdTLz7lgixE7lnxBIsaTs99OVK1ZvKguOynd6v8cI4eaPEmQhI9ckXdz17BkSCc99c
- g/70shuf3+edsQDx9tDo/0oYdXMc6te29Lu30f5jHlciPJw1arj8boiaxCJCq4bJwiGb
- qLcn9T9Xae0HyPLO2dfli2xvslu0XTegMg7HnxyDkWLv60/dkaa4KWdpoz4lV9g4COIz
- KkbwMTkPoi4NuysgqMiKYrofKK4QLHZV4DlNJWdcbVDsjwi8ixddlCt2FlV10VZvq551
- mZWg==
-X-Gm-Message-State: AOAM531wTn7MgFWx1/x5Ms3zE0lFn8Sz/jygwWfTVkrd+aAMgXL6dN5l
- 4I4UXNxwvEtJLaj7HNE6J1GRiA==
-X-Google-Smtp-Source: ABdhPJwvuM5ZR01Iie6YuQBaMHLb3duG28paxLrXOheP+cO3HgcEo+2Qn9ejUUvRZNq2JhTAWP7/DQ==
-X-Received: by 2002:a05:600c:5c1:: with SMTP id
- p1mr1599688wmd.10.1621509671651; 
- Thu, 20 May 2021 04:21:11 -0700 (PDT)
+ bh=I1s2g7mZiKD+3vqbYSRNmdSX/CMtcVBGAGHbX0P5N+Y=;
+ b=fNTrX2+2TCjgD0iEpTyVfcwpiKkte/aeVU/uRb5hs2Me3wiorLg1IE2H/CmCepOWX9
+ hg5A4p8cKQPIchUjQy4w2waKOgce1BS2xkFq+qtv1y6QTusL9AtKwEekTmMw1/taYBKC
+ LpKbpLt/pTo/WOKgeMHn7dy2+QlSBdrTEnzZEuU2J7phNkS/I72uMMkt9DdJflAwT6Ic
+ T7/Qriif77Q4+6tv229j1AOmhyFS3+enDzzqS5hSagay2CVoT5xPGC/mJQYo+fAcDp4n
+ wNJWHLDeoRoeItem15Na8bY4KxFbUWjX3l3c5yzmUJXEpSk9rb5bxRhsRicDPaIi/MMn
+ 8yxQ==
+X-Gm-Message-State: AOAM532jvgr05xTzVEL1blo+k9WKEl+DQViO0LNT/PHzIps7tzYb7c1D
+ bfarKPrxMl8FTNrGz9UvcDTvqg==
+X-Google-Smtp-Source: ABdhPJwgZ2Uy9gIUoGlppdjJs1r6s6YTR4PaEUrIYWth4zddJArej2XDwuX9NSmnvHi6LOsm7bcw/Q==
+X-Received: by 2002:a05:600c:2301:: with SMTP id
+ 1mr3600762wmo.180.1621509672880; 
+ Thu, 20 May 2021 04:21:12 -0700 (PDT)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id o11sm2756646wrq.93.2021.05.20.04.21.10
+ by smtp.gmail.com with ESMTPSA id o11sm2756646wrq.93.2021.05.20.04.21.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 04:21:11 -0700 (PDT)
+ Thu, 20 May 2021 04:21:12 -0700 (PDT)
 From: Fabien Parent <fparent@baylibre.com>
-To: Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
- linux-i2c@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/4] i2c: i2c-mt65xx: add MT8365 SoC support
-Date: Thu, 20 May 2021 13:21:04 +0200
-Message-Id: <20210520112106.77190-3-fparent@baylibre.com>
+Subject: [PATCH v2 4/4] arm64: dts: mediatek: mt8192: fix i2c node names
+Date: Thu, 20 May 2021 13:21:05 +0200
+Message-Id: <20210520112106.77190-4-fparent@baylibre.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210520112106.77190-1-fparent@baylibre.com>
 References: <20210520112106.77190-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_042112_897754_7B135E8B 
-X-CRM114-Status: GOOD (  10.41  )
+X-CRM114-CacheID: sfid-20210520_042114_743397_ED747C51 
+X-CRM114-Status: GOOD (  10.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,48 +115,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for I2C on MT8365 SoCs.
+Fix the i2c node names to be compliant to the YAML schema. The
+I2C node name should match the following pattern: "^i2c@[0-9a-f]+$".
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
 
-v2: No change
+v2: New patch
 
- drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 5ddfa4e56ee2..0e6ad84e0e47 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -404,6 +404,19 @@ static const struct mtk_i2c_compatible mt8192_compat = {
- 	.max_dma_support = 36,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 9757138a8bbd..684e8e32af16 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -436,7 +436,7 @@ nor_flash: spi@11234000 {
+ 			status = "disable";
+ 		};
  
-+static const struct mtk_i2c_compatible mt8365_compat = {
-+	.regs = mt_i2c_regs_v1,
-+	.pmic_i2c = 0,
-+	.dcm = 1,
-+	.auto_restart = 1,
-+	.aux_len_reg = 1,
-+	.timing_adjust = 1,
-+	.dma_sync = 1,
-+	.ltiming_adjust = 0,
-+	.apdma_sync = 0,
-+	.max_dma_support = 33,
-+};
-+
- static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt2712-i2c", .data = &mt2712_compat },
- 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
-@@ -412,6 +425,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
- 	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
- 	{ .compatible = "mediatek,mt8192-i2c", .data = &mt8192_compat },
-+	{ .compatible = "mediatek,mt8365-i2c", .data = &mt8365_compat },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
+-		i2c3: i2c3@11cb0000 {
++		i2c3: i2c@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
+ 			      <0 0x10217300 0 0x80>;
+@@ -449,7 +449,7 @@ i2c3: i2c3@11cb0000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c7: i2c7@11d00000 {
++		i2c7: i2c@11d00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d00000 0 0x1000>,
+ 			      <0 0x10217600 0 0x180>;
+@@ -462,7 +462,7 @@ i2c7: i2c7@11d00000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c8: i2c8@11d01000 {
++		i2c8: i2c@11d01000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d01000 0 0x1000>,
+ 			      <0 0x10217780 0 0x180>;
+@@ -475,7 +475,7 @@ i2c8: i2c8@11d01000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c9: i2c9@11d02000 {
++		i2c9: i2c@11d02000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d02000 0 0x1000>,
+ 			      <0 0x10217900 0 0x180>;
+@@ -488,7 +488,7 @@ i2c9: i2c9@11d02000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c1: i2c1@11d20000 {
++		i2c1: i2c@11d20000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d20000 0 0x1000>,
+ 			      <0 0x10217100 0 0x80>;
+@@ -501,7 +501,7 @@ i2c1: i2c1@11d20000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c2: i2c2@11d21000 {
++		i2c2: i2c@11d21000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d21000 0 0x1000>,
+ 			      <0 0x10217180 0 0x180>;
+@@ -514,7 +514,7 @@ i2c2: i2c2@11d21000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c4: i2c4@11d22000 {
++		i2c4: i2c@11d22000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d22000 0 0x1000>,
+ 			      <0 0x10217380 0 0x180>;
+@@ -527,7 +527,7 @@ i2c4: i2c4@11d22000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c5: i2c5@11e00000 {
++		i2c5: i2c@11e00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11e00000 0 0x1000>,
+ 			      <0 0x10217500 0 0x80>;
+@@ -540,7 +540,7 @@ i2c5: i2c5@11e00000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c0: i2c0@11f00000 {
++		i2c0: i2c@11f00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f00000 0 0x1000>,
+ 			      <0 0x10217080 0 0x80>;
+@@ -553,7 +553,7 @@ i2c0: i2c0@11f00000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c6: i2c6@11f01000 {
++		i2c6: i2c@11f01000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f01000 0 0x1000>,
+ 			      <0 0x10217580 0 0x80>;
 -- 
 2.31.1
 
