@@ -2,101 +2,109 @@ Return-Path: <SRS0=cSMM=KP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6537C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 10:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CE553C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:17:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5058661358
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 10:57:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5058661358
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5702F60FEE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 11:17:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5702F60FEE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G410II+bmdO7IcGLLmycZLZ3GRdjlAadOEuz9+LrYR4=; b=Kn1VIGKt+wVwI6f9lZiux+mDO/
-	eAJnM9IpCFYwKQnC9bNTiJnI2MbiPhwbB9SCqTGKXpr3N/xz1mW2fSCUlGESCupfsbz+0RM1vovkQ
-	WTwPyHSX6NtAyQ7Lfj074xUGzMzHLlbNdLRoComhoPqYhA3uZ0gsI5LY3LVJitrHXGyGlZnKAsA6z
-	N7ukFXvgh8XTjDiN7pvPxx0VSZH/r426VpEJcGbWZTbBg5aB2qRGpMpEp7Wo4sXqdLiVXf44n31aR
-	33x3uGZ0bgm9jFWDT0Cd+1PXiiK+jD7awGZ8jczV9+ieZYXTm+Jkt+2gviJHGUUnuZgmMueAkv8H/
-	zenEXY8g==;
+	bh=G/NxU/qF+B83w+/f4Ml1Y92M/xeLvm88BXpO2RmaslA=; b=F8wyYrn1qwB9GK5DTpFHcNxq/6
+	U2seUFoz0hvRMI2NzTsAukOPJo6AXhJSXpkhJ1JZBDBCyT9EYaaanD3u+pvLCNVgYfbMV5Wz6TkTw
+	bH1Xp4//d/UOaW7T4yZqktgUORAGBqVKmpkUlhDjZ8kZsY8sA8cBy8++mm98Lg3SArV1u8xx3ciYi
+	e0WiiUa/xx1IgbQU3/L1QC+K19+vtKNpWUwcben9Vt2c3Nz9C9F3VBFER6nF7S8Fvj2ZpGpAPH7Zw
+	/Jj0Cqby6WQuWI0YSoRo/M4tJC5W20pi3ERe9ajQAobWMm4+2COOhOh8y0cvInzgf19lH+q58qmQm
+	+DNcl0jA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljgME-000Huy-Ba; Thu, 20 May 2021 10:56:50 +0000
+	id 1ljggB-000OqY-56; Thu, 20 May 2021 11:17:27 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljgMD-000HuV-6r
- for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 10:56:49 +0000
+ id 1ljgfs-000Okn-Iq
+ for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 11:17:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=ZggdLxEioYSmHsAN6HdiHwkaCdjjLY0f9eAD0updRrw=; b=OJJEEsDr9v6KUJzcYanPAsXinS
- ivwnf1aMgu2YccaO54BDqxwIt3VDtg5e5qcFl9fXU8v5z3nzNY35s0N2IdYUanCaEBsh49+vlTaKy
- 5Elq+M56obogjlIQic3jaoF28kgYGZx5hC4Aysu42bIDFcubVZyk3Zn52a6r6CPNLk3r9gud8slQM
- aOJ8TMghKuGqmITQUuCBlZFYRo6HM2Vnr6CdEreS83OvrpmnqkqQaY/+avCrJcm7a/gozWLHBqWo/
- KA5umi0oL11y9InosaTPhlAGBLohT7P0BEGRfca1It8tROsbdQIUrRsCSO3PMwuwmekrSFXEepvzn
- ztEvYy7g==;
-Received: from mail-io1-xd2e.google.com ([2607:f8b0:4864:20::d2e])
+ d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
+ MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender
+ :Reply-To:Content-Type:Content-ID:Content-Description;
+ bh=FFbC/8AD0LOFNwNu9BRgUtFruC/G1IwePtG3av6RsOY=; b=AJL8SzzjYJQU7p8CuKU8nOp5v2
+ iYnJEK4RBJgD7SZirzzx2s3xL8NSCAM+yw9AiXKly3wq2L/zR7edDPJUIcMF7Fyyss1jKScOUlHKV
+ 9fwkj+VdZnUwX+srj19pzgHxBb5+Tq3Z06aUW3hBDDezlsvXIf+504lKJ2BFMK5iQul/bqMk9bNRG
+ WZAGoUMtFubUIoFsvkqP1mhC0ikgvOaOeq2vTcuksLe2rkafaqu0CEczMNDS2Yr+yLHtfe9YPl++J
+ czOTddZEAO7HB31VeEgumC9x8HOK2VJLUdokZ4NF1MNKjfQ7qoWS5l6AO9w5KWiTEr1XzwWnQ5k2f
+ OE87f7Yw==;
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljgMA-00GCjr-4g
- for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 10:56:47 +0000
-Received: by mail-io1-xd2e.google.com with SMTP id e17so3584794iol.7
- for <linux-mediatek@lists.infradead.org>; Thu, 20 May 2021 03:56:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZggdLxEioYSmHsAN6HdiHwkaCdjjLY0f9eAD0updRrw=;
- b=gwOq7/3pH8V/2gE94ERMNXP3mpo89c0EaBoRdYiv3gQh0NZ5AsxXUlDYWYADOZtuiZ
- AlzMofkhhVaVjJ70OpmgP0FVwr7nsJnfFINio4WNaXSn3f5ULLZUP3fRrz6qWMb+4xnr
- 7+bOE3u0k24UY8a0FiD3P94RywWnjtlyjXWaA=
+ id 1ljgfp-00GEQT-5x
+ for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 11:17:07 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id
+ f19-20020a05600c1553b02901794fafcfefso4540071wmg.2
+ for <linux-mediatek@lists.infradead.org>; Thu, 20 May 2021 04:17:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=FFbC/8AD0LOFNwNu9BRgUtFruC/G1IwePtG3av6RsOY=;
+ b=k1LNclxtiP6W7x7zqryjIF2j1zX5LVI89E2F+ZC0OosAJK+edKHkMljCHDcNA4W6r9
+ oo4eZKxNjGjNVEJ8BFhLlpoqnPMwuEiPyWw0EOz4IxxVlKUgsrlswX/caR97z6QS70oV
+ NZ3/faNHyMCstTucEuXIupFp8etwQE4J3yqi0J69jZcU0Mx7BKVpa2T7q24WhNiKWtvb
+ PU5LpeN250fH9rB8YtK5Dy/MNYmxcDZJKb5GKWG8MkZ5EEWxsJ6BFLPncstIQhXlrfUP
+ vHUQIPzmn+0TEAFURxP+OL/A4Cij2M4dnT2BPNlHbT0nR+8xyCyGrpl/dPtQmw2IqIcV
+ nkXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZggdLxEioYSmHsAN6HdiHwkaCdjjLY0f9eAD0updRrw=;
- b=UH1qPucUyYhIAramiIDxiZQIT57+xThBk57c7zhMx7CmX0qNOm85X10n1yCx0n//iT
- 01IFqZl2Bfqz3hu8Dnyc8TM5LifmPK12Djj1SgvRkS4oYlEEaDIeF4vHkC1QthO9/hrU
- zP3HIVrq1R4iXcJTfdrSycxXl+PgF4hWZkU2H2M8guHLTMBvx6+V3kNt+gvx3gTgTCoY
- YOphnR2j3GOL2QIj2/kVv/Py0H75HFsFI8rW9cnWUeG9N9/mnkORh+jnG42qXWoQM21Q
- 2R3FO+NgWsVCtQWrd9ZsH/jSnST8meEfDjB2d4qVXDrt52NHMt1e/tjSnUBas72sB6wS
- xtug==
-X-Gm-Message-State: AOAM5311iXfghQIlbZXfAFhO73Jy+zntY4DFMEQ3MBPU8cjioBLFsnut
- RMqbo4TuVAWEyQv01b7yOxJ3FpOlniSxZQxoHvoaNw==
-X-Google-Smtp-Source: ABdhPJwsRXryrVBLrnfEAhDRXkJWRvO5y68qKTU37qReKB6ekDFRs2lFm7STxXVQpa9ZsaRZSseo6EjW/Uv6Q9RgDH0=
-X-Received: by 2002:a5e:c742:: with SMTP id g2mr4887060iop.40.1621508202940;
- Thu, 20 May 2021 03:56:42 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210507131406.2224177-1-hsinyi@chromium.org>
-In-Reply-To: <20210507131406.2224177-1-hsinyi@chromium.org>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 20 May 2021 18:56:16 +0800
-Message-ID: <CAJMQK-is=wOWGL-bETEcp=shcnrGdWFh4FbzHWCTEYjg-Zk0Dw@mail.gmail.com>
-Subject: Re: [PATCH v21 0/5] add power control in i2c
-To: Wolfram Sang <wsa@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=FFbC/8AD0LOFNwNu9BRgUtFruC/G1IwePtG3av6RsOY=;
+ b=Be8egIyX29ew3uMLVnLT63t5mzE/dXzu3yT7kqbeFOFDZwZaKncxvBR4VQqQ117BYR
+ OeRTP4AtCtdEevnf8nE48BJ4qpRB+KKhEQnDWYWx6h/GLzh4xGpznBh4iFk3moLhIzY5
+ BS8bXLZIbO2xu5E4r/j9gILnrwgdFPn1GUOIvqmER3Z5FPg7pIfYjRbAAduTWBvohkXl
+ 5OYOssvJOybp2LXA1upRa90CmbSDg2PTtAbHR7llb5bDYnunGnPUdhQ4oH8xEgvKirfx
+ qOB3C+fN9vc/1sp/DDT0kY1KWXKl+JzQub4l2LchtKCOA7gfnldzNyHnsLig/fVVv2Wi
+ QCag==
+X-Gm-Message-State: AOAM53268E52LWkjXOob62mbDJgJP26CLtszX7mJvfktK3hWbKk/HxF9
+ jRWR9OsUN4ammjDJM3NGuPMcXg==
+X-Google-Smtp-Source: ABdhPJy170kk8Q53GOuLn6l2Mf+w5xTtNMkRzkP4oBTF3ZetnMbI5rV9xgKJjjvpwPsSs4pLxpDMAw==
+X-Received: by 2002:a1c:4d01:: with SMTP id o1mr3222583wmh.42.1621509423424;
+ Thu, 20 May 2021 04:17:03 -0700 (PDT)
+Received: from localhost.localdomain ([88.160.162.107])
+ by smtp.gmail.com with ESMTPSA id a19sm2310757wmb.40.2021.05.20.04.17.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 May 2021 04:17:02 -0700 (PDT)
+From: Fabien Parent <fparent@baylibre.com>
+To: Matt Mackall <mpm@selenic.com>, Herbert Xu <herbert@gondor.apana.org.au>,
  Rob Herring <robh+dt@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Cc: linux-i2c <linux-i2c@vger.kernel.org>, Qii Wang <qii.wang@mediatek.com>, 
- Devicetree List <devicetree@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- lkml <linux-kernel@vger.kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mark Brown <broonie@kernel.org>, 
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Bibby Hsieh <bibby.hsieh@mediatek.com>, Arnd Bergmann <arnd@arndb.de>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>
+Cc: mkorpershoek@baylibre.com, Fabien Parent <fparent@baylibre.com>,
+ linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 2/2] dt-bindings: rng: mediatek: add mt8365 to mtk rng
+ binding
+Date: Thu, 20 May 2021 13:16:56 +0200
+Message-Id: <20210520111656.66017-2-fparent@baylibre.com>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210520111656.66017-1-fparent@baylibre.com>
+References: <20210520111656.66017-1-fparent@baylibre.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_035646_223520_0944FB22 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20210520_041705_230767_595708FC 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,93 +121,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 7, 2021 at 9:14 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->
-> Although in the most platforms, the power of eeprom
-> and i2c are alway on, some platforms disable the
-> eeprom and i2c power in order to meet low power request.
->
-> This patch add the pm_runtime ops to control power to
-> support all platforms.
->
+Add RNG binding for MT8365 SoC.
 
-Hi maintainers,
+Signed-off-by: Fabien Parent <fparent@baylibre.com>
+---
 
-Gentle ping on the thread. (the 4th patch is already picked) Thanks.
+v2: Write the compatible in a more compact way
 
-> Changes since v20:
->  - fix regulator check logic in suspend/resume.
->
-> Changes since v19:
->  - resend v19 with fix tag added.
->
-> Changes since v18:
->  - Fix a function name conflict with drivers/gpu/drm/i915/selftests/i915_gem.c
->
-> Changes since v17:
->  - Add a patch to fix unbalanced regulator disabling.
->  - Add dts patch.
->
-> Changes since v16:
->  - request regulator in device instead of in the core.
->  - control regulator only if it's provided.
->
-> Changes since v15:
->  - Squash the fix[1] for v15.
-> [1] https://patchwork.ozlabs.org/project/linux-i2c/patch/20200522101327.13456-1-m.szyprowski@samsung.com/
->
-> Changes since v14:
->  - change the return value in normal condition
->  - access the variable after NULL pointer checking
->  - add ack tag
->
-> Changes since v13:
->  - fixup some logic error
->
-> Changes since v12:
->  - rebase onto v5.7-rc1
->  - change the property description in binding
->
-> Changes since v11:
->  - use suspend_late/resume_early instead of suspend/resume
->  - rebase onto v5.6-rc1
->
-> Changes since v10:
->  - fixup some worng codes
->
-> Changes since v9:
->  - fixup build error
->  - remove redundant code
->
-> Changes since v8:
->  - fixup some wrong code
->  - remove redundant message
->
-> [... snip ...]
->
->
-> Bibby Hsieh (1):
->   i2c: core: support bus regulator controlling in adapter
->
-> Hsin-Yi Wang (4):
->   dt-binding: i2c: mt65xx: add vbus-supply property
->   i2c: mediatek: mt65xx: add optional vbus-supply
->   misc: eeprom: at24: check suspend status before disable regulator
->   arm64: dts: mt8183: add supply name for eeprom
->
->  .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  1 +
->  .../dts/mediatek/mt8183-kukui-kakadu.dtsi     |  4 +
->  .../dts/mediatek/mt8183-kukui-kodama.dtsi     |  4 +
->  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi |  4 +
->  drivers/i2c/busses/i2c-mt65xx.c               |  7 ++
->  drivers/i2c/i2c-core-base.c                   | 95 +++++++++++++++++++
->  drivers/misc/eeprom/at24.c                    |  6 +-
->  include/linux/i2c.h                           |  2 +
->  8 files changed, 121 insertions(+), 2 deletions(-)
->
-> --
-> 2.31.1.607.g51e8a6a459-goog
->
+ Documentation/devicetree/bindings/rng/mtk-rng.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/rng/mtk-rng.yaml b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+index 4be5fc3c1409..61888e07bda0 100644
+--- a/Documentation/devicetree/bindings/rng/mtk-rng.yaml
++++ b/Documentation/devicetree/bindings/rng/mtk-rng.yaml
+@@ -21,6 +21,7 @@ properties:
+           - enum:
+               - mediatek,mt7622-rng
+               - mediatek,mt7629-rng
++              - mediatek,mt8365-rng
+               - mediatek,mt8516-rng
+           - const: mediatek,mt7623-rng
+ 
+-- 
+2.31.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
