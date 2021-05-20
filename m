@@ -2,81 +2,78 @@ Return-Path: <SRS0=cSMM=KP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A2D9C43461
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 09:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57BF2C433ED
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 09:40:20 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16A5D613F8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 09:35:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16A5D613F8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1C54761929
+	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 09:40:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C54761929
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+o3s60is+q7U53EnbK9GQh5/sohNqlnpAe1/+MmRqz4=; b=Zb6+vV7jyPpyVoFTNZ4E9ofT1V
-	DWVu1k6pxlhMdL4824Yh37nQmS9H/enIUsH2HI567PyvO1QIpiIrUii9aD/DdXBKrnVI8UWSDq60b
-	fnWzFiUCC6yYudSMuDJC+qDzb74Ai2+rePB844wRceVWb1L6PdYPLcLDfYfzGy5HMlorMIigJpEXg
-	FZ2b6zzH7eDkyyVSBP0Kfk9qaoElARVsxxb5gPRhNBBGdn+kzjZpezrTXb1Fx73dA2cF1m7gJs4Fk
-	bw3hbjfqDaIjjgv8HRwOXhvcjr40e/pCc7g/3/+lZ1mrJGlcQA/F0YXpbKaiLOX/Pqv+qILgjMXep
-	vfdP34KQ==;
+	bh=4bfvGesBXmveBsPOGHr8adU7Vi/Mm9SmgOiC0jNGjmw=; b=c3I9JEvfYt99WC/y7UWRXiLM0g
+	NQ4YbDrLu6Mmx048TKCgriAq3X5qq1KV/dqNj7dfSMB1Kg1AiRlWH3triWDkkW3TIyQzwPOs2p8i2
+	3x2jSQJDySckI31Gfps77KafkL4DIGr2xowHsb2lQsrG1MsnPtESbnaYodi+nDp5KXbfrq6DIpBIK
+	qgKhghXbXOzz3BIRWitkzQ2EhZIIgZMfSo/RDUfWwOj72s2vzAJHJ9UgWlkJcKj5Fvuumzsws6Pe5
+	0tXeYUlpYec9zQ312vYMy3U0dR2tpUSWCNpkdUIIlB/L2Ro37xr9Tk1XHhVRG5vBVw3h1Zvyiri8G
+	JEN0mp3g==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljf4z-0000r2-Mo; Thu, 20 May 2021 09:34:58 +0000
-Received: from [2607:7c80:54:e::133] (helo=bombadil.infradead.org)
+	id 1ljf9v-0001Dq-QO; Thu, 20 May 2021 09:40:03 +0000
+Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljf4B-0000pR-1S
- for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 09:34:15 +0000
+ id 1ljf95-00019L-Gk; Thu, 20 May 2021 09:39:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=OVBqHh/Erc927vmNxhOVAfUJVaQP2AACu4QR185+zv4=; b=BbXGTtpH6h0Kwm6d6i8KbRA2VK
- wI3BZMw+lFvtSRzeAH7lyG4MXLui/zDpeDrZG0nuc8ROIDlSHjBjy7JhAikIzcubDiDg7vDAzazGG
- EB6Ynpse4EJiwOzrBVoYv2B/usZ3UppEDf1R7PxdMRDKiw8XhaQWqLwj8oo0o5F6FlrY8tM0y1k24
- 3CFjUyleeLeYzbXw+xqE2u/oST1wfZ2Y/i2nqhsbuj8osy+a3se6H9PFnxvrWjT/TmBUC0HXMbfz3
- hYmvC3oU6LJzJDXC1CpqbFAUbU/80IkznMCK6iOqMoYLKvKvmx/9IzeLQwdgKE963KHmlUxfSmK9/
- a6jShJZg==;
-Received: from mail.kernel.org ([198.145.29.99])
+ Content-Type:In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:
+ Subject:Sender:Reply-To:Content-ID:Content-Description;
+ bh=MJSIp09ECV8rL9J6NF35Vv/0TJVA/r7GX9NFshXJLRU=; b=RixP6lf6mVEnVZANsuzGmwD9u2
+ IN46WJQrRZtzehooIMbsvQaxlzB46Eq9e7svM/vG3vTuQgUXP7UEqPyt8N4me/XRxkzPNwy57D2F4
+ XxtLLlfZBqH//Nb5MdhF61yymlpTFa63Iwk6sDRC/m6SrwFJ71FI8eBWk5psdwaPD0IL6WsP8GGPL
+ XO9r3JUTSL7HcGxkQ5D8w6bkEUVfkmXnCDMYAQMR6ZD8caG+JIw8VRkxspwP3xPrN3qbnbMph50Oo
+ Go79von9dLbmMSnTV3DFxJESfyzxFwp02rd9CswjZBcVc5Ii619nz5sxfa+jqeG2vFgEfbPdmI7xF
+ lvETe99Q==;
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljf46-00G6lt-0m
- for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 09:34:03 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id DC6066145E;
- Thu, 20 May 2021 09:34:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1621503241;
- bh=Wo6UJarYlLD4jwMqh8qhs8BVvvgDb70kH13z56ZTjSs=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GaByykTeHiZYlHPkiccpIonW0169TL1fBk83RA1rAT4Kd9fyl6i549v3m/yunU1/D
- JYBEVTbSpfkGI86qsgFVxczotIXjrlwKg0T6cPjkBsj/TGlZM/vhhZ8U5bwQCckvV0
- tWG5YCDoEYARdTtHgdTNsIy++gSvQ00vyEih3mmU=
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: linux-kernel@vger.kernel.org
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, stable@vger.kernel.org,
- Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>,
- John Crispin <john@phrozen.org>, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-Subject: [PATCH 4.19 132/425] MIPS: pci-mt7620: fix PLL lock check
-Date: Thu, 20 May 2021 11:18:21 +0200
-Message-Id: <20210520092135.771895768@linuxfoundation.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210520092131.308959589@linuxfoundation.org>
-References: <20210520092131.308959589@linuxfoundation.org>
-User-Agent: quilt/0.66
+ id 1ljf92-00G75e-KK; Thu, 20 May 2021 09:39:10 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 4C5131F43885
+Subject: Re: [RESEND PATCH v7 2/2] arm64: dts: mt8183: add cbas node under
+ cros_ec
+To: Ikjoon Jang <ikjn@chromium.org>, devicetree@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Guenter Roeck <groeck@chromium.org>,
+ Benson Leung <bleung@chromium.org>, linux-input@vger.kernel.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Jiri Kosina <jikos@kernel.org>,
+ Stephen Boyd <swboyd@chromium.org>, Rob Herring <robh+dt@kernel.org>
+References: <20210514122051.266169-1-ikjn@chromium.org>
+ <20210514122051.266169-3-ikjn@chromium.org>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Message-ID: <19282d66-3c7b-1778-9c77-676784fc3406@collabora.com>
+Date: Thu, 20 May 2021 11:39:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
+In-Reply-To: <20210514122051.266169-3-ikjn@chromium.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_023402_113429_3D5163C4 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20210520_023908_830632_9E9E004C 
+X-CRM114-Status: GOOD (  18.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,58 +90,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Hi Ikjoon,
 
-commit c15b99ae2ba9ea30da3c7cd4765b8a4707e530a6 upstream.
+Thank you for the patch.
 
-Upstream a long-standing OpenWrt patch [0] that fixes MT7620 PCIe PLL
-lock check. The existing code checks the wrong register bit: PPLL_SW_SET
-is not defined in PPLL_CFG1 and bit 31 of PPLL_CFG1 is marked as reserved
-in the MT7620 Programming Guide. The correct bit to check for PLL lock
-is PPLL_LD (bit 23).
+On 14/5/21 14:20, Ikjoon Jang wrote:
+> Add a 'cbas' device node for supporting tablet mode switch in
+> kukui devices.
+> 
+> Kukui platforms with detacheable base have an additional input
+> device under cros-ec, which reports SW_TABLET_MODE regarding
+> its base state (e.g. base flipped or detached).
+> 
+> Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
+> 
 
-Also reword the error message for clarity.
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-Without this change it is unlikely that this driver ever worked with
-mainline kernel.
-
-[0]: https://lists.infradead.org/pipermail/lede-commits/2017-July/004441.html
-
-Signed-off-by: Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Cc: John Crispin <john@phrozen.org>
-Cc: linux-mips@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org
-Cc: stable@vger.kernel.org
-Signed-off-by: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
----
- arch/mips/pci/pci-mt7620.c |    5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
---- a/arch/mips/pci/pci-mt7620.c
-+++ b/arch/mips/pci/pci-mt7620.c
-@@ -33,6 +33,7 @@
- #define RALINK_GPIOMODE			0x60
- 
- #define PPLL_CFG1			0x9c
-+#define PPLL_LD				BIT(23)
- 
- #define PPLL_DRV			0xa0
- #define PDRV_SW_SET			BIT(31)
-@@ -242,8 +243,8 @@ static int mt7620_pci_hw_init(struct pla
- 	rt_sysc_m32(0, RALINK_PCIE0_CLK_EN, RALINK_CLKCFG1);
- 	mdelay(100);
- 
--	if (!(rt_sysc_r32(PPLL_CFG1) & PDRV_SW_SET)) {
--		dev_err(&pdev->dev, "MT7620 PPLL unlock\n");
-+	if (!(rt_sysc_r32(PPLL_CFG1) & PPLL_LD)) {
-+		dev_err(&pdev->dev, "pcie PLL not locked, aborting init\n");
- 		reset_control_assert(rstpcie0);
- 		rt_sysc_m32(RALINK_PCIE0_CLK_EN, 0, RALINK_CLKCFG1);
- 		return -1;
-
-
+> ---
+> 
+> Changes in v7:
+> - remove a label in cbas node
+> - fix an erratum in commit message (table --> tablet)
+> - dt-binding patchess merged altogether with mt8183 dts
+> 
+>  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index ff56bcfa3370..1512605a438e 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -816,6 +816,10 @@ usbc_extcon: extcon0 {
+>  			compatible = "google,extcon-usbc-cros-ec";
+>  			google,usb-port-id = <0>;
+>  		};
+> +
+> +		cbas {
+> +			compatible = "google,cros-cbas";
+> +		};
+>  	};
+>  };
+>  
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
