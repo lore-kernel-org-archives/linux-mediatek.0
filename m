@@ -2,72 +2,72 @@ Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E51C0C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 08:52:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDE63C433ED
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 08:52:31 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 629D661353
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 08:52:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 629D661353
+	by mail.kernel.org (Postfix) with ESMTPS id 7FF0261353
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 08:52:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FF0261353
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m/aPh6U7LBdLiMCM4Emd7zRdbQSvjqJJz5YnvJgOR4o=; b=V+yDNI0w4KwG1LAnbPWRsfv40g
-	KKkV+BlNl1e3iNjOMSI8yCqO3aU//IUsZ6QsmQmtnOJYtd76p/0kgJaGNxm1ZOiQuF98n4BL33JsC
-	fdmDN4ES80N2GHspDbhdB7cwidfv8TqM/VT8O0mDV8qgElUkEikfFij5q0nTGx5g9eqgNw6l2SK4M
-	fHasGX3F3fMiufG7HUGMS9tVUmaOagmkqSioV2yY2FDth4MeWHDm0BoWC7I16x57lqcDjbT521lxm
-	U7AEdaHiTANs4pqoUXBpNMGFwFtMNkcJXzQrdQj93QpkrnTbzERiPjindc3fH3E+Frd5IoR8ahSHM
-	OBEcJ6Qg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oBPcXTjgmQ83k3rPHa5gBAFXqf1P7vWkA8FnqDMAm6A=; b=kwqeN5h8cb43QTWc/wSbze/Jbn
+	sxlqGA/cA5ICDmOQ2dlH8+S0A5ppFbJh911TwLwN0rhv0yBzRCk6mqzzwF4+Wu+ubK7C2wIzoST9D
+	0I3aq1Bv9f0kzehl/ZXmqPtS982rfZvh6WLrcnf4s6fa720+mFFgjFWqB1voQlORSn8u8xqZtlbh4
+	iL55MDkDGPOYbh4h2sNEE03s5M4JbApAQq4D7goTfNofTYjLl08lq/a/SFnFG7Ie+X90EoVRlOOg4
+	yvNcmJJJGcyDTNLiH2JyTy1NDWgX5Qslp55XkAIw7SkqaYvD9nEJmYm15BU+TXrx3pHZ+JVH3iXQk
+	y7evBnbw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk0sz-004XYh-Fy; Fri, 21 May 2021 08:52:01 +0000
+	id 1lk0tD-004XdV-Ne; Fri, 21 May 2021 08:52:15 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk0sk-004XSG-Fm; Fri, 21 May 2021 08:51:46 +0000
+ id 1lk0sm-004XSw-Ui; Fri, 21 May 2021 08:51:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
- Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:
- To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=ubel5FXaHTlbzarUXoIwtCLe/c2EjBgBANzHEBg3Wa8=; b=2M//bSyya3q/Fdrs2jHH2N77QP
- M2f/TuueotwHl4Ri8uFk4ObVhXwdMBdyrg1/Yo85AhmTKzEU+2m8HvRjmWx+Rn6C79iZB+EA8JgPA
- tVHg0Zq9UpBUOVc286XNOKoWWMRc4Y/iYTNPT8ivTblOJgz+xV8e93LQsKskwlWtzDjpeVwVquNY1
- 3IY3GSR6q2mJ6Mz0S5X9IaG6IuHNctswNy09A3zTIWbp5W/iAOWH3Gbht4wdfyBWm37jCZ7DhiXdX
- 1bcl0lZu6rkpavvgRXdtdFG/jqp9zn309AiB5I2d1AHPOmAf0/1AByLmt+Np/AA2+rVg60eUr9TFv
- CHYSd3bA==;
+ Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:
+ Content-ID:Content-Description:In-Reply-To:References;
+ bh=dKatBfeVTfSyxthCKGydA7RpsPmWu1+vZkk+mQgx8MU=; b=yq2bua802UNCAibF9A5mcpXof5
+ st39yyBtfFCd/S9fAm/poGxzQ6RoDcU8OG26Q0ng9JLCVdOZccVz+Qv72h7q6j3fk8KvJApHCaHmR
+ ZiPVthYtCAWoKjwlzmATrJLOGDC5a7PXf8R3DP+RAgRPUWDlNy6LfrR7ZONjOaUxiY2u0Hhyu2mlo
+ yr8o7vSlXsBN2gk1i2RAEsmPJX0LWtkuaoYkBMZyIaiuXMo2t2IFYaYJSrrGAmWxsnqyISSRYBI3e
+ qJ4CsL6q9Q1UMl5Xd9pG7XHEw7HILxFLkULuXmSdyhmqiHBISS+pgcelWW2T2mHXc2Fd46PIVVEDX
+ 4g/pRMQQ==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk0sh-00GxfM-Vo; Fri, 21 May 2021 08:51:45 +0000
-X-UUID: 679c406b4b304a53bb15bbc0a4e65bdb-20210521
+ id 1lk0sk-00Gxfl-EZ; Fri, 21 May 2021 08:51:47 +0000
+X-UUID: 5e4f2d97dbc04983ad5b8874a8d32095-20210521
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ubel5FXaHTlbzarUXoIwtCLe/c2EjBgBANzHEBg3Wa8=; 
- b=siHA/cl0pHm9zpG5s9QeD1F5e+ZUUYo9L9hp5ju+5uCr2LFNWCIn1Dua24v7SeI3C3dMA2ax8n+u6zvzqyZuX4cDuqsKi10LSr7qeFuX6bfsQqF4jsYJtfO4zA94O0CZ0IEYnpStQ0crHszGd9IRfwg64vqpr/oC73K0Lx+VoVg=;
-X-UUID: 679c406b4b304a53bb15bbc0a4e65bdb-20210521
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=dKatBfeVTfSyxthCKGydA7RpsPmWu1+vZkk+mQgx8MU=; 
+ b=XyAg6LRS0obQd9OLhesLp0OdfIdC26yn8QnS1yfP09IotQkDBvXmd6dmjQnXg88TxwRsY2PCa/akD2dCdZQMV7vijQNU2W/WvNiEcmeZyVEdVl0Z5/f9kouSs8jGNfgYU+ADVRVqT9S+oLAFeOORlHhnDqhfY8v1S2oDtjkvJvo=;
+X-UUID: 5e4f2d97dbc04983ad5b8874a8d32095-20210521
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 663315772; Fri, 21 May 2021 00:02:02 -0700
+ with ESMTP id 404650189; Fri, 21 May 2021 00:01:49 -0700
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 21 May 2021 00:02:00 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 21 May 2021 00:01:47 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 21 May 2021 15:01:57 +0800
+ 15.0.1497.2; Fri, 21 May 2021 15:01:43 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 21 May 2021 15:01:56 +0800
+ Transport; Fri, 21 May 2021 15:01:42 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>, Tiffany Lin <tiffany.lin@mediatek.com>,
@@ -83,18 +83,15 @@ CC: Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4,
- 2/6] dt-bindings: media: mtk-vcodec: Add dma-ranges property
-Date: Fri, 21 May 2021 15:01:35 +0800
-Message-ID: <20210521070139.20644-3-irui.wang@mediatek.com>
+Subject: [PATCH v4,0/6] Support H264 4K on MT8192
+Date: Fri, 21 May 2021 15:01:33 +0800
+Message-ID: <20210521070139.20644-1-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210521070139.20644-1-irui.wang@mediatek.com>
-References: <20210521070139.20644-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_015144_050302_2B223D8E 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20210521_015146_511072_8A70F5DF 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,33 +108,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8192 iommu support 0~16GB iova. We separate it to four banks:
-0~4G; 4G~8G; 8G~12G; 12G~16G.
+Add MT8192 H264 venc driver and support H264 4K encoding on MT8192.
 
-The "dma-ranges" could be used to adjust the bank we locate.
-If we don't set this property. The default range always is 0~4G.
+Change notes:
+v4: rebase on Linux 5.13-rc1
 
-Here we don't have actual bus/parent concept here.  And the iova
-requirement is for our HW. Thus put the property in our node.
+Alexandre Courbot (1):
+  media: mtk-vcodec: venc: remove redundant code
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 2 ++
- 1 file changed, 2 insertions(+)
+Irui Wang (5):
+  dt-bindings: media: mtk-vcodec: Add dma-ranges property
+  media: mtk-vcodec: Support 4GB~8GB range iova space for venc
+  dt-bindings: media: mtk-vcodec: Add binding for MT8192 VENC
+  media: mtk-vcodec: Add MT8192 H264 venc driver
+  media: mtk-vcodec: Support MT8192 H264 4K encoding
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index 06db6837cefd..b7801e3c354a 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -22,6 +22,8 @@ Required properties:
- - iommus : should point to the respective IOMMU block with master port as
-   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-   for details.
-+- dma-ranges : describes how the physical address space of the IOMMU maps
-+  to memory.
- One of the two following nodes:
- - mediatek,vpu : the node of the video processor unit, if using VPU.
- - mediatek,scp : the node of the SCP unit, if using SCP.
+ .../bindings/media/mediatek-vcodec.txt        |  3 +
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  1 +
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 89 +++++++++++--------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 17 ++++
+ .../platform/mtk-vcodec/venc/venc_h264_if.c   |  4 +
+ 5 files changed, 78 insertions(+), 36 deletions(-)
+
 -- 
 2.18.0
 _______________________________________________
