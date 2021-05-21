@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37471C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB552C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:23:00 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AAD2961353
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:21:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAD2961353
+	by mail.kernel.org (Postfix) with ESMTPS id 2C06861355
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:23:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C06861355
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,75 +23,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lCY8naS0+VeafYkWWVe4qfwzFz53bcIfafUxKkWsEUU=; b=rg9hVZrC0+LNZiRulUEQXukNfu
-	43O9ZeyrGwjRzgx6iBE0QXLiRh+eBA/leQkqBBmoI7ecjFR/WQAMeWIom/y2XGQ8exJ6/Xbfzv6kb
-	3TkragU5pQZ5zglhxI7pxovd0SYB1GZCWvZMfqRrs9Y0BmVb0aBCF4i+2G91mFw66H63NR8epGaN0
-	yORPM9dLKEENrsAiNzQMVQNYp00qW4HiASH/F8vnkA834Lha3cX2UihgGSz7U0qFUjSFzc7Ztn46k
-	w74o6+wOmUrVFuJePMtPKlDPgaf0RmTiJ+UTY9czA02zLOyUgAQSmo9QLhhx4uLjsqDbK0i5ti01Q
-	sZZxW3tg==;
+	bh=UrBRBgcV4EVpz+KzPsT01PpSi4hH2TWZ7APqDoBg0oI=; b=Mh41tT3047X9WWfSsf1Yo8IDto
+	RvYOxwlKOYObDhKBzmwtMRoz302KW55bGuOiTFw3vdZ5WgJyGUUp4JenO9oEXr1s0onf+n6gANf6s
+	t4PKwlHx9RHg4iH3Tkm3Thg4CUX6VoeyZTuknQ7OpEppM/SRoQKU3JaZhZ39pq4Xga/MAYBUiTpzQ
+	jVBofYLk8PpuRu4a3egiZq9xgxukNZtaFYnDqLySE+Zal1Hx58MKdCKb/wVVqMZj6MfIY+K1e2Stt
+	wq0d6/34qC2fs2hTWUpbYqsupkCYE617gJkmV09Gk7A1/hHTgqGvQE6wj+pxMlLjzY2oo0227+Cnd
+	Yb/yiM3Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljtqD-003EB3-LR; Fri, 21 May 2021 01:20:41 +0000
+	id 1ljtsA-003EVO-Cj; Fri, 21 May 2021 01:22:42 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljtpv-003EAI-Bm; Fri, 21 May 2021 01:20:23 +0000
+ id 1ljtrv-003ET2-QH; Fri, 21 May 2021 01:22:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=L8yBjYQAgys656MK8UvpdfNfI8yFhToVlmHgAetNSy4=; b=SLjHylRT/Bzv4Pj0VPOowDb5fY
- cqQ5h2dXmSt9Eu24Dsk3DTkr20twuf7hXOuXce61/AZ3mkEWGP05J4D6BwXTI+MGzPCzYk1m5PEcZ
- 3CWrSJzIHV2epp/tN6Qu9FNIq9MFZ0ljOMOLsblIUBfOqblP7DGz3yYDWayCaO2jF6kDVsgx/JckT
- 88oqEgUfogj1TAqN/eQuM+nwbKf8jGp7/adOXGy7ffPlkvkdrzspiZocRyioR48vGkF5Jvnxpl+Nk
- FiHYlSoY23DR9PuKdti/FwD+QOZVjT7lg4Uc5cjdj5oGAYpJJBXYPOCHCZQKMBU57SlDo6k631Bqm
- jGjoLRMw==;
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+ bh=k4KWGlvK3qGaxYX6Np3iLLA0ulq4Lc64J8obvuCRFos=; b=gr/0fI5L4b8cZTHSdNBQ2vpYQU
+ xDzKVeDHHDaRbEVI46pA1N8lMC4AdarQynSthKcUnz0Gs9tU0noiCSN4JGoD7l5OcoOxhKWwc2wFX
+ 8c0EwquCURKgB6a7ixb28CnD6gi/cfQATzbANI4iMSSWDPKA4L0IUOWH+e0rmoT8J6932ww6iY4ID
+ YTRA9cCL5gZ5XGqCMFuf8t0atIJkGEZvRTFuHMmDfXa72gca8IFLunaJOD2xrreL6qBvjL0+NIeFB
+ 835CKFn5eRqfmzKQ0LKAS3uyr+jRjoP4Plblo03u1KjIrPmMx7EpCK7NOGzwd1PT1UuDrRL2sECWv
+ yCy3L3qw==;
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljtpr-00GkBT-VL; Fri, 21 May 2021 01:20:21 +0000
-Received: by mail-ot1-f42.google.com with SMTP id
- i23-20020a9d68d70000b02902dc19ed4c15so16661757oto.0; 
- Thu, 20 May 2021 18:20:18 -0700 (PDT)
+ id 1ljtrt-00GkF7-AV; Fri, 21 May 2021 01:22:26 +0000
+Received: by mail-oi1-f173.google.com with SMTP id v22so18236012oic.2;
+ Thu, 20 May 2021 18:22:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=L8yBjYQAgys656MK8UvpdfNfI8yFhToVlmHgAetNSy4=;
- b=VH4DKje9W6EqMv7CRbWEyXbqK1uS44Z1ZrflAQqMhll1ZMr5Z9uZa9XWtlFCM9v5M+
- Bz+9zU2sd1CVrOGRedq+FB8bRdH/+tRR2At8KOqZlb3G6711osyPhBMVpoFG19/OlWnc
- 44lRt9U/M2p4ffCAnhih2d8lQfp8n+bRU4Tjin/M5GaQ0XdRUEr27MzephHqrEEaKkQh
- 0nyEmygJ2jN4AX0QU+agXCwF/2zmhYRsbpEW0O9yQYHWiOBBhNvdvuwpmx0IhlPk+vI+
- WwhorMGZb0yvCAZP/LQTyGakEFkubMLMdRQqkfM4jDWT6WA7xWw2+aPceqKJ/v3kW+lv
- /3pA==
-X-Gm-Message-State: AOAM532DCVRglSlYL8LNRRufelVodkp7vwWPohP8DnIG7fSMCvcMm8yi
- 1AtCl8kkDn9FKy3L5joLAw==
-X-Google-Smtp-Source: ABdhPJwloniGyDrtyyk8GwSUBgwJrVccusdGH8bFeLm/IkJVIgSlu1dAYGnYt1qlN/bRKbEy1r88CA==
-X-Received: by 2002:a9d:721e:: with SMTP id u30mr6028225otj.250.1621560017968; 
- Thu, 20 May 2021 18:20:17 -0700 (PDT)
+ bh=k4KWGlvK3qGaxYX6Np3iLLA0ulq4Lc64J8obvuCRFos=;
+ b=a121C86sD8vqleS0XX4DlkdTX096qr6tSu+PNTi5944DAFIQmnGL3wFD+u5NIi9d6g
+ duLu+0cJ8yFxp1I5tmyqlQnOSPdi9pD7MiUup6pRSzCxrGlbvRH6ZV0PhrdKd6PZt20Y
+ b+39nZnaYuzB8nWMuNIq6QkQlVyMWI2EIJz8LWkNotx6prwYmtWBzV6nfhCheYiVyLje
+ MaWfcPnhW1/mbLOKm3Jp9b1hdJ6JXwHE9t6oDWYBQaFZNQGarW+eSLKbnl/N4MhL9yF3
+ ZkTOvRbHum7u2EYY5e1Rw62V9S2F+O2x/oyHmmB7P0oa6lX6nY1VTbz7K6Ng16qOxNH0
+ U9gQ==
+X-Gm-Message-State: AOAM531CDCufbkp/pgHqeDky6Ey7NEiLmuQs2gGclHisfnTrzbERzZAF
+ SzBJer2/ggT5J1O/LIRnvg==
+X-Google-Smtp-Source: ABdhPJyzqzC2yzSopZN40GRzbx7jDSy385pnzcAhmj1QfM9zVNed5J3r2LqLiVNYyYjjCim8ELXLVQ==
+X-Received: by 2002:aca:dd86:: with SMTP id u128mr214796oig.155.1621560144175; 
+ Thu, 20 May 2021 18:22:24 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id v19sm1000293otq.35.2021.05.20.18.20.16
+ by smtp.gmail.com with ESMTPSA id f2sm960015otp.77.2021.05.20.18.22.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 18:20:17 -0700 (PDT)
-Received: (nullmailer pid 2424374 invoked by uid 1000);
- Fri, 21 May 2021 01:20:16 -0000
-Date: Thu, 20 May 2021 20:20:16 -0500
+ Thu, 20 May 2021 18:22:23 -0700 (PDT)
+Received: (nullmailer pid 2428345 invoked by uid 1000);
+ Fri, 21 May 2021 01:22:22 -0000
+Date: Thu, 20 May 2021 20:22:22 -0500
 From: Rob Herring <robh@kernel.org>
 To: Fabien Parent <fparent@baylibre.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- mkorpershoek@baylibre.com, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: pwm: pwm-mtk-disp: convert to YAML schema
-Message-ID: <20210521012016.GA2421079@robh.at.kernel.org>
-References: <20210518175422.2678665-1-fparent@baylibre.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ mkorpershoek@baylibre.com, Matthias Brugger <mbrugger@suse.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] dt-bindings: power: Add MT8365 power domains
+Message-ID: <20210521012222.GA2426808@robh.at.kernel.org>
+References: <20210518194008.2921469-1-fparent@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210518175422.2678665-1-fparent@baylibre.com>
+In-Reply-To: <20210518194008.2921469-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_182020_054538_7D317F1C 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20210520_182225_383182_A4B8D526 
+X-CRM114-Status: GOOD (  17.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,160 +105,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 18, 2021 at 07:54:19PM +0200, Fabien Parent wrote:
-> Convert the dt-binding documentation for pwm-mtk-disp to YAML.
+On Tue, May 18, 2021 at 09:40:07PM +0200, Fabien Parent wrote:
+> Add power domains dt-bindings for MT8365.
 > 
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 44 ----------
->  .../devicetree/bindings/pwm/pwm-mtk-disp.yaml | 83 +++++++++++++++++++
->  2 files changed, 83 insertions(+), 44 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
->  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
+>  .../power/mediatek,power-controller.yaml      |  2 ++
+>  include/dt-bindings/power/mt8365-power.h      | 20 +++++++++++++++++++
+>  2 files changed, 22 insertions(+)
+>  create mode 100644 include/dt-bindings/power/mt8365-power.h
 > 
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> deleted file mode 100644
-> index 902b271891ae..000000000000
-> --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
-> +++ /dev/null
-> @@ -1,44 +0,0 @@
-> -MediaTek display PWM controller
-> -
-> -Required properties:
-> - - compatible: should be "mediatek,<name>-disp-pwm":
-> -   - "mediatek,mt2701-disp-pwm": found on mt2701 SoC.
-> -   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
-> -   - "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm": found on mt8167 SoC.
-> -   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
-> - - reg: physical base address and length of the controller's registers.
-> - - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
-> -   the cell format.
-> - - clocks: phandle and clock specifier of the PWM reference clock.
-> - - clock-names: must contain the following:
-> -   - "main": clock used to generate PWM signals.
-> -   - "mm": sync signals from the modules of mmsys.
-> - - pinctrl-names: Must contain a "default" entry.
-> - - pinctrl-0: One property must exist for each entry in pinctrl-names.
-> -   See pinctrl/pinctrl-bindings.txt for details of the property values.
-> -
-> -Example:
-> -	pwm0: pwm@1401e000 {
-> -		compatible = "mediatek,mt8173-disp-pwm",
-> -			     "mediatek,mt6595-disp-pwm";
-> -		reg = <0 0x1401e000 0 0x1000>;
-> -		#pwm-cells = <2>;
-> -		clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-> -			 <&mmsys CLK_MM_DISP_PWM0MM>;
-> -		clock-names = "main", "mm";
-> -		pinctrl-names = "default";
-> -		pinctrl-0 = <&disp_pwm0_pins>;
-> -	};
-> -
-> -	backlight_lcd: backlight_lcd {
-> -		compatible = "pwm-backlight";
-> -		pwms = <&pwm0 0 1000000>;
-> -		brightness-levels = <
-> -			  0  16  32  48  64  80  96 112
-> -			128 144 160 176 192 208 224 240
-> -			255
-> -		>;
-> -		default-brightness-level = <9>;
-> -		power-supply = <&mt6397_vio18_reg>;
-> -		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
-> -	};
-> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
+> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> index f234a756c193..9a26a2cee7fb 100644
+> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
+> @@ -27,6 +27,7 @@ properties:
+>        - mediatek,mt8173-power-controller
+>        - mediatek,mt8183-power-controller
+>        - mediatek,mt8192-power-controller
+> +      - mediatek,mt8365-power-controller
+>  
+>    '#power-domain-cells':
+>      const: 1
+> @@ -64,6 +65,7 @@ patternProperties:
+>                "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
+>                "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
+>                "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
+> +              "include/dt-bindings/power/mt8365-power.h" - for MT8365 type power domain.
+>          maxItems: 1
+>  
+>        clocks:
+> diff --git a/include/dt-bindings/power/mt8365-power.h b/include/dt-bindings/power/mt8365-power.h
 > new file mode 100644
-> index 000000000000..0f016c81cd53
+> index 000000000000..352440c4b5dd
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
-> @@ -0,0 +1,83 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/pwm/pwm-mtk-disp.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: MediaTek display PWM controller
-> +
-> +maintainers:
-> +  - Thierry Reding <thierry.reding@gmail.com>
-> +  - Lee Jones <lee.jones@linaro.org>
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - enum:
-> +          - mediatek,mt2701-disp-pwm
-> +          - mediatek,mt6595-disp-pwm
-> +          - mediatek,mt8173-disp-pwm
-> +      - items:
-> +          - const: mediatek,mt8167-disp-pwm
-> +          - const: mediatek,mt8173-disp-pwm
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: clock used to generate PWM signals
-> +      - description: sync signal from the mmsys module
-> +
-> +  clock-names:
-> +    items:
-> +      - const: main
-> +      - const: mm
-> +
-> +  "#pwm-cells":
-> +    const: 2
-> +
-> +  power-domains:
-> +    description:
-> +      List of phandles and PM domain specifiers, as defined by bindings of the
-> +      PM domain provider (see also ../power_domain.txt).
+> +++ b/include/dt-bindings/power/mt8365-power.h
+> @@ -0,0 +1,20 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 
-Don't need to define what the common property is. You need to say how 
-many.
+What about non-GPL users of DT? Dual license please.
 
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
 > +
-> +  interrupts:
-> +    maxItems: 1
+> +#ifndef _DT_BINDINGS_POWER_MT8365_POWER_H
+> +#define _DT_BINDINGS_POWER_MT8365_POWER_H
 > +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
+> +#define MT8365_POWER_DOMAIN_DISP	0
+> +#define MT8365_POWER_DOMAIN_CONN	1
+> +#define MT8365_POWER_DOMAIN_MFG		2
+> +#define MT8365_POWER_DOMAIN_AUDIO	3
+> +#define MT8365_POWER_DOMAIN_CAM		4
+> +#define MT8365_POWER_DOMAIN_DSP		5
+> +#define MT8365_POWER_DOMAIN_VDEC	6
+> +#define MT8365_POWER_DOMAIN_VENC	7
+> +#define MT8365_POWER_DOMAIN_APU		8
 > +
-> +additionalProperties: false
+> +#endif /* _DT_BINDINGS_POWER_MT8365_POWER_H */
 > +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8173-clk.h>
-> +    #include <dt-bindings/gpio/gpio.h>
-> +    pwm0: pwm@1401e000 {
-> +      compatible = "mediatek,mt8173-disp-pwm";
-> +      reg = <0x1401e000 0x1000>;
-> +      #pwm-cells = <2>;
-> +      clocks = <&mmsys CLK_MM_DISP_PWM026M>,
-> +               <&mmsys CLK_MM_DISP_PWM0MM>;
-> +      clock-names = "main", "mm";
-> +      pinctrl-names = "default";
-> +      pinctrl-0 = <&disp_pwm0_pins>;
-> +    };
-> +
-> +    backlight_lcd: backlight_lcd {
-> +      compatible = "pwm-backlight";
-> +      pwms = <&pwm0 0 1000000>;
-> +      brightness-levels = <
-> +        0  16  32  48  64  80  96 112
-> +        128 144 160 176 192 208 224 240
-> +        255
-> +      >;
-> +      default-brightness-level = <9>;
-> +      power-supply = <&mt6397_vio18_reg>;
-> +      enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
-> +    };
 > -- 
 > 2.31.1
 > 
