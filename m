@@ -2,130 +2,83 @@ Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75A47C47078
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 15:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A76AC4707A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 18:06:45 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6841613DB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 15:53:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6841613DB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3CE7D613D6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 18:06:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3CE7D613D6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7il7PesAsjNfH/sgYVApCKaydt6QZjd/vGaL1Qhp1gI=; b=P0s684k9UmeZmAbPpDovfOkiYb
-	hw8xlSV9z6tggjDUum0lPPN8cUaemvmO3RfMF5wY0lubK+N2kh3KvBrCNfZIAZ/QlP63xF2cbf7r+
-	tX4oy4gRmGFDYNXQufoOtCZkH82pdQFXB9sjGSNH/E2HI96ZfZbg1UDLukJnqdqKqmcUiBfRuagTC
-	l7mWpOP3QkICtvc4gW8G82oFijkZ3JdlOSr/GDhMDfaf8BAirb76jz/sIwSIePlLUtvLSEl8nt4rP
-	SeM+Us/H/sLXPlPqNAfQREcOLth6xmM71yDEP2NBDVxiodx1oNZLUqQqVgx+h5PkhpWG5FMK/FUxj
-	JmAqVKkQ==;
+	bh=dpTd9ynIcbXfQBCMs3hPw0Ev+xkZQxWUx0OY913RmVs=; b=ZzRLt/pLus3lQmpdiySazc81yQ
+	p3cnr6ETlhrZhCIygL+wDUcdEU4mq+QOK+xUO9lb+zljaPO+aZMYtAqY87ylBow1xQaUWdt5quqJk
+	MmGn0CG1jDaxULU/2Rykfto0x1hIEcftHxlNoPb582uD/i21Jgt/hsCrSbaFBBhnVgcwrIrVretH2
+	rB+YMd+BAemNg2+2pdj5NE8j781HYZ81wwbGSy7xlb9XDGNELOppNw/yk5A5CRL4rzFOmY3X2W0/y
+	f6OXy9m8NNC3jpc6OuYo01eyYAUGk5mbLi/cz2srffky8xabD2fmVopu/QiH6hUGrv51x/E6CL53j
+	D9X8uJcw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk7T3-0009RL-3H; Fri, 21 May 2021 15:53:41 +0000
+	id 1lk9Xb-000erd-Rg; Fri, 21 May 2021 18:06:31 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk7Sm-0009Pr-Lb; Fri, 21 May 2021 15:53:24 +0000
+ id 1lk9XO-000eps-G5; Fri, 21 May 2021 18:06:18 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:
- Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
- :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
- bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=; b=hSD7GAeCyLemvN42dzjGA1E+Wb
- jZsyAlULXDQRgUttz+9PP4fftWgE8CKJXGS6Cu3+Ly8QNIdTRGWrqXs2TkwRUVDHPeW4IAHCN+MP2
- w+QcXQvQb01xQDJuNOer5PZSaFApuIk31UT/h0k/FJjqH9L+V0H75UZo7POchMxDeATDGR0Q+tr+7
- +Iem00Z2a1ED9rZ4U5lmt8aFAhCkS0aKDTfrPg0qqu1eaA5m0Qu4TfRBkfrhkJSC702zsT1TDes3l
- A273rJXyKkB3wMv+dA07Om5KBg6x4CXeQ6JCsavXwFTZvsi0snrtq6iRfPhJdIz8lot2B3p2wdYTD
- v2VMcXTA==;
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=55jK2hW3Q1UDg4CxhHuVx3ZhYtkWghRVoTKNLFgwR6k=; b=lMOjZ4H7/R0NOUPZp1idTYI2pr
+ QCHzCx4XEmmtSoQ9wpDxy9F7rJYUog/BH2bI3K22qd87UV4b7M7YVXryVgG2ge9LljfW5rFZ87KXa
+ Phai2Z4/zbJKd7NGT3marS0xAcKW+e6hgzkOQqfboxTlujz0LH0ftuPn9JhaFNRImTGZyCV+mD5le
+ WpZwpHaZ0mpYBPV9W2960m7VmvxmhLxTYM+7QAeqsNZrAN/r2guOqE/Y+J15rOCeTqTMC2pEcq43M
+ v71G/Di3ZWS0e5pUL5qmP9Om2l4xnca2o9mxLIY207P1UUpywaSEEi7oxHE83lJsHr31hmg0aVYf7
+ eWIMLjKQ==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk7Sj-00HFzR-O5; Fri, 21 May 2021 15:53:23 +0000
-Received: by mail-wm1-x330.google.com with SMTP id t206so11412844wmf.0;
- Fri, 21 May 2021 08:53:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=;
- b=IhYlOGhD14MnNUDN3/gcfgDBq/BNMorjLEdyQeq1zzib97z1tEhGiiXaphyov0B6rm
- Fnug5G0nwmDNTjmkdcXodXq9U/gz3ibsum4pzrkpfI9FmltJSw2CUcxsWX7jGXwwmyCj
- 6vxc3W7raymKSRp3BSh9pxV9ixt7fhYnirv/L00YJBgVdZZYogPdXKuTSkEFfH1IrFRZ
- Da9BK8RCuQqZjWtJt4Z9PY1PYT/d4yv4t/as1y1Bzr1dc6M55Y5AjpEufmJ68LUqwnaN
- r/4pWcKNmcNKigTm4vX1D6oC/E3gRqOexUh1NDZr0Zq9RS8nw5b/KoUs/ymofl20nPkJ
- EdEA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=;
- b=Qm4WI1pR4MjmgANn8WY4mKBu851L37pg94nF6h2eH8LT5weLhDXZejGuQ0QyFl/MWf
- Xyw3QBezjj1J7wy0QOtkvgABHDZkWPnzHgpuFrhk989O6LoQd9valKBZmbww4uLrr73u
- DelN0XXxS8COsvTU89AqEJqhbmsyVHg4p2E4ssa3YblXh7+BBVwgKrg3mwa8hAb8gaZD
- huKvcOlff8No7ZllFKzzaqk8ppJ4p+X7Yi52dJzsmW02crUnjyLfEnzUIM178n9k7+aQ
- 0Vvypxey7FRL2lt7pDZIrROi1cZ4RhKWutZGYCvOo0ZbTXinHl+2zMv2y6vo6UjUxPrv
- XxQQ==
-X-Gm-Message-State: AOAM531+u/hDC5Rq8WmKm0altdiV9JUyarlw3V+dEEjIld+Rm/zdtiIK
- RevdKx2vrS4PYVvMqNpaIQM=
-X-Google-Smtp-Source: ABdhPJxTn/ueWgal7rvRO3A3ECHpC111Q7o7SxwZUm6zNTqM9YK/SolsENlCqq1BAUxDrXnfxploOg==
-X-Received: by 2002:a1c:5443:: with SMTP id p3mr9425116wmi.101.1621612399794; 
- Fri, 21 May 2021 08:53:19 -0700 (PDT)
-Received: from jernej-laptop.localnet (cpe-86-58-17-133.cable.triera.net.
- [86.58.17.133])
- by smtp.gmail.com with ESMTPSA id o129sm13051356wmo.22.2021.05.21.08.53.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 May 2021 08:53:19 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: DRI Development <dri-devel@lists.freedesktop.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Daniel Vetter <daniel.vetter@ffwll.ch>, 
- Daniel Vetter <daniel.vetter@intel.com>,
- Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
- Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, 
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, 
- Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- Marek Vasut <marex@denx.de>, 
- Stefan Agner <stefan@agner.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Yannick Fertre <yannick.fertre@foss.st.com>,
- Philippe Cornu <philippe.cornu@foss.st.com>, 
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Maxime Ripard <mripard@kernel.org>, 
- Chen-Yu Tsai <wens@csie.org>, Jyri Sarha <jyri.sarha@iki.fi>,
- Tomi Valkeinen <tomba@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 06/11] drm/<driver>: drm_gem_plane_helper_prepare_fb is
- now the default
-Date: Fri, 21 May 2021 17:53:16 +0200
-Message-ID: <1940958.iMR1v07LRx@jernej-laptop>
-In-Reply-To: <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
-References: <20210521090959.1663703-1-daniel.vetter@ffwll.ch>
- <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
+ id 1lk9XM-00HLJN-09; Fri, 21 May 2021 18:06:17 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 15A51613CB;
+ Fri, 21 May 2021 18:06:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1621620375;
+ bh=PGlP4iraJhEmtFARuI90AqejPX1/fQS9paNMLEY2w+Q=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iz450FZH/5bpTdyYLCWpyUOLw72CFhgN2ndPP3/YgWcYOR8Jkfl95UxlVx/K+Av6g
+ f5ijoFD/NawtnO+gJA2BAiHN2iZROdpHLjIyjMrHUXwB+/hR6E53cP3Qk/wowOSo+B
+ a4bUrLbrIfYkcP4jIqjDPr38Ofe7e4S+HAie+dPE=
+Date: Fri, 21 May 2021 20:06:13 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Thierry Reding <treding@nvidia.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Lee Jones <lee.jones@linaro.org>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] Revert "usb: common: usb-conn-gpio: Make VBUS
+ supply optional"
+Message-ID: <YKf2ldQhJCVbR3N8@kroah.com>
+References: <1621406386-18838-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1621406386-18838-3-git-send-email-chunfeng.yun@mediatek.com>
+ <YKezl0nlWFQhLyf/@orome.fritz.box>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YKezl0nlWFQhLyf/@orome.fritz.box>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_085321_827866_009BF173 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210521_110616_086386_95C86916 
+X-CRM114-Status: GOOD (  27.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,60 +90,49 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 21. maj 2021 ob 11:09:54 CEST je Daniel Vetter napisal(a):
-> No need to set it explicitly.
-> =
+On Fri, May 21, 2021 at 03:20:23PM +0200, Thierry Reding wrote:
+> On Wed, May 19, 2021 at 02:39:46PM +0800, Chunfeng Yun wrote:
+> > Vbus is already an optional supply, if the vbus-supply is not
+> > provided in DTS, will use a dummy regulator,
+> 
+> That statement is not entirely correct. The dummy regulator is
+> substituted only if the supply is in fact not optional. The idea behind
+> that is to allow DTS files that don't specify all required regulators to
+> get away with it, based on the assumption that the supply is one of
+> those always-on supplies that are often not described in DTS.
+> 
+> > the warning log is as below:
+> > "supply vbus not found, using dummy regulator"
+> 
+> And the reason why we get that warning is to point out that the DTS has
+> a bug and that it should be fixed (by adding a proper regulator to take
+> the place of the dummy).
+> 
+> > This reverts commit 4ddf1ac79e5f082451cd549283d2eb7559ab6ca9.
+> 
+> But if you read the description of that commit, the purpose of that
+> patch was in fact to make the supply completely optional in the case
+> where we already have the VBUS supply specified for the USB port that
+> the connector is parented to.
+> 
+> So in that case the DTS doesn't have the bug because the VBUS supply is
+> already specified for the USB port and therefore it doesn't have to be
+> specified in the USB connector again. In fact, specifying it twice can
+> lead to a situation where the USB port may not be able to switch the
+> VBUS supply on or off because the setting might conflict with that of
+> the USB connector.
+> 
+> So unless there's a real reason why this is needed, I don't think this
+> should be applied.
 
-> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
-> Cc: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
-> Cc: Lucas Stach <l.stach@pengutronix.de>
-> Cc: Shawn Guo <shawnguo@kernel.org>
-> Cc: Sascha Hauer <s.hauer@pengutronix.de>
-> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-> Cc: Fabio Estevam <festevam@gmail.com>
-> Cc: NXP Linux Team <linux-imx@nxp.com>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Paul Cercueil <paul@crapouillou.net>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Jerome Brunet <jbrunet@baylibre.com>
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Cc: Marek Vasut <marex@denx.de>
-> Cc: Stefan Agner <stefan@agner.ch>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=FCbner" <heiko@sntech.de>
-> Cc: Yannick Fertre <yannick.fertre@foss.st.com>
-> Cc: Philippe Cornu <philippe.cornu@foss.st.com>
-> Cc: Benjamin Gaignard <benjamin.gaignard@linaro.org>
-> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
-> Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
-> Cc: Maxime Ripard <mripard@kernel.org>
-> Cc: Chen-Yu Tsai <wens@csie.org>
-> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
-> Cc: Jyri Sarha <jyri.sarha@iki.fi>
-> Cc: Tomi Valkeinen <tomba@kernel.org>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-mips@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> Cc: linux-stm32@st-md-mailman.stormreply.com
-> Cc: linux-sunxi@lists.linux.dev
+I've dropped this from my tree now, thanks.
 
-For sun4i:
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-
-Best regards,
-Jernej
-
-
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
