@@ -1,88 +1,97 @@
-Return-Path: <SRS0=cSMM=KP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,UNWANTED_LANGUAGE_BODY autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5872C433ED
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 20:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37471C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:21:06 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 997B76121E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 20 May 2021 20:10:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 997B76121E
+	by mail.kernel.org (Postfix) with ESMTPS id AAD2961353
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:21:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AAD2961353
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:Message-Id:From:
-	Subject:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pFj40ATter8JM9B14jGnmRO8J8ZDotcwchIkfr20gwk=; b=M9Vx8rkEkjX+muqce91l6XPKhv
-	ACfN5nLCNf4fO//ZDNEs/OIxT2cXe16L837U02RWbKYM1SsVba6iuP9SxDZ1BCK6i3DE7/tTczPtf
-	CJY6rKBwrO8N7HKwrhWPRBjG+V6eXTHgDS/JdxN4lO5VIyONqKw39N0XuMJXXB6SsG7uBdMDYGeNZ
-	f/5YrUV98B4TbS/tdpOPRSY/tvpaEZireddjyilbfVcoSnA+6mKbqMUd1iFYRqiD3i9i69/LnECW3
-	wMoxF1we5jKn2pcLuxdLgFA4WO3Uhh2b4dIszaovRepdgSksUpWWk0XB6IsVv7+CBDbXIZ7J9eZQh
-	1WFluJWA==;
+	bh=lCY8naS0+VeafYkWWVe4qfwzFz53bcIfafUxKkWsEUU=; b=rg9hVZrC0+LNZiRulUEQXukNfu
+	43O9ZeyrGwjRzgx6iBE0QXLiRh+eBA/leQkqBBmoI7ecjFR/WQAMeWIom/y2XGQ8exJ6/Xbfzv6kb
+	3TkragU5pQZ5zglhxI7pxovd0SYB1GZCWvZMfqRrs9Y0BmVb0aBCF4i+2G91mFw66H63NR8epGaN0
+	yORPM9dLKEENrsAiNzQMVQNYp00qW4HiASH/F8vnkA834Lha3cX2UihgGSz7U0qFUjSFzc7Ztn46k
+	w74o6+wOmUrVFuJePMtPKlDPgaf0RmTiJ+UTY9czA02zLOyUgAQSmo9QLhhx4uLjsqDbK0i5ti01Q
+	sZZxW3tg==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljozr-002bj2-EJ; Thu, 20 May 2021 20:10:19 +0000
+	id 1ljtqD-003EB3-LR; Fri, 21 May 2021 01:20:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljozo-002bie-6y
- for linux-mediatek@desiato.infradead.org; Thu, 20 May 2021 20:10:16 +0000
+ id 1ljtpv-003EAI-Bm; Fri, 21 May 2021 01:20:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Cc:To:In-Reply-To:References:Date:
- Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:Content-Type:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=g33qxIaUR3IIJoMV6pYZa7XgiiLpkYrc3Y6xgNjaDeU=; b=ExJs2J8CZLyBdQNgyjygov/kta
- LsD4yv0I1oEwCQxyyPcRYNvQERoV9cW+XmiE/p/WAcKM/Cf/gyW6Gc55Bxbfqt6bI9lWkdr4YV7/j
- YlMHnWeHysPjBGyv8H6eTa/j230KxhR/6iyaKGNbbSRLBT3IKj7LeR00J2hJDVt6mrlDpIqkMXCn4
- BKRVzMo4hROpvukLWuVvun2kj8f+XeqYP6apOYmqAMF3MRk5WLoiV+lVKKsd+ysCaky4MMpKCourt
- XP8Wv49UZ/LnXfB/+dT9MZsUv8TlBcPpOIFSrS1klDrJGrrQXGTLF/IP34YWIJufW5YGW7H/t5gra
- Q8bcEaVw==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
+ :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=L8yBjYQAgys656MK8UvpdfNfI8yFhToVlmHgAetNSy4=; b=SLjHylRT/Bzv4Pj0VPOowDb5fY
+ cqQ5h2dXmSt9Eu24Dsk3DTkr20twuf7hXOuXce61/AZ3mkEWGP05J4D6BwXTI+MGzPCzYk1m5PEcZ
+ 3CWrSJzIHV2epp/tN6Qu9FNIq9MFZ0ljOMOLsblIUBfOqblP7DGz3yYDWayCaO2jF6kDVsgx/JckT
+ 88oqEgUfogj1TAqN/eQuM+nwbKf8jGp7/adOXGy7ffPlkvkdrzspiZocRyioR48vGkF5Jvnxpl+Nk
+ FiHYlSoY23DR9PuKdti/FwD+QOZVjT7lg4Uc5cjdj5oGAYpJJBXYPOCHCZQKMBU57SlDo6k631Bqm
+ jGjoLRMw==;
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljozl-00Gdg7-G9
- for linux-mediatek@lists.infradead.org; Thu, 20 May 2021 20:10:14 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPS id 5B3B66128A;
- Thu, 20 May 2021 20:10:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621541410;
- bh=WaCgMvfXBR2gKyUZwzBouYnqALdTwOxZMFC0C16Yfqo=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=r0GmfvCV5y8lZ1sXAGwxJgaOTV/M4QhbiaiKN+TtKmof1O7GuR4saIdXK9oMsDOUT
- h4bnvm5ioDd9Ba9CzavQtpGqFApB79cCbYez0aijCSlJw12MtPWPF9xc3dwCn51o+M
- GlLOc6KxBkz3LQ9vfzP0tzI/T/9oFOYePrhKkSSz9/ahMZUI+mQHY1CSOf/dpX6Sq6
- KhLRnNVmb1lQXOzb8fJegJIXpRnHJhTPe5yO+OxhMxcsbEdNlKFp77AiBP2OH2bt6o
- PmRjGvtWhQ0bA+u+KXT58eE20yjF2tcCKHK5yisYhyrtltoug4ktSzG2LfalvngXZ5
- vX67EJIavZ63A==
+ id 1ljtpr-00GkBT-VL; Fri, 21 May 2021 01:20:21 +0000
+Received: by mail-ot1-f42.google.com with SMTP id
+ i23-20020a9d68d70000b02902dc19ed4c15so16661757oto.0; 
+ Thu, 20 May 2021 18:20:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=L8yBjYQAgys656MK8UvpdfNfI8yFhToVlmHgAetNSy4=;
+ b=VH4DKje9W6EqMv7CRbWEyXbqK1uS44Z1ZrflAQqMhll1ZMr5Z9uZa9XWtlFCM9v5M+
+ Bz+9zU2sd1CVrOGRedq+FB8bRdH/+tRR2At8KOqZlb3G6711osyPhBMVpoFG19/OlWnc
+ 44lRt9U/M2p4ffCAnhih2d8lQfp8n+bRU4Tjin/M5GaQ0XdRUEr27MzephHqrEEaKkQh
+ 0nyEmygJ2jN4AX0QU+agXCwF/2zmhYRsbpEW0O9yQYHWiOBBhNvdvuwpmx0IhlPk+vI+
+ WwhorMGZb0yvCAZP/LQTyGakEFkubMLMdRQqkfM4jDWT6WA7xWw2+aPceqKJ/v3kW+lv
+ /3pA==
+X-Gm-Message-State: AOAM532DCVRglSlYL8LNRRufelVodkp7vwWPohP8DnIG7fSMCvcMm8yi
+ 1AtCl8kkDn9FKy3L5joLAw==
+X-Google-Smtp-Source: ABdhPJwloniGyDrtyyk8GwSUBgwJrVccusdGH8bFeLm/IkJVIgSlu1dAYGnYt1qlN/bRKbEy1r88CA==
+X-Received: by 2002:a9d:721e:: with SMTP id u30mr6028225otj.250.1621560017968; 
+ Thu, 20 May 2021 18:20:17 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id v19sm1000293otq.35.2021.05.20.18.20.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 May 2021 18:20:17 -0700 (PDT)
+Received: (nullmailer pid 2424374 invoked by uid 1000);
+ Fri, 21 May 2021 01:20:16 -0000
+Date: Thu, 20 May 2021 20:20:16 -0500
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ mkorpershoek@baylibre.com, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: pwm: pwm-mtk-disp: convert to YAML schema
+Message-ID: <20210521012016.GA2421079@robh.at.kernel.org>
+References: <20210518175422.2678665-1-fparent@baylibre.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next v2 0/4] MT7530 interrupt support
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <162154141030.20508.8664926088973694353.git-patchwork-notify@kernel.org>
-Date: Thu, 20 May 2021 20:10:10 +0000
-References: <20210519033202.3245667-1-dqfext@gmail.com>
-In-Reply-To: <20210519033202.3245667-1-dqfext@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: davem@davemloft.net, andrew@lunn.ch, f.fainelli@gmail.com,
- hkallweit1@gmail.com, kuba@kernel.org, Landen.Chao@mediatek.com,
- matthias.bgg@gmail.com, linux@armlinux.org.uk, sean.wang@mediatek.com,
- vivien.didelot@gmail.com, olteanv@gmail.com, robh+dt@kernel.org,
- linus.walleij@linaro.org, gregkh@linuxfoundation.org,
- sergio.paracuellos@gmail.com, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-staging@lists.linux.dev,
- devicetree@vger.kernel.org, netdev@vger.kernel.org, weijie.gao@mediatek.com,
- gch981213@gmail.com, opensource@vdorst.com, frank-w@public-files.de,
- tglx@linutronix.de, maz@kernel.org
+Content-Disposition: inline
+In-Reply-To: <20210518175422.2678665-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_131013_581251_94A661F4 
-X-CRM114-Status: UNSURE (   6.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210520_182020_054538_7D317F1C 
+X-CRM114-Status: GOOD (  24.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,37 +108,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
-
-This series was applied to netdev/net-next.git (refs/heads/master):
-
-On Wed, 19 May 2021 11:31:58 +0800 you wrote:
-> Add support for MT7530 interrupt controller.
+On Tue, May 18, 2021 at 07:54:19PM +0200, Fabien Parent wrote:
+> Convert the dt-binding documentation for pwm-mtk-disp to YAML.
 > 
-> DENG Qingfang (4):
->   net: phy: add MediaTek Gigabit Ethernet PHY driver
->   net: dsa: mt7530: add interrupt support
->   dt-bindings: net: dsa: add MT7530 interrupt controller binding
->   staging: mt7621-dts: enable MT7530 interrupt controller
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> ---
+>  .../devicetree/bindings/pwm/pwm-mtk-disp.txt  | 44 ----------
+>  .../devicetree/bindings/pwm/pwm-mtk-disp.yaml | 83 +++++++++++++++++++
+>  2 files changed, 83 insertions(+), 44 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+>  create mode 100644 Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
 > 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> deleted file mode 100644
+> index 902b271891ae..000000000000
+> --- a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.txt
+> +++ /dev/null
+> @@ -1,44 +0,0 @@
+> -MediaTek display PWM controller
+> -
+> -Required properties:
+> - - compatible: should be "mediatek,<name>-disp-pwm":
+> -   - "mediatek,mt2701-disp-pwm": found on mt2701 SoC.
+> -   - "mediatek,mt6595-disp-pwm": found on mt6595 SoC.
+> -   - "mediatek,mt8167-disp-pwm", "mediatek,mt8173-disp-pwm": found on mt8167 SoC.
+> -   - "mediatek,mt8173-disp-pwm": found on mt8173 SoC.
+> - - reg: physical base address and length of the controller's registers.
+> - - #pwm-cells: must be 2. See pwm.yaml in this directory for a description of
+> -   the cell format.
+> - - clocks: phandle and clock specifier of the PWM reference clock.
+> - - clock-names: must contain the following:
+> -   - "main": clock used to generate PWM signals.
+> -   - "mm": sync signals from the modules of mmsys.
+> - - pinctrl-names: Must contain a "default" entry.
+> - - pinctrl-0: One property must exist for each entry in pinctrl-names.
+> -   See pinctrl/pinctrl-bindings.txt for details of the property values.
+> -
+> -Example:
+> -	pwm0: pwm@1401e000 {
+> -		compatible = "mediatek,mt8173-disp-pwm",
+> -			     "mediatek,mt6595-disp-pwm";
+> -		reg = <0 0x1401e000 0 0x1000>;
+> -		#pwm-cells = <2>;
+> -		clocks = <&mmsys CLK_MM_DISP_PWM026M>,
+> -			 <&mmsys CLK_MM_DISP_PWM0MM>;
+> -		clock-names = "main", "mm";
+> -		pinctrl-names = "default";
+> -		pinctrl-0 = <&disp_pwm0_pins>;
+> -	};
+> -
+> -	backlight_lcd: backlight_lcd {
+> -		compatible = "pwm-backlight";
+> -		pwms = <&pwm0 0 1000000>;
+> -		brightness-levels = <
+> -			  0  16  32  48  64  80  96 112
+> -			128 144 160 176 192 208 224 240
+> -			255
+> -		>;
+> -		default-brightness-level = <9>;
+> -		power-supply = <&mt6397_vio18_reg>;
+> -		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
+> -	};
+> diff --git a/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
+> new file mode 100644
+> index 000000000000..0f016c81cd53
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pwm/pwm-mtk-disp.yaml
+> @@ -0,0 +1,83 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: "http://devicetree.org/schemas/pwm/pwm-mtk-disp.yaml#"
+> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
+> +
+> +title: MediaTek display PWM controller
+> +
+> +maintainers:
+> +  - Thierry Reding <thierry.reding@gmail.com>
+> +  - Lee Jones <lee.jones@linaro.org>
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - enum:
+> +          - mediatek,mt2701-disp-pwm
+> +          - mediatek,mt6595-disp-pwm
+> +          - mediatek,mt8173-disp-pwm
+> +      - items:
+> +          - const: mediatek,mt8167-disp-pwm
+> +          - const: mediatek,mt8173-disp-pwm
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: clock used to generate PWM signals
+> +      - description: sync signal from the mmsys module
+> +
+> +  clock-names:
+> +    items:
+> +      - const: main
+> +      - const: mm
+> +
+> +  "#pwm-cells":
+> +    const: 2
+> +
+> +  power-domains:
+> +    description:
+> +      List of phandles and PM domain specifiers, as defined by bindings of the
+> +      PM domain provider (see also ../power_domain.txt).
 
-Here is the summary with links:
-  - [net-next,v2,1/4] net: phy: add MediaTek Gigabit Ethernet PHY driver
-    https://git.kernel.org/netdev/net-next/c/e40d2cca0189
-  - [net-next,v2,2/4] net: dsa: mt7530: add interrupt support
-    https://git.kernel.org/netdev/net-next/c/ba751e28d442
-  - [net-next,v2,3/4] dt-bindings: net: dsa: add MT7530 interrupt controller binding
-    https://git.kernel.org/netdev/net-next/c/4006f986c091
-  - [net-next,v2,4/4] staging: mt7621-dts: enable MT7530 interrupt controller
-    https://git.kernel.org/netdev/net-next/c/f494f0935ffb
+Don't need to define what the common property is. You need to say how 
+many.
 
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - clocks
+> +  - clock-names
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt8173-clk.h>
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    pwm0: pwm@1401e000 {
+> +      compatible = "mediatek,mt8173-disp-pwm";
+> +      reg = <0x1401e000 0x1000>;
+> +      #pwm-cells = <2>;
+> +      clocks = <&mmsys CLK_MM_DISP_PWM026M>,
+> +               <&mmsys CLK_MM_DISP_PWM0MM>;
+> +      clock-names = "main", "mm";
+> +      pinctrl-names = "default";
+> +      pinctrl-0 = <&disp_pwm0_pins>;
+> +    };
+> +
+> +    backlight_lcd: backlight_lcd {
+> +      compatible = "pwm-backlight";
+> +      pwms = <&pwm0 0 1000000>;
+> +      brightness-levels = <
+> +        0  16  32  48  64  80  96 112
+> +        128 144 160 176 192 208 224 240
+> +        255
+> +      >;
+> +      default-brightness-level = <9>;
+> +      power-supply = <&mt6397_vio18_reg>;
+> +      enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
+> +    };
+> -- 
+> 2.31.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
