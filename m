@@ -2,19 +2,19 @@ Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 411E6C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EFD9C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:50 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA35E6109F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA35E6109F
+	by mail.kernel.org (Postfix) with ESMTPS id AD00D6109F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD00D6109F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,70 +23,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eoVz0Qoh6SjQG4cRgQDf/fKJDHC/WFW/xFi7X0W6L8o=; b=gRLtDusxJPXR/uUWOQdnv4RTQL
-	aj0VL8oBJDJ//VsJ2cCeCU4654Rb2Av6th9fXRCOnQg8VVtAXhz2XIC/LejUJjZcKIWcQZACFHK5P
-	xYlp9WD25beYh7gMPLlIgdyjbPGW7Zlm1g3GT4JzbMAIP0tpYsWvZBvgjrwaGKTmHwOdzunJddSDO
-	VKi8+vhl6xNK1U3o9aCFgQKQsmlw3Yu1mYDpHiHWIJi/nXfU7Cd0kxQyo/fnU3fdmkz2yQyBZNh3r
-	Dprjt/rPZfye7YjLQQxqxiM/EUqvfjA8wuQHwRFKMdpPrm34YtgUKuaQYOTkwx66EgLK3E7PCDMWA
-	SjZRdqzg==;
+	bh=hsuFCKAij8EhH61nggmy61T1Ir7UL+D7hQekjEo9htg=; b=ptMmAa2bLj2fAiHYo4idHvajhL
+	qiZfzizDX9rB+RG4He6b2HltfkFsu+L9iocriiWtGHE+Dyu/z+nXejpXSASIxo7v2N29YziPhQcFp
+	pJgFX0ZK8ZcV0yr7muPsWP6uZz8UtYuwfUoQsqOZ/v5GnBU+hBZv8L06sekqNch6lV2aSPBbeyWP+
+	kKnwfw0zQuNkVCdlTvBREC4uiHwwQTLeTs/9uErgYJYoZJXWllTHPZziH2fwYEiVZtXbi5gQm7MUw
+	+jgYFsKm57eDGS41hfgGcnKgndDIioBgwzc+ygARvAkkR/3b8N4lGNqJ4aAdJjYkuYW3Wb0je7Cbb
+	T9tndCjw==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk5ME-005Z0E-NG; Fri, 21 May 2021 13:38:30 +0000
+	id 1lk5MJ-005Z2r-Hv; Fri, 21 May 2021 13:38:35 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk5MC-005Yyf-Ov
- for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 13:38:29 +0000
+ id 1lk5MH-005Z1N-HO
+ for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 13:38:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
  :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=P8K4c4I3E0ScqatNpdtAdPPA1ppP33415CwioITRQ28=; b=JXchT6QKZ3fYy1frxSQvOibcbM
- RldQ6YhjQoDYx64ceNlZE9aACbXeX1PHCzEYFgcdRMy13zOhS4d5L1MmI89YXudnXr4xZCT6rhXHW
- KyDxMBJEfeZzH1AI2S4bE4n/65MAqJ6kK5FROSgb9O8DHT8pXNqYByHa7Ien3wItjDJ3yrYSYiKui
- kR+JQdv4ELQ0ctlr55qJFTaHgs6uwwHfw1TVj7e9NotGz9a5tkAuZiqgDBfjmQNNoGYttglW6Yroh
- WdfPcGN+/jTozDYqZwmtr2A3z5tmuuCMmhr5A92YSJrU6T2X5yyD7eSNebIugAnHK22lT3Gz4cQpK
- h+PEQ03g==;
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+ bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=; b=S8D/o6Yl29E6JDTeAURyLplEmS
+ ahm7qXdS0t8qCOZ5ss704E+fJ2Lm3bh5yaIepuqfnVXERYFtnskvlqdLnZlooqk4KR+58JCRLtIB0
+ 7HVouqMs5iJq+ck+0U6HKOT1gpePxN/aBe6SOpeYanwKEZ4rZoiZOp6YLjlubCAE8JBMlXHrevFrz
+ kjBf/cskxNztL2+GRIX/eNw0YstqCZm4eqw0h72CChRF99Re3ESgoXMqe8aiVNwOrzT9ycpMh1l9s
+ jZZGBy1O703uGFbyAyI8p11NidnBdkqeSVw8jOBkLk2i1OtbZF2UvJB3kZxV9Dx7PzL82DCQ+6t55
+ WUz2qT0A==;
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk5MA-00H9Zz-9W
- for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 13:38:27 +0000
-Received: by mail-io1-xd36.google.com with SMTP id z24so20153715ioi.3
- for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 06:38:25 -0700 (PDT)
+ id 1lk5MF-00H9am-5d
+ for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 13:38:32 +0000
+Received: by mail-il1-x136.google.com with SMTP id e10so16617082ilu.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 06:38:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=P8K4c4I3E0ScqatNpdtAdPPA1ppP33415CwioITRQ28=;
- b=WvVKiwzhtpchBrgwnrtu/VPArYkX35BZT0jVz2d3peS1iXg6p8KiiuIH8jzggDnNbr
- yVrse6NVTrPmjE13XP0shAgyR6vrOPr4U+8BCzEgDpoetP1EvMdhiy01IkSobFcBO+tl
- Mk2kr2gTuf9ODLYRqzppYHHEJGi6vKBENrmpg5YimFUu0StPEtOSKjdBlrr3PyXpgM63
- x+f5H8Wbimx1f1jScGC0mXwSoguiTIz0BHscM9OXDPR6I7deEJDecbuSxOy5nisEi9On
- gpn+r1UM7x/iX6z/r4bi1rMgMW3VtAEiVPGX6Ru1XTV/RByNIDbbQ887CRW3fpP7AOXd
- 4sUw==
+ :cc; bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=;
+ b=R461x5DK6Oy+M09t3cWQkEm9qrL5KcZdvIqarLkvpajChuPAlkpVwHWArHhhag+kNN
+ ZUbfsrYK7Xo22UI7ZiYZaBIwArR64x21Fic42DI3jbRhffIJB6XaXyDhNrFyv+2Qs4zm
+ iN+3hDGEbZIQeXEgXuMmoikSuWstvPWPqHHKuoy/kWqnlNiLKV2i+/zd6hVP7BJYpRDO
+ mGC7GcQ0zYXUp5zqpipVO4ojdGqa7D2LcsNFt3SpdYFOECkDUgX08qSsOdqTDNJlvgX2
+ rj5EMMWMo678I40ElCFzUaPcLoMmQL+dkfUzWc3IxeAE6JUDaf+SgmXSBY7QQwAQ2c3j
+ XSEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=P8K4c4I3E0ScqatNpdtAdPPA1ppP33415CwioITRQ28=;
- b=eG058k1dQXG90f+JvrZ3EEq696O8pXxMHDSdcysGpkiE1fH60AIOhMjhybQNHx2lDe
- gxbE6rHytnlAJtIp4ouh8nK7HuSOoVY0XvDdhEmbGVWAKSrdNf+/Vp31QDIRUHSPWehf
- FPwoSDN1MmbSmTFgb17xI83RJzs8/UdWmyDJ4w37OiWxYFYr4Zk1VDg1BYnHJCE51Jsb
- FOv8nwon8n5S4tdGI8xmgKd7WFllHAR3RER0pYSKgpzSe+90slt2vGioKETbGeDQv2iq
- 8mzWxc2vgEc+1RKlqD8mgeTR440cX/CMKJdJT9KIyA9+1zxELq+PVeE2VD8cALspVOVj
- 0+KA==
-X-Gm-Message-State: AOAM5316abadYneOphftJAHwQ7HjvWSk+djuh3GwKymRAs4rGjbBiajT
- LQ7xw1ebROZVAOfT6MEUm4zKWoSfLm9cxIAgzfNl4w==
-X-Google-Smtp-Source: ABdhPJwGS5p1CUtc8MeJkM1M+YPLMW1IaLUnAfAAaV6/8vNhpyIeddCaWTRXOChcNDmTYv0D6x0Fsq6hZZ3HcEF0JCc=
-X-Received: by 2002:a05:6638:3010:: with SMTP id
- r16mr4601269jak.126.1621604304927; 
- Fri, 21 May 2021 06:38:24 -0700 (PDT)
+ bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=;
+ b=mKLGsuhpmjmRPNNX10EPWUcMbURpEzWZdgrnLV2s7b9XhmATnBFX7VpyUrCnCQpZi6
+ lDOw/SDclJUx1TKYV8vzxnpUYKVHMwDy6M8BnR5FDFtqNQyxBiSNI63ITOLDYfAu3hRA
+ R1Gwjft77vnNWwnsHpSZ77X9EtuNZcQ4eSUDpQbV4ERyGqGtvtsyB2hSqH3K7Cc8U3Ok
+ AUzx44nFaDCjQJHyjQz6jW6cyM6GmqiowLe3K+lUsRf1lzX1PDrCkfOrwiGwkULaQCrR
+ fAXHrVoWmB8mGpE6Yep3p4G/OTD7ofLqLyygQoKoDEGp6I1/wO9ejPYQSmBAoVAT/GgF
+ crhA==
+X-Gm-Message-State: AOAM532bQ89sg/RtHMffFyUXroRPlXkVh2z6SZqciRW1U1whIC2868UT
+ sEyQgrPhrB+sHSKewjXXXX3cuEW/vo9fQGD2jsf57g==
+X-Google-Smtp-Source: ABdhPJyIr36lrjSTCZAWI/wXVI6gkeLvcx9vdH9kY86wAPm6nJ+y4Bqp9zyM3RNpCdzm4Ydp/VZdmrTH0prPxSxav1g=
+X-Received: by 2002:a05:6e02:92f:: with SMTP id
+ o15mr13051528ilt.127.1621604309819; 
+ Fri, 21 May 2021 06:38:29 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210519143011.1175546-1-acourbot@chromium.org>
- <20210519143011.1175546-12-acourbot@chromium.org>
-In-Reply-To: <20210519143011.1175546-12-acourbot@chromium.org>
+ <20210519143011.1175546-13-acourbot@chromium.org>
+In-Reply-To: <20210519143011.1175546-13-acourbot@chromium.org>
 From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Fri, 21 May 2021 21:38:13 +0800
-Message-ID: <CA+Px+wXXtsmG2q4aJ4Em1pzFcA-mA6CuATfXKevNyEOuBq+zYw@mail.gmail.com>
-Subject: Re: [PATCH v5 11/14] media: mtk-vcodec: vdec: support stateless H.264
- decoding
+Date: Fri, 21 May 2021 21:38:18 +0800
+Message-ID: <CA+Px+wUBJ9xxf709Ze3npnUV-NOp1DT969GWQsGTg-WuVkF+nA@mail.gmail.com>
+Subject: Re: [PATCH v5 12/14] media: mtk-vcodec: vdec: add media device if
+ using stateless api
 To: Alexandre Courbot <acourbot@chromium.org>
 Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
@@ -97,8 +97,9 @@ Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_063826_344313_8D4F7EBD 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20210521_063831_219563_FC012599 
+X-CRM114-Status: UNSURE (   7.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,90 +118,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, May 19, 2021 at 10:31 PM Alexandre Courbot
 <acourbot@chromium.org> wrote:
-> +#include "../vdec_drv_if.h"
-> +#include "../mtk_vcodec_util.h"
-> +#include "../mtk_vcodec_dec.h"
-> +#include "../mtk_vcodec_intr.h"
-> +#include "../vdec_vpu_if.h"
-> +#include "../vdec_drv_base.h"
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> [acourbot: refactor, cleanup and split]
+> Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 
-Would be good practice to sort them.
-
-> +static int allocate_predication_buf(struct vdec_h264_slice_inst *inst)
-> +{
-> +       int err = 0;
-
-No need to initialize.  It will be overridden soon.
-
-> +static void free_predication_buf(struct vdec_h264_slice_inst *inst)
-> +{
-> +       struct mtk_vcodec_mem *mem = NULL;
-> +
-> +       mtk_vcodec_debug_enter(inst);
-> +
-> +       inst->vsi_ctx.pred_buf_dma = 0;
-> +       mem = &inst->pred_buf;
-
-Is it possible to inline to the variable declaration?  Or mem no need
-to initialize.
-
-> +static int alloc_mv_buf(struct vdec_h264_slice_inst *inst,
-> +       struct vdec_pic_info *pic)
-> +{
-> +       int i;
-> +       int err;
-> +       struct mtk_vcodec_mem *mem = NULL;
-
-No need to initialize.  It will be overridden soon.
-
-> +static void free_mv_buf(struct vdec_h264_slice_inst *inst)
-> +{
-> +       int i;
-> +       struct mtk_vcodec_mem *mem = NULL;
-
-No need to initialize.  It will be overridden soon.
-
-> +static int vdec_h264_slice_init(struct mtk_vcodec_ctx *ctx)
-> +{
-> +       struct vdec_h264_slice_inst *inst = NULL;
-
-No need to initialize.  It will be overridden soon.
-
-> +static void vdec_h264_slice_deinit(void *h_vdec)
-> +{
-> +       struct vdec_h264_slice_inst *inst =
-> +               (struct vdec_h264_slice_inst *)h_vdec;
-
-No need to cast from void *.
-
-> +static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-> +                                 struct vdec_fb *fb, bool *res_chg)
-> +{
-> +       struct vdec_h264_slice_inst *inst =
-> +               (struct vdec_h264_slice_inst *)h_vdec;
-
-No need to cast from void *.
-
-> +       const struct v4l2_ctrl_h264_decode_params *dec_params =
-> +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_DECODE_PARAMS);
-> +       struct vdec_vpu_inst *vpu = &inst->vpu;
-> +       uint32_t data[2];
-> +       uint64_t y_fb_dma;
-> +       uint64_t c_fb_dma;
-> +       int err;
-> +
-> +       /* bs NULL means flush decoder */
-> +       if (bs == NULL)
-
-To neat, !bs.
-
-> +static int vdec_h264_slice_get_param(void *h_vdec,
-> +                              enum vdec_get_param_type type, void *out)
-> +{
-> +       struct vdec_h264_slice_inst *inst =
-> +               (struct vdec_h264_slice_inst *)h_vdec;
-
-No need to cast from void *.
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 
 _______________________________________________
 Linux-mediatek mailing list
