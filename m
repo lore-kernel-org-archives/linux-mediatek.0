@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB552C433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:23:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3870AC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:48:43 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C06861355
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:23:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C06861355
+	by mail.kernel.org (Postfix) with ESMTPS id 0417261246
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:48:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0417261246
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,72 +23,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UrBRBgcV4EVpz+KzPsT01PpSi4hH2TWZ7APqDoBg0oI=; b=Mh41tT3047X9WWfSsf1Yo8IDto
-	RvYOxwlKOYObDhKBzmwtMRoz302KW55bGuOiTFw3vdZ5WgJyGUUp4JenO9oEXr1s0onf+n6gANf6s
-	t4PKwlHx9RHg4iH3Tkm3Thg4CUX6VoeyZTuknQ7OpEppM/SRoQKU3JaZhZ39pq4Xga/MAYBUiTpzQ
-	jVBofYLk8PpuRu4a3egiZq9xgxukNZtaFYnDqLySE+Zal1Hx58MKdCKb/wVVqMZj6MfIY+K1e2Stt
-	wq0d6/34qC2fs2hTWUpbYqsupkCYE617gJkmV09Gk7A1/hHTgqGvQE6wj+pxMlLjzY2oo0227+Cnd
-	Yb/yiM3Q==;
+	bh=PBdDcYy7pwlfYX4zz02jEXXM1PV2QpuQOInkY8vUeos=; b=EtttDRzubEVtd+cKRPerLaD5NW
+	rfYeNCvqSrGN1nJ57r2+zioEpfX06qCGnXoWtsmKlPHHyJpWNEiKLDG66BWDjcSQUbXVXO5kC+pCx
+	Kw9brF1XXQd6n6ift0HaP9oq4/75jh9ePE/FLk15nUb9Negn7Wd1FoPnfx6NqvfmGBXWQUA5jevCT
+	8K+1ZhXjmdO5xQXZNIKQWN5xDBnY7Ga+e3BNf3Qq9vEM2TV7BO03+NZqorzPeWS4uKGsgRIfgtQDO
+	2yv/QHfnWCKl8ARebGJRFWmshSQ/69rYZCQeyAsDkUxhuyPOLBoqPtyip6BTDVzN0xpaRPCMin22U
+	It+nYQWA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljtsA-003EVO-Cj; Fri, 21 May 2021 01:22:42 +0000
+	id 1ljuH1-003LUP-DZ; Fri, 21 May 2021 01:48:23 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljtrv-003ET2-QH; Fri, 21 May 2021 01:22:27 +0000
+ id 1ljuGz-003LTc-1S; Fri, 21 May 2021 01:48:21 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
  :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=k4KWGlvK3qGaxYX6Np3iLLA0ulq4Lc64J8obvuCRFos=; b=gr/0fI5L4b8cZTHSdNBQ2vpYQU
- xDzKVeDHHDaRbEVI46pA1N8lMC4AdarQynSthKcUnz0Gs9tU0noiCSN4JGoD7l5OcoOxhKWwc2wFX
- 8c0EwquCURKgB6a7ixb28CnD6gi/cfQATzbANI4iMSSWDPKA4L0IUOWH+e0rmoT8J6932ww6iY4ID
- YTRA9cCL5gZ5XGqCMFuf8t0atIJkGEZvRTFuHMmDfXa72gca8IFLunaJOD2xrreL6qBvjL0+NIeFB
- 835CKFn5eRqfmzKQ0LKAS3uyr+jRjoP4Plblo03u1KjIrPmMx7EpCK7NOGzwd1PT1UuDrRL2sECWv
- yCy3L3qw==;
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+ bh=jmKAWY+ilzE9n7Zwbge048gHMsOHlB/JocEpo9sP+mI=; b=N9fFlPtESC4ow8v7y3zpcl5kqY
+ VP3L0f85OrlbcWNHkec/VvInDGzT5bISPJrrgpiT7oJKvt8G9nhPcKC2rOHNbkPlCghWRL5QR4oCt
+ N9blUoPX8SxjXebI3yOMhrx7c/mGOOsh/mcrVEqJ3qDD6LfrCCXKekof5a+fQWHsMArqpMdAj+cHN
+ aeMM9kYTRms/qs6SKuymjqY1dFhAezvtE5yjtV97CLZfWcPmdi8GAEz2NOdNXZrY0VjAnSS3aumwk
+ UofBlnFjoubXKc6b7UuHwOPDO7nYG3qrLEw3BYiIsWkheqq6FP3bAid976pXTOoX1MUk75hUVc7kS
+ kPljiY5w==;
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljtrt-00GkF7-AV; Fri, 21 May 2021 01:22:26 +0000
-Received: by mail-oi1-f173.google.com with SMTP id v22so18236012oic.2;
- Thu, 20 May 2021 18:22:24 -0700 (PDT)
+ id 1ljuGw-00Gkvu-CX; Fri, 21 May 2021 01:48:19 +0000
+Received: by mail-ot1-f54.google.com with SMTP id
+ t10-20020a05683022eab0290304ed8bc759so16633578otc.12; 
+ Thu, 20 May 2021 18:48:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=k4KWGlvK3qGaxYX6Np3iLLA0ulq4Lc64J8obvuCRFos=;
- b=a121C86sD8vqleS0XX4DlkdTX096qr6tSu+PNTi5944DAFIQmnGL3wFD+u5NIi9d6g
- duLu+0cJ8yFxp1I5tmyqlQnOSPdi9pD7MiUup6pRSzCxrGlbvRH6ZV0PhrdKd6PZt20Y
- b+39nZnaYuzB8nWMuNIq6QkQlVyMWI2EIJz8LWkNotx6prwYmtWBzV6nfhCheYiVyLje
- MaWfcPnhW1/mbLOKm3Jp9b1hdJ6JXwHE9t6oDWYBQaFZNQGarW+eSLKbnl/N4MhL9yF3
- ZkTOvRbHum7u2EYY5e1Rw62V9S2F+O2x/oyHmmB7P0oa6lX6nY1VTbz7K6Ng16qOxNH0
- U9gQ==
-X-Gm-Message-State: AOAM531CDCufbkp/pgHqeDky6Ey7NEiLmuQs2gGclHisfnTrzbERzZAF
- SzBJer2/ggT5J1O/LIRnvg==
-X-Google-Smtp-Source: ABdhPJyzqzC2yzSopZN40GRzbx7jDSy385pnzcAhmj1QfM9zVNed5J3r2LqLiVNYyYjjCim8ELXLVQ==
-X-Received: by 2002:aca:dd86:: with SMTP id u128mr214796oig.155.1621560144175; 
- Thu, 20 May 2021 18:22:24 -0700 (PDT)
+ bh=jmKAWY+ilzE9n7Zwbge048gHMsOHlB/JocEpo9sP+mI=;
+ b=sb8iszmXB05BOPKNX5AQ7bYFjdO5Bc85ETQRttDzBsfYLuge15fchoAWxqkLvB75T7
+ 1A0stKo61id6jpOcQ606DKaqkE3Q6g1H6v5ic+/ITfUAlX75wShlMGMrhQW6dJ07RHRW
+ J24nl82K6yOKvWy1ivpryQnMUinX4N7+FPOkxkM6IFwm/5QV21ejhhG+SvtcKwzMys1N
+ H5ultk/7RwccZT0JTFo21LXjGtNGI28NlrLxa7bs+23ESJjo7jgac57QSjcFWtAaS36h
+ 4hxkb1f4IH/MnX/8SpOJ6PYxpmWf9z5eZvrwI7HtvtA/myGZfF9p5Uy/jACbcauIAF4a
+ jRzQ==
+X-Gm-Message-State: AOAM532OXadyfe+Nbg/pv65QEcroHy7Ob1UiMdN3OdZ7RXOkj8KDwinB
+ 3JgRmdc58FgoOh8aUfi41g==
+X-Google-Smtp-Source: ABdhPJwpOly0AdzhSkZhR+HO/LhEwVqZO/Cu3mihGksiE00ZNUpIOJwE81lyGZGnoqna4ai+qKLm9g==
+X-Received: by 2002:a9d:6944:: with SMTP id p4mr6039375oto.157.1621561697448; 
+ Thu, 20 May 2021 18:48:17 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id f2sm960015otp.77.2021.05.20.18.22.23
+ by smtp.gmail.com with ESMTPSA id t26sm1011673otc.23.2021.05.20.18.48.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 May 2021 18:22:23 -0700 (PDT)
-Received: (nullmailer pid 2428345 invoked by uid 1000);
- Fri, 21 May 2021 01:22:22 -0000
-Date: Thu, 20 May 2021 20:22:22 -0500
+ Thu, 20 May 2021 18:48:16 -0700 (PDT)
+Received: (nullmailer pid 2476836 invoked by uid 1000);
+ Fri, 21 May 2021 01:48:15 -0000
+Date: Thu, 20 May 2021 20:48:15 -0500
 From: Rob Herring <robh@kernel.org>
 To: Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
- mkorpershoek@baylibre.com, Matthias Brugger <mbrugger@suse.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: power: Add MT8365 power domains
-Message-ID: <20210521012222.GA2426808@robh.at.kernel.org>
-References: <20210518194008.2921469-1-fparent@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-kernel@vger.kernel.org, mkorpershoek@baylibre.com,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: mmsys: convert to YAML
+ format
+Message-ID: <20210521014815.GA2476751@robh.at.kernel.org>
+References: <20210519161847.3747352-1-fparent@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210518194008.2921469-1-fparent@baylibre.com>
+In-Reply-To: <20210519161847.3747352-1-fparent@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_182225_383182_A4B8D526 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20210520_184818_445864_8F6A7435 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,68 +107,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 18, 2021 at 09:40:07PM +0200, Fabien Parent wrote:
-> Add power domains dt-bindings for MT8365.
+On Wed, 19 May 2021 18:18:44 +0200, Fabien Parent wrote:
+> Convert the mmsys bindings to the YAML format.
 > 
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->  .../power/mediatek,power-controller.yaml      |  2 ++
->  include/dt-bindings/power/mt8365-power.h      | 20 +++++++++++++++++++
->  2 files changed, 22 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt8365-power.h
+>  .../bindings/arm/mediatek/mediatek,mmsys.txt  | 31 ----------
+>  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 57 +++++++++++++++++++
+>  2 files changed, 57 insertions(+), 31 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index f234a756c193..9a26a2cee7fb 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -27,6 +27,7 @@ properties:
->        - mediatek,mt8173-power-controller
->        - mediatek,mt8183-power-controller
->        - mediatek,mt8192-power-controller
-> +      - mediatek,mt8365-power-controller
->  
->    '#power-domain-cells':
->      const: 1
-> @@ -64,6 +65,7 @@ patternProperties:
->                "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
->                "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
->                "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
-> +              "include/dt-bindings/power/mt8365-power.h" - for MT8365 type power domain.
->          maxItems: 1
->  
->        clocks:
-> diff --git a/include/dt-bindings/power/mt8365-power.h b/include/dt-bindings/power/mt8365-power.h
-> new file mode 100644
-> index 000000000000..352440c4b5dd
-> --- /dev/null
-> +++ b/include/dt-bindings/power/mt8365-power.h
-> @@ -0,0 +1,20 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
 
-What about non-GPL users of DT? Dual license please.
-
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
-> + */
-> +
-> +#ifndef _DT_BINDINGS_POWER_MT8365_POWER_H
-> +#define _DT_BINDINGS_POWER_MT8365_POWER_H
-> +
-> +#define MT8365_POWER_DOMAIN_DISP	0
-> +#define MT8365_POWER_DOMAIN_CONN	1
-> +#define MT8365_POWER_DOMAIN_MFG		2
-> +#define MT8365_POWER_DOMAIN_AUDIO	3
-> +#define MT8365_POWER_DOMAIN_CAM		4
-> +#define MT8365_POWER_DOMAIN_DSP		5
-> +#define MT8365_POWER_DOMAIN_VDEC	6
-> +#define MT8365_POWER_DOMAIN_VENC	7
-> +#define MT8365_POWER_DOMAIN_APU		8
-> +
-> +#endif /* _DT_BINDINGS_POWER_MT8365_POWER_H */
-> +
-> -- 
-> 2.31.1
-> 
+Applied, thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
