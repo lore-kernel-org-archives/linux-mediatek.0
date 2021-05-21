@@ -3,19 +3,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98A7DC433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DB1AC47076
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 14:46:17 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 677DA6109F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:38:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 677DA6109F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0CE9C613E6
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 14:46:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CE9C613E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
@@ -23,81 +23,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hsuFCKAij8EhH61nggmy61T1Ir7UL+D7hQekjEo9htg=; b=kdWsItc9D98YgPizphaTLqEglG
-	JJQ+Q1Yt6Vcu5RSjMn3GfWrlQYGCO6Uy9SbP/HhJCIHK/OOHwr6cFnpkZE/yGVKfQ16f0PatXFQSH
-	RObF5o6KELbLXSJgXmj34kI38+inQXhgzKw7bYHr+MS97DUQ4in8Q8ya8Z6gAbP3hjNEsLHx/PewY
-	QqXTmVuWuZfXPYV148xknza7nayuKzedF2dHOAbjrRa54LC4mrtQxh0g3bJhKP+W5E/K5Kfy7AJ4E
-	Xu4ZdxUZPKFNgVBaOAuMTaL5RDh93XX7Y/9fXe8i3vOb+sN1dIgVhLTo0zAdg5f+nsKLOLfKZMpmi
-	xzBwM65Q==;
+	bh=eRwZJP4oGO3/2aVZFUm81i1ehUZmPX6vbZxk6B5MesY=; b=p3oTlv33FTh/m8EbpSQkVm88X2
+	t5d2Atb9nXJn3bdyc8PWh09BxOI4do7hAxqIAO1CJSfxZj2fEuXB2zPmW5OGQfVAX3nIJ+yzppl5N
+	XOf/EWm2z4ip5d/3DjGaFwlvNkWOiBhh7V78OkWPMIzfakVY2+d4gmN59zu/3imrpO27Uc+b+Uic2
+	2C+G8+s35WImq7sU2ShpNW/plWYXCCH/HwbtKA9E2FrxPtZr1Hy1S6uqtcYTNDsOTJrOt5WJdC6oE
+	QMgaLe79/QrN3/byPnsj3QGSksEtvnnYosJHoMPWeWBjB7zyuS9iGWzidjsfBUvAblp1NnQF0dovw
+	1f0y491A==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk5MR-005Z62-EH; Fri, 21 May 2021 13:38:43 +0000
+	id 1lk6Pf-005oGk-HR; Fri, 21 May 2021 14:46:07 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk5MM-005Z4A-9q
- for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 13:38:41 +0000
+ id 1lk6PO-005oCq-Tx
+ for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 14:45:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
  :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=; b=T6TlWxu/wYo3EQjYKNGXFrPyw0
- u/R8eNqPcbU8RDaMTL4bJiU4PeVQGXqFMdv+WTgXaiLo6n6IEiPdazooR8RZ7+DzT9dOA1bX+l0vt
- KfaVSvgKY6l6Md+6I6+6Cps2+uApmLWizPXqll38R/iMh7xmJzp3vvE6P+CAmaW8AfEu+PIYhpxhZ
- PGVF+1uJhSt2XLf55clHw0/hDCZhZvUd4jHwdHrYBWQ1k1RbLZcbfbXQajVE1sBkXp6WyPU1/jyS9
- kEYU6bdgcoWfOdsmNNjhgWTJ6vRscYdblRjtauu6iyi/AD1e9FezP15xotCnCj0hCMQtNsQQKgSLB
- pCvit7GA==;
-Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
+ bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=; b=KYeVi08jYGVdSU0R3rohdfIcCx
+ LI/r7VbS+QVl0ueWBNN4oFruRU5ju0J7lMaFdO0HiuvsGUWyvTSiEe4sz64nGFee2FgboDPG8rNUd
+ Ol9gpetHdcDkkqAemmz4h0pwZlntQmfehHBq04US0Z6k7PBYpMAVKRBiNT6PcA6W2hjp4pcGpeMWo
+ ue3L7YESkVm/LZ5r03qUuRvQB28tmSMkysTW7BsWckl5zRQnJWq1dX/j+8j1qBcNo4mqg225xKERT
+ N09divWL0in6wqJneQ6AQcgpI8Ruis2Hah4kPv3lnRqGx111lr/8OWuqt3kz6Ho3+O4XP+a9hmMGJ
+ hEHkGmhA==;
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk5MK-00H9bh-0L
- for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 13:38:37 +0000
-Received: by mail-il1-x129.google.com with SMTP id l15so6599044ilh.1
- for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 06:38:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1lk6PM-00HCbX-8I
+ for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 14:45:49 +0000
+Received: by mail-lj1-x229.google.com with SMTP id f12so24249555ljp.2
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 07:45:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=;
- b=NDr61RfLLnF+gQBIiMtqzi7vpbFZjTAEQ/3snixCdg1v/fEnAITaDrsuFLzVjPCdhd
- Lmzrnxe9Halzpk0OlPiHVvJthHoZhrECa3Q3BLCOpC1LuNqyOKRaAeJTL5rtPeL1i1ej
- CzBGsLziVQgkGuT5f2q8JI8zWMkMzjTLPtZrBcLt07IWpu03LiJhUz7pfM2vyco362dF
- bJESuQwJc8CPrw9DK3P/gOs6s/WU07rNftjUU/WWGpMijP1jIvGdkBnMZts8k6SW/elN
- sX/ZnvCC6SW9U1rnkRAmmHVeBGL0bT/0u+T/HmLlS3VCwov+oxESpTAJbi18cUHNdlLe
- 1tNw==
+ :cc; bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=;
+ b=n2qwyuP1LnEDqSwud8bOvkR68TEYaKqXc8oI/yr+qYo1V/9Y7mIX2FSlKzA192fIGi
+ 6R9nTLo1mKi0Z4iB8pCvyOf2RZBFi0wFr/Gg1P73WEDCGXJHPLuCTa2fs3wBjmGZ7oF6
+ FyjzcW9iyakYrXjWjqP9cRvwkkjeloZ2tUrQ4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QraQWaDbrIyFsDMVDfzA8DAF+rb0LcMH/Egy8Qs4g6M=;
- b=WbalbYS9wrbKCX0pdcp9toCX84OdrIqCTGwtIrV46I6luLXU4rVDLbbb7apf3RykQd
- Zood/UCP/mt48pLoRr3kK10B0xh+Op5LKfJqbLeYd7C5/UGTIp03qtF0cVBfhAqvpqnO
- V0xSsjIVvv6sJdT6Ro0nHEi/77vOjecMB7RWD0Ckmo4I8y6sUp5FDczKXFsBljWO3X0G
- skiIEM947muEgOYc2y4JtF5z8OuxTpkZ5du7mfgWvrICOfg7L8ogAbvBAnd6AFme8Uy8
- zeAAc8455hs/ml5ESL4wiAZ0Jd+6YMCCR4mLfWdialta24dD+2GJj95wwbxzDcIrF9WH
- W+Zw==
-X-Gm-Message-State: AOAM532qb3HzWB8Ap/bMY15NvJGdZFWK+ss5vmfv/lWSwT+uJDztXb+D
- wa9Hezm18xauaJLsk26tEc7b/pGNBBZwj1xuqb5L1Q==
-X-Google-Smtp-Source: ABdhPJy/pKbvVZY2/ULXOE3xI/TcxMMBcvpBSC+29wPkgzlKokgXyeEvamPfYmJfaNpUd1aCuAwQoKJVrbi12TOABqk=
-X-Received: by 2002:a92:c74b:: with SMTP id y11mr13202440ilp.302.1621604314599; 
- Fri, 21 May 2021 06:38:34 -0700 (PDT)
+ bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=;
+ b=gKlBLDeZiG0whcgvSEwbeeJ10AkgvqvoDTpYk1ECRJZlAlBw93vgVVocU/JT8uYPDU
+ X/NrRXn02eNjNc9bBLskxPWhDeKycXBl29fj8kosiIWwgJvm0Zz0agGodAc7nk4knAK6
+ MpxbKc6Uo5ULJ4sguNp/zIYZbLr6mc+nZgMc86+CNGs2SoEG/68Ihj1hGDfXG4rQZ19F
+ wWvk564ApaEFew371Msa6AHkYacRVgCFpiOfT6Cficod94xEYZy8D5ITV7J6nLib3+p/
+ TfFJyusYDaAut9mAzFHd8Xs1ig7TaQD9acPhL6dc9Pmt4WOF3aK/0r45Hp4V8OLjO+x8
+ cGDg==
+X-Gm-Message-State: AOAM530UR/S39wZ+j4HqQtBgWCfaXbVrF4iOgvo+DxrYiZLUv83Tr8gl
+ 0pV+u71T4obdJlV9Xm3GjfZoZmiGJLuLCPA1ICoOjA==
+X-Google-Smtp-Source: ABdhPJxANzTqCdHdUqkIIdiznQKltNQSijCrMEhvOw7yhFmeXbFanluhc0vMVcUKNnP3g3gOLA7OjrpUhlHnmL9o4SY=
+X-Received: by 2002:a2e:a554:: with SMTP id e20mr6930274ljn.23.1621608342766; 
+ Fri, 21 May 2021 07:45:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210519143011.1175546-1-acourbot@chromium.org>
- <20210519143011.1175546-15-acourbot@chromium.org>
-In-Reply-To: <20210519143011.1175546-15-acourbot@chromium.org>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Fri, 21 May 2021 21:38:23 +0800
-Message-ID: <CA+Px+wWAZE2ea7pfMEF3Xg_w+H4n8QAK6qcOyA2TAOkYd5_GBg@mail.gmail.com>
-Subject: Re: [PATCH v5 14/14] media: mtk-vcodec: enable MT8183 decoder
-To: Alexandre Courbot <acourbot@chromium.org>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+References: <20210521200038.v14.1.I9f45f5c1f975422d58b5904d11546349e9ccdc94@changeid>
+In-Reply-To: <20210521200038.v14.1.I9f45f5c1f975422d58b5904d11546349e9ccdc94@changeid>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 21 May 2021 22:45:31 +0800
+Message-ID: <CAGXv+5HX+Hw-S=8SQOy5hjMUxFM-oBFFESzh3LQTEVpy=54Aeg@mail.gmail.com>
+Subject: Re: [PATCH v14] arm64: dts: mt8183: Add node for the Mali GPU
+To: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Steven Price <steven.price@arm.com>, 
+ Neil Armstrong <narmstrong@baylibre.com>, hoegsberg@chromium.org, 
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>, boris.brezillon@collabora.com, 
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, fshao@chromium.org,
+ hsinyi@chromium.org, 
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_063836_054634_67F9930E 
-X-CRM114-Status: UNSURE (   7.18  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210521_074548_329396_E6914288 
+X-CRM114-Status: GOOD (  16.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,14 +111,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 19, 2021 at 10:31 PM Alexandre Courbot
-<acourbot@chromium.org> wrote:
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> [acourbot: refactor, cleanup and split]
-> Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
+(Resent to all recipients)
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+On Fri, May 21, 2021 at 8:01 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
+>
+> Add a basic GPU node for mt8183, as well as OPP table.
+>
+> Note that with the current panfrost driver, devfreq is not
+> actually functional, as the we do not have platform-specific
+> support for >1 supplies. Also, we are missing code to handle
+> frequency change, as the GPU frequency needs to be switched
+> away to a stable 26Mhz clock during the transition.
+>
+> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
+> ---
+> The binding we use with out-of-tree Mali drivers includes more
+> clocks, this is used for devfreq: the out-of-tree driver switches
+> clk_mux to clk_sub_parent (26Mhz), adjusts clk_main_parent, then
+> switches clk_mux back to clk_main_parent:
+> (see https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#423)
+> clocks =
+>         <&topckgen CLK_TOP_MFGPLL_CK>,
+>         <&topckgen CLK_TOP_MUX_MFG>,
+>         <&clk26m>,
+>         <&mfgcfg CLK_MFG_BG3D>;
+> clock-names =
+>         "clk_main_parent",
+>         "clk_mux",
+>         "clk_sub_parent",
+>         "subsys_mfg_cg";
+> (based on discussions, this probably belongs in the clock core)
+>
+> This only matters for devfreq, that is disabled anyway as we don't
+> have platform-specific code to handle >1 supplies.
+
+Yes. This can be done with clk_notifiers. See
+
+    https://elixir.bootlin.com/linux/latest/source/drivers/clk/sunxi-ng/ccu_mux.c#L261
+
+for such an example.
+
+
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
