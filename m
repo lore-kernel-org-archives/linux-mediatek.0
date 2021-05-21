@@ -2,99 +2,130 @@ Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=no
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DB1AC47076
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 14:46:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75A47C47078
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 15:53:57 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0CE9C613E6
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 14:46:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0CE9C613E6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id E6841613DB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 15:53:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6841613DB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eRwZJP4oGO3/2aVZFUm81i1ehUZmPX6vbZxk6B5MesY=; b=p3oTlv33FTh/m8EbpSQkVm88X2
-	t5d2Atb9nXJn3bdyc8PWh09BxOI4do7hAxqIAO1CJSfxZj2fEuXB2zPmW5OGQfVAX3nIJ+yzppl5N
-	XOf/EWm2z4ip5d/3DjGaFwlvNkWOiBhh7V78OkWPMIzfakVY2+d4gmN59zu/3imrpO27Uc+b+Uic2
-	2C+G8+s35WImq7sU2ShpNW/plWYXCCH/HwbtKA9E2FrxPtZr1Hy1S6uqtcYTNDsOTJrOt5WJdC6oE
-	QMgaLe79/QrN3/byPnsj3QGSksEtvnnYosJHoMPWeWBjB7zyuS9iGWzidjsfBUvAblp1NnQF0dovw
-	1f0y491A==;
+	bh=7il7PesAsjNfH/sgYVApCKaydt6QZjd/vGaL1Qhp1gI=; b=P0s684k9UmeZmAbPpDovfOkiYb
+	hw8xlSV9z6tggjDUum0lPPN8cUaemvmO3RfMF5wY0lubK+N2kh3KvBrCNfZIAZ/QlP63xF2cbf7r+
+	tX4oy4gRmGFDYNXQufoOtCZkH82pdQFXB9sjGSNH/E2HI96ZfZbg1UDLukJnqdqKqmcUiBfRuagTC
+	l7mWpOP3QkICtvc4gW8G82oFijkZ3JdlOSr/GDhMDfaf8BAirb76jz/sIwSIePlLUtvLSEl8nt4rP
+	SeM+Us/H/sLXPlPqNAfQREcOLth6xmM71yDEP2NBDVxiodx1oNZLUqQqVgx+h5PkhpWG5FMK/FUxj
+	JmAqVKkQ==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk6Pf-005oGk-HR; Fri, 21 May 2021 14:46:07 +0000
+	id 1lk7T3-0009RL-3H; Fri, 21 May 2021 15:53:41 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk6PO-005oCq-Tx
- for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 14:45:51 +0000
+ id 1lk7Sm-0009Pr-Lb; Fri, 21 May 2021 15:53:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
- :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=; b=KYeVi08jYGVdSU0R3rohdfIcCx
- LI/r7VbS+QVl0ueWBNN4oFruRU5ju0J7lMaFdO0HiuvsGUWyvTSiEe4sz64nGFee2FgboDPG8rNUd
- Ol9gpetHdcDkkqAemmz4h0pwZlntQmfehHBq04US0Z6k7PBYpMAVKRBiNT6PcA6W2hjp4pcGpeMWo
- ue3L7YESkVm/LZ5r03qUuRvQB28tmSMkysTW7BsWckl5zRQnJWq1dX/j+8j1qBcNo4mqg225xKERT
- N09divWL0in6wqJneQ6AQcgpI8Ruis2Hah4kPv3lnRqGx111lr/8OWuqt3kz6Ho3+O4XP+a9hmMGJ
- hEHkGmhA==;
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:
+ Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+ :Subject:Cc:To:From:Sender:Reply-To:Content-ID:Content-Description;
+ bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=; b=hSD7GAeCyLemvN42dzjGA1E+Wb
+ jZsyAlULXDQRgUttz+9PP4fftWgE8CKJXGS6Cu3+Ly8QNIdTRGWrqXs2TkwRUVDHPeW4IAHCN+MP2
+ w+QcXQvQb01xQDJuNOer5PZSaFApuIk31UT/h0k/FJjqH9L+V0H75UZo7POchMxDeATDGR0Q+tr+7
+ +Iem00Z2a1ED9rZ4U5lmt8aFAhCkS0aKDTfrPg0qqu1eaA5m0Qu4TfRBkfrhkJSC702zsT1TDes3l
+ A273rJXyKkB3wMv+dA07Om5KBg6x4CXeQ6JCsavXwFTZvsi0snrtq6iRfPhJdIz8lot2B3p2wdYTD
+ v2VMcXTA==;
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk6PM-00HCbX-8I
- for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 14:45:49 +0000
-Received: by mail-lj1-x229.google.com with SMTP id f12so24249555ljp.2
- for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 07:45:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=;
- b=n2qwyuP1LnEDqSwud8bOvkR68TEYaKqXc8oI/yr+qYo1V/9Y7mIX2FSlKzA192fIGi
- 6R9nTLo1mKi0Z4iB8pCvyOf2RZBFi0wFr/Gg1P73WEDCGXJHPLuCTa2fs3wBjmGZ7oF6
- FyjzcW9iyakYrXjWjqP9cRvwkkjeloZ2tUrQ4=
+ id 1lk7Sj-00HFzR-O5; Fri, 21 May 2021 15:53:23 +0000
+Received: by mail-wm1-x330.google.com with SMTP id t206so11412844wmf.0;
+ Fri, 21 May 2021 08:53:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=;
+ b=IhYlOGhD14MnNUDN3/gcfgDBq/BNMorjLEdyQeq1zzib97z1tEhGiiXaphyov0B6rm
+ Fnug5G0nwmDNTjmkdcXodXq9U/gz3ibsum4pzrkpfI9FmltJSw2CUcxsWX7jGXwwmyCj
+ 6vxc3W7raymKSRp3BSh9pxV9ixt7fhYnirv/L00YJBgVdZZYogPdXKuTSkEFfH1IrFRZ
+ Da9BK8RCuQqZjWtJt4Z9PY1PYT/d4yv4t/as1y1Bzr1dc6M55Y5AjpEufmJ68LUqwnaN
+ r/4pWcKNmcNKigTm4vX1D6oC/E3gRqOexUh1NDZr0Zq9RS8nw5b/KoUs/ymofl20nPkJ
+ EdEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uOsFDhv1c3rYeM/biOU1mt6E1GzqKW1CDuSDPJ87gBg=;
- b=gKlBLDeZiG0whcgvSEwbeeJ10AkgvqvoDTpYk1ECRJZlAlBw93vgVVocU/JT8uYPDU
- X/NrRXn02eNjNc9bBLskxPWhDeKycXBl29fj8kosiIWwgJvm0Zz0agGodAc7nk4knAK6
- MpxbKc6Uo5ULJ4sguNp/zIYZbLr6mc+nZgMc86+CNGs2SoEG/68Ihj1hGDfXG4rQZ19F
- wWvk564ApaEFew371Msa6AHkYacRVgCFpiOfT6Cficod94xEYZy8D5ITV7J6nLib3+p/
- TfFJyusYDaAut9mAzFHd8Xs1ig7TaQD9acPhL6dc9Pmt4WOF3aK/0r45Hp4V8OLjO+x8
- cGDg==
-X-Gm-Message-State: AOAM530UR/S39wZ+j4HqQtBgWCfaXbVrF4iOgvo+DxrYiZLUv83Tr8gl
- 0pV+u71T4obdJlV9Xm3GjfZoZmiGJLuLCPA1ICoOjA==
-X-Google-Smtp-Source: ABdhPJxANzTqCdHdUqkIIdiznQKltNQSijCrMEhvOw7yhFmeXbFanluhc0vMVcUKNnP3g3gOLA7OjrpUhlHnmL9o4SY=
-X-Received: by 2002:a2e:a554:: with SMTP id e20mr6930274ljn.23.1621608342766; 
- Fri, 21 May 2021 07:45:42 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=kdAs0Ep5+2K53fiSGhNfrLNzj7MMY3EgOQjni9Umht8=;
+ b=Qm4WI1pR4MjmgANn8WY4mKBu851L37pg94nF6h2eH8LT5weLhDXZejGuQ0QyFl/MWf
+ Xyw3QBezjj1J7wy0QOtkvgABHDZkWPnzHgpuFrhk989O6LoQd9valKBZmbww4uLrr73u
+ DelN0XXxS8COsvTU89AqEJqhbmsyVHg4p2E4ssa3YblXh7+BBVwgKrg3mwa8hAb8gaZD
+ huKvcOlff8No7ZllFKzzaqk8ppJ4p+X7Yi52dJzsmW02crUnjyLfEnzUIM178n9k7+aQ
+ 0Vvypxey7FRL2lt7pDZIrROi1cZ4RhKWutZGYCvOo0ZbTXinHl+2zMv2y6vo6UjUxPrv
+ XxQQ==
+X-Gm-Message-State: AOAM531+u/hDC5Rq8WmKm0altdiV9JUyarlw3V+dEEjIld+Rm/zdtiIK
+ RevdKx2vrS4PYVvMqNpaIQM=
+X-Google-Smtp-Source: ABdhPJxTn/ueWgal7rvRO3A3ECHpC111Q7o7SxwZUm6zNTqM9YK/SolsENlCqq1BAUxDrXnfxploOg==
+X-Received: by 2002:a1c:5443:: with SMTP id p3mr9425116wmi.101.1621612399794; 
+ Fri, 21 May 2021 08:53:19 -0700 (PDT)
+Received: from jernej-laptop.localnet (cpe-86-58-17-133.cable.triera.net.
+ [86.58.17.133])
+ by smtp.gmail.com with ESMTPSA id o129sm13051356wmo.22.2021.05.21.08.53.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 May 2021 08:53:19 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: DRI Development <dri-devel@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>
+Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, 
+ Daniel Vetter <daniel.vetter@intel.com>,
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Neil Armstrong <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, 
+ Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ Marek Vasut <marex@denx.de>, 
+ Stefan Agner <stefan@agner.ch>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>,
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Benjamin Gaignard <benjamin.gaignard@linaro.org>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Chen-Yu Tsai <wens@csie.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Tomi Valkeinen <tomba@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 06/11] drm/<driver>: drm_gem_plane_helper_prepare_fb is
+ now the default
+Date: Fri, 21 May 2021 17:53:16 +0200
+Message-ID: <1940958.iMR1v07LRx@jernej-laptop>
+In-Reply-To: <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
+References: <20210521090959.1663703-1-daniel.vetter@ffwll.ch>
+ <20210521090959.1663703-6-daniel.vetter@ffwll.ch>
 MIME-Version: 1.0
-References: <20210521200038.v14.1.I9f45f5c1f975422d58b5904d11546349e9ccdc94@changeid>
-In-Reply-To: <20210521200038.v14.1.I9f45f5c1f975422d58b5904d11546349e9ccdc94@changeid>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 21 May 2021 22:45:31 +0800
-Message-ID: <CAGXv+5HX+Hw-S=8SQOy5hjMUxFM-oBFFESzh3LQTEVpy=54Aeg@mail.gmail.com>
-Subject: Re: [PATCH v14] arm64: dts: mt8183: Add node for the Mali GPU
-To: Nicolas Boichat <drinkcat@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh@kernel.org>, 
- Ezequiel Garcia <ezequiel@collabora.com>,
- Steven Price <steven.price@arm.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, hoegsberg@chromium.org, 
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, boris.brezillon@collabora.com, 
- Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, fshao@chromium.org,
- hsinyi@chromium.org, 
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_074548_329396_E6914288 
-X-CRM114-Status: GOOD (  16.10  )
+X-CRM114-CacheID: sfid-20210521_085321_827866_009BF173 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,53 +137,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-(Resent to all recipients)
+Dne petek, 21. maj 2021 ob 11:09:54 CEST je Daniel Vetter napisal(a):
+> No need to set it explicitly.
+> =
 
-On Fri, May 21, 2021 at 8:01 PM Nicolas Boichat <drinkcat@chromium.org> wrote:
->
-> Add a basic GPU node for mt8183, as well as OPP table.
->
-> Note that with the current panfrost driver, devfreq is not
-> actually functional, as the we do not have platform-specific
-> support for >1 supplies. Also, we are missing code to handle
-> frequency change, as the GPU frequency needs to be switched
-> away to a stable 26Mhz clock during the transition.
->
-> Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
-> ---
-> The binding we use with out-of-tree Mali drivers includes more
-> clocks, this is used for devfreq: the out-of-tree driver switches
-> clk_mux to clk_sub_parent (26Mhz), adjusts clk_main_parent, then
-> switches clk_mux back to clk_main_parent:
-> (see https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.19/drivers/gpu/arm/midgard/platform/mediatek/mali_kbase_runtime_pm.c#423)
-> clocks =
->         <&topckgen CLK_TOP_MFGPLL_CK>,
->         <&topckgen CLK_TOP_MUX_MFG>,
->         <&clk26m>,
->         <&mfgcfg CLK_MFG_BG3D>;
-> clock-names =
->         "clk_main_parent",
->         "clk_mux",
->         "clk_sub_parent",
->         "subsys_mfg_cg";
-> (based on discussions, this probably belongs in the clock core)
->
-> This only matters for devfreq, that is disabled anyway as we don't
-> have platform-specific code to handle >1 supplies.
+> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
+> Cc: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
+> Cc: Lucas Stach <l.stach@pengutronix.de>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <s.hauer@pengutronix.de>
+> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+> Cc: Fabio Estevam <festevam@gmail.com>
+> Cc: NXP Linux Team <linux-imx@nxp.com>
+> Cc: Philipp Zabel <p.zabel@pengutronix.de>
+> Cc: Paul Cercueil <paul@crapouillou.net>
+> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Kevin Hilman <khilman@baylibre.com>
+> Cc: Jerome Brunet <jbrunet@baylibre.com>
+> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+> Cc: Marek Vasut <marex@denx.de>
+> Cc: Stefan Agner <stefan@agner.ch>
+> Cc: Sandy Huang <hjc@rock-chips.com>
+> Cc: "Heiko St=FCbner" <heiko@sntech.de>
+> Cc: Yannick Fertre <yannick.fertre@foss.st.com>
+> Cc: Philippe Cornu <philippe.cornu@foss.st.com>
+> Cc: Benjamin Gaignard <benjamin.gaignard@linaro.org>
+> Cc: Maxime Coquelin <mcoquelin.stm32@gmail.com>
+> Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>
+> Cc: Maxime Ripard <mripard@kernel.org>
+> Cc: Chen-Yu Tsai <wens@csie.org>
+> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+> Cc: Jyri Sarha <jyri.sarha@iki.fi>
+> Cc: Tomi Valkeinen <tomba@kernel.org>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mips@vger.kernel.org
+> Cc: linux-mediatek@lists.infradead.org
+> Cc: linux-amlogic@lists.infradead.org
+> Cc: linux-rockchip@lists.infradead.org
+> Cc: linux-stm32@st-md-mailman.stormreply.com
+> Cc: linux-sunxi@lists.linux.dev
 
-Yes. This can be done with clk_notifiers. See
+For sun4i:
+Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-    https://elixir.bootlin.com/linux/latest/source/drivers/clk/sunxi-ng/ccu_mux.c#L261
+Best regards,
+Jernej
 
-for such an example.
 
-
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
