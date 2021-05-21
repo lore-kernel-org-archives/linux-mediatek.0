@@ -7,91 +7,86 @@ X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05283C433ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A37D9C433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:50:59 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C41366135C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:50:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C41366135C
+	by mail.kernel.org (Postfix) with ESMTPS id 69A4F61246
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 01:50:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 69A4F61246
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
 	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oZwZeYWVHNeYO+/BhlhuTNOIjOcY8unSeCPeDmkddmE=; b=ONEAWTZ/VX4OyBt6nsezYxCiHp
-	j+5iiBduNr5aMVd+XMshcH0WXT7zuYWXn2guxxJk7ALrAR+WeXw5l144ichFMdrmo24tafaNJCkdz
-	aM5WKr4RSQKTCNQC4p+Oy/2qtCkKQkqwDYoKL9YktP6Il56th3LjuxX54Yk/Pek/KwQ/tLFtM/0hW
-	6P3na4CdcDghU9mXr7OnW60mvK2cameCshxgTt1IXDpZPW2F6gj9QUARce3mZSa+G5Npz/7ucaukk
-	YyMhBIYHGynHAkjU3wMITvF7U8FoaLQHSvJMhKLKqwo8n4ria7cCXIlt9tkwu1hH5Rx+plIGWg0+B
-	579smRlQ==;
+	bh=fCW6Bn3d4+tKs5C+ZJEy7D9KONVjSOhrkUiMj0/lGjg=; b=pFTuO1Fl00C1vRWoNnw+g/WzaQ
+	V0cdoCOMGx6159LvcSU/xdbkhbvZN7Sw85lil0PN5QLCj41eCH2hEu/KMJgVOKI0nmWQ27DoAipcn
+	0jkBYbDu0CNVxywTPaka4ozDfY/9YRvEQ9d6zh1cA0bGdoGZPj+C1HmtIcF+pL7cOIJxJEiZpH1hl
+	1ChS0qcifqnqQS+hTfq9qdjuPD7/0n/QNZVRgxDIsaIM/XxHszKT8Pu97RZdVexdwCjnM/ju29Bd1
+	QGezw92w5vJ3iv/2VZrmL1/4794cAVvrgjHb6WWAudvUP3HTZ/VZA6e+Nufh5pj2H51znLPX8w21G
+	lG3Z6e2Q==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ljuIq-003M1w-3y; Fri, 21 May 2021 01:50:16 +0000
+	id 1ljuJG-003M8X-Ub; Fri, 21 May 2021 01:50:43 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ljuIm-003M0n-3y; Fri, 21 May 2021 01:50:13 +0000
+ id 1ljuIm-003M0p-3x; Fri, 21 May 2021 01:50:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=vZu2oAAxpPszth+cdRs9YhSMHNjRhOXxb6YW8VoRug4=; b=M0MuhZ792SByCa5IYRYIo3h1Ap
- xaBXvNsPjq67jE6isRnEvnRzueMw9MFdBeKofarT5i0BVq58BxHduxIFMDaFBrr3sOTRHN54sDsm9
- SzsMOaXqFxDXi7jojk1xZYncbREUO5W0P7AAsq76EN/z0lDMdq76GbZnZOcAHSacla2LgmFH2GjAg
- COp/nFgO/wmtSrIE7l0ux1eYGjB9MOaHpUeSc6SaywLw5kivKrm1d5/+2M0dNrFIXWoztd4WSGUV+
- xiTmTSoqupndGPVdkyOHJjurmgzz82Eg2+0fQCISTq/t6/MrXTbdAlQMgmIDh84wWqgkQJDsB4qpc
- zOI1i0Qg==;
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+ bh=gkirK3Anzo1+S+hO3+Q5XJ8qhdVJmLmV+yOOMFc5euI=; b=mclmf+JXPJnabfA3moqK4LA8VH
+ rzQs2MDukzuYloGY10e9m23APw89klh2Azs3K/923zVB0jSU1Pu/lHzU/o9teAIC0wGPNMGUhxQAb
+ QtWP8Dkc0U9/4GALjfKDf1I9p0oO9dLR30SwBwEb5U57HiQ79I6UhO2v02jUuk2fhyCnyF3duPXtW
+ vcGUM+fy9vCMc4ZiO2Uh+HwiuYbFywiwtGrQZWipBgeLTl/35e6bBOM0EfX14E8dUHBmsvqCKQhX9
+ IGS8+A4Il2kmVU1Iz8poGTYEqBVojVuNKPogcCZB7fEX5hZicVJHnu38ryamCT89qclmBzjN40XZO
+ 2N8LaF2A==;
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ljuIj-00GkxP-IT; Fri, 21 May 2021 01:50:10 +0000
-Received: by mail-ot1-f43.google.com with SMTP id
- 80-20020a9d08560000b0290333e9d2b247so6110962oty.7; 
- Thu, 20 May 2021 18:50:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=vZu2oAAxpPszth+cdRs9YhSMHNjRhOXxb6YW8VoRug4=;
- b=nqTSUv8RhT6yGXy3NIMlyoZ97fbl3Gpf/PSl2FjoD3NZzcyYWSgOy/LedRF+BYDeVL
- ycGsm5gLlWIQZR74PwwqsCyZoWu3wQwxd0UikI3/dJ/zZcEU0YMMoNSbNlo8zbo68mB7
- pZu+QYyjXzmJ2rCpL9OyV8oHjstp4BRRCkXJ2rUgeci9DeelrLBIX5M8C08PXXpPbSMh
- YV2S51VfxkSVWb1uMNdWjbTXn5R4iZoc+k31AyHPrGp5ZyJVnLG9nRZ/xZ3a9j9T9Qu8
- Oz5QYyNClimzkaEqNXTXlKYVQ4Zn1ElshojMFYeZ4Qs1pl8xZJ66cMQK2EH8E9ZFpewI
- npjQ==
-X-Gm-Message-State: AOAM531FwS2HmrQWDfYW0iTDcKEheaT9S+BU79wqTtoBarF2FsmnSY7/
- XrMNdn8zPUUhHS6NXA5BRA==
-X-Google-Smtp-Source: ABdhPJx3UWsDTpRkWnxh8VgBc2KRjPGHgHRS1pKtUlFQSUh/thlOVZUpiOfXySl4QlVq4E/6EKqTPA==
-X-Received: by 2002:a9d:3ee:: with SMTP id f101mr6156037otf.343.1621561808976; 
+ id 1ljuIj-00GkxO-KV; Fri, 21 May 2021 01:50:10 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DDDAE610CC;
+ Fri, 21 May 2021 01:50:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1621561808;
+ bh=S7/3ff93Mj7sM1z6GZwcsvA1idQokUB7jGPPhwZLJBA=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=G/KXauU52TYA4HxENirxJuGXo8MgQI8QIF+C1PL0s+rd2Fh7xiVeMixAlwk9503oP
+ 2ytvSAkJdBOadITWFLN1EBi970UCgynkB1MSQUg612WbCglj+W1NiLaC84QLEON1aa
+ U6dNKPWnZR262YAdgjAPDwA83swrSQfL5rZlRC2PxmE0H2tXIAMfzXI5V2GeluD6xY
+ PGffkHS0WIosbGC5uOKWbcrTmk05pL/Z2EKKY478fnjdneN5NuqEV6sxZPmLUPSw8p
+ Ald7xKougASVjGmwtWNhpocfbD1G3eXBRVr7eZeMZF+/ebE5kUtCLOztUVKH/Womx+
+ f8epUhwLbed4g==
+Received: by mail-ed1-f52.google.com with SMTP id g7so9379308edm.4;
  Thu, 20 May 2021 18:50:08 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id i18sm905395oot.48.2021.05.20.18.50.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+X-Gm-Message-State: AOAM530BNII5qJY8SxFqVlk9qZ/eni9ul099kQrVaS30llMkMpBVE7aL
+ yyLUcTz88Vuy/AkMziDZzgv9cb5hEZBN51kkiA==
+X-Google-Smtp-Source: ABdhPJyKCSeOAVSGMjIYxJSecYUm/pYxze27Ok54E4R02URqRmpRfqNw7bo+yG8CEi2WwQh8Saw5JM/Y2gnTWv0YUPs=
+X-Received: by 2002:aa7:cd83:: with SMTP id x3mr7909049edv.373.1621561807474; 
  Thu, 20 May 2021 18:50:07 -0700 (PDT)
-Received: (nullmailer pid 2480084 invoked by uid 1000);
- Fri, 21 May 2021 01:50:06 -0000
-Date: Thu, 20 May 2021 20:50:06 -0500
-From: Rob Herring <robh@kernel.org>
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- mkorpershoek@baylibre.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH 2/3] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC
- binding
-Message-ID: <20210521015006.GA2479999@robh.at.kernel.org>
-References: <20210519161847.3747352-1-fparent@baylibre.com>
- <20210519161847.3747352-2-fparent@baylibre.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210519161847.3747352-2-fparent@baylibre.com>
+References: <20210519161847.3747352-1-fparent@baylibre.com>
+ <20210521014815.GA2476751@robh.at.kernel.org>
+In-Reply-To: <20210521014815.GA2476751@robh.at.kernel.org>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Thu, 20 May 2021 20:49:56 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+HWxQwFuKM==g-PBROxGN_xoWCc060U0pDpsDdfWJWPg@mail.gmail.com>
+Message-ID: <CAL_Jsq+HWxQwFuKM==g-PBROxGN_xoWCc060U0pDpsDdfWJWPg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: mmsys: convert to YAML
+ format
+To: Fabien Parent <fparent@baylibre.com>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>, devicetree@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210520_185009_629028_37ED7500 
-X-CRM114-Status: GOOD (  10.17  )
+X-CRM114-CacheID: sfid-20210520_185009_709372_A0C577D5 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,14 +103,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 19 May 2021 18:18:45 +0200, Fabien Parent wrote:
-> Add the MMSYS binding documentation for the MT8365 SoC.
-> 
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> ---
->  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
->  1 file changed, 1 insertion(+)
-> 
+On Thu, May 20, 2021 at 8:48 PM Rob Herring <robh@kernel.org> wrote:
+>
+> On Wed, 19 May 2021 18:18:44 +0200, Fabien Parent wrote:
+> > Convert the mmsys bindings to the YAML format.
+> >
+> > Signed-off-by: Fabien Parent <fparent@baylibre.com>
+> > ---
+> >  .../bindings/arm/mediatek/mediatek,mmsys.txt  | 31 ----------
+> >  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 57 +++++++++++++++++++
+> >  2 files changed, 57 insertions(+), 31 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> >
+>
+> Applied, thanks!
+
+Actually, should go with patch 3. So dropped and:
 
 Reviewed-by: Rob Herring <robh@kernel.org>
 
