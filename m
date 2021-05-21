@@ -2,139 +2,105 @@ Return-Path: <SRS0=Gsgc=KQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 422ADC433B4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:19:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1935EC433B4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:37:34 +0000 (UTC)
 Received: from desiato.infradead.org (desiato.infradead.org [90.155.92.199])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9EF4F613EB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:19:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9EF4F613EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nvidia.com
+	by mail.kernel.org (Postfix) with ESMTPS id D3CF1613FC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 21 May 2021 13:37:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3CF1613FC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:CC:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qzLQZxRDA+4+2/7tAzvAMnH4lAnm7gTkFQx0NAnbxdY=; b=l/0R19pRKaxlSHubMT4Z64gkgh
-	/ZE8piDOOti8qIJ6FiHpffw3+aOwAq+Pvy6aYFzaiTWwZlJwiawnIUMUmE34gO7StnuQ7DN2D6sue
-	Op/aLWaJPvNil4k8cB2MOkyP96KLABPm22evi+KoKza9NxVi+Ga2GMk+1AZ/PWi1PWelxedIUU2iJ
-	KLBsSUeMc6dLp7c1HmuR1ZQxMCp1gkkG/XtgaITBBRTKfROsXcazzVeepsc84QA92RKPx4mBHx5Ui
-	8os8OBP1fuUlQK/gbSf1EEIBApbfO1zL7OUScmasW6cSI1jJsFBqMtoL+8YDvdsoJdu4r+0E3Fdyz
-	AF+Pg+pA==;
+	d=lists.infradead.org; s=desiato.20200630; h=Sender:Content-Transfer-Encoding
+	:Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mql5vzXnPiPIVb+03315NjiZQvuQ8YMpFjAVte4LGNA=; b=izjvupBrUFvi7ZnjVTiDXYxoXI
+	SXlQEiSLB3oxiRAtlJ/gPppLkGddEQlIeouo7pBqX/iioyR+E72rNRtJrzBPdihhfosZFeJdN9bHT
+	TcqI3XAt35Ky13TzAW/no1BMtUzzMOSUzHuGt3PM5EoZbfZcyawfndnARq28p4LDh49xoAHNEM5Pt
+	hXg5EekjRtDdW8JcHLBDduFTVnqtG01XCDCfIhiYl/RUxOHBIST4T+l+tjTMl7kN157LlcYm1SvO7
+	+2vvhM7ulaozbrB3wC7cpTNTGTBkY2LOTeyT99+Nr9MDXZpxHkhz8OFYXnolIaFA3r874lwGGWez1
+	hAnSufDA==;
 Received: from localhost ([::1] helo=desiato.infradead.org)
 	by desiato.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lk53Y-005Tat-Nm; Fri, 21 May 2021 13:19:12 +0000
+	id 1lk5L2-005YVD-TA; Fri, 21 May 2021 13:37:17 +0000
 Received: from bombadil.infradead.org ([2607:7c80:54:e::133])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lk53W-005TaV-SY; Fri, 21 May 2021 13:19:11 +0000
+ id 1lk5L0-005YV0-I7
+ for linux-mediatek@desiato.infradead.org; Fri, 21 May 2021 13:37:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=bombadil.20210309; h=In-Reply-To:Content-Type:MIME-Version
- :References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
+ d=infradead.org; s=bombadil.20210309; h=Content-Type:Cc:To:Subject:Message-ID
+ :Date:From:In-Reply-To:References:MIME-Version:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=krBc2RlBUKIIx1K+ckzeGswy4vLHS+XiiBkI7EdDorM=; b=gK/bAVOJ7K3I4bwWt5PtsS6L3f
- Izx7tlIzBlLHd4/qbdgD1Y/aT/iO5MKfBg02afT+cqUDPW63YPAdL9Z0Rhhcj9rnJOM5Y6JXb8Bdi
- ogk+GqPoBxhjkyN+4o1WG29RiCqS2MrdpIoM94fLdta/VlAWV3sNgoDeJuyXO64EHiqoaPA9saOZU
- VBouXeVE3K1zYNgtfJpJHkUcQPtyqeARzWEozKm5LKdLmNsnxfWsZBWoqthRZSdvhkFrokDGnstpi
- CwsRMhk9vUI8EboIpCDcgc5ku0Tcp99g675iLA3aII6UcjFrYepWpxyUz90KJr9Jff2XGnYLQVYil
- mrZU8e2Q==;
-Received: from mail-mw2nam12on2070.outbound.protection.outlook.com
- ([40.107.244.70] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
+ bh=aOxukUP4jIrT4sl1iFyJVxJdWx5J7pFUcynvJLSMuxM=; b=EpxE5+5OCL9KnaTFIyz+GVGgRo
+ NPTQ66jSQuzt6QaQ8gxe/BlWEyOPv3qysCtzpLI13NbLVDbINTUecHyTjzlfqtcreU6+74Dj2PaJx
+ qv3n0Zh/10bSflB9mQZmCyLWvZ1fs2CqKI1iLJTnymeQac6vgtGvTawYl69j+xwm6ihS05pJuLO2l
+ F9iwiwAAqGe5kxJxWoifB+a9ainArv/wzMJpnE2r3xtM0BKs6yfaA675md2fPdxZ2I6YF6bskDPfC
+ Azz4t4j6JvVB5lZyiquKegPHcg17gW2OZr0iIeymT6orL6174ndBZazbiw1iXMj3gf2abajrzG/u5
+ drMpWOSA==;
+Received: from mail-il1-x135.google.com ([2607:f8b0:4864:20::135])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lk53S-00H8ED-PH; Fri, 21 May 2021 13:19:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A11MCrAh6AEN/GFvX3yd49fDoLWqw8WjAkmpnj+U9pSa0e3t9JwH0x4w33HUquTwsGepzT1tBT1sT61RRhoyoOVsI8R4lbVYYV7AMqQHJl7xQ2tqGEJwpTwpnW35N2zWBQnwHmQ8Glx0ZMLUobVVbOAfhVQi6VY776W/0o4IJ1LWBcUaWSDoWn5fZjTZyaYx2a2A2K3Ow457GM3HfRKx4P3iLmYdw0SuAMo4yLExAW7Mj5r8Plok2T6bnBoPDoQNnK2svZCAUrtoh1ajpI/0cI63y/ktV48CmKpbsjsYKyVV5L5YfGiEbGMYn0bH47eZwpkJGQIPrQfnIu42e1kLiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=krBc2RlBUKIIx1K+ckzeGswy4vLHS+XiiBkI7EdDorM=;
- b=DtY1bHLzRCdIs3adNktXKRgWKz4HwgG+tOqBEolp1o49GFyDarGjHpvyXs33S2i/aZgaCgM2UrF7HbIge7dWu4BHqLa9I0T2GfuVaIou2mWrBe1gBthIiZK4KQx3J7GdpTjyNrL3zDHZnKnqSmL3+0Hznra7nJFdNrVDkJkmH5dpeYNGAUCuS7TJBRMe55lT1R/9BWMBl6sXRRDCTpSDQuRM8wD5K117SoYojBM5m1PvJWS0/BN3jb7OcOsQYF0t2UPhcbpvjVyMKQmrn6wOSU3VfrgBrlcoAMD8Nn+c97gxBoUZWPF7tJogIlZsvBfr+ysbnBRy9BzUNOv5qmk62Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.112.34) smtp.rcpttodomain=vger.kernel.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=none sp=none pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=krBc2RlBUKIIx1K+ckzeGswy4vLHS+XiiBkI7EdDorM=;
- b=RpfxwL2z3scLWJvtHNrnHMZ66xM8APo6AipzHgvLyaTD426jUR4bytTdDHfyCf57i0uF62uD/JW1iuS408BqbJmPnMb0Tl2jCc8C/xyYic4GL3yMdl4kyJQoHJaD4jXWP+FWUV1cVAXeDrecV3KKu9OjT3wqQ0elqRKlYUHmSlwwy++C8m5Z9p65F7FIKYGLfxdHc8gG3L4Vkr6y9iFl/dOwr6eu/dbovN52Mo1HJLs8JOwQipHCj+9djVm9eolVetmK+hqgXG8Fkw+Yf2WRSQOQTsf76BGGu8UWcrOtdIRDaS0IkmamBkZa24R5GFrngCLwlb2Gu48UBw+DOCJdkg==
-Received: from BN0PR04CA0026.namprd04.prod.outlook.com (2603:10b6:408:ee::31)
- by DM6PR12MB4370.namprd12.prod.outlook.com (2603:10b6:5:2aa::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.23; Fri, 21 May
- 2021 13:19:01 +0000
-Received: from BN8NAM11FT029.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ee:cafe::ac) by BN0PR04CA0026.outlook.office365.com
- (2603:10b6:408:ee::31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4150.23 via Frontend
- Transport; Fri, 21 May 2021 13:19:01 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.112.34)
- smtp.mailfrom=nvidia.com; vger.kernel.org; dkim=none (message not signed)
- header.d=none; vger.kernel.org; dmarc=pass action=none header.from=nvidia.com; 
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.112.34 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.112.34; helo=mail.nvidia.com;
-Received: from mail.nvidia.com (216.228.112.34) by
- BN8NAM11FT029.mail.protection.outlook.com (10.13.177.68) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.4129.25 via Frontend Transport; Fri, 21 May 2021 13:19:00 +0000
-Received: from localhost (172.20.145.6) by HQMAIL107.nvidia.com
- (172.20.187.13) with Microsoft SMTP Server (TLS) id 15.0.1497.2; Fri, 21 May
- 2021 13:19:00 +0000
-Date: Fri, 21 May 2021 15:20:23 +0200
-From: Thierry Reding <treding@nvidia.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Paul Cercueil <paul@crapouillou.net>, Lee Jones
- <lee.jones@linaro.org>, <linux-usb@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2 3/3] Revert "usb: common: usb-conn-gpio: Make VBUS
- supply optional"
-Message-ID: <YKezl0nlWFQhLyf/@orome.fritz.box>
-References: <1621406386-18838-1-git-send-email-chunfeng.yun@mediatek.com>
- <1621406386-18838-3-git-send-email-chunfeng.yun@mediatek.com>
+ id 1lk5Kx-00H9PZ-Qx
+ for linux-mediatek@lists.infradead.org; Fri, 21 May 2021 13:37:13 +0000
+Received: by mail-il1-x135.google.com with SMTP id l15so13072720iln.8
+ for <linux-mediatek@lists.infradead.org>; Fri, 21 May 2021 06:37:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aOxukUP4jIrT4sl1iFyJVxJdWx5J7pFUcynvJLSMuxM=;
+ b=c1dx51qHrwD5aaCshUIp6eeEm5WABOQk4ytjO09vCI4TEEK7opgsVS+XHPnEunkJ7F
+ w13th/NxTytTPbVBSewh40x8g8OQx4xTpImb8PblIt6tAcfGRE13hTZXlP67q9qG1fgn
+ QLhgjjB7gz0WDz3O4dZ/mDh/lkSc7Cvlg8y1J80G6/5xct40gLUMQzjEgoyOyg+X9aLC
+ gYFPg6Msv/chUf67TngUnnXsk5g8WB/3zx4ECYOOiPP3WawGE77DBwTn81kYkcNFU4zJ
+ 2OdQhWbO5Nbl4nWXqaMYTUIbUXS72HUg2RI58+LZ4L6H5Xi2qce+1+LUf4N/TBqPa946
+ PI+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aOxukUP4jIrT4sl1iFyJVxJdWx5J7pFUcynvJLSMuxM=;
+ b=KV96hnCrGHGfVDKlO071EfaRZ59izX6iMAEEkvkz8339BhIx1iunTLX0yAqPUrnkib
+ kThpXkS5BHvXwUFf/6OwpF+tU0YxeRBrSH9o6LAzX5g76OKesfPzo+X/V6JQyRMIEelZ
+ BpaQ4iJyL86ehIvT9cTO/jLkXIIsYi/KO/lsehSsHnqSGn3DUYHfOp6yUESIEoliEO7R
+ wEI7cMeZNe0SMlemvsJ0LaZ/4kduLPox8UiKcE4HhHqFfOHql/Z7sjFStwJH3PgK+y7J
+ yC7aURFYqsKCLt+LfLvU6HEbF32jOru2ium+ArdWZRexRxH5nc3tToNFVsclXvMA7FOV
+ Vu2Q==
+X-Gm-Message-State: AOAM5336YsJ3t9drDOEdwn4+F6H0zL5jiJjljr4pMKQ9EX0bKGiNfvBl
+ VkGju/b6LOfXM8CRdrGD8OiKJ52UaFFKgSJsxKIVpQ==
+X-Google-Smtp-Source: ABdhPJzEiyCios8dWI/Acg2dtT/0zWtA9aBNoDZXPirEUp2D/T+FjiXdNJf5mkQUXPKh50k3T9wd7lZpe5lr8WVOUow=
+X-Received: by 2002:a05:6e02:92f:: with SMTP id
+ o15mr13043037ilt.127.1621604229383; 
+ Fri, 21 May 2021 06:37:09 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1621406386-18838-3-git-send-email-chunfeng.yun@mediatek.com>
-X-NVConfidentiality: public
-User-Agent: Mutt/2.0.6 (98f8cb83) (2021-03-06)
-X-Originating-IP: [172.20.145.6]
-X-ClientProxiedBy: HQMAIL107.nvidia.com (172.20.187.13) To
- HQMAIL107.nvidia.com (172.20.187.13)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: d545a81b-5827-46a5-bbed-08d91c5aff8f
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4370:
-X-Microsoft-Antispam-PRVS: <DM6PR12MB4370025E165D648DDC7A80EACF299@DM6PR12MB4370.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:243;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: e+gcJ3lctOIJ9MdI0H+voWnRTHM5sj9Ca+4ooNYQx0tfVXINN3WelIrYMy5IDRuVOp1kBcBEbCQ0C6/V//IBzKKcfp8Yjc8/Ri2TzuwIHvZPnasVGEwJ15JTPUFeWxVPjPN7Nczy1Q8LakKGqwx73xdI8/44kUVCNkDtnHX7YkBHqx7BrAhK1c36RjCSmZ6Yd8ynLGqOBfwA+ODp1mzy2Kcy+WPOMPZm1Vjx/W04oSJ5GprLX3uel4PJ0k4UEnXEFpy+TtFaJR8+XO4bD3GbAIeC+petVki4a+GJLJxeXN0LczocTcIrLxljNbNFNaNoTHXko1ktW/ERbKHxA5FFHS8oOeO/qNzY02goufr/0NzSttX/o8L7O2R/ucm/BD/XZrWxo6P4gRf11gghE3uPeb7TyPk41B6Y9KZ0re1LIjUwSZGekDdFBHrafFGNj7whALIsVCulyPsHCgPJfXm6JooUWo5mKZB5dC1sceQV+laID6D/GVQarvo54b0rbuAR6fTiKVfP69c7urkhn7v3kPgQAxK5Pevpl720lP72LqqDHDt4blUbbCKtkR0SlgsFSuSn3gemhms80Ihj6spieabx0OvOjCekTAtj4XhssBMZRxAIea8XoGKTLS4og0xootJnwP6Pu9x45YRs3t+NU1QOQ+QyqgzWOtjghXrmYiC1XMvukL1owhO5sWrTxqXU
-X-Forefront-Antispam-Report: CIP:216.228.112.34; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:schybrid03.nvidia.com; CAT:NONE;
- SFS:(4636009)(396003)(376002)(39860400002)(136003)(346002)(36840700001)(46966006)(16526019)(8676002)(356005)(6666004)(2906002)(70206006)(70586007)(478600001)(26005)(426003)(5660300002)(186003)(8936002)(86362001)(336012)(7636003)(47076005)(6916009)(9686003)(7416002)(36906005)(36860700001)(21480400003)(82310400003)(316002)(4326008)(44144004)(83380400001)(54906003)(82740400003)(2700100001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2021 13:19:00.8001 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d545a81b-5827-46a5-bbed-08d91c5aff8f
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.112.34];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN8NAM11FT029.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4370
+References: <20210519143011.1175546-1-acourbot@chromium.org>
+ <20210519143011.1175546-2-acourbot@chromium.org>
+In-Reply-To: <20210519143011.1175546-2-acourbot@chromium.org>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Fri, 21 May 2021 21:36:58 +0800
+Message-ID: <CA+Px+wV8_rCxH=OuwjeUsVpL5Vk5kN_BymA5QRjwhDOUn-iT6Q@mail.gmail.com>
+Subject: Re: [PATCH v5 01/14] media: mtk-vcodec: vdec: Support H264 profile
+ control
+To: Alexandre Courbot <acourbot@chromium.org>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hirokazu Honda <hiroh@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210521_061906_857442_C4835766 
-X-CRM114-Status: GOOD (  34.46  )
+X-CRM114-CacheID: sfid-20210521_063711_878449_834545D3 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -146,183 +112,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4153846277352932109=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============4153846277352932109==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="kQXU9/aA1QNb88Xm"
-Content-Disposition: inline
+On Wed, May 19, 2021 at 10:30 PM Alexandre Courbot
+<acourbot@chromium.org> wrote:
+> Signed-off-by: Hirokazu Honda <hiroh@chromium.org>
+> [acourbot: fix commit log a bit, move to mtk_vcodec_dec.c]
+> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
 
---kQXU9/aA1QNb88Xm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, May 19, 2021 at 02:39:46PM +0800, Chunfeng Yun wrote:
-> Vbus is already an optional supply, if the vbus-supply is not
-> provided in DTS, will use a dummy regulator,
-
-That statement is not entirely correct. The dummy regulator is
-substituted only if the supply is in fact not optional. The idea behind
-that is to allow DTS files that don't specify all required regulators to
-get away with it, based on the assumption that the supply is one of
-those always-on supplies that are often not described in DTS.
-
-> the warning log is as below:
-> "supply vbus not found, using dummy regulator"
-
-And the reason why we get that warning is to point out that the DTS has
-a bug and that it should be fixed (by adding a proper regulator to take
-the place of the dummy).
-
-> This reverts commit 4ddf1ac79e5f082451cd549283d2eb7559ab6ca9.
-
-But if you read the description of that commit, the purpose of that
-patch was in fact to make the supply completely optional in the case
-where we already have the VBUS supply specified for the USB port that
-the connector is parented to.
-
-So in that case the DTS doesn't have the bug because the VBUS supply is
-already specified for the USB port and therefore it doesn't have to be
-specified in the USB connector again. In fact, specifying it twice can
-lead to a situation where the USB port may not be able to switch the
-VBUS supply on or off because the setting might conflict with that of
-the USB connector.
-
-So unless there's a real reason why this is needed, I don't think this
-should be applied.
-
-Thierry
-
-> Cc: Thierry Reding <treding@nvidia.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: remove unused variable "need_vbus"
-> ---
->  drivers/usb/common/usb-conn-gpio.c | 30 ++++++------------------------
->  1 file changed, 6 insertions(+), 24 deletions(-)
->=20
-> diff --git a/drivers/usb/common/usb-conn-gpio.c b/drivers/usb/common/usb-=
-conn-gpio.c
-> index dfbbc4f51ed6..65d89140cd19 100644
-> --- a/drivers/usb/common/usb-conn-gpio.c
-> +++ b/drivers/usb/common/usb-conn-gpio.c
-> @@ -91,14 +91,14 @@ static void usb_conn_detect_cable(struct work_struct =
-*work)
->  		return;
->  	}
-> =20
-> -	if (info->last_role =3D=3D USB_ROLE_HOST && info->vbus)
-> +	if (info->last_role =3D=3D USB_ROLE_HOST)
->  		regulator_disable(info->vbus);
-> =20
->  	ret =3D usb_role_switch_set_role(info->role_sw, role);
->  	if (ret)
->  		dev_err(info->dev, "failed to set role: %d\n", ret);
-> =20
-> -	if (role =3D=3D USB_ROLE_HOST && info->vbus) {
-> +	if (role =3D=3D USB_ROLE_HOST) {
->  		ret =3D regulator_enable(info->vbus);
->  		if (ret)
->  			dev_err(info->dev, "enable vbus regulator failed\n");
-> @@ -106,9 +106,8 @@ static void usb_conn_detect_cable(struct work_struct =
-*work)
-> =20
->  	info->last_role =3D role;
-> =20
-> -	if (info->vbus)
-> -		dev_dbg(info->dev, "vbus regulator is %s\n",
-> -			regulator_is_enabled(info->vbus) ? "enabled" : "disabled");
-> +	dev_dbg(info->dev, "vbus regulator is %s\n",
-> +		regulator_is_enabled(info->vbus) ? "enabled" : "disabled");
-> =20
->  	power_supply_changed(info->charger);
->  }
-> @@ -175,7 +174,6 @@ static int usb_conn_probe(struct platform_device *pde=
-v)
->  {
->  	struct device *dev =3D &pdev->dev;
->  	struct usb_conn_info *info;
-> -	bool need_vbus =3D true;
->  	int ret =3D 0;
-> =20
->  	info =3D devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
-> @@ -205,23 +203,7 @@ static int usb_conn_probe(struct platform_device *pd=
-ev)
-> =20
->  	INIT_DELAYED_WORK(&info->dw_det, usb_conn_detect_cable);
-> =20
-> -	/*
-> -	 * If the USB connector is a child of a USB port and that port already =
-provides the VBUS
-> -	 * supply, there's no need for the USB connector to provide it again.
-> -	 */
-> -	if (dev->parent && dev->parent->of_node) {
-> -		if (of_find_property(dev->parent->of_node, "vbus-supply", NULL))
-> -			need_vbus =3D false;
-> -	}
-> -
-> -	if (!need_vbus) {
-> -		info->vbus =3D devm_regulator_get_optional(dev, "vbus");
-> -		if (PTR_ERR(info->vbus) =3D=3D -ENODEV)
-> -			info->vbus =3D NULL;
-> -	} else {
-> -		info->vbus =3D devm_regulator_get(dev, "vbus");
-> -	}
-> -
-> +	info->vbus =3D devm_regulator_get(dev, "vbus");
->  	if (IS_ERR(info->vbus)) {
->  		ret =3D PTR_ERR(info->vbus);
->  		return dev_err_probe(dev, ret, "failed to get vbus :%d\n", ret);
-> @@ -288,7 +270,7 @@ static int usb_conn_remove(struct platform_device *pd=
-ev)
-> =20
->  	cancel_delayed_work_sync(&info->dw_det);
-> =20
-> -	if (info->last_role =3D=3D USB_ROLE_HOST && info->vbus)
-> +	if (info->last_role =3D=3D USB_ROLE_HOST)
->  		regulator_disable(info->vbus);
-> =20
->  	usb_role_switch_put(info->role_sw);
-> --=20
-> 2.18.0
->=20
-
---kQXU9/aA1QNb88Xm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmCns5UACgkQ3SOs138+
-s6Fq/xAAv63EPKwniK/lIdbUsG5t8rk8ZYgR1AtNxsz0TAPCycoc29luOzcWm2q6
-mKhBG1LFeRZp9KQxLvdqreMs4bieRZzuMIJQ7UPvb4yBz2KKPnkQTmxh1JCRUX3t
-RieuG15mTmC8RHME3nU6GSXsGHWavKkvzeIIWXSJbO+/EZbbG3XhUPPQ451wPkcL
-DXRfCzVKOcur4e0Y2dxmL8P9qlMOqz+hGiBU4GYGIau4lJ5uoarR05LSe+kxTQum
-5Kd+w6c8/74YS6R5xan1O/HB314fQs+6/ZeghceMVbo4rdlcKlMVNlQee5oRFwAH
-EA038vdd3qmaFCoxgJn/KMntSBrrpYwL3nkeE/3CAp4yIq/DsgJmQ/t1oX9bA6Im
-yMHnReLkzPCaW5UqLmE8de6EZk2lAvnsRTO26q7VCZMkDLco6kjYbXN9zJVXWHLg
-J3gaFXAXd5j+auni7BLKfekZ5shX83RNZmYXBk5Getsw6qrNEcJ52kCNYDVCT2RM
-A9utCz41kwzeImRSbbSUmNcPy9oo3gonEorh3uW3BWr0f84Iy0HWesWiDm1v3O91
-l+wGC2yDLNSWzUByJinqXAB3zpaEOCdS3W29AY+Fz79CRPs2lRlpy1UPxyY1FOhq
-sTgIAeeGWrD63eRbJIs2UMFu//Sx0IXTCLbSpad3fz8Co/k694w=
-=A/ZV
------END PGP SIGNATURE-----
-
---kQXU9/aA1QNb88Xm--
-
-
---===============4153846277352932109==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4153846277352932109==--
-
