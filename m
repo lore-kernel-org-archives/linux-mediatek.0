@@ -2,81 +2,95 @@ Return-Path: <SRS0=AnEI=KU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72CB4C2B9F7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 00:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36074C2B9F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 01:38:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33E916128D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 00:41:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33E916128D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id EF75861417
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 01:38:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF75861417
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nnW0q3VXR5R3NcW5GGCbYkWhT67gwRCvy5KXR3p5JN0=; b=K5tVBtICMqb46Z
-	vtV2laKSZAhpfb5dux3rQl7MyKk5tDv6M/c2Av+Pulp0mCe8nL4acQKfMjqwhSXD24IQqtsaHx62M
-	NYCVIocekokIr9q/+3iTo1CB/sxCdBLxMHim1hgqKOgmu+DogkJdB32hI03ncJUrkoNN8lY3Q3Dqx
-	1iSpW9xmHVqdy4T6L00NxB0h4GthZlHeX/z/p9hA8R1p5wwLa+kxyK7+RpFBKK5w0EKdIeYpPmZeu
-	I71OTCGTEu2uiSr4d1uzBk6gcCkl7CwBnYYLvStxHFHNqY1Wc3Lv3H08pYuMw8wmMUKmNubg+GMbh
-	CTCIP3u9itF9UBcTKgAw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Emi8leY/56/Twez++YvkVqenBF1d+ogososRRnc3vN8=; b=a5Dbof9VNX/ESk06aoKSmbuppK
+	JxDIoZnpkS4v1HZd9rQwEFx519qWZnQCKF5aslXtmBflHnY2stG69QNOp5DNdlWm73thk0wBFmr0T
+	Wo+Nhu7+Z9tCZxBvcLtlTcoEGbMYcybfoYAhLvlChLh8XyS6H6x5x/+8sy5OrL9aZ6tiEm3NRl3xU
+	BQ5abbyvYTOOB++V8BQMuEGl4YDFoR+u07t2xFgeeVDHU/QFU5ZdZTaqpqz6xhf0mGUgFpDVwWblh
+	jm9PWjEexDv9dXzHC3EQJZ1XFu3AtHfxrWBl+/wQMtus4p5iKg8dGmYtEYmAz9IO5BfOvXn+HeLuJ
+	UxgpH2rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llL83-002bis-DN; Tue, 25 May 2021 00:41:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1llM1H-002maM-7u; Tue, 25 May 2021 01:38:07 +0000
+Received: from mail-pf1-f182.google.com ([209.85.210.182])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llElG-001Lyz-NB
- for linux-mediatek@lists.infradead.org; Mon, 24 May 2021 17:53:08 +0000
-X-UUID: 486c063ceaad436ea42bc57c861697f7-20210524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HCbB9ajOnGws9PENigdtqscCoyYeufv/mBXqD1vfrgU=; 
- b=fCfhnbenNv6eBndgiQfznCbgYjk4LrxgTFPsO6qWrOrNBujdfPksr7M349IHiXUIX2mJ4mY714lfDDBeV8tFSfhb8jSy8pYEvS5sEdrQy4eKU9efIB00TtZTLAlym7gLXr1E3SmyklRhbNCsUnb8JW/lJF/rfP9K90Sls0kf7dw=;
-X-UUID: 486c063ceaad436ea42bc57c861697f7-20210524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 417887538; Mon, 24 May 2021 10:53:01 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 10:53:00 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 01:52:58 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 May 2021 01:52:58 +0800
-Message-ID: <1621878778.21477.1.camel@mtkswgap22>
-Subject: Re: [PATCH] mt76: mt7921: fix UC entry is being overwritten
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: <sean.wang@mediatek.com>, <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>,
- <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
- <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
+ id 1llGug-001nJA-AM; Mon, 24 May 2021 20:11:00 +0000
+Received: by mail-pf1-f182.google.com with SMTP id q67so4709736pfb.4;
+ Mon, 24 May 2021 13:10:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=cZcmrRKl8MZj6EByHFj+TpMs1Z1/LuL5LS/wikT3fk4=;
+ b=j45LmfOrw0szdelfYT2EP+ryhpbraejE8NLmaiPf+dj5j3O2C5QK+ED2blV0pzyJGk
+ JYQwQN5L0sk6x2jfAECNBSzMUUviV82tG68E92Kf3o8qeeDga4Q0HYbft80tLpstijnS
+ GCO6MMqbyK73tT9g1FZsGLp6HjXTo/n9bPD8ARRmr+dqd5tdSQraGEm0OJeI3FXz2jgJ
+ OK1nfAhgtYxwrh3mw7NMhvQg4ssdzRsajMWAh0wnyDc3AgKeZBDAA5nJ3+RIFEueXy2d
+ uIaozPEZ+vcBOlmaGQdRzeHWz2C+vWv6CrCUAeXH9WSQxyhreUd7bYGH5cc9qbBU8nZ3
+ mkfg==
+X-Gm-Message-State: AOAM533gBFx6Glrm821CZBLvVjunYKk5fhv8hahpiaFCPMJmuyuPicJM
+ ApVyM012xkeFCHDwh0WLq3FX/1qYQTaIbA==
+X-Google-Smtp-Source: ABdhPJxD4+pUlQXbF50GPoHknO4liqzl56WqMATugX+MXNqgIs5tXgBUmR5SEERjMs7Ux8i4dGIotQ==
+X-Received: by 2002:aa7:9aed:0:b029:2e1:fdad:ac11 with SMTP id
+ y13-20020aa79aed0000b02902e1fdadac11mr24869896pfp.58.1621887056093; 
+ Mon, 24 May 2021 13:10:56 -0700 (PDT)
+Received: from [192.168.3.217] (c-73-241-217-19.hsd1.ca.comcast.net.
+ [73.241.217.19])
+ by smtp.gmail.com with ESMTPSA id w125sm11621528pfw.214.2021.05.24.13.10.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 May 2021 13:10:55 -0700 (PDT)
+Subject: Re: [PATCH v1 2/3] scsi: ufs: Optimize host lock on transfer requests
+ send/compl paths
+To: Can Guo <cang@codeaurora.org>, asutoshd@codeaurora.org,
+ nguyenb@codeaurora.org, hongwus@codeaurora.org, linux-scsi@vger.kernel.org,
+ kernel-team@android.com
+Cc: Stanley Chu <stanley.chu@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Satya Tangirala <satyat@google.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
  <linux-mediatek@lists.infradead.org>
-Date: Tue, 25 May 2021 01:52:58 +0800
-In-Reply-To: <YKrGretiq7wo+pzv@lore-desk>
-References: <1621495354-4130-1-git-send-email-sean.wang@mediatek.com>
- <YKrGretiq7wo+pzv@lore-desk>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+References: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
+ <1621845419-14194-3-git-send-email-cang@codeaurora.org>
+From: Bart Van Assche <bvanassche@acm.org>
+Message-ID: <41a08b3e-122d-4f1a-abbd-4b5730f880b2@acm.org>
+Date: Mon, 24 May 2021 13:10:51 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1621845419-14194-3-git-send-email-cang@codeaurora.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_105306_799996_080F4EAC 
-X-CRM114-Status: GOOD (  19.09  )
+X-CRM114-CacheID: sfid-20210524_131058_440482_41C5E050 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +107,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2021-05-23 at 23:18 +0200, Lorenzo Bianconi wrote:
-> > From: Deren Wu <deren.wu@mediatek.com>
-> > 
-> > Fix UC entry is being overwritten by BC entry
-> > 
-> > Fixes: 36fcc8cff592 ("mt76: mt7921: introduce mt7921_mcu_sta_add routine")
-> > Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> > Signed-off-by: YN Chen <yn.chen@mediatek.com>
-> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> > ---
-> >  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 11 +++++++----
-> >  1 file changed, 7 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > index 73359defa176..f3decc59a6fe 100644
-> > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> > @@ -875,10 +875,13 @@ int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *phy,
-> >  	if (IS_ERR(skb))
-> >  		return PTR_ERR(skb);
-> >  
-> > -	mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta, info->enable);
-> > -	if (info->enable && info->sta)
-> > -		mt76_connac_mcu_sta_tlv(phy, skb, info->sta, info->vif,
-> > -					info->rcpi);
-> > +	if (info->sta) {
-> > +		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
-> > +					      info->enable);
-> > +		if (info->enable)
-> > +			mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
-> > +						info->vif, info->rcpi);
-> > +	}
-> 
-> with this patch we are changing the mt7663 behaviour since we run
-> mt76_connac_mcu_add_sta_cmd() in mt7615_remove_interface() with
-> enable = false and sta = NULL. Can you please confirm you are
-> not introducing any regression in mt7663?
+On 5/24/21 1:36 AM, Can Guo wrote:
+> Current UFS IRQ handler is completely wrapped by host lock, and because
+> ufshcd_send_command() is also protected by host lock, when IRQ handler
+> fires, not only the CPU running the IRQ handler cannot send new requests,
+> the rest CPUs can neither. Move the host lock wrapping the IRQ handler into
+> specific branches, i.e., ufshcd_uic_cmd_compl(), ufshcd_check_errors(),
+> ufshcd_tmc_handler() and ufshcd_transfer_req_compl(). Meanwhile, to further
+> reduce occpuation of host lock in ufshcd_transfer_req_compl(), host lock is
+> no longer required to call __ufshcd_transfer_req_compl(). As per test, the
+> optimization can bring considerable gain to random read/write performance.
 
-I think this also breaks mt7622, so please double check.
+Hi Can,
 
-> Regards,
-> Lorenzo
-> 
-> >  
-> >  	sta_wtbl = mt76_connac_mcu_add_tlv(skb, STA_REC_WTBL,
-> >  					   sizeof(struct tlv));
-> > -- 
-> > 2.25.1
-> > 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Using the host lock to serialize the completion path against the
+submission path was a common practice 11 years ago, before the host lock
+push-down (see also
+https://linux-scsi.vger.kernel.narkive.com/UEmGgwAc/rfc-patch-scsi-host-lock-push-down).
+Modern SCSI LLDs should not use the SCSI host lock. Please consider
+introducing one or more new synchronization objects in struct ufs_hba
+and to use these instead of the SCSI host lock. That will save multiple
+pointer dereferences in the hot path since hba->host->host_lock will
+become hba->new_spin_lock.
+
+An additional question is whether it is necessary for v3.0 UFS devices
+to serialize the submission path against the completion path? Multiple
+high-performance SCSI LLDs support hardware with separate submission and
+completion queues and hence do not need any serialization between the
+submission and the completion path. I'm asking this because it is likely
+that sooner or later multiqueue support will be added in the UFS
+specification. Benefiting from multiqueue support will require to rework
+locking in the UFS driver anyway.
+
+Thanks,
+
+Bart.
 
 _______________________________________________
 Linux-mediatek mailing list
