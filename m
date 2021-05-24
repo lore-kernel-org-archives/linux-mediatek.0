@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA912C2B9F7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 23:22:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FDB3C2B9F7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 23:34:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 907896140B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 23:22:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 907896140B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F3BDB61209
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 23:34:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3BDB61209
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qlsNlX6GhI0FcgnCFw2owTcL7190lUwbWp0ZZSXhnpM=; b=MCR4Srq2SnRH7n
-	NP+ZIy7clJPCTVd2qo3nFQfks3HydCDLi05AiWlC86TlfOkInR7kEMlr/ZqkIH1go9qqY2NhHbUOF
-	ActVQrc4riE6XFDP2XA0s+ZA9mEZ+kTkrcTZIW312X1CG1suwASaRbWsGYJYE7ir+0Q1boNg7Wjgj
-	We6XFX2PnckteLpdPuyA++oCYwSza9Wg7Xc55lvN01MwDUD1epvKjVnheNVA1wOM0j1MTy1NfBwa2
-	eNgx8P7iaqEE1LafamXZMU+78fK2zUggETM2TjzZ4DOyIZCz9vwEzz92SsAAnWjt3+sINlpUCXD4m
-	VgsfXVVbRUFLvAXfSBEQ==;
+	List-Owner; bh=D7v6361X2IAk+4v2ILP8XjOupVznTeTZL1Te1urIRqk=; b=RjLSfW6l25CvCk
+	fV8DsS2hbMFoRGzh1ZOGZAPyyBAXHxIxkC1Pr6yr/IDalC6WM/x6EE8WLhhP8fxE+t7VhQZATBch+
+	tJONpMbdwU1cA4GrPwLYaOZdIa2xs8nySEq9cD6pPsfTEYe1z0a9UU07ywRuzgkE2/bIu8X/zFzZl
+	YHlbiQyU5UwGBrkdlyAfWEDMIIVlgWFHy3rMmPkYk1nxlOKk6YmdvU4iUWd4oNgh0iEQPisuxeS3+
+	PkmH1q3ziDbjI4HBfA9YE+jgtQR2ioByBbCjwvTDJ0O0WQ6GCWGcU6SyXFPSg1Fh9IJ9hHnpChsX/
+	Rby0hxjQo8G6mevAY7GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llJtV-002K25-Cw; Mon, 24 May 2021 23:21:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1llK5O-002MMz-1Q; Mon, 24 May 2021 23:34:14 +0000
+Received: from labrats.qualcomm.com ([199.106.110.90])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ll9rn-000v2c-Da; Mon, 24 May 2021 12:39:32 +0000
-X-UUID: e8c1a7d0b94d425e86db84e8a9a7f0ab-20210524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KOn6luKWpbkaDtxONnhLdM+mXezx24lDqFvt9KxAFvg=; 
- b=notSOfm1cceZjcQsT3+G/LOwtlFBJrxBR76OMyjMDxcgG/KyP8udZW9lSJ1zxwQDl59Av/9FplDTMrpqFWhmNnB2k31YjZw/axkdMruneFctXUrJ81hVJj1LVt1JkuEFh8NGqchPCiK9cXs0VHfqzLBEOpygv3IHJ9DBpdXEbHM=;
-X-UUID: e8c1a7d0b94d425e86db84e8a9a7f0ab-20210524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1835993710; Mon, 24 May 2021 05:39:15 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 05:29:13 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 20:29:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 24 May 2021 20:29:11 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, "chun-jie . chen" <chun-jie.chen@mediatek.com>
-Subject: [PATCH v9 08/22] clk: mediatek: Add configurable enable control to
- mtk_pll_data
-Date: Mon, 24 May 2021 20:20:39 +0800
-Message-ID: <20210524122053.17155-9-chun-jie.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
-References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1ll65Z-000m2m-71; Mon, 24 May 2021 08:37:30 +0000
+IronPort-SDR: TWa3Fhi63S60EDRXcnbhqJyFy8dhPfEshDMx4boyqFmZBRfzPijqwHNzwyMuNGUT4oo2r85BJD
+ S8oBicywI3al7o/1oT79E6vCtuHZFoVWcMHaAVY/ShRH/7XNmMsDbv6J/Lq2hATtwvbvJWvD5d
+ dWKc9rgJBH5ILrCHq670hnIzytXgq32XZ3EOEBiLQbcsrPW7jMTYhaSR40Ry6RUKu2omrS2ZAm
+ CqZPmUrD+1ParrHaXFzyRA1DC1JnHW7vCRhA+0AEWF66ECJTJfbFiajZd5F1n5noriahUoH5kn
+ EJY=
+X-IronPort-AV: E=Sophos;i="5.82,319,1613462400"; d="scan'208";a="29772330"
+Received: from unknown (HELO ironmsg03-sd.qualcomm.com) ([10.53.140.143])
+ by labrats.qualcomm.com with ESMTP; 24 May 2021 01:37:29 -0700
+X-QCInternal: smtphost
+Received: from stor-presley.qualcomm.com ([192.168.140.85])
+ by ironmsg03-sd.qualcomm.com with ESMTP; 24 May 2021 01:37:28 -0700
+Received: by stor-presley.qualcomm.com (Postfix, from userid 359480)
+ id 9404621AD7; Mon, 24 May 2021 01:37:28 -0700 (PDT)
+From: Can Guo <cang@codeaurora.org>
+To: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ linux-scsi@vger.kernel.org, kernel-team@android.com, cang@codeaurora.org
+Cc: Stanley Chu <stanley.chu@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
+ Jaegeuk Kim <jaegeuk@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Satya Tangirala <satyat@google.com>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Caleb Connolly <caleb@connolly.tech>,
+ linux-kernel@vger.kernel.org (open list),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v1 3/3] scsi: ufs: Utilize Transfer Request List Completion
+ Notification Register
+Date: Mon, 24 May 2021 01:36:58 -0700
+Message-Id: <1621845419-14194-4-git-send-email-cang@codeaurora.org>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
+References: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_053931_487520_F04656AF 
-X-CRM114-Status: GOOD (  16.23  )
+X-CRM114-CacheID: sfid-20210524_013729_301579_F1C199BF 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,126 +84,165 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In all MediaTek PLL design, bit0 of CON0 register is always
-the enable bit.
-However, there's a special case of usbpll on MT8192.
-The enable bit of usbpll is moved to bit2 of other register.
-Add configurable en_reg and pll_en_bit for enable control or
-default 0 where pll data are static variables.
-Hence, CON0_BASE_EN could also be removed.
-And there might have another special case on other chips,
-the enable bit is still on CON0 register but not at bit0.
+By reading the UTP Transfer Request List Completion Notification Register,
+which is added in UFSHCI Ver 3.0, SW can easily get the compeleted transfer
+requests. Thus, SW can get rid of host lock, which is used to synchronize
+the tr_doorbell and outstanding_reqs, on transfer requests dispatch and
+completion paths. This can further benefit random read/write performance.
 
-Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Co-developed-by: Asutosh Das <asutoshd@codeaurora.org>
+Signed-off-by: Asutosh Das <asutoshd@codeaurora.org>
+Signed-off-by: Can Guo <cang@codeaurora.org>
 ---
- drivers/clk/mediatek/clk-mtk.h | 20 +++++++++++---------
- drivers/clk/mediatek/clk-pll.c | 15 ++++++++++-----
- 2 files changed, 21 insertions(+), 14 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 52 +++++++++++++++++++++++++++++++++--------------
+ drivers/scsi/ufs/ufshcd.h |  5 +++++
+ drivers/scsi/ufs/ufshci.h |  1 +
+ 3 files changed, 43 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index c3d6756b0c7e..31c7cb304508 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -213,13 +213,13 @@ struct mtk_pll_div_table {
- struct mtk_pll_data {
- 	int id;
- 	const char *name;
--	uint32_t reg;
--	uint32_t pwr_reg;
--	uint32_t en_mask;
--	uint32_t pd_reg;
--	uint32_t tuner_reg;
--	uint32_t tuner_en_reg;
--	uint8_t tuner_en_bit;
-+	u32 reg;
-+	u32 pwr_reg;
-+	u32 en_mask;
-+	u32 pd_reg;
-+	u32 tuner_reg;
-+	u32 tuner_en_reg;
-+	u8 tuner_en_bit;
- 	int pd_shift;
- 	unsigned int flags;
- 	const struct clk_ops *ops;
-@@ -228,11 +228,13 @@ struct mtk_pll_data {
- 	unsigned long fmax;
- 	int pcwbits;
- 	int pcwibits;
--	uint32_t pcw_reg;
-+	u32 pcw_reg;
- 	int pcw_shift;
--	uint32_t pcw_chg_reg;
-+	u32 pcw_chg_reg;
- 	const struct mtk_pll_div_table *div_table;
- 	const char *parent_name;
-+	u32 en_reg;
-+	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
- 
- void mtk_clk_register_plls(struct device_node *node,
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 11ed5d1d1c36..7fb001a4e7d8 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -44,6 +44,7 @@ struct mtk_clk_pll {
- 	void __iomem	*tuner_en_addr;
- 	void __iomem	*pcw_addr;
- 	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
- 	const struct mtk_pll_data *data;
- };
- 
-@@ -56,7 +57,7 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index b9b5e61..2b7ad26 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -2106,7 +2106,6 @@ static inline
+ void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
  {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	struct ufshcd_lrb *lrbp = &hba->lrb[task_tag];
+-	unsigned long flags;
  
--	return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-+	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
+ 	lrbp->issue_time_stamp = ktime_get();
+ 	lrbp->compl_time_stamp = ktime_set(0, 0);
+@@ -2115,10 +2114,19 @@ void ufshcd_send_command(struct ufs_hba *hba, unsigned int task_tag)
+ 	ufshcd_clk_scaling_start_busy(hba);
+ 	if (unlikely(ufshcd_should_inform_monitor(hba, lrbp)))
+ 		ufshcd_start_monitor(hba, lrbp);
+-	spin_lock_irqsave(hba->host->host_lock, flags);
+-	set_bit(task_tag, &hba->outstanding_reqs);
+-	ufshcd_writel(hba, 1 << task_tag, REG_UTP_TRANSFER_REQ_DOOR_BELL);
+-	spin_unlock_irqrestore(hba->host->host_lock, flags);
++	if (ufshcd_has_utrlcnr(hba)) {
++		set_bit(task_tag, &hba->outstanding_reqs);
++		ufshcd_writel(hba, 1 << task_tag,
++			      REG_UTP_TRANSFER_REQ_DOOR_BELL);
++	} else {
++		unsigned long flags;
++
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		set_bit(task_tag, &hba->outstanding_reqs);
++		ufshcd_writel(hba, 1 << task_tag,
++			      REG_UTP_TRANSFER_REQ_DOOR_BELL);
++		spin_unlock_irqrestore(hba->host->host_lock, flags);
++	}
+ 	/* Make sure that doorbell is committed immediately */
+ 	wmb();
+ }
+@@ -5260,17 +5268,17 @@ static void __ufshcd_transfer_req_compl(struct ufs_hba *hba,
  }
  
- static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-@@ -248,8 +249,8 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
+ /**
+- * ufshcd_transfer_req_compl - handle SCSI and query command completion
++ * ufshcd_trc_handler - handle transfer requests completion
+  * @hba: per adapter instance
++ * @use_utrlcnr: get completed requests from UTRLCNR
+  *
+  * Returns
+  *  IRQ_HANDLED - If interrupt is valid
+  *  IRQ_NONE    - If invalid interrupt
+  */
+-static irqreturn_t ufshcd_transfer_req_compl(struct ufs_hba *hba)
++static irqreturn_t ufshcd_trc_handler(struct ufs_hba *hba, bool use_utrlcnr)
+ {
+-	unsigned long completed_reqs, flags;
+-	u32 tr_doorbell;
++	unsigned long completed_reqs = 0;
  
--	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
+ 	/* Resetting interrupt aggregation counters first and reading the
+ 	 * DOOR_BELL afterward allows us to handle all the completed requests.
+@@ -5283,10 +5291,24 @@ static irqreturn_t ufshcd_transfer_req_compl(struct ufs_hba *hba)
+ 	    !(hba->quirks & UFSHCI_QUIRK_SKIP_RESET_INTR_AGGR))
+ 		ufshcd_reset_intr_aggr(hba);
  
- 	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
- 	if (div_en_mask) {
-@@ -290,8 +291,8 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 		writel(r, pll->base_addr + REG_CON0);
- 	}
+-	spin_lock_irqsave(hba->host->host_lock, flags);
+-	tr_doorbell = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
+-	completed_reqs = tr_doorbell ^ hba->outstanding_reqs;
+-	spin_unlock_irqrestore(hba->host->host_lock, flags);
++	if (use_utrlcnr) {
++		u32 utrlcnr;
++
++		utrlcnr = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_LIST_COMPL);
++		if (utrlcnr) {
++			ufshcd_writel(hba, utrlcnr,
++				      REG_UTP_TRANSFER_REQ_LIST_COMPL);
++			completed_reqs = utrlcnr;
++		}
++	} else {
++		unsigned long flags;
++		u32 tr_doorbell;
++
++		spin_lock_irqsave(hba->host->host_lock, flags);
++		tr_doorbell = ufshcd_readl(hba, REG_UTP_TRANSFER_REQ_DOOR_BELL);
++		completed_reqs = tr_doorbell ^ hba->outstanding_reqs;
++		spin_unlock_irqrestore(hba->host->host_lock, flags);
++	}
  
--	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
+ 	if (completed_reqs) {
+ 		__ufshcd_transfer_req_compl(hba, completed_reqs);
+@@ -5768,7 +5790,7 @@ static void ufshcd_exception_event_handler(struct work_struct *work)
+ /* Complete requests that have door-bell cleared */
+ static void ufshcd_complete_requests(struct ufs_hba *hba)
+ {
+-	ufshcd_transfer_req_compl(hba);
++	ufshcd_trc_handler(hba, false);
+ 	ufshcd_tmc_handler(hba);
+ }
  
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
- 	writel(r, pll->pwr_addr);
-@@ -333,6 +334,10 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 		pll->tuner_addr = base + data->tuner_reg;
- 	if (data->tuner_en_reg)
- 		pll->tuner_en_addr = base + data->tuner_en_reg;
-+	if (data->en_reg)
-+		pll->en_addr = base + data->en_reg;
-+	else
-+		pll->en_addr = pll->base_addr + REG_CON0;
- 	pll->hw.init = &init;
- 	pll->data = data;
+@@ -6409,7 +6431,7 @@ static irqreturn_t ufshcd_sl_intr(struct ufs_hba *hba, u32 intr_status)
+ 		retval |= ufshcd_tmc_handler(hba);
  
+ 	if (intr_status & UTP_TRANSFER_REQ_COMPL)
+-		retval |= ufshcd_transfer_req_compl(hba);
++		retval |= ufshcd_trc_handler(hba, ufshcd_has_utrlcnr(hba));
+ 
+ 	return retval;
+ }
+diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
+index a70daf7..d5325e8 100644
+--- a/drivers/scsi/ufs/ufshcd.h
++++ b/drivers/scsi/ufs/ufshcd.h
+@@ -1159,6 +1159,11 @@ static inline u32 ufshcd_vops_get_ufs_hci_version(struct ufs_hba *hba)
+ 	return ufshcd_readl(hba, REG_UFS_VERSION);
+ }
+ 
++static inline bool ufshcd_has_utrlcnr(struct ufs_hba *hba)
++{
++	return (hba->ufs_version >= ufshci_version(3, 0));
++}
++
+ static inline int ufshcd_vops_clk_scale_notify(struct ufs_hba *hba,
+ 			bool up, enum ufs_notify_change_status status)
+ {
+diff --git a/drivers/scsi/ufs/ufshci.h b/drivers/scsi/ufs/ufshci.h
+index de95be5..5affb1f 100644
+--- a/drivers/scsi/ufs/ufshci.h
++++ b/drivers/scsi/ufs/ufshci.h
+@@ -39,6 +39,7 @@ enum {
+ 	REG_UTP_TRANSFER_REQ_DOOR_BELL		= 0x58,
+ 	REG_UTP_TRANSFER_REQ_LIST_CLEAR		= 0x5C,
+ 	REG_UTP_TRANSFER_REQ_LIST_RUN_STOP	= 0x60,
++	REG_UTP_TRANSFER_REQ_LIST_COMPL		= 0x64,
+ 	REG_UTP_TASK_REQ_LIST_BASE_L		= 0x70,
+ 	REG_UTP_TASK_REQ_LIST_BASE_H		= 0x74,
+ 	REG_UTP_TASK_REQ_DOOR_BELL		= 0x78,
 -- 
-2.18.0
+Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
