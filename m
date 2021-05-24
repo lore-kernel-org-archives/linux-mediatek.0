@@ -2,79 +2,85 @@ Return-Path: <SRS0=GIYZ=KT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9188BC2B9F7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 16:20:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E21AAC04FF3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 16:32:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4ED83613FC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 16:20:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4ED83613FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9FFFE613CC
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 16:32:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9FFFE613CC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9EdoEeprc6MHokiJmaL1upAbNXtEU9DkhRqVHQDpLg=; b=B9o0MFOhXBDYqS
-	F1bKE19ik3UuxqjqCLggZGQu/TZXhlIaVgJPXz3cFCTEo0RDxVa3VgDX2KYs5nJm7zEUJ/ZZLlj4w
-	RwTdPFzvP8PnACFCInvnQ0Ipn7wBWekAFoJ3qC+qdNmtgGDOyUFTBotXWpviiaNU4ByX7QRFgrVjm
-	3cuLRUto7mXK73obE7RlI4EDsKqT75t/TTC10Lp++64ZsnBrvoT7jq8jhIXjnJM/EpAq11wDiiTho
-	q3v1OyYalTmSR+aM0GOy8xeqfIOjFYVw+K6kcKLgFy48mzKKQmtxGnl6VGyNHJ0gysLHKAPFJIyh7
-	ZOoHB0DwVstfLJ6L9IIg==;
+	List-Owner; bh=KH2ZtQ5LK6v1VhL6PyE7FEYBffMDVQLOnQA1jaLE7tA=; b=1egHBfbGs/sci6
+	gA5c6Iu6RKR/jda/lzMc2MRLmPfD3RC3zLHqK68HaYKyBQuT+7Q64XPLAevZHCRQ4aUhRwax8Ag6C
+	D/6+8BoU4mqKT8Zzru8ab7Vjm7FHMvbaiHSQlCCHCTYB/qtBjR/CLW2c0FRuhdN5ObCByHzsVBee1
+	q4jqwDJ/1jATZO6j7OuFhdcI9QkDDVOJlzYJZpYHZSJyxZBFqi/zqbdOs3Jlbjtt/M6SXC9x4+LYm
+	B6lwlr85wNcl3rzSd3ii9JNZGd1FSWH3OHPgegmfz127wBBPPZ2gKfVC9U3kHnXa9lXgDT23munl8
+	/pBvEMQBH05ThRB/zWZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llDJU-0014RH-9V; Mon, 24 May 2021 16:20:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1llDUb-0017Nv-K6; Mon, 24 May 2021 16:31:49 +0000
+Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ll9rc-000uwZ-Sp; Mon, 24 May 2021 12:39:22 +0000
-X-UUID: 860eebc94d1a471dbfd5bd50c27a119b-20210524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=oahL73qbenAUWudlUY1MQm+jWSPELhvs76nSyszVTZs=; 
- b=efkoitt6CrXsosDLsbqvx7duJXAKDB4LpU2R31EBWDJmLcadAr/+A7WKyv8EBxXBjGbaaLkX/nDMk9jEq9mAq/ptOlz+vc/1MBhh0Z6grBCQy5SZnf6VaVqz5oaJlMuElZTkX4UvxAjd+xnhYorbNNkMC6ed6E318oByipiRqu8=;
-X-UUID: 860eebc94d1a471dbfd5bd50c27a119b-20210524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1276472694; Mon, 24 May 2021 05:39:13 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 05:29:13 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 20:29:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 24 May 2021 20:29:11 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, "chun-jie . chen" <chun-jie.chen@mediatek.com>
-Subject: [PATCH v9 12/22] clk: mediatek: Add MT8192 camsys clock support
-Date: Mon, 24 May 2021 20:20:43 +0800
-Message-ID: <20210524122053.17155-13-chun-jie.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
-References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
+ id 1llBIW-000zE7-Jk
+ for linux-mediatek@lists.infradead.org; Mon, 24 May 2021 14:11:14 +0000
+Received: by mail-vs1-xe33.google.com with SMTP id q6so10091953vsp.13
+ for <linux-mediatek@lists.infradead.org>; Mon, 24 May 2021 07:11:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RtaxpJ3ZIqpbUxLnGdserLZmqNzbhH1N5iJJI4iZESw=;
+ b=O4jM4bSYSS7J58eJ1fb121TCHbnOVl9LqBduEc7SGBX/YCXdfSI46H4Wtka1LkxRS7
+ 8h5kPKFQpPZcA+Ca3Rmzk7NVImyE9jZi4KUPNBd23Q44W/5sVRURZ+oTZlE9diZCsekz
+ 2I2M2Z4PefHOLr/5yuYaUowwknRfVV3CCpuPffOo2hSQQ5NCc8Y7seAZfU0ScrEePnQU
+ 1fK776YmoVWqh2nKRFv/8JY765zcPiQCPxZTrruhpPj1mTuq9GbuEAe/xQt0uN1tZdPE
+ uJwHz3IrZ74D3spFamWzHnDOnclKG9UmNxZE8t+X4EjSgJKUhrmeWLGZr5rjcyyA6b8X
+ gGqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RtaxpJ3ZIqpbUxLnGdserLZmqNzbhH1N5iJJI4iZESw=;
+ b=qBQWkdKDrOfUU4KTCg/t0IlFsoGup3kXPAqEFSYiOpifSdtEzP0x6eHFYHuZnWCIGu
+ LPDbxRcZeC54cdwg8K5/FawzAVIKDXGE7Lu8jMB7v/QzEA6+cH/a1ox+sZswvq9YU6gf
+ H2PayksyjxZRfqgLMMOoZed0ZflX5yAOPMhThBPF2P8TRp+2UFehrp//Hx6efBCxWQQN
+ WygkLLfkE4/BhuXcIh1l2/jVfpYTZcNOFyp9uv4tJ/5ScCm6XkVOsMif2+66fIR3jeDj
+ rlkmxJX0Kt7kYJNRNpiKS0FLXfxv2qugXqpxuq4bpLW8AuLgS37G00kCdrIQPA78TO+M
+ grhw==
+X-Gm-Message-State: AOAM531iWU6jYTeWtTM6KSzhJwVSnsNCEfNAEo5h1YL+setmLY4Bleug
+ PZKchARU8OpFdMrTypiYp0WY7oD2XmIvzshxSqdFBA==
+X-Google-Smtp-Source: ABdhPJyJxoEXg38Ru3anDaOR89iyQH6Z608DJmvgu1cLXp9ByLGDvmMUflZvo2udH4W1HBCqQ8ERHRYs9TOLCeqKR4M=
+X-Received: by 2002:a67:1087:: with SMTP id 129mr20526217vsq.42.1621865471594; 
+ Mon, 24 May 2021 07:11:11 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210517100900.1620-1-zbestahu@gmail.com>
+In-Reply-To: <20210517100900.1620-1-zbestahu@gmail.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 24 May 2021 16:10:33 +0200
+Message-ID: <CAPDyKFoPKSCoh6udphtGY210rB-QonJF-MAT0ZQJa+kJn-o6aQ@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mediatek: use data instead of mrq parameter from
+ msdc_{un}prepare_data()
+To: Yue Hu <zbestahu@gmail.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mmc <linux-mmc@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Yue Hu <huyue2@yulong.com>, zbestahu@163.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_053920_960159_A8B51360 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20210524_071112_673360_67C55575 
+X-CRM114-Status: GOOD (  19.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,160 +97,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8192 camsys and camsys raw clock providers
+On Mon, 17 May 2021 at 12:09, Yue Hu <zbestahu@gmail.com> wrote:
+>
+> From: Yue Hu <huyue2@yulong.com>
+>
+> We already have 'mrq->data' before calling these two functions, no
+> need to find it again via 'mrq->data' internally. Also remove local
+> data variable accordingly.
+>
+> Signed-off-by: Yue Hu <huyue2@yulong.com>
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
----
- drivers/clk/mediatek/Kconfig          |   6 ++
- drivers/clk/mediatek/Makefile         |   1 +
- drivers/clk/mediatek/clk-mt8192-cam.c | 107 ++++++++++++++++++++++++++
- 3 files changed, 114 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8192-cam.c
+Applied for next, thanks!
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 909f423d7c4c..a39a4c201c9e 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -514,6 +514,12 @@ config COMMON_CLK_MT8192_AUDSYS
- 	help
- 	  This driver supports MediaTek MT8192 audsys clocks.
- 
-+config COMMON_CLK_MT8192_CAMSYS
-+	bool "Clock driver for MediaTek MT8192 camsys"
-+	depends on COMMON_CLK_MT8192
-+	help
-+	  This driver supports MediaTek MT8192 camsys and camsys_raw clocks.
-+
- config COMMON_CLK_MT8516
- 	bool "Clock driver for MediaTek MT8516"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 1d0f2e8e9661..94bf7a03fd88 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -69,5 +69,6 @@ obj-$(CONFIG_COMMON_CLK_MT8183_VDECSYS) += clk-mt8183-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
-+obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
- obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
- obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8192-cam.c b/drivers/clk/mediatek/clk-mt8192-cam.c
-new file mode 100644
-index 000000000000..549ea8e9ef44
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8192-cam.c
-@@ -0,0 +1,107 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2020 MediaTek Inc.
-+// Author: Weiyi Lu <weiyi.lu@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
-+
-+#include <dt-bindings/clock/mt8192-clk.h>
-+
-+static const struct mtk_gate_regs cam_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_CAM(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &cam_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate cam_clks[] = {
-+	GATE_CAM(CLK_CAM_LARB13, "cam_larb13", "cam_sel", 0),
-+	GATE_CAM(CLK_CAM_DFP_VAD, "cam_dfp_vad", "cam_sel", 1),
-+	GATE_CAM(CLK_CAM_LARB14, "cam_larb14", "cam_sel", 2),
-+	GATE_CAM(CLK_CAM_CAM, "cam_cam", "cam_sel", 6),
-+	GATE_CAM(CLK_CAM_CAMTG, "cam_camtg", "cam_sel", 7),
-+	GATE_CAM(CLK_CAM_SENINF, "cam_seninf", "cam_sel", 8),
-+	GATE_CAM(CLK_CAM_CAMSV0, "cam_camsv0", "cam_sel", 9),
-+	GATE_CAM(CLK_CAM_CAMSV1, "cam_camsv1", "cam_sel", 10),
-+	GATE_CAM(CLK_CAM_CAMSV2, "cam_camsv2", "cam_sel", 11),
-+	GATE_CAM(CLK_CAM_CAMSV3, "cam_camsv3", "cam_sel", 12),
-+	GATE_CAM(CLK_CAM_CCU0, "cam_ccu0", "cam_sel", 13),
-+	GATE_CAM(CLK_CAM_CCU1, "cam_ccu1", "cam_sel", 14),
-+	GATE_CAM(CLK_CAM_MRAW0, "cam_mraw0", "cam_sel", 15),
-+	GATE_CAM(CLK_CAM_FAKE_ENG, "cam_fake_eng", "cam_sel", 17),
-+	GATE_CAM(CLK_CAM_CCU_GALS, "cam_ccu_gals", "cam_sel", 18),
-+	GATE_CAM(CLK_CAM_CAM2MM_GALS, "cam2mm_gals", "cam_sel", 19),
-+};
-+
-+static const struct mtk_gate cam_rawa_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWA_LARBX, "cam_rawa_larbx", "cam_sel", 0),
-+	GATE_CAM(CLK_CAM_RAWA_CAM, "cam_rawa_cam", "cam_sel", 1),
-+	GATE_CAM(CLK_CAM_RAWA_CAMTG, "cam_rawa_camtg", "cam_sel", 2),
-+};
-+
-+static const struct mtk_gate cam_rawb_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWB_LARBX, "cam_rawb_larbx", "cam_sel", 0),
-+	GATE_CAM(CLK_CAM_RAWB_CAM, "cam_rawb_cam", "cam_sel", 1),
-+	GATE_CAM(CLK_CAM_RAWB_CAMTG, "cam_rawb_camtg", "cam_sel", 2),
-+};
-+
-+static const struct mtk_gate cam_rawc_clks[] = {
-+	GATE_CAM(CLK_CAM_RAWC_LARBX, "cam_rawc_larbx", "cam_sel", 0),
-+	GATE_CAM(CLK_CAM_RAWC_CAM, "cam_rawc_cam", "cam_sel", 1),
-+	GATE_CAM(CLK_CAM_RAWC_CAMTG, "cam_rawc_camtg", "cam_sel", 2),
-+};
-+
-+static const struct mtk_clk_desc cam_desc = {
-+	.clks = cam_clks,
-+	.num_clks = ARRAY_SIZE(cam_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawa_desc = {
-+	.clks = cam_rawa_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawa_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawb_desc = {
-+	.clks = cam_rawb_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawb_clks),
-+};
-+
-+static const struct mtk_clk_desc cam_rawc_desc = {
-+	.clks = cam_rawc_clks,
-+	.num_clks = ARRAY_SIZE(cam_rawc_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8192_cam[] = {
-+	{
-+		.compatible = "mediatek,mt8192-camsys",
-+		.data = &cam_desc,
-+	}, {
-+		.compatible = "mediatek,mt8192-camsys_rawa",
-+		.data = &cam_rawa_desc,
-+	}, {
-+		.compatible = "mediatek,mt8192-camsys_rawb",
-+		.data = &cam_rawb_desc,
-+	}, {
-+		.compatible = "mediatek,mt8192-camsys_rawc",
-+		.data = &cam_rawc_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
-+
-+static struct platform_driver clk_mt8192_cam_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.driver = {
-+		.name = "clk-mt8192-cam",
-+		.of_match_table = of_match_clk_mt8192_cam,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8192_cam_drv);
--- 
-2.18.0
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 20 ++++++++------------
+>  1 file changed, 8 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 898ed1b..c4db944 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -724,10 +724,8 @@ static inline void msdc_dma_setup(struct msdc_host *host, struct msdc_dma *dma,
+>         writel(lower_32_bits(dma->gpd_addr), host->base + MSDC_DMA_SA);
+>  }
+>
+> -static void msdc_prepare_data(struct msdc_host *host, struct mmc_request *mrq)
+> +static void msdc_prepare_data(struct msdc_host *host, struct mmc_data *data)
+>  {
+> -       struct mmc_data *data = mrq->data;
+> -
+>         if (!(data->host_cookie & MSDC_PREPARE_FLAG)) {
+>                 data->host_cookie |= MSDC_PREPARE_FLAG;
+>                 data->sg_count = dma_map_sg(host->dev, data->sg, data->sg_len,
+> @@ -735,10 +733,8 @@ static void msdc_prepare_data(struct msdc_host *host, struct mmc_request *mrq)
+>         }
+>  }
+>
+> -static void msdc_unprepare_data(struct msdc_host *host, struct mmc_request *mrq)
+> +static void msdc_unprepare_data(struct msdc_host *host, struct mmc_data *data)
+>  {
+> -       struct mmc_data *data = mrq->data;
+> -
+>         if (data->host_cookie & MSDC_ASYNC_FLAG)
+>                 return;
+>
+> @@ -1140,7 +1136,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+>
+>         msdc_track_cmd_data(host, mrq->cmd, mrq->data);
+>         if (mrq->data)
+> -               msdc_unprepare_data(host, mrq);
+> +               msdc_unprepare_data(host, mrq->data);
+>         if (host->error)
+>                 msdc_reset_hw(host);
+>         mmc_request_done(mmc_from_priv(host), mrq);
+> @@ -1311,7 +1307,7 @@ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>         host->mrq = mrq;
+>
+>         if (mrq->data)
+> -               msdc_prepare_data(host, mrq);
+> +               msdc_prepare_data(host, mrq->data);
+>
+>         /* if SBC is required, we have HW option and SW option.
+>          * if HW option is enabled, and SBC does not have "special" flags,
+> @@ -1332,7 +1328,7 @@ static void msdc_pre_req(struct mmc_host *mmc, struct mmc_request *mrq)
+>         if (!data)
+>                 return;
+>
+> -       msdc_prepare_data(host, mrq);
+> +       msdc_prepare_data(host, data);
+>         data->host_cookie |= MSDC_ASYNC_FLAG;
+>  }
+>
+> @@ -1340,14 +1336,14 @@ static void msdc_post_req(struct mmc_host *mmc, struct mmc_request *mrq,
+>                 int err)
+>  {
+>         struct msdc_host *host = mmc_priv(mmc);
+> -       struct mmc_data *data;
+> +       struct mmc_data *data = mrq->data;
+>
+> -       data = mrq->data;
+>         if (!data)
+>                 return;
+> +
+>         if (data->host_cookie) {
+>                 data->host_cookie &= ~MSDC_ASYNC_FLAG;
+> -               msdc_unprepare_data(host, mrq);
+> +               msdc_unprepare_data(host, data);
+>         }
+>  }
+>
+> --
+> 1.9.1
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
