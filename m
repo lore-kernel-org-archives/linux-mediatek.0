@@ -2,69 +2,92 @@ Return-Path: <SRS0=GIYZ=KT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CEEFC04FF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 17:17:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48924C2B9F7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 17:29:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE33F61284
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 17:17:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DE33F61284
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id EFF50613BF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 17:29:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFF50613BF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=91led8jQIW6xPHkk5t9fSbq9ebvkJmY2lJzhKoray3M=; b=Xw66EMkFBA4vq6dEHPfJA9+tA
-	4iZK+UgfCU7+a0CPz6ZqEhSleCZu8IQfU0Z52seBNneK5c2cKRr9OnwK8hhjCxkq/FVEOWcHLutTG
-	HUsEHtvHW8BXNejFGwRjG4RS3ChphjioVZBVv+CT7kV+SDMiYvgs+DS6rSIg7tUXaT1/YZ33o11zQ
-	XLW4y7QNYwiulrmahoZ2S0koq2Sgzm6eFBi1e6JxIrJMgr/p8Jq1yhiGDb2/CXPGb75a4yUNCOMHh
-	HNu287KfyNFfCSKLhZwV+krmUn1ONG46Fp9Lk6ikCh3OH7nWsGwMckqcKne1cuORFDPuoR5ZlVNhp
-	hsM+AQ1og==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=V/Rc8Z+NpCF3ASFGu1Ot7rg/leh9wu7TztPu1+pgf04=; b=D1MIAxrtANoYmK
+	8fJ4SyA9MRRQ2jMbNuuQkwvm+BOF3C38BkYErmGJu7SMYWAxDw4GvlzqCRT2WSU9vVI1ONAhHBzhJ
+	OqfvWmWmhFlGBQOQGEdQGByp7Hpj2T5ex1AcYvglxpSOc5OIKpSmyz268MB95UnOu/aNbmqrKUsPQ
+	s+SlSws221cID491SCKqiaM6HgP9/R+D6EK2Scg80okVv+uxKj8TVjxVwvcwbHpcbLSjHl+Rnb8M4
+	wbd6uoWsE+QRXZmxSeNhpPcwtyxkcZh+3z3AuXZY8NEnu80ijuxSSaYJGjx9ne2+VH3rqdA64iMwz
+	i2TmcuNZciFhwEaCTDHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llECs-001FCJ-Re; Mon, 24 May 2021 17:17:34 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1llEOe-001HNC-Gs; Mon, 24 May 2021 17:29:44 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1lkvUg-000Zoi-KV
- for linux-mediatek@lists.infradead.org; Sun, 23 May 2021 21:18:43 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A36F261168;
- Sun, 23 May 2021 21:18:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621804722;
- bh=C3M5g3u/UxfJb6k1YxdamazUj6bL9RjogZwbzmkrhMY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RPNBp3KSlH00ML7RSyU/T9g8sINSOZq+IMi+11REb+gf8rifArIb0cwXJAKl2QUhI
- MYWHTlZ/IgNe/0Nyc1HiuCm6tly4K/um2LnFpihxbycVqUT+18OvYvS+fvxi2nQN1F
- 9VwcAZV3eeC3S03zdNZu4v1DLJ17zOVflQ8kDRPJrZt9Vl47vrYiobU4tdIFj4c1/x
- BYV76O1N79wSXUgQCZibyVkiOVsLpNxlxY3likYFT/qiHJ4bUY7fYAFf0PapFejw/E
- ShAJbLQmkH7xDs0IyMP3AfxZTsBEZ/uSYm2PT3wWpgQ1KO/UWZsxESF62njUwMC+0g
- a/040ho9bxREw==
-Date: Sun, 23 May 2021 23:18:37 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, jemele@google.com, yenlinlai@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: fix UC entry is being overwritten
-Message-ID: <YKrGretiq7wo+pzv@lore-desk>
-References: <1621495354-4130-1-git-send-email-sean.wang@mediatek.com>
+ id 1llCRq-0012Pn-5W; Mon, 24 May 2021 15:24:55 +0000
+Received: by mail-pl1-x634.google.com with SMTP id u7so6217583plq.4;
+ Mon, 24 May 2021 08:24:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=uzzcXIffejAkWyzdFpgb0HO7sS9re1Oy9rLKP31iBDE=;
+ b=MLxtYKaaVll8pWz5+nbVi/IfMBRtx4DyjzB8VCy8RDUkUMw+tKWP6lE/Qy9mjynuQK
+ O3wgJcW/kIlEFNVnkXSwNPmVujBx99MMssFDcafUx8NvWKRjC0hSPXAagZ9KyVdSEPan
+ GuH58Ty4fRkBNK6t0pGXJuzRly51HjreFOwL6wyoQirzCZqqQM7E7jTLKTMKWCWeGPCV
+ KU5BDOhhBlVgRoQwDUaMjHYi9Wniecjyz3oIso2LBlBeJCQGWockHSY39kEWgl5gGEYW
+ JdsXVY5R8CORXyd2TCKXaOGNz3tpbo+o2UvbDzcFHONA6DljIlfdJSeKeh7my14N6Qwv
+ IACg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=uzzcXIffejAkWyzdFpgb0HO7sS9re1Oy9rLKP31iBDE=;
+ b=Wt5QgVvszf4TRzaXjhfJdT8A6Yw4ovNY4mRYPuL7k3YEaOmWeOXXtRZG3H/+4KD/vI
+ gQz2BZQTlW1QF8C8HSgQvlTl8D0qeeQOgAh9WYZJ6ujRaq24nkr/5nbQDUTqpc4Flkab
+ D4vlKuzzUmjaxtLPORe2q3a1GoN3IhkS5zqG2MnpF4jcNJeNvbdME+lI2Mbo79lFl5mu
+ dmV13EmSUY8k7Hf5lTxwSXBltg1YB+bp6FzCtNRaXC6yDPaFOaGeOKWK4ta4XX6e/R57
+ +Be8jOZp75boJd9eBVV3idhEok7xmu6QuJxh+5Iqjf8fGTbD0V95k0Wkr6a4O/aJHzFl
+ atwg==
+X-Gm-Message-State: AOAM530gdEnZgl0iNra94GWNLpniGrZK8stI4PeYN9NQF4wP7HDs34S7
+ bgjFRTW5ekHq/RhEX3Jca6U=
+X-Google-Smtp-Source: ABdhPJwTr/Qpj2lQO22nca5tCgF7+O0qzNIiGrZITrSnMb5xGM0u5fQPJNms44pcBnVIi+ouIu6Xxg==
+X-Received: by 2002:a17:902:bd90:b029:f2:c88c:5b2c with SMTP id
+ q16-20020a170902bd90b02900f2c88c5b2cmr25951360pls.8.1621869893326; 
+ Mon, 24 May 2021 08:24:53 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:469:b4c4:1464:a4f2:334c:afaf])
+ by smtp.gmail.com with ESMTPSA id a15sm10821597pff.128.2021.05.24.08.24.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 08:24:53 -0700 (PDT)
+From: Gene Chen <gene.chen.richtek@gmail.com>
+To: jacek.anaszewski@gmail.com,
+	pavel@ucw.cz,
+	matthias.bgg@gmail.com
+Cc: dmurphy@ti.com, linux-leds@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com,
+ shufan_lee@richtek.com, cy_huang@richtek.com, benjamin.chao@mediatek.com,
+ Rob Herring <robh@kernel.org>
+Subject: [PATCH v14 1/2] dt-bindings: leds: Add bindings for MT6360 LED
+Date: Mon, 24 May 2021 23:24:26 +0800
+Message-Id: <20210524152427.123856-2-gene.chen.richtek@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
+References: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1621495354-4130-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210523_141842_722694_1E1ED160 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20210524_082454_236432_C1E75C37 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,95 +99,192 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1577221470074817349=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Gene Chen <gene_chen@richtek.com>
 
---===============1577221470074817349==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="a65hvaA3CeNihl8+"
-Content-Disposition: inline
+Add bindings document for LED support on MT6360 PMIC
 
+Signed-off-by: Gene Chen <gene_chen@richtek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/leds/leds-mt6360.yaml | 159 ++++++++++++++++++
+ 1 file changed, 159 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/leds/leds-mt6360.yaml
 
---a65hvaA3CeNihl8+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/Documentation/devicetree/bindings/leds/leds-mt6360.yaml b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
+new file mode 100644
+index 000000000000..235315531d3b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
+@@ -0,0 +1,159 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/leds/leds-mt6360.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: LED driver for MT6360 PMIC from MediaTek Integrated.
++
++maintainers:
++  - Gene Chen <gene_chen@richtek.com>
++
++description: |
++  This module is part of the MT6360 MFD device.
++  see Documentation/devicetree/bindings/mfd/mt6360.yaml
++  Add MT6360 LED driver include 2-channel Flash LED with torch/strobe mode,
++  and 4-channel RGB LED support Register/Flash/Breath Mode
++
++properties:
++  compatible:
++    const: mediatek,mt6360-led
++
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
++    const: 0
++
++patternProperties:
++  "^(multi-)?led@[0-5]$":
++    type: object
++    $ref: common.yaml#
++    description:
++      Properties for a single LED.
++
++    properties:
++      reg:
++        description: Index of the LED.
++        enum:
++          - 0 # LED output ISINK1
++          - 1 # LED output ISINK2
++          - 2 # LED output ISINK3
++          - 3 # LED output ISINKML
++          - 4 # LED output FLASH1
++          - 5 # LED output FLASH2
++
++unevaluatedProperties: false
++
++required:
++  - compatible
++  - "#address-cells"
++  - "#size-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++   #include <dt-bindings/leds/common.h>
++   led-controller {
++     compatible = "mediatek,mt6360-led";
++     #address-cells = <1>;
++     #size-cells = <0>;
++
++     multi-led@0 {
++       reg = <0>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_RGB>;
++       led-max-microamp = <24000>;
++       #address-cells = <1>;
++       #size-cells = <0>;
++       led@0 {
++         reg = <0>;
++         color = <LED_COLOR_ID_RED>;
++       };
++       led@1 {
++         reg = <1>;
++         color = <LED_COLOR_ID_GREEN>;
++       };
++       led@2 {
++         reg = <2>;
++         color = <LED_COLOR_ID_BLUE>;
++       };
++     };
++     led@3 {
++       reg = <3>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_WHITE>;
++       led-max-microamp = <150000>;
++     };
++     led@4 {
++       reg = <4>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <1>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++     led@5 {
++       reg = <5>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <2>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++   };
++
++  - |
++
++   led-controller {
++     compatible = "mediatek,mt6360-led";
++     #address-cells = <1>;
++     #size-cells = <0>;
++
++     led@0 {
++       reg = <0>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_RED>;
++       led-max-microamp = <24000>;
++     };
++     led@1 {
++       reg = <1>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_GREEN>;
++       led-max-microamp = <24000>;
++     };
++     led@2 {
++       reg = <2>;
++       function = LED_FUNCTION_INDICATOR;
++       color = <LED_COLOR_ID_BLUE>;
++       led-max-microamp = <24000>;
++     };
++     led@3 {
++       reg = <3>;
++       function = LED_FUNCTION_MOONLIGHT;
++       color = <LED_COLOR_ID_WHITE>;
++       led-max-microamp = <150000>;
++     };
++     led@4 {
++       reg = <4>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <1>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++     led@5 {
++       reg = <5>;
++       function = LED_FUNCTION_FLASH;
++       color = <LED_COLOR_ID_WHITE>;
++       function-enumerator = <2>;
++       led-max-microamp = <200000>;
++       flash-max-microamp = <500000>;
++       flash-max-timeout-us = <1024000>;
++     };
++   };
++...
+-- 
+2.25.1
 
-> From: Deren Wu <deren.wu@mediatek.com>
->=20
-> Fix UC entry is being overwritten by BC entry
->=20
-> Fixes: 36fcc8cff592 ("mt76: mt7921: introduce mt7921_mcu_sta_add routine")
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: YN Chen <yn.chen@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 11 +++++++----
->  1 file changed, 7 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
-rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 73359defa176..f3decc59a6fe 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -875,10 +875,13 @@ int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *ph=
-y,
->  	if (IS_ERR(skb))
->  		return PTR_ERR(skb);
-> =20
-> -	mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta, info->enable);
-> -	if (info->enable && info->sta)
-> -		mt76_connac_mcu_sta_tlv(phy, skb, info->sta, info->vif,
-> -					info->rcpi);
-> +	if (info->sta) {
-> +		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
-> +					      info->enable);
-> +		if (info->enable)
-> +			mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
-> +						info->vif, info->rcpi);
-> +	}
-
-with this patch we are changing the mt7663 behaviour since we run
-mt76_connac_mcu_add_sta_cmd() in mt7615_remove_interface() with
-enable =3D false and sta =3D NULL. Can you please confirm you are
-not introducing any regression in mt7663?
-
-Regards,
-Lorenzo
-
-> =20
->  	sta_wtbl =3D mt76_connac_mcu_add_tlv(skb, STA_REC_WTBL,
->  					   sizeof(struct tlv));
-> --=20
-> 2.25.1
->=20
-
---a65hvaA3CeNihl8+
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYKrGngAKCRA6cBh0uS2t
-rGmTAP0Q7j+zTudPGyKeq5cEHlichR+GkkNv1O1Rtz51VTroEwD9Ex/lnIyGNEhZ
-ELQ0A3F97+318Pvo9Kjefy4zj/eJrgw=
-=tC3Q
------END PGP SIGNATURE-----
-
---a65hvaA3CeNihl8+--
-
-
---===============1577221470074817349==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1577221470074817349==--
-
