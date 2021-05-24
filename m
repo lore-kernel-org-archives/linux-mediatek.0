@@ -2,86 +2,92 @@ Return-Path: <SRS0=GIYZ=KT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3BB2C04FF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0F7BC04FF3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:05:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B410561404
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:03:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B410561404
+	by mail.kernel.org (Postfix) with ESMTPS id AA83461404
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:05:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA83461404
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JWHFQzwuGBHzOL1qB/Reyuc4vgC+zvSJ7KCzy+ANKpA=; b=1mGSHe9k07gFQU
-	IcK6acLXQNM/VJrw9xdJoPFhlJtqvf+ZUqGOrDyd6n9mDnN82DD8lAyd9eWgh+TqRbUoPd56nKTGf
-	H26zS57wZNV7CMazX8KlF+X1fY93WXC4P8mvt6vzVzgSPqwM014TInpsZYQxzGdM1ErN74o3K2ltB
-	VMttWTgQO4EV6rCA/9iOROWmEMgNdWuXG/vuVlEGx6R2STUuqkncY+/V3Mt0s+oj7TJ3R9ok+By20
-	ToPFNb0d69uW+UI6BMBK0vMDDHUAKpNwKXtM1hqiLXob+2gJ5HZr+EPaN2Emjv67D+VnoAkqsJ3n7
-	WSG+bBN0oZvORSWhJMLQ==;
+	List-Owner; bh=Pd19edjNTJPkyfNm9Rgo0HFr+R2b69XK029DdwzkMEk=; b=rURh/dT8mr2oZd
+	Z8jUnOzOFuBKe//1x0vSp7Md+0YP6adMeV/vSu+h30NzEtHiCXTcHk6Cbd7OxjDNaCCWoLuj6camr
+	FeNxLRWgQn2Vt111K1MwzNrXkK8B+mwH7wZGiwAqO+wWvCTSTLsXznp3mLCxUSGQXDwiRd74RD55B
+	NuCmvQxGRMDR/10Zn7bDKzRAMM6ds5D5sJvQOOfuI5Aasu3wAi5tuPUtJfD8em2YGMV61TGPDTLuW
+	zGFMhAu0rJsZMZmyrKpibZQmCG1FXwGcL5LloCSH9EdpT6H3mZzZS+TZ4Oc1GKyUdFsz1qVSIFRsN
+	QaTKK0Ew+QbaEXZkAjdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llIfV-0022T6-BX; Mon, 24 May 2021 22:03:25 +0000
-Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
+	id 1llIhW-0022vV-Nr; Mon, 24 May 2021 22:05:30 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llBIa-000zEQ-JH
- for linux-mediatek@lists.infradead.org; Mon, 24 May 2021 14:11:17 +0000
-Received: by mail-vs1-xe31.google.com with SMTP id m9so4641557vsq.5
- for <linux-mediatek@lists.infradead.org>; Mon, 24 May 2021 07:11:16 -0700 (PDT)
+ id 1ll6ja-000nVF-3A
+ for linux-mediatek@lists.infradead.org; Mon, 24 May 2021 09:18:51 +0000
+Received: by mail-pf1-x434.google.com with SMTP id c17so20361942pfn.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 24 May 2021 02:18:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tCQyDrPS485JCf/EEBqEIhlOY+R+jUvQFllkGWdxwlU=;
- b=rL221ZDLv+YLV6YwZRS3eQJhMyuZtgYBJ8CrSEy+N6aSE3T3ThkMn/A72sXlzWEXbB
- s1fWLTuu717xF3h23DVKY+pstdeiXlXI6rgJa3HM7nv6/VFM86FSs/coHqklivyZxNA4
- 2Wy/1Ng8g7/BKFHWqPSiiVhnh22Syomle17OvQ/4n29KfSfukWYqmp/FK4vZilte2jL9
- WhQgB/sIQ+bfT/s7/yIGKbhNOCm0/mLSPh34x9FiqKVL8xH/xA8h6z9GQzFWPDX4kajB
- egQ4wTAvfNnM/dAg6LaDnHi6YxsyGwGKtAhJWvxJHNFOt9KfyQ2/V0vH/FDeaHPyr2WJ
- GMJg==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=0c5Qxjp+4tL19l2WuaML9jbCExKjLNfzcff3PqhK+VE=;
+ b=h6aeeuYGuMndMeWE+tDnkHaFLWogpyi0c/FjQoc8wSMIdgESd1urJM9QEg454F/5qA
+ nsK+XL02e94ks6Ow+C3qCU1cWazB1c/RcK0eL7zt0ZG7THaIUM+tII/H6fGBmKVIxzA5
+ ze6RcWJrILiN3M0ZBwYrxZ9N6gMBkmTtwaSYTIKk9wpW24qmqR6gUmQSwLfKktktNO/k
+ 1Kpa1iQnqx7w0JEOSJ4UY/A+OyqY+hFMUGAGIN8XUHQ7wg+a6tXpFTUyhsOWijG+v/i4
+ CJyeIlRdWYUHHfZATciNR2WziCr3Zw1l/vOQvzR6zegUblt31P5bNzTFUa7sIgw1wxQd
+ MSqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tCQyDrPS485JCf/EEBqEIhlOY+R+jUvQFllkGWdxwlU=;
- b=bHKwDAeHCrjL9iGnFAUr1CewVe/ChdrnVKBn/urUpKgTzrjTZOYM/d6et7e+p/TkLZ
- 5qQArHvAI8vMA43LrbYZvBQv5rMCtEwCc7yXfOSdY1TGHJV/lHDjVUYED4jG5AgxK59d
- w10G2MD+sm3rUuAbuHd4UFNag5n4SBBPcN44B3BjiB9b33TJjoN49JEPgw1hWTD80VOM
- GLzGMVHjjLQ3u258P63+F9YIaDgK+bYrQrWX8k6Cr4KnEw/bww3LPiesdDEY6zdHjMYe
- KZKU5/ZbzTsQwogfnFqXyc96FuKkhq4zB4W0pCzwy1/1hJ3HvNps/VjTecUWZpId87HP
- bZww==
-X-Gm-Message-State: AOAM531QaancAq2jslGgCsbv3mtWzDlWBDhwbMFLuaeSeXIst5JRhn6X
- dIQSavgIONDYXbYPQ8sx7/YsGmbpoHWxqfgt7MMaaQ==
-X-Google-Smtp-Source: ABdhPJwMK3SFZbamqjUeewMx4pyjEYGz6E3mOkM1UlEIRFJpJxPqU+mIDBmUS5Mxf2RtuRjUN723pYQ6K6iCkHrQauA=
-X-Received: by 2002:a05:6102:7d5:: with SMTP id
- y21mr21665508vsg.19.1621865475641; 
- Mon, 24 May 2021 07:11:15 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=0c5Qxjp+4tL19l2WuaML9jbCExKjLNfzcff3PqhK+VE=;
+ b=mzubOMrjiMqkLShqs/EmC5sBioIkUX0lEPSBtd0cxdhsF8UazX6e8CfVJdbllepCH2
+ gIh8mlAXvnHXq2+/hR3n43T5z24DRGEvCRLi+rfcRyoMUMvw1qJia5IDphHENoxHpWfX
+ DdSsy0a0AFnkEQmvzDAFgVS2srFE+5eI/9RuIyeSS6Fo9rLeUU4pxU+VtrQ4BWYQjgGQ
+ yj/Uylslz85vjYaE7MthHZovhvIxYbf8kJc4jusRLZ+uadv5wWqPksQKctHV2uc6ql2H
+ FL9wxZ/BL9vTr+AdmAEfDlK6RcnqvlWj8PzU7LOE1O2I8LLfEWKYXLAu7ht+yzHS5s5N
+ vw6A==
+X-Gm-Message-State: AOAM5315etHHdu7AQRge90Wc592ewV5KB6l1LKFn4lLZMCn0eaIr/q+j
+ 11ILtT06vL6CzhopbNY1sMx0cg==
+X-Google-Smtp-Source: ABdhPJzP2RUqZymnC2lnFHYSor1AieszJZmgrX4DEQ4so867X8K+jZMC2gm2x7if1QXdo4oFdo6teQ==
+X-Received: by 2002:a63:8f15:: with SMTP id n21mr12327462pgd.366.1621847928173; 
+ Mon, 24 May 2021 02:18:48 -0700 (PDT)
+Received: from localhost ([136.185.154.93])
+ by smtp.gmail.com with ESMTPSA id p8sm10169150pfw.165.2021.05.24.02.18.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 02:18:47 -0700 (PDT)
+Date: Mon, 24 May 2021 14:48:45 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH v10] cpufreq: mediatek-hw: Add support for Mediatek
+ cpufreq HW driver
+Message-ID: <20210524091845.wlikxun3x2qou7zs@vireshk-i7>
+References: <1609222629-2979-1-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
-References: <20210517105432.1682-1-zbestahu@gmail.com>
-In-Reply-To: <20210517105432.1682-1-zbestahu@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 24 May 2021 16:10:36 +0200
-Message-ID: <CAPDyKFpyoEFt6CEwitD12sskG_YuLW=B+635_hyJ5gOLAzwYPQ@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mediatek: remove useless data parameter from
- msdc_data_xfer_next()
-To: Yue Hu <zbestahu@gmail.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mmc <linux-mmc@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Yue Hu <huyue2@yulong.com>, zbestahu@163.com
+Content-Disposition: inline
+In-Reply-To: <1609222629-2979-1-git-send-email-hector.yuan@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_071116_654942_5E9393F7 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20210524_021850_192913_C33C4D2F 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,50 +104,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 May 2021 at 12:54, Yue Hu <zbestahu@gmail.com> wrote:
->
-> From: Yue Hu <huyue2@yulong.com>
->
-> We do not use the 'data' in msdc_data_xfer_next().
->
-> Signed-off-by: Yue Hu <huyue2@yulong.com>
+On 29-12-20, 14:17, Hector Yuan wrote:
+> The CPUfreq HW present in some Mediatek chipsets offloads the steps necessary for changing the frequency of CPUs. 
+> The driver implements the cpufreq driver interface for this hardware engine. 
+> This patch depends on MT6779 DTS patchset[1] submitted by Hanks Chen.
+> 
+> >From v8 to v9, there are three more modifications.
+> 1. Based on patchset[2], align binding with scmi for performance domain.
+> 2. Add the CPUFREQ fast switch function support and define DVFS latency.
+> 3. Based on patchser[3], add energy model API parameter for mW.
 
-Applied for next, thanks!
+Hi Hector,
 
-Kind regards
-Uffe
+You can refresh this series based on the patch from Sudeep:
 
+https://lore.kernel.org/linux-devicetree/20210517155458.1016707-1-sudeep.holla@arm.com/
 
-> ---
->  drivers/mmc/host/mtk-sd.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index c4db944..4dfc246 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1347,8 +1347,7 @@ static void msdc_post_req(struct mmc_host *mmc, struct mmc_request *mrq,
->         }
->  }
->
-> -static void msdc_data_xfer_next(struct msdc_host *host,
-> -                               struct mmc_request *mrq, struct mmc_data *data)
-> +static void msdc_data_xfer_next(struct msdc_host *host, struct mmc_request *mrq)
->  {
->         if (mmc_op_multi(mrq->cmd->opcode) && mrq->stop && !mrq->stop->error &&
->             !mrq->sbc)
-> @@ -1407,7 +1406,7 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
->                                 (int)data->error, data->bytes_xfered);
->                 }
->
-> -               msdc_data_xfer_next(host, mrq, data);
-> +               msdc_data_xfer_next(host, mrq);
->                 done = true;
->         }
->         return done;
-> --
-> 1.9.1
->
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
