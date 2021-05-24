@@ -2,80 +2,88 @@ Return-Path: <SRS0=GIYZ=KT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A6AEBC2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 19:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF2EEC04FF3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 21:07:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68E2961401
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 19:35:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68E2961401
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6C3E061411
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 21:07:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C3E061411
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s1KqAl0JOFKg0pz2WlTNoCJ6RXFg+9+kM8sMsdquw38=; b=P6WXrYnd7wN6+4
-	8oBoLLitB1WYCiVwp8cVcip3xs9vkh1QAoBGWX5iSzNR3ASj0bgjTyTKf/KiSEwAPL0sYUWk95HUP
-	fP7Qu6V7tod2/hAtsXELjwQkwA+t1LmcsEYxEO4yWDLZQ40yk9BImN+gmcH1ocm71wlX4U7MiuAVs
-	RmOjD4dzADKPKDoQomPHa7PhRD3jyoZtbgPym8YgmWjhWul1dYvWny6TRCSOf1T97vxglnKsKuugu
-	QUwI7XyQq+ODNzJgHIC/375dhMQZ6ICG8Ep2ZntkI0rxAZASIJEMilWXd/ZAzF/CVqzTKYo/QLClY
-	HjNCd5DoThG1YwhZlNPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Fkb1Kqct9UAo6pO8fpAhFjKjiqeIiGefrJobrKCJKXo=; b=eLCJkBnn25x/TS
+	g8GR/75dCz8dwKm37jeLXTFRfdHWpHYRBDi5KfucakH87kBgkAzmaK4l6yoSaC1SL8RaaFk/8Yc8U
+	ZVnE+Q1F3FpG5qfT5HY7LSRZRaG7crbOIcrVLsTBQ2/kMlyU57Cg8wEOAgLNPm+sAjTELmH72FILM
+	2QR/vPWB5wKjmYom2cM3kgNBsAdQ6+y6XIuA20lvuFZ5QnrnwVyqbhamhH2Bq6o7oUEQ29iSNYVMw
+	5GzlsI6a2GgiL2uZ3Bq6+En8mgDcmXyLs+EzQqBXF+OgbtKGY+usEYpNv9FmagO3zhw9rS1upW2eF
+	thv98dnTF6ARwAt2rDCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llGM2-001hEo-6P; Mon, 24 May 2021 19:35:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1llHnC-001tYS-DU; Mon, 24 May 2021 21:07:18 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ll9re-000uwI-9u; Mon, 24 May 2021 12:39:23 +0000
-X-UUID: 1a15ac8b46474726ac095295c2aab82d-20210524
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QvtKCMBBQcoNWh9/sXHAdCGTJLRvd7H6GdGx4BD6lsY=; 
- b=VgVsoy6YbCfQjoSHYGM8yzzIL+WhbaAKlbNnNd5tWP9fNCpmmwiBPZFbJY1v3Usnb9QArV9UqdlOIoe7THjovh+GsoXM7wGli1+29uvl6uQuPxQsfdTaT3VAtpyh8eH/ysx9/mZSIZRdx+b1RHUVaexBe160XBWQEyuBBv/DHgw=;
-X-UUID: 1a15ac8b46474726ac095295c2aab82d-20210524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1396489901; Mon, 24 May 2021 05:39:13 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 05:29:12 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 20:29:10 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 24 May 2021 20:29:10 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, "chun-jie . chen" <chun-jie.chen@mediatek.com>
-Subject: [PATCH v9 03/22] dt-bindings: ARM: Mediatek: Add new document
- bindings of msdc controller
-Date: Mon, 24 May 2021 20:20:34 +0800
-Message-ID: <20210524122053.17155-4-chun-jie.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
-References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
+ id 1llCRm-0012PV-5a; Mon, 24 May 2021 15:24:51 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id i5so20369814pgm.0;
+ Mon, 24 May 2021 08:24:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SdxJSqfgziagedBw0XrcHxZm8bidCvv9boVgE9SVO4w=;
+ b=hRKZ1Gc0eU5QYIkceJ3FdfaYPJ3pvcLbpZYHC5KjSd8N9Tg9XclrQHK3NfXeo79O5G
+ N6N7COZ8ES2eMkzfe0JwoskjL5A0FlPA0vx5WaWzKcyDh8y2ys5Y/IUFsBsS0sKWQph1
+ MLH0Rzo9nmN+fuADpeYMd+H1f3TUOBi9DChfyfWc36sgsbsBIPLYC0o/6YVM9lq6dV6X
+ NjAV/V+rkQi9fYjZw2B/3837zs+UlHvcpHIUd1qi2B7bZA/zYlsVlUIBnou8mGTt/355
+ SbwY6v9ePCvsgH+Xjzd8J3k34iBbC5/b1lsbfhMai1f9GgrKWgQKYCchQNoM9xVAESgn
+ cmvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=SdxJSqfgziagedBw0XrcHxZm8bidCvv9boVgE9SVO4w=;
+ b=CCOuGh9RhCqg2uLTRLqYiXB4ms5JiXxN+oD0UEeHvZDMGKCV0MsIH7ITTu6Eqqhqxy
+ aA7F3mvO+XCsUG2T5lU7mTQTogWmNFe9MX6oc3qWdvoNNeWVR2L1DkT7T5fv9vjbQ6/n
+ vydNwZfO3+bbb5+L2WzG/XBmOv/wFzYF7wa4izdkx6DdXtw8DGBN/MUpGFLyy9mqJRQA
+ uG8dYhGnDiIFOyAJPno93zfawTuOCEcg+eG2xDBZXGd9vzCmmfDblBedAnHyqx2j83OZ
+ Tx7uTw5E/C1ra/totMrkNmdju+8cRlx8ACQICKZeURMD0bFFawhIg0WOoaWRGFIKiITU
+ /qDQ==
+X-Gm-Message-State: AOAM5335k7WoYWxh2yhv+lEn7PLsmLYSEqB8ylUJtYfNEzEKJSAJyofg
+ agAjaoqLnuXpLoe6dru7TcI=
+X-Google-Smtp-Source: ABdhPJx7/6fAdLIu67aceMeF+xCB7VOiL6cBF8XdU3nRpUQ1xRRLy7NlNTpqHtuhxgEEEc0sdnudBw==
+X-Received: by 2002:a62:4ecc:0:b029:2d7:d315:2579 with SMTP id
+ c195-20020a624ecc0000b02902d7d3152579mr25028889pfb.21.1621869888526; 
+ Mon, 24 May 2021 08:24:48 -0700 (PDT)
+Received: from localhost.localdomain ([2402:7500:469:b4c4:1464:a4f2:334c:afaf])
+ by smtp.gmail.com with ESMTPSA id a15sm10821597pff.128.2021.05.24.08.24.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 May 2021 08:24:47 -0700 (PDT)
+From: Gene Chen <gene.chen.richtek@gmail.com>
+To: jacek.anaszewski@gmail.com,
+	pavel@ucw.cz,
+	matthias.bgg@gmail.com
+Cc: dmurphy@ti.com, linux-leds@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com,
+ shufan_lee@richtek.com, cy_huang@richtek.com, benjamin.chao@mediatek.com
+Subject: [PATCH v14 0/2] leds: mt6360: Add LED driver for MT6360
+Date: Mon, 24 May 2021 23:24:25 +0800
+Message-Id: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_053922_370890_60141FF7 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20210524_082450_258658_625A9B37 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,72 +100,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the new binding documentation of msdc controller
-for Mediatek MT8192.
+This patch series add MT6360 LED support contains driver and binding document
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
----
- .../bindings/arm/mediatek/mediatek,msdc.yaml  | 48 +++++++++++++++++++
- 1 file changed, 48 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+Gene Chen (2)
+ dt-bindings: leds: Add bindings for MT6360 LED
+ leds: mt6360: Add LED driver for MT6360
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-new file mode 100644
-index 000000000000..10eb43de2d2b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-@@ -0,0 +1,48 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MSDC Controller
-+
-+maintainers:
-+  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
-+
-+description:
-+  The Mediatek msdc controller provides functional configurations and clocks to the system.
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - mediatek,mt8192-msdc
-+          - mediatek,mt8192-msdc_top
-+      - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+  '#clock-cells':
-+    const: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    msdc: syscon@11f60000 {
-+        compatible = "mediatek,mt8192-msdc", "syscon";
-+        reg = <0x11f60000 0x1000>;
-+        #clock-cells = <1>;
-+    };
-+
-+  - |
-+    msdc_top: syscon@11f10000 {
-+        compatible = "mediatek,mt8192-msdc_top", "syscon";
-+        reg = <0x11f10000 0x1000>;
-+        #clock-cells = <1>;
-+    };
--- 
-2.18.0
+ Documentation/devicetree/bindings/leds/leds-mt6360.yaml |  159 ++
+ drivers/leds/flash/Kconfig                              |   13 
+ drivers/leds/flash/Makefile                             |    1 
+ drivers/leds/flash/leds-mt6360.c                        |  910 ++++++++++++++++
+ 4 files changed, 1083 insertions(+)
+
+changelogs between v1 & v2
+ - add led driver with mfd
+
+changelogs between v2 & v3
+ - independent add led driver
+ - add dt-binding document
+ - refactor macros definition for easy to debug
+ - parse device tree by fwnode
+ - use devm*ext to register led class device
+
+changelogs between v3 & v4
+ - fix binding document description
+ - use GENMASK and add unit postfix to definition
+ - isink register led class device
+
+changelogs between v4 & v5
+ - change rgb isink to multicolor control
+ - add binding reference to mfd yaml
+
+changelogs between v5 & v6
+ - Use DT to decide RGB LED is multicolor device or indicator device only
+
+changelogs between v6 & v7
+ - Add binding multicolor device sample code
+ - Add flash ops mutex lock
+ - Remove V4L2 init with indicator device
+
+changelogs between v7 & v8
+ - Add mutex for led fault get ops
+ - Fix flash and multicolor no-ops return 0
+ - Add LED_FUNCTION_MOONLIGHT
+
+changelogs between v8 & v9
+ - reuse api in flash and multicolor header
+
+changelogs between v9 & v10
+ - add comment for reuse registration functions in flash and multicolor
+
+changelogs between v10 & v11
+ - match dt-binding reg property comment to the functionality name
+ - remove exist patch in linux-next
+ - dicide multicolor channel by color definitiion
+
+changelogs between v11 & v12
+ - Fix print size_t by %zu
+ - Fix dt-binding name regular experssion
+
+changelogs between v12 & v13
+ - Fix kbuild test rebot build error
+
+changelogs between v13 & v14
+ - Move driver to flash folder
+ - Remove LED FUNCTION MOONLIGHT
+ - Keep 80 char per line
+
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
