@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41383C04FF3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C787C04FF3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:33:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EB101613E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:28:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB101613E1
+	by mail.kernel.org (Postfix) with ESMTPS id C48E661400
+	for <linux-mediatek@archiver.kernel.org>; Mon, 24 May 2021 22:33:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C48E661400
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c44NdU5AWMmHPAlYPmqzPuTY3fblCWDss/CdfzK4cGs=; b=mPbObJmzLsEky9
-	uusSGOT0HV7Fe6qK7b1x/Zxzoxla3nh+0EQ06NVQ8KPFz40cdxrdDQPulZPYzNYZvIlKNGTVtkdEO
-	S2L37rPBU9GDUPjI8UXG4168ZTDKU6euyxZSpAHqq+pjKmDQLAsfphKJ1WxLy6jNpDjop3/7G83oT
-	xC/BjIpeD/IYPoR3TmbH5Q13B0871noH67e89JuzsaI52MfHZAUjYaXqDYXQQfbInsywfLgIDHqEo
-	qnrsnbwV1DUboiHqorGXG0adVVXa1BbpwLMVDaITskHljt7ThdDmN6OQYU8VZ0YgVyGR2T842g5jO
-	1YFsKiiGickV4Gy8Z3Ow==;
+	List-Owner; bh=ja0rAIk32ophlLgtnMQKBuG8B2rMJjpcCDURN9aP0qQ=; b=QT7Y7+tLwTPQrx
+	OcY7LehnXqBmpXrnUayfgdRZI4UVCRYM/Y/apQpzeMtwHVRA8vAVUAhRGc4f2rI+3K5SyZGJruQz5
+	QFnytZXoIlRTIiFXeePlXi8W7sOCBog4R3pnqKYqDpmSohnHpPONBfQAX+YIJk5glIjWgNW+RjOCn
+	/hIsjmQpf/bOGL2wVuDO1SxAhuQXWLekqVc6S8UM1f0Sehlm4T7lZ7DY+AQGg/OVUKlzLA7gs4atC
+	9LvPIXfnegB2VqTTmAhK2cQPu/Bi8dKWDMNFX16ZPgbebnF2ZXldHrxYbpNx6HoUV3CsPG5UUzO21
+	Wqx8V6jPHS2eDkGMn8mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llJ3o-0028ED-L2; Mon, 24 May 2021 22:28:32 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1llJ87-00298M-Pg; Mon, 24 May 2021 22:32:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1ll9rh-000uyE-Jh; Mon, 24 May 2021 12:39:27 +0000
-X-UUID: 4d7d419e14b643b29e39acec388d18c0-20210524
+ id 1ll9rh-000uwI-6D; Mon, 24 May 2021 12:39:26 +0000
+X-UUID: d4f7a44184a34147b0d022d4c8dc04ab-20210524
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=7pPFFEgdATBiQJloIzsxdgpExeoIc3kHI7yvXZfpVeI=; 
- b=Y1ogW25NRQpzTIG+AVV7lnw1b7VM/r9DAIzp87l4epBU4L2hslDe27jlKcUr6Pzi6PkXvQU8Qd2WAbbuebZbhN0OlaB8YTvKaMjqmPpT9Dy2sie0AcSPBtHpOCMDo5DfOWFDbN91xhANQW7SlG/LjVF1jecNOLRuF8E5m8nnboY=;
-X-UUID: 4d7d419e14b643b29e39acec388d18c0-20210524
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=DX36PTpX4V4eVeo8v3HBS9nJHSuZjkM2iG4AI3953PU=; 
+ b=AG3PN2qfB3ToCZbo3eMUzt1KHL+Na4sZ96wI8iVFxPnxYtu7JvOy/Ak/Tye+y8aoWzImLZgPOqJnP5fBqaPsMjOjHDapSNq9ajcvEfMwZGLeE+Cq+Afvj8JOFMiGzOMl5pWmp1viJ5EVGO04tczWLfiktQy4fXJYmA+wFJLo+B4=;
+X-UUID: d4f7a44184a34147b0d022d4c8dc04ab-20210524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1603717014; Mon, 24 May 2021 05:39:15 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 05:29:15 -0700
+ with ESMTP id 1134903899; Mon, 24 May 2021 05:39:13 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 May 2021 05:29:11 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 20:29:13 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 May 2021 20:29:10 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 24 May 2021 20:29:13 +0800
+ Frontend Transport; Mon, 24 May 2021 20:29:10 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -64,17 +64,18 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
  <weiyi.lu@mediatek.com>, "chun-jie . chen" <chun-jie.chen@mediatek.com>
-Subject: [PATCH v9 22/22] clk: mediatek: Add MT8192 vencsys clock support
-Date: Mon, 24 May 2021 20:20:53 +0800
-Message-ID: <20210524122053.17155-23-chun-jie.chen@mediatek.com>
+Subject: [PATCH v9 01/22] dt-bindings: ARM: Mediatek: Add new document
+ bindings of imp i2c wrapper controller
+Date: Mon, 24 May 2021 20:20:32 +0800
+Message-ID: <20210524122053.17155-2-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
 References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_053925_680440_93847AA1 
-X-CRM114-Status: GOOD (  16.85  )
+X-CRM114-CacheID: sfid-20210524_053925_258180_0D06F294 
+X-CRM114-Status: GOOD (  13.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,104 +92,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8192 vencsys clock provider
+This patch adds the new binding documentation of imp i2c wrapper controller
+for Mediatek MT8192.
 
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Kconfig           |  6 +++
- drivers/clk/mediatek/Makefile          |  1 +
- drivers/clk/mediatek/clk-mt8192-venc.c | 53 ++++++++++++++++++++++++++
- 3 files changed, 60 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8192-venc.c
+ .../arm/mediatek/mediatek,imp_iic_wrap.yaml   | 80 +++++++++++++++++++
+ 1 file changed, 80 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 31779f2c5c83..576babd86f98 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -574,6 +574,12 @@ config COMMON_CLK_MT8192_VDECSYS
- 	help
- 	  This driver supports MediaTek MT8192 vdecsys and vdecsys_soc clocks.
- 
-+config COMMON_CLK_MT8192_VENCSYS
-+	bool "Clock driver for MediaTek MT8192 vencsys"
-+	depends on COMMON_CLK_MT8192
-+	help
-+	  This driver supports MediaTek MT8192 vencsys clocks.
-+
- config COMMON_CLK_MT8516
- 	bool "Clock driver for MediaTek MT8516"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 887dd6bcf7f2..15bc045f0b71 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -79,5 +79,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_MMSYS) += clk-mt8192-mm.o
- obj-$(CONFIG_COMMON_CLK_MT8192_MSDC) += clk-mt8192-msdc.o
- obj-$(CONFIG_COMMON_CLK_MT8192_SCP_ADSP) += clk-mt8192-scp_adsp.o
- obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
-+obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
- obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8192-venc.c b/drivers/clk/mediatek/clk-mt8192-venc.c
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
 new file mode 100644
-index 000000000000..ce220c5334c0
+index 000000000000..fb6cb9e60ee2
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8192-venc.c
-@@ -0,0 +1,53 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2020 MediaTek Inc.
-+// Author: Weiyi Lu <weiyi.lu@mediatek.com>
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imp_iic_wrap.yaml
+@@ -0,0 +1,80 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/arm/mediatek/mediatek,imp_iic_wrap.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/clk-provider.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
++title: MediaTek IMP I2C Wrapper Controller
 +
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
++maintainers:
++  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
 +
-+#include <dt-bindings/clock/mt8192-clk.h>
++description:
++  The Mediatek imp i2c wrapper controller provides functional configurations and clocks to the system.
 +
-+static const struct mtk_gate_regs venc_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8192-imp_iic_wrap_c
++          - mediatek,mt8192-imp_iic_wrap_e
++          - mediatek,mt8192-imp_iic_wrap_s
++          - mediatek,mt8192-imp_iic_wrap_ws
++          - mediatek,mt8192-imp_iic_wrap_w
++          - mediatek,mt8192-imp_iic_wrap_n
++      - const: syscon
 +
-+#define GATE_VENC(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &venc_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
++  reg:
++    maxItems: 1
 +
-+static const struct mtk_gate venc_clks[] = {
-+	GATE_VENC(CLK_VENC_SET0_LARB, "venc_set0_larb", "venc_sel", 0),
-+	GATE_VENC(CLK_VENC_SET1_VENC, "venc_set1_venc", "venc_sel", 4),
-+	GATE_VENC(CLK_VENC_SET2_JPGENC, "venc_set2_jpgenc", "venc_sel", 8),
-+	GATE_VENC(CLK_VENC_SET5_GALS, "venc_set5_gals", "venc_sel", 28),
-+};
++  '#clock-cells':
++    const: 1
 +
-+static const struct mtk_clk_desc venc_desc = {
-+	.clks = venc_clks,
-+	.num_clks = ARRAY_SIZE(venc_clks),
-+};
++required:
++  - compatible
++  - reg
 +
-+static const struct of_device_id of_match_clk_mt8192_venc[] = {
-+	{
-+		.compatible = "mediatek,mt8192-vencsys",
-+		.data = &venc_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
++additionalProperties: false
 +
-+static struct platform_driver clk_mt8192_venc_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.driver = {
-+		.name = "clk-mt8192-venc",
-+		.of_match_table = of_match_clk_mt8192_venc,
-+	},
-+};
++examples:
++  - |
++    imp_iic_wrap_c: syscon@11007000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_c", "syscon";
++        reg = <0x11007000 0x1000>;
++        #clock-cells = <1>;
++    };
 +
-+builtin_platform_driver(clk_mt8192_venc_drv);
++  - |
++    imp_iic_wrap_e: syscon@11cb1000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_e", "syscon";
++        reg = <0x11cb1000 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_s: syscon@11d03000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_s", "syscon";
++        reg = <0x11d03000 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_ws: syscon@11d23000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_ws", "syscon";
++        reg = <0x11d23000 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_w: syscon@11e01000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_w", "syscon";
++        reg = <0x11e01000 0x1000>;
++        #clock-cells = <1>;
++    };
++
++  - |
++    imp_iic_wrap_n: syscon@11f02000 {
++        compatible = "mediatek,mt8192-imp_iic_wrap_n", "syscon";
++        reg = <0x11f02000 0x1000>;
++        #clock-cells = <1>;
++    };
 -- 
 2.18.0
 _______________________________________________
