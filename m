@@ -5,75 +5,75 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5AD3C2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED05AC2B9F8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:54:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9432361419
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:45:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9432361419
+	by mail.kernel.org (Postfix) with ESMTPS id B065361409
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:54:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B065361409
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I9Xj8rnYYARq6eP0UOKCTHMK9rpCHWiKWhHrSFutxC8=; b=e03zZ4HU56oVzH
-	zNfLg6mLMynxCM/Cdo5BAtl4oNUiW2hfSn+qa/A8ybcShrR9MNNBTB/PZTrZ/s6zyuUtZSnr5KOE5
-	qGkJ5TorP46a8XiMR/lYZqHo4qgQjhrDmEvNSoqWu374LqeoWnOIsgcrBJLv9P4e0Skym1kDNk7+B
-	X4QricGqOZqyzek76Cl/zS2G+YOogTfbsgLABxi5m+wKYI+1En+iNgTeUPS+TyAEpIiaQ197b3cHe
-	NZTIwhhIZcHTxQcxkTs6xp6vWfXDXgEwEHjVc1gB0SWEbDZLQcdq19u3k/LttB9yV/BjMEtf5GYHB
-	Hv53OCK+VYcmbhPqDs9g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LHkYO3kuQDBgcxagemAXaRkFpsh44CeZZ0crKqHJhkQ=; b=Ydq+WQudHEKixL
+	9eAtA4dKmYrM8ETY7W3dJVYVkHsRgtAXUtqsUZjeDdH6cdOLimfz1cpqjDaXrcM9KCTlruXnAmoBQ
+	vv+o5loSMF32Zc4f5cDYT9IM4iRitOXE68YhyN7Y+LlhO0wlNC85XpJutcip2PRvRG2lTUiyGni7t
+	rMs0cHCTRRiWWdxpNo9HEZHCehTgaDbRL/SmnpTd/ecmh7LDBWXAd+0u1Ff27D55XIZvBPKN056VT
+	2WbbawJObzYAbBiIQY0+3bmHO+Z/NNljR1Dwn+6bdaaPjHeOCcYSj+75emfBF0PgCFA9mCavhFp7Q
+	dJwRT0ssPbWGfvusuFPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llSgq-00493n-Rx; Tue, 25 May 2021 08:45:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1llSoy-004CGO-2T; Tue, 25 May 2021 08:53:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llSgm-00491a-3P
- for linux-mediatek@lists.infradead.org; Tue, 25 May 2021 08:45:27 +0000
-X-UUID: c6a6af4dcadb4b50a5e40a6654989b0e-20210525
+ id 1llSoS-004C14-Ix; Tue, 25 May 2021 08:53:24 +0000
+X-UUID: ab6d197bb66d4cc2a933f5992b0326c9-20210525
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=fr5Ji9UWZFBgAwg+ZblntACD90fVLO9heV5eR2qiXME=; 
- b=QB/Iof1fVSIKvWtuc1T1uF8MUh5xHXhRohdVqN9S8pTToWwtto4vLCmIIPbVyuDC49++3xJuQiTIHz0lZ5YEbQ19HroaB10g88R/AKzQxn9HAkhyZEgWjzJOPvoF1AudZadjn5fCo8gidetCTW+41T4+GzmvB7WZbbsXDGJ664Q=;
-X-UUID: c6a6af4dcadb4b50a5e40a6654989b0e-20210525
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Q+d5TmFxgYUOTbXeyIucEBVczen+3LmsqBJCeNp4jJw=; 
+ b=W+uP7ZPDQAomOXHtTRTciCn1DDgsG7mjJnhSV7MTsN75DhylrCVH3m6naC2XV3R1aFlzQ+dEvRfdtunLVFoD2ubL8FcozDIBKvMEl1Kh2f8OiRuE8qSJcrkEzA58InU8FCNh7BPZldE7lp7CenPswpklSDZ7LFMkc7TLRBXG4PU=;
+X-UUID: ab6d197bb66d4cc2a933f5992b0326c9-20210525
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2042062242; Tue, 25 May 2021 01:45:20 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 01:45:19 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 16:45:17 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 May 2021 16:45:17 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] mt76: mt7615: add .offset_tsf callback
-Date: Tue, 25 May 2021 16:45:15 +0800
-Message-ID: <02303700150757de92fec3525fe51c04d1aca416.1621931743.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <324aa6af6a191a1f929fd3054148b001acd0bd13.1621931743.git.ryder.lee@mediatek.com>
-References: <324aa6af6a191a1f929fd3054148b001acd0bd13.1621931743.git.ryder.lee@mediatek.com>
+ with ESMTP id 539246454; Tue, 25 May 2021 01:53:14 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 May 2021 01:53:12 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 May 2021 16:53:09 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 25 May 2021 16:53:08 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus
+ <heikki.krogerus@linux.intel.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Thierry Reding <treding@nvidia.com>, "Paul
+ Cercueil" <paul@crapouillou.net>, Lee Jones <lee.jones@linaro.org>, "Guenter
+ Roeck" <linux@roeck-us.net>, Hans de Goede <hdegoede@redhat.com>,
+ <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH 1/2] usb: roles: add helper usb_role_string()
+Date: Tue, 25 May 2021 16:53:05 +0800
+Message-ID: <1621932786-9335-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 9D3C1B779BF25D9D23F9965EFEF3D524173D86C78AC011EFF27669269D1E0E2E2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_014525_605489_11953282 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20210525_015320_694316_91588F93 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,118 +90,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It's much more accurate than .get_tsf + .set_tsf, and switch to use
-mt76_rmw to operate tsf registers.
+Introduces usb_role_string() function, which returns a
+human-readable name of provided usb role, it's useful to
+make the log readable.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mac.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7615/main.c  | 32 +++++++++++++++++--
- .../net/wireless/mediatek/mt76/mt7615/regs.h  |  2 ++
- .../wireless/mediatek/mt76/mt7615/usb_sdio.c  |  2 +-
- 4 files changed, 34 insertions(+), 4 deletions(-)
+ drivers/usb/roles/class.c | 9 +++++++++
+ include/linux/usb/role.h  | 6 ++++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 71af122a0b38..2ac7d0b0eff4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1125,7 +1125,7 @@ void mt7615_mac_set_rates(struct mt7615_phy *phy, struct mt7615_sta *sta,
- 	idx = idx > HW_BSSID_MAX ? HW_BSSID_0 : idx;
- 	addr = idx > 1 ? MT_LPON_TCR2(idx): MT_LPON_TCR0(idx);
+diff --git a/drivers/usb/roles/class.c b/drivers/usb/roles/class.c
+index 33b637d0d8d9..dfaed7eee94f 100644
+--- a/drivers/usb/roles/class.c
++++ b/drivers/usb/roles/class.c
+@@ -214,6 +214,15 @@ static const char * const usb_roles[] = {
+ 	[USB_ROLE_DEVICE]	= "device",
+ };
  
--	mt76_set(dev, addr, MT_LPON_TCR_MODE); /* TSF read */
-+	mt76_rmw(dev, addr, MT_LPON_TCR_MODE, MT_LPON_TCR_READ); /* TSF read */
- 	sta->rate_set_tsf = mt76_rr(dev, MT_LPON_UTTR0) & ~BIT(0);
- 	sta->rate_set_tsf |= rd.rateset;
++const char *usb_role_string(enum usb_role role)
++{
++	if (role < 0 || role >= ARRAY_SIZE(usb_roles))
++		return "unknown";
++
++	return usb_roles[role];
++}
++EXPORT_SYMBOL_GPL(usb_role_string);
++
+ static ssize_t
+ role_show(struct device *dev, struct device_attribute *attr, char *buf)
+ {
+diff --git a/include/linux/usb/role.h b/include/linux/usb/role.h
+index 0164fed31b06..031f148ab373 100644
+--- a/include/linux/usb/role.h
++++ b/include/linux/usb/role.h
+@@ -65,6 +65,7 @@ void usb_role_switch_unregister(struct usb_role_switch *sw);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/main.c b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-index e36c52290985..3bd755634d5b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/main.c
-@@ -891,7 +891,8 @@ mt7615_get_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 
- 	mt7615_mutex_acquire(dev);
- 
--	mt76_set(dev, reg, MT_LPON_TCR_MODE); /* TSF read */
-+	/* TSF read */
-+	mt76_rmw(dev, reg, MT_LPON_TCR_MODE, MT_LPON_TCR_READ);
- 	tsf.t32[0] = mt76_rr(dev, MT_LPON_UTTR0);
- 	tsf.t32[1] = mt76_rr(dev, MT_LPON_UTTR1);
- 
-@@ -921,11 +922,37 @@ mt7615_set_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	mt76_wr(dev, MT_LPON_UTTR0, tsf.t32[0]);
- 	mt76_wr(dev, MT_LPON_UTTR1, tsf.t32[1]);
- 	/* TSF software overwrite */
--	mt76_set(dev, reg, MT_LPON_TCR_WRITE);
-+	mt76_rmw(dev, reg, MT_LPON_TCR_MODE, MT_LPON_TCR_WRITE);
- 
- 	mt7615_mutex_release(dev);
+ void usb_role_switch_set_drvdata(struct usb_role_switch *sw, void *data);
+ void *usb_role_switch_get_drvdata(struct usb_role_switch *sw);
++const char *usb_role_string(enum usb_role role);
+ #else
+ static inline int usb_role_switch_set_role(struct usb_role_switch *sw,
+ 		enum usb_role role)
+@@ -109,6 +110,11 @@ static inline void *usb_role_switch_get_drvdata(struct usb_role_switch *sw)
+ 	return NULL;
  }
  
-+static void
-+mt7615_offset_tsf(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+		  s64 timestamp)
++static inline const char *usb_role_string(enum usb_role role)
 +{
-+	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
-+	struct mt7615_dev *dev = mt7615_hw_dev(hw);
-+	union {
-+		u64 t64;
-+		u32 t32[2];
-+	} tsf = { .t64 = timestamp, };
-+	u16 idx = mvif->mt76.omac_idx;
-+	u32 reg;
-+
-+	idx = idx > HW_BSSID_MAX ? HW_BSSID_0 : idx;
-+	reg = idx > 1 ? MT_LPON_TCR2(idx): MT_LPON_TCR0(idx);
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	mt76_wr(dev, MT_LPON_UTTR0, tsf.t32[0]);
-+	mt76_wr(dev, MT_LPON_UTTR1, tsf.t32[1]);
-+	/* TSF software adjust*/
-+	mt76_rmw(dev, reg, MT_LPON_TCR_MODE, MT_LPON_TCR_ADJUST);
-+
-+	mutex_unlock(&dev->mt76.mutex);
++	return "unknown";
 +}
 +
- static void
- mt7615_set_coverage_class(struct ieee80211_hw *hw, s16 coverage_class)
- {
-@@ -1308,6 +1335,7 @@ const struct ieee80211_ops mt7615_ops = {
- 	.get_stats = mt7615_get_stats,
- 	.get_tsf = mt7615_get_tsf,
- 	.set_tsf = mt7615_set_tsf,
-+	.offset_tsf = mt7615_offset_tsf,
- 	.get_survey = mt76_get_survey,
- 	.get_antenna = mt76_get_antenna,
- 	.set_antenna = mt7615_set_antenna,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-index 63c081bb04d0..6712ad9faeaa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/regs.h
-@@ -463,7 +463,9 @@ enum mt7615_reg_base {
- #define MT_LPON_TCR0(_n)		MT_LPON(0x010 + ((_n) * 4))
- #define MT_LPON_TCR2(_n)		MT_LPON(0x0f8 + ((_n) - 2) * 4)
- #define MT_LPON_TCR_MODE		GENMASK(1, 0)
-+#define MT_LPON_TCR_READ		GENMASK(1, 0)
- #define MT_LPON_TCR_WRITE		BIT(0)
-+#define MT_LPON_TCR_ADJUST		BIT(1)
+ #endif
  
- #define MT_LPON_UTTR0			MT_LPON(0x018)
- #define MT_LPON_UTTR1			MT_LPON(0x01c)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-index 75a05f8dd7e7..996d48cca18a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-@@ -123,7 +123,7 @@ static int mt7663_usb_sdio_set_rates(struct mt7615_dev *dev,
- 	idx = idx > HW_BSSID_MAX ? HW_BSSID_0 : idx;
- 	addr = idx > 1 ? MT_LPON_TCR2(idx): MT_LPON_TCR0(idx);
- 
--	mt76_set(dev, addr, MT_LPON_TCR_MODE); /* TSF read */
-+	mt76_rmw(dev, addr, MT_LPON_TCR_MODE, MT_LPON_TCR_READ); /* TSF read */
- 	val = mt76_rr(dev, MT_LPON_UTTR0);
- 	sta->rate_set_tsf = (val & ~BIT(0)) | rate->rateset;
- 
+ #endif /* __LINUX_USB_ROLE_H */
 -- 
 2.18.0
 _______________________________________________
