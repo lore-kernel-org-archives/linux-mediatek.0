@@ -7,76 +7,72 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9189C2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6355C2B9F8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:59:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A18C16100B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:56:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A18C16100B
+	by mail.kernel.org (Postfix) with ESMTPS id A39FD613F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:59:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A39FD613F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vfCvlzAWSu5h6hJsvr4Irdb7UID6eym7Rj/lOhNvX8M=; b=ZrIXLYnlV+0ohm
-	Ux72/rE67ksM2cHzUdEl0f525UPgZyRcLLDa13HR1a2daqjot/zPHmTwuCfEmitBjsvdqb1YJY7Or
-	fWuCDFsMaScDCqZi74COkwMBUsmMwK8urz1PK7m599fYNHW4/ucd5J9YbDzaeAx8+OIUvzVMUKJ7F
-	N4tLS3fMU0/QRgdQwxvdabhofvUMQnBwtGvekAnE71/bIXe1PUNuFO/xRs4Lrz8AwRlOxz6KiiQ1o
-	dfk7CbbcpKyMT59iRAj1fE2ucK4CF4QR9Vcge5lMzrxLmmO4GxSPmxWISLoYhuD73wpOXOghR6ki+
-	HEIYxUDEOjypwUdnoEUA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zXTKp2cWcKMb9QHqCEIz7Rrs37gKy4WXmRoqOFG1nsM=; b=yk+A3khQTYMC6n
+	SA1MJMDEYY6ZDWlTugNeHkLeIy69R7fiSDGLe8QYeok7gvq5mdOpR58WdFTRkmHeRmLDd7s3ESj1b
+	eyzjv8VCZtdcXOemEmin/O1Ikd1oClH/86NtGfn0VPXRmOAJOOXddsKb6xAMUwvRGdJbtar10zsyC
+	jd2f6CNSZhZuB0Gu2VtoH01kO3BhL+lM+wg3yu1iCSZyTCiielowDvh2zg00N/TZ8tRvg+7kDubhs
+	RCcmmLF0yMOlABQvfH2qN4kC4uDGrIoyB1TQyxC+J+g2C1xLPPwuyzGBcnfi2cnqtXy/ZFoh7unPH
+	urZJTKjAy34TWEV7VNsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llSrk-004DZy-NO; Tue, 25 May 2021 08:56:44 +0000
+	id 1llSua-004EnY-AZ; Tue, 25 May 2021 08:59:40 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llSqT-004Cvn-Jt; Tue, 25 May 2021 08:55:27 +0000
-X-UUID: 2704153462f94f7583acf311ba51ecc9-20210525
+ id 1llSuW-004ElA-QA; Tue, 25 May 2021 08:59:38 +0000
+X-UUID: 42457dab3ff349359f821e4149af1c3d-20210525
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=xHTcyDobWPIh805bZqSPp7cDAaKUL/6OpGPhJpKrc4w=; 
- b=cW5tOHnxGzzBfnTaC+zpM7++TpMttMUmV7DRN4rYxRdk7DBrr2hmlVvXUAUI+0F4cyrxYLr4hBNo/Y9mCWQK71FHwEB+nMDOSNGV/T3B7qiOgu9nQXMPd30BIVyOxDJGuDkksxAaHQ8L94boKO7eAPJtw7f5Df2dTnR+hQKppdo=;
-X-UUID: 2704153462f94f7583acf311ba51ecc9-20210525
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=TfNlcLUA2ZIU63dXxswsfjCNfMJap0carwNNiCaUKzg=; 
+ b=uVIs7gGadEN7ZJs1Y1UAGsscVSJAkcu+uabLqCjx31RLC43vB7o/xV4+8q7KP9ly+SVXGNdy2GkADZY8RIt1ZQ8KbYEN9JBcxsFpShUZbn2JK8QkoCGMlA/BHmgoQcnVPgXZOsTkIjv3EEfUwejh93rEDxCx1bG5MyjWq9ozKvo=;
+X-UUID: 42457dab3ff349359f821e4149af1c3d-20210525
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1897179374; Tue, 25 May 2021 01:55:20 -0700
+ with ESMTP id 1708606250; Tue, 25 May 2021 01:59:35 -0700
 Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 01:53:17 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 May 2021 01:59:34 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  MTKMBS31N2.mediatek.inc (172.27.4.87) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 16:53:10 +0800
+ 15.0.1497.2; Tue, 25 May 2021 16:59:27 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 25 May 2021 16:53:09 +0800
+ Transport; Tue, 25 May 2021 16:59:26 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heikki Krogerus
- <heikki.krogerus@linux.intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
+ <balbi@kernel.org>
 CC: Matthias Brugger <matthias.bgg@gmail.com>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Thierry Reding <treding@nvidia.com>, "Paul
- Cercueil" <paul@crapouillou.net>, Lee Jones <lee.jones@linaro.org>, "Guenter
- Roeck" <linux@roeck-us.net>, Hans de Goede <hdegoede@redhat.com>,
+ <chunfeng.yun@mediatek.com>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
  <linux-usb@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/2] usb: common: usb-conn-gpio: use usb_role_string() to
- print role status
-Date: Tue, 25 May 2021 16:53:06 +0800
-Message-ID: <1621932786-9335-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 1/3] usb: common: move usb_get_dr_mode() kerneldoc next to its
+ definition
+Date: Tue, 25 May 2021 16:59:23 +0800
+Message-ID: <1621933165-9661-1-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1621932786-9335-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1621932786-9335-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 775A0B1362276C37A09733E3CEDA3FC8205CFB046EBCE31B5DB8EB0AD349CA1F2000:8
+X-TM-SNTS-SMTP: 2977430AD55DCCDB2143F58A4BF46AD99FC6668D274A0FBE524214208E31C2FE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_015525_736482_895B8199 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20210525_015936_893324_E664EE5D 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,32 +89,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use usb_role_string() to print role status, make the log readable.
+Following a general rule, add the kerneldoc for a function next
+to it's definition, but not next to its declaration in a header
+file, meanwhile fix typo 'correspondig'
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/common/usb-conn-gpio.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/usb/common/common.c | 7 +++++++
+ include/linux/usb/otg.h     | 7 -------
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/usb/common/usb-conn-gpio.c b/drivers/usb/common/usb-conn-gpio.c
-index 65d89140cd19..7dbe8baed029 100644
---- a/drivers/usb/common/usb-conn-gpio.c
-+++ b/drivers/usb/common/usb-conn-gpio.c
-@@ -83,11 +83,11 @@ static void usb_conn_detect_cable(struct work_struct *work)
- 	else
- 		role = USB_ROLE_NONE;
+diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
+index 347fb3d3894a..fff318597337 100644
+--- a/drivers/usb/common/common.c
++++ b/drivers/usb/common/common.c
+@@ -187,6 +187,13 @@ static enum usb_dr_mode usb_get_dr_mode_from_string(const char *str)
+ 	return (ret < 0) ? USB_DR_MODE_UNKNOWN : ret;
+ }
  
--	dev_dbg(info->dev, "role %d/%d, gpios: id %d, vbus %d\n",
--		info->last_role, role, id, vbus);
-+	dev_dbg(info->dev, "role %s -> %s, gpios: id %d, vbus %d\n",
-+		usb_role_string(info->last_role), usb_role_string(role), id, vbus);
++/**
++ * usb_get_dr_mode - Get dual role mode for given device
++ * @dev: Pointer to the given device
++ *
++ * The function gets phy interface string from property 'dr_mode',
++ * and returns the corresponding enum usb_dr_mode
++ */
+ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
+ {
+ 	const char *dr_mode;
+diff --git a/include/linux/usb/otg.h b/include/linux/usb/otg.h
+index 69f1b6328532..a86ee6aad51b 100644
+--- a/include/linux/usb/otg.h
++++ b/include/linux/usb/otg.h
+@@ -120,13 +120,6 @@ enum usb_dr_mode {
+ 	USB_DR_MODE_OTG,
+ };
  
- 	if (info->last_role == role) {
--		dev_warn(info->dev, "repeated role: %d\n", role);
-+		dev_warn(info->dev, "repeated role: %s\n", usb_role_string(role));
- 		return;
- 	}
+-/**
+- * usb_get_dr_mode - Get dual role mode for given device
+- * @dev: Pointer to the given device
+- *
+- * The function gets phy interface string from property 'dr_mode',
+- * and returns the correspondig enum usb_dr_mode
+- */
+ extern enum usb_dr_mode usb_get_dr_mode(struct device *dev);
  
+ #endif /* __LINUX_USB_OTG_H */
 -- 
 2.18.0
 _______________________________________________
