@@ -2,69 +2,176 @@ Return-Path: <SRS0=AnEI=KU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 66502C2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 07:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D59C2C47084
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:25:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2BF4761417
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 07:22:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2BF4761417
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9E47961419
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 08:25:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E47961419
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wdc.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qaA/TVjWfiZAYVj6d7iXWdH3H3oof1toElnBnOzEe9M=; b=p4CPZvnXeosCt+eJtY+vIjvh/f
-	/HtshAwGZFmJuWN3yDE3zIjUjWEXBoYXHtOHOELif5ZFokGCzY5x+JN+faoCqBlhLkOs4LTReH4T1
-	NKCGntMePbTvTGJyb9EUqwXPbtkgk/029VbbyPhFuL2asJa0goh25cSVM6bWNXS2sePYw0VB1165I
-	fPUUxXU8f1pWXeGmB3tDngChg0oflk783pk3B8AU7MvslTPTC0IH/w/76Vc/56EaTK+7RzuV74OjV
-	XxhU+CH458m7kIR39N869sZT0J9n0weH8pubv3MY+dBd4lsMF/F9iGPUzH5Tw0//Qf+k1/uPeJu9p
-	n/ERLmZw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FiKuEJa6/B8B6Px/59THo3wmA9ScaVKMc2MzC2OVsQc=; b=G4g3sx8JIbb1fm
+	s3GWgceqIwsJyt4flzttxJRUh6+1BqoQfgR68VdDf9ERfC4enLHiuNR748rdRXwmTZXQrPE+Jfkmx
+	0T5WKg22FC7XUfO2td3uphOfBMFjpsTq3oIMfw0+h1PmmIj4WL8DW4Sq550xOByp0EAszxLxhH2ww
+	2WFj0a0qly+ilVMiKzPOJw6WXLONq19uzrh3BBbMSCuNFqZIgV4qeBAo772EsuP+Qmo3aTb4dPCe8
+	sd6us7VolTZsF59BZ1poXGny7NBMos+5eoSbDMEA0AfFYmnrv8wAwM6iKsCHNFcbLAq2fehceGT05
+	kk8OGOc+cS8IRwq88RGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llROL-003qwI-Ba; Tue, 25 May 2021 07:22:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1llSN4-0044Vm-8P; Tue, 25 May 2021 08:25:02 +0000
+Received: from esa1.hgst.iphmx.com ([68.232.141.245])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llROG-003qsc-V2
- for linux-mediatek@lists.infradead.org; Tue, 25 May 2021 07:22:14 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4275461419;
- Tue, 25 May 2021 07:22:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1621927331;
- bh=X7hgZHP/IBBoc9t1YcUOEAbT6M0Uir+oRFRiQUeix6Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cq+FNJi5YBLgGyjMxT8AHpJvhLl0fehcWkKL2hABwvB6aJn5MwcTzPouwq3hnxGkQ
- 9b8XTKT2aYc2NaZkwqO0eAfzJeTqzaSeZySCrydE5MO6fmAIHRqqinJ7ZRZAUPacw9
- sLUC/q5l6aQ69QO5uyTSATJsvWMqEsksvQBf7zA3zI+l/DwxXPFfCvmnlhAMPvYiBp
- lNUUymO4d1hNZmqn9dkmQ5k/at/PSfo172UCyP9cyPLI69WixPw9HWYEKbnF1dCxYD
- PcHHHUg7qhwCNYZYN9JYORZHH8hYQ9SKmEsRLDGY9MdRsmozqjoFRM/Hu0r/6pjCEA
- OT6Ly/+NTU49A==
-Date: Tue, 25 May 2021 09:22:06 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Ryder Lee <ryder.lee@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: mt7915: use mt7915_mcu_get_txpower_sku() to get
- per-rate txpower
-Message-ID: <YKylnox6YrOLgo7M@lore-desk>
-References: <20210525043312.12623-1-shayne.chen@mediatek.com>
+ id 1llSMd-0044ON-8p; Tue, 25 May 2021 08:24:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1621931075; x=1653467075;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=w9RshUuUfaTLGRMDQVWmDe8fiY9IpBAOjL5S+U3Q9xw=;
+ b=ZPafKoXLmQ2oEbgnVBRe2bz/pQxe+ySoV+Xroit6MpGSAGDIvoZdXPuD
+ GxY68ZDhMCQSryUWOdH6N/uXILQMVuz3EyPtzqO5lc0gRPYUpffLC357d
+ CUEf6gVFk37MPOI4IoLABbdtwoLNZPNwzjTB9XxlP+muCrJf3dC6vOJz/
+ WvxsIJqj5GE+OdThRDr1RNxYjTbnx/LUBvTvP8muLyNyFb4eInRsDRNcE
+ c9FPftmUdJuZlWvh1u9QaZJiniBU+//pB4o+oaU16IrGu7dNNa8AKzVWJ
+ khYeEnMiQhCJZ0V/coDNVu7wuwS1DTOcv+y7MZekD3QD6JztgJMyL9DaB g==;
+IronPort-SDR: qMT5zF7TVmgYjnho+9d/htA06gGzYTMYhTeln2AIh+bM6ujrL4+IeOkecqfIYs0YbtBpvfp5ux
+ aJ78d+d7p+/8DO05TJLEOyIGrhNYQXidRzHGgE6LCs+xgJuxbOvKFCmyy6PhN9+ARvhfl6qCQ/
+ T6OM3RQlbiDDfmHTcsfRGpqebeOQECvOnslP2bZRW1YhWiGld043SUzDOhfeWNVrZyjcLCMl4U
+ 9OYsR1QbBpAYGSiWCsdEhfm3L38d5xAOXkFO8qmnX0VCx4Yw3B4a5mMj5cthvzLLnB310L/eLS
+ xk0=
+X-IronPort-AV: E=Sophos;i="5.82,327,1613404800"; d="scan'208";a="280633084"
+Received: from mail-mw2nam12lp2048.outbound.protection.outlook.com (HELO
+ NAM12-MW2-obe.outbound.protection.outlook.com) ([104.47.66.48])
+ by ob1.hgst.iphmx.com with ESMTP; 25 May 2021 16:24:32 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Jq5IKLxDD/4h8q0AbYEi4VfcE8yMdX7FfEz8LomaaDMdAOGueN7xcn3GilXjd466775E8gg01A6ASzrHKvKMeVddCzKneRI/kV4N/IARzliqx6odvtXzFZw/Ja1KqyrDB5+QacKO5xosxsU2TrExC6S109XVRx3Q0bnBSQj9muvbTYsBJGI3op5nbCng5k1Xfa4LxDIrJKFnv1OD1yFZp/lltaCfIEiMiBT5ewI5kn9zTLLR0POVyiP9h3lJ/NA7Yxz9ld79P8Y1Uor+aVzW4XWKj7TnD+tIcs7EiPSp1Zpsb4FqVHIP3BqPKtmN+7vL4Mp0WC1mfDOtMFv/Wa1opw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w9RshUuUfaTLGRMDQVWmDe8fiY9IpBAOjL5S+U3Q9xw=;
+ b=abKxp4QvOd+99v6NbWGWldtF1Gy3SRtxEnyL51DQ2TOrDgoFJ9No8ER2JQf7hCsLulJZrfGQEC/s3RbNNg24jeKHEKJ8Y9lxCTyzAT6iRCiV9d57ag3xbN38f4zaIM2jJypLeFaY7DkFD4uEjigTEMgYKdaK8YnxmXQ0tbhlWtSWAsU6HTLr0yiEKjqffWnGdC9rLBhfP+RH8nH2Q/esTF/8nnSnDHCGBux2THZ7vNRqdcYYQnPW3QJM8wsA7u9c7J8rVknEtvMWE7YZN2TvrlwgkHQulpQ7fjn7WdjYaXALfb/m0m0FbjV5t1mmD1DublqXRvA33zspppE5isGrmg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=w9RshUuUfaTLGRMDQVWmDe8fiY9IpBAOjL5S+U3Q9xw=;
+ b=VGcMQ+M2x1172SfQ7PfPv7wzDCiMf3rihHRiLA8fQkBdR0SYUKzP8LFSJARduSPl6jkb2iT0RAKQfu6Odx2NEQ4FD7Lq5vaal7duQ3ksZ6TRJg6d9yoPe6FbyIZBgsNSVxq1nh9UVEwtx5XcanwAe2aNg4P2rdncf+hOQ0L3QVk=
+Received: from DM6PR04MB6575.namprd04.prod.outlook.com (2603:10b6:5:1b7::7) by
+ DM6PR04MB4026.namprd04.prod.outlook.com (2603:10b6:5:af::11) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4150.26; Tue, 25 May 2021 08:24:30 +0000
+Received: from DM6PR04MB6575.namprd04.prod.outlook.com
+ ([fe80::ed2d:4ccc:f42b:9966]) by DM6PR04MB6575.namprd04.prod.outlook.com
+ ([fe80::ed2d:4ccc:f42b:9966%5]) with mapi id 15.20.4150.027; Tue, 25 May 2021
+ 08:24:30 +0000
+From: Avri Altman <Avri.Altman@wdc.com>
+To: "Asutosh Das (asd)" <asutoshd@codeaurora.org>, Bart Van Assche
+ <bvanassche@acm.org>, Can Guo <cang@codeaurora.org>, "nguyenb@codeaurora.org"
+ <nguyenb@codeaurora.org>, "hongwus@codeaurora.org" <hongwus@codeaurora.org>,
+ "linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+ "kernel-team@android.com" <kernel-team@android.com>
+CC: Stanley Chu <stanley.chu@mediatek.com>, Alim Akhtar
+ <alim.akhtar@samsung.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>, Jaegeuk Kim
+ <jaegeuk@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>, Kiwoong Kim
+ <kwmad.kim@samsung.com>, Satya Tangirala <satyat@google.com>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+Subject: RE: [PATCH v1 2/3] scsi: ufs: Optimize host lock on transfer requests
+ send/compl paths
+Thread-Topic: [PATCH v1 2/3] scsi: ufs: Optimize host lock on transfer
+ requests send/compl paths
+Thread-Index: AQHXUHgHUX4+5y22lkmg8exJdO90rKrzENmAgABaTgCAAHAxUA==
+Date: Tue, 25 May 2021 08:24:30 +0000
+Message-ID: <DM6PR04MB65752DD2F442C178B2D0233AFC259@DM6PR04MB6575.namprd04.prod.outlook.com>
+References: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
+ <1621845419-14194-3-git-send-email-cang@codeaurora.org>
+ <41a08b3e-122d-4f1a-abbd-4b5730f880b2@acm.org>
+ <d4ff8e1a-f368-6720-798a-a2a31a4d41fb@codeaurora.org>
+In-Reply-To: <d4ff8e1a-f368-6720-798a-a2a31a4d41fb@codeaurora.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: codeaurora.org; dkim=none (message not signed)
+ header.d=none;codeaurora.org; dmarc=none action=none header.from=wdc.com;
+x-originating-ip: [212.25.79.133]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 7a246c1f-3f92-44cf-f3bd-08d91f56849b
+x-ms-traffictypediagnostic: DM6PR04MB4026:
+x-microsoft-antispam-prvs: <DM6PR04MB4026181F1966F147B6FAAEBAFC259@DM6PR04MB4026.namprd04.prod.outlook.com>
+wdcipoutbound: EOP-TRUE
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: d05LY/RTq7lEApMH7PODwv4rLBsdTgDDr/LawGHt7wf//ipedV831BQ0DEIrG3tNB1BBNe4feFRENx8lFzrdQfzLmlsmzGL0kHCm5Llyw+q7GO5tRxLBfCGzq9zn9wh6mPue7CidTefeb5Y6aROlMSPDJWW4Bv+ZIqMwwUdSewnJISUcvvEY5UGUSCTJP1/2Ag6ek9RWCEjiILDaAOuequkw6IiMVQpztjAEHiGrvy00RdF2h1sv7xXoFldtPDdN1A1+aNoxEVPqSFeFLcez4aB31UWh6qbJhKNFqeHVJToG40DdAZDqjPMQHzFr7Tppmj8sJ+QUAKBNgCT41FtGz7XO+eFSvq/Z7cw7iDMYYcSUcVrkBHxlaw2MZk3F9v3z+yo0SApSOiB/ba/mMXQLCwRK6QGXm1uBw4csQx/64ZdYOevS2LjcWG8C8eTiB/6CxYUJHv43h93ETxMXTR9z22R/bGh0S6+ockKbfmU9fjZgdyBDAhI0ah46pVyiDDkspE6IOD3BqtSpK8u85zW7/ec3OwPpRCV/0t6noP/PE44eX6W4qlZ8LUCydrcEqiOi058bgQSJXOUESchD+9z9PYQCPZ8a27cvhlTLFOBu/4s=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR04MB6575.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(39860400002)(136003)(366004)(376002)(396003)(7696005)(186003)(66446008)(2906002)(53546011)(66946007)(6506007)(478600001)(66556008)(66476007)(83380400001)(33656002)(8676002)(5660300002)(8936002)(55016002)(9686003)(52536014)(316002)(64756008)(7416002)(76116006)(54906003)(4326008)(26005)(122000001)(38100700002)(86362001)(71200400001)(110136005);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata: =?utf-8?B?MWVuUmFnUFNjOVY5dENsazJ6NlQ5bmZkSk11VFc0SFNxZUNPUEYvcW9OMi9z?=
+ =?utf-8?B?OGV4bG5OVjZGTGhQVkUrNDltZ1lyU3BTbWNJdWtiTmtmL2piZng0a216SWU0?=
+ =?utf-8?B?cTRjMDFXRlN4bXlvSWY4clRmaUJ2Y2hpQkYzek9ZdzYxQ0dvclR4ZlRpeTdy?=
+ =?utf-8?B?cXdNUEgxVDZ6WGxEdll3OVp2WkdSM29VWGE2cnIrODV1dFJrRjdGR0FMQS9v?=
+ =?utf-8?B?NzNVS1RhL2szRDBOYjBWZzRPS3BmeFQvQWtWZEVWMmJ2aU9ZS0pSQ2taQ0R1?=
+ =?utf-8?B?ejFUNGRtSDR5ckx4RlJyT1VySnVsTGNrdGttRVZxYW1jQUFmVDBDSmxYeFY1?=
+ =?utf-8?B?WGZjWjFjcmllcUF3UzBKSWg2aTNsejc1UFNBd2tyNFF2RzZxR3NYekd1dFJL?=
+ =?utf-8?B?ZVhNVUZ3c1djZldDWUV1S0lUZmtTZmhLaTBtRlhlQXg5RWo5S0ZCakE0Vk9Q?=
+ =?utf-8?B?SzRncDErM3VLbU9ETFFheFJzdWZCYUVwSzJHakNBenJzeDd6M1cvSGJVNFZ3?=
+ =?utf-8?B?K1RsK3NoWFFacXpMV2NiMXZWTnk1RTRxbi9DU2JEMGZGcjlmNC90blZiLzNN?=
+ =?utf-8?B?SGFscmt6c0NZQ1Rock5yUVJSYklHc3lFS2RYZ0VBSTJrVm15dUV2bkdZd1Z1?=
+ =?utf-8?B?OWhrK05DQTd0ZGNQUTUwczN4U2ZmdGhSbDdIQUdCREJSS29WUE9FMFFENXFo?=
+ =?utf-8?B?RFZ1cmFnWTVMNW5HdzU5azRyMjJHcHc3SXFoUzFHS1NOSlhsYnZQaSs2VDF3?=
+ =?utf-8?B?TUtMenNVYitPUGR2dnJGRFV0TVZPZXEwSEZBa2h0bE52TGxtWlFOek93Zkp0?=
+ =?utf-8?B?ZE40QlBWeDE5akJ2UnNMZ3JLU0xGUENaLzVpQU93RHFOVCtnci9aOTFMUUdU?=
+ =?utf-8?B?YjhnTWF3ZE9WL1JaTHpGU0VrUUc5TnBlSHYwRmRwNWxTV1pQOTViZGtSTTFy?=
+ =?utf-8?B?UnNjblJZZmJoZmRiR1M5NzNsNjZDZXd0cHMvLzl3ck5xZ0JjL1lWaEFmT0Fk?=
+ =?utf-8?B?alRlM29ncXlPK3p0eEVJUEZ2eWJRSmx3UVF4bHZRZGhLYlV1Z2k4dWlBcXFU?=
+ =?utf-8?B?K2xEQzZSUUlhWTUxTTl2MzVOTkdSQjc0aUJWSmEyOGltM2hKREdxdHBnN1Fl?=
+ =?utf-8?B?OGUxU1NpS21aZjkxeEVsWmxZRWZ3dlArNVM4Z3BwZkxoejM5MlhqT3I3V25K?=
+ =?utf-8?B?NWViVkthZUFFVzNPT28rVUdXZTA4OVI0ak1YYndaUDVERHZRUG44OHZCQ0VU?=
+ =?utf-8?B?TzBJRVhvVEJuK2trUTNRNDc5TW11cXdETWVPYkVUWDlYdThKVDZaK1c5b1dK?=
+ =?utf-8?B?dlU5eVl4MFNpYkFxRW1nRFJPczhmd0JFaGdrWXIyT2g0WGN3VnBUN2FIK1M0?=
+ =?utf-8?B?QjdMU0htRWpVNmNhbUplaUpxWVZvV1laWEd6emhyS092OWEzRTl1V0huNFBP?=
+ =?utf-8?B?SWh6c2E4dzh6K2pCWWc2V2h1WWRnT0F2bHVvcmMyOEpGV1Z1cHBZbEkrTERq?=
+ =?utf-8?B?Tm50SmMyUlB5Z29UQjlHVm8wMmpCR3F1WDI2bjBCeXE5WGFpaWVvNmVRMHJv?=
+ =?utf-8?B?VXZWUFNFWkFtekg1Q2Q0bWpHTjlvN3gwUkVPbCs1Z3pqTlVpK09BbHlkL24w?=
+ =?utf-8?B?akJPcDlWNVE3QWE5SDJZZUkvc0FIRmx1Y3ErNm4zL25HUVlIaDZ3dTJ3MHRV?=
+ =?utf-8?B?T0RJYmMxcG0rQlZBYlhXMlVhWmlUWGFKU0kvUW9vMVVLazJDTUVySEp1Z095?=
+ =?utf-8?Q?NAwQ/HmQMfcN1e4JXfadW3HZixaHITBGFLOwLAr?=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-In-Reply-To: <20210525043312.12623-1-shayne.chen@mediatek.com>
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR04MB6575.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7a246c1f-3f92-44cf-f3bd-08d91f56849b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 May 2021 08:24:30.0812 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: NnAt17LRLH55w39EGgmcJMPY9+3sl0wo+rTI7eLfbkU8Ss7KHF5xK3sHLZXk1DQgvjtsveJju+zXojSaCOgQsw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR04MB4026
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_002213_118319_29AC97B4 
-X-CRM114-Status: GOOD (  19.83  )
+X-CRM114-CacheID: sfid-20210525_012435_357385_40519673 
+X-CRM114-Status: GOOD (  28.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,237 +183,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3527878449878226342=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> On 5/24/2021 1:10 PM, Bart Van Assche wrote:
+> > On 5/24/21 1:36 AM, Can Guo wrote:
+> >> Current UFS IRQ handler is completely wrapped by host lock, and because
+> >> ufshcd_send_command() is also protected by host lock, when IRQ handler
+> >> fires, not only the CPU running the IRQ handler cannot send new
+> requests,
+> >> the rest CPUs can neither. Move the host lock wrapping the IRQ handler
+> into
+> >> specific branches, i.e., ufshcd_uic_cmd_compl(), ufshcd_check_errors(),
+> >> ufshcd_tmc_handler() and ufshcd_transfer_req_compl(). Meanwhile, to
+> further
+> >> reduce occpuation of host lock in ufshcd_transfer_req_compl(), host lock
+> is
+> >> no longer required to call __ufshcd_transfer_req_compl(). As per test, the
+> >> optimization can bring considerable gain to random read/write
+> performance.
+> >
+> 
+> > An additional question is whether it is necessary for v3.0 UFS devices
+> > to serialize the submission path against the completion path? Multiple
+> > high-performance SCSI LLDs support hardware with separate submission
+> and
+> > completion queues and hence do not need any serialization between the
+> > submission and the completion path. I'm asking this because it is likely
+> > that sooner or later multiqueue support will be added in the UFS
+> > specification. Benefiting from multiqueue support will require to rework
+> > locking in the UFS driver anyway.
+> >
+> Hi Bart,
+> No it's not necessary to serialize both the paths. I think this series
+> attempts to remove this serialization to a certain degree, which is
+> what's giving the performance improvement.
+> 
+> Even if multiqueue support would be available in the future, I think
+> this change is apt now for the current available specification.
+I agree - this looks like the harbinger of a major change,
+And going further with respect of hw queues,
+will need the spec support - e.g. doorbell per lane, etc.
 
---===============3527878449878226342==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="VkN8laLagn6cSNMO"
-Content-Disposition: inline
-
-
---VkN8laLagn6cSNMO
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Get per-rate txpower with mcu command instead of frequently access tmac
-> power registers from driver.
-
-Hi Shayne,
-
-just out of curiosity, what is the advantage of doing so?
-
-Regards,
-Lorenzo
->=20
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> ---
->  .../wireless/mediatek/mt76/mt7915/debugfs.c   | 48 ++++---------------
->  .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 35 +++++++++++++-
->  .../wireless/mediatek/mt76/mt7915/mt7915.h    |  3 ++
->  .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 --
->  4 files changed, 46 insertions(+), 45 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/driver=
-s/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> index 6a8ddee..42a829d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-> @@ -308,53 +308,23 @@ mt7915_puts_rate_txpower(struct seq_file *s, struct=
- mt7915_phy *phy)
->  		"RU484/SU40", "RU996/SU80", "RU2x996/SU160"
->  	};
->  	struct mt7915_dev *dev =3D dev_get_drvdata(s->private);
-> -	bool ext_phy =3D phy !=3D &dev->phy;
-> -	u32 reg_base;
-> -	int i, idx =3D 0;
-> +	s8 txpower[MT7915_SKU_RATE_NUM], *buf;
-> +	int i;
-> =20
->  	if (!phy)
->  		return;
-> =20
-> -	reg_base =3D MT_TMAC_FP0R0(ext_phy);
-> -	seq_printf(s, "\nBand %d\n", ext_phy);
-> +	seq_printf(s, "\nBand %d\n", phy !=3D &dev->phy);
-> =20
-> -	for (i =3D 0; i < ARRAY_SIZE(mt7915_sku_group_len); i++) {
-> -		u8 cnt, mcs_num =3D mt7915_sku_group_len[i];
-> -		s8 txpower[12];
-> -		int j;
-> +	mt7915_mcu_get_txpower_sku(phy, txpower, sizeof(txpower));
-> +	for (i =3D 0, buf =3D txpower; i < ARRAY_SIZE(mt7915_sku_group_len); i+=
-+) {
-> +		u8 mcs_num =3D mt7915_sku_group_len[i];
-> =20
-> -		if (i =3D=3D SKU_HT_BW20 || i =3D=3D SKU_HT_BW40) {
-> -			mcs_num =3D 8;
-> -		} else if (i >=3D SKU_VHT_BW20 && i <=3D SKU_VHT_BW160) {
-> +		if (i >=3D SKU_VHT_BW20 && i <=3D SKU_VHT_BW160)
->  			mcs_num =3D 10;
-> -		} else if (i =3D=3D SKU_HE_RU26) {
-> -			reg_base =3D MT_TMAC_FP0R18(ext_phy);
-> -			idx =3D 0;
-> -		}
-> -
-> -		for (j =3D 0, cnt =3D 0; j < DIV_ROUND_UP(mcs_num, 4); j++) {
-> -			u32 val;
-> -
-> -			if (i =3D=3D SKU_VHT_BW160 && idx =3D=3D 60) {
-> -				reg_base =3D MT_TMAC_FP0R15(ext_phy);
-> -				idx =3D 0;
-> -			}
-> -
-> -			val =3D mt76_rr(dev, reg_base + (idx / 4) * 4);
-> -
-> -			if (idx && idx % 4)
-> -				val >>=3D (idx % 4) * 8;
-> -
-> -			while (val > 0 && cnt < mcs_num) {
-> -				s8 pwr =3D FIELD_GET(MT_TMAC_FP_MASK, val);
-> -
-> -				txpower[cnt++] =3D pwr;
-> -				val >>=3D 8;
-> -				idx++;
-> -			}
-> -		}
-> =20
-> -		mt76_seq_puts_array(s, sku_group_name[i], txpower, mcs_num);
-> +		mt76_seq_puts_array(s, sku_group_name[i], buf, mcs_num);
-> +		buf +=3D mt7915_sku_group_len[i];
->  	}
->  }
-> =20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7915/mcu.c
-> index dcf2d4d..52671cc 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> @@ -3514,7 +3514,6 @@ int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, =
-u32 cmd, u16 wlan_idx)
-> =20
->  int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
->  {
-> -#define MT7915_SKU_RATE_NUM		161
->  	struct mt7915_dev *dev =3D phy->dev;
->  	struct mt76_phy *mphy =3D phy->mt76;
->  	struct ieee80211_hw *hw =3D mphy->hw;
-> @@ -3564,6 +3563,40 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *=
-phy)
->  				 sizeof(req), true);
->  }
-> =20
-> +int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int =
-len)
-> +{
-> +#define RATE_POWER_INFO	2
-> +	struct mt7915_dev *dev =3D phy->dev;
-> +	bool ext_phy =3D phy !=3D &dev->phy;
-> +	struct {
-> +		u8 format_id;
-> +		u8 category;
-> +		u8 band;
-> +		u8 _rsv;
-> +	} __packed req =3D {
-> +		.format_id =3D 7,
-> +		.category =3D RATE_POWER_INFO,
-> +		.band =3D ext_phy,
-> +	};
-> +	s8 res[MT7915_SKU_RATE_NUM][2];
-> +	struct sk_buff *skb;
-> +	int ret, i;
-> +
-> +	ret =3D mt76_mcu_send_and_get_msg(&dev->mt76,
-> +					MCU_EXT_CMD(TX_POWER_FEATURE_CTRL),
-> +					&req, sizeof(req), true, &skb);
-> +	if (ret)
-> +		return ret;
-> +
-> +	memcpy(res, skb->data + 4, sizeof(res));
-> +	for (i =3D 0; i < len; i++)
-> +		txpower[i] =3D res[i][ext_phy];
-> +
-> +	dev_kfree_skb(skb);
-> +
-> +	return 0;
-> +}
-> +
->  int mt7915_mcu_set_test_param(struct mt7915_dev *dev, u8 param, bool tes=
-t_mode,
->  			      u8 en)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers=
-/net/wireless/mediatek/mt76/mt7915/mt7915.h
-> index c4bf8ed..1f7e57d 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-> @@ -38,6 +38,8 @@
->  #define MT7915_5G_RATE_DEFAULT		0x4b	/* OFDM 6M */
->  #define MT7915_2G_RATE_DEFAULT		0x0	/* CCK 1M */
-> =20
-> +#define MT7915_SKU_RATE_NUM		161
-> +
->  struct mt7915_vif;
->  struct mt7915_sta;
->  struct mt7915_dfs_pulse;
-> @@ -343,6 +345,7 @@ int mt7915_mcu_set_rts_thresh(struct mt7915_phy *phy,=
- u32 val);
->  int mt7915_mcu_set_pm(struct mt7915_dev *dev, int band, int enter);
->  int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, bool enable);
->  int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy);
-> +int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int =
-len);
->  int mt7915_mcu_set_txbf_type(struct mt7915_dev *dev);
->  int mt7915_mcu_set_txbf_module(struct mt7915_dev *dev);
->  int mt7915_mcu_set_txbf_sounding(struct mt7915_dev *dev);
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/n=
-et/wireless/mediatek/mt76/mt7915/regs.h
-> index 48e4b22..ee525e7 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-> @@ -82,11 +82,6 @@
->  #define MT_TMAC_CTCR0_INS_DDLMT_EN		BIT(17)
->  #define MT_TMAC_CTCR0_INS_DDLMT_VHT_SMPDU_EN	BIT(18)
-> =20
-> -#define MT_TMAC_FP0R0(_band)		MT_WF_TMAC(_band, 0x020)
-> -#define MT_TMAC_FP0R15(_band)		MT_WF_TMAC(_band, 0x080)
-> -#define MT_TMAC_FP0R18(_band)		MT_WF_TMAC(_band, 0x270)
-> -#define MT_TMAC_FP_MASK			GENMASK(7, 0)
-> -
->  #define MT_TMAC_TFCR0(_band)		MT_WF_TMAC(_band, 0x1e0)
-> =20
->  #define MT_WF_DMA_BASE(_band)		((_band) ? 0xa1e00 : 0x21e00)
-> --=20
-> 2.18.0
->=20
-
---VkN8laLagn6cSNMO
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYKylmgAKCRA6cBh0uS2t
-rCKaAP0SkqEfaDBxrpNaKcpFuScYfBn2cpQH5nMB4mu/QdZoFgEA6+TBxrfqj7Bx
-4GK0ooXE+Neg0YxczVun8PCd7UU/Wws=
-=IDED
------END PGP SIGNATURE-----
-
---VkN8laLagn6cSNMO--
-
-
---===============3527878449878226342==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks,
+Avri
+ 
+> > Thanks,
+> >
+> > Bart.
+> >
+> 
+> 
+> Thanks,
+> -asd
+> 
+> --
+> The Qualcomm Innovation Center, Inc. is a member of the Code Aurora
+> Forum,
+> Linux Foundation Collaborative Project
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3527878449878226342==--
-
