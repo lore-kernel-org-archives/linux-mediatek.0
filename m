@@ -2,90 +2,77 @@ Return-Path: <SRS0=AnEI=KU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDC32C2B9F7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 03:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BB6DC2B9F8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 04:33:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7CCAB61404
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 03:25:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7CCAB61404
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id 18ED2613AB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 04:33:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18ED2613AB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=81QBA2L+42fMnUVftIcEeks2LMd5h7f7yiSjbUou1oY=; b=VbTBZ0SV+kztJ7+rf2e062Zgi
-	oejWLTnWJZMBatneW3mMkgfFLZ0AMMJ4BGvqUwkVCa0b9dO5Ug+mCeWGX8q/aIODHi53gfbGDmyYa
-	JMK1ExLwD4Odi/2Kbw7AgvS5s6r91CD4rxyvqyEDlKHCuNHQBZVSJVd2wMeYljV2BYL+/hAMuCQmI
-	kXyRR2X2CXk15ROiJlTOowM5qP5WDhpaRpLak2FU4anaN41iPZz1rEpUXq9O+VndL/p2fxvoUx4q3
-	oR3Xv2YMcqQOP0hRfka/koRmyxLkknlXFH5295rKZlG6jZHZrrZhHUGg+JK9Y0I99vtNWap4JysYj
-	r+bmkNL0w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oK3vDWu0Pr9I1lJiSRORTrYqc0+Z9BB6RSjYhuV2JC0=; b=ahx7wi+1M/DFSP
+	UV90Sk0PhCX0A2rkcuG2EPl/6SYi4Of59yQRX/2Zwm5auQDnE2RUSBX/xunJSypsQdjSc/oDteA/V
+	Y8f7dldn1KJEM9T9esp9LrQJf9HDwzfIsP66oQS8r1EetE1wV7UnGbcIvS0X/aqn3nrzBmE38SZsM
+	vADRREJNrCAb93DD13HjoOOtMUrG69xgZsYWsWNXfnJRCEUvV0vwVWH8DHTudZmKjTn1QYhlqz841
+	fhneiYGxevIofEaJX3dBdSc66IkbjMdHSSf03CeusY5q6wvre6cq0DVokLthv1su67DsuTdxnh1ip
+	kILb5lu+jFjhkSrjecnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llNh7-00380Z-9P; Tue, 25 May 2021 03:25:25 +0000
-Received: from m43-7.mailgun.net ([69.72.43.7])
+	id 1llOl3-003KXq-QO; Tue, 25 May 2021 04:33:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llM3o-002n1P-Lw
- for linux-mediatek@lists.infradead.org; Tue, 25 May 2021 01:40:49 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1621906847; h=Message-ID: References: In-Reply-To: Subject:
- Cc: To: From: Date: Content-Transfer-Encoding: Content-Type:
- MIME-Version: Sender; bh=s8u2/Kix6jXxz+HUY/6HOx+UcJEOLKMF3abFsbJQwRc=;
- b=HroFercVUUgTwUc8eKfMJ7vHtvrI9ooRY7JTHY9pdmNObEK3FbLU/C/Nw32oB9GtLYEY5Ryg
- gHfBA1IGK3RZdkYfpgoD+Rx+9Xe01f0QIrCdkdIwaCxVqWQCbCVvkzA+yLyATHdH4G1TfbLy
- EQpDWhHxBkVYwmYioD9em5LzgGc=
-X-Mailgun-Sending-Ip: 69.72.43.7
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 60ac5584ceebd0e932c7a780 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 25 May 2021 01:40:20
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id DA7E2C4338A; Tue, 25 May 2021 01:40:19 +0000 (UTC)
-Received: from mail.codeaurora.org (localhost.localdomain [127.0.0.1])
- (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits))
- (No client certificate requested) (Authenticated sender: cang)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id D2500C433F1;
- Tue, 25 May 2021 01:40:18 +0000 (UTC)
+ id 1llOky-003KVA-BV
+ for linux-mediatek@lists.infradead.org; Tue, 25 May 2021 04:33:31 +0000
+X-UUID: 8221789892b04a238fa29687cc0f19e7-20210524
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Qv5reKYdIoqAyLX04C1g2y0YBzwL2l7PCiowqwDcf2U=; 
+ b=bKYB5Td947qhmqM8lYJr8IDwRc4x2zb2NtybFaozaqYP8XJbu6l7g8KcPYsGHNbJ3QcH8DdhXhUMvimGeB+wMXI9SL6HR8P+0huwaexy7BChq/lbxnNkNuNwdjXKdcCzxdYDQR5ulxB1o+uxgC+tNBny4BjG+f65nTn2842u+e0=;
+X-UUID: 8221789892b04a238fa29687cc0f19e7-20210524
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 179967298; Mon, 24 May 2021 21:33:23 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 May 2021 21:33:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 May 2021 12:33:20 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 25 May 2021 12:33:20 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>, Shayne Chen
+ <shayne.chen@mediatek.com>
+Subject: [PATCH] mt76: mt7915: use mt7915_mcu_get_txpower_sku() to get
+ per-rate txpower
+Date: Tue, 25 May 2021 12:33:12 +0800
+Message-ID: <20210525043312.12623-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Date: Tue, 25 May 2021 09:40:18 +0800
-From: Can Guo <cang@codeaurora.org>
-To: Bart Van Assche <bvanassche@acm.org>
-Cc: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
- linux-scsi@vger.kernel.org, kernel-team@android.com, Stanley Chu
- <stanley.chu@mediatek.com>, Alim Akhtar <alim.akhtar@samsung.com>, Avri
- Altman <avri.altman@wdc.com>, "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>, Jaegeuk Kim
- <jaegeuk@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>, Kiwoong Kim
- <kwmad.kim@samsung.com>, Satya Tangirala <satyat@google.com>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 2/3] scsi: ufs: Optimize host lock on transfer requests
- send/compl paths
-In-Reply-To: <41a08b3e-122d-4f1a-abbd-4b5730f880b2@acm.org>
-References: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
- <1621845419-14194-3-git-send-email-cang@codeaurora.org>
- <41a08b3e-122d-4f1a-abbd-4b5730f880b2@acm.org>
-Message-ID: <0cfbf580e340073ff972be493a59dbe7@codeaurora.org>
-X-Sender: cang@codeaurora.org
-User-Agent: Roundcube Webmail/1.3.9
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_184047_687348_6B58CA97 
-X-CRM114-Status: GOOD (  20.62  )
+X-CRM114-CacheID: sfid-20210524_213329_864613_EA3620EA 
+X-CRM114-Status: GOOD (  15.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,79 +84,181 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Get per-rate txpower with mcu command instead of frequently access tmac
+power registers from driver.
 
-On 2021-05-25 04:10, Bart Van Assche wrote:
-> On 5/24/21 1:36 AM, Can Guo wrote:
->> Current UFS IRQ handler is completely wrapped by host lock, and 
->> because
->> ufshcd_send_command() is also protected by host lock, when IRQ handler
->> fires, not only the CPU running the IRQ handler cannot send new 
->> requests,
->> the rest CPUs can neither. Move the host lock wrapping the IRQ handler 
->> into
->> specific branches, i.e., ufshcd_uic_cmd_compl(), 
->> ufshcd_check_errors(),
->> ufshcd_tmc_handler() and ufshcd_transfer_req_compl(). Meanwhile, to 
->> further
->> reduce occpuation of host lock in ufshcd_transfer_req_compl(), host 
->> lock is
->> no longer required to call __ufshcd_transfer_req_compl(). As per test, 
->> the
->> optimization can bring considerable gain to random read/write 
->> performance.
-> 
-> Hi Can,
-> 
-> Using the host lock to serialize the completion path against the
-> submission path was a common practice 11 years ago, before the host 
-> lock
-> push-down (see also
-> https://linux-scsi.vger.kernel.narkive.com/UEmGgwAc/rfc-patch-scsi-host-lock-push-down).
-> Modern SCSI LLDs should not use the SCSI host lock. Please consider
-> introducing one or more new synchronization objects in struct ufs_hba
-> and to use these instead of the SCSI host lock. That will save multiple
-> pointer dereferences in the hot path since hba->host->host_lock will
-> become hba->new_spin_lock.
-> 
-> An additional question is whether it is necessary for v3.0 UFS devices
-> to serialize the submission path against the completion path? Multiple
-> high-performance SCSI LLDs support hardware with separate submission 
-> and
-> completion queues and hence do not need any serialization between the
-> submission and the completion path. I'm asking this because it is 
-> likely
-> that sooner or later multiqueue support will be added in the UFS
-> specification. Benefiting from multiqueue support will require to 
-> rework
-> locking in the UFS driver anyway.
-> 
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 48 ++++---------------
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 35 +++++++++++++-
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  3 ++
+ .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 --
+ 4 files changed, 46 insertions(+), 45 deletions(-)
 
-Hi Bart,
-
-Agree with all above, and what you ask is right what we are doing in the
-3rd change - get rid of host lock on dispatch and completion paths.
-
-I agree with using dedicated spin locks for dedicated purposes in UFS 
-driver,
-e.g., clk gating has its own gating_lock and clk scaling has its own 
-scaling_lock.
-But this specific series is only for improving performance. We will take 
-your
-comments into consideration and address it in future.
-
-Thanks,
-
-Can Guo.
-
-> Thanks,
-> 
-> Bart.
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 6a8ddee..42a829d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -308,53 +308,23 @@ mt7915_puts_rate_txpower(struct seq_file *s, struct mt7915_phy *phy)
+ 		"RU484/SU40", "RU996/SU80", "RU2x996/SU160"
+ 	};
+ 	struct mt7915_dev *dev = dev_get_drvdata(s->private);
+-	bool ext_phy = phy != &dev->phy;
+-	u32 reg_base;
+-	int i, idx = 0;
++	s8 txpower[MT7915_SKU_RATE_NUM], *buf;
++	int i;
+ 
+ 	if (!phy)
+ 		return;
+ 
+-	reg_base = MT_TMAC_FP0R0(ext_phy);
+-	seq_printf(s, "\nBand %d\n", ext_phy);
++	seq_printf(s, "\nBand %d\n", phy != &dev->phy);
+ 
+-	for (i = 0; i < ARRAY_SIZE(mt7915_sku_group_len); i++) {
+-		u8 cnt, mcs_num = mt7915_sku_group_len[i];
+-		s8 txpower[12];
+-		int j;
++	mt7915_mcu_get_txpower_sku(phy, txpower, sizeof(txpower));
++	for (i = 0, buf = txpower; i < ARRAY_SIZE(mt7915_sku_group_len); i++) {
++		u8 mcs_num = mt7915_sku_group_len[i];
+ 
+-		if (i == SKU_HT_BW20 || i == SKU_HT_BW40) {
+-			mcs_num = 8;
+-		} else if (i >= SKU_VHT_BW20 && i <= SKU_VHT_BW160) {
++		if (i >= SKU_VHT_BW20 && i <= SKU_VHT_BW160)
+ 			mcs_num = 10;
+-		} else if (i == SKU_HE_RU26) {
+-			reg_base = MT_TMAC_FP0R18(ext_phy);
+-			idx = 0;
+-		}
+-
+-		for (j = 0, cnt = 0; j < DIV_ROUND_UP(mcs_num, 4); j++) {
+-			u32 val;
+-
+-			if (i == SKU_VHT_BW160 && idx == 60) {
+-				reg_base = MT_TMAC_FP0R15(ext_phy);
+-				idx = 0;
+-			}
+-
+-			val = mt76_rr(dev, reg_base + (idx / 4) * 4);
+-
+-			if (idx && idx % 4)
+-				val >>= (idx % 4) * 8;
+-
+-			while (val > 0 && cnt < mcs_num) {
+-				s8 pwr = FIELD_GET(MT_TMAC_FP_MASK, val);
+-
+-				txpower[cnt++] = pwr;
+-				val >>= 8;
+-				idx++;
+-			}
+-		}
+ 
+-		mt76_seq_puts_array(s, sku_group_name[i], txpower, mcs_num);
++		mt76_seq_puts_array(s, sku_group_name[i], buf, mcs_num);
++		buf += mt7915_sku_group_len[i];
+ 	}
+ }
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index dcf2d4d..52671cc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3514,7 +3514,6 @@ int mt7915_mcu_get_tx_rate(struct mt7915_dev *dev, u32 cmd, u16 wlan_idx)
+ 
+ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
+ {
+-#define MT7915_SKU_RATE_NUM		161
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct mt76_phy *mphy = phy->mt76;
+ 	struct ieee80211_hw *hw = mphy->hw;
+@@ -3564,6 +3563,40 @@ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy)
+ 				 sizeof(req), true);
+ }
+ 
++int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int len)
++{
++#define RATE_POWER_INFO	2
++	struct mt7915_dev *dev = phy->dev;
++	bool ext_phy = phy != &dev->phy;
++	struct {
++		u8 format_id;
++		u8 category;
++		u8 band;
++		u8 _rsv;
++	} __packed req = {
++		.format_id = 7,
++		.category = RATE_POWER_INFO,
++		.band = ext_phy,
++	};
++	s8 res[MT7915_SKU_RATE_NUM][2];
++	struct sk_buff *skb;
++	int ret, i;
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76,
++					MCU_EXT_CMD(TX_POWER_FEATURE_CTRL),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	memcpy(res, skb->data + 4, sizeof(res));
++	for (i = 0; i < len; i++)
++		txpower[i] = res[i][ext_phy];
++
++	dev_kfree_skb(skb);
++
++	return 0;
++}
++
+ int mt7915_mcu_set_test_param(struct mt7915_dev *dev, u8 param, bool test_mode,
+ 			      u8 en)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index c4bf8ed..1f7e57d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -38,6 +38,8 @@
+ #define MT7915_5G_RATE_DEFAULT		0x4b	/* OFDM 6M */
+ #define MT7915_2G_RATE_DEFAULT		0x0	/* CCK 1M */
+ 
++#define MT7915_SKU_RATE_NUM		161
++
+ struct mt7915_vif;
+ struct mt7915_sta;
+ struct mt7915_dfs_pulse;
+@@ -343,6 +345,7 @@ int mt7915_mcu_set_rts_thresh(struct mt7915_phy *phy, u32 val);
+ int mt7915_mcu_set_pm(struct mt7915_dev *dev, int band, int enter);
+ int mt7915_mcu_set_sku_en(struct mt7915_phy *phy, bool enable);
+ int mt7915_mcu_set_txpower_sku(struct mt7915_phy *phy);
++int mt7915_mcu_get_txpower_sku(struct mt7915_phy *phy, s8 *txpower, int len);
+ int mt7915_mcu_set_txbf_type(struct mt7915_dev *dev);
+ int mt7915_mcu_set_txbf_module(struct mt7915_dev *dev);
+ int mt7915_mcu_set_txbf_sounding(struct mt7915_dev *dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+index 48e4b22..ee525e7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
+@@ -82,11 +82,6 @@
+ #define MT_TMAC_CTCR0_INS_DDLMT_EN		BIT(17)
+ #define MT_TMAC_CTCR0_INS_DDLMT_VHT_SMPDU_EN	BIT(18)
+ 
+-#define MT_TMAC_FP0R0(_band)		MT_WF_TMAC(_band, 0x020)
+-#define MT_TMAC_FP0R15(_band)		MT_WF_TMAC(_band, 0x080)
+-#define MT_TMAC_FP0R18(_band)		MT_WF_TMAC(_band, 0x270)
+-#define MT_TMAC_FP_MASK			GENMASK(7, 0)
+-
+ #define MT_TMAC_TFCR0(_band)		MT_WF_TMAC(_band, 0x1e0)
+ 
+ #define MT_WF_DMA_BASE(_band)		((_band) ? 0xa1e00 : 0x21e00)
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
