@@ -2,77 +2,66 @@ Return-Path: <SRS0=AnEI=KU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5CD9C2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 12:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC612C4707F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 13:00:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 672F2613F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 12:22:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 672F2613F5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 102EF61423
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 13:00:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 102EF61423
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sipsolutions.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cekze3Ck6hC1M44M8xv3Vs3HlznTCprs82cadXUOFo4=; b=2ikEVNkw9K5nM5
-	owSuIwbuWffIX93+GT+sfbcQZlR0aIYK5litytEsJVL2xJ26zKlwPjBQVuK7KIdLutcn4P/7eaGaI
-	u0l9hBdlHv5mK0oKEOLLmP5oUeHa38w3LMel7syw6VGACeY15VOc22wAREbYAh6zyZtaz2Pqf426o
-	aq5IJ2CCzmTeymyXQ7XcEXLt+mB0PiIeEWRnPr7AwMD+uRoTQQvUrqwl69SnIHuexK4JIdXttwvMP
-	7DRC/4xIVmfTBPOTPkJZWHvBgxpWHCU/ik7o3r8yXSr3T00xM5BRLuNsGPkZth5QwCk8mUEFXrZNp
-	7rOZNN8Oi+Zf/2wtDlAw==;
+	List-Owner; bh=WBSPqzVwjuAVspVU5gU+4qmTHGTHYKNJur+ZDH2f4Ik=; b=15ix0AjEHHkZnG
+	SgfdZ+MkrmjzYLF6tge/EFixeQ07wiryY786Fsvzsyu4XNu5+4UG2JIc4IKSD6PG8T5PkqAVpSckQ
+	x55qAZmJiT1pY9Fi6gTe3Oz8KTry1jFqtIuxWbK5gXGBKsqTLx1Tnbugji3v2Ot7yTnnb4ZnM5i5x
+	jUILcTtmPaQl8yVYvPLL2Tm89JjJoYin169GKqMyyPDoQ3jaUhn9Pcb952N38byNdVJCLjJP/CXuC
+	kKIpiVBi93D9CCILVj2sIDl1tuFaGqGNWOPIoeig4dt2u/JmQ/cXIbMy615+U8ybvcZHLhYMHW9cN
+	P86YJUVMY3Gmp8ffgXPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llW50-004zgL-NM; Tue, 25 May 2021 12:22:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1llWfG-005BZP-Q5; Tue, 25 May 2021 13:00:06 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
+ helo=sipsolutions.net)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llW4o-004zYI-Ih; Tue, 25 May 2021 12:22:28 +0000
-X-UUID: e00bfdf9b2f04df280ec674930930c16-20210525
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=VWr97ZQQqjcEa+IhXdJKCXtPdVgQ0l6s7sDu/pUtGH0=; 
- b=O1j6SsC6ResgINaPyCExUwwljCsVs9hDAgZDPTdDUv57o4YY8Tr4bABehQi5DWGCvSuBS/3FoqiKPCBcXxffiYiz4+4PW3XEp0yFTKeFqvjRVXrVyInYsuQWj7Bpb5btHvbyrq//cetlalyF9k2W3SXiasn3Yd6smy1IGr3U6fU=;
-X-UUID: e00bfdf9b2f04df280ec674930930c16-20210525
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1776573207; Tue, 25 May 2021 05:22:20 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 05:14:57 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 20:14:55 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 May 2021 20:14:55 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v4,PATCH 1/3] drm/mediatek: dpi dual edge sample mode support
-Date: Tue, 25 May 2021 20:14:46 +0800
-Message-ID: <20210525121448.30075-2-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210525121448.30075-1-rex-bc.chen@mediatek.com>
-References: <20210525121448.30075-1-rex-bc.chen@mediatek.com>
+ id 1llWfE-005BX5-4t
+ for linux-mediatek@lists.infradead.org; Tue, 25 May 2021 13:00:05 +0000
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94.2) (envelope-from <johannes@sipsolutions.net>)
+ id 1llWey-00EOir-E1; Tue, 25 May 2021 14:59:48 +0200
+Message-ID: <f1a1d5da376d0ec187079d1277d3628328fdd81c.camel@sipsolutions.net>
+Subject: Re: [RFC PATCH 1/4] mac80211: call ieee80211_tx_h_rate_ctrl() when
+ dequeue
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao
+ <bo.jiao@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>, 
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Tue, 25 May 2021 14:59:46 +0200
+In-Reply-To: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
+ (sfid-20210519_215633_470280_525C572D)
+References: <a959135d3fe21118f38c33fc9ffb18124c1ef7ce.1621453091.git.ryder.lee@mediatek.com>
+ (sfid-20210519_215633_470280_525C572D)
+User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
 MIME-Version: 1.0
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_052226_664039_27DF8241 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20210525_060004_218729_13A64E09 
+X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,81 +73,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DPI can sample on falling, rising or both edge.
-When DPI sample the data both rising and falling edge.
-It can reduce half data io pins.
-Use num_output_fmts to determine whether it is dual edge mode.
-
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 17 ++++++++++++++++-
- 1 file changed, 16 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index bea91c81626e..d3b883c97aaf 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -83,6 +83,7 @@ struct mtk_dpi {
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_gpio;
- 	struct pinctrl_state *pins_dpi;
-+	bool ddr_edge_sel;
- 	int refcount;
- };
- 
-@@ -122,6 +123,8 @@ struct mtk_dpi_conf {
- 	u32 reg_h_fre_con;
- 	u32 max_clock_khz;
- 	bool edge_sel_en;
-+	const u32 *output_fmts;
-+	u32 num_output_fmts;
- };
- 
- static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
-@@ -381,6 +384,16 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
- 	}
- }
- 
-+static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
-+{
-+	if (dpi->conf->num_output_fmts > 1) {
-+		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
-+			     DDR_EN | DDR_4PHASE);
-+		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-+			     dpi->ddr_edge_sel ? EDGE_SEL : 0, EDGE_SEL);
-+	}
-+}
-+
- static void mtk_dpi_power_off(struct mtk_dpi *dpi)
- {
- 	if (WARN_ON(dpi->refcount == 0))
-@@ -455,7 +468,8 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	pll_rate = clk_get_rate(dpi->tvd_clk);
- 
- 	vm.pixelclock = pll_rate / factor;
--	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-+	clk_set_rate(dpi->pixel_clk,
-+		     vm.pixelclock * ((dpi->conf->num_output_fmts > 1) ? 2 : 1));
- 	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
- 
- 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
-@@ -519,6 +533,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
- 	mtk_dpi_config_color_format(dpi, dpi->color_format);
- 	mtk_dpi_config_2n_h_fre(dpi);
-+	mtk_dpi_dual_edge(dpi);
- 	mtk_dpi_config_disable_edge(dpi);
- 	mtk_dpi_sw_reset(dpi, false);
- 
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVGh1LCAyMDIxLTA1LTIwIGF0IDAzOjU2ICswODAwLCBSeWRlciBMZWUgd3JvdGU6Cj4gCj4g
+K3N0YXRpYyBpZWVlODAyMTFfdHhfcmVzdWx0Cj4gK2llZWU4MDIxMV94bWl0X2Zhc3RfZmluaXNo
+KHN0cnVjdCBpZWVlODAyMTFfc3ViX2lmX2RhdGEgKnNkYXRhLAo+ICsJCQkgICBzdHJ1Y3Qgc3Rh
+X2luZm8gKnN0YSwgdTggcG5fb2ZmcywKPiArCQkJICAgc3RydWN0IGllZWU4MDIxMV9rZXkgKmtl
+eSwKPiArCQkJICAgc3RydWN0IGllZWU4MDIxMV90eF9kYXRhICp0eCkKPiDCoHsKPiArCXN0cnVj
+dCBza19idWZmICpza2IgPSB0eC0+c2tiOwo+IMKgCXN0cnVjdCBpZWVlODAyMTFfdHhfaW5mbyAq
+aW5mbyA9IElFRUU4MDIxMV9TS0JfQ0Ioc2tiKTsKPiDCoAlzdHJ1Y3QgaWVlZTgwMjExX2hkciAq
+aGRyID0gKHZvaWQgKilza2ItPmRhdGE7Cj4gwqAJdTggdGlkID0gSUVFRTgwMjExX05VTV9USURT
+Owo+IMKgCj4gCj4gCj4gCj4gKwlpZiAoIWllZWU4MDIxMV9od19jaGVjaygmdHgtPmxvY2FsLT5o
+dywgSEFTX1JBVEVfQ09OVFJPTCkpCj4gKwkJaWYgKGllZWU4MDIxMV90eF9oX3JhdGVfY3RybCh0
+eCkgIT0gVFhfQ09OVElOVUUpCj4gKwkJCXJldHVybiBUWF9EUk9QOwoKUHJvYmFibHkgbmljZXIg
+dG8gcm9sbCB0aGF0IGludG8gb25lIGNvbmRpdGlvbjoKCmlmICghLi4uKCkgJiYKICAgIC4uLl9y
+YXRlX2N0cmwodHgpICE9IC4uLikKCXJldHVybiBUWF9EUk9QOwoKCmpvaGFubmVzCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
+bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
