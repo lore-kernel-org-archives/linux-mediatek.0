@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C701C2B9F8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 06:00:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 405A6C2B9F8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 06:04:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 573B1613AB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 06:00:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 573B1613AB
+	by mail.kernel.org (Postfix) with ESMTPS id ED9C96140F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 25 May 2021 06:04:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED9C96140F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lw4RVipmA+3gZP5kIB0HB/ZE0JIbyG4SvkT7zZz5RCQ=; b=GHQMUn71Zv1vXh
-	EAs+slVkwLs+eLa/C2tvE/VamYV3i9pO7agE3JY6JghPJvqHmL5YRKFkOxBsgR53sRzNRk++4jqJX
-	ifSdNvINI7RgYgCiCYxIQs7K2QqmvCI2J3pLleWVQCLAJenDxrRxKAVf+duvazYfEvsU/9ZqGKq4P
-	nHfwNeaqu8N7aVQAXGQj3+MUYJ7dmi2ctZjyduw+SrETMMj3bUamwmukxFkx53VVOIFuju2BHbkkf
-	jIOZUsVkXkrBYc8pktfXr82T42uDcHeun1IKYXswShIVCwO3+BsNU0U+PHQ1vEBhd7DOgg731Gjms
-	azT8ImqW88u6WljCSWEA==;
+	List-Owner; bh=vsKao2UBhjxeME6L/XwlrVrPJJ28KIg7wspO6CXWOso=; b=A9joLY8uCgyVp6
+	ceJHfr23mbZ9q2wL0jpYbcMOnf5EgZGi+KeeJ6SOgHa/N/Iw1oyBiFyh/o9mIFv1d9m50dKKJzqJm
+	BDXn18AcYICN9WsCu8uJbEswafGhtNbiBNrRAIcviDDWllPxeZ+rfj/Kr1frjJIgLsuWjgxX2gguL
+	VLEHn+bdAqGqWSqivi56uTLa78jVdRDXaUhZk7p/4o+SiOIq/UMXhYCy6J15LXkStyA2SIRuHaPlY
+	NR0z5SXsDfqvVNjOv7Yx6L7Zx6ca4ptpMKcLh69D7tSBc8+2woHIVEMLQeSfS+fTnFbXGu4wolumo
+	YWnOqGbQpjwNeR9bpa8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94 #2 (Red Hat Linux))
-	id 1llQ7L-003WBu-VZ; Tue, 25 May 2021 06:00:40 +0000
+	id 1llQBJ-003X9r-0E; Tue, 25 May 2021 06:04:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94 #2 (Red Hat Linux))
- id 1llQ6n-003W56-Bd; Tue, 25 May 2021 06:00:06 +0000
-X-UUID: 8cd11f3f81ea4fd1a7b50de3eb6602eb-20210524
+ id 1llQAK-003WxH-SC; Tue, 25 May 2021 06:03:46 +0000
+X-UUID: 2e27311bd5474c5c85746a7914ea8ab1-20210524
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zEKHr+ci2JttY8gj6nUAGYKf8GY5L0tjVJhMALr70gI=; 
- b=HolRojYZC1TjoomOATJN2ioBXJ1BYcW9cicJX56VLR3FOR1EM4LxOBhC3uF/BxCl4+wH8fH2UTmJUEzpLuuaOdRoDp7wIz/ORJI5dFpwtLIGtsgOTcLooT/3q0EpvRuX7kLUtCszxQx9tXobrjLeIJVE3V9V5l0cmVYKI5DVWtA=;
-X-UUID: 8cd11f3f81ea4fd1a7b50de3eb6602eb-20210524
+ bh=2k1LMIj64UI3BvUQfu837OeQZJsn/DBVEF9IH36o17s=; 
+ b=nvqIx8JHeZPnH5yX4j/mt2Pw8NwJXLpWCeGTJZgTgj5KK9cbSmO+7P2qrSeXvzVPN5ncIfFZtkJ367cuoK7k5NB5hxrdO1kt+OQ7Htc970MEIyEjxV7lPprHYYmLJRTveacIfN3qllaH6emyyq0ioDuHGuosEN/3PW5b4gp0UmA=;
+X-UUID: 2e27311bd5474c5c85746a7914ea8ab1-20210524
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nina-cm.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 294518170; Mon, 24 May 2021 23:00:03 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 24 May 2021 22:53:31 -0700
+ with ESMTP id 624076786; Mon, 24 May 2021 23:03:39 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 24 May 2021 22:53:55 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 13:53:29 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 25 May 2021 13:53:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 25 May 2021 13:53:29 +0800
+ Frontend Transport; Tue, 25 May 2021 13:53:53 +0800
 From: Nina Wu <nina-cm.wu@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 CC: Zhen Lei <thunder.leizhen@huawei.com>, Nina Wu <Nina-CM.Wu@mediatek.com>, 
@@ -63,17 +62,17 @@ CC: Zhen Lei <thunder.leizhen@huawei.com>, Nina Wu <Nina-CM.Wu@mediatek.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <srv_heupstream@mediatek.com>, <Jackson-kt.Chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v4 2/7] soc: mediatek: devapc: get 'vio_idx_num' info from DT
-Date: Tue, 25 May 2021 13:53:01 +0800
-Message-ID: <1621921986-20578-2-git-send-email-nina-cm.wu@mediatek.com>
+Subject: [PATCH v4 6/7] soc: mediatek: devapc: support mt8192
+Date: Tue, 25 May 2021 13:53:05 +0800
+Message-ID: <1621921986-20578-6-git-send-email-nina-cm.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1621921986-20578-1-git-send-email-nina-cm.wu@mediatek.com>
 References: <1621921986-20578-1-git-send-email-nina-cm.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210524_230005_459277_DD1E7158 
-X-CRM114-Status: GOOD (  19.54  )
+X-CRM114-CacheID: sfid-20210524_230345_019439_4368C67A 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,92 +91,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nina Wu <Nina-CM.Wu@mediatek.com>
 
-For new ICs, there are multiple devapc HWs for different subsys.
-The number of devices controlled by each devapc (i.e. 'vio_idx_num')
-will be set in DT for per devapc node.
-On the other hand, for old ICs which have only one devapc HW, the
-'vio_idx_num' info is set in compatible data.
-To be backward compatible, the 'vio_idx_num' in compatible data is set
-as the default value. Only when the default value is 0 will we get the
-'vio_idx_num' from DT.
+Add compatible to support mt8192.
 
 Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-devapc.c | 25 +++++++++++++++++++------
- 1 file changed, 19 insertions(+), 6 deletions(-)
+ drivers/soc/mediatek/mtk-devapc.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index f1cea04..71643d1 100644
+index bdc8fe9..84dd6a2 100644
 --- a/drivers/soc/mediatek/mtk-devapc.c
 +++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -32,7 +32,7 @@ struct mtk_devapc_vio_dbgs {
+@@ -265,11 +265,27 @@ static const struct mtk_devapc_data devapc_mt6779 = {
+ 	.vio_shift_con_offset = 0xF20,
  };
  
- struct mtk_devapc_data {
--	/* numbers of violation index */
-+	/* default numbers of violation index */
- 	u32 vio_idx_num;
- 
- 	/* reg offset */
-@@ -51,6 +51,9 @@ struct mtk_devapc_context {
- 	void __iomem *infra_base;
- 	struct clk *infra_clk;
- 	const struct mtk_devapc_data *data;
++static const struct mtk_devapc_data devapc_mt8192 = {
++	.version = 2,
++	.vio_mask_offset = 0x0,
++	.vio_sta_offset = 0x400,
++	.vio_dbg0_offset = 0x900,
++	.vio_dbg1_offset = 0x904,
++	.vio_dbg2_offset = 0x908,
++	.apc_con_offset = 0xF00,
++	.vio_shift_sta_offset = 0xF20,
++	.vio_shift_sel_offset = 0xF30,
++	.vio_shift_con_offset = 0xF10,
++};
 +
-+	/* numbers of violation index */
-+	u32 vio_idx_num;
+ static const struct of_device_id mtk_devapc_dt_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt6779-devapc",
+ 		.data = &devapc_mt6779,
+ 	}, {
++		.compatible = "mediatek,mt8192-devapc",
++		.data = &devapc_mt8192,
++	}, {
+ 	},
  };
  
- static void clear_vio_status(struct mtk_devapc_context *ctx)
-@@ -60,10 +63,10 @@ static void clear_vio_status(struct mtk_devapc_context *ctx)
- 
- 	reg = ctx->infra_base + ctx->data->vio_sta_offset;
- 
--	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num) - 1; i++)
-+	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->vio_idx_num) - 1; i++)
- 		writel(GENMASK(31, 0), reg + 4 * i);
- 
--	writel(GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1, 0),
-+	writel(GENMASK(VIO_MOD_TO_REG_OFF(ctx->vio_idx_num) - 1, 0),
- 	       reg + 4 * i);
- }
- 
-@@ -80,15 +83,15 @@ static void mask_module_irq(struct mtk_devapc_context *ctx, bool mask)
- 	else
- 		val = 0;
- 
--	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->data->vio_idx_num) - 1; i++)
-+	for (i = 0; i < VIO_MOD_TO_REG_IND(ctx->vio_idx_num) - 1; i++)
- 		writel(val, reg + 4 * i);
- 
- 	val = readl(reg + 4 * i);
- 	if (mask)
--		val |= GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1,
-+		val |= GENMASK(VIO_MOD_TO_REG_OFF(ctx->vio_idx_num) - 1,
- 			       0);
- 	else
--		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(ctx->data->vio_idx_num) - 1,
-+		val &= ~GENMASK(VIO_MOD_TO_REG_OFF(ctx->vio_idx_num) - 1,
- 				0);
- 
- 	writel(val, reg + 4 * i);
-@@ -256,6 +259,16 @@ static int mtk_devapc_probe(struct platform_device *pdev)
- 	if (!ctx->infra_base)
- 		return -EINVAL;
- 
-+	/* Set vio_idx_num to default value.
-+	 * If the value is 0, get the info from DT.
-+	 */
-+	ctx->vio_idx_num = ctx->data->vio_idx_num;
-+	if (!ctx->vio_idx_num)
-+		if (of_property_read_u32(node,
-+					 "vio-idx-num",
-+					 &ctx->vio_idx_num))
-+			return -EINVAL;
-+
- 	devapc_irq = irq_of_parse_and_map(node, 0);
- 	if (!devapc_irq)
- 		return -EINVAL;
 -- 
 2.6.4
 _______________________________________________
