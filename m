@@ -2,77 +2,75 @@ Return-Path: <SRS0=P9v4=KV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 65D12C2B9F7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 09:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F282C47082
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 09:00:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 27C48613B9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 09:00:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27C48613B9
+	by mail.kernel.org (Postfix) with ESMTPS id 19A4A6139A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 09:00:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19A4A6139A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M19vqO0BT5XnOE9UiIUypNvAwLMSdLnBgXorEOHrFaM=; b=s0nAMqktHi4ERJ
-	PJxf8SFT2xolHPU+vI5FL8Eg8PsW4/ETTixRp/0MEDX2yrSAElytybxs8tSt10lE2j667dr7BmuN+
-	1mh5D3Cnx6BkbGzRrvvK+GyfSngM1uZxpx/OxbAcpuA5Ar4uN/AUnxB8LhXCyvZ5UC1N/o6NCHhH+
-	hWiUAWtd0Q+Cf8WCbrCS0IPazGwTQMG/RrPlD+cPPQgY/INvFTKuMUWU8oDnRJXbjQPbVbY8TKxJA
-	/5sxVg9nKX1iwVSgGHAZp1aiFCNTPHYu5WXsctbLIizLyIrg7jwk4YPhGYnGdsWRUKOLMw62Rvife
-	sZWUpZfEp2fgC4sU6TKA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OxM5E1pc44z4Qkrva770Enz/N2VZfuYGUM4fU+UW6sA=; b=P8LRiL+3DH0jp4
+	ciutBqg1BND/qpNG88KHOHfVDl2hx+N1WMgkX7NG3zYhs6ViRZpXlurfuXPogjgtVL12AIcCaxO/U
+	4p3fv7VTgKKPTV1lv+CvIhCT8gEyqpPwNsQhS2UBFhBbWM2cYpVDh9rV1kpqqxgv8hNMnQmPxxRgs
+	W/UTJ4m/BVp8ZLXxIffhGvneKVmL70+Bgbn+Lk3tvf5nkG0USjK58wMXi5tJMO5qY4QNl73mLNbst
+	D+0gYOL2IQTB21ZKnsnotvjT/9qpuDhlZ7Ooi48IQvJ481R/L7eeNbTUjfa8UgglG7xPdtckLHp7B
+	WdDMu1OE304qW9IbqCiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1llpOQ-00Cgcs-6H; Wed, 26 May 2021 08:59:58 +0000
+	id 1llpOW-00Cgfc-Ue; Wed, 26 May 2021 09:00:05 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1llpH7-00CdSx-8B; Wed, 26 May 2021 08:52:27 +0000
-X-UUID: 307dfe841c3849029c183a33ba795e89-20210526
+ id 1llpH8-00CdSS-Si; Wed, 26 May 2021 08:52:28 +0000
+X-UUID: ab4dc964926444c7b9e5b49aa0e9a4d3-20210526
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=m3ZTes20gd9aw8BTCdoz7CaSguw4fs3Go577xeeWKxc=; 
- b=cwRsP7lPJOllXKw2ChlWzA6MF60B4/H4wU0mQlZQkJnQfXlor30OwQwmnm+NZfQwTcC+KcZlKTPdz/rDWSM64tnlUnX+nFWfD2Fw/xbD9ybnU1ZD0gxltmdw37OszFlDIb5LefTthL8h0FO2un0ADltyUCum2zc3342LpPPiIHE=;
-X-UUID: 307dfe841c3849029c183a33ba795e89-20210526
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=qR1g+pBBKQP/vtauMIGeAhhdtlWOijqDuKA54wZ11Tw=; 
+ b=QzIS5rLH5I/BBGk6cQSnN7/Tcqnqp1elC21aAwc4qvb87SuwNvsd8TeF97pZWPylwAnig9ILMTBrs3i6LzsfITNw2uRlfSa++4dFWsh57CH15RyCCDHene26QhKq/vsKYabp9AF/8KfGrQIPtzoQ2KThhLJVz5yJJkgKAedyF4E=;
+X-UUID: ab4dc964926444c7b9e5b49aa0e9a4d3-20210526
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1402898826; Wed, 26 May 2021 01:52:23 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 1778828472; Wed, 26 May 2021 01:52:23 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 26 May 2021 01:52:21 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 26 May 2021 16:52:20 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 26 May 2021 16:52:20 +0800
+ Frontend Transport; Wed, 26 May 2021 16:52:19 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
 CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v5,PATCH 1/3] drm/mediatek: dpi dual edge sample mode support
-Date: Wed, 26 May 2021 16:52:17 +0800
-Message-ID: <20210526085219.7582-2-rex-bc.chen@mediatek.com>
+ <rex-bc.chen@mediatek.com>
+Subject: [v5,PATCH 0/3] mt8183 dpi supports dual edge
+Date: Wed, 26 May 2021 16:52:16 +0800
+Message-ID: <20210526085219.7582-1-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210526085219.7582-1-rex-bc.chen@mediatek.com>
-References: <20210526085219.7582-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210526_015225_326966_48CA2FFE 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20210526_015226_974181_F8C26980 
+X-CRM114-Status: UNSURE (   7.39  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,82 +87,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+v5:
+Remove ddr_edge_sel and use output_fmts to determine
+which edge to be set.
+
+v4:
+Use output_fmts to determine whether it is dual edge.
+Rebase to v5.13-rc1
+
+v3:
+Modify clock rate for dual edge setting.
+Add more bridge function.
+
+v2:
+Modify unused code
+
+v1:
 DPI can sample on falling, rising or both edge.
 When DPI sample the data both rising and falling edge.
 It can reduce half data io pins.
-Use num_output_fmts to determine whether it is dual edge mode.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_dpi.c | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+Rex-BC Chen (3):
+  [v5] drm/mediatek: dpi dual edge sample mode support
+  [v5] drm/mediatek: config driver data to support dual edge sample
+  [v5] drm/mediatek: dpi: add bus format negotiation
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index bea91c81626e..f034ebd12fa6 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -83,6 +83,7 @@ struct mtk_dpi {
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_gpio;
- 	struct pinctrl_state *pins_dpi;
-+	unsigned int output_fmt;
- 	int refcount;
- };
- 
-@@ -381,6 +382,20 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
- 	}
- }
- 
-+static void mtk_dpi_dual_edge(struct mtk_dpi *dpi)
-+{
-+	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
-+		(dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE)) {
-+		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE,
-+			     DDR_EN | DDR_4PHASE);
-+		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING,
-+			     dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE ?
-+			     EDGE_SEL : 0, EDGE_SEL);
-+	} else {
-+		mtk_dpi_mask(dpi, DPI_DDR_SETTING, DDR_EN | DDR_4PHASE, 0);
-+	}
-+}
-+
- static void mtk_dpi_power_off(struct mtk_dpi *dpi)
- {
- 	if (WARN_ON(dpi->refcount == 0))
-@@ -455,7 +470,13 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	pll_rate = clk_get_rate(dpi->tvd_clk);
- 
- 	vm.pixelclock = pll_rate / factor;
--	clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-+	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
-+		(dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
-+		clk_set_rate(dpi->pixel_clk, vm.pixelclock * 2);
-+	else
-+		clk_set_rate(dpi->pixel_clk, vm.pixelclock);
-+
-+
- 	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
- 
- 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
-@@ -519,6 +540,7 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
- 	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
- 	mtk_dpi_config_color_format(dpi, dpi->color_format);
- 	mtk_dpi_config_2n_h_fre(dpi);
-+	mtk_dpi_dual_edge(dpi);
- 	mtk_dpi_config_disable_edge(dpi);
- 	mtk_dpi_sw_reset(dpi, false);
- 
-@@ -800,6 +822,8 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	dpi->output_fmt = MEDIA_BUS_FMT_RGB888_1X24;
-+
- 	return 0;
- }
- 
+ drivers/gpu/drm/mediatek/mtk_dpi.c | 130 +++++++++++++++++++++++++++--
+ 1 file changed, 124 insertions(+), 6 deletions(-)
+
 -- 
 2.18.0
 _______________________________________________
