@@ -2,92 +2,81 @@ Return-Path: <SRS0=P9v4=KV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C46AC47087
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 02:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ECA84C4707F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 02:45:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B760161429
-	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 02:32:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B760161429
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A0B2161432
+	for <linux-mediatek@archiver.kernel.org>; Wed, 26 May 2021 02:45:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0B2161432
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ADMo0oTzXXwyKnJQHSk/W1TLKQVCtSqTxL/joWQ+3C8=; b=e5jhUNCVVUUcml
-	M1NceVQVtGHa/EOaNgqcdUpK+IuasR5jMCqNyNTq0ODE4Zh5jSHtzID1y6Eqk02fwJ2zvS8029yVr
-	ZXkuJckg/ihaS18+zBDB/NQXiOU3BoC1KHZ32rgZI6zAZ8SqvPW788pDFxzziLj0WLDasCX9rY7Fe
-	kv2FArPslklT71xIU2sO6dShZkWELtSIVEJq22KuBazkDu9ANy4udPX0znStnDHkpzvbqID6VHMk6
-	LxGCA43SsqpnnqigMPBFUHGARfp/5ekGXpyJVnjWPX4aXqyYuQWdmg4E2OORFGau2AXALGogLCG1U
-	pDUGpZ+xxmm+D64beyDw==;
+	List-Owner; bh=nahrgHPB1p/HRWDkLioz64onk8GISt6NI0p+zCZ2XOQ=; b=pZwebvOV1z5wjd
+	TeX6SiFaiFpYmchgWDYDv4UEzGfQ/97SBWM1YUSC4pVBl3WKIpi+LbY9WreNB+Xj9pBTTKhM9M1OS
+	mDtb6IDcBvJOJJ0LyU0guBEJ42eL0Dx2LrJZKMfSv60Qq3WmR8XWF9Pohy61raS427wwIoLbjqZU7
+	vJogv6HRa9P5Pc+4v1YV7Ys89uz71Yiz0LJ4gdfoxTLipkPe61oIBfr64K/27zTD/VD7wd4WoU/y5
+	8pVBGNJ5jY7aoBqINCpGsXMnXyIxMHGOVn/8A2Cr6DvF2RB7P2tbWsSE6ysONTQwt22QyjkHBNJF6
+	AUUE3ikQRYFMBf9mCwDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lljLR-00A8a1-AH; Wed, 26 May 2021 02:32:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lljXf-00ACJq-AC; Wed, 26 May 2021 02:45:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lljLC-00A8Vk-T2; Wed, 26 May 2021 02:32:16 +0000
-X-UUID: bdd876b71a914d5db890537ccc2ce7c6-20210525
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=u4rffWvgYfrSTYJgDsvIRaBpj5Ge6ENMgegLquz8jFk=; 
- b=ZdW5iot1SLyXV5xbSP2fBY3MznQp39G1jiYTzunWyMEgr8b/A/CHrVV+5Tq4wKH88O8/PS4X320i0DDDVv9HXPOg7IbqtMoPOu69UGxAc77j0Om+7Sn1rn5AGwN249Xyr4LLhJzXCpyiwn37Pj7TpmFiaZo/B+kXHzGPT/UVxto=;
-X-UUID: bdd876b71a914d5db890537ccc2ce7c6-20210525
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <andrew-sh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1721995229; Tue, 25 May 2021 19:32:11 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 25 May 2021 19:22:08 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 26 May 2021 10:22:07 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 26 May 2021 10:22:07 +0800
-Message-ID: <1621995727.29827.1.camel@mtksdaap41>
-Subject: Re: [PATCH V8 1/8] PM / devfreq: Add cpu based scaling support to
- passive_governor
-From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
-To: Chanwoo Choi <cw00.choi@samsung.com>
-CC: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
- <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
- <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J.
- Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>,
- Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>, Sibi Sankar
- <sibis@codeaurora.org>
-Date: Wed, 26 May 2021 10:22:07 +0800
-In-Reply-To: <cfdd3973-e4a7-8c09-8a7e-57118a7a3b9b@samsung.com>
-References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
- <CGME20210323113411epcas1p3b4367563007ca91c30201d7fc225bb67@epcas1p3.samsung.com>
- <1616499241-4906-2-git-send-email-andrew-sh.cheng@mediatek.com>
- <233a3bd6-7ab1-5da2-9184-a745eb253d86@samsung.com>
- <1617177820.15067.1.camel@mtksdaap41>
- <2ae8604d-0da6-4243-1b92-81b3917d7d48@samsung.com>
- <cad52436-b291-05bf-236f-7b7cb1fdbbff@samsung.com>
- <1617195800.18432.3.camel@mtksdaap41>
- <fbb6c44b-eb77-14ce-9175-3f06030e6e0c@samsung.com>
- <cfdd3973-e4a7-8c09-8a7e-57118a7a3b9b@samsung.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lljXS-00ACFy-1L; Wed, 26 May 2021 02:44:55 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1F74D61437;
+ Wed, 26 May 2021 02:44:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1621997093;
+ bh=rsTIIgQ3nqy4Xh20GrbgV6iG0hbzpPJ4x64TSBbYFzk=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=aUw7bzkvwfXwXcnX0Slx6qwQ0gJAzurxTvY/6anEvxSCUgDNwo6TiL5z/qDcIiN/n
+ W8Qfhw6DQK146YWDr5wnl2Z0wcLGa/Rdr8IHiommUUeoVz55BGbNZVr6RVUS27kgJb
+ Xkci9t+L6u7TfXgsUbCuUD7ynjf9280qRvmGxinoaubF1Cl8z+i4PSCuowzzMqpcnm
+ +/Axvp/3LlZw3A0o5qG0J05BLrtmzO7RzHO+auUKaWCP954siMkCBxjOuMGqbSDq6y
+ Rc4w5RZTU1G9mxAKgETSyqh376Mrgl3pmBwexauhUGsyej6ToClSMvZC/m7vYFOZGT
+ nISKkkisEHaXg==
+Received: by mail-ed1-f54.google.com with SMTP id s6so38593834edu.10;
+ Tue, 25 May 2021 19:44:53 -0700 (PDT)
+X-Gm-Message-State: AOAM533e/XrBFGewfyZgko5ps6ysy+fIrezFDxeRO5PmnSGaCQYN9Vl3
+ I+HU9JvwppGb7V1vcTCNrgBG1FN/kRRvNTvunQ==
+X-Google-Smtp-Source: ABdhPJxwO04yl5WZa0+jOnbeZ7drXGaZrOwZtr9HVj+l8GtBtUXQE1ouzcgJ7WJCend58die4B49R8xq/+6Bkf17N/E=
+X-Received: by 2002:a05:6402:4cf:: with SMTP id
+ n15mr36336665edw.162.1621997091699; 
+ Tue, 25 May 2021 19:44:51 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210525121448.30075-1-rex-bc.chen@mediatek.com>
+ <20210525121448.30075-2-rex-bc.chen@mediatek.com>
+ <CAAOTY__aasihVxC72f7b_R-=UcR85Z1G9M8TxUS9dBrad-aRxQ@mail.gmail.com>
+ <c90629c915bc1c0d2e6b1070939a443ce5f8644c.camel@mediatek.com>
+In-Reply-To: <c90629c915bc1c0d2e6b1070939a443ce5f8644c.camel@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 26 May 2021 10:44:41 +0800
+X-Gmail-Original-Message-ID: <CAAOTY__3FWA37h5AoK_VR9LhyfHf3dGx2m-2P==2PNOpsxwyJQ@mail.gmail.com>
+Message-ID: <CAAOTY__3FWA37h5AoK_VR9LhyfHf3dGx2m-2P==2PNOpsxwyJQ@mail.gmail.com>
+Subject: Re: [v4,PATCH 1/3] drm/mediatek: dpi dual edge sample mode support
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Jitao Shi <jitao.shi@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210525_193214_972719_39158DC3 
-X-CRM114-Status: GOOD (  33.01  )
+X-CRM114-CacheID: sfid-20210525_194454_141453_79BF01F8 
+X-CRM114-Status: GOOD (  20.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,88 +88,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-04-08 at 11:47 +0900, Chanwoo Choi wrote:
-> On 4/1/21 9:16 AM, Chanwoo Choi wrote:
-> > On 3/31/21 10:03 PM, andrew-sh.cheng wrote:
-> >> On Wed, 2021-03-31 at 17:35 +0900, Chanwoo Choi wrote:
-> >>> On 3/31/21 5:27 PM, Chanwoo Choi wrote:
-> >>>> Hi,
-> >>>>
-> >>>> On 3/31/21 5:03 PM, andrew-sh.cheng wrote:
-> >>>>> On Thu, 2021-03-25 at 17:14 +0900, Chanwoo Choi wrote:
-> >>>>>> Hi,
-> >>>>>>
-> >>>>>> You are missing to add these patches to linux-pm mailing list.
-> >>>>>> Need to send them to linu-pm ML.
-> >>>>>>
-> >>>>>> Also, before received this series, I tried to clean-up these patches
-> >>>>>> on testing branch[1]. So that I add my comment with my clean-up case.
-> >>>>>> [1] https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!zIrzeDp9vPnm1_SDzVPuzqdHn3zWie9DnfBXaA-j9-CSrVc6aR9_rJQQiw81_CgAPh9XRRs$ 
-> >>>>>>
-> >>>>>> And 'Saravana Kannan <skannan@codeaurora.org>' is wrong email address.
-> >>>>>> Please update the email or drop this email.
-> >>>>>
-> >>>>> Hi Chanwoo,
-> >>>>>
-> >>>>> Thank you for the advices.
-> >>>>> I will resend patch v9 (add to linux-pm ML), remove this patch, and note
-> >>>>> that my patch set base on
-> >>>>> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJ8WFhg_g$ 
-> >>>>
-> >>>> I has not yet test this patch[1] on devfreq-testing-passive-gov branch.
-> >>>> So that if possible, I'd like you to test your patches with this patch[1] 
-> >>>> and then if there is no problem, could you send the next patches with patch[1]?
-> >>>>
-> >>>> [1]https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/commit/?h=devfreq-testing-passive-gov&id=39c80d11a8f42dd63ecea1e0df595a0ceb83b454__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJR2cQqZs$ 
-> >>>
-> >>>
-> >>> Sorry for the confusion. I make the devfreq-testing-passive-gov[1]
-> >>> branch based on latest devfreq-next branch.
-> >>> [1] https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJ8WFhg_g$ 
-> >>>
-> >>> First of all, if possible, I want to test them[1] with your patches in this series.
-> >>> And then if there are no any problem, please let me know. After confirmed from you,
-> >>> I'll send the patches of devfreq-testing-passive-gov[1] branch.
-> >>> How about that?
-> >>>
-> >> Hi Chanwoo~
-> >>
-> >> We will use this on Google Chrome project.
-> >> Google Hsin-Yi has test your patch + my patch set v8 [2~8]
-> >>
-> >>     make sure cci devfreqs runs with cpufreq.
-> >>     suspend resume
-> >>     speedometer2 benchmark
-> >> It is okay.
-> >>
-> >> Please send the patches of devfreq-testing-passive-gov[1] branch.
-> >>
-> >> I will send patch v9 base on yours latter.
-> > 
-> > Thanks for your test. I'll send the patches today.
-> 
-> I'm sorry for delay because when I tested the patches
-> for devfreq parent type on Odroid-xu3, there are some problem
-> related to lazy linking of OPP. So I'm trying to analyze them.
-> Unfortunately, we need to postpone these patches to next linux
-> version.
-> 
-Hi Chanwoo Choi~
-
-It is said that you are busy on another task recently.
-May I know your plan on this patch?
-Thank you.
-
-> 
-> [snip]
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+UmV4LUJDIENoZW4gPHJleC1iYy5jaGVuQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjHlubQ15pyIMjbm
+l6Ug6YCx5LiJIOS4iuWNiDk6NTHlr6vpgZPvvJoKPgo+IEhlbGxvIENLLAo+Cj4gVGhhbmtzIGZv
+ciB5b3VyIHJldmlldy4KPgo+IE9uIFdlZCwgMjAyMS0wNS0yNiBhdCAwODowMSArMDgwMCwgQ2h1
+bi1LdWFuZyBIdSB3cm90ZToKPiA+IEhpLCBSZXg6Cj4gPgo+ID4gUmV4LUJDIENoZW4gPHJleC1i
+Yy5jaGVuQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjHlubQ15pyIMjXml6Ug6YCx5LqMIOS4i+WNiDg6
+MTXlr6vpgZPvvJoKPiA+ID4KPiA+ID4gRFBJIGNhbiBzYW1wbGUgb24gZmFsbGluZywgcmlzaW5n
+IG9yIGJvdGggZWRnZS4KPiA+ID4gV2hlbiBEUEkgc2FtcGxlIHRoZSBkYXRhIGJvdGggcmlzaW5n
+IGFuZCBmYWxsaW5nIGVkZ2UuCj4gPiA+IEl0IGNhbiByZWR1Y2UgaGFsZiBkYXRhIGlvIHBpbnMu
+Cj4gPiA+IFVzZSBudW1fb3V0cHV0X2ZtdHMgdG8gZGV0ZXJtaW5lIHdoZXRoZXIgaXQgaXMgZHVh
+bCBlZGdlIG1vZGUuCj4gPiA+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEppdGFvIFNoaSA8aml0YW8u
+c2hpQG1lZGlhdGVrLmNvbT4KPiA+ID4gU2lnbmVkLW9mZi1ieTogUmV4LUJDIENoZW4gPHJleC1i
+Yy5jaGVuQG1lZGlhdGVrLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVk
+aWF0ZWsvbXRrX2RwaS5jIHwgMTcgKysrKysrKysrKysrKysrKy0KPiA+ID4gIDEgZmlsZSBjaGFu
+Z2VkLCAxNiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gPiA+Cj4gPiA+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gPiA+IGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcGkuYwo+ID4gPiBpbmRleCBiZWE5MWM4MTYyNmUuLmQzYjg4
+M2M5N2FhZiAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cGkuYwo+ID4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RwaS5jCj4gPiA+
+IEBAIC04Myw2ICs4Myw3IEBAIHN0cnVjdCBtdGtfZHBpIHsKPiA+ID4gICAgICAgICBzdHJ1Y3Qg
+cGluY3RybCAqcGluY3RybDsKPiA+ID4gICAgICAgICBzdHJ1Y3QgcGluY3RybF9zdGF0ZSAqcGlu
+c19ncGlvOwo+ID4gPiAgICAgICAgIHN0cnVjdCBwaW5jdHJsX3N0YXRlICpwaW5zX2RwaTsKPiA+
+ID4gKyAgICAgICBib29sIGRkcl9lZGdlX3NlbDsKPiA+Cj4gPiBJIHdvdWxkIGxpa2UgdG8ga2Vl
+cCBvdXRwdXRfZm10IGluc3RlYWQgb2YgZGRyX2VkZ2Vfc2VsLgo+ID4gSW5pdGlhbGl6ZSBvdXRw
+dXRfZm10IHRvIE1FRElBX0JVU19GTVRfUkdCODg4XzFYMjQgaW4gdGhpcyBwYXRjaC4KPiA+Cj4g
+SXQgbWVhbnMgdGhhdCBJIG1heSBpbml0aWFsaXplIG91dHB1dF9mbXQgaW4gcHJvYmUgYW5kIHNl
+dCB2YWx1ZSBpbgo+IG10a19kcGlfYnJpZGdlX2F0b21pY19jaGVjaygpIG9mIHBhdGNoWzMvM10/
+CgpZZXMuCgo+ID4gPiAgICAgICAgIGludCByZWZjb3VudDsKPiA+ID4gIH07Cj4gPiA+CgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
