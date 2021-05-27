@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5349CC4707F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 001BBC47089
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 18333613B6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18333613B6
+	by mail.kernel.org (Postfix) with ESMTPS id B9ADC611C2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9ADC611C2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,66 +23,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YRA6u3i8xHxtogGExke/hHeusLiyHG98nqJCn/qVc3A=; b=fSBH3Z60x6vAID
-	+w+820TG6TaR9R74pHACqPoCOHOCVAdQb3jhR7y5DWUrOcpfNhlYeHka5JO7IBMMEKK/v08svNrU/
-	ixWizULiL87D7AOJ0VC9hYgCFX5zKWhaLEpNRfSiyPVnSUzv2c1FbGRF5nEGAHECB6dcHwmFsS2bq
-	saLT0iENR6O89DzmjJA5APLw6FCcuR1t884HuvJYU6OWqtThu7Ec2gne9ju8S8ELo6SRhYvCd/sSZ
-	a4aHxCXebFykhBcl87ASsq4nR3AYsUEJ0RNyU4gmEtsRDqNNX3LVv19Vu92DgMSLRW7ZsRUYHcbAB
-	6svfMK2lqx7/Ptj0jvVA==;
+	List-Owner; bh=13b0Ki1VLPWOPNm/vQraqAwjwSoPWJLEAmmeioipmUA=; b=d1L4SI5IcXy6Mm
+	XnTox48PZazqVhizDC89kWl+93v+xWxjaJAPnbL0MsJE/ZrddgBEPwz+ewB5VD7Q5KzlCts0n5s08
+	re9uWBuRw7m+nXHD8HbQLls5TtGnnR6SfzT2+ADkVNdJn60pvAz0ILsQ3XgW8LAfog9WB7LsY6T0K
+	aKsWTKtSRALEmXRPllViL7esYQxJRe6VYjimQ/mdi8UOPRQecwIE6F1U6MPLaR5qsj/yi2YWEAoPd
+	2Ib/0j9A3lnqEcFqmVauG/89K6ip8EaCMz/dsAWnoihQd8Qp9HV/HRZfB/cL02djLckGmq/tmAfXD
+	Vm7e1MqXOvaICxouysQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmHyw-007EeU-IN; Thu, 27 May 2021 15:31:34 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1lmHz3-007Eh6-6m; Thu, 27 May 2021 15:31:41 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmHMk-006w3e-8G
- for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 14:52:07 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id r5so512837lfr.5
- for <linux-mediatek@lists.infradead.org>; Thu, 27 May 2021 07:52:03 -0700 (PDT)
+ id 1lmHNM-006wMR-GB
+ for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 14:52:45 +0000
+Received: by mail-lj1-x230.google.com with SMTP id v5so1153737ljg.12
+ for <linux-mediatek@lists.infradead.org>; Thu, 27 May 2021 07:52:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+jqOWEVHuZGkfA6MD8Z68F0r2FOE/7+7mfKMuVI/ccg=;
- b=cJoEDb4CQ/mHG5hJsPhdH+w76PE7kgmJxWhbPuRqPqvqTaEib07YsiwAXxRgaLuM0+
- /bKteq6nUzAEouzLWj9/mJJCmYoGxyisr2QDmn5KYOcDs0m4/dwPxdSsczE7qsZsc8K0
- U3oAGI1C8St8Aalf/NABCefTVRYf6G3kYRaUeWDu8G5pLRxzT0Hv4U9yWMI8kOE8vZd5
- VGU7U9oSdwVl8I2Qv6PmTHaVqzWJm7tjB3YYFJkOqzD3Nrz6poXMtRbx+ICPPy+9zPsA
- TjotsHzY9phpNO1B2bvHVe22wACZlNtJBsBnufuS3agHuoZ3BDjmLeQSH5JT0ryyChOF
- MpPQ==
+ :cc; bh=gbLxZVInwYy3qEUPV3OX+LQ3zzJzdzfdzUhZD/Ue/bg=;
+ b=IXaIB0Nni2fs5B9gNNEfAvL6rmSOEETjRJ/6oEyfVHXghb3kgUg5GcpBXZZ5o+QqOb
+ BpYowFocYox4Dq6gQqpolGYEgPeDGD4jrOSe0QOLHDyAV4kDhyfhux5IrYQR/3p5pdou
+ a7EIH9Yl/4mrlSnTAoRB+GkwaCFAc0hZyOr1XCIIpjv8ki7NI5biYt7unOV5aZD4J6AE
+ GUDpKQZVA1zZutLCkh2ESBMk5MbJz1w8dAMr+VWqPAAYVFPlKHwXu4Hk4xQizJXbrKwB
+ gRQ2ILP4/A8czIxl+WoMxXeqvspc+DZTiol3sw7MQvPNITxf4Mch+I3XKX7NNkNuqQaS
+ 8ydg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+jqOWEVHuZGkfA6MD8Z68F0r2FOE/7+7mfKMuVI/ccg=;
- b=aw1dCGlMlt9sr9CgpuKlsD5Trh3xmQoD/0bBmHhE7c9COzQX4ik4uI8gCXtzfwdMdy
- ApL2ytDqV0q143xQQ+LVgZRCmeY50hIF7rP0K3Hynw63DjtMzAetny0KN3qFel/sDEh/
- kdJQ7Ndu+G4PgAo9unH430ZZcn6PBhj7BF3GOuRi9h+Of13oVT6uJEaeU+gJHq1EOPw5
- mrwRxFDIzTg4NkEwuXd5VY1Y26ImXaQuY7xHZguF1e4y8PTlRCQ+74jzBlqYxgjOGUu1
- IASGum1Y9Xxmi+OVyt7sb1GYlcZAM6+vKvBAdfZlQvoXuefzlG8ICktGCwWF4yCpWJUf
- RaKA==
-X-Gm-Message-State: AOAM531FJCqY6eNyXFpuU4loB8FVpl9uihJj7S/N33+g1KXdoug+Qwh3
- p35liMXgfAcm9ijxZl8SE9d4I8VfhwWF8BBHzh8rHA==
-X-Google-Smtp-Source: ABdhPJwOz7U2P9wcNokB7S5LqfRAKa5kO1E7gucgX+G5ePQajC2FmgoKGqJaaeDH5utID4W/FYcBSXnMCsWi5qkepiY=
-X-Received: by 2002:a05:6512:1185:: with SMTP id
- g5mr2652587lfr.586.1622127121750; 
- Thu, 27 May 2021 07:52:01 -0700 (PDT)
+ bh=gbLxZVInwYy3qEUPV3OX+LQ3zzJzdzfdzUhZD/Ue/bg=;
+ b=mexYq1N5eLj8JDbmgoisQmpULMqMMXUAEm60GvOgmyj+2sRkqD5K26QQMLUZ0ROX7Y
+ fCz+9qcUIs3pid0jShVH93Eiljl8aGAkxrDXzjHvJyo48lAhJp2xX+XOBOvRJzooX7Lq
+ iuOviAT9NNOs79NSBHmym5zrKRNFq7LAqeTBSPuJlrCbyGLbUjJX5tVljgQwsU0XxfRv
+ Jei8li79bzD4F050vRK6zGKyvnB74L8/6kpL73rTf8xWUkRQe4F4zorHg2TarxJWeuHQ
+ rcNRM5myHI0LWED9tdxOKL6ABIAfznj8ylv/R40a/o/MtCPSOiwU5XzQ9AcsmYpONARv
+ IwOw==
+X-Gm-Message-State: AOAM532hOpSoWjVoLBVUH7aUxJZv8C+ghNQuTmPVjudDcyZFRmfgRxE5
+ hRhzaG/Q1OHy1X2GTcIiIaVf3KuSjj6g1E5CPSVf8A==
+X-Google-Smtp-Source: ABdhPJyOpPFO04F64d5pjW8QNYZ4e/HRx7gpPeHxd/mRVrxX7uKsLF7S1bM0/fx10bKuhTzUYcQo7VOPcuN/I7RO4+w=
+X-Received: by 2002:a2e:22c3:: with SMTP id i186mr2978367lji.273.1622127163004; 
+ Thu, 27 May 2021 07:52:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210519162409.3755679-1-fparent@baylibre.com>
- <20210519162409.3755679-2-fparent@baylibre.com>
-In-Reply-To: <20210519162409.3755679-2-fparent@baylibre.com>
+ <20210519162409.3755679-3-fparent@baylibre.com>
+In-Reply-To: <20210519162409.3755679-3-fparent@baylibre.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 27 May 2021 16:51:50 +0200
-Message-ID: <CACRpkdZ70OcbgyFN2cQtLgsXFCTsvstsrBYYt3UY6Wc=NbXuag@mail.gmail.com>
-Subject: Re: [PATCH 2/3] pinctrl: mediatek: don't hardcode mode encoding in
- common code
+Date: Thu, 27 May 2021 16:52:32 +0200
+Message-ID: <CACRpkdbQtBYMU80dXB3n179QQqpD5Cp7_q0MgEX264EeP_G-8A@mail.gmail.com>
+Subject: Re: [PATCH 3/3] pinctrl: mediatek: add support for mt8365 SoC
 To: Fabien Parent <fparent@baylibre.com>
 Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- mkorpershoek@baylibre.com, 
+ mkorpershoek@baylibre.com, linux-kernel <linux-kernel@vger.kernel.org>, 
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
  Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_075206_327981_830FC21D 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20210527_075244_596072_FFA7D3BE 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,13 +99,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Wed, May 19, 2021 at 6:24 PM Fabien Parent <fparent@baylibre.com> wrote:
 
-> MT8365 encode the pins mode differently than other
-> MTK pinctrl drivers that use the PINCTRL_MTK common code.
->
-> Add 3 new fields in mtk_pinctrl_devdata in order to store how
-> pin modes are encoded into the register. At the
-> same time update all the pinctrl driver that depends on
-> CONFIG_PINCTRL_MTK.
+> Add pinctrl driver for MT8365 SoC.
 >
 > Signed-off-by: Fabien Parent <fparent@baylibre.com>
 
