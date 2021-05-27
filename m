@@ -2,85 +2,78 @@ Return-Path: <SRS0=4IUA=KW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 001BBC47089
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F02E5C4707F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 18:35:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B9ADC611C2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 15:31:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9ADC611C2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7C452613DA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 18:35:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C452613DA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=13b0Ki1VLPWOPNm/vQraqAwjwSoPWJLEAmmeioipmUA=; b=d1L4SI5IcXy6Mm
-	XnTox48PZazqVhizDC89kWl+93v+xWxjaJAPnbL0MsJE/ZrddgBEPwz+ewB5VD7Q5KzlCts0n5s08
-	re9uWBuRw7m+nXHD8HbQLls5TtGnnR6SfzT2+ADkVNdJn60pvAz0ILsQ3XgW8LAfog9WB7LsY6T0K
-	aKsWTKtSRALEmXRPllViL7esYQxJRe6VYjimQ/mdi8UOPRQecwIE6F1U6MPLaR5qsj/yi2YWEAoPd
-	2Ib/0j9A3lnqEcFqmVauG/89K6ip8EaCMz/dsAWnoihQd8Qp9HV/HRZfB/cL02djLckGmq/tmAfXD
-	Vm7e1MqXOvaICxouysQA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=txf2o/MNleU87oZonBgW25vXTUJth8+QPSvLE6SpYbg=; b=2+6HESc70oXSxo
+	z6MxAqmDTidLyHoyJMF4ukmElGZfN9rzcpDvblPWH40IAOqYAfdXeCElS09i/n9OJIg+qTQR3Qa+Y
+	yAcyTBtUvU8BgEXS7xuT7U30HOi0llLnCCjdMY3RDQ/RmUheKiBwYsPv3ccohbIvU3GpMCD/O3OJ/
+	GjjAjGovTdvHT2ppVylowvGhedoyF4mzgfsi/Zkeq7VsOcaSwifrcnljTmZ9OVJS3ckqxebNWq/NW
+	xC4vbFYCS4kckU7/n/zHrBzzFUCE25xfK2rkHszALbHydfhdw39hMfE55Q3P2m2c4cb6daoXITz7I
+	//xkjPWu2ZKbM8GfJ7Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmHz3-007Eh6-6m; Thu, 27 May 2021 15:31:41 +0000
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+	id 1lmKqm-008X2c-8S; Thu, 27 May 2021 18:35:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmHNM-006wMR-GB
- for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 14:52:45 +0000
-Received: by mail-lj1-x230.google.com with SMTP id v5so1153737ljg.12
- for <linux-mediatek@lists.infradead.org>; Thu, 27 May 2021 07:52:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gbLxZVInwYy3qEUPV3OX+LQ3zzJzdzfdzUhZD/Ue/bg=;
- b=IXaIB0Nni2fs5B9gNNEfAvL6rmSOEETjRJ/6oEyfVHXghb3kgUg5GcpBXZZ5o+QqOb
- BpYowFocYox4Dq6gQqpolGYEgPeDGD4jrOSe0QOLHDyAV4kDhyfhux5IrYQR/3p5pdou
- a7EIH9Yl/4mrlSnTAoRB+GkwaCFAc0hZyOr1XCIIpjv8ki7NI5biYt7unOV5aZD4J6AE
- GUDpKQZVA1zZutLCkh2ESBMk5MbJz1w8dAMr+VWqPAAYVFPlKHwXu4Hk4xQizJXbrKwB
- gRQ2ILP4/A8czIxl+WoMxXeqvspc+DZTiol3sw7MQvPNITxf4Mch+I3XKX7NNkNuqQaS
- 8ydg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gbLxZVInwYy3qEUPV3OX+LQ3zzJzdzfdzUhZD/Ue/bg=;
- b=mexYq1N5eLj8JDbmgoisQmpULMqMMXUAEm60GvOgmyj+2sRkqD5K26QQMLUZ0ROX7Y
- fCz+9qcUIs3pid0jShVH93Eiljl8aGAkxrDXzjHvJyo48lAhJp2xX+XOBOvRJzooX7Lq
- iuOviAT9NNOs79NSBHmym5zrKRNFq7LAqeTBSPuJlrCbyGLbUjJX5tVljgQwsU0XxfRv
- Jei8li79bzD4F050vRK6zGKyvnB74L8/6kpL73rTf8xWUkRQe4F4zorHg2TarxJWeuHQ
- rcNRM5myHI0LWED9tdxOKL6ABIAfznj8ylv/R40a/o/MtCPSOiwU5XzQ9AcsmYpONARv
- IwOw==
-X-Gm-Message-State: AOAM532hOpSoWjVoLBVUH7aUxJZv8C+ghNQuTmPVjudDcyZFRmfgRxE5
- hRhzaG/Q1OHy1X2GTcIiIaVf3KuSjj6g1E5CPSVf8A==
-X-Google-Smtp-Source: ABdhPJyOpPFO04F64d5pjW8QNYZ4e/HRx7gpPeHxd/mRVrxX7uKsLF7S1bM0/fx10bKuhTzUYcQo7VOPcuN/I7RO4+w=
-X-Received: by 2002:a2e:22c3:: with SMTP id i186mr2978367lji.273.1622127163004; 
- Thu, 27 May 2021 07:52:43 -0700 (PDT)
+ id 1lmJSQ-007vBM-HK
+ for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 17:06:09 +0000
+X-UUID: 2c0a4bf491844cd1a4690041fbc090ff-20210527
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=YyTBjChf6b+mfXI6jndnxJFZ/nJHKtsgfH7MHYAtA8Q=; 
+ b=qcuIM0JNP4De/m1BE3euwSnYro8JgvX9ZtFnqFaOKntWJM5JwHdfXZfuJzNKn03gK1PiAgDm3JjBBYM449pcskBbsjqY+hqCaDWiBmPAdzUsCQlN12NfLzlo1aZ+UF7UZdNkuGcDVPyLaAnPKUunngvQiA2GrcMGAlnlZn8zaCY=;
+X-UUID: 2c0a4bf491844cd1a4690041fbc090ff-20210527
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 892636800; Thu, 27 May 2021 10:06:00 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 May 2021 10:05:58 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 01:05:57 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 28 May 2021 01:05:56 +0800
+From: <Deren.Wu@mediatek.com>
+To: <Deren.Wu@mediatek.com>, <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <km.lin@mediatek.com>,
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921: update statistic in active mode only
+Date: Fri, 28 May 2021 01:05:33 +0800
+Message-ID: <9337f7947e1f0921ffb6b4af541d29af9a0a9394.1622112237.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20210519162409.3755679-1-fparent@baylibre.com>
- <20210519162409.3755679-3-fparent@baylibre.com>
-In-Reply-To: <20210519162409.3755679-3-fparent@baylibre.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 27 May 2021 16:52:32 +0200
-Message-ID: <CACRpkdbQtBYMU80dXB3n179QQqpD5Cp7_q0MgEX264EeP_G-8A@mail.gmail.com>
-Subject: Re: [PATCH 3/3] pinctrl: mediatek: add support for mt8365 SoC
-To: Fabien Parent <fparent@baylibre.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- mkorpershoek@baylibre.com, linux-kernel <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_075244_596072_FFA7D3BE 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210527_100608_031345_450AAC38 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,17 +90,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 19, 2021 at 6:24 PM Fabien Parent <fparent@baylibre.com> wrote:
+From: Deren Wu <deren.wu@mediatek.com>
 
-> Add pinctrl driver for MT8365 SoC.
->
-> Signed-off-by: Fabien Parent <fparent@baylibre.com>
+wakeup chip every 250ms may cause huge power consumption
 
-Patch applied.
+try to update statistic counter only if in active status only,
+and it would lead fewer power cost
 
-Yours,
-Linus Walleij
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index e29d4fdab572..212832b34674 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -1459,13 +1459,15 @@ void mt7921_pm_power_save_work(struct work_struct *work)
+ {
+ 	struct mt7921_dev *dev;
+ 	unsigned long delta;
++	struct mt76_phy *mphy;
+ 
+ 	dev = (struct mt7921_dev *)container_of(work, struct mt7921_dev,
+ 						pm.ps_work.work);
++	mphy = dev->phy.mt76;
+ 
+ 	delta = dev->pm.idle_timeout;
+-	if (test_bit(MT76_HW_SCANNING, &dev->mphy.state) ||
+-	    test_bit(MT76_HW_SCHED_SCANNING, &dev->mphy.state))
++	if (test_bit(MT76_HW_SCANNING, &mphy->state) ||
++	    test_bit(MT76_HW_SCHED_SCANNING, &mphy->state))
+ 		goto out;
+ 
+ 	if (time_is_after_jiffies(dev->pm.last_activity + delta)) {
+@@ -1473,8 +1475,10 @@ void mt7921_pm_power_save_work(struct work_struct *work)
+ 		goto out;
+ 	}
+ 
+-	if (!mt7921_mcu_fw_pmctrl(dev))
++	if (!mt7921_mcu_fw_pmctrl(dev)) {
++		cancel_delayed_work_sync(&mphy->mac_work);
+ 		return;
++	}
+ out:
+ 	queue_delayed_work(dev->mt76.wq, &dev->pm.ps_work, delta);
+ }
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
