@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2BDBC47089
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 07:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF71DC4707F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 07:29:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63AA861186
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 07:28:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 63AA861186
+	by mail.kernel.org (Postfix) with ESMTPS id AA0C261059
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 07:29:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA0C261059
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,45 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vdg7Bqif6+CO4k4hOjhRaBIMFbcZFKEWBcMzNryDKJg=; b=d7Mev/hEDaugTj
-	TaLaVESzCKz1kdj7v2IT0uIFxWYFHAQmDz0/BepfAwujdaSOQhAk8ojWVIMSHAdmpqwEvrCfBjfw/
-	eidAnYcto3B+r9jc7Ltd/n7w8A7746ixoDZZUfbAfWdThT73yydKBdxKrYZPSML1rofClxkpqPBUJ
-	GNAoV+j3NRzz+I7DpjNqLkOy0MPHa9rAfNXpJd0pp8mm3lvmYFHlfL919+3vV2TKkyA7rG4cgYUzu
-	xxIWBTlKQeVbZWVvkEYl5S3IY45ACZI+XfnCiYXkUqECQ3u+hXr4qa038nLgYQLUIaicwTDncFxIC
-	XVCxz+Lz0IUusNMLIWSA==;
+	List-Owner; bh=v0NEv7Ob57ckRVqLJMUsX6UxFNL7LhW7HAo1U0DAOgw=; b=GlfjshESzIJMyr
+	VtgS9gZBh3/9I37O5eJ+TxlhToIyrd86SojvHmVJ1IAYb69FwYbJEZ3yM5fUiHs7iej/nBp4RtLB8
+	ik8xZRC4+1sboYsfKvdBtHYw9Q9EOZmBtK7IiS+c1MHmsrNpvUwjhYVZ6huYL41WO4Yxqz3cLCf1U
+	4f1yJNy8Rqn40bkfDNBKqJtJllxvaj1+cZ6iN/ItZYhEQP/k1VnWe7x5DC5RTK9vB/rx9oBPaB2FY
+	S+1/4W0RHzhsf3c9G4PPInbcLq9NZC7ddnLg5300qL0/wOsClynvXkZh4836Witd5k4CoCZEKmWNk
+	d6VscSd3HDRcZIN08gbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmARi-003MT0-Mt; Thu, 27 May 2021 07:28:46 +0000
+	id 1lmASM-003Mli-0f; Thu, 27 May 2021 07:29:26 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmARS-003MNC-O7; Thu, 27 May 2021 07:28:32 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 44EC861059;
- Thu, 27 May 2021 07:28:29 +0000 (UTC)
+ id 1lmAS3-003MdI-KY; Thu, 27 May 2021 07:29:08 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AD59561028;
+ Thu, 27 May 2021 07:29:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1622100509;
- bh=JaIyM9JOIaX8kTZxhm82AXcUEBSrdnzdxBrRGPKHC7w=;
+ s=korg; t=1622100547;
+ bh=EtJ2JUcfUOkFr5UadD1b4YEvQnUE0JPMElirSd0F8Ww=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=kJJNGPzH150LOjO+txWMxQkpdLCxNFWP44M2DDeOl1Ya/ZpWgEBCANlKDUe6pkcu9
- xr+gdroiMLX5ZWnPW7R24hgjWifhNm66keG2pHYqj0I8ITY2ES+agxLaZEnu7CwvEa
- Sztf9iqOlxqzfxX8SlSQmiOLa63PQID4fJD6/h70=
-Date: Thu, 27 May 2021 09:28:27 +0200
+ b=KQTgmshGXUdT3I5R7qgkBf69No4YVt46S5yk/6UG5HRI+erSHYl8uq8gwvjG7foOK
+ vOd7DuXvdcd7NmTFD+Tsgov87AE+xJhnrQVgT+HulWJV/YH27HQX6G/DbHamD3fgB8
+ Hz0YSRBxc8GohxvSgi6Lo+azuYvCl/5Mktjq8QZw=
+Date: Thu, 27 May 2021 09:29:04 +0200
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Cc: Felipe Balbi <balbi@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Thinh Nguyen <Thinh.Nguyen@synopsys.com>, linux-usb@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] usb: common: add helper to get
- role-switch-default-mode
-Message-ID: <YK9KG5c96VmdHfF3@kroah.com>
+Subject: Re: [PATCH 1/3] usb: common: move usb_get_dr_mode() kerneldoc next
+ to its definition
+Message-ID: <YK9KQBKRIqZsPcyQ@kroah.com>
 References: <1621933165-9661-1-git-send-email-chunfeng.yun@mediatek.com>
- <1621933165-9661-2-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1621933165-9661-2-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1621933165-9661-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_002830_830265_D15FC8C0 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20210527_002907_729422_CECA59FB 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +78,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 25, 2021 at 04:59:24PM +0800, Chunfeng Yun wrote:
-> Add helper to get "role-switch-default-mode", and convert it
-> to the corresponding enum usb_dr_mode
+On Tue, May 25, 2021 at 04:59:23PM +0800, Chunfeng Yun wrote:
+> Following a general rule, add the kerneldoc for a function next
+> to it's definition, but not next to its declaration in a header
+> file, meanwhile fix typo 'correspondig'
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/usb/common/common.c | 20 ++++++++++++++++++++
->  include/linux/usb/otg.h     |  1 +
->  2 files changed, 21 insertions(+)
-> 
-> diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-> index fff318597337..78a625a4e526 100644
-> --- a/drivers/usb/common/common.c
-> +++ b/drivers/usb/common/common.c
-> @@ -207,6 +207,26 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
->  }
->  EXPORT_SYMBOL_GPL(usb_get_dr_mode);
->  
-> +/**
-> + * usb_get_role_switch_default_mode - Get default mode for given device
-> + * @dev: Pointer to the given device
-> + *
-> + * The function gets string from property 'role-switch-default-mode',
-> + * and returns the corresponding enum usb_dr_mode.
-> + */
-> +enum usb_dr_mode usb_get_role_switch_default_mode(struct device *dev)
-> +{
-> +	const char *str;
-> +	int ret;
-> +
-> +	ret = device_property_read_string(dev, "role-switch-default-mode", &str);
-> +	if (ret < 0)
-> +		return USB_DR_MODE_UNKNOWN;
-> +
-> +	return usb_get_dr_mode_from_string(str);
-> +}
-> +EXPORT_SYMBOL_GPL(usb_get_role_switch_default_mode);
-> +
->  /**
->   * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
->   * @epd: The descriptor of the endpoint
-> diff --git a/include/linux/usb/otg.h b/include/linux/usb/otg.h
-> index a86ee6aad51b..bde313c97fb6 100644
-> --- a/include/linux/usb/otg.h
-> +++ b/include/linux/usb/otg.h
-> @@ -121,5 +121,6 @@ enum usb_dr_mode {
->  };
->  
->  extern enum usb_dr_mode usb_get_dr_mode(struct device *dev);
-> +extern enum usb_dr_mode usb_get_role_switch_default_mode(struct device *dev);
+>  drivers/usb/common/common.c | 7 +++++++
+>  include/linux/usb/otg.h     | 7 -------
+>  2 files changed, 7 insertions(+), 7 deletions(-)
 
-What other code outside of the dwc3 driver will ever need to call this?
+Does not apply to my usb-next branch :(
 
 thanks,
 
