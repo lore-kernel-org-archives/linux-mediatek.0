@@ -3,78 +3,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7418C4707F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 08:08:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C393CC4707F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 08:27:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EACD613C9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 08:08:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EACD613C9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id 7B29F61181
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 08:27:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B29F61181
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=NjDm47ijpWLfD6E3DfVdE2NBduwjQlFX1JLfkPoJTNM=; b=ue+WLRT+WTCFCK8NsEmbZmPHkx
-	+U48QhpkecKeoYmIqZxIxRBgdZm5ktK6cuCmS3Ofprd2ZlJtwoa6lNplBgg9gCnuw6NE3Bqx+U1WK
-	W1mkNoXwitCPOBx9FFtOMsHhKpZ7i9m4k+B+cSiFkY9rXIzmJwfMRsnQgFDB6t2Cox2p3ZdqHVhZI
-	Rvnhhv4yTCorsWxutZA2ccnsSgMND/rfp6/ta3tcJ3LhvblZy02HwIxA9bd1oRidf8qUrGH5JkQkS
-	XfaS/KwwdY/7mxBrJxggVw1izKolA1BzA88e7ebUIHNUbwyCHIbcgs8pDRlYXImwxx52zSfOLlXdz
-	fM9mpeag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/96TMda8E4ojEU6UOSu/v2sqNXZWWc6LZbIIxA0Cdzk=; b=0V9dHWOK7RtbGZbbYyZ/RVa9UP
+	n7qFtl3C6POxnkrmS1Bxi2z+qOISf8RmC/yl5U9UErVTgAlmJd2JQRC2BDET87GaXCNs/nW/chaOZ
+	ZEB9FYKP1E/4jqzjB6O9TxFbAfX+LuzcyVyvD26TIOhYxE0k+Vo3maS4P5XFynZSzbiUdOX8lTAEY
+	B5DtMwddoWFGBsGYtheygU4PQfM84+rygI+hytAzCzLIvdsx5UVUJXMYAT7CN9tD+86L46kKdj5nn
+	S0CitSB4VJVBlPEJVDh2yqUsVh+hmuZJ/byjmhOUWYykHXajY48aUuZLRFjsc2j1qlmheaBycmkad
+	Jgvr3VrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmB46-003gno-HR; Thu, 27 May 2021 08:08:26 +0000
-Received: from lb2-smtp-cloud9.xs4all.net ([194.109.24.26])
+	id 1lmBMB-003rUW-J3; Thu, 27 May 2021 08:27:07 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmB42-003ggR-2K
- for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 08:08:25 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id mB3plaVOCVN4kmB3slNcXi; Thu, 27 May 2021 10:08:15 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1622102895; bh=5LIlnKliUzmvBxewoH5nL1xb3w4buWTu/k3+pHw1gwk=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=Lr+h0hV5xuGnWeHosj7z+qGrbQzAWouRW1XG8RcsIveAX2kn/acW3ZsJ5VWZ16JJu
- Jk2NncbDr2pgehgNj6IBBme4KKOPps03gPLwI9OGqLEeJofMwCTOJqsF11jkCj9sGM
- 3qyrN+Mb9uN9txSlxYrbYoIj4XS6KW0Yz9vV9dp/syKV8/bgGj1LazqF7bOYkyqzYG
- t+rsmTqX0m7RDNufHtk4ZcmctZYyiFhM8yQwMo9N3G4EjP+8s7jdyvAZ/wi8OG25H1
- oQ1EglQmU4tcgxy7ArPhs0M84HwePDtvEoQ15xQdd4PeWBAWwY/GYurE0M0iEzXB5Z
- NBc59cBKJqbuw==
-Subject: Re: [PATCH v5 00/14] media: mtk-vcodec: support for MT8183 decoder
-To: Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20210519143011.1175546-1-acourbot@chromium.org>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <ed6610cb-5164-4185-f7c9-6d872ea16ec7@xs4all.nl>
-Date: Thu, 27 May 2021 10:08:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.10.0
+ id 1lmBIX-003ppa-RP; Thu, 27 May 2021 08:23:23 +0000
+IronPort-SDR: JDkgsevVHe7/JVweeCasee0rqv8E0ymOjnBoMKKrk7zTR6INzWsoccXRWOnk/Z988Yl36lMNJ0
+ WqqRgINg7JLw==
+X-IronPort-AV: E=McAfee;i="6200,9189,9996"; a="263884106"
+X-IronPort-AV: E=Sophos;i="5.82,334,1613462400"; d="scan'208";a="263884106"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 01:23:19 -0700
+IronPort-SDR: 6Dbe1S41vi/PfqU5I9/mmPBexyuLn5xnamuBsUggtOZavmdxnAcz9zbcSQ8VReaaTGOg41WoPD
+ zrfDMfkirZjg==
+X-IronPort-AV: E=Sophos;i="5.82,334,1613462400"; d="scan'208";a="477387908"
+Received: from shao2-debian.sh.intel.com (HELO [10.239.13.11]) ([10.239.13.11])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2021 01:23:17 -0700
+Subject: Re: [kbuild-all] Re: [PATCH v8 4/4] arm64: dts: mt8192: add spmi node
+To: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ kernel test robot <lkp@intel.com>
+Cc: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, kbuild-all@lists.01.org,
+ clang-built-linux@googlegroups.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <1622025344-31888-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <202105270021.c336cIqx-lkp@intel.com> <1622081330.22138.0.camel@mtksdaap41>
+From: Rong Chen <rong.a.chen@intel.com>
+Message-ID: <d9a87eca-ae28-8da4-d78e-ae2602201648@intel.com>
+Date: Thu, 27 May 2021 16:22:03 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-In-Reply-To: <20210519143011.1175546-1-acourbot@chromium.org>
+In-Reply-To: <1622081330.22138.0.camel@mtksdaap41>
 Content-Language: en-US
-X-CMAE-Envelope: MS4xfH+45w8wpmjxur/OI64pQjjjtsYE7fGqfPJ1UkDh/mSiWZQs+T5FiyCW4UXNZtNLofMxvRxeWgB1GFF5+NcBBAhtVjKjj3Um2QJaetd3JfS6/Q9BU9BZ
- hTAAjcl9VnKvsmEcXaO75N2Tm3kB5gDafG0wiMKvb/jq709uYLbgLo7iirUuEbsllN0H/IFNGVSJZYXY+vNHL2KR5PcGjOQJM+XbNDRKsqFNHzSon6GxqeaD
- HpIt2veeEcqxhHLhQ/q5aNV1nBeSSiEgnGFtEp5id4T24Pt2gisOL/+JKdHQgBIZFazcKfDbKZGEvFbS8dRaSYzsdH6v3cP8R5ChMcMdTBFCvB2ht4K+iU8m
- 97RyDlSm7t7uFJ6pTRoDuu6l1cCwYb9EnB8JwYKgQjd2L3rSKH2ZTweK1Bhf+iff2B1D6e+/pcqxii33RVMvvHSP1XEl0qpG/Ecl6VRvg6ZNkhOQSS4Da95Y
- Hu5PN6Lfub/NdxTgNyoOGmfeuQ0+WuTOLmjLU1trP8D0xMezcmM5bw16yEk=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_010822_294397_8DD3FD47 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20210527_012321_988887_2D30564A 
+X-CRM114-Status: GOOD (  24.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,111 +81,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Alexandre,
+Hi Hsin-Hsiung,
 
-On 19/05/2021 16:29, Alexandre Courbot wrote:
-> This series adds support for the stateless API into mtk-vcodec, by first
-> separating the stateful ops into their own source file, and introducing
-> a new set of ops suitable for stateless decoding. As such, support for
-> stateful decoders should remain completely unaffected.
-> 
-> This series has been tested with both MT8183 and MT8173. Decoding was
-> working for both chips, and in the case of MT8173 no regression has been
-> spotted.
-> 
-> Patches 1-5 fix a few compliance issues with the decoder and encoder, most
-> notably by adding support for the START and STOP command for the latter. These
-> patches were last in the previous series but have been moved to the beginning so
-> they can be applied sooner.
-> 
-> Patches 6-9 separates the "stateful" part of the driver into its own file and
-> add support for the new firmware and pixel format used by MT8183.
-> 
-> Patches 10-14 add support for H.264 stateless decoding and MT8183.
-> 
-> Changes since v4:
-> * Moved compliance fix patches to the head of the series.
-> * Select MEDIA_CONTROLLER_REQUEST_API.
-> * Properly capitalize MM21's format description string.
-> * Reorganize stateless code as suggested by Hans.
-> * Fix compilation errors when DEBUG is defined.
-> * Merge double-free fixup patch into the patch that introduced the issue (was
->   a separate patch coming right after the one introducing the issue).
-> 
-> Changes since v3:
-> * Stop checking that controls are set for every request.
-> * Add V4L2_CID_STATELESS_H264_START_CODE control.
-> * Stop mapping OUTPUT buffers and getting the NAL type from them, use the
->   nal_ref_idc field instead.
-> * Make V4L2_CID_MIN_BUFFERS_FOR_CAPTURE control stateful-only.
-> * Set vb2_buffer's field to V4L2_FIELD_NONE in buffer validation hook.
-> 
-> Changes since v2:
-> * Add follow-up patches fixing support for START/STOP commands for the
->   encoder, and stateful decoder.
-> 
-> Alexandre Courbot (8):
->   media: mtk-vcodec: vdec: use helpers in VIDIOC_(TRY_)DECODER_CMD
->   media: mtk-vcodec: vdec: clamp OUTPUT resolution to hardware limits
->   media: mtk-vcodec: make flush buffer reusable by encoder
->   media: mtk-vcodec: venc: support START and STOP commands
->   media: mtk-vcodec: vdec: handle firmware version field
->   media: mtk-vcodec: support version 2 of decoder firmware ABI
->   media: add Mediatek's MM21 format
->   dt-bindings: media: document mediatek,mt8183-vcodec-dec
-> 
-> Hirokazu Honda (1):
->   media: mtk-vcodec: vdec: Support H264 profile control
-> 
-> Yunfei Dong (5):
->   media: mtk-vcodec: vdec: move stateful ops into their own file
->   media: mtk-vcodec: vdec: support stateless API
->   media: mtk-vcodec: vdec: support stateless H.264 decoding
->   media: mtk-vcodec: vdec: add media device if using stateless api
->   media: mtk-vcodec: enable MT8183 decoder
+Thanks for the clarification, the bot can't parse the previous patchset 
+from a link,
+but can get the base from '--base' option in 
+https://git-scm.com/docs/git-format-patch.
 
-Running scripts/checkpatch.pl --strict over this patch series gives
-a lot of warnings and checks. A lot of these look like they are easy
-to fix and reasonable.
+Best Regards,
+Rong Chen
 
-Regards,
-
-	Hans
-
-> 
->  .../bindings/media/mediatek-vcodec.txt        |   1 +
->  .../media/v4l/pixfmt-reserved.rst             |   7 +
->  drivers/media/platform/Kconfig                |   3 +
->  drivers/media/platform/mtk-vcodec/Makefile    |   3 +
->  .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 817 +++---------------
->  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |  27 +-
->  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  66 +-
->  .../mtk-vcodec/mtk_vcodec_dec_stateful.c      | 668 ++++++++++++++
->  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 366 ++++++++
->  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  58 +-
->  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 135 ++-
->  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   4 +
->  .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 780 +++++++++++++++++
->  .../media/platform/mtk-vcodec/vdec_drv_if.c   |   3 +
->  .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
->  .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  23 +-
->  .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  43 +-
->  .../media/platform/mtk-vcodec/vdec_vpu_if.h   |   5 +
->  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
->  include/uapi/linux/videodev2.h                |   1 +
->  20 files changed, 2290 insertions(+), 722 deletions(-)
->  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
->  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
->  create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> 
-> --
-> 2.31.1.751.gd2f1c929bd-goog
-> 
+On 5/27/21 10:08 AM, Hsin-hsiung Wang wrote:
+> Hi, Sirs
+> Thanks for the review.
+> This series is based on Chun-Jie's patches[1].
+>
+> [1]
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=488239
+>
+> On Thu, 2021-05-27 at 00:46 +0800, kernel test robot wrote:
+>> Hi Hsin-Hsiung,
+>>
+>> Thank you for the patch! Yet something to improve:
+>>
+>> [auto build test ERROR on robh/for-next]
+>> [also build test ERROR on mediatek/for-next linus/master v5.13-rc3 next-20210526]
+>> [If your patch is applied to the wrong git tree, kindly drop us a note.
+>> And when submitting patch, we suggest to use '--base' as documented in
+>> https://git-scm.com/docs/git-format-patch]
+>>
+>> url:    https://github.com/0day-ci/linux/commits/Hsin-Hsiung-Wang/Add-SPMI-support-for-Mediatek-MT6873-8192-SoC-IC/20210526-183803
+>> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+>> config: arm64-randconfig-r016-20210526 (attached as .config)
+>> compiler: clang version 13.0.0 (https://github.com/llvm/llvm-project 99155e913e9bad5f7f8a247f8bb3a3ff3da74af1)
+>> reproduce (this is a W=1 build):
+>>          wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>>          chmod +x ~/bin/make.cross
+>>          # install arm64 cross compiling tool for clang build
+>>          # apt-get install binutils-aarch64-linux-gnu
+>>          # https://github.com/0day-ci/linux/commit/423b4a1660f5157dbac566f9c498c61927f09022
+>>          git remote add linux-review https://github.com/0day-ci/linux
+>>          git fetch --no-tags linux-review Hsin-Hsiung-Wang/Add-SPMI-support-for-Mediatek-MT6873-8192-SoC-IC/20210526-183803
+>>          git checkout 423b4a1660f5157dbac566f9c498c61927f09022
+>>          # save the attached .config to linux build tree
+>>          COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross ARCH=arm64
+>>
+>> If you fix the issue, kindly add following tag as appropriate
+>> Reported-by: kernel test robot <lkp@intel.com>
+>>
+>> All errors (new ones prefixed by >>):
+>>
+>>>> Error: arch/arm64/boot/dts/mediatek/mt8192.dtsi:299.24-25 syntax error
+>>     FATAL ERROR: Unable to parse input tree
+>>
+>> ---
+>> 0-DAY CI Kernel Test Service, Intel Corporation
+>> https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> _______________________________________________
+> kbuild-all mailing list -- kbuild-all@lists.01.org
+> To unsubscribe send an email to kbuild-all-leave@lists.01.org
 
 
 _______________________________________________
