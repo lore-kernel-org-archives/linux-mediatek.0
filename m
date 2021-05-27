@@ -2,98 +2,84 @@ Return-Path: <SRS0=4IUA=KW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 799F8C4707F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 10:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21634C4707F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 10:19:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 421ED60720
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 10:11:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 421ED60720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id BA7CA613C5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 10:19:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA7CA613C5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wQQ+U6K0+gdErA0cm2aeNSHxNpCW1s9fWt12rq8Bq1g=; b=Mchq+0TmdXpZIq
-	D5tWDqF7qx7nLISN6PtNN9U1bJ8dtFvDw70n04EslL9kRLDzvw3/XzuFA+gqs5dH4peonuKVVXJYa
-	2FIGj/GUL3SiOwwL28PKWbvYvC/6QveXSt1cKzw8v8TFGVXai4UeSYbyHiLXg9xV6trHFUyinXTKo
-	ejOG/tGpTXeSwRhE7fMuNScBmZ6/mppoB6jmjuNZJcUckn+0dSkq/qwXhcIe5UfgOgkMeknVOlFTu
-	A5Wdum0t4mydDHVwrgM+P0T6BYqgQHqKbTWgnVx6s2oHtFgojlc3u0O5rIym/10rrMcXRNhKr7DzW
-	TJQgi+ewExw/FssgdN8A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=kfVFvEdYzs7JqZi/rGqsH+u6/0pDHDmc0d8/LCxXU9w=; b=Pnvq3ONDxVtjN17n3RB8KcMDDM
+	WiGn+PYBnGKyr7fsIX0zBYFnqz7eF2O2GFOri6vAI3VayDHUGi+XFbIJH01gqhTaf1qnpSM4dbKBw
+	2pPEKsTOOqubm5oeHb0SMwgLiOPEfyir3n1Pf644zwRStomPQ8LX6Xsp4Pe3zbskoFhV0GWpuX7PO
+	7gmCSWgMLVm/kZnZ9KbWEPY1m/MM+JmlxoE0k+Z0/es0DEiRTdagxyGemQRdT/rJxs5xERBHOWcS2
+	JmddCF5INxvW7TQ9/zGdxqltgNuz/mDd8ORke6LE5P8Y4/svmzOFUA70jsby3zx5ViN3G8YSsMnTu
+	wH8kwy+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmCyd-004esx-9g; Thu, 27 May 2021 10:10:55 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1lmD6M-004jiR-KA; Thu, 27 May 2021 10:18:54 +0000
+Received: from lb2-smtp-cloud9.xs4all.net ([194.109.24.26])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmCyZ-004ep3-PG
- for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 10:10:53 +0000
-Received: by mail-lf1-x134.google.com with SMTP id q7so7194641lfr.6
- for <linux-mediatek@lists.infradead.org>; Thu, 27 May 2021 03:10:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DAPD4ukT6eCf6HIGe5wvyHRlg/DJMReQYqQE1gSOFEE=;
- b=MuYBL86U5dNPZzYeIcrgWG2vi8zuGy7jo0PD9uelsBqLAf+9oXfb7SJ8DVVqvqUp6c
- 51P6kaiGH6GHS0efDbeHaOaIInAi6nHcPFllEp9opUet4VMHfrBeX8+Tqp2R5D8jfPj3
- LG0X+qcYI0YvKRHxY6aFDIsr29BgyYjFq/zO0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DAPD4ukT6eCf6HIGe5wvyHRlg/DJMReQYqQE1gSOFEE=;
- b=lOVn4nBPwfCjh2qw1cNlqbstHFIfBQLAeq3/E7zKd8Yih/B4WSqVJeAeBnM6Nxlx0T
- PSifuXiy3Dc9CTH7Zr6iQG/irgxG+8PXTBJF+pPo8bAC0X1BK7qRkDpFOuAfiGwVARjC
- 0VdCB6zw5dBeES57lyhfblpI31eGQJkHDH31ABF1gnAodoO6L86r4yzzAY/3z0l8IDaH
- wUVxdg72t5ihDXBcQwr8zfBOzkSq9DN0cq49wXWUvJEVTwihqngkIFGinudeGKRX1NIj
- H625um8MDRaucI4gETdGea3+OZhiLUD9WFSLRs/x4hvLpfl/6QGMS+hBvc8bRDSALhhN
- 5w6Q==
-X-Gm-Message-State: AOAM532c2LKxc+pXxmYyUBccg3Q1wnfxnDU5pQ8sa1K9qO0Q53STSsyR
- OAS4ZYRt7R0h5IG8hyhUadBfSXiA8qzCZQ==
-X-Google-Smtp-Source: ABdhPJySGyoxUFKZjUTOW3UhKU/D/7WikzwshWa2Pg7GL1mU3/w/9J75MmKNWA1+qiPFDgROUMxdsg==
-X-Received: by 2002:ac2:44a8:: with SMTP id c8mr1892525lfm.232.1622110248841; 
- Thu, 27 May 2021 03:10:48 -0700 (PDT)
-Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com.
- [209.85.167.53])
- by smtp.gmail.com with ESMTPSA id t1sm159116lfp.168.2021.05.27.03.10.47
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 May 2021 03:10:48 -0700 (PDT)
-Received: by mail-lf1-f53.google.com with SMTP id a5so6438901lfm.0
- for <linux-mediatek@lists.infradead.org>; Thu, 27 May 2021 03:10:47 -0700 (PDT)
-X-Received: by 2002:ac2:528d:: with SMTP id q13mr1944901lfm.73.1622110247228; 
- Thu, 27 May 2021 03:10:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210519143011.1175546-1-acourbot@chromium.org>
- <20210519143011.1175546-12-acourbot@chromium.org>
- <CA+Px+wXXtsmG2q4aJ4Em1pzFcA-mA6CuATfXKevNyEOuBq+zYw@mail.gmail.com>
-In-Reply-To: <CA+Px+wXXtsmG2q4aJ4Em1pzFcA-mA6CuATfXKevNyEOuBq+zYw@mail.gmail.com>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Thu, 27 May 2021 19:10:34 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MUR9nXQc=Dua67Ep7U_7LMGcEhw=yhB42KN03R19oEgCg@mail.gmail.com>
-Message-ID: <CAPBb6MUR9nXQc=Dua67Ep7U_7LMGcEhw=yhB42KN03R19oEgCg@mail.gmail.com>
-Subject: Re: [PATCH v5 11/14] media: mtk-vcodec: vdec: support stateless H.264
- decoding
-To: Tzung-Bi Shih <tzungbi@google.com>
+ id 1lmD6J-004jbF-Bd
+ for linux-mediatek@lists.infradead.org; Thu, 27 May 2021 10:18:53 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id mD6BlbPpwVN4kmD6FlO1xo; Thu, 27 May 2021 12:18:47 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1622110727; bh=KNWWA82qUSy1xiTuG0/8hVCUU5W3Fq/syTGpha8Cf48=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=mn5Hx7q/qWovu2/xOnkV/23MyoRANWn8+TWZAo0ZG6R/zpsNFYNbJvelBJfLWruxU
+ 6VraQCP20KEzYYLSpts/cPYu2xEvGP0xzE+1Xk+CjDOdlM7Q57akHfNZYsZlUOMaGM
+ GryawyP4Qv4Vmaw46cWFGrmWbRqPkvSPGp45EdwBvTmowi4PnrbE0vdeBPn0xEFPVG
+ msaEs6KsWRMwED0/sqHDBXY1B0Odv++LRpOEM5tYICL4+Vnwh6YACq2WFgqdsJ3Umt
+ krtqCrqWcl6bNmvrEbSiXjzG/3AM6LgAN+M/8LZEpSYBoKCa/WzWS2dHkfXNpkG4fx
+ JmhvaKameB1xw==
+Subject: Re: [PATCH v5 00/14] media: mtk-vcodec: support for MT8183 decoder
+To: Alexandre Courbot <acourbot@chromium.org>
 Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20210519143011.1175546-1-acourbot@chromium.org>
+ <ed6610cb-5164-4185-f7c9-6d872ea16ec7@xs4all.nl>
+ <CAPBb6MUFmwxaP_11kx2FNAeieOiMCV9W2WGgweuuL8z6ZWeSng@mail.gmail.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <7d485a28-c03d-ec54-7a83-022074a0c042@xs4all.nl>
+Date: Thu, 27 May 2021 12:18:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.10.0
+MIME-Version: 1.0
+In-Reply-To: <CAPBb6MUFmwxaP_11kx2FNAeieOiMCV9W2WGgweuuL8z6ZWeSng@mail.gmail.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfF8ObVOe5CFcHYEYJI5BnewapCDUt0Gb70yZ7sURsUGzZi8ZtDPd/2nb7zld91u62w3KHwBI5f9eU7LDCg6iF3BIKDCCfpqDs+whhBCqNl5Mqi5T8IDr
+ CYGwhgaZYLavPQUb63Jbvz56GeI2mdOfkO4nPD2nQnUIoI7Y+1Zh5HJH3Rgc6+Chps8Acx9IcBSPe0itnwazBPL9b7/RI2uyBmvwHFEvolJNtrFrVG2F60UC
+ CuYCOq3jAiOvwF6SJ2+krmTkz4dqnQ46ZJZLzmcPnppzvl2PXJzSDDUkCnj8Jir16xogjf3ruaDEHjiBfROwqcQSq/hbRdrdC3XfKAJ9PpTFdi8dwpzh3mjC
+ dueAiaKQf2f3Ubfr37MYwLFfVt+vA/wzr0pYSg88otKVd+rStPiQGtxUcZXZUN019BL7hVpdV83LQl6Y2zXFisBv8rlnWQRfK0arCaPvyj1guzNzKFFBJcL0
+ j4Stmsmkhqv/t0UnOtOrvbwOO2VvzUpDKNLPCYgH0wMTpw7Cd+Y6XC5+m7A=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_031051_848948_B74786D4 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20210527_031851_682846_1CA523C7 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,104 +96,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 21, 2021 at 10:38 PM Tzung-Bi Shih <tzungbi@google.com> wrote:
->
-> On Wed, May 19, 2021 at 10:31 PM Alexandre Courbot
-> <acourbot@chromium.org> wrote:
-> > +#include "../vdec_drv_if.h"
-> > +#include "../mtk_vcodec_util.h"
-> > +#include "../mtk_vcodec_dec.h"
-> > +#include "../mtk_vcodec_intr.h"
-> > +#include "../vdec_vpu_if.h"
-> > +#include "../vdec_drv_base.h"
->
-> Would be good practice to sort them.
+On 27/05/2021 12:10, Alexandre Courbot wrote:
+> On Thu, May 27, 2021 at 5:08 PM Hans Verkuil <hverkuil-cisco@xs4all.nl> wrote:
+>>
+>> Hi Alexandre,
+>>
+>> On 19/05/2021 16:29, Alexandre Courbot wrote:
+>>> This series adds support for the stateless API into mtk-vcodec, by first
+>>> separating the stateful ops into their own source file, and introducing
+>>> a new set of ops suitable for stateless decoding. As such, support for
+>>> stateful decoders should remain completely unaffected.
+>>>
+>>> This series has been tested with both MT8183 and MT8173. Decoding was
+>>> working for both chips, and in the case of MT8173 no regression has been
+>>> spotted.
+>>>
+>>> Patches 1-5 fix a few compliance issues with the decoder and encoder, most
+>>> notably by adding support for the START and STOP command for the latter. These
+>>> patches were last in the previous series but have been moved to the beginning so
+>>> they can be applied sooner.
+>>>
+>>> Patches 6-9 separates the "stateful" part of the driver into its own file and
+>>> add support for the new firmware and pixel format used by MT8183.
+>>>
+>>> Patches 10-14 add support for H.264 stateless decoding and MT8183.
+>>>
+>>> Changes since v4:
+>>> * Moved compliance fix patches to the head of the series.
+>>> * Select MEDIA_CONTROLLER_REQUEST_API.
+>>> * Properly capitalize MM21's format description string.
+>>> * Reorganize stateless code as suggested by Hans.
+>>> * Fix compilation errors when DEBUG is defined.
+>>> * Merge double-free fixup patch into the patch that introduced the issue (was
+>>>   a separate patch coming right after the one introducing the issue).
+>>>
+>>> Changes since v3:
+>>> * Stop checking that controls are set for every request.
+>>> * Add V4L2_CID_STATELESS_H264_START_CODE control.
+>>> * Stop mapping OUTPUT buffers and getting the NAL type from them, use the
+>>>   nal_ref_idc field instead.
+>>> * Make V4L2_CID_MIN_BUFFERS_FOR_CAPTURE control stateful-only.
+>>> * Set vb2_buffer's field to V4L2_FIELD_NONE in buffer validation hook.
+>>>
+>>> Changes since v2:
+>>> * Add follow-up patches fixing support for START/STOP commands for the
+>>>   encoder, and stateful decoder.
+>>>
+>>> Alexandre Courbot (8):
+>>>   media: mtk-vcodec: vdec: use helpers in VIDIOC_(TRY_)DECODER_CMD
+>>>   media: mtk-vcodec: vdec: clamp OUTPUT resolution to hardware limits
+>>>   media: mtk-vcodec: make flush buffer reusable by encoder
+>>>   media: mtk-vcodec: venc: support START and STOP commands
+>>>   media: mtk-vcodec: vdec: handle firmware version field
+>>>   media: mtk-vcodec: support version 2 of decoder firmware ABI
+>>>   media: add Mediatek's MM21 format
+>>>   dt-bindings: media: document mediatek,mt8183-vcodec-dec
+>>>
+>>> Hirokazu Honda (1):
+>>>   media: mtk-vcodec: vdec: Support H264 profile control
+>>>
+>>> Yunfei Dong (5):
+>>>   media: mtk-vcodec: vdec: move stateful ops into their own file
+>>>   media: mtk-vcodec: vdec: support stateless API
+>>>   media: mtk-vcodec: vdec: support stateless H.264 decoding
+>>>   media: mtk-vcodec: vdec: add media device if using stateless api
+>>>   media: mtk-vcodec: enable MT8183 decoder
+>>
+>> Running scripts/checkpatch.pl --strict over this patch series gives
+>> a lot of warnings and checks. A lot of these look like they are easy
+>> to fix and reasonable.
+> 
+> Apologies, I forgot to use --strict. It's not pretty indeed. I've
+> fixed most of the problems reported ; a few are more tricky or would
+> require extra cleanup patches like converting e.g. uint32_t to u32
+> when adding a member to a struct, which would make sense if we convert
+> all members of the struct (or better, the whole driver) separately.
+> Hopefully these can be overlooked for the time being.
 
-Done as much as possible.
+Fair enough, just mention that in the cover letter.
 
->
-> > +static int allocate_predication_buf(struct vdec_h264_slice_inst *inst)
-> > +{
-> > +       int err = 0;
->
-> No need to initialize.  It will be overridden soon.
+Regards,
 
-Done.
+	Hans
 
->
-> > +static void free_predication_buf(struct vdec_h264_slice_inst *inst)
-> > +{
-> > +       struct mtk_vcodec_mem *mem = NULL;
-> > +
-> > +       mtk_vcodec_debug_enter(inst);
-> > +
-> > +       inst->vsi_ctx.pred_buf_dma = 0;
-> > +       mem = &inst->pred_buf;
->
-> Is it possible to inline to the variable declaration?  Or mem no need
-> to initialize.
+> 
 
-Indeed - done (also done all other suggestions in this email).
-
-
->
-> > +static int alloc_mv_buf(struct vdec_h264_slice_inst *inst,
-> > +       struct vdec_pic_info *pic)
-> > +{
-> > +       int i;
-> > +       int err;
-> > +       struct mtk_vcodec_mem *mem = NULL;
->
-> No need to initialize.  It will be overridden soon.
->
-> > +static void free_mv_buf(struct vdec_h264_slice_inst *inst)
-> > +{
-> > +       int i;
-> > +       struct mtk_vcodec_mem *mem = NULL;
->
-> No need to initialize.  It will be overridden soon.
->
-> > +static int vdec_h264_slice_init(struct mtk_vcodec_ctx *ctx)
-> > +{
-> > +       struct vdec_h264_slice_inst *inst = NULL;
->
-> No need to initialize.  It will be overridden soon.
->
-> > +static void vdec_h264_slice_deinit(void *h_vdec)
-> > +{
-> > +       struct vdec_h264_slice_inst *inst =
-> > +               (struct vdec_h264_slice_inst *)h_vdec;
->
-> No need to cast from void *.
->
-> > +static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
-> > +                                 struct vdec_fb *fb, bool *res_chg)
-> > +{
-> > +       struct vdec_h264_slice_inst *inst =
-> > +               (struct vdec_h264_slice_inst *)h_vdec;
->
-> No need to cast from void *.
->
-> > +       const struct v4l2_ctrl_h264_decode_params *dec_params =
-> > +               get_ctrl_ptr(inst->ctx, V4L2_CID_STATELESS_H264_DECODE_PARAMS);
-> > +       struct vdec_vpu_inst *vpu = &inst->vpu;
-> > +       uint32_t data[2];
-> > +       uint64_t y_fb_dma;
-> > +       uint64_t c_fb_dma;
-> > +       int err;
-> > +
-> > +       /* bs NULL means flush decoder */
-> > +       if (bs == NULL)
->
-> To neat, !bs.
->
-> > +static int vdec_h264_slice_get_param(void *h_vdec,
-> > +                              enum vdec_get_param_type type, void *out)
-> > +{
-> > +       struct vdec_h264_slice_inst *inst =
-> > +               (struct vdec_h264_slice_inst *)h_vdec;
->
-> No need to cast from void *.
 
 _______________________________________________
 Linux-mediatek mailing list
