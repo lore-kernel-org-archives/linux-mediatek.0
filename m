@@ -1,65 +1,80 @@
-Return-Path: <SRS0=4IUA=KW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=JD7o=KX=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5EEEC47089
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 20:21:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06448C47089
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 01:38:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73948613E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 27 May 2021 20:21:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 73948613E9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	by mail.kernel.org (Postfix) with ESMTPS id C2CB6613B5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 01:38:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2CB6613B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gnb1CqU444HiiH7tfIZwNAy5PHOFwYDU9JI9Piz5W1U=; b=h101LF/vYbu51xEFz6JBB5h3BO
-	729W40aKWtzvh/5Cb4VgFLQrpBrw19RIJGNbclkUHZF+rAW2rtRQtguUKEp3AOrOwc6fv5MRjl2gN
-	ZrznMmTHpX63jdYbTYqh1RZp4Nhn+LUo7SjGh0HKNBewTHUVJvcGCvwRW3KlTA7xBZlFYJ/RK10FF
-	d+KEflGtvGPcX1t7m/RikcZD88jUAAXgGHkut0fZsFVl0G9R861Ie5eTB6wkInjUrjUppsIxE9ump
-	KOXSCaYVl9czGzCFum+o0qMVahEJE61QU93qFKlSi57RZU2u7iKktpOcMJcNy08qKUmL0sfhGP4mh
-	MF1M939g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lC4GRWmzc6CFj+SruI0Gh8gzjWdNKrxy9ivswRp1Ht8=; b=C3BQ9IeVRCfd4t
+	dW+4+9SlGMzvLV/oXugsMIb7b5fd0DFI/i1FNLG6frD1EMDnYesqRxlBrCBqaQmtKCi+EKsXYPfUp
+	CX6/V90A67NH2DuM4IyqbIjG5dpAtV3mPcpFbRRpDUIE9U3b+DY4NoZFbFGXzCHTdcogvkz0cIxfz
+	/dy7MEDFXcj4BqKSfZk7wc0e8aG619eUsia56RW65SQ4GRd5yG1pC3IJDc3ANEb+4zkEAJp4UW4mf
+	eeGXLo0qJ1ARUEr+l7ICOjuV6sRiV6oEWJUxgLp6xD76fKMfcUEfZi4Df2UFblMwUVdJA4wczQ0yU
+	CNsp1hdvzaadMTadvViQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmMVD-009HGT-KK; Thu, 27 May 2021 20:21:11 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmMUi-009H5A-FL; Thu, 27 May 2021 20:20:42 +0000
-Received: from localhost (p5486cb85.dip0.t-ipconnect.de [84.134.203.133])
- by pokefinder.org (Postfix) with ESMTPSA id DB29E2C05E0;
- Thu, 27 May 2021 22:14:56 +0200 (CEST)
-Date: Thu, 27 May 2021 22:14:56 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: qii.wang@mediatek.com
-Cc: matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- leilk.liu@mediatek.com
+	id 1lmRS9-00B0ZN-Pl; Fri, 28 May 2021 01:38:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lmRRp-00B0PF-Gt; Fri, 28 May 2021 01:38:04 +0000
+X-UUID: 93b66efee1ea414d8c40a1030ba6ddc9-20210527
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=QrMvjMYFuFTBM7jcmVcI5ahKgZpshwo6hK1fPt+ufjM=; 
+ b=NAq1XEIsRLdtTozLuVHBidYlRLOrat91FHocM0dm3LOwLngY8PpG7LoWVjW+cDgHOT5+W/1iges3hYSWWxCtRAYzXLtxvGBSxZ3mQ2j33hT66spPQsWeZVG8fTrlr9+gtCnFVtC9WTIft+pHiT+xL9iTKS1G2BWPfMyxob8iqvk=;
+X-UUID: 93b66efee1ea414d8c40a1030ba6ddc9-20210527
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qii.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1854514495; Thu, 27 May 2021 18:37:57 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 May 2021 18:37:56 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 28 May 2021 09:37:43 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 28 May 2021 09:37:43 +0800
+Message-ID: <1622165863.15667.3.camel@mhfsdcap03>
 Subject: Re: [PATCH] i2c: mediatek: Disable i2c start_en and clear intr_stat
  brfore reset
-Message-ID: <YK/9wMhoACc0beN/@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>, qii.wang@mediatek.com,
- matthias.bgg@gmail.com, linux-i2c@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- leilk.liu@mediatek.com
+From: Qii Wang <qii.wang@mediatek.com>
+To: Wolfram Sang <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>
+Date: Fri, 28 May 2021 09:37:43 +0800
+In-Reply-To: <YK/9wMhoACc0beN/@kunai>
 References: <1622117044-7583-1-git-send-email-qii.wang@mediatek.com>
+ <YK/9wMhoACc0beN/@kunai>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1622117044-7583-1-git-send-email-qii.wang@mediatek.com>
+X-TM-SNTS-SMTP: 5E88BF11A0816A7B0929EAA4BD18F0349C9EDA1B743732DD7FA01BC962629EE32000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_132040_696072_F02B028A 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210527_183803_063896_0BAA3573 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,70 +86,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4881260933268534871=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 2021-05-27 at 22:14 +0200, Wolfram Sang wrote:
+> On Thu, May 27, 2021 at 08:04:04PM +0800, qii.wang@mediatek.com wrote:
+> > From: Qii Wang <qii.wang@mediatek.com>
+> > 
+> > The i2c controller driver do dma reset after transfer timeout,
+> > but sometimes dma reset will trigger an unexpected DMA_ERR irq.
+> > It will cause the i2c controller to continuously send interrupts
+> > to the system and cause soft lock-up. So we need to disable i2c
+> > start_en and clear intr_stat to stop i2c controller before dma
+> > reset when transfer timeout.
+> > 
+> > Signed-off-by: Qii Wang <qii.wang@mediatek.com>
+> 
+> Is there a suitable Fixes tag for this?
+> 
 
---===============4881260933268534871==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="I0LEN5JYjbsQxSJJ"
-Content-Disposition: inline
-
-
---I0LEN5JYjbsQxSJJ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, May 27, 2021 at 08:04:04PM +0800, qii.wang@mediatek.com wrote:
-> From: Qii Wang <qii.wang@mediatek.com>
->=20
-> The i2c controller driver do dma reset after transfer timeout,
-> but sometimes dma reset will trigger an unexpected DMA_ERR irq.
-> It will cause the i2c controller to continuously send interrupts
-> to the system and cause soft lock-up. So we need to disable i2c
-> start_en and clear intr_stat to stop i2c controller before dma
-> reset when transfer timeout.
->=20
-> Signed-off-by: Qii Wang <qii.wang@mediatek.com>
-
-Is there a suitable Fixes tag for this?
-
-
---I0LEN5JYjbsQxSJJ
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmCv/cAACgkQFA3kzBSg
-KbYFkA/8C40P82jqIEVljzAwazQ69azdDrsZ15whJ7MYNsuDsA2AZEDMn2LbI1KV
-OgpanxfkKMY2q+3c6A6A8gJcKSGNFZMPLynIAUTNNS7bZH0WVe/O2IPCXEuWZE7P
-jBFC7BOkSCMGpmbAwB2FnjGS3ns711st4VhMKRKEINvtFyXx5KyyBRLUxh3YnL6w
-y4zj/i/dpvD4Hpppwam1xCKdJIKFscSr3GQsd2i58/ulSaHuC+e+mVI0O7M229vy
-vRy9NSSM6p1kmzFsRrjBdsg1iqD5Jl+UazqDWpbHlqKw8/Q1EKVpjVibHrArNyZM
-I4GwQDOkMqUmvse+YUe2WQKawH9r57Il0MnQTE02DmJcv9wzHJOYLwwEQXhyIuUM
-7QrZ0CTsPeifWGbOinagLO3omauXAxGs4TocEIaOsyJKR+nrAsSCyB7azNsyILjr
-SswVSmcASpGBzbu30ezENrDlZCTsho+e7Elj8slCD7i0M1ZGCaLVNSmH+n94RInD
-qO1Ybpd0UxRrzMngUawMQxkzD5T9iGXrz/hzukm1C7jFP46Fqpe0j0T+vHZpF4D5
-PgyE/aPc04h4wS5l0Mzlu0LTNPg1nc1sIqa8rQYZPejGSwkHqa1ekc8h50tRVkBW
-E1gSM4n4akF814nH4JuJgnPG7lFmX5VhYEOd2wxoD9QH+DUXt34=
-=AaA0
------END PGP SIGNATURE-----
-
---I0LEN5JYjbsQxSJJ--
-
-
---===============4881260933268534871==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Can you help to add the following tag, thanks
+Fixes: aafced673c06("i2c: mediatek: move dma reset before i2c reset")
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4881260933268534871==--
-
