@@ -2,78 +2,81 @@ Return-Path: <SRS0=JD7o=KX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAA41C4708C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 11:29:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5DD2C47087
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 12:03:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D6D361378
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 11:29:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D6D361378
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=broadcom.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3544F61176
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 12:03:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3544F61176
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=K8jfZMhm28V6Egl583DEgfLOg37z4PLU2/dAlnf1Al0=; b=NshSCMhIi09Mp1BXpdgv1BbZw3
-	FDhmYOddnWV/7qx4lR8HMIRR28kFRsDsEux1guzKRIDJF55wQOmxEMxSaPiswnrErs+BJTLxUwl+G
-	UJ46gbpfYqIRz9gLO3uuSdO4zZQd6zIXLqo2jRhmfjdKLFoJ6pY0+2RyS0YLclRL2qj9mGZmmh0td
-	16SL+lR4yj9/N1Q+ylMxNQbd7jR8eB6ijVXgJxGHbhdcSyvltFTjpZ2UmzY4S1Pj/Gsm3z32z8zVq
-	aHcKmTP/wRwZluYhMVojYgTz+HHB8G9OYl4k0YNCZtp34VmcXdYtZjV+aHAcdbTy2d3aPMMRoTYqL
-	AXfXqDMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pmYXOgaqfZTnoMZuod6Hb5kLpDQ5nQRu7ZCSFYD3+k4=; b=ztWDOOYrXWgM05
+	QOQK1Z2w+EQg/sDrKhd4Rk+fYgyzi9MjXNl3BwUyA+JbziR+y21OE0+qEDvwnivXNv6pcbjOYo4mr
+	yarA06GHoH43t8cVKwth5PKGbvwy/50kFR4uIaGIfvTKOvbP/6F+DLPxO3PcUcRUuCQQuuaxlLHQF
+	Jf2QH0Fx45qAo6pn9KyeCHcRa3Ye33nD0ZQVcyc6wpv7MmaHfrOV6I9/VlQAfy5fK21K0u/nnD75D
+	SaSGvD823RpyFwFXjAwhBGY2KPyjF7CBYoOuJLVzEeaWypo3EQc26cK8sBA4dfjQFGfyswn4XrZiu
+	xcdd7Ns7bQ0mPwyoZuwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmagQ-00ErOk-IW; Fri, 28 May 2021 11:29:42 +0000
-Received: from lpdvacalvio01.broadcom.com ([192.19.229.182]
- helo=relay.smtp-ext.broadcom.com)
+	id 1lmbCu-00FB8F-VD; Fri, 28 May 2021 12:03:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lma0t-00EXA4-OV
- for linux-mediatek@lists.infradead.org; Fri, 28 May 2021 10:46:50 +0000
-Received: from bld-lvn-bcawlan-34.lvn.broadcom.net
- (bld-lvn-bcawlan-34.lvn.broadcom.net [10.75.138.137])
- by relay.smtp-ext.broadcom.com (Postfix) with ESMTP id D67D889C8;
- Fri, 28 May 2021 03:46:42 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 relay.smtp-ext.broadcom.com D67D889C8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=broadcom.com;
- s=dkimrelay; t=1622198802;
- bh=Zw0jEQhCQ7WPd1T8DnlcrjRRkKDIDNlohFb+UWsqnn8=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=lVi7YGb6rX6KEWlOB8oNJi7N0+56AgflHACPxOwN5P2KQPCIPIJufb2zMn/5BpUEg
- WeBaQ1VK+Hx9cuQzR7WrL7F4BDae9KcTyssY0IiDFU2b6zaNZXLDrKPkeh1YAKCprV
- CsGsfM+vhNO0+dUVsJNxvgq3LOnosgc02V7rP05k=
-Received: from [10.230.41.88] (unknown [10.230.41.88])
- by bld-lvn-bcawlan-34.lvn.broadcom.net (Postfix) with ESMTPSA id E27451874BE; 
- Fri, 28 May 2021 03:46:40 -0700 (PDT)
-Subject: Re: [PATCH v2 3/4] mac80211: add rate control support for encap
- offload
-To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- Johannes Berg <johannes.berg@intel.com>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Bo Jiao <bo.jiao@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <2176023d8f13d82d093452e1c105609396c30622.1622164961.git.ryder.lee@mediatek.com>
- <d447c18f07fe3dc7092f5502de3e35e6b7ae69e1.1622164961.git.ryder.lee@mediatek.com>
-From: Arend van Spriel <arend.vanspriel@broadcom.com>
-Message-ID: <489e6d51-c3f0-452d-ab63-ba83bba7ec02@broadcom.com>
-Date: Fri, 28 May 2021 12:46:38 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ id 1lmap9-00Ew8b-DT
+ for linux-mediatek@lists.infradead.org; Fri, 28 May 2021 11:38:46 +0000
+X-UUID: 1bc98f0928f4438596db738c8c87ab57-20210528
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=NLrA2YLOW9BJrH14y7rtmuihBx5aJy3xXxUcVNK7S20=; 
+ b=e6QgDIkzKfdVEvn8STHUrZEDrJKluuUsYYYpDXUM/uGlGsm8Tlz4+YxZxRRBqjtTJErVB7XfCWjm2Ym2pbwt2M14u3hMSV9GFCjtR1d3LMsNWvO1Uuy4kwCP0Ji1uBnzeox+SnQENlyX7ghOt0lTqkZRdiLgoXDWmgAzkiKxHLk=;
+X-UUID: 1bc98f0928f4438596db738c8c87ab57-20210528
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 536345684; Fri, 28 May 2021 04:38:38 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 04:38:36 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 19:38:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 28 May 2021 19:38:35 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
+ <jemele@google.com>, <yenlinlai@google.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921: introduce mac tx done handling
+Date: Fri, 28 May 2021 19:38:09 +0800
+Message-ID: <c55859b030762914d457bc538a5d3bc52cc8e826.1622201114.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <d447c18f07fe3dc7092f5502de3e35e6b7ae69e1.1622164961.git.ryder.lee@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_034647_900118_574BD0D1 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20210528_043844_918366_68077BA8 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,46 +88,266 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/28/2021 8:05 AM, Ryder Lee wrote:
-> The software rate control cannot deal with encap offload, so fix it.
-> 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> ---
-> change since v2 - none
-> ---
->   net/mac80211/ieee80211_i.h |  9 +++++++++
->   net/mac80211/rate.c        |  9 ++-------
->   net/mac80211/tx.c          | 18 ++++++++++++++----
->   3 files changed, 25 insertions(+), 11 deletions(-)
+From: Deren Wu <deren.wu@mediatek.com>
 
-[...]
+Instead of read tx status from mac table, add new mechanisam to hanele
+tx done event for data frame, every 250ms
 
-> diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-> index d3016c3a3069..0a4bc9e08637 100644
-> --- a/net/mac80211/tx.c
-> +++ b/net/mac80211/tx.c
+This event indicate the real tx status of this pkt in mac layer and
+would help mac80211 correct status more frequently
 
-[...]
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 69 +++++++++++--------
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 47 +++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mcu.h   | 28 ++++++++
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
+ 4 files changed, 117 insertions(+), 29 deletions(-)
 
-> @@ -729,7 +730,8 @@ ieee80211_tx_h_rate_ctrl(struct ieee80211_tx_data *tx)
->   		 "%s: Dropped data frame as no usable bitrate found while "
->   		 "scanning and associated. Target station: "
->   		 "%pM on %d GHz band\n",
-> -		 tx->sdata->name, hdr->addr1,
-> +		 tx->sdata->name,
-> +		 encap ? ((struct ethhdr *)hdr)->h_dest : hdr->addr1,
->   		 info->band ? 5 : 2))
-
-Not related to this change, but I guess the band can also be 6 these days.
-
-Regards,
-Arend
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 212832b34674..9366d779cbc7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -13,6 +13,36 @@
+ #define HE_PREP(f, m, v)	le16_encode_bits(le32_get_bits(v, MT_CRXV_HE_##m),\
+ 						 IEEE80211_RADIOTAP_HE_##f)
+ 
++static u8
++mt7921_next_pid(struct mt7921_dev *dev, struct mt76_wcid *wcid)
++{
++	wcid->packet_id = (wcid->packet_id + 1) & MT_PACKET_ID_MASK;
++	if (wcid->packet_id == MT_PACKET_ID_NO_ACK ||
++	    wcid->packet_id == MT_PACKET_ID_NO_SKB)
++		wcid->packet_id = MT_PACKET_ID_FIRST;
++	return wcid->packet_id;
++}
++
++unsigned long
++mt7921_next_txs_set(struct mt7921_dev *dev, struct mt76_wcid *wcid,
++		    u32 timeout)
++{
++	struct mt7921_sta *msta;
++
++	msta = container_of(wcid, struct mt7921_sta, wcid);
++	msta->next_txs_ts = jiffies + msecs_to_jiffies(timeout);
++	return msta->next_txs_ts;
++}
++
++bool
++mt7921_next_txs_timeout(struct mt7921_dev *dev, struct mt76_wcid *wcid)
++{
++	struct mt7921_sta *msta;
++
++	msta = container_of(wcid, struct mt7921_sta, wcid);
++	return time_is_before_jiffies(msta->next_txs_ts);
++}
++
+ static struct mt76_wcid *mt7921_rx_get_wcid(struct mt7921_dev *dev,
+ 					    u16 idx, bool unicast)
+ {
+@@ -726,7 +756,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 	struct ieee80211_vif *vif = info->control.vif;
+ 	struct mt76_phy *mphy = &dev->mphy;
+-	u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
++	u8 pid, p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
+ 	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
+ 	u16 tx_count = 15;
+ 	u32 val;
+@@ -795,6 +825,15 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 		txwi[6] |= cpu_to_le32(val);
+ 		txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
+ 	}
++
++	if ((FIELD_GET(MT_TXD2_FRAME_TYPE, txwi[2]) &
++		(IEEE80211_FTYPE_DATA >> 2)) &&
++		mt7921_next_txs_timeout(dev, wcid)) {
++		mt7921_next_txs_set(dev, wcid, 250);
++		pid = mt7921_next_pid(dev, wcid);
++		val = MT_TXD5_TX_STATUS_MCU | FIELD_PREP(MT_TXD5_PID, pid);
++		txwi[5] |= cpu_to_le32(val);
++	}
+ }
+ 
+ static void
+@@ -1380,30 +1419,6 @@ mt7921_mac_update_mib_stats(struct mt7921_phy *phy)
+ 	}
+ }
+ 
+-static void
+-mt7921_mac_sta_stats_work(struct mt7921_phy *phy)
+-{
+-	struct mt7921_dev *dev = phy->dev;
+-	struct mt7921_sta *msta;
+-	LIST_HEAD(list);
+-
+-	spin_lock_bh(&dev->sta_poll_lock);
+-	list_splice_init(&phy->stats_list, &list);
+-
+-	while (!list_empty(&list)) {
+-		msta = list_first_entry(&list, struct mt7921_sta, stats_list);
+-		list_del_init(&msta->stats_list);
+-		spin_unlock_bh(&dev->sta_poll_lock);
+-
+-		/* query wtbl info to report tx rate for further devices */
+-		mt7921_get_wtbl_info(dev, msta->wcid.idx);
+-
+-		spin_lock_bh(&dev->sta_poll_lock);
+-	}
+-
+-	spin_unlock_bh(&dev->sta_poll_lock);
+-}
+-
+ void mt7921_mac_work(struct work_struct *work)
+ {
+ 	struct mt7921_phy *phy;
+@@ -1421,10 +1436,6 @@ void mt7921_mac_work(struct work_struct *work)
+ 
+ 		mt7921_mac_update_mib_stats(phy);
+ 	}
+-	if (++phy->sta_work_count == 4) {
+-		phy->sta_work_count = 0;
+-		mt7921_mac_sta_stats_work(phy);
+-	}
+ 
+ 	mt7921_mutex_release(phy->dev);
+ 	ieee80211_queue_delayed_work(phy->mt76->hw, &mphy->mac_work,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 5a4c695f73c9..e8cd767ea475 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -531,6 +531,49 @@ mt7921_mcu_low_power_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	trace_lp_event(dev, event->state);
+ }
+ 
++static void
++mt7921_mcu_tx_done_event(struct mt7921_dev *dev, struct sk_buff *skb)
++{
++	struct mt7921_mcu_tx_done_event *event;
++	struct mt7921_sta *msta;
++	struct mt7921_phy *mphy = &dev->phy;
++	struct mt7921_mcu_peer_cap peer;
++	struct ieee80211_sta *sta;
++	LIST_HEAD(list);
++
++	skb_pull(skb, sizeof(struct mt7921_mcu_rxd));
++	event = (struct mt7921_mcu_tx_done_event *)skb->data;
++
++	spin_lock_bh(&dev->sta_poll_lock);
++	list_splice_init(&mphy->stats_list, &list);
++
++	while (!list_empty(&list)) {
++		msta = list_first_entry(&list, struct mt7921_sta, stats_list);
++		list_del_init(&msta->stats_list);
++
++		if (msta->wcid.idx != event->wlan_idx)
++			continue;
++
++		spin_unlock_bh(&dev->sta_poll_lock);
++
++		sta = wcid_to_sta(&msta->wcid);
++
++		/* peer config based on IEEE SPEC */
++		memset(&peer, 0x0, sizeof(peer));
++		peer.bw = event->bw;
++		peer.g2 = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_SGI_20);
++		peer.g4 = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_SGI_40);
++		peer.g8 = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_SHORT_GI_80);
++		peer.g16 = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_SHORT_GI_160);
++		mt7921_mcu_tx_rate_parse(mphy->mt76, &peer,
++					 &msta->stats.tx_rate, event->tx_rate);
++
++		spin_lock_bh(&dev->sta_poll_lock);
++		break;
++	}
++	spin_unlock_bh(&dev->sta_poll_lock);
++}
++
+ static void
+ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ {
+@@ -557,6 +600,9 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	case MCU_EVENT_LP_INFO:
+ 		mt7921_mcu_low_power_event(dev, skb);
+ 		break;
++	case MCU_EVENT_TX_DONE:
++		mt7921_mcu_tx_done_event(dev, skb);
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -577,6 +623,7 @@ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	    rxd->eid == MCU_EVENT_SCHED_SCAN_DONE ||
+ 	    rxd->eid == MCU_EVENT_BSS_ABSENCE ||
+ 	    rxd->eid == MCU_EVENT_SCAN_DONE ||
++	    rxd->eid == MCU_EVENT_TX_DONE ||
+ 	    rxd->eid == MCU_EVENT_DBG_MSG ||
+ 	    rxd->eid == MCU_EVENT_COREDUMP ||
+ 	    rxd->eid == MCU_EVENT_LP_INFO ||
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+index 49823d0a3d0a..22ebef4add00 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+@@ -81,6 +81,7 @@ enum {
+ 	MCU_EVENT_REG_ACCESS = 0x05,
+ 	MCU_EVENT_LP_INFO = 0x07,
+ 	MCU_EVENT_SCAN_DONE = 0x0d,
++	MCU_EVENT_TX_DONE = 0x0f,
+ 	MCU_EVENT_BSS_ABSENCE  = 0x11,
+ 	MCU_EVENT_BSS_BEACON_LOSS = 0x13,
+ 	MCU_EVENT_CH_PRIVILEGE = 0x18,
+@@ -407,4 +408,31 @@ struct mt7921_txpwr_event {
+ 	struct mt7921_txpwr txpwr;
+ } __packed;
+ 
++struct mt7921_mcu_tx_done_event {
++	u8 pid;
++	u8 status;
++	u16 seq;
++
++	u8 wlan_idx;
++	u8 tx_cnt;
++	u16 tx_rate;
++
++	u8 flag;
++	u8 tid;
++	u8 rsp_rate;
++	u8 mcs;
++
++	u8 bw;
++	u8 tx_pwr;
++	u8 reason;
++	u8 rsv0[1];
++
++	u32 delay;
++	u32 timestamp;
++	u32 applied_flag;
++
++	u8 txs[28];
++
++	u8 rsv1[32];
++} __packed;
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 59862ea4951c..a1e4276273d8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -92,6 +92,8 @@ struct mt7921_sta {
+ 	unsigned long ampdu_state;
+ 
+ 	struct mt7921_sta_key_conf bip;
++
++	unsigned long next_txs_ts;
+ };
+ 
+ DECLARE_EWMA(rssi, 10, 8);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
