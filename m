@@ -7,69 +7,71 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72853C47087
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C967AC47087
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:21:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3295A613DA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:16:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3295A613DA
+	by mail.kernel.org (Postfix) with ESMTPS id 888C46139A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:21:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 888C46139A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hVH/YVhod0QcxMLm3e9Qt3MJPdf3+SX671QX3GzBDz4=; b=QN18z72JV940C1
-	a+jLXz734IujvE0L5tA766zhid8otcHAyJ1iSJNPMAADH+xD3m20usrz1sAnYrFpkKnUbzILHYXdw
-	ZhKJqDY9sYyJOgK8ZiXOHWqbH49evWaM1f+8uTRduamGusYwbseyNfk8hJvzWN4TD386Rx3HVxv6t
-	WNR/2ia4lEjc5f0y/3BGKhaQ4bi1UihhXhAWS1GBzuTFZpICjWDBM/U+s+jNQB440XJWVaSAH8OdW
-	95RLtZJJvSL93uOy66LKpBVFr/cCZJBETB5Y3UmVpmKxgrHledC7TAEZ/u6wie9LOPnkN607P9I6L
-	t71rTO/0Y9iZTl8gE4Fw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ggEKsgOi5eD4Ho4bFsd0f+FAETIerpP9UYx4sZDn6jY=; b=aQn6EYz2y6+u05
+	RIPoIaWRl8Eljhj+AZZWTbGt6nLjWmzccegGSDR9MrheJ35V6WCnupbo++SxuYJ2kfFfkJO0qp3DQ
+	tbvSIbOSfiUCx5esXULbBLRZjn5mNVSJGN17QOkJDg7UH0SL2tUJ9LBKIpqeQfcNJfT8KfwBeW0ZM
+	vlM9SimAzCQHce/xSTICwDAq5hCaG4DvFf3Ilq4fZ3lOOBKbx+DnJidBmvJIAH8S5kvm8yIGT+fTy
+	XJRyJXGOmFWg6g1aZZkEug4jwLFKm8zbmdinFKqXwdr+bqGVoxD6WAFJ3M0zwAAGrtowWC/I8S0P/
+	E0KlpQEYCf0cFCxQ90qA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmVnW-00CWjl-Qp; Fri, 28 May 2021 06:16:42 +0000
+	id 1lmVsH-00CZDu-J3; Fri, 28 May 2021 06:21:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmVnE-00CWZy-Re; Fri, 28 May 2021 06:16:26 +0000
-X-UUID: f1d127d4584540eda163ffcb353f5fbf-20210527
+ id 1lmVrx-00CZ5j-RL; Fri, 28 May 2021 06:21:19 +0000
+X-UUID: 83e696283de141b699f649fbeb914a1d-20210527
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=6bWTLGz5omSfDjyNRKVARq/nzi3C/uGa4bUL2BXCCRM=; 
- b=o8GeVMhXNPw5X4K8chc05m9kOlZS1n3/jZqqbpC7PzYpnANFlT7wfu21XjVIzJWxVzRvfN4yMGvCqURsmjZrm9KLtFBgnhVMafqDbSGHctkbd3Jj8qA93BDQjRP/Lug9RMkIauCB77qPsF39kZU4ymyFwtbkXRckXr8VKNhCAO8=;
-X-UUID: f1d127d4584540eda163ffcb353f5fbf-20210527
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=tdP32hBdfllEkuO1wA8aLEmLIQmgCOMtycANFmjZazc=; 
+ b=EycyPoM9wtp8LOz/AuSYy6KP5aM2GfeiZSA7jrBNb6uSkws9vSQXBbroSR42hWEdE6/e2vCUjo/TbPKUajMz2ArNLwz0XvteNbr94wmx6sLRIeKNiIdjYlxEXUMQJoJ60BxViczu+FBZ1IHzP3IVA0FKJ/cw6GdZg/g0juWlvDQ=;
+X-UUID: 83e696283de141b699f649fbeb914a1d-20210527
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1888847856; Thu, 27 May 2021 23:16:21 -0700
+ with ESMTP id 1366166243; Thu, 27 May 2021 23:21:10 -0700
 Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 May 2021 23:11:05 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 May 2021 23:11:07 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 May 2021 14:11:04 +0800
+ 15.0.1497.2; Fri, 28 May 2021 14:11:06 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 28 May 2021 14:11:01 +0800
+ Transport; Fri, 28 May 2021 14:11:05 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 1/5] usb: mtu3: remove mtu3_ep0_setup() declaration in mtu3.h
-Date: Fri, 28 May 2021 14:10:56 +0800
-Message-ID: <1622182260-23767-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 5/5] usb: mtu3: skip getting extcon when use manual drd switch
+Date: Fri, 28 May 2021 14:11:00 +0800
+Message-ID: <1622182260-23767-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1622182260-23767-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1622182260-23767-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_231624_939520_59E0E868 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20210527_232117_922504_C8BF5DF2 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +88,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-It's defined and only used in the same file, so remove its declaration
-in mtu3.h, and make it static
+When use manual drd switch, extcon is not used in fact, so no
+need get it even it exists, just skip it like using role switch.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3.h      | 1 -
- drivers/usb/mtu3/mtu3_core.c | 2 +-
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ drivers/usb/mtu3/mtu3_plat.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index aef0a0bba25a..a8a7ee11f7b7 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -422,7 +422,6 @@ int mtu3_config_ep(struct mtu3 *mtu, struct mtu3_ep *mep,
- 		int interval, int burst, int mult);
- void mtu3_deconfig_ep(struct mtu3 *mtu, struct mtu3_ep *mep);
- void mtu3_ep_stall_set(struct mtu3_ep *mep, bool set);
--void mtu3_ep0_setup(struct mtu3 *mtu);
- void mtu3_start(struct mtu3 *mtu);
- void mtu3_stop(struct mtu3 *mtu);
- void mtu3_dev_on_off(struct mtu3 *mtu, int is_on);
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index b3b459937566..2ef528f39ba3 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -536,7 +536,7 @@ static void get_ep_fifo_config(struct mtu3 *mtu)
- 		rx_fifo->base, rx_fifo->limit);
- }
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index eaeda391693a..bbfabdc1e79b 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -299,7 +299,10 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
+ 		of_property_read_bool(node, "enable-manual-drd");
+ 	otg_sx->role_sw_used = of_property_read_bool(node, "usb-role-switch");
  
--void mtu3_ep0_setup(struct mtu3 *mtu)
-+static void mtu3_ep0_setup(struct mtu3 *mtu)
- {
- 	u32 maxpacket = mtu->g.ep0->maxpacket;
- 	u32 csr;
+-	if (!otg_sx->role_sw_used && of_property_read_bool(node, "extcon")) {
++	if (otg_sx->role_sw_used || otg_sx->manual_drd_enabled)
++		goto out;
++
++	if (of_property_read_bool(node, "extcon")) {
+ 		otg_sx->edev = extcon_get_edev_by_phandle(ssusb->dev, 0);
+ 		if (IS_ERR(otg_sx->edev)) {
+ 			return dev_err_probe(dev, PTR_ERR(otg_sx->edev),
 -- 
 2.18.0
 _______________________________________________
