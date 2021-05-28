@@ -2,69 +2,79 @@ Return-Path: <SRS0=JD7o=KX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E851FC4708C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 07:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA1BFC47087
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 07:28:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 75F52613DA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 07:03:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 75F52613DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 958D361005
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 07:28:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 958D361005
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WzyTfu7kfPJB93RA0mcFU+q2oSJj3Pccn0ZWVkTVZt8=; b=sVtn9HqP9fKE2F9RIZl/HmIf3R
-	0JjC1JU+M+W/Zgywhl13AWgRTi3JKUbEegdkV1oC6qVKtrWPutnOnT1IPEQBLg/Dvulw5thIqL8ro
-	dsgo7oc+zjhzu0EWwVBJevYMsSrgUwriDBaEGY3JJ1g40KKQ7l+t53H5WwYqN1IxZu6P8OFF3T7r2
-	g5djndxyr546hH1srmsT54f/tJyw8MLo0EAKoR8FxsQSnmae4Xg6Nm1tEF1qqrV7Up55GPlhPBEw6
-	yPg5T4DE/s+msC60J5Vk28HgVV+4zJO1K2qIj9PRiBIwiAjXReWV3shA1WNNSdc5uATG4LPaoxFuB
-	z30NIuTg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=I8/gljeP/Xo/TVCYoZRKlx+F2UeVsLRuWm/UYMhRwCg=; b=eb7lqhXrZK8vn0
+	GqwkrFul6GVMOPHMsqYxE/vTTFyNxyF/PfQqSA4WepYUoKPcg97rnA6F+eRrNat+WGUNVSpetP97y
+	WNN3X5TMAQ+BKJFL9IAIhwJHHp7tTSskFJV5c+3I7dhQCvaYuvYVPVTx/+IE4M79SZuzLRRbba1xq
+	MmuHJONEYyEhkqXc6aSBb+nvOmhiUvdJcMkmbe4n3gz4/W8vW609bfRZRWObXbNnwhwq08ejGJEt0
+	D3ks0rGRX1NbYq9AAFNspmNn2XF5kUSv3NmKHH0zb4IufVGmH81fqRmFj2a+wrJDqSKpHC7jxzOwQ
+	uit6zbG36QjKBvJG9jLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmWX0-00Cojh-V3; Fri, 28 May 2021 07:03:42 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1lmWui-00D01b-Ug; Fri, 28 May 2021 07:28:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmWWw-00Codf-0K
- for linux-mediatek@lists.infradead.org; Fri, 28 May 2021 07:03:42 +0000
-Received: from [IPv6:2a00:a040:193:3500:ed56:60fb:a74f:177d] (unknown
- [IPv6:2a00:a040:193:3500:ed56:60fb:a74f:177d])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2BBE51F40243;
- Fri, 28 May 2021 08:03:30 +0100 (BST)
-Subject: Re: [PATCH v5 05/14] media: mtk-vcodec: venc: support START and STOP
- commands
-To: Alexandre Courbot <acourbot@chromium.org>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>
-References: <20210519143011.1175546-1-acourbot@chromium.org>
- <20210519143011.1175546-6-acourbot@chromium.org>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <9b37044d-f909-9169-3d22-fa6c5f788822@collabora.com>
-Date: Fri, 28 May 2021 10:03:27 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1lmWuf-00CzwE-Ot; Fri, 28 May 2021 07:28:11 +0000
+X-UUID: 0d6bb0632e694265b8760922845b0b45-20210528
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=hJ6JezNIvj6ABl5W9WM2O4yJyn7QGyEyRh0VxX9iS/8=; 
+ b=g1IcgBnmu1v01thJMJw3AyaDS0owuq7AH8HdyhNMA8/r0sgSTdDWPMidFpqfU7AzJJ3LQNB+inw9UX0A9m/JwinVn+h1VptvMTUXi7HxYaCd3RDk6p5ahbuvY24zzNn7fSSKmqEx+9GekVspTVUd4PdP7wBvIHz8FZJi0ooMBI8=;
+X-UUID: 0d6bb0632e694265b8760922845b0b45-20210528
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hector.yuan@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 184436019; Fri, 28 May 2021 00:28:04 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 00:28:02 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 15:27:49 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 28 May 2021 15:27:49 +0800
+Message-ID: <1622186869.1958.0.camel@mtkswgap22>
+Subject: Re: [PATCH v10] cpufreq: mediatek-hw: Add support for Mediatek
+ cpufreq HW driver
+From: Hector Yuan <hector.yuan@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rafael
+ J. Wysocki" <rjw@rjwysocki.net>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <wsd_upstream@mediatek.com>
+Date: Fri, 28 May 2021 15:27:49 +0800
+In-Reply-To: <20210524091845.wlikxun3x2qou7zs@vireshk-i7>
+References: <1609222629-2979-1-git-send-email-hector.yuan@mediatek.com>
+ <20210524091845.wlikxun3x2qou7zs@vireshk-i7>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
-In-Reply-To: <20210519143011.1175546-6-acourbot@chromium.org>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_000338_324684_F78BFF4B 
-X-CRM114-Status: GOOD (  46.86  )
+X-CRM114-CacheID: sfid-20210528_002809_857376_1CDC3B0D 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,311 +86,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-I applied this patchset and tested the stateful encoder on debian with the command:
-
-[gst-master] root@debian:~/gst-build# gst-launch-1.0 filesrc location=images/jelly-800-640.YU12 ! rawvideoparse width=800 height=640 format=i420 ! videoconvert ! v4l2h264enc ! h264parse ! mp4mux ! filesink location=jelly-800-640.mp4
-
-I get:
-
-Setting pipeline[   79.703879] [MTK_V4L2] level=0 fops_vcodec_open(),190: encoder capability 10000000
-  to PAUSED ...
-Pipeline is PREROLLING ...
-Redistribute latency...
-[   80.621076] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.631232] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.640878] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.650766] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.660430] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.670194] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.680967] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.691376] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.701718] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.712106] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
-[   80.722272] [MTK_V4L2] level=0 mtk_venc_set_param(),371: fmt 0x3, P/L 0/0, w/h 800/640, buf 800/640, fps/bps 25/4000000, gop 0, i_period 0
-Pipeline is PREROLLED ...
-Setting pipeline to PLAYING ...
-New clock: GstSystemClock
-[   81.918747] [MTK_V4L2][ERROR] mtk_vcodec_wait_for_done_ctx:32: [3] ctx->type=1, cmd=1, wait_event_interruptible_timeout time=1000ms out 0 0!
-[   81.931392] [MTK_VCODEC][ERROR][3]: h264_encode_frame() irq_status=0 failed
-[   81.938470] [MTK_V4L2][ERROR] mtk_venc_worker:1219: venc_if_encode failed=-5
-[   82.974746] [MTK_V4L2][ERROR] mtk_vcodec_wait_for_done_ctx:32: [3] ctx->type=1, cmd=1, wait_event_interruptible_timeout time=1000ms out 0 0!
-[   82.987392] [MTK_VCODEC][ERROR][3]: h264_encode_frame() irq_status=0 failed
-[   82.994471] [MTK_V4L2][ERROR] mtk_venc_worker:1219: venc_if_encode failed=-5
-[  104.163977] cros-ec-dev cros-ec-dev.2.auto: Some logs may have been dropped...
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-0:00:00.4 / 99:99:99.
-^Chandling interrupt.
-
-And then the streaming hangs. The same error happens without this patchset, but without
-this patchset the statful encoder does not support V4L2_ENC_CMD_STOP/START needed by the spec.
-I am not sure what cause the error and wether those mtk-iommu erros has to do with that. The issue
-could also come from the mtk-vpu used by the encoder.
-Do you have any idea where this can come from?
-
-Thanks,
-Dafna
-
-
-
-On 19.05.21 17:30, Alexandre Courbot wrote:
-> The V4L2 encoder specification requires encoders to support the
-> V4L2_ENC_CMD_START and V4L2_ENC_CMD_STOP commands. Add support for these
-> to the mtk-vcodec encoder by reusing the same flush buffer as used by
-> the decoder driver.
+On Mon, 2021-05-24 at 14:48 +0530, Viresh Kumar wrote:
+> On 29-12-20, 14:17, Hector Yuan wrote:
+> > The CPUfreq HW present in some Mediatek chipsets offloads the steps necessary for changing the frequency of CPUs. 
+> > The driver implements the cpufreq driver interface for this hardware engine. 
+> > This patch depends on MT6779 DTS patchset[1] submitted by Hanks Chen.
+> > 
+> > >From v8 to v9, there are three more modifications.
+> > 1. Based on patchset[2], align binding with scmi for performance domain.
+> > 2. Add the CPUFREQ fast switch function support and define DVFS latency.
+> > 3. Based on patchser[3], add energy model API parameter for mW.
 > 
-> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> [hsinyi: fix double-free issue if flush buffer was not dequeued by the
-> time streamoff is called]
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   2 +
->   .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 135 +++++++++++++++++-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   4 +
->   3 files changed, 134 insertions(+), 7 deletions(-)
+> Hi Hector,
 > 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index c6fe61253f43..37a62c0f406f 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -252,6 +252,7 @@ struct vdec_pic_info {
->    * @last_decoded_picinfo: pic information get from latest decode
->    * @empty_flush_buf: a fake size-0 capture buffer that indicates flush. Only
->    *		     to be used with encoder and stateful decoder.
-> + * @is_flushing: set to true if flushing is in progress.
->    *
->    * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
->    * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
-> @@ -290,6 +291,7 @@ struct mtk_vcodec_ctx {
->   	struct work_struct encode_work;
->   	struct vdec_pic_info last_decoded_picinfo;
->   	struct v4l2_m2m_buffer empty_flush_buf;
-> +	bool is_flushing;
->   
->   	enum v4l2_colorspace colorspace;
->   	enum v4l2_ycbcr_encoding ycbcr_enc;
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 4831052f475d..4701dea251ca 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -659,6 +659,7 @@ static int vidioc_venc_dqbuf(struct file *file, void *priv,
->   			     struct v4l2_buffer *buf)
->   {
->   	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> +	int ret;
->   
->   	if (ctx->state == MTK_STATE_ABORT) {
->   		mtk_v4l2_err("[%d] Call on QBUF after unrecoverable error",
-> @@ -666,7 +667,77 @@ static int vidioc_venc_dqbuf(struct file *file, void *priv,
->   		return -EIO;
->   	}
->   
-> -	return v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
-> +	ret = v4l2_m2m_dqbuf(file, ctx->m2m_ctx, buf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/*
-> +	 * Complete flush if the user dequeued the 0-payload LAST buffer.
-> +	 * We check the payload because a buffer with the LAST flag can also
-> +	 * be seen during resolution changes. If we happen to be flushing at
-> +	 * that time, the last buffer before the resolution changes could be
-> +	 * misinterpreted for the buffer generated by the flush and terminate
-> +	 * it earlier than we want.
-> +	 */
-> +	if (!V4L2_TYPE_IS_OUTPUT(buf->type) &&
-> +	    buf->flags & V4L2_BUF_FLAG_LAST &&
-> +	    buf->m.planes[0].bytesused == 0 &&
-> +	    ctx->is_flushing) {
-> +		/*
-> +		 * Last CAPTURE buffer is dequeued, we can allow another flush
-> +		 * to take place.
-> +		 */
-> +		ctx->is_flushing = false;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int vidioc_encoder_cmd(struct file *file, void *priv,
-> +			      struct v4l2_encoder_cmd *cmd)
-> +{
-> +	struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> +	struct vb2_queue *src_vq, *dst_vq;
-> +	int ret;
-> +
-> +	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, cmd);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Calling START or STOP is invalid if a flush is in progress */
-> +	if (ctx->is_flushing)
-> +		return -EBUSY;
-> +
-> +	mtk_v4l2_debug(1, "encoder cmd=%u", cmd->cmd);
-> +
-> +	dst_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
-> +				V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> +	switch (cmd->cmd) {
-> +	case V4L2_ENC_CMD_STOP:
-> +		src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
-> +				V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-> +		if (!vb2_is_streaming(src_vq)) {
-> +			mtk_v4l2_debug(1, "Output stream is off. No need to flush.");
-> +			return 0;
-> +		}
-> +		if (!vb2_is_streaming(dst_vq)) {
-> +			mtk_v4l2_debug(1, "Capture stream is off. No need to flush.");
-> +			return 0;
-> +		}
-> +		ctx->is_flushing = true;
-> +		v4l2_m2m_buf_queue(ctx->m2m_ctx, &ctx->empty_flush_buf.vb);
-> +		v4l2_m2m_try_schedule(ctx->m2m_ctx);
-> +		break;
-> +
-> +	case V4L2_ENC_CMD_START:
-> +		vb2_clear_last_buffer_dequeued(dst_vq);
-> +		break;
-> +
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
->   }
->   
->   const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
-> @@ -702,6 +773,9 @@ const struct v4l2_ioctl_ops mtk_venc_ioctl_ops = {
->   
->   	.vidioc_g_selection		= vidioc_venc_g_selection,
->   	.vidioc_s_selection		= vidioc_venc_s_selection,
-> +
-> +	.vidioc_encoder_cmd		= vidioc_encoder_cmd,
-> +	.vidioc_try_encoder_cmd		= v4l2_m2m_ioctl_try_encoder_cmd,
->   };
->   
->   static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
-> @@ -869,9 +943,39 @@ static void vb2ops_venc_stop_streaming(struct vb2_queue *q)
->   			dst_buf->vb2_buf.planes[0].bytesused = 0;
->   			v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_ERROR);
->   		}
-> +		/* STREAMOFF on the CAPTURE queue completes any ongoing flush */
-> +		if (ctx->is_flushing) {
-> +			struct v4l2_m2m_buffer *b, *n;
-> +
-> +			mtk_v4l2_debug(1, "STREAMOFF called while flushing");
-> +			/*
-> +			 * STREAMOFF could be called before the flush buffer is
-> +			 * dequeued. Check whether empty flush buf is still in
-> +			 * queue before removing it.
-> +			 */
-> +			v4l2_m2m_for_each_src_buf_safe(ctx->m2m_ctx, b, n) {
-> +				if (b == &ctx->empty_flush_buf) {
-> +					v4l2_m2m_src_buf_remove_by_buf(
-> +							ctx->m2m_ctx, &b->vb);
-> +					break;
-> +				}
-> +			}
-> +			ctx->is_flushing = false;
-> +		}
->   	} else {
-> -		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx)))
-> -			v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
-> +		while ((src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx))) {
-> +			if (src_buf != &ctx->empty_flush_buf.vb)
-> +				v4l2_m2m_buf_done(src_buf, VB2_BUF_STATE_ERROR);
-> +		}
-> +		if (ctx->is_flushing) {
-> +			/*
-> +			 * If we are in the middle of a flush, put the flush
-> +			 * buffer back into the queue so the next CAPTURE
-> +			 * buffer gets returned with the LAST flag set.
-> +			 */
-> +			v4l2_m2m_buf_queue(ctx->m2m_ctx,
-> +					   &ctx->empty_flush_buf.vb);
-> +		}
->   	}
->   
->   	if ((q->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE &&
-> @@ -971,12 +1075,15 @@ static int mtk_venc_param_change(struct mtk_vcodec_ctx *ctx)
->   {
->   	struct venc_enc_param enc_prm;
->   	struct vb2_v4l2_buffer *vb2_v4l2 = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
-> -	struct mtk_video_enc_buf *mtk_buf =
-> -			container_of(vb2_v4l2, struct mtk_video_enc_buf,
-> -				     m2m_buf.vb);
-> -
-> +	struct mtk_video_enc_buf *mtk_buf;
->   	int ret = 0;
->   
-> +	/* Don't upcast the empty flush buffer */
-> +	if (vb2_v4l2 == &ctx->empty_flush_buf.vb)
-> +		return 0;
-> +
-> +	mtk_buf = container_of(vb2_v4l2, struct mtk_video_enc_buf, m2m_buf.vb);
-> +
->   	memset(&enc_prm, 0, sizeof(enc_prm));
->   	if (mtk_buf->param_change == MTK_ENCODE_PARAM_NONE)
->   		return 0;
-> @@ -1062,6 +1169,20 @@ static void mtk_venc_worker(struct work_struct *work)
->   	}
->   
->   	src_buf = v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-> +
-> +	/*
-> +	 * If we see the flush buffer, send an empty buffer with the LAST flag
-> +	 * to the client. is_flushing will be reset at the time the buffer
-> +	 * is dequeued.
-> +	 */
-> +	if (src_buf == &ctx->empty_flush_buf.vb) {
-> +		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
-> +		dst_buf->flags |= V4L2_BUF_FLAG_LAST;
-> +		v4l2_m2m_buf_done(dst_buf, VB2_BUF_STATE_DONE);
-> +		v4l2_m2m_job_finish(ctx->dev->m2m_dev_enc, ctx->m2m_ctx);
-> +		return;
-> +	}
-> +
->   	memset(&frm_buf, 0, sizeof(frm_buf));
->   	for (i = 0; i < src_buf->vb2_buf.num_planes ; i++) {
->   		frm_buf.fb_addr[i].dma_addr =
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> index 7d7b8cfc2cc5..2dd6fef896df 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> @@ -131,6 +131,7 @@ static int fops_vcodec_open(struct file *file)
->   	struct mtk_vcodec_dev *dev = video_drvdata(file);
->   	struct mtk_vcodec_ctx *ctx = NULL;
->   	int ret = 0;
-> +	struct vb2_queue *src_vq;
->   
->   	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
->   	if (!ctx)
-> @@ -164,6 +165,9 @@ static int fops_vcodec_open(struct file *file)
->   				ret);
->   		goto err_m2m_ctx_init;
->   	}
-> +	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
-> +				V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-> +	ctx->empty_flush_buf.vb.vb2_buf.vb2_queue = src_vq;
->   	mtk_vcodec_enc_set_default_params(ctx);
->   
->   	if (v4l2_fh_is_singular(&ctx->fh)) {
+> You can refresh this series based on the patch from Sudeep:
 > 
-
+> https://lore.kernel.org/linux-devicetree/20210517155458.1016707-1-sudeep.holla@arm.com/
+> 
+OK, will based on latest kernel and resend patches in these days.
+Thanks!
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
