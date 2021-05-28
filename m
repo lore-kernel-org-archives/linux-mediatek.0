@@ -2,61 +2,60 @@ Return-Path: <SRS0=JD7o=KX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBC6EC4708C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07E68C4708C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:10:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D05D613D1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:09:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D05D613D1
+	by mail.kernel.org (Postfix) with ESMTPS id C6D586135F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:09:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6D586135F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dXw4wbE5L4y3YXdYE/7tutzqcS8M8tIosIaaUKHE4j0=; b=SAwFlv+Cl70jMF
-	CTdAwdBTyQ8R0FVLQMNAIaKRUsUG3SFahI6jpAaYbg7gjIqzqJzJOK6IrUzOWov+DTAEA17cg0N7i
-	UC1nxAFSK2H7rYs/qHIAUyDK7YbfA/As7bz0dYXGl86ftoouuIgh3zs38gcVmUkO465xyRVmP0E9P
-	1Xk4ldj7JlJxP5oN/y5qi/SCaSub9DR3qTEnpbcAz6/BjzIvOC6IH3uzHV6FweIy/+o/3rnYzEjl7
-	QKd75YmHMIvCKrsKdh4VYtUVlmu1xr3cpPgp/qNNiQ3ohHd/+ARvfNVx1B3YXFQijmsLViaUTOiQe
-	xRe9pSoA14B0SMiQBKVg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+vcfV4tIiYiWaQZJrcGc437P9xg+vTuwtUgTF9/sAJA=; b=ZJh2o4B/FINiK4
+	a29/WF6y6ZMsXKGH94xOLtd+FgWViqyxB9cyIDyEyo8cyFZfDBZFq5qzNfcu25umzY/Z7WuW2fnOo
+	f8wuCNGPu2DUR2HxotN/Jjy4OmXHd+lXWzxBe5nvZtq4kAIjtM5vB2dF2CtLED9BCx8AF0j7/5+HU
+	l3tojurVL/Jv4aMbGfABZdBGjQwiEhW8dU6a0CEcDjMnuCBZI7In1MM4TPlz4v/3lDdMzUplfWjnz
+	jJETnj1xRlJK5evwCUdMWkFvQO5h1l80h0RaSeRcY3wS+yu7t9qc0MEZqyR3udlhYOJyG6nEe3KMI
+	i3ot7YtSYMQos23DqW0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmVgl-00CTK5-Hx; Fri, 28 May 2021 06:09:43 +0000
+	id 1lmVgs-00CTN8-Ev; Fri, 28 May 2021 06:09:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmVgh-00CTHz-5D
- for linux-mediatek@lists.infradead.org; Fri, 28 May 2021 06:09:42 +0000
-X-UUID: ea27c8e4223e4b85a7c1a4045ac70fbc-20210527
+ id 1lmVgp-00CTLr-NG
+ for linux-mediatek@lists.infradead.org; Fri, 28 May 2021 06:09:48 +0000
+X-UUID: ad56e6a95cd045f6ab26f22d5ff469d9-20210527
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=fUR7YMsf9bRnubEFEMkV9o3Tw3T7U4Qgtl0clv4ZGlk=; 
- b=Mk9GYMooWVcBt3e1vpuufkeYLkAnasl6dZeEVKavtt8FuEBvnfSqs2XOETB2Zdw4bz3SMCUewz+0DnLXGM5WNeS6OKFA48hnX7+HtBqbUaBV4by08QiTnRNlXppTRswF65Gg3jUSpeI6L23sWv1Qg03IV94JIud7HJj+WEFwfF8=;
-X-UUID: ea27c8e4223e4b85a7c1a4045ac70fbc-20210527
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=DGgAeHyhb42HxkqrehJVseAxkn2GK9qoE/xE6iNMLZU=; 
+ b=P+WBlz4Flg1XsAS4asRwVi36d6iek6SiUvtEZYDdu6sOzI00IbyodLsloEt1S80Mhu7Z6SmLMv3TgxQiOAS1F8nofXVtZ6dLoCNOdiEIHqxqbmLPD9ED4S6gEe59rfh4Nqd5JwIPqST6pRaMoyLQIJJJa930Iv0OQ6gzgKpSqbA=;
+X-UUID: ad56e6a95cd045f6ab26f22d5ff469d9-20210527
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 731502008; Thu, 27 May 2021 23:09:37 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 May 2021 23:09:36 -0700
+ with ESMTP id 674702537; Thu, 27 May 2021 23:09:44 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 27 May 2021 23:09:43 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 May 2021 14:09:34 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 14:09:35 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 28 May 2021 14:09:34 +0800
+ Frontend Transport; Fri, 28 May 2021 14:09:35 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>, Johannes Berg <johannes.berg@intel.com>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
@@ -64,15 +63,18 @@ CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <bo.jiao@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH v2 1/4] mac80211: call ieee80211_tx_h_rate_ctrl() when dequeue
-Date: Fri, 28 May 2021 14:05:41 +0800
-Message-ID: <2176023d8f13d82d093452e1c105609396c30622.1622164961.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2 2/4] mac80211: minstrel_ht: fix minstrel_aggr_check for
+ encap offload
+Date: Fri, 28 May 2021 14:05:42 +0800
+Message-ID: <2b98f1d3f6fb9f2beb6d3458af3f0c25e863c191.1622164961.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <2176023d8f13d82d093452e1c105609396c30622.1622164961.git.ryder.lee@mediatek.com>
+References: <2176023d8f13d82d093452e1c105609396c30622.1622164961.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_230939_575502_AC611FCF 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20210527_230947_785464_1A7454BF 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,122 +91,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make ieee80211_tx_h_rate_ctrl() get called on dequeue to improve
-performance since it reduces the turnaround time for rate control.
+Avoid checking ieee80211_hdr to support encap offload.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-change since v2 - roll ieee80211_tx_h_rate_ctrl checks into one condition
+change since v2 - none
 ---
- net/mac80211/tx.c | 52 ++++++++++++++++++++++++++---------------------
- 1 file changed, 29 insertions(+), 23 deletions(-)
+ net/mac80211/rc80211_minstrel_ht.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/net/mac80211/tx.c b/net/mac80211/tx.c
-index 0b719f3d2dec..d3016c3a3069 100644
---- a/net/mac80211/tx.c
-+++ b/net/mac80211/tx.c
-@@ -1768,8 +1768,6 @@ static int invoke_tx_handlers_early(struct ieee80211_tx_data *tx)
- 	CALL_TXH(ieee80211_tx_h_ps_buf);
- 	CALL_TXH(ieee80211_tx_h_check_control_port_protocol);
- 	CALL_TXH(ieee80211_tx_h_select_key);
--	if (!ieee80211_hw_check(&tx->local->hw, HAS_RATE_CONTROL))
--		CALL_TXH(ieee80211_tx_h_rate_ctrl);
- 
-  txh_done:
- 	if (unlikely(res == TX_DROP)) {
-@@ -1802,6 +1800,9 @@ static int invoke_tx_handlers_late(struct ieee80211_tx_data *tx)
- 		goto txh_done;
- 	}
- 
-+	if (!ieee80211_hw_check(&tx->local->hw, HAS_RATE_CONTROL))
-+		CALL_TXH(ieee80211_tx_h_rate_ctrl);
-+
- 	CALL_TXH(ieee80211_tx_h_michael_mic_add);
- 	CALL_TXH(ieee80211_tx_h_sequence);
- 	CALL_TXH(ieee80211_tx_h_fragment);
-@@ -3369,15 +3370,21 @@ static bool ieee80211_amsdu_aggregate(struct ieee80211_sub_if_data *sdata,
-  * Can be called while the sta lock is held. Anything that can cause packets to
-  * be generated will cause deadlock!
-  */
--static void ieee80211_xmit_fast_finish(struct ieee80211_sub_if_data *sdata,
--				       struct sta_info *sta, u8 pn_offs,
--				       struct ieee80211_key *key,
--				       struct sk_buff *skb)
-+static ieee80211_tx_result
-+ieee80211_xmit_fast_finish(struct ieee80211_sub_if_data *sdata,
-+			   struct sta_info *sta, u8 pn_offs,
-+			   struct ieee80211_key *key,
-+			   struct ieee80211_tx_data *tx)
+diff --git a/net/mac80211/rc80211_minstrel_ht.c b/net/mac80211/rc80211_minstrel_ht.c
+index 6487b05da6fa..55ff93c803ac 100644
+--- a/net/mac80211/rc80211_minstrel_ht.c
++++ b/net/mac80211/rc80211_minstrel_ht.c
+@@ -1179,19 +1179,24 @@ static void
+ minstrel_aggr_check(struct ieee80211_sta *pubsta, struct sk_buff *skb)
  {
-+	struct sk_buff *skb = tx->skb;
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_hdr *hdr = (void *)skb->data;
- 	u8 tid = IEEE80211_NUM_TIDS;
+ 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *) skb->data;
++	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+ 	struct sta_info *sta = container_of(pubsta, struct sta_info, sta);
+ 	u16 tid;
  
-+	if (!ieee80211_hw_check(&tx->local->hw, HAS_RATE_CONTROL) &&
-+	    ieee80211_tx_h_rate_ctrl(tx) != TX_CONTINUE)
-+		return TX_DROP;
+ 	if (skb_get_queue_mapping(skb) == IEEE80211_AC_VO)
+ 		return;
+ 
+-	if (unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
++	if (unlikely(!pubsta->wme))
++		return;
 +
- 	if (key)
- 		info->control.hw_key = &key->conf;
++	if (!(info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP) &&
++	    unlikely(!ieee80211_is_data_qos(hdr->frame_control)))
+ 		return;
  
-@@ -3426,6 +3433,8 @@ static void ieee80211_xmit_fast_finish(struct ieee80211_sub_if_data *sdata,
- 			break;
- 		}
- 	}
-+
-+	return TX_CONTINUE;
- }
+ 	if (unlikely(skb->protocol == cpu_to_be16(ETH_P_PAE)))
+ 		return;
  
- static bool ieee80211_xmit_fast(struct ieee80211_sub_if_data *sdata,
-@@ -3529,24 +3538,17 @@ static bool ieee80211_xmit_fast(struct ieee80211_sub_if_data *sdata,
- 	tx.sta = sta;
- 	tx.key = fast_tx->key;
+-	tid = ieee80211_get_tid(hdr);
++	tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 	if (likely(sta->ampdu_mlme.tid_tx[tid]))
+ 		return;
  
--	if (!ieee80211_hw_check(&local->hw, HAS_RATE_CONTROL)) {
--		tx.skb = skb;
--		r = ieee80211_tx_h_rate_ctrl(&tx);
--		skb = tx.skb;
--		tx.skb = NULL;
--
--		if (r != TX_CONTINUE) {
--			if (r != TX_QUEUED)
--				kfree_skb(skb);
--			return true;
--		}
--	}
--
- 	if (ieee80211_queue_skb(local, sdata, sta, skb))
- 		return true;
- 
--	ieee80211_xmit_fast_finish(sdata, sta, fast_tx->pn_offs,
--				   fast_tx->key, skb);
-+	tx.skb = skb;
-+	r = ieee80211_xmit_fast_finish(sdata, sta, fast_tx->pn_offs,
-+				       fast_tx->key, &tx);
-+	tx.skb = NULL;
-+	if (r == TX_DROP) {
-+		kfree_skb(skb);
-+		return true;
-+	}
- 
- 	if (sdata->vif.type == NL80211_IFTYPE_AP_VLAN)
- 		sdata = container_of(sdata->bss,
-@@ -3663,8 +3665,12 @@ struct sk_buff *ieee80211_tx_dequeue(struct ieee80211_hw *hw,
- 		    (tx.key->conf.flags & IEEE80211_KEY_FLAG_GENERATE_IV))
- 			pn_offs = ieee80211_hdrlen(hdr->frame_control);
- 
--		ieee80211_xmit_fast_finish(sta->sdata, sta, pn_offs,
--					   tx.key, skb);
-+		r = ieee80211_xmit_fast_finish(sta->sdata, sta, pn_offs,
-+					       tx.key, &tx);
-+		if (r != TX_CONTINUE) {
-+			ieee80211_free_txskb(&local->hw, skb);
-+			goto begin;
-+		}
- 	} else {
- 		if (invoke_tx_handlers_late(&tx))
- 			goto begin;
 -- 
 2.18.0
 _______________________________________________
