@@ -2,72 +2,73 @@ Return-Path: <SRS0=JD7o=KX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BF4CC4708C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 08:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22147C47087
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 08:14:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 27E03613D4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 08:13:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27E03613D4
+	by mail.kernel.org (Postfix) with ESMTPS id DA59B613D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 08:14:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA59B613D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kh+LLhedrVo66ypAdKXBhhYgf0D0hi/5QA5WHGHt5t8=; b=rYReyOhnPGcDzR
-	jODHoqY96Oy9drLnHajenw0nJhugS8XUzP/0RrJpelhK/JpCdC0Dx0TN0X1CNAUmoauQdPg3600x1
-	qfGgNT5q6nsFPkkALglJiAe/B5i6ttoGd8ykfi62t1h4dThzV9AjfCSWGfXYBDPu9f4TtwE1VuZhO
-	yjWAwUL+TNl2AtBD/rGupiN5ZkJ1PXPOO3OwgFIDZi1bxTEMVpphjYB2dUEFP2FPTph3PEryz1q6M
-	TWtq5nQw8xySHdpwK4JU4WnwAndAeBFyRV8CNXD6zLi5aWOCsVrh+Z5rTzg8dN/+j/mmM8kPWGbmt
-	JLOQEFPh47PUZd68B3yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k5zT1dHlIA91gMyxvWPXl85Lgnwd1N97J/0oFMJ4rn4=; b=PrPGb+S3sEB5HA
+	3XZ+cOYC0CJ9J4qmLokH8I12B5wcGAuNloVHgOIkVX94lu0w2vSQK+hSifev4hP0I70xOE8wXbXlv
+	mOtUlkphNejsvZL7U+mr1IOQB7HE/otJ0BaklhPYJkTUH0puagGKDICIndxawtQJkVbxtB0qwCFwf
+	LtY+yqasp0GPCFh8MutWr512wy46OpnO0Iyh13gOHBqhJVorVe8j5fdpR694ACGu1uAyk+ly+Y7kD
+	YbDJtXdNUU6MDNCloBoTVkz8F21n2CNjb0BGBuQ0MwGAhbfByN3VxxcR19bkmE9xJaFVXTqLgUC1C
+	UwilhMPoUcrHMM95HXSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmXco-00DKBp-Sx; Fri, 28 May 2021 08:13:46 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1lmXdG-00DKP0-6Q; Fri, 28 May 2021 08:14:14 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmXcD-00DJsN-K7; Fri, 28 May 2021 08:13:10 +0000
-Received: by mail-pl1-x632.google.com with SMTP id v12so1260275plo.10;
- Fri, 28 May 2021 01:13:09 -0700 (PDT)
+ id 1lmXcI-00DJvh-H8; Fri, 28 May 2021 08:13:16 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id q16so1273631pls.6;
+ Fri, 28 May 2021 01:13:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WFpvdJz81Rofrn0SCvWRF+k7het9w/ooU9Ou53sso1U=;
- b=RQfAOsj/JemwJemXCE6fis1wMnfcIp6Y+sHLpnm3HOZg1fPMfqMp1raHj6xbFggLAh
- 8qYd7A+Rx+nd9H+HezIX1/GpsOvzukrzIUmLfPhVWEy2BF+rvQFzZGe0bWK1iPWW5m/H
- 6g12Gr3CAV7K6lqgHF/WrxOTTJYOYcQZDpgYTcPVcJuO+eIV8RFqlIcUrnwhxrX8V6ML
- DlF7euw8OBla2Ur0XBAj8oWru5S7u9BYsOahSqoLX2N8NG+Vi2lDRzqqflDsgZLmCfih
- pT3pDHNjysGbC2DsFzDC3TSqPB7GAbw7qGdU3SKJwRH2w/vArotIvbRv8fNg88t5id3i
- +Xig==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=21xAaUHWeHof2ecP/y/d30huoLiokvMxn5AYQcuGXfg=;
+ b=YuNG0cSnJzP07WQH1cBbi/A+4+mjzR3qehA/1Mv7hmmSGLgeHWMmEu8F7RVgdM7qVx
+ mprinDFWUuLOVsQyAnS74xwQNRJXdIS97S87KcynFgYCSKidRKtt7/JzlH4DYeVJfQMR
+ cfYtRa5bCFUz0lNu3FclM9I9B1ogqM/H8ub9J9hrI7e8N2DN607JOOVLyK+ZaKznQR61
+ ehamUCFqbnOEKprduupYQSKLc/B74TYVdp+UkJzfbffvradmooQlXk2qDxWbefTGEwU5
+ kUm/cLT4uRP6AAsPkL0DWGdXf3Zlay5NsdAzTXJ5iQ775k5IMOJ4Tq5AqPfkvJdYRSCj
+ fJ1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=WFpvdJz81Rofrn0SCvWRF+k7het9w/ooU9Ou53sso1U=;
- b=mPEFwXjlkM6wYozhDLF14m6HlxzJSQFA0TjcCe5Qy9WhSAZko09/18e7HlLzu710uA
- g3JFrainPQA5xK+2rIIWrpBkKKwisSQYfme7/Hb8Fsnq+F0ECGRGaqpYRVE6iK2LNYQ/
- dZ6KoANzaLzwsFUiun64DUWHEVVevyY26mnU8SjLaIvGKR+gzxYT2JoaqVWKrjSV3MN1
- yavb7Dg5wGIb4XxPBYxPGaG14+DGigDsE+pCONTJJtktTx1nu1hlS7ezndH1bFhOWEAS
- rV369TwHJ88xlNRDLwKznpWZnKWy5JfaUsindE1Xagtb0GAWM5FxNEZHLUgIytRnFHbk
- dbog==
-X-Gm-Message-State: AOAM532gPxt9F5VVDv/zzIWMfOiX0MsRv9rzYVHwrrRngcUefKrs1oR2
- jNzqizugKuNf0+5Qo7RLkTM=
-X-Google-Smtp-Source: ABdhPJz+VoBj7k8vwcL64HR51mNk+YLRUvpLavlP+rVuUsDqQcGrzR7m5IyQvsxLL+ZbK6YMUSBeJw==
-X-Received: by 2002:a17:90a:d90a:: with SMTP id
- c10mr3032756pjv.209.1622189588876; 
- Fri, 28 May 2021 01:13:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=21xAaUHWeHof2ecP/y/d30huoLiokvMxn5AYQcuGXfg=;
+ b=SkrnvimFHLhAjD5F5+EgeduAx/X1XFmNIjzlILbMf7PO5g46J0yFMbVet7o71QrbTf
+ OTRvDZuqEBWudeW154WzD35wHqvQ439UMfxep0HZ8NgqrG1rIxh3oxLCkRQjIdM33Xgh
+ 3BFS30TWUd0Xl5FIXmFkJfFZvmzuhL470MEsX83nZhQc9QR5B6dyBq1gKjwWfhzp/elG
+ /04g/tNRlpYIEc/XhK5qL2GkqTmhQZawYZAw4eLA75+CIacOajv61L7bf8G4xkbqdvfL
+ Oin6FgXHumpgGOnLx3vFJ6Ns1svO5B9QONPQ/5qynFPndJrjF2gI2h9ebCRvc2zZNmpf
+ oA8g==
+X-Gm-Message-State: AOAM532fDKGYKnw1uBWWmd2dzuD8klXNqIjjzUV7MzKauLcFnyMls25l
+ ZMHwjmUXfbxZcTDjelhgXmY=
+X-Google-Smtp-Source: ABdhPJyyvweGFW8Eh8bd+eKcXVC2wzxMqNaQ8UYzWiDHmVDfiTCarncao5MD1si6ap7/KLnwBjFjtg==
+X-Received: by 2002:a17:902:d2c5:b029:f1:c207:b0fd with SMTP id
+ n5-20020a170902d2c5b02900f1c207b0fdmr6965759plc.45.1622189593759; 
+ Fri, 28 May 2021 01:13:13 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:46b:3194:b541:419e:4878:8a93])
- by smtp.gmail.com with ESMTPSA id z18sm3846594pfc.23.2021.05.28.01.13.03
+ by smtp.gmail.com with ESMTPSA id z18sm3846594pfc.23.2021.05.28.01.13.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 May 2021 01:13:08 -0700 (PDT)
+ Fri, 28 May 2021 01:13:13 -0700 (PDT)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: sre@kernel.org, matthias.bgg@gmail.com, matti.vaittinen@fi.rohmeurope.com
 Cc: broonie@kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
@@ -75,16 +76,16 @@ Cc: broonie@kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  rdunlap@infradead.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com,
  shufan_lee@richtek.com, cy_huang@richtek.com, benjamin.chao@mediatek.com
-Subject: [PATCH v5 0/3] power: supply: mt6360_charger: add MT6360 charger
- support
-Date: Fri, 28 May 2021 16:12:57 +0800
-Message-Id: <20210528081300.64759-1-gene.chen.richtek@gmail.com>
+Subject: [PATCH v5 1/3] lib: add linear range get selector within
+Date: Fri, 28 May 2021 16:12:58 +0800
+Message-Id: <20210528081300.64759-2-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210528081300.64759-1-gene.chen.richtek@gmail.com>
+References: <20210528081300.64759-1-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210528_011309_710464_548DBF7F 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210528_011314_588407_2CB307AA 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,40 +102,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch series add MT6360 Charger support contains driver and binding
-document
+From: Gene Chen <gene_chen@richtek.com>
 
-Gene Chen (3)
- lib: add linear range get selector within
- dt-bindings: power: Add bindings document for Charger support on MT6360 PMIC
- power: supply: mt6360_charger: add MT6360 charger support
+Add linear range get selector within for choose closest selector
+between minimum and maximum selector.
 
- Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml |   48 
- drivers/power/supply/Kconfig                                       |   11 
- drivers/power/supply/Makefile                                      |    1 
- drivers/power/supply/mt6360_charger.c                              |  856 ++++++++++
- include/linux/linear_range.h                                       |    2 
- lib/linear_ranges.c                                                |   31 
- 6 files changed, 949 insertions(+)
+Signed-off-by: Gene Chen <gene_chen@richtek.com>
+---
+ include/linux/linear_range.h |  2 ++
+ lib/linear_ranges.c          | 31 +++++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+)
 
-changelogs between v1 & v2
- - Add binding property with unit and custom name prefix
- - Remove extcon device, redundant brackets and interrupts
- - Fix power supply prop "charger type"
-
-changelogs between v2 & v3
- - Add register selector to value mapping
-
-changelogs between v3 & v4
- - move pdata vinovp to mt6360_chg_info
- - remove unuse sysfs attribute
- - refactor debug log and warning
- - add power supply prop input voltage limit
-
-changelogs between v4 & v5
- - add linear range selector mapping
- - use linear range to map charger setting
-
+diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
+index 17b5943727d5..fd3d0b358f22 100644
+--- a/include/linux/linear_range.h
++++ b/include/linux/linear_range.h
+@@ -41,6 +41,8 @@ int linear_range_get_selector_low(const struct linear_range *r,
+ int linear_range_get_selector_high(const struct linear_range *r,
+ 				   unsigned int val, unsigned int *selector,
+ 				   bool *found);
++void linear_range_get_selector_within(const struct linear_range *r,
++				      unsigned int val, unsigned int *selector);
+ int linear_range_get_selector_low_array(const struct linear_range *r,
+ 					int ranges, unsigned int val,
+ 					unsigned int *selector, bool *found);
+diff --git a/lib/linear_ranges.c b/lib/linear_ranges.c
+index ced5c15d3f04..a1a7dfa881de 100644
+--- a/lib/linear_ranges.c
++++ b/lib/linear_ranges.c
+@@ -241,5 +241,36 @@ int linear_range_get_selector_high(const struct linear_range *r,
+ }
+ EXPORT_SYMBOL_GPL(linear_range_get_selector_high);
+ 
++/**
++ * linear_range_get_selector_within - return linear range selector for value
++ * @r:		pointer to linear range where selector is looked from
++ * @val:	value for which the selector is searched
++ * @selector:	address where found selector value is updated
++ *
++ * Return selector for which range value is closest match for given
++ * input value. Value is matching if it is equal or lower than given
++ * value. But return maximum selector if given value is higher than
++ * maximum value.
++ */
++void linear_range_get_selector_within(const struct linear_range *r,
++				      unsigned int val, unsigned int *selector)
++{
++	if (r->min > val) {
++		*selector = r->min_sel;
++		return;
++	}
++
++	if (linear_range_get_max_value(r) < val) {
++		*selector = r->max_sel;
++		return;
++	}
++
++	if (r->step == 0)
++		*selector = r->min_sel;
++	else
++		*selector = (val - r->min) / r->step + r->min_sel;
++}
++EXPORT_SYMBOL_GPL(linear_range_get_selector_within);
++
+ MODULE_DESCRIPTION("linear-ranges helper");
+ MODULE_LICENSE("GPL");
+-- 
+2.25.1
 
 
 _______________________________________________
