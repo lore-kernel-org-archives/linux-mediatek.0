@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C9ACC4708D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:11:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C53EC4708C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:12:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4DC6C611CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:11:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4DC6C611CD
+	by mail.kernel.org (Postfix) with ESMTPS id EBC59613D4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 28 May 2021 06:12:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBC59613D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6m7pkbR8PYgtwvLySUlHoWhWeke3s+5wHvZ6pVbUEqc=; b=RyRKYZ9S3Xqv3O
-	p3vhbAuy/MuXWHe1tSnMnph8Ub4S9R6IsrbpPRGjW0aQoJGi/99bTwFU7Frl3U9CzJQXxuTdZM5bo
-	95San2pLixsfeFJoC2Megb6vBKojgsDqTtFN5o3QBxZ9J4IiZzubHnln5/FpaYlAo7+szPmNxaB5I
-	xZPQSoxNY1BAOWrNaPvJYJd9B1sRtYDCPG3fVnnUoVvlTabzW27xxJkrP6Zj6ob5VjuxuTrFNkClO
-	NJvFXD9Bcjcl66RFI9I9LAsHAVGjJwkdBOKkw6wU0ffvBa6t5aE2jO76phjt5TOxN2x/jg1aowZVd
-	q96NkkUqBh+SVko8YR8Q==;
+	List-Owner; bh=7CUldb/SYjYgQjmgthgoeuDuvagAQZyI6v4WAWrLeZs=; b=PLbMzjEmSqydXW
+	/jBYyzfdYZWNjLnPlxqM2gqPV1sfbXqz8VdJ5e/hJ9U47xo8VJb54M0qLk+FnHRDddCFekq2gTLJK
+	cZvcam6UfcuOkFiiiEnxgOFXT1RiF9r3GjXgdaHa8fxuTjftuVonSgte5/oU0x5nhkWjSXEYGRjGP
+	R+torgDsLGj82aaCvSr3T/1LhV5KbbHezkuGyOFtR8FaMO/u2YvJ3bUBB7sx1Nu03ECj3h9xMjkVZ
+	D4rcPbqskybQtarBJ4v7eG6YDOaYumoQ+Mv0ancajrR1XAVkE9hFEd7siniIT18FXqRawJePrGMkf
+	NAzo60ZyrrsgW/Q0l/5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lmVif-00CUD9-JH; Fri, 28 May 2021 06:11:41 +0000
+	id 1lmVj0-00CUOu-4m; Fri, 28 May 2021 06:12:02 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lmViE-00CTzi-G1; Fri, 28 May 2021 06:11:15 +0000
-X-UUID: a087ff86e4ba4607a1b27bc7bb8c3084-20210527
+ id 1lmViF-00CTzi-Nz; Fri, 28 May 2021 06:11:17 +0000
+X-UUID: c05c6b7b44a4415f831e249a5bf968d4-20210527
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NM6ZuqDcCfoMGMVsCu8e1gm6FWKPQr1EgAmCHBcSEtg=; 
- b=cD6lpo9g0XtINuJj4VD/bV50fy5DbE4mEMuoAPI630h1jdGS97EOe5Vwz32aXnp7XU3vWo5rUdBTopSW5EOlmcqBmaRZ2E3Ajt9mdeHZn9HHNk/CMmGHaFJwOds12rjKjojAGnS0+jpM2d4SB/MJhHzHSulkqsR25w19yJEH8BQ=;
-X-UUID: a087ff86e4ba4607a1b27bc7bb8c3084-20210527
+ bh=QPnfK6G7D2hUUfv2h3/zel56Cz29LKQriYvO/EN4IKI=; 
+ b=bf0qxOzZRw/zF8TvbfZ2Qjyjcya/z1nkUMnKxH1/nX8Pm6qYA/t8K/FNvDbUHeM8Sw4Hd7dJYBIT0uVdv2XdSiFoUUn9OCRM4lubB5/TNrBVafLSU6DyHn0E/1+Ukcb2ojeYz2QkBNkTRSV0N2JWGYY8mYIqTxwVJQ5SMrD32rM=;
+X-UUID: c05c6b7b44a4415f831e249a5bf968d4-20210527
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2047946552; Thu, 27 May 2021 23:11:07 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 2000793830; Thu, 27 May 2021 23:11:07 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 27 May 2021 23:11:07 -0700
+ 15.0.1497.2; Thu, 27 May 2021 23:11:06 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 28 May 2021 14:11:05 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 28 May 2021 14:11:04 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 28 May 2021 14:11:04 +0800
+ Transport; Fri, 28 May 2021 14:11:03 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 3/5] usb: mtu3: dump a status register of IPPC
-Date: Fri, 28 May 2021 14:10:58 +0800
-Message-ID: <1622182260-23767-3-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/5] usb: mtu3: remove repeated setting of speed
+Date: Fri, 28 May 2021 14:10:57 +0800
+Message-ID: <1622182260-23767-2-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1622182260-23767-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1622182260-23767-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210527_231114_586224_FAE52B4A 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210527_231115_815056_AE8D14D2 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,25 +88,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a SSUSB_IP_PW_STS1 register to show ip sleep status
+mtu3_gadget_start() will set speed, no need set it again in
+mtu3_gadget_set_speed(), just save the desired speed.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3_debugfs.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/usb/mtu3/mtu3.h        | 1 -
+ drivers/usb/mtu3/mtu3_core.c   | 2 +-
+ drivers/usb/mtu3/mtu3_gadget.c | 2 +-
+ 3 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
-index 7537bfd651af..d27de647c86a 100644
---- a/drivers/usb/mtu3/mtu3_debugfs.c
-+++ b/drivers/usb/mtu3/mtu3_debugfs.c
-@@ -30,6 +30,7 @@ static const struct debugfs_reg32 mtu3_ippc_regs[] = {
- 	dump_register(SSUSB_IP_PW_CTRL1),
- 	dump_register(SSUSB_IP_PW_CTRL2),
- 	dump_register(SSUSB_IP_PW_CTRL3),
-+	dump_register(SSUSB_IP_PW_STS1),
- 	dump_register(SSUSB_OTG_STS),
- 	dump_register(SSUSB_IP_XHCI_CAP),
- 	dump_register(SSUSB_IP_DEV_CAP),
+diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+index a8a7ee11f7b7..531b9c78d7c3 100644
+--- a/drivers/usb/mtu3/mtu3.h
++++ b/drivers/usb/mtu3/mtu3.h
+@@ -425,7 +425,6 @@ void mtu3_ep_stall_set(struct mtu3_ep *mep, bool set);
+ void mtu3_start(struct mtu3 *mtu);
+ void mtu3_stop(struct mtu3 *mtu);
+ void mtu3_dev_on_off(struct mtu3 *mtu, int is_on);
+-void mtu3_set_speed(struct mtu3 *mtu, enum usb_device_speed speed);
+ 
+ int mtu3_gadget_setup(struct mtu3 *mtu);
+ void mtu3_gadget_cleanup(struct mtu3 *mtu);
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index 2ef528f39ba3..6b5da98de648 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -207,7 +207,7 @@ static void mtu3_intr_enable(struct mtu3 *mtu)
+ 	mtu3_writel(mbase, U3D_DEV_LINK_INTR_ENABLE, SSUSB_DEV_SPEED_CHG_INTR);
+ }
+ 
+-void mtu3_set_speed(struct mtu3 *mtu, enum usb_device_speed speed)
++static void mtu3_set_speed(struct mtu3 *mtu, enum usb_device_speed speed)
+ {
+ 	void __iomem *mbase = mtu->mac_base;
+ 
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index 38f17d66d5bc..5e21ba05ebf0 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -577,7 +577,7 @@ mtu3_gadget_set_speed(struct usb_gadget *g, enum usb_device_speed speed)
+ 	dev_dbg(mtu->dev, "%s %s\n", __func__, usb_speed_string(speed));
+ 
+ 	spin_lock_irqsave(&mtu->lock, flags);
+-	mtu3_set_speed(mtu, speed);
++	mtu->speed = speed;
+ 	spin_unlock_irqrestore(&mtu->lock, flags);
+ }
+ 
 -- 
 2.18.0
 _______________________________________________
