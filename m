@@ -2,82 +2,87 @@ Return-Path: <SRS0=FJ4T=K2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A8B64C47082
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 17:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DDD2C47080
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 21:36:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BC27601FA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 17:01:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BC27601FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D6D3261005
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 21:36:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6D3261005
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b5Icelwjcov5ycNjMrbEJHI5p1kf3Q6VlkhFLjw7en4=; b=cBbjIhgpTy+PIj
-	8VuWvdYBm8zU9lhrRPmMI0x8NwwfqEYkVzxkxbhhUjUQrzkEi+nk7kxKMpMrq5m/6V7x8zdB1alKp
-	MrCCvBbXJP0kLIhT952ew0rIWYY9p5dQQDREzGslorTVomtDtjUjAe4YvS12rSLYQQI1BDC9OkB+t
-	mTHD+a2FtDoQtxKFJPvExvzojTyu4JPQ40Mn1d15wWU6qtx/vS50eGEgXOJ2sTL8ruvsZUD0MM3Qd
-	yI0QOQ8WI/tYIynPICGZBuXcA27FsDRGEIW+TlCWzN1KSn/YhComL2plDZwMaB6ByMIY36HGZXpWh
-	FuYRG1uAfk66ud6UJMaw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dgnSh79hCmF0CbYpn2fYW7Bdiy+BxDQ2YhvXb7GoBnI=; b=khhF0sB32TvpMq
+	cq/neKKPManB8uE20Wbh0sLpmwXc6BDZ5JtgXTtIPnzghWAhtucT1KKoPvm1QevBKjaSmdlQBl+DQ
+	WloGRY6LLtFruPvsnS8F2uYgXpVp7N1zasULYr38zKy941a0Ppfa2GNwwfMfW5dSM/6r7U/y4nrvu
+	iLWhGF5LGy90ZuS4qIQWGbukak1nD8VGaSwE/BAlzFiafICGJX8qnbFcVc5NWNi1h3va7kg7B0UVA
+	1Nz2mLu31Sd131pkVlrBaJxCaMkLuWx5lW3R8hbfGkwuPi63Snu33FVSbn/ggKQzLJk6Xs8F4BHUJ
+	jxdylknL8gv+y6wFeeNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnlIE-00Cv0A-8Y; Mon, 31 May 2021 17:01:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lnpaN-00DUsl-7O; Mon, 31 May 2021 21:36:35 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnlIB-00CuzZ-Gq
- for linux-mediatek@lists.infradead.org; Mon, 31 May 2021 17:01:33 +0000
-X-UUID: 9038f91077bc45b2a2f6f8cd918ab3b8-20210531
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=EwpM8H/IPflCkPycDbF0tzYtKSC8bkjd2oWLhJX5LJs=; 
- b=LCm9Djrbkq7hUZNDNlgHK81/itHgx/3kJ+JLrL6BUFQp3BuX/0FeMT+EJ/fSvF3cz74vo5IrodHYKu7FYEqWqq3ptrs1S04J6VgQfi8grujgafvP46l4M6X5X1HWa6oJQIU0vFe6Y7n2ZD8PL8y7kMh470AE7cb9TP48QxQDNGU=;
-X-UUID: 9038f91077bc45b2a2f6f8cd918ab3b8-20210531
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 461698853; Mon, 31 May 2021 10:01:27 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 31 May 2021 10:01:26 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Jun 2021 01:01:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Jun 2021 01:01:24 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
- <jemele@google.com>, <yenlinlai@google.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH v2] mt76: mt7921: enable random mac address during sched_scan
-Date: Tue, 1 Jun 2021 01:01:22 +0800
-Message-ID: <28147493241281fa1d272a93428fe470118a5f81.1622480119.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lnpaA-00DUqj-Ax; Mon, 31 May 2021 21:36:23 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id z3so13481979oib.5;
+ Mon, 31 May 2021 14:36:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=aMtcDguE8YDTale07cSMPpefpj+DlHJ0KoYhVMD5L80=;
+ b=M0OsHNKzHvX9kahydNMpioIAmig3QZQ41zfG2b3MLBL2wE4hv7Pdd/3WQ96Flu//Tp
+ S3VrjLJRnqbSIyrJO11g8c9Xaa4f2rd1nwqjygUGDD1+mb3awXrm6or5RhlITFsxRg6V
+ PH2mqGNt40KoKrMgBzfdAAathNHw+G9CtjgAKSPSCx8E/ipevWOhbk2CSv7zOcIN1bAw
+ g7LihQUfhAX3tTb3beU/UCltrrMsOm6aXLXxSWcKqah2KvzFF8Bk7kNzhN/rXGHyAqAE
+ 6g5J5oAyN3XC/tUCO0Ki+wDVC0qLWGjIYMM3+WLyQYG1i6j/tPU84RKUzu4FUUjbX7Hq
+ aE6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=aMtcDguE8YDTale07cSMPpefpj+DlHJ0KoYhVMD5L80=;
+ b=Lo8vbbLWjEx01LfRWdR/LMZxIyhrhYHvrzk+qkrToc7E0JKhPlcsfs97DqWYd0eeyM
+ 4IokftI9eliLPS3CNNII+OYb2w/JmzPQ12eZZcQH38RmV+gTZ015UlTMcWCFekumk3lX
+ ouTLEn6SrQFdk2SE766JFaxzCY8n7QJijJBbrK00jMn6+NhIqcjXRfwPNPgIx8NP/xqR
+ RXnNVgJiIAFVXM3VKzpY3wX+HgSk2sSd9oJlsRCFMk5h6BigL9hpPbj+hYvEVWIpyKP0
+ 316JSX9xMetuIaWYj6HVjiUMp49PNeGIjxjKeX8xZufK2MJONzbZRfdAGGjQylw/Cdqo
+ 5Ezg==
+X-Gm-Message-State: AOAM533tzwktE9PSQHNSQb9nZKMKRtb6e2YYdApfw01/vaVxswAkL7LE
+ IhYj9fhQfNXK7jq49BEPvErF6Ns7Dz8/7uupJUo=
+X-Google-Smtp-Source: ABdhPJyoTQpB2iTv+37/sgEJHnO47tYP0raUCEPiRUXGrrgiJZx7g6Di6Q1zvS3z9SJ69+luGSrsExAS0m0Avm4IpqI=
+X-Received: by 2002:aca:4b09:: with SMTP id y9mr673633oia.39.1622496979005;
+ Mon, 31 May 2021 14:36:19 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210531043502.2702645-1-hsinyi@chromium.org>
+ <20210531043502.2702645-2-hsinyi@chromium.org>
+In-Reply-To: <20210531043502.2702645-2-hsinyi@chromium.org>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Mon, 31 May 2021 23:36:07 +0200
+Message-ID: <CAFqH_53nNca8VG=09djYseJBWWg5j=YFTfPjxJL5w-aTyBmCng@mail.gmail.com>
+Subject: Re: [PATCH 2/3] soc: mtk-pm-domains: do not register smi node as
+ syscon
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+ chun-jie.chen@mediatek.corp-partner.google.com, 
+ Yong Wu <yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210531_100131_595716_72D43440 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20210531_143622_405437_A8B0F403 
+X-CRM114-Status: GOOD (  25.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,79 +99,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hi Hsin-Yi,
 
-Enable src address randomization during scheduled scanning
+(again without html, sorry for the noise)
 
-Co-developed-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
-change since v2: update contributor info
----
- .../net/wireless/mediatek/mt76/mt76_connac_mcu.c   | 14 ++++++++------
- .../net/wireless/mediatek/mt76/mt76_connac_mcu.h   |  4 +++-
- drivers/net/wireless/mediatek/mt76/mt7921/init.c   |  3 ++-
- 3 files changed, 13 insertions(+), 8 deletions(-)
+Thank you for the patch.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 73359defa176..b155e7b8d89d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1515,14 +1515,16 @@ int mt76_connac_mcu_sched_scan_req(struct mt76_phy *phy,
- 	req->version = 1;
- 	req->seq_num = mvif->scan_seq_num | ext_phy << 7;
- 
--	if (is_mt7663(phy->dev) &&
--	    (sreq->flags & NL80211_SCAN_FLAG_RANDOM_ADDR)) {
--		get_random_mask_addr(req->mt7663.random_mac, sreq->mac_addr,
--				     sreq->mac_addr_mask);
-+	if (sreq->flags & NL80211_SCAN_FLAG_RANDOM_ADDR) {
-+		u8 *addr = is_mt7663(phy->dev) ? req->mt7663.random_mac
-+					       : req->mt7921.random_mac;
-+
- 		req->scan_func = 1;
--	} else if (is_mt7921(phy->dev)) {
--		req->mt7921.bss_idx = mvif->idx;
-+		get_random_mask_addr(addr, sreq->mac_addr,
-+				     sreq->mac_addr_mask);
- 	}
-+	if (is_mt7921(phy->dev))
-+		req->mt7921.bss_idx = mvif->idx;
- 
- 	req->ssids_num = sreq->n_ssids;
- 	for (i = 0; i < req->ssids_num; i++) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index d64b8058b744..3076417ead5f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -779,7 +779,9 @@ struct mt76_connac_sched_scan_req {
- 		} mt7663;
- 		struct {
- 			u8 bss_idx;
--			u8 pad2[63];
-+			u8 pad2[19];
-+			u8 random_mac[ETH_ALEN];
-+			u8 pad3[38];
- 		} mt7921;
- 	};
- } __packed;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 59da29032645..19ce9ca72542 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -76,7 +76,8 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
- 	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
- 	wiphy->reg_notifier = mt7921_regd_notifier;
- 
--	wiphy->features |= NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR;
-+	wiphy->features |= NL80211_FEATURE_SCHED_SCAN_RANDOM_MAC_ADDR |
-+			   NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR;
- 	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_SET_SCAN_DWELL);
- 
- 	ieee80211_hw_set(hw, SINGLE_SCAN_ON_ALL_BANDS);
--- 
-2.18.0
+Missatge de Hsin-Yi Wang <hsinyi@chromium.org> del dia dl., 31 de maig
+2021 a les 6:35:
+>
+> Mediatek requires mmsys clocks to be unprepared during suspend,
+> otherwise system has chances to hang.
+>
+> syscon_regmap_lookup_by_phandle_optional() will attach and prepare the
+> first clock in smi node, leading to additional prepare to the clock
+> which is not balanced with the prepare/unprepare pair in resume/suspend
+> callbacks.
+>
+> If a power domain node requests an smi node and the smi node's first
+> clock is an mmsys clock, it will results in an unstabke suspend resume.
+
+Typo s/unstabke/unstable/
+
+I think it would be nice to have a Fixes tag for that patch. So can be
+picked for the stable kernel more easily.
+
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+
+I have a nit below but the patch looks good to me. So
+
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
+> ---
+>  drivers/soc/mediatek/mtk-pm-domains.c | 12 ++++++++----
+>  1 file changed, 8 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+> index 536d8c64b2b4..a9ba71eee4bb 100644
+> --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> @@ -296,7 +296,7 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>  {
+>         const struct scpsys_domain_data *domain_data;
+>         struct scpsys_domain *pd;
+> -       struct device_node *root_node = scpsys->dev->of_node;
+> +       struct device_node *root_node = scpsys->dev->of_node, *smi_node;
+
+nit: Personal preference, but I'd prefer to add the smi_node in a new
+line, so it's really clear that the only thing you are doing here is
+adding a new variable.
+
+>         struct property *prop;
+>         const char *clk_name;
+>         int i, ret, num_clks;
+> @@ -352,9 +352,13 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
+>         if (IS_ERR(pd->infracfg))
+>                 return ERR_CAST(pd->infracfg);
+>
+> -       pd->smi = syscon_regmap_lookup_by_phandle_optional(node, "mediatek,smi");
+> -       if (IS_ERR(pd->smi))
+> -               return ERR_CAST(pd->smi);
+> +       smi_node = of_parse_phandle(node, "mediatek,smi", 0);
+> +       if (smi_node) {
+> +               pd->smi = device_node_to_regmap(smi_node);
+> +               of_node_put(smi_node);
+> +               if (IS_ERR(pd->smi))
+> +                       return ERR_CAST(pd->smi);
+> +       }
+>
+>         num_clks = of_clk_get_parent_count(node);
+>         if (num_clks > 0) {
+> --
+> 2.32.0.rc0.204.g9fa02ecfa5-goog
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
