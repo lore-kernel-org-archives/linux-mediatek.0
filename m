@@ -2,42 +2,42 @@ Return-Path: <SRS0=FJ4T=K2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B90A9C47093
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9067CC47093
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4519E61019
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4519E61019
+	by mail.kernel.org (Postfix) with ESMTPS id 454E861278
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 454E861278
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SbfFICydXvEvmxbTUGCWA9HtCApA8fxlh06nDHlxsmQ=; b=rNke2pFDLs5Fio
-	GXg9+r+s7B5SbWME0BnN8Y/UJf89fWzeasRwscjFzi6s0J9vBN7qndP/kHTI32xEzWaxjWN+WCJUm
-	EJdxFNH64TstesaH2Ix0GhLqQ44ns9PP3SkDtdvU3gFES1Cye4Ki+gx5LNzsclItMrT4+dkAqzkJx
-	eSA0DNsZhNdgE1Yq2jEHZMYzajiYptGrPmWEXK1rIVVesK4cjQl+HvH+jA2rs+FX039DV7bvmvnsz
-	rcXpgWbhnmAw8dXJdK3d899rRO/TuYfoTdWrExvpup7A02vX3AouO3rz8Wc1sxqIEWvg+PE/F8Hy1
-	sSPUBw8zP8FpWANwuAyw==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Hcx7JLL2ruOEkAN2xbdta9ghfcvm1oQzySTypdhW0gw=; b=I/j5DoN2Dhl3E0
+	Hk88l+95QQREr5kUgGG5SK+/hIohbipYdh8Mqs2sVVm+QdNV5jhEYU+6NRnBXdWm2UF45I6zP7MEP
+	uFSEuWiD+SVG5eAnKPeJP4ykKvO3qJGuH77lYtEscwE4M77wSof9+W1M+FLCgMEZne8lPGQUOjbhc
+	OJa2zk/EzOnh30l6OBqAUGrE+MXHzyvqjsFlrhpn+1F63TxYK9TlCXZfvOcLcIphumQ6eUaNZbTBG
+	SLDu3ojEzjCpUEeibX6m4LZ//E5hSKCscJirHVfFkPjH78XW9VH3YT+TlDW4nqXX2lBtZPf/uMcJe
+	La69PumxLOpnx9DORTQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnX6G-00ARP1-87; Mon, 31 May 2021 01:52:16 +0000
+	id 1lnX6R-00ARRo-G9; Mon, 31 May 2021 01:52:27 +0000
 Received: from mail-m17639.qiye.163.com ([59.111.176.39])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnX5r-00ARNE-47; Mon, 31 May 2021 01:51:53 +0000
+ id 1lnX5r-00ARND-6x; Mon, 31 May 2021 01:51:54 +0000
 Received: from vivo-HP-ProDesk-680-G4-PCI-MT.vivo.xyz (unknown [58.251.74.232])
- by mail-m17639.qiye.163.com (Hmail) with ESMTPA id 825FF380176;
- Mon, 31 May 2021 09:51:38 +0800 (CST)
+ by mail-m17639.qiye.163.com (Hmail) with ESMTPA id 53DF8380186;
+ Mon, 31 May 2021 09:51:41 +0800 (CST)
 From: Wang Qing <wangqing@vivo.com>
 To: Wim Van Sebroeck <wim@linux-watchdog.org>,
  Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
@@ -46,21 +46,22 @@ To: Wim Van Sebroeck <wim@linux-watchdog.org>,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: Wang Qing <wangqing@vivo.com>
 Subject: [PATCH V9, RESEND,
- 0/2] watchdog: mtk: support pre-timeout when the bark irq is available
-Date: Mon, 31 May 2021 09:51:33 +0800
-Message-Id: <1622425895-32111-1-git-send-email-wangqing@vivo.com>
+ 1/2] watchdog: mtk: support pre-timeout when the bark irq is available
+Date: Mon, 31 May 2021 09:51:34 +0800
+Message-Id: <1622425895-32111-2-git-send-email-wangqing@vivo.com>
 X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1622425895-32111-1-git-send-email-wangqing@vivo.com>
+References: <1622425895-32111-1-git-send-email-wangqing@vivo.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZGU0YQ1ZMSR1JTR1CTUtMSU9VEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
+ oVCBIfWUFZQh0eH1YeGR5LGEJMQk1OGUxVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
  hKTFVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NiI6ARw5LD8PLxMfFg4RPz5L
- TUswC09VSlVKTUlJT0lOQ0JCSUtKVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
- SU5KVUxPVUlISVlXWQgBWUFKTEtDNwY+
-X-HM-Tid: 0a79c01e8f7ed994kuws825ff380176
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OT46KBw6Kj8VQhMsLA0ZPzlO
+ ExRPCk5VSlVKTUlJT0lOQktJSk5JVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
+ SU5KVUxPVUlISVlXWQgBWUFNSkpKNwY+
+X-HM-Tid: 0a79c01e9a71d994kuws53df8380186
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210530_185151_370121_03B9620E 
-X-CRM114-Status: UNSURE (   6.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210530_185151_641999_693D8C0A 
+X-CRM114-Status: GOOD (  19.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,16 +80,161 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Use the bark interrupt as the pretimeout notifier if available.
+
+When the watchdog timer expires in dual mode, an interrupt will be
+triggered first, then the timing restarts. The reset signal will be
+initiated when the timer expires again.
+
 The pretimeout notification shall occur at timeout-sec/2.
 
-Wang Qing (2):
-  watchdog: mtk: support pre-timeout when the bark irq is available
-  doc: mtk-wdt: support pre-timeout when the bark irq is available
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Signed-off-by: Wang Qing <wangqing@vivo.com>
+---
+ drivers/watchdog/mtk_wdt.c | 77 +++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 72 insertions(+), 5 deletions(-)
 
- .../devicetree/bindings/watchdog/mtk-wdt.txt       |  5 ++
- drivers/watchdog/mtk_wdt.c                         | 77 ++++++++++++++++++++--
- 2 files changed, 77 insertions(+), 5 deletions(-)
-
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 97ca993..7bb0774
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -25,9 +25,10 @@
+ #include <linux/reset-controller.h>
+ #include <linux/types.h>
+ #include <linux/watchdog.h>
++#include <linux/interrupt.h>
+ 
+ #define WDT_MAX_TIMEOUT		31
+-#define WDT_MIN_TIMEOUT		1
++#define WDT_MIN_TIMEOUT		2
+ #define WDT_LENGTH_TIMEOUT(n)	((n) << 5)
+ 
+ #define WDT_LENGTH		0x04
+@@ -187,12 +188,19 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
+ 	u32 reg;
+ 
+ 	wdt_dev->timeout = timeout;
++	/*
++	 * In dual mode, irq will be triggered at timeout / 2
++	 * the real timeout occurs at timeout
++	 */
++	if (wdt_dev->pretimeout)
++		wdt_dev->pretimeout = timeout / 2;
+ 
+ 	/*
+ 	 * One bit is the value of 512 ticks
+ 	 * The clock has 32 KHz
+ 	 */
+-	reg = WDT_LENGTH_TIMEOUT(timeout << 6) | WDT_LENGTH_KEY;
++	reg = WDT_LENGTH_TIMEOUT((timeout - wdt_dev->pretimeout) << 6)
++			| WDT_LENGTH_KEY;
+ 	iowrite32(reg, wdt_base + WDT_LENGTH);
+ 
+ 	mtk_wdt_ping(wdt_dev);
+@@ -239,13 +247,48 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+ 		return ret;
+ 
+ 	reg = ioread32(wdt_base + WDT_MODE);
+-	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
++	if (wdt_dev->pretimeout)
++		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
++	else
++		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
+ 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
+ 	iowrite32(reg, wdt_base + WDT_MODE);
+ 
+ 	return 0;
+ }
+ 
++static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
++				  unsigned int timeout)
++{
++	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
++	void __iomem *wdt_base = mtk_wdt->wdt_base;
++	u32 reg = ioread32(wdt_base + WDT_MODE);
++
++	if (timeout && !wdd->pretimeout) {
++		wdd->pretimeout = wdd->timeout / 2;
++		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
++	} else if (!timeout && wdd->pretimeout) {
++		wdd->pretimeout = 0;
++		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
++	} else {
++		return 0;
++	}
++
++	reg |= WDT_MODE_KEY;
++	iowrite32(reg, wdt_base + WDT_MODE);
++
++	return mtk_wdt_set_timeout(wdd, wdd->timeout);
++}
++
++static irqreturn_t mtk_wdt_isr(int irq, void *arg)
++{
++	struct watchdog_device *wdd = arg;
++
++	watchdog_notify_pretimeout(wdd);
++
++	return IRQ_HANDLED;
++}
++
+ static const struct watchdog_info mtk_wdt_info = {
+ 	.identity	= DRV_NAME,
+ 	.options	= WDIOF_SETTIMEOUT |
+@@ -253,12 +296,21 @@ static const struct watchdog_info mtk_wdt_info = {
+ 			  WDIOF_MAGICCLOSE,
+ };
+ 
++static const struct watchdog_info mtk_wdt_pt_info = {
++	.identity	= DRV_NAME,
++	.options	= WDIOF_SETTIMEOUT |
++			  WDIOF_PRETIMEOUT |
++			  WDIOF_KEEPALIVEPING |
++			  WDIOF_MAGICCLOSE,
++};
++
+ static const struct watchdog_ops mtk_wdt_ops = {
+ 	.owner		= THIS_MODULE,
+ 	.start		= mtk_wdt_start,
+ 	.stop		= mtk_wdt_stop,
+ 	.ping		= mtk_wdt_ping,
+ 	.set_timeout	= mtk_wdt_set_timeout,
++	.set_pretimeout	= mtk_wdt_set_pretimeout,
+ 	.restart	= mtk_wdt_restart,
+ };
+ 
+@@ -267,7 +319,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_wdt_dev *mtk_wdt;
+ 	const struct mtk_wdt_data *wdt_data;
+-	int err;
++	int err, irq;
+ 
+ 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
+ 	if (!mtk_wdt)
+@@ -279,7 +331,22 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 	if (IS_ERR(mtk_wdt->wdt_base))
+ 		return PTR_ERR(mtk_wdt->wdt_base);
+ 
+-	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
++	irq = platform_get_irq(pdev, 0);
++	if (irq > 0) {
++		err = devm_request_irq(&pdev->dev, irq, mtk_wdt_isr, 0, "wdt_bark",
++				       &mtk_wdt->wdt_dev);
++		if (err)
++			return err;
++
++		mtk_wdt->wdt_dev.info = &mtk_wdt_pt_info;
++		mtk_wdt->wdt_dev.pretimeout = WDT_MAX_TIMEOUT / 2;
++	} else {
++		if (irq == -EPROBE_DEFER)
++			return -EPROBE_DEFER;
++
++		mtk_wdt->wdt_dev.info = &mtk_wdt_info;
++	}
++
+ 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
+ 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
+ 	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = WDT_MAX_TIMEOUT * 1000;
 -- 
 2.7.4
 
