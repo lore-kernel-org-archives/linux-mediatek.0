@@ -7,82 +7,70 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F0E3C4708F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 04:35:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39C02C47082
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 05:13:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 49FD2611EE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 04:35:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49FD2611EE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id BC71861108
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 05:13:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC71861108
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=toshiba.co.jp
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ENVLeGdvZW1WNH46LykUD3+5gHG6brUznhHw1nx4dek=; b=n1UYAd1raG6Ti2
-	9ZTQidsh4EdZfbAvdppeZT93WaLaW+AyNZW5bof08mOYCGG7hKKgtNDrCX4pULmd1ujIT+GVTbbQQ
-	SvYouOxK2JuZ6btA2ayzp8MXC5hI/zFaUfSoqmLSj6UwdSqg4dusSW9KzwjYNbZB9J7a7TTQwiC7T
-	FgHTmotagUKgqMN5SZxMuEOkuS2x4zcts7tsO9A0CPQ7/dkhXHqvS8MqGkNQcXJtaRFn9KXxYKnTx
-	lJyooJgGq+PmLKNmhUDJcWepIhDBsR04H4dhTSBOMnkOGqK2BqyD3cKf4yPPsSlQynnZ13JkVchTn
-	CFCdSi78AI7LnxZQu3AQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gPrIIJs3ehJ/2Rim5qE0RHtIgpnqCOmdlO0U9UbKUOw=; b=uiyHiplIZw0oS1
+	Y40arlD/7yufeBHNLXBkZgA5MlREDoIzXFmLail2URYTZsuxuSbKMlm7Oof/TZP/r4lAobjoy/1uw
+	MP3Sklse0rab5lYEG5fyyk3m5kXkRkJ8D/g8NwyD2O+jar8xmEKAJwModSWnFB6d4K3A0Jlf/mO+A
+	YRu4P5tM1ET2Rvo6nsWzf02h4AmGzwI9VZZD+Y9TLlrfChaL/EaYg7o58TpZXuNX4y+f2wfL+Io+h
+	QsqysYQ9hxWYQPNwNWx0hdVr1psLEVjgi0VYLh3vBc1CWyzZ310W4eGSgexvgued+ylUt/YLDh2kR
+	6bgrOWZYY/yJG5RtZ50Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnZeY-00AheC-NO; Mon, 31 May 2021 04:35:50 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1lnaEX-00Anf9-6B; Mon, 31 May 2021 05:13:01 +0000
+Received: from mo-csw1516.securemx.jp ([210.130.202.155]
+ helo=mo-csw.securemx.jp)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnZdu-00AhSb-OI
- for linux-mediatek@lists.infradead.org; Mon, 31 May 2021 04:35:13 +0000
-Received: by mail-pg1-x535.google.com with SMTP id t8so1216956pgb.9
- for <linux-mediatek@lists.infradead.org>; Sun, 30 May 2021 21:35:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=wS5m2z0kdK64AV2ytOX+ndcFkQ/Q87q9VVh0RznGUCE=;
- b=ohNQUgiFv/Fr1yPgaH6iA4nF1fNcnSHZKFgxhEAFnwjZTEMCaINRq9c/T5U3EIuJaE
- 3ZNmPQWOsv0nGdzItO5F+G3bx6lLHnTVI+Fn5/VX4bVdNu7QbF+hCAXbOT2jy7Ft++jN
- IBXZsCeuCvycV5LrSpzECRpKsV4+PI8V9kk8I=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=wS5m2z0kdK64AV2ytOX+ndcFkQ/Q87q9VVh0RznGUCE=;
- b=Tz9S91NFs7D5GfXhcW+p64spRb3AdUUcLpkeWGSsRSlm3/nsKsZhRaUDKdfrBgKL8l
- 7VeYomcIhj9QlJDyjTC39ZIsdijANJ14HkqOr/kqzF08NtAxqwxS5P6nb/tm9bKo5Gnx
- 1MeBw+fwlG/a6SbzpTCK4Sj+fdWAh6lZO85BbWtNYa7i4E7a+qRJLTFjphZWlpSxN3TM
- otyJEny0BfFX7hNhn3Ns0Tp5hVKLAizDO27dnTAnTqibAbQsvHDNBEvvXa2AercPAa1E
- RYfE5qj1GzstjYFQ0k7ydPMk186zC2YaFxye27YOqfYivwjL5V/nLG++7vyi2SiQvBl2
- gL1A==
-X-Gm-Message-State: AOAM530MLYvMoVKmjjW7iobuVYWJgSrD8I2C4zOkj0dQ9YRgdDMo73Ry
- Vbxfocf0oqL6FYiZeRn0L45YWA==
-X-Google-Smtp-Source: ABdhPJzOiquBBIDE4EvMprzcLUHuBhRfUOPzESEydjqntsXKkuvRcoC9aC3UWo9/twaTctBSY393ig==
-X-Received: by 2002:a63:7d4:: with SMTP id 203mr7910265pgh.348.1622435709911; 
- Sun, 30 May 2021 21:35:09 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:c929:9e58:1e99:bfb5])
- by smtp.gmail.com with ESMTPSA id a9sm9366811pfo.69.2021.05.30.21.35.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 May 2021 21:35:09 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- chun-jie.chen@mediatek.corp-partner.google.com,
- Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH 3/3] arm64: dts: mt8183: remove syscon from smi_common node
-Date: Mon, 31 May 2021 12:35:02 +0800
-Message-Id: <20210531043502.2702645-3-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.rc0.204.g9fa02ecfa5-goog
-In-Reply-To: <20210531043502.2702645-1-hsinyi@chromium.org>
-References: <20210531043502.2702645-1-hsinyi@chromium.org>
+ id 1lnaEJ-00And7-Oe; Mon, 31 May 2021 05:12:49 +0000
+Received: by mo-csw.securemx.jp (mx-mo-csw1516) id 14V5CNfp012497;
+ Mon, 31 May 2021 14:12:23 +0900
+X-Iguazu-Qid: 34tKJKyADe5GNT5trE
+X-Iguazu-QSIG: v=2; s=0; t=1622437943; q=34tKJKyADe5GNT5trE;
+ m=2lw/G/MlYKmz8Fq4yFf0SvbqNLZ2UQr61H/jynzRH28=
+Received: from imx2-a.toshiba.co.jp (imx2-a.toshiba.co.jp [106.186.93.35])
+ by relay.securemx.jp (mx-mr1513) id 14V5CKBE005985
+ (version=TLSv1.2 cipher=AES128-GCM-SHA256 bits=128 verify=NOT);
+ Mon, 31 May 2021 14:12:21 +0900
+Received: from enc01.toshiba.co.jp (enc01.toshiba.co.jp [106.186.93.100])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by imx2-a.toshiba.co.jp (Postfix) with ESMTPS id 6EFB01000B6;
+ Mon, 31 May 2021 14:12:20 +0900 (JST)
+Received: from hop001.toshiba.co.jp ([133.199.164.63])
+ by enc01.toshiba.co.jp  with ESMTP id 14V5CJkV024472;
+ Mon, 31 May 2021 14:12:19 +0900
+From: Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Takashi Iwai <tiwai@suse.com>, Argus Lin <argus.lin@mediatek.com>
+Cc: Jaroslav Kysela <perex@perex.cz>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Colin Ian King <colin.king@canonical.com>, alsa-devel@alsa-project.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
+Subject: [PATCH] ASoC: mediatek: mt6359: convert to use module_platform_driver
+Date: Mon, 31 May 2021 14:12:03 +0900
+X-TSB-HOP: ON
+Message-Id: <20210531051203.228567-1-nobuhiro1.iwamatsu@toshiba.co.jp>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210530_213510_810931_2ABF185C 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20210530_221248_035293_4F29219C 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,36 +87,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We don't need to register smi_common as syscon. Also add required
-property power-domains for this node.
+Simplify the code by using module_platform_driver macro for
+mt6359-accdet.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ sound/soc/codecs/mt6359-accdet.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c5e822b6b77a..e074c0d402ff 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1263,13 +1263,14 @@ larb0: larb@14017000 {
- 		};
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index 4222aed013f106..b2354a613b1587 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -1057,22 +1057,7 @@ static struct platform_driver mt6359_accdet_driver = {
+ 	.probe = mt6359_accdet_probe,
+ };
  
- 		smi_common: smi@14019000 {
--			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			compatible = "mediatek,mt8183-smi-common";
- 			reg = <0 0x14019000 0 0x1000>;
- 			clocks = <&mmsys CLK_MM_SMI_COMMON>,
- 				 <&mmsys CLK_MM_SMI_COMMON>,
- 				 <&mmsys CLK_MM_GALS_COMM0>,
- 				 <&mmsys CLK_MM_GALS_COMM1>;
- 			clock-names = "apb", "smi", "gals0", "gals1";
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 		};
+-static int __init mt6359_accdet_driver_init(void)
+-{
+-	int ret = 0;
+-
+-	ret = platform_driver_register(&mt6359_accdet_driver);
+-	if (ret)
+-		return -ENODEV;
+-	return 0;
+-}
+-
+-static void __exit mt6359_accdet_driver_exit(void)
+-{
+-	platform_driver_unregister(&mt6359_accdet_driver);
+-}
+-module_init(mt6359_accdet_driver_init);
+-module_exit(mt6359_accdet_driver_exit);
++module_platform_driver(mt6359_accdet_driver)
  
- 		imgsys: syscon@15020000 {
+ /* Module information */
+ MODULE_DESCRIPTION("MT6359 ALSA SoC codec jack driver");
 -- 
-2.32.0.rc0.204.g9fa02ecfa5-goog
+2.30.0
 
 
 _______________________________________________
