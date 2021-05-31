@@ -2,66 +2,94 @@ Return-Path: <SRS0=FJ4T=K2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9067CC47093
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7BFFBC47093
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 03:23:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 454E861278
-	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 01:52:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 454E861278
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0208C61186
+	for <linux-mediatek@archiver.kernel.org>; Mon, 31 May 2021 03:23:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0208C61186
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hcx7JLL2ruOEkAN2xbdta9ghfcvm1oQzySTypdhW0gw=; b=I/j5DoN2Dhl3E0
-	Hk88l+95QQREr5kUgGG5SK+/hIohbipYdh8Mqs2sVVm+QdNV5jhEYU+6NRnBXdWm2UF45I6zP7MEP
-	uFSEuWiD+SVG5eAnKPeJP4ykKvO3qJGuH77lYtEscwE4M77wSof9+W1M+FLCgMEZne8lPGQUOjbhc
-	OJa2zk/EzOnh30l6OBqAUGrE+MXHzyvqjsFlrhpn+1F63TxYK9TlCXZfvOcLcIphumQ6eUaNZbTBG
-	SLDu3ojEzjCpUEeibX6m4LZ//E5hSKCscJirHVfFkPjH78XW9VH3YT+TlDW4nqXX2lBtZPf/uMcJe
-	La69PumxLOpnx9DORTQQ==;
+	List-Owner; bh=J3IGaCcKOVel4Am9Sau2lgS08KdYI+oovB5raPJNfvI=; b=1CUdwtSzsnueoL
+	EofBzoFscRar77yWmEQxZaiDyrIqPzfJuyZ7QVvWxO+81FEDzKSxMcEx+A5AeSC66kV62jkota593
+	lKwpQSBJltSfVnGJtL+M4TMeuDJbvGfi0KnYugV2H7a5KIHMAihZ1Mq7ikil4b9B1vUh9fnmhBMjT
+	f/Ms5XE3d1RWj7H+wVaa2XNkLXatxuoYOZfqUFFZwA9Hj1l+87G9R1w77hLVmh9MAZq9AdYnARXQR
+	qiXviskLDKjtYwHaiqW/bOci6Dql2hK+MQOTmaQwFQoSJB9Vsv1cX6z3IvivscpzW/NkaMCAxg+Rk
+	2ynvOf/RableEEtlxC8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnX6R-00ARRo-G9; Mon, 31 May 2021 01:52:27 +0000
-Received: from mail-m17639.qiye.163.com ([59.111.176.39])
+	id 1lnYWL-00AZyq-V3; Mon, 31 May 2021 03:23:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnX5r-00ARND-6x; Mon, 31 May 2021 01:51:54 +0000
-Received: from vivo-HP-ProDesk-680-G4-PCI-MT.vivo.xyz (unknown [58.251.74.232])
- by mail-m17639.qiye.163.com (Hmail) with ESMTPA id 53DF8380186;
- Mon, 31 May 2021 09:51:41 +0800 (CST)
-From: Wang Qing <wangqing@vivo.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Wang Qing <wangqing@vivo.com>
-Subject: [PATCH V9, RESEND,
- 1/2] watchdog: mtk: support pre-timeout when the bark irq is available
-Date: Mon, 31 May 2021 09:51:34 +0800
-Message-Id: <1622425895-32111-2-git-send-email-wangqing@vivo.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1622425895-32111-1-git-send-email-wangqing@vivo.com>
-References: <1622425895-32111-1-git-send-email-wangqing@vivo.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgYFAkeWUFZS1VLWVdZKFlBSE83V1ktWUFJV1kPCR
- oVCBIfWUFZQh0eH1YeGR5LGEJMQk1OGUxVEwETFhoSFyQUDg9ZV1kWGg8SFR0UWUFZT0tIVUpKS0
- hKTFVLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OT46KBw6Kj8VQhMsLA0ZPzlO
- ExRPCk5VSlVKTUlJT0lOQktJSk5JVTMWGhIXVQwaFRwKEhUcOw0SDRRVGBQWRVlXWRILWUFZTkNV
- SU5KVUxPVUlISVlXWQgBWUFNSkpKNwY+
-X-HM-Tid: 0a79c01e9a71d994kuws53df8380186
+ id 1lnYW8-00AZxO-Mo; Mon, 31 May 2021 03:23:06 +0000
+X-UUID: 8ab77a1a93774c7082aa70b3ec67983d-20210530
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=f67WQhmb+df3I9kPJMGHkjRiDrgZqd9/FKeodOjihUg=; 
+ b=pUVekmk9GrMcMLiICeDukQeS1+zgPrlk24rn4e8tHd4iF788zOisCWe5Z+yTt859onvO2bZoLDFMStx5C9lZ9O34wZSw1k1fBdLWhrgzryhDcua/edfmKmFuwxIbmLl3l5pAO1vqkKh7YVC15FW2TLe6h25Rpkvn3vcscimTowM=;
+X-UUID: 8ab77a1a93774c7082aa70b3ec67983d-20210530
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <andrew-sh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1992632562; Sun, 30 May 2021 20:22:59 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 30 May 2021 20:22:57 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 31 May 2021 11:22:56 +0800
+Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 31 May 2021 11:22:56 +0800
+Message-ID: <1622431376.14423.5.camel@mtksdaap41>
+Subject: Re: [PATCH V8 1/8] PM / devfreq: Add cpu based scaling support to
+ passive_governor
+From: andrew-sh.cheng <andrew-sh.cheng@mediatek.com>
+To: Chanwoo Choi <cw00.choi@samsung.com>, Hsin-Yi Wang <hsinyi@google.com>
+CC: MyungJoo Ham <myungjoo.ham@samsung.com>, Kyungmin Park
+ <kyungmin.park@samsung.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland
+ <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Rafael J.
+ Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>,
+ Nishanth Menon <nm@ti.com>, Stephen Boyd <sboyd@kernel.org>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ <linux-pm@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>, Sibi Sankar
+ <sibis@codeaurora.org>
+Date: Mon, 31 May 2021 11:22:56 +0800
+In-Reply-To: <dd58c29a-35b1-b853-bc4a-3225b21b082a@samsung.com>
+References: <1616499241-4906-1-git-send-email-andrew-sh.cheng@mediatek.com>
+ <CGME20210323113411epcas1p3b4367563007ca91c30201d7fc225bb67@epcas1p3.samsung.com>
+ <1616499241-4906-2-git-send-email-andrew-sh.cheng@mediatek.com>
+ <233a3bd6-7ab1-5da2-9184-a745eb253d86@samsung.com>
+ <1617177820.15067.1.camel@mtksdaap41>
+ <2ae8604d-0da6-4243-1b92-81b3917d7d48@samsung.com>
+ <cad52436-b291-05bf-236f-7b7cb1fdbbff@samsung.com>
+ <1617195800.18432.3.camel@mtksdaap41>
+ <fbb6c44b-eb77-14ce-9175-3f06030e6e0c@samsung.com>
+ <cfdd3973-e4a7-8c09-8a7e-57118a7a3b9b@samsung.com>
+ <1621995727.29827.1.camel@mtksdaap41>
+ <dd58c29a-35b1-b853-bc4a-3225b21b082a@samsung.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210530_185151_641999_693D8C0A 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20210530_202304_780565_BC340A25 
+X-CRM114-Status: GOOD (  41.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,172 +101,156 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the bark interrupt as the pretimeout notifier if available.
+On Wed, 2021-05-26 at 12:08 +0900, Chanwoo Choi wrote:
+> Hi,
+> On 5/26/21 11:22 AM, andrew-sh.cheng wrote:
+> > On Thu, 2021-04-08 at 11:47 +0900, Chanwoo Choi wrote:
+> >> On 4/1/21 9:16 AM, Chanwoo Choi wrote:
+> >>> On 3/31/21 10:03 PM, andrew-sh.cheng wrote:
+> >>>> On Wed, 2021-03-31 at 17:35 +0900, Chanwoo Choi wrote:
+> >>>>> On 3/31/21 5:27 PM, Chanwoo Choi wrote:
+> >>>>>> Hi,
+> >>>>>>
+> >>>>>> On 3/31/21 5:03 PM, andrew-sh.cheng wrote:
+> >>>>>>> On Thu, 2021-03-25 at 17:14 +0900, Chanwoo Choi wrote:
+> >>>>>>>> Hi,
+> >>>>>>>>
+> >>>>>>>> You are missing to add these patches to linux-pm mailing list.
+> >>>>>>>> Need to send them to linu-pm ML.
+> >>>>>>>>
+> >>>>>>>> Also, before received this series, I tried to clean-up these patches
+> >>>>>>>> on testing branch[1]. So that I add my comment with my clean-up case.
+> >>>>>>>> [1] https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!zIrzeDp9vPnm1_SDzVPuzqdHn3zWie9DnfBXaA-j9-CSrVc6aR9_rJQQiw81_CgAPh9XRRs$ 
+> >>>>>>>>
+> >>>>>>>> And 'Saravana Kannan <skannan@codeaurora.org>' is wrong email address.
+> >>>>>>>> Please update the email or drop this email.
+> >>>>>>>
+> >>>>>>> Hi Chanwoo,
+> >>>>>>>
+> >>>>>>> Thank you for the advices.
+> >>>>>>> I will resend patch v9 (add to linux-pm ML), remove this patch, and note
+> >>>>>>> that my patch set base on
+> >>>>>>> https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJ8WFhg_g$ 
+> >>>>>>
+> >>>>>> I has not yet test this patch[1] on devfreq-testing-passive-gov branch.
+> >>>>>> So that if possible, I'd like you to test your patches with this patch[1] 
+> >>>>>> and then if there is no problem, could you send the next patches with patch[1]?
+> >>>>>>
+> >>>>>> [1]https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/commit/?h=devfreq-testing-passive-gov&id=39c80d11a8f42dd63ecea1e0df595a0ceb83b454__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJR2cQqZs$ 
+> >>>>>
+> >>>>>
+> >>>>> Sorry for the confusion. I make the devfreq-testing-passive-gov[1]
+> >>>>> branch based on latest devfreq-next branch.
+> >>>>> [1] https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-testing-passive-gov__;!!CTRNKA9wMg0ARbw!yUlsuxrL5PcbF7o6A9DlCfvoA6w8V8VXKjYIybYyiJg3D0HM-lI2xRuxLUV6b3UJ8WFhg_g$ 
+> >>>>>
+> >>>>> First of all, if possible, I want to test them[1] with your patches in this series.
+> >>>>> And then if there are no any problem, please let me know. After confirmed from you,
+> >>>>> I'll send the patches of devfreq-testing-passive-gov[1] branch.
+> >>>>> How about that?
+> >>>>>
+> >>>> Hi Chanwoo~
+> >>>>
+> >>>> We will use this on Google Chrome project.
+> >>>> Google Hsin-Yi has test your patch + my patch set v8 [2~8]
+> >>>>
+> >>>>     make sure cci devfreqs runs with cpufreq.
+> >>>>     suspend resume
+> >>>>     speedometer2 benchmark
+> >>>> It is okay.
+> >>>>
+> >>>> Please send the patches of devfreq-testing-passive-gov[1] branch.
+> >>>>
+> >>>> I will send patch v9 base on yours latter.
+> >>>
+> >>> Thanks for your test. I'll send the patches today.
+> >>
+> >> I'm sorry for delay because when I tested the patches
+> >> for devfreq parent type on Odroid-xu3, there are some problem
+> >> related to lazy linking of OPP. So I'm trying to analyze them.
+> >> Unfortunately, we need to postpone these patches to next linux
+> >> version.
+> >>
+> > Hi Chanwoo Choi~
+> > 
+> > It is said that you are busy on another task recently.
+> > May I know your plan on this patch?
+> > Thank you.
+> 
+> Sorry for late work. I have a question.
+> When I tested exynos-bus.c with adding the 'required-opp' property
+> on odroid-xu3 board. I got some fail about 
+> 
+> When calling _set_required_opps(), always _set_required_opp() returns
+> -EBUSY error because of following lazy linking case[1].
+> 
+> [1] https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v5.13-rc3/source/drivers/opp/core.c*L896__;Iw!!CTRNKA9wMg0ARbw!3eNxwDZRy-Ev5BHGxT-BxCz4qrNy0NZohQuBGW36krkwOkl_WX8yBmxlqSk9hxp_kxspMJI$ 
+> 
+> /* required-opps not fully initialized yet */
+> if (lazy_linking_pending(opp_table))
+> 	return -EBUSY;  
+> 
+> 
+> For calling dev_pm_opp_of_add_table(), lazy_link_required_opp_table() function
+> will be called. But, there is constraint[2]. If is_genpd of opp_table is false,
+> driver/opp/of.c cannot resolve the lazy linking issue.
+> 
+> [2]  https://urldefense.com/v3/__https://elixir.bootlin.com/linux/v5.13-rc3/source/drivers/opp/of.c*L386__;Iw!!CTRNKA9wMg0ARbw!3eNxwDZRy-Ev5BHGxT-BxCz4qrNy0NZohQuBGW36krkwOkl_WX8yBmxlqSk9hxp_QFUVY9E$ 
+> 
+> /* Link required OPPs for all OPPs of the newly added OPP table */
+> static void lazy_link_required_opp_table(struct opp_table *new_table)
+> {
+> 	struct opp_table *opp_table, *temp, **required_opp_tables;
+> 	struct device_node *required_np, *opp_np, *required_table_np;
+> 	struct dev_pm_opp *opp;
+> 	int i, ret;
+> 
+> 	/*
+> 	 * We only support genpd's OPPs in the "required-opps" for now,
+> 	 * as we don't know much about other cases.
+> 	 */
+> 	if (!new_table->is_genpd)
+> 		return;
+> 
+> Even if this case, there are no problem on your test case?
+> 
 
-When the watchdog timer expires in dual mode, an interrupt will be
-triggered first, then the timing restarts. The reset signal will be
-initiated when the timer expires again.
+Hi Chanwoo~
+Sorry for late reply.
+Yes, we meet similar issue.
+Google member Hsin-Yi had helped deal with this issue on Chrome project.
 
-The pretimeout notification shall occur at timeout-sec/2.
+Patch segment:
+@ /drivers/opp/of.c
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-Signed-off-by: Wang Qing <wangqing@vivo.com>
----
- drivers/watchdog/mtk_wdt.c | 77 +++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 72 insertions(+), 5 deletions(-)
+/* Link required OPPs for all OPPs of the newly added OPP table */
+static void lazy_link_required_opp_table(struct opp_table *new_table)
+{
+	struct opp_table *opp_table, *temp, **required_opp_tables;
+	struct device_node *required_np, *opp_np, *required_table_np;
+	struct dev_pm_opp *opp;
+	int i, ret;
 
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 97ca993..7bb0774
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -25,9 +25,10 @@
- #include <linux/reset-controller.h>
- #include <linux/types.h>
- #include <linux/watchdog.h>
-+#include <linux/interrupt.h>
- 
- #define WDT_MAX_TIMEOUT		31
--#define WDT_MIN_TIMEOUT		1
-+#define WDT_MIN_TIMEOUT		2
- #define WDT_LENGTH_TIMEOUT(n)	((n) << 5)
- 
- #define WDT_LENGTH		0x04
-@@ -187,12 +188,19 @@ static int mtk_wdt_set_timeout(struct watchdog_device *wdt_dev,
- 	u32 reg;
- 
- 	wdt_dev->timeout = timeout;
 +	/*
-+	 * In dual mode, irq will be triggered at timeout / 2
-+	 * the real timeout occurs at timeout
++	 * We only support genpd's OPPs in the "required-opps" for now,
++	 * as we don't know much about other cases.
 +	 */
-+	if (wdt_dev->pretimeout)
-+		wdt_dev->pretimeout = timeout / 2;
- 
- 	/*
- 	 * One bit is the value of 512 ticks
- 	 * The clock has 32 KHz
- 	 */
--	reg = WDT_LENGTH_TIMEOUT(timeout << 6) | WDT_LENGTH_KEY;
-+	reg = WDT_LENGTH_TIMEOUT((timeout - wdt_dev->pretimeout) << 6)
-+			| WDT_LENGTH_KEY;
- 	iowrite32(reg, wdt_base + WDT_LENGTH);
- 
- 	mtk_wdt_ping(wdt_dev);
-@@ -239,13 +247,48 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
- 		return ret;
- 
- 	reg = ioread32(wdt_base + WDT_MODE);
--	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	if (wdt_dev->pretimeout)
-+		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	else
-+		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
- 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
- 	iowrite32(reg, wdt_base + WDT_MODE);
- 
- 	return 0;
- }
- 
-+static int mtk_wdt_set_pretimeout(struct watchdog_device *wdd,
-+				  unsigned int timeout)
-+{
-+	struct mtk_wdt_dev *mtk_wdt = watchdog_get_drvdata(wdd);
-+	void __iomem *wdt_base = mtk_wdt->wdt_base;
-+	u32 reg = ioread32(wdt_base + WDT_MODE);
-+
-+	if (timeout && !wdd->pretimeout) {
-+		wdd->pretimeout = wdd->timeout / 2;
-+		reg |= (WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	} else if (!timeout && wdd->pretimeout) {
-+		wdd->pretimeout = 0;
-+		reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-+	} else {
-+		return 0;
-+	}
-+
-+	reg |= WDT_MODE_KEY;
-+	iowrite32(reg, wdt_base + WDT_MODE);
-+
-+	return mtk_wdt_set_timeout(wdd, wdd->timeout);
-+}
-+
-+static irqreturn_t mtk_wdt_isr(int irq, void *arg)
-+{
-+	struct watchdog_device *wdd = arg;
-+
-+	watchdog_notify_pretimeout(wdd);
-+
-+	return IRQ_HANDLED;
-+}
-+
- static const struct watchdog_info mtk_wdt_info = {
- 	.identity	= DRV_NAME,
- 	.options	= WDIOF_SETTIMEOUT |
-@@ -253,12 +296,21 @@ static const struct watchdog_info mtk_wdt_info = {
- 			  WDIOF_MAGICCLOSE,
- };
- 
-+static const struct watchdog_info mtk_wdt_pt_info = {
-+	.identity	= DRV_NAME,
-+	.options	= WDIOF_SETTIMEOUT |
-+			  WDIOF_PRETIMEOUT |
-+			  WDIOF_KEEPALIVEPING |
-+			  WDIOF_MAGICCLOSE,
-+};
-+
- static const struct watchdog_ops mtk_wdt_ops = {
- 	.owner		= THIS_MODULE,
- 	.start		= mtk_wdt_start,
- 	.stop		= mtk_wdt_stop,
- 	.ping		= mtk_wdt_ping,
- 	.set_timeout	= mtk_wdt_set_timeout,
-+	.set_pretimeout	= mtk_wdt_set_pretimeout,
- 	.restart	= mtk_wdt_restart,
- };
- 
-@@ -267,7 +319,7 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mtk_wdt_dev *mtk_wdt;
- 	const struct mtk_wdt_data *wdt_data;
--	int err;
-+	int err, irq;
- 
- 	mtk_wdt = devm_kzalloc(dev, sizeof(*mtk_wdt), GFP_KERNEL);
- 	if (!mtk_wdt)
-@@ -279,7 +331,22 @@ static int mtk_wdt_probe(struct platform_device *pdev)
- 	if (IS_ERR(mtk_wdt->wdt_base))
- 		return PTR_ERR(mtk_wdt->wdt_base);
- 
--	mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-+	irq = platform_get_irq(pdev, 0);
-+	if (irq > 0) {
-+		err = devm_request_irq(&pdev->dev, irq, mtk_wdt_isr, 0, "wdt_bark",
-+				       &mtk_wdt->wdt_dev);
-+		if (err)
-+			return err;
-+
-+		mtk_wdt->wdt_dev.info = &mtk_wdt_pt_info;
-+		mtk_wdt->wdt_dev.pretimeout = WDT_MAX_TIMEOUT / 2;
-+	} else {
-+		if (irq == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
-+
-+		mtk_wdt->wdt_dev.info = &mtk_wdt_info;
-+	}
-+
- 	mtk_wdt->wdt_dev.ops = &mtk_wdt_ops;
- 	mtk_wdt->wdt_dev.timeout = WDT_MAX_TIMEOUT;
- 	mtk_wdt->wdt_dev.max_hw_heartbeat_ms = WDT_MAX_TIMEOUT * 1000;
--- 
-2.7.4
++	if (!new_table->is_genpd)
++		return;
 
 
+Hsin-Yi replied this issue in the discussion list in the original lazy
+link thread:
+https://patchwork.kernel.org/project/linux-pm/patch/20190717222340.137578-4-saravanak@google.com/#23932203
+
+Loop Hsin-YI here.
+You can discuss with her if needing more detail.
+
+Thank you both.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
