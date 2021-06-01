@@ -2,79 +2,73 @@ Return-Path: <SRS0=auVy=K3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7580AC47080
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 07:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE7F0C4708F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 07:54:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31B3E60FDC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 07:11:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31B3E60FDC
+	by mail.kernel.org (Postfix) with ESMTPS id 4938E61378
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 07:54:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4938E61378
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iX/EpPhMdMm7WjI6X8PnyrOCqSgD6qBU15kBou3gqOA=; b=pfw+0vo3PzuM9m
-	bcLlTo0dveqr4uqf+uO00pJaeKyJSZ8GG0lF0mmUYloFeSzpdJ/CMRq+0/NtFgby+iFwAo1EutuOH
-	dHyZs3U5oLYV25RP9t5xJFZtYYwtRlawnSY2pOt/vUziRsfd3Fu67r9tqbThLtD0KxD7t2lrvaN2S
-	vacFvar0yg7Ol9s5CB8xWqSmcIvhD1Po/sv2PB/KxdUJZsN5bKzJoGdOIiwO0FEhuhoH/q+EyzjfL
-	LYODZwg/pby4CIa2L5AImfXUyPWRTntXiFRIlqNO0KfpRoQEU/KSM2lHvMn3uqdV0LbyV5u0gAQKq
-	lgxHstuzWwFlCUPMUG6g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gGEcRdYtKWxTYx92wbmYrgGffQPz4WXIzqA4xR3+CFk=; b=H4R+6Iu+sfzd0A
+	A/KWo29sHiLyfJqJHGoAGMXb2AnaAISxOEoBEnwVAp/b2MYrsCtTuyumjEQcnmlWbSS9UqkDKFr16
+	9mfcWeDPbo/DPaPa1Dn7rUmDbTQUHF6cKIoiXF+/mHgpwvco5tPz08ptwU2QGdGvuDY5q0ZvXF5NX
+	UmoND1YhbGgbpTv0ppc9F2nJEMHa4nxD1TdDQ+JNrC/HGgveJVOLm03JVAQKzHI0YneraL+t8YzwD
+	H00iWECAS/LEqasVh4lDIYadfNBOS8SGtBVKGGtUYcsWuTef67hwnLBnRNghbGo0emJOwyuoM6241
+	gdMCBz7N3etCV6uzhDPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnyYv-00F4jo-S4; Tue, 01 Jun 2021 07:11:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lnzEC-00FCNc-Rd; Tue, 01 Jun 2021 07:54:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnyYu-00F4i8-1A; Tue, 01 Jun 2021 07:11:41 +0000
-X-UUID: 4c7610ad450d4cb9ae30540a3d16d41f-20210601
+ id 1lnzEA-00FCMR-6L; Tue, 01 Jun 2021 07:54:19 +0000
+X-UUID: 77821edd09de4bdcbc8e0e49e9c6361d-20210601
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=cpAk/AdvD3AP+KvisOzDSM2Xix1Pz33ijv2/knc+3Lo=; 
- b=MMwbYHb2X0CAqbZftcCaJlka0fIImJL64EVKabx3l3m9ES3P1SLvs1s0xiwwkrtRwYVS127UzKCNLR65QIKG1hFk4rSwPgBCa8529Smw4ehO4LcpCaIxDHX6p8u6Tp1Yfqu2+beR6vibdFZNCTnN8YzUcH0QHkHNfqiYEcwlbUQ=;
-X-UUID: 4c7610ad450d4cb9ae30540a3d16d41f-20210601
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=fNuw7XWzSFjTycrVq75Y9XmFXoZYl/ueV8pEFlo8ABk=; 
+ b=Qu1GGqpoHwHEhqiniWww9Y3Rr5hB1D9/fjDMpZjfTKMsYb90TxB5VCzNP+PUMaM3vauov+GglwEZ7Kx70/q2+oAfv0t59xoguS6FxZ0Y1SoCc4E5TY6ScadwN1wPgEExU8xASKpOptafsMWNmewGz61EXwkqgtnRTNzYfSPSt+g=;
+X-UUID: 77821edd09de4bdcbc8e0e49e9c6361d-20210601
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <seiya.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1016122092; Tue, 01 Jun 2021 00:11:35 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1592915110; Tue, 01 Jun 2021 00:54:14 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Jun 2021 00:11:34 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Jun 2021 15:11:20 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Tue, 1 Jun 2021 00:54:12 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Jun 2021 15:54:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 1 Jun 2021 15:11:20 +0800
+ Frontend Transport; Tue, 1 Jun 2021 15:54:10 +0800
 From: Seiya Wang <seiya.wang@mediatek.com>
-To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Viresh Kumar
- <viresh.kumar@linaro.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>
-CC: Seiya Wang <seiya.wang@mediatek.com>, <linux-pm@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <srv_heupstream@mediatek.com>
-Subject: [RESEND 2/2] dt-bindings: cpufreq: update cpu type and clock name for
- MT8173 SoC
-Date: Tue, 1 Jun 2021 15:10:42 +0800
-Message-ID: <20210601071042.31349-2-seiya.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>
+Subject: [v3 1/0] Add basic node support for Mediatek MT8195 SoC 
+Date: Tue, 1 Jun 2021 15:53:49 +0800
+Message-ID: <20210601075350.31515-1-seiya.wang@mediatek.com>
 X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20210601071042.31349-1-seiya.wang@mediatek.com>
-References: <20210601071042.31349-1-seiya.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210601_001140_100982_3C5C5368 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20210601_005418_260791_0D5C8B5E 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,49 +85,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Update the cpu type of cpu2 and cpu3 since MT8173 used Cortex-a72.
+MT8195 is a SoC based on 64bit ARMv8 architecture.
+It contains 4 CA55 and 4 CA78 cores.
+MT8195 share many HW IP with MT65xx series.
+This patchset was tested on MT8195 evaluation board to shell.
 
-Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
----
- Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Based on v5.13-rc4
 
-diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-index ea4994b35207..ef68711716fb 100644
---- a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-+++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek.txt
-@@ -202,11 +202,11 @@ Example 2 (MT8173 SoC):
- 
- 	cpu2: cpu@100 {
- 		device_type = "cpu";
--		compatible = "arm,cortex-a57";
-+		compatible = "arm,cortex-a72";
- 		reg = <0x100>;
- 		enable-method = "psci";
- 		cpu-idle-states = <&CPU_SLEEP_0>;
--		clocks = <&infracfg CLK_INFRA_CA57SEL>,
-+		clocks = <&infracfg CLK_INFRA_CA72SEL>,
- 			 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 		clock-names = "cpu", "intermediate";
- 		operating-points-v2 = <&cpu_opp_table_b>;
-@@ -214,11 +214,11 @@ Example 2 (MT8173 SoC):
- 
- 	cpu3: cpu@101 {
- 		device_type = "cpu";
--		compatible = "arm,cortex-a57";
-+		compatible = "arm,cortex-a72";
- 		reg = <0x101>;
- 		enable-method = "psci";
- 		cpu-idle-states = <&CPU_SLEEP_0>;
--		clocks = <&infracfg CLK_INFRA_CA57SEL>,
-+		clocks = <&infracfg CLK_INFRA_CA72SEL>,
- 			 <&apmixedsys CLK_APMIXED_MAINPLL>;
- 		clock-names = "cpu", "intermediate";
- 		operating-points-v2 = <&cpu_opp_table_b>;
--- 
+Changes in v3
+Add spi and pinctrl nodes
+
+Changes in v2
+Fix make dt_binding_check warning in mediatek,ufs-phy.yaml
+Update usb phy and ufs phy nodes in mt8195.dtsi
+
+Seiya Wang (1):
+  arm64: dts: Add Mediatek SoC MT8195 and evaluation board dts and
+    Makefile
+
+ arch/arm64/boot/dts/mediatek/Makefile       |   1 +
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts |  29 ++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 561 ++++++++++++++++++++++++++++
+ 3 files changed, 591 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+
+--
 2.14.1
 _______________________________________________
 Linux-mediatek mailing list
