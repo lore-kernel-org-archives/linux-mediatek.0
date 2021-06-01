@@ -2,87 +2,67 @@ Return-Path: <SRS0=auVy=K3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D11F4C4708F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 04:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E357FC47080
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 05:20:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 983546127C
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 04:00:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 983546127C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 70DFC60FF1
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 05:20:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70DFC60FF1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5Oen5Q4YEeGb26mXCccZ4P/JOrgEJ8I8oDNXMSvVxhY=; b=vx5/U83MLdjUtK
-	7SglJEJiapwZar7On6gEtLSDNiogkVN8oQt/GTFgTNE/LqTQh5FTKcGnr61gsufL6zXK0rqQV2DX8
-	ms3Twv7r4VXdhFv8IAC7SApIrEf90plnt1h/LvKZtw9OKSLqvSmfOAnNE6boy0SrM8+7k4zPWjNeA
-	uVClLczP+y04EtE+j++rX5TRtBx21h0IuF0RkuEFUPvpYXlxcLx0eUuQI2s6fTZ5gv9K/U3N4hm4f
-	P8NuSbbm0CkPWUEfAbgHoWzFNXXT0UoQIqRU/rGYF2SYC9EdN+QVJYV37CX62Oya/y8mX4J6qOU0G
-	scD/RjEOY5vXcNrG4B6Q==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FqrBUQVNxvl7MeHSz6O+Ivu7RtgflVXHu2RbUIofxTE=; b=y4KyuJ6bOfiYKk
+	7/qxu5BxripH2vZbVQlR13NFpu+RG8pPsZcnjTdDPo2Fc1zDqmTgA8JJT1M+gLaxTrpajuH30eiyU
+	Q6p2yEXLAYsFS2eyHwD56iadKTsHRb+Z0ja+QHbGOcveyvIx3WnY12J+IyH7sgu5VmKSotthgB+RF
+	LRFdo8AxRSpZKyk35wmDTdEk5bni2QNYFxNC8+dsV7GVOeu6ca7kllXO3URWEbNmFM1/vjPkRyB4Q
+	d3zbLApfBvmt01jG9F90u/QxsEoGHG+4BjvjzGIQLyGeZ3s3wq64o6VNYcKpPTqaFDxa8jcFS8qak
+	XFgLBdfnRVRMl029xl8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnva3-00ESsu-Og; Tue, 01 Jun 2021 04:00:39 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1lnwp9-00EgZt-OP; Tue, 01 Jun 2021 05:20:19 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnvZp-00ESo5-E1
- for linux-mediatek@lists.infradead.org; Tue, 01 Jun 2021 04:00:26 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id
- lx17-20020a17090b4b11b029015f3b32b8dbso678773pjb.0
- for <linux-mediatek@lists.infradead.org>; Mon, 31 May 2021 21:00:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=k3CXuIHvguEKDy/ECWlq3WX2NJbLw9/l4D5j8nQaStQ=;
- b=UPTILnt9B7+RBltwKhRkE3pDiFM447zC45wGOtGp30p7Gacb2MTU7rMY3naqzhfpLz
- VH4yJnFNaFN5lr1cF4PURM4D81wWhql55YMgqGbvu9NflrxWS1MnLdwlj5TPlHefOIO4
- Yt2BOQjYlm0lzGkyu7DibJv5p+gDjuJLdvj4E=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=k3CXuIHvguEKDy/ECWlq3WX2NJbLw9/l4D5j8nQaStQ=;
- b=EniRdzDCR5ZkS5Pwb9BMoCXf4Ma/uHtQCYW4gBX8WxJTz+AAWavsE9Ure3ZTuMVNJT
- rxhUJNHhVlwnkaxTJuDzQn6fZP5hxBtOp04eGx97112i93Ie1b25noB2H6CAEyvANbQ8
- JWPlO/4F6Nc5qzcEEjGU1/mTmbbf4MZrJh20JIM/4CfQnS5p0WD0kB8vnMLCL343V+/Q
- lfiChK320WxvRrUQ6nWsr0ow60uFT9Rl3wccBMcJEKeTQJufhue/wjrbD4IGAcI6nqCF
- Utt/ShibNOVVfBbs4bo/FadAUGuTNB++QAG3OQWLvZUfghvva2Om0+y4Oqa60VTPd+Vz
- SS9g==
-X-Gm-Message-State: AOAM5311f24ibCCi0mEz3WFzqko98Hg35DQRdxefi5kCIXoAkjkD6vIH
- uJbMKwvAwkNxK88rNIUFzeZ0Fw==
-X-Google-Smtp-Source: ABdhPJxVRZNWrzNMHtMZqws3k5caqBWHpgoq/Euc0BFxsKp0hxH4Lc9Fj8WdYMvbSZCNfIab89LMoQ==
-X-Received: by 2002:a17:90a:9517:: with SMTP id
- t23mr2477148pjo.130.1622520019059; 
- Mon, 31 May 2021 21:00:19 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:5f83:3563:b780:4d82])
- by smtp.gmail.com with ESMTPSA id 191sm11866953pfx.121.2021.05.31.21.00.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 May 2021 21:00:18 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- chun-jie.chen@mediatek.corp-partner.google.com,
- Yong Wu <yong.wu@mediatek.com>
-Subject: [PATCH v2 3/3] arm64: dts: mt8183: remove syscon from smi_common node
-Date: Tue,  1 Jun 2021 12:00:14 +0800
-Message-Id: <20210601040014.2970805-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.rc0.204.g9fa02ecfa5-goog
+ id 1lnwow-00EgX3-9K; Tue, 01 Jun 2021 05:20:07 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPS id 13D6260FF1;
+ Tue,  1 Jun 2021 05:20:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1622524805;
+ bh=CzQags+F5o0/Apoy9lwYQTIaCJ4cyLY+pvrSw4+O4dE=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=JMB1npHKHWLmXIsHpQXFs461Xut8UoM+wHIoL53z1PxZklui3+L7cwU13BRauA9Xt
+ IPIHTQIsESpezW3sJosXKybpbBVFX9y5veZ7gRY+T2VMb4b6mdVfi0jX11ZFZrxuM1
+ 68YkEJx8oQZkzdXG1O1mkXa3jEaYVA0BVoOFFsy8FCwo5UUnszcPaZ+6ZRe2AS9GaQ
+ 5vmOmLB9oD2vJP7nATJ8whxefuyO5CRnBnc4Ul9raY0mkIoffxNaZjCz4Z3Xgt+bH7
+ DstluKNoqCApShnO5KJtZQxq2zmsWuOVtk42WYEN96PV9l2lHC1PXbPb+eMburBTLE
+ I6mBAg7dXxuxQ==
 MIME-Version: 1.0
+Subject: Re: [PATCH] ipv6: align code with context
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <162252480501.23898.10631295560871610587.git-patchwork-notify@kernel.org>
+Date: Tue, 01 Jun 2021 05:20:05 +0000
+References: <20210530113811.8817-1-rocco.yue@mediatek.com>
+In-Reply-To: <20210530113811.8817-1-rocco.yue@mediatek.com>
+To: Rocco Yue <rocco.yue@mediatek.com>
+Cc: davem@davemloft.net, yoshfuji@linux-ipv6.org, dsahern@kernel.org,
+ kuba@kernel.org, matthias.bgg@gmail.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ Rocco.Yue@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210531_210025_505806_D06E0EBF 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20210531_222006_370527_23448466 
+X-CRM114-Status: UNSURE (   9.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,37 +80,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-We don't need to register smi_common as syscon. Also add required
-property power-domains for this node.
+Hello:
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+This patch was applied to netdev/net-next.git (refs/heads/master):
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c5e822b6b77a..e074c0d402ff 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1263,13 +1263,14 @@ larb0: larb@14017000 {
- 		};
- 
- 		smi_common: smi@14019000 {
--			compatible = "mediatek,mt8183-smi-common", "syscon";
-+			compatible = "mediatek,mt8183-smi-common";
- 			reg = <0 0x14019000 0 0x1000>;
- 			clocks = <&mmsys CLK_MM_SMI_COMMON>,
- 				 <&mmsys CLK_MM_SMI_COMMON>,
- 				 <&mmsys CLK_MM_GALS_COMM0>,
- 				 <&mmsys CLK_MM_GALS_COMM1>;
- 			clock-names = "apb", "smi", "gals0", "gals1";
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 		};
- 
- 		imgsys: syscon@15020000 {
--- 
-2.32.0.rc0.204.g9fa02ecfa5-goog
+On Sun, 30 May 2021 19:38:11 +0800 you wrote:
+> The Tab key is used three times, causing the code block to
+> be out of alignment with the context.
+> 
+> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
+> ---
+>  net/ipv6/addrconf.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+
+Here is the summary with links:
+  - ipv6: align code with context
+    https://git.kernel.org/netdev/net-next/c/12e64b3bb9a8
+
+You are awesome, thank you!
+--
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
 _______________________________________________
