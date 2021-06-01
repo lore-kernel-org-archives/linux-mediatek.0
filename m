@@ -2,60 +2,59 @@ Return-Path: <SRS0=auVy=K3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A4B0C47080
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 02:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0D936C47082
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 02:54:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0561061186
-	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 02:54:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0561061186
+	by mail.kernel.org (Postfix) with ESMTPS id C8BB960FF0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  1 Jun 2021 02:54:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C8BB960FF0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=grOnfDN7vzRBTxa8I+c4MOGW6hgrTbiTwQGBM6ab7d4=; b=altDu4uyAkU7Ch
-	I4/yqRUrW412aCF4JBMNBmYZtJLVz154aUAjwYUdqxezPNPwTLZ6lNruA/DFFpdtGBX0nagFaVG1h
-	AhIgdYyDcTgVTGAZBfS302SbkfhvXqE4odDj0LuowTN/uFb1FnwfM+Xgx1TVjEEhACnw4AdS/4zib
-	2yM1Pm7FCkuYYxClTlPeNf4GyIR/kkgPHhG8MVJLu/nQnFjLn7LAkHMkce3UZeHpgFllic94c4Fy0
-	HESKCD8xRmWjTuWAx1tT36wZ1l/LR2qMhwKxXrkrri8uMeMxXGn783JTbQ+WESBfH4XURIOe7KRui
-	qFeVCn7EY9FrOIg8L7ug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BmqzdJlHahY17hlL1A4q/zNfj9eh6Mu6O/GVgQWHfUQ=; b=FPOf2uV3rrlmxC
+	CyypEklUz+hOjZTqKzCNrRl8bEupicQKSv7J6ifrBrloVeiNi6NKs9wfpfg91vemrXmNasQb45re5
+	mpP8pWxEYzJZP8eTWdUpuvHzeuSUA5DGrTCJl5cHuk6JjYXy5yZP9xpW2sNaP9jCNgIRsBbjr9/8d
+	ICnvFl9sQ6rLWNIuXHesBsVtiN/mj2J4TmfAZvqroUMYvm5FunJrJzO/8SfPm+hMA64dzbh8Iu2LB
+	Yp9/TEADTsjxexpNAY8G4zUaL8i7tG86OD8x2QIj07gYT6cVASbNh2zhn1cA8AuRwo4U6gpKo8JJt
+	BqlwwZVQOiOYanxpn1CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lnuY6-00EKI8-Ng; Tue, 01 Jun 2021 02:54:34 +0000
+	id 1lnuYJ-00EKKo-RZ; Tue, 01 Jun 2021 02:54:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lnuXt-00EKFp-I8; Tue, 01 Jun 2021 02:54:22 +0000
-X-UUID: 7f0d17f337f34c57a02fd586d734a4f4-20210531
+ id 1lnuXu-00EKG8-HG; Tue, 01 Jun 2021 02:54:23 +0000
+X-UUID: 2ae3d4ee359d429b8d1650affe8fd6b1-20210531
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=2ito/yfQcpRVgcldpMr5Qe1mRG2tPF6gOat2WLctyMU=; 
- b=uqNPCNs8Rr7ZOjo4zMMf2SJsGwTRs91A7xTwOtCXrDZu48I10QSpuxgXGUWefLoYcf1okpqIoOT3L0HEt78eJl/WkZu/ZIazG2adLp4FrWhFZ9FAAS/WuflZl7ABkTrDlxO16DfSIsFaijBLgNzZ/bTGIc+rLEpLxGghyPr87MM=;
-X-UUID: 7f0d17f337f34c57a02fd586d734a4f4-20210531
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ayXGvOYGeP2nQSDZBW7aM7JHp/ZcmLc2UasUkkoWRh4=; 
+ b=mUpOAzDao3gOM1Jv6IS+tkOUcRcxnnknTL7Sh4sBHWXICpYJtZ1LKdElTK86hlAwOsTPf1LOBy3aRb7JJBhFnGBdVY0tlqFIfiMcUA49JxVtuuY24BA0FgR5CCnhnoxsxUIfLqU7FkCDJABVCYOF6eXz8dpkXoAiQa9ZSQWbQdg=;
+X-UUID: 2ae3d4ee359d429b8d1650affe8fd6b1-20210531
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1057463808; Mon, 31 May 2021 19:54:19 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ with ESMTP id 2121236088; Mon, 31 May 2021 19:54:19 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 31 May 2021 19:44:21 -0700
+ 15.0.1497.2; Mon, 31 May 2021 19:44:16 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Jun 2021 10:44:11 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 1 Jun 2021 10:44:15 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 1 Jun 2021 10:44:10 +0800
+ Transport; Tue, 1 Jun 2021 10:44:14 +0800
 From: Jianjun Wang <jianjun.wang@mediatek.com>
 To: Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
  Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi
@@ -65,16 +64,17 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  Jianjun Wang <jianjun.wang@mediatek.com>, Randy Wu <Randy.Wu@mediatek.com>,
  <youlin.pei@mediatek.com>
-Subject: [PATCH 0/2] PCI: mediatek-gen3: Add controller support for MT8195
-Date: Tue, 1 Jun 2021 10:44:06 +0800
-Message-ID: <20210601024408.24485-1-jianjun.wang@mediatek.com>
+Subject: [PATCH 2/2] PCI: mediatek-gen3: Add controller support for MT8195
+Date: Tue, 1 Jun 2021 10:44:08 +0800
+Message-ID: <20210601024408.24485-3-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210601024408.24485-1-jianjun.wang@mediatek.com>
+References: <20210601024408.24485-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210531_195421_629588_3968954F 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210531_195422_595462_C9EFDF6E 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,17 +91,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-These series patches modify pcie-mediatek-gen3.c and dt-bindings compatible
-string to support the PCIe controller for MT8195.
+MT8195 is an ARM platform SoC which has the same PCIe IP with MT8192.
 
-Jianjun Wang (2):
-  dt-bindings: PCI: mediatek-gen3: Add support for MT8195
-  PCI: mediatek-gen3: Add controller support for MT8195
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 1 +
+ 1 file changed, 1 insertion(+)
 
- Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 +++-
- drivers/pci/controller/pcie-mediatek-gen3.c                   | 1 +
- 2 files changed, 4 insertions(+), 1 deletion(-)
-
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 3c5b97716d40..c12e2450d0e1 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -1010,6 +1010,7 @@ static const struct dev_pm_ops mtk_pcie_pm_ops = {
+ 
+ static const struct of_device_id mtk_pcie_of_match[] = {
+ 	{ .compatible = "mediatek,mt8192-pcie" },
++	{ .compatible = "mediatek,mt8195-pcie" },
+ 	{},
+ };
+ 
 -- 
 2.18.0
 _______________________________________________
