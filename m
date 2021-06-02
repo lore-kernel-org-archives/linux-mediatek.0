@@ -2,81 +2,75 @@ Return-Path: <SRS0=eP1B=K4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA735C47083
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 05:35:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52178C4708F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 06:00:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7BD9C61360
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 05:35:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7BD9C61360
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 476FE61376
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 05:59:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 476FE61376
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WkmzxvULARB2rKVV9TcKHtPy/HhQzKGTqZVtG2Xyl3w=; b=XwSQyLWF/8qR+l
-	YwmBYN83fH4/F/bvl/FfjUHSvFmzRZK0p+oaNUt0vA2X9ze7EFl4mTne7axn2SiTigH6l1fjOEnB6
-	TDcxB9c/9MnjeGy0xLIyyVMt98JF0cHO+1/TrcC7PWkKamvLWLx2aNOIPzXCjmZ8t9Qkkl4fZ6Uvs
-	jNlTU9kWyX2EMcF2tJlemKKT9bK4cSy2NjDxiw3O1gsheybkKLlYIITj5zX2Sj9pYkka9dydq8LV1
-	otxZt/Rw3b94go9oevNfH3gqYVlqw1fFJW9UzszlT6AThbEJ7qYeOIFbqLQ9eFBUj15ZEccfq6AIq
-	RQfuofrQM6FW710Unyeg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=6kgBmCcM0C+geI2hC4HGjKkiZ0sPoKWVksYmOWgfAWY=; b=j/4w+M7fOoCWC1C/3Seydqvqom
+	mzU4RrssnOzqVPmf5sHhQADy+xtZDizv+vAUpRj+/CK0JG2chysxhCVwTojGNuvfJTkwH+6xCKDdA
+	NLY3Mo0f9f/8V4Ykwg89XTehKw0PI3kzdO0kk+7H5jt/j96jGlljfbyCqiL5v0p83KthwwcnucCEg
+	6qJGDXx1/xSP3urAUFXKXN1Zf9hYILJVbHTYr0a40bX68ZydlJ10Z8FTz1E7KcmMzVrNbeyKeKnx1
+	JLpoJGda+rVpm3i2pMeRQHWSyAf2D8nGh5geBneb8UPdQ+QTHx6kcRG709wgf7jH5RQUbu7S16jqE
+	Zw1M6XPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loJX9-001wZ3-QU; Wed, 02 Jun 2021 05:35:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1loJuw-001y4o-Ii; Wed, 02 Jun 2021 05:59:50 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loJX7-001wYU-Aw
- for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 05:35:15 +0000
-X-UUID: 2c02221060da4e4895b2fc6a52313098-20210601
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=LaW84YYu+ZNh6FhtLURGc5zIMT7fLdr7E6G/WHgykFU=; 
- b=cbjPcBwJAJ9vyZ199nQj/OT/8L96xBK94xYB8MgcJTeyd5uv8HWwEmSRa7p+5i/Xd+uk+O6ROAMhN8qz6/0vBbNTtsnrpo9c/Z8+co9+6bz39g/IbY6PiVmlhXs0iboIfJ4dF8qCIb7DmD6Oj6bwyOiG71A21Lpeax9fFdoqFWk=;
-X-UUID: 2c02221060da4e4895b2fc6a52313098-20210601
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 928177928; Tue, 01 Jun 2021 22:35:11 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 1 Jun 2021 22:25:09 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 2 Jun 2021 13:25:07 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 2 Jun 2021 13:25:07 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
- <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 3/3] mt76: mt7921: fix sta_state incorrect implementation
-Date: Wed, 2 Jun 2021 13:24:53 +0800
-Message-ID: <129b40e5ff277efc0a1b0ff9b8c3dfb8a44ad7fe.1622610746.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <db74f1c3acd2a2729066810ad72b656681a30693.1622610746.git.objelf@gmail.com>
+ id 1loJuu-001y3x-GF
+ for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 05:59:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=lN8/WHahPS6Oiuz3dBMVM7+Nsxw5i+AV4hZOC9FGpq4=; b=R26yzoy+oQb5oBSs57uUL8LDQq
+ 5sZIFKYWdxFE2xroyQfisxed/IzDiw25CTCS+F38p0AisNn8yCXtSViAGMQ87kn5aecbJcc3swjcM
+ EGjyxXGkgTp4B0nc5Wiqfh75Cq86y7eDWWIojhdvhxjUhzl/+VvaY9p3CnvMRudlcFPA=;
+Received: from p54ae9ff2.dip0.t-ipconnect.de ([84.174.159.242] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1loJum-0002lU-S7; Wed, 02 Jun 2021 07:59:40 +0200
+Subject: Re: [PATCH v2 1/3] mt76: connac: add mt76_connac_mcu_update_sta_cmd
+ support
+To: sean.wang@mediatek.com, lorenzo.bianconi@redhat.com
+Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ Eric.Liang@mediatek.com, Stella.Chang@mediatek.com, jemele@google.com,
+ yenlinlai@google.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 References: <db74f1c3acd2a2729066810ad72b656681a30693.1622610746.git.objelf@gmail.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <6ddea8d1-551d-5a58-267c-506d22cc932f@nbd.name>
+Date: Wed, 2 Jun 2021 07:59:40 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <db74f1c3acd2a2729066810ad72b656681a30693.1622610746.git.objelf@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210601_223513_417028_F221BFA3 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20210601_225948_787475_30803B50 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,144 +87,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-When .sta_state is implemented, mac80211 assumes that the station entry is
-usable after the NOTEXIST->NONE transition.
+On 2021-06-02 07:24, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
+> 
+> Add mt76_connac_mcu_update_sta_cmd support that is the prerequisite patch
+> for we are able to update the station record with the current state the
+> station has into the offload firmware at runtime.
+> 
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+> v1->v2: no change
+> ---
+>  .../net/wireless/mediatek/mt76/mt7615/mcu.c   |  6 ++--
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 32 ++++++++++++++-----
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 16 ++++++++--
+>  .../net/wireless/mediatek/mt76/mt7921/main.c  |  8 +++--
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  3 +-
+>  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +-
+>  6 files changed, 50 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> index d64b8058b744..6666507f43ed 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+> @@ -902,6 +902,14 @@ struct mt76_connac_suspend_tlv {
+>  	u8 pad[5];
+>  } __packed;
+>  
+> + /* 0: state 1 - unauthenticated & unassociated
+> +  * 1: state 2 - authenticated & unassociated
+> +  * 2: state 3 - authenticated & associated
+> +  */
+> +#define MT76_STA_INFO_STATE_1	0
+> +#define MT76_STA_INFO_STATE_2	1
+> +#define MT76_STA_INFO_STATE_3	2
+Please turn this into an enum:
 
-So we should create the sta entry as early as possible in order that
-mac80211 pass assoc/auth frames to mt76 with the newly created sta entry,
-and add .sta_assoc to mt76 core to refresh the sta entry again when sta is
-being associated.
+enum mt76_sta_info_state {
+	MT76_STA_INFO_STATE_NONE,
+	MT76_STA_INFO_STATE_AUTH,
+	MT76_STA_INFO_STATE_ASSOC
+};
 
-Fixes: 8aa5a9b7361c ("mt76: mt7921: enable deep sleep at runtime")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v1->v2: Put back the careless change not belonged to the patch to keep
-	mt7921_mcu_sta_add for BC entry and mt76_connac_mcu_uni_add_bss
-	on the association.
----
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 53 ++++++++-----------
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  2 +
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  1 +
- 3 files changed, 26 insertions(+), 30 deletions(-)
+The _1 _2 _3 suffixes are not that readable and add extra confusion by
+not matching the numeric values.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index ece0cecf049d..ae07367a091a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -610,15 +610,11 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	if (ret)
- 		return ret;
- 
--	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
--		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
--					    true);
--
- 	mt7921_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
- 	ret = mt7921_mcu_sta_add(dev, sta, vif, true,
--				 MT76_STA_INFO_STATE_3);
-+				 MT76_STA_INFO_STATE_1);
- 	if (ret)
- 		return ret;
- 
-@@ -627,6 +623,27 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	return 0;
- }
- 
-+void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-+			  struct ieee80211_sta *sta)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	struct mt7921_sta *msta = (struct mt7921_sta *)sta->drv_priv;
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+
-+	mt76_connac_pm_wake(&dev->mphy, &dev->pm);
-+
-+	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
-+		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
-+					    true);
-+
-+	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
-+			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+
-+	mt7921_mcu_sta_update(dev, sta, vif, MT76_STA_INFO_STATE_3);
-+
-+	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
-+}
-+
- void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta)
- {
-@@ -781,22 +798,6 @@ mt7921_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	return ret;
- }
- 
--static int
--mt7921_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
--	       struct ieee80211_sta *sta)
--{
--	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NOTEXIST,
--			      IEEE80211_STA_NONE);
--}
--
--static int
--mt7921_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
--		  struct ieee80211_sta *sta)
--{
--	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NONE,
--			      IEEE80211_STA_NOTEXIST);
--}
--
- static int mt7921_sta_state(struct ieee80211_hw *hw,
- 			    struct ieee80211_vif *vif,
- 			    struct ieee80211_sta *sta,
-@@ -811,15 +812,7 @@ static int mt7921_sta_state(struct ieee80211_hw *hw,
- 		mt7921_mutex_release(dev);
- 	}
- 
--	if (old_state == IEEE80211_STA_AUTH &&
--	    new_state == IEEE80211_STA_ASSOC) {
--		return mt7921_sta_add(hw, vif, sta);
--	} else if (old_state == IEEE80211_STA_ASSOC &&
--		   new_state == IEEE80211_STA_AUTH) {
--		return mt7921_sta_remove(hw, vif, sta);
--	}
--
--	return 0;
-+	return mt76_sta_state(hw, vif, sta, old_state, new_state);
- }
- 
- static int
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 13d0f472b043..e97a74341ccd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -264,6 +264,8 @@ int mt7921_mcu_sta_add(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 		       struct ieee80211_vif *vif, bool enable, u8 state);
- int mt7921_mcu_sta_update(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 			  struct ieee80211_vif *vif, u8 state);
-+void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-+			  struct ieee80211_sta *sta);
- int mt7921_mcu_set_chan_info(struct mt7921_phy *phy, int cmd);
- int mt7921_mcu_set_tx(struct mt7921_dev *dev, struct ieee80211_vif *vif);
- int mt7921_mcu_set_eeprom(struct mt7921_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 13263f50dc00..27906b2cd912 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -106,6 +106,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 		.rx_poll_complete = mt7921_rx_poll_complete,
- 		.sta_ps = mt7921_sta_ps,
- 		.sta_add = mt7921_mac_sta_add,
-+		.sta_assoc = mt7921_mac_sta_assoc,
- 		.sta_remove = mt7921_mac_sta_remove,
- 		.update_survey = mt7921_update_channel,
- 	};
--- 
-2.25.1
+- Felix
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
