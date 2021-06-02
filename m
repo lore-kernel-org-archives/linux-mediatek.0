@@ -9,88 +9,94 @@ X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E3AFC47083
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 11:55:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 465F3C4708F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:01:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F95D61263
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 11:55:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F95D61263
+	by mail.kernel.org (Postfix) with ESMTPS id 1A1A6613B1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:01:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A1A6613B1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=3tw07JAQTcj36lltzCg4nKd9SMvlkh/5UYq1yk3oGWE=; b=VzQV4Mnhn7CL/uoqHFgdsGmfgt
-	t/jKWhBkHRNTwkNxCOcPiJfQRClDcxc2/RrQboF4WDwj/0KnNWyQMBpMm5WlVsn3+wKKaFNWYq7Tc
-	Cnz/XK73/BOzpsO7JzOt/rIkklNX7nf6UlnV2ROgh0voBoMw0fLTJq6J+VEk9bjGixkVff5eqdrfZ
-	9AM2zPXoc5FY2I/jtkKGETwioEZCcW/CPmdHFD5DrInw8Wm9YQ8p9AeaJihWS18hN8UBP6PO93zmV
-	sVVxXoU/3iukFmyUi+BLBu4OKH4I9Xwk31tW+SDld4sB3u73osgf9whw4tDBUGz6rZbdCpTMZM1nc
-	t5/QF0Fg==;
+	bh=ss7j0WblnxBcXCVRlDkAPRipPZC6xYJer3+N8SOz5ig=; b=QwDzR8K6iXD4qB2+kQQWS7LS6s
+	nWQ+6KpiXQ4Bi4Geuxt+vkOu/n72E9ZHeCIDd9nB0JXM8+qOBDwrLQyVA6vAHolVCNkB2dRm+8bnK
+	0VxWQBuKItumI2RuNb6v03nlTKWKVCZlSdYBk80145w6ZeZtqmACyGkrHBGYUA2QnhZBtKG0+afhP
+	FCYfbFyFNSMaQLh8hZxGhkkT8xizO8nOo0z9WyjHJQ5S40ckdbmrKfzyFud/YM2b5CF2ZitsVHEx8
+	X+FxBRivwbvmhIUaMka0lN6E0LwSG8FcfNXX2zDLi3ebaHw4RBERm/NUUjCOBJhe3J2e5xXv76gwA
+	wxbyKO2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loPTK-003qza-3V; Wed, 02 Jun 2021 11:55:42 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1loPYI-003sAa-Um; Wed, 02 Jun 2021 12:00:51 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loP3c-003kJo-Ag; Wed, 02 Jun 2021 11:29:10 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id ce15so3327256ejb.4;
- Wed, 02 Jun 2021 04:29:05 -0700 (PDT)
+ id 1loP7Y-003lUE-FG; Wed, 02 Jun 2021 11:33:16 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ b145-20020a1c80970000b029019c8c824054so3550300wmd.5; 
+ Wed, 02 Jun 2021 04:33:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:references:from:subject:message-id:date:user-agent
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=HunnI1ZQ2e2PI4I0tqkM8S6XEuDgEHj7y+5tLpXrcfA=;
- b=UrcZ+UVKzphzbMWNayC4Pxb0bEya1xTBnx2c0Xncvh3YOccQzCzAeXBoB2aRvyYYjy
- vheHVRLAAA1hZkqNBqh7pkCKZSoRkxXBcX7Frm7TUbIjwivEkoYw/SFlZTHVyCwA6Xf3
- pTUyJb7CqB7JmfuZsEXrfXIi/AIkv6SepaserAj+R42bKcu5JMgPTEQywiZuZup0HKpC
- u/jKZFY/tnXDkBvGEXuC+IFGt0M3yv9GhHj+6tJoxPu2oEhXRNzpx4NAhE3QF+n4rJcs
- Dbb8Qp83/1X5WeE8fBTyU3eFq9b/JVUAnQXmrWUlpVuHH7bVCu0Uqd1dhgK09m9JjKTd
- v3FA==
+ bh=YpPo5MBLVYvDn/sYz6mEnGVnyd3ShtD58F9/Awc2BpA=;
+ b=kVW6e8YiNo8g5jZzT0Bts2a0UncmcVWmaRW0M7i4O2D8xy+KvvmKD3sAyTGlgTG7kt
+ zw+1i5ixEjtOgD6RVEZzoDp2k/njyKH8jrPuyLIhznfIc7VHdbm7b2UtgWB1YssswsbU
+ ZuIG6NmLFgWN39RK9Ar7QVDrYpjbPUUYabz1oDvms+e9b8+DlXxRFI9wmNh2YngkXUdJ
+ lKbjZZb5/P4fv7UmikpEZgwofHnuLV55T8byBfhsgH8pQXC9ZYV2Vb3cRkrUOE4AYVqL
+ gLrtgaMlJQ6Zn10S60flrArFRJTPtIyhRQzDHlklc3hkveSxrwR+7R5zPjil+GV7TUdC
+ fYeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=HunnI1ZQ2e2PI4I0tqkM8S6XEuDgEHj7y+5tLpXrcfA=;
- b=eWo6EvnalLdidy6E6QhyG1z0z6riMmtVa2l2DTVv0mr0qil6/9z8KnAFcQdzSxBoFo
- 5uUxSGKxfshUtJI/Yggx8sca1y0PjAUbPEK0MQSEQYcVh++Fm5ZIOKAiB+bmNZQXnycD
- yJoeQno7Fd4FZi+3kRux/gr9yQOrazXorCAecKmMFH4fWIKVe5NTVpTqi95RacIAK88y
- /AlPm1ez8B4/nrpNoMeM+WjtUI6EwUX5j4I5dRyT6pH2QCoMzvlmIY+D1/8RjXMV4/OF
- 1YWAmjYKrsNGkLmwh6JLDJxBjKOGqgJ5OJSJDJ8MU5/iLTG7xWnkRo9LJ0RLJFJTls7N
- d2UA==
-X-Gm-Message-State: AOAM531xg8JQMR3m3AlW7buXjwuru7cOTsEkZTM64oC0uVIeZz+Nk+fz
- 8tP9IWf0aM23ns5AsU0KQwo=
-X-Google-Smtp-Source: ABdhPJzWt3Lpk2F6hIjoklEI+4scgj0GFMgZDBwCrtxWx0q1mK6P9nYxIQSACekA8WyUnoMf2BDyrQ==
-X-Received: by 2002:a17:906:4e06:: with SMTP id
- z6mr24351016eju.34.1622633344113; 
- Wed, 02 Jun 2021 04:29:04 -0700 (PDT)
+ bh=YpPo5MBLVYvDn/sYz6mEnGVnyd3ShtD58F9/Awc2BpA=;
+ b=ZE9BfV9xUQFnQhp1opx2KHFc4/sHCIlTQlXYRSfZnKk6iPmKmtAWVjD7xyOj+Hh8sV
+ lD4W6Qw2889wSggsNRHGyrQz/zTbtIKNjsXH5c1sORu3d4qwMLHYaGYb7KlLR0U+Ugd3
+ xcmKlfeHGDQ/+hAWXUv8y/0+AjAwMYw5AcEsZBWt3k0Q/2Isen7GFfB7dMITSjfxZKa/
+ e/tCdK5gwIEpgysHxpXIb2XRb2MHVpgHBQgtuu6lFM7+qXyxoSCTGhcz9KiI48vUS5eW
+ 2QOAsAyU0AWgf9mip+LfpqaJCAHV5qm+RlnIk/YNqfopkAsG/nzmV4YOstCMyHW8kSKy
+ 9iKg==
+X-Gm-Message-State: AOAM531XtVURN8/zIr0lEda45daTUZrGfU5GsKmileVYBswjQ2t5EWLl
+ bWAmBwatpTYkZLMXngZertQ=
+X-Google-Smtp-Source: ABdhPJwCYFHyPJ4mtPKQH6YK0yXLSoUWALZ/L3nQxpyEn8N3GhSJpqhz2Lz5eakMQ6A+sxu6jdDVOg==
+X-Received: by 2002:a7b:c002:: with SMTP id c2mr31535267wmb.118.1622633590311; 
+ Wed, 02 Jun 2021 04:33:10 -0700 (PDT)
 Received: from ziggy.stardust ([46.6.149.244])
- by smtp.gmail.com with ESMTPSA id u12sm5447429ejz.1.2021.06.02.04.29.02
+ by smtp.gmail.com with ESMTPSA id r7sm3057110wma.9.2021.06.02.04.33.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 04:29:03 -0700 (PDT)
-To: Seiya Wang <seiya.wang@mediatek.com>, Rob Herring <robh+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com
-References: <20210601075350.31515-1-seiya.wang@mediatek.com>
- <20210601075350.31515-2-seiya.wang@mediatek.com>
+ Wed, 02 Jun 2021 04:33:09 -0700 (PDT)
+Subject: Re: [PATCH 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ MT8195
+To: Chen-Yu Tsai <wenst@chromium.org>, Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Randy Wu <Randy.Wu@mediatek.com>, youlin.pei@mediatek.com
+References: <20210601024408.24485-1-jianjun.wang@mediatek.com>
+ <20210601024408.24485-2-jianjun.wang@mediatek.com>
+ <CAGXv+5G-8+ppafiUnqWm2UeiL+edHJ2zYZvU-S7mz_NdrM3YsA@mail.gmail.com>
+ <1622526594.9054.6.camel@mhfsdcap03>
+ <CAGXv+5GMTbC5TTgURhPAvxBEY18S6-T-BZ9CpXsO91Trim7TXw@mail.gmail.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [v3 1/1] arm64: dts: Add Mediatek SoC MT8195 and evaluation board
- dts and Makefile
-Message-ID: <feefafa0-62b9-9e0f-d982-71b67a319064@gmail.com>
-Date: Wed, 2 Jun 2021 13:28:54 +0200
+Message-ID: <db62910b-febd-6cba-8a72-2bf718f7b110@gmail.com>
+Date: Wed, 2 Jun 2021 13:33:07 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <20210601075350.31515-2-seiya.wang@mediatek.com>
+In-Reply-To: <CAGXv+5GMTbC5TTgURhPAvxBEY18S6-T-BZ9CpXsO91Trim7TXw@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_042908_439545_6DD3BC62 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20210602_043312_615294_0C909B39 
+X-CRM114-Status: GOOD (  33.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,393 +115,97 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 01/06/2021 09:53, Seiya Wang wrote:
-> Add basic chip support for Mediatek MT8195
+On 01/06/2021 08:07, Chen-Yu Tsai wrote:
+> Hi,
 > 
-> Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/Makefile       |   1 +
->  arch/arm64/boot/dts/mediatek/mt8195-evb.dts |  29 ++
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 561 ++++++++++++++++++++++++++++
->  3 files changed, 591 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> On Tue, Jun 1, 2021 at 1:50 PM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+>>
+>> On Tue, 2021-06-01 at 11:53 +0800, Chen-Yu Tsai wrote:
+>>> Hi,
+>>>
+>>> On Tue, Jun 1, 2021 at 10:50 AM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+>>>>
+>>>> MT8195 is an ARM platform SoC which has the same PCIe IP with MT8192.
+>>>
+>>> Based on what I'm seeing internally, there seems to be some inconsistency
+>>> across the MediaTek platform on whether new compatible strings should be
+>>> introduced for "fully compatible" IP blocks.
+>>>
+>>> If this hardware block in MT8195 is "the same" as the one in MT8192, do we
+>>> really need the new compatible string? Are there any concerns?
+>>
+>> Hi Chen-Yu,
+>>
+>> It's ok to reuse the compatible string with MT8192, but I think this
+>> will be easier to find which platforms this driver is compatible with,
+>> especially when we have more and more platforms in the future.
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index a1c50adc98fa..6044c8e46302 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -24,4 +24,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
->  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> new file mode 100644
-> index 000000000000..82bb10e9a531
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-> @@ -0,0 +1,29 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Seiya Wang <seiya.wang@mediatek.com>
-> + */
-> +/dts-v1/;
-> +#include "mt8195.dtsi"
-> +
-> +/ {
-> +	model = "MediaTek MT8195 evaluation board";
-> +	compatible = "mediatek,mt8195-evb", "mediatek,mt8195";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:921600n8";
-> +	};
-> +
-> +	memory@40000000 {
-> +		device_type = "memory";
-> +		reg = <0 0x40000000 0 0x80000000>;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> new file mode 100644
-> index 000000000000..8fc2af12c0f8
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -0,0 +1,561 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
-> + * Author: Seiya Wang <seiya.wang@mediatek.com>
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt8195";
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	clocks {
-> +		clk26m: oscillator0 {
-> +			compatible = "fixed-clock";
-> +			#clock-cells = <0>;
-> +			clock-frequency = <26000000>;
-> +			clock-output-names = "clk26m";
-> +		};
-> +
-> +		clk32k: oscillator1 {
-> +			compatible = "fixed-clock";
-> +			#clock-cells = <0>;
-> +			clock-frequency = <32768>;
-> +			clock-output-names = "clk32k";
-> +		};
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x000>;
-> +			enable-method = "psci";
-> +			clock-frequency = <1701000000>;
-> +			capacity-dmips-mhz = <578>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu1: cpu@100 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x100>;
-> +			enable-method = "psci";
-> +			clock-frequency = <1701000000>;
-> +			capacity-dmips-mhz = <578>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu2: cpu@200 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x200>;
-> +			enable-method = "psci";
-> +			clock-frequency = <1701000000>;
-> +			capacity-dmips-mhz = <578>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu3: cpu@300 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a55", "arm,armv8";
-> +			reg = <0x300>;
-> +			enable-method = "psci";
-> +			clock-frequency = <1701000000>;
-> +			capacity-dmips-mhz = <578>;
-> +			cpu-idle-states = <&cpuoff_l &clusteroff_l>;
-> +			next-level-cache = <&l2_0>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu4: cpu@400 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a78", "arm,armv8";
-> +			reg = <0x400>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2171000000>;
-> +			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu5: cpu@500 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a78", "arm,armv8";
-> +			reg = <0x500>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2171000000>;
-> +			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu6: cpu@600 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a78", "arm,armv8";
-> +			reg = <0x600>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2171000000>;
-> +			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu7: cpu@700 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a78", "arm,armv8";
-> +			reg = <0x700>;
-> +			enable-method = "psci";
-> +			clock-frequency = <2171000000>;
-> +			capacity-dmips-mhz = <1024>;
-> +			cpu-idle-states = <&cpuoff_b &clusteroff_b>;
-> +			next-level-cache = <&l2_1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu-map {
-> +			cluster0 {
-> +				core0 {
-> +					cpu = <&cpu0>;
-> +				};
-> +				core1 {
-> +					cpu = <&cpu1>;
-> +				};
-> +				core2 {
-> +					cpu = <&cpu2>;
-> +				};
-> +				core3 {
-> +					cpu = <&cpu3>;
-> +				};
-> +			};
-> +			cluster1 {
-> +				core0 {
-> +					cpu = <&cpu4>;
-> +				};
-> +				core1 {
-> +					cpu = <&cpu5>;
-> +				};
-> +				core2 {
-> +					cpu = <&cpu6>;
-> +				};
-> +				core3 {
-> +					cpu = <&cpu7>;
-> +				};
-> +			};
-> +		};
-> +
-> +		idle-states {
-> +			entry-method = "arm,psci";
-> +			cpuoff_l: cpuoff_l {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <50>;
-> +				exit-latency-us = <95>;
-> +				min-residency-us = <580>;
-> +			};
-> +			cpuoff_b: cpuoff_b {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x00010001>;
-> +				local-timer-stop;
-> +				entry-latency-us = <45>;
-> +				exit-latency-us = <140>;
-> +				min-residency-us = <740>;
-> +			};
-> +			clusteroff_l: clusteroff_l {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x01010002>;
-> +				local-timer-stop;
-> +				entry-latency-us = <55>;
-> +				exit-latency-us = <155>;
-> +				min-residency-us = <840>;
-> +			};
-> +			clusteroff_b: clusteroff_b {
-> +				compatible = "arm,idle-state";
-> +				arm,psci-suspend-param = <0x01010002>;
-> +				local-timer-stop;
-> +				entry-latency-us = <50>;
-> +				exit-latency-us = <200>;
-> +				min-residency-us = <1000>;
-> +			};
-> +		};
-> +
-> +		l2_0: l2-cache0 {
-> +			compatible = "cache";
-> +			next-level-cache = <&l3_0>;
-> +		};
-> +
-> +		l2_1: l2-cache1 {
-> +			compatible = "cache";
-> +			next-level-cache = <&l3_0>;
-> +		};
-> +
-> +		l3_0: l3-cache {
-> +			compatible = "cache";
-> +		};
-> +	};
-> +
-> +	dsu-pmu {
-> +		compatible = "arm,dsu-pmu";
-> +		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		cpus = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>,
-> +		       <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
-> +	};
-> +
-> +	pmu-a55 {
-> +		compatible = "arm,cortex-a55-pmu";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster0>;
-> +	};
-> +
-> +	pmu-a78 {
-> +		compatible = "arm,cortex-a78-pmu";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster1>;
-> +	};
-> +
-> +	psci {
-> +		compatible = "arm,psci-1.0";
-> +		method = "smc";
-> +	};
-> +
-> +	timer: timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clock-frequency = <13000000>;
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <4>;
-> +			#redistributor-regions = <1>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x40000>,
-> +			      <0 0x0c040000 0 0x200000>;
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
-> +
-> +			ppi-partitions {
-> +				ppi_cluster0: interrupt-partition-0 {
-> +					affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
-> +				};
-> +				ppi_cluster1: interrupt-partition-1 {
-> +					affinity = <&cpu4 &cpu5 &cpu6 &cpu7>;
-> +				};
-> +			};
-> +		};
-> +
-> +		pio: pinctrl@10005000 {
-> +			compatible = "mediatek,mt8195-pinctrl";
-> +			reg = <0 0x10005000 0 0x1000>,
-> +			      <0 0x11d10000 0 0x1000>,
-> +			      <0 0x11d30000 0 0x1000>,
-> +			      <0 0x11d40000 0 0x1000>,
-> +			      <0 0x11e20000 0 0x1000>,
-> +			      <0 0x11eb0000 0 0x1000>,
-> +			      <0 0x11f40000 0 0x1000>,
-> +			      <0 0x1000b000 0 0x1000>;
-> +			reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
-> +				    "iocfg_br", "iocfg_lm", "iocfg_rb",
-> +				    "iocfg_tl", "eint";
-> +			gpio-controller;
-> +			#gpio-cells = <2>;
-> +			gpio-ranges = <&pio 0 0 144>;
-> +			interrupt-controller;
-> +			interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			#interrupt-cells = <2>;
-> +		};
-> +
-> +		watchdog: watchdog@10007000 {
-> +			compatible = "mediatek,mt8195-wdt", "mediatek,mt6589-wdt";
+> If it's just for informational purposes, then having the MT8192 compatible
+> as a fallback would work, and we wouldn't need to make changes to the driver.
+> This works better especially if we have to support multiple operating systems
+> that use device tree.
+> 
+> So we would want
+> 
+>     "mediatek,mt8195-pcie", "mediatek,mt8192-pcie"
+> 
+> and
+> 
+>     "mediatek,mt8192-pcie"
+> 
+> be the valid options.
+> 
+> Personally I'm not seeing enough value to justify adding the compatible string
+> just for informational purposes though. One could easily discern which hardware
+> is used by looking at the device tree.
+> 
 
-"mediatek,mt8195-wdt" not defined in binding description. Please add patch for that.
-
-> +			reg = <0 0x10007000 0 0x100>;
-> +		};
-> +
-> +		systimer: timer@10017000 {
-> +			compatible = "mediatek,mt8195-timer", "mediatek,mt6765-timer";
-> +			reg = <0 0x10017000 0 0x1000>;
-> +			interrupts = <GIC_SPI 265 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks = <&clk26m>;
-> +		};
-> +
-> +		uart0: serial@11001100 {
-> +			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
-> +			reg = <0 0x11001100 0 0x100>;
-> +			interrupts = <GIC_SPI 141 IRQ_TYPE_LEVEL_HIGH 0>;
-> +			clocks = <&clk26m>, <&clk26m>;
-> +			clock-names = "baud", "bus";
-
-I'm not really a fan of having dummy clocks defined in the DTS. When can we
-expect the clock controller driver to be posted/mainlined?
+I agree, if no differences between the two chips are known, adding a binding
+withe new compatible and a fallback is a good thing. If we later on realize that
+mt8195 PCI block has differences, we can add the matching to the driver.
 
 Regards,
 Matthias
+
+> 
+> Regards
+> ChenYu
+> 
+> 
+>> Thanks.
+>>>
+>>>
+>>> Thanks
+>>> ChenYu
+>>>
+>>>
+>>>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+>>>> ---
+>>>>  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 +++-
+>>>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>>>> index e7b1f9892da4..d5e4a3e63d97 100644
+>>>> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>>>> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+>>>> @@ -48,7 +48,9 @@ allOf:
+>>>>
+>>>>  properties:
+>>>>    compatible:
+>>>> -    const: mediatek,mt8192-pcie
+>>>> +    oneOf:
+>>>> +      - const: mediatek,mt8192-pcie
+>>>> +      - const: mediatek,mt8195-pcie
+>>>>
+>>>>    reg:
+>>>>      maxItems: 1
+>>>> --
+>>>> 2.18.0
+>>>> _______________________________________________
+>>>> Linux-mediatek mailing list
+>>>> Linux-mediatek@lists.infradead.org
+>>>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>>
 
 _______________________________________________
 Linux-mediatek mailing list
