@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E66A2C47093
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:33:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 345FFC47097
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:33:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3A45610E5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:33:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3A45610E5
+	by mail.kernel.org (Postfix) with ESMTPS id 02D8A610E5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:33:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02D8A610E5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8/sfIjJ5Ghb8czJMjBJEt1r/T3r5kURdB6SkY6slwYc=; b=F4+U55Nnd9t2Z2
-	3YBM1FVnz5SPTDf8d0Ig6kscMa4e7GTEeXykgegTQyovJSmNXsfMF6h8KKOQb+J5Zk8jY8kX00Z4Z
-	IAuz+yxSjqs7cWLgYg6rSFE20JrynZWHmLw4mltLOkqI5J0KxY79xlD08omDvRhF5rnrGh3p17VLD
-	HTAvFXqa3w2uNtGsDLusxVea6hUGjar5NK1/fYCtAudLTxB3yn1cVOzhWmb8IcEZR31a1P9wTBghe
-	6wjS12dH7sAj9hNB2DyP83fvPmx7sbLEVGUrv1YY/Sx0rApNe79ZTpYRKhgNTe19QDJ3MNPpOfs0W
-	KhxOiXJUQRG408UvwvSA==;
+	List-Owner; bh=d5TCqJPToMY6wEjMtUed76QKUwxGesxoEyq7nKOJDmw=; b=DXsDw7oW96a3hK
+	GoMiu6RUXrCi/7t4XE2SDueh+TOOoKLsI9rkClftLQFFPfFJ8eI2AEgDpqxEcd10XbHgcL6zpXdhb
+	8sKRoZ39RT+TtLOlnojpg0q6ArVJi9okAgJus0/lY1Svhveswv+/gVusiEchZOgo6O2S+tEQI46hS
+	6bHu+sXTmdQSWg1646sh7alv9sr5cSqNajVJcohU7q5v/EMFatNoQsOUEt1dDyjrZTjgoY6S8T9I0
+	N9dtxas8bZX1BcvbfLKtSQWmxT4IStHDUuP3YFTdU1khP5/LZs5Zgoc/9yKgF1ooAVmO4jNCjNW0T
+	7t05Mv5UkRawabdx+ZlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loRvs-004Zxp-43; Wed, 02 Jun 2021 14:33:20 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1loRvt-004ZyQ-An; Wed, 02 Jun 2021 14:33:21 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loRvl-004ZuK-2D
+ id 1loRvm-004ZvF-Vq
  for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 14:33:19 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- h12-20020a05600c350cb029019fae7a26cdso1788092wmq.5
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Jun 2021 07:33:12 -0700 (PDT)
+Received: by mail-wm1-x32f.google.com with SMTP id
+ n17-20020a7bc5d10000b0290169edfadac9so3924111wmk.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Jun 2021 07:33:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=M9bRhyWuFVpQrG3EHXZKnG7o8XLPNhfRhn1oXXk6SrQ=;
- b=FYmSxXOaVJ7u/hRBRjCRyMs468oivh2TsgX2RGPglQBkpugM6lgQWldOX0rIaOfXSP
- YVzbQwXiDA9smCQzDmzafGN3P1RprMVSNRl3BnqKNAfSQmT6ulR1Hv9/6EfLwMxmyo7z
- P6PyagKgW4BuWiOnsMTU6Y0JhWJJEX+DY/1Vv5eHGNSpouz68kzJzZutQ3ZV1CjhkM0H
- kzzsCCmphlHG62++alAVxt85h/Fj77OwkErFTBbHEy8olwx4eM1/k+Y4mKMUCge+8YMs
- 14iIaeDvwMBwEKhfGiiU3WYlRVTOwA3gMFv4Xuf4/f9BthCK8u4+iw1ZJjxGde5/Bfuj
- qe3Q==
+ bh=71fOhHlO0apSNak4OgEIaxdLa+/aWkYj9kGsKGdRvTY=;
+ b=xUhef00MAVJBy+PY/e3mmGBGxXvIB8iTo9q2dRXzdTl6KgRNOFx3Yh5yZm5G5EDaa4
+ MqdznlwSY7+USlsU8c+sFceCBC4jbvyxI1T0bdvESoujA+UP7urnlvjIJSKSVIG9CZpp
+ 3y1jKPC6xkQRU3IbTX6PaBsEUEQoVuT5KWblMlVi/2luDXltDZnS8VexfxbJrdoQ5jvr
+ MXkykFkPCdRogUZ1amrbUundmf8LFslbw3D9ChQKatF0ihn61jSwGhg0tiwejOxV3UCG
+ OshO5G93Twyyo8dVe3UVrzg9/ZziR1X4PrgmJqOYNb61iGuhDts2f6VYWZjl2Oh8g5kM
+ dFTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=M9bRhyWuFVpQrG3EHXZKnG7o8XLPNhfRhn1oXXk6SrQ=;
- b=uMEL1pWBw0gscKNo36DtKESJpT+PQ5LSCAbnPixoepumtWmL56U0ovL//LQKxdliLO
- 9n4STZRQH+roSkaJUVdT74rwJHy/yp5qHaPfmDdn0v9iZgl4IYO9jtqUkCluflFRTMau
- RksWOdTy9XJ9vFn2iawkXg1EsbS7AE+V8BpOOSDBruDkX2Vvr+Fqrag3W5TknpTNTb5j
- f4LH1YQnEKsoukerIe9oDHOumIiLuStsrsV88lG5QDbbM91iq1BO70g2Ss3zedkZIto0
- 0QZueFFw8aRmh7XeEH2uENs1FZEPNVPBALxd0ahl22HKd6cwMQAHJodKavRFkT17KfT+
- vt5Q==
-X-Gm-Message-State: AOAM533O3PvV1KEKWjY8R5elxIEZ9f//0Hq2rO/DvjipUVr2KhVmKEql
- kSgvjoEOh+FYpjH9c+hNGPdBrw==
-X-Google-Smtp-Source: ABdhPJzsdddao34LRabPBk4flX5Gv0pUOZLrhtePOoQ2SzMzu4f5Lqu++Joq8p3Yl+P1MsCSIKI/tQ==
-X-Received: by 2002:a05:600c:350a:: with SMTP id
- h10mr33825781wmq.119.1622644391896; 
- Wed, 02 Jun 2021 07:33:11 -0700 (PDT)
+ bh=71fOhHlO0apSNak4OgEIaxdLa+/aWkYj9kGsKGdRvTY=;
+ b=l3TsABMIeBqhzC6aUTvQHCH6qqwqGUd15bjzN/eyX9xRpAndoyJjLc009W/6MmPk4n
+ DHeYIH2gl8LGVQxmZzlgs8ygMShhEl90ygitjyrTcTER9ObuoP24zMB9QyD88wFYq957
+ OP22+EfHSH8+25LVVljY6EYpXEgkFj7WvaFFL8eeF3T1cGW97hqRJjkjDLrY/lKZoa5G
+ yvf0Ywrzdhev1vu88ion4WnmtTbKRJGYIpq6e5Odc3fQ7GNFYaz8f0my9fYG/77MSIDs
+ j7pzsLFAT+Dmb5dIYvRFZjDZPSzsxrZUOoJVuevA6J7Z3OZa7PkOJsyeH0v1y9ILP6d1
+ 5SOg==
+X-Gm-Message-State: AOAM530jzdoqAaOo4+ZvupDW6oCe1sSaZNvks1fqHEB4+kSc3BDRkdfD
+ lliXOEu2/7Ce/AYXTYklYW7YrQ==
+X-Google-Smtp-Source: ABdhPJzulksV7rbktUjzhrFg74d46BeymCpz5NyUxNhoO0P/xDn9e9UnTwrPNud6bo/oRxePX9B7aA==
+X-Received: by 2002:a1c:bc09:: with SMTP id m9mr15311724wmf.143.1622644393843; 
+ Wed, 02 Jun 2021 07:33:13 -0700 (PDT)
 Received: from dell.default ([91.110.221.214])
- by smtp.gmail.com with ESMTPSA id o11sm132315wrq.93.2021.06.02.07.33.11
+ by smtp.gmail.com with ESMTPSA id o11sm132315wrq.93.2021.06.02.07.33.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jun 2021 07:33:11 -0700 (PDT)
+ Wed, 02 Jun 2021 07:33:13 -0700 (PDT)
 From: Lee Jones <lee.jones@linaro.org>
 To: lee.jones@linaro.org
 Cc: linux-kernel@vger.kernel.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -77,17 +76,17 @@ Cc: linux-kernel@vger.kernel.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [RESEND 02/26] drm/mediatek/mtk_disp_gamma: Strip and demote
+Subject: [RESEND 04/26] drm/mediatek/mtk_disp_rdma: Strip and demote
  non-conformant kernel-doc header
-Date: Wed,  2 Jun 2021 15:32:36 +0100
-Message-Id: <20210602143300.2330146-3-lee.jones@linaro.org>
+Date: Wed,  2 Jun 2021 15:32:38 +0100
+Message-Id: <20210602143300.2330146-5-lee.jones@linaro.org>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210602143300.2330146-1-lee.jones@linaro.org>
 References: <20210602143300.2330146-1-lee.jones@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_073313_137303_8AC00A4D 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20210602_073315_043467_92283FDE 
+X-CRM114-Status: GOOD (  11.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,10 +105,12 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Fixes the following W=1 kernel build warning(s):
 
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c:42: warning: Function parameter or member 'clk' not described in 'mtk_disp_gamma'
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c:42: warning: Function parameter or member 'regs' not described in 'mtk_disp_gamma'
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c:42: warning: Function parameter or member 'cmdq_reg' not described in 'mtk_disp_gamma'
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c:42: warning: Function parameter or member 'data' not described in 'mtk_disp_gamma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'clk' not described in 'mtk_disp_rdma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'regs' not described in 'mtk_disp_rdma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'cmdq_reg' not described in 'mtk_disp_rdma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'vblank_cb' not described in 'mtk_disp_rdma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'vblank_cb_data' not described in 'mtk_disp_rdma'
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c:72: warning: Function parameter or member 'fifo_size' not described in 'mtk_disp_rdma'
 
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Cc: Philipp Zabel <p.zabel@pengutronix.de>
@@ -121,25 +122,25 @@ Cc: linux-mediatek@lists.infradead.org
 Cc: linux-arm-kernel@lists.infradead.org
 Signed-off-by: Lee Jones <lee.jones@linaro.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 4 +---
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 4 +---
  1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 3ebf91e0ab412..3a5815ab40795 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -29,10 +29,8 @@ struct mtk_disp_gamma_data {
- 	bool has_dither;
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 728aaadfea8cf..705f28ceb4ddd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -55,10 +55,8 @@ struct mtk_disp_rdma_data {
+ 	unsigned int fifo_size;
  };
  
 -/**
 +/*
-  * struct mtk_disp_gamma - DISP_GAMMA driver structure
-- * @ddp_comp - structure containing type enum and hardware resources
-- * @crtc - associated crtc to report irq events to
+  * struct mtk_disp_rdma - DISP_RDMA driver structure
+- * @ddp_comp: structure containing type enum and hardware resources
+- * @crtc: associated crtc to report irq events to
+  * @data: local driver data
   */
- struct mtk_disp_gamma {
- 	struct clk *clk;
+ struct mtk_disp_rdma {
 -- 
 2.31.1
 
