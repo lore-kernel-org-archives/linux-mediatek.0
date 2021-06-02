@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9428CC47083
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 17:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 486F7C47083
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 17:27:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5139161CA2
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 17:18:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5139161CA2
+	by mail.kernel.org (Postfix) with ESMTPS id 19A3261D1E
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 17:27:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 19A3261D1E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HSLzRF+QaTnQYvBjxkqpvUKUhlfxfe+NpfYDVGyUUHU=; b=DQVn2DSFhmyxUv
-	v3vTqkSzopRByBWNFMGvjXcpexkPNXi7cxHotSvvVfoDffaKX5I0IE4S6QVbr9UMHp/dVXgk/RKNI
-	lRoLaOjN49lG3hjdFmnRVGFL7I2SAAYTFdUfxjFXtSXXPgtpg7DDzCHCg8gIKYXErR08AoNECkz3/
-	Z9YPn0ro84e5u6mq9wTs1PIYXO+/IKTuB++/yNnLXC94BYPzcCb9vj3oEtbQ4dZvFzYNeFCfp8Ej7
-	NEJsjwNIApRSwT7OjpPMtrCHpCveMtVsGz058mEjxdzzpZ22kCyh03PI5LUtd4OVbNElgEf1IV/cn
-	jRdFwLxvevtoIWV/E3RA==;
+	List-Owner; bh=xTqIZwGpnY62Q2YwpGvwmjuL4L7rXjFbDgAdIb02sRs=; b=j8n1E8Acw1TdfB
+	4Hl6Cah82oafKRGQKen8df/cZJ6pzG/nNovBdZoRHc4p4ScrlpvAXK4LNrFkBfYeqU9qLEXl1oOTs
+	7cOfCLMOrfJ6/Q/LXg9ECvqqZmTeNDon17GM8sWx0CWwpqfcD4tqv7HQPs2qXKWdR/GwCnA9h6A3L
+	xKWhMHAPWzRhMtO8A5jfyGMHdkKGRCGbAnD1Z+gN1lt+5MVsY7otj6wDAkNjNArCcKtF5LXp2NPjL
+	yyFi9ogsXMEcEVAfkk+dGaiu7D8AvyNORmBt5nDm9s6Q92Aks5H3yd3UV92WzDJGWhEqkBzh91sSp
+	0JvxvpiJr4yFBXbscS6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loUVh-005TNU-D3; Wed, 02 Jun 2021 17:18:29 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1loUdo-005XxU-7Z; Wed, 02 Jun 2021 17:26:52 +0000
+Received: from mail-oo1-f44.google.com ([209.85.161.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loUUl-005Swl-MD; Wed, 02 Jun 2021 17:17:33 +0000
-Received: by mail-ot1-f54.google.com with SMTP id
- v27-20020a056830091bb02903cd67d40070so18807ott.1; 
- Wed, 02 Jun 2021 10:17:30 -0700 (PDT)
+ id 1loUVP-005TH8-Et; Wed, 02 Jun 2021 17:18:13 +0000
+Received: by mail-oo1-f44.google.com with SMTP id
+ o5-20020a4a2c050000b0290245d6c7b555so719392ooo.11; 
+ Wed, 02 Jun 2021 10:18:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=YcaaWssKoIqKkfvvS+KCJUJhitjMpANZfFfLpXrQw08=;
- b=r2NmkCibZ4FcL/TMh/OLpvUnvf9fq2uAhxINp5NiP6Tpzgv4nialIbroih6qZ3rr7j
- CWUDhVeF8/adhG/Fbb3JvvBhLnlB8tLOgXAPwYliszDUpA+cL690tv9og/fbJTyt/RL/
- y5MUrnWWZsx+Bs5vwMvBHqTJtlTnIhLz0eimny1VnY2ILcz4R05PJK3DsS3x2RRe5ZyY
- yhibnxXClV5AfwS65jeORf+yPGXgsOIe8O6h/MJYv1TjP5xMZQNsCjgZugQKPFIywBNI
- N0JoP3kSMtAwNCQTndNjPJfyRtOe9gmyVgQlCJG882BCSAIBZ6B4ucxjT/yeiIcGS1g9
- qI6w==
-X-Gm-Message-State: AOAM531a57LzSGRXL6DNTsQNzBLPcRNv/O7UTEbFdPAy1s/JlWw5xDIp
- 7ob0VHrGVTgPX4A0NqGiBA==
-X-Google-Smtp-Source: ABdhPJzPaZYjKf2UJsc0c5sCkVtrtsGyVKRWv/FpQZ6SO3sfQn22/lfVD9l6FGpu9FE2kok03pun4w==
-X-Received: by 2002:a05:6830:1e70:: with SMTP id
- m16mr26745744otr.340.1622654250335; 
- Wed, 02 Jun 2021 10:17:30 -0700 (PDT)
+ bh=nIOAi6NGVLlsemIL0TG75iCzb5F9XFdTz3HwPbCx7Gs=;
+ b=PB4Z1ZihBxfD4P0MFCYKYP66VwJYg66Un4cvYZEKY2cuZLfq3QSVY8g2VGMqolxtp2
+ EKdjVW9/lZ9R5UvfOmJNESeG31w2HQ2D5C8m25COKjgUixZnMyjEzTnVXNQYq8jErokO
+ sf/AOmvCcOG893R3mBLQKJ5Z5Bk79fNosshRm8ELHIpoV0Gq0sAe1+ykf+3+kdN+d0oS
+ nb/T1QMh2LPZggV3Fuem66cwSZBe6IU2Snbb5Wp/WvHQrtTC4dTLbsFZzfrmA7rnvmOq
+ 6E2a8rMVebINFrn8sz31pUcLoz9kCxHsUI6ekLdxbhWPliNcUvbmVbAZVPMLP0igb1zo
+ 8Ajg==
+X-Gm-Message-State: AOAM530esCkl71kDyCc63shXqYBh4dQj4DkQuNxFGndRoy8Qhcat9qy/
+ w3+cUyT+GqQno38GtsatVg==
+X-Google-Smtp-Source: ABdhPJyeIWdhxbSCxtVdSzG3l0YklSQ69PhjwvvmKsi7IJAS3cEWrG6NjcwMLFresI/dnUfLc4458w==
+X-Received: by 2002:a4a:ac04:: with SMTP id p4mr25569614oon.70.1622654289975; 
+ Wed, 02 Jun 2021 10:18:09 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id k16sm107568otp.19.2021.06.02.10.17.28
+ by smtp.gmail.com with ESMTPSA id w186sm92622oib.58.2021.06.02.10.18.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jun 2021 10:17:28 -0700 (PDT)
-Received: (nullmailer pid 3599590 invoked by uid 1000);
- Wed, 02 Jun 2021 17:17:27 -0000
-Date: Wed, 2 Jun 2021 12:17:27 -0500
+ Wed, 02 Jun 2021 10:18:09 -0700 (PDT)
+Received: (nullmailer pid 3600851 invoked by uid 1000);
+ Wed, 02 Jun 2021 17:18:07 -0000
+Date: Wed, 2 Jun 2021 12:18:07 -0500
 From: Rob Herring <robh@kernel.org>
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
@@ -71,17 +70,17 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  srv_heupstream@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
  Weiyi Lu <weiyi.lu@mediatek.com>
-Subject: Re: [PATCH v9 03/22] dt-bindings: ARM: Mediatek: Add new document
- bindings of msdc controller
-Message-ID: <20210602171727.GA3596715@robh.at.kernel.org>
+Subject: Re: [PATCH v9 04/22] dt-bindings: ARM: Mediatek: Add new document
+ bindings of scp adsp controller
+Message-ID: <20210602171807.GA3599942@robh.at.kernel.org>
 References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
- <20210524122053.17155-4-chun-jie.chen@mediatek.com>
+ <20210524122053.17155-5-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210524122053.17155-4-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210524122053.17155-5-chun-jie.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_101731_774630_480C3060 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20210602_101811_541370_7FD5F115 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,47 +97,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 24, 2021 at 08:20:34PM +0800, Chun-Jie Chen wrote:
-> This patch adds the new binding documentation of msdc controller
+On Mon, May 24, 2021 at 08:20:35PM +0800, Chun-Jie Chen wrote:
+> This patch adds the new binding documentation of scp adsp controller
 > for Mediatek MT8192.
 
-This is only additional compatibles. You can combine this with the 
-schema in patch 2. (Unless some blocks are syscon and some aren't)
+Same comment here.
 
 > 
 > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
 > ---
->  .../bindings/arm/mediatek/mediatek,msdc.yaml  | 48 +++++++++++++++++++
->  1 file changed, 48 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+>  .../arm/mediatek/mediatek,scp-adsp.yaml       | 40 +++++++++++++++++++
+>  1 file changed, 40 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
 > new file mode 100644
-> index 000000000000..10eb43de2d2b
+> index 000000000000..1b4335c054f9
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,msdc.yaml
-> @@ -0,0 +1,48 @@
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,scp-adsp.yaml
+> @@ -0,0 +1,40 @@
 > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,msdc.yaml#
+> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,scp-adsp.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: MediaTek MSDC Controller
+> +title: MediaTek SCP ADSP Controller
 > +
 > +maintainers:
 > +  - Chun-Jie Chen <chun-jie.chen@mediatek.com>
 > +
 > +description:
-> +  The Mediatek msdc controller provides functional configurations and clocks to the system.
+> +  The Mediatek scp adsp controller provides functional configurations and clocks to the system.
 > +
 > +properties:
 > +  compatible:
 > +    items:
 > +      - enum:
-> +          - mediatek,mt8192-msdc
-> +          - mediatek,mt8192-msdc_top
+> +          - mediatek,mt8192-scp_adsp
 > +      - const: syscon
 > +
 > +  reg:
@@ -155,16 +152,9 @@ schema in patch 2. (Unless some blocks are syscon and some aren't)
 > +
 > +examples:
 > +  - |
-> +    msdc: syscon@11f60000 {
-> +        compatible = "mediatek,mt8192-msdc", "syscon";
-> +        reg = <0x11f60000 0x1000>;
-> +        #clock-cells = <1>;
-> +    };
-> +
-> +  - |
-> +    msdc_top: syscon@11f10000 {
-> +        compatible = "mediatek,mt8192-msdc_top", "syscon";
-> +        reg = <0x11f10000 0x1000>;
+> +    scp_adsp: syscon@10720000 {
+> +        compatible = "mediatek,mt8192-scp_adsp", "syscon";
+> +        reg = <0x10720000 0x1000>;
 > +        #clock-cells = <1>;
 > +    };
 > -- 
