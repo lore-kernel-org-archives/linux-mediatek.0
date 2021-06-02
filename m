@@ -4,88 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA26C47083
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F40CAC47092
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 15:19:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DADDE610E5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 14:34:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DADDE610E5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id C010C60698
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 15:19:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C010C60698
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wjm+vdGfEYs3MxxKneb2bEB10F0Nw1uCUvh7jxoG1pQ=; b=0W1zTKRd/YsXqX
-	TwTZqB0EkdzLV6VlzHuOYly5y2U4F16nNTUq5mRnuJ0l5lDf0g6R2a1DKS3+6ba0BCF1/fpnCPn28
-	lmwfXsA2W7Fb45mCQiywrs0dM645MW/egZx5D4nBL0jFGN5SK8iiLMsyZLplMCYiKnY4SF+99tDwR
-	vkO1y9vXfggGRrAxuvwnqBHFBMVgTcVEZukDO0pLROcEY/tDLKDmE/+lN1iSUTO5fEI2W60a5HkiF
-	S7I2Pq4EX/hxegpkSmDFBvdcY3t9eNNjBsu5B99E1I1WkoXJcX4gLGliWNi77n8dXIpQEdL81j3oI
-	bXf8EbWh+JZXuxwu2hIA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YaE33rp7r2a/CyPzxXIfqUZz850cUW6IjY1kAUT/BUU=; b=fjA4saZv3jdG6r
+	q/GvQaPtGTEr+NR/AgHVK7+GiVD8YVY9Z+6e/NH6hpP/0nnnIXh18tg24YVK6XODZzzchtxh1xIsR
+	PzxJsCu6B4xqEMtal6xcwjkfglEo8w33BY7oWfLqZ/hdxZmVR+MSB/cJBDcLyJSfptmOPKCXjrGkx
+	ruKLGSDzRq6k1Gk5ESann9awaQ6pmlw7uoyd30Y9Z4u7IhbNh2TW9rhQc4+4YfHhpKfTdL3ADAQfR
+	+uomP+95tmZtImrEg0O3PGqVTJgFCx3nCRJAYuDaJXnJo/A14k/BqIetwpNNtr2erjuDDzWx5TFIq
+	9bpT3lHhQy0NriSxaxwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loRwv-004aer-I2; Wed, 02 Jun 2021 14:34:25 +0000
-Received: from mail-wr1-f42.google.com ([209.85.221.42])
+	id 1loSdx-004oRE-Sc; Wed, 02 Jun 2021 15:18:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loRwk-004aZ3-JE
- for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 14:34:18 +0000
-Received: by mail-wr1-f42.google.com with SMTP id l2so2551705wrw.6
- for <linux-mediatek@lists.infradead.org>; Wed, 02 Jun 2021 07:34:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=rMlp5Ni2aMFHyMfn1NEHDx/+WQIjP8upodgZGGEhVrs=;
- b=K+TM+jok6dmGLiVfdJ5aHvkAyTXlaxEkUvu3eR15jQnSiQZDOVbl7Ad7UABtuK84F+
- SiGyWlm0Q/Roo4MaHxBw0hVagJn3kB7B36ned7f9VZ7qKdW9ew8tDax4JyeliwEfgol3
- LzTH/V9mmfZPWw8etltfOUAbOOTdt4Q0Ftc5FSS8fWAxZyn2LdeeVc0x7fAv7i5SeeiV
- RyQyKw94rLiFXSNIvLFJOHuBXAj1BVslRvQMMPFHt2y5OtRXJV3gKAa/0ebcSulVTrhy
- 2+LLiMiabV/zAlV49XtTFoV3pIDQSZGzBFWLFN2PAdXSdV+a0OFPsprrfDXJgipgQSRi
- 8lMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=rMlp5Ni2aMFHyMfn1NEHDx/+WQIjP8upodgZGGEhVrs=;
- b=VsO5p6FS1qoFKp+7aOQUFUHdS7HuvYEf2BP+PAaNzYDsGdVKeZL8QyvDNXZyYrs0rI
- IsLUYHUZXn3ZPAsCyXrnpyalHddtHxuJqd7CvCuS3F8U728B1qkkPrDElyI+422Agq6t
- ch685BZDC56Cms5QaShoUtPxVV5ycJLlxWyGDxB8vX5/bwwBgmDeFINtfdjLah76ulnu
- oDkLDm8j1yY4eE223Flh7hgr4RbPseAQeFvpkGzSZuAVbSV8vpcFl0lmTS9dyeqaJ8Ge
- 67cJC2W5R0AkrwAO91/3o2nPk9rJFD7xEsm6yuIJhvF+udNAinNqD+iXTJOIxE8N8D9B
- /ALA==
-X-Gm-Message-State: AOAM533Q1Mgcp+rSGWFbjUGNCUhic/Pqg4ekT07B/Fe4a3vPHSB9oTVz
- 2GD5nOjj4JQOlOvkRKjLFHIURQ==
-X-Google-Smtp-Source: ABdhPJyyjExdHvRbSDp8SXi+SPDREQCiQw3FO2lfDCB5q7ocoF+sb8JiXyCVcFPptQi4DQIZ2IRr1A==
-X-Received: by 2002:a05:6000:1542:: with SMTP id 2mr3202490wry.4.1622644392816; 
- Wed, 02 Jun 2021 07:33:12 -0700 (PDT)
-Received: from dell.default ([91.110.221.214])
- by smtp.gmail.com with ESMTPSA id o11sm132315wrq.93.2021.06.02.07.33.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Jun 2021 07:33:12 -0700 (PDT)
-From: Lee Jones <lee.jones@linaro.org>
-To: lee.jones@linaro.org
-Cc: linux-kernel@vger.kernel.org, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [RESEND 03/26] drm/mediatek/mtk_disp_ovl: Strip and demote
- non-conformant header
-Date: Wed,  2 Jun 2021 15:32:37 +0100
-Message-Id: <20210602143300.2330146-4-lee.jones@linaro.org>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210602143300.2330146-1-lee.jones@linaro.org>
-References: <20210602143300.2330146-1-lee.jones@linaro.org>
+ id 1loSdg-004oHb-JS
+ for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 15:18:41 +0000
+X-UUID: 0773d6e9c6634646aed69f843f9004ee-20210602
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=YFNQnNmEh4zBNxetjBQ4jQR7qUz4i/cBR6RMVT3vLZo=; 
+ b=f3EHYx5wvoccZ1qp/jZ7rMzRdGTn3fRftTcil4hsSLQrSUU1Ab8AuBnpAbbsm4vNujf7FUisGHQs9POfgxbtjwer5MecnJcuaKiaqlJqaim1w9/w+1Ofgh8R2WxjTSChudjsb7oKXiB3YIHmy4uzDXu/tU/r+u/aUFrgAbMnmX0=;
+X-UUID: 0773d6e9c6634646aed69f843f9004ee-20210602
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 345371321; Wed, 02 Jun 2021 08:18:27 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Jun 2021 08:18:26 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 2 Jun 2021 23:18:24 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 2 Jun 2021 23:18:24 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>,
+ <jemele@google.com>, <yenlinlai@google.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921: enable VHT BFee capabiliity
+Date: Wed, 2 Jun 2021 23:17:52 +0800
+Message-ID: <a5748514496b2b4e4b23be7b0b560d2585feafb6.1622627260.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_073414_652403_F4E9AEF1 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20210602_081838_089456_BC8E191E 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,46 +95,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fixes the following W=1 kernel build warning(s):
+From: Deren Wu <deren.wu@mediatek.com>
 
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:83: warning: Function parameter or member 'clk' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:83: warning: Function parameter or member 'regs' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:83: warning: Function parameter or member 'cmdq_reg' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:83: warning: Function parameter or member 'vblank_cb' not described in 'mtk_disp_ovl'
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c:83: warning: Function parameter or member 'vblank_cb_data' not described in 'mtk_disp_ovl'
+enable BFee functions with proper BFee IEs
 
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@linux.ie>
-Cc: Daniel Vetter <daniel@ffwll.ch>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: dri-devel@lists.freedesktop.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
+Tested-by: Eric-SY Chang <Eric-SY.Chang@mediatek.com>
+Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7921/init.c   |  1 +
+ .../net/wireless/mediatek/mt76/mt7921/main.c   | 18 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7921/mt7921.h |  1 +
+ 3 files changed, 20 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 961f87f8d4d15..fa9d79963cd34 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -66,9 +66,8 @@ struct mtk_disp_ovl_data {
- 	bool smi_id_en;
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 59da29032645..82b01a2cea69 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -219,6 +219,7 @@ int mt7921_register_device(struct mt7921_dev *dev)
+ 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
  
--/**
-+/*
-  * struct mtk_disp_ovl - DISP_OVL driver structure
-- * @ddp_comp: structure containing type enum and hardware resources
-  * @crtc: associated crtc to report vblank events to
-  * @data: platform data
-  */
+ 	mt76_set_stream_caps(&dev->mphy, true);
++	mt7921_set_stream_vht_bf_caps(&dev->phy);
+ 	mt7921_set_stream_he_caps(&dev->phy);
+ 
+ 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 84930ad5ebc7..95502708b840 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -140,6 +140,24 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80211_band band,
+ 	return idx;
+ }
+ 
++void mt7921_set_stream_vht_bf_caps(struct mt7921_phy *phy)
++{
++	u32 *cap;
++
++	if (!phy->mt76->cap.has_5ghz)
++		return;
++
++	cap = &phy->mt76->sband_5g.sband.vht_cap.cap;
++
++	*cap |= IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
++		IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
++		(3 << IEEE80211_VHT_CAP_BEAMFORMEE_STS_SHIFT);
++
++	*cap &= ~(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK |
++		  IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE |
++		  IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE);
++}
++
+ void mt7921_set_stream_he_caps(struct mt7921_phy *phy)
+ {
+ 	struct ieee80211_sband_iftype_data *data;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 8aa8d2ecdffa..abf8be358786 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -356,6 +356,7 @@ void mt7921_sta_ps(struct mt76_dev *mdev, struct ieee80211_sta *sta, bool ps);
+ void mt7921_stats_work(struct work_struct *work);
+ void mt7921_txp_skb_unmap(struct mt76_dev *dev,
+ 			  struct mt76_txwi_cache *txwi);
++void mt7921_set_stream_vht_bf_caps(struct mt7921_phy *phy);
+ void mt7921_set_stream_he_caps(struct mt7921_phy *phy);
+ void mt7921_update_channel(struct mt76_dev *mdev);
+ int mt7921_init_debugfs(struct mt7921_dev *dev);
 -- 
-2.31.1
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
