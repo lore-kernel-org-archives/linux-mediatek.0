@@ -6,17 +6,16 @@ X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E6A9C47092
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:41:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 714C2C4708F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:58:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 213B9613BA
-	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:41:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 213B9613BA
+	by mail.kernel.org (Postfix) with ESMTPS id 30BCE613F0
+	for <linux-mediatek@archiver.kernel.org>; Wed,  2 Jun 2021 12:58:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30BCE613F0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,78 +25,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=2qo36zTazRWeu7w+fZQKNP+FRZxXPbBARdMCaWiQX/o=; b=JU5z8vS9BOhQeJxTaCXd4oGYMn
-	uWo0cV9GwZK5FfB+iU4Q+xARXmRx36bGrtQnnq+oehAgphMwRa/m8jiQ/1UugiIGLntojvxtfvMgy
-	AYOQNd1kNa9pKe2mw2Y1NHY3PvtPwpS79RTIhvvPm0864SUkiCsb5MnB22uM9CU7e17UhCX/CBv1t
-	x6Oo+bTw0bV/ZZBqPncGtKMNu4MLAZwFQSgiqUXXWqzIb23U+G1gu8JD86xiudGhqHumiu54I7aSE
-	qtisqG/hKBpChObQsQkapgjI87fKgqLEP0Bb+KVvDmDMGmfMygjXYF/G/9/2bOaZoqAHd9WzHtiTj
-	vZyNLkNw==;
+	bh=zW6YNJqvOd9hV8IfJLy8rFUgXfBYo1KVI5sKmvb1BEg=; b=1LreL34ccX4M5AmlXf5oocy3QT
+	6+eijyv61eNrDoi8M2qzI0X6M+RxHCcoSp+Xk4Q+Bsq33efJegOwu1uvZfqP1vvKTx6r0r2E8fYLt
+	BN6ey/16FS4A2n8TT2ycIVvqhSUR0RjOcW0CI6ysco05rTsyAOjgxhfuoJ1Ri9+OgvSRSjnWNrpgW
+	iOZpu9sd9WtXFpm2MSYZ30uYq377p6Qj73Z/7H7TS9+123V/IULnvuWos5MJbsAboSTy9kO+wH9zn
+	+Xz014PyQae6srBqv1MT1Dn0xXqwI1hzhnz33X2gUj25SsheQ3usRP6HP/grZMEwTlrICDn8/Ytrm
+	9i0rRT+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loQB0-0048Np-56; Wed, 02 Jun 2021 12:40:50 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1loQSB-004CrS-1G; Wed, 02 Jun 2021 12:58:35 +0000
+Received: from mail-wr1-f44.google.com ([209.85.221.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loPtw-0041Pl-2X; Wed, 02 Jun 2021 12:23:13 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- h5-20020a05600c3505b029019f0654f6f1so3127707wmq.0; 
- Wed, 02 Jun 2021 05:23:10 -0700 (PDT)
+ id 1loQ5q-0046ed-PV
+ for linux-mediatek@lists.infradead.org; Wed, 02 Jun 2021 12:35:32 +0000
+Received: by mail-wr1-f44.google.com with SMTP id q5so2142866wrs.4
+ for <linux-mediatek@lists.infradead.org>; Wed, 02 Jun 2021 05:35:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xXTfKeisJ+d2G9OgHki0LrMi+N+ThHP407zug8OKubM=;
- b=C7IaWtyHWotLA3nR2EHAY8F5rSdnzjKCmjCsDd9VzLcMIbqehAmx+oFZfyOErOYwje
- 07vftXUnuDJrX7PHt0HjpReCrLqdCUWnLP3ziYhOIXnlGsxICd9lpUv4X7LWzIe3d1a/
- TQPNZbsRI7T7CDtcdYa+9bMmOSp80pIUY3OFt6WiSbC8xCtqI0ANYbmfUf2qDpuA1sev
- AJdphGzG470UsFzROd1qE8hnnuxnRXtvuYEexEzoOw9rEnnTydEDtRqz9pZOyrNJbaei
- W5x2jzUoE8MSp0xqcbWQ876y3MNzs9esPtFqPmw92w7i5D4hmjAlXKIh/aIffYTvkH4A
- 4j9g==
+ bh=4Nhkur6Md4F0lV5cADokhI9e1ZbvHW/X/CRyud57vlc=;
+ b=mjITBjbjMNgFAedpoaAjzKs6GG7aw2Irys+uxuasdvv+6kOw6nIT0PTcb4SUwWGSpS
+ ++cCdocjqVC1DbO1CxGdHNaABJXcI8jts1CWpY4pX0tXEzuk+bhelHIuXzk2NsGJ131j
+ d1GhUbXF1HBOiWb8mLhKNiEdIoCp8YQB5rY5XF38Y/hJscxVazCerAAxE6rNQ0cP5VG9
+ gh1iZiNNk+kfsW0cuXvXwxu7iXFqXr4YX1LrZo/sTHBEvdNz6jFXOYVYdUjAKqBvtH4c
+ HsFS9fiBzQAWLsUPS9wkqOc41FBxf9keEaBlQM7okKF3i9Dm3GzH3g7OjkxTek+cLnF2
+ DeXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=xXTfKeisJ+d2G9OgHki0LrMi+N+ThHP407zug8OKubM=;
- b=hzUsUzvJvF5f9LZoCeNS33H73qA3kzOY5/VBe0+0AOxMsWM7MZ6DIJZ3B5ecifMl7t
- o96P49li4dI6JZeipfEgd+NQfNw1b+FR4Hp4PGBEl7VroYZyy0BwyMMPgNoCLUC/nxPV
- RA8cA+TMUaXkzAHKlnHxaXkgplpa0He3M3RavHiKh2+1fBjOZu5ycJGkipJ1qQTBO5WY
- FWaQ9IrkjFC4D3VLVOK55wJd9l9MzxMOJ0Hgf5QCUMT1gxpAhzKLjsH+4xOeY/qD99PK
- 5yfccIH6GRz5gnQT9VAk0S2oq60r8wZ1mbQNRL7V+XueryzjKxy4/nbeh0VRMWYUiG4r
- GUOA==
-X-Gm-Message-State: AOAM531mBIcH21KoHihJUg/0sydwBci7DR1/T4RwhPLPSmuvfhevOhMQ
- DB6AtdH8EJ6vatIEaTWm/ms=
-X-Google-Smtp-Source: ABdhPJysKE2gyVGbc/4vvjXVWq5HJ1UgNq7ruN5kz26olg90yWxtfinAk/bAf6HpX/vpIl7+7pN+Kg==
-X-Received: by 2002:a05:600c:3545:: with SMTP id
- i5mr4819578wmq.43.1622636589361; 
- Wed, 02 Jun 2021 05:23:09 -0700 (PDT)
+ bh=4Nhkur6Md4F0lV5cADokhI9e1ZbvHW/X/CRyud57vlc=;
+ b=hYGVzzN+2OPbSftfZjgi9tprY6DSjwCBB/dvshzfG3G11PyAXpXBMP/bcBtrGa5MMR
+ kg3sNDhdu+DIgtWu/9DmHJcmkHdpkL1+Nl3XHJLIMXxztiGMrYnRsCdC2WLtylw9crwr
+ /SBo5+P+QMV1WRaqXQ9KIMKi4zkJYj3fUrhmulUnCuQexIItBnORQfjHRZja5QYIRD0B
+ CsAHT5sashbrYRmVPCggMQyf9GasFq5sIVME3kPGWxReVQ9NRfdOLgwvpRnCSUQgclz5
+ ys8t+TxznC+9hhHip7YOZNI8m/3OUwkBAcqvKlrkh/5DJTLOlY50lMKSLGBqwxSQZAR4
+ FgQQ==
+X-Gm-Message-State: AOAM53063XyrBQp/zD9F6O8a1LmnDLtQoOBshcXwV3cWLlokfrtslekr
+ OwGQWHifK7VvTl4eBxTSi0M=
+X-Google-Smtp-Source: ABdhPJySDC47e40En/SdS8eSyMtPUoz4xjHmatsVacgtshZ8EQ5TLQymqeonDr1136tfqGOhH3/LBg==
+X-Received: by 2002:adf:f708:: with SMTP id r8mr6328716wrp.159.1622637268881; 
+ Wed, 02 Jun 2021 05:34:28 -0700 (PDT)
 Received: from ziggy.stardust ([37.223.145.68])
- by smtp.gmail.com with ESMTPSA id n20sm2548429wmk.12.2021.06.02.05.23.08
+ by smtp.gmail.com with ESMTPSA id a11sm6498658wrr.48.2021.06.02.05.34.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jun 2021 05:23:08 -0700 (PDT)
-Subject: Re: [PATCH v21 RESEND 4/4] arm64: dts: mt8183: add supply name for
- eeprom
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Wolfram Sang <wsa@kernel.org>,
- Jean Delvare <khali@linux-fr.org>, Rob Herring <robh+dt@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>
-Cc: linux-i2c@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mark Brown <broonie@kernel.org>, Marek Szyprowski
- <m.szyprowski@samsung.com>, Bibby Hsieh <bibby.hsieh@mediatek.com>,
- Arnd Bergmann <arnd@arndb.de>
-References: <20210527075556.1709140-1-hsinyi@chromium.org>
- <20210527075556.1709140-5-hsinyi@chromium.org>
+ Wed, 02 Jun 2021 05:34:28 -0700 (PDT)
+Subject: Re: [PATCH] pinctrl: mediatek: move bit assignment
+To: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org
+Cc: Fabien Parent <fparent@baylibre.com>, Sean Wang <sean.wang@kernel.org>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>,
+ linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>
+References: <20210528091945.411471-1-linus.walleij@linaro.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <e7db756c-2563-ee03-55ee-5e84e1444cb0@gmail.com>
-Date: Wed, 2 Jun 2021 14:23:07 +0200
+Message-ID: <b3d9f92d-a311-0093-4243-b21f2646997f@gmail.com>
+Date: Wed, 2 Jun 2021 14:34:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <20210527075556.1709140-5-hsinyi@chromium.org>
+In-Reply-To: <20210528091945.411471-1-linus.walleij@linaro.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210602_052312_170972_18BDF9E4 
-X-CRM114-Status: GOOD (  16.12  )
+X-CRM114-CacheID: sfid-20210602_053530_886319_25F6EE36 
+X-CRM114-Status: GOOD (  22.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,119 +104,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Linus,
 
-
-On 27/05/2021 09:55, Hsin-Yi Wang wrote:
-> Add supplies for eeprom for mt8183 boards.
+On 28/05/2021 11:19, Linus Walleij wrote:
+> The bit needs offset to be defined which happens some lines
+> below. Looks like a bug. The kernel test robot complains:
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-
-Applied to v5.13-next/dts64
-
-Thanks!
-
+> drivers/pinctrl/mediatek/pinctrl-mtk-common.c:137:12:
+> warning: variable 'offset' is uninitialized when used here [-Wuninitialized]
+>            bit = BIT(offset & pctl->devdata->mode_mask);
+>                      ^~~~~~
+> 
+> Fix it up by reverting to what was done before.
+> 
+> Cc: Fabien Parent <fparent@baylibre.com>
+> Cc: Sean Wang <sean.wang@kernel.org>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Fixes: 9f940d8ecf92 ("pinctrl: mediatek: don't hardcode mode encoding in common code")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi  | 4 ++++
->  3 files changed, 12 insertions(+)
+>  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> index b442e38a3156..28966a65391b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dtsi
-> @@ -88,11 +88,13 @@ &i2c2 {
->  	pinctrl-0 = <&i2c2_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcamio_reg>;
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> index 9fe91e11a877..525b1aa7f7a6 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+> @@ -134,7 +134,7 @@ static int mtk_pconf_set_ies_smt(struct mtk_pinctrl *pctl, unsigned pin,
+>  			pin, pctl->devdata->port_align, value, arg);
+>  	}
 >  
->  	eeprom@58 {
->  		compatible = "atmel,24c32";
->  		reg = <0x58>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcama2_reg>;
->  	};
->  };
+> -	
+> +	bit = BIT(pin & 0xf);
+
+I see this is already applied to linux-next, but I think the correct fix is to move
+bit = BIT(offset & pctl->devdata->mode_mask);
+just before calling regmap_write(...)
+
+I can provide a patch for that, if you want. Just let me know if I should base
+it against linux-next or if you will drop the fix proposed by you?
+
+Regards,
+Matthias
+
 >  
-> @@ -101,11 +103,13 @@ &i2c4 {
->  	pinctrl-0 = <&i2c4_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcn18_reg>;
->  
->  	eeprom@54 {
->  		compatible = "atmel,24c32";
->  		reg = <0x54>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcn18_reg>;
->  	};
->  };
->  
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> index 2f5234a16ead..3aa79403c0c2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> @@ -62,11 +62,13 @@ &i2c2 {
->  	pinctrl-0 = <&i2c2_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcamio_reg>;
->  
->  	eeprom@58 {
->  		compatible = "atmel,24c64";
->  		reg = <0x58>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcamio_reg>;
->  	};
->  };
->  
-> @@ -75,11 +77,13 @@ &i2c4 {
->  	pinctrl-0 = <&i2c4_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcn18_reg>;
->  
->  	eeprom@54 {
->  		compatible = "atmel,24c64";
->  		reg = <0x54>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcn18_reg>;
->  	};
->  };
->  
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> index fbc471ccf805..30c183c96a54 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> @@ -71,11 +71,13 @@ &i2c2 {
->  	pinctrl-0 = <&i2c2_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcamio_reg>;
->  
->  	eeprom@58 {
->  		compatible = "atmel,24c32";
->  		reg = <0x58>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcama2_reg>;
->  	};
->  };
->  
-> @@ -84,11 +86,13 @@ &i2c4 {
->  	pinctrl-0 = <&i2c4_pins>;
->  	status = "okay";
->  	clock-frequency = <400000>;
-> +	vbus-supply = <&mt6358_vcn18_reg>;
->  
->  	eeprom@54 {
->  		compatible = "atmel,24c32";
->  		reg = <0x54>;
->  		pagesize = <32>;
-> +		vcc-supply = <&mt6358_vcn18_reg>;
->  	};
->  };
->  
+>  	if (arg == PIN_CONFIG_INPUT_ENABLE)
+>  		offset = pctl->devdata->ies_offset;
 > 
 
 _______________________________________________
