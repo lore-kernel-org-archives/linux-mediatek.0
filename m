@@ -2,121 +2,82 @@ Return-Path: <SRS0=bWHh=K5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C54FC47096
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 11:56:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44F54C47096
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 12:27:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EBC40613E3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 11:56:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EBC40613E3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id F0D6A6121D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 12:26:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F0D6A6121D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FSN08TpAK3mqzGNfbB3IrOeZYDgWb35ZI6svb/8NBRg=; b=oBv/1VNHqNtBNS
-	sGV/ankE/xI46FzdbYJDmBmXsFoFjSGBS7BaUIe8HvLcY5YQ9uS2PRn1/9LOLfY4emAzKiMUtNf8L
-	EQm3w77NzcXycqElT6GkhJZ2484OZm55km4ODsMR5DCJn2QzUbaAe78LsgsadWkjf/5pHCayRSwfo
-	BA+5GPI6QZjzjHdtmW70h2Dsl428pE05byKcjtIdHlnc5k+UsQVq63QYr/kz0E5RmR98J73qhuabA
-	EqQ+Au46ywAMmdkLt7/K0AvqkqPzoWY9HvfJdbjH01vy32Pmzx0zJHBRNqBaDHk/DI+vPhdUgkEZW
-	LH5Y6pzarhhnxU7zktMw==;
+	List-Owner; bh=IJeaIx1qAIssNg7fum9tyCYeRNo/SUA4s0Xjg8KHtdU=; b=vXGgG7yvTpRVHF
+	i80GM78ExhozBymd7q9LjgaXuT6L9NyzT5YwPjJORKnI/Ig9sk0no1zEvyWq13IGfVOU1xrwt4OdE
+	ZIOn8TybcgA6WrKC0WXnZHH3/2g5yMUqxqug2brzupXlXm7mjVAidwQagEQil4WyRQm/IxOB+oE2W
+	c9Po1KodM8gt8V/xZiA4Ti0sAGZ1ao5vfpY6VqutqyF32Uk5fhfB14N1uQjP9l3thhNyRUXmy+lAL
+	1jOrUphUvDWOut4Ouc3OGj9IuOyKggkRSV5wQszJsnoaK5o5OFyEE1H3wuc8XgXJxGuaXuNyM6S2t
+	1drSI5bQ7xjYUSFrrTSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lolxH-008Tns-Fk; Thu, 03 Jun 2021 11:56:07 +0000
-Received: from mail-wm1-f48.google.com ([209.85.128.48])
+	id 1lomQw-008bwu-BC; Thu, 03 Jun 2021 12:26:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loluv-008SOh-Ey
- for linux-mediatek@lists.infradead.org; Thu, 03 Jun 2021 11:53:44 +0000
-Received: by mail-wm1-f48.google.com with SMTP id g204so3207327wmf.5
- for <linux-mediatek@lists.infradead.org>; Thu, 03 Jun 2021 04:53:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=Nxij94IMFMsp61zYWJS5XKMycKfWOvntSLUdgR9Luec=;
- b=PP1Vx2P7z4p7uzC7frRq63E4x3I08msTGMShcvAdEGFQwbgoSQLam6TY7qFtZnfrip
- sZ2vdZz58OMVJtBV+LV7UtfH3hRj1TGjasngZ2KltASWY+0UFk1GkCFvbmMy1zh8VBMP
- dPoAp8/Papp6e6Y9syxE5WTIn3EkF63IUFXhjOyvBnTk1EZXXSJ1zWN+ZFpLmyfRRgmV
- zaZeW5clEklapwp4mQNAksAoChe6wCnp4zD6/sK7bIoELjiqOV1BWj7Fd7qq0A12wR59
- YBj4xTZnnoKIwJpwtS8WL69eLi0TYKCyPQcOnDWAOzYthTaMGxq+z6P1knTVhENqAX1n
- l+Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=Nxij94IMFMsp61zYWJS5XKMycKfWOvntSLUdgR9Luec=;
- b=kBOv47hA5/Z4YHVXwC3++3MGZHd2kf9UnQQ3Avl960n/vFR1+BDoCELY3bgqRD0vjQ
- uHGUZrZWbp3kLdxomh5tfn1dbuekYbdOih+o2DTJdb4fyjG5rUccQIRpAv0E+rFPMk37
- bcJn6+vuWx7qz3EDAiLP6xOku6G72VHeazZ6BRznyR10CH4VOGORwFNXnOTjeBzaTfOw
- r3avgPllnMutbO0SKU825+T96u08QtxGGM9nGX382pAVJY6Ck7vwFdyV5fYKBerd8e7t
- XLQ3Td+8ZhTeRyYagY5F/yYBUADb8KtNV2W9u/DKnSfaiGgadHnmxVYEVB2mWXVKite0
- hc/Q==
-X-Gm-Message-State: AOAM530NCt2F/YaB3iG0wwIHuo/qSU+/bUlTVRoBkJJz93d931bXvN3d
- 4S9cM2rpXbTAVnD2AO67pA+cdg==
-X-Google-Smtp-Source: ABdhPJy5Njm66nMjE/L6HCMm1K6dzFQlD8FyCcfSndwd7kIwe0+i4mO9AXShjFboYjDIKB2XcsUlUA==
-X-Received: by 2002:a05:600c:4e8b:: with SMTP id
- f11mr4461550wmq.40.1622721157306; 
- Thu, 03 Jun 2021 04:52:37 -0700 (PDT)
-Received: from dell ([91.110.221.214])
- by smtp.gmail.com with ESMTPSA id h9sm2479488wmb.35.2021.06.03.04.52.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Jun 2021 04:52:36 -0700 (PDT)
-Date: Thu, 3 Jun 2021 12:52:34 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: linux-kernel@vger.kernel.org, Adam Jackson <ajax@redhat.com>,
- Ajay Kumar <ajaykumar.rs@samsung.com>, Akshu Agarwal <akshua@gmail.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Alistair Popple <apopple@nvidia.com>, amd-gfx@lists.freedesktop.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@somainline.org>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Ben Skeggs <bskeggs@redhat.com>, Ben Widawsky <ben@bwidawsk.net>,
- Chandan Uddaraju <chandanu@codeaurora.org>,
- Christian Koenig <christian.koenig@amd.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
- Eric Anholt <eric@anholt.net>, Fabien Dessenne <fabien.dessenne@st.com>,
- freedreno@lists.freedesktop.org, Hans de Goede <hdegoede@redhat.com>,
- Harry Wentland <harry.wentland@amd.com>,
- Huang Rui <ray.huang@amd.com>, Hyun Kwon <hyun.kwon@xilinx.com>,
- Inki Dae <inki.dae@samsung.com>, Jagan Teki <jagan@amarulasolutions.com>,
- Joonyoung Shim <jy0922.shim@samsung.com>,
- Krishna Manikandan <mkrishn@codeaurora.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Kuogee Hsieh <khsieh@codeaurora.org>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Leo Li <sunpeng.li@amd.com>, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Rossi <issor.oruam@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>, nouveau@lists.freedesktop.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Rob Clark <robdclark@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
- Sean Paul <sean@poorly.run>, Seung-Woo Kim <sw0312.kim@samsung.com>,
- Stephen Boyd <swboyd@chromium.org>, Sumit Semwal <sumit.semwal@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Vincent Abriou <vincent.abriou@st.com>
-Subject: Re: [RESEND 00/26] Rid W=1 warnings from GPU
-Message-ID: <20210603115234.GA2435141@dell>
-References: <20210602143300.2330146-1-lee.jones@linaro.org>
- <YLi+KJrLjKbdXLxH@phenom.ffwll.local>
+ id 1lomQq-008bnq-W9; Thu, 03 Jun 2021 12:26:44 +0000
+X-UUID: b2b63e82b8374c9197e398daa1120f48-20210603
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=sMgMA2RpF06sYcGbBaNy1UgBN/IhJ6FavN5wIRQ3uSI=; 
+ b=N9lkVBcDoU7r2MJYzEMOd3azfIsoTtTXIveTXAMu7fBwrs9pu/j9kfAZo0+GO7hGQrkPibLpxpIRU7BDEN0JDWkSynhLqQkjwneLR4zfzEbCO415L/brCKsHlWtDslsUWGFXDJkq4+5Mct6ftiypHmMRiB4tJqXFVI4D1/x6Awc=;
+X-UUID: b2b63e82b8374c9197e398daa1120f48-20210603
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 711561099; Thu, 03 Jun 2021 05:26:38 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Jun 2021 05:26:30 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Jun 2021 20:26:29 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 3 Jun 2021 20:26:29 +0800
+Message-ID: <24fea4b3538f79f2ebbdff1fbb57855d24838824.camel@mediatek.com>
+Subject: Re: [PATCH v9 05/22] dt-bindings: ARM: Mediatek: Document bindings
+ of MT8192 clock controllers
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
+ <weiyi.lu@mediatek.com>
+Date: Thu, 3 Jun 2021 20:26:29 +0800
+In-Reply-To: <20210602172036.GA3601208@robh.at.kernel.org>
+References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
+ <20210524122053.17155-6-chun-jie.chen@mediatek.com>
+ <20210602172036.GA3601208@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YLi+KJrLjKbdXLxH@phenom.ffwll.local>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_045341_574614_EC16FA43 
-X-CRM114-Status: GOOD (  17.65  )
+X-CRM114-CacheID: sfid-20210603_052641_078150_2A4E8B51 
+X-CRM114-Status: GOOD (  22.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,61 +89,326 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAwMyBKdW4gMjAyMSwgRGFuaWVsIFZldHRlciB3cm90ZToKCj4gT24gV2VkLCBKdW4g
-MDIsIDIwMjEgYXQgMDM6MzI6MzRQTSArMDEwMCwgTGVlIEpvbmVzIHdyb3RlOgo+ID4gU29tZSBv
-ZmYgdGhlc2UgcGF0Y2hlcyBoYXZlIGJlZW4ga25vY2tpbmcgYXJvdW5kIGZvciBhIHdoaWxlLgo+
-ID4gCj4gPiBXaG8gd2lsbCBob292ZXIgdGhlbSB1cCBwbGVhc2U/Cj4gPiAKPiA+IFRoaXMgc2V0
-IGlzIHBhcnQgb2YgYSBsYXJnZXIgZWZmb3J0IGF0dGVtcHRpbmcgdG8gY2xlYW4tdXAgVz0xCj4g
-PiBrZXJuZWwgYnVpbGRzLCB3aGljaCBhcmUgY3VycmVudGx5IG92ZXJ3aGVsbWluZ2x5IHJpZGRs
-ZWQgd2l0aAo+ID4gbmlnZ2x5IGxpdHRsZSB3YXJuaW5ncy4KPiA+IAo+ID4gTGVlIEpvbmVzICgy
-Nik6Cj4gPiAgIGRybS9tZWRpYXRlay9tdGtfZGlzcF9jb2xvcjogU3RyaXAgaW5jb3JyZWN0IGRv
-YyBhbmQgZGVtb3RlIGhlYWRlcgo+ID4gICBkcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZ2FtbWE6IFN0
-cmlwIGFuZCBkZW1vdGUgbm9uLWNvbmZvcm1hbnQKPiA+ICAgICBrZXJuZWwtZG9jIGhlYWRlcgo+
-ID4gICBkcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsOiBTdHJpcCBhbmQgZGVtb3RlIG5vbi1jb25m
-b3JtYW50IGhlYWRlcgo+ID4gICBkcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfcmRtYTogU3RyaXAgYW5k
-IGRlbW90ZSBub24tY29uZm9ybWFudCBrZXJuZWwtZG9jCj4gPiAgICAgaGVhZGVyCj4gPiAgIGRy
-bS9zdGkvc3RpX2hkbWlfdHgzZzRjMjhwaHk6IFByb3ZpZGUgZnVuY3Rpb24gbmFtZXMgZm9yIGtl
-cm5lbC1kb2MKPiA+ICAgICBoZWFkZXJzCj4gPiAgIGRybS9zdGkvc3RpX2hkYTogUHJvdmlkZSBt
-aXNzaW5nIGZ1bmN0aW9uIG5hbWVzCj4gPiAgIGRybS9zdGkvc3RpX3R2b3V0OiBQcm92aWRlIGEg
-YnVuY2ggb2YgbWlzc2luZyBmdW5jdGlvbiBuYW1lcwo+ID4gICBkcm0vc3RpL3N0aV9ocXZkcDog
-Rml4IGluY29ycmVjdGx5IG5hbWVkIGZ1bmN0aW9uICdzdGlfaHF2ZHBfdnRnX2NiKCknCj4gPiAg
-IGRybS9tc20vZGlzcC9kcHUxL2RwdV9lbmNvZGVyX3BoeXNfY21kOiBSZW1vdmUgdW51c2VkIHZh
-cmlhYmxlCj4gPiAgICAgJ2NtZF9lbmMnCj4gPiAgIGRybS9tc20vZGlzcC9kcHUxL2RwdV9od19p
-bnRlcnJ1cHRzOiBEZW1vdGUgYSBidW5jaCBvZiBrZXJuZWwtZG9jCj4gPiAgICAgYWJ1c2VzCj4g
-PiAgIGRybS9tc20vZGlzcC9kcHUxL2RwdV9wbGFuZTogRml4IGEgY291cGxlIG9mIG5hbWluZyBp
-c3N1ZXMKPiA+ICAgZHJtL21zbS9tc21fZ2VtOiBEZW1vdGUga2VybmVsLWRvYyBhYnVzZXMKPiA+
-ICAgZHJtL21zbS9kcC9kcF9jYXRhbG9nOiBDb3JyZWN0bHkgZG9jdW1lbnQgcGFyYW0gJ2RwX2Nh
-dGFsb2cnCj4gPiAgIGRybS9tc20vZHAvZHBfbGluazogRml4IHNvbWUgcG90ZW50aWFsIGRvYy1y
-b3QKPiA+ICAgZHJtL25vdXZlYXUvbnZrbS9zdWJkZXYvbWMvdHUxMDI6IE1ha2UgZnVuY3Rpb25z
-IGNhbGxlZCBieSByZWZlcmVuY2UKPiA+ICAgICBzdGF0aWMKPiA+ICAgZHJtL2FtZC9kaXNwbGF5
-L2RjL2RjZS9kY2VfdHJhbnNmb3JtOiBSZW1vdmUgc3VwZXJmbHVvdXMKPiA+ICAgICByZS1pbml0
-aWFsaXNhdGlvbiBvZiBEQ0ZFX01FTV9MSUdIVF9TTEVFUF9DTlRMLAo+ID4gICBkcm0veGxueC96
-eW5xbXBfZGlzcDogRml4IGluY29ycmVjdGx5IG5hbWVkIGVudW0KPiA+ICAgICAnenlucW1wX2Rp
-c3BfbGF5ZXJfaWQnCj4gPiAgIGRybS94bG54L3p5bnFtcF9kcDogRml4IGluY29ycmVjdGx5IG5h
-bWUgZnVuY3Rpb24gJ3p5bnFtcF9kcF90cmFpbigpJwo+ID4gICBkcm0vdHRtL3R0bV90dDogRGVt
-b3RlIG5vbi1jb25mb3JtYW50IGtlcm5lbC1kb2MgaGVhZGVyCj4gPiAgIGRybS9wYW5lbC9wYW5l
-bC1yYXNwYmVycnlwaS10b3VjaHNjcmVlbjogRGVtb3RlIGtlcm5lbC1kb2MgYWJ1c2UKPiA+ICAg
-ZHJtL3BhbmVsL3BhbmVsLXNpdHJvbml4LXN0NzcwMTogRGVtb3RlIGtlcm5lbC1kb2MgYWJ1c2UK
-PiA+ICAgZHJtL3ZnZW0vdmdlbV9kcnY6IFN0YW5kYXJkIGNvbW1lbnQgYmxvY2tzIHNob3VsZCBu
-b3QgdXNlIGtlcm5lbC1kb2MKPiA+ICAgICBmb3JtYXQKPiA+ICAgZHJtL2V4eW5vcy9leHlub3M3
-X2RybV9kZWNvbjogRml4IGluY29ycmVjdCBuYW1pbmcgb2YKPiA+ICAgICAnZGVjb25fc2hhZG93
-X3Byb3RlY3Rfd2luKCknCj4gPiAgIGRybS9leHlub3MvZXh5bm9zX2RybV9pcHA6IEZpeCBkb2N1
-bWVudGF0aW9uIGZvcgo+ID4gICAgICdleHlub3NfZHJtX2lwcF9nZXRfe2NhcHMscmVzfV9pb2N0
-bCgpJwo+ID4gICBkcm0vdmJveHZpZGVvL2hnc21pX2Jhc2U6IFBsYWNlIGZ1bmN0aW9uIG5hbWVz
-IGludG8gaGVhZGVycwo+ID4gICBkcm0vdmJveHZpZGVvL21vZGVzZXR0aW5nOiBQcm92aWRlIGZ1
-bmN0aW9uIG5hbWVzIGZvciBwcm90b3R5cGUKPiA+ICAgICBoZWFkZXJzCj4gCj4gRXhjZXB0IGZv
-ciBtc20gKFJvYiBDbGFyayBwcm9taXNlZCBvbiBpcmMgaGUnbGwgcGljayB0aGVtIHVwIGZvciA1
-LjE0Cj4gc29vbikgYW5kIGFtZCAoQWxleCBpcyBvbiB0b3Agb2YgdGhpbmdzIEkgdGhpbmspIEkg
-cGlja2VkIHRoZW0gYWxsIHVwIGFuZAo+IG1lcmdlZCBpbnRvIGRybS1taXNjLW5leHQuCgpTdXBl
-cnN0YXIhICBUaGFua3MgRGFuaWVsLgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpTZW5pb3Ig
-VGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBz
-b3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdp
-dHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+On Wed, 2021-06-02 at 12:20 -0500, Rob Herring wrote:
+> On Mon, May 24, 2021 at 08:20:36PM +0800, Chun-Jie Chen wrote:
+> > This patch adds the binding documentation of topckgen, apmixedsys,
+> > infracfg, pericfg and subsystem clocks for Mediatek MT8192.
+> 
+> I suspect all these could just be merged into 1 schema like the
+> others 
+> if the only differences are compatible strings.
+> 
+
+Did you mean to create 2 schema for mt8192?
+1. medaitek,mt8192-clock.yaml: it contains all compatible string that
+only provide clocks control.
+2. mediatek,mt8192-sys.yaml: it contains all compatible string that
+provide clocks and other control.
+
+Best Regards,
+Chun-Jie 
+
+> > 
+> > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
+> > ---
+> >  .../arm/mediatek/mediatek,apmixedsys.txt      |  1 +
+> >  .../bindings/arm/mediatek/mediatek,audsys.txt |  1 +
+> >  .../bindings/arm/mediatek/mediatek,camsys.txt | 22
+> > +++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,imgsys.txt |  2 ++
+> >  .../arm/mediatek/mediatek,infracfg.txt        |  1 +
+> >  .../bindings/arm/mediatek/mediatek,ipesys.txt |  1 +
+> >  .../bindings/arm/mediatek/mediatek,mfgcfg.txt |  1 +
+> >  .../bindings/arm/mediatek/mediatek,mmsys.txt  |  1 +
+> >  .../arm/mediatek/mediatek,pericfg.yaml        |  1 +
+> >  .../arm/mediatek/mediatek,topckgen.txt        |  1 +
+> >  .../arm/mediatek/mediatek,vdecsys.txt         |  8 +++++++
+> >  .../arm/mediatek/mediatek,vencsys.txt         |  1 +
+> >  12 files changed, 41 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsy
+> > s.txt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsy
+> > s.txt
+> > index ea827e8763de..551c30735cd7 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsy
+> > s.txt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsy
+> > s.txt
+> > @@ -18,6 +18,7 @@ Required Properties:
+> >  	- "mediatek,mt8167-apmixedsys", "syscon"
+> >  	- "mediatek,mt8173-apmixedsys"
+> >  	- "mediatek,mt8183-apmixedsys", "syscon"
+> > +	- "mediatek,mt8192-apmixedsys", "syscon"
+> >  	- "mediatek,mt8516-apmixedsys"
+> >  - #clock-cells: Must be 1
+> >  
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.tx
+> > t
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.tx
+> > t
+> > index b32d374193c7..699776be1dd3 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.tx
+> > t
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,audsys.tx
+> > t
+> > @@ -13,6 +13,7 @@ Required Properties:
+> >  	- "mediatek,mt7623-audsys", "mediatek,mt2701-audsys", "syscon"
+> >  	- "mediatek,mt8167-audiosys", "syscon"
+> >  	- "mediatek,mt8183-audiosys", "syscon"
+> > +	- "mediatek,mt8192-audsys", "syscon"
+> >  	- "mediatek,mt8516-audsys", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.tx
+> > t
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.tx
+> > t
+> > index a0ce82085ad0..7d0b14e5c8ba 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.tx
+> > t
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,camsys.tx
+> > t
+> > @@ -9,6 +9,10 @@ Required Properties:
+> >  	- "mediatek,mt6765-camsys", "syscon"
+> >  	- "mediatek,mt6779-camsys", "syscon"
+> >  	- "mediatek,mt8183-camsys", "syscon"
+> > +	- "mediatek,mt8192-camsys", "syscon"
+> > +	- "mediatek,mt8192-camsys_rawa", "syscon"
+> > +	- "mediatek,mt8192-camsys_rawb", "syscon"
+> > +	- "mediatek,mt8192-camsys_rawc", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The camsys controller uses the common clk binding from
+> > @@ -22,3 +26,21 @@ camsys: camsys@1a000000  {
+> >  	reg = <0 0x1a000000  0 0x1000>;
+> >  	#clock-cells = <1>;
+> >  };
+> > +
+> > +camsys_rawa: syscon@1a04f000 {
+> > +	compatible = "mediatek,mt8192-camsys_rawa", "syscon";
+> > +	reg = <0 0x1a04f000 0 0x1000>;
+> > +	#clock-cells = <1>;
+> > +};
+> > +
+> > +camsys_rawb: syscon@1a06f000 {
+> > +	compatible = "mediatek,mt8192-camsys_rawb", "syscon";
+> > +	reg = <0 0x1a06f000 0 0x1000>;
+> > +	#clock-cells = <1>;
+> > +};
+> > +
+> > +camsys_rawc: syscon@1a08f000 {
+> > +	compatible = "mediatek,mt8192-camsys_rawc", "syscon";
+> > +	reg = <0 0x1a08f000 0 0x1000>;
+> > +	#clock-cells = <1>;
+> > +};
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.tx
+> > t
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.tx
+> > t
+> > index dce4c9241932..b9e599e116dc 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.tx
+> > t
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,imgsys.tx
+> > t
+> > @@ -15,6 +15,8 @@ Required Properties:
+> >  	- "mediatek,mt8167-imgsys", "syscon"
+> >  	- "mediatek,mt8173-imgsys", "syscon"
+> >  	- "mediatek,mt8183-imgsys", "syscon"
+> > +	- "mediatek,mt8192-imgsys", "syscon"
+> > +	- "mediatek,mt8192-imgsys2", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The imgsys controller uses the common clk binding from
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.
+> > txt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.
+> > txt
+> > index eb3523c7a7be..6e05a0014cf7 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.
+> > txt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.
+> > txt
+> > @@ -19,6 +19,7 @@ Required Properties:
+> >  	- "mediatek,mt8167-infracfg", "syscon"
+> >  	- "mediatek,mt8173-infracfg", "syscon"
+> >  	- "mediatek,mt8183-infracfg", "syscon"
+> > +	- "mediatek,mt8192-infracfg", "syscon"
+> >  	- "mediatek,mt8516-infracfg", "syscon"
+> >  - #clock-cells: Must be 1
+> >  - #reset-cells: Must be 1
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.tx
+> > t
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.tx
+> > t
+> > index 2ce889b023d9..9cd10350ab9b 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.tx
+> > t
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ipesys.tx
+> > t
+> > @@ -7,6 +7,7 @@ Required Properties:
+> >  
+> >  - compatible: Should be one of:
+> >  	- "mediatek,mt6779-ipesys", "syscon"
+> > +	- "mediatek,mt8192-ipesys", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The ipesys controller uses the common clk binding from
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.tx
+> > t
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.tx
+> > t
+> > index 054424fb64b4..6bfb49a43ef9 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.tx
+> > t
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mfgcfg.tx
+> > t
+> > @@ -10,6 +10,7 @@ Required Properties:
+> >  	- "mediatek,mt6779-mfgcfg", "syscon"
+> >  	- "mediatek,mt8167-mfgcfg", "syscon"
+> >  	- "mediatek,mt8183-mfgcfg", "syscon"
+> > +	- "mediatek,mt8192-mfgcfg", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The mfgcfg controller uses the common clk binding from
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> > index 78c50733985c..9712a6831fab 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> > @@ -16,6 +16,7 @@ Required Properties:
+> >  	- "mediatek,mt8167-mmsys", "syscon"
+> >  	- "mediatek,mt8173-mmsys", "syscon"
+> >  	- "mediatek,mt8183-mmsys", "syscon"
+> > +	- "mediatek,mt8192-mmsys", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  For the clock control, the mmsys controller uses the common clk
+> > binding from
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.y
+> > aml
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.y
+> > aml
+> > index 8723dfe34bab..b405cbcafb90 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.y
+> > aml
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,pericfg.y
+> > aml
+> > @@ -26,6 +26,7 @@ properties:
+> >                - mediatek,mt8135-pericfg
+> >                - mediatek,mt8173-pericfg
+> >                - mediatek,mt8183-pericfg
+> > +              - mediatek,mt8192-pericfg
+> >                - mediatek,mt8516-pericfg
+> >            - const: syscon
+> >        - items:
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.
+> > txt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.
+> > txt
+> > index 5ce7578cf274..1627e384b2ba 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.
+> > txt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.
+> > txt
+> > @@ -18,6 +18,7 @@ Required Properties:
+> >  	- "mediatek,mt8167-topckgen", "syscon"
+> >  	- "mediatek,mt8173-topckgen"
+> >  	- "mediatek,mt8183-topckgen", "syscon"
+> > +	- "mediatek,mt8192-topckgen", "syscon"
+> >  	- "mediatek,mt8516-topckgen"
+> >  - #clock-cells: Must be 1
+> >  
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.t
+> > xt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.t
+> > xt
+> > index 98195169176a..376c82ed09ab 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.t
+> > xt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vdecsys.t
+> > xt
+> > @@ -14,6 +14,8 @@ Required Properties:
+> >  	- "mediatek,mt8167-vdecsys", "syscon"
+> >  	- "mediatek,mt8173-vdecsys", "syscon"
+> >  	- "mediatek,mt8183-vdecsys", "syscon"
+> > +	- "mediatek,mt8192-vdecsys", "syscon"
+> > +	- "mediatek,mt8192-vdecsys_soc", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The vdecsys controller uses the common clk binding from
+> > @@ -27,3 +29,9 @@ vdecsys: clock-controller@16000000 {
+> >  	reg = <0 0x16000000 0 0x1000>;
+> >  	#clock-cells = <1>;
+> >  };
+> > +
+> > +vdecsys_soc: syscon@1600f000 {
+> > +	compatible = "mediatek,mt8192-vdecsys_soc", "syscon";
+> > +	reg = <0 0x1600f000 0 0x1000>;
+> > +	#clock-cells = <1>;
+> > +};
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.t
+> > xt
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.t
+> > xt
+> > index 6a6a14e15cd7..d22de01c24ec 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.t
+> > xt
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,vencsys.t
+> > xt
+> > @@ -11,6 +11,7 @@ Required Properties:
+> >  	- "mediatek,mt6797-vencsys", "syscon"
+> >  	- "mediatek,mt8173-vencsys", "syscon"
+> >  	- "mediatek,mt8183-vencsys", "syscon"
+> > +	- "mediatek,mt8192-vencsys", "syscon"
+> >  - #clock-cells: Must be 1
+> >  
+> >  The vencsys controller uses the common clk binding from
+> > -- 
+> > 2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
