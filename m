@@ -2,68 +2,65 @@ Return-Path: <SRS0=bWHh=K5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63815C47082
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 13:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBB01C47082
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 16:53:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 346F4600EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 13:57:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 346F4600EF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8EFC6613F1
+	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 16:53:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8EFC6613F1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=f5xK9quyX+IcEodcOKHkLDeT2LFw7x2AI3li/mdXb+8=; b=IGP4/naLAa8HZN
-	yYKPsCm4CW7f1ObmfkBT2MLhfW7Nsh0NYfL9wGalWo9UQV7fTr4zZFllOELmRQ/KrMUNQc7PDO6Wu
-	/RUO9iNI60R7MppK/5ayKlN4TqlhcUNztUdgLmqKthNa/nxq0L3NayUy8/hXn6n9QS0cScKBH6RfB
-	isSM8fJM8NMOmmpkYSsMhYZZ0uADOeO1PHKHuzC6gX8NesbPs9oZkNKSPkjZ2EpKGPsIFDfpcSluz
-	BEk8J49Z25QHN/doCIzx2H2qF3uOrCuvKmkqute5Ax9Pr4hn1UUYt/XDu0zi9CBentPP/0u6KIRRS
-	/y/9/jsabmCQX5Cr2tlQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fJcd7hzclk2KnYjKDXBHEvGzvo47uzayoq2FQ8jgbUc=; b=ugkIuDOgOxFgiW
+	ivGw4Nx/5c1Qm6goSmuWXI5NjwT6BQavWAQlz4OYqvFFpST7ElG0Hcq0PoYTJCV3nhaQgrcNJJrsz
+	kqXGYsqhyIpQVhIG8rbicq/DGfqGKZPbJQ++Pqst27p5xU3/iqoRdHw9kh8NniG2r+S8hPvnTzud/
+	tPYq5Ej1KY8TY/ykCjIS91+cCuSfjnWdIX7d23ewdUn0BikUdZB/0FgMgXKxo4z3IbHdM6FyfIlB0
+	Xvmnysjj+PKopc051uW8MGQmK2mWgBbZyF+dOtAj1ZsNBPTRFbyjsmb+Tv7nYw8EmDwX55V1qGcTn
+	PeELnJJP1mvBeOBc93Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lonqh-0091U7-ST; Thu, 03 Jun 2021 13:57:27 +0000
-Received: from szxga01-in.huawei.com ([45.249.212.187])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lonqS-0091Pm-GP; Thu, 03 Jun 2021 13:57:14 +0000
-Received: from dggemv703-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4FwnSV4w68zYqSw;
- Thu,  3 Jun 2021 21:54:18 +0800 (CST)
-Received: from dggema762-chm.china.huawei.com (10.1.198.204) by
- dggemv703-chm.china.huawei.com (10.3.19.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Thu, 3 Jun 2021 21:57:04 +0800
-Received: from huawei.com (10.175.127.227) by dggema762-chm.china.huawei.com
- (10.1.198.204) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Thu, 3 Jun
- 2021 21:57:03 +0800
-From: Yu Kuai <yukuai3@huawei.com>
-To: <sean.wang@kernel.org>, <linus.walleij@linaro.org>,
- <matthias.bgg@gmail.com>
-CC: <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <yukuai3@huawei.com>, <yi.zhang@huawei.com>
-Subject: [PATCH] pinctrl: mediatek: fix build error without CONFIG_PINCTRL_MTK
-Date: Thu, 3 Jun 2021 22:06:18 +0800
-Message-ID: <20210603140618.3044976-1-yukuai3@huawei.com>
-X-Mailer: git-send-email 2.31.1
+	id 1loqal-009eAx-06; Thu, 03 Jun 2021 16:53:11 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1loqUf-009bbI-1x; Thu, 03 Jun 2021 16:46:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E004F11B3;
+ Thu,  3 Jun 2021 09:46:51 -0700 (PDT)
+Received: from e123427-lin.arm.com (unknown [10.57.39.253])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 60D3E3F73D;
+ Thu,  3 Jun 2021 09:46:50 -0700 (PDT)
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Zhen Lei <thunder.leizhen@huawei.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Rob Herring <robh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pci <linux-pci@vger.kernel.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH 1/1] PCI: mediatek: Remove redundant error printing in
+ mtk_pcie_subsys_powerup()
+Date: Thu,  3 Jun 2021 17:46:45 +0100
+Message-Id: <162273879476.3130.11393537705815421285.b4-ty@arm.com>
+X-Mailer: git-send-email 2.26.1
+In-Reply-To: <20210511122453.6052-1-thunder.leizhen@huawei.com>
+References: <20210511122453.6052-1-thunder.leizhen@huawei.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.127.227]
-X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
- dggema762-chm.china.huawei.com (10.1.198.204)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_065712_806452_38BC4B98 
-X-CRM114-Status: UNSURE (   7.57  )
+X-CRM114-CacheID: sfid-20210603_094653_184184_703A9A4B 
+X-CRM114-Status: UNSURE (   7.93  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,41 +78,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If CONFIG_PINCTRL_MT8365 is set without CONFIG_PINCTRL_MTK,
-following build errors will be triggered:
+On Tue, 11 May 2021 20:24:53 +0800, Zhen Lei wrote:
+> When devm_ioremap_resource() fails, a clear enough error message will be
+> printed by its subfunction __devm_ioremap_resource(). The error
+> information contains the device name, failure cause, and possibly resource
+> information.
+> 
+> Therefore, remove the error printing here to simplify code and reduce the
+> binary size.
 
-aarch64-linux-gnu-ld: drivers/pinctrl/mediatek/pinctrl-mt8365.o: in function `mtk_pinctrl_probe':
-pinctrl-mt8365.c:(.text+0x20): undefined reference to `mtk_pctrl_init'
-aarch64-linux-gnu-ld: drivers/pinctrl/mediatek/pinctrl-mt8365.o: in function `mt8365_spec_pull_set':
-pinctrl-mt8365.c:(.text+0x64): undefined reference to `mtk_pctrl_spec_pull_set_samereg'
-aarch64-linux-gnu-ld: drivers/pinctrl/mediatek/pinctrl-mt8365.o: in function `mt8365_ies_smt_set':
-pinctrl-mt8365.c:(.text+0xbc): undefined reference to `mtk_pconf_spec_set_ies_smt_range'
-aarch64-linux-gnu-ld: pinctrl-mt8365.c:(.text+0xf0): undefined reference to `mtk_pconf_spec_set_ies_smt_range'
-aarch64-linux-gnu-ld: drivers/pinctrl/mediatek/pinctrl-mt8365.o:(.data+0xa0): undefined reference to `mtk_eint_pm_ops'
+Applied to pci/mediatek, thanks!
 
-Fix it by adding the dependency that CONFIG_PINCTRL_MT8365 will be
-relied on CONFIG_PINCTRL_MTK.
+[1/1] PCI: mediatek: Remove redundant error printing in mtk_pcie_subsys_powerup()
+      https://git.kernel.org/lpieralisi/pci/c/28bba1e220
 
-Signed-off-by: Yu Kuai <yukuai3@huawei.com>
----
- drivers/pinctrl/mediatek/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index b27c2070559a..3ec12651d4ef 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -157,6 +157,7 @@ config PINCTRL_MT8365
- 	bool "Mediatek MT8365 pin control"
- 	depends on OF
- 	depends on ARM64 || COMPILE_TEST
-+	depends on PINCTRL_MTK
- 	default ARM64 && ARCH_MEDIATEK
- 
- config PINCTRL_MT8516
--- 
-2.31.1
-
+Thanks,
+Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
