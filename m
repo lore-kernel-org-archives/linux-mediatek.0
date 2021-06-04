@@ -5,56 +5,57 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7BCEC07E94
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 10:53:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BE85C07E94
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 10:55:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8431C6141A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 10:53:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8431C6141A
+	by mail.kernel.org (Postfix) with ESMTPS id 50069613AE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 10:55:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50069613AE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q0rqAy0R5HlQMtGAFBFbmz0VFd8HH6vY4O4k+b7UyM8=; b=JQZ8TsRG+QCfrC
-	YZTz+yQCuTwLBYIGHvoLK8ryr9JZYAlrJML2GkOZ0cP+IuKgX65D4hCg/A/nKfUb0muStw1XsYyyp
-	pW0WUj3DO0gYzCmKiIwoMVPEiUCDBLExA+2BAUwqI/05FEud3sPneLRWO0/M29QZ5XKlIgBuOGK0t
-	8IXkryAz/ueJXXxsY7BpmmIWkJpb4nkmx2IWiC7Hm4Os/+SvBseWtGy7yMGLsbhRpU5wlvzHRlklq
-	ZxnIUIRIDZxmFirCHae99MC+sihTUPQNxil5jO5P1IuV45ekwvjAKbHFomS2LKOxudfXFWZqxxKF8
-	8RIKUPFLRsVJsE0Nv3rA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wwUakuFfFD1vKPUZn5W0VASihdicRxEFYSM5OVq7AYY=; b=2P4l5y57mkatsm
+	12D37aUpz5MvkUGVZ1zquQQan313dr5aLibDolrQ7W8KGIeM/GeRKOv9/w5yEbqqaRtj6SIASU8sb
+	1F588UrGpFI4H2YrfsSuBmu3oYkELaEqYVV+Mv4GaklDieMuIHZLgqfREbMCm1E1EnTlPjrYLclYm
+	1Z41L77yNBnhtcJrG1m8rWC76Ucjv30AbvZ88To8s9RRu+cjTqo/NzscNbKo85GQXF5FoMt5meejP
+	YzqzvQVwiGpTeuBegFPUs0V/ACvyWDCZl3Nr3MX7uOb0F55/rlSttLoOamQNUtQ9yfk8xYuPvFvk4
+	CJuzwDOAvrTyPMV5FDLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lp7S1-00D4qu-6u; Fri, 04 Jun 2021 10:53:17 +0000
+	id 1lp7Tj-00D5Nb-Qb; Fri, 04 Jun 2021 10:55:03 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lp75x-00CyD8-Dz; Fri, 04 Jun 2021 10:30:33 +0000
-X-UUID: 31df0a9dac5b4c25b39cb5b855d46d8b-20210604
+ id 1lp79N-00CzJi-9w; Fri, 04 Jun 2021 10:34:05 +0000
+X-UUID: 96bd065b461d4daa8855c99332f10a71-20210604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zPgFGl79xdqFXuyr6gKeQXG6s5oJj3B00gBV8X/bG2I=; 
- b=LKqf2hnJFu9T/vIRhvWNaEqpmzdTSITbKts4J3bhDJuEU8GRzlA3u+LN6++9RuPxXveqxyWhpk3cn1yyAsYWICr0JnaO3VErBAWwRdM+GUhDYpDJmEm8Q5pF5QNTzxjs2acSiOQk8eI7IzO88JrnNboFzRrcngt7q2Vz5A6LxPg=;
-X-UUID: 31df0a9dac5b4c25b39cb5b855d46d8b-20210604
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=qlh6aE/x/gHWiz/nOA35Qg6lab0OgrxMdW1A/X19DM8=; 
+ b=o7UuCI6Hf8rkUQ5B8uGPcDy7BWC1JTnUcw6mhq6h/vGZruzmc66YUBk4ltpQIUyk0uBeY3i/NXvcTKjRpiR/DMBTHdiDUsvE/58331jVQm8Z3LEUbW3uh2J6nzuKI83h6uZ5jDmRSj5gHPclsRPqP1vAeU/8bV73qRlzOLPx8pY=;
+X-UUID: 96bd065b461d4daa8855c99332f10a71-20210604
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <dawei.chien@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1959556502; Fri, 04 Jun 2021 03:30:21 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 03:30:14 -0700
+ with ESMTP id 249288504; Fri, 04 Jun 2021 03:33:59 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 03:30:13 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 18:30:13 +0800
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 18:30:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Jun 2021 18:30:12 +0800
+ Frontend Transport; Fri, 4 Jun 2021 18:30:11 +0800
 From: Dawei Chien <dawei.chien@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
@@ -64,20 +65,17 @@ CC: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
  <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
  Fan Chen <fan.chen@mediatek.com>, Arvin Wang <arvin.wang@mediatek.com>,
- "James Liao" <jamesjj.liao@mediatek.com>, Henry Chen
- <henryc.chen@mediatek.com>
-Subject: [PATCH V10 07/12] dt-bindings: interconnect: add MT6873 interconnect
- dt-bindings
-Date: Fri, 4 Jun 2021 18:29:54 +0800
-Message-ID: <20210604102959.13807-8-dawei.chien@mediatek.com>
+ "James Liao" <jamesjj.liao@mediatek.com>, Dawei Chien
+ <dawei.chien@mediatek.com>
+Subject: [PATCH 00/12] Add driver for dvfsrc, support for interconnect
+Date: Fri, 4 Jun 2021 18:29:47 +0800
+Message-ID: <20210604102959.13807-1-dawei.chien@mediatek.com>
 X-Mailer: git-send-email 2.14.1
-In-Reply-To: <20210604102959.13807-1-dawei.chien@mediatek.com>
-References: <20210604102959.13807-1-dawei.chien@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_033029_508075_0975DCD1 
-X-CRM114-Status: GOOD (  12.84  )
+X-CRM114-CacheID: sfid-20210604_033401_434610_5D82C85A 
+X-CRM114-Status: GOOD (  23.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,64 +92,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Henry Chen <henryc.chen@mediatek.com>
+This series is based on v5.13-rc1.
 
-Add interconnect provider dt-bindings for MT6873.
+The patchsets add support for MediaTek hardware module named DVFSRC
+(dynamic voltage and frequency scaling resource collector). The DVFSRC is
+a HW module which is used to collect all the requests from both software
+and hardware and turn into the decision of minimum operating voltage and
+minimum DRAM frequency to fulfill those requests.
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
- include/dt-bindings/interconnect/mtk,mt6873-emi.h | 41 +++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+So, This series is to implement the dvfsrc driver to collect all the
+requests of operating voltage or DRAM bandwidth from other device drivers
+likes GPU/Camera through 3 frameworks basically:
+
+1. interconnect framework: to aggregate the bandwidth
+   requirements from different clients
+
+[1] https://patchwork.kernel.org/cover/10766329/
+
+There has a hw module "DRAM scheduler", which used to control the
+throughput.
+The DVFSRC will collect forecast data of dram bandwidth from
+SW consumers(camera/gpu...), and according the forecast to change the DRAM
+frequency
+
+2. Regualtor framework: to handle the operating voltage requirement from
+   user or cosumer which not belong any power domain
+
+Changes in V10:
+* rebase all patches on v5.13-rc1
+* add acked TAG for interconnect provider driver (Georgi)
+* update comment message for typos. (Georgi)
+* update cover leter for typos.
+
+Changes in V9:
+* modify the configuration of dvfsrc.yaml. (Rob)
+
+Changes in V8:
+* Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
+* Remove Kconfig dependency of DVFSRC
+
+Changes in V7:
+* Fixed the dt_binding_check error of dvfsrc.yaml. (Rob)
+* Fixed the checkpatch complains of "Signed-off-by:
+email name mismatch". (Georgi)
+* Fixed coding style of interconnect driver. (Georgi)
+* Update comment of the years to 2021. (Georgi)
+
+Changes in V6:
+* Remove the performace state support, because the request from consumer
+can be replaced by using interconnect and regulator framework.
+* Update the DT patches and convert them to DT schema. (Georgi)
+* Modify the comment format and coding style. (Mark)
+
+Changes in V5:
+* Support more platform mt6873/mt8192
+* Drop the compatible and interconnect provider node and make the parent
+node an interconnect provider. (Rob/Georgi)
+* Make modification of interconnect driver from coding suggestion. (Georgi)
+* Move interconnect diagram into the commit text of patch. (Georgi)
+* Register the interconnect provider as a platform sub-device. (Georgi)
+
+Changes in V4:
+* Add acked TAG on dt-bindings patches. (Rob)
+* Declaration of emi_icc_aggregate since the prototype of aggregate
+function has changed meanwhile. (Georgi)
+* Used emi_icc_remove instead of icc_provider_del on probe. (Georgi)
+* Add dvfsrc regulator driver into series.
+* Bug fixed of mt8183_get_current_level.
+* Add mutex protection for pstate operation on dvfsrc_set_performance.
+
+Changes in V3:
+* Remove RFC from the subject prefix of the series
+* Combine dt-binding patch and move interconnect dt-binding document into
+dvfsrc. (Rob)
+* Remove unused header, add unit descirption to the bandwidth, rename
+compatible name on interconnect driver. (Georgi)
+* Fixed some coding style: check flow, naming, used readx_poll_timeout
+on dvfsrc driver. (Ryan)
+* Rename interconnect driver mt8183.c to mtk-emi.c
+* Rename interconnect header mtk,mt8183.h to mtk,emi.h
+* mtk-scpsys.c: Add opp table check first to avoid OF runtime parse failed
+
+Changes in RFC V2:
+* Remove the DT property dram_type. (Rob)
+* Used generic dts property 'opp-level' to get the performace
+state. (Stephen)
+* Remove unnecessary dependency config on Kconfig. (Stephen)
+* Remove unused header file, fixed some coding style issue, typo,
+error handling on dvfsrc driver. (Nicolas/Stephen)
+* Remove irq handler on dvfsrc driver. (Stephen)
+* Remove init table on dvfsrc driver, combine hw init on trustzone.
+* Add interconnect support of mt8183 to aggregate the emi bandwidth.
+(Georgi)
+
+V9: https://patchwork.kernel.org/project/linux-mediatek/list/?series=440389
+V8: https://patchwork.kernel.org/project/linux-mediatek/list/?series=421713
+V7: https://patchwork.kernel.org/project/linux-mediatek/list/?series=411057
+V6: https://patchwork.kernel.org/project/linux-mediatek/list/?series=406077
+V5: https://patchwork.kernel.org/project/linux-mediatek/list/?series=348065
+V4: https://lore.kernel.org/patchwork/cover/1209284/
+V3: https://patchwork.kernel.org/cover/11118867/
+RFC V2: https://lore.kernel.org/patchwork/patch/1068113/
+RFC V1: https://lore.kernel.org/patchwork/cover/1028535/
+
+Henry Chen (12):
+  dt-bindings: soc: Add dvfsrc driver bindings
+  soc: mediatek: add header for mediatek SIP interface
+  soc: mediatek: add driver for dvfsrc support
+  soc: mediatek: add support for mt6873
+  arm64: dts: mt8183: add dvfsrc related nodes
+  arm64: dts: mt8192: add dvfsrc related nodes
+  dt-bindings: interconnect: add MT6873 interconnect dt-bindings
+  interconnect: mediatek: Add interconnect provider driver
+  arm64: dts: mt8183: add dvfsrc related nodes
+  arm64: dts: mt8192: add dvfsrc related nodes
+  arm64: dts: mt8183: add dvfsrc regulator nodes
+  arm64: dts: mt8192: add dvfsrc regulator nodes
+
+ .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   |  67 +++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi           |  13 +
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi           |  14 +
+ drivers/interconnect/Kconfig                       |   1 +
+ drivers/interconnect/Makefile                      |   1 +
+ drivers/interconnect/mediatek/Kconfig              |  13 +
+ drivers/interconnect/mediatek/Makefile             |   3 +
+ drivers/interconnect/mediatek/mtk-emi.c            | 331 +++++++++++++
+ drivers/soc/mediatek/Kconfig                       |  11 +
+ drivers/soc/mediatek/Makefile                      |   1 +
+ drivers/soc/mediatek/mtk-dvfsrc.c                  | 535 +++++++++++++++++++++
+ include/dt-bindings/interconnect/mtk,mt6873-emi.h  |  41 ++
+ include/dt-bindings/interconnect/mtk,mt8183-emi.h  |  21 +
+ include/linux/soc/mediatek/mtk_dvfsrc.h            |  35 ++
+ include/linux/soc/mediatek/mtk_sip_svc.h           |   4 +
+ 15 files changed, 1091 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+ create mode 100644 drivers/interconnect/mediatek/Kconfig
+ create mode 100644 drivers/interconnect/mediatek/Makefile
+ create mode 100644 drivers/interconnect/mediatek/mtk-emi.c
+ create mode 100644 drivers/soc/mediatek/mtk-dvfsrc.c
  create mode 100644 include/dt-bindings/interconnect/mtk,mt6873-emi.h
+ create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
+ create mode 100644 include/linux/soc/mediatek/mtk_dvfsrc.h
 
-diff --git a/include/dt-bindings/interconnect/mtk,mt6873-emi.h b/include/dt-bindings/interconnect/mtk,mt6873-emi.h
-new file mode 100644
-index 000000000000..0b20011df010
---- /dev/null
-+++ b/include/dt-bindings/interconnect/mtk,mt6873-emi.h
-@@ -0,0 +1,41 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#ifndef __DT_BINDINGS_INTERCONNECT_MTK_MT6873_EMI_H
-+#define __DT_BINDINGS_INTERCONNECT_MTK_MT6873_EMI_H
-+
-+#define MT6873_SLAVE_DDR_EMI		0
-+#define MT6873_MASTER_MCUSYS		1
-+#define MT6873_MASTER_GPUSYS		2
-+#define MT6873_MASTER_MMSYS		3
-+#define MT6873_MASTER_MM_VPU		4
-+#define MT6873_MASTER_MM_DISP		5
-+#define MT6873_MASTER_MM_VDEC		6
-+#define MT6873_MASTER_MM_VENC		7
-+#define MT6873_MASTER_MM_CAM		8
-+#define MT6873_MASTER_MM_IMG		9
-+#define MT6873_MASTER_MM_MDP		10
-+#define MT6873_MASTER_VPUSYS		11
-+#define MT6873_MASTER_VPU_0		12
-+#define MT6873_MASTER_VPU_1		13
-+#define MT6873_MASTER_MDLASYS		14
-+#define MT6873_MASTER_MDLA_0		15
-+#define MT6873_MASTER_UFS		16
-+#define MT6873_MASTER_PCIE		17
-+#define MT6873_MASTER_USB		18
-+#define MT6873_MASTER_DBGIF		19
-+#define MT6873_SLAVE_HRT_DDR_EMI	20
-+#define MT6873_MASTER_HRT_MMSYS		21
-+#define MT6873_MASTER_HRT_MM_DISP	22
-+#define MT6873_MASTER_HRT_MM_VDEC	23
-+#define MT6873_MASTER_HRT_MM_VENC	24
-+#define MT6873_MASTER_HRT_MM_CAM	25
-+#define MT6873_MASTER_HRT_MM_IMG	26
-+#define MT6873_MASTER_HRT_MM_MDP	27
-+#define MT6873_MASTER_HRT_DBGIF		28
-+#define MT6873_MASTER_WIFI		29
-+#define MT6873_MASTER_BT		30
-+#define MT6873_MASTER_NETSYS		31
-+#endif
 -- 
 2.14.1
 _______________________________________________
