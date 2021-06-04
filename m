@@ -5,75 +5,76 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA249C4708F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E58D0C4708F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 09:41:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2870613BF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:41:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2870613BF
+	by mail.kernel.org (Postfix) with ESMTPS id B00D4613FF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 09:41:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B00D4613FF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HnNXn1jCN0yjIOTPgb5hwlmWWc/fgEj6TsWTMEW2ZYc=; b=kEVZvc6SAs16Ki
-	RR25W8RiBQxxLbFzkeNRaw0MajWOQ03iw0Bs64wtbp7GTY9E1gSWWO5BN6hV7832S4PTGWd7FNYUW
-	nQz3Bv2vpsQ+z4etQaisztz2dV1wh3x1KYDmHutOLvijp8z1Q1KIdfBXS5do4ZZNuVWWV2lZLcFzz
-	e72cnekDJMmU2NeNUcJi6s6f2wYWOPJL2+6c1ldPpE9AwUTMmk5TreS1a88EjbH6KtZIsxrNIZu0A
-	91sk17JSBIRIMFt2o2V4zE403uJpkmvZelIEpaXuEIS8iKM3BZSpvxSjhICigagCsHD0DakjlCOML
-	OxsPBx1mIua6aHUsSf+A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=q2us2aYjDqzzLhqhSCjjALGkiAqgF19ZXGtsSa2fbOI=; b=D1yku/bjefv2/W
+	kF17nltV2HHC5ttTOm/vFp+9LrTyrH37YewzDvmkRCINDxosE35h3Ou1jsBbDRuASuWbhwa9kzZGL
+	balonZkh1lxQJ92x751T23ZzbVDmJeR7Xw87XVQDtb0vCqNrkLsMlCdTKEPnSqkmX2SbfvWq4GBTd
+	pAcej0vMumSOf4f1s3PEOhwBgSBUW/74QIt1Uw6H8Q1G97uC0f02SgU2I+WQIR+rDl5WU0wODKs6K
+	tSO2vsDUVKwxSJM32ggXlH5Oa3S1PfVC+gK25TrBlmbXkLh2WvCq6U1L1qpQawLADeTZYq+sCNFdC
+	BUaoqvMs2rf32/P6jGeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lp4Sg-00C7mz-S9; Fri, 04 Jun 2021 07:41:46 +0000
+	id 1lp6KG-00Cgow-7a; Fri, 04 Jun 2021 09:41:12 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lp4Sb-00C7lO-OE; Fri, 04 Jun 2021 07:41:45 +0000
-X-UUID: b539e2089de942f099d6a1572bd6e464-20210604
+ id 1lp6K6-00Cgk3-LZ; Fri, 04 Jun 2021 09:41:09 +0000
+X-UUID: 3f9fab2c28e848d4951a051154538ead-20210604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NQmchDregfhZB01duz1X95f0DeAtAh6LLzSlyD5NK5w=; 
- b=mwCCWhmc340lYT/gFvEjvH+f5qpNEphHUw3K194Z+7YSvrxX/88Ww6kFjusCxgWCTct9aSuP9JA3LWKMzGZ8fh6N587BI6kufX49YJjl397j0jgIpMDZ8S3MbqvD8nXj4xSz/e126p8EzWeIq/sTpG0DQb24lc4X+6vmTj9geEo=;
-X-UUID: b539e2089de942f099d6a1572bd6e464-20210604
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=4QdC8QWUA/05R4ZTAFs8IDam3VuZ9uqY28YTYC8Y5AU=; 
+ b=T+2j8rhfHj/5PK9pYk1HXuQtJrxciNfUeTaeDKOS79lRzgpm6NMiIfPw5YqwQMRc2E1aVa3HBuSfvkSaGtsV9ljAp/KSvu93+tWaOAscEK6Op9LBwERDWeOZXZSOobHFN3nP9afWHBUCPGkaEAXvJHa+ONyUb2BXGmlQ1Bd3fCo=;
+X-UUID: 3f9fab2c28e848d4951a051154538ead-20210604
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <ben.tseng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1279683816; Fri, 04 Jun 2021 00:41:39 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 00:31:39 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 15:31:37 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 4 Jun 2021 15:31:37 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ with ESMTP id 1896466274; Fri, 04 Jun 2021 02:40:54 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 02:37:58 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 17:37:56 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 4 Jun 2021 17:37:56 +0800
+From: Ben Tseng <ben.tseng@mediatek.com>
+To: Fan Chen <fan.chen@mediatek.com>, Zhang Rui <rui.zhang@intel.com>, "Daniel
+ Lezcano" <daniel.lezcano@linaro.org>, <linux-pm@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>
+CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 2/3] phy: phy-mtk-tphy: support new hardware version
-Date: Fri, 4 Jun 2021 15:31:19 +0800
-Message-ID: <1622791880-20262-2-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Michael Kao
+ <michael.kao@mediatek.com>, Ben Tseng <ben.tseng@mediatek.com>
+Subject: [PATCH v3] arm64: dts: mt8183-kukui: Add tboard thermal zones
+Date: Fri, 4 Jun 2021 17:37:55 +0800
+Message-ID: <20210604093755.13288-1-ben.tseng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_004141_822801_A3048CA0 
-X-CRM114-Status: GOOD (  18.12  )
+X-CRM114-CacheID: sfid-20210604_024104_177464_CD96F28A 
+X-CRM114-Status: GOOD (  14.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,120 +91,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PHYA arch is updated, and doesn't support slew rate calibrate
-anymore on 7nm or advanced process, add a new version number to
-support it.
-Note: the FreqMeter bank is not used but reserved.
+From: Michael Kao <michael.kao@mediatek.com>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Add tboard thermal zones.
+The tboard thermal sensors are a kind of NTC sensors which are located
+on PCB board to correlate the temperature of the case (Tskin).
+
+pull-up voltage: 1800 mv
+pull-up resistor: 75K
+
+Vsense = pull-up voltage * Rntc / ( pull-up resistor + Rntc )
+AuxIn = Vsense * 4096 / 1500
+
+Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 40 +++++++++++++++++++++--------
- 1 file changed, 29 insertions(+), 11 deletions(-)
+Change in v3:
+        - Modify Tboard to tbaord in mt8183-kukui.dtsi
+        - Add more description about tboard thermal sensor
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 731c483a04de..42a1174da6cc 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -27,7 +27,8 @@
- #define SSUSB_SIFSLV_V1_U3PHYD		0x000
- #define SSUSB_SIFSLV_V1_U3PHYA		0x200
- 
--/* version V2 sub-banks offset base address */
-+/* version V2/V3 sub-banks offset base address */
-+/* V3: U2FREQ is not used anymore, but reserved */
- /* u2 phy banks */
- #define SSUSB_SIFSLV_V2_MISC		0x000
- #define SSUSB_SIFSLV_V2_U2FREQ		0x100
-@@ -270,6 +271,7 @@
- enum mtk_phy_version {
- 	MTK_PHY_V1 = 1,
- 	MTK_PHY_V2,
-+	MTK_PHY_V3,
+Change in v2:
+        - Rebase to kernel-v5.13-rc1
+        - Resend
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 14 ++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi       |  2 +-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ff56bcf..601f866 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -847,6 +847,20 @@
+ 	status = "okay";
  };
  
- struct mtk_phy_pdata {
-@@ -330,6 +332,10 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 	int fm_out;
- 	u32 tmp;
- 
-+	/* HW V3 doesn't support slew rate cal anymore */
-+	if (tphy->pdata->version == MTK_PHY_V3)
-+		return;
++&thermal_zones {
++	tboard1 {
++		polling-delay = <1000>; /* milliseconds */
++		polling-delay-passive = <0>; /* milliseconds */
++		thermal-sensors = <&tboard_thermistor1>;
++	};
 +
- 	/* use force value */
- 	if (instance->eye_src)
- 		return;
-@@ -878,7 +884,7 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
- 		writel(tmp, com + U3P_U2PHYBC12C);
- 	}
- 
--	if (instance->eye_src) {
-+	if (tphy->pdata->version < MTK_PHY_V3 && instance->eye_src) {
- 		tmp = readl(com + U3P_USBPHYACR5);
- 		tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
- 		tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(instance->eye_src);
-@@ -1042,11 +1048,15 @@ static struct phy *mtk_phy_xlate(struct device *dev,
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	if (tphy->pdata->version == MTK_PHY_V1) {
-+	switch (tphy->pdata->version) {
-+	case MTK_PHY_V1:
- 		phy_v1_banks_init(tphy, instance);
--	} else if (tphy->pdata->version == MTK_PHY_V2) {
-+		break;
-+	case MTK_PHY_V2:
-+	case MTK_PHY_V3:
- 		phy_v2_banks_init(tphy, instance);
--	} else {
-+		break;
-+	default:
- 		dev_err(dev, "phy version is not supported\n");
- 		return ERR_PTR(-EINVAL);
- 	}
-@@ -1075,6 +1085,10 @@ static const struct mtk_phy_pdata tphy_v2_pdata = {
- 	.version = MTK_PHY_V2,
- };
- 
-+static const struct mtk_phy_pdata tphy_v3_pdata = {
-+	.version = MTK_PHY_V3,
++	tboard2 {
++		polling-delay = <1000>; /* milliseconds */
++		polling-delay-passive = <0>; /* milliseconds */
++		thermal-sensors = <&tboard_thermistor2>;
++	};
 +};
 +
- static const struct mtk_phy_pdata mt8173_pdata = {
- 	.avoid_rx_sen_degradation = true,
- 	.version = MTK_PHY_V1,
-@@ -1086,6 +1100,7 @@ static const struct of_device_id mtk_tphy_id_table[] = {
- 	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
-+	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
- 	{ },
+ &u3phy {
+ 	status = "okay";
  };
- MODULE_DEVICE_TABLE(of, mtk_tphy_id_table);
-@@ -1129,12 +1144,15 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		}
- 	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index c5e822b..4173a5d 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -673,7 +673,7 @@
+ 			nvmem-cell-names = "calibration-data";
+ 		};
  
--	tphy->src_ref_clk = U3P_REF_CLK;
--	tphy->src_coef = U3P_SLEW_RATE_COEF;
--	/* update parameters of slew rate calibrate if exist */
--	device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
--		&tphy->src_ref_clk);
--	device_property_read_u32(dev, "mediatek,src-coef", &tphy->src_coef);
-+	if (tphy->pdata->version < MTK_PHY_V3) {
-+		tphy->src_ref_clk = U3P_REF_CLK;
-+		tphy->src_coef = U3P_SLEW_RATE_COEF;
-+		/* update parameters of slew rate calibrate if exist */
-+		device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
-+					 &tphy->src_ref_clk);
-+		device_property_read_u32(dev, "mediatek,src-coef",
-+					 &tphy->src_coef);
-+	}
- 
- 	port = 0;
- 	for_each_child_of_node(np, child_np) {
+-		thermal-zones {
++		thermal_zones: thermal-zones {
+ 			cpu_thermal: cpu_thermal {
+ 				polling-delay-passive = <100>;
+ 				polling-delay = <500>;
 -- 
-2.18.0
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
