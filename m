@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69CE9C07E94
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA249C4708F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:41:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D23F613AD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:32:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D23F613AD
+	by mail.kernel.org (Postfix) with ESMTPS id A2870613BF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 07:41:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2870613BF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,35 +24,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gqIIEWqzPnMhhTg7Y6RgJA7Ue5fDgiAWGyx6G+0g4oM=; b=o/eOq4YHaFHGyo
-	Hf73DXYcmcknHHgp8my9S5k3D+t4EctC7DN9D5LjD5KM/p7OLl1Y2NEZYM0cgZmN7ffRPohiInHL/
-	W3/ZPVRyWZEo6YVqTpEanAE/0p7HFPVY5MNCLKZXybK7IrfCF/wWFPAr8dM8YzT8QC68sjLF5cEEP
-	V7CR1vnUOUifzM5rLcuCfQ+6Q7qsCIYdPqxjWvnwopvqaNgMGm5T0Qr77d/2Yl83+SlV/YQzCIrOe
-	BOe1gPXSIvgzB+DFIYL8f0Mq3B9miQlRrMfc/m25HrUKsecvZRqPYL6Ca3CKiLOWSMM5fyapAn2Yo
-	mLDkamON/vJJRWTgZskw==;
+	List-Owner; bh=HnNXn1jCN0yjIOTPgb5hwlmWWc/fgEj6TsWTMEW2ZYc=; b=kEVZvc6SAs16Ki
+	RR25W8RiBQxxLbFzkeNRaw0MajWOQ03iw0Bs64wtbp7GTY9E1gSWWO5BN6hV7832S4PTGWd7FNYUW
+	nQz3Bv2vpsQ+z4etQaisztz2dV1wh3x1KYDmHutOLvijp8z1Q1KIdfBXS5do4ZZNuVWWV2lZLcFzz
+	e72cnekDJMmU2NeNUcJi6s6f2wYWOPJL2+6c1ldPpE9AwUTMmk5TreS1a88EjbH6KtZIsxrNIZu0A
+	91sk17JSBIRIMFt2o2V4zE403uJpkmvZelIEpaXuEIS8iKM3BZSpvxSjhICigagCsHD0DakjlCOML
+	OxsPBx1mIua6aHUsSf+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lp4J5-00C5i0-5s; Fri, 04 Jun 2021 07:31:51 +0000
+	id 1lp4Sg-00C7mz-S9; Fri, 04 Jun 2021 07:41:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lp4Ix-00C5fS-Q4; Fri, 04 Jun 2021 07:31:48 +0000
-X-UUID: bbd97a724d264337b76d8811ffe30cc9-20210604
+ id 1lp4Sb-00C7lO-OE; Fri, 04 Jun 2021 07:41:45 +0000
+X-UUID: b539e2089de942f099d6a1572bd6e464-20210604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=DP2VjImaYvy6uGmxd2mBL0lX4zY7Anbguo1MnYSpNdE=; 
- b=FeIOZCXWQLRiFlxpUNLsmJToKffN3qIaJWRoPGXI+Bj7CbN0NnkFhWx8GQBSsBGBtrft+jVO1fW91t2I5UawgSMGxclx52E1NQl0hoPHrURWCPiIKcrEbSqaz2FAKcHiB2xh5NpaMzh11ECwZaraGDyVqmmNZFFaA4UbDEb58iw=;
-X-UUID: bbd97a724d264337b76d8811ffe30cc9-20210604
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=NQmchDregfhZB01duz1X95f0DeAtAh6LLzSlyD5NK5w=; 
+ b=mwCCWhmc340lYT/gFvEjvH+f5qpNEphHUw3K194Z+7YSvrxX/88Ww6kFjusCxgWCTct9aSuP9JA3LWKMzGZ8fh6N587BI6kufX49YJjl397j0jgIpMDZ8S3MbqvD8nXj4xSz/e126p8EzWeIq/sTpG0DQb24lc4X+6vmTj9geEo=;
+X-UUID: b539e2089de942f099d6a1572bd6e464-20210604
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 78809527; Fri, 04 Jun 2021 00:31:39 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 00:31:38 -0700
+ with ESMTP id 1279683816; Fri, 04 Jun 2021 00:41:39 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 00:31:39 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 15:31:38 +0800
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 15:31:37 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Fri, 4 Jun 2021 15:31:37 +0800
@@ -63,17 +63,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH 3/3] phy: phy-mtk-tphy: add support mt8195
-Date: Fri, 4 Jun 2021 15:31:20 +0800
-Message-ID: <1622791880-20262-3-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 2/3] phy: phy-mtk-tphy: support new hardware version
+Date: Fri, 4 Jun 2021 15:31:19 +0800
+Message-ID: <1622791880-20262-2-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_003145_000413_4685E558 
-X-CRM114-Status: GOOD (  15.42  )
+X-CRM114-CacheID: sfid-20210604_004141_822801_A3048CA0 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,126 +90,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The controller is designed to use use PLL integer mode, but
-in fact used fractional mode for some ones on mt8195, this
-causes signal degradation (e.g. eye diagram test fail), fix
-it by switching PLL to 26Mhz from default 48Mhz to improve
-signal quality.
+The PHYA arch is updated, and doesn't support slew rate calibrate
+anymore on 7nm or advanced process, add a new version number to
+support it.
+Note: the FreqMeter bank is not used but reserved.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 52 +++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 40 +++++++++++++++++++++--------
+ 1 file changed, 29 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 42a1174da6cc..c3dc1763a7eb 100644
+index 731c483a04de..42a1174da6cc 100644
 --- a/drivers/phy/mediatek/phy-mtk-tphy.c
 +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -41,6 +41,8 @@
+@@ -27,7 +27,8 @@
+ #define SSUSB_SIFSLV_V1_U3PHYD		0x000
+ #define SSUSB_SIFSLV_V1_U3PHYA		0x200
  
- #define U3P_USBPHYACR0		0x000
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
-+#define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
-+#define PA0_USB20_PLL_PREDIV_VAL(x)	((0x3 & (x)) << 6)
- #define PA0_RG_USB20_INTR_EN		BIT(5)
- 
- #define U3P_USBPHYACR1		0x004
-@@ -52,6 +54,8 @@
- #define PA1_RG_TERM_SEL_VAL(x)	((0x7 & (x)) << 8)
- 
- #define U3P_USBPHYACR2		0x008
-+#define PA2_RG_U2PLL_BW			GENMASK(21, 19)
-+#define PA2_RG_U2PLL_BW_VAL(x)		((0x7 & (x)) << 19)
- #define PA2_RG_SIF_U2PLL_FORCE_EN	BIT(18)
- 
- #define U3P_USBPHYACR5		0x014
-@@ -73,6 +77,14 @@
- #define P2C_USB20_GPIO_MODE		BIT(8)
- #define P2C_U2_GPIO_CTR_MSK	(P2C_RG_USB20_GPIO_CTL | P2C_USB20_GPIO_MODE)
- 
-+#define U3P_U2PHYA_RESV		0x030
-+#define P2R_RG_U2PLL_FBDIV_26M		0x1bb13b
-+#define P2R_RG_U2PLL_FBDIV_48M		0x3c0000
-+
-+#define U3P_U2PHYA_RESV1	0x044
-+#define P2R_RG_U2PLL_REFCLK_SEL	BIT(5)
-+#define P2R_RG_U2PLL_FRA_EN		BIT(3)
-+
- #define U3D_U2PHYDCR0		0x060
- #define P2C_RG_SIF_U2PLL_FORCE_ON	BIT(24)
- 
-@@ -277,6 +289,12 @@ enum mtk_phy_version {
- struct mtk_phy_pdata {
- 	/* avoid RX sensitivity level degradation only for mt8173 */
- 	bool avoid_rx_sen_degradation;
-+	/*
-+	 * u2phy should use integer mode instead of fractional mode of
-+	 * 48M PLL, fix it by switching PLL to 26M from default 48M
-+	 * for mt8195
-+	 */
-+	bool sw_pll_48m_to_26m;
- 	enum mtk_phy_version version;
+-/* version V2 sub-banks offset base address */
++/* version V2/V3 sub-banks offset base address */
++/* V3: U2FREQ is not used anymore, but reserved */
+ /* u2 phy banks */
+ #define SSUSB_SIFSLV_V2_MISC		0x000
+ #define SSUSB_SIFSLV_V2_U2FREQ		0x100
+@@ -270,6 +271,7 @@
+ enum mtk_phy_version {
+ 	MTK_PHY_V1 = 1,
+ 	MTK_PHY_V2,
++	MTK_PHY_V3,
  };
  
-@@ -456,6 +474,33 @@ static void u3_phy_instance_init(struct mtk_tphy *tphy,
- 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, instance->index);
- }
+ struct mtk_phy_pdata {
+@@ -330,6 +332,10 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
+ 	int fm_out;
+ 	u32 tmp;
  
-+static void u2_phy_pll_26m_set(struct mtk_tphy *tphy,
-+	struct mtk_phy_instance *instance)
-+{
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
-+	u32 tmp;
-+
-+	if (!tphy->pdata->sw_pll_48m_to_26m)
++	/* HW V3 doesn't support slew rate cal anymore */
++	if (tphy->pdata->version == MTK_PHY_V3)
 +		return;
 +
-+	tmp = readl(com + U3P_USBPHYACR0);
-+	tmp &= ~PA0_USB20_PLL_PREDIV;
-+	tmp |= PA0_USB20_PLL_PREDIV_VAL(0);
-+	writel(tmp, com + U3P_USBPHYACR0);
-+
-+	tmp = readl(com + U3P_USBPHYACR2);
-+	tmp &= ~PA2_RG_U2PLL_BW;
-+	tmp |= PA2_RG_U2PLL_BW_VAL(3);
-+	writel(tmp, com + U3P_USBPHYACR2);
-+
-+	writel(P2R_RG_U2PLL_FBDIV_26M, com + U3P_U2PHYA_RESV);
-+
-+	tmp = readl(com + U3P_U2PHYA_RESV1);
-+	tmp |= P2R_RG_U2PLL_FRA_EN | P2R_RG_U2PLL_REFCLK_SEL;
-+	writel(tmp, com + U3P_U2PHYA_RESV1);
-+}
-+
- static void u2_phy_instance_init(struct mtk_tphy *tphy,
- 	struct mtk_phy_instance *instance)
- {
-@@ -941,6 +986,7 @@ static int mtk_phy_init(struct phy *phy)
+ 	/* use force value */
+ 	if (instance->eye_src)
+ 		return;
+@@ -878,7 +884,7 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
+ 		writel(tmp, com + U3P_U2PHYBC12C);
+ 	}
  
- 	switch (instance->type) {
- 	case PHY_TYPE_USB2:
-+		u2_phy_pll_26m_set(tphy, instance);
- 		u2_phy_instance_init(tphy, instance);
- 		u2_phy_props_set(tphy, instance);
- 		break;
-@@ -1094,10 +1140,16 @@ static const struct mtk_phy_pdata mt8173_pdata = {
- 	.version = MTK_PHY_V1,
+-	if (instance->eye_src) {
++	if (tphy->pdata->version < MTK_PHY_V3 && instance->eye_src) {
+ 		tmp = readl(com + U3P_USBPHYACR5);
+ 		tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
+ 		tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(instance->eye_src);
+@@ -1042,11 +1048,15 @@ static struct phy *mtk_phy_xlate(struct device *dev,
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	if (tphy->pdata->version == MTK_PHY_V1) {
++	switch (tphy->pdata->version) {
++	case MTK_PHY_V1:
+ 		phy_v1_banks_init(tphy, instance);
+-	} else if (tphy->pdata->version == MTK_PHY_V2) {
++		break;
++	case MTK_PHY_V2:
++	case MTK_PHY_V3:
+ 		phy_v2_banks_init(tphy, instance);
+-	} else {
++		break;
++	default:
+ 		dev_err(dev, "phy version is not supported\n");
+ 		return ERR_PTR(-EINVAL);
+ 	}
+@@ -1075,6 +1085,10 @@ static const struct mtk_phy_pdata tphy_v2_pdata = {
+ 	.version = MTK_PHY_V2,
  };
  
-+static const struct mtk_phy_pdata mt8195_pdata = {
-+	.sw_pll_48m_to_26m = true,
++static const struct mtk_phy_pdata tphy_v3_pdata = {
 +	.version = MTK_PHY_V3,
 +};
 +
- static const struct of_device_id mtk_tphy_id_table[] = {
- 	{ .compatible = "mediatek,mt2701-u3phy", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,mt2712-u3phy", .data = &tphy_v2_pdata },
+ static const struct mtk_phy_pdata mt8173_pdata = {
+ 	.avoid_rx_sen_degradation = true,
+ 	.version = MTK_PHY_V1,
+@@ -1086,6 +1100,7 @@ static const struct of_device_id mtk_tphy_id_table[] = {
  	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
-+	{ .compatible = "mediatek,mt8195-tphy", .data = &mt8195_pdata },
  	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
  	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
++	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_tphy_id_table);
+@@ -1129,12 +1144,15 @@ static int mtk_tphy_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	tphy->src_ref_clk = U3P_REF_CLK;
+-	tphy->src_coef = U3P_SLEW_RATE_COEF;
+-	/* update parameters of slew rate calibrate if exist */
+-	device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
+-		&tphy->src_ref_clk);
+-	device_property_read_u32(dev, "mediatek,src-coef", &tphy->src_coef);
++	if (tphy->pdata->version < MTK_PHY_V3) {
++		tphy->src_ref_clk = U3P_REF_CLK;
++		tphy->src_coef = U3P_SLEW_RATE_COEF;
++		/* update parameters of slew rate calibrate if exist */
++		device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
++					 &tphy->src_ref_clk);
++		device_property_read_u32(dev, "mediatek,src-coef",
++					 &tphy->src_coef);
++	}
+ 
+ 	port = 0;
+ 	for_each_child_of_node(np, child_np) {
 -- 
 2.18.0
 _______________________________________________
