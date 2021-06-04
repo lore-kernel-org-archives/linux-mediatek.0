@@ -2,92 +2,84 @@ Return-Path: <SRS0=7C4w=K6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BFD1C47083
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 03:56:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02583C4708F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 05:26:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 642276124B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 03:56:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 642276124B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id B70D460231
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 05:26:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B70D460231
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bzf/Iqd0c7w3pFP9BS1nls9ORT33KeiyevWwze5Kj80=; b=QqpleTvEhXXGv8
-	nQ8jPwviuyPV+KTEDHrYCH+wQXKlPJAlPqqMO8o1dxNBeHO98DlSPPC6fweIaIep3eEWcGR6ZZx9n
-	vXs/ikBVNR5LQGvy08fcIkXjmeoD41dMbfB9vn0Gctm+VZJRsdSWMBxInWvaJ21eGkMDuMPa2DMBk
-	qC6XhHrwruZRCwTM68AbVHbCxhZwFHnG4boQm6igVUoOKhdR8XtxwpaplVqg3j3YgoSieTRdTxnjC
-	TeLUMX7I52kzC9uRgX9OsEazT/8f8/hOCxKCYmsi0fijgx8QflhXK28oe59mSpC6HnM8PB2DRz7Le
-	U6qF9WfghYkYPSzWQPmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WxbgrbD0isUlHAqqUy9ilFd6TfnIeZZB8md2LoX4lBI=; b=X43qs3stq9ZOJP
+	owT0IHia0utWTNi/bXlT2Z+JyHzky6n8JWHJpKgT0fUhg3VIhz17Xiyl/iCnHJ9siA6Yli+WZ5UgF
+	DxVx4hdR5nDtdu0QH+mHJqq0Qwspm3+Zh6zb4ZcOlyZNYoKbxguCVkCAIImU6Dkgj2j71bgFzDkVe
+	n2SVIvRjQrXHxRvw+8y9L+IzCE8SVnGQuv8rQp3rbZBdxFtH3pawC+LARaxt4hrnja2btBI9cnLO/
+	kdNw3hvQRkqGlD3dP4B74lN5/LhAUMTY3v13z3wv3iWfeaWXkkYPRgJV/F6L32h4w5DMXaLCoO9zO
+	EON90GwtaX97uwpoZmRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lp0wr-00BQq6-7O; Fri, 04 Jun 2021 03:56:41 +0000
-Received: from mail-pj1-f43.google.com ([209.85.216.43])
+	id 1lp2Jg-00BaVu-Rz; Fri, 04 Jun 2021 05:24:20 +0000
+Received: from mail-pg1-f174.google.com ([209.85.215.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lp0wd-00BQop-UN
- for linux-mediatek@lists.infradead.org; Fri, 04 Jun 2021 03:56:29 +0000
-Received: by mail-pj1-f43.google.com with SMTP id i22so4880331pju.0
- for <linux-mediatek@lists.infradead.org>; Thu, 03 Jun 2021 20:56:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=eMMwY8qQNkTVoHZiZIl5tn9ghZC2j5sUCYWs3fjlNkc=;
- b=WQYEOJQWgXV4Z7RlPLlCH0GI+8Mhykds+lFNzn0YEf1jC3NHqQDlnuj1KwVBv/ZBQX
- pZNuy4boZd2b5p9mFrU+nNwNa8pExofWPH8fWCT2NkP+ZEEdC26KFyH0eXB1nm+bz/2Z
- HSFTbe3cq9V7LGWs2wNjTxwxjbSAjqCKZw8zKzq3/mJe4N/JoD6Kqcb0lislhEzPbWAF
- dQcDE12nrPhNyxzg6hjcYpp7wXdFO59UM1Dd0LuPnJ7XZFdv01gp1F1pRwEZLc8t/Xe4
- xMi+71z90CBtnKV8nH+H+8qVxwYvONklR91BD3XYmLThGLSZMOFLzuA4QefdfVyrqcH+
- TNuw==
+ id 1lp2Jd-00BaUT-LQ
+ for linux-mediatek@lists.infradead.org; Fri, 04 Jun 2021 05:24:19 +0000
+Received: by mail-pg1-f174.google.com with SMTP id r1so6932032pgk.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 03 Jun 2021 22:24:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ou+5Gxt442X8xkeW3uWe3IRZ83ptsxqSonXgl3FX8xQ=;
+ b=i/I2bNau508ongcxT99xkVylIKRuF3sa8CpRX7GWqOCafNY3nqX/5+dASBkdhg4YNX
+ jnHBexP8FK3Isb4gtHTpgPHeBHA8IuxnpakF5x+tMkQGXqV/2IzDqzmyaQe1kedGO4ET
+ K5qaEeUOJ3J8gymFRq/zQqYTGjbMcrg26v7SI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=eMMwY8qQNkTVoHZiZIl5tn9ghZC2j5sUCYWs3fjlNkc=;
- b=uN4ZsJ6tIm7X4yDu08DHIP1grrb23yBv2tfGVO7bUyBEcAiXQb2n0idQqZHvDEzw9O
- Dwms/4Of1G9FJPOwiTQ1xK00Glgw5kwHuWtp3Qe4M9ZdhoAiv7aWPHfj97zPRAKVCvHI
- GQ48GHSgLXWH/S+8GhnEp8tydE7qmUPoD5egNFY3ZZLCusNx7bZz+8DEDO3MuD/CIQYL
- Ukge+mvCZhhNEL4B9RHFQDn7KTpjAYOtKQXEoVPIrSJfZwyIla8cXUDI2WpXDptq3IvE
- HLc18vGI+k2D+IxA4vsfj2J3JSGWDgLL9UgWLeGPcdatIG2UCCMc837XSXjdOMYjusYe
- /Dig==
-X-Gm-Message-State: AOAM531iJem2atstEatdYBR/Fic4Ln+NZ5O5/76NIfRg0HZXFSsrc6co
- z8y3Nk/rCn+e5wGntbGvoyGxWw==
-X-Google-Smtp-Source: ABdhPJw31ObwYL3vjh7VCbQTqwewCpEgPzasyY0q9PhumD4gKAiT8PNeki4nnCaX5rvxG2YlnrciEQ==
-X-Received: by 2002:a17:902:548:b029:10f:30af:7d5f with SMTP id
- 66-20020a1709020548b029010f30af7d5fmr1584319plf.22.1622778925580; 
- Thu, 03 Jun 2021 20:55:25 -0700 (PDT)
-Received: from localhost ([136.185.154.93])
- by smtp.gmail.com with ESMTPSA id s22sm475766pfd.94.2021.06.03.20.55.24
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ou+5Gxt442X8xkeW3uWe3IRZ83ptsxqSonXgl3FX8xQ=;
+ b=m/X6ptmqyXy//OW4bxtIsbuQK2MkI9y5kJCmNarb0AUV1RpFe6ylyrqeTRK0iX+w6H
+ nLvxoqJSM57QrjrM7sRM2Skq3bR2LkXlLHYmRPAbAmKOBriG1SXmMRNSanywyJ5Vbd5c
+ tUc44tQ3WsjHZr6GJ9Bi0CMpS9w153QMMSgEEANN7lZmHh9dHtf6P9A48fctp68SBFQm
+ Z9w8SCNtlwLexhpu/koT2u1Yby/rSqYnMNZcgFPO06smI4gtTB++DrM5Xy5UO+qh4ga9
+ uVz36L8qT+QE4C+m6kjeRtcpg56FHkG8BJOchGJs+gVHTZG7LaYGPrJnvwYPaZVeOyWP
+ 3bAw==
+X-Gm-Message-State: AOAM530DI39Dl7WFkAX1weHQwyB9eYPHuiVNWlkiZKNUz4QgDn89YCwG
+ 5WnR9zAHBczlTvQN27ilpP+kQg==
+X-Google-Smtp-Source: ABdhPJyHxxvl5l6bCBee5L8J3KZuCjCbX/zO+AY7q3xVIJW2Ma/t0+sLRjLQ21li9y//x/sE4J8yMQ==
+X-Received: by 2002:a63:4b59:: with SMTP id k25mr3183604pgl.252.1622784196837; 
+ Thu, 03 Jun 2021 22:23:16 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:886f:8bd0:e6e2:4e47])
+ by smtp.gmail.com with ESMTPSA id c15sm754014pgt.68.2021.06.03.22.23.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Jun 2021 20:55:25 -0700 (PDT)
-Date: Fri, 4 Jun 2021 09:25:21 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Seiya Wang <seiya.wang@mediatek.com>
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com
-Subject: Re: [RESEND 1/2] clk: mediatek: remove deprecated CLK_INFRA_CA57SEL
- for MT8173 SoC
-Message-ID: <20210604035521.ly6unoj5537xy27h@vireshk-i7>
-References: <20210601071042.31349-1-seiya.wang@mediatek.com>
+ Thu, 03 Jun 2021 22:23:16 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH 1/2] arm64: dts: mt8183: Add kukui-jacuzzi-cerise board
+Date: Fri,  4 Jun 2021 13:23:11 +0800
+Message-Id: <20210604052312.1040707-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.rc1.229.g3e70b5a671-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210601071042.31349-1-seiya.wang@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_205628_046626_17C68FA7 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20210603_222417_735469_C733A468 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,32 +96,211 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 01-06-21, 15:10, Seiya Wang wrote:
-> Remove CLK_INFRA_CA57SEL for MT8173 since it's no longer used.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
-> ---
->  include/dt-bindings/clock/mt8173-clk.h | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/include/dt-bindings/clock/mt8173-clk.h b/include/dt-bindings/clock/mt8173-clk.h
-> index 3acebe937bfc..3d00c98b9654 100644
-> --- a/include/dt-bindings/clock/mt8173-clk.h
-> +++ b/include/dt-bindings/clock/mt8173-clk.h
-> @@ -186,7 +186,6 @@
->  #define CLK_INFRA_PMICWRAP		11
->  #define CLK_INFRA_CLK_13M		12
->  #define CLK_INFRA_CA53SEL               13
-> -#define CLK_INFRA_CA57SEL               14 /* Deprecated. Don't use it. */
->  #define CLK_INFRA_CA72SEL               14
->  #define CLK_INFRA_NR_CLK                15
+Cerise is known as ASUS Chromebook CZ1.
+Stern is known as ASUS Chromebook Flip CZ1.
 
-Applied both. Thanks.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+The difference of rev3 and non rev3 are the audio driver they use, which
+is not added in this series.
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |  4 +++
+ .../mt8183-kukui-jacuzzi-cerise-rev3.dts      | 24 +++++++++++++
+ .../mediatek/mt8183-kukui-jacuzzi-cerise.dts  | 24 +++++++++++++
+ .../mediatek/mt8183-kukui-jacuzzi-cerise.dtsi | 13 +++++++
+ .../mt8183-kukui-jacuzzi-stern-rev3.dts       | 34 +++++++++++++++++++
+ .../mediatek/mt8183-kukui-jacuzzi-stern.dts   | 34 +++++++++++++++++++
+ 6 files changed, 133 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
 
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 4f68ebed2e318..f162d7b028d97 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -14,6 +14,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana-rev7.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-evb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-burnet.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-cerise.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-cerise-rev3.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-damu.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel-sku1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel-sku6.dtb
+@@ -21,6 +23,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-fennel14.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-juniper-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kappa.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-kenzo.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-stern.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-stern-rev3.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts
+new file mode 100644
+index 0000000000000..2776d93561c96
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise-rev3.dts
+@@ -0,0 +1,24 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi-cerise.dtsi"
++
++/ {
++	model = "Google cerise board";
++	compatible = "google,cerise-rev3-sku0", "google,cerise", "mediatek,mt8183";
++};
++
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
++
++&touchscreen {
++	status = "disabled";
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_CERISE";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
+new file mode 100644
+index 0000000000000..418b5024d1a7c
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dts
+@@ -0,0 +1,24 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi-cerise.dtsi"
++
++/ {
++	model = "Google cerise board";
++	compatible = "google,cerise-sku0", "google,cerise", "mediatek,mt8183";
++};
++
++&mt6358codec {
++	mediatek,dmic-mode = <1>; /* one-wire */
++};
++
++&touchscreen {
++	status = "disabled";
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_CERISE";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
+new file mode 100644
+index 0000000000000..ec1561ac395ba
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-cerise.dtsi
+@@ -0,0 +1,13 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi.dtsi"
++
++&mmc1_pins_uhs {
++	pins_clk {
++		drive-strength = <MTK_DRIVE_6mA>;
++	};
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts
+new file mode 100644
+index 0000000000000..05303c4ed7511
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern-rev3.dts
+@@ -0,0 +1,34 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi-cerise.dtsi"
++
++/ {
++	model = "Google stern board";
++	compatible = "google,cerise-rev3-sku1", "google,cerise", "mediatek,mt8183";
++};
++
++&mt6358codec {
++	mediatek,dmic-mode = <0>; /* two-wire */
++};
++
++&touchscreen {
++	status = "okay";
++
++	compatible = "hid-over-i2c";
++	reg = <0x10>;
++	interrupt-parent = <&pio>;
++	interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&touchscreen_pins>;
++
++	post-power-on-delay-ms = <10>;
++	hid-descr-addr = <0x0001>;
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_STERN";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
+new file mode 100644
+index 0000000000000..5be767bc873b8
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-stern.dts
+@@ -0,0 +1,34 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-jacuzzi-cerise.dtsi"
++
++/ {
++	model = "Google stern board";
++	compatible = "google,cerise-sku1", "google,cerise", "mediatek,mt8183";
++};
++
++&mt6358codec {
++	mediatek,dmic-mode = <0>; /* two-wire */
++};
++
++&touchscreen {
++	status = "okay";
++
++	compatible = "hid-over-i2c";
++	reg = <0x10>;
++	interrupt-parent = <&pio>;
++	interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&touchscreen_pins>;
++
++	post-power-on-delay-ms = <10>;
++	hid-descr-addr = <0x0001>;
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_STERN";
++};
 -- 
-viresh
+2.32.0.rc1.229.g3e70b5a671-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
