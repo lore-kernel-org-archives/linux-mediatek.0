@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49022C07E94
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 11:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02A15C07E94
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 11:05:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FFCD60FF1
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 11:03:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FFCD60FF1
+	by mail.kernel.org (Postfix) with ESMTPS id C071460FF2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 11:05:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C071460FF2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HcZINkqdB3aOX7+IIAU2/oT4pjC8CmJRgNficGJATQw=; b=WT6bUfNpHKEMfS
-	JgAaYYQ27IDMxZbJexuku7AFf8LqleLHPgOvKecRAzBrwjRUDKml6B5aUGvcG68maJRBKqxai9fpL
-	da4vb8oYSSC//YmtKLexX5u4wZT4txx9o6HSmfaUnNxatpoPPQMX8Kq88tIqS+flFUDNgmmornWdb
-	2AeQZZ5tBLUEUztyQtQ0tJ+FENZGWCRBWv9qpq5yds2Hnc9YuhBk+wSZt7O6+iMCGDGZBRVXU7jsm
-	da7FaPNKHj987epKc3DDhWvzXg8eujtdu8cFw8FQ+EBRaF31gtYvxqRphOP6rvAzJiR/dCuJQrJOl
-	qZxtw74eIgcTFPWWu50w==;
+	List-Owner; bh=0/oYpV8y0IlMaad5rZ9NIG1Y59YGW3rZJPTrp5aQVlc=; b=ypDLUg9qo6YDE/
+	dNHhRxzBA+FNETtN+NTUacVnVWsVTaVL9yCVl0W/IcGrHUAsJF1wRI5XbXCT9MvcAEm+MUW/hLYFQ
+	fzBZJQUc+RIQ0YEwqQ21B/fUWHUgs0s7hjMFJpIASS9dyuopcyWc12ZSjtvakWXh/Xw7pn8acPlO8
+	8XbtJCn/RaG+UfxcF04AucAy2zmBwmH1jQVAp6hOMny9mPIwYNU8bq0mzhls6PAeDte+iCATw3qhN
+	wSVmOFbKt7xKA6KMX/oPy2IjHS2LkEAYyo46uFwqeD2QsJ+GWiAzo5syBL3TlcdAfJkwmiSX0OMGa
+	1jxLnleQyPPrwkqPZlZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lp7bq-00D89z-Jg; Fri, 04 Jun 2021 11:03:26 +0000
+	id 1lp7de-00D8rj-DI; Fri, 04 Jun 2021 11:05:18 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lp7AX-00CzeJ-Nh; Fri, 04 Jun 2021 10:35:15 +0000
-X-UUID: 61c0f3a71498404ebca7214960d9e267-20210604
+ id 1lp7AZ-00Czdr-HW; Fri, 04 Jun 2021 10:35:19 +0000
+X-UUID: 3a8d55ac03d04fa28f93e428fb58e3dc-20210604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vh3pMuZfSvPzJZMQ3BQnGIMNBEpn+SVnOXWgrEedeL4=; 
- b=cQsnOhU449pxToALkE4+jUK1xcLxcmwz6fl+6ZZXVHo3+Vjx5okvuKzI/VoYPMs9PVdPP3rjCYCkOcU1RzEFEizOSnPK7oKkOfVC5FKzVomOwwfjh5N268YFftIDaWYqeITxbDdDUopb0WhpemOGZc/DocyLsw6L663z8CeH2UU=;
-X-UUID: 61c0f3a71498404ebca7214960d9e267-20210604
+ bh=jQU5EvXu40eyVAizvgYBfMYmJ6dybAusWu0u2Tn1VOg=; 
+ b=RLbKiix7uVNK/6IAcr0LBjBVY7oJc9lBViUXqQrl0P/rNOram3ufQq6Cr8wWX7K2Wq4m6rB2Z3ItWsIv201U+RolJEkvdmNVwaKGc/XVHFm3d5clS5sFiwAFjLxE959geHQb+GrONDQ3D9YWUs00wPa5mZdCZHzwpkiN1G5fsN4=;
+X-UUID: 3a8d55ac03d04fa28f93e428fb58e3dc-20210604
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <dawei.chien@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1849121831; Fri, 04 Jun 2021 03:35:02 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 2111555245; Fri, 04 Jun 2021 03:35:02 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 03:30:20 -0700
+ 15.0.1497.2; Fri, 4 Jun 2021 03:30:19 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 18:30:12 +0800
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 18:30:11 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Jun 2021 18:30:12 +0800
+ Frontend Transport; Fri, 4 Jun 2021 18:30:11 +0800
 From: Dawei Chien <dawei.chien@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
@@ -67,17 +67,17 @@ CC: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
  Fan Chen <fan.chen@mediatek.com>, Arvin Wang <arvin.wang@mediatek.com>,
  "James Liao" <jamesjj.liao@mediatek.com>, Henry Chen
  <henryc.chen@mediatek.com>
-Subject: [PATCH V10 04/12] soc: mediatek: add support for mt6873
-Date: Fri, 4 Jun 2021 18:29:51 +0800
-Message-ID: <20210604102959.13807-5-dawei.chien@mediatek.com>
+Subject: [PATCH V10 01/12] dt-bindings: soc: Add dvfsrc driver bindings
+Date: Fri, 4 Jun 2021 18:29:48 +0800
+Message-ID: <20210604102959.13807-2-dawei.chien@mediatek.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20210604102959.13807-1-dawei.chien@mediatek.com>
 References: <20210604102959.13807-1-dawei.chien@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_033513_865724_029BF727 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20210604_033515_623567_BFDE45EB 
+X-CRM114-Status: GOOD (  16.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,159 +96,117 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Henry Chen <henryc.chen@mediatek.com>
 
-add support for mt6873
+Document the binding for enabling dvfsrc on MediaTek SoC.
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- drivers/soc/mediatek/mtk-dvfsrc.c | 114 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 114 insertions(+)
+ .../devicetree/bindings/soc/mediatek/dvfsrc.yaml   | 67 ++++++++++++++++++++++
+ include/dt-bindings/interconnect/mtk,mt8183-emi.h  | 21 +++++++
+ 2 files changed, 88 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+ create mode 100644 include/dt-bindings/interconnect/mtk,mt8183-emi.h
 
-diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
-index 6ef167cf55bd..1f053367eabe 100644
---- a/drivers/soc/mediatek/mtk-dvfsrc.c
-+++ b/drivers/soc/mediatek/mtk-dvfsrc.c
-@@ -102,6 +102,16 @@ static const int mt8183_regs[] = {
- 	[DVFSRC_SW_BW] =	0x160,
- };
- 
-+static const int mt6873_regs[] = {
-+	[DVFSRC_SW_REQ] =		0xC,
-+	[DVFSRC_LEVEL] =		0xD44,
-+	[DVFSRC_SW_PEAK_BW] =		0x278,
-+	[DVFSRC_SW_BW] =		0x26C,
-+	[DVFSRC_SW_HRT_BW] =		0x290,
-+	[DVFSRC_TARGET_LEVEL] =		0xD48,
-+	[DVFSRC_VCORE_REQUEST] =	0x6C,
-+};
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+new file mode 100644
+index 000000000000..f2b67b99921b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+@@ -0,0 +1,67 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: "http://devicetree.org/schemas/soc/mediatek/dvfsrc.yaml#"
++$schema: "http://devicetree.org/meta-schemas/core.yaml#"
 +
- static const struct dvfsrc_opp *get_current_opp(struct mtk_dvfsrc *dvfsrc)
- {
- 	int level;
-@@ -127,6 +137,78 @@ static int dvfsrc_wait_for_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
- 					 POLL_TIMEOUT);
- }
- 
-+static int mt6873_get_target_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return dvfsrc_read(dvfsrc, DVFSRC_TARGET_LEVEL);
-+}
++title: MediaTek dynamic voltage and frequency scaling resource collector (DVFSRC)
 +
-+static int mt6873_get_current_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	u32 curr_level;
++description: |
++  The Dynamic Voltage and Frequency Scaling Resource Collector (DVFSRC) is a
++  HW module which is used to collect all the requests from both software and
++  hardware and turn into the decision of minimum operating voltage and minimum
++  DRAM frequency to fulfill those requests.
 +
-+	/* HW level 0 is begin from 0x1, and max opp is 0x1*/
-+	curr_level = ffs(dvfsrc_read(dvfsrc, DVFSRC_LEVEL));
-+	if (curr_level > dvfsrc->curr_opps->num_opp)
-+		curr_level = 0;
-+	else
-+		curr_level = dvfsrc->curr_opps->num_opp - curr_level;
++maintainers:
++  - henryc.chen <henryc.chen@mediatek.com>
 +
-+	return curr_level;
-+}
++properties:
++  reg:
++    maxItems: 1
++    description: DVFSRC common register address and length.
 +
-+static int mt6873_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	const struct dvfsrc_opp *target, *curr;
++  compatible:
++    enum:
++      - mediatek,mt6873-dvfsrc
++      - mediatek,mt8183-dvfsrc
++      - mediatek,mt8192-dvfsrc
 +
-+	target = &dvfsrc->curr_opps->opps[level];
-+	return readx_poll_timeout_atomic(get_current_opp, dvfsrc, curr,
-+		curr->dram_opp >= target->dram_opp,
-+		STARTUP_TIME, POLL_TIMEOUT);
-+}
++  '#interconnect-cells':
++    const: 1
 +
-+static u32 mt6873_get_vcore_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return (dvfsrc_read(dvfsrc, DVFSRC_SW_REQ) >> 4) & 0x7;
-+}
++  dvfsrc-vcore:
++    type: object
++    description:
++      The DVFSRC regulator is modelled as a subdevice of the DVFSRC.
++      Because DVFSRC can request power directly via register read/write, likes
++      vcore which is a core power of mt8183. As such, the DVFSRC regulator
++      requires that DVFSRC nodes be present.
++    $ref: /schemas/regulator/regulator.yaml#
 +
-+static u32 mt6873_get_vcp_level(struct mtk_dvfsrc *dvfsrc)
-+{
-+	return (dvfsrc_read(dvfsrc, DVFSRC_VCORE_REQUEST) >> 12) & 0x7;
-+}
++required:
++  - compatible
++  - reg
++  - "#interconnect-cells"
 +
-+static void mt6873_set_dram_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64(kbps_to_mbps(bw), 100);
-+	bw = min_t(u64, bw, 0xFF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_BW, bw);
-+}
++additionalProperties: false
 +
-+static void mt6873_set_dram_peak_bw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64(kbps_to_mbps(bw), 100);
-+	bw = min_t(u64, bw, 0xFF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_PEAK_BW, bw);
-+}
++examples:
++  - |
++    #include <dt-bindings/interconnect/mtk,mt8183-emi.h>
 +
-+static void mt6873_set_dram_hrtbw(struct mtk_dvfsrc *dvfsrc, u64 bw)
-+{
-+	bw = div_u64((kbps_to_mbps(bw) + 29), 30);
-+	bw = min_t(u64, bw, 0x3FF);
-+	dvfsrc_write(dvfsrc, DVFSRC_SW_HRT_BW, bw);
-+}
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
 +
-+static void mt6873_set_vcore_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	spin_lock(&dvfsrc->req_lock);
-+	dvfsrc_rmw(dvfsrc, DVFSRC_SW_REQ, level, 0x7, 4);
-+	spin_unlock(&dvfsrc->req_lock);
-+}
++        dvfsrc@10012000 {
++            compatible = "mediatek,mt8183-dvfsrc";
++            reg = <0 0x10012000 0 0x1000>;
++            #interconnect-cells = <1>;
++            dvfsrc_vcore: dvfsrc-vcore {
++                    regulator-name = "dvfsrc-vcore";
++                    regulator-min-microvolt = <725000>;
++                    regulator-max-microvolt = <800000>;
++                    regulator-always-on;
++            };
++        };
++    };
+diff --git a/include/dt-bindings/interconnect/mtk,mt8183-emi.h b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
+new file mode 100644
+index 000000000000..dfd143f87885
+--- /dev/null
++++ b/include/dt-bindings/interconnect/mtk,mt8183-emi.h
+@@ -0,0 +1,21 @@
++/* SPDX-License-Identifier: GPL-2.0
++ *
++ * Copyright (c) 2021 MediaTek Inc.
++ */
 +
-+static void mt6873_set_vscp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
-+{
-+	dvfsrc_rmw(dvfsrc, DVFSRC_VCORE_REQUEST, level, 0x7, 12);
-+}
++#ifndef __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
++#define __DT_BINDINGS_INTERCONNECT_MTK_MT8183_EMI_H
 +
- static int mt8183_wait_for_opp_level(struct mtk_dvfsrc *dvfsrc, u32 level)
- {
- 	const struct dvfsrc_opp *target, *curr;
-@@ -377,6 +459,35 @@ static const struct dvfsrc_soc_data mt8183_data = {
- 	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
- };
- 
-+static const struct dvfsrc_opp dvfsrc_opp_mt6873_lp4[] = {
-+	{0, 0}, {1, 0}, {2, 0}, {3, 0},
-+	{0, 1}, {1, 1}, {2, 1}, {3, 1},
-+	{0, 2}, {1, 2}, {2, 2}, {3, 2},
-+	{1, 3}, {2, 3}, {3, 3}, {1, 4},
-+	{2, 4}, {3, 4}, {2, 5}, {3, 5},
-+	{3, 6},
-+};
++#define MT8183_SLAVE_DDR_EMI			0
++#define MT8183_MASTER_MCUSYS			1
++#define MT8183_MASTER_GPU			2
++#define MT8183_MASTER_MMSYS			3
++#define MT8183_MASTER_MM_VPU			4
++#define MT8183_MASTER_MM_DISP			5
++#define MT8183_MASTER_MM_VDEC			6
++#define MT8183_MASTER_MM_VENC			7
++#define MT8183_MASTER_MM_CAM			8
++#define MT8183_MASTER_MM_IMG			9
++#define MT8183_MASTER_MM_MDP			10
 +
-+static const struct dvfsrc_opp_desc dvfsrc_opp_mt6873_desc[] = {
-+	DVFSRC_OPP_DESC(dvfsrc_opp_mt6873_lp4),
-+};
-+
-+static const struct dvfsrc_soc_data mt6873_data = {
-+	.opps_desc = dvfsrc_opp_mt6873_desc,
-+	.regs = mt6873_regs,
-+	.get_target_level = mt6873_get_target_level,
-+	.get_current_level = mt6873_get_current_level,
-+	.get_vcore_level = mt6873_get_vcore_level,
-+	.get_vcp_level = mt6873_get_vcp_level,
-+	.set_dram_bw = mt6873_set_dram_bw,
-+	.set_dram_peak_bw = mt6873_set_dram_peak_bw,
-+	.set_dram_hrtbw = mt6873_set_dram_hrtbw,
-+	.set_vcore_level = mt6873_set_vcore_level,
-+	.set_vscp_level = mt6873_set_vscp_level,
-+	.wait_for_opp_level = mt6873_wait_for_opp_level,
-+	.wait_for_vcore_level = dvfsrc_wait_for_vcore_level,
-+};
-+
- static int mtk_dvfsrc_remove(struct platform_device *pdev)
- {
- 	struct mtk_dvfsrc *dvfsrc = platform_get_drvdata(pdev);
-@@ -391,6 +502,9 @@ static const struct of_device_id mtk_dvfsrc_of_match[] = {
- 	{
- 		.compatible = "mediatek,mt8183-dvfsrc",
- 		.data = &mt8183_data,
-+	}, {
-+		.compatible = "mediatek,mt6873-dvfsrc",
-+		.data = &mt6873_data,
- 	}, {
- 		/* sentinel */
- 	},
++#endif
 -- 
 2.14.1
 _______________________________________________
