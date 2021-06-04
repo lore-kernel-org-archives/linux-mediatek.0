@@ -1,20 +1,20 @@
-Return-Path: <SRS0=bWHh=K5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=7C4w=K6=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C166C47096
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 23:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06E54C47096
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 00:25:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 251F6613B3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  3 Jun 2021 23:58:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 251F6613B3
+	by mail.kernel.org (Postfix) with ESMTPS id A5B326140A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 00:25:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5B326140A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TF8K6NmiNy9U+WNk2KfXfBKrZrMo1VuinGvt16IzwdI=; b=0jKU6+YUj6IB2D
-	besELLimU4HybyAa97nDPiyPnmYekU//U0Nzht5Ym9Ww+NymybG+ieMJIMVGNOuYESUmuCywxLGK5
-	1mdI0xG0nwMofgtHdsWBK4fPrfQDpvw8voJrQhjWC/0cqsrqxPPOonFUTs+SSrDpxidDFCiyos5W/
-	D3+8Q9LTT+duXUa/IeNtIkH1mQsDdn3m7uQE+gExWLcrFDXi/RksSL2pMHiJkAc4tjUcmDbSlZce+
-	KISccJcsuCwGvNy/oP2Z+gdJjAUT2z+zCMcNxH1nRtf4J3Bswo6j/FfUR8lZykNdrY9KfU5BSpPqD
-	5Hke/1yApT0y9jIYtyKg==;
+	List-Owner; bh=XapHwvq23McCu6+PX6Wk8U0rxylZd29p9glfy4FxFjY=; b=KVdNlntWC+60Bj
+	qXeKPWjymJ/p1s5kGNqlI4C9cVgH7alaBORvkaeN1FHBLow9Swp7HBEMCivQp1qMZcr47PvtuW7xe
+	pDUb42bUsD9qamNtR1mH//tLpFOIXWQ1jZL7/jH16fW31C237gGMuoggLZZ7O5V7fbVDVr62Z9dJ3
+	mUkL4ut5AHxHwqJjCz0HrhFRClxPeSzlk2eSjFhyRamaKZELb1KGWau1uqUzuevB6sEdRdOhnt0o1
+	WTPEHRi9dK0F1IYAtW5RhlBl06T9+lCj5stuxzPELGD4nqLmOJXduJvUbFfUS46Kk+Ty5vHpbwkrr
+	rRakUk63LC7lZNCuYBMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1loxES-00AzgK-10; Thu, 03 Jun 2021 23:58:36 +0000
+	id 1loxeU-00B2Xz-J9; Fri, 04 Jun 2021 00:25:30 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1loxEN-00Azf7-Av
- for linux-mediatek@lists.infradead.org; Thu, 03 Jun 2021 23:58:34 +0000
-X-UUID: 4d628360950147608a10e0d6f500bf52-20210603
+ id 1loxeQ-00B2XH-10
+ for linux-mediatek@lists.infradead.org; Fri, 04 Jun 2021 00:25:28 +0000
+X-UUID: ea464370ef1347f988c42f040d1ee0bb-20210603
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=CfIyPvVM4jeOlmbEX0wi2UUgeRWZPwpQ4OmZWnb+sq4=; 
- b=Kg96f1U2GtILfdVfvfb1nuXutmfwSnUeYCRCyPEMEamfAfKMn9I3zGmE9lkVE2QiV/wK1ylshaBUWqXszW9wdJVyLLHDwYwbgZxeEb1dfMONuY84Z1CmzAvZgN/n1mf6WU9svmseg2R6cIenUVa6FV6U3RJ+m7h2ZgxUlhhUunc=;
-X-UUID: 4d628360950147608a10e0d6f500bf52-20210603
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=w0YLsb5kHm8oVbUrH8IkxkCKhkjA2HbulOHXiTzJQlc=; 
+ b=Qhvnpx9JdpRvQhyc6VmeB4B3XUfLa5ByVm8vP7YbgCaFLtX1+AOrC+iJ5d/f0zMrR/IbFqlZnpYfF5X9gshFeFnMPaCelOLhUQ+CJ6VT9gnaqQ0EC8IRx8miY8WAS1mEz1XKsDIVm8Y/F5Hp4nXepq6r2t8wff+coIHJtZ5LBlw=;
+X-UUID: ea464370ef1347f988c42f040d1ee0bb-20210603
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 705709674; Thu, 03 Jun 2021 16:58:23 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 3 Jun 2021 16:58:21 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 07:58:07 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ with ESMTP id 819253297; Thu, 03 Jun 2021 17:25:24 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 3 Jun 2021 17:15:21 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 08:15:20 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 4 Jun 2021 07:58:07 +0800
+ Frontend Transport; Fri, 4 Jun 2021 08:15:20 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -65,15 +65,15 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
  <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4] mt76: mt7921: fix sta_state incorrect implementation
-Date: Fri, 4 Jun 2021 07:58:07 +0800
-Message-ID: <5ead84b2d377f3763f0dc6fd9cb04d158212e3ea.1622764570.git.objelf@gmail.com>
+Subject: [PATCH v5] mt76: mt7921: fix sta_state incorrect implementation
+Date: Fri, 4 Jun 2021 08:15:19 +0800
+Message-ID: <0f941bce18b2f4c481611c94c8ec674ab9610f94.1622765526.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210603_165832_833740_A7E56616 
-X-CRM114-Status: GOOD (  18.33  )
+X-CRM114-CacheID: sfid-20210603_172526_124742_49A7DC14 
+X-CRM114-Status: GOOD (  19.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,384 +85,290 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
-When .sta_state is implemented, mac80211 assumes that the station entry is
-usable after the NOTEXIST->NONE transition.
-
-So we should create the sta entry as early as possible in order that
-mac80211 pass assoc/auth frames to mt76 with the newly created sta entry,
-and add .sta_assoc to mt76 core to refresh the sta entry again when sta is
-being associated.
-
-Fixes: 8aa5a9b7361c ("mt76: mt7921: enable deep sleep at runtime")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   |  8 ++-
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 20 +++---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  | 17 ++++--
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 61 +++++++++----------
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   |  9 ++-
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  7 ++-
- .../net/wireless/mediatek/mt76/mt7921/pci.c   |  1 +
- 7 files changed, 69 insertions(+), 54 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index ea1f23e99ca1..f8a09692d3e4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -1028,9 +1028,10 @@ mt7615_mcu_wtbl_sta_add(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	if (IS_ERR(sskb))
- 		return PTR_ERR(sskb);
- 
--	mt76_connac_mcu_sta_basic_tlv(sskb, vif, sta, enable);
-+	mt76_connac_mcu_sta_basic_tlv(sskb, vif, sta, enable, true);
- 	if (enable && sta)
--		mt76_connac_mcu_sta_tlv(phy->mt76, sskb, sta, vif, 0);
-+		mt76_connac_mcu_sta_tlv(phy->mt76, sskb, sta, vif, 0,
-+					MT76_STA_INFO_STATE_ASSOC);
- 
- 	wtbl_hdr = mt76_connac_mcu_alloc_wtbl_req(&dev->mt76, &msta->wcid,
- 						  WTBL_RESET_AND_SET, NULL,
-@@ -1157,11 +1158,12 @@ __mt7615_mcu_add_sta(struct mt76_phy *phy, struct ieee80211_vif *vif,
- 		.vif = vif,
- 		.offload_fw = offload_fw,
- 		.enable = enable,
-+		.newly = true,
- 		.cmd = cmd,
- 	};
- 
- 	info.wcid = sta ? (struct mt76_wcid *)sta->drv_priv : &mvif->sta.wcid;
--	return mt76_connac_mcu_add_sta_cmd(phy, &info);
-+	return mt76_connac_mcu_sta_cmd(phy, &info);
- }
- 
- static int
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 7b036c700b28..5786041caf41 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -304,7 +304,7 @@ EXPORT_SYMBOL_GPL(mt76_connac_mcu_alloc_wtbl_req);
- void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_sta *sta,
--				   bool enable)
-+				   bool enable, bool newly)
- {
- 	struct sta_rec_basic *basic;
- 	struct tlv *tlv;
-@@ -316,7 +316,8 @@ void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
- 	basic->extra_info = cpu_to_le16(EXTRA_INFO_VER);
- 
- 	if (enable) {
--		basic->extra_info |= cpu_to_le16(EXTRA_INFO_NEW);
-+		if (newly)
-+			basic->extra_info |= cpu_to_le16(EXTRA_INFO_NEW);
- 		basic->conn_state = CONN_STATE_PORT_SECURE;
- 	} else {
- 		basic->conn_state = CONN_STATE_DISCONNECT;
-@@ -709,7 +710,7 @@ mt76_connac_get_phy_mode_v2(struct mt76_phy *mphy, struct ieee80211_vif *vif,
- void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
- 			     struct ieee80211_sta *sta,
- 			     struct ieee80211_vif *vif,
--			     u8 rcpi)
-+			     u8 rcpi, u8 sta_state)
- {
- 	struct cfg80211_chan_def *chandef = &mphy->chandef;
- 	enum nl80211_band band = chandef->chan->band;
-@@ -770,7 +771,7 @@ void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
- 
- 	tlv = mt76_connac_mcu_add_tlv(skb, STA_REC_STATE, sizeof(*state));
- 	state = (struct sta_rec_state *)tlv;
--	state->state = 2;
-+	state->state = sta_state;
- 
- 	if (sta->vht_cap.vht_supported) {
- 		state->vht_opmode = sta->bandwidth;
-@@ -862,8 +863,8 @@ void mt76_connac_mcu_wtbl_ht_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- }
- EXPORT_SYMBOL_GPL(mt76_connac_mcu_wtbl_ht_tlv);
- 
--int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *phy,
--				struct mt76_sta_cmd_info *info)
-+int mt76_connac_mcu_sta_cmd(struct mt76_phy *phy,
-+			    struct mt76_sta_cmd_info *info)
- {
- 	struct mt76_vif *mvif = (struct mt76_vif *)info->vif->drv_priv;
- 	struct mt76_dev *dev = phy->dev;
-@@ -877,10 +878,11 @@ int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *phy,
- 
- 	if (info->sta || !info->offload_fw)
- 		mt76_connac_mcu_sta_basic_tlv(skb, info->vif, info->sta,
--					      info->enable);
-+					      info->enable, info->newly);
- 	if (info->sta && info->enable)
- 		mt76_connac_mcu_sta_tlv(phy, skb, info->sta,
--					info->vif, info->rcpi);
-+					info->vif, info->rcpi,
-+					info->state);
- 
- 	sta_wtbl = mt76_connac_mcu_add_tlv(skb, STA_REC_WTBL,
- 					   sizeof(struct tlv));
-@@ -904,7 +906,7 @@ int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *phy,
- 
- 	return mt76_mcu_skb_send_msg(dev, skb, info->cmd, true);
- }
--EXPORT_SYMBOL_GPL(mt76_connac_mcu_add_sta_cmd);
-+EXPORT_SYMBOL_GPL(mt76_connac_mcu_sta_cmd);
- 
- void mt76_connac_mcu_wtbl_ba_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- 				 struct ieee80211_ampdu_params *params,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 258b262c7c23..2c1c93122c2d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -904,6 +904,12 @@ struct mt76_connac_suspend_tlv {
- 	u8 pad[5];
- } __packed;
- 
-+enum mt76_sta_info_state {
-+	MT76_STA_INFO_STATE_NONE,
-+	MT76_STA_INFO_STATE_AUTH,
-+	MT76_STA_INFO_STATE_ASSOC
-+};
-+
- struct mt76_sta_cmd_info {
- 	struct ieee80211_sta *sta;
- 	struct mt76_wcid *wcid;
-@@ -912,8 +918,10 @@ struct mt76_sta_cmd_info {
- 
- 	bool offload_fw;
- 	bool enable;
-+	bool newly;
- 	int cmd;
- 	u8 rcpi;
-+	u8 state;
- };
- 
- #define MT_SKU_POWER_LIMIT	161
-@@ -983,7 +991,8 @@ int mt76_connac_mcu_set_channel_domain(struct mt76_phy *phy);
- int mt76_connac_mcu_set_vif_ps(struct mt76_dev *dev, struct ieee80211_vif *vif);
- void mt76_connac_mcu_sta_basic_tlv(struct sk_buff *skb,
- 				   struct ieee80211_vif *vif,
--				   struct ieee80211_sta *sta, bool enable);
-+				   struct ieee80211_sta *sta, bool enable,
-+				   bool newly);
- void mt76_connac_mcu_wtbl_generic_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- 				      struct ieee80211_vif *vif,
- 				      struct ieee80211_sta *sta, void *sta_wtbl,
-@@ -998,7 +1007,7 @@ int mt76_connac_mcu_sta_update_hdr_trans(struct mt76_dev *dev,
- void mt76_connac_mcu_sta_tlv(struct mt76_phy *mphy, struct sk_buff *skb,
- 			     struct ieee80211_sta *sta,
- 			     struct ieee80211_vif *vif,
--			     u8 rcpi);
-+			     u8 rcpi, u8 state);
- void mt76_connac_mcu_wtbl_ht_tlv(struct mt76_dev *dev, struct sk_buff *skb,
- 				 struct ieee80211_sta *sta, void *sta_wtbl,
- 				 void *wtbl_tlv);
-@@ -1020,8 +1029,8 @@ int mt76_connac_mcu_uni_add_bss(struct mt76_phy *phy,
- 				struct ieee80211_vif *vif,
- 				struct mt76_wcid *wcid,
- 				bool enable);
--int mt76_connac_mcu_add_sta_cmd(struct mt76_phy *phy,
--				struct mt76_sta_cmd_info *info);
-+int mt76_connac_mcu_sta_cmd(struct mt76_phy *phy,
-+			    struct mt76_sta_cmd_info *info);
- void mt76_connac_mcu_beacon_loss_iter(void *priv, u8 *mac,
- 				      struct ieee80211_vif *vif);
- int mt76_connac_mcu_set_rts_thresh(struct mt76_dev *dev, u32 val, u8 band);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 84930ad5ebc7..724763b3844f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -578,7 +578,8 @@ static void mt7921_bss_info_changed(struct ieee80211_hw *hw,
- 		mt7921_mcu_uni_bss_ps(dev, vif);
- 
- 	if (changed & BSS_CHANGED_ASSOC) {
--		mt7921_mcu_sta_add(dev, NULL, vif, true);
-+		mt7921_mcu_sta_update(dev, NULL, vif, true,
-+				      MT76_STA_INFO_STATE_ASSOC);
- 		mt7921_bss_bcnft_apply(dev, vif, info->assoc);
- 	}
- 
-@@ -617,17 +618,14 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	if (ret)
- 		return ret;
- 
--	if (vif->type == NL80211_IFTYPE_STATION) {
-+	if (vif->type == NL80211_IFTYPE_STATION)
- 		mvif->wep_sta = msta;
--		if (!sta->tdls)
--			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
--						    &mvif->sta.wcid, true);
--	}
- 
- 	mt7921_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
--	ret = mt7921_mcu_sta_add(dev, sta, vif, true);
-+	ret = mt7921_mcu_sta_update(dev, sta, vif, true,
-+				    MT76_STA_INFO_STATE_NONE);
- 	if (ret)
- 		return ret;
- 
-@@ -636,6 +634,27 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	return 0;
- }
- 
-+void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-+			  struct ieee80211_sta *sta)
-+{
-+	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-+	struct mt7921_sta *msta = (struct mt7921_sta *)sta->drv_priv;
-+	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
-+
-+	mt7921_mutex_acquire(dev);
-+
-+	if (vif->type == NL80211_IFTYPE_STATION && !sta->tdls)
-+		mt76_connac_mcu_uni_add_bss(&dev->mphy, vif, &mvif->sta.wcid,
-+					    true);
-+
-+	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
-+			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-+
-+	mt7921_mcu_sta_update(dev, sta, vif, true, MT76_STA_INFO_STATE_ASSOC);
-+
-+	mt7921_mutex_release(dev);
-+}
-+
- void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta)
- {
-@@ -645,7 +664,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, &msta->wcid);
- 	mt76_connac_pm_wake(&dev->mphy, &dev->pm);
- 
--	mt7921_mcu_sta_add(dev, sta, vif, false);
-+	mt7921_mcu_sta_update(dev, sta, vif, false, MT76_STA_INFO_STATE_NONE);
- 	mt7921_mac_wtbl_update(dev, msta->wcid.idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 
-@@ -791,22 +810,6 @@ mt7921_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 	return ret;
- }
- 
--static int
--mt7921_sta_add(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
--	       struct ieee80211_sta *sta)
--{
--	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NOTEXIST,
--			      IEEE80211_STA_NONE);
--}
--
--static int
--mt7921_sta_remove(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
--		  struct ieee80211_sta *sta)
--{
--	return mt76_sta_state(hw, vif, sta, IEEE80211_STA_NONE,
--			      IEEE80211_STA_NOTEXIST);
--}
--
- static int mt7921_sta_state(struct ieee80211_hw *hw,
- 			    struct ieee80211_vif *vif,
- 			    struct ieee80211_sta *sta,
-@@ -821,15 +824,7 @@ static int mt7921_sta_state(struct ieee80211_hw *hw,
- 		mt7921_mutex_release(dev);
- 	}
- 
--	if (old_state == IEEE80211_STA_AUTH &&
--	    new_state == IEEE80211_STA_ASSOC) {
--		return mt7921_sta_add(hw, vif, sta);
--	} else if (old_state == IEEE80211_STA_ASSOC &&
--		   new_state == IEEE80211_STA_AUTH) {
--		return mt7921_sta_remove(hw, vif, sta);
--	}
--
--	return 0;
-+	return mt76_sta_state(hw, vif, sta, old_state, new_state);
- }
- 
- static int
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index bd94d1244975..c95d71583cc1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -1267,8 +1267,9 @@ int mt7921_mcu_set_bss_pm(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 				 sizeof(req), false);
- }
- 
--int mt7921_mcu_sta_add(struct mt7921_dev *dev, struct ieee80211_sta *sta,
--		       struct ieee80211_vif *vif, bool enable)
-+int mt7921_mcu_sta_update(struct mt7921_dev *dev, struct ieee80211_sta *sta,
-+			  struct ieee80211_vif *vif, bool enable,
-+			  enum mt76_sta_info_state state)
- {
- 	struct mt7921_vif *mvif = (struct mt7921_vif *)vif->drv_priv;
- 	int rssi = -ewma_rssi_read(&mvif->rssi);
-@@ -1277,6 +1278,7 @@ int mt7921_mcu_sta_add(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 		.vif = vif,
- 		.enable = enable,
- 		.cmd = MCU_UNI_CMD_STA_REC_UPDATE,
-+		.state = state,
- 		.offload_fw = true,
- 		.rcpi = to_rcpi(rssi),
- 	};
-@@ -1284,8 +1286,9 @@ int mt7921_mcu_sta_add(struct mt7921_dev *dev, struct ieee80211_sta *sta,
- 
- 	msta = sta ? (struct mt7921_sta *)sta->drv_priv : NULL;
- 	info.wcid = msta ? &msta->wcid : &mvif->sta.wcid;
-+	info.newly = msta ? state != MT76_STA_INFO_STATE_ASSOC : true;
- 
--	return mt76_connac_mcu_add_sta_cmd(&dev->mphy, &info);
-+	return mt76_connac_mcu_sta_cmd(&dev->mphy, &info);
- }
- 
- int __mt7921_mcu_drv_pmctrl(struct mt7921_dev *dev)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index 8aa8d2ecdffa..71cf1d1a2e02 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -262,8 +262,9 @@ int mt7921_mcu_add_key(struct mt7921_dev *dev, struct ieee80211_vif *vif,
- 		       struct mt7921_sta *msta, struct ieee80211_key_conf *key,
- 		       enum set_key_cmd cmd);
- int mt7921_set_channel(struct mt7921_phy *phy);
--int mt7921_mcu_sta_add(struct mt7921_dev *dev, struct ieee80211_sta *sta,
--		       struct ieee80211_vif *vif, bool enable);
-+int mt7921_mcu_sta_update(struct mt7921_dev *dev, struct ieee80211_sta *sta,
-+			  struct ieee80211_vif *vif, bool enable,
-+			  enum mt76_sta_info_state state);
- int mt7921_mcu_set_chan_info(struct mt7921_phy *phy, int cmd);
- int mt7921_mcu_set_tx(struct mt7921_dev *dev, struct ieee80211_vif *vif);
- int mt7921_mcu_set_eeprom(struct mt7921_dev *dev);
-@@ -335,6 +336,8 @@ void mt7921_mac_fill_rx_vector(struct mt7921_dev *dev, struct sk_buff *skb);
- void mt7921_mac_tx_free(struct mt7921_dev *dev, struct sk_buff *skb);
- int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		       struct ieee80211_sta *sta);
-+void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-+			  struct ieee80211_sta *sta);
- void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta);
- void mt7921_mac_work(struct work_struct *work);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 13263f50dc00..27906b2cd912 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -106,6 +106,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 		.rx_poll_complete = mt7921_rx_poll_complete,
- 		.sta_ps = mt7921_sta_ps,
- 		.sta_add = mt7921_mac_sta_add,
-+		.sta_assoc = mt7921_mac_sta_assoc,
- 		.sta_remove = mt7921_mac_sta_remove,
- 		.update_survey = mt7921_update_channel,
- 	};
--- 
-2.25.1
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogU2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29tPg0KDQpXaGVuIC5zdGFfc3Rh
+dGUgaXMgaW1wbGVtZW50ZWQsIG1hYzgwMjExIGFzc3VtZXMgdGhhdCB0aGUgc3RhdGlvbiBlbnRy
+eSBpcw0KdXNhYmxlIGFmdGVyIHRoZSBOT1RFWElTVC0+Tk9ORSB0cmFuc2l0aW9uLg0KDQpTbyB3
+ZSBzaG91bGQgY3JlYXRlIHRoZSBzdGEgZW50cnkgYXMgZWFybHkgYXMgcG9zc2libGUgaW4gb3Jk
+ZXIgdGhhdA0KbWFjODAyMTEgcGFzcyBhc3NvYy9hdXRoIGZyYW1lcyB0byBtdDc2IHdpdGggdGhl
+IG5ld2x5IGNyZWF0ZWQgc3RhIGVudHJ5LA0KYW5kIGFkZCAuc3RhX2Fzc29jIHRvIG10NzYgY29y
+ZSB0byByZWZyZXNoIHRoZSBzdGEgZW50cnkgYWdhaW4gd2hlbiBzdGEgaXMNCmJlaW5nIGFzc29j
+aWF0ZWQuDQoNCkZpeGVzOiA4YWE1YTliNzM2MWMgKCJtdDc2OiBtdDc5MjE6IGVuYWJsZSBkZWVw
+IHNsZWVwIGF0IHJ1bnRpbWUiKQ0KU2lnbmVkLW9mZi1ieTogU2VhbiBXYW5nIDxzZWFuLndhbmdA
+bWVkaWF0ZWsuY29tPg0KLS0tDQogICAgdjEtPnYyOiBQdXQgYmFjayB0aGUgY2FyZWxlc3MgY2hh
+bmdlIG5vdCBiZWxvbmdlZCB0byB0aGUgcGF0Y2ggdG8ga2VlcA0KICAgICAgICAgICAgbXQ3OTIx
+X21jdV9zdGFfYWRkIGZvciBCQyBlbnRyeSBhbmQgbXQ3Nl9jb25uYWNfbWN1X3VuaV9hZGRfYnNz
+DQogICAgICAgICAgICBvbiB0aGUgYXNzb2NpYXRpb24uDQogICAgdjItPnYzOiAxLiByZWJhc2Ug
+dGhlIGxhdGVzdCBtdDc2DQogICAgICAgICAgICAyLiBzcXVhc2hpbmcgMi8zIHRvIHRoZSBvbmUN
+CiAgICAgICAgICAgIDMuIGFkZCB0aGUgcHJvcGVyIGxvY2sgaW4gbXQ3OTIxX21hY19zdGFfYXNz
+b2MNCiAgICB2My0+djQ6IDEuIGRyb3AgbXQ3Nl9jb25uYWNfbWN1X2FkZF9zdGFfY21kLCBjYWxs
+IG10NzZfY29ubmFjX21jdV9zdGFfY21kDQogICAgICAgICAgICAgICBpbnN0ZWFkDQogICAgICAg
+ICAgICAyLiBkcm9wIG10NzZfY29ubmFjX21jdV91cGRhdGVfc3RhX2NtZCwgY2FsbA0KICAgICAg
+ICAgICAgICAgbXQ3Nl9jb25uYWNfbWN1X3N0YV9jbWQgaW5zdGVhZA0KICAgICAgICAgICAgMy4g
+c3F1YXNoIHRoZSBwYXRjaCAxLzINCiAgICAgICAgICAgIDQuIGRyb3AgbXQ3OTIxX21jdV9zdGFf
+YWRkLCBjYWxsIG10NzkyMV9tY3Vfc3RhX3VwZGF0ZSBpbnN0ZWFkDQogICAgICAgICAgICA1LiBy
+ZWJhc2Ugb250byB0aGUgdG9wIG9mIHRoZSBsYXRlc3QgbXQ3NiBwbHVzDQogICAgICAgICAgICAg
+ICDigJxtdDc2OiBjb25uYWM6IGZpeCBVQyBlbnRyeSBpcyBiZWluZyBvdmVyd3JpdHRlbuKAnQ0K
+ICAgICAgICAgICAgNi4gbW92ZSAubmV3bHkgdG8gYmUgb25lIG9mIHBhcmFtZXRlcnMgaW4gc3Ry
+dWN0IG10NzZfc3RhX2NtZF9pbmZvDQogICAgdjQtPnY1OiBpbmNsdWRlIGJhY2sgdGhlIGNoYW5n
+ZWxvZw0KLS0tDQogLi4uL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzYxNS9tY3UuYyAg
+IHwgIDggKystDQogLi4uL3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWN1LmMg
+IHwgMjAgKysrLS0tDQogLi4uL3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWN1
+LmggIHwgMTcgKysrKy0tDQogLi4uL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9t
+YWluLmMgIHwgNjEgKysrKysrKysrLS0tLS0tLS0tLQ0KIC4uLi9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc5MjEvbWN1LmMgICB8ICA5ICsrLQ0KIC4uLi93aXJlbGVzcy9tZWRpYXRlay9t
+dDc2L210NzkyMS9tdDc5MjEuaCAgICB8ICA3ICsrLQ0KIC4uLi9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc5MjEvcGNpLmMgICB8ICAxICsNCiA3IGZpbGVzIGNoYW5nZWQsIDY5IGluc2Vy
+dGlvbnMoKyksIDU0IGRlbGV0aW9ucygtKQ0KDQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2ly
+ZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2MTUvbWN1LmMgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9t
+ZWRpYXRlay9tdDc2L210NzYxNS9tY3UuYw0KaW5kZXggZWExZjIzZTk5Y2ExLi5mOGEwOTY5MmQz
+ZTQgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzYx
+NS9tY3UuYw0KKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc2MTUv
+bWN1LmMNCkBAIC0xMDI4LDkgKzEwMjgsMTAgQEAgbXQ3NjE1X21jdV93dGJsX3N0YV9hZGQoc3Ry
+dWN0IG10NzYxNV9waHkgKnBoeSwgc3RydWN0IGllZWU4MDIxMV92aWYgKnZpZiwNCiAJaWYgKElT
+X0VSUihzc2tiKSkNCiAJCXJldHVybiBQVFJfRVJSKHNza2IpOw0KIA0KLQltdDc2X2Nvbm5hY19t
+Y3Vfc3RhX2Jhc2ljX3Rsdihzc2tiLCB2aWYsIHN0YSwgZW5hYmxlKTsNCisJbXQ3Nl9jb25uYWNf
+bWN1X3N0YV9iYXNpY190bHYoc3NrYiwgdmlmLCBzdGEsIGVuYWJsZSwgdHJ1ZSk7DQogCWlmIChl
+bmFibGUgJiYgc3RhKQ0KLQkJbXQ3Nl9jb25uYWNfbWN1X3N0YV90bHYocGh5LT5tdDc2LCBzc2ti
+LCBzdGEsIHZpZiwgMCk7DQorCQltdDc2X2Nvbm5hY19tY3Vfc3RhX3RsdihwaHktPm10NzYsIHNz
+a2IsIHN0YSwgdmlmLCAwLA0KKwkJCQkJTVQ3Nl9TVEFfSU5GT19TVEFURV9BU1NPQyk7DQogDQog
+CXd0YmxfaGRyID0gbXQ3Nl9jb25uYWNfbWN1X2FsbG9jX3d0YmxfcmVxKCZkZXYtPm10NzYsICZt
+c3RhLT53Y2lkLA0KIAkJCQkJCSAgV1RCTF9SRVNFVF9BTkRfU0VULCBOVUxMLA0KQEAgLTExNTcs
+MTEgKzExNTgsMTIgQEAgX19tdDc2MTVfbWN1X2FkZF9zdGEoc3RydWN0IG10NzZfcGh5ICpwaHks
+IHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQogCQkudmlmID0gdmlmLA0KIAkJLm9mZmxvYWRf
+ZncgPSBvZmZsb2FkX2Z3LA0KIAkJLmVuYWJsZSA9IGVuYWJsZSwNCisJCS5uZXdseSA9IHRydWUs
+DQogCQkuY21kID0gY21kLA0KIAl9Ow0KIA0KIAlpbmZvLndjaWQgPSBzdGEgPyAoc3RydWN0IG10
+NzZfd2NpZCAqKXN0YS0+ZHJ2X3ByaXYgOiAmbXZpZi0+c3RhLndjaWQ7DQotCXJldHVybiBtdDc2
+X2Nvbm5hY19tY3VfYWRkX3N0YV9jbWQocGh5LCAmaW5mbyk7DQorCXJldHVybiBtdDc2X2Nvbm5h
+Y19tY3Vfc3RhX2NtZChwaHksICZpbmZvKTsNCiB9DQogDQogc3RhdGljIGludA0KZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWN1LmMg
+Yi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZfY29ubmFjX21jdS5jDQpp
+bmRleCA3YjAzNmM3MDBiMjguLjU3ODYwNDFjYWY0MSAxMDA2NDQNCi0tLSBhL2RyaXZlcnMvbmV0
+L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWN1LmMNCisrKyBiL2RyaXZlcnMv
+bmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3Nl9jb25uYWNfbWN1LmMNCkBAIC0zMDQsNyAr
+MzA0LDcgQEAgRVhQT1JUX1NZTUJPTF9HUEwobXQ3Nl9jb25uYWNfbWN1X2FsbG9jX3d0YmxfcmVx
+KTsNCiB2b2lkIG10NzZfY29ubmFjX21jdV9zdGFfYmFzaWNfdGx2KHN0cnVjdCBza19idWZmICpz
+a2IsDQogCQkJCSAgIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQogCQkJCSAgIHN0cnVjdCBp
+ZWVlODAyMTFfc3RhICpzdGEsDQotCQkJCSAgIGJvb2wgZW5hYmxlKQ0KKwkJCQkgICBib29sIGVu
+YWJsZSwgYm9vbCBuZXdseSkNCiB7DQogCXN0cnVjdCBzdGFfcmVjX2Jhc2ljICpiYXNpYzsNCiAJ
+c3RydWN0IHRsdiAqdGx2Ow0KQEAgLTMxNiw3ICszMTYsOCBAQCB2b2lkIG10NzZfY29ubmFjX21j
+dV9zdGFfYmFzaWNfdGx2KHN0cnVjdCBza19idWZmICpza2IsDQogCWJhc2ljLT5leHRyYV9pbmZv
+ID0gY3B1X3RvX2xlMTYoRVhUUkFfSU5GT19WRVIpOw0KIA0KIAlpZiAoZW5hYmxlKSB7DQotCQli
+YXNpYy0+ZXh0cmFfaW5mbyB8PSBjcHVfdG9fbGUxNihFWFRSQV9JTkZPX05FVyk7DQorCQlpZiAo
+bmV3bHkpDQorCQkJYmFzaWMtPmV4dHJhX2luZm8gfD0gY3B1X3RvX2xlMTYoRVhUUkFfSU5GT19O
+RVcpOw0KIAkJYmFzaWMtPmNvbm5fc3RhdGUgPSBDT05OX1NUQVRFX1BPUlRfU0VDVVJFOw0KIAl9
+IGVsc2Ugew0KIAkJYmFzaWMtPmNvbm5fc3RhdGUgPSBDT05OX1NUQVRFX0RJU0NPTk5FQ1Q7DQpA
+QCAtNzA5LDcgKzcxMCw3IEBAIG10NzZfY29ubmFjX2dldF9waHlfbW9kZV92MihzdHJ1Y3QgbXQ3
+Nl9waHkgKm1waHksIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQogdm9pZCBtdDc2X2Nvbm5h
+Y19tY3Vfc3RhX3RsdihzdHJ1Y3QgbXQ3Nl9waHkgKm1waHksIHN0cnVjdCBza19idWZmICpza2Is
+DQogCQkJICAgICBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhLA0KIAkJCSAgICAgc3RydWN0IGll
+ZWU4MDIxMV92aWYgKnZpZiwNCi0JCQkgICAgIHU4IHJjcGkpDQorCQkJICAgICB1OCByY3BpLCB1
+OCBzdGFfc3RhdGUpDQogew0KIAlzdHJ1Y3QgY2ZnODAyMTFfY2hhbl9kZWYgKmNoYW5kZWYgPSAm
+bXBoeS0+Y2hhbmRlZjsNCiAJZW51bSBubDgwMjExX2JhbmQgYmFuZCA9IGNoYW5kZWYtPmNoYW4t
+PmJhbmQ7DQpAQCAtNzcwLDcgKzc3MSw3IEBAIHZvaWQgbXQ3Nl9jb25uYWNfbWN1X3N0YV90bHYo
+c3RydWN0IG10NzZfcGh5ICptcGh5LCBzdHJ1Y3Qgc2tfYnVmZiAqc2tiLA0KIA0KIAl0bHYgPSBt
+dDc2X2Nvbm5hY19tY3VfYWRkX3Rsdihza2IsIFNUQV9SRUNfU1RBVEUsIHNpemVvZigqc3RhdGUp
+KTsNCiAJc3RhdGUgPSAoc3RydWN0IHN0YV9yZWNfc3RhdGUgKil0bHY7DQotCXN0YXRlLT5zdGF0
+ZSA9IDI7DQorCXN0YXRlLT5zdGF0ZSA9IHN0YV9zdGF0ZTsNCiANCiAJaWYgKHN0YS0+dmh0X2Nh
+cC52aHRfc3VwcG9ydGVkKSB7DQogCQlzdGF0ZS0+dmh0X29wbW9kZSA9IHN0YS0+YmFuZHdpZHRo
+Ow0KQEAgLTg2Miw4ICs4NjMsOCBAQCB2b2lkIG10NzZfY29ubmFjX21jdV93dGJsX2h0X3Rsdihz
+dHJ1Y3QgbXQ3Nl9kZXYgKmRldiwgc3RydWN0IHNrX2J1ZmYgKnNrYiwNCiB9DQogRVhQT1JUX1NZ
+TUJPTF9HUEwobXQ3Nl9jb25uYWNfbWN1X3d0YmxfaHRfdGx2KTsNCiANCi1pbnQgbXQ3Nl9jb25u
+YWNfbWN1X2FkZF9zdGFfY21kKHN0cnVjdCBtdDc2X3BoeSAqcGh5LA0KLQkJCQlzdHJ1Y3QgbXQ3
+Nl9zdGFfY21kX2luZm8gKmluZm8pDQoraW50IG10NzZfY29ubmFjX21jdV9zdGFfY21kKHN0cnVj
+dCBtdDc2X3BoeSAqcGh5LA0KKwkJCSAgICBzdHJ1Y3QgbXQ3Nl9zdGFfY21kX2luZm8gKmluZm8p
+DQogew0KIAlzdHJ1Y3QgbXQ3Nl92aWYgKm12aWYgPSAoc3RydWN0IG10NzZfdmlmICopaW5mby0+
+dmlmLT5kcnZfcHJpdjsNCiAJc3RydWN0IG10NzZfZGV2ICpkZXYgPSBwaHktPmRldjsNCkBAIC04
+NzcsMTAgKzg3OCwxMSBAQCBpbnQgbXQ3Nl9jb25uYWNfbWN1X2FkZF9zdGFfY21kKHN0cnVjdCBt
+dDc2X3BoeSAqcGh5LA0KIA0KIAlpZiAoaW5mby0+c3RhIHx8ICFpbmZvLT5vZmZsb2FkX2Z3KQ0K
+IAkJbXQ3Nl9jb25uYWNfbWN1X3N0YV9iYXNpY190bHYoc2tiLCBpbmZvLT52aWYsIGluZm8tPnN0
+YSwNCi0JCQkJCSAgICAgIGluZm8tPmVuYWJsZSk7DQorCQkJCQkgICAgICBpbmZvLT5lbmFibGUs
+IGluZm8tPm5ld2x5KTsNCiAJaWYgKGluZm8tPnN0YSAmJiBpbmZvLT5lbmFibGUpDQogCQltdDc2
+X2Nvbm5hY19tY3Vfc3RhX3RsdihwaHksIHNrYiwgaW5mby0+c3RhLA0KLQkJCQkJaW5mby0+dmlm
+LCBpbmZvLT5yY3BpKTsNCisJCQkJCWluZm8tPnZpZiwgaW5mby0+cmNwaSwNCisJCQkJCWluZm8t
+PnN0YXRlKTsNCiANCiAJc3RhX3d0YmwgPSBtdDc2X2Nvbm5hY19tY3VfYWRkX3Rsdihza2IsIFNU
+QV9SRUNfV1RCTCwNCiAJCQkJCSAgIHNpemVvZihzdHJ1Y3QgdGx2KSk7DQpAQCAtOTA0LDcgKzkw
+Niw3IEBAIGludCBtdDc2X2Nvbm5hY19tY3VfYWRkX3N0YV9jbWQoc3RydWN0IG10NzZfcGh5ICpw
+aHksDQogDQogCXJldHVybiBtdDc2X21jdV9za2Jfc2VuZF9tc2coZGV2LCBza2IsIGluZm8tPmNt
+ZCwgdHJ1ZSk7DQogfQ0KLUVYUE9SVF9TWU1CT0xfR1BMKG10NzZfY29ubmFjX21jdV9hZGRfc3Rh
+X2NtZCk7DQorRVhQT1JUX1NZTUJPTF9HUEwobXQ3Nl9jb25uYWNfbWN1X3N0YV9jbWQpOw0KIA0K
+IHZvaWQgbXQ3Nl9jb25uYWNfbWN1X3d0YmxfYmFfdGx2KHN0cnVjdCBtdDc2X2RldiAqZGV2LCBz
+dHJ1Y3Qgc2tfYnVmZiAqc2tiLA0KIAkJCQkgc3RydWN0IGllZWU4MDIxMV9hbXBkdV9wYXJhbXMg
+KnBhcmFtcywNCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2
+L210NzZfY29ubmFjX21jdS5oIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9t
+dDc2X2Nvbm5hY19tY3UuaA0KaW5kZXggMjU4YjI2MmM3YzIzLi4yYzFjOTMxMjJjMmQgMTAwNjQ0
+DQotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZfY29ubmFjX21j
+dS5oDQorKysgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzZfY29ubmFj
+X21jdS5oDQpAQCAtOTA0LDYgKzkwNCwxMiBAQCBzdHJ1Y3QgbXQ3Nl9jb25uYWNfc3VzcGVuZF90
+bHYgew0KIAl1OCBwYWRbNV07DQogfSBfX3BhY2tlZDsNCiANCitlbnVtIG10NzZfc3RhX2luZm9f
+c3RhdGUgew0KKwlNVDc2X1NUQV9JTkZPX1NUQVRFX05PTkUsDQorCU1UNzZfU1RBX0lORk9fU1RB
+VEVfQVVUSCwNCisJTVQ3Nl9TVEFfSU5GT19TVEFURV9BU1NPQw0KK307DQorDQogc3RydWN0IG10
+NzZfc3RhX2NtZF9pbmZvIHsNCiAJc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YTsNCiAJc3RydWN0
+IG10NzZfd2NpZCAqd2NpZDsNCkBAIC05MTIsOCArOTE4LDEwIEBAIHN0cnVjdCBtdDc2X3N0YV9j
+bWRfaW5mbyB7DQogDQogCWJvb2wgb2ZmbG9hZF9mdzsNCiAJYm9vbCBlbmFibGU7DQorCWJvb2wg
+bmV3bHk7DQogCWludCBjbWQ7DQogCXU4IHJjcGk7DQorCXU4IHN0YXRlOw0KIH07DQogDQogI2Rl
+ZmluZSBNVF9TS1VfUE9XRVJfTElNSVQJMTYxDQpAQCAtOTgzLDcgKzk5MSw4IEBAIGludCBtdDc2
+X2Nvbm5hY19tY3Vfc2V0X2NoYW5uZWxfZG9tYWluKHN0cnVjdCBtdDc2X3BoeSAqcGh5KTsNCiBp
+bnQgbXQ3Nl9jb25uYWNfbWN1X3NldF92aWZfcHMoc3RydWN0IG10NzZfZGV2ICpkZXYsIHN0cnVj
+dCBpZWVlODAyMTFfdmlmICp2aWYpOw0KIHZvaWQgbXQ3Nl9jb25uYWNfbWN1X3N0YV9iYXNpY190
+bHYoc3RydWN0IHNrX2J1ZmYgKnNrYiwNCiAJCQkJICAgc3RydWN0IGllZWU4MDIxMV92aWYgKnZp
+ZiwNCi0JCQkJICAgc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YSwgYm9vbCBlbmFibGUpOw0KKwkJ
+CQkgICBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhLCBib29sIGVuYWJsZSwNCisJCQkJICAgYm9v
+bCBuZXdseSk7DQogdm9pZCBtdDc2X2Nvbm5hY19tY3Vfd3RibF9nZW5lcmljX3RsdihzdHJ1Y3Qg
+bXQ3Nl9kZXYgKmRldiwgc3RydWN0IHNrX2J1ZmYgKnNrYiwNCiAJCQkJICAgICAgc3RydWN0IGll
+ZWU4MDIxMV92aWYgKnZpZiwNCiAJCQkJICAgICAgc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YSwg
+dm9pZCAqc3RhX3d0YmwsDQpAQCAtOTk4LDcgKzEwMDcsNyBAQCBpbnQgbXQ3Nl9jb25uYWNfbWN1
+X3N0YV91cGRhdGVfaGRyX3RyYW5zKHN0cnVjdCBtdDc2X2RldiAqZGV2LA0KIHZvaWQgbXQ3Nl9j
+b25uYWNfbWN1X3N0YV90bHYoc3RydWN0IG10NzZfcGh5ICptcGh5LCBzdHJ1Y3Qgc2tfYnVmZiAq
+c2tiLA0KIAkJCSAgICAgc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YSwNCiAJCQkgICAgIHN0cnVj
+dCBpZWVlODAyMTFfdmlmICp2aWYsDQotCQkJICAgICB1OCByY3BpKTsNCisJCQkgICAgIHU4IHJj
+cGksIHU4IHN0YXRlKTsNCiB2b2lkIG10NzZfY29ubmFjX21jdV93dGJsX2h0X3RsdihzdHJ1Y3Qg
+bXQ3Nl9kZXYgKmRldiwgc3RydWN0IHNrX2J1ZmYgKnNrYiwNCiAJCQkJIHN0cnVjdCBpZWVlODAy
+MTFfc3RhICpzdGEsIHZvaWQgKnN0YV93dGJsLA0KIAkJCQkgdm9pZCAqd3RibF90bHYpOw0KQEAg
+LTEwMjAsOCArMTAyOSw4IEBAIGludCBtdDc2X2Nvbm5hY19tY3VfdW5pX2FkZF9ic3Moc3RydWN0
+IG10NzZfcGh5ICpwaHksDQogCQkJCXN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQogCQkJCXN0
+cnVjdCBtdDc2X3djaWQgKndjaWQsDQogCQkJCWJvb2wgZW5hYmxlKTsNCi1pbnQgbXQ3Nl9jb25u
+YWNfbWN1X2FkZF9zdGFfY21kKHN0cnVjdCBtdDc2X3BoeSAqcGh5LA0KLQkJCQlzdHJ1Y3QgbXQ3
+Nl9zdGFfY21kX2luZm8gKmluZm8pOw0KK2ludCBtdDc2X2Nvbm5hY19tY3Vfc3RhX2NtZChzdHJ1
+Y3QgbXQ3Nl9waHkgKnBoeSwNCisJCQkgICAgc3RydWN0IG10NzZfc3RhX2NtZF9pbmZvICppbmZv
+KTsNCiB2b2lkIG10NzZfY29ubmFjX21jdV9iZWFjb25fbG9zc19pdGVyKHZvaWQgKnByaXYsIHU4
+ICptYWMsDQogCQkJCSAgICAgIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYpOw0KIGludCBtdDc2
+X2Nvbm5hY19tY3Vfc2V0X3J0c190aHJlc2goc3RydWN0IG10NzZfZGV2ICpkZXYsIHUzMiB2YWws
+IHU4IGJhbmQpOw0KZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210
+NzYvbXQ3OTIxL21haW4uYyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3
+OTIxL21haW4uYw0KaW5kZXggODQ5MzBhZDVlYmM3Li43MjQ3NjNiMzg0NGYgMTAwNjQ0DQotLS0g
+YS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9tYWluLmMNCisrKyBi
+L2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTIxL21haW4uYw0KQEAgLTU3
+OCw3ICs1NzgsOCBAQCBzdGF0aWMgdm9pZCBtdDc5MjFfYnNzX2luZm9fY2hhbmdlZChzdHJ1Y3Qg
+aWVlZTgwMjExX2h3ICpodywNCiAJCW10NzkyMV9tY3VfdW5pX2Jzc19wcyhkZXYsIHZpZik7DQog
+DQogCWlmIChjaGFuZ2VkICYgQlNTX0NIQU5HRURfQVNTT0MpIHsNCi0JCW10NzkyMV9tY3Vfc3Rh
+X2FkZChkZXYsIE5VTEwsIHZpZiwgdHJ1ZSk7DQorCQltdDc5MjFfbWN1X3N0YV91cGRhdGUoZGV2
+LCBOVUxMLCB2aWYsIHRydWUsDQorCQkJCSAgICAgIE1UNzZfU1RBX0lORk9fU1RBVEVfQVNTT0Mp
+Ow0KIAkJbXQ3OTIxX2Jzc19iY25mdF9hcHBseShkZXYsIHZpZiwgaW5mby0+YXNzb2MpOw0KIAl9
+DQogDQpAQCAtNjE3LDE3ICs2MTgsMTQgQEAgaW50IG10NzkyMV9tYWNfc3RhX2FkZChzdHJ1Y3Qg
+bXQ3Nl9kZXYgKm1kZXYsIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsDQogCWlmIChyZXQpDQog
+CQlyZXR1cm4gcmV0Ow0KIA0KLQlpZiAodmlmLT50eXBlID09IE5MODAyMTFfSUZUWVBFX1NUQVRJ
+T04pIHsNCisJaWYgKHZpZi0+dHlwZSA9PSBOTDgwMjExX0lGVFlQRV9TVEFUSU9OKQ0KIAkJbXZp
+Zi0+d2VwX3N0YSA9IG1zdGE7DQotCQlpZiAoIXN0YS0+dGRscykNCi0JCQltdDc2X2Nvbm5hY19t
+Y3VfdW5pX2FkZF9ic3MoJmRldi0+bXBoeSwgdmlmLA0KLQkJCQkJCSAgICAmbXZpZi0+c3RhLndj
+aWQsIHRydWUpOw0KLQl9DQogDQogCW10NzkyMV9tYWNfd3RibF91cGRhdGUoZGV2LCBpZHgsDQog
+CQkJICAgICAgIE1UX1dUQkxfVVBEQVRFX0FETV9DT1VOVF9DTEVBUik7DQogDQotCXJldCA9IG10
+NzkyMV9tY3Vfc3RhX2FkZChkZXYsIHN0YSwgdmlmLCB0cnVlKTsNCisJcmV0ID0gbXQ3OTIxX21j
+dV9zdGFfdXBkYXRlKGRldiwgc3RhLCB2aWYsIHRydWUsDQorCQkJCSAgICBNVDc2X1NUQV9JTkZP
+X1NUQVRFX05PTkUpOw0KIAlpZiAocmV0KQ0KIAkJcmV0dXJuIHJldDsNCiANCkBAIC02MzYsNiAr
+NjM0LDI3IEBAIGludCBtdDc5MjFfbWFjX3N0YV9hZGQoc3RydWN0IG10NzZfZGV2ICptZGV2LCBz
+dHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLA0KIAlyZXR1cm4gMDsNCiB9DQogDQordm9pZCBtdDc5
+MjFfbWFjX3N0YV9hc3NvYyhzdHJ1Y3QgbXQ3Nl9kZXYgKm1kZXYsIHN0cnVjdCBpZWVlODAyMTFf
+dmlmICp2aWYsDQorCQkJICBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhKQ0KK3sNCisJc3RydWN0
+IG10NzkyMV9kZXYgKmRldiA9IGNvbnRhaW5lcl9vZihtZGV2LCBzdHJ1Y3QgbXQ3OTIxX2Rldiwg
+bXQ3Nik7DQorCXN0cnVjdCBtdDc5MjFfc3RhICptc3RhID0gKHN0cnVjdCBtdDc5MjFfc3RhICop
+c3RhLT5kcnZfcHJpdjsNCisJc3RydWN0IG10NzkyMV92aWYgKm12aWYgPSAoc3RydWN0IG10Nzky
+MV92aWYgKil2aWYtPmRydl9wcml2Ow0KKw0KKwltdDc5MjFfbXV0ZXhfYWNxdWlyZShkZXYpOw0K
+Kw0KKwlpZiAodmlmLT50eXBlID09IE5MODAyMTFfSUZUWVBFX1NUQVRJT04gJiYgIXN0YS0+dGRs
+cykNCisJCW10NzZfY29ubmFjX21jdV91bmlfYWRkX2JzcygmZGV2LT5tcGh5LCB2aWYsICZtdmlm
+LT5zdGEud2NpZCwNCisJCQkJCSAgICB0cnVlKTsNCisNCisJbXQ3OTIxX21hY193dGJsX3VwZGF0
+ZShkZXYsIG1zdGEtPndjaWQuaWR4LA0KKwkJCSAgICAgICBNVF9XVEJMX1VQREFURV9BRE1fQ09V
+TlRfQ0xFQVIpOw0KKw0KKwltdDc5MjFfbWN1X3N0YV91cGRhdGUoZGV2LCBzdGEsIHZpZiwgdHJ1
+ZSwgTVQ3Nl9TVEFfSU5GT19TVEFURV9BU1NPQyk7DQorDQorCW10NzkyMV9tdXRleF9yZWxlYXNl
+KGRldik7DQorfQ0KKw0KIHZvaWQgbXQ3OTIxX21hY19zdGFfcmVtb3ZlKHN0cnVjdCBtdDc2X2Rl
+diAqbWRldiwgc3RydWN0IGllZWU4MDIxMV92aWYgKnZpZiwNCiAJCQkgICBzdHJ1Y3QgaWVlZTgw
+MjExX3N0YSAqc3RhKQ0KIHsNCkBAIC02NDUsNyArNjY0LDcgQEAgdm9pZCBtdDc5MjFfbWFjX3N0
+YV9yZW1vdmUoc3RydWN0IG10NzZfZGV2ICptZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlm
+LA0KIAltdDc2X2Nvbm5hY19mcmVlX3BlbmRpbmdfdHhfc2ticygmZGV2LT5wbSwgJm1zdGEtPndj
+aWQpOw0KIAltdDc2X2Nvbm5hY19wbV93YWtlKCZkZXYtPm1waHksICZkZXYtPnBtKTsNCiANCi0J
+bXQ3OTIxX21jdV9zdGFfYWRkKGRldiwgc3RhLCB2aWYsIGZhbHNlKTsNCisJbXQ3OTIxX21jdV9z
+dGFfdXBkYXRlKGRldiwgc3RhLCB2aWYsIGZhbHNlLCBNVDc2X1NUQV9JTkZPX1NUQVRFX05PTkUp
+Ow0KIAltdDc5MjFfbWFjX3d0YmxfdXBkYXRlKGRldiwgbXN0YS0+d2NpZC5pZHgsDQogCQkJICAg
+ICAgIE1UX1dUQkxfVVBEQVRFX0FETV9DT1VOVF9DTEVBUik7DQogDQpAQCAtNzkxLDIyICs4MTAs
+NiBAQCBtdDc5MjFfYW1wZHVfYWN0aW9uKHN0cnVjdCBpZWVlODAyMTFfaHcgKmh3LCBzdHJ1Y3Qg
+aWVlZTgwMjExX3ZpZiAqdmlmLA0KIAlyZXR1cm4gcmV0Ow0KIH0NCiANCi1zdGF0aWMgaW50DQot
+bXQ3OTIxX3N0YV9hZGQoc3RydWN0IGllZWU4MDIxMV9odyAqaHcsIHN0cnVjdCBpZWVlODAyMTFf
+dmlmICp2aWYsDQotCSAgICAgICBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhKQ0KLXsNCi0JcmV0
+dXJuIG10NzZfc3RhX3N0YXRlKGh3LCB2aWYsIHN0YSwgSUVFRTgwMjExX1NUQV9OT1RFWElTVCwN
+Ci0JCQkgICAgICBJRUVFODAyMTFfU1RBX05PTkUpOw0KLX0NCi0NCi1zdGF0aWMgaW50DQotbXQ3
+OTIxX3N0YV9yZW1vdmUoc3RydWN0IGllZWU4MDIxMV9odyAqaHcsIHN0cnVjdCBpZWVlODAyMTFf
+dmlmICp2aWYsDQotCQkgIHN0cnVjdCBpZWVlODAyMTFfc3RhICpzdGEpDQotew0KLQlyZXR1cm4g
+bXQ3Nl9zdGFfc3RhdGUoaHcsIHZpZiwgc3RhLCBJRUVFODAyMTFfU1RBX05PTkUsDQotCQkJICAg
+ICAgSUVFRTgwMjExX1NUQV9OT1RFWElTVCk7DQotfQ0KLQ0KIHN0YXRpYyBpbnQgbXQ3OTIxX3N0
+YV9zdGF0ZShzdHJ1Y3QgaWVlZTgwMjExX2h3ICpodywNCiAJCQkgICAgc3RydWN0IGllZWU4MDIx
+MV92aWYgKnZpZiwNCiAJCQkgICAgc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YSwNCkBAIC04MjEs
+MTUgKzgyNCw3IEBAIHN0YXRpYyBpbnQgbXQ3OTIxX3N0YV9zdGF0ZShzdHJ1Y3QgaWVlZTgwMjEx
+X2h3ICpodywNCiAJCW10NzkyMV9tdXRleF9yZWxlYXNlKGRldik7DQogCX0NCiANCi0JaWYgKG9s
+ZF9zdGF0ZSA9PSBJRUVFODAyMTFfU1RBX0FVVEggJiYNCi0JICAgIG5ld19zdGF0ZSA9PSBJRUVF
+ODAyMTFfU1RBX0FTU09DKSB7DQotCQlyZXR1cm4gbXQ3OTIxX3N0YV9hZGQoaHcsIHZpZiwgc3Rh
+KTsNCi0JfSBlbHNlIGlmIChvbGRfc3RhdGUgPT0gSUVFRTgwMjExX1NUQV9BU1NPQyAmJg0KLQkJ
+ICAgbmV3X3N0YXRlID09IElFRUU4MDIxMV9TVEFfQVVUSCkgew0KLQkJcmV0dXJuIG10NzkyMV9z
+dGFfcmVtb3ZlKGh3LCB2aWYsIHN0YSk7DQotCX0NCi0NCi0JcmV0dXJuIDA7DQorCXJldHVybiBt
+dDc2X3N0YV9zdGF0ZShodywgdmlmLCBzdGEsIG9sZF9zdGF0ZSwgbmV3X3N0YXRlKTsNCiB9DQog
+DQogc3RhdGljIGludA0KZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVr
+L210NzYvbXQ3OTIxL21jdS5jIGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9t
+dDc5MjEvbWN1LmMNCmluZGV4IGJkOTRkMTI0NDk3NS4uYzk1ZDcxNTgzY2MxIDEwMDY0NA0KLS0t
+IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvbWN1LmMNCisrKyBi
+L2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210NzYvbXQ3OTIxL21jdS5jDQpAQCAtMTI2
+Nyw4ICsxMjY3LDkgQEAgaW50IG10NzkyMV9tY3Vfc2V0X2Jzc19wbShzdHJ1Y3QgbXQ3OTIxX2Rl
+diAqZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLA0KIAkJCQkgc2l6ZW9mKHJlcSksIGZh
+bHNlKTsNCiB9DQogDQotaW50IG10NzkyMV9tY3Vfc3RhX2FkZChzdHJ1Y3QgbXQ3OTIxX2RldiAq
+ZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3RhLA0KLQkJICAgICAgIHN0cnVjdCBpZWVlODAy
+MTFfdmlmICp2aWYsIGJvb2wgZW5hYmxlKQ0KK2ludCBtdDc5MjFfbWN1X3N0YV91cGRhdGUoc3Ry
+dWN0IG10NzkyMV9kZXYgKmRldiwgc3RydWN0IGllZWU4MDIxMV9zdGEgKnN0YSwNCisJCQkgIHN0
+cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsIGJvb2wgZW5hYmxlLA0KKwkJCSAgZW51bSBtdDc2X3N0
+YV9pbmZvX3N0YXRlIHN0YXRlKQ0KIHsNCiAJc3RydWN0IG10NzkyMV92aWYgKm12aWYgPSAoc3Ry
+dWN0IG10NzkyMV92aWYgKil2aWYtPmRydl9wcml2Ow0KIAlpbnQgcnNzaSA9IC1ld21hX3Jzc2lf
+cmVhZCgmbXZpZi0+cnNzaSk7DQpAQCAtMTI3Nyw2ICsxMjc4LDcgQEAgaW50IG10NzkyMV9tY3Vf
+c3RhX2FkZChzdHJ1Y3QgbXQ3OTIxX2RldiAqZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3N0YSAqc3Rh
+LA0KIAkJLnZpZiA9IHZpZiwNCiAJCS5lbmFibGUgPSBlbmFibGUsDQogCQkuY21kID0gTUNVX1VO
+SV9DTURfU1RBX1JFQ19VUERBVEUsDQorCQkuc3RhdGUgPSBzdGF0ZSwNCiAJCS5vZmZsb2FkX2Z3
+ID0gdHJ1ZSwNCiAJCS5yY3BpID0gdG9fcmNwaShyc3NpKSwNCiAJfTsNCkBAIC0xMjg0LDggKzEy
+ODYsOSBAQCBpbnQgbXQ3OTIxX21jdV9zdGFfYWRkKHN0cnVjdCBtdDc5MjFfZGV2ICpkZXYsIHN0
+cnVjdCBpZWVlODAyMTFfc3RhICpzdGEsDQogDQogCW1zdGEgPSBzdGEgPyAoc3RydWN0IG10Nzky
+MV9zdGEgKilzdGEtPmRydl9wcml2IDogTlVMTDsNCiAJaW5mby53Y2lkID0gbXN0YSA/ICZtc3Rh
+LT53Y2lkIDogJm12aWYtPnN0YS53Y2lkOw0KKwlpbmZvLm5ld2x5ID0gbXN0YSA/IHN0YXRlICE9
+IE1UNzZfU1RBX0lORk9fU1RBVEVfQVNTT0MgOiB0cnVlOw0KIA0KLQlyZXR1cm4gbXQ3Nl9jb25u
+YWNfbWN1X2FkZF9zdGFfY21kKCZkZXYtPm1waHksICZpbmZvKTsNCisJcmV0dXJuIG10NzZfY29u
+bmFjX21jdV9zdGFfY21kKCZkZXYtPm1waHksICZpbmZvKTsNCiB9DQogDQogaW50IF9fbXQ3OTIx
+X21jdV9kcnZfcG1jdHJsKHN0cnVjdCBtdDc5MjFfZGV2ICpkZXYpDQpkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvbXQ3OTIxLmggYi9kcml2ZXJz
+L25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9tdDc5MjEuaA0KaW5kZXggOGFhOGQy
+ZWNkZmZhLi43MWNmMWQxYTJlMDIgMTAwNjQ0DQotLS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9t
+ZWRpYXRlay9tdDc2L210NzkyMS9tdDc5MjEuaA0KKysrIGIvZHJpdmVycy9uZXQvd2lyZWxlc3Mv
+bWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvbXQ3OTIxLmgNCkBAIC0yNjIsOCArMjYyLDkgQEAgaW50IG10
+NzkyMV9tY3VfYWRkX2tleShzdHJ1Y3QgbXQ3OTIxX2RldiAqZGV2LCBzdHJ1Y3QgaWVlZTgwMjEx
+X3ZpZiAqdmlmLA0KIAkJICAgICAgIHN0cnVjdCBtdDc5MjFfc3RhICptc3RhLCBzdHJ1Y3QgaWVl
+ZTgwMjExX2tleV9jb25mICprZXksDQogCQkgICAgICAgZW51bSBzZXRfa2V5X2NtZCBjbWQpOw0K
+IGludCBtdDc5MjFfc2V0X2NoYW5uZWwoc3RydWN0IG10NzkyMV9waHkgKnBoeSk7DQotaW50IG10
+NzkyMV9tY3Vfc3RhX2FkZChzdHJ1Y3QgbXQ3OTIxX2RldiAqZGV2LCBzdHJ1Y3QgaWVlZTgwMjEx
+X3N0YSAqc3RhLA0KLQkJICAgICAgIHN0cnVjdCBpZWVlODAyMTFfdmlmICp2aWYsIGJvb2wgZW5h
+YmxlKTsNCitpbnQgbXQ3OTIxX21jdV9zdGFfdXBkYXRlKHN0cnVjdCBtdDc5MjFfZGV2ICpkZXYs
+IHN0cnVjdCBpZWVlODAyMTFfc3RhICpzdGEsDQorCQkJICBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAq
+dmlmLCBib29sIGVuYWJsZSwNCisJCQkgIGVudW0gbXQ3Nl9zdGFfaW5mb19zdGF0ZSBzdGF0ZSk7
+DQogaW50IG10NzkyMV9tY3Vfc2V0X2NoYW5faW5mbyhzdHJ1Y3QgbXQ3OTIxX3BoeSAqcGh5LCBp
+bnQgY21kKTsNCiBpbnQgbXQ3OTIxX21jdV9zZXRfdHgoc3RydWN0IG10NzkyMV9kZXYgKmRldiwg
+c3RydWN0IGllZWU4MDIxMV92aWYgKnZpZik7DQogaW50IG10NzkyMV9tY3Vfc2V0X2VlcHJvbShz
+dHJ1Y3QgbXQ3OTIxX2RldiAqZGV2KTsNCkBAIC0zMzUsNiArMzM2LDggQEAgdm9pZCBtdDc5MjFf
+bWFjX2ZpbGxfcnhfdmVjdG9yKHN0cnVjdCBtdDc5MjFfZGV2ICpkZXYsIHN0cnVjdCBza19idWZm
+ICpza2IpOw0KIHZvaWQgbXQ3OTIxX21hY190eF9mcmVlKHN0cnVjdCBtdDc5MjFfZGV2ICpkZXYs
+IHN0cnVjdCBza19idWZmICpza2IpOw0KIGludCBtdDc5MjFfbWFjX3N0YV9hZGQoc3RydWN0IG10
+NzZfZGV2ICptZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLA0KIAkJICAgICAgIHN0cnVj
+dCBpZWVlODAyMTFfc3RhICpzdGEpOw0KK3ZvaWQgbXQ3OTIxX21hY19zdGFfYXNzb2Moc3RydWN0
+IG10NzZfZGV2ICptZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLA0KKwkJCSAgc3RydWN0
+IGllZWU4MDIxMV9zdGEgKnN0YSk7DQogdm9pZCBtdDc5MjFfbWFjX3N0YV9yZW1vdmUoc3RydWN0
+IG10NzZfZGV2ICptZGV2LCBzdHJ1Y3QgaWVlZTgwMjExX3ZpZiAqdmlmLA0KIAkJCSAgIHN0cnVj
+dCBpZWVlODAyMTFfc3RhICpzdGEpOw0KIHZvaWQgbXQ3OTIxX21hY193b3JrKHN0cnVjdCB3b3Jr
+X3N0cnVjdCAqd29yayk7DQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0
+ZWsvbXQ3Ni9tdDc5MjEvcGNpLmMgYi9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2
+L210NzkyMS9wY2kuYw0KaW5kZXggMTMyNjNmNTBkYzAwLi4yNzkwNmIyY2Q5MTIgMTAwNjQ0DQot
+LS0gYS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L210NzkyMS9wY2kuYw0KKysr
+IGIvZHJpdmVycy9uZXQvd2lyZWxlc3MvbWVkaWF0ZWsvbXQ3Ni9tdDc5MjEvcGNpLmMNCkBAIC0x
+MDYsNiArMTA2LDcgQEAgc3RhdGljIGludCBtdDc5MjFfcGNpX3Byb2JlKHN0cnVjdCBwY2lfZGV2
+ICpwZGV2LA0KIAkJLnJ4X3BvbGxfY29tcGxldGUgPSBtdDc5MjFfcnhfcG9sbF9jb21wbGV0ZSwN
+CiAJCS5zdGFfcHMgPSBtdDc5MjFfc3RhX3BzLA0KIAkJLnN0YV9hZGQgPSBtdDc5MjFfbWFjX3N0
+YV9hZGQsDQorCQkuc3RhX2Fzc29jID0gbXQ3OTIxX21hY19zdGFfYXNzb2MsDQogCQkuc3RhX3Jl
+bW92ZSA9IG10NzkyMV9tYWNfc3RhX3JlbW92ZSwNCiAJCS51cGRhdGVfc3VydmV5ID0gbXQ3OTIx
+X3VwZGF0ZV9jaGFubmVsLA0KIAl9Ow0KLS0gDQoyLjI1LjENCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
