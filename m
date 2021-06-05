@@ -1,75 +1,86 @@
-Return-Path: <SRS0=7C4w=K6=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Qqzl=K7=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D2F6C4743D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 19:19:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0445C4743D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A478613F9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  4 Jun 2021 19:19:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6A478613F9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9F1796121D
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9F1796121D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+BgQqTO0d39eMidteJx/AVz4KA1jWCn4ghVq4xrOZdE=; b=QsHzKyZTte2RyB
-	Wq4slehf68bE2DZEdEwaKUZpaIn9GNdf717+tqskz7Wx8qTYmp8zktABYemjEl48cvsyzd4sfZAhO
-	uarXBHWdmoq2Pwiu2Qllzf06HuN/VQ1JNZMSDa0wQXP2kYHHOXIuuy5dMGEr9o2b+p4sm9NDNiROS
-	dhKXD8lscRqltu5koMJBlGNhSjG9jXllp+PXvM1SN8++D0AT4+GlpRQN/w3Ez9Vv83kNRacwnQ0Ut
-	VCLGpCX/5KEA4IKwLqeS734zavRzj21Py5dVWKhrOcvmczRUmcARfTTEMqpVP1yPJelCf/23N8j+0
-	ZQm7FGg9jvCpeZbwFJkA==;
+	List-Owner; bh=mGA0jCT7+JISX2I3n/kEIEhX6j6Lkb8bC8S6tYdv2t8=; b=hT5kz9q2Eq5QjS
+	U1OxrbVqIjwpIvfA1ec9O+d8zZue34lfbw+U8R75gz9gTscPoiLxsJjHbyfCZIC0E2fIFVUsfs6W3
+	1qM6hnbW914aUecNOAXbg61MLqXJu1NHMExE/mCoBA0EjRL9Qje3i5hB0wk9p4g46zd5gSuvpdDJ2
+	7iD6Y94niYlWvZs62vtzRjL6sI/sLwjutMwJiC+VvD+bc9nMFilp86j2Kk/9aXNnn3fSb36NUe+CB
+	RA1o5+TyySjhbMKtFwYohf2R5NKIf5myEDBzo2+PzjXyZmPzm4ljifofVHFtQcS1KOqES6yS4oENx
+	Uc5m57g5k2BvvuVwCzJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lpFMC-00Eyau-Q1; Fri, 04 Jun 2021 19:19:48 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lpM4Q-00FnaL-Ot; Sat, 05 Jun 2021 02:29:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lpFLx-00EyWD-BO; Fri, 04 Jun 2021 19:19:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id CAA8060FF2;
- Fri,  4 Jun 2021 19:19:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1622834372;
- bh=P6IaSvqgJAriq/iT+X5V+CNKjpfeWSTD2AHq/76koTg=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=ejX9ePwh000rZ2RTbyRE2Pe6GXBBS2PN/Wc2oQVAatnlpWfaZcBkhfYgA7oi7KBZn
- 6wm1k9Q2hVgmWBcHCX9BJuhuE8ynJTW9gIY8PLmC8/4VX1DqvyQm4zfT2m3j8A4BA/
- XIFwT2rmdyCcybtxJx1qIFNfrY8PRG4hWpIi9DqvLPRMoB1ZqfVUeddqQ6QJ8ZS7Ux
- buA+sQUzvHLai7nTi7a/r13HgUoa6oPikJzhCtGPXshgkEgGr9YY1WSz/gW+BtPch3
- ywX5jhxbRgzzkyewaIpqqriBej+9+ZUuXaFCjPgMWbSOa+XzdoSZwogroXDYEhWk4W
- cWCLSBbBOJciQ==
+ id 1lpM49-00FnTF-Sg; Sat, 05 Jun 2021 02:29:40 +0000
+X-UUID: 5d82cddabd9544959847d563762a876c-20210604
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=/IoTsTZM4qFDn3WsOD6IdOZfbheoqikhn5DPEOZd3tg=; 
+ b=bMxiPurnS17bTO+/ExwdMOtC+3yTcgBHUulCEqheXCiQfWNPbHIgpVYQ+7Ar+JS4yScozHTiYEUUyP11pwy2NMc+5e9XeFH/GKKlRiqGBZRbwIxkfF/LBilX6rBsnetZf5x0nqGpJ+EJdZzKUe2VYuEp7i3kkcZNH+PBLAI5Fmk=;
+X-UUID: 5d82cddabd9544959847d563762a876c-20210604
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1990204452; Fri, 04 Jun 2021 19:29:34 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 4 Jun 2021 19:29:32 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 5 Jun 2021 10:29:30 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 5 Jun 2021 10:29:29 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
+ Yong Wu <yong.wu@mediatek.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
+ <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v5, 3/6] media: mtk-vcodec: Support 34bits dma address for venc
+Date: Sat, 5 Jun 2021 10:29:15 +0800
+Message-ID: <20210605022918.4213-4-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210605022918.4213-1-irui.wang@mediatek.com>
+References: <20210605022918.4213-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210604132335.GK2435141@dell>
-References: <1595493126-21611-1-git-send-email-wendell.lin@mediatek.com>
- <1597052186.27843.1.camel@mtkswgap22>
- <CAF2Aj3hZB08d8x6XOqsP4m5fv76fWH48U95j8ugLt-YWFJ-kkA@mail.gmail.com>
- <162276982204.1835121.10976600065855289763@swboyd.mtv.corp.google.com>
- <20210604082427.GE2435141@dell> <20210604082524.GF2435141@dell>
- <1622802121.26830.22.camel@mtkswgap22> <20210604132335.GK2435141@dell>
-Subject: Re: [PATCH 1/1] clk: Export clk_register_composite
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
- <mturquette@baylibre.com>, linux-clk <linux-clk@vger.kernel.org>, open list
- <linux-kernel@vger.kernel.org>, ARM/Mediatek SoC support
- <linux-mediatek@lists.infradead.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, open list:OPEN FIRMWARE AND FLATTENED
- DEVICE TREE BINDINGS <devicetree@vger.kernel.org>, wsd_upstream
- <wsd_upstream@mediatek.com>; 
-To: Lee Jones <lee.jones@linaro.org>, Wendell Lin <wendell.lin@mediatek.com>
-Date: Fri, 04 Jun 2021 12:19:31 -0700
-Message-ID: <162283437157.1835121.5925083479747882207@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_121933_437949_CBFB707F 
-X-CRM114-Status: GOOD (  26.84  )
+X-CRM114-CacheID: sfid-20210604_192939_355496_A7ECAE39 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,61 +97,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Lee Jones (2021-06-04 06:23:35)
-> On Fri, 04 Jun 2021, Wendell Lin wrote:
-> 
-> > On Fri, 2021-06-04 at 09:25 +0100, Lee Jones wrote:
-> > > On Fri, 04 Jun 2021, Lee Jones wrote:
-> > > 
-> > > > On Thu, 03 Jun 2021, Stephen Boyd wrote:
-> > > > 
-> > > > > Quoting Lee Jones (2021-05-20 09:07:42)
-> > > > > > On Mon, 10 Aug 2020 at 10:36, Wendell Lin <wendell.lin@mediatek.com> wrote:
-> > > > > > 
-> > > > > >     Hi Matthias and all,
-> > > > > > 
-> > > > > >     Gentle ping on this patch.
-> > > > > > 
-> > > > > > 
-> > > > > > What about a not-so-gentle ping on this patch?  Grrrr... :)
-> > > > > > 
-> > > > > > FYI, this is still required by more than one source.
-> > > > > > 
-> > > > > > Please help get this out of all of the vendor trees please.
-> > > > > > 
-> > > > > 
-> > > > > Is there an in-kernel user?
-> > > > 
-> > > > How can there be?  It's not exported yet. :)
-> > > > 
-> > > > However there shouldn't be any barriers for vendors represented in
-> > > > Mainline to build their drivers as modules if they so wish.  If/when
-> > > > they do, this will need to be exported.
-> > > 
-> > > Wendell Lin, is this what you wish to do with the in-kernel MediaTek
-> > > driver?
-> > > 
-> > This is because Mediatek clock driver would be built as kernel module,
-> > so clk_register_composite() used should be exported, then we could use
-> > it. 
-> > 
-> > Please refer:
-> > [PATCH 2/2] clk: mediatek: Add EXPORT_SYMBOL for kernel module support 
-> > https://lkml.org/lkml/2020/7/1/124
-> > +EXPORT_SYMBOL(mtk_clk_register_composites);
-> > 
-> > clk_register_composite() is used by Mediatek clk kernel module.
-> > From export symbol: mtk_clk_register_composites. 
-> 
-> Perfect.  Thanks for the clarification.
-> 
-> Anything else you need from us Stephen?
-> 
+Use the dma_set_mask_and_coherent helper to set venc
+DMA bit mask to support 34bits iova space(16GB) that
+the mt8192 iommu HW support.
 
-Is the mediatek driver compilable as a module? Last time I checked it
-wasn't a module. I want an upstream modular driver that uses the symbol.
-Otherwise we're exporting symbols when it doesn't need to be.
+Whole the iova range separate to 0~4G/4G~8G/8G~12G/12G~16G,
+regarding which iova range VENC actually locate, it
+depends on the dma-ranges property of venc dtsi node.
 
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 7d7b8cfc2cc5..26b089e81213 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -361,6 +361,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_event_workq;
+ 	}
+ 
++	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
++		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
++
+ 	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, 1);
+ 	if (ret) {
+ 		mtk_v4l2_err("Failed to register video device");
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
