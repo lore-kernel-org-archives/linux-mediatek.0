@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4A68C4743C
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83D88C4743C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A510613E9
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8A510613E9
+	by mail.kernel.org (Postfix) with ESMTPS id 50604613F1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:32:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50604613F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TfOwwrQ1D7wzj4/ewU5NmLJO2XEkjabh/rUqPjrfy64=; b=keCl5VEySA462y
-	FFqmNqz54z+MN0JxFvIhtKUsWfMnxDQnOKKNtAw22Npu1aN1C7bWAidfAuuj6GmUmtwA/haO6vqzD
-	koovEP4gT3mq9vhw/F6oZReEykpX3WgElmNoSDuZkF9YW+jL527J8fr8ZXHoxXEf9WEA6ZUIctsdZ
-	eQ2/YY9aFVCYdZJVfZz+YiFCia8T4vY3fIBpBvxrQW/Znbd+0FqZacMbhM0UN7POBBX9b5auhAIyg
-	HWZ4oBdhc8KD8zpQqii1vSnhm/yj6la1SPTc3vuSmRf+b537yg+EN+MT0U8oxBPWH5H5bt5EKR/0C
-	watSnDqWBQGj+nhyIamA==;
+	List-Owner; bh=n6Iiu+Ol7R4egT4UYa+HQfyOUyS2QzEvFodSWHDK294=; b=Uki/sBDB5hYitE
+	DAznfwcvjbpjAL7D6ybquenNxrec9GTv9DHi+ELL4d68vP9bBoh8VMd6Nb4Rt6GezBD5cjuqV7SZW
+	8CaWslyhPHudpGBJ1CFgSMcuCoyDn/VcLkamPKcY4Y2y7mGiW1KzMuujbdfWoF4JUGetcGR2ICQ4o
+	ZEBS12OKGwXX8554Iu2mmIjKiQ5ThHK4vxKPtg9hxrbr3ik71hBBqwqV/w/1V64s8ct3woy7CCko5
+	ur2m3eLamikPsN5NCl98C7Ap4Atfr8UudAiQx3n1ZakdlHkO4cPF8mZvSr88N17CRraMTxyE+smzg
+	MlJrgDkGMfKSfCu4/dew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lpM4c-00Fnd4-7R; Sat, 05 Jun 2021 02:30:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lpM4o-00Fnga-6Y; Sat, 05 Jun 2021 02:30:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lpM4D-00FnWM-N8; Sat, 05 Jun 2021 02:29:43 +0000
-X-UUID: 08e0296fb9b14db9afe1273b4b17c7ab-20210604
+ id 1lpM4G-00FnWr-Uj; Sat, 05 Jun 2021 02:29:46 +0000
+X-UUID: c222542447254528a6edbf442378e06f-20210604
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=DBNEJSUbAy8sm56ZRGLagb0OkmipjROcLUpg/aZTYDs=; 
- b=iULY8SGFdYpQcTjLNA1IL2wqb0242A72sUtmUumsQLLPY/NGAHxQWcjk7Vzug1hh8OSZLpKsNeCyL2WhusUufAR/GclfwTnzR0HXLJuH+/8yjRm4CGYLWo6Emt7pzO1+2Yr+08G0PviUxaFLTOy4lY8M9pvwPpehX+Z7HrWyi7w=;
-X-UUID: 08e0296fb9b14db9afe1273b4b17c7ab-20210604
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=jB6AYnO7UNV0Bm6+MN7/CZgrI8uvCg787w92clyUFBw=; 
+ b=KMfm20Xn0se/W3VQxTel7TOVlpipOGXWaHZvra9qS6oJYvAcvXVR5eqS8ik8UO89c1aHQFgt3H9R96rpV5TZM8zmoa+HT//zwEk6FCQpRhwY4mBoMrrirqzzJ/0fqRVWtzW3YR4gpXFEbPEomALoT5Fk/pYx4Sn6FDxo7iJOIfo=;
+X-UUID: c222542447254528a6edbf442378e06f-20210604
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1499480850; Fri, 04 Jun 2021 19:29:38 -0700
+ with ESMTP id 1236577677; Fri, 04 Jun 2021 19:29:37 -0700
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 4 Jun 2021 19:29:36 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Jun 2021 10:29:34 +0800
+ 15.0.1497.2; Sat, 5 Jun 2021 10:29:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Jun 2021 10:29:33 +0800
+ Transport; Sat, 5 Jun 2021 10:29:27 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
  <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin
@@ -70,17 +70,18 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,5/6] media: mtk-vcodec: Add MT8192 H264 venc driver
-Date: Sat, 5 Jun 2021 10:29:17 +0800
-Message-ID: <20210605022918.4213-6-irui.wang@mediatek.com>
+Subject: [PATCH v5,
+ 2/6] dt-bindings: media: mtk-vcodec: Add dma-ranges property
+Date: Sat, 5 Jun 2021 10:29:14 +0800
+Message-ID: <20210605022918.4213-3-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210605022918.4213-1-irui.wang@mediatek.com>
 References: <20210605022918.4213-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_192941_782816_51DF2F8A 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20210604_192945_022425_DE96F984 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,58 +98,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8192 venc driver's compatible and device private data.
+The mt8192 iommu support 0~16GB iova. We separate it to four banks:
+0~4G; 4G~8G; 8G~12G; 12G~16G.
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+The "dma-ranges" could be used to adjust the bank we locate.
+If we don't set this property. The default range always is 0~4G.
+
+This is optional and only needed in mt8192, the dma ranges should
+not cross 4G/8G/12G.
+
+Here we don't have actual bus/parent concept here.  And the iova
+requirement is for our HW. Thus put the property in our node.
+
+Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h |  1 +
- .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
+ Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index d03cca95e99b..14893d277bb8 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -302,6 +302,7 @@ struct mtk_vcodec_ctx {
- enum mtk_chip {
- 	MTK_MT8173,
- 	MTK_MT8183,
-+	MTK_MT8192,
- };
- 
- /**
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 26b089e81213..45d1870c83dd 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -425,12 +425,26 @@ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
- 	.core_id = VENC_SYS,
- };
- 
-+static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
-+	.chip = MTK_MT8192,
-+	.uses_ext = true,
-+	/* MT8192 supports the same capture formats as MT8183 */
-+	.capture_formats = mtk_video_formats_capture_mt8183,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_mt8183),
-+	/* MT8192 supports the same output formats as MT8173 */
-+	.output_formats = mtk_video_formats_output_mt8173,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output_mt8173),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+};
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
- 	{.compatible = "mediatek,mt8173-vcodec-enc-vp8",
- 			.data = &mt8173_vp8_pdata},
- 	{.compatible = "mediatek,mt8183-vcodec-enc", .data = &mt8183_pdata},
-+	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
+diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+index 06db6837cefd..5bb9e6e191b7 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
++++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+@@ -22,6 +22,7 @@ Required properties:
+ - iommus : should point to the respective IOMMU block with master port as
+   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+   for details.
++- dma-ranges : describes the dma address range space that the codec hw access.
+ One of the two following nodes:
+ - mediatek,vpu : the node of the video processor unit, if using VPU.
+ - mediatek,scp : the node of the SCP unit, if using SCP.
 -- 
 2.18.0
 _______________________________________________
