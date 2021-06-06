@@ -1,87 +1,79 @@
-Return-Path: <SRS0=Qqzl=K7=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=RWvT=LA=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98318C4743C
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:42:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE945C47096
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Jun 2021 07:51:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BF32613EA
-	for <linux-mediatek@archiver.kernel.org>; Sat,  5 Jun 2021 02:42:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BF32613EA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id BBE84611BE
+	for <linux-mediatek@archiver.kernel.org>; Sun,  6 Jun 2021 07:51:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BBE84611BE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r1KOQzXJwRirk27ajdobHdOJM+uIRKtDdXFrlrRcoFk=; b=SvZDzwcVpCboHY
-	B78q3zWtwlxWhblmh4Kc1fOZ/SY+3bW0ZSld2Avfe4Y+G93S3WQuXTg5TQ0SGCFm4v52a4ad5YUHy
-	0tai12CT+xr+PUa3ZZEH/jAM/5IzTNkElZrqwR2smHLHJMYtNfLyA5nUcrAhDNK1rAR9GcIzcJJ44
-	DLPln0e9jAHQWQxlUVF/Q8qVG1jpyNaX16AwRr3NFynjm+xvYxY3NIaPJt69tQHfXQGkJ9sfFiKzy
-	A3rK5r0S52zTxUV/bqhqXzBSHWOQUbmko+5MV3ZVLQdo2aTRRrHeYQnCAKwwuVHFHGp4DF/jDyrH4
-	C4ZG6NJN8PH/2HEaD5Xg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=whQ0YLaHuqCIKL+XPbLNJ+Al25yHE7I2FSZJBWig6Bg=; b=hW9nqobULRRx2R9CPad5rCm5Ta
+	MDwqys9YjJDt7SGdcQ3cbbSSCVX8xkLjr9z1QxIzua284vvLKnSHRwDB0Vut5+uNdOxNiFGt/ntLK
+	w0c1bxKClMapfZWtDeJjC0ZvjLRWcLLof9Tt49F/YspArnVyuw3HgNGWPaZSgMbo5A1HfVyJYgopG
+	0JwxUkjm3HpzXKN2zkunhLr4bROf113ez2L5bzp6G+7zMCobiViw/nH/OsTMrYyQpv0vi7HVjwrzU
+	jWqDrLQZOOBUTRrjK+rYwe6PVpNwkxQ1zttZYObejyWDm1C1DerzSVUFtfPdwTM8dfhT4kJNAhR/q
+	rCBAgOXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lpMEK-00FptK-Ts; Sat, 05 Jun 2021 02:40:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lpnZJ-00HZPa-5Y; Sun, 06 Jun 2021 07:51:37 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lpMDv-00Fpok-Ox; Sat, 05 Jun 2021 02:39:45 +0000
-X-UUID: c3e3136af9dd480ab70c6bb1d1efcc5b-20210604
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Z0Qs4jGJFoTxIfxM9Szu2NktoaCY4p9GNyOQ8fUcCjU=; 
- b=M60IM56zeQxkxVHgEDnndPKc2TeZJj+NXlzsVzfLKI8RXLIOa3cW3FAEfaFM9wIkJZPQO1ibURm2afN83ripe9HcojyRPn7DkfquLrV+yMV7d6d1YM6TDxCxDoj21XiRsnKjsHHLk0vJ4jO11ozoDy4XaT53TK0WmYKAaoA/KjM=;
-X-UUID: c3e3136af9dd480ab70c6bb1d1efcc5b-20210604
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1242309526; Fri, 04 Jun 2021 19:39:41 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 4 Jun 2021 19:29:39 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 5 Jun 2021 10:29:32 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 5 Jun 2021 10:29:31 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- Yong Wu <yong.wu@mediatek.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
- <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v5,
- 4/6] dt-bindings: media: mtk-vcodec: Add binding for MT8192 VENC
-Date: Sat, 5 Jun 2021 10:29:16 +0800
-Message-ID: <20210605022918.4213-5-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210605022918.4213-1-irui.wang@mediatek.com>
-References: <20210605022918.4213-1-irui.wang@mediatek.com>
+ id 1lpnZC-00HZOB-Et
+ for linux-mediatek@lists.infradead.org; Sun, 06 Jun 2021 07:51:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=m4mfxV1cLh/U8mnTVlqg6bh+DS71kDcuBuvTfogr+e0=; b=sVg3hDUJodNb+TqZiAyXadK1q6
+ 4WaPA2GD32T2DcaMbZin+St2N80Y4wu0nUJyl4LdK8JR20wCuSce1opDcj8vrKjwGK8gWtvVM22wP
+ Cp+WuTqxlSusUJ4lGiSg2HYej+uPsFmmmVTM2MBPtlP4NqNCJem9dxkh+g0V96BTJtv0=;
+Received: from p54ae9ff2.dip0.t-ipconnect.de ([84.174.159.242] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1lpnZ6-0007eZ-AY; Sun, 06 Jun 2021 09:51:24 +0200
+Subject: Re: [PATCH] mt76: mt7921: enable VHT BFee capabiliity
+To: Deren Wu <Deren.Wu@mediatek.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>,
+ Stella Chang <Stella.Chang@mediatek.com>, jemele@google.com,
+ yenlinlai@google.com, linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <a5748514496b2b4e4b23be7b0b560d2585feafb6.1622627260.git.deren.wu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <3bbdab20-60be-61fb-d731-5cf5d04f7f3c@nbd.name>
+Date: Sun, 6 Jun 2021 09:51:22 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.10.1
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <a5748514496b2b4e4b23be7b0b560d2585feafb6.1622627260.git.deren.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210604_193943_838253_7A8B228C 
-X-CRM114-Status: GOOD (  11.33  )
+X-CRM114-CacheID: sfid-20210606_005130_738305_5D8F944B 
+X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,28 +90,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Updates binding document for mt8192 encoder driver.
+On 2021-06-02 17:17, Deren Wu wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
+> 
+> enable BFee functions with proper BFee IEs
+> 
+> Tested-by: Eric-SY Chang <Eric-SY.Chang@mediatek.com>
+> Signed-off-by: Leon Yen <Leon.Yen@mediatek.com>
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+I've sent out a much simpler replacement for this patch, please take a look.
 
-Acked-by: Rob Herring <robh@kernel.org>
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
- 1 file changed, 1 insertion(+)
+- Felix
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index 5bb9e6e191b7..ad1321e5a22d 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -9,6 +9,7 @@ Required properties:
-   "mediatek,mt8173-vcodec-enc" for mt8173 avc encoder.
-   "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
-   "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
-+  "mediatek,mt8192-vcodec-enc" for MT8192 encoder.
- - reg : Physical base address of the video codec registers and length of
-   memory mapped region.
- - interrupts : interrupt number to the cpu.
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
