@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BB580C4743E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 02:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4A39C4743D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 03:27:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83CE2611ED
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 02:41:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83CE2611ED
+	by mail.kernel.org (Postfix) with ESMTPS id 4CE6D610A2
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 03:27:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CE6D610A2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=igDiIa70b6lfZt0xy2Ov8FXUpfkI1RS7ScjkyM6ptDE=; b=WPqYuj1Q0gddQE
-	gZA0F5BTm5aZtw7RczULNSHGB1SrLP9JaHR66FDbp1+sbqdgiDKUsfuFyx5qW/RHWxrEd1wxjchF1
-	okiE/S1EPStew3NBFqkyen4YJyYH+TtlzP9dULBT0qfCtQaqheTGnzDJ2KKNA6t7Dvtv1Ar0HvAkt
-	pDatV3OL0KRdE5NFNZzMmlaCAsveNFrbpCf7CqtXo5NvjGJSfWZfiPYb2YtX73aWtJtYm5JEYI2Bv
-	Lh1zF7xuo9YjqcY+UTKdp/p84RBxRxdeewDBnOBH7shjYYTDfLngSVKv6tPbUwwtFJeVjaXpL1AOS
-	BXIAVpysfxe6HsvcnmLw==;
+	List-Owner; bh=Cvf+uT7I6JfE49VlESM0ZzkjZOH2RSq7eZchiy9kX0U=; b=eNUOM1jmGHM+es
+	qK2crG0vaMHBqFImYwAaH0WokEZ6xP0cYZwdVth4d8jfLCyJUDTmFtXdXdzDZixDMdIfvQ4VKxdqL
+	ti9hNd4oki/Y1IQ6n0ch1U7tZ8jY6Osv7WOymhCmKblF+Wa9APdVRaXFxFxdSUuSakTsD//m7Keic
+	H7BQK8L6RMkLJF1Colschwhm+DUbryK8LCuBtWv/rkKgR7nTjSPZgrIXeMSXzx8l6gsiEKDM9qLyG
+	Ws4uWJ09qbsJLi6IRquXIZw9/NSAz9d7yttNOTt6J47QKiwd8ms/EoTlLr3PyocCUCKU63m61gVhr
+	Fl2eH1yrMEpIR9YjHk5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lq5AR-001Gwr-BO; Mon, 07 Jun 2021 02:39:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lq5sq-001MzU-Eu; Mon, 07 Jun 2021 03:25:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lq5AM-001Gvz-6P; Mon, 07 Jun 2021 02:39:06 +0000
-X-UUID: a6e5b89ba8a64a1db6a72b52bdf69b48-20210606
+ id 1lq5sZ-001Mx7-4a; Mon, 07 Jun 2021 03:24:48 +0000
+X-UUID: 03df8ea27f49414596c4eb3cafb01c5b-20210606
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=Hq1TF7sT6YLK1IHicbhyq0ApPNIyetpTQkZRsTt3g88=; 
- b=XcpHbr8ANijJYJr4rntSueWZ+bjvPZhhVx4MmkwlvexbECW1v4Knir3upxPGXLGVs6NrUpxbIE1nd9KInCnpUVckyxASG0rDQftqw9OXcKnCQLeX+lbqinwLVaNDD9EAsMVVoW72DLiO6S8+oFOr8QucB9Uq5Z7aWjP3j3i5xh4=;
-X-UUID: a6e5b89ba8a64a1db6a72b52bdf69b48-20210606
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=21Y0x8qJvtHXQX9Iwq5PhxjpP0TbMEm0yPa0bfZDSJI=; 
+ b=dWmRIx8Z7mvzBcMs0n5T4PZ8kmnR6aAKDATHuFe8WPrGc/DbmHfq2tbmgkNnLQphoEseHzzihAGznE0ZcEqG8NJs1mXZ0VyANjIOH4XegCplGlQLbfJALIDbDFmFldfDIDhXYaQcm/aM19WEI5N1mBMDAyi5nZ3dd3McOAcNGNU=;
+X-UUID: 03df8ea27f49414596c4eb3cafb01c5b-20210606
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <mark-pk.tsai@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1822482735; Sun, 06 Jun 2021 19:38:58 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 6 Jun 2021 19:38:56 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Jun 2021 10:38:48 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ with ESMTP id 448820202; Sun, 06 Jun 2021 20:24:39 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 6 Jun 2021 20:24:37 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Jun 2021 11:24:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 7 Jun 2021 10:38:48 +0800
+ Frontend Transport; Mon, 7 Jun 2021 11:24:36 +0800
 From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-CC: <rostedt@goodmis.org>, Mark-PK Tsai <mark-pk.tsai@mediatek.com>, "Sami
- Tolvanen" <samitolvanen@google.com>, Matt Helsley <mhelsley@vmware.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <yj.chiang@mediatek.com>
-Subject: [PATCH] recordmcount: avoid using ABS symbol as reference
-Date: Mon, 7 Jun 2021 10:38:39 +0800
-Message-ID: <20210607023839.26387-1-mark-pk.tsai@mediatek.com>
+To: Steven Rostedt <rostedt@goodmis.org>
+CC: Ingo Molnar <mingo@redhat.com>, Catalin Marinas <catalin.marinas@arm.com>, 
+ Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <mark-pk.tsai@mediatek.com>,
+ <yj.chiang@mediatek.com>
+Subject: [PATCH] arm64: ftrace: don't dereference a probably invalid address
+Date: Mon, 7 Jun 2021 11:23:30 +0800
+Message-ID: <20210607032329.28671-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210606_193903_072504_00C0A475 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20210606_202444_672783_CB498244 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,44 +87,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Avoid using ABS symbol, which won't be relocate, as reference.
+Address in __mcount_loc may be invalid if somthing goes wrong.
+On our arm64 platform, the bug in recordmcount make kernel
+crash in ftrace_init().
 
-On arm64 platform, if there's shndx equals SHN_ABS(0xfff1).
+https://lore.kernel.org/lkml/20210607023839.26387-1-mark-pk.tsai@mediatek.com/
 
-Section Headers:
-[Nr]    Name                         Type      Address          Off      Size   ES  Flg Lk     Inf    Al
-[65521] .text.n_tty_receive_buf      PROGBITS  0000000000000000 3cdab520 000054 00  AX  0      0      4
-[65522] .rela.text.n_tty_receive_buf RELA      0000000000000000 3cdab578 000030 18  I   152076 65521  8
-
-find_secsym_ndx, which use r_info in rela section to find the reference
-symbol, may take ABS symbol as base.
-
-Symbol table '.symtab' contains 453285 entries:
-   Num:    Value          Size Type    Bind   Vis       Ndx Name
-     6: 0000000000000002     0 NOTYPE  LOCAL  DEFAULT   ABS section_count
-
-Which cause an invalid address in __mcount_loc.
+Return -EFAULT if we are dealing with out-of-range condition
+to prevent dereference the invalid address in ftrace_bug(),
+then the kernel can disable ftrace safely for problematic
+__mcount_loc.
 
 Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 ---
- scripts/recordmcount.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm64/kernel/ftrace.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
-index f9b19524da11..9b69167fb7ff 100644
---- a/scripts/recordmcount.h
-+++ b/scripts/recordmcount.h
-@@ -526,6 +526,10 @@ static int find_secsym_ndx(unsigned const txtndx,
- 	for (symp = sym0, t = nsym; t; --t, ++symp) {
- 		unsigned int const st_bind = ELF_ST_BIND(symp->st_info);
+diff --git a/arch/arm64/kernel/ftrace.c b/arch/arm64/kernel/ftrace.c
+index b5d3ddaf69d9..98bec8445a58 100644
+--- a/arch/arm64/kernel/ftrace.c
++++ b/arch/arm64/kernel/ftrace.c
+@@ -201,7 +201,7 @@ int ftrace_make_nop(struct module *mod, struct dyn_ftrace *rec,
+ 			preempt_enable();
  
-+		/* avoid absolute symbols */
-+		if (symp->st_shndx == SHN_ABS)
-+			continue;
-+
- 		if (txtndx == get_symindex(symp, symtab, symtab_shndx)
- 			/* avoid STB_WEAK */
- 		    && (STB_LOCAL == st_bind || STB_GLOBAL == st_bind)) {
+ 			if (WARN_ON(!mod))
+-				return -EINVAL;
++				return -EFAULT;
+ 		}
+ 
+ 		/*
 -- 
 2.18.0
 _______________________________________________
