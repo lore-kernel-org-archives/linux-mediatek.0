@@ -2,84 +2,72 @@ Return-Path: <SRS0=qtn6=LB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61E7BC47094
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 15:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41805C47095
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 16:13:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2CAC761159
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 15:40:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2CAC761159
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1C4FF61407
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 16:13:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C4FF61407
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jqqwQr8pv8T84lq7bh95xAJOqWirzbKeAYNkYrc2AMY=; b=HXjQrgVzVNy1e6
-	Ba6q11D83qcDvYBE2pz7lN4QcVfUf2GnxAfkIzy4y8gdGiFovRuHuMo7vMV1PvAvSF386LcasBg8a
-	oDIweEHnrXBh+qEkyVvMgfXsUYUx8kgfVVTZCHTuByJsJotOdvJwWuzxj4KbMVTDnhkIowKnH4YAN
-	OSTAJn/KBR/V5lql8oCuxb42x5K4yADDUToeWSL/MZNdsfdt89knKkSmcUjcchRGVYiu5Qh9EmKeG
-	VS7moXQ6jomXeMIQNVprO6WethaF4lAMNHcpiBJ6f85qrTgk26GxT83kK6Ex6WrakCaunbLI1Vmpz
-	OFx48s4LSea1iqCS6V9w==;
+	List-Owner; bh=kkjbBHgW4qH+qmvSpsZeol68PeR7YsxNu/X8Q6dHCvk=; b=HUDuZ2Vi7q+tyQ
+	Yt/W7Pv3UycwOvm04+SXL3yzVxRFYdlMP1tj/0eeTZyVCYcaUSNNf/uHfVDstRr0dTu8f1YLVSRct
+	0rxrC7ZhGP1JhJ0hws0NYp+4yJLgtiRwfMYIP/ZSOo7V1Nvi4x/SEeBWFv+J5HCZbz9nG+Btx0kw2
+	QYV4pZ1fAGR5O+hcKekwez2Eg5WOqB3n9VLOvXWu9gREQw2FaUtZB0bQCA0PFwop4RD+0HBNGKwVs
+	15e7FWHrguNhltnMa/I277OwQf8788YnUn8V32NETWqwOL/og/hxk851AXuMG1+10dT7jo3cOH3e6
+	qBHmFeL6jY0LUeXJUTpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqHMq-004Ikp-E6; Mon, 07 Jun 2021 15:40:44 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1lqHrv-004OBi-1c; Mon, 07 Jun 2021 16:12:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqHMe-004IhK-9z; Mon, 07 Jun 2021 15:40:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=F13xOnM5F0Ufs2TOCg78ImeKaTi/MppD+Ee/8+ZOVI8=; b=P529/dNw+gMsYw/hfuMVAoBCZp
- ROKU97uFOlzFU6oKNahA9xz/5nFZSMQP5EHsm5/e22V+QmLx57Y4AobtI/h3WFwElZfw/N8ITwxhl
- t5jabZ/6vbWvAvEb3x48iqorZj9Fhvc+D//RL/1vah+pZ8bxlZ43SJrCQKlNNsCl1LMWbaPr6MSzb
- ux5T/zJULURJ5LWCjiB0eZwU4fP3XSK30JwHeOCXT5DJlrB0+2lH8JdXZKRVEYgNyDFoONRWNiGFY
- uJvDzD7E3dSz3VF5dMKzVcP8pg34INJdmmI2uLDRGkPTWUccRVFc0MCDR+5M0FknIUxy5iFDyxoP/
- AVwrnxEA==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.94 #2 (Red Hat Linux))
- id 1lqHMK-00FxAA-6M; Mon, 07 Jun 2021 15:40:16 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 8A91E3001E3;
- Mon,  7 Jun 2021 17:40:11 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 774F82D6A737A; Mon,  7 Jun 2021 17:40:11 +0200 (CEST)
-Date: Mon, 7 Jun 2021 17:40:11 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Ard Biesheuvel <ardb@kernel.org>
-Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
- Linux Kbuild mailing list <linux-kbuild@vger.kernel.org>,
- linux-toolchains@vger.kernel.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Matt Helsley <mhelsley@vmware.com>,
- "Steven Rostedt (VMware)" <rostedt@goodmis.org>,
- Sami Tolvanen <samitolvanen@google.com>, yj.chiang@mediatek.com
-Subject: Re: [PATCH] recordmcount: avoid using ABS symbol as reference
-Message-ID: <YL492/4WrWaNDL4p@hirez.programming.kicks-ass.net>
-References: <20210607074258.32322-1-mark-pk.tsai@mediatek.com>
- <20210607080626.32612-1-mark-pk.tsai@mediatek.com>
- <CAMj1kXGCoME4Wy4e3FNAjWLY=G56ivHzFTLrXRE0mLtnaBVEDQ@mail.gmail.com>
- <YL4GlbfMJiuLkRhR@hirez.programming.kicks-ass.net>
+ id 1lqHrc-004O49-Vz; Mon, 07 Jun 2021 16:12:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B1939613C0;
+ Mon,  7 Jun 2021 16:12:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623082352;
+ bh=Vspvsrwq+HMh5zo2lywXb+v0OGmxGRWtwUajJD+vy9k=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=ZdwzqTAO3u8S/nTVKdhhk10WqUTx/QrYG8JSZ7LCmf8yANK3iN/jzHgL861Tpiv4D
+ ObBv+i079+yoQ3a2l60E5/3Vt/fNm7GJunLb9GjyR60cHHbVzlUsxAA+EtQlINm3n4
+ swtYPBmCVcJYuQefpEy/6Cs3862b50Lq/jzdLpxuiurqTyJueL9Arj9dKxrNljArfb
+ tbKZloPG+G7GhY1PIoR4rU/E8FLs0FPrcPS4STEU+VRt8FhrR/rUw9SoXYMl79bjd1
+ SOJc2622UoTBDNE0wFwGIOoskG09woeUWlWL5HKdj+DO9D35XoRTJT2ajpDHjtI7wb
+ DJuaNPSMSUsow==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Kalle Valo <kvalo@codeaurora.org>,
+ Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.12 13/49] mt76: mt7921: fix max aggregation
+ subframes setting
+Date: Mon,  7 Jun 2021 12:11:39 -0400
+Message-Id: <20210607161215.3583176-13-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210607161215.3583176-1-sashal@kernel.org>
+References: <20210607161215.3583176-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YL4GlbfMJiuLkRhR@hirez.programming.kicks-ass.net>
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210607_091233_065794_56FF8421 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +84,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 07, 2021 at 01:44:21PM +0200, Peter Zijlstra wrote:
-> One should only use st_shndx when >SHN_UDEF and <SHN_LORESERVE. When
-> SHN_XINDEX, then use .symtab_shndx.
-> 
-> Apparently you've found a case where neither is true? In that case
-> objtool seems to use shndx 0. A matching recordmcount patch would be
-> something like this.
-> 
+From: Felix Fietkau <nbd@nbd.name>
 
-Apparently I'm consistently bad at spelling SHM_UNDEF today..
+[ Upstream commit 94bb18b03d43f32e9440e8e350b7f533137c40f6 ]
 
-> diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
-> index f9b19524da11..d99cc0aed6fe 100644
-> --- a/scripts/recordmcount.h
-> +++ b/scripts/recordmcount.h
-> @@ -194,13 +194,18 @@ static unsigned int get_symindex(Elf_Sym const *sym, Elf32_Word const *symtab,
->  	unsigned long offset;
->  	int index;
->  
-> -	if (sym->st_shndx != SHN_XINDEX)
-> +	if (sym->st_shndx > SHN_UDEF &&
-> +	    sym->st_shndx < SHN_LORESERVE)
->  		return w2(sym->st_shndx);
->  
-> -	offset = (unsigned long)sym - (unsigned long)symtab;
-> -	index = offset / sizeof(*sym);
-> +	if (sym->st_shndx == SHN_XINDEX) {
-> +		offset = (unsigned long)sym - (unsigned long)symtab;
-> +		index = offset / sizeof(*sym);
->  
-> -	return w(symtab_shndx[index]);
-> +		return w(symtab_shndx[index]);
-> +	}
-> +
-> +	return 0;
->  }
->  
->  static unsigned int get_shnum(Elf_Ehdr const *ehdr, Elf_Shdr const *shdr0)
+The hardware can only handle 64 subframes in rx direction and 128 for tx.
+Improves throughput with APs that can handle more than that
+
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
+Link: https://lore.kernel.org/r/20210507100211.15709-2-nbd@nbd.name
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 89a13b4a74a4..c0001e38fcce 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -74,8 +74,8 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	struct wiphy *wiphy = hw->wiphy;
+ 
+ 	hw->queues = 4;
+-	hw->max_rx_aggregation_subframes = IEEE80211_MAX_AMPDU_BUF;
+-	hw->max_tx_aggregation_subframes = IEEE80211_MAX_AMPDU_BUF;
++	hw->max_rx_aggregation_subframes = 64;
++	hw->max_tx_aggregation_subframes = 128;
+ 
+ 	phy->slottime = 9;
+ 
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
