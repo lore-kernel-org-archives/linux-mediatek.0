@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 517E6C47082
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 17:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59996C47094
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 18:24:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DAB161090
-	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 17:32:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DAB161090
+	by mail.kernel.org (Postfix) with ESMTPS id 075FC60FE4
+	for <linux-mediatek@archiver.kernel.org>; Mon,  7 Jun 2021 18:24:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 075FC60FE4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hHqvwexKTrHr1/m2Mb42WswL1csJNooNdJI5lQRPL0Q=; b=QWmoYYXifkqadv
-	xB/3yEmeVKIUv491Vyib0F+UymI/xghWeCC980VRnjpPcfLRr3Oq45hagv9bCArT2HRdhQ+lGL58M
-	NUbBFtFSY9bk+m/rxiRzH/h7RHfK24YnLOiGzoQ5gn0YHoK5fCqg1/b3iHmVYG21+it2F2ovqKEjn
-	h3PQL/Ow+4pNlRZ4jq5CW5/h9+iL8wbpxUncFmi+lVwyF8YLb3pNacZqPnXF8ykJeU59BfdGcQoWb
-	FablVTRMV12KD6GRZOJ36+VaCWEZWrLhQlBmtufe5FDiZv0VZQLVRsBNc6VhniJIWY2wpaILMsAKW
-	tL730CIgsNi95q3y+hzQ==;
+	List-Owner; bh=ufX2d7OWVgpYviYwUAOSr2IipVlvMzEYXEkO70y60S8=; b=odlfMiyhJgoCEH
+	v6hT6mC1CxTPvn+vc2H/RMvdZKYZqpiZGgMjemT4Le42wm18aUDjpsdbA7e49mgxyX2ujXMgH7uXG
+	FP8epwM+erJBj9OrfQwGy+Q58r9LvnP9QtYYtlAVtNENcouuFUQl6j7fO+NAA7vsT8tPOf0ZZOvNk
+	IPFcV8NOcBqXbSSnoVHmeqXtfuS/jOntLdR5nKVITVXdI/QtGneukOa/iwKMVMI4Lsq4XiKkNlT8j
+	+Rz/8FWSh/1rF2Kgil4qqdwKSu8Mt3u7826hCuwlwoE7Ze4gxqEzrzPcNAnCgCzx7ftxeM92Eg0SI
+	TAjDC1ynj9r1eY+QBDjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqJ7E-004pTQ-Eg; Mon, 07 Jun 2021 17:32:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lqJv4-0050oK-Gw; Mon, 07 Jun 2021 18:24:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqJ6T-004pAD-Kt; Mon, 07 Jun 2021 17:32:00 +0000
-X-UUID: 7cff5ad8bb0e43e493bd11c32531e08d-20210607
+ id 1lqJv2-0050nI-B7; Mon, 07 Jun 2021 18:24:13 +0000
+X-UUID: 27f64fbeeb2b42eaad8e33083d83a47e-20210607
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=TlL/JnXeQvpldfzcepKfJ2qcL0fL6U38PutyOnWfZZo=; 
- b=Sfu0Kz5Xs+BZw7TnUgitLtJl3KiteeT8QD6MkKQeEg/UpQQBF3NpW6F29fiby50nANa6pUbhA1qfvSxARF2nw9OlDrbvdU2Idr4/VL6ReG0u0kXjCSSID5EYLHviO6G5xulKTkvydcaVk2AAfKUa0sFOyWxDEXU3vyG8muBHjUo=;
-X-UUID: 7cff5ad8bb0e43e493bd11c32531e08d-20210607
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=PN7JBWtgxmf7/uIMG1dcP+OTj65LMSIEioGytzk3zGo=; 
+ b=tlC/AxD0yliqE5j7XfLUERVz6CIlAW5dDtitXHNzdfFnF0R/Fui7kDAmyxAqNJOCVTdWrwuACPKdKGKnrra5Ygo3nuMYy3rxqw9akTwgysHEyI3/qIOsTmEd3lMC6eNzghibkTQhQgBWocFikeDM6KvhRFC/iYbcKmLMmXbav2c=;
+X-UUID: 27f64fbeeb2b42eaad8e33083d83a47e-20210607
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <mark-pk.tsai@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 530317454; Mon, 07 Jun 2021 10:31:54 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 7 Jun 2021 10:31:52 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 01:31:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ with ESMTP id 1252575933; Mon, 07 Jun 2021 11:24:07 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 7 Jun 2021 11:14:05 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Jun 2021 02:14:03 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 8 Jun 2021 01:31:38 +0800
+ Frontend Transport; Tue, 8 Jun 2021 02:14:03 +0800
 From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 To: <rostedt@goodmis.org>
-CC: <ardb@kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kbuild@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-toolchains@vger.kernel.org>,
- <mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>, <mhelsley@vmware.com>, 
- <peterz@infradead.org>, <samitolvanen@google.com>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH] recordmcount: avoid using ABS symbol as reference
-Date: Tue, 8 Jun 2021 01:31:38 +0800
-Message-ID: <20210607173138.3882-1-mark-pk.tsai@mediatek.com>
+CC: <catalin.marinas@arm.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>, <mingo@redhat.com>,
+ <will@kernel.org>, <yj.chiang@mediatek.com>
+Subject: Re: [PATCH] arm64: ftrace: don't dereference a probably invalid
+ address
+Date: Tue, 8 Jun 2021 02:14:03 +0800
+Message-ID: <20210607181403.4017-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210607094433.473100d9@oasis.local.home>
-References: <20210607094433.473100d9@oasis.local.home>
+In-Reply-To: <20210607105217.772214e5@oasis.local.home>
+References: <20210607105217.772214e5@oasis.local.home>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210607_103159_132040_1335178D 
-X-CRM114-Status: GOOD (  26.15  )
+X-CRM114-CacheID: sfid-20210607_112412_411108_81E14DCA 
+X-CRM114-Status: GOOD (  18.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,69 +89,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> On Mon, 7 Jun 2021 13:44:21 +0200
-> Peter Zijlstra <peterz@infradead.org> wrote:
+> On Mon, 7 Jun 2021 22:15:22 +0800
+> Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
 > 
-> > There's an extended section header index section for just that. And
-> > recordmcount actually seems to use that as well.
-> > 
-> > I can't seem to find enough of the thread to figure out what the actual
-> > problem is though. The lore archive doesn't have anything prior to this
-> > message.
-> > 
-> > One should only use st_shndx when >SHN_UDEF and <SHN_LORESERVE. When
-> > SHN_XINDEX, then use .symtab_shndx.
-> > 
-> > Apparently you've found a case where neither is true? In that case
-> > objtool seems to use shndx 0. A matching recordmcount patch would be
-> > something like this.
-
-Hi Peter,
-
-Should I resend the below patch as v2?
-
+> > And the crash is becuase kernel trying to read *rec->ip in print_ip_ins() if
+> > ftrace_bug() get error code -EINVAL.
 > 
-> Mark-PK,
+> Right, so the actual fix should be something like this:
 > 
-> Does the below patch fix it for you too (if you backport it to your
-> kernel). I much rather have recordmcount match objtool, as one day the
-> two will hopefully merge to one executable.
+> [ not tested, nor even compiled ]
 > 
 > -- Steve
 > 
 
-Yes, this patch fix it.
+I just test this patch, and turns out it work well.
+All my modification is only rename copy_from_kernel_nofault
+into probe_kernel_read because the older kernel version
+I use.
+Then the kernel will show the error mesage instead of panic as following.
+
+[    0.000000] ftrace failed to modify
+[    0.000000] [<0000000000000020>] 0x20
+[    0.000000] actual:   [FAULT](0000000000000020)
+
+Should I resend this patch as v2?
+Or you will upstream this fix?
 
 > 
-> > 
-> > 
-> > diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
-> > index f9b19524da11..d99cc0aed6fe 100644
-> > --- a/scripts/recordmcount.h
-> > +++ b/scripts/recordmcount.h
-> > @@ -194,13 +194,18 @@ static unsigned int get_symindex(Elf_Sym const *sym, Elf32_Word const *symtab,
-> >  	unsigned long offset;
-> >  	int index;
-> >  
-> > -	if (sym->st_shndx != SHN_XINDEX)
-> > +	if (sym->st_shndx > SHN_UDEF &&
-> > +	    sym->st_shndx < SHN_LORESERVE)
-> >  		return w2(sym->st_shndx);
-> >  
-> > -	offset = (unsigned long)sym - (unsigned long)symtab;
-> > -	index = offset / sizeof(*sym);
-> > +	if (sym->st_shndx == SHN_XINDEX) {
-> > +		offset = (unsigned long)sym - (unsigned long)symtab;
-> > +		index = offset / sizeof(*sym);
-> >  
-> > -	return w(symtab_shndx[index]);
-> > +		return w(symtab_shndx[index]);
-> > +	}
-> > +
-> > +	return 0;
-> >  }
-> >  
-> >  static unsigned int get_shnum(Elf_Ehdr const *ehdr, Elf_Shdr const *shdr0)
+> diff --git a/kernel/trace/ftrace.c b/kernel/trace/ftrace.c
+> index 2e8a3fde7104..72ef4dccbcc4 100644
+> --- a/kernel/trace/ftrace.c
+> +++ b/kernel/trace/ftrace.c
+> @@ -1967,12 +1967,18 @@ static int ftrace_hash_ipmodify_update(struct ftrace_ops *ops,
+>  
+>  static void print_ip_ins(const char *fmt, const unsigned char *p)
+>  {
+> +	char ins[MCOUNT_INSN_SIZE];
+>  	int i;
+>  
+> +	if (copy_from_kernel_nofault(ins, p, MCOUNT_INSN_SIZE)) {
+> +		printk(KERN_CONT "%s[FAULT](%px)", fmt, p);
+> +		return;
+> +	}
+> +
+>  	printk(KERN_CONT "%s", fmt);
+>  
+>  	for (i = 0; i < MCOUNT_INSN_SIZE; i++)
+> -		printk(KERN_CONT "%s%02x", i ? ":" : "", p[i]);
+> +		printk(KERN_CONT "%s%02x", i ? ":" : "", ins[i]);
+>  }
+>  
+>  enum ftrace_bug_type ftrace_bug_type;
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
