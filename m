@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A52AC4743D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49488C47082
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:00:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 601F961287
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:59:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 601F961287
+	by mail.kernel.org (Postfix) with ESMTPS id 0323961285
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:00:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0323961285
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pe3i9jw7fm9iGMGgqTgm1/S94sGL/gXrBnUKHZK5fKs=; b=IL6QlFSFb0wqnp
-	KYpNiv0kJUIQlp6QBdsRKo17f44HZIMkd0bRB4FhcWW1fOpNCvalhK+YeKflWoYh7kn1GdLFyooR3
-	1QndihRTYcZZ7uy8cK1CumJ781SAeI9B4K41tDweiy1PNGLAqwVWahy5ZFbbCCGLhUQSJksFzfflV
-	A69UbNYLx19DbHpFlIlv3I/axbiI4i8htJqOmSlbkhgI47GCa9+dIcV6eepRPbBKiooX/2zoSSQyC
-	iAGA0HUt83XqJlmyywK+Wk9pnKxQkEsSdDNNmv/dzzcYj5t4d249hlWGtFsERu0FKXCoZcFvgJ8HQ
-	F/rh1svael47wLlYVjbg==;
+	List-Owner; bh=kHt5aav6dUqkqmFpkl4q16DOzpqWdXhI6thi8WUE9aU=; b=Rh48Zi2L7ShEHI
+	qx0/HmEQpfC0ZRMR6JLMBS6uL5jUewX8/IV/SvAyj7cqb4pD1UkcSvYLlHOzUc0qFV2zCEibxoddv
+	wSjWkqjpCefijcgaAXafy+k5i+0qGwD56/4iacEvHnbAWhQFrAiRVCyHjlm9kG1ofY3Iiw8Ak2ZNk
+	rNF2ShGi+Vvhr45ljo5zlM+8T0oMzE5BDH5s3nJH+EMqeZA7otkzidwgeG1bYkusor7Rzr5Hs66rM
+	GlCzBNR/hC8+ibdmkR/h/7ohg4AfbmebECUURhNxQNtRZ0wHAoUJoifAzJIbiC4pywf71Q6oFpVm4
+	oscGIw6dePtYGcVO/QCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqWdw-006u9O-JI; Tue, 08 Jun 2021 07:59:24 +0000
+	id 1lqWeL-006uO8-Et; Tue, 08 Jun 2021 07:59:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqWck-006tXm-DC; Tue, 08 Jun 2021 07:58:12 +0000
-X-UUID: 3ab5d879dbaf4482b7d625484e218848-20210608
+ id 1lqWcl-006tYD-EF; Tue, 08 Jun 2021 07:58:12 +0000
+X-UUID: 054b14da707b43839a2b3b0978fd3c8d-20210608
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6E/V1pqdmfvvIX8d4x5nuUtzLctZ+c4gY2sbDCZ0cco=; 
- b=rkJPwjFHyelcUjzzb3qxLolr5DVfSdaiBAcGJOvPV5j3nz/onOYbjmO6vt8e36btLzivxTRdtuaA2f9vi9zBakVXrF0FLJBPqU/HiLCv1V4V5FfU+ZiKtSXZztp3yKgss5m/KyXq/3FGGnGQKmEz7oC0/w9ekCxSYUuO/JmUM7M=;
-X-UUID: 3ab5d879dbaf4482b7d625484e218848-20210608
+ bh=2+KKP1sXzM3sUdvVnV6sTIAedkf3ozxr+DiA5Q74ZQg=; 
+ b=faN9swkeRRGWzW5ewffkqB+dRp9+X7ZAJCVbfVXP5f6KmLN0WYJ4xbZR7k29UUjfgTkrFid7ZfkW+fvsneEFq2Oe3oCPbOmv9/QKbM9z03BPW3aerinBaGieMD9iQrBrn1/gL4e8+9lVgtTm1cZqz0eIyya8KdzTU+m7MqzwGx0=;
+X-UUID: 054b14da707b43839a2b3b0978fd3c8d-20210608
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 356529443; Tue, 08 Jun 2021 00:58:07 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1007275091; Tue, 08 Jun 2021 00:58:07 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 00:58:05 -0700
+ 15.0.1497.2; Tue, 8 Jun 2021 00:58:06 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 15:58:04 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Jun 2021 15:58:05 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Jun 2021 15:58:03 +0800
+ Transport; Tue, 8 Jun 2021 15:58:04 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Felipe Balbi <balbi@kernel.org>
@@ -65,17 +65,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Yuwen Ng <yuwen.ng@mediatek.com>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH 08/23] usb: mtu3: drop support vbus detection
-Date: Tue, 8 Jun 2021 15:57:34 +0800
-Message-ID: <1623139069-8173-9-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 09/23] usb: mtu3: use enum usb_role instead of private defined
+ ones
+Date: Tue, 8 Jun 2021 15:57:35 +0800
+Message-ID: <1623139069-8173-10-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_005810_480013_1C7A4936 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20210608_005811_515246_8BCE1BE5 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,172 +93,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Until now it's never used on any platform, and will not used
-later.
+Now we mainly use usb-role-switch to set dual role mode, and all
+three ways supported use the same function to switch mode, use
+usb_role enum will make code clear
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/mtu3/mtu3.h    |  7 ------
- drivers/usb/mtu3/mtu3_dr.c | 50 ++------------------------------------
- 2 files changed, 2 insertions(+), 55 deletions(-)
+ drivers/usb/mtu3/mtu3_dr.c | 52 +++++++++++---------------------------
+ 1 file changed, 15 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index 531b9c78d7c3..df2856782426 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -192,10 +192,6 @@ struct mtu3_gpd_ring {
- /**
- * @vbus: vbus 5V used by host mode
- * @edev: external connector used to detect vbus and iddig changes
--* @vbus_nb: notifier for vbus detection
--* @vbus_work : work of vbus detection notifier, used to avoid sleep in
--*		notifier callback which is atomic context
--* @vbus_event : event of vbus detecion notifier
- * @id_nb : notifier for iddig(idpin) detection
- * @id_work : work of iddig detection notifier
- * @id_event : event of iddig detecion notifier
-@@ -209,9 +205,6 @@ struct mtu3_gpd_ring {
- struct otg_switch_mtk {
- 	struct regulator *vbus;
- 	struct extcon_dev *edev;
--	struct notifier_block vbus_nb;
--	struct work_struct vbus_work;
--	unsigned long vbus_event;
- 	struct notifier_block id_nb;
- 	struct work_struct id_work;
- 	unsigned long id_event;
 diff --git a/drivers/usb/mtu3/mtu3_dr.c b/drivers/usb/mtu3/mtu3_dr.c
-index 82301001f2f6..89ad448f2b2d 100644
+index 89ad448f2b2d..7eabce9d5f3b 100644
 --- a/drivers/usb/mtu3/mtu3_dr.c
 +++ b/drivers/usb/mtu3/mtu3_dr.c
-@@ -147,10 +147,6 @@ int ssusb_set_vbus(struct otg_switch_mtk *otg_sx, int is_on)
+@@ -16,29 +16,6 @@
+ #define USB2_PORT 2
+ #define USB3_PORT 3
+ 
+-enum mtu3_vbus_id_state {
+-	MTU3_ID_FLOAT = 1,
+-	MTU3_ID_GROUND,
+-	MTU3_VBUS_OFF,
+-	MTU3_VBUS_VALID,
+-};
+-
+-static char *mailbox_state_string(enum mtu3_vbus_id_state state)
+-{
+-	switch (state) {
+-	case MTU3_ID_FLOAT:
+-		return "ID_FLOAT";
+-	case MTU3_ID_GROUND:
+-		return "ID_GROUND";
+-	case MTU3_VBUS_OFF:
+-		return "VBUS_OFF";
+-	case MTU3_VBUS_VALID:
+-		return "VBUS_VALID";
+-	default:
+-		return "UNKNOWN";
+-	}
+-}
+-
+ static void toggle_opstate(struct ssusb_mtk *ssusb)
+ {
+ 	if (!ssusb->otg_switch.is_u3_drd) {
+@@ -147,31 +124,32 @@ int ssusb_set_vbus(struct otg_switch_mtk *otg_sx, int is_on)
  	return 0;
  }
  
--/*
-- * switch to host: -> MTU3_VBUS_OFF --> MTU3_ID_GROUND
-- * switch to device: -> MTU3_ID_FLOAT --> MTU3_VBUS_VALID
-- */
- static void ssusb_set_mailbox(struct otg_switch_mtk *otg_sx,
- 	enum mtu3_vbus_id_state status)
+-static void ssusb_set_mailbox(struct otg_switch_mtk *otg_sx,
+-	enum mtu3_vbus_id_state status)
++static void ssusb_set_role(struct otg_switch_mtk *otg_sx, enum usb_role role)
  {
-@@ -163,6 +159,7 @@ static void ssusb_set_mailbox(struct otg_switch_mtk *otg_sx,
+ 	struct ssusb_mtk *ssusb =
+ 		container_of(otg_sx, struct ssusb_mtk, otg_switch);
+ 	struct mtu3 *mtu = ssusb->u3d;
  
- 	switch (status) {
- 	case MTU3_ID_GROUND:
-+		mtu3_stop(mtu);
+-	dev_dbg(ssusb->dev, "mailbox %s\n", mailbox_state_string(status));
+-	mtu3_dbg_trace(ssusb->dev, "mailbox %s", mailbox_state_string(status));
++	dev_dbg(ssusb->dev, "set role : %d\n", role);
++	mtu3_dbg_trace(ssusb->dev, "set role : %d", role);
+ 
+-	switch (status) {
+-	case MTU3_ID_GROUND:
++	switch (role) {
++	case USB_ROLE_HOST:
+ 		mtu3_stop(mtu);
  		switch_port_to_host(ssusb);
  		ssusb_set_vbus(otg_sx, 1);
  		ssusb->is_host = true;
-@@ -171,11 +168,6 @@ static void ssusb_set_mailbox(struct otg_switch_mtk *otg_sx,
+ 		break;
+-	case MTU3_ID_FLOAT:
++	case USB_ROLE_DEVICE:
  		ssusb->is_host = false;
  		ssusb_set_vbus(otg_sx, 0);
  		switch_port_to_device(ssusb);
--		break;
--	case MTU3_VBUS_OFF:
--		mtu3_stop(mtu);
--		break;
--	case MTU3_VBUS_VALID:
  		mtu3_start(mtu);
  		break;
++	case USB_ROLE_NONE:
++		break;
  	default:
-@@ -194,17 +186,6 @@ static void ssusb_id_work(struct work_struct *work)
- 		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
- }
- 
--static void ssusb_vbus_work(struct work_struct *work)
--{
--	struct otg_switch_mtk *otg_sx =
--		container_of(work, struct otg_switch_mtk, vbus_work);
--
--	if (otg_sx->vbus_event)
--		ssusb_set_mailbox(otg_sx, MTU3_VBUS_VALID);
--	else
--		ssusb_set_mailbox(otg_sx, MTU3_VBUS_OFF);
--}
--
- /*
-  * @ssusb_id_notifier is called in atomic context, but @ssusb_set_mailbox
-  * may sleep, so use work queue here
-@@ -221,18 +202,6 @@ static int ssusb_id_notifier(struct notifier_block *nb,
- 	return NOTIFY_DONE;
- }
- 
--static int ssusb_vbus_notifier(struct notifier_block *nb,
--	unsigned long event, void *ptr)
--{
--	struct otg_switch_mtk *otg_sx =
--		container_of(nb, struct otg_switch_mtk, vbus_nb);
--
--	otg_sx->vbus_event = event;
--	schedule_work(&otg_sx->vbus_work);
--
--	return NOTIFY_DONE;
--}
--
- static int ssusb_extcon_register(struct otg_switch_mtk *otg_sx)
- {
- 	struct ssusb_mtk *ssusb =
-@@ -244,14 +213,6 @@ static int ssusb_extcon_register(struct otg_switch_mtk *otg_sx)
- 	if (!edev)
- 		return 0;
- 
--	otg_sx->vbus_nb.notifier_call = ssusb_vbus_notifier;
--	ret = devm_extcon_register_notifier(ssusb->dev, edev, EXTCON_USB,
--					&otg_sx->vbus_nb);
--	if (ret < 0) {
--		dev_err(ssusb->dev, "failed to register notifier for USB\n");
--		return ret;
--	}
--
- 	otg_sx->id_nb.notifier_call = ssusb_id_notifier;
- 	ret = devm_extcon_register_notifier(ssusb->dev, edev, EXTCON_USB_HOST,
- 					&otg_sx->id_nb);
-@@ -260,15 +221,12 @@ static int ssusb_extcon_register(struct otg_switch_mtk *otg_sx)
- 		return ret;
+-		dev_err(ssusb->dev, "invalid state\n");
++		dev_err(ssusb->dev, "invalid role\n");
  	}
+ }
  
--	dev_dbg(ssusb->dev, "EXTCON_USB: %d, EXTCON_USB_HOST: %d\n",
--		extcon_get_state(edev, EXTCON_USB),
-+	dev_dbg(ssusb->dev, "EXTCON_USB_HOST: %d\n",
- 		extcon_get_state(edev, EXTCON_USB_HOST));
+@@ -181,13 +159,13 @@ static void ssusb_id_work(struct work_struct *work)
+ 		container_of(work, struct otg_switch_mtk, id_work);
+ 
+ 	if (otg_sx->id_event)
+-		ssusb_set_mailbox(otg_sx, MTU3_ID_GROUND);
++		ssusb_set_role(otg_sx, USB_ROLE_HOST);
+ 	else
+-		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
++		ssusb_set_role(otg_sx, USB_ROLE_DEVICE);
+ }
+ 
+ /*
+- * @ssusb_id_notifier is called in atomic context, but @ssusb_set_mailbox
++ * @ssusb_id_notifier is called in atomic context, but ssusb_set_role()
+  * may sleep, so use work queue here
+  */
+ static int ssusb_id_notifier(struct notifier_block *nb,
+@@ -226,7 +204,7 @@ static int ssusb_extcon_register(struct otg_switch_mtk *otg_sx)
  
  	/* default as host, switch to device mode if needed */
  	if (extcon_get_state(edev, EXTCON_USB_HOST) == false)
- 		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
--	if (extcon_get_state(edev, EXTCON_USB) == true)
--		ssusb_set_mailbox(otg_sx, MTU3_VBUS_VALID);
+-		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
++		ssusb_set_role(otg_sx, USB_ROLE_DEVICE);
  
  	return 0;
  }
-@@ -285,12 +243,10 @@ void ssusb_mode_switch(struct ssusb_mtk *ssusb, int to_host)
+@@ -243,10 +221,10 @@ void ssusb_mode_switch(struct ssusb_mtk *ssusb, int to_host)
  
  	if (to_host) {
  		ssusb_set_force_mode(ssusb, MTU3_DR_FORCE_HOST);
--		ssusb_set_mailbox(otg_sx, MTU3_VBUS_OFF);
- 		ssusb_set_mailbox(otg_sx, MTU3_ID_GROUND);
+-		ssusb_set_mailbox(otg_sx, MTU3_ID_GROUND);
++		ssusb_set_role(otg_sx, USB_ROLE_HOST);
  	} else {
  		ssusb_set_force_mode(ssusb, MTU3_DR_FORCE_DEVICE);
- 		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
--		ssusb_set_mailbox(otg_sx, MTU3_VBUS_VALID);
+-		ssusb_set_mailbox(otg_sx, MTU3_ID_FLOAT);
++		ssusb_set_role(otg_sx, USB_ROLE_DEVICE);
  	}
  }
  
-@@ -365,7 +321,6 @@ int ssusb_otg_switch_init(struct ssusb_mtk *ssusb)
- 	int ret = 0;
- 
- 	INIT_WORK(&otg_sx->id_work, ssusb_id_work);
--	INIT_WORK(&otg_sx->vbus_work, ssusb_vbus_work);
- 
- 	if (otg_sx->manual_drd_enabled)
- 		ssusb_dr_debugfs_init(ssusb);
-@@ -382,6 +337,5 @@ void ssusb_otg_switch_exit(struct ssusb_mtk *ssusb)
- 	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
- 
- 	cancel_work_sync(&otg_sx->id_work);
--	cancel_work_sync(&otg_sx->vbus_work);
- 	usb_role_switch_unregister(otg_sx->role_sw);
- }
 -- 
 2.18.0
 _______________________________________________
