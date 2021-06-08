@@ -2,80 +2,75 @@ Return-Path: <SRS0=WQwL=LC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89EDAC47082
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07D8EC47082
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 09:39:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F8E86127A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:24:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F8E86127A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id BD38B6124C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 09:39:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BD38B6124C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C0C39PXYXOPpQBiKHEFUvpKRRRpzSsu4cjuCMbBP8dI=; b=iawPnAc1o48Xq3
-	TuUotYD2ndwZ8Dj/2/ZUwLd2IxTpOJHZDSWzrMubkKtP8zcmVxlFTYvxPi84AnyMWZ+tL36IZNpyN
-	reHO6SQYojW1QFKHsndUZWg7pdReYdm9SayReb1QPm7jwSQ2heiYrlt/tFhYYC43ehp3dWeJ0/aOw
-	dpSS1WF4UR4ZHnnvWyBqPn+fyjZA5lxWpDGOcwH1wFbv+ZsiRFD7ezotnmC/84izGLJV6309jYlEg
-	QRNPpW6Km9pdyp2GVf4fRk4j7e0vDahGGit55mnpnmd64S7MvfhrxaqxSjT/fzXkl+auVS+nNbCDh
-	kWS9vZwSHPu+/T74UUrw==;
+	List-Owner; bh=XISaMRLW1Z4AasugRExbbF2yHFD9ExAxNZlRVBsAd6E=; b=amscMXoXMES01k
+	cX+j79uhnaxxYdZ4EbCo8pII/JLRnw7LQJQe8AsEq0rgE1625cjph4AVUF1yQefdmumpKnJz+aw2l
+	MKUbNO7rYxS2soktXa/xV0vkoKb2VyJFlRLOQShZTAGz2p2Um4HaTpx/pcCxAnN/9QfozEHONJVm7
+	SbweU9U1IKMK7Ls2rUULFWO0sLmxDUXQIhUUmkHqIwUGVZXz7MOcNwBIZskxGlC3OwC2tS+ZY4Smn
+	4R70kDckcXcpVInwaUqdjb9BDraLh1tcmVD8mBGi6kbJL2JnIO9kVJy7gdfpxOf8hmIJzuwHjDXeV
+	GfntjsHYhqekJN/kN5lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqX1m-0075po-N2; Tue, 08 Jun 2021 08:24:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lqYCa-007TEa-D6; Tue, 08 Jun 2021 09:39:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqWmb-006xi4-Ot; Tue, 08 Jun 2021 08:08:23 +0000
-X-UUID: 9836f9dc9f4349dd983475c625ab848c-20210608
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=oaKnUZcJ1INyTjMiiZGhcJ4n9VxbvV/qSGsgqmtvca8=; 
- b=lgX5gralCNa0OuQ6BJy4vZbd9huWcMPhg2nvnf1Qh+zUDgtqRfsGIOF1sCrTNlZoz691liOJxhqBEvpRNkmNHrN8tLWHSVYKN82Dj0BDi3bFyEUwtD/Doi9B7R2OHRG44zPlHNscrpWFErHg1u3SgdqwvMn6f6LwxxZSDXBoNN8=;
-X-UUID: 9836f9dc9f4349dd983475c625ab848c-20210608
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1519929191; Tue, 08 Jun 2021 01:08:16 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 00:58:18 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 15:58:17 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Jun 2021 15:58:16 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
- <robh+dt@kernel.org>, Felipe Balbi <balbi@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
- <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Yuwen Ng <yuwen.ng@mediatek.com>, Eddie Hung
- <eddie.hung@mediatek.com>
-Subject: [PATCH 23/23] usb: mtu3: use clock bulk to get clocks
-Date: Tue, 8 Jun 2021 15:57:49 +0800
-Message-ID: <1623139069-8173-24-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1lqYCB-007T3y-A2; Tue, 08 Jun 2021 09:38:52 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AD13861246;
+ Tue,  8 Jun 2021 09:38:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623145130;
+ bh=vxDRlETdFI2PxULKoexaolR76e6sEkGi4SwEVNAONko=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=q3vtJ+jhevpN9HMr0yO5HHI84E7BaAUQhqF0Is8p+TOQLEKDl1floYBhTkmAvtQM+
+ ZdeXq1S9f6rO205DS6HunWGzB47PxBEoRKTuQirizr0lOj7HODwIlDrCXB8+BFfK/2
+ Ra/9/vghohxzMzsnYoPcnmX2/q7Ed+iyeaK2ayM04oSLmiP9kj9ebRdfqgY+rabkfX
+ qxT83QpM5F0jxJHzd2CF8aJbWdBXFAZcfOAVDU/cjNcKG9CsjJZk8KHCq1EwBIN+m+
+ Hg28jb+pCFoeaWpwhkGlf7WqIQpcs/1fQDvkjDwh6+Ltr3tRM2v8EKhAJYaRXWakHJ
+ fn39WWUD+sXvA==
+Date: Tue, 8 Jun 2021 10:38:45 +0100
+From: Will Deacon <will@kernel.org>
+To: Zhen Lei <thunder.leizhen@huawei.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Robin Murphy <robin.murphy@arm.com>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Lu Baolu <baolu.lu@linux.intel.com>, Yong Wu <yong.wu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ iommu <iommu@lists.linux-foundation.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ linux-sunxi <linux-sunxi@lists.linux.dev>
+Subject: Re: [PATCH v2 1/1] iommu: Clear a lot of spelling mistakes
+Message-ID: <20210608093845.GC8935@willie-the-truck>
+References: <20210510035425.3212-1-thunder.leizhen@huawei.com>
+ <20210510035425.3212-2-thunder.leizhen@huawei.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210510035425.3212-2-thunder.leizhen@huawei.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_010821_935878_BFBA33D6 
-X-CRM114-Status: GOOD (  18.39  )
+X-CRM114-CacheID: sfid-20210608_023851_407356_E612F55D 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,221 +87,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use clock bulk helpers to get/enable/disable clocks, meanwhile
-make sys_ck optional, then will be easier to handle clocks.
+On Mon, May 10, 2021 at 11:54:25AM +0800, Zhen Lei wrote:
+> All spelling mistakes are in the comments, no functional change.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/usb/mtu3/mtu3.h      | 12 ++---
- drivers/usb/mtu3/mtu3_plat.c | 86 ++++++------------------------------
- 2 files changed, 18 insertions(+), 80 deletions(-)
+[...]
 
-diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-index ad063fec7f17..022bbdc54e68 100644
---- a/drivers/usb/mtu3/mtu3.h
-+++ b/drivers/usb/mtu3/mtu3.h
-@@ -10,6 +10,7 @@
- #ifndef __MTU3_H__
- #define __MTU3_H__
- 
-+#include <linux/clk.h>
- #include <linux/device.h>
- #include <linux/dmapool.h>
- #include <linux/extcon.h>
-@@ -89,6 +90,8 @@ struct mtu3_request;
-  */
- #define EP0_RESPONSE_BUF  6
- 
-+#define BULK_CLKS_CNT	4
-+
- /* device operated link and speed got from DEVICE_CONF register */
- enum mtu3_speed {
- 	MTU3_SPEED_INACTIVE = 0,
-@@ -221,10 +224,6 @@ struct otg_switch_mtk {
-  * @mac_base: register base address of device MAC, exclude xHCI's
-  * @ippc_base: register base address of IP Power and Clock interface (IPPC)
-  * @vusb33: usb3.3V shared by device/host IP
-- * @sys_clk: system clock of mtu3, shared by device/host IP
-- * @ref_clk: reference clock
-- * @mcu_clk: mcu_bus_ck clock for AHB bus etc
-- * @dma_clk: dma_bus_ck clock for AXI bus etc
-  * @dr_mode: works in which mode:
-  *		host only, device only or dual-role mode
-  * @u2_ports: number of usb2.0 host ports
-@@ -250,10 +249,7 @@ struct ssusb_mtk {
- 	int wakeup_irq;
- 	/* common power & clock */
- 	struct regulator *vusb33;
--	struct clk *sys_clk;
--	struct clk *ref_clk;
--	struct clk *mcu_clk;
--	struct clk *dma_clk;
-+	struct clk_bulk_data clks[BULK_CLKS_CNT];
- 	/* otg */
- 	struct otg_switch_mtk otg_switch;
- 	enum usb_dr_mode dr_mode;
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index 0beae0c8e2d6..57a71af8e151 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -5,7 +5,6 @@
-  * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
-  */
- 
--#include <linux/clk.h>
- #include <linux/dma-mapping.h>
- #include <linux/iopoll.h>
- #include <linux/kernel.h>
-@@ -125,54 +124,6 @@ static void ssusb_phy_power_off(struct ssusb_mtk *ssusb)
- 		phy_power_off(ssusb->phys[i]);
- }
- 
--static int ssusb_clks_enable(struct ssusb_mtk *ssusb)
--{
--	int ret;
--
--	ret = clk_prepare_enable(ssusb->sys_clk);
--	if (ret) {
--		dev_err(ssusb->dev, "failed to enable sys_clk\n");
--		goto sys_clk_err;
--	}
--
--	ret = clk_prepare_enable(ssusb->ref_clk);
--	if (ret) {
--		dev_err(ssusb->dev, "failed to enable ref_clk\n");
--		goto ref_clk_err;
--	}
--
--	ret = clk_prepare_enable(ssusb->mcu_clk);
--	if (ret) {
--		dev_err(ssusb->dev, "failed to enable mcu_clk\n");
--		goto mcu_clk_err;
--	}
--
--	ret = clk_prepare_enable(ssusb->dma_clk);
--	if (ret) {
--		dev_err(ssusb->dev, "failed to enable dma_clk\n");
--		goto dma_clk_err;
--	}
--
--	return 0;
--
--dma_clk_err:
--	clk_disable_unprepare(ssusb->mcu_clk);
--mcu_clk_err:
--	clk_disable_unprepare(ssusb->ref_clk);
--ref_clk_err:
--	clk_disable_unprepare(ssusb->sys_clk);
--sys_clk_err:
--	return ret;
--}
--
--static void ssusb_clks_disable(struct ssusb_mtk *ssusb)
--{
--	clk_disable_unprepare(ssusb->dma_clk);
--	clk_disable_unprepare(ssusb->mcu_clk);
--	clk_disable_unprepare(ssusb->ref_clk);
--	clk_disable_unprepare(ssusb->sys_clk);
--}
--
- static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- {
- 	int ret = 0;
-@@ -183,7 +134,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- 		goto vusb33_err;
- 	}
- 
--	ret = ssusb_clks_enable(ssusb);
-+	ret = clk_bulk_prepare_enable(BULK_CLKS_CNT, ssusb->clks);
- 	if (ret)
- 		goto clks_err;
- 
-@@ -204,7 +155,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- phy_err:
- 	ssusb_phy_exit(ssusb);
- phy_init_err:
--	ssusb_clks_disable(ssusb);
-+	clk_bulk_disable_unprepare(BULK_CLKS_CNT, ssusb->clks);
- clks_err:
- 	regulator_disable(ssusb->vusb33);
- vusb33_err:
-@@ -213,7 +164,7 @@ static int ssusb_rscs_init(struct ssusb_mtk *ssusb)
- 
- static void ssusb_rscs_exit(struct ssusb_mtk *ssusb)
- {
--	ssusb_clks_disable(ssusb);
-+	clk_bulk_disable_unprepare(BULK_CLKS_CNT, ssusb->clks);
- 	regulator_disable(ssusb->vusb33);
- 	ssusb_phy_power_off(ssusb);
- 	ssusb_phy_exit(ssusb);
-@@ -239,6 +190,7 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- {
- 	struct device_node *node = pdev->dev.of_node;
- 	struct otg_switch_mtk *otg_sx = &ssusb->otg_switch;
-+	struct clk_bulk_data *clks = ssusb->clks;
- 	struct device *dev = &pdev->dev;
- 	int i;
- 	int ret;
-@@ -249,23 +201,13 @@ static int get_ssusb_rscs(struct platform_device *pdev, struct ssusb_mtk *ssusb)
- 		return PTR_ERR(ssusb->vusb33);
- 	}
- 
--	ssusb->sys_clk = devm_clk_get(dev, "sys_ck");
--	if (IS_ERR(ssusb->sys_clk)) {
--		dev_err(dev, "failed to get sys clock\n");
--		return PTR_ERR(ssusb->sys_clk);
--	}
--
--	ssusb->ref_clk = devm_clk_get_optional(dev, "ref_ck");
--	if (IS_ERR(ssusb->ref_clk))
--		return PTR_ERR(ssusb->ref_clk);
--
--	ssusb->mcu_clk = devm_clk_get_optional(dev, "mcu_ck");
--	if (IS_ERR(ssusb->mcu_clk))
--		return PTR_ERR(ssusb->mcu_clk);
--
--	ssusb->dma_clk = devm_clk_get_optional(dev, "dma_ck");
--	if (IS_ERR(ssusb->dma_clk))
--		return PTR_ERR(ssusb->dma_clk);
-+	clks[0].id = "sys_ck";
-+	clks[1].id = "ref_ck";
-+	clks[2].id = "mcu_ck";
-+	clks[3].id = "dma_ck";
-+	ret = devm_clk_bulk_get_optional(dev, BULK_CLKS_CNT, clks);
-+	if (ret)
-+		return ret;
- 
- 	ssusb->num_phys = of_count_phandle_with_args(node,
- 			"phys", "#phy-cells");
-@@ -558,7 +500,7 @@ static int mtu3_suspend_common(struct device *dev, pm_message_t msg)
- 		goto sleep_err;
- 
- 	ssusb_phy_power_off(ssusb);
--	ssusb_clks_disable(ssusb);
-+	clk_bulk_disable_unprepare(BULK_CLKS_CNT, ssusb->clks);
- 	ssusb_wakeup_set(ssusb, true);
- 
- sleep_err:
-@@ -575,7 +517,7 @@ static int mtu3_resume_common(struct device *dev, pm_message_t msg)
- 	dev_dbg(dev, "%s\n", __func__);
- 
- 	ssusb_wakeup_set(ssusb, false);
--	ret = ssusb_clks_enable(ssusb);
-+	ret = clk_bulk_prepare_enable(BULK_CLKS_CNT, ssusb->clks);
- 	if (ret)
- 		goto clks_err;
- 
-@@ -586,7 +528,7 @@ static int mtu3_resume_common(struct device *dev, pm_message_t msg)
- 	return resume_ip_and_ports(ssusb, msg);
- 
- phy_err:
--	ssusb_clks_disable(ssusb);
-+	clk_bulk_disable_unprepare(BULK_CLKS_CNT, ssusb->clks);
- clks_err:
- 	return ret;
- }
--- 
-2.18.0
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index e06b8a0e2b56bdd..b9e4be35c8dcad2 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -161,7 +161,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
+>   * The Region 'A'(I/O) can NOT be mapped by M4U; For Region 'B'/'C'/'D', the
+>   * bit32 of the CPU physical address always is needed to set, and for Region
+>   * 'E', the CPU physical address keep as is.
+> - * Additionally, The iommu consumers always use the CPU phyiscal address.
+> + * Additionally, The iommu consumers always use the CPU physical address.
+
+If we're fixing typos, then I think the 'T' in "The iommu" should be
+lowercase here.
+
+Anyway, all the other fixes look correct to me. I'll leave it up to Joerg as
+to whether he wants to apply this or not, given the impact on git blame and
+the potential for conflicts.
+
+Will
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
