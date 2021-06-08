@@ -2,59 +2,60 @@ Return-Path: <SRS0=WQwL=LC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2494BC49ED9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:58:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B114C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:58:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D77CE61289
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:58:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D77CE61289
+	by mail.kernel.org (Postfix) with ESMTPS id 3083D61285
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 07:58:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3083D61285
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3ZgBduqTWCP67PXVJK+Dg61j9rG+xFWnIosterIo1GI=; b=jelgND9wLvnPlb
-	PUDY7XzBP/vvuXBF+Wb6xhnBH10xmK+E4F68g3MF78m5h8dreAQ6WxVo26pLg1DWsDKZEk4gEyvE9
-	UDnw+sFSar/zCOGJ9qN7oFB2GOtRqX/aE82Zsr6AAC5R7KfoMr3lW4D0xz+PSz1JKvn1vSucpc5fv
-	C19aS+gNk2q6wq6vEdcnW/Au/WBg6tYmdWAm/kFnTYdUbfb7ovZLTg1Mi2l1Lp9ud4JvdIvwnUs4E
-	4Eo1dJRofdafsPULoVzOX2K5obG5ad5yEafNU0JpLwbBLElfaleTR/wbeMguSw/YxVliMWGaDu/DC
-	ZAzxqODnwVWeaT07q7DA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LfzEqALbCIpE+9//af73TF1bTTGJE8qKs3P1GzBaujc=; b=NIDytuql5V+Ogj
+	hHlAb52Nmpc8BD5xsgaKeNFKpMQO15hcSk4vEcardyAy/aB6Ml5WbB2SrvOqGwvlmBzQUMjtQiwsm
+	SDuRBpeg4HFXMhU2Zg4MT7Iy2OFSGi2cPM/uAPVVDGwf6RXMtul//qbtkNt6M2iTGNMJDka6wnS8u
+	61XwDqc5J0CfIbPaT97CjCPb9K4g9fflnMaOoHo0yHI4p+cokUfd6Uw8yVdujTPEYFptAsYHB4T2F
+	Lv+v7ycPUHz66eGnUZDmbrS1owUV+EdlMQzRpUcwOP7r+fZ5T2LJOHZTnVpRg9DZVFBC2EuAuZKgM
+	M20ePjnfyyRl2O++Boxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqWcl-006tYB-9D; Tue, 08 Jun 2021 07:58:11 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lqWcy-006tfD-Ke; Tue, 08 Jun 2021 07:58:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqWcX-006tSm-Cq; Tue, 08 Jun 2021 07:57:58 +0000
-X-UUID: 958e4e9aada14ec299b1050edf00586a-20210608
+ id 1lqWcb-006tTr-RM; Tue, 08 Jun 2021 07:58:03 +0000
+X-UUID: 05f10708f4b948b4bb8defd269da6ec8-20210608
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=KY96gyMFTz1Qj+V1ej8dY2jDOGZ1hAE+hAler+TvZ4w=; 
- b=AGGI2vYZje1mvm+Sf90dWbXRq+CugcI7WmgYgV4emaCkcIzs+faOVvUFxzipl8mwbqIH9KP3MGtcmZouFCyet91eq11vfGW+uMJfi/iFoHRUO7PD8VNdR/9NvInACcuxUOluD9wh/2FEA9Ejbw5pKq+q/SmsIO6xGmRuKtrG4aY=;
-X-UUID: 958e4e9aada14ec299b1050edf00586a-20210608
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=remkWEyy4FcXvvaBgyq2KLNSE/PBeUAT/ccIztWDykM=; 
+ b=JBRYXaZr75Lo0lV9goQTKWaXRlRFm2boW5Uhw0Uvf5XCK9FCJt+lBt8kOBvX0QT1bpHTbp/W1TpfftTb+m2C/l0uipNJr57HL8iH/Ujtc6qaGds4RCamqNf7TBCkqzLL2fDe/ztG4mMK+cQtz7ezBHF00k+A3y6jjTspNpSBlAA=;
+X-UUID: 05f10708f4b948b4bb8defd269da6ec8-20210608
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 528511832; Tue, 08 Jun 2021 00:57:54 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1178502575; Tue, 08 Jun 2021 00:57:55 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 8 Jun 2021 00:57:52 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 15:57:50 +0800
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Jun 2021 15:57:51 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Jun 2021 15:57:49 +0800
+ Transport; Tue, 8 Jun 2021 15:57:50 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Felipe Balbi <balbi@kernel.org>
@@ -64,15 +65,18 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Yuwen Ng <yuwen.ng@mediatek.com>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH 00/23] Add support gadget (runtime) PM
-Date: Tue, 8 Jun 2021 15:57:26 +0800
-Message-ID: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 01/23] dt-bindings: usb: mtu3: remove support VBUS detection
+ of extcon
+Date: Tue, 8 Jun 2021 15:57:27 +0800
+Message-ID: <1623139069-8173-2-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_005757_477308_F71A8924 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20210608_005801_920595_46BE02FF 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,50 +93,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series mainly adds support for gadget suspend/resume when the controller
-works at device only mode or dual role mode, and also adds support runtime PM,
-in order to fix the sequence issue about resume and role switch event arised
-by extcon or role-switch, rebuild and unify the flow of dual role switch for
-all three supported ways.
+Due to no platforms use a multi-funtion pin to detect VBUS
+status until now when support dual role mode, prefer not to
+support it anymore;
+Another reason is that the controller doesn't support idle status,
+the dual role port works as device or as host, using an IDDIG pin
+is good enough, this will help to save another multi-function pin;
+And fix a typo of 'neede';
+Last modify example using VBUS to turn on/off device, for device
+only mode, the driver doesn't get extcon.
 
-Chunfeng Yun (23):
-  dt-bindings: usb: mtu3: remove support VBUS detection of extcon
-  dt-bindings: usb: mtu3: add optional property to disable usb2 ports
-  dt-bindings: usb: mtu3: add support property role-switch-default-mode
-  dt-bindings: usb: mtu3: add wakeup interrupt
-  usb: mtu3: power down device IP by default
-  usb: mtu3: power down port when power down device IP
-  usb: mtu3: remove wakelock
-  usb: mtu3: drop support vbus detection
-  usb: mtu3: use enum usb_role instead of private defined ones
-  usb: mtu3: rebuild role switch flow of extcon
-  usb: mtu3: add helper to get pointer of ssusb_mtk struct
-  usb: mtu3: use force mode for dual role switch
-  usb: mtu3: rebuild role switch get/set hooks
-  usb: common: add helper to get role-switch-default-mode
-  usb: dwc3: drd: use helper to get role-switch-default-mode
-  usb: mtu3: support property role-switch-default-mode
-  usb: mtu3: support option to disable usb2 ports
-  usb: mtu3: add new helpers for host suspend/resume
-  usb: mtu3: support runtime PM for host mode
-  usb: mtu3: add helper to power on/down device
-  usb: mtu3: support suspend/resume for device mode
-  usb: mtu3: support suspend/resume for dual-role mode
-  usb: mtu3: use clock bulk to get clocks
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../bindings/usb/mediatek,mtu3.yaml           | 22 +++++++++++++++----
+ 1 file changed, 18 insertions(+), 4 deletions(-)
 
- .../bindings/usb/mediatek,mtu3.yaml           |  47 +++-
- drivers/usb/common/common.c                   |  20 ++
- drivers/usb/dwc3/drd.c                        |   8 +-
- drivers/usb/mtu3/mtu3.h                       |  36 ++-
- drivers/usb/mtu3/mtu3_core.c                  | 117 +++++++-
- drivers/usb/mtu3/mtu3_dr.c                    | 193 +++++---------
- drivers/usb/mtu3/mtu3_dr.h                    |  30 ++-
- drivers/usb/mtu3/mtu3_gadget.c                |   5 +
- drivers/usb/mtu3/mtu3_host.c                  | 112 ++++++--
- drivers/usb/mtu3/mtu3_plat.c                  | 250 +++++++++++-------
- include/linux/usb/otg.h                       |   1 +
- 11 files changed, 530 insertions(+), 289 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+index dbc7876e0a0b..2cac7a87ce36 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml
+@@ -106,7 +106,7 @@ properties:
+   extcon:
+     deprecated: true
+     description: |
+-      Phandle to the extcon device detecting the IDDIG/VBUS state, neede
++      Phandle to the extcon device detecting the IDDIG state, needed
+       when supports dual-role mode.
+       It's considered valid for compatibility reasons, not allowed for
+       new bindings, and use "usb-role-switch" property instead.
+@@ -230,7 +230,7 @@ examples:
+         };
+     };
+ 
+-  # Enable/disable device by an input gpio for VBUS pin
++  # Dual role switch by gpio-usb-b-connector
+   - |
+     #include <dt-bindings/gpio/gpio.h>
+     #include <dt-bindings/power/mt2712-power.h>
+@@ -244,13 +244,27 @@ examples:
+         power-domains = <&scpsys MT2712_POWER_DOMAIN_USB2>;
+         clocks = <&topckgen CLK_TOP_USB30_SEL>;
+         clock-names = "sys_ck";
+-        dr_mode = "peripheral";
++        dr_mode = "otg";
+         usb-role-switch;
++        #address-cells = <1>;
++        #size-cells = <1>;
++        ranges;
++
++        host0: usb@11270000 {
++            compatible = "mediatek,mt2712-xhci", "mediatek,mtk-xhci";
++            reg = <0x11270000 0x1000>;
++            reg-names = "mac";
++            interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_LOW>;
++            power-domains = <&scpsys MT2712_POWER_DOMAIN_USB>;
++            clocks = <&topckgen CLK_TOP_USB30_SEL>, <&clk26m>;
++            clock-names = "sys_ck", "ref_ck";
++        };
+ 
+         connector {
+             compatible = "gpio-usb-b-connector", "usb-b-connector";
+             type = "micro";
+-            vbus-gpios = <&pio 13 GPIO_ACTIVE_HIGH>;
++            id-gpios = <&pio 12 GPIO_ACTIVE_HIGH>;
++            vbus-supply = <&usb_p0_vbus>;
+         };
+     };
+ 
 -- 
 2.18.0
 _______________________________________________
