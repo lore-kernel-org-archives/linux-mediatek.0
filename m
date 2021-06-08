@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83109C47082
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72CC8C47082
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:10:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AFA36127A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:09:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AFA36127A
+	by mail.kernel.org (Postfix) with ESMTPS id 3F70F61246
+	for <linux-mediatek@archiver.kernel.org>; Tue,  8 Jun 2021 08:10:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F70F61246
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZHLZmmkQ4F2gOY3tOCNv4uajrE5OwDjcqgQRRjw94OM=; b=qiyf3hwrbULZLS
-	yGMWyjWWB+E8J1XCWguUxDoZaynXpXRABw6UBLPlfQ6EsKSYD41OKZotyj09YrnaUU0QTAyW8pRCp
-	QSMBaPBQaQkHsIW/uSNO3OzgnLt99r7r6lZBQRcAFJL2fqlGpsazAVUgcH9uyNnK7k6z7DQb6+G1y
-	mYMrQUC3odAO6q0PjUa+SzZT6FR6ProQ2bOv3X4t5lT6eRVu4qJteBDIqSrTPDgnKpkBohyCJB/oX
-	g0lE5AqxLvyEAyaFenXJW/9Uc2RWjwm/ShQzHh7DZ2rD+PYFYo6pM/wM0hrryEhdxPH8x4r/tDVvu
-	J7bxHsITaDL68wdVaGFA==;
+	List-Owner; bh=5408WrGsTcCbsH2auAO++jAPf5ilz30MzrEHm8sHfgc=; b=r24m3S/YBH6YCk
+	icw2j0tsp9068QVgsfDIKpRUay3XGKOKT0O9TXrWApyeCorUw8T/z1F+gRwMeXBTjgMiLqBR9JsL0
+	bJyYQsN5IpTuAHQMDEKZfscrq3FidIvnjwgkBOj6fOqJbR7hTrOuvd0Qo3dkKicC1OQcIeSi3C6rj
+	VfA2FPaql1Il6VoqCeamuRfCzqqoWJC9R3KxqjT36I7MM2szp07ebYe30ISN4ViSrbKxU+JMuEtpi
+	ojRMSjCiSMVBJ1w0Fd/IAW4CBbxOWS98ydcQnETuZdOI1XWqLrbC/AimX6l/2USL7OPTeW46hFm9p
+	CcRZ3/AUzPUfo5i4SyiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqWnE-006y0a-71; Tue, 08 Jun 2021 08:09:00 +0000
+	id 1lqWof-006ynz-N0; Tue, 08 Jun 2021 08:10:29 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqWmM-006xiH-T1; Tue, 08 Jun 2021 08:08:08 +0000
-X-UUID: 18c28e33b8e74287ad02b6a7f82ad0dc-20210608
+ id 1lqWmO-006xi4-C3; Tue, 08 Jun 2021 08:08:09 +0000
+X-UUID: a6766072c11e42a9807626eb25fbe2cd-20210608
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=A/McRtS4xRmeHy3oNldK9xfL9eXu2mI6OBHkJ5QplN4=; 
- b=ou7Zj3hWc96fhbDHZpp5+RZQU60zF6zvp8wab3v00ijtyrmbg02JHit+TZYYnJwozcdM4FvYRMlY9+ldSXnDYbS/6/VE0guB+ejMT9QhJ33laJI/CkcjwISCb0axXSSzMEWKjXdmXVIyVrnaO95tpF23ijYzUG2MdIx+7c9enfs=;
-X-UUID: 18c28e33b8e74287ad02b6a7f82ad0dc-20210608
+ bh=jLKGmZgohwojp8EevbSdsJnT/fjxIC0L0+mOt73Ouqs=; 
+ b=EJxT7BSezQ2W9+a3khdGAMvdiSxyW9WmkoFF3WkM/hze7+7HQU+At7pCB+i22yYealNQ8bNpMs2rZZFp3pqPlhBBeVUgWgVPUtDlFabvv3jSKeyhmrF2coefVzZulqS+6Gz1U8WtHXputEExdiUOoi6Z0X9qAnD2aj5jp6uvnRg=;
+X-UUID: a6766072c11e42a9807626eb25fbe2cd-20210608
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1000760707; Tue, 08 Jun 2021 01:08:04 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1606306885; Tue, 08 Jun 2021 01:08:04 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 00:58:11 -0700
+ 15.0.1497.2; Tue, 8 Jun 2021 00:58:16 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 8 Jun 2021 15:58:09 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Jun 2021 15:58:14 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 8 Jun 2021 15:58:08 +0800
+ Transport; Tue, 8 Jun 2021 15:58:13 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring
  <robh+dt@kernel.org>, Felipe Balbi <balbi@kernel.org>
@@ -64,17 +65,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Yuwen Ng <yuwen.ng@mediatek.com>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH 14/23] usb: common: add helper to get role-switch-default-mode
-Date: Tue, 8 Jun 2021 15:57:40 +0800
-Message-ID: <1623139069-8173-15-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH 20/23] usb: mtu3: add helper to power on/down device
+Date: Tue, 8 Jun 2021 15:57:46 +0800
+Message-ID: <1623139069-8173-21-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1623139069-8173-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_010806_971151_ED56B13F 
-X-CRM114-Status: GOOD (  13.05  )
+X-CRM114-CacheID: sfid-20210608_010808_449992_1E954F52 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,57 +92,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add helper to get "role-switch-default-mode", and convert it
-to the corresponding enum usb_dr_mode
+Add helper to power on/down device ports and ip, it will be
+used when support device suspend/resume
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/common/common.c | 20 ++++++++++++++++++++
- include/linux/usb/otg.h     |  1 +
- 2 files changed, 21 insertions(+)
+ drivers/usb/mtu3/mtu3_core.c | 36 ++++++++++++++++++++++++------------
+ 1 file changed, 24 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index 347fb3d3894a..c9bdeb4ddcb5 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -200,6 +200,26 @@ enum usb_dr_mode usb_get_dr_mode(struct device *dev)
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index 6d23acb4fffc..648e970d77ba 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -141,6 +141,28 @@ static void mtu3_device_disable(struct mtu3 *mtu)
+ 	mtu3_setbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
  }
- EXPORT_SYMBOL_GPL(usb_get_dr_mode);
  
-+/**
-+ * usb_get_role_switch_default_mode - Get default mode for given device
-+ * @dev: Pointer to the given device
-+ *
-+ * The function gets string from property 'role-switch-default-mode',
-+ * and returns the corresponding enum usb_dr_mode.
-+ */
-+enum usb_dr_mode usb_get_role_switch_default_mode(struct device *dev)
++static void mtu3_dev_power_on(struct mtu3 *mtu)
 +{
-+	const char *str;
-+	int ret;
++	void __iomem *ibase = mtu->ippc_base;
 +
-+	ret = device_property_read_string(dev, "role-switch-default-mode", &str);
-+	if (ret < 0)
-+		return USB_DR_MODE_UNKNOWN;
++	mtu3_clrbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
++	if (mtu->is_u3_ip)
++		mtu3_clrbits(ibase, SSUSB_U3_CTRL(0), SSUSB_U3_PORT_PDN);
 +
-+	return usb_get_dr_mode_from_string(str);
++	mtu3_clrbits(ibase, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_PDN);
 +}
-+EXPORT_SYMBOL_GPL(usb_get_role_switch_default_mode);
 +
- /**
-  * usb_decode_interval - Decode bInterval into the time expressed in 1us unit
-  * @epd: The descriptor of the endpoint
-diff --git a/include/linux/usb/otg.h b/include/linux/usb/otg.h
-index 69f1b6328532..1550b8e5f039 100644
---- a/include/linux/usb/otg.h
-+++ b/include/linux/usb/otg.h
-@@ -128,5 +128,6 @@ enum usb_dr_mode {
-  * and returns the correspondig enum usb_dr_mode
-  */
- extern enum usb_dr_mode usb_get_dr_mode(struct device *dev);
-+extern enum usb_dr_mode usb_get_role_switch_default_mode(struct device *dev);
++static void mtu3_dev_power_down(struct mtu3 *mtu)
++{
++	void __iomem *ibase = mtu->ippc_base;
++
++	if (mtu->is_u3_ip)
++		mtu3_setbits(ibase, SSUSB_U3_CTRL(0), SSUSB_U3_PORT_PDN);
++
++	mtu3_setbits(ibase, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_PDN);
++	mtu3_setbits(ibase, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
++}
++
+ /* reset U3D's device module. */
+ static void mtu3_device_reset(struct mtu3 *mtu)
+ {
+@@ -333,12 +355,7 @@ void mtu3_start(struct mtu3 *mtu)
+ 	dev_dbg(mtu->dev, "%s devctl 0x%x\n", __func__,
+ 		mtu3_readl(mbase, U3D_DEVICE_CONTROL));
  
- #endif /* __LINUX_USB_OTG_H */
+-	mtu3_clrbits(mtu->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
+-	if (mtu->is_u3_ip)
+-		mtu3_clrbits(mtu->ippc_base, SSUSB_U3_CTRL(0), SSUSB_U3_PORT_PDN);
+-
+-	mtu3_clrbits(mtu->ippc_base, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_PDN);
+-
++	mtu3_dev_power_on(mtu);
+ 	mtu3_csr_init(mtu);
+ 	mtu3_set_speed(mtu, mtu->speed);
+ 
+@@ -360,12 +377,7 @@ void mtu3_stop(struct mtu3 *mtu)
+ 		mtu3_dev_on_off(mtu, 0);
+ 
+ 	mtu->is_active = 0;
+-
+-	if (mtu->is_u3_ip)
+-		mtu3_setbits(mtu->ippc_base, SSUSB_U3_CTRL(0), SSUSB_U3_PORT_PDN);
+-
+-	mtu3_setbits(mtu->ippc_base, SSUSB_U2_CTRL(0), SSUSB_U2_PORT_PDN);
+-	mtu3_setbits(mtu->ippc_base, U3D_SSUSB_IP_PW_CTRL2, SSUSB_IP_DEV_PDN);
++	mtu3_dev_power_down(mtu);
+ }
+ 
+ /* for non-ep0 */
 -- 
 2.18.0
 _______________________________________________
