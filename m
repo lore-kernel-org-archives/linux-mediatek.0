@@ -2,92 +2,91 @@ Return-Path: <SRS0=WlSZ=LD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EE10C47095
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 07:47:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0243EC47095
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 07:52:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 426F461029
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 07:47:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 426F461029
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id B6C2D6128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 07:52:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6C2D6128A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=GI/XikyoIxszN72rpvQkUIgMslnvIjHZRxLPuD/ZPJU=; b=D0cHULd00Xwn7nIW3wHUDIVzGh
-	7zEz0IzUo54cTBIui2+hkh0Yqha7f919+/jPXDe2Bb9LnqKZcH8c9LZYpAMjpUg7WC84g7OGJ14EH
-	3tGMf4to3rEnY/Jcvfki/YMgxRG1Vd+mmsXR3SXI3SgxtUxIKpzRsoqNpNoJHkAlfEi9BDEWjwvh/
-	34M3IAcf4Rew8ZqIjz+z6/Jv67sJjzJUIHbHAZvnN7xAA4giOL4Yyi5Mpn35opt6TZTOqO2pMBHxx
-	SScD93oaMSw+CXZEJaTQfaWSAuYLdnJHFgwbv4EDtLKM0JeozHNTyFuRuCRiUEstOi1tcSvKRDtKK
-	Sc+EIvow==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SEFaEjcr78n9o5SEUA5OIjaOEViberdALp7valMRNGI=; b=Bu8U66+VXEpsqr
+	RkwWN3xBPF/pdh0GAbS1bvGquvBKNbFEjbk4U1wZGwmkLuLkjYzbIAoCch/lEMPRrZd44xj+MQB0s
+	qZNyIqfWxxiPrNi+Q+erpxjd24QXrSKVAUPCkGS2w1wkcI0wfXUBz9Fx55AU2dZplbdXyZJjLB6QI
+	GjeUY/VjpcRdb/Yn0eOzZPmg6huBgApfUKJ5gXvLcUsV0SoTwJMaXxhsMY62YySrVZPGUksLivtif
+	cbisw4lbr0Uia+0UP2nfJY+AAEi1b05S2xlqkNhDmK4YlkX4BXoJ1vQt5C0+8DYE3tLzuydvdrqMp
+	ft18yMQKhSP9nF3wv0mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqsvJ-00CA4U-Rp; Wed, 09 Jun 2021 07:46:49 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1lqt0g-00CBoj-7C; Wed, 09 Jun 2021 07:52:22 +0000
+Received: from mail-il1-x133.google.com ([2607:f8b0:4864:20::133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqsvH-00CA3u-L2; Wed, 09 Jun 2021 07:46:49 +0000
-Received: by mail-wr1-x435.google.com with SMTP id m18so24353159wrv.2;
- Wed, 09 Jun 2021 00:46:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mfF8AjJH5axTBcPP0IxexexYabY3e1he3WLMrp8BjK8=;
- b=IgAZFn/WHkagwnBqkoL0xUnTvaGUW1R+i+upYBkYG/N35EWOwSaMkevwNHWNRqsV29
- DvxkVyuIMfd5rj0rgZDe/gHmtWveCrw1dxdNxy6epxsI9RrkRQXrKs+2/FMm/yCKiP8s
- GBsYM/gc11fh3z5yKSTZ5BTVQhikMHchjNlgN4pYkJbSSpcVQBGUDOAWKlMz+4FnAwWt
- yoEjqp2kHmPfLIrj1TU3vmtpPEadeYiVbq9e2QC67nxTCxWE0HDg6DOZvvy6iAMLXziM
- uFHOJthRSe9goTjZq7o7m7TiaQICvSymXVahJTyP++dum3sWzGw8xhOxYqWhMnELf+UK
- xzyA==
+ id 1lqt0b-00CBn0-Oh
+ for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 07:52:20 +0000
+Received: by mail-il1-x133.google.com with SMTP id b14so23767457ilq.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 00:52:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gaMmJ7k/BA6wFJk3ZATOxTWqaw6DpQ+qnTYlU65VAJg=;
+ b=DxNoHnoQMTFxaXjpdN0XlT6hKe7ppTriU7fZPnvEO05MytIXZrM9OCTtH3lItbNDKz
+ gl4v4h53dX3nd8HWtJt+JAy+2bVxxBh2BASVUYttK8YAM0I1AvEdjLN/IfPw1/6KwPSs
+ X5/gB8jhEr54PpIfHjiMqE/nHS2RJeoFwN/H8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mfF8AjJH5axTBcPP0IxexexYabY3e1he3WLMrp8BjK8=;
- b=biGxeujWl8QJ2TO/fvSasrOiVVzrdhRLeYKZD/y+DYPMrefWaOj02pkL+huguD1+uJ
- dddIOdAMQsXBwve92jGe1m1LFL33X5R+atq7/WG7UGWV1H7KUt0MBvWtVBuVlKFPBAwH
- gjhO4/75SbtrCeJL/2WwxjQI6uRbcLhBChLJPHH3zdvtWb3KegVteh9kfT+TV1bK/8P3
- AfBS145zGLF9xWzKenVDgoyoySO8oraiylCDU3HmTEPvO0jg6yHrltHlf8P0RLKZrpG3
- 0IiZEErRIgn8nmSJQDvOkpUmFNWHRxU0RRBLmFmcrDXUlX9uHYI2WRNp52kHChDm2ybZ
- w5oQ==
-X-Gm-Message-State: AOAM532RtWiqNC23xJ88+C0bGCzr3rXAbA6mMlnh8fcWphiwKvTbg97y
- DlShRTROdUWnSyPwzYiU0Cg=
-X-Google-Smtp-Source: ABdhPJxwaNus7YWPn57nqY0Er0FpsC7q84dR0F9oofTVVONfuhFu7p/dA/7CkWaxhVWRofM1dNEAsQ==
-X-Received: by 2002:adf:f54a:: with SMTP id j10mr26111411wrp.383.1623224805989; 
- Wed, 09 Jun 2021 00:46:45 -0700 (PDT)
-Received: from ziggy.stardust (81.172.61.185.dyn.user.ono.com. [81.172.61.185])
- by smtp.gmail.com with ESMTPSA id h9sm5571159wmm.33.2021.06.09.00.46.45
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gaMmJ7k/BA6wFJk3ZATOxTWqaw6DpQ+qnTYlU65VAJg=;
+ b=gkUKpzy8DTE5Y3/9oJFbOY/+cQqbw+JMozyRa95unqc3Ukacxrooi/HHMrkwa1M+4r
+ Myh6qArxOb9uwvmr0BdT0H0vFGcUS65AhTsuve8EC5pLoMzG57xwmg2UoiQBDx3sCM/Q
+ kVQTPbezZyC22o5KQDAhkx0F+RcparwwLjwogc6Q+qwEyKefeseEVolXRYj7WnTi9otE
+ O7IRh296tVjS97Avzjr7gt3Mx9Wuhn8QVOXA7ZEWuw+MH6uk7naet7RrZrZS3CJsOV7v
+ cs+FKkYmjLMS/FO4fu6IBfTi5klkzQ3Uhi+NnAWXQTIa+pMpcNKivoYx0FNNVRyC5XuW
+ 8C9Q==
+X-Gm-Message-State: AOAM530sCpXJRitfCpcHfIAi95087wkcpplaAQJXnoejS6WVHDeBZLGQ
+ 4r1qd2uxLOBvig0C3geD8X5xz/Qd+4jTeA==
+X-Google-Smtp-Source: ABdhPJzSNf0SMMvbr0ql8SLIprA4ND1EBIBio5lnqxpnu2+9CiEmko9V+Rq91piLAYPR7L/97aqytg==
+X-Received: by 2002:a02:384b:: with SMTP id v11mr24253184jae.90.1623225134131; 
+ Wed, 09 Jun 2021 00:52:14 -0700 (PDT)
+Received: from mail-il1-f174.google.com (mail-il1-f174.google.com.
+ [209.85.166.174])
+ by smtp.gmail.com with ESMTPSA id g14sm1016994ioo.19.2021.06.09.00.52.12
+ for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Jun 2021 00:46:45 -0700 (PDT)
-Subject: Re: [PATCH v2] arm64: dts: mt8183: add jpeg enc node for mt8183
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, maoguang.meng@mediatek.com,
- yong.wu@mediatek.com, tfiga@chromium.org
-References: <20210609044854.393452-1-hsinyi@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <7a96166f-70d9-bc0e-72cc-53a8612741e8@gmail.com>
-Date: Wed, 9 Jun 2021 09:46:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ Wed, 09 Jun 2021 00:52:13 -0700 (PDT)
+Received: by mail-il1-f174.google.com with SMTP id z1so24162299ils.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 00:52:12 -0700 (PDT)
+X-Received: by 2002:a92:d312:: with SMTP id x18mr22379736ila.90.1623225132502; 
+ Wed, 09 Jun 2021 00:52:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210609044854.393452-1-hsinyi@chromium.org>
-Content-Language: en-US
+References: <20210602112050.12338-1-james.lo@mediatek.com>
+ <20210602112050.12338-3-james.lo@mediatek.com>
+In-Reply-To: <20210602112050.12338-3-james.lo@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Wed, 9 Jun 2021 15:51:36 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhUB=6y1SXUvAuhdj69S36FQnp9nr9V65TtS72pxuoRTg@mail.gmail.com>
+Message-ID: <CAC=S1nhUB=6y1SXUvAuhdj69S36FQnp9nr9V65TtS72pxuoRTg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] soc: mediatek: pwrap: add pwrap driver for MT8195 SoC
+To: James Lo <james.lo@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Henry Chen <henryc.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_004647_724885_38B4E111 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20210609_005217_883395_F069AB6D 
+X-CRM114-Status: GOOD (  21.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,51 +103,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 09/06/2021 06:48, Hsin-Yi Wang wrote:
-> From: Maoguang Meng <maoguang.meng@mediatek.com>
-> 
-> Add jpeg encoder device tree node.
-> 
-> Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+On Wed, Jun 2, 2021 at 7:21 PM James Lo <james.lo@mediatek.com> wrote:
+>
+> From: Henry Chen <henryc.chen@mediatek.com>
+>
+> MT8195 are highly integrated SoC and use PMIC_MT6359 for
+> power management. This patch adds pwrap master driver to
+> access PMIC_MT6359.
+>
+> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 > ---
-> v2: rebase to latest
-> v1: https://patchwork.kernel.org/project/linux-media/patch/20200914094012.5817-1-maoguang.meng@mediatek.com/
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index c5e822b6b77a3..fffe0c52909ce 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1329,6 +1329,17 @@ larb4: larb@17010000 {
->  			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
->  		};
->  
-> +		venc_jpg: venc_jpg@17030000 {
-> +			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
-
-We are missing "mediatek,mt8183-jpgenc" in mediatek-jpeg-encoder.txt. Would be
-great if you could help to convert it to yaml before adding the new compatible.
-
-Thanks!
-Matthias
-> +			reg = <0 0x17030000 0 0x1000>;
-> +			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
-> +			iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
-> +				 <&iommu M4U_PORT_JPGENC_BSDMA>;
-> +			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-> +			clocks = <&vencsys CLK_VENC_JPGENC>;
-> +			clock-names = "jpgenc";
-> +		};
+>  drivers/soc/mediatek/mtk-pmic-wrap.c | 35 ++++++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index e4de75f35c33..952bc554f443 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -961,6 +961,23 @@ static int mt8183_regs[] = {
+>         [PWRAP_WACS2_VLDCLR] =                  0xC28,
+>  };
+>
+> +static int mt8195_regs[] = {
+> +       [PWRAP_INIT_DONE2] =            0x0,
+> +       [PWRAP_STAUPD_CTRL] =           0x4C,
+> +       [PWRAP_TIMER_EN] =              0x3E4,
+> +       [PWRAP_INT_EN] =                0x420,
+> +       [PWRAP_INT_FLG] =               0x428,
+> +       [PWRAP_INT_CLR] =               0x42C,
+> +       [PWRAP_INT1_EN] =               0x450,
+> +       [PWRAP_INT1_FLG] =              0x458,
+> +       [PWRAP_INT1_CLR] =              0x45C,
+> +       [PWRAP_WACS2_CMD] =             0x880,
+> +       [PWRAP_SWINF_2_WDATA_31_0] =    0x884,
+> +       [PWRAP_SWINF_2_RDATA_31_0] =    0x894,
+> +       [PWRAP_WACS2_VLDCLR] =          0x8A4,
+> +       [PWRAP_WACS2_RDATA] =           0x8A8,
+> +};
 > +
->  		ipu_conn: syscon@19000000 {
->  			compatible = "mediatek,mt8183-ipu_conn", "syscon";
->  			reg = <0 0x19000000 0 0x1000>;
-> 
+>  static int mt8516_regs[] = {
+>         [PWRAP_MUX_SEL] =               0x0,
+>         [PWRAP_WRAP_EN] =               0x4,
+> @@ -1066,6 +1083,7 @@ enum pwrap_type {
+>         PWRAP_MT8135,
+>         PWRAP_MT8173,
+>         PWRAP_MT8183,
+> +       PWRAP_MT8195,
+>         PWRAP_MT8516,
+>  };
+>
+> @@ -1525,6 +1543,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>                 break;
+>         case PWRAP_MT6873:
+>         case PWRAP_MT8183:
+> +       case PWRAP_MT8195:
+>                 break;
+>         }
+>
+> @@ -2025,6 +2044,19 @@ static const struct pmic_wrapper_type pwrap_mt8183 = {
+>         .init_soc_specific = pwrap_mt8183_init_soc_specific,
+>  };
+>
+> +static struct pmic_wrapper_type pwrap_mt8195 = {
+> +       .regs = mt8195_regs,
+> +       .type = PWRAP_MT8195,
+> +       .arb_en_all = 0x777f, /* NEED CONFIRM */
+> +       .int_en_all = 0x180000, /* NEED CONFIRM */
+
+Please get the confirmative values here then send the next patch, thanks.
+
+
+> +       .int1_en_all = 0,
+> +       .spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+> +       .wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+> +       .caps = PWRAP_CAP_INT1_EN | PWRAP_CAP_ARB,
+> +       .init_reg_clock = pwrap_common_init_reg_clock,
+> +       .init_soc_specific = NULL,
+> +};
+> +
+>  static struct pmic_wrapper_type pwrap_mt8516 = {
+>         .regs = mt8516_regs,
+>         .type = PWRAP_MT8516,
+> @@ -2065,6 +2097,9 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
+>         }, {
+>                 .compatible = "mediatek,mt8183-pwrap",
+>                 .data = &pwrap_mt8183,
+> +       }, {
+> +               .compatible = "mediatek,mt8195-pwrap",
+> +               .data = &pwrap_mt8195,
+>         }, {
+>                 .compatible = "mediatek,mt8516-pwrap",
+>                 .data = &pwrap_mt8516,
+> --
+> 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
