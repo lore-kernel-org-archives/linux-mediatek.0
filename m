@@ -2,20 +2,20 @@ Return-Path: <SRS0=WlSZ=LD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53879C48BCD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C804C48BCF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:19:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1754E613AC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:47:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1754E613AC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id E9DD561364
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:19:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9DD561364
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,64 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7DlIUK/10ObPQz4IpEXmzg97Na3QtVnUmgSxEEGCFVw=; b=1iwtLYHQ4n0REw
-	Ka715IF4o3+9OAbsiJ+zAJEeFlTm1RovAOCft5+d74JKzIawyz9iDY6+VsnHiWcAcMeLCg0d92XJd
-	31WBO7S9v71sNwPui4hBIHF29+nmgd2n4ogRaLYVi+M/3EUW3fBi/lFDyF4BkXvQZV+WqcMGvxdLB
-	/7paRRpWOs2lbR5iKl1x05Q2YCr67UVohIYCTVwjM07gm+Huk1K2oApHMI3vFvvJv8Lxw/Pi5lfND
-	AwB3LuTyFgrKvQj8ZOfn8WzEqj1JMNARoc99eIoRwqaiy0wzz0GOigvfUKF3SuyU49YFHFohUG9gi
-	w2ymk8yq1so/GKURmhOw==;
+	List-Owner; bh=njjOx2PzZallYvM/Fr+rtlPpR5XjbjHWDu4CexehXz0=; b=jZ3pescA2aw2zn
+	LCBPe/7Sgnu7XgQTz/i4rCtJ8LEN+iBNXbat1Q5nVMOme1JiL4+O8ze5lwPapcmvVk16GqSH7hZPU
+	IshlSzNiADPABwDHriDusPcUK6JNKeeaaK9NEN+Grxd8nE96U4/+4jsS3/dxBLGGpX2fE1CCt1E/e
+	08TatvF7zu23Ie4UfPF8kR/0E2NYFnH/2fXVVhwDu0Tr/kZZpF0lDNV5pXw7HUlcjdYbek+fAhR8j
+	MmhePH7mi4iJKI+tl75C+kVO9/9ihmzfo9SB65bKM8YfUmB4sB0HPn/npB9W41HJMQRIydcF9blTU
+	eIZpBJKxCifioghZwNbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqvjk-00D6Y5-38; Wed, 09 Jun 2021 10:47:04 +0000
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
+	id 1lqwFA-00DH15-DN; Wed, 09 Jun 2021 11:19:32 +0000
+Received: from mail-lf1-f44.google.com ([209.85.167.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqvjg-00D6Wk-Vk
- for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 10:47:02 +0000
-Received: by mail-il1-x12a.google.com with SMTP id b5so24944438ilc.12
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 03:46:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1lqwF7-00DGzM-FL
+ for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 11:19:30 +0000
+Received: by mail-lf1-f44.google.com with SMTP id p17so36632005lfc.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 04:19:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k+5GzVyM+TFuTZLW/qFX3WiZRW9D495A3O6aGgKjLxs=;
- b=icqvxZiYbmJBLHoQNod0FxFLxphOWacXqY4xuBdb5fqVvTYbUo37QfNhVZL+BVBc7v
- vv3ricSDDsmBFXoggCz0oXH5e33zFyx6ZkePhITrR1kcFEGVWqJ1B7d+62BnZo77+GEy
- n0fpiYQsT5Qk0tsjZc/uP4tlxLa24JdPBxt7I=
+ :cc; bh=b9O4t6ei1D8lp6tbh7xKEJ5OiZwVBxTMlh+LjUyHQ54=;
+ b=JJZhVBK8XAeaFL6DQ8+82CH3Tn27KdaGFCTgYUZmudfX3Q/cnQXnIZvxUARhticvpC
+ JycTC4ZOyQIZfYn0/HlZ6zKqQYWsLVhkD2xM6H21LShj4YIaMowxdtUPl0sHreMG6pfg
+ iogNmtktJywuOe7b7Zs/BMrpw2PHEZMoYqW+XS8uqi3iI6xXJgP8NSFZqDZTDnNw+yEU
+ qcsSnKO99UJcGNn3K6R3FY7XpYqPCtPh4FcbMjP0x4Lqe2J3Zna34PNL5b4Gnj2QInhO
+ 2dLE0mxaniEQcolKdtm+vSIkMkMQA3y49Y6nx38isVwhIQsyOa5RKQFoiWJOwEvK9ymm
+ 6AuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=k+5GzVyM+TFuTZLW/qFX3WiZRW9D495A3O6aGgKjLxs=;
- b=kYbvA7GgzaekD3i5NFbZ+FHjFQdOa6+AKnZ2o/9WaeSJGVy/ocJaAWH1cKhUAPjVJc
- /MMXGkBw3BhP9jmXRw61ZtD3KR/VqM90DJV9M6ceYBkUF6vmlQ5qcX4tgH3eqaxSQLCR
- DnyJe/JYqZC+68FqNni4YN+cbh/mJuAfCpC+rR7KLQHUHKeOF2+QORiSfZfDFcT4wx58
- tFfXxQ+QU4vfq7qEGKWOGQXisM/nAVGDlydC7XsD7r+xJOUrUYt/00qr9DKr+uVIk70j
- mbEfcZophcE+umvoHAFrlbZX/5jbuFCS4EYc0G3cR/7wFEA/w3ex1zEhnYQykWl/uLPc
- JOig==
-X-Gm-Message-State: AOAM530pW0lqmBhAFQz3+jvYAKrf4p3gVXXPPjXARpBDDgdOvafbqYZ6
- CEWFaGlqT/HupAn+UqjfWe9vIOu4XLFbFuoJduFEhg==
-X-Google-Smtp-Source: ABdhPJwgBjwFhsmtC1XmbGiOcK7Z4pF0o5B7kd44vj0dZ9UzBo2ihwDg/0svNbMUYUf6PM+t2LazOCf1UIXVUByntUc=
-X-Received: by 2002:a05:6638:11:: with SMTP id
- z17mr24468108jao.102.1623235618594; 
- Wed, 09 Jun 2021 03:46:58 -0700 (PDT)
+ bh=b9O4t6ei1D8lp6tbh7xKEJ5OiZwVBxTMlh+LjUyHQ54=;
+ b=KYJUcYPOXOoapDoY0Hzfq5wbwtJlXzOMlTzYxoPe3giKq29hofit4finujnI441hj1
+ 0SJ/9intH7IbguFJiZ+WPCsbjrUhVNSuv1dI/VUQa0AaaMHbMRXrZSLjQyo/b+hEx/5N
+ dmHF/JBTKOwr+SAJZlpS4xZXQ7o0HGZvFPIcliRYDD8Q9EixrIzGtYswHyP0SH16Qgwx
+ 92DQY1Lf2Fb1Nqy7CJdfxmRgADn/FjXGVCImAScdob8c4P9c6HTJBUl7vjgj4ugeYsJf
+ JC8HcmHnkurI+R7HT2K+44F3u/2qEg9EVqIlgSqCD3HQI5psescncN69GyWq2XThmFLF
+ oOwQ==
+X-Gm-Message-State: AOAM531McSlFrcxjIdTA15NScEsexXUSzoxDaTeGGYhqS33nBpyLerVV
+ V69k+0B8JK0HYWSYtPZtSDGIp919tcLbmgJOuQQSsQ==
+X-Google-Smtp-Source: ABdhPJz6NHE+0gvKyfv7+YEJSuyHHStlfocuRfWgrhgqSQh4vX6owc1UlB2pSgkAV6u9cWfZUZXY08Yzd+FfgNCdZtI=
+X-Received: by 2002:a05:6512:2105:: with SMTP id
+ q5mr18131046lfr.649.1623237507147; 
+ Wed, 09 Jun 2021 04:18:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210609044854.393452-1-hsinyi@chromium.org>
- <7a96166f-70d9-bc0e-72cc-53a8612741e8@gmail.com>
-In-Reply-To: <7a96166f-70d9-bc0e-72cc-53a8612741e8@gmail.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 9 Jun 2021 18:46:32 +0800
-Message-ID: <CAJMQK-gtQpHTJvjy240fN31G7=sz73w2jJQk6_zqdeAiYpXJsw@mail.gmail.com>
-Subject: Re: [PATCH v2] arm64: dts: mt8183: add jpeg enc node for mt8183
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Devicetree List <devicetree@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
+References: <20210608150656.29007-1-matthias.bgg@kernel.org>
+In-Reply-To: <20210608150656.29007-1-matthias.bgg@kernel.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Wed, 9 Jun 2021 13:18:16 +0200
+Message-ID: <CACRpkdZ+9LeokSfZDhMWyR4yE-oq4CSbSPRqwJncOS0rm_f8Tg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: fix mode encoding
+To: matthias.bgg@kernel.org
+Cc: Sean Wang <sean.wang@kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- lkml <linux-kernel@vger.kernel.org>, 
- maoguang.meng@mediatek.com, Yong Wu <yong.wu@mediatek.com>, 
- Tomasz Figa <tfiga@chromium.org>
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Matthias Brugger <mbrugger@suse.com>, 
+ Fabien Parent <fparent@baylibre.com>,
+ Mattijs Korpershoek <mkorpershoek@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_034701_063868_E734B585 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20210609_041929_528858_9B397FD0 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,57 +101,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 9, 2021 at 3:46 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->
->
->
-> On 09/06/2021 06:48, Hsin-Yi Wang wrote:
-> > From: Maoguang Meng <maoguang.meng@mediatek.com>
-> >
-> > Add jpeg encoder device tree node.
-> >
-> > Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> > ---
-> > v2: rebase to latest
-> > v1: https://patchwork.kernel.org/project/linux-media/patch/20200914094012.5817-1-maoguang.meng@mediatek.com/
-> > ---
-> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
-> >  1 file changed, 11 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index c5e822b6b77a3..fffe0c52909ce 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -1329,6 +1329,17 @@ larb4: larb@17010000 {
-> >                       power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-> >               };
-> >
-> > +             venc_jpg: venc_jpg@17030000 {
-> > +                     compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
->
-> We are missing "mediatek,mt8183-jpgenc" in mediatek-jpeg-encoder.txt. Would be
-> great if you could help to convert it to yaml before adding the new compatible.
->
-mediatek-jpeg-en(de)coder.txt converted to yaml:
-https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20210609104053.617751-1-hsinyi@chromium.org/
+On Tue, Jun 8, 2021 at 5:07 PM <matthias.bgg@kernel.org> wrote:
 
+> From: Matthias Brugger <mbrugger@suse.com>
+>
+> Pin modes are encoded in the SoC data structure. Use that value to set
+> IES SMT.
+>
+> Cc: Fabien Parent <fparent@baylibre.com>
+> Cc: Sean Wang <sean.wang@kernel.org>
+> Cc: Mattijs Korpershoek <mkorpershoek@baylibre.com>
+> Cc: linux-mediatek@lists.infradead.org
+> Fixes: 696beef77521 ("pinctrl: mediatek: move bit assignment")
+> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Matthias Brugger <mbrugger@suse.com>
 
-> Thanks!
-> Matthias
-> > +                     reg = <0 0x17030000 0 0x1000>;
-> > +                     interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
-> > +                     iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
-> > +                              <&iommu M4U_PORT_JPGENC_BSDMA>;
-> > +                     power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-> > +                     clocks = <&vencsys CLK_VENC_JPGENC>;
-> > +                     clock-names = "jpgenc";
-> > +             };
-> > +
-> >               ipu_conn: syscon@19000000 {
-> >                       compatible = "mediatek,mt8183-ipu_conn", "syscon";
-> >                       reg = <0 0x19000000 0 0x1000>;
-> >
+Patch applied!
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
