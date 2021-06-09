@@ -2,19 +2,19 @@ Return-Path: <SRS0=WlSZ=LD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8197C48BCD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16129C48BCF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:30:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B2DB36128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:30:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2DB36128A
+	by mail.kernel.org (Postfix) with ESMTPS id D88DC6128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:30:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D88DC6128A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rYvDXAtNcgfavrBoS/TNwGa1bn+UINUiQyir8xHzpCk=; b=eEA2WSf5MrFlQk
-	0KPnp7Gj4yKyfCteey2VpHvzc5R4H+CXtXuCm4zCgUr2XrfkATSSpgrF28hfgHyzpLrdvbcAASAsc
-	W5crji45eeXn6D7MtNSpz5vxnYQf2oXMMLfZtqhtxGnfA6bf1AyRUA8pG4Ewl9dt66YIF1AM4cV5z
-	IVtzxac8a5HcUYek+pcZmKuPK9Pw8fhsBExBMGGLXSpE3FqoDEci/HSGUteGaQx1A/FEqUBuLTZQO
-	GFsawzIUjcUrpnldQZatwwqHYenBFVrLYPBnFE2Ii/D9fCoPBAqIN40Jd13VBHbcDUnx6UcG0whsR
-	pwdJ/Jd8GNwPaAkZMwkw==;
+	List-Owner; bh=fKXuXUv1MWdadJZ1d3Zuz8i/3O8lSfPhiRxqId/7Kf0=; b=hIUaDO+h5BIoN8
+	52ZOi6xZ4h1M5k/m+jCZvsEJXRSE1buMx6B2KoOkBUmbXIhwdiZm6mN41Nlo82vYbjoC5y2Tz6hyK
+	OtyPFvXD4w9GWkiMwfNYXGkQI1TTpXp+II5GIE4CtgWfGKyvuELYXIbSqCJxr6xbrV2UV5qnBpE9h
+	daiJKuQcDhiOzTNJnwJHf/0FMQ4imuXPWbwNJf9s79RTleAG46nANryhIVtM7dHxemtGPPQbVSVz1
+	U8SO9xdC0HFSDrdXI8y9h0GfeKRGnEYmkqyQhr31fNjvSWzKYExD3L3nRWBgfuMn9WM/aJDomwbm3
+	6zG7un7YbmzGWWr5vdTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqwP7-00DKTI-NA; Wed, 09 Jun 2021 11:29:49 +0000
+	id 1lqwPA-00DKUY-IP; Wed, 09 Jun 2021 11:29:52 +0000
 Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqwFu-00DHGJ-Qh; Wed, 09 Jun 2021 11:20:21 +0000
+ id 1lqwFu-00DHFd-VP; Wed, 09 Jun 2021 11:20:22 +0000
 Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
  (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 72A051FD5E;
- Wed,  9 Jun 2021 11:20:17 +0000 (UTC)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 776951FD3C;
+ Wed,  9 Jun 2021 11:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237617; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237615; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
- b=Rq55TcomPGhMXwpeFyESUm3GDvlg7OmaZX/qRaxtJN732EyZeijE7CTgQQ81HFu+nOAnWo
- Z+WU7zDsm0G3ahHPlWoKBpb5pqwby6nzNTPZ1PS16fXw3BOYMdf/6A8Nsq4lS+x0+pYTRj
- GUC+kQK64wYiUp8guoJ8SnsSvgqFYrw=
+ bh=nWjkH2kYcjIAyzh3jD5msWYfe6YCZBpfuuajwa0m0a0=;
+ b=IAtem6UO8ka5vH8Cg0PiSS22RvapW/ocX82RQpxPce0FBd+pNl5jb95flgADByK2rDHLNJ
+ TgWWF4pzyQr9HgUSWj/A+2DROM9qvqfJkHjg5jrOJR73IgD07UeB7RsvawTyl0Rdu6+TSo
+ b6c+g9ojK56kuA4P6Kt5boUu456N7KU=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237617;
+ s=susede2_ed25519; t=1623237615;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
- b=UohKZc2F4Ut9lh/4Tyt67jSW7I9hMjqHQGWVvsSXRh0Vw7JlrrpjYo8yCJSaYDQ6uGjzTJ
- H4WzmfaRgb3bONBg==
+ bh=nWjkH2kYcjIAyzh3jD5msWYfe6YCZBpfuuajwa0m0a0=;
+ b=lXxXVlzUjbUFpw5VOvZWcN4FvwlBG+8u52/vI+U5dqir13Xr1GeRq2LFg+XWZsi3Av4+Y3
+ 8D6XS5wGDQOOuBBA==
 Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id C7C0311A98;
- Wed,  9 Jun 2021 11:20:16 +0000 (UTC)
+ by imap.suse.de (Postfix) with ESMTP id CCF60118DD;
+ Wed,  9 Jun 2021 11:20:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237617; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237615; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
- b=Rq55TcomPGhMXwpeFyESUm3GDvlg7OmaZX/qRaxtJN732EyZeijE7CTgQQ81HFu+nOAnWo
- Z+WU7zDsm0G3ahHPlWoKBpb5pqwby6nzNTPZ1PS16fXw3BOYMdf/6A8Nsq4lS+x0+pYTRj
- GUC+kQK64wYiUp8guoJ8SnsSvgqFYrw=
+ bh=nWjkH2kYcjIAyzh3jD5msWYfe6YCZBpfuuajwa0m0a0=;
+ b=IAtem6UO8ka5vH8Cg0PiSS22RvapW/ocX82RQpxPce0FBd+pNl5jb95flgADByK2rDHLNJ
+ TgWWF4pzyQr9HgUSWj/A+2DROM9qvqfJkHjg5jrOJR73IgD07UeB7RsvawTyl0Rdu6+TSo
+ b6c+g9ojK56kuA4P6Kt5boUu456N7KU=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237617;
+ s=susede2_ed25519; t=1623237615;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DKNzmpUMnKGetW9gWSfXN0fWNO4Ill+y5d1BrTMC3Bc=;
- b=UohKZc2F4Ut9lh/4Tyt67jSW7I9hMjqHQGWVvsSXRh0Vw7JlrrpjYo8yCJSaYDQ6uGjzTJ
- H4WzmfaRgb3bONBg==
+ bh=nWjkH2kYcjIAyzh3jD5msWYfe6YCZBpfuuajwa0m0a0=;
+ b=lXxXVlzUjbUFpw5VOvZWcN4FvwlBG+8u52/vI+U5dqir13Xr1GeRq2LFg+XWZsi3Av4+Y3
+ 8D6XS5wGDQOOuBBA==
 Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id UPnRL/CjwGBTUgAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:16 +0000
+ id yDM8Me6jwGBTUgAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:14 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
  l.stach@pengutronix.de, linux+etnaviv@armlinux.org.uk,
@@ -99,16 +99,16 @@ Cc: dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
  spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  xen-devel@lists.xenproject.org, linux-media@vger.kernel.org,
  linaro-mm-sig@lists.linaro.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 5/9] drm/qxl: Remove empty qxl_gem_prime_mmap()
-Date: Wed,  9 Jun 2021 13:20:08 +0200
-Message-Id: <20210609112012.10019-6-tzimmermann@suse.de>
+Subject: [PATCH 2/9] drm/exynox: Implement mmap as GEM object function
+Date: Wed,  9 Jun 2021 13:20:05 +0200
+Message-Id: <20210609112012.10019-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210609112012.10019-1-tzimmermann@suse.de>
 References: <20210609112012.10019-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_042019_075175_4794A1F0 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20210609_042019_233211_72924982 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,57 +125,196 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The function qxl_gem_prime_mmap() returns an error. The two callers
-of gem_prime_mmap are drm_fbdev_fb_mmap() and drm_gem_dmabuf_mmap(),
-which both already handle NULL-callbacks with an error code. So clear
-gem_prime_mmap in qxl and remove qxl_gem_prime_mmap().
+Moving the driver-specific mmap code into a GEM object function allows
+for using DRM helpers for various mmap callbacks.
+
+The respective exynos functions are being removed. The file_operations
+structure exynos_drm_driver_fops is now being created by the helper macro
+DEFINE_DRM_GEM_FOPS().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/qxl/qxl_drv.c   | 1 -
- drivers/gpu/drm/qxl/qxl_drv.h   | 2 --
- drivers/gpu/drm/qxl/qxl_prime.c | 6 ------
- 3 files changed, 9 deletions(-)
+ drivers/gpu/drm/exynos/exynos_drm_drv.c   | 13 ++-----
+ drivers/gpu/drm/exynos/exynos_drm_fbdev.c | 20 ++---------
+ drivers/gpu/drm/exynos/exynos_drm_gem.c   | 43 +++++------------------
+ drivers/gpu/drm/exynos/exynos_drm_gem.h   |  5 ---
+ 4 files changed, 13 insertions(+), 68 deletions(-)
 
-diff --git a/drivers/gpu/drm/qxl/qxl_drv.c b/drivers/gpu/drm/qxl/qxl_drv.c
-index 854e6c5a563f..b3d75ea7e6b3 100644
---- a/drivers/gpu/drm/qxl/qxl_drv.c
-+++ b/drivers/gpu/drm/qxl/qxl_drv.c
-@@ -281,7 +281,6 @@ static struct drm_driver qxl_driver = {
- 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import_sg_table = qxl_gem_prime_import_sg_table,
--	.gem_prime_mmap = qxl_gem_prime_mmap,
- 	.fops = &qxl_fops,
- 	.ioctls = qxl_ioctls,
- 	.irq_handler = qxl_irq_handler,
-diff --git a/drivers/gpu/drm/qxl/qxl_drv.h b/drivers/gpu/drm/qxl/qxl_drv.h
-index dd6abee55f56..f95885a8bd2b 100644
---- a/drivers/gpu/drm/qxl/qxl_drv.h
-+++ b/drivers/gpu/drm/qxl/qxl_drv.h
-@@ -434,8 +434,6 @@ struct drm_gem_object *qxl_gem_prime_import_sg_table(
- int qxl_gem_prime_vmap(struct drm_gem_object *obj, struct dma_buf_map *map);
- void qxl_gem_prime_vunmap(struct drm_gem_object *obj,
- 			  struct dma_buf_map *map);
--int qxl_gem_prime_mmap(struct drm_gem_object *obj,
--				struct vm_area_struct *vma);
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_drv.c b/drivers/gpu/drm/exynos/exynos_drm_drv.c
+index e60257f1f24b..1d46751cad02 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_drv.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_drv.c
+@@ -102,16 +102,7 @@ static const struct drm_ioctl_desc exynos_ioctls[] = {
+ 			DRM_RENDER_ALLOW),
+ };
  
- /* qxl_irq.c */
- int qxl_irq_init(struct qxl_device *qdev);
-diff --git a/drivers/gpu/drm/qxl/qxl_prime.c b/drivers/gpu/drm/qxl/qxl_prime.c
-index 0628d1cc91fe..4a10cb0a413b 100644
---- a/drivers/gpu/drm/qxl/qxl_prime.c
-+++ b/drivers/gpu/drm/qxl/qxl_prime.c
-@@ -73,9 +73,3 @@ void qxl_gem_prime_vunmap(struct drm_gem_object *obj,
+-static const struct file_operations exynos_drm_driver_fops = {
+-	.owner		= THIS_MODULE,
+-	.open		= drm_open,
+-	.mmap		= exynos_drm_gem_mmap,
+-	.poll		= drm_poll,
+-	.read		= drm_read,
+-	.unlocked_ioctl	= drm_ioctl,
+-	.compat_ioctl = drm_compat_ioctl,
+-	.release	= drm_release,
+-};
++DEFINE_DRM_GEM_FOPS(exynos_drm_driver_fops);
  
- 	qxl_bo_vunmap(bo);
+ static const struct drm_driver exynos_drm_driver = {
+ 	.driver_features	= DRIVER_MODESET | DRIVER_GEM
+@@ -124,7 +115,7 @@ static const struct drm_driver exynos_drm_driver = {
+ 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+ 	.gem_prime_import	= exynos_drm_gem_prime_import,
+ 	.gem_prime_import_sg_table	= exynos_drm_gem_prime_import_sg_table,
+-	.gem_prime_mmap		= exynos_drm_gem_prime_mmap,
++	.gem_prime_mmap		= drm_gem_prime_mmap,
+ 	.ioctls			= exynos_ioctls,
+ 	.num_ioctls		= ARRAY_SIZE(exynos_ioctls),
+ 	.fops			= &exynos_drm_driver_fops,
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_fbdev.c b/drivers/gpu/drm/exynos/exynos_drm_fbdev.c
+index 5147f5929be7..02c97b9ca926 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_fbdev.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_fbdev.c
+@@ -15,6 +15,7 @@
+ #include <drm/drm_crtc.h>
+ #include <drm/drm_fb_helper.h>
+ #include <drm/drm_fourcc.h>
++#include <drm/drm_prime.h>
+ #include <drm/drm_probe_helper.h>
+ #include <drm/exynos_drm.h>
+ 
+@@ -39,25 +40,8 @@ static int exynos_drm_fb_mmap(struct fb_info *info,
+ 	struct drm_fb_helper *helper = info->par;
+ 	struct exynos_drm_fbdev *exynos_fbd = to_exynos_fbdev(helper);
+ 	struct exynos_drm_gem *exynos_gem = exynos_fbd->exynos_gem;
+-	unsigned long vm_size;
+-	int ret;
+-
+-	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
+-
+-	vm_size = vma->vm_end - vma->vm_start;
+-
+-	if (vm_size > exynos_gem->size)
+-		return -EINVAL;
+ 
+-	ret = dma_mmap_attrs(to_dma_dev(helper->dev), vma, exynos_gem->cookie,
+-			     exynos_gem->dma_addr, exynos_gem->size,
+-			     exynos_gem->dma_attrs);
+-	if (ret < 0) {
+-		DRM_DEV_ERROR(to_dma_dev(helper->dev), "failed to mmap.\n");
+-		return ret;
+-	}
+-
+-	return 0;
++	return drm_gem_prime_mmap(&exynos_gem->base, vma);
+ }
+ 
+ static const struct fb_ops exynos_drm_fb_ops = {
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/exynos/exynos_drm_gem.c
+index 4396224227d1..c4b63902ee7a 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
++++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
+@@ -17,6 +17,8 @@
+ #include "exynos_drm_drv.h"
+ #include "exynos_drm_gem.h"
+ 
++static int exynos_drm_gem_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
++
+ static int exynos_drm_alloc_buf(struct exynos_drm_gem *exynos_gem, bool kvmap)
+ {
+ 	struct drm_device *dev = exynos_gem->base.dev;
+@@ -135,6 +137,7 @@ static const struct vm_operations_struct exynos_drm_gem_vm_ops = {
+ static const struct drm_gem_object_funcs exynos_drm_gem_object_funcs = {
+ 	.free = exynos_drm_gem_free_object,
+ 	.get_sg_table = exynos_drm_gem_prime_get_sg_table,
++	.mmap = exynos_drm_gem_mmap,
+ 	.vm_ops = &exynos_drm_gem_vm_ops,
+ };
+ 
+@@ -354,12 +357,16 @@ int exynos_drm_gem_dumb_create(struct drm_file *file_priv,
+ 	return 0;
+ }
+ 
+-static int exynos_drm_gem_mmap_obj(struct drm_gem_object *obj,
+-				   struct vm_area_struct *vma)
++static int exynos_drm_gem_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma)
+ {
+ 	struct exynos_drm_gem *exynos_gem = to_exynos_gem(obj);
+ 	int ret;
+ 
++	if (obj->import_attach)
++		return dma_buf_mmap(obj->dma_buf, vma, 0);
++
++	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
++
+ 	DRM_DEV_DEBUG_KMS(to_dma_dev(obj->dev), "flags = 0x%x\n",
+ 			  exynos_gem->flags);
+ 
+@@ -385,26 +392,6 @@ static int exynos_drm_gem_mmap_obj(struct drm_gem_object *obj,
+ 	return ret;
+ }
+ 
+-int exynos_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+-{
+-	struct drm_gem_object *obj;
+-	int ret;
+-
+-	/* set vm_area_struct. */
+-	ret = drm_gem_mmap(filp, vma);
+-	if (ret < 0) {
+-		DRM_ERROR("failed to mmap.\n");
+-		return ret;
+-	}
+-
+-	obj = vma->vm_private_data;
+-
+-	if (obj->import_attach)
+-		return dma_buf_mmap(obj->dma_buf, vma, 0);
+-
+-	return exynos_drm_gem_mmap_obj(obj, vma);
+-}
+-
+ /* low-level interface prime helpers */
+ struct drm_gem_object *exynos_drm_gem_prime_import(struct drm_device *dev,
+ 					    struct dma_buf *dma_buf)
+@@ -466,15 +453,3 @@ exynos_drm_gem_prime_import_sg_table(struct drm_device *dev,
+ 	exynos_gem->sgt = sgt;
+ 	return &exynos_gem->base;
  }
 -
--int qxl_gem_prime_mmap(struct drm_gem_object *obj,
--		       struct vm_area_struct *area)
+-int exynos_drm_gem_prime_mmap(struct drm_gem_object *obj,
+-			      struct vm_area_struct *vma)
 -{
--	return -ENOSYS;
+-	int ret;
+-
+-	ret = drm_gem_mmap_obj(obj, obj->size, vma);
+-	if (ret < 0)
+-		return ret;
+-
+-	return exynos_drm_gem_mmap_obj(obj, vma);
 -}
+diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.h b/drivers/gpu/drm/exynos/exynos_drm_gem.h
+index a23272fb96fb..79d7e1a87419 100644
+--- a/drivers/gpu/drm/exynos/exynos_drm_gem.h
++++ b/drivers/gpu/drm/exynos/exynos_drm_gem.h
+@@ -96,9 +96,6 @@ int exynos_drm_gem_dumb_create(struct drm_file *file_priv,
+ 			       struct drm_device *dev,
+ 			       struct drm_mode_create_dumb *args);
+ 
+-/* set vm_flags and we can change the vm attribute to other one at here. */
+-int exynos_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+-
+ /* low-level interface prime helpers */
+ struct drm_gem_object *exynos_drm_gem_prime_import(struct drm_device *dev,
+ 					    struct dma_buf *dma_buf);
+@@ -107,7 +104,5 @@ struct drm_gem_object *
+ exynos_drm_gem_prime_import_sg_table(struct drm_device *dev,
+ 				     struct dma_buf_attachment *attach,
+ 				     struct sg_table *sgt);
+-int exynos_drm_gem_prime_mmap(struct drm_gem_object *obj,
+-			      struct vm_area_struct *vma);
+ 
+ #endif
 -- 
 2.31.1
 
