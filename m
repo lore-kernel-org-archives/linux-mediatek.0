@@ -2,113 +2,102 @@ Return-Path: <SRS0=WlSZ=LD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41000C48BCD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6AA8C48BD1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 14:14:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1786C613AE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:31:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1786C613AE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id B0BE061364
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 14:14:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B0BE061364
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yDmHcbauPyacGFQJzaj1paX4iJkW4T4jI1BMTt+wYRQ=; b=mC/+mA5Z1cgKCR
-	rRETQTnURitUgEq0g/R0dIUDS+icMj8mKdTxgjWnDZ/dN2woWXrIOwia6eBouzzLVJ/NZvbdBd2U6
-	Gxam0mojvn+59t1XY9IoF0/8y6agOMgpeyUel6OCrZNWD3TPuE6ji0lxaciWy2YKQFKx3S//pwCg0
-	8jCTOfA+m+moHKypOnedvZBVcHMjGZZfjRFH4Ie2DR5weNIfGwxGafK73252x+W8aWgsEsm9BwfFx
-	1/tR4spEx22n6ye758zNR166UmitLrfNJ8CKOe7hiM+FZWz6G5LTpay6+d4OXgspwJWvCJYfOBDfx
-	uKUux7xmlWyJbJAyWu9w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=0x2aoK6i48WhC2Ry6tW0sOvZNl2OfSsOBFoW3xtO9pE=; b=Jk4nu2zMxFtG3EfN9uOrHMzhRW
+	gu/acbiqemiTRO1pjXLfkS1EpxoxOSWv1jbBJT7+q/ZbSvoSHwO5uS4tZgyUtdCe4VGcce95biUuU
+	Jz+WeQ4jqu6AuRMaEmJX6aB/ylWPfieLCr4WXelhjBoIVV1KhxZD7wwWDTH6AsqRlNGdS0NAfwZke
+	TZG40ImdNNAHI6OJT4RcOXig/tJyiRXVNwgGHlD8CSCGLZWMFAOrWOETciuBe6DMkDNIEd0c6OFNW
+	WcLy/EdqxhbOzOvL0s3v0fq9SvPsUEUamhD3CHd8CUneJcK8Cw/7fJvaLUdYYKN6STqQIE3vqA2Ea
+	C93MzKJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqwQo-00DL6u-Qu; Wed, 09 Jun 2021 11:31:34 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1lqyxz-00EEr9-Sq; Wed, 09 Jun 2021 14:13:59 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqwFw-00DHIZ-SX; Wed, 09 Jun 2021 11:20:25 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 70A741FD4E;
- Wed,  9 Jun 2021 11:20:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237619; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uHgjG881Tzc6TF1wm3lJNykWl3nzYgQpZTifsGlExSU=;
- b=hgqBLcoJY2hRbV6/3Hrf2WYuynMUd9lzWYUR+DdXlNfTZli8hzGqhtU3QmtTRRAqV6fS8M
- wDJdF1FkdaZY1ArXcHL5VCIPMV0PRYELkHJOZDDwCl2CsYPEyMKRwPJ3ZZ5Ic5fk30uGGW
- rCSXuXdk8BiSRqjnpkEqOsqJ8E3bvFY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237619;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uHgjG881Tzc6TF1wm3lJNykWl3nzYgQpZTifsGlExSU=;
- b=eGgR9KjAmEUGAXpoJk3a/G6GTIkV9mSVYZLHZAU/NHGNMndowHzlD+P9aLIVMDFR5MbUPm
- KIutgtmlNht3fHCg==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id CDACA118DD;
- Wed,  9 Jun 2021 11:20:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237619; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uHgjG881Tzc6TF1wm3lJNykWl3nzYgQpZTifsGlExSU=;
- b=hgqBLcoJY2hRbV6/3Hrf2WYuynMUd9lzWYUR+DdXlNfTZli8hzGqhtU3QmtTRRAqV6fS8M
- wDJdF1FkdaZY1ArXcHL5VCIPMV0PRYELkHJOZDDwCl2CsYPEyMKRwPJ3ZZ5Ic5fk30uGGW
- rCSXuXdk8BiSRqjnpkEqOsqJ8E3bvFY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237619;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uHgjG881Tzc6TF1wm3lJNykWl3nzYgQpZTifsGlExSU=;
- b=eGgR9KjAmEUGAXpoJk3a/G6GTIkV9mSVYZLHZAU/NHGNMndowHzlD+P9aLIVMDFR5MbUPm
- KIutgtmlNht3fHCg==
-Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id 0G1AMfKjwGBTUgAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:18 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: daniel@ffwll.ch, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- l.stach@pengutronix.de, linux+etnaviv@armlinux.org.uk,
- christian.gmeiner@gmail.com, inki.dae@samsung.com, jy0922.shim@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, chunkuang.hu@kernel.org,
- p.zabel@pengutronix.de, matthias.bgg@gmail.com, robdclark@gmail.com,
- sean@poorly.run, airlied@redhat.com, kraxel@redhat.com, hjc@rock-chips.com,
- heiko@sntech.de, oleksandr_andrushchenko@epam.com, sumit.semwal@linaro.org,
- christian.koenig@amd.com
-Cc: dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- xen-devel@lists.xenproject.org, linux-media@vger.kernel.org,
- linaro-mm-sig@lists.linaro.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 8/9] drm/rockchip: Implement mmap as GEM object function
-Date: Wed,  9 Jun 2021 13:20:11 +0200
-Message-Id: <20210609112012.10019-9-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210609112012.10019-1-tzimmermann@suse.de>
-References: <20210609112012.10019-1-tzimmermann@suse.de>
+ id 1lqyPR-00E2KJ-Ob; Wed, 09 Jun 2021 13:38:19 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id
+ m41-20020a05600c3b29b02901b9e5d74f02so1135012wms.3; 
+ Wed, 09 Jun 2021 06:38:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=2XtC26dDQI+8z2NBND3LcVHi35tPI4TG6eO9es29Zac=;
+ b=DzJMNm+3h04RwqPbHWExMNYCF+kaN1b1pLrOfQW7uU+gGHoukXnx3AUoHcpShlEZO0
+ G71QT3Yq2vT78oEWlHeQbmVZbe6WM94LtTSdjT/VxIglyPKyK3Q2T/JDNndT0yPXJsLv
+ dzSJJGkGwPqQfbRaTULkHwERsRxu0yYuZnTzhu1Xntt4qzZgrVQnNR77xZGHBK9l9stF
+ BXbE4iv+o0YLeRS2xXM1E2//e2UMHJyrgFdOtBoiyUlO/bQ62I9kCR/NdZq1THpFdIzK
+ 9DCO2qzA06o/FOLDmZ7BKKEoefE45EM+fOjGHTirVfQMUhogaiE+NoMOAtVlA0BO8b+B
+ FG7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=2XtC26dDQI+8z2NBND3LcVHi35tPI4TG6eO9es29Zac=;
+ b=P0zdh65u9dQu0SuNeGsesEYpFYietqmpB1coTu2fN12j3MnZnX/JrDbC57sElBzaTs
+ l/vx5kyi0Ha4cyjj3hfdYK4Ci7GwNzyFPoQYg2yxbmBLzDto9OUXBJkSqLP0YjNQ1QnJ
+ 9L+glDT8nzySCqDtmoBMrQbWPRQqzkWkDzqLxAc5VzAGR1WCemNLG1BNCW6DBlwGfTze
+ xNi7XSYFend/ZNAmOrjg6djYe9zjl+CGrg9eR4+3fKd0eksppbMpoTIYeAxo8p94v1W0
+ znBCdSB3HR2gWr8Kdx/TcDU6DLJ5sTnUuGCU1pSa6C8ckDiD9+Yzy8dU4M21cZXs0zX5
+ iepw==
+X-Gm-Message-State: AOAM531fyUh/bE6VMFkQE8dvPJZ5kBT1YSi1Tuz09Jh3r4V7OR2itSn5
+ +0vj2clbgpl5XRZ3nqM5Bmc=
+X-Google-Smtp-Source: ABdhPJwRn7xOH9cpkumSJykpQHFyX0W4qhaLI33hiASlySCZeUqCvFm4zsH9ez6+Ei9TmMDVCfoy+Q==
+X-Received: by 2002:a05:600c:190f:: with SMTP id
+ j15mr10147185wmq.4.1623245895818; 
+ Wed, 09 Jun 2021 06:38:15 -0700 (PDT)
+Received: from ziggy.stardust (81.172.61.185.dyn.user.ono.com. [81.172.61.185])
+ by smtp.gmail.com with ESMTPSA id u12sm2793979wrr.40.2021.06.09.06.38.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Jun 2021 06:38:15 -0700 (PDT)
+Subject: Re: [PATCH v5 05/16] media: mtk-jpeg: Use pm_runtime_resume_and_get
+ for PM get_sync
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
+ youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
+ chao.hao@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
+ eizan@chromium.org, acourbot@chromium.org, Xia Jiang <xia.jiang@mediatek.com>
+References: <20210410091128.31823-1-yong.wu@mediatek.com>
+ <20210410091128.31823-6-yong.wu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <82aea4aa-0007-369d-9c0d-db0077471b80@gmail.com>
+Date: Wed, 9 Jun 2021 15:38:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
+In-Reply-To: <20210410091128.31823-6-yong.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_042021_139436_230724DB 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20210609_063817_885438_2208F8C1 
+X-CRM114-Status: GOOD (  17.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,169 +114,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Moving the driver-specific mmap code into a GEM object function allows
-for using DRM helpers for various mmap callbacks.
 
-The respective rockchip functions are being removed. The file_operations
-structure fops is now being created by the helper macro
-DEFINE_DRM_GEM_FOPS().
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
----
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c   | 13 +-----
- drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c |  3 +-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c   | 44 +++++--------------
- drivers/gpu/drm/rockchip/rockchip_drm_gem.h   |  7 ---
- 4 files changed, 15 insertions(+), 52 deletions(-)
+On 10/04/2021 11:11, Yong Wu wrote:
+> pm_runtime_get_sync will increment pm usage counter even it failed.
+> This patch use pm_runtime_resume_and_get instead of pm_runtime_get
+> to keep usage counter balanced.
+> 
+> CC: Xia Jiang <xia.jiang@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index b730b8d5d949..2e3ab573a817 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -208,16 +208,7 @@ static void rockchip_drm_unbind(struct device *dev)
- 	drm_dev_put(drm_dev);
- }
- 
--static const struct file_operations rockchip_drm_driver_fops = {
--	.owner = THIS_MODULE,
--	.open = drm_open,
--	.mmap = rockchip_gem_mmap,
--	.poll = drm_poll,
--	.read = drm_read,
--	.unlocked_ioctl = drm_ioctl,
--	.compat_ioctl = drm_compat_ioctl,
--	.release = drm_release,
--};
-+DEFINE_DRM_GEM_FOPS(rockchip_drm_driver_fops);
- 
- static const struct drm_driver rockchip_drm_driver = {
- 	.driver_features	= DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
-@@ -226,7 +217,7 @@ static const struct drm_driver rockchip_drm_driver = {
- 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
- 	.gem_prime_import_sg_table	= rockchip_gem_prime_import_sg_table,
--	.gem_prime_mmap		= rockchip_gem_mmap_buf,
-+	.gem_prime_mmap		= drm_gem_prime_mmap,
- 	.fops			= &rockchip_drm_driver_fops,
- 	.name	= DRIVER_NAME,
- 	.desc	= DRIVER_DESC,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-index 2fdc455c4ad7..d8418dd39d0e 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_fbdev.c
-@@ -7,6 +7,7 @@
- #include <drm/drm.h>
- #include <drm/drm_fb_helper.h>
- #include <drm/drm_fourcc.h>
-+#include <drm/drm_prime.h>
- #include <drm/drm_probe_helper.h>
- 
- #include "rockchip_drm_drv.h"
-@@ -24,7 +25,7 @@ static int rockchip_fbdev_mmap(struct fb_info *info,
- 	struct drm_fb_helper *helper = info->par;
- 	struct rockchip_drm_private *private = to_drm_private(helper);
- 
--	return rockchip_gem_mmap_buf(private->fbdev_bo, vma);
-+	return drm_gem_prime_mmap(private->fbdev_bo, vma);
- }
- 
- static const struct fb_ops rockchip_drm_fbdev_ops = {
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 7971f57436dd..63eb73b624aa 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -240,12 +240,22 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	int ret;
- 	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
- 
-+	/*
-+	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
-+	 * whole buffer from the start.
-+	 */
-+	vma->vm_pgoff = 0;
-+
- 	/*
- 	 * We allocated a struct page table for rk_obj, so clear
- 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
- 	 */
-+	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
- 	vma->vm_flags &= ~VM_PFNMAP;
- 
-+	vma->vm_page_prot = pgprot_writecombine(vm_get_page_prot(vma->vm_flags));
-+	vma->vm_page_prot = pgprot_decrypted(vma->vm_page_prot);
-+
- 	if (rk_obj->pages)
- 		ret = rockchip_drm_gem_object_mmap_iommu(obj, vma);
- 	else
-@@ -257,39 +267,6 @@ static int rockchip_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	return ret;
- }
- 
--int rockchip_gem_mmap_buf(struct drm_gem_object *obj,
--			  struct vm_area_struct *vma)
--{
--	int ret;
--
--	ret = drm_gem_mmap_obj(obj, obj->size, vma);
--	if (ret)
--		return ret;
--
--	return rockchip_drm_gem_object_mmap(obj, vma);
--}
--
--/* drm driver mmap file operations */
--int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma)
--{
--	struct drm_gem_object *obj;
--	int ret;
--
--	ret = drm_gem_mmap(filp, vma);
--	if (ret)
--		return ret;
--
--	/*
--	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
--	 * whole buffer from the start.
--	 */
--	vma->vm_pgoff = 0;
--
--	obj = vma->vm_private_data;
--
--	return rockchip_drm_gem_object_mmap(obj, vma);
--}
--
- static void rockchip_gem_release_object(struct rockchip_gem_object *rk_obj)
- {
- 	drm_gem_object_release(&rk_obj->base);
-@@ -301,6 +278,7 @@ static const struct drm_gem_object_funcs rockchip_gem_object_funcs = {
- 	.get_sg_table = rockchip_gem_prime_get_sg_table,
- 	.vmap = rockchip_gem_prime_vmap,
- 	.vunmap	= rockchip_gem_prime_vunmap,
-+	.mmap = rockchip_drm_gem_object_mmap,
- 	.vm_ops = &drm_gem_cma_vm_ops,
- };
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-index 5a70a56cd406..47c1861eece0 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.h
-@@ -34,13 +34,6 @@ rockchip_gem_prime_import_sg_table(struct drm_device *dev,
- int rockchip_gem_prime_vmap(struct drm_gem_object *obj, struct dma_buf_map *map);
- void rockchip_gem_prime_vunmap(struct drm_gem_object *obj, struct dma_buf_map *map);
- 
--/* drm driver mmap file operations */
--int rockchip_gem_mmap(struct file *filp, struct vm_area_struct *vma);
--
--/* mmap a gem object to userspace. */
--int rockchip_gem_mmap_buf(struct drm_gem_object *obj,
--			  struct vm_area_struct *vma);
--
- struct rockchip_gem_object *
- 	rockchip_gem_create_object(struct drm_device *drm, unsigned int size,
- 				   bool alloc_kmap);
--- 
-2.31.1
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 
+> ---
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> index 88a23bce569d..a89c7b206eef 100644
+> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+> @@ -920,7 +920,7 @@ static void mtk_jpeg_enc_device_run(void *priv)
+>  	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
+>  	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+>  
+> -	ret = pm_runtime_get_sync(jpeg->dev);
+> +	ret = pm_runtime_resume_and_get(jpeg->dev);
+>  	if (ret < 0)
+>  		goto enc_end;
+>  
+> @@ -973,7 +973,7 @@ static void mtk_jpeg_dec_device_run(void *priv)
+>  		return;
+>  	}
+>  
+> -	ret = pm_runtime_get_sync(jpeg->dev);
+> +	ret = pm_runtime_resume_and_get(jpeg->dev);
+>  	if (ret < 0)
+>  		goto dec_end;
+>  
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
