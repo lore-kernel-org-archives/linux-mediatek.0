@@ -2,94 +2,99 @@ Return-Path: <SRS0=WlSZ=LD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E593C48BCF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7E61C48BCD
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:35:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C84B9611BD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:23:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C84B9611BD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7A01E608FE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 10:35:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A01E608FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ODyj9HyRZSvZ3mnE0nQtedOWF0cfKKjJtb7JjkIRfNM=; b=bwBMxnNu2j5zl6
-	5JKJefnOyGO8drw7v2Zwqp0xC3+nin4Fbx1p3bHOKMyvy6hQ/foBPhb8ROrfFsQgui5ZAUWHY4Lka
-	Pn0V2EH3kV/uh6dBLBr2CsX+eigVUATApYBOevKfDuLMT1Y5OGNnMMQGOsuT/eWtM08JDtO2U079z
-	cZG3a9ftUsjG0JlGmPcVfWCklV6D2cBZ+pIByffI6YeVoiKCIZ7MZN3Wsux8nXoyrWdWuVkA4e64H
-	2MD9dxUpe6oce7c778jrb4kLro35+N3lc0yZunc6nw0WfFU9tGuUaBoODGRtq7Lhk62dC/UqKSzI3
-	d0CIeU5Wqc//wN3oOpNw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=toIHK00/csNj7g23tGD3m9Wf4psr99OGQbpoFlzh2w4=; b=nGDNg1GcyQSZp0v/kM/MaYD1TI
+	G/tpbxWvKerplp8rEbYyfIKxnn9xAplIpi8h8dQFfi4zF5WQTkIPBUez9P8QgNlIQbjZ6FyaNBBrY
+	2sP7U+rZ4GptUgmPi5zmlkwxeQerDPBituZiO36SGnwhDCbW/JficcLvgNj66+Qm/C3kF5qUnfCzI
+	5nwZpV+1Pscq8vaBx98yTWv2Nm/MPZ16AYAvp0MFW8MS+h7RrpXkPLlVnvPRh9ykjuZQOqkxBwBxM
+	VwbJTa9yh+T8Be9GVl/hPFRVNoAs/oXitfKIgZvGBul0HhYT+RKysiGijw0Tl/EJFEcxTilWffsux
+	8C21zFjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqvMW-00CyJb-UM; Wed, 09 Jun 2021 10:23:05 +0000
-Received: from mail-il1-f177.google.com ([209.85.166.177])
+	id 1lqvY5-00D2Jx-62; Wed, 09 Jun 2021 10:35:01 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqvMS-00CyII-SA
- for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 10:23:02 +0000
-Received: by mail-il1-f177.google.com with SMTP id h16so12147497ila.6
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 03:23:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=t6UzJhB8g25TMzOtGb3r8/gh9ASR2geRTCyrguQiy0w=;
- b=GJET2NWNYXS+LFAAxUpFrmk9Zs7bAnwHE3iuLB/rW1YsDSh9m8c4wKe+w0WDgnF6h1
- L0P0t98uOT2QI8Eu6XEGTuekKwVpnefqz68t3F6ymbfd+Woiao0MnygGP9Gf33kpDqcr
- dC9RsRwfgledY4JWR/EWy/EEAoptSenxW2M8s=
+ id 1lqvVs-00D1Js-0v; Wed, 09 Jun 2021 10:32:45 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id d184so3727415wmd.0;
+ Wed, 09 Jun 2021 03:32:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=P4cgH8oFymIFjZTH3CHg2wo7SV8NvJbv1pufBgRVFXk=;
+ b=fJrCJoyOKHZjU+dTpb3gNSifhKoIxDOiat0mP189Biw6SHXXSHnkSbHA0/aafJSl59
+ 9w5U0oafwcr+uR9MeWt7CiPuNdVYiH0I85nNmjWKlUiu64KDZ6PSfOEACtBR5r7XQoBN
+ nBmZH3sP6AbX8wMgehYY9ouM433woTDi/X3mdV4AaEHtB2fbg1h6KUDJbbd79Z4uw4oS
+ bu8h2khsp1Efg3G8nBk8OBv7+EnSyD16CgsQnzqENZDLFv/dY9ZcbxRi/ptpPWktuSu4
+ sVrISSUR4qtLtMXiNT1QqTrOqz+Iy29Kf/h7FNPToi/GUDxOP9B5Pn3ZDko6TeNr2WXT
+ ZYhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=t6UzJhB8g25TMzOtGb3r8/gh9ASR2geRTCyrguQiy0w=;
- b=CTkqRGOaMULH1evU+apdwAuBShLqzNZ2pVDsQqLyT5WORd4vx2MZ553vJpblwrG5yC
- zUsXuARqnw1uAQs0Nt1ANEsPpZHwdWzCUpZFkc//e+XF4znvCCQHPwwCZQf61oosK9o1
- Pbw03pfM0fvkN5+geQxQXvQzqb0UAeG8ThosvCWUZhza/G8IAp8J+SQdHyeUKJhYfLOp
- bx0AnnidmrkqU0/qXGuDV1dOWhCKjgswV5CvPA2Pe3Ph/5YRId5Mbfp6yJDJMP8PnNhL
- upaVKwdj6O+AJvwj4JzBO/Lee6G2G2pZ7pq9VgY+2Q/aZkEh8i5QUZnvKtro80MMMxu0
- vWPg==
-X-Gm-Message-State: AOAM531sP6yAXr2zR/lJyzoGHhQduBR0OIahA7N5KBDa1d8CIYUSCE2i
- E5OzoWZL3T+MVN+BR2dryaG9t4Lrsd4A4A==
-X-Google-Smtp-Source: ABdhPJwzHot/hkZj9z9SM2ZNjkROAFvkLUHkgo9YzvwmdxeM2iS9GnnLUK45+cM91pDNHfCh1PvAzw==
-X-Received: by 2002:a05:6602:2344:: with SMTP id
- r4mr22753425iot.69.1623234119116; 
- Wed, 09 Jun 2021 03:21:59 -0700 (PDT)
-Received: from mail-il1-f170.google.com (mail-il1-f170.google.com.
- [209.85.166.170])
- by smtp.gmail.com with ESMTPSA id t21sm1232184ioj.10.2021.06.09.03.21.58
- for <linux-mediatek@lists.infradead.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=P4cgH8oFymIFjZTH3CHg2wo7SV8NvJbv1pufBgRVFXk=;
+ b=TK1VjzsMbAuG95satL3o8UFjA3+d0R3Z8N2VTs/9R5HWPjLFVqE4KHL75Tqb6WKQvC
+ bXJ+2xnIVbsyKXrWQbYlbAgNO9iyKlzShoaM96989jn9mbOikn+J0qofQfNIoY8eowmy
+ V9QtoULI3XrXPSm01EwItVCKFOeyJQh4fV+RZ2tZNtD+s+xJjR9YK4wBdIgr82mvlGE+
+ ysTgroQH0DRdkiG0MxZNRNfniQcEPXipO5TU5HSvQuxWXuXFJF53ovmdsWoeyRd6vW5C
+ TKg+RE/RERx7bNBUqQLAoj6BEc+vzWknPnaM3syZ16Lz5k3vIL5wvfPwUoVJHm/sjJj9
+ aofQ==
+X-Gm-Message-State: AOAM532tRzyUQVXU8Gt6owmbvivBYA1H+/vKllIkY47SyP0jglfmJXje
+ TSd79VNaFV8QtKv3Ir3U1+k=
+X-Google-Smtp-Source: ABdhPJzOGsdifqwK0g5kUKqGwEkkGQ19ZrnAjS9qtb3yoDxuCUA0eZInD75LQ43k8MwVMcPRw/d9Zw==
+X-Received: by 2002:a1c:9a84:: with SMTP id
+ c126mr26723738wme.160.1623234761358; 
+ Wed, 09 Jun 2021 03:32:41 -0700 (PDT)
+Received: from ziggy.stardust (81.172.61.185.dyn.user.ono.com. [81.172.61.185])
+ by smtp.gmail.com with ESMTPSA id e17sm26176307wre.79.2021.06.09.03.32.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Jun 2021 03:21:58 -0700 (PDT)
-Received: by mail-il1-f170.google.com with SMTP id i17so24808618ilj.11
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 03:21:58 -0700 (PDT)
-X-Received: by 2002:a92:d312:: with SMTP id x18mr22776588ila.90.1623234117697; 
- Wed, 09 Jun 2021 03:21:57 -0700 (PDT)
+ Wed, 09 Jun 2021 03:32:40 -0700 (PDT)
+Subject: Re: [PATCH v4 1/3] thermal: mediatek: Relocate driver to mediatek
+ folder
+To: Ben Tseng <ben.tseng@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
+Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, hsinyi@chromium.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Michael Kao <michael.kao@mediatek.com>
+References: <20210603081806.21154-1-ben.tseng@mediatek.com>
+ <20210603081806.21154-2-ben.tseng@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <1157f945-f0c8-5ac6-1512-71adc72b514d@gmail.com>
+Date: Wed, 9 Jun 2021 12:32:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
-References: <20210517173314.140912-1-gene.chen.richtek@gmail.com>
- <20210517173314.140912-9-gene.chen.richtek@gmail.com>
- <CAC=S1niBX4cL7EaROvG9NKSrnFFqCj+EPAZx0KASNTcF9F6E0Q@mail.gmail.com>
-In-Reply-To: <CAC=S1niBX4cL7EaROvG9NKSrnFFqCj+EPAZx0KASNTcF9F6E0Q@mail.gmail.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 9 Jun 2021 18:21:21 +0800
-X-Gmail-Original-Message-ID: <CAC=S1njdq2jbjxzAp6tG50T5o7kt_RCSEZRaBEKdcraPHRe3dw@mail.gmail.com>
-Message-ID: <CAC=S1njdq2jbjxzAp6tG50T5o7kt_RCSEZRaBEKdcraPHRe3dw@mail.gmail.com>
-Subject: Re: [PATCH v8 08/10] mfd: mt6360: Fix flow which is used to check ic
- exist
-To: Gene Chen <gene.chen.richtek@gmail.com>
-Cc: lee.jones@linaro.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com, 
- shufan_lee@richtek.com, cy_huang@richtek.com
+In-Reply-To: <20210603081806.21154-2-ben.tseng@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_032300_937451_731EA375 
-X-CRM114-Status: GOOD (  24.12  )
+X-CRM114-CacheID: sfid-20210609_033244_127560_6A1528BA 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,94 +111,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 9, 2021 at 6:02 PM Fei Shao <fshao@chromium.org> wrote:
->
-> On Tue, May 18, 2021 at 1:36 AM Gene Chen <gene.chen.richtek@gmail.com> wrote:
-> >
-> > From: Gene Chen <gene_chen@richtek.com>
-> >
-> > Fix flow which is used to check ic exist.
-> >
-> > Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> > Acked-for-MFD-by: Lee Jones <lee.jones@linaro.org>
-> > ---
-> >  drivers/mfd/mt6360-core.c | 32 +++++++++++++++++++++-----------
-> >  1 file changed, 21 insertions(+), 11 deletions(-)
-> >
-> > diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-> > index 50a170065a98..cdd99770f94a 100644
-> > --- a/drivers/mfd/mt6360-core.c
-> > +++ b/drivers/mfd/mt6360-core.c
-> > @@ -293,6 +293,25 @@ static const struct mfd_cell mt6360_devs[] = {
-> >                     NULL, 0, 0, "mediatek,mt6360-tcpc"),
-> >  };
-> >
-> > +static int mt6360_check_vendor_info(struct mt6360_ddata *ddata)
-> > +{
-> > +       u32 info;
-> > +       int ret;
-> > +
-> > +       ret = regmap_read(ddata->regmap, MT6360_PMU_DEV_INFO, &info);
-> > +       if (ret < 0)
->
-> A dev_err() to indicate the read info error? (it used to be there)
-
-Oops sorry I didn't realize that the patches are applied. Will send
-another one for the minor fixes.
 
 
->
-> > +               return ret;
-> > +
-> > +       if ((info & CHIP_VEN_MASK) != CHIP_VEN_MT6360) {
-> > +               dev_err(ddata->dev, "Device not supported\n");
-> > +               return -ENODEV;
-> > +       }
-> > +
-> > +       ddata->chip_rev = info & CHIP_REV_MASK;
-> > +
-> > +       return 0;
-> > +}
-> > +
-> >  static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
-> >         MT6360_PMU_SLAVEID,
-> >         MT6360_PMIC_SLAVEID,
-> > @@ -303,7 +322,6 @@ static const unsigned short mt6360_slave_addr[MT6360_SLAVE_MAX] = {
-> >  static int mt6360_probe(struct i2c_client *client)
-> >  {
-> >         struct mt6360_ddata *ddata;
-> > -       unsigned int reg_data;
-> >         int i, ret;
-> >
-> >         ddata = devm_kzalloc(&client->dev, sizeof(*ddata), GFP_KERNEL);
-> > @@ -319,17 +337,9 @@ static int mt6360_probe(struct i2c_client *client)
-> >                 return PTR_ERR(ddata->regmap);
-> >         }
-> >
-> > -       ret = regmap_read(ddata->regmap, MT6360_PMU_DEV_INFO, &reg_data);
-> > -       if (ret) {
-> > -               dev_err(&client->dev, "Device not found\n");
-> > +       ret = mt6360_check_vendor_info(ddata);
-> > +       if (ret)
-> >                 return ret;
-> > -       }
-> > -
-> > -       ddata->chip_rev = reg_data & CHIP_REV_MASK;
-> > -       if (ddata->chip_rev != CHIP_VEN_MT6360) {
-> > -               dev_err(&client->dev, "Device not supported\n");
-> > -               return -ENODEV;
-> > -       }
-> >
-> >         ret = devm_regmap_add_irq_chip(&client->dev, ddata->regmap, client->irq,
-> >                                        0, 0, &mt6360_irq_chip,
-> > --
-> > 2.25.1
-> >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+On 03/06/2021 10:18, Ben Tseng wrote:
+> From: Michael Kao <michael.kao@mediatek.com>
+> 
+> Add Mediatek proprietary folder to upstream more thermal zone and cooler
+> drivers. Relocate the original thermal controller driver to it and rename
+> as soc_temp.c to show its purpose more clearly.
+> 
+> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
+> ---
+>  drivers/thermal/Kconfig             |   14 +-
+>  drivers/thermal/Makefile            |    2 +-
+>  drivers/thermal/mediatek/Kconfig    |   23 +
+>  drivers/thermal/mediatek/Makefile   |    1 +
+>  drivers/thermal/mediatek/soc_temp.c | 1127 +++++++++++++++++++++++++++++++++++
+>  drivers/thermal/mtk_thermal.c       | 1127 -----------------------------------
+
+I suppose that there is no functional change. Then better put that in the commit
+message or use "git mv" to get a better readable diff.
+
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
