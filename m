@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44622C48BD1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BE6EC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:29:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 186106128A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:29:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 186106128A
+	by mail.kernel.org (Postfix) with ESMTPS id 6DF286128A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 11:29:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DF286128A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9b/ZOBsMFtnLSXVPBRfF73Fq0Gq7L6V/DLMs1+Gb14k=; b=yWPZRAQPjl2vsM
-	EPTJNPJNdZ9d9H2VJ+hkKeeOTg1Jcxmp2klFsiUoqm8zayyGkVji1mGO66kFoMRM+iJPpM7p2L2uX
-	AqrnODzt2ssl1tT2fusamXecBTQHpoWtwYRUAaWQ2TrDc0pEVOvM5UtK58bnh6Po0IHPNB8jAuLnI
-	4HjCmgqxtOYWry0egUtPOK4nqBF8Fr9GweKYcM6WigyX537Rk8E9kqdB/CIQvrY6zbftEM+EGtc40
-	DpU3BcZjuijmLtmMVX9f1nNDfdxkphhNNkS1WGRv/kv0PcAIuRMyGWjKITaxU6EZ79ZYDXA0Gu7f2
-	ypvh4kGTrxDyRyvosqDQ==;
+	List-Owner; bh=UeBRx8XD7bQWktXGqYuqMGrojiV35SXAKTMWqL6C2J4=; b=EoqIPl+0lV4ORY
+	EiHqVGQ7QjBzf3BqvzPnk21iILP+E9OSnWgEbpt5nWAzhvDlnbdHKH1/DSP+xymr9MN1hgBa5yck9
+	CCgFzKI3hHoL15wRFQtOZGyCMLzMCq6C+EtatdFbRNTLxo9shTBEyxv9hmqsUT/ECRJaLUSXK5jJH
+	Xb/x7x0dYOPP7lprqVJzz6AygMn9lZmXjyyShy4wMg6lNHw3H+ykZNGlWicD2WBnW3OI0CzhLIxWh
+	suQvoZ0NIYHEhTazPzlC41vKayDZap/SJFNPQYtClKmkwyb+UpxQdC1bHP7lg/QEhZuGlVqUn8Q+g
+	5b5TQsvf8ZXRCkeSQ5Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqwOy-00DKPc-Ec; Wed, 09 Jun 2021 11:29:40 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1lqwP2-00DKRB-Ow; Wed, 09 Jun 2021 11:29:44 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqwFv-00DHGs-Gc; Wed, 09 Jun 2021 11:20:22 +0000
+ id 1lqwFv-00DHFg-86; Wed, 09 Jun 2021 11:20:22 +0000
 Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
  (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 1EEE2219DE;
- Wed,  9 Jun 2021 11:20:18 +0000 (UTC)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 1FBE71FD58;
+ Wed,  9 Jun 2021 11:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237618; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237616; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IRUa/mvyWAtsipKLLVmWT7cpX13C9nTjn7UKOIQtpok=;
- b=Qqr+wxRHDfcailoytXEx2oS2lcd/30JrzOhkpalX061VmVUSrdLwmnhSN0MtbG7SF3Lswx
- sQnQ8cPp3QB4PF/l8crVWeS09RmiLZkfgwuhMYtcPRnrUahhNxSrscRyW90luzSwv3G0CF
- 7A0GUIi66rqUX0OkNYcpsZIV/8EwyQU=
+ bh=nnv/82/uEe+mIz6yhpeOdfG//15FkUncLx/LmWsKeN8=;
+ b=FuIyGzxcA7GgNKkvTlwpnn6kjwOF34sI2vGp7Cshyopr3F8vwD4i52PwKGUHIYsWqS5U13
+ D7xTpv6S1PAsit/lhLrB9haGxyyzGExwfBReiFLAzgaBGpncqwmbRtwoIJ/4Zjtm0lTzJ7
+ d4W9FXLh0tYIObTE6Cpc0Aj7HBwIrDs=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237618;
+ s=susede2_ed25519; t=1623237616;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IRUa/mvyWAtsipKLLVmWT7cpX13C9nTjn7UKOIQtpok=;
- b=EYZQ1fZ4GiUePdUKfwvu3c7uANqrcaYHVRwXY+xLr2rs0MZBPp9J/4r/U+gB27YIyBmPIF
- iyt7y2F2VM4VApDw==
+ bh=nnv/82/uEe+mIz6yhpeOdfG//15FkUncLx/LmWsKeN8=;
+ b=8PrudITCijMRShhn2OTYjJVPnd+uzcFDtfGBeTDtOp2He5PDfG4ssHt0tTauxHtTDvehbv
+ ACaqSeiE6s48xMCQ==
 Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id 77538118DD;
- Wed,  9 Jun 2021 11:20:17 +0000 (UTC)
+ by imap.suse.de (Postfix) with ESMTP id 7A51C11A98;
+ Wed,  9 Jun 2021 11:20:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1623237618; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1623237616; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IRUa/mvyWAtsipKLLVmWT7cpX13C9nTjn7UKOIQtpok=;
- b=Qqr+wxRHDfcailoytXEx2oS2lcd/30JrzOhkpalX061VmVUSrdLwmnhSN0MtbG7SF3Lswx
- sQnQ8cPp3QB4PF/l8crVWeS09RmiLZkfgwuhMYtcPRnrUahhNxSrscRyW90luzSwv3G0CF
- 7A0GUIi66rqUX0OkNYcpsZIV/8EwyQU=
+ bh=nnv/82/uEe+mIz6yhpeOdfG//15FkUncLx/LmWsKeN8=;
+ b=FuIyGzxcA7GgNKkvTlwpnn6kjwOF34sI2vGp7Cshyopr3F8vwD4i52PwKGUHIYsWqS5U13
+ D7xTpv6S1PAsit/lhLrB9haGxyyzGExwfBReiFLAzgaBGpncqwmbRtwoIJ/4Zjtm0lTzJ7
+ d4W9FXLh0tYIObTE6Cpc0Aj7HBwIrDs=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1623237618;
+ s=susede2_ed25519; t=1623237616;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IRUa/mvyWAtsipKLLVmWT7cpX13C9nTjn7UKOIQtpok=;
- b=EYZQ1fZ4GiUePdUKfwvu3c7uANqrcaYHVRwXY+xLr2rs0MZBPp9J/4r/U+gB27YIyBmPIF
- iyt7y2F2VM4VApDw==
+ bh=nnv/82/uEe+mIz6yhpeOdfG//15FkUncLx/LmWsKeN8=;
+ b=8PrudITCijMRShhn2OTYjJVPnd+uzcFDtfGBeTDtOp2He5PDfG4ssHt0tTauxHtTDvehbv
+ ACaqSeiE6s48xMCQ==
 Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id 4KVTHPGjwGBTUgAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:17 +0000
+ id SMj/HO+jwGBTUgAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Wed, 09 Jun 2021 11:20:15 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
  l.stach@pengutronix.de, linux+etnaviv@armlinux.org.uk,
@@ -99,16 +99,16 @@ Cc: dri-devel@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
  spice-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
  xen-devel@lists.xenproject.org, linux-media@vger.kernel.org,
  linaro-mm-sig@lists.linaro.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH 6/9] drm/vgem: Implement mmap as GEM object function
-Date: Wed,  9 Jun 2021 13:20:09 +0200
-Message-Id: <20210609112012.10019-7-tzimmermann@suse.de>
+Subject: [PATCH 3/9] drm/mediatek: Implement mmap as GEM object function
+Date: Wed,  9 Jun 2021 13:20:06 +0200
+Message-Id: <20210609112012.10019-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210609112012.10019-1-tzimmermann@suse.de>
 References: <20210609112012.10019-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_042019_756736_1A62F9FF 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20210609_042019_667344_864A31C2 
+X-CRM114-Status: GOOD (  17.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,97 +128,140 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 Moving the driver-specific mmap code into a GEM object function allows
 for using DRM helpers for various mmap callbacks.
 
-The respective vgem functions are being removed. The file_operations
-structure vgem_driver_fops is now being created by the helper macro
+The respective mediatek functions are being removed. The file_operations
+structure fops is now being created by the helper macro
 DEFINE_DRM_GEM_FOPS().
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/vgem/vgem_drv.c | 46 ++++-----------------------------
- 1 file changed, 5 insertions(+), 41 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 44 +++++++-------------------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h |  3 --
+ 3 files changed, 14 insertions(+), 46 deletions(-)
 
-diff --git a/drivers/gpu/drm/vgem/vgem_drv.c b/drivers/gpu/drm/vgem/vgem_drv.c
-index bf38a7e319d1..df634aa52638 100644
---- a/drivers/gpu/drm/vgem/vgem_drv.c
-+++ b/drivers/gpu/drm/vgem/vgem_drv.c
-@@ -239,32 +239,7 @@ static struct drm_ioctl_desc vgem_ioctls[] = {
- 	DRM_IOCTL_DEF_DRV(VGEM_FENCE_SIGNAL, vgem_fence_signal_ioctl, DRM_RENDER_ALLOW),
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b46bdb8985da..bbfefb29c211 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -300,16 +300,7 @@ static void mtk_drm_kms_deinit(struct drm_device *drm)
+ 	component_unbind_all(drm->dev, drm);
+ }
+ 
+-static const struct file_operations mtk_drm_fops = {
+-	.owner = THIS_MODULE,
+-	.open = drm_open,
+-	.release = drm_release,
+-	.unlocked_ioctl = drm_ioctl,
+-	.mmap = mtk_drm_gem_mmap,
+-	.poll = drm_poll,
+-	.read = drm_read,
+-	.compat_ioctl = drm_compat_ioctl,
+-};
++DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
+ 
+ /*
+  * We need to override this because the device used to import the memory is
+@@ -332,7 +323,7 @@ static const struct drm_driver mtk_drm_driver = {
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ 	.gem_prime_import = mtk_drm_gem_prime_import,
+ 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
+-	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
++	.gem_prime_mmap = drm_gem_prime_mmap,
+ 	.fops = &mtk_drm_fops,
+ 
+ 	.name = DRIVER_NAME,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 280ea0d5e840..d0544962cfc1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -14,11 +14,14 @@
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_gem.h"
+ 
++static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
++
+ static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
+ 	.free = mtk_drm_gem_free_object,
+ 	.get_sg_table = mtk_gem_prime_get_sg_table,
+ 	.vmap = mtk_drm_gem_prime_vmap,
+ 	.vunmap = mtk_drm_gem_prime_vunmap,
++	.mmap = mtk_drm_gem_object_mmap,
+ 	.vm_ops = &drm_gem_cma_vm_ops,
  };
  
--static int vgem_mmap(struct file *filp, struct vm_area_struct *vma)
+@@ -145,11 +148,19 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
+ 	struct mtk_drm_private *priv = obj->dev->dev_private;
+ 
++	/*
++	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
++	 * whole buffer from the start.
++	 */
++	vma->vm_pgoff = 0;
++
+ 	/*
+ 	 * dma_alloc_attrs() allocated a struct page table for mtk_gem, so clear
+ 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
+ 	 */
+-	vma->vm_flags &= ~VM_PFNMAP;
++	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
++	vma->vm_page_prot = pgprot_writecombine(vm_get_page_prot(vma->vm_flags));
++	vma->vm_page_prot = pgprot_decrypted(vma->vm_page_prot);
+ 
+ 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
+ 			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
+@@ -159,37 +170,6 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	return ret;
+ }
+ 
+-int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj, struct vm_area_struct *vma)
 -{
--	unsigned long flags = vma->vm_flags;
+-	int ret;
+-
+-	ret = drm_gem_mmap_obj(obj, obj->size, vma);
+-	if (ret)
+-		return ret;
+-
+-	return mtk_drm_gem_object_mmap(obj, vma);
+-}
+-
+-int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+-{
+-	struct drm_gem_object *obj;
 -	int ret;
 -
 -	ret = drm_gem_mmap(filp, vma);
 -	if (ret)
 -		return ret;
 -
--	/* Keep the WC mmaping set by drm_gem_mmap() but our pages
--	 * are ordinary and not special.
+-	obj = vma->vm_private_data;
+-
+-	/*
+-	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
+-	 * whole buffer from the start.
 -	 */
--	vma->vm_flags = flags | VM_DONTEXPAND | VM_DONTDUMP;
--	return 0;
+-	vma->vm_pgoff = 0;
+-
+-	return mtk_drm_gem_object_mmap(obj, vma);
 -}
 -
--static const struct file_operations vgem_driver_fops = {
--	.owner		= THIS_MODULE,
--	.open		= drm_open,
--	.mmap		= vgem_mmap,
--	.poll		= drm_poll,
--	.read		= drm_read,
--	.unlocked_ioctl = drm_ioctl,
--	.compat_ioctl	= drm_compat_ioctl,
--	.release	= drm_release,
--};
-+DEFINE_DRM_GEM_FOPS(vgem_driver_fops);
- 
- static struct page **vgem_pin_pages(struct drm_vgem_gem_object *bo)
- {
-@@ -387,24 +362,12 @@ static void vgem_prime_vunmap(struct drm_gem_object *obj, struct dma_buf_map *ma
- 	vgem_unpin_pages(bo);
- }
- 
--static int vgem_prime_mmap(struct drm_gem_object *obj,
--			   struct vm_area_struct *vma)
-+static int vgem_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma)
- {
--	int ret;
--
--	if (obj->size < vma->vm_end - vma->vm_start)
--		return -EINVAL;
--
--	if (!obj->filp)
--		return -ENODEV;
--
--	ret = call_mmap(obj->filp, vma);
--	if (ret)
--		return ret;
--
- 	vma_set_file(vma, obj->filp);
- 	vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
- 	vma->vm_page_prot = pgprot_writecombine(vm_get_page_prot(vma->vm_flags));
-+	vma->vm_page_prot = pgprot_decrypted(vma->vm_page_prot);
- 
- 	return 0;
- }
-@@ -416,6 +379,7 @@ static const struct drm_gem_object_funcs vgem_gem_object_funcs = {
- 	.get_sg_table = vgem_prime_get_sg_table,
- 	.vmap = vgem_prime_vmap,
- 	.vunmap = vgem_prime_vunmap,
-+	.mmap = vgem_prime_mmap,
- 	.vm_ops = &vgem_gem_vm_ops,
- };
- 
-@@ -433,7 +397,7 @@ static const struct drm_driver vgem_driver = {
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import = vgem_prime_import,
- 	.gem_prime_import_sg_table = vgem_prime_import_sg_table,
--	.gem_prime_mmap = vgem_prime_mmap,
-+	.gem_prime_mmap = drm_gem_prime_mmap,
- 
- 	.name	= DRIVER_NAME,
- 	.desc	= DRIVER_DESC,
+ /*
+  * Allocate a sg_table for this GEM object.
+  * Note: Both the table's contents, and the sg_table itself must be freed by
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+index 6da5ccb4b933..9a359a06cb73 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+@@ -39,9 +39,6 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
+ 					   bool alloc_kmap);
+ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
+ 			    struct drm_mode_create_dumb *args);
+-int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+-int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj,
+-			 struct vm_area_struct *vma);
+ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
+ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 			struct dma_buf_attachment *attach, struct sg_table *sg);
 -- 
 2.31.1
 
