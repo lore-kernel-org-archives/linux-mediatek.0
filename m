@@ -4,84 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46725C47095
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 04:51:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BBA8C47095
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 06:29:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 039DE61287
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 04:51:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 039DE61287
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 51A4A610E6
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 06:29:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 51A4A610E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bJXg7tDuOfJYLFvK4V70YH6cUJY8yudkvF2vici8iY0=; b=nzmTQs8Y+OuUTq
-	9jaPECl5yNC4sohe6VgW4elDlgUCLfvtzWGeqRYy1nQ/LrahemjLAux2RIAJj/jsjvibt02UnKNt8
-	cYxP3TtmGKNtNdxuFVLzhdij1u8NSnd15hUr1bfbjH9zXbUmh4TRRqav/a0qen51CSPYlbYwQ0ppR
-	+EfFlm0qnFK2VGuehsmTcwqG7ravKMxb3a7TvCSafl3Wlp5Wte/R18M9stxncXYIzyEuH/FpBFbJh
-	FQLKQEwaw3dT+Dnd/eqwVGpxBCcAcg+dinXPio+eClw9dH9yW3TkXp9Isz3RFBlURAU5+ANtM2+kA
-	KD/f0qam0O88d9YbCCqQ==;
+	List-Owner; bh=EtMao+uB4xXxc5mIgtIm0O2NOib9gCebMBy6gWTI8tY=; b=IQ7hm+aQ7sROmc
+	mULFzOWLF7lWFtSvz5ukmQ1AlkP9mi9hQJC/4bApedPqarLFvmVu+uqZMAA4Ar9iMTBmEZ3W15sh3
+	pQIQYH9GhNg0Mm+blzn9a7ArWX3XvtD6GIOTo0n7Wkb5xySIXfQrdItMG2HPOWAYCXotIt8m66GhX
+	lAHmhyzoTFSLFalNkjeQx/nZdLYcjTy2usXtLLLj0WssfmpheqOUEBFwXUZ5Ez2PiaJxavL0CJ1vX
+	J4TJe0yqPvPSQTmkKq6c7FKzeTQBTnqUHW3arnpH3Ah7wGLRyVDKL1McFeaHSMhbOee6iLukZJ+Pe
+	rk9WvoNOb4sOUjtzI6gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lqqBH-00BhWI-6O; Wed, 09 Jun 2021 04:51:07 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1lqri8-00Bumg-Mk; Wed, 09 Jun 2021 06:29:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lqqBC-00Bh5d-5n
- for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 04:51:05 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id m7so4539292pfa.10
- for <linux-mediatek@lists.infradead.org>; Tue, 08 Jun 2021 21:49:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iYok65sFwc6WEDcag9xh0Hf6j7gDgq0CQ1KsKHhgvjo=;
- b=IiKc5ndp1M+CHWA+wdg+354lmwNXghTKdybF8tq0RZvCL5COD05uofXz0TjPvIqrWD
- 2Zd0UlSBCO8bso5l3lOkrxIqxpFUkoAtZW9Vodvtph2lfU6bzvov7tO/ZuOj6l+ULzzt
- HjWDkmXNfdxxOHBFRr+e80s0Z+H6fkvwtboE4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iYok65sFwc6WEDcag9xh0Hf6j7gDgq0CQ1KsKHhgvjo=;
- b=DZrVpz9TUS1IeJoYejRuiWvqk3oNBDVVycb9zEIP5NQ6w59HkOMVG7s+uX26FMKkwB
- zorOoS3OvqDsDQFO0S2XBluQrUNloFqNXECNA1bNpOMB1Flr706fOeuVx3Qg8JFoFl5m
- i/mFuAjK7oXieFkin0Gyqiw56A8WtwMz78+SAutrkq+o4HALTHMIHtAIP563YHkv28Ps
- pIZU5zZBW0aX+o5UVe2Ol88RzI5xbkXQrpWdCwja9ysYvdgfY5TM2sKX8dfLsHPq+dw3
- z0cti8zCWmOE5elg1xfBjb867m5Bs83PjzL0lGMcT9L+ONHmKPZDrNoZfqwthXAaz4KI
- jQzg==
-X-Gm-Message-State: AOAM530iN5fD/kPDahEitsKVGxyqnLuILzsiUROr0rqfGh9n2hi7FzZn
- 9FtUOo8pMaqB2dz9ksSzsy5YtotPzpms7g==
-X-Google-Smtp-Source: ABdhPJzu5e6c64mB7KD2PoLwdt2R2dL9vCR7lWw3zZp8Cn9JbjCwrAk24pXd1HLgFvQL4XbwwXG88A==
-X-Received: by 2002:a62:dd83:0:b029:2e8:e511:c32f with SMTP id
- w125-20020a62dd830000b02902e8e511c32fmr3335696pff.49.1623214139561; 
- Tue, 08 Jun 2021 21:48:59 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:83f0:56eb:3535:6bd5])
- by smtp.gmail.com with ESMTPSA id h18sm12865110pgl.87.2021.06.08.21.48.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Jun 2021 21:48:58 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, maoguang.meng@mediatek.com,
- yong.wu@mediatek.com, tfiga@chromium.org
-Subject: [PATCH v2] arm64: dts: mt8183: add jpeg enc node for mt8183
-Date: Wed,  9 Jun 2021 12:48:54 +0800
-Message-Id: <20210609044854.393452-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.rc1.229.g3e70b5a671-goog
+ id 1lqri4-00Bule-WB
+ for linux-mediatek@lists.infradead.org; Wed, 09 Jun 2021 06:29:07 +0000
+X-UUID: 659a59f632884abfb45af1f1f31d0bc6-20210608
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=5eP6KFv6b/ds9dw4AL6jTZm+mfdbFq1bS5m7brOrfwY=; 
+ b=Pcu2fChJtEdl5wSTFeOO9KmXXroDRsgrNg3JsclD/1ldWEd4q7dFC1Umcee3sT/cOGbHTWpBSMUuRBfIgGcXMTEvQcCysjJHCEgMD6TNTrHsg0StTlOGvUlMiNgXYuHfPRVo5Iw4tZNKlmlpNRElw/zbcjEzahfbityl3dSo3Jk=;
+X-UUID: 659a59f632884abfb45af1f1f31d0bc6-20210608
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1088474618; Tue, 08 Jun 2021 23:25:37 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 8 Jun 2021 23:15:35 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 9 Jun 2021 14:15:34 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 9 Jun 2021 14:15:33 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: connac: fix the maximum interval schedule scan can
+ support
+Date: Wed, 9 Jun 2021 14:15:32 +0800
+Message-ID: <1623219333-11122-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210608_215102_244523_DE7A43AD 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210608_232905_874782_062F6E41 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,45 +91,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Maoguang Meng <maoguang.meng@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-Add jpeg encoder device tree node.
+Maximum interval (in seconds) for schedule scan plan supported by
+the offload firmware can be U16_MAX.
 
-Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v2: rebase to latest
-v1: https://patchwork.kernel.org/project/linux-media/patch/20200914094012.5817-1-maoguang.meng@mediatek.com/
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7615/init.c     | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt76_connac.h     | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c     | 2 +-
+ 4 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c5e822b6b77a3..fffe0c52909ce 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1329,6 +1329,17 @@ larb4: larb@17010000 {
- 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
- 		};
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+index 36c9e527bb9a..95d16cd17b53 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
+@@ -383,7 +383,7 @@ mt7615_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->reg_notifier = mt7615_regd_notifier;
  
-+		venc_jpg: venc_jpg@17030000 {
-+			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
-+			reg = <0 0x17030000 0 0x1000>;
-+			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
-+			iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
-+				 <&iommu M4U_PORT_JPGENC_BSDMA>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-+			clocks = <&vencsys CLK_VENC_JPGENC>;
-+			clock-names = "jpgenc";
-+		};
-+
- 		ipu_conn: syscon@19000000 {
- 			compatible = "mediatek,mt8183-ipu_conn", "syscon";
- 			reg = <0 0x19000000 0 0x1000>;
+ 	wiphy->max_sched_scan_plan_interval =
+-		MT76_CONNAC_MAX_SCHED_SCAN_INTERVAL;
++		MT76_CONNAC_MAX_TIME_SCHED_SCAN_INTERVAL;
+ 	wiphy->max_sched_scan_ie_len = IEEE80211_MAX_DATA_LEN;
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_sched_scan_ssids = MT76_CONNAC_MAX_SCHED_SCAN_SSID;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index 0dfa09902ffd..9b3f8d22f17e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -7,7 +7,8 @@
+ #include "mt76.h"
+ 
+ #define MT76_CONNAC_SCAN_IE_LEN			600
+-#define MT76_CONNAC_MAX_SCHED_SCAN_INTERVAL	10
++#define MT76_CONNAC_MAX_NUM_SCHED_SCAN_INTERVAL	 10
++#define MT76_CONNAC_MAX_TIME_SCHED_SCAN_INTERVAL U16_MAX
+ #define MT76_CONNAC_MAX_SCHED_SCAN_SSID		10
+ #define MT76_CONNAC_MAX_SCAN_MATCH		16
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+index 258b262c7c23..3dc5da116a5f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
+@@ -771,7 +771,7 @@ struct mt76_connac_sched_scan_req {
+ 	u8 intervals_num;
+ 	u8 scan_func; /* MT7663: BIT(0) eable random mac address */
+ 	struct mt76_connac_mcu_scan_channel channels[64];
+-	__le16 intervals[MT76_CONNAC_MAX_SCHED_SCAN_INTERVAL];
++	__le16 intervals[MT76_CONNAC_MAX_NUM_SCHED_SCAN_INTERVAL];
+ 	union {
+ 		struct {
+ 			u8 random_mac[ETH_ALEN];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 021abd75e522..2caa5096a419 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -68,7 +68,7 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->max_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
+ 	wiphy->max_scan_ssids = 4;
+ 	wiphy->max_sched_scan_plan_interval =
+-		MT76_CONNAC_MAX_SCHED_SCAN_INTERVAL;
++		MT76_CONNAC_MAX_TIME_SCHED_SCAN_INTERVAL;
+ 	wiphy->max_sched_scan_ie_len = IEEE80211_MAX_DATA_LEN;
+ 	wiphy->max_sched_scan_ssids = MT76_CONNAC_MAX_SCHED_SCAN_SSID;
+ 	wiphy->max_match_sets = MT76_CONNAC_MAX_SCAN_MATCH;
 -- 
-2.32.0.rc1.229.g3e70b5a671-goog
-
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
