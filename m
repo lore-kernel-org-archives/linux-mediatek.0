@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3941C48BCD
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 17:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6076DC48BCF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 17:47:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEDCF61376
-	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 17:14:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEDCF61376
+	by mail.kernel.org (Postfix) with ESMTPS id 34224613CB
+	for <linux-mediatek@archiver.kernel.org>; Wed,  9 Jun 2021 17:47:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34224613CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6IKZdZUkLjO9I9ERtHbCeUXmbEj73wRv4C3mAY6+MY=; b=CuWZVf9gqgxY3M
-	I098A/3KsirJbr2cjWGEaknZMfz73okuT3e12d2pfUtQA9ZumbhUJTQAR8NGlwTRDdzrVk+CYKxq7
-	kVT4QdnZrR9ypkK4BEdDaDviNry/pTMT3DYwk3S8wvvXLMa2GK6tpaVn/rJFnb8DCAehXNEGSm5Cr
-	N33KrGJX6e/gYcIw4AarNdGbAYNf2BeixwaHop1Ockw58B4sXtbWglhdl5HcaCaJi60gfrbFbIP+c
-	hFAAfi5JX4MsOuPdkixWdRbjUNnPqE+jdM7M9PwdWJBsLHX4LEN4CwLm9VeZhKfw3Qukmkt7n5e46
-	9EfoSldnC3PPYtzQxIvQ==;
+	List-Owner; bh=1iIBetxKJxFKm8Y8jsGACaM3k4adqP9/0oHqH26S0FI=; b=JJahcNTSqg8fiE
+	Zp+gZ8+B3x5AbILI5JrPLmGaHUF0jQ4WowRreQrNaCk3xpgV4ArhcWEN0GOK59kgd8offzpDSbS+M
+	pkGh/+pKQD4P+UZfyT9jqE4bInN6DAsm1mG4ZeQZT1A9APyO48MnztM90/FI6LgJV6dwV0wetrbEX
+	+LIZmXuhNy9HKpniYHO7xF4PoaCrjLc1t21AtdIfTmh9uvXg0DJv2Y4xvLeJ53mwexlx9JgWE5px1
+	+p09MBtqGJZxAPc9lkvceD6adIOKKWSUOLHqYSrN9dx+uaaEq4W0whKEoFxqHTGGjwgzinb5VMibb
+	aHlU+qM590MQ6kbr0Huw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lr1mM-00FE8v-Eh; Wed, 09 Jun 2021 17:14:10 +0000
-Received: from mail-ot1-f44.google.com ([209.85.210.44])
+	id 1lr2Ig-00FPGL-0d; Wed, 09 Jun 2021 17:47:34 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lr0sx-00Eqwy-PS; Wed, 09 Jun 2021 16:16:58 +0000
-Received: by mail-ot1-f44.google.com with SMTP id
- j11-20020a9d738b0000b02903ea3c02ded8so10849737otk.5; 
- Wed, 09 Jun 2021 09:16:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=ZGT8NJquSdH6KtVZ4l+/GumWl0Nge0pj1zfQnG0ePmI=;
- b=qhr9A4RGXzYK2gv2B4Nu0cktG7NX/t2c9csqo/6+b3cnRiBkp5wsLa8ykIVQ7W6qRQ
- oOAsR9bypejQKKDEWXBsGhBfn1mdZ77lg5sbiY6z+HqPQFisLTJcn3cRjO8LXOtBNyYO
- SI8+AIqo5fbNs9ruK8AJOpHGzwu1/NepSxDU/O9q3T1HNxHqGhbIfrk9WsgERHkgkxrg
- +qWHIdzrOnZvLFCYJIkKxTTGKHDsEg3uMkszo033+EQCln/ni4ypC23RA9PUxofGDavC
- ELB7Z6mBB7HaTXGfzlmQvjjSq0XXrL3U8uzHCzSeNUlg+O15+Kii7+oSZneYdymkbOku
- U6sQ==
-X-Gm-Message-State: AOAM532dwf2XzES/EqYWI/dijwWVw5f+g/WPBTd+dewdFSORoI30psmT
- qt6ZNg+IrkoWu1glfpWysA==
-X-Google-Smtp-Source: ABdhPJwx20JacrP/HkOOmyVQLhIJvaerf0sB1n7gTBKsltZSgssSDfRDiaAlkWgtpw/1AbjRIWSNlA==
-X-Received: by 2002:a9d:65cf:: with SMTP id z15mr181376oth.250.1623255414065; 
- Wed, 09 Jun 2021 09:16:54 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id t15sm54602oie.14.2021.06.09.09.16.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Jun 2021 09:16:53 -0700 (PDT)
-Received: (nullmailer pid 3763294 invoked by uid 1000);
- Wed, 09 Jun 2021 16:16:43 -0000
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: maoguang.meng@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, yong.wu@mediatek.com
-In-Reply-To: <20210609104053.617751-1-hsinyi@chromium.org>
-References: <20210609104053.617751-1-hsinyi@chromium.org>
-Subject: Re: [PATCH] dt-bindings: mediatek: convert mtk jpeg decoder/encoder
- to yaml
-Date: Wed, 09 Jun 2021 11:16:43 -0500
-Message-Id: <1623255403.610773.3763293.nullmailer@robh.at.kernel.org>
+ id 1lr1yQ-00FI8O-Aj; Wed, 09 Jun 2021 17:26:39 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E00A60FF0;
+ Wed,  9 Jun 2021 17:26:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623259597;
+ bh=FpoCLV9AugRc/VDev7vPQc6huezBsa4q91oamgMCi5c=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NLOK9mUD+/TKJsoyTz8L0eBkVX43pGvWLc5FpY6jTYXm9zQH9xDeb8eVBxYr7141D
+ oOihLl1UDsYd8WcVKymY7cYRTAlm3IBdGHGVhpv44a485uzGP1mU2iQkVxmZiW6Yrr
+ CYpWet4OJByewcGJb/e+Cvsm73g/rtgPybRmUxF8PG+VXeTf6OD/vvfSdsYhqew/B4
+ C0t3li6a730oPWMd8/cLa8kLP3IXqdVjxFEe9oxvSmIAfWpXEc7rcRa8D36ghB0lqZ
+ Z36gt8FMHm2fGxJbUpKIFxdjCg1lUZChHzTVUM7Jf/XD/gFw/osviQV2csVEl4jxOF
+ 21rQWy31RN3pg==
+Date: Wed, 9 Jun 2021 10:26:30 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Can Guo <cang@codeaurora.org>
+Cc: asutoshd@codeaurora.org, nguyenb@codeaurora.org, hongwus@codeaurora.org,
+ ziqichen@codeaurora.org, linux-scsi@vger.kernel.org,
+ kernel-team@android.com, Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stanley Chu <stanley.chu@mediatek.com>,
+ Bean Huo <beanhuo@micron.com>, Jaegeuk Kim <jaegeuk@kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v3] scsi: ufs: Fix a possible use before initialization
+ case
+Message-ID: <YMD5xoeiE7+wrCEK@archlinux-ax161>
+References: <1623227044-22635-1-git-send-email-cang@codeaurora.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1623227044-22635-1-git-send-email-cang@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_091655_892809_9BE3D814 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20210609_102638_435847_69265E62 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,56 +83,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 09 Jun 2021 18:40:54 +0800, Hsin-Yi Wang wrote:
-> Convert mediatek jpeg decoder and encoder bindings to yaml.
+On Wed, Jun 09, 2021 at 01:24:00AM -0700, Can Guo wrote:
+> In ufshcd_exec_dev_cmd(), if error happens before lrpb is initialized,
+> then we should bail out instead of letting trace record the error.
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Fixes: a45f937110fa6 ("scsi: ufs: Optimize host lock on transfer requests send/compl paths")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reviewed-by: Stanley Chu <stanley.chu@mediatek.com>
+> Signed-off-by: Can Guo <cang@codeaurora.org>
+
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
+
 > ---
-> mediatek,larb in the original file will be removed after this series[1]
-> [1] https://patchwork.kernel.org/project/linux-mediatek/patch/20210410091128.31823-2-yong.wu@mediatek.com/
-> ---
->  .../bindings/media/mediatek-jpeg-decoder.yaml | 73 +++++++++++++++++++
->  .../bindings/media/mediatek-jpeg-encoder.yaml | 65 +++++++++++++++++
->  2 files changed, 138 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
 > 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml:19:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
-./Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml:21:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
-./Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml:23:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
-
-dtschema/dtc warnings/errors:
-Error: Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.example.dts:23.25-26 syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:380: Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1416: dt_binding_check] Error 2
-\ndoc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1489789
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+> Change since V2:
+> - Removed unused goto out_put_tag
+> 
+> Change since V1:
+> - Use codeaurora mail in Signed-off-by tag
+> 
+>  drivers/scsi/ufs/ufshcd.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+> index fe1b5f4..25fe18a 100644
+> --- a/drivers/scsi/ufs/ufshcd.c
+> +++ b/drivers/scsi/ufs/ufshcd.c
+> @@ -2980,7 +2980,7 @@ static int ufshcd_exec_dev_cmd(struct ufs_hba *hba,
+>  	WARN_ON(lrbp->cmd);
+>  	err = ufshcd_compose_dev_cmd(hba, lrbp, cmd_type, tag);
+>  	if (unlikely(err))
+> -		goto out_put_tag;
+> +		goto out;
+>  
+>  	hba->dev_cmd.complete = &wait;
+>  
+> @@ -2990,11 +2990,10 @@ static int ufshcd_exec_dev_cmd(struct ufs_hba *hba,
+>  
+>  	ufshcd_send_command(hba, tag);
+>  	err = ufshcd_wait_for_dev_cmd(hba, lrbp, timeout);
+> -out:
+>  	ufshcd_add_query_upiu_trace(hba, err ? UFS_QUERY_ERR : UFS_QUERY_COMP,
+>  				    (struct utp_upiu_req *)lrbp->ucd_rsp_ptr);
+>  
+> -out_put_tag:
+> +out:
+>  	blk_put_request(req);
+>  out_unlock:
+>  	up_read(&hba->clk_scaling_lock);
+> -- 
+> Qualcomm Innovation Center, Inc. is a member of Code Aurora Forum, a Linux Foundation Collaborative Project.
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
