@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E291C48BCF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 03:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41F9AC48BCF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 03:35:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF3C76136D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 03:32:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF3C76136D
+	by mail.kernel.org (Postfix) with ESMTPS id 091206136D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 03:35:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 091206136D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,50 +23,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+lQdyXLU21zt50iTSQrlPDFljYrEwdI4Osk4C/FXKJE=; b=eMB15pyEI2AEq+
-	/U6dldn192J+kBR5dFD6zf1H+n4JLcHBSWfI9Lr9offpHHyyddlCTLtHmLiQUOz2jraQ2WqL1aIwu
-	aAxBOr2Z2Hq4FqT45/r5FcsYZl72STBm54uAAJPIYn0rI7ar/mI/jFrdf51AMzGeqEtKGkNPcQmEa
-	K4FqZlveeNepdReEs3YVi9deGUqyWuY5UPKlAdQCiYBpjDvlhn1CG/mwiKtAIYTLAjQf6olB4NUfC
-	mvGx1O4rBJqcm3d9sTkbAQ4Qc/XBi6U2+dT5cueWnmFbRvftBUaW9AoTpJe0rypbG4GxNu3UUb8ln
-	GgZ81Mms4+TegidaZRXA==;
+	List-Owner; bh=KzMQtJvalUAqUbW1Ouo5ayNZXTDX1eBw9On/AVhDU14=; b=frrbxtJaKXeH+B
+	Y+eW9y13qVEfd1sX8smET3RYtcFzDnC0tGrNEAj1lVdfNHPBg3SpvdYgsXjxmhYaXxfl4KtRhls6H
+	3EWgqkqm/VKhQCB1r7mjnhuf/i/VAghTW3L+2M3fj5VhZpeXhk76GVQovU/IvYgGjwBSPJeRdHLQ3
+	LA2j0zyZhbn4VUSQFSBqqG0sskw57PUBaOXMhmwoDa1rrtre44JLI+4+7DNLZj5F/hjPDM2wt9+Ud
+	TxPkKFQDQDSZmA/xAtLG2jy2QWqMi5qf5j5yM5oSZKZHr23Ga1cdFzwcaWW9Y68hGkgBDIbWW3Eh+
+	aJX5dp1WU8P2/2tgCzLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrBQy-00GeOf-02; Thu, 10 Jun 2021 03:32:44 +0000
-Received: from mail-pg1-f171.google.com ([209.85.215.171])
+	id 1lrBRk-00GeWt-1u; Thu, 10 Jun 2021 03:33:32 +0000
+Received: from mail-pf1-f180.google.com ([209.85.210.180])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrBQs-00GeNz-2k
- for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 03:32:39 +0000
-Received: by mail-pg1-f171.google.com with SMTP id y11so13296739pgp.11
- for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 20:32:37 -0700 (PDT)
+ id 1lrBRi-00GeW6-16
+ for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 03:33:31 +0000
+Received: by mail-pf1-f180.google.com with SMTP id g6so451580pfq.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 09 Jun 2021 20:33:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7oIVo7Xzbw9TVkKcvpifrqSvzyU32kz1bTpH+C80Wns=;
- b=S6u4QNuWHqphKFRnJIadQXQdMQsCC7NxnhI9qTnr6ftqvS7l4znkBCbGb2pMZJiMIR
- rQaw+QzRZnzNuzyZjx6/9d47myK85kBWR1swpwXRCheQQ0Y13A6Ynh4zIYub4GWLGUpe
- 2QTve5fmuvSwsQR2MdT86gN7Rg6pbFM8m6KMU=
+ :cc; bh=xUW1QYivvyjjAgnt50OixHHdXR+qpa5RaoXkpg+0Z1M=;
+ b=Ckk34yOiLznSSdYmHluvlvw2OSugkHIAcSI40L06ddrl1WVeu9lXyJKAySZr7I/6lx
+ L836XZ32h5BAbCgwQE46EsuxXnQxKGyeSqwD00a0X8Jl9oP+RTO3Mi8P+NnpJGUSpbSN
+ 7UB4hKaHAkMX/VHG9tiyztZzgqJ5TWFOxM0D4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7oIVo7Xzbw9TVkKcvpifrqSvzyU32kz1bTpH+C80Wns=;
- b=PfB8xaHzkTBwFg3y95ekNP1XK54QVRDTPGKzRgf1I5QNI+pqPR20bb6QKmJ6obyl2V
- SduMuc2Icta2X3Ev4KN5PMBBQMA8UE1UCLCDVeEa/CvDIFdXA1NdfEti22jzOueoB+Y7
- b7xenG7e0TL1HXpR268EL73A7JriynofX5RxxF9iQfVSObP8R6JNMgKX/Y0fb9dFEYj1
- Ael1NGRWk1E+ijPrf0q0axdyMnRYb5V3eL5+BBaBi4yTYk/LJS2+Mn0TyromOQKAfZKU
- y1icZoQMsaQjDRjaqDtfHQcRxRS3PkkpEUz9vEv7s2w72dSLa7cSUMPRK85jEU4EOARW
- PuXw==
-X-Gm-Message-State: AOAM531tJM7WXwtXg3fixLdKpT/5flHT6IcNirDNDpnqKfxhWiZqhw7j
- 5VCIdMgye8vYI/1WI1jyOefzprmOKH3kRa63I064jQ==
-X-Google-Smtp-Source: ABdhPJxFOr3K6ngAtBXDCOFBaf1TZc1JxsWX46LnWiU7oVYxdsIbn1LDXznYMFDG2KjGXlDY+RA8/uwdzZBwoByfIRk=
-X-Received: by 2002:a63:234f:: with SMTP id u15mr2906536pgm.257.1623295897282; 
- Wed, 09 Jun 2021 20:31:37 -0700 (PDT)
+ bh=xUW1QYivvyjjAgnt50OixHHdXR+qpa5RaoXkpg+0Z1M=;
+ b=FdVgh6HwdfDjujx+inHZSPq8PVMMLGNHdn61pk+HbVixKQztvWP5YxB+LVT0D2gQN0
+ v5dnoYCsQ8UpCYjdt0MUhQJ/QFJ7VIF8RweKrn8O8IFmGUVJ9oU/U8MUDaYZzM0I0l4O
+ Uux4kDfZwOwM/Y3m7N7zxZrfpss7CvY76NvxOrkWvGQrsGW7i6KNvtTFPazMJyHWYWhJ
+ hqdEHLTOmV/Bh6GP3/M06kYC3QvNtlS9DOrhb5VdtHgjniBgIflXHaUvIX1+kCiItTak
+ OWI8cOC3CFnATujhRohusn28EuQgvA+V3nq66B9fU6HhMePNHMkoTn4f/y4AqZqzqiU4
+ voKw==
+X-Gm-Message-State: AOAM532wh2B5TAaLqrltZ/vbWyou7KX7XM02RKc4jmQtjPQPUlSfAPMt
+ wJKi3X9WIf3ygmdLg4kOXlENZdtmdHdw1IxKMHwlv1O7qhQ7PQ==
+X-Google-Smtp-Source: ABdhPJwe3SJDAt53Ax1wi7DIEJ7gvGIkAxJ9U/9K0Mhis4k/681JzWIKUxqMMmr9kGyLMHjJbzCsDbc5afgxvWOYbpg=
+X-Received: by 2002:a63:5d19:: with SMTP id r25mr2802205pgb.317.1623295948478; 
+ Wed, 09 Jun 2021 20:32:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210507021127.54717-1-chunfeng.yun@mediatek.com>
-In-Reply-To: <20210507021127.54717-1-chunfeng.yun@mediatek.com>
+ <20210507021127.54717-2-chunfeng.yun@mediatek.com>
+In-Reply-To: <20210507021127.54717-2-chunfeng.yun@mediatek.com>
 From: Ikjoon Jang <ikjn@chromium.org>
-Date: Thu, 10 Jun 2021 11:31:25 +0800
-Message-ID: <CAATdQgD+e6FSFfOvmuib14f1-O6w6znH5agf3gP774Qd6udCUw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/4] usb: xhci-mtk: use bitfield instead of bool
+Date: Thu, 10 Jun 2021 11:32:17 +0800
+Message-ID: <CAATdQgAr=wwbuJ=0nKKmO6Rb7qcW2BobFAb30DUsMA2s6EOxhA@mail.gmail.com>
+Subject: Re: [PATCH v3 2/4] usb: xhci-mtk: remove unnecessary setting of
+ has_ippc
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Cc: Mathias Nyman <mathias.nyman@intel.com>, 
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -77,8 +79,8 @@ Cc: Mathias Nyman <mathias.nyman@intel.com>,
  open list <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>,
  Sergei Shtylyov <sergei.shtylyov@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_203238_151829_EF6572EA 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20210609_203330_080329_EDE4881E 
+X-CRM114-Status: GOOD (  15.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,50 +99,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Fri, May 7, 2021 at 10:11 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
 >
-> Use bitfield instead of bool in struct
->
-> Refer to coding-style.rst 17) Using bool:
-> "If a structure has many true/false values, consider consolidating
-> them into a bitfield with 1 bit members, or using an appropriate
-> fixed width type, such as u8."
+> Due to @has_ippc's default value is 0, no need set it again if fail
+> to get ippc base address
 >
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
 Reviewed-and-Tested-by: Ikjoon Jang <ikjn@chromium.org>
 
 > ---
-> v3: split @has_ippc out into anather patch suggested by Greg
-> v2: add more changelog suggested by Greg
+> v3: new patch suggested by Greg
+>     fix typo suggested by Sergei
 > ---
->  drivers/usb/host/xhci-mtk.h | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/usb/host/xhci-mtk.c | 2 --
+>  1 file changed, 2 deletions(-)
 >
-> diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-> index cd3a37bb73e6..94a59b3d178f 100644
-> --- a/drivers/usb/host/xhci-mtk.h
-> +++ b/drivers/usb/host/xhci-mtk.h
-> @@ -138,17 +138,17 @@ struct xhci_hcd_mtk {
->         struct mu3h_sch_bw_info *sch_array;
->         struct list_head bw_ep_chk_list;
->         struct mu3c_ippc_regs __iomem *ippc_regs;
-> -       bool has_ippc;
->         int num_u2_ports;
->         int num_u3_ports;
->         int u3p_dis_msk;
->         struct regulator *vusb33;
->         struct regulator *vbus;
->         struct clk_bulk_data clks[BULK_CLKS_NUM];
-> -       bool lpm_support;
-> -       bool u2_lpm_disable;
-> +       unsigned int has_ippc:1;
-> +       unsigned int lpm_support:1;
-> +       unsigned int u2_lpm_disable:1;
->         /* usb remote wakeup */
-> -       bool uwk_en;
-> +       unsigned int uwk_en:1;
->         struct regmap *uwk;
->         u32 uwk_reg_base;
->         u32 uwk_vers;
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index b2058b3bc834..2548976bcf05 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -495,8 +495,6 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>                         goto put_usb2_hcd;
+>                 }
+>                 mtk->has_ippc = true;
+> -       } else {
+> -               mtk->has_ippc = false;
+>         }
+>
+>         device_init_wakeup(dev, true);
 > --
 > 2.18.0
 >
