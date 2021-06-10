@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7E5CC48BD1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 21:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF144C48BD1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 21:58:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3774613E9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 21:55:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3774613E9
+	by mail.kernel.org (Postfix) with ESMTPS id BC9C0613F1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 21:58:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC9C0613F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t6SLJU0neLio2ssgwMwyDs2u01cv4EmgaVqa2LwxkmA=; b=4ghsGz+ud6JOTT
-	43EGjVGy+TIofB4w3xYADDURuBrtU109P2Xz8wOPXSk8loRbTk/IzbQoLioi4phijZVHqDOCJIDCP
-	os/zMulPQWU42wQlZzwJ/nzDNbl+ynGxQqb0VKLUggyrXpu0s9CNLTutcj7fszBoa+5cOR4IU3Ejp
-	NKWwfTh7PnzYGlDeoUqtte2BOjJabh8QaMkrZM7z/0pJGsR/SHjolzgIVkMCCWboqz7wJQnycf/q2
-	U1sJ3/IyL3/vr2ZAEO9MmZ1fBRix/OktpCt9nFDfOpntC3BfyYnpAq1QUfRYvSBMHRqssFNC6H6uK
-	K+J3t9pznKy3zjthNSxA==;
+	List-Owner; bh=5rA/8NTtZPv1mZdOWCNpbPe4pChF+CJxoABmacQRH5w=; b=GhtpK0XxKOeq3E
+	w+QFHBe9CzwiyiQx8cgdh33/NyZGwgBE2S/h5aUjbLrYt8HKMMX6cP7XAIknsWuYSh0PO7mv11ulS
+	aEa/tsWGlp69HYiQ+vOLHRyKs9aJ+qzErlBHNMYDUAifA2Sc79ZWzHs+JgakqV2IwJHKqiGSpKF+I
+	TR/X72Fg3yrkRfc1GOCHLCh8iPme3f03DW4ZlkCfWjMaMwXwJNgEE0BmB8QHZfRuaeg7pqjVadKlA
+	d9Mt8g4+oA4w8xO1VY++aOVdD3JO0YHi36z2eucmV7ZIc0qmiBhbGNgGmmC1R4xqn48x1oTRZPCQO
+	eZlCw+GWxavZdiod5pQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrSdY-002eoR-Sq; Thu, 10 Jun 2021 21:54:52 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
+	id 1lrShI-002gdg-US; Thu, 10 Jun 2021 21:58:45 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrSV5-002aSl-2O
- for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 21:46:08 +0000
+ id 1lrSVG-002aY4-CS
+ for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 21:46:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1623361565;
+ s=mimecast20190719; t=1623361577;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EskfVdmEpVOex3IAfBnti5Wx89Q+wzN0Zpd/qsC+eCM=;
- b=U6k2oIbHtKs+UoeMbjD7y6KkZn0tPSqMb7lBw5EuAVLBQ/XjmpTObu00cDSKwbXY+hDDhv
- hSsfVd6A9wPyMkP11CPTnUNVejDzy4BuncCJzupsUEjwICMK3v09YNfYQ01WQT2r4Cy5li
- bJW2nQ6Z1LSX+CH/tUp0RbwUbJfDb+c=
-Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com
- [209.85.210.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-15-ZSU8COW6M2KzOTadU_PlrA-1; Thu, 10 Jun 2021 17:46:04 -0400
-X-MC-Unique: ZSU8COW6M2KzOTadU_PlrA-1
-Received: by mail-ot1-f72.google.com with SMTP id
- i25-20020a9d4a990000b0290304f00e3e3aso654683otf.15
- for <linux-mediatek@lists.infradead.org>; Thu, 10 Jun 2021 14:46:04 -0700 (PDT)
+ bh=70NgQXU1//Wzo0iLFWpl3KegQtCCZiFqqErbm/ywz0w=;
+ b=fF+oCEceU07g8XSAiSqhudYdj5jAckIimN/lNBODag1p9Ys7WVr8XA4f1gT4KRitL3/k0s
+ XGgoVwb3Bw4HzqTDdOy3Ns5zvYNh0BHN0PUmdc6aprqplyi1LZaOHj6bx3trOxf6JeWpQJ
+ VAK483Ou+r8wwgUvMp5VR2Yv1VV1znw=
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-424-XuoGl5QdPtWXlK_VmdPT9w-1; Thu, 10 Jun 2021 17:46:11 -0400
+X-MC-Unique: XuoGl5QdPtWXlK_VmdPT9w-1
+Received: by mail-oi1-f200.google.com with SMTP id
+ s17-20020a0568080b11b02901f6e9faaaddso1898925oij.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 10 Jun 2021 14:46:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=EskfVdmEpVOex3IAfBnti5Wx89Q+wzN0Zpd/qsC+eCM=;
- b=ZuTsVE1YkSTxV3TYQTsu1C0twUXbTC/5qKOaNQd11quYxPOXHZsVG2MKKovy+TY+6j
- hpMmKBy7DRpTso4mfrPtOcq55/xsdz+Jz71CGwlDrE/gU3N947sjaBotb8N+GlsxbfOc
- KAtgOjMOsmFAsvNqziRyw2sTp/ldihyhcj8hVKygm+uMK+A75rjLAy9+bTUvbDC9asgN
- M0qK5CISpQLk/i/JahNYR66lXf65rgwDT+8Aq1uFDPNnbGGEhvpy8drz75baC/JiPRIc
- 2PO2QEV5qb5W3W5ILwCXXl1q5XH6rJ2rdPJq4w9JijKZUBwI5lMrrmtBxUr4+oWS6q/F
- uS9A==
-X-Gm-Message-State: AOAM531msz9WV4X+zE6NubAu3q8v8RziQRhfVQZnpvPfpFW+APSrQHkG
- aXib2pkt2ENCgdh2L7WWd5+khkC0BbRVviBiB0gMecl6WUi4pbxRTt6F1zlSfjXjEH25BdTd8mK
- DM4JkZOfbG0le2aCcbeJEVRQiAxFiOIKP
-X-Received: by 2002:a4a:b2ca:: with SMTP id l10mr508319ooo.30.1623361563885;
- Thu, 10 Jun 2021 14:46:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7SVUzlSK/f1fDrHG5iNpljzriPnaeQkhfspBLGN6ijrDdm2MtUq40WVdJ5HgW0VGYiWYtFg==
-X-Received: by 2002:a4a:b2ca:: with SMTP id l10mr508277ooo.30.1623361563723;
- Thu, 10 Jun 2021 14:46:03 -0700 (PDT)
+ bh=70NgQXU1//Wzo0iLFWpl3KegQtCCZiFqqErbm/ywz0w=;
+ b=MeAlP5DDafcAsUQjdlv2hMxifnL13OVqFPTo32siC2TGvGbwXS82UVLXJPfKJIbm/O
+ QJvRrTariluRxAnVhnBzZUHhgxAqXS14tJUIy2w1aATmOnqRsbF3VkTn7hvKOXAKORT0
+ MszglWJmo4tK2xlgiRNpeGeGHyZc2XNF5Ek4ULPCe9qz9tHk5phXsTT272zmU50xzOiZ
+ 7kR7+zDMVNKDOV8KMQVrXSVgwkBl6mCtGK8oW+OFgXlWVyNuvNFIfYfx7KSmkWbR5zTN
+ Uqs58JtzVdy1lmL/0VnDFPOoSsD9LA1XEbAV+2BFMVIx+QCnr5XFGH9BjrMW2RgjskO0
+ 4UXw==
+X-Gm-Message-State: AOAM5336kRjD7rZJovTe8uHUJXBWhrBTBt6b5A23wrZfzx9+/Ed2XI0L
+ pNV6/Vddo0E1m/ETlg4eLlFe0SMr/0L6Wbm2QquWAns+wDDZyzlW9sZlUqdZKGTn1wgN8Bl9XE6
+ 9dhkwNT7jQQbiHFJePF+DZYe+ClKmbzl1
+X-Received: by 2002:a9d:554f:: with SMTP id h15mr358471oti.237.1623361570540; 
+ Thu, 10 Jun 2021 14:46:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5xdp4Jwej97Ul1cmx7ubsXWjXdzvP8bKBwCPJ0ttg8L6uH+IckI6kmbkyG1b9obIsJHKQNQ==
+X-Received: by 2002:a9d:554f:: with SMTP id h15mr358446oti.237.1623361570280; 
+ Thu, 10 Jun 2021 14:46:10 -0700 (PDT)
 Received: from localhost.localdomain.com (075-142-250-213.res.spectrum.com.
  [75.142.250.213])
- by smtp.gmail.com with ESMTPSA id i15sm881839ots.39.2021.06.10.14.45.59
+ by smtp.gmail.com with ESMTPSA id i15sm881839ots.39.2021.06.10.14.46.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Jun 2021 14:46:03 -0700 (PDT)
+ Thu, 10 Jun 2021 14:46:09 -0700 (PDT)
 From: trix@redhat.com
 To: robh+dt@kernel.org, tsbogend@alpha.franken.de, jic23@kernel.org,
  lars@metafoo.de, tomas.winkler@intel.com, arnd@arndb.de,
@@ -94,9 +94,9 @@ Cc: devicetree@vger.kernel.org, linux-mips@vger.kernel.org,
  linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com, Tom Rix <trix@redhat.com>
-Subject: [PATCH 6/7] mt76: add a space between comment char and SPDX tag
-Date: Thu, 10 Jun 2021 14:44:37 -0700
-Message-Id: <20210610214438.3161140-8-trix@redhat.com>
+Subject: [PATCH 7/7] mt76: use SPDX header file comment style
+Date: Thu, 10 Jun 2021 14:44:38 -0700
+Message-Id: <20210610214438.3161140-9-trix@redhat.com>
 X-Mailer: git-send-email 2.26.3
 In-Reply-To: <20210610214438.3161140-1-trix@redhat.com>
 References: <20210610214438.3161140-1-trix@redhat.com>
@@ -106,9 +106,8 @@ Authentication-Results: relay.mimecast.com;
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_144607_237166_91B688C0 
-X-CRM114-Status: UNSURE (   9.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210610_144618_528704_0727C58C 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,46 +126,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Tom Rix <trix@redhat.com>
 
-checkpatch expects a space between '#' and 'SPDX...'
-Add a space.
+header files should use '/* SPDX ... */
+Change from c file comment syle to header style
 
 Signed-off-by: Tom Rix <trix@redhat.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/Makefile | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/Makefile | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7921/Makefile | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7615/sdio.h     | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/testmode.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/Makefile b/drivers/net/wireless/mediatek/mt76/mt7615/Makefile
-index e8fc4a7ae9bc2..83f9861ff5226 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/Makefile
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.h b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.h
+index 05180971de841..03877d89e1520 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.h
 @@ -1,4 +1,4 @@
--#SPDX-License-Identifier: ISC
-+# SPDX-License-Identifier: ISC
- 
- obj-$(CONFIG_MT7615_COMMON) += mt7615-common.o
- obj-$(CONFIG_MT7615E) += mt7615e.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/Makefile b/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
-index 40c8061787e94..80e49244348e2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/Makefile
+-// SPDX-License-Identifier: ISC
++/* SPDX-License-Identifier: ISC */
+ /* Copyright (C) 2020 MediaTek Inc.
+  *
+  * Author: Sean Wang <sean.wang@mediatek.com>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
+index 8f8533ef9859f..397a6b5532bcc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
 @@ -1,4 +1,4 @@
--#SPDX-License-Identifier: ISC
-+# SPDX-License-Identifier: ISC
+-// SPDX-License-Identifier: ISC
++/* SPDX-License-Identifier: ISC */
+ /* Copyright (C) 2020 MediaTek Inc. */
  
- obj-$(CONFIG_MT7915E) += mt7915e.o
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-index e531666f9fb43..0ebb59966a083 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-@@ -1,4 +1,4 @@
--#SPDX-License-Identifier: ISC
-+# SPDX-License-Identifier: ISC
- 
- obj-$(CONFIG_MT7921E) += mt7921e.o
- 
+ #ifndef __MT7915_TESTMODE_H
 -- 
 2.26.3
 
