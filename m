@@ -9,101 +9,88 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4C3E3C47094
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 07:54:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70A39C47094
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 09:09:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16422613CB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 07:54:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16422613CB
+	by mail.kernel.org (Postfix) with ESMTPS id 3B1A961249
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 09:09:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B1A961249
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=HgVtHVxKEmqnl5sRQ/+34VAgOUBwM07QeQx5xV5LRa0=; b=OlDFtB+HpHsJV3aY6W1PMLieRT
-	1AJS6Y1+CMFaFHIYibNctq/RBF+6WMLcJr5VH76lt678Oqy6WgJHLH0VLJsSyBI75wJl2geJnILoE
-	L2bC8Av0RHgAR234fqf4y95miuQMZpvXEOstywas1YRI2W4Ioba80MDXt6U0AJgEEfkccEw9//zp/
-	k7utf5wO51aqpVzkmwJu20urI4pLP2ACC1UEJiNd/rXzYd8CP6N+q8ljpgnteSeWABj8uy0HEkkIr
-	YX56/O68I96rPsP0UBcmFaModfg5FpcZb+v3W4DWcdGJb34FaFtfNQNsb8UnBYdoY6U8esmrKJC8E
-	DNwHs8RQ==;
+	bh=eZ7kOvyyNOdadR2y6me5uxEB69zVDHTEMP3xbDazH18=; b=q5pqfXT4GW9bxRfyFqkBHEQPZq
+	kl6zlSY5hmfedizym4xPHJpGM/KSfgMvqyKIRm3GQE+ormCbxsfHzgLcyhlVy4FEJsgGHzfdvKH01
+	8RnHE1OoewgbnZG6ZU9RK6bxbMeA5YDpsD2ncAmlNCWV+lE7CBDVTSsSfvBWBKFTP47qc4PysrVI+
+	7j4TAP2Hby6Iq1VareBssZPhNrONLpVGAdx7v3zhrQUXIIIwzLSw+Njdd0oYI1L6tguVC5v9gyTq8
+	6bPaCPbfS7RJANRBzTRXYKQqIhmpEkn1hxVvF8Lg50Xz9A//SwTBR2Dw4mjAKUudBWQjKr1D/6bl/
+	S5RCTjkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrFVx-00HJpe-Va; Thu, 10 Jun 2021 07:54:10 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1lrGgL-0006cd-9h; Thu, 10 Jun 2021 09:08:57 +0000
+Received: from mail-wm1-f52.google.com ([209.85.128.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrFVR-00HJbC-VZ; Thu, 10 Jun 2021 07:53:39 +0000
-Received: by mail-wr1-x430.google.com with SMTP id q5so1115318wrm.1;
- Thu, 10 Jun 2021 00:53:36 -0700 (PDT)
+ id 1lrGD9-00HY6q-Cn; Thu, 10 Jun 2021 08:38:49 +0000
+Received: by mail-wm1-f52.google.com with SMTP id
+ m41-20020a05600c3b29b02901b9e5d74f02so2770965wms.3; 
+ Thu, 10 Jun 2021 01:38:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:references:from:subject:message-id:date:user-agent
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=xJS0U9ByX0NxIuJpqaNPHe7gI5LppZzf1YoFLwdpgpQ=;
- b=AtutUx5F3FjGQHEtvWof9HOeTHWeBqvhVw+QiN+Sh6cWWewDfrjuaZjOgIU8GrvZla
- 6PSpE270aJ7Btt2qATsv9ZhQy58/0GoWWD5CnAISW5h2u03IY721oe03cmG/VhveVGw/
- fIvFr3ZW60yd5JvkbVc401CsPLw/sMlHMPcEsS7+8fpbgaPGboXiVI4p2aQC0iupWWUA
- yvllp02g0KpE38Gh0/adERukIXbEQPWpkg5Hwp0/YamaLVTu8RR0KbFJ4rBVKtlUE2CD
- YXQcYwiWadJ1e0HyfnyVp6gQIJJRAngE/XVLL6ga9zNZL97Pp6Vg5oRaiPOGaMV825g7
- /9Xw==
+ bh=Vw2rEidNYSZeHFrj7gyKfEnss0oZYJ9I5iUbvOkNzhg=;
+ b=ooamT84SYgotXdYQmlxem5mrZzw1HzuUkCjt4aOlyohi6/Rm95UNTFkdQIjLulE2VV
+ aozaQKnE6Si75yQpSMmR0ssVEZK0cPJxkXhNKsqeaP3BL8ASpHmfDJaIxXT+/DZ+54iJ
+ aQy7NZ9kioLpoWTxSmhbdlRGt/T1Ds4CF+z9PKTf90jHc53Sl6FV3m/eWb+el5brKNMz
+ luw6RF0GAQ3/+JRjmJ6Jizh4HK2iWbP8p7zLGlTMpOor1ZXGxLw3MLezHPmcJWwPbbt2
+ iQgDCzRYRhk7CbBMhrZC4uoKRzddo7vYB+9pou03oWbTUyOcPE2EoVm5J//xQ92LMs+G
+ PdUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=xJS0U9ByX0NxIuJpqaNPHe7gI5LppZzf1YoFLwdpgpQ=;
- b=gwRhzYJhpm8GcjNkaGJeQJCMauGGzJBsySx0B3KYRS+tTWznBVQbWwdB1kJyjJl3Ym
- n0y/Vg48gFb9HMvyLfEAkzTzQ9+DvDpxflbkZxBoj66utNa96RilRCAUT70GzQmwzlHT
- imUC/7ZcV+igc4WWAZAPGwTDGyant1pJBsV6TdUH7sAryBiVSGdhjIAvfcqnMSkGHQ2U
- yF/41kV4R1HXaayZYJgApp3E04uBIW+3j5M15GZQ66P2MmFUM7LdhoqcP7VKlZVINtoc
- 9vE8GQkG8VBAz/EusWUh3cRoAnZ/JxZOjhjOFwUzgUvjEJjNq72os8ZH5JVegGYxzi64
- GUEw==
-X-Gm-Message-State: AOAM530A0oQ8w5+5qR/7ASvIeu0Pd7r66x+J2cEnh2nHv7pBe+LI3Yhp
- GJHcP7cEUga9YsBuygh3N7E=
-X-Google-Smtp-Source: ABdhPJyWIa0BThW8wleRBOOtD6X+dU2YcMMb96LCJzvn3Y7r3nvLUwAHQC9a6Zki2vUnentp0rRZoQ==
-X-Received: by 2002:a5d:6082:: with SMTP id w2mr3851640wrt.209.1623311615564; 
- Thu, 10 Jun 2021 00:53:35 -0700 (PDT)
+ bh=Vw2rEidNYSZeHFrj7gyKfEnss0oZYJ9I5iUbvOkNzhg=;
+ b=ZRQrrYsR6lcE6YhNYDCbkzanNLsaloEPaHOp0s1cz+m3fhQJfX/xw2ysp0GQ9fnSUw
+ SVPIj6FRGvbkR/ixX3DSTmMnta9GJv2VyiGrr0oWTfjMi1ZqD3fDvocOcslcrzUFg4aZ
+ WSbmoY8H5U3e7Ce8f9vPGyG7cQjB6D4O5R6RXAYJdp/yZOdHOGt6yHHtej61m6gU82V8
+ cUpn5h7R0pc8iGeTvTaUeR8/2Tvza/UwudXyo263XNu4gsVnsvGuh1xMCPCooOVu/MsP
+ +B1IGdr2A7Jeria4zUQ92jBD0JXl+5bNvPa0KS1VvMDDbIYwSucYM8YjZ/xP6Pba5Drx
+ mKDQ==
+X-Gm-Message-State: AOAM531yxohnP3dY/Uq0+xNxfsd1v5RsaoqL7tPvheWVpz1BaSz2sJlg
+ G7mZl3086w3EhnhhnbNUk3GPC51FrUQGtg==
+X-Google-Smtp-Source: ABdhPJzcXxE0Z1+qB1Riub+DwCapNG6b60zmCOtH7Z/t9aZnXBURBj3oDjbAhDLMIsLCcajgntaNyA==
+X-Received: by 2002:a05:600c:4114:: with SMTP id
+ j20mr14226178wmi.0.1623314265323; 
+ Thu, 10 Jun 2021 01:37:45 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id o6sm2696870wre.73.2021.06.10.00.53.33
+ by smtp.gmail.com with ESMTPSA id o18sm2648988wrx.59.2021.06.10.01.37.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Jun 2021 00:53:34 -0700 (PDT)
-To: Yong Wu <yong.wu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Evan Green <evgreen@chromium.org>,
- Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>,
- Will Deacon <will.deacon@arm.com>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com,
- Devicetree List <devicetree@vger.kernel.org>,
- lkml <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org,
- youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
- chao.hao@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
- eizan@chromium.org, Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, Irui Wang <irui.wang@mediatek.com>
-References: <20210410091128.31823-1-yong.wu@mediatek.com>
- <20210410091128.31823-14-yong.wu@mediatek.com>
- <CAJMQK-iTrQRDDm_=LNqSpvXFd431LYRxXMasJHUpN+K8rJ=Qpg@mail.gmail.com>
- <1620822547.2983.8.camel@mhfsdcap03>
+ Thu, 10 Jun 2021 01:37:44 -0700 (PDT)
+Subject: Re: [PATCH v2] dt-bindings: mediatek: convert mtk jpeg
+ decoder/encoder to yaml
+To: Hsin-Yi Wang <hsinyi@chromium.org>, Rob Herring <robh+dt@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, yong.wu@mediatek.com
+References: <20210609180130.693944-1-hsinyi@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v5 13/16] media: mtk-vcodec: Get rid of
- mtk_smi_larb_get/put
-Message-ID: <c1422242-8d8c-9592-c22d-288c503cd8b1@gmail.com>
-Date: Thu, 10 Jun 2021 09:53:33 +0200
+Message-ID: <c324de79-9a07-2f2c-e29a-dcd448da29f8@gmail.com>
+Date: Thu, 10 Jun 2021 10:37:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <1620822547.2983.8.camel@mhfsdcap03>
+In-Reply-To: <20210609180130.693944-1-hsinyi@chromium.org>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_005338_072271_799D59DF 
-X-CRM114-Status: GOOD (  21.19  )
+X-CRM114-CacheID: sfid-20210610_013847_511794_1006BE8F 
+X-CRM114-Status: GOOD (  23.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,77 +107,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Yong,
+Hi Hsin-Yi,
 
-On 12/05/2021 14:29, Yong Wu wrote:
-> On Wed, 2021-05-12 at 17:20 +0800, Hsin-Yi Wang wrote:
->> On Sat, Apr 10, 2021 at 5:14 PM Yong Wu <yong.wu@mediatek.com> wrote:
->>>
->>> MediaTek IOMMU has already added the device_link between the consumer
->>> and smi-larb device. If the vcodec device call the pm_runtime_get_sync,
->>> the smi-larb's pm_runtime_get_sync also be called automatically.
->>>
->>> CC: Tiffany Lin <tiffany.lin@mediatek.com>
->>> CC: Irui Wang <irui.wang@mediatek.com>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>> Reviewed-by: Evan Green <evgreen@chromium.org>
->>> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
->>> ---
->>>  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 ++-------------
->>>  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
->>>  .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
->>>  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 46 ++-----------------
->>>  4 files changed, 10 insertions(+), 77 deletions(-)
+On 09/06/2021 20:01, Hsin-Yi Wang wrote:
+> Convert mediatek jpeg decoder and encoder bindings to yaml.
 > 
-> [...]
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+> v2: fix dt_binding_check errors
+> ---
+>  .../bindings/media/mediatek-jpeg-decoder.txt  | 38 ----------
+>  .../bindings/media/mediatek-jpeg-decoder.yaml | 76 +++++++++++++++++++
+>  .../bindings/media/mediatek-jpeg-encoder.txt  | 35 ---------
+>  .../bindings/media/mediatek-jpeg-encoder.yaml | 68 +++++++++++++++++
+>  4 files changed, 144 insertions(+), 73 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
 > 
->>> @@ -108,13 +80,6 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
->>>                 }
->>>         }
->>>
->>> -       ret = mtk_smi_larb_get(pm->larbvenc);
->>> -       if (ret) {
->>> -               mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
->>> -               goto clkerr;
->>> -       }
->>> -       return;
->>
->> You can't delete the return; here, otherwise vcodec_clk will be turned
->> off immediately after they are turned on.
-> 
-> Thanks very much for your review.
-> 
-> Sorry for this. You are quite right.
-> 
-> I checked this, it was introduced in v4 when I rebase the code. I will
-> fix it in next time.
-> 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+> deleted file mode 100644
+> index 39c1028b2dfb4..0000000000000
+> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.txt
+> +++ /dev/null
+> @@ -1,38 +0,0 @@
+> -* Mediatek JPEG Decoder
+> -
+> -Mediatek JPEG Decoder is the JPEG decode hardware present in Mediatek SoCs
+> -
+> -Required properties:
+> -- compatible : must be one of the following string:
+> -	"mediatek,mt8173-jpgdec"
+> -	"mediatek,mt7623-jpgdec", "mediatek,mt2701-jpgdec"
+> -	"mediatek,mt2701-jpgdec"
+> -- reg : physical base address of the jpeg decoder registers and length of
+> -  memory mapped region.
+> -- interrupts : interrupt number to the interrupt controller.
+> -- clocks: device clocks, see
+> -  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> -- clock-names: must contain "jpgdec-smi" and "jpgdec".
+> -- power-domains: a phandle to the power domain, see
+> -  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> -- mediatek,larb: must contain the local arbiters in the current Socs, see
+> -  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> -  for details.
 
-Please also make sure that you add all maintainers. I realized that at least for
-the media/platform drivers we miss the maintainer and the corresponding mailing
-list.
-This is especially important in this series, as it spans several subsystems.
+We miss the mediatek,larb in the yaml.
 
-Thanks a lot,
+> -- iommus: should point to the respective IOMMU block with master port as
+> -  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+> -  for details.
+> -
+> -Example:
+> -	jpegdec: jpegdec@15004000 {
+> -		compatible = "mediatek,mt2701-jpgdec";
+> -		reg = <0 0x15004000 0 0x1000>;
+> -		interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
+> -		clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
+> -			  <&imgsys CLK_IMG_JPGDEC>;
+> -		clock-names = "jpgdec-smi",
+> -			      "jpgdec";
+> -		power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+> -		mediatek,larb = <&larb2>;
+> -		iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
+> -			 <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
+> -	};
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+> new file mode 100644
+> index 0000000000000..821e6b480901a
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
+> @@ -0,0 +1,76 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek-jpeg-decoder.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek JPEG Decoder Device Tree Bindings
+> +
+> +maintainers:
+> +  - Xia Jiang <xia.jiang@mediatek.com>
+> +
+> +description: |-
+> +  Mediatek JPEG Decoder is the JPEG decode hardware present in Mediatek SoCs
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - const: mediatek,mt8173-jpgdec
+> +      - items:
+> +          - const: mediatek,mt2701-jpgdec
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7623-jpgdec
+> +          - const: mediatek,mt2701-jpgdec
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 2
+> +    minItems: 2
+> +
+> +  clock-names:
+> +    items:
+> +      - const: jpgdec-smi
+> +      - const: jpgdec
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  iommus:
+> +    maxItems: 2
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - power-domains
+> +  - iommus
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/mt2701-clk.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/memory/mt2701-larb-port.h>
+> +    #include <dt-bindings/power/mt2701-power.h>
+> +    jpegdec: jpegdec@15004000 {
+> +      compatible = "mediatek,mt2701-jpgdec";
+> +      reg = <0x15004000 0x1000>;
+> +      interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW>;
+> +      clocks =  <&imgsys CLK_IMG_JPGDEC_SMI>,
+> +                <&imgsys CLK_IMG_JPGDEC>;
+> +      clock-names = "jpgdec-smi",
+> +                    "jpgdec";
+> +      power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
+> +      iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
+> +               <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
+> +    };
+> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+> deleted file mode 100644
+> index 5e53c6ab52d01..0000000000000
+> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt
+> +++ /dev/null
+> @@ -1,35 +0,0 @@
+> -* MediaTek JPEG Encoder
+> -
+> -MediaTek JPEG Encoder is the JPEG encode hardware present in MediaTek SoCs
+> -
+> -Required properties:
+> -- compatible : "mediatek,mt2701-jpgenc"
+> -  followed by "mediatek,mtk-jpgenc"
+> -- reg : physical base address of the JPEG encoder registers and length of
+> -  memory mapped region.
+> -- interrupts : interrupt number to the interrupt controller.
+> -- clocks: device clocks, see
+> -  Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+> -- clock-names: must contain "jpgenc". It is the clock of JPEG encoder.
+> -- power-domains: a phandle to the power domain, see
+> -  Documentation/devicetree/bindings/power/power_domain.txt for details.
+> -- mediatek,larb: must contain the local arbiters in the current SoCs, see
+> -  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+> -  for details.
+
+Same here.
+
+Regards,
 Matthias
-
->>
->>> -
->>>  clkerr:
->>>         for (i -= 1; i >= 0; i--)
->>>                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
->>> @@ -125,7 +90,6 @@ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
->>>         struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
->>>         int i = 0;
->>>
->>> -       mtk_smi_larb_put(pm->larbvenc);
->>>         for (i = enc_clk->clk_num - 1; i >= 0; i--)
->>>                 clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
->>>  }
->>> --
->>> 2.18.0
->>>
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
