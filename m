@@ -2,78 +2,76 @@ Return-Path: <SRS0=J0kT=LE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9924BC48BE0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 18:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BFB66C48BE0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 20:04:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5ECB4613E1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 18:52:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5ECB4613E1
+	by mail.kernel.org (Postfix) with ESMTPS id 8042E6136D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 20:04:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8042E6136D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5cU8CVCflhqCP1xhAJrNvStAECqeGSCs/34AlvOq3oM=; b=p4ls+GyvNdz+A7
-	z6JcWANNbyth4SaekeaGukVws+BQDtz6G7tMShvTpF+9OX5+Iv8AFfPBDxrOJsUJstCNCg02ZMlHZ
-	XuVX2zbzoElXsrXWUeLD2dUGJZ41irGlFn/9n71RgSSbpzdE40+47VLbpyeyfwrBwXxEoIGiLqYEB
-	9I1v5dvq5MFJRibkfeEle82qvFBsDfG+sGuFqLbFdf30HOZ5D27sZQKjbENPM8xRCmtPdOuQT1PtG
-	OZPCD+h2REUf8ZN897c8CYsLxQwObGQ3oEomxO1M18lXe69viINvIyv5nrB3vKzFJhkaINhRhRKeB
-	TrX5uyM9iEnx/cHt1+vA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mpnMKmhIDofCaYnXIQF/PtHFZV5biFb3UUWZsI/YzcQ=; b=cog0tqX72tN7GF
+	ewu1XSx8NDL/fEFSyN302ncaYPU2f5yjxZye/oTWgbSX45mVQEHN/NT45j2PhOYF5+88RCDbdLEEo
+	vgPWnS40f0jEiM3gjUmQd1SO+/1TajH8jKrnTCNOlMejCvmzyQTzUkI7dr9lY8hhBL6r2+IlizWOb
+	R1gaU2YSQpWaz4ql8D8o+tck1SK5x4Z9hswW/fmh0N07Buw9pnqMFxbzBnAsGhBQcTwM8SFtkbdei
+	3/DhrBmbcUQMFAOYbSPKBL37m2nX8y+FIDTudFWPCGti/h8Sy7Q4+56xy6QDsuPahVZ+Y0PhBlf6R
+	URyoazFiZfFWkOsxd8DA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrPnF-002CmA-Eh; Thu, 10 Jun 2021 18:52:41 +0000
+	id 1lrQu5-002KNn-Oe; Thu, 10 Jun 2021 20:03:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrPnC-002CkU-BP
- for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 18:52:40 +0000
-X-UUID: 8da3b322784245adbe55f814c68831b5-20210610
+ id 1lrQu1-002KMu-21
+ for linux-mediatek@lists.infradead.org; Thu, 10 Jun 2021 20:03:48 +0000
+X-UUID: 3c6947203f994a419bf7867ad34c47a2-20210610
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=OQTAq4JHHbjmxhyPJfnB1fh5K2VkiC5R2PHpSWJKprY=; 
- b=UwABRhqZagG0nQgB5Ak9HT6VtbX+92/0w8RP1sURWGPVk9lo37E1SCIG6ab0x9qFr7/hj+SJ7iQ/bxAiMP6oIgSswMpaqFDLp2f3OnAIOcU63lTEnm0HVUXT/r/gvOssDMS7w228kuG1Q2r+VtyIJnSzZ3lbT/NlamLkpkhB6oo=;
-X-UUID: 8da3b322784245adbe55f814c68831b5-20210610
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=n3OPbZCNmXKi0/b8kf7jgStjUU/cDI69GUG9OcL5ThI=; 
+ b=H2nKNWPehdug5JBAND2okf5G0VBzbsSGiBH69ICGKlSrjNXHZIG6SVXDBsN7HQuCH6wynUBGsCB8XGDf6xyzdAcUHHRokAKta+Y8Cj1jXNxDoCHa9lNEURMJGAiZFYcp1O9FKzE+rKcQN0/+y8+CLof7F/yiDMX0TeMF1oNjY5w=;
+X-UUID: 3c6947203f994a419bf7867ad34c47a2-20210610
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 593537615; Thu, 10 Jun 2021 11:52:30 -0700
+ with ESMTP id 1529384783; Thu, 10 Jun 2021 13:03:41 -0700
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Jun 2021 11:43:55 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Jun 2021 13:03:32 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 02:43:53 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Fri, 11 Jun 2021 04:03:30 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 11 Jun 2021 02:43:53 +0800
+ Frontend Transport; Fri, 11 Jun 2021 04:03:30 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 4/4] mt76: mt7915: improve MU stability
-Date: Fri, 11 Jun 2021 02:43:47 +0800
-Message-ID: <61c73b3c279e10ee848d74611631282b43039671.1623347029.git.ryder.lee@mediatek.com>
+Subject: [PATCH v2] mt76: mt7915: improve MU stability
+Date: Fri, 11 Jun 2021 04:03:26 +0800
+Message-ID: <fbd21e7653abd3432f82d011deee682c39c235c6.1623355065.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <245a3745aea487793e40fbf82172c5367649bab3.1623347029.git.ryder.lee@mediatek.com>
-References: <245a3745aea487793e40fbf82172c5367649bab3.1623347029.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210610_115238_430071_6393C460 
-X-CRM114-Status: GOOD (  15.67  )
+X-CRM114-CacheID: sfid-20210610_130346_550914_12D0F9A4 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,7 +92,35 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
   follows starec_bf settings.
 - Drop unnecessary MU BF checks.
 
+TX MPDU PER (Status = Success):
+                                           TOT_MPDU_CNT  FAIL_MPDU_CNT  TX_PER
+WCID Rate
+1      VHT_BW80_2SS_MCS7_LGI_LDPC_MUBF              114              0   0.00%
+       VHT_BW80_2SS_MCS7_LGI_LDPC_MUBF_MU            64              0   0.00%
+       VHT_BW80_2SS_MCS7_SGI_LDPC_MUBF              128              0   0.00%
+       VHT_BW80_2SS_MCS7_SGI_LDPC_MUBF_MU           745              0   0.00%
+       VHT_BW80_2SS_MCS8_LGI_LDPC_MUBF_MU           856              0   0.00%
+       VHT_BW80_2SS_MCS8_SGI_LDPC_MUBF_MU          1430              4   0.28%
+       VHT_BW80_2SS_MCS9_LGI_LDPC_MUBF_MU          5220             31   0.59%
+       VHT_BW80_2SS_MCS9_LGI_LDPC_iBF                59              0   0.00%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_MUBF               64              2   3.12%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_MUBF_MU         22132             76   0.34%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_iBF              2866              1   0.03%
+2      VHT_BW80_2SS_MCS7_LGI_LDPC_MUBF_MU          3781              5   0.13%
+       VHT_BW80_2SS_MCS7_SGI_LDPC_MUBF_MU           735              0   0.00%
+       VHT_BW80_2SS_MCS8_LGI_LDPC_MUBF_MU          1270            365  28.74%
+       VHT_BW80_2SS_MCS8_SGI_LDPC_MUBF_MU          3420             57   1.67%
+       VHT_BW80_2SS_MCS9_LGI_LDPC_MUBF              128              0   0.00%
+       VHT_BW80_2SS_MCS9_LGI_LDPC_MUBF_MU            64              0   0.00%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_MUBF              191              0   0.00%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_MUBF_MU         18833            320   1.70%
+       VHT_BW80_2SS_MCS9_SGI_LDPC_iBF              6040              0   0.00%
+287    OFDM 6M
+
+Tested-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+v2 - add test result and a missing tag.
 ---
  .../wireless/mediatek/mt76/mt7915/debugfs.c   | 12 ++-
  .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 98 +++++++++----------
