@@ -2,59 +2,60 @@ Return-Path: <SRS0=J0kT=LE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FE2EC48BCF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 02:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D338C48BCF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 02:38:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A40561413
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 02:38:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A40561413
+	by mail.kernel.org (Postfix) with ESMTPS id 0BBDC61410
+	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Jun 2021 02:38:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BBDC61410
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4Id3urQskoa8qdNeHJYEpSbhEQ2y3X+eh4wgnJF3qz4=; b=RGX2X/oHUc6B3H
-	YkiqMXMd8790sR8A0c919/W/J6aqfhyewxt4RRGItPWFROhx6dJ64gMo28WKqJntE+hpkE4Kom4rp
-	yBblK2x6VELUOTL0gI0aAopHuMR1K8PU/PBvs9RPil0W7vShA037TCxdPPxSeyo3SktmMSFWooLeT
-	vJbOffPDgMYZ0uEs427/PU2fA/9r6XK/PHNydBQb9gK3cmveIKkZXkxVoZBH8v4qBOzjwpr6Sfzzs
-	WvGzhF7N/BAEEpd6NY+6wAKgn0G182yvHAbDLYJp3+sBKLs1bYAa+kSl+8QUa08zCr1yuM2QvghM0
-	8xq4gvfZE38GMv8NVFLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2TZDUuHK9k2ZIdYBWmdjVSJvdm68ANbFvISKrfXCvX4=; b=IAs0ROSyCO3iBa
+	+h0jglorRmUVRaagMyor0kPppvIXMWKEPfMEyRHahxacuOxRrhrLIoMdAyjI3cG7fhqyJUvvROTi3
+	5hreZL19QN+W7rM7b92x7JLB05dP07pZXCCnyhway2qhszjplCJRCmOKvHBKQie/NdBte3AoQ/I6O
+	qTfNOo3/retJrRCNbieEE7tIk1CQl9t8POJp53tGZJoJ0W/5y1d/63D5BozskOJLe5TqENsWdTZnW
+	RfmNcYabYecxqred5MJJgV9kFkNaAOMAZ+S0fISb2eNuUH2AUEwgktL2eUVdqi8XzomHLlZtrKfsF
+	olkhbeSIDDf/HcpTjAjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrAaP-00GTS9-8e; Thu, 10 Jun 2021 02:38:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lrAad-00GTW6-Db; Thu, 10 Jun 2021 02:38:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrAaL-00GTQa-MC; Thu, 10 Jun 2021 02:38:24 +0000
-X-UUID: f73129bafad0425cbaec74f04e88b389-20210609
+ id 1lrAaZ-00GTTa-CN; Thu, 10 Jun 2021 02:38:38 +0000
+X-UUID: 43941e7b5ffa436c85635643ad40d959-20210609
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=P3SwKKsdWpKPyvwVHpY9U10Aatf2BB/CqDVYxiw5TC4=; 
- b=sUcDxyzsc3HiF0FRfi5ruadvNXtiy5Ip6rPxDYTM7TWXvsbY3piZ1YXNQVMzBpK9hHEBX7gfE+a/yRlixkTvYr5bf1ylCUKDA0rHJfYyweeY3AmAe/8PpB+sHpyJKejtzoEifB0d7Tmkv+V6W5FRb8u2XVVnf04CAmImi5a2l2s=;
-X-UUID: f73129bafad0425cbaec74f04e88b389-20210609
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=fBkW9nNAVkJFvdc75SDVMP6QuQgkzgpX+KBLi+V48FY=; 
+ b=ONfg7f3SE0aH7POKX13z29bwB76yklNkNTNobwtO04D+15md1Kis1QWPdzWfIBO1YDiHVaJX+B8hd92c1pezSqrKiax5ddOFTUAj7fIPx2grdkfIwJgL9qSS+YcB5raYvYIi7FVJDG/ZomLw3mcMsKm6RM4uWfot8evmJuQxOcM=;
+X-UUID: 43941e7b5ffa436c85635643ad40d959-20210609
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1775024121; Wed, 09 Jun 2021 19:38:17 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1011296608; Wed, 09 Jun 2021 19:38:28 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 9 Jun 2021 19:38:16 -0700
+ 15.0.1497.2; Wed, 9 Jun 2021 19:38:26 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 10 Jun 2021 10:38:14 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 10 Jun 2021 10:38:25 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 10 Jun 2021 10:38:14 +0800
+ Frontend Transport; Thu, 10 Jun 2021 10:38:24 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
@@ -62,16 +63,21 @@ To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Brugger
 CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 0/3] Mediatek MT8195 power domain support
-Date: Thu, 10 Jun 2021 10:36:11 +0800
-Message-ID: <20210610023614.5375-1-chun-jie.chen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, chun-jie.chen
+ <chun-jie.chen@mediatek.corp-partner.google.com>, "chun-jie . chen"
+ <chun-jie.chen@mediatek.com>
+Subject: [PATCH 1/3] soc: mediatek: pm-domains: Move power status offset to
+ power domain data
+Date: Thu, 10 Jun 2021 10:36:12 +0800
+Message-ID: <20210610023614.5375-2-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210610023614.5375-1-chun-jie.chen@mediatek.com>
+References: <20210610023614.5375-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210609_193823_283610_25B746D3 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20210609_193835_474809_BE89CAC3 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,30 +94,589 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch series adds power domain support for MT8195
-and is based on 5.13-rc3.
+From: "chun-jie.chen" <chun-jie.chen@mediatek.corp-partner.google.com>
 
-chun-jie.chen (3):
-  soc: mediatek: pm-domains: Move power status offset to power domain
-    data
-  dt-bindings: power: Add MT8195 power domains
-  soc: mediatek: pm-domains: Add support for mt8195
+MT8195 has more than 32 power domains so it needs
+two set of pwr_sta and pwr_sta2nd registers,
+so move the register offset from soc data into power domain data.
 
- .../power/mediatek,power-controller.yaml      |   2 +
- drivers/soc/mediatek/mt8167-pm-domains.h      |  16 +-
- drivers/soc/mediatek/mt8173-pm-domains.h      |  22 +-
- drivers/soc/mediatek/mt8183-pm-domains.h      |  32 +-
- drivers/soc/mediatek/mt8192-pm-domains.h      |  44 +-
- drivers/soc/mediatek/mt8195-pm-domains.h      | 738 ++++++++++++++++++
- drivers/soc/mediatek/mtk-pm-domains.c         |  12 +-
- drivers/soc/mediatek/mtk-pm-domains.h         |   8 +-
- include/dt-bindings/power/mt8195-power.h      |  51 ++
- include/linux/soc/mediatek/infracfg.h         | 103 +++
- 10 files changed, 1013 insertions(+), 15 deletions(-)
- create mode 100644 drivers/soc/mediatek/mt8195-pm-domains.h
- create mode 100644 include/dt-bindings/power/mt8195-power.h
+Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
+---
+ drivers/soc/mediatek/mt8167-pm-domains.h | 16 +++++++--
+ drivers/soc/mediatek/mt8173-pm-domains.h | 22 ++++++++++--
+ drivers/soc/mediatek/mt8183-pm-domains.h | 32 +++++++++++++++--
+ drivers/soc/mediatek/mt8192-pm-domains.h | 44 ++++++++++++++++++++++--
+ drivers/soc/mediatek/mtk-pm-domains.c    |  4 +--
+ drivers/soc/mediatek/mtk-pm-domains.h    |  4 +--
+ 6 files changed, 110 insertions(+), 12 deletions(-)
 
---
+diff --git a/drivers/soc/mediatek/mt8167-pm-domains.h b/drivers/soc/mediatek/mt8167-pm-domains.h
+index 15559ddf26e4..4d6c32759606 100644
+--- a/drivers/soc/mediatek/mt8167-pm-domains.h
++++ b/drivers/soc/mediatek/mt8167-pm-domains.h
+@@ -18,6 +18,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "mm",
+ 		.sta_mask = PWR_STATUS_DISP,
+ 		.ctl_offs = SPM_DIS_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -30,6 +32,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "vdec",
+ 		.sta_mask = PWR_STATUS_VDEC,
+ 		.ctl_offs = SPM_VDE_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+@@ -38,6 +42,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "isp",
+ 		.sta_mask = PWR_STATUS_ISP,
+ 		.ctl_offs = SPM_ISP_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+@@ -46,6 +52,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "mfg_async",
+ 		.sta_mask = MT8167_PWR_STATUS_MFG_ASYNC,
+ 		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+ 		.bp_infracfg = {
+@@ -57,6 +65,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "mfg_2d",
+ 		.sta_mask = MT8167_PWR_STATUS_MFG_2D,
+ 		.ctl_offs = SPM_MFG_2D_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -64,6 +74,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "mfg",
+ 		.sta_mask = PWR_STATUS_MFG,
+ 		.ctl_offs = SPM_MFG_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -71,6 +83,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ 		.name = "conn",
+ 		.sta_mask = PWR_STATUS_CONN,
+ 		.ctl_offs = SPM_CONN_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = 0,
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+@@ -85,8 +99,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8167[] = {
+ static const struct scpsys_soc_data mt8167_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8167,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8167),
+-	.pwr_sta_offs = SPM_PWR_STATUS,
+-	.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8167_PM_DOMAINS_H */
+diff --git a/drivers/soc/mediatek/mt8173-pm-domains.h b/drivers/soc/mediatek/mt8173-pm-domains.h
+index 654c717e5467..a4f58c2b44b1 100644
+--- a/drivers/soc/mediatek/mt8173-pm-domains.h
++++ b/drivers/soc/mediatek/mt8173-pm-domains.h
+@@ -15,6 +15,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "vdec",
+ 		.sta_mask = PWR_STATUS_VDEC,
+ 		.ctl_offs = SPM_VDE_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -22,6 +24,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "venc",
+ 		.sta_mask = PWR_STATUS_VENC,
+ 		.ctl_offs = SPM_VEN_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -29,6 +33,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "isp",
+ 		.sta_mask = PWR_STATUS_ISP,
+ 		.ctl_offs = SPM_ISP_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 	},
+@@ -36,6 +42,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "mm",
+ 		.sta_mask = PWR_STATUS_DISP,
+ 		.ctl_offs = SPM_DIS_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -47,6 +55,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "venc_lt",
+ 		.sta_mask = PWR_STATUS_VENC_LT,
+ 		.ctl_offs = SPM_VEN2_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -54,6 +64,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "audio",
+ 		.sta_mask = PWR_STATUS_AUDIO,
+ 		.ctl_offs = SPM_AUDIO_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -61,6 +73,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "usb",
+ 		.sta_mask = PWR_STATUS_USB,
+ 		.ctl_offs = SPM_USB_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.caps = MTK_SCPD_ACTIVE_WAKEUP,
+@@ -69,6 +83,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "mfg_async",
+ 		.sta_mask = PWR_STATUS_MFG_ASYNC,
+ 		.ctl_offs = SPM_MFG_ASYNC_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = 0,
+ 	},
+@@ -76,6 +92,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "mfg_2d",
+ 		.sta_mask = PWR_STATUS_MFG_2D,
+ 		.ctl_offs = SPM_MFG_2D_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 	},
+@@ -83,6 +101,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ 		.name = "mfg",
+ 		.sta_mask = PWR_STATUS_MFG,
+ 		.ctl_offs = SPM_MFG_PWR_CON,
++		.pwr_sta_offs = SPM_PWR_STATUS,
++		.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ 		.sram_pdn_bits = GENMASK(13, 8),
+ 		.sram_pdn_ack_bits = GENMASK(21, 16),
+ 		.bp_infracfg = {
+@@ -97,8 +117,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8173[] = {
+ static const struct scpsys_soc_data mt8173_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8173,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8173),
+-	.pwr_sta_offs = SPM_PWR_STATUS,
+-	.pwr_sta2nd_offs = SPM_PWR_STATUS_2ND,
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8173_PM_DOMAINS_H */
+diff --git a/drivers/soc/mediatek/mt8183-pm-domains.h b/drivers/soc/mediatek/mt8183-pm-domains.h
+index 98a9940d05fb..71b8757e552d 100644
+--- a/drivers/soc/mediatek/mt8183-pm-domains.h
++++ b/drivers/soc/mediatek/mt8183-pm-domains.h
+@@ -15,6 +15,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "audio",
+ 		.sta_mask = PWR_STATUS_AUDIO,
+ 		.ctl_offs = 0x0314,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 	},
+@@ -22,6 +24,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "conn",
+ 		.sta_mask = PWR_STATUS_CONN,
+ 		.ctl_offs = 0x032c,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+ 		.bp_infracfg = {
+@@ -33,6 +37,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "mfg_async",
+ 		.sta_mask = PWR_STATUS_MFG_ASYNC,
+ 		.ctl_offs = 0x0334,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+ 	},
+@@ -40,6 +46,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "mfg",
+ 		.sta_mask = PWR_STATUS_MFG,
+ 		.ctl_offs = 0x0338,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.caps = MTK_SCPD_DOMAIN_SUPPLY,
+@@ -48,6 +56,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "mfg_core0",
+ 		.sta_mask = BIT(7),
+ 		.ctl_offs = 0x034c,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -55,6 +65,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "mfg_core1",
+ 		.sta_mask = BIT(20),
+ 		.ctl_offs = 0x0310,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -62,6 +74,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "mfg_2d",
+ 		.sta_mask = PWR_STATUS_MFG_2D,
+ 		.ctl_offs = 0x0348,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -75,6 +89,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "disp",
+ 		.sta_mask = PWR_STATUS_DISP,
+ 		.ctl_offs = 0x030c,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -94,6 +110,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "cam",
+ 		.sta_mask = BIT(25),
+ 		.ctl_offs = 0x0344,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(9, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.bp_infracfg = {
+@@ -117,6 +135,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "isp",
+ 		.sta_mask = PWR_STATUS_ISP,
+ 		.ctl_offs = 0x0308,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(9, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.bp_infracfg = {
+@@ -140,6 +160,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "vdec",
+ 		.sta_mask = BIT(31),
+ 		.ctl_offs = 0x0300,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_smi = {
+@@ -153,6 +175,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "venc",
+ 		.sta_mask = PWR_STATUS_VENC,
+ 		.ctl_offs = 0x0304,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(15, 12),
+ 		.bp_smi = {
+@@ -166,6 +190,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "vpu_top",
+ 		.sta_mask = BIT(26),
+ 		.ctl_offs = 0x0324,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -193,6 +219,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "vpu_core0",
+ 		.sta_mask = BIT(27),
+ 		.ctl_offs = 0x33c,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.bp_infracfg = {
+@@ -211,6 +239,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ 		.name = "vpu_core1",
+ 		.sta_mask = BIT(28),
+ 		.ctl_offs = 0x0340,
++		.pwr_sta_offs = 0x0180,
++		.pwr_sta2nd_offs = 0x0184,
+ 		.sram_pdn_bits = GENMASK(11, 8),
+ 		.sram_pdn_ack_bits = GENMASK(13, 12),
+ 		.bp_infracfg = {
+@@ -230,8 +260,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8183[] = {
+ static const struct scpsys_soc_data mt8183_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8183,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8183),
+-	.pwr_sta_offs = 0x0180,
+-	.pwr_sta2nd_offs = 0x0184
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8183_PM_DOMAINS_H */
+diff --git a/drivers/soc/mediatek/mt8192-pm-domains.h b/drivers/soc/mediatek/mt8192-pm-domains.h
+index 543dda70de01..558c4ee4784a 100644
+--- a/drivers/soc/mediatek/mt8192-pm-domains.h
++++ b/drivers/soc/mediatek/mt8192-pm-domains.h
+@@ -15,6 +15,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "audio",
+ 		.sta_mask = BIT(21),
+ 		.ctl_offs = 0x0354,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -28,6 +30,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "conn",
+ 		.sta_mask = PWR_STATUS_CONN,
+ 		.ctl_offs = 0x0304,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = 0,
+ 		.sram_pdn_ack_bits = 0,
+ 		.bp_infracfg = {
+@@ -50,6 +54,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg0",
+ 		.sta_mask = BIT(2),
+ 		.ctl_offs = 0x0308,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -57,6 +63,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg1",
+ 		.sta_mask = BIT(3),
+ 		.ctl_offs = 0x030c,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -82,6 +90,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg2",
+ 		.sta_mask = BIT(4),
+ 		.ctl_offs = 0x0310,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -89,6 +99,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg3",
+ 		.sta_mask = BIT(5),
+ 		.ctl_offs = 0x0314,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -96,6 +108,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg4",
+ 		.sta_mask = BIT(6),
+ 		.ctl_offs = 0x0318,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -103,6 +117,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg5",
+ 		.sta_mask = BIT(7),
+ 		.ctl_offs = 0x031c,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -110,6 +126,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mfg6",
+ 		.sta_mask = BIT(8),
+ 		.ctl_offs = 0x0320,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -117,6 +135,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "disp",
+ 		.sta_mask = BIT(20),
+ 		.ctl_offs = 0x0350,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -146,6 +166,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "ipe",
+ 		.sta_mask = BIT(14),
+ 		.ctl_offs = 0x0338,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -163,6 +185,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "isp",
+ 		.sta_mask = BIT(12),
+ 		.ctl_offs = 0x0330,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -180,6 +204,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "isp2",
+ 		.sta_mask = BIT(13),
+ 		.ctl_offs = 0x0334,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -197,6 +223,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "mdp",
+ 		.sta_mask = BIT(19),
+ 		.ctl_offs = 0x034c,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -214,6 +242,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "venc",
+ 		.sta_mask = BIT(17),
+ 		.ctl_offs = 0x0344,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -231,6 +261,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "vdec",
+ 		.sta_mask = BIT(15),
+ 		.ctl_offs = 0x033c,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -248,6 +280,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "vdec2",
+ 		.sta_mask = BIT(16),
+ 		.ctl_offs = 0x0340,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -255,6 +289,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "cam",
+ 		.sta_mask = BIT(23),
+ 		.ctl_offs = 0x035c,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 		.bp_infracfg = {
+@@ -284,6 +320,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "cam_rawa",
+ 		.sta_mask = BIT(24),
+ 		.ctl_offs = 0x0360,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -291,6 +329,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "cam_rawb",
+ 		.sta_mask = BIT(25),
+ 		.ctl_offs = 0x0364,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -298,6 +338,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ 		.name = "cam_rawc",
+ 		.sta_mask = BIT(26),
+ 		.ctl_offs = 0x0368,
++		.pwr_sta_offs = 0x016c,
++		.pwr_sta2nd_offs = 0x0170,
+ 		.sram_pdn_bits = GENMASK(8, 8),
+ 		.sram_pdn_ack_bits = GENMASK(12, 12),
+ 	},
+@@ -306,8 +348,6 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8192[] = {
+ static const struct scpsys_soc_data mt8192_scpsys_data = {
+ 	.domains_data = scpsys_domain_data_mt8192,
+ 	.num_domains = ARRAY_SIZE(scpsys_domain_data_mt8192),
+-	.pwr_sta_offs = 0x016c,
+-	.pwr_sta2nd_offs = 0x0170,
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8192_PM_DOMAINS_H */
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.c b/drivers/soc/mediatek/mtk-pm-domains.c
+index 0af00efa0ef8..2689f02d7a41 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.c
++++ b/drivers/soc/mediatek/mtk-pm-domains.c
+@@ -60,10 +60,10 @@ static bool scpsys_domain_is_on(struct scpsys_domain *pd)
+ 	struct scpsys *scpsys = pd->scpsys;
+ 	u32 status, status2;
+ 
+-	regmap_read(scpsys->base, scpsys->soc_data->pwr_sta_offs, &status);
++	regmap_read(scpsys->base, pd->data->pwr_sta_offs, &status);
+ 	status &= pd->data->sta_mask;
+ 
+-	regmap_read(scpsys->base, scpsys->soc_data->pwr_sta2nd_offs, &status2);
++	regmap_read(scpsys->base, pd->data->pwr_sta2nd_offs, &status2);
+ 	status2 &= pd->data->sta_mask;
+ 
+ 	/* A domain is on when both status bits are set. */
+diff --git a/drivers/soc/mediatek/mtk-pm-domains.h b/drivers/soc/mediatek/mtk-pm-domains.h
+index 21a4e113bbec..8b86ed22ca56 100644
+--- a/drivers/soc/mediatek/mtk-pm-domains.h
++++ b/drivers/soc/mediatek/mtk-pm-domains.h
+@@ -94,13 +94,13 @@ struct scpsys_domain_data {
+ 	u8 caps;
+ 	const struct scpsys_bus_prot_data bp_infracfg[SPM_MAX_BUS_PROT_DATA];
+ 	const struct scpsys_bus_prot_data bp_smi[SPM_MAX_BUS_PROT_DATA];
++	int pwr_sta_offs;
++	int pwr_sta2nd_offs;
+ };
+ 
+ struct scpsys_soc_data {
+ 	const struct scpsys_domain_data *domains_data;
+ 	int num_domains;
+-	int pwr_sta_offs;
+-	int pwr_sta2nd_offs;
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MTK_PM_DOMAINS_H */
+-- 
 2.18.0
 _______________________________________________
 Linux-mediatek mailing list
