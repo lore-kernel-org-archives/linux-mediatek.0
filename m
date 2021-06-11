@@ -2,86 +2,80 @@ Return-Path: <SRS0=puoQ=LF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16089C48BD1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5126EC48BD1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D0E8561287
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:22:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D0E8561287
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 18C85613CC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 18C85613CC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tbf3QVJkQIHOt7013tS9/+B3jNj94Qmzfi0y6OcmvCs=; b=TuS317CV+wfhM6
-	PgvsUiMxzHTACNrctIHH19ZRFq1atTZrw6atICWneX+A7skU9f9S6ERK0b6Ke5ZyrYz10f9H8X/Ar
-	yjEDJmrEel9H6lL4OtWbMN7vOojAXoHeLyPwpNn9y0AisT2LMRrm9tv3KZJv5Uolj5C4PtQQ1JCKc
-	Hi9r83koXiy9tJOLzZk1SBy456bwWG0gKpVniSvt2zhvlTOAKvCbdvwwv5/EvDM3H2jslByHtrrEA
-	sLde1Err2+XOyFLPgCDOHQCB8HHYB/wRbEzcSAvME9A7BCYChw+RZJJ5nyGdmrg9mDFQBDSeHySbj
-	XqxNHDIxFJRLXMzFvw5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OHcnHG1xScrtCTVnjIaD0RiCvlXIymo5b3VRpp3mmQY=; b=djWx5/iQHdpavT
+	hkVMkxJ4fu5NsjPt7rm080TvjNsKjDnZU6okkmIAFrfLxm+Rg1DIam4DodYs1t/3NXDV3CGP/ZlOE
+	/KoZ6bssa7XTyDFFU+qnHtq36JwgiUfO9UgO1MNxlbqWEzQz1TflOl30kstfhtb5jkz9Ui11183uJ
+	LVVMykEto4uBfemcVyz91p17q77G0oXFPya09RWx01r/GkJzi3DyqX62Dspyh1UU9MaN5g/rW2l8W
+	0XeKrFwhGqBitqjcq9bEDI50evYHrbJNYZbTf92SN70cPUz4GzpB6CGuX16dvdQIMPt5V7inONVqa
+	8roKTQNI4LBUUySGFMaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrfEa-00502i-L8; Fri, 11 Jun 2021 11:21:56 +0000
-Received: from mail-pl1-f179.google.com ([209.85.214.179])
+	id 1lrfel-0056gO-Cu; Fri, 11 Jun 2021 11:48:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrfDz-004zpN-8s
- for linux-mediatek@lists.infradead.org; Fri, 11 Jun 2021 11:21:20 +0000
-Received: by mail-pl1-f179.google.com with SMTP id 11so2668289plk.12
- for <linux-mediatek@lists.infradead.org>; Fri, 11 Jun 2021 04:21:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=4QwvH5bGqHeUyZVp5Ps3bAzGRgv84nKw9pL18XwdnBM=;
- b=kk3HFX3t7+pm4U/kjbmmasXspVI2T+d5ttTTpONnlHt9FJYS47YoPl6FI4PGXes9Wc
- 6QS1tcKLLxH/Y0PD3TQ9KyiAySH3iNieFqIF9+2m7FSXNetsYOKvLEh6swUIljF9NFG0
- 2eC5PsZkx/XLvDuBZG5ZICFggERngLC8Vp8Ls=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=4QwvH5bGqHeUyZVp5Ps3bAzGRgv84nKw9pL18XwdnBM=;
- b=khR4hSvocM2fOBtCRBBgn4OwzrcIMZVmPDt/69NgUdIVwXdqV4fIzJqd9pNVSujpbK
- 8kONvifx58kv0NQN5OxN30NSYWjc5E5drQV+UfG7hPn12p/VfSHzrfKCUVu/XNSBguJ2
- 9TVM4ciduX3Au5AuhteXj5/tqgdW1T4l+jOLue2qH+qmFyVfZVNfI7lpId5sW6g9iZf9
- XSud2wLo6lBreNV7q0QjIDQ6C/WwMASYWuuFdsOItthC8Pywrt4SuVJxe975yuDlG+pI
- zB7q4OHgm3RRotYud8+KCvgi/56i9gRTsc+n9FAmdGHhkbxZ/WigxLy/KQMkN336MGqO
- +MPw==
-X-Gm-Message-State: AOAM530uDK2m+uTrToxxYmBKBWaZ7qZvbPoFU5PqisNHkHE1dJItcB2J
- steALcDP0inJf53xpyRz8+HmmA==
-X-Google-Smtp-Source: ABdhPJzduBIz6I4dCv6hcEL/NSQSitCklTwTnFZIr9rbFuPwFRYv2RhdaiZve2JcmaimUOSyRSHFlA==
-X-Received: by 2002:a17:90b:3696:: with SMTP id
- mj22mr3994602pjb.42.1623410418179; 
- Fri, 11 Jun 2021 04:20:18 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:73d3:4412:54cc:752d])
- by smtp.gmail.com with ESMTPSA id y5sm5177189pfo.25.2021.06.11.04.20.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Jun 2021 04:20:17 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- maoguang.meng@mediatek.com, yong.wu@mediatek.com
-Subject: [PATCH v4 3/3] arm64: dts: mt8183: add jpeg enc node for mt8183
-Date: Fri, 11 Jun 2021 19:20:09 +0800
-Message-Id: <20210611112009.2955944-3-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.272.g935e593368-goog
-In-Reply-To: <20210611112009.2955944-1-hsinyi@chromium.org>
-References: <20210611112009.2955944-1-hsinyi@chromium.org>
+ id 1lrfei-0056es-CY; Fri, 11 Jun 2021 11:48:58 +0000
+X-UUID: 8cfb664926c145deb4e3b59da712ba84-20210611
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ihTfPUe1dr7t2OIi2DV24xgQfYSoUogg/yw800M90HY=; 
+ b=SVkY43FejuU5VHJQALFyoWJcen3t3LsnHocxgN555NNF5b3EQf743ktvQgIZNFy3LqYK3JTLnRRKRnh4+p6SrcFP0YshtAzsmyG7qSUWDAyoP6V06FR6wMaBbt6CzYjPvegyugN7i9G7Zo1rm1BgjvR8kpfiK5MXBF4w9pasQbs=;
+X-UUID: 8cfb664926c145deb4e3b59da712ba84-20210611
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 886122831; Fri, 11 Jun 2021 04:48:50 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Jun 2021 04:48:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Jun 2021 19:48:35 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 11 Jun 2021 19:48:34 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
+ <ryder.lee@mediatek.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, <youlin.pei@mediatek.com>,
+ <chuanjia.liu@mediatek.com>, <qizhong.cheng@mediatek.com>,
+ <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
+ <Rex-BC.Chen@mediatek.com>, Krzysztof Wilczyski <kw@linux.com>,
+ <Ryan-JH.Yu@mediatek.com>
+Subject: [PATCH v2 0/2] PCI: mediatek-gen3: Add support for disable dvfsrc
+Date: Fri, 11 Jun 2021 19:48:22 +0800
+Message-ID: <20210611114824.14537-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_042119_344318_3E4DD231 
-X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-CacheID: sfid-20210611_044857_564621_DFDF8CAC 
+X-CRM114-Status: UNSURE (   8.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,43 +93,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Maoguang Meng <maoguang.meng@mediatek.com>
+These series patches add support for disable dvfsrc voltage request.
 
-Add jpeg encoder device tree node.
+Changes in v2:
+Fix typo.
 
-Signed-off-by: Maoguang Meng <maoguang.meng@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+Jianjun Wang (2):
+  dt-bindings: PCI: mediatek-gen3: Add property to disable dvfsrc
+    voltage request
+  PCI: mediatek-gen3: Add support for disable dvfsrc voltage request
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c5e822b6b77a3..d54b4532fc3f3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1329,6 +1329,18 @@ larb4: larb@17010000 {
- 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
- 		};
- 
-+		venc_jpg: venc_jpg@17030000 {
-+			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
-+			reg = <0 0x17030000 0 0x1000>;
-+			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
-+			mediatek,larb = <&larb4>;
-+			iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
-+				 <&iommu M4U_PORT_JPGENC_BSDMA>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
-+			clocks = <&vencsys CLK_VENC_JPGENC>;
-+			clock-names = "jpgenc";
-+		};
-+
- 		ipu_conn: syscon@19000000 {
- 			compatible = "mediatek,mt8183-ipu_conn", "syscon";
- 			reg = <0 0x19000000 0 0x1000>;
+ .../bindings/pci/mediatek-pcie-gen3.yaml      |  8 +++++
+ drivers/pci/controller/pcie-mediatek-gen3.c   | 31 +++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+
 -- 
-2.32.0.272.g935e593368-goog
-
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
