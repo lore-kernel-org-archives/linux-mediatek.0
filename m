@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 892F9C48BD1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 12:28:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FDEBC48BE0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 12:54:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5946D613D3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 12:28:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5946D613D3
+	by mail.kernel.org (Postfix) with ESMTPS id 3676D613D3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 12:54:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3676D613D3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:CC:To:From:Subject:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zaaiIP9xlM+8XvkjuFRAREX8PXbV4W9RzO+f6E1YLL8=; b=uNWrTV5nss9dm+
-	xgsffuU4O+UCAngoHi6E8lm8kj5i0tcYJtaruBg1rkrSEsAHY+QlfLR/v8YHvaU1N7+pO6jNJYXlu
-	QyrmPEtjkHT/jpqv1kR2uEw2JKOVW2mq3BZNw9S0CJxBJOskdXm6kNVwK6qpdXZ2DsOR9m/Z0oAAE
-	YXlwwT5QCRpTvdOeLmpVuTb1DpiZIA3iiShRXcA8RU5NcsHpWel8DW/T66/1rgulHODeh/zQm7Bdg
-	xjPlDMVVHS9wHIUNMNwj9WJQWUrjFcAhFwbcfJkr+Tsrd/tkNPGeWN83hrF2rjwTK0by3IdvJkKNa
-	HOvNKlmwtX0yn4GN2Z1Q==;
+	List-Owner; bh=ENk/67UzpxL71vtUVaizD1X9sN1u59DnMUNJxmzT1xw=; b=F2zK9tZ2H6ipH4
+	znxQLaoM+fuYu3pxPy7vO0O7GDkYF03KNVuIrnak+aiIg4scXsxPA2zIE5IUTdvpNkWJwsF4P7cwW
+	7I8JHiT96vmVRN5oZv1VQYQbxMzkZiKjWWwTYtmQ3nRVHJGRrsMz4+OS3yaTF5/AHlXiDxnib5Gva
+	PhhHnWohVOTagkRz4LgGWIeTOLrNblWZq2viECoxAjgzVTs6KD8hVctWE+mCrQGbwzedI+nkXSbeM
+	jraDDUIp/0YWBSRkI4BLFG2nyMN2WXlDrdGIlHFzQSvL1nH7GVMH9OOCd7aQogmp5g6cbPePvs5Zq
+	Tq3IAcRe7hsT6L/kLJbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrgH7-005ExD-4j; Fri, 11 Jun 2021 12:28:37 +0000
+	id 1lrgft-005KAr-JJ; Fri, 11 Jun 2021 12:54:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrgGq-005EuZ-Gt; Fri, 11 Jun 2021 12:28:21 +0000
-X-UUID: 74a05684ac464c99ac2d8e3836a75195-20210611
+ id 1lrgfg-005K9q-V4; Fri, 11 Jun 2021 12:54:02 +0000
+X-UUID: 1f408372c07f47e2906701fcf73ec337-20210611
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID;
- bh=5WTI0sd3QrS6AzdAtUg1zyVx5qtJHQj3wy1A/5ifOvk=; 
- b=c3J8bZfFR7uB26v76G5+YiFVPE/BIYsvjJ66mKc8Q26DmTkgcFCCdOW2JxcxcReViIgxCDS9Mr3etmYy3yOa4yb9FOZLSab4frhlePsKHt8kSjXxWGP+w1XT0Ns2W0rPoKAz+alkeGDe8G2QRHjlQ145LNAqkjUw441lZLMh1is=;
-X-UUID: 74a05684ac464c99ac2d8e3836a75195-20210611
+ bh=NPSAquVn6OcH8zMMUCJI1xEdPAoRZoeMvYeki4aI62s=; 
+ b=h/fO8S8EPp1isekHbOeHttgmkOPXMdSCzkIOqUO8K8v0ZwY9/778jdcI3+qU5Tf7a4nW1G8uxQCRtzupkTaAvZQYI4sHXSeFrhdrP35gWpDb8KXa1iHIlS9F8U2vI6B/h427rUnuL+rnUGlml73kFx9PiOsYhqg0ye8nDTUmgmU=;
+X-UUID: 1f408372c07f47e2906701fcf73ec337-20210611
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <mason.zhang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 503534829; Fri, 11 Jun 2021 05:28:17 -0700
+ with ESMTP id 296881141; Fri, 11 Jun 2021 05:53:56 -0700
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 05:28:09 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Jun 2021 05:46:35 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 20:27:56 +0800
+ 15.0.1497.2; Fri, 11 Jun 2021 20:46:27 +0800
 Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Jun 2021 20:27:55 +0800
-Message-ID: <1623413625.22727.10.camel@mbjsdccf07>
-Subject: [PATCH 2/2] dt-binding: mediatek: mt6779: update spi document
+ Transport; Fri, 11 Jun 2021 20:46:26 +0800
+Message-ID: <1623414736.22727.17.camel@mbjsdccf07>
+Subject: [PATCH v2 1/1] arm64: dts: mediatek: add MT6779 spi master dts node
 From: Mason Zhang <mason.zhang@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, Mason Zhang <Mason.Zhang@mediatek.com>,
- <wsd_upstream@mediatek.com>, <hanks.chen@mediatek.com>,
- <linux-kernel@vger.kernel.org>, "open list:SPI SUBSYSTEM"
- <linux-spi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 11 Jun 2021 20:13:45 +0800
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hanks.chen@mediatek.com>, <wsd_upstream@mediatek.com>, Mason Zhang
+ <Mason.Zhang@mediatek.com>
+Date: Fri, 11 Jun 2021 20:32:16 +0800
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_052820_588668_E0E97C00 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210611_055401_036559_3FDA3CDF 
+X-CRM114-Status: GOOD (  10.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,37 +87,150 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-this patch update spi document for MT6779 SOC.
+This patch add address-cells && size-cells in spi node based on patch v1.
 
 Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
 ---
- Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 112 +++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 9e43721fa7d6..7bae7eef26c7 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -13,6 +13,7 @@ Required properties:
-     - mediatek,mt8183-spi: for mt8183 platforms
-     - "mediatek,mt8192-spi", "mediatek,mt6765-spi": for mt8192 platforms
-     - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
-+    - "mediatek,mt6779-spi", "mediatek,mt6765-spi": for mt6779 platforms
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 370f309d32de..c81e76865d1b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -219,6 +219,118 @@
+ 			status = "disabled";
+ 		};
  
- - #address-cells: should be 1.
- 
++		spi0: spi0@1100a000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1100a000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI0>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi1: spi1@11010000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11010000 0 0x1000>;
++			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI1>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi2: spi2@11012000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11012000 0 0x1000>;
++			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI2>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi3: spi3@11013000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11013000 0 0x1000>;
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI3>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi4: spi4@11018000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11018000 0 0x1000>;
++			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI4>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi5: spi5@11019000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11019000 0 0x1000>;
++			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI5>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi6: spi6@1101d000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101d000 0 0x1000>;
++			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI6>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi7: spi7@1101e000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101e000 0 0x1000>;
++			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI7>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
+ 		audio: clock-controller@11210000 {
+ 			compatible = "mediatek,mt6779-audio", "syscon";
+ 			reg = <0 0x11210000 0 0x1000>;
+
 
 Hi Matthias:
-	
-	I'm sorry to disturb you, this patch is stay here for a long time, Do
-you have any suggestions about this patch? 
-	We hope this patch will be merged as soon as possible,If you have any
-concern, I will fix it in time.
 
-	Looking forward to your reply~  
+	Please ignore last mail, my eamil has a little bug~
+        I'm sorry to disturb you~
+	this patch is stay here for a long time, Do you have any suggestions about this patch? 
+        We hope this patch will be merged as soon as possible, If you have any concern, I will fix it in time.
+
+        Looking forward to your reply~  
 
 Thanks
 Mason
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
