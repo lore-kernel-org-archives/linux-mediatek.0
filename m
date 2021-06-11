@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87B27C48BE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39CF6C48BE0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 49922613CD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49922613CD
+	by mail.kernel.org (Postfix) with ESMTPS id E9321613CC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 11:49:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9321613CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7SOwzhDYEr+bWxMnWNmOM33vKdING2MVgyVfsx/Frdw=; b=JdlWaeHwvNTrVA
-	JHYCH7x65Ft9sEMA01w1GpBpKN2SLywqK434dNhjY3Jat5crsUaf9N2yMtt1cLLOf3K5Xsaju9sFC
-	mStyXSBnse5+AyfpgL/qPJfTObOjP/kSlCzOod48nVlo62cnYSNmCx2ooysLgbGcWyFIxgJhFIwwf
-	A5yKM3DHbchQLg9IBf7YbRo5RLX1CK2kCQH23mupAwP/VPV7V2nn/2zux/yXFGIYvFbPkRTiKpA7K
-	8a103xvL8XoIKH9v+clYookJATulO9NOvBsxlTVqwFAxZbKSSlxGX1Zgw34oOW9njyg6Z1uASoPWX
-	WMqNtt7JOI4TPbzrHFww==;
+	List-Owner; bh=f+n/+jZv17rgL34OVS7SqknbuKeL/mdPTv+9xk/3l1U=; b=4RujoCumqnd77j
+	e5AQlF1CzQRg2V1SX7UcHGsYJRisbj5aTMwt8GwtDHpz0nqNT2/SLmRJkmU/ro/aayFnNRIqgnrqf
+	wptqHRT+lW5fJ6iPVZ6SKJvlDPbJjSwKEanZ9PaeAyjku622wj07AEXCV3Q2TDpX1dIbXEctLLP5l
+	QZ7g2N20BMG1GDmQL6ipynARB0DbT0XWD8aBUpQWNNqFmwHlEEePjhcRkLfk7gnx2mcoFONp4EBH6
+	8c4IDO8yNYKvuhY1ajGcr4K6+afeH8RnnEyymwtNRpRjXlUp3P2amDZnHLv3eZih5ukbOxbuE5vBO
+	N64jsQGIHvFLbj0nCABw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrfem-0056gb-4y; Fri, 11 Jun 2021 11:49:00 +0000
+	id 1lrff8-0056lM-VT; Fri, 11 Jun 2021 11:49:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrfei-0056f2-36; Fri, 11 Jun 2021 11:48:59 +0000
-X-UUID: 7fc21778089d48829e546b81edb2774e-20210611
+ id 1lrfek-0056es-Uf; Fri, 11 Jun 2021 11:49:00 +0000
+X-UUID: 1ec5ea89cab945f09bc047aa05b37823-20210611
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5qlv+aTSXOykboIk5MWfCBoktuOBzsU2lWo7Y39Pf9Y=; 
- b=MTopX66G0mcF+b7ViO/Za/+zhZ4nPlo4+MKhtMzK3BxLEw5lUQB2DSoZT83UKNTDlaXHaQOa1DpakA4y/8S/LkJxXUelkEJCfD+cnUr6mKGjBWcbWfADx6APN5fA+u42G0TXZTykvdOlYRs6RvNR4MgUgy7/lTm8OW2ja4I2LWQ=;
-X-UUID: 7fc21778089d48829e546b81edb2774e-20210611
+ bh=HACzlcsjblv+NkbFze3sbsMNjVE6HPRfN40rsqK5e/o=; 
+ b=KEHy6pw3G3bHG7eyUOG1I3HgDOdFumJbh3Lo5wuNFF5aV/b+wbip+WyQGjbocIgVyrn+PjanyOnqzrKuJuMYITkh3UDpa0R7LNApSA+eGLebke3nWxXUtXBkwt0MoISUpPgiKiBe9Pyea/XoBAKMzVu9f5B0/S2YYtCVp0fRxB8=;
+X-UUID: 1ec5ea89cab945f09bc047aa05b37823-20210611
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1165751587; Fri, 11 Jun 2021 04:48:51 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 242501310; Fri, 11 Jun 2021 04:48:51 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 04:48:38 -0700
+ 15.0.1497.2; Fri, 11 Jun 2021 04:48:39 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 19:48:37 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 11 Jun 2021 19:48:38 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 11 Jun 2021 19:48:36 +0800
+ Transport; Fri, 11 Jun 2021 19:48:37 +0800
 From: Jianjun Wang <jianjun.wang@mediatek.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Ryder Lee
@@ -67,18 +67,18 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
  <sin_jieyang@mediatek.com>, <drinkcat@chromium.org>,
  <Rex-BC.Chen@mediatek.com>, Krzysztof Wilczyski <kw@linux.com>,
  <Ryan-JH.Yu@mediatek.com>
-Subject: [PATCH v2 1/2] dt-bindings: PCI: mediatek-gen3: Add property to
- disable dvfsrc voltage request
-Date: Fri, 11 Jun 2021 19:48:23 +0800
-Message-ID: <20210611114824.14537-2-jianjun.wang@mediatek.com>
+Subject: [PATCH v2 2/2] PCI: mediatek-gen3: Add support for disable dvfsrc
+ voltage request
+Date: Fri, 11 Jun 2021 19:48:24 +0800
+Message-ID: <20210611114824.14537-3-jianjun.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210611114824.14537-1-jianjun.wang@mediatek.com>
 References: <20210611114824.14537-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_044857_564552_E252E34D 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20210611_044859_025762_AEBCDFF2 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,43 +95,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add property to disable dvfsrc voltage request, if this property
-is presented, we assume that the requested voltage is always
-higher enough to keep the PCIe controller active.
+PCIe Gen3 PHY layer cannot work properly when the requested voltage
+is lower than a specific level(e.g. 0.55V, it's depends on
+the chip manufacturing process).
+
+When the dvfsrc feature is implemented, the requested voltage
+may be reduced to a lower level in suspend mode, hence that
+the MAC layer will assert a HW signal to request the dvfsrc
+to raise voltage to normal mode, and it will wait the voltage
+ready signal from dvfsrc to decide if the LTSSM can start normally.
+
+When the dvfsrc feature is not implemented, the MAC layer still
+assert the voltage request to dvfsrc when exit suspend mode,
+but will not receive the voltage ready signal, in this case,
+the LTSSM cannot start normally, and the PCIe link will be failed.
+
+Add support for disable dvfsrc voltage request, if the property of
+"disable-dvfsrc-vlt-req" is presented in device node, we assume that
+the requested voltage is always higher enough to keep the PCIe Gen3
+PHY active, and the voltage request to dvfsrc should be disabled.
 
 Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 Reviewed-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
 Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
 ---
- .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml       | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/pci/controller/pcie-mediatek-gen3.c | 31 +++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-index e7b1f9892da4..3e26c032cea9 100644
---- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-+++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-@@ -96,6 +96,12 @@ properties:
-   phys:
-     maxItems: 1
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index 3c5b97716d40..b3e442bc4c8f 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -68,6 +68,9 @@
+ #define PCIE_MSI_SET_ENABLE_REG		0x190
+ #define PCIE_MSI_SET_ENABLE		GENMASK(PCIE_MSI_SET_NUM - 1, 0)
  
-+  disable-dvfsrc-vlt-req:
-+    description: Disable dvfsrc voltage request, if this property is presented,
-+      we assume that the requested voltage is always higher enough to keep
-+      the PCIe controller active.
-+    type: boolean
++#define PCIE_MISC_CTRL_REG		0x348
++#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
 +
-   '#interrupt-cells':
-     const: 1
+ #define PCIE_MSI_SET_BASE_REG		0xc00
+ #define PCIE_MSI_SET_OFFSET		0x10
+ #define PCIE_MSI_SET_STATUS_OFFSET	0x04
+@@ -297,6 +300,34 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ 	val &= ~PCIE_INTX_ENABLE;
+ 	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
  
-@@ -166,6 +172,8 @@ examples:
-                      <&infracfg_rst 3>;
-             reset-names = "phy", "mac";
- 
-+            disable-dvfsrc-vlt-req;
++	/*
++	 * PCIe Gen3 PHY layer can not work properly when the requested voltage
++	 * is lower than a specific level(e.g. 0.55V, it's depends on
++	 * the chip manufacturing process).
++	 *
++	 * When the dvfsrc feature is implemented, the requested voltage
++	 * may be reduced to a lower level in suspend mode, hence that
++	 * the MAC layer will assert a HW signal to request the dvfsrc
++	 * to raise voltage to normal mode, and it will wait the voltage
++	 * ready signal from dvfsrc to decide if the LTSSM can start normally.
++	 *
++	 * When the dvfsrc feature is not implemented, the MAC layer still
++	 * assert the voltage request to dvfsrc when exit suspend mode,
++	 * but will not get the voltage ready signal, in this case, the LTSSM
++	 * cannot start normally, and the PCIe link will be failed.
++	 *
++	 * If the property of "disable-dvfsrc-vlt-req" is presented
++	 * in device node, we assume that the requested voltage is always
++	 * higher enough to keep the PCIe Gen3 PHY active, and the voltage
++	 * request to dvfsrc should be disabled.
++	 */
++	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
++	val &= ~PCIE_DISABLE_DVFSRC_VLT_REQ;
++	if (of_property_read_bool(port->dev->of_node, "disable-dvfsrc-vlt-req"))
++		val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
 +
-             #interrupt-cells = <1>;
-             interrupt-map-mask = <0 0 0 0x7>;
-             interrupt-map = <0 0 0 1 &pcie_intc 0>,
++	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
++
+ 	/* Assert all reset signals */
+ 	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+ 	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
 -- 
 2.25.1
 _______________________________________________
