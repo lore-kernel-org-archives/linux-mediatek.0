@@ -2,19 +2,20 @@ Return-Path: <SRS0=puoQ=LF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5EFBEC48BE0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 09:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73EF9C48BE0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 10:09:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2477C613E9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 09:57:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2477C613E9
+	by mail.kernel.org (Postfix) with ESMTPS id 3601C611CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 10:09:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3601C611CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,79 +25,87 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=md8cIpvbhQ+b+t36R/GpJhptoD/LamIIe06yIokZFtc=; b=Qy+UMOuzsyy8qPBHthBzLGYbhu
-	PqchyGqcj2wEvO9wVCjs1OPt6ULCrI7T9CUlM4KqyG/sTuqYOb/BHwNuQjeveyFvbkcMtHxIZsJEs
-	0YGOJisbLwE/5sSDl+r60BzszRgjcJakVcqxaq+MeiWMzxleOlRy4UypBY8UuMRxwvSv6v5R7QgrB
-	hcnZsH+eBXXv6PaGo2TMvk1lR9tod2r/w6h6xo5T5SpOC/Hve4GY1VKdrgC+gpX79H7rT7xAxV311
-	HRecUGxGFArFM9THgEIkTSQDjj3HtXwpB/3ho31N2eHjms0CCUVl0x6T7KvfPhmaCyXebPnlUUpwA
-	3KCqSlXg==;
+	bh=C8DHgTCkSCpsHs4Mfs2LpidIkeaTNSMNXerZ/K0qarQ=; b=rLNVi2Gwt8SNQchScwgq2/HVUd
+	QV+YPpzkiGQfBtP2vGrN+oHQJgC1AShIelGhjxxk8wc5XMPGmWBH29UQKTj7BoWgdnDo7fSh0I0YC
+	xPKVvXhfZOnwNRoAlXrb1MnIgMtTpDdXz0NlB5mteDk4zcMvbjOJsN+w9qD/hE3v5wB45S/jRMGnl
+	X9CrOlAR0Wtw10PW4/jry2e0waxWyP08KIp/7G3zueVRzF3MiizM/KgQse2wZmd0vF76f5/tyaZmn
+	9WlTVGylTzqDv8xL27tZi0D0rMu/neeoSgGgR19mMPQpvkRoBemQ4+KczaMswGZCBdXFuTeD5iRuu
+	Wfg8D/hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrduH-004dP0-CP; Fri, 11 Jun 2021 09:56:53 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1lre5k-004egh-SU; Fri, 11 Jun 2021 10:08:44 +0000
+Received: from mail-wr1-f42.google.com ([209.85.221.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrduE-004dOU-G1; Fri, 11 Jun 2021 09:56:51 +0000
-Received: by mail-wm1-x331.google.com with SMTP id l9so7771256wms.1;
- Fri, 11 Jun 2021 02:56:50 -0700 (PDT)
+ id 1lre5W-004edd-VF; Fri, 11 Jun 2021 10:08:32 +0000
+Received: by mail-wr1-f42.google.com with SMTP id r9so5412557wrz.10;
+ Fri, 11 Jun 2021 03:08:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2aS2aKAnK8HRnoLMpd4OzBFgPhNdvccv1jLgYOp9O1Q=;
- b=Vyj4vp+WQf3MX0A/ykECp07yDpSb+a2MxyYqRr080tcVKfgDf8tI640rL1QeMrCyK/
- KSxsuph4wUrjqR0LqLMf107xy6m80NsuUZ8qw6qGK49pLXNKXBzwlBA4xfcYuohcPlEd
- DJtrZ9Myk0J4eOPUqnBaXEUy2QwJsPSoyG1OhkYwAOaDqsL0I3/Eix5GjJdvYu8EyKRO
- YYmkuL/aB3Hyq9eGmrBD0f6jkV82JH2iQUnLbF7c77tbekcZIxtmu/FAiwa2nkgomV6w
- uMbwDw5ag+Ficnl5rBF6lagRTWz89/ntlx8XIrYzFsOiybdWQWTxRv6g45A13YaAw609
- OiJQ==
+ bh=gFhqPqOGSTJJX3dT27efQ5zQlrIM3h1f2aA9XZu0Vc8=;
+ b=Fb53nvxjK0BcaL7BNdeGiZtFhAi6nR4cLzDs/h/OmS32FIVcPer0MefjbMscy6hQXG
+ WMiJm90n3CUAcReVU4u3av59Vc6dEzxTd5D9bEFg8lJZiE210pmWEqeBDMBs1DQSL6dF
+ MAF21gvl2Xq08HRmFab1/k4A/kSdoqnLrq33ukkcjDTHatq70Lv4U25FLv0FcqxhfNGO
+ U7kVBzy5cS5yKtji5+YZARfpqSNYRHSw9oXO8shNn3E318Ag1KiTRFhxtfzd1EAkPoBy
+ TJet10s2y8zWQ5CY/FGR9VQUKRpBUjE6b9Fwdn4A48fsQpWlWMUN14UbhJda6vp5o1s4
+ TeDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=2aS2aKAnK8HRnoLMpd4OzBFgPhNdvccv1jLgYOp9O1Q=;
- b=XdgkMY39A8GbBKGSLLJwzb5NGIog+LUFhFfloJvPgWgXOTG5z1TxfF05J5NS/SlErr
- 9qIFqnbkvPv2g6iZmHPIXe64l+B+md1ldx6V9jcmS+k/B0rlBZeXy6AZ/Up3hbxm8Eyk
- H8vt7BSBJeJWRzjbYfvQIRm+Xgh9WUwo+p5un9NTIGMqC9fbi97usJ314CmMQqEZWnLp
- YtpT+gzrwkeN8seJLb8SzWTd/G+bfk6jb1U52M/mIt3rvlFliQUnsNIMs+BdvI34z4Pj
- 8GDNU5nw+pc1mImpurybqPRD9KRbeFHC6dJ5DYLb6nD8gPYSsF/4/IiRlGM+xgFaCINh
- lPXw==
-X-Gm-Message-State: AOAM533Ijhgfkt/RsCtGHShWJF+O5WVrgwnV0RmC/J/256yn3DSQwBsE
- tBq0x3q7+SitrUS7g/0+wgU=
-X-Google-Smtp-Source: ABdhPJzRO51Kgr6iMGfZOZyQH08p7CKPYr70cepTRwtpjrGRVpTlK4qEzZS/X+xskoGy1H8iq7qkGw==
-X-Received: by 2002:a05:600c:2e43:: with SMTP id
- q3mr3096187wmf.11.1623405409129; 
- Fri, 11 Jun 2021 02:56:49 -0700 (PDT)
+ bh=gFhqPqOGSTJJX3dT27efQ5zQlrIM3h1f2aA9XZu0Vc8=;
+ b=FcMu2M3GSLvd8AyiYAB0QKg0y+ZJp1wOTg64QwnwsUgDQBY0bnLVzNgGq+O7iYgQ0u
+ sIvqUPmgsH8aUJeqsIi/XhhJTzrJ6E1hgEa5niWLOYgV7b0XsYv2B5ftz64qYQXWtRqA
+ wcnll4dSYVHCggmu1+c8JzRnIQkWSqSRCiV6T99QaktMPOOtGGTNV1dowo0J+cM3mOZ0
+ LjOLsTa5oovEt1Gb89ltjwtWtg+qB0hK6AQU0fETs8GA4P2yTWfBV3EOCp/GJdxEADs+
+ auBBBopLxywE+q4YY9X00BfH8gBPwIyULZHtP+CBCbgselLU9tPPLCRX4NaFltCh5xXg
+ YIQQ==
+X-Gm-Message-State: AOAM533GxVTlw6BiW36j4wNtGieSf0XCUcGjcCd+dybmWGNiI/63u5cM
+ 4u2wr5UdEI2ZCa9zvlZdkZY=
+X-Google-Smtp-Source: ABdhPJyXEm705FvtfJsTKJDMlqkddRVeBGjayOW/x5R9yipKm4VX2Cwnxm40M9p06MvhSKM1KAZsQg==
+X-Received: by 2002:adf:ea4c:: with SMTP id j12mr3166775wrn.64.1623406047349; 
+ Fri, 11 Jun 2021 03:07:27 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.126.134])
- by smtp.gmail.com with ESMTPSA id 73sm6955489wrk.17.2021.06.11.02.56.47
+ by smtp.gmail.com with ESMTPSA id r6sm6437738wrz.91.2021.06.11.03.07.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Jun 2021 02:56:48 -0700 (PDT)
-Subject: Re: [PATCH v9 01/22] dt-bindings: ARM: Mediatek: Add new document
- bindings of imp i2c wrapper controller
-To: Stephen Boyd <sboyd@kernel.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Rob Herring <robh@kernel.org>
-Cc: Nicolas Boichat <drinkcat@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Weiyi Lu <weiyi.lu@mediatek.com>
-References: <20210524122053.17155-1-chun-jie.chen@mediatek.com>
- <20210524122053.17155-2-chun-jie.chen@mediatek.com>
- <20210602171201.GA3566462@robh.at.kernel.org>
- <66e017401ab93aa02c5d2bbf11be9589b36649ac.camel@mediatek.com>
- <1f59ed31-4a0e-9719-bf84-1fe4cdd6c57d@gmail.com>
- <162334689784.9598.2709970788186333494@swboyd.mtv.corp.google.com>
+ Fri, 11 Jun 2021 03:07:26 -0700 (PDT)
+Subject: Re: [PATCH v5 13/16] media: mtk-vcodec: Get rid of
+ mtk_smi_larb_get/put
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>,
+ Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, srv_heupstream@mediatek.com,
+ Devicetree List <devicetree@vger.kernel.org>,
+ lkml <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org,
+ youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
+ chao.hao@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
+ eizan@chromium.org, Alexandre Courbot <acourbot@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, Irui Wang <irui.wang@mediatek.com>,
+ linux-media@vger.kernel.org
+References: <20210410091128.31823-1-yong.wu@mediatek.com>
+ <20210410091128.31823-14-yong.wu@mediatek.com>
+ <CAJMQK-iTrQRDDm_=LNqSpvXFd431LYRxXMasJHUpN+K8rJ=Qpg@mail.gmail.com>
+ <1620822547.2983.8.camel@mhfsdcap03>
+ <c1422242-8d8c-9592-c22d-288c503cd8b1@gmail.com>
+ <1623326528.23717.20.camel@mhfsdcap03>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <de082c64-ace3-30b5-7404-1f4b607a83e1@gmail.com>
-Date: Fri, 11 Jun 2021 11:56:47 +0200
+Message-ID: <e7269c80-5437-6ab9-c1db-df0b94eb97d8@gmail.com>
+Date: Fri, 11 Jun 2021 12:07:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <162334689784.9598.2709970788186333494@swboyd.mtv.corp.google.com>
+In-Reply-To: <1623326528.23717.20.camel@mhfsdcap03>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_025650_567627_7F770379 
-X-CRM114-Status: GOOD (  26.30  )
+X-CRM114-CacheID: sfid-20210611_030831_049671_6B6ED871 
+X-CRM114-Status: GOOD (  23.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,81 +124,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/06/2021 19:41, Stephen Boyd wrote:
-> Quoting Matthias Brugger (2021-06-08 07:45:49)
+On 10/06/2021 14:02, Yong Wu wrote:
+> On Thu, 2021-06-10 at 09:53 +0200, Matthias Brugger wrote:
+>> Hi Yong,
 >>
->>
->> On 07/06/2021 07:20, Chun-Jie Chen wrote:
->>> On Wed, 2021-06-02 at 12:12 -0500, Rob Herring wrote:
->>>>> +
->>>>> +description:
->>>>> +  The Mediatek imp i2c wrapper controller provides functional
->>>>> configurations and clocks to the system.
->>>>> +
->>>>> +properties:
->>>>> +  compatible:
->>>>> +    items:
->>>>> +      - enum:
->>>>> +          - mediatek,mt8192-imp_iic_wrap_c
->>>>> +          - mediatek,mt8192-imp_iic_wrap_e
->>>>> +          - mediatek,mt8192-imp_iic_wrap_s
->>>>> +          - mediatek,mt8192-imp_iic_wrap_ws
->>>>> +          - mediatek,mt8192-imp_iic_wrap_w
->>>>> +          - mediatek,mt8192-imp_iic_wrap_n
->>>>
->>>> Looks to me like these are all the same h/w, but just have differing 
->>>> sets of clocks. That's not really a reason to have different 
->>>> compatibles. 
->>>>
->>>> If you need to know what clocks are present, you can walk the DT for 
->>>> all 'clocks' properties matching this clock controller instance. Or
->>>> use 
->>>> 'clock-indices' to define which ones are present.
-> 
-> Is the idea to use clock-indices and then list all the clock ids in
-> there and match them up at driver probe time to register the clocks
-> provided by the IO region? Feels like we'll do a lot of parsing at each
-> boot to match up structures and register clks with the clk framework.
-> 
-> If it's like other SoCs then the clk id maps to a hard macro for a type
-> of clk, and those hard macros have been glued together with other clks
-> and then partitioned into different IO regions to make up a clock
-> controller. Or maybe in this case, those clk hard macros have been
-> scattered into each IP block like SPI, i2c, uart, etc. so that the clock
-> controller doesn't really exist and merely the gates and rate control
-> (mux/divider) for the clk that's clocking some particular IP block all
-> live inside the IP wrapper. If it's this case then I hope there are a
-> bunch of PLLs that are fixed rate so that the i2c clk doesn't have to go
-> outside the wrapper to change frequency (of which there should be two
-> "standard" frequencies anyway).
-> 
->>>>
->>>> Rob
+>> On 12/05/2021 14:29, Yong Wu wrote:
+>>> On Wed, 2021-05-12 at 17:20 +0800, Hsin-Yi Wang wrote:
+>>>> On Sat, Apr 10, 2021 at 5:14 PM Yong Wu <yong.wu@mediatek.com> wrote:
+>>>>>
+>>>>> MediaTek IOMMU has already added the device_link between the consumer
+>>>>> and smi-larb device. If the vcodec device call the pm_runtime_get_sync,
+>>>>> the smi-larb's pm_runtime_get_sync also be called automatically.
+>>>>>
+>>>>> CC: Tiffany Lin <tiffany.lin@mediatek.com>
+>>>>> CC: Irui Wang <irui.wang@mediatek.com>
+>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>>>> Reviewed-by: Evan Green <evgreen@chromium.org>
+>>>>> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+>>>>> ---
+>>>>>  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 ++-------------
+>>>>>  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
+>>>>>  .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
+>>>>>  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 46 ++-----------------
+>>>>>  4 files changed, 10 insertions(+), 77 deletions(-)
 >>>
->>> Some module is divided to sub-modules which are designed in different
->>> h/w blocks for different usage, and if we want to use the same
->>> compatible to present these h/w blocks, we need to move the clock data
->>> provided by these h/w blocks to dts, but we usually use different
->>> compatible to get the h/w blocks data in
->>> Mediatek's clock driver, so do you suggest to register clock provided
->>> by different h/w blocks using same compatible?
+>>> [...]
+>>>
+>>>>> @@ -108,13 +80,6 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
+>>>>>                 }
+>>>>>         }
+>>>>>
+>>>>> -       ret = mtk_smi_larb_get(pm->larbvenc);
+>>>>> -       if (ret) {
+>>>>> -               mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
+>>>>> -               goto clkerr;
+>>>>> -       }
+>>>>> -       return;
+>>>>
+>>>> You can't delete the return; here, otherwise vcodec_clk will be turned
+>>>> off immediately after they are turned on.
+>>>
+>>> Thanks very much for your review.
+>>>
+>>> Sorry for this. You are quite right.
+>>>
+>>> I checked this, it was introduced in v4 when I rebase the code. I will
+>>> fix it in next time.
 >>>
 >>
->> The mapping of them is as following:
->> imp_iic_wrap_c:  11007000
->> imp_iic_wrap_e:  11cb1000
->> imp_iic_wrap_s:  11d03000
->> imp_iic_wrap_ws: 11d23000
->> imp_iic_wrap_w:  11e01000
->> imp_iic_wrap_n:  11f02000
->>
+>> Please also make sure that you add all maintainers. I realized that at least for
+>> the media/platform drivers we miss the maintainer and the corresponding mailing
+>> list.
+>> This is especially important in this series, as it spans several subsystems.
 > 
-> Sure. What is their purpose though? Are they simply a bunch of different
-> i2c clks?
+> Thanks for hint. I only added the file maintainer here. I will add
+> linux-media in next version.
+> 
+> By the way, this patchset cross several trees, then which tree should it
+> go through. Do you have some suggestion?
 > 
 
-That would be need to be answered by MediaTek as I don't have access to any
-documentation.
+That's a good question. I think the media tree would be a good candidate, as it
+has the biggest bunch of patches. But that would mean that Joerg is fine that.
+The DTS part could still go through my tree.
 
 Regards,
 Matthias
