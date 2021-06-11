@@ -2,77 +2,80 @@ Return-Path: <SRS0=puoQ=LF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B45E2C48BD1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 18:05:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B91CC48BD1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 20:58:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84F1060234
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 18:05:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84F1060234
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F2FB261278
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Jun 2021 20:58:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2FB261278
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KnlTOHGsqwkALXKk3cvEThsDCnTIVHfZ+RYnneHeiOY=; b=Wg0Jad9GAPUFHu
-	fma4lThksnckLs4Lil9OPH81pGX+RSp9bdkCaOKFuhg2s7O5xu6fomPdQIY04BuRSugRU0pXGZPFn
-	841X7qjXVbGg4ba3Ka7QHAJ/Z7snkkL0OaR7WBbkNBc2STqJF3I8QGCzLNxbG2s8PVCF0GBvhHa42
-	FJ2mCjwEbb5sIk564Mz4qBiiYFv7oz+NtoGb7F5hoiquF/2aPL4GiXbPoaho0eT1t6/3LOpgFlHos
-	NEIMp80nvnjirrE/zyvmQeGFcVvtcKd3G3qelEwhvEw1XXx1PnwF4aKAkTJcHo25Y4uIA1Bpu+iPq
-	EjM/mkgXr6EYtOZNVoZw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WvUSPPXK9Ml6Bfc0GChGTwTlXnbC6D1NzEVO8ED+trI=; b=t2X2SHV8PE+iK3
+	nFTYmqLq+g0EdpGwU+6Vp7xUyecHcf3rY94CVg8i6kts2wCcN1Xky8HxlhUeikRQteLXmPkgJFDYZ
+	XAatutNDCfKQDofD77F0f/jyMmjEPgpJpI+XEsautRqJbxiCT6kgs0nHRL1JAPSbR3dCpDR6EfMKf
+	JxXoTQsYXffGs2yDu9qAKa4dMQpN7bu3cMGchR/JSfUONdyi0glqBU1MEvtTeopK4ePR0AqBzlLzB
+	HCs/ih6Ef5kWENRu8+bWEniYnZWaGk49/67Jy2s6EPI1b8FpBaW976piTmxhxkFgJiXg88lKRVUte
+	N6fFW+gtvgnG8AdqM65w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lrlWX-006Piq-4y; Fri, 11 Jun 2021 18:04:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lroEe-00756b-0m; Fri, 11 Jun 2021 20:58:36 +0000
+Received: from mail-io1-f52.google.com ([209.85.166.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lrlWU-006Pev-Mz
- for linux-mediatek@lists.infradead.org; Fri, 11 Jun 2021 18:04:52 +0000
-X-UUID: 083400919c5b4d8689c3662f42a916bf-20210611
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=LozaApKRvobVlSM+rBhm25HivBWM8nFpA/DEQHqKKMM=; 
- b=GsPCLFFwgvc+ltfuQCoCBt/zghZMYV128eAEBixa3P3mqvY41j3ir8y82SZ9WO8G9JI7xXPgUuEn5hU2TvEVNqrb6iOY2DntKUAiIYIHSvdwEVa1H8fthgE0VGDNhoqES4HVxkIR/EPcE1mfi/WeOHvEYdvlE6at/aXjv7F9lJA=;
-X-UUID: 083400919c5b4d8689c3662f42a916bf-20210611
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1667030404; Fri, 11 Jun 2021 11:04:46 -0700
-Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 11 Jun 2021 11:04:38 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Jun 2021 02:04:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 12 Jun 2021 02:04:23 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 1/2] mt76: mt7915: fix IEEE80211_HE_PHY_CAP7_MAX_NC for
- station mode
-Date: Sat, 12 Jun 2021 02:04:20 +0800
-Message-ID: <28077c152c43d40f78252efb39d77ed5fca18028.1623434432.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lrnaB-006rAZ-50; Fri, 11 Jun 2021 20:16:48 +0000
+Received: by mail-io1-f52.google.com with SMTP id f10so17963909iok.6;
+ Fri, 11 Jun 2021 13:16:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=q0+x2SqoxWiaPifmKrDxHGfFMZV2vnASbAUPISmleOI=;
+ b=Au0ExgR8BkAipVKUcnB2s2CH4ZwATdujk4Yosg69lZJqK4zz6iZTAir5Gn46A/FvS3
+ Oh9grHleIuyqE6bv4GOQR+QLkHQzW5Izv7+sglEYwldtTvSobHch8k72+D5zNVb4tQx0
+ AsL2jC0CR5Y/XHEdt6qoCyLhEeqbzpJ53KormtCN+8HgerIwaiCs+5JLQphdyphydMmv
+ sR213L7OjeKS7em1QlA1DhzP6TDZisHYuh72YSHSkl4YQvee++7DueQnGG7L8vAUr7wo
+ nRL7Dd89khQo6F8NElJ3VEnhitd4fr6hZLrhB9cqKXe41iY7mGQYSF7LQF1kR0MqLQFp
+ iOgQ==
+X-Gm-Message-State: AOAM531nR9mZJdY/nwz2F0NlpDX75/FFjCH7hc76Er8iUCgVzkJnj//5
+ q4PUekhSVOZ1CVYG7h/U3w==
+X-Google-Smtp-Source: ABdhPJzQIm/BqMSQwWzSA9z9gs+k22W0KTiGbehcPSKI8jfx8c3oJlpVku2pmx/4kzLFd1YTq5DgtA==
+X-Received: by 2002:a05:6602:29d0:: with SMTP id
+ z16mr4427962ioq.207.1623442606182; 
+ Fri, 11 Jun 2021 13:16:46 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.252])
+ by smtp.gmail.com with ESMTPSA id i13sm3833718ilr.16.2021.06.11.13.16.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Jun 2021 13:16:45 -0700 (PDT)
+Received: (nullmailer pid 1608484 invoked by uid 1000);
+ Fri, 11 Jun 2021 20:16:43 -0000
+Date: Fri, 11 Jun 2021 14:16:43 -0600
+From: Rob Herring <robh@kernel.org>
+To: cy_huang <u0084500@gmail.com>
+Cc: lgirdwood@gmail.com, broonie@kernel.org, matthias.bgg@gmail.com,
+ gene_chen@richtek.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, cy_huang@richtek.com, gene.chen.richtek@gmail.com
+Subject: Re: [PATCH 1/2] regulator: mt6360: Add optional
+ mediatek.power-off-sequence in bindings document
+Message-ID: <20210611201643.GA1583875@robh.at.kernel.org>
+References: <1622616875-22740-1-git-send-email-u0084500@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1622616875-22740-1-git-send-email-u0084500@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210611_110450_810260_1C3FCCBC 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210611_131647_248531_7139C7FB 
+X-CRM114-Status: GOOD (  19.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +92,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The value of station mode is always 0.
+On Wed, Jun 02, 2021 at 02:54:34PM +0800, cy_huang wrote:
+> From: ChiYuan Huang <cy_huang@richtek.com>
+> 
+> Add optional mediatek.power-off-sequence in bindings document.
+> 
+> Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
+> ---
+> Hi,
+> 
+> Originally, we think it must write in platform dependent code like as bootloader.
+> But after the evaluation, it must write only when system normal HALT or POWER_OFF.
+> For the other cases, just follow HW immediate off by default.
 
-Fixed: 00b2e16e0063 ("mt76: mt7915: add TxBF capabilities")
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/init.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+Wouldn't this be handled by PSCI implementation?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 72b65799cc1a..4e02b4e45042 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -574,6 +574,9 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
- 	if (nss < 2)
- 		return;
- 
-+	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
-+	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
-+
- 	if (vif != NL80211_IFTYPE_AP)
- 		return;
- 
-@@ -587,9 +590,6 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
- 	c = IEEE80211_HE_PHY_CAP6_TRIG_SU_BEAMFORMING_FB |
- 	    IEEE80211_HE_PHY_CAP6_TRIG_MU_BEAMFORMING_PARTIAL_BW_FB;
- 	elem->phy_cap_info[6] |= c;
--
--	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
--	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
- }
- 
- static void
--- 
-2.18.0
+> ---
+>  .../devicetree/bindings/regulator/mt6360-regulator.yaml       | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml b/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
+> index a462d99..eaf36e2 100644
+> --- a/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
+> +++ b/Documentation/devicetree/bindings/regulator/mt6360-regulator.yaml
+> @@ -24,6 +24,16 @@ properties:
+>    LDO_VIN3-supply:
+>      description: Input supply phandle(s) for LDO6/7
+>  
+> +  mediatek,power-off-sequence:
+> +    description: |
+> +      Power off sequence time selection for BUCK1/BUCK2/LDO7/LDO6, respetively.
+> +      Cause these regulators are all default-on power. Each value from 0 to 63,
+> +      and step is 1. Each step means 2 millisecond delay.
+> +      Therefore, the power off sequence delay time range is from 0ms to 126ms.
+> +    $ref: "/schemas/types.yaml#/definitions/uint8-array"
+> +    minItems: 4
+> +    maxItems: 4
+
+So this is the delay between BUCK1 and BUCK2, then BUCK2 to LDO7, etcc? 
+If we wanted to express this in DT, we'd made this generic which would 
+need to be more flexible. A poweroff delay in each regulator (similar to 
+the existing power on delay) would be sufficient for what you need I 
+think.
+
+Rob
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
