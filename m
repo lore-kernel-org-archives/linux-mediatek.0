@@ -2,73 +2,68 @@ Return-Path: <SRS0=gblj=LH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4513FC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 13:54:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D614DC48BCF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 14:59:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A5766128A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 13:54:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A5766128A
+	by mail.kernel.org (Postfix) with ESMTPS id 5A5DE61357
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 14:59:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A5DE61357
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=reto-schneider.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=k3QxsgsVDllK1MpnvPcjiLICuO1eRO6UFaRk4EsP3jA=; b=R/JOUxWFyUKTBXysL9SvxL8FHf
-	dDYrMZmU0P66pyTBWuXmVnlXUPyRvdp+rmuBBdx2C9yc1dZjEhey/fnfjR1OT7JjzJCUecLYTND3l
-	4xmCZuXMsL9MsxUfMphT768j/QY/BIhT3Ko1UVGksCAcfJgeeyx57cFIGw1CSLR8DG7t90M1lPFbA
-	gwjW24K0UQT8clxhub3Nww24VY49a0a2iJOKizBor7Fwgj4wB1gn1tlvmOSVfgPSX38xx/TgGNHmx
-	rbkABQUu6JIWW0JvI9pjvtkksmAVG89cgC+bk6lIxVUmutzf+4u+OxL9H9ZQuI+u+V0q4EvN6tMrn
-	5kJZgU0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HBF2kC8LV9FTuhDfD299TwsqkDKYW9voJ6UkE7UiKkM=; b=XSnXwQ4I5J5EDP
+	MbE54UffsTWw1nTEhBnSA2IJMYPhxTtYoHTR+4MdEHr1HoMdTKskpgjNwe/hLt01IgqFQ83DeT7oa
+	RFoH4cKbBX6w917gT8odwlSqcQFWccC5fow9mbcXARvuZQAgdSy7WkZN18QflFVzsZyb5KfL11MgO
+	qW+fkGJp9MGZPQ+mqoT2E+5X9i5X4WNKTdCvKrZA7VatCksxUwHY4tcYNBbQQH1fEf5H4879l0PPg
+	fPPr6fABLpQQvSn0tNmDdT/nArqa+BLY1qd6hT629G7hlA2/mM6PdiAOD/Kfsvp0H8fECLuxr/FCg
+	BfASYOZhykinFX2gAdkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsQZ2-00AWfn-Cp; Sun, 13 Jun 2021 13:54:12 +0000
-Received: from mxout017.mail.hostpoint.ch ([2a00:d70:0:e::317])
+	id 1lsRaS-00Abx0-4W; Sun, 13 Jun 2021 14:59:44 +0000
+Received: from mxout014.mail.hostpoint.ch ([2a00:d70:0:e::314])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsQYp-00AWdv-He; Sun, 13 Jun 2021 13:54:01 +0000
-Received: from [10.0.2.45] (helo=asmtp012.mail.hostpoint.ch)
- by mxout017.mail.hostpoint.ch with esmtp (Exim 4.94.2 (FreeBSD))
+ id 1lsRaN-00AbwG-WE; Sun, 13 Jun 2021 14:59:41 +0000
+Received: from [10.0.2.46] (helo=asmtp013.mail.hostpoint.ch)
+ by mxout014.mail.hostpoint.ch with esmtp (Exim 4.94.2 (FreeBSD))
  (envelope-from <code@reto-schneider.ch>)
- id 1lsQYh-000NnB-6r; Sun, 13 Jun 2021 15:53:51 +0200
+ id 1lsRaG-000KbX-II; Sun, 13 Jun 2021 16:59:32 +0200
 Received: from [2a02:168:6182:1:d747:8127:5b7a:4266]
- by asmtp012.mail.hostpoint.ch with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (helo=eleanor.home.reto-schneider.ch)
+ by asmtp013.mail.hostpoint.ch with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.94.2 (FreeBSD)) (envelope-from <code@reto-schneider.ch>)
- id 1lsQYh-000JXF-4H; Sun, 13 Jun 2021 15:53:51 +0200
+ id 1lsRaG-00020T-Fa; Sun, 13 Jun 2021 16:59:32 +0200
 X-Authenticated-Sender-Id: reto-schneider@reto-schneider.ch
-Subject: Re: [PATCH v1 2/2] net: ethernet: mtk_eth_soc: Support custom ifname
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, Stefan Roese <sr@denx.de>,
- Reto Schneider <reto.schneider@husqvarnagroup.com>,
- "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>,
- Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210613115820.1525478-1-code@reto-schneider.ch>
- <20210613115820.1525478-2-code@reto-schneider.ch>
- <20210613122043.GP22278@shell.armlinux.org.uk>
 From: Reto Schneider <code@reto-schneider.ch>
-Message-ID: <aa7a15cc-761f-00b0-5582-a8045d8f30ed@reto-schneider.ch>
-Date: Sun, 13 Jun 2021 15:53:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+Cc: Stefan Roese <sr@denx.de>,
+ Reto Schneider <reto.schneider@husqvarnagroup.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/2] dt-bindings: net: mediatek: Support custom ifname
+Date: Sun, 13 Jun 2021 16:58:59 +0200
+Message-Id: <20210613145859.1774246-1-code@reto-schneider.ch>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210613115820.1525478-1-code@reto-schneider.ch>
+References: <20210613115820.1525478-1-code@reto-schneider.ch>
 MIME-Version: 1.0
-In-Reply-To: <20210613122043.GP22278@shell.armlinux.org.uk>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210613_065359_640185_EFBD5C74 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20210613_075940_062838_0F95ABE5 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +75,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Russell,
+From: Reto Schneider <reto.schneider@husqvarnagroup.com>
 
-On 13.06.21 14:20, Russell King (Oracle) wrote:
-> Please don't use strncpy() - this is a good example why strncpy() is bad
-> news.
-> 
->   * strncpy - Copy a length-limited, C-string
->   * @dest: Where to copy the string to
->   * @src: Where to copy the string from
->   * @count: The maximum number of bytes to copy
->   *
->   * The result is not %NUL-terminated if the source exceeds
->   * @count bytes.
-> 
-> Consequently, if "name" is IFNAMSIZ bytes or longer,
-> eth->netdev[id]->name will not be NUL terminated, and subsequent use
-> will run off the end of the string. strscpy() is safer to use here.
+The (optional) label property allows to specify customized interfaces
+names.
 
-Thanks a lot for finding this (embarrassing mistake) and pointing me in 
-the right direction (did dot know about strscpy).
+The motivation behind this change is to allow embedded devices to keep
+their first switch port be named "eth0", even when switching to the DSA
+architecture. In order to do so, it must be possible to name the MAC
+interface differently from eth0.
 
-Will send v2 soon.
+Signed-off-by: Reto Schneider <reto.schneider@husqvarnagroup.com>
+---
 
-Kind regards,
-Reto
+(no changes since v1)
+
+ Documentation/devicetree/bindings/net/mediatek-net.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
+index 72d03e07cf7c..93e35f239a0a 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-net.txt
++++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
+@@ -51,6 +51,9 @@ Required properties:
+ 	is equal to 0 and the MAC uses fixed-link to connect
+ 	with internal switch such as MT7530.
+ 
++Optional properties:
++- label: Name of interface, defaults to ethX if missing
++
+ Example:
+ 
+ eth: ethernet@1b100000 {
+@@ -76,6 +79,7 @@ eth: ethernet@1b100000 {
+ 		compatible = "mediatek,eth-mac";
+ 		reg = <0>;
+ 		phy-handle = <&phy0>;
++		label = "mac1";
+ 	};
+ 
+ 	gmac2: mac@1 {
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
