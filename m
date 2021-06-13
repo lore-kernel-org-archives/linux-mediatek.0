@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6652FC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 03:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38310C48BCF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:13:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 01E2F61166
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 03:42:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01E2F61166
+	by mail.kernel.org (Postfix) with ESMTPS id CBB01611CC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:13:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBB01611CC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GUSbnVBYRsjFmQuk6tz95UsJvYrX3TiPYqo0Hv5ZM8Y=; b=nM80pPhJJadbf4
-	3919pv52yiGj2AqcYP+dxHmy4fU6XCNBOzt/Vn3lsvpUgkKOOp2onFD1OAmEjrR7Hy39OtZWL01MK
-	WoVan122Pxc2RXuGkpgY41QwGjbDaShAcZIVwu+hRBiInGWAqTwWthiJ6556dcPTFGJ9i+HNue1CM
-	mJ7zJN2FHlvnp5rk7mtJ0EZvQNWjo3iAr/Ek4ZtGOcJndvQNFuGwtwWY+10WXfuaGJ4P+yP9QM0sT
-	DsbGxQW3FX5i2gpG1wKosPlML8FrqnbgdBvag8clP9P/cgiZrZStekClz/ppcK1l7r3gWrA9J/jlK
-	OG2fZ9uOFzRHRK7Ranjw==;
+	List-Owner; bh=URwRPU3HDTIGqSIYMSMESeFYIPR4v751A8j4e/z4u2k=; b=BW9NEioW8o3Yk4
+	4XBRF5zOyxhjYVHbdKQXU1Dbrbg2601KU8rz26uoYBFGg8genM6Ea0VybvdklIqAhdhkxJ/igkegn
+	2ybd8Jthyol5kvD0XqUkk3ImslsxMLdQKyhX3Z+VMLIK8ExpnOY+Zx1Ckj0mLUn+plsQ3nZ1oYnV3
+	/haisASElSFA7GlhPmT8+Yxp/DO8YRXSB4Qs91DgFV2eGP1WCmhJixwoRNc5twe5JPCdxOu6PwNmT
+	I7f5MDdCAuNRfMt9lsjZ9IZNeesBi4C9Mk1qJuxCkVsFYHM6Q5bU2VG8N5/qvsTn1TXkKs4hz6ni9
+	/xURtU6T9zCVLPYzBH8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsGyZ-009WyH-F9; Sun, 13 Jun 2021 03:39:55 +0000
+	id 1lsJKZ-009mqm-8N; Sun, 13 Jun 2021 06:10:47 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsGyU-009WxT-Il
- for linux-mediatek@lists.infradead.org; Sun, 13 Jun 2021 03:39:54 +0000
-X-UUID: c17403da7f1b466db885159c0b9588ee-20210612
+ id 1lsJKM-009mq9-Kh; Sun, 13 Jun 2021 06:10:37 +0000
+X-UUID: 16c168334468455f8808fd751e731e18-20210612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=ECEz3qe6puTooSyX+6BZaB4ZfUbyMdSrB62VqjpYSK8=; 
- b=bF8Emve/+YL5POdRJF0MSfrF0aAnUh8Pw8Ci8dXLRQrQtIcb7/yhnDTFKv1r73GYjutQBelTjFsVDMCTvOFN4IWWIEgbT1c1FDycfuUlSB7c7KZrs0Ni0cfKhgh1q+7RKPSooucbQcKHtHyEm0TwRSpsFNiIN/lwYTkITa2+H5E=;
-X-UUID: c17403da7f1b466db885159c0b9588ee-20210612
+ bh=+dP0lF1MqHc4d/D3DVKON5unIj7sATG7uGXhoFthy4Q=; 
+ b=GXXSJzWLvP2FEW5O03ttccSDz6byfWGHPrxfKhbXZXftrJFTgFdsdJoHQYPL9H00NZAczKy4Rh9fNaRc9RTsVKfS2+0JEvGFKe2Wa9ccksRl+9lXutiD7rpSXAFGHf9gXfGvkfJ4nip5fFnBmolC/l7qlpQ2kFrZYhqsfPqsl+Q=;
+X-UUID: 16c168334468455f8808fd751e731e18-20210612
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
+ (envelope-from <mason.zhang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1625639699; Sat, 12 Jun 2021 20:39:41 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1562795792; Sat, 12 Jun 2021 23:10:30 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Jun 2021 20:39:22 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Jun 2021 11:39:08 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 13 Jun 2021 11:39:08 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
- <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Lorenzo Bianconi <lorenzo@kernel.org>
-Subject: [PATCH] mt76: mt7921: introduce testmode support
-Date: Sun, 13 Jun 2021 11:39:07 +0800
-Message-ID: <1623555547-15442-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ 15.0.1497.2; Sat, 12 Jun 2021 23:10:23 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 13 Jun 2021 14:10:09 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 13 Jun 2021 14:10:08 +0800
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <wsd_upstream@mediatek.com>, <hanks.chen@mediatek.com>,
+ <mason.zhang@mediatek.com>, Mason Zhang <Mason.Zhang@mediatek.com>
+Subject: [PATCH v3 1/1] arm64: dts: mediatek: add MT6779 spi master dts node
+Date: Sun, 13 Jun 2021 13:54:59 +0800
+Message-ID: <20210613055458.6073-1-mason.zhang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210612_203952_065607_C6C6C96D 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20210612_231036_108877_EFE4F350 
+X-CRM114-Status: UNSURE (   8.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,322 +87,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Lorenzo Bianconi <lorenzo@kernel.org>
+From: Mason Zhang <Mason.Zhang@mediatek.com>
 
-We add the testmode support to access the testmode feature provided
-by the MT7921 firmware.
+This patch add spi master dts node for MT6779 SOC.
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   1 +
- .../wireless/mediatek/mt76/mt7921/Makefile    |   1 +
- .../net/wireless/mediatek/mt76/mt7921/init.c  |   2 +
- .../net/wireless/mediatek/mt76/mt7921/main.c  |   2 +
- .../net/wireless/mediatek/mt76/mt7921/mcu.h   |  26 +++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |   4 +
- .../wireless/mediatek/mt76/mt7921/testmode.c  | 173 ++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/testmode.h |   2 +
- 8 files changed, 211 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/testmode.c
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 112 +++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 1c73beb22677..a37090cac019 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -548,6 +548,7 @@ enum {
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 370f309d32de..c81e76865d1b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -219,6 +219,118 @@
+ 			status = "disabled";
+ 		};
  
- /* offload mcu commands */
- enum {
-+	MCU_CMD_TEST_CTRL = MCU_CE_PREFIX | 0x01,
- 	MCU_CMD_START_HW_SCAN = MCU_CE_PREFIX | 0x03,
- 	MCU_CMD_SET_PS_PROFILE = MCU_CE_PREFIX | 0x05,
- 	MCU_CMD_SET_CHAN_DOMAIN = MCU_CE_PREFIX | 0x0f,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-index e531666f9fb4..8361f9558ea1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
-@@ -5,3 +5,4 @@ obj-$(CONFIG_MT7921E) += mt7921e.o
- CFLAGS_trace.o := -I$(src)
- 
- mt7921e-y := pci.o mac.o mcu.o dma.o eeprom.o main.o init.o debugfs.o trace.o
-+mt7921e-$(CONFIG_NL80211_TESTMODE) += testmode.o
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 2caa5096a419..c37084796525 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -127,6 +127,8 @@ int mt7921_mac_init(struct mt7921_dev *dev)
- 	for (i = 0; i < 2; i++)
- 		mt7921_mac_init_band(dev, i);
- 
-+	dev->mt76.rxfilter = mt76_rr(dev, MT_WF_RFCR(0));
++		spi0: spi0@1100a000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1100a000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI0>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
- 	return mt76_connac_mcu_set_rts_thresh(&dev->mt76, 0x92b, 0);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index bc5643f485c5..c4fd670b89b0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1191,6 +1191,8 @@ const struct ieee80211_ops mt7921_ops = {
- 	.sta_statistics = mt7921_sta_statistics,
- 	.sched_scan_start = mt7921_start_sched_scan,
- 	.sched_scan_stop = mt7921_stop_sched_scan,
-+	CFG80211_TESTMODE_CMD(mt7921_testmode_cmd)
-+	CFG80211_TESTMODE_DUMP(mt7921_testmode_dump)
- #ifdef CONFIG_PM
- 	.suspend = mt7921_suspend,
- 	.resume = mt7921_resume,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-index 89fed2f71161..e964a06359d3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-@@ -320,4 +320,30 @@ struct mt7921_mcu_tx_done_event {
- 
- 	u8 rsv1[32];
- } __packed;
++		spi1: spi1@11010000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11010000 0 0x1000>;
++			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI1>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+enum {
-+	TM_SWITCH_MODE,
-+	TM_SET_AT_CMD,
-+	TM_QUERY_AT_CMD,
-+};
++		spi2: spi2@11012000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11012000 0 0x1000>;
++			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI2>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+enum {
-+	MT7921_TM_NORMAL,
-+	MT7921_TM_TESTMODE,
-+	MT7921_TM_ICAP,
-+	MT7921_TM_ICAP_OVERLAP,
-+	MT7921_TM_WIFISPECTRUM,
-+};
++		spi3: spi3@11013000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11013000 0 0x1000>;
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI3>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+struct mt7921_rftest_cmd {
-+	u8 action;
-+	u8 rsv[3];
-+	__le32 param0;
-+	__le32 param1;
-+} __packed;
++		spi4: spi4@11018000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11018000 0 0x1000>;
++			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI4>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+struct mt7921_rftest_evt {
-+	__le32 param0;
-+	__le32 param1;
-+} __packed;
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index a249ce34b44b..34f0e3cca211 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -387,4 +387,8 @@ void mt7921_pm_interface_iter(void *priv, u8 *mac, struct ieee80211_vif *vif);
- void mt7921_coredump_work(struct work_struct *work);
- int mt7921_wfsys_reset(struct mt7921_dev *dev);
- int mt7921_get_txpwr_info(struct mt7921_dev *dev, struct mt7921_txpwr *txpwr);
-+int mt7921_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			void *data, int len);
-+int mt7921_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
-+			 struct netlink_callback *cb, void *data, int len);
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7921/testmode.c
-new file mode 100644
-index 000000000000..e1ba536008fa
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/testmode.c
-@@ -0,0 +1,173 @@
-+// SPDX-License-Identifier: ISC
++		spi5: spi5@11019000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11019000 0 0x1000>;
++			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI5>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+#include "mt7921.h"
-+#include "mcu.h"
++		spi6: spi6@1101d000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101d000 0 0x1000>;
++			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI6>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+enum mt7921_testmode_attr {
-+	MT7921_TM_ATTR_UNSPEC,
-+	MT7921_TM_ATTR_SET,
-+	MT7921_TM_ATTR_QUERY,
-+	MT7921_TM_ATTR_RSP,
++		spi7: spi7@1101e000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101e000 0 0x1000>;
++			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI7>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
 +
-+	/* keep last */
-+	NUM_MT7921_TM_ATTRS,
-+	MT7921_TM_ATTR_MAX = NUM_MT7921_TM_ATTRS - 1,
-+};
-+
-+struct mt7921_tm_cmd {
-+	u8 action;
-+	u32 param0;
-+	u32 param1;
-+};
-+
-+struct mt7921_tm_evt {
-+	u32 param0;
-+	u32 param1;
-+};
-+
-+static const struct nla_policy mt7921_tm_policy[NUM_MT7921_TM_ATTRS] = {
-+	[MT7921_TM_ATTR_SET] = NLA_POLICY_EXACT_LEN(sizeof(struct mt7921_tm_cmd)),
-+	[MT7921_TM_ATTR_QUERY] = NLA_POLICY_EXACT_LEN(sizeof(struct mt7921_tm_cmd)),
-+};
-+
-+static int
-+mt7921_tm_set(struct mt7921_dev *dev, struct mt7921_tm_cmd *req)
-+{
-+	struct mt7921_rftest_cmd cmd = {
-+		.action = req->action,
-+		.param0 = cpu_to_le32(req->param0),
-+		.param1 = cpu_to_le32(req->param1),
-+	};
-+	bool to_testmode = false, to_normal = false;
-+	struct mt76_connac_pm *pm = &dev->pm;
-+	struct mt76_phy *phy = &dev->mphy;
-+	int ret = -ENOTCONN;
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	if (req->action == TM_SWITCH_MODE) {
-+		if (req->param0 != MT7921_TM_NORMAL)
-+			to_testmode = true;
-+		else
-+			to_normal = true;
-+	}
-+
-+	if (to_testmode) {
-+		mt76_wr(dev, MT_WF_RFCR(0), dev->mt76.rxfilter);
-+
-+		/* Make sure testmode running on full power mode */
-+		pm->enable = false;
-+		cancel_delayed_work_sync(&pm->ps_work);
-+		cancel_work_sync(&pm->wake_work);
-+		__mt7921_mcu_drv_pmctrl(dev);
-+
-+		phy->test.state = MT76_TM_STATE_ON;
-+	}
-+
-+	if (!mt76_testmode_enabled(phy))
-+		goto out;
-+
-+	ret = mt76_mcu_send_msg(&dev->mt76, MCU_CMD_TEST_CTRL, &cmd,
-+				sizeof(cmd), false);
-+
-+	if (to_normal) {
-+		/* Switch back to the normal world */
-+		phy->test.state = MT76_TM_STATE_OFF;
-+		pm->enable = true;
-+	}
-+out:
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	return ret;
-+}
-+
-+static int
-+mt7921_tm_query(struct mt7921_dev *dev, struct mt7921_tm_cmd *req,
-+		struct mt7921_tm_evt *resp)
-+{
-+	struct mt7921_rftest_cmd cmd = {
-+		.action = req->action,
-+		.param0 = cpu_to_le32(req->param0),
-+		.param1 = cpu_to_le32(req->param1),
-+	};
-+	struct mt7921_rftest_evt *evt;
-+	struct sk_buff *skb;
-+	int ret;
-+
-+	mutex_lock(&dev->mt76.mutex);
-+
-+	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_CMD_TEST_CTRL,
-+					&cmd, sizeof(cmd), true, &skb);
-+	mutex_unlock(&dev->mt76.mutex);
-+
-+	if (ret)
-+		goto out;
-+
-+	evt = (struct mt7921_rftest_evt *)(skb->data);
-+	resp->param0 = le32_to_cpu(evt->param0);
-+	resp->param1 = le32_to_cpu(evt->param1);
-+out:
-+	dev_kfree_skb(skb);
-+
-+	return ret;
-+}
-+
-+int mt7921_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-+			void *data, int len)
-+{
-+	struct nlattr *tb[NUM_MT7921_TM_ATTRS];
-+	struct mt76_phy *mphy = hw->priv;
-+	struct mt7921_phy *phy = mphy->priv;
-+	struct mt7921_dev *dev = phy->dev;
-+	int err;
-+
-+	if (!test_bit(MT76_STATE_RUNNING, &mphy->state) ||
-+	    !(hw->conf.flags & IEEE80211_CONF_MONITOR))
-+		return -ENOTCONN;
-+
-+	err = nla_parse_deprecated(tb, MT7921_TM_ATTR_MAX, data, len,
-+				   mt7921_tm_policy, NULL);
-+	if (err)
-+		return err;
-+
-+	err = -EINVAL;
-+	if (tb[MT7921_TM_ATTR_SET])
-+		err = mt7921_tm_set(dev, nla_data(tb[MT7921_TM_ATTR_SET]));
-+
-+	return err;
-+}
-+
-+int mt7921_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
-+			 struct netlink_callback *cb, void *data, int len)
-+{
-+	struct nlattr *tb[NUM_MT7921_TM_ATTRS];
-+	struct mt76_phy *mphy = hw->priv;
-+	struct mt7921_phy *phy = mphy->priv;
-+	struct mt7921_dev *dev = phy->dev;
-+	struct mt7921_tm_evt resp;
-+	int err;
-+
-+	if (!test_bit(MT76_STATE_RUNNING, &mphy->state) ||
-+	    !(hw->conf.flags & IEEE80211_CONF_MONITOR) ||
-+	    !mt76_testmode_enabled(mphy))
-+		return -ENOTCONN;
-+
-+	if (cb->args[2]++ > 0)
-+		return -ENOENT;
-+
-+	err = nla_parse_deprecated(tb, MT7921_TM_ATTR_MAX, data, len,
-+				   mt7921_tm_policy, NULL);
-+	if (err)
-+		return err;
-+
-+	err = -EINVAL;
-+	if (tb[MT7921_TM_ATTR_QUERY]) {
-+		err = mt7921_tm_query(dev, nla_data(tb[MT7921_TM_ATTR_QUERY]), &resp);
-+		if (err)
-+			goto out;
-+
-+		err = nla_put(msg, MT7921_TM_ATTR_RSP, sizeof(resp), &resp);
-+	}
-+out:
-+	return err;
-+}
-diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
-index d32a7654c47e..127c13105ee9 100644
---- a/drivers/net/wireless/mediatek/mt76/testmode.h
-+++ b/drivers/net/wireless/mediatek/mt76/testmode.h
-@@ -140,6 +140,7 @@ enum mt76_testmode_rx_attr {
-  * enum mt76_testmode_state - phy test state
-  *
-  * @MT76_TM_STATE_OFF: test mode disabled (normal operation)
-+ * @MT76_TM_STATE_ON: test mode enabled used in offload firmware
-  * @MT76_TM_STATE_IDLE: test mode enabled, but idle
-  * @MT76_TM_STATE_TX_FRAMES: send a fixed number of test frames
-  * @MT76_TM_STATE_RX_FRAMES: receive packets and keep statistics
-@@ -147,6 +148,7 @@ enum mt76_testmode_rx_attr {
-  */
- enum mt76_testmode_state {
- 	MT76_TM_STATE_OFF,
-+	MT76_TM_STATE_ON,
- 	MT76_TM_STATE_IDLE,
- 	MT76_TM_STATE_TX_FRAMES,
- 	MT76_TM_STATE_RX_FRAMES,
+ 		audio: clock-controller@11210000 {
+ 			compatible = "mediatek,mt6779-audio", "syscon";
+ 			reg = <0 0x11210000 0 0x1000>;
 -- 
-2.25.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
