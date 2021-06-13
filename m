@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D614DC48BCF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 14:59:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8589C48BCF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 15:00:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A5DE61357
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 14:59:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A5DE61357
+	by mail.kernel.org (Postfix) with ESMTPS id 714D861354
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 15:00:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 714D861354
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=reto-schneider.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,47 +23,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HBF2kC8LV9FTuhDfD299TwsqkDKYW9voJ6UkE7UiKkM=; b=XSnXwQ4I5J5EDP
-	MbE54UffsTWw1nTEhBnSA2IJMYPhxTtYoHTR+4MdEHr1HoMdTKskpgjNwe/hLt01IgqFQ83DeT7oa
-	RFoH4cKbBX6w917gT8odwlSqcQFWccC5fow9mbcXARvuZQAgdSy7WkZN18QflFVzsZyb5KfL11MgO
-	qW+fkGJp9MGZPQ+mqoT2E+5X9i5X4WNKTdCvKrZA7VatCksxUwHY4tcYNBbQQH1fEf5H4879l0PPg
-	fPPr6fABLpQQvSn0tNmDdT/nArqa+BLY1qd6hT629G7hlA2/mM6PdiAOD/Kfsvp0H8fECLuxr/FCg
-	BfASYOZhykinFX2gAdkw==;
+	List-Owner; bh=FK22zKRuckLH/x7KhUVLRuwLkNTwZ2DzLj39eV7LpCU=; b=pjptlDq0L5XaZs
+	Z/fDq2yU/W4GoJXKHJO8UfRNvsNQuJ3jLnef1g9MKplMT5kClifCHnBvaNf8k/lr/cxHeDLOIt7jh
+	rry8VGfp/fZfUz+p2jOnRa4tdlaHfo1fNaRSfeArPMpGrLxfo4hKLjdEUYLhrVfy0c8RWM/TM0r6w
+	KqCDAW0d8wV6nyNDJ2fpyUp2TusPxenfCOa+s3PP3xOKBg385ZiboWqv28j3G0kLvfQlBjGoWGZX6
+	fhApF0mMxPCKAVip5KWSMqUNj6Zb9kXsrujVEIuYcv/TIXXK0B6kQ2ujrkgBFBA97LKRSOK+4NPrC
+	uaskwXjF5TkH57vKm+gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsRaS-00Abx0-4W; Sun, 13 Jun 2021 14:59:44 +0000
-Received: from mxout014.mail.hostpoint.ch ([2a00:d70:0:e::314])
+	id 1lsRae-00AbyU-0z; Sun, 13 Jun 2021 14:59:56 +0000
+Received: from mxout012.mail.hostpoint.ch ([2a00:d70:0:e::312])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsRaN-00AbwG-WE; Sun, 13 Jun 2021 14:59:41 +0000
+ id 1lsRab-00AbxY-AO; Sun, 13 Jun 2021 14:59:54 +0000
 Received: from [10.0.2.46] (helo=asmtp013.mail.hostpoint.ch)
- by mxout014.mail.hostpoint.ch with esmtp (Exim 4.94.2 (FreeBSD))
+ by mxout012.mail.hostpoint.ch with esmtp (Exim 4.94.2 (FreeBSD))
  (envelope-from <code@reto-schneider.ch>)
- id 1lsRaG-000KbX-II; Sun, 13 Jun 2021 16:59:32 +0200
+ id 1lsRaV-000AWg-EJ; Sun, 13 Jun 2021 16:59:47 +0200
 Received: from [2a02:168:6182:1:d747:8127:5b7a:4266]
  (helo=eleanor.home.reto-schneider.ch)
  by asmtp013.mail.hostpoint.ch with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
  (Exim 4.94.2 (FreeBSD)) (envelope-from <code@reto-schneider.ch>)
- id 1lsRaG-00020T-Fa; Sun, 13 Jun 2021 16:59:32 +0200
+ id 1lsRaV-00020T-BT; Sun, 13 Jun 2021 16:59:47 +0200
 X-Authenticated-Sender-Id: reto-schneider@reto-schneider.ch
 From: Reto Schneider <code@reto-schneider.ch>
 To: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org
 Cc: Stefan Roese <sr@denx.de>,
  Reto Schneider <reto.schneider@husqvarnagroup.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Felix Fietkau <nbd@nbd.name>,
+ Jakub Kicinski <kuba@kernel.org>, John Crispin <john@phrozen.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 1/2] dt-bindings: net: mediatek: Support custom ifname
-Date: Sun, 13 Jun 2021 16:58:59 +0200
-Message-Id: <20210613145859.1774246-1-code@reto-schneider.ch>
+ Russell King <linux@armlinux.org.uk>, Sean Wang <sean.wang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 2/2] net: ethernet: mtk_eth_soc: Support custom ifname
+Date: Sun, 13 Jun 2021 16:59:01 +0200
+Message-Id: <20210613145859.1774246-2-code@reto-schneider.ch>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210613115820.1525478-1-code@reto-schneider.ch>
 References: <20210613115820.1525478-1-code@reto-schneider.ch>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210613_075940_062838_0F95ABE5 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20210613_075953_385388_3D551E10 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,44 +84,44 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Reto Schneider <reto.schneider@husqvarnagroup.com>
 
-The (optional) label property allows to specify customized interfaces
-names.
+Name the MAC interface name according to the label property. If the
+property is missing, the default name (ethX) gets used.
 
-The motivation behind this change is to allow embedded devices to keep
-their first switch port be named "eth0", even when switching to the DSA
-architecture. In order to do so, it must be possible to name the MAC
-interface differently from eth0.
+Labels with more than IFNAMSIZ -1 characters will be truncated silently,
+which seems to be what most of the code base does when using strscpy.
 
 Signed-off-by: Reto Schneider <reto.schneider@husqvarnagroup.com>
+
 ---
 
-(no changes since v1)
+Changes in v2:
+- Avoid dangerous usage of strncpy
 
- Documentation/devicetree/bindings/net/mediatek-net.txt | 4 ++++
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
  1 file changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-net.txt b/Documentation/devicetree/bindings/net/mediatek-net.txt
-index 72d03e07cf7c..93e35f239a0a 100644
---- a/Documentation/devicetree/bindings/net/mediatek-net.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-net.txt
-@@ -51,6 +51,9 @@ Required properties:
- 	is equal to 0 and the MAC uses fixed-link to connect
- 	with internal switch such as MT7530.
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 64adfd24e134..a921ecc1c997 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2948,6 +2948,7 @@ static const struct net_device_ops mtk_netdev_ops = {
+ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ {
+ 	const __be32 *_id = of_get_property(np, "reg", NULL);
++	const char *const name = of_get_property(np, "label", NULL);
+ 	phy_interface_t phy_mode;
+ 	struct phylink *phylink;
+ 	struct mtk_mac *mac;
+@@ -3020,6 +3021,9 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
  
-+Optional properties:
-+- label: Name of interface, defaults to ethX if missing
+ 	mac->phylink = phylink;
+ 
++	if (name)
++		strscpy(eth->netdev[id]->name, name, IFNAMSIZ);
 +
- Example:
- 
- eth: ethernet@1b100000 {
-@@ -76,6 +79,7 @@ eth: ethernet@1b100000 {
- 		compatible = "mediatek,eth-mac";
- 		reg = <0>;
- 		phy-handle = <&phy0>;
-+		label = "mac1";
- 	};
- 
- 	gmac2: mac@1 {
+ 	SET_NETDEV_DEV(eth->netdev[id], eth->dev);
+ 	eth->netdev[id]->watchdog_timeo = 5 * HZ;
+ 	eth->netdev[id]->netdev_ops = &mtk_netdev_ops;
 -- 
 2.30.2
 
