@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0353EC48BCF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01BECC48BCF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:40:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8BE8611CC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:30:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8BE8611CC
+	by mail.kernel.org (Postfix) with ESMTPS id 9B197611CE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 06:40:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B197611CE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +23,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZUqZzldTqXMjWT0saa6/KA0AyEDAv8dE07eY2jrX0D0=; b=pJvnNpZEasBZzN
-	AVFYpVagJUmBOPNMzbbu12Xi53YraaldsqjjTFnaIw0jDi56dhBt3VCETrXQwVc1jBn9SwTJzA9di
-	UyEH4sIr/r7nJS51/l9mndS3lwSyUa/jfNMCu8UCkMLkJc//S++Zm3DvHm5V+uRYg7cKo0mHAbZvM
-	fl/ETLw6z1/1HIe7vlJ4r7hRDKLZ0NzNbDHZRTHH8lsbp+0X38u0VR1/MhvRC4hF9qJgxF8XaAnAo
-	Uky/mTpFVHi7GtfQGXrzGhoCl4zlJFfJrWpD3+yPP4ngvkQDFqDULOoBjjfKHnUemRPz5vK9rJGuJ
-	o2AhiqYO4/0un9AnaYSw==;
+	List-Owner; bh=40ww3LtwrueFBNwgn6zzvjUciExlJYlS7pdNl0b/cDw=; b=Ij/AzHn0JdWmi7
+	WtsaBDl/1FozZCmpv+cGOvwPI3nqCjBv3kaTVUz7DRwXKcnVOSreLHNcoXrOa60kWXhG9BCPbOUTp
+	ZwVcB1Rikrqt+gaN8iTY1JeIngpywFBeIOmCoCOCTkVPQIYctdYrJ4OkAJaMhKTFF+/pBNPCpQWKY
+	lN+n30DUX0rGLoeSTNF2IQlUpbsA/CZJmRLiNiN0dAM/UBLEhArjM/1hzpNfEBd2MQCakoATaPUmF
+	7NudOPNPOv1agsrELQRLOP74DpItMzlGVKyhlEF5qpHdBp6qXj7TJg+BBZQXE/Ui/CnpOddnfXaUw
+	CTOqwrmjnxoJZhtjSXqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsJdU-009nzI-7c; Sun, 13 Jun 2021 06:30:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lsJn6-009od4-4v; Sun, 13 Jun 2021 06:40:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsJdH-009nyW-Nf; Sun, 13 Jun 2021 06:30:09 +0000
-X-UUID: 26fdba8ed1cb451785900082125a7b99-20210612
+ id 1lsJmu-009obl-1h; Sun, 13 Jun 2021 06:40:05 +0000
+X-UUID: 6c5593b1f4504b7fa9ca98d5ce4ad2d6-20210612
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=8WtSPGkNuQ7241ILje9VJjGKNPvfoYVf4vIrsfMG0ug=; 
- b=K8UiGnfvo+MCmjEpBErRXJzmLG2dzqGpm+hPQ8CRhlR+FzF0UZ56imdR7N0iWkyZ/giPNEXRsp2aNqu9/7vjMnidEZXO5MhnbDawIWlS2KIGfm8NxFHDZU/3L5VmhfdBgFuL2/h3BZDLoEzqQ86FU2FTNnVVbxprimPUHq5se+g=;
-X-UUID: 26fdba8ed1cb451785900082125a7b99-20210612
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=F4X/8TVsc/5yj4EipGih8Ae/4NiaO/0GdQ7SxHdjPnU=; 
+ b=uPd+rzzx3PoqcO/ROMGx49qfa5I7q/A+lA4fR9CcfvaHOwo/PsxJuuvCX+lgiPfRIlxgIQNmj+5CWwDqbFSsLrUjoFBIFaw9eGNmk7ZphXU6Unoe189agc1h3oyqh1j2L0JjysUXSCAJMLXB4UETXGfriMbfLwfH+pd6DsOwZi4=;
+X-UUID: 6c5593b1f4504b7fa9ca98d5ce4ad2d6-20210612
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <mason.zhang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1957109838; Sat, 12 Jun 2021 23:30:03 -0700
+ with ESMTP id 431390440; Sat, 12 Jun 2021 23:40:00 -0700
 Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 12 Jun 2021 23:30:01 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 12 Jun 2021 23:39:47 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 13 Jun 2021 14:29:48 +0800
-Received: from [10.15.20.246] (10.15.20.246) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Sun, 13 Jun 2021 14:39:45 +0800
+Received: from [10.15.20.246] (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 13 Jun 2021 14:29:47 +0800
-Message-ID: <1623564933.15174.5.camel@mbjsdccf07>
+ Transport; Sun, 13 Jun 2021 14:39:44 +0800
+Message-ID: <1623565530.11212.4.camel@mbjsdccf07>
 Subject: Re: [PATCH v2 1/1] arm64: dts: mediatek: add MT6779 spi master dts
  node
 From: Mason Zhang <mason.zhang@mediatek.com>
@@ -64,7 +64,7 @@ CC: Rob Herring <robh+dt@kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <hanks.chen@mediatek.com>,
  <wsd_upstream@mediatek.com>
-Date: Sun, 13 Jun 2021 14:15:33 +0800
+Date: Sun, 13 Jun 2021 14:25:30 +0800
 In-Reply-To: <faafa83d-4831-2b70-78ec-0e9f3636b5c9@gmail.com>
 References: <20210409015651.11474-1-Mason.Zhang@mediatek.com>
  <faafa83d-4831-2b70-78ec-0e9f3636b5c9@gmail.com>
@@ -72,8 +72,8 @@ X-Mailer: Evolution 3.10.4-0ubuntu2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210612_233007_803558_9D681D61 
-X-CRM114-Status: GOOD (  15.81  )
+X-CRM114-CacheID: sfid-20210612_234004_124049_72533DAC 
+X-CRM114-Status: GOOD (  16.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -229,30 +229,21 @@ On Fri, 2021-06-11 at 15:58 +0200, Matthias Brugger wrote:
 > >  		audio: clock-controller@11210000 {
 > >  			compatible = "mediatek,mt6779-audio", "syscon";
 > >  			reg = <0 0x11210000 0 0x1000>;
+> > 
 
-
-Dear Mattias:
-
-	Thanks for your suggestion~
-
-	I have update commit message in patch v3.Could you please gentle ping
-on patch v3 if it has no other problems.
+Dear Matthias:
+	
+	Thanks for your suggestions, and I have update commit message on patch
+v3.Could you please help to gentle ping on patch v3 if it has no other
+problems?
+	Thanks a lot~
 
 Thanks
 Mason
+	
 
 
 
-
-
-
-
-
-
-
-
-
-> > 
 
 _______________________________________________
 Linux-mediatek mailing list
