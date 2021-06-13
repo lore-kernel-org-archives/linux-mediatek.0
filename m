@@ -2,67 +2,83 @@ Return-Path: <SRS0=gblj=LH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 064CDC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 12:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40AE9C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 12:23:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD12E611CA
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 12:08:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD12E611CA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=reto-schneider.ch
+	by mail.kernel.org (Postfix) with ESMTPS id B59FE61264
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Jun 2021 12:23:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B59FE61264
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AwFrCKsGMEmIT/xwiG83VRALqYTcsC55h1UU19550yU=; b=EQaUCBL0BRwNBa
-	KCweL64QNijD4foygIj85sEXhxZrEa4/KEYj0p113D7cz92r4etmnlnhqTg7TXKA+jdVK2DUkgt12
-	WwMf7LNlvTBwQxSWeZfiTr/pe6+ifWtthp3Ea5/yjMXQWDlCNGpL5cXZrRFWICU9VxGwOWeGf2WFq
-	hWRusT28LfmPj8T8XZh9e6Nvefi/UpapCnnp0T0ChbaVrK9DP7FJgUTPMJP3LTBAS4lad8AkaHDix
-	d8ERWWSwqlNKQ6NwBKdeS6N6T/HPPKD0Zk/AVJYvFkRLaZe4O/1w9Rf6Q0pRsL3ZjUpMay+/311Rn
-	ImDcwlX4PQXRiE0LtVvg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YyVL20zMCmu67Nm3Ve2Se85YKyj7NActAa8xZhla6Pc=; b=fMGRqOOThgMudM
+	Hb6tHyM8gKAD+Ns1sN41XFe668IixnefgipDlL9CJiTnMSuz3larqvlFQcZsPplQcU8hu3j9BpT4R
+	c96a8Iv2tmzOC2NjYEV5VzWoiUQ6F/uPAPWN/kpF4pITysT/rQa9yQKuiy2bu2kbIDSqC5uXvc5aB
+	//j8bwXAk+ctpr7pq1LNZ9UphfdO/BEDEPk8x+uTTOVbDPMZn+SuZcyyigVxkCV2awMotDPsa0jgw
+	Dcm5q4opB/sJB7v5q2SRhDZWZ2A3h51mvcm6vQKE9OUBr0h6jhuni3Dn1zrpWsiofhifwcyrPy4wE
+	xc9op0PkcqrcPAb8bsvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsOse-00AOgG-SD; Sun, 13 Jun 2021 12:06:20 +0000
-Received: from mxout013.mail.hostpoint.ch ([2a00:d70:0:e::313])
+	id 1lsP8k-00AQ48-Ry; Sun, 13 Jun 2021 12:22:58 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsOsc-00AOfV-2B; Sun, 13 Jun 2021 12:06:19 +0000
-Received: from [10.0.2.44] (helo=asmtp014.mail.hostpoint.ch)
- by mxout013.mail.hostpoint.ch with esmtp (Exim 4.94.2 (FreeBSD))
- (envelope-from <code@reto-schneider.ch>)
- id 1lsOsZ-000NTd-TG; Sun, 13 Jun 2021 14:06:15 +0200
-Received: from [2a02:168:6182:1:d747:8127:5b7a:4266]
- (helo=eleanor.home.reto-schneider.ch)
- by asmtp014.mail.hostpoint.ch with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.94.2 (FreeBSD)) (envelope-from <code@reto-schneider.ch>)
- id 1lsOsZ-000AA3-RV; Sun, 13 Jun 2021 14:06:15 +0200
-X-Authenticated-Sender-Id: reto-schneider@reto-schneider.ch
-From: Reto Schneider <code@reto-schneider.ch>
-To: linux-gpio@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: Stefan Roese <sr@denx.de>,
+ id 1lsP8h-00APxT-BN; Sun, 13 Jun 2021 12:22:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=mmyFe4CD1HqfyTgZipLbaHYfBnHjTeV2soAr4WgrLn0=; b=Jcam4PNyqOrWoyMZeEHGBppGG
+ BjX0jmsrgghgEF+xxiDoIxtfzSsIPtPWurfL4igsI+46/HXriPp/D4Pf20YFn7v0+XNdhq56CjozY
+ J0k/br+tWAkH6oTceb3MwPrS8WnU/5D9Jy27AhtXoWSOWu2jrUfY4Xwa6Zb9KIzKdNlsk50wP46Od
+ +uxthAQoD+TGMKdenzFsJ/lhNhP7XIY+O8eBnhy6H7xx4esZd/gM9L59bTyuUC3aGGvQOHbUJUZXw
+ c/95MON/iYMlZYQUyZ5Sg6qfbw/vYUZP8QomsBWaYS9vSeAd71uT8HH0b1u83lc45YIKaMtIPJgGG
+ wFIl+zBMw==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:44976)
+ by pandora.armlinux.org.uk with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1lsP6e-0003N9-DD; Sun, 13 Jun 2021 13:20:48 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.92)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1lsP6Z-0003BA-Cn; Sun, 13 Jun 2021 13:20:43 +0100
+Date: Sun, 13 Jun 2021 13:20:43 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Reto Schneider <code@reto-schneider.ch>
+Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Stefan Roese <sr@denx.de>,
  Reto Schneider <reto.schneider@husqvarnagroup.com>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Linus Walleij <linus.walleij@linaro.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Felix Fietkau <nbd@nbd.name>, Jakub Kicinski <kuba@kernel.org>,
+ John Crispin <john@phrozen.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v1] gpio: mt7621: Assign base field in gpio_chip
-Date: Sun, 13 Jun 2021 14:06:08 +0200
-Message-Id: <20210613120608.1527394-1-code@reto-schneider.ch>
-X-Mailer: git-send-email 2.30.2
+Subject: Re: [PATCH v1 2/2] net: ethernet: mtk_eth_soc: Support custom ifname
+Message-ID: <20210613122043.GP22278@shell.armlinux.org.uk>
+References: <20210613115820.1525478-1-code@reto-schneider.ch>
+ <20210613115820.1525478-2-code@reto-schneider.ch>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210613115820.1525478-2-code@reto-schneider.ch>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210613_050618_129661_AEEC7F71 
-X-CRM114-Status: UNSURE (   8.36  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210613_052255_414808_78C28BA4 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,41 +95,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Reto Schneider <reto.schneider@husqvarnagroup.com>
+On Sun, Jun 13, 2021 at 01:58:19PM +0200, Reto Schneider wrote:
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 64adfd24e134..8bb09801918f 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -2948,6 +2948,7 @@ static const struct net_device_ops mtk_netdev_ops = {
+>  static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+>  {
+>  	const __be32 *_id = of_get_property(np, "reg", NULL);
+> +	const char *const name = of_get_property(np, "label", NULL);
+>  	phy_interface_t phy_mode;
+>  	struct phylink *phylink;
+>  	struct mtk_mac *mac;
+> @@ -3020,6 +3021,9 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+>  
+>  	mac->phylink = phylink;
+>  
+> +	if (name)
+> +		strncpy(eth->netdev[id]->name, name, IFNAMSIZ);
 
-This is needed for gpiochip_sysfs_register() to properly export
-/sys/class/gpio/gpiochip{0,32,64}.
+Please don't use strncpy() - this is a good example why strncpy() is bad
+news.
 
-Without this fix, the field base in gpio_device remains at its
-initialization value, which is -1. This causes
-gpiochip_add_data_with_key() to call gpiochip_find_base(), which in turn
-dynamically determines the base to be at ARCH_NR_GPIOS - 32/64/96,
-resulting in gpiochip{480,448,416}.
+ * strncpy - Copy a length-limited, C-string
+ * @dest: Where to copy the string to
+ * @src: Where to copy the string from
+ * @count: The maximum number of bytes to copy
+ *
+ * The result is not %NUL-terminated if the source exceeds
+ * @count bytes.
 
-Detected/fixed/tested on a MediaTek MT7688 based GARDENA smart gateway.
+Consequently, if "name" is IFNAMSIZ bytes or longer,
+eth->netdev[id]->name will not be NUL terminated, and subsequent use
+will run off the end of the string. strscpy() is safer to use here.
 
-Signed-off-by: Reto Schneider <reto.schneider@husqvarnagroup.com>
+Thanks.
 
----
-
- drivers/gpio/gpio-mt7621.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/gpio/gpio-mt7621.c b/drivers/gpio/gpio-mt7621.c
-index 82fb20dca53a..403d64cd65a6 100644
---- a/drivers/gpio/gpio-mt7621.c
-+++ b/drivers/gpio/gpio-mt7621.c
-@@ -234,6 +234,7 @@ mediatek_gpio_bank_probe(struct device *dev,
- 		return ret;
- 	}
- 
-+	rg->chip.base = rg->bank * MTK_BANK_WIDTH;
- 	rg->chip.of_gpio_n_cells = 2;
- 	rg->chip.of_xlate = mediatek_gpio_xlate;
- 	rg->chip.label = devm_kasprintf(dev, GFP_KERNEL, "%s-bank%d",
 -- 
-2.30.2
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-mediatek mailing list
