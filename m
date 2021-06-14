@@ -2,82 +2,88 @@ Return-Path: <SRS0=I1M+=LI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC3C1C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 10:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 074FCC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 15:05:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68E5D61283
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 10:57:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68E5D61283
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id BF1496128C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 15:05:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BF1496128C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=+PUfJ+lYC7yXrEhfxdOwPs+Tz9KQQQtPoHmRFtH11Hw=; b=axBlz2uT6crrIlrOB6BNPP97q/
-	r2IGNsZSG0pbfc8fZnB/yQNoBe2wad7+jJyzZ6h6xOWoAtYKOntJZ2fE/i01YQHbNGJC0MaIYzeTY
-	sUnvJXuDTEepRyW17yKJmJ4MDDkAUiRyBH9anGQBnMcg1ilb1QGpT8Bjl25eeI6sR8vSbR9hcNKvR
-	n4nu4Wrs8D+5ilOolAKm5ii4TJ5bhcxIO0NNQW7YXD5bSIPiuNdAY0mZixPvf7LQ//7RhmxRj4up9
-	ppjlfLRRA9jVfIAbfqciRCoQhUsqq3h3x41v1rpC3ZUbNBtbZ70FaYcjsrVy71Dh5lRO8orCU9CHb
-	HY+j2gtg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pXku4OQajVKYnBcHsxBGx1QGfd5WzaSZScHaOJZ2hek=; b=FyFsGpNco5X2vA
+	lDxYKiU7GLP78kmNxjyE6xh8O/x9eNXBnCQqraGABeFOSehyFG50YbXV21/uY/OD8jPzgNSF8PQPn
+	OO+qsmKgyvh8jcl76L7xAIXSd3OsxyskIRQYkr/Y4ukEqQfIvJm/yEAOVCxItcWQhOn0VCG38oiRt
+	SL5vwAV4tesF2kVe2LOWSd7eKSrSDuzcibXUGazil7awQJqftondJdzzd5LrXpgqVcFNfE0DB/TdK
+	hz5OeF11K3T6XnVbHTjs7oXYUPI7kosjMNfk6gbjw+2DyJdpQ+76JX54g3KDzZk5/Pkwh95SS4jP1
+	+/dfKl6hdXT4Nqj6YAEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lskHN-00Djbr-MH; Mon, 14 Jun 2021 10:57:17 +0000
-Received: from lb1-smtp-cloud8.xs4all.net ([194.109.24.21])
+	id 1lso9c-00Eeys-1D; Mon, 14 Jun 2021 15:05:32 +0000
+Received: from mail-lj1-f173.google.com ([209.85.208.173])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lskHA-00DjYV-GJ; Mon, 14 Jun 2021 10:57:06 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud8.xs4all.net with ESMTPA
- id skGxlbuC6hqltskH1lmf3r; Mon, 14 Jun 2021 12:56:58 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1623668218; bh=AOudWRCLPe9UsgRtUXZk3e9P85IPnGpiu+lL8sTi4mU=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=WpH+tPXfZoAAxmVvhbpyXuGZDhMtHDxoV9uzWMe/ahG0bJGzkXBDm0LqNMdKZW6eD
- tk46WvtagNCVk9zVzgth2Yp7kGP9gLbVpvpYM+jVGJ1+iGSRjTWPAKFQEnSI3DfdZz
- ktLKkghN7vJxuc7wuIG/vgml38th5q4/rb6x4BT3932RjSp87ODFT2c4ikO2hFFte5
- HxDffyjhi2ZKiUjfVYF7wkSzYJ9jFd0TBei2NffjFGE3QA/I1Up+TGxWBSyfEZOPJy
- 7/i1VRUsEssUPiW894BXlDnDtkFnh6HKdqfC6LqkwYRwEyjxCiAXMjCCjh5Ha/nnNO
- 6MgCTXp+v6DoQ==
-Subject: Re: [RESENT PATCH V0 0/4] media: some framework interface extension
- for new feature of Mediatek Camsys driver
-To: Louis Kuo <louis.kuo@mediatek.com>, sakari.ailus@linux.intel.com,
- laurent.pinchart@ideasonboard.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, arnd@arndb.de, sergey.senozhatsky@gmail.com,
- helen.koike@collabora.com, niklas.soderlund+renesas@ragnatech.se,
- yepeilin.cs@gmail.com
-Cc: frederic.chen@mediatek.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20210507074604.15079-1-louis.kuo@mediatek.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <61393c9e-6f28-a357-8ea1-3590e883f107@xs4all.nl>
-Date: Mon, 14 Jun 2021 12:56:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.10.0
+ id 1lso9M-00Eeuz-9h; Mon, 14 Jun 2021 15:05:17 +0000
+Received: by mail-lj1-f173.google.com with SMTP id l4so8095474ljg.0;
+ Mon, 14 Jun 2021 08:05:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=amLIRuKnX8etVBSiINMJCmDXT6ZlQpwL3htcwT0iYfw=;
+ b=HqNjQ+tMbZJq5JAwtGeHbUE3rr52qEq/eM/9wyt39c/Oi45aL+/qQ2BV6XglFCeAOc
+ 41sv5B+PJ0ZvQqdOdZP4byrqsI61Po7CIz47VUnyMyU8f9aaun2VfrB6Zj4hb2UHkOkH
+ +NwNTv0CqYoPnkVLpgXYaZxxdY511dBFMGhgqg/+nuKquX3QOn0tkiFqBVi+nij+5OxU
+ lCgmvm62M1hfH8K5PmifI8NxKoM9qPEZDPfNJEpRS2TNwCteVvE5klB4WTKVf3nzI8Y2
+ B3rgFvtNw6PAlN4lGELO6SMEFwfaITgmfDaNMd2zFwAuEtVOPLVJBEpWklxyL4LTxZzM
+ BKwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=amLIRuKnX8etVBSiINMJCmDXT6ZlQpwL3htcwT0iYfw=;
+ b=EnTQ91Zrz++lo+0qdyNFRDAsgbFTprDiB/eQvE0kT/pjjTOAhRJZ+ZfNyI9/qsxqiF
+ ggaCqJ+mwXIsADMeA+NVSNqZf+5qwzQZ7onlBMzvIFhBnlp+1GknaLDpuD6WDYB0nnrb
+ OnMZXc1KPBzgkpk4FrImQHWYRrBr6JWHxtret6w3zPP28/CdFdOiUAxIlcSBJAYNqobf
+ /JplNtilCM8QS943dMnMzsVnNhlQF78ej+BYfpcTIDO0RrenTMQzKkJu0cKV4TPhXOXF
+ 6GokfvBn20qyGIrKurY5D4hJJuQaOk3fgSLOnCS3Mfd6W9W84KqM0Y94Y4bz2NTJ1ieW
+ do+g==
+X-Gm-Message-State: AOAM533EjD3UWSZw8zk4xq3VfdyRPIgZRTOvRx5rlKkJvwH/yGB5MixY
+ ggkd2rByL85Y2EPl/sxEO1j+2/VGJoojMV26nCY=
+X-Google-Smtp-Source: ABdhPJxHddSXn7MQEp2UzCg15YgRi/rclsfAe5DXKS289hueqMrow1G88LUOOdzToY/PLKHRHzJnJCnx8KUSm8YacgE=
+X-Received: by 2002:a2e:2f03:: with SMTP id v3mr13547128ljv.168.1623683053157; 
+ Mon, 14 Jun 2021 08:04:13 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210507074604.15079-1-louis.kuo@mediatek.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfBr8/FTx31r1MxngxhkwPP1xVVVhMf03l2XIhYRo2BPSAa/6h0U5CnSBJIWBPqgT9S4JoK1CocG8f/HEFIKWo9vu/E2UHlTIutuI34VPUtJJpPAKSTfg
- dZecbBEQyMcor0GktqGzldxpjMSBP2v8OwkMBlQWaiYbbbP5KcOZrL2SHqJ92XJ/YGs6knGGdPDk3bGHXUX6Bb4mdHbpY4bmbZtfT+6c3i8m5NxxogrUUpu4
- nGSUH9jt05EkW19i7UUvbg9rQzBriJwn2C7ciuw01ussUc9Ky1NL7aknTMG42vguxdCDvO5i3CRU6l2HI4nGr1h9BkHPrblBJ5KZ9CcFICi/MT4bhsimxiUM
- bILJOArkAxf4QHHgsUOTn/4Jl4+/va9SBib6tUnZ4DL8ToexgjwV+PwAfizhdipq6AZqD2xjYk09Kz3zVBJVbXdZRRNoaiv6lzLwq5FFt2KVTtnN7EylJesD
- U+S562UdDofoWQHLaXTshDrTqYSHzwU9dpQ7gSpSNvqVNj2vchvaYYIKxhbxyz7vwd5y+9sqD6+V1JmN1tJP+6RjuK8KUnMf7wy90g9w7FI/O7jpDbTs4MDr
- qrqz4ZwLi47gt3X+BWf1HLpYm3r7Iijla8sXWisBB8zLURsxLp2IHvMaa81HsZ4cFDRggsJvQ05o8DJQnJTMmqYgKyViJhOQp18Mljjd8LV8g9aQPbPRL28V
- g+/Qh8Tfk6FfZlNiQNPFIU15XS2W+Vn8qk1xQZDri5ox/FsWPZc1oipJifHShTD/XvJRgilZI/4=
+References: <1622616875-22740-1-git-send-email-u0084500@gmail.com>
+ <20210611201643.GA1583875@robh.at.kernel.org>
+In-Reply-To: <20210611201643.GA1583875@robh.at.kernel.org>
+From: ChiYuan Huang <u0084500@gmail.com>
+Date: Mon, 14 Jun 2021 23:04:01 +0800
+Message-ID: <CADiBU39Prz99ZLtkYdcM9XDQsd0nKKeiEGjW3wq=u75JGjwX=g@mail.gmail.com>
+Subject: Re: [PATCH 1/2] regulator: mt6360: Add optional
+ mediatek.power-off-sequence in bindings document
+To: Rob Herring <robh@kernel.org>
+Cc: lgirdwood@gmail.com, Mark Brown <broonie@kernel.org>,
+ matthias.bgg@gmail.com, 
+ gene_chen@richtek.com, lkml <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, cy_huang <cy_huang@richtek.com>, 
+ gene.chen.richtek@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_035704_707498_B844357B 
-X-CRM114-Status: GOOD (  34.80  )
+X-CRM114-CacheID: sfid-20210614_080516_378453_304EDF78 
+X-CRM114-Status: GOOD (  26.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,123 +95,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Louis,
-
-On 07/05/2021 09:46, Louis Kuo wrote:
-> Hello,
-> 
-> This is the first version of the patch series extending V4L2 and media
-> framework to support some advanced camera function, for example, to change
-> the sensor when ISP is still streaming. A typical scenario is the wide-angle
-> sensor and telephoto sensor switching in camera application. When the user
-> is using the zooming UI, the application needs to switch the sensor from
-> wide-angle sensor to telephoto sensor smoothly.
-> 
-> To finish the function, we may need to modify the links of a pipeline and
-> the format of pad and video device per request. Currently, the link,
-> pad and video device format and selection settings are not involved in
-> media request's design. Therefore, we try to extend the related interface
-> to support the request-based operations. In the early version, we added
-> request fd to the parameters of MEDIA_IOC_SETUP_LINK,
-> VIDIOC_S_FMT, VIDIOC_SUBDEV_S_SELECTION, VIDIOC_SUBDEV_S_FMT.
-> The driver uses media_request_get_by_fd() to retrieve the media request
-> and save the pending change in it, so that we can apply the pending change
-> in req_queue() callback then.
-> 
-> Here is an example:
-> 
-> int mtk_cam_vidioc_s_selection(struct file *file, void *fh,
-> 				struct v4l2_selection *s)
-> {
-> 	struct mtk_cam_device *cam = video_drvdata(file);
-> 	struct mtk_cam_video_device *node = file_to_mtk_cam_node(file);
-> 	struct mtk_cam_request_stream_data *stream_data;
-> 	struct mtk_cam_request *cam_req;
-> 	struct media_request *req;
-> 	s32 fd;
-> 
-> 	fd = s->request_fd;
-> 	if (fd < 0)
-> 		return -EINVAL;
-> 
-> 	req = media_request_get_by_fd(&cam->media_dev, fd);
-> 
-> 	/* .... */
->  
-> 	cam_req = to_mtk_cam_req(req);
-> 	stream_data = &cam_req->stream_data[node->uid.pipe_id];
-> 	stream_data->vdev_selection_update |= (1 << node->desc.id);
-> 	stream_data->vdev_selection[node->desc.id] = *s;
-> 
-> 	/* .... */
-> 
-> 	media_request_put(req);
-> 
-> 	return 0;
-> }
-> 
-> I posted interface change to discuss first and would like some
-> review comments.
-> 
-> Thank you very much.
-
-Just adding a request_fd in several places is the easy bit. The much
-harder part is where to store that information, and even harder is an
-outstanding issue with the request framework:
-
-Currently the request framework is only used with decoder drivers, so
-there are no subdev drivers involved. I suspect that there is a fair
-amount of work to do to make it work well if part of the request configuration
-is for subdev drivers.
-
-Ideally I would like to see a proof-of-concept with the vimc driver.
-
-I think getting this right is quite a lot of work. The public API part
-is just a minor part of that since the public API was designed with support
-for this in mind. It's the internal kernel support that is lacking.
-
-If you want to pursue this (and that would be great!), then start with
-vimc and initially just support controls in a request. The core problem
-is likely to be how to keep track of the request data if it is spread
-out between the bridge driver and subdev drivers, and that can be tested
-with just supporting controls.
-
-Adding support for formats and selection rectangles is, I think, much less
-difficult and can be addressed later. Changing the topology in a request
-is a separate issue as well, and I would suggest that you postpone that.
-There is some low-level work going on that might make this easier in the
-near future (1), we'll have to wait and see.
-
-Regards,
-
-	Hans
-
-(1): https://patchwork.linuxtv.org/project/linux-media/cover/20210524104408.599645-1-tomi.valkeinen@ideasonboard.com/
-
-> 
->   media: v4l2-core: extend the v4l2 format to support request
->   media: subdev: support which in v4l2_subdev_frame_interval
->   media: v4l2-ctrl: Add ISP Camsys user control
->   media: pixfmt: Add ISP Camsys formats
-> 
->  drivers/media/mc/mc-device.c         |   7 +-
->  drivers/media/v4l2-core/v4l2-ioctl.c | 153 ++++++++++++++++++++++++++-
->  include/media/media-entity.h         |   3 +
->  include/uapi/linux/media.h           |   3 +-
->  include/uapi/linux/v4l2-controls.h   |   4 +
->  include/uapi/linux/v4l2-subdev.h     |   8 +-
->  include/uapi/linux/videodev2.h       | 109 ++++++++++++++++++-
->  7 files changed, 275 insertions(+), 12 deletions(-)
-> 
-> 
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFJvYjoKClJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IOaWvCAyMDIx5bm0NuaciDEy
+5pelIOmAseWFrSDkuIrljYg0OjE25a+r6YGT77yaCj4KPiBPbiBXZWQsIEp1biAwMiwgMjAyMSBh
+dCAwMjo1NDozNFBNICswODAwLCBjeV9odWFuZyB3cm90ZToKPiA+IEZyb206IENoaVl1YW4gSHVh
+bmcgPGN5X2h1YW5nQHJpY2h0ZWsuY29tPgo+ID4KPiA+IEFkZCBvcHRpb25hbCBtZWRpYXRlay5w
+b3dlci1vZmYtc2VxdWVuY2UgaW4gYmluZGluZ3MgZG9jdW1lbnQuCj4gPgo+ID4gU2lnbmVkLW9m
+Zi1ieTogQ2hpWXVhbiBIdWFuZyA8Y3lfaHVhbmdAcmljaHRlay5jb20+Cj4gPiAtLS0KPiA+IEhp
+LAo+ID4KPiA+IE9yaWdpbmFsbHksIHdlIHRoaW5rIGl0IG11c3Qgd3JpdGUgaW4gcGxhdGZvcm0g
+ZGVwZW5kZW50IGNvZGUgbGlrZSBhcyBib290bG9hZGVyLgo+ID4gQnV0IGFmdGVyIHRoZSBldmFs
+dWF0aW9uLCBpdCBtdXN0IHdyaXRlIG9ubHkgd2hlbiBzeXN0ZW0gbm9ybWFsIEhBTFQgb3IgUE9X
+RVJfT0ZGLgo+ID4gRm9yIHRoZSBvdGhlciBjYXNlcywganVzdCBmb2xsb3cgSFcgaW1tZWRpYXRl
+IG9mZiBieSBkZWZhdWx0Lgo+Cj4gV291bGRuJ3QgdGhpcyBiZSBoYW5kbGVkIGJ5IFBTQ0kgaW1w
+bGVtZW50YXRpb24/Ck5vLCB0aGUgY3VycmVudCBhcHBsaWNhdGlvbiBkZWZhdWx0IG9uIHBvd2Vy
+cyBidWNrMS9idWNrMi9sZG83L2xkbzYKYXJlIGZvciBEcmFtIHBvd2VyLgpJdCdzIG5vdCB0aGUg
+c29jIGNvcmUgcG93ZXIuIEl0IHNlZW1zIG5vdCBhcHByb3ByaWF0ZSAgdG8gaW1wbGVtZW50Cmxp
+a2UgYXMgUFNDSS4KTVQ2MzYwIHBsYXkgdGhlIHJvbGUgZm9yIHRoZSBzdWJwbWljIGluIHRoZSBT
+T0MgYXBwbGljYXRpb24gcmVmZXJlbmNlIGRlc2lnbi4KPgo+ID4gLS0tCj4gPiAgLi4uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvcmVndWxhdG9yL210NjM2MC1yZWd1bGF0b3IueWFtbCAgICAgICB8IDEx
+ICsrKysrKysrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKykKPiA+Cj4g
+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3JlZ3VsYXRv
+ci9tdDYzNjAtcmVndWxhdG9yLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvcmVndWxhdG9yL210NjM2MC1yZWd1bGF0b3IueWFtbAo+ID4gaW5kZXggYTQ2MmQ5OS4uZWFm
+MzZlMiAxMDA2NDQKPiA+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9y
+ZWd1bGF0b3IvbXQ2MzYwLXJlZ3VsYXRvci55YW1sCj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvcmVndWxhdG9yL210NjM2MC1yZWd1bGF0b3IueWFtbAo+ID4gQEAg
+LTI0LDYgKzI0LDE2IEBAIHByb3BlcnRpZXM6Cj4gPiAgICBMRE9fVklOMy1zdXBwbHk6Cj4gPiAg
+ICAgIGRlc2NyaXB0aW9uOiBJbnB1dCBzdXBwbHkgcGhhbmRsZShzKSBmb3IgTERPNi83Cj4gPgo+
+ID4gKyAgbWVkaWF0ZWsscG93ZXItb2ZmLXNlcXVlbmNlOgo+ID4gKyAgICBkZXNjcmlwdGlvbjog
+fAo+ID4gKyAgICAgIFBvd2VyIG9mZiBzZXF1ZW5jZSB0aW1lIHNlbGVjdGlvbiBmb3IgQlVDSzEv
+QlVDSzIvTERPNy9MRE82LCByZXNwZXRpdmVseS4KPiA+ICsgICAgICBDYXVzZSB0aGVzZSByZWd1
+bGF0b3JzIGFyZSBhbGwgZGVmYXVsdC1vbiBwb3dlci4gRWFjaCB2YWx1ZSBmcm9tIDAgdG8gNjMs
+Cj4gPiArICAgICAgYW5kIHN0ZXAgaXMgMS4gRWFjaCBzdGVwIG1lYW5zIDIgbWlsbGlzZWNvbmQg
+ZGVsYXkuCj4gPiArICAgICAgVGhlcmVmb3JlLCB0aGUgcG93ZXIgb2ZmIHNlcXVlbmNlIGRlbGF5
+IHRpbWUgcmFuZ2UgaXMgZnJvbSAwbXMgdG8gMTI2bXMuCj4gPiArICAgICRyZWY6ICIvc2NoZW1h
+cy90eXBlcy55YW1sIy9kZWZpbml0aW9ucy91aW50OC1hcnJheSIKPiA+ICsgICAgbWluSXRlbXM6
+IDQKPiA+ICsgICAgbWF4SXRlbXM6IDQKPgo+IFNvIHRoaXMgaXMgdGhlIGRlbGF5IGJldHdlZW4g
+QlVDSzEgYW5kIEJVQ0syLCB0aGVuIEJVQ0syIHRvIExETzcsIGV0Y2M/Ck5vLiB5b3UgbWF5IG1p
+c3VuZGVyc3RhbmQuIHRoZXJlJ3MgYW4gZXh0ZXJuYWwgJ0VuYWJsZScgcGluIHRoYXQncwpjb25u
+ZWN0ZWQgdG8gdGhlIG1haW4gcG1pYy4KVGhlIHN0YXJ0aW5nIHBvaW50IG9mIGRlbGF5IHRpbWUg
+YXJlIGFsbCBmcm9tICB0aGUgZXh0ZXJuYWwgJ0VuYWJsZScgSCB0byBMLgpOb3Qgb25lLWJ5LW9u
+ZSBkZWxheSB0aW1lLAo+IElmIHdlIHdhbnRlZCB0byBleHByZXNzIHRoaXMgaW4gRFQsIHdlJ2Qg
+bWFkZSB0aGlzIGdlbmVyaWMgd2hpY2ggd291bGQKPiBuZWVkIHRvIGJlIG1vcmUgZmxleGlibGUu
+IEEgcG93ZXJvZmYgZGVsYXkgaW4gZWFjaCByZWd1bGF0b3IgKHNpbWlsYXIgdG8KPiB0aGUgZXhp
+c3RpbmcgcG93ZXIgb24gZGVsYXkpIHdvdWxkIGJlIHN1ZmZpY2llbnQgZm9yIHdoYXQgeW91IG5l
+ZWQgSQo+IHRoaW5rLgpQb3dlciBvbiBzZXF1ZW5jZSBhbHJlYWR5IGRlZmluZWQgYnkgdGhlIHBh
+cnQgbnVtYmVyLCBJdCdzIG5vdCBkZWNpZGVkIGJ5IFNXLgpTbyBmb3IgdGhlIGZsZXhpYmlsaXR5
+LCBJIGltcGxlbWVudCBpdCBpbiBEVC4KCkR1ZWwgdG8gdGhlcmUncmUgbWFueSBwYXJ0IG51bWJl
+ciBNVDYzNjAgUC9VUC9MUCwgZXRjLgpUaGUgZGlmZmVyZW5jZSBhcmUgdGhlIHBvd2VyIG9uIHNl
+cXVlbmNlLgoKRG8geW91IGhhdmUgYW55IHN1Z2dlc3Rpb24gYWJvdXQgdGhpcyBzaXR1YXRpb24/
+CgpQUzogRHVlIHRvIERSQU0gcG93ZXIgdXNhZ2UgLCBzb21ldGltZXMgaXQgYWxzbyBuZWVkIHRv
+IGN1c3RvbWl6ZWQgYnkKdGhlIERSQU0gdGhhdCBjdXN0b21lciBjaG9vc2VkLgpJdCBtYXkgZGlm
+ZmVyIGZyb20gZXh0ZXJuYWwgRFJBTSBwYXJ0IGNob29zZW4gZm9sbG93aW5nIGJ5IEpFREVDIHNw
+ZWMuCj4KPiBSb2IKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtbWVkaWF0ZWsK
