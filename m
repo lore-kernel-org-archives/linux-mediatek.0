@@ -2,75 +2,69 @@ Return-Path: <SRS0=I1M+=LI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9916EC48BE6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 09:44:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35BEFC48BE6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 10:29:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6384E61357
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 09:44:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6384E61357
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 06D65611C1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Jun 2021 10:29:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 06D65611C1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7tp24LrUurBcPb9nXzPG3aZVS49hFwTOEiKhTCfPQRQ=; b=reTl9qPIfRFtrv
-	P/j2XFITrxZ5NgB5Sxd/6qk76AF45ePbP5M41O+rin9AV0XAkLfMFa7RbXYbKmUrRmTXPepncQTWt
-	p6LBMWQzA6V9aCIqnMdT5f+FN8Qwgx/kIbw4aywXK/Y7laNyGKtSecrf6D87/Hl5Z7sK7DShgVthn
-	NxeQBMoBe53b+dj0iGU3jCSDRl5CCERxQC12BblzUGtuTCWZAH4U/zGdriWjmIcFhGW/nXvKjlRsV
-	cvGWG+GLIzyLRyQgChbO53kQNyoQx50lCV238rlMDNyeRVso492OFrw99RdOVqoscDG5RzvoiEQku
-	AB0ZKbCJQ03ebktZP+tQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Jlm6Nx2o7+VdQ9rMTduB10EaqDS1nUQGj4s7BgcplM8=; b=xgKab3O2hobJeKIn4RdhPYv3kO
+	hTfFY8vAVatx1EOZ5v4oLC57hcd71zA/NWdVGPEzdn3ozofhv3hFRNVNV+AZOmpcktM0+B6hY4k5o
+	D04LOGk8t9Hj0SQcIOOB6Qj1Mt9sCCGTYmZN+wYnVIuPbWAH3Vrx/NadkTtmcaWIfU9eiO7rzpVk0
+	9mGmcLlGbSm+O/Dpk71dygQhVvBAd24Oc9Z72F9dpbWdfKGsgcKODe4iYZtecRtbDZwXar4Z80QUS
+	O8AEevCLgOkJJRUTNiSw8DH5Yfo6MypwUu5OhPwDFwHc9H/6lXRlRQ9Lv6hUQRjLxL/s+cXjP7QKz
+	qP9z9arQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lsj8R-00DPNM-Qx; Mon, 14 Jun 2021 09:43:59 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lsjqY-00DZWN-Ng; Mon, 14 Jun 2021 10:29:34 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsj8C-00DPIW-SF; Mon, 14 Jun 2021 09:43:47 +0000
-X-UUID: bd63ec30128e4eb4af296aa029bcb948-20210614
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=2A1f6XDFYkwNi91DySc3Su3T4fsohrPpjEGF06tNFnQ=; 
- b=SBUeaOmz+99G+xVqEAXLyeMecqXktYYNXnqyV1pCb4fjdhH6ppbkCx4mUJf3m0l3fGnKJesr3wTrpQt/R7Csy2wgD1gSVt3ukNjj5e05noFfdKyjdH4Zc68gu8vt7iLFK2ylo6vS4drZfX0q2vqj4qfFnVpfryXnt3L2UGDzfJM=;
-X-UUID: bd63ec30128e4eb4af296aa029bcb948-20210614
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <james.lo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 180136027; Mon, 14 Jun 2021 02:43:38 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Jun 2021 02:43:30 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Jun 2021 17:43:29 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 14 Jun 2021 17:43:29 +0800
-Message-ID: <d23e965b271fea96b75bf72b888eb281e514237e.camel@mediatek.com>
-Subject: Re: [PATCH] soc: mediatek: pwarp: delete confusing comments
-From: James Lo <james.lo@mediatek.com>
-To: <matthias.bgg@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, Matthias Brugger
- <matthias.bgg@gmail.com>
-Date: Mon, 14 Jun 2021 17:43:29 +0800
-In-Reply-To: <20210611111307.29038-1-matthias.bgg@kernel.org>
-References: <20210611111307.29038-1-matthias.bgg@kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1lsjqL-00DZSu-36; Mon, 14 Jun 2021 10:29:22 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C9DE5611CA;
+ Mon, 14 Jun 2021 10:29:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1623666560;
+ bh=lSeXCd4lcJ0tTuMRN1HC4nFi6fATD6bu2jRIYot55WM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Ko+f3laW2JB91Bc8p/Oxg7X5WOwVgspcCNOv3A/lGSGEFNFS0RZvmjPLuYLC37Zcy
+ FF9Dek5SERjFhw7J0R/SYulTkkNhuB7AHoVw8oRuFfOJ0s+PaQQxGisqrDS7gpFPCR
+ QvF8Bnzkm1llBwn7Wbiv9RAO9utRIAeIzYZKupieuN3qykkxjbQpnJjoh+0Yf3Dhw0
+ oPNCkTTmURuV3paBgSq0WXDOYnyO6zJw4pbcZv1nbBQobOKVXsq+iwcV4kTxpobuJr
+ P6oy/IKGBLvjmeECmOOFzOTa+jUm0VQFR6flZtRyTXMmmfxYQia41zd08i/CPRLS4W
+ LB+/BYqXHoPBQ==
+Date: Mon, 14 Jun 2021 11:29:02 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Mason Zhang <mason.zhang@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
+ hanks.chen@mediatek.com, linux-kernel@vger.kernel.org,
+ "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 2/2] dt-binding: mediatek: mt6779: update spi document
+Message-ID: <20210614102902.GA5646@sirena.org.uk>
+References: <1623413625.22727.10.camel@mbjsdccf07>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1623413625.22727.10.camel@mbjsdccf07>
+X-Cookie: Some restrictions may apply.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210614_024344_975941_AD0060F0 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20210614_032921_177868_8151C933 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +76,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3708351222639304264=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-Thank you for your kind assistance.
+--===============3708351222639304264==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="LZvS9be/3tNcYl/X"
+Content-Disposition: inline
 
-Many thanks
-James Lo
+
+--LZvS9be/3tNcYl/X
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Jun 11, 2021 at 08:13:45PM +0800, Mason Zhang wrote:
+
+> 	I'm sorry to disturb you, this patch is stay here for a long time, Do
+> you have any suggestions about this patch?=20
+> 	We hope this patch will be merged as soon as possible,If you have any
+> concern, I will fix it in time.
+
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
+
+--LZvS9be/3tNcYl/X
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmDHL20ACgkQJNaLcl1U
+h9CsAQf+Nn4HRlnSP3tQV0DnMF2cdXi1Iq99YwPbLlaUcaR573n/pt3ERW1fG+RQ
+Buc3s5ft40NrHag2fnlP1plJY3hlhBvcjyyPvK+JhJanfYd0YmiOAuMAssVASA0E
+QDPO76npJtv1EJ+Y5ZmNec2Xyt9kpbbHVZrk/kQ1Uv01p/a/wXRLNN55ZYmeQ2kQ
+xFObSTgbJEEZtl/WXK5A7EDT7kfUSQO2kQIwHDI2AmiCOtE0WbqEYALgdd0ijAx9
+IAvq6Cte2W8E5S6bWtyJ/0wL7VFdyI+e8fIuhoaNK56cttomrsfDy/maEDQIRukA
+Vj8gFPHEmIY2r4tRjLbrBcwg1baueQ==
+=nGK1
+-----END PGP SIGNATURE-----
+
+--LZvS9be/3tNcYl/X--
 
 
-On Fri, 2021-06-11 at 13:13 +0200, matthias.bgg@kernel.org wrote:
-> From: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> Comments sugguest that MT8195 arb_en_all and int_en_all values need
-> to
-> be confirmed. But actually these values are correct.
-> 
-> Suggested-by: James Lo <james.lo@mediatek.com>
-> Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> ---
-> 
->  drivers/soc/mediatek/mtk-pmic-wrap.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 952bc554f443..118eb4acdeb6 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -2047,8 +2047,8 @@ static const struct pmic_wrapper_type
-> pwrap_mt8183 = {
->  static struct pmic_wrapper_type pwrap_mt8195 = {
->  	.regs = mt8195_regs,
->  	.type = PWRAP_MT8195,
-> -	.arb_en_all = 0x777f, /* NEED CONFIRM */
-> -	.int_en_all = 0x180000, /* NEED CONFIRM */
-> +	.arb_en_all = 0x777f,
-> +	.int_en_all = 0x180000,
->  	.int1_en_all = 0,
->  	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
->  	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+--===============3708351222639304264==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3708351222639304264==--
+
