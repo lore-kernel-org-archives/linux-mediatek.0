@@ -2,74 +2,76 @@ Return-Path: <SRS0=q7ss=LJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CE4BC48BE5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:36:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95796C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:40:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BD336109E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:36:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BD336109E
+	by mail.kernel.org (Postfix) with ESMTPS id 59015611C0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:40:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 59015611C0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=u6I0jMjcbF44mwlhuxOyb6j99IbVj0tAcgDtJaChSNw=; b=MJw6g4opxFKO5e
-	al3ofHZRtG32xp2EL4TNbF6pEcFqydPs3BUzP8jOwBnobRcvDWvRFBsD0ot96nBkWIE8kCQ0g+XOV
-	DCRk2EXoksDOEz53mSjuQkPWM7doFp3nUeP7/bLGA8ohr4CuaKcY3+1i3AC4WeSQg3yEulL1r0VP7
-	l/H50cFoovV3im9H0SL61zsA1vVwkVgHNt8QQoWZoC5xg4wEI9VrDmDkvhR93kfliZpgQlZSYEbR7
-	6fiJQM0WR5hfq/8gT6p7jHwEZQumi32Y8wHTTpEwL6/TSNmGrxSFe669IkOg4o8S0MQbGx2mIYo0p
-	+EdmFcAQDSU9XgEO+4uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+Ke7k8N/4IuN2AVfolQd8rmAfYZ95Zqa0oCUnb8tLbY=; b=Ela7vb6vcXvldX
+	o+CFfONosQhebh+FU7h4bwX7K79MTiLGE+H7S4yuDKhC05lBeZc8A2lrubx8SeBPmM7Jd+xxm1NoO
+	DIDi3dAAydkgMAQIN06YEBJi48KdSoWBnsyHqQyYlH8hvcNWj3Mue9i3YC/0RYML+FrjNfIiQvw/l
+	hL1FwYHnp9fvh1LPI9EKosabczAg8YwNS7slWMD4WQw5daFEnWNvA770UeyIMul+DD41WIIQvjW6O
+	ZtNGknMD5mKC/1FS/R3Pk2p7JCe3n/k2lhaf8kEjnExwWGN+A06OvInhfETslDtvauVaOgNGe9W3h
+	wtMOTLuqPnrqa9+c5gPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltFn0-002qMF-1K; Tue, 15 Jun 2021 20:36:02 +0000
+	id 1ltFqf-002rPw-25; Tue, 15 Jun 2021 20:39:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltBuW-001LkC-3z; Tue, 15 Jun 2021 16:27:37 +0000
-X-UUID: 38123c3acaf04d7da0331bb26d940b76-20210615
+ id 1ltBzd-001NsB-5g; Tue, 15 Jun 2021 16:32:50 +0000
+X-UUID: bda75922819a4fc6929879228ec273f3-20210615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=/g9c4wKYBovjewkHG4QG13BfUSKK2Ym4ipYWz8pxeFg=; 
- b=BkdqhOLv+JQYwjqgKYSMWR2l5A6HpjSdMdwP7vF4Q/HOjpgBPxp4PJVkkafAfEn791x7uqOh3TIswTqVwPFTMpYwOz6fWE8Zj2hoU+sR5313iYMlZP3DI6lLlNTHjFNtRBa/qTp/2iLO92mq+XyJEGEOhV/1nhZmPtjRc4/AxHs=;
-X-UUID: 38123c3acaf04d7da0331bb26d940b76-20210615
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=IGMG9Yg0tfrgmzjxENrtPS4VIzFXkSQD8zRsmAZCtxw=; 
+ b=fZhC6+muVcrh30d8zs5B4fVEGHSSJc/8yFY9WW6fZGEY/ZGbplFRTrI44Xhy2Ag508voyPgo2NMF+bBeBjXonN0G4V23HP9n1rmVoYuDGr1uISUxmpug14SxRLhnz1w9vj//l5xJORA+8SMpxpjbAWqwJl+vNpfJ6yOFRbjvfXI=;
+X-UUID: bda75922819a4fc6929879228ec273f3-20210615
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <mark-pk.tsai@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1274491061; Tue, 15 Jun 2021 09:23:18 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 825891433; Tue, 15 Jun 2021 09:32:48 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 09:23:17 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 00:23:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Tue, 15 Jun 2021 09:32:46 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 00:32:45 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Jun 2021 00:23:15 +0800
+ Frontend Transport; Wed, 16 Jun 2021 00:32:45 +0800
 From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
 To: <rostedt@goodmis.org>
 CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <mark-pk.tsai@mediatek.com>,
  <matthias.bgg@gmail.com>, <mhelsley@vmware.com>, <peterz@infradead.org>,
  <samitolvanen@google.com>, <yj.chiang@mediatek.com>
-Subject: [PATCH v3] recordmcount: Correct st_shndx handling
-Date: Wed, 16 Jun 2021 00:23:13 +0800
-Message-ID: <20210615162313.26081-1-mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH v2] recordmcount: Correct st_shndx handling
+Date: Wed, 16 Jun 2021 00:32:45 +0800
+Message-ID: <20210615163245.26164-1-mark-pk.tsai@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210615114229.3b1f2c5f@oasis.local.home>
+References: <20210615114229.3b1f2c5f@oasis.local.home>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_092732_331016_0E4F9D23 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20210615_093249_264348_DED3AC0D 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,51 +88,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Zijlstra <peterz@infradead.org>
+> On Tue, 15 Jun 2021 14:47:20 +0800
+> Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
+> 
+> > One should only use st_shndx when >SHN_UNDEF and <SHN_LORESERVE. When
+> > SHN_XINDEX, then use .symtab_shndx. Otherwise use 0.
+> > 
+> > This handles the case: st_shndx >= SHN_LORESERVE && st_shndx != SHN_XINDEX.
+> > 
+> > Reported-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+> > Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> 
+> Please explain the two signed-off-by's above. If you are just tweaking
+> Peter's original patch, please add at the start:
+> 
+> From: Peter Zijlstra (Intel) <peterz@infradead.org>
+> 
+> And then just above your signed off by, add what you changed:
+> 
+> Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> [ Changed something ]
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> 
+> But state what you changed.
+> 
+> Thanks!
+> 
+> -- Steve
 
-One should only use st_shndx when >SHN_UNDEF and <SHN_LORESERVE. When
-SHN_XINDEX, then use .symtab_shndx. Otherwise use 0.
+Sorry for messing up.
+I've fixed it in v3.
 
-This handles the case: st_shndx >= SHN_LORESERVE && st_shndx != SHN_XINDEX.
-
-Reported-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
-Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-[handle endianness of sym->st_shndx]
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
----
- scripts/recordmcount.h | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
-index f9b19524da11..ef9c3425f86b 100644
---- a/scripts/recordmcount.h
-+++ b/scripts/recordmcount.h
-@@ -194,13 +194,18 @@ static unsigned int get_symindex(Elf_Sym const *sym, Elf32_Word const *symtab,
- 	unsigned long offset;
- 	int index;
- 
--	if (sym->st_shndx != SHN_XINDEX)
-+	if (w2(sym->st_shndx) > SHN_UNDEF &&
-+	    w2(sym->st_shndx) < SHN_LORESERVE)
- 		return w2(sym->st_shndx);
- 
--	offset = (unsigned long)sym - (unsigned long)symtab;
--	index = offset / sizeof(*sym);
-+	if (w2(sym->st_shndx) == SHN_XINDEX) {
-+		offset = (unsigned long)sym - (unsigned long)symtab;
-+		index = offset / sizeof(*sym);
- 
--	return w(symtab_shndx[index]);
-+		return w(symtab_shndx[index]);
-+	}
-+
-+	return 0;
- }
- 
- static unsigned int get_shnum(Elf_Ehdr const *ehdr, Elf_Shdr const *shdr0)
--- 
-2.18.0
+Thanks for your comment.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
