@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78879C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:35:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFDB1C48BE5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:36:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 360C8611CA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:35:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 360C8611CA
+	by mail.kernel.org (Postfix) with ESMTPS id ACA6B611CA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:36:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACA6B611CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lepMWxjKJM/2SRx5Cy9b3/oIXvislPLhtH37aOSUTOc=; b=ifuCpujVPXYOO6
-	1SOPuF9iq8T1w8cu2VO7iw7z0e3WJhTeiMnuIdAr41XU/DIRjYVVfnAZd6ngIuZIZkB4ujMT4NLX4
-	7yLSmUKLdLXPIy3OL0A/jhjsekHDXiDgrmpE05lfoKdTmfd4jIsWVxN5TNrv2RcDer/TX8iMg/xPv
-	uszD2MawE0Cl6+/BiuMesTz6EFdDDlRYXwhYY1Z/98SlcEtdDh+83/5FtdJ2+SXik87TPNPl2HjBn
-	AsU1XtFCCHrySyzaX+NJVnInHcHz35tYSjkuLOiLxyrozPwsGqRmRuMaLbxyJVWWwr7CzhkjSzHf9
-	Ra9WGBrWE2y+DsPE6O0A==;
+	List-Owner; bh=OQNKqwWI9+8cVdHeyArIR5a/qykZwZxex6+KEZ9Rz10=; b=uPZXIle96ku/Gq
+	xGNbxPIxBEfqH3u/LcvEgB/TZY4uymI0xiweagQfADsGJrrCPr0CMwYlRTxfGLZA/ia5COZjSJo3J
+	Uas1wRXW2srwhcdGL1UAJN8852qO8TI7oIrJ658zoTmFD1XZqQXwuMZ4VVbE3LnENXHzZd0/jqbF+
+	g76iqi3kw0ZwO6a3AITvqDQFlEHxhGOFtiN6L0dr7h4eUmkuJvyZLvac+tczbn63cGmozJMcFMq3v
+	d4L7mgcTTyD2OVYJNcWtj7akAEXVvtB1JnfIfD4GlEQEYdNL8hxaNErw23i3t0XXHi/KhqkPjpWEH
+	OnbgH1y9KtRgvIBtUobw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltGhx-003COE-0C; Tue, 15 Jun 2021 21:34:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ltGjX-003DbM-3e; Tue, 15 Jun 2021 21:36:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltD5R-001pIp-8e; Tue, 15 Jun 2021 17:42:54 +0000
-X-UUID: e34d75283658491699d196f0080daf23-20210615
+ id 1ltD5W-001pL0-HY; Tue, 15 Jun 2021 17:43:00 +0000
+X-UUID: d65e21a7c2b646d58089ed5ef7e6e5db-20210615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dgUB8PSLyIYhXMCEjw+E5RWoFKqzipl6+ftsgOKjvuU=; 
- b=J892xG6hpVfw4Xq+39VKWElm03SB82Jsnuw12MRHzJnKkGGo6rjQWNECwyp3WvpvlyMYkJWo8fs+7STUh1gHKGkYgLwPrmYrWLPc5GkiHPpUDEI6uGfs1CadAV/D+Joie3IQ/7bdXKQdPmdbrlegLCjAMgD9Bb9LEPIST0eyANM=;
-X-UUID: e34d75283658491699d196f0080daf23-20210615
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=HO/9pl9hqzKKPjnw2up11hg0Tivk0kR3l275OjxnrEQ=; 
+ b=B1beCZy64W1Qp4Iq0FIF4L18f2fe/7zPPJGQRANK7Nd5fSm7Bj2F2CR2OlURDbAFUAq/W/p6lsoXf8/GOZr7dg6j3pcJ4i88XybA2fr867g3L3/tzMQcoWmLN8Y0zZtOpiSqto4o83rU7kNkeO3lHmWqmGCrbU8tu4Y8+kxqSZ0=;
+X-UUID: d65e21a7c2b646d58089ed5ef7e6e5db-20210615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1200042360; Tue, 15 Jun 2021 10:42:50 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 10:32:48 -0700
+ with ESMTP id 452632384; Tue, 15 Jun 2021 10:42:55 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Jun 2021 10:32:53 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 01:32:46 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 01:32:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Jun 2021 01:32:46 +0800
+ Frontend Transport; Wed, 16 Jun 2021 01:32:45 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
 CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <srv_heupstream@mediatek.com>, <seiya.wang@mediatek.com>, <wenst@google.com>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
- <jitao.shi@mediatek.com>
-Subject: [PATCH 22/27] arm64: dts: mt8195: add edp nodes
-Date: Wed, 16 Jun 2021 01:32:28 +0800
-Message-ID: <20210615173233.26682-22-tinghan.shen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jason-JH Lin
+ <jason-jh.lin@mediatek.com>
+Subject: [PATCH 16/27] arm64: dts: mt8195: add display node
+Date: Wed, 16 Jun 2021 01:32:22 +0800
+Message-ID: <20210615173233.26682-16-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.15.GIT
 In-Reply-To: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_104253_363568_7EB84605 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20210615_104258_698986_082A3BC4 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,110 +90,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jitao Shi <jitao.shi@mediatek.com>
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 
-add edp nodes for mt8195
+add display node.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+Signed-off-by: Jason-JH Lin <jason-jh.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 59 +++++++++++++++++++++++-
- 1 file changed, 58 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 76 ++++++++++++++++++++++++
+ 1 file changed, 76 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 256818c4c0bf..d7d2c2a8f461 100644
+index 856b0e938009..f362288ad828 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -23,6 +23,8 @@
- 
- 	aliases {
- 		dpi1 = &disp_dpi1;
-+		dp-intf0 = &dp_intf0;
-+		dp-intf1 = &dp_intf1;
- 	};
- 
- 	clocks {
-@@ -1155,6 +1157,29 @@
- 			status = "disabled";
+@@ -1911,6 +1911,82 @@
+ 			#clock-cells = <1>;
  		};
  
-+		disp_pwm0: disp_pwm0@1100e000 {
-+			compatible = "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100e000 0 0x1000>;
-+			interrupts = <GIC_SPI 203 IRQ_TYPE_LEVEL_LOW 0>;
++		vdosys_config@1c01a000 {
++			compatible = "mediatek,mt8195-vdosys";
++			reg = <0 0x1c01a000 0 0x1000>;
++			reg-names = "vdosys0_config";
++			iommus = <&iommu_vdo M4U_PORT_L0_DISP_RDMA0>;
 +			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			#pwm-cells = <2>;
-+			clocks = <&topckgen CLK_TOP_DISP_PWM0_SEL>,
-+					<&infracfg_ao CLK_INFRA_AO_DISP_PWM>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
 +		};
 +
-+		disp_pwm1: disp_pwm1@1100f000 {
-+			compatible = "mediatek,mt8183-disp-pwm";
-+			reg = <0 0x1100f000 0 0x1000>;
-+			interrupts = <GIC_SPI 793 IRQ_TYPE_LEVEL_HIGH 0>;
-+			#pwm-cells = <2>;
-+			clocks = <&topckgen CLK_TOP_DISP_PWM1_SEL>,
-+				<&infracfg_ao CLK_INFRA_AO_DISP_PWM1>;
-+			clock-names = "main", "mm";
-+			status = "disabled";
++		mutex: disp_mutex0@1c016000 {
++			compatible = "mediatek,mt8195-disp-mutex";
++			reg = <0 0x1c016000 0 0x1000>;
++			reg-names = "vdo0_mutex";
++			clocks = <&vdosys0 CLK_VDO0_DISP_MUTEX0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++			clock-names = "vdo0_mutex";
++			interrupts = <GIC_SPI 658 IRQ_TYPE_LEVEL_HIGH 0>;
 +		};
 +
- 		spi1: spi@11010000 {
- 			compatible = "mediatek,mt8195-spi",
- 				     "mediatek,mt6765-spi";
-@@ -2397,6 +2422,30 @@
- 			status = "disabled";
- 		};
- 
-+		dp_intf1: dp_intf1@1c113000 {
-+			compatible = "mediatek,mt8195-dp-intf";
-+			reg = <0 0x1c113000 0 0x1000>;
-+			interrupts = <GIC_SPI 513 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			clocks = <&vdosys1 CLK_VDO1_DP_INTF0_MM>,
-+				 <&vdosys1 CLK_VDO1_DPINTF>,
-+				 <&topckgen CLK_TOP_DP_SEL>,
-+				 <&topckgen CLK_TOP_TVDPLL2_D2>,
-+				 <&topckgen CLK_TOP_TVDPLL2_D4>,
-+				 <&topckgen CLK_TOP_TVDPLL2_D8>,
-+				 <&topckgen CLK_TOP_TVDPLL2_D16>,
-+				 <&topckgen CLK_TOP_TVDPLL2>;
-+			clock-names = "hf_fmm_ck",
-+				      "hf_fdp_ck",
-+				      "MUX_DP",
-+				      "TVDPLL_D2",
-+				      "TVDPLL_D4",
-+				      "TVDPLL_D8",
-+				      "TVDPLL_D16",
-+				      "DPI_CK";
-+			status = "disabled";
++		ovl0: disp_ovl@1c000000 {
++			compatible = "mediatek,mt8195-disp-ovl";
++			reg = <0 0x1c000000 0 0x1000>;
++			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++			iommus = <&iommu_vdo M4U_PORT_L0_DISP_OVL0_RDMA0>;
 +		};
 +
- 		hdmi0: hdmi@1c300000 {
- 			compatible = "mediatek,mt8195-hdmi";
- 			reg = <0 0x1c300000 0 0x1000>;
-@@ -2421,11 +2470,19 @@
- 
- 		edp_tx: edp_tx@1c500000 {
- 			status = "disabled";
--			compatible = "mediatek,mt8195-dp_tx";
-+			compatible = "mediatek,mt8195-edp_tx";
- 			reg = <0 0x1c500000 0 0x8000>;
- 			power-domains = <&spm MT8195_POWER_DOMAIN_EPD_TX>;
- 			interrupts = <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
- 		};
-+
-+		dp_tx: dp_tx@1c600000 {
-+			compatible = "mediatek,mt8195-dp_tx";
-+			reg = <0 0x1c600000 0 0x8000>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_DP_TX>;
-+			interrupts = <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
-+			status = "disabled";
++		rdma0: disp_rdma@1c002000 {
++			compatible = "mediatek,mt8195-disp-rdma";
++			reg = <0 0x1c002000 0 0x1000>;
++			interrupts = <GIC_SPI 638 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_RDMA0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++			iommus = <&iommu_vdo M4U_PORT_L0_DISP_RDMA0>;
 +		};
- 	};
- 
- 	hdmiddc0: ddc_i2c {
++
++		color0: disp_color@1c003000 {
++			compatible = "mediatek,mt8195-disp-color";
++			reg = <0 0x1c003000 0 0x1000>;
++			interrupts = <GIC_SPI 639 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_COLOR0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++		};
++
++		ccorr0: disp_ccorr@1c004000 {
++			compatible = "mediatek,mt8195-disp-ccorr";
++			reg = <0 0x1c004000 0 0x1000>;
++			interrupts = <GIC_SPI 640 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_CCORR0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++		};
++
++		aal0: disp_aal@1c005000 {
++			compatible = "mediatek,mt8195-disp-aal";
++			reg = <0 0x1c005000 0 0x1000>;
++			interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++		};
++
++		gamma0: disp_gamma@1c006000 {
++			compatible = "mediatek,mt8195-disp-gamma";
++			reg = <0 0x1c006000 0 0x1000>;
++			interrupts = <GIC_SPI 642 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_GAMMA0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++		};
++
++		dither0: disp_dither@1c007000 {
++			compatible = "mediatek,mt8195-disp-dither";
++			reg = <0 0x1c007000 0 0x1000>;
++			interrupts = <GIC_SPI 643 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vdosys0 CLK_VDO0_DISP_DITHER0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++		};
++
+ 		smi_common0: smi@1c01b000 {
+ 			compatible = "mediatek,mt8195-smi-common";
+ 			mediatek,common-id = <0>;
 -- 
 2.18.0
 _______________________________________________
