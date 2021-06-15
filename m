@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F231DC48BE5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89315C48BE5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:18:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A23AA61350
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:16:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A23AA61350
+	by mail.kernel.org (Postfix) with ESMTPS id 5A7E461241
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:18:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A7E461241
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q+MgW+6P2tw1GNuk/8S1uIjzMKADmcWbPcsl+N5plm0=; b=WyFvoXElaViui0
-	irzPaLY/Dfr/ZK1DuTtE/osKp1jMt5etIgGuuF4wB/C39eGJeJxxxWCWtjx3XhCw5M6ipTqBrZRB3
-	lP3VOC3VzraqokgV+sR7wFpTuHuHs6gRBqCkNF8iNgAi13O6oS5RwiCEx5pwBpnFUhEjNEwn34QfZ
-	A7Ivls3i4gCFGKfHbIybRftccAha1nq93m0MEkiuO2YkY4tWn8RS+aSQ3T8Y2rxcMT9SllJ6BZOCX
-	DRDY2OxI+VZYcBTtVcPj3YDljx1JZcq+XvpkeFuxnyRRD3mOf4l/uB6Xxo5k5n00COa6W4RhBaSc6
-	H2vQk36Buutg0JW74uhA==;
+	List-Owner; bh=4bRRCObkO1jUKT56vn3Im7u4O059lAF6DIn+lmT0jyg=; b=ZbR7SqQ/zHvf95
+	+OU07vUe3NxLbLEp7AgdVDoeDxN4Tjgs9dXZMUhmgoUhf8PYzzvmijCzMZmFORXt/0XZfeB3RXbcz
+	0qg+IKPUpdFYPVvk30CrW7RSAPiYQ4gtD5Cu8dMZvGoPz1UpG+NAkBue7G/d3LQhImmwdrcMOGijV
+	SeWE7fGCqp0snFHI7mcaePKvPloD4W620IO9iExNiTdF7bzPmTkSsCNV8Q8dfYgG8Fp7ilhcmS8JY
+	RHrbFwVGIPhH/0GMkQkwpn+uELW6MVKA0z7xuKpjg9FE3zkPhuBOO+sIyRuluZLO8+5IlVXq7hfIc
+	WpkzO7uHX9qBUzHT+viA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltGPt-0034bx-33; Tue, 15 Jun 2021 21:16:13 +0000
+	id 1ltGRz-0035SZ-Qh; Tue, 15 Jun 2021 21:18:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltCvi-001lHo-GW; Tue, 15 Jun 2021 17:32:52 +0000
-X-UUID: d06eff9c46b24060b6c7e94cf493c013-20210615
+ id 1ltCvi-001lI9-VM; Tue, 15 Jun 2021 17:32:53 +0000
+X-UUID: bf9934651d274a98816aa9bfaabc893b-20210615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=goTr7Nrju38PmB9dv1cGtgigBI4ftEDNhhL0YeB7Vws=; 
- b=FoDc1UoFqNpPxLgbl8GP3L+E+tC+FIUG6l1iEW9Rd/oDRRj2HEJZCirAmkGtZvvrAcNb6GME3DrBCv0D/11JiLIRTVei32thXVfhvEXTF/O8OD6sO54ky9yppReQFtbYsC4RsDcqfZwKDeFK60s+BDGkSxRKttpbDlN4JWAwNAs=;
-X-UUID: d06eff9c46b24060b6c7e94cf493c013-20210615
+ bh=yryBMB1nUbKvmcXFhVrb4CjQQDDyrWLYk5B8hzPnTJI=; 
+ b=Vhk7uETUM77KIx1/sOknGQho/IfZW8AzrO9ch1Lh/Z/BuMvA5r5bGqfD1Tw0MyY5LI35UL4AuJ7/cjXhe2B5YyzE3mudmeL84ADqU8F+DpWHzZtZVnhYMp0tHxHOaWyoP+kCGxOXRfZCG6Z+IWSH+pq1o6L7iEPfO+Qhw5mVE3E=;
+X-UUID: bf9934651d274a98816aa9bfaabc893b-20210615
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 17241745; Tue, 15 Jun 2021 10:32:46 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 307277768; Tue, 15 Jun 2021 10:32:46 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 15 Jun 2021 10:32:44 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 01:32:43 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 01:32:42 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Jun 2021 01:32:43 +0800
+ Frontend Transport; Wed, 16 Jun 2021 01:32:42 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
 CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <srv_heupstream@mediatek.com>, <seiya.wang@mediatek.com>, <wenst@google.com>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Henry Chen
- <henryc.chen@mediatek.com>
-Subject: [PATCH 05/27] arm64: dts: mt8195: add spmi node
-Date: Wed, 16 Jun 2021 01:32:11 +0800
-Message-ID: <20210615173233.26682-5-tinghan.shen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Crystal Guo
+ <crystal.guo@mediatek.com>
+Subject: [PATCH 01/27] arm64: dts: mt8195: add infracfg_rst node
+Date: Wed, 16 Jun 2021 01:32:08 +0800
+Message-ID: <20210615173233.26682-2-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.15.GIT
 In-Reply-To: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_103250_644499_08357A4E 
-X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-CacheID: sfid-20210615_103251_106719_22EDA2E5 
+X-CRM114-Status: UNSURE (   9.41  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,41 +90,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Henry Chen <henryc.chen@mediatek.com>
+From: Crystal Guo <crystal.guo@mediatek.com>
 
-Add spmi node to SOC MT8195.
+add infracfg_rst node which is for MT8195 platform
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
 ---
  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 15 +++++++++++++++
  1 file changed, 15 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index bbb1e008e522..965445d07e92 100644
+index 629cd883facf..8cda62f736b3 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -334,6 +334,21 @@
- 			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC_D10>;
+@@ -8,6 +8,7 @@
+ 
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/reset/ti-syscon.h>
+ 
+ / {
+ 	compatible = "mediatek,mt8195";
+@@ -273,6 +274,20 @@
+ 			};
  		};
  
-+		spmi: spmi@10027000 {
-+			compatible = "mediatek,mt8195-spmi";
-+			reg = <0 0x10027000 0 0x000e00>,
-+			      <0 0x10029000 0 0x000100>;
-+			reg-names = "pmif", "spmimst";
-+			clocks = <&infracfg_ao CLK_INFRA_AO_PMIC_AP>,
-+				 <&infracfg_ao CLK_INFRA_AO_PMIC_TMR>,
-+				 <&topckgen CLK_TOP_SPMI_M_MST_SEL>;
-+			clock-names = "pmif_sys_ck",
-+				      "pmif_tmr_ck",
-+				      "spmimst_clk_mux";
-+			assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC_D10>;
++		infracfg: syscon@10001000 {
++			compatible = "mediatek,mt8195-infracfg", "syscon", "simple-mfd";
++			reg = <0 0x10001000 0 0x1000>;
++			#clock-cells = <1>;
++
++			infracfg_rst: reset-controller {
++				compatible = "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <
++					0x140 26 0x144 26 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
++				>;
++			};
 +		};
 +
- 		uart0: serial@11001100 {
- 			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
- 			reg = <0 0x11001100 0 0x100>;
+ 		watchdog: watchdog@10007000 {
+ 			compatible = "mediatek,mt8195-wdt", "mediatek,mt6589-wdt";
+ 			reg = <0 0x10007000 0 0x100>;
 -- 
 2.18.0
 _______________________________________________
