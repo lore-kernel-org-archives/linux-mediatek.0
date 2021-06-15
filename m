@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6857BC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFC5EC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:19:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A17A60FDA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:19:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A17A60FDA
+	by mail.kernel.org (Postfix) with ESMTPS id 6F3D260FDA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 21:19:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F3D260FDA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,57 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VdCLL9dyi/UwDoi5Zg8e2oZg6XRrY6IzlPMt0suQr2g=; b=j+rWZmtK0gOZ0j
-	4t98p+HLPon+38Ed76VTkKseVdIxn3ju74ftEiiQe/H6i28+CGccYi8BrQnuKp6//KBmYQq5KNfBo
-	VC4DSrwnhAtZ2lOvFlNrFGm20LhzqCWE5uYs91gHpu85mIBkLyW7PHCyrO+uMuKRlr870hvHOZSIi
-	NOSr7E9utWi/w61j3ndI07FHtBgdbLgeg+sDNR4aJ4I5vhy0s6O25WJHxGqotDytTh4z4p76XgwOR
-	8TlrNtT/8iKFhQ8TkJ6yXdLAa0/9EEGchUQRJLICeDWKNZNW6Oainad89OWu+dAcM61GIVRvcdPeS
-	cvmWKQon4JZ/+LzOC8JQ==;
+	List-Owner; bh=MGmNzIT/PNjrHfRduSTH/AKmAj/f58kkBlF9zi1VoSA=; b=gXVqCtBMa8oY+D
+	YUdA1NqY/OXLbcErLLWA935d+aBx3yG5lvr7usqbV8nTCetOavefvis+f8/H6ebhhiGuH68t9z3W7
+	aJ3vwANvFI7JcaQNHIADMkOus6yoJ6yZuRIqeBFfHjd5Iauej4aACiFaNXqM5A/Dk+5e1ylgKj4oH
+	bPDYqS8pQSeFMMj0tM1jEKZbYU9pBxQf6brYGn0CbD4Fwvq4Azk6awk9Bb8Gh8/eAZfrESz+dPQaK
+	U0OsYUcLfU06WjN/QTauze/irg23mhu92BzrviGE52yfjBlmqtgEmImlO9p/Aho7IyJ1BA+wxYnnZ
+	0CKQ877c8t21TI7Ngssg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltGTH-00360o-Vg; Tue, 15 Jun 2021 21:19:44 +0000
+	id 1ltGTK-00361j-7A; Tue, 15 Jun 2021 21:19:46 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltCvj-001lIP-O5; Tue, 15 Jun 2021 17:32:54 +0000
-X-UUID: 543f2f86778847a4937fff91420f27fb-20210615
+ id 1ltCvm-001lIP-GM; Tue, 15 Jun 2021 17:32:56 +0000
+X-UUID: 7283db193ad64578a873f055d6a98673-20210615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jP3eA6lvX9NelVBBdD5wO/igBebv75TsYZBWfGSxFLo=; 
- b=rGWzJbZNz8pGffCIDkYj/tJLyeB4rnSpcg3pUEieWrxyYUpDhRod0OCtWfgZjqQL4c2Rm++/MxtiO6lM1x+nlDG+w6tkzh7vzGSCfJ3TAPmWfGemkzCv8I5LI9JYJLbkN+HIOjp/oWcbPAEDebTe5ldXHKjwVvNJ2UJYR1XvE98=;
-X-UUID: 543f2f86778847a4937fff91420f27fb-20210615
+ bh=GZoxnR/3WhLujuCfdrVlpd2RV5NvOz6v1zl+ucT/zlk=; 
+ b=uNRBYQe66AFRKztu44WaBlN3jzQQ9ug9vSDdr4ZabK9mekMTr5kmkoNri6lTMo5WIOaohVSamjgVCrBXpC0+XURUCnwNKCLcK2ywkqf02dJCIsUfhzTDnNP/n52mg6A7itVM+grNVrAralgllqwi3oa9yGMr0fIFhZVGDZEV9/A=;
+X-UUID: 7283db193ad64578a873f055d6a98673-20210615
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1846313526; Tue, 15 Jun 2021 10:32:47 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 2116134275; Tue, 15 Jun 2021 10:32:47 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 10:32:45 -0700
+ 15.0.1497.2; Tue, 15 Jun 2021 10:32:46 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 01:32:43 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 01:32:44 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Jun 2021 01:32:43 +0800
+ Frontend Transport; Wed, 16 Jun 2021 01:32:44 +0800
 From: Tinghan Shen <tinghan.shen@mediatek.com>
 To: <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
 CC: <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <srv_heupstream@mediatek.com>, <seiya.wang@mediatek.com>, <wenst@google.com>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Leilk Liu
- <leilk.liu@mediatek.com>
-Subject: [PATCH 09/27] arm64: dts: mt8195: add spi controller
-Date: Wed, 16 Jun 2021 01:32:15 +0800
-Message-ID: <20210615173233.26682-9-tinghan.shen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jianjun Wang
+ <jianjun.wang@mediatek.com>
+Subject: [PATCH 11/27] arm64: dts: mt8195: add PCIe device node
+Date: Wed, 16 Jun 2021 01:32:17 +0800
+Message-ID: <20210615173233.26682-11-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.15.GIT
 In-Reply-To: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_103251_861959_684EF297 
-X-CRM114-Status: UNSURE (   9.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210615_103254_662154_8628FEF1 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,132 +89,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Leilk Liu <leilk.liu@mediatek.com>
+From: Jianjun Wang <jianjun.wang@mediatek.com>
 
-add spi controller node into mt8195 SoC
+Add PCIe device node for mt8195.
 
-Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 106 +++++++++++++++++++++++
- 1 file changed, 106 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 74 ++++++++++++++++++++++++
+ 1 file changed, 74 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 9b002bb6d344..80a272703879 100644
+index dd5644410fea..539f405a4f3d 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -818,6 +818,112 @@
- 			#clock-cells = <1>;
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/clock/mt8195-clk.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/phy/phy.h>
+ #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+ #include <dt-bindings/power/mt8195-power.h>
+ #include <dt-bindings/reset/ti-syscon.h>
+@@ -944,6 +945,79 @@
+ 			status = "disabled";
  		};
  
-+		spi0: spi@1100a000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x1100a000 0 0x100>;
-+			interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI0>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		pcie0: pcie@112f0000 {
++			device_type = "pci";
++			compatible = "mediatek,mt8195-pcie";
++			reg = <0 0x112f0000 0 0x2000>;
++			reg-names = "pcie-mac";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			interrupts = <GIC_SPI 791 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x82000000 0 0x20000000
++				  0x0 0x20000000 0 0x4000000>;
++
 +			status = "disabled";
++
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P0>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_26M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_96M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_TL_32K>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_PERI_26M>,
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++
++			phys = <&pciephy>;
++			phy-names = "pcie-phy";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P0>;
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
++					<0 0 0 2 &pcie_intc0 1>,
++					<0 0 0 3 &pcie_intc0 2>,
++					<0 0 0 4 &pcie_intc0 3>;
++			pcie_intc0: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
 +		};
 +
-+		spi1: spi@11010000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11010000 0 0x100>;
-+			interrupts = <GIC_SPI 192 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI1>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		pcie1: pcie@112f8000 {
++			device_type = "pci";
++			compatible = "mediatek,mt8195-pcie";
++			reg = <0 0x112f8000 0 0x2000>;
++			reg-names = "pcie-mac";
++			#address-cells = <3>;
++			#size-cells = <2>;
++			interrupts = <GIC_SPI 792 IRQ_TYPE_LEVEL_HIGH 0>;
++			bus-range = <0x00 0xff>;
++			ranges = <0x82000000 0 0x24000000
++				  0x0 0x24000000 0 0x4000000>;
++
 +			status = "disabled";
++			clocks = <&infracfg_ao CLK_INFRA_AO_PCIE_PL_P_250M_P1>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_P1_TL_96M>,
++				 <&infracfg_ao CLK_INFRA_AO_PCIE_P1_PERI_26M>,
++				 <&pericfg_ao CLK_PERI_AO_PCIE_P0_MEM>;
++
++			phys = <&u3port1 PHY_TYPE_PCIE>;
++			phy-names = "pcie-phy";
++			power-domains = <&spm MT8195_POWER_DOMAIN_PCIE_MAC_P1>;
++
++			#interrupt-cells = <1>;
++			interrupt-map-mask = <0 0 0 7>;
++			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
++					<0 0 0 2 &pcie_intc1 1>,
++					<0 0 0 3 &pcie_intc1 2>,
++					<0 0 0 4 &pcie_intc1 3>;
++			pcie_intc1: interrupt-controller {
++				interrupt-controller;
++				#address-cells = <0>;
++				#interrupt-cells = <1>;
++			};
 +		};
 +
-+		spi2: spi@11012000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11012000 0 0x100>;
-+			interrupts = <GIC_SPI 193 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI2>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi3: spi@11013000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11013000 0 0x100>;
-+			interrupts = <GIC_SPI 194 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI3>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi4: spi@11018000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11018000 0 0x100>;
-+			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI4>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spi5: spi@11019000 {
-+			compatible = "mediatek,mt8195-spi",
-+				     "mediatek,mt6765-spi";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			reg = <0 0x11019000 0 0x100>;
-+			interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				 <&topckgen CLK_TOP_SPI_SEL>,
-+				 <&infracfg_ao CLK_INFRA_AO_SPI5>;
-+			clock-names = "parent-clk", "sel-clk", "spi-clk";
-+			status = "disabled";
-+		};
-+
-+		spis0: spi@1101d000 {
-+			compatible = "mediatek,mt8195-spi-slave";
-+			reg = <0 0x1101d000 0 0x100>;
-+			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_SPIS0>;
-+			clock-names = "spi";
-+			assigned-clocks = <&topckgen CLK_TOP_SPIS_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6>;
-+			status = "disabled";
-+		};
-+
-+		spis1: spi@1101e000 {
-+			compatible = "mediatek,mt8195-spi-slave";
-+			reg = <0 0x1101e000 0 0x100>;
-+			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&infracfg_ao CLK_INFRA_AO_SPIS1>;
-+			clock-names = "spi";
-+			assigned-clocks = <&topckgen CLK_TOP_SPIS_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D6>;
-+			status = "disabled";
-+		};
-+
- 		mmc0: mmc@11230000 {
- 			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
- 			reg = <0 0x11230000 0 0x10000>,
+ 		nor_flash: nor@1132c000 {
+ 			compatible = "mediatek,mt8195-nor", "mediatek,mt8173-nor";
+ 			reg = <0 0x1132c000 0 0x1000>;
 -- 
 2.18.0
 _______________________________________________
