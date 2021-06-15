@@ -2,94 +2,83 @@ Return-Path: <SRS0=q7ss=LJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13FD4C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:09:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0663C48BE8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:15:14 +0000 (UTC)
 Received: from bombadil.infradead.org (unknown [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9BA0261490
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:09:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BA0261490
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9ECBE61585
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:15:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9ECBE61585
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NfjWYmRwxCwpopWqIxHErzEPUgT9iE6UeScvj3JgVSA=; b=mtoYcWHJo3BiEE
-	mLGT1hNRWTrocmbE6ihfwOYX02C3uUWBfgEzY5wbLgvygzcQFi+oHyxfUrgq7IBYwfLS0WRaygSPk
-	wLW6OsLTASiYiUZTUZZ+gb7+TBDnsOALmH0/0V3Ry8PC5snfFd26HLLd/rehhRI2Moa6Wp9SQijKT
-	r2V2boUWUqAKS0snyP5QFa/UCcwVZDZuvRUy0CCfs/68DgACyjbHeWKed6bcNo1u7XofT2fNgdptx
-	lhPLAR7y4Qxb4qmjhbgG9G98rot4RWeQwek7x5gqVHJiMTRpIDqslZseKcJ3Bdijvnks9t+WcPxhz
-	Y5vaZK84f5CJ7UoFMhMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:Message-Id:Date:Subject:References:In-Reply-To:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eWq78UqcvGbI9reD72D0PcVLjMBsUOYy8IUAXavWSt8=; b=ZhZDp6NsstWQfTjteoiv/G/q/V
+	UUhdmCrmhBOBLb7OTrjQR6FmseRBrmV/yG/BSJ6TAOp3e9mZzNyZGSoUEgpDKpOtbLnSBZMFrJu0v
+	ruej55YCH4uAtUn3rcP9yPI6N8WVEiO20+CWVfO2JOPdETErDfm2pPu3tD9wVLla2H1+3s2JnhwLf
+	UXpMVVNtxHIwnO2bxYatzQTocw6+uILO319uoE1R9+NO1LE7cFm558HrcWy0PDQL2wnJa11vfkIqK
+	ySRCsv28hA9wpp5Zfd1oEyukPwXDO25b0fVYr9TZqW3QGv3xfRy1kmpUp86h5BrFBcU1UtvTOlMdK
+	DyPk0iVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltBcH-001EKR-To; Tue, 15 Jun 2021 16:08:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1ltBi4-001GtU-UB; Tue, 15 Jun 2021 16:14:40 +0000
+Received: from mail-il1-f182.google.com ([209.85.166.182])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9R9-000E8e-38; Tue, 15 Jun 2021 13:49:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=uCY1G8F+R+hDbFnivL5vV3pmXtIw8uNunG7ewSPDoYo=; b=DUK1PIkFhWg4JjyJpdqDm+T/Mr
- r56fVgVOjxAsV241LcmLWkD0koPonRmEv2xPOAdt8TDT5TMjxYj9sHA8Pi7mnInOy7UpoQyZb0j80
- 6Y826TK8i0zP+xL72aJRnIwW5NGLbnLQql3ijYIv5yHuqx6kVDrOdJNPEFzf7zdkssx5XUoSdcepJ
- 15d3kgv6/I7cuRlH46DQ9Rg9aq2oAglIw2H/khCjJfSELNKrh1Ndv/188Gq8s3Pn7FXMxJl5+hwrc
- wNWsF0umQNYgJ6w9fLZFuhdsme6klUNG8LtP2ovsYIpEv6Zw6dZHWtU9hJQXf0sEI0w8zQe/KYoIH
- xEvazKRQ==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lsy9T-007F1u-CY; Tue, 15 Jun 2021 01:46:16 +0000
-X-UUID: 60b3c9c27f3f4428a251c960df9b0f47-20210614
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=uCY1G8F+R+hDbFnivL5vV3pmXtIw8uNunG7ewSPDoYo=; 
- b=SA2vVdMJhRmBW0Pbe9VPfYNE3jbEaeTeh44+yOWBRjcQh/s9kuh8PTCClQAZLd/DpGjUk/KsgPC9NrMoEgTBPZFEaUnNuYO55HX/+YoM+Rvl4Ykh/3lurtgrvZ6DMHqg9LFIBctvN1d2xTcW90jkAWAyuiV1pg9VTieQJfQEvv8=;
-X-UUID: 60b3c9c27f3f4428a251c960df9b0f47-20210614
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1336353930; Mon, 14 Jun 2021 18:42:39 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 14 Jun 2021 18:42:38 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 09:42:36 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 15 Jun 2021 09:42:36 +0800
-Message-ID: <0ce161d31c4b0a8dc862d5e6c89a3e2f62d32a10.camel@mediatek.com>
-Subject: Re: [PATCH 3/3] soc: mediatek: pm-domains: Add support for mt8195
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo i Serra
- <enric.balletbo@collabora.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, chun-jie.chen
- <chun-jie.chen@mediatek.corp-partner.google.com>
-Date: Tue, 15 Jun 2021 09:42:36 +0800
-In-Reply-To: <f050f072-1732-b6f0-f505-2d0a44563ce5@gmail.com>
-References: <20210610023614.5375-1-chun-jie.chen@mediatek.com>
- <20210610023614.5375-4-chun-jie.chen@mediatek.com>
- <f050f072-1732-b6f0-f505-2d0a44563ce5@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1lt9gc-000RDN-Pp; Tue, 15 Jun 2021 14:05:05 +0000
+Received: by mail-il1-f182.google.com with SMTP id i13so15400496ilk.3;
+ Tue, 15 Jun 2021 07:05:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=Ul7S+YmegefjytTCybJFOmbLUpYojuCju7Gxif7Sbhw=;
+ b=VV9h8QbA+tkvwaTHmHyFr5lMDQTkwTmX4PjJ5B1dU01UETJF2tC5YKx0wps6MMCAtO
+ NjfLJh4qewADQL7O2mdWZsAtap+uz5nW8gs6ApnzIa8uKSzWKZXIEjGTNlhitHpGTSfn
+ f8NAtOEEKtZoFZox0FzAVcjOi5uACrwThzYa1IUlhL5yxIT9z0Iv+VM1Yutq9Bp6hprt
+ pfP7vHa2HwZ0O/yNy9QQ0gqbKuq6zLZ8rf5BSoE87krLPQ9S+StIvhYV74U/YlutKIrF
+ BbqOiiaduvc3WYyrGVig6FJz1x5AbIeZbRepc48DmCQCNXXYBC4Z4mKtGxaNxcsAhVlo
+ ymbg==
+X-Gm-Message-State: AOAM532xkljErDpqwrQBJtG7GgerSEEHGPGlf7x2XLwyfz4MFPCZDaCY
+ kgTSbb1DrcJ0g4RSdW62GN2IW/5+gQ==
+X-Google-Smtp-Source: ABdhPJxlnUeLKisaHXDilxBGNC4oZcH3BSSM4B2ikEr4N4pEw8d4AZXuCBOQPgy54qWgugEGKRfulg==
+X-Received: by 2002:a05:6e02:809:: with SMTP id
+ u9mr18073417ilm.63.1623765900676; 
+ Tue, 15 Jun 2021 07:05:00 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id d5sm9299257ilf.55.2021.06.15.07.04.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Jun 2021 07:04:59 -0700 (PDT)
+Received: (nullmailer pid 487355 invoked by uid 1000);
+ Tue, 15 Jun 2021 14:04:53 -0000
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?b?5ZGo55Cw5p2wIChaaG91IFlhbmppZSk=?= <zhouyanjie@wanyeetech.com>
+Cc: linux-mediatek@lists.infradead.org, dongsheng.qiu@ingenic.com,
+ netdev@vger.kernel.org, peppe.cavallaro@st.com, devicetree@vger.kernel.org,
+ joabreu@synopsys.com, kuba@kernel.org, davem@davemloft.net,
+ sihui.liu@ingenic.com, alexandre.torgue@st.com, mcoquelin.stm32@gmail.com,
+ aric.pzqi@ingenic.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ linux-stm32@st-md-mailman.stormreply.com, jun.jiang@ingenic.com,
+ robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ rick.tyliu@ingenic.com, sernia.zhou@foxmail.com, alexandre.torgue@foss.st.com
+In-Reply-To: <1623690937-52389-2-git-send-email-zhouyanjie@wanyeetech.com>
+References: <1623690937-52389-1-git-send-email-zhouyanjie@wanyeetech.com>
+ <1623690937-52389-2-git-send-email-zhouyanjie@wanyeetech.com>
+Subject: Re: [PATCH v3 1/2] dt-bindings: dwmac: Add bindings for new Ingenic
+ SoCs.
+Date: Tue, 15 Jun 2021 08:04:53 -0600
+Message-Id: <1623765893.376832.487354.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_024613_618555_8250AA16 
-X-CRM114-Status: GOOD (  20.33  )
+X-CRM114-CacheID: sfid-20210615_070502_923801_F4162811 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,70 +90,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============1271795928310407939=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-06-10 at 10:50 +0200, Matthias Brugger wrote:
-> Hi Chun-Jie,
-> 
-> Thanks for the patch, comments below.
-> 
-> On 10/06/2021 04:36, Chun-Jie Chen wrote:
-> > From: "chun-jie.chen" <
-> > chun-jie.chen@mediatek.corp-partner.google.com>
-> > 
-> > Add the needed board data to support mt8195 SoC.
-> > 
-> 
-> Please try to come up with a better commit message. Especially
-> mention that we
-> have to increase the SPM_MAX_BUS_PROT_DATA.
-> 
-> > Signed-off-by: chun-jie.chen <chun-jie.chen@mediatek.com>
-> 
-> I suppose your name would be "Chun-Jie Chen"
-> 
-> Please also fix your git settings to that From and Signed-off-by
-> matches.
-> 
-> [...]
-> 
-> >  
-> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h
-> > b/drivers/soc/mediatek/mtk-pm-domains.h
-> > index 8b86ed22ca56..1b8967b9829e 100644
-> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
-> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
-> > @@ -37,7 +37,7 @@
-> >  #define PWR_STATUS_AUDIO		BIT(24)
-> >  #define PWR_STATUS_USB			BIT(25)
-> >  
-> > -#define SPM_MAX_BUS_PROT_DATA		5
-> > +#define SPM_MAX_BUS_PROT_DATA		6
-> >  
-> >  #define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) {	
-> > \
-> >  		.bus_prot_mask = (_mask),			\
-> > @@ -72,8 +72,6 @@ struct scpsys_bus_prot_data {
-> >  	bool ignore_clr_ack;
-> >  };
-> >  
-> > -#define MAX_SUBSYS_CLKS 10
-> > -
-> 
-> Good catch, not needed define. Can you put that in a new patch
-> please?
-> 
-> Regards,
-> Matthias
+--===============1271795928310407939==
+Content-Type: text/plain
 
-Thanks for your comments, I will send v2 to fix it.
+On Tue, 15 Jun 2021 01:15:36 +0800, 周琰杰 (Zhou Yanjie) wrote:
+> Add the dwmac bindings for the JZ4775 SoC, the X1000 SoC,
+> the X1600 SoC, the X1830 SoC and the X2000 SoC from Ingenic.
+> 
+> Signed-off-by: 周琰杰 (Zhou Yanjie) <zhouyanjie@wanyeetech.com>
+> ---
+> 
+> Notes:
+>     v1->v2:
+>     No change.
+> 
+>     v2->v3:
+>     Add "ingenic,mac.yaml" for Ingenic SoCs.
+> 
+>  .../devicetree/bindings/net/ingenic,mac.yaml       | 76 ++++++++++++++++++++++
+>  .../devicetree/bindings/net/snps,dwmac.yaml        | 15 +++++
+>  2 files changed, 91 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/net/ingenic,mac.yaml
+> 
 
-Best Regards,
-Chun-Jie
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: compatible: ['ingenic,x1000-mac', 'snps,dwmac'] is too long
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: compatible: Additional items are not allowed ('snps,dwmac' was unexpected)
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: 'phy-mode' is a required property
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/snps,dwmac.yaml
+\ndoc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1491797
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
+
+
+--===============1271795928310407939==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1271795928310407939==--
