@@ -2,83 +2,88 @@ Return-Path: <SRS0=q7ss=LJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0663C48BE8
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85567C48BE5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:53:54 +0000 (UTC)
 Received: from bombadil.infradead.org (unknown [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9ECBE61585
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:15:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9ECBE61585
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 30AED6191C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 16:53:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30AED6191C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	MIME-Version:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
-	:List-Id:Message-Id:Date:Subject:References:In-Reply-To:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=eWq78UqcvGbI9reD72D0PcVLjMBsUOYy8IUAXavWSt8=; b=ZhZDp6NsstWQfTjteoiv/G/q/V
-	UUhdmCrmhBOBLb7OTrjQR6FmseRBrmV/yG/BSJ6TAOp3e9mZzNyZGSoUEgpDKpOtbLnSBZMFrJu0v
-	ruej55YCH4uAtUn3rcP9yPI6N8WVEiO20+CWVfO2JOPdETErDfm2pPu3tD9wVLla2H1+3s2JnhwLf
-	UXpMVVNtxHIwnO2bxYatzQTocw6+uILO319uoE1R9+NO1LE7cFm558HrcWy0PDQL2wnJa11vfkIqK
-	ySRCsv28hA9wpp5Zfd1oEyukPwXDO25b0fVYr9TZqW3QGv3xfRy1kmpUp86h5BrFBcU1UtvTOlMdK
-	DyPk0iVw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bJ47X+yhqa1GD83YHFByOLWlN5sYhvlJpSoHaw+sGrU=; b=NrijxGk6MBYiJW
+	0uTzIPFetdQwavyt+fBK0Ge2VnaQ0MHJqq6X/K//JcNelZefWe4uuJxZH9ntlIu2ct8JuMZ0fnxtm
+	eG54Kvil7hjuR2G5S7KzpXJEiQGkXHqR6koHFcEn/8rAQjcAe531FDX3rCclUPPWwoMXRHoQJReg6
+	w4bLV9qkJobXesIhNRMcXIrPaYSoOGzleEhiHhf5r3Fhtaos2R4oqc2t4dvK1+icM5W7vh/aGduxw
+	YLoolOPl/Md9NoPF3De8gS0sAfwpnRKO9QIo4OEpY56gAE3APN4ejmRYTfQ+uzC6LOm3cr+mk45h7
+	VWEWnkd+oiGq2CJpFtfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltBi4-001GtU-UB; Tue, 15 Jun 2021 16:14:40 +0000
-Received: from mail-il1-f182.google.com ([209.85.166.182])
+	id 1lt9MB-000H17-AI; Tue, 15 Jun 2021 13:43:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9gc-000RDN-Pp; Tue, 15 Jun 2021 14:05:05 +0000
-Received: by mail-il1-f182.google.com with SMTP id i13so15400496ilk.3;
- Tue, 15 Jun 2021 07:05:01 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=Ul7S+YmegefjytTCybJFOmbLUpYojuCju7Gxif7Sbhw=;
- b=VV9h8QbA+tkvwaTHmHyFr5lMDQTkwTmX4PjJ5B1dU01UETJF2tC5YKx0wps6MMCAtO
- NjfLJh4qewADQL7O2mdWZsAtap+uz5nW8gs6ApnzIa8uKSzWKZXIEjGTNlhitHpGTSfn
- f8NAtOEEKtZoFZox0FzAVcjOi5uACrwThzYa1IUlhL5yxIT9z0Iv+VM1Yutq9Bp6hprt
- pfP7vHa2HwZ0O/yNy9QQ0gqbKuq6zLZ8rf5BSoE87krLPQ9S+StIvhYV74U/YlutKIrF
- BbqOiiaduvc3WYyrGVig6FJz1x5AbIeZbRepc48DmCQCNXXYBC4Z4mKtGxaNxcsAhVlo
- ymbg==
-X-Gm-Message-State: AOAM532xkljErDpqwrQBJtG7GgerSEEHGPGlf7x2XLwyfz4MFPCZDaCY
- kgTSbb1DrcJ0g4RSdW62GN2IW/5+gQ==
-X-Google-Smtp-Source: ABdhPJxlnUeLKisaHXDilxBGNC4oZcH3BSSM4B2ikEr4N4pEw8d4AZXuCBOQPgy54qWgugEGKRfulg==
-X-Received: by 2002:a05:6e02:809:: with SMTP id
- u9mr18073417ilm.63.1623765900676; 
- Tue, 15 Jun 2021 07:05:00 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id d5sm9299257ilf.55.2021.06.15.07.04.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Jun 2021 07:04:59 -0700 (PDT)
-Received: (nullmailer pid 487355 invoked by uid 1000);
- Tue, 15 Jun 2021 14:04:53 -0000
-From: Rob Herring <robh@kernel.org>
-To: =?utf-8?b?5ZGo55Cw5p2wIChaaG91IFlhbmppZSk=?= <zhouyanjie@wanyeetech.com>
-Cc: linux-mediatek@lists.infradead.org, dongsheng.qiu@ingenic.com,
- netdev@vger.kernel.org, peppe.cavallaro@st.com, devicetree@vger.kernel.org,
- joabreu@synopsys.com, kuba@kernel.org, davem@davemloft.net,
- sihui.liu@ingenic.com, alexandre.torgue@st.com, mcoquelin.stm32@gmail.com,
- aric.pzqi@ingenic.com, linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
- linux-stm32@st-md-mailman.stormreply.com, jun.jiang@ingenic.com,
- robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- rick.tyliu@ingenic.com, sernia.zhou@foxmail.com, alexandre.torgue@foss.st.com
-In-Reply-To: <1623690937-52389-2-git-send-email-zhouyanjie@wanyeetech.com>
-References: <1623690937-52389-1-git-send-email-zhouyanjie@wanyeetech.com>
- <1623690937-52389-2-git-send-email-zhouyanjie@wanyeetech.com>
-Subject: Re: [PATCH v3 1/2] dt-bindings: dwmac: Add bindings for new Ingenic
- SoCs.
-Date: Tue, 15 Jun 2021 08:04:53 -0600
-Message-Id: <1623765893.376832.487354.nullmailer@robh.at.kernel.org>
+ id 1lt9FK-000DDm-Pk; Tue, 15 Jun 2021 13:36:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :Content-Type:Date:CC:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=BQai6nPOMiPUv4Z4xtBBlvgjSddYYRIO1ZSIjhf4Hns=; b=NfV+P60U0Gpq+Cw09JN1hsxS2L
+ gkJUBTFlYGY+mWWW+8Vxkgo5w6ecMSJPQWAGyLdJOhq5U/G8lC1CJWTNSocqTLn8bi/MwS5Fiw9N+
+ TVSdi7hEEaAthNX/Xb8P1H0GTIiBNiREOMYyx5vuLMM+zvQuuGAJOglXWxJKAB3is9czbx4F2Txuk
+ bueM9iqxdQFn+qoZ9+swTnXFSipY42NXIRjsw3zwfrV38fbzR2XM2LrfwD3ZdUwENdZV0CQmoS13y
+ VMZZeK6wSbOm6U4iiGV2BPZ+xuGoefc4EWq/tB1tWb2wdhV0I2AOcUdRSd7wbnwK1hQK3Mj+rjWEN
+ 8l/7agng==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lt7Zu-007omD-41; Tue, 15 Jun 2021 11:50:07 +0000
+X-UUID: e294bb90dd584109b18368063d4563fd-20210615
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID;
+ bh=BQai6nPOMiPUv4Z4xtBBlvgjSddYYRIO1ZSIjhf4Hns=; 
+ b=jISEheLo3L/jd5EqTxNRyxbR0yv1EVUZh/yzJZS5J2BQihrZ1PzdrW/Z4Q9dPZgR+9CQ0yS4bzhrpHXngA00JreNEi/+vAO/q+iaHYVKc1rPBvUxUhIAMujmQ7JmrnItAKzeNpsTA77+w2FfOHW841fZN5kvc1EZhRf5UPd/UlY=;
+X-UUID: e294bb90dd584109b18368063d4563fd-20210615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mason.zhang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1327367590; Tue, 15 Jun 2021 04:49:59 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Jun 2021 04:49:57 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Jun 2021 19:49:55 +0800
+Received: from [10.15.20.246] (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 15 Jun 2021 19:49:55 +0800
+Message-ID: <1623756935.15299.3.camel@mbjsdccf07>
+Subject: [PATCH v2 1/1] arm64: dts: mediatek: add MT6779 spi master dts node
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hanks.chen@mediatek.com>, <wsd_upstream@mediatek.com>, Mason Zhang
+ <Mason.Zhang@mediatek.com>
+Date: Tue, 15 Jun 2021 19:35:35 +0800
+X-Mailer: Evolution 3.10.4-0ubuntu2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_070502_923801_F4162811 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20210615_125005_402930_7936F263 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,72 +95,153 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1271795928310407939=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============1271795928310407939==
-Content-Type: text/plain
 
-On Tue, 15 Jun 2021 01:15:36 +0800, 周琰杰 (Zhou Yanjie) wrote:
-> Add the dwmac bindings for the JZ4775 SoC, the X1000 SoC,
-> the X1600 SoC, the X1830 SoC and the X2000 SoC from Ingenic.
-> 
-> Signed-off-by: 周琰杰 (Zhou Yanjie) <zhouyanjie@wanyeetech.com>
-> ---
-> 
-> Notes:
->     v1->v2:
->     No change.
-> 
->     v2->v3:
->     Add "ingenic,mac.yaml" for Ingenic SoCs.
-> 
->  .../devicetree/bindings/net/ingenic,mac.yaml       | 76 ++++++++++++++++++++++
->  .../devicetree/bindings/net/snps,dwmac.yaml        | 15 +++++
->  2 files changed, 91 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/net/ingenic,mac.yaml
-> 
+This patch add spi master dts node fot MT6779 SOC.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 112 +++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-yamllint warnings/errors:
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 370f309d32de..c81e76865d1b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -219,6 +219,118 @@
+ 			status = "disabled";
+ 		};
+ 
++		spi0: spi0@1100a000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1100a000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI0>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi1: spi1@11010000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11010000 0 0x1000>;
++			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI1>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi2: spi2@11012000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11012000 0 0x1000>;
++			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI2>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi3: spi3@11013000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11013000 0 0x1000>;
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI3>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi4: spi4@11018000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11018000 0 0x1000>;
++			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI4>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi5: spi5@11019000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11019000 0 0x1000>;
++			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI5>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi6: spi6@1101d000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101d000 0 0x1000>;
++			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI6>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi7: spi7@1101e000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101e000 0 0x1000>;
++			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI7>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
+ 		audio: clock-controller@11210000 {
+ 			compatible = "mediatek,mt6779-audio", "syscon";
+ 			reg = <0 0x11210000 0 0x1000>;
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: compatible: ['ingenic,x1000-mac', 'snps,dwmac'] is too long
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: compatible: Additional items are not allowed ('snps,dwmac' was unexpected)
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.yaml
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/ingenic,mac.example.dt.yaml: ethernet@134b0000: 'phy-mode' is a required property
-	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-\ndoc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/patch/1491797
+Hi Matthias:
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+	I;m sorry to disturb you again,
+	I have update commit message for this patch, Is there any other questions about this patch?
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
-
-
---===============1271795928310407939==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks
+Mason
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1271795928310407939==--
