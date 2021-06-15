@@ -2,83 +2,87 @@ Return-Path: <SRS0=q7ss=LJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C8B3C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 19:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 356F4C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 19:26:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7881611EE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 19:05:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C7881611EE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E1580610EA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 19:26:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1580610EA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VL7p8uaD0MRqDeuzD2kdIodgAdVzne5yYcx6gXSHaZ0=; b=aJH5YIbuGg+bF4+I9JBnDH9Gur
-	SI7xd4HpLftK3wf8MtvOSo50fHe5hasEPW5T1Vr9BHPYG0iBFKTjmE4c6OTenOrVInOOfnl1kMi1a
-	hM1keN0erg9VQ6wqydLmgHhqbwj0CQFlVnfJywqkzEbhT7aqsRpVtZa/24uTrHMQLNSf5H07PfhWr
-	DP+T/baIYcQdXo6jLEGykdS85MnM4BKFUlsXO+LFs8Rrdq4rPg2c82N08RU6I5bGzqRDKgt8EmSr5
-	vbeIGKVd0NasznKe+2r44/oeIxahC/53BthtWk5FvirvRJb/DfLJaj9yiUegNarCdUK97SxY+O3fq
-	i0HmdS/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:CC:To:From:Subject:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JX4k0c478ws2uozOoLRf1LNQ51986iiuT3F4sSpZQ28=; b=ACcYbNAqqPVa6s
+	oHrNFwPlZ/52cWV0+kifdSbOsKr/LeDXy69xSd2VuuTImYOzj5Ezp0hhE4L7oQ1NTDtqkmAsXeREU
+	A5RMYSAirsPcSLrIkHCuoc7VeBikQRRzsOzNkURfKcVjEhB97qukaij25qODMaVOIjAUULaVwF/wD
+	/SDuf0dKwTZBltZ2Q48T4+mdrRU3JvtbcHo6CT0EQMW9nRK9oHbBKmdVh35Lkq2p3WkLtgNtT98SI
+	1Yh4T8vtnIzfqHJcugrQQs4Ug03/knBL4AnHwCp5MDY8VAWbPBGqP5y0KorpTKMNYZA4eIHal/tP9
+	vLu2FFbc00NXkS2QXupw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltENd-002Jmp-6G; Tue, 15 Jun 2021 19:05:45 +0000
+	id 1ltEhR-002QSa-02; Tue, 15 Jun 2021 19:26:13 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt9Fw-000ByJ-2j; Tue, 15 Jun 2021 13:37:28 +0000
+ id 1lt9Qp-000E8e-2p; Tue, 15 Jun 2021 13:48:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=do5/Ft0Ug2QKKV16pIjm1Cav55ZqsPnnwJ2SakLmvUs=; b=VX7/S9+om5xKCw4/NZY1uJ4AXI
- 2F9H5ld6FzptKMaMLb1w4hdtRMnPWSX7j9O3PZyUGOGOM9bDZ+y2lgWXTHb2cYkXFfXm2VSzBPMTL
- fM8zBVuhI5Jqt+ENEhZ/qLtS9kk/MkHxXgv1JYkTSozXnjNIg/kkomCG3siCa+jWbvITWZ/IoDBPF
- QwgnGyvFexJ/2PWsa2jGjpMYHC5DuCpNIgAaWQS6mtd6P5oszuCgJ6dFBIC2F7RkvCS+/PBUnnto5
- r9jWTGBHhrV6OkHmA3TmZHsy5BHdaJ843Dv/lCzK1EUBNo10ZyktRjGYFmrIR1Z28wKi77COa1DKs
- 36epJqKQ==;
-Received: from mail.kernel.org ([198.145.29.99])
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :Content-Type:Date:CC:To:From:Subject:Message-ID:Sender:Reply-To:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=vcOTu5+KGfLnMxqxtlJOi6bOOZBO6ZblZKmflxHCESY=; b=mJN1RFq6wXCoivw+RjINxo3FR1
+ tL8hiqlaBnnZOd+pGi/hxeglQ8o272zfB3kYRRETN71CoX6sGcn3fMZgJNDqSOdc4p637GYcPU+ba
+ 1I29aA6qu+fZ2IyqXFg9ogswW++rD//QJTpC9KBjXR4FE9wsrG8KgXrryo61C73oA88ScYVq6qRdY
+ NbFfxlwls1uLWwamCotFhUeGxgV94u9q/YZo6U4C4h8EA5dZsI+MKmtJqHDj+tem6Q9FSFW/kVXpA
+ 2AHKd+xHhtWQgEa62EkT2zDhzdUhqtPVwrgSzrzfi/moBnZGn0JHoH4mEI4gd7e4D3P6G/caL+Xyj
+ QKLVqUGA==;
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lt71l-007lZg-Nl; Tue, 15 Jun 2021 11:14:50 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5031661019;
- Tue, 15 Jun 2021 11:14:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623755684;
- bh=do5/Ft0Ug2QKKV16pIjm1Cav55ZqsPnnwJ2SakLmvUs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=s5659nm7mU8dbxL5ejjETuQPnC819oWthIJGpuxoabBaVSQZEW67rqKNug+7bEK6p
- 70b7X9PRCzK5cXOMptsXhWm7vN/I3GRo9emqOZNo3amltpwwkP777VMUVTDwM4y91F
- PCjbtDFwjk3B8zPdN3UxZCqMA7mcYd9LTEyglBgm092Z+smm3naHWPj9rUtJ7Uuefk
- oWdwi+U/f+GbYFThQBY3oGcf8U/YDxZOT0yblQOqm2IPthiSWH59Vn5AA92gCztV81
- bYOgY5bxw0QLMNv7nOt93OT4E8nAb2G8DoXLEiSDwehLcQQ/OFTxlM96TpaB/SkKuK
- dSeNH+HRii2Pw==
-Date: Tue, 15 Jun 2021 12:14:26 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Mason Zhang <mason.zhang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, wsd_upstream@mediatek.com,
- hanks.chen@mediatek.com, linux-kernel@vger.kernel.org,
- "open list:SPI SUBSYSTEM" <linux-spi@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/2] dt-binding: mediatek: mt6779: update spi document
-Message-ID: <20210615111426.GC5149@sirena.org.uk>
-References: <1623721803.24597.9.camel@mbjsdccf07>
+ id 1lsyZd-007Fv6-CW; Tue, 15 Jun 2021 02:13:15 +0000
+X-UUID: 2f43d81b19e64413953fedf86e4c1150-20210614
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:Date:CC:To:From:Subject:Message-ID;
+ bh=vcOTu5+KGfLnMxqxtlJOi6bOOZBO6ZblZKmflxHCESY=; 
+ b=BvGK1MCGX6YQI4UrrI8CrsCGaESRU3WdaGyUVyd+DbfAxcKTleG+K8ZvI4Ro4OVSmu81o4XcuSImRWazev0Uz5OaZ8tydWQZEDC+ARnQPtxLtCuIvExB7sh5M3O7kQiY5xepJgav424SvTMQcnXuJmNXwzZHRQ4P1SAipoQz+k8=;
+X-UUID: 2f43d81b19e64413953fedf86e4c1150-20210614
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mason.zhang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 618172813; Mon, 14 Jun 2021 19:13:04 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 14 Jun 2021 19:03:02 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 15 Jun 2021 10:02:48 +0800
+Received: from [10.15.20.246] (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 15 Jun 2021 10:02:47 +0800
+Message-ID: <1623721709.24597.8.camel@mbjsdccf07>
+Subject: [PATCH v3 1/1] arm64: dts: mediatek: add MT6779 spi master dts node
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <wsd_upstream@mediatek.com>, <hanks.chen@mediatek.com>,
+ <mason.zhang@mediatek.com>, Mason Zhang <Mason.Zhang@mediatek.com>
+Date: Tue, 15 Jun 2021 09:48:29 +0800
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1623721803.24597.9.camel@mbjsdccf07>
-X-Cookie: See store for details.
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_121448_763123_9D73D305 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210615_031313_512572_87F02FF5 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,57 +94,154 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6548161644396611707=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============6548161644396611707==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="s9fJI615cBHmzTOP"
-Content-Disposition: inline
+From: Mason Zhang <Mason.Zhang@mediatek.com>
 
+This patch add spi master dts node for MT6779 SOC.
 
---s9fJI615cBHmzTOP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt6779.dtsi | 112 +++++++++++++++++++++++
+ 1 file changed, 112 insertions(+)
 
-On Tue, Jun 15, 2021 at 09:50:03AM +0800, Mason Zhang wrote:
->=20
-> this patch update spi document for MT6779 SOC.
+diff --git a/arch/arm64/boot/dts/mediatek/mt6779.dtsi b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+index 370f309d32de..c81e76865d1b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt6779.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt6779.dtsi
+@@ -219,6 +219,118 @@
+ 			status = "disabled";
+ 		};
+ 
++		spi0: spi0@1100a000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1100a000 0 0x1000>;
++			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI0>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi1: spi1@11010000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11010000 0 0x1000>;
++			interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI1>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi2: spi2@11012000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11012000 0 0x1000>;
++			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI2>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi3: spi3@11013000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11013000 0 0x1000>;
++			interrupts = <GIC_SPI 153 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI3>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi4: spi4@11018000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11018000 0 0x1000>;
++			interrupts = <GIC_SPI 156 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI4>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi5: spi5@11019000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x11019000 0 0x1000>;
++			interrupts = <GIC_SPI 157 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				<&topckgen CLK_TOP_SPI>,
++				<&infracfg_ao CLK_INFRA_SPI5>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi6: spi6@1101d000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101d000 0 0x1000>;
++			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI6>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
++		spi7: spi7@1101e000 {
++			compatible = "mediatek,mt6779-spi",
++				     "mediatek,mt6765-spi";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			mediatek,pad-select = <0>;
++			reg = <0 0x1101e000 0 0x1000>;
++			interrupts = <GIC_SPI 145 IRQ_TYPE_LEVEL_LOW 0>;
++			clocks = <&topckgen CLK_TOP_MAINPLL_D5_D2>,
++				 <&topckgen CLK_TOP_SPI>,
++				 <&infracfg_ao CLK_INFRA_SPI7>;
++			clock-names = "parent-clk", "sel-clk", "spi-clk";
++		};
++
+ 		audio: clock-controller@11210000 {
+ 			compatible = "mediatek,mt6779-audio", "syscon";
+ 			reg = <0 0x11210000 0 0x1000>;
 
-I don't have either patch 1 or a cover letter, what's the story with
-dependencies here?
+Dear Matthias:
+	
+	I'm sorry to bother you again, I have update commit message for this
+patch, Is there any problem with this patch?
 
---s9fJI615cBHmzTOP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmDIi5EACgkQJNaLcl1U
-h9DQ+wf/Yux273+r+yGK72dvXlm0Ap8q0DbSKRRXYm+S8/dxa/Z4yP6+Oj994oi6
-AS5dArwtt0+KTpwXnxX/J9oEhOtSMfE2alLqgJ02tjbog38w1z00WH07fe34Ni1C
-XH49gqs9bN6JhcXFeDI1VgwzzKDS+6/ZG9CFWlv3394hE4pKtxs2s2plneaqj106
-voLcaPSGCJrwtiXG+xUmZO+KzBZhx/ZKAOYZ66k172OuC3eGzGbUANSDlnp7MdPv
-IuKwLhwGPQDzr721R7jq8/7zVfrj+hv4lzgrV9lDCBQvpwM/hR9sPFKBbCUM+S9l
-nh9imKNN80d/DKW/HQWZ2IwMTWhAyw==
-=ux+v
------END PGP SIGNATURE-----
-
---s9fJI615cBHmzTOP--
-
-
---===============6548161644396611707==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks
+Mason
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6548161644396611707==--
-
