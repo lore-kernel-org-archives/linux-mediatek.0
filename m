@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EE3EC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37C93C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:13:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32DCE613B6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:10:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32DCE613B6
+	by mail.kernel.org (Postfix) with ESMTPS id EFBD2613B1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Jun 2021 20:13:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFBD2613B1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iwmeAN7sjvANtnQhq8zMpx3l/cMZuK9tCDkk/XC4ADo=; b=mZBplJSYGRmke7
-	s75+fu2Gi4rLLZh1xnzrWs5XHr5dpKhfg/qw3VX/a5gweGy3s+5LLtiHJ7Q1dc0uL24N85cAWVlte
-	sbNIKhiAc04X7OIgh/BkQP0ASEfzXKv53S1wdZ6bMlJ8naTHaIxA7JBwgOlAZTD6T6/Ftb2ng+jyH
-	/Z3j6f+9pwFgBSRNqw5eCYVtgsbgYhIgy06MS6ZZhy78nn5eyPBe8oR/ezKtCELxaXOa7hAqSNThK
-	pxGXbbIajFA8vzMCEwyzMC+3eLK6xnP+Q8SrpkmYfTimXB6l/i5LeAqTK1rTrggULyK+Ed9PcQ9L1
-	nsek/fYgOuRWcv8q4HVQ==;
+	List-Owner; bh=6eZMJh0t5GKeD5P9PzOeZI6Y04+sFQbKOzrir6+c00U=; b=dd8V++bx2zM8zn
+	3qfd1mWHBleCdil3xnNd2dZ97wX5TusawJCOpuadtx1D7KA3/+auGrSN+iFTpym13xJBpirXVJsFg
+	fj8Qcbx61ntLulpfuwGEOjtbZXDFK/pkWiRUOFgR52d9CdWH/o9L745JEMXLXamMmSr8RuxwZ/QBX
+	XDsCMNqSsHNvZ7P+7t3HCOi6UPsigxAW1mZbNu8zTkGQdYI23z5G8HqgPY12pI8KWUSU7O5HpaKEl
+	qsdWeyf9jlII5kbBwUAgq+PLFCGMjsnHIOJOLLH/W+IbQmxx03SYBM9nRVAnzbfvba9kDipy5+Dun
+	cz3N7u3Fkgk4zqVdjzLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltFOF-002h08-KU; Tue, 15 Jun 2021 20:10:27 +0000
+	id 1ltFQx-002i5h-V6; Tue, 15 Jun 2021 20:13:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltBK9-0016Rx-CD; Tue, 15 Jun 2021 15:49:59 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6BD2A616ED;
- Tue, 15 Jun 2021 15:49:55 +0000 (UTC)
+ id 1ltBKT-0016d1-0F; Tue, 15 Jun 2021 15:50:18 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9C51261921;
+ Tue, 15 Jun 2021 15:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623772196;
- bh=TLQXXMRgCJYZjDlvNmaC2ZBnYfPNzA9DrlkZNPcYHKo=;
+ s=k20201202; t=1623772215;
+ bh=l1dslkYCdSUrfbKPHqQMHK4DisTF696U3LOjPeX2WJI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=T6XxSL5/2Z3vJmE8UabnFyDm+oR9+I8sBp6vo8G+0Fw4pKSnEtKbsbKGaCdZbCVzV
- C8L7t2w+TH4LkcpyvJx2I2X3zPCiMzwfwUTXt+Y1dtWN1fmO6tf3qmOxkiXTcUW8Y1
- B/OHQzGHX4CsDSh6yRDkrRa2ztwC1YKjFg+ZMlUpVs6aUPM7j1J0vpG2j3t6TAdB1m
- 2HKcrfCXraerUj0oLHejBTRZhAJ4oCTeVz4gyRUjcRwznACeDtC9KJAFo/BroBXuG5
- TfaUwxD49zJUjgahoq00KpUgNZQCXVk8N3LWtq6wlOOw3A270/DwVPjXGEL2/MDK0D
- xD44NB1L9B3cA==
+ b=buf3xY6ITRh8BV+M1T1/OAzMFooBzaTO5l/g5Z85kBJ/GaC7hnWzoYiqFpQXtSHff
+ LcvgWqcX0mG0DV5F8OB7M0AHz//CXZf2I87Of9hsBhfkplLxUeev6Y8oVazuImpSli
+ Co3C4eMqe518fH63HpAzBlpupYgtTsbkulvEnCkwDpOfdgNyWYMUMkxgvWRYUg+lcN
+ ZguSssikcs77l8XCAmpScuvUIVtYTPPF0hT+LxmV8u6WvR7bG/GTdpZgrQV19O8ZLL
+ vFGwKz2burqM7zqjqYLBbSL6PGNOwreeKnIvNznoBQolZIvuY4xjmlb/WTE8DzyUnl
+ FinzQKgEsIxpA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,18 +54,18 @@ Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>,
  Linus Walleij <linus.walleij@linaro.org>, Sasha Levin <sashal@kernel.org>,
  linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 06/15] pinctrl: ralink: rt2880: avoid to error in
+Subject: [PATCH AUTOSEL 4.19 04/12] pinctrl: ralink: rt2880: avoid to error in
  calls is pin is already enabled
-Date: Tue, 15 Jun 2021 11:49:38 -0400
-Message-Id: <20210615154948.62711-6-sashal@kernel.org>
+Date: Tue, 15 Jun 2021 11:50:01 -0400
+Message-Id: <20210615155009.62894-4-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210615154948.62711-1-sashal@kernel.org>
-References: <20210615154948.62711-1-sashal@kernel.org>
+In-Reply-To: <20210615155009.62894-1-sashal@kernel.org>
+References: <20210615155009.62894-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_084957_626080_14CA2A43 
+X-CRM114-CacheID: sfid-20210615_085017_127062_588C4A7A 
 X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,7 +107,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
-index d0f06790d38f..0ba4e4e070a9 100644
+index 80e7067cfb79..ad811c0438cc 100644
 --- a/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
 +++ b/drivers/staging/mt7621-pinctrl/pinctrl-rt2880.c
 @@ -127,7 +127,7 @@ static int rt2880_pmx_group_enable(struct pinctrl_dev *pctrldev,
