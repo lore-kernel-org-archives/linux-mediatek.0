@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3967C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 09:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96163C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 11:44:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67ECD6115B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 09:01:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67ECD6115B
+	by mail.kernel.org (Postfix) with ESMTPS id 5A5E861185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 11:44:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A5E861185
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +24,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uBuwdj3v3tksHIw1/wrmLtqCCnovHDv1g/H70N1xIAM=; b=rIIu75Th8JJFKQ
-	pN9SyWlppYvkMa8BGusRXkNxPO1/s+UvbGUGNvFwwStak7Ebfox0ZAgHCnhAtoYAZg3jL6GbTY2cx
-	1vFvA3J2yCpdnAaKP/X/NZMmOld5piH1mF++d4D3DqfvVsi0CYRSupogwg3a3uEI2fiAaF3vNVZLC
-	7rr2x52AhKfA1ECoAPi8C0Ul+q8l+H0rTwBz3wJtbVpObIBOhig4IRxs4Q2+q0MziVOKlvNVp1Pje
-	VdC7EGN9UAAVgjtIP+J9QDv8GT+MDkaFg4Ni9GYJMAfuqiQOIUbD8QpV2UhsPAu29MkfW2OLcnPkI
-	yKA9zuFk9Xg/Id29SqPw==;
+	List-Owner; bh=Ee2d5nb334DQ15eYIPtszVRWgj0AEWYY/qCuPcCWpT0=; b=yWaC4EqvtA7iIr
+	hGJ32nI1WkEEWRWek04JDRUqK4Dh3Np54qv6sgj7QwkseNz1huZypvniyWVus5OhVDaDdeU2VLAK3
+	d9tSKcx+KihF3hHrNUwdMCx/5JcYFsS4jLxaNv7yx8V2CtoPSj+3T6kKlIPNPi7i/vCRcACP21+rX
+	WW+jiAA1F6uus/7DFa+/OFXd9OzrnBGI0ndOzBLzclYovb+WXBU+INmvCjo+mDG0c0+o7tmZ03RVs
+	DUGV73dfYDTuRWrR9A3nJyQUT4c09NXIAgBXuBDjMsoWxdPFmm5k9xry91l0dJWZe12jg3NURnEiC
+	UxA/aeC+uqV+1ZoLZNMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltRQe-005Uwf-B1; Wed, 16 Jun 2021 09:01:44 +0000
+	id 1ltTy0-0065gC-PU; Wed, 16 Jun 2021 11:44:20 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltRQb-005Uv5-Ms; Wed, 16 Jun 2021 09:01:43 +0000
-X-UUID: aeaf482fc2e043bf8ea0a0658962f89a-20210616
+ id 1ltTxx-0065em-0z; Wed, 16 Jun 2021 11:44:18 +0000
+X-UUID: ea5ebcb1a59f4b399b83c24ac78780bf-20210616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AXElBXbtTIV7kOa1ImSC9TOOYMbfTQra4QqOyt/B34E=; 
- b=Sfn8m/wsndP1rMUaUFBldHiM72/UDJ7pHpZyTb+MJcz2FtPl64RUQ4f7eF2u5NUSx1blqtSeKash3zjqma4BkMmoPYH+2h1Zpg0KWn6EIbIhQbYWsFOa9zCNywRGRikPv42ng3llETaBLuEIVKgLhDw9Ngr866dao/PwPCV0svc=;
-X-UUID: aeaf482fc2e043bf8ea0a0658962f89a-20210616
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
+ bh=MqMOvDTwxG6Arz80/pwwUb8ra6yiTzkpa6piGV/skfY=; 
+ b=BP6acZUNwFtb8JNMpT4wHE+EXWQZtHxmvGRO7LIZ5E7Zkte+kGryjajEcx4DPL0ovkEbLjANjoqRs6WZc2FA0Kj84kHTnyRAurNuLdR7Lmg2RWCju+ka1cIxucXlGrCUFX2auJRo6RAJcnjcMn9myJEiQna6D+hYLX0JPrYo8Es=;
+X-UUID: ea5ebcb1a59f4b399b83c24ac78780bf-20210616
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1459726039; Wed, 16 Jun 2021 02:01:37 -0700
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 01:54:24 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Jun 2021 16:54:20 +0800
-Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 16 Jun 2021 16:54:19 +0800
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Thierry Reding <thierry.reding@gmail.com>, Lee Jones
- <lee.jones@linaro.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <srv_heupstream@mediatek.com>, <yingjoe.chen@mediatek.com>,
- <eddie.huang@mediatek.com>, <cawa.cheng@mediatek.com>,
- <bibby.hsieh@mediatek.com>, <ck.hu@mediatek.com>, <stonea168@163.com>,
- <huijuan.xie@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [PATCH v5 3/3] pwm: mtk_disp: implement atomic API .get_state()
-Date: Wed, 16 Jun 2021 16:52:24 +0800
-Message-ID: <20210616085224.157318-4-jitao.shi@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210616085224.157318-1-jitao.shi@mediatek.com>
-References: <20210616085224.157318-1-jitao.shi@mediatek.com>
+ with ESMTP id 1967263759; Wed, 16 Jun 2021 04:44:11 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 04:44:09 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 19:44:08 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 16 Jun 2021 19:44:07 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
+ Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
+ <anthony.huang@mediatek.com>
+Subject: [PATCH 1/9] dt-bindings: memory: mediatek: Add mt8195 smi binding
+Date: Wed, 16 Jun 2021 19:43:38 +0800
+Message-ID: <20210616114346.18812-2-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210616114346.18812-1-yong.wu@mediatek.com>
+References: <20210616114346.18812-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0C37CFED5B1E1D54DFBEC98F011F3896F16D2A5E4F950A0C8F029A10444253912000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_020142_107300_3AEDA5D6 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20210616_044417_418133_8D4C5F81 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +94,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch the driver to support the .get_state() method.
+This patch adds mt8195 smi supporting in the bindings.
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+In mt8195, there are two smi-common HW, one is for vdo(video output),
+the other is for vpp(video processing pipe). They connects with different
+smi-larbs, then some setting(bus_sel) is different. Differentiate them
+with the compatible string.
+
+Something like this:
+
+    IOMMU(VDO)          IOMMU(VPP)
+       |                   |
+  SMI_COMMON_VDO      SMI_COMMON_VPP
+  ---------------     ----------------
+  |      |   ...      |      |     ...
+larb0 larb2  ...    larb1 larb3    ...
+
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/pwm/pwm-mtk-disp.c | 39 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ .../bindings/memory-controllers/mediatek,smi-common.yaml    | 6 +++++-
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml      | 3 +++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index a4766e931b68..d60a6b379683 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -159,8 +159,47 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	return 0;
- }
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index a08a32340987..6317025bd203 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -16,7 +16,7 @@ description: |
+   MediaTek SMI have two generations of HW architecture, here is the list
+   which generation the SoCs use:
+   generation 1: mt2701 and mt7623.
+-  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183 and mt8192.
++  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8192 and mt8195.
  
-+static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
-+				   struct pwm_device *pwm,
-+				   struct pwm_state *state)
-+{
-+	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
-+	u32 clk_div, con0, con1;
-+	u64 rate, period, high_width;
-+	int err;
-+
-+	if (!mdp->enabled) {
-+		err = clk_prepare_enable(mdp->clk_main);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
-+			return;
-+		}
-+		err = clk_prepare_enable(mdp->clk_mm);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
-+			clk_disable_unprepare(mdp->clk_main);
-+			return;
-+		}
-+	}
-+	rate = clk_get_rate(mdp->clk_main);
-+	con0 = readl(mdp->base + mdp->data->con0);
-+	con1 = readl(mdp->base + mdp->data->con1);
-+	state->enabled = !!(con0 & BIT(0));
-+	clk_div = FIELD_GET(PWM_CLKDIV_MASK, con0);
-+	period = con1 & PWM_PERIOD_MASK;
-+	state->period = DIV64_U64_ROUND_UP(period * (clk_div + 1) * NSEC_PER_SEC, rate);
-+	high_width = FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
-+	state->duty_cycle = DIV64_U64_ROUND_UP(high_width * (clk_div + 1) * NSEC_PER_SEC,
-+					       rate);
-+	if (!mdp->enabled) {
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
-+	}
-+}
-+
- static const struct pwm_ops mtk_disp_pwm_ops = {
- 	.apply = mtk_disp_pwm_apply,
-+	.get_state = mtk_disp_pwm_get_state,
- 	.owner = THIS_MODULE,
- };
+   There's slight differences between the two SMI, for generation 2, the
+   register which control the iommu port is at each larb's register base. But
+@@ -36,6 +36,8 @@ properties:
+           - mediatek,mt8173-smi-common
+           - mediatek,mt8183-smi-common
+           - mediatek,mt8192-smi-common
++          - mediatek,mt8195-smi-common-vdo
++          - mediatek,mt8195-smi-common-vpp
  
+       - description: for mt7623
+         items:
+@@ -100,6 +102,8 @@ allOf:
+             - mediatek,mt6779-smi-common
+             - mediatek,mt8183-smi-common
+             - mediatek,mt8192-smi-common
++            - mediatek,mt8195-smi-common-vdo
++            - mediatek,mt8195-smi-common-vpp
+ 
+     then:
+       properties:
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index 7ed7839ff0a7..a100283903bd 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -24,6 +24,7 @@ properties:
+           - mediatek,mt8173-smi-larb
+           - mediatek,mt8183-smi-larb
+           - mediatek,mt8192-smi-larb
++          - mediatek,mt8195-smi-larb
+ 
+       - description: for mt7623
+         items:
+@@ -75,6 +76,7 @@ allOf:
+         compatible:
+           enum:
+             - mediatek,mt8183-smi-larb
++            - mediatek,mt8195-smi-larb
+ 
+     then:
+       properties:
+@@ -109,6 +111,7 @@ allOf:
+               - mediatek,mt6779-smi-larb
+               - mediatek,mt8167-smi-larb
+               - mediatek,mt8192-smi-larb
++              - mediatek,mt8195-smi-larb
+ 
+     then:
+       required:
 -- 
-2.25.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
