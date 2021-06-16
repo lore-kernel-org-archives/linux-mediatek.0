@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 712A7C48BE6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D195C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:28:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32EE2613B9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:23:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32EE2613B9
+	by mail.kernel.org (Postfix) with ESMTPS id 5ABFF61245
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:28:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5ABFF61245
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,61 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yaE58ZHL8mh89iIH/kqQ9og5RpWWGYIABgJjd6rCzBE=; b=nf4bbILCBqM/UY
-	JrxCLKAxvDkX5TK7SPDNVw0vmVNnF4huLpm+ZXDxfcvznI+UthTzudM/J+cWeNc2OlXvGuKl75rnC
-	a36lIZ5hxtTe3/QiFbt/ZzQIDNnfDwCReVQ94JYeu6BazbpQx3JT5bOzHV6P4x1zHgVBEtAud+8DK
-	kvBYwG5fU1gHVF+tZSzVMzhbuWwC3PCH/mxmnocXCHFjGPkRUPex38K0XansieKtF4pAk7IHNtL/P
-	bU+SzHOF+HQXyDo62b7iKUkkNTKh51frOwSIJ/HQjx3sWuX/5jnyb5X0rl06GYuPtruNHLQakUHbm
-	3z95z7vyGFkglWDLQAaQ==;
+	List-Owner; bh=UFso2CtwZBuE1sLZZftzkwYz0JzDxnA+uKqg4EuyYoA=; b=K7UVNoP0DYRU2w
+	MhycWjy+27WxMoWw6EgfVMRm7Jn3ATLzTZ4bnSOCJhjjngkoKqU99qdoY1DGyEq2wAprCgFSWV6kv
+	Xn5L6lisUGZs6yVlfGQgZwKPZHYdLGWd4zAPThEw8ek4rBzw2uqOiS9hN1rpwuwuzjfxBJbjwre5D
+	IoolfXKgfKdZ7O6q2JdmxxGR7DFm/mCFuQYC3ItGyq9lRKyDWDX4+DJ4BHJE93bZinClr2HIrj858
+	3A0Lttk+WtyPfWVbnXUkB+b4tFP/Fk3QhpEEL7bQojYUqNZV5N9jKI3gHIAFQcH90/oXbwb+HSC46
+	TMBwnemYzMT05Hfbw90A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltes8-0087xR-98; Wed, 16 Jun 2021 23:23:00 +0000
-Received: from mail-io1-f45.google.com ([209.85.166.45])
+	id 1ltexX-0089XF-TG; Wed, 16 Jun 2021 23:28:35 +0000
+Received: from mail-io1-f49.google.com ([209.85.166.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltes5-0087vY-6Q; Wed, 16 Jun 2021 23:22:58 +0000
-Received: by mail-io1-f45.google.com with SMTP id s19so1046570ioc.3;
- Wed, 16 Jun 2021 16:22:56 -0700 (PDT)
+ id 1ltexK-0089VJ-Lu; Wed, 16 Jun 2021 23:28:24 +0000
+Received: by mail-io1-f49.google.com with SMTP id d9so1058085ioo.2;
+ Wed, 16 Jun 2021 16:28:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=sT55r6CNEZMib5uoieAPwMKrpqQFOR915u+G/id+O8c=;
- b=l66sWRlrXmSkMJ0WgKUOFrViSqVNJWfWtFpwlixgNQL2kS0vLvaGDyybaV87kxuUHA
- frJF2GTzw5OQ+dRM4vZcBJJaKxh7AGsce3CeZ68+zekUE32TKVUzi+c0+G2q32bS2V4E
- eotG4Yvzeo8ztNzZc9kXAfZTtGOAmHWnEAHV0Nn3WVnj3tHttQvFq8NbR4HGKrOEguaS
- dSUpH5Ti4MyljfUnsuRlzKX78urXcKyu0vNxsYZmXdWf2ibRsMcgtSqENjWn6C3Rg7/E
- 6KiNsMq4qNnJllp0B018keXQWM9DALPPn5JdEUIE2Fg41IfUu4FkpwNG5o0QQvIEKNaI
- w0pw==
-X-Gm-Message-State: AOAM533Mts1FzKAcs8KXinwIKf1Bg1Tih/UhKTNP9u34TyxnV0I6FaJq
- Zgaiso8dLMM9ZDjDWPniTA==
-X-Google-Smtp-Source: ABdhPJxz0m48Lc6wge8V7RgY/VykuKzOdsCXuhgzkBYxqe29UMDL46K1NPHO39N8+gpYuvPhjjXiiw==
-X-Received: by 2002:a6b:8f81:: with SMTP id r123mr1108781iod.154.1623885776371; 
- Wed, 16 Jun 2021 16:22:56 -0700 (PDT)
+ bh=xV2j/EdwVr9gYo7BsYPb7ja8r4fncuGCJrMkRrs/+ek=;
+ b=EnWwAStbn3dCi62huzgDTAOoOUx5STYGpyZSx/yr1cVKpSAEu2hc8yGFlxd28Yva9w
+ ea21ZdIESe3O7DHkiyt4GfE+ZQHiVfxKdyooOVTzgCztm+hJygOiKj2WOAFSRU9X0WHp
+ S4kWSMKc69j8PVfplVpsLiuf2AXoGkmAplPH3NHO6GqMdf49NG0n1vOEwo/+/KXeWkjj
+ eWU4FiqvM7wv7xqsU8DzyQwE3UHLM1co2Zc6tKV6G9l8UFKFOv1NsIOBTS1+neTJfIEz
+ l5MifuArBcbo6KK/pdzqipVo6q22is6kSF6zcb2ka4JFBZ8jmRaJRvZHedPS+LvblYNi
+ SflQ==
+X-Gm-Message-State: AOAM531F88bjMbyPHYveBNDMA5YeVkk7LQQvbgzG43luS/SQSYMKg61e
+ 5zsQEfvZffPgEjm2puMjRj+D0RZgYA==
+X-Google-Smtp-Source: ABdhPJy3RhIjKN/CDWVX8vYjXN0Rn6x/UxRBlzkJvxqDZVxPyVz+nQXCDwrjbqXkYYHI4y39Ek+SAA==
+X-Received: by 2002:a05:6602:38d:: with SMTP id
+ f13mr1377780iov.109.1623886101700; 
+ Wed, 16 Jun 2021 16:28:21 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id e4sm1829304iow.47.2021.06.16.16.22.54
+ by smtp.gmail.com with ESMTPSA id i7sm1341033ilq.50.2021.06.16.16.28.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 16:22:55 -0700 (PDT)
-Received: (nullmailer pid 277485 invoked by uid 1000);
- Wed, 16 Jun 2021 23:22:53 -0000
-Date: Wed, 16 Jun 2021 17:22:53 -0600
+ Wed, 16 Jun 2021 16:28:20 -0700 (PDT)
+Received: (nullmailer pid 284524 invoked by uid 1000);
+ Wed, 16 Jun 2021 23:28:17 -0000
+Date: Wed, 16 Jun 2021 17:28:17 -0600
 From: Rob Herring <robh@kernel.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-jacuzzi-cerise
-Message-ID: <20210616232253.GA277451@robh.at.kernel.org>
-References: <20210604052312.1040707-1-hsinyi@chromium.org>
- <20210604052312.1040707-2-hsinyi@chromium.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
+Subject: Re: [PATCH 1/3] dt-bindings: phy: mediatek: tphy: add support
+ hardware version 3
+Message-ID: <20210616232817.GA277610@robh.at.kernel.org>
+References: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210604052312.1040707-2-hsinyi@chromium.org>
+In-Reply-To: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_162257_267192_807B55A8 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20210616_162822_766710_117B30C2 
+X-CRM114-Status: GOOD (  23.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,17 +94,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 04 Jun 2021 13:23:12 +0800, Hsin-Yi Wang wrote:
-> Cerise is known as ASUS Chromebook CZ1.
-> Stern is known as ASUS Chromebook Flip CZ1.
+On Fri, Jun 04, 2021 at 03:31:18PM +0800, Chunfeng Yun wrote:
+> The PHYA architecture is updated, and doesn't support slew rate
+> calibration anymore on 7nm or advanced process, add a new version
+> number to support it.
+> Note: the FreqMeter bank is not used but reserved.
 > 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 9 +++++++++
->  1 file changed, 9 insertions(+)
+>  .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
 > 
+> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> index b8a7651a3d9a..939c09296b5f 100644
+> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> @@ -15,7 +15,7 @@ description: |
+>    controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
+>  
+>    Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
+> -  T-PHY V2 (mt2712) when works on USB mode:
+> +  T-PHY V2 (mt2712) / V3 (mt8195) when works on USB mode:
+>    -----------------------------------
+>    Version 1:
+>    port        offset    bank
+> @@ -34,7 +34,7 @@ description: |
+>    u2 port2    0x1800    U2PHY_COM
+>                ...
+>  
+> -  Version 2:
+> +  Version 2/3:
+>    port        offset    bank
+>    u2 port0    0x0000    MISC
+>                0x0100    FMREG
+> @@ -59,7 +59,8 @@ description: |
+>  
+>    SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
+>    into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
+> -  added on V2.
+> +  added on V2; the FMREG bank for slew rate calibration is not used anymore
+> +  and reserved on V3;
+>  
+>  properties:
+>    $nodename:
+> @@ -79,8 +80,11 @@ properties:
+>                - mediatek,mt2712-tphy
+>                - mediatek,mt7629-tphy
+>                - mediatek,mt8183-tphy
+> -              - mediatek,mt8195-tphy
+>            - const: mediatek,generic-tphy-v2
 
-Acked-by: Rob Herring <robh@kernel.org>
+This doesn't look like a good change.
+
+What happens if a DT has the above. It didn't work or didn't support new 
+features? Please clarify in the commit the implications of changing 
+this. Changing a DT to 'mediatek,generic-tphy-v3' will break existing OS 
+if it was looking for v2.
+
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8195-tphy
+> +          - const: mediatek,generic-tphy-v3
+>        - const: mediatek,mt2701-u3phy
+>          deprecated: true
+>        - const: mediatek,mt2712-u3phy
+> @@ -91,7 +95,7 @@ properties:
+>      description:
+>        Register shared by multiple ports, exclude port's private register.
+>        It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
+> -      T-PHY V2, such as mt2712.
+> +      T-PHY V2/V3, such as mt2712.
+>      maxItems: 1
+>  
+>    "#address-cells":
+> -- 
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
