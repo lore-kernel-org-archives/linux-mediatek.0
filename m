@@ -2,92 +2,81 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D52A0C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 08:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D6F2C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 08:52:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88DDE61159
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 08:02:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88DDE61159
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0B5F660FD9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 08:52:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0B5F660FD9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pmmYcAkJrRY5Xb5rAeIa7BDk7lsQMFf2QafoaZ3jwD4=; b=jlvB/1tqXmNKO/
-	aC1IS/lIZRILsnvApI3/HCULxuI24m6fmUBLMKeH7lz4AGXg1FdBtTMk48But8lA3mBiLx2pzasj8
-	kW1S4cc01DoQl4oMPdUDTBJJrBnxBmZDxxFU6yfH7Kp0TdZ8D3DcWyIJRBn+G7C/hFQN0vVC5eVxB
-	jlXGmkHe0e4Txf7QCcF0Q4jFFzZmEOHfrJGj+RSaDR1YlcfNcrHcra6ahNN3UyQTUJFKQdBMaL73R
-	vk7AEFHPCj+/+B2mrzfzMCbqZuq6jsBa6gzSVE+F3tfh+2QQtcWMx8wQUroV2bEojzQTh+oXP6FyG
-	Bt9oxq1MR2x4C2h+0Jzw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=V/m6WJQOn0r1KyIbAIz7t219ghxjfa2UhxknAzLwCRU=; b=Yub9GzBgYf0jdX
+	VBd8ARbDJg2STmorJQcEWgsKkPRAvHXTjxcaWgugGdhACggHxrCu8Fpkx6rJr9AbkLTyafA+Qgd9D
+	Xu+F5Ng4S+Ldw3uZf1DDsj9G/2qXUk32wh84el/1OU3nippo9L57xqN2SuifKZTmyMi3RmxnTZw6v
+	1RtQ3pjDOCkX3SS35RxHoW+hzbWPHG5MatjteCNfH9P9GFXhsJyHAj90fPRc8kS8U0dRD5EoLUhx3
+	ZvQtKmYTYBxiOveCxtdARAnQpEW/QSAQvmycftwNmQkmyR6PzRFetJBxuQZFvQhl8HdAroL6beueW
+	M44RIVVk/zH1T8G/ghgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltQV8-005JKz-8q; Wed, 16 Jun 2021 08:02:18 +0000
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+	id 1ltRHz-005SIQ-Fj; Wed, 16 Jun 2021 08:52:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltQUu-005JHp-U3
- for linux-mediatek@lists.infradead.org; Wed, 16 Jun 2021 08:02:06 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id
- bb10-20020a17090b008ab029016eef083425so3102732pjb.5
- for <linux-mediatek@lists.infradead.org>; Wed, 16 Jun 2021 01:02:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=yOnR+mvHvq0XbGYNaQzXS/E8NUV0fIrwWByQjDfQPHQ=;
- b=ogJdzjZlsAKA4Ejn4ortTl8wrFGVAgL3sehcV4cQWN7YHIf+RZHdXy6bxzWiJDpcmL
- V1dtrQ3b4aOb4SO31cyALXckzBMafRJYGsNpqySCJxefgwNM6MitYkGznpk6cDWlEKc2
- MXVfxJAQcKN3G8XpB2Syl2RXG2F/pIAeS7xOY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=yOnR+mvHvq0XbGYNaQzXS/E8NUV0fIrwWByQjDfQPHQ=;
- b=RkBgfHIO2v6he+X6h5Jwqwn5iSK2PArnBIT08QbM2vY4q1KZEAnS04iTf8QaAWHws/
- iOtgr3LUkJLpbbxsDI6JcjoVbrP/8feZXu9dZD+okVNcw6NxtpEUp43abffY9oXsa3Pb
- VZJo+XLrNWAnj9mYFciwHBFdnF8oSjaUPHJ2uwrkNIqxGFRf7ZS3a4Z4Lap/f3g5d57B
- Sr3qmk0uON2TOEfodZcbp3k+qZJBvlM1mhEbvfQfBbi1F2tarGldKQWY2PgLIf+dGZzu
- tODbGDzbbFzbJc6TzPZUKFT5ZnnCqFedia1wP6O0B7DiHv4ISAeydCF4RahlC+o1Fxpe
- ie4g==
-X-Gm-Message-State: AOAM532tBk0a2/oRwkYbhOkrZFQqCzzYwJZoc6tzzfAommZUTEWO7ogH
- LQGkh4Bl/TPTUhoSnl0DybYuzw==
-X-Google-Smtp-Source: ABdhPJzobEDwQGUJ4kTYd2EtdaboX/M1rgIePs8vk+Af7VafwTKClGnUPRFRDOQ789Va1PHbWluGcg==
-X-Received: by 2002:a17:90a:4216:: with SMTP id
- o22mr9487241pjg.3.1623830523139; 
- Wed, 16 Jun 2021 01:02:03 -0700 (PDT)
-Received: from google.com
- (2001-b011-0003-1f79-f0b4-87ad-2804-77d3.dynamic-ip6.hinet.net.
- [2001:b011:3:1f79:f0b4:87ad:2804:77d3])
- by smtp.gmail.com with ESMTPSA id h8sm1392639pjf.7.2021.06.16.01.02.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 01:02:02 -0700 (PDT)
-Date: Wed, 16 Jun 2021 16:01:58 +0800
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, seiya.wang@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Crystal Guo <crystal.guo@mediatek.com>
-Subject: Re: [PATCH 01/27] arm64: dts: mt8195: add infracfg_rst node
-Message-ID: <YMmv9ih/JPRLd7o0@google.com>
-References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
- <20210615173233.26682-2-tinghan.shen@mediatek.com>
+ id 1ltRHv-005SF8-Kw; Wed, 16 Jun 2021 08:52:45 +0000
+X-UUID: feb62daad9494c88b817717d87bc688a-20210616
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=89AJn0IAlV0QFt1muodvQr1LlsipCvmqgM8FfeSKFo4=; 
+ b=G5RX5ILgFIU4tnHEZv/NRdf1Vav//6PuDN2p/buTuMvNp1Jvc+eGv9R1LF5bvq/KecmFfh2sV0d7ec7qAZ68m8SQ3YamiYD6R2mSbG+WziTlCKmCjyJ/WnX51io/83Y+0sCjqKT6uOX5LNvM1xq7GKOAyo2UvTOw69MvyE2nkw8=;
+X-UUID: feb62daad9494c88b817717d87bc688a-20210616
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 855543238; Wed, 16 Jun 2021 01:52:37 -0700
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 01:52:35 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 16 Jun 2021 16:52:28 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Wed, 16 Jun 2021 16:52:27 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Thierry Reding <thierry.reding@gmail.com>, Lee Jones
+ <lee.jones@linaro.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=
+ <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>, <yingjoe.chen@mediatek.com>,
+ <eddie.huang@mediatek.com>, <cawa.cheng@mediatek.com>,
+ <bibby.hsieh@mediatek.com>, <ck.hu@mediatek.com>, <stonea168@163.com>,
+ <huijuan.xie@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v5 0/3] fix the clks on/off mismatch issue and switch
+ pwm-mtk-disp to atomic APIs
+Date: Wed, 16 Jun 2021 16:52:21 +0800
+Message-ID: <20210616085224.157318-1-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210615173233.26682-2-tinghan.shen@mediatek.com>
+X-TM-SNTS-SMTP: 7ACAEB33A9F51A9BFEB13C9C1D213D03A7BF4FA0D1029D0D63114E51221AA3112000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_010205_098249_89F87C13 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20210616_015244_073724_0B991EFA 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,59 +93,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Change since v4:
+ - Squash the commit "move the commit to clock enabled" to "adjust the clocks to avoid them mismatch".
+ - Drop the useless comment about MT2701.
+ - Reenable the clks "mm" and "main" in .enable().
+ - Fix typo.
+ - Seperate get_state() operation as single patch.
 
-On Wed, Jun 16, 2021 at 01:32:08AM +0800, Tinghan Shen wrote:
-> From: Crystal Guo <crystal.guo@mediatek.com>
-> 
-> add infracfg_rst node which is for MT8195 platform
-> 
-> Signed-off-by: Crystal Guo <crystal.guo@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 629cd883facf..8cda62f736b3 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -8,6 +8,7 @@
->  
->  #include <dt-bindings/interrupt-controller/arm-gic.h>
->  #include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/reset/ti-syscon.h>
->  
->  / {
->  	compatible = "mediatek,mt8195";
-> @@ -273,6 +274,20 @@
->  			};
->  		};
->  
-> +		infracfg: syscon@10001000 {
-> +			compatible = "mediatek,mt8195-infracfg", "syscon", "simple-mfd";
+Change since v3:
+ - Seperate the clock sequence as single patch.
+ - Fixup the reg commit when clocks sequence changed.
+ - Merge the apply and get_state as single patch.
 
-This block is named infracfg_ao in the datasheet. You seem to rename it
-in the clock patch. Maybe you squashed the change into the wrong commit?
+Change since v2:
+ - Change commit messages to remove the clock operations for atomic APIs.
+ - Rebase to v5.13 rc1.
 
-> +			reg = <0 0x10001000 0 0x1000>;
+Changes since v1:
+ - Seperate clock operation as single patch.
+ - Seperate apply() as single patch.
+ - Seperate get_state() operation as single patch.
 
-The address range matches the datasheet.
+Jitao Shi (3):
+  pwm: mtk-disp: adjust the clocks to avoid them mismatch
+  pwm: mtk_disp: implement atomic API .apply()
+  pwm: mtk_disp: implement atomic API .get_state()
 
-> +			#clock-cells = <1>;
-> +
-> +			infracfg_rst: reset-controller {
-> +				compatible = "ti,syscon-reset";
-> +				#reset-cells = <1>;
-> +				ti,reset-bits = <
-> +					0x140 26 0x144 26 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
-> +				>;
-> +			};
+ drivers/pwm/pwm-mtk-disp.c | 168 +++++++++++++++++++------------------
+ 1 file changed, 85 insertions(+), 83 deletions(-)
 
-This node doesn't seem to be used anywhere. Is it really needed?
-
-
-ChenYu
-
+-- 
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
