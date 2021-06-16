@@ -2,65 +2,84 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-22.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A509C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 15:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3509C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 15:06:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 044A56115C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 15:03:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 044A56115C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4CA0460FE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 15:06:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CA0460FE5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ic/PE+XmlsqTw/lqbMgvhCMdvIFo2uKB8d+8F0kajxw=; b=kv0uDUGnBNz29H
-	WF/4wogpy9Z5Cn/iR+ht46AU+xMdEDjcu2JN8BR/EtRI7AftY3JUtGzD+xKCqggVu11HebSZu+psK
-	mhL+A6la30wIz9Dlkxsoi8cAqwthH34ebH4lLd2XBfuYdB5lIyA1gPMU/0GIB72hepECT594BkPPU
-	5FHkAgzFZX4WgFvpAuVHKZWijlP+rL296hEe43sfMaw3BPKznCzoalLyq6iy3nQglDybL72x6MFYB
-	E2BwqKJuWMVBTO6dSM2JBqh8SO5xyW90qrKWT3qjmx53WJkdOUghnQPvD2/lk1PsIHK/6XhYHPpB0
-	f4ad1/zMhSq9lz15zCsA==;
+	List-Owner; bh=BrgSw6NA6KuQ00lQZyIkMX+akUiYYbwjBxlLDMfr4wo=; b=qv5XIjG4KVc5XS
+	8HHUNPVboZCy6gG50Jvca/KsABebBL/udkhRWI6HkBmxpn0aZKIXmBKc05mXme5WZchrbcccU+ETX
+	6nRnnexR3HBI995/WqPkjyhJLhRDFLLmhA7iDpSCQ7ORADyHPUZuDpocvJc/DIyxjI0SPVcr3VCRB
+	5Q4VzWNcNJPnM7/rjS4/ObSEJIHQOAvNoMe7EN6t1XuHIVucDpIcK3ASYeu9HNLUYhFEHdArBZUu1
+	/E9zLkdAEJiud89dRSbj5gtSBB9KXMxZuaQhhwcqF4v9woQ0V8U7JWNQ6LfHk6KfK/P305ybensaU
+	mHjVANsSnntnq5TX6HPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltX4P-006oF9-3y; Wed, 16 Jun 2021 15:03:09 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1ltX7o-006pLV-SV; Wed, 16 Jun 2021 15:06:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltX4M-006oDn-I1
- for linux-mediatek@lists.infradead.org; Wed, 16 Jun 2021 15:03:08 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8785F61166;
- Wed, 16 Jun 2021 15:03:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623855786;
- bh=B/8cyiRgZZDp/y5oNNYykR0cKi9FuWzA1nHSD1KZPxI=;
- h=From:To:Cc:Subject:Date:From;
- b=qw3x2D+bjW8T0v5E585a/65ntpL2tBTKQ2UiYpvUWTwjnI3Rmi3sObEJho1KYU2NZ
- HG88CwDbupkDaSk2u+vWQ7176P5D63KJr3e9TZpnPdnYNaYIpgNfiywdW5VIw+RcGi
- 2YdiUSXyzg69YPn5tGwwAi8rds5kiGUGQ2xAOo92LNVCbl6JHS+Um71YynQ7FDfvdY
- 8C//A7PRxuL/yxh1vOb+rQ4zYftPvDuqvEXANbP8VZ9+tB9PNp+K8K1KkX+F5gAfDf
- +lGQFFMWfc3K/GT/2TwJ1M6VJ8eRwCGwVuw0wOFQo59Ma+cla6wljrE7uBs+8bt3Ur
- hsfadS98wzxdg==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Neil Armstrong <narmstrong@baylibre.com>, Wang Li <wangli74@huawei.com>,
- Rex-BC Chen <rex-bc.chen@mediatek.com>
-Subject: [GIT PULL] mediatek drm next for 5.14
-Date: Wed, 16 Jun 2021 23:03:00 +0800
-Message-Id: <20210616150301.292-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.17.1
+ id 1ltX7X-006pE3-FX; Wed, 16 Jun 2021 15:06:25 +0000
+X-UUID: 5d781bbef6c84e2da200295bb31f52f7-20210616
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Bqrbf3ahf+nQzNEvVXsO3mEjf7bG02Z1BvIf5yHc9Cs=; 
+ b=qE12PiX5HAPk8h9VrDEXHCnABRWDYBNmQhslOFT2v/ljcd/9jkcax4RXmuiBo6ddeMc3gmjsBKiF+svVU3qeZEmIfkLFbxSs0H+dSYTGNBcQaY2Xs1UgQAo1QXCJ9A63BTAdWam9EbfeTPE9MVj7a2eGe/pFYCBO47cmlCMczvM=;
+X-UUID: 5d781bbef6c84e2da200295bb31f52f7-20210616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yt.chang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1674153604; Wed, 16 Jun 2021 08:06:17 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 08:06:15 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 23:06:02 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 16 Jun 2021 23:06:02 +0800
+From: YT Chang <yt.chang@mediatek.com>
+To: YT Chang <yt.chang@mediatek.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, 
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Luis Chamberlain <mcgrof@kernel.org>, 
+ Kees Cook <keescook@chromium.org>, Iurii Zaikin <yzaikin@google.com>, "Ingo
+ Molnar" <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, Juri Lelli
+ <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>, Steven Rostedt
+ <rostedt@goodmis.org>, Ben Segall <bsegall@google.com>, Mel Gorman
+ <mgorman@suse.de>, Daniel Bristot de Oliveira <bristot@redhat.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Paul Turner <pjt@google.com>, Qais Yousef
+ <qais.yousef@arm.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-fsdevel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>
+Subject: [PATCH 1/1] sched: Add tunable capacity margin for fis_capacity
+Date: Wed, 16 Jun 2021 23:05:54 +0800
+Message-ID: <1623855954-6970-1-git-send-email-yt.chang@mediatek.com>
+X-Mailer: git-send-email 1.9.1
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_080306_653165_9055764B 
-X-CRM114-Status: UNSURE (   6.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210616_080623_849320_0FF08B7E 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,71 +91,150 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+Currently, the margin of cpu frequency raising and cpu overutilized are
+hard-coded as 25% (1280/1024). Make the margin tunable
+to control the aggressive for placement and frequency control. Such as
+for power tuning framework could adjust smaller margin to slow down
+frequency raising speed and let task stay in smaller cpu.
 
-This includes:
+For light loading scenarios, like beach buggy blitz and messaging apps,
+the app threads are moved big core with 25% margin and causing
+unnecessary power.
+With 0% capacity margin (1024/1024), the app threads could be kept in
+little core and deliver better power results without any fps drop.
 
-1. Add MT8167 HDMI support
-2. Fix PM reference leak
-3. Add MT8183 DPI dual edge support
+capacity margin        0%          10%          20%          30%
+                     current        current       current      current
+                  Fps  (mA)    Fps    (mA)   Fps   (mA)    Fps  (mA)
+Beach buggy blitz  60 198.164  60   203.211  60   209.984  60  213.374
+Yahoo browser      60 232.301 59.97 237.52  59.95 248.213  60  262.809
 
-Regards,
-Chun-Kuang.
+Change-Id: Iba48c556ed1b73c9a2699e9e809bc7d9333dc004
+Signed-off-by: YT Chang <yt.chang@mediatek.com>
+---
+ include/linux/sched/cpufreq.h | 19 +++++++++++++++++++
+ include/linux/sched/sysctl.h  |  1 +
+ include/linux/sysctl.h        |  1 +
+ kernel/sched/fair.c           |  4 +++-
+ kernel/sysctl.c               | 15 +++++++++++++++
+ 5 files changed, 39 insertions(+), 1 deletion(-)
 
-The following changes since commit 6efb943b8616ec53a5e444193dccf1af9ad627b5:
-
-  Linux 5.13-rc1 (2021-05-09 14:17:44 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.14
-
-for you to fetch changes up to ec8747c52434b69cea2b18068e72f051e23d3839:
-
-  drm/mediatek: dpi: Add bus format negotiation (2021-06-04 08:58:56 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.14
-
-1. Add MT8167 HDMI support
-2. Fix PM reference leak
-3. Add MT8183 DPI dual edge support
-
-----------------------------------------------------------------
-Neil Armstrong (5):
-      dt-bindings: display: mediatek, hdmi: Convert to use graph schema
-      dt-bindings: mediatek: add mt8167 to hdmi, hdmi-ddc and cec bindings
-      drm/mediatek: hdmi: Add check for CEA modes only
-      drm/mediatek: hdmi: Add optional limit on maximal HDMI mode clock
-      drm/mediatek: hdmi: Add MT8167 configuration
-
-Rex-BC Chen (3):
-      drm/mediatek: dpi: Add dual edge sample mode support
-      drm/mediatek: dpi: Add output bus formats to driver data
-      drm/mediatek: dpi: Add bus format negotiation
-
-Wang Li (1):
-      drm/mediatek: Fix PM reference leak in mtk_crtc_ddp_hw_init()
-
- .../bindings/display/mediatek/mediatek,cec.yaml    |  52 ++++++++
- .../display/mediatek/mediatek,hdmi-ddc.yaml        |  58 +++++++++
- .../bindings/display/mediatek/mediatek,hdmi.txt    | 136 ---------------------
- .../bindings/display/mediatek/mediatek,hdmi.yaml   | 133 ++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_dpi.c                 | 129 ++++++++++++++++++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c            |   2 +-
- drivers/gpu/drm/mediatek/mtk_hdmi.c                |  17 +++
- 7 files changed, 384 insertions(+), 143 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,cec.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi-ddc.yaml
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,hdmi.yaml
-
+diff --git a/include/linux/sched/cpufreq.h b/include/linux/sched/cpufreq.h
+index 6205578..8a6c23a1 100644
+--- a/include/linux/sched/cpufreq.h
++++ b/include/linux/sched/cpufreq.h
+@@ -23,6 +23,23 @@ void cpufreq_add_update_util_hook(int cpu, struct update_util_data *data,
+ void cpufreq_remove_update_util_hook(int cpu);
+ bool cpufreq_this_cpu_can_update(struct cpufreq_policy *policy);
+ 
++#ifdef CONFIG_SMP
++extern unsigned int sysctl_sched_capacity_margin;
++
++static inline unsigned long map_util_freq(unsigned long util,
++					  unsigned long freq, unsigned long cap)
++{
++	freq = freq * util / cap;
++	freq = freq * sysctl_sched_capacity_margin / SCHED_CAPACITY_SCALE;
++
++	return freq;
++}
++
++static inline unsigned long map_util_perf(unsigned long util)
++{
++	return util * sysctl_sched_capacity_margin / SCHED_CAPACITY_SCALE;
++}
++#else
+ static inline unsigned long map_util_freq(unsigned long util,
+ 					unsigned long freq, unsigned long cap)
+ {
+@@ -33,6 +50,8 @@ static inline unsigned long map_util_perf(unsigned long util)
+ {
+ 	return util + (util >> 2);
+ }
++#endif
++
+ #endif /* CONFIG_CPU_FREQ */
+ 
+ #endif /* _LINUX_SCHED_CPUFREQ_H */
+diff --git a/include/linux/sched/sysctl.h b/include/linux/sched/sysctl.h
+index db2c0f3..5dee024 100644
+--- a/include/linux/sched/sysctl.h
++++ b/include/linux/sched/sysctl.h
+@@ -10,6 +10,7 @@
+ 
+ #ifdef CONFIG_SMP
+ extern unsigned int sysctl_hung_task_all_cpu_backtrace;
++extern unsigned int sysctl_sched_capacity_margin;
+ #else
+ #define sysctl_hung_task_all_cpu_backtrace 0
+ #endif /* CONFIG_SMP */
+diff --git a/include/linux/sysctl.h b/include/linux/sysctl.h
+index d99ca99..af6d70f 100644
+--- a/include/linux/sysctl.h
++++ b/include/linux/sysctl.h
+@@ -41,6 +41,7 @@
+ #define SYSCTL_ZERO	((void *)&sysctl_vals[0])
+ #define SYSCTL_ONE	((void *)&sysctl_vals[1])
+ #define SYSCTL_INT_MAX	((void *)&sysctl_vals[2])
++#define SCHED_CAPACITY_MARGIN_MIN   1024
+ 
+ extern const int sysctl_vals[];
+ 
+diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
+index 20aa234..609b431 100644
+--- a/kernel/sched/fair.c
++++ b/kernel/sched/fair.c
+@@ -111,7 +111,9 @@ int __weak arch_asym_cpu_priority(int cpu)
+  *
+  * (default: ~20%)
+  */
+-#define fits_capacity(cap, max)	((cap) * 1280 < (max) * 1024)
++unsigned int sysctl_sched_capacity_margin = 1280;
++EXPORT_SYMBOL_GPL(sysctl_sched_capacity_margin);
++#define fits_capacity(cap, max)	((cap) * sysctl_sched_capacity_margin < (max) * 1024)
+ 
+ /*
+  * The margin used when comparing CPU capacities.
+diff --git a/kernel/sysctl.c b/kernel/sysctl.c
+index 14edf84..d6d2b84 100644
+--- a/kernel/sysctl.c
++++ b/kernel/sysctl.c
+@@ -127,6 +127,11 @@
+ static int six_hundred_forty_kb = 640 * 1024;
+ #endif
+ 
++/* this is needed for the proc of sysctl_sched_capacity_margin */
++#ifdef CONFIG_SMP
++static int min_sched_capacity_margin = 1024;
++#endif /* CONFIG_SMP */
++
+ /* this is needed for the proc_doulongvec_minmax of vm_dirty_bytes */
+ static unsigned long dirty_bytes_min = 2 * PAGE_SIZE;
+ 
+@@ -1716,6 +1721,16 @@ int proc_do_static_key(struct ctl_table *table, int write,
+ 		.mode		= 0644,
+ 		.proc_handler	= proc_dointvec,
+ 	},
++#ifdef CONFIG_SMP
++	{
++		.procname	= "sched_capcity_margin",
++		.data		= &sysctl_sched_capacity_margin,
++		.maxlen		= sizeof(unsigned int),
++		.mode		= 0644,
++		.proc_handler	= proc_dointvec_minmax,
++		.extra1		= &min_sched_capacity_margin,
++	},
++#endif
+ #ifdef CONFIG_SCHEDSTATS
+ 	{
+ 		.procname	= "sched_schedstats",
+-- 
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
