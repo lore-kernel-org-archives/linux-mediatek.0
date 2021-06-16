@@ -2,83 +2,85 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BBFE0C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 11:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA088C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 14:07:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4471361164
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 11:55:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4471361164
+	by mail.kernel.org (Postfix) with ESMTPS id 8149F61059
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 14:07:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8149F61059
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WxkY1yWeUV9k6rPhcbYbinnL84+EHekZ5REwDqnWkDQ=; b=BcbVNRs6DujXfr
-	f22BIHyUipZ+eKbHCTUV76yJ5Ye1UG0yWxTf3L759yv8cYMrE6zZ71M3YqaqzcwtTQ6Jqse+qPx2i
-	vieuWozfl52odL2LwsP+4XuQjQ68Fge0PudFuTiLr/3K+hV8dOtRAHb9GTIj6okaijQGHBLegp5m7
-	Kp+1RAY1g7hVFIj7JOikkcBXWoUZVoBjP66bBnc3ztddtBJd9yZyJyu121P7TkVo4UWGtd5gUi57/
-	v4Zgjy692wg8irVECYipzFBKKfLU66zaFz1ZcQoZ0qoyhCR8DXbcswaV50amOJV39X8A6X0OqCpCu
-	sQZzNWAcNTGG7LyxP1zw==;
+	List-Owner; bh=vuUiOc/I1ayagVZ5FPXf1SBe/k0QWA4IjgX7DUe1dNc=; b=Sl4ThxprIIXSMd
+	4eZ9+ei2nFAoiOaOPFnnjKiAbCyalioUFJDViGBkfqoKCaarv4koERjh1BUF8fK2vPtb9N9d4kmkr
+	flbsIn355hH8y3CoYUhEs51fjrj1mUzSRTizNfEUGHIY+MPLw9p1tqfN7nn3t3kNoYOYQh1jl6zrQ
+	R6VuigWqq5tm/jnC/WjoDChYqwXwkg2IpxFivM7pQp1vh2XA8+R1skMggnsXOdgAueQMooKN+v3kV
+	880z6Eplepjdrh3jyk0Z5SLdaVMv5jUVBw2a/mXxosansKAFog6MPcB0r7XFmVjDh3dB/g4jdyZS+
+	wOZJCUZQXn431lLktH0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltU8N-0069RQ-Sa; Wed, 16 Jun 2021 11:55:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ltWCL-006eh4-22; Wed, 16 Jun 2021 14:07:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltU87-0069Lt-4K; Wed, 16 Jun 2021 11:54:48 +0000
-X-UUID: d158521802c540f284f8f28066d74623-20210616
+ id 1ltWCH-006ecz-3Z; Wed, 16 Jun 2021 14:07:15 +0000
+X-UUID: ed8d299e6fef4afc9d3dea7dc5334163-20210616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=8di1i4h4SqVZQCaypaJRD6/28L37KdWg0O1pVAVPVrA=; 
- b=MHezLP7SBxTI3vN+00UdnUinb0bFWOREd87AVCTPNvascN1v6NKO770AUviD19CKrQdSq/zIJyL6iYTP+SUYCKqo917u6VmYBCRP+D9KO0NPnfI48SlzMTSW1g2Vrc9uVscQaky6LH4Mv6cYcIW6hKw7Dzy257MKLb7nKIo1UYA=;
-X-UUID: d158521802c540f284f8f28066d74623-20210616
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=3dj1g5PHx5kwteppjZjzYnHzWsKpZipe4de1Z1Ai+NQ=; 
+ b=iX1J9RnjUP9CF9nc27C0SnsSWHGa0hctHt5e2s/d7gY8H9XhVfeydxMp1YlUeXrLGKeJutPR35oS3x3JgutIpc5e+hurCNroQhR1ZKHXz4bLLeGiByYjjsLCAy/AawkpffNJrawPWKSrjUn3RoyYGPN+JL3cnrJGGym4nJYrdtM=;
+X-UUID: ed8d299e6fef4afc9d3dea7dc5334163-20210616
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2125561790; Wed, 16 Jun 2021 04:54:39 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1452893049; Wed, 16 Jun 2021 07:07:05 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 04:45:11 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 19:45:09 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Wed, 16 Jun 2021 07:07:03 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 22:07:02 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Jun 2021 19:45:08 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
- Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
- <anthony.huang@mediatek.com>
-Subject: [PATCH 8/9] memory: mtk-smi: mt8195: Add initial setting for
- smi-common
-Date: Wed, 16 Jun 2021 19:43:45 +0800
-Message-ID: <20210616114346.18812-9-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210616114346.18812-1-yong.wu@mediatek.com>
-References: <20210616114346.18812-1-yong.wu@mediatek.com>
+ Transport; Wed, 16 Jun 2021 22:07:01 +0800
+Message-ID: <1623852422.4262.3.camel@mtksdaap41>
+Subject: Re: [PATCH v8 8/8] arm64: dts: mt6359: add PMIC MT6359 related nodes
+From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+CC: Lee Jones <lee.jones@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Liam
+ Girdwood" <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, "Eddie
+ Huang" <eddie.huang@mediatek.com>, Alessandro Zummo <a.zummo@towertech.it>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, Fei Shao
+ <fshao@chromium.org>, Sean Wang <sean.wang@mediatek.com>, Yuchen Huang
+ <yuchen.huang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-rtc@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Wen Su
+ <wen.su@mediatek.com>
+Date: Wed, 16 Jun 2021 22:07:02 +0800
+In-Reply-To: <a8de7273-7253-0601-4b8d-5bcab85539f0@gmail.com>
+References: <1622011927-359-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1622011927-359-9-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <a8de7273-7253-0601-4b8d-5bcab85539f0@gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_045447_515654_EE2FD826 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20210616_070713_672156_B36BEE3B 
+X-CRM114-Status: GOOD (  22.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,119 +97,356 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To improve the performance, This patch adds initial setting for smi-common.
-some register use some fix setting(suggested from DE).
+Hi,
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/memory/mtk-smi.c | 42 ++++++++++++++++++++++++++++++++++++----
- 1 file changed, 38 insertions(+), 4 deletions(-)
+On Fri, 2021-06-11 at 16:09 +0200, Matthias Brugger wrote:
+> 
+> On 26/05/2021 08:52, Hsin-Hsiung Wang wrote:
+> > From: Wen Su <wen.su@mediatek.com>
+> > 
+> > add PMIC MT6359 related nodes which is for MT6779 platform
+> > 
+> > Signed-off-by: Wen Su <wen.su@mediatek.com>
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> > ---
+> > changes since v7:
+> > - no change.
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt6359.dtsi    | 298 ++++++++++++++++++++++++++++
+> >  arch/arm64/boot/dts/mediatek/mt8192-evb.dts |   1 +
+> >  2 files changed, 299 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/mediatek/mt6359.dtsi
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt6359.dtsi b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+> > new file mode 100644
+> > index 0000000..18c0d53
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt6359.dtsi
+> > @@ -0,0 +1,298 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> 
+> Any specific reason for not setting it "SPDX-License-Identifier: (GPL-2.0+ OR
+> MIT)" ?
+> 	
+> Other then that, looks good.
+> 
+> Matthias
+> 
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 8b1bfef47ecd..08b28e96fd8c 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -18,11 +18,19 @@
- #include <dt-bindings/memory/mtk-memory-port.h>
- 
- /* SMI COMMON */
-+#define SMI_L1LEN			0x100
-+
- #define SMI_BUS_SEL			0x220
- #define SMI_BUS_LARB_SHIFT(larbid)	((larbid) << 1)
- /* All are MMU0 defaultly. Only specialize mmu1 here. */
- #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
- 
-+#define SMI_M4U_TH			0x234
-+#define SMI_FIFO_TH1			0x238
-+#define SMI_FIFO_TH2			0x23c
-+#define SMI_DCM				0x300
-+#define SMI_DUMMY			0x444
-+
- /* SMI LARB */
- 
- /* Below are about mmu enable registers, they are different in SoCs */
-@@ -58,6 +66,13 @@
- 	(_id << 8 | _id << 10 | _id << 12 | _id << 14);	\
- })
- 
-+#define SMI_COMMON_INIT_REGS_NR		6
-+
-+struct mtk_smi_reg_pair {
-+	unsigned int		offset;
-+	u32			value;
-+};
-+
- enum mtk_smi_type {
- 	MTK_SMI_GEN1,
- 	MTK_SMI_GEN2,		/* gen2 smi common */
-@@ -77,6 +92,8 @@ static const char * const mtk_smi_larb_clocks[] = {
- struct mtk_smi_common_plat {
- 	enum mtk_smi_type	type;
- 	u32			bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
-+
-+	const struct mtk_smi_reg_pair	*init;
- };
- 
- struct mtk_smi_larb_gen {
-@@ -387,6 +404,15 @@ static struct platform_driver mtk_smi_larb_driver = {
- 	}
- };
- 
-+static const struct mtk_smi_reg_pair mtk_smi_common_mt8195_init[SMI_COMMON_INIT_REGS_NR] = {
-+	{SMI_L1LEN, 0xb},
-+	{SMI_M4U_TH, 0xe100e10},
-+	{SMI_FIFO_TH1, 0x506090a},
-+	{SMI_FIFO_TH2, 0x506090a},
-+	{SMI_DCM, 0x4f1},
-+	{SMI_DUMMY, 0x1},
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_gen1 = {
- 	.type     = MTK_SMI_GEN1,
- };
-@@ -417,11 +443,13 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8195_vdo = {
- 	.type     = MTK_SMI_GEN2,
- 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(3) | F_MMU1_LARB(5) |
- 		    F_MMU1_LARB(7),
-+	.init     = mtk_smi_common_mt8195_init,
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_mt8195_vpp = {
- 	.type     = MTK_SMI_GEN2,
- 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(7),
-+	.init     = mtk_smi_common_mt8195_init,
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8195 = {
-@@ -514,15 +542,21 @@ static int mtk_smi_common_remove(struct platform_device *pdev)
- static int __maybe_unused mtk_smi_common_resume(struct device *dev)
- {
- 	struct mtk_smi *common = dev_get_drvdata(dev);
--	u32 bus_sel = common->plat->bus_sel;
--	int ret;
-+	const struct mtk_smi_reg_pair *init = common->plat->init;
-+	u32 bus_sel = common->plat->bus_sel; /* default is 0 */
-+	int ret, i;
- 
- 	ret = clk_bulk_prepare_enable(common->clk_num, common->clks);
- 	if (ret)
- 		return ret;
- 
--	if (common->plat->type == MTK_SMI_GEN2 && bus_sel)
--		writel(bus_sel, common->base + SMI_BUS_SEL);
-+	if (common->plat->type != MTK_SMI_GEN2)
-+		return 0;
-+
-+	for (i = 0; i < SMI_COMMON_INIT_REGS_NR && init && init[i].offset; i++)
-+		writel_relaxed(init[i].value, common->base + init[i].offset);
-+
-+	writel(bus_sel, common->base + SMI_BUS_SEL);
- 	return 0;
- }
- 
--- 
-2.18.0
+Thanks for the review, there is no special reason for the writing.
+I will update it in the next patch.
+
+> > +/*
+> > + * Copyright (c) 2021 MediaTek Inc.
+> > + */
+> > +
+> > +&pwrap {
+> > +	pmic: pmic {
+> > +		compatible = "mediatek,mt6359";
+> > +		interrupt-controller;
+> > +		#interrupt-cells = <2>;
+> > +
+> > +		mt6359codec: mt6359codec {
+> > +		};
+> > +
+> > +		regulators {
+> > +			mt6359_vs1_buck_reg: buck_vs1 {
+> > +				regulator-name = "vs1";
+> > +				regulator-min-microvolt = <800000>;
+> > +				regulator-max-microvolt = <2200000>;
+> > +				regulator-enable-ramp-delay = <0>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vgpu11_buck_reg: buck_vgpu11 {
+> > +				regulator-name = "vgpu11";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +				regulator-ramp-delay = <5000>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +				regulator-allowed-modes = <0 1 2>;
+> > +			};
+> > +			mt6359_vmodem_buck_reg: buck_vmodem {
+> > +				regulator-name = "vmodem";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1100000>;
+> > +				regulator-ramp-delay = <10760>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +			};
+> > +			mt6359_vpu_buck_reg: buck_vpu {
+> > +				regulator-name = "vpu";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +				regulator-ramp-delay = <5000>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +				regulator-allowed-modes = <0 1 2>;
+> > +			};
+> > +			mt6359_vcore_buck_reg: buck_vcore {
+> > +				regulator-name = "vcore";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1300000>;
+> > +				regulator-ramp-delay = <5000>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +				regulator-allowed-modes = <0 1 2>;
+> > +			};
+> > +			mt6359_vs2_buck_reg: buck_vs2 {
+> > +				regulator-name = "vs2";
+> > +				regulator-min-microvolt = <800000>;
+> > +				regulator-max-microvolt = <1600000>;
+> > +				regulator-enable-ramp-delay = <0>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vpa_buck_reg: buck_vpa {
+> > +				regulator-name = "vpa";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <3650000>;
+> > +				regulator-enable-ramp-delay = <300>;
+> > +			};
+> > +			mt6359_vproc2_buck_reg: buck_vproc2 {
+> > +				regulator-name = "vproc2";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +				regulator-ramp-delay = <7500>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +				regulator-allowed-modes = <0 1 2>;
+> > +			};
+> > +			mt6359_vproc1_buck_reg: buck_vproc1 {
+> > +				regulator-name = "vproc1";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +				regulator-ramp-delay = <7500>;
+> > +				regulator-enable-ramp-delay = <200>;
+> > +				regulator-allowed-modes = <0 1 2>;
+> > +			};
+> > +			mt6359_vcore_sshub_buck_reg: buck_vcore_sshub {
+> > +				regulator-name = "vcore_sshub";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +			};
+> > +			mt6359_vgpu11_sshub_buck_reg: buck_vgpu11_sshub {
+> > +				regulator-name = "vgpu11_sshub";
+> > +				regulator-min-microvolt = <400000>;
+> > +				regulator-max-microvolt = <1193750>;
+> > +			};
+> > +			mt6359_vaud18_ldo_reg: ldo_vaud18 {
+> > +				regulator-name = "vaud18";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <1800000>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +			};
+> > +			mt6359_vsim1_ldo_reg: ldo_vsim1 {
+> > +				regulator-name = "vsim1";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <3100000>;
+> > +			};
+> > +			mt6359_vibr_ldo_reg: ldo_vibr {
+> > +				regulator-name = "vibr";
+> > +				regulator-min-microvolt = <1200000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +			};
+> > +			mt6359_vrf12_ldo_reg: ldo_vrf12 {
+> > +				regulator-name = "vrf12";
+> > +				regulator-min-microvolt = <1100000>;
+> > +				regulator-max-microvolt = <1300000>;
+> > +			};
+> > +			mt6359_vusb_ldo_reg: ldo_vusb {
+> > +				regulator-name = "vusb";
+> > +				regulator-min-microvolt = <3000000>;
+> > +				regulator-max-microvolt = <3000000>;
+> > +				regulator-enable-ramp-delay = <960>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vsram_proc2_ldo_reg: ldo_vsram_proc2 {
+> > +				regulator-name = "vsram_proc2";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <1293750>;
+> > +				regulator-ramp-delay = <7500>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vio18_ldo_reg: ldo_vio18 {
+> > +				regulator-name = "vio18";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <1900000>;
+> > +				regulator-enable-ramp-delay = <960>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vcamio_ldo_reg: ldo_vcamio {
+> > +				regulator-name = "vcamio";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <1900000>;
+> > +			};
+> > +			mt6359_vcn18_ldo_reg: ldo_vcn18 {
+> > +				regulator-name = "vcn18";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <1800000>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +			};
+> > +			mt6359_vfe28_ldo_reg: ldo_vfe28 {
+> > +				regulator-name = "vfe28";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <2800000>;
+> > +				regulator-enable-ramp-delay = <120>;
+> > +			};
+> > +			mt6359_vcn13_ldo_reg: ldo_vcn13 {
+> > +				regulator-name = "vcn13";
+> > +				regulator-min-microvolt = <900000>;
+> > +				regulator-max-microvolt = <1300000>;
+> > +			};
+> > +			mt6359_vcn33_1_bt_ldo_reg: ldo_vcn33_1_bt {
+> > +				regulator-name = "vcn33_1_bt";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <3500000>;
+> > +			};
+> > +			mt6359_vcn33_1_wifi_ldo_reg: ldo_vcn33_1_wifi {
+> > +				regulator-name = "vcn33_1_wifi";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <3500000>;
+> > +			};
+> > +			mt6359_vaux18_ldo_reg: ldo_vaux18 {
+> > +				regulator-name = "vaux18";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <1800000>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vsram_others_ldo_reg: ldo_vsram_others {
+> > +				regulator-name = "vsram_others";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <1293750>;
+> > +				regulator-ramp-delay = <5000>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +			};
+> > +			mt6359_vefuse_ldo_reg: ldo_vefuse {
+> > +				regulator-name = "vefuse";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <2000000>;
+> > +			};
+> > +			mt6359_vxo22_ldo_reg: ldo_vxo22 {
+> > +				regulator-name = "vxo22";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <2200000>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vrfck_ldo_reg: ldo_vrfck {
+> > +				regulator-name = "vrfck";
+> > +				regulator-min-microvolt = <1500000>;
+> > +				regulator-max-microvolt = <1700000>;
+> > +			};
+> > +			mt6359_vrfck_1_ldo_reg: ldo_vrfck_1 {
+> > +				regulator-name = "vrfck";
+> > +				regulator-min-microvolt = <1240000>;
+> > +				regulator-max-microvolt = <1600000>;
+> > +			};
+> > +			mt6359_vbif28_ldo_reg: ldo_vbif28 {
+> > +				regulator-name = "vbif28";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <2800000>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +			};
+> > +			mt6359_vio28_ldo_reg: ldo_vio28 {
+> > +				regulator-name = "vio28";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vemc_ldo_reg: ldo_vemc {
+> > +				regulator-name = "vemc";
+> > +				regulator-min-microvolt = <2900000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +			};
+> > +			mt6359_vemc_1_ldo_reg: ldo_vemc_1 {
+> > +				regulator-name = "vemc";
+> > +				regulator-min-microvolt = <2500000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +			};
+> > +			mt6359_vcn33_2_bt_ldo_reg: ldo_vcn33_2_bt {
+> > +				regulator-name = "vcn33_2_bt";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <3500000>;
+> > +			};
+> > +			mt6359_vcn33_2_wifi_ldo_reg: ldo_vcn33_2_wifi {
+> > +				regulator-name = "vcn33_2_wifi";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <3500000>;
+> > +			};
+> > +			mt6359_va12_ldo_reg: ldo_va12 {
+> > +				regulator-name = "va12";
+> > +				regulator-min-microvolt = <1200000>;
+> > +				regulator-max-microvolt = <1300000>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_va09_ldo_reg: ldo_va09 {
+> > +				regulator-name = "va09";
+> > +				regulator-min-microvolt = <800000>;
+> > +				regulator-max-microvolt = <1200000>;
+> > +			};
+> > +			mt6359_vrf18_ldo_reg: ldo_vrf18 {
+> > +				regulator-name = "vrf18";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <1810000>;
+> > +			};
+> > +			mt6359_vsram_md_ldo_reg: ldo_vsram_md {
+> > +				regulator-name = "vsram_md";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <1293750>;
+> > +				regulator-ramp-delay = <10760>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +			};
+> > +			mt6359_vufs_ldo_reg: ldo_vufs {
+> > +				regulator-name = "vufs";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <1900000>;
+> > +			};
+> > +			mt6359_vm18_ldo_reg: ldo_vm18 {
+> > +				regulator-name = "vm18";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <1900000>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vbbck_ldo_reg: ldo_vbbck {
+> > +				regulator-name = "vbbck";
+> > +				regulator-min-microvolt = <1100000>;
+> > +				regulator-max-microvolt = <1200000>;
+> > +			};
+> > +			mt6359_vsram_proc1_ldo_reg: ldo_vsram_proc1 {
+> > +				regulator-name = "vsram_proc1";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <1293750>;
+> > +				regulator-ramp-delay = <7500>;
+> > +				regulator-enable-ramp-delay = <240>;
+> > +				regulator-always-on;
+> > +			};
+> > +			mt6359_vsim2_ldo_reg: ldo_vsim2 {
+> > +				regulator-name = "vsim2";
+> > +				regulator-min-microvolt = <1700000>;
+> > +				regulator-max-microvolt = <3100000>;
+> > +			};
+> > +			mt6359_vsram_others_sshub_ldo: ldo_vsram_others_sshub {
+> > +				regulator-name = "vsram_others_sshub";
+> > +				regulator-min-microvolt = <500000>;
+> > +				regulator-max-microvolt = <1293750>;
+> > +			};
+> > +		};
+> > +
+> > +		mt6359rtc: mt6359rtc {
+> > +			compatible = "mediatek,mt6358-rtc";
+> > +		};
+> > +	};
+> > +};
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+> > index 0205837..808be49 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192-evb.dts
+> > @@ -5,6 +5,7 @@
+> >   */
+> >  /dts-v1/;
+> >  #include "mt8192.dtsi"
+> > +#include "mt6359.dtsi"
+> >  
+> >  / {
+> >  	model = "MediaTek MT8192 evaluation board";
+> > 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
