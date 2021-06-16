@@ -2,78 +2,177 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2989C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDF6CC48BE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 02:37:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ACF4B61356
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:35:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACF4B61356
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id B003661055
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 02:37:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B003661055
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P6VQWXC7yWEo3QlYBmg14MzvyExbmxdAcpFDnb75SvQ=; b=KZ/zQIad6uJjcy
-	yHvD2L1lBUal3v/Xo11BR/D7WYmdwWBNEhwFZx2090j705C3ASaAjWjWqqMMD4I4p2RfDTfG4V55H
-	GRfjm7u7JpcnI7qvqrgzNAYAfiF/uxn3N+ZFRkZge4KAV6+cLNMKWsfpSvq77EJWrN+hzZXiZ3Kpj
-	63a1jLEreGoFztEcl/iFRrhZgK1D+wxlWM8n6wHxsl/ABwJCxwosJoYj00vnsBh2GMnquy05hGcHJ
-	TfgtuW2ov31AcPiMwcBVFcgAITJWdmzI4qiBNEVp6Opq24AlVzstq0qENy3HUKk8X58DG7Cx3yQ+b
-	XLFQmQl6gS0KZaFHAeFQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
+	References:Message-ID:From:Subject:Cc:To:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=ZGrPg2eThCAohr8twUULkR/0aWRVvJAHyS74nXuekOE=; b=4XyftH9ktFLhMjBhm4zwRibLbD
+	7qNdLBP8wZgZGvWwdiE2CEvM+9rPej5TMzHnKAUDXYsUVoVvw+7UM5eIGOFcdVH+YS2DHRNwdF/Fe
+	NdymZqQP+F5+1VL4pBU5Tu71q+xmHvUZ5GfpHOqJTkJY0BQd1zmrGsOFaAgTpPE+K+ogtjcMB0Czx
+	5sr7f2agmkaAmGMBhtOWV4xr1f19gN+tsPoWn7LJ2fKL11R0ZdEBahEL64UB1hOp7C/VHgyQEkpWI
+	1HSuMtfuckyNnph3CtMfspokRGr15YRyIwPfoHAEE/OcKsSLpICmlFtxfVWLX7VIuV6Q5V4NTsPva
+	AayA3pqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltKSt-004NK7-76; Wed, 16 Jun 2021 01:35:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1ltLQb-004UZC-Py; Wed, 16 Jun 2021 02:37:17 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltKSq-004NJN-Ne; Wed, 16 Jun 2021 01:35:34 +0000
-X-UUID: c681f7dec74f4c9b88dfa1d001d7f99e-20210615
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=bN1zFdu+kgnFsjJiRGRT8DKoz4fiLgKY4mbL1c8VCqU=; 
- b=qqQg9rdv09NK1kVK9mzM0bPxsZP1WSKYAWETMCKF2x77NhyCQfmWVm/eMgWFXAY3ueSHIGEGWbuaFHn0iir2VBIKJI80J1CYhxI5vRQWojUJJ74cGARuAOygb+Bps8JVZ3sMuksx2//k3gGFUohUhNLg3tk2UruyHb3xe3f6d8k=;
-X-UUID: c681f7dec74f4c9b88dfa1d001d7f99e-20210615
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <wenbin.mei@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 94676190; Tue, 15 Jun 2021 18:31:52 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 18:30:11 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs02n2.mediatek.inc
- (172.21.101.101) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 16 Jun 2021 09:30:03 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 16 Jun 2021 09:30:02 +0800
-Message-ID: <1623807002.15910.8.camel@mhfsdcap03>
-Subject: Re: [PATCH 12/27] arm64: dts: mt8195: fix mmc driver
-From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-CC: <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
- <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <srv_heupstream@mediatek.com>, <seiya.wang@mediatek.com>, <wenst@google.com>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 16 Jun 2021 09:30:02 +0800
-In-Reply-To: <20210615173233.26682-12-tinghan.shen@mediatek.com>
-References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
- <20210615173233.26682-12-tinghan.shen@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1ltLQZ-004UXE-EX
+ for linux-mediatek@lists.infradead.org; Wed, 16 Jun 2021 02:37:16 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15G2aWpK006894; Wed, 16 Jun 2021 02:36:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=to : cc : subject :
+ from : message-id : references : date : in-reply-to : content-type :
+ mime-version; s=corp-2020-01-29;
+ bh=RZEojGqnNX83FfqYO+mcie0eyC3TP/MsgJk9hiIZtNw=;
+ b=S72M3TwGMax1WmdokyP5F45oYBfC0xE7r4lpX8W91CWcS31Eduq+zvx4D8d0244jceV/
+ vD7NQuwE8IklyKIBAkLknb4A/GHeCGVl6xjoTyYAZtptMFiZOiVO8QY2LxeX/uJRCbVZ
+ 3Jzm/JrFbsBEr2TCm+g9wG7RyQq5zt5dk4dNiYqXelLoJIQkgd8wyNWdb3q+J2vDK97w
+ DSWCNywOfVP880MvkOfatINiYOjLcMe3LjEPt60r7HZpEmnx+3htKgdCL6sqSeyrvhSk
+ n8R8aBPw3qY644ZcuJ7+HdIox1YdjSIsjOkxd1TdTqn+WRSe67h3HjlMg84E3F4Gzxmp kQ== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 395y1kssb6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Jun 2021 02:36:56 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 15G2ZFh4171667;
+ Wed, 16 Jun 2021 02:36:55 GMT
+Received: from nam02-sn1-obe.outbound.protection.outlook.com
+ (mail-sn1anam02lp2049.outbound.protection.outlook.com [104.47.57.49])
+ by aserp3030.oracle.com with ESMTP id 396watweq2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Jun 2021 02:36:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=isczkk4wCtQBlm7C1PvNRyEt9HmxTOexamhv/vQZd0uKt+PLGOJEvwDzKKMLmHZ8U7GEE1RuqL/c7Pov5lf5Vi1xv8v5eNaU1jaewwBRcJvd75u9tkzvk35C61F1/qYjV21BQFAvueNVlSgDOvKJubsgbVxRYElRYxq9ptyltFxmDjw/41fnZSOcSX9DAiHS//wkvbJfBiMr+nsjMr89zyDcMdgmrcdZldF40H8jRKHvEo6zzBci4LTvFhmOBEpc5vWrDRfG7ntf3x7A4fg7bxjLBCvh1RuCCvbabDgdzkW/81u/06mYmGWowQpttqKo//nUiwYywOceqaRjp5yw/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RZEojGqnNX83FfqYO+mcie0eyC3TP/MsgJk9hiIZtNw=;
+ b=atECsvfWO81fTlgi/0gUreiP16pIafNT4FCeh3ss2WLaAdX60Y2D6dmMD2ZvkVJAIU61d/ulWrnzqQVxRSucAZV4WFGvF98vXzHP3WUfJIazxf0AESfp6/KBiaXjOJBDftW5Eo8VTFJl8wN5XXCs8I/SdC23fj9svzD38ghG9Jf5ozYMk5v6PWKRqWydSMEq7noWoax/+Ppze71sKnOn6LXXT/7LcON0EOPHt81kJN6Md2jD+ni/ljhrv2waWk3OVGsN8XPNCduCpx8lMywswo4aFfocMB9vcV+p4A2IHS6JCZMFYYpJBcfY9C9Sw332/7I0gAo34PqOchxrhMzCmA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RZEojGqnNX83FfqYO+mcie0eyC3TP/MsgJk9hiIZtNw=;
+ b=J9biaXxNGU8WOjeq3v64ZjP2qsbYDj46KeH5hcn4MhDhZ+kah//R62rojIObYWLepvQLRwFtxcgbU9BobN2yxmDzzSnNyEgvBuQ7WiE1+CMVyQ2KTw/nz7OwoOpBC/pInPZCQ660RUO1jPvyAZQ96OWf+JTxLLfdljWRUnR6o1U=
+Authentication-Results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=oracle.com;
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
+ by PH0PR10MB4551.namprd10.prod.outlook.com (2603:10b6:510:38::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4242.16; Wed, 16 Jun
+ 2021 02:36:53 +0000
+Received: from PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::4c61:9532:4af0:8796]) by PH0PR10MB4759.namprd10.prod.outlook.com
+ ([fe80::4c61:9532:4af0:8796%7]) with mapi id 15.20.4242.016; Wed, 16 Jun 2021
+ 02:36:53 +0000
+To: <peter.wang@mediatek.com>
+Cc: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
+ <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
+ <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+ <jiajie.hao@mediatek.com>
+Subject: Re: [PATCH v2] scsi: ufs-mediatek: create device link of reset control
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+Organization: Oracle Corporation
+Message-ID: <yq1lf7a5ydj.fsf@ca-mkp.ca.oracle.com>
+References: <1622601720-22466-1-git-send-email-peter.wang@mediatek.com>
+Date: Tue, 15 Jun 2021 22:36:51 -0400
+In-Reply-To: <1622601720-22466-1-git-send-email-peter.wang@mediatek.com>
+ (peter wang's message of "Wed, 2 Jun 2021 10:42:00 +0800")
+X-Originating-IP: [138.3.200.58]
+X-ClientProxiedBy: SJ0PR03CA0272.namprd03.prod.outlook.com
+ (2603:10b6:a03:39e::7) To PH0PR10MB4759.namprd10.prod.outlook.com
+ (2603:10b6:510:3d::12)
 MIME-Version: 1.0
-X-MTK: N
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from ca-mkp.ca.oracle.com (138.3.200.58) by
+ SJ0PR03CA0272.namprd03.prod.outlook.com (2603:10b6:a03:39e::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4242.15 via Frontend Transport; Wed, 16 Jun 2021 02:36:53 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e28bf18e-2741-45ad-1ebf-08d9306f9a42
+X-MS-TrafficTypeDiagnostic: PH0PR10MB4551:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <PH0PR10MB45518C8E88ADECF9952D0BC68E0F9@PH0PR10MB4551.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3276;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: hMBJvTEJbPmz7vB20Q+hN/ln8HO3+uGHAQFXEGumQK0Pkz8dcrSwMEb6qa/P1Z/oainMezy619ghtFYGZBVbYdZjwdVznORF9cUF0PEsb4mAxX7X4mal5aVWgj3k5uS13OgAfVbWSTWE1nNQixENszUv8Kqr6h4q5PP6LSBMq15Xi0ggGtFuo2xJiza7c9WDDmod97wcNT6HAoaLjtxZG+q8Q48LvlOAknMvsWCZ4na8lEOdMGK/3801GaKZo4r3sdY74tF4GcXzyk0CKouM1THCX+DNW4flwC77pKo0Yx2lwM1ieIuAbOpldzER6TStjHZ3Zvk2hHsIbg+10786KLwrB5x15kKAw559LsOXL9jcN6umd51EcoDw0Jt8OsvFdNQIqcrfMWEB2hz3TjrAblib7rG+tiIiWhcX1uSvB+4m1FhL5TqCAdDp8RrJN0kmWxeWwVkBFjrUYelU4JfiO6yD74WEf/pDsdHzeWElhWb03r+MRpKc3UbFZPxaSHhTFuFhuAh0j2howOxzJ+DyEOFjrw+6uicPanp8wEGtJh0AA/VtzxbHsBKNS9eiTFKgoQvYcCNZ65n4r1AC/G2n00rIVnrjf6ar5nF52XBNALffvCR8/HKOvZfVYny4ynCNdHayPV7/uh9LZhDHeg+LPHBKobXHotT/iSoYZTcQSS0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR10MB4759.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(346002)(376002)(366004)(396003)(136003)(39860400002)(7696005)(52116002)(316002)(36916002)(86362001)(4326008)(8676002)(7416002)(6916009)(4744005)(54906003)(5660300002)(8936002)(26005)(956004)(2906002)(66476007)(66556008)(478600001)(186003)(55016002)(38350700002)(66946007)(38100700002)(16526019);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NBJuqeyckW8thBu17mI7Et10Ezubmnt9RSnZMbKGxH+OkHlTaX8ARwjI04cj?=
+ =?us-ascii?Q?h0DtMnw6kPYoUdZP4UIsswPMdcBYJut9TdtKpsOu1oVXQ3MpJGVGmpftj7hu?=
+ =?us-ascii?Q?fseXAf2fkTgo50AtB8MkF5Z7PfiS7BD2nOZzWz5LO7WQDHlOwvu55z+7aFRk?=
+ =?us-ascii?Q?2/WnLtKgRlo9m/tpDEYhN0QgSSqRCtgEyI2zrCM2FYMaZ0QgpOUE1dUCQNNr?=
+ =?us-ascii?Q?OSsAipiuGHpCgVFH0xvxdZ8uRuusKl5mSF0RlVNk8nvzPlJpfzYsZLVYA7Qh?=
+ =?us-ascii?Q?CZpymEKJamnrlwcWEBa3/HZG4fTy3u877woXrzhW9zYQ3vFp/qDvWuAyjwQ2?=
+ =?us-ascii?Q?EnARpLGfIqiqvi9RkbWyZYh/vsLHZ+/oFiMANlrM8/h9VJSiu0YKykBekYv0?=
+ =?us-ascii?Q?U8l0hyweCaXSOx3iUfVjMNCmo4bKeT9BQ1iC2uRPpVNPZFunQA6nzLfwuSBE?=
+ =?us-ascii?Q?pq6xMV1T2dOhSEc15JkiBJy2IR9ZzhxIVpOYAXUJRvoUh+AO+MJkH0loYe6i?=
+ =?us-ascii?Q?NaXIGIK2pUKgs1QkON+xQWdv7lNJydsm8kIAaXqokPLsm1RX44SS+sXf46xd?=
+ =?us-ascii?Q?EiBaUGxdCwDobHM8tHbsajpIAhL9Z4+waGOi2EvR6bYuDvrs6uWtXKF/uc0f?=
+ =?us-ascii?Q?EQwhyq5S7VeUpiTRcbRmwaDCqyFnBRK4/61F9BW1eDAahVGHYzQzktNQKKED?=
+ =?us-ascii?Q?QBi6MDAfhdqPVvq6yl1uAlx7Z7C1B5Usfq+MUexIqG1mkL16Hg/MMuq7D1L/?=
+ =?us-ascii?Q?wHdYXEjjY5pNMm9gfzpZ7G9NCXmG64Vnnk57mSwlQ8sMJRMDqDxvbu3aYpyF?=
+ =?us-ascii?Q?OO24dDOhPcP0Yff7y7e6En5gyXg2+MSEp+W2Eu/OU3Ny8uBmeaUvDNiWme6W?=
+ =?us-ascii?Q?3viKD3x+LZqHvY2oT6EI+FN0EbHe6sgP8+0ird/VoJqVkF75Ct/CdVdjoLVt?=
+ =?us-ascii?Q?rFB035bFTKI8i3JM8HOxEqZhQINRARYwthHwRcdqGxr2f/8uN0oHbxVEi2Wy?=
+ =?us-ascii?Q?v5R27dlazJ0u5xQeGvMauzy6ATZLmIvoE8/ir35X+v2MyQ8wY0C4DppHCk/+?=
+ =?us-ascii?Q?S5gF2xwVNm/UaRYlJc/+6zzLKwPszu7uRhleLvBrf1A2RjF8zBCVXK1+Ftqy?=
+ =?us-ascii?Q?4mtI1KUr/VegAO1zMJWOVzCB5CVcDSg+ji8uRFpzWky0tS8MXfi56tl5inhW?=
+ =?us-ascii?Q?N27G2Kw2kfHnyN4QSjzVCTFUvaIM8lsuiKKtRqxYI32Z2mUb4wAsExfLDefN?=
+ =?us-ascii?Q?OESUzNvLVfDviwq7VMzgxhT/+VrrxMAEVtuUb32UWp/j4Jej9EtyPUhPhMZs?=
+ =?us-ascii?Q?3yVB6YEiGrQvzA6joShxr1lK?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e28bf18e-2741-45ad-1ebf-08d9306f9a42
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Jun 2021 02:36:53.8009 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Y+JCIHVCDHge0aRu0PNEQKntt2lBaNvTrYITMi/OipZtatWxNrZI8/zrQUzn2SDh2ygzNI+Mxy5a1gS6UXjypdKFghlPASmBpqWHw9IDDdE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB4551
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=10016
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ suspectscore=0
+ mlxlogscore=999 bulkscore=0 mlxscore=0 spamscore=0 adultscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104190000 definitions=main-2106160014
+X-Proofpoint-ORIG-GUID: LRBAyvm46gLzWlapkDt4KSuipJ7f0wBS
+X-Proofpoint-GUID: LRBAyvm46gLzWlapkDt4KSuipJ7f0wBS
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_183533_107778_EB5811EA 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20210615_193715_535237_F243862F 
+X-CRM114-Status: GOOD (  10.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,62 +189,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-06-16 at 01:32 +0800, Tinghan Shen wrote:
-> From: Wenbin Mei <wenbin.mei@mediatek.com>
-> 
-> fix mmc driver with proper clock for mt8195 SoC.
-> 
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-> ---
->  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++----
->  1 file changed, 14 insertions(+), 4 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 539f405a4f3d..327ff1b856d2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -926,22 +926,32 @@
->  		};
->  
->  		mmc0: mmc@11230000 {
-> -			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
-> +			compatible = "mediatek,mt8195-mmc",
-> +				     "mediatek,mt8192-mmc",
-> +				     "mediatek,mt8183-mmc";
-I have submitted a patch to fix the
-dt-bindings(http://lists.infradead.org/pipermail/linux-mediatek/2021-June/025456.html), Now which should be:
-	compatible = "mediatek,mt8195-mmc", "mediatek,mt8183-mmc";
->  			reg = <0 0x11230000 0 0x10000>,
->  			      <0 0x11f50000 0 0x1000>;
->  			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
-> -			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
-> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
-> +				 <&infracfg_ao CLK_INFRA_AO_MSDC0>,
-> +				 <&infracfg_ao CLK_INFRA_AO_MSDC0_SRC>;
->  			clock-names = "source", "hclk", "source_cg";
->  			status = "disabled";
->  		};
->  
->  		mmc1: mmc@11240000 {
-> -			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
-> +			compatible = "mediatek,mt8195-mmc",
-> +				     "mediatek,mt8192-mmc",
-> +				     "mediatek,mt8183-mmc";
-Ditto, this should be:
-	compatible = "mediatek,mt8195-mmc", "mediatek,mt8183-mmc";
->  			reg = <0 0x11240000 0 0x1000>,
->  			      <0 0x11c70000 0 0x1000>;
->  			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
-> -			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
-> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
-> +				 <&infracfg_ao CLK_INFRA_AO_MSDC1>,
-> +				 <&infracfg_ao CLK_INFRA_AO_MSDC1_SRC>;
->  			clock-names = "source", "hclk", "source_cg";
-> +			assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
-> +			assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
->  			status = "disabled";
->  		};
->  
+
+> Mediatek UFS reset function is relied on Reset Control provided by
+> reset-ti-syscon. To make Reset Control work properly, select
+> reset-ti-syscon to ensure it being built with ufs-mediatek together.
+> In addition, establish device link to wait until reset-ti-syscon
+> initialization is done during UFS probing flow.
+
+Applied to 5.14/scsi-staging, thanks!
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
