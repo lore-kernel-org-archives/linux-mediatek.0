@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A86CDC48BE6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 22:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5360C48BE5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 22:59:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7203A613ED
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 22:49:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7203A613ED
+	by mail.kernel.org (Postfix) with ESMTPS id 975CF613C2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 22:59:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 975CF613C2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B0ShTp+iyM+Iv5WKLyfKdD3sB+0PJOxbCbZyTixs+zk=; b=KWCQBDVrEn8OLz
-	gOpyNghoBeUSWR0TxrWuh99k5ZjtOlpj77r+rIgzJspiULUg0R7P7qbXCcFBNn2mn97HuZRH9bK5U
-	qFBb6M3zdYEh23ptrhdogaYB+9hKmvyw78bZ+r/6ZDdeQ9SYLYKqs7+4ksolNPBI09S7I9twY30g7
-	89x4rMIf4OcOaandF57NzK7u/px7zHtYH8Tq0MXKbAIIDfC0zWHWK/tmh4cYmuJJfbEqBLTpJ6GI0
-	ENi4EL5Hr4KexrgrtD1CFtIY5FUgkhoz6alIBAAjg1khwxZDE0h+sf/DEZF5H4lws3ExH+0GayYnE
-	eAmoipPNvf4p3b0SeEIg==;
+	List-Owner; bh=K9T3LDfmtR/tJ0fsBCj6i4rNo36aK2recb/cMVY2thg=; b=0bS+wzE7ZRlge7
+	coR+wQ5CxfVLVAnEbBNIGfm6CrBQOIT0uB/ITRtnVzptEJBt5Yhhp1qomJvBAIfhidDNnaK1uINSW
+	Aqf18SnjAKIV0otcNkw7AIsXIjH7bs0U1POkZ5Ol4VBd63W24opl71EsfwVxrItxONgPGTF6ygYrB
+	tbzzmPuNxatzayucUB2T2Z9lwwa+Y8KtCWV46dbVTfsRIQ2y53GR4GkWhHfx6hK7HiNWPCOBEs1aZ
+	Dz04+wGUdtUJMUonDgm/txHAsxWbFvIxq5CWnJ1K5vNWur+ProfOPTXy35Vbo/z4XemCCplLLpdHU
+	AeyC1xhjG5oIR7CGTttA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lteM0-007vb5-0K; Wed, 16 Jun 2021 22:49:48 +0000
+	id 1lteVI-007xIl-DY; Wed, 16 Jun 2021 22:59:24 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lteLw-007vYl-Cc; Wed, 16 Jun 2021 22:49:46 +0000
-X-UUID: eae5821c83954b84b8b6e3dcea651e30-20210616
+ id 1lteVE-007xGv-Lu; Wed, 16 Jun 2021 22:59:22 +0000
+X-UUID: 450374106b324c99815b8838f13296b8-20210616
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=kvslWdU7El6kws7XzAaSbvbqiU5MxXfkXiMbhMp4rYw=; 
- b=swyk5kq2TevBWqVwtfQfiPF+8/SrxUuj3dmTa7sVx9ddzMH2lrWTk4QTtmfFiDTfBwnk/MTm6Wvwu5VWgXsTvvLSNuTU/84hGBXjhh9f64vv5ncgGCUZoMbMFdTrXB93DE+usXhzzENjsFnczAmOfMl7Qlc3zXu1cQdQm47+AE0=;
-X-UUID: eae5821c83954b84b8b6e3dcea651e30-20210616
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=h5HvuN1N5Vyi/+NaJ98gWwL1raHF/34VKMUDd42j4m0=; 
+ b=kRgl9LVrxEuq1aiPg8jVJX9gImGVic2s+x59P85XOr8qyHRJER/IxluyA3uKPCkxdjgyk2RJHSjSttEXV1gMjNBrRoNOEEqHMj/b2gI8BuHXFJlysQ2z47/s+IljdTQL2X1Y1rNXXO1e007rmKq/gMZQoFnxYbVOKMdrq1jB1VQ=;
+X-UUID: 450374106b324c99815b8838f13296b8-20210616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1840283001; Wed, 16 Jun 2021 15:49:39 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 15:49:37 -0700
+ with ESMTP id 314006750; Wed, 16 Jun 2021 15:59:19 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 15:50:51 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Jun 2021 06:49:35 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 17 Jun 2021 06:50:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Jun 2021 06:49:35 +0800
+ Frontend Transport; Thu, 17 Jun 2021 06:50:49 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -65,17 +65,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>
-Subject: [PATCH 06/22] clk: mediatek: Add MT8195 audio src clock support
-Date: Thu, 17 Jun 2021 06:47:27 +0800
-Message-ID: <20210616224743.5109-7-chun-jie.chen@mediatek.com>
+Subject: [PATCH 21/22] clk: mediatek: Add MT8195 imp i2c wrapper clock support
+Date: Thu, 17 Jun 2021 06:47:42 +0800
+Message-ID: <20210616224743.5109-22-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
 References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_154944_482041_2CC90A9B 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20210616_155920_772607_9335C2D6 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +92,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 audio src source clock provider
+Add MT8195 imp i2c wrapper clock providers
 
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Kconfig              |  6 +++
- drivers/clk/mediatek/Makefile             |  1 +
- drivers/clk/mediatek/clk-mt8195-aud_src.c | 60 +++++++++++++++++++++++
- 3 files changed, 67 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8195-aud_src.c
+ drivers/clk/mediatek/Kconfig                  |  6 ++
+ drivers/clk/mediatek/Makefile                 |  1 +
+ .../clk/mediatek/clk-mt8195-imp_iic_wrap.c    | 68 +++++++++++++++++++
+ 3 files changed, 75 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
 
 diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index e2bae9d490a4..62dd02bc2755 100644
+index 5089bacdf0a5..ade85a52b7ed 100644
 --- a/drivers/clk/mediatek/Kconfig
 +++ b/drivers/clk/mediatek/Kconfig
-@@ -594,6 +594,12 @@ config COMMON_CLK_MT8195_AUDSYS
+@@ -684,6 +684,12 @@ config COMMON_CLK_MT8195_WPESYS
  	help
- 	  This driver supports MediaTek MT8195 audsys clocks.
+ 	  This driver supports MediaTek MT8195 wpesys clocks.
  
-+config COMMON_CLK_MT8195_AUDSYS_SRC
-+	bool "Clock driver for MediaTek MT8195 audsys_src"
++config COMMON_CLK_MT8195_IMP_IIC_WRAP
++	bool "Clock driver for MediaTek MT8195 imp_iic_wrap"
 +	depends on COMMON_CLK_MT8195
 +	help
-+	  This driver supports MediaTek MT8195 audsys_src clocks.
++	  This driver supports MediaTek MT8195 imp_iic_wrap clocks.
 +
  config COMMON_CLK_MT8516
  	bool "Clock driver for MediaTek MT8516"
  	depends on ARCH_MEDIATEK || COMPILE_TEST
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index f27c04314186..52a5d3f49ff0 100644
+index 32cfb0030d92..b10c6267ba98 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -82,5 +82,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195.o
- obj-$(CONFIG_COMMON_CLK_MT8195_AUDSYS) += clk-mt8195-aud.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_AUDSYS_SRC) += clk-mt8195-aud_src.o
+@@ -97,5 +97,6 @@ obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
+ obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS0) += clk-mt8195-vpp0.o
+ obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS1) += clk-mt8195-vpp1.o
+ obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) += clk-mt8195-wpe.o
++obj-$(CONFIG_COMMON_CLK_MT8195_IMP_IIC_WRAP) += clk-mt8195-imp_iic_wrap.o
  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8195-aud_src.c b/drivers/clk/mediatek/clk-mt8195-aud_src.c
+diff --git a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
 new file mode 100644
-index 000000000000..7cabe0d68825
+index 000000000000..efb62f484bbe
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8195-aud_src.c
-@@ -0,0 +1,60 @@
++++ b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+@@ -0,0 +1,68 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +//
 +// Copyright (c) 2021 MediaTek Inc.
@@ -149,53 +149,61 @@ index 000000000000..7cabe0d68825
 +
 +#include <dt-bindings/clock/mt8195-clk.h>
 +
-+static const struct mtk_gate_regs aud_src_cg_regs = {
-+	.set_ofs = 0x1004,
-+	.clr_ofs = 0x1004,
-+	.sta_ofs = 0x1004,
++static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
++	.set_ofs = 0xe08,
++	.clr_ofs = 0xe04,
++	.sta_ofs = 0xe00,
 +};
 +
-+#define GATE_AUD_SRC(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &aud_src_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr)
++#define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)				\
++	GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,	\
++		&mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
 +
-+static const struct mtk_gate aud_src_clks[] = {
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC0, "aud_src_asrc0", "asm_h_sel", 0),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC1, "aud_src_asrc1", "asm_h_sel", 1),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC2, "aud_src_asrc2", "asm_h_sel", 2),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC3, "aud_src_asrc3", "asm_h_sel", 3),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC4, "aud_src_asrc4", "asm_h_sel", 4),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC5, "aud_src_asrc5", "asm_h_sel", 5),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC6, "aud_src_asrc6", "asm_h_sel", 6),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC7, "aud_src_asrc7", "asm_h_sel", 7),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC8, "aud_src_asrc8", "asm_h_sel", 8),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC9, "aud_src_asrc9", "asm_h_sel", 9),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC10, "aud_src_asrc10", "asm_h_sel", 10),
-+	GATE_AUD_SRC(CLK_AUD_SRC_ASRC11, "aud_src_asrc11", "asm_h_sel", 11),
++static const struct mtk_gate imp_iic_wrap_s_clks[] = {
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C5, "imp_iic_wrap_s_i2c5", "i2c_sel", 0),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C6, "imp_iic_wrap_s_i2c6", "i2c_sel", 1),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C7, "imp_iic_wrap_s_i2c7", "i2c_sel", 2),
 +};
 +
-+static const struct mtk_clk_desc aud_src_desc = {
-+	.clks = aud_src_clks,
-+	.num_clks = ARRAY_SIZE(aud_src_clks),
++static const struct mtk_gate imp_iic_wrap_w_clks[] = {
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C0, "imp_iic_wrap_w_i2c0", "i2c_sel", 0),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C1, "imp_iic_wrap_w_i2c1", "i2c_sel", 1),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C2, "imp_iic_wrap_w_i2c2", "i2c_sel", 2),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C3, "imp_iic_wrap_w_i2c3", "i2c_sel", 3),
++	GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C4, "imp_iic_wrap_w_i2c4", "i2c_sel", 4),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8195_aud_src[] = {
++static const struct mtk_clk_desc imp_iic_wrap_s_desc = {
++	.clks = imp_iic_wrap_s_clks,
++	.num_clks = ARRAY_SIZE(imp_iic_wrap_s_clks),
++};
++
++static const struct mtk_clk_desc imp_iic_wrap_w_desc = {
++	.clks = imp_iic_wrap_w_clks,
++	.num_clks = ARRAY_SIZE(imp_iic_wrap_w_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8195_imp_iic_wrap[] = {
 +	{
-+		.compatible = "mediatek,mt8195-audsys_src",
-+		.data = &aud_src_desc,
++		.compatible = "mediatek,mt8195-imp_iic_wrap_s",
++		.data = &imp_iic_wrap_s_desc,
++	}, {
++		.compatible = "mediatek,mt8195-imp_iic_wrap_w",
++		.data = &imp_iic_wrap_w_desc,
 +	}, {
 +		/* sentinel */
 +	}
 +};
 +
-+static struct platform_driver clk_mt8195_aud_src_drv = {
++static struct platform_driver clk_mt8195_imp_iic_wrap_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.driver = {
-+		.name = "clk-mt8195-aud_src",
-+		.of_match_table = of_match_clk_mt8195_aud_src,
++		.name = "clk-mt8195-imp_iic_wrap",
++		.of_match_table = of_match_clk_mt8195_imp_iic_wrap,
 +	},
 +};
 +
-+builtin_platform_driver(clk_mt8195_aud_src_drv);
++builtin_platform_driver(clk_mt8195_imp_iic_wrap_drv);
 -- 
 2.18.0
 _______________________________________________
