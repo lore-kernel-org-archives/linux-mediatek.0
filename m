@@ -2,80 +2,82 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A5E9C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 712A7C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:23:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 550656100A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:12:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 550656100A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 32EE2613B9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:23:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32EE2613B9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lmVafzachoL8arYos+XyiJ8JeZBPlMBntJi68FZL0p4=; b=bhM66jkf7MqyXR
-	50noOWPvWBMj1vGJYbT2RA+Z6xCLs9yfCWn60Q/m8oePU9kmPlUlJ3Xxf5etcZMj9wR5kwyJROKj/
-	EhzxY1n9Mc3GLqthUyN7bzVXan4t/nUls9LvhEQ+wn4xd0Watj0y+A4sRoHhLStMUt9/dtFezvPP9
-	QHtM2zDeGTgXfMrxiHS7z2Y3v4sI68Z5S74fCOGeITBaU/nZGXTOCA2TB+LPXTNdF2je9RSJ9dV34
-	7fjL6mhTfD1inGbGa3DA9AguK3IjwN6AK2zduGitmUooDxurwwOXOqk9CeTCKhkeMRe08PqfC/JiU
-	heFxvPYHf/xNrlT7zf6Q==;
+	List-Owner; bh=yaE58ZHL8mh89iIH/kqQ9og5RpWWGYIABgJjd6rCzBE=; b=nf4bbILCBqM/UY
+	JrxCLKAxvDkX5TK7SPDNVw0vmVNnF4huLpm+ZXDxfcvznI+UthTzudM/J+cWeNc2OlXvGuKl75rnC
+	a36lIZ5hxtTe3/QiFbt/ZzQIDNnfDwCReVQ94JYeu6BazbpQx3JT5bOzHV6P4x1zHgVBEtAud+8DK
+	kvBYwG5fU1gHVF+tZSzVMzhbuWwC3PCH/mxmnocXCHFjGPkRUPex38K0XansieKtF4pAk7IHNtL/P
+	bU+SzHOF+HQXyDo62b7iKUkkNTKh51frOwSIJ/HQjx3sWuX/5jnyb5X0rl06GYuPtruNHLQakUHbm
+	3z95z7vyGFkglWDLQAaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltei6-0083HX-Te; Wed, 16 Jun 2021 23:12:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ltes8-0087xR-98; Wed, 16 Jun 2021 23:23:00 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lteVy-007xVi-JT; Wed, 16 Jun 2021 23:00:08 +0000
-X-UUID: e52289c78ec14576afb367273d31b59f-20210616
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=bR9Mpssv2a7Sb2enN5BfOoTyK17F/btbgWLoYI9w4UU=; 
- b=RhrPu555Yq5fEg+q+8l1cUxDCEXRMBcXiUfagI1mf/p+iVstDFlR3lqiVpzlRI+CWr6RavuuuxCik+ezq5QR8kMzdqn4Eyrla8Ld7s2/eyV/TDzXZ3/VqLoNATSbPhRHjEAL7TlktxnPe2eqshUEXHIFTe8S4b7FnZeyDcMroFY=;
-X-UUID: e52289c78ec14576afb367273d31b59f-20210616
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 777013813; Wed, 16 Jun 2021 15:59:58 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 15:50:46 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 17 Jun 2021 06:50:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 17 Jun 2021 06:50:44 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
- <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
- <chun-jie.chen@mediatek.com>
-Subject: [PATCH 20/22] clk: mediatek: Add MT8195 wpesys clock support
-Date: Thu, 17 Jun 2021 06:47:41 +0800
-Message-ID: <20210616224743.5109-21-chun-jie.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
-References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
+ id 1ltes5-0087vY-6Q; Wed, 16 Jun 2021 23:22:58 +0000
+Received: by mail-io1-f45.google.com with SMTP id s19so1046570ioc.3;
+ Wed, 16 Jun 2021 16:22:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=sT55r6CNEZMib5uoieAPwMKrpqQFOR915u+G/id+O8c=;
+ b=l66sWRlrXmSkMJ0WgKUOFrViSqVNJWfWtFpwlixgNQL2kS0vLvaGDyybaV87kxuUHA
+ frJF2GTzw5OQ+dRM4vZcBJJaKxh7AGsce3CeZ68+zekUE32TKVUzi+c0+G2q32bS2V4E
+ eotG4Yvzeo8ztNzZc9kXAfZTtGOAmHWnEAHV0Nn3WVnj3tHttQvFq8NbR4HGKrOEguaS
+ dSUpH5Ti4MyljfUnsuRlzKX78urXcKyu0vNxsYZmXdWf2ibRsMcgtSqENjWn6C3Rg7/E
+ 6KiNsMq4qNnJllp0B018keXQWM9DALPPn5JdEUIE2Fg41IfUu4FkpwNG5o0QQvIEKNaI
+ w0pw==
+X-Gm-Message-State: AOAM533Mts1FzKAcs8KXinwIKf1Bg1Tih/UhKTNP9u34TyxnV0I6FaJq
+ Zgaiso8dLMM9ZDjDWPniTA==
+X-Google-Smtp-Source: ABdhPJxz0m48Lc6wge8V7RgY/VykuKzOdsCXuhgzkBYxqe29UMDL46K1NPHO39N8+gpYuvPhjjXiiw==
+X-Received: by 2002:a6b:8f81:: with SMTP id r123mr1108781iod.154.1623885776371; 
+ Wed, 16 Jun 2021 16:22:56 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id e4sm1829304iow.47.2021.06.16.16.22.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Jun 2021 16:22:55 -0700 (PDT)
+Received: (nullmailer pid 277485 invoked by uid 1000);
+ Wed, 16 Jun 2021 23:22:53 -0000
+Date: Wed, 16 Jun 2021 17:22:53 -0600
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-cerise
+Message-ID: <20210616232253.GA277451@robh.at.kernel.org>
+References: <20210604052312.1040707-1-hsinyi@chromium.org>
+ <20210604052312.1040707-2-hsinyi@chromium.org>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210604052312.1040707-2-hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_160006_721894_45F3F4E0 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20210616_162257_267192_807B55A8 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,197 +94,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 wpesys clock providers
+On Fri, 04 Jun 2021 13:23:12 +0800, Hsin-Yi Wang wrote:
+> Cerise is known as ASUS Chromebook CZ1.
+> Stern is known as ASUS Chromebook Flip CZ1.
+> 
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
 
-Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
----
- drivers/clk/mediatek/Kconfig          |   6 ++
- drivers/clk/mediatek/Makefile         |   1 +
- drivers/clk/mediatek/clk-mt8195-wpe.c | 145 ++++++++++++++++++++++++++
- 3 files changed, 152 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8195-wpe.c
+Acked-by: Rob Herring <robh@kernel.org>
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 91b1c19da1ab..5089bacdf0a5 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -678,6 +678,12 @@ config COMMON_CLK_MT8195_VPPSYS1
- 	help
- 	  This driver supports MediaTek MT8195 vppsys1 clocks.
- 
-+config COMMON_CLK_MT8195_WPESYS
-+	bool "Clock driver for MediaTek MT8195 wpesys"
-+	depends on COMMON_CLK_MT8195
-+	help
-+	  This driver supports MediaTek MT8195 wpesys clocks.
-+
- config COMMON_CLK_MT8516
- 	bool "Clock driver for MediaTek MT8516"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index fbf57473bb91..32cfb0030d92 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -96,5 +96,6 @@ obj-$(CONFIG_COMMON_CLK_MT8195_VDOSYS1) += clk-mt8195-vdo1.o
- obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS0) += clk-mt8195-vpp0.o
- obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS1) += clk-mt8195-vpp1.o
-+obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) += clk-mt8195-wpe.o
- obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
- obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8195-wpe.c b/drivers/clk/mediatek/clk-mt8195-wpe.c
-new file mode 100644
-index 000000000000..99e8b1297ef7
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8195-wpe.c
-@@ -0,0 +1,145 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2021 MediaTek Inc.
-+// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
-+
-+#include <dt-bindings/clock/mt8195-clk.h>
-+
-+static const struct mtk_gate_regs wpe_cg_regs = {
-+	.set_ofs = 0x0,
-+	.clr_ofs = 0x0,
-+	.sta_ofs = 0x0,
-+};
-+
-+static const struct mtk_gate_regs wpe_vpp0_cg_regs = {
-+	.set_ofs = 0x58,
-+	.clr_ofs = 0x58,
-+	.sta_ofs = 0x58,
-+};
-+
-+static const struct mtk_gate_regs wpe_vpp1_cg_regs = {
-+	.set_ofs = 0x5c,
-+	.clr_ofs = 0x5c,
-+	.sta_ofs = 0x5c,
-+};
-+
-+#define GATE_WPE(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &wpe_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-+
-+#define GATE_WPE_VPP0(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &wpe_vpp0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-+
-+#define GATE_WPE_VPP1(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &wpe_vpp1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-+
-+static const struct mtk_gate wpe_clks[] = {
-+	GATE_WPE(CLK_WPE_VPP0, "wpe_vpp0", "wpe_vpp_sel", 16),
-+	GATE_WPE(CLK_WPE_VPP1, "wpe_vpp1", "wpe_vpp_sel", 17),
-+	GATE_WPE(CLK_WPE_SMI_LARB7, "wpe_smi_larb7", "wpe_vpp_sel", 18),
-+	GATE_WPE(CLK_WPE_SMI_LARB8, "wpe_smi_larb8", "wpe_vpp_sel", 19),
-+	GATE_WPE(CLK_WPE_EVENT_TX, "wpe_event_tx", "wpe_vpp_sel", 20),
-+	GATE_WPE(CLK_WPE_SMI_LARB7_P, "wpe_smi_larb7_p", "wpe_vpp_sel", 24),
-+	GATE_WPE(CLK_WPE_SMI_LARB8_P, "wpe_smi_larb8_p", "wpe_vpp_sel", 25),
-+};
-+
-+static const struct mtk_gate wpe_vpp0_clks[] = {
-+	/* WPE_VPP0 */
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_VGEN, "wpe_vpp0_vgen", "img_sel", 0),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_EXT, "wpe_vpp0_ext", "img_sel", 1),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_VFC, "wpe_vpp0_vfc", "img_sel", 2),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH0_TOP, "wpe_vpp0_cach0_top", "img_sel", 3),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH0_DMA, "wpe_vpp0_cach0_dma", "img_sel", 4),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH1_TOP, "wpe_vpp0_cach1_top", "img_sel", 5),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH1_DMA, "wpe_vpp0_cach1_dma", "img_sel", 6),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH2_TOP, "wpe_vpp0_cach2_top", "img_sel", 7),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH2_DMA, "wpe_vpp0_cach2_dma", "img_sel", 8),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH3_TOP, "wpe_vpp0_cach3_top", "img_sel", 9),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH3_DMA, "wpe_vpp0_cach3_dma", "img_sel", 10),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_PSP, "wpe_vpp0_psp", "img_sel", 11),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_PSP2, "wpe_vpp0_psp2", "img_sel", 12),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_SYNC, "wpe_vpp0_sync", "img_sel", 13),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_C24, "wpe_vpp0_c24", "img_sel", 14),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_MDP_CROP, "wpe_vpp0_mdp_crop", "img_sel", 15),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_ISP_CROP, "wpe_vpp0_isp_crop", "img_sel", 16),
-+	GATE_WPE_VPP0(CLK_WPE_VPP0_TOP, "wpe_vpp0_top", "img_sel", 17),
-+	/* WPE_VPP1 */
-+	GATE_WPE_VPP1(CLK_WPE_VPP0_VECI, "wpe_vpp0_veci", "img_sel", 0),
-+	GATE_WPE_VPP1(CLK_WPE_VPP0_VEC2I, "wpe_vpp0_vec2i", "img_sel", 1),
-+	GATE_WPE_VPP1(CLK_WPE_VPP0_VEC3I, "wpe_vpp0_vec3i", "img_sel", 2),
-+	GATE_WPE_VPP1(CLK_WPE_VPP0_WPEO, "wpe_vpp0_wpeo", "img_sel", 3),
-+	GATE_WPE_VPP1(CLK_WPE_VPP0_MSKO, "wpe_vpp0_msko", "img_sel", 4),
-+};
-+
-+static const struct mtk_gate wpe_vpp1_clks[] = {
-+	/* WPE_VPP0 */
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_VGEN, "wpe_vpp1_vgen", "img_sel", 0),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_EXT, "wpe_vpp1_ext", "img_sel", 1),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_VFC, "wpe_vpp1_vfc", "img_sel", 2),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH0_TOP, "wpe_vpp1_cach0_top", "img_sel", 3),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH0_DMA, "wpe_vpp1_cach0_dma", "img_sel", 4),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH1_TOP, "wpe_vpp1_cach1_top", "img_sel", 5),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH1_DMA, "wpe_vpp1_cach1_dma", "img_sel", 6),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH2_TOP, "wpe_vpp1_cach2_top", "img_sel", 7),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH2_DMA, "wpe_vpp1_cach2_dma", "img_sel", 8),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH3_TOP, "wpe_vpp1_cach3_top", "img_sel", 9),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH3_DMA, "wpe_vpp1_cach3_dma", "img_sel", 10),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_PSP, "wpe_vpp1_psp", "img_sel", 11),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_PSP2, "wpe_vpp1_psp2", "img_sel", 12),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_SYNC, "wpe_vpp1_sync", "img_sel", 13),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_C24, "wpe_vpp1_c24", "img_sel", 14),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_MDP_CROP, "wpe_vpp1_mdp_crop", "img_sel", 15),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_ISP_CROP, "wpe_vpp1_isp_crop", "img_sel", 16),
-+	GATE_WPE_VPP0(CLK_WPE_VPP1_TOP, "wpe_vpp1_top", "img_sel", 17),
-+	/* WPE_VPP1 */
-+	GATE_WPE_VPP1(CLK_WPE_VPP1_VECI, "wpe_vpp1_veci", "img_sel", 0),
-+	GATE_WPE_VPP1(CLK_WPE_VPP1_VEC2I, "wpe_vpp1_vec2i", "img_sel", 1),
-+	GATE_WPE_VPP1(CLK_WPE_VPP1_VEC3I, "wpe_vpp1_vec3i", "img_sel", 2),
-+	GATE_WPE_VPP1(CLK_WPE_VPP1_WPEO, "wpe_vpp1_wpeo", "img_sel", 3),
-+	GATE_WPE_VPP1(CLK_WPE_VPP1_MSKO, "wpe_vpp1_msko", "img_sel", 4),
-+};
-+
-+static const struct mtk_clk_desc wpe_desc = {
-+	.clks = wpe_clks,
-+	.num_clks = ARRAY_SIZE(wpe_clks),
-+};
-+
-+static const struct mtk_clk_desc wpe_vpp0_desc = {
-+	.clks = wpe_vpp0_clks,
-+	.num_clks = ARRAY_SIZE(wpe_vpp0_clks),
-+};
-+
-+static const struct mtk_clk_desc wpe_vpp1_desc = {
-+	.clks = wpe_vpp1_clks,
-+	.num_clks = ARRAY_SIZE(wpe_vpp1_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8195_wpe[] = {
-+	{
-+		.compatible = "mediatek,mt8195-wpesys",
-+		.data = &wpe_desc,
-+	}, {
-+		.compatible = "mediatek,mt8195-wpesys_vpp0",
-+		.data = &wpe_vpp0_desc,
-+	}, {
-+		.compatible = "mediatek,mt8195-wpesys_vpp1",
-+		.data = &wpe_vpp1_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
-+
-+static struct platform_driver clk_mt8195_wpe_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.driver = {
-+		.name = "clk-mt8195-wpe",
-+		.of_match_table = of_match_clk_mt8195_wpe,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8195_wpe_drv);
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
