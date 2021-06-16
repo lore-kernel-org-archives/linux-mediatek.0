@@ -2,79 +2,78 @@ Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0A46C48BE5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2989C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:35:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8882061356
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:18:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8882061356
+	by mail.kernel.org (Postfix) with ESMTPS id ACF4B61356
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 01:35:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACF4B61356
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OeBAeFRcuTU/5Om0ektIKMscLPU2H8WZ0Pr2j2XgE9E=; b=x6uVxWk5W57fu4
-	o8Wue3eqWTusTrdyT44KeUBrIkIcFSQCjw4mPAEJoLSdCWUIz8XtuQSvv7unLUpJ1fPyjmDWWtAHL
-	VoUQE2wxz/sdVy2E6ywA44w9aGM7ZnlSXfa3/O096qCqdDhwX5NtO5J3hrOVz7XsVALJuTNAVL+tx
-	8AKzoxLDNp55Bp86h2ihi/edXnRkdjmfjdTAo+SvlmxZL41roX83ToSehFZnq0xsVPUGUtMpbIdVq
-	PMhSTyRzS/6l/vLN7fZDJCJCO/tgMoFWR2PxTYmJs1OtGFF4QAre7s+VTqswYJtGj4o2jVD57PM2I
-	fYjcttJqiZs2uXETYXJQ==;
+	List-Owner; bh=P6VQWXC7yWEo3QlYBmg14MzvyExbmxdAcpFDnb75SvQ=; b=KZ/zQIad6uJjcy
+	yHvD2L1lBUal3v/Xo11BR/D7WYmdwWBNEhwFZx2090j705C3ASaAjWjWqqMMD4I4p2RfDTfG4V55H
+	GRfjm7u7JpcnI7qvqrgzNAYAfiF/uxn3N+ZFRkZge4KAV6+cLNMKWsfpSvq77EJWrN+hzZXiZ3Kpj
+	63a1jLEreGoFztEcl/iFRrhZgK1D+wxlWM8n6wHxsl/ABwJCxwosJoYj00vnsBh2GMnquy05hGcHJ
+	TfgtuW2ov31AcPiMwcBVFcgAITJWdmzI4qiBNEVp6Opq24AlVzstq0qENy3HUKk8X58DG7Cx3yQ+b
+	XLFQmQl6gS0KZaFHAeFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltKCF-004LCl-6L; Wed, 16 Jun 2021 01:18:23 +0000
+	id 1ltKSt-004NK7-76; Wed, 16 Jun 2021 01:35:35 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltKC4-004L8f-Fp; Wed, 16 Jun 2021 01:18:17 +0000
-X-UUID: ed4e78a54b424f1fb3c7d4460b832ff2-20210615
+ id 1ltKSq-004NJN-Ne; Wed, 16 Jun 2021 01:35:34 +0000
+X-UUID: c681f7dec74f4c9b88dfa1d001d7f99e-20210615
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+N5s8RFRxQHMVywT6CxJ6+8JnielFZcu5fZlW9ZDCWg=; 
- b=BnzdyhMxi6Jk+lSVr2B/KMlM7kc+VNkyqxFsoLaPgV95KMfQWFxl+VplWlbn+4I9sPIAcKf3zck1MzmA/UwdT4NPm0UZWtoMJYzNE52bmzUq7jmptxM2fLmCHX6s04VL2R0v67bgMsSKgACZQlmUMjP+0LwjQDAdr/+TyyPgvXo=;
-X-UUID: ed4e78a54b424f1fb3c7d4460b832ff2-20210615
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=bN1zFdu+kgnFsjJiRGRT8DKoz4fiLgKY4mbL1c8VCqU=; 
+ b=qqQg9rdv09NK1kVK9mzM0bPxsZP1WSKYAWETMCKF2x77NhyCQfmWVm/eMgWFXAY3ueSHIGEGWbuaFHn0iir2VBIKJI80J1CYhxI5vRQWojUJJ74cGARuAOygb+Bps8JVZ3sMuksx2//k3gGFUohUhNLg3tk2UruyHb3xe3f6d8k=;
+X-UUID: c681f7dec74f4c9b88dfa1d001d7f99e-20210615
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 166039068; Tue, 15 Jun 2021 18:17:48 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 94676190; Tue, 15 Jun 2021 18:31:52 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 15 Jun 2021 18:17:46 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 16 Jun 2021 09:17:44 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 16 Jun 2021 09:17:44 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Subject: [PATCH v4 1/2] arm64: dts: mediatek: Add mt8192 clock controllers
-Date: Wed, 16 Jun 2021 09:15:50 +0800
-Message-ID: <20210616011551.29654-2-chun-jie.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210616011551.29654-1-chun-jie.chen@mediatek.com>
-References: <20210616011551.29654-1-chun-jie.chen@mediatek.com>
+ 15.0.1497.2; Tue, 15 Jun 2021 18:30:11 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs02n2.mediatek.inc
+ (172.21.101.101) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 16 Jun 2021 09:30:03 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 16 Jun 2021 09:30:02 +0800
+Message-ID: <1623807002.15910.8.camel@mhfsdcap03>
+Subject: Re: [PATCH 12/27] arm64: dts: mt8195: fix mmc driver
+From: Wenbin Mei <wenbin.mei@mediatek.com>
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+CC: <robh+dt@kernel.org>, <matthias.bgg@gmail.com>,
+ <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <srv_heupstream@mediatek.com>, <seiya.wang@mediatek.com>, <wenst@google.com>, 
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 16 Jun 2021 09:30:02 +0800
+In-Reply-To: <20210615173233.26682-12-tinghan.shen@mediatek.com>
+References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
+ <20210615173233.26682-12-tinghan.shen@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210615_181812_912511_6808835A 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20210615_183533_107778_EB5811EA 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,259 +90,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add clock controller nodes for SoC mt8192
+On Wed, 2021-06-16 at 01:32 +0800, Tinghan Shen wrote:
+> From: Wenbin Mei <wenbin.mei@mediatek.com>
+> 
+> fix mmc driver with proper clock for mt8195 SoC.
+> 
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi | 18 ++++++++++++++----
+>  1 file changed, 14 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> index 539f405a4f3d..327ff1b856d2 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -926,22 +926,32 @@
+>  		};
+>  
+>  		mmc0: mmc@11230000 {
+> -			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
+> +			compatible = "mediatek,mt8195-mmc",
+> +				     "mediatek,mt8192-mmc",
+> +				     "mediatek,mt8183-mmc";
+I have submitted a patch to fix the
+dt-bindings(http://lists.infradead.org/pipermail/linux-mediatek/2021-June/025456.html), Now which should be:
+	compatible = "mediatek,mt8195-mmc", "mediatek,mt8183-mmc";
+>  			reg = <0 0x11230000 0 0x10000>,
+>  			      <0 0x11f50000 0 0x1000>;
+>  			interrupts = <GIC_SPI 131 IRQ_TYPE_LEVEL_HIGH 0>;
+> -			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
+> +			clocks = <&topckgen CLK_TOP_MSDC50_0_SEL>,
+> +				 <&infracfg_ao CLK_INFRA_AO_MSDC0>,
+> +				 <&infracfg_ao CLK_INFRA_AO_MSDC0_SRC>;
+>  			clock-names = "source", "hclk", "source_cg";
+>  			status = "disabled";
+>  		};
+>  
+>  		mmc1: mmc@11240000 {
+> -			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
+> +			compatible = "mediatek,mt8195-mmc",
+> +				     "mediatek,mt8192-mmc",
+> +				     "mediatek,mt8183-mmc";
+Ditto, this should be:
+	compatible = "mediatek,mt8195-mmc", "mediatek,mt8183-mmc";
+>  			reg = <0 0x11240000 0 0x1000>,
+>  			      <0 0x11c70000 0 0x1000>;
+>  			interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
+> -			clocks = <&clk26m>, <&clk26m>, <&clk26m>;
+> +			clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>,
+> +				 <&infracfg_ao CLK_INFRA_AO_MSDC1>,
+> +				 <&infracfg_ao CLK_INFRA_AO_MSDC1_SRC>;
+>  			clock-names = "source", "hclk", "source_cg";
+> +			assigned-clocks = <&topckgen CLK_TOP_MSDC30_1_SEL>;
+> +			assigned-clock-parents = <&topckgen CLK_TOP_MSDCPLL_D2>;
+>  			status = "disabled";
+>  		};
+>  
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 163 +++++++++++++++++++++++
- 1 file changed, 163 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 9757138a8bbd..83f71d13ef9d 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -5,6 +5,7 @@
-  */
- 
- /dts-v1/;
-+#include <dt-bindings/clock/mt8192-clk.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-@@ -257,6 +258,24 @@
- 			};
- 		};
- 
-+		topckgen: syscon@10000000 {
-+			compatible = "mediatek,mt8192-topckgen", "syscon";
-+			reg = <0 0x10000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		infracfg: syscon@10001000 {
-+			compatible = "mediatek,mt8192-infracfg", "syscon";
-+			reg = <0 0x10001000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		pericfg: syscon@10003000 {
-+			compatible = "mediatek,mt8192-pericfg", "syscon";
-+			reg = <0 0x10003000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		pio: pinctrl@10005000 {
- 			compatible = "mediatek,mt8192-pinctrl";
- 			reg = <0 0x10005000 0 0x1000>,
-@@ -282,6 +301,12 @@
- 			#interrupt-cells = <2>;
- 		};
- 
-+		apmixedsys: syscon@1000c000 {
-+			compatible = "mediatek,mt8192-apmixedsys", "syscon";
-+			reg = <0 0x1000c000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		systimer: timer@10017000 {
- 			compatible = "mediatek,mt8192-timer",
- 				     "mediatek,mt6765-timer";
-@@ -291,6 +316,12 @@
- 			clock-names = "clk13m";
- 		};
- 
-+		scp_adsp: clock-controller@10720000 {
-+			compatible = "mediatek,mt8192-scp_adsp";
-+			reg = <0 0x10720000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		uart0: serial@11002000 {
- 			compatible = "mediatek,mt8192-uart",
- 				     "mediatek,mt6577-uart";
-@@ -311,6 +342,12 @@
- 			status = "disabled";
- 		};
- 
-+		imp_iic_wrap_c: clock-controller@11007000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_c";
-+			reg = <0 0x11007000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		spi0: spi@1100a000 {
- 			compatible = "mediatek,mt8192-spi",
- 				     "mediatek,mt6765-spi";
-@@ -436,6 +473,12 @@
- 			status = "disable";
- 		};
- 
-+		audsys: clock-controller@11210000 {
-+			compatible = "mediatek,mt8192-audsys";
-+			reg = <0 0x11210000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		i2c3: i2c3@11cb0000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11cb0000 0 0x1000>,
-@@ -449,6 +492,12 @@
- 			status = "disabled";
- 		};
- 
-+		imp_iic_wrap_e: clock-controller@11cb1000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_e";
-+			reg = <0 0x11cb1000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		i2c7: i2c7@11d00000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11d00000 0 0x1000>,
-@@ -488,6 +537,12 @@
- 			status = "disabled";
- 		};
- 
-+		imp_iic_wrap_s: clock-controller@11d03000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_s";
-+			reg = <0 0x11d03000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		i2c1: i2c1@11d20000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11d20000 0 0x1000>,
-@@ -527,6 +582,12 @@
- 			status = "disabled";
- 		};
- 
-+		imp_iic_wrap_ws: clock-controller@11d23000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_ws";
-+			reg = <0 0x11d23000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		i2c5: i2c5@11e00000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11e00000 0 0x1000>,
-@@ -540,6 +601,12 @@
- 			status = "disabled";
- 		};
- 
-+		imp_iic_wrap_w: clock-controller@11e01000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_w";
-+			reg = <0 0x11e01000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
- 		i2c0: i2c0@11f00000 {
- 			compatible = "mediatek,mt8192-i2c";
- 			reg = <0 0x11f00000 0 0x1000>,
-@@ -565,5 +632,101 @@
- 			#size-cells = <0>;
- 			status = "disabled";
- 		};
-+
-+		imp_iic_wrap_n: clock-controller@11f02000 {
-+			compatible = "mediatek,mt8192-imp_iic_wrap_n";
-+			reg = <0 0x11f02000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		msdc_top: clock-controller@11f10000 {
-+			compatible = "mediatek,mt8192-msdc_top";
-+			reg = <0 0x11f10000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		msdc: clock-controller@11f60000 {
-+			compatible = "mediatek,mt8192-msdc";
-+			reg = <0 0x11f60000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		mfgcfg: clock-controller@13fbf000 {
-+			compatible = "mediatek,mt8192-mfgcfg";
-+			reg = <0 0x13fbf000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		mmsys: clock-controller@14000000 {
-+			compatible = "mediatek,mt8192-mmsys";
-+			reg = <0 0x14000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		imgsys: clock-controller@15020000 {
-+			compatible = "mediatek,mt8192-imgsys";
-+			reg = <0 0x15020000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		imgsys2: clock-controller@15820000 {
-+			compatible = "mediatek,mt8192-imgsys2";
-+			reg = <0 0x15820000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		vdecsys_soc: clock-controller@1600f000 {
-+			compatible = "mediatek,mt8192-vdecsys_soc";
-+			reg = <0 0x1600f000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		vdecsys: clock-controller@1602f000 {
-+			compatible = "mediatek,mt8192-vdecsys";
-+			reg = <0 0x1602f000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		vencsys: clock-controller@17000000 {
-+			compatible = "mediatek,mt8192-vencsys";
-+			reg = <0 0x17000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		camsys: clock-controller@1a000000 {
-+			compatible = "mediatek,mt8192-camsys";
-+			reg = <0 0x1a000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		camsys_rawa: clock-controller@1a04f000 {
-+			compatible = "mediatek,mt8192-camsys_rawa";
-+			reg = <0 0x1a04f000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		camsys_rawb: clock-controller@1a06f000 {
-+			compatible = "mediatek,mt8192-camsys_rawb";
-+			reg = <0 0x1a06f000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		camsys_rawc: clock-controller@1a08f000 {
-+			compatible = "mediatek,mt8192-camsys_rawc";
-+			reg = <0 0x1a08f000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		ipesys: clock-controller@1b000000 {
-+			compatible = "mediatek,mt8192-ipesys";
-+			reg = <0 0x1b000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		mdpsys: clock-controller@1f000000 {
-+			compatible = "mediatek,mt8192-mdpsys";
-+			reg = <0 0x1f000000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
- 	};
- };
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
