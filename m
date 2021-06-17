@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CAD49C49361
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 16:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28476C48BE5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 16:30:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EB5E613BF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 16:25:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EB5E613BF
+	by mail.kernel.org (Postfix) with ESMTPS id EB669613BA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 16:30:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB669613BA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,50 +22,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MrNA5UWfR8H2zyVs7oWHCgUhUuji8zVObBpOV1n/wKc=; b=K57HuVs4cgXwFyzMNbznKnUYJI
-	onSxPSfJkW0eB8xr2Jt9XbKNgfNozCZF9esQCKvmZFdfNRev0l5PIzMpedav7TBloJXkgAbDIWeiW
-	UGh41Y6EguO3j2Mfy+EyNpshJgBkwuS3sh7jC6iF3t74xx1nvsi4DUdg3VM5v7Y1LPEgT7CE/GtgU
-	gXhacb1VdfWsoi+mDKJRLhTJkVysDkQv/WO92OsiukxhnCzxGrUTVJNRl4Z2ashqkaw1lPJKLnSsT
-	RyczfkLeM4ncJjW55wM3CZIAO9axoTSNfW8HkAvbDE/hWEshmMb1eQXIa9Zytm7J8mPhF0l1zkBgt
-	41A3CMhg==;
+	bh=UdUTbFQ4PYwKaGuXRYSET2ahOy6EdUSaUH55bHJWQ9o=; b=ju8mBEaR1rc9952sffWkmasjEI
+	WpC3JlNyMfUyAOertc/W56WGAUPS2qcWsyBIDmjQCZMkkjznf2hKtgsyHI5Q3s6M4DrTpdRcYkreo
+	7ETO/Ewa7EhxYkgyF9EW9w+X2yrsD26SetVOZG13MX25ZE99NpWwTE+ETTOy4/W1O9iAmIwka1jBr
+	6+hVhwzlWKZDo+ptyILPZgL0mPSLuqo2yOztxgUbsiiW9rvDRViqrqqTugmhrhYQ++Ek7Be7P2wki
+	eLEqlvdTT0oF2dIgeEbCj5iRfx80Kz5mSOWm5wQXpVWL1DkQWjjRXctAOBxs2DtHrW2t8NcXQBaiH
+	YtSQCqFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltupD-00B5bk-DN; Thu, 17 Jun 2021 16:25:03 +0000
+	id 1ltutt-00B7Hg-Po; Thu, 17 Jun 2021 16:29:53 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltuoz-00B5a7-8q; Thu, 17 Jun 2021 16:24:50 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 4B70B613B9;
- Thu, 17 Jun 2021 16:24:48 +0000 (UTC)
+ id 1ltutg-00B7Ec-PJ; Thu, 17 Jun 2021 16:29:42 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E294E613BA;
+ Thu, 17 Jun 2021 16:29:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1623947088;
- bh=INq4nssCgYsIEKzYkC0Op/vH8B8aE187QI5AyGhlWxE=;
+ s=k20201202; t=1623947380;
+ bh=h8mWdalnwqOGxgPzDDjfRank/448I/bBBc4d6qKMLj8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RtPaz8GQTTMVVgSDQIOJ+S+7TxupFal78/odxYuTkiSTyDWOtO9O73BHhefzoqrJB
- VfailCngQHg8/m/NNIvvS+L3dfcVVEvXhNsz+jPmILsuEZspNOtPc7/MW+U1psbjzT
- oLXqRwNwJ9DyoQdS8tSxnYjdSjWzUlTpaUA/mljCDV6mZNlUCeZIJw4inR3hTrhIRr
- DOzlUfyLd4cu5tCrkNBUgeHBUQ45h4fikdS3ZmGnfYTOz7FBOS3f+2rUJSijUwD0dw
- aNnF00p0XOEclfzSMbrEDAeHL0I6RBy+sd9NJ5SeJwAhvYaFgnLvrqthn9PGYKcyfr
- 60KVvSVaNxZDg==
-Date: Thu, 17 Jun 2021 17:24:28 +0100
+ b=LvZ0+KKAuAFqDjU/hLzVEd/T///kIjlioxINYjvjY7itetWi7+YvxllivGbc8WZCA
+ ORi9Vj+QxOVl5mxSGnXm3rnUbFdSJRtgVd3zyegtwCxVEeq3uHQVMZsoUFYEtUdzMm
+ AMHHcEKm/UdgfO/1cSxmAhUe/3ZPmUuhZjB0XkoSlesVpDNSsQclTVcEzCqUejVc3Z
+ hT0kUcrnqEfr44kKGRNLVCfuRtMItcmE6KXjzrWYYWb6lIIu5vLgXEUaKKtZC9nCfN
+ 7g3gTL9VyYi/X6olvFozUsgvwlVkp06+lQKmQ1G2Vh5KzlXVbUztan/2qWZ/nSsFJ9
+ 85uOir0giuq2Q==
+Date: Thu, 17 Jun 2021 17:29:19 +0100
 From: Mark Brown <broonie@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: cy_huang <u0084500@gmail.com>, lgirdwood@gmail.com,
+To: ChiYuan Huang <u0084500@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, lgirdwood@gmail.com,
  matthias.bgg@gmail.com, gene_chen@richtek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- cy_huang@richtek.com, gene.chen.richtek@gmail.com
+ lkml <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, 
+ cy_huang <cy_huang@richtek.com>, gene.chen.richtek@gmail.com
 Subject: Re: [PATCH 1/2] regulator: mt6360: Add optional
  mediatek.power-off-sequence in bindings document
-Message-ID: <20210617162428.GG5067@sirena.org.uk>
+Message-ID: <20210617162919.GH5067@sirena.org.uk>
 References: <1622616875-22740-1-git-send-email-u0084500@gmail.com>
  <20210611201643.GA1583875@robh.at.kernel.org>
+ <CADiBU39Prz99ZLtkYdcM9XDQsd0nKKeiEGjW3wq=u75JGjwX=g@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20210611201643.GA1583875@robh.at.kernel.org>
+In-Reply-To: <CADiBU39Prz99ZLtkYdcM9XDQsd0nKKeiEGjW3wq=u75JGjwX=g@mail.gmail.com>
 X-Cookie: But it does move!
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210617_092449_390721_65D23F5F 
-X-CRM114-Status: GOOD (  21.80  )
+X-CRM114-CacheID: sfid-20210617_092940_896538_1AD39EFF 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,88 +80,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6805137784555976999=="
+Content-Type: multipart/mixed; boundary="===============6461704136122278774=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============6805137784555976999==
+--===============6461704136122278774==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="2E/hm+v6kSLEYT3h"
+	protocol="application/pgp-signature"; boundary="4C6bbPZ6c/S1npyF"
 Content-Disposition: inline
 
 
---2E/hm+v6kSLEYT3h
-Content-Type: text/plain; charset=us-ascii
+--4C6bbPZ6c/S1npyF
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Jun 11, 2021 at 02:16:43PM -0600, Rob Herring wrote:
-> On Wed, Jun 02, 2021 at 02:54:34PM +0800, cy_huang wrote:
+On Mon, Jun 14, 2021 at 11:04:01PM +0800, ChiYuan Huang wrote:
+> Rob Herring <robh@kernel.org> =E6=96=BC 2021=E5=B9=B46=E6=9C=8812=E6=97=
+=A5 =E9=80=B1=E5=85=AD =E4=B8=8A=E5=8D=884:16=E5=AF=AB=E9=81=93=EF=BC=9A
 
-> > Originally, we think it must write in platform dependent code like as b=
-ootloader.
-> > But after the evaluation, it must write only when system normal HALT or=
- POWER_OFF.
-> > For the other cases, just follow HW immediate off by default.
+> > > Originally, we think it must write in platform dependent code like as=
+ bootloader.
+> > > But after the evaluation, it must write only when system normal HALT =
+or POWER_OFF.
+> > > For the other cases, just follow HW immediate off by default.
 
-> Wouldn't this be handled by PSCI implementation?
+> > Wouldn't this be handled by PSCI implementation?
 
-Ideally I think...
+> No, the current application default on powers buck1/buck2/ldo7/ldo6
+> are for Dram power.
+> It's not the soc core power. It seems not appropriate  to implement
+> like as PSCI.
+> MT6360 play the role for the subpmic in the SOC application reference des=
+ign.
 
-> > +  mediatek,power-off-sequence:
-> > +    description: |
-> > +      Power off sequence time selection for BUCK1/BUCK2/LDO7/LDO6, res=
-petively.
-> > +      Cause these regulators are all default-on power. Each value from=
- 0 to 63,
-> > +      and step is 1. Each step means 2 millisecond delay.
-> > +      Therefore, the power off sequence delay time range is from 0ms t=
-o 126ms.
-> > +    $ref: "/schemas/types.yaml#/definitions/uint8-array"
-> > +    minItems: 4
-> > +    maxItems: 4
+If this is part of the overall system power off that seems like it fits
+well enough into what PSCI is doing - it's got operations like
+SYSTEM_OFF which talk about the system as a whole.
 
-> So this is the delay between BUCK1 and BUCK2, then BUCK2 to LDO7, etcc?=
-=20
-> If we wanted to express this in DT, we'd made this generic which would=20
-> need to be more flexible. A poweroff delay in each regulator (similar to=
-=20
-> the existing power on delay) would be sufficient for what you need I=20
-> think.
-
-It's not exactly a delay that's being described there - it's a series of
-timeslots, each regulator getting assigned to a timeslot.  You could
-possibly do a general binding by specifying a delay from the start of
-the power off sequence and then (for this device) having the driver work
-out a mapping of those times to timeslots.  That feels genericish, you
-might also have things like mode changes but it'd cover a lot of the
-cases.
-
-On the other hand this is the sort of thing that is often just not
-configurable and where people often make weird and inflexible hardware
-so things that do implement it are likely to end up wanting to add a
-bunch of constraints which might be a lot of hassle.
-
---2E/hm+v6kSLEYT3h
+--4C6bbPZ6c/S1npyF
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmDLdzsACgkQJNaLcl1U
-h9Cy9wf/ROgBTEBrrxZAUNZNi+NXNQw980J3z3LZGhLX5EOkMxzPPXdy0EuF0ek6
-NJuBOiyrmSj8i1YDSY9CVcR5TSDjqL8oJGzCo5KBtfW6dXEOxHfAhlQNhIlKBgVI
-YLd6Zg+D7L1EfCNx4yf98DBXaqqZuVHe4aOLP8HmjR6+8QoJBlYso0DeM7CqLKo2
-jpe6mV/ihm73qeSa0WMQ9/lEln/DZ1q/xivNbYjmLqchXIp8/KilF0vw6yuVLlJY
-QY2I012mnmGL/MtWmJohwU7aWZaTK+J8PMpKjglre25GCf2i/29PL68q9xwwwB4r
-5VVzFXJo0iqqEAShFU6/dgitjQRSGw==
-=eGjM
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmDLeF8ACgkQJNaLcl1U
+h9DoNAf/ay42021AEwWsgvVf64PZ7bfN1VQtq5/Gvxa3qKXwvF2ElhI0rEWVv+TD
+ykW5worWSNVBlrmXT5e5pG0vDPAqQ4XSgOsubJCj7BWz/o8vebLSclpZz0PDQCav
+Dbt3qvsDnTcOMOMucTRf2X4u9SHAVgE06JDUiZTcEqprRk4Vd4ye6i6REqw2t2wX
+ydNjf2EsU1b9nzoVuyzhnLA9p1p5wiiYEzhCoFw+4x2BYypYNT4bk6xRQ/IitcIl
+ZrtklyKL+G3Ty7Ul9AREvr++U177bA902zg+5kCh2NvrmcPDwQahA3zx06NePexK
+B6Ch9wofiE4v/hRfzXuS7w4Q85k2Vg==
+=/WVl
 -----END PGP SIGNATURE-----
 
---2E/hm+v6kSLEYT3h--
+--4C6bbPZ6c/S1npyF--
 
 
---===============6805137784555976999==
+--===============6461704136122278774==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -169,5 +148,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============6805137784555976999==--
+--===============6461704136122278774==--
 
