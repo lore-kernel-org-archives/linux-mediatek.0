@@ -1,83 +1,63 @@
-Return-Path: <SRS0=hSNv=LK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zq7C=LL=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D195C48BE6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:28:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5D45C48BE6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 00:23:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5ABFF61245
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Jun 2021 23:28:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5ABFF61245
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8DDAB60041
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 00:23:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DDAB60041
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=goodmis.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UFso2CtwZBuE1sLZZftzkwYz0JzDxnA+uKqg4EuyYoA=; b=K7UVNoP0DYRU2w
-	MhycWjy+27WxMoWw6EgfVMRm7Jn3ATLzTZ4bnSOCJhjjngkoKqU99qdoY1DGyEq2wAprCgFSWV6kv
-	Xn5L6lisUGZs6yVlfGQgZwKPZHYdLGWd4zAPThEw8ek4rBzw2uqOiS9hN1rpwuwuzjfxBJbjwre5D
-	IoolfXKgfKdZ7O6q2JdmxxGR7DFm/mCFuQYC3ItGyq9lRKyDWDX4+DJ4BHJE93bZinClr2HIrj858
-	3A0Lttk+WtyPfWVbnXUkB+b4tFP/Fk3QhpEEL7bQojYUqNZV5N9jKI3gHIAFQcH90/oXbwb+HSC46
-	TMBwnemYzMT05Hfbw90A==;
+	List-Owner; bh=1VMWZDIbUV1WZVIovnVPESroUtmZ4YkMvWOza1YZ07o=; b=ftKlLsjebvl+Um
+	W45tFoTW5YrUAvNvG6MvWd/6SY1RH5eC/A9dXR8tFLvQG+TdYCCEo/+wyBvQMrVA++8PLxg80vP3n
+	jsQJuJPDxNvSqrq0YnGQaZb2D0mYSZArykSwYu5py0vFAJ2udOHj7aBMJCCNJ9MsLUKi8LLr7GUfb
+	0ZLQoMCP/axj0/fD2Zwv6Rz0HaQC5kKDkq5paZh4v88zrTq+7aFRla1K5rqulOX/KEkohBx4IMUgu
+	d5kGANbtQi246H8wtQSKeWfCF8l8LiP8zQ/ioxTXeaBoiiXwvzS5C3MHflrhBv+jeVzLbpOgk1i7U
+	WqLkdcN50rHeQZ4xqk3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ltexX-0089XF-TG; Wed, 16 Jun 2021 23:28:35 +0000
-Received: from mail-io1-f49.google.com ([209.85.166.49])
+	id 1ltfoT-008JdU-I0; Thu, 17 Jun 2021 00:23:17 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ltexK-0089VJ-Lu; Wed, 16 Jun 2021 23:28:24 +0000
-Received: by mail-io1-f49.google.com with SMTP id d9so1058085ioo.2;
- Wed, 16 Jun 2021 16:28:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=xV2j/EdwVr9gYo7BsYPb7ja8r4fncuGCJrMkRrs/+ek=;
- b=EnWwAStbn3dCi62huzgDTAOoOUx5STYGpyZSx/yr1cVKpSAEu2hc8yGFlxd28Yva9w
- ea21ZdIESe3O7DHkiyt4GfE+ZQHiVfxKdyooOVTzgCztm+hJygOiKj2WOAFSRU9X0WHp
- S4kWSMKc69j8PVfplVpsLiuf2AXoGkmAplPH3NHO6GqMdf49NG0n1vOEwo/+/KXeWkjj
- eWU4FiqvM7wv7xqsU8DzyQwE3UHLM1co2Zc6tKV6G9l8UFKFOv1NsIOBTS1+neTJfIEz
- l5MifuArBcbo6KK/pdzqipVo6q22is6kSF6zcb2ka4JFBZ8jmRaJRvZHedPS+LvblYNi
- SflQ==
-X-Gm-Message-State: AOAM531F88bjMbyPHYveBNDMA5YeVkk7LQQvbgzG43luS/SQSYMKg61e
- 5zsQEfvZffPgEjm2puMjRj+D0RZgYA==
-X-Google-Smtp-Source: ABdhPJy3RhIjKN/CDWVX8vYjXN0Rn6x/UxRBlzkJvxqDZVxPyVz+nQXCDwrjbqXkYYHI4y39Ek+SAA==
-X-Received: by 2002:a05:6602:38d:: with SMTP id
- f13mr1377780iov.109.1623886101700; 
- Wed, 16 Jun 2021 16:28:21 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id i7sm1341033ilq.50.2021.06.16.16.28.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Jun 2021 16:28:20 -0700 (PDT)
-Received: (nullmailer pid 284524 invoked by uid 1000);
- Wed, 16 Jun 2021 23:28:17 -0000
-Date: Wed, 16 Jun 2021 17:28:17 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 1/3] dt-bindings: phy: mediatek: tphy: add support
- hardware version 3
-Message-ID: <20210616232817.GA277610@robh.at.kernel.org>
-References: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1ltfoH-008JcG-Vx; Thu, 17 Jun 2021 00:23:07 +0000
+Received: from rorschach.local.home (cpe-66-24-58-225.stny.res.rr.com
+ [66.24.58.225])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 13199613B9;
+ Thu, 17 Jun 2021 00:23:03 +0000 (UTC)
+Date: Wed, 16 Jun 2021 20:23:02 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: <peterz@infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <mhelsley@vmware.com>, <samitolvanen@google.com>,
+ <yj.chiang@mediatek.com>
+Subject: Re: [PATCH v4] recordmcount: Correct st_shndx handling
+Message-ID: <20210616202302.18522133@rorschach.local.home>
+In-Reply-To: <20210616120227.6fc005c3@gandalf.local.home>
+References: <20210616154126.2794-1-mark-pk.tsai@mediatek.com>
+ <20210616120227.6fc005c3@gandalf.local.home>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_162822_766710_117B30C2 
-X-CRM114-Status: GOOD (  23.62  )
+X-CRM114-CacheID: sfid-20210616_172306_100737_EA92B134 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,81 +74,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 04, 2021 at 03:31:18PM +0800, Chunfeng Yun wrote:
-> The PHYA architecture is updated, and doesn't support slew rate
-> calibration anymore on 7nm or advanced process, add a new version
-> number to support it.
-> Note: the FreqMeter bank is not used but reserved.
+On Wed, 16 Jun 2021 12:02:27 -0400
+Steven Rostedt <rostedt@goodmis.org> wrote:
+
+> On Wed, 16 Jun 2021 23:41:26 +0800
+> Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
+> > From: Peter Zijlstra <peterz@infradead.org>
+> > 
+> > One should only use st_shndx when >SHN_UNDEF and <SHN_LORESERVE. When
+> > SHN_XINDEX, then use .symtab_shndx. Otherwise use 0.
+> > 
+> > This handles the case: st_shndx >= SHN_LORESERVE && st_shndx != SHN_XINDEX.
+> > 
+> > Reported-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+> > Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > [handle endianness of sym->st_shndx]
+> > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > ---  
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> index b8a7651a3d9a..939c09296b5f 100644
-> --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-> @@ -15,7 +15,7 @@ description: |
->    controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
->  
->    Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
-> -  T-PHY V2 (mt2712) when works on USB mode:
-> +  T-PHY V2 (mt2712) / V3 (mt8195) when works on USB mode:
->    -----------------------------------
->    Version 1:
->    port        offset    bank
-> @@ -34,7 +34,7 @@ description: |
->    u2 port2    0x1800    U2PHY_COM
->                ...
->  
-> -  Version 2:
-> +  Version 2/3:
->    port        offset    bank
->    u2 port0    0x0000    MISC
->                0x0100    FMREG
-> @@ -59,7 +59,8 @@ description: |
->  
->    SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
->    into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
-> -  added on V2.
-> +  added on V2; the FMREG bank for slew rate calibration is not used anymore
-> +  and reserved on V3;
->  
->  properties:
->    $nodename:
-> @@ -79,8 +80,11 @@ properties:
->                - mediatek,mt2712-tphy
->                - mediatek,mt7629-tphy
->                - mediatek,mt8183-tphy
-> -              - mediatek,mt8195-tphy
->            - const: mediatek,generic-tphy-v2
+> Thanks, I pulled this in and started the testing.
+> 
 
-This doesn't look like a good change.
+It passed my normal tests. I'll run my cross compile test, and I just
+pushed it to linux-next. I'll wait a few days before I push it to Linus.
 
-What happens if a DT has the above. It didn't work or didn't support new 
-features? Please clarify in the commit the implications of changing 
-this. Changing a DT to 'mediatek,generic-tphy-v3' will break existing OS 
-if it was looking for v2.
-
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8195-tphy
-> +          - const: mediatek,generic-tphy-v3
->        - const: mediatek,mt2701-u3phy
->          deprecated: true
->        - const: mediatek,mt2712-u3phy
-> @@ -91,7 +95,7 @@ properties:
->      description:
->        Register shared by multiple ports, exclude port's private register.
->        It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
-> -      T-PHY V2, such as mt2712.
-> +      T-PHY V2/V3, such as mt2712.
->      maxItems: 1
->  
->    "#address-cells":
-> -- 
-> 2.18.0
+-- Steve
 
 _______________________________________________
 Linux-mediatek mailing list
