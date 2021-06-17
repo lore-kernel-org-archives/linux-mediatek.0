@@ -2,94 +2,79 @@ Return-Path: <SRS0=zq7C=LL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B08B1C48BE8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 02:49:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73D67C49361
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 02:51:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61BC0610CA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 02:49:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61BC0610CA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	by mail.kernel.org (Postfix) with ESMTPS id 345D5611CA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Jun 2021 02:51:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 345D5611CA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=EZIIqj7lk5IqrrroUqtx9+XwfbNbfqRliiFj8XUwB68=; b=lIoYBmFXxdO8NzcyAp5mVRFGxH
-	Ly36orW75k/qUB6MsRzt+rbWDnClt/5LO5+GJ08+tTXmgJFBaUGLy6YfiEoqVlzyjZKKHS2we/dt4
-	acMs3F8ltPtAwk6mnFJvzQ0LlbjcqKxdI9WdDwctpNgEmn+Ss7D6ZSsHc3qeN5WUrLD3vwnFivx6H
-	EGKr3rQf0mZb0V4vaTEm1yRbcunQ0X0shrc+Lwz51TErGcBPDtQsL+QsjWLGU97Ri6Xj7niIqlEkJ
-	A/2059UYXmUoz+WSf0cc43x/RQL6s9wixnCgp8ZzmRPLvluDbzrtFBiPTrSu+X8TQrkX4xjLzziUH
-	yXPH8Q5Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=83L1phoL9GlaUp/finx0dGn4k8bwoWMIhNqbQu8R4UI=; b=DSBhseIFra5Xog
+	O2yS9czCAPZz71YHB+htFFe+ffkgn6V/6xWY//oz0QePwaT6FMyfVs5JtIKA3ghsp7HpWPUL+9rPi
+	prXtQ2iKjpUmwsw1mezUgeuAO4ymciRbK8QGLVxVhQkkKRwfQE2Xyuftfq2dIkfB+LESGENMe8ZhX
+	4LBhUtFQmh8MH8pESpLUCCLYWLigX02i/M6AwMiv7mSSD3Nwu3UCS+Qe+7calLV5YkFy+tp1K4Dh/
+	QhHO7Y4vBi5vrM9+UKdmynwA++JdRVBqp/8hfb0Hg8HR/kL1BNosgmSiEvRxzM6+0YYbfxErwpmiQ
+	8lbP9dxnHQ5hb+SRvaKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lti5d-008a08-43; Thu, 17 Jun 2021 02:49:09 +0000
-Received: from mail-pf1-f176.google.com ([209.85.210.176])
+	id 1lti7K-008aCY-Pq; Thu, 17 Jun 2021 02:50:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lti5a-008ZzZ-EH; Thu, 17 Jun 2021 02:49:07 +0000
-Received: by mail-pf1-f176.google.com with SMTP id h12so3815389pfe.2;
- Wed, 16 Jun 2021 19:49:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PU09GkpdOebA1Js4BBORPX4b2AbSyG+VI/fibqpS/xU=;
- b=mYtUDN2uH3BaU+Nlw0BoBRkfWpu9GFYkpHBx50RM2Zl0mZqM3UGyM3nAtGGZJi2UzG
- kdQ6yscq4MmJ9U0OQJkF26fhzx/VEDWh7VxhUtT2f0/E/3ZHGbzMt0nQKKXNhgpvirnN
- 4P3igMMGRr1L21e56kdfEPJAzRQBXnaba4Pu9S+GNKhAwuRWpSMYCMbmxmWHgIKEq4cp
- ypFdRJl4PGUUrfszpJDSPwkRF9C+qPOIZ7U/803l8jgm87KCRNxjnSNPeCn+UJvn9SXj
- 35Xc0eFmjdIYkJjBI0TnHq/C2STnzYkoc8uERWovafn4uzDV+FIMSExCrhskqeh4LgeN
- v4EQ==
-X-Gm-Message-State: AOAM530tXzuxZmyoolQRY7865CWQ2fHHJgZ7sEA53SL4HddTaiCubniA
- LAFTmH5zFp4O/TJr7a5IgIUCCGDa280d5Q==
-X-Google-Smtp-Source: ABdhPJwvpKAme/JRba83mhU7fhxECxrIxIQHPhHr5N5r3j8OvecsPl0thpfr9xdZAupImqkqM1CQ4A==
-X-Received: by 2002:a63:1f50:: with SMTP id q16mr2762916pgm.170.1623898144888; 
- Wed, 16 Jun 2021 19:49:04 -0700 (PDT)
-Received: from [192.168.3.217] (c-73-241-217-19.hsd1.ca.comcast.net.
- [73.241.217.19])
- by smtp.gmail.com with ESMTPSA id gl13sm6517896pjb.5.2021.06.16.19.49.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Jun 2021 19:49:04 -0700 (PDT)
-Subject: Re: [PATCH v1 2/3] scsi: ufs: Optimize host lock on transfer requests
- send/compl paths
-To: Can Guo <cang@codeaurora.org>, asutoshd@codeaurora.org,
- nguyenb@codeaurora.org, hongwus@codeaurora.org, linux-scsi@vger.kernel.org,
- kernel-team@android.com
-Cc: Stanley Chu <stanley.chu@mediatek.com>,
- Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman <avri.altman@wdc.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bean Huo <beanhuo@micron.com>,
- Jaegeuk Kim <jaegeuk@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Satya Tangirala <satyat@google.com>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <1621845419-14194-1-git-send-email-cang@codeaurora.org>
- <1621845419-14194-3-git-send-email-cang@codeaurora.org>
-From: Bart Van Assche <bvanassche@acm.org>
-Message-ID: <a29164e1-ab7d-6dbc-0fb9-029f203de735@acm.org>
-Date: Wed, 16 Jun 2021 19:49:01 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lti7I-008aBO-9o; Thu, 17 Jun 2021 02:50:53 +0000
+X-UUID: 6dd24877447c4044a1b93ecb48de4d3e-20210616
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=GL54Q18YRC1dzNU9f8BXHQIPKEDryvVZQ6oeewdXKKI=; 
+ b=ay7i3zVeMDYGDfZwnqHvZWxHZeaI+4vsTp/jvrbRBKHsWgR/Y1H6XK1kgUBNoD47vSwSOSucU34GFFEZMS4ckPdAyFKPGB1uDxLw0I9nDnoFrfNOZ1++09utwv6l08y0DC7h/F1Oo9wqcK08i/0B0iwRDrwcCq6q4y4D/P/7fMU=;
+X-UUID: 6dd24877447c4044a1b93ecb48de4d3e-20210616
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 3034351; Wed, 16 Jun 2021 19:50:48 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 16 Jun 2021 19:50:41 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs06n1.mediatek.inc
+ (172.21.101.129) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 17 Jun 2021 10:50:39 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 17 Jun 2021 10:50:38 +0800
+Message-ID: <1623898238.28667.15.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/3] dt-bindings: phy: mediatek: tphy: add support
+ hardware version 3
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
+Date: Thu, 17 Jun 2021 10:50:38 +0800
+In-Reply-To: <20210616232817.GA277610@robh.at.kernel.org>
+References: <1622791880-20262-1-git-send-email-chunfeng.yun@mediatek.com>
+ <20210616232817.GA277610@robh.at.kernel.org>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-In-Reply-To: <1621845419-14194-3-git-send-email-cang@codeaurora.org>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210616_194906_537664_197C6C6C 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20210616_195052_423362_D0E18A3C 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,46 +91,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5/24/21 1:36 AM, Can Guo wrote:
-> @@ -2688,6 +2705,43 @@ static int ufshcd_queuecommand(struct Scsi_Host *host, struct scsi_cmnd *cmd)
-> +	case UFSHCD_STATE_EH_SCHEDULED_FATAL:
-> +		/*
-> +		 * pm_runtime_get_sync() is used at error handling preparation
-> +		 * stage. If a scsi cmd, e.g. the SSU cmd, is sent from hba's
-> +		 * PM ops, it can never be finished if we let SCSI layer keep
-> +		 * retrying it, which gets err handler stuck forever. Neither
-> +		 * can we let the scsi cmd pass through, because UFS is in bad
-> +		 * state, the scsi cmd may eventually time out, which will get
-> +		 * err handler blocked for too long. So, just fail the scsi cmd
-> +		 * sent from PM ops, err handler can recover PM error anyways.
-> +		 */
-> +		if (hba->pm_op_in_progress) {
-> +			hba->force_reset = true;
-> +			set_host_byte(cmd, DID_BAD_TARGET);
-> +			cmd->scsi_done(cmd);
-> +			goto out;
-> +		}
-> +		fallthrough;
+On Wed, 2021-06-16 at 17:28 -0600, Rob Herring wrote:
+> On Fri, Jun 04, 2021 at 03:31:18PM +0800, Chunfeng Yun wrote:
+> > The PHYA architecture is updated, and doesn't support slew rate
+> > calibration anymore on 7nm or advanced process, add a new version
+> > number to support it.
+> > Note: the FreqMeter bank is not used but reserved.
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
+> >  1 file changed, 9 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> > index b8a7651a3d9a..939c09296b5f 100644
+> > --- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> > +++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+> > @@ -15,7 +15,7 @@ description: |
+> >    controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
+> >  
+> >    Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
+> > -  T-PHY V2 (mt2712) when works on USB mode:
+> > +  T-PHY V2 (mt2712) / V3 (mt8195) when works on USB mode:
+> >    -----------------------------------
+> >    Version 1:
+> >    port        offset    bank
+> > @@ -34,7 +34,7 @@ description: |
+> >    u2 port2    0x1800    U2PHY_COM
+> >                ...
+> >  
+> > -  Version 2:
+> > +  Version 2/3:
+> >    port        offset    bank
+> >    u2 port0    0x0000    MISC
+> >                0x0100    FMREG
+> > @@ -59,7 +59,8 @@ description: |
+> >  
+> >    SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
+> >    into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
+> > -  added on V2.
+> > +  added on V2; the FMREG bank for slew rate calibration is not used anymore
+> > +  and reserved on V3;
+> >  
+> >  properties:
+> >    $nodename:
+> > @@ -79,8 +80,11 @@ properties:
+> >                - mediatek,mt2712-tphy
+> >                - mediatek,mt7629-tphy
+> >                - mediatek,mt8183-tphy
+> > -              - mediatek,mt8195-tphy
+> >            - const: mediatek,generic-tphy-v2
+> 
+> This doesn't look like a good change.
+> 
+> What happens if a DT has the above. It didn't work or didn't support new 
+> features?
+It does not affect function, but will waste some time to calibrate slew
+rate on mt8195.
 
-Hi Can,
-
-I know that this patch only moves the above code and that the above code
-has not been introduced by this patch. Anyway, is my understanding
-correct that ufshcd_err_handler() can change the host controller state
-from UFSHCD_STATE_EH_SCHEDULED_FATAL into UFSHCD_STATE_RESET and next
-into UFSHCD_STATE_OPERATIONAL? If so, if the above code completes a READ
-with status DID_BAD_TARGET and if recovery by the error handler
-succeeds, will that cause the filesystem above the UFS driver to change
-into read-only mode? If the above code completes a WRITE with status
-DID_BAD_TARGET, will that cause data corruption? Is there any other
-solution to prevent data corruption than merging the
-UFSHCD_STATE_EH_SCHEDULED_FATAL and UFSHCD_STATE_EH_SCHEDULED_NON_FATAL
-back into a single state and changing the ufshcd_rpm_get_sync(hba) call
-in ufshcd_err_handling_prepare() into a pm_runtime_get_noresume() call?
-
-Thanks,
-
-Bart.
+>  Please clarify in the commit the implications of changing 
+> this. Changing a DT to 'mediatek,generic-tphy-v3' will break existing OS 
+> if it was looking for v2.
+On mt8195, it's backward compatible with hw v2, the unused FMREG bank is
+reversed, but noop when W/R registers.
+> 
+> > +      - items:
+> > +          - enum:
+> > +              - mediatek,mt8195-tphy
+> > +          - const: mediatek,generic-tphy-v3
+> >        - const: mediatek,mt2701-u3phy
+> >          deprecated: true
+> >        - const: mediatek,mt2712-u3phy
+> > @@ -91,7 +95,7 @@ properties:
+> >      description:
+> >        Register shared by multiple ports, exclude port's private register.
+> >        It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
+> > -      T-PHY V2, such as mt2712.
+> > +      T-PHY V2/V3, such as mt2712.
+> >      maxItems: 1
+> >  
+> >    "#address-cells":
+> > -- 
+> > 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
