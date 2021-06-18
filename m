@@ -2,70 +2,80 @@ Return-Path: <SRS0=EvOn=LM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C0ACC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 13:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FA3FC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 14:08:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F21B9611CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 13:58:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F21B9611CE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=huawei.com
+	by mail.kernel.org (Postfix) with ESMTPS id EF9056044F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 14:08:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF9056044F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=amle6OYIzLyeUDiI/GBGmqHjyr2ILt5GC2lAZeDqI0E=; b=pgytHf8INwt41K
-	IxtUufS+sQPxIalF3CbZPm+qGYdjsOWxRWeDZJ239KzhEp5zJ3yTqTtAHpP5Ru0ep1jQcQzhZm/bb
-	VgztBOJFu874c5LGMSk5Cpexo4dY+dRYRypi5895eL1dmIbT29MuGfrq7ZexiLE6glz1AZnolI/r9
-	jYSnAyGFdTJB+qbwd03wjRZpRTL38Mh8siiGc6d/7lauwn7saflpWrFFE44dk6YuqkkJc5M5s1BoS
-	86eqBGaMczEtrUrySHXdHNgTLpVKxumAAma27YANLbPU43YT5zJhj17e5AzNF02YYlpox+uc8/FO/
-	fpHdRvxBlaW5IyOnW9+Q==;
+	List-Owner; bh=jp7/kd5AQ99XvQnFzbxISHE5LTTQVKaQ8wYgcRJvt30=; b=a6+qgbhrYjfU0e
+	MMvWJkVGppWEpI4mb7CxwG+yTIJl6czos/UvvMu1nH0N7AOjjm2KA5Pi1641or179aSzRkCm9+AAD
+	wSqbEiQ7V35pZaurb6+HApC4YQwXe8nqs7heRKSccWtbZWVkVrRhKcSFvePyDGlXcCOrL8vjwXRsu
+	uc7JtlBDZMcRNdte1eaTaMMJtApt2AEjMbQ8ubmEThnkPU+zG2g9pG72TFCLEoWBVx2WDVdwUDD1v
+	zvhLRxiSocvzXrf+9AvvqwmSv8gdS8rMv4WYHdfF39mRaezj3IKGy2HSDM+5b8NjlEI+MMk/6ia/q
+	NdJxdHRFY4FbK0ZbQrhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luF0Y-00ENk9-MS; Fri, 18 Jun 2021 13:58:06 +0000
-Received: from szxga08-in.huawei.com ([45.249.212.255])
+	id 1luFAH-00EQNq-OC; Fri, 18 Jun 2021 14:08:09 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luEzi-00ENLR-BK; Fri, 18 Jun 2021 13:57:17 +0000
-Received: from dggemv704-chm.china.huawei.com (unknown [172.30.72.57])
- by szxga08-in.huawei.com (SkyGuard) with ESMTP id 4G60j023FYz1BNMQ;
- Fri, 18 Jun 2021 21:52:04 +0800 (CST)
-Received: from dggema755-chm.china.huawei.com (10.1.198.197) by
- dggemv704-chm.china.huawei.com (10.3.19.47) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.2176.2; Fri, 18 Jun 2021 21:57:08 +0800
-Received: from huawei.com (10.90.53.225) by dggema755-chm.china.huawei.com
- (10.1.198.197) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2176.2; Fri, 18
- Jun 2021 21:57:07 +0800
-From: Zhang Qilong <zhangqilong3@huawei.com>
-To: <perex@perex.cz>, <tiwai@suse.com>, <matthias.bgg@gmail.com>
-CC: <lgirdwood@gmail.com>, <broonie@kernel.org>,
- <kuninori.morimoto.gx@renesas.com>, <alsa-devel@alsa-project.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH -next 1/2] ASoC: mediatek: mt8192:Fix Unbalanced
- pm_runtime_enable in mt8192_afe_pcm_dev_probe
-Date: Fri, 18 Jun 2021 22:11:03 +0800
-Message-ID: <20210618141104.105047-2-zhangqilong3@huawei.com>
-X-Mailer: git-send-email 2.26.0.106.g9fadedd
-In-Reply-To: <20210618141104.105047-1-zhangqilong3@huawei.com>
-References: <20210618141104.105047-1-zhangqilong3@huawei.com>
+ id 1luFA1-00EQJE-3e; Fri, 18 Jun 2021 14:07:54 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4B38161222;
+ Fri, 18 Jun 2021 14:07:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1624025272;
+ bh=q/EDRsPbyVWw5nHi1pYUbYz0y1rXX8Okh97nJe5Pe5s=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=d9j253wkESIMW45qp/ovM+NBE8sm+EXTmrbeWa10xcjBaqjSMjf1LyuvEM45fy6FT
+ 3eVpFHXzk5JF/TgOETVLLoKy36ywpeXC/x1CQTL1aXsmc7pRsIgEIbh2kiQvyWEM0i
+ uHK+JUSzq4glrSEEQxK0qHCrG4ekb79dp8iJ7MesvceUly84s8nIAXJyIl84ZZtmPA
+ GqNZX3f6tJbGFw07JeXWpX6f0m/xCY/Pnu99+a0qPhtevC0g1eDIQvY0bW0f4kpj61
+ 2BdPeByG17CzChFIiBur/VPnN5nYb9KrgQmddiJMwHjehyIKaKo+bS0wip/o6pR8Ls
+ VqMmutnkpqxVg==
+Received: by mail-ed1-f49.google.com with SMTP id b11so8832854edy.4;
+ Fri, 18 Jun 2021 07:07:52 -0700 (PDT)
+X-Gm-Message-State: AOAM533/5VTOs00WAgz4GWZuOHzBEISpmK/exTRL1+zd7R1ibZsdtfTf
+ zeOzNXDNTEJcGvC7hq0TmeTTmgc8qWKZR/syKA==
+X-Google-Smtp-Source: ABdhPJwKlMD/iaZlnx1AtcRmiX+8KHoKp9K/i1zV+cOE9TBxS9hQPHWvWDu2gJFH+ufOe7b8ejNQgcY0Cmei387eDz8=
+X-Received: by 2002:aa7:c0da:: with SMTP id j26mr5031487edp.38.1624025270893; 
+ Fri, 18 Jun 2021 07:07:50 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.90.53.225]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggema755-chm.china.huawei.com (10.1.198.197)
-X-CFilter-Loop: Reflected
+References: <20210615173233.26682-1-tinghan.shen@mediatek.com>
+ <20210615173233.26682-23-tinghan.shen@mediatek.com>
+In-Reply-To: <20210615173233.26682-23-tinghan.shen@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 18 Jun 2021 22:07:40 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9Q63NGmOxjbBz0AEUdMUoVbTpbn8ZXkawauP_bNr2oYw@mail.gmail.com>
+Message-ID: <CAAOTY_9Q63NGmOxjbBz0AEUdMUoVbTpbn8ZXkawauP_bNr2oYw@mail.gmail.com>
+Subject: Re: [PATCH 23/27] arm64: dts: mt8195: add gce node
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ DTML <devicetree@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ Seiya Wang <seiya.wang@mediatek.com>, wenst@google.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Jason-JH Lin <jason-jh.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_065714_925503_092A6D15 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20210618_070753_234782_0B981AF1 
+X-CRM114-Status: GOOD (  14.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,100 +87,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing pm_runtime_disable() when probe error out. It could
-avoid pm_runtime implementation complains when removing and probing
-again the driver.
-
-Fixes:125ab5d588b0b ("ASoC: mediatek: mt8192: add platform driver")
-Signed-off-by: Zhang Qilong <zhangqilong3@huawei.com>
----
- sound/soc/mediatek/mt8192/mt8192-afe-pcm.c | 27 ++++++++++++++--------
- 1 file changed, 17 insertions(+), 10 deletions(-)
-
-diff --git a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-index 7a1724f5ff4c..31c280339c50 100644
---- a/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-@@ -2229,12 +2229,13 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe->regmap = syscon_node_to_regmap(dev->parent->of_node);
- 	if (IS_ERR(afe->regmap)) {
- 		dev_err(dev, "could not get regmap from parent\n");
--		return PTR_ERR(afe->regmap);
-+		ret = PTR_ERR(afe->regmap);
-+		goto err_pm_disable;
- 	}
- 	ret = regmap_attach_dev(dev, afe->regmap, &mt8192_afe_regmap_config);
- 	if (ret) {
- 		dev_warn(dev, "regmap_attach_dev fail, ret %d\n", ret);
--		return ret;
-+		goto err_pm_disable;
- 	}
- 
- 	/* enable clock for regcache get default value from hw */
-@@ -2244,7 +2245,7 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 	ret = regmap_reinit_cache(afe->regmap, &mt8192_afe_regmap_config);
- 	if (ret) {
- 		dev_err(dev, "regmap_reinit_cache fail, ret %d\n", ret);
--		return ret;
-+		goto err_pm_disable;
- 	}
- 
- 	pm_runtime_put_sync(&pdev->dev);
-@@ -2257,8 +2258,10 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe->memif_size = MT8192_MEMIF_NUM;
- 	afe->memif = devm_kcalloc(dev, afe->memif_size, sizeof(*afe->memif),
- 				  GFP_KERNEL);
--	if (!afe->memif)
--		return -ENOMEM;
-+	if (!afe->memif) {
-+		ret = -ENOMEM;
-+		goto err_pm_disable;
-+	}
- 
- 	for (i = 0; i < afe->memif_size; i++) {
- 		afe->memif[i].data = &memif_data[i];
-@@ -2272,22 +2275,26 @@ static int mt8192_afe_pcm_dev_probe(struct platform_device *pdev)
- 	afe->irqs_size = MT8192_IRQ_NUM;
- 	afe->irqs = devm_kcalloc(dev, afe->irqs_size, sizeof(*afe->irqs),
- 				 GFP_KERNEL);
--	if (!afe->irqs)
--		return -ENOMEM;
-+	if (!afe->irqs) {
-+		ret = -ENOMEM;
-+		goto err_pm_disable;
-+	}
- 
- 	for (i = 0; i < afe->irqs_size; i++)
- 		afe->irqs[i].irq_data = &irq_data[i];
- 
- 	/* request irq */
- 	irq_id = platform_get_irq(pdev, 0);
--	if (irq_id < 0)
--		return irq_id;
-+	if (irq_id < 0) {
-+		ret = irq_id;
-+		goto err_pm_disable;
-+	}
- 
- 	ret = devm_request_irq(dev, irq_id, mt8192_afe_irq_handler,
- 			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
- 	if (ret) {
- 		dev_err(dev, "could not request_irq for Afe_ISR_Handle\n");
--		return ret;
-+		goto err_pm_disable;
- 	}
- 
- 	/* init sub_dais */
--- 
-2.31.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFRpbmdoYW46CgpUaW5naGFuIFNoZW4gPHRpbmdoYW4uc2hlbkBtZWRpYXRlay5jb20+IOaW
+vCAyMDIx5bm0NuaciDE25pelIOmAseS4iSDkuIrljYg1OjM15a+r6YGT77yaCj4KPiBGcm9tOiBK
+YXNvbi1KSCBMaW4gPGphc29uLWpoLmxpbkBtZWRpYXRlay5jb20+Cj4KPiBhZGQgZ2NlIG5vZGUg
+b24gZHRzIGZpbGUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYXNvbi1KSCBMaW4gPGphc29uLWpoLmxp
+bkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4
+MTk1LmR0c2kgfCAyMSArKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDIx
+IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlh
+dGVrL210ODE5NS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDgxOTUuZHRz
+aQo+IGluZGV4IGQ3ZDJjMmE4ZjQ2MS4uNTFlZGI4ZWUzNWE4IDEwMDY0NAo+IC0tLSBhL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTk1LmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL21lZGlhdGVrL210ODE5NS5kdHNpCj4gQEAgLTcsNiArNyw3IEBACj4gIC9kdHMtdjEv
+Owo+Cj4gICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9jbG9jay9tdDgxOTUtY2xrLmg+Cj4gKyNpbmNs
+dWRlIDxkdC1iaW5kaW5ncy9nY2UvbXQ4MTk1LWdjZS5oPgo+ICAjaW5jbHVkZSA8ZHQtYmluZGlu
+Z3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvYXJtLWdpYy5oPgo+ICAjaW5jbHVkZSA8ZHQtYmluZGlu
+Z3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvaXJxLmg+Cj4gICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9t
+ZW1vcnkvbXQ4MTk1LW1lbW9yeS1wb3J0Lmg+Cj4gQEAgLTEwNzUsNiArMTA3NiwyNiBAQAo+ICAg
+ICAgICAgICAgICAgICAgICAgICAgICNjbG9jay1jZWxscyA9IDwxPjsKPiAgICAgICAgICAgICAg
+ICAgfTsKPgo+ICsgICAgICAgICAgICAgICBnY2UwOiBtZHBfbWFpbGJveEAxMDMyMDAwMCB7Cj4g
+KyAgICAgICAgICAgICAgICAgICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTUtZ2Nl
+IjsKCldoZXJlIGlzIHRoZSBkZWZpbml0aW9uIG9mIHRoaXMgY29tcGF0aWJsZT8KCj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgcmVnID0gPDAgMHgxMDMyMDAwMCAwIDB4NDAwMD47Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIyNiBJUlFfVFlQRV9MRVZF
+TF9ISUdIIDA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICNtYm94LWNlbGxzID0gPDM+Owo+
+ICsgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmaW5mcmFjZmdfYW8gQ0xLX0lORlJB
+X0FPX0dDRT4sCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZpbmZyYWNmZ19h
+byBDTEtfSU5GUkFfQU9fR0NFMj47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgY2xvY2stbmFt
+ZXMgPSAiZ2NlMCIsICJnY2UxIjsKCkFjY29yZGluZyB0byB0aGUgYmluZGluZyBkb2N1bWVudCBb
+MV0sIGNsb2NrLW5hbWVzIHNob3VsZCBiZSAiZ2NlIi4KClsxXSBodHRwczovL3d3dy5rZXJuZWwu
+b3JnL2RvYy9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWFpbGJveC9tdGstZ2Nl
+LnR4dAoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gKyAgICAgICAgICAgICAgIH07Cj4gKwo+ICsg
+ICAgICAgICAgICAgICBnY2UxOiBkaXNwX21haWxib3hAMTAzMzAwMDAgewo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1LWdjZSI7Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgcmVnID0gPDAgMHgxMDMzMDAwMCAwIDB4NDAwMD47Cj4gKyAgICAg
+ICAgICAgICAgICAgICAgICAgaW50ZXJydXB0cyA9IDxHSUNfU1BJIDIyOCBJUlFfVFlQRV9MRVZF
+TF9ISUdIIDA+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICNtYm94LWNlbGxzID0gPDM+Owo+
+ICsgICAgICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmaW5mcmFjZmdfYW8gQ0xLX0lORlJB
+X0FPX0dDRT4sCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZpbmZyYWNmZ19h
+byBDTEtfSU5GUkFfQU9fR0NFMj47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgY2xvY2stbmFt
+ZXMgPSAiZ2NlMCIsICJnY2UxIjsKPiArICAgICAgICAgICAgICAgfTsKPiArCj4gICAgICAgICAg
+ICAgICAgIHVhcnQwOiBzZXJpYWxAMTEwMDExMDAgewo+ICAgICAgICAgICAgICAgICAgICAgICAg
+IGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1LXVhcnQiLCAibWVkaWF0ZWssbXQ2NTc3LXVh
+cnQiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIHJlZyA9IDwwIDB4MTEwMDExMDAgMCAweDEw
+MD47Cj4gLS0KPiAyLjE4LjAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwo+IExpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdAo+IExpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
