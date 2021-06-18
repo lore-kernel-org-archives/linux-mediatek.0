@@ -2,81 +2,71 @@ Return-Path: <SRS0=EvOn=LM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 120E8C48BE8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 20:27:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB63BC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 20:36:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6A206124C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 20:27:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6A206124C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5DF9E6124C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Jun 2021 20:36:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DF9E6124C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=wp.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n0iU7iqbcw9MHZ7E6XKId823jU2hReSWKMU1IC3np7Q=; b=ZV04BWdBZJRz8U
-	ieT1Wuv7aC4FsYPWDt3YabBVmUY9xxGcbzCY20AlziRyW6JVhkw19FlSAM0AgR9NVlgwqZIIi5oYZ
-	sIVO317T/5XHibO9SDe6RmPl1NXl+xwiTsllNWzsroSwJrvcQ68cU/B0YJaYjKQgrSgvCTxU8rUoo
-	u+11XNG4Y7pU5Rf8eVbW7D4J0gX+bJHDheAOWYRF2ZIOQJDU4NC/K2FMxuOyIwKcwdWs5Y7S5djej
-	44GIWYISzS80KplT/LttGG5ta82oA1NWfj3MLP07teLyc1iKXjmQbd2FD/xdrX03xH6BgPzfeObp1
-	X1kA/+A52nSMX+4YCe1A==;
+	List-Owner; bh=S/Gl/bMlmlyOd6JMPe+yGc8oMIsUzsTOuWPj3tDl3js=; b=xH/H9fJZrayBJQ
+	u+t+iOWyXU73+kekVuMDSIDUwwYmQ6orYK7524bGSTaBErCrngVBGUpTqvtQ2RQJL6X/m0mdH4yeg
+	c4dTcZaP7eoFnQmTGCBUTpswIkjMi0MQOhoI6FDnyZextX5XUoFHS0MgGth3bN4tMQA/ckbtZ7eaZ
+	H4QN5p8QT5CozWbopzcoU76mFNYuoaznjZh+fTm4zEGpQOsh9hbLhkP8uEc9Jk9dREEtwIXlntrmu
+	bR5H4ApUS9ILVP0N3rRmm2zjrz27MzVHO1woeu1LKsZu4+Vpf5VhMYHXLWneno0xRi6NpMWAkdceH
+	UYvVDN/DoaokhjlcV+eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luL5Q-00FRai-Ut; Fri, 18 Jun 2021 20:27:32 +0000
-Received: from mail-oi1-f182.google.com ([209.85.167.182])
+	id 1luLE2-00FSQL-Ol; Fri, 18 Jun 2021 20:36:26 +0000
+Received: from mx3.wp.pl ([212.77.101.10])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luL5E-00FRZq-My; Fri, 18 Jun 2021 20:27:21 +0000
-Received: by mail-oi1-f182.google.com with SMTP id s17so3102939oij.11;
- Fri, 18 Jun 2021 13:27:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=EGzlVaaWgDgImE2RiFVAxvE6ghgaevoPSA5LifmrdQ8=;
- b=O7/RPVoplRd4O9LzEu3/auzUtwEVE6F7KHgHXivHzp3jTjs1g/1IKUruuH1uuaAKOE
- 640HSAmfNlT1zWmKo/7l+W7W3tYnpoM82iPKiBHEvguF8XZGbmugzCY4JmI34xmoS7EO
- Sg10LJHhYf28dGD7yTc0+KHf7Vmuui5IBn4zJzuBVwDtyd21oRd/rYtRN8a5b0TPOc3r
- NQ0NFS+jYw3Ha48tpiibowSBqMHK8HVH3gaf4gODnFAQEwGzFDCsUvde9GsxlsgyghPb
- PT+OoFWbDBlRz3ZeWLCzr+sBBoOWBR1UwA7WUEMB3Duu/VdIbFJMbe3iLW7yzUi0BA8/
- TcHw==
-X-Gm-Message-State: AOAM530NnzjwNeZGwGquDcCUG42SiZIrKRVhnHjsCmErXxK+fjIZFKlo
- rVKQdK60EgXQETi4DBb1/g==
-X-Google-Smtp-Source: ABdhPJyfAyyaLY4H7Vlj/t/qvvFUmjmcDszM8JUTlfrWdI26tW4mLJUlSuRgTbUEiX1igVmo87r5Kw==
-X-Received: by 2002:a54:488d:: with SMTP id r13mr800504oic.152.1624048037301; 
- Fri, 18 Jun 2021 13:27:17 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id k7sm2091185otf.72.2021.06.18.13.27.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 18 Jun 2021 13:27:16 -0700 (PDT)
-Received: (nullmailer pid 2821948 invoked by uid 1000);
- Fri, 18 Jun 2021 20:27:14 -0000
-Date: Fri, 18 Jun 2021 14:27:14 -0600
-From: Rob Herring <robh@kernel.org>
-To: Kewei Xu <kewei.xu@mediatek.com>
-Cc: qii.wang@mediatek.com, qiangming.xia@mediatek.com, matthias.bgg@gmail.com,
- wsa@the-dreams.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-i2c@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, leilk.liu@mediatek.com,
- linux-mediatek@lists.infradead.org, robh+dt@kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: i2c: update bindings for MT8195 SoC
-Message-ID: <20210618202714.GA2821918@robh.at.kernel.org>
-References: <1623122200-1896-1-git-send-email-kewei.xu@mediatek.com>
- <1623122200-1896-2-git-send-email-kewei.xu@mediatek.com>
+ id 1luLDq-00FSNt-06
+ for linux-mediatek@lists.infradead.org; Fri, 18 Jun 2021 20:36:15 +0000
+Received: (wp-smtpd smtp.wp.pl 1651 invoked from network);
+ 18 Jun 2021 22:36:06 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wp.pl; s=1024a;
+ t=1624048566; bh=+T2bcNC2sHv5Q9iE59Xr1PSmlQKpTEY5+sa+qobzycw=;
+ h=From:To:Cc:Subject;
+ b=iTOJJf9fUeROTjRNWRZ3n2W1HNDuKCswwPfIsbedBObs/qoFDNXFdejAdoli5mfo2
+ f9yQ/O201owv5rCglHhXy2sEcXFr3QGezP+/PqKq9vPzGtsuxDf6/+QX3+p1uZdS19
+ TPqBDN6kI21sqYGxaeU9UtthBJXkSVStcwzmXwIU=
+Received: from unknown (HELO kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com)
+ (kubakici@wp.pl@[163.114.132.3]) (envelope-sender <kubakici@wp.pl>)
+ by smtp.wp.pl (WP-SMTPD) with ECDHE-RSA-AES256-GCM-SHA384 encrypted SMTP
+ for <whistler@member.fsf.org>; 18 Jun 2021 22:36:06 +0200
+Date: Fri, 18 Jun 2021 13:35:54 -0700
+From: Jakub Kicinski <kubakici@wp.pl>
+To: Wei Mingzhi <whistler@member.fsf.org>
+Cc: kvalo@codeaurora.org, davem@davemloft.net, matthias.bgg@gmail.com,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] mt7601u: add USB device ID for some versions of XiaoDu
+ WiFi Dongle.
+Message-ID: <20210618133554.7d5c8e3d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <20210618160840.305024-1-whistler@member.fsf.org>
+References: <20210618160840.305024-1-whistler@member.fsf.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1623122200-1896-2-git-send-email-kewei.xu@mediatek.com>
+X-WP-MailID: 056658d67fe8a0af829ae53f4852c704
+X-WP-AV: skaner antywirusowy Poczty Wirtualnej Polski
+X-WP-SPAM: NO 0000001 [8UKz]                               
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_132720_801108_2BFC5E78 
-X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-CacheID: sfid-20210618_133614_233375_31D40F26 
+X-CRM114-Status: UNSURE (   4.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,18 +84,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 08 Jun 2021 11:16:38 +0800, Kewei Xu wrote:
-> From: "Kewei.Xu" <kewei.xu@mediatek.com>
+On Sat, 19 Jun 2021 00:08:40 +0800 Wei Mingzhi wrote:
+> USB device ID of some versions of XiaoDu WiFi Dongle is 2955:1003
+> instead of 2955:1001. Both are the same mt7601u hardware.
 > 
-> Add a DT binding documentation for the MT8195 soc.
-> 
-> Signed-off-by: Kewei.Xu <kewei.xu@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
+> Signed-off-by: Wei Mingzhi <whistler@member.fsf.org>
 
-Acked-by: Rob Herring <robh@kernel.org>
+Acked-by: Jakub Kicinski <kubakici@wp.pl>
 
 _______________________________________________
 Linux-mediatek mailing list
