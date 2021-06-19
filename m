@@ -7,71 +7,50 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8D71C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EAC7C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:47:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FD79608FC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:23:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FD79608FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 484FC611B0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:47:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 484FC611B0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=i/EYeLkkRnCUdCoOyVVRInCeRsbu+6kb12R65Se1zKU=; b=Te8h0inWj2OIWW
-	VX+zrxoDW1o3sbebR37Q4SH4nHd0n5Y/gl5iKjs7JGlc7VT3XIGc564yeWDv+uJGuty3hnAZPZE/C
-	8rUUuJmJP6nMmPB9hoiLy5l5HU0Y/2ev1Q34WdTVYMJC/+Fgk61aM3cC4xd7960YKPCMQv+FcNmwG
-	Oia5g/krp07XKq6fjwEHmLVJYuS2J3/j5/Uri7ZjlMnU0qpGoYlXBD1nhozZ4swiLeFvd6RK9/C2N
-	HAXOzGrQqrX1Xjo0XKSkCZs8J8d9S54jgYQIIdMuHCQGhn28QvckgYjjiceH1g6PccHyHp65Llre/
-	zw/f7rb4SXk0DAtdnz9w==;
+	List-Owner; bh=ZaX7MlwUuxDDg3ZX9pu/zXqRkhxHZJCAXiYzq24JeKQ=; b=4mTjiJzH2Soaav
+	PNCsEAx5ch5mfYx7eAuNIApQdITmAS7/47c37JpApFcowClndO6/Pof0XFX4E19F0au2yMdJpHQ6P
+	//9xPE9jzBVhTC7n8XX12C3j30fMDA+QFJ+yEyYk3Igk4sdrvfml6YqkAXReCQiXRBzY9tNQ+bwet
+	wi69P8/Q318e4LxZgHBkXMMTJ08IO0jVE8JGfznbjsjQ6JhLSjpd4er7fIH1OQjJeRtGR4MhzP6E7
+	i6SBYU4dZ16yTyi42ORDBRQBIPQfUCQMEVGPrFKV1G/UMsnw4c6dYqfCZV3IxotElgfM+Y2gs8PS5
+	fXZr+fg/PTw+mumvIFlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luXCg-00Giam-0H; Sat, 19 Jun 2021 09:23:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1luXZH-00GmF5-7t; Sat, 19 Jun 2021 09:47:11 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luXCR-00GiVt-8p; Sat, 19 Jun 2021 09:23:37 +0000
-X-UUID: 8b6a35c5a4cc42a0b5e8af29881acd3a-20210619
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=R3YDvLM6+YILvO72VlNv87sZbPJr+dZCGfX9VP6ww9o=; 
- b=nJ+htD9hlThVLnAh0DZy5jKHsn1xTtI/p09f5PFNwduZcgvSpyCif9Mj8v9qvAoPMdhwPh9pn2hGpacuNF/kXtXOTBUaxIAleX/wIh/MoboqbH1bbnRBn3iy0N4hu6Xqv8lP+xdhfuHEQhuRF4iZ/hXjmq9BXLbvjFkeVApGcYI=;
-X-UUID: 8b6a35c5a4cc42a0b5e8af29881acd3a-20210619
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kewei.xu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2042753698; Sat, 19 Jun 2021 02:23:24 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Jun 2021 02:23:22 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Jun 2021 17:23:20 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 19 Jun 2021 17:23:20 +0800
-From: <kewei.xu@mediatek.com>
-To: <wsa@the-dreams.de>
-CC: <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>, Kewei Xu
- <kewei.xu@mediatek.com>
-Subject: [PATCH] i2c: mediatek: Isolate speed setting via dts for special
- devices
-Date: Sat, 19 Jun 2021 17:23:17 +0800
-Message-ID: <1624094597-23993-1-git-send-email-kewei.xu@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-MIME-Version: 1.0
-X-MTK: N
+ id 1luXZE-00GmDY-8J
+ for linux-mediatek@lists.infradead.org; Sat, 19 Jun 2021 09:47:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id D2E9E1F448EC
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, bin.liu@mediatek.com, rick.chang@mediatek.com
+Cc: dafna.hirschfeld@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com,
+ dafna3@gmail.com, mchehab@kernel.org, tfiga@chromium.org,
+ matthias.bgg@gmail.com, enric.balletbo@collabora.com
+Subject: [PATCH] media: mtk-jpeg: fix setting plane paylod
+Date: Sat, 19 Jun 2021 12:46:42 +0300
+Message-Id: <20210619094642.17779-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210619_022335_373196_34775C0A 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20210619_024708_452558_3863B6F3 
+X-CRM114-Status: GOOD (  13.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,187 +62,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kewei Xu <kewei.xu@mediatek.com>
+In mtk_jpeg_buf_prepare, in case the format is V4L2_PIX_FMT_JPEG,
+then the payload of the vb2_buffer planes can be overwritten
+only if 'ctx->enable_exif' is true, in that case, the driver is
+a jpeg encoder and the payload is determined by the driver.
 
-In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust
-support"), the I2C timing calculation has been revised to support
-ac-timing, revised to support ac-timing adjustment, however that will
-break on some I2C components. As a result we want to introduce a new
-setting "default-adjust-timing" so those components can choose to use the
-old (default) timing algorithm.
+If 'ctx->enable_exif' is not set and the format is V4L2_PIX_FMT_JPEG
+then the payload might came from userspace (in case of a decoder)
+and should not be overwritten by the driver.
 
-Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+In addition, the cb 'queue_setup' should add the MTK_JPEG_MAX_EXIF_SIZE
+to the plane sizes in case the format is V4L2_PIX_FMT_JPEG
+and ctx->enable_exif is set.
+
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 86 ++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 81 insertions(+), 5 deletions(-)
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 20 ++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index ded94f9..486076f 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -41,6 +41,8 @@
- #define I2C_HANDSHAKE_RST		0x0020
- #define I2C_FIFO_ADDR_CLR		0x0001
- #define I2C_DELAY_LEN			0x0002
-+#define I2C_ST_START_CON		0x8001
-+#define I2C_FS_START_CON		0x1800
- #define I2C_TIME_CLR_VALUE		0x0000
- #define I2C_TIME_DEFAULT_VALUE		0x0003
- #define I2C_WRRD_TRANAC_VALUE		0x0002
-@@ -63,6 +65,7 @@
- #define I2C_DMA_HARD_RST		0x0002
- #define I2C_DMA_HANDSHAKE_RST		0x0004
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index 88a23bce569d..397a27888a84 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -651,6 +651,7 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
+ 	struct mtk_jpeg_q_data *q_data = NULL;
+ 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
++	unsigned int exif_extra;
+ 	int i;
  
-+#define I2C_DEFAULT_CLK_DIV		5
- #define MAX_SAMPLE_CNT_DIV		8
- #define MAX_STEP_CNT_DIV		64
- #define MAX_CLOCK_DIV			256
-@@ -247,6 +250,7 @@ struct mtk_i2c {
- 	struct clk *clk_arb;		/* Arbitrator clock for i2c */
- 	bool have_pmic;			/* can use i2c pins from PMIC */
- 	bool use_push_pull;		/* IO config push-pull mode */
-+	bool default_timing_adjust;	/* no timing adjust mode */
- 
- 	u16 irq_stat;			/* interrupt status */
- 	unsigned int clk_src_div;
-@@ -484,6 +488,7 @@ static void mtk_i2c_clock_disable(struct mtk_i2c *i2c)
- static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- {
- 	u16 control_reg;
-+	u16 ext_conf_val;
- 
- 	if (i2c->dev_comp->apdma_sync) {
- 		writel(I2C_DMA_WARM_RST, i2c->pdmabase + OFFSET_RST);
-@@ -518,8 +523,17 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- 	if (i2c->dev_comp->ltiming_adjust)
- 		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
- 
--	if (i2c->dev_comp->timing_adjust) {
--		mtk_i2c_writew(i2c, i2c->ac_timing.ext, OFFSET_EXT_CONF);
-+	if (i2c->speed_hz <= I2C_MAX_STANDARD_MODE_FREQ)
-+		ext_conf_val = I2C_ST_START_CON;
-+	else
-+		ext_conf_val = I2C_FS_START_CON;
-+
-+	if (i2c->default_timing_adjust) {
-+		if (i2c->dev_comp->timing_adjust)
-+			mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1,
-+				       OFFSET_CLOCK_DIV);
-+	} else if (i2c->dev_comp->timing_adjust) {
-+		ext_conf_val = i2c->ac_timing.ext;
- 		mtk_i2c_writew(i2c, i2c->ac_timing.inter_clk_div,
- 			       OFFSET_CLOCK_DIV);
- 		mtk_i2c_writew(i2c, I2C_SCL_MIS_COMP_VALUE,
-@@ -544,6 +558,7 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
- 				       OFFSET_HS_STA_STO_AC_TIMING);
- 		}
- 	}
-+	mtk_i2c_writew(i2c, ext_conf_val, OFFSET_EXT_CONF);
- 
- 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
- 	if (i2c->have_pmic)
-@@ -600,7 +615,7 @@ static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
- 	unsigned int sample_ns = div_u64(1000000000ULL * (sample_cnt + 1),
- 					 clk_src);
- 
--	if (!i2c->dev_comp->timing_adjust)
-+	if (i2c->default_timing_adjust || !i2c->dev_comp->timing_adjust)
- 		return 0;
- 
- 	if (i2c->dev_comp->ltiming_adjust)
-@@ -760,7 +775,63 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	return 0;
- }
- 
--static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
-+static int mtk_i2c_set_speed_default_timing(struct mtk_i2c *i2c, unsigned int parent_clk)
-+{
-+	unsigned int clk_src;
-+	unsigned int step_cnt;
-+	unsigned int sample_cnt;
-+	unsigned int l_step_cnt;
-+	unsigned int l_sample_cnt;
-+	unsigned int target_speed;
-+	int ret;
-+
-+	if (i2c->dev_comp->timing_adjust)
-+		i2c->clk_src_div *= I2C_DEFAULT_CLK_DIV;
-+
-+	clk_src = parent_clk / i2c->clk_src_div;
-+	target_speed = i2c->speed_hz;
-+
-+	if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ) {
-+		/* Set master code speed register */
-+		ret = mtk_i2c_calculate_speed(i2c, clk_src, I2C_MAX_FAST_MODE_FREQ,
-+					      &l_step_cnt, &l_sample_cnt);
-+		if (ret < 0)
-+			return ret;
-+
-+		i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
-+
-+		/* Set the high speed mode register */
-+		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
-+					      &step_cnt, &sample_cnt);
-+		if (ret < 0)
-+			return ret;
-+
-+		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
-+			(sample_cnt << 12) | (step_cnt << 8);
-+
-+		if (i2c->dev_comp->ltiming_adjust)
-+			i2c->ltiming_reg = (l_sample_cnt << 6) | l_step_cnt |
-+					   (sample_cnt << 12) | (step_cnt << 9);
-+	} else {
-+		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
-+					      &step_cnt, &sample_cnt);
-+		if (ret < 0)
-+			return ret;
-+
-+		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
-+
-+		/* Disable the high speed transaction */
-+		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
-+
-+		if (i2c->dev_comp->ltiming_adjust)
-+			i2c->ltiming_reg = (sample_cnt << 6) | step_cnt;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_i2c_set_speed_adjust_timing(struct mtk_i2c *i2c,
-+					   unsigned int parent_clk)
- {
- 	unsigned int clk_src;
- 	unsigned int step_cnt;
-@@ -1284,6 +1355,8 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
- 	i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
- 	i2c->use_push_pull =
- 		of_property_read_bool(np, "mediatek,use-push-pull");
-+	i2c->default_timing_adjust =
-+		of_property_read_bool(np, "mediatek,default-timing-adjust");
- 
- 	i2c_parse_fw_timings(i2c->dev, &i2c->timing_info, true);
- 
-@@ -1363,7 +1436,10 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 
- 	strlcpy(i2c->adap.name, I2C_DRV_NAME, sizeof(i2c->adap.name));
- 
--	ret = mtk_i2c_set_speed(i2c, clk_get_rate(clk));
-+	if (i2c->default_timing_adjust)
-+		ret = mtk_i2c_set_speed_default_timing(i2c, clk_get_rate(clk));
-+	else
-+		ret = mtk_i2c_set_speed_adjust_timing(i2c, clk_get_rate(clk));
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to set the speed.\n");
+ 	v4l2_dbg(1, debug, &jpeg->v4l2_dev, "(%d) buf_req count=%u\n",
+@@ -660,18 +661,20 @@ static int mtk_jpeg_queue_setup(struct vb2_queue *q,
+ 	if (!q_data)
  		return -EINVAL;
+ 
++	exif_extra = ctx->enable_exif && V4L2_TYPE_IS_CAPTURE(q->type) ?
++		     MTK_JPEG_MAX_EXIF_SIZE : 0;
++
+ 	if (*num_planes) {
+ 		for (i = 0; i < *num_planes; i++)
+-			if (sizes[i] < q_data->pix_mp.plane_fmt[i].sizeimage)
++			if (sizes[i] < q_data->pix_mp.plane_fmt[i].sizeimage + exif_extra)
+ 				return -EINVAL;
+ 		return 0;
+ 	}
+ 
+ 	*num_planes = q_data->fmt->colplanes;
+ 	for (i = 0; i < q_data->fmt->colplanes; i++) {
+-		sizes[i] =  q_data->pix_mp.plane_fmt[i].sizeimage;
+-		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "sizeimage[%d]=%u\n",
+-			 i, sizes[i]);
++		sizes[i] =  q_data->pix_mp.plane_fmt[i].sizeimage + exif_extra;
++		v4l2_dbg(1, debug, &jpeg->v4l2_dev, "sizes[%d]=%u\n", i, sizes[i]);
+ 	}
+ 
+ 	return 0;
+@@ -690,12 +693,11 @@ static int mtk_jpeg_buf_prepare(struct vb2_buffer *vb)
+ 
+ 	for (i = 0; i < q_data->fmt->colplanes; i++) {
+ 		plane_fmt = q_data->pix_mp.plane_fmt[i];
+-		if (ctx->enable_exif &&
+-		    q_data->fmt->fourcc == V4L2_PIX_FMT_JPEG)
+-			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage +
++		if (q_data->fmt->fourcc != V4L2_PIX_FMT_JPEG)
++			vb2_set_plane_payload(vb, i, plane_fmt.sizeimage);
++		else if (ctx->enable_exif)
++			vb2_set_plane_payload(vb, i,  plane_fmt.sizeimage +
+ 					      MTK_JPEG_MAX_EXIF_SIZE);
+-		else
+-			vb2_set_plane_payload(vb, i,  plane_fmt.sizeimage);
+ 	}
+ 
+ 	return 0;
 -- 
-1.9.1
+2.17.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
