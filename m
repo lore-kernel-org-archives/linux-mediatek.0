@@ -2,87 +2,85 @@ Return-Path: <SRS0=YaGT=LN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B19EC2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 12:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44B78C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 12:35:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61C136120A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 12:20:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61C136120A
+	by mail.kernel.org (Postfix) with ESMTPS id 0222C61279
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 12:35:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0222C61279
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UnEU/cgKeRhVhnDAencvwwgIBmpXRNPi9P8+eF9yItE=; b=guaGFPJvKmplOI
-	6E1IupBsXDDbOShRYI+OlqD7vsGBMzExE63ffHP6Fc6oE51fJstcNAntqpg3SBAhPYPPlUCRlC72v
-	NRyfKkBXZhhjpPhQbJG2dvKgHsoIHNqrH4wniGhtisivFUDrKxIabSTZZ+Yy3yXC/QvdtS0hQjnAv
-	f+i7DXSXz7S1oz6+ifWbsbZXjKJag0Jl0ZtwYaUMpaeh+QQRbzy5Q4mjW14tqkG/OT5CIFOkS1ihr
-	fGbOvr/IACERP0WUb7En61u6GQGTT96JiFhS8mXTH/QWKOGkUukPv8o+wQ9F1QoWB2ILt7LRMt520
-	j7rr/q/DUmEHncHPL+PQ==;
+	List-Owner; bh=7IQCQyclifrO9l8fN44//H2In5bWxlMiFoKj60PUezg=; b=jdq3RpQ1Q6ygdC
+	odNVLnyaPZQfp4FtTt1aqpeKnsDRT1hCpRaKbq3n2qMDhtyRZPeNDbCnnmDx7O+yvyjWBCb1mtJwY
+	RMqnKyXlRJzJ5a3dxprF9CJ86tA9rvT8gSsgo9ie79MT9MdAIaGOJW4br2Q+KcfOqcMMrVYMLQyHD
+	iVaR7tQIDgnnRy0faisgw58B2lNSwts6T+3zs6CzNFzsSfF/LbO0QLYddUzLGhW2r0ex1nxnGq1ME
+	vbAHkmfFJr1cugnIPWVsUjfHwWtnzMVG0+yiXGECmbiVc50nkoY565hf2LHyq7r3OKZ/17DdcHMmv
+	BgdQZXnAGgFLw8mgcufA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luZx5-00Gwq7-BF; Sat, 19 Jun 2021 12:19:55 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1luaCL-00GyRd-LH; Sat, 19 Jun 2021 12:35:41 +0000
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luZwr-00Gwn8-KZ; Sat, 19 Jun 2021 12:19:43 +0000
-Received: by mail-ej1-x629.google.com with SMTP id he7so20324534ejc.13;
- Sat, 19 Jun 2021 05:19:40 -0700 (PDT)
+ id 1luaCI-00GyQz-7X
+ for linux-mediatek@lists.infradead.org; Sat, 19 Jun 2021 12:35:39 +0000
+Received: by mail-oo1-xc2b.google.com with SMTP id
+ v17-20020a4aa5110000b0290249d63900faso3225021ook.0
+ for <linux-mediatek@lists.infradead.org>; Sat, 19 Jun 2021 05:35:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
+ h=mime-version:from:date:message-id:subject:to:cc
  :content-transfer-encoding;
- bh=iqaKCJ/vNidDzmWvE8Ei4HGIsfolJuD4g50roz5brLo=;
- b=p6DFUjdh9W+9ZOuXEgrAJzqvw4HlQfCSoE5KjuaOhEiqgIKfbquadYu91Z6lYGSwsU
- Pg1uV2sBaAzDDIIYwmXosaQwqRYvFEhmhH6av1PPy4NMijcSJVT+a9s+bt+yUweK79mH
- cuYjufd64+ARD7R08LaxvW0SIUNBUj2EqslfXO5XLDWyzYYCCulefa1lxGL3VGsURur9
- w+tmDFSmTXjs666V6TARTvMCSxAlWKSlpYq9l/qdJNq7OQfXqCX5mcjSZ1g/f2GtFAbP
- uK+9jnidGTeFmYoJYKVV6hwKPwm1Ju8j2LXsWaDLY5TfFQTMMvqAnvcmscC0S39Bim/B
- OH6g==
+ bh=w6n5BgPvWR6hUh2jj6CLFocwaPVYrFHm2/R8qr59NkI=;
+ b=TjLkPMOhMUm82jo77vo2DcSnnewJI3mS2F69qk6ofTwk/a/yafxdeXuyMJGvNWMYxx
+ dlyTYW2WkP4XstdhzueuAWqipi5s9WB1sgrFO9Qayi2v8gLhle4r2RevtCSACv5jnLnR
+ j3vQgma/WGhxTMYhZ2vkgKmSBc2G1Rgj9YkgVQ4ZLs925OJiFLDGPebOts7V/gE/1MWr
+ LNPBmhn7G78O9oEJpvHSmMRaNu3ExmpiUpSOa8GC8B91BdACDRAQS8zSyXotrZuqmS42
+ 24gY+577ADuk/mGubxIJR5lhmQ3RUzD6QD9HKPXxW8M1nCpawQ3hW6R9DYgj3v4UGyBg
+ s8RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc
  :content-transfer-encoding;
- bh=iqaKCJ/vNidDzmWvE8Ei4HGIsfolJuD4g50roz5brLo=;
- b=MNCfFCrI4ndQQyrWDl/JvnOkuFiCFjL1nWyoz3BuNgG7Ngs81ehgBHt5Fvm50s4VWv
- nTjfE4ACEnfbqyO1qX0Cu+63K+5O5mcme+vP+1A3ak2PmlGL4A5a9O6VsHr5yJUZnC2l
- DdP49pnrcWKrBrDVF/fIZLFCgLvI+TPD5Ss5MVjEXAI7V9HU4xlAX6oTEYgMnM1uNc/H
- yRi6clchUVMsZbUTaivNXeSG+c3KfdUT3dBryn39HP0UOhP7iaL25YLrHARlY21/Sx2D
- GfKzNCknctp/kdP+/sYiJgd5VYjWGQeAKclnd/XLAyJj+br0Vb17J04Iu7MdvFPev7Ri
- EPyQ==
-X-Gm-Message-State: AOAM53149CEr+nTfpCNkDZ9Wm7TKs+PcaCDJ4o+RXlzLZ9L0KbqWxCfm
- OkMmOuHV33QHKzU3ZwnDLw0=
-X-Google-Smtp-Source: ABdhPJwsOi2XYm8L1rzaXqA1OPOhf+cK6DVMTj8QYRFL3OnvtqeS5oJ1CV+q+F0i+1jUniYnzLzcyA==
-X-Received: by 2002:a17:907:10d8:: with SMTP id
- rv24mr15243159ejb.542.1624105179476; 
- Sat, 19 Jun 2021 05:19:39 -0700 (PDT)
-Received: from BLUE.mydomain.example (83-87-52-217.cable.dynamic.v4.ziggo.nl.
- [83.87.52.217])
- by smtp.googlemail.com with ESMTPSA id w17sm2299405ejk.112.2021.06.19.05.19.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 19 Jun 2021 05:19:39 -0700 (PDT)
-From: ericwouds@gmail.com
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Eric Woudstra <ericwouds@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] Fix mt7622.dtsi thermal cpu
-Date: Sat, 19 Jun 2021 14:19:26 +0200
-Message-Id: <20210619121927.32699-1-ericwouds@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ bh=w6n5BgPvWR6hUh2jj6CLFocwaPVYrFHm2/R8qr59NkI=;
+ b=H8oZej3Uu0YGW4iN2Ssg64niKKae8fJqDUgkmLF1XaKloHMQvxuYJKnFFS/bAz2VHq
+ zWO+O/BjHJnoe/k3ty45A0FV1DOmUWpzyJ4NCw/bF+iPe9Rr5+WnbsUXW+QlTH2oJKh5
+ vjyH9yJKvbeecITfR6Lw8kvqITMCBjnrSbgpgOHpeIL/P3WhgvTp88sFnB4OfBsNM5U3
+ BZoRLrkwK8mErCXQbcBynq61VbAzglSGcEaO/deSbaxEsgPqiykAOqTcQlOxC0lGYLwt
+ /xYUUHO9+ePrEt+1sVn/Zl1IXF140wpOIS2oY4emkLLjX3YriFkd/yS1Phg3qom28q7Y
+ y5GA==
+X-Gm-Message-State: AOAM530RKKkGMCEAN1ZpIV5ZJMvXwleG4Xrsce/h1WU8w019KqzsRBYJ
+ kU5iSARwKQQXFt0llVr0OxZVNq/eG6Oz/1ip0QQ=
+X-Google-Smtp-Source: ABdhPJw/QDc23XWBsm+hrPKPiePNqmIfMsSN03YTvKj0Q1t1z4UHm/zo1N8cBaQPBe6KFBJWCH5s1TwXIcSChhfFqik=
+X-Received: by 2002:a05:6820:3cf:: with SMTP id
+ s15mr9859889ooj.2.1624106136745; 
+ Sat, 19 Jun 2021 05:35:36 -0700 (PDT)
 MIME-Version: 1.0
+Received: by 2002:a4a:3513:0:0:0:0:0 with HTTP; Sat, 19 Jun 2021 05:35:36
+ -0700 (PDT)
+From: Eric Woudstra <ericwouds@gmail.com>
+Date: Sat, 19 Jun 2021 14:35:36 +0200
+Message-ID: <CABROOSduRQrD8g7DSYoVfjSRA_qWHPHdWrmFnKKq7SMUGPvWgw@mail.gmail.com>
+Subject: mt7530 cannot delete fdb self entries with vlan other then vlan
+ number 1
+To: Sean Wang <sean.wang@mediatek.com>, Landen.Chao@mediatek.com,
+ dqfext@gmail.com
+Cc: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210619_051941_752946_A4BCB1BE 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20210619_053538_336021_00E4C19A 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,72 +92,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Eric Woudstra <ericwouds@gmail.com>
-
-Cpu-thermal is set to use all frequencies already at 47 degrees. 
-Using the CPU at 50 for a minute, the CPU has reached 48 degrees, is 
-throttled back to lowest setting, making the mt7622 terrribly slow. 
-Even at this low speed, the CPU does not cool down lower then 47 so
-the CPU is stuck at lowest possible frequency until it shut down and
-stays off for 15 minutes.
-
-cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-                 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-
-This should not be set al every cooling map. It should only be set at
-the highest cooling map. Same as in the example:
-
-https://www.kernel.org/doc/Documentation/devicetree/bindings/
-thermal/thermal.txt  line 272
-
-But then without the fan and added a third map.
-
-Now temperature will be regulated at 87 degrees celcius. At temperatures
-lower then 87, all frequencies can be used.
-
-Also see the post:
-
-http://forum.banana-pi.org/t/bpi-r64-only-10-cpu-speed-at-already-48-
-degrees-celcius-speed-not-increasing-anymore/12262
-
-Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 890a942ec..b779c7aa6 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -170,14 +170,14 @@ cpu-crit {
- 			cooling-maps {
- 				map0 {
- 					trip = <&cpu_passive>;
--					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
--							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					cooling-device = <&cpu0 0 0>,
-+							 <&cpu1 0 0>;
- 				};
- 
- 				map1 {
- 					trip = <&cpu_active>;
--					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
--							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+					cooling-device = <&cpu0 0 0>,
-+							 <&cpu1 0 0>;
- 				};
- 
- 				map2 {
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+QWJvdXQ6IGRyaXZlcnMvbmV0L2RzYS9tdDc1MzAuYwoKV2hlcmUgZG8gSSBnbyB3aXRoIHRoaXMg
+YnVnIHJlcG9ydD8KCkl0IHdhcyBkaXNjdXNzZWQgaGVyZTogaHR0cDovL2ZvcnVtLmJhbmFuYS1w
+aS5vcmcvdC92bGFuLWVuYWJsZWQKLWJyaWRnZS1idWcvMTIyNTQKClRoZSBtdDc1MzAgZHJpdmVy
+IGRvZXMgbm90IHNlZW0gdGUgYmUgYWJsZSB0byBkZWxldGUgZmRiICdzZWxmJyBlbnRyaWVzLApm
+b3IgdmxhbiBudW1iZXJzIG90aGVyIHRoZW4gMS4gVGhpcyBhZmZlY3RzIHdsYW4gcm9hbWluZyB3
+aGVuIHZsYW4KaXMgZW5hYmxlZC4KClRlc3RlZCBvbiBrZXJuZWwgNS4xMi4gSW4gYWxsIGNhc2Vz
+IHRoZSBrZXJuZWwgaXMgY29tcGlsZWQgd2l0aApDT05GSUdfQlJJREdFX1ZMQU5fRklMVEVSSU5H
+PXkuCgoKSGVyZSBpcyBhIG1vcmUgY29tcGxldGUgZGVzY3JpcHRpb246CgpOZXR3b3JrIHNldHVw
+IHdpdGggdmxhbjoKCmlwIGxpbmsgc2V0IGV0aDAgdXAKaXAgbGluayBhZGQgbmFtZSBicjAgdHlw
+ZSBicmlkZ2Ugdmxhbl9maWx0ZXJpbmcgMSB2bGFuX2RlZmF1bHRfcHZpZCAzCmlwIGxpbmsgc2V0
+IGJyMCB1cAppcCBsaW5rIHNldCBsYW4wIG1hc3RlciBicjAKaXAgbGluayBzZXQgbGFuMCB1cAoK
+TmV0d29yayBzZXR1cCB3aXRob3V0IHZsYW46CgppcCBsaW5rIHNldCBldGgwIHVwCmlwIGxpbmsg
+YWRkIG5hbWUgYnIwIHR5cGUgYnJpZGdlCmlwIGxpbmsgc2V0IGJyMCB1cAppcCBsaW5rIHNldCBs
+YW4wIG1hc3RlciBicjAKaXAgbGluayBzZXQgbGFuMCB1cAoKQm90aDoKCmlwIGFkZHIgYWRkIDE5
+Mi4xNjguMS4zMy8yNCBicm9hZGNhc3QgMTkyLjE2OC4xLjI1NSBkZXYgYnIwCmlwIHJvdXRlIGFk
+ZCAxOTIuMTY4LjEuMC8yNCBkZXYgYnIwCmlwIHJvdXRlIGFkZCBkZWZhdWx0IHZpYSAxOTIuMTY4
+LjEuMQoKClRoZSBCUEktUjY0IGlzIGNvbm5lY3RlZCB3aXRoIGxhbjAgdG8gYSBsYW4gcG9ydCBv
+ZiBteSByb3V0ZXIuIFRoZW4gSQpjb25uZWN0IG15IHBob25lIHdpdGggbWFjIGFhOmJiOmNjOmRk
+OmVlOmZmIHRvIG15IHJvdXRlci4gVGhlbiBJCmRpc2FibGUgdGhlIHdpZmkgb2YgbXkgcGhvbmUg
+c28gbm8gbW9yZSBwYWNrZXRzIHdpdGggdGhpcyBtYWMgYXJlIHNlbnQKb24gdGhlIG5ldHdvcmsu
+CgpCcmlkZ2UgY3JlYXRlZCB3aXRoIHZsYW5fZmlsdGVyaW5nIDEgdmxhbl9kZWZhdWx0X3B2aWQg
+MwoKcm9vdEBicGktcjY0On4jIGJyaWRnZSBmZGIgfCBncmVwIGFhOmJiOmNjOmRkOmVlOmZmCmFh
+OmJiOmNjOmRkOmVlOmZmIGRldiBsYW4wIHZsYW4gMyBtYXN0ZXIgYnIwCmFhOmJiOmNjOmRkOmVl
+OmZmIGRldiBsYW4wIHZsYW4gMyBzZWxmCnJvb3RAYnBpLXI2NDp+IyBicmlkZ2UgZmRiIGRlbCBh
+YTpiYjpjYzpkZDplZTpmZiBkZXYgbGFuMCB2bGFuIDMgc2VsZgpyb290QGJwaS1yNjQ6fiMgYnJp
+ZGdlIGZkYiB8IGdyZXAgYWE6YmI6Y2M6ZGQ6ZWU6ZmYKYWE6YmI6Y2M6ZGQ6ZWU6ZmYgZGV2IGxh
+bjAgdmxhbiAzIHNlbGYKcm9vdEBicGktcjY0On4jCgpCcmlkZ2UgY3JlYXRlZCB3aXRob3V0IHZs
+YW5fZmlsdGVyaW5nIDEgdmxhbl9kZWZhdWx0X3B2aWQgMwoKcm9vdEBicGktcjY0On4jIGJyaWRn
+ZSBmZGIgfCBncmVwIGFhOmJiOmNjOmRkOmVlOmZmCmFhOmJiOmNjOmRkOmVlOmZmIGRldiBsYW4w
+IG1hc3RlciBicjAKYWE6YmI6Y2M6ZGQ6ZWU6ZmYgZGV2IGxhbjAgdmxhbiAxIHNlbGYKcm9vdEBi
+cGktcjY0On4jIGJyaWRnZSBmZGIgZGVsIGFhOmJiOmNjOmRkOmVlOmZmIGRldiBsYW4wIHZsYW4g
+MSBzZWxmCnJvb3RAYnBpLXI2NDp+IyBicmlkZ2UgZmRiIHwgZ3JlcCBhYTpiYjpjYzpkZDplZTpm
+Zgpyb290QGJwaS1yNjQ6fiMKCkxhdGVyIEkgZm91bmQgb3V0IHRoYXQgdGhlIGZkYiBzZWxmIGVu
+dHJ5IGNhbiBiZSBkZWxldGVkIHdpdGgKdmxhbl9maWx0ZXJpbmcgZW5hYmxlZCwgYnV0IHdpdGgg
+dmxhbiBudW1iZXIgMSBvbmx5LgoKTm93IEkgaGF2ZSB0ZXN0ZWQgd2lmaSByb2FtaW5nIG9uIGEg
+aG9tZSBuZXR3b3JrIGNvbm5lY3RlZApyb3V0ZXItbGFuIHRvIGJwaXI2NC1sYW4uCgpUaGlzIGlz
+IHdpdGggZW5hYmxlZCB2bGFuLCB2bGFuIDEuIEZpcnN0IGNvbW1hbmQsIHBob25lIGNvbm5lY3Rl
+ZCB0bwpyZW1vdGUgcm91dGVyLCBzZWNvbmQgY29tbWFuZCwgcGhvbmUgcm9hbWVkIHRvIEJQSS1S
+NjQuCgpyb290QGJwaS1yNjQ6fiMgYnJpZGdlIGZkYiB8IGdyZXAgYWE6YmI6Y2M6ZGQ6ZWU6ZmYK
+YWE6YmI6Y2M6ZGQ6ZWU6ZmYgZGV2IGxhbjAgdmxhbiAxIG1hc3RlciBicmxhbgphYTpiYjpjYzpk
+ZDplZTpmZiBkZXYgbGFuMCB2bGFuIDEgc2VsZgpyb290QGJwaS1yNjQ6fiMgYnJpZGdlIGZkYiB8
+IGdyZXAgYWE6YmI6Y2M6ZGQ6ZWU6ZmYKYWE6YmI6Y2M6ZGQ6ZWU6ZmYgZGV2IHdsYW4wIHZsYW4g
+MSBtYXN0ZXIgYnJsYW4KClBob25lIGhhcyBnb29kIGludGVybmV0IGNvbm5lY3Rpdml0eSA6c2xp
+Z2h0X3NtaWxlOgoKTm93IHRoZSBzYW1lIHNldHVwIGJ1dCB3aXRoIHZsYW4gMgoKcm9vdEBicGkt
+cjY0On4jIGJyaWRnZSBmZGIgfCBncmVwIGFhOmJiOmNjOmRkOmVlOmZmCmFhOmJiOmNjOmRkOmVl
+OmZmIGRldiBsYW4wIHZsYW4gMiBtYXN0ZXIgYnJsYW4KYWE6YmI6Y2M6ZGQ6ZWU6ZmYgZGV2IGxh
+bjAgdmxhbiAyIHNlbGYKcm9vdEBicGktcjY0On4jIGJyaWRnZSBmZGIgfCBncmVwIGFhOmJiOmNj
+OmRkOmVlOmZmCmFhOmJiOmNjOmRkOmVlOmZmIGRldiBsYW4wIHZsYW4gMiBzZWxmCmFhOmJiOmNj
+OmRkOmVlOmZmIGRldiB3bGFuMCB2bGFuIDIgbWFzdGVyIGJybGFuCgpUaGlzIGxhc3QgcmVzdWx0
+IG1ha2VzIHRoZSBwaG9uZSBub3QgYWJsZSB0byByZWFjaCB0aGUgZGhjcApzZXJ2ZXIgKG9uIHRo
+ZSByZW1vdGUgcm91dGVyKS4gTm8gY29ubmVjdGl2aXR5LgoKVGhlIGZpeCDigJhuZXQ6IGRzYTog
+bXQ3NTMwOiBmaXggcm9hbWluZyBmcm9tIERTQSB1c2VyIHBvcnRz4oCZIGRvZXMgbm90IHdvcmsK
+YW55bW9yZSB3aGVuIHZsYW4gaWQgZG9lcyBub3QgZXF1YWwgMS4KCkkgZ3Vlc3MgaXQgc3VmZmVy
+cyBmcm9tIHRoZSBzYW1lIGJ1ZyB0aGF0IGZkYiDigJhzZWZm4oCZIGVudHJpZXMgd2l0aCB2bGFu
+4oCZcwpvdGhlciB0aGFuIDEgY2Fubm90IGJlIGRlbGV0ZWQuCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
