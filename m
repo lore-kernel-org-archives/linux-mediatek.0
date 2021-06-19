@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 57AA3C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 02:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8D71C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:23:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 160A86135A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 02:57:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 160A86135A
+	by mail.kernel.org (Postfix) with ESMTPS id 6FD79608FC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Jun 2021 09:23:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6FD79608FC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,56 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3auIhs8WdOIjUAmZG+I9l2ftHMR4dNj6d2Cvk4OnKgg=; b=Q6Tq6NjhHUS0dv
-	y6dHtLlURs+gkUAG2WwiRiL/uaDtm8rQJUx5TEjZoYd1+q9GTL5Vqv5YDCuJb4hl1l5y7GE+4fdIv
-	1F20cWFIX/14LZn4GnyAOg5rN+pMPRasKMgfZmgtd1ahpUCzyho0ZNqNKS+V800xAoQPhu6eddrbl
-	DnJh/wEO0qFJwTw4pIF+lwkV0FGBXeT8QC7pYoRSMQgz0jRPcf9yUfgHhn1c1ElXBNBa1r+KbBRfp
-	VR8V/l5ds47CJtwx5kc+mjscNrjSg57oBbz7LrQP6vx8tc1iieX7iPX3JQsQbbpKbFCRGJ/FWfCfw
-	kJhSIuJPuRsBv45lgrNg==;
+	List-Owner; bh=i/EYeLkkRnCUdCoOyVVRInCeRsbu+6kb12R65Se1zKU=; b=Te8h0inWj2OIWW
+	VX+zrxoDW1o3sbebR37Q4SH4nHd0n5Y/gl5iKjs7JGlc7VT3XIGc564yeWDv+uJGuty3hnAZPZE/C
+	8rUUuJmJP6nMmPB9hoiLy5l5HU0Y/2ev1Q34WdTVYMJC/+Fgk61aM3cC4xd7960YKPCMQv+FcNmwG
+	Oia5g/krp07XKq6fjwEHmLVJYuS2J3/j5/Uri7ZjlMnU0qpGoYlXBD1nhozZ4swiLeFvd6RK9/C2N
+	HAXOzGrQqrX1Xjo0XKSkCZs8J8d9S54jgYQIIdMuHCQGhn28QvckgYjjiceH1g6PccHyHp65Llre/
+	zw/f7rb4SXk0DAtdnz9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luRAw-00G61m-94; Sat, 19 Jun 2021 02:57:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1luXCg-00Giam-0H; Sat, 19 Jun 2021 09:23:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luRAt-00G61H-6R; Sat, 19 Jun 2021 02:57:36 +0000
-X-UUID: 78722d7862fd429d9405424b5c37f6cc-20210618
+ id 1luXCR-00GiVt-8p; Sat, 19 Jun 2021 09:23:37 +0000
+X-UUID: 8b6a35c5a4cc42a0b5e8af29881acd3a-20210619
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=+DNgoc0dJLPn2Z9eauLliOfak73wsTSbX0RxPScRkfM=; 
- b=RWOwgKmtIawD72yGl+NsrWkjmn+gJQyyNeMt9XeTehiZ2k6nb3APX9O1vdIa+elaLlyno/zb2G/0e6TlniCXDBwnZtI751tP65JP/iqF7AoUD63qBWUQtuslYJOsm+ON77u6k9z3VhQn4Uw8G0b4OCVMcMR6ExIP2cZ+E86Lti0=;
-X-UUID: 78722d7862fd429d9405424b5c37f6cc-20210618
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ bh=R3YDvLM6+YILvO72VlNv87sZbPJr+dZCGfX9VP6ww9o=; 
+ b=nJ+htD9hlThVLnAh0DZy5jKHsn1xTtI/p09f5PFNwduZcgvSpyCif9Mj8v9qvAoPMdhwPh9pn2hGpacuNF/kXtXOTBUaxIAleX/wIh/MoboqbH1bbnRBn3iy0N4hu6Xqv8lP+xdhfuHEQhuRF4iZ/hXjmq9BXLbvjFkeVApGcYI=;
+X-UUID: 8b6a35c5a4cc42a0b5e8af29881acd3a-20210619
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1069663994; Fri, 18 Jun 2021 19:57:32 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 2042753698; Sat, 19 Jun 2021 02:23:24 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 18 Jun 2021 19:47:29 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS31N1.mediatek.inc (172.27.4.69) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 19 Jun 2021 10:47:25 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Sat, 19 Jun 2021 02:23:22 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 19 Jun 2021 17:23:20 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 19 Jun 2021 10:47:24 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- "Rob Herring" <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v2 1/3] dt-bindings: phy: mediatek: tphy: add support hardware
- version 3
-Date: Sat, 19 Jun 2021 10:47:17 +0800
-Message-ID: <1624070839-1233-1-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ Transport; Sat, 19 Jun 2021 17:23:20 +0800
+From: <kewei.xu@mediatek.com>
+To: <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <linux-i2c@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>, Kewei Xu
+ <kewei.xu@mediatek.com>
+Subject: [PATCH] i2c: mediatek: Isolate speed setting via dts for special
+ devices
+Date: Sat, 19 Jun 2021 17:23:17 +0800
+Message-ID: <1624094597-23993-1-git-send-email-kewei.xu@mediatek.com>
+X-Mailer: git-send-email 1.9.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 61F31F61220BC684D2241E75CFBD627072BEFBA453B5AAAAE65EB56E6EAC09FE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210618_195735_291624_1A65F975 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20210619_022335_373196_34775C0A 
+X-CRM114-Status: GOOD (  19.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,78 +88,182 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PHYA architecture is updated, and doesn't support slew rate
-calibration anymore on 7nm or advanced process, add a new version
-number to support it.
-Due to the FreqMeter bank is not used but reserved, it's backward
-with v2 until now.
-For mt8195, no function changes when use generic v2 or v3 compatible,
-but prefer to use v3's compatible, it will not waste the time to
-calibrate the slew rate, and also correspond with hardware version.
+From: Kewei Xu <kewei.xu@mediatek.com>
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: add more commit log suggested by Rob
----
- .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust
+support"), the I2C timing calculation has been revised to support
+ac-timing, revised to support ac-timing adjustment, however that will
+break on some I2C components. As a result we want to introduce a new
+setting "default-adjust-timing" so those components can choose to use the
+old (default) timing algorithm.
 
-diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-index b8a7651a3d9a..939c09296b5f 100644
---- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-+++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
-@@ -15,7 +15,7 @@ description: |
-   controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
+Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+---
+ drivers/i2c/busses/i2c-mt65xx.c | 86 ++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 81 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+index ded94f9..486076f 100644
+--- a/drivers/i2c/busses/i2c-mt65xx.c
++++ b/drivers/i2c/busses/i2c-mt65xx.c
+@@ -41,6 +41,8 @@
+ #define I2C_HANDSHAKE_RST		0x0020
+ #define I2C_FIFO_ADDR_CLR		0x0001
+ #define I2C_DELAY_LEN			0x0002
++#define I2C_ST_START_CON		0x8001
++#define I2C_FS_START_CON		0x1800
+ #define I2C_TIME_CLR_VALUE		0x0000
+ #define I2C_TIME_DEFAULT_VALUE		0x0003
+ #define I2C_WRRD_TRANAC_VALUE		0x0002
+@@ -63,6 +65,7 @@
+ #define I2C_DMA_HARD_RST		0x0002
+ #define I2C_DMA_HANDSHAKE_RST		0x0004
  
-   Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
--  T-PHY V2 (mt2712) when works on USB mode:
-+  T-PHY V2 (mt2712) / V3 (mt8195) when works on USB mode:
-   -----------------------------------
-   Version 1:
-   port        offset    bank
-@@ -34,7 +34,7 @@ description: |
-   u2 port2    0x1800    U2PHY_COM
-               ...
++#define I2C_DEFAULT_CLK_DIV		5
+ #define MAX_SAMPLE_CNT_DIV		8
+ #define MAX_STEP_CNT_DIV		64
+ #define MAX_CLOCK_DIV			256
+@@ -247,6 +250,7 @@ struct mtk_i2c {
+ 	struct clk *clk_arb;		/* Arbitrator clock for i2c */
+ 	bool have_pmic;			/* can use i2c pins from PMIC */
+ 	bool use_push_pull;		/* IO config push-pull mode */
++	bool default_timing_adjust;	/* no timing adjust mode */
  
--  Version 2:
-+  Version 2/3:
-   port        offset    bank
-   u2 port0    0x0000    MISC
-               0x0100    FMREG
-@@ -59,7 +59,8 @@ description: |
+ 	u16 irq_stat;			/* interrupt status */
+ 	unsigned int clk_src_div;
+@@ -484,6 +488,7 @@ static void mtk_i2c_clock_disable(struct mtk_i2c *i2c)
+ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ {
+ 	u16 control_reg;
++	u16 ext_conf_val;
  
-   SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
-   into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
--  added on V2.
-+  added on V2; the FMREG bank for slew rate calibration is not used anymore
-+  and reserved on V3;
+ 	if (i2c->dev_comp->apdma_sync) {
+ 		writel(I2C_DMA_WARM_RST, i2c->pdmabase + OFFSET_RST);
+@@ -518,8 +523,17 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 	if (i2c->dev_comp->ltiming_adjust)
+ 		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
  
- properties:
-   $nodename:
-@@ -79,8 +80,11 @@ properties:
-               - mediatek,mt2712-tphy
-               - mediatek,mt7629-tphy
-               - mediatek,mt8183-tphy
--              - mediatek,mt8195-tphy
-           - const: mediatek,generic-tphy-v2
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-tphy
-+          - const: mediatek,generic-tphy-v3
-       - const: mediatek,mt2701-u3phy
-         deprecated: true
-       - const: mediatek,mt2712-u3phy
-@@ -91,7 +95,7 @@ properties:
-     description:
-       Register shared by multiple ports, exclude port's private register.
-       It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
--      T-PHY V2, such as mt2712.
-+      T-PHY V2/V3, such as mt2712.
-     maxItems: 1
+-	if (i2c->dev_comp->timing_adjust) {
+-		mtk_i2c_writew(i2c, i2c->ac_timing.ext, OFFSET_EXT_CONF);
++	if (i2c->speed_hz <= I2C_MAX_STANDARD_MODE_FREQ)
++		ext_conf_val = I2C_ST_START_CON;
++	else
++		ext_conf_val = I2C_FS_START_CON;
++
++	if (i2c->default_timing_adjust) {
++		if (i2c->dev_comp->timing_adjust)
++			mtk_i2c_writew(i2c, I2C_DEFAULT_CLK_DIV - 1,
++				       OFFSET_CLOCK_DIV);
++	} else if (i2c->dev_comp->timing_adjust) {
++		ext_conf_val = i2c->ac_timing.ext;
+ 		mtk_i2c_writew(i2c, i2c->ac_timing.inter_clk_div,
+ 			       OFFSET_CLOCK_DIV);
+ 		mtk_i2c_writew(i2c, I2C_SCL_MIS_COMP_VALUE,
+@@ -544,6 +558,7 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 				       OFFSET_HS_STA_STO_AC_TIMING);
+ 		}
+ 	}
++	mtk_i2c_writew(i2c, ext_conf_val, OFFSET_EXT_CONF);
  
-   "#address-cells":
+ 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
+ 	if (i2c->have_pmic)
+@@ -600,7 +615,7 @@ static int mtk_i2c_check_ac_timing(struct mtk_i2c *i2c,
+ 	unsigned int sample_ns = div_u64(1000000000ULL * (sample_cnt + 1),
+ 					 clk_src);
+ 
+-	if (!i2c->dev_comp->timing_adjust)
++	if (i2c->default_timing_adjust || !i2c->dev_comp->timing_adjust)
+ 		return 0;
+ 
+ 	if (i2c->dev_comp->ltiming_adjust)
+@@ -760,7 +775,63 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
+ 	return 0;
+ }
+ 
+-static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
++static int mtk_i2c_set_speed_default_timing(struct mtk_i2c *i2c, unsigned int parent_clk)
++{
++	unsigned int clk_src;
++	unsigned int step_cnt;
++	unsigned int sample_cnt;
++	unsigned int l_step_cnt;
++	unsigned int l_sample_cnt;
++	unsigned int target_speed;
++	int ret;
++
++	if (i2c->dev_comp->timing_adjust)
++		i2c->clk_src_div *= I2C_DEFAULT_CLK_DIV;
++
++	clk_src = parent_clk / i2c->clk_src_div;
++	target_speed = i2c->speed_hz;
++
++	if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ) {
++		/* Set master code speed register */
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, I2C_MAX_FAST_MODE_FREQ,
++					      &l_step_cnt, &l_sample_cnt);
++		if (ret < 0)
++			return ret;
++
++		i2c->timing_reg = (l_sample_cnt << 8) | l_step_cnt;
++
++		/* Set the high speed mode register */
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
++					      &step_cnt, &sample_cnt);
++		if (ret < 0)
++			return ret;
++
++		i2c->high_speed_reg = I2C_TIME_DEFAULT_VALUE |
++			(sample_cnt << 12) | (step_cnt << 8);
++
++		if (i2c->dev_comp->ltiming_adjust)
++			i2c->ltiming_reg = (l_sample_cnt << 6) | l_step_cnt |
++					   (sample_cnt << 12) | (step_cnt << 9);
++	} else {
++		ret = mtk_i2c_calculate_speed(i2c, clk_src, target_speed,
++					      &step_cnt, &sample_cnt);
++		if (ret < 0)
++			return ret;
++
++		i2c->timing_reg = (sample_cnt << 8) | step_cnt;
++
++		/* Disable the high speed transaction */
++		i2c->high_speed_reg = I2C_TIME_CLR_VALUE;
++
++		if (i2c->dev_comp->ltiming_adjust)
++			i2c->ltiming_reg = (sample_cnt << 6) | step_cnt;
++	}
++
++	return 0;
++}
++
++static int mtk_i2c_set_speed_adjust_timing(struct mtk_i2c *i2c,
++					   unsigned int parent_clk)
+ {
+ 	unsigned int clk_src;
+ 	unsigned int step_cnt;
+@@ -1284,6 +1355,8 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
+ 	i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
+ 	i2c->use_push_pull =
+ 		of_property_read_bool(np, "mediatek,use-push-pull");
++	i2c->default_timing_adjust =
++		of_property_read_bool(np, "mediatek,default-timing-adjust");
+ 
+ 	i2c_parse_fw_timings(i2c->dev, &i2c->timing_info, true);
+ 
+@@ -1363,7 +1436,10 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 
+ 	strlcpy(i2c->adap.name, I2C_DRV_NAME, sizeof(i2c->adap.name));
+ 
+-	ret = mtk_i2c_set_speed(i2c, clk_get_rate(clk));
++	if (i2c->default_timing_adjust)
++		ret = mtk_i2c_set_speed_default_timing(i2c, clk_get_rate(clk));
++	else
++		ret = mtk_i2c_set_speed_adjust_timing(i2c, clk_get_rate(clk));
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to set the speed.\n");
+ 		return -EINVAL;
 -- 
-2.18.0
+1.9.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
