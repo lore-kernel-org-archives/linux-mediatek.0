@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41662C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 11:48:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DFD6C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 11:49:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1082360D07
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 11:48:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1082360D07
+	by mail.kernel.org (Postfix) with ESMTPS id E278F61057
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 11:49:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E278F61057
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nPzKwSnergZCahzc2kicLtGVyIgXtIMcQXVq1daEhgM=; b=m9FJBcw13Eh/ud
-	L67D6+dv5PIjhElq/1rn9d8vYyfsyhhWcUhppgPgEVqiyhoM9S+CsOf5UDCe+xcwwzEU3SLBwsu+k
-	VE4ezGiDWzHyGpkhAoyqMQ7GMVga1pdXKwVQ1MVI00A9fLNhalB/x4DI7sgRfUSjic5IRL0kM4kuv
-	lQr0rkSbbfVR5f5tJBMx7fDK6A64nYRImIqR13jOdtrKM3zH8gCll/mgKY7X4YU3pkHj2iXVp3Npj
-	zdHx+dpOVF6Z3fq2yqoopfGqu4xXKuJ//nEqPmqB+Bn6y5Yx+IvIHGfSnXkiuMnMLiBHplsN3hz2x
-	XLaNdwbhYmE24v5xqV2w==;
+	List-Owner; bh=jN9k/iCHSVuhs9C1W8LceX32jXAg4MJHkEeILEIUTdI=; b=vGDImo1DOnEojL
+	tWx1opUSs11jJgvKcTIbGeJNqvEl/dhiqDB48jAn0PwEIrIhcKmMok+ZhrvoIc3I1w/krualF5TUs
+	OoWkwg7I90/U3hoGDUIKAPYkY3/sHv5LiHtcDYNbv3YrtDEC3SzvxHGyoNcYS28ftoC3S4sNl7yv1
+	B1COlAHPa3aq3avJP/tEW/HMdwfm71raD00DF+BdFbcv4729PI+ihVCZ2gxNn9BWJW7DqDJmkVroi
+	bTiH7chsyY+vlT02KvxZVv0iVWD1b7ZjMC2j3NyPxFi2prXPRzSoloWO8UtcdgyxUA0gwBilv7mrs
+	26xN16BvyiDU/6E68nGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luvwK-000uvS-0N; Sun, 20 Jun 2021 11:48:36 +0000
+	id 1luvwY-000v0n-6Y; Sun, 20 Jun 2021 11:48:50 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luvw1-000upl-WD; Sun, 20 Jun 2021 11:48:19 +0000
-X-UUID: ba56145a117f445ba4914df3cd0d6f60-20210620
+ id 1luvw8-000urS-TX; Sun, 20 Jun 2021 11:48:26 +0000
+X-UUID: 28225afe46cb4a29af6c9ebea2135eba-20210620
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1ehNfxhQF003Q1AspMXF1u4SvZvRqCEpn9DzXdgrYDY=; 
- b=JHii1c2Ln7LHjMWpWuQW6YpK00VMOZnX2fes3Pq3OUxMp83wJLPkLF6K8kd9t2jVPf18qjfouL+nQGbKHcOXFCwbBlDC+Hq9E/z/IiNfCkGTA5iEma2vaOKahnCwkVlirPPfGQxwXQOgge+Cm4KG2KDm5Z38Jvg3lftKreCvt8s=;
-X-UUID: ba56145a117f445ba4914df3cd0d6f60-20210620
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=PHskmn49kLW0VUhqld258Y7YrjmaoXqx+HTCPKb4WLk=; 
+ b=fbSEx4BB+NEUP0DfUByQJN+6jvIe3sCYVmQw666OcTz7dfd5lYz0iGMGqM1b3mrg9kaLu8cdwXxAmZGWBlSLB5/A3ThaCWp57AMZxvVZgv7XM40SVo/baoQYWWT8Pw7H+gzWSOJ35y5Pnyh/Qv993OMCdQioIHujNoo0k8eMKzY=;
+X-UUID: 28225afe46cb4a29af6c9ebea2135eba-20210620
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <kuan-ying.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 240175482; Sun, 20 Jun 2021 04:48:14 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Jun 2021 04:48:13 -0700
+ with ESMTP id 1281752333; Sun, 20 Jun 2021 04:48:22 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Jun 2021 04:48:21 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Jun 2021 19:48:11 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Jun 2021 19:48:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 20 Jun 2021 19:48:11 +0800
+ Frontend Transport; Sun, 20 Jun 2021 19:48:07 +0800
 From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 To: Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
  <glider@google.com>, Andrey Konovalov <andreyknvl@gmail.com>, Marco Elver
@@ -65,18 +66,18 @@ CC: <kasan-dev@googlegroups.com>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
  <chinwen.chang@mediatek.com>, <nicholas.tang@mediatek.com>, Kuan-Ying Lee
  <Kuan-Ying.Lee@mediatek.com>
-Subject: [PATCH v3 3/3] kasan: add memory corruption identification support
- for hardware tag-based mode
-Date: Sun, 20 Jun 2021 19:47:56 +0800
-Message-ID: <20210620114756.31304-4-Kuan-Ying.Lee@mediatek.com>
+Subject: [PATCH v3 1/3] kasan: rename CONFIG_KASAN_SW_TAGS_IDENTIFY to
+ CONFIG_KASAN_TAGS_IDENTIFY
+Date: Sun, 20 Jun 2021 19:47:54 +0800
+Message-ID: <20210620114756.31304-2-Kuan-Ying.Lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210620114756.31304-1-Kuan-Ying.Lee@mediatek.com>
 References: <20210620114756.31304-1-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210620_044818_068535_F18D2F55 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20210620_044825_025352_F338F4F6 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,8 +94,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add memory corruption identification support for hardware tag-based
-mode. We store one old free pointer tag and free backtrace.
+This patch renames CONFIG_KASAN_SW_TAGS_IDENTIFY to
+CONFIG_KASAN_TAGS_IDENTIFY in order to be compatible
+with hardware tag-based mode.
 
 Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 Suggested-by: Marco Elver <elver@google.com>
@@ -104,36 +106,82 @@ Cc: Andrey Konovalov <andreyknvl@gmail.com>
 Cc: Dmitry Vyukov <dvyukov@google.com>
 Cc: Andrew Morton <akpm@linux-foundation.org>
 ---
- lib/Kconfig.kasan | 2 +-
- mm/kasan/kasan.h  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ lib/Kconfig.kasan         | 2 +-
+ mm/kasan/kasan.h          | 4 ++--
+ mm/kasan/report_sw_tags.c | 2 +-
+ mm/kasan/sw_tags.c        | 4 ++--
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
-index 6f5d48832139..2cc25792bc2f 100644
+index cffc2ebbf185..6f5d48832139 100644
 --- a/lib/Kconfig.kasan
 +++ b/lib/Kconfig.kasan
-@@ -157,7 +157,7 @@ config KASAN_STACK
+@@ -155,7 +155,7 @@ config KASAN_STACK
+ 	  CONFIG_COMPILE_TEST.	On gcc it is assumed to always be safe
+ 	  to use and enabled by default.
  
- config KASAN_TAGS_IDENTIFY
+-config KASAN_SW_TAGS_IDENTIFY
++config KASAN_TAGS_IDENTIFY
  	bool "Enable memory corruption identification"
--	depends on KASAN_SW_TAGS
-+	depends on KASAN_SW_TAGS || KASAN_HW_TAGS
+ 	depends on KASAN_SW_TAGS
  	help
- 	  This option enables best-effort identification of bug type
- 	  (use-after-free or out-of-bounds) at the cost of increased
 diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index b0fc9a1eb7e3..d6f982b8a84e 100644
+index 8f450bc28045..b0fc9a1eb7e3 100644
 --- a/mm/kasan/kasan.h
 +++ b/mm/kasan/kasan.h
 @@ -153,7 +153,7 @@ struct kasan_track {
  	depot_stack_handle_t stack;
  };
  
--#ifdef CONFIG_KASAN_TAGS_IDENTIFY
-+#if defined(CONFIG_KASAN_TAGS_IDENTIFY) && defined(CONFIG_KASAN_SW_TAGS)
+-#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
++#ifdef CONFIG_KASAN_TAGS_IDENTIFY
  #define KASAN_NR_FREE_STACKS 5
  #else
  #define KASAN_NR_FREE_STACKS 1
+@@ -170,7 +170,7 @@ struct kasan_alloc_meta {
+ #else
+ 	struct kasan_track free_track[KASAN_NR_FREE_STACKS];
+ #endif
+-#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
++#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+ 	u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
+ 	u8 free_track_idx;
+ #endif
+diff --git a/mm/kasan/report_sw_tags.c b/mm/kasan/report_sw_tags.c
+index 3d20d3451d9e..821a14a19a92 100644
+--- a/mm/kasan/report_sw_tags.c
++++ b/mm/kasan/report_sw_tags.c
+@@ -31,7 +31,7 @@
+ 
+ const char *kasan_get_bug_type(struct kasan_access_info *info)
+ {
+-#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
++#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+ 	struct kasan_alloc_meta *alloc_meta;
+ 	struct kmem_cache *cache;
+ 	struct page *page;
+diff --git a/mm/kasan/sw_tags.c b/mm/kasan/sw_tags.c
+index 9362938abbfa..dd05e6c801fa 100644
+--- a/mm/kasan/sw_tags.c
++++ b/mm/kasan/sw_tags.c
+@@ -177,7 +177,7 @@ void kasan_set_free_info(struct kmem_cache *cache,
+ 	if (!alloc_meta)
+ 		return;
+ 
+-#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
++#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+ 	idx = alloc_meta->free_track_idx;
+ 	alloc_meta->free_pointer_tag[idx] = tag;
+ 	alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
+@@ -196,7 +196,7 @@ struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+ 	if (!alloc_meta)
+ 		return NULL;
+ 
+-#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
++#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+ 	for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
+ 		if (alloc_meta->free_pointer_tag[i] == tag)
+ 			break;
 -- 
 2.18.0
 _______________________________________________
