@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A509FC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 13:50:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E4CBC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 13:50:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 66EB961007
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 13:50:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66EB961007
+	by mail.kernel.org (Postfix) with ESMTPS id 4CC4760C3D
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Jun 2021 13:50:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CC4760C3D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hOqECBz+URiJMBHAHxGW7zOk1qetzCh6oLw6R/yOuBY=; b=AJOc6qLcItUzG9
-	Imwm7hBMB/U2NsquSOoveHpMxbPm2IgExnCtpIjiVUX5FyZ8iYbyVPHKlSd7n4FpxIqC05HKA+R2Q
-	3iNjPX5dVAVB8XO9Zen1f1jYNNSAJg2UtLnAMZMnajSBmVsiLzNM7kRsLpOahQmuvSbCdVS1kldxe
-	GVgncQML3IXMuehJIDZciCTMRgA5ilEGLcZmMVm4Z+rbA3NeNjQUAo8O9JPhfy/31qgVVwpoELsXq
-	+Y3XtwzNAZFcnSv7NSEYIQ3VA9/ZzlOmuk25RufM888KovjSzp0k2nKtUFeIcX2EID4YApv0mbEwL
-	IqnGCsoLx4KnSsz9kawA==;
+	List-Owner; bh=jaGqizKcLiOwcVXT+YWIyAWZVkWT8/wimA0QM6c115M=; b=SH3RjUl5jNhaip
+	u1nhxfWHmmvNQJKaG9wAg7QALof+hV6rgASn1Q3HgUAAM2YoGgZ7BcTCGAhxqHDAcZZQyZZXi6v2L
+	qx6lPRWXrIDM6oDTHQRgHkjTElDw0x21Hd8pxSXPQW/Sw1HyIGvXEER4L7KHnQG/JqRouSouY8sM/
+	G0mgVFkM/KXkGo+4ZWKBv7jMjIfqWgSvE1ckIb9Hv7o1ScSN6FBTJwiGtVxTdTx9tgdepEDwzTQjo
+	82PcuAx2DPlmnS84282fHiBDJK1k1w48BkDAynjjbO6kmc9D5aIhIOmrAKHunqC23DOI2t4jKxjYG
+	ajyDiN/ZBPI6Fyratm2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1luxqJ-0016rs-0g; Sun, 20 Jun 2021 13:50:31 +0000
+	id 1luxqU-0016vP-JA; Sun, 20 Jun 2021 13:50:42 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1luxpz-0016mi-Oh; Sun, 20 Jun 2021 13:50:15 +0000
-X-UUID: fc9d92be0f6c4410b5df89a92f655986-20210620
+ id 1luxq5-0016nq-P3; Sun, 20 Jun 2021 13:50:19 +0000
+X-UUID: dbd2136238fe4141a0361afc93a5bf29-20210620
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=nvc3cFYReASc8kiecK4+FVHUwEmkxg2AVL4VUrCJ6XI=; 
- b=HOauLBMcW984ZGRMrOkYZI6+2aapakQf+iFIPgY9UMXnikAjlPUYl+hZMtC5bgncasnGJSU7Jqy05Pap5jL5ZhyS8ryUU1eRjAS8pk8x2KysfWPfHp//uoo2p3nnTGsyUrxCsfCZ+aL8dPhotoxUiSSvrXvVycdj5qB+ynyCti4=;
-X-UUID: fc9d92be0f6c4410b5df89a92f655986-20210620
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=jZhSTGGu7PJeSfgytZjLMqz9PMnPb0iDYhvbk3Hm+04=; 
+ b=ONdthLItxy6kFEgNqlPZqXNI/Kb/Fv8tQMYp2sZ+jJ6thZUgITkUQRByCWJmqbpawa8bg+5dlgAwwrrPvdEGEN0myakAkaPiQsLag7C3t2DL6IBT1M/uo/xPelvnELg5t4HlCoXuUdesR1JKdpeLg5ABJLx+AR/fFz8pN6gSMis=;
+X-UUID: dbd2136238fe4141a0361afc93a5bf29-20210620
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <christine.zhu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 609636575; Sun, 20 Jun 2021 06:50:09 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Jun 2021 06:50:07 -0700
+ with ESMTP id 1595701287; Sun, 20 Jun 2021 06:50:16 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Jun 2021 06:50:14 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 20 Jun 2021 21:49:59 +0800
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 20 Jun 2021 21:50:00 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 20 Jun 2021 21:49:58 +0800
+ Transport; Sun, 20 Jun 2021 21:49:59 +0800
 From: Christine Zhu <Christine.Zhu@mediatek.com>
 To: <linux@roeck-us.net>, <robh+dt@kernel.org>, <wim@linux-watchdog.org>,
  <matthias.bgg@gmail.com>
@@ -64,17 +64,17 @@ CC: <linux-arm-kernel@lists.infradead.org>,
  <rex-bc.chen@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <srv_heupstream@mediatek.com>, christine.zhu <Christine.Zhu@mediatek.com>
-Subject: [v1,2/3] dt-binding: mt8195: add toprgu reset-controller head file
-Date: Sun, 20 Jun 2021 21:49:53 +0800
-Message-ID: <20210620134954.15233-3-Christine.Zhu@mediatek.com>
+Subject: [v1,3/3] watchdog: mt8195: add wdt support
+Date: Sun, 20 Jun 2021 21:49:54 +0800
+Message-ID: <20210620134954.15233-4-Christine.Zhu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210620134954.15233-1-Christine.Zhu@mediatek.com>
 References: <20210620134954.15233-1-Christine.Zhu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210620_065011_855502_A49664C2 
-X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-CacheID: sfid-20210620_065017_870873_B839DE6A 
+X-CRM114-Status: UNSURE (   9.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,50 +94,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "christine.zhu" <Christine.Zhu@mediatek.com>
 
-add toprgu reset-controller head file for MT8195 platform
+add support for watchdog device found in MT8195 SoC
 
-Change-Id: Ib08da609e87d31ff0aa06b066f9797070931a693
+Change-Id: Ib2434cf2d47a2e14916056f08a4fc630569624ed
 Signed-off-by: christine.zhu <Christine.Zhu@mediatek.com>
 ---
- include/dt-bindings/reset/mt8195-resets.h | 29 +++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
- create mode 100644 include/dt-bindings/reset/mt8195-resets.h
+ drivers/watchdog/mtk_wdt.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/dt-bindings/reset/mt8195-resets.h b/include/dt-bindings/reset/mt8195-resets.h
-new file mode 100644
-index 000000000000..620a594ee743
---- /dev/null
-+++ b/include/dt-bindings/reset/mt8195-resets.h
-@@ -0,0 +1,29 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2020 MediaTek Inc.
-+ * Author: Crystal Guo <crystal.guo@mediatek.com>
-+ */
-+ 
-+#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8195
-+#define _DT_BINDINGS_RESET_CONTROLLER_MT8195
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 97ca993bd009..5e9e4db8d51a 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/reset-controller/mt2712-resets.h>
+ #include <dt-bindings/reset-controller/mt8183-resets.h>
+ #include <dt-bindings/reset-controller/mt8192-resets.h>
++#include <dt-bindings/reset-controller/mt8195-resets.h>
+ #include <linux/delay.h>
+ #include <linux/err.h>
+ #include <linux/init.h>
+@@ -81,6 +82,10 @@ static const struct mtk_wdt_data mt8192_data = {
+ 	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
+ };
+ 
++static const struct mtk_wdt_data mt8195_data = {
++	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
++};
 +
-+#define MT8195_TOPRGU_CONN_MCU_SW_RST          0
-+#define MT8195_TOPRGU_INFRA_GRST_SW_RST        1
-+#define MT8195_TOPRGU_APU_SW_RST               2
-+#define MT8195_TOPRGU_INFRA_AO_GRST_SW_RST     6
-+#define MT8195_TOPRGU_MMSYS_SW_RST             7
-+#define MT8195_TOPRGU_MFG_SW_RST               8
-+#define MT8195_TOPRGU_VENC_SW_RST              9
-+#define MT8195_TOPRGU_VDEC_SW_RST              10
-+#define MT8195_TOPRGU_IMG_SW_RST               11
-+#define MT8195_TOPRGU_APMIXEDSYS_SW_RST        13
-+#define MT8195_TOPRGU_AUDIO_SW_RST             14
-+#define MT8195_TOPRGU_CAMSYS_SW_RST            15
-+#define MT8195_TOPRGU_EDPTX_SW_RST             16
-+#define MT8195_TOPRGU_ADSPSYS_SW_RST           21
-+#define MT8195_TOPRGU_DPTX_SW_RST              22
-+#define MT8195_TOPRGU_SPMI_MST_SW_RST          23
-+
-+#define MT8195_TOPRGU_SW_RST_NUM               16
-+
-+#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 			       unsigned long id, bool assert)
+ {
 -- 
 2.18.0
 _______________________________________________
