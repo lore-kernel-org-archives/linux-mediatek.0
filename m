@@ -2,20 +2,20 @@ Return-Path: <SRS0=ivGG=LP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDEE3C49EA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 02:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6BE8FC48BE5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 05:53:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92D926117A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 02:18:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92D926117A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3A1E26113C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 05:53:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A1E26113C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,63 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pDU+UxFiOfyVymMAMaNQN7thiAnzItOvoQL4rrDVaYk=; b=enxSTob0IKEpQw
-	JV9/P5BRmQRRxC+V0uOKam59/Qp8Gk27K7AfOCOgidmWbRU1hP/+DhADE4AVOsHAEj0tKsFR2Og7n
-	jXoszfVHCBMhRx2vTabxT/+6YDNIklvAk211A+QzSkoxc7Uv/6Kx8AYE0mYEu3K7kcfFzEsncuX8e
-	6TNqlU5y4pvpTFmh8fQNFgDx5BwVzHDvR6Ai4AknW72YZj8pWYCeozbFfEWEWWqyFi3ug5nlU6OI7
-	//sfLjETtKhncyEhnCqqja26jH7jurPZWW2qucLhdLDkEmYkb5Pu480+hQud5c9yDO3opkhVHabUQ
-	gCIP/+qCt+G3FYZG5+zw==;
+	List-Owner; bh=E48s7vXhX76kaq7tKUgTZi3rNmnH/8K5gsaOvAcAI94=; b=LoWC95k91YVz1J
+	0F/bQsDLqbeImw6H+YRRLAzOObXYC5W9SkqVpdCsgZt3kC3yugXhfLMOerS60YSn8OuTnNPJMZQCH
+	Lla+uliscHLsL14lBFPMOgWLHJxgVIG046S/sIHxuGOVp9aTtbhCWOiF+FZsYIr+SxDeB8zs49wOJ
+	x4AVYrwcsMHDazlYCdH5Prbl/HE2yb8qbU2Hpr5wvY1WL9gTfFPG0WKxykluKTubKf1U1RDTSYyCw
+	KHx1e/bua8LEQ++X13S8vgkxpVI0vivc8i0sxrcfLoqwy+XwyWXMQtPaL35vbZG6Wt5wbB6WufF9L
+	hwlTe6T7cu8HUEQELTeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lv9Vn-001sGq-KQ; Mon, 21 Jun 2021 02:18:07 +0000
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+	id 1lvCru-002FIK-VX; Mon, 21 Jun 2021 05:53:11 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lv9Vk-001sFm-Kb
- for linux-mediatek@lists.infradead.org; Mon, 21 Jun 2021 02:18:05 +0000
-Received: by mail-io1-xd2b.google.com with SMTP id b14so13964891iow.13
- for <linux-mediatek@lists.infradead.org>; Sun, 20 Jun 2021 19:18:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1lvCri-002FGp-0n
+ for linux-mediatek@lists.infradead.org; Mon, 21 Jun 2021 05:52:59 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id a11so15080704lfg.11
+ for <linux-mediatek@lists.infradead.org>; Sun, 20 Jun 2021 22:52:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sC+CWqmXSvQbdEzFj6mik48sZrpR2zcfHhg4ZTETBBE=;
- b=kU1bnKG9ZtCmpLWsP6YXUdugCf0ACmvDyukn1JMuevjRIfI5H8OQa4cTUPk1+nByFz
- BYt6TVpKcaY+2DZ3UElO6WX3dn8XlZTncNElItaOFM2G+yJq325tZWhFECqIytxm9zIG
- Lw9VW4OXdrx8DApt914a1xHAlvilxRVueAIK2U2oky7b/C4D7Hj2e05tLR6XV6qNVgJj
- El+gS3BtIyITh2lIfJ14Jrm3tOJ9UIvRv9T93fc4eMdfC/TLzmoknVxmnMTl/M3EXiK+
- SWZz5XdakhYh4FW1A7dcQmf095EbpDt6QlmalAQncWGAyZ38yAr21fZDbccKx56bIgdP
- gOxA==
+ :cc; bh=qvVLIkjY2BI+dv8+oCzZLh2KWK9nzy5kALZ0tBgTgmM=;
+ b=OWh41pBG1J4S+aLNqN8FY1vGAKOVV0q8cLx0SnuOQVGkqNsSOZ83FJ5fuLi+ubVelR
+ 4WkFpbVlmdmn0DH11aP6ooZZE+k/uzmghMpqCwLH+nhYm/DkPSncwuOs+wOqujw4LSH/
+ BzhX8IumdS4THN9ErkgjjNxMbBAMHrliXysss=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=sC+CWqmXSvQbdEzFj6mik48sZrpR2zcfHhg4ZTETBBE=;
- b=FtWCmI3guWDn9vQ8bMBeuBCS1pRTFvUSceT0v4rqv8zhBwuI3shURMeDfo6TywLlQL
- LBtQ9l9PU+ADrJe595WFDydChHBePzENYzpH3n3ykUWQESc9j8DXF6sw65iMioJ6zS58
- K3afQZGewv/6o2XLaNqTS1KyMDA+9LemtF3dPOvsCyZ3AK3uVhilumlkXyrRY3r13Its
- rv8WrspEVOTijU1486UMJUrzOWpdpJxUSpF8c+dBhlMxlepHi5lh1kTS1qV1cYV2Visc
- 3kMSy92dG2TowPxKgvL4ex1ufytFoyN6uygVfJCdlyXmkeCgKgeZd3b8Oz50z8W5mvaP
- IsDA==
-X-Gm-Message-State: AOAM532MXeCr56AZxavk6gDTLsufpqje2SxUQzZKjKgozUuDBjfzWCya
- 28/qb8lZKIJ+riGE1sfxR7A6FHKuIyv4ediS7DfmGA==
-X-Google-Smtp-Source: ABdhPJw362ru0c9lLnP975ktgy0BRnIsfVZHKqh07ExNCmbCaUdaW2PAjvmuiDnJ0QjIWUWJZx+zduzSSz6vpSUvFPA=
-X-Received: by 2002:a05:6602:38d:: with SMTP id
- f13mr18110750iov.109.1624241880641; 
- Sun, 20 Jun 2021 19:18:00 -0700 (PDT)
+ bh=qvVLIkjY2BI+dv8+oCzZLh2KWK9nzy5kALZ0tBgTgmM=;
+ b=sSh/+LV4l4fdx+4zU41LRlymIN2PJTLXugOvuwlnYdqZEZffa+HWaf+wSSVxJ5uBb/
+ YHcrbPSju/eksmRcqvJR63QTA+YJoTijsUKsh7mbOQJI/1/g42/fjbO0EpP1UDRSlgpP
+ gIR5SqLvSDShOepW1Bl6eTFd/Bdeps4LQwdUK20+5MGiEJtKhubzEjQdqzwLfgOMTaVt
+ sTgySS8zy1I9aG1HD+sXeEgp3n5EFf5iK+bDypXWukHMoXxK8vjYwFGvvaJb5c648nVY
+ srmPFBd+vjbl/oIy3VgHbhg4TgKj10x0QgjHIZVNWS/9/TvXD1I7LNYj+NYnkF/BKkBa
+ OoEg==
+X-Gm-Message-State: AOAM531fmYShvQQ9DQPXZzBQ5oM7f7vYlZ6OlDo2HOi4++xVTQgFfOe/
+ TEAZgnpIvhZU97A8dxBlsLFhYd1ID1vgodWvbB4gxw==
+X-Google-Smtp-Source: ABdhPJxAPpJQjlpnjyn3YLrmWUJot6rk04KH2QgEsE4DP+8OOfnqFG1fFvwljBtxFszUAT/f7w1dADXRAMG6cRn/VGo=
+X-Received: by 2002:a19:488e:: with SMTP id
+ v136mr12811091lfa.647.1624254775065; 
+ Sun, 20 Jun 2021 22:52:55 -0700 (PDT)
 MIME-Version: 1.0
-References: <1624094597-23993-1-git-send-email-kewei.xu@mediatek.com>
-In-Reply-To: <1624094597-23993-1-git-send-email-kewei.xu@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Mon, 21 Jun 2021 10:17:49 +0800
-Message-ID: <CA+Px+wUo1T6qesMudkOo7+9EP6bLOT4Akzj8DOEg5EG_kQcHjw@mail.gmail.com>
-Subject: Re: [PATCH] i2c: mediatek: Isolate speed setting via dts for special
- devices
-To: kewei.xu@mediatek.com
-Cc: wsa@the-dreams.de, matthias.bgg@gmail.com, linux-i2c@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, 
- leilk.liu@mediatek.com, qii.wang@mediatek.com
+References: <20210617133229.1497-1-angkery@163.com>
+In-Reply-To: <20210617133229.1497-1-angkery@163.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 21 Jun 2021 13:52:44 +0800
+Message-ID: <CAGXv+5Eb7oJ2db41K2vvSN84uAg-V5SjthnvCuuF7H7SfE1aaQ@mail.gmail.com>
+Subject: Re: [PATCH] dmaengine: mediatek: Return the correct errno code
+To: angkery <angkery@163.com>
+Cc: sean.wang@mediatek.com, vkoul@kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, dmaengine@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Junlin Yang <yangjunlin@yulong.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210620_191804_741679_C153ECD7 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20210620_225258_126382_4874ADD4 
+X-CRM114-Status: UNSURE (   7.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,30 +93,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jun 19, 2021 at 5:23 PM <kewei.xu@mediatek.com> wrote:
-> In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust
-> support"), the I2C timing calculation has been revised to support
-> ac-timing, revised to support ac-timing adjustment, however that will
-> break on some I2C components. As a result we want to introduce a new
-> setting "default-adjust-timing" so those components can choose to use the
-> old (default) timing algorithm.
-Could you provide a proper "Fixes" tag.
+On Thu, Jun 17, 2021 at 9:35 PM angkery <angkery@163.com> wrote:
+>
+> From: Junlin Yang <yangjunlin@yulong.com>
+>
+> When devm_kzalloc failed, should return ENOMEM rather than ENODEV.
+>
+> Signed-off-by: Junlin Yang <yangjunlin@yulong.com>
 
-> @@ -544,6 +558,7 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
->                                        OFFSET_HS_STA_STO_AC_TIMING);
->                 }
->         }
-> +       mtk_i2c_writew(i2c, ext_conf_val, OFFSET_EXT_CONF);
-This looks like another fix.  Could you separate this into another
-patch or explain more why it needs to be in the patch?
+Please add proper fixes tags:
 
-> @@ -1284,6 +1355,8 @@ static int mtk_i2c_parse_dt(struct device_node *np, struct mtk_i2c *i2c)
->         i2c->have_pmic = of_property_read_bool(np, "mediatek,have-pmic");
->         i2c->use_push_pull =
->                 of_property_read_bool(np, "mediatek,use-push-pull");
-> +       i2c->default_timing_adjust =
-> +               of_property_read_bool(np, "mediatek,default-timing-adjust");
-Need a DT-binding document patch for the newly added property.
+Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
 
 _______________________________________________
 Linux-mediatek mailing list
