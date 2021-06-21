@@ -5,76 +5,75 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9254EC4743C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 22:42:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89D1DC4743C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 23:07:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F04BE6128A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 22:42:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F04BE6128A
+	by mail.kernel.org (Postfix) with ESMTPS id 2F46761042
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 23:07:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F46761042
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0miBVVGdkYO+iJqRkk5+iwx5u8N4j8u2DHrbIduLigg=; b=R/K4LynhSdJV8B
-	wn4BbDBr5iYL3DsLkccVCVXicmbqdpAFNgY0mpCGdDlU5Oe2FRI3Pj5OZIDc0acgmh1bm9V2CLY5T
-	AAKvPEhzp4syoO6OjrhXDixUEgsQzqhu4d77DNwbk0zQKsBxcQv4EnZgMwiDzv+IYKabqmvmxVJCq
-	ydYwpQKJVd0uLSCAN8ga/7EbtGE21yayWDG0qMg2y3vanNUahvbye9tN1JTOiZQX91fNC9ml/tN+v
-	OVajby0Mi6J6NoKXFgkV2iAZTsjhCBKWSYLQAIqqCDY5iTLpXz8Vm+VwqzM9i5kN15EDDS3OPRUAz
-	Dj+VydKyCJksJJndplNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c2i03NiVZk8N5Cuz9zXgbIezKLk70OK9j2P/CNxcdtw=; b=KQkMDQEwt+rX4H
+	t0plkRPprdBt9zqf4C8mP6OStTE7O8/65bZQVv/sBwHNtSepz2Woendm2Y62aCnIuDMhUmsDVQnsv
+	T7JccTXW9+XGelMUMQ0mcQVh8fPRUR9cxHyGIlTg7C5mm35Z0sTu1jI9FgoWv+9R7kF1zkxUuxBP1
+	GpgFbYVFesKFlZARgQ6OshwPjOoeQRTHWYAqcvE2NDFoNBHRsoXM1wngLKBbrebpr4uSSVhZVmiKx
+	Cgc2XaE4Hm1mSlWad3rZ+3dYutxv9prs2P6aZgV5I9+SEy2HslFEqxxuUiOVKARUG7UlwPlkGA02B
+	MVRi78Yvcg3/LDK9sgkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvSca-004z6y-UG; Mon, 21 Jun 2021 22:42:24 +0000
+	id 1lvT0n-0053Kv-IU; Mon, 21 Jun 2021 23:07:25 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvScW-004z5q-QQ
- for linux-mediatek@lists.infradead.org; Mon, 21 Jun 2021 22:42:24 +0000
-X-UUID: 025dfd812e0a4f0db0f4a6805df420ac-20210621
+ id 1lvT0k-0053Jo-0m
+ for linux-mediatek@lists.infradead.org; Mon, 21 Jun 2021 23:07:23 +0000
+X-UUID: 2aa0a82519854386a44a76c6c4b2bf1c-20210621
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=gy90YuOxCdbD/Za00LOOVOlIjbSjPKJmAkJP3+9fXUE=; 
- b=TeP1VsBTnL8JSjNGQm9/Ce9F9wnQJdPchU2b5yJBwlYT3I0Jtoe90JQweJVUkKLYvSucxhoYIrWA79FXPWAdwXWFI1pIAhJUwZxtcy86uTN7xyIsrbpERVvRsVD0pnGMsu8Ziq5VdXlFEasDqoUZD2kfLa38jVPV5EMR5x40g7E=;
-X-UUID: 025dfd812e0a4f0db0f4a6805df420ac-20210621
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=lNyY1nMVhtlSV854TBP5p/3iMLq1js9z587cojQ4zko=; 
+ b=YeCUV+h4ODJsulnL0T2t4wdUemPV+u+vc5gyxfIHYYhqo1MOs5OXStwWsA9OAtGWiJukzyzG741wz9Eho6DSJJU/Lt55JuJe3QjR41i9xNjq/CvbMUqnfyv7sevdk7tDiOcj8zrUy24CNOpOs2OQeA9exZteC9Xa0jhu4NlCDkM=;
+X-UUID: 2aa0a82519854386a44a76c6c4b2bf1c-20210621
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 816655578; Mon, 21 Jun 2021 15:42:15 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Jun 2021 15:42:13 -0700
+ with ESMTP id 1385100143; Mon, 21 Jun 2021 16:07:18 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 21 Jun 2021 16:07:17 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Jun 2021 06:42:12 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Jun 2021 07:07:15 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 22 Jun 2021 06:42:12 +0800
+ Frontend Transport; Tue, 22 Jun 2021 07:07:15 +0800
 From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>, <Deren.Wu@mediatek.com>,
- <km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <jemele@google.com>, <yenlinlai@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: mt7921: add .set_sar_specs support
-Date: Tue, 22 Jun 2021 06:42:11 +0800
-Message-ID: <1624315331-16608-1-git-send-email-sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2] mt76: mt7921: add .set_sar_specs support
+Date: Tue, 22 Jun 2021 07:07:14 +0800
+Message-ID: <28d23d04a251490241763dd0b5fe50a523f6fb02.1624316313.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YM8NBUZp+/97kiIH@lore-desk--annotate>
-References: <YM8NBUZp+/97kiIH@lore-desk--annotate>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210621_154222_324287_FAF08767 
-X-CRM114-Status: GOOD (  27.86  )
+X-CRM114-CacheID: sfid-20210621_160722_121928_3E246F4E 
+X-CRM114-Status: GOOD (  20.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,229 +90,233 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: YN Chen <YN.Chen@mediatek.com>
 
->> From: YN Chen <YN.Chen@mediatek.com>
->>
->> add .set_sar_specs to allow configuring SAR power limitations on the
->> frequency ranges from the userland.
->>
->> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
->> ---
->>  drivers/net/wireless/mediatek/mt76/mt76.h     |  3 ++
->>  .../net/wireless/mediatek/mt76/mt76_connac.h  |  5 +++
->> .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 24 +++++++++-
->> .../net/wireless/mediatek/mt76/mt7921/init.c  | 21 +++++++++
->> .../net/wireless/mediatek/mt76/mt7921/main.c  | 45 +++++++++++++++++++
->>  5 files changed, 97 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
->> b/drivers/net/wireless/mediatek/mt76/mt76.h
->> index 25c5ceef5257..63ce5242c4d5 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
->> @@ -636,6 +636,9 @@ struct mt76_phy {
->>		struct sk_buff **tail;
->>		u16 seqno;
->>	} rx_amsdu[__MT_RXQ_MAX];
->> +
->> +	void *frp_data;
->> +	u8 num_frps;
->>  };
->>
->>  struct mt76_dev {
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
->> b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
->> index f49d97d0a1c5..95c7d1cac7c4 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
->> @@ -83,6 +83,11 @@ struct mt76_connac_coredump {
->>	unsigned long last_activity;
->>  };
->>
->> +struct mt76_connac_freq_range_power {
->> +	const struct cfg80211_sar_freq_ranges *range;
->> +	s8 power;
->> +};
->> +
->>  extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
->>
->>  static inline bool is_mt7921(struct mt76_dev *dev) diff --git
->> a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> index 5c3a81e5f559..07f45cb4f500 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> @@ -1749,6 +1749,24 @@ mt76_connac_mcu_build_sku(struct mt76_dev *dev, s8 *sku,
->>	}
->>  }
->>
->> +static s8 mt76_connac_get_sar_power(struct mt76_phy *phy,
->> +				    struct ieee80211_channel *chan,
->> +				    s8 target_power)
->> +{
->> +	struct mt76_connac_freq_range_power *frp = phy->frp_data;
->> +	int freq, i;
->> +
->> +	freq = ieee80211_channel_to_frequency(chan->hw_value, chan->band);
->> +	for (i = 0 ; i < phy->num_frps; i++) {
->> +		if (frp[i].range &&
->> +		    freq >= frp[i].range->start_freq &&
->> +		    freq < frp[i].range->end_freq)
->> +			target_power = min_t(s8, frp[i].power, target_power);
->
->can we have overlapping freq range? if not I guess you can add a break here.
+add .set_sar_specs to allow configuring SAR power limitations on the
+frequency ranges from the userland.
 
-It is supposed to be there is no overlapping freq range for the real use case. I will add a break in the next version.
->
->
->> +	}
->> +
->> +	return target_power;
->> +}
->> +
->>  static int
->>  mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->>				  enum nl80211_band band)
->> @@ -1816,9 +1834,13 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->>				.hw_value = ch_list[idx],
->>				.band = band,
->>			};
->> +			s8 sar_power;
->> +
->> +			sar_power = mt76_connac_get_sar_power(phy, &chan,
->> +							      tx_power);
->>
->>			mt76_get_rate_power_limits(phy, &chan, &limits,
->> -						   tx_power);
->> +						   sar_power);
->>
->>			tx_power_tlv.last_msg = ch_list[idx] == last_ch;
->>			sku_tlbv.channel = ch_list[idx];
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
->> b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
->> index a9ce10b98827..e7f66d988a49 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
->> @@ -24,6 +24,20 @@ static const struct ieee80211_iface_combination if_comb[] = {
->>	}
->>  };
->>
->> +const struct cfg80211_sar_freq_ranges mt7921_sar_freq_ranges[] = {
->> +	{ .start_freq = 2402, .end_freq = 2494, },
->> +	{ .start_freq = 5150, .end_freq = 5350, },
->> +	{ .start_freq = 5350, .end_freq = 5470, },
->> +	{ .start_freq = 5470, .end_freq = 5725, },
->> +	{ .start_freq = 5725, .end_freq = 5950, }, };
->> +
->> +static const struct cfg80211_sar_capa mt7921_sar_capa = {
->> +	.type = NL80211_SAR_TYPE_POWER,
->> +	.num_freq_ranges = ARRAY_SIZE(mt7921_sar_freq_ranges),
->> +	.freq_ranges = &mt7921_sar_freq_ranges[0], };
->> +
->>  static void
->>  mt7921_regd_notifier(struct wiphy *wiphy,
->>		     struct regulatory_request *request) @@ -75,6 +89,13 @@
->> mt7921_init_wiphy(struct ieee80211_hw *hw)
->>	wiphy->max_sched_scan_reqs = 1;
->>	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
->>	wiphy->reg_notifier = mt7921_regd_notifier;
->> +	wiphy->sar_capa = &mt7921_sar_capa;
->> +
->> +	phy->mt76->frp_data = devm_kcalloc(dev->mt76.dev,
->> +					   wiphy->sar_capa->num_freq_ranges,
->> +					   sizeof(struct mt76_connac_freq_range_power),
->> +					   GFP_KERNEL);
->
->Here I guess we need to check if devm_kcalloc fails returning an int from
->mt7921_init_wiphy()
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+---
+v2: 1. loop enhancement with considering no overlapping freqs
+    2. error handling for devm_kcalloc
+    3. sanity check without acquire lock
+---
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  3 ++
+ .../net/wireless/mediatek/mt76/mt76_connac.h  |  5 +++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 26 +++++++++++-
+ .../net/wireless/mediatek/mt76/mt7921/init.c  | 33 ++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7921/main.c  | 41 +++++++++++++++++++
+ 5 files changed, 105 insertions(+), 3 deletions(-)
 
-Sure, will do it.
-
->
->> +	phy->mt76->num_frps = wiphy->sar_capa->num_freq_ranges;
->>
->>	wiphy->features |= NL80211_FEATURE_SCHED_SCAN_RANDOM_MAC_ADDR |
->>			   NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR;
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> index 7fd21049ff5a..e9b5d79e139f 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> @@ -1171,6 +1171,50 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
->>					     MCU_UNI_CMD_STA_REC_UPDATE);  }
->>
->> +static int mt7921_set_sar_specs(struct ieee80211_hw *hw,
->> +				const struct cfg80211_sar_specs *sar) {
->> +	const struct cfg80211_sar_capa *capa = hw->wiphy->sar_capa;
->> +	struct mt76_connac_freq_range_power *frp_data, *frp;
->> +	struct mt7921_dev *dev = mt7921_hw_dev(hw);
->> +	struct mt76_phy *mphy = hw->priv;
->> +	int err;
->> +	u32 i;
->> +
->> +	mt7921_mutex_acquire(dev);
->> +
->> +	if (!sar || sar->type != NL80211_SAR_TYPE_POWER ||
->> +	    sar->num_sub_specs == 0) {
->> +		err = -EINVAL;
->> +		goto out;
->> +	}
->
->I guess you can move this out of the lock
->
-
-Sure, will do it.
-
->> +
->> +	frp_data = mphy->frp_data;
->> +
->> +	for (i = 0; i < sar->num_sub_specs; i++) {
->> +		u32 index = sar->sub_specs[i].freq_range_index;
->> +		/* SAR specifies power limitaton in 0.25dbm */
->> +		s32 power = sar->sub_specs[i].power >> 1;
->> +
->> +		if (power > 127 || power < -127)
->> +			power = 127;
->> +
->> +		if (index >= mphy->num_frps)
->> +			continue;
->> +
->> +		frp = &frp_data[index];
->> +		frp->range = &capa->freq_ranges[index];
->
->I guess there is an use-after-free here since sar is freed at the end of nl80211_set_sar_specs, right?
->
-
-Nope, there is no use-after-free case happens here because frp->range just points to an entry of const struct cfg80211_sar_specs table, not the one created from nl80211_set_sar_specs.
-
->Regards,
->Lorenzo
->
->> +		frp->power = power;
->> +	}
->> +
->> +	err = mt76_connac_mcu_set_rate_txpower(mphy);
->> +
->> +out:
->> +	mt7921_mutex_release(dev);
->> +
->> +	return err;
->> +}
->> +
->>  const struct ieee80211_ops mt7921_ops = {
->>	.tx = mt7921_tx,
->>	.start = mt7921_start,
->> @@ -1209,4 +1253,5 @@ const struct ieee80211_ops mt7921_ops = {
->>	.set_rekey_data = mt7921_set_rekey_data,  #endif /* CONFIG_PM */
->>	.flush = mt7921_flush,
->> +	.set_sar_specs = mt7921_set_sar_specs,
->>  };
->> --
->> 2.25.1
->>
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 25c5ceef5257..63ce5242c4d5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -636,6 +636,9 @@ struct mt76_phy {
+ 		struct sk_buff **tail;
+ 		u16 seqno;
+ 	} rx_amsdu[__MT_RXQ_MAX];
++
++	void *frp_data;
++	u8 num_frps;
+ };
+ 
+ struct mt76_dev {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+index f49d97d0a1c5..95c7d1cac7c4 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
+@@ -83,6 +83,11 @@ struct mt76_connac_coredump {
+ 	unsigned long last_activity;
+ };
+ 
++struct mt76_connac_freq_range_power {
++	const struct cfg80211_sar_freq_ranges *range;
++	s8 power;
++};
++
+ extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
+ 
+ static inline bool is_mt7921(struct mt76_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 5c3a81e5f559..497de1d91c7c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1749,6 +1749,26 @@ mt76_connac_mcu_build_sku(struct mt76_dev *dev, s8 *sku,
+ 	}
+ }
+ 
++static s8 mt76_connac_get_sar_power(struct mt76_phy *phy,
++				    struct ieee80211_channel *chan,
++				    s8 target_power)
++{
++	struct mt76_connac_freq_range_power *frp = phy->frp_data;
++	int freq, i;
++
++	freq = ieee80211_channel_to_frequency(chan->hw_value, chan->band);
++	for (i = 0 ; i < phy->num_frps; i++) {
++		if (frp[i].range &&
++		    freq >= frp[i].range->start_freq &&
++		    freq < frp[i].range->end_freq) {
++			target_power = min_t(s8, frp[i].power, target_power);
++			break;
++		}
++	}
++
++	return target_power;
++}
++
+ static int
+ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 				  enum nl80211_band band)
+@@ -1816,9 +1836,13 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 				.hw_value = ch_list[idx],
+ 				.band = band,
+ 			};
++			s8 sar_power;
++
++			sar_power = mt76_connac_get_sar_power(phy, &chan,
++							      tx_power);
+ 
+ 			mt76_get_rate_power_limits(phy, &chan, &limits,
+-						   tx_power);
++						   sar_power);
+ 
+ 			tx_power_tlv.last_msg = ch_list[idx] == last_ch;
+ 			sku_tlbv.channel = ch_list[idx];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index a9ce10b98827..c11a5b925209 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -24,6 +24,20 @@ static const struct ieee80211_iface_combination if_comb[] = {
+ 	}
+ };
+ 
++const struct cfg80211_sar_freq_ranges mt7921_sar_freq_ranges[] = {
++	{ .start_freq = 2402, .end_freq = 2494, },
++	{ .start_freq = 5150, .end_freq = 5350, },
++	{ .start_freq = 5350, .end_freq = 5470, },
++	{ .start_freq = 5470, .end_freq = 5725, },
++	{ .start_freq = 5725, .end_freq = 5950, },
++};
++
++static const struct cfg80211_sar_capa mt7921_sar_capa = {
++	.type = NL80211_SAR_TYPE_POWER,
++	.num_freq_ranges = ARRAY_SIZE(mt7921_sar_freq_ranges),
++	.freq_ranges = &mt7921_sar_freq_ranges[0],
++};
++
+ static void
+ mt7921_regd_notifier(struct wiphy *wiphy,
+ 		     struct regulatory_request *request)
+@@ -41,7 +55,7 @@ mt7921_regd_notifier(struct wiphy *wiphy,
+ 	mt7921_mutex_release(dev);
+ }
+ 
+-static void
++static int
+ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ {
+ 	struct mt7921_phy *phy = mt7921_hw_phy(hw);
+@@ -75,6 +89,16 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 	wiphy->max_sched_scan_reqs = 1;
+ 	wiphy->flags |= WIPHY_FLAG_HAS_CHANNEL_SWITCH;
+ 	wiphy->reg_notifier = mt7921_regd_notifier;
++	wiphy->sar_capa = &mt7921_sar_capa;
++
++	phy->mt76->frp_data = devm_kcalloc(dev->mt76.dev,
++					   wiphy->sar_capa->num_freq_ranges,
++					   sizeof(struct mt76_connac_freq_range_power),
++					   GFP_KERNEL);
++	if (!phy->mt76->frp_data)
++		return -ENOMEM;
++
++	phy->mt76->num_frps = wiphy->sar_capa->num_freq_ranges;
+ 
+ 	wiphy->features |= NL80211_FEATURE_SCHED_SCAN_RANDOM_MAC_ADDR |
+ 			   NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR;
+@@ -92,6 +116,8 @@ mt7921_init_wiphy(struct ieee80211_hw *hw)
+ 		ieee80211_hw_set(hw, CONNECTION_MONITOR);
+ 
+ 	hw->max_tx_fragments = 4;
++
++	return 0;
+ }
+ 
+ static void
+@@ -207,7 +233,10 @@ int mt7921_register_device(struct mt7921_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	mt7921_init_wiphy(hw);
++	ret = mt7921_init_wiphy(hw);
++	if (ret)
++		return ret;
++
+ 	dev->mphy.sband_2g.sband.ht_cap.cap |=
+ 			IEEE80211_HT_CAP_LDPC_CODING |
+ 			IEEE80211_HT_CAP_MAX_AMSDU;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 7fd21049ff5a..f1a08776ea97 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -1171,6 +1171,46 @@ static void mt7921_sta_set_decap_offload(struct ieee80211_hw *hw,
+ 					     MCU_UNI_CMD_STA_REC_UPDATE);
+ }
+ 
++static int mt7921_set_sar_specs(struct ieee80211_hw *hw,
++				const struct cfg80211_sar_specs *sar)
++{
++	const struct cfg80211_sar_capa *capa = hw->wiphy->sar_capa;
++	struct mt76_connac_freq_range_power *frp_data, *frp;
++	struct mt7921_dev *dev = mt7921_hw_dev(hw);
++	struct mt76_phy *mphy = hw->priv;
++	int err;
++	u32 i;
++
++	if (!sar || sar->type != NL80211_SAR_TYPE_POWER || !sar->num_sub_specs)
++		return -EINVAL;
++
++	mt7921_mutex_acquire(dev);
++
++	frp_data = mphy->frp_data;
++
++	for (i = 0; i < sar->num_sub_specs; i++) {
++		u32 index = sar->sub_specs[i].freq_range_index;
++		/* SAR specifies power limitaton in 0.25dbm */
++		s32 power = sar->sub_specs[i].power >> 1;
++
++		if (power > 127 || power < -127)
++			power = 127;
++
++		if (index >= mphy->num_frps)
++			continue;
++
++		frp = &frp_data[index];
++		frp->range = &capa->freq_ranges[index];
++		frp->power = power;
++	}
++
++	err = mt76_connac_mcu_set_rate_txpower(mphy);
++
++	mt7921_mutex_release(dev);
++
++	return err;
++}
++
+ const struct ieee80211_ops mt7921_ops = {
+ 	.tx = mt7921_tx,
+ 	.start = mt7921_start,
+@@ -1209,4 +1249,5 @@ const struct ieee80211_ops mt7921_ops = {
+ 	.set_rekey_data = mt7921_set_rekey_data,
+ #endif /* CONFIG_PM */
+ 	.flush = mt7921_flush,
++	.set_sar_specs = mt7921_set_sar_specs,
+ };
+-- 
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
