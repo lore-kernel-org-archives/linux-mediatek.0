@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86CC0C4743C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 17:55:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03C18C4743C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:00:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5185A61413
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 17:55:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5185A61413
+	by mail.kernel.org (Postfix) with ESMTPS id CD4CD60C41
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:00:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD4CD60C41
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2U2F5gk/UPyB77wVodpdo5pbut5VqofxcImqfhIafTM=; b=Q0/PlZe1/6XPaf
-	CckqgDgXNAez+or7nKVjp9iTaVUpcyD0O0xHvGXkNLjNM9I7/M2EOhIhL5ULQKet6fMZIKndGGhLi
-	ZyN3BGi9RQhNou0xwgA9DWlX3xIwAaV5Weg5K5YN/5pAM3lV1CSon+Sd6tERLdf9AKb+/X3FhQqvc
-	yXkgctCi3z4l/SZYN3xyLzgR5X0EQZ96rSOnE9vwC4aaz/3qjj0SW8XiPqc4tcYitiJ7g4juEj2DL
-	ZEdSDAJu/nCMVpPkhFMrQ5hk37lHKeG6034In2jGUwZnwp9Me9YdkMdmNtKDtEMGKyERz189qPmM4
-	pih/OWRUlqSZHutxgVDA==;
+	List-Owner; bh=BCANgiGtWrooybILJmK8+Lq9vfqfrkUZJRFQoL5MoKk=; b=nI5mLkCR3C3axs
+	h+sf618LqrDF676YdRjemLcO8MiV4WO1s52i/2hTmwD7am/Al5tjKhl433WAKKtTep2rLRvKJTJsJ
+	ezRHBPx60i5H27J/4xR636YCSLAa33v/vFUNPU/XJTpIU+NmeDR8MdXyoYzSWzDN6jty8UXYcdN4Y
+	hxwN5+Y7dNFn0Qa9wo2B8o3TjtX+9PCaQKNYQxTAIPI+hgWVSda8MXQV2vSFXWgcTkHlqhaKR3pgH
+	/lcFP4rm21REHK+nvHRK5cfrCbAZ0rcNFFCdRaZPavFurocrsBkXK2LOcPHP3a7bOs8QlxAwPXYP5
+	lmX+qRS7mDcLYLhHcZOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvO8r-004LlK-OW; Mon, 21 Jun 2021 17:55:25 +0000
+	id 1lvODL-004OFx-TS; Mon, 21 Jun 2021 18:00:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvO6O-004KDY-NW; Mon, 21 Jun 2021 17:52:54 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7E9216137D;
- Mon, 21 Jun 2021 17:52:51 +0000 (UTC)
+ id 1lvO6l-004KRo-1q; Mon, 21 Jun 2021 17:53:16 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D610161351;
+ Mon, 21 Jun 2021 17:53:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1624297972;
- bh=+6wiNLqqnTiDXKehP3jGCjGTfB/a5ux91Dp8LbOhIfg=;
+ s=k20201202; t=1624297994;
+ bh=CLTuuoFwywq1hHxTJ3AIr3/xb3KbmESfbeouoSsX3pY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fUxlSyr5kEpI41eoequ9VoUYc860tMz08PeSDAd7bhd+rgdpkZwxEixZiiaB5bnJZ
- Ghm6YGUgy5VuvOgwX/crnnI4fr+Zuk6wn09z3pU/5mdEycbpHwUG9wWzdPSUteco0e
- skJ+oV9Zw1+2BuUbhGrQ7yc/N8de8fF9vNbyH63UIdL0P6wg4JpOhJy9BgiMXW6811
- gh4phtv3jOXYoRJkz2KxDrCAv4uhJkXn8UX8XuPG/rYBkevKkY8uNZwfnGeVHwR58Y
- WhQbx7sCZu5MQr7fqhTCGKFfkT/SA35WvZ0GpZBlPVvl9FxW02NqbGBBVolaLgqUJ+
- il4NxOnxoHs2w==
+ b=OtbEbeojWPsmiSJ6F1w8I7qyAIHYakgyNBPdhVnQDqUrMQxYnJNCzWJOr6Uyo0bbS
+ wtghlKr5cAlPq4qb/ouHofe0ICjQ2Bh4cOBpa6P9VVLbSX+5U/nBx3imNG5bhSLKyO
+ rBNi/HWHqtqj+kwZ8D8fTO7pPzM1GMpOvd3EBZr6Wab0saZH6TzFHyKFE19i1Q2Ac3
+ CwWFs4ODrYdIhOh3/5jk6gP6Dcc96F7BjzRICIN0zYKR/Diy1qWwuwpAsFj2JCHNQm
+ XtLUxSjhqeaZ+qCqkxaABsQkMTiWCzW/R0EGSAp/1XK4e8o7cnKo0OYwsbxaoc/uQH
+ pOXAptRMralow==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Peter Zijlstra <peterz@infradead.org>,
- Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
- Steven Rostedt <rostedt@goodmis.org>, Sasha Levin <sashal@kernel.org>,
+Cc: Guillaume Ranquet <granquet@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
+ Sasha Levin <sashal@kernel.org>, dmaengine@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 35/39] recordmcount: Correct st_shndx handling
-Date: Mon, 21 Jun 2021 13:51:51 -0400
-Message-Id: <20210621175156.735062-35-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 09/35] dmaengine: mediatek: free the proper desc
+ in desc_free handler
+Date: Mon, 21 Jun 2021 13:52:34 -0400
+Message-Id: <20210621175300.735437-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210621175156.735062-1-sashal@kernel.org>
-References: <20210621175156.735062-1-sashal@kernel.org>
+In-Reply-To: <20210621175300.735437-1-sashal@kernel.org>
+References: <20210621175300.735437-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210621_105252_828883_62236AF9 
-X-CRM114-Status: GOOD (  11.23  )
+X-CRM114-CacheID: sfid-20210621_105315_204843_1E6C7627 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,59 +83,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Zijlstra <peterz@infradead.org>
+From: Guillaume Ranquet <granquet@baylibre.com>
 
-[ Upstream commit fb780761e7bd9f2e94f5b9a296ead6b35b944206 ]
+[ Upstream commit 0a2ff58f9f8f95526ecb0ccd7517fefceb96f661 ]
 
-One should only use st_shndx when >SHN_UNDEF and <SHN_LORESERVE. When
-SHN_XINDEX, then use .symtab_shndx. Otherwise use 0.
+The desc_free handler assumed that the desc we want to free was always
+ the current one associated with the channel.
 
-This handles the case: st_shndx >= SHN_LORESERVE && st_shndx != SHN_XINDEX.
+This is seldom the case and this is causing use after free crashes in
+ multiple places (tx/rx/terminate...).
 
-Link: https://lore.kernel.org/lkml/20210607023839.26387-1-mark-pk.tsai@mediatek.com/
-Link: https://lkml.kernel.org/r/20210616154126.2794-1-mark-pk.tsai@mediatek.com
+  BUG: KASAN: use-after-free in mtk_uart_apdma_rx_handler+0x120/0x304
 
-Reported-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
-[handle endianness of sym->st_shndx]
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
+  Call trace:
+   dump_backtrace+0x0/0x1b0
+   show_stack+0x24/0x34
+   dump_stack+0xe0/0x150
+   print_address_description+0x8c/0x55c
+   __kasan_report+0x1b8/0x218
+   kasan_report+0x14/0x20
+   __asan_load4+0x98/0x9c
+   mtk_uart_apdma_rx_handler+0x120/0x304
+   mtk_uart_apdma_irq_handler+0x50/0x80
+   __handle_irq_event_percpu+0xe0/0x210
+   handle_irq_event+0x8c/0x184
+   handle_fasteoi_irq+0x1d8/0x3ac
+   __handle_domain_irq+0xb0/0x110
+   gic_handle_irq+0x50/0xb8
+   el0_irq_naked+0x60/0x6c
+
+  Allocated by task 3541:
+   __kasan_kmalloc+0xf0/0x1b0
+   kasan_kmalloc+0x10/0x1c
+   kmem_cache_alloc_trace+0x90/0x2dc
+   mtk_uart_apdma_prep_slave_sg+0x6c/0x1a0
+   mtk8250_dma_rx_complete+0x220/0x2e4
+   vchan_complete+0x290/0x340
+   tasklet_action_common+0x220/0x298
+   tasklet_action+0x28/0x34
+   __do_softirq+0x158/0x35c
+
+  Freed by task 3541:
+   __kasan_slab_free+0x154/0x224
+   kasan_slab_free+0x14/0x24
+   slab_free_freelist_hook+0xf8/0x15c
+   kfree+0xb4/0x278
+   mtk_uart_apdma_desc_free+0x34/0x44
+   vchan_complete+0x1bc/0x340
+   tasklet_action_common+0x220/0x298
+   tasklet_action+0x28/0x34
+   __do_softirq+0x158/0x35c
+
+  The buggy address belongs to the object at ffff000063606800
+   which belongs to the cache kmalloc-256 of size 256
+  The buggy address is located 176 bytes inside of
+   256-byte region [ffff000063606800, ffff000063606900)
+  The buggy address belongs to the page:
+  page:fffffe00016d8180 refcount:1 mapcount:0 mapping:ffff00000302f600 index:0x0 compound_mapcount: 0
+  flags: 0xffff00000010200(slab|head)
+  raw: 0ffff00000010200 dead000000000100 dead000000000122 ffff00000302f600
+  raw: 0000000000000000 0000000080100010 00000001ffffffff 0000000000000000
+  page dumped because: kasan: bad access detected
+
+Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+
+Link: https://lore.kernel.org/r/20210513192642.29446-2-granquet@baylibre.com
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- scripts/recordmcount.h | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ drivers/dma/mediatek/mtk-uart-apdma.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
-index f9b19524da11..1e9baa5c4fc6 100644
---- a/scripts/recordmcount.h
-+++ b/scripts/recordmcount.h
-@@ -192,15 +192,20 @@ static unsigned int get_symindex(Elf_Sym const *sym, Elf32_Word const *symtab,
- 				 Elf32_Word const *symtab_shndx)
+diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
+index 27c07350971d..e38b67fc0c0c 100644
+--- a/drivers/dma/mediatek/mtk-uart-apdma.c
++++ b/drivers/dma/mediatek/mtk-uart-apdma.c
+@@ -131,10 +131,7 @@ static unsigned int mtk_uart_apdma_read(struct mtk_chan *c, unsigned int reg)
+ 
+ static void mtk_uart_apdma_desc_free(struct virt_dma_desc *vd)
  {
- 	unsigned long offset;
-+	unsigned short shndx = w2(sym->st_shndx);
- 	int index;
- 
--	if (sym->st_shndx != SHN_XINDEX)
--		return w2(sym->st_shndx);
-+	if (shndx > SHN_UNDEF && shndx < SHN_LORESERVE)
-+		return shndx;
- 
--	offset = (unsigned long)sym - (unsigned long)symtab;
--	index = offset / sizeof(*sym);
-+	if (shndx == SHN_XINDEX) {
-+		offset = (unsigned long)sym - (unsigned long)symtab;
-+		index = offset / sizeof(*sym);
- 
--	return w(symtab_shndx[index]);
-+		return w(symtab_shndx[index]);
-+	}
-+
-+	return 0;
+-	struct dma_chan *chan = vd->tx.chan;
+-	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
+-
+-	kfree(c->desc);
++	kfree(container_of(vd, struct mtk_uart_apdma_desc, vd));
  }
  
- static unsigned int get_shnum(Elf_Ehdr const *ehdr, Elf_Shdr const *shdr0)
+ static void mtk_uart_apdma_start_tx(struct mtk_chan *c)
 -- 
 2.30.2
 
