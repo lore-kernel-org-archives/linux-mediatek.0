@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8153EC4743C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 68300C4743C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:09:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E4896100B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:08:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E4896100B
+	by mail.kernel.org (Postfix) with ESMTPS id 372E660698
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Jun 2021 18:09:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 372E660698
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D/LePel0bFFePnTYAj1eROqPFKln8u+4GzFyuUZQP1c=; b=bAN+sU69huZjM1
-	5JouU+9POJZj10xJNcnkTdvz3gROYFWmHcro6QnFXWxU1o/Wd9ddZNv9AUkrEL5/MmN7CrGWFfunn
-	IYhGxWoJu5teENXjUAv32f8F1LON4bDYZkqRWnqj+YUyvKYIcbfpzTZiTjvJU4xOdapNYExBG3acd
-	DQfCadfZQuyka0/rUHuIJEBo+DXA0MiN0Q6unG5Q+tohxogjCo4zHfBcCuPJSLmMOMGKoi9fwa156
-	3ZpgakJoB2+YFT2Zs71aXdl5gu3tAWBDCMJF1RS4Ha7RbUwLXMo7G4+rhqFV6VYo9Dn+QX+tGMxbX
-	jYPgtMsk6SCMpYs51kuA==;
+	List-Owner; bh=2U2F5gk/UPyB77wVodpdo5pbut5VqofxcImqfhIafTM=; b=Vt/TFzhBl9Vazh
+	gvqceCJIgUDzWPQCmclrGoiOpRMzdlX+H9oaZQP47+kODcW3to6SShP+uYGDjEf3lZ2O0hIjjVFZk
+	gK483q5BCM3ofmzrY/oIRHWILa3Gi+B8dU2sNPncTZHtVVZr4Nzx1CuoajJghmsJbGgQciolw5ek3
+	o2ddQCCASeB2+qzUYsbIBLIfnnhkIbMncpFiG44/jDaher1wYazQUfz01RZnnQkdKf5E3jZOCMz00
+	Xya7IgWBD0UX960UvDhPtkql7E24gOCag5izaIwUnziesWBw0LtE90n+JaHerMMxJbyI7S82dZTZm
+	qqwPfytrtCi2lctVjdpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvOKu-004SCd-RB; Mon, 21 Jun 2021 18:07:52 +0000
+	id 1lvOLp-004Sir-JE; Mon, 21 Jun 2021 18:08:49 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvO7j-004L3N-RC; Mon, 21 Jun 2021 17:54:17 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 9BEC461360;
- Mon, 21 Jun 2021 17:54:14 +0000 (UTC)
+ id 1lvO89-004LJO-Of; Mon, 21 Jun 2021 17:54:43 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 6EDAF60C41;
+ Mon, 21 Jun 2021 17:54:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1624298055;
- bh=0EfZd7DYiKHVWO3GhjofK8wxYjHRVA4dvSvIY09L6tw=;
+ s=k20201202; t=1624298081;
+ bh=+6wiNLqqnTiDXKehP3jGCjGTfB/a5ux91Dp8LbOhIfg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=b/oBD4F7tgD1nC+gKISEpAIguh8dmTc5/SgdEI2Z1b5ujYx9v4S3uUV9MeEbBDZ7M
- 1Sr5KpNyD7rq0/mRMR3YGk5I6tYZAE6XpJZd9bqJddZtm+FRNqfyBZ3g4xqjp1NXRn
- LclnbA9ZSiD8jNI3K0GvmkP21Z2U1Ogo3it5EGN86K24KooKDTO1UQpLAlSxJ6sKpp
- 5UPzWpNRMdHRteiLB2198cWLkpsIGk+Ra1ip5BXGBpRp82m43RrOvyMRHtMRw4L5Wh
- wp6zhUcC627Jq/esb3lFl3uwCTITHqg4vREv8Cx0I4HpbWm/JEYw/A+yIS+bo/lkgo
- zGVssskaYdEoA==
+ b=gCeeC9xTJkhNKj47Mr+zBc1JDoEOVQuSx3Zzo0WNvTBF/vBKrgL86UE4R9HzxKU/e
+ qR+1TLR/KNiyZD4FlyyGmiMAj578xhQc35PhbwLU+YsCNkMHPVei9Q0cZX3fuBjRrt
+ iwRn9fnY6BBJoRiAM1W/VNRo4mwyRmgjWS/VbgZLJS8Oxr0cGSN8cqc1xZbluloI4G
+ j1PfEuQK6YjrefWCbohBV75+PziPdX6ARMhQBXUrm71D0rLdyCB4XwmKTcXW1MSlOr
+ Xr18UBAeX6wfHGC5eAd91vitA0Wc0oGGc0ZxOo0Dmlu46fB5cAJLxbe+qqtznYKOH7
+ tv9zWFt9UkHQw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Guillaume Ranquet <granquet@baylibre.com>, Vinod Koul <vkoul@kernel.org>,
- Sasha Levin <sashal@kernel.org>, dmaengine@vger.kernel.org,
+Cc: Peter Zijlstra <peterz@infradead.org>,
+ Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
+ Steven Rostedt <rostedt@goodmis.org>, Sasha Levin <sashal@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 08/26] dmaengine: mediatek: use GFP_NOWAIT instead
- of GFP_ATOMIC in prep_dma
-Date: Mon, 21 Jun 2021 13:53:41 -0400
-Message-Id: <20210621175400.735800-8-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 23/26] recordmcount: Correct st_shndx handling
+Date: Mon, 21 Jun 2021 13:53:56 -0400
+Message-Id: <20210621175400.735800-23-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210621175400.735800-1-sashal@kernel.org>
 References: <20210621175400.735800-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210621_105415_949515_80D748FC 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20210621_105441_868323_A787EEA8 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,37 +82,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guillaume Ranquet <granquet@baylibre.com>
+From: Peter Zijlstra <peterz@infradead.org>
 
-[ Upstream commit 9041575348b21ade1fb74d790f1aac85d68198c7 ]
+[ Upstream commit fb780761e7bd9f2e94f5b9a296ead6b35b944206 ]
 
-As recommended by the doc in:
-Documentation/drivers-api/dmaengine/provider.rst
+One should only use st_shndx when >SHN_UNDEF and <SHN_LORESERVE. When
+SHN_XINDEX, then use .symtab_shndx. Otherwise use 0.
 
-Use GFP_NOWAIT to not deplete the emergency pool.
+This handles the case: st_shndx >= SHN_LORESERVE && st_shndx != SHN_XINDEX.
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+Link: https://lore.kernel.org/lkml/20210607023839.26387-1-mark-pk.tsai@mediatek.com/
+Link: https://lkml.kernel.org/r/20210616154126.2794-1-mark-pk.tsai@mediatek.com
 
-Link: https://lore.kernel.org/r/20210513192642.29446-4-granquet@baylibre.com
-Signed-off-by: Vinod Koul <vkoul@kernel.org>
+Reported-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Tested-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+[handle endianness of sym->st_shndx]
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/dma/mediatek/mtk-uart-apdma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/recordmcount.h | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index e420e9f72b3d..9c0ea13ca788 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -349,7 +349,7 @@ static struct dma_async_tx_descriptor *mtk_uart_apdma_prep_slave_sg
- 		return NULL;
+diff --git a/scripts/recordmcount.h b/scripts/recordmcount.h
+index f9b19524da11..1e9baa5c4fc6 100644
+--- a/scripts/recordmcount.h
++++ b/scripts/recordmcount.h
+@@ -192,15 +192,20 @@ static unsigned int get_symindex(Elf_Sym const *sym, Elf32_Word const *symtab,
+ 				 Elf32_Word const *symtab_shndx)
+ {
+ 	unsigned long offset;
++	unsigned short shndx = w2(sym->st_shndx);
+ 	int index;
  
- 	/* Now allocate and setup the descriptor */
--	d = kzalloc(sizeof(*d), GFP_ATOMIC);
-+	d = kzalloc(sizeof(*d), GFP_NOWAIT);
- 	if (!d)
- 		return NULL;
+-	if (sym->st_shndx != SHN_XINDEX)
+-		return w2(sym->st_shndx);
++	if (shndx > SHN_UNDEF && shndx < SHN_LORESERVE)
++		return shndx;
  
+-	offset = (unsigned long)sym - (unsigned long)symtab;
+-	index = offset / sizeof(*sym);
++	if (shndx == SHN_XINDEX) {
++		offset = (unsigned long)sym - (unsigned long)symtab;
++		index = offset / sizeof(*sym);
+ 
+-	return w(symtab_shndx[index]);
++		return w(symtab_shndx[index]);
++	}
++
++	return 0;
+ }
+ 
+ static unsigned int get_shnum(Elf_Ehdr const *ehdr, Elf_Shdr const *shdr0)
 -- 
 2.30.2
 
