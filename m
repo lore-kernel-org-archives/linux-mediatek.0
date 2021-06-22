@@ -2,89 +2,123 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 943F9C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 14:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74EABC49EA5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5359860FF4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 14:04:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5359860FF4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 45F0461027
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 14:10:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45F0461027
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=13OYccHKTLn1Vde21xKVHdWlpcpCtC5bSrbJhruNnw4=; b=MnyGSUAZurUK7I
-	b/1bUQNR7dMbqIroonnuOrVy1cMgW782Qq6/f6mxrWIRCRUIcDnpXFTPDYsOVIIWMER4z0IsnwGZU
-	ANAlfVmNZ3QcQ0EuZ87FdSnA4jIwjKvyl6m1kFSm/9uAyM6Vq8OFGz5xtZMcV1ahbErl8pMDlxAQE
-	mutVloMZsRI3r+PT/W4knb/GzfMwY7So8dSs6NZLsg/DKIGfhmGYuZdgXd87pddLPDzvwM6YioQEB
-	44Q0icwqNI5CZdXO0A+t3KQRzldfPbXsvl0xrjl0mTYl9ptGuejaraLUft7ZLOFogG8rVnL2wjjBV
-	eNk3epu57pleKRGpvUVw==;
+	List-Owner; bh=DpKpv+lHQ6+vEG3EaD/zR53zTx41ijhfQRQuujud8r0=; b=g4SYfQnUJbEDgk
+	2Rpl5HA8fyd/sLcc+GSm1NbvutFM7sc+6sLjPyd6VrpRy6QKuBePDTftlg8u3z3oTlrKkEgc28o8x
+	PK6waw/eDWLBbDTpPr1hWtWXJ/DNWg897wZQUPij0epssfM5ZFejXWp909mUKKwXQrszMtU+VsJrX
+	MeMzJI9vBcEXJDQHRvvC6guK0eJpw7M7gvvltNfEsiZX94ZKidXLRTB/ixCYeCaG9GA3AAQpML9In
+	V3B5zja0en/OEfmOgkVRC3FX1Yg/Lex/VbMvZ/sCyWFXGU7tWQGWB4VcECGCQdbKo3Wu369S1bHlK
+	E0/BJtaOwzxZl5IAm0mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvh0m-007PzG-7y; Tue, 22 Jun 2021 14:04:20 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1lvh6S-007R0v-Nh; Tue, 22 Jun 2021 14:10:12 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvh0X-007Pvr-3x; Tue, 22 Jun 2021 14:04:06 +0000
-Received: by mail-ed1-x529.google.com with SMTP id i5so6398956eds.1;
- Tue, 22 Jun 2021 07:04:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iPbarU+l9m1KwGWUNyzhJZ595uUBAZXAe0wQ6HeHGxQ=;
- b=fZ5quJ/GoR3vzQSaVgMyRterjrZrpqo9hDF73so2ArtYbScuKnpfg7SJpZLlOeJRP3
- gHIrQh6r2s7lxRe0jZfBM3LGiife/yusjkB2dfeDAKLJDltmFw71IvK22ZM2yulR8Gqt
- lUbJlqPikmDnu9MU6YfZERpi/kGM8dteQcDU4iAYgqoxjNX4cNxG8I0Z9GkAt4LvZnRT
- 1bdwtlbpmVBitmLQKdNwsM9mNUJ9uQf5FTai6gabf9yOPNikyYwD+FpS62jc9QvPwLbA
- smcPdUZucZZvzUBhYSMb27+LXgIv+ehd09ATJAp5W2ztoZDoWKXMu8WjiHQ1s3W7OOQu
- /WAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iPbarU+l9m1KwGWUNyzhJZ595uUBAZXAe0wQ6HeHGxQ=;
- b=QQAF5CNVfdwR57HP/Wk4u8N/uER4ZwlsGUvnVD1HExFPfs4nxZH6B4j0ycTMpYWqE0
- i9WbYRxVrta6UkBsMwfvu+Wszozz/we8YVSK0WdGBNZ3AisdK6QA+vOh6ghB9Z5pEo5v
- C4ROiczPbWTX2t5KJxbYMAqlPVruAcMuoH5OY5UG9sneKnq6WZgyG6iLaUxMOcAAvQC4
- 2xYLeVeAKHbAr5eIdS7OFoBmrSiv8J2tOkP3L9UwmiflHqTmvus7+/bUO6amEl3i+JIh
- QjvI2ju9pTgH657mEspqNuY1etqFh8Tim3QQAY8AiWq+rAmnN1ZAynRnJ+T4BR+cj8XW
- UryQ==
-X-Gm-Message-State: AOAM531iCDaH0jTHa+brm4BA+lRGNeyQzOe1br13LB+ZSymVcgeTEUCa
- Z5ahhMleSWHz6azrgWm8iAksEGllApWoOtZn2OI=
-X-Google-Smtp-Source: ABdhPJyy8TmTF93FpLorqiyKQWA81gkRh7uJHO1hw4kf4OWfe0s6Kp5ze7cRnhKGAvUyoA9bAQOE4/Bt8SXdzX+GsFI=
-X-Received: by 2002:a50:fd83:: with SMTP id o3mr5199829edt.95.1624370642532;
- Tue, 22 Jun 2021 07:04:02 -0700 (PDT)
+ id 1lvh6O-007Qxo-9M; Tue, 22 Jun 2021 14:10:09 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id A157D2198B;
+ Tue, 22 Jun 2021 14:10:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624371006; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SRAIM2b9hcMZtpj1XmOCRlAOXVW+Cbn/WAr682hqNSs=;
+ b=vqm9dI3V0nrHSjy2CtFLenVHqjz8WsHqZyyjhgNtOINrIavnieIQ310rzLkEAPtHq7VzGS
+ VHLPNnQEc6k693CAl2rM+uYgXq+OrJd5hMG3WynS3vDPiEhJD54dTYSd3GXskP1jP4nEyp
+ dxj1jZ3xfQ7o4TdmLLfQxD9AbLw4GdY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624371006;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SRAIM2b9hcMZtpj1XmOCRlAOXVW+Cbn/WAr682hqNSs=;
+ b=xBXa4bW1nD4K8968XQUo8pVHbPuTILpO3mWKrxajgAUVry/PxbHgWYOtNoK22If5d4UBBj
+ w+UCYzGFnlkmd6Aw==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 9B8C8118DD;
+ Tue, 22 Jun 2021 14:10:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624371006; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SRAIM2b9hcMZtpj1XmOCRlAOXVW+Cbn/WAr682hqNSs=;
+ b=vqm9dI3V0nrHSjy2CtFLenVHqjz8WsHqZyyjhgNtOINrIavnieIQ310rzLkEAPtHq7VzGS
+ VHLPNnQEc6k693CAl2rM+uYgXq+OrJd5hMG3WynS3vDPiEhJD54dTYSd3GXskP1jP4nEyp
+ dxj1jZ3xfQ7o4TdmLLfQxD9AbLw4GdY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624371006;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SRAIM2b9hcMZtpj1XmOCRlAOXVW+Cbn/WAr682hqNSs=;
+ b=xBXa4bW1nD4K8968XQUo8pVHbPuTILpO3mWKrxajgAUVry/PxbHgWYOtNoK22If5d4UBBj
+ w+UCYzGFnlkmd6Aw==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id AKIBJT3v0WD3UAAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Tue, 22 Jun 2021 14:10:05 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzysztof.kozlowski@canonical.com,
+ xinliang.liu@linaro.org, tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
+ p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
+ tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
+ benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com
+Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v2 02/22] drm/hibmc: Call drm_irq_uninstall() unconditionally
+Date: Tue, 22 Jun 2021 16:09:42 +0200
+Message-Id: <20210622141002.11590-3-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
+References: <20210622141002.11590-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-References: <20210621154442.18463-1-yee.lee@mediatek.com>
-In-Reply-To: <20210621154442.18463-1-yee.lee@mediatek.com>
-From: Andrey Konovalov <andreyknvl@gmail.com>
-Date: Tue, 22 Jun 2021 17:03:42 +0300
-Message-ID: <CA+fCnZdPwKZ9GfhTYPpWGVEO7bS6sSrh8cioZmRJet2maUjSVQ@mail.gmail.com>
-Subject: Re: [PATCH] kasan: unpoison use memset to init unaligned object size
-To: yee.lee@mediatek.com
-Cc: wsd_upstream@mediatek.com, Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
- Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
- Andrew Morton <akpm@linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "open list:KASAN" <kasan-dev@googlegroups.com>, 
- "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
- open list <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Marco Elver <elver@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_070405_217622_857FC42C 
-X-CRM114-Status: GOOD (  20.40  )
+X-CRM114-CacheID: sfid-20210622_071008_518603_579EF98B 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,50 +135,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 21, 2021 at 6:45 PM <yee.lee@mediatek.com> wrote:
->
-> From: Yee Lee <yee.lee@mediatek.com>
->
-> This patch adds a memset to initialize object of unaligned size.
-> Duing to the MTE granulrity, the integrated initialization using
-> hwtag instruction will force clearing out bytes in granular size,
-> which may cause undesired effect, such as overwriting to the redzone
-> of SLUB debug. In this patch, for the unaligned object size, function
-> uses memset to initailize context instead of the hwtag instruction.
->
-> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> ---
->  mm/kasan/kasan.h | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index 8f450bc28045..d8faa64614b7 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -387,8 +387,11 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
->
->         if (WARN_ON((unsigned long)addr & KASAN_GRANULE_MASK))
->                 return;
-> +       if (init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
-> +               init = false;
-> +               memset((void *)addr, 0, size);
-> +       }
+Remove the check around drm_irq_uninstall(). The same test is
+done by the function internally. The tested state in irq_enabled
+is considered obsolete and should not be used by KMS drivers.
 
-With this implementation, we loose the benefit of setting tags and
-initializing memory with the same instructions.
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Perhaps a better implementation would be to call
-hw_set_mem_tag_range() with the size rounded down, and then separately
-deal with the leftover memory.
+diff --git a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
+index f4bc5386574a..f8ef711bbe5d 100644
+--- a/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
++++ b/drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c
+@@ -253,8 +253,7 @@ static int hibmc_unload(struct drm_device *dev)
+ {
+ 	drm_atomic_helper_shutdown(dev);
+ 
+-	if (dev->irq_enabled)
+-		drm_irq_uninstall(dev);
++	drm_irq_uninstall(dev);
+ 
+ 	pci_disable_msi(to_pci_dev(dev->dev));
+ 
+-- 
+2.32.0
 
->         size = round_up(size, KASAN_GRANULE_SIZE);
-> -
->         hw_set_mem_tag_range((void *)addr, size, tag, init);
->  }
->
-> --
-> 2.18.0
->
 
 _______________________________________________
 Linux-mediatek mailing list
