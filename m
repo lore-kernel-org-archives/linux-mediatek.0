@@ -2,79 +2,89 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99677C4743C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 02:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F38CBC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 03:08:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 549FB6128E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 02:32:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 549FB6128E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C0FCE61108
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 03:08:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0FCE61108
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ala0DVrcM3jlXt1oxk6pBv5E68sc06FUpWO3O4AS444=; b=svXwmQ+35lGfc2
-	GjtZH07sh5ObgOnWRbxUXAlcZfYnB9ADiM/5nZkzVU8+wX2LDM3e0CEVopY2kecAPHSJ2fHkZ7QEb
-	S+e+n7aEPVctv31ISobIW70wc3S/EEqJvODJgndz6Z/NT2Rg4pe/ZYjXrydUo9im+ocPbQ2953pj3
-	81ZirtSqi5pyGSimDuRMXYec1qvRyS2rcJUothshVZ3XZW7h02NqCqT2udaP55X799eQGx7yoIVpa
-	YhI+AUZ3aJmLFqbHzEDuNB/ttxBfEyRHYpFwlqfLYZPFJRib8ptNIVLPNODHoq0XfWMJzVbvEfxv6
-	aiYvMh1JG64IKYUGjaTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=k2ALxIqsR+gS7/Gd5ISq8kx4vteO7kvMKcWMi06fa5g=; b=wm2dwun22oZsKh
+	B+EOeK5wWUD6NJ26bIlrvgYohwOyrLF8ysPZvQtN6LDGB68Iwr9CxZJGmYnVxPgtMmbFstx/vjTk8
+	BNja6+nbe5Pr35xqW+ut08vxd/BjZQHRSZR6XlRCAOXuZWCOPa01j03uvIr0txcSxFSw5yUL9POa5
+	sQ/ZAu/5z3hwsuhvcPaNdjra5SQGRioiY5meL5SgTVOR0pqu14LF+sJ6n4peLxUKuxTpTn/BYMmUw
+	mLX8hEwwQ9tJpUhVVNKRMsLd0IMBpUQFEbbvFWjXh4LCHetJkag3rbhAglll9SSlwikDKioSGpBya
+	vIlN1jzAZTP8l55hv5gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvWCy-005Q1L-P5; Tue, 22 Jun 2021 02:32:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lvWlq-005T19-1v; Tue, 22 Jun 2021 03:08:14 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvWCw-005Q0e-Jh
- for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 02:32:12 +0000
-X-UUID: 0d6e834d8338487aac417c1d03bf7434-20210621
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=eTodyqMyYRd024o564gRpnPI6Tqoq4hTYqKHDs4/ipk=; 
- b=oe44yEYAWj0/IONSU6+jBXgF4uOWAtJs8+uCANyV8Xe1v1B1emL1xLWTJEa5vZbx05rHdw6jqrZWb7RPB70Ya9QcDYnCObC0d+T9TXNqgC7uplntSFOUzFShOPnRTi84IlBXD98cQ8ESO4MlWofmReNU1GoTL/9gpdCoMouHf48=;
-X-UUID: 0d6e834d8338487aac417c1d03bf7434-20210621
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1223082600; Mon, 21 Jun 2021 19:32:01 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 21 Jun 2021 19:31:59 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Jun 2021 10:31:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 22 Jun 2021 10:31:58 +0800
-Message-ID: <10817fc92345946be76860d6944acb2205677447.camel@mediatek.com>
-Subject: Re: [PATCH v2] mt76: mt7921: add .set_sar_specs support
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: <sean.wang@mediatek.com>, <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>,
- <Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
- <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <jemele@google.com>, <yenlinlai@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 22 Jun 2021 10:31:58 +0800
-In-Reply-To: <28d23d04a251490241763dd0b5fe50a523f6fb02.1624316313.git.objelf@gmail.com>
-References: <28d23d04a251490241763dd0b5fe50a523f6fb02.1624316313.git.objelf@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1lvWld-005Syn-3r
+ for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 03:08:02 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id
+ z3-20020a17090a3983b029016bc232e40bso1395077pjb.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 21 Jun 2021 20:07:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lkbW9hluwcztIOh5kOua513vVzY59E2u/mei+FpwsSU=;
+ b=RkwrsYDbtUQcWzbVeDSJAQgCYy9gRaRRqozIRYV1yWbYfhv7cdakF5J3Bv2BUngsfK
+ hFeLAZPesXvPVBLBNLFE0napPJPxpRWdvXy5QwbvejJwJkDMbYaqL24vsX5nu6api4WC
+ +9MX/N1/6gkIAn8RNjfy/zz3PpXPQPBYS/XsM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=lkbW9hluwcztIOh5kOua513vVzY59E2u/mei+FpwsSU=;
+ b=QZKhBIE0kT33RlfkK1KkM2wKNCtj8UqLniaahPxJ75pYsH6Rh5c5kMCqwUdQLVjHVs
+ Gdx7vIuC/7eBPlNSpRzraSBPAesX1Se9emiFFaoMJOmfbsaTYwcCCx8iVBAYc4JwDuG3
+ Hzn3L/dYxRiUYViTjgQVdaGOAmfTLu5APCr499Lzv5aIgEu8aK3wmUY7MUuorGC41lOP
+ 0V08MC22R3JmNJDT0ASLzEwQwW2l6nMXAVueCDvFStYedxHTuen8fwFiCoBLUW6AFpTY
+ KP/ywYwktz0toouOppiQhuF/J+72gUdoZlPGz22EYIeM3Hg7TXsD3AzpBKj2tRX5LOH4
+ sgDQ==
+X-Gm-Message-State: AOAM530n+DOGahENz4Nj1uvbhNzplUJCoNAFM7kMm5mXRnm7llCiH0dH
+ eANkKz5g84B9eeUGySirT034Hw==
+X-Google-Smtp-Source: ABdhPJywluBdydO/3+koxsNDeRCsfm/8/sSu9Nh+eXDSX8Lh9XieDEU9gLyfXK1qghmIJoNiqBpV6Q==
+X-Received: by 2002:a17:90a:c002:: with SMTP id
+ p2mr1501687pjt.132.1624331278548; 
+ Mon, 21 Jun 2021 20:07:58 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:aaeb:6e67:2eb9:f492])
+ by smtp.gmail.com with ESMTPSA id z6sm13740722pfj.117.2021.06.21.20.07.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 21 Jun 2021 20:07:58 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ devicetree@vger.kernel.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Jassi Brar <jaswinder.singh@linaro.org>
+Subject: [PATCH v3 RESEND 1/2] arm64: dts: mt8183: add mediatek,
+ gce-events in mutex
+Date: Tue, 22 Jun 2021 11:07:41 +0800
+Message-Id: <20210622030741.2120393-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.288.g62a8d224e6-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210621_193210_701529_6705AB08 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20210621_200801_222212_3619B85E 
+X-CRM114-Status: UNSURE (   8.67  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,145 +101,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-06-22 at 07:07 +0800, sean.wang@mediatek.com wrote:
-> From: YN Chen <YN.Chen@mediatek.com>
-> 
-> add .set_sar_specs to allow configuring SAR power limitations on the
-> frequency ranges from the userland.
-> 
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
-> ---
-> v2: 1. loop enhancement with considering no overlapping freqs
->     2. error handling for devm_kcalloc
->     3. sanity check without acquire lock
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76.h     |  3 ++
->  .../net/wireless/mediatek/mt76/mt76_connac.h  |  5 +++
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 26 +++++++++++-
->  .../net/wireless/mediatek/mt76/mt7921/init.c  | 33 ++++++++++++++-
->  .../net/wireless/mediatek/mt76/mt7921/main.c  | 41
-> +++++++++++++++++++
->  5 files changed, 105 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
-> b/drivers/net/wireless/mediatek/mt76/mt76.h
-> index 25c5ceef5257..63ce5242c4d5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -636,6 +636,9 @@ struct mt76_phy {
->  		struct sk_buff **tail;
->  		u16 seqno;
->  	} rx_amsdu[__MT_RXQ_MAX];
-> +
-> +	void *frp_data;
-> +	u8 num_frps;
->  };
->  
->  struct mt76_dev {
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> index f49d97d0a1c5..95c7d1cac7c4 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-> @@ -83,6 +83,11 @@ struct mt76_connac_coredump {
->  	unsigned long last_activity;
->  };
->  
-> +struct mt76_connac_freq_range_power {
-> +	const struct cfg80211_sar_freq_ranges *range;
-> +	s8 power;
-> +};
-> +
->  extern const struct wiphy_wowlan_support mt76_connac_wowlan_support;
->  
->  static inline bool is_mt7921(struct mt76_dev *dev)
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 5c3a81e5f559..497de1d91c7c 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -1749,6 +1749,26 @@ mt76_connac_mcu_build_sku(struct mt76_dev
-> *dev, s8 *sku,
->  	}
->  }
->  
-> +static s8 mt76_connac_get_sar_power(struct mt76_phy *phy,
-> +				    struct ieee80211_channel *chan,
-> +				    s8 target_power)
-> +{
-> +	struct mt76_connac_freq_range_power *frp = phy->frp_data;
-> +	int freq, i;
-> +
-> +	freq = ieee80211_channel_to_frequency(chan->hw_value, chan-
-> >band);
-> +	for (i = 0 ; i < phy->num_frps; i++) {
-> +		if (frp[i].range &&
-> +		    freq >= frp[i].range->start_freq &&
-> +		    freq < frp[i].range->end_freq) {
-> +			target_power = min_t(s8, frp[i].power,
-> target_power);
-> +			break;
-> +		}
-> +	}
-> +
-> +	return target_power;
-> +}
-> +
->  static int
->  mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->  				  enum nl80211_band band)
-> @@ -1816,9 +1836,13 @@ mt76_connac_mcu_rate_txpower_band(struct
-> mt76_phy *phy,
->  				.hw_value = ch_list[idx],
->  				.band = band,
->  			};
-> +			s8 sar_power;
-> +
-> +			sar_power = mt76_connac_get_sar_power(phy,
-> &chan,
-> +							      tx_power)
-> ;
->  
->  			mt76_get_rate_power_limits(phy, &chan, &limits,
-> -						   tx_power);
-> +						   sar_power);
->  
->  			tx_power_tlv.last_msg = ch_list[idx] ==
-> last_ch;
->  			sku_tlbv.channel = ch_list[idx];
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> index a9ce10b98827..c11a5b925209 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> @@ -24,6 +24,20 @@ static const struct ieee80211_iface_combination
-> if_comb[] = {
->  	}
->  };
->  
-> +const struct cfg80211_sar_freq_ranges mt7921_sar_freq_ranges[] = {
-> +	{ .start_freq = 2402, .end_freq = 2494, },
-> +	{ .start_freq = 5150, .end_freq = 5350, },
-> +	{ .start_freq = 5350, .end_freq = 5470, },
-> +	{ .start_freq = 5470, .end_freq = 5725, },
-> +	{ .start_freq = 5725, .end_freq = 5950, },
-> +};
-> +
-> +static const struct cfg80211_sar_capa mt7921_sar_capa = {
-> +	.type = NL80211_SAR_TYPE_POWER,
-> +	.num_freq_ranges = ARRAY_SIZE(mt7921_sar_freq_ranges),
-> +	.freq_ranges = &mt7921_sar_freq_ranges[0],
-> +};
-> +
-> 
+mediatek,gce-events is read by mutex node.
 
-Nowthat we have frps in mt76.h we can make these SAR chunk sharable as
-well to provide a common ground to other mt76 station devices might
-require set_sar_spec.
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Ryder
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index c5e822b6b77a3..cf22d71161e58 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1250,6 +1250,8 @@ mutex: mutex@14016000 {
+ 			reg = <0 0x14016000 0 0x1000>;
+ 			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
++					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
+ 		};
+ 
+ 		larb0: larb@14017000 {
+-- 
+2.32.0.288.g62a8d224e6-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
