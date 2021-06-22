@@ -2,91 +2,89 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5DC0CC2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 552D1C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:15:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2487A61353
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:02:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2487A61353
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1C841611AF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:15:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C841611AF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vn959+KGbm1NBVCYL+6kSxALcyBF1IbhK0zBhG1/Y6M=; b=R0wUNwwCqkEZOc
-	3hc/8MM45632KbI+6A/9XI6UpQdXJm+RYswuVsmM2aM9nkrES9HMt2XUhFGZCp95MXblfWOt3FSu9
-	MwBO3Wt525Ng3REQ8Khho26aFZ96dpzZHBn8g161fzVxa/OnGUMsyiIfmx5h6k1wVR4Bc6Vzxjx6J
-	k64ZgNuZ2QwzAf1kv1+Vk4hQby8GeNp1PKZ4ArBy/zgw30xJtQdYRR+BgL9AXik39pk9OafzUB41C
-	TcYSC4WzHoXzgkTgMdaTu8LXq3phGUp1RUa4sCZ2ZpGpRd1eZZEF2EY2sxXIJpgvX/tgA/RZHtLjT
-	ag4NilGwggQsTOcsjINQ==;
+	List-Owner; bh=LLv2fNOHXt9AFJXVD0XFF2aFWyNzYJFhf5/hjIdwmhI=; b=PKzJxoDxxUeoED
+	T53DgjuCHo6XTIQtKnvuk8buA2aiN2MTxII1qCBdo30o7ceUzS4+k9iUvs1uS+OP/ekiUOujEzC7g
+	NG+Y+1IjobqbnmgU6G5HNbfYT3vxt7zXxyh9K18Lrs8wGCWyh7VwsMHJXLPd0HfoEuNV5tfV8Cmjr
+	Abe+gvn1fCou9y0Aj+wDqqwiyg+VDSCaw8CkmL/119qsSooL2ycIWM0axsFt0l78NHqrFheo9X+xx
+	MUw01K+BvPT8ALzRdpj/QG9vIYqbLp/ItC5yJvbgKpCiMNiVzA6/ElZ445dR+OfLJPNj3HvvHyvLi
+	ej4AgIxhBS8vh/7Km51g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvcI2-006L6o-Q8; Tue, 22 Jun 2021 09:01:50 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1lvcV9-006NbG-Tw; Tue, 22 Jun 2021 09:15:23 +0000
+Received: from m43-7.mailgun.net ([69.72.43.7])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvcHn-006L3O-Si
- for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 09:01:37 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id
- h24-20020a9d64180000b029036edcf8f9a6so20559622otl.3
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Jun 2021 02:01:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=E3vujFtQzQ6HHb36nCRkPnI6sILbeapGxmxAb4EfnkI=;
- b=CB752prxx4dAwLiJh978X4UEniRLciLoj78ygr06BhzO9Zg7gd4UEFbVgZXdlVMHDt
- p2vaKWQ1OJcHnvkvP5Tu45vm8+XZy0OhLLxui1fAfHsP5/d4JeU6Idj+wyDXEF93AVl6
- SUMEwVJYMziAOsHVQ9vDsGCZHT873ntwOguGUK2ALiLzW6WBKUyUDKWOrMmyiu0C17s5
- RP8HZEa2qe1olyrZy6gNVC1IJ3jJ58ILo6TsaqFcAlBXYK6PmUJPOyIpNV8Jpwvgvlut
- xYAdLL+t/fKOXk9CaBN/ZTnLpMInTCxfXCSoqiVG3oc34ZJ6Q5DFL97vyZEHdqRQCBpJ
- kOuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=E3vujFtQzQ6HHb36nCRkPnI6sILbeapGxmxAb4EfnkI=;
- b=cZ6yjXccfoSszlBa/CmWfsjq3adfeAqNskTKm2KTh1q4iGUkPHfU+CDsQ37NfyKPve
- MGxAONXMjOoajSIZIpjrIg4imC9sDa2uqnnM7V/rEX3t33VKFIygC3LGplpG1/Zh0cs2
- Rwoh6Tn5g1GfDVSLN+f9bpSos77FyE3Bku3DgtKnrNmlH4h6T2MId3aQ8Vu0m3q7FQDi
- 0lbt0eT4FJd7nX8KUdxNB2MnyRn3M9ILZ6mBz+XnIaUHNSh/zA3C47sodZzlAPJdVst+
- PgBX3K3uy3yZCIlb697wcng3sTwpkAWE46BlFkMqNSq5TlwI5+1q6AdTG/HzuTFKTSdr
- 5LLA==
-X-Gm-Message-State: AOAM533VAMtuZEC2ubNfXmKF8PHPmJiOGr7P0zKdIty9NLiQ3ziJ97Ti
- Lvm/nQXvYPKcNpE26oW6Mb67N4Tko3GBy05amTwoXw==
-X-Google-Smtp-Source: ABdhPJz6x9ikQTihlpl50ySejohRlYsuuYzk1020DWbzWFDGxvVI6FgPvghPiE/lufEm9zK+hYyHAKWDluvyY14hCZw=
-X-Received: by 2002:a05:6830:1bcb:: with SMTP id
- v11mr2292496ota.251.1624352492722; 
- Tue, 22 Jun 2021 02:01:32 -0700 (PDT)
+ id 1lvcV6-006Nad-IX
+ for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 09:15:22 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1624353319; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=6oUBBn3WS5kQlwI0hR7nJNfKpU1hm+VGgC+xHP3tpDE=;
+ b=Bp0uzdB64szMxIY4rRZjcAOcZB+kwNBPyA4HI5FwoSyIxAmI6s0iL/T8CvYpMD5cnBu9JIbI
+ 6zs8gx1tgHhO1oiC0mGVt/U/FyA8eAsVzvkJ+rpAF06Ergi7BH4VjhnXQO/Xblulfe5pObJs
+ Q+8MaRtjgomx1QaRf36N16W+T04=
+X-Mailgun-Sending-Ip: 69.72.43.7
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n02.prod.us-west-2.postgun.com with SMTP id
+ 60d1aa26ea2aacd729b3a3bc (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 22 Jun 2021 09:15:18
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 41C43C43460; Tue, 22 Jun 2021 09:15:18 +0000 (UTC)
+Received: from tynnyri.adurom.net (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id CAF1BC433D3;
+ Tue, 22 Jun 2021 09:15:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org CAF1BC433D3
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com,
+ Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ robin.chiu@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ Eric.Liang@mediatek.com, Stella.Chang@mediatek.com, jemele@google.com,
+ yenlinlai@google.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] mt76: mt7921: enable aspm by default
+References: <9b704807383f3048898944d2b9cb74e6b4e8d83d.1624174954.git.objelf@gmail.com>
+ <YM8N7BRIk5QzaEZy@lore-desk>
+Date: Tue, 22 Jun 2021 12:15:10 +0300
+In-Reply-To: <YM8N7BRIk5QzaEZy@lore-desk> (Lorenzo Bianconi's message of "Sun, 
+ 20 Jun 2021 11:44:12 +0200")
+Message-ID: <87o8byjm5d.fsf@tynnyri.adurom.net>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-References: <20210622084723.27637-1-yee.lee@mediatek.com>
-In-Reply-To: <20210622084723.27637-1-yee.lee@mediatek.com>
-From: Marco Elver <elver@google.com>
-Date: Tue, 22 Jun 2021 11:01:21 +0200
-Message-ID: <CANpmjNPyP2-oULXuO9ZdC=yj_XSiC2TWKNBp0RL_h3k-XvpFsA@mail.gmail.com>
-Subject: Re: [PATCH] kasan: [v2]unpoison use memzero to init unaligned object
-To: yee.lee@mediatek.com
-Cc: andreyknvl@gmail.com, wsd_upstream@mediatek.com, 
- Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>, 
- Dmitry Vyukov <dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:KASAN" <kasan-dev@googlegroups.com>, 
- "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
- open list <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_020135_957213_B0C6CFC9 
-X-CRM114-Status: GOOD (  28.84  )
+X-CRM114-CacheID: sfid-20210622_021520_726143_86C04A1F 
+X-CRM114-Status: GOOD (  11.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,65 +101,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Jun 2021 at 10:48, <yee.lee@mediatek.com> wrote:
+Lorenzo Bianconi <lorenzo@kernel.org> writes:
+
+>> From: Sean Wang <sean.wang@mediatek.com>
+>> 
+>> mt7921 is mainly used in NB, CE and IoT application where battery life is
+>> much concerned so the patch enabled PCIe ASPM by default to shut off the
+>> clocks related PCIe as much as possible when MT7921 is either in suspend
+>> state or in runtime pm to lower power consumption.
+>> 
+>> We still leave disable aspm as an option with module_param for users to
+>> disable ASPM if necessary.
 >
-> From: Yee Lee <yee.lee@mediatek.com>
->
-> Follows the discussion: https://patchwork.kernel.org/project/linux-mediatek/list/?series=504439
+> instead of adding a module parameter (deprecated)
 
-The info about the percentage of how frequent this is could have been
-provided as a simple reply to the discussion.
+Why is a module parameter deprecated? I have not heard about that.
 
-> This patch Add memzero_explict to initialize unaligned object.
+> , why not just enable it by default for mt7921 and add a debugfs knob
+> to flip it?
 
-This patch does not apply to anything (I see it depends on the previous patch).
+debugfs is not ideal for this kind of hardware configuration as debugfs
+can be disabled. My preference is to use a module parameter.
 
-What you need to do is modify the original patch, and then send a
-[PATCH v2] (git helps with that by passing --reroll-count or -v) that
-applies cleanly to your base kernel tree.
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
 
-The commit message will usually end with '---' and then briefly denote
-what changed since the last version.
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html#the-canonical-patch-format
-
-> Based on the integrateion of initialization in kasan_unpoison(). The hwtag instructions, constrained with its granularity, has to overwrite the data btyes in unaligned objects. This would cause issue when it works with SLUB debug redzoning.
->
-> In this patch, an additional initalizaing path is added for the unaligned objects. It contains memzero_explict() to clear out the data and disables its init flag for the following hwtag actions.
->
-> In lab test, this path is executed about 1.1%(941/80854) within the overall kasan_unpoison during a non-debug booting process.
-
-Nice, thanks for the data. If it is somehow doable, however, I'd still
-recommend to additionally guard the new code path by a check if
-debug-support was requested. Ideally with an IS_ENABLED() config check
-so that if it's a production kernel the branch is simply optimized out
-by the compiler.
-
-> Lab test: QEMU5.2 (+mte) / linux kernel 5.13-rc7
->
-> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> ---
->  mm/kasan/kasan.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index d8faa64614b7..edc11bcc3ff3 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -389,7 +389,7 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
->                 return;
->         if (init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
->                 init = false;
-> -               memset((void *)addr, 0, size);
-> +               memzero_explicit((void *)addr, size);
->         }
->         size = round_up(size, KASAN_GRANULE_SIZE);
->         hw_set_mem_tag_range((void *)addr, size, tag, init);
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20210622084723.27637-1-yee.lee%40mediatek.com.
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
