@@ -2,78 +2,90 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5442DC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:04:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80FEAC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0719F60FE3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:04:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0719F60FE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 15FC7610C7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15FC7610C7
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8kNkPnGLPPJupDgzw02XCBMDH3mlcDP4tLnLQSpNDiM=; b=4GPQyAjkgFqOzV
-	cf+tSrpf3OA3YmAGPlO4eT8VOBBV/yz2VvxnYvZGwVqPwiG+T7wZhCs+axJUb4GzXUGB4g3/qXIy6
-	i8Mx4FgBPMO0YwVrTuDl+21qDk0qdSzjgnndOUEeOH5/WO1IkuyF3Oixjz3gxxI9/3yxc2Yf0NpaA
-	90I+kkJcO+Sh11J0pWpEtKXpqTZOV4UXhFYY5Rlk9+OdQ9ElLTCyUyR4f9XA7qYlnjSh2t8E7joSl
-	i0PPL6z9N4XBjhoq5yN/lA2C2mlNEd7d0qBR4XyvK9/CU+3lJcfH2okyIKZQmNuwWj6oaGd/VZ/Ll
-	FIFTnnfPERFrYuNWs8xQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bXF9cAR6ayI0WgmnUJNAUBn9bqeMAGS4nnrzJEEkBhw=; b=CTpwWUDGdyyCie
+	nUT5aFfyPiJe7uYRFQhFl5fuOxJutGFjLyghVDzMn8MwKrSMGTkP7+8DnFT17hB1k3jM0GZecXG56
+	rtLqwGpHZnmcmW3YCGh7ZjfMbakM88JN1kUq9nFkpQkIRWEHYZdH2UbXY/5PdU7pzmeec37ifbnLe
+	OPUmt7+8TnYmvLve8tEnXqh41MYuXjNv8PjO7SMRrk1E6RVr9eqlbX6svqBRoJiuA0Zk8/cGxtKU9
+	Y2qLysWMoSbHOwH/O30901H/+81uS8oTdl4nm6+xqtdxc0Xkzw5TQhfIdN/FD/AK5B0KRNd3kqaTn
+	XVARfLPqKMXmkPsZXqdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvisc-007q5r-QD; Tue, 22 Jun 2021 16:04:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lvj0S-007rIS-TL; Tue, 22 Jun 2021 16:12:08 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvisX-007q3i-Mm
- for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 16:04:00 +0000
-X-UUID: e59b9f49c24e491eb47fa64efa39ee5d-20210622
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=rfOfrt7QT3HDn+4bnWoJ6s7XX9aDU+Fu4aSTvCAFO+s=; 
- b=Pnk97D54IuAcY8rdmx/PsxsRhyPd4vcQmjZ7dCt5FgpokMHNa1gC9zCy6/YgMTCx9Nhi7S77DpwnhDY6dgIuKuAanpbwyFpcpFJuoBY+dI8TWyon+YyD3FR5Ti10MykPJqttzA5FL7ul2G0HIUBT8y4eBEGEz4Kn47dq6TAKOOE=;
-X-UUID: e59b9f49c24e491eb47fa64efa39ee5d-20210622
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1362999586; Tue, 22 Jun 2021 09:03:47 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Jun 2021 09:03:45 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 00:03:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Jun 2021 00:03:44 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
- <sean.wang@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <michaelfsun@google.com>, <shawnku@google.com>, <jemele@google.com>,
- mark-yw.chen <mark-yw.chen@mediatek.com>
-Subject: [PATCH 1/1] Bluetooth: btusb: Support Bluetooth Reset for Mediatek
- Chip.
-Date: Wed, 23 Jun 2021 00:02:55 +0800
-Message-ID: <20210622160255.14906-1-mark-yw.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lvj0P-007rFE-32; Tue, 22 Jun 2021 16:12:07 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82C49FE0;
+ Tue, 22 Jun 2021 18:12:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1624378320;
+ bh=E1KjYBr0PRd//Rh/JFA2D9huXNngtbcIo60EYm6yjcM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hh92VDHFFFuGY+ij89Tk/0LAzaSW+kEr9dWfQrDPQQWsRe5C3zTHMpzJy9EtqmNe7
+ fe8CwxVd7hReruVHlt2Vz9ofcwK7MrKI8+pkmwKvlFlKCjbjB5RjgHD9QUiLCULLa0
+ YjXygLYAAbXJHyKajZ/6zxMhq99nKm9MtdEjklaw=
+Date: Tue, 22 Jun 2021 19:11:32 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com,
+ james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, jy0922.shim@samsung.com,
+ sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
+ p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
+ tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
+ benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com,
+ jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
+ linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, michal.simek@xilinx.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
+Message-ID: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
+References: <20210622141002.11590-1-tzimmermann@suse.de>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_090359_209660_CDC18C8B 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20210622_091205_352755_5B16CDB4 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,196 +102,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+Hi Thomas,
 
-This change enable Mediatek reset mechanism via USB, it's a specific
-reset mechanism with Mediatek chips. To handle error recovery, it use
-the cmd_timoeut to reset Mediatek Bluetooth.
+Thank you for the patches.
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btusb.c | 138 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 138 insertions(+)
+On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
+> Remove references to struct drm_device.irq_enabled from modern
+> DRM drivers and core.
+> 
+> KMS drivers enable IRQs for their devices internally. They don't
+> have to keep track of the IRQ state via irq_enabled. For vblanking,
+> it's cleaner to test for vblanking support directly than to test
+> for enabled IRQs.
+> 
+> This used to be a single patch, [1] but it's now a full series.
+> 
+> The first 3 patches replace instances of irq_enabled that are not
+> required.
+> 
+> Patch 4 fixes vblank ioctls to actually test for vblank support
+> instead of IRQs.
+> 
+> THe rest of the patchset removes irq_enabled from all non-legacy
+> drivers. The only exception is omapdrm, which has an internal
+> dpendency on the field's value. For this drivers, the state gets
+> duplicated internally.
+> 
+> With the patchset applied, drivers can later switch over to plain
+> Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
+> 
+> v2:
+> 	* keep the original test for legacy drivers in
+> 	  drm_wait_vblank_ioctl() (Daniel)
+> 
+> [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmermann@suse.de/
+> 
+> Thomas Zimmermann (22):
+>   drm/amdgpu: Track IRQ state in local device state
+>   drm/hibmc: Call drm_irq_uninstall() unconditionally
+>   drm/radeon: Track IRQ state in local device state
+>   drm: Don't test for IRQ support in VBLANK ioctls
+>   drm/komeda: Don't set struct drm_device.irq_enabled
+>   drm/malidp: Don't set struct drm_device.irq_enabled
+>   drm/exynos: Don't set struct drm_device.irq_enabled
+>   drm/kirin: Don't set struct drm_device.irq_enabled
+>   drm/imx: Don't set struct drm_device.irq_enabled
+>   drm/mediatek: Don't set struct drm_device.irq_enabled
+>   drm/nouveau: Don't set struct drm_device.irq_enabled
+>   drm/omapdrm: Track IRQ state in local device state
+>   drm/rockchip: Don't set struct drm_device.irq_enabled
+>   drm/sti: Don't set struct drm_device.irq_enabled
+>   drm/stm: Don't set struct drm_device.irq_enabled
+>   drm/sun4i: Don't set struct drm_device.irq_enabled
+>   drm/tegra: Don't set struct drm_device.irq_enabled
+>   drm/tidss: Don't use struct drm_device.irq_enabled
+>   drm/vc4: Don't set struct drm_device.irq_enabled
+>   drm/vmwgfx: Don't set struct drm_device.irq_enabled
+>   drm/xlnx: Don't set struct drm_device.irq_enabled
+>   drm/zte: Don't set struct drm_device.irq_enabled
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 0a86713f496b..e8ad8ca4d346 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3076,6 +3076,18 @@ static int btusb_shutdown_intel_new(struct hci_dev *hdev)
- 	return 0;
- }
- 
-+/* UHW CR mapping */
-+#define BT_MISC			0x70002510
-+#define BT_SUBSYS_RST		0x70002610
-+#define UDMA_INT_STA_BT		0x74000024
-+#define UDMA_INT_STA_BT1	0x74000308
-+#define BT_WDT_STATUS		0x740003A0
-+#define EP_RST_OPT		0x74011890
-+#define EP_RST_IN_OUT_OPT	0x00010001
-+#define BT_RST_DONE		0x00000100
-+#define BT_RESET_WAIT_MS	100
-+#define BT_RESET_NUM_TRIES	10
-+
- #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
- #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
- 
-@@ -3650,6 +3662,63 @@ static int btusb_mtk_func_query(struct hci_dev *hdev)
- 	return status;
- }
- 
-+static int btusb_mtk_uhw_reg_write(struct btusb_data *data, u32 reg, u32 val)
-+{
-+	struct hci_dev *hdev = data->hdev;
-+	int pipe, err;
-+	void *buf;
-+
-+	buf = kzalloc(4, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	put_unaligned_le32(val, buf);
-+
-+	pipe = usb_sndctrlpipe(data->udev, 0);
-+	err = usb_control_msg(data->udev, pipe, 0x02,
-+			      0x5E,
-+			      reg >> 16, reg & 0xffff,
-+			      buf, 4, USB_CTRL_SET_TIMEOUT);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to write uhw reg(%d)", err);
-+		goto err_free_buf;
-+	}
-+
-+err_free_buf:
-+	kfree(buf);
-+
-+	return err;
-+}
-+
-+static int btusb_mtk_uhw_reg_read(struct btusb_data *data, u32 reg, u32 *val)
-+{
-+	struct hci_dev *hdev = data->hdev;
-+	int pipe, err;
-+	void *buf;
-+
-+	buf = kzalloc(4, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	pipe = usb_rcvctrlpipe(data->udev, 0);
-+	err = usb_control_msg(data->udev, pipe, 0x01,
-+			      0xDE,
-+			      reg >> 16, reg & 0xffff,
-+			      buf, 4, USB_CTRL_SET_TIMEOUT);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to read uhw reg(%d)", err);
-+		goto err_free_buf;
-+	}
-+
-+	*val = get_unaligned_le32(buf);
-+	bt_dev_info(hdev, "%s: reg=%x, value=0x%08x", __func__, reg, *val);
-+
-+err_free_buf:
-+	kfree(buf);
-+
-+	return err;
-+}
-+
- static int btusb_mtk_reg_read(struct btusb_data *data, u32 reg, u32 *val)
- {
- 	int pipe, err, size = sizeof(u32);
-@@ -3729,6 +3798,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 			 dev_id & 0xffff, (fw_version & 0xff) + 1);
- 		err = btusb_mtk_setup_firmware_79xx(hdev, fw_bin_name);
- 
-+		/* It's Device EndPoint Reset Option Register */
-+		btusb_mtk_uhw_reg_write(data, EP_RST_OPT, EP_RST_IN_OUT_OPT);
-+
- 		/* Enable Bluetooth protocol */
- 		param = 1;
- 		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
-@@ -3852,6 +3924,71 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	return 0;
- }
- 
-+static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
-+{
-+	struct btusb_data *data = hci_get_drvdata(hdev);
-+	u32 val;
-+	int err, retry = 0;
-+
-+	/* It's MediaTek specific bluetooth reset mechanism via USB */
-+	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		return;
-+	}
-+
-+	if (enable_autosuspend)
-+		usb_disable_autosuspend(data->udev);
-+
-+	data->sco_num = 0;
-+
-+	btusb_stop_traffic(data);
-+	usb_kill_anchored_urbs(&data->tx_anchor);
-+
-+	/* It's Device EndPoint Reset Option Register */
-+	bt_dev_info(hdev, "Initiating reset mechanism via uhw");
-+	btusb_mtk_uhw_reg_write(data, EP_RST_OPT, EP_RST_IN_OUT_OPT);
-+	btusb_mtk_uhw_reg_read(data, BT_WDT_STATUS, &val);
-+
-+	/* MediaTek Bluetooht Reset */
-+	btusb_mtk_uhw_reg_write(data, BT_SUBSYS_RST, 1);
-+	btusb_mtk_uhw_reg_write(data, UDMA_INT_STA_BT, 0x000000FF);
-+	btusb_mtk_uhw_reg_read(data, UDMA_INT_STA_BT, &val);
-+	btusb_mtk_uhw_reg_write(data, UDMA_INT_STA_BT1, 0x000000FF);
-+	btusb_mtk_uhw_reg_read(data, UDMA_INT_STA_BT1, &val);
-+	msleep(20);
-+	btusb_mtk_uhw_reg_write(data, BT_SUBSYS_RST, 0);
-+	btusb_mtk_uhw_reg_read(data, BT_SUBSYS_RST, &val);
-+
-+	/* Poll the register until reset is completed */
-+	do {
-+		btusb_mtk_uhw_reg_read(data, BT_MISC, &val);
-+		if ((val & 0x00000100) == BT_RST_DONE) {
-+			bt_dev_info(hdev, "Bluetooth Reset Successfully");
-+			break;
-+		}
-+
-+		bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
-+		retry++;
-+		msleep(BT_RESET_WAIT_MS);
-+	} while (retry < BT_RESET_NUM_TRIES);
-+
-+	btusb_mtk_id_get(data, 0x70010200, &val);
-+	bt_dev_info(hdev, "device id (%x)", val);
-+
-+	/* Re-Setup Mediatek device */
-+	err = btusb_mtk_setup(hdev);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "mtk_setup failed, err = %d", err);
-+		return;
-+	}
-+	hci_reset_dev(hdev);
-+
-+	if (enable_autosuspend)
-+		usb_enable_autosuspend(data->udev);
-+
-+	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
-+}
-+
- static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
-@@ -4689,6 +4826,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->setup = btusb_mtk_setup;
- 		hdev->shutdown = btusb_mtk_shutdown;
- 		hdev->manufacturer = 70;
-+		hdev->cmd_timeout = btusb_mtk_cmd_timeout;
- 		data->recv_acl = btusb_recv_acl_mtk;
- 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
- 	}
+The list seems to be missing armada, rcar-du and vkms. It would also be
+nice to address i915 if possible.
+
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
+>  drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
+>  drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
+>  drivers/gpu/drm/drm_irq.c                       | 10 +++-------
+>  drivers/gpu/drm/drm_vblank.c                    | 13 +++++++++----
+>  drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
+>  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
+>  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
+>  drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
+>  drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
+>  drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
+>  drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
+>  drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
+>  drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
+>  drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
+>  drivers/gpu/drm/sti/sti_compositor.c            |  2 --
+>  drivers/gpu/drm/stm/ltdc.c                      |  3 ---
+>  drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
+>  drivers/gpu/drm/tegra/drm.c                     |  7 -------
+>  drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
+>  drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
+>  drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
+>  drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
+>  drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
+>  26 files changed, 30 insertions(+), 111 deletions(-)
+> 
+> 
+> base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
+> prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
+> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
+
 -- 
-2.18.0
+Regards,
+
+Laurent Pinchart
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
