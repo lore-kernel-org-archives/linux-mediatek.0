@@ -2,19 +2,19 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80FEAC2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB186C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:18:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 15FC7610C7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:12:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 15FC7610C7
+	by mail.kernel.org (Postfix) with ESMTPS id 78DC561108
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 16:18:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78DC561108
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bXF9cAR6ayI0WgmnUJNAUBn9bqeMAGS4nnrzJEEkBhw=; b=CTpwWUDGdyyCie
-	nUT5aFfyPiJe7uYRFQhFl5fuOxJutGFjLyghVDzMn8MwKrSMGTkP7+8DnFT17hB1k3jM0GZecXG56
-	rtLqwGpHZnmcmW3YCGh7ZjfMbakM88JN1kUq9nFkpQkIRWEHYZdH2UbXY/5PdU7pzmeec37ifbnLe
-	OPUmt7+8TnYmvLve8tEnXqh41MYuXjNv8PjO7SMRrk1E6RVr9eqlbX6svqBRoJiuA0Zk8/cGxtKU9
-	Y2qLysWMoSbHOwH/O30901H/+81uS8oTdl4nm6+xqtdxc0Xkzw5TQhfIdN/FD/AK5B0KRNd3kqaTn
-	XVARfLPqKMXmkPsZXqdQ==;
+	List-Owner; bh=OLNNUzm/Jlh2qHOjnmXHRUZc3+T55C+luSWbSKBNjy4=; b=FQL4+ohngi1HZd
+	DDe5ATvqEsW9raCxIS3XE5IzXK/QSXwijNCk/7lXS2zesS+deaP+To9fa2542m5uGceqgH+ZbaMr/
+	+NQ51as6xt04dkK8rjm9+kbl8acG8hly7njneztb+2dD4BQ++9GdTlea2hKp84HocDhbBoDZbZKtl
+	J71vDgfgwv/TCnGeFYG5j9S6/xYktC19PWxoAshHPg8gzvLhlDjHFcYLMhjIN63x+a/mOyF8D6hSa
+	ZsufOYkNSU7EDR/wAso/ALz9BuhmZhkwW6LXC2WIxNT3YCyuZ8VwZIPiq5itCZcmVRt8ky99ckKF+
+	4fHRDnAqSEDzhd8RB0ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvj0S-007rIS-TL; Tue, 22 Jun 2021 16:12:08 +0000
+	id 1lvj6d-007sHh-A4; Tue, 22 Jun 2021 16:18:31 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvj0P-007rFE-32; Tue, 22 Jun 2021 16:12:07 +0000
+ id 1lvj6Z-007sGo-Aq; Tue, 22 Jun 2021 16:18:29 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
  [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 82C49FE0;
- Tue, 22 Jun 2021 18:12:00 +0200 (CEST)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8C99E10C5;
+ Tue, 22 Jun 2021 18:18:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1624378320;
- bh=E1KjYBr0PRd//Rh/JFA2D9huXNngtbcIo60EYm6yjcM=;
+ s=mail; t=1624378705;
+ bh=VZRaHkXmbWt79g3HywVIeyxN42SRIqciWe7F8pv0Ohc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hh92VDHFFFuGY+ij89Tk/0LAzaSW+kEr9dWfQrDPQQWsRe5C3zTHMpzJy9EtqmNe7
- fe8CwxVd7hReruVHlt2Vz9ofcwK7MrKI8+pkmwKvlFlKCjbjB5RjgHD9QUiLCULLa0
- YjXygLYAAbXJHyKajZ/6zxMhq99nKm9MtdEjklaw=
-Date: Tue, 22 Jun 2021 19:11:32 +0300
+ b=PAFCiMffBQrxmL9kbXF04+tAFxSNJSey1X3TgZSJElZPT76zpOsJr1VxvVuS+2pLs
+ jEuQdHa3Te4yK0fbtauEH5RYNqkMlGX9ety09L1TcAb/y8wrcCehVwWI0z+5zEyTxS
+ Ek7I/w21y8yHUPn5eB+PAvMDVy77oMs0oniYqpo4=
+Date: Tue, 22 Jun 2021 19:17:57 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
 Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
@@ -78,14 +78,15 @@ Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
 Subject: Re: [PATCH v2 00/22] Deprecate struct drm_device.irq_enabled
-Message-ID: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
+Message-ID: <YNINNfQjAd3R2H+0@pendragon.ideasonboard.com>
 References: <20210622141002.11590-1-tzimmermann@suse.de>
+ <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210622141002.11590-1-tzimmermann@suse.de>
+In-Reply-To: <YNILtLMkI3uoH7mJ@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_091205_352755_5B16CDB4 
-X-CRM114-Status: GOOD (  19.20  )
+X-CRM114-CacheID: sfid-20210622_091827_571526_71988D9A 
+X-CRM114-Status: GOOD (  24.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,100 +103,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
+On Tue, Jun 22, 2021 at 07:11:33PM +0300, Laurent Pinchart wrote:
+> Hi Thomas,
+> 
+> Thank you for the patches.
+> 
+> On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
+> > Remove references to struct drm_device.irq_enabled from modern
+> > DRM drivers and core.
+> > 
+> > KMS drivers enable IRQs for their devices internally. They don't
+> > have to keep track of the IRQ state via irq_enabled. For vblanking,
+> > it's cleaner to test for vblanking support directly than to test
+> > for enabled IRQs.
+> > 
+> > This used to be a single patch, [1] but it's now a full series.
+> > 
+> > The first 3 patches replace instances of irq_enabled that are not
+> > required.
+> > 
+> > Patch 4 fixes vblank ioctls to actually test for vblank support
+> > instead of IRQs.
+> > 
+> > THe rest of the patchset removes irq_enabled from all non-legacy
+> > drivers. The only exception is omapdrm, which has an internal
+> > dpendency on the field's value. For this drivers, the state gets
+> > duplicated internally.
+> > 
+> > With the patchset applied, drivers can later switch over to plain
+> > Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
+> > 
+> > v2:
+> > 	* keep the original test for legacy drivers in
+> > 	  drm_wait_vblank_ioctl() (Daniel)
+> > 
+> > [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmermann@suse.de/
+> > 
+> > Thomas Zimmermann (22):
+> >   drm/amdgpu: Track IRQ state in local device state
+> >   drm/hibmc: Call drm_irq_uninstall() unconditionally
+> >   drm/radeon: Track IRQ state in local device state
+> >   drm: Don't test for IRQ support in VBLANK ioctls
+> >   drm/komeda: Don't set struct drm_device.irq_enabled
+> >   drm/malidp: Don't set struct drm_device.irq_enabled
+> >   drm/exynos: Don't set struct drm_device.irq_enabled
+> >   drm/kirin: Don't set struct drm_device.irq_enabled
+> >   drm/imx: Don't set struct drm_device.irq_enabled
+> >   drm/mediatek: Don't set struct drm_device.irq_enabled
+> >   drm/nouveau: Don't set struct drm_device.irq_enabled
+> >   drm/omapdrm: Track IRQ state in local device state
+> >   drm/rockchip: Don't set struct drm_device.irq_enabled
+> >   drm/sti: Don't set struct drm_device.irq_enabled
+> >   drm/stm: Don't set struct drm_device.irq_enabled
+> >   drm/sun4i: Don't set struct drm_device.irq_enabled
+> >   drm/tegra: Don't set struct drm_device.irq_enabled
+> >   drm/tidss: Don't use struct drm_device.irq_enabled
+> >   drm/vc4: Don't set struct drm_device.irq_enabled
+> >   drm/vmwgfx: Don't set struct drm_device.irq_enabled
+> >   drm/xlnx: Don't set struct drm_device.irq_enabled
+> >   drm/zte: Don't set struct drm_device.irq_enabled
+> 
+> The list seems to be missing armada, rcar-du and vkms. It would also be
+> nice to address i915 if possible.
 
-Thank you for the patches.
+In addition to this, for all the existing patches,
 
-On Tue, Jun 22, 2021 at 04:09:40PM +0200, Thomas Zimmermann wrote:
-> Remove references to struct drm_device.irq_enabled from modern
-> DRM drivers and core.
-> 
-> KMS drivers enable IRQs for their devices internally. They don't
-> have to keep track of the IRQ state via irq_enabled. For vblanking,
-> it's cleaner to test for vblanking support directly than to test
-> for enabled IRQs.
-> 
-> This used to be a single patch, [1] but it's now a full series.
-> 
-> The first 3 patches replace instances of irq_enabled that are not
-> required.
-> 
-> Patch 4 fixes vblank ioctls to actually test for vblank support
-> instead of IRQs.
-> 
-> THe rest of the patchset removes irq_enabled from all non-legacy
-> drivers. The only exception is omapdrm, which has an internal
-> dpendency on the field's value. For this drivers, the state gets
-> duplicated internally.
-> 
-> With the patchset applied, drivers can later switch over to plain
-> Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
-> 
-> v2:
-> 	* keep the original test for legacy drivers in
-> 	  drm_wait_vblank_ioctl() (Daniel)
-> 
-> [1] https://lore.kernel.org/dri-devel/20210608090301.4752-1-tzimmermann@suse.de/
-> 
-> Thomas Zimmermann (22):
->   drm/amdgpu: Track IRQ state in local device state
->   drm/hibmc: Call drm_irq_uninstall() unconditionally
->   drm/radeon: Track IRQ state in local device state
->   drm: Don't test for IRQ support in VBLANK ioctls
->   drm/komeda: Don't set struct drm_device.irq_enabled
->   drm/malidp: Don't set struct drm_device.irq_enabled
->   drm/exynos: Don't set struct drm_device.irq_enabled
->   drm/kirin: Don't set struct drm_device.irq_enabled
->   drm/imx: Don't set struct drm_device.irq_enabled
->   drm/mediatek: Don't set struct drm_device.irq_enabled
->   drm/nouveau: Don't set struct drm_device.irq_enabled
->   drm/omapdrm: Track IRQ state in local device state
->   drm/rockchip: Don't set struct drm_device.irq_enabled
->   drm/sti: Don't set struct drm_device.irq_enabled
->   drm/stm: Don't set struct drm_device.irq_enabled
->   drm/sun4i: Don't set struct drm_device.irq_enabled
->   drm/tegra: Don't set struct drm_device.irq_enabled
->   drm/tidss: Don't use struct drm_device.irq_enabled
->   drm/vc4: Don't set struct drm_device.irq_enabled
->   drm/vmwgfx: Don't set struct drm_device.irq_enabled
->   drm/xlnx: Don't set struct drm_device.irq_enabled
->   drm/zte: Don't set struct drm_device.irq_enabled
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-The list seems to be missing armada, rcar-du and vkms. It would also be
-nice to address i915 if possible.
-
->  drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
->  drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
->  drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
->  drivers/gpu/drm/drm_irq.c                       | 10 +++-------
->  drivers/gpu/drm/drm_vblank.c                    | 13 +++++++++----
->  drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
->  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
->  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
->  drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
->  drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
->  drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
->  drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
->  drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
->  drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
->  drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
->  drivers/gpu/drm/sti/sti_compositor.c            |  2 --
->  drivers/gpu/drm/stm/ltdc.c                      |  3 ---
->  drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
->  drivers/gpu/drm/tegra/drm.c                     |  7 -------
->  drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
->  drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
->  drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
->  drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
->  drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
->  26 files changed, 30 insertions(+), 111 deletions(-)
-> 
-> 
-> base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
-> prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
-> prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
+> >  drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
+> >  drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
+> >  drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
+> >  drivers/gpu/drm/drm_irq.c                       | 10 +++-------
+> >  drivers/gpu/drm/drm_vblank.c                    | 13 +++++++++----
+> >  drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
+> >  drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
+> >  drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
+> >  drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
+> >  drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
+> >  drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
+> >  drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
+> >  drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
+> >  drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
+> >  drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
+> >  drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
+> >  drivers/gpu/drm/sti/sti_compositor.c            |  2 --
+> >  drivers/gpu/drm/stm/ltdc.c                      |  3 ---
+> >  drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
+> >  drivers/gpu/drm/tegra/drm.c                     |  7 -------
+> >  drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
+> >  drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
+> >  drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
+> >  drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
+> >  drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
+> >  26 files changed, 30 insertions(+), 111 deletions(-)
+> > 
+> > 
+> > base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
+> > prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
+> > prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
 
 -- 
 Regards,
