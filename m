@@ -2,90 +2,78 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 84877C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 15:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05496C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 15:28:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C405611BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 15:26:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C405611BF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id C2462611BF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 15:28:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2462611BF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TpAsxr46tPg7fnYwYPu13GAUAtCELb6GHpO7JqFTZac=; b=HFlH/6QegVca8E
-	k6g55cQvPjDTwb1HTwOamvyYDMEfbSxke+I13jAtcFfwbvQ5HYKsl9hOegy9EvDAq4CV9KPOuNUiY
-	cghxquvbibLP8uJvlNy82c8WFmh1Y5Zp4JTutm2BrPYypSf7dFLab7l/QB164I08ywccBjccpV1xO
-	ygiwpd+8uI2TbRjn34mFQn08/JK53vhYutoR6jUY+mb9WoE57p2DCl0vNSlgZobHZlHjWWm9PSuFe
-	qoLTeFiwVxOS1SQm0uUMuBiN1H8fmiMQ/Hg3A8jPdo5ZkprWykMo3mZCRDXTj8mGdrBY6nNbk8WNC
-	6b1NC/pAcXOcaCkBAVFA==;
+	List-Owner; bh=4u8vxki0wd3MvmaXHH1x1MeK0e/oywLHoYhwVUKyASA=; b=1U9mjSL5LOGNC6
+	BGNBsP35k7kwWV2zvplRpGL4Y+NBU6/dAZ6CAVS71hlY8m/NVjoRaGeNMMcwXCYUDK+0p7B323RUg
+	X7d/6dG+ljjIkPL5iiax6kIfqSPK/J8O2yahYw+lpQya8Ts5XBDLVQH65k0Pug3yvV4lUHCx4Wvj2
+	6MoLINeC+0SP0CsrP9qhQSxawa8PL4YPQ9RscQl1rXI/npu1uu4YM29AlUZ+FId3XhLWilNn1RgXa
+	U9DS40tYW1PG+05hs/B/9Oy7wMaHLM6U+15Ixbpv5PspnY1wvgYhRhBE7LaDFMxpgahe12Kt2Ootu
+	xBlp2PsIYDBKr5HbyUiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lviIQ-007gYr-3U; Tue, 22 Jun 2021 15:26:38 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lviIN-007gXF-Id; Tue, 22 Jun 2021 15:26:37 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F2E9031B;
- Tue, 22 Jun 2021 08:26:33 -0700 (PDT)
-Received: from e110455-lin.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D102D3F718;
- Tue, 22 Jun 2021 08:26:33 -0700 (PDT)
-Received: by e110455-lin.cambridge.arm.com (Postfix, from userid 1000)
- id 938E46850D7; Tue, 22 Jun 2021 16:26:32 +0100 (BST)
-Date: Tue, 22 Jun 2021 16:26:32 +0100
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, mihail.atanassov@arm.com,
- brian.starkey@arm.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, inki.dae@samsung.com, jy0922.shim@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, thierry.reding@gmail.com,
- jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
- linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 06/22] drm/malidp: Don't set struct
- drm_device.irq_enabled
-Message-ID: <20210622152632.647akpp5nqcdfozk@e110455-lin.cambridge.arm.com>
-References: <20210622141002.11590-1-tzimmermann@suse.de>
- <20210622141002.11590-7-tzimmermann@suse.de>
+	id 1lviJn-007gzY-PC; Tue, 22 Jun 2021 15:28:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lviJZ-007gux-GU; Tue, 22 Jun 2021 15:27:50 +0000
+X-UUID: 644a6eb22384446d812fb6252b512e94-20210622
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=MEqE4gRwFT3IFTzj0ySXRryQaakctdoC/a4m/DszlwM=; 
+ b=PKJdEi/dbTRBcwPVGC8K0mV1wn3WWOJE2WB2F/8BMaUvSj189/UzLB2hNL/6T1nL+tUnPrv8mj0W/hmsTHtGan0MB+e/VrnqFIHHItfmaWOqZRSZqntZqpwn4qJDbIffZcblqDN7Fr6VOmFUOaQO7VWIltHgNhpMXMiMkgNyylk=;
+X-UUID: 644a6eb22384446d812fb6252b512e94-20210622
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <christine.zhu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1560086072; Tue, 22 Jun 2021 08:27:46 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Jun 2021 08:17:46 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Jun 2021 23:17:39 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 22 Jun 2021 23:17:38 +0800
+From: Christine Zhu <Christine.Zhu@mediatek.com>
+To: <wim@linux-watchdog.org>, <linux@roeck-us.net>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>
+CC: <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-watchdog@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <seiya.wang@mediatek.com>, christine.zhu <Christine.Zhu@mediatek.com>
+Subject: [v3,3/3] watchdog: mediatek: mt8195: add wdt support
+Date: Tue, 22 Jun 2021 23:17:34 +0800
+Message-ID: <20210622151734.29429-4-Christine.Zhu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210622151734.29429-1-Christine.Zhu@mediatek.com>
+References: <20210622151734.29429-1-Christine.Zhu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210622141002.11590-7-tzimmermann@suse.de>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_082635_754310_4C67726D 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20210622_082749_582385_F8C8FEDC 
+X-CRM114-Status: GOOD (  10.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,40 +85,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBKdW4gMjIsIDIwMjEgYXQgMDQ6MDk6NDZQTSArMDIwMCwgVGhvbWFzIFppbW1lcm1h
-bm4gd3JvdGU6Cj4gVGhlIGZpZWxkIGRybV9kZXZpY2UuaXJxX2VuYWJsZWQgaXMgb25seSB1c2Vk
-IGJ5IGxlZ2FjeSBkcml2ZXJzCj4gd2l0aCB1c2Vyc3BhY2UgbW9kZXNldHRpbmcuIERvbid0IHNl
-dCBpdCBpbiBtYWxpZHAuCj4gCj4gU2lnbmVkLW9mZi1ieTogVGhvbWFzIFppbW1lcm1hbm4gPHR6
-aW1tZXJtYW5uQHN1c2UuZGU+CgpBY2tlZC1ieTogTGl2aXUgRHVkYXUgPGxpdml1LmR1ZGF1QGFy
-bS5jb20+CgpCZXN0IHJlZ2FyZHMsCkxpdml1Cgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vYXJt
-L21hbGlkcF9kcnYuYyB8IDQgLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBkZWxldGlvbnMoLSkK
-PiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMgYi9kcml2
-ZXJzL2dwdS9kcm0vYXJtL21hbGlkcF9kcnYuYwo+IGluZGV4IGRlNTlmMzMwMjUxNi4uNzhkMTVi
-MDRiMTA1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vbWFsaWRwX2Rydi5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL2FybS9tYWxpZHBfZHJ2LmMKPiBAQCAtODQ3LDggKzg0Nyw2
-IEBAIHN0YXRpYyBpbnQgbWFsaWRwX2JpbmQoc3RydWN0IGRldmljZSAqZGV2KQo+ICAJaWYgKHJl
-dCA8IDApCj4gIAkJZ290byBpcnFfaW5pdF9mYWlsOwo+ICAKPiAtCWRybS0+aXJxX2VuYWJsZWQg
-PSB0cnVlOwo+IC0KPiAgCXJldCA9IGRybV92YmxhbmtfaW5pdChkcm0sIGRybS0+bW9kZV9jb25m
-aWcubnVtX2NydGMpOwo+ICAJaWYgKHJldCA8IDApIHsKPiAgCQlEUk1fRVJST1IoImZhaWxlZCB0
-byBpbml0aWFsaXNlIHZibGFua1xuIik7Cj4gQEAgLTg3NCw3ICs4NzIsNiBAQCBzdGF0aWMgaW50
-IG1hbGlkcF9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgdmJsYW5rX2ZhaWw6Cj4gIAltYWxp
-ZHBfc2VfaXJxX2ZpbmkoaHdkZXYpOwo+ICAJbWFsaWRwX2RlX2lycV9maW5pKGh3ZGV2KTsKPiAt
-CWRybS0+aXJxX2VuYWJsZWQgPSBmYWxzZTsKPiAgaXJxX2luaXRfZmFpbDoKPiAgCWRybV9hdG9t
-aWNfaGVscGVyX3NodXRkb3duKGRybSk7Cj4gIAljb21wb25lbnRfdW5iaW5kX2FsbChkZXYsIGRy
-bSk7Cj4gQEAgLTkwOSw3ICs5MDYsNiBAQCBzdGF0aWMgdm9pZCBtYWxpZHBfdW5iaW5kKHN0cnVj
-dCBkZXZpY2UgKmRldikKPiAgCWRybV9hdG9taWNfaGVscGVyX3NodXRkb3duKGRybSk7Cj4gIAlt
-YWxpZHBfc2VfaXJxX2ZpbmkoaHdkZXYpOwo+ICAJbWFsaWRwX2RlX2lycV9maW5pKGh3ZGV2KTsK
-PiAtCWRybS0+aXJxX2VuYWJsZWQgPSBmYWxzZTsKPiAgCWNvbXBvbmVudF91bmJpbmRfYWxsKGRl
-diwgZHJtKTsKPiAgCW9mX25vZGVfcHV0KG1hbGlkcC0+Y3J0Yy5wb3J0KTsKPiAgCW1hbGlkcC0+
-Y3J0Yy5wb3J0ID0gTlVMTDsKPiAtLSAKPiAyLjMyLjAKPiAKCi0tIAo9PT09PT09PT09PT09PT09
-PT09PQp8IEkgd291bGQgbGlrZSB0byB8CnwgZml4IHRoZSB3b3JsZCwgIHwKfCBidXQgdGhleSdy
-ZSBub3QgfAp8IGdpdmluZyBtZSB0aGUgICB8CiBcIHNvdXJjZSBjb2RlISAgLwogIC0tLS0tLS0t
-LS0tLS0tLQogICAgwq9cXyjjg4QpXy/CrwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: "christine.zhu" <Christine.Zhu@mediatek.com>
+
+Support MT8195 watchdog device
+
+Signed-off-by: christine.zhu <Christine.Zhu@mediatek.com>
+---
+ drivers/watchdog/mtk_wdt.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 97ca993bd009..8231cb9cf5f9 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/reset-controller/mt2712-resets.h>
+ #include <dt-bindings/reset-controller/mt8183-resets.h>
+ #include <dt-bindings/reset-controller/mt8192-resets.h>
++#include <dt-bindings/reset-controller/mt8195-resets.h>
+ #include <linux/delay.h>
+ #include <linux/err.h>
+ #include <linux/init.h>
+@@ -81,6 +82,10 @@ static const struct mtk_wdt_data mt8192_data = {
+ 	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
+ };
+ 
++static const struct mtk_wdt_data mt8195_data = {
++	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
++};
++
+ static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+ 			       unsigned long id, bool assert)
+ {
+@@ -341,6 +346,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt6589-wdt" },
+ 	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+ 	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
++	{ .compatible = "mediatek,mt8195-wdt", .data = &mt8195_data },
+ 	{ /* sentinel */ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
+-- 
+2.18.0
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
