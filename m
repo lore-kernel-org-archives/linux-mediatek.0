@@ -2,69 +2,79 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AC2DC2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 06:41:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84F02C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 08:55:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3B9661289
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 06:41:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3B9661289
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1E2326113E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 08:55:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E2326113E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dXKjAnCkY3bi7u49jNMF7GIiNnN4vzNBn4YJOXDlgNA=; b=zKe4Mj4RP6MOpu/gNCga5daMjJ
-	6nY4b0OOqFNTo2dYYYoYfChGVhLKKIDlBlz1Cx9yLeWwsv+vqeM2+flwtWvNrE2Fcn9NOQJkCBjCi
-	SHYgndUXArR9LxMQVQruTKU0bGMx1slaSqA46ptg1vtjlvvquB3Iqmc4A9W3+L7oNHcCpUgr0Qfbg
-	M8My/5yemqSXDWkWNuZBCetMdFO7SxNZ98yYYIUTp2zHvsi3A7CtG69dazyZiwNnlcsntJCzAsW+9
-	hQM8c6x44IQE2HG2WM9F/9za/qs+Wwx3QzgdW/vPhYG2g6mqeiNZ6uV7WHsfqYQyN25MeAprx8ztV
-	deCBzCiA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZjxVGtiDezatrE7wk2evKjUw0GXSnh8x1Wv3+zl0cxQ=; b=LM+Umyvuh27XfY
+	Phd4CFOMesCTzxSYwZp/6vcgWze12kWb3uM1mMF04eqNBWx+7oaaXMyHeaw3DsieucZFC8BbIWPSI
+	GIGHrGuq0XgOxok8Yrc2L3wrZZ9qHqRG5CwT7S9Sf4G/Eje6B4AJNLc/dIotoicpfbv+30aoepp39
+	InA0aiifiFDltnIXFut5J5F2K6XQBzQVFRCZNap9CXDfLNTdaTYvR50DGk7Q5cLGz0nq2YtAPBmpV
+	qYDosLKyw5ypZH1sGWmn3XhMKHbVs4P0jNsdQwxan+003VRwkCKi59VxZb2tmjjUcHvB28D/P71nY
+	5dk8SzlRTlfArkf23vHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lva5e-005r8j-45; Tue, 22 Jun 2021 06:40:54 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lvcBy-006JQO-E8; Tue, 22 Jun 2021 08:55:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lva5a-005r6n-0G
- for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 06:40:51 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id AD443611CE;
- Tue, 22 Jun 2021 06:40:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1624344049;
- bh=8IVeoj39SKXmg91zm5BlPJZ7feT5hJa+UWQdSelyYpE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=q5Fo0hQOj+PgJXEE8O8+cJkzFlyJ/iY5e4XbvTZNMZSR/A4QpP/hHGZ/v/P2/UK8R
- kCOVTfq7tmpzeaCsxeKBwBTV7lbywvGJ2Gqi43GOF121RPi8K3niEsimgGXDxR+2nT
- LXxun14q6ObSb0hII/5NU/MhaakH1ApC0EqRbTUfEcDziiatm1qN7921XEzXUagJHQ
- DeU2xBtraxoNZ0ruMAS38n1gcSl8pwiH7AZvuQiMXwE6ymtjf62SqJirdFeIXyxnW0
- PsV2I/PVWWAb8qaOV0O0D45z3Mwq/hO8iIXY5lFOpv8mGg2YEqG7YPmUSUl3CPK058
- qwIeJOXKvlj4g==
-Date: Tue, 22 Jun 2021 08:40:44 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: lorenzo.bianconi@redhat.com, nbd@nbd.name, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, jemele@google.com, yenlinlai@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: add .set_sar_specs support
-Message-ID: <YNGF7Bl2uP0SAnv9@lore-desk>
-References: <YM8NBUZp+/97kiIH@lore-desk--annotate>
- <1624315331-16608-1-git-send-email-sean.wang@mediatek.com>
+ id 1lvcBv-006JOu-5M; Tue, 22 Jun 2021 08:55:32 +0000
+X-UUID: c6a04d9e855d4b9fb7d476e41208e16a-20210622
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=7i5vombE2LgwFykIPcGk4y+2hu2bStqgOtES8TP4NYo=; 
+ b=nXdlmaahLXYSVdifLiqXc4ID1MDL4yEI6Em9HNYvlV+T0sCD7h9zLEUJZXX4mUDQhKLEbY8qsv20MjSrTpqw/v/khvU0igOMwpWtkNkl0mRsr92W6gK10UyNg/EURrlSNHDXiy8XIW4FerSnQJ6nOTnbO4H7YWjhfnDyJVRpxA0=;
+X-UUID: c6a04d9e855d4b9fb7d476e41208e16a-20210622
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 359449174; Tue, 22 Jun 2021 01:55:24 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Jun 2021 01:47:59 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 22 Jun 2021 16:47:58 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 22 Jun 2021 16:47:57 +0800
+From: <yee.lee@mediatek.com>
+To: <andreyknvl@gmail.com>
+CC: <wsd_upstream@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Andrey
+ Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
+ Dmitry Vyukov <dvyukov@google.com>, Andrew Morton
+ <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
+ list:KASAN" <kasan-dev@googlegroups.com>, "open list:MEMORY MANAGEMENT"
+ <linux-mm@kvack.org>, open list <linux-kernel@vger.kernel.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] kasan: [v2]unpoison use memzero to init unaligned object
+Date: Tue, 22 Jun 2021 16:47:20 +0800
+Message-ID: <20210622084723.27637-1-yee.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <1624315331-16608-1-git-send-email-sean.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210621_234050_104337_98EAF4A7 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20210622_015531_250303_BA5AA727 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,88 +86,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0247006163745138976=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Yee Lee <yee.lee@mediatek.com>
 
---===============0247006163745138976==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="gGYiClTCWJBu/p1R"
-Content-Disposition: inline
+Follows the discussion: https://patchwork.kernel.org/project/linux-mediatek/list/?series=504439
 
+This patch Add memzero_explict to initialize unaligned object.
 
---gGYiClTCWJBu/p1R
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Based on the integrateion of initialization in kasan_unpoison(). The hwtag instructions, constrained with its granularity, has to overwrite the data btyes in unaligned objects. This would cause issue when it works with SLUB debug redzoning.
 
-[...]
-> >
-> >I guess there is an use-after-free here since sar is freed at the end of=
- nl80211_set_sar_specs, right?
-> >
->=20
-> Nope, there is no use-after-free case happens here because frp->range jus=
-t points to an entry of const struct cfg80211_sar_specs table, not the one =
-created from nl80211_set_sar_specs.
+In this patch, an additional initalizaing path is added for the unaligned objects. It contains memzero_explict() to clear out the data and disables its init flag for the following hwtag actions.
 
-ack, right. I misread the code.
+In lab test, this path is executed about 1.1%(941/80854) within the overall kasan_unpoison during a non-debug booting process.
 
-Regards,
-Lorenzo
+Lab test: QEMU5.2 (+mte) / linux kernel 5.13-rc7
 
->=20
-> >Regards,
-> >Lorenzo
-> >
-> >> +		frp->power =3D power;
-> >> +	}
-> >> +
-> >> +	err =3D mt76_connac_mcu_set_rate_txpower(mphy);
-> >> +
-> >> +out:
-> >> +	mt7921_mutex_release(dev);
-> >> +
-> >> +	return err;
-> >> +}
-> >> +
-> >>  const struct ieee80211_ops mt7921_ops =3D {
-> >>	.tx =3D mt7921_tx,
-> >>	.start =3D mt7921_start,
-> >> @@ -1209,4 +1253,5 @@ const struct ieee80211_ops mt7921_ops =3D {
-> >>	.set_rekey_data =3D mt7921_set_rekey_data,  #endif /* CONFIG_PM */
-> >>	.flush =3D mt7921_flush,
-> >> +	.set_sar_specs =3D mt7921_set_sar_specs,
-> >>  };
-> >> --
-> >> 2.25.1
-> >>
+Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+---
+ mm/kasan/kasan.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---gGYiClTCWJBu/p1R
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYNGF5wAKCRA6cBh0uS2t
-rBhsAP95npOocHCGoicDiaIO8Uf1rLxnUf6RItP8GT8jhzI96wD9Grh9Tc8PSd/+
-JGauE3SBfDXGS9Ey6tjP/AIhbplcdgY=
-=rm2D
------END PGP SIGNATURE-----
-
---gGYiClTCWJBu/p1R--
-
-
---===============0247006163745138976==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+index d8faa64614b7..edc11bcc3ff3 100644
+--- a/mm/kasan/kasan.h
++++ b/mm/kasan/kasan.h
+@@ -389,7 +389,7 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
+ 		return;
+ 	if (init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
+ 		init = false;
+-		memset((void *)addr, 0, size);
++		memzero_explicit((void *)addr, size);
+ 	}
+ 	size = round_up(size, KASAN_GRANULE_SIZE);
+ 	hw_set_mem_tag_range((void *)addr, size, tag, init);
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0247006163745138976==--
-
