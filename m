@@ -2,19 +2,19 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C716C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8FB4C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:49:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F32C061289
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:30:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F32C061289
+	by mail.kernel.org (Postfix) with ESMTPS id 9E3C661358
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 09:49:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9E3C661358
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DKt4uacfqR0l4muGUwBvph1cB2KRc2jEI+m/nKwGyBg=; b=UpeAmB3Yy7szjd
-	i+9j4/q+2iBPEqEbravf76aMSc4MaQ4bMry4eUiFC19NCpYcItOwMZSPyoI9fm2jqgbxFDq0Kx6pe
-	KnUEQBUwqzFz7aePSnIn+ZlFnIJMvfno6woqBDFe50fTxs1qOxW2GOHw7n1siTQfTZ5fZYSEzgNQC
-	dod3Ij/dV8WbmLbc2an1qHM1Pb8d04FIrYBZUGLruOsbUhcSPKIN88tiFhFhWfYHOtvU18oWym0bc
-	hgAdd81mhJpZTKjAEGLnMrkrkHyW7px4a6MMz+bMZ8tlpb1bE8y3A0OKA/PIzgbV+WCOmvTOmYIVW
-	/Nt7KE5IB4OwR1lgIwjA==;
+	List-Owner; bh=hhe16HiabsG3KoXhe5QfH88pNj/9v5lQgpNC3hB5kuE=; b=JLpz6C2bOeP/kO
+	Y7MesU5VjAXVHATNiL4tJUYBLK0aIp+chG9te2jwZFHjEbkJLSZsZzP8geUslbE56A5xMSrltnto5
+	v1PTCgXkcO0gC3QzTRwNK42w3Yr6umcnqoLm8Bu/b6uJHCvJqOcmbDDqOzjXkmuHSpF34crumA1dF
+	3kSDsPbHhFrhNzW7DwffRXSreZV4Cr82cvIv1ERDYHe26sWRtznQH93R41LwKqwAUrpvo+QONmsZX
+	avwPyMcKd3eb9Bx0rHwGVLx9/7b2tas8ZMibgffeitNQdUTgRtLndGMV8jrnZTTTi40+ecxwqkJfw
+	+7/2+D4bc3d0P+vwQ72g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvcjW-006PfC-AE; Tue, 22 Jun 2021 09:30:14 +0000
-Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
+	id 1lvd1p-006W8J-Pl; Tue, 22 Jun 2021 09:49:09 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvcj6-006PTC-Cn
- for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 09:29:50 +0000
-Received: by mail-qt1-x832.google.com with SMTP id z4so15560486qts.4
- for <linux-mediatek@lists.infradead.org>; Tue, 22 Jun 2021 02:29:48 -0700 (PDT)
+ id 1lvd1c-006W4u-8d
+ for linux-mediatek@lists.infradead.org; Tue, 22 Jun 2021 09:48:57 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id
+ j11-20020a9d738b0000b02903ea3c02ded8so20629597otk.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 22 Jun 2021 02:48:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=58zdBT4iccY3hk8j5TcU5G4OItRSttrTmPDv2LwwaDM=;
- b=I8nT0GICPLPZ1Jhb4B9W/QQIYPbvEQrVLYwutlY2c2qEMSCirWGRIwHKuF8WAivTLK
- /LpLwAJ4FKBILv7vHY+BKVUCTgnU9VDqokmEBuXWh61+figaMbqizpO7F0P+kLjpsq9M
- 24zUBztp9upMyC/n35LdB09iA/ZB+bpCEv8elrpP6Vb6Vt6P6+r+9QBwR3+5MsXGXIf/
- 2WKf+aa4TfFuWtl3C/WNaxcRMjz8R1hlISaW2IbA4EzdUbpSeZZiTsTNzkStWqRZRMcJ
- Qzh0ozt8SJrDCqvmSYYrBo1NUf9TpLcMwXRCrSRBV0a2YSeRl3lALxiXCjQddkx+hDSj
- 9P9A==
+ :cc; bh=nD+1l6o05xmy+VeXlqHaYhc8wOEE+zvUKMP+aUukBYM=;
+ b=BlLwkz0QZDydr7SNM/bXhFBnc2kM0mgn/8nn8V4kWzH9i/a9lVOPNtE9iMb+8YxrjR
+ Mre/2mnFj/gq9qoQWjBGg+cwAKwjWqplxPF1cc4dbTWk2WR6RkvePXJGOcUECIbduaJQ
+ Rro3+vkRKKb1LH9E7BcEIjx0ZAZMyfT8ZUiB02OX/3bVF9cBIZGK+wgNd17pxGEtguwR
+ Q0JI8sK6nnov+RxBQN5QkiwyIw4DSZSL8ixAkFWnseaVz1p60+VDHqKraA8oZZzw5Zvx
+ 2B9BJqVag8BpyTihdC9ZYwjxX6haC1k79P/yC3tWAp+JeJAlL+15rgMgthykfR7atUhl
+ WMKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=58zdBT4iccY3hk8j5TcU5G4OItRSttrTmPDv2LwwaDM=;
- b=nkPbvpjyWmElcJiylgmpClLYFIb/YPipxwbqcojfMTZtapH8tzQY/PGQssDwTzqr0W
- xZvRmCp6x+VuoWT2oIFrkBOQZ7kpWiOQoHyIWkGQrWEJcHav6fRUdgv2rYF39Q2s6Wzj
- EDQjjRnkYHyqSwxNjLGKa7FagHjZqx9sDIuz661V3YtFb3iLbueZjVcTp1Ut4GUvIFFG
- ZeMMl55pWNy1RSs9sjQmLmaBdigH1lJzI3dCgFwAt59LO67Wwvt3qw+SN8A9FWUS8oPL
- CrNoceIw2s8V7dV18kNS9nHfliVuNK8jVSjYYLg3a9GoETOiNffSq4OW2aNMMI6u4BQG
- 1GDQ==
-X-Gm-Message-State: AOAM533/nb9RruzeyeZIF6VK8EEEOxAFk45MGI6a02uVAM6yx1F8ttQO
- GuAoCJlRgW3KZEOqmJJaDsCyhkHIV/ibBtx0AEOmeQ==
-X-Google-Smtp-Source: ABdhPJyMpRmME/HlkaV4EXqY+IqFB3RLpLD0Aahei9VXIQwOIJQdCVp1+s1OII9DHkhpOgFw6W/vTi4gxUbjIB+r3KI=
-X-Received: by 2002:ac8:5dcd:: with SMTP id e13mr2542822qtx.175.1624354187077; 
- Tue, 22 Jun 2021 02:29:47 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=nD+1l6o05xmy+VeXlqHaYhc8wOEE+zvUKMP+aUukBYM=;
+ b=iayXCL+vNkET0dYdw4cYnIe4vJ5yqZtVP62jiWPkOgb0G7ggaEf+fTJObZB5ix9UON
+ XGTQG889ZiiajTCgWzpIFMcaevUstfWA/eYdJDTMXoNYlzp0TJ6MGNRGCbjnh6rPNJqI
+ LUDg5lDU13tdYRSVPGFpX90nZAGPjwQ4ynCaPuRt2njVy7AnOsOadKnpTEu4RQqdvu2Z
+ Y66yBOmuxkF9a8MJbbMWtsLFTh5Q1+CY1FQ4oKX3G49096PQIvM9GHHNqzhu9jl7G3ju
+ Z6/7V1izQXeYxRfWBbPOqR/9t2USd+6vqkdS2d7OiWFCMaox36N/ruUVlnkb0tOJEiMO
+ 6SfQ==
+X-Gm-Message-State: AOAM533tvidCVPEOhXwZ4arjinkvE9GV4z9dqq6uzNtrte+4/hgfGVrR
+ gIyb1sVhRyPswudpuOWtAS3+T8Rwnn9R+GS4xFl7KA==
+X-Google-Smtp-Source: ABdhPJwI4wpym27x4pBWkuYhL+X3gpT+E2b8RxSSxNrlJWT0CL0jEM4nvpVx7PzkmNccX3NLHdQxN4J4vmhAa2geJnw=
+X-Received: by 2002:a05:6830:93:: with SMTP id
+ a19mr2377707oto.17.1624355335059; 
+ Tue, 22 Jun 2021 02:48:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210620114756.31304-1-Kuan-Ying.Lee@mediatek.com>
- <20210620114756.31304-4-Kuan-Ying.Lee@mediatek.com>
-In-Reply-To: <20210620114756.31304-4-Kuan-Ying.Lee@mediatek.com>
-From: Alexander Potapenko <glider@google.com>
-Date: Tue, 22 Jun 2021 11:29:11 +0200
-Message-ID: <CAG_fn=U0_VzgqBtuyB4JnSMRiHg=C85e-m_4X+=QY-o_u-k9Fw@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] kasan: add memory corruption identification
- support for hardware tag-based mode
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Andrey Konovalov <andreyknvl@gmail.com>, 
- Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+ <20210620114756.31304-3-Kuan-Ying.Lee@mediatek.com>
+ <CAG_fn=UTfR9yKrkdRDjxFn=vgR_B7kzytm9WDWT14Gh0PLXyJg@mail.gmail.com>
+In-Reply-To: <CAG_fn=UTfR9yKrkdRDjxFn=vgR_B7kzytm9WDWT14Gh0PLXyJg@mail.gmail.com>
+From: Marco Elver <elver@google.com>
+Date: Tue, 22 Jun 2021 11:48:43 +0200
+Message-ID: <CANpmjNPdaXj0egTTX6CmJonNM2UgbQPqza5Ku9u+ariJ8CQx_Q@mail.gmail.com>
+Subject: Re: [PATCH v3 2/3] kasan: integrate the common part of two KASAN
+ tag-based modes
+To: Alexander Potapenko <glider@google.com>
+Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
+ Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
+ Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov <dvyukov@google.com>, 
  Andrew Morton <akpm@linux-foundation.org>,
  Matthias Brugger <matthias.bgg@gmail.com>, 
  kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, 
@@ -85,8 +87,8 @@ Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
  linux-mediatek@lists.infradead.org, wsd_upstream <wsd_upstream@mediatek.com>, 
  chinwen.chang@mediatek.com, nicholas.tang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_022948_507890_EB3B73E5 
-X-CRM114-Status: GOOD (  22.11  )
+X-CRM114-CacheID: sfid-20210622_024856_336592_47E72859 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,52 +100,34 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBKdW4gMjAsIDIwMjEgYXQgMTo0OCBQTSBLdWFuLVlpbmcgTGVlCjxLdWFuLVlpbmcu
-TGVlQG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4KPiBBZGQgbWVtb3J5IGNvcnJ1cHRpb24gaWRlbnRp
-ZmljYXRpb24gc3VwcG9ydCBmb3IgaGFyZHdhcmUgdGFnLWJhc2VkCj4gbW9kZS4gV2Ugc3RvcmUg
-b25lIG9sZCBmcmVlIHBvaW50ZXIgdGFnIGFuZCBmcmVlIGJhY2t0cmFjZS4KPgo+IFNpZ25lZC1v
-ZmYtYnk6IEt1YW4tWWluZyBMZWUgPEt1YW4tWWluZy5MZWVAbWVkaWF0ZWsuY29tPgo+IFN1Z2dl
-c3RlZC1ieTogTWFyY28gRWx2ZXIgPGVsdmVyQGdvb2dsZS5jb20+Cj4gQ2M6IEFuZHJleSBSeWFi
-aW5pbiA8cnlhYmluaW4uYS5hQGdtYWlsLmNvbT4KPiBDYzogQWxleGFuZGVyIFBvdGFwZW5rbyA8
-Z2xpZGVyQGdvb2dsZS5jb20+Cj4gQ2M6IEFuZHJleSBLb25vdmFsb3YgPGFuZHJleWtudmxAZ21h
-aWwuY29tPgo+IENjOiBEbWl0cnkgVnl1a292IDxkdnl1a292QGdvb2dsZS5jb20+Cj4gQ2M6IEFu
-ZHJldyBNb3J0b24gPGFrcG1AbGludXgtZm91bmRhdGlvbi5vcmc+ClJldmlld2VkLWJ5OiBBbGV4
-YW5kZXIgUG90YXBlbmtvIDxnbGlkZXJAZ29vZ2xlLmNvbT4KPiAtLS0KPiAgbGliL0tjb25maWcu
-a2FzYW4gfCAyICstCj4gIG1tL2thc2FuL2thc2FuLmggIHwgMiArLQo+ICAyIGZpbGVzIGNoYW5n
-ZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9saWIv
-S2NvbmZpZy5rYXNhbiBiL2xpYi9LY29uZmlnLmthc2FuCj4gaW5kZXggNmY1ZDQ4ODMyMTM5Li4y
-Y2MyNTc5MmJjMmYgMTAwNjQ0Cj4gLS0tIGEvbGliL0tjb25maWcua2FzYW4KPiArKysgYi9saWIv
-S2NvbmZpZy5rYXNhbgo+IEBAIC0xNTcsNyArMTU3LDcgQEAgY29uZmlnIEtBU0FOX1NUQUNLCj4K
-PiAgY29uZmlnIEtBU0FOX1RBR1NfSURFTlRJRlkKPiAgICAgICAgIGJvb2wgIkVuYWJsZSBtZW1v
-cnkgY29ycnVwdGlvbiBpZGVudGlmaWNhdGlvbiIKPiAtICAgICAgIGRlcGVuZHMgb24gS0FTQU5f
-U1dfVEFHUwo+ICsgICAgICAgZGVwZW5kcyBvbiBLQVNBTl9TV19UQUdTIHx8IEtBU0FOX0hXX1RB
-R1MKPiAgICAgICAgIGhlbHAKPiAgICAgICAgICAgVGhpcyBvcHRpb24gZW5hYmxlcyBiZXN0LWVm
-Zm9ydCBpZGVudGlmaWNhdGlvbiBvZiBidWcgdHlwZQo+ICAgICAgICAgICAodXNlLWFmdGVyLWZy
-ZWUgb3Igb3V0LW9mLWJvdW5kcykgYXQgdGhlIGNvc3Qgb2YgaW5jcmVhc2VkCj4gZGlmZiAtLWdp
-dCBhL21tL2thc2FuL2thc2FuLmggYi9tbS9rYXNhbi9rYXNhbi5oCj4gaW5kZXggYjBmYzlhMWVi
-N2UzLi5kNmY5ODJiOGE4NGUgMTAwNjQ0Cj4gLS0tIGEvbW0va2FzYW4va2FzYW4uaAo+ICsrKyBi
-L21tL2thc2FuL2thc2FuLmgKPiBAQCAtMTUzLDcgKzE1Myw3IEBAIHN0cnVjdCBrYXNhbl90cmFj
-ayB7Cj4gICAgICAgICBkZXBvdF9zdGFja19oYW5kbGVfdCBzdGFjazsKPiAgfTsKPgo+IC0jaWZk
-ZWYgQ09ORklHX0tBU0FOX1RBR1NfSURFTlRJRlkKPiArI2lmIGRlZmluZWQoQ09ORklHX0tBU0FO
-X1RBR1NfSURFTlRJRlkpICYmIGRlZmluZWQoQ09ORklHX0tBU0FOX1NXX1RBR1MpCj4gICNkZWZp
-bmUgS0FTQU5fTlJfRlJFRV9TVEFDS1MgNQo+ICAjZWxzZQo+ICAjZGVmaW5lIEtBU0FOX05SX0ZS
-RUVfU1RBQ0tTIDEKPiAtLQo+IDIuMTguMAo+Cj4gLS0KPiBZb3UgcmVjZWl2ZWQgdGhpcyBtZXNz
-YWdlIGJlY2F1c2UgeW91IGFyZSBzdWJzY3JpYmVkIHRvIHRoZSBHb29nbGUgR3JvdXBzICJrYXNh
-bi1kZXYiIGdyb3VwLgo+IFRvIHVuc3Vic2NyaWJlIGZyb20gdGhpcyBncm91cCBhbmQgc3RvcCBy
-ZWNlaXZpbmcgZW1haWxzIGZyb20gaXQsIHNlbmQgYW4gZW1haWwgdG8ga2FzYW4tZGV2K3Vuc3Vi
-c2NyaWJlQGdvb2dsZWdyb3Vwcy5jb20uCj4gVG8gdmlldyB0aGlzIGRpc2N1c3Npb24gb24gdGhl
-IHdlYiB2aXNpdCBodHRwczovL2dyb3Vwcy5nb29nbGUuY29tL2QvbXNnaWQva2FzYW4tZGV2LzIw
-MjEwNjIwMTE0NzU2LjMxMzA0LTQtS3Vhbi1ZaW5nLkxlZSU0MG1lZGlhdGVrLmNvbS4KCgoKLS0g
-CkFsZXhhbmRlciBQb3RhcGVua28KU29mdHdhcmUgRW5naW5lZXIKCkdvb2dsZSBHZXJtYW55IEdt
-YkgKRXJpa2EtTWFubi1TdHJhw59lLCAzMwo4MDYzNiBNw7xuY2hlbgoKR2VzY2jDpGZ0c2bDvGhy
-ZXI6IFBhdWwgTWFuaWNsZSwgSGFsaW1haCBEZUxhaW5lIFByYWRvClJlZ2lzdGVyZ2VyaWNodCB1
-bmQgLW51bW1lcjogSGFtYnVyZywgSFJCIDg2ODkxClNpdHogZGVyIEdlc2VsbHNjaGFmdDogSGFt
-YnVyZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+On Tue, 22 Jun 2021 at 11:28, Alexander Potapenko <glider@google.com> wrote:
+>
+> > diff --git a/mm/kasan/report_tags.h b/mm/kasan/report_tags.h
+> > new file mode 100644
+> > index 000000000000..1cb872177904
+> > --- /dev/null
+> > +++ b/mm/kasan/report_tags.h
+> Why don't you make it a C file instead?
+
+Yes, good point. report_{hw,sw}_tags.c essentially define it, but it's
+called by report.c code.
+
+I think I suggested to make it a header first because there were still
+parts that were report_{hw,sw}_tags.c specific, and the helper
+function would be used by those 2 to build their version of
+kasan_get_bug_type(), but that doesn't seem to be the case anymore.
+
+> > +const char *kasan_get_bug_type(struct kasan_access_info *info)
+> If this function has to be in the header, it should be declared as
+> static inline.
+> But I don't think it has to be there in the first place.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
