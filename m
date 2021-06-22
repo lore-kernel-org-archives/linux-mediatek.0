@@ -2,94 +2,91 @@ Return-Path: <SRS0=xI6Y=LQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B976C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 13:09:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C70EC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 13:55:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 679A660FE9
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 13:09:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 679A660FE9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id C3D6261374
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Jun 2021 13:55:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3D6261374
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bbRTcPkWXtgGXXgC70mb0XG5bPuDj4fHlt9GlB0L68E=; b=FL6m+X6InvsUi/
-	OECxqrOo5m5ZXfvdKUjgGiPW0OEzPH+F8Lr4GAGp2nZipFmWcZAIugdr4/GPOsfcEcWHHNqD2ebLe
-	UxgUW+Jq3Jx4YsPu24fLgqiy8e1bWoVBQ/xxO42GGb+BlWYu1kJzAUXfPC/UIecQSPkkAh0XQyf7o
-	mnLcWcUUiMOyASRC5M4/KxEmp3KMfB9DmEWnUnUDqMe3uyVRRfcPBvPrwQwUzJMXzDzgjWPXGBoSq
-	bZlOLFYpZR9mSzQ9XdHsP6Er5Ji/yFK0Yj2Pzz1M7zNu3Q3+OLRGfTN/4WN1MXIoF1NTPd03knym7
-	RayrnvbRhgQdkGhsZPPg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VlnJVSAOXBGEH6d4e2xEJZZswa4V3zMEFhRQeZK8svA=; b=37DWeNLF2R8S1q
+	MfiV2WBcKMHNItiVVpfZ4Ra7Coty9Vxxs5CGASvAggWHyubBDxoSR19OR03KPMQnmcQx7wwiL9N14
+	gFyrmPUXgIxxkkHPf85/+f2W6qvoDP3zwEBS1B07VHnSPUQRMgQ7qCAbc2n+Uc9FdVvWk7SXGTNLZ
+	F4Ungj13pbyM2fKL0+EXYCbmDMHyNu07RqaS8xtUX82k+bi3Dx2cHpzViD7tpvvA/BBrKx6x4JlG1
+	CnVt15I4D/REndox15zxD8jXtgty9Cudtt2JqF48SAs3fv5IjbGIyXVK1k+geuUeC2xaw4E4gwRLD
+	Ast82DTitBkFui95F7nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvg9f-007GVh-DO; Tue, 22 Jun 2021 13:09:27 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1lvgra-007NA5-SN; Tue, 22 Jun 2021 13:54:50 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvg9O-007GRY-0b; Tue, 22 Jun 2021 13:09:14 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
- 15MD7YWJ016699; Tue, 22 Jun 2021 13:09:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
- bh=nNGhc4wVJo2amK5VSNy7N7O6Kcp1UZjvj4FvRgNDlDU=;
- b=gVzJ8fnTUgU5WtWYj6Ff099RIDwila0KKyhfLqNc0q2DxEM5eXGFyfV01TY58zsX8C7N
- PLAV44lfsC2D7j5ODt1/pFd7vFDvl02RG7JAoi47mpP1jCmNbxgYTCVo+wVSkXev2+mX
- 5AU2MZgPQNthPjnlISpg7QC/SKmohKsbZY2mGJ14mVw3EoiuCnK9KIUoP2MiLR66Mhxk
- s4IniOrM4ZiK3F9QB/XAManTAV6vs3m9U/EalzyCCjH4RtzZ2ZmH2W6rXPIDpyqHcUUo
- OgE2nyDXZY/jIvMA9aTLtW82nOtccJsOP3dtnA9gi8rt1EogPTNqehKZeqFRdlUY3mdy YQ== 
-Received: from oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 39ap66k9va-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 22 Jun 2021 13:09:02 +0000
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
- by pps.podrdrct (8.16.0.36/8.16.0.36) with SMTP id 15MD67RX147909;
- Tue, 22 Jun 2021 13:09:01 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by aserp3020.oracle.com with ESMTP id 3998d7e3ax-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 22 Jun 2021 13:09:01 +0000
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 15MD71pv151810;
- Tue, 22 Jun 2021 13:09:00 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3020.oracle.com with ESMTP id 3998d7e3a8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 22 Jun 2021 13:09:00 +0000
-Received: from abhmp0017.oracle.com (abhmp0017.oracle.com [141.146.116.23])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 15MD8xKO009280;
- Tue, 22 Jun 2021 13:08:59 GMT
-Received: from mwanda (/102.222.70.252)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Tue, 22 Jun 2021 06:08:59 -0700
-Date: Tue, 22 Jun 2021 16:08:52 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH] mailbox: mtk-cmdq: Fix uninitialized variable in
- cmdq_mbox_flush()
-Message-ID: <YNHg5NuJILrrBIZ/@mwanda>
+ id 1lvgrM-007N6D-BP; Tue, 22 Jun 2021 13:54:39 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id nd37so34724442ejc.3;
+ Tue, 22 Jun 2021 06:54:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FByLAh6Nf6CrO0CmfvZoHDR68Ruso4bZUuWvxrdb7+g=;
+ b=tA5vW637kCakI7hlfEOyVaNxytSpmD41CBKAyDpRHd4Nn3k0+ZOuUy4ktkdPl1/o62
+ P+dR7c0sevpmjUYfYJL03s+RVXxoH8OjCLZnvrA9iibyuUPgCllBgCyDKYuVeZ0+XBrg
+ TWGcLxJPYLoXL9c17cezS9A2eVBZVnfY8tO5BCG1XwIwj/oCs+dekgk5yel8P2qPaAnw
+ S7g3Xkr+GY7P/VEoaR9DljrLM+euVjfN1bu2FzbOvQBjjdqMjGm1kC+onLxtNjs2aEdp
+ 4QSwPemSPqTKNGJMGn5YQEyTFYebMUjFjZYlfhczM2OPyFwDUaL/iKO6JiRPrZw78FjM
+ dFDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FByLAh6Nf6CrO0CmfvZoHDR68Ruso4bZUuWvxrdb7+g=;
+ b=CqrvKcEYAKKJ4vOqml0XVaRy81tyBywBpUiXB+6ooQ4Vzr8MR+aK4Yff7/anDRc2EC
+ 8CnkBbwI9YtFKoTcMTFXYUYPapxShIIZAZqnwZKx0GoYKwwe6Xl4JABNBiTVtr1o/Y8e
+ UcHebigjSzGxeqcnhZkIeZnihOs6m2KaIGprOgLJox/TuMQiCB0kRUzwtM4PEp9Cp+8e
+ kjube8Ej8CBglcpjGvkVZhkwQ6r0XXE163jVWrIuUfrF5hiEHLMPJ7BwgHd+PFOrHSz1
+ +bIhzAJsPTyJVsRm08gmt54UftCz2NWMpjkWcSBAdAdLLQckcCY9pyK2kIRYRpiddYvO
+ 06Pg==
+X-Gm-Message-State: AOAM530sVVxYIYS0Sgslfof92x8MBSnsYKez2Phxnra7UTmA9MJrIzJy
+ p5kpm43tMazMD9dQY0/uC6rywcdNhXEq7XJ5qLQ=
+X-Google-Smtp-Source: ABdhPJx/V5oszBpwip0SxZHN++QihYaRpmfEKLkSDaCjMEhM4cmOUiXuiBz3yinojddOmwomdd+B4Q2fYeZRyy2KxAU=
+X-Received: by 2002:a17:906:2f91:: with SMTP id
+ w17mr4164114eji.443.1624370074257; 
+ Tue, 22 Jun 2021 06:54:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-Proofpoint-ORIG-GUID: 8p3wwlkN12fs7dM7rr5b_8Wf51qeErBx
-X-Proofpoint-GUID: 8p3wwlkN12fs7dM7rr5b_8Wf51qeErBx
+References: <20210620114756.31304-1-Kuan-Ying.Lee@mediatek.com>
+ <20210620114756.31304-2-Kuan-Ying.Lee@mediatek.com>
+In-Reply-To: <20210620114756.31304-2-Kuan-Ying.Lee@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Tue, 22 Jun 2021 16:54:14 +0300
+Message-ID: <CA+fCnZcFxNwVd7oCLn4an-c6sx=3tQbZAB7Zu4jSPVqr6xDrVg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] kasan: rename CONFIG_KASAN_SW_TAGS_IDENTIFY to
+ CONFIG_KASAN_TAGS_IDENTIFY
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+ Alexander Potapenko <glider@google.com>, 
+ Marco Elver <elver@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+ Andrew Morton <akpm@linux-foundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ kasan-dev <kasan-dev@googlegroups.com>, LKML <linux-kernel@vger.kernel.org>, 
+ Linux Memory Management List <linux-mm@kvack.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, 
+ chinwen.chang@mediatek.com, nicholas.tang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_060910_224088_A8D04E69 
-X-CRM114-Status: GOOD (  14.32  )
+X-CRM114-CacheID: sfid-20210622_065436_440112_A4B0600E 
+X-CRM114-Status: GOOD (  21.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,34 +103,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The "cb" pointer needs to be initialized before can assign
-"data.data = cb->data;".
+On Sun, Jun 20, 2021 at 2:48 PM Kuan-Ying Lee
+<Kuan-Ying.Lee@mediatek.com> wrote:
+>
+> This patch renames CONFIG_KASAN_SW_TAGS_IDENTIFY to
+> CONFIG_KASAN_TAGS_IDENTIFY in order to be compatible
+> with hardware tag-based mode.
+>
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> Suggested-by: Marco Elver <elver@google.com>
+> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Andrey Konovalov <andreyknvl@gmail.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> ---
+>  lib/Kconfig.kasan         | 2 +-
+>  mm/kasan/kasan.h          | 4 ++--
+>  mm/kasan/report_sw_tags.c | 2 +-
+>  mm/kasan/sw_tags.c        | 4 ++--
+>  4 files changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> index cffc2ebbf185..6f5d48832139 100644
+> --- a/lib/Kconfig.kasan
+> +++ b/lib/Kconfig.kasan
+> @@ -155,7 +155,7 @@ config KASAN_STACK
+>           CONFIG_COMPILE_TEST.  On gcc it is assumed to always be safe
+>           to use and enabled by default.
+>
+> -config KASAN_SW_TAGS_IDENTIFY
+> +config KASAN_TAGS_IDENTIFY
+>         bool "Enable memory corruption identification"
+>         depends on KASAN_SW_TAGS
+>         help
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 8f450bc28045..b0fc9a1eb7e3 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -153,7 +153,7 @@ struct kasan_track {
+>         depot_stack_handle_t stack;
+>  };
+>
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>  #define KASAN_NR_FREE_STACKS 5
+>  #else
+>  #define KASAN_NR_FREE_STACKS 1
+> @@ -170,7 +170,7 @@ struct kasan_alloc_meta {
+>  #else
+>         struct kasan_track free_track[KASAN_NR_FREE_STACKS];
+>  #endif
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
+>         u8 free_track_idx;
+>  #endif
+> diff --git a/mm/kasan/report_sw_tags.c b/mm/kasan/report_sw_tags.c
+> index 3d20d3451d9e..821a14a19a92 100644
+> --- a/mm/kasan/report_sw_tags.c
+> +++ b/mm/kasan/report_sw_tags.c
+> @@ -31,7 +31,7 @@
+>
+>  const char *kasan_get_bug_type(struct kasan_access_info *info)
+>  {
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         struct kasan_alloc_meta *alloc_meta;
+>         struct kmem_cache *cache;
+>         struct page *page;
+> diff --git a/mm/kasan/sw_tags.c b/mm/kasan/sw_tags.c
+> index 9362938abbfa..dd05e6c801fa 100644
+> --- a/mm/kasan/sw_tags.c
+> +++ b/mm/kasan/sw_tags.c
+> @@ -177,7 +177,7 @@ void kasan_set_free_info(struct kmem_cache *cache,
+>         if (!alloc_meta)
+>                 return;
+>
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         idx = alloc_meta->free_track_idx;
+>         alloc_meta->free_pointer_tag[idx] = tag;
+>         alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
+> @@ -196,7 +196,7 @@ struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+>         if (!alloc_meta)
+>                 return NULL;
+>
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
+>                 if (alloc_meta->free_pointer_tag[i] == tag)
+>                         break;
+> --
+> 2.18.0
+>
 
-Fixes: 4a3cb0303984 ("mailbox: mtk-cmdq: Use mailbox rx_callback")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 301e65b9527a..67a42b514429 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -455,10 +455,10 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 
- 	list_for_each_entry_safe(task, tmp, &thread->task_busy_list,
- 				 list_entry) {
-+		cb = &task->pkt->async_cb;
- 		data.sta = -ECONNABORTED;
- 		data.data = cb->data;
- 		data.pkt = task->pkt;
--		cb = &task->pkt->async_cb;
- 		if (cb->cb)
- 			cb->cb(data);
- 
--- 
-2.30.2
-
+Reviewed-by: Andrey Konovalov <andreyknvl@gmail.com>
 
 _______________________________________________
 Linux-mediatek mailing list
