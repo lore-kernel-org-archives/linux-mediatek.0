@@ -2,108 +2,97 @@ Return-Path: <SRS0=j594=LR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3A03C4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 17:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90296C4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 18:45:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A657E611AC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 17:31:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A657E611AC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kroah.com
+	by mail.kernel.org (Postfix) with ESMTPS id 56C7561185
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 18:45:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 56C7561185
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:CC:To:Date:From:Subject:
+	MIME-Version:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YGWTth2i2rrfV7Zz/zdyu2RPgN+ihUx90aM0Sgfr9tY=; b=w58oFWx343HjU5
-	Ke2drFi1XhTP8KZywZsBRBDUwKGqaqRZ5jzXLd74X52DKxyMgiC2hvTyv2ijovkdsox2RfBckv/iW
-	5LXppgGXqS9FzkEl5XkLCvr6pR/+yf0zSCbxnxq3SCl2Uo4D9PwRWrOqDZt8kyqC4ade+RA19PLQ6
-	i8auW+6hdS1RNLu2/+US82OQ7rA40zuIKHFJ+Qks4QRBLJRyb3KREGGFOuPN/4oLyk8Iut5qoDWAC
-	WrOvfLe3Wh/fVdNQyjM/8n5exEYbeAxTSN2s0qZunfUVxQsVSz3QCOZHz9QsuwAYr/nADwDJchszU
-	6/nvcN775xeWXDoMCRhQ==;
+	List-Owner; bh=iByhjlu+ydvTHN14erNkqGsfMQmu0xLrvI/g7Ri7OUQ=; b=vE+aAW0YzoGqjy
+	JV0/ysM0SQiGUAZdLu9DYitptKI4pwnVvVWjceuFLHNpTHCCltiZIYLqSyawpGO8cP+YVJZ7B97y0
+	UK+RvPXOhNKHQxTjMNx4Ea5TEyzPfSPEG0GoVonHs3Ap2kwV63b1DUGW5ybS84pAHb1DULKXmuy6b
+	7Uj7KzP6UJhoBekwlW55LjHoitk/p5iwJOhcfMbSLf0aG2GKDIuIjYsjgvc9MTzVtMXi1nV5ZVHVs
+	H0/xZmjjo3YHjxyLWRppa7iUrEvb1bYzGv63RR6MorR+G6S2Ezq4Y43K4zFAjeg0iX/hlWKBnQc5I
+	d0t59QYxUZTNCPVya9aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lw6ih-00BPF0-JY; Wed, 23 Jun 2021 17:31:23 +0000
-Received: from new1-smtp.messagingengine.com ([66.111.4.221])
+	id 1lw7sK-00Bh2X-CD; Wed, 23 Jun 2021 18:45:24 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lw6iU-00BP8y-5C; Wed, 23 Jun 2021 17:31:11 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 43D69580661;
- Wed, 23 Jun 2021 13:31:05 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute6.internal (MEProxy); Wed, 23 Jun 2021 13:31:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=xsm/iuKc+04iGIrtanquxcEfKGm
- 0/iHMtOF7c6r7Jqk=; b=nrg5Vic+q3fYGWO54Ohj8Ja8nFHGwEHL15bQRUdaZQo
- UGdGD0d6oILejJ9507k2qhfYXJDztCBWHuNOWkMs2S/0AgNoK6dnZDc4IeI7quPo
- Tfd9m+lYAEbt6yVey5delOudOe0Mi7PhH5s23sbJ7UFCY42UqWttU8CyP4vUluH5
- K8bohS21hlYfN4McqQZoiAeoi2UGiuoYJtXhDZT0KfQqxH8Z7hhm5GmYiCBYZJyw
- jpe8mrSiHV82GZjTBXb4GcIpOCu89hmzrJTZIONMwtEtz0vprOwy2IrgaeZEmsYi
- SWW3hSco8qNmVOSke6zdY0nXIEUZHIINVTcPdmobTTQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=xsm/iu
- Kc+04iGIrtanquxcEfKGm0/iHMtOF7c6r7Jqk=; b=Fo9q8bpZzDgc7kErb09oXI
- L/ZU9KO7XyIILfJqtg43JCGiEPfeTMoiDq32drvTljvHqFARtCsnvYoiWGp7igI5
- felWcOf7B2vZmkTjnY7VyvesdAiX2t95Wm7zHwze4zFwswr34gtzusL+toPXeOf0
- t7TwQjj0LLa7KIe+9Cfrol6QOOh4GBlx+k0gvW7PgSDhrfg1/hNwv1540UMt8dLK
- bpQxCvYuOXCAEp3mQXe3xZfzoMeiqIwaQMwXvnLPCrVu9PgOCD+ygtHbohasvpZ5
- x/3XQZUPhPGgULtcje2D1jym3agHl+NjR00sPd6ubpYToDt0aUvq8vTu+nkms4cQ
- ==
-X-ME-Sender: <xms:2G_TYMqLE7RSTgdCni3wFOh1kR67hgZfqVtYPBtC4RPT2QTZsWDSmA>
- <xme:2G_TYCodGI49uGnzTMBkzy0o46HTwnGDndcYwqgq8-6uIvWzPMzhv7lETNqqvvwIc
- RAGJQBaTLH53Q>
-X-ME-Received: <xmr:2G_TYBN_kHARcMAiOFf6bWJsZHPd0gHvgC78azWNqyPCnpQhEL-ngn8-AbCPmSVGWBrp6XwzM3GIrV-WU_qedwgZ2zhNPv5r>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduledrfeegfedgudduiecutefuodetggdotefrod
- ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
- necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
- enucfjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
- ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepveeuhe
- ejgfffgfeivddukedvkedtleelleeghfeljeeiueeggeevueduudekvdetnecuvehluhhs
- thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorg
- hhrdgtohhm
-X-ME-Proxy: <xmx:2G_TYD6ZGKR0p7X6ceaaEhq8wJb4NRANNBy-wxHWGZYCi125R5I9nw>
- <xmx:2G_TYL63kj2TDy7ru6hSzII_Dv3XSAQTSJuZCQyLe_DJCfjQYIReiA>
- <xmx:2G_TYDiMm7BDOwCejppN4LaCcmr7CAzZ5Q_S73TP-gj2VrSrab352w>
- <xmx:2W_TYGOBXx-GP0OhlAjQKn9hFIcn2wdVc4nuUdGTGHMgpzqy7B2taQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 23 Jun 2021 13:31:03 -0400 (EDT)
-Date: Wed, 23 Jun 2021 19:31:00 +0200
-From: Greg KH <greg@kroah.com>
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- David Ahern <dsahern@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- wsd_upstream@mediatek.com, chao.song@mediatek.com,
- zhuoliang.zhang@mediatek.com, kuohong.wang@mediatek.com
-Subject: Re: [PATCH 4/4] drivers: net: mediatek: initial implementation of
- ccmni
-Message-ID: <YNNv1AxDNBdPcQ1U@kroah.com>
-References: <20210623113452.5671-1-rocco.yue@mediatek.com>
- <20210623113452.5671-4-rocco.yue@mediatek.com>
+ id 1lw7s6-00Bh0C-Ss; Wed, 23 Jun 2021 18:45:12 +0000
+Received: by mail-ed1-x536.google.com with SMTP id h17so4834847edw.11;
+ Wed, 23 Jun 2021 11:45:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=in-reply-to:references:thread-topic:user-agent:mime-version
+ :content-transfer-encoding:subject:from:date:to:cc:message-id;
+ bh=ah7pBnbhzP9GnkQ3rGPkhU3+DWS7Z2OsFCqpYUElow8=;
+ b=BpaIaUQ0ce5ob/JOAjBlVv9KSNyieeU75lx7Oa5EBtX0KVeCAmDz32DP88jgmxyEuV
+ f9Q6pdyYTGNeDZBwzAyVuO3q5iE9Zp8faxFfC0qdZ3nV8JYztbuUQ1jL+RBf5cR6DrCz
+ qpPnh7RMD0a6a8ENUr3R+YDmAymdkAlE/HoH2NBRDWz2ZCpWP5phK87DdN838uUFlHe2
+ 4V5DXvhm46VPf1n/pW+DFn0mRfefTPgz2tGgBtYp4+eeXNObwoSE2lTd0IVokYf+vqTG
+ 48axfLBYdyUw0jryfa0OCMnhUpBHS7S15VzedNegaqWU+URoq8Ast6I5N3pXnG867Bu6
+ dLpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:in-reply-to:references:thread-topic:user-agent
+ :mime-version:content-transfer-encoding:subject:from:date:to:cc
+ :message-id;
+ bh=ah7pBnbhzP9GnkQ3rGPkhU3+DWS7Z2OsFCqpYUElow8=;
+ b=gq5SHVFXxgSG6g5KTLJT6LXpKStzZI/KZMNiQ5n4CUJPkT/KHzpTEFT8UaSH3+pYdB
+ wULK8+u8poTWel+cO6fOzcwA7Va+7ANRAouEPUfeI/sArGCzt/FqCr7ds01W2M83e3j1
+ kKzu8xKWZxyRdPvKXxnHH7UBda6hhJP2cWQx8Khc0ix1ogv6EzGF1+zeVGlENX0rxfuL
+ kdf6bmEyQlILiFwQMdGal/gQbXiy1H+K6vgwtd0TINfiAODsK5zWPLrFtMSc8usRS9PK
+ cL9py518qmH7led6f3xrGyVOsmkmKutwnOEbnBb2wmE1TVYA00EJchq5qEX/pkDZdHtE
+ 8VMA==
+X-Gm-Message-State: AOAM530Z5yb9tdbf9XXuAZH7ar4zeNF6g1Bhr6UwC/MuD78ev94w1nZp
+ TVQg/sWSXY0lAHl1W/OBIPA=
+X-Google-Smtp-Source: ABdhPJzDkrQhtZZC+CyPDsfo0g8ANdWq9ib6iNs7UYbxId9ryLzi0Ubw98iPpKpjsPeS1sq4mAl06w==
+X-Received: by 2002:aa7:dbc3:: with SMTP id v3mr1656874edt.63.1624473909523;
+ Wed, 23 Jun 2021 11:45:09 -0700 (PDT)
+Received: from
+ 2001-1c01-471c-ce00-7d60-ae46-0c29-c0bb.cable.dynamic.v6.ziggo.nl
+ (2001-1c01-471c-ce00-7d60-ae46-0c29-c0bb.cable.dynamic.v6.ziggo.nl.
+ [2001:1c01:471c:ce00:7d60:ae46:c29:c0bb])
+ by smtp.gmail.com with ESMTPSA id c6sm460084ede.17.2021.06.23.11.45.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Jun 2021 11:45:08 -0700 (PDT)
+In-Reply-To: <a4e41929-6ab4-fabb-741e-f25a5fd14e3b@linaro.org>
+References: <20210619121927.32699-1-ericwouds@gmail.com>
+ <e30a2d01-a200-80cb-88d9-6aea62dd49f1@linaro.org>
+ <56fb5540-fb86-4e6a-a596-1276026b37e5@gmail.com>
+ <a4e41929-6ab4-fabb-741e-f25a5fd14e3b@linaro.org>
+X-Referenced-Uid: 5591
+Thread-Topic: Re: [PATCH] Fix mt7622.dtsi thermal cpu
+User-Agent: Android
+X-Is-Generated-Message-Id: true
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210623113452.5671-4-rocco.yue@mediatek.com>
+X-Local-Message-Id: <47261865-00e3-41eb-bb36-2b939f81f1e8@gmail.com>
+Subject: Re: [PATCH] Fix mt7622.dtsi thermal cpu
+From: Eric Woudstra <ericwouds@gmail.com>
+Date: Wed, 23 Jun 2021 20:43:15 +0200
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org,linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org,linux-kernel@vger.kernel.org
+Message-ID: <47261865-00e3-41eb-bb36-2b939f81f1e8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_103110_316645_4F4CDABC 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20210623_114510_985257_C520F850 
+X-CRM114-Status: GOOD (  20.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,124 +104,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 23, 2021 at 07:34:52PM +0800, Rocco Yue wrote:
-> +static int ccmni_open(struct net_device *ccmni_dev)
-> +{
-> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
-> +
-> +	netif_tx_start_all_queues(ccmni_dev);
-> +	netif_carrier_on(ccmni_dev);
-> +
-> +	if (atomic_inc_return(&ccmni->usage) > 1) {
-> +		atomic_dec(&ccmni->usage);
-> +		netdev_err(ccmni_dev, "dev already open\n");
-> +		return -EINVAL;
-
-You only check this _AFTER_ starting up?  If so, why even check a count
-at all?  Why does it matter as it's not keeping anything from working
-here.
-
-
-
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int ccmni_close(struct net_device *ccmni_dev)
-> +{
-> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
-> +
-> +	atomic_dec(&ccmni->usage);
-> +	netif_tx_disable(ccmni_dev);
-> +
-> +	return 0;
-> +}
-> +
-> +static netdev_tx_t
-> +ccmni_start_xmit(struct sk_buff *skb, struct net_device *ccmni_dev)
-> +{
-> +	struct ccmni_inst *ccmni = NULL;
-> +
-> +	if (unlikely(!ccmni_hook_ready))
-> +		goto tx_ok;
-> +
-> +	if (!skb || !ccmni_dev)
-> +		goto tx_ok;
-> +
-> +	ccmni = netdev_priv(ccmni_dev);
-> +
-> +	/* some process can modify ccmni_dev->mtu */
-> +	if (skb->len > ccmni_dev->mtu) {
-> +		netdev_err(ccmni_dev, "xmit fail: len(0x%x) > MTU(0x%x, 0x%x)",
-> +			   skb->len, CCMNI_MTU, ccmni_dev->mtu);
-> +		goto tx_ok;
-> +	}
-> +
-> +	/* hardware driver send packet will return a negative value
-> +	 * ask the Linux netdevice to stop the tx queue
-> +	 */
-> +	if ((s_ccmni_ctlb->xmit_pkt(ccmni->index, skb, 0)) < 0)
-> +		return NETDEV_TX_BUSY;
-> +
-> +	return NETDEV_TX_OK;
-> +tx_ok:
-> +	dev_kfree_skb(skb);
-> +	ccmni_dev->stats.tx_dropped++;
-> +	return NETDEV_TX_OK;
-> +}
-> +
-> +static int ccmni_change_mtu(struct net_device *ccmni_dev, int new_mtu)
-> +{
-> +	if (new_mtu < 0 || new_mtu > CCMNI_MTU)
-> +		return -EINVAL;
-> +
-> +	if (unlikely(!ccmni_dev))
-> +		return -EINVAL;
-> +
-> +	ccmni_dev->mtu = new_mtu;
-> +	return 0;
-> +}
-> +
-> +static void ccmni_tx_timeout(struct net_device *ccmni_dev, unsigned int txqueue)
-> +{
-> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
-> +
-> +	ccmni_dev->stats.tx_errors++;
-> +	if (atomic_read(&ccmni->usage) > 0)
-> +		netif_tx_wake_all_queues(ccmni_dev);
-
-Why does it matter what the reference count is?  What happens if it
-drops _RIGHT_ after testing for it?
-
-Anytime you do an atomic_read() call, it's almost always a sign that the
-logic is not correct.
-
-Again, why have this reference count at all?  What is it protecting?
-
-> +/* exposed API
-> + * receive incoming datagrams from the Modem and push them to the
-> + * kernel networking system
-> + */
-> +int ccmni_rx_push(unsigned int ccmni_idx, struct sk_buff *skb)
-
-Ah, so this driver doesn't really do anything on its own, as there is no
-modem driver for it.
-
-So without a modem driver, it will never be used?  Please submit the
-modem driver at the same time, otherwise it's impossible to review this
-correctly.
-
-thanks,
-
-greg k-h
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CkkgY2hvb3NlICJob3QiIGJlZm9yZSwgYmVjYXVzZSA4NyBkZWdyZWVzIHNlZW1zIG9rIHRvIHN0
+YXJ0IGZyZXF1ZW5jeSB0aHJvdHRsaW5nLiBCdXQsIHllcywgaXQgc2hvdWxkIGJlIHBhc3NpdmUu
+Cgo4NyBpcyBzdGlsbCBxdWl0ZSBsb3cgaWYgSSBjb21wYXJlIHRoaXMgdGVtcGVyYXR1cmUgd2l0
+aCB0aGUgd3J0MzIwMGFjbSBNYXJ2ZWxsIGR1YWwgY29yZSBhcm0gc29jLiBUaGV5IGV2ZW4gd2Vu
+dCBhYm92ZSAxMDAgZGVncmVlcyBzbyBJIGZlZWwgZm9yIGFuIGFybSBwcm9jZXNzb3IgaW5zaWRl
+IGEgcm91dGVyIGJveCBpdCBpcyBmaW5lIHRvIHVzZSA4NyBkZWdyZWVzIEJ1dCBtYXliZSBzb21l
+b25lIGF0IE1lZGlhdGVrIGNhbiBnaXZlIHNvbWUgbW9yZSBkZXRhaWxzIGFib3V0IG9wZXJhdGlu
+ZyB0ZW1wZXJhdHVyZXMuCgpJdCBtYXkgYmUgcG9zc2libGUgdG8gbGVhdmUgdGhlIGFjdGl2ZSBt
+YXAgaW4gdGhlIGRldmljZSB0cmVlIGFzIHNvbWUgdXNlcnMgb2YgdGhlIGJhbmFuYXBpIG1pZ2h0
+IGNob29zZSB0byBpbnN0YWxsIGEgZmFuIGFzIGl0IGlzIG9uZSBvZiB0aGUgb3B0aW9ucy4KCuKB
+o0dldCBCbHVlTWFpbCBmb3IgQW5kcm9pZCDigIsKCk9uIEp1biAyMywgMjAyMSwgNTo1OCBQTSwg
+YXQgNTo1OCBQTSwgRGFuaWVsIExlemNhbm8gPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+IHdy
+b3RlOgo+T24gMjMvMDYvMjAyMSAxNzozNSwgRXJpYyBXb3Vkc3RyYSB3cm90ZToKPj4gSXQgaXMg
+b25seSB1c2VmdWwgdG8gc2V0IDEgbWFwIHdpdGggdGhlIHJlZ3VsYXRlZCB0ZW1wZXJhdHVyZSBm
+b3IgY3B1Cj4+IGZyZXF1ZW5jeSB0aHJvdHRsaW5nLiBTYW1lIGFzIGluIHRoZSBrZXJuZWwgZG9j
+dW1lbnQgZXhhbXBsZS4KPj4gCj4+IAo+PiBJdCBoYXMgbm8gdXNlIHRvIHNldCBmcmVxdWVuY3kg
+c2NhbGluZyBvbiAyIGRpZmZlcmVudCB0ZW1wZXJhdHVyZQo+PiB0cmlwIHBvaW50cywgYXMgdGhl
+IGxvd2VzdCBvbmUgbWFrZXMgc3VyZSB0aGUgaGlnaGVyIG9uZShzKSBhcmUgbmV2ZXIKPj4gcmVh
+Y2hlZC4KPgo+SSBsb29rZWQgbW9yZSBjbG9zZWx5IHRoZSBEVCBhbmQgdGhlcmUgaXMgYSBtaXN1
+bmRlcnN0YW5kaW5nIG9mIHRoZQo+dGhlcm1hbCBmcmFtZXdvcmsgaW4gdGhlIGRlZmluaXRpb24u
+Cj4KPlRoZXJlIGlzIG9uZSB0cmlwIHBvaW50IHdpdGggdGhlIHBhc3NpdmUgdHlwZSBhbmQgdGhl
+IGNwdSBjb29saW5nCj5kZXZpY2UsIGZvbGxvd2VkIGJ5IGEgc2Vjb25kIHRyaXAgcG9pbnQgd2l0
+aCB0aGUgYWN0aXZlIHR5cGUgKmJ1dCogdGhlCj5zYW1lIGNwdSBjb29saW5nIGRldmljZS4gVGhh
+dCBpcyB3cm9uZy4KPgo+QW5kIGZpbmFsbHksIHRoZXJlIGlzIHRoZSBob3QgdHJpcCBwb2ludCBh
+cyBhIHRoaXJkIG1hcHBpbmcgYW5kIHRoZQo+c2FtZQo+Y29vbGluZyBkZXZpY2UuCj4KPlRoZSBo
+b3QgdHJpcCBwb2ludCBpcyBvbmx5IHRoZXJlIHRvIG5vdGlmeSB1c2Vyc3BhY2UgYW5kIGxldCBp
+dCB0YWtlIGFuCj5pbW1lZGlhdGUgYWN0aW9uIHRvIHByZXZlbnQgYW4gZW1lcmdlbmN5IHNodXRk
+b3duIHdoZW4gcmVhY2hpbmcgdGhlCj5jcml0aWNhbCB0ZW1wZXJhdHVyZS4KPgo+PiBJdCBjYW4g
+YmUgYXBwbGllZCBvbmx5IGF0IDEgdHJpcCBwb2ludC4gTXVsdGlwbGUgdHJpcCBwb2ludHMKPj4g
+aXMgb25seSB1c2VmdWxseSBmb3IgZmFuIGNvbnRyb2wgdG8gbWFrZSBzdXJlIHRoZSBmYW4gaXMg
+bm90IHRvbwo+PiBub2lzeSB3aGVuIGl0IGlzIG5vdCBuZWNlc3NhcnkgdG8gYmUgbm9pc3kuCj4+
+IAo+PiAKPj4gVGhlIENQVSB3aWxsIGFsbW9zdCBjb21lIHRvIGEgZGVhZCBzdG9wIHdoZW4gaXQg
+c3RhcnRzIHRvIHBhc3MgdGhlCj4+IGxvd2VzdCB0aGVybWFsIG1hcCB3aXRoIGZyZXF1ZW5jeSB0
+aHJvdHRsaW5nLgo+PiAKPj4gVGhpcyBpcyB3aHkgaXQgaXMgYSBidWcgYW5kIG5lZWRzIGEgZml4
+LCBub3Qgb25seSBhZGp1c3RtZW50Lgo+Cj5ZZXMsIHlvdSBhcmUgcmlnaHQuIEl0IHNob3VsZCBi
+ZSBzb21ldGhpbmcgbGlrZSAodmVyYmF0aW0gY29weSk6Cj4KPmRpZmYgLS1naXQgYS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL21lZGlhdGVrL210NzYyMi5kdHNpCj5iL2FyY2gvYXJtNjQvYm9vdC9kdHMv
+bWVkaWF0ZWsvbXQ3NjIyLmR0c2kKPmluZGV4IDg5MGE5NDJlYzYwOC4uODhjODFkMjRmNGZmIDEw
+MDY0NAo+LS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaQo+Kysr
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaQo+QEAgLTEzNiwyNCAr
+MTM2LDE4IEBAIHNlY21vbl9yZXNlcnZlZDogc2VjbW9uQDQzMDAwMDAwIHsKPgo+IAl0aGVybWFs
+LXpvbmVzIHsKPiAJCWNwdV90aGVybWFsOiBjcHUtdGhlcm1hbCB7Cj4tCQkJcG9sbGluZy1kZWxh
+eS1wYXNzaXZlID0gPDEwMDA+Owo+KwkJCXBvbGxpbmctZGVsYXktcGFzc2l2ZSA9IDwyNTA+Owo+
+IAkJCXBvbGxpbmctZGVsYXkgPSA8MTAwMD47Cj4KPiAJCQl0aGVybWFsLXNlbnNvcnMgPSA8JnRo
+ZXJtYWwgMD47Cj4KPiAJCQl0cmlwcyB7Cj4gCQkJCWNwdV9wYXNzaXZlOiBjcHUtcGFzc2l2ZSB7
+Cj4tCQkJCQl0ZW1wZXJhdHVyZSA9IDw0NzAwMD47Cj4rCQkJCQl0ZW1wZXJhdHVyZSA9IDw3NzAw
+MD47Cj4gCQkJCQloeXN0ZXJlc2lzID0gPDIwMDA+Owo+IAkJCQkJdHlwZSA9ICJwYXNzaXZlIjsK
+PiAJCQkJfTsKPgo+LQkJCQljcHVfYWN0aXZlOiBjcHUtYWN0aXZlIHsKPi0JCQkJCXRlbXBlcmF0
+dXJlID0gPDY3MDAwPjsKPi0JCQkJCWh5c3RlcmVzaXMgPSA8MjAwMD47Cj4tCQkJCQl0eXBlID0g
+ImFjdGl2ZSI7Cj4tCQkJCX07Cj4tCj4gCQkJCWNwdV9ob3Q6IGNwdS1ob3Qgewo+IAkJCQkJdGVt
+cGVyYXR1cmUgPSA8ODcwMDA+Owo+IAkJCQkJaHlzdGVyZXNpcyA9IDwyMDAwPjsKPkBAIC0xNzMs
+MTggKzE2Nyw2IEBAIG1hcDAgewo+IAkJCQkJY29vbGluZy1kZXZpY2UgPSA8JmNwdTAgVEhFUk1B
+TF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPiAJCQkJCQkJIDwmY3B1MSBUSEVSTUFMX05P
+X0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+Owo+IAkJCQl9Owo+LQo+LQkJCQltYXAxIHsKPi0JCQkJ
+CXRyaXAgPSA8JmNwdV9hY3RpdmU+Owo+LQkJCQkJY29vbGluZy1kZXZpY2UgPSA8JmNwdTAgVEhF
+Uk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPi0JCQkJCQkJIDwmY3B1MSBUSEVSTUFM
+X05PX0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+Owo+LQkJCQl9Owo+LQo+LQkJCQltYXAyIHsKPi0J
+CQkJCXRyaXAgPSA8JmNwdV9ob3Q+Owo+LQkJCQkJY29vbGluZy1kZXZpY2UgPSA8JmNwdTAgVEhF
+Uk1BTF9OT19MSU1JVCBUSEVSTUFMX05PX0xJTUlUPiwKPi0JCQkJCQkJIDwmY3B1MSBUSEVSTUFM
+X05PX0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+Owo+LQkJCQl9Owo+IAkJCX07Cj4gCQl9Owo+IAl9
+Owo+Cj4KPi0tIAo+PGh0dHA6Ly93d3cubGluYXJvLm9yZy8+IExpbmFyby5vcmcg4pSCIE9wZW4g
+c291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29Dcwo+Cj5Gb2xsb3cgTGluYXJvOiAgPGh0dHA6Ly93
+d3cuZmFjZWJvb2suY29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo+PGh0dHA6Ly90d2l0dGVy
+LmNvbS8jIS9saW5hcm9vcmc+IFR3aXR0ZXIgfAo+PGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5h
+cm8tYmxvZy8+IEJsb2cKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LW1lZGlhdGVrCg==
