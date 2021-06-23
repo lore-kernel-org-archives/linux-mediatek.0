@@ -2,19 +2,19 @@ Return-Path: <SRS0=j594=LR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D531CC4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 08:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6B62C4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:13:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9AC426100B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 08:11:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9AC426100B
+	by mail.kernel.org (Postfix) with ESMTPS id 8E5F760698
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:13:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E5F760698
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,59 +23,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GCAUlQL8uDvQNyq3658okmMmM/OjrSz7YR2BG5O8Tvc=; b=3yziQtKqZAGZLT
-	xFQ4UqypNn2532a3WF0NdwpxwR/8SjUbrHgS52ly0rF6YQgOw+8qZdfdruXjF/dDhoUrtVzB0oKjM
-	77l3+mHwRK5Tu1zi8qBz5mKF11nMK3CqjgMEED/u7pHo/rHwrmN0FIZ8l//JppMhZ4AAsutq8KjGb
-	qFpGJijigF3m2EFQmIcZU0oKx/H2frpuWuPlxJJ7jGviT+OcIdC81Pyz0fjsmBFa28OJjPyGShBhV
-	A1Qd5mPz6SibgmZSbArx3qjN1PgKUGFE1kcQbEkwvuia92hoiHsSaD/qbzYJOcwe7T88NutLX93sh
-	so1fQEz/xht+jTQBC3bg==;
+	List-Owner; bh=zPMD8MYTsgSAufaI0f+QSxVA49qu1n1I+r951SwGD0M=; b=uQGzXfUD8vMQ9U
+	BiAqQnok+jaWP30cyYlNxHLw8MWTmO488BEzucQPx8qvQtpPMUUxQYYrbeyJqgL6WduElmQ8KtjAY
+	XECfq4aQC5sbkE3dokQfwO+MY4As5qbyFBb86kgihr7d4Vv2GCDndBToopjY5Gc8OKZv2WDhtFytG
+	yNYt/xQBXtXFIfQfoTDhc5YPxt17enpfUgIETqu6+Ol5fiyQ9Nb4LYuU5oWTmJ30HOCEKhsfnST3I
+	xuwRmoUQ7TSejYuIZts3PhWszIEVTMSSy2hxECM9U3V1dnzCgUwwv5TLdpZhb7PdmMIUV/CU94Mfq
+	MJqS1Rzj2yQlWU74OA/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvxyf-009uIU-4H; Wed, 23 Jun 2021 08:11:17 +0000
+	id 1lvywS-00A3K7-Ne; Wed, 23 Jun 2021 09:13:04 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvxyS-009uHH-Hi; Wed, 23 Jun 2021 08:11:06 +0000
-X-UUID: f5fe40792e88499cbc124a87082708d8-20210623
+ id 1lvywO-00A3It-88; Wed, 23 Jun 2021 09:13:03 +0000
+X-UUID: dcd4016213ef4570abd5bec7112b91d3-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SKYmo8MiSbxF2eqHWz+6lxTmMnXCOR0tQK4sP3HO040=; 
- b=rVG575ii9f1xM7j1pmpejioH7gVYeKy5k0I1vmBZYtxlCgigpgN2mTps7t1SMP5B6wcyIfsz8T2CcABLAVchfRzF5Vkz7glGqCoYhMTyLMBEFz7Ld1pDYf0my0C/ZbpKLSqkgfdAQzXYlq2SY57nwZJo3PIxEFYM0zoY20l1K+I=;
-X-UUID: f5fe40792e88499cbc124a87082708d8-20210623
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
+ bh=WHVs4dh6AbAKAbeIIKWBxdhvq+wckIntxxe4eFfwL3A=; 
+ b=gZMamKoetcWP3ttbQXdOp/wfPXqx/YKRVd5BPGlaE6AvZnbVcP01sgyKX9kWl7YOtN1nwYvKaDxrnEiknpXU19V0plkvv58G+rc7peFJyMUoNamQ4PIqtgbGL73P0aOV6vv+pNfZDxQ1TslBxrqooxHsFYo+GrbwSISXdsowYT4=;
+X-UUID: dcd4016213ef4570abd5bec7112b91d3-20210623
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1400418756; Wed, 23 Jun 2021 01:11:00 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 01:10:58 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 16:10:56 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Jun 2021 16:10:56 +0800
-Message-ID: <8344d089562052a6f9ee3245856bbc8516bb6619.camel@mediatek.com>
-Subject: Re: [PATCH 6/8] dt-bindings: mediatek: mt8195: add audio afe document
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <devicetree@vger.kernel.org>, <alsa-devel@alsa-project.org>,
- <broonie@kernel.org>, <bicycle.tsai@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <robh+dt@kernel.org>,
- <cychiang@google.com>, <jiaxin.yu@mediatek.com>, <tiwai@suse.com>,
- <matthias.bgg@gmail.com>
-Date: Wed, 23 Jun 2021 16:10:56 +0800
-In-Reply-To: <1623965184.501241.3336112.nullmailer@robh.at.kernel.org>
-References: <20210617054740.8081-1-trevor.wu@mediatek.com>
- <20210617054740.8081-7-trevor.wu@mediatek.com>
- <1623965184.501241.3336112.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1523586282; Wed, 23 Jun 2021 02:12:54 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Jun 2021 02:02:52 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 23 Jun 2021 17:02:49 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 23 Jun 2021 17:02:48 +0800
+Message-ID: <1624438968.2701.3.camel@mhfsdcap03>
+Subject: Re: [PATCH 1/2] dt-bindings: PCI: mediatek-gen3: Add support for
+ MT8195
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, Randy Wu <Randy.Wu@mediatek.com>,
+ <youlin.pei@mediatek.com>
+Date: Wed, 23 Jun 2021 17:02:48 +0800
+In-Reply-To: <20210622110517.GB24565@lpieralisi>
+References: <20210601024408.24485-1-jianjun.wang@mediatek.com>
+ <20210601024408.24485-2-jianjun.wang@mediatek.com>
+ <CAGXv+5G-8+ppafiUnqWm2UeiL+edHJ2zYZvU-S7mz_NdrM3YsA@mail.gmail.com>
+ <1622526594.9054.6.camel@mhfsdcap03>
+ <CAGXv+5GMTbC5TTgURhPAvxBEY18S6-T-BZ9CpXsO91Trim7TXw@mail.gmail.com>
+ <db62910b-febd-6cba-8a72-2bf718f7b110@gmail.com>
+ <20210622110517.GB24565@lpieralisi>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 4D63936515B4AAF2E78DF35DD5D25263CB69BF69C06A8201811E5A3736340AA42000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_011104_629320_3142445B 
-X-CRM114-Status: GOOD (  21.11  )
+X-CRM114-CacheID: sfid-20210623_021300_643151_FD25915D 
+X-CRM114-Status: GOOD (  43.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,65 +99,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-06-17 at 15:26 -0600, Rob Herring wrote:
-> On Thu, 17 Jun 2021 13:47:37 +0800, Trevor Wu wrote:
-> > This patch adds mt8195 audio afe document.
+On Tue, 2021-06-22 at 12:05 +0100, Lorenzo Pieralisi wrote:
+> On Wed, Jun 02, 2021 at 01:33:07PM +0200, Matthias Brugger wrote:
 > > 
-> > Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> > ---
-> >  .../bindings/sound/mt8195-afe-pcm.yaml        | 72
-> > +++++++++++++++++++
-> >  1 file changed, 72 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/sound/mt8195-
-> > afe-pcm.yaml
 > > 
+> > On 01/06/2021 08:07, Chen-Yu Tsai wrote:
+> > > Hi,
+> > > 
+> > > On Tue, Jun 1, 2021 at 1:50 PM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+> > >>
+> > >> On Tue, 2021-06-01 at 11:53 +0800, Chen-Yu Tsai wrote:
+> > >>> Hi,
+> > >>>
+> > >>> On Tue, Jun 1, 2021 at 10:50 AM Jianjun Wang <jianjun.wang@mediatek.com> wrote:
+> > >>>>
+> > >>>> MT8195 is an ARM platform SoC which has the same PCIe IP with MT8192.
+> > >>>
+> > >>> Based on what I'm seeing internally, there seems to be some inconsistency
+> > >>> across the MediaTek platform on whether new compatible strings should be
+> > >>> introduced for "fully compatible" IP blocks.
+> > >>>
+> > >>> If this hardware block in MT8195 is "the same" as the one in MT8192, do we
+> > >>> really need the new compatible string? Are there any concerns?
+> > >>
+> > >> Hi Chen-Yu,
+> > >>
+> > >> It's ok to reuse the compatible string with MT8192, but I think this
+> > >> will be easier to find which platforms this driver is compatible with,
+> > >> especially when we have more and more platforms in the future.
+> > > 
+> > > If it's just for informational purposes, then having the MT8192 compatible
+> > > as a fallback would work, and we wouldn't need to make changes to the driver.
+> > > This works better especially if we have to support multiple operating systems
+> > > that use device tree.
+> > > 
+> > > So we would want
+> > > 
+> > >     "mediatek,mt8195-pcie", "mediatek,mt8192-pcie"
+> > > 
+> > > and
+> > > 
+> > >     "mediatek,mt8192-pcie"
+> > > 
+> > > be the valid options.
+> > > 
+> > > Personally I'm not seeing enough value to justify adding the compatible string
+> > > just for informational purposes though. One could easily discern which hardware
+> > > is used by looking at the device tree.
+> > > 
+> > 
+> > I agree, if no differences between the two chips are known, adding a
+> > binding withe new compatible and a fallback is a good thing. If we
+> > later on realize that mt8195 PCI block has differences, we can add the
+> > matching to the driver.
 > 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> ./Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml:10:4:
-> [warning] wrong indentation: expected 2 but found 3 (indentation)
-> ./Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml:14:7:
-> [warning] wrong indentation: expected 4 but found 6 (indentation)
-> 
-> dtschema/dtc warnings/errors:
-> Documentation/devicetree/bindings/sound/mt8195-afe-
-> pcm.example.dts:19:18: fatal error: dt-bindings/clock/mt8195-clk.h:
-> No such file or directory
->    19 |         #include <dt-bindings/clock/mt8195-clk.h>
->       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> compilation terminated.
-> make[1]: *** [scripts/Makefile.lib:380:
-> Documentation/devicetree/bindings/sound/mt8195-afe-
-> pcm.example.dt.yaml] Error 1
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1416: dt_binding_check] Error 2
-> \ndoc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/patch/1493197
-> 
-> This check can fail if there are any dependencies. The base for a
-> patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up
-> to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
-> 
+> So this series can be dropped, right ?
 
-Sorry, I missed the dependency declaration in the patch and I didn't
-install ymallint, so I couldn't find indentation problems.
-I will fix all binding problems on v2.
+Yes, we will send dt-bindings with dts changes in another series,
+thanks.
+> 
+> Thanks,
+> Lorenzo
+> 
+> > Regards,
+> > Matthias
+> > 
+> > > 
+> > > Regards
+> > > ChenYu
+> > > 
+> > > 
+> > >> Thanks.
+> > >>>
+> > >>>
+> > >>> Thanks
+> > >>> ChenYu
+> > >>>
+> > >>>
+> > >>>> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> > >>>> ---
+> > >>>>  Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml | 4 +++-
+> > >>>>  1 file changed, 3 insertions(+), 1 deletion(-)
+> > >>>>
+> > >>>> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > >>>> index e7b1f9892da4..d5e4a3e63d97 100644
+> > >>>> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > >>>> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
+> > >>>> @@ -48,7 +48,9 @@ allOf:
+> > >>>>
+> > >>>>  properties:
+> > >>>>    compatible:
+> > >>>> -    const: mediatek,mt8192-pcie
+> > >>>> +    oneOf:
+> > >>>> +      - const: mediatek,mt8192-pcie
+> > >>>> +      - const: mediatek,mt8195-pcie
+> > >>>>
+> > >>>>    reg:
+> > >>>>      maxItems: 1
+> > >>>> --
+> > >>>> 2.18.0
+> > >>>> _______________________________________________
+> > >>>> Linux-mediatek mailing list
+> > >>>> Linux-mediatek@lists.infradead.org
+> > >>>> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > >>
 
-Thanks,
-Trevor
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
