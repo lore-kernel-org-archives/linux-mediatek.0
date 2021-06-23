@@ -2,82 +2,121 @@ Return-Path: <SRS0=j594=LR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8927C4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 06:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C529C4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 06:43:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A069B61186
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 06:07:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A069B61186
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id DC9156120D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 06:43:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC9156120D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9cKSn43mPigmSCwrK5eb8kORCte5VK2Bh3HERR5VHnE=; b=Mt5oBL44fIbPmN
-	2vGAyJSOnv3dHUYBGCk1OeC+Tu74HDvspeqINkLivdhNBLLj5Hat4JtIerdSD+sFOvwPfqt9gwerf
-	6IqvWUTjZlj/9/34aUrFIPksMWaGIYexBWujFnTUwUZBjO5RI0JTXK+jUgO77jQqpZ7ZV08wupx3n
-	2SqTpEjyUgF+n1MvF9W/bM5QzLhjmmh0A2sbpZrqA2CIxw1dgdqZpz9G5f0swTT2aNpUvOJXPm3Y0
-	ccBisL8NLIkIqPD9HSXFNcs805NbK2C3nE8GLgFpswVOrrZ8NZvbOAb0SGUXA3JGc0fJ7G93ZCsGz
-	g6eJe6/39AVE0uE5Y5ow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:Subject:From:References:Cc:To:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8VKg0WO3zwKR79sNBr/S8lseTu6uXgPjMLhAgDR+iog=; b=pMs3pQXaRUbr8tk4JyV7st8pD+
+	+Nhj4dUXNztTra7ZtzlunQWZyUsDh+bfOeOWiCPa+ewYr+YDFts6rVHJaVOHTiPJAXO8ppqFxYN9E
+	5b5lFjM2RVin6y5f3rP8eM8LE+1tlTVbpQ4ZKYJNeUSH/CupEpGK60i5g1nJIO+ruwbn0xlrqLiZ0
+	wRyotwaBng8qiJ1PkcSWPxJInHF/CQY9nyeNCKWrSvyFri4RACSvPCENsuMCt2rVgH6XK6yjQI1sx
+	YfwBo8GbY8nEuAIPWDpnr/Abyc2KKbUFTbDMRTQPnurlpyiUtHBvR2xWuVXl/X6mM6idjgFyHYNcl
+	WuYWweig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvw2e-009Ulg-UN; Wed, 23 Jun 2021 06:07:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lvwbU-009dB1-VT; Wed, 23 Jun 2021 06:43:17 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvw2D-009Uc7-NF; Wed, 23 Jun 2021 06:06:51 +0000
-X-UUID: 6867dd2fe6634c74907b915bdaa7adeb-20210622
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=AdEuzKQu1jsghgNXGnnPVeA7bHgyMSHbBLtEuwxBp/Y=; 
- b=llvy2FX+W9oaglnDraxXYUZ5zto4z9ApDm6q/65E0pvuyIEzyhDYHePsxop8zvecgRv7W2hM/6AyZYjr9xKX8PP3A1V+alxGgq74EULANv140gGnvnNBTPWRsDxMPK1SvQVawCVC0H8gRVfdp27w4P2qCJvuElQDseLh5L+wjuI=;
-X-UUID: 6867dd2fe6634c74907b915bdaa7adeb-20210622
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1492804226; Tue, 22 Jun 2021 23:06:42 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 22 Jun 2021 23:06:40 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 14:06:38 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Jun 2021 14:06:37 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Rick Chang
- <rick.chang@mediatek.com>, Bin Liu <bin.liu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
- <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
- <srv_heupstream@mediatek.com>, kyrie.wu <kyrie.wu@mediatek.com>
-Subject: [PATCH 3/3] media: mtk-jpegenc: design SW algorithm for using
- multi-HW of jpegenc
-Date: Wed, 23 Jun 2021 14:05:50 +0800
-Message-ID: <1624428350-1424-4-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1624428350-1424-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1624428350-1424-1-git-send-email-kyrie.wu@mediatek.com>
+ id 1lvwbP-009dAS-K2; Wed, 23 Jun 2021 06:43:13 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 7CD3D1FD66;
+ Wed, 23 Jun 2021 06:43:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624430589; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TlGZRZ99uCIt4JDAjOFXnswm4yaCa3ZMTl87RK83waE=;
+ b=UL41/fdqkxp8KiBTP5sNgkK3QzSU6SjtYTCEKYkWMnVzCi0BsNO6N7H6Z/xHRP1nMXJTSK
+ uAOvfeYpPY7ReQoGYz0BeGd1DtemAc5QyqOXIZOtYXgrkn7Ds1VLptp+gjp1TLwppTBvXC
+ xy1xTFf1031DvsP89g+ewUEcPYWmU8w=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624430589;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TlGZRZ99uCIt4JDAjOFXnswm4yaCa3ZMTl87RK83waE=;
+ b=hrob67bWMmViAg5CAyhvDg8xtRHrAUBAM0VSFniEqSI0myWGdc/UaBO6QCSVllrliNsDjF
+ D7AeOlonnA0UfzBQ==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 7CE9211A97;
+ Wed, 23 Jun 2021 06:43:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624430589; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TlGZRZ99uCIt4JDAjOFXnswm4yaCa3ZMTl87RK83waE=;
+ b=UL41/fdqkxp8KiBTP5sNgkK3QzSU6SjtYTCEKYkWMnVzCi0BsNO6N7H6Z/xHRP1nMXJTSK
+ uAOvfeYpPY7ReQoGYz0BeGd1DtemAc5QyqOXIZOtYXgrkn7Ds1VLptp+gjp1TLwppTBvXC
+ xy1xTFf1031DvsP89g+ewUEcPYWmU8w=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624430589;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=TlGZRZ99uCIt4JDAjOFXnswm4yaCa3ZMTl87RK83waE=;
+ b=hrob67bWMmViAg5CAyhvDg8xtRHrAUBAM0VSFniEqSI0myWGdc/UaBO6QCSVllrliNsDjF
+ D7AeOlonnA0UfzBQ==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id RGKAHfzX0mBnawAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Wed, 23 Jun 2021 06:43:08 +0000
+To: Liviu Dudau <liviu.dudau@arm.com>
+Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ nouveau@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+References: <20210622141002.11590-1-tzimmermann@suse.de>
+ <20210622141002.11590-5-tzimmermann@suse.de>
+ <20210622152504.2sw6khajwydsoaqa@e110455-lin.cambridge.arm.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v2 04/22] drm: Don't test for IRQ support in VBLANK ioctls
+Message-ID: <f7e72a3c-df86-2d4b-2caa-bf91442290a9@suse.de>
+Date: Wed, 23 Jun 2021 08:43:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210622152504.2sw6khajwydsoaqa@e110455-lin.cambridge.arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210622_230649_811960_3E38C052 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20210622_234312_013322_B6EA054A 
+X-CRM114-Status: GOOD (  29.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,247 +128,220 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2140170833119178921=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-the SW algorithm would meet the request of how to use
-multi-HW at the same time;
-For user process, it only needed to open one device node to use
-multi-HW.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============2140170833119178921==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="7jLGShJWLlf8CSqVlOcnyBWWcy9Lp6Rkb"
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 164 +++++++++++++++++++++---
- 1 file changed, 147 insertions(+), 17 deletions(-)
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--7jLGShJWLlf8CSqVlOcnyBWWcy9Lp6Rkb
+Content-Type: multipart/mixed; boundary="3ihYu1sFcNnMMAMmUEcEMG76YaQ22m49E";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Liviu Dudau <liviu.dudau@arm.com>
+Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ nouveau@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+Message-ID: <f7e72a3c-df86-2d4b-2caa-bf91442290a9@suse.de>
+Subject: Re: [PATCH v2 04/22] drm: Don't test for IRQ support in VBLANK ioctls
+References: <20210622141002.11590-1-tzimmermann@suse.de>
+ <20210622141002.11590-5-tzimmermann@suse.de>
+ <20210622152504.2sw6khajwydsoaqa@e110455-lin.cambridge.arm.com>
+In-Reply-To: <20210622152504.2sw6khajwydsoaqa@e110455-lin.cambridge.arm.com>
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index c84815a..b8d1303 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -944,38 +944,150 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
- 	return 0;
- }
- 
--static void mtk_jpeg_enc_device_run(void *priv)
-+static int mtk_jpeg_select_hw(struct mtk_jpeg_ctx *ctx)
- {
--	struct mtk_jpeg_ctx *ctx = priv;
-+	int hw_id = -1;
-+	int i;
-+	unsigned long flags;
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg, *comp_jpeg = NULL;
-+
-+	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		comp_jpeg = jpeg->hw_dev[i];
-+		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
-+			hw_id = i;
-+			comp_jpeg->hw_state = MTK_JPEG_HW_BUSY;
-+			break;
-+		}
-+	}
-+	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+
-+	return hw_id;
-+}
-+
-+static int mtk_jpeg_deselect_hw(struct mtk_jpeg_dev *jpeg, int hw_id)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	jpeg->hw_dev[hw_id]->hw_state = MTK_JPEG_HW_IDLE;
-+	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+
-+	return 0;
-+}
-+
-+static int mtk_jpeg_set_hw_param(struct mtk_jpeg_ctx *ctx,
-+				 int hw_id,
-+				 struct vb2_v4l2_buffer *src_buf,
-+				 struct vb2_v4l2_buffer *dst_buf)
-+{
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg->hw_dev[hw_id];
-+
-+	jpeg->hw_param.curr_ctx = ctx;
-+	jpeg->hw_param.src_buffer = src_buf;
-+	jpeg->hw_param.dst_buffer = dst_buf;
-+
-+	return 0;
-+}
-+
-+static void mtk_jpegenc_worker(struct work_struct *work)
-+{
-+	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
-+		jpeg_work);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+	struct mtk_jpeg_dev *comp_jpeg[MTK_JPEGENC_HW_MAX];
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
- 	unsigned long flags;
--	int ret;
-+	struct mtk_jpeg_src_buf *jpeg_src_buf, *jpeg_dst_buf;
-+	int ret, i, hw_id = 0;
-+	atomic_t *hw_rdy[MTK_JPEGENC_HW_MAX];
-+	struct clk *jpegenc_clk;
-+
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		comp_jpeg[i] = jpeg->hw_dev[i];
-+		hw_rdy[i] = &comp_jpeg[i]->hw_rdy;
-+	}
-+
-+retry_select:
-+	hw_id = mtk_jpeg_select_hw(ctx);
-+	if (hw_id < 0) {
-+		//wait hw idle
-+		ret = wait_event_interruptible(jpeg->hw_wq,
-+					       (atomic_read(hw_rdy[0]) ||
-+					       atomic_read(hw_rdy[1])) > 0);
-+		if (ret != 0) {
-+			pr_err("%s : %d, all HW are busy\n",
-+			       __func__, __LINE__);
-+			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+			return;
-+		}
-+		pr_info("%s : %d, NEW HW IDLE, please retry selcet!!!\n",
-+			__func__, __LINE__);
-+		goto retry_select;
-+	}
-+	atomic_dec(&comp_jpeg[hw_id]->hw_rdy);
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-+	if (!src_buf) {
-+		pr_info("%s : %d, get src_buf fail !!!\n", __func__, __LINE__);
-+		goto getbuf_fail;
-+	}
-+
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+	if (!dst_buf) {
-+		pr_info("%s : %d, get dst_buf fail !!!\n", __func__, __LINE__);
-+		goto getbuf_fail;
-+	}
- 
--	ret = pm_runtime_get_sync(jpeg->dev);
--	if (ret < 0)
-+	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
-+	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-+
-+	jpeg_src_buf->curr_ctx = ctx;
-+	jpeg_src_buf->frame_num = ctx->total_frame_num;
-+	jpeg_dst_buf->curr_ctx = ctx;
-+	jpeg_dst_buf->frame_num = ctx->total_frame_num;
-+	ctx->total_frame_num++;
-+
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+
-+	mtk_jpeg_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-+
-+	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->pm.dev);
-+	if (ret < 0) {
-+		pr_err("%s : %d, pm_runtime_get_sync fail !!!\n",
-+		       __func__, __LINE__);
- 		goto enc_end;
-+	}
- 
--	schedule_delayed_work(&jpeg->job_timeout_work,
--			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-+	jpegenc_clk = comp_jpeg[hw_id]->pm.venc_clk.clk_info->jpegenc_clk;
-+	ret = clk_prepare_enable(jpegenc_clk);
-+	if (ret) {
-+		pr_err("%s : %d, jpegenc clk_prepare_enable fail\n",
-+		       __func__, __LINE__);
-+		goto enc_end;
-+	}
- 
--	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-+			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
- 	/*
- 	 * Resetting the hardware every frame is to ensure that all the
- 	 * registers are cleared. This is a hardware requirement.
- 	 */
--	mtk_jpeg_enc_reset(jpeg->reg_base);
--
--	mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
--	mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf);
--	mtk_jpeg_set_enc_params(ctx, jpeg->reg_base);
--	mtk_jpeg_enc_start(jpeg->reg_base);
--	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	mtk_jpeg_enc_reset(comp_jpeg[hw_id]->reg_base[0]);
-+	mtk_jpeg_set_enc_dst(ctx,
-+			     comp_jpeg[hw_id]->reg_base[0],
-+			     &dst_buf->vb2_buf);
-+	mtk_jpeg_set_enc_src(ctx,
-+			     comp_jpeg[hw_id]->reg_base[0],
-+			     &src_buf->vb2_buf);
-+	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base[0]);
-+	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base[0]);
-+	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
- 	return;
- 
- enc_end:
-@@ -983,9 +1095,20 @@ static void mtk_jpeg_enc_device_run(void *priv)
- 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	v4l2_m2m_buf_done(dst_buf, buf_state);
-+getbuf_fail:
-+	atomic_inc(&comp_jpeg[hw_id]->hw_rdy);
-+	mtk_jpeg_deselect_hw(jpeg, hw_id);
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- }
- 
-+static void mtk_jpeg_enc_device_run(void *priv)
-+{
-+	struct mtk_jpeg_ctx *ctx = priv;
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+
-+	queue_work(jpeg->workqueue, &ctx->jpeg_work);
-+}
-+
- static void mtk_jpeg_dec_device_run(void *priv)
- {
- 	struct mtk_jpeg_ctx *ctx = priv;
-@@ -1002,7 +1125,8 @@ static void mtk_jpeg_dec_device_run(void *priv)
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
- 
--	if (mtk_jpeg_check_resolution_change(ctx, &jpeg_src_buf->dec_param)) {
-+	if (mtk_jpeg_check_resolution_change(ctx,
-+					     &jpeg_src_buf->dec_param)) {
- 		mtk_jpeg_queue_src_chg_event(ctx);
- 		ctx->state = MTK_JPEG_SOURCE_CHANGE;
- 		v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-@@ -1017,7 +1141,8 @@ static void mtk_jpeg_dec_device_run(void *priv)
- 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
- 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
--	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param, &dst_buf->vb2_buf, &fb))
-+	if (mtk_jpeg_set_dec_dst(ctx, &jpeg_src_buf->dec_param,
-+				 &dst_buf->vb2_buf, &fb))
- 		goto dec_end;
- 
- 	spin_lock_irqsave(&jpeg->hw_lock, flags);
-@@ -1248,6 +1373,11 @@ static int mtk_jpeg_open(struct file *file)
- 		goto free;
- 	}
- 
-+	if (jpeg->variant->is_encoder) {
-+		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
-+		INIT_LIST_HEAD(&ctx->dst_done_queue);
-+	}
-+
- 	v4l2_fh_init(&ctx->fh, vfd);
- 	file->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
--- 
-2.6.4
+--3ihYu1sFcNnMMAMmUEcEMG76YaQ22m49E
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+Hi Liviu
+
+Am 22.06.21 um 17:25 schrieb Liviu Dudau:
+> Hello,
+>=20
+> On Tue, Jun 22, 2021 at 04:09:44PM +0200, Thomas Zimmermann wrote:
+>> For KMS drivers, replace the IRQ check in VBLANK ioctls with a check f=
+or
+>> vblank support. IRQs might be enabled wthout vblanking being supported=
+=2E
+>>
+>> This change also removes the DRM framework's only dependency on IRQ st=
+ate
+>> for non-legacy drivers. For legacy drivers with userspace modesetting,=
+
+>> the original test remains in drm_wait_vblank_ioctl().
+>>
+>> v2:
+>> 	* keep the old test for legacy drivers in
+>> 	  drm_wait_vblank_ioctl() (Daniel)
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> ---
+>>   drivers/gpu/drm/drm_irq.c    | 10 +++-------
+>>   drivers/gpu/drm/drm_vblank.c | 13 +++++++++----
+>>   2 files changed, 12 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_irq.c b/drivers/gpu/drm/drm_irq.c
+>> index c3bd664ea733..1d7785721323 100644
+>> --- a/drivers/gpu/drm/drm_irq.c
+>> +++ b/drivers/gpu/drm/drm_irq.c
+>> @@ -74,10 +74,8 @@
+>>    * only supports devices with a single interrupt on the main device =
+stored in
+>>    * &drm_device.dev and set as the device paramter in drm_dev_alloc()=
+=2E
+>>    *
+>> - * These IRQ helpers are strictly optional. Drivers which roll their =
+own only
+>> - * need to set &drm_device.irq_enabled to signal the DRM core that vb=
+lank
+>> - * interrupts are working. Since these helpers don't automatically cl=
+ean up the
+>> - * requested interrupt like e.g. devm_request_irq() they're not reall=
+y
+>> + * These IRQ helpers are strictly optional. Since these helpers don't=
+ automatically
+>> + * clean up the requested interrupt like e.g. devm_request_irq() they=
+'re not really
+>>    * recommended.
+>>    */
+>>  =20
+>> @@ -91,9 +89,7 @@
+>>    * and after the installation.
+>>    *
+>>    * This is the simplified helper interface provided for drivers with=
+ no special
+>> - * needs. Drivers which need to install interrupt handlers for multip=
+le
+>> - * interrupts must instead set &drm_device.irq_enabled to signal the =
+DRM core
+>> - * that vblank interrupts are available.
+>> + * needs.
+>>    *
+>>    * @irq must match the interrupt number that would be passed to requ=
+est_irq(),
+>>    * if called directly instead of using this helper function.
+>> diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank=
+=2Ec
+>> index 3417e1ac7918..a98a4aad5037 100644
+>> --- a/drivers/gpu/drm/drm_vblank.c
+>> +++ b/drivers/gpu/drm/drm_vblank.c
+>> @@ -1748,8 +1748,13 @@ int drm_wait_vblank_ioctl(struct drm_device *de=
+v, void *data,
+>>   	unsigned int pipe_index;
+>>   	unsigned int flags, pipe, high_pipe;
+>>  =20
+>> -	if (!dev->irq_enabled)
+>> -		return -EOPNOTSUPP;
+>> +	if  (drm_core_check_feature(dev, DRIVER_MODESET)) {
+>> +		if (!drm_dev_has_vblank(dev))
+>> +			return -EOPNOTSUPP;
+>> +	} else {
+>> +		if (!dev->irq_enabled)
+>> +			return -EOPNOTSUPP;
+>> +	}
+>=20
+> For a system call that is used quite a lot by userspace we have increas=
+ed the code size
+> in a noticeable way. Can we not cache it privately?
+
+I'm not quite sure that I understand your concern. The additionally=20
+called functions are trivial one-liners; probably inlined anyway.
+
+However, irq_enabled is only relevant for legacy drivers and will=20
+eventually disappear behind CONFIG_DRM_LEGACY. We can rewrite the test=20
+like this:
+
+ifdef CONFIG_DRM_LEGACY
+   if (unlikely(check_feature(dev, DRIVER_LEGACY))) {
+     if (!irq_enabled)
+       return;
+   } else
+#endif
+   {
+     if (!has_vblank_support(dev))
+       return;
+   }
+
+As CONFIG_DRM_LEGACY is most likely disabled on concurrent systems, we'd =
+
+get a single test for the modern drivers. If DRM_LEGACYis on, the=20
+compiler at least knows that the else branch is preferred.
+
+Best regards
+Thomas
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--3ihYu1sFcNnMMAMmUEcEMG76YaQ22m49E--
+
+--7jLGShJWLlf8CSqVlOcnyBWWcy9Lp6Rkb
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDS1/sFAwAAAAAACgkQlh/E3EQov+DQ
+GBAAgLEWLgvBzCF5hV0mjIUdLsPzDOR+sZaMmkihftgMzVIfDXBMfZp4PON/h5XP/oa3S7zWw9+W
+RaNndoHIiRezAR4dnNcXern7ByoYb3kFLVlzcdpjZYvhitX8fUEanpR8nSXzouFAPuevtw8dNzr3
+pyvXZCqqdXCmGz09Qrfc48j7bCYMgZ/b21GUHjKRGIC7JFkcSnGm2JopJOCsc9EiUD7tr0l7VfwS
+/H0ho3e9vLqI/p+1MdU/KMUjItmN71b2VEm8yp0KPceIEiCgsggBrW4np4kg8qoBrSVFNT+NDy1O
+weBoJYVfyPVT4UJXatHhqff7l9GUVWHtk2h2JfMrPIGj4qc15wiXUAiY9Goi5+z/9MgpJLl0TkXt
+GkxkK4Vdx1AdFMhNfE0PqmHjp1pOlLU/apueEhoeVslIwyatSi2cuTLKmRylHOzBYQhK9VsnS0Ip
+bLKBFuKu1QNELEqow7/6jmoneBg7LQwCtrFUZZ1juJfaHqCGttl8f4SleboXZe0fb8nPAgrQPItN
+TNb/u1tvc0hQhQ2DooSdMzvuCsM5qPlCi2ZLUwNNsj9uJo6rYJ49Xv7ay4pKE0TWQQN9MC+oyaa1
+InbjRqUF5ubLt361DDxI0YuEq7FBhvcQ1dC0J4I/uKgXvATLllGtOvUzyK0ZAkiXQZ+UKkd0HRDx
+v9w=
+=aQqG
+-----END PGP SIGNATURE-----
+
+--7jLGShJWLlf8CSqVlOcnyBWWcy9Lp6Rkb--
+
+
+--===============2140170833119178921==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2140170833119178921==--
+
