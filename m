@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1675DC4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1379CC4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:36:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D522F6128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:36:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D522F6128A
+	by mail.kernel.org (Postfix) with ESMTPS id CD04A611AC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:36:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD04A611AC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AEiRLQvMsFmnIbjtmQKkkuvlNEbMdx9dQhGZKHHGThQ=; b=4Np/zr9BTfzrHQ
-	v9Im98mzpZ35MJOkjOwMfBnenUZeZ7e0E/eJbZ0UDqlSCtUMYzYTu8YRdELe/NsFldmwFS1iv/e1Q
-	VMuyUiDhjnRcONovTl14hVSk0dhih1wH7HVLEUZKev8PVu6IlpiNMzqiC11L0ZBy5S2q1dEQ47t5l
-	LoTYZW6wD0m1LcMi/zBOsJu3IFBkcD5YK1jkpxCWqkhqDROeATypMzDf0SeeNN5843nOQCeWkc+oF
-	H0jOrPD7N2kvnaPUBkmrUKxFdKh4nIkoz4AUb/DrjcIn2ycf4KVh7Sd6ew4O7tykqaHyWXHkvaO46
-	KXtPOTyR+N5Vlx0ZNI6g==;
+	List-Owner; bh=P9OUznl6EoH2nAPjAdQOljMfP+iKeII72cs0ZxrZ8ts=; b=knFmXTzaTLfbg/
+	SeOzOAX6bklipxeRY91yivVEr9/4ht/n9Q8CrtVQXTNlaweO692dNXuD3fWlveEp9dmbKdOdgIkKK
+	FHfjWN4drs2cl/n2ycg3rRxT65XMRRjh6gOC6PmskrR0s4yJjy6Spqezvjewkq98xy3i4hiog2ID5
+	dI3nuBD2vEVQ1IKPQ/VnMVwjKBImpgnUnvpz6HqL8ZxC9UJVYGVNU8dWqTjdJa2xawb+7V58KKmWN
+	NXFZU/AMDYXmgyQKa0M1fLxZ7nF1Z0+Txsic/v6o7n5d1Txdm4exd3bgpx1qjP8bBhOc/9OfLTKrA
+	oxH3wkwfaAekZAmBSZHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvxQq-009nHo-Lw; Wed, 23 Jun 2021 07:36:20 +0000
+	id 1lvxR9-009nQ3-Od; Wed, 23 Jun 2021 07:36:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvxQc-009n8l-06; Wed, 23 Jun 2021 07:36:07 +0000
-X-UUID: 2a89b0587c4747b1979ea2dc42ce2802-20210623
+ id 1lvxQd-009n9U-J9; Wed, 23 Jun 2021 07:36:08 +0000
+X-UUID: 59ac08bb93d84bf5aed019c68b672c9d-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=SD88f/nDxBn/6u02bBJBFVNz6T8v96xqsm8RNit5wOU=; 
- b=PRqBH0efk0T5maoOAl2YOiYzRR5I4AA5SvgesoZFgqFLR++djUnX1lJ7rztfHWlLn6hGzMX7hiw59XHcffkOwRWlWrUYWIEbySoejECOsPJOtv2P5gOAUo3lJywei79vSkCwk6TLanPJ0tQBLsJ0/UJOWU1z2+npmMFaVUGqbeY=;
-X-UUID: 2a89b0587c4747b1979ea2dc42ce2802-20210623
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=p1S3LX8a6LxKQ/aDlxNgmDalY2ekRiHgPEnyGmzS3RY=; 
+ b=W0un8F6GtdaFmXT+SGKaOO5UW3QgZ7D9iBGGM038eQZO7I86buIoQGAvSwdlhlokttwFJ9+CKt2X0aBEqVHlOrMXxUwrl3ARU81C718bC8V8q2jaNLqPHeG0Wt3tk+FpG8yIerUIeBXr/I2CEdv40X0I3UYiEdkfEWO3jb8Kyi8=;
+X-UUID: 59ac08bb93d84bf5aed019c68b672c9d-20210623
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 435597603; Wed, 23 Jun 2021 00:35:59 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 00:35:58 -0700
+ with ESMTP id 828151017; Wed, 23 Jun 2021 00:35:56 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Jun 2021 00:35:55 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 15:35:57 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Jun 2021 15:35:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Jun 2021 15:35:57 +0800
+ Frontend Transport; Wed, 23 Jun 2021 15:35:53 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
@@ -70,17 +70,18 @@ CC: Maoguang Meng <maoguang.meng@mediatek.com>, Krzysztof Kozlowski
  <pihsun@chromium.org>, <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
  <ben.lok@mediatek.com>, <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
  <srv_heupstream@mediatek.com>, <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 06/10] media: mtk-mdp3: move clock on to precise place
-Date: Wed, 23 Jun 2021 15:35:45 +0800
-Message-ID: <20210623073549.24170-6-moudy.ho@mediatek.com>
+Subject: [RFC PATCH V0 02/10] media: mtk-mdp3: fix redundant process done
+ caused KE
+Date: Wed, 23 Jun 2021 15:35:41 +0800
+Message-ID: <20210623073549.24170-2-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210623073549.24170-1-moudy.ho@mediatek.com>
 References: <20210623073549.24170-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_003606_088022_6D88F47F 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20210623_003607_725716_CD5614F1 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,47 +100,32 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: daoyuan huang <daoyuan.huang@mediatek.com>
 
-Move clock on to the previous line of cmdq_pkt_flush.
-
-Due to there're two ways(sync/async) to submit CMDQ task,
-and for async case we need to prepare callback param struct along
-with error checks and error handlings before submit,
-if we move clock on after these error check steps,
-we can save some clock off code in error handling.
+In mdp_m2m_worker, there is m2m process done in error handle,
+so add statement in mdp_cmdq_send for preventing redundant
+process done in cmdq_pkt_flush return fail case.
 
 Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
 ---
- drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-index df956ca3685c..a1bdf92d45f7 100644
+index ee81a3387cf9..f8bf8fde599c 100644
 --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
 +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-@@ -445,11 +445,9 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		return ret;
- 	}
- 
--	// TODO: engine conflict dispatch
--	for (i = 0; i < param->config->num_components; i++)
--		mdp_comp_clock_on(&mdp->pdev->dev, path.comps[i].comp);
--
- 	if (param->wait) {
-+		for (i = 0; i < param->config->num_components; i++)
-+			mdp_comp_clock_on(&mdp->pdev->dev, path.comps[i].comp);
- 		ret = cmdq_pkt_flush(cmd.pkt);
- #ifdef MDP_DEBUG
- 		if (ret) {
-@@ -495,6 +493,9 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		cb_param->num_comps = param->config->num_components;
- 		cb_param->mdp_ctx = param->mdp_ctx;
- 
-+		mdp_comp_clocks_on(&mdp->pdev->dev, cb_param->comps,
-+				   cb_param->num_comps);
-+
- 		ret = cmdq_pkt_flush_async(cmd.pkt,
- 					   mdp_handle_cmdq_callback,
- 					   (void *)cb_param);
+@@ -454,8 +454,10 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+ 			mdp_dump_info(~0, 1);
+ 		}
+ #endif
+-		if (param->mdp_ctx)
+-			mdp_m2m_job_finish(param->mdp_ctx);
++		if (!ret) { /* error handle in mdp_m2m_worker */
++			if (param->mdp_ctx)
++				mdp_m2m_job_finish(param->mdp_ctx);
++		}
+ 		cmdq_pkt_destroy(cmd.pkt);
+ 		for (i = 0; i < param->config->num_components; i++)
+ 			mdp_comp_clock_off(&mdp->pdev->dev, path.comps[i].comp);
 -- 
 2.18.0
 _______________________________________________
