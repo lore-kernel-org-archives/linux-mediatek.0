@@ -7,54 +7,54 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6DEBAC4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 11:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1AACC4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 11:50:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 404E86102A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 11:50:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 404E86102A
+	by mail.kernel.org (Postfix) with ESMTPS id 7102E6102A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 11:50:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7102E6102A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=23ODyJy7WxdCpGxsyDmXxGVElyaQZDoDFs21viSgm3U=; b=nQXx6g+xmoruDJ
-	+esS7jfogXUL/YaP1bc/WPFTvqIboki9yK5iY5u/Fhm6ka7dr2/hgc8nvJAtnGpQ2QwcKKr45hTD4
-	KiZ4t1T7Gkubbc8OTx3D85SbrGBgyEncDxl3MhXt5SyrbEVm11I2iRH0dEsdSqw+4iuaBzZKJIXmA
-	symfP7aFgIZLZRi89zff/n4CPVM1iByvAOgVezERkNUd8KyVZbpJoKtfL/ixuT/7OVMI1EpUiICbm
-	yVkivMiw1kGnS4qNZqtSKMEzwAMGAbKZ92txg0j8s8YE62svDi+EJSrWwkS038TQpDAtFA86BE0Mb
-	XHJ/2MyWADBTlbByMe4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zOGr/UdyrKiP1nyntoCECQLJObS+LGf0/aNt0qG9Ccs=; b=fD0bVkspjz0wkg
+	jW+18j8JkKkW2tK/1/dVLEJ4G1vlEih00apR8eYJwNsPk1Z2Jd9MgD0kVVeeduRLpc1YcxqENfTlK
+	gIDKZVcOwmfpGqrYMnwIV2w2yucXz5U8rzBhKmd4BFer34hrGPmHFSM8ThcY2uYpq3hdiyOXYB079
+	6ufD07/17YM7K63gjiBz6SMSlbXruqwp2rEDXd7gU0lrpuC4EVbEUL4TryFFXD9h25hULvVSisb5K
+	NZ/7NtCbGkEBQicA60Y6O1kneVqS73O0dZ4o5c+2V7mskJ28SMa0o1LBjH9Vq5h4rdTNJ7JDDY/pl
+	SylseOEtT9/bzxwfAt+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lw1OR-00AV9Q-9N; Wed, 23 Jun 2021 11:50:07 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lw1Oc-00AVCK-OG; Wed, 23 Jun 2021 11:50:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lw1OO-00AV7e-DN; Wed, 23 Jun 2021 11:50:06 +0000
-X-UUID: c78e6f84082a448f829953b6cb098a4b-20210623
+ id 1lw1ON-00AV7G-Ju; Wed, 23 Jun 2021 11:50:07 +0000
+X-UUID: 005634f8e4004fac93e361a7bb6fe0db-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=znacS/esURZaDdED3pMjLiMoU/06zZgZw2s8b3JcdjY=; 
- b=U3f6uKCChIKL2F41gG7dDjHmmWn921aR9iuVWwIWy+E9KZPrTgVGgsyARsG1kNmdj0Fn6KhIn7moAmVNqtTu9R8tf/IjtmjzrO65H/P+69AKDYuVfWicNW7eVTl1DtXETj/7Ddk4EwXAzRWW6fMEbk/mjMG9CEtNMwTm10fzgDk=;
-X-UUID: c78e6f84082a448f829953b6cb098a4b-20210623
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=Bn391tXlqz4E6bjwOoWmfMYm89M8NtlzjLdQ6d/IzNU=; 
+ b=Mdt/mFHjyoAiKNxvWbZZsskpOwe0QgXtQUcvynaPmP42oAi68uwTuNgDJmEDWL8ecRhFTeChckKbY0CRZv3tOjl1TIfNFzCJ6znfEUic0fZz007c3Xxypp4dSYyw9BLavwGaqyYg1ABjPTalJccclb/bwGIgdbNJusREgcK8jNU=;
+X-UUID: 005634f8e4004fac93e361a7bb6fe0db-20210623
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rocco.yue@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 191166698; Wed, 23 Jun 2021 04:49:59 -0700
+ with ESMTP id 1340185345; Wed, 23 Jun 2021 04:49:58 -0700
 Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 04:49:57 -0700
+ 15.0.1497.2; Wed, 23 Jun 2021 04:49:56 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 19:49:54 +0800
+ 15.0.1497.2; Wed, 23 Jun 2021 19:49:43 +0800
 Received: from localhost.localdomain (10.15.20.246) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Jun 2021 19:49:53 +0800
+ Transport; Wed, 23 Jun 2021 19:49:41 +0800
 From: Rocco Yue <rocco.yue@mediatek.com>
 To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
  <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
@@ -68,19 +68,15 @@ CC: <netdev@vger.kernel.org>, <linux-doc@vger.kernel.org>,
  <wsd_upstream@mediatek.com>, <chao.song@mediatek.com>,
  <zhuoliang.zhang@mediatek.com>, <kuohong.wang@mediatek.com>, Rocco Yue
  <rocco.yue@mediatek.com>
-Subject: [PATCH 3/4] net: dev_is_mac_header_xmit() return false for
- ARPHRD_PUREIP
-Date: Wed, 23 Jun 2021 19:34:51 +0800
-Message-ID: <20210623113452.5671-3-rocco.yue@mediatek.com>
+Subject: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
+Date: Wed, 23 Jun 2021 19:34:49 +0800
+Message-ID: <20210623113452.5671-1-rocco.yue@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210623113452.5671-1-rocco.yue@mediatek.com>
-References: <20210623113452.5671-1-rocco.yue@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_045005_119430_A781E969 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210623_045005_118856_A4D7DB5D 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,29 +93,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-the incoming/outgoing packets on that pure ip interface do
-not have an ethernet header. So adding ARPHRD_PUREIP to the
-dev_is_mac_header_xmit() make the function return false, and
-__bpf_redirect() checks this boolean to determine whether to
-prefix an ethernet header.
+This patch add the definition of ARPHRD_PUREIP which can for
+example be used by mobile ccmni device as device type.
+ARPHRD_PUREIP means that this device doesn't need kernel to
+generate ipv6 link-local address in any addr_gen_mode.
 
 Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
 ---
- include/linux/if_arp.h | 1 +
+ include/uapi/linux/if_arp.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/include/linux/if_arp.h b/include/linux/if_arp.h
-index bf5c5f32c65e..0dc7af11c463 100644
---- a/include/linux/if_arp.h
-+++ b/include/linux/if_arp.h
-@@ -51,6 +51,7 @@ static inline bool dev_is_mac_header_xmit(const struct net_device *dev)
- 	case ARPHRD_VOID:
- 	case ARPHRD_NONE:
- 	case ARPHRD_RAWIP:
-+	case ARPHRD_PUREIP:
- 		return false;
- 	default:
- 		return true;
+diff --git a/include/uapi/linux/if_arp.h b/include/uapi/linux/if_arp.h
+index c3cc5a9e5eaf..4463c9e9e8b4 100644
+--- a/include/uapi/linux/if_arp.h
++++ b/include/uapi/linux/if_arp.h
+@@ -61,6 +61,7 @@
+ #define ARPHRD_DDCMP    517		/* Digital's DDCMP protocol     */
+ #define ARPHRD_RAWHDLC	518		/* Raw HDLC			*/
+ #define ARPHRD_RAWIP    519		/* Raw IP                       */
++#define ARPHRD_PUREIP	520		/* Pure IP			*/
+ 
+ #define ARPHRD_TUNNEL	768		/* IPIP tunnel			*/
+ #define ARPHRD_TUNNEL6	769		/* IP6IP6 tunnel       		*/
 -- 
 2.18.0
 _______________________________________________
