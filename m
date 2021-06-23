@@ -2,60 +2,59 @@ Return-Path: <SRS0=j594=LR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3AD5C4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58B0BC4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:42:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F59561185
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:42:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F59561185
+	by mail.kernel.org (Postfix) with ESMTPS id 1439E60724
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 09:42:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1439E60724
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o/TeMZQOKiuu0UhGdw2I5affbSFIIxtaARjMI37Yh4M=; b=VRcEpxJSywqy80
-	KaSIfDdJ+7N4y+jXt/nGck4jQvH7q9KCWip7F7Cg2xUMZJPlbyTw545s0M9S86BJ4XXL1IRC/t+bB
-	tWo6VAODuFm3KEjU0bWfLhNoBW/IQqisiMMKxupYhRqKCMUkBOj83i/xNS2701jtP5rTSQ1Mi5hYU
-	W5P5fgxdxQ1ZO1uUNd5RAYekYG0ALZw2RL3qA1fhxg6oPVAOQo08VI6E5uz/7F3+kAidOKNTwT7P4
-	mdt8z964rXe/ox8wXpdUYFbO2TuaGSgzJznmj87aiMec1PxxiB/bi9tBweyZ8L9Jy74VyMCxIVovz
-	q77Rq9riHzRR/TJKo5Ww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KBJONI7VO3gvYX8jmfqdQ/pf+Tmvd+vdQqxFSSUrKf4=; b=JA5cCwzDgWeQOq
+	h7m79luQe01uZVYBJQ9JO62z6KFh57vtniNbB6qzfB7OkmIpuMiCVQrPeGiBsYOLxpJg9Pq9bOqkS
+	G7EOK3htjafFfgXpO6mW49uzuy3plCG4wNopIOX/kDFGQ1lO1P1T3R1QhtZGcXSZ/2QuABp72j0kv
+	Ru75142BamvjWH6totby7jN5TpSs/vg6gic1Aj4Y4gRKiAPKO/vJStu5wal+xuNmV/lz2ezGuQcjP
+	ffJ1yNpeQFH9a2PhFNstLKeqaAbZRHyb7M9g+iBOup6vbWW2LYEISnIEzDEKA2KnIyhYsEELAGbRH
+	r7jy0eawFDUkp12mTkbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvzOs-00A9pD-7h; Wed, 23 Jun 2021 09:42:26 +0000
+	id 1lvzP7-00A9sd-BJ; Wed, 23 Jun 2021 09:42:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvzOi-00A9ml-DY; Wed, 23 Jun 2021 09:42:17 +0000
-X-UUID: f14004a1d8c3438eb13d8a4a49072c13-20210623
+ id 1lvzOj-00A9mt-Ck; Wed, 23 Jun 2021 09:42:18 +0000
+X-UUID: b7306d5dabf94554b62bc46582912db9-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=sEXOn0hSOqKjEvcuAaL3NiZpk3UqBSxj+/qUK97psJc=; 
- b=PjrgL07cLdrEcxC8jJBKRNBfdvF4f6g5IQvUAanmZ7K2gBgEfNvitJ4Dme4cAf431Q/fPFiWS699nnj20ky52jmIahfJ0guSQyWJrySaeXfkhkuHn0hPR+zCoV4KunChr/TqTH69ZYbVoTVHJVK/xqUmZ4WvlpqJvpGgRyP0pww=;
-X-UUID: f14004a1d8c3438eb13d8a4a49072c13-20210623
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=sRM20tfOdpf03p83WH06NqfLdJLK3OxDL+tZ5EG+1sY=; 
+ b=oCmjM1OGh/l8zwla5kO+X2zpcY0F0VkGdk0lfK/vja1373FPq8/0xp1EwxspeYNJOaI3ApmY3noM2tp+jzXofFbXTNB98vq+MNfq55937Mp8SOUggzkB4ejLzx7/ZQ0lwzPpzlI6yTz0sVWqwdXiMOEZ8iPJ8nI8+zGDKzSDe6s=;
+X-UUID: b7306d5dabf94554b62bc46582912db9-20210623
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 236722090; Wed, 23 Jun 2021 02:42:12 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 02:37:17 -0700
+ with ESMTP id 721119734; Wed, 23 Jun 2021 02:42:11 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Jun 2021 02:37:15 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 17:37:15 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 23 Jun 2021 17:37:14 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 23 Jun 2021 17:37:14 +0800
+ Transport; Wed, 23 Jun 2021 17:37:13 +0800
 From: Zhiyong Tao <zhiyong.tao@mediatek.com>
 To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
  <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
@@ -66,18 +65,15 @@ CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
  <sj.huang@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>
-Subject: [PATCH v8 1/2] dt-bindings: pinctrl: mt8195: add rsel define
-Date: Wed, 23 Jun 2021 17:37:09 +0800
-Message-ID: <20210623093710.5340-2-zhiyong.tao@mediatek.com>
+Subject: [PATCH v8 0/2] Mediatek pinctrl patch on mt8195
+Date: Wed, 23 Jun 2021 17:37:08 +0800
+Message-ID: <20210623093710.5340-1-zhiyong.tao@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210623093710.5340-1-zhiyong.tao@mediatek.com>
-References: <20210623093710.5340-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_024216_501032_889F3AEA 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210623_024217_474941_EF31B17E 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,35 +90,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds rsel define for mt8195.
+This series includes 1 patches:
+1.add rsel define
+2.add pinctrl rsel setting on MT8195.
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
----
- include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
+Changes in patch v8:
+1)add rsel define patch
+2)avoid  CamelCase
+3)add pinctrl rsel setting patch which is another resistance selection
+  solution for I2C on MT8195.
 
-diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
-index 7e16e58fe1f7..f5934abcd1bd 100644
---- a/include/dt-bindings/pinctrl/mt65xx.h
-+++ b/include/dt-bindings/pinctrl/mt65xx.h
-@@ -16,6 +16,15 @@
- #define MTK_PUPD_SET_R1R0_10 102
- #define MTK_PUPD_SET_R1R0_11 103
- 
-+#define MTK_PULL_SET_RSEL_000  200
-+#define MTK_PULL_SET_RSEL_001  201
-+#define MTK_PULL_SET_RSEL_010  202
-+#define MTK_PULL_SET_RSEL_011  203
-+#define MTK_PULL_SET_RSEL_100  204
-+#define MTK_PULL_SET_RSEL_101  205
-+#define MTK_PULL_SET_RSEL_110  206
-+#define MTK_PULL_SET_RSEL_111  207
-+
- #define MTK_DRIVE_2mA  2
- #define MTK_DRIVE_4mA  4
- #define MTK_DRIVE_6mA  6
--- 
+Changes in patch v7:
+1)add version in patch and fix spelling mistakes.
+
+Changes in patch v6:
+1)add "pintcrl: mediatek" as prefix.
+
+Changes in patch v5:
+1)document and driver patch are apploed.
+2)change '-EOPNOTSUPP' to '-ENOTSUPP'
+
+Changes in patch v4:
+1)fix pinctrl-mt8195.yaml warning error.
+2)remove pinctrl device node patch which is based on "mt8195.dtsi".
+
+Changes in patch v3:
+1)change '^pins' to '-pins$'.
+2)change 'state_0_node_a' to 'gpio_pin' which is defined in dts.
+3)change 'state_0_node_b' to 'i2c0_pin' which is defined in dts.
+4)reorder this series patches. change pinctrl file and binding document
+together in one patch.
+
+There are no changes in v1 & v2.
+
+Zhiyong Tao (2):
+  dt-bindings: pinctrl: mt8195: add rsel define
+  pinctrl: mediatek: add rsel setting on MT8195
+
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c     |  96 +++++++++++++
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 135 +++++++++++++++---
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  10 +-
+ drivers/pinctrl/mediatek/pinctrl-paris.c      |  23 ++-
+ drivers/pinctrl/mediatek/pinctrl-paris.h      |   2 +-
+ include/dt-bindings/pinctrl/mt65xx.h          |   9 ++
+ 6 files changed, 248 insertions(+), 27 deletions(-)
+
+--
 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
