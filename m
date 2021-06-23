@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AA32C4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:46:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F11DC4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:46:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 57901611C1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:46:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57901611C1
+	by mail.kernel.org (Postfix) with ESMTPS id DFCCD61350
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:46:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DFCCD61350
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=01L0y5kiD+A55NE7WUp17tImJxX+yNURbGKKyZs3NcE=; b=FIesaxX4p8R5nm
-	98ZWgQapfdhEnkRXTIjKsnGJERo8f4yatt9FxGftnUpy4H9wk/ox484lSotagVUkaisbhz3z1GUjc
-	JJQ9M+jugDk4ErSiIktKUl6pudx62d0pZKzYl3ToHUyu2+rj5JsWS0ZHOlpto3gkZOfKIhC0vgL4W
-	fjF++10fuoEAoeHY/2w6HSMEfY2XRDbXNVKIS2Yk8EPZnDPeV/CvZ6LmWe3us1jQwW/noOcsv+yW2
-	oVTH48Eq6yKl8VzRJ4YQiW8ZcL2SWMBA3m2wSs0dnl2fOoHFr4JmRa1xIJvK1zN2dRl2aJsX5D5HW
-	9cqc4j/MSWfzUn3p6Uww==;
+	List-Owner; bh=skMFTFWTPCwiokzM/CvwmH9KjK/0WQNWhWen9j01gps=; b=34kpQ4LcuyXBpQ
+	AC7DaJcAgkJHYSdiJbEIiePPHcwaea+1GK4oR1Ic9uiqctcVPCEkPed8P0h984VNS+pXbE5OFWqVB
+	TKIfp2egabvHBrGHtKoArjWh+Rsy5p3KCeosGR7gmOg9V5AWyHi+1iMTPeew7pUi1erv/zLFYGB+h
+	XZ6q1HYSmGp+UbNn/zfuhhIrIrh+l81OlfipZr+12ltewgPzKqbf3d0wSKi6t4Bj5mwZUrbgXg91D
+	LYDyz3pJa7ykcfQ9DIoWnn5NTylkGSHlYD/GwtKE7lhdtx0c9RLrapiwJlv5w9cm+yqtVxevhZlNA
+	7uLuA4tRZuUE2LkXeqeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvxac-009qS1-Cs; Wed, 23 Jun 2021 07:46:26 +0000
+	id 1lvxao-009qVY-2H; Wed, 23 Jun 2021 07:46:38 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvxaE-009qO8-4v; Wed, 23 Jun 2021 07:46:03 +0000
-X-UUID: fb6a31455e4c436b8886b5d1882f8436-20210623
+ id 1lvxaE-009qNg-RF; Wed, 23 Jun 2021 07:46:04 +0000
+X-UUID: 702d71922c7a47309af58384a546e8bb-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4DVVN6+1UOabBinx6x9QrITXqx85BNtb+TLb68tjcNI=; 
- b=bbXDKmBlvfep2bce82Hzfac97DQEt2mhgkXG+767cT8zCYImj0tyATbj3q9lwD0meQ/lTi81aJJ0hM9ci0r23VDVcwbsaO4nNQsn4cfrHGSxlkxpr0cHPLoB42/eeh5lL+J1fSa9SSV1Mp+jVK0Ifu1zKPkSDoCbr+EijXc8yBo=;
-X-UUID: fb6a31455e4c436b8886b5d1882f8436-20210623
+ bh=0pCHcYmfpF9JhROwaQAuFrGjlvzOs8zF5+JOmGLafrA=; 
+ b=WYKvqAyGITcLurDcr/dcxka1YeR+fBrGiuISoIkbJ28OQPTFRBM9Haw2dwme3USCYSrX3LoxdJxNr5FTM+TunHz1i5y4FHiR5l5+s0f7PX6Q1qXdIgCyVoJeN/kPuy2FiL8kLzhYC4anzGcRY99PKE053kpbOe++FTrjx1wuQrs=;
+X-UUID: 702d71922c7a47309af58384a546e8bb-20210623
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2023718009; Wed, 23 Jun 2021 00:45:59 -0700
+ with ESMTP id 1586528108; Wed, 23 Jun 2021 00:45:59 -0700
 Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 00:35:59 -0700
+ 15.0.1497.2; Wed, 23 Jun 2021 00:35:58 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 15:35:57 +0800
+ 15.0.1497.2; Wed, 23 Jun 2021 15:35:56 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 23 Jun 2021 15:35:57 +0800
+ Frontend Transport; Wed, 23 Jun 2021 15:35:56 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
@@ -70,17 +70,17 @@ CC: Maoguang Meng <maoguang.meng@mediatek.com>, Krzysztof Kozlowski
  <pihsun@chromium.org>, <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
  <ben.lok@mediatek.com>, <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
  <srv_heupstream@mediatek.com>, <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 07/10] media: mtk-mdp3: Fix unpaired settings
-Date: Wed, 23 Jun 2021 15:35:46 +0800
-Message-ID: <20210623073549.24170-7-moudy.ho@mediatek.com>
+Subject: [RFC PATCH V0 03/10] media: mtk-mdp3: revise suspend strategy
+Date: Wed, 23 Jun 2021 15:35:42 +0800
+Message-ID: <20210623073549.24170-3-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210623073549.24170-1-moudy.ho@mediatek.com>
 References: <20210623073549.24170-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_004602_243575_F054D756 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20210623_004602_919882_5C732824 
+X-CRM114-Status: GOOD (  21.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,220 +97,185 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix unpaired settings about:
-1. clk on/off.
-2. CMDQ packet kzalloc/kfree.
-3. MDP job_count increase/decrease.
+From: daoyuan huang <daoyuan.huang@mediatek.com>
 
-Also revise the redundant log.
+1.The wait queue check for incomplete running task
+  should be put in mdp_suspend instead of mdp_pm_suspend;
+  Due to mdp_suspend could be called while task is running;
+  Add error return value in suspend fail situation.
+2.modify dma modules' power control from larb device to modules'
+  device self;
+  For support real mdp_pm_suspend callback.
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
 ---
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   | 97 ++++++++++++-------
- .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |  4 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  2 +-
- 3 files changed, 67 insertions(+), 36 deletions(-)
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 36 ++++++++-----------
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |  2 +-
+ .../media/platform/mtk-mdp3/mtk-mdp3-core.c   | 34 +++++-------------
+ 3 files changed, 23 insertions(+), 49 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-index a1bdf92d45f7..eac10944283a 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-@@ -5,6 +5,7 @@
-  */
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+index 3033cd32340c..23dd413f3423 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+@@ -1039,8 +1039,8 @@ void mdp_comp_clock_on(struct device *dev, struct mdp_comp *comp)
+ {
+ 	int i, err;
  
- #include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
- #include "mtk-mdp3-cmdq.h"
- #include "mtk-mdp3-comp.h"
- #include "mtk-mdp3-core.h"
-@@ -230,6 +231,25 @@ static int mdp_path_subfrm_run(const struct mdp_path_subfrm *subfrm,
+-	if (comp->larb_dev) {
+-		err = pm_runtime_get_sync(comp->larb_dev);
++	if (comp->comp_dev) {
++		err = pm_runtime_get_sync(comp->comp_dev);
+ 		if (err < 0)
+ 			dev_err(dev,
+ 				"Failed to get larb, err %d. type:%d id:%d\n",
+@@ -1068,8 +1068,8 @@ void mdp_comp_clock_off(struct device *dev, struct mdp_comp *comp)
+ 		clk_disable_unprepare(comp->clks[i]);
+ 	}
+ 
+-	if (comp->larb_dev)
+-		pm_runtime_put(comp->larb_dev);
++	if (comp->comp_dev)
++		pm_runtime_put(comp->comp_dev);
+ }
+ 
+ static int mdp_get_subsys_id(struct device *dev, struct device_node *node,
+@@ -1153,8 +1153,7 @@ static int mdp_comp_init(struct device *dev, struct mdp_dev *mdp,
+ 			 struct device_node *node, struct mdp_comp *comp,
+ 			 enum mdp_comp_id id)
+ {
+-	struct device_node *larb_node;
+-	struct platform_device *larb_pdev;
++	struct platform_device *pdev;
+ 	int i;
+ 
+ 	if (id < 0 || id >= MDP_MAX_COMP_COUNT) {
+@@ -1176,29 +1175,22 @@ static int mdp_comp_init(struct device *dev, struct mdp_dev *mdp,
+ 
+ 	mdp_get_subsys_id(dev, node, comp);
+ 
+-	/* Only DMA capable components need the LARB property */
+-	comp->larb_dev = NULL;
++	/* Only DMA capable components need the pm control */
++	comp->comp_dev = NULL;
+ 	if (comp->type != MDP_COMP_TYPE_RDMA &&
+ 	    comp->type != MDP_COMP_TYPE_WROT &&
+ 		comp->type != MDP_COMP_TYPE_WDMA)
+ 		return 0;
+ 
+-	larb_node = of_parse_phandle(node, "mediatek,larb", 0);
+-	if (!larb_node) {
+-		dev_err(dev, "Missing mediatek,larb phandle in %pOF node\n",
+-			node);
+-		return -EINVAL;
+-	}
+-
+-	larb_pdev = of_find_device_by_node(larb_node);
+-	if (!larb_pdev) {
+-		dev_warn(dev, "Waiting for larb device %pOF\n", larb_node);
+-		of_node_put(larb_node);
+-		return -EPROBE_DEFER;
++	pdev = of_find_device_by_node(node);
++	if (!pdev) {
++		dev_warn(dev, "can't find platform device of node:%s\n",
++			 node->name);
++		return -ENODEV;
+ 	}
+-	of_node_put(larb_node);
+ 
+-	comp->larb_dev = &larb_pdev->dev;
++	comp->comp_dev = &pdev->dev;
++	pm_runtime_enable(comp->comp_dev);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+index 77d2c3e989c4..27d58dc51dce 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+@@ -113,7 +113,7 @@ struct mdp_comp {
+ 	phys_addr_t			reg_base;
+ 	u8				subsys_id;
+ 	struct clk			*clks[2];
+-	struct device			*larb_dev;
++	struct device			*comp_dev;
+ 	enum mdp_comp_type		type;
+ 	enum mdp_comp_id		id;
+ 	u32				alias_id;
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+index 4a59dec8cfd9..eaf5b07e720f 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+@@ -152,7 +152,6 @@ static int mdp_probe(struct platform_device *pdev)
+ #endif
+ 
+ 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+-	pm_runtime_enable(dev);
+ 
+ 	ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+ 	if (ret) {
+@@ -212,7 +211,7 @@ static int mdp_remove(struct platform_device *pdev)
  	return 0;
  }
  
-+static int mdp_path_ctx_init(struct mdp_dev *mdp, struct mdp_path *path)
-+{
-+	const struct img_config *config = path->config;
-+	int index, ret;
-+
-+	if (config->num_components < 1)
-+	    return -EINVAL;
-+
-+	for (index = 0; index < config->num_components; index++) {
-+		ret = mdp_comp_ctx_init(mdp, &path->comps[index],
-+					&config->components[index],
-+					path->param);
-+		if (ret)
-+			return ret;
-+	}
-+
-+	return 0;
-+}
-+
- static int mdp_path_config_subfrm(struct mdp_cmd *cmd, struct mdp_path *path,
- 				  u32 count)
+-static int __maybe_unused mdp_pm_suspend(struct device *dev)
++static int __maybe_unused mdp_suspend(struct device *dev)
  {
-@@ -297,14 +317,6 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mdp_cmd *cmd,
- 	struct mdp_comp_ctx *ctx;
- 	int index, count, ret;
- 
--	for (index = 0; index < config->num_components; index++) {
--		ret = mdp_comp_ctx_init(mdp, &path->comps[index],
--					&config->components[index],
--					path->param);
--		if (ret)
--			return ret;
--	}
--
- 	/* Config path frame */
- 	/* Reset components */
- 	for (index = 0; index < config->num_components; index++) {
-@@ -410,6 +422,8 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- {
- 	struct mdp_cmd cmd;
- 	struct mdp_path path;
-+	struct mdp_cmdq_cb_param *cb_param = NULL;
-+	struct mdp_comp *comps = NULL;
- 	int i, ret;
- 
- 	if (atomic_read(&mdp->suspended))
-@@ -438,16 +452,23 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		path.composes[i] = param->composes[i] ?
- 			param->composes[i] : &path.bounds[i];
- 	}
-+
-+	ret = mdp_path_ctx_init(mdp, &path);
-+	if (ret) {
-+		pr_info("%s mdp_path_ctx_init error\n", __func__);
-+		goto err_destory_pkt;
-+	}
-+
-+	for (i = 0; i < param->config->num_components; i++)
-+			mdp_comp_clock_on(&mdp->pdev->dev, path.comps[i].comp);
-+
- 	ret = mdp_path_config(mdp, &cmd, &path);
- 	if (ret) {
--		atomic_dec(&mdp->job_count);
--		wake_up(&mdp->callback_wq);
--		return ret;
-+		pr_info("%s mdp_path_config error\n", __func__);
-+		goto err_destory_pkt;
- 	}
- 
- 	if (param->wait) {
--		for (i = 0; i < param->config->num_components; i++)
--			mdp_comp_clock_on(&mdp->pdev->dev, path.comps[i].comp);
- 		ret = cmdq_pkt_flush(cmd.pkt);
- #ifdef MDP_DEBUG
- 		if (ret) {
-@@ -461,25 +482,20 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 			if (param->mdp_ctx)
- 				mdp_m2m_job_finish(param->mdp_ctx);
- 		}
--		cmdq_pkt_destroy(cmd.pkt);
--		for (i = 0; i < param->config->num_components; i++)
--			mdp_comp_clock_off(&mdp->pdev->dev, path.comps[i].comp);
--
--		atomic_dec(&mdp->job_count);
--		wake_up(&mdp->callback_wq);
-+		goto err_clock_off;
- 	} else {
--		struct mdp_cmdq_cb_param *cb_param;
--		struct mdp_comp *comps;
--
- 		cb_param = kzalloc(sizeof(*cb_param), GFP_KERNEL);
--		if (!cb_param)
--			return -ENOMEM;
-+		if (!cb_param) {
-+			ret = -ENOMEM;
-+			goto err_destory_pkt;
+ 	struct mdp_dev *mdp = dev_get_drvdata(dev);
+ 	int ret;
+@@ -222,19 +221,19 @@ static int __maybe_unused mdp_pm_suspend(struct device *dev)
+ 	if (atomic_read(&mdp->job_count)) {
+ 		ret = wait_event_timeout(mdp->callback_wq,
+ 					 !atomic_read(&mdp->job_count),
+-					 HZ);
+-		if (ret == 0)
++					 2 * HZ);
++		if (ret == 0) {
+ 			dev_err(dev,
+-				"%s:flushed cmdq task incomplete\n",
+-				__func__);
+-		else//need to remove
+-			pr_err("%s:ret=%d\n", __func__, ret);
++				"%s:flushed cmdq task incomplete, count=%d\n",
++				__func__, atomic_read(&mdp->job_count));
++			return -EBUSY;
 +		}
-+
- 		comps = kcalloc(param->config->num_components, sizeof(*comps),
- 				GFP_KERNEL);
- 		if (!comps) {
--			kfree(cb_param);
- 			mdp_err("%s:comps alloc fail!\n", __func__);
--			return -ENOMEM;
-+			ret = -ENOMEM;
-+			goto err_destory_pkt;
- 		}
- 
- 		for (i = 0; i < param->config->num_components; i++)
-@@ -493,20 +509,35 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		cb_param->num_comps = param->config->num_components;
- 		cb_param->mdp_ctx = param->mdp_ctx;
- 
--		mdp_comp_clocks_on(&mdp->pdev->dev, cb_param->comps,
--				   cb_param->num_comps);
--
-+		cmdq_pkt_finalize(cmd.pkt);
- 		ret = cmdq_pkt_flush_async(cmd.pkt,
- 					   mdp_handle_cmdq_callback,
- 					   (void *)cb_param);
- 		if (ret) {
- 			mdp_err("%s:cmdq_pkt_flush_async fail!\n", __func__);
--			mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
--					    cb_param->num_comps);
--			kfree(cb_param);
--			kfree(comps);
-+			goto err_clock_off;
- 		}
  	}
-+	return 0;
-+
-+err_clock_off:
-+	if (param->wait) {
-+		for (i = 0; i < param->config->num_components; i++)
-+			mdp_comp_clock_off(&mdp->pdev->dev, path.comps[i].comp);
-+	} else {
-+		mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
-+					    cb_param->num_comps);
-+	}
-+err_destory_pkt:
-+	cmdq_pkt_destroy(cmd.pkt);
-+	atomic_dec(&mdp->job_count);
-+	if (param->wait)
-+		wake_up(&mdp->callback_wq);
-+	if (comps)
-+		kfree(comps);
-+	if (cb_param)
-+		kfree(cb_param);
-+
- 	return ret;
+ 
+ 	return 0;
  }
  
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-index 98cf54b1d92b..19f46da487aa 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-@@ -64,12 +64,12 @@ extern int mtk_mdp_debug;
- #define mdp_dbg(level, fmt, ...)\
- 	do {\
- 		if (mtk_mdp_debug >= (level))\
--			pr_info("[MTK-MDP3] %d %s:%d: " fmt "\n",\
-+			pr_info("[MTK-MDP3] %d %s:%d: " fmt,\
- 				level, __func__, __LINE__, ##__VA_ARGS__);\
- 	} while (0)
+-static int __maybe_unused mdp_pm_resume(struct device *dev)
++static int __maybe_unused mdp_resume(struct device *dev)
+ {
+ 	struct mdp_dev *mdp = dev_get_drvdata(dev);
  
- #define mdp_err(fmt, ...)\
--	pr_err("[MTK-MDP3][ERR] %s:%d: " fmt "\n", __func__, __LINE__,\
-+	pr_err("[MTK-MDP3][ERR] %s:%d: " fmt, __func__, __LINE__,\
- 		##__VA_ARGS__)
+@@ -243,25 +242,8 @@ static int __maybe_unused mdp_pm_resume(struct device *dev)
+ 	return 0;
+ }
  
- #else
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-index 1ae499f6c84b..ff80f01be82f 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-@@ -133,7 +133,7 @@ static void mdp_m2m_worker(struct work_struct *work)
- 	task.config = ctx->vpu.config;
- 	task.param = &param;
- 	task.composes[0] = &frame->compose;
--	task.wait = 1;
-+	task.wait = 0;
- 	task.cmdq_cb = NULL;
- 	task.cb_data = NULL;
- 	task.mdp_ctx = ctx;
+-static int __maybe_unused mdp_suspend(struct device *dev)
+-{
+-	if (pm_runtime_suspended(dev))
+-		return 0;
+-
+-	return mdp_pm_suspend(dev);
+-}
+-
+-static int __maybe_unused mdp_resume(struct device *dev)
+-{
+-	if (pm_runtime_suspended(dev))
+-		return 0;
+-
+-	return mdp_pm_resume(dev);
+-}
+-
+ static const struct dev_pm_ops mdp_pm_ops = {
+ 	SET_SYSTEM_SLEEP_PM_OPS(mdp_suspend, mdp_resume)
+-	SET_RUNTIME_PM_OPS(mdp_pm_suspend, mdp_pm_resume, NULL)
+ };
+ 
+ static struct platform_driver mdp_driver = {
 -- 
 2.18.0
 _______________________________________________
