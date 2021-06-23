@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86E0FC4743C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A7AFC4743C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:38:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A5A9611AC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:37:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A5A9611AC
+	by mail.kernel.org (Postfix) with ESMTPS id 5FF776128C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Jun 2021 07:38:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FF776128C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jr5xQRq5IuZM7XCESuQ8a6+gs8z0/2wABp5eUHrpLwA=; b=oLHlOTtDrvr6aH
-	N/kO/yj1cC2MtZRa9BL67PDteFFHsUgbI3j13oCBWYny5zNmFauEFzjn3wJ9K1XWhtgYcSQyGGGFt
-	BMS/JS0KhKEIB3R10p8ZrIzZ+lENrYsIPJfWruZN8dshoWWPSVfXTdX5+T9FjtRGUW2anC2CH3vvG
-	1CtskDBK22y4V791qx7MqHGkO2by5/MAyEspLnOPxXpBdV3aPCHw9VBq1n4xNycpBQ/0gdyR740ZT
-	dul8JMsIPZ5OAtXwfde0rzj8V/SktT0PRomqCmeEjCq7hAb2Hy29KK1rWZKpaqQ6WaVE+1gJVgXW7
-	B3ahxfRjgm/MDKr04wow==;
+	List-Owner; bh=k+gm1aApM2gYmaiHZ7ltn6ihTYltI/D88+pEYElIWYo=; b=lUUyzdDDX+UfH9
+	w996DGoBZZ/hIok8QFDJaC8U6fzX7OiV6qr7fxwnd0poahYYd/J1vErmFL+0vUPHQyjTjmv1aX8lc
+	Wf8cJZzCo8V9dYNDHR3itzUb3lWMiwBUhuIjX3q7EaJYmODdCfL0DYWFXbgtZ5Z5dBnBlVQkfyQaI
+	FKMD+wz6Oy26XolWyzwxApoj/NqBrPE5KunysYGbKqaeej/ObXP9psu6sL1Y2ThQ7I5lvLZa3gxZm
+	bZbYnrGGQ8+E3mLzdtsh0S3ILMDhtL7cZ6M+Ekgi/3WyyeJJffZr37YTwSX38b5s3Tt3hmZA0HsDi
+	j0ho11tRmI8K85BM2Hzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lvxS6-009ntC-9g; Wed, 23 Jun 2021 07:37:38 +0000
+	id 1lvxSX-009o9u-2B; Wed, 23 Jun 2021 07:38:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lvxQf-009n9w-F8; Wed, 23 Jun 2021 07:36:11 +0000
-X-UUID: 58d4b9277d53499087822048e71ca74f-20210623
+ id 1lvxQf-009n8u-Ny; Wed, 23 Jun 2021 07:36:11 +0000
+X-UUID: 925565813e954eda9021c69332734820-20210623
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KF/BHgtZHOy56zoLfAZIBp3vXoSvcXtcHEtRp5CQDgo=; 
- b=uLrUSHk2FoDdKES1pszXprm69Cs07AGfn3SGw9f7Sc5RoYnviHPQk63dMzIg8tEXFV3IdGHoCCpHT2UFJhhWij/pPyHRLCc/udg+vsPRi0mjDUm0gEqLfG1NV0fFmS+x4p7OuvX6H4+DHxmcL7kPKc1+ltCdO1C4/AB+b9riXBc=;
-X-UUID: 58d4b9277d53499087822048e71ca74f-20210623
+ bh=wsai4tlhSTfNyC+k/o4acX2auPdu227NMt8ySxUAn58=; 
+ b=uhq1Q5i60BFNwtNN0p1BnAFIxMPIsOyp5JffzcwjP+FOHjOQzsFKnuX/fHp+cfV6doZmuPlQmMWG4nFEKA1YO+NH7tIMFHlb0mB0kjTnFeCz0tTDGtqr378Z8/bmx9whCNBa7VsAMFy21o9940MskSCyG+jq7EiTtCY4KEN6Hj8=;
+X-UUID: 925565813e954eda9021c69332734820-20210623
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 902577245; Wed, 23 Jun 2021 00:36:01 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 796444035; Wed, 23 Jun 2021 00:36:00 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 23 Jun 2021 00:35:59 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 23 Jun 2021 15:35:57 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -70,18 +70,17 @@ CC: Maoguang Meng <maoguang.meng@mediatek.com>, Krzysztof Kozlowski
  <pihsun@chromium.org>, <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
  <ben.lok@mediatek.com>, <randy.wu@mediatek.com>, <moudy.ho@mediatek.com>,
  <srv_heupstream@mediatek.com>, <frederic.chen@mediatek.com>
-Subject: [RFC PATCH V0 10/10] media: mtk-mdp3: Adjust related settings for
- 5.13-rc1
-Date: Wed, 23 Jun 2021 15:35:49 +0800
-Message-ID: <20210623073549.24170-10-moudy.ho@mediatek.com>
+Subject: [RFC PATCH V0 08/10] media: mtk-mdp3: remove illegal device node usage
+Date: Wed, 23 Jun 2021 15:35:47 +0800
+Message-ID: <20210623073549.24170-8-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210623073549.24170-1-moudy.ho@mediatek.com>
 References: <20210623073549.24170-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_003609_560641_D98720F8 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20210623_003609_864768_942BDF6C 
+X-CRM114-Status: GOOD (  25.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,230 +97,331 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: mtk18742 <moudy.ho@mediatek.com>
-
-1. remove cmdq_pkt_flush usage.
-2. remove VFL_TYPE_GRABBER enum.
-3. remove undefined format
-4. Adjust CMDQ API param.
+This patch is used for review before send upstream patch.
+From Rob Herring's review comment: device node can't use same
+register address as other nodes'.
+Remove illegal device nodes in device tree.
+MDP's sub component init need to do corresponding modification.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- .../media/platform/mtk-mdp3/mmsys_reg_base.h  |  2 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   | 92 +++++++------------
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |  3 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  2 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  3 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  2 +-
- 6 files changed, 39 insertions(+), 65 deletions(-)
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 224 +++++++++++++-----
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |   2 +-
+ 2 files changed, 163 insertions(+), 63 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-mdp3/mmsys_reg_base.h b/drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
-index d79b82eea61b..738ecd525474 100644
---- a/drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
-+++ b/drivers/media/platform/mtk-mdp3/mmsys_reg_base.h
-@@ -16,7 +16,7 @@
- 			(0xffffffff) : (mask), ##__VA_ARGS__)
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+index 157ef9408ed3..e89fd02bb556 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+@@ -1016,23 +1016,15 @@ static const struct of_device_id mdp_comp_dt_ids[] = {
+ 	{}
+ };
  
- #define MM_REG_WAIT(cmd, evt) \
--	cmdq_pkt_wfe(cmd->pkt, cmd->event[(evt)])
-+	cmdq_pkt_wfe(cmd->pkt, cmd->event[(evt)], true)
- 
- #define MM_REG_WAIT_NO_CLEAR(cmd, evt) \
- 	cmdq_pkt_wait_no_clear(cmd->pkt, cmd->event[(evt)])
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-index eac10944283a..151485933eae 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-@@ -468,71 +468,48 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_destory_pkt;
- 	}
- 
--	if (param->wait) {
--		ret = cmdq_pkt_flush(cmd.pkt);
--#ifdef MDP_DEBUG
--		if (ret) {
--			struct mdp_func_struct *p_func = mdp_get_func();
+-static int mdp_comp_get_id(struct device *dev, struct device_node *node,
+-			   enum mdp_comp_type type)
++static int mdp_comp_get_id(enum mdp_comp_type type, u32 alias_id)
+ {
+-	u32 alias_id;
+-	int i, ret;
 -
--			p_func->mdp_dump_mmsys_config();
--			mdp_dump_info(~0, 1);
--		}
--#endif
--		if (!ret) { /* error handle in mdp_m2m_worker */
--			if (param->mdp_ctx)
--				mdp_m2m_job_finish(param->mdp_ctx);
--		}
--		goto err_clock_off;
--	} else {
--		cb_param = kzalloc(sizeof(*cb_param), GFP_KERNEL);
--		if (!cb_param) {
--			ret = -ENOMEM;
--			goto err_destory_pkt;
--		}
-+	cb_param = kzalloc(sizeof(*cb_param), GFP_KERNEL);
-+	if (!cb_param) {
-+		ret = -ENOMEM;
-+		goto err_destory_pkt;
-+	}
+-	ret = of_property_read_u32(node, "mediatek,mdp-id", &alias_id);
+-	if (ret)
+-		return ret;
++	int i;
  
--		comps = kcalloc(param->config->num_components, sizeof(*comps),
--				GFP_KERNEL);
--		if (!comps) {
--			mdp_err("%s:comps alloc fail!\n", __func__);
--			ret = -ENOMEM;
--			goto err_destory_pkt;
--		}
-+	comps = kcalloc(param->config->num_components, sizeof(*comps),
-+			GFP_KERNEL);
-+	if (!comps) {
-+		mdp_err("%s:comps alloc fail!\n", __func__);
-+		ret = -ENOMEM;
-+		goto err_destory_pkt;
-+	}
- 
--		for (i = 0; i < param->config->num_components; i++)
--			memcpy(&comps[i], path.comps[i].comp,
--			       sizeof(struct mdp_comp));
--		cb_param->mdp = mdp;
--		cb_param->user_cmdq_cb = param->cmdq_cb;
--		cb_param->user_cb_data = param->cb_data;
--		cb_param->pkt = cmd.pkt;
--		cb_param->comps = comps;
--		cb_param->num_comps = param->config->num_components;
--		cb_param->mdp_ctx = param->mdp_ctx;
+ 	for (i = 0; i < ARRAY_SIZE(mdp_comp_matches); i++)
+ 		if (mdp_comp_matches[i].type == type &&
+ 		    mdp_comp_matches[i].alias_id == alias_id)
+ 			return i;
 -
--		cmdq_pkt_finalize(cmd.pkt);
--		ret = cmdq_pkt_flush_async(cmd.pkt,
--					   mdp_handle_cmdq_callback,
--					   (void *)cb_param);
--		if (ret) {
--			mdp_err("%s:cmdq_pkt_flush_async fail!\n", __func__);
--			goto err_clock_off;
--		}
-+	for (i = 0; i < param->config->num_components; i++)
-+		memcpy(&comps[i], path.comps[i].comp,
-+		       sizeof(struct mdp_comp));
-+	cb_param->mdp = mdp;
-+	cb_param->user_cmdq_cb = param->cmdq_cb;
-+	cb_param->user_cb_data = param->cb_data;
-+	cb_param->pkt = cmd.pkt;
-+	cb_param->comps = comps;
-+	cb_param->num_comps = param->config->num_components;
-+	cb_param->mdp_ctx = param->mdp_ctx;
+-	dev_err(dev, "Failed to get id. type: %d, alias: %d\n", type, alias_id);
+-	return -EINVAL;
++	return -ENODEV;
+ }
+ 
+ void mdp_comp_clock_on(struct device *dev, struct mdp_comp *comp)
+@@ -1143,33 +1135,10 @@ static void __mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
+ 	comp->reg_base = base;
+ }
+ 
+-static int mdp_mm_init(struct mdp_dev *mdp,
+-		       struct mdp_comp *comp, const char *ref_name)
++static int mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
++			 struct mdp_comp *comp, enum mdp_comp_id id)
+ {
+-	struct device_node *node;
+ 	struct device *dev = &mdp->pdev->dev;
+-
+-	node = of_parse_phandle(dev->of_node, ref_name, 0);
+-	if (!node) {
+-		dev_err(dev, "Failed to parse dt %s\n", ref_name);
+-		return -EINVAL;
+-	}
+-
+-	__mdp_comp_init(mdp, node, comp);
+-	mdp_get_subsys_id(dev, node, comp);
+-	of_node_put(node);
+-	if (!comp->reg_base) {
+-		dev_err(dev, "Failed to init %s base\n", ref_name);
+-		return -EINVAL;
+-	}
+-	return 0;
+-}
+-
+-static int mdp_comp_init(struct device *dev, struct mdp_dev *mdp,
+-			 struct device_node *node, struct mdp_comp *comp,
+-			 enum mdp_comp_id id)
+-{
+-	struct platform_device *pdev;
+ 	int i;
+ 
+ 	if (id < 0 || id >= MDP_MAX_COMP_COUNT) {
+@@ -1191,32 +1160,140 @@ static int mdp_comp_init(struct device *dev, struct mdp_dev *mdp,
+ 
+ 	mdp_get_subsys_id(dev, node, comp);
+ 
+-	/* Only DMA capable components need the pm control */
+-	comp->comp_dev = NULL;
+-	if (comp->type != MDP_COMP_TYPE_RDMA &&
+-	    comp->type != MDP_COMP_TYPE_WROT &&
+-		comp->type != MDP_COMP_TYPE_WDMA)
+-		return 0;
++	return 0;
++}
+ 
+-	pdev = of_find_device_by_node(node);
+-	if (!pdev) {
+-		dev_warn(dev, "can't find platform device of node:%s\n",
+-			 node->name);
+-		return -ENODEV;
++static struct mdp_comp *mdp_comp_create(struct mdp_dev *mdp,
++					struct device_node *node,
++					enum mdp_comp_id id)
++{
++	struct device *dev = &mdp->pdev->dev;
++	struct mdp_comp *comp;
++	int ret;
 +
-+	cmdq_pkt_finalize(cmd.pkt);
-+	ret = cmdq_pkt_flush_async(cmd.pkt,
-+				   mdp_handle_cmdq_callback,
-+				   (void *)cb_param);
++	if (mdp->comp[id])
++		return ERR_PTR(-EEXIST);
++
++	comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
++	if (!comp)
++		return ERR_PTR(-ENOMEM);
++
++	ret = mdp_comp_init(mdp, node, comp, id);
 +	if (ret) {
-+		mdp_err("%s:cmdq_pkt_flush_async fail!\n", __func__);
-+		goto err_clock_off;
++		kfree(comp);
++		return ERR_PTR(ret);
+ 	}
++	mdp->comp[id] = comp;
++
++	dev_info(dev, "%s type:%d alias:%d id:%d base:%#x regs:%p\n",
++		dev->of_node->name, comp->type, comp->alias_id, id,
++		(u32)comp->reg_base, comp->regs);
++	return comp;
++}
+ 
+-	comp->comp_dev = &pdev->dev;
+-	pm_runtime_enable(comp->comp_dev);
++static int mdp_sub_comps_create(struct mdp_dev *mdp, struct device_node *node)
++{
++	struct device *dev = &mdp->pdev->dev;
++	struct property *prop;
++	const char *name;
++	int index = 0;
++
++	of_property_for_each_string(node, "mdp-comps", prop, name) {
++		const struct of_device_id *matches = mdp_comp_dt_ids;
++		enum mdp_comp_type type = MDP_COMP_NONE;
++		u32 alias_id;
++		int id, ret;
++		struct mdp_comp *comp;
+ 
++		for (; matches->compatible[0]; matches++) {
++			if (of_compat_cmp(name, matches->compatible,
++				strlen(matches->compatible)) == 0) {
++				type = (enum mdp_comp_type)matches->data;
++				break;
++			}
++		}
++
++		ret = of_property_read_u32_index(node, "mdp-comp-ids",
++			index, &alias_id);
++		if (ret) {
++			dev_warn(dev, "Skipping unknown component %s\n", name);
++			return ret;
++		}
++
++		id = mdp_comp_get_id(type, alias_id);
++		if (id < 0) {
++			dev_err(dev, "Failed to get component id: "
++				"%s type %d, alias %d\n", name, type, alias_id);
++			return -ENODEV;
++		}
++
++		comp = mdp_comp_create(mdp, node, id);
++		if (IS_ERR(comp))
++			return PTR_ERR(comp);
++
++		index++;
++	}
+ 	return 0;
+ }
+ 
+ static void mdp_comp_deinit(struct mdp_comp *comp)
+ {
+-	iounmap(comp->regs);
++	if (!comp)
++		return;
++
++	if (comp->regs)
++		iounmap(comp->regs);
+ 	/* of_node_put(comp->dev_node); */
+ }
+ 
++static int mdp_imgi_init(struct mdp_dev *mdp, const char *ref_name)
++{
++	struct device_node *node;
++	struct device *dev = &mdp->pdev->dev;
++	int ret;
++
++	node = of_parse_phandle(dev->of_node, ref_name, 0);
++	if (!node) {
++		dev_err(dev, "Failed to parse dt %s\n", ref_name);
++		return -EINVAL;
++	}
++
++	ret = mdp_sub_comps_create(mdp, node);
++	of_node_put(node);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++static int mdp_mm_init(struct mdp_dev *mdp, struct mdp_comp *comp,
++		       const char *ref_name)
++{
++	struct device_node *node;
++	struct device *dev = &mdp->pdev->dev;
++	int ret;
++
++	node = of_parse_phandle(dev->of_node, ref_name, 0);
++	if (!node) {
++		dev_err(dev, "Failed to parse dt %s\n", ref_name);
++		return -EINVAL;
++	}
++
++	__mdp_comp_init(mdp, node, comp);
++	mdp_get_subsys_id(dev, node, comp);
++	if (!comp->reg_base) {
++		dev_err(dev, "Failed to init %s base\n", ref_name);
++		of_node_put(node);
++		return -EINVAL;
++	}
++
++	ret = mdp_sub_comps_create(mdp, node);
++	of_node_put(node);
++	if (ret)
++		return ret;
++	return 0;
++}
++
+ void mdp_component_deinit(struct mdp_dev *mdp)
+ {
+ 	int i;
+@@ -1235,6 +1312,8 @@ int mdp_component_init(struct mdp_dev *mdp)
+ {
+ 	struct device *dev = &mdp->pdev->dev;
+ 	struct device_node *node, *parent;
++	struct platform_device *pdev;
++	u32 alias_id;
+ 	int i, ret;
+ 
+ 	for (i = RDMA0_SOF; i < MDP_MAX_EVENT_COUNT; i++) {
+@@ -1260,7 +1339,11 @@ int mdp_component_init(struct mdp_dev *mdp)
+ 
+ 	ret = mdp_mm_init(mdp, &mdp->mm_mutex, "mediatek,mm-mutex");
+ 	if (ret)
+-		goto err_init_mm;
++		goto err_init_comps;
++
++	ret = mdp_imgi_init(mdp, "mediatek,imgsys");
++	if (ret)
++		goto err_init_comps;
+ 
+ 	parent = dev->of_node->parent;
+ 	/* Iterate over sibling MDP function blocks */
+@@ -1281,27 +1364,44 @@ int mdp_component_init(struct mdp_dev *mdp)
+ 		}
+ 
+ 		type = (enum mdp_comp_type)of_id->data;
+-		id = mdp_comp_get_id(dev, node, type);
+-		if (id < 0) {
++		ret = of_property_read_u32(node, "mediatek,mdp-id", &alias_id);
++		if (ret) {
+ 			dev_warn(dev, "Skipping unknown component %pOF\n",
+ 				 node);
+ 			continue;
+ 		}
++		id = mdp_comp_get_id(type, alias_id);
++		if (id < 0) {
++			dev_err(dev,
++				"Fail to get component id: type %d alias %d\n",
++				type, alias_id);
++			continue;
++		}
+ 
+-		comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
+-		if (!comp) {
+-			ret = -ENOMEM;
++		comp = mdp_comp_create(mdp, node, id);
++		if (IS_ERR(comp))
+ 			goto err_init_comps;
+-		}
+-		mdp->comp[id] = comp;
+ 
+-		ret = mdp_comp_init(dev, mdp, node, comp, id);
++		ret = mdp_sub_comps_create(mdp, node);
+ 		if (ret)
+ 			goto err_init_comps;
+ 
+-		dev_info(dev, "%s type:%d alias:%d id:%d base:%#x regs:%p\n",
+-			 of_id->compatible, type, comp->alias_id, id,
+-			(u32)comp->reg_base, comp->regs);
++		/* Only DMA capable components need the pm control */
++		comp->comp_dev = NULL;
++		if (comp->type != MDP_COMP_TYPE_RDMA &&
++		    comp->type != MDP_COMP_TYPE_WROT &&
++			comp->type != MDP_COMP_TYPE_WDMA)
++			continue;
++
++		pdev = of_find_device_by_node(node);
++		if (!pdev) {
++			dev_warn(dev, "can't find platform device of node:%s\n",
++				 node->name);
++			return -ENODEV;
++		}
++
++		comp->comp_dev = &pdev->dev;
++		pm_runtime_enable(comp->comp_dev);
  	}
  	return 0;
  
- err_clock_off:
--	if (param->wait) {
--		for (i = 0; i < param->config->num_components; i++)
--			mdp_comp_clock_off(&mdp->pdev->dev, path.comps[i].comp);
--	} else {
--		mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
--					    cb_param->num_comps);
--	}
-+	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
-+				    cb_param->num_comps);
- err_destory_pkt:
- 	cmdq_pkt_destroy(cmd.pkt);
- 	atomic_dec(&mdp->job_count);
--	if (param->wait)
--		wake_up(&mdp->callback_wq);
-+	wake_up(&mdp->callback_wq);
- 	if (comps)
- 		kfree(comps);
- 	if (cb_param)
-@@ -543,7 +520,7 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 
- int mdp_cmdq_sendtask(struct platform_device *pdev, struct img_config *config,
- 		      struct img_ipi_frameparam *param,
--		      struct v4l2_rect *compose, unsigned int wait,
-+		      struct v4l2_rect *compose,
- 		      void (*cmdq_cb)(struct cmdq_cb_data data), void *cb_data)
- {
- 	struct mdp_dev *mdp = platform_get_drvdata(pdev);
-@@ -551,7 +528,6 @@ int mdp_cmdq_sendtask(struct platform_device *pdev, struct img_config *config,
- 		.config = config,
- 		.param = param,
- 		.composes[0] = compose,
--		.wait = wait,
- 		.cmdq_cb = cmdq_cb,
- 		.cb_data = cb_data,
- 	};
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
-index 6b8b0f6b4bb5..f6394d3d0358 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
-@@ -16,7 +16,7 @@ struct platform_device *mdp_get_plat_device(struct platform_device *pdev);
- 
- int mdp_cmdq_sendtask(struct platform_device *pdev, struct img_config *config,
- 		      struct img_ipi_frameparam *param,
--		      struct v4l2_rect *compose, unsigned int wait,
-+		      struct v4l2_rect *compose,
- 		      void (*cmdq_cb)(struct cmdq_cb_data data), void *cb_data);
- 
- struct mdp_cmd {
-@@ -28,7 +28,6 @@ struct mdp_cmdq_param {
- 	struct img_config *config;
- 	struct img_ipi_frameparam *param;
- 	const struct v4l2_rect *composes[IMG_MAX_HW_OUTPUTS];
--	unsigned int wait;
- 
- 	void (*cmdq_cb)(struct cmdq_cb_data data);
- 	void *cb_data;
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-index 207b55ace97b..a42e436d3a8c 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-@@ -137,7 +137,7 @@ static int mdp_probe(struct platform_device *pdev)
- 	mutex_init(&mdp->vpu_lock);
- 	mutex_init(&mdp->m2m_lock);
- 
--	mdp->cmdq_clt = cmdq_mbox_create(dev, 0, 1200);
-+	mdp->cmdq_clt = cmdq_mbox_create(dev, 0);
- 	if (IS_ERR(mdp->cmdq_clt)) {
- 		ret = PTR_ERR(mdp->cmdq_clt);
- 		goto err_put_scp;
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-index ff80f01be82f..536574f6bc32 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-@@ -133,7 +133,6 @@ static void mdp_m2m_worker(struct work_struct *work)
- 	task.config = ctx->vpu.config;
- 	task.param = &param;
- 	task.composes[0] = &frame->compose;
--	task.wait = 0;
- 	task.cmdq_cb = NULL;
- 	task.cb_data = NULL;
- 	task.mdp_ctx = ctx;
-@@ -769,7 +768,7 @@ int mdp_m2m_device_register(struct mdp_dev *mdp)
- 		goto err_m2m_init;
- 	}
- 
--	ret = video_register_device(mdp->m2m_vdev, VFL_TYPE_GRABBER, 2);
-+	ret = video_register_device(mdp->m2m_vdev, VFL_TYPE_VIDEO, 2);
- 	if (ret) {
- 		dev_err(dev, "Failed to register video device\n");
- 		goto err_video_register;
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-index 5c48a7e75efd..0c4c942b5f9c 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-@@ -168,7 +168,7 @@ static const struct mdp_format mdp_formats[] = {
- 		.halign		= 5,
- 		.flags		= MDP_FMT_FLAG_OUTPUT,
- 	}, {
--		.pixelformat	= V4L2_PIX_FMT_MM21,
-+		.pixelformat	= V4L2_PIX_FMT_NV12MT,
- 		.mdp_color	= MDP_COLOR_420_BLK,
- 		.depth		= { 8, 4 },
- 		.row_depth	= { 8, 8 },
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+index f201bced3c06..f5d514a51236 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+@@ -112,7 +112,7 @@ struct mdp_comp {
+ 	void __iomem			*regs;
+ 	phys_addr_t			reg_base;
+ 	u8				subsys_id;
+-	struct clk			*clks[2];
++	struct clk			*clks[4];
+ 	struct device			*comp_dev;
+ 	enum mdp_comp_type		type;
+ 	enum mdp_comp_id		id;
 -- 
 2.18.0
 _______________________________________________
