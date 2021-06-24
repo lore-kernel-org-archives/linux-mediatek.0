@@ -2,74 +2,82 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8FFAC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 772EEC49EA6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:12:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88CAC613F6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:06:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88CAC613F6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 434CC613F7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:12:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 434CC613F7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=exxbQxS8O5yxNyS4KvhrxRU4dxpODMN0dzqPtdVO5+g=; b=v3W5CGV85ad6he
-	2dem2Z/9Pjt9FLLHyx6pdROlPbLHZQCrIIZruNs5yrcsXe3d6N57ExSL3tHB5pBMhjhGa9mS+AiMp
-	LuaZ0hKg54pu0u++GnEWRM0pay+MOJdtNNiiFi0benuJkhBehbygri7AEVaSOiOSlA7eIaZ+hav+9
-	bM8toqtZ4qo/giKXWlc7qOE+mS6JHsF1M6AUvjoCpOh0uj6OF4w/Avq5gaMhuhR0nwaxO6Bdcd/i4
-	2A6+qtaBc6pShho3ZIg69XykU0Y2SJxncNd0W2jLu3/nW3OAd65EbfvlYCjwZ8L8ix0Q6lbnNYyXf
-	Pb0Cw35tKvQUE3Cwm6EQ==;
+	List-Owner; bh=mx5k9zJ92S3L6bhd9k8GzoFJ2K+orNlC3DLAHCLiFMM=; b=R0LnrGhjoYtMfr
+	OMzJICxL2cYhWiKGsXDQcmlzX3/+kik04IIAE5YA6ZEeKZ+b8dyz8ySG7lA15o5zmaSXo5pJ5juOA
+	GR4Iq8jaLg+Qh5rZa+nOkOS9fGDc/cnhhaGLppow9dV+YvMzbsQJT9EuH7KHAjARe0lltv2zZO4LY
+	YeUjvNCCYlZm7kYIjri047LUWmSKax1edOpT5YooOGVna88sp6tfhzuSCcKtj9LnVgEWIrV1Wnzn/
+	OfGTTGLm+BgwzPlNHC0G+tYkjfwRcJKo3jXlwTXd8ZncuKvliWlQ7akyWNeqClld00fmZmvlU0VvE
+	TbgQshaHv/IuzsaReSPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwP3p-00Ejsg-8i; Thu, 24 Jun 2021 13:06:25 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lwP9z-00El19-Ii; Thu, 24 Jun 2021 13:12:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwP3c-00Ejr6-JO; Thu, 24 Jun 2021 13:06:14 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D974C613C3;
- Thu, 24 Jun 2021 13:06:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1624539971;
- bh=X5fgruXZAH6/dwtIj9BUqyJ6jlUiiRQEvoljwULOpAw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OGYINAbuGasSG7nLZAa1F5HYrm1MRw/U0QA6imTs9s2BE2lPupOdkJkq0gZ87x0Sb
- yesHqPbqTj80zcQ+MmgtI5bRE7sFF0bQV4SBJdQRyd99mOxV4POTAfrCs9pMok1y/Q
- M8IzFW4pQrZMldEaFQlwECzz5es9sGGbKy5izkaY=
-Date: Thu, 24 Jun 2021 15:06:09 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- David Ahern <dsahern@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- wsd_upstream@mediatek.com, chao.song@mediatek.com,
- kuohong.wang@mediatek.com
-Subject: Re: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
-Message-ID: <YNSDQbp/h/aadpmV@kroah.com>
-References: <YNRKhJB9/K4SKPdR@kroah.com>
- <20210624122435.11887-1-rocco.yue@mediatek.com>
+ id 1lwP9Y-00Ekv9-7a; Thu, 24 Jun 2021 13:12:24 +0000
+X-UUID: 2f97ff1b71e84da184d23fc15d1b4941-20210624
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=dBS7Y48130cy7R0Gu2J5ICvYJTCQzWX5/A6PklgtltU=; 
+ b=czxU0Wqb6Mqub6R3tcBpqiLFNrKHmxIhjt1n3vWSx8qrUh97z+eCMfxvjpLFL/ZTql3OJaH8eDrKflzjvAtdJHItDjoYjDcVYTQG6Wwqk3HyNE6jCAaUqwrvy1J48Cl4kXASl8rvarEB3oaTD+J5Jv2H/8ebreisclwTXbM0UEY=;
+X-UUID: 2f97ff1b71e84da184d23fc15d1b4941-20210624
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yongqiang.niu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 527339109; Thu, 24 Jun 2021 06:12:15 -0700
+Received: from mtkmbs08n1.mediatek.inc (172.21.101.55) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Jun 2021 06:02:13 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs08n1.mediatek.inc (172.21.101.55) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Jun 2021 21:02:05 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Jun 2021 21:02:04 +0800
+From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
+ Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
+ <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
+ <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>
+Subject: [PATCH v2] drm/mediatek: adjust rdma fifo threshold calculate formula
+Date: Thu, 24 Jun 2021 21:02:02 +0800
+Message-ID: <1624539722-29000-2-git-send-email-yongqiang.niu@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1624539722-29000-1-git-send-email-yongqiang.niu@mediatek.com>
+References: <1624539722-29000-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210624122435.11887-1-rocco.yue@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_060612_719856_B623E6AD 
-X-CRM114-Status: GOOD (  29.75  )
+X-CRM114-CacheID: sfid-20210624_061221_030005_B6D90079 
+X-CRM114-Status: GOOD (  11.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,78 +94,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 24, 2021 at 08:24:35PM +0800, Rocco Yue wrote:
-> On Thu, 2021-06-24 at 11:04 +0200, Greg KH wrote:
-> On Thu, Jun 24, 2021 at 02:13:10PM +0800, Rocco Yue wrote:
-> >> On Thu, 2021-06-24 at 07:29 +0200, Greg KH wrote:
-> >>> 
-> >>> Thanks for the explaination, why is this hardware somehow "special" in
-> >>> this way that this has never been needed before?
-> >>> 
-> >>> thanks,
-> >>> 
-> >>> greg k-h
-> >>> 
-> >> 
-> >> Before kernel-4.18, RAWIP was the same as PUREIP, neither of them
-> >> automatically generates an IPv6 link-local address, and the way to
-> >> generate an IPv6 global address is the same.
-> >> 
-> >> After kernel-4.18 (include 4.18 version), the behavior of RAWIP had
-> >> changed due to the following patch:
-> >> @@  static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
-> >> +	case ARPHRD_RAWIP:
-> >> +		return addrconf_ifid_rawip(eui, dev);
-> >>  	}
-> >>  	return -1;
-> >> }
-> >> 
-> >> the reason why the kernel doesn't need to generate the link-local
-> >> address automatically is as follows:
-> >> 
-> >> In the 3GPP 29.061, here is some description as follows:
-> >> "in order to avoid any conflict between the link-local address of
-> >> MS and that of the GGSN, the Interface-Identifier used by the MS to
-> >> build its link-local address shall be assigned by the GGSN. The GGSN
-> >> ensures the uniqueness of this Interface-Identifier. Then MT shall
-> >> then enforce the use of this Interface-Identifier by the TE"
-> >> 
-> >> In other words, in the cellular network, GGSN determines whether to
-> >> reply to the Router Solicitation message of UE by identifying the
-> >> low 64bits of UE interface's ipv6 link-local address.
-> >> 
-> >> When using a new kernel and RAWIP, kernel will generate an EUI64
-> >> format ipv6 link-local address, and if the device uses this address
-> >> to send RS, GGSN will not reply RA message.
-> >> 
-> >> Therefore, in that background, we came up with PUREIP to make kernel
-> >> doesn't generate a ipv6 link-local address in any address generate
-> >> mode.
-> > 
-> > Thanks for the better description.  That should go into the changelog
-> > text somewhere so that others know what is going on here with this new
-> > option.
-> >
-> 
-> Does changelog mean adding these details to the commit message ?
+the orginal formula will caused rdma fifo threshold config overflow
 
-Yes please.
+Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-> > And are these user-visable flags documented in a man page or something
-> > else somewhere?  If not, how does userspace know about them?
-> > 
-> 
-> There are mappings of these device types value in the libc:
-> "/bionic/libc/kernel/uapi/linux/if_arp.h".
-> userspace can get it from here.
-
-Yes, they will show up in a libc definition, but where is it documented
-in text form what the flag does?
-
-thanks,
-
-greg k-h
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 728aaad..bef3f04 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -164,10 +164,10 @@ void mtk_rdma_config(struct device *dev, unsigned int width,
+ 	/*
+ 	 * Enable FIFO underflow since DSI and DPI can't be blocked.
+ 	 * Keep the FIFO pseudo size reset default of 8 KiB. Set the
+-	 * output threshold to 6 microseconds with 7/6 overhead to
+-	 * account for blanking, and with a pixel depth of 4 bytes:
++	 * output threshold to 70% of max fifo size to make sure the
++	 * threhold will not overflow
+ 	 */
+-	threshold = width * height * vrefresh * 4 * 7 / 1000000;
++	threshold = rdma_fifo_size * 7 / 10;
+ 	reg = RDMA_FIFO_UNDERFLOW_EN |
+ 	      RDMA_FIFO_PSEUDO_SIZE(rdma_fifo_size) |
+ 	      RDMA_OUTPUT_VALID_FIFO_THRESHOLD(threshold);
+-- 
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
