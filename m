@@ -2,82 +2,117 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAA43C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 06:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 604A9C49EBB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 759B160724
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 06:28:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 759B160724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2C7C4613E8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C7C4613E8
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6La/jP0CiKt0Wld2M2PfcqJgBKP0X+vvzrZzPb1Jkpg=; b=gcE04CwvVsG4hn
-	VTnyAl391NuZwpBsoNIVGXKTJTRFOqth/YrWPXUy3jwJqHV2ZPa4jYSksQ3eP8eIyjN8ZHDhANtc8
-	9gOGR+40dxaPKFQuScfr8ATNOjCiCqXAorVpp7H2aPdNWZlSMlBLTW3yoFh8YHN3DTd7o+GdNw1TJ
-	+MPiRS1u0EaOMJw6LpViWPvA8mXK261/ouDTGRn71wZ/nUTpT6UEAXhJ5K6LGADwNEfJawLzB2qFy
-	kBj/47X7tPoh0KMbMLwNp/R+yb97/gtsKfuc/DCi7+jedXAQthCWgQ3FYTakGIBWQ/+OQRVpY1dft
-	VQ8THh3c1/YfKEYmC+8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0MzbXUv6h5NUD1UW2/WVhs5chssZwsDnxgo8tzojeJQ=; b=GJQfov08WGcbKt
+	GjDL66e80sP6/K+Ryp8n5a10DxamH+QKRcIO2xqLFX001E9k4SINrHe3BU8M8RY1ShMAUE8fs4+tk
+	ftW7GSBe0FVm6v1RIyVQMkZuQr+MIVXPpmdPdqSod93hJhGSeGYqjtrGpiLpLK35JoMuuncCB5VXG
+	MJWpl/cdKhP8OE4Nq2io+xUcd12JRY/1ZXgNGit57z1PQZasJ/iTosR051c6hHPBiWZzkkGUiCSbr
+	RKYQ0wuCZfDXP56TcbM4M2TRWbWR92IKN6AOiOPjdmnkpmTxx6Ng0BgjW6/IDJyjRUd40F3sx1y7M
+	+pgEn193ueWX4ATKXIFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwIqK-00CwU9-RY; Thu, 24 Jun 2021 06:28:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lwJnl-00DBrF-2x; Thu, 24 Jun 2021 07:29:29 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwIqH-00CwSz-0G; Thu, 24 Jun 2021 06:28:02 +0000
-X-UUID: bc36a3e0ed8c4a8e87860d82c89597b2-20210623
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+5KQJtVcIC70hhUVRKV5pDZ5YXUoWT9X/ZYYK7FCoyg=; 
- b=ewi2Hlc8OWZJy2w/UqySLMPEjKBakOEMWu3lnOkbWXxtUuIZStDifnAYkL94v+nbp0EVtVFyvP7Wx/dLYQcUi3NOFLKWp47FCASBXjzVWh9f99RtgWE3vugpQQObzvxh0INDhWRBBcCRrNPMB7PueYe57M88+vGGLUR4dBiNdjk=;
-X-UUID: bc36a3e0ed8c4a8e87860d82c89597b2-20210623
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 168301091; Wed, 23 Jun 2021 23:27:58 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 23 Jun 2021 23:27:56 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Jun 2021 14:27:55 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Jun 2021 14:27:53 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: Greg KH <gregkh@linuxfoundation.org>, David Ahern <dsahern@gmail.com>
-CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Felix Fietkau <nbd@nbd.name>, John Crispin
- <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
- <Mark-MC.Lee@mediatek.com>, <netdev@vger.kernel.org>,
- <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <bpf@vger.kernel.org>, <wsd_upstream@mediatek.com>, <chao.song@mediatek.com>, 
- <kuohong.wang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: Re: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
-Date: Thu, 24 Jun 2021 14:13:10 +0800
-Message-ID: <20210624061310.12315-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <YNQYHfE09Dx5kWyg@kroah.com>
-References: <YNQYHfE09Dx5kWyg@kroah.com>
+ id 1lwJng-00DBoh-Hr; Thu, 24 Jun 2021 07:29:26 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 78F6C21966;
+ Thu, 24 Jun 2021 07:29:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624519760; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=EUVgQWZjNSlPOwlQJU4bzYuB/YGQiDl3S47gswQlIkM=;
+ b=wglcSBsLTBQ3ei6BxYK5d9SydJ3e5F+a66G6BOyOTZLEwKvHbcKirhkaVkn4HGdih7Jkuv
+ lm1BMokphzYz7V1K+KM1ymEyHRMfFtGQeVAZ09yEBlWAn/dJ/UjhXzGC3T2SZ+Bfi8Tzu6
+ MfrG1ShNojJgurv+fjncCU2DgW3B+uc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624519760;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=EUVgQWZjNSlPOwlQJU4bzYuB/YGQiDl3S47gswQlIkM=;
+ b=D758gxqI1uHlShUSzY4ZWAkhFsDHW/tqXNK29CYpEb5M/mK2EKbmmiPOUOndQe3D2qVknN
+ LMsG8ZKa3NvPvnDA==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 4F58611A97;
+ Thu, 24 Jun 2021 07:29:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624519760; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=EUVgQWZjNSlPOwlQJU4bzYuB/YGQiDl3S47gswQlIkM=;
+ b=wglcSBsLTBQ3ei6BxYK5d9SydJ3e5F+a66G6BOyOTZLEwKvHbcKirhkaVkn4HGdih7Jkuv
+ lm1BMokphzYz7V1K+KM1ymEyHRMfFtGQeVAZ09yEBlWAn/dJ/UjhXzGC3T2SZ+Bfi8Tzu6
+ MfrG1ShNojJgurv+fjncCU2DgW3B+uc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624519760;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=EUVgQWZjNSlPOwlQJU4bzYuB/YGQiDl3S47gswQlIkM=;
+ b=D758gxqI1uHlShUSzY4ZWAkhFsDHW/tqXNK29CYpEb5M/mK2EKbmmiPOUOndQe3D2qVknN
+ LMsG8ZKa3NvPvnDA==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id dLt+Ek801GAJfwAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 07:29:19 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzysztof.kozlowski@canonical.com,
+ xinliang.liu@linaro.org, tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
+ p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
+ tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
+ benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v3 00/27] Deprecate struct drm_device.irq_enabled
+Date: Thu, 24 Jun 2021 09:28:49 +0200
+Message-Id: <20210624072916.27703-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210623_232801_100515_22556052 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20210624_002924_793322_A2ABA3AD 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,53 +129,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-06-24 at 07:29 +0200, Greg KH wrote:
-> 
-> Thanks for the explaination, why is this hardware somehow "special" in
-> this way that this has never been needed before?
-> 
-> thanks,
-> 
-> greg k-h
-> 
+Remove references to struct drm_device.irq_enabled from modern
+DRM drivers and core.
 
-Before kernel-4.18, RAWIP was the same as PUREIP, neither of them
-automatically generates an IPv6 link-local address, and the way to
-generate an IPv6 global address is the same.
+KMS drivers enable IRQs for their devices internally. They don't
+have to keep track of the IRQ state via irq_enabled. For vblanking,
+it's cleaner to test for vblanking support directly than to test
+for enabled IRQs.
 
-After kernel-4.18 (include 4.18 version), the behavior of RAWIP had
-changed due to the following patch:
-@@  static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
-+	case ARPHRD_RAWIP:
-+		return addrconf_ifid_rawip(eui, dev);
- 	}
- 	return -1;
-}
+The first 3 patches replace uses of irq_enabled that are not
+required.
 
-the reason why the kernel doesn't need to generate the link-local
-address automatically is as follows:
+Patch 4 fixes vblank ioctls to actually test for vblank support
+instead of IRQs (for KMS drivers).
 
-In the 3GPP 29.061, here is some description as follows:
-"in order to avoid any conflict between the link-local address of
-MS and that of the GGSN, the Interface-Identifier used by the MS to
-build its link-local address shall be assigned by the GGSN. The GGSN
-ensures the uniqueness of this Interface-Identifier. Then MT shall
-then enforce the use of this Interface-Identifier by the TE"
+The rest of the patchset removes irq_enabled from all non-legacy
+drivers. The only exceptions are i915 and omapdrm, which have an
+internal dpendency on the field's value. For these drivers, the
+state gets duplicated internally.
 
-In other words, in the cellular network, GGSN determines whether to
-reply to the Router Solicitation message of UE by identifying the
-low 64bits of UE interface's ipv6 link-local address.
+With the patchset applied, drivers can later switch over to plain
+Linux IRQ interfaces and DRM's IRQ midlayer can be declared legacy.
 
-When using a new kernel and RAWIP, kernel will generate an EUI64
-format ipv6 link-local address, and if the device uses this address
-to send RS, GGSN will not reply RA message.
+v3:
+	* update armada, i915, rcar-du and vkms as well (Laurent)
+	* optimize drm_wait_vblank_ioctl() for KMS (Liviu)
+	* move imx/dcss changes into their own patch (Laurentiu)
+	* doc cleanups
+v2:
+	* keep the original test for legacy drivers in
+	  drm_wait_vblank_ioctl() (Daniel)
 
-Therefore, in that background, we came up with PUREIP to make kernel
-doesn't generate a ipv6 link-local address in any address generate
-mode.
+Thomas Zimmermann (27):
+  drm/amdgpu: Track IRQ state in local device state
+  drm/hibmc: Call drm_irq_uninstall() unconditionally
+  drm/radeon: Track IRQ state in local device state
+  drm: Don't test for IRQ support in VBLANK ioctls
+  drm/armada: Don't set struct drm_device.irq_enabled
+  drm/i915: Track IRQ state in local device state
+  drm/komeda: Don't set struct drm_device.irq_enabled
+  drm/malidp: Don't set struct drm_device.irq_enabled
+  drm/exynos: Don't set struct drm_device.irq_enabled
+  drm/kirin: Don't set struct drm_device.irq_enabled
+  drm/imx: Don't set struct drm_device.irq_enabled
+  drm/imx/dcss: Don't set struct drm_device.irq_enabled
+  drm/mediatek: Don't set struct drm_device.irq_enabled
+  drm/nouveau: Don't set struct drm_device.irq_enabled
+  drm/omapdrm: Track IRQ state in local device state
+  drm/rcar-du: Don't set struct drm_device.irq_enabled
+  drm/rockchip: Don't set struct drm_device.irq_enabled
+  drm/sti: Don't set struct drm_device.irq_enabled
+  drm/stm: Don't set struct drm_device.irq_enabled
+  drm/sun4i: Don't set struct drm_device.irq_enabled
+  drm/tegra: Don't set struct drm_device.irq_enabled
+  drm/tidss: Don't use struct drm_device.irq_enabled
+  drm/vc4: Don't set struct drm_device.irq_enabled
+  drm/vkms: Don't set struct drm_device.irq_enabled
+  drm/vmwgfx: Don't set struct drm_device.irq_enabled
+  drm/xlnx: Don't set struct drm_device.irq_enabled
+  drm/zte: Don't set struct drm_device.irq_enabled
 
-Thanks,
-Rocco
+ drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c         |  6 +++---
+ drivers/gpu/drm/arm/display/komeda/komeda_kms.c |  4 ----
+ drivers/gpu/drm/arm/malidp_drv.c                |  4 ----
+ drivers/gpu/drm/armada/armada_drv.c             |  2 --
+ drivers/gpu/drm/drm_irq.c                       | 13 ++++---------
+ drivers/gpu/drm/drm_vblank.c                    | 16 ++++++++++++----
+ drivers/gpu/drm/exynos/exynos_drm_drv.c         | 10 ----------
+ drivers/gpu/drm/hisilicon/hibmc/hibmc_drm_drv.c |  3 +--
+ drivers/gpu/drm/hisilicon/kirin/kirin_drm_drv.c |  2 --
+ drivers/gpu/drm/i915/i915_drv.h                 |  2 ++
+ drivers/gpu/drm/i915/i915_irq.c                 |  8 ++++----
+ drivers/gpu/drm/imx/dcss/dcss-kms.c             |  3 ---
+ drivers/gpu/drm/imx/imx-drm-core.c              | 11 -----------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c          |  6 ------
+ drivers/gpu/drm/nouveau/nouveau_drm.c           |  3 ---
+ drivers/gpu/drm/omapdrm/omap_drv.h              |  2 ++
+ drivers/gpu/drm/omapdrm/omap_irq.c              |  6 +++---
+ drivers/gpu/drm/radeon/radeon_fence.c           |  2 +-
+ drivers/gpu/drm/radeon/radeon_irq_kms.c         | 16 ++++++++--------
+ drivers/gpu/drm/rcar-du/rcar_du_drv.c           |  2 --
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c     |  6 ------
+ drivers/gpu/drm/sti/sti_compositor.c            |  2 --
+ drivers/gpu/drm/stm/ltdc.c                      |  3 ---
+ drivers/gpu/drm/sun4i/sun4i_drv.c               |  2 --
+ drivers/gpu/drm/tegra/drm.c                     |  7 -------
+ drivers/gpu/drm/tidss/tidss_irq.c               |  3 ---
+ drivers/gpu/drm/vc4/vc4_kms.c                   |  1 -
+ drivers/gpu/drm/vkms/vkms_drv.c                 |  2 --
+ drivers/gpu/drm/vmwgfx/vmwgfx_irq.c             |  8 --------
+ drivers/gpu/drm/xlnx/zynqmp_dpsub.c             |  2 --
+ drivers/gpu/drm/zte/zx_drm_drv.c                |  6 ------
+ 31 files changed, 40 insertions(+), 123 deletions(-)
+
+
+base-commit: 8c1323b422f8473421682ba783b5949ddd89a3f4
+prerequisite-patch-id: c2b2f08f0eccc9f5df0c0da49fa1d36267deb11d
+prerequisite-patch-id: c67e5d886a47b7d0266d81100837557fda34cb24
+--
+2.32.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
