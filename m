@@ -2,94 +2,124 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4313CC49EA7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:09:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C92A6C49EA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:19:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ECEA6613C7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:09:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECEA6613C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8C7D3613C2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:19:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C7D3613C2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EuHYQtaC6s1urS8jEniVac7o6EsFUIvVNNYqhsOXwho=; b=xixnHvLDQ63m3r
-	PpFRtHwzPXgvSdXNwLq31gaiiwkuVf9tS0yRXPNeElnHw6YJXjg1lSfeWwh2R+0OuKPuHBJj8xgYA
-	UN+UuLw6QEf4oi/eEai1rDoblZ1oWONp1DlSimWCqnt3+Cq/MZeAorVTjBHyG66rF/4i95Gy6gOG8
-	RpPqqQCQuFcigkQm6w41dNmvPOVN+3a7e/XefX7dNpL1ZRx9nyBZk5JU5sM/IJodBRAbsBxcVq7qS
-	10HnXGcJbJYxqz4o+OKtLByGRrE3RsZDi74flrvPldohlRS7GdJaPKxDAUlpS2EuG+sw4symQR/9Z
-	EnEKUpxDfljiNA05ygag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ySg5y8cGVy6RSu207ZwlvMiJ+e1lI6emUOOsX5+rhUE=; b=k6AK3tfWuVfhhIEgGA99uskZvc
+	NxP8pPhuqj+XVNpkUzeexDpTBM94Wy8zDV08rTCN6pgeGjWbdyt+X6wgrKU/okwWYHmyqbZe4e9EE
+	L4gpdAzt2LK3VbAZs2xz4KEY2HA2on8Pj48BxDBmr7P5SEIMHhACoja56drZVh9OiVPQl2u1wNZLh
+	eGm9KiHhkVFzGX0qCiFDJk60T6WPOH1Dkjaxn46d5p6L53SI6xlO1Gah+zPa3hQwP+qyh1HiW9r4I
+	9kRMBvf0GD75sIigqhVkLvpJDEIJP5Jm6YQRqPBCgWPuvQxQSPdbqsMQ1E5tVW0P7YExum7gLWJUL
+	KoSOg3kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwKPx-00DM9c-2V; Thu, 24 Jun 2021 08:08:57 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1lwKaB-00DPP8-Qt; Thu, 24 Jun 2021 08:19:31 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwKPu-00DM8W-Ii; Thu, 24 Jun 2021 08:08:55 +0000
-IronPort-SDR: 3bN4ETQ3RBhzFm04nrjE1mVTut0NHk8Uz5r4bTaUGA9qx1D0FHNSa4lmSJ5cMzYFBtAVmYgxV+
- E74dcXrD3N3w==
-X-IronPort-AV: E=McAfee;i="6200,9189,10024"; a="207241166"
-X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="207241166"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 01:08:41 -0700
-IronPort-SDR: v1mHNk7YTLq4tjD5PLpygsJp7Fqze5GXwAn13Kp5Vz0yOGXKTgtBHR0yr5kpfQ465GdrghRoVP
- Wpn21FG3jdhg==
-X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="453335994"
-Received: from schulke-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.252.59.242])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 01:08:19 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
+ id 1lwKa8-00DPNy-82; Thu, 24 Jun 2021 08:19:30 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 9244F1FD66;
+ Thu, 24 Jun 2021 08:19:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624522766; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vWd7Clsceha48alSO3MSAZOa9A037NnlaUwYocVgtFQ=;
+ b=1uGjm7UZ7PJfsImGvXQs3KOVxH/bk0ooj9b2bSR2edOzZndQIk/dKTOkdfhuwuZ1ArzjN0
+ 3ujvsLTyNGTdVOJjOxBS+fsQJvfF+yz/szoJsoZ/AUWteqACGMpzqd+cXl+CS54ToA6/zz
+ F9UEYZnG8dIpkLantgn7MZI0Egyzvmc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624522766;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vWd7Clsceha48alSO3MSAZOa9A037NnlaUwYocVgtFQ=;
+ b=/YMR/IYhBBufrAHuJE1r8ttx4pmSzgH1ziIBufrpWtlSM9pcaTJsJU2ZXs521xcjYnIZRJ
+ 3rlzR0512R0AfuBg==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 67D6711A97;
+ Thu, 24 Jun 2021 08:19:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624522766; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vWd7Clsceha48alSO3MSAZOa9A037NnlaUwYocVgtFQ=;
+ b=1uGjm7UZ7PJfsImGvXQs3KOVxH/bk0ooj9b2bSR2edOzZndQIk/dKTOkdfhuwuZ1ArzjN0
+ 3ujvsLTyNGTdVOJjOxBS+fsQJvfF+yz/szoJsoZ/AUWteqACGMpzqd+cXl+CS54ToA6/zz
+ F9UEYZnG8dIpkLantgn7MZI0Egyzvmc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624522766;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=vWd7Clsceha48alSO3MSAZOa9A037NnlaUwYocVgtFQ=;
+ b=/YMR/IYhBBufrAHuJE1r8ttx4pmSzgH1ziIBufrpWtlSM9pcaTJsJU2ZXs521xcjYnIZRJ
+ 3rlzR0512R0AfuBg==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id w2+wFw1A1GA5HAAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 08:19:25 +0000
+Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
+To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
  airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
  Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
  mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzysztof.kozlowski@canonical.com,
- xinliang.liu@linaro.org, tiantao6@hisilicon.com, john.stultz@linaro.org,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
  kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
- emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
  michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
  kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
  melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v3 06/27] drm/i915: Track IRQ state in local device state
-In-Reply-To: <20210624072916.27703-7-tzimmermann@suse.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, linux-tegra@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
 References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-7-tzimmermann@suse.de>
-Date: Thu, 24 Jun 2021 11:08:16 +0300
-Message-ID: <87fsx7u1lb.fsf@intel.com>
+ <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <13a2808e-e18b-d0c4-fd3f-9f74a1c28227@suse.de>
+Date: Thu, 24 Jun 2021 10:19:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
+In-Reply-To: <87im23u1ok.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_010854_660831_916CA5D5 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20210624_011928_648608_771F00BB 
+X-CRM114-Status: GOOD (  32.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,79 +131,288 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3866767478785869652=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> Replace usage of struct drm_device.irq_enabled with the driver's
-> own state field struct drm_i915_private.irq_enabled. The field in
-> the DRM device structure is considered legacy and should not be
-> used by KMS drivers.
->
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============3866767478785869652==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="1abtLFnknRMcm59L8jJCqfHfzBd2N565M"
 
-Reviewed-by: Jani Nikula <jani.nikula@intel.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--1abtLFnknRMcm59L8jJCqfHfzBd2N565M
+Content-Type: multipart/mixed; boundary="S90tyVSEB8ao9W3GA3iiO0RRpFfoFToer";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
+ airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
+ Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ Daniel Vetter <daniel.vetter@ffwll.ch>, linux-tegra@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+Message-ID: <13a2808e-e18b-d0c4-fd3f-9f74a1c28227@suse.de>
+Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
+References: <20210624072916.27703-1-tzimmermann@suse.de>
+ <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
+In-Reply-To: <87im23u1ok.fsf@intel.com>
 
-and ack for merging through drm-misc-next or whatever you think is best.
+--S90tyVSEB8ao9W3GA3iiO0RRpFfoFToer
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-> ---
->  drivers/gpu/drm/i915/i915_drv.h | 2 ++
->  drivers/gpu/drm/i915/i915_irq.c | 8 ++++----
->  2 files changed, 6 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i915_drv.h
-> index 01e11fe38642..48c1835bd54b 100644
-> --- a/drivers/gpu/drm/i915/i915_drv.h
-> +++ b/drivers/gpu/drm/i915/i915_drv.h
-> @@ -1134,6 +1134,8 @@ struct drm_i915_private {
->  	/* For i915gm/i945gm vblank irq workaround */
->  	u8 vblank_enabled;
->  
-> +	bool irq_enabled;
-> +
->  	/* perform PHY state sanity checks? */
->  	bool chv_phy_assert[2];
->  
-> diff --git a/drivers/gpu/drm/i915/i915_irq.c b/drivers/gpu/drm/i915/i915_irq.c
-> index a11bdb667241..987211f21761 100644
-> --- a/drivers/gpu/drm/i915/i915_irq.c
-> +++ b/drivers/gpu/drm/i915/i915_irq.c
-> @@ -4488,14 +4488,14 @@ int intel_irq_install(struct drm_i915_private *dev_priv)
->  	 */
->  	dev_priv->runtime_pm.irqs_enabled = true;
->  
-> -	dev_priv->drm.irq_enabled = true;
-> +	dev_priv->irq_enabled = true;
->  
->  	intel_irq_reset(dev_priv);
->  
->  	ret = request_irq(irq, intel_irq_handler(dev_priv),
->  			  IRQF_SHARED, DRIVER_NAME, dev_priv);
->  	if (ret < 0) {
-> -		dev_priv->drm.irq_enabled = false;
-> +		dev_priv->irq_enabled = false;
->  		return ret;
->  	}
->  
-> @@ -4521,10 +4521,10 @@ void intel_irq_uninstall(struct drm_i915_private *dev_priv)
->  	 * intel_modeset_driver_remove() calling us out of sequence.
->  	 * Would be nice if it didn't do that...
->  	 */
-> -	if (!dev_priv->drm.irq_enabled)
-> +	if (!dev_priv->irq_enabled)
->  		return;
->  
-> -	dev_priv->drm.irq_enabled = false;
-> +	dev_priv->irq_enabled = false;
->  
->  	intel_irq_reset(dev_priv);
+Hi
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Am 24.06.21 um 10:06 schrieb Jani Nikula:
+> On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+>> For KMS drivers, replace the IRQ check in VBLANK ioctls with a check f=
+or
+>> vblank support. IRQs might be enabled wthout vblanking being supported=
+=2E
+>>
+>> This change also removes the DRM framework's only dependency on IRQ st=
+ate
+>> for non-legacy drivers. For legacy drivers with userspace modesetting,=
+
+>> the original test remains in drm_wait_vblank_ioctl().
+>>
+>> v3:
+>> 	* optimize test in drm_wait_vblank_ioctl() for KMS case (Liviu)
+>> 	* update docs for drm_irq_uninstall()
+>> v2:
+>> 	* keep the old test for legacy drivers in
+>> 	  drm_wait_vblank_ioctl() (Daniel)
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>> Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
+>> ---
+>>   drivers/gpu/drm/drm_irq.c    | 13 ++++---------
+>>   drivers/gpu/drm/drm_vblank.c | 16 ++++++++++++----
+>>   2 files changed, 16 insertions(+), 13 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/drm_irq.c b/drivers/gpu/drm/drm_irq.c
+>> index c3bd664ea733..945dd82e2ea3 100644
+>> --- a/drivers/gpu/drm/drm_irq.c
+>> +++ b/drivers/gpu/drm/drm_irq.c
+>> @@ -74,10 +74,8 @@
+>>    * only supports devices with a single interrupt on the main device =
+stored in
+>>    * &drm_device.dev and set as the device paramter in drm_dev_alloc()=
+=2E
+>>    *
+>> - * These IRQ helpers are strictly optional. Drivers which roll their =
+own only
+>> - * need to set &drm_device.irq_enabled to signal the DRM core that vb=
+lank
+>> - * interrupts are working. Since these helpers don't automatically cl=
+ean up the
+>> - * requested interrupt like e.g. devm_request_irq() they're not reall=
+y
+>> + * These IRQ helpers are strictly optional. Since these helpers don't=
+ automatically
+>> + * clean up the requested interrupt like e.g. devm_request_irq() they=
+'re not really
+>>    * recommended.
+>>    */
+>>  =20
+>> @@ -91,9 +89,7 @@
+>>    * and after the installation.
+>>    *
+>>    * This is the simplified helper interface provided for drivers with=
+ no special
+>> - * needs. Drivers which need to install interrupt handlers for multip=
+le
+>> - * interrupts must instead set &drm_device.irq_enabled to signal the =
+DRM core
+>> - * that vblank interrupts are available.
+>> + * needs.
+>>    *
+>>    * @irq must match the interrupt number that would be passed to requ=
+est_irq(),
+>>    * if called directly instead of using this helper function.
+>> @@ -156,8 +152,7 @@ EXPORT_SYMBOL(drm_irq_install);
+>>    *
+>>    * Calls the driver's &drm_driver.irq_uninstall function and unregis=
+ters the IRQ
+>>    * handler.  This should only be called by drivers which used drm_ir=
+q_install()
+>> - * to set up their interrupt handler. Other drivers must only reset
+>> - * &drm_device.irq_enabled to false.
+>> + * to set up their interrupt handler.
+>>    *
+>>    * Note that for kernel modesetting drivers it is a bug if this func=
+tion fails.
+>>    * The sanity checks are only to catch buggy user modesetting driver=
+s which call
+>> diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank=
+=2Ec
+>> index 3417e1ac7918..10fe16bafcb6 100644
+>> --- a/drivers/gpu/drm/drm_vblank.c
+>> +++ b/drivers/gpu/drm/drm_vblank.c
+>> @@ -1748,8 +1748,16 @@ int drm_wait_vblank_ioctl(struct drm_device *de=
+v, void *data,
+>>   	unsigned int pipe_index;
+>>   	unsigned int flags, pipe, high_pipe;
+>>  =20
+>> -	if (!dev->irq_enabled)
+>> -		return -EOPNOTSUPP;
+>> +#if defined(CONFIG_DRM_LEGACY)
+>> +	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY))) {
+>> +		if (!dev->irq_enabled)
+>> +			return -EOPNOTSUPP;
+>> +	} else /* if DRIVER_MODESET */
+>> +#endif
+>> +	{
+>> +		if (!drm_dev_has_vblank(dev))
+>> +			return -EOPNOTSUPP;
+>> +	}
+>=20
+> Sheesh I hate this kind of inline #ifdefs.
+
+I don't like them either. I guess I'll go with suggestion 2. Thanks for=20
+the feedback.
+
+Best regards
+Thomas
+
+>=20
+> Two alternate suggestions that I believe should be as just efficient:
+>=20
+> 1) The more verbose:
+>=20
+> #if defined(CONFIG_DRM_LEGACY)
+> static bool drm_wait_vblank_supported(struct drm_device *dev)
+> {
+> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
+> 		return dev->irq_enabled;
+> 	else
+> 		return drm_dev_has_vblank(dev);
+> }
+> #else
+> static bool drm_wait_vblank_supported(struct drm_device *dev)
+> {
+> 	return drm_dev_has_vblank(dev);
+> }
+> #endif
+>=20
+> 2) The more compact:
+>=20
+> static bool drm_wait_vblank_supported(struct drm_device *dev)
+> {
+> 	if  (IS_ENABLED(CONFIG_DRM_LEGACY) && unlikely(drm_core_check_feature(=
+dev, DRIVER_LEGACY)))
+> 		return dev->irq_enabled;
+> 	else
+> 		return drm_dev_has_vblank(dev);
+> }
+>=20
+> Then, in drm_wait_vblank_ioctl().
+>=20
+> 	if (!drm_wait_vblank_supported(dev))
+> 		return -EOPNOTSUPP;
+>=20
+> The compiler should do the right thing without any explicit inline
+> keywords etc.
+>=20
+> BR,
+> Jani.
+>=20
+>>  =20
+>>   	if (vblwait->request.type & _DRM_VBLANK_SIGNAL)
+>>   		return -EINVAL;
+>> @@ -2023,7 +2031,7 @@ int drm_crtc_get_sequence_ioctl(struct drm_devic=
+e *dev, void *data,
+>>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
+>>   		return -EOPNOTSUPP;
+>>  =20
+>> -	if (!dev->irq_enabled)
+>> +	if (!drm_dev_has_vblank(dev))
+>>   		return -EOPNOTSUPP;
+>>  =20
+>>   	crtc =3D drm_crtc_find(dev, file_priv, get_seq->crtc_id);
+>> @@ -2082,7 +2090,7 @@ int drm_crtc_queue_sequence_ioctl(struct drm_dev=
+ice *dev, void *data,
+>>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
+>>   		return -EOPNOTSUPP;
+>>  =20
+>> -	if (!dev->irq_enabled)
+>> +	if (!drm_dev_has_vblank(dev))
+>>   		return -EOPNOTSUPP;
+>>  =20
+>>   	crtc =3D drm_crtc_find(dev, file_priv, queue_seq->crtc_id);
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--S90tyVSEB8ao9W3GA3iiO0RRpFfoFToer--
+
+--1abtLFnknRMcm59L8jJCqfHfzBd2N565M
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDUQAwFAwAAAAAACgkQlh/E3EQov+AM
+1xAAon3lHuqQy+6wjZWY/BW0yUved7wPrHSnsue/EvRwAf4qizG4REU3rRLH+CO8iBUiJrYZPSRn
+8sm0Y4HwQlHt2Zy7ps/nbEtgjDg5fVOhqkc0IxmXPIw8joLCo6TwLxqboCYcPInMgdr/uvbP9n5m
+NF5FKlGhp6pFqb2DT5ZtZQkT44FbTtDZBOXin66cdVcAif0KqmtFcXS3zR0tG+ORS7RejPtgRm/t
+Q3DN33sXGq82NzsMKL9YZ7LWBlJLHgJ/1wBioZf1KmX86KpAkyFP+djzOk4wnBVi9bHH7QnhBR3B
+Dxjl8W1VuSXnwAndfs06GbVKdVoz+mawg1cMurmLpaZ7LyRmKKDvAti8TEkfvStMPdnPe3pDQDY/
+mG6SsUlrzre5LJRemQCMMAm5YRlIIkSWh4ECkVn8Q/dxq22nlDiPKSx9ZlA4sFM6iSF5IDix4yZB
+Y1lLWX64M3Sit7s7TDWxDqDFovM0GE/5dkYhB9v7d+TOYuQWkxMSmwdd/54gU9Z6smzVA0rsxKyT
+Y2wlMk9y7OtCVDdj2JrtH1O6q2QfSsBq/CaBWP/M2VunNnJZNBMnVNcHMhkv6pdmGnsk0863I/XQ
+G+GOEdqotN7Q7Z4tVMyFLBslHhy8gUELR36bPe41g9Rir/ijBnTSBUs/L182bxvhFp9F8IZ6DiGh
+wt0=
+=LtMp
+-----END PGP SIGNATURE-----
+
+--1abtLFnknRMcm59L8jJCqfHfzBd2N565M--
+
+
+--===============3866767478785869652==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============3866767478785869652==--
+
