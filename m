@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79EBEC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7280FC48BDF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37AC5613FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37AC5613FE
+	by mail.kernel.org (Postfix) with ESMTPS id 3AB1761400
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 10:48:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3AB1761400
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KQH+CJu7qadv8R9UPatFn6FZzzsGHq8tdWZyvSg6x8c=; b=jnMD/7P3mcCla+
-	UirlRx9BDs4XCrYwNzDOZJfXeYMCXHLT9BQNr5hLrNKH8FhfefILRwjuKdX5oR2oVQDGup9UEG0co
-	DjdTN8uYEby/HqoKII1H5iHWD81ozd6UFsbwt2thdYfq0YQFGAgfChEfmwImHFtHu+YQQdwq0EH67
-	1Hod08izEbbjsM9Sv9D+KkXyNT2xnXBCF6pqzlRQckBTyTXtF72ttY+Dww+5PbRsafxwKfZvt+kbC
-	ut2wiJ+LTWpXszlbEJJRDbSuPMAVpfamEYWBRTa2PiENQORwAbkpXe12ss7dHL3rVNYsUj+9WFSaz
-	Wn6coHSaKgejDiRV2Xrg==;
+	List-Owner; bh=r7i1VfOuBVImu/koXHbF2VYcw4dspoV4RfpYWQfrcDw=; b=V/8jRlDTk0FHuD
+	1ncCrjzHJDb2XiZM/MN1X0S/U8dZOaGRbnNmhGnXJvPs16g2n77eszKtRGBHIl2MerfHDQmyI281t
+	ZUvbydSqrB53vCOiM1r7JyG2EhV0DXWP4QRAnrIURFIIhIn/56fLhjDXqzKP/xuxc9kP/vyiTgfup
+	M4V0KPVDI/UMGQYwpKF0AnP5P0PawEuBKL4lD46WekHqlAI44B1vHAKbg3GaCDBc7Wm8gfl2V7fQX
+	gPV2bXgreTFVFiYcbkVjRPc8vJVhIshYl4EWzKPguxkQVloZWubdK8sDEzu377xa5HW9XkPK/5t2B
+	AMbE6HPqpZ28KfFvvRGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwMth-00EEBO-2Y; Thu, 24 Jun 2021 10:47:49 +0000
+	id 1lwMuV-00EEX0-4P; Thu, 24 Jun 2021 10:48:39 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwMtb-00EE6T-2l; Thu, 24 Jun 2021 10:47:45 +0000
+ id 1lwMuQ-00EETa-Se; Thu, 24 Jun 2021 10:48:36 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
  [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 842B9532;
- Thu, 24 Jun 2021 12:47:39 +0200 (CEST)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 571A61254;
+ Thu, 24 Jun 2021 12:48:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1624531659;
- bh=ZNycYCdpm5oEjlFfF/sEqNXjEFO/n03c+byQ10Bt5bw=;
+ s=mail; t=1624531713;
+ bh=fIk5wMEN1B7CMPOBGbKPIoyHWGb/NJbW3Q+hz7HFjMM=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CGN9DVFsEHoPFf+pGvo+BS5Oqq8sbq0BRLQS9wPa02YfsZbZHe42KSDL8SiS8nknQ
- Dlh8v3FIrtFZ+aIelYdI0hq6VcbgqVLgvJq3npv5I27MKCnHAHxEiouigFeN+ZPJ+I
- gY9uoWeAbXhjpnjIo6lsntNy9MnvXU5it7HqZ5l0=
-Date: Thu, 24 Jun 2021 13:47:08 +0300
+ b=OoLj5b8l/ofOHdX9hMnRB54xFpHcmL5qCdyqf0btt+Wqy//1J8rGXdoC24H1uq8n1
+ 048gJuhXofMiwBWBvQAq72XeLSOhwF8Jn/QOm5PZoqoyR+V/AZX9s6u3YYgXawYOjf
+ yqs50G3bJBKCjDvGArnYQnXaHNQWu9PnXSCiArt0=
+Date: Thu, 24 Jun 2021 13:48:03 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
 Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
@@ -82,17 +82,16 @@ Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  linux-stm32@st-md-mailman.stormreply.com,
  linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
  intel-gfx@lists.freedesktop.org
-Subject: Re: [PATCH v3 16/27] drm/rcar-du: Don't set struct
- drm_device.irq_enabled
-Message-ID: <YNRirARS1AIVncc+@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v3 24/27] drm/vkms: Don't set struct drm_device.irq_enabled
+Message-ID: <YNRi4yR6lQTix7ar@pendragon.ideasonboard.com>
 References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-17-tzimmermann@suse.de>
+ <20210624072916.27703-25-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210624072916.27703-17-tzimmermann@suse.de>
+In-Reply-To: <20210624072916.27703-25-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_034743_336809_6EA784FF 
-X-CRM114-Status: GOOD (  15.06  )
+X-CRM114-CacheID: sfid-20210624_034835_122275_C89342B8 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,31 +112,31 @@ Hi Thomas,
 
 Thank you for the patch.
 
-On Thu, Jun 24, 2021 at 09:29:05AM +0200, Thomas Zimmermann wrote:
+On Thu, Jun 24, 2021 at 09:29:13AM +0200, Thomas Zimmermann wrote:
 > The field drm_device.irq_enabled is only used by legacy drivers
-> with userspace modesetting. Don't set it in rcar-du.
+> with userspace modesetting. Don't set it in vkms.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 > ---
->  drivers/gpu/drm/rcar-du/rcar_du_drv.c | 2 --
+>  drivers/gpu/drm/vkms/vkms_drv.c | 2 --
 >  1 file changed, 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/rcar-du/rcar_du_drv.c b/drivers/gpu/drm/rcar-du/rcar_du_drv.c
-> index bfbff90588cb..e289a66594a7 100644
-> --- a/drivers/gpu/drm/rcar-du/rcar_du_drv.c
-> +++ b/drivers/gpu/drm/rcar-du/rcar_du_drv.c
-> @@ -593,8 +593,6 @@ static int rcar_du_probe(struct platform_device *pdev)
->  		goto error;
+> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
+> index 027ffe759440..496de38ad983 100644
+> --- a/drivers/gpu/drm/vkms/vkms_drv.c
+> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
+> @@ -163,8 +163,6 @@ static int vkms_create(struct vkms_config *config)
+>  		goto out_devres;
 >  	}
 >  
-> -	rcdu->ddev.irq_enabled = 1;
+> -	vkms_device->drm.irq_enabled = true;
 > -
->  	/*
->  	 * Register the DRM device with the core and the connectors with
->  	 * sysfs.
+>  	ret = drm_vblank_init(&vkms_device->drm, 1);
+>  	if (ret) {
+>  		DRM_ERROR("Failed to vblank\n");
 
 -- 
 Regards,
