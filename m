@@ -2,20 +2,19 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0420C49EA7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A50FC49EA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 16:10:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0E28613EA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 13:37:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0E28613EA
+	by mail.kernel.org (Postfix) with ESMTPS id C46FA61375
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 16:10:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C46FA61375
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,61 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VS/EN19QdUSoSkiQX/RR6+GxoQYopjaSODXyWwD5Uhg=; b=PsTwsIMCFIGUSd
-	cZ7ufn7yoj5PxCn9Tj23E+lE/AKERb8gtzAu94HE9ZHvGBOmLnZWfuftMCc3n08k088U5E3uK1TJx
-	pu8SwTj6oN3p/sUP2i1L1LuNkY9tmIni5BM93F83p0zkxlVodfVStfNUPBWigNOvFHEHtq92h2gIS
-	jq1yWVfQrrSa+15OOOWz59qsH6zz1y5mzo6HYl2rm6eCSP62pJ2H9IHVmqsjNK2mHC0XZAF/LJawp
-	pzQAEmVD2w5WQnoh8DApbbxXuTWRobC2EXidDmFYcrWNI695RllH7LgDpblzhsdHZ2NxcWDCxcQU5
-	OnCLSwKH8gfxtS98vOYg==;
+	List-Owner; bh=EGf2J28F4NdrOUzdF9fhMsDMsGRnAucS1UrqJTyzos8=; b=DUQIDP1dxIXgGb
+	o+sxLVAkbem4jxmmenzNosiZnRJa8RO6Vi9gUVXeE7B8X9uw2YOjhR0lLAWfop3do/jt2O8u21ew0
+	BhxuurJ4vxFt40LyipwUgTyFsG/AM2zdymajTg5Qab4q3gR+4LSEpIoMfUI+nLj3coL5AQ1nzbjky
+	kjz6dI9lZsyK7UvVNM21aL7Q/ngzEt8Jsp3+nomzAvRf8+eDe+ggOBs7UB7qhrD/1Q6Vl4219J16G
+	zEjtOaVXUSEBCh6GY/kNpTJX2WjnG3+Q/gxkFxEBCuvIk5cozCD3lqB3SiQqA+9vmcAraGhq2rlY8
+	XmXGQXXmkIhXbNw3eEqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwPXY-00EqU0-LN; Thu, 24 Jun 2021 13:37:08 +0000
+	id 1lwRvp-00FPtY-Do; Thu, 24 Jun 2021 16:10:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwPVs-00Epcz-F7; Thu, 24 Jun 2021 13:35:26 +0000
-X-UUID: 4dfa417972154572a83aec20a9e14c84-20210624
+ id 1lwRvf-00FPpb-FZ; Thu, 24 Jun 2021 16:10:19 +0000
+X-UUID: 27d1da0932df42558431e6a0cdad20b8-20210624
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Y21caziGEJLFP/59GXxzFR+j88FkCvp+lFjToaxSqxY=; 
- b=nzkqSqemimY7ZqW4RGz3pDiSSwyFILWrmOj8hMA5CkHoSu1cx7WBDSTbvnWFajuUC2LBMyvU9zbIKdyPSR97Cbg0aefBiH3zP8K6b2y808oPJl4cUReftb9VXXYx759P4NqAp3Ca6vtSqkQc/vK61cgQ8C+ehQ2p5fvChMjL4zQ=;
-X-UUID: 4dfa417972154572a83aec20a9e14c84-20210624
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ bh=QO/ljf86DE4pJWm8BNSgl5S3nuQFCPPAsACCpEiDi84=; 
+ b=r90dQHTi2mK9amlnsPjFqwAyk24yPcQJqAZqCUVELMJSEj8iRFtnw7vehNey0YpNxmDz43lQmChI6b/i8RipctjNJwfijVR0FstIW2QNDyRsnrQYiulX6EwBhFeaSoOGRFr9Jujqf+B7g3ghGKRpI8QWtc2HhAmqpCQk0YKCVYo=;
+X-UUID: 27d1da0932df42558431e6a0cdad20b8-20210624
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 916155004; Thu, 24 Jun 2021 06:35:17 -0700
-Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ with ESMTP id 1757504386; Thu, 24 Jun 2021 09:10:07 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Jun 2021 06:35:16 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 24 Jun 2021 21:35:05 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Thu, 24 Jun 2021 09:10:06 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 25 Jun 2021 00:09:58 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 24 Jun 2021 21:35:05 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
- <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
- <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
+ Transport; Fri, 25 Jun 2021 00:09:56 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Felix Fietkau <nbd@nbd.name>, John Crispin
+ <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, <netdev@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>
-Subject: [PATCH v8, 5/5] drm/mediatek: add support for mediatek SOC MT8192
-Date: Thu, 24 Jun 2021 21:34:58 +0800
-Message-ID: <1624541698-29038-6-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1624541698-29038-1-git-send-email-yongqiang.niu@mediatek.com>
-References: <1624541698-29038-1-git-send-email-yongqiang.niu@mediatek.com>
+ <bpf@vger.kernel.org>, <wsd_upstream@mediatek.com>, <chao.song@mediatek.com>, 
+ <kuohong.wang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
+Subject: Re: [PATCH 4/4] drivers: net: mediatek: initial implementation of
+ ccmni
+Date: Thu, 24 Jun 2021 23:55:02 +0800
+Message-ID: <20210624155501.10024-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <YNR5QuYqknaZS9+j@kroah.com>
+References: <YNR5QuYqknaZS9+j@kroah.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_063524_558703_D6205A70 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20210624_091011_601037_3E825FF1 
+X-CRM114-Status: GOOD (  32.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,205 +95,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-add support for mediatek SOC MT8192
+On Thu, 2021-06-24 at 14:23 +0200, Greg KH wrote:
+On Thu, Jun 24, 2021 at 07:53:49PM +0800, Rocco Yue wrote:
+>> 
+>> without MTK ap ccci driver (modem driver), ccmni_rx_push() and
+>> ccmni_hif_hook() are not be used.
+>> 
+>> Both of them are exported as symbols because MTK ap ccci driver
+>> will be compiled to the ccci.ko file.
+> 
+> But I do not see any code in this series that use these symbols.  We can
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c |  6 +++++
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 20 +++++++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c  |  6 +++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c    | 42 +++++++++++++++++++++++++++++++
- 4 files changed, 74 insertions(+)
+will delete these symbols.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 141cb36..3a53ebc 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -205,9 +205,15 @@ static int mtk_disp_ccorr_remove(struct platform_device *pdev)
- 	.matrix_bits = 10,
- };
- 
-+static const struct mtk_disp_ccorr_data mt8192_ccorr_driver_data = {
-+	.matrix_bits = 11,
-+};
-+
- static const struct of_device_id mtk_disp_ccorr_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = &mt8183_ccorr_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = &mt8192_ccorr_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ccorr_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 961f87f..e266baa 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -455,6 +455,22 @@ static int mtk_disp_ovl_remove(struct platform_device *pdev)
- 	.fmt_rgb565_is_0 = true,
- };
- 
-+static const struct mtk_disp_ovl_data mt8192_ovl_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 4,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
-+static const struct mtk_disp_ovl_data mt8192_ovl_2l_driver_data = {
-+	.addr = DISP_REG_OVL_ADDR_MT8173,
-+	.gmc_bits = 10,
-+	.layer_nr = 2,
-+	.fmt_rgb565_is_0 = true,
-+	.smi_id_en = true,
-+};
-+
- static const struct of_device_id mtk_disp_ovl_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-ovl",
- 	  .data = &mt2701_ovl_driver_data},
-@@ -464,6 +480,10 @@ static int mtk_disp_ovl_remove(struct platform_device *pdev)
- 	  .data = &mt8183_ovl_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = &mt8183_ovl_2l_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = &mt8192_ovl_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = &mt8192_ovl_2l_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_ovl_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index bef3f04..f1f6a2e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -355,6 +355,10 @@ static int mtk_disp_rdma_remove(struct platform_device *pdev)
- 	.fifo_size = 5 * SZ_1K,
- };
- 
-+static const struct mtk_disp_rdma_data mt8192_rdma_driver_data = {
-+	.fifo_size = 5 * SZ_1K,
-+};
-+
- static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = &mt2701_rdma_driver_data},
-@@ -362,6 +366,8 @@ static int mtk_disp_rdma_remove(struct platform_device *pdev)
- 	  .data = &mt8173_rdma_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = &mt8183_rdma_driver_data},
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = &mt8192_rdma_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b46bdb8..8465da1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -147,6 +147,25 @@
- 	DDP_COMPONENT_DPI0,
- };
- 
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_main[] = {
-+	DDP_COMPONENT_OVL0,
-+	DDP_COMPONENT_OVL_2L0,
-+	DDP_COMPONENT_RDMA0,
-+	DDP_COMPONENT_COLOR0,
-+	DDP_COMPONENT_CCORR,
-+	DDP_COMPONENT_AAL0,
-+	DDP_COMPONENT_GAMMA,
-+	DDP_COMPONENT_POSTMASK0,
-+	DDP_COMPONENT_DITHER,
-+	DDP_COMPONENT_DSI0,
-+};
-+
-+static const enum mtk_ddp_comp_id mt8192_mtk_ddp_ext[] = {
-+	DDP_COMPONENT_OVL_2L2,
-+	DDP_COMPONENT_RDMA4,
-+	DDP_COMPONENT_DPI0,
-+};
-+
- static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.main_path = mt2701_mtk_ddp_main,
- 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
-@@ -186,6 +205,13 @@
- 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
- };
- 
-+static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-+	.main_path = mt8192_mtk_ddp_main,
-+	.main_len = ARRAY_SIZE(mt8192_mtk_ddp_main),
-+	.ext_path = mt8192_mtk_ddp_ext,
-+	.ext_len = ARRAY_SIZE(mt8192_mtk_ddp_ext),
-+};
-+
- static int mtk_drm_kms_init(struct drm_device *drm)
- {
- 	struct mtk_drm_private *private = drm->dev_private;
-@@ -404,22 +430,32 @@ static void mtk_drm_unbind(struct device *dev)
- 	  .data = (void *)MTK_DISP_OVL },
- 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
- 	  .data = (void *)MTK_DISP_OVL_2L },
-+	{ .compatible = "mediatek,mt8192-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
-+	  .data = (void *)MTK_DISP_OVL_2L },
- 	{ .compatible = "mediatek,mt2701-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8183-disp-rdma",
- 	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8192-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
- 	{ .compatible = "mediatek,mt8173-disp-wdma",
- 	  .data = (void *)MTK_DISP_WDMA },
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = (void *)MTK_DISP_CCORR },
-+	{ .compatible = "mediatek,mt8192-disp-ccorr",
-+	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8192-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
-@@ -448,12 +484,16 @@ static void mtk_drm_unbind(struct device *dev)
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8192-disp-mutex",
-+	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
- 	{ .compatible = "mediatek,mt8173-disp-od",
- 	  .data = (void *)MTK_DISP_OD },
-+	{ .compatible = "mediatek,mt8192-disp-postmask",
-+	  .data = (void *)MTK_DISP_POSTMASK },
- 	{ }
- };
- 
-@@ -468,6 +508,8 @@ static void mtk_drm_unbind(struct device *dev)
- 	  .data = &mt8173_mmsys_driver_data},
- 	{ .compatible = "mediatek,mt8183-mmsys",
- 	  .data = &mt8183_mmsys_driver_data},
-+	{ .compatible = "mediatek,mt8192-mmsys",
-+	  .data = &mt8192_mmsys_driver_data},
- 	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
--- 
-1.8.1.1.dirty
+> not have exports that no one uses.  Please add the driver to this patch
+> series when you resend it.
+> 
+
+I've just took a look at what the Linux staging tree is. It looks like
+a good choice for the current ccmni driver.
+
+honstly, If I simply upload the relevant driver code B that calls
+A (e.g. ccmni_rx_push), there is still a lack of code to call B.
+This seems to be a continuty problem, unless all drivers codes are
+uploaded (e.g. power on modem, get hardware status, complete tx/rx flow).
+
+>> In addition, the code of MTK's modem driver is a bit complicated,
+>> because this part has more than 30,000 lines of code and contains
+>> more than 10 modules. We are completeing the upload of this huge
+>> code step by step. Our original intention was to upload the ccmni
+>> driver that directly interacts with the kernel first, and then
+>> complete the code from ccmni to the bottom layer one by one from
+>> top to bottom. We expect the completion period to be about 1 year.
+> 
+> Again, we can not add code to the kernel that is not used, sorry.  That
+> would not make any sense, would you want to maintain such a thing?
+> 
+> And 30k of code seems a bit excesive for a modem driver.   Vendors find
+> that when they submit code for inclusion in the kernel tree, in the end,
+> they end up 1/3 the original size, so 10k is reasonable.
+> 
+> I can also take any drivers today into the drivers/staging/ tree, and
+> you can do the cleanups there as well as getting help from others.
+> 
+> 1 year seems like a long time to do "cleanup", good luck!
+> 
+
+Thanks~
+
+Can I resend patch set as follows:
+(1) supplement the details of pureip for patch 1/4;
+(2) the document of ccmni.rst still live in the Documentation/...
+(3) modify ccmni and move it into the drivers/staging/...
+
+>>> +++ b/drivers/net/ethernet/mediatek/ccmni/ccmni.h
+>>> 
+>>> Why do you have a .h file for a single .c file?  that shouldn't be
+>>> needed.
+>> 
+>> I add a .h file to facilitate subsequent code expansion. If it's
+>> not appropriate to do this here, I can add the content of .h into
+>> .c file.
+> 
+> If nothing other than a single .c file needs it, put it into that .c
+> file please.
+
+will do.
+
+Thanks,
+Rocco
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
