@@ -2,74 +2,125 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 236F5C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:04:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76872C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:08:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9E3D61164
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:04:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9E3D61164
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 37E0F613EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:08:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37E0F613EA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cczCZm/XNoAsjPks6XyTgHhp10D/ZFo34Agqc/2rfm8=; b=AbBDp6SSXapu42
-	2CJPLGSlgsxxsSk1MkW0Y2VSpr18BMi8I81GXfvWTX1BUH1669rnZsadm+LEkPRUkS5+8GzyzjNjz
-	2XcNqTyTaY4+iYNgE+5DPvKI/fAK5Mzh1rxbqeQhMtux7lRQb9VRiyV0UwX3Yq7fbVnU82yp1SnQg
-	cxIsX51A0WNnMB/q80H9tTQ5rWp1lzC+11VrFCZQH0r8SXhae4SxYggcmEepAaiAYd5dQfhSxFgD3
-	Y6MlySOD5HNmOJBMzL+Wi69wl3/lC+XwTTCbpTniPBmI6nXkxFG4v0wSLVOW3vImh97sINHINmQXP
-	Y4uHbKH6X234e1eC6RvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ObTBBlsVR2ctkyF6Q+eHDOyOxMB00nM2Rymo4eN+Hdw=; b=yyfETbOsRIU+ou1lz9b1/k5LVo
+	ylBgK2nVZbdiPTnEEAeIihtNbVSNIBkIG8Y6hob5uFMD8QHs/3qo6Yv/OhML3mV0P9xw89xsTj2ia
+	GWrRJ8uiET+6yZNBG1aDgUrFyagH3PpYT7GwSXXqqdlneHro+0Wf7dWJO9Ylx3gsEox0YbnruO7Xp
+	QuI3GnS5p3XMhu7u9jLsYhn0JrksqLxqRYpyXCklRzOETeJ9U2CdIcsHr1fV7uboLr6B1CWiM2lMA
+	/2W8TbRgwvOU/i8JsD2LGVuZlt/O5AphMrFv2w2g86cakmMFDrUemi5sF7sKX0ValYd79dwaJrR+t
+	Cp+66Jzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwLHj-00Dd47-8P; Thu, 24 Jun 2021 09:04:31 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lwLLJ-00DeRH-Ea; Thu, 24 Jun 2021 09:08:13 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwLHM-00DcuN-A4; Thu, 24 Jun 2021 09:04:09 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5DCAE613DC;
- Thu, 24 Jun 2021 09:04:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1624525448;
- bh=rby+ZPgSSxK8+RzLEO6EAEviTD7NAgOLS/9KpTQJ4FU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YwvmEv3TARAfMjBW8u0BmYQnLofpa8rvMy3sGduJ2AW5d4eg6GWV6H7og8F0G+vTV
- 5f3ZCXj78qe5lizHerdHMjDRZXlMwvBNzuwctQrXCK0bjoZaJu5cPlJBSM417NzGqO
- YinHgu09t22NltJkxV+4C25ZsjzZtgAP9awWL/XE=
-Date: Thu, 24 Jun 2021 11:04:04 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: David Ahern <dsahern@gmail.com>, "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- David Ahern <dsahern@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- wsd_upstream@mediatek.com, chao.song@mediatek.com,
- kuohong.wang@mediatek.com
-Subject: Re: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
-Message-ID: <YNRKhJB9/K4SKPdR@kroah.com>
-References: <YNQYHfE09Dx5kWyg@kroah.com>
- <20210624061310.12315-1-rocco.yue@mediatek.com>
+ id 1lwLL6-00DeN9-Qt; Thu, 24 Jun 2021 09:08:03 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 0463E1FD66;
+ Thu, 24 Jun 2021 09:07:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624525679; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rKL9mP48io+APDMklw5yU/nTFyyLtllrHvhRByxGfgM=;
+ b=Fa003aqPNfKvMmB5gj67Z2b+vADOqXwJZbsZa1wLiyJFEYxd8Ib341pE3+k1q3LB/3NTPM
+ sec4L/zG58xoB1lJqeaGcoJORFmdA4MYlT10zNcfBOK9OQqTDe4HPy2ViRmxXEaOVhWpeB
+ stgCohp2fTLc+re6z5B7wGsQj3RuBdw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624525679;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rKL9mP48io+APDMklw5yU/nTFyyLtllrHvhRByxGfgM=;
+ b=5fbRrwXqzrlBotN6vVs6nYUPpayauPPnI+y3I6tTE09d75iLijxUx+ydMD0QEa5X+6VQch
+ gQMq4UauX+vXn3AA==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id D3DC011A97;
+ Thu, 24 Jun 2021 09:07:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624525678; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rKL9mP48io+APDMklw5yU/nTFyyLtllrHvhRByxGfgM=;
+ b=qka1M/+/Q0elb+Z4f6NaP+BgHuSA/yV87SJKUK7fBN5PWNEmX+fCZcno/5kvg/PzTE44iv
+ joOoo0J1V3O+yOBF1zFmhwUrUs2dy9UjZf9K1YAFsRlSIR/viSN1/anfeuQcykgILCWH0K
+ 16EhnP2e/GNrZU++exd36UAeNj2qNMU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624525678;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rKL9mP48io+APDMklw5yU/nTFyyLtllrHvhRByxGfgM=;
+ b=XNZZ2ccXjd52Zfc2lfinuyEZHBLa2WF7fIMYqmaGxOEk8UiNOL4HuWXLk8lyaE0Mmw9X8C
+ niNIquqh21hULJCQ==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id GA8HMm1L1GANNwAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 09:07:57 +0000
+Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
+To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
+ airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
+ Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ linux-tegra@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org
+References: <20210624072916.27703-1-tzimmermann@suse.de>
+ <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
+ <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de> <877dijtzl2.fsf@intel.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <af21db75-584f-aec0-9659-d5386f27b4ea@suse.de>
+Date: Thu, 24 Jun 2021 11:07:57 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210624061310.12315-1-rocco.yue@mediatek.com>
+In-Reply-To: <877dijtzl2.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_020408_413145_49E4D871 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20210624_020801_181554_8848A81B 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,69 +132,252 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0434211283010254662=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 24, 2021 at 02:13:10PM +0800, Rocco Yue wrote:
-> On Thu, 2021-06-24 at 07:29 +0200, Greg KH wrote:
-> > 
-> > Thanks for the explaination, why is this hardware somehow "special" in
-> > this way that this has never been needed before?
-> > 
-> > thanks,
-> > 
-> > greg k-h
-> > 
-> 
-> Before kernel-4.18, RAWIP was the same as PUREIP, neither of them
-> automatically generates an IPv6 link-local address, and the way to
-> generate an IPv6 global address is the same.
-> 
-> After kernel-4.18 (include 4.18 version), the behavior of RAWIP had
-> changed due to the following patch:
-> @@  static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
-> +	case ARPHRD_RAWIP:
-> +		return addrconf_ifid_rawip(eui, dev);
->  	}
->  	return -1;
-> }
-> 
-> the reason why the kernel doesn't need to generate the link-local
-> address automatically is as follows:
-> 
-> In the 3GPP 29.061, here is some description as follows:
-> "in order to avoid any conflict between the link-local address of
-> MS and that of the GGSN, the Interface-Identifier used by the MS to
-> build its link-local address shall be assigned by the GGSN. The GGSN
-> ensures the uniqueness of this Interface-Identifier. Then MT shall
-> then enforce the use of this Interface-Identifier by the TE"
-> 
-> In other words, in the cellular network, GGSN determines whether to
-> reply to the Router Solicitation message of UE by identifying the
-> low 64bits of UE interface's ipv6 link-local address.
-> 
-> When using a new kernel and RAWIP, kernel will generate an EUI64
-> format ipv6 link-local address, and if the device uses this address
-> to send RS, GGSN will not reply RA message.
-> 
-> Therefore, in that background, we came up with PUREIP to make kernel
-> doesn't generate a ipv6 link-local address in any address generate
-> mode.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0434211283010254662==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="Yy3WbyUimc1Hxu4dvJZCfzpxTV3jVapRO"
 
-Thanks for the better description.  That should go into the changelog
-text somewhere so that others know what is going on here with this new
-option.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--Yy3WbyUimc1Hxu4dvJZCfzpxTV3jVapRO
+Content-Type: multipart/mixed; boundary="4JbZC3NkmBgthQugAZppQ3TwC7sIXD4e6";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
+ airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
+ Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
+ jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
+ jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
+ zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ linux-tegra@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org
+Message-ID: <af21db75-584f-aec0-9659-d5386f27b4ea@suse.de>
+Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
+References: <20210624072916.27703-1-tzimmermann@suse.de>
+ <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
+ <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de> <877dijtzl2.fsf@intel.com>
+In-Reply-To: <877dijtzl2.fsf@intel.com>
 
-And are these user-visable flags documented in a man page or something
-else somewhere?  If not, how does userspace know about them?
+--4JbZC3NkmBgthQugAZppQ3TwC7sIXD4e6
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-thanks,
+Hi
 
-greg k-h
+Am 24.06.21 um 10:51 schrieb Jani Nikula:
+> On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+>> Hi
+>>
+>> Am 24.06.21 um 10:06 schrieb Jani Nikula:
+>>> On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+>>>> diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vbla=
+nk.c
+>>>> index 3417e1ac7918..10fe16bafcb6 100644
+>>>> --- a/drivers/gpu/drm/drm_vblank.c
+>>>> +++ b/drivers/gpu/drm/drm_vblank.c
+>>>> @@ -1748,8 +1748,16 @@ int drm_wait_vblank_ioctl(struct drm_device *=
+dev, void *data,
+>>>>    	unsigned int pipe_index;
+>>>>    	unsigned int flags, pipe, high_pipe;
+>>>>   =20
+>>>> -	if (!dev->irq_enabled)
+>>>> -		return -EOPNOTSUPP;
+>>>> +#if defined(CONFIG_DRM_LEGACY)
+>>>> +	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY))) {
+>>>> +		if (!dev->irq_enabled)
+>>>> +			return -EOPNOTSUPP;
+>>>> +	} else /* if DRIVER_MODESET */
+>>>> +#endif
+>>>> +	{
+>>>> +		if (!drm_dev_has_vblank(dev))
+>>>> +			return -EOPNOTSUPP;
+>>>> +	}
+>>>
+>>> Sheesh I hate this kind of inline #ifdefs.
+>>>
+>>> Two alternate suggestions that I believe should be as just efficient:=
+
+>>
+>> Or how about:
+>>
+>> static bool drm_wait_vblank_supported(struct drm_device *dev)
+>>
+>> {
+>>
+>> if defined(CONFIG_DRM_LEGACY)
+>> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
+>>
+>> 		return dev->irq_enabled;
+>>
+>> #endif
+>> 	return drm_dev_has_vblank(dev);
+>>
+>> }
+>>
+>>
+>> ?
+>>
+>> It's inline, but still readable.
+>=20
+> It's definitely better than the original, but it's unclear to me why
+> you'd prefer this over option 2) below. I guess the only reason I can
+> think of is emphasizing the conditional compilation. However,
+> IS_ENABLED() is widely used in this manner specifically to avoid inline=
+
+> #if, and the compiler optimizes it away.
+
+It's simply more readable to me as the condition is simpler. But option=20
+2 is also ok.
+
+Best regards
+Thomas
+
+>=20
+> BR,
+> Jani.
+>=20
+>=20
+>>
+>> Best regards
+>> Thomas
+>>
+>>>
+>>> 1) The more verbose:
+>>>
+>>> #if defined(CONFIG_DRM_LEGACY)
+>>> static bool drm_wait_vblank_supported(struct drm_device *dev)
+>>> {
+>>> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
+>>> 		return dev->irq_enabled;
+>>> 	else
+>>> 		return drm_dev_has_vblank(dev);
+>>> }
+>>> #else
+>>> static bool drm_wait_vblank_supported(struct drm_device *dev)
+>>> {
+>>> 	return drm_dev_has_vblank(dev);
+>>> }
+>>> #endif
+>>>
+>>> 2) The more compact:
+>>>
+>>> static bool drm_wait_vblank_supported(struct drm_device *dev)
+>>> {
+>>> 	if  (IS_ENABLED(CONFIG_DRM_LEGACY) && unlikely(drm_core_check_featur=
+e(dev, DRIVER_LEGACY)))
+>>> 		return dev->irq_enabled;
+>>> 	else
+>>> 		return drm_dev_has_vblank(dev);
+>>> }
+>>>
+>>> Then, in drm_wait_vblank_ioctl().
+>>>
+>>> 	if (!drm_wait_vblank_supported(dev))
+>>> 		return -EOPNOTSUPP;
+>>>
+>>> The compiler should do the right thing without any explicit inline
+>>> keywords etc.
+>>>
+>>> BR,
+>>> Jani.
+>>>
+>>>>   =20
+>>>>    	if (vblwait->request.type & _DRM_VBLANK_SIGNAL)
+>>>>    		return -EINVAL;
+>>>> @@ -2023,7 +2031,7 @@ int drm_crtc_get_sequence_ioctl(struct drm_dev=
+ice *dev, void *data,
+>>>>    	if (!drm_core_check_feature(dev, DRIVER_MODESET))
+>>>>    		return -EOPNOTSUPP;
+>>>>   =20
+>>>> -	if (!dev->irq_enabled)
+>>>> +	if (!drm_dev_has_vblank(dev))
+>>>>    		return -EOPNOTSUPP;
+>>>>   =20
+>>>>    	crtc =3D drm_crtc_find(dev, file_priv, get_seq->crtc_id);
+>>>> @@ -2082,7 +2090,7 @@ int drm_crtc_queue_sequence_ioctl(struct drm_d=
+evice *dev, void *data,
+>>>>    	if (!drm_core_check_feature(dev, DRIVER_MODESET))
+>>>>    		return -EOPNOTSUPP;
+>>>>   =20
+>>>> -	if (!dev->irq_enabled)
+>>>> +	if (!drm_dev_has_vblank(dev))
+>>>>    		return -EOPNOTSUPP;
+>>>>   =20
+>>>>    	crtc =3D drm_crtc_find(dev, file_priv, queue_seq->crtc_id);
+>>>
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--4JbZC3NkmBgthQugAZppQ3TwC7sIXD4e6--
+
+--Yy3WbyUimc1Hxu4dvJZCfzpxTV3jVapRO
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDUS20FAwAAAAAACgkQlh/E3EQov+Cd
+sQ//WrJ+cTjeCic8XWKP/6B1g/HO+aPRrvY0ktdf5gWjTVO6YN/FUVYp01LvOH8E1lh+mUmOWXlH
+6sTbGXnxD39Kch9JuZqlVwVDjG+SFSNcwJtHHF4D93/sMMgf0C00N0dUwPEFARmqTu091Ya/R3fI
+6iTBwu1GDLEcHDVaw5asnzmmDY9mMr7GIiJ4Kcy9I9fsdNybxG+P6Em3pMTBUlOFN6N4/GHrqs7I
+MjCvfDylb5jXxjPNMxQIeaevOwIi+xPTIZwGIeVdEhIpY6GHe8HKWFSqV2saCb9AoHW7vkNs0Tig
+ol8QFs1B/Yau/K39PCoRg1F8Y4nJaZfKL7JCHh0/bhhetCas1X4j8m1Y+jGPHIXFCh6orFNIqT+v
+J05PwfQ0vIz6bmxPxPt+KsHyf2RaYP6u5MPjfDICbAx1DPygVNuJLa+cUstqxoDqnPDNsK8a/s7b
+1MitJWn6UOhnwzkXomyZcKTxvRzZqFy0nAcbGYQyGmZHg7hW1ylSuuWddE5a3wFgXY2yN4GwUARa
+t3F4HqZ+cFDwQJrxZ7Lev/rHSEL+IduPHzjfun+HVUzuqk2X/n/7qrll6ne0HOmaTLX19qRbMsZp
+NsZn3eCBnJbhcNS6NJ8CA6iMkBSb3oYkXDafmo8zZ1rbKVLsMJxHeaa/x9f79Ooa24VXjdRx3g0o
+EqM=
+=Jf7v
+-----END PGP SIGNATURE-----
+
+--Yy3WbyUimc1Hxu4dvJZCfzpxTV3jVapRO--
+
+
+--===============0434211283010254662==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0434211283010254662==--
+
