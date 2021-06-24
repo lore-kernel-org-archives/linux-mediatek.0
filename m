@@ -2,124 +2,93 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B351C48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F7A6C49EA5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:33:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A42D613FF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:29:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4A42D613FF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 301A8613FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:33:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 301A8613FA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OgWOs2QvbIclZgyzKb1nuButJxYMBYHs9lTfBGEAueA=; b=fOCaR7qZlUwUYJhTnt0pPNzQ74
-	CdzgjQ24BI6+pZyPHeIM93eOU8b+Ld97NQkLbQZMvk6njRadN9qQJLUHveixFz6QLEX5bd7uggK0K
-	EISfbEUXA14Npr2g36qdghQuehtbPlRtwMfic3A4SDB6fqNPQx0XCmlNabMUm44N1/Szc2jJyEJ3o
-	tYcucbxWj4AXyP15kPfMqbe1Hg6BY03hCTO87tbllR3O71pkBKuczs8LPTKscZcKg4JtSgr658Wln
-	BEeo7T6n01L7ugzWn/OKnjc3KaM9kfZAugkJQTheZ+NW7yzH8bXhXf7k8y/VaM7yM1Uj8S2X3fNkv
-	W4F+liiA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9x2AhDKKpzc6Q0YFxH58KRlVJ5y8soeIobnXmG75IaU=; b=qOVfaM60ywzx7L
+	nTNRkPljvGaKZ3JLFcx6Sl5Tw9K8sA03RVArqE8DGnDZN4qsj4S5RidENDq/hWt8sNzk0Ae7JE6XM
+	hd3QiUKM0AvU0sTuU05++9L98m0ZdHWV/yIYx4xwUzAhx4oDLxEekt+eJqoI/CVuZbGhhitSNm+7o
+	P4a0nxUDeadaMGD62ApKDq68ndSwecBtUD7ls2308wfDqad7m1eCyv/aag7cye7MU8tQhf4uJtq3G
+	oGyyvjXSwJNhrM/7MugdhUz6i99L/FduKor5P0aF/GJVUexpmKL+1g5oNTZ1uUaryNCGhyQWV/8l8
+	VB8EF5nyZHrH7mBIUunQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwKjS-00DQMA-8N; Thu, 24 Jun 2021 08:29:06 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1lwKnG-00DRxz-Rg; Thu, 24 Jun 2021 08:33:02 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwKjO-00DQLN-Ns; Thu, 24 Jun 2021 08:29:04 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id F29331FD6B;
- Thu, 24 Jun 2021 08:29:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624523341; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0L5nz5bVnzlvJV0RjY8gCyLPBlQHqLtg4oioZgDj7sE=;
- b=H47JB6rfcTZrnBwfDErNXWaKzTNfBpYnmnio3CIpCf8t3632jgCaxwzRMuz/mdYp9Yz/ao
- XSsgx7UAK+VYhayo4uFpTyl/3X8uoFfqI08rv4ZeVShxNVAAOQlTrHJrmV0DfbOJNybTYR
- PultKHLRqSOLL93gXfamRbzfV6CrU1E=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624523341;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0L5nz5bVnzlvJV0RjY8gCyLPBlQHqLtg4oioZgDj7sE=;
- b=VGe9rG6so5c34BqO1pSCopzOeVyTNgfweNOXlBZdbQ53I4/7QT/vY1xqauJkC9BafqA9j+
- S6Kg5u/bUT8FLqDw==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id BFDDD11A97;
- Thu, 24 Jun 2021 08:28:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624523340; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0L5nz5bVnzlvJV0RjY8gCyLPBlQHqLtg4oioZgDj7sE=;
- b=rfyPFlnrx0gMc6BzpqKzRr4E3RL5MMa6uTkl3g1ggRTmxlP/GEjI3N6ZCDgG/PSEW4V9I0
- CC9jy4Fmuhh7S49OTyfzuUHxDuNa2tvtlWT3wAA3WMrsIHEFs9k1tZdMvnRFdCnsdtksqQ
- RICsUBNTluOuPynz67gyFio3iP0eMNA=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624523340;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0L5nz5bVnzlvJV0RjY8gCyLPBlQHqLtg4oioZgDj7sE=;
- b=wgWw5+iHWQ5qv3h7jV7wxXmyKHYRMe8CDc7lR0BDGQmqx/Do4XbDkNVtHpd2XiGqlnj6YX
- 1A74dssIJKaSWNBw==
-Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id zwiRLUtC1GBNIQAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 08:28:59 +0000
-Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
-To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
- airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
- Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
- jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
- hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
- yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
- mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
- jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
- zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Daniel Vetter <daniel.vetter@ffwll.ch>, linux-tegra@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
-References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de>
-Date: Thu, 24 Jun 2021 10:28:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1lwKn4-00DRud-Ta
+ for linux-mediatek@lists.infradead.org; Thu, 24 Jun 2021 08:32:52 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1lwKmk-0006cm-HJ; Thu, 24 Jun 2021 10:32:30 +0200
+Received: from pza by lupine with local (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1lwKmX-0006oO-Cb; Thu, 24 Jun 2021 10:32:17 +0200
+Message-ID: <43f805608f1172b73c62717f6cdc72c7a15d145c.camel@pengutronix.de>
+Subject: Re: [PATCH 08/15] drm/<driver>: drm_gem_plane_helper_prepare_fb is
+ now the default
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Daniel Vetter <daniel.vetter@ffwll.ch>, DRI Development
+ <dri-devel@lists.freedesktop.org>
+Cc: Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Heiko
+ Stuebner <heiko@sntech.de>, Paul Cercueil <paul@crapouillou.net>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Tomi Valkeinen
+ <tomi.valkeinen@ideasonboard.com>,  Philippe Cornu
+ <philippe.cornu@foss.st.com>, Lucas Stach <l.stach@pengutronix.de>, Daniel
+ Vetter <daniel.vetter@intel.com>, Laurentiu Palcu
+ <laurentiu.palcu@oss.nxp.com>,  Shawn Guo <shawnguo@kernel.org>, Sascha
+ Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>, Neil
+ Armstrong <narmstrong@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
+ Jerome Brunet <jbrunet@baylibre.com>, Marek Vasut <marex@denx.de>, Stefan
+ Agner <stefan@agner.ch>, Sandy Huang <hjc@rock-chips.com>, Yannick Fertre
+ <yannick.fertre@foss.st.com>, Benjamin Gaignard
+ <benjamin.gaignard@linaro.org>,  Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Maxime Ripard <mripard@kernel.org>, Chen-Yu
+ Tsai <wens@csie.org>, Jyri Sarha <jyri.sarha@iki.fi>,  Tomi Valkeinen
+ <tomba@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mips@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org,  linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,  linux-sunxi@lists.linux.dev
+Date: Thu, 24 Jun 2021 10:32:17 +0200
+In-Reply-To: <20210622165511.3169559-9-daniel.vetter@ffwll.ch>
+References: <20210622165511.3169559-1-daniel.vetter@ffwll.ch>
+ <20210622165511.3169559-9-daniel.vetter@ffwll.ch>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
-In-Reply-To: <87im23u1ok.fsf@intel.com>
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_012903_138960_52CCDA93 
-X-CRM114-Status: GOOD (  32.42  )
+X-CRM114-CacheID: sfid-20210624_013250_963344_0E146192 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,306 +100,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5193521925019414438=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============5193521925019414438==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="XeS7eJ5JPg7IwjZ7mWHplNVbGBiq1dAM5"
+On Tue, 2021-06-22 at 18:55 +0200, Daniel Vetter wrote:
+> No need to set it explicitly.
+> 
+[...]
+>  drivers/gpu/drm/imx/ipuv3-plane.c           | 1 -
+>  14 files changed, 15 deletions(-)
+> 
+[...]
+> diff --git a/drivers/gpu/drm/imx/ipuv3-plane.c b/drivers/gpu/drm/imx/ipuv3-plane.c
+> index 8710f55d2579..ef114b6aa691 100644
+> --- a/drivers/gpu/drm/imx/ipuv3-plane.c
+> +++ b/drivers/gpu/drm/imx/ipuv3-plane.c
+> @@ -772,7 +772,6 @@ static void ipu_plane_atomic_update(struct drm_plane *plane,
+>  }
+>  
+>  static const struct drm_plane_helper_funcs ipu_plane_helper_funcs = {
+> -	.prepare_fb = drm_gem_plane_helper_prepare_fb,
+>  	.atomic_check = ipu_plane_atomic_check,
+>  	.atomic_disable = ipu_plane_atomic_disable,
+>  	.atomic_update = ipu_plane_atomic_update,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---XeS7eJ5JPg7IwjZ7mWHplNVbGBiq1dAM5
-Content-Type: multipart/mixed; boundary="zYjFVN6LbQJto7YyRvmktHhbjS3oGNxBZ";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Jani Nikula <jani.nikula@linux.intel.com>, daniel@ffwll.ch,
- airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
- Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
- jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
- hjc@rock-chips.com, heiko@sntech.de, benjamin.gaignard@linaro.org,
- yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
- mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, thierry.reding@gmail.com, jonathanh@nvidia.com,
- jyri.sarha@iki.fi, emma@anholt.net, linux-graphics-maintainer@vmware.com,
- zackr@vmware.com, hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Daniel Vetter <daniel.vetter@ffwll.ch>, linux-tegra@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org
-Message-ID: <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de>
-Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
-References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
-In-Reply-To: <87im23u1ok.fsf@intel.com>
+Acked-by: Philipp Zabel <p.zabel@pengutronix.de>
 
---zYjFVN6LbQJto7YyRvmktHhbjS3oGNxBZ
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 24.06.21 um 10:06 schrieb Jani Nikula:
-> On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
->> For KMS drivers, replace the IRQ check in VBLANK ioctls with a check f=
-or
->> vblank support. IRQs might be enabled wthout vblanking being supported=
-=2E
->>
->> This change also removes the DRM framework's only dependency on IRQ st=
-ate
->> for non-legacy drivers. For legacy drivers with userspace modesetting,=
-
->> the original test remains in drm_wait_vblank_ioctl().
->>
->> v3:
->> 	* optimize test in drm_wait_vblank_ioctl() for KMS case (Liviu)
->> 	* update docs for drm_irq_uninstall()
->> v2:
->> 	* keep the old test for legacy drivers in
->> 	  drm_wait_vblank_ioctl() (Daniel)
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
->> ---
->>   drivers/gpu/drm/drm_irq.c    | 13 ++++---------
->>   drivers/gpu/drm/drm_vblank.c | 16 ++++++++++++----
->>   2 files changed, 16 insertions(+), 13 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/drm_irq.c b/drivers/gpu/drm/drm_irq.c
->> index c3bd664ea733..945dd82e2ea3 100644
->> --- a/drivers/gpu/drm/drm_irq.c
->> +++ b/drivers/gpu/drm/drm_irq.c
->> @@ -74,10 +74,8 @@
->>    * only supports devices with a single interrupt on the main device =
-stored in
->>    * &drm_device.dev and set as the device paramter in drm_dev_alloc()=
-=2E
->>    *
->> - * These IRQ helpers are strictly optional. Drivers which roll their =
-own only
->> - * need to set &drm_device.irq_enabled to signal the DRM core that vb=
-lank
->> - * interrupts are working. Since these helpers don't automatically cl=
-ean up the
->> - * requested interrupt like e.g. devm_request_irq() they're not reall=
-y
->> + * These IRQ helpers are strictly optional. Since these helpers don't=
- automatically
->> + * clean up the requested interrupt like e.g. devm_request_irq() they=
-'re not really
->>    * recommended.
->>    */
->>  =20
->> @@ -91,9 +89,7 @@
->>    * and after the installation.
->>    *
->>    * This is the simplified helper interface provided for drivers with=
- no special
->> - * needs. Drivers which need to install interrupt handlers for multip=
-le
->> - * interrupts must instead set &drm_device.irq_enabled to signal the =
-DRM core
->> - * that vblank interrupts are available.
->> + * needs.
->>    *
->>    * @irq must match the interrupt number that would be passed to requ=
-est_irq(),
->>    * if called directly instead of using this helper function.
->> @@ -156,8 +152,7 @@ EXPORT_SYMBOL(drm_irq_install);
->>    *
->>    * Calls the driver's &drm_driver.irq_uninstall function and unregis=
-ters the IRQ
->>    * handler.  This should only be called by drivers which used drm_ir=
-q_install()
->> - * to set up their interrupt handler. Other drivers must only reset
->> - * &drm_device.irq_enabled to false.
->> + * to set up their interrupt handler.
->>    *
->>    * Note that for kernel modesetting drivers it is a bug if this func=
-tion fails.
->>    * The sanity checks are only to catch buggy user modesetting driver=
-s which call
->> diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank=
-=2Ec
->> index 3417e1ac7918..10fe16bafcb6 100644
->> --- a/drivers/gpu/drm/drm_vblank.c
->> +++ b/drivers/gpu/drm/drm_vblank.c
->> @@ -1748,8 +1748,16 @@ int drm_wait_vblank_ioctl(struct drm_device *de=
-v, void *data,
->>   	unsigned int pipe_index;
->>   	unsigned int flags, pipe, high_pipe;
->>  =20
->> -	if (!dev->irq_enabled)
->> -		return -EOPNOTSUPP;
->> +#if defined(CONFIG_DRM_LEGACY)
->> +	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY))) {
->> +		if (!dev->irq_enabled)
->> +			return -EOPNOTSUPP;
->> +	} else /* if DRIVER_MODESET */
->> +#endif
->> +	{
->> +		if (!drm_dev_has_vblank(dev))
->> +			return -EOPNOTSUPP;
->> +	}
->=20
-> Sheesh I hate this kind of inline #ifdefs.
->=20
-> Two alternate suggestions that I believe should be as just efficient:
-
-Or how about:
-
-static bool drm_wait_vblank_supported(struct drm_device *dev)
-
-{
-
-if defined(CONFIG_DRM_LEGACY)
-	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
-
-		return dev->irq_enabled;
-
-#endif
-	return drm_dev_has_vblank(dev);
-
-}
-
-
-?
-
-It's inline, but still readable.
-
-Best regards
-Thomas
-
->=20
-> 1) The more verbose:
->=20
-> #if defined(CONFIG_DRM_LEGACY)
-> static bool drm_wait_vblank_supported(struct drm_device *dev)
-> {
-> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
-> 		return dev->irq_enabled;
-> 	else
-> 		return drm_dev_has_vblank(dev);
-> }
-> #else
-> static bool drm_wait_vblank_supported(struct drm_device *dev)
-> {
-> 	return drm_dev_has_vblank(dev);
-> }
-> #endif
->=20
-> 2) The more compact:
->=20
-> static bool drm_wait_vblank_supported(struct drm_device *dev)
-> {
-> 	if  (IS_ENABLED(CONFIG_DRM_LEGACY) && unlikely(drm_core_check_feature(=
-dev, DRIVER_LEGACY)))
-> 		return dev->irq_enabled;
-> 	else
-> 		return drm_dev_has_vblank(dev);
-> }
->=20
-> Then, in drm_wait_vblank_ioctl().
->=20
-> 	if (!drm_wait_vblank_supported(dev))
-> 		return -EOPNOTSUPP;
->=20
-> The compiler should do the right thing without any explicit inline
-> keywords etc.
->=20
-> BR,
-> Jani.
->=20
->>  =20
->>   	if (vblwait->request.type & _DRM_VBLANK_SIGNAL)
->>   		return -EINVAL;
->> @@ -2023,7 +2031,7 @@ int drm_crtc_get_sequence_ioctl(struct drm_devic=
-e *dev, void *data,
->>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
->>   		return -EOPNOTSUPP;
->>  =20
->> -	if (!dev->irq_enabled)
->> +	if (!drm_dev_has_vblank(dev))
->>   		return -EOPNOTSUPP;
->>  =20
->>   	crtc =3D drm_crtc_find(dev, file_priv, get_seq->crtc_id);
->> @@ -2082,7 +2090,7 @@ int drm_crtc_queue_sequence_ioctl(struct drm_dev=
-ice *dev, void *data,
->>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
->>   		return -EOPNOTSUPP;
->>  =20
->> -	if (!dev->irq_enabled)
->> +	if (!drm_dev_has_vblank(dev))
->>   		return -EOPNOTSUPP;
->>  =20
->>   	crtc =3D drm_crtc_find(dev, file_priv, queue_seq->crtc_id);
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---zYjFVN6LbQJto7YyRvmktHhbjS3oGNxBZ--
-
---XeS7eJ5JPg7IwjZ7mWHplNVbGBiq1dAM5
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDUQksFAwAAAAAACgkQlh/E3EQov+CO
-tBAAscKEApzwALsL/afbcm5uKvx5iVv2dEDtvThHqwM/vLySjYR97Sf8prBBklUa9XgOJYT3X8rC
-c0t3Uzq4+VIxvZIKgYydECvLfVRwq2MJXr3y5SxsFVA1GpH0kfHj0hoXjy5PINp3GJQReIlvReTd
-OmKzv5fejYkixYbEmJcn/TMilZvcevMrgBTOybnVAoC37xDEochnf9GmoofpS5HnSuGFucNn+Wqv
-REeGPKDeGDFyQHtGxv4vjsFqoJSiqWtQUemnQhuTeeZoPUbxDXU6sR77LDz/S3mmTDOmCPC8IFn1
-/J+8HVQi1UJLew7unH7VVMbsIzhJs08qaebBl5uWcW2qElDlKIKShgCMmp1DhkmlVaUFoWeomP6R
-DYL9GXnrbQ81rcOFipoZd/MYhO0F7TtLufsHBJ2t3KOwTYfLwXkF7NCwU7Sb/ABG+WcVFIW47I9s
-qwtU3BXWIy2bp19c3bqCc4HX6+V847yKXSa5k6ZMy9KaraKlFtymY/fmDGwEhprS2DPM0VIl0qg7
-yU0usq5cMV5Y9uREDDb3TFT1j+8HvvA0Ghm9dnhzYc9OAl44HtGp1pVaRFq/FL8Q4mG7fdeY8cSv
-Yv9Eq4DU8xhTmGJfJa5lM6MgIL0Xc9Pkni9cetDt8+WTRgcNZqcfFYIF0+M99NEvfuoboHNBTcXJ
-qWc=
-=qKXa
------END PGP SIGNATURE-----
-
---XeS7eJ5JPg7IwjZ7mWHplNVbGBiq1dAM5--
-
-
---===============5193521925019414438==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+regards
+Philipp
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5193521925019414438==--
-
