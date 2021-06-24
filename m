@@ -2,92 +2,74 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 11DF8C49EA6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 236F5C48BDF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:04:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0E8C613BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:02:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0E8C613BE
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id E9E3D61164
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:04:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9E3D61164
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DmsmRUKVrrVwy6VzyKWO6Wub68uvAgdSqb1/T8Uc1uY=; b=JyIp4KcEeiWo05
-	E/P+FDAjTDLepw79N+2/hEW/FRvhMApjnLKccvSrRyDxXMgjMpdt/wP8tkeLQy2sKDADOIvxE2JG5
-	cjhxPdEAFmbqQReGRwGMgz6caEM1NWVuSoUrDQWVTbZJGegA3O6OtiYwAMHsIQI8FvrSB4mdjaPxr
-	joaYeLZTje9SEZFz6Bk0YJ+fXYrIl8ASotCt4SNIAdUNvgjCUT0o0lvW5DxZjDIl07AQphwLRnsGH
-	tdk3hd5QeVHnsJgt16Tv8bmw8mKs5KJonsyfeEiQmqd6OiDOi3WCA92tz1qiK0Xd7T7Ufws9Y+fpW
-	vs9svxXMfFO2+k2msrOA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cczCZm/XNoAsjPks6XyTgHhp10D/ZFo34Agqc/2rfm8=; b=AbBDp6SSXapu42
+	2CJPLGSlgsxxsSk1MkW0Y2VSpr18BMi8I81GXfvWTX1BUH1669rnZsadm+LEkPRUkS5+8GzyzjNjz
+	2XcNqTyTaY4+iYNgE+5DPvKI/fAK5Mzh1rxbqeQhMtux7lRQb9VRiyV0UwX3Yq7fbVnU82yp1SnQg
+	cxIsX51A0WNnMB/q80H9tTQ5rWp1lzC+11VrFCZQH0r8SXhae4SxYggcmEepAaiAYd5dQfhSxFgD3
+	Y6MlySOD5HNmOJBMzL+Wi69wl3/lC+XwTTCbpTniPBmI6nXkxFG4v0wSLVOW3vImh97sINHINmQXP
+	Y4uHbKH6X234e1eC6RvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwLF4-00Dc5s-K6; Thu, 24 Jun 2021 09:01:46 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1lwLHj-00Dd47-8P; Thu, 24 Jun 2021 09:04:31 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwLEn-00Dbzi-D7; Thu, 24 Jun 2021 09:01:31 +0000
-Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
- (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id EFC1E1FD67;
- Thu, 24 Jun 2021 09:01:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624525287; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
- bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
- b=AfmRvipDjPguqpHQsCDwGgRttH86X9WIJRl5SF854v2LOw62GFwg9pMv8xHkbn5fMK/UT3
- PkQjk9NieVig+U3rhaIMiD/z5GGxyHxNsaGah8d3Jp7e5fDPnyv1sv8TZCHJlejCp0iAvT
- KHDQrXLq3hkR6lcYahZAuzU4k5cSdTs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624525287;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
- bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
- b=HyssKNSKMT8f4DPPkbmfMZXfs15pnriQZpJiZpQNhim23M+dvydLiN+Wf5pLutgUNXWKiM
- AjgwaSKXfGWmjqBA==
-Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id B45E111A97;
- Thu, 24 Jun 2021 09:01:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624525287; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
- bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
- b=AfmRvipDjPguqpHQsCDwGgRttH86X9WIJRl5SF854v2LOw62GFwg9pMv8xHkbn5fMK/UT3
- PkQjk9NieVig+U3rhaIMiD/z5GGxyHxNsaGah8d3Jp7e5fDPnyv1sv8TZCHJlejCp0iAvT
- KHDQrXLq3hkR6lcYahZAuzU4k5cSdTs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624525287;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
- bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
- b=HyssKNSKMT8f4DPPkbmfMZXfs15pnriQZpJiZpQNhim23M+dvydLiN+Wf5pLutgUNXWKiM
- AjgwaSKXfGWmjqBA==
-Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id CJ4MK+dJ1GCGMwAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 09:01:27 +0000
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
- daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ id 1lwLHM-00DcuN-A4; Thu, 24 Jun 2021 09:04:09 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 5DCAE613DC;
+ Thu, 24 Jun 2021 09:04:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1624525448;
+ bh=rby+ZPgSSxK8+RzLEO6EAEviTD7NAgOLS/9KpTQJ4FU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YwvmEv3TARAfMjBW8u0BmYQnLofpa8rvMy3sGduJ2AW5d4eg6GWV6H7og8F0G+vTV
+ 5f3ZCXj78qe5lizHerdHMjDRZXlMwvBNzuwctQrXCK0bjoZaJu5cPlJBSM417NzGqO
+ YinHgu09t22NltJkxV+4C25ZsjzZtgAP9awWL/XE=
+Date: Thu, 24 Jun 2021 11:04:04 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Rocco Yue <rocco.yue@mediatek.com>
+Cc: David Ahern <dsahern@gmail.com>, "David S . Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ David Ahern <dsahern@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
- Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH] drm/mediatek: Implement mmap as GEM object function
-Date: Thu, 24 Jun 2021 11:01:26 +0200
-Message-Id: <20210624090126.8167-1-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.32.0
+ linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
+ wsd_upstream@mediatek.com, chao.song@mediatek.com,
+ kuohong.wang@mediatek.com
+Subject: Re: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
+Message-ID: <YNRKhJB9/K4SKPdR@kroah.com>
+References: <YNQYHfE09Dx5kWyg@kroah.com>
+ <20210624061310.12315-1-rocco.yue@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210624061310.12315-1-rocco.yue@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_020129_642371_5122F68D 
-X-CRM114-Status: GOOD (  17.19  )
+X-CRM114-CacheID: sfid-20210624_020408_413145_49E4D871 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,146 +86,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Moving the driver-specific mmap code into a GEM object function allows
-for using DRM helpers for various mmap callbacks.
+On Thu, Jun 24, 2021 at 02:13:10PM +0800, Rocco Yue wrote:
+> On Thu, 2021-06-24 at 07:29 +0200, Greg KH wrote:
+> > 
+> > Thanks for the explaination, why is this hardware somehow "special" in
+> > this way that this has never been needed before?
+> > 
+> > thanks,
+> > 
+> > greg k-h
+> > 
+> 
+> Before kernel-4.18, RAWIP was the same as PUREIP, neither of them
+> automatically generates an IPv6 link-local address, and the way to
+> generate an IPv6 global address is the same.
+> 
+> After kernel-4.18 (include 4.18 version), the behavior of RAWIP had
+> changed due to the following patch:
+> @@  static int ipv6_generate_eui64(u8 *eui, struct net_device *dev)
+> +	case ARPHRD_RAWIP:
+> +		return addrconf_ifid_rawip(eui, dev);
+>  	}
+>  	return -1;
+> }
+> 
+> the reason why the kernel doesn't need to generate the link-local
+> address automatically is as follows:
+> 
+> In the 3GPP 29.061, here is some description as follows:
+> "in order to avoid any conflict between the link-local address of
+> MS and that of the GGSN, the Interface-Identifier used by the MS to
+> build its link-local address shall be assigned by the GGSN. The GGSN
+> ensures the uniqueness of this Interface-Identifier. Then MT shall
+> then enforce the use of this Interface-Identifier by the TE"
+> 
+> In other words, in the cellular network, GGSN determines whether to
+> reply to the Router Solicitation message of UE by identifying the
+> low 64bits of UE interface's ipv6 link-local address.
+> 
+> When using a new kernel and RAWIP, kernel will generate an EUI64
+> format ipv6 link-local address, and if the device uses this address
+> to send RS, GGSN will not reply RA message.
+> 
+> Therefore, in that background, we came up with PUREIP to make kernel
+> doesn't generate a ipv6 link-local address in any address generate
+> mode.
 
-The respective mediatek functions are being removed. The file_operations
-structure fops is now being created by the helper macro
-DEFINE_DRM_GEM_FOPS().
+Thanks for the better description.  That should go into the changelog
+text somewhere so that others know what is going on here with this new
+option.
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++------
- drivers/gpu/drm/mediatek/mtk_drm_gem.c | 44 +++++++-------------------
- drivers/gpu/drm/mediatek/mtk_drm_gem.h |  3 --
- 3 files changed, 14 insertions(+), 46 deletions(-)
+And are these user-visable flags documented in a man page or something
+else somewhere?  If not, how does userspace know about them?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b46bdb8985da..bbfefb29c211 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -300,16 +300,7 @@ static void mtk_drm_kms_deinit(struct drm_device *drm)
- 	component_unbind_all(drm->dev, drm);
- }
- 
--static const struct file_operations mtk_drm_fops = {
--	.owner = THIS_MODULE,
--	.open = drm_open,
--	.release = drm_release,
--	.unlocked_ioctl = drm_ioctl,
--	.mmap = mtk_drm_gem_mmap,
--	.poll = drm_poll,
--	.read = drm_read,
--	.compat_ioctl = drm_compat_ioctl,
--};
-+DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
- 
- /*
-  * We need to override this because the device used to import the memory is
-@@ -332,7 +323,7 @@ static const struct drm_driver mtk_drm_driver = {
- 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
- 	.gem_prime_import = mtk_drm_gem_prime_import,
- 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
--	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
-+	.gem_prime_mmap = drm_gem_prime_mmap,
- 	.fops = &mtk_drm_fops,
- 
- 	.name = DRIVER_NAME,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-index 280ea0d5e840..d0544962cfc1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-@@ -14,11 +14,14 @@
- #include "mtk_drm_drv.h"
- #include "mtk_drm_gem.h"
- 
-+static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
-+
- static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
- 	.free = mtk_drm_gem_free_object,
- 	.get_sg_table = mtk_gem_prime_get_sg_table,
- 	.vmap = mtk_drm_gem_prime_vmap,
- 	.vunmap = mtk_drm_gem_prime_vunmap,
-+	.mmap = mtk_drm_gem_object_mmap,
- 	.vm_ops = &drm_gem_cma_vm_ops,
- };
- 
-@@ -145,11 +148,19 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
- 	struct mtk_drm_private *priv = obj->dev->dev_private;
- 
-+	/*
-+	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
-+	 * whole buffer from the start.
-+	 */
-+	vma->vm_pgoff = 0;
-+
- 	/*
- 	 * dma_alloc_attrs() allocated a struct page table for mtk_gem, so clear
- 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
- 	 */
--	vma->vm_flags &= ~VM_PFNMAP;
-+	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
-+	vma->vm_page_prot = pgprot_writecombine(vm_get_page_prot(vma->vm_flags));
-+	vma->vm_page_prot = pgprot_decrypted(vma->vm_page_prot);
- 
- 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
- 			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
-@@ -159,37 +170,6 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
- 	return ret;
- }
- 
--int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj, struct vm_area_struct *vma)
--{
--	int ret;
--
--	ret = drm_gem_mmap_obj(obj, obj->size, vma);
--	if (ret)
--		return ret;
--
--	return mtk_drm_gem_object_mmap(obj, vma);
--}
--
--int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
--{
--	struct drm_gem_object *obj;
--	int ret;
--
--	ret = drm_gem_mmap(filp, vma);
--	if (ret)
--		return ret;
--
--	obj = vma->vm_private_data;
--
--	/*
--	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
--	 * whole buffer from the start.
--	 */
--	vma->vm_pgoff = 0;
--
--	return mtk_drm_gem_object_mmap(obj, vma);
--}
--
- /*
-  * Allocate a sg_table for this GEM object.
-  * Note: Both the table's contents, and the sg_table itself must be freed by
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-index 6da5ccb4b933..9a359a06cb73 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-@@ -39,9 +39,6 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
- 					   bool alloc_kmap);
- int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
- 			    struct drm_mode_create_dumb *args);
--int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
--int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj,
--			 struct vm_area_struct *vma);
- struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
- struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
- 			struct dma_buf_attachment *attach, struct sg_table *sg);
--- 
-2.32.0
+thanks,
 
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
