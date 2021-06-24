@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A279BC49EB9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 46710C49EBA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 62AC46023B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62AC46023B
+	by mail.kernel.org (Postfix) with ESMTPS id 151B0613EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 07:29:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 151B0613EA
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A0PWh/AIDvz8PYYbM3nsNMi8foaMN1xa1AW8eU5Tuso=; b=fVDfvYbVTDCfip
-	76UuTAdTRyxw311j7nOnXje0qrgYOwdnzkLQflBfb1ExkaQqOecIWitppzimG0pB3uHig7Hm9XFXs
-	QW+b6iGATBTlJnncROv8dYEoNLOcdj/Vp7Z4gCK0Kbv46SIm8kmVy79mx3rkudl+X81JfL4GE/vq4
-	43FZVNp72RlmudHy+BWBPf32iDXNjaU6/hfYICjA7hD+HZvNORmMr/7GHJVpGWJ83TM6DPO0iHw/c
-	8MOd8mv5fOfk2LhMx7bjFN0y1IPzOQerQxAyClObwzLzBM5DTsGzU4C9hW8XeVuzutsZIjf46nPNh
-	E6kDHpeptLEJYCMYD4kw==;
+	List-Owner; bh=U4Q7tYv1BuhoCBglXy2K6GvMzA0i8LnyEnFou1gqGF4=; b=zR5IbFDLK1I561
+	TwLXX5tEPebUCg8pQgZBRvC2PQSjzaAwz6kwGiom75VdknMh+r44jCqoFvrA5BWyVhSERFF09Tr7N
+	Akb36IKgaEZyzXRyIfdVLuU1V6V6o/hLWVaXI2g1g1OcbCM8yPQcFMoDSv35Rsg1Cgd5TyaFxqzAA
+	jVzJfML/PEOqie3QA3ic7/TdGQeWpNk4sC9IeyBtw7bDk7HlJaDYtnIQohEIGwpDoAdfPr0rCrR3f
+	hzjR4++5fjaS3bHo7kSezLG3j/+n5N3DQ0TdRTag8HKdgeUIp2Mv8+HK4/Ivbd1AVnavTzRgCWhgy
+	W9Pu3xsVBUFz7TCRg2nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwJnp-00DBw9-Lr; Thu, 24 Jun 2021 07:29:33 +0000
+	id 1lwJnr-00DBxY-Eq; Thu, 24 Jun 2021 07:29:35 +0000
 Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwJnh-00DBor-0c; Thu, 24 Jun 2021 07:29:27 +0000
+ id 1lwJnh-00DBp1-Cj; Thu, 24 Jun 2021 07:29:27 +0000
 Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
  (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id A99FA21984;
- Thu, 24 Jun 2021 07:29:21 +0000 (UTC)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 0752C21988;
+ Thu, 24 Jun 2021 07:29:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624519761; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1624519764; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I2b+OAsCJKUqsLrlVmOYBZwpzn6VVNgnC//qyqITxAA=;
- b=GxhuITCBRkATvmb48Gz6TzQhALM6zgP2qIh6O2VmVUhYWKtYSY910kJ1KTrP4+4+94H6Dg
- cetbiN0en8HPkdc+oxz2dcRnZuhhPs1uQM8m73kWp8MvA7uMhqVVRh3Bv+sVUTx6BgT3cX
- /PGhKRxx1wGMYtoMyLPe0OgawbLauHk=
+ bh=vCvMaakhW43FBHwwwgIT0NH9WFXQUbPBWotzOXDN7eU=;
+ b=nmIPqslFnX0Q80pdl86tf/ccQHTD1qXZsv4FKeiVGQ9IRRJxlLhagX7pxTlWyuquo0luD8
+ Y+yxCDiJS4aeG4Zy6HC0+Z8XbTzeV/i+7UpD8QoWiBZUnFCgN0PCysS1rlMIzQ1CvHfwPd
+ uBLM+l0Ri8muTKu8yIbga7XmmG+jxSY=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624519761;
+ s=susede2_ed25519; t=1624519764;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I2b+OAsCJKUqsLrlVmOYBZwpzn6VVNgnC//qyqITxAA=;
- b=Kz90tvLfyfywzdzxaAurdzPTEQf/Fz1IHT8E2dFWcXDhUi9AI1rjmC1BzvZLnheLXEagh4
- qPlLKjTN00iN9GAg==
+ bh=vCvMaakhW43FBHwwwgIT0NH9WFXQUbPBWotzOXDN7eU=;
+ b=4K5huN0VkhXvJqoObl1xqjkuOwsgHQq6A6n84t0A84IVQS58zLUjUZrDpXSMqUjQ/Qj+U9
+ My1vXx7mqxhEBrBw==
 Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
- by imap.suse.de (Postfix) with ESMTP id 7E61311C9B;
- Thu, 24 Jun 2021 07:29:20 +0000 (UTC)
+ by imap.suse.de (Postfix) with ESMTP id D5B5D11C9B;
+ Thu, 24 Jun 2021 07:29:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1624519761; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ t=1624519763; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I2b+OAsCJKUqsLrlVmOYBZwpzn6VVNgnC//qyqITxAA=;
- b=GxhuITCBRkATvmb48Gz6TzQhALM6zgP2qIh6O2VmVUhYWKtYSY910kJ1KTrP4+4+94H6Dg
- cetbiN0en8HPkdc+oxz2dcRnZuhhPs1uQM8m73kWp8MvA7uMhqVVRh3Bv+sVUTx6BgT3cX
- /PGhKRxx1wGMYtoMyLPe0OgawbLauHk=
+ bh=vCvMaakhW43FBHwwwgIT0NH9WFXQUbPBWotzOXDN7eU=;
+ b=GXB3NT/hiSOvWGqH7SX1jWLCRIQsgSuCL9ZUMVM43hZtusQyoXnRYqMFYrFUwS06LB+rZw
+ /9bo2QzCoJsoALwtQzu3T3mbsshlB9DDYVZ2gneICHT2rX7jVJlMpTJ+lrJxWiNMz0I0jt
+ XvmFgm1jIDwBF8dHUaZb0mFaHSaagPs=
 DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1624519761;
+ s=susede2_ed25519; t=1624519763;
  h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
  mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I2b+OAsCJKUqsLrlVmOYBZwpzn6VVNgnC//qyqITxAA=;
- b=Kz90tvLfyfywzdzxaAurdzPTEQf/Fz1IHT8E2dFWcXDhUi9AI1rjmC1BzvZLnheLXEagh4
- qPlLKjTN00iN9GAg==
+ bh=vCvMaakhW43FBHwwwgIT0NH9WFXQUbPBWotzOXDN7eU=;
+ b=s5ZiQAcpHVYNWTd+aExwSUDXm69sEq82qW7VdS9TIIEAlhuWm4ovd82h6Of8oFUTT/TDcK
+ fPsEbmXK94XTchBw==
 Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
- id OHEBHlA01GAJfwAALh3uQQ
- (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 07:29:20 +0000
+ id YJc+M1I01GAJfwAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 07:29:22 +0000
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
  christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
@@ -114,16 +114,16 @@ Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
  linux-tegra@vger.kernel.org, intel-gfx@lists.freedesktop.org,
  Thomas Zimmermann <tzimmermann@suse.de>,
  Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: [PATCH v3 01/27] drm/amdgpu: Track IRQ state in local device state
-Date: Thu, 24 Jun 2021 09:28:50 +0200
-Message-Id: <20210624072916.27703-2-tzimmermann@suse.de>
+Subject: [PATCH v3 03/27] drm/radeon: Track IRQ state in local device state
+Date: Thu, 24 Jun 2021 09:28:52 +0200
+Message-Id: <20210624072916.27703-4-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20210624072916.27703-1-tzimmermann@suse.de>
 References: <20210624072916.27703-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_002925_256132_DD5240C5 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20210624_002925_654966_B99D07BC 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,7 +141,7 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Replace usage of struct drm_device.irq_enabled with the driver's
-own state field struct amdgpu_device.irq.installed. The field in
+own state field struct radeon_device.irq.installed. The field in
 the DRM device structure is considered legacy and should not be
 used by KMS drivers.
 
@@ -149,40 +149,99 @@ Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/radeon/radeon_fence.c   |  2 +-
+ drivers/gpu/drm/radeon/radeon_irq_kms.c | 16 ++++++++--------
+ 2 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
-index 32ce0e679dc7..7dad44e73cf6 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_irq.c
-@@ -599,7 +599,7 @@ void amdgpu_irq_gpu_reset_resume_helper(struct amdgpu_device *adev)
- int amdgpu_irq_get(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
- 		   unsigned type)
- {
--	if (!adev_to_drm(adev)->irq_enabled)
-+	if (!adev->irq.installed)
- 		return -ENOENT;
+diff --git a/drivers/gpu/drm/radeon/radeon_fence.c b/drivers/gpu/drm/radeon/radeon_fence.c
+index 0d8ef2368adf..7ec581363e23 100644
+--- a/drivers/gpu/drm/radeon/radeon_fence.c
++++ b/drivers/gpu/drm/radeon/radeon_fence.c
+@@ -288,7 +288,7 @@ static void radeon_fence_check_lockup(struct work_struct *work)
+ 		return;
+ 	}
  
- 	if (type >= src->num_types)
-@@ -629,7 +629,7 @@ int amdgpu_irq_get(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
- int amdgpu_irq_put(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
- 		   unsigned type)
- {
--	if (!adev_to_drm(adev)->irq_enabled)
-+	if (!adev->irq.installed)
- 		return -ENOENT;
+-	if (fence_drv->delayed_irq && rdev->ddev->irq_enabled) {
++	if (fence_drv->delayed_irq && rdev->irq.installed) {
+ 		unsigned long irqflags;
  
- 	if (type >= src->num_types)
-@@ -660,7 +660,7 @@ int amdgpu_irq_put(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
- bool amdgpu_irq_enabled(struct amdgpu_device *adev, struct amdgpu_irq_src *src,
- 			unsigned type)
+ 		fence_drv->delayed_irq = false;
+diff --git a/drivers/gpu/drm/radeon/radeon_irq_kms.c b/drivers/gpu/drm/radeon/radeon_irq_kms.c
+index 84d0b1a3355f..a36ce826d0c0 100644
+--- a/drivers/gpu/drm/radeon/radeon_irq_kms.c
++++ b/drivers/gpu/drm/radeon/radeon_irq_kms.c
+@@ -357,7 +357,7 @@ void radeon_irq_kms_sw_irq_get(struct radeon_device *rdev, int ring)
  {
--	if (!adev_to_drm(adev)->irq_enabled)
-+	if (!adev->irq.installed)
- 		return false;
+ 	unsigned long irqflags;
  
- 	if (type >= src->num_types)
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	if (atomic_inc_return(&rdev->irq.ring_int[ring]) == 1) {
+@@ -396,7 +396,7 @@ void radeon_irq_kms_sw_irq_put(struct radeon_device *rdev, int ring)
+ {
+ 	unsigned long irqflags;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	if (atomic_dec_and_test(&rdev->irq.ring_int[ring])) {
+@@ -422,7 +422,7 @@ void radeon_irq_kms_pflip_irq_get(struct radeon_device *rdev, int crtc)
+ 	if (crtc < 0 || crtc >= rdev->num_crtc)
+ 		return;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	if (atomic_inc_return(&rdev->irq.pflip[crtc]) == 1) {
+@@ -448,7 +448,7 @@ void radeon_irq_kms_pflip_irq_put(struct radeon_device *rdev, int crtc)
+ 	if (crtc < 0 || crtc >= rdev->num_crtc)
+ 		return;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	if (atomic_dec_and_test(&rdev->irq.pflip[crtc])) {
+@@ -470,7 +470,7 @@ void radeon_irq_kms_enable_afmt(struct radeon_device *rdev, int block)
+ {
+ 	unsigned long irqflags;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	spin_lock_irqsave(&rdev->irq.lock, irqflags);
+@@ -492,7 +492,7 @@ void radeon_irq_kms_disable_afmt(struct radeon_device *rdev, int block)
+ {
+ 	unsigned long irqflags;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	spin_lock_irqsave(&rdev->irq.lock, irqflags);
+@@ -514,7 +514,7 @@ void radeon_irq_kms_enable_hpd(struct radeon_device *rdev, unsigned hpd_mask)
+ 	unsigned long irqflags;
+ 	int i;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	spin_lock_irqsave(&rdev->irq.lock, irqflags);
+@@ -537,7 +537,7 @@ void radeon_irq_kms_disable_hpd(struct radeon_device *rdev, unsigned hpd_mask)
+ 	unsigned long irqflags;
+ 	int i;
+ 
+-	if (!rdev->ddev->irq_enabled)
++	if (!rdev->irq.installed)
+ 		return;
+ 
+ 	spin_lock_irqsave(&rdev->irq.lock, irqflags);
 -- 
 2.32.0
 
