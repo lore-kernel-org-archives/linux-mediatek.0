@@ -2,121 +2,82 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A044EC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 12:02:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CB7AC49EA6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 12:09:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5F92E613DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 12:02:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F92E613DC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 17B8E613E3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 12:09:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 17B8E613E3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gxl47NA7LPS0xviFBsjV6i4rYiCV+f8sL1jvmcgZmNw=; b=x8jw5aEASdix3tSE9IBWd0dL1g
-	1YnUJTHT3vDWZIEkENcNZDDl84Ur2tXmLr5mZZUxxZVxO3eLf86YGZjQtYEYX30YolOGN5me4CD+a
-	2PyJp2Bfd1QeUW/0+vxaYXOL/BQ/jKVNTYGyNBqJxvccKBsclWx08myRo31JvmPttrIaausBwQIXT
-	5iN/6sDbAStjpzAut9hXhttpSDFRIN91D+LwbX+vg8SqnaEyUyyg5fQKVl+L6dqtsii0kwWv0JWGV
-	tEFXbmrfBvz1G1tQBnXoRSXexu1AYzNOOflc+nvaus8NHS/eJyC1s6jVW/oiVv6GJVtDDfpEtx+zm
-	1sdP89LA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=79W1JxoYW41x4AnLvVa3jSrbArIOM/oX3HhbHRY161E=; b=ezdPHPeXA74YVz
+	MgzwxxF/RqVHGUdk8P0rzug9ZIsgA1/35NYhg87KyQNa+D27SduVTZae/WahgpVTUVL/AoUBwek0q
+	/7xv9WXeF92n5LL2El62sOhlkU/alx8EIUvtNiaAlCUGL3ZsMgnGFaPEhncuYdLqpYeFtIUqySfPp
+	lJPEAoumAqZxwZftXPdGti9qVweW2FBrpCAa8aBE/LkIgtnb1qnLKrRK86a270OaYqgYpY3m0xpTu
+	DnUH6T6Uoulq9CwlrF3wTyGgI7yaSQ4pFth3gNn1pepM+nPRnHbDen861v7HaXpDH7S+aBylXi46E
+	Fpqwp/tkchs6z9xU8GGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwO41-00EUuk-OD; Thu, 24 Jun 2021 12:02:33 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1lwOA7-00EVwg-3N; Thu, 24 Jun 2021 12:08:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwO3y-00EUsQ-9o; Thu, 24 Jun 2021 12:02:31 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- a5-20020a7bc1c50000b02901e3bbe0939bso3480518wmj.0; 
- Thu, 24 Jun 2021 05:02:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=+SpIYl8f+mm4xc/wATx8xxQwIh7YjYdlE5uQ7ip0aaU=;
- b=A4ZJSYnWcvNDaAGkscckQ1T0JedTdFDVSuL2YBNdwwF7acWK0AZcsU5zvsVBjaEnE0
- vsxLXeiOkPXV0sDkt5mf5/o226lI7HBeiLI3sEq1aMRGbypsf6Bch2Kg62wRL1La4pDI
- oGZydtxItkAsfL83TfuEmUWoDMxV7rufPNivK3ryBzWPLuL+5usBc6MglcCUM6IzelM8
- Nz6qtrU0C9W4JeYrs7rwBFAjukEAoFywD8y16Q8wkRFeIXm2GbxrFHrfjHBLNTda9rqV
- SY0IiWXgH48K8ZPh9MWtQ5Dh1jLdaybwti7HCY0TZjkN9TbYA/yL3MNnHzS9FYivGbwv
- lUKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=+SpIYl8f+mm4xc/wATx8xxQwIh7YjYdlE5uQ7ip0aaU=;
- b=Oriwh2AsuX/7YiVwoE2OtOTzkGgWGHJqY5jh4gQJ7j2yS/F7m2NrRzJS7G9x4hrU9p
- TBxJIib6bWgk9vIM6u4CLp4A4xa6BKiOYhgEKi2SjjflWOY4BTkFw7stj63+BU5IxTlF
- m5SKSt+0M/NL+L7ejz5AdQq9DhkJdxLQIcgEhJH+bAUamft3Y/4FyjULQEQRVhFgtiw3
- W1la9hkWd+RXPg0az55KT9VwGkcm6SnGur+AdglWApwhEYf4dakqals9RckUEthh3AsE
- bUSOZAiOdxjXWluH4YC07Fsky9NT2GnX8DLBJQ2yVea1YOPfVMQhCAR2wwXv3SX7PmP9
- NdLg==
-X-Gm-Message-State: AOAM533CUmqviyNeYs5dZDwbLhSe9xGj0HbjU2RRH3KQsZpgsSzgpSnZ
- XeT8yX4mLgRYPdksoAZP91Q=
-X-Google-Smtp-Source: ABdhPJwnAQpQT/2sEz7viSMJ7t/+2zmdWLWtmPK9rh67Szq5oWv4lL/lZy1xAEGpP06+iHH3w5wUNg==
-X-Received: by 2002:a05:600c:4a19:: with SMTP id
- c25mr3844668wmp.125.1624536148907; 
- Thu, 24 Jun 2021 05:02:28 -0700 (PDT)
-Received: from localhost ([62.96.65.119])
- by smtp.gmail.com with ESMTPSA id c12sm2972417wrw.46.2021.06.24.05.02.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Jun 2021 05:02:27 -0700 (PDT)
-Date: Thu, 24 Jun 2021 14:04:30 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
- christian.koenig@amd.com, Xinhui.Pan@amd.com,
- james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com,
- sw0312.kim@samsung.com, kyungmin.park@samsung.com,
- krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
- tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org,
- jernej.skrabec@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
- emma@anholt.net, linux-graphics-maintainer@vmware.com,
- zackr@vmware.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- jani.nikula@linux.intel.com, rodrigo.vivi@intel.com,
- linux@armlinux.org.uk, kieran.bingham+renesas@ideasonboard.com,
- rodrigosiqueiramelo@gmail.com, melissa.srw@gmail.com,
- hamohammed.sa@gmail.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: Re: [PATCH v3 21/27] drm/tegra: Don't set struct
- drm_device.irq_enabled
-Message-ID: <YNR0zpVzMxQauzet@orome.fritz.box>
-References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-22-tzimmermann@suse.de>
+ id 1lwOA3-00EVva-43; Thu, 24 Jun 2021 12:08:50 +0000
+X-UUID: 9f8fbeabd04b4c1b933a1a348ecd3d75-20210624
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=w7PrGw2Mx+cRFueVjwc3x1ibs4XaIbjw24eDzHulCzA=; 
+ b=FnCbU6xCcluQrqNeEZnCQXCZPnuEMEZzum7Kqxd3h2i8u7WKLraq/+ZVRfklRNm7u1wlG2wg3FmBBrWFrLSgn+XemEkPnkNJrfcp9e34ymQuL5CZEv+tMKdKfp6BcY6HTF9Ulk8mr6Xt3xFIIeNKgeDyrDNEab5IGUGq+rp5Jm0=;
+X-UUID: 9f8fbeabd04b4c1b933a1a348ecd3d75-20210624
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1121627192; Thu, 24 Jun 2021 05:08:43 -0700
+Received: from mtkmbs08n2.mediatek.inc (172.21.101.56) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Jun 2021 05:08:41 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs08n2.mediatek.inc (172.21.101.56) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 24 Jun 2021 20:08:39 +0800
+Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 24 Jun 2021 20:08:38 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Felix Fietkau <nbd@nbd.name>, John Crispin
+ <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, Mark Lee
+ <Mark-MC.Lee@mediatek.com>, <netdev@vger.kernel.org>,
+ <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <bpf@vger.kernel.org>, <wsd_upstream@mediatek.com>, <chao.song@mediatek.com>, 
+ <kuohong.wang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
+Subject: Re: [PATCH 1/4] net: if_arp: add ARPHRD_PUREIP type
+Date: Thu, 24 Jun 2021 19:53:49 +0800
+Message-ID: <20210624115349.2264-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <YNNv1AxDNBdPcQ1U@kroah.com>
+References: <YNNv1AxDNBdPcQ1U@kroah.com>
 MIME-Version: 1.0
-In-Reply-To: <20210624072916.27703-22-tzimmermann@suse.de>
-User-Agent: Mutt/2.0.7 (481f3800) (2021-05-04)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_050230_386565_CDC8A7C4 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20210624_050848_630734_BF97203B 
+X-CRM114-Status: GOOD (  37.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,68 +89,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1771317871049516160=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, 2021-06-23 at 19:31 +0200, Greg KH wrote:
+On Wed, Jun 23, 2021 at 07:34:52PM +0800, Rocco Yue wrote:
+>> +static int ccmni_open(struct net_device *ccmni_dev)
+>> +{
+>> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
+>> +
+>> +	netif_tx_start_all_queues(ccmni_dev);
+>> +	netif_carrier_on(ccmni_dev);
+>> +
+>> +	if (atomic_inc_return(&ccmni->usage) > 1) {
+>> +		atomic_dec(&ccmni->usage);
+>> +		netdev_err(ccmni_dev, "dev already open\n");
+>> +		return -EINVAL;
+> 
+> You only check this _AFTER_ starting up?  If so, why even check a count
+> at all?  Why does it matter as it's not keeping anything from working
+> here.
+> 
 
---===============1771317871049516160==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="ENqalYeZVO/RAx3+"
-Content-Disposition: inline
+Thanks for your review.
+Looking back at this code block, it does have some ploblems,
+ccmni->usage hasn't been used to protect some resources or do
+some specific things in the current code, I will delete them.
 
+> 
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static int ccmni_close(struct net_device *ccmni_dev)
+>> +{
+>> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
+>> +
+>> +	atomic_dec(&ccmni->usage);
+>> +	netif_tx_disable(ccmni_dev);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static netdev_tx_t
+>> +ccmni_start_xmit(struct sk_buff *skb, struct net_device *ccmni_dev)
+>> +{
+>> +	struct ccmni_inst *ccmni = NULL;
+>> +
+>> +	if (unlikely(!ccmni_hook_ready))
+>> +		goto tx_ok;
+>> +
+>> +	if (!skb || !ccmni_dev)
+>> +		goto tx_ok;
+>> +
+>> +	ccmni = netdev_priv(ccmni_dev);
+>> +
+>> +	/* some process can modify ccmni_dev->mtu */
+>> +	if (skb->len > ccmni_dev->mtu) {
+>> +		netdev_err(ccmni_dev, "xmit fail: len(0x%x) > MTU(0x%x, 0x%x)",
+>> +			   skb->len, CCMNI_MTU, ccmni_dev->mtu);
+>> +		goto tx_ok;
+>> +	}
+>> +
+>> +	/* hardware driver send packet will return a negative value
+>> +	 * ask the Linux netdevice to stop the tx queue
+>> +	 */
+>> +	if ((s_ccmni_ctlb->xmit_pkt(ccmni->index, skb, 0)) < 0)
+>> +		return NETDEV_TX_BUSY;
+>> +
+>> +	return NETDEV_TX_OK;
+>> +tx_ok:
+>> +	dev_kfree_skb(skb);
+>> +	ccmni_dev->stats.tx_dropped++;
+>> +	return NETDEV_TX_OK;
+>> +}
+>> +
+>> +static int ccmni_change_mtu(struct net_device *ccmni_dev, int new_mtu)
+>> +{
+>> +	if (new_mtu < 0 || new_mtu > CCMNI_MTU)
+>> +		return -EINVAL;
+>> +
+>> +	if (unlikely(!ccmni_dev))
+>> +		return -EINVAL;
+>> +
+>> +	ccmni_dev->mtu = new_mtu;
+>> +	return 0;
+>> +}
+>> +
+>> +static void ccmni_tx_timeout(struct net_device *ccmni_dev, unsigned int txqueue)
+>> +{
+>> +	struct ccmni_inst *ccmni = netdev_priv(ccmni_dev);
+>> +
+>> +	ccmni_dev->stats.tx_errors++;
+>> +	if (atomic_read(&ccmni->usage) > 0)
+>> +		netif_tx_wake_all_queues(ccmni_dev);
+> 
+> Why does it matter what the reference count is?  What happens if it
+> drops _RIGHT_ after testing for it?
+> 
+> Anytime you do an atomic_read() call, it's almost always a sign that the
+> logic is not correct.
+> 
+> Again, why have this reference count at all?  What is it protecting?
+> 
 
---ENqalYeZVO/RAx3+
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The jedgment of ccmni->usage here is to ensure that the ccmnix interface
+is already up when do wake up tx queue behavior.
 
-On Thu, Jun 24, 2021 at 09:29:10AM +0200, Thomas Zimmermann wrote:
-> The field drm_device.irq_enabled is only used by legacy drivers
-> with userspace modesetting. Don't set it in tegra.
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-> ---
->  drivers/gpu/drm/tegra/drm.c | 7 -------
->  1 file changed, 7 deletions(-)
+Then I re-read the kernel code, I think my previous ider should be
+wrong. the reason is that before calling ccmni_tx_timeout(), it
+will check whether the dev exist or not, for example, it will be
+checked in dev_watchdog().
 
-Acked-by: Thierry Reding <treding@nvidia.com>
+I can delete this code.
 
---ENqalYeZVO/RAx3+
-Content-Type: application/pgp-signature; name="signature.asc"
+>> +/* exposed API
+>> + * receive incoming datagrams from the Modem and push them to the
+>> + * kernel networking system
+>> + */
+>> +int ccmni_rx_push(unsigned int ccmni_idx, struct sk_buff *skb)
+> 
+> Ah, so this driver doesn't really do anything on its own, as there is no
+> modem driver for it.
+> 
+> So without a modem driver, it will never be used?  Please submit the
+> modem driver at the same time, otherwise it's impossible to review this
+> correctly.
+> 
 
------BEGIN PGP SIGNATURE-----
+without MTK ap ccci driver (modem driver), ccmni_rx_push() and
+ccmni_hif_hook() are not be used.
 
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmDUdM4ACgkQ3SOs138+
-s6Ed0A/5ASxTJhpMIfL1u/g0kk5pjZX8ukNK72+ftE+sJWJhxDmTGuM+EzcPNaNg
-sKT+65FK2YsGeoA5fnN9QKWuUyS+bpExys5n39Aty+YN4tI4CV7CbU9OJeYm9Iru
-i+Ziu6gkJl2SYom/+cxuU42UkUDkQkWofYRel+HJZeDMogSRAIhiiQy5/fadGiJc
-36fJrXjueiB3EZjkg7CubNsLgy08qblR+sZGpuq4RIc3aVe6j6U8QxHiZ1eA7tMD
-ki2Nmub5WThcAUGn/ky+FD9m/yfieoI9sPkVWRpAF0oa6SDp6YO/oPFf2hJzl4jk
-HPXABfAWIYFTEzjFkGdRHjOfGgahPAXvwd1ku5zjBuFSH3vM9kNaNRuIQe2Rg9ti
-p3+b5RfPlO/1fiVRkuzXwROpjWNW44Y+eVVyee84h813aqYh9OOLJVrmxmrzZ1Xx
-mzDTvyZXuxtVb79T4XSkb0LnRw3wrraylMLP1X4/QTqttUBoWgYeKM5MwDgy+6zH
-Bx1VWtnjn9NmwEPfRmPpwIQNByNJ2DG/E8wZmEfeqJAEHo1SLOYaBixh9W7DUlWC
-e9mZFcD+tYSTurqcg0mS5T1mSPJGyCjcZFP27RkFRSc9JbRAQt2uuKcr1R54mjTh
-gAJ6mf8hPIWA8Q6ro+2TgW8p0X/wbPsnZdXjZrTGBsV1QA84k+M=
-=pLLR
------END PGP SIGNATURE-----
+Both of them are exported as symbols because MTK ap ccci driver
+will be complied to the ccci.ko file.
 
---ENqalYeZVO/RAx3+--
+In current codes, I implementated the basic functionality of ccmni,
+such as open, close, xmit packet, rcv packet. And my original 
+intention was that I can gradually complete some of the more
+functions of ccmni on this basis, such as sw-gro, napi, or meet the
+requirement of high throughput performance.
 
+In addition, the code of MTK's modem driver is a bit complicated,
+because this part has more than 30,000 lines of code and contains
+more than 10 modules. We are completeing the upload of this huge
+code step by step. Our original intention was to upload the ccmni
+driver that directly interacts with the kernel first, and then
+complete the code from ccmni to the bottom layer one by one from
+top to bottom. We expect the completion period to be about 1 year.
 
---===============1771317871049516160==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +++ b/drivers/net/ethernet/mediatek/ccmni/ccmni.h
+> 
+> Why do you have a .h file for a single .c file?  that shouldn't be
+> needed.
 
+I add a .h file to facilitate subsequent code expansion. If it's
+not appropriate to do this here, I can add the content of .h into
+.c file.
+
+Thanks,
+Rocco
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1771317871049516160==--
-
