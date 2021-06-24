@@ -2,95 +2,92 @@ Return-Path: <SRS0=ohMe=LS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8504CC48BDF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:52:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11DF8C49EA6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:02:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4773B613DC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 08:52:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4773B613DC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id C0E8C613BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Jun 2021 09:02:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0E8C613BE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DCaBFI+iAxgw5FFQ42Dd+mICxfFJjOx7Mr3THiekZAw=; b=P7PK793BrqwkTk
-	W8eJ3ZKV9sUNjSF8d8Bls6A/klYpYfcYgn8JjW+krjMUOpM7yZQnXp5+P9UldPDAunaq/S4CtJZQU
-	ZnBzewf6DeAtK6eoIEVMhIHeV+W1PRGd84DLescIriUf0l/BaII/pmZ3ACOZUkxsrWbGjL4vV5kcY
-	yEoJQ4wVxOPxq9T1nNJYa76RdypAi3c2SLT3uzeQDTdt41Y0sWs+0ZV11zpy3U6E1+v42NoTr55y+
-	TVVW/8MOowiR7zAczayO5f/pDyS/Agcw5XisRBngiyFAPnb7foKCwlHdivNkCZLFbrjkx2cQpxeza
-	hidalGvpKHFhK/XXs1Tw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DmsmRUKVrrVwy6VzyKWO6Wub68uvAgdSqb1/T8Uc1uY=; b=JyIp4KcEeiWo05
+	E/P+FDAjTDLepw79N+2/hEW/FRvhMApjnLKccvSrRyDxXMgjMpdt/wP8tkeLQy2sKDADOIvxE2JG5
+	cjhxPdEAFmbqQReGRwGMgz6caEM1NWVuSoUrDQWVTbZJGegA3O6OtiYwAMHsIQI8FvrSB4mdjaPxr
+	joaYeLZTje9SEZFz6Bk0YJ+fXYrIl8ASotCt4SNIAdUNvgjCUT0o0lvW5DxZjDIl07AQphwLRnsGH
+	tdk3hd5QeVHnsJgt16Tv8bmw8mKs5KJonsyfeEiQmqd6OiDOi3WCA92tz1qiK0Xd7T7Ufws9Y+fpW
+	vs9svxXMfFO2+k2msrOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwL5m-00DX9Q-TZ; Thu, 24 Jun 2021 08:52:10 +0000
-Received: from mga06.intel.com ([134.134.136.31])
+	id 1lwLF4-00Dc5s-K6; Thu, 24 Jun 2021 09:01:46 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwL5k-00DX8U-20; Thu, 24 Jun 2021 08:52:09 +0000
-IronPort-SDR: nFEcMs7bEzjM+IsWyGHjwj6uXA32BTTRq0XFjnJ61Wz/ulHIs2MJgWKzywuP3I+TbMEwAegncU
- qky0bB1MW9Qg==
-X-IronPort-AV: E=McAfee;i="6200,9189,10024"; a="268563026"
-X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="268563026"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 01:52:06 -0700
-IronPort-SDR: b2WPW20xI/GJO29ic6WIfxIMz72rLAtb0USOd7lNI7J+Sgm2+3/EG1ErQrLUO2vnU20Qh+TbCW
- rzKM1urai8Fg==
-X-IronPort-AV: E=Sophos;i="5.83,296,1616482800"; d="scan'208";a="487681787"
-Received: from schulke-mobl1.ger.corp.intel.com (HELO localhost)
- ([10.252.59.242])
- by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2021 01:51:41 -0700
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>, daniel@ffwll.ch,
- airlied@linux.ie, alexander.deucher@amd.com, christian.koenig@amd.com,
- Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com,
- mihail.atanassov@arm.com, brian.starkey@arm.com,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzysztof.kozlowski@canonical.com,
- xinliang.liu@linaro.org, tiantao6@hisilicon.com, john.stultz@linaro.org,
- kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
- laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
- p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
- kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
- chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
- tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
- benjamin.gaignard@linaro.org, yannick.fertre@foss.st.com,
- philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
- thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
- emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
- hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
- michal.simek@xilinx.com, rodrigo.vivi@intel.com, linux@armlinux.org.uk,
- kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
- melissa.srw@gmail.com, hamohammed.sa@gmail.com
-Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- Daniel Vetter <daniel.vetter@ffwll.ch>, linux-tegra@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v3 04/27] drm: Don't test for IRQ support in VBLANK ioctls
-In-Reply-To: <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20210624072916.27703-1-tzimmermann@suse.de>
- <20210624072916.27703-5-tzimmermann@suse.de> <87im23u1ok.fsf@intel.com>
- <b5e7729f-ed11-e9ca-386e-562feb2bd2b7@suse.de>
-Date: Thu, 24 Jun 2021 11:51:37 +0300
-Message-ID: <877dijtzl2.fsf@intel.com>
+ id 1lwLEn-00Dbzi-D7; Thu, 24 Jun 2021 09:01:31 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id EFC1E1FD67;
+ Thu, 24 Jun 2021 09:01:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624525287; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
+ b=AfmRvipDjPguqpHQsCDwGgRttH86X9WIJRl5SF854v2LOw62GFwg9pMv8xHkbn5fMK/UT3
+ PkQjk9NieVig+U3rhaIMiD/z5GGxyHxNsaGah8d3Jp7e5fDPnyv1sv8TZCHJlejCp0iAvT
+ KHDQrXLq3hkR6lcYahZAuzU4k5cSdTs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624525287;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
+ b=HyssKNSKMT8f4DPPkbmfMZXfs15pnriQZpJiZpQNhim23M+dvydLiN+Wf5pLutgUNXWKiM
+ AjgwaSKXfGWmjqBA==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id B45E111A97;
+ Thu, 24 Jun 2021 09:01:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624525287; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
+ b=AfmRvipDjPguqpHQsCDwGgRttH86X9WIJRl5SF854v2LOw62GFwg9pMv8xHkbn5fMK/UT3
+ PkQjk9NieVig+U3rhaIMiD/z5GGxyHxNsaGah8d3Jp7e5fDPnyv1sv8TZCHJlejCp0iAvT
+ KHDQrXLq3hkR6lcYahZAuzU4k5cSdTs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624525287;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version: content-transfer-encoding:content-transfer-encoding;
+ bh=WeFdz/kJ2fXFQntdDnyvQsFkSruz68h83Slej1PZ9qg=;
+ b=HyssKNSKMT8f4DPPkbmfMZXfs15pnriQZpJiZpQNhim23M+dvydLiN+Wf5pLutgUNXWKiM
+ AjgwaSKXfGWmjqBA==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id CJ4MK+dJ1GCGMwAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Thu, 24 Jun 2021 09:01:27 +0000
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, matthias.bgg@gmail.com
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH] drm/mediatek: Implement mmap as GEM object function
+Date: Thu, 24 Jun 2021 11:01:26 +0200
+Message-Id: <20210624090126.8167-1-tzimmermann@suse.de>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210624_015208_186477_2240E1CB 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20210624_020129_642371_5122F68D 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,135 +104,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
-> Hi
->
-> Am 24.06.21 um 10:06 schrieb Jani Nikula:
->> On Thu, 24 Jun 2021, Thomas Zimmermann <tzimmermann@suse.de> wrote:
->>> diff --git a/drivers/gpu/drm/drm_vblank.c b/drivers/gpu/drm/drm_vblank.c
->>> index 3417e1ac7918..10fe16bafcb6 100644
->>> --- a/drivers/gpu/drm/drm_vblank.c
->>> +++ b/drivers/gpu/drm/drm_vblank.c
->>> @@ -1748,8 +1748,16 @@ int drm_wait_vblank_ioctl(struct drm_device *dev, void *data,
->>>   	unsigned int pipe_index;
->>>   	unsigned int flags, pipe, high_pipe;
->>>   
->>> -	if (!dev->irq_enabled)
->>> -		return -EOPNOTSUPP;
->>> +#if defined(CONFIG_DRM_LEGACY)
->>> +	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY))) {
->>> +		if (!dev->irq_enabled)
->>> +			return -EOPNOTSUPP;
->>> +	} else /* if DRIVER_MODESET */
->>> +#endif
->>> +	{
->>> +		if (!drm_dev_has_vblank(dev))
->>> +			return -EOPNOTSUPP;
->>> +	}
->> 
->> Sheesh I hate this kind of inline #ifdefs.
->> 
->> Two alternate suggestions that I believe should be as just efficient:
->
-> Or how about:
->
-> static bool drm_wait_vblank_supported(struct drm_device *dev)
->
-> {
->
-> if defined(CONFIG_DRM_LEGACY)
-> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
->
-> 		return dev->irq_enabled;
->
-> #endif
-> 	return drm_dev_has_vblank(dev);
->
-> }
->
->
-> ?
->
-> It's inline, but still readable.
+Moving the driver-specific mmap code into a GEM object function allows
+for using DRM helpers for various mmap callbacks.
 
-It's definitely better than the original, but it's unclear to me why
-you'd prefer this over option 2) below. I guess the only reason I can
-think of is emphasizing the conditional compilation. However,
-IS_ENABLED() is widely used in this manner specifically to avoid inline
-#if, and the compiler optimizes it away.
+The respective mediatek functions are being removed. The file_operations
+structure fops is now being created by the helper macro
+DEFINE_DRM_GEM_FOPS().
 
-BR,
-Jani.
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.c | 44 +++++++-------------------
+ drivers/gpu/drm/mediatek/mtk_drm_gem.h |  3 --
+ 3 files changed, 14 insertions(+), 46 deletions(-)
 
-
->
-> Best regards
-> Thomas
->
->> 
->> 1) The more verbose:
->> 
->> #if defined(CONFIG_DRM_LEGACY)
->> static bool drm_wait_vblank_supported(struct drm_device *dev)
->> {
->> 	if  (unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
->> 		return dev->irq_enabled;
->> 	else
->> 		return drm_dev_has_vblank(dev);
->> }
->> #else
->> static bool drm_wait_vblank_supported(struct drm_device *dev)
->> {
->> 	return drm_dev_has_vblank(dev);
->> }
->> #endif
->> 
->> 2) The more compact:
->> 
->> static bool drm_wait_vblank_supported(struct drm_device *dev)
->> {
->> 	if  (IS_ENABLED(CONFIG_DRM_LEGACY) && unlikely(drm_core_check_feature(dev, DRIVER_LEGACY)))
->> 		return dev->irq_enabled;
->> 	else
->> 		return drm_dev_has_vblank(dev);
->> }
->> 
->> Then, in drm_wait_vblank_ioctl().
->> 
->> 	if (!drm_wait_vblank_supported(dev))
->> 		return -EOPNOTSUPP;
->> 
->> The compiler should do the right thing without any explicit inline
->> keywords etc.
->> 
->> BR,
->> Jani.
->> 
->>>   
->>>   	if (vblwait->request.type & _DRM_VBLANK_SIGNAL)
->>>   		return -EINVAL;
->>> @@ -2023,7 +2031,7 @@ int drm_crtc_get_sequence_ioctl(struct drm_device *dev, void *data,
->>>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
->>>   		return -EOPNOTSUPP;
->>>   
->>> -	if (!dev->irq_enabled)
->>> +	if (!drm_dev_has_vblank(dev))
->>>   		return -EOPNOTSUPP;
->>>   
->>>   	crtc = drm_crtc_find(dev, file_priv, get_seq->crtc_id);
->>> @@ -2082,7 +2090,7 @@ int drm_crtc_queue_sequence_ioctl(struct drm_device *dev, void *data,
->>>   	if (!drm_core_check_feature(dev, DRIVER_MODESET))
->>>   		return -EOPNOTSUPP;
->>>   
->>> -	if (!dev->irq_enabled)
->>> +	if (!drm_dev_has_vblank(dev))
->>>   		return -EOPNOTSUPP;
->>>   
->>>   	crtc = drm_crtc_find(dev, file_priv, queue_seq->crtc_id);
->> 
-
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b46bdb8985da..bbfefb29c211 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -300,16 +300,7 @@ static void mtk_drm_kms_deinit(struct drm_device *drm)
+ 	component_unbind_all(drm->dev, drm);
+ }
+ 
+-static const struct file_operations mtk_drm_fops = {
+-	.owner = THIS_MODULE,
+-	.open = drm_open,
+-	.release = drm_release,
+-	.unlocked_ioctl = drm_ioctl,
+-	.mmap = mtk_drm_gem_mmap,
+-	.poll = drm_poll,
+-	.read = drm_read,
+-	.compat_ioctl = drm_compat_ioctl,
+-};
++DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
+ 
+ /*
+  * We need to override this because the device used to import the memory is
+@@ -332,7 +323,7 @@ static const struct drm_driver mtk_drm_driver = {
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ 	.gem_prime_import = mtk_drm_gem_prime_import,
+ 	.gem_prime_import_sg_table = mtk_gem_prime_import_sg_table,
+-	.gem_prime_mmap = mtk_drm_gem_mmap_buf,
++	.gem_prime_mmap = drm_gem_prime_mmap,
+ 	.fops = &mtk_drm_fops,
+ 
+ 	.name = DRIVER_NAME,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+index 280ea0d5e840..d0544962cfc1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+@@ -14,11 +14,14 @@
+ #include "mtk_drm_drv.h"
+ #include "mtk_drm_gem.h"
+ 
++static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
++
+ static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs = {
+ 	.free = mtk_drm_gem_free_object,
+ 	.get_sg_table = mtk_gem_prime_get_sg_table,
+ 	.vmap = mtk_drm_gem_prime_vmap,
+ 	.vunmap = mtk_drm_gem_prime_vunmap,
++	.mmap = mtk_drm_gem_object_mmap,
+ 	.vm_ops = &drm_gem_cma_vm_ops,
+ };
+ 
+@@ -145,11 +148,19 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	struct mtk_drm_gem_obj *mtk_gem = to_mtk_gem_obj(obj);
+ 	struct mtk_drm_private *priv = obj->dev->dev_private;
+ 
++	/*
++	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
++	 * whole buffer from the start.
++	 */
++	vma->vm_pgoff = 0;
++
+ 	/*
+ 	 * dma_alloc_attrs() allocated a struct page table for mtk_gem, so clear
+ 	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().
+ 	 */
+-	vma->vm_flags &= ~VM_PFNMAP;
++	vma->vm_flags |= VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
++	vma->vm_page_prot = pgprot_writecombine(vm_get_page_prot(vma->vm_flags));
++	vma->vm_page_prot = pgprot_decrypted(vma->vm_page_prot);
+ 
+ 	ret = dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
+ 			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
+@@ -159,37 +170,6 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj,
+ 	return ret;
+ }
+ 
+-int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj, struct vm_area_struct *vma)
+-{
+-	int ret;
+-
+-	ret = drm_gem_mmap_obj(obj, obj->size, vma);
+-	if (ret)
+-		return ret;
+-
+-	return mtk_drm_gem_object_mmap(obj, vma);
+-}
+-
+-int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+-{
+-	struct drm_gem_object *obj;
+-	int ret;
+-
+-	ret = drm_gem_mmap(filp, vma);
+-	if (ret)
+-		return ret;
+-
+-	obj = vma->vm_private_data;
+-
+-	/*
+-	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map the
+-	 * whole buffer from the start.
+-	 */
+-	vma->vm_pgoff = 0;
+-
+-	return mtk_drm_gem_object_mmap(obj, vma);
+-}
+-
+ /*
+  * Allocate a sg_table for this GEM object.
+  * Note: Both the table's contents, and the sg_table itself must be freed by
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+index 6da5ccb4b933..9a359a06cb73 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+@@ -39,9 +39,6 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm_device *dev, size_t size,
+ 					   bool alloc_kmap);
+ int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_device *dev,
+ 			    struct drm_mode_create_dumb *args);
+-int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+-int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj,
+-			 struct vm_area_struct *vma);
+ struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *obj);
+ struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_device *dev,
+ 			struct dma_buf_attachment *attach, struct sg_table *sg);
 -- 
-Jani Nikula, Intel Open Source Graphics Center
+2.32.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
