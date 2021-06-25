@@ -2,64 +2,75 @@ Return-Path: <SRS0=Skuz=LT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 452C8C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 11:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2015FC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 11:10:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3E0261458
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 11:09:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3E0261458
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id D987361463
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 11:10:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D987361463
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:CC:To:Date:From:Subject:
+	MIME-Version:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pxBYlL81GTTQm5i1xgB8yeLLsd7IoHDZ6NqSwY8+//Q=; b=T5q1GiUpQTVB1H
-	aPDR8oGY5r5ug6IftSx9vys7KKiJywbErH5RTZMTvg2QCECgLbIkMSW3xP+T+vFySBPdKwLHyxqTs
-	gYtSY4e9ypumAWkjvuyq5Il797vMqr83UofQy1HgxwqsE2RZyNaMlWrdzlhuqvdmo4+C0O0340rQm
-	MrryrGvfkL2DUbeE2jwXvga1JaPZRR5og4Ih/32NqGuZnM2JvF56sUar0WQmcCJuo2vOdYliAKxSc
-	T1cjwnxMk6llF4s27kGEPDIYwHroGz8myH7zdBGY4vGo1XCBfrOAqJLSdKLZ9XFiQjPu1Dah6lcHs
-	wAJpcj0GPFWd1aPJlfig==;
+	List-Owner; bh=wFGiTKYgXVWiENS+vQ1hVFdoKaIl29Kr4U0GRoPROGg=; b=njChGD96Gx2RhZ
+	dcnzJo4iqXbltWVxar0ESDhD1UHz0DmepnXQI5wFoBq9EBZeLIjuGS67jdnTmwaBda4sCYouF0H4h
+	9fonFwt4TXcGydql1beV/9ZVbBA8ms40Qed/lh0ziL04xjrqzAyBMEJ2VdY/Np91x+SEMsqENA5dZ
+	yb0xLmRU5qQDLepJIYJD75Ul+i0E4VCYWop/hozKZV0vHvIUX7Hq9RULbFUdNxJjZW3IgCxWmw/4n
+	4iMRHtqSUBfczocnlO2b89XknBztlrG98LLbndmnyjfIiVdSI2/i9R348QN8++DyoIKZHqtWMYYB/
+	dqDRWKc1mV1leSQATNsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwjhd-001E2h-8J; Fri, 25 Jun 2021 11:08:53 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1lwjjN-001EnO-Vz; Fri, 25 Jun 2021 11:10:42 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwjcM-001BuI-8f; Fri, 25 Jun 2021 11:03:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1624618996;
- bh=g/1l77n9SRFOvqNNHUd97uMSJe2gTcM2ug+hsnbl3Gk=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=EMeCoMdPzNQZym6nwtrXDEQeWas1h+MMoYjDX6eep49P5tjRFBjTLvnxdU7gU66M+
- JXjIXJZuisw0H+Q+0R8bDU9AdSJblpjIMNJ+d5OAFWoHTn5XXx2YCaD1cCRGY3BGxX
- jlGsTxNWLvqMfFxg83E2Q06TyoQVj/hWBYjeyvxU=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.157.219] ([217.61.157.219]) by web-mail.gmx.net
- (3c-app-gmx-bs66.server.lan [172.19.170.210]) (via HTTP); Fri, 25 Jun 2021
- 13:03:16 +0200
-MIME-Version: 1.0
-Message-ID: <trinity-2eb7c0ac-d9dc-446c-8907-69b5f4df6838-1624618996538@3c-app-gmx-bs66>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: Eric Woudstra <ericwouds@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Ryder Lee
- <ryder.lee@mediatek.com>, Daniel Golle <daniel@makrotopia.org>
-Subject: Aw: Re:  Re: [PATCH] Fix mt7622.dtsi thermal cpu
-Date: Fri, 25 Jun 2021 13:03:16 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <8b27246b-721e-fa0e-5c2b-b1b4b4d6fdd3@linaro.org>
+ id 1lwjgY-001DdK-QS; Fri, 25 Jun 2021 11:07:48 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id q14so12850457eds.5;
+ Fri, 25 Jun 2021 04:07:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=in-reply-to:references:thread-topic:user-agent:mime-version
+ :content-transfer-encoding:subject:from:date:to:cc:message-id;
+ bh=zS+Sy2JuyXUjHyIS0w19cZln6zoHhOgeM0Qhc+/cXBs=;
+ b=R9EzdJqKI8fn9iZhp0YgJ8pfmVFefMTQMKVqSscunCMLjkjqYZfF3rRvJKIsiNHY2R
+ SzPAZOKlqWsCCjE8VOAunUzBWWUL2M/ep75WyXHfk0Ro8KUSvcPLV6Dxt6FObgsyB8eg
+ JHL8+fxD/v9BEALcIQDv7HS/g/dgsLKOOxgfqMf1vSsWcXD/HjtTMg0PJrQWnuNHO6nq
+ jWyi32oA/WGhWp1ww+q4UuecpGmmCBaqbDqaEGciBpqeuY/GTpgVEiPl52bBTr9w6Ttf
+ JfRYrpXFPCRvLReavNC2tBgVdoxqFX/7GxPADzdV1No0Ln2xvCdvBGiXvuiqr8Bx97Id
+ W8RA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:in-reply-to:references:thread-topic:user-agent
+ :mime-version:content-transfer-encoding:subject:from:date:to:cc
+ :message-id;
+ bh=zS+Sy2JuyXUjHyIS0w19cZln6zoHhOgeM0Qhc+/cXBs=;
+ b=tg+ZVlXRQjpDMPK0vOqi3gGLLpenBYxnNvD9CzCfKMpfdZqBx9o2fpJT/Z0GUdCvvQ
+ moG+se36qXS/IyopsBwOsvQ2mr/WWBtaWFL5uhcHsUu2P3aoOcgyz+AnSVO7yUGJLK1T
+ LAkiINDevz+WVOAu3fBrmugsScWy7ig0NpId5We1Vy0k0SMSO8wxR5CyCvR1ydLEo9iu
+ SxDOHhbfAczDQ/uvDcB+3LWdcKKbb9AMbc1p6uwKL23ZObcSVXM6jt6x602IMjvAhwmK
+ e8veRx9knajrkd80peXbG1vZeDDpgwR5Vsh6GQ1s9tumAa5sB3uP0pPT8hqEOyaRBDtg
+ RqBw==
+X-Gm-Message-State: AOAM531PjAC1RJU+S8qIKVvHfnGDyP9Rv9aTaWVpiRykQnBhBA6MkjtZ
+ 7qS8CZWuM8gOVS41ABvxf5w=
+X-Google-Smtp-Source: ABdhPJxAA2PYThH5HCe4nhv2JuPudiiWFmx883/ndYXLhIfPMVK4qdlr8pZNqHIVId0VJm5M1V6Ppg==
+X-Received: by 2002:a05:6402:31b4:: with SMTP id
+ dj20mr14094807edb.186.1624619264824; 
+ Fri, 25 Jun 2021 04:07:44 -0700 (PDT)
+Received: from [10.73.177.209] ([89.205.226.136])
+ by smtp.gmail.com with ESMTPSA id j19sm2626800ejo.3.2021.06.25.04.07.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Jun 2021 04:07:44 -0700 (PDT)
+In-Reply-To: <trinity-2eb7c0ac-d9dc-446c-8907-69b5f4df6838-1624618996538@3c-app-gmx-bs66>
 References: <20210619121927.32699-1-ericwouds@gmail.com>
  <e30a2d01-a200-80cb-88d9-6aea62dd49f1@linaro.org>
  <56fb5540-fb86-4e6a-a596-1276026b37e5@gmail.com>
@@ -71,29 +82,28 @@ References: <20210619121927.32699-1-ericwouds@gmail.com>
  <3dd22cf2-1186-4870-aa49-e5cddc18c6e9@gmail.com>
  <trinity-7580d955-3187-41e5-9297-1ac8f628a9d5-1624609003739@3c-app-gmx-bs66>
  <8b27246b-721e-fa0e-5c2b-b1b4b4d6fdd3@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:0os7uhuK8TvkyvnXgZYkBKOUKqVXeknBjyVhU8kcofVYZisfTdOZDW21UW96lmFSKWJe3
- BB/hvXUJMiJizJhW1zn2Dl+fzi2CM+bBKg4Pt8OAXChs9W65IU3PA2FK4akf+z4jgP4quoY1Qkae
- gM35Jxb+STndPOC3BdW9tz3fMxfOHG0d2RlOHInF0eyZ8nLyOKkLGVqZiak/C06iKYR0L+Ubu6/t
- EXxyVbdVfi+jAvDGgGKvz+7HYpYdyfgPfX5+AXX16wIYD9IXADjmz7/8XuyjkZBhHTvGxmGLmuMl
- 9U=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:9rdLbwbOXq0=:bT2NbFMJ3ks1ap4pjutQ9b
- gaQrK+8Jm7K3t1+Ep/+5qd16A8xx6FisDmJHZH+Pf1Bw/EKufuvej8ZOS1Y0P/DUlnPgs9f1I
- VoYyA46sUU/s5fP6UWBJeizpcKIXXtBts6G04Ngr0q3Sg8xsa5FX/gjS5o2FqsfwqEwxPhOi5
- vDgXN8OHQ2q8vWf0tSoki7tqRwEO4Hp+fzN9nEJz3EbuN+3pWVKyJ+0CUfkYpWaV9WhLr2Fq3
- +4APmI8rgavyJKWbnqf6QPc26KSwgT85uEqfyhN/bRH4TOs0mnN0TPsRnUnZ6SPGdP48tMbz8
- ki0Iy7nL90+rEZo7s210HCcPrDikZ+ATelOYJWE9e+HwBSYPt4XvFJ+PTwu64z7Nb3duGJxze
- ZA/j9W9kOP1WSVk83667UZd/vR1UzoNqnjQdkyxdEduidpvVj8EO3F7EANrF3hirSOsZHURHi
- 15tn1Q/a8x3/rqghUlqcZShwlzXL3v86Hj7qhEkPHRcZvHatcFf/mgVXRMdDwha2+GxtYxW3C
- mgYrljdFDyzvuFt2ZE8Fpgo+bN5ngvkKHXbW+1kRsE+3yqBEGAe9O6x0oEZpOIPOq4JlrEHYX
- 7JX3fVNIdqx39dKQkkulqWid4O/hzjmsangdCKzot23TGh8h8u8sscMLR1cTjgy8aWWjakUqh
- wZzY799FuWrZHejdwRzgze84Z6GFlr4198vlT8VXBP/3/Cd220qF8rR5VU/hIkp02c1eMqKUh
- hc4i4RdYqBV6ERFFgRnyBDZy4CBvYFki2Yi4A+9nTnXS/A29mQFgh26pZDV0WsUhm7Kh2HqSt
- hPm92VPi5tnDAmYZydAe3ud6wRYgiwRt4+RaLLbZxCBARe+was=
+ <trinity-2eb7c0ac-d9dc-446c-8907-69b5f4df6838-1624618996538@3c-app-gmx-bs66>
+X-Referenced-Uid: 5607
+Thread-Topic: Aw: Re:  Re: [PATCH] Fix mt7622.dtsi thermal cpu
+X-Blue-Identity: !l=334&o=43&fo=5970&pl=224&po=0&qs=PREFIX&f=HTML&m=!%3ANzRiZDk5M2QtNTJhNy00MTE4LThlNmYtYTk2ZDg2NDQzNGU0%3ASU5CT1g%3D%3ANTYwNw%3D%3D%3AANSWERED&p=195&q=SHOW
+X-Is-Generated-Message-Id: true
+User-Agent: Android
+MIME-Version: 1.0
+X-Local-Message-Id: <52767351-83da-41e2-a746-3407ee9c73e8@gmail.com>
+Subject: Re:  Re: [PATCH] Fix mt7622.dtsi thermal cpu
+From: Eric Woudstra <ericwouds@gmail.com>
+Date: Fri, 25 Jun 2021 13:07:42 +0200
+To: Frank Wunderlich <frank-w@public-files.de>
+CC: Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,Sean Wang <sean.wang@mediatek.com>,
+ Ryder Lee <ryder.lee@mediatek.com>,Daniel Golle <daniel@makrotopia.org>
+Message-ID: <52767351-83da-41e2-a746-3407ee9c73e8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_040326_732127_118DBA17 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20210625_040746_968756_92B458F9 
+X-CRM114-Status: GOOD (  16.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,128 +115,94 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
-
-> Gesendet: Freitag, 25. Juni 2021 um 11:57 Uhr
-> Von: "Daniel Lezcano" <daniel.lezcano@linaro.org>
-
-> You should not add the fan in the mt7622.dtsi itself but in the board
-> specific file where there is a fan output on it. mt7622.dtsi is supposed
-> to be the SoC itself AFAICT.
->
-> For instance:
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/thermal/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi#n39
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/thermal/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi#n164
-
-> > @@ -170,14 +177,12 @@
-> >  			cooling-maps {
-> >  				map0 {
-> >  					trip = <&cpu_passive>;
-> > -					cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
-> > -							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> > +					cooling-device = <&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-> >  				};
->
-> fan == active trip point
->
-> This is referring to the passive trip point. So it should point to the
-> CPU as it is now. Note the order of mitigation is inverted regarding the
-> proposal description.
-
-but we need to disable the passive trip as cpu-trotteling starts there...the higher temperature trips are currently not reached
-
-summary
-
-moving fan and cpu_thermal-override to bananapi-r64.dts
-
-passive-trip: cooling-device = <&cpu0/1 0 0> as in erics Patch
-active trip: cooling-device = <&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-the other 2 unchanged
-
-but i suggest changing the temperature points in mt7622 dtsi as this is SoC specific
-
-so basicly:
-
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -143,13 +143,13 @@ cpu_thermal: cpu-thermal {
-
-                        trips {
-                                cpu_passive: cpu-passive {
--                                       temperature = <47000>;
-+                                       temperature = <70000>;
-                                        hysteresis = <2000>;
-                                        type = "passive";
-                                };
-
-                                cpu_active: cpu-active {
--                                       temperature = <67000>;
-+                                       temperature = <80000>;
-                                        hysteresis = <2000>;
-                                        type = "active";
-                                };
-@@ -170,8 +170,8 @@ cpu-crit {
-                        cooling-maps {
-                                map0 {
-                                        trip = <&cpu_passive>;
--                                       cooling-device = <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
--                                                        <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+                                       cooling-device = <&cpu0 0 0>,
-+                                                        <&cpu1 0 0>;
-                                };
-
-                                map1 {
-@@ -428,6 +428,7 @@ uart3: serial@11005000 {
-        pwm: pwm@11006000 {
-                compatible = "mediatek,mt7622-pwm";
-                reg = <0 0x11006000 0 0x1000>;
-+               #pwm-cells = <3>;
-                interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
-                clocks = <&topckgen CLK_TOP_PWM_SEL>,
-                         <&pericfg CLK_PERI_PWM_PD>,
-
---- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
-@@ -37,6 +37,13 @@ cpu@1 {
-                };
-        };
-
-+       fan0: pwm-fan {
-+               compatible = "pwm-fan";
-+               #cooling-cells = <2>;
-+               pwms = <&pwm 2 10000 0>;
-+               cooling-levels = <0 102 170 230>;
-+       };
-+
-        gpio-keys {
-                compatible = "gpio-keys";
-
-@@ -582,6 +589,29 @@ &u3phy {
-        status = "okay";
- };
-
-+&cpu_thermal {
-+       cooling-maps {
-+               map1 {
-+                       trip = <&cpu_active>;
-+                       cooling-device = <&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
-+               };
-+       };
-+};
-+
- &uart0 {
-        pinctrl-names = "default";
-        pinctrl-0 = <&uart0_pins>;
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SSBjaG9vc2UgImhvdCogd2l0aCBDUFUsIGJlY2F1c2UgaXQgd2FzIHRoZSBiZXN0IHRlbXBlcmF0
+dXJlLiBCdXQgaXQgc2hvdWxkIHJlYWxseSBiZSBwYXNzaXZlIG9ubHkgd2l0aCB0aGUgY29vbGlu
+ZyBkZXZpY2UgQ1BVIGJ1dCB3aXRoIGEgbXVjaCBoaWdoZXIgdGVtcGVyYXR1cmUuIEZvciBtZSA4
+NyBkZWdyZWVzIGlzIGZpbmUgYW5kIHRlc3RlZC4gQnV0IGZvciBtYWlubGluZSB3ZSB3b3VsZCBi
+ZXR0ZXIgYXNrIE1lZGlhdGVrIGZvciB0aGUgY29ycmVjdCBtYXhpbXVtIHRlbXBlcmF0dXJlLgoK
+4oGjR2V0IEJsdWVNYWlsIGZvciBBbmRyb2lkIOKAiwoKT24gSnVuIDI1LCAyMDIxLCAxOjAzIFBN
+LCBhdCAxOjAzIFBNLCBGcmFuayBXdW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4g
+d3JvdGU6Cj5IaQo+Cj4+IEdlc2VuZGV0OiBGcmVpdGFnLCAyNS4gSnVuaSAyMDIxIHVtIDExOjU3
+IFVocgo+PiBWb246ICJEYW5pZWwgTGV6Y2FubyIgPGRhbmllbC5sZXpjYW5vQGxpbmFyby5vcmc+
+Cj4KPj4gWW91IHNob3VsZCBub3QgYWRkIHRoZSBmYW4gaW4gdGhlIG10NzYyMi5kdHNpIGl0c2Vs
+ZiBidXQgaW4gdGhlIGJvYXJkCj4+IHNwZWNpZmljIGZpbGUgd2hlcmUgdGhlcmUgaXMgYSBmYW4g
+b3V0cHV0IG9uIGl0LiBtdDc2MjIuZHRzaSBpcwo+c3VwcG9zZWQKPj4gdG8gYmUgdGhlIFNvQyBp
+dHNlbGYgQUZBSUNULgo+Pgo+PiBGb3IgaW5zdGFuY2U6Cj4+Cj4+Cj5odHRwczovL2dpdC5rZXJu
+ZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90aGVybWFsL2xpbnV4LmdpdC90cmVlL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kjbjM5Cj4+Cj4+
+Cj5odHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90aGVybWFs
+L2xpbnV4LmdpdC90cmVlL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBo
+aXJlLmR0c2kjbjE2NAo+Cj4+ID4gQEAgLTE3MCwxNCArMTc3LDEyIEBACj4+ID4gIAkJCWNvb2xp
+bmctbWFwcyB7Cj4+ID4gIAkJCQltYXAwIHsKPj4gPiAgCQkJCQl0cmlwID0gPCZjcHVfcGFzc2l2
+ZT47Cj4+ID4gLQkJCQkJY29vbGluZy1kZXZpY2UgPSA8JmNwdTAgVEhFUk1BTF9OT19MSU1JVCBU
+SEVSTUFMX05PX0xJTUlUPiwKPj4gPiAtCQkJCQkJCSA8JmNwdTEgVEhFUk1BTF9OT19MSU1JVCBU
+SEVSTUFMX05PX0xJTUlUPjsKPj4gPiArCQkJCQljb29saW5nLWRldmljZSA9IDwmZmFuMCBUSEVS
+TUFMX05PX0xJTUlUIFRIRVJNQUxfTk9fTElNSVQ+Owo+PiA+ICAJCQkJfTsKPj4KPj4gZmFuID09
+IGFjdGl2ZSB0cmlwIHBvaW50Cj4+Cj4+IFRoaXMgaXMgcmVmZXJyaW5nIHRvIHRoZSBwYXNzaXZl
+IHRyaXAgcG9pbnQuIFNvIGl0IHNob3VsZCBwb2ludCB0bwo+dGhlCj4+IENQVSBhcyBpdCBpcyBu
+b3cuIE5vdGUgdGhlIG9yZGVyIG9mIG1pdGlnYXRpb24gaXMgaW52ZXJ0ZWQgcmVnYXJkaW5nCj50
+aGUKPj4gcHJvcG9zYWwgZGVzY3JpcHRpb24uCj4KPmJ1dCB3ZSBuZWVkIHRvIGRpc2FibGUgdGhl
+IHBhc3NpdmUgdHJpcCBhcyBjcHUtdHJvdHRlbGluZyBzdGFydHMKPnRoZXJlLi4udGhlIGhpZ2hl
+ciB0ZW1wZXJhdHVyZSB0cmlwcyBhcmUgY3VycmVudGx5IG5vdCByZWFjaGVkCj4KPnN1bW1hcnkK
+Pgo+bW92aW5nIGZhbiBhbmQgY3B1X3RoZXJtYWwtb3ZlcnJpZGUgdG8gYmFuYW5hcGktcjY0LmR0
+cwo+Cj5wYXNzaXZlLXRyaXA6IGNvb2xpbmctZGV2aWNlID0gPCZjcHUwLzEgMCAwPiBhcyBpbiBl
+cmljcyBQYXRjaAo+YWN0aXZlIHRyaXA6IGNvb2xpbmctZGV2aWNlID0gPCZmYW4wIFRIRVJNQUxf
+Tk9fTElNSVQKPlRIRVJNQUxfTk9fTElNSVQ+Owo+dGhlIG90aGVyIDIgdW5jaGFuZ2VkCj4KPmJ1
+dCBpIHN1Z2dlc3QgY2hhbmdpbmcgdGhlIHRlbXBlcmF0dXJlIHBvaW50cyBpbiBtdDc2MjIgZHRz
+aSBhcyB0aGlzIGlzCj5Tb0Mgc3BlY2lmaWMKPgo+c28gYmFzaWNseToKPgo+LS0tIGEvYXJjaC9h
+cm02NC9ib290L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaQo+KysrIGIvYXJjaC9hcm02NC9ib290
+L2R0cy9tZWRpYXRlay9tdDc2MjIuZHRzaQo+QEAgLTE0MywxMyArMTQzLDEzIEBAIGNwdV90aGVy
+bWFsOiBjcHUtdGhlcm1hbCB7Cj4KPiAgICAgICAgICAgICAgICAgICAgICAgIHRyaXBzIHsKPiAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3B1X3Bhc3NpdmU6IGNwdS1wYXNzaXZlIHsK
+Pi0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9IDw0
+NzAwMD47Cj4rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGVtcGVyYXR1
+cmUgPSA8NzAwMDA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGh5
+c3RlcmVzaXMgPSA8MjAwMD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgdHlwZSA9ICJwYXNzaXZlIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfTsK
+Pgo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjcHVfYWN0aXZlOiBjcHUtYWN0aXZl
+IHsKPi0gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0ZW1wZXJhdHVyZSA9
+IDw2NzAwMD47Cj4rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGVtcGVy
+YXR1cmUgPSA8ODAwMDA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IGh5c3RlcmVzaXMgPSA8MjAwMD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgdHlwZSA9ICJhY3RpdmUiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9
+Owo+QEAgLTE3MCw4ICsxNzAsOCBAQCBjcHUtY3JpdCB7Cj4gICAgICAgICAgICAgICAgICAgICAg
+ICBjb29saW5nLW1hcHMgewo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXAwIHsK
+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cmlwID0gPCZjcHVfcGFz
+c2l2ZT47Cj4tICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29vbGluZy1k
+ZXZpY2UgPSA8JmNwdTAKPlRIRVJNQUxfTk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD4sCj4tICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8JmNw
+dTEKPlRIRVJNQUxfTk9fTElNSVQgVEhFUk1BTF9OT19MSU1JVD47Cj4rICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgY29vbGluZy1kZXZpY2UgPSA8JmNwdTAgMCAwPiwKPisg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwm
+Y3B1MSAwIDA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9Owo+Cj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIG1hcDEgewo+QEAgLTQyOCw2ICs0MjgsNyBAQCB1YXJ0
+Mzogc2VyaWFsQDExMDA1MDAwIHsKPiAgICAgICAgcHdtOiBwd21AMTEwMDYwMDAgewo+ICAgICAg
+ICAgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ3NjIyLXB3bSI7Cj4gICAgICAgICAg
+ICAgICAgcmVnID0gPDAgMHgxMTAwNjAwMCAwIDB4MTAwMD47Cj4rICAgICAgICAgICAgICAgI3B3
+bS1jZWxscyA9IDwzPjsKPiAgICAgICAgICAgICAgICBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNzcg
+SVJRX1RZUEVfTEVWRUxfTE9XPjsKPiAgICAgICAgICAgICAgICBjbG9ja3MgPSA8JnRvcGNrZ2Vu
+IENMS19UT1BfUFdNX1NFTD4sCj4gICAgICAgICAgICAgICAgICAgICAgICAgPCZwZXJpY2ZnIENM
+S19QRVJJX1BXTV9QRD4sCj4KPi0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3
+NjIyLWJhbmFuYXBpLWJwaS1yNjQuZHRzCj4rKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlh
+dGVrL210NzYyMi1iYW5hbmFwaS1icGktcjY0LmR0cwo+QEAgLTM3LDYgKzM3LDEzIEBAIGNwdUAx
+IHsKPiAgICAgICAgICAgICAgICB9Owo+ICAgICAgICB9Owo+Cj4rICAgICAgIGZhbjA6IHB3bS1m
+YW4gewo+KyAgICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicHdtLWZhbiI7Cj4rICAgICAgICAg
+ICAgICAgI2Nvb2xpbmctY2VsbHMgPSA8Mj47Cj4rICAgICAgICAgICAgICAgcHdtcyA9IDwmcHdt
+IDIgMTAwMDAgMD47Cj4rICAgICAgICAgICAgICAgY29vbGluZy1sZXZlbHMgPSA8MCAxMDIgMTcw
+IDIzMD47Cj4rICAgICAgIH07Cj4rCj4gICAgICAgIGdwaW8ta2V5cyB7Cj4gICAgICAgICAgICAg
+ICAgY29tcGF0aWJsZSA9ICJncGlvLWtleXMiOwo+Cj5AQCAtNTgyLDYgKzU4OSwyOSBAQCAmdTNw
+aHkgewo+ICAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gfTsKPgo+KyZjcHVfdGhlcm1hbCB7Cj4r
+ICAgICAgIGNvb2xpbmctbWFwcyB7Cj4rICAgICAgICAgICAgICAgbWFwMSB7Cj4rICAgICAgICAg
+ICAgICAgICAgICAgICB0cmlwID0gPCZjcHVfYWN0aXZlPjsKPisgICAgICAgICAgICAgICAgICAg
+ICAgIGNvb2xpbmctZGV2aWNlID0gPCZmYW4wIFRIRVJNQUxfTk9fTElNSVQKPlRIRVJNQUxfTk9f
+TElNSVQ+Owo+KyAgICAgICAgICAgICAgIH07Cj4rICAgICAgIH07Cj4rfTsKPisKPiAmdWFydDAg
+ewo+ICAgICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICAgICAgICBwaW5jdHJsLTAg
+PSA8JnVhcnQwX3BpbnM+OwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
