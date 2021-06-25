@@ -2,77 +2,94 @@ Return-Path: <SRS0=Skuz=LT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22C48C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD778C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:59:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E57666109D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:17:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E57666109D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6E2516196C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:59:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E2516196C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xQWsCB4ymNNO6MW1uLOaaySH+WwUPxjqA6+z+Mh+nMM=; b=3r7wGQ644U6bse
-	2aTogBU9VHr738u9F4rsVdoLDY4ejqMat9l7ub0P+ew1cLh7u3Du9cjwmdUr12lYk6yB7S8w4zLKp
-	LZCFjMDjXcSK9tFor8WD1L+txb9fIYqs9qr76NCyoOotPQfBSsnS2bp0lSGhvDVkKpBXPL2mpLv8l
-	BAV1VoJDkj6ysPA/VH8iehNh1aI0RW6nfBvZAni/YjBxFfcNh8F7NMwaUMzX0QHMck/XVFnGUEMyh
-	2kjLwsHNmH1sBNDLvN2AX9NO8M0hh09MMnzgFURkQ3UnaMZFT5HycZaZlGaR7/Db8C4Flyfq8suD+
-	IE6tKxttqRIMkpGpnVqw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=borNe7ZlwAccNFQ1md4n2yn9Hki4Q5ELyc2/szazHeo=; b=bNE9XODG3zmaBe
+	rT1H58Ofqz5itFw2+t+HF4sfW+PXLPvAE2iYaQvzUNlh94TJRyw0QAWJr16EfYDU3zhtY+5sehvaK
+	y/Fq4qzDEwAl/9N31uvU6smqujucTMflGwZU2yrMQekxDJIdsfnUVPRGBQ+SLzu51SiDw3ifH2LWx
+	IezNiD0RT12/AbwIePSjk5AxezJpHOJn8kV/G2LTrEnbhEE1c7zPnoKVuM4JBEgc2445aJu+Up38o
+	NcHJkt/uQta2f7O0DXXimgbdDPpFLt+7aZLwg/tRcyiNOjuuLCo81zZ0654WCI9fgN9dsXpnXu/Jv
+	XhG3t4oflyMCT3C0kNQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwmdc-001saR-9w; Fri, 25 Jun 2021 14:16:56 +0000
-Received: from mail-oo1-f48.google.com ([209.85.161.48])
+	id 1lwnIa-0024iQ-Dw; Fri, 25 Jun 2021 14:59:16 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwmai-001qgu-0h; Fri, 25 Jun 2021 14:14:00 +0000
-Received: by mail-oo1-f48.google.com with SMTP id
- s10-20020a4aeaca0000b029024c2acf6eecso1305189ooh.9; 
- Fri, 25 Jun 2021 07:13:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=eb2oox1oUIO8Ak6tDnGLYRSFQXaa3Y9McJsZ/3tyhSA=;
- b=Hdxv6DAygKSCxb/xwhZ5dX612vfTUGVy1RhQ0aVmr2oQ4Bo8xWlzr0iccetjNrT1Lw
- J2M4aUl0xPWBeSyr4rMT+K1KCZXXYkoi5zwPbaM8J84oTLO5aEj3ut0ogJNtojOWRaZD
- DKMGakrQ6yCqbwRie2vRD3tb1B/uImzX85eW3XQw0ggzxcBvBmkrVyLEOziU8bHF0vuQ
- z8lsVtQN3wrpe39dZnaZ0a+N3a+PuTPFozr2GBQp1UELIHh/lUMw5KQKHhDF64+6w9dH
- heLbNecvRgLm03NE6XFdikVGjpoGtXE57ZJ3MCQ/FWmzAlkzK2JnBIDflm7pjDd56b8P
- ikvA==
-X-Gm-Message-State: AOAM533rdT0fiUNZ1HIdus1xUX7lAymGhbLJ+cIdNudN86BlM7xZdIn0
- acTKH2JbQ7z8OrKkBPZfHppvRIN0AsLtj3ubz3s=
-X-Google-Smtp-Source: ABdhPJw8M9hdAhNOk4vX0DAD2iZIO6vcnGIazvppe7fETJt+EqtFocDXvQ0NnG7QX7KzoyLNjT2n3Qd0MJYwqB/iyoo=
-X-Received: by 2002:a4a:5285:: with SMTP id d127mr9265501oob.2.1624630432823; 
- Fri, 25 Jun 2021 07:13:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210625134129.11885-1-tung-chen.shih@mediatek.com>
-In-Reply-To: <20210625134129.11885-1-tung-chen.shih@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Fri, 25 Jun 2021 16:13:41 +0200
-Message-ID: <CAJZ5v0hdbML+J5yYQpoEeQJhO_QriDmmRuUhcsWDBxK1t4sknA@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] cpufreq: fix the target freq not in the range of
- policy->min & max
-To: TungChen Shih <tung-chen.shih@mediatek.com>
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Viresh Kumar <viresh.kumar@linaro.org>, 
+ id 1lwnIX-0024hl-0J
+ for linux-mediatek@lists.infradead.org; Fri, 25 Jun 2021 14:59:14 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.0.43/8.16.0.43) with SMTP id
+ 15PEuIdr028437; Fri, 25 Jun 2021 14:59:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : mime-version : content-type; s=corp-2020-01-29;
+ bh=tbDoPXETfKm0wSWVuyJVc016FawRN91LSq+bkmm8CnA=;
+ b=Pkge9wdirVh+MYeWjF3UVAapC0I49JTHjCpViaw0J2sL2UElv+98p4OUMtK7/LgvTu2a
+ TKVQ9wGNEsY9c0amAXtn4vCpYPqoLSGqUgnzpECirWCpe1X6D4F76CDjj0Gig8BA/9e4
+ 1ERCmAax+pis+SYox34iletlh4upLb83N6xtpk5EbEjyfrtde2wtz1RoOyxtj8UIMOxI
+ ZPNFZzUlZ0kkXAcY8MFOliZtcZJL7LMxBTAYRBsIAO5/1ORX2PeiErnjsZGkh/iWCna1
+ i+M5rUmhopnh2jyWZkxFj8GIBEeGbRRwJ76klvnMxrvMqtvz5+eOV2mGNKuwXrq2GWuI oA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 39d2pe9j04-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 25 Jun 2021 14:59:10 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 15PEtmVJ099579;
+ Fri, 25 Jun 2021 14:59:09 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by aserp3030.oracle.com with ESMTP id 39d2pyayy7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 25 Jun 2021 14:59:09 +0000
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 15PEtxEt100498;
+ Fri, 25 Jun 2021 14:59:08 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 39d2pyayxe-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 25 Jun 2021 14:59:08 +0000
+Received: from abhmp0014.oracle.com (abhmp0014.oracle.com [141.146.116.20])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 15PEx3c6026879;
+ Fri, 25 Jun 2021 14:59:03 GMT
+Received: from mwanda (/102.222.70.252)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Fri, 25 Jun 2021 07:59:02 -0700
+Date: Fri, 25 Jun 2021 17:58:54 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- wsd_upstream <wsd_upstream@mediatek.com>, 
- Linux PM <linux-pm@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+ Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] mt76: mt7915: fix info leak in mt7915_mcu_set_pre_cal()
+Message-ID: <YNXvLvrvllpXgCIn@mwanda>
+MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-Proofpoint-GUID: U5TCpDAlYzxOuFnYxZj1yGN63XwzthFs
+X-Proofpoint-ORIG-GUID: U5TCpDAlYzxOuFnYxZj1yGN63XwzthFs
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_071356_113923_5796FC74 
-X-CRM114-Status: GOOD (  24.94  )
+X-CRM114-CacheID: sfid-20210625_075913_120084_10645A6B 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,95 +106,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 25, 2021 at 3:41 PM TungChen Shih
-<tung-chen.shih@mediatek.com> wrote:
->
->     In cpufreq_frequency_table_target(), this function will try to find
-> an index for @target_freq in freq_table, and the frequency of selected
-> index should be in the range [policy->min, policy->max], which means:
->
->     policy->min <= policy->freq_table[idx].frequency <= policy->max
->
->     Though "clamp_val(target_freq, policy->min, policy->max);" would
-> have been called to check this condition, when policy->max or min is
-> not exactly one of the frequency in the frequency table,
-> policy->freq_table[idx].frequency may still go out of the range
->
->     For example, if our sorted freq_table is [3000, 2000, 1000], and
-> suppose we have:
->
->     @target_freq = 2500
->     @policy->min = 2000
->     @policy->max = 2200
->     @relation = CPUFREQ_RELATION_L
->
-> 1. After clamp_val(target_freq, policy->min, policy->max); @target_freq
-> becomes 2200
-> 2. Since we use CPUFREQ_REALTION_L, final selected freq will be 3000 which
-> beyonds policy->max
+Zero out all the unused members of "req" so that we don't disclose
+stack information.
 
-As you accurately observed, the policy limits affect the target, not
-the frequency that will be used, and "RELATION_L" means "the closest
-frequency equal to or above the target".
+Fixes: 495184ac91bb ("mt76: mt7915: add support for applying pre-calibration data")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-You are not fixing a bug here IMO, you're changing the documented behavior.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 863aa18b3024..21769e4f6bc7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3481,7 +3481,7 @@ static int mt7915_mcu_set_pre_cal(struct mt7915_dev *dev, u8 idx,
+ 		u8 idx;
+ 		u8 rsv[4];
+ 		__le32 len;
+-	} req;
++	} req = {};
+ 	struct sk_buff *skb;
+ 
+ 	skb = mt76_mcu_msg_alloc(&dev->mt76, NULL, sizeof(req) + len);
+-- 
+2.30.2
 
-> Signed-off-by: TungChen Shih <tung-chen.shih@mediatek.com>
-> ---
->  include/linux/cpufreq.h | 25 ++++++++++++++++++++++---
->  1 file changed, 22 insertions(+), 3 deletions(-)
->
-> diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
-> index 353969c7acd3..60cb15740fdf 100644
-> --- a/include/linux/cpufreq.h
-> +++ b/include/linux/cpufreq.h
-> @@ -975,21 +975,40 @@ static inline int cpufreq_frequency_table_target(struct cpufreq_policy *policy,
->                                                  unsigned int target_freq,
->                                                  unsigned int relation)
->  {
-> +       int idx = 0;
->         if (unlikely(policy->freq_table_sorted == CPUFREQ_TABLE_UNSORTED))
->                 return cpufreq_table_index_unsorted(policy, target_freq,
->                                                     relation);
->
->         switch (relation) {
->         case CPUFREQ_RELATION_L:
-> -               return cpufreq_table_find_index_l(policy, target_freq);
-> +               idx = cpufreq_table_find_index_l(policy, target_freq);
-> +               break;
->         case CPUFREQ_RELATION_H:
-> -               return cpufreq_table_find_index_h(policy, target_freq);
-> +               idx = cpufreq_table_find_index_h(policy, target_freq);
-> +               break;
->         case CPUFREQ_RELATION_C:
-> -               return cpufreq_table_find_index_c(policy, target_freq);
-> +               idx = cpufreq_table_find_index_c(policy, target_freq);
-> +               break;
->         default:
->                 WARN_ON_ONCE(1);
->                 return 0;
->         }
-> +
-> +       /* target index verification */
-> +       if (policy->freq_table[idx].frequency > policy->max) {
-> +               if (policy->freq_table_sorted == CPUFREQ_TABLE_SORTED_ASCENDING)
-> +                       idx--;
-> +               else
-> +                       idx++;
-> +       } else if (policy->freq_table[idx].frequency < policy->min) {
-> +               if (policy->freq_table_sorted == CPUFREQ_TABLE_SORTED_ASCENDING)
-> +                       idx++;
-> +               else
-> +                       idx--;
-> +       }
-> +
-> +       return idx;
->  }
->
->  static inline int cpufreq_table_count_valid_entries(const struct cpufreq_policy *policy)
-> --
-> 2.18.0
->
 
 _______________________________________________
 Linux-mediatek mailing list
