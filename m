@@ -2,91 +2,71 @@ Return-Path: <SRS0=Skuz=LT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLACK autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CF29C49EAF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 10:14:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 62DFAC48BC2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 10:18:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0F08B6142D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 10:14:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F08B6142D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 310C36142D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 10:18:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 310C36142D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=makrotopia.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oVazZwtBs1W6U1a8Br0LyHHbDpUVtvHSxaQ/OHxp7GY=; b=DlgQ5dbfs9IQ5X
-	kQK27vCToaF9q5oO6Vb6JFYstJja1ubakjBC4WToYJRWJJUpO+VtPHE7DksR1d+Voh46phj7X18+4
-	SXdaFJOmVXC7lBNrLP7K5LsS2ymN154I/67iJTSQXTsD1Bxv8sYfrX5Ai9ST/rFmBG4+HbX382Sez
-	ZNoAmMFKVd9cM995CBFyS3HGHIlH/xW1Wm1b2Vo1cLHTDILuqviSkUToiBn5MpGsUbhDd29HoEJQr
-	f2zbZpNYnSB7VWpjG4jUo0/zEAT09vs6Pe9PVg/agRpojKHKw1f8mayvRtOpWIb1pF1bJb2QajSMN
-	voRU4w2x51bW+nuHpTzA==;
+	List-Owner; bh=QFVVcBHNet01rz/tPV4e+xKBzHLBYzvpVsuReIgGCEM=; b=J1MDjFozXl3gvM
+	J84MWhejoUaDDh72K3FASXVAROUUoLzZW0syG7aEBC3l6tKredo9L0xMQlIypkVvpM7w1k0ON5lsd
+	J20XK9fP/oA9lWyHsn9JvxjTTg9FF4whoavpXd6QqauEjId82o1hOC/EXD+ghe/38WpZ2K9ETw6gv
+	90MWrS1uJ/Ba2+DEoCcHv8hUyjRPFiMYgTHCsRydZSgFKLOhFlCTWWQU+Lma+8UCml1Ep7GdKIqeb
+	JdJdSROcB2SViXf1Aoabd0fZ8qapCsKwh7W+SRgfdIQkJmFYgnR8Plz9HefE9fFTegXjXp/fLP8uP
+	z/pat9CeADzakYd7lzcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwirI-000tGn-MW; Fri, 25 Jun 2021 10:14:48 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1lwiuT-000uHE-WF; Fri, 25 Jun 2021 10:18:06 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwhz0-000cRl-Pk
- for linux-mediatek@lists.infradead.org; Fri, 25 Jun 2021 09:18:45 +0000
-Received: by mail-io1-xd31.google.com with SMTP id g22so11823602iom.1
- for <linux-mediatek@lists.infradead.org>; Fri, 25 Jun 2021 02:18:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LBMCAr9OKqALolsPvG/hgiqJf+IHkCzRrkHtVCzFpxE=;
- b=ob50Ex0HjQCoOkMNVmluHAgAaQH9NhdOoxgXaIDEsZdgEj7hY/1X11UkiuHjGffdxk
- UP13uAbtMSWwmFK1P0n0L4uXFzeez19ofKRm0p6d5YI7/wV/Whk8PZPQFO8d5eZYu14C
- 9SAox7Kb/sy+kEsApd65BjGP5Ib6vlXhRsgLNTCM+ifOxdmWgSWujpy9laQRpODdbQSD
- SXOiAl3qc674P5MV4pgtxMnkl3p1q0B/uQukjrX0EEJHWS9O6TWx1LYPR/g/aIh4UId9
- HA9LGwivz2oJZoXaRmNJF8oLWjdfhmVkM0c7n9IlSSMppDE2IJvr6KNq2ZiZ+Bf3O1AM
- P3Og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LBMCAr9OKqALolsPvG/hgiqJf+IHkCzRrkHtVCzFpxE=;
- b=HFN3cWm1QMXZVeFmMa8Oi2ON48fuHxMKAjC5vp9fQ9a/324DyAXpcvbGzUK62xRYta
- 4baEff4paeKOc11rRu+E1v7gygt7ywUSV6wTpPF+rXL8PLdr/7c3rxjoPomRPm2lEa/9
- 7yxEvjFc5FjmdxgzdA9sQR8L4GKncHYOwsNhJRXWfCnVzNY2kVZ7N4Ocnug2fowTHVpN
- lIbPPVBcJlQgSduHEj4GoMMmTmV0WUyJ4zU/oM4MDe+sr1CRWU2hStrIS+3xsSlRrP5o
- L8lfV19Os2vflE/xxc0pcNOtvYXxLExLw9inR1fC7gyuOjHhcqHpHKkI+KPyfofVd+dl
- EfRQ==
-X-Gm-Message-State: AOAM532vkHvLrUY38TJkMPKgO/PXX0Q9FCHqL+QpWd70S23Txe8YjYMx
- fo+kQ5IPMdbi1ICh/0ioxSrUUmar0TfWpRy5XgiR7Q==
-X-Google-Smtp-Source: ABdhPJzXQKU1EzX4BFVg8dVoXcM3fiNW3KrSUfOxXlDn19TSDuB4Lacx66wn42utjbq8sAVkmPvRuUGazUTUoMbdXsg=
-X-Received: by 2002:a6b:6209:: with SMTP id f9mr7971317iog.109.1624612721478; 
- Fri, 25 Jun 2021 02:18:41 -0700 (PDT)
+ id 1lwi34-000dLw-0j; Fri, 25 Jun 2021 09:22:55 +0000
+Received: from local
+ by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.94.2) (envelope-from <daniel@makrotopia.org>)
+ id 1lwi2t-0000zB-Rr; Fri, 25 Jun 2021 11:22:44 +0200
+Date: Fri, 25 Jun 2021 11:22:31 +0200
+From: Daniel Golle <daniel@makrotopia.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Eric Woudstra <ericwouds@gmail.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: Re: Re: [PATCH] Fix mt7622.dtsi thermal cpu
+Message-ID: <YNWgVxvNbwNcT3B8@makrotopia.org>
+References: <20210619121927.32699-1-ericwouds@gmail.com>
+ <e30a2d01-a200-80cb-88d9-6aea62dd49f1@linaro.org>
+ <56fb5540-fb86-4e6a-a596-1276026b37e5@gmail.com>
+ <a4e41929-6ab4-fabb-741e-f25a5fd14e3b@linaro.org>
+ <47261865-00e3-41eb-bb36-2b939f81f1e8@gmail.com>
+ <fb633034-96e5-6165-b43f-290ae1a65cfd@linaro.org>
+ <189b52d5-b103-43e1-a64f-1e627fbc75af@gmail.com>
+ <173e6bab-9d21-eb28-9b91-a5f80c01fd03@linaro.org>
+ <3dd22cf2-1186-4870-aa49-e5cddc18c6e9@gmail.com>
+ <trinity-7580d955-3187-41e5-9297-1ac8f628a9d5-1624609003739@3c-app-gmx-bs66>
 MIME-Version: 1.0
-References: <1624428350-1424-1-git-send-email-kyrie.wu@mediatek.com>
- <1624428350-1424-3-git-send-email-kyrie.wu@mediatek.com>
-In-Reply-To: <1624428350-1424-3-git-send-email-kyrie.wu@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Fri, 25 Jun 2021 17:18:30 +0800
-Message-ID: <CA+Px+wW89v3micrkgNDvxGAad4P+JfRHKnLdPN__qVrV3i-j+w@mail.gmail.com>
-Subject: Re: [PATCH 2/3] media: mtk-jpegenc: use component framework to manage
- jpg HW
-To: "kyrie.wu" <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Rick Chang <rick.chang@mediatek.com>, 
- Bin Liu <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, 
- xia.jiang@mediatek.com, maoguang.meng@mediatek.com, 
- srv_heupstream@mediatek.com
+Content-Disposition: inline
+In-Reply-To: <trinity-7580d955-3187-41e5-9297-1ac8f628a9d5-1624609003739@3c-app-gmx-bs66>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_021842_943743_492348E6 
-X-CRM114-Status: GOOD (  29.48  )
+X-CRM114-CacheID: sfid-20210625_022254_178735_A5D440D7 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,225 +78,149 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 23, 2021 at 2:06 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
-> Mtk jpeg encoder has several hardware, one HW may register a device
-> node; use component framework to manage jpg HW device node,
-> in this case, one device node could represent all jpg HW.
-Can roughly understand.  But could you rephrase your sentences?
+On Fri, Jun 25, 2021 at 10:16:43AM +0200, Frank Wunderlich wrote:
+> Hi,
+> =
 
->  #include <media/videobuf2-core.h>
->  #include <media/videobuf2-dma-contig.h>
->  #include <soc/mediatek/smi.h>
-> +#include <linux/component.h>
-Maintain the alphabetical order.
+> > Gesendet: Donnerstag, 24. Juni 2021 um 15:29 Uhr
+> > Von: "Eric Woudstra" <ericwouds@gmail.com>
+> > The SOC runs unthrotlled slowly to 80 degrees. This takes minutes. Poll=
+ing interval 1 second or less does not matter much when looking at these te=
+mperature rise times =
 
-> +void mtk_jpeg_put_buf(struct mtk_jpeg_dev *jpeg)
-> +{
-> +       struct mtk_jpeg_ctx *ctx = NULL;
-> +       struct vb2_v4l2_buffer *dst_buffer = NULL;
-> +       struct list_head *temp_entry = NULL;
-> +       struct list_head *pos = NULL;
-> +       struct mtk_jpeg_src_buf *dst_done_buf = NULL, *tmp_dst_done_buf = NULL;
-Remove the initialization if they don't need to.
+> > =
 
-> +       unsigned long flags;
+> > After that in more then an hour it slowly creeps up to 85. I believe th=
+e design is so that the SOC, under normal circumstances, can run at 1.35 GH=
+z without throttling frequency, without heatsink. It just needs a safeguard=
+ for different circumstances.
+> > =
+
+> > Most of these SOCs can also run in industrial grade circumstances, whic=
+h means up to 85 degrees ambient temperature already . If not industrial th=
+en this would be 60 degrees ambient already =
+
+> > =
+
+> > But only someone at Mediatek can confirm this =
+
+> =
+
+> maybe Matthias knows anybody?
+> get_maintainers-script shows no mtk employee for mtk_thermal driver, adde=
+d Sean and Ryder as common Linux-Contacts...
+> =
+
+> Daniel from openwrt have some other mt7622 Boards maybe he can test the F=
+an approach below
+
+I got Linksys E8450 aka. Belkin RT3200 ( https://fcc.io/K7S-03571 ) as
+well as Ubiquiti UniFi 6 LR ( https://fcc.io/SWX-U6LR ). Both got quite
+massive customized heatsinks (see internal photos on FCC submission),
+which results in much better heat dissipation than just having the
+naked chip like on the BPi-R64.
+Hence I also can't test the fan approach on boards other than the R64.
+
+
+> =
+
+> > On Jun 24, 2021, 12:21 PM, at 12:21 PM, Daniel Lezcano <daniel.lezcano@=
+linaro.org> wrote:
+> > >Found that:
+> > >
+> > >https://download.kamami.pl/p579344-MT7622A_Datasheet_for_BananaPi_Only=
+%281%29.pdf
+> > >
+> > >Chapter 3.3 - Thermal Characteristics
+> > >
+> > >Given the values I suggest:
+> > >
+> > > - Passive - 80=B0C
+> > >
+> > > - Hot - 90=B0C
+> > >
+> > > - Critical - 100=B0C
+> =
+
+> maybe adding FAN (r64, don't know for other mt7622 boards) for lower 2 tr=
+ips (with adjusted temperature points) and cpu-throtteling for upper 2 trips
+> =
+
+> something like this (used the 70/80 trip points discussed before):
+> =
+
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -134,6 +134,13 @@
+>  		};
+>  	};
+>  =
+
+> +	fan0: pwm-fan {
+> +		compatible =3D "pwm-fan";
+> +		#cooling-cells =3D <2>;
+> +		pwms =3D <&pwm 2 10000 0>;
+> +		cooling-levels =3D <0 102 170 230>;
+> +	};
 > +
-> +       ctx = jpeg->hw_param.curr_ctx;
-> +       if (!ctx) {
-> +               pr_err("%s : %d, comp_jpeg ctx fail !!!\n", __func__, __LINE__);
-Use dev_err().
+>  	thermal-zones {
+>  		cpu_thermal: cpu-thermal {
+>  			polling-delay-passive =3D <1000>;
+> @@ -143,13 +150,13 @@
+>  =
 
-> +               return;
-> +       }
-> +
-> +       dst_buffer = jpeg->hw_param.dst_buffer;
-> +       if (!dst_buffer) {
-> +               pr_err("%s : %d, comp_jpeg dst_buffer fail !!!\n",
-> +                      __func__, __LINE__);
-Use dev_err().
+>  			trips {
+>  				cpu_passive: cpu-passive {
+> -					temperature =3D <47000>;
+> +					temperature =3D <70000>;
+>  					hysteresis =3D <2000>;
+>  					type =3D "passive";
+>  				};
+>  =
 
-> +       if (!(irq_status & JPEG_ENC_INT_STATUS_DONE)) {
-> +               pr_err("%s : %d, jpeg encode failed\n", __func__, __LINE__);
-Use dev_err().
+>  				cpu_active: cpu-active {
+> -					temperature =3D <67000>;
+> +					temperature =3D <80000>;
+>  					hysteresis =3D <2000>;
+>  					type =3D "active";
+>  				};
+> @@ -170,14 +177,12 @@
+>  			cooling-maps {
+>  				map0 {
+>  					trip =3D <&cpu_passive>;
+> -					cooling-device =3D <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> -							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					cooling-device =3D <&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  				};
+>  =
 
-> +void mtk_jpegenc_timeout_work(struct work_struct *work)
-> +{
-> +       struct mtk_jpeg_dev *jpeg = container_of(work, struct mtk_jpeg_dev,
-> +               job_timeout_work.work);
-> +       struct mtk_jpeg_ctx *ctx = NULL;
-It doesn't need to initialize.
+>  				map1 {
+>  					trip =3D <&cpu_active>;
+> -					cooling-device =3D <&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>,
+> -							 <&cpu1 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+> +					cooling-device =3D <&fan0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+>  				};
+>  =
 
-> +static  const struct of_device_id mtk_jpegenc_drv_ids[] = {
-Remove the extra space between "static" and "const".
+>  				map2 {
+> @@ -428,6 +433,7 @@
+>  	pwm: pwm@11006000 {
+>  		compatible =3D "mediatek,mt7622-pwm";
+>  		reg =3D <0 0x11006000 0 0x1000>;
+> +		#pwm-cells =3D <3>;
+>  		interrupts =3D <GIC_SPI 77 IRQ_TYPE_LEVEL_LOW>;
+>  		clocks =3D <&topckgen CLK_TOP_PWM_SEL>,
+>  			 <&pericfg CLK_PERI_PWM_PD>,
+> =
 
-> +       {
-> +               .compatible = "mediatek,mt8195-jpgenc0",
-> +               .data = (void *)MTK_JPEGENC_HW0,
-> +       },
-> +       {
-> +               .compatible = "mediatek,mt8195-jpgenc1",
-> +               .data = (void *)MTK_JPEGENC_HW1,
-> +       },
-Using compatible strings to separate them doesn't sound like a scalable method.
+> =
 
->  #include <linux/kernel.h>
->  #include <media/videobuf2-core.h>
->  #include <media/videobuf2-dma-contig.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/irq.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/slab.h>
-> +#include <linux/component.h>
-> +#include <linux/clk.h>
-> +#include <linux/pm_runtime.h>
-Maintain the alphabetical order.
-
->  #include "mtk_jpeg_enc_hw.h"
-> +#include "mtk_jpeg_core.h"
-Maintain the alphabetical order.
-
-> +int mtk_jpegenc_init_pm(struct mtk_jpeg_dev *mtkdev)
-> +{
-> +       struct platform_device *pdev;
-> +       struct mtk_jpegenc_pm *pm;
-> +       struct mtk_jpegenc_clk *jpegenc_clk;
-> +       struct mtk_jpegenc_clk_info *clk_info;
-> +       int i = 0, ret = 0;
-They don't need to initialize.
-
-> +       pdev = mtkdev->plat_dev;
-> +       pm = &mtkdev->pm;
-To be concise, can inline to above when declaring the variables.
-
-> +       jpegenc_clk->clk_num =
-> +               of_property_count_strings(pdev->dev.of_node, "clock-names");
-> +       if (jpegenc_clk->clk_num > 0) {
-> +               jpegenc_clk->clk_info = devm_kcalloc(&pdev->dev,
-> +                                                    jpegenc_clk->clk_num,
-> +                                                    sizeof(*clk_info),
-> +                                                    GFP_KERNEL);
-> +               if (!jpegenc_clk->clk_info)
-> +                       return -ENOMEM;
-> +       } else {
-> +               pr_err("Failed to get jpegenc clock count\n");
-Use dev_err().
-> +               return -EINVAL;
-> +       }
-Would prefer the block turn to be:
-
-if (... <= 0) {
-    ...
-    return -EINVAL;
-}
-
-... = devm_kcalloc(...);
-if (!...)
-    return -ENOMEM;
-
-> +       for (i = 0; i < jpegenc_clk->clk_num; i++) {
-> +               clk_info = &jpegenc_clk->clk_info[i];
-> +               ret = of_property_read_string_index(pdev->dev.of_node,
-> +                                                   "clock-names", i,
-> +                                                   &clk_info->clk_name);
-> +               if (ret) {
-> +                       pr_err("Failed to get jpegenc clock name id = %d", i);
-Use dev_err().
-
-> +                       return ret;
-> +               }
-> +
-> +               clk_info->jpegenc_clk = devm_clk_get(&pdev->dev,
-> +                                                    clk_info->clk_name);
-> +               if (IS_ERR(clk_info->jpegenc_clk)) {
-> +                       pr_err("devm_clk_get (%d)%s fail",
-> +                              i, clk_info->clk_name);
-Use dev_err().
-
-> +       pm_runtime_enable(&pdev->dev);
-> +       return ret;
-return 0;
-
-> +void mtk_jpegenc_release_pm(struct mtk_jpeg_dev *dev)
-> +{
-> +       pm_runtime_disable(dev->pm.dev);
-> +}
-Would prefer this function to be more "symmetric" to mtk_jpegenc_init_pm().
-
-For example:
-
-void mtk_jpegenc_release_pm(struct mtk_jpeg_dev *mtkdev)
-{
-    struct platform_device *pdev = mtkdev->plat_dev;
-    pm_runtime_disable(&pdev->dev);
-}
-
-That way, it doesn't rely on whether mtkdev->pm is set or not.
-
-> +       ret = devm_request_irq(&pdev->dev, dev->jpegenc_irq,
-> +                              irq_handler, 0, pdev->name, dev);
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to install dev->jpegenc_irq %d (%d)",
-> +                       dev->jpegenc_irq, ret);
-> +
-> +               return -ENOENT;
-How about just returning ret?
-
-> +       }
-> +
-> +       //disable_irq(dev->jpegenc_irq);
-Remove it.
-
-> +       ret = component_add(&pdev->dev, &mtk_jpegenc_hw_component_ops);
-> +       if (ret) {
-> +               dev_err(&pdev->dev, "Failed to component_add: %d\n", ret);
-> +               goto err;
-> +       }
-How about just returning component_add(...)?
-
-> +err:
-> +       mtk_jpegenc_release_pm(dev);
-Would expect the platform driver to have a .remove() callback and
-invoke the mtk_jpegenc_release_pm() too.
-
-> +static const struct of_device_id mtk_jpegenc_hw_ids[] = {
-> +       {
-> +               .compatible = "mediatek,mt8195-jpgenc0",
-> +               .data = mtk_jpegenc_hw_irq_handler,
-> +       },
-> +       {       .compatible = "mediatek,mt8195-jpgenc1",
-> +               .data = mtk_jpegenc_hw_irq_handler,
-> +       },
-> +       {},
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_jpegenc_hw_ids);
-Had the same concern in dt-bindings patch.  Does it really need
-multiple compatible strings to separate?
-
-Also, the block should guard by using CONFIG_OF.
-
-> +struct platform_driver mtk_jpegenc_hw_driver = {
-> +       .probe  = mtk_jpegenc_hw_probe,
-> +       .driver = {
-> +               .name   = "mtk-jpegenc-hw",
-> +               .of_match_table = mtk_jpegenc_hw_ids,
-Should guard by using of_match_ptr().
-
-
-Hi, after reading the patch for a while, I realized it is way too big
-to me so that I didn't go through too much detail (especially the
-component framework part).  Could you further divide the series into
-smaller pieces?  For example:
-- part i. refactor to make modifying code easier
-- part ii. leverage component framework
-- part iii. add new code for MT8195
-I would expect part i and ii don't change the original behavior.
+> regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
