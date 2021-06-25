@@ -2,75 +2,91 @@ Return-Path: <SRS0=Skuz=LT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75B0BC2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 13:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED84AC2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:04:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3862E617ED
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 13:42:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3862E617ED
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AEC9061477
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 14:04:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEC9061477
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C+bPW1JpcPvqQqoBGam12he/5Jb1lVdI2V5j3Ab425c=; b=yK6+/y+Lozz5Sr
-	ZOgVF53ugR18I2wXZsQN2PSyB+rQ2gVlCpi+n2jtIOcnD4Ue9TrvGV8iBHbmPT81jB1ACRIq4UVjG
-	17riZxr4t23Nm4NpakAm4l8DdIrKEeNErkJkVQ2qN3zALAGwOKmT8DnE+PT+vxpswEgLeGULTGC5b
-	G4rU8kDzVUJ62hnjk+kOkXSu2PBQ3zK2wmWRZ8jMgqkHEhx7E6IRUfX3uLWihlC+lon9eOOKQgS3g
-	f4ac5cr6KFrwS66QEgrkgxjzzNXXePd7X1j3ehkv5SibLyU5pCxnqYJ9THeFbJXBaxKIrRka2BT38
-	aFUVwrE6aTRktLE0Tz7A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=pmPIPnOmMxCG2mtSP+QW2bzEn/LuQ+A3TrXujcs3S2Y=; b=MAXDUWqF6uxUOT
+	mL7EWDUxNOKoj6Gt/qKgs7OiRLkxxu9laCgONBCtN0aoiUPWnosINkfB26x8zCJWq8vPStc5Nc/w7
+	DXdJQK5VwwDSsiQ/+2ruzJMf4odPzXboHZECiKUowFlb5ysGT+QX/tvAkNDRC/3sFEagJu2zQJ1IE
+	ufGCxOV8E5G2GjZ17MuMyQQztxX+ZVFj5hx9WNqkSphi8xsWRxZv2Yc1CaM5din2SondtHAAmsrin
+	EGaCwvwLXvoZg36oUOCVSx3HP3PTaD579nyR2KegtoGOS9wWOQ0cEmPcHhHm0j+MAMtYYu+03RYqp
+	2/konNnqpVmnVH5EBcNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwm60-001kvu-TW; Fri, 25 Jun 2021 13:42:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lwmRB-001ou7-67; Fri, 25 Jun 2021 14:04:05 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwm5x-001kuN-PE; Fri, 25 Jun 2021 13:42:11 +0000
-X-UUID: 7c8f65e23d4045658740cbed96545fd7-20210625
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=rZ/W1Ql5R9otTRjtyF+YGQ07Zm+OUJKRFRGK53ia7Qw=; 
- b=V00LQmAzg/lJyXsp3TFvhmTG46HCLzddUM165E8Nmkzn/5yaWdsXTi/a6W8J0hIyZAsmV8LLC3cZ1hL/QO1KQS9WeDEXVdLOhj/kDL5kDKNrQR0Xi37w6IJ9ny4eqrlVQk0eBURknHhF09HyG0ajOUQ+AqR804GlopGzQsI2auE=;
-X-UUID: 7c8f65e23d4045658740cbed96545fd7-20210625
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <tung-chen.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 47739274; Fri, 25 Jun 2021 06:42:01 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Jun 2021 06:42:00 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 25 Jun 2021 21:41:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 25 Jun 2021 21:41:46 +0800
-From: TungChen Shih <tung-chen.shih@mediatek.com>
-To: <rjw@rjwysocki.net>, <viresh.kumar@linaro.org>, <matthias.bgg@gmail.com>
-CC: <wsd_upstream@mediatek.com>, <linux-pm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, TungChen Shih
- <tung-chen.shih@mediatek.com>
-Subject: [PATCH v1 1/1] cpufreq: fix the target freq not in the range of
- policy->min & max
-Date: Fri, 25 Jun 2021 21:41:30 +0800
-Message-ID: <20210625134129.11885-1-tung-chen.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lwmQx-001opo-Kz; Fri, 25 Jun 2021 14:03:52 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id o11so2146329ejd.4;
+ Fri, 25 Jun 2021 07:03:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=KCBPWXjUtJqDX481tplGmByedXmi+6SSSYQlopDVlm8=;
+ b=g2xI4G+YbXPOBweU0Dfhxgv8sAgTFjbLRxRY9HnhBIJ7t5750aZ2AnfPNLCZChITxz
+ e9Yo/swOJ5U1cF9kBUv8dI/7589kD4AZiZBgJwj+exGZnoVksbjpyl7e0/BN5vAQfWv6
+ /VXekcwiU8mYzSd1XvznpHZOiHKkHaZiSiQ+oCpAVQCWkYKQs79Xt0o7EPj4sXlIUNO3
+ 1WhKzAfHJucTboztqcpWrkg3AIrya5Bjw25wWjYqzOZSch6BNQkAuqg7m1wQhDCzFOTI
+ V2Ulu0v2PpcsdfkXJBJ29grL9PL7XZ9xga6QgiyEoU5CU3O4wWbre7BvkL66xvJL9OiJ
+ UNtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=KCBPWXjUtJqDX481tplGmByedXmi+6SSSYQlopDVlm8=;
+ b=YVBosVqnP1e0VB0MWx73hjyIns3UA5AWxUxERssGX7UJJ3F3XgrAyLjZuAwRMBqzDz
+ 8S4yQu5NUcMdAqhib9KEw1QAqnFswZXgjfsk+v7ZhozcbzZ0nR9XvWKOLZJ/NuqKzcuA
+ +zXF5ajP6XzKr9D6rPAsS5Ycx5TQIkwVczhr+blOXA1FQG8bjtMPsA6iD4xr1MR9EISU
+ FsSrPcVq81j6uLLK12j3u33Ai66VJ0m/ZFbvEF9RbSTIxOjGN87JlTX4Zy8BJbE0F+wh
+ Qts3ghgioKpkznp55z4Zd49E7UWPCgUtoKzcaVAGwiwPuAXOxabWnQ/tKCAXdzlwx5Es
+ /NZA==
+X-Gm-Message-State: AOAM531ROV2UMa/ZLrNh2iW9hThSUz01nNWOSc80UoYhLoHAANtDAHST
+ KOaaYh22f/fNrYWxe57+BDbdcd01097HeaXds9c=
+X-Google-Smtp-Source: ABdhPJwRxAwp1s4YjTUqcX/AAdgKGNstFB5jd3lyos+3LPa3ijtjUuFxbmNzJUzvo6qSGiT+GSa9ZkA6wg579vc/N0Q=
+X-Received: by 2002:a17:906:6d16:: with SMTP id
+ m22mr11315367ejr.333.1624629824272; 
+ Fri, 25 Jun 2021 07:03:44 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210624112624.31215-1-yee.lee@mediatek.com>
+ <20210624112624.31215-2-yee.lee@mediatek.com>
+In-Reply-To: <20210624112624.31215-2-yee.lee@mediatek.com>
+From: Andrey Konovalov <andreyknvl@gmail.com>
+Date: Fri, 25 Jun 2021 17:03:21 +0300
+Message-ID: <CA+fCnZe0fng4-53U1=5MiYszCMi97twKut3eQNaNHgPV2HOVug@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] kasan: Add memzero init for unaligned size under
+ SLUB debug
+To: yee.lee@mediatek.com
+Cc: wsd_upstream@mediatek.com, Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
+ Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, 
+ Andrew Morton <akpm@linux-foundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ "open list:KASAN" <kasan-dev@googlegroups.com>, 
+ "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
+ open list <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_064209_890634_97ACD18B 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20210625_070351_732557_203F06AD 
+X-CRM114-Status: GOOD (  19.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,85 +103,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-    In cpufreq_frequency_table_target(), this function will try to find
-an index for @target_freq in freq_table, and the frequency of selected
-index should be in the range [policy->min, policy->max], which means:
+On Thu, Jun 24, 2021 at 2:26 PM <yee.lee@mediatek.com> wrote:
+>
+> From: Yee Lee <yee.lee@mediatek.com>
+>
+> Issue: when SLUB debug is on, hwtag kasan_unpoison() would overwrite
+> the redzone of object with unaligned size.
+>
+> An additional memzero_explicit() path is added to replacing init by
+> hwtag instruction for those unaligned size at SLUB debug mode.
+>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> ---
+>  mm/kasan/kasan.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 8f450bc28045..d1054f35838f 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -387,6 +387,12 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
+>
+>         if (WARN_ON((unsigned long)addr & KASAN_GRANULE_MASK))
+>                 return;
+> +#if IS_ENABLED(CONFIG_SLUB_DEBUG)
 
-    policy->min <= policy->freq_table[idx].frequency <= policy->max
+Is this an issue only with SLUB? SLAB also uses redzones.
 
-    Though "clamp_val(target_freq, policy->min, policy->max);" would
-have been called to check this condition, when policy->max or min is
-not exactly one of the frequency in the frequency table,
-policy->freq_table[idx].frequency may still go out of the range
+> +       if (init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
 
-    For example, if our sorted freq_table is [3000, 2000, 1000], and
-suppose we have:
+This needs a comment along the lines of:
 
-    @target_freq = 2500
-    @policy->min = 2000
-    @policy->max = 2200
-    @relation = CPUFREQ_RELATION_L
+/* Explicitly initialize the memory with the precise object size to
+avoid overwriting the SLAB redzone. This disables initialization in
+the arch code and may thus lead to performance penalty. The penalty is
+accepted since SLAB redzones aren't enabled in production builds. */
 
-1. After clamp_val(target_freq, policy->min, policy->max); @target_freq
-becomes 2200
-2. Since we use CPUFREQ_REALTION_L, final selected freq will be 3000 which
-beyonds policy->max
+> +               init = false;
+> +               memzero_explicit((void *)addr, size);
+> +       }
+> +#endif
+>         size = round_up(size, KASAN_GRANULE_SIZE);
+>
+>         hw_set_mem_tag_range((void *)addr, size, tag, init);
+> --
+> 2.18.0
+>
 
-Signed-off-by: TungChen Shih <tung-chen.shih@mediatek.com>
----
- include/linux/cpufreq.h | 25 ++++++++++++++++++++++---
- 1 file changed, 22 insertions(+), 3 deletions(-)
-
-diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
-index 353969c7acd3..60cb15740fdf 100644
---- a/include/linux/cpufreq.h
-+++ b/include/linux/cpufreq.h
-@@ -975,21 +975,40 @@ static inline int cpufreq_frequency_table_target(struct cpufreq_policy *policy,
- 						 unsigned int target_freq,
- 						 unsigned int relation)
- {
-+	int idx = 0;
- 	if (unlikely(policy->freq_table_sorted == CPUFREQ_TABLE_UNSORTED))
- 		return cpufreq_table_index_unsorted(policy, target_freq,
- 						    relation);
- 
- 	switch (relation) {
- 	case CPUFREQ_RELATION_L:
--		return cpufreq_table_find_index_l(policy, target_freq);
-+		idx = cpufreq_table_find_index_l(policy, target_freq);
-+		break;
- 	case CPUFREQ_RELATION_H:
--		return cpufreq_table_find_index_h(policy, target_freq);
-+		idx = cpufreq_table_find_index_h(policy, target_freq);
-+		break;
- 	case CPUFREQ_RELATION_C:
--		return cpufreq_table_find_index_c(policy, target_freq);
-+		idx = cpufreq_table_find_index_c(policy, target_freq);
-+		break;
- 	default:
- 		WARN_ON_ONCE(1);
- 		return 0;
- 	}
-+
-+	/* target index verification */
-+	if (policy->freq_table[idx].frequency > policy->max) {
-+		if (policy->freq_table_sorted == CPUFREQ_TABLE_SORTED_ASCENDING)
-+			idx--;
-+		else
-+			idx++;
-+	} else if (policy->freq_table[idx].frequency < policy->min) {
-+		if (policy->freq_table_sorted == CPUFREQ_TABLE_SORTED_ASCENDING)
-+			idx++;
-+		else
-+			idx--;
-+	}
-+
-+	return idx;
- }
- 
- static inline int cpufreq_table_count_valid_entries(const struct cpufreq_policy *policy)
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
