@@ -1,75 +1,195 @@
-Return-Path: <SRS0=Skuz=LT=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=XU5C=LU=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1C80C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 17:59:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5388C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 02:41:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6758161939
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Jun 2021 17:59:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6758161939
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 9DC1E61963
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 02:41:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9DC1E61963
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vmware.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KxmGH41g8u+M8SucXuknUKF/X+khM+rjulUNijVbxzw=; b=h/nkJQTW78aKa08oYp2SN05EM+
-	EfmwTEDd1kp0ol5IxAheo8e0XxQRwb5059b46YtcooCTOZfvp7vpCIKZ01tsGvjCxHF5pdMGmnwsV
-	bnwbCMq6BtFPf6UK2lDk7e8A1l4UMo5zKsEXBDgayuZjjRppen0kOOQIvGhvTib7oJMvTMsEdG7p/
-	PQ5QOkhYCuNfPwWqR8aB0Pf3zu3x+6ZoNUC9aRqaE2B5Foe5QKe9TYxM5Q60vesAtQBBy/3gK+RhO
-	uf+xtJcq/TZKGnmD97ij/mqTj1b0I2SJacRJ00HbExm1qTt8MLcceMC3fqcypNuWhSrGsm98ygwed
-	Qjvgnunw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gJFH4ymS6LyhjJL+TajmeWlRUsBaEhqmanVv0oA+y4M=; b=1x5ETYpDJNPF9G
+	vDDp/ijRJL03JOP3ICgHXz/F3XfCne+FIQm5/7mNb0CvXGTZQUjyEzjb/HqI2MYbBphUXyhHP6hg/
+	JVZs9pJYuG0S2+J2vqR3Fx3EhWIVe8tklJ304C6O/tHLkEMBUwhfrm9icdQ8FFQkk98IajJhm0ea8
+	5HZjx3c44g2f2Uvd5h11s25QpaABkDStzVFw4by+rNRN1271//gvehKHnBLHF/flD6Eq8SxPWGmYE
+	sDyQCpH79xGQF4kIGYZEQiiKOM9n4Hyz2H1fGgYS88ih3aiunVIxjOM4sF5d9RJ4+wU/pW3UT7wMF
+	Tes53FTnBfoy7Ri/6O/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lwq6m-002Y6F-PZ; Fri, 25 Jun 2021 17:59:16 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1lwyG5-003Jft-HF; Sat, 26 Jun 2021 02:41:25 +0000
+Received: from mail-mw2nam12on2085.outbound.protection.outlook.com
+ ([40.107.244.85] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lwq6j-002Y5K-DI
- for linux-mediatek@lists.infradead.org; Fri, 25 Jun 2021 17:59:14 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lwq6h-0006lC-9g; Fri, 25 Jun 2021 19:59:11 +0200
-Received: from ukl by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1lwq6d-0006nj-Gw; Fri, 25 Jun 2021 19:59:07 +0200
-Date: Fri, 25 Jun 2021 19:59:07 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, yingjoe.chen@mediatek.com,
- eddie.huang@mediatek.com, cawa.cheng@mediatek.com,
- bibby.hsieh@mediatek.com, ck.hu@mediatek.com, stonea168@163.com,
- huijuan.xie@mediatek.com
-Subject: Re: [PATCH v5 3/3] pwm: mtk_disp: implement atomic API .get_state()
-Message-ID: <20210625175907.mkm5hef3rqyn2xu2@pengutronix.de>
-References: <20210616085224.157318-1-jitao.shi@mediatek.com>
- <20210616085224.157318-4-jitao.shi@mediatek.com>
+ id 1lwyG1-003JfK-T3; Sat, 26 Jun 2021 02:41:23 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HXOlnE1eYVOXmjT2wWRGK097aKX7y7zri5eCEKFUMgkBUQVbLoN0ukerIMPR39xaCj/5/p8uNfqYlyJgpuKZu25yd1fnfdMQZgAeWGIPAkfF6JzEWv/kRdOvcSFAAOmCgVuNH+4NKxtbO0Gjt9jPE/76g9rdUFZjXYHYUQm1nILYbzcf85uKolJcn6wbIY/VqIZag6dLYfsI7pfC7L+CzWlE2eoHLu9YpwbvjhXhxXMvIYPlL9yIbeVAPdhafxcqRG2CgyzDJ1OcQtuGclj5GJfRd8jXrr15qE+lM30zxcr9UeDsLJqvm+HA3G/YmX+SVfEVqPPav94SBLsVKbM3jg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DY1EwPTlX2oQTM9JUbNIyIFbIIHh3X6kPkNgZnuutdQ=;
+ b=U/V9M8f82trjEtEybbp+71NTEdMG1f2xHCq5nILDl9buydMft60ZM3yGyvj1MFhj+sjEUPR6TBtpocx8XU/A/YtwSGW3RLHPJFJUh4OoGtAh1ZL023nOO/4N25bXUICcCkqY3WNkvd/d4nUisoqjl8L2axv0PXRC4D5ssmJt+Ch27qIXgrM9qYqmktkAY8EoG29Cl48PmWlyM3hTevqiOKAN5WRM9ww4YFZdrwV+aNAlNw7z4hWr60143MEnF4qQ/FygOeeuPrqHiFhTgZIYqyZrJcaI/XxTvqN1LDhCviMzQRqModel7dRJe0KYKckv31G5HD80SNUAnemSRmqagA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vmware.com; dmarc=pass action=none header.from=vmware.com;
+ dkim=pass header.d=vmware.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vmware.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DY1EwPTlX2oQTM9JUbNIyIFbIIHh3X6kPkNgZnuutdQ=;
+ b=PwtSKmWlcpy66jYlSfY/6733zXD1RHz4VOaIM6HFiqPf0E+OLrzE1X48292+hJzsSAppNueC2X2mU1yrm/+knEzv4MInoj5s7YkbSS9orzU2HmbT1TSrkfT5V3OxtJvnSDOPv0b2K2MMOqsvJlz8SW47yxK9tL6j9m+riPi75uU=
+Received: from MN2PR05MB6624.namprd05.prod.outlook.com (2603:10b6:208:d8::18)
+ by MN2PR05MB6671.namprd05.prod.outlook.com (2603:10b6:208:d7::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4264.7; Sat, 26 Jun
+ 2021 02:41:07 +0000
+Received: from MN2PR05MB6624.namprd05.prod.outlook.com
+ ([fe80::45fe:a746:21e9:e8fc]) by MN2PR05MB6624.namprd05.prod.outlook.com
+ ([fe80::45fe:a746:21e9:e8fc%6]) with mapi id 15.20.4264.023; Sat, 26 Jun 2021
+ 02:41:07 +0000
+From: Zack Rusin <zackr@vmware.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+CC: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
+ =?iso-8859-1?Q?Christian_K=F6nig?= <christian.koenig@amd.com>,
+ "Xinhui.Pan@amd.com" <Xinhui.Pan@amd.com>, "james.qian.wang@arm.com"
+ <james.qian.wang@arm.com>, "liviu.dudau@arm.com" <liviu.dudau@arm.com>,
+ "mihail.atanassov@arm.com" <mihail.atanassov@arm.com>,
+ "brian.starkey@arm.com" <brian.starkey@arm.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ "inki.dae@samsung.com" <inki.dae@samsung.com>, "jy0922.shim@samsung.com"
+ <jy0922.shim@samsung.com>, "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>, 
+ "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
+ "krzysztof.kozlowski@canonical.com" <krzysztof.kozlowski@canonical.com>,
+ "xinliang.liu@linaro.org" <xinliang.liu@linaro.org>, "tiantao6@hisilicon.com"
+ <tiantao6@hisilicon.com>, "john.stultz@linaro.org" <john.stultz@linaro.org>,
+ "kong.kongxinwei@hisilicon.com" <kong.kongxinwei@hisilicon.com>,
+ "puck.chen@hisilicon.com" <puck.chen@hisilicon.com>,
+ "laurentiu.palcu@oss.nxp.com" <laurentiu.palcu@oss.nxp.com>,
+ "l.stach@pengutronix.de" <l.stach@pengutronix.de>, "p.zabel@pengutronix.de"
+ <p.zabel@pengutronix.de>, "shawnguo@kernel.org" <shawnguo@kernel.org>,
+ "s.hauer@pengutronix.de" <s.hauer@pengutronix.de>, "kernel@pengutronix.de"
+ <kernel@pengutronix.de>, "festevam@gmail.com" <festevam@gmail.com>,
+ "linux-imx@nxp.com" <linux-imx@nxp.com>, "chunkuang.hu@kernel.org"
+ <chunkuang.hu@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+ Ben Skeggs <bskeggs@redhat.com>, "tomba@kernel.org" <tomba@kernel.org>,
+ "hjc@rock-chips.com" <hjc@rock-chips.com>, "heiko@sntech.de"
+ <heiko@sntech.de>, "yannick.fertre@foss.st.com" <yannick.fertre@foss.st.com>, 
+ "philippe.cornu@foss.st.com" <philippe.cornu@foss.st.com>,
+ "mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
+ "alexandre.torgue@foss.st.com" <alexandre.torgue@foss.st.com>,
+ "wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+ <jernej.skrabec@gmail.com>, "thierry.reding@gmail.com"
+ <thierry.reding@gmail.com>, "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "jyri.sarha@iki.fi" <jyri.sarha@iki.fi>, "emma@anholt.net" <emma@anholt.net>, 
+ Linux-graphics-maintainer <Linux-graphics-maintainer@vmware.com>,
+ "hyun.kwon@xilinx.com" <hyun.kwon@xilinx.com>,
+ "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
+ "michal.simek@xilinx.com" <michal.simek@xilinx.com>, Jani Nikula
+ <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "kieran.bingham+renesas@ideasonboard.com"
+ <kieran.bingham+renesas@ideasonboard.com>, "rodrigosiqueiramelo@gmail.com"
+ <rodrigosiqueiramelo@gmail.com>, "melissa.srw@gmail.com"
+ <melissa.srw@gmail.com>, "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>, 
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>, DRI
+ Development <dri-devel@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-samsung-soc@vger.kernel.org"
+ <linux-samsung-soc@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "nouveau@lists.freedesktop.org"
+ <nouveau@lists.freedesktop.org>, "linux-rockchip@lists.infradead.org"
+ <linux-rockchip@lists.infradead.org>,
+ "linux-stm32@st-md-mailman.stormreply.com"
+ <linux-stm32@st-md-mailman.stormreply.com>, "linux-sunxi@lists.linux.dev"
+ <linux-sunxi@lists.linux.dev>, "linux-tegra@vger.kernel.org"
+ <linux-tegra@vger.kernel.org>, "intel-gfx@lists.freedesktop.org"
+ <intel-gfx@lists.freedesktop.org>, Daniel Vetter <daniel.vetter@ffwll.ch>
+Subject: Re: [PATCH v4 25/27] drm/vmwgfx: Don't set struct
+ drm_device.irq_enabled
+Thread-Topic: [PATCH v4 25/27] drm/vmwgfx: Don't set struct
+ drm_device.irq_enabled
+Thread-Index: AQHXaZtTePw5ruzrRkKIZ2BFLdAIq6slljUA
+Date: Sat, 26 Jun 2021 02:41:07 +0000
+Message-ID: <F2415B80-87BE-42B5-958A-E947CE693674@vmware.com>
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-26-tzimmermann@suse.de>
+In-Reply-To: <20210625082222.3845-26-tzimmermann@suse.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Apple Mail (2.3654.40.0.2.32)
+authentication-results: suse.de; dkim=none (message not signed)
+ header.d=none;suse.de; dmarc=none action=none header.from=vmware.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 8d724b7c-f3c9-4351-1544-08d9384bd99c
+x-ms-traffictypediagnostic: MN2PR05MB6671:
+x-ld-processed: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <MN2PR05MB66716FE697D757755DFEDA7ECE059@MN2PR05MB6671.namprd05.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:3631;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 9YwUGa9F59jPW5t10bxqwgTENH6AhjpdXJ+hkBSc8kZzyGF7/zC37JgtM+Cxxyx+6z0NQt6t8CHGK4bW33KkWjsq4cJHoVuDNrcEsLJwIe+vw+yIEHh1BcPslTXdJc9fiEpeG+8zH5lMua74e8KIa2CgUt8Vi8naVBRXP9rYTsGCfBOvbqKpNuP7u6dtIK+iv8cmu1oto1pm0FsAaLaJCUe4EVJH/REr4a/n0bfB6tLEulICwfm9uDdA/sSCYY0nOWQ2YOaXcCZeMmbzdBxInBaxpPA8jaoFZc2N3Rj8/fx01GdJI4CqzMNNz3SbKKWXyG/+A360NWea4hHyZZnu7smyeFJLSPKY//aELvoiSVrP3KLcNg1Djqubdr4iema9cl20/oLLYQuaaqXixKYoMbMMCW+Gxlfghg62kGYByjqfoWXdlQTHi9gk/Svgw+PgXByt52m5U2cFMT7gPRSyHhzoJAkweCKC78LLrmEQZ+nfaj/Vmlxwa1aubD49QhYs2W/8kbTp+Ooh31t6OdX6CIhrYetaqmbGWO3DrXapH6+89PKh8j1KG31roqqb4WEEVnOYiDSKGb8L5E4RDk0AAlA7KDrZZwvdTbtpj2HFcIdsn8r4bhco9xUrsTqwi7Ht5YJXua6hHyKV3NbAX9Xs4LWkZvyg/yfPNHpU89R0dao+qnHw3SXA/RC8xJrv7hBqQSCBPJuxPgJMN/ePdOU4tQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR05MB6624.namprd05.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(346002)(376002)(136003)(366004)(396003)(39860400002)(86362001)(6916009)(66946007)(8676002)(7406005)(6506007)(66446008)(186003)(76116006)(53546011)(64756008)(8936002)(38100700002)(7416002)(71200400001)(66556008)(33656002)(122000001)(6512007)(26005)(66476007)(7366002)(4326008)(4744005)(316002)(5660300002)(36756003)(6486002)(54906003)(2616005)(2906002)(478600001)(45980500001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?U+rMibFYRBMdXU+oi3q9RiPhFagWoXjHonBkzopt9w0kphcIf4jeVA+4No?=
+ =?iso-8859-1?Q?HXoSpYlOujO6tpBtssela6Tf9QR5SxnmUPdWErTd6vkK9S8Y9GYHQvsS4r?=
+ =?iso-8859-1?Q?aE3nzPCe7rLyOqjqVngWbhEgj/5GSs/UO8HE2uZW2S9Pmzse7mpJb7uS2C?=
+ =?iso-8859-1?Q?rLM1M0h27X1z3o9QYHvPkiEmdoGrA373LYxZQ1JWCOikbRhfOZ31NE7zNR?=
+ =?iso-8859-1?Q?Juwy1JYx4GjB7NjG9m/BBhnGlHkxRTYadxcrLasHp5n+Z6axjN88MyWyO7?=
+ =?iso-8859-1?Q?N5/v4kYzWEVeu9y7pNKaIb/GXnrgBlRG1oVpuqP3HtMvKHT873S1y0gUqZ?=
+ =?iso-8859-1?Q?Uiy0DzfrOE+9IoZxnytXDZNcwre/d/k5EtTdLl5LMQpACJazHCxgRtryKD?=
+ =?iso-8859-1?Q?i064Tw19WeB971bguW05vGo1/W0UNHRLTCR10q9ZjsLadyaLSTzaa8zchX?=
+ =?iso-8859-1?Q?G0lSSZzklWhixMxb+pUDjTAb9bineBr6QWFAPR5EBnB6xy1OaJfKr5CZ9m?=
+ =?iso-8859-1?Q?S3BZD896Tf4T1hJOcN5RHvO+rbwqtC3Ftezelw7Crb/s3hJ95DjubP3DHI?=
+ =?iso-8859-1?Q?MBrRWQYRcKK1+J+7W1981KUIr2oRriPfcIlwYjdrD/dMt1bvXo8QdAYp8N?=
+ =?iso-8859-1?Q?xCkCLqRaxRTwxynQHRfV9z49sIgWjnHjs0aJGmIB7KnXezBN6PvRagi2Am?=
+ =?iso-8859-1?Q?uVVEcONly7tbGrHb1nhxYJ2ojw+uFxZ2x3crvIRehgoSHYm9DvCUIsOBA/?=
+ =?iso-8859-1?Q?J+Et6PklWQBUK5xMuxh17PnoMZ8slnXbN8EjsCCI8vXnbPk/X5UVPorCb4?=
+ =?iso-8859-1?Q?SLQeIveFuivg91hUAE/t9whNRlZoV2p47kDVxDAhbXZCHVuNSI4kDggahv?=
+ =?iso-8859-1?Q?szYbHe+siHPKxwfEYxNL6l2oQOiUgrb/n5P7pywGl6kfU9Ex/w8Z7OmtX1?=
+ =?iso-8859-1?Q?IGxvDJpqjo69qugsECPd1j5slNbGUogyKPFwMCg2eSworyw01i0nXjQQnX?=
+ =?iso-8859-1?Q?1L9rJosonI2rg1dIVoBp73KTjos7On16viqaegD2slZLoZ1TNkPRWblU4l?=
+ =?iso-8859-1?Q?ohqACT+20hz9ffgEsmp6E6A9c4RcomfIzsqc/4S8ga6ZJaDpmFJw1t6pqr?=
+ =?iso-8859-1?Q?akewLh4659I42N8LwxWEKXK4O/kNKOQ8aQksheGf8zhsBOjgynzbMaA2kZ?=
+ =?iso-8859-1?Q?EpiIKxW8CPjunBsRPW+UFHichncWALIBa1JvuC1pTHu20/3Z1xEOZEU9KK?=
+ =?iso-8859-1?Q?XgueKNNuD73uSkM/5PoDvn8lSXQsHED7v9qEwNfqkDTRVhLM0xRy2Kpfk1?=
+ =?iso-8859-1?Q?nfLtjUyQRkYguq2vB1DX7rE7vgDwQVJx23APhyrglT4Bu63JQlhyDYBk6q?=
+ =?iso-8859-1?Q?hAIass/APC?=
+Content-ID: <3A63C24550FCA2459958757D0D6BF16F@namprd05.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <20210616085224.157318-4-jitao.shi@mediatek.com>
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+X-OriginatorOrg: vmware.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR05MB6624.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8d724b7c-f3c9-4351-1544-08d9384bd99c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jun 2021 02:41:07.2954 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b39138ca-3cee-4b4a-a4d6-cd83d9dd62f0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kXajZkRq1RXi8dgbD+grNfudub+URT9yuj36Xk1Wc1au/eF13alcvNqGA9P8wju6slkYTIH+W6BxsPZD7KS2Dw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR05MB6671
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_105913_498856_BB65DAC5 
-X-CRM114-Status: GOOD (  23.23  )
+X-CRM114-CacheID: sfid-20210625_194122_057000_E0CEBBA8 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,137 +201,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3174416128368051694=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============3174416128368051694==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4eyrw3wkkuwhoc7r"
-Content-Disposition: inline
+> On Jun 25, 2021, at 04:22, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+> 
+> The field drm_device.irq_enabled is only used by legacy drivers
+> with userspace modesetting. Don't set it in vmxgfx. All usage of
+> the field within vmwgfx can safely be removed.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 
+Looks good.
 
---4eyrw3wkkuwhoc7r
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Zack Rusin <zackr@vmware.com>
 
-On Wed, Jun 16, 2021 at 04:52:24PM +0800, Jitao Shi wrote:
-> Switch the driver to support the .get_state() method.
->=20
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
->  drivers/pwm/pwm-mtk-disp.c | 39 ++++++++++++++++++++++++++++++++++++++
->  1 file changed, 39 insertions(+)
->=20
-> diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-> index a4766e931b68..d60a6b379683 100644
-> --- a/drivers/pwm/pwm-mtk-disp.c
-> +++ b/drivers/pwm/pwm-mtk-disp.c
-> @@ -159,8 +159,47 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip,=
- struct pwm_device *pwm,
->  	return 0;
->  }
-> =20
-> +static void mtk_disp_pwm_get_state(struct pwm_chip *chip,
-> +				   struct pwm_device *pwm,
-> +				   struct pwm_state *state)
-> +{
-> +	struct mtk_disp_pwm *mdp =3D to_mtk_disp_pwm(chip);
-> +	u32 clk_div, con0, con1;
-> +	u64 rate, period, high_width;
-> +	int err;
-> +
-> +	if (!mdp->enabled) {
-> +		err =3D clk_prepare_enable(mdp->clk_main);
-> +		if (err < 0) {
-> +			dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
-> +			return;
-> +		}
-> +		err =3D clk_prepare_enable(mdp->clk_mm);
-> +		if (err < 0) {
-> +			dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
-> +			clk_disable_unprepare(mdp->clk_main);
-> +			return;
-> +		}
-> +	}
-
-As already written in reply to one of the previous patches: The
-clk_prepare_enable() can be done unconditionally.
-
-> +	rate =3D clk_get_rate(mdp->clk_main);
-> +	con0 =3D readl(mdp->base + mdp->data->con0);
-> +	con1 =3D readl(mdp->base + mdp->data->con1);
-> +	state->enabled =3D !!(con0 & BIT(0));
-
-Maybe introduce a name for that.
-
-> +	clk_div =3D FIELD_GET(PWM_CLKDIV_MASK, con0);
-> +	period =3D con1 & PWM_PERIOD_MASK;
-
-FIELD_GET(PWM_PERIOD_MASK, con1) for consistency.
-
-> +	state->period =3D DIV64_U64_ROUND_UP(period * (clk_div + 1) * NSEC_PER_=
-SEC, rate);
-
-period has 12 bits, clk_div 11 and NSEC_PER_SEC has 30, so this cannot
-overflow. Maybe mention this in a comment.
-
-> +	high_width =3D FIELD_GET(PWM_HIGH_WIDTH_MASK, con1);
-> +	state->duty_cycle =3D DIV64_U64_ROUND_UP(high_width * (clk_div + 1) * N=
-SEC_PER_SEC,
-> +					       rate);
-
-state->polarity =3D PWM_POLARITY_NORMAL;
-
-> +	if (!mdp->enabled) {
-> +		clk_disable_unprepare(mdp->clk_mm);
-> +		clk_disable_unprepare(mdp->clk_main);
-> +	}
-> +}
-> +
->  static const struct pwm_ops mtk_disp_pwm_ops =3D {
->  	.apply =3D mtk_disp_pwm_apply,
-> +	.get_state =3D mtk_disp_pwm_get_state,
->  	.owner =3D THIS_MODULE,
->  };
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---4eyrw3wkkuwhoc7r
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmDWGWcACgkQwfwUeK3K
-7An5VAf/XzQc5BYvnCWcAGDztYjD7zSrqzJA9BTkTJx2LxFBw6zOJhQG/uPat3yV
-YzdnVTj/rPJSjd6hiZjqDZC/FZqqYYgNeMv37SLFHOdktWbuoxPFIwo6er4CxALw
-udW/gSSKbGp/eU4IqS9Ascb02Xmgt9mhxLpRcQXzjltcwozVDR3JratnI56INgvb
-stfA+IsREM6qYuPpOk7fe9GTLlHgb8+PTAdshULxIvJD+ZCFQX0C0yJnkWNiWqSe
-tqAfrdqzt7p10IrQJ4h3uQ/8j5VVCXXdy3vayI10OjkLB4TlUg4wH8CBJVZgRsun
-c3bu4WFtUC1XR7saUcst6Rm584Lkrg==
-=BMGU
------END PGP SIGNATURE-----
-
---4eyrw3wkkuwhoc7r--
-
-
---===============3174416128368051694==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3174416128368051694==--
-
