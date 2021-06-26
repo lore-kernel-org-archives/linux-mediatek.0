@@ -2,61 +2,120 @@ Return-Path: <SRS0=XU5C=LU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D119AC49EA7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 05:59:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06020C49EA7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 08:55:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63C886162F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 05:59:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 63C886162F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
+	by mail.kernel.org (Postfix) with ESMTPS id BDA7C60200
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Jun 2021 08:55:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDA7C60200
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jb6S+3zf0uQmbdLWGO+j0b5x6lsoO/5iGsWjKBianvQ=; b=ppiZH6SHRaqozH
-	vJYHBVAA3ZE5oPJ2J4EQOrP32jW+i04Mei27wK8LiIk1NaoBUaBSLVMRsUh7zA2J3fIgPNPIE2ALp
-	Q0TGUsceu+WOv640av+D8rDB9dHwanxKAm3Z8BbaKmEmy8W2fLI61IJC4c5Xe/CbT27LMWhXlUPjP
-	OSs3KESz08t+K1qABJvsuo/GymaDy14B4DajUTqUkbF5CQxiXGi1kIPAs0fSe4c25QyIsoUZHuwTz
-	Ycl7v937wN1VTkwPV1JCMblRVPht5vIXSHeeAmDoM7/ve7xF941godhdUdzsduy22mC3G8lPJzADm
-	sjOt0SJmDGGxcGrvt/Kg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FPFvSR0hZdjpaN6tznbStt2W7smPJf8R3dsbDcvVZhs=; b=Ys8fhC1/hnRAIH
+	h4jiGKZAXTFQzNlrf8bi9/cTMNrfynKs+MbX9Q3u6P92sisXPeGMgq1XhVCrNDA2kDUJsaR6teREL
+	csY6SKjkM0HUzp0najHSW3gaGj47EkOyIYpcLujZqzZvY22OTO8hFtv5UatfQxkZZutKsgEXIs53w
+	x/9WNLuQK8M4X1hTyR6vPMeavTt8g8/aYzRFvh0ZqCcTRM0IYy6TS42JWaeEjwkuNRqqeDFkRFt10
+	NyMdqtapvpp5xOma4RmAY/I1ZnWUswAc7NxIN5jL6e7m6pc4/GmLlwo4exK4ysUAeiqO11PcZIMOa
+	PD9tWPzziYnGQDXlbvxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lx1Ls-003XWs-4X; Sat, 26 Jun 2021 05:59:36 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lx1Lo-003XWQ-GW
- for linux-mediatek@lists.infradead.org; Sat, 26 Jun 2021 05:59:34 +0000
-Received: from smtpclient.apple (p5b3d2eb8.dip0.t-ipconnect.de [91.61.46.184])
- by mail.holtmann.org (Postfix) with ESMTPSA id 7AAA8CED1E;
- Sat, 26 Jun 2021 07:59:30 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.100.0.2.22\))
-Subject: Re: [PATCH 1/1] Bluetooth: btusb: Record debug log for Mediatek Chip.
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210616191540.4487-1-mark-yw.chen@mediatek.com>
-Date: Sat, 26 Jun 2021 07:59:30 +0200
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, chris.lu@mediatek.com,
- will-cy.lee@mediatek.com, Sean Wang <sean.wang@mediatek.com>,
- Bluetooth Kernel Mailing List <linux-bluetooth@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>, michaelfsun@google.com,
- shawnku@google.com, jemele@google.com
-Message-Id: <73A590F6-4EAF-44AC-8803-769F7919712C@holtmann.org>
-References: <20210616191540.4487-1-mark-yw.chen@mediatek.com>
-To: Mark-YW.Chen@mediatek.com
-X-Mailer: Apple Mail (2.3654.100.0.2.22)
+	id 1lx468-003kL5-Ti; Sat, 26 Jun 2021 08:55:32 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lx465-003kJx-5y; Sat, 26 Jun 2021 08:55:30 +0000
+Received: by mail-wm1-x329.google.com with SMTP id
+ u8-20020a7bcb080000b02901e44e9caa2aso7268816wmj.4; 
+ Sat, 26 Jun 2021 01:55:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=ptTxiGNRR9tLNMxRNvuOfTEawaDh7PBZAwJYDWExn6A=;
+ b=WXZPto5hzmyq5c5odNy0McigPUrb1U8D3ElSea0YA6x/fugujmRnICRwcXvzB0modn
+ RFnxjMlR5rE8gEr/sN5IsPfVueKZ85sDhJDqHVQdokVO1mBkU5H75gAJjv02f5wgE+hn
+ 9LbJ/Lux2MkBxb4hmXxfyM2A54N/Inefn2dzazJZSSLXMuZel802aLRLHm61C95k4Knf
+ Qzq1O1q8UbX4z+Di3lo98MSoo9TmKjBJp0IDDBkY80mplsdN197X8ah2DRZiZXdVKiON
+ Ys/9hFDExx35ZaHsv4nZKEgcmZoYISMbZ7YT3aQ1MdLsDQFfdmlLJG04Z4poXicy4dGf
+ XV4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=ptTxiGNRR9tLNMxRNvuOfTEawaDh7PBZAwJYDWExn6A=;
+ b=PJQxZTyF9h/j0yIPeiIbOc1kxJajF0Jy5tRIGftLtUbr0vpxIdNBm1bdlMDpdGNVwv
+ TArcSXU+DqInWtkZgUhs/8EM90v8DlKrOT3VQPj2tGAkvlYCBXcwcoVczXxrdVsQ72jA
+ 6I9F5b90x6hYi2N6U+XLWlwZMW7nG85y4F9b09QxpH95OxEcdgFMZ9cg9XHKj4W37Eqp
+ 7FJRSaIAJJjAti+/c3f+Eismmj2wkzhB87OFzFT24geHXQF2mEDSveqCl+h2Ndtiec3G
+ hCVvFVLC/niY+TnfqBpyY0amfyyg8uL422/+he6jirRzg+JsDqUQ5wpLwpbQdnTHgbOk
+ Hf5g==
+X-Gm-Message-State: AOAM532ZHfxJg3QZYM/TSQh93UPkiNNixoj3Ltlf5JjW820eub+94TfR
+ LRl0wzqZb92WSQT/ODwvZ/w=
+X-Google-Smtp-Source: ABdhPJw6/VYXiHMo3tYPsIdCX2Czl9c8v5+Wa4nye0fP9/XfYl++WvluOveXRSNeUl+JlD1lODFXkg==
+X-Received: by 2002:a05:600c:2243:: with SMTP id
+ a3mr15630087wmm.86.1624697723317; 
+ Sat, 26 Jun 2021 01:55:23 -0700 (PDT)
+Received: from smtp.gmail.com (a95-92-181-29.cpe.netcabo.pt. [95.92.181.29])
+ by smtp.gmail.com with ESMTPSA id n8sm7967502wrt.95.2021.06.26.01.55.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 26 Jun 2021 01:55:22 -0700 (PDT)
+Date: Sat, 26 Jun 2021 09:55:13 +0100
+From: Melissa Wen <melissa.srw@gmail.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com,
+ james.qian.wang@arm.com, liviu.dudau@arm.com,
+ mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+ inki.dae@samsung.com, jy0922.shim@samsung.com,
+ sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de,
+ p.zabel@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com,
+ chunkuang.hu@kernel.org, matthias.bgg@gmail.com, bskeggs@redhat.com,
+ tomba@kernel.org, hjc@rock-chips.com, heiko@sntech.de,
+ yannick.fertre@foss.st.com, philippe.cornu@foss.st.com,
+ mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+ wens@csie.org, jernej.skrabec@gmail.com, thierry.reding@gmail.com,
+ jonathanh@nvidia.com, jyri.sarha@iki.fi, emma@anholt.net,
+ linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com,
+ rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org
+Subject: Re: [PATCH v4 24/27] drm/vkms: Don't set struct drm_device.irq_enabled
+Message-ID: <20210626085513.akf4cwyqpbchmycf@smtp.gmail.com>
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-25-tzimmermann@suse.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210625082222.3845-25-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210625_225932_743654_5AAD3A90 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20210626_015529_324299_869CA9D1 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,100 +132,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+On 06/25, Thomas Zimmermann wrote:
+> The field drm_device.irq_enabled is only used by legacy drivers
+> with userspace modesetting. Don't set it in vkms.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-> Mediatek Bluetooth Controller send the fw log via EP2, this patch
-> create callback(data->recv_acl) for processing acl packet.
-> 
-> 1. create callback(data->recv_acl) for processing acl packet.
-> 2. Add btusb_recv_acl_mtk to dispatch acl packet.
-> 3. Send mediatek debug log and coredump via hci_recv_diag channel.
-> 4. The upper layerd can use hci_channel_minitor to receive
->   these packets.
-> 
-> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+I've also checked here, lgtm.
+
+Reviewed-by: Melissa Wen <melissa.srw@gmail.com>
 > ---
-> drivers/bluetooth/btusb.c | 23 ++++++++++++++++++++++-
-> 1 file changed, 22 insertions(+), 1 deletion(-)
+>  drivers/gpu/drm/vkms/vkms_drv.c | 2 --
+>  1 file changed, 2 deletions(-)
 > 
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index b015dcecfb13..0a86713f496b 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -569,6 +569,7 @@ struct btusb_data {
-> 	int suspend_count;
+> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
+> index 027ffe759440..496de38ad983 100644
+> --- a/drivers/gpu/drm/vkms/vkms_drv.c
+> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
+> @@ -163,8 +163,6 @@ static int vkms_create(struct vkms_config *config)
+>  		goto out_devres;
+>  	}
+>  
+> -	vkms_device->drm.irq_enabled = true;
+> -
+>  	ret = drm_vblank_init(&vkms_device->drm, 1);
+>  	if (ret) {
+>  		DRM_ERROR("Failed to vblank\n");
+> -- 
+> 2.32.0
 > 
-> 	int (*recv_event)(struct hci_dev *hdev, struct sk_buff *skb);
-> +	int (*recv_acl)(struct hci_dev *hdev, struct sk_buff *skb);
-> 	int (*recv_bulk)(struct btusb_data *data, void *buffer, int count);
-> 
-> 	int (*setup_on_usb)(struct hci_dev *hdev);
-> @@ -776,7 +777,7 @@ static int btusb_recv_bulk(struct btusb_data *data, void *buffer, int count)
-> 
-> 		if (!hci_skb_expect(skb)) {
-> 			/* Complete frame */
-> -			hci_recv_frame(data->hdev, skb);
-> +			data->recv_acl(data->hdev, skb);
-> 			skb = NULL;
-> 		}
-> 	}
-> @@ -3851,6 +3852,24 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
-> 	return 0;
-> }
-> 
-> +static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
-> +{
-> +	struct btusb_data *data = hci_get_drvdata(hdev);
-> +	int err;
-> +
-
-since this is guaranteed to be a complete ACL packet now, use the ACL header struct and compare the handle. Which also means you can nicely use a switch statement here.
-
-> +	if (skb->data[0] == 0x6f && skb->data[1] == 0xfc) {
-
-This needs a comment on why you disable auto-suspend here.
-
-> +		usb_disable_autosuspend(data->udev);
-> +		err = hci_recv_diag(data->hdev, skb);
-> +	} else if ((skb->data[0] == 0xff || skb->data[0] == 0xfe) &&
-> +		   skb->data[1] == 0x05) {
-> +		err = hci_recv_diag(data->hdev, skb);
-
-I would also comment on what type of diagnostic message each of these are.
-
-> +	} else {
-> +		err = hci_recv_frame(data->hdev, skb);
-> +	}
-> +
-> +	return err;
-> +}
-> +
-> MODULE_FIRMWARE(FIRMWARE_MT7663);
-> MODULE_FIRMWARE(FIRMWARE_MT7668);
-> 
-> @@ -4542,6 +4561,7 @@ static int btusb_probe(struct usb_interface *intf,
-> 		data->recv_event = hci_recv_frame;
-> 		data->recv_bulk = btusb_recv_bulk;
-> 	}
-
-Extra empty line before this statement.
-
-> +	data->recv_acl = hci_recv_frame;
-> 
-> 	hdev = hci_alloc_dev();
-> 	if (!hdev)
-> @@ -4669,6 +4689,7 @@ static int btusb_probe(struct usb_interface *intf,
-> 		hdev->setup = btusb_mtk_setup;
-> 		hdev->shutdown = btusb_mtk_shutdown;
-> 		hdev->manufacturer = 70;
-> +		data->recv_acl = btusb_recv_acl_mtk;
-> 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
-> 	}
-
-Regards
-
-Marcel
-
 
 _______________________________________________
 Linux-mediatek mailing list
