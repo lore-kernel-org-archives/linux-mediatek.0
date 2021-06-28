@@ -3,19 +3,19 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5B68C48BC2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 00:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E4256C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:00:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 752D461352
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 00:36:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 752D461352
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id A2F2561C34
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:00:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2F2561C34
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,74 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JOPPh1X3h4JrirYaqeSVaNk+CwCoLgH2YAgkHa0kTds=; b=AFbYabSMW8FY89
-	PnitkHLfFX+YnZuHgnjRhAQAGuxBtstH2RKvRIotVG+N/DH6gcHzkKoziJowDmMJzzN6fyTjEVHPA
-	WXxPX2b68FvPe3lgCWke1TK6VCNiK5k/P2rxQw2JLJ2NgozR559m4SRY7GVlwhzqNdBbwXjLrMj85
-	XAb+2sTxTMc98edbd5rLaSN2FB6phzHtqUgzExJfQXMNSwTr6sHn9/ozM7Gv2G2d08BS45bzQCr3W
-	4zilZoyib1Z+Un9YVCw/FASTrMPOZNS4WBD8s8I57m+rv8TI7ohjpF7BNlI+vRKsMhLYiw5yWAqo+
-	C0loaBm57bodHFOrRKWA==;
+	List-Owner; bh=JaaaIHoB5S87su1HqLAz2o1Vmden2/3WDbszRvahnpU=; b=hlk0ZzhxpcnW2M
+	P5vMTJlCNRYsCawPacPodlbbHDZbbioZtU2p8gSUQ4gVcgycPZaSy3+S5EK5Gs3D8XObG9Kwxwt4U
+	TL4tdZN9HRuT9onxYJ/zpAzuNsmLA7nTBuH+B5f92Moq3WTWo8NB88mel2/+oz2lTEJMlUXTfRpnS
+	pLHxeqqPT72yfucgdDaVwsNW+9kyvAMXGHLMXZl2kR5OBdTeiGWysP3CMx5p0EC+VG8AixvW+wZhf
+	uf4/OPdkqhOGHZCETQ+PgKULLu0h4CvnZfy49TmN5ACIWECiqX6ncYsRHvt8UmCHXkCZZ3ebXlVvx
+	0GTi6f1ugI8orTVR0+Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxfG5-006MBr-D5; Mon, 28 Jun 2021 00:36:17 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1lxkJl-006v1F-Oh; Mon, 28 Jun 2021 06:00:25 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxfG2-006MBJ-Op
- for linux-mediatek@lists.infradead.org; Mon, 28 Jun 2021 00:36:16 +0000
-Received: by mail-lj1-x232.google.com with SMTP id k21so1951210ljh.2
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Jun 2021 17:36:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1lxkJi-006uzM-Bp
+ for linux-mediatek@lists.infradead.org; Mon, 28 Jun 2021 06:00:24 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id t40so20738299oiw.8
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Jun 2021 23:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gaVCDaYqtt9b3KVihy9mfeTRmIqBNx++UINpmJ3IlGo=;
- b=ewfww11LZVv3L1/XDYvF41JFKOeUxXAJrE0cxkokTyX5A/WOVyjJvC/gPRep56Ec6Z
- kcdbwGmb2AfXCuco2oNp2Ae9BtQTGaNzFDbQfMz4dnh/KYf1TWTa+5UTJqkX7O5MLGu2
- DsNLTZ1Dxu4oKIlYZL4zHrb0bOXc4mw9dIgP0=
+ :cc; bh=OxWWpaIFrA1MZdBiGZNBP423mwRSvrkYLeFkLxi+psE=;
+ b=LMUpZBEyoJQnBtAQ8SeofxWWGMQdCIhgV/12CUm7166Cn94MsSRbJqn1hSoEAYl+Et
+ Bm+iirwqCVPLotrlInWQgdyT9JBMMS645aOU3F8aPbMHfI0N8MA9VGFm0sPU7RqJxyHN
+ wG7AdpdAKNj/zNyjwgLIVa03j4ih5laE+WvZ6PV4zu/AI7JKejTi2ScC6+qEtb02JyIc
+ jeiA3Sux/OM7PfWw29g/o/CdeqN5RDkEvvCGQQmhhykp1DpGaWVeFVUnti+ZEqzKd3yY
+ dky0y+WveAm1wwgBKioF9IE1tJ+Ykya0kNBrTC+OHy4rSnf56FPsJcKoPB6XRvTSxfrs
+ 1BRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=gaVCDaYqtt9b3KVihy9mfeTRmIqBNx++UINpmJ3IlGo=;
- b=VRCaEXS47a/MbapCFZoCW8kNRkmSAimJRcXkvV0Me4do48g5B1w6xI6Zaj1tgrEfD/
- LN+t3SG9jX5rqmSK//wOQLKT0+/aw7TXGinfji10t0k+e3hDKeYmpGCrSfAg65IeQetG
- ntr7UKRxhxW6V9m1YwdAh8GFWuPDEkUp7KNtLLWpsGAQvXf1Vcsw7Ssyl3fX5oMp08RV
- hj1A5U9u+8sOdDvpNwrM+RVIljNYhGh4FBDsN6ayAjCq+owWMy79ZiGnYe5mcJvkthUq
- sCxgtR8bRw7qd9t1eLyxOedjN8M396dBnH2BcfixHahPe8HHuJwgwxDtkpTw5WLVVbGk
- GwlQ==
-X-Gm-Message-State: AOAM5313aTOXyxc+M88WtnVOdCtOa/OoRnD8THJPozAqKwYnRcSNKmGT
- AmOZQcICTzNYhMYz9uwddYhlom9fvEQlmTlfkuY=
-X-Google-Smtp-Source: ABdhPJzaejYDWdM/2Hyy4nZxgKtFKm9mO/k0+dGqArcaNwM18fSPXqon7827JSHaFS9o0hltv/Ql4A==
-X-Received: by 2002:a2e:b790:: with SMTP id n16mr17844653ljo.9.1624840572118; 
- Sun, 27 Jun 2021 17:36:12 -0700 (PDT)
-Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com.
- [209.85.167.42])
- by smtp.gmail.com with ESMTPSA id h3sm1163548lfg.204.2021.06.27.17.36.11
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
-Received: by mail-lf1-f42.google.com with SMTP id a11so28902791lfg.11
- for <linux-mediatek@lists.infradead.org>; Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
-X-Received: by 2002:a05:6512:331a:: with SMTP id
- k26mr14837143lfe.152.1624840571313; 
- Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
+ bh=OxWWpaIFrA1MZdBiGZNBP423mwRSvrkYLeFkLxi+psE=;
+ b=FHcOQgrWIxNfKYuSBFKpjuniOppI9Nzf+z1q7X3IDsNuuFb0+f9QSh6nDikpDR9BUo
+ owkeEISlU1c4AorPFX6oAxZPre93MNixNnR/Lcqix4MOAKRjtjaxgP45wBwvlkNRVG/x
+ IN/4i+oiFnjju17wR/wDEwktT5o1705TjU3GwkzqoSH3lkX4kecL3aVo7FDUg/rdil73
+ PZO8JcCBfrx+ID4rFDRWzRkDKdhjZTlDIKMsC4CPFWYrOfQn3GO/wF6bIS7nhDyEAP06
+ g7avfgVXhj05hRSZyYZdWSClNBlDz+N6cMaLKOaC39CZE6/BKRRZC7BoilZI2Q+ONFwE
+ j5jw==
+X-Gm-Message-State: AOAM531Qon12mZtTpv5NILOjZ+wuoHwK90LpjRmqmFjIPgXwbwTpCnt0
+ mpuXgXZgI0qtogxX3vD92OaH2LZUYHvvOxYObL+Gow==
+X-Google-Smtp-Source: ABdhPJxqhFj8BmcDYjY03LVKniU00V6a9H9F3IfGZ6CZRYiwE68CJG4CI1RaEcWvHwvAkHNXok4eZ8Ddb4luicY15Ys=
+X-Received: by 2002:aca:ba06:: with SMTP id k6mr16229848oif.70.1624860018200; 
+ Sun, 27 Jun 2021 23:00:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210625062448.3462177-1-enric.balletbo@collabora.com>
-In-Reply-To: <20210625062448.3462177-1-enric.balletbo@collabora.com>
-From: Eizan Miyamoto <eizan@chromium.org>
-Date: Mon, 28 Jun 2021 10:35:54 +1000
-X-Gmail-Original-Message-ID: <CAOak1e8uJum7Wf6Z6CO_w5+aKvbm5JvwRYuT+Rzp2LwTOh_vQw@mail.gmail.com>
-Message-ID: <CAOak1e8uJum7Wf6Z6CO_w5+aKvbm5JvwRYuT+Rzp2LwTOh_vQw@mail.gmail.com>
-Subject: Re: [PATCH] soc: mediatek: mmsys: Fix missing UFOE component in
- mt8173 table routing
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, Eizan Miyamoto <eizan@chromium.org>, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, drinkcat@chromium.org,
- hsinyi@chromium.org, 
- Collabora Kernel ML <kernel@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+References: <20210626100931.22794-1-Kuan-Ying.Lee@mediatek.com>
+ <20210626100931.22794-2-Kuan-Ying.Lee@mediatek.com>
+In-Reply-To: <20210626100931.22794-2-Kuan-Ying.Lee@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Mon, 28 Jun 2021 08:00:00 +0200
+Message-ID: <CANpmjNO6k5=0HMf-Y3j70iTKLKY8XJAiLDDrfNf4-3cLASxHOA@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] kasan: rename CONFIG_KASAN_SW_TAGS_IDENTIFY to
+ CONFIG_KASAN_TAGS_IDENTIFY
+To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+ Alexander Potapenko <glider@google.com>, 
+ Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov <dvyukov@google.com>, 
+ Andrew Morton <akpm@linux-foundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ kasan-dev@googlegroups.com, linux-kernel@vger.kernel.org, linux-mm@kvack.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ wsd_upstream@mediatek.com, chinwen.chang@mediatek.com, 
+ nicholas.tang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_173614_869995_7635C1F9 
-X-CRM114-Status: GOOD (  21.58  )
+X-CRM114-CacheID: sfid-20210627_230022_487273_5B8C3CB6 
+X-CRM114-Status: GOOD (  25.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,49 +101,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Enric,
-
-Thanks so much for your hard work bisecting and crafting this patch.
-
-I have verified that it fixes the DRM issues we were seeing on MT8173
-with Linux 5.12.
-
-Tested: Eizan Miyamoto <eizan@chromium.org>
-On Fri, Jun 25, 2021 at 4:24 PM Enric Balletbo i Serra
-<enric.balletbo@collabora.com> wrote:
+On Sat, 26 Jun 2021 at 12:09, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
 >
-> The UFOE (data compression engine) component needs to be enabled to have
-> the imgtec gpu driver working. If we don't enable it we see a black screen.
-> Looks like when we switched to use and array for setting the routing
-> registers in commit 440147639ac7 ("soc: mediatek: mmsys: Use an array for
-> setting the routing registers") we missed to add this component in the new
-> routing table, it was present before taht commit, so fix it by adding
-> this component in the mt8173 routing table.
+> This patch renames CONFIG_KASAN_SW_TAGS_IDENTIFY to
+> CONFIG_KASAN_TAGS_IDENTIFY in order to be compatible
+> with hardware tag-based mode.
 >
-> Fixes: 440147639ac7 ("soc: mediatek: mmsys: Use an array for setting the routing registers")
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> Suggested-by: Marco Elver <elver@google.com>
+> Reviewed-by: Alexander Potapenko <glider@google.com>
+> Reviewed-by: Andrey Konovalov <andreyknvl@gmail.com>
+> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+
+Reviewed-by: Marco Elver <elver@google.com>
+
+
 > ---
+>  lib/Kconfig.kasan         | 2 +-
+>  mm/kasan/kasan.h          | 4 ++--
+>  mm/kasan/report_sw_tags.c | 2 +-
+>  mm/kasan/sw_tags.c        | 4 ++--
+>  4 files changed, 6 insertions(+), 6 deletions(-)
 >
->  drivers/soc/mediatek/mtk-mmsys.h | 3 +++
->  1 file changed, 3 insertions(+)
+> diff --git a/lib/Kconfig.kasan b/lib/Kconfig.kasan
+> index c3b228828a80..fdb4a08dba83 100644
+> --- a/lib/Kconfig.kasan
+> +++ b/lib/Kconfig.kasan
+> @@ -167,7 +167,7 @@ config KASAN_STACK
+>           instrumentation is also disabled as it adds inline-style
+>           instrumentation that is run unconditionally.
 >
-> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-> index a760a34e6eca..11388961dded 100644
-> --- a/drivers/soc/mediatek/mtk-mmsys.h
-> +++ b/drivers/soc/mediatek/mtk-mmsys.h
-> @@ -209,6 +209,9 @@ static const struct mtk_mmsys_routes mmsys_default_routing_table[] = {
->         }, {
->                 DDP_COMPONENT_RDMA2, DDP_COMPONENT_DSI3,
->                 DISP_REG_CONFIG_DSIO_SEL_IN, DSI3_SEL_IN_RDMA2
-> +       }, {
-> +               DDP_COMPONENT_UFOE, DDP_COMPONENT_DSI0,
-> +               DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, UFOE_MOUT_EN_DSI0,
->         }
+> -config KASAN_SW_TAGS_IDENTIFY
+> +config KASAN_TAGS_IDENTIFY
+>         bool "Enable memory corruption identification"
+>         depends on KASAN_SW_TAGS
+>         help
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 7b45b17a8106..952df2db7fdd 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -153,7 +153,7 @@ struct kasan_track {
+>         depot_stack_handle_t stack;
 >  };
 >
-> --
-> 2.30.2
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>  #define KASAN_NR_FREE_STACKS 5
+>  #else
+>  #define KASAN_NR_FREE_STACKS 1
+> @@ -170,7 +170,7 @@ struct kasan_alloc_meta {
+>  #else
+>         struct kasan_track free_track[KASAN_NR_FREE_STACKS];
+>  #endif
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         u8 free_pointer_tag[KASAN_NR_FREE_STACKS];
+>         u8 free_track_idx;
+>  #endif
+> diff --git a/mm/kasan/report_sw_tags.c b/mm/kasan/report_sw_tags.c
+> index 3d20d3451d9e..821a14a19a92 100644
+> --- a/mm/kasan/report_sw_tags.c
+> +++ b/mm/kasan/report_sw_tags.c
+> @@ -31,7 +31,7 @@
 >
+>  const char *kasan_get_bug_type(struct kasan_access_info *info)
+>  {
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         struct kasan_alloc_meta *alloc_meta;
+>         struct kmem_cache *cache;
+>         struct page *page;
+> diff --git a/mm/kasan/sw_tags.c b/mm/kasan/sw_tags.c
+> index 9362938abbfa..dd05e6c801fa 100644
+> --- a/mm/kasan/sw_tags.c
+> +++ b/mm/kasan/sw_tags.c
+> @@ -177,7 +177,7 @@ void kasan_set_free_info(struct kmem_cache *cache,
+>         if (!alloc_meta)
+>                 return;
+>
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         idx = alloc_meta->free_track_idx;
+>         alloc_meta->free_pointer_tag[idx] = tag;
+>         alloc_meta->free_track_idx = (idx + 1) % KASAN_NR_FREE_STACKS;
+> @@ -196,7 +196,7 @@ struct kasan_track *kasan_get_free_track(struct kmem_cache *cache,
+>         if (!alloc_meta)
+>                 return NULL;
+>
+> -#ifdef CONFIG_KASAN_SW_TAGS_IDENTIFY
+> +#ifdef CONFIG_KASAN_TAGS_IDENTIFY
+>         for (i = 0; i < KASAN_NR_FREE_STACKS; i++) {
+>                 if (alloc_meta->free_pointer_tag[i] == tag)
+>                         break;
+> --
+> 2.18.0
+>
+> --
+> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20210626100931.22794-2-Kuan-Ying.Lee%40mediatek.com.
 
 _______________________________________________
 Linux-mediatek mailing list
