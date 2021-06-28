@@ -4,81 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 533E2C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CD00C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1539619B6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:22:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1539619B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3EC6861466
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 06:23:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3EC6861466
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ldEmdVbwx9SzsmY69RSLq1Fv+EwqZ39fCULIkmBLAKI=; b=Iri0PJY7qDb/Ds
-	0I2aDGzB6/cPUskhZDM5L8GpwrpQsLBbRkbhrxjQyIZ52P3yPkGGu9hUcyVhSr2seo/ex7dKX1HC2
-	vmF40FfTAF3WrugWVX/eJZ/vKGfpYmZM4QY+1hC3pJeUCRDblDvyXYQjTqICmHSzNgxj1OKl/A166
-	9L5M3YEji6imm6q/Kmu7OpSoFn1WvPsXAA6tVPhxaDxnxfRMuotjW7qzUqfsLWL13dok/1r3Qydyc
-	r7OLeQFttbrn6hamGmYvGCgb/z43XUqBuU93Oaqnz8ZGMTtCpq4BG5cz1nTRRKLaj3+FOsqmUNKVJ
-	Rt9wXNTXeRxNNpKsnrJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WiwiwCk5xc5V8Xq5jKC9FmA46QmpEAwSXBLBPX28dPE=; b=22GOSMSKRXfDxVeQGeolBVfHsJ
+	OvP67Essiqz592q9cz6yBcZbjkspOaNMiWE+Av4u8J+SkTJLGc10pnt3N5ULmZuS/hldWStcvydw2
+	lSpHXLjNuMedJj2qqUVtPQOxvDVyZ9keTYM2VJ1w7TQW2ivdyClRAPRq17CRvLB1POugSvChR9lAt
+	+ydfXv72EjT5An1bZ/5XMHUhCD0z7ANS5xIiQO20cw2sd/S3roVAMClCY95qsiGanQ4UptGpv6Aeg
+	mO4R7h1HpjWND5uIwJbYCAJ2zlVKnz2kBP6rdrMsZxNWtiU366p2/lG/TFUpE4XXnM6VdNDeSoLpM
+	bNL4YiyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxkfB-006yFg-JP; Mon, 28 Jun 2021 06:22:33 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1lxkgJ-006yV2-Vp; Mon, 28 Jun 2021 06:23:44 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxkf7-006yEf-Cm; Mon, 28 Jun 2021 06:22:32 +0000
-X-UUID: 4371a7860cfd4fd7aab000378361a653-20210627
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=MoVeeFN8QQduQIE2H+ETIc4pO/33E9CcY+5cMgsP0BY=; 
- b=gc2ngFb968wy8cJhrv6QO0ABMdAAmlZ79R9M7Y6LD6ODZq0dj8A7ZlYUzhLZqhzcqYFMi/3J9SXkR0XxGgSSdBKExoMrnppDtKd0WboKElV8OGRveb+K40MObeoektCtceQTKqIIxP6o43VEN4TzIv4ReEYG/XGcHatHL6ul3Io=;
-X-UUID: 4371a7860cfd4fd7aab000378361a653-20210627
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yee.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 965119736; Sun, 27 Jun 2021 23:22:26 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 27 Jun 2021 23:19:35 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 28 Jun 2021 14:19:33 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 28 Jun 2021 14:19:33 +0800
-Message-ID: <1147252f497e5529de8215486b184af649ac0a0e.camel@mediatek.com>
-Subject: Re: [PATCH v2 1/1] kasan: Add memzero init for unaligned size under
- SLUB debug
-From: Yee Lee <yee.lee@mediatek.com>
-To: Andrey Konovalov <andreyknvl@gmail.com>
-CC: <wsd_upstream@mediatek.com>, Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>,
- Andrew Morton <akpm@linux-foundation.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, "open list:KASAN" <kasan-dev@googlegroups.com>,
- "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Date: Mon, 28 Jun 2021 14:19:33 +0800
-In-Reply-To: <CA+fCnZe0fng4-53U1=5MiYszCMi97twKut3eQNaNHgPV2HOVug@mail.gmail.com>
-References: <20210624112624.31215-1-yee.lee@mediatek.com>
- <20210624112624.31215-2-yee.lee@mediatek.com>
- <CA+fCnZe0fng4-53U1=5MiYszCMi97twKut3eQNaNHgPV2HOVug@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1lxkgH-006ySs-DI; Mon, 28 Jun 2021 06:23:42 +0000
+Received: from imap.suse.de (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ (using TLSv1.2 with cipher ECDHE-ECDSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id A375B22358;
+ Mon, 28 Jun 2021 06:23:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
+ s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
+ ATR41EBppViL088sYF/EuuEt0QBmJHs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624861415;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
+ Iy0+1fzHScVjq3CA==
+Received: from imap3-int (imap-alt.suse-dmz.suse.de [192.168.254.47])
+ by imap.suse.de (Postfix) with ESMTP id 73EFC118DD;
+ Mon, 28 Jun 2021 06:23:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1624861415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=jJM/B+QJ0HaTwqIYl1RXnmf+3kS01V89ycXtkk6p6XRsDI0f0fsSYWSMxuQjKP4pqQ0E+1
+ s8MITUczcRX2a8uMHRISVlbqGN7L1AmLkau+jzoUaW2yOqZOzt5T1SrWObCQMTd+s9ffpr
+ ATR41EBppViL088sYF/EuuEt0QBmJHs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1624861415;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3f/RQ+o/NN1qA7MbgkBwKBo1UY1pJWjqF+CekEE7tvs=;
+ b=NBW1kkaGRxLiRwOxNiLCHy+jTq7PDtH+lJSbjdqofRosiUym/h3BpEXG8WHWk0LKYIFlQF
+ Iy0+1fzHScVjq3CA==
+Received: from director2.suse.de ([192.168.254.72]) by imap3-int with ESMTPSA
+ id T4qyGuZq2WDleAAALh3uQQ
+ (envelope-from <tzimmermann@suse.de>); Mon, 28 Jun 2021 06:23:34 +0000
+Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
+ drm_device.irq_enabled
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-6-tzimmermann@suse.de>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
+Date: Mon, 28 Jun 2021 08:23:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_232229_493024_56A9F9CB 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20210627_232341_665426_A8E0AF89 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,65 +131,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4226647666765932927=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-06-25 at 17:03 +0300, Andrey Konovalov wrote:
-> On Thu, Jun 24, 2021 at 2:26 PM <yee.lee@mediatek.com> wrote:
-> > 
-> > From: Yee Lee <yee.lee@mediatek.com>
-> > 
-> > Issue: when SLUB debug is on, hwtag kasan_unpoison() would
-> > overwrite
-> > the redzone of object with unaligned size.
-> > 
-> > An additional memzero_explicit() path is added to replacing init by
-> > hwtag instruction for those unaligned size at SLUB debug mode.
-> > 
-> > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> > ---
-> >  mm/kasan/kasan.h | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> > 
-> > diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> > index 8f450bc28045..d1054f35838f 100644
-> > --- a/mm/kasan/kasan.h
-> > +++ b/mm/kasan/kasan.h
-> > @@ -387,6 +387,12 @@ static inline void kasan_unpoison(const void
-> > *addr, size_t size, bool init)
-> > 
-> >         if (WARN_ON((unsigned long)addr & KASAN_GRANULE_MASK))
-> >                 return;
-> > +#if IS_ENABLED(CONFIG_SLUB_DEBUG)
-> 
-> Is this an issue only with SLUB? SLAB also uses redzones.
-As I known, hw-tag kasan only works with SLUB.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============4226647666765932927==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI"
 
-> 
-> > +       if (init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
-> 
-> This needs a comment along the lines of:
-> 
-> /* Explicitly initialize the memory with the precise object size to
-> avoid overwriting the SLAB redzone. This disables initialization in
-> the arch code and may thus lead to performance penalty. The penalty
-> is
-> accepted since SLAB redzones aren't enabled in production builds. */
-Sure, will work on this.
-> 
-> > +               init = false;
-> > +               memzero_explicit((void *)addr, size);
-> > +       }
-> > +#endif
-> >         size = round_up(size, KASAN_GRANULE_SIZE);
-> > 
-> >         hw_set_mem_tag_range((void *)addr, size, tag, init);
-> > --
-> > 2.18.0
-> > 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
+Content-Type: multipart/mixed; boundary="ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: daniel@ffwll.ch, airlied@linux.ie, alexander.deucher@amd.com,
+ christian.koenig@amd.com, Xinhui.Pan@amd.com, james.qian.wang@arm.com,
+ liviu.dudau@arm.com, mihail.atanassov@arm.com, brian.starkey@arm.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, inki.dae@samsung.com,
+ jy0922.shim@samsung.com, sw0312.kim@samsung.com, kyungmin.park@samsung.com,
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org,
+ tiantao6@hisilicon.com, john.stultz@linaro.org,
+ kong.kongxinwei@hisilicon.com, puck.chen@hisilicon.com,
+ laurentiu.palcu@oss.nxp.com, l.stach@pengutronix.de, p.zabel@pengutronix.de,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, bskeggs@redhat.com, tomba@kernel.org,
+ hjc@rock-chips.com, heiko@sntech.de, yannick.fertre@foss.st.com,
+ philippe.cornu@foss.st.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, wens@csie.org, jernej.skrabec@gmail.com,
+ thierry.reding@gmail.com, jonathanh@nvidia.com, jyri.sarha@iki.fi,
+ emma@anholt.net, linux-graphics-maintainer@vmware.com, zackr@vmware.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, jani.nikula@linux.intel.com,
+ rodrigo.vivi@intel.com, linux@armlinux.org.uk,
+ kieran.bingham+renesas@ideasonboard.com, rodrigosiqueiramelo@gmail.com,
+ melissa.srw@gmail.com, hamohammed.sa@gmail.com
+Cc: linux-samsung-soc@vger.kernel.org, nouveau@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-sunxi@lists.linux.dev, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ linux-tegra@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
+Message-ID: <57eb0ca1-e1a3-495e-926e-0d02634f096f@suse.de>
+Subject: Re: [PATCH v4 05/27] drm/armada: Don't set struct
+ drm_device.irq_enabled
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-6-tzimmermann@suse.de>
+In-Reply-To: <20210625082222.3845-6-tzimmermann@suse.de>
+
+--ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+
+
+
+Am 25.06.21 um 10:22 schrieb Thomas Zimmermann:
+> The field drm_device.irq_enabled is only used by legacy drivers
+> with userspace modesetting. Don't set it in armada.
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+R-b'ed by Laurent via IRC
+
+> ---
+>   drivers/gpu/drm/armada/armada_drv.c | 2 --
+>   1 file changed, 2 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/armada/armada_drv.c b/drivers/gpu/drm/arma=
+da/armada_drv.c
+> index dab0a1f0983b..4a64f1b9ec4d 100644
+> --- a/drivers/gpu/drm/armada/armada_drv.c
+> +++ b/drivers/gpu/drm/armada/armada_drv.c
+> @@ -130,8 +130,6 @@ static int armada_drm_bind(struct device *dev)
+>   	if (ret)
+>   		goto err_comp;
+>  =20
+> -	priv->drm.irq_enabled =3D true;
+> -
+>   	drm_mode_config_reset(&priv->drm);
+>  =20
+>   	ret =3D armada_fbdev_init(&priv->drm);
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--ZsJWMZ3fKnfvZTQNCUxxACBUzMa2385FX--
+
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDZauUFAwAAAAAACgkQlh/E3EQov+BI
+/hAAwo/d/PjJfngTOTApUkdBmvqLyDR9l5V4s4HUVyGrzgf1k3ANJUoqAEBC0li07IImisiMhKK8
+8wmGPIQHSU3aRLQy+IbasD12kuSAJXTiFc8KZ41WpXafVHPiumFm5LRhKTGDC9jw1NtbjnRpaJLR
+qng3SVUTGFmAcFjzS4rm+eVvFy6d0S667p+A04vRcWLgMkmZJt8l6mM235cyRVKidi1aoejJLVCd
+MgfPBD6QopEOl+KU3aggPK0b+iNk5I8vBTiSGosBFFNF1HAr6YjzyYodpHn1xX7Y9aUIPkoEYmIa
+nhym33NotP/6vZJIedE3tHo92o1oRWlB6k36FdX4fRJBkcPoGVDOnm3Q7xZXDTV+bAEKGO4xy//z
+FUK8NXmy1vNd5aAt7F2cQPNO0vq6pa0Se8GaIGteQqFbd2LfTdHaZHlEmNb6x+NA1r4uMoTKsbHd
+XiGVGBFETOR3ElshkxJGL/aACPeELm/CxMYCCHVYOjakNn7MGDJmQyMlJyzPcEEelXCOOuO7HnOY
+Meb9ovN73XEjZcxq4KzOS/sc5FpDU/Te6DQpjFKxKwudZaZrLMLuUypbmmlMP1o1G0hepbNe3rey
+eFdvCeu1rBsor2Ae6ooTqoc4SdsyqzHnYfAvQuAkeWUBOW3fekUl8r0Viqxkv1BaYBgK4FW4pNLD
+bu8=
+=AJ6t
+-----END PGP SIGNATURE-----
+
+--i2lHLYH7S6KjXfCFaxpWcKmmhZvcPmhxI--
+
+
+--===============4226647666765932927==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4226647666765932927==--
+
