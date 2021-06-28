@@ -2,95 +2,92 @@ Return-Path: <SRS0=zNLT=LW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48678C2B9F4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 15:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 948B6C2B9F4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 16:46:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0DF1F619A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 15:38:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DF1F619A0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5AC6E61988
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 16:46:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5AC6E61988
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=musHHnJetMWwMD8V1piy2ZUTYTKUsBS1GoS9r3VBy1E=; b=Tcy07e2AJDQrvO6rUkaxZQRQLI
-	UUhSbGT21avZM6cEPT82v2MdlFBYH9QPVIUGg99J//NCO0GOctsigJeq+WderwStpWdElfDz9cXyO
-	Qwq96FsvC3G/BtHIvGl+xZQe+JJp2+GCUIcYPLRn7lmWdQlgp/P0E2RJPBSUU3kBGO5j0l0ufDnKv
-	Mnvkund65Y5Y4zDcS+Oe1mcTanvNYkys2tu+fURWeJuEr4YCCZ8GjdHBHxEPFvYo4GlArwyZ4HuYU
-	9ZX97Is8BQf8AMjxDP0UF4krfqkalhz7UAc9PACDWjViBq8MJBuWrFoMIpcFK6kNqv4dJcP+wDYO+
-	hCdM0D0Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uQ7bKByaN8smPiurpWoR53HTVCnTrXBRAg+R5xXBuKc=; b=namLSEH895+XU5
+	880+XfvIbMeHavS5ivEPLM7Ag+ORoPKa2AIMAMToDF06pjfCgd0YgiAKzCR2hia4WI/pQifO7RJLf
+	vGAisCkwJmzWnqENHEDGgXB/eJjwkfIdWi6vQ0sJiTaxAdzgXR4o41LOSn2LZmt+4HU1JM5flJWoN
+	w4xMZwwsYctV5jERXuYcn59tEeJrA6nCR2ifqKCUYFsTbirmCLB4cBWN0VWr0KXNqarZBvxUKVbD4
+	YJefXXebuNnwnJvC00ZPJLC7ijTm7EkjLFTgl4COZl/cKWTB7Eh7IHGAwAS2FPsx1RPAx5gh3sRjq
+	oRrzBjG2CkoDk0VwDW9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxtL8-008Tdy-SA; Mon, 28 Jun 2021 15:38:26 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1lxuOm-008hFw-P5; Mon, 28 Jun 2021 16:46:16 +0000
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxtL5-008TdH-Tf
- for linux-mediatek@lists.infradead.org; Mon, 28 Jun 2021 15:38:25 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id w13so11778963wmc.3
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Jun 2021 08:38:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4JaQqvoR+0f2Sh2zrstf6yPCyntyADWYeNdjvtHLij8=;
- b=c5xC4O2gzmT8kiPNdVZtcIyKFj2dtP0Kw3VkhUSA1SlC3B89ZfhSnIf4I2fVKDvxHl
- 4cjB77Ug+GRxMI3yG8r9q3vj49dyJntVgmYPBK4wFCMPoguBewEX27uhpv1BdCN0ggDw
- MfBAp+cPreX2UHW/D5AvKoN/19EQgHg1OSFqUo8ELBGiI00TnqyHC6tZtHaME7A9CLIF
- TDZrRo57qxDPAjCbyDIdbc//FYLIQtpN6nuJBbRArPQOwC3ex/xtRtkR+SunR0Zdr06w
- FT9oUUY6Ho+O5uTzFpQjm5bYmWAQ0UlOGzedfm00G8bc+Is3uLeFvMVDUv/xZLwrAjwN
- VEtw==
+ id 1lxuCT-008dQU-AH; Mon, 28 Jun 2021 16:33:34 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id
+ o13-20020a9d404d0000b0290466630039caso4179862oti.6; 
+ Mon, 28 Jun 2021 09:33:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=UtUgHWKrOAfPi99gDumnR8kkJQNQB4a0Hv1A5Aua2sk=;
+ b=AXTGCRSqy7PntAOyr4KiYlK8XRbFGNEtx/8y6SZNAt7pkc345ONCgExYRM6rgy7NC3
+ Su3L7D0E/A/zMDcZndlEgTGFMF2qtIbgE4dFtKNovGXAgeUjW3bBdldb7xsXtcgGbPWt
+ sSKBf6oGbU0JL7Cq42kX6lCmW/jtkHKOx1lk7GtSuQSSt0aKY9wuyerVxn7iUlNnWm06
+ OSomIbRQWB78b4VNdXAYOWinRUYh2nrOzTP80tvcn6PbcDQDvAdlbp7dqgyIUTp43iym
+ GWLBQt71xnOkCdCjf3by3m/BFMNhCl5nMJFmJ5Cu/EI2AJAcbLznYHOXj76vUlZ0kADr
+ iAWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4JaQqvoR+0f2Sh2zrstf6yPCyntyADWYeNdjvtHLij8=;
- b=jwmac6Xf7TWaNQVc5A3UXHkJVTGnGtVZC8J05s21M5PeaLxsifgX1xHyNVjmWMFla5
- EXfVkv0sKj73KB1b6YhII5pjKFlgPT4vdNcrCHdutp37sEbc+oK0Zbr7WvRK6WHC8v5j
- Ejn4YroDfWPHsrl3o6VVW+FOUktw163eXcZ9YQeQamjmW2FGCsgapK3lYfGY1VQB//4i
- 1hK28yTkogxVSZnRZ/CWdENo1L2QyU93g27c3KdwowJAbDjzqtT7hhPpLQEiVyyZPHO/
- as5Nu+6vp+EqS9JlS41qmhWKcIB5Bf0EbmsxQV7hh8q9yIM3AWyAC136kMDYBwsHWbPL
- FuvA==
-X-Gm-Message-State: AOAM533kGLFna02QNOVeoLm3LGnjwcRib6KCD1kIFmk7YVUVMBvLDyYP
- Z5UrSIEnwmr0Yz5x5iEYHw/Epg==
-X-Google-Smtp-Source: ABdhPJy5S03IXoODGLADcWPT9mB85Cqt9LLwCy+impxfJlWAc+wlKP6dltP61XPzG97lnieMZPl08Q==
-X-Received: by 2002:a1c:ac87:: with SMTP id v129mr28215948wme.45.1624894701198; 
- Mon, 28 Jun 2021 08:38:21 -0700 (PDT)
-Received: from ?IPv6:2a01:e34:ed2f:f020:c9b2:a9e9:8b67:65fc?
- ([2a01:e34:ed2f:f020:c9b2:a9e9:8b67:65fc])
- by smtp.googlemail.com with ESMTPSA id h10sm15414567wmq.0.2021.06.28.08.38.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Jun 2021 08:38:20 -0700 (PDT)
-Subject: Re: Aw: Re: [PATCH v4] thermal: mediatek: add sensors-support
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- Amit Kucheria <amitk@kernel.org>, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20210608154530.70074-1-linux@fw-web.de>
- <9eb45f06-1303-1438-7ba0-b9ccaa898b34@gmail.com>
- <trinity-de0268f6-e2f2-4ce9-abdd-8016c593894c-1624874759475@3c-app-gmx-bs72>
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Message-ID: <0ff513a4-a419-ea47-4b44-9034f538c633@linaro.org>
-Date: Mon, 28 Jun 2021 17:38:19 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=UtUgHWKrOAfPi99gDumnR8kkJQNQB4a0Hv1A5Aua2sk=;
+ b=SKCrGwi7/aL6cPBToF/c4JRhiVemXazKJl4vKH8Ro91VF4/proxTrXCBdPeO4TEYuu
+ Q3n5qnLsTk0hsk4GDrv5heH54aH7oVaRWesdO3tRJlONRxlEEI7HL1p5MtT/+wutoU/l
+ mYWs5uSA7ouye5q4XE4As23F3AQGWFC1CXgLEjZeXFhY24OXRcET39Ol2fKXM32QKJS6
+ W0xcQIbIfDsBO09NRpt3a4KDIx1wC425xQwujh3p+X/KAmhWjvpvHIyLSqQacUDj5pNu
+ IxQuvBu2FdWqANctuL9IM7emI/A6Gb97X9Z9B1J5K1lo32uIUdLch/qavoh2cjz5uPPg
+ F7+A==
+X-Gm-Message-State: AOAM533QNIRkYb4QCzFJTKrpF20+nbfQvonrU6NdLtSWAIY3LY6IrBa4
+ W8Sqlb1CF9UtZ8h1wSgtEXU=
+X-Google-Smtp-Source: ABdhPJxBa2zVVcTFLRh1nBlV4u/4joB4a7hqMKIshTrYw4hi2/9W+n0K1e3JQo0OAmuNc+k2gHrU3A==
+X-Received: by 2002:a05:6830:3190:: with SMTP id
+ p16mr420934ots.42.1624898010388; 
+ Mon, 28 Jun 2021 09:33:30 -0700 (PDT)
+Received: from localhost ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id a22sm3589372otq.10.2021.06.28.09.33.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Jun 2021 09:33:29 -0700 (PDT)
+Date: Mon, 28 Jun 2021 09:33:28 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Christine Zhu <Christine.Zhu@mediatek.com>
+Cc: wim@linux-watchdog.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ seiya.wang@mediatek.com
+Subject: Re: [v5,3/3] watchdog: mediatek: mt8195: add wdt support
+Message-ID: <20210628163328.GA445250@roeck-us.net>
+References: <20210628113730.26107-1-Christine.Zhu@mediatek.com>
+ <20210628113730.26107-4-Christine.Zhu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <trinity-de0268f6-e2f2-4ce9-abdd-8016c593894c-1624874759475@3c-app-gmx-bs72>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210628113730.26107-4-Christine.Zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210628_083824_037253_D51B908B 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20210628_093333_408525_6AB93A48 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,19 +99,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMjgvMDYvMjAyMSAxMjowNSwgRnJhbmsgV3VuZGVybGljaCB3cm90ZToKPiBIaSwKPiAKPiBB
-IGdlbnRsZSBwaW5nIGFzIGl0IGlzIHJldmlld2VkIGJ1dCBub3QgeWV0IHZpc2libGUgaW4gdGhl
-cm1hbCB0cmVlIFsxXSBpIGd1ZXNzIGl0IHNob3VsZCBkbyxyaWdodD8KPiAKClJpZ2h0LCBJIHRo
-b3VnaHQgSSB0b29rIGl0LgoKRml4ZWQsIHRoYW5rcyBmb3IgdGhlIGhlYWRzIHVwLgoKCi0tIAo8
-aHR0cDovL3d3dy5saW5hcm8ub3JnLz4gTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
-cmUgZm9yIEFSTSBTb0NzCgpGb2xsb3cgTGluYXJvOiAgPGh0dHA6Ly93d3cuZmFjZWJvb2suY29t
-L3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xpbmFyb29y
-Zz4gVHdpdHRlciB8CjxodHRwOi8vd3d3LmxpbmFyby5vcmcvbGluYXJvLWJsb2cvPiBCbG9nCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
-YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Mon, Jun 28, 2021 at 07:37:31PM +0800, Christine Zhu wrote:
+> From: "Christine Zhu" <Christine.Zhu@mediatek.com>
+> 
+> Support MT8195 watchdog device.
+> 
+> Signed-off-by: Christine Zhu <Christine.Zhu@mediatek.com>
+
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+
+> ---
+>  drivers/watchdog/mtk_wdt.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index 97ca993bd009..8231cb9cf5f9 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -12,6 +12,7 @@
+>  #include <dt-bindings/reset-controller/mt2712-resets.h>
+>  #include <dt-bindings/reset-controller/mt8183-resets.h>
+>  #include <dt-bindings/reset-controller/mt8192-resets.h>
+> +#include <dt-bindings/reset-controller/mt8195-resets.h>
+>  #include <linux/delay.h>
+>  #include <linux/err.h>
+>  #include <linux/init.h>
+> @@ -81,6 +82,10 @@ static const struct mtk_wdt_data mt8192_data = {
+>  	.toprgu_sw_rst_num = MT8192_TOPRGU_SW_RST_NUM,
+>  };
+>  
+> +static const struct mtk_wdt_data mt8195_data = {
+> +	.toprgu_sw_rst_num = MT8195_TOPRGU_SW_RST_NUM,
+> +};
+> +
+>  static int toprgu_reset_update(struct reset_controller_dev *rcdev,
+>  			       unsigned long id, bool assert)
+>  {
+> @@ -341,6 +346,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
+>  	{ .compatible = "mediatek,mt6589-wdt" },
+>  	{ .compatible = "mediatek,mt8183-wdt", .data = &mt8183_data },
+>  	{ .compatible = "mediatek,mt8192-wdt", .data = &mt8192_data },
+> +	{ .compatible = "mediatek,mt8195-wdt", .data = &mt8195_data },
+>  	{ /* sentinel */ }
+>  };
+>  MODULE_DEVICE_TABLE(of, mtk_wdt_dt_ids);
+> -- 
+> 2.18.0
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
