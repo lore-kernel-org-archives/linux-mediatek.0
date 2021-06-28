@@ -2,75 +2,88 @@ Return-Path: <SRS0=zNLT=LW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-19.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B574CC49EB7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 09:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CDB4EC49EAB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 10:06:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 789D661C59
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 09:31:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 789D661C59
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8211D6121F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 10:06:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8211D6121F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OGtBQwLwf2V4UeQdGgYQZ30L+IaNKpkWzCxcKaxcdDs=; b=Crb2XXRqvgGO1q
-	EyZnMiiswPWOH82IsTktgA1f7i+sDX1Rw1DAz3IrhRyExyL8XzIHUzzYDGl06VYh1WifUFVTxkD5D
-	mymdC4kIQJUg7Wb2wVNZA245YXTKiYLLz4DuWLMedi4q6TlPIhqimgk7FB02iAj/OMibfskxlHCke
-	PUpXLEG9z248zmZFEjMh2kZ+kuzXfuuq1ZIg2JaTvXqbIHKCXd8cXunMXdiR8u1q1LJs1s+sHdAMX
-	la557LiYegi1v46eYo+5gaB3/dgYEZ7s3ZVUWeS4Lf1ZsEglf/Q9asXF5fcCYjM0akNRmY4VMjAID
-	84knlgRCnSSXzSb/zt0g==;
+	List-Owner; bh=AduzhlseImCLYEXW+wj9g056CUYqnFDBzRqG+6kqR4g=; b=ZTK7Rm5Del0wTW
+	deMSVnMX4aiiguSre5uUyBiJhw+afkUJAerINCihzrYXAirqczbqV3wGKUZpsdjlr6mx/9/oNav6P
+	E+RP8KGCy5g5TBN0c2twyQjP83DL7PrhIWTukiHK+mszq+G81T1bYtWw+n1M97rULIX8dENQ5QcBK
+	UagHfCcDSvGyhU/MJXwAcb8husj347MD9n1cVu3P862F6ft0OPTXtj1VqNewrLrKmSXjh73gAJdpj
+	bZp+GIwPAzHJzsKrteF8ywiKXB1YRhz9c6meivV8vQY39DNoPr6VFqxLfgZKcC4q7RWjQoo839yrR
+	vEZ25SMZ8Y95zScGyjuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxnbW-007UFg-Lm; Mon, 28 Jun 2021 09:30:58 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1lxo9c-007ZLZ-FW; Mon, 28 Jun 2021 10:06:12 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxnbK-007UDR-Ba; Mon, 28 Jun 2021 09:30:47 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3D96461C5A;
- Mon, 28 Jun 2021 09:30:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1624872646;
- bh=tko4HhpTn1KfqSQcG6rk256TdCkSHRTiZNDg1gfOL1U=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mdirt+wh3MtaZ7eNyZ9G3nbYCW5idUpb0uLyW3y3Pff8g1i8FeRt120hCx8rMfLOA
- LnRoyQZ6znqLxXb5WQ4POqk3nvJJlxgEnyIMLyf/4xRDnJ3jrCYholI79Dx7JQswRh
- BPPsck43uFy1epGSrPj0zjj0CnIzhGXT51/oNF84=
-Date: Mon, 28 Jun 2021 11:30:41 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- David Ahern <dsahern@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Sean Wang <sean.wang@mediatek.com>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- wsd_upstream@mediatek.com, chao.song@mediatek.com,
- kuohong.wang@mediatek.com
-Subject: Re: [PATCH 4/4] drivers: net: mediatek: initial implementation of
- ccmni
-Message-ID: <YNmWwSsZ02iigiHC@kroah.com>
-References: <YNS4GzYHpxMWIH+1@kroah.com>
- <20210628071829.14925-1-rocco.yue@mediatek.com>
+ id 1lxo9Y-007ZK3-69; Mon, 28 Jun 2021 10:06:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1624874759;
+ bh=dk+4B2EPDHZqnuPFi/AP937+sSbCnrQEg/Cfq8zAITM=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=YXl1dK9hAWZ72C4yTzIzb3aMOl16gsO59oBhTDhZKEme4UL6I+uWj4S05iEnxlXEg
+ VBgueRuyEytdJUJqb5X3JRr1RSHmhAiYWMBb2Qg+Q3evgCAyd9XbjkP+OGq09rDN/g
+ tBDrQZGBiJqAJjvShGenywVHm0efBiHIt7WPdy1k=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.73.39] ([80.245.73.39]) by web-mail.gmx.net
+ (3c-app-gmx-bs72.server.lan [172.19.170.208]) (via HTTP); Mon, 28 Jun 2021
+ 12:05:59 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210628071829.14925-1-rocco.yue@mediatek.com>
+Message-ID: <trinity-de0268f6-e2f2-4ce9-abdd-8016c593894c-1624874759475@3c-app-gmx-bs72>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich
+ <linux@fw-web.de>, linux-mediatek@lists.infradead.org, Amit Kucheria
+ <amitk@kernel.org>, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re: [PATCH v4] thermal: mediatek: add sensors-support
+Date: Mon, 28 Jun 2021 12:05:59 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <9eb45f06-1303-1438-7ba0-b9ccaa898b34@gmail.com>
+References: <20210608154530.70074-1-linux@fw-web.de>
+ <9eb45f06-1303-1438-7ba0-b9ccaa898b34@gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:uUyJaECQIvtuZsd5/3sgXqXrQh3TqH+yL6eKcIbcVVWsq3fQjrRu0wVKQa9m2PoIHITPh
+ tJ66UtdTQ/xrmnIWr+Dj7CaiMpmEsewmmf+dhOHgTWhbG2LMeUj/LzNMlntEZLK+iJ5o2ucwBRWu
+ JyITlb2phwUXv3EZiUNKlOozexlFs4SBsQaUPC2jCdApKLuaAwH/GlHe8EqOumGkHjQrOu8OvDu5
+ axtiwmh0U9kNN8DQHYV7QPPctXVBvOLLmkAfNKsNXWWVaRgMn0/qfBAm06le1HueANt62Rsv6xkk
+ eU=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:R0LOCk1W4mQ=:RKHoPwjzwWpfhU8Ndp9jD1
+ tf+crTRufbN9fEMKGPQBdnG2Ryi6JKeih97sklAm5NCzhXlNRpKKV9jCHs0sjuzggC37fNZJG
+ 6eZBWJm7k7YNQKK+vCn0Yxu5zom/gVGX87ciV3/902l0WChErYPJsAjRVfi7Rw9mCI8z48STQ
+ WN9Vdg5Zfdof6a+QBJ8vrxpQ2HfDZ/4WsleGiM+sy4jRVxBi0joOYGF89Yi1/JQ7CLiUNvlzY
+ OVZvAjdZmsUHD1aQPKLmYy9DNJxUW8h0AzxkJmfWBsHpCJ/jWcdff5eg6TdSKWUKZTuPjvKPS
+ U4r6Ove+c62huflNXIOwb3CByI+OatBp/VNyXDDBSOG7Jvrkqc+cCkcNPoTMXiFmwkekWXs1V
+ IeuTScISTV2RrY7LQ/2hzxzAan2KDFN/wUa6ndbcyl3EjzMnftNn+YV9gBF+lHsMAWCCm1nL3
+ SqBtae3j3t5RN8XIba6EVdEufhcJREueJa83/eAG4prmLexYgKV996sVzNvWp9STD+GBY1BS2
+ t9QngD6df/+3THpld1Zh50E364uQc8u4v5W1j8iR+2LZWsMaLnLuC2Mk+HtEpd74t4/Gt8Of2
+ OF5d75nTIbzb5v3FQPIsICg09x5onCBhO6kbeXcXloJPNEaJDdu9L+XO+aBxF5myfSxTJaEeb
+ 7khAG/n3HtWfz83dfW7tjJmAFrHrM72YF8QpGr3DUVaucY5Wh+FFrQyf25TcQMMUA62q2ZV7E
+ JmsWb/4oC2v/Mj6WdjqtsNFuiZvc0JYOWr+d/WldLFeWgmXTkLq0NhsH7XIaXDOZS0Z46kSwV
+ BbnyNv2QskVUBWKLqwmh8jB6mKkinhysnmaBz3Hsy7edx0Axcw=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210628_023046_478494_239232F6 
-X-CRM114-Status: GOOD (  40.37  )
+X-CRM114-CacheID: sfid-20210628_030608_561871_E52EBADD 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,76 +95,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBKdW4gMjgsIDIwMjEgYXQgMDM6MTg6MzBQTSArMDgwMCwgUm9jY28gWXVlIHdyb3Rl
-Ogo+IE9uIFRodSwgMjAyMS0wNi0yNCBhdCAxODo1MSArMDIwMCwgR3JlZyBLSCB3cm90ZToKPiBP
-biBUaHUsIEp1biAyNCwgMjAyMSBhdCAxMTo1NTowMlBNICswODAwLCBSb2NjbyBZdWUgd3JvdGU6
-Cj4gPj4gT24gVGh1LCAyMDIxLTA2LTI0IGF0IDE0OjIzICswMjAwLCBHcmVnIEtIIHdyb3RlOgo+
-ID4+IE9uIFRodSwgSnVuIDI0LCAyMDIxIGF0IDA3OjUzOjQ5UE0gKzA4MDAsIFJvY2NvIFl1ZSB3
-cm90ZToKPiA+Pj4gCj4gPj4+IG5vdCBoYXZlIGV4cG9ydHMgdGhhdCBubyBvbmUgdXNlcy4gIFBs
-ZWFzZSBhZGQgdGhlIGRyaXZlciB0byB0aGlzIHBhdGNoCj4gPj4+IHNlcmllcyB3aGVuIHlvdSBy
-ZXNlbmQgaXQuCj4gPj4+IAo+ID4+IAo+ID4+IEkndmUganVzdCB0b29rIGEgbG9vayBhdCB3aGF0
-IHRoZSBMaW51eCBzdGFnaW5nIHRyZWUgaXMuIEl0IGxvb2tzIGxpa2UKPiA+PiBhIGdvb2QgY2hv
-aWNlIGZvciB0aGUgY3VycmVudCBjY21uaSBkcml2ZXIuCj4gPj4gCj4gPj4gaG9uc3RseSwgSWYg
-SSBzaW1wbHkgdXBsb2FkIHRoZSByZWxldmFudCBkcml2ZXIgY29kZSBCIHRoYXQgY2FsbHMKPiA+
-PiBBIChlLmcuIGNjbW5pX3J4X3B1c2gpLCB0aGVyZSBpcyBzdGlsbCBhIGxhY2sgb2YgY29kZSB0
-byBjYWxsIEIuCj4gPj4gVGhpcyBzZWVtcyB0byBiZSBhIGNvbnRpbnV0eSBwcm9ibGVtLCB1bmxl
-c3MgYWxsIGRyaXZlcnMgY29kZXMgYXJlCj4gPj4gdXBsb2FkZWQgKGUuZy4gcG93ZXIgb24gbW9k
-ZW0sIGdldCBoYXJkd2FyZSBzdGF0dXMsIGNvbXBsZXRlIHR4L3J4IGZsb3cpLgo+ID4gCj4gPiBH
-cmVhdCwgc2VuZCBpdCBhbGwhICBXaHkgaXMgaXQgZGlmZmVyZW50IG1vZHVsZXMsIGl0J3Mgb25s
-eSBmb3Igb25lCj4gPiBjaHVuayBvZiBoYXJkd2FyZSwgbm8gbmVlZCB0byBzcGxpdCBpdCB1cCBp
-bnRvIHRpbnkgcGllY2VzLiAgVGhhdCB3YXkKPiA+IG9ubHkgY2F1c2VzIGl0IHRvIGJlIG1vcmUg
-Y29kZSBvdmVyYWxsLgo+ID4gCj4gPj4gCj4gPj4gVGhhbmtzfgo+ID4+IAo+ID4+IENhbiBJIHJl
-c2VuZCBwYXRjaCBzZXQgYXMgZm9sbG93czoKPiA+PiAoMSkgc3VwcGxlbWVudCB0aGUgZGV0YWls
-cyBvZiBwdXJlaXAgZm9yIHBhdGNoIDEvNDsKPiA+PiAoMikgdGhlIGRvY3VtZW50IG9mIGNjbW5p
-LnJzdCBzdGlsbCBsaXZlIGluIHRoZSBEb2N1bWVudGF0aW9uLy4uLgo+ID4+ICgzKSBtb2RpZnkg
-Y2NtbmkgYW5kIG1vdmUgaXQgaW50byB0aGUgZHJpdmVycy9zdGFnaW5nLy4uLgo+ID4gCj4gPiBm
-b3IgZHJpdmVycy9zdGFnaW5nLyB0aGUgY29kZSBuZWVkcyB0byBiZSAic2VsZiBjb250YWluZWQi
-IGluIHRoYXQgaXQKPiA+IGRvZXMgbm90IHJlcXVpcmUgYWRkaW5nIGFueXRoaW5nIG91dHNpZGUg
-b2YgdGhlIGRpcmVjdG9yeSBmb3IgaXQuCj4gPiAKPiA+IElmIHlvdSBzdGlsbCByZXF1aXJlIHRo
-aXMgY29yZSBuZXR3b3JraW5nIGNoYW5nZSwgdGhhdCBuZWVkcyB0byBiZQo+ID4gYWNjZXB0ZWQg
-Zmlyc3QgYnkgdGhlIG5ldHdvcmtpbmcgZGV2ZWxvcGVycyBhbmQgbWFpbnRhaW5lcnMuCj4gPiAK
-PiA+IHRoYW5rcywKPiA+IAo+ID4gZ3JlZyBrLWgKPiA+IAo+IAo+IEhpIEdyZWcsCj4gCj4gSSBh
-bSBncmF0ZWZ1bCBmb3IgeW91ciBoZWxwLgo+IAo+IEJvdGggY2NtbmkgY2hhbmdlIGFuZCBuZXR3
-b3JraW5nIGNoYW5nZXMgYXJlIG5lZWRlZCwgYmVjYXVzZSBhcyBmYXIKPiBhcyBJIGtub3csIHVz
-dWFsbHkgYSBkZXZpY2UgdHlwZSBzaG91bGQgaGF2ZSBhdCBsZWFzdCBvbmUgZGV2aWNlIHRvCj4g
-dXNlIGl0LCBhbmQgcHVyZWlwIGlzIHdoYXQgdGhlIGNjbW5pIGRyaXZlciBuZWVkcywgc28gSSB1
-cGxvYWRlZCB0aGUKPiBuZXR3b3JraW5nIGNoYW5nZSBhbmQgY2NtbmkgZHJpdmVyIHRvZ2V0aGVy
-Owo+IAo+IFNpbmNlIE1US+KAmXMgbW9kZW0gZHJpdmVyIGhhcyBhIGxhcmdlIGFtb3VudCBvZiBj
-b2RlIGFuZCBzdHJvbmcgY29kZQo+IGNvdXBsaW5nLCBpdCB0YWtlcyBzb21lIHRpbWUgdG8gY2xl
-YW4gdXAgdGhlbS4gQXQgdGhpcyBzdGFnZSwgaXQgbWF5Cj4gYmUgZGlmZmljdWx0IHRvIHVwc3Ry
-ZWFtIGFsbCB0aGUgY29kZXMgdG9nZXRoZXIuCgpXaHk/ICBKdXN0IGR1bXAgdGhlIHdob2xlIHRo
-aW5nIGluIGEgZHJpdmVycy9zdGFnaW5nL210ay8gZGlyZWN0b3J5CnN0cnVjdHVyZSBhbmQgYWxs
-IHNob3VsZCBiZSBmaW5lLgoKPiBEdXJpbmcgdGhpcyBwZXJpb2QsIGV2ZW4gaWYgY2NtbmkgaXMg
-aW5jb21wbGV0ZSwgY2FuIEkgcHV0IHRoZSBjY21uaQo+IGRyaXZlciBpbml0aWFsIGNvZGUgaW4g
-dGhlIGRyaXZlci9zdGFnaW5nIGZpcnN0ID8gQWZ0ZXIgdGhhdCwgd2Ugd2lsbAo+IGdyYWR1YWxs
-eSBpbXBsZW1lbnQgbW9yZSBmdW5jdGlvbnMgb2YgY2NtbmkgaW4gdGhlIHN0YWdpbmcgdHJlZSwg
-YW5kCj4gd2UgY2FuIGFsc28gZ3JhZHVhbGx5IHNvcnQgb3V0IGFuZCBjbGVhbiB1cCBtb2RlbSBk
-cml2ZXIgaW4gdGhlIHN0YWdpbmcuCgpJIGRvIG5vdCBrbm93LCBsZXQncyBzZWUgdGhlIGNvZGUg
-Zmlyc3QuICBCdXQgd2UgY2FuIG5vdCBhZGQgZnJhbWV3b3Jrcwp3aXRoIG5vIGluLWtlcm5lbCB1
-c2VycywgYXMgdGhhdCBkb2VzIG5vdCBtYWtlIGFueSBzZW5zZSBhdCBhbGwuCgo+IEluIGFkZGl0
-aW9uLCBkdWUgdG8gdGhlIHJlcXVpcmVtZW50cyBvZiBHS0kgMi4wLAoKVGhhdCBpcyBhIEdvb2ds
-ZSByZXF1aXJlbWVudCwgbm90IGEga2VybmVsLm9yZyByZXF1aXJlbWVudC4gIFBsZWFzZSB3b3Jr
-CndpdGggR29vZ2xlIGlmIHlvdSBoYXZlIHF1ZXN0aW9ucy9pc3N1ZXMgYWJvdXQgdGhhdCwgdGhl
-cmUgaXMgTk9USElORyB3ZQpjYW4gZG8gYWJvdXQgdGhhdCBoZXJlIGluIHRoZSBjb21tdW5pdHkg
-Zm9yIG9idmlvdXMgcmVhc29ucy4KCj4gaWYgY2NtbmkgZGV2aWNlCj4gdXNlcyBSQVdJUCBvciBO
-T05FLCBpdCB3aWxsIGhpdCBpcHY2IGlzc3VlOyBhbmQgaWYgY2NtbmkgdXNlcwo+IGEgZGV2aWNl
-IHR5cGUgb3RoZXIgdGhhbiBQVVJFSVAvUkFXSVAvTk9ORSwgdGhlcmUgd2lsbCBiZSB0ZXRoZXJp
-bmcKPiBlYnBmIG9mZmxvYWQgb3IgY2xhdCBlYnBmIG9mZmxvYWQgY2FuIG5vdCB3b3JrIHByb2Js
-ZW1zLgo+IAo+IEkgaG9wZSBQVVJFSVAgYW5kIGNjbW5pIGNhbiBiZSBhY2NlcHRlZCBieSB0aGUg
-TGludXggY29tbXVuaXR5LgoKQXMgSSBzdGF0ZWQgYmVmb3JlIHlvdSBuZWVkIHRvIGhhdmUgYW4g
-aW4ta2VybmVsIHVzZXIgZm9yIHVzIHRvIGJlIGFibGUKdG8gYWNjZXB0IGZyYW1ld29ya3MgYW5k
-IGZ1bmN0aW9ucyBpbnRvIHRoZSB0cmVlLiAgT3RoZXJ3aXNlIExpbnV4IHdvdWxkCnF1aWNrbHkg
-YmVjb21lIHVubWFuYWdhYmxlIGFuZCB1bm1haW50YWluYWJsZS4gIFdvdWxkIHlvdSB3YW50IHRv
-IHRyeSB0bwptYWludGFpbiBjb2RlIHdpdGggbm8gaW4tdHJlZSB1c2Vycz8gIFdoYXQgd291bGQg
-eW91IGRvIGlmIHlvdSB3ZXJlIGluCm91ciBwb3NpdGlvbj8KCkJ1dCBmb3IgbmV0d29ya2luZyBm
-bGFncyBsaWtlIHRoaXMgdGhhdCBnbyBpbnRvIHVzZXJzcGFjZSwgSSBkbyBub3Qga25vdwp3aGF0
-IHRoZSBtYWludGFpbmVycyBvZiB0aGUgbmV0d29ya2luZyBzdGFjayByZXF1aXJlLCBzbyB0aGF0
-IHJlYWxseSBpcwp1cCB0byB0aGVtLCBub3QgbWUuCgp0aGFua3MsCgpncmVnIGstaAoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
-bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi,
+
+A gentle ping as it is reviewed but not yet visible in thermal tree [1] i guess it should do,right?
+
+regards Frank
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/thermal/linux.git/log/?h=thermal/next
+
+> Gesendet: Mittwoch, 09. Juni 2021 um 10:09 Uhr
+> Von: "Matthias Brugger" <matthias.bgg@gmail.com>
+> An: "Frank Wunderlich" <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+> Cc: "Frank Wunderlich" <frank-w@public-files.de>, "Daniel Lezcano" <daniel.lezcano@linaro.org>, "Amit Kucheria" <amitk@kernel.org>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+> Betreff: Re: [PATCH v4] thermal: mediatek: add sensors-support
+>
+>
+>
+> On 08/06/2021 17:45, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
+> >
+> > add HWMON-support to mediateks thermal driver to allow lm-sensors
+> > userspace tools read soc temperature
+> >
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+>
+> > ---
+> > v4: change message to dev_warn as suggested by matthias
+> > v3: drop no_hwmon
+> > v2: drop ifdef and used devm_thermal_add_hwmon_sysfs
+> > ---
+> >  drivers/thermal/mtk_thermal.c | 6 ++++++
+> >  1 file changed, 6 insertions(+)
+> >
+> > diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
+> > index 97e8678ccf0e..ede94eadddda 100644
+> > --- a/drivers/thermal/mtk_thermal.c
+> > +++ b/drivers/thermal/mtk_thermal.c
+> > @@ -23,6 +23,8 @@
+> >  #include <linux/reset.h>
+> >  #include <linux/types.h>
+> >
+> > +#include "thermal_hwmon.h"
+> > +
+> >  /* AUXADC Registers */
+> >  #define AUXADC_CON1_SET_V	0x008
+> >  #define AUXADC_CON1_CLR_V	0x00c
+> > @@ -1087,6 +1089,10 @@ static int mtk_thermal_probe(struct platform_device *pdev)
+> >  		goto err_disable_clk_peri_therm;
+> >  	}
+> >
+> > +	ret = devm_thermal_add_hwmon_sysfs(tzdev);
+> > +	if (ret)
+> > +		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
+> > +
+> >  	return 0;
+> >
+> >  err_disable_clk_peri_therm:
+> >
+>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
