@@ -1,94 +1,96 @@
-Return-Path: <SRS0=iOJY=LV=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zNLT=LW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B431DC48BC2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Jun 2021 14:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5B68C48BC2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 00:36:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 656D361C20
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Jun 2021 14:53:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 656D361C20
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
+	by mail.kernel.org (Postfix) with ESMTPS id 752D461352
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 00:36:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 752D461352
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9pcsAJXdKJ5QEe7zjj3VWKSAQDRz9KU8i4uRdUCqCTU=; b=n0Euw0oqMA4grbNmeeg6PDTPiG
-	+TZU7SRd3FB/sHfEftRg9IJKC+J13zwrbcKNGbax8nV/U/dXKDVaeCOFUVUAiLbTEtaI9ZXYsn2XN
-	Q66j710Rf87NtDkw60gYkR49EcNk0ddo370cPnnsgoN4qmFd0na11WoyansReA5uFHaTn4ph8V6F0
-	8QHWnnzjsyb3/QEv8A1V1o4pGtMirMifSN+EhjJLN12s/Z7O61eOdcOmRQQ9wapMRGMfJuFPpHJnv
-	LBQlrzd1XL2o1K21Fw2cujqLiasrlV0oKDQnEd5/Y705Au1SPI8gCiOm411fW3+LZEJgJIA1162Xk
-	epxObrBQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JOPPh1X3h4JrirYaqeSVaNk+CwCoLgH2YAgkHa0kTds=; b=AFbYabSMW8FY89
+	PnitkHLfFX+YnZuHgnjRhAQAGuxBtstH2RKvRIotVG+N/DH6gcHzkKoziJowDmMJzzN6fyTjEVHPA
+	WXxPX2b68FvPe3lgCWke1TK6VCNiK5k/P2rxQw2JLJ2NgozR559m4SRY7GVlwhzqNdBbwXjLrMj85
+	XAb+2sTxTMc98edbd5rLaSN2FB6phzHtqUgzExJfQXMNSwTr6sHn9/ozM7Gv2G2d08BS45bzQCr3W
+	4zilZoyib1Z+Un9YVCw/FASTrMPOZNS4WBD8s8I57m+rv8TI7ohjpF7BNlI+vRKsMhLYiw5yWAqo+
+	C0loaBm57bodHFOrRKWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lxWAL-005j4G-Tg; Sun, 27 Jun 2021 14:53:45 +0000
-Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
+	id 1lxfG5-006MBr-D5; Mon, 28 Jun 2021 00:36:17 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lxWAG-005j3H-Tf; Sun, 27 Jun 2021 14:53:43 +0000
-Received: by mail-oo1-xc2b.google.com with SMTP id
- v3-20020a4ac9030000b029024c9d0bff49so93086ooq.0; 
- Sun, 27 Jun 2021 07:53:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=MSuJhLIrLNhgVyIAAZFmyHKfxV9dInag09hASwRVERY=;
- b=Eif8tuBQtdvvbg9Q9wN8hRCgb7x3BjaIHWfBemz99qepiFNNUbx4iAWFfJIsWYg4SY
- UPhsRLt4zOy83oEDah0TgRPduZRR58lCsWSoIopq6sK/FjGNnEInruLZAhZB6Gf7o5DB
- frF5jrF7EX3+2V45727NePM/LdEHGeTUdGXao4BKNB9roAKsHCW0caEkXJcAtlNrIzIl
- 6GyhGQ0jvi5rFjsBHwliAQPOBGh3eBgrRCFsCIa8j8wluySVWfKLDRFln55uRUe1pucV
- goYCMML9cDbozoWZ5MeM1tAFT7AI+1B1ridrvRgr6vWLnI29lKIVrljGMIFJoK0lm/x3
- K5Jw==
+ id 1lxfG2-006MBJ-Op
+ for linux-mediatek@lists.infradead.org; Mon, 28 Jun 2021 00:36:16 +0000
+Received: by mail-lj1-x232.google.com with SMTP id k21so1951210ljh.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Jun 2021 17:36:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gaVCDaYqtt9b3KVihy9mfeTRmIqBNx++UINpmJ3IlGo=;
+ b=ewfww11LZVv3L1/XDYvF41JFKOeUxXAJrE0cxkokTyX5A/WOVyjJvC/gPRep56Ec6Z
+ kcdbwGmb2AfXCuco2oNp2Ae9BtQTGaNzFDbQfMz4dnh/KYf1TWTa+5UTJqkX7O5MLGu2
+ DsNLTZ1Dxu4oKIlYZL4zHrb0bOXc4mw9dIgP0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=MSuJhLIrLNhgVyIAAZFmyHKfxV9dInag09hASwRVERY=;
- b=E6LT4YD7w9iRmBjEtkv08iuy2id5HgR+HiaKi+QIFWQvYdLKsg2CkYG8hoWXKg9aSP
- Wpx3OzkflJNZBSIQcnLgtKq/wQ9ttW/M1WX5WfqqKl7hinSnth9AfMD17DaGVYYDPC2d
- D4SKGhPDMzw2EID1ERc7iZ131waC1b05vZWXHgJpoxnBuvt/iKiLlDrhDq1TW8MXUb8K
- yT8Ov7Xdgau3M/QRpfJp/kcduOOmuUPpxkE9qWuVMxPUcPJPWxlvOh68nI7xyzr7pFoX
- bVlCx4rSLhLYtLTyaG5NWieaBSOJwsCAs6Xjs+zJkpLBhG2PX4DsfGC6J9Qv18F9FEJa
- XFnA==
-X-Gm-Message-State: AOAM533WpuSR8dKXBFpWS67N+7cnrVHyn+XKhOxIzdnVkgQLB5RSCBWI
- H+SUX3pRu4ik0EKNnEm26CU=
-X-Google-Smtp-Source: ABdhPJzWHAVOOG+baMfQhLC4BFlVVGCkLC0JiDYEum9GzKf7sRsPkq4uG03G3dRmsDETJkoLIEEA5Q==
-X-Received: by 2002:a4a:6049:: with SMTP id t9mr16138727oof.14.1624805608978; 
- Sun, 27 Jun 2021 07:53:28 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- l2sm927157otk.38.2021.06.27.07.53.27
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gaVCDaYqtt9b3KVihy9mfeTRmIqBNx++UINpmJ3IlGo=;
+ b=VRCaEXS47a/MbapCFZoCW8kNRkmSAimJRcXkvV0Me4do48g5B1w6xI6Zaj1tgrEfD/
+ LN+t3SG9jX5rqmSK//wOQLKT0+/aw7TXGinfji10t0k+e3hDKeYmpGCrSfAg65IeQetG
+ ntr7UKRxhxW6V9m1YwdAh8GFWuPDEkUp7KNtLLWpsGAQvXf1Vcsw7Ssyl3fX5oMp08RV
+ hj1A5U9u+8sOdDvpNwrM+RVIljNYhGh4FBDsN6ayAjCq+owWMy79ZiGnYe5mcJvkthUq
+ sCxgtR8bRw7qd9t1eLyxOedjN8M396dBnH2BcfixHahPe8HHuJwgwxDtkpTw5WLVVbGk
+ GwlQ==
+X-Gm-Message-State: AOAM5313aTOXyxc+M88WtnVOdCtOa/OoRnD8THJPozAqKwYnRcSNKmGT
+ AmOZQcICTzNYhMYz9uwddYhlom9fvEQlmTlfkuY=
+X-Google-Smtp-Source: ABdhPJzaejYDWdM/2Hyy4nZxgKtFKm9mO/k0+dGqArcaNwM18fSPXqon7827JSHaFS9o0hltv/Ql4A==
+X-Received: by 2002:a2e:b790:: with SMTP id n16mr17844653ljo.9.1624840572118; 
+ Sun, 27 Jun 2021 17:36:12 -0700 (PDT)
+Received: from mail-lf1-f42.google.com (mail-lf1-f42.google.com.
+ [209.85.167.42])
+ by smtp.gmail.com with ESMTPSA id h3sm1163548lfg.204.2021.06.27.17.36.11
+ for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Jun 2021 07:53:28 -0700 (PDT)
-Subject: Re: [PATCH] watchdog: Prefer unsigned int to bare use of unsigned
-To: Jinchao Wang <wjc@cdjrlc.com>, wim@linux-watchdog.org,
- f.fainelli@gmail.com, rjui@broadcom.com, sbranden@broadcom.com,
- baruch@tkos.co.il, vilhelm.gray@gmail.com
-Cc: linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-References: <20210626090835.51754-1-wjc@cdjrlc.com>
-From: Guenter Roeck <linux@roeck-us.net>
-Message-ID: <d9be9f8b-4623-f72f-e9dd-a95ea39ed6b7@roeck-us.net>
-Date: Sun, 27 Jun 2021 07:53:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.8.1
+ Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
+Received: by mail-lf1-f42.google.com with SMTP id a11so28902791lfg.11
+ for <linux-mediatek@lists.infradead.org>; Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
+X-Received: by 2002:a05:6512:331a:: with SMTP id
+ k26mr14837143lfe.152.1624840571313; 
+ Sun, 27 Jun 2021 17:36:11 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210626090835.51754-1-wjc@cdjrlc.com>
-Content-Language: en-US
+References: <20210625062448.3462177-1-enric.balletbo@collabora.com>
+In-Reply-To: <20210625062448.3462177-1-enric.balletbo@collabora.com>
+From: Eizan Miyamoto <eizan@chromium.org>
+Date: Mon, 28 Jun 2021 10:35:54 +1000
+X-Gmail-Original-Message-ID: <CAOak1e8uJum7Wf6Z6CO_w5+aKvbm5JvwRYuT+Rzp2LwTOh_vQw@mail.gmail.com>
+Message-ID: <CAOak1e8uJum7Wf6Z6CO_w5+aKvbm5JvwRYuT+Rzp2LwTOh_vQw@mail.gmail.com>
+Subject: Re: [PATCH] soc: mediatek: mmsys: Fix missing UFOE component in
+ mt8173 table routing
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: LKML <linux-kernel@vger.kernel.org>, Eizan Miyamoto <eizan@chromium.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, drinkcat@chromium.org,
+ hsinyi@chromium.org, 
+ Collabora Kernel ML <kernel@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210627_075341_030446_0F0333E1 
-X-CRM114-Status: GOOD (  27.73  )
+X-CRM114-CacheID: sfid-20210627_173614_869995_7635C1F9 
+X-CRM114-Status: GOOD (  21.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,312 +102,54 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 6/26/21 2:08 AM, Jinchao Wang wrote:
-> Fix checkpatch warnings:
->      WARNING: Prefer 'unsigned int' to bare use of 'unsigned'
-> 
-> Signed-off-by: Jinchao Wang <wjc@cdjrlc.com>
+Dear Enric,
+
+Thanks so much for your hard work bisecting and crafting this patch.
+
+I have verified that it fixes the DRM issues we were seeing on MT8173
+with Linux 5.12.
+
+Tested: Eizan Miyamoto <eizan@chromium.org>
+On Fri, Jun 25, 2021 at 4:24 PM Enric Balletbo i Serra
+<enric.balletbo@collabora.com> wrote:
+>
+> The UFOE (data compression engine) component needs to be enabled to have
+> the imgtec gpu driver working. If we don't enable it we see a black screen.
+> Looks like when we switched to use and array for setting the routing
+> registers in commit 440147639ac7 ("soc: mediatek: mmsys: Use an array for
+> setting the routing registers") we missed to add this component in the new
+> routing table, it was present before taht commit, so fix it by adding
+> this component in the mt8173 routing table.
+>
+> Fixes: 440147639ac7 ("soc: mediatek: mmsys: Use an array for setting the routing registers")
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 > ---
->   drivers/watchdog/ar7_wdt.c          | 2 +-
->   drivers/watchdog/ath79_wdt.c        | 4 ++--
->   drivers/watchdog/bcm_kona_wdt.c     | 6 +++---
->   drivers/watchdog/digicolor_wdt.c    | 2 +-
->   drivers/watchdog/ebc-c384_wdt.c     | 6 +++---
->   drivers/watchdog/imx2_wdt.c         | 2 +-
->   drivers/watchdog/it8712f_wdt.c      | 2 +-
->   drivers/watchdog/mt7621_wdt.c       | 4 ++--
->   drivers/watchdog/omap_wdt.c         | 2 +-
->   drivers/watchdog/pika_wdt.c         | 2 +-
->   drivers/watchdog/rt2880_wdt.c       | 4 ++--
->   drivers/watchdog/sbc7240_wdt.c      | 2 +-
->   drivers/watchdog/shwdt.c            | 2 +-
->   drivers/watchdog/stmp3xxx_rtc_wdt.c | 4 ++--
->   drivers/watchdog/w83977f_wdt.c      | 2 +-
->   drivers/watchdog/watchdog_dev.c     | 2 +-
->   16 files changed, 24 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/watchdog/ar7_wdt.c b/drivers/watchdog/ar7_wdt.c
-> index ff37dc91057d..822719fdd944 100644
-> --- a/drivers/watchdog/ar7_wdt.c
-> +++ b/drivers/watchdog/ar7_wdt.c
-> @@ -57,7 +57,7 @@ struct ar7_wdt {
->   };
->   
->   static unsigned long wdt_is_open;
-> -static unsigned expect_close;
-> +static unsigned int expect_close;
->   static DEFINE_SPINLOCK(wdt_lock);
->   
->   /* XXX currently fixed, allows max margin ~68.72 secs */
-> diff --git a/drivers/watchdog/ath79_wdt.c b/drivers/watchdog/ath79_wdt.c
-> index 0f18f06a21b6..567e25df804b 100644
-> --- a/drivers/watchdog/ath79_wdt.c
-> +++ b/drivers/watchdog/ath79_wdt.c
-> @@ -68,12 +68,12 @@ static int boot_status;
->   static int max_timeout;
->   static void __iomem *wdt_base;
->   
-> -static inline void ath79_wdt_wr(unsigned reg, u32 val)
-> +static inline void ath79_wdt_wr(unsigned int reg, u32 val)
->   {
->   	iowrite32(val, wdt_base + reg);
->   }
->   
-> -static inline u32 ath79_wdt_rr(unsigned reg)
-> +static inline u32 ath79_wdt_rr(unsigned int reg)
->   {
->   	return ioread32(wdt_base + reg);
->   }
-> diff --git a/drivers/watchdog/bcm_kona_wdt.c b/drivers/watchdog/bcm_kona_wdt.c
-> index 8237c4e9c2a0..200965cdc670 100644
-> --- a/drivers/watchdog/bcm_kona_wdt.c
-> +++ b/drivers/watchdog/bcm_kona_wdt.c
-> @@ -58,7 +58,7 @@ struct bcm_kona_wdt {
->   static int secure_register_read(struct bcm_kona_wdt *wdt, uint32_t offset)
->   {
->   	uint32_t val;
-> -	unsigned count = 0;
-> +	unsigned int count = 0;
->   
->   	/*
->   	 * If the WD_LOAD_FLAG is set, the watchdog counter field is being
-> @@ -165,7 +165,7 @@ static void bcm_kona_wdt_debug_exit(struct platform_device *pdev) {}
->   #endif /* CONFIG_BCM_KONA_WDT_DEBUG */
->   
->   static int bcm_kona_wdt_ctrl_reg_modify(struct bcm_kona_wdt *wdt,
-> -					unsigned mask, unsigned newval)
-> +		unsigned int  mask, unsigned int newval)
-
-... but not at the cost of introducing alignment issues.
-
-Guenter
-
->   {
->   	int val;
->   	unsigned long flags;
-> @@ -197,7 +197,7 @@ static int bcm_kona_wdt_set_resolution_reg(struct bcm_kona_wdt *wdt)
->   }
->   
->   static int bcm_kona_wdt_set_timeout_reg(struct watchdog_device *wdog,
-> -					unsigned watchdog_flags)
-> +					unsigned int watchdog_flags)
->   {
->   	struct bcm_kona_wdt *wdt = watchdog_get_drvdata(wdog);
->   
-> diff --git a/drivers/watchdog/digicolor_wdt.c b/drivers/watchdog/digicolor_wdt.c
-> index 073d37867f47..95a0053a5f30 100644
-> --- a/drivers/watchdog/digicolor_wdt.c
-> +++ b/drivers/watchdog/digicolor_wdt.c
-> @@ -27,7 +27,7 @@ struct dc_wdt {
->   	spinlock_t		lock;
->   };
->   
-> -static unsigned timeout;
-> +static unsigned int timeout;
->   module_param(timeout, uint, 0);
->   MODULE_PARM_DESC(timeout, "Watchdog timeout in seconds");
->   
-> diff --git a/drivers/watchdog/ebc-c384_wdt.c b/drivers/watchdog/ebc-c384_wdt.c
-> index 8ef4b0df3855..7b408421bb38 100644
-> --- a/drivers/watchdog/ebc-c384_wdt.c
-> +++ b/drivers/watchdog/ebc-c384_wdt.c
-> @@ -32,14 +32,14 @@ module_param(nowayout, bool, 0);
->   MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started (default="
->   	__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> -static unsigned timeout;
-> +static unsigned int timeout;
->   module_param(timeout, uint, 0);
->   MODULE_PARM_DESC(timeout, "Watchdog timeout in seconds (default="
->   	__MODULE_STRING(WATCHDOG_TIMEOUT) ")");
->   
->   static int ebc_c384_wdt_start(struct watchdog_device *wdev)
->   {
-> -	unsigned t = wdev->timeout;
-> +	unsigned int t = wdev->timeout;
->   
->   	/* resolution is in minutes for timeouts greater than 255 seconds */
->   	if (t > 255)
-> @@ -57,7 +57,7 @@ static int ebc_c384_wdt_stop(struct watchdog_device *wdev)
->   	return 0;
->   }
->   
-> -static int ebc_c384_wdt_set_timeout(struct watchdog_device *wdev, unsigned t)
-> +static int ebc_c384_wdt_set_timeout(struct watchdog_device *wdev, unsigned int t)
->   {
->   	/* resolution is in minutes for timeouts greater than 255 seconds */
->   	if (t > 255) {
-> diff --git a/drivers/watchdog/imx2_wdt.c b/drivers/watchdog/imx2_wdt.c
-> index cc86018c5eb5..3b42e194e3a8 100644
-> --- a/drivers/watchdog/imx2_wdt.c
-> +++ b/drivers/watchdog/imx2_wdt.c
-> @@ -73,7 +73,7 @@ module_param(nowayout, bool, 0);
->   MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started (default="
->   				__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> -static unsigned timeout;
-> +static unsigned int timeout;
->   module_param(timeout, uint, 0);
->   MODULE_PARM_DESC(timeout, "Watchdog timeout in seconds (default="
->   				__MODULE_STRING(IMX2_WDT_DEFAULT_TIME) ")");
-> diff --git a/drivers/watchdog/it8712f_wdt.c b/drivers/watchdog/it8712f_wdt.c
-> index 3ce6a58bd81e..2c18701ff883 100644
-> --- a/drivers/watchdog/it8712f_wdt.c
-> +++ b/drivers/watchdog/it8712f_wdt.c
-> @@ -47,7 +47,7 @@ module_param(nowayout, bool, 0);
->   MODULE_PARM_DESC(nowayout, "Disable watchdog shutdown on close");
->   
->   static unsigned long wdt_open;
-> -static unsigned expect_close;
-> +static unsigned int expect_close;
->   static unsigned char revision;
->   
->   /* Dog Food address - We use the game port address */
-> diff --git a/drivers/watchdog/mt7621_wdt.c b/drivers/watchdog/mt7621_wdt.c
-> index a8aa3522cfda..0c7e0b478d85 100644
-> --- a/drivers/watchdog/mt7621_wdt.c
-> +++ b/drivers/watchdog/mt7621_wdt.c
-> @@ -40,12 +40,12 @@ MODULE_PARM_DESC(nowayout,
->   		 "Watchdog cannot be stopped once started (default="
->   		 __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> -static inline void rt_wdt_w32(unsigned reg, u32 val)
-> +static inline void rt_wdt_w32(unsigned int reg, u32 val)
->   {
->   	iowrite32(val, mt7621_wdt_base + reg);
->   }
->   
-> -static inline u32 rt_wdt_r32(unsigned reg)
-> +static inline u32 rt_wdt_r32(unsigned int reg)
->   {
->   	return ioread32(mt7621_wdt_base + reg);
->   }
-> diff --git a/drivers/watchdog/omap_wdt.c b/drivers/watchdog/omap_wdt.c
-> index 1616f93dfad7..062ff05436ba 100644
-> --- a/drivers/watchdog/omap_wdt.c
-> +++ b/drivers/watchdog/omap_wdt.c
-> @@ -48,7 +48,7 @@ module_param(nowayout, bool, 0);
->   MODULE_PARM_DESC(nowayout, "Watchdog cannot be stopped once started "
->   	"(default=" __MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> -static unsigned timer_margin;
-> +static unsigned int timer_margin;
->   module_param(timer_margin, uint, 0);
->   MODULE_PARM_DESC(timer_margin, "initial watchdog timeout (in seconds)");
->   
-> diff --git a/drivers/watchdog/pika_wdt.c b/drivers/watchdog/pika_wdt.c
-> index a98abd0d3146..8ce915bf4a6e 100644
-> --- a/drivers/watchdog/pika_wdt.c
-> +++ b/drivers/watchdog/pika_wdt.c
-> @@ -77,7 +77,7 @@ static inline void pikawdt_reset(void)
->   	 *           seconds. Valid ranges are 1 to 15 seconds. The value can
->   	 *           be modified dynamically.
->   	 */
-> -	unsigned reset = in_be32(pikawdt_private.fpga + 0x14);
-> +	unsigned int reset = in_be32(pikawdt_private.fpga + 0x14);
->   	/* enable with max timeout - 15 seconds */
->   	reset |= (1 << 7) + (WDT_HW_TIMEOUT << 8);
->   	out_be32(pikawdt_private.fpga + 0x14, reset);
-> diff --git a/drivers/watchdog/rt2880_wdt.c b/drivers/watchdog/rt2880_wdt.c
-> index 49aff800824d..9ae678d1a47c 100644
-> --- a/drivers/watchdog/rt2880_wdt.c
-> +++ b/drivers/watchdog/rt2880_wdt.c
-> @@ -51,12 +51,12 @@ MODULE_PARM_DESC(nowayout,
->   		"Watchdog cannot be stopped once started (default="
->   		__MODULE_STRING(WATCHDOG_NOWAYOUT) ")");
->   
-> -static inline void rt_wdt_w32(unsigned reg, u32 val)
-> +static inline void rt_wdt_w32(unsigned int reg, u32 val)
->   {
->   	iowrite32(val, rt288x_wdt_base + reg);
->   }
->   
-> -static inline u32 rt_wdt_r32(unsigned reg)
-> +static inline u32 rt_wdt_r32(unsigned int reg)
->   {
->   	return ioread32(rt288x_wdt_base + reg);
->   }
-> diff --git a/drivers/watchdog/sbc7240_wdt.c b/drivers/watchdog/sbc7240_wdt.c
-> index d640b26e18a6..53b5fcfd5f9e 100644
-> --- a/drivers/watchdog/sbc7240_wdt.c
-> +++ b/drivers/watchdog/sbc7240_wdt.c
-> @@ -75,7 +75,7 @@ static int wdt_set_timeout(int t)
->   		return -1;
->   	}
->   	/* set the timeout */
-> -	outb_p((unsigned)t, SBC7240_SET_TIMEOUT_PORT);
-> +	outb_p((unsigned int)t, SBC7240_SET_TIMEOUT_PORT);
->   	timeout = t;
->   	pr_info("timeout set to %d seconds\n", t);
->   	return 0;
-> diff --git a/drivers/watchdog/shwdt.c b/drivers/watchdog/shwdt.c
-> index f55533e0e045..2bc250676c9d 100644
-> --- a/drivers/watchdog/shwdt.c
-> +++ b/drivers/watchdog/shwdt.c
-> @@ -155,7 +155,7 @@ static int sh_wdt_keepalive(struct watchdog_device *wdt_dev)
->   	return 0;
->   }
->   
-> -static int sh_wdt_set_heartbeat(struct watchdog_device *wdt_dev, unsigned t)
-> +static int sh_wdt_set_heartbeat(struct watchdog_device *wdt_dev, unsigned int t)
->   {
->   	struct sh_wdt *wdt = watchdog_get_drvdata(wdt_dev);
->   	unsigned long flags;
-> diff --git a/drivers/watchdog/stmp3xxx_rtc_wdt.c b/drivers/watchdog/stmp3xxx_rtc_wdt.c
-> index 7caf3aa71c6a..9b931953d9a8 100644
-> --- a/drivers/watchdog/stmp3xxx_rtc_wdt.c
-> +++ b/drivers/watchdog/stmp3xxx_rtc_wdt.c
-> @@ -42,7 +42,7 @@ static int wdt_stop(struct watchdog_device *wdd)
->   	return 0;
->   }
->   
-> -static int wdt_set_timeout(struct watchdog_device *wdd, unsigned new_timeout)
-> +static int wdt_set_timeout(struct watchdog_device *wdd, unsigned int new_timeout)
->   {
->   	wdd->timeout = new_timeout;
->   	return wdt_start(wdd);
-> @@ -94,7 +94,7 @@ static int stmp3xxx_wdt_probe(struct platform_device *pdev)
->   
->   	watchdog_set_drvdata(&stmp3xxx_wdd, dev);
->   
-> -	stmp3xxx_wdd.timeout = clamp_t(unsigned, heartbeat, 1, STMP3XXX_MAX_TIMEOUT);
-> +	stmp3xxx_wdd.timeout = clamp_t(unsigned int, heartbeat, 1, STMP3XXX_MAX_TIMEOUT);
->   	stmp3xxx_wdd.parent = dev;
->   
->   	ret = devm_watchdog_register_device(dev, &stmp3xxx_wdd);
-> diff --git a/drivers/watchdog/w83977f_wdt.c b/drivers/watchdog/w83977f_wdt.c
-> index fd64ae77780a..90cac7fcb09c 100644
-> --- a/drivers/watchdog/w83977f_wdt.c
-> +++ b/drivers/watchdog/w83977f_wdt.c
-> @@ -102,7 +102,7 @@ static int wdt_start(void)
->   	outb_p(DEVICE_REGISTER, IO_INDEX_PORT);
->   	outb_p(0x07, IO_DATA_PORT);
->   	if (!testmode) {
-> -		unsigned pin_map;
-> +		unsigned int pin_map;
->   
->   		outb_p(0xE6, IO_INDEX_PORT);
->   		outb_p(0x0A, IO_DATA_PORT);
-> diff --git a/drivers/watchdog/watchdog_dev.c b/drivers/watchdog/watchdog_dev.c
-> index 3bab32485273..beae3f4078f4 100644
-> --- a/drivers/watchdog/watchdog_dev.c
-> +++ b/drivers/watchdog/watchdog_dev.c
-> @@ -57,7 +57,7 @@ static struct kthread_worker *watchdog_kworker;
->   static bool handle_boot_enabled =
->   	IS_ENABLED(CONFIG_WATCHDOG_HANDLE_BOOT_ENABLED);
->   
-> -static unsigned open_timeout = CONFIG_WATCHDOG_OPEN_TIMEOUT;
-> +static unsigned int open_timeout = CONFIG_WATCHDOG_OPEN_TIMEOUT;
->   
->   static bool watchdog_past_open_deadline(struct watchdog_core_data *data)
->   {
-> 
-
+>
+>  drivers/soc/mediatek/mtk-mmsys.h | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+> index a760a34e6eca..11388961dded 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.h
+> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> @@ -209,6 +209,9 @@ static const struct mtk_mmsys_routes mmsys_default_routing_table[] = {
+>         }, {
+>                 DDP_COMPONENT_RDMA2, DDP_COMPONENT_DSI3,
+>                 DISP_REG_CONFIG_DSIO_SEL_IN, DSI3_SEL_IN_RDMA2
+> +       }, {
+> +               DDP_COMPONENT_UFOE, DDP_COMPONENT_DSI0,
+> +               DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, UFOE_MOUT_EN_DSI0,
+>         }
+>  };
+>
+> --
+> 2.30.2
+>
 
 _______________________________________________
 Linux-mediatek mailing list
