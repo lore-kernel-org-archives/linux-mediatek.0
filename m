@@ -2,75 +2,85 @@ Return-Path: <SRS0=olbE=LX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFB4FC11F66
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 10:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AACDDC11F67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 12:21:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD07E61DC1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 10:28:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AD07E61DC1
+	by mail.kernel.org (Postfix) with ESMTPS id 7C97B61D8B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 12:21:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C97B61D8B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FWJ8PAISWBMbg0wWwyuWvlzFQOy7laILgwyKs/ialGc=; b=uvAjBDRHXTPUxG
-	Y6yViSUdMVhU7GIZxclAPbpPbv4I3ZuVdnLsF/R+5Harc6x021yQnxmOYIj9Q808VwgoiIw+nG3bO
-	zOEXqR8wLSvvwDbkYBtlMENiuFq5YVJZAxKVUXo4/9t8cXSQZoYNDDSScCyjWpNw+FiOu1evMcqea
-	HHMds0cflUoN7JmfUHuRC0+x0x/ziPUiI8I/G+cMA1EmX4cdFx7znCCC/9TNC5tx6GLfTqmPn1vTK
-	mMuNHBsjJEfErjfIF5toD8uIG7OzImVqmNv3mN9e9qk38k5Z5qzCgwjaOPs7efUHpf3/hgmBUWQhb
-	nzMaIn8Pf1o2EaKaIz6g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L7EHyUsdFIx9p5ev+EguJ4zM3vZ7UvwoMAc7GF4isnY=; b=Sb/QnJIg5W5ajy
+	lJClpvEvxQZKLUQbU7CIzLcYqNx8IwhbpUbRxmPCfqZUc1/i72IZZfQNdDgCzy5/YfeFCW79zcNBh
+	nXCoqmxopCcFDq1iHXvlhsBfy3tEVpF5q489YLizzWuO8Y4WCrV956H4n+6ohqhR56P3jv7y/NAE2
+	xN+10jFnt/zDYBViJWphkLRs/3tfJYXR6TA8paoefRmI7g3en+XUtwM+CQvWU4rnG5Ys3PNq3j4jU
+	qu/aKIKbpOv33dVlZDDA9joCwvQb9ONiOc4hsykPbvk/O6KkzXC5neaP63gstTk3ip5YZCpsuhLXR
+	AFFDei4ux3bFFNGv+g2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyAyx-00AVHs-CC; Tue, 29 Jun 2021 10:28:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lyCjf-00Ao3X-Gd; Tue, 29 Jun 2021 12:21:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyAyk-00AVFK-4x; Tue, 29 Jun 2021 10:28:31 +0000
-X-UUID: cf596408e7ae414cba1accbbc3200e2e-20210629
+ id 1lyCjQ-00AnyW-Q8; Tue, 29 Jun 2021 12:20:50 +0000
+X-UUID: 8296b1f858914a0fb9276ea5d2c322d8-20210629
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=dwsmZfcEuPpV+wgXhz5CFuzKx/oPpE6KJbOecHtE6GU=; 
- b=Oabr256CXK1CMl1ONYlRJLzbjhN4yCtyPUDoZvTIjGGvKfjQw4tVN/0khLeOSl7OG2iwss1zAvRHF76OFqGZUZ2zQL6ZwSd107kUgm2U1xDfs9zcisuR/25t6An2F2gHFNFaSrw55fzQVrpKEEb4jZ29hPQWi44EtzWxDZE3N9I=;
-X-UUID: cf596408e7ae414cba1accbbc3200e2e-20210629
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <mason.zhang@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=4SbG1vndPjwBWteOUa61pelj+E3Mh/QyjRjIiC1LL3s=; 
+ b=kt4DZhFF3c3qEU+rHgUIkRCJ65aiuh9VZPAoBNm0UUHyEc+i9i4qh8107WVX5qavw/gN1w3KZ4XG/XKmEEyr+s5FaRuJiZX8yfeLuny12Bf61yqxQjpk8sJ+pFDV2Mem95Lfi/jUiN5WXQm/YUlI8nEUSOeEq1u8ls5smIZxl4o=;
+X-UUID: 8296b1f858914a0fb9276ea5d2c322d8-20210629
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 736991613; Tue, 29 Jun 2021 03:28:28 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 03:28:27 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 18:28:25 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 29 Jun 2021 18:28:24 +0800
-From: Mason Zhang <mason.zhang@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <leilk.liu@mediatek.com>,
- <wsd_upstream@mediatek.com>, Mason Zhang <Mason.Zhang@mediatek.com>
-Subject: [PATCH 2/2] spi: mediatek: update spi master bingdings for MT6893 SOC
-Date: Tue, 29 Jun 2021 18:13:11 +0800
-Message-ID: <20210629101310.21045-1-mason.zhang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ with ESMTP id 252339832; Tue, 29 Jun 2021 05:20:43 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Jun 2021 05:12:58 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 29 Jun 2021 20:12:48 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 29 Jun 2021 20:12:47 +0800
+Message-ID: <1624968767.5647.2.camel@mhfsdcap03>
+Subject: Re: [PATCH 2/3] i2c: mediatek: Dump i2c/dma register when a timeout
+ occurs
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: Tzung-Bi Shih <tzungbi@google.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, <wsa@the-dreams.de>,
+ <robh+dt@kernel.org>, <linux-i2c@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
+ <qii.wang@mediatek.com>, <qiangming.xia@mediatek.com>,
+ <liguo.zhang@mediatek.com>
+Date: Tue, 29 Jun 2021 20:12:47 +0800
+In-Reply-To: <CA+Px+wU8qqEDU+bV0QpoJssNOxebutzRGgHo6WpC9VFJwckKKQ@mail.gmail.com>
+References: <1623122200-1896-1-git-send-email-kewei.xu@mediatek.com>
+ <1623122200-1896-3-git-send-email-kewei.xu@mediatek.com>
+ <54301510-e0d5-0762-1979-b194b8fd5eb8@gmail.com>
+ <1623206624.14050.10.camel@mhfsdcap03>
+ <CA+Px+wU8qqEDU+bV0QpoJssNOxebutzRGgHo6WpC9VFJwckKKQ@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 99D115C5B010B0D7F3D44B52D5ED0835CC3A0712A95D069472FE4D2D1B8632C52000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_032830_238701_243CE6D3 
-X-CRM114-Status: UNSURE (   8.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210629_052048_919511_8D00218E 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,30 +97,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mason Zhang <Mason.Zhang@mediatek.com>
+On Tue, 2021-06-29 at 12:19 +0800, Tzung-Bi Shih wrote:
+> On Wed, Jun 9, 2021 at 10:44 AM Kewei Xu <kewei.xu@mediatek.com> wrote:
+> >
+> > On Tue, 2021-06-08 at 16:01 +0200, Matthias Brugger wrote:
+> > > Is this offset only for mt8192 or also for mt8183?
+> > > In any case that should go in as another patch. Either a fix or a new
+> > > mt_i2c_regs_v3[]
+> >
+> > This offset value is suitable for the IC of mt_i2c_regs_v2 hardware
+> > design similar to mt8192/8195, not for 8183.
+> >
+> > The reason for the modification here is that the previous
+> > offset information is incorrect, OFFSET_DEBUGSTAT = 0XE4 is
+> > the correct value.
+> 
+> Please submit another patch for fixing the incorrect value.
 
-this patch update spi master bingdings for MT6893 SOC.
+Okay, I will resubmit a patch to fixing the incorrect value,Thanks.
 
-Change-Id: Iaa2840f7e89db83f9505302b50b449f8885a14c1
-Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
----
- Documentation/devicetree/bindings/spi/spi-mt65xx.txt | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-index 4d0e4c15c4ea..2a24969159cc 100644
---- a/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-+++ b/Documentation/devicetree/bindings/spi/spi-mt65xx.txt
-@@ -11,6 +11,7 @@ Required properties:
-     - mediatek,mt8135-spi: for mt8135 platforms
-     - mediatek,mt8173-spi: for mt8173 platforms
-     - mediatek,mt8183-spi: for mt8183 platforms
-+    - mediatek,mt6893-spi: for mt6893 platforms
-     - "mediatek,mt8192-spi", "mediatek,mt6765-spi": for mt8192 platforms
-     - "mediatek,mt8195-spi", "mediatek,mt6765-spi": for mt8195 platforms
-     - "mediatek,mt8516-spi", "mediatek,mt2712-spi": for mt8516 platforms
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
