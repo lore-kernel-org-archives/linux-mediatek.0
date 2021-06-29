@@ -1,114 +1,77 @@
-Return-Path: <SRS0=zNLT=LW=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=olbE=LX=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 950F0C11F64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 23:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27123C11F67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 01:48:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4DE5161CBB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Jun 2021 23:47:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4DE5161CBB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id D8C1361CC9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 01:48:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8C1361CC9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8bAOaVXRp0QqPNBTZghhWiGxbVt5Z0rT2jMOVmTYyqQ=; b=IwNOCKuNtkiTQ/
-	jy9aiJpQsJXT30svHGDAvc8QKOThjyRQSxVU334qWCNZs3Wl8AM5udkHFWdtaolHtt3Fgxv34wZl4
-	jtnfl2sV6barqBWKFWaFTAFqjvVGXyqdIScScBfPRAmfHLqDUS5l41aDOeS9xNCjMIOVrrDS0oqxP
-	BJqmet29ta4EsinqyWMEz1fySjX/8ppIXglC2VFM5fpBYnk98CxKXs0m+Y2r9yeGX7dzOt4TZDY6S
-	MCLSPXbfkO67YXQvq7WsZYrNAWrEAIOV7gcAd3xBJnzEd1NdzKQ0Q9Wz6z8sFwRLxhwF1NxH2lO1b
-	tSNICgtzCtsAPziPo2FQ==;
+	List-Owner; bh=Bo6R52MKCHeUnBIvVanx+IQwPo+wtCvhHr6iGro/97g=; b=AqclbtVKHfwVTF
+	Ix9A8TqOG5IkcXEkPZtZc3HwRgJJkf6lJDQjsYAFc8zT/ZcKhpqvba/ks+WBr/4mhEzB0ba9sXjve
+	g6+AS2QjN3kv/BxzRY3RxAO+M1UXySwRs0iVa4Bqy/snPUAGYuu44mR18XlvLU9VqBHtZlgs2G5OJ
+	qw5ANmAE8xAWM8g1iI411sJxsCTHme5yrcDaV2O/hYfUdBv3V5Ryjt/SfmJgWQKad7DoDf2siCltI
+	HqtsNt4DllapR/Z5K+s1IsGb3+qd9N65jL49JkxylT8C1GfeHN2pH3XNmOZ0Ck/+uCwipfVkkiOWK
+	Fo1TRVA6kVaxvlXXdp7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ly0yW-009Osh-S3; Mon, 28 Jun 2021 23:47:36 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1ly2r2-009X16-Gp; Tue, 29 Jun 2021 01:48:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ly0yS-009OqY-8Z
- for linux-mediatek@lists.infradead.org; Mon, 28 Jun 2021 23:47:35 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id
- mn20-20020a17090b1894b02901707fc074e8so891517pjb.0
- for <linux-mediatek@lists.infradead.org>; Mon, 28 Jun 2021 16:47:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TlVP3KoKgGMkBxuUbokGzSC70MoBwMFw3KJe4yx5muE=;
- b=fu8rnqvxZsYZbJqwFZDSpDWodza/9C+oF5afWyBgeNZyQvbUhRh9cl/FmI47BLz1+2
- kOTVQUw1bUt5TKDnIvrfgOxamf2gLf86yrWcMgbDREqp5CwydJwKODpQnyaaEpgbBLoZ
- W5M4iVRk9rlxoCtWmvLLlndgkLyb/FxY54Sf0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=TlVP3KoKgGMkBxuUbokGzSC70MoBwMFw3KJe4yx5muE=;
- b=U4HANiQdLaOwHSbqG+ENWUZk5dphvhYF2DW+UVpIzN2ZCI3F0x4sQkbEpgtfvX/TC8
- vLsBJQgrwlrmOgPYsPKBeGIp4EnUtQTp9dj2JIxGPeHsGNkTBkQkVS0qPBt8m0Ie7ieg
- gMiJZPSc1SiOxfl72k/B4l6kdDvSU3WGdqXGxyAZ3fhlza+iVYBoZ2I0NCvV5q4tBqCY
- kVN0ExQEdQ3Gb0s/eyth+V/x7h2VjxpBbVi2XjztZFVWegvysm+0keqlofbkIyOOjq6p
- vWpp5lU4r9kgFjJxcqWmYYI2A1AGpuV2VV/H13P4YRYLmGjoDNvgC4PFBNYBd467NSGg
- vjow==
-X-Gm-Message-State: AOAM533CoEdJQGdyiYq3Jy/Mvo/VPFq+jJXuLHPWap55vGd4KbiQuQEY
- 1RO5r9ppRC6RuJToyKEsmKF4qA==
-X-Google-Smtp-Source: ABdhPJxwyUZiJ21Ts7Wbzt3XxFCoUKnZDCV7H9IkL0quoPJpjXXXQZfmxy6FrHWo2CXY+tbzC6uBbA==
-X-Received: by 2002:a17:902:7b98:b029:11d:455b:a70b with SMTP id
- w24-20020a1709027b98b029011d455ba70bmr24447580pll.35.1624924051368; 
- Mon, 28 Jun 2021 16:47:31 -0700 (PDT)
-Received: from drinkcat2.tpe.corp.google.com
- ([2401:fa00:95:205:d300:c432:2c5b:afd3])
- by smtp.gmail.com with ESMTPSA id y13sm15478225pgp.16.2021.06.28.16.47.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Jun 2021 16:47:30 -0700 (PDT)
-From: Nicolas Boichat <drinkcat@chromium.org>
-To: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Robert Foss <robert.foss@linaro.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Nicolas Boichat <drinkcat@chromium.org>,
- Abhinav Kumar <abhinavk@codeaurora.org>,
- Adrien Grassein <adrien.grassein@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Inki Dae <inki.dae@samsung.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
- Joonyoung Shim <jy0922.shim@samsung.com>,
- Jordan Crouse <jordan@cosmicpenguin.net>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Ripard <mripard@kernel.org>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Pi-Hsun Shih <pihsun@chromium.org>,
- Rajendra Nayak <rnayak@codeaurora.org>, Rob Clark <robdclark@gmail.com>,
- Sam Ravnborg <sam@ravnborg.org>, Sean Paul <sean@poorly.run>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Tzung-Bi Shih <tzungbi@google.com>, Viresh Kumar <viresh.kumar@linaro.org>,
- Xin Ji <xji@analogixsemi.com>, Yangtao Li <tiny.windzz@gmail.com>,
- dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org
-Subject: [PATCH v2] drm/dsi: Add _NO_ to MIPI_DSI_* flags disabling features
-Date: Tue, 29 Jun 2021 07:47:21 +0800
-Message-Id: <20210629074703.v2.1.I629b2366a6591410359c7fcf6d385b474b705ca2@changeid>
-X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
+ id 1ly2qz-009Wzw-GA; Tue, 29 Jun 2021 01:47:58 +0000
+X-UUID: e02a778665ce45388240ed5984dfc887-20210628
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ZYn9UL8stS5AwFm4kwVgcNE8Ry9D8HH64vGhQs9GZ3o=; 
+ b=HNha7mMH6htUGhOgCFLG4IOn+OfSPXbLlvg89jj2Me8by/g3gGznL9W0FAQA6h9p2mBmlK1Y5pWIxP9DOb2vG3RvXE9lzoG/KmF2qGjYQCVdWpADkNXKhs/7ZrikQMMWdxRBcU8rtVC1YC6zCQt+P5j/O5bdC+pdzcJORWg3JHw=;
+X-UUID: e02a778665ce45388240ed5984dfc887-20210628
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1611460193; Mon, 28 Jun 2021 18:47:52 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 28 Jun 2021 18:47:51 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Jun 2021 09:47:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 29 Jun 2021 09:47:49 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <bicycle.tsai@mediatek.com>, <jiaxin.yu@mediatek.com>, <cychiang@google.com>, 
+ <aaronyu@google.com>
+Subject: [PATCH v2 0/8] ASoC: mediatek: Add support for MT8195 SoC
+Date: Tue, 29 Jun 2021 09:47:28 +0800
+Message-ID: <20210629014736.31153-1-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210628_164732_391936_CB77A532 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20210628_184757_592494_ECB150A2 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,402 +88,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Many of the DSI flags have names opposite to their actual effects,
-e.g. MIPI_DSI_MODE_EOT_PACKET means that EoT packets will actually
-be disabled. Fix this by including _NO_ in the flag names, e.g.
-MIPI_DSI_MODE_NO_EOT_PACKET.
+This series of patches adds support for Mediatek AFE of MT8195 SoC.
+Patches are based on broonie tree "for-next" branch.
 
-Signed-off-by: Nicolas Boichat <drinkcat@chromium.org>
----
-I considered adding _DISABLE_ instead, but that'd make the
-flag names a big too long.
+Changes since v1:
+  - fixed some problems related to dt-bindings
+  - add some missing properties to dt-bindings
+  - add depency declaration on dt-bindings
+  - fixed some warnings found by kernel test robot
 
-Generated with:
-flag=MIPI_DSI_MODE_VIDEO_HFP; git grep $flag | cut -f1 -d':' | \
-  xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HFP/" {}
-flag=MIPI_DSI_MODE_VIDEO_HBP; git grep $flag | cut -f1 -d':' | \
-  xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HBP/" {}
-flag=MIPI_DSI_MODE_VIDEO_HSA; git grep $flag | cut -f1 -d':' | \
-  xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_VIDEO_NO_HSA/" {}
-flag=MIPI_DSI_MODE_EOT_PACKET; git grep $flag | cut -f1 -d':' | \
-  xargs -I{} sed -i -e "s/$flag/MIPI_DSI_MODE_NO_EOT_PACKET/" {}
-(then minor format changes)
+Trevor Wu (8):
+  ASoC: mediatek: mt8195: update mediatek common driver
+  ASoC: mediatek: mt8195: support etdm in platform driver
+  ASoC: mediatek: mt8195: support adda in platform driver
+  ASoC: mediatek: mt8195: support pcm in platform driver
+  ASoC: mediatek: mt8195: add platform driver
+  dt-bindings: mediatek: mt8195: add audio afe document
+  ASoC: mediatek: mt8195: add machine driver with mt6359, rt1019 and
+    rt5682
+  dt-bindings: mediatek: mt8195: add mt8195-mt6359-rt1019-rt5682
+    document
 
-Changes in v2:
- - Rebased on latest linux-next, after some of the flags got fixed
-   (Linus Walleij).
+ .../bindings/sound/mt8195-afe-pcm.yaml        |  136 +
+ .../sound/mt8195-mt6359-rt1019-rt5682.yaml    |   39 +
+ sound/soc/mediatek/Kconfig                    |   23 +
+ sound/soc/mediatek/Makefile                   |    1 +
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c    |   22 +-
+ sound/soc/mediatek/common/mtk-base-afe.h      |   10 +-
+ sound/soc/mediatek/mt8195/Makefile            |   14 +
+ sound/soc/mediatek/mt8195/mt8195-afe-clk.c    |  899 +++++
+ sound/soc/mediatek/mt8195/mt8195-afe-clk.h    |  201 +
+ sound/soc/mediatek/mt8195/mt8195-afe-common.h |  200 +
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    | 3264 +++++++++++++++++
+ sound/soc/mediatek/mt8195/mt8195-dai-adda.c   |  929 +++++
+ sound/soc/mediatek/mt8195/mt8195-dai-etdm.c   | 2666 ++++++++++++++
+ sound/soc/mediatek/mt8195/mt8195-dai-pcm.c    |  393 ++
+ .../mt8195/mt8195-mt6359-rt1019-rt5682.c      |  977 +++++
+ sound/soc/mediatek/mt8195/mt8195-reg.h        | 2793 ++++++++++++++
+ 16 files changed, 12562 insertions(+), 5 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
+ create mode 100644 sound/soc/mediatek/mt8195/Makefile
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.h
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-common.h
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-dai-adda.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-dai-pcm.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+ create mode 100644 sound/soc/mediatek/mt8195/mt8195-reg.h
 
- drivers/gpu/drm/bridge/adv7511/adv7533.c             | 2 +-
- drivers/gpu/drm/bridge/analogix/anx7625.c            | 2 +-
- drivers/gpu/drm/bridge/cdns-dsi.c                    | 4 ++--
- drivers/gpu/drm/bridge/lontium-lt8912b.c             | 2 +-
- drivers/gpu/drm/bridge/tc358768.c                    | 2 +-
- drivers/gpu/drm/exynos/exynos_drm_dsi.c              | 8 ++++----
- drivers/gpu/drm/mcde/mcde_dsi.c                      | 2 +-
- drivers/gpu/drm/mediatek/mtk_dsi.c                   | 4 ++--
- drivers/gpu/drm/msm/dsi/dsi_host.c                   | 8 ++++----
- drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c | 2 +-
- drivers/gpu/drm/panel/panel-dsi-cm.c                 | 2 +-
- drivers/gpu/drm/panel/panel-elida-kd35t133.c         | 2 +-
- drivers/gpu/drm/panel/panel-khadas-ts050.c           | 2 +-
- drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c   | 2 +-
- drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c   | 2 +-
- drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c   | 2 +-
- drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c     | 2 +-
- drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c        | 4 ++--
- drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c      | 2 +-
- drivers/gpu/drm/panel/panel-simple.c                 | 2 +-
- drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c     | 2 +-
- include/drm/drm_mipi_dsi.h                           | 8 ++++----
- 22 files changed, 34 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/adv7511/adv7533.c b/drivers/gpu/drm/bridge/adv7511/adv7533.c
-index aa19d5a40e31..59d718bde8c4 100644
---- a/drivers/gpu/drm/bridge/adv7511/adv7533.c
-+++ b/drivers/gpu/drm/bridge/adv7511/adv7533.c
-@@ -165,7 +165,7 @@ int adv7533_attach_dsi(struct adv7511 *adv)
- 	dsi->lanes = adv->num_dsi_lanes;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
--			  MIPI_DSI_MODE_EOT_PACKET | MIPI_DSI_MODE_VIDEO_HSE;
-+			  MIPI_DSI_MODE_NO_EOT_PACKET | MIPI_DSI_MODE_VIDEO_HSE;
- 
- 	ret = mipi_dsi_attach(dsi);
- 	if (ret < 0) {
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-index 7519b7a0f29d..6ca9f7e00064 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-@@ -1307,7 +1307,7 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO	|
- 		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
--		MIPI_DSI_MODE_EOT_PACKET	|
-+		MIPI_DSI_MODE_NO_EOT_PACKET	|
- 		MIPI_DSI_MODE_VIDEO_HSE;
- 
- 	if (mipi_dsi_attach(dsi) < 0) {
-diff --git a/drivers/gpu/drm/bridge/cdns-dsi.c b/drivers/gpu/drm/bridge/cdns-dsi.c
-index b31281f76117..e6e331071a00 100644
---- a/drivers/gpu/drm/bridge/cdns-dsi.c
-+++ b/drivers/gpu/drm/bridge/cdns-dsi.c
-@@ -829,7 +829,7 @@ static void cdns_dsi_bridge_enable(struct drm_bridge *bridge)
- 	tmp = DIV_ROUND_UP(dsi_cfg.htotal, nlanes) -
- 	      DIV_ROUND_UP(dsi_cfg.hsa, nlanes);
- 
--	if (!(output->dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(output->dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		tmp -= DIV_ROUND_UP(DSI_EOT_PKT_SIZE, nlanes);
- 
- 	tx_byte_period = DIV_ROUND_DOWN_ULL((u64)NSEC_PER_SEC * 8,
-@@ -902,7 +902,7 @@ static void cdns_dsi_bridge_enable(struct drm_bridge *bridge)
- 	tmp = readl(dsi->regs + MCTL_MAIN_DATA_CTL);
- 	tmp &= ~(IF_VID_SELECT_MASK | HOST_EOT_GEN | IF_VID_MODE);
- 
--	if (!(output->dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(output->dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		tmp |= HOST_EOT_GEN;
- 
- 	if (output->dev->mode_flags & MIPI_DSI_MODE_VIDEO)
-diff --git a/drivers/gpu/drm/bridge/lontium-lt8912b.c b/drivers/gpu/drm/bridge/lontium-lt8912b.c
-index 76c720b535fb..1b0c7eaf6c84 100644
---- a/drivers/gpu/drm/bridge/lontium-lt8912b.c
-+++ b/drivers/gpu/drm/bridge/lontium-lt8912b.c
-@@ -487,7 +487,7 @@ static int lt8912_attach_dsi(struct lt8912 *lt)
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
- 			  MIPI_DSI_MODE_VIDEO_BURST |
- 			  MIPI_DSI_MODE_LPM |
--			  MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	ret = mipi_dsi_attach(dsi);
- 	if (ret < 0) {
-diff --git a/drivers/gpu/drm/bridge/tc358768.c b/drivers/gpu/drm/bridge/tc358768.c
-index 8ed8302d6bbb..320f95ae6077 100644
---- a/drivers/gpu/drm/bridge/tc358768.c
-+++ b/drivers/gpu/drm/bridge/tc358768.c
-@@ -825,7 +825,7 @@ static void tc358768_bridge_pre_enable(struct drm_bridge *bridge)
- 	if (!(dsi_dev->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS))
- 		val |= TC358768_DSI_CONTROL_HSCKMD;
- 
--	if (dsi_dev->mode_flags & MIPI_DSI_MODE_EOT_PACKET)
-+	if (dsi_dev->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET)
- 		val |= TC358768_DSI_CONTROL_EOTDIS;
- 
- 	tc358768_write(priv, TC358768_DSI_CONFW, val);
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_dsi.c b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
-index 1d777d8c1a83..e39fac889edc 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_dsi.c
-+++ b/drivers/gpu/drm/exynos/exynos_drm_dsi.c
-@@ -809,15 +809,15 @@ static int exynos_dsi_init_link(struct exynos_dsi *dsi)
- 			reg |= DSIM_AUTO_MODE;
- 		if (dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HSE)
- 			reg |= DSIM_HSE_MODE;
--		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HFP))
-+		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HFP))
- 			reg |= DSIM_HFP_MODE;
--		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HBP))
-+		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HBP))
- 			reg |= DSIM_HBP_MODE;
--		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_HSA))
-+		if (!(dsi->mode_flags & MIPI_DSI_MODE_VIDEO_NO_HSA))
- 			reg |= DSIM_HSA_MODE;
- 	}
- 
--	if (!(dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		reg |= DSIM_EOT_DISABLE;
- 
- 	switch (dsi->format) {
-diff --git a/drivers/gpu/drm/mcde/mcde_dsi.c b/drivers/gpu/drm/mcde/mcde_dsi.c
-index 34a00d7e9c38..524852ed68f1 100644
---- a/drivers/gpu/drm/mcde/mcde_dsi.c
-+++ b/drivers/gpu/drm/mcde/mcde_dsi.c
-@@ -760,7 +760,7 @@ static void mcde_dsi_start(struct mcde_dsi *d)
- 		DSI_MCTL_MAIN_DATA_CTL_BTA_EN |
- 		DSI_MCTL_MAIN_DATA_CTL_READ_EN |
- 		DSI_MCTL_MAIN_DATA_CTL_REG_TE_EN;
--	if (!(d->mdsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(d->mdsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		val |= DSI_MCTL_MAIN_DATA_CTL_HOST_EOT_GEN;
- 	writel(val, d->regs + DSI_MCTL_MAIN_DATA_CTL);
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index ae403c67cbd9..93b40c245f00 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -404,7 +404,7 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
- 	if (dsi->mode_flags & MIPI_DSI_CLOCK_NON_CONTINUOUS)
- 		tmp_reg |= HSTX_CKLP_EN;
- 
--	if (!(dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		tmp_reg |= DIS_EOT;
- 
- 	writel(tmp_reg, dsi->regs + DSI_TXRX_CTRL);
-@@ -481,7 +481,7 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 			  timing->da_hs_zero + timing->da_hs_exit + 3;
- 
- 	delta = dsi->mode_flags & MIPI_DSI_MODE_VIDEO_BURST ? 18 : 12;
--	delta += dsi->mode_flags & MIPI_DSI_MODE_EOT_PACKET ? 2 : 0;
-+	delta += dsi->mode_flags & MIPI_DSI_MODE_NO_EOT_PACKET ? 2 : 0;
- 
- 	horizontal_frontporch_byte = vm->hfront_porch * dsi_tmp_buf_bpp;
- 	horizontal_front_back_byte = horizontal_frontporch_byte + horizontal_backporch_byte;
-diff --git a/drivers/gpu/drm/msm/dsi/dsi_host.c b/drivers/gpu/drm/msm/dsi/dsi_host.c
-index ed504fe5074f..b466a4af7c3e 100644
---- a/drivers/gpu/drm/msm/dsi/dsi_host.c
-+++ b/drivers/gpu/drm/msm/dsi/dsi_host.c
-@@ -849,11 +849,11 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
- 	if (flags & MIPI_DSI_MODE_VIDEO) {
- 		if (flags & MIPI_DSI_MODE_VIDEO_HSE)
- 			data |= DSI_VID_CFG0_PULSE_MODE_HSA_HE;
--		if (flags & MIPI_DSI_MODE_VIDEO_HFP)
-+		if (flags & MIPI_DSI_MODE_VIDEO_NO_HFP)
- 			data |= DSI_VID_CFG0_HFP_POWER_STOP;
--		if (flags & MIPI_DSI_MODE_VIDEO_HBP)
-+		if (flags & MIPI_DSI_MODE_VIDEO_NO_HBP)
- 			data |= DSI_VID_CFG0_HBP_POWER_STOP;
--		if (flags & MIPI_DSI_MODE_VIDEO_HSA)
-+		if (flags & MIPI_DSI_MODE_VIDEO_NO_HSA)
- 			data |= DSI_VID_CFG0_HSA_POWER_STOP;
- 		/* Always set low power stop mode for BLLP
- 		 * to let command engine send packets
-@@ -908,7 +908,7 @@ static void dsi_ctrl_config(struct msm_dsi_host *msm_host, bool enable,
- 			  DSI_T_CLK_PRE_EXTEND_INC_BY_2_BYTECLK);
- 
- 	data = 0;
--	if (!(flags & MIPI_DSI_MODE_EOT_PACKET))
-+	if (!(flags & MIPI_DSI_MODE_NO_EOT_PACKET))
- 		data |= DSI_EOT_PACKET_CTRL_TX_EOT_APPEND;
- 	dsi_write(msm_host, REG_DSI_EOT_PACKET_CTRL, data);
- 
-diff --git a/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c b/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
-index e95bc9f60b3f..44674ebedf59 100644
---- a/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
-+++ b/drivers/gpu/drm/panel/panel-asus-z00t-tm5p5-n35596.c
-@@ -302,7 +302,7 @@ static int tm5p5_nt35596_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_MODE_EOT_PACKET |
-+			  MIPI_DSI_MODE_VIDEO_HSE | MIPI_DSI_MODE_NO_EOT_PACKET |
- 			  MIPI_DSI_CLOCK_NON_CONTINUOUS | MIPI_DSI_MODE_LPM;
- 
- 	drm_panel_init(&ctx->panel, dev, &tm5p5_nt35596_panel_funcs,
-diff --git a/drivers/gpu/drm/panel/panel-dsi-cm.c b/drivers/gpu/drm/panel/panel-dsi-cm.c
-index 5fbfb71ca3d9..da4a69067e18 100644
---- a/drivers/gpu/drm/panel/panel-dsi-cm.c
-+++ b/drivers/gpu/drm/panel/panel-dsi-cm.c
-@@ -574,7 +574,7 @@ static int dsicm_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 2;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_CLOCK_NON_CONTINUOUS |
--			  MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_NO_EOT_PACKET;
- 	dsi->hs_rate = ddata->panel_data->max_hs_rate;
- 	dsi->lp_rate = ddata->panel_data->max_lp_rate;
- 
-diff --git a/drivers/gpu/drm/panel/panel-elida-kd35t133.c b/drivers/gpu/drm/panel/panel-elida-kd35t133.c
-index 4787f0833264..80227617a4d6 100644
---- a/drivers/gpu/drm/panel/panel-elida-kd35t133.c
-+++ b/drivers/gpu/drm/panel/panel-elida-kd35t133.c
-@@ -273,7 +273,7 @@ static int kd35t133_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 1;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET |
-+			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
- 			  MIPI_DSI_CLOCK_NON_CONTINUOUS;
- 
- 	drm_panel_init(&ctx->panel, &dsi->dev, &kd35t133_funcs,
-diff --git a/drivers/gpu/drm/panel/panel-khadas-ts050.c b/drivers/gpu/drm/panel/panel-khadas-ts050.c
-index 8f6ac1a40c31..a3ec4cbdbf7a 100644
---- a/drivers/gpu/drm/panel/panel-khadas-ts050.c
-+++ b/drivers/gpu/drm/panel/panel-khadas-ts050.c
-@@ -809,7 +809,7 @@ static int khadas_ts050_panel_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	khadas_ts050 = devm_kzalloc(&dsi->dev, sizeof(*khadas_ts050),
- 				    GFP_KERNEL);
-diff --git a/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c b/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
-index ed0d5f959037..a5a414920430 100644
---- a/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
-+++ b/drivers/gpu/drm/panel/panel-leadtek-ltk050h3146w.c
-@@ -593,7 +593,7 @@ static int ltk050h3146w_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	drm_panel_init(&ctx->panel, &dsi->dev, &ltk050h3146w_funcs,
- 		       DRM_MODE_CONNECTOR_DSI);
-diff --git a/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c b/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
-index 3c00e4f8f803..21e48923836d 100644
---- a/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
-+++ b/drivers/gpu/drm/panel/panel-leadtek-ltk500hd1829.c
-@@ -442,7 +442,7 @@ static int ltk500hd1829_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	drm_panel_init(&ctx->panel, &dsi->dev, &ltk500hd1829_funcs,
- 		       DRM_MODE_CONNECTOR_DSI);
-diff --git a/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c b/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
-index 45b975dee587..198493a6eb6a 100644
---- a/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
-+++ b/drivers/gpu/drm/panel/panel-osd-osd101t2587-53ts.c
-@@ -184,7 +184,7 @@ static int osd101t2587_panel_probe(struct mipi_dsi_device *dsi)
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
- 			  MIPI_DSI_MODE_VIDEO_BURST |
- 			  MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
--			  MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	osd101t2587 = devm_kzalloc(&dsi->dev, sizeof(*osd101t2587), GFP_KERNEL);
- 	if (!osd101t2587)
-diff --git a/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c b/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
-index b962c817fb30..ccc8ed6fe3ae 100644
---- a/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
-+++ b/drivers/gpu/drm/panel/panel-samsung-s6e63j0x03.c
-@@ -446,7 +446,7 @@ static int s6e63j0x03_probe(struct mipi_dsi_device *dsi)
- 
- 	dsi->lanes = 1;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
--	dsi->mode_flags = MIPI_DSI_MODE_EOT_PACKET;
-+	dsi->mode_flags = MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	ctx->supplies[0].supply = "vdd3";
- 	ctx->supplies[1].supply = "vci";
-diff --git a/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c b/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
-index 527371120266..9b3599d6d2de 100644
---- a/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
-+++ b/drivers/gpu/drm/panel/panel-samsung-s6e8aa0.c
-@@ -990,8 +990,8 @@ static int s6e8aa0_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST
--		| MIPI_DSI_MODE_VIDEO_HFP | MIPI_DSI_MODE_VIDEO_HBP
--		| MIPI_DSI_MODE_VIDEO_HSA | MIPI_DSI_MODE_EOT_PACKET
-+		| MIPI_DSI_MODE_VIDEO_NO_HFP | MIPI_DSI_MODE_VIDEO_NO_HBP
-+		| MIPI_DSI_MODE_VIDEO_NO_HSA | MIPI_DSI_MODE_NO_EOT_PACKET
- 		| MIPI_DSI_MODE_VSYNC_FLUSH | MIPI_DSI_MODE_VIDEO_AUTO_VERT;
- 
- 	ret = s6e8aa0_parse_dt(ctx);
-diff --git a/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c b/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
-index 16dbf0f353ed..b937e24dac8e 100644
---- a/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
-+++ b/drivers/gpu/drm/panel/panel-sharp-ls043t1le01.c
-@@ -282,7 +282,7 @@ static int sharp_nt_panel_probe(struct mipi_dsi_device *dsi)
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO |
- 			MIPI_DSI_MODE_VIDEO_HSE |
- 			MIPI_DSI_CLOCK_NON_CONTINUOUS |
--			MIPI_DSI_MODE_EOT_PACKET;
-+			MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	sharp_nt = devm_kzalloc(&dsi->dev, sizeof(*sharp_nt), GFP_KERNEL);
- 	if (!sharp_nt)
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index 21939d4352cf..d490b5ef968a 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -4867,7 +4867,7 @@ static const struct panel_desc_dsi osd101t2045_53ts = {
- 	},
- 	.flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
- 		 MIPI_DSI_MODE_VIDEO_SYNC_PULSE |
--		 MIPI_DSI_MODE_EOT_PACKET,
-+		 MIPI_DSI_MODE_NO_EOT_PACKET,
- 	.format = MIPI_DSI_FMT_RGB888,
- 	.lanes = 4,
- };
-diff --git a/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c b/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
-index 55172d63a922..d17aae8b71d7 100644
---- a/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
-+++ b/drivers/gpu/drm/panel/panel-xinpeng-xpp055c272.c
-@@ -311,7 +311,7 @@ static int xpp055c272_probe(struct mipi_dsi_device *dsi)
- 	dsi->lanes = 4;
- 	dsi->format = MIPI_DSI_FMT_RGB888;
- 	dsi->mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
--			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_EOT_PACKET;
-+			  MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET;
- 
- 	drm_panel_init(&ctx->panel, &dsi->dev, &xpp055c272_funcs,
- 		       DRM_MODE_CONNECTOR_DSI);
-diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
-index 360e6377e84b..ba91cf22af51 100644
---- a/include/drm/drm_mipi_dsi.h
-+++ b/include/drm/drm_mipi_dsi.h
-@@ -119,15 +119,15 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
- /* enable hsync-end packets in vsync-pulse and v-porch area */
- #define MIPI_DSI_MODE_VIDEO_HSE		BIT(4)
- /* disable hfront-porch area */
--#define MIPI_DSI_MODE_VIDEO_HFP		BIT(5)
-+#define MIPI_DSI_MODE_VIDEO_NO_HFP	BIT(5)
- /* disable hback-porch area */
--#define MIPI_DSI_MODE_VIDEO_HBP		BIT(6)
-+#define MIPI_DSI_MODE_VIDEO_NO_HBP	BIT(6)
- /* disable hsync-active area */
--#define MIPI_DSI_MODE_VIDEO_HSA		BIT(7)
-+#define MIPI_DSI_MODE_VIDEO_NO_HSA	BIT(7)
- /* flush display FIFO on vsync pulse */
- #define MIPI_DSI_MODE_VSYNC_FLUSH	BIT(8)
- /* disable EoT packets in HS mode */
--#define MIPI_DSI_MODE_EOT_PACKET	BIT(9)
-+#define MIPI_DSI_MODE_NO_EOT_PACKET	BIT(9)
- /* device supports non-continuous clock behavior (DSI spec 5.6.1) */
- #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
- /* transmit data in low power */
 -- 
-2.32.0.93.g670b81a890-goog
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
