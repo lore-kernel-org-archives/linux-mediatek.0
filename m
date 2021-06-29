@@ -2,76 +2,88 @@ Return-Path: <SRS0=olbE=LX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8009EC11F67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 15:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AF585C11F67
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 15:10:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B34961CE6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 15:02:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B34961CE6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 72FE761DC4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 15:10:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 72FE761DC4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NwLgwhwVwuu26zN3JOhb+6qAkmxWsCv6YurSS1rvzWk=; b=ePtN1JN73PegZS
-	UdRbsuN3Y5MyBa7jq063Zk20W1Mi7OlOyufYQ3dErevksDrZoS9M7faE9B8vuG++EhFL02pkZ+SaX
-	IxboxU/xoQwV2JJ6102wmEbTNW0g0uCsgv+Fri4YMz/Fqpt/owYYCRfAUO+UmuAg33Iy3HJPvRui5
-	zybXYywLtqHMLWcYOguhQPeYsiFZA5Qykt7aYDxeHnZfMWrbhsj5Apy20huuNUBjdj/uR+6YsFbJ1
-	wYPi+L1snqdbH5vy6dWClToqBQP2U0zx0XIGygvwZcQxeVHiePUOz1xpuPZGW2C/YyVZCgVZrbPVJ
-	pUKCb2n/qEEGTUn3o+rA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/8nhiqZe8WiqpRRMeV3pEJVHc48QLVmazSswc+TwOc0=; b=kLTYTeLhD8dLpM
+	p3bVIGMZBZ0A7EFGf3EiCdyB5OrnVoEh+bVswu/W5akKdU0ifNHGJZox3X+K5Zouxbe7DpEaLArQR
+	XMH1ZD2OFAxbnBWyIxSJFNmhd4BKZBnl6cI83bfZ5ZO8y3GqEwIm3wexHL7vfrUk3waG6tDJk33Pl
+	NbQh3ubcvlrj+WEIX05fydo30Mq0jK3TJV5wZLNttAJKAK87oGwCkP1uKvXLeG7QVngSE6napKMsa
+	kYbzYZmmFBlRr0/jUaH+ibiGnQ8C4osiUCb3BwPfj2ELzypiFMcNfKnmfxbF7vsZo1fxY+96ZoBcH
+	gpxj/CKUvBSpUA/DzR2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyFFT-00BOfc-H0; Tue, 29 Jun 2021 15:02:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lyFMu-00BPkt-A2; Tue, 29 Jun 2021 15:09:44 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyFFQ-00BOee-Pp; Tue, 29 Jun 2021 15:02:02 +0000
-X-UUID: e0c2f2d4f4da44619b1ca27b74b6580f-20210629
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1AdWuVi90zo0qjXMBgGXjnne3/Dg36g8YM2lbEOtTyE=; 
- b=DLHgn9JYQhyMtW67bVwTB+E8uVkPCz2U5/kLy9T1BEtLt9+AZuALBn1hXG252173yN4jyzSHfB6yvHQ85wHUzuicF5OG0dUSz+nxnHHGdKJVo8AgGtLTqwmRFM0HS14chRpovWPXcmhiC5HXkp6w2atf5VfkUhWP68pLoL61WFM=;
-X-UUID: e0c2f2d4f4da44619b1ca27b74b6580f-20210629
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <phil.chang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1569160952; Tue, 29 Jun 2021 08:01:55 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 08:01:51 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 23:01:50 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 29 Jun 2021 23:01:50 +0800
-From: Phil Chang <phil.chang@mediatek.com>
-To: <linux-remoteproc@vger.kernel.org>
-CC: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
- <mathieu.poirier@linaro.org>, <matthias.bgg@gmail.com>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <yj.chiang@mediatek.com>,
- <mark-pk.tsai@mediatek.com>, <weiting.tsai@mediatek.com>, Phil Chang
- <phil.chang@mediatek.com>
-Subject: [PATCH] remoteproc: export rproc re/unregister to virtio device APIs
-Date: Tue, 29 Jun 2021 23:00:02 +0800
-Message-ID: <20210629150002.8050-1-phil.chang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1lyFMr-00BPjM-TF
+ for linux-mediatek@lists.infradead.org; Tue, 29 Jun 2021 15:09:43 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id e20so8477586ual.9
+ for <linux-mediatek@lists.infradead.org>; Tue, 29 Jun 2021 08:09:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LuyBMZGhtBgcRJwd1A74SaR7qMVubxg4OKYSD7bf0Rg=;
+ b=TGHWWV8kcyBivyZX88cWdYDh6ISxpSSnB+a3I2IZObT877GfF5myGHJDavSsywsD/+
+ HRNudBk1MUSh5BxtRJ1ScnfRqOaOuhXBHdXG62OzrMB44GRE6P1JiknjAtVrJ4pZdj/i
+ U5pXLro/rLS+ZY7yTlGCYle3qxXqCC9tPc4MXrPuipukj2QsFk68V37sCwZSf2hn+0J1
+ aKCbqF+sjF004LTaqivSO4eR3lo+h9VcydpASTFhp0b+bOVi84Wsx33m1aSAIudIK1xx
+ 2rBMCcA0SsSfBjmlNB2BC67QUKQpheGAtnghLDKEJdOOrsg/Qq9BeURftGLO1HzvYeTT
+ eBJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LuyBMZGhtBgcRJwd1A74SaR7qMVubxg4OKYSD7bf0Rg=;
+ b=NCNPzA0xdVz69CJcwdbVaTSLMWSWMP24rx9h15mmFZoKa0mF0wS5UfyXZm9C3OrqBA
+ AnCsqqKCXTybALKj+3odfSOt1sYWMkSwUSMth8rVO4Bndp/bVgRG7QJXdBb3OPMrJOgh
+ qMSEuotOvUNS4les72rZNNGuPcel3sNIdsGiGBPx7oTDisdFjXuBhnZZowf2lFyZe++h
+ 3f64VtNQABtFB5ibumzGEIyVh1RgnRiDgjuQFJJUTlIp30ox0PK82ZRv8s6HIw1Hphj6
+ 5G6ni3W9EKUntOdH8LdeBzWxCeuL4t8nej+n7QJ68c4J//dnL8j0REzAwHbJ+xHx2fJ7
+ EFcg==
+X-Gm-Message-State: AOAM533mssRDeK/KJNiCoWNNczUXRKDmUltokHQmkKnQHcju4TCXtFhq
+ 0arfoFchDiJ5l7w6GVafYpNMMuxOfesF8P2RPjYgaQ==
+X-Google-Smtp-Source: ABdhPJzVIVyqLzXURZxn0TF1D1Ma0QIbM2IQTwNlaEsIhbBauCsjME4JZOq/bDRZJCt6zyyzOdYNbQVJX7NZ4PfyH7M=
+X-Received: by 2002:ab0:484b:: with SMTP id c11mr27684290uad.100.1624979377958; 
+ Tue, 29 Jun 2021 08:09:37 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1623726033-16073-1-git-send-email-wenbin.mei@mediatek.com>
+ <1623726033-16073-2-git-send-email-wenbin.mei@mediatek.com>
+In-Reply-To: <1623726033-16073-2-git-send-email-wenbin.mei@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 29 Jun 2021 17:09:01 +0200
+Message-ID: <CAPDyKFrqeYbxDyrcicS=DQLntF8PfNm9E4tZf7KgvzRJmciLog@mail.gmail.com>
+Subject: Re: [PATCH v1] dt-bindings: mmc: change compatiable string for MT8195
+ mmc host IP
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Seiya Wang <seiya.wang@mediatek.com>, 
+ linux-mmc <linux-mmc@vger.kernel.org>, DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_080200_893012_43D50DE1 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20210629_080941_973224_9DBC3AA6 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,44 +100,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In some case, the remote processor already boot up on previous state,
-but still need register to virtio device, so that exported those APIs.
+On Tue, 15 Jun 2021 at 05:01, Wenbin Mei <wenbin.mei@mediatek.com> wrote:
+>
+> MT8195 mmc host IP is compatible with MT8183, and currently it shows:
+> properties:
+>   compatible:
+>     oneOf:
+> ...
+>       - items:
+>          - const: mediatek,mt8192-mmc
+>          - const: mediatek,mt8195-mmc
+>          - const: mediatek,mt8183-mmc
+> which means the compatible string in the device tree would be:
+>         compatible = "mediatek,mt8192-mmc", "mediatek,mt8195-mmc",
+>                      "mediatek,mt8183-mmc";
+> The bindings is wrong and that isn't the result we want.
+> instead we want:
+> properties:
+>   compatible:
+>     oneOf:
+> ...
+>       - items:
+>          - const: mediatek,mt8192-mmc
+>          - const: mediatek,mt8183-mmc
+>       - items:
+>          - const: mediatek,mt8195-mmc
+>          - const: mediatek,mt8183-mmc
+> which would give us:
+>         compatible = "mediatek,mt8192-mmc", "mediatek,mt8183-mmc";
+> and
+>         compatible = "mediatek,mt8195-mmc", "mediatek,mt8183-mmc";
+>
+> Fixes: eb9cb7227e5c (dt-bindings: mmc: Add compatible for Mediatek MT8195)
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
 
-Signed-off-by: Phil Chang <phil.chang@mediatek.com>
-Signed-off-by: YJ chiang <yj.chiang@mediatek.com>
----
-Hi
+Applied for fixes, thanks!
 
-In our case, the remote processor is already boot up in u-boot,
-we don't want to boot again or load fw in driver but register to virtio
-device for rpmsg. so that needs those API exported.
-Furthermore, the rproc_vq_interrupt is exported, so those functions
-should be exported also.
+Kind regards
+Uffe
 
-thanks
 
- drivers/remoteproc/remoteproc_virtio.c | 2 ++
- 1 file changed, 2 insertions(+)
+> ---
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 8648d48..adaba90 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -31,6 +31,8 @@ properties:
+>            - const: mediatek,mt2701-mmc
+>        - items:
+>            - const: mediatek,mt8192-mmc
+> +          - const: mediatek,mt8183-mmc
+> +      - items:
+>            - const: mediatek,mt8195-mmc
+>            - const: mediatek,mt8183-mmc
+>
+> --
+> 1.9.1
+>
 
-diff --git a/drivers/remoteproc/remoteproc_virtio.c b/drivers/remoteproc/remoteproc_virtio.c
-index 0cc617f76068..e23658a76f5e 100644
---- a/drivers/remoteproc/remoteproc_virtio.c
-+++ b/drivers/remoteproc/remoteproc_virtio.c
-@@ -425,6 +425,7 @@ int rproc_add_virtio_dev(struct rproc_vdev *rvdev, int id)
- out:
- 	return ret;
- }
-+EXPORT_SYMBOL(rproc_add_virtio_dev);
- 
- /**
-  * rproc_remove_virtio_dev() - remove an rproc-induced virtio device
-@@ -440,3 +441,4 @@ int rproc_remove_virtio_dev(struct device *dev, void *data)
- 	unregister_virtio_device(vdev);
- 	return 0;
- }
-+EXPORT_SYMBOL(rproc_remove_virtio_dev);
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
