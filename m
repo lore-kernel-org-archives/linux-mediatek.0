@@ -2,85 +2,92 @@ Return-Path: <SRS0=olbE=LX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AACDDC11F67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 12:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A5F4C11F66
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 13:36:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C97B61D8B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 12:21:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7C97B61D8B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C75D961D8E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Jun 2021 13:36:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C75D961D8E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ingics.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L7EHyUsdFIx9p5ev+EguJ4zM3vZ7UvwoMAc7GF4isnY=; b=Sb/QnJIg5W5ajy
-	lJClpvEvxQZKLUQbU7CIzLcYqNx8IwhbpUbRxmPCfqZUc1/i72IZZfQNdDgCzy5/YfeFCW79zcNBh
-	nXCoqmxopCcFDq1iHXvlhsBfy3tEVpF5q489YLizzWuO8Y4WCrV956H4n+6ohqhR56P3jv7y/NAE2
-	xN+10jFnt/zDYBViJWphkLRs/3tfJYXR6TA8paoefRmI7g3en+XUtwM+CQvWU4rnG5Ys3PNq3j4jU
-	qu/aKIKbpOv33dVlZDDA9joCwvQb9ONiOc4hsykPbvk/O6KkzXC5neaP63gstTk3ip5YZCpsuhLXR
-	AFFDei4ux3bFFNGv+g2Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BMNC3TE2kacQ2oq9HXnH2CFnT0hVxoL/f8useURRpAw=; b=bQUqf4TEZyQxlB
+	r8R7K8d1I2mFgRE0ejEq2NSIkWUpxfvpKacUVJ2hiW8ic0BWjncOZ5DmB8tk6ruVDVQlULUBt5HJE
+	aYa9Vv+09RfAIBan0ayx5C1/hkH6Dj3ZDCszd0VDd8Uo7HKy7YUxxQu52r7HIwRqqNjEs0kgqXmL4
+	8FCsI2kfsNw6nWOQozfPKjNLFdDrmCqn+KTktHQBntd8ksFx7WvwRtrV1xaBqXifPFKp+WpIs9ZPj
+	mOWt7jz4N37xrYwGF0ZE2zeKfTOK7u5cBe829lU5tt8f68kgzFGlmcsSmJUKtGXcTikZGr1RoDh+P
+	6sig4a6FCDMPZZ39i/iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyCjf-00Ao3X-Gd; Tue, 29 Jun 2021 12:21:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lyDuc-00B58S-Gu; Tue, 29 Jun 2021 13:36:26 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyCjQ-00AnyW-Q8; Tue, 29 Jun 2021 12:20:50 +0000
-X-UUID: 8296b1f858914a0fb9276ea5d2c322d8-20210629
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4SbG1vndPjwBWteOUa61pelj+E3Mh/QyjRjIiC1LL3s=; 
- b=kt4DZhFF3c3qEU+rHgUIkRCJ65aiuh9VZPAoBNm0UUHyEc+i9i4qh8107WVX5qavw/gN1w3KZ4XG/XKmEEyr+s5FaRuJiZX8yfeLuny12Bf61yqxQjpk8sJ+pFDV2Mem95Lfi/jUiN5WXQm/YUlI8nEUSOeEq1u8ls5smIZxl4o=;
-X-UUID: 8296b1f858914a0fb9276ea5d2c322d8-20210629
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kewei.xu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 252339832; Tue, 29 Jun 2021 05:20:43 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 05:12:58 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 29 Jun 2021 20:12:48 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 29 Jun 2021 20:12:47 +0800
-Message-ID: <1624968767.5647.2.camel@mhfsdcap03>
-Subject: Re: [PATCH 2/3] i2c: mediatek: Dump i2c/dma register when a timeout
- occurs
-From: Kewei Xu <kewei.xu@mediatek.com>
-To: Tzung-Bi Shih <tzungbi@google.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, <wsa@the-dreams.de>,
- <robh+dt@kernel.org>, <linux-i2c@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
- <qii.wang@mediatek.com>, <qiangming.xia@mediatek.com>,
- <liguo.zhang@mediatek.com>
-Date: Tue, 29 Jun 2021 20:12:47 +0800
-In-Reply-To: <CA+Px+wU8qqEDU+bV0QpoJssNOxebutzRGgHo6WpC9VFJwckKKQ@mail.gmail.com>
-References: <1623122200-1896-1-git-send-email-kewei.xu@mediatek.com>
- <1623122200-1896-3-git-send-email-kewei.xu@mediatek.com>
- <54301510-e0d5-0762-1979-b194b8fd5eb8@gmail.com>
- <1623206624.14050.10.camel@mhfsdcap03>
- <CA+Px+wU8qqEDU+bV0QpoJssNOxebutzRGgHo6WpC9VFJwckKKQ@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1lyDQR-00AwKg-A4
+ for linux-mediatek@lists.infradead.org; Tue, 29 Jun 2021 13:05:17 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ x21-20020a17090aa395b029016e25313bfcso2384867pjp.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 29 Jun 2021 06:05:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ingics-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BpqDaaIgEP6xSclV0UOsGcx+vGzvGM5obTodSSWKHwU=;
+ b=IJsVkSvHqg1V7wL+3/QysqDJAu5CRUfRjRp+iNGXrBq6gfdYk0yrFG6d7H3PwEGNIg
+ 7ycVQcOfAKKc3YqajjqxRLXFqLRhD/q2SDm4d1fgkf09Kf5l5x6p0E4yDLXl0IPwrnSF
+ z6YBi1eAwvvbl6ZmDINRAJ1QbJ9aBDkLdcE4uIjB74+BaW8Kf0ovWD7+EB6hEcfEUUHb
+ uyzB6mWQJg56K7scMsd09IKIOO0vx7s9NUe7bh6/WustSvUJ3zkp8KHPuuBbptEMAWsv
+ FoqsuWkzriBxDt4xKhTLHY+EGiBH4oZFbBhFOj1mcGjJJE5dq7YFixXDiE2OXhnn2e9X
+ OoSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BpqDaaIgEP6xSclV0UOsGcx+vGzvGM5obTodSSWKHwU=;
+ b=fuk1PoBQcXZ5EJDuot5uyS7M6l54cUTyneqxmDt87pxJMrZePH8fDDBCpZ8Kg2Xog5
+ maEySHqjkXRtqcJudH83YSy57eATuGHxJrPZlxJ7Kq3D42HdkFjq+Sm6Z24ywV3g4e/b
+ +Fs0sqR4YT5WYoXvH8icH2UrF+Zf5xbEb73d0kSTpJfRhGllTT6GZkdbn+qiELDeVYR2
+ HetjUHhYqpJX+tnkcFQsnpCSpPHbgtsmZ/YJCtZ3qWVSgprd1SpVGrUSHaLLXoSt7Mh0
+ H7WQoAio9HOiKgqXcbQAK8CWHCwyouLwWZsG0n+i1rrBgIXIFhpItVBpJHe0itHxJT7o
+ i8aQ==
+X-Gm-Message-State: AOAM533cYhLpm1Z2sOWrUM7UPhWpzNfG9t9tO+8VzhqGsa7PXMGxauT3
+ kDnD0OX1L4A8mHI1uY3+4jf8gA==
+X-Google-Smtp-Source: ABdhPJw17Wqmqt6FMozwV3u8X6OY2sG+EViDqwvu2KxppyTNB2TJa7cGVx2zLny7D+W2ehZjKkJfGQ==
+X-Received: by 2002:a17:90a:102:: with SMTP id
+ b2mr34006499pjb.156.1624971912980; 
+ Tue, 29 Jun 2021 06:05:12 -0700 (PDT)
+Received: from localhost.localdomain (122-117-179-2.HINET-IP.hinet.net.
+ [122.117.179.2])
+ by smtp.gmail.com with ESMTPSA id u13sm18766769pga.64.2021.06.29.06.05.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Jun 2021 06:05:12 -0700 (PDT)
+From: Axel Lin <axel.lin@ingics.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Henry Chen <henryc.chen@mediatek.com>, Flora Fu <flora.fu@mediatek.com>,
+ Wen Su <wen.su@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ Axel Lin <axel.lin@ingics.com>
+Subject: [PATCH 1/3] regulator: mt6358: Remove shift fields from struct
+ mt6358_regulator_info
+Date: Tue, 29 Jun 2021 21:05:01 +0800
+Message-Id: <20210629130503.2183574-1-axel.lin@ingics.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 99D115C5B010B0D7F3D44B52D5ED0835CC3A0712A95D069472FE4D2D1B8632C52000:8
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_052048_919511_8D00218E 
-X-CRM114-Status: GOOD (  16.61  )
+X-CRM114-CacheID: sfid-20210629_060515_428754_1C8E95C0 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,24 +104,248 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-06-29 at 12:19 +0800, Tzung-Bi Shih wrote:
-> On Wed, Jun 9, 2021 at 10:44 AM Kewei Xu <kewei.xu@mediatek.com> wrote:
-> >
-> > On Tue, 2021-06-08 at 16:01 +0200, Matthias Brugger wrote:
-> > > Is this offset only for mt8192 or also for mt8183?
-> > > In any case that should go in as another patch. Either a fix or a new
-> > > mt_i2c_regs_v3[]
-> >
-> > This offset value is suitable for the IC of mt_i2c_regs_v2 hardware
-> > design similar to mt8192/8195, not for 8183.
-> >
-> > The reason for the modification here is that the previous
-> > offset information is incorrect, OFFSET_DEBUGSTAT = 0XE4 is
-> > the correct value.
-> 
-> Please submit another patch for fixing the incorrect value.
+The shift setting can be calculated via the corresponding mask field,
+so remove these shift fields.
 
-Okay, I will resubmit a patch to fixing the incorrect value,Thanks.
+The usage of da_vsel_mask is different from other mask defines because
+current code does shift regval before mask with the da_vsel_mask.
+Do proper shit to da_vsel_mask setting so we can calculate the shift.
+
+Signed-off-by: Axel Lin <axel.lin@ingics.com>
+---
+ drivers/regulator/mt6358-regulator.c | 87 +++++++++++++---------------
+ 1 file changed, 40 insertions(+), 47 deletions(-)
+
+diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
+index 0d35be4e0e5a..eb8027813b99 100644
+--- a/drivers/regulator/mt6358-regulator.c
++++ b/drivers/regulator/mt6358-regulator.c
+@@ -28,18 +28,15 @@ struct mt6358_regulator_info {
+ 	u32 qi;
+ 	const u32 *index_table;
+ 	unsigned int n_table;
+-	u32 vsel_shift;
+ 	u32 da_vsel_reg;
+ 	u32 da_vsel_mask;
+-	u32 da_vsel_shift;
+ 	u32 modeset_reg;
+ 	u32 modeset_mask;
+-	u32 modeset_shift;
+ };
+ 
+ #define MT6358_BUCK(match, vreg, min, max, step,		\
+ 	volt_ranges, vosel_mask, _da_vsel_reg, _da_vsel_mask,	\
+-	_da_vsel_shift, _modeset_reg, _modeset_shift)		\
++	_modeset_reg, _modeset_shift)		\
+ [MT6358_ID_##vreg] = {	\
+ 	.desc = {	\
+ 		.name = #vreg,	\
+@@ -61,15 +58,13 @@ struct mt6358_regulator_info {
+ 	.qi = BIT(0),	\
+ 	.da_vsel_reg = _da_vsel_reg,	\
+ 	.da_vsel_mask = _da_vsel_mask,	\
+-	.da_vsel_shift = _da_vsel_shift,	\
+ 	.modeset_reg = _modeset_reg,	\
+ 	.modeset_mask = BIT(_modeset_shift),	\
+-	.modeset_shift = _modeset_shift	\
+ }
+ 
+ #define MT6358_LDO(match, vreg, ldo_volt_table,	\
+ 	ldo_index_table, enreg, enbit, vosel,	\
+-	vosel_mask, vosel_shift)	\
++	vosel_mask)	\
+ [MT6358_ID_##vreg] = {	\
+ 	.desc = {	\
+ 		.name = #vreg,	\
+@@ -89,12 +84,11 @@ struct mt6358_regulator_info {
+ 	.qi = BIT(15),	\
+ 	.index_table = ldo_index_table,	\
+ 	.n_table = ARRAY_SIZE(ldo_index_table),	\
+-	.vsel_shift = vosel_shift,	\
+ }
+ 
+ #define MT6358_LDO1(match, vreg, min, max, step,	\
+ 	volt_ranges, _da_vsel_reg, _da_vsel_mask,	\
+-	_da_vsel_shift, vosel, vosel_mask)	\
++	vosel, vosel_mask)	\
+ [MT6358_ID_##vreg] = {	\
+ 	.desc = {	\
+ 		.name = #vreg,	\
+@@ -113,7 +107,6 @@ struct mt6358_regulator_info {
+ 	},	\
+ 	.da_vsel_reg = _da_vsel_reg,	\
+ 	.da_vsel_mask = _da_vsel_mask,	\
+-	.da_vsel_shift = _da_vsel_shift,	\
+ 	.status_reg = MT6358_LDO_##vreg##_DBG1,	\
+ 	.qi = BIT(0),	\
+ }
+@@ -260,9 +253,9 @@ static int mt6358_set_voltage_sel(struct regulator_dev *rdev,
+ 	pvol = info->index_table;
+ 
+ 	idx = pvol[selector];
++	idx <<= ffs(info->desc.vsel_mask) - 1;
+ 	ret = regmap_update_bits(rdev->regmap, info->desc.vsel_reg,
+-				 info->desc.vsel_mask,
+-				 idx << info->vsel_shift);
++				 info->desc.vsel_mask, idx);
+ 
+ 	return ret;
+ }
+@@ -282,7 +275,8 @@ static int mt6358_get_voltage_sel(struct regulator_dev *rdev)
+ 		return ret;
+ 	}
+ 
+-	selector = (selector & info->desc.vsel_mask) >> info->vsel_shift;
++	selector = (selector & info->desc.vsel_mask) >>
++			(ffs(info->desc.vsel_mask) - 1);
+ 	pvol = info->index_table;
+ 	for (idx = 0; idx < info->desc.n_voltages; idx++) {
+ 		if (pvol[idx] == selector)
+@@ -305,7 +299,7 @@ static int mt6358_get_buck_voltage_sel(struct regulator_dev *rdev)
+ 		return ret;
+ 	}
+ 
+-	ret = (regval >> info->da_vsel_shift) & info->da_vsel_mask;
++	ret = (regval & info->da_vsel_mask) >> (ffs(info->da_vsel_mask) - 1);
+ 
+ 	return ret;
+ }
+@@ -342,11 +336,10 @@ static int mt6358_regulator_set_mode(struct regulator_dev *rdev,
+ 		return -EINVAL;
+ 	}
+ 
+-	dev_dbg(&rdev->dev, "mt6358 buck set_mode %#x, %#x, %#x, %#x\n",
+-		info->modeset_reg, info->modeset_mask,
+-		info->modeset_shift, val);
++	dev_dbg(&rdev->dev, "mt6358 buck set_mode %#x, %#x, %#x\n",
++		info->modeset_reg, info->modeset_mask, val);
+ 
+-	val <<= info->modeset_shift;
++	val <<= ffs(info->modeset_mask) - 1;
+ 
+ 	return regmap_update_bits(rdev->regmap, info->modeset_reg,
+ 				  info->modeset_mask, val);
+@@ -364,7 +357,7 @@ static unsigned int mt6358_regulator_get_mode(struct regulator_dev *rdev)
+ 		return ret;
+ 	}
+ 
+-	switch ((regval & info->modeset_mask) >> info->modeset_shift) {
++	switch ((regval & info->modeset_mask) >> (ffs(info->modeset_mask) - 1)) {
+ 	case MT6358_BUCK_MODE_AUTO:
+ 		return REGULATOR_MODE_NORMAL;
+ 	case MT6358_BUCK_MODE_FORCE_PWM:
+@@ -412,30 +405,30 @@ static const struct regulator_ops mt6358_volt_fixed_ops = {
+ static struct mt6358_regulator_info mt6358_regulators[] = {
+ 	MT6358_BUCK("buck_vdram1", VDRAM1, 500000, 2087500, 12500,
+ 		    buck_volt_range2, 0x7f, MT6358_BUCK_VDRAM1_DBG0, 0x7f,
+-		    0, MT6358_VDRAM1_ANA_CON0, 8),
++		    MT6358_VDRAM1_ANA_CON0, 8),
+ 	MT6358_BUCK("buck_vcore", VCORE, 500000, 1293750, 6250,
+ 		    buck_volt_range1, 0x7f, MT6358_BUCK_VCORE_DBG0, 0x7f,
+-		    0, MT6358_VCORE_VGPU_ANA_CON0, 1),
++		    MT6358_VCORE_VGPU_ANA_CON0, 1),
+ 	MT6358_BUCK("buck_vpa", VPA, 500000, 3650000, 50000,
+-		    buck_volt_range3, 0x3f, MT6358_BUCK_VPA_DBG0, 0x3f, 0,
++		    buck_volt_range3, 0x3f, MT6358_BUCK_VPA_DBG0, 0x3f,
+ 		    MT6358_VPA_ANA_CON0, 3),
+ 	MT6358_BUCK("buck_vproc11", VPROC11, 500000, 1293750, 6250,
+ 		    buck_volt_range1, 0x7f, MT6358_BUCK_VPROC11_DBG0, 0x7f,
+-		    0, MT6358_VPROC_ANA_CON0, 1),
++		    MT6358_VPROC_ANA_CON0, 1),
+ 	MT6358_BUCK("buck_vproc12", VPROC12, 500000, 1293750, 6250,
+ 		    buck_volt_range1, 0x7f, MT6358_BUCK_VPROC12_DBG0, 0x7f,
+-		    0, MT6358_VPROC_ANA_CON0, 2),
++		    MT6358_VPROC_ANA_CON0, 2),
+ 	MT6358_BUCK("buck_vgpu", VGPU, 500000, 1293750, 6250,
+-		    buck_volt_range1, 0x7f, MT6358_BUCK_VGPU_ELR0, 0x7f, 0,
++		    buck_volt_range1, 0x7f, MT6358_BUCK_VGPU_ELR0, 0x7f,
+ 		    MT6358_VCORE_VGPU_ANA_CON0, 2),
+ 	MT6358_BUCK("buck_vs2", VS2, 500000, 2087500, 12500,
+-		    buck_volt_range2, 0x7f, MT6358_BUCK_VS2_DBG0, 0x7f, 0,
++		    buck_volt_range2, 0x7f, MT6358_BUCK_VS2_DBG0, 0x7f,
+ 		    MT6358_VS2_ANA_CON0, 8),
+ 	MT6358_BUCK("buck_vmodem", VMODEM, 500000, 1293750, 6250,
+ 		    buck_volt_range1, 0x7f, MT6358_BUCK_VMODEM_DBG0, 0x7f,
+-		    0, MT6358_VMODEM_ANA_CON0, 8),
++		    MT6358_VMODEM_ANA_CON0, 8),
+ 	MT6358_BUCK("buck_vs1", VS1, 1000000, 2587500, 12500,
+-		    buck_volt_range4, 0x7f, MT6358_BUCK_VS1_DBG0, 0x7f, 0,
++		    buck_volt_range4, 0x7f, MT6358_BUCK_VS1_DBG0, 0x7f,
+ 		    MT6358_VS1_ANA_CON0, 8),
+ 	MT6358_REG_FIXED("ldo_vrf12", VRF12,
+ 			 MT6358_LDO_VRF12_CON0, 0, 1200000),
+@@ -457,49 +450,49 @@ static struct mt6358_regulator_info mt6358_regulators[] = {
+ 	MT6358_REG_FIXED("ldo_vaud28", VAUD28,
+ 			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
+ 	MT6358_LDO("ldo_vdram2", VDRAM2, vdram2_voltages, vdram2_idx,
+-		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0xf, 0),
++		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0xf),
+ 	MT6358_LDO("ldo_vsim1", VSIM1, vsim_voltages, vsim_idx,
+-		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vibr", VIBR, vibr_voltages, vibr_idx,
+-		   MT6358_LDO_VIBR_CON0, 0, MT6358_VIBR_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VIBR_CON0, 0, MT6358_VIBR_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vusb", VUSB, vusb_voltages, vusb_idx,
+-		   MT6358_LDO_VUSB_CON0_0, 0, MT6358_VUSB_ANA_CON0, 0x700, 8),
++		   MT6358_LDO_VUSB_CON0_0, 0, MT6358_VUSB_ANA_CON0, 0x700),
+ 	MT6358_LDO("ldo_vcamd", VCAMD, vcamd_voltages, vcamd_idx,
+-		   MT6358_LDO_VCAMD_CON0, 0, MT6358_VCAMD_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VCAMD_CON0, 0, MT6358_VCAMD_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vefuse", VEFUSE, vefuse_voltages, vefuse_idx,
+-		   MT6358_LDO_VEFUSE_CON0, 0, MT6358_VEFUSE_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VEFUSE_CON0, 0, MT6358_VEFUSE_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vmch", VMCH, vmch_vemc_voltages, vmch_vemc_idx,
+-		   MT6358_LDO_VMCH_CON0, 0, MT6358_VMCH_ANA_CON0, 0x700, 8),
++		   MT6358_LDO_VMCH_CON0, 0, MT6358_VMCH_ANA_CON0, 0x700),
+ 	MT6358_LDO("ldo_vcama1", VCAMA1, vcama_voltages, vcama_idx,
+-		   MT6358_LDO_VCAMA1_CON0, 0, MT6358_VCAMA1_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VCAMA1_CON0, 0, MT6358_VCAMA1_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vemc", VEMC, vmch_vemc_voltages, vmch_vemc_idx,
+-		   MT6358_LDO_VEMC_CON0, 0, MT6358_VEMC_ANA_CON0, 0x700, 8),
++		   MT6358_LDO_VEMC_CON0, 0, MT6358_VEMC_ANA_CON0, 0x700),
+ 	MT6358_LDO("ldo_vcn33_bt", VCN33_BT, vcn33_bt_wifi_voltages,
+ 		   vcn33_bt_wifi_idx, MT6358_LDO_VCN33_CON0_0,
+-		   0, MT6358_VCN33_ANA_CON0, 0x300, 8),
++		   0, MT6358_VCN33_ANA_CON0, 0x300),
+ 	MT6358_LDO("ldo_vcn33_wifi", VCN33_WIFI, vcn33_bt_wifi_voltages,
+ 		   vcn33_bt_wifi_idx, MT6358_LDO_VCN33_CON0_1,
+-		   0, MT6358_VCN33_ANA_CON0, 0x300, 8),
++		   0, MT6358_VCN33_ANA_CON0, 0x300),
+ 	MT6358_LDO("ldo_vcama2", VCAMA2, vcama_voltages, vcama_idx,
+-		   MT6358_LDO_VCAMA2_CON0, 0, MT6358_VCAMA2_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VCAMA2_CON0, 0, MT6358_VCAMA2_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vmc", VMC, vmc_voltages, vmc_idx,
+-		   MT6358_LDO_VMC_CON0, 0, MT6358_VMC_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VMC_CON0, 0, MT6358_VMC_ANA_CON0, 0xf00),
+ 	MT6358_LDO("ldo_vldo28", VLDO28, vldo28_voltages, vldo28_idx,
+ 		   MT6358_LDO_VLDO28_CON0_0, 0,
+-		   MT6358_VLDO28_ANA_CON0, 0x300, 8),
++		   MT6358_VLDO28_ANA_CON0, 0x300),
+ 	MT6358_LDO("ldo_vsim2", VSIM2, vsim_voltages, vsim_idx,
+-		   MT6358_LDO_VSIM2_CON0, 0, MT6358_VSIM2_ANA_CON0, 0xf00, 8),
++		   MT6358_LDO_VSIM2_CON0, 0, MT6358_VSIM2_ANA_CON0, 0xf00),
+ 	MT6358_LDO1("ldo_vsram_proc11", VSRAM_PROC11, 500000, 1293750, 6250,
+-		    buck_volt_range1, MT6358_LDO_VSRAM_PROC11_DBG0, 0x7f, 8,
++		    buck_volt_range1, MT6358_LDO_VSRAM_PROC11_DBG0, 0x7f00,
+ 		    MT6358_LDO_VSRAM_CON0, 0x7f),
+ 	MT6358_LDO1("ldo_vsram_others", VSRAM_OTHERS, 500000, 1293750, 6250,
+-		    buck_volt_range1, MT6358_LDO_VSRAM_OTHERS_DBG0, 0x7f, 8,
++		    buck_volt_range1, MT6358_LDO_VSRAM_OTHERS_DBG0, 0x7f00,
+ 		    MT6358_LDO_VSRAM_CON2, 0x7f),
+ 	MT6358_LDO1("ldo_vsram_gpu", VSRAM_GPU, 500000, 1293750, 6250,
+-		    buck_volt_range1, MT6358_LDO_VSRAM_GPU_DBG0, 0x7f, 8,
++		    buck_volt_range1, MT6358_LDO_VSRAM_GPU_DBG0, 0x7f00,
+ 		    MT6358_LDO_VSRAM_CON3, 0x7f),
+ 	MT6358_LDO1("ldo_vsram_proc12", VSRAM_PROC12, 500000, 1293750, 6250,
+-		    buck_volt_range1, MT6358_LDO_VSRAM_PROC12_DBG0, 0x7f, 8,
++		    buck_volt_range1, MT6358_LDO_VSRAM_PROC12_DBG0, 0x7f00,
+ 		    MT6358_LDO_VSRAM_CON1, 0x7f),
+ };
+ 
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
