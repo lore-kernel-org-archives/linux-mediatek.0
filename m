@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF14EC11F68
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 02:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54371C11F67
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 02:37:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9873361D12
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 02:36:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9873361D12
+	by mail.kernel.org (Postfix) with ESMTPS id 227A961D81
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 02:37:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 227A961D81
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=whQWuzm/uARmooa5ok/61VRn1nwmHrs7uJcQswMHS2g=; b=DrlF/HBGNYcQC0
-	uu/i3boZx82/TCouqnFo3ODdp9lT9ipx8rxHZaWO5FLE23FZ7DW1Roj/KE+qWTl6mOPbfFhdaDxi5
-	79GmaUzIa+N7fm0Pvjpw4RIM3P1ztIpeK6Vvskn2n45VV78cbJQNReSxJsmJHfDgSsdl76nl4ySBj
-	HlBoWtcYkoJDcFrvjowp5Mu81Yz56BT+xzQa+rtL7ObpF9yqNHLZK/m1vA3o+HFKzZK0yS9rzRq8A
-	f+79D2XAwcdoT3sscR5tBvV+VqvzN5Q7C1YDPXJYlMob+HRAH55zTHL5Mg6JcePHwkEyPrvD8kX2D
-	kgCbRhlSG6loY6TdP6Lg==;
+	List-Owner; bh=gS7vnud2lU+sCiBH8syvau75rAQSB4vNYwOkIlqwPdc=; b=kHbz2H+RvlbGeQ
+	Yjv+d2diLYnGfqd7L1fMd4RsGtw4Ev0GrtMC8LJUxe9AU7tgDO4dtE2q5vfyyyjJcSIA/Cv5MGwBm
+	f067LsrBwsKeCMy2fMb3iys8+L0AdruLQcA4Ct1UGy+J3egGcaNJoqYuHOYNvsA8wN5qgvsRhFKfn
+	SBaCU82SXGS+ykspPn1wdPzwmjjwoK7FtAIGFip+gKzHDfmgWZ/23r9pexMOEfRwIpis0g1ImhPj5
+	xRBddOq9ZL260eaw59N5v1qyEOFsCNSqpad1BWFy0AhLzsY78B9EnoRCgdr4OJ7HnKWGBxikQhgdq
+	WRD4dPFxZwbaycfzYxnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyQ5f-00CTE8-Rj; Wed, 30 Jun 2021 02:36:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lyQ5s-00CTIe-RU; Wed, 30 Jun 2021 02:36:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyQ5P-00CT8g-1H; Wed, 30 Jun 2021 02:36:27 +0000
-X-UUID: 70f364dfb1544cb294ea833a7753ce70-20210629
+ id 1lyQ5W-00CTBH-0Z; Wed, 30 Jun 2021 02:36:33 +0000
+X-UUID: 1bcdd1d79b854cdc83edc4462a2e00e3-20210629
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=QjjcB6EpU1R2HcfQ33KzY78IhUGE71aKK4/C9u+aGDk=; 
- b=T5y/meCMGHL4ReDmf/lgY8cwn0PrSECZTLcS8OEkNVz9ARAyEMOu0hMzLMf3HbueMuhLtpECQoW1y8EN1VGWXwaZedjYW5FCKhewmGs6KZZUekhGYGqVhQ5UXdlOolVbGEvI4ljknPxTBs+bWBxGzfWHlVEnxE37YSBbKDlrCBk=;
-X-UUID: 70f364dfb1544cb294ea833a7753ce70-20210629
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=oD4Qk953dB06q8T3K6g9ByLdJZRoPMZya7CbvtkaAe4=; 
+ b=M5NeqDuv6wB9RkdBz/0QI9Wc8xJwkPnsadppUjVJvGu5taQiXnm4Vss418y4oe8I/lfCB3g0J1KPjg8YxE1gWLlEX085bCGjowoXgnX4q3z/W1r4b8gJRc11SjfRYAtwNtFY+HCbqxcmSiRPBFJ4CJQHcinnT3VCjPk4vVuYV0k=;
+X-UUID: 1bcdd1d79b854cdc83edc4462a2e00e3-20210629
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 365638330; Tue, 29 Jun 2021 19:36:19 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1325644510; Tue, 29 Jun 2021 19:36:28 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 29 Jun 2021 19:36:17 -0700
+ 15.0.1497.2; Tue, 29 Jun 2021 19:36:26 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 10:36:16 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 10:36:25 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Jun 2021 10:36:14 +0800
+ Transport; Wed, 30 Jun 2021 10:36:23 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
@@ -68,17 +67,17 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Evan Green
  <iommu@lists.linux-foundation.org>, <yong.wu@mediatek.com>,
  <youlin.pei@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>,
  <anan.sun@mediatek.com>, <chao.hao@mediatek.com>
-Subject: [PATCH 07/24] iommu/mediatek: Add flag NON_STD_AXI
-Date: Wed, 30 Jun 2021 10:34:47 +0800
-Message-ID: <20210630023504.18177-8-yong.wu@mediatek.com>
+Subject: [PATCH 08/24] iommu/mediatek: Remove for_each_m4u in tlb_sync_all
+Date: Wed, 30 Jun 2021 10:34:48 +0800
+Message-ID: <20210630023504.18177-9-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210630023504.18177-1-yong.wu@mediatek.com>
 References: <20210630023504.18177-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_193623_123564_0225FD6B 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20210629_193630_117256_A3C85E73 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,84 +94,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add a new flag NON_STD_AXI, All the previous SoC support
-this flag. this is a preparing patch for adding infra iommu and apu
-iommu which don't support this flag.
+The tlb_sync_all only is called in
+a) flush_iotlb_all: it will called for each iommu HW.
+b) tlb_flush_range_sync: it already has for_each_m4u.
+c) in irq: it has already fail. no need for_each_m4u to flush
+
+thus, No need for_each_m4u in this tlb_sync_all.
+This patch remove it.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
+ drivers/iommu/mtk_iommu.c | 18 +++++++-----------
+ 1 file changed, 7 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index a026e2ee4007..7fe9ebd879fe 100644
+index 7fe9ebd879fe..ed3455b5cef0 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -124,6 +124,7 @@
- #define IOVA_34_EN			BIT(8)
- #define SHARE_PGTABLE			BIT(9) /* 2 HW share pgtable */
- #define DCM_DISABLE			BIT(10)
-+#define NOT_STD_AXI_MODE		BIT(11)
+@@ -208,19 +208,15 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
  
- #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
- 		((((pdata)->flags) & (_x)) == (_x))
-@@ -758,7 +759,8 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 		regval = 0;
- 	} else {
- 		regval = readl_relaxed(data->base + REG_MMU_MISC_CTRL);
--		regval &= ~F_MMU_STANDARD_AXI_MODE_MASK;
-+		if (MTK_IOMMU_HAS_FLAG(data->plat_data, NOT_STD_AXI_MODE))
-+			regval &= ~F_MMU_STANDARD_AXI_MODE_MASK;
- 		if (MTK_IOMMU_HAS_FLAG(data->plat_data, OUT_ORDER_WR_EN))
- 			regval &= ~F_MMU_IN_ORDER_WR_EN_MASK;
- 	}
-@@ -1021,7 +1023,8 @@ static const struct dev_pm_ops mtk_iommu_pm_ops = {
+ static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+ {
+-	struct list_head *head = data->hw_list;
+-
+-	for_each_m4u(data, head) {
+-		if (pm_runtime_get_if_in_use(data->dev) <= 0)
+-			continue;
++	if (pm_runtime_get_if_in_use(data->dev) <= 0)
++		return;
  
- static const struct mtk_iommu_plat_data mt2712_data = {
- 	.m4u_plat     = M4U_MT2712,
--	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG | SHARE_PGTABLE,
-+	.flags        = HAS_4GB_MODE | HAS_BCLK | HAS_VLD_PA_RNG | SHARE_PGTABLE |
-+			NOT_STD_AXI_MODE,
- 	.hw_list      = &m4ulist,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
- 	.iova_region  = single_domain,
-@@ -1031,7 +1034,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+-		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+-			       data->base + data->plat_data->inv_sel_reg);
+-		writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
+-		wmb(); /* Make sure the tlb flush all done */
++	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
++		       data->base + data->plat_data->inv_sel_reg);
++	writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
++	wmb(); /* Make sure the tlb flush all done */
  
- static const struct mtk_iommu_plat_data mt6779_data = {
- 	.m4u_plat      = M4U_MT6779,
--	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN,
-+	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
-+			 NOT_STD_AXI_MODE,
- 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
- 	.iova_region   = single_domain,
- 	.iova_region_nr = ARRAY_SIZE(single_domain),
-@@ -1040,7 +1044,7 @@ static const struct mtk_iommu_plat_data mt6779_data = {
+-		pm_runtime_put(data->dev);
+-	}
++	pm_runtime_put(data->dev);
+ }
  
- static const struct mtk_iommu_plat_data mt8167_data = {
- 	.m4u_plat     = M4U_MT8167,
--	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR,
-+	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
- 	.iova_region  = single_domain,
- 	.iova_region_nr = ARRAY_SIZE(single_domain),
-@@ -1050,7 +1054,7 @@ static const struct mtk_iommu_plat_data mt8167_data = {
- static const struct mtk_iommu_plat_data mt8173_data = {
- 	.m4u_plat     = M4U_MT8173,
- 	.flags	      = HAS_4GB_MODE | HAS_BCLK | RESET_AXI |
--			HAS_LEGACY_IVRP_PADDR,
-+			HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE,
- 	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
- 	.iova_region  = single_domain,
- 	.iova_region_nr = ARRAY_SIZE(single_domain),
-@@ -1069,7 +1073,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
- static const struct mtk_iommu_plat_data mt8192_data = {
- 	.m4u_plat       = M4U_MT8192,
- 	.flags          = HAS_BCLK | HAS_SUB_COMM | OUT_ORDER_WR_EN |
--			  WR_THROT_EN | IOVA_34_EN,
-+			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE,
- 	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
- 	.iova_region    = mt8192_multi_dom,
- 	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
+ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
 -- 
 2.18.0
 _______________________________________________
