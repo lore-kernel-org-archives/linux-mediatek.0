@@ -2,102 +2,76 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 458ADC11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 11:43:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9716AC11F6A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:30:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F32F061920
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 11:43:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F32F061920
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5B800613DB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:30:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5B800613DB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=nmRLxEjuo5D/rjvgIjRdyxxglajlX1rU3S6yt5W9M/w=; b=mUrSXSxNVdEupENghFYG0h8cx6
-	upXoZ9OUFjASrA5VvdsJCJ84HEV+5+WAzrU18xTbbQHsi+lj6tVrJcDltM8qkoiNt/OjuiHYw7amu
-	8eyvBaDNeV2Q26lzWLePyljOZt9FgJOwuWO7tWPrxPE9BdXeOYg1eaS2F/F3AwUPV9iyX2wi56viX
-	dM4OcEYy9ACOvzaQdc+gNy050qOoIbP6Mm7rotqMRzE0jO9pBs63FITvHNXdWyFFuyNrTMVO+5j49
-	1AkfUxkR+vr5s0r17DipYEu+9yESXczg1aLcmABqHBHUZqMkl3t0KGrj6+oJrQBFGVvZZsxXGle0/
-	QKCqs8OA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZXvDmB+/zlpfazkaCdKWJWXuDE36pA5/fPCWSSUBEZc=; b=mtdg/hcJKEokKl
+	QfMajLH4BjrausCadC2fEElhQ+xh6qRQoPhJEnw9Hj6nJORHE4SHJG0/rt0dwKG0dd5qkcNCBVAIf
+	ozaP+wtstkGLQbslrqIrQaWLVyMg2b97Ql5D5Jw18Wr2UsKZlNWK3uW33mn7afsMTgqktWYEsAygc
+	cPVZYDMYt77Rf0kgdSoAZdlqYTjcEk+N3vcy65pNRMZfARYHiSvTh5c72R0fulKarD62SCBxF74Z4
+	4PynCQeoCutXknqDQipKCeXPCDy9pBglTZ28P9txodbvAhx+EHdb6bmCNs+uRiY0q5clSdIBN6xsk
+	1SD2buIztl9sLBsvcAAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyYcn-00DkBz-8V; Wed, 30 Jun 2021 11:43:25 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1lyaHm-00E0ow-20; Wed, 30 Jun 2021 13:29:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyYck-00DkB1-3u; Wed, 30 Jun 2021 11:43:23 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id
- u8-20020a7bcb080000b02901e44e9caa2aso1335584wmj.4; 
- Wed, 30 Jun 2021 04:43:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=iODbWiouD0QpY2BGF1bz2zvH9cqIAWCPddrbkXWdpQM=;
- b=KJMKkEGNHAUHuk5D6X3LEbETeBJhBvD8t6AyN5xPMN8srDc19A0OEVyK5h+xIWRhjn
- sf96TLzwxbXF2IY2vE2ECZ+vYVA9vfrlK9+UMV2mRXlEkQ2CwUNlTgX+4pV+Dk0lPlSl
- gXcWGkkcQiAPfKb/9RbJN8cRbxFZQttUuDM9F0rfT5fOv9svEOYc5/t8EjqEI7wBQslv
- 4BIyQ/qDfMdZU+sDbMcXWdqpPhD03cuH0md405YHkXj0WVR71Dp3I9b8m16zYqVzMWvr
- GqXAbjG7DXFE5RGXs6aLsphoD4lVqSdPD2smTytZ0yNJvrmlzFkvxdURMbmfFYM7ZEab
- 6mEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=iODbWiouD0QpY2BGF1bz2zvH9cqIAWCPddrbkXWdpQM=;
- b=DkhQUqwko6C4zyonmbqLVPCyd7VX2Pu1XEGAY6rAoMuUmOfi7nYrHHWCzrzMpaEpyi
- hYXgDUV8Xm+v4y5vng2pybsOrYIWvy7fGmIc6C8jgG6Vfiri5Z2NX4ndcNQ1y+EvW22z
- BhZqEtwStJkVIrAdBnHS/RHO0LwdQrC/7gyACkpgWz3Exv5U5bnL5mQmZ/H/VL+95H/u
- 6PzmN53or8EyM2v/jPCgZvJmZN33i9S7tpZLYbkYsYg0cXi13uFqdgXfRx9oTa7qXB2P
- rGuEJRRGQg/ZXv/6WSZn+7fE4G5WK+obYiMIFCHxvZk6MjtM8By/pJQbEK2unPPH/+/F
- ocpg==
-X-Gm-Message-State: AOAM532CLAXKeZXI3KpA0vYAAImtJ/h2vUVvDRpjZYSCBmCejBP0rYDG
- K9zdeY+dIf/At6fqSmPpDwrewKv4w3YgvQ==
-X-Google-Smtp-Source: ABdhPJyXaz/kDNmiMTIsGgDK7ph+Gfm+KdTCvu18y18r0ZCf+HsuoVtRyW3YnpWwR3RqHGNmyYOezw==
-X-Received: by 2002:a05:600c:3b8b:: with SMTP id
- n11mr3977228wms.159.1625053400497; 
- Wed, 30 Jun 2021 04:43:20 -0700 (PDT)
-Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
- [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id k5sm21380301wmk.11.2021.06.30.04.43.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Jun 2021 04:43:19 -0700 (PDT)
-Subject: Re: [PATCH 03/22] clk: mediatek: Fix corner case of tuner_en_reg
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
- <20210616224743.5109-4-chun-jie.chen@mediatek.com>
- <CAGXv+5F2zTcqnjH2ud38vUD149KJtgxhPQME2Mk6-vGtQv+2YQ@mail.gmail.com>
- <ff6179e8-06f9-fbba-c704-a74381c2149a@gmail.com>
- <CAGXv+5FXuMnhsnytLYKKA9YE97bps7KnkDNADvv8f_wdTqnrfg@mail.gmail.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <be824462-4c2f-3bde-0a3d-c5470a5b0fbb@gmail.com>
-Date: Wed, 30 Jun 2021 13:43:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ id 1lyaHh-00E0no-A9; Wed, 30 Jun 2021 13:29:48 +0000
+X-UUID: 355828deaddf404d9d41f89e5247913c-20210630
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=wqAq2u4VOhj8J7Syr9l3qTADEkUhpEDneonaovFU5y4=; 
+ b=O1AhJMU3qS81m9e+BddQShxP6O6HoufbFKKxpTU/hnU14WsbT2+N+luCtpPer82/sKoaGkst0+W5abN8l3njNADXwWtLOr+2UiT1A6ZoICCtDe48KsKwiTnEu82WZTnz4p4887wXjcM95MEMPgBh8jNGDf8g4fA+TBNU4FAN/Uw=;
+X-UUID: 355828deaddf404d9d41f89e5247913c-20210630
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2030375139; Wed, 30 Jun 2021 06:29:40 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 06:29:39 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 21:29:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 30 Jun 2021 21:29:37 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [v11 00/19] Mediatek MT8192 clock support
+Date: Wed, 30 Jun 2021 21:27:45 +0800
+Message-ID: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <CAGXv+5FXuMnhsnytLYKKA9YE97bps7KnkDNADvv8f_wdTqnrfg@mail.gmail.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_044322_222484_1C8B21A7 
-X-CRM114-Status: GOOD (  20.47  )
+X-CRM114-CacheID: sfid-20210630_062946_814031_E882B670 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,55 +88,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+this patch series is based on 5.13-rc3.
 
+change since v10:
+- refine binding document in patch 1 (drop the 'oneOf')
 
-On 30/06/2021 13:09, Chen-Yu Tsai wrote:
-> On Wed, Jun 30, 2021 at 6:53 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
->>
->>
->>
->> On 30/06/2021 09:31, Chen-Yu Tsai wrote:
->>> On Thu, Jun 17, 2021 at 7:01 AM Chun-Jie Chen
->>> <chun-jie.chen@mediatek.com> wrote:
->>>>
->>>> On MT8195, tuner_en_reg is moved to register offest 0x0.
->>>> If we only judge by tuner_en_reg, it may lead to wrong address.
->>>> Add tuner_en_bit to the check condition. And it has been confirmed,
->>>> on all the MediaTek SoCs, bit0 of offset 0x0 is always occupied by
->>>> clock square control.
->>>>
->>>> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>>
->>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->>>
->>> Though you might want to consider converting these types of checks into feature
->>> flags.
->>>
->>
->> Yes I think adding a feature flag is the way to go. Luckily there are only a few
->> SoCs that will need updates at the same time.
-> 
-> I also see that the different clock modules are tied together using only clock
-> names written in the drivers, instead of clock references in the device tree.
-> 
+change since v9:
+- combine similiar dt-binding file for system and functional clock
+- change api of getting regmap if it's not a syscon node (patch 3)
 
-Not sure I understand what you mean. Do you refer to something like [1]? That's
-because the clock is probed by the DRM driver, as they share the same compatible
-and IP block.
+change since v8:
+- fix mm dt-binding file conflict.
 
-Regards,
-Matthias
+reason for sending v8:
+- due to this patch series including dt-binding file, so add
+device tree reviewer to mail list, no change between [1] and v8.
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=454523
 
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/mediatek/clk-mt8173-mm.c?h=v5.13#n139
+reason for resending v7:
+- add review history from series below
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405295
 
-> Unfortunately reworking this would likely require a lot more work. I previously
-> did a bit of internal reworking for the sunxi drivers. While not the same, I
-> think the plumbing required is comparable.
-> 
-> ChenYu
-> 
+change since v6:
+- update from series below
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405295
+- fix DT bindings fail
+- fix checkpatch warning
+- update mux ops without gate control
 
+change since v5:
+- remove unused clocks by rolling Tinghan's patches[1][2] into series
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=398781
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=405143
+- remove dts related patches from series
+
+change since v4:
+- merge some subsystem into same driver
+- add a generic probe function to reduce duplicated code
+
+changes since v3:
+- add critical clocks
+- split large patches into small ones
+
+changes since v2:
+- update and split dt-binding documents by functionalities
+- add error checking in probe() function
+- fix incorrect clock relation and add critical clocks
+- update license identifier and minor fix of coding style
+
+changes since v1:
+- fix asymmetrical control of PLL
+- have en_mask used as divider enable mask on all MediaTek SoC
+
+Chun-Jie Chen (19):
+  dt-bindings: ARM: Mediatek: Add new document bindings of MT8192 clock
+  clk: mediatek: Add dt-bindings of MT8192 clocks
+  clk: mediatek: Get regmap without syscon compatible check
+  clk: mediatek: Fix asymmetrical PLL enable and disable control
+  clk: mediatek: Add configurable enable control to mtk_pll_data
+  clk: mediatek: Add mtk_clk_simple_probe() to simplify clock providers
+  clk: mediatek: Add MT8192 basic clocks support
+  clk: mediatek: Add MT8192 audio clock support
+  clk: mediatek: Add MT8192 camsys clock support
+  clk: mediatek: Add MT8192 imgsys clock support
+  clk: mediatek: Add MT8192 imp i2c wrapper clock support
+  clk: mediatek: Add MT8192 ipesys clock support
+  clk: mediatek: Add MT8192 mdpsys clock support
+  clk: mediatek: Add MT8192 mfgcfg clock support
+  clk: mediatek: Add MT8192 mmsys clock support
+  clk: mediatek: Add MT8192 msdc clock support
+  clk: mediatek: Add MT8192 scp adsp clock support
+  clk: mediatek: Add MT8192 vdecsys clock support
+  clk: mediatek: Add MT8192 vencsys clock support
+
+ .../arm/mediatek/mediatek,mt8192-clock.yaml   |  214 +++
+ .../mediatek/mediatek,mt8192-sys-clock.yaml   |   64 +
+ drivers/clk/mediatek/Kconfig                  |   80 +
+ drivers/clk/mediatek/Makefile                 |   13 +
+ drivers/clk/mediatek/clk-cpumux.c             |    2 +-
+ drivers/clk/mediatek/clk-mt8192-aud.c         |  118 ++
+ drivers/clk/mediatek/clk-mt8192-cam.c         |  107 ++
+ drivers/clk/mediatek/clk-mt8192-img.c         |   70 +
+ .../clk/mediatek/clk-mt8192-imp_iic_wrap.c    |  119 ++
+ drivers/clk/mediatek/clk-mt8192-ipe.c         |   57 +
+ drivers/clk/mediatek/clk-mt8192-mdp.c         |   82 +
+ drivers/clk/mediatek/clk-mt8192-mfg.c         |   50 +
+ drivers/clk/mediatek/clk-mt8192-mm.c          |  108 ++
+ drivers/clk/mediatek/clk-mt8192-msdc.c        |   85 ++
+ drivers/clk/mediatek/clk-mt8192-scp_adsp.c    |   50 +
+ drivers/clk/mediatek/clk-mt8192-vdec.c        |   94 ++
+ drivers/clk/mediatek/clk-mt8192-venc.c        |   53 +
+ drivers/clk/mediatek/clk-mt8192.c             | 1326 +++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.c                |   25 +-
+ drivers/clk/mediatek/clk-mtk.h                |   28 +-
+ drivers/clk/mediatek/clk-mux.c                |   11 +-
+ drivers/clk/mediatek/clk-mux.h                |   18 +-
+ drivers/clk/mediatek/clk-pll.c                |   31 +-
+ drivers/clk/mediatek/reset.c                  |    2 +-
+ include/dt-bindings/clock/mt8192-clk.h        |  585 ++++++++
+ 25 files changed, 3368 insertions(+), 24 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-aud.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-cam.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-img.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-imp_iic_wrap.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-ipe.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-mdp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-mfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-mm.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-msdc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-scp_adsp.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-vdec.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192-venc.c
+ create mode 100644 drivers/clk/mediatek/clk-mt8192.c
+ create mode 100644 include/dt-bindings/clock/mt8192-clk.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
