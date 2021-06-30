@@ -2,82 +2,81 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BAC9C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A099FC11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:35:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 563BA6144B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:20:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 563BA6144B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5F49A61476
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:35:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F49A61476
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lQqTYpDm1GWh/60ovina/7Z6jnaYuJL8wVoCr3pg0js=; b=1ilVYotHHDmOtD
-	UcCpoKLChx3sj2aoxLulJzpCRO0HVEYa5oUpwl4jjaHkR2h3u5+59Z0lgFPJlcKq+c8ltmxGtFtXS
-	0Rqv7mnkOG5eQNMBqJ0tnuN0oQR7z+HAxB3A7LUGHILPqmwUt692G64Fmi0S0nYmH4i4YRU0fH7t8
-	PTyYCOeDMOCX2UtKcHHsJ0YyYQTsHrr72RKEexEdaWkDu8/V0HvDCZHh1KpfQOMB58CJqVq1bNP+y
-	+d041kNwZrNtdClKy5lcpI2cI6cI06bNF/Z5f4+cC3c2M3aKOeFITwzj4OVzplvvjNDSrkVp5q255
-	ziOv1jmfRlQ/MotUCcVw==;
+	List-Owner; bh=ksnB50kinqHR1q1wyz/RHEESNWvBOB0OMGnvWnCq05s=; b=C7AU1gYcoRpj1J
+	WTuWpaK40dNwwVO0rBqPUKhZOAomElfYwyeDOz7nPNN1UcQUTcZE5GFZWUPiDCr2VEMP39lXt92K3
+	AwrkGkpwJFpqPg0dHMICmHJSjZ6zYjQJw4L9MLfS3T/uVciIPdqWAhIFNORdnKa6H+Ss/3Y+1w+yD
+	80/75Ef3YXbMxeOE47tysVpm8YwACF3N8KrtIIy9dDly9K5iXSVtbfj62Ts05rnWwvTAsACKyS/Lw
+	3sglHG5YJYJJosYBLwhEWlloSbJp//szrAmI4whMO5X0VEyPj0bZ8TQ0TwS3kiWIIUtS+gzvmsh7G
+	yR03XQD80nmCbtqDqlQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyb4o-00EKmE-Eo; Wed, 30 Jun 2021 14:20:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lybIx-00EPDL-LK; Wed, 30 Jun 2021 14:35:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyal3-00EEiL-Jy; Wed, 30 Jun 2021 14:00:08 +0000
-X-UUID: f4d15d8d3205492aad25730a73497fc9-20210630
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=iAdvjTkEqwlfrHns7lkpk95pCB2ZsD06CI4y7nRY1/U=; 
- b=S2zxrmS5iyZRE6A7GCiDD7q96ho+a7jouKDJc7j02q6wTcqzLlKxIPIBvRqzu2hpnUkJdA0gZPDqBEoQal1Pz7jdcLH7EaVUjiP+ep5UAiVzufvxRpsLZqDSJBnlyCKKE1we0DtYkZBOQ4Jy+nhMNbGhv5FYt3YpmMuj4MQ5W3Q=;
-X-UUID: f4d15d8d3205492aad25730a73497fc9-20210630
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yee.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 460160406; Wed, 30 Jun 2021 07:00:01 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 06:49:59 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 21:49:45 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 30 Jun 2021 21:49:45 +0800
-From: <yee.lee@mediatek.com>
-To: <andreyknvl@gmail.com>
-CC: <wsd_upstream@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Andrey
- Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
- Dmitry Vyukov <dvyukov@google.com>, Andrew Morton
- <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
- list:KASAN" <kasan-dev@googlegroups.com>, "open list:MEMORY MANAGEMENT"
- <linux-mm@kvack.org>, open list <linux-kernel@vger.kernel.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 1/1] kasan: Add memzero init for unaligned size under SLUB
- debug
-Date: Wed, 30 Jun 2021 21:49:40 +0800
-Message-ID: <20210630134943.20781-2-yee.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210630134943.20781-1-yee.lee@mediatek.com>
-References: <20210630134943.20781-1-yee.lee@mediatek.com>
+ id 1lybEF-00ENKv-CA; Wed, 30 Jun 2021 14:30:17 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E659C61477;
+ Wed, 30 Jun 2021 14:30:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625063412;
+ bh=Dpokg5mx9PCeNh5Maw6E2HZ+R2pO6FZ5ZVOGUwMTUnI=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Rs1HTxCB9KBtPevU+FkuFkvkqPvoEFqidK0qoppQR+j623fy+S0ChY01uwiYH+oCl
+ RXHht3wjfdJcWLx3pZYcJ5VOB+UCc3Owu6fil/GUKukwOKOdfkPKPd/2YtdsUoHtPq
+ pjJX8rOXEiauam341QGNDuv2MqFOD2qcEbepDdohplEZayheBDeeP74ER2nj31ClL3
+ 8BmEkhL9sDRrW8IxYYKS4OY7CeNQHr/dD1oFem9eZ/Anqums7ty5xA9o9fXMmxewAA
+ KeFwjR1DXlTdJ1nJWtFplaJgRlGLAEnB76T+XIzhvYhMv2mw6c3ExhmGHy5WkzAywK
+ r90LTI/f0Wo+w==
+Received: by mail-ej1-f54.google.com with SMTP id hr1so1153137ejc.1;
+ Wed, 30 Jun 2021 07:30:12 -0700 (PDT)
+X-Gm-Message-State: AOAM53162AcnU9aNTP8Dq9IGPQAToeTgg0lZYTv7/k4P/VDRXthw/0eQ
+ XSWhVOQN53zW7aaQUWM5uDyfCs5diL/iGnzwCQ==
+X-Google-Smtp-Source: ABdhPJyudkUk6/cfP1T21tKXKcYPMVLiZF2tJOPdLVkJd/moWew1wCGN2luO8WUD5eusbGsFuEw4zAqW4fHhB33nLYo=
+X-Received: by 2002:a17:907:980f:: with SMTP id
+ ji15mr180143ejc.194.1625063411467; 
+ Wed, 30 Jun 2021 07:30:11 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
+ <20210630132804.20436-2-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210630132804.20436-2-chun-jie.chen@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Wed, 30 Jun 2021 22:30:01 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8SgZ5SN9Q0nfL_jQVTbB7ZDqgoGFRkKe8+QJwUi55Hew@mail.gmail.com>
+Message-ID: <CAAOTY_8SgZ5SN9Q0nfL_jQVTbB7ZDqgoGFRkKe8+QJwUi55Hew@mail.gmail.com>
+Subject: Re: [v11 01/19] dt-bindings: ARM: Mediatek: Add new document bindings
+ of MT8192 clock
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-clk@vger.kernel.org, 
+ DTML <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_070005_740207_8B4252A9 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20210630_073015_500202_E3052DA0 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +88,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yee Lee <yee.lee@mediatek.com>
-
-Issue: when SLUB debug is on, hwtag kasan_unpoison() would overwrite
-the redzone of object with unaligned size.
-
-An additional memzero_explicit() path is added to replacing init by
-hwtag instruction for those unaligned size at SLUB debug mode.
-
-The penalty is acceptable since they are only enabled in debug mode,
-not production builds. A block of comment is added for explanation.
-
-Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-Suggested-by: Marco Elver <elver@google.com>
-Suggested-by: Andrey Konovalov <andreyknvl@gmail.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
-Cc: Alexander Potapenko <glider@google.com>
-Cc: Dmitry Vyukov <dvyukov@google.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>
----
- mm/kasan/kasan.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-index 8f450bc28045..6f698f13dbe6 100644
---- a/mm/kasan/kasan.h
-+++ b/mm/kasan/kasan.h
-@@ -387,6 +387,16 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
- 
- 	if (WARN_ON((unsigned long)addr & KASAN_GRANULE_MASK))
- 		return;
-+	/*
-+	 * Explicitly initialize the memory with the precise object size
-+	 * to avoid overwriting the SLAB redzone. This disables initialization
-+	 * in the arch code and may thus lead to performance penalty.
-+	 * The penalty is accepted since SLAB redzones aren't enabled in production builds.
-+	 */
-+	if (IS_ENABLED(CONFIG_SLUB_DEBUG) && init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
-+		init = false;
-+		memzero_explicit((void *)addr, size);
-+	}
- 	size = round_up(size, KASAN_GRANULE_SIZE);
- 
- 	hw_set_mem_tag_range((void *)addr, size, tag, init);
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIENodW4tSmllOgoKQ2h1bi1KaWUgQ2hlbiA8Y2h1bi1qaWUuY2hlbkBtZWRpYXRlay5jb20+
+IOaWvCAyMDIx5bm0NuaciDMw5pelIOmAseS4iSDkuIvljYg5OjMw5a+r6YGT77yaCj4KPiBUaGlz
+IHBhdGNoIGFkZHMgdGhlIG5ldyBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIHN5c3RlbSBjbG9j
+awo+IGFuZCBmdW5jdGlvbmFsIGNsb2NrIG9uIE1lZGlhdGVrIE1UODE5Mi4KPgo+IFNpZ25lZC1v
+ZmYtYnk6IENodW4tSmllIENoZW4gPGNodW4tamllLmNoZW5AbWVkaWF0ZWsuY29tPgo+IFJldmll
+d2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQoKW3NuaXBdCgo+ICsK
+PiArICAtIHwKPiArICAgIG1tc3lzOiBjbG9jay1jb250cm9sbGVyQDE0MDAwMDAwIHsKCm1tc3lz
+IGlzIGEgc3lzdGVtIGNvbnRyb2xsZXIgcmF0aGVyIHRoYW4gY2xvY2sgY29udHJvbGxlciwgaXNu
+J3QgaXQ/CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPiArICAgICAgICBjb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE5Mi1tbXN5cyI7Cj4gKyAgICAgICAgcmVnID0gPDB4MTQwMDAwMDAgMHgxMDAw
+PjsKPiArICAgICAgICAjY2xvY2stY2VsbHMgPSA8MT47Cj4gKyAgICB9Owo+ICsKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1h
+aWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
