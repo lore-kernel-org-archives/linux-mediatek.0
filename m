@@ -2,96 +2,84 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DD66FC11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 22:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A85EC11F66
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 22:49:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81277613C3
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 22:04:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81277613C3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cmpxchg.org
+	by mail.kernel.org (Postfix) with ESMTPS id 2019761443
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 22:49:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2019761443
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yPd/ybcQLtV8dFuRxLfRTER3YYuAP4ipgPajyBv1PTA=; b=zxz6DwdA/8zwma
-	LDtwIkAA84T933D2zRHixVcmb7U29weZ/Y7SWMK0NylWLdMOnTD8HYFXHMrF/4XHX4jou99uvWZdb
-	yrTPxTxvsFKIf3qxTeAku63iyydkJrg5pFrR+DL6m2XvSZV+EqT4ywrZXM4wz/y5VHBv/gTXN+mPa
-	LGlEt7eUgVCUzZzACmM/mjEGqTNnA8GoZJmRhNiRQxxw8WrUI/GmXzr4JrSa0pUIHzlRrdh0IFQnb
-	EhHluXNmwdB/FNo/SY00ZO49RsMuII+nXFImAnOaNVEdcZXUPkCJJ9YPVCwP+ri+7qBm8Ry/seHnD
-	16IYkclLs11uOJ9zZ/CA==;
+	List-Owner; bh=NLSRt89RVnaCCzaTT2qP7K736n9OghoQ+8Gxyf1MXvo=; b=FzNjD3GdlpbUVk
+	mFntIKy/S0QYYxCuoBoEFSnjb+J4YfJT2M+7ChvDycEEqQFlgOf23bp9NTWmz+a0udtlXRcTIfcMM
+	jZjYAEJEA56dOua9JIsd2ZuckmEV1Zjdu6JbAqOxW5yEaAsVrcHPawdXQ4Wed/BjNEZ0YKELs7Ij+
+	WmbgPgP9jAQcdWhlvP/f20ztO89Jh3aWeY3HN1fAxsJtjWSAwZGb7yaIdKoJoBwEpyrNFQT+YGTVe
+	HXyCPtD/J9VW7Tj7wxYzAd83fHNzotP7GYAIbuP5yYNn20UfDMoswuda2yRDKbnEFogmCGIbW26yj
+	cJIn8dEKhxJ56jgsbUIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyiJY-00FLdu-RJ; Wed, 30 Jun 2021 22:04:12 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1lyj12-00FRZD-Jo; Wed, 30 Jun 2021 22:49:08 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyiJV-00FLcj-VW
- for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 22:04:11 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id kt19so2779474pjb.2
- for <linux-mediatek@lists.infradead.org>; Wed, 30 Jun 2021 15:04:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cmpxchg-org.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=1xj3mjgl+Arki73EKAV3PgrCtaGzeKnSIXIchlBxI7Q=;
- b=ZFbyjeWHwvRHjkoWH0VLZRj64VuV8dW50SYuFmOa8Qf0sCuKNptjXInz4yTTYxYvY6
- 0h+molYKLDQv+Y5fbYAImma6LRY5JjOW2+wn5LdYM4hKBGiW4Bxluh8gELH0CaPrkliV
- 0H+1OG7nuAPOUV56lP4jPUrHsmFQoYqdnoA2a8t8ZEPChGwzz0UoWrbDgc+SQ3diZCL/
- 6UdItCFGiKSXjoiO7xzMpQcYlE1uYQfVDOz8r3QAieMCveeGdoTm/6j60uXFWo20HvL8
- qkmBuKjFzyJacM7aOTntm3tfT7sdjJqvg2JowrAq3MkgURnMneU6rQrT44Cjrzn1xrn9
- SZGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=1xj3mjgl+Arki73EKAV3PgrCtaGzeKnSIXIchlBxI7Q=;
- b=qw64FMNacYRTvXZXJ31WnAMBlUreGcYhUaWfWqIuY3EeRNQk2/FoNcN6T7q+zcD9nT
- +YT9iWPYWOGA2HBN69BJs4LfEfPayj4fF6PydMk3ys5TzBPcAv+sxw0X6P4aYXof5bQK
- yxNYf4X1/Zy/40sStTgaYYLhPPCptFMpcfllrG4cu+gdIRA81LryvZxP+QfBPhYwVQni
- SqhqRLgPs85GK0Q/0j78H+PC86N2hyoBgOqxzd0B5AKBStuueF01iT8RRkP1G4zYOxng
- Bfq8QjXpxIcESu6NWFjUVeGBagpTXLl1r1A1Vjgih2USxfcOEd1JyEOon6RP7dNJW0+u
- Ju4g==
-X-Gm-Message-State: AOAM5320b2aQKsSuiJMdcvOprV6t0Uw39IDxB4LU6WgAvk+gEMS6jjNf
- pxcT+s9ynnp9RPnFKlDnAdxFXw==
-X-Google-Smtp-Source: ABdhPJxz1ZMyumEp4ut6puBSe5M6KJD1Ou9m6zO5s120HNE35/ac+ogH5z1hWCJkO91lDKpKS2b7BQ==
-X-Received: by 2002:a17:90a:db4e:: with SMTP id
- u14mr6487559pjx.120.1625090648854; 
- Wed, 30 Jun 2021 15:04:08 -0700 (PDT)
-Received: from localhost ([2620:10d:c090:400::5:14ba])
- by smtp.gmail.com with ESMTPSA id x4sm13788221pgr.40.2021.06.30.15.04.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Jun 2021 15:04:08 -0700 (PDT)
-Date: Wed, 30 Jun 2021 18:04:06 -0400
-From: Johannes Weiner <hannes@cmpxchg.org>
-To: Suren Baghdasaryan <surenb@google.com>
-Cc: peterz@infradead.org, mingo@redhat.com, juri.lelli@redhat.com,
- vincent.guittot@linaro.org, dietmar.eggemann@arm.com,
- rostedt@goodmis.org, bsegall@google.com, mgorman@suse.de,
- bristot@redhat.com, matthias.bgg@gmail.com, minchan@google.com,
- timmurray@google.com, yt.chang@mediatek.com, wenju.xu@mediatek.com,
- jonathan.jmchen@mediatek.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-team@android.com,
- SH Chen <show-hong.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/1] psi: stop relying on timer_pending for poll_work
- rescheduling
-Message-ID: <YNzqVh9fnpYVeP6j@cmpxchg.org>
-References: <20210630205151.137001-1-surenb@google.com>
+ id 1lyj0p-00FRXZ-I2; Wed, 30 Jun 2021 22:48:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 04F356144D;
+ Wed, 30 Jun 2021 22:48:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625093335;
+ bh=K5tqVnA5H8pJjO/PErp+ucNJUcozi2NUBIMqh7jU9cg=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=Ff0mncC0JZQqsxNHNmEAQ391wV4s4XXHPtCqgygDCXq6MtkEmYk5aqfAGBX/WwxMh
+ wyRe44IuixO2+cwRv7idWkhfbXcdONQOV9QASQfYKUroKnwoKqGVWzcKq9/9DdKQji
+ /mv5L95v85w+DItOsSdI/oqWj4937RuBEf+UORRPp6mEEAPjc+q5xUVf1meRR3gpFB
+ QlSUxCFj9pxRZ1sjPishkDebNZmFNJ5h3de7WMa+WisBiGQK+m31yTLGilcl9xw/RZ
+ 6YMerLOmKTJjP53koTfuPkjVW4eIEVrAlTa/EgV/ERV+r/HZ2axbeAAZRlRKupLRvT
+ 4K+6eioQL+qqA==
+Received: by mail-ej1-f44.google.com with SMTP id c17so6927149ejk.13;
+ Wed, 30 Jun 2021 15:48:54 -0700 (PDT)
+X-Gm-Message-State: AOAM5331IAC+sHyPmkaTuUfLNBPhfSoUJdMHG1wVT7IJqal0KK7npJYd
+ j9/PbIhxr5PuNLQF8WFg40NFNHRNBmejQyn0yA==
+X-Google-Smtp-Source: ABdhPJzv+vxWlKKUY48KvGgu+sCcmFtxKd8ufDpE3mMFjf3babtLW/Uip0aRn9nBtqlbe5jpH6U/4LTeK9Al6Qe1vJo=
+X-Received: by 2002:a17:906:680f:: with SMTP id
+ k15mr36868137ejr.75.1625093333492; 
+ Wed, 30 Jun 2021 15:48:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210630205151.137001-1-surenb@google.com>
+References: <20210630144646.868702-1-enric.balletbo@collabora.com>
+ <20210630164623.3.I7bd7d9a8da5e2894711b700a1127e6902a2b2f1d@changeid>
+In-Reply-To: <20210630164623.3.I7bd7d9a8da5e2894711b700a1127e6902a2b2f1d@changeid>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 1 Jul 2021 06:48:42 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-VAvKCkBj1q4euWFcmbnNUJfXpG9rh9vua80yrok-y9w@mail.gmail.com>
+Message-ID: <CAAOTY_-VAvKCkBj1q4euWFcmbnNUJfXpG9rh9vua80yrok-y9w@mail.gmail.com>
+Subject: Re: [PATCH 3/6] arm64: dts: mt8173: Add the mmsys reset bit to reset
+ the dsi0
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: linux-kernel <linux-kernel@vger.kernel.org>,
+ Jitao Shi <jitao.shi@mediatek.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Nicolas Boichat <drinkcat@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, 
+ Collabora Kernel ML <kernel@collabora.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, 
+ DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_150410_080529_E70C92B4 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20210630_154855_674710_FE4CEFCE 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,74 +91,51 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 01:51:51PM -0700, Suren Baghdasaryan wrote:
-> Psi polling mechanism is trying to minimize the number of wakeups to
-> run psi_poll_work and is currently relying on timer_pending() to detect
-> when this work is already scheduled. This provides a window of opportunity
-> for psi_group_change to schedule an immediate psi_poll_work after
-> poll_timer_fn got called but before psi_poll_work could reschedule itself.
-> Below is the depiction of this entire window:
-> 
-> poll_timer_fn
->   wake_up_interruptible(&group->poll_wait);
-> 
-> psi_poll_worker
->   wait_event_interruptible(group->poll_wait, ...)
->   psi_poll_work
->     psi_schedule_poll_work
->       if (timer_pending(&group->poll_timer)) return;
->       ...
->       mod_timer(&group->poll_timer, jiffies + delay);
-> 
-> Prior to 461daba06bdc we used to rely on poll_scheduled atomic which was
-> reset and set back inside psi_poll_work and therefore this race window
-> was much smaller.
-> The larger window causes increased number of wakeups and our partners
-> report visible power regression of ~10mA after applying 461daba06bdc.
-> Bring back the poll_scheduled atomic and make this race window even
-> narrower by resetting poll_scheduled only when we reach polling expiration
-> time. This does not completely eliminate the possibility of extra wakeups
-> caused by a race with psi_group_change however it will limit it to the
-> worst case scenario of one extra wakeup per every tracking window (0.5s
-> in the worst case).
-> By tracing the number of immediate rescheduling attempts performed by
-> psi_group_change and the number of these attempts being blocked due to
-> psi monitor being already active, we can assess the effects of this change:
-> 
-> Before the patch:
->                                            Run#1    Run#2      Run#3
-> Immediate reschedules attempted:           684365   1385156    1261240
-> Immediate reschedules blocked:             682846   1381654    1258682
-> Immediate reschedules (delta):             1519     3502       2558
-> Immediate reschedules (% of attempted):    0.22%    0.25%      0.20%
-> 
-> After the patch:
->                                            Run#1    Run#2      Run#3
-> Immediate reschedules attempted:           882244   770298    426218
-> Immediate reschedules blocked:             881996   769796    426074
-> Immediate reschedules (delta):             248      502       144
-> Immediate reschedules (% of attempted):    0.03%    0.07%     0.03%
-> 
-> The number of non-blocked immediate reschedules dropped from 0.22-0.25%
-> to 0.03-0.07%. The drop is attributed to the decrease in the race window
-> size and the fact that we allow this race only when psi monitors reach
-> polling window expiration time.
-> 
-> Fixes: 461daba06bdc ("psi: eliminate kthread_worker from psi trigger scheduling mechanism")
-> Reported-by: Kathleen Chang <yt.chang@mediatek.com>
-> Reported-by: Wenju Xu <wenju.xu@mediatek.com>
-> Reported-by: Jonathan Chen <jonathan.jmchen@mediatek.com>
-> Signed-off-by: Suren Baghdasaryan <surenb@google.com>
-> Tested-by: SH Chen <show-hong.chen@mediatek.com>
-
-Acked-by: Johannes Weiner <hannes@cmpxchg.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SEksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
+b3JhLmNvbT4g5pa8IDIwMjHlubQ25pyIMzDml6Ug6YCx5LiJIOS4i+WNiDEwOjQ35a+r6YGT77ya
+Cj4KPiBSZXNldCB0aGUgRFNJIGhhcmR3YXJlIGlzIG5lZWRlZCB0byBwcmV2ZW50IGRpZmZlcmVu
+dCBzZXR0aW5ncyBiZXR3ZWVuCj4gdGhlIGJvb3Rsb2FkZXIgYW5kIHRoZSBrZXJuZWwuCj4KPiBT
+aWduZWQtb2ZmLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xs
+YWJvcmEuY29tPgo+IC0tLQo+Cj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTcz
+LmR0c2kgIHwgMiArKwo+ICBpbmNsdWRlL2R0LWJpbmRpbmdzL3Jlc2V0L210ODE3My1yZXNldHMu
+aCB8IDIgKysKPiAgMiBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1n
+aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNpIGIvYXJjaC9hcm02
+NC9ib290L2R0cy9tZWRpYXRlay9tdDgxNzMuZHRzaQo+IGluZGV4IGU1NTk2ZmUwMWExZC4uMzZj
+Mzk5OGViN2YxIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4
+MTczLmR0c2kKPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE3My5kdHNp
+Cj4gQEAgLTEwMzYsNiArMTAzNiw3IEBAIG1tc3lzOiBzeXNjb25AMTQwMDAwMDAgewo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrcyA9IDwmdG9wY2tnZW4gQ0xLX1RPUF9N
+TV9TRUw+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGFzc2lnbmVkLWNsb2NrLXJhdGVzID0g
+PDQwMDAwMDAwMD47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgI2Nsb2NrLWNlbGxzID0gPDE+
+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICNyZXNldC1jZWxscyA9IDwxPjsKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICBtYm94ZXMgPSA8JmdjZSAwIENNRFFfVEhSX1BSSU9fSElHSEVTVD4s
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZnY2UgMSBDTURRX1RIUl9QUklP
+X0hJR0hFU1Q+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIG1lZGlhdGVrLGdjZS1jbGllbnQt
+cmVnID0gPCZnY2UgU1VCU1lTXzE0MDBYWFhYIDAgMHgxMDAwPjsKPiBAQCAtMTI2Miw2ICsxMjYz
+LDcgQEAgZHNpMDogZHNpQDE0MDFiMDAwIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICA8Jm1tc3lzIENMS19NTV9EU0kwX0RJR0lUQUw+LAo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDwmbWlwaV90eDA+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGNsb2Nr
+LW5hbWVzID0gImVuZ2luZSIsICJkaWdpdGFsIiwgImhzIjsKPiArICAgICAgICAgICAgICAgICAg
+ICAgICByZXNldHMgPSA8Jm1tc3lzIE1UODE3M19NTVNZU19TVzBfUlNUX0JfRElTUF9EU0kwPjsK
+CkFkZCB0aGlzIGluIGJpbmRpbmcgZG9jdW1lbnQuIEl0IHdvdWxkIGJlIGdvb2QgaWYgdGhlIGJp
+bmRpbmcgZG9jdW1lbnQKaXMgaW4geWFtbCBmb3JtYXQuCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoK
+PiAgICAgICAgICAgICAgICAgICAgICAgICBwaHlzID0gPCZtaXBpX3R4MD47Cj4gICAgICAgICAg
+ICAgICAgICAgICAgICAgcGh5LW5hbWVzID0gImRwaHkiOwo+ICAgICAgICAgICAgICAgICAgICAg
+ICAgIHN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHQtYmluZGlu
+Z3MvcmVzZXQvbXQ4MTczLXJlc2V0cy5oIGIvaW5jbHVkZS9kdC1iaW5kaW5ncy9yZXNldC9tdDgx
+NzMtcmVzZXRzLmgKPiBpbmRleCBiYTg2MzZlZGE1YWUuLjZhNjBjN2NlY2M0YyAxMDA2NDQKPiAt
+LS0gYS9pbmNsdWRlL2R0LWJpbmRpbmdzL3Jlc2V0L210ODE3My1yZXNldHMuaAo+ICsrKyBiL2lu
+Y2x1ZGUvZHQtYmluZGluZ3MvcmVzZXQvbXQ4MTczLXJlc2V0cy5oCj4gQEAgLTI3LDYgKzI3LDgg
+QEAKPiAgI2RlZmluZSBNVDgxNzNfSU5GUkFfR0NFX0ZBWElfUlNUICAgICAgIDQwCj4gICNkZWZp
+bmUgTVQ4MTczX0lORlJBX01NSU9NTVVSU1QgICAgICAgICA0Nwo+Cj4gKy8qIE1NU1lTIHJlc2V0
+cyAqLwo+ICsjZGVmaW5lIE1UODE3M19NTVNZU19TVzBfUlNUX0JfRElTUF9EU0kwICAgICAgIDI1
+Cj4KPiAgLyogIFBFUklDRkcgcmVzZXRzICovCj4gICNkZWZpbmUgTVQ4MTczX1BFUklfVUFSVDBf
+U1dfUlNUICAgICAgICAwCj4gLS0KPiAyLjMwLjIKPgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
