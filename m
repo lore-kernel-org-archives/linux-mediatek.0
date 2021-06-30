@@ -2,83 +2,82 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 975B3C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:32:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34B59C11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:32:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68D9661D01
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:32:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68D9661D01
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0142F61CD0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:32:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0142F61CD0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OtAsVNmC7I34yk3Mpfkm4SVEjwIfSKGjwqF/6pbDVL4=; b=t+k3lXG7Io4AHE
-	GNj31+Trk/9FDV3OaDqeoHLP+OrX+VX3KogWh5PNcnPPwRfeS9/B6CC/2iX68Bh18XCg4k/dPuUw5
-	49biJyxBEAQsvWkXpKItXs3FxfMiU0xCDUFJViua3uAzkUxPhXrKfwp/NLbGSE7PYdsi7A6QbNE37
-	tBJW0oNydFvRW8uRkEz/xx4358fW2t3mMCOG6cklEzae235w69JdTelQ/q6XohZqcSTpLd4dKBr3+
-	wn/VTxUQxwgB4HSI99Pd9kNV+lv2MODyVVPxgxSXCeIjCA21fNawNE8xMg4ZhB9K5ZdUcvWeCu2C3
-	oZ2EV6gnfGHL7IipK+uw==;
+	List-Owner; bh=r1Z9uNXjORO8yLORzVa5kpqqAodeInq7J+DsofOZgxE=; b=kmvOKb6nMR0MMk
+	wOS1l3KM7aash1ueOhEfZ50eHS6ly2afcVRZIfd2jxEZtCO8t4ra+kbBCWscQa/WAakvSOC0JyAwx
+	KEHPRLfAoJarhj9XOzx+b9dgNly9UPMRN/5UNHUPS9xyAEbZReTJnMkPncE19BqEgNATJfzg0wGMj
+	8Azv1iPdKzAdp/rmSJvU6gGaebwhc7ygvaZpGpOONjgdJTdhtZTBQpJjPOom1s4Cq5YVuPVEwVT1l
+	uBx7XG52SZluQ+58awCzjGoSLCYnpM7MaYyBD3NkCR2+HzB0NpGhvJ+DoaF40Tmf2+leugPi11NuS
+	bTF3eSKvyPFXiz0Ba7sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyUhm-00D4tF-6k; Wed, 30 Jun 2021 07:32:18 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1lyUhv-00D51S-Dj; Wed, 30 Jun 2021 07:32:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyUh8-00D4OC-9c
- for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 07:31:39 +0000
-Received: by mail-lf1-x129.google.com with SMTP id d16so3342052lfn.3
- for <linux-mediatek@lists.infradead.org>; Wed, 30 Jun 2021 00:31:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lxYiu8p2N8GfVq4zjyFWRywFohMl9B93gUN+WOKNciM=;
- b=P3dnnE9etYGaSIabOdksbhak7yrNNEj7JkC2s9ceXmf359Lo+sLDn+MN5AaMIeP7nH
- uuFlGOlo+AL2gRFKJ2sRTPn6O3eDynC6a1yVJ32Vnr9A044z8C0sghr9j14oH/VWFeof
- tYfsqbi8erpR+0ZcEnIoOakG/5XanHNAsR8JE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lxYiu8p2N8GfVq4zjyFWRywFohMl9B93gUN+WOKNciM=;
- b=ukMArQ8Q1hZc/8b3FlRQtMvDkENoOLa3smSY4HbrE5bgejlYwWGRj9VE00tdPpeWDY
- Pya+XMsfR4v9UeveNUONP/6kYiYabdA0cb+3LJo6QbqpDGD368Sv/GAcuzTRg2TsGgU+
- YPVIsA7m8KYTlXcLSS07R233fXF6ppVABvBntyCuDv+Vpe6wODKDdn3p3N1xgtrZTbfo
- wPTkBs7G2piYeP0z+Go/TFQIaP0tW8cVStQEL4+Wo8lyN7imsLcRShg0txVZOcDUpMQy
- Fg1xvGo18wgEN5lST+lWg41ALXzBD2sJ1/Wczp16PEFJWc5VipW6mXJjFCg3kd1hEYC0
- sTNA==
-X-Gm-Message-State: AOAM53027bbjWoPmhLe5jvWOgI1Vja/Rt2TMbMv3Rc6dgjC+czUJEDMI
- BJCTbvA+pGQxY0IDEIAkjPv+32rHoQhJHchRzbRvPg==
-X-Google-Smtp-Source: ABdhPJwtWq5t1qxUswjy8XnO5yHQyrzaf/PASJx0qZL1yG9gn+vAucP21N28ejrTjvh3GXcAhuzEvusugeGYSyVNteY=
-X-Received: by 2002:a05:6512:63:: with SMTP id
- i3mr26374013lfo.587.1625038295495; 
- Wed, 30 Jun 2021 00:31:35 -0700 (PDT)
+ id 1lyUhq-00D4wg-Gv; Wed, 30 Jun 2021 07:32:24 +0000
+X-UUID: 9b9c85b79768472e89b8937ebbc7d317-20210630
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=jfF3FqhEXSgK5SXU/nQ/hxOF8lLd4AdK3vKgwoH6sis=; 
+ b=k08TIYrr/cC2TtN29mCyWUMTF1CLDMzB7F4MSyqjaCZaalMhybwJoM0zU6V40s3+Dspu3Ve/N/veMJ/7tZJK47aIDhNfjhDXYlbXiLAAZZ3oMBGQ5FgM/1a3Pw7++Yf+TKbcFKiRPTT09+uEHyg6YVVGi13Usr4Iv+YXgCkT34c=;
+X-UUID: 9b9c85b79768472e89b8937ebbc7d317-20210630
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <kyrie.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 33073240; Wed, 30 Jun 2021 00:32:21 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 00:28:22 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 15:28:20 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 30 Jun 2021 15:28:20 +0800
+From: kyrie.wu <kyrie.wu@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Bin Liu
+ <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
+ <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
+ <srv_heupstream@mediatek.com>, kyrie.wu <kyrie.wu@mediatek.com>
+Subject: [PATCH v2,
+ 8/9] media: mtk-jpegenc: Generalize jpegenc HW operations interfaces
+Date: Wed, 30 Jun 2021 15:27:58 +0800
+Message-ID: <1625038079-25815-9-git-send-email-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
+References: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
- <20210616224743.5109-4-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210616224743.5109-4-chun-jie.chen@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 30 Jun 2021 15:31:24 +0800
-Message-ID: <CAGXv+5F2zTcqnjH2ud38vUD149KJtgxhPQME2Mk6-vGtQv+2YQ@mail.gmail.com>
-Subject: Re: [PATCH 03/22] clk: mediatek: Fix corner case of tuner_en_reg
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_003138_374217_57A4C7D7 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20210630_003222_640448_B6708C12 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,22 +94,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 17, 2021 at 7:01 AM Chun-Jie Chen
-<chun-jie.chen@mediatek.com> wrote:
->
-> On MT8195, tuner_en_reg is moved to register offest 0x0.
-> If we only judge by tuner_en_reg, it may lead to wrong address.
-> Add tuner_en_bit to the check condition. And it has been confirmed,
-> on all the MediaTek SoCs, bit0 of offset 0x0 is always occupied by
-> clock square control.
->
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Generalizes jpegenc select/deselect HW and set params interfaces.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
+---
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 46 +++++++++++++++++++++++++
+ 1 file changed, 46 insertions(+)
 
-Though you might want to consider converting these types of checks into feature
-flags.
-
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index bf519ba..0143baf8 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -939,6 +939,52 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
+ 	return 0;
+ }
+ 
++static int mtk_jpeg_select_hw(struct mtk_jpeg_ctx *ctx)
++{
++	int hw_id = -1;
++	int i;
++	unsigned long flags;
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg, *comp_jpeg = NULL;
++
++	spin_lock_irqsave(&jpeg->hw_lock, flags);
++	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
++		comp_jpeg = jpeg->hw_dev[i];
++		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
++			hw_id = i;
++			comp_jpeg->hw_state = MTK_JPEG_HW_BUSY;
++			break;
++		}
++	}
++	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
++
++	return hw_id;
++}
++
++static int mtk_jpeg_deselect_hw(struct mtk_jpeg_dev *jpeg, int hw_id)
++{
++	unsigned long flags;
++
++	spin_lock_irqsave(&jpeg->hw_lock, flags);
++	jpeg->hw_dev[hw_id]->hw_state = MTK_JPEG_HW_IDLE;
++	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
++
++	return 0;
++}
++
++static int mtk_jpeg_set_hw_param(struct mtk_jpeg_ctx *ctx,
++				 int hw_id,
++				 struct vb2_v4l2_buffer *src_buf,
++				 struct vb2_v4l2_buffer *dst_buf)
++{
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg->hw_dev[hw_id];
++
++	jpeg->hw_param.curr_ctx = ctx;
++	jpeg->hw_param.src_buffer = src_buf;
++	jpeg->hw_param.dst_buffer = dst_buf;
++
++	return 0;
++}
++
+ static void mtk_jpeg_enc_device_run(void *priv)
+ {
+ 	struct mtk_jpeg_ctx *ctx = priv;
+-- 
+2.6.4
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
