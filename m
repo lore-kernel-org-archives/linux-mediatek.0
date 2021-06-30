@@ -2,85 +2,89 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C2D4C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 09:03:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 722F1C11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 09:08:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3BD461C4D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 09:03:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3BD461C4D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3C11961CFC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 09:08:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C11961CFC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UFrTF5flZWm/VeKqXSioHX9GZm68kQgcdRORPMFWTjc=; b=maoxktzaslDGKj
-	dv0ekixoOjOAY2CrDJOytq/BaGqxmI/23Qut2piiuWn1yJK6zQht5zZC8uJCtaCPcJq7Rl5Mt69ka
-	Hq5RBBc5AD0VUUHB0xMTxf1UWmkqi7pGZcPMkNKQx9dLQzVY+76Ce4J2MnslcLbmnDOWKQDUP5iVC
-	MXe5sQvlQRvvCgDDq+QfwxY6pZh5C0+EskROJqhpK+7Zup8dgsL5lTOD5WX0PCyoVH4A6/snFbhu1
-	XYZiK2SkyYeRpCcl+QkOneCwrSyoSh02+A6TeeKNJIEWldcTxDCYLDwol+nBmf+BrVCINVPIaLvKv
-	m35+ys4jxsbUTVow7QFA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=A1HFjTPACed06IqftPEHL4QPv2x8jIK5mD6GFTtoTXY=; b=wksXR+WUmQX2L4
+	11Dcx80xjqlzQgHXM7p7uIZFd58oa/Ogelj4Z7ZqN9HPrDQe5swRGVHjHoS1Z9BAd9GMpidjGO6Gc
+	ZhJUCN+G9kZ+LoQtxeopQCMNtA92gy3gx4VxCybZWoGtCybfU7nlVoWx08xgtm9NEop9ClBA6yFtb
+	o46Kdak/W7RDZHkYw2RTXDKHJ58aRSDKnI+5pkSMXphLLYrHjIxx+3+o0ip3mEkXjJyJg105i+TNi
+	BxNTRa8VP7r8S0Ua7iaTXDfvxTmomrDkITuTp2HbMrVKgYo9BiffxVI1GORn1aPKHWZibyr/HIteg
+	ai4N1InKhneEWH6FS5GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyW7u-00DPLj-1w; Wed, 30 Jun 2021 09:03:22 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lyWCT-00DQVk-2h; Wed, 30 Jun 2021 09:08:05 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyW7c-00DPHp-Ok; Wed, 30 Jun 2021 09:03:06 +0000
-X-UUID: 284e04251cbe40419034cd62e8918903-20210630
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Doi6dmMF7TkzD8dMjqELmVWQnwzwyAS0+/B4iOdz2bk=; 
- b=NhkqY+U60MjhIWo04VZ6rO8X3WjCExJT6RKlDzNFUlUdwy8izsMRTq965+HP6i8Yv/QNs+Dhfq2uRfD7+qZHonDPqyc2ileRrMe2tYEKJ1bnis6tRs+bbC3I7/1sz3P7Xgk4x2hopnKMynGkGkGQuzXh2ps1u4ck5dnLMP630Q8=;
-X-UUID: 284e04251cbe40419034cd62e8918903-20210630
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <irui.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1218214270; Wed, 30 Jun 2021 02:03:02 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 01:53:00 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 16:52:58 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Jun 2021 16:52:56 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
- <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 3/3] media: mtk-vcodec: Add MT8195 H264 venc driver
-Date: Wed, 30 Jun 2021 16:52:47 +0800
-Message-ID: <20210630085247.27554-4-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210630085247.27554-1-irui.wang@mediatek.com>
-References: <20210630085247.27554-1-irui.wang@mediatek.com>
+ id 1lyWC8-00DQQ8-U7
+ for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 09:07:46 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id
+ mn20-20020a17090b1894b02901707fc074e8so3494599pjb.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 30 Jun 2021 02:07:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8EunOHRF208NjwWFsRkZviCh5B7g+6zWrlmDRgMb1Q4=;
+ b=ZQB3E9S6hmK9/GgfjKj9UFvOaFVFfbm7rL4iHToD4A8Q2J0ixPZw+maAkbB3K9m3/B
+ mYM8NaoGUBEBSOUuecPXzDNP7JkF5nL1157O15TL3aaDujkhMWt1zbKDbF6mjXtilvBY
+ cQ1PrD0AKhtuEWL6Mow1RUGK3ihTFjKUaxq+k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8EunOHRF208NjwWFsRkZviCh5B7g+6zWrlmDRgMb1Q4=;
+ b=Y6kRWMZrD0mjenj/xf+l2EwhTo3W2GmgU/uC/mT0GN8zD7uP40Bir142wqCFiLHHIm
+ dSQVozUn2cRR5yDvctoaJ5LOwSCY4CROTx32k71pH9isJCLRRTQvIj3zWOAlvcHWeDET
+ NoS2b4t0ByXdem/tuCwW5NpLVzmeHPXqgXEiu3k2HTUixm+oxGuD2vDXsw+E5CHC5qbr
+ NpHVgPAEx1P1mM1C1wsnFQ58c66KQsR97UWawlhDzcN/W4UpW3sWWyjf8S/NrvpEt3ih
+ V5gxUvfNVplodo6MbpSvXj+rzrs0gZuzsCfHJg/CpWQ8x5YkPKMZYnXFjy9XmSR9yBw7
+ Eidg==
+X-Gm-Message-State: AOAM532DxlPQq6Nw8Eae5c2n0+R6NK7Yx1bHIAFNsKB1fjIWvvAs51r2
+ tc3iLK0iq1eKCS/wPYGvlTn+OA==
+X-Google-Smtp-Source: ABdhPJwe5ressv6mI3pXKPXhPGqwlZTuAVhYAEKlP5foJIHcRuI9yUKHuKbiVGpA7ebHw0HeRReGtw==
+X-Received: by 2002:a17:90b:230a:: with SMTP id
+ mt10mr3399134pjb.236.1625044063075; 
+ Wed, 30 Jun 2021 02:07:43 -0700 (PDT)
+Received: from kansho.tok.corp.google.com
+ ([2401:fa00:8f:203:fc06:b3f6:f016:8299])
+ by smtp.gmail.com with ESMTPSA id 73sm20822239pfy.83.2021.06.30.02.07.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 30 Jun 2021 02:07:42 -0700 (PDT)
+From: Kansho Nishida <kansho@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Shunli Wang <shunli.wang@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Kansho Nishida <kansho@chromium.org>
+Subject: [PATCH 0/2] arm64: dts: mt8183: Add kukui platform audio node to the
+ device tree
+Date: Wed, 30 Jun 2021 18:07:08 +0900
+Message-Id: <20210630090710.1873559-1-kansho@chromium.org>
+X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_020304_857732_EC02997F 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20210630_020745_016419_C13B2B62 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,59 +101,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 venc driver's compatible and device private data.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h  |  1 +
- .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 13 +++++++++++++
- 2 files changed, 14 insertions(+)
+Hi Matthias,
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index c6c7672fecfb..3f83710b4fa5 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -304,6 +304,7 @@ enum mtk_chip {
- 	MTK_MT8173,
- 	MTK_MT8183,
- 	MTK_MT8192,
-+	MTK_MT8195,
- };
- 
- /**
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 4489a9744cd7..7b3e0ea4c410 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -428,6 +428,18 @@ static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
- 	.core_id = VENC_SYS,
- };
- 
-+static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
-+	.chip = MTK_MT8195,
-+	.uses_ext = true,
-+	.capture_formats = mtk_video_formats_capture_h264,
-+	.num_capture_formats = ARRAY_SIZE(mtk_video_formats_capture_h264),
-+	.output_formats = mtk_video_formats_output,
-+	.num_output_formats = ARRAY_SIZE(mtk_video_formats_output),
-+	.min_bitrate = 64,
-+	.max_bitrate = 100000000,
-+	.core_id = VENC_SYS,
-+};
-+
- static const struct of_device_id mtk_vcodec_enc_match[] = {
- 	{.compatible = "mediatek,mt8173-vcodec-enc",
- 			.data = &mt8173_avc_pdata},
-@@ -435,6 +447,7 @@ static const struct of_device_id mtk_vcodec_enc_match[] = {
- 			.data = &mt8173_vp8_pdata},
- 	{.compatible = "mediatek,mt8183-vcodec-enc", .data = &mt8183_pdata},
- 	{.compatible = "mediatek,mt8192-vcodec-enc", .data = &mt8192_pdata},
-+	{.compatible = "mediatek,mt8195-vcodec-enc", .data = &mt8195_pdata},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_vcodec_enc_match);
+The patch set adds audio node to kukui(mt8183) device tree.
+By this change, the soundcards for each boards will be probed.
+
+Thanks
+Kansho
+
+
+
+Kansho Nishida (2):
+  arm64: dts: mt8183: add audio node
+  arm64: dts: mt8183: add kukui platform audio node
+
+ arch/arm64/boot/dts/mediatek/mt6358.dtsi      |  1 +
+ .../mt8183-kukui-audio-da7219-max98357a.dtsi  | 13 +++
+ .../mt8183-kukui-audio-da7219-rt1015p.dtsi    | 13 +++
+ .../mediatek/mt8183-kukui-audio-da7219.dtsi   | 54 +++++++++++
+ .../mt8183-kukui-audio-max98357a.dtsi         | 13 +++
+ .../mediatek/mt8183-kukui-audio-rt1015p.dtsi  | 13 +++
+ ...mt8183-kukui-audio-ts3a227e-max98357a.dtsi | 13 +++
+ .../mt8183-kukui-audio-ts3a227e-rt1015p.dtsi  | 13 +++
+ .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi | 32 +++++++
+ .../mediatek/mt8183-kukui-jacuzzi-burnet.dts  |  1 +
+ .../mediatek/mt8183-kukui-jacuzzi-damu.dts    |  1 +
+ .../mediatek/mt8183-kukui-jacuzzi-fennel.dtsi |  1 +
+ .../mt8183-kukui-jacuzzi-juniper-sku16.dts    |  1 +
+ .../mediatek/mt8183-kukui-jacuzzi-kappa.dts   |  1 +
+ .../mediatek/mt8183-kukui-jacuzzi-kenzo.dts   |  1 +
+ .../mt8183-kukui-jacuzzi-willow-sku0.dts      |  1 +
+ .../mt8183-kukui-jacuzzi-willow-sku1.dts      |  1 +
+ .../boot/dts/mediatek/mt8183-kukui-kakadu.dts |  1 +
+ .../dts/mediatek/mt8183-kukui-kodama.dtsi     |  1 +
+ .../boot/dts/mediatek/mt8183-kukui-krane.dtsi |  5 +
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 67 ++++++++++++-
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 94 ++++++++++++++++++-
+ 22 files changed, 336 insertions(+), 5 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
+
 -- 
-2.18.0
+2.32.0.93.g670b81a890-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
