@@ -2,102 +2,80 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A72CC11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 06:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A5A3CC11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:28:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E85261D07
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 06:27:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E85261D07
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
+	by mail.kernel.org (Postfix) with ESMTPS id 70BF761CD0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:28:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 70BF761CD0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=0qZZZuj7X8Nfi/Jmx7OFBQB73KBGSgqwJFixmrdDxcE=; b=atHbDwxjhU5zhQlEcr+crpOYII
-	jFRDfCrB/8fyDmCUk3xe0clmTY5vW7je/dQW3R9FBnCkVYfECpy4Knpvyds4u8kHwdz3hu7tvbuWY
-	qsuRp1plIyoDL8Czy688XAiTd7FY0vf0bTyZMefBSgyXevY+/teUUUq0stwhhbSMLqWK7GqNsLkVm
-	dIdZSDf8j6jbmQu/cT3tsOQ5suARe4ecUMPVqg4tyt55qGteGXU6L5Uzj0FRwV6Frm5hzHP9Gv1pb
-	1m5mjOJYs9Gfne2Pj0c71R/4V8cQjRLdubRP3HH/P/6wzZtyBqQg1st3sbnWnbagJmHPSakhakkt5
-	Ec3J/C+g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DqI3IuhVhzVmbBdRCEjOVjd2zc5eq8C5nTAeprcNx+k=; b=mcf03RTbLnO9bL
+	gx+hxYBzKyGkejD/LgGzqxeL6UIazuhMnh6SEa85oBUOA+hpjvhD01V8l6Tc8mU1PLQnRMyGSydas
+	0oqZMMfbZHtgqHy5PsLclanCRDbkhn1gyEdDXLnAb6OruaPxTW8raTsx1TI+XBJ3p6aQuviwfrZDL
+	3wRRpfKZIslhtd5P4ONqR1wj5uYxIoUoPbYwt4mbdxPSEgoKKK2pfAJS9/xUnhFpEPy2sKoekt7FE
+	XKlqhN7mpJUhTXLbZN/z/Dk+2nLPg95rkxMcUyRhuAUt4wRRgkoZujyR0dyUVDAE1lmsCsKaPOXSl
+	JIcNHqK8xKh5s0EA3mAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyTh3-00CumJ-LU; Wed, 30 Jun 2021 06:27:29 +0000
-Received: from youngberry.canonical.com ([91.189.89.112])
+	id 1lyUdW-00D2cV-QL; Wed, 30 Jun 2021 07:27:54 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyTgq-00Cujo-JA
- for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 06:27:17 +0000
-Received: from mail-ed1-f72.google.com ([209.85.208.72])
- by youngberry.canonical.com with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.93)
- (envelope-from <krzysztof.kozlowski@canonical.com>)
- id 1lyTgo-0007Fc-Lm
- for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 06:27:14 +0000
-Received: by mail-ed1-f72.google.com with SMTP id
- p23-20020aa7cc970000b02903948bc39fd5so585329edt.13
- for <linux-mediatek@lists.infradead.org>; Tue, 29 Jun 2021 23:27:14 -0700 (PDT)
+ id 1lyUdK-00D2an-GR
+ for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 07:27:43 +0000
+Received: by mail-lf1-x135.google.com with SMTP id n14so3284671lfu.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 30 Jun 2021 00:27:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PqChqbCdyi7I3z8ajBtnm4crKLtFjV3f+EdiX7z1gfA=;
+ b=jUr7gIdpi/tS//Cxavgazy26slgxlenoY/rYuBZMS2ddK3JRhqdExl4YEthPBGhICK
+ fOkzphay2TG+9GeCjQmi0rQFmeSuQpoAdedd5f3yGg3Bf2z49YdsPst0opNI99Cg/XER
+ aMbmzWgpadDHUOAW+GlV0oh7XiUJAVKdxrQhs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2nkD+uJbpxO3bUeNVNJ06+nPXq3al3hbepVix2nCh4U=;
- b=WDWquF4wHB4MUUc9GDA49ZX9lV/XwRtvBb1NO9Ozq4+HsOHLoH2kX87QN2HcuIBe9j
- +jOfp6BxVoitpUKy5w2YbHUKAYKlDxTOSmmr/SoiT91hPbb14+aMZs3asyhEmi1In6tz
- v2QNANKE50e2bKG86OWrzKro9Gblp+8kqqGPQ9MtkEr91n5devx8FnMl5H6DW9PuVraZ
- nglkowCkSpVLtOMOqfhoDu17Gd3F0rMwG4IAC8pxiD0+xjrE4XgtTr6Q0eygHwKxQzrB
- H/jkHtLZwZBzMVxqJbIkOJRKoXNRGk5FsB0hLqvsJ0hKDCX+EZKtmY3O9aF93DCjPB0J
- QAbQ==
-X-Gm-Message-State: AOAM531ZCyKObeB8uUPOd+lLFGYRnT84/4y6BBrDmXjLgAWnO0wS27ZR
- YT41F9mCt6K4K0xUpVjG2ZCJYP7jyecVlKDKKDHZolsFzAUYN6Z3CubN8D0cpuqoUClYB8Jkbyy
- EAUTYckU9Y5zq9DDaqYwT2YIlTNUbca6JltFRl9gisk3d4Hdg4g==
-X-Received: by 2002:a05:6402:10c3:: with SMTP id
- p3mr42666269edu.175.1625034434336; 
- Tue, 29 Jun 2021 23:27:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHQKqehToed8G/oeR4lBx7PzBHYBfu1zFW0rHyBt6DYz2r1CNwHTzMzCDFt1S6Up8CIq2JSA==
-X-Received: by 2002:a05:6402:10c3:: with SMTP id
- p3mr42666243edu.175.1625034434224; 
- Tue, 29 Jun 2021 23:27:14 -0700 (PDT)
-Received: from [192.168.1.115] (xdsl-188-155-177-222.adslplus.ch.
- [188.155.177.222])
- by smtp.gmail.com with ESMTPSA id g8sm2791773edv.84.2021.06.29.23.27.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Jun 2021 23:27:13 -0700 (PDT)
-Subject: Re: [PATCH 02/24] dt-bindings: mediatek: mt8195: Add binding for
- infra IOMMU
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>
-Cc: Evan Green <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
- Nicolas Boichat <drinkcat@chromium.org>, anan.sun@mediatek.com,
- chao.hao@mediatek.com
-References: <20210630023504.18177-1-yong.wu@mediatek.com>
- <20210630023504.18177-3-yong.wu@mediatek.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Message-ID: <24f3e157-da9c-d353-e5ae-5dac9e7d9c1d@canonical.com>
-Date: Wed, 30 Jun 2021 08:27:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PqChqbCdyi7I3z8ajBtnm4crKLtFjV3f+EdiX7z1gfA=;
+ b=bKG8T6jNo9r2P8kga6ZJ9f5i8Bq4ia/Aa8Z6YNcQSpEw1pgELrkX1ny1v3pJ9hn10M
+ rTVREv6bwiT7P9ayxJc9X1JY4wuv0klgbs6YRw2R55zHKF1iNsLlDIDD/3cRUDfBICbh
+ tlhabGgPb/y23UfCuKJouQRS4+PtpxWp6Flp1sZkHE8Xk8Kc7lExxcAiS0G5P0xgiD/C
+ kqrPe7EG0v6QT2XoAXHo6C3vCAPoHvi6oJY+GiEwumuHXCTHiqAnO2eFtieSRmGR4oMS
+ C2q+GGDxJSNWzmkXmB7fVrZB5sg3W+7KJ33qp2iYfhEDH7p8vYxHZybwiCPFuAvIMG9R
+ ieTA==
+X-Gm-Message-State: AOAM533U4sR3RYaFaXPHAL1AUzviPzGzC5PGwd8/MMnLlIacfO39ygVS
+ 0nCBJKIpKjaqSQ+17/3NZb5hLD+i5ErUVucLBMP3vA==
+X-Google-Smtp-Source: ABdhPJwXTLvf7WkEdKH0kiRYx7KjKKymzqJOW8pf4v4ankygH2rmshV2ToQvOyzTvFQ05hkpl8KgHD/m3A3riEJ7Rts=
+X-Received: by 2002:ac2:5a11:: with SMTP id q17mr26529672lfn.479.1625038059798; 
+ Wed, 30 Jun 2021 00:27:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210630023504.18177-3-yong.wu@mediatek.com>
-Content-Language: en-US
+References: <20210630035443.2144958-1-hsinyi@chromium.org>
+In-Reply-To: <20210630035443.2144958-1-hsinyi@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 30 Jun 2021 15:27:28 +0800
+Message-ID: <CAGXv+5ERomKaid2wQ5Sz9CB-q+DVLMzWq08b+rkkh5=3WnG5Vg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: kukui: use generic pin configs for
+ i2c pins
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, zhiyong.tao@mediatek.com, 
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_232716_660975_67B52E72 
-X-CRM114-Status: GOOD (  17.46  )
+X-CRM114-CacheID: sfid-20210630_002742_573744_B8E99E0F 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,32 +92,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/06/2021 04:34, Yong Wu wrote:
-> In mt8195, we have a new IOMMU that is for INFRA IOMMU. its masters
-> mainly are PCIe and USB. Different with MM IOMMU, all these masters
-> connect with IOMMU directly, there is no mediatek,larbs property for
-> infra IOMMU.
-> 
-> Another thing is about PCIe ports. currently the function
-> "of_iommu_configure_dev_id" only support the id number is 1, But our
-> PCIe have two ports, one is for reading and the other is for writing.
-> see more about the PCIe patch in this patchset. Thus, I only list
-> the reading id here and add the other id in our driver.
-> 
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  .../bindings/iommu/mediatek,iommu.yaml         | 14 +++++++++++++-
->  .../dt-bindings/memory/mt8195-memory-port.h    | 18 ++++++++++++++++++
->  include/dt-bindings/memory/mtk-memory-port.h   |  2 ++
->  3 files changed, 33 insertions(+), 1 deletion(-)
-> 
+On Wed, Jun 30, 2021 at 11:55 AM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+>
+> mt8183 i2c pins don't support PUPD register, so change to use generic
+> pin configs instead of let it fail and fallback.
+>
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-
-
-Best regards,
-Krzysztof
+On a side note, the `mediatek,pull-up-adv` property probably should be
+merged into `bias-pull-up` with an argument.
 
 _______________________________________________
 Linux-mediatek mailing list
