@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A9F8C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F73EC11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:31:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 36828613DD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:31:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36828613DD
+	by mail.kernel.org (Postfix) with ESMTPS id 3686F613DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 13:31:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3686F613DC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vEmOyM60J/nq36ohEkyyBekRKeOVkcp7yBIVGRP8tTw=; b=EivnF36F520KDZ
-	1zcCYKLGBz6RSn1rAwfSddMhqh34JR8Lk7KNdNXpsbVNmGPC2QzRZWMjvRbm94mFVkVuiWajFdvsV
-	b/Q/hHjOcoZGVmtSqfwDl+tHxkKNABqvGka2fn2dduN3JLDChaK/ZINpIFjFwejZdDRQM66IqYrOC
-	m52+E6HPLOr05ynJA9DzgRIOGkMQOh4H3l0qIC9jF5vm1Onag8c6jFFI6XwtnwAOd5BrOgVfSaBvU
-	2C48oCEXf7uvc+JuGFRdZvvlgWEQZO+Au26Z/D0QBIOW3lCQ44xnsDSVshjpVe45n1GFY17UfBoHL
-	AnXA/LYAxLZY6K0Rpq5w==;
+	List-Owner; bh=BGEvllZSJ3G0Nnta9wSD9TQ9vBw3knXjAtK07MG2bf8=; b=EEyvcD5nClDgF2
+	JOJKug0ldbzdZifNLdJOsqbBLiP9dbSkMvSX4A0x72m/LfdLPtvkYpWcfjX1YHzxiNjVQWT+3AAZy
+	lYG6RcwqldnCgz12t5GaSFrYvnCJsGTDGrvbGW/8zGJ2vombQsyA2jg4uqrdnmEVZU/CAm5RtAFeI
+	2yQM9t0UYXKFGyks0ROH18BhcITtDqB+G4UpMdH53zhKLkHMDpd1t5PTkY5aNYA/8SfbUb69Z8+Lf
+	Mxlf6m6CdAsqTgEcEQ+VBthYBU6OC6USoNousH8HYNVG3Ttuakl51i3O7Mo6ofpLR4vErrdRf+qdT
+	Ujnw55M/JWHaFoNuwRZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyaJ6-00E1O9-LJ; Wed, 30 Jun 2021 13:31:12 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lyaJP-00E1aL-9q; Wed, 30 Jun 2021 13:31:31 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyaI1-00E0ts-EC; Wed, 30 Jun 2021 13:30:07 +0000
-X-UUID: 73628576b58c40a39759dc1690692232-20210630
+ id 1lyaI4-00E0ub-A0; Wed, 30 Jun 2021 13:30:09 +0000
+X-UUID: b8a6d9911af54f69a28e5e4a8a9fa09e-20210630
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KQiU08u8z1yuhczy6pkizEkVCA8DMZfuGM57icpDa6E=; 
- b=i0Jnaf7x96v8AUV5UM5frhakQyDKsEJyNHtWO1xy/ywkvSovsrlGwedCocGwltfNlphmrd+tdsVGOYigWLxMNZuS1T7MZxhsmnR9aJDOBtaVJXxC50Lb6fQW6itk1koH91CwF948gP5/Kpi2+SBq8bafRn3uz6v3QhDJRj9s78k=;
-X-UUID: 73628576b58c40a39759dc1690692232-20210630
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=BvWYGnW3weSTMkWdkZmi1UqSpLsWVdkQkjG4/7ZZYBY=; 
+ b=jVaxpjJB8JCZgGAbXRdSp7Lb19Fw3Dt4nO23cKVw6d568rDB5DllK9mKs5W1qs+0Ii7Zly7tHnDcYnE6oIJ1sH+e+dxNXCQ4PQg0R3YAX0xrFv3u4Wp/OZ/CvGqC1OnnJ9vkrznYo0+u40Nqu2GI6+a2nZrIHkf9ZFD36XHCYVk=;
+X-UUID: b8a6d9911af54f69a28e5e4a8a9fa09e-20210630
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2106141496; Wed, 30 Jun 2021 06:30:02 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 06:30:01 -0700
+ with ESMTP id 1308910176; Wed, 30 Jun 2021 06:30:07 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 06:30:05 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 21:29:59 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 21:30:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 30 Jun 2021 21:29:59 +0800
+ Frontend Transport; Wed, 30 Jun 2021 21:30:04 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -65,18 +65,18 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
  <weiyi.lu@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Subject: [v11 05/19] clk: mediatek: Add configurable enable control to
- mtk_pll_data
-Date: Wed, 30 Jun 2021 21:27:50 +0800
-Message-ID: <20210630132804.20436-6-chun-jie.chen@mediatek.com>
+Subject: [v11 06/19] clk: mediatek: Add mtk_clk_simple_probe() to simplify
+ clock providers
+Date: Wed, 30 Jun 2021 21:27:51 +0800
+Message-ID: <20210630132804.20436-7-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
 References: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_063005_554414_155F0F76 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20210630_063008_398510_5BE0A90D 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,119 +93,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In all MediaTek PLL design, bit0 of CON0 register is always
-the enable bit.
-However, there's a special case of usbpll on MT8192.
-The enable bit of usbpll is moved to bit2 of other register.
-Add configurable en_reg and pll_en_bit for enable control or
-default 0 where pll data are static variables.
-Hence, CON0_BASE_EN could also be removed.
-And there might have another special case on other chips,
-the enable bit is still on CON0 register but not at bit0.
+Most of subsystem clock providers only need to register clock gates
+in their probe() function.
+To reduce the duplicated code by add a generic function.
 
-Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
 Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 ---
- drivers/clk/mediatek/clk-mtk.h | 20 +++++++++++---------
- drivers/clk/mediatek/clk-pll.c | 15 ++++++++++-----
- 2 files changed, 21 insertions(+), 14 deletions(-)
+ drivers/clk/mediatek/clk-mtk.c | 23 +++++++++++++++++++++++
+ drivers/clk/mediatek/clk-mtk.h |  8 ++++++++
+ 2 files changed, 31 insertions(+)
 
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index 37d2aa32175e..4b6096c44d74 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -13,6 +13,7 @@
+ #include <linux/clkdev.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/device.h>
++#include <linux/of_device.h>
+ 
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+@@ -286,3 +287,25 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+ 			clk_data->clks[mcd->id] = clk;
+ 	}
+ }
++
++int mtk_clk_simple_probe(struct platform_device *pdev)
++{
++	const struct mtk_clk_desc *mcd;
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++
++	mcd = of_device_get_match_data(&pdev->dev);
++	if (!mcd)
++		return -EINVAL;
++
++	clk_data = mtk_alloc_clk_data(mcd->num_clks);
++	if (!clk_data)
++		return -ENOMEM;
++
++	r = mtk_clk_register_gates(node, mcd->clks, mcd->num_clks, clk_data);
++	if (r)
++		return r;
++
++	return of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++}
 diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index c3d6756b0c7e..31c7cb304508 100644
+index 31c7cb304508..7de41c3b3206 100644
 --- a/drivers/clk/mediatek/clk-mtk.h
 +++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -213,13 +213,13 @@ struct mtk_pll_div_table {
- struct mtk_pll_data {
- 	int id;
- 	const char *name;
--	uint32_t reg;
--	uint32_t pwr_reg;
--	uint32_t en_mask;
--	uint32_t pd_reg;
--	uint32_t tuner_reg;
--	uint32_t tuner_en_reg;
--	uint8_t tuner_en_bit;
-+	u32 reg;
-+	u32 pwr_reg;
-+	u32 en_mask;
-+	u32 pd_reg;
-+	u32 tuner_reg;
-+	u32 tuner_en_reg;
-+	u8 tuner_en_bit;
- 	int pd_shift;
- 	unsigned int flags;
- 	const struct clk_ops *ops;
-@@ -228,11 +228,13 @@ struct mtk_pll_data {
- 	unsigned long fmax;
- 	int pcwbits;
- 	int pcwibits;
--	uint32_t pcw_reg;
-+	u32 pcw_reg;
- 	int pcw_shift;
--	uint32_t pcw_chg_reg;
-+	u32 pcw_chg_reg;
- 	const struct mtk_pll_div_table *div_table;
- 	const char *parent_name;
-+	u32 en_reg;
-+	u8 pll_en_bit; /* Assume 0, indicates BIT(0) by default */
- };
+@@ -10,6 +10,7 @@
+ #include <linux/regmap.h>
+ #include <linux/bitops.h>
+ #include <linux/clk-provider.h>
++#include <linux/platform_device.h>
  
- void mtk_clk_register_plls(struct device_node *node,
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 11ed5d1d1c36..7fb001a4e7d8 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -44,6 +44,7 @@ struct mtk_clk_pll {
- 	void __iomem	*tuner_en_addr;
- 	void __iomem	*pcw_addr;
- 	void __iomem	*pcw_chg_addr;
-+	void __iomem	*en_addr;
- 	const struct mtk_pll_data *data;
- };
+ struct clk;
+ struct clk_onecell_data;
+@@ -250,4 +251,11 @@ void mtk_register_reset_controller(struct device_node *np,
+ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	unsigned int num_regs, int regofs);
  
-@@ -56,7 +57,7 @@ static int mtk_pll_is_prepared(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 
--	return (readl(pll->base_addr + REG_CON0) & CON0_BASE_EN) != 0;
-+	return (readl(pll->en_addr) & BIT(pll->data->pll_en_bit)) != 0;
- }
- 
- static unsigned long __mtk_pll_recalc_rate(struct mtk_clk_pll *pll, u32 fin,
-@@ -248,8 +249,8 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) | BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
- 	if (div_en_mask) {
-@@ -290,8 +291,8 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 		writel(r, pll->base_addr + REG_CON0);
- 	}
- 
--	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
--	writel(r, pll->base_addr + REG_CON0);
-+	r = readl(pll->en_addr) & ~BIT(pll->data->pll_en_bit);
-+	writel(r, pll->en_addr);
- 
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
- 	writel(r, pll->pwr_addr);
-@@ -333,6 +334,10 @@ static struct clk *mtk_clk_register_pll(const struct mtk_pll_data *data,
- 		pll->tuner_addr = base + data->tuner_reg;
- 	if (data->tuner_en_reg)
- 		pll->tuner_en_addr = base + data->tuner_en_reg;
-+	if (data->en_reg)
-+		pll->en_addr = base + data->en_reg;
-+	else
-+		pll->en_addr = pll->base_addr + REG_CON0;
- 	pll->hw.init = &init;
- 	pll->data = data;
- 
++struct mtk_clk_desc {
++	const struct mtk_gate *clks;
++	size_t num_clks;
++};
++
++int mtk_clk_simple_probe(struct platform_device *pdev);
++
+ #endif /* __DRV_CLK_MTK_H */
 -- 
 2.18.0
 _______________________________________________
