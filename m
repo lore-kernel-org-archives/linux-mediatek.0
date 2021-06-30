@@ -2,82 +2,101 @@ Return-Path: <SRS0=UlKT=LY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1378C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D370C11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:41:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A97B660C3F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:40:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A97B660C3F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4656561D03
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 07:41:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4656561D03
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SPNaIxHaWItkD74t4QK4IY1sNQsnB2NVe0i/W+y1ozk=; b=fo2ShHwBD1moiq
-	crOxuUVVouJAY+z1YCMPZ3eCA+HzP4DxWHhb0hXot6dVre4tlRKUAMAWiTmAkR6apSrW1qPlUFmNy
-	RMo+38C+JYr4iM8gaShGM3llZk1RsE2Z/qfXcShzmO36lDOag0HQGR6KkBpOe4DzDHT3KCz4ifT0H
-	LZ59/tsE+2j/XMIHsItDIJmRJvZqUWa9E+rJi/OHrafxaHsg3nL71QGqlE3V7rgTR4Wnb01FulXkg
-	A6NN4JEs1FnzRTVlJgXYUhJsodlxHhpe1gEilMZRoWUiIjDaIAPDRi4dY+/IkzWmf905JdXckHTFD
-	HfO3L280PjEQM/0pEcQA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=TJcszR7ixRJuOZEFrVOMq5DcwHLDn2NM/LBFFpPzhMQ=; b=g2QRnPyFdZ+p5tHXwBIGadI/Uu
+	zrUlGD64n0JEyT40BPpyNGzSIMmKGJwRqm1ZSPysP2y/2xVoEfsj1ZOViYEgntkbEa1T4EioKzuSd
+	U+v348aWRfeUOfK/d1wm/1B567a1jlj2uDk3dlnmO++MCB82Su4kEYjWfvRFe4zXOOoM6oGYUwhD9
+	A5o5JKSYSc6W0o5gzCh0eseSdzz1B57U0qLpa6OTAu7gXdryjgO+JJs0RLzwVLGs47sBn+Ik64hpX
+	nVsiWwPrb+GLhtsAXegpn3kurBObOKNW7dmUHXAzgJ0S6oFoB/QldRFU2Zoi4gMc988v58VlHMVWi
+	Jq6ohl0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyUpO-00D9Ec-60; Wed, 30 Jun 2021 07:40:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lyUqb-00D9kL-0D; Wed, 30 Jun 2021 07:41:25 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyUnt-00D8aD-GO; Wed, 30 Jun 2021 07:38:39 +0000
-X-UUID: b7e85b4be29640beb1f66d549e7b7161-20210630
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=hAAqTd87Ivkb5KPR+upcyXIU+gTd67RWai42vi/jBM8=; 
- b=Tq4zJIjIsf9uJnpjJL1uKPdcRHDNduhhcFhwKPS0/pl7UEDWsa0DfiPiSOdXDQwy+vf+A5xuorYoGaOvVL1DAwRNX7n7RR/IOWB9KmmhbyF5yG9HboSi8F/KIi4i4lYb926bYkQgjMxTFOcg1bZjt1DK/PJsxsNUKQdtJMKnEQ0=;
-X-UUID: b7e85b4be29640beb1f66d549e7b7161-20210630
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1466985736; Wed, 30 Jun 2021 00:38:33 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 00:28:31 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 15:28:29 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 30 Jun 2021 15:28:22 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Bin Liu
- <bin.liu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Tomasz Figa <tfiga@chromium.org>,
- <xia.jiang@mediatek.com>, <maoguang.meng@mediatek.com>,
- <srv_heupstream@mediatek.com>, kyrie.wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v2,
- 9/9] media: mtk-jpegenc: Refactor jpegenc device run interface
-Date: Wed, 30 Jun 2021 15:27:59 +0800
-Message-ID: <1625038079-25815-10-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
+ id 1lyUq2-00D9Vr-TZ; Wed, 30 Jun 2021 07:40:52 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id
+ v20-20020a05600c2154b02901dcefb16af0so792464wml.5; 
+ Wed, 30 Jun 2021 00:40:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ESnsglEXUA/oJjny6ysW39DXZqWa0zaOszI34gO6+Xw=;
+ b=BZlmzT+xB4JIRTvah0usPFHMmSJcAwGpRUEE8yNnFHadXBng8BHWDGe5NiHn3I/pkk
+ b+mGUsQp1WgvWv7pNgLX3YWOrORvkrubrWsFPZ+SMC1WcjTq5vihnoId53id9aWpXGEt
+ cfUW8ILkisSYzEqTZ0YfCEimVggW6/PD/Oq4x+5gjF23O1oz3cc8LKU0wZZtMUFlcsuQ
+ bbRWnWIouTnYM7RJB3jEqEeUbIUTpvakZ8HBZ1AaY/k2XcywN0iZEXLm9xPz6/mtLL7B
+ OqMfZxxTUAjW6KHfhrM4GcVwsNg3Sem4MfILH9q0mJbakEYRrLX40grsNAzDq/PdgO3q
+ PiVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ESnsglEXUA/oJjny6ysW39DXZqWa0zaOszI34gO6+Xw=;
+ b=EApS/pwJBFFSUeXFMIWEGC2Ue9BKeuv2Z4yNVQrdYS6t6ZWp8ttGL0m5qjtn+e54nI
+ d9ERyiKwOMRTYfFB+ZAS9D0SNoBxm8q20hSFc58e1g1BlgB+aOCZF0f08xD+tCPcRt4s
+ YL5C85/VavJHMcF8iBZbYc0XQX8pEuKCVELpyC+Bi2lflCN/zoUZszxohTA95O4qUncX
+ NcRGVYBTg6501kowhOuD6beGwre6MvJoAwLtp6vn185v+9gVkJGNM4A6Pb4NxKWMbNYg
+ 5x/NEPwdJJFdPr+9lwg+92PvSa8537rmzcK5NFKwsuddBmtbO5TsBnYAMyVfJNNM52dL
+ Qmpw==
+X-Gm-Message-State: AOAM530OUZDSfXBBZ4AtM3jlZoNlj0SehI7bfWwWTIfpP2N9Ih3gGNri
+ l2PF4qfj9QlJBaEdcH4sP+Y=
+X-Google-Smtp-Source: ABdhPJzEHpvyW7L35YzdPCMfy3750B4ApNGNOi4nwfJuKIL34GnQ57OlGDecCLVHBqBhmzoTebMLlg==
+X-Received: by 2002:a1c:2985:: with SMTP id
+ p127mr37133724wmp.165.1625038849067; 
+ Wed, 30 Jun 2021 00:40:49 -0700 (PDT)
+Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
+ [89.6.132.55])
+ by smtp.gmail.com with ESMTPSA id s5sm21282739wrn.38.2021.06.30.00.40.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Jun 2021 00:40:48 -0700 (PDT)
+Subject: Re: [RESEND PATCH v2 3/4] soc: mediatek: pm-domains: Add support for
+ mt8195
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210616000659.28347-1-chun-jie.chen@mediatek.com>
+ <20210616000659.28347-4-chun-jie.chen@mediatek.com>
+ <3c7695d9-f7aa-0cb0-871a-f53daee0362d@collabora.com>
+ <526fc951eaf6c44f04c7a84786ca3c7ddf63a9d6.camel@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <4062efe7-b327-b33b-42d3-28570cae2c6e@gmail.com>
+Date: Wed, 30 Jun 2021 09:40:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <526fc951eaf6c44f04c7a84786ca3c7ddf63a9d6.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_003837_623367_33DB6186 
-X-CRM114-Status: GOOD (  19.66  )
+X-CRM114-CacheID: sfid-20210630_004051_016114_94FE6DA7 
+X-CRM114-Status: GOOD (  17.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,176 +113,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-modify jpegenc device run func interface and add worker for encode
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 109 ++++++++++++++++++++----
- 1 file changed, 94 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 0143baf8..190e405 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -985,38 +985,99 @@ static int mtk_jpeg_set_hw_param(struct mtk_jpeg_ctx *ctx,
- 	return 0;
- }
- 
--static void mtk_jpeg_enc_device_run(void *priv)
-+static void mtk_jpegenc_worker(struct work_struct *work)
- {
--	struct mtk_jpeg_ctx *ctx = priv;
-+	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
-+		jpeg_work);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+	struct mtk_jpeg_dev *comp_jpeg[MTK_JPEGENC_HW_MAX];
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
- 	unsigned long flags;
--	int ret;
-+	struct mtk_jpeg_src_buf *jpeg_src_buf, *jpeg_dst_buf;
-+	int ret, i, hw_id = 0;
-+	atomic_t *hw_rdy[MTK_JPEGENC_HW_MAX];
-+	struct clk *jpegenc_clk;
-+
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		comp_jpeg[i] = jpeg->hw_dev[i];
-+		hw_rdy[i] = &comp_jpeg[i]->hw_rdy;
-+	}
-+
-+retry_select:
-+	hw_id = mtk_jpeg_select_hw(ctx);
-+	if (hw_id < 0) {
-+		ret = wait_event_interruptible(jpeg->hw_wq,
-+				(atomic_read(hw_rdy[0]) ||
-+				atomic_read(hw_rdy[1])) > 0);
-+		if (ret != 0) {
-+			dev_err(jpeg->dev, "all HW are busy\n");
-+			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+			return;
-+		}
-+		dev_err(jpeg->dev, "NEW HW IDLE, please retry selcet!!!\n");
-+		goto retry_select;
-+	}
-+	atomic_dec(&comp_jpeg[hw_id]->hw_rdy);
- 
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-+	if (!src_buf) {
-+		dev_err(jpeg->dev, "get src_buf fail !!!\n");
-+		goto getbuf_fail;
-+	}
-+
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+	if (!dst_buf) {
-+		dev_err(jpeg->dev, "get dst_buf fail !!!\n");
-+		goto getbuf_fail;
-+	}
- 
--	ret = pm_runtime_get_sync(jpeg->dev);
--	if (ret < 0)
-+	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
-+	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-+
-+	jpeg_src_buf->curr_ctx = ctx;
-+	jpeg_src_buf->frame_num = ctx->total_frame_num;
-+	jpeg_dst_buf->curr_ctx = ctx;
-+	jpeg_dst_buf->frame_num = ctx->total_frame_num;
-+	ctx->total_frame_num++;
-+
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+
-+	mtk_jpeg_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-+
-+	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->pm.dev);
-+	if (ret < 0) {
-+		dev_err(jpeg->dev, "pm_runtime_get_sync fail !!!\n");
- 		goto enc_end;
-+	}
- 
--	schedule_delayed_work(&jpeg->job_timeout_work,
--			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-+	jpegenc_clk = comp_jpeg[hw_id]->pm.venc_clk.clk_info->jpegenc_clk;
-+	ret = clk_prepare_enable(jpegenc_clk);
-+	if (ret) {
-+		dev_err(jpeg->dev, "jpegenc clk_prepare_enable fail !!!\n");
-+		goto enc_end;
-+	}
- 
--	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-+			msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
- 
- 	/*
- 	 * Resetting the hardware every frame is to ensure that all the
- 	 * registers are cleared. This is a hardware requirement.
- 	 */
--	mtk_jpeg_enc_reset(jpeg->reg_base);
--
--	mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
--	mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf);
--	mtk_jpeg_set_enc_params(ctx, jpeg->reg_base);
--	mtk_jpeg_enc_start(jpeg->reg_base);
--	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	mtk_jpeg_enc_reset(comp_jpeg[hw_id]->reg_base[0]);
-+	mtk_jpeg_set_enc_dst(ctx,
-+			     comp_jpeg[hw_id]->reg_base[0],
-+			     &dst_buf->vb2_buf);
-+	mtk_jpeg_set_enc_src(ctx,
-+			     comp_jpeg[hw_id]->reg_base[0],
-+			     &src_buf->vb2_buf);
-+	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base[0]);
-+	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base[0]);
-+	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
- 	return;
- 
- enc_end:
-@@ -1024,9 +1085,20 @@ static void mtk_jpeg_enc_device_run(void *priv)
- 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	v4l2_m2m_buf_done(dst_buf, buf_state);
-+getbuf_fail:
-+	atomic_inc(&comp_jpeg[hw_id]->hw_rdy);
-+	mtk_jpeg_deselect_hw(jpeg, hw_id);
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- }
- 
-+static void mtk_jpeg_enc_device_run(void *priv)
-+{
-+	struct mtk_jpeg_ctx *ctx = priv;
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+
-+	queue_work(jpeg->workqueue, &ctx->jpeg_work);
-+}
-+
- static void mtk_jpeg_dec_device_run(void *priv)
- {
- 	struct mtk_jpeg_ctx *ctx = priv;
-@@ -1419,6 +1491,11 @@ static int mtk_jpeg_open(struct file *file)
- 		goto free;
- 	}
- 
-+	if (jpeg->variant->is_encoder) {
-+		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
-+		INIT_LIST_HEAD(&ctx->dst_done_queue);
-+	}
-+
- 	v4l2_fh_init(&ctx->fh, vfd);
- 	file->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
-@@ -1781,6 +1858,8 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
- 	v4l2_m2m_release(jpeg->m2m_dev);
- 	v4l2_device_unregister(&jpeg->v4l2_dev);
- 	mtk_jpeg_clk_release(jpeg);
-+	flush_workqueue(jpeg->workqueue);
-+	destroy_workqueue(jpeg->workqueue);
- 
- 	return 0;
- }
--- 
-2.6.4
+On 28/06/2021 15:15, Chun-Jie Chen wrote:
+> On Fri, 2021-06-25 at 11:07 +0200, Enric Balletbo i Serra wrote:
+>> Hi Chun-Jie Chen,
+>>
+>> Thank you for your patch.
+>>
+>> On 16/6/21 2:06, Chun-Jie Chen wrote:
+>>> Add domain control data including bus protection data size
+>>> change due to more protection steps in mt8195 and wakeup flag
+>>> in power domain for wakeup control in suspend.
+>>>
+>>
+>> The wakeup flag is used for different SoCs apart from mt8195, isn't
+>> it? I'd add
+>> this on a separate patch so it is not dependent on the mt8195
+>> changes. This will
+>> also make more clear that is not really a mt8195 thing and can help
+>> in case at
+>> some point we need to run a bisection because something is broken on
+>> another SoC.
+>>
+>> Thanks,
+>>   Enric
+>>
+>>
+> 
+> Yes, this wakeup flag also is used by other SoC like MT8173, but
+> missing this flag in new power domain driver(mtk-pm-domain.c).
+> I will separate this modification of wakeup flag from this patch but
+> put it in same series. 
+> 
+
+Sounds perfect.
+
+Regards,
+Matthias
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
