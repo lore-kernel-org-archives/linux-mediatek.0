@@ -4,85 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 06CE1C11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 03:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 082A1C11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 05:18:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C28F061D18
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 03:55:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C28F061D18
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id C28D861D2E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 05:18:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C28D861D2E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L/SKCKgyJk9UoRJ1DPz8G4MW2Mk81Po8ueFwiKSrHjU=; b=yqKtdLISn55KdX
-	8eaZmOiwRsPaRdw06McS9rkp0mX8g4yqbxKVcucZB6EyyxIoYdzkjYCaLjvqF+bHSjegnpfwzcvdf
-	YYlPGerm5t4jEqbWt8A7eBmTPC1XcBDQsk7ZmsSXdRM2sm6pA3d/OhKtKkGbOr+JgHDN0cD7u2KDN
-	VGUCpNQyLD5lvnwEEqY8yCvXvjcLOub5PF/My/e7lFT8uk+jjOQNMyOfeW3l/IDqAQbdOs/AG2ooo
-	JPdSvsFy8kFhXHyfE7vsRaO8ebkrfgzAt/60iiVa9G32kOFihJKiqLG30eZnfIV7XA/NKMRC8dH+u
-	1Vr4IeMD/pgzjAWalsdA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZUmbv6zkIJScwqFoub60DpCBV31Vz4IMa5jv9jwO0sM=; b=ixisxJ8FxIKG+t
+	PLdbpTdtH5sLrfYuI4W2RWjhCoHZb6xtgFAtBSiFLxYAQ7xuEi0gnEYSoUl8yusnFu3Ul4x+zVzv2
+	i+wyVw1LaviSkccKtpC9O3ELstTtJ+uMEVXSciWOnS/293nFwaFSaDh9AXH8BqBBjLv62x12yHIE7
+	SC2G+EDrPW0AIpvarVk8h/jIOR6ajX9gZFUTQxeLPBbg5vi30eOS7UPBfRzP+4/t+jCBTrYB+akJu
+	L4SxoGNIbuvlwfuq5fiw1CxoY+09cPRqqHdVFwU1LTOW9OMvA0yNdbEE9BBbDdnWM7T5vXwiNkfg2
+	fs0Pik8ekkQrJcvtaHpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyRJl-00CjP3-ID; Wed, 30 Jun 2021 03:55:17 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1lySc5-00CnnK-16; Wed, 30 Jun 2021 05:18:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyRJZ-00CjNW-FW
- for linux-mediatek@lists.infradead.org; Wed, 30 Jun 2021 03:55:06 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id
- p17-20020a17090b0111b02901723ab8d11fso476216pjz.1
- for <linux-mediatek@lists.infradead.org>; Tue, 29 Jun 2021 20:55:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XTRseahQAn7N0oXgs/qWK7jL4rGQhAjklYtYGhb1AyQ=;
- b=NO5OEIQsKYNpdr2LWayi7XLdIScBEOu4kjYg+ef74vvy8kzigpTWON3vmLPFeT5gTC
- f87p9QJk5st+s2ZG5dWu1HKfyRwJbDsbsauCW4e3auXjUhUmMsP3IxAZj9MRj9fiKDGL
- Zug8Ck07asx4KGT0rcv05OFwQUGLRNCCTVgOM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XTRseahQAn7N0oXgs/qWK7jL4rGQhAjklYtYGhb1AyQ=;
- b=s0lEWqAl2KYtKwzM2T01Z07ZmWwyElSkcox2NAQ/KwIGe7ZQRY/vcz6vmPFGG5ggYU
- UmDNjkPjZ+y69GO4TRcMhQhrB8j5WmzvmUlGMPs2Bx/pKosZ8mXfOVuh7QqU8UftKJDO
- iakGaM+XmdLJ/+tcJdEKPyQCzFoYbH6pR/k5jHDQbD9Q8ddkgEUHQjIXHGj9cRJc+9dl
- u1COkWStQEEVvQoz75rh7IEBZT9q2hNrUFMhV6/56lKhZ0OLI/jrORZOkRbIGUswVUs0
- aLipywU0DBYKS9LBUKt/RD0MKlQAYP8foGZ4NcXgaw5ANn9BXZTvMr9Ng4xCVCJimfSe
- uNxw==
-X-Gm-Message-State: AOAM531sevaw2kLDVqCPIkgIPocp+mceE7OuuoDVBl50PjdxVNsqsoNr
- 9h5vmEXJjLCJbNBRQ9KBif/TAw==
-X-Google-Smtp-Source: ABdhPJxpm0eVuqMaGGYVUYcbD+lr8qVwBZYtjBw5loLKQrjnuA9sFFcXJwaQZLigcKOJJXKjl8OsjA==
-X-Received: by 2002:a17:902:b193:b029:11a:a179:453a with SMTP id
- s19-20020a170902b193b029011aa179453amr30293113plr.69.1625025303074; 
- Tue, 29 Jun 2021 20:55:03 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:2f49:a14d:fd5:cbd3])
- by smtp.gmail.com with ESMTPSA id f6sm13264333pfj.28.2021.06.29.20.55.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Jun 2021 20:55:02 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	zhiyong.tao@mediatek.com
-Cc: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mt8183: kukui: use generic pin configs for i2c
- pins
-Date: Wed, 30 Jun 2021 11:54:44 +0800
-Message-Id: <20210630035443.2144958-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
+ id 1lySc0-00CnlC-M9; Wed, 30 Jun 2021 05:18:15 +0000
+X-UUID: c19d85d9180e4e4ca3ecfb711ff9233c-20210629
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=MH+mqjBR02/nS86La7ZkV7l/+Hezkty5e9B06ZI+OKc=; 
+ b=L8WEJDs78hULhorT48PB2U+yps3XW4WMvTECXJDlDQV34FmOfGafchJhdik1CnCt9UU3fJcCju/7hLsG/Ql/hpoOTv7TXfB8MNoeEFNVLWuUahUIyhvTZDnbwNraL8c93w9b7coxr62jAdmynfi2hVjhfRsoCI7KcTLktiyyDpM=;
+X-UUID: c19d85d9180e4e4ca3ecfb711ff9233c-20210629
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 917727538; Tue, 29 Jun 2021 22:18:09 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 29 Jun 2021 22:18:08 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 30 Jun 2021 13:18:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 30 Jun 2021 13:18:06 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
+ <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>
+Subject: [PATCH v1 3/5] arm64: dts: mt8195: add gce node
+Date: Wed, 30 Jun 2021 13:14:16 +0800
+Message-ID: <20210630051418.14044-4-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210630051418.14044-1-jason-jh.lin@mediatek.com>
+References: <20210630051418.14044-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210629_205505_545857_1D14363F 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20210629_221813_834429_C8CBAB17 
+X-CRM114-Status: UNSURE (   9.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,58 +90,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8183 i2c pins don't support PUPD register, so change to use generic
-pin configs instead of let it fail and fallback.
+add gce node on dts file.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Change-Id: I805455cb7c645cb5a24ce1c87fe891a807069123
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+This patch is based on [1]
+[1] Add Mediatek SoC MT8195 and evaluation board dts and Makefile
+    - https://patchwork.kernel.org/project/linux-mediatek/patch/20210601075350.31515-2-seiya.wang@mediatek.com/
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index ae549d55a94fc..69dc04c3f7fff 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -426,7 +426,7 @@ i2c0_pins: i2c0 {
- 		pins_bus {
- 			pinmux = <PINMUX_GPIO82__FUNC_SDA0>,
- 				 <PINMUX_GPIO83__FUNC_SCL0>;
--			mediatek,pull-up-adv = <3>;
-+			bias-pull-up;
- 			mediatek,drive-strength-adv = <00>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index c146a91c6272..38054196eea4 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -6,6 +6,7 @@
+ 
+ /dts-v1/;
+ #include <dt-bindings/clock/mt8195-clk.h>
++#include <dt-bindings/gce/mt8195-gce.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/power/mt8195-power.h>
+@@ -717,6 +718,26 @@
+ 			#clock-cells = <1>;
  		};
- 	};
-@@ -435,7 +435,7 @@ i2c1_pins: i2c1 {
- 		pins_bus {
- 			pinmux = <PINMUX_GPIO81__FUNC_SDA1>,
- 				 <PINMUX_GPIO84__FUNC_SCL1>;
--			mediatek,pull-up-adv = <3>;
-+			bias-pull-up;
- 			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
-@@ -453,7 +453,7 @@ i2c3_pins: i2c3 {
- 		pins_bus {
- 			pinmux = <PINMUX_GPIO50__FUNC_SCL3>,
- 				 <PINMUX_GPIO51__FUNC_SDA3>;
--			mediatek,pull-up-adv = <3>;
-+			bias-pull-up;
- 			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
-@@ -471,7 +471,7 @@ i2c5_pins: i2c5 {
- 		pins_bus {
- 			pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
- 				 <PINMUX_GPIO49__FUNC_SDA5>;
--			mediatek,pull-up-adv = <3>;
-+			bias-pull-up;
- 			mediatek,drive-strength-adv = <00>;
- 		};
- 	};
+ 
++		gce0: mdp_mailbox@10320000 {
++			compatible = "mediatek,mt8195-gce";
++			reg = <0 0x10320000 0 0x4000>;
++			interrupts = <GIC_SPI 226 IRQ_TYPE_LEVEL_HIGH 0>;
++			#mbox-cells = <3>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_GCE>,
++				 <&infracfg_ao CLK_INFRA_AO_GCE2>;
++			clock-names = "gce", "gce1";
++		};
++
++		gce1: disp_mailbox@10330000 {
++			compatible = "mediatek,mt8195-gce";
++			reg = <0 0x10330000 0 0x4000>;
++			interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_HIGH 0>;
++			#mbox-cells = <3>;
++			clocks = <&infracfg_ao CLK_INFRA_AO_GCE>,
++				 <&infracfg_ao CLK_INFRA_AO_GCE2>;
++			clock-names = "gce", "gce1";
++		};
++
+ 		uart0: serial@11001100 {
+ 			compatible = "mediatek,mt8195-uart", "mediatek,mt6577-uart";
+ 			reg = <0 0x11001100 0 0x100>;
 -- 
-2.32.0.93.g670b81a890-goog
-
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
