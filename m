@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B38EC11F65
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 55F3AC11F65
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 15:00:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 194316142C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 14:57:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 194316142C
+	by mail.kernel.org (Postfix) with ESMTPS id 2404B6142C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Jun 2021 15:00:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2404B6142C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,41 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pAxsQ/4Irw7AKU8zInzVG3u0zroTZusfEN7LFQKZsgs=; b=JTdQ7hf3vsumer
-	4sxb6CzvQCxL39L9QgXz0bRZ2QD2BxxvmDZm9Y1jUL7x286uNPm2BrATpU8AjDlAgxmOb3TpZuU8k
-	nqtUKXYfvGDpy3tYjItWpHkITxekPj78Mwzc9ghfi1ne4waCpdC/KgdmvrsixxxIpGrTkVr2mspj7
-	PIj/cXKgqJN/zPkRqaAoXT9CoWu74L5Hkzf3nC5iHMYzTVk5NtgaWSO/q1zfjfBXgP4p7h0h157Tf
-	foyyBJPFy0EHdFOlXHpuZMPQO0E/zWhcW+TPc4OFASUJd5Q44GqqogKpP0xp1drD5BNEfoTm5KKuX
-	EAcF+Xq+1AU3Mz5uSjSA==;
+	List-Owner; bh=OmFhJ3b9tbudILFlpZUSk3TdBt3PEygNK6qYdZqAo9M=; b=WssDlQwAKPAQZ1
+	UU006J0aeqbgL3zCPKEPRsQTjztODb0PPLj2y4nH2guNXCwTOhq0iTVuSIZNpcM3EdLxjB5ohjHiK
+	MUQhyKZnIe0UbiRLR0D9FIGa14KYWk7rlDrNNtdAtEAOALOtFv5PtBO46MZehVPLBpzs7QWaO0nYN
+	1x1Hu6r67x/gPBWc6GSeDZEnAR676zVlaE2IPCQH9GqRp6qyizYSYur3qY9OWLX+gB2l3Zo5xNmBe
+	DxatcI6/kJJ8YZH682IZiDAw2QPJ5t0EkX/85/QFMd71y1lKuPzSn2zWVhMGAyTVnTIrsSuWVNs7A
+	7czULEYJOQP4UxGT3PcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lybem-00EWJM-Ep; Wed, 30 Jun 2021 14:57:40 +0000
+	id 1lybhU-00EX8d-4C; Wed, 30 Jun 2021 15:00:28 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lybUQ-00ESos-OG; Wed, 30 Jun 2021 14:47:04 +0000
+ id 1lybUi-00ESsX-Ad; Wed, 30 Jun 2021 14:47:19 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 0CF001F435F0
+ (Authenticated sender: eballetbo) with ESMTPSA id 2DBB11F435EE
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: jitao.shi@mediatek.com, chunkuang.hu@kernel.org, matthias.bgg@gmail.com,
  drinkcat@chromium.org, eizan@chromium.org, kernel@collabora.com,
  linux-mediatek@lists.infradead.org, hsinyi@chromium.org,
- Crystal Guo <crystal.guo@mediatek.com>, Guenter Roeck <linux@roeck-us.net>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 1/6] arm64: dts: mediatek: Move reset controller constants
- into common location
-Date: Wed, 30 Jun 2021 16:46:41 +0200
-Message-Id: <20210630164623.1.I514d9aafff3a062f751b37d3fea7402f67595b86@changeid>
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH 3/6] arm64: dts: mt8173: Add the mmsys reset bit to reset the
+ dsi0
+Date: Wed, 30 Jun 2021 16:46:43 +0200
+Message-Id: <20210630164623.3.I7bd7d9a8da5e2894711b700a1127e6902a2b2f1d@changeid>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210630144646.868702-1-enric.balletbo@collabora.com>
 References: <20210630144646.868702-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_074700_615970_F4E6A958 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210630_074716_565165_E862743F 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,46 +71,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DT binding includes for reset controllers are located in
-include/dt-bindings/reset/. Move the Mediatek reset constants in there.
+Reset the DSI hardware is needed to prevent different settings between
+the bootloader and the kernel.
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                        | 2 +-
- include/dt-bindings/{reset-controller => reset}/mt2712-resets.h | 0
- include/dt-bindings/{reset-controller => reset}/mt8183-resets.h | 0
- include/dt-bindings/{reset-controller => reset}/mt8192-resets.h | 0
- 4 files changed, 1 insertion(+), 1 deletion(-)
- rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
- rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (100%)
- rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi  | 2 ++
+ include/dt-bindings/reset/mt8173-resets.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 27b4947b609f..085e2c96b5f4 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -11,7 +11,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/memory/mt8183-larb-port.h>
- #include <dt-bindings/power/mt8183-power.h>
--#include <dt-bindings/reset-controller/mt8183-resets.h>
-+#include <dt-bindings/reset/mt8183-resets.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/thermal/thermal.h>
- #include "mt8183-pinfunc.h"
-diff --git a/include/dt-bindings/reset-controller/mt2712-resets.h b/include/dt-bindings/reset/mt2712-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt2712-resets.h
-rename to include/dt-bindings/reset/mt2712-resets.h
-diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset/mt8183-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt8183-resets.h
-rename to include/dt-bindings/reset/mt8183-resets.h
-diff --git a/include/dt-bindings/reset-controller/mt8192-resets.h b/include/dt-bindings/reset/mt8192-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt8192-resets.h
-rename to include/dt-bindings/reset/mt8192-resets.h
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index e5596fe01a1d..36c3998eb7f1 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1036,6 +1036,7 @@ mmsys: syscon@14000000 {
+ 			assigned-clocks = <&topckgen CLK_TOP_MM_SEL>;
+ 			assigned-clock-rates = <400000000>;
+ 			#clock-cells = <1>;
++			#reset-cells = <1>;
+ 			mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
+ 				 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
+ 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+@@ -1262,6 +1263,7 @@ dsi0: dsi@1401b000 {
+ 				 <&mmsys CLK_MM_DSI0_DIGITAL>,
+ 				 <&mipi_tx0>;
+ 			clock-names = "engine", "digital", "hs";
++			resets = <&mmsys MT8173_MMSYS_SW0_RST_B_DISP_DSI0>;
+ 			phys = <&mipi_tx0>;
+ 			phy-names = "dphy";
+ 			status = "disabled";
+diff --git a/include/dt-bindings/reset/mt8173-resets.h b/include/dt-bindings/reset/mt8173-resets.h
+index ba8636eda5ae..6a60c7cecc4c 100644
+--- a/include/dt-bindings/reset/mt8173-resets.h
++++ b/include/dt-bindings/reset/mt8173-resets.h
+@@ -27,6 +27,8 @@
+ #define MT8173_INFRA_GCE_FAXI_RST       40
+ #define MT8173_INFRA_MMIOMMURST         47
+ 
++/* MMSYS resets */
++#define MT8173_MMSYS_SW0_RST_B_DISP_DSI0	25
+ 
+ /*  PERICFG resets */
+ #define MT8173_PERI_UART0_SW_RST        0
 -- 
 2.30.2
 
