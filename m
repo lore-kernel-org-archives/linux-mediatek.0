@@ -4,18 +4,18 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A3C2C11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AE79C11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:31:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3294261407
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:27:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3294261407
+	by mail.kernel.org (Postfix) with ESMTPS id DF15C61409
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:31:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF15C61409
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,70 +25,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=AtNSSSlZz+ea57Y8at7SWnhOhpIMhlkFnwg+eTlpLm0=; b=nt/4DXGUvPn00J9qjtoBRu/9+B
-	8fxSWOs6B5oPWjGVJOrvdnoyK9+W0INSiCS+HXP7Oo93BYMu+ByEdxY8KBkQveDomCSms+/2OPmIL
-	wcyggmYDMolYBkyzgjJihbcRNyoTHAkRBrOpqQYQ0Ht/LmpYe6BmjCMkeMFLw8ms+QXaW8ZvNHDlH
-	6f7MWBD+mvdqp0sS0ywE04ee+oI2N+0icymZYYiyU3++5/QEiXwSgQ4F5JDR74/CKSzW7xCq6FFtS
-	L4pvVIqyQi+afcjRwcnr/6bIxBCZ/Z3XK24RaKG9UmYUBK2yByvFn5V12J1JLdOKqv/4kBwWXggLa
-	1VfGxBJQ==;
+	bh=WyVspFklr+AEnwwZKpU2Xh2TgyS2lJNFvA+mhhfeTrQ=; b=cgrVISTmVE7CY1wVfi9G3qDsjx
+	zTCCkb9i8XgOzPtfoNYQSlWvfUeAIqQ6i0DL28H8JYF+69PafhovoHgwtYJruKCsmlO3rrAn4jApf
+	CLm56vNz5P7iydpx03RwabdqEj2B1ACe4/uInSapTUYTOUlcmwNIHnldR6O32cvrpxo9BlWD0cqLo
+	HYXlGExuTGVqhNLDnb/6UQpgu6lZByPLoFpC+gaidCiE73rmwYJuTnyhP0n7iRW5+2bp+5zdkaOY1
+	DA1oWiSn9DtiHkowNl/7jqLo0n48B6n+YxqaVyJzqfxnqIXHLWYLPhHhgtyeoXdnILEfHrJ2kTCV3
+	ivsF1TNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lz0TL-000bem-0N; Thu, 01 Jul 2021 17:27:31 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1lz0Wj-000cHR-I2; Thu, 01 Jul 2021 17:31:01 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lz0T7-000bcp-R1; Thu, 01 Jul 2021 17:27:19 +0000
-Received: by mail-wr1-x431.google.com with SMTP id i8so9295254wrc.0;
- Thu, 01 Jul 2021 10:27:15 -0700 (PDT)
+ id 1lz0Wh-000cGA-As; Thu, 01 Jul 2021 17:31:00 +0000
+Received: by mail-wm1-x330.google.com with SMTP id
+ g8-20020a1c9d080000b02901f13dd1672aso4645970wme.0; 
+ Thu, 01 Jul 2021 10:30:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+88KlZNNLOIm2DdqGH+4+ZuHLP9XUHctYTH3I53lf+8=;
- b=qXlJSeXS8ubK4FAzT8fLgFN9ZD3u2NyTmEjZrsUF4VSyVIFMFZSQbb27MKgTDTVhPH
- Vbnp3R5lCU+rSV84smwV/P5GEs1dWy2IAqFaqeyHfbTWyfQhHXDkfmxZ2fsAOcT0wt9n
- 5omRV2seNR92AEfs0j8a41BGhsefYTB3OHm4UDyQRehb4xnl2odDwx9W3IaCN91g3tWe
- MHhTnodpnL8peJURrxQDSrKF08KtWZZ4rRDfPuURcYMYl5/78UxPxb7cxvFA8B8T2bg6
- Ojt4n2grs+fJiK07J0KMldANkNyWg8YUSHx8OUkKg9XNt1K5pPpfG+d+ToGsvPZZZsaK
- fKsA==
+ bh=wB59Tcol7WFyeIqJfVL0G5i3exPR6uZKms17tlCBAcA=;
+ b=Y8ARRoqc+A3kGi68cV34ZqpfYcUNQk7PR0cfnBlk9Lcy+jS9GLKKIaDT7LnqR/4ZfU
+ lwW5OFcVy3apvlrcNpRuQlclhWKkBfiXPOVsVU6zs5R1lQg+pY5NfjCJCCw+qkhWXdFg
+ rW5B/pXvj7RKYopYjO2IqgNVUK2J/RMfhxt6T0O4mNfmLMnWnUXclbMK4Sa1zXyooqlI
+ 2KA4NIfDYFtih3LTEiBF03jeOBMny4UpdGyswCqm3Dg33cIXDLZLcm9YjRa09h6BXx00
+ zP2eQmh9gpMCXo8f9GNMR2gkSTZux1HfhOlN7ZV8huXyRgTx8aKg3jdAmNuuvhckdxqn
+ 26rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=+88KlZNNLOIm2DdqGH+4+ZuHLP9XUHctYTH3I53lf+8=;
- b=S+izY5eYpRLtnC4Z90WgdEuoOq6ISn4ay7T43gIGgdtUeyxdBbGFPrrZbJvnS1Cm46
- vg+EkLm2vZgtnRXPLXyuwaFaAIELatWr0cSLgkhuG+IdxyaK6eXlX1ozJON8UNOrvuFY
- plvkBMpAGopizZ4vFxRfbteewRwzYwaU8dDpUtJBJreFlP7SH1pvSf3ma3YrrCj8fQrr
- DmVmAycSVoce9A4mF/tn8bm8svxgz02n123elSPtC03IOzLxFsmjZ0BLWTknCmGDq6B6
- RGVH5C7oSFqJ+UDw6thbtTmE6UDDkAb4DpXc+IBy/STOw8twWapB/BzUwxD9Tr2YM5da
- Jalg==
-X-Gm-Message-State: AOAM530c81TLQ8YOMjB4hwbguSHeQsYPknaKQUW+6piLynEyIceDEON4
- +uA4hCZFnPGdiAITfratODmPtgmgg9jZAg==
-X-Google-Smtp-Source: ABdhPJxTiDHHiOn2vzTtLIolscc0obkiPhBZ9KyokX2MSHtthkSnk0yEo9O5omdr8fNfNdqZg/qBPQ==
-X-Received: by 2002:a5d:48ca:: with SMTP id p10mr921119wrs.87.1625160434440;
- Thu, 01 Jul 2021 10:27:14 -0700 (PDT)
+ bh=wB59Tcol7WFyeIqJfVL0G5i3exPR6uZKms17tlCBAcA=;
+ b=Y5hlcb18Q2ejfAly1ghqT+hW7+4+DagJIk8lszrArE6RwY21aO8DlUZcOW7miE5WKS
+ Xbzz8xECkQ0GlBq5h6jqTlim/GLjCrnoZ965+YnFCNhrkW/HngVbTY1uKcB23y+rx6+Y
+ q+xaRr+7GQwTCJAA1ARj5dHq2ejyaswQfJnMp9MAuTbQBvgKAXZBHeodGADSixoCnRtU
+ /L/bDMVPX9w1YsglizWQB53VYHz8WbPjv8okQUL8ByzVGQAxUXoSEhVLIcewVRPuOSM/
+ Mny4iwFcOzd6tTMywaDg5nXEUzN9OthG3xwhlWz3LoTTP9oPJavDxPCm8HPfx/CusCWg
+ 5+Hw==
+X-Gm-Message-State: AOAM532L+meo1q2xbol7r8g49CutD5CQ5HtAuFjklJNqBQRk3P/g16pn
+ NeD3Q4E1vBXLgt0IwfcSc48=
+X-Google-Smtp-Source: ABdhPJxq0hqSO0GgKP+IeHAM+Sv/K9Ww1tFO+oYT06t29roLupBgPd6bCKR7iRCdUtEV8d+GtGdsgg==
+X-Received: by 2002:a1c:8097:: with SMTP id b145mr11874162wmd.54.1625160657555; 
+ Thu, 01 Jul 2021 10:30:57 -0700 (PDT)
 Received: from ziggy.stardust ([213.195.127.100])
- by smtp.gmail.com with ESMTPSA id z6sm542191wrh.67.2021.07.01.10.27.13
+ by smtp.gmail.com with ESMTPSA id y7sm10089139wma.22.2021.07.01.10.30.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Jul 2021 10:27:13 -0700 (PDT)
-Subject: Re: [RESEND PATCH 0/3] Misc bug fixes in mtk power domain driver
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-kernel@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org, drinkcat@chromium.org,
- hsinyi@chromium.org, Collabora Kernel ML <kernel@collabora.com>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20210701094024.1273759-1-enric.balletbo@collabora.com>
+ Thu, 01 Jul 2021 10:30:57 -0700 (PDT)
+Subject: Re: [v11 01/19] dt-bindings: ARM: Mediatek: Add new document bindings
+ of MT8192 clock
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, 
+ Rob Herring <robh+dt@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, linux-clk@vger.kernel.org,
+ DTML <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
+ <20210630132804.20436-2-chun-jie.chen@mediatek.com>
+ <CAAOTY_8SgZ5SN9Q0nfL_jQVTbB7ZDqgoGFRkKe8+QJwUi55Hew@mail.gmail.com>
+ <da0db357ac7e41ca6ec2007eccccbb465049cd01.camel@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <736b909d-ed43-3691-6e93-e7f025a04833@gmail.com>
-Date: Thu, 1 Jul 2021 19:27:12 +0200
+Message-ID: <775b61ab-8a23-ab78-f7a8-11d09d7ded3f@gmail.com>
+Date: Thu, 1 Jul 2021 19:30:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.10.2
 MIME-Version: 1.0
-In-Reply-To: <20210701094024.1273759-1-enric.balletbo@collabora.com>
+In-Reply-To: <da0db357ac7e41ca6ec2007eccccbb465049cd01.camel@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_102717_930373_0F522E15 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20210701_103059_431976_3042729C 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,48 +110,28 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 01/07/2021 11:40, Enric Balletbo i Serra wrote:
-> 
-> This series, originally sent by Bilal Wasim [1], initially broke my
-> display in mainline (no gpu driver). The problem was not in the series
-> itself, and, after [2], this series works as expected. I was able to go
-> to the UI with and without the imgtec gpu driver on my Acer Chromebook
-> R13 (elm). Hence I rebased on top of mainline and resend it to take into
-> account for next merge window.
-> 
-
-Whole series pushed to v5.14-tmp/soc
-
-Thanks!
-
-> Best regards,
->   Enric
-> 
-> [1] https://yhbt.net/lore/all/20210216165926.46bbafc7@a-VirtualBox/T/
-> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20210625062448.3462177-1-enric.balletbo@collabora.com/
-> 
-> 
-> Bilal Wasim (3):
->   soc: mediatek: pm-domains: Use correct mask for bus_prot_clr
->   soc: mediatek: pm-domains: Add domain_supply cap for mfg_async PD
->   arm64: dts: mediatek: mt8173: Add domain supply for mfg_async
-> 
->  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8173-evb.dts  | 4 ++++
->  arch/arm64/boot/dts/mediatek/mt8173.dtsi     | 2 +-
->  drivers/soc/mediatek/mt8173-pm-domains.h     | 1 +
->  drivers/soc/mediatek/mtk-pm-domains.h        | 2 +-
->  5 files changed, 11 insertions(+), 2 deletions(-)
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAwMS8wNy8yMDIxIDA0OjEzLCBDaHVuLUppZSBDaGVuIHdyb3RlOgo+IE9uIFdlZCwgMjAy
+MS0wNi0zMCBhdCAyMjozMCArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPj4gSGksIENodW4t
+SmllOgo+Pgo+PiBDaHVuLUppZSBDaGVuIDxjaHVuLWppZS5jaGVuQG1lZGlhdGVrLmNvbT4g5pa8
+IDIwMjHlubQ25pyIMzDml6Ug6YCx5LiJIOS4i+WNiDk6MzDlr6vpgZPvvJoKPj4+Cj4+PiBUaGlz
+IHBhdGNoIGFkZHMgdGhlIG5ldyBiaW5kaW5nIGRvY3VtZW50YXRpb24gZm9yIHN5c3RlbSBjbG9j
+awo+Pj4gYW5kIGZ1bmN0aW9uYWwgY2xvY2sgb24gTWVkaWF0ZWsgTVQ4MTkyLgo+Pj4KPj4+IFNp
+Z25lZC1vZmYtYnk6IENodW4tSmllIENoZW4gPGNodW4tamllLmNoZW5AbWVkaWF0ZWsuY29tPgo+
+Pj4gUmV2aWV3ZWQtYnk6IFJvYiBIZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+Cj4+PiAtLS0KPj4K
+Pj4gW3NuaXBdCj4+Cj4+PiArCj4+PiArICAtIHwKPj4+ICsgICAgbW1zeXM6IGNsb2NrLWNvbnRy
+b2xsZXJAMTQwMDAwMDAgewo+Pgo+PiBtbXN5cyBpcyBhIHN5c3RlbSBjb250cm9sbGVyIHJhdGhl
+ciB0aGFuIGNsb2NrIGNvbnRyb2xsZXIsIGlzbid0IGl0Pwo+Pgo+PiBSZWdhcmRzLAo+PiBDaHVu
+LUt1YW5nLgo+Pgo+Pj4gKyAgICAgICAgY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTItbW1z
+eXMiOwo+Pj4gKyAgICAgICAgcmVnID0gPDB4MTQwMDAwMDAgMHgxMDAwPjsKPj4+ICsgICAgICAg
+ICNjbG9jay1jZWxscyA9IDwxPjsKPj4+ICsgICAgfTsKPj4+ICsKPiAKPiBUaGFua3MgZm9yIHlv
+dSByZW1pbmRlciwgSSB3aWxsIG1vdmUgbW1zeXMgdG8gc3lzdGVtIGNsb2NrIGNvbnRyb2xsZXIu
+Cj4gCgpUaGUgbW1zeXMgc2hvdWxkIGJlIGRvY3VtZW50ZWQgaW4gbWVkaWF0ZWssbW1zeXMudHh0
+CgpSZWdhcmRzLApNYXR0aGlhcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1tZWRpYXRlawo=
