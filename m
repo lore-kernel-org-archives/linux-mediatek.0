@@ -2,75 +2,82 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CEB8C11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 13:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A37E8C11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 14:04:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 040B4613F4
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 13:58:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 040B4613F4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6B40F613EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 14:04:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B40F613EF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=utktukg4MlnnveK2QjGmN2l35D9PeOXxAZ9X/PdwEiQ=; b=C0wiwYIyydYKoN
-	hT5JdKSG5WHnpJQIp49XQvnGVOQU8+p/Vr87hgY3y9OGP4YSM7zWtcGEN/UztYja3mLFmJDNRBkUB
-	AUkF5tDLvf1H35pk33Z0V25DsVjVMrwnc08lUYDj6ooEMNBnsg5Xb6m066LWGo5Zg5h25mlHsHetv
-	jzFk6Avlpsj2TYcnHe7OQaE11cIcjhCRzH5dpmO1z3003O+gkvy831PRn8RroeqMiHskkBRwBmT+0
-	NZBtg7SVAhQIoqaoP3imrnsvNyRjg6ixeQMjSoQ2pL1BFQ3zS6RPa8FU6M7NqzByqIwAqfntiVKbX
-	XruiEv8H+jBSwmkBvYSw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1fErDgWMMFMUI6sYO1Znwo7Z5PpSyGpHF66U39RX2a8=; b=5GpYYi+vKWXfvD
+	KJC765ffj8dKe7+9YjDyEaNyrVOPx8XZl4AnWKi388oOSjnJnb4hr8vEcNGdW7p3YW9bswqClXL8e
+	H7gPfH2p1ZGK3j1gS73+fMHOAInE07/L+1jDNotsbf9/A84U52/xLKASYwcw6oKdbA3vbPSk+2GAp
+	hsiXKkyE4HqGSwEH9Uq/9h/y6egqtwI1r+9vUmS+Pi2f58lflYXSS3qCIqIvqYhV8dfq7Q1KcpSey
+	VjCVeFsaBeV5sY88/Pa8v3GfEB9M5DyapDaPf/pQXltkMsIdSJFQISWzrZtQBWJ/gjs5XM30qpwl2
+	/XXZUa3VyQA+xpDHk5BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyxCT-00HYxo-Uu; Thu, 01 Jul 2021 13:57:53 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lyxIO-00HaAu-J1; Thu, 01 Jul 2021 14:04:00 +0000
+Received: from mail-il1-f181.google.com ([209.85.166.181])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyxCQ-00HYxG-3y
- for linux-mediatek@lists.infradead.org; Thu, 01 Jul 2021 13:57:52 +0000
-X-UUID: db296ca83d6545aa8a816c1c4cd597b0-20210701
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=wrr14FaHA4wIpogTu+JZgWa70h6eH+v2ahZhpbnIll4=; 
- b=HllfMRmwvhcKaL18P5msXr8k1jLqsupSckDVcT7uxZABh8KiZOPrVEGdr2fdIt/5TVdPxZOSUvhiQp9LXcVlHXzT7c5KdtHK/jkPp/AhhPe/YTFNwKlnERG4RNakX9Y0+u0sfbN8Zy8xaXnCl2P6wFPzn3qETDOVWBm9qImTsxo=;
-X-UUID: db296ca83d6545aa8a816c1c4cd597b0-20210701
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1762548151; Thu, 01 Jul 2021 06:57:43 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 1 Jul 2021 06:57:42 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 1 Jul 2021 21:57:35 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 1 Jul 2021 21:57:34 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Bo Jiao <bo.jiao@mediatek.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: remove the redundant code
-Date: Thu, 1 Jul 2021 21:57:07 +0800
-Message-ID: <20210701135707.4890-1-bo.jiao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-MIME-Version: 1.0
-X-TM-SNTS-SMTP: 0DF1C406BB4126187228194D36F4B3440EBD8C2B8B2EAD8C87A0C3A0514CFEA82000:8
-X-MTK: N
+ id 1lyxIB-00Ha83-0M; Thu, 01 Jul 2021 14:03:48 +0000
+Received: by mail-il1-f181.google.com with SMTP id t12so6424800ile.13;
+ Thu, 01 Jul 2021 07:03:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=bBAtbGxea4Uyvv49nbdyK4xv/8gJ5gfZXo1vPratG8A=;
+ b=HMbUvL7+34KkdvNV8/lnxnIGfmL2wT+zAvgtRvqOXWL3LTchTFrSX9+oxNk7+boaxT
+ fjAqWXJpwYXF+jtTo/FA0XUAfnqJRhFx6IRvd4zABwyrFUjILVqnV6MTdLRYdDzad/M2
+ tdCBOXLolIT9ALvX2qkWIbn7WZ4vQWXjLY1tRjYqay0IvAttXBZ9RsDA4rjhy3eSkIBS
+ 5B2fiPhzUegrB0VpCwpEaEe4UkdsaCycF7oSxxWXgM+BupYwsE8b8oIkYD4onRX0BfjS
+ grHYFJ36PAnMD3bSJeK6/tFhtkQxusbVz/hCZjF5X7vDtd9+qhztrvNorw37WpyY7RZa
+ 9+4w==
+X-Gm-Message-State: AOAM530Y20z9W5mK9EFP85ZveR1TxzqNk6RO547+q960kvswyxbEqN5G
+ V5i7hnfHrEO4NgN5Dw6ISA==
+X-Google-Smtp-Source: ABdhPJyww/o4rG1Xgg5+OFNePM+PG/LX43Ff1V/MH9eSJ83/mWZ4rTI2R7sC49n3N2R3tOttPwHezQ==
+X-Received: by 2002:a05:6e02:174b:: with SMTP id
+ y11mr30453947ill.207.1625148224856; 
+ Thu, 01 Jul 2021 07:03:44 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id u2sm44406ilm.19.2021.07.01.07.03.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Jul 2021 07:03:42 -0700 (PDT)
+Received: (nullmailer pid 2278706 invoked by uid 1000);
+ Thu, 01 Jul 2021 14:02:43 -0000
+From: Rob Herring <robh@kernel.org>
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Rob Herring <robh+dt@kernel.org>, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
+In-Reply-To: <20210630132804.20436-2-chun-jie.chen@mediatek.com>
+References: <20210630132804.20436-1-chun-jie.chen@mediatek.com>
+ <20210630132804.20436-2-chun-jie.chen@mediatek.com>
+Subject: Re: [v11 01/19] dt-bindings: ARM: Mediatek: Add new document bindings
+ of MT8192 clock
+Date: Thu, 01 Jul 2021 08:02:43 -0600
+Message-Id: <1625148163.568657.2278705.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_065751_013172_973A8024 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20210701_070347_094957_465AC543 
+X-CRM114-Status: GOOD (  13.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,70 +89,85 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+On Wed, 30 Jun 2021 21:27:46 +0800, Chun-Jie Chen wrote:
+> This patch adds the new binding documentation for system clock
+> and functional clock on Mediatek MT8192.
+> 
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../arm/mediatek/mediatek,mt8192-clock.yaml   | 214 ++++++++++++++++++
+>  .../mediatek/mediatek,mt8192-sys-clock.yaml   |  64 ++++++
+>  2 files changed, 278 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+>  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+> 
 
-remove the redundant code.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 11 ++++-------
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c |  7 +------
- 2 files changed, 5 insertions(+), 13 deletions(-)
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml:18:7: [warning] wrong indentation: expected 8 but found 6 (indentation)
+./Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml:19:7: [warning] wrong indentation: expected 8 but found 6 (indentation)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 2462704094b0..6f5f9540d8d2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1370,20 +1370,17 @@ void mt7915_mac_reset_counters(struct mt7915_phy *phy)
- {
- 	struct mt7915_dev *dev = phy->dev;
- 	bool ext_phy = phy != &dev->phy;
--	int i;
-+	int i = 0;
- 
- 	for (i = 0; i < 4; i++) {
- 		mt76_rr(dev, MT_TX_AGG_CNT(ext_phy, i));
- 		mt76_rr(dev, MT_TX_AGG_CNT2(ext_phy, i));
- 	}
- 
--	if (ext_phy) {
--		dev->mt76.phy2->survey_time = ktime_get_boottime();
-+	phy->mt76->survey_time = ktime_get_boottime();
-+	if (ext_phy)
- 		i = ARRAY_SIZE(dev->mt76.aggr_stats) / 2;
--	} else {
--		dev->mt76.phy.survey_time = ktime_get_boottime();
--		i = 0;
--	}
-+
- 	memset(&dev->mt76.aggr_stats[i], 0, sizeof(dev->mt76.aggr_stats) / 2);
- 
- 	/* reset airtime counters */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 863aa18b3024..62160ca721b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -975,12 +975,7 @@ mt7915_mcu_bss_rfch_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	}
- 
- 	if (vif->bss_conf.he_support && vif->type == NL80211_IFTYPE_STATION) {
--		struct mt7915_dev *dev = phy->dev;
--		struct mt76_phy *mphy = &dev->mt76.phy;
--		bool ext_phy = phy != &dev->phy;
--
--		if (ext_phy && dev->mt76.phy2)
--			mphy = dev->mt76.phy2;
-+		struct mt76_phy *mphy = phy->mt76;
- 
- 		ch->he_ru26_block =
- 			mt7915_check_he_obss_narrow_bw_ru(mphy->hw, vif);
--- 
-2.18.0
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml: properties:compatible: [{'enum': ['mediatek,mt8192-scp_adsp', 'mediatek,mt8192-imp_iic_wrap_c', 'mediatek,mt8192-audsys', 'mediatek,mt8192-imp_iic_wrap_e', 'mediatek,mt8192-imp_iic_wrap_s', 'mediatek,mt8192-imp_iic_wrap_ws', 'mediatek,mt8192-imp_iic_wrap_w', 'mediatek,mt8192-imp_iic_wrap_n', 'mediatek,mt8192-msdc_top', 'mediatek,mt8192-msdc', 'mediatek,mt8192-mfgcfg', 'mediatek,mt8192-mmsys', 'mediatek,mt8192-imgsys', 'mediatek,mt8192-imgsys2', 'mediatek,mt8192-vdecsys_soc', 'mediatek,mt8192-vdecsys', 'mediatek,mt8192-vencsys', 'mediatek,mt8192-camsys', 'mediatek,mt8192-camsys_rawa', 'mediatek,mt8192-camsys_rawb', 'mediatek,mt8192-camsys_rawc', 'mediatek,mt8192-ipesys', 'mediatek,mt8192-mdpsys']}] is not of type 'object', 'boolean'
+	from schema $id: http://json-schema.org/draft-07/schema#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml: properties:compatible: [{'enum': ['mediatek,mt8192-topckgen', 'mediatek,mt8192-infracfg', 'mediatek,mt8192-pericfg', 'mediatek,mt8192-apmixedsys']}, {'const': 'syscon'}] is not of type 'object', 'boolean'
+	from schema $id: http://json-schema.org/draft-07/schema#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml: ignoring, error in schema: properties: compatible
+warning: no schema found in file: ./Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml: ignoring, error in schema: properties: compatible
+warning: no schema found in file: ./Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.yaml
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.example.dt.yaml:0:0: /example-0/syscon@10000000: failed to match any schema with compatible: ['mediatek,mt8192-topckgen', 'syscon']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.example.dt.yaml:0:0: /example-1/syscon@10001000: failed to match any schema with compatible: ['mediatek,mt8192-infracfg', 'syscon']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.example.dt.yaml:0:0: /example-2/syscon@10003000: failed to match any schema with compatible: ['mediatek,mt8192-pericfg', 'syscon']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-sys-clock.example.dt.yaml:0:0: /example-3/syscon@1000c000: failed to match any schema with compatible: ['mediatek,mt8192-apmixedsys', 'syscon']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-0/clock-controller@10720000: failed to match any schema with compatible: ['mediatek,mt8192-scp_adsp']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-1/clock-controller@11007000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_c']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-2/clock-controller@11210000: failed to match any schema with compatible: ['mediatek,mt8192-audsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-3/clock-controller@11cb1000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_e']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-4/clock-controller@11d03000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_s']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-5/clock-controller@11d23000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_ws']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-6/clock-controller@11e01000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_w']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-7/clock-controller@11f02000: failed to match any schema with compatible: ['mediatek,mt8192-imp_iic_wrap_n']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-8/clock-controller@11f10000: failed to match any schema with compatible: ['mediatek,mt8192-msdc_top']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-9/clock-controller@11f60000: failed to match any schema with compatible: ['mediatek,mt8192-msdc']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-10/clock-controller@13fbf000: failed to match any schema with compatible: ['mediatek,mt8192-mfgcfg']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-11/clock-controller@14000000: failed to match any schema with compatible: ['mediatek,mt8192-mmsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-12/clock-controller@15020000: failed to match any schema with compatible: ['mediatek,mt8192-imgsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-13/clock-controller@15820000: failed to match any schema with compatible: ['mediatek,mt8192-imgsys2']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-14/clock-controller@1600f000: failed to match any schema with compatible: ['mediatek,mt8192-vdecsys_soc']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-15/clock-controller@1602f000: failed to match any schema with compatible: ['mediatek,mt8192-vdecsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-16/clock-controller@17000000: failed to match any schema with compatible: ['mediatek,mt8192-vencsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-17/clock-controller@1a000000: failed to match any schema with compatible: ['mediatek,mt8192-camsys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-18/clock-controller@1a04f000: failed to match any schema with compatible: ['mediatek,mt8192-camsys_rawa']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-19/clock-controller@1a06f000: failed to match any schema with compatible: ['mediatek,mt8192-camsys_rawb']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-20/clock-controller@1a08f000: failed to match any schema with compatible: ['mediatek,mt8192-camsys_rawc']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-21/clock-controller@1b000000: failed to match any schema with compatible: ['mediatek,mt8192-ipesys']
+Documentation/devicetree/bindings/arm/mediatek/mediatek,mt8192-clock.example.dt.yaml:0:0: /example-22/clock-controller@1f000000: failed to match any schema with compatible: ['mediatek,mt8192-mdpsys']
+\ndoc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1498893
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
