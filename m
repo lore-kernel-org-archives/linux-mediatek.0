@@ -2,80 +2,81 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EE92C11F6A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:01:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 417E3C11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:08:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B11361476
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:01:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B11361476
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0E3646146B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:08:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E3646146B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zd1wc0qBu36MlHuseoI49zXkCIQC7c/nqSffhOCOScQ=; b=z2MOjLxLsB4WzO
-	sGHikjunQhE08id9ZrwQAbDKREBmxddCWOO1tPxRLrEqyc6LveiVnHkaSkqtCb/zZYOKrFMx1qWLb
-	SUltbGhBwuZoMNcUrCsEQj2WettIDn0yxIPl1XVctkhIC53jW4fWJUTcWqMJYQjWIMXhVnP+Y72Mb
-	9f3+th5Q7P/9j1TKsrWy6AR+wh1oW+DXEQ4FpTByBjZR5eJUZI8nTd+EGHk5mMxeaNdAVnei8+J3k
-	lIWZWlIAs9bUW71RuH8PsHScB+2J2sLbJMd8QCgSxqimvadMH5Fr2h4BkJSHwDqkH7zzskXP8f0KP
-	ekI8eKWlV59EuvS23yoA==;
+	List-Owner; bh=qMGqBj8ec1bb+lrNJycfV54t0Cob4ewSoUrUOW5psJ4=; b=HbgPLKeWAFiYDr
+	yICi+PaI8K3aUgL8h5195IpegGG9hMI2C7x6BXA3Zp3KAEUgiJF2xZHSuPU+rBjHLJdjwIjgaI/34
+	PPDEYPeaTsNZy/l0O2SMAU0GmH/G8qEyUbUWYGdClz6RtCMLF3j9Em8v8BgKmJcsDaywhOlmccql+
+	sVZ/tVgH+2IjyCUrxhzUgKDoH2fT7F3LlBYpSFtJCzzhzHzbrZVCGYYVmOWRORqlUJ2aBNSRaC+ug
+	PYqaZhYSKS1c6dMNepqFCsoo1JECfmTqdi7DFFGQgrjNyvp/FVeBeIgzz7A+bUHuRaSloGXV+lZ/2
+	LNMr03xUZxfTgebO+ukw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lysZ5-00GcRP-0Y; Thu, 01 Jul 2021 09:00:55 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1lysfk-00GenC-8F; Thu, 01 Jul 2021 09:07:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lysXM-00GbiU-7d; Thu, 01 Jul 2021 08:59:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=2qqgC+Ulx5UrM01EMJZVrA3rn7EUXuF7xXclSNsscao=; b=hueftNHuJVVsy8VqzYarbH7xZ6
- OVqpjm1YF3YsRXMpBA9jY8na8Pb5Np44UNj+z3NT0Zr8bmiygqxQASHMJ3FJ48PrIY66O2CyW0q+M
- CMHrftyLF+oN2tuFIqWv7plKtDcNuCZzpmq+Tz9JoN43+LT+OBRSNn5LUqidFEUSSTHZVkQHKSf6E
- EFeEonSZHjDebT3OYHCeS+O7pgGaorDRmZ9O49Vv5s02ILgtEPDZ45vP4OJexU8k3uVwBkNxhAmbL
- SItpOa8tzZypbJVt+IDkP+i7Aux7rFjpuM0nvbpqnh60I6xqXpooyqZEhHUk17JXRKHBAxwDd3i/g
- JnAdCGlQ==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lysWh-006N2B-S9; Thu, 01 Jul 2021 08:58:34 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 029FA3001DC;
- Thu,  1 Jul 2021 10:58:24 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id D45642041E842; Thu,  1 Jul 2021 10:58:24 +0200 (CEST)
-Date: Thu, 1 Jul 2021 10:58:24 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Suren Baghdasaryan <surenb@google.com>
-Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com,
- vincent.guittot@linaro.org, dietmar.eggemann@arm.com,
- rostedt@goodmis.org, bsegall@google.com, mgorman@suse.de,
- bristot@redhat.com, matthias.bgg@gmail.com, minchan@google.com,
- timmurray@google.com, yt.chang@mediatek.com, wenju.xu@mediatek.com,
- jonathan.jmchen@mediatek.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-team@android.com,
- SH Chen <show-hong.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/1] psi: stop relying on timer_pending for poll_work
- rescheduling
-Message-ID: <YN2DsLlE+WtxK6K9@hirez.programming.kicks-ass.net>
-References: <20210630205151.137001-1-surenb@google.com>
+ id 1lysfL-00Gefx-MI; Thu, 01 Jul 2021 09:07:26 +0000
+X-UUID: 353c98beadb2415a953c7d8ba8a8b0b7-20210701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=vLKrgJuRc3ysI9+l11z4d3a6B3EDBD0K3aG3eX3QlZs=; 
+ b=KbxSfRIzvY3v4Zcq/hjKa1hll2XpsSxcSqmYNYnYOxps02uXQs/aQEpburACrS75i5E2+m8t7Jq6t/meaFW2LgkhnvXetJS+hDVmkgpDjvlJoqq/OIFOlubKaCeab6YTxWHKswVnZdN6MSKiRm3rhVXrhLXqsgnxhnRzFDDW/7k=;
+X-UUID: 353c98beadb2415a953c7d8ba8a8b0b7-20210701
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1778230339; Thu, 01 Jul 2021 02:07:19 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 1 Jul 2021 02:07:17 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 1 Jul 2021 17:07:09 +0800
+Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 1 Jul 2021 17:07:08 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: David Ahern <dsahern@gmail.com>
+CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <wsd_upstream@mediatek.com>, <rocco.yue@gmail.com>, <chao.song@mediatek.com>, 
+ <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>, Rocco Yue
+ <rocco.yue@mediatek.com>
+Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
+ addr_gen_mode
+Date: Thu, 1 Jul 2021 16:51:18 +0800
+Message-ID: <20210701085117.19018-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <46a9dbf2-9748-330a-963e-57e615a15440@gmail.com>
+References: <46a9dbf2-9748-330a-963e-57e615a15440@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210630205151.137001-1-surenb@google.com>
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210701_020725_234559_A9A19B96 
+X-CRM114-Status: GOOD (  18.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,13 +93,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 01:51:51PM -0700, Suren Baghdasaryan wrote:
-> +	/* cmpxchg should be called even when !force to set poll_scheduled */
-> +	if (atomic_cmpxchg(&group->poll_scheduled, 0, 1) && !force)
->  		return;
+On Wed, 2021-06-30 at 22:41 -0600, David Ahern wrote:
+> On 6/30/21 9:39 PM, Rocco Yue wrote:
+>> 
+>> Hi David,
+>> 
+>> Thanks for your review.
+>> 
+>> This patch is different with IN6_ADDR_GEN_MODE_NONE.
+>> 
+>> When the addr_gen_mode == IN6_ADDR_GEN_MODE_NONE, the Linux kernel
+>> doesn't automatically generate the ipv6 link-local address.
+>> 
+> 
+> ...
+> 
+>> 
+>> After this patch, when the "disable_gen_linklocal_addr" value of a device
+>> is 1, no matter in which addr_gen_mode, the Linux kernel will not automatically
+>> generate an ipv6 link-local for this device.
+>> 
+> 
+> those 2 sentences are saying the same thing to me.
+> 
+> for your use case, why is setting addr_gen_mode == 1 for the device not
+> sufficient?
+> 
 
-Why is that a cmpxchg() ?
+For mobile operators that don't need to support RFC7217, setting
+addr_gen_mode == 1 is sufficient;
 
+But for some other mobile operators that need to support RFC7217, such as AT&T,
+the mobile device's addr_gen_mode will be switched to the
+IN6_ADDR_GEN_MODE_STABLE_PRIVACY, instead of using IN6_ADDR_GEN_MODE_NONE.
+The purpose is: in the IN6_ADDR_GEN_MODE_STABLE_PRIVACY mode, kernel can
+gererate a stable privacy global ipv6 address after receiveing RA, and
+network processes can use this global address to communicate with the
+outside network.
+
+Of course, mobile operators that need to support RFC7217 should also meet
+the requirement of 3GPP TS 29.061, that is, MT should use IID assigned by
+the GGSN to build its ipv6 link-local address and use this address to send RS.
+We don't want the kernel to automatically generate an ipv6 link-local address
+when addr_gen_mode == 2. Otherwise, using the stable privacy ipv6 link-local
+address automatically generated by the kernel to send RS message, GGSN will
+not be able to respond to the RS and reply a RA message.
+
+Therefore, after this patch, kernel will not generate ipv6 link-local address
+for the corresponding device when addr_gen_mode == 1 or addr_gen_mode == 2.
+
+Thanks,
+Rocco
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
