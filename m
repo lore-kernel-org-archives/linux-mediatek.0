@@ -2,81 +2,87 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2956FC11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 03:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EFF8C11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 04:02:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E26F761476
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 03:55:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E26F761476
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C875361456
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 04:02:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C875361456
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EuzEzXYcOcHw/dmSSJyAlHIujHMalL2YiUMgX0A/gP8=; b=rrLRUa8KR0bebY
-	wtJkYlUkxhAl28XbuoThS2WifPggKFPStRPI37bohAbW4mwwI/I3e37N4d4j6E7lQxon81ArqX+x8
-	SzqTNKmQXTdVzDBv3s8AkiPfJI7WsuUl8IrRjhT/mxRsb2Unag2jIzQFmXY5a6D3wUvJ1Mr+15SZE
-	aQPLTx8LfAz43rtk+i0GXxPgLwULj9JppGtYlItn+fW63IMlmx+661D1JoNfHJ4CbI7B6TtEUOTmI
-	B+SuhKi5PFHPlPX5W41lbi5ah2c8pIk6GCuG984ReLLoCjuTB4hHhxot5a6/xLe5g1N7XaOqkyAYy
-	bgZkLT4dP6tNTWEsyTuQ==;
+	List-Owner; bh=A40JvXCd/zRr1F4VbT3QdTrpQetB1IrWsPvXy8rdrWg=; b=Bob8c8GtzmUwFV
+	3c/vuZtHcgCG1KTdeYA7fW1ZIV0zUPR2qEj/ll6LqzO6XgNa9cLP04fq0SHi2bWhJMb+sb6ys083t
+	twJglzOqwqj5wGSH6Y8XRA69eSjOb1UFNJBsQGyXh+QqAZPHwyT82mkif3Sacbl1v4wuqUm/Q78M3
+	q0NLR8SfM7XQBb1iBDQaGltJwjSKTEEq5lcumIHS7LCnUsAaVKwg5h1SYf2gD5j5K50WfU8tlTdj0
+	yT4y/Y1Y5zjkMZ8g2SsFixQ5T68uOeRjxEzinzr4LFJgvlD04Yo9Rc2azNqF1Rhq3Yo64aEC+Oxw1
+	eBQ5rLeMwe/1aUUiTWow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lynmu-00G1pl-22; Thu, 01 Jul 2021 03:54:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1lynuV-00G2Vb-Kj; Thu, 01 Jul 2021 04:02:43 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lynmh-00G1or-Fh; Thu, 01 Jul 2021 03:54:41 +0000
-X-UUID: 7e768edbb5e14cda987c43cc0921049c-20210630
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=KN3oAAemHHFvCF9v/HX+SJ0J3X1Or7LX10jsEdOq/N0=; 
- b=vEpbwynGSIWXaK1XyMpfZO+IJWT0jRN2PpA8Fbkprn6htTyGOGFH0/F5Ezm+dYWNhWTQ6eCr7TGNWbHy2qMWwyIOVNC2hmqymmseZYHe/+3Cr/KkZeGtV1vdgo25KizzesU7KPVK8W1o459zxQkQ5iTy1Dzs1VoLsx6daUBtc7w=;
-X-UUID: 7e768edbb5e14cda987c43cc0921049c-20210630
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 94610807; Wed, 30 Jun 2021 20:54:36 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 30 Jun 2021 20:54:35 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 1 Jul 2021 11:54:34 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 1 Jul 2021 11:54:33 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@gmail.com>
-CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <wsd_upstream@mediatek.com>, <rocco.yue@gmail.com>, <chao.song@mediatek.com>, 
- <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>, Rocco Yue
- <rocco.yue@mediatek.com>
-Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
- addr_gen_mode
-Date: Thu, 1 Jul 2021 11:39:20 +0800
-Message-ID: <20210701033920.5167-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <3c0e5c52-4204-ae1e-526a-5f3a5c9738c2@gmail.com>
-References: <3c0e5c52-4204-ae1e-526a-5f3a5c9738c2@gmail.com>
+ id 1lynuI-00G2U5-C2
+ for linux-mediatek@lists.infradead.org; Thu, 01 Jul 2021 04:02:32 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id q18so9232017lfc.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 30 Jun 2021 21:02:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7hi2FrhIaizwpDJPwnSinv9W2oMvoHm0CGYALUuuXDs=;
+ b=kWWeltzlSYGGc5QRSaAkNEu3wbwvMTyMjx7Hi1Du8rAm3U1ZDS7a2a2e9GB/JtvpeI
+ 3iWP3ESanAX0jItDlj8NFWAfWGDMbaPHtU+xbFrBLaplzEIJyb0VhMk8diCaNxGaxuzy
+ R8XGe8kox80GEpIggg2eFJJwK/ZKq3i11ixHY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7hi2FrhIaizwpDJPwnSinv9W2oMvoHm0CGYALUuuXDs=;
+ b=cmcKd/NrcNAQSaH4iH+2iYo0MIlHuVHEMqylEbwa0K83sf2G4hblSD+6mpFXolKXp3
+ 3M95U0BKsJRpRbgfVgiluUolP/yp31AVpLiq/nOgI0Y1BzjmBDHFwBDVIuhT/XP9CR06
+ WsztLIrTWQtNYKAHv79xMFIPqoDC3wO6EplxQYCHb4Ws0JCn8+9fHRxCFDO17MothxLg
+ biZgRXRHo6ZshIq+NBJnKet8VGkItbKcLAn0wrI1pbqShPCMtkedBvUX0BCR8i0zoJEa
+ yBLuKUgJNyyyvXmieRQbG37szCSQUpH/d8byEh/UaWaRLUAcifYFF924DUTUM7lYFUTK
+ gqnQ==
+X-Gm-Message-State: AOAM532TG6VxL/OcYfG+59xLw9/ZzFBEYmufNCnsurgqgz3Qf9Xp2IUR
+ 0nfJ3lKgOeVKwZOSgh1bjwHjinEYyLUnPIrb/cBRSg==
+X-Google-Smtp-Source: ABdhPJw/v6AwK/W5MblRaHBzvNcBF8/BLoJuYBeXADDntlPIgf2Bpc9gBKz0UhSMGyatSQ8BxnhizhHgp4pWwKlsVxw=
+X-Received: by 2002:a05:6512:63:: with SMTP id
+ i3mr29997663lfo.587.1625112148504; 
+ Wed, 30 Jun 2021 21:02:28 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
+ <20210616224743.5109-4-chun-jie.chen@mediatek.com>
+ <CAGXv+5F2zTcqnjH2ud38vUD149KJtgxhPQME2Mk6-vGtQv+2YQ@mail.gmail.com>
+ <ff6179e8-06f9-fbba-c704-a74381c2149a@gmail.com>
+ <CAGXv+5FXuMnhsnytLYKKA9YE97bps7KnkDNADvv8f_wdTqnrfg@mail.gmail.com>
+ <be824462-4c2f-3bde-0a3d-c5470a5b0fbb@gmail.com>
+In-Reply-To: <be824462-4c2f-3bde-0a3d-c5470a5b0fbb@gmail.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 1 Jul 2021 12:02:17 +0800
+Message-ID: <CAGXv+5FSq-cCRR-wB_kp2s+59273r0nrhtkH9006ezN-sUtNzQ@mail.gmail.com>
+Subject: Re: [PATCH 03/22] clk: mediatek: Fix corner case of tuner_en_reg
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, srv_heupstream@mediatek.com, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210630_205439_574807_F7CA5B3B 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20210630_210230_480691_32C4B9C8 
+X-CRM114-Status: GOOD (  27.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +99,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-06-30 at 21:03 -0600, David Ahern wrote:
-On 6/30/21 7:59 PM, Rocco Yue wrote:
->> This patch provides an ipv6 proc file named
->> "disable_gen_linklocal_addr", its absolute path is as follows:
->> "/proc/sys/net/ipv6/conf/<iface>/disable_gen_linklocal_addr".
->> 
->> When the "disable_gen_linklocal_addr" value of a device is 1,
->> it means that this device does not need the Linux kernel to
->> automatically generate the ipv6 link-local address no matter
->> which IN6_ADDR_GEN_MODE is used.
->> 
-> 
-> doesn't this duplicate addr_gen_mode == 1 == IN6_ADDR_GEN_MODE_NONE?
-> 
+"On Wed, Jun 30, 2021 at 7:43 PM Matthias Brugger
+<matthias.bgg@gmail.com> wrote:
+> On 30/06/2021 13:09, Chen-Yu Tsai wrote:
+> > On Wed, Jun 30, 2021 at 6:53 PM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+> >> On 30/06/2021 09:31, Chen-Yu Tsai wrote:
+> >>> On Thu, Jun 17, 2021 at 7:01 AM Chun-Jie Chen
+> >>> <chun-jie.chen@mediatek.com> wrote:
+> >>>>
+> >>>> On MT8195, tuner_en_reg is moved to register offest 0x0.
+> >>>> If we only judge by tuner_en_reg, it may lead to wrong address.
+> >>>> Add tuner_en_bit to the check condition. And it has been confirmed,
+> >>>> on all the MediaTek SoCs, bit0 of offset 0x0 is always occupied by
+> >>>> clock square control.
+> >>>>
+> >>>> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> >>>
+> >>> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> >>>
+> >>> Though you might want to consider converting these types of checks into feature
+> >>> flags.
+> >>>
+> >>
+> >> Yes I think adding a feature flag is the way to go. Luckily there are only a few
+> >> SoCs that will need updates at the same time.
+> >
+> > I also see that the different clock modules are tied together using only clock
+> > names written in the drivers, instead of clock references in the device tree.
+> >
+>
+> Not sure I understand what you mean. Do you refer to something like [1]? That's
+> because the clock is probed by the DRM driver, as they share the same compatible
+> and IP block.
 
-Hi David,
+In the example driver you mentioned, most of the registered clocks have the same
+parent clock, "mm_sel". This clock is from another hardware block,
+"topckgen" [1].
 
-Thanks for your review.
+The two are linked together by looking up the clock name. The link should be
+explicitly described in the device tree, instead of implicitly by some name
+found in two drivers. The consuming driver can fetch the clock name via
+of_clk_get_parent_name(), or be migrated to use `struct clk_parent_data`,
+which allows specifying local (to the DT node) clock names or clk indices
+as parent clk references.
 
-This patch is different with IN6_ADDR_GEN_MODE_NONE.
+What's more confusing is that the mmsys node actually has "assigned-clocks"
+properties [2] referencing the "mm_sel" clock, but not "clock" properties
+referencing the same clock. On the surface this looks like the hardware
+is trying to configure clocks that it doesn't use.
 
-When the addr_gen_mode == IN6_ADDR_GEN_MODE_NONE, the Linux kernel
-doesn't automatically generate the ipv6 link-local address.
+Also, Maxime Ripard made the argument before that "assigned-clock-rates"
+doesn't give any real guarantees that the clock rate won't change. A
+better method is to request and "lock" the clock rate in the consuming
+driver.
 
-But when the addr_gen_mode == IN6_ADDR_GEN_MODE_STABLE_PRIVACY, the
-Linux kernel will still automatically generate an ipv6 link-local
-address.
+So overall I think there are many improvements that can be made to the
+Mediatek clk drivers. They aren't real blockers to new drivers though,
+and I think each would take some effort and coordination across all
+the SoCs.
 
-Among global mobile operators, some operators have already request
-MT (Mobile Terminal) to support RFC7217, such as AT&T. In this case,
-addr_gen_mode will be set to IN6_ADDR_GEN_MODE_STABLE_PRIVACY to
-support RFC7217. This means that the device not only needs the IID
-assigned by the GGSN to build the ipv6 link-local address to trigger
-the RS message, but also needs to use the stable privacy mode to build
-the ipv6 global address after receiving the RA.
 
-After this patch, when the "disable_gen_linklocal_addr" value of a device
-is 1, no matter in which addr_gen_mode, the Linux kernel will not automatically
-generate an ipv6 link-local for this device.
+Regards
+ChenYu
 
-Thanks,
-Rocco
+[1] https://elixir.bootlin.com/linux/latest/source/drivers/clk/mediatek/clk-mt8173.c#L545
+[2] https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt8173.dtsi#L996
+
+
+> Regards,
+> Matthias
+>
+> [1]
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/clk/mediatek/clk-mt8173-mm.c?h=v5.13#n139
+>
+> > Unfortunately reworking this would likely require a lot more work. I previously
+> > did a bit of internal reworking for the sunxi drivers. While not the same, I
+> > think the plumbing required is comparable.
+> >
+> > ChenYu
+> >
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
