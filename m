@@ -2,59 +2,80 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B570AC11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:41:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 38A3DC11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 11:29:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F93B6144F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:41:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7F93B6144F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0192061467
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 11:29:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0192061467
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5g9jx28Vrl1c06uq7yEo0R/gkkZnPWhNZuCS6YMWcZI=; b=kv0An1hVQWgvDQ
-	uXXmsCd/t/a7V7oKHnlbp0K4nhZ2jc+7YOITj/u4mNcRJk6nNs2JXhnNhEtZv7CP7WlfHTD2+ZxPm
-	ZB6amiHWHqde/hOmRjua9IEpDw1AbieLH6u3SDHVnJCN6wA4dtmqlpxlb3DyDoYmeczcCg3epo9Ez
-	x3qExJFuW/BrsL7biuQTJvdXijM8NWMHqaqCab4tZd57T0l6YoXnl4jpxXkHXsGeZzQriOarMWjTT
-	ZDkBEmptKaMESUPSr1x/ktD0l8GF86ixOSZqTv8O1U+kPSxThwk8ka8Af0xUiWhYS4Y6QMBbRMyxw
-	xcSGI03EZyZr4kf3BV+A==;
+	List-Owner; bh=6BdfgOHpWzVzmivBokuh8ky2nzTjBOFhHY96n5kbW7k=; b=oQCCaK3VhAa0w+
+	OjoKwepktayIcpr0rKqIkhNdPHNcQrm/AxTT3Z+UCc1egJJaoci/43YEpE0n/4kLvTYd7REY32oms
+	dZZ8trUoln8+TR3O3Nm4tyMOooR5mj+KWtzuTP0/GIWT/LgJkg45d5kxFNi4waP3fGOr9lQ1poO+n
+	AEVeedM+bSJIezCmo1RvvSU9A0Ol1vriPzcnLr7m7LI3uJI5ULLRv04VVxAfPEWHZtp4TnS6VbiRD
+	mcJfOBW7xFKvOVTgzXgVOJX0eaViIvDuel740f33WZGjyO/OQU/ZJyHUd0Y6rRF/IHkNr2twXBimZ
+	VNGzmSjGFjEQlcVMoD9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lytC3-00GmxJ-64; Thu, 01 Jul 2021 09:41:11 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1lyut8-00H2ct-MF; Thu, 01 Jul 2021 11:29:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lytBT-00Gmky-Cn; Thu, 01 Jul 2021 09:40:36 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id A60281F43DE2
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- drinkcat@chromium.org, hsinyi@chromium.org,
- Collabora Kernel ML <kernel@collabora.com>,
- Bilal Wasim <Bilal.Wasim@imgtec.com>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: [RESEND PATCH 3/3] arm64: dts: mediatek: mt8173: Add domain supply
- for mfg_async
-Date: Thu,  1 Jul 2021 11:40:24 +0200
-Message-Id: <20210701114012.RESEND.3.I9e27871bb700c807a564957302b292e9935dae0b@changeid>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210701094024.1273759-1-enric.balletbo@collabora.com>
-References: <20210701094024.1273759-1-enric.balletbo@collabora.com>
+ id 1lyut5-00H2c5-PX; Thu, 01 Jul 2021 11:29:45 +0000
+X-UUID: 7ec952e363eb46108e659371e8316cc9-20210701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=O7mnMgacfM+PDoX+KrXWapm3R0wi39txk8DWCXpl9Ug=; 
+ b=N4LsFibUzIlRdkb+LFMyWrUKAVy4VKtoaLFYT+sTIcsUujH1T5GRNwGNZWNWiSygUCpefWVsGi+0fwfIoxJ2XXfxUJm+xFYcroJRQwfLdTEgX1D5FfP3a4H0WfDFGnl06FmRYi3t0zCvmW06A3Xu0T0YYsmAZiQD4gw41/crydE=;
+X-UUID: 7ec952e363eb46108e659371e8316cc9-20210701
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 327973089; Thu, 01 Jul 2021 04:26:49 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 1 Jul 2021 04:26:47 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 1 Jul 2021 19:26:41 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 1 Jul 2021 19:26:40 +0800
+Message-ID: <1625138800.17751.2.camel@mhfsdcap03>
+Subject: Re: [PATCH v2] pinctrl: mediatek: Fix fallback behavior for
+ bias_set_combo
+From: zhiyong tao <zhiyong.tao@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: <hui.liu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Sean Wang
+ <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <linux-mediatek@lists.infradead.org>,
+ <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+Date: Thu, 1 Jul 2021 19:26:40 +0800
+In-Reply-To: <CAGXv+5Ecbttkw1AAG5KofoR1oDW-ot68BL1OR=Jpiii8v8DTyw@mail.gmail.com>
+References: <20210701080955.2660294-1-hsinyi@chromium.org>
+ <CAGXv+5Ecbttkw1AAG5KofoR1oDW-ot68BL1OR=Jpiii8v8DTyw@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 94021A8371E21F668833002CF2AEE8052927E0CD0813736C787753A19F2D86B22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_024035_590523_9D2D005B 
-X-CRM114-Status: GOOD (  10.80  )
+X-CRM114-CacheID: sfid-20210701_042943_874360_5870C2B9 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,69 +92,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bilal Wasim <Bilal.Wasim@imgtec.com>
-
-da9211 regulator needs to be enabled before enabling the mfg_async power
-domain. Otherwise the subdomain is not enabled and causes failure in
-imgtec gpu driver boot.
-
-Add the "domain-supply" property to the "mfg_async" node in DT.
-
-Signed-off-by: Bilal Wasim <Bilal.Wasim@imgtec.com>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts  | 4 ++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi     | 2 +-
- 3 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 21452c51a20a..a8efff2071bf 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -157,6 +157,10 @@ hdmi_connector_in: endpoint {
- 	};
- };
- 
-+&mfg_async {
-+	domain-supply = <&da9211_vgpu_reg>;
-+};
-+
- &cec {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-index f6a1738dfbaa..4fa1e93302c7 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-evb.dts
-@@ -62,6 +62,10 @@ usb_p0_vbus: regulator@1 {
- 	};
- };
- 
-+&mfg_async {
-+	domain-supply = <&da9211_vgpu_reg>;
-+};
-+
- &cec {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 003a5653c505..dbda5d656b29 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -504,7 +504,7 @@ power-domain@MT8173_POWER_DOMAIN_USB {
- 					reg = <MT8173_POWER_DOMAIN_USB>;
- 					#power-domain-cells = <0>;
- 				};
--				power-domain@MT8173_POWER_DOMAIN_MFG_ASYNC {
-+				mfg_async: power-domain@MT8173_POWER_DOMAIN_MFG_ASYNC {
- 					reg = <MT8173_POWER_DOMAIN_MFG_ASYNC>;
- 					clocks = <&clk26m>;
- 					clock-names = "mfg";
--- 
-2.30.2
-
+On Thu, 2021-07-01 at 16:41 +0800, Chen-Yu Tsai wrote:
+> On Thu, Jul 1, 2021 at 4:10 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
+> >
+> > Some pin doesn't support PUPD register, if it fails and fallbacks with
+> > bias_set_combo case, it will call mtk_pinconf_bias_set_pupd_r1_r0() to
+> > modify the PUPD pin again.
+> >
+> > Since the general bias set are either PU/PD or PULLSEL/PULLEN, try
+> > bias_set or bias_set_rev1 for the other fallback case. If the pin
+> > doesn't support neither PU/PD nor PULLSEL/PULLEN, it will return
+> > -ENOTSUPP.
+> >
+> > Fixes: 81bd1579b43e ("pinctrl: mediatek: Fix fallback call path")
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 
 _______________________________________________
 Linux-mediatek mailing list
