@@ -2,81 +2,80 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D5C0C11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 08:41:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EE92C11F6A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:01:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2CA77613F1
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 08:41:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2CA77613F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1B11361476
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 09:01:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B11361476
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8zhlSmL3z18yI7QjIbzSYjmbUglcE2tN7wUdmDgf2U4=; b=NxDmR/INqhVwRk
-	wVDy73rd/NfQHTEScMHhJCamXCA6hBiEjogNkYVqx8vdiF/Zr7DlByWN28+ym4wag0EICnT7zxJZ9
-	1lr03i2KWIZUZfnmF2ZQykdg9QCAGFNb0eFWWtNNz0gFafcuWcN7vP3YCpEI27/C17vmSKiUtXvgm
-	E3vY/Ni9Pm/3uJ9hezRT20bSOAHvIxIv55qZDk3CR0TKKX3ja0WmpT83KBRXdK8H0gZZt3C63e8S3
-	o3dsElDhLClbuxzzl9Z8dRn4vWQONypDi3+BzubCcNZIzH/jZa00cF3ICrEuq1pEL+qQlHy+sE0eK
-	vv7QX+9j2fo8yO6PP/mg==;
+	List-Owner; bh=zd1wc0qBu36MlHuseoI49zXkCIQC7c/nqSffhOCOScQ=; b=z2MOjLxLsB4WzO
+	sGHikjunQhE08id9ZrwQAbDKREBmxddCWOO1tPxRLrEqyc6LveiVnHkaSkqtCb/zZYOKrFMx1qWLb
+	SUltbGhBwuZoMNcUrCsEQj2WettIDn0yxIPl1XVctkhIC53jW4fWJUTcWqMJYQjWIMXhVnP+Y72Mb
+	9f3+th5Q7P/9j1TKsrWy6AR+wh1oW+DXEQ4FpTByBjZR5eJUZI8nTd+EGHk5mMxeaNdAVnei8+J3k
+	lIWZWlIAs9bUW71RuH8PsHScB+2J2sLbJMd8QCgSxqimvadMH5Fr2h4BkJSHwDqkH7zzskXP8f0KP
+	ekI8eKWlV59EuvS23yoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lysG5-00GXbg-M5; Thu, 01 Jul 2021 08:41:17 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1lysZ5-00GcRP-0Y; Thu, 01 Jul 2021 09:00:55 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lysG2-00GXae-PW
- for linux-mediatek@lists.infradead.org; Thu, 01 Jul 2021 08:41:16 +0000
-Received: by mail-lj1-x234.google.com with SMTP id x20so7350766ljc.5
- for <linux-mediatek@lists.infradead.org>; Thu, 01 Jul 2021 01:41:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=94oP0rsAT+ayytaK2fzZltuXE6U/Q4mr4HlOcI5ZZUc=;
- b=IYfWYr+Ll1UHRSBEQLgPnx0M/OFTM1LsCjadsw0+P1P68+KYnrpVzB9D0/zTj9eTDY
- n1sST4eb5nWLIAUz/KUoAO7T9Rz22Xb4TEvo8pHlUXDZhtrw9kF4ndiBAHSvYuo3qjyi
- qeoha0gJyPVepVX2k8QfzsjvcJFw0paxkGH4g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=94oP0rsAT+ayytaK2fzZltuXE6U/Q4mr4HlOcI5ZZUc=;
- b=cNlBxyix/6lzGB8DqLgI9UTVc9pVEsB+KSEkmBjpe+zWvfQOYi/9k3pGoGGNjvZ6Uq
- S+x7j7zve/+WNMAnXvCKNcdo+CspPJZzM3QTwgIe5PiUeOU34wGWol766LiOHE1DhwfQ
- to5O8scatgukLa6dxSO1tujS5kJ0QuLClVXds1DCmDpTY6+uMW+OwRBFDSHTFeJ+dpYd
- KsyIMhjeYpQSxSAekIPivAFIVxq+v/9Q4mXbO3DJMMph2Yq91Rm3gKoSHP87JmTEcp4F
- EWb0GawbipgPkXZR/+USly+aM6tn8DpruQoUkhxDnsIW3Y4kGzr3aURAn8zfbfPnIXMK
- 0xRQ==
-X-Gm-Message-State: AOAM530hRk376Oe9884T9p3e/NF3I6hckq84uXHSA/rmkCDBKJEsmqWM
- AnjJ67b5QvismSwsbBWtdOxyes6A1RguCM9Gq37rUw==
-X-Google-Smtp-Source: ABdhPJwIdOfvGf0L+sdqDn+8ax6dglU62QnDYlxOrENc/AZUpEnZMm4CzLSj2dG+W2SfU2waOpppkNuVrFn+raLvkGw=
-X-Received: by 2002:a05:651c:32e:: with SMTP id
- b14mr11049376ljp.251.1625128871805; 
- Thu, 01 Jul 2021 01:41:11 -0700 (PDT)
+ id 1lysXM-00GbiU-7d; Thu, 01 Jul 2021 08:59:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=2qqgC+Ulx5UrM01EMJZVrA3rn7EUXuF7xXclSNsscao=; b=hueftNHuJVVsy8VqzYarbH7xZ6
+ OVqpjm1YF3YsRXMpBA9jY8na8Pb5Np44UNj+z3NT0Zr8bmiygqxQASHMJ3FJ48PrIY66O2CyW0q+M
+ CMHrftyLF+oN2tuFIqWv7plKtDcNuCZzpmq+Tz9JoN43+LT+OBRSNn5LUqidFEUSSTHZVkQHKSf6E
+ EFeEonSZHjDebT3OYHCeS+O7pgGaorDRmZ9O49Vv5s02ILgtEPDZ45vP4OJexU8k3uVwBkNxhAmbL
+ SItpOa8tzZypbJVt+IDkP+i7Aux7rFjpuM0nvbpqnh60I6xqXpooyqZEhHUk17JXRKHBAxwDd3i/g
+ JnAdCGlQ==;
+Received: from j217100.upc-j.chello.nl ([24.132.217.100]
+ helo=noisy.programming.kicks-ass.net)
+ by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1lysWh-006N2B-S9; Thu, 01 Jul 2021 08:58:34 +0000
+Received: from hirez.programming.kicks-ass.net
+ (hirez.programming.kicks-ass.net [192.168.1.225])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (Client did not present a certificate)
+ by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 029FA3001DC;
+ Thu,  1 Jul 2021 10:58:24 +0200 (CEST)
+Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
+ id D45642041E842; Thu,  1 Jul 2021 10:58:24 +0200 (CEST)
+Date: Thu, 1 Jul 2021 10:58:24 +0200
+From: Peter Zijlstra <peterz@infradead.org>
+To: Suren Baghdasaryan <surenb@google.com>
+Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com,
+ vincent.guittot@linaro.org, dietmar.eggemann@arm.com,
+ rostedt@goodmis.org, bsegall@google.com, mgorman@suse.de,
+ bristot@redhat.com, matthias.bgg@gmail.com, minchan@google.com,
+ timmurray@google.com, yt.chang@mediatek.com, wenju.xu@mediatek.com,
+ jonathan.jmchen@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel-team@android.com,
+ SH Chen <show-hong.chen@mediatek.com>
+Subject: Re: [PATCH v2 1/1] psi: stop relying on timer_pending for poll_work
+ rescheduling
+Message-ID: <YN2DsLlE+WtxK6K9@hirez.programming.kicks-ass.net>
+References: <20210630205151.137001-1-surenb@google.com>
 MIME-Version: 1.0
-References: <20210701080955.2660294-1-hsinyi@chromium.org>
-In-Reply-To: <20210701080955.2660294-1-hsinyi@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 1 Jul 2021 16:41:01 +0800
-Message-ID: <CAGXv+5Ecbttkw1AAG5KofoR1oDW-ot68BL1OR=Jpiii8v8DTyw@mail.gmail.com>
-Subject: Re: [PATCH v2] pinctrl: mediatek: Fix fallback behavior for
- bias_set_combo
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- zhiyong.tao@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_014114_912105_0D5510CE 
-X-CRM114-Status: GOOD (  11.19  )
+Content-Disposition: inline
+In-Reply-To: <20210630205151.137001-1-surenb@google.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,21 +92,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 1, 2021 at 4:10 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
->
-> Some pin doesn't support PUPD register, if it fails and fallbacks with
-> bias_set_combo case, it will call mtk_pinconf_bias_set_pupd_r1_r0() to
-> modify the PUPD pin again.
->
-> Since the general bias set are either PU/PD or PULLSEL/PULLEN, try
-> bias_set or bias_set_rev1 for the other fallback case. If the pin
-> doesn't support neither PU/PD nor PULLSEL/PULLEN, it will return
-> -ENOTSUPP.
->
-> Fixes: 81bd1579b43e ("pinctrl: mediatek: Fix fallback call path")
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+On Wed, Jun 30, 2021 at 01:51:51PM -0700, Suren Baghdasaryan wrote:
+> +	/* cmpxchg should be called even when !force to set poll_scheduled */
+> +	if (atomic_cmpxchg(&group->poll_scheduled, 0, 1) && !force)
+>  		return;
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Why is that a cmpxchg() ?
 
 _______________________________________________
 Linux-mediatek mailing list
