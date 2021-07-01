@@ -2,93 +2,79 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBCCFC11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 18:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5369BC11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 19:43:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88FE861420
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 18:23:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 88FE861420
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4CDD861400
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 19:43:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CDD861400
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=jJbexjUbtZRrtkZTZGbQ6JKcWDsWAbji+Tas3GEBSHo=; b=NkZ9zT56OO/UNWL6n7z8QLQYnQ
-	ArH8mAxOMrppOEPqHRuF1TmksiToR4uR77VLfeOz132PIdroUhf6387aXu+s7lyw7t7Lhq7Rbfocs
-	kY6XZz8Z8Fed29KgxoRrUY+dkmrHTy+RNDY4ottljBX9ryPSfk0tplO3hQRPDe6Ds0JvxWOaHhwhj
-	XQtgWl7J1COEx3gdSRqNZXF9JiVyYgPJVfJ3ijpT0DgsFQMqQonMejxc6U3erXYTMw1bEK9jDP/pi
-	9byqquUMSWBZKQLEnNy50Glg1x0zdEMz4LI9yCMOmKXGLvsgabvw5Qq3/2zuaeYKwu9sbYzAZ28Yz
-	PP5i+3xw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hT0/mOkdNZO3pOLiZ9aHhhqQF9V5oexS8Mcp/2tQbrs=; b=oNNUUtmu4uL2y0
+	qmxYmbsH3HXciyjvIkma2Q39XRLIJ8AZCw3LED0iN8AprIkg8zwQsJ+Ix5YwKCDrF8ydYD9EYPUwy
+	FW4igMM36SCN1IV/25iQ8Oak2acYOktAQyuafbgC/uOeVShiQhi3Yji1FbiNGG2QLjVFqPSMvHEkd
+	x7076xdYqb7GjyPBzA4YSMuLUU/0Z6yuHbJsYPKJux9TLGP73pu7nRoyNhd/hu22U21k/tJLizPy5
+	D6jiYvQcmTmTg3SxZ/Sf/d/vsZShEsEBa4s/XwyXzh9MqSFb1LH4b7CoeM1A4QnGeUhYC6XAmS4fR
+	uU2+ElbnM/7rIuHG6qKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lz1Li-000ko3-IC; Thu, 01 Jul 2021 18:23:42 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1lz2ax-000ui7-F2; Thu, 01 Jul 2021 19:43:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lz1LV-000kld-C6; Thu, 01 Jul 2021 18:23:31 +0000
-Received: by mail-wr1-x430.google.com with SMTP id t15so6041908wry.11;
- Thu, 01 Jul 2021 11:23:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ZxmVOrKDm4TqyDOJJeK/a3gQ6/dLX1TaTimXoID5uaE=;
- b=LeOYEBffty5OObQL6UIoam3EkFwh1EmpCbTvOhdn3/0TjsWibxdIhfT57C7/9xXfVe
- 7SWqQSuFKvP54PQvXkJR1Oy8iMjWnDI27IRPdtZadZ/AREu7hOzOSauYXkfXrMbDdkN7
- FLtpkmQRz10gR8Qk6fYLvAj6i3bmbBtU9d0oq8HZN21j+mBpUP8qNTsbH9yrRmu+N8kV
- h5z+ezrnRG/OA4WjuWZJ7boeDbtb125gtIK4i6S9SemZLTuj68awE4NsWu7zPWYx+WEb
- uze75TCY9FvbxLqN/rdWg02Icr2VYIW7AbguFw69m56O7fRbyaPiVeKdPiMTlQz8BK+c
- Frig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ZxmVOrKDm4TqyDOJJeK/a3gQ6/dLX1TaTimXoID5uaE=;
- b=CwS93Ygijqy32xjNJXF9dTIPU7X9BoU/nS7sjPY1hZ8Lsx3ZBdLVBt9H304Bafk/Kt
- yLLNXLYLpBB5BZVJ6lJ2657UM9hvqezbVZ02RcUUtkQkg94XELNsIjP3XkrkTegC4+g0
- 4PalLNwCHM4pfzVVBSMpUb9gYcPlZQ9K7PzvTiuTpuxuJYWe0qjh8MlYwTjDyEu+ELd2
- i+QFFw/aUAgE0paMjKRQODQWsZ9qR5h7/rKTqbAENJaVdEEk/7ZTKxm01fQP7sTm8wHt
- SAFSDMig0petoB7i355CBRXvwqGy4QqTPaRYtkzt5eRt//dDcT+R0QBiT0sBY1Jd0XRj
- 8ArQ==
-X-Gm-Message-State: AOAM531QPTw8i+sE1BOgDjHIcwO9zJFWalH+97YcvY6w6qbKvvIXlFHU
- 4z+vEsEWoIcyXDWhvrXyK8U=
-X-Google-Smtp-Source: ABdhPJz0nYHdm23jHeEXdCe3t0MrEMVd2jNmTQ9jkWnnKTwArBLbqUyIaOT+IHjcdv+BPN1mE2QKOQ==
-X-Received: by 2002:adf:dd82:: with SMTP id x2mr1149622wrl.303.1625163801947; 
- Thu, 01 Jul 2021 11:23:21 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.127.100])
- by smtp.gmail.com with ESMTPSA id r9sm2028632wmh.40.2021.07.01.11.23.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Jul 2021 11:23:21 -0700 (PDT)
-Subject: Re: [PATCH 2/2] arm64: dts: mt8183: add kukui platform audio node
-To: Kansho Nishida <kansho@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, devicetree@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Shunli Wang <shunli.wang@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>
-References: <20210630090710.1873559-1-kansho@chromium.org>
- <20210630180652.2.I6e9ce0f2a489f9a52299656cd966b38ae75e7552@changeid>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <7fed89b3-5c44-05a0-98f6-17d0080634a5@gmail.com>
-Date: Thu, 1 Jul 2021 20:23:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ id 1lz2as-000uhg-Eb
+ for linux-mediatek@lists.infradead.org; Thu, 01 Jul 2021 19:43:29 +0000
+X-UUID: 0fc988ca5ca54778b8c0c022913ef3d0-20210701
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=LbdOdh6WxtPy4j78n6K3wFYU17Jq+IgDjpYG7XC6pto=; 
+ b=kU34I47RKiilel4FvhG0fOKEFOThUT+sh2haaTJNnpSwpzF+9ibK2AyrSu/safqrQbKIdlDIcAp5AgMtMurp+C+2di1iMRxcFIrPP+J8j5eKakKI2tdsSzn4O5G1l7J9AEoqed7zGgZF00m+U24wNMm9kip9nnBUYe5mEaEQVd0=;
+X-UUID: 0fc988ca5ca54778b8c0c022913ef3d0-20210701
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <mark-yw.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1701770783; Thu, 01 Jul 2021 12:43:22 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 1 Jul 2021 12:43:21 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 2 Jul 2021 03:43:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 2 Jul 2021 03:43:07 +0800
+From: <mark-yw.chen@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
+ <sean.wang@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <michaelfsun@google.com>, <shawnku@google.com>, <jemele@google.com>,
+ <apusaka@google.com>, mark-yw.chen <mark-yw.chen@mediatek.com>
+Subject: [PATCH v4 2/2] Bluetooth: btusb: Support Bluetooth Reset for Mediatek
+ Chip(MT7921)
+Date: Fri, 2 Jul 2021 03:42:43 +0800
+Message-ID: <20210701194243.5449-2-mark-yw.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210701194243.5449-1-mark-yw.chen@mediatek.com>
+References: <20210701194243.5449-1-mark-yw.chen@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210630180652.2.I6e9ce0f2a489f9a52299656cd966b38ae75e7552@changeid>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_112329_499479_D6776F76 
-X-CRM114-Status: GOOD (  20.13  )
+X-CRM114-CacheID: sfid-20210701_124327_946151_649EA744 
+X-CRM114-Status: GOOD (  16.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,527 +91,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
 
+When the firmware hang or command no response, driver can reset the
+bluetooth mcu via USB to recovery it. The reset steps as follows.
 
-On 30/06/2021 11:07, Kansho Nishida wrote:
-> Set pin control for the SoC sound node.
-> The compatibles are set by each model dts.
-> 
-> The codecs that each models use are:
-> burnet       ts3a227_max98357
-> damu         da7219_max98357
-> fennel       da7219_rt1015p
-> fennel14     da7219_rt1015p
-> juniper      ts3a227_max98357
-> kakadu       da7219_rt1015p
-> kappa        ts3a227_max98357
-> kenzo        ts3a227_max98357
-> kodama       ts3a227_max98357
-> krane        ts3a227_max98357
-> willow-sku0  da7219_max98357
-> willow-sku1  ts3a227_max98357
-> 
-> Signed-off-by: Kansho Nishida <kansho@chromium.org>
-> ---
-> 
->  arch/arm64/boot/dts/mediatek/mt6358.dtsi      |  1 +
->  .../mt8183-kukui-audio-da7219-max98357a.dtsi  | 13 ++++
->  .../mt8183-kukui-audio-da7219-rt1015p.dtsi    | 13 ++++
->  .../mediatek/mt8183-kukui-audio-da7219.dtsi   | 54 +++++++++++++++
->  .../mt8183-kukui-audio-max98357a.dtsi         | 13 ++++
->  .../mediatek/mt8183-kukui-audio-rt1015p.dtsi  | 13 ++++
->  ...mt8183-kukui-audio-ts3a227e-max98357a.dtsi | 13 ++++
->  .../mt8183-kukui-audio-ts3a227e-rt1015p.dtsi  | 13 ++++
->  .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi | 32 +++++++++
->  .../mediatek/mt8183-kukui-jacuzzi-burnet.dts  |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-damu.dts    |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-fennel.dtsi |  1 +
->  .../mt8183-kukui-jacuzzi-juniper-sku16.dts    |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-kappa.dts   |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-kenzo.dts   |  1 +
->  .../mt8183-kukui-jacuzzi-willow-sku0.dts      |  1 +
->  .../mt8183-kukui-jacuzzi-willow-sku1.dts      |  1 +
->  .../boot/dts/mediatek/mt8183-kukui-kakadu.dts |  1 +
->  .../dts/mediatek/mt8183-kukui-kodama.dtsi     |  1 +
->  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi |  5 ++
->  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 67 +++++++++++++++++--
->  21 files changed, 243 insertions(+), 4 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6358.dtsi b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> index fa159b20379e..95145076b7e6 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6358.dtsi
-> @@ -13,6 +13,7 @@ pmic: mt6358 {
->  
->  		mt6358codec: mt6358codec {
->  			compatible = "mediatek,mt6358-sound";
-> +			mediatek,dmic-mode = <0>; /* two-wires */
->  		};
->  
->  		mt6358regulator: mt6358regulator {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi
-> new file mode 100644
-> index 000000000000..37177952cb4f
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
+1. Cancel USB transfer requests before reset.
+2. It use speicific USB HW Register to reset Bluetooth MCU, at the
+   same time, the USB Endpoint0 still keep alive.
+3. Poll the USB HW register until reset is completed by Endpoint0.
+4. To recovery unexpected USB state and behavior during resetting the
+   Bluetooth MCU, the driver need to reset the USB device for MT7921.
+5. After the reset is completed, the Bluetooth MCU need to re-setup,
+   such as download patch, power-on sequence and etc.
 
-Dual license GPL + MIT if possible.
-That holds for all files in this series.
+Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 127 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 127 insertions(+)
 
-Regards,
-Matthias
-
-> +/*
-> + * Google Kukui (and derivatives) da7219-max98357a sound card.
-> + *
-> + * Copyright 2019 Google LLC.
-> + */
-> +
-> +#include "mt8183-kukui-audio-da7219.dtsi"
-> +#include "mt8183-kukui-audio-max98357a.dtsi"
-> +
-> +&sound {
-> +	compatible = "mediatek,mt8183_da7219_max98357";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi
-> new file mode 100644
-> index 000000000000..24316d2460d5
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) da7219-rt1015p sound card.
-> + *
-> + * Copyright 2020 Google LLC.
-> + */
-> +
-> +#include "mt8183-kukui-audio-da7219.dtsi"
-> +#include "mt8183-kukui-audio-rt1015p.dtsi"
-> +
-> +&sound {
-> +	compatible = "mediatek,mt8183_da7219_rt1015p";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
-> new file mode 100644
-> index 000000000000..4c5598f71ac6
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
-> @@ -0,0 +1,54 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) audio fragment for da7219.
-> + *
-> + * Copyright 2020 Google LLC.
-> + */
-> +
-> +&i2c5 {
-> +	da7219: da7219@1a {
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&da7219_pins>;
-> +		compatible = "dlg,da7219";
-> +		reg = <0x1a>;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <165 IRQ_TYPE_LEVEL_LOW 165 0>;
-> +
-> +		dlg,micbias-lvl = <2600>;
-> +		dlg,mic-amp-in-sel = "diff";
-> +		VDD-supply = <&pp1800_alw>;
-> +		VDDMIC-supply = <&pp3300_alw>;
-> +		VDDIO-supply = <&pp1800_alw>;
-> +
-> +		status = "okay";
-> +
-> +		da7219_aad {
-> +			dlg,adc-1bit-rpt = <1>;
-> +			dlg,btn-avg = <4>;
-> +			dlg,btn-cfg = <50>;
-> +			dlg,mic-det-thr = <500>;
-> +			dlg,jack-ins-deb = <20>;
-> +			dlg,jack-det-rate = "32ms_64ms";
-> +			dlg,jack-rem-deb = <1>;
-> +
-> +			dlg,a-d-btn-thr = <0xa>;
-> +			dlg,d-b-btn-thr = <0x16>;
-> +			dlg,b-c-btn-thr = <0x21>;
-> +			dlg,c-mic-btn-thr = <0x3E>;
-> +		};
-> +	};
-> +};
-> +
-> +&pio {
-> +	da7219_pins: da7219_pins {
-> +		pins1 {
-> +			pinmux = <PINMUX_GPIO165__FUNC_GPIO165>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +};
-> +
-> +&sound {
-> +	mediatek,headset-codec = <&da7219>;
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi
-> new file mode 100644
-> index 000000000000..05da27cd88a7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) audio fragment for max98357a.
-> + *
-> + * Copyright 2020 Google LLC.
-> + */
-> +
-> +/ {
-> +	max98357a: max98357a {
-> +		compatible = "maxim,max98357a";
-> +		sdmode-gpios = <&pio 175 0>;
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi
-> new file mode 100644
-> index 000000000000..dc836c9686fa
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) audio fragment for rt1015p.
-> + *
-> + * Copyright 2020 Google LLC.
-> + */
-> +
-> +/ {
-> +	rt1015p: rt1015p {
-> +		compatible = "realtek,rt1015p";
-> +		sdb-gpios = <&pio 175 0>;
-> +	};
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi
-> new file mode 100644
-> index 000000000000..129da9ac3219
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) ts3a227e-max98357a sound card.
-> + *
-> + * Copyright 2020 Google LLC.
-> + */
-> +
-> +#include "mt8183-kukui-audio-max98357a.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e.dtsi"
-> +
-> +&sound {
-> +	compatible = "mediatek,mt8183_mt6358_ts3a227_max98357";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi
-> new file mode 100644
-> index 000000000000..2a95c42d38bc
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi
-> @@ -0,0 +1,13 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) mt6358-ts3a227-rt1015p sound card.
-> + *
-> + * Copyright 2021 Google LLC.
-> + */
-> +
-> +#include "mt8183-kukui-audio-ts3a227e.dtsi"
-> +#include "mt8183-kukui-audio-rt1015p.dtsi"
-> +
-> +&sound {
-> +	compatible = "mediatek,mt8183_mt6358_ts3a227_rt1015p";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
-> new file mode 100644
-> index 000000000000..af07648dd335
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
-> @@ -0,0 +1,32 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Google Kukui (and derivatives) audio fragment for ts3a227e.
-> + *
-> + * Copyright 2019 Google LLC.
-> + */
-> +
-> +&i2c5 {
-> +	ts3a227e: ts3a227e@3b {
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&ts3a227e_pins>;
-> +		compatible = "ti,ts3a227e";
-> +		reg = <0x3b>;
-> +		interrupt-parent = <&pio>;
-> +		interrupts = <157 IRQ_TYPE_LEVEL_LOW>;
-> +		status = "okay";
-> +	};
-> +};
-> +
-> +&pio {
-> +	ts3a227e_pins: ts3a227e_pins {
-> +		pins1 {
-> +			pinmux = <PINMUX_GPIO157__FUNC_GPIO157>;
-> +			input-enable;
-> +			bias-pull-up;
-> +		};
-> +	};
-> +};
-> +
-> +&sound {
-> +	mediatek,headset-codec = <&ts3a227e>;
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> index a8d6f32ade8d..1a2ec0787d3c 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	model = "Google burnet board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-> index 42ba9c00866c..0eca3ff8672a 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi.dtsi"
-> +#include "mt8183-kukui-audio-da7219-max98357a.dtsi"
->  
->  / {
->  	model = "Google damu board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel.dtsi
-> index bbe6c338f465..577519a775c0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel.dtsi
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi.dtsi"
-> +#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
->  
->  &mt6358codec {
->  	mediatek,dmic-mode = <1>; /* one-wire */
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-> index 36d2c3b3cadf..bc2c57f0a827 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi-juniper.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	model = "Google juniper sku16 board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
-> index b3f46c16e5d7..e5bd9191e426 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	model = "Google kappa board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts
-> index 6f1aa692753a..8fa89db03e63 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi-juniper.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	model = "Google kenzo sku17 board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts
-> index 281265f082db..89208b843b27 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi-willow.dtsi"
-> +#include "mt8183-kukui-audio-da7219-max98357a.dtsi"
->  
->  / {
->  	model = "Google willow board sku0";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts
-> index 22e56bdc1ee3..c7b20441d053 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-jacuzzi-willow.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	model = "Google willow board sku1";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-> index 20eb0dc68f09..89a139a0ee44 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dts
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui-kakadu.dtsi"
-> +#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
->  
->  / {
->  	model = "MediaTek kakadu board";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> index 3aa79403c0c2..06f8c80bf553 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama.dtsi
-> @@ -5,6 +5,7 @@
->  
->  /dts-v1/;
->  #include "mt8183-kukui.dtsi"
-> +#include "mt8183-kukui-audio-ts3a227e-max98357a.dtsi"
->  
->  / {
->  	ppvarn_lcd: ppvarn-lcd {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> index 30c183c96a54..a7b0cb3ff7b0 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-krane.dtsi
-> @@ -4,6 +4,7 @@
->   */
->  
->  #include "mt8183-kukui.dtsi"
-> +#include "mt8183-kukui-audio-max98357a.dtsi"
->  
->  / {
->  	ppvarn_lcd: ppvarn-lcd {
-> @@ -345,3 +346,7 @@ rst_pin {
->  &qca_wifi {
->  	qcom,ath10k-calibration-variant = "LE_Krane";
->  };
-> +
-> +&sound {
-> +	compatible = "mediatek,mt8183_mt6358_ts3a227_max98357";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> index ae549d55a94f..b709859b0a03 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -113,12 +113,18 @@ scp_mem_reserved: scp_mem_region {
->  		};
->  	};
->  
-> -	max98357a: codec0 {
-> -		compatible = "maxim,max98357a";
-> -		sdmode-gpios = <&pio 175 0>;
-> +	sound: mt8183-sound {
-> +		mediatek,platform = <&afe>;
-> +		pinctrl-names = "default",
-> +				"aud_tdm_out_on",
-> +				"aud_tdm_out_off";
-> +		pinctrl-0 = <&aud_pins_default>;
-> +		pinctrl-1 = <&aud_pins_tdm_out_on>;
-> +		pinctrl-2 = <&aud_pins_tdm_out_off>;
-> +		status = "okay";
->  	};
->  
-> -	btsco: codec1 {
-> +	btsco: bt-sco {
->  		compatible = "linux,bt-sco";
->  	};
->  
-> @@ -213,6 +219,11 @@ tboard_thermistor2: thermal-sensor2 {
->  	};
->  };
->  
-> +&afe {
-> +	i2s3-share = "I2S2";
-> +	i2s0-share = "I2S5";
-> +};
-> +
->  &auxadc {
->  	status = "okay";
->  };
-> @@ -400,6 +411,54 @@ &mt6358_vsim2_reg {
->  };
->  
->  &pio {
-> +	aud_pins_default: audiopins {
-> +		pins_bus {
-> +			pinmux = <PINMUX_GPIO97__FUNC_I2S2_MCK>,
-> +				<PINMUX_GPIO98__FUNC_I2S2_BCK>,
-> +				<PINMUX_GPIO101__FUNC_I2S2_LRCK>,
-> +				<PINMUX_GPIO102__FUNC_I2S2_DI>,
-> +				<PINMUX_GPIO3__FUNC_I2S3_DO>, /*i2s to da7219/max98357*/
-> +				<PINMUX_GPIO89__FUNC_I2S5_BCK>,
-> +				<PINMUX_GPIO90__FUNC_I2S5_LRCK>,
-> +				<PINMUX_GPIO91__FUNC_I2S5_DO>,
-> +				<PINMUX_GPIO174__FUNC_I2S0_DI>, /*i2s to wifi/bt*/
-> +				<PINMUX_GPIO136__FUNC_AUD_CLK_MOSI>,
-> +				<PINMUX_GPIO137__FUNC_AUD_SYNC_MOSI>,
-> +				<PINMUX_GPIO138__FUNC_AUD_DAT_MOSI0>,
-> +				<PINMUX_GPIO139__FUNC_AUD_DAT_MOSI1>,
-> +				<PINMUX_GPIO140__FUNC_AUD_CLK_MISO>,
-> +				<PINMUX_GPIO141__FUNC_AUD_SYNC_MISO>,
-> +				<PINMUX_GPIO142__FUNC_AUD_DAT_MISO0>,
-> +				<PINMUX_GPIO143__FUNC_AUD_DAT_MISO1>; /*mtkaif3.0*/
-> +		};
-> +	};
-> +
-> +	aud_pins_tdm_out_on: audiotdmouton {
-> +		pins_bus {
-> +			pinmux = <PINMUX_GPIO169__FUNC_TDM_BCK_2ND>,
-> +				<PINMUX_GPIO170__FUNC_TDM_LRCK_2ND>,
-> +				<PINMUX_GPIO171__FUNC_TDM_DATA0_2ND>,
-> +				<PINMUX_GPIO172__FUNC_TDM_DATA1_2ND>,
-> +				<PINMUX_GPIO173__FUNC_TDM_DATA2_2ND>,
-> +				<PINMUX_GPIO10__FUNC_TDM_DATA3>; /*8ch-i2s to it6505*/
-> +			drive-strength = <MTK_DRIVE_6mA>;
-> +		};
-> +	};
-> +
-> +	aud_pins_tdm_out_off: audiotdmoutoff {
-> +		pins_bus {
-> +			pinmux = <PINMUX_GPIO169__FUNC_GPIO169>,
-> +				<PINMUX_GPIO170__FUNC_GPIO170>,
-> +				<PINMUX_GPIO171__FUNC_GPIO171>,
-> +				<PINMUX_GPIO172__FUNC_GPIO172>,
-> +				<PINMUX_GPIO173__FUNC_GPIO173>,
-> +				<PINMUX_GPIO10__FUNC_GPIO10>;
-> +			input-enable;
-> +			bias-pull-down;
-> +			drive-strength = <MTK_DRIVE_2mA>;
-> +		};
-> +	};
-> +
->  	bt_pins: bt-pins {
->  		pins_bt_en {
->  			pinmux = <PINMUX_GPIO120__FUNC_GPIO120>;
-> 
-
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index b1249b664981..122a928ebcb5 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -3076,6 +3076,17 @@ static int btusb_shutdown_intel_new(struct hci_dev *hdev)
+ 	return 0;
+ }
+ 
++/* UHW CR mapping */
++#define BT_MISC			0x70002510
++#define BT_SUBSYS_RST		0x70002610
++#define UDMA_INT_STA_BT		0x74000024
++#define UDMA_INT_STA_BT1	0x74000308
++#define BT_WDT_STATUS		0x740003A0
++#define EP_RST_OPT		0x74011890
++#define EP_RST_IN_OUT_OPT	0x00010001
++#define BT_RST_DONE		0x00000100
++#define BT_RESET_WAIT_MS	100
++#define BT_RESET_NUM_TRIES	10
+ #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
+ #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
+ 
+@@ -3650,6 +3661,63 @@ static int btusb_mtk_func_query(struct hci_dev *hdev)
+ 	return status;
+ }
+ 
++static int btusb_mtk_uhw_reg_write(struct btusb_data *data, u32 reg, u32 val)
++{
++	struct hci_dev *hdev = data->hdev;
++	int pipe, err;
++	void *buf;
++
++	buf = kzalloc(4, GFP_KERNEL);
++	if (!buf)
++		return -ENOMEM;
++
++	put_unaligned_le32(val, buf);
++
++	pipe = usb_sndctrlpipe(data->udev, 0);
++	err = usb_control_msg(data->udev, pipe, 0x02,
++			      0x5E,
++			      reg >> 16, reg & 0xffff,
++			      buf, 4, USB_CTRL_SET_TIMEOUT);
++	if (err < 0) {
++		bt_dev_err(hdev, "Failed to write uhw reg(%d)", err);
++		goto err_free_buf;
++	}
++
++err_free_buf:
++	kfree(buf);
++
++	return err;
++}
++
++static int btusb_mtk_uhw_reg_read(struct btusb_data *data, u32 reg, u32 *val)
++{
++	struct hci_dev *hdev = data->hdev;
++	int pipe, err;
++	void *buf;
++
++	buf = kzalloc(4, GFP_KERNEL);
++	if (!buf)
++		return -ENOMEM;
++
++	pipe = usb_rcvctrlpipe(data->udev, 0);
++	err = usb_control_msg(data->udev, pipe, 0x01,
++			      0xDE,
++			      reg >> 16, reg & 0xffff,
++			      buf, 4, USB_CTRL_SET_TIMEOUT);
++	if (err < 0) {
++		bt_dev_err(hdev, "Failed to read uhw reg(%d)", err);
++		goto err_free_buf;
++	}
++
++	*val = get_unaligned_le32(buf);
++	bt_dev_dbg(hdev, "reg=%x, value=0x%08x", reg, *val);
++
++err_free_buf:
++	kfree(buf);
++
++	return err;
++}
++
+ static int btusb_mtk_reg_read(struct btusb_data *data, u32 reg, u32 *val)
+ {
+ 	int pipe, err, size = sizeof(u32);
+@@ -3729,6 +3797,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
+ 			 dev_id & 0xffff, (fw_version & 0xff) + 1);
+ 		err = btusb_mtk_setup_firmware_79xx(hdev, fw_bin_name);
+ 
++		/* It's Device EndPoint Reset Option Register */
++		btusb_mtk_uhw_reg_write(data, EP_RST_OPT, EP_RST_IN_OUT_OPT);
++
+ 		/* Enable Bluetooth protocol */
+ 		param = 1;
+ 		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+@@ -3852,6 +3923,61 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
+ 	return 0;
+ }
+ 
++static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
++{
++	struct btusb_data *data = hci_get_drvdata(hdev);
++	u32 val;
++	int err, retry = 0;
++
++	/* It's MediaTek specific bluetooth reset mechanism via USB */
++	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
++		bt_dev_err(hdev, "last reset failed? Not resetting again");
++		return;
++	}
++
++	err = usb_autopm_get_interface(data->intf);
++	if (err < 0)
++		return;
++
++	btusb_stop_traffic(data);
++	usb_kill_anchored_urbs(&data->tx_anchor);
++
++	/* It's Device EndPoint Reset Option Register */
++	bt_dev_dbg(hdev, "Initiating reset mechanism via uhw");
++	btusb_mtk_uhw_reg_write(data, EP_RST_OPT, EP_RST_IN_OUT_OPT);
++	btusb_mtk_uhw_reg_read(data, BT_WDT_STATUS, &val);
++
++	/* Reset the bluetooth chip via USB interface. */
++	btusb_mtk_uhw_reg_write(data, BT_SUBSYS_RST, 1);
++	btusb_mtk_uhw_reg_write(data, UDMA_INT_STA_BT, 0x000000FF);
++	btusb_mtk_uhw_reg_read(data, UDMA_INT_STA_BT, &val);
++	btusb_mtk_uhw_reg_write(data, UDMA_INT_STA_BT1, 0x000000FF);
++	btusb_mtk_uhw_reg_read(data, UDMA_INT_STA_BT1, &val);
++	msleep(20);
++	btusb_mtk_uhw_reg_write(data, BT_SUBSYS_RST, 0);
++	btusb_mtk_uhw_reg_read(data, BT_SUBSYS_RST, &val);
++
++	/* Poll the register until reset is completed */
++	do {
++		btusb_mtk_uhw_reg_read(data, BT_MISC, &val);
++		if ((val & 0x00000100) == BT_RST_DONE) {
++			bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
++			break;
++		}
++
++		bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
++		retry++;
++		msleep(BT_RESET_WAIT_MS);
++	} while (retry < BT_RESET_NUM_TRIES);
++
++	btusb_mtk_id_get(data, 0x70010200, &val);
++	bt_dev_info(hdev, "device id (%x)", val);
++
++	usb_queue_reset_device(data->intf);
++
++	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
++}
++
+ static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+@@ -4691,6 +4817,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->setup = btusb_mtk_setup;
+ 		hdev->shutdown = btusb_mtk_shutdown;
+ 		hdev->manufacturer = 70;
++		hdev->cmd_timeout = btusb_mtk_cmd_timeout;
+ 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
+ 		data->recv_acl = btusb_recv_acl_mtk;
+ 	}
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
