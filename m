@@ -2,76 +2,93 @@ Return-Path: <SRS0=jcdg=LZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 633C7C11F64
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 16:46:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A3C2C11F64
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:27:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FEC8613E8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 16:46:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FEC8613E8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3294261407
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Jul 2021 17:27:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3294261407
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r8h12cA2Ho2lc8aYTsFsIhIWkTSVc2+n6ZTe8sqFBqQ=; b=XJOFgpXI+Jll3D
-	PwWBjxpP6omRBexgjFUOs9vY6QnMMgo4BEU6BopWLk+1ZVzMYc28EyKzmB5n/lL4Q6DxVKROn8qST
-	PmVebzF0fVUBlqNEvnG+xZMdHcUrNpD+5rhdhiitdglMRzoeEOCEmDrFbFj2xz7pXu/Oxt/QSJCWn
-	TFlUsYI8xt2WX1LJZ8BiEGkfY29XwDbdmfkz2TGQB2JEdvDXa6PQpU2hQvlX+DvyuiyG+P5IQfDB8
-	2dIgJQHOT/trDeqGCZp32MxJld9xJ4JeaJCxiIjC+GNwDT1M3wMS3q9eslNVWvmYYU9hDexEkm7Qf
-	y1MxZk/TiMCrgFMM8JGQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=AtNSSSlZz+ea57Y8at7SWnhOhpIMhlkFnwg+eTlpLm0=; b=nt/4DXGUvPn00J9qjtoBRu/9+B
+	8fxSWOs6B5oPWjGVJOrvdnoyK9+W0INSiCS+HXP7Oo93BYMu+ByEdxY8KBkQveDomCSms+/2OPmIL
+	wcyggmYDMolYBkyzgjJihbcRNyoTHAkRBrOpqQYQ0Ht/LmpYe6BmjCMkeMFLw8ms+QXaW8ZvNHDlH
+	6f7MWBD+mvdqp0sS0ywE04ee+oI2N+0icymZYYiyU3++5/QEiXwSgQ4F5JDR74/CKSzW7xCq6FFtS
+	L4pvVIqyQi+afcjRwcnr/6bIxBCZ/Z3XK24RaKG9UmYUBK2yByvFn5V12J1JLdOKqv/4kBwWXggLa
+	1VfGxBJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lyzpB-000Tih-Jn; Thu, 01 Jul 2021 16:46:01 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1lz0TL-000bem-0N; Thu, 01 Jul 2021 17:27:31 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lyzoz-000Tgn-9h; Thu, 01 Jul 2021 16:45:50 +0000
-Received: by mail-ot1-f42.google.com with SMTP id
- t24-20020a9d7f980000b029046f4a1a5ec4so7179539otp.1; 
- Thu, 01 Jul 2021 09:45:47 -0700 (PDT)
+ id 1lz0T7-000bcp-R1; Thu, 01 Jul 2021 17:27:19 +0000
+Received: by mail-wr1-x431.google.com with SMTP id i8so9295254wrc.0;
+ Thu, 01 Jul 2021 10:27:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+88KlZNNLOIm2DdqGH+4+ZuHLP9XUHctYTH3I53lf+8=;
+ b=qXlJSeXS8ubK4FAzT8fLgFN9ZD3u2NyTmEjZrsUF4VSyVIFMFZSQbb27MKgTDTVhPH
+ Vbnp3R5lCU+rSV84smwV/P5GEs1dWy2IAqFaqeyHfbTWyfQhHXDkfmxZ2fsAOcT0wt9n
+ 5omRV2seNR92AEfs0j8a41BGhsefYTB3OHm4UDyQRehb4xnl2odDwx9W3IaCN91g3tWe
+ MHhTnodpnL8peJURrxQDSrKF08KtWZZ4rRDfPuURcYMYl5/78UxPxb7cxvFA8B8T2bg6
+ Ojt4n2grs+fJiK07J0KMldANkNyWg8YUSHx8OUkKg9XNt1K5pPpfG+d+ToGsvPZZZsaK
+ fKsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tg55kCy9BnkaIPndB0hyuKuJD9G9ni7AlPPZSuQ9v3w=;
- b=EG/wdGjb5gh1+lTssu6tjjpWrw3VyNM79pDPJceh1pco9KxMnUvdoA32pMzrdeXOT6
- WyI2S/KFyZfUvMqCtWz9QQ05KMEuAGU8dRqzU/mNgyzHEtozI3hsTBnHFLTeufxHCSPH
- xbkQwEn4jpJ/z+ovT2c3o8FhQ9YK9WBw6UDQxrjiA/VseIeb8y2U7IBsEPSAwFzIQMeE
- wmZKXrjNMxac3IMgyCHwG5MP/WwZVd32GbR0RwxaA/pLvzjcUHIZ1ksqgyCQQa6/xF3Z
- 1/ABlj4qnvAk6RSg/9VTSu1h79CwD3i4v8IfazBsXRNA1g8rRetIiRZlhZY86L3AYavF
- kjDA==
-X-Gm-Message-State: AOAM5334DmNELlHaI9Ju3FGvc7g8X0+9FZRUFr/y/3JHJIZlx9VkKRx/
- b86NXlV9hykxrRRxbb5B0FJDn8Ym4s0UIQ80Xek=
-X-Google-Smtp-Source: ABdhPJzJRnn4f+Vbn+ymJy286bml0QkXr0HrBOpFwNgfZMUVbXSNYFoo4KA1Pu2nyMOx8volQGLdwbVBVNuW2BqDwWI=
-X-Received: by 2002:a9d:674b:: with SMTP id w11mr775865otm.260.1625157947244; 
- Thu, 01 Jul 2021 09:45:47 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+88KlZNNLOIm2DdqGH+4+ZuHLP9XUHctYTH3I53lf+8=;
+ b=S+izY5eYpRLtnC4Z90WgdEuoOq6ISn4ay7T43gIGgdtUeyxdBbGFPrrZbJvnS1Cm46
+ vg+EkLm2vZgtnRXPLXyuwaFaAIELatWr0cSLgkhuG+IdxyaK6eXlX1ozJON8UNOrvuFY
+ plvkBMpAGopizZ4vFxRfbteewRwzYwaU8dDpUtJBJreFlP7SH1pvSf3ma3YrrCj8fQrr
+ DmVmAycSVoce9A4mF/tn8bm8svxgz02n123elSPtC03IOzLxFsmjZ0BLWTknCmGDq6B6
+ RGVH5C7oSFqJ+UDw6thbtTmE6UDDkAb4DpXc+IBy/STOw8twWapB/BzUwxD9Tr2YM5da
+ Jalg==
+X-Gm-Message-State: AOAM530c81TLQ8YOMjB4hwbguSHeQsYPknaKQUW+6piLynEyIceDEON4
+ +uA4hCZFnPGdiAITfratODmPtgmgg9jZAg==
+X-Google-Smtp-Source: ABdhPJxTiDHHiOn2vzTtLIolscc0obkiPhBZ9KyokX2MSHtthkSnk0yEo9O5omdr8fNfNdqZg/qBPQ==
+X-Received: by 2002:a5d:48ca:: with SMTP id p10mr921119wrs.87.1625160434440;
+ Thu, 01 Jul 2021 10:27:14 -0700 (PDT)
+Received: from ziggy.stardust ([213.195.127.100])
+ by smtp.gmail.com with ESMTPSA id z6sm542191wrh.67.2021.07.01.10.27.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Jul 2021 10:27:13 -0700 (PDT)
+Subject: Re: [RESEND PATCH 0/3] Misc bug fixes in mtk power domain driver
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, drinkcat@chromium.org,
+ hsinyi@chromium.org, Collabora Kernel ML <kernel@collabora.com>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20210701094024.1273759-1-enric.balletbo@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <736b909d-ed43-3691-6e93-e7f025a04833@gmail.com>
+Date: Thu, 1 Jul 2021 19:27:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
-References: <20210701004538.23483-1-mark-pk.tsai@mediatek.com>
-In-Reply-To: <20210701004538.23483-1-mark-pk.tsai@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Thu, 1 Jul 2021 18:45:36 +0200
-Message-ID: <CAJZ5v0gtWRpbpL82Nh9VpkXQfOqMXAC08nNmEovHq_=xdwN=mA@mail.gmail.com>
-Subject: Re: [PATCH] PM: sleep: use ktime_us_delta in initcall_debug_report()
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "Rafael J. Wysocki" <rjw@rjwysocki.net>, Pavel Machek <pavel@ucw.cz>,
- Len Brown <len.brown@intel.com>, Linux PM <linux-pm@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- yj.chiang@mediatek.com
+In-Reply-To: <20210701094024.1273759-1-enric.balletbo@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_094549_385535_A205DFF7 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20210701_102717_930373_0F522E15 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +105,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 1, 2021 at 2:45 AM Mark-PK Tsai <mark-pk.tsai@mediatek.com> wrote:
->
-> usecs is no more used after trace_device_pm_report_time replaced
-> by device_pm_callback_start/end in the below change.
->
-> commit e8bca479c3f2 ("PM / sleep: trace events for device PM callbacks")
->
-> Use ktime_us_delta to make the debug log more precise instead of
-> nsecs >> 10.
->
-> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> ---
->  drivers/base/power/main.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
->
-> diff --git a/drivers/base/power/main.c b/drivers/base/power/main.c
-> index f893c3c5af07..d568772152c2 100644
-> --- a/drivers/base/power/main.c
-> +++ b/drivers/base/power/main.c
-> @@ -220,16 +220,13 @@ static void initcall_debug_report(struct device *dev, ktime_t calltime,
->                                   void *cb, int error)
->  {
->         ktime_t rettime;
-> -       s64 nsecs;
->
->         if (!pm_print_times_enabled)
->                 return;
->
->         rettime = ktime_get();
-> -       nsecs = (s64) ktime_to_ns(ktime_sub(rettime, calltime));
-> -
->         dev_info(dev, "%pS returned %d after %Ld usecs\n", cb, error,
-> -                (unsigned long long)nsecs >> 10);
-> +                (unsigned long long)ktime_us_delta(rettime, calltime));
->  }
->
->  /**
-> --
 
-Applied as 5.14-rc1 material with some edits in the subject and
-changelog, thanks!
+
+On 01/07/2021 11:40, Enric Balletbo i Serra wrote:
+> 
+> This series, originally sent by Bilal Wasim [1], initially broke my
+> display in mainline (no gpu driver). The problem was not in the series
+> itself, and, after [2], this series works as expected. I was able to go
+> to the UI with and without the imgtec gpu driver on my Acer Chromebook
+> R13 (elm). Hence I rebased on top of mainline and resend it to take into
+> account for next merge window.
+> 
+
+Whole series pushed to v5.14-tmp/soc
+
+Thanks!
+
+> Best regards,
+>   Enric
+> 
+> [1] https://yhbt.net/lore/all/20210216165926.46bbafc7@a-VirtualBox/T/
+> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20210625062448.3462177-1-enric.balletbo@collabora.com/
+> 
+> 
+> Bilal Wasim (3):
+>   soc: mediatek: pm-domains: Use correct mask for bus_prot_clr
+>   soc: mediatek: pm-domains: Add domain_supply cap for mfg_async PD
+>   arm64: dts: mediatek: mt8173: Add domain supply for mfg_async
+> 
+>  arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 ++++
+>  arch/arm64/boot/dts/mediatek/mt8173-evb.dts  | 4 ++++
+>  arch/arm64/boot/dts/mediatek/mt8173.dtsi     | 2 +-
+>  drivers/soc/mediatek/mt8173-pm-domains.h     | 1 +
+>  drivers/soc/mediatek/mtk-pm-domains.h        | 2 +-
+>  5 files changed, 11 insertions(+), 2 deletions(-)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
