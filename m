@@ -2,90 +2,90 @@ Return-Path: <SRS0=VpQz=L2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1B90C11F68
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BB4A0C11F68
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:34:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 556ED6120D
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:28:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 556ED6120D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
+	by mail.kernel.org (Postfix) with ESMTPS id 67037613EE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:34:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67037613EE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JDUmWiCeSRLM4Lqnb++ULNu4/rdrWtzeOjzEN4ZqB2A=; b=rwkvvpK/YSBwb5
-	t8s+E98C3LwxeI7lioMV6CsTrVTCmI9aji6SBfhCE1MNYmlnWzqSrNUAhTvrht55Iv4ngw0HfUa07
-	69WjCU6ZRCtUxSwBUxphldUx1AfnJdpYr/fA7dNNdHt8W+VAHK9FsUY6yV2RUWGSt9GIDUORbQ7+A
-	OQY1hSYKdAl96R8YIVJRpGz3oFmX4Etr8OznwGHDWxVqAElKZoXh/ziFpBi+WLddCkAzek1XYpijd
-	ReAbCGGr3n6I79qHE/NjOnEEFQ//Csw24YEsXSIphWE67VxPG2x2YSnx7SXsX8LCbIDGm/pNPyXMV
-	wnpZlIljlcCOETQJcycg==;
+	List-Owner; bh=a2Y6+rchn2D7e8SwZZAfi4G4Qex4iPQwmudCLWXPLxk=; b=h3p0IXsIZS1JKb
+	kO9+tfgMHa5WxZn6rusSvPNSRCDANhiC4VoJt2JVPurQk5weC5GnK6FVJjAds/k35rR4LnMoIHk4h
+	6+6C+NN7E/pdBNs5Esreg2upL7jtwIas3JTAwx7KPU5dgYpPyeJE11RufXL0cjJIfdzh5vUZToSB9
+	TEJIFPIYyT0Uj5zahAX8IvhIUHAXhoUzcMHHpiPUshtR9P3DDHAX9c846JIzbVdCzCI+fzgoslkYq
+	iKMREQtFb6CdSiyYjt4c3zI5JD6o+n7pCj71r2yLUHr4CfFmF38FuFe46/F5giow2MhgdrW0GW29j
+	akMANI54ctuphm1x/BnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lzFTF-002clC-LE; Fri, 02 Jul 2021 09:28:25 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1lzFZ3-002dyd-JJ; Fri, 02 Jul 2021 09:34:25 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzFT4-002cju-VJ; Fri, 02 Jul 2021 09:28:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=v8zrj1V6xVcbepaiWjbS8RX/IKFy1g4AS4gveeyabo0=; b=M2RmgXOBRo85weL/DN4WbfCTsM
- msh2vX1S2LNpJeOv1OnqIHC3/D2z2XO2JnaPYsB/gML0pm9QEoP/8Zt1dDVhX65HYNhpMsz1qOHUt
- VWN/fIMSINkpa2Je04+48lNrjC1pJPo/SCGId5oJaA7XclfTQT/fnlw0sz2kP12pSZseof8Zkux1r
- r9kRqHgL3XXQQ2pct1v0qdzgqGOVJr1V+AfPz4CA3ONk+tCgJe0F6BdC5hrRFZArCtDLdicb/hJy7
- j/8pNYUqbzX//LWS1RCJhe4fz70uTSJG/ItmIuwlH5ov3yPpz2P0bBL0KasSAxp3sTP0V10vJ7uNj
- iuiq02ZA==;
-Received: from j217100.upc-j.chello.nl ([24.132.217.100]
- helo=noisy.programming.kicks-ass.net)
- by desiato.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzFSy-00DpD7-NH; Fri, 02 Jul 2021 09:28:09 +0000
-Received: from hirez.programming.kicks-ass.net
- (hirez.programming.kicks-ass.net [192.168.1.225])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (Client did not present a certificate)
- by noisy.programming.kicks-ass.net (Postfix) with ESMTPS id 932E2300091;
- Fri,  2 Jul 2021 11:28:05 +0200 (CEST)
-Received: by hirez.programming.kicks-ass.net (Postfix, from userid 1000)
- id 724F12DD2264A; Fri,  2 Jul 2021 11:28:05 +0200 (CEST)
-Date: Fri, 2 Jul 2021 11:28:05 +0200
-From: Peter Zijlstra <peterz@infradead.org>
-To: Suren Baghdasaryan <surenb@google.com>
-Cc: Johannes Weiner <hannes@cmpxchg.org>, Ingo Molnar <mingo@redhat.com>,
- Juri Lelli <juri.lelli@redhat.com>,
- Vincent Guittot <vincent.guittot@linaro.org>,
- Dietmar Eggemann <dietmar.eggemann@arm.com>,
- Steven Rostedt <rostedt@goodmis.org>,
- Benjamin Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
- Daniel Bristot de Oliveira <bristot@redhat.com>,
- matthias.bgg@gmail.com, Minchan Kim <minchan@google.com>,
- Tim Murray <timmurray@google.com>, YT Chang <yt.chang@mediatek.com>,
- Wenju Xu =?utf-8?B?KOiuuOaWh+S4vik=?= <wenju.xu@mediatek.com>,
- Jonathan JMChen =?utf-8?B?KOmZs+WutuaYjik=?= <jonathan.jmchen@mediatek.com>,
- LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, kernel-team <kernel-team@android.com>,
- SH Chen <show-hong.chen@mediatek.com>
-Subject: Re: [PATCH v2 1/1] psi: stop relying on timer_pending for poll_work
- rescheduling
-Message-ID: <YN7cJZOZzjYJFClR@hirez.programming.kicks-ass.net>
-References: <20210630205151.137001-1-surenb@google.com>
- <YN2DsLlE+WtxK6K9@hirez.programming.kicks-ass.net>
- <CAJuCfpF=Ty4ruiKQQweVoF6Ojx8P8LxvUBxp1TmMFo2W1xNWfg@mail.gmail.com>
- <YN3pUNgpBjn42f8s@hirez.programming.kicks-ass.net>
- <CAJuCfpFKDhcgjU=MGsz+JuetrWvYCe0EL3FMp91zopH+8T=mMQ@mail.gmail.com>
+ id 1lzFYj-002dsO-G2
+ for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 09:34:06 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id h9so10637269oih.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 02 Jul 2021 02:34:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vrAYdCh2ggaj+XWyXcYy308yp58pQSy2cm79Y1b9M3w=;
+ b=hNF+Pzl08HoowaYaI83wQ56Z3dXc8hRtqXGtkOzRz33spQN1kGyXCVYZVzm0DYWiLw
+ XtCqS+WaXZriTD8y0SP0WsV9iOn77PsWScKeRn4c7PG9cj8ydXssDog7mjNCw8tmmuLE
+ kK/MdzCEK4SKBRDgdHLCHcKpPKZuUv9KbQlZsSJ99wkV6LZRqUA7MZdDTdir0KunOwLX
+ lD+r1KE0ZhmxbwGSwrPHUm2/Tsy4UGZZOG9CAMykeOXzLAkYHI/yBhyJ2wmodFGjJxWT
+ pblIW+2gTt0xKiPPMkXLrT5fWrh9OBCPA3PjQmoVivLa/x88/0TG/o5HEJS/5C8jiftf
+ Nbew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vrAYdCh2ggaj+XWyXcYy308yp58pQSy2cm79Y1b9M3w=;
+ b=t80JujZiLAplsbLLZaVssJywwPXSUCr7If6bJBoy6Ivv1zoMohg8am4oEBdY2Wf0xk
+ Og7EHtaAFaV3fMU62WoJ5z+Hfd2d7MdecUhm5lBO+ro7RXzkAYjkBXmG0YFebVGGoXeP
+ 0XwRPOL9zdfxspLE2JPc+FNEkz4cNLXsuQTAr++iIBzHBce9gE+hBdb/n1Mex9TYZoN8
+ +WUKvb852wjl/IKkGhPBT8fWHjfBBViWM0bBqMw/EsiSk9d+DKl1zojJNTTtT09J90rq
+ oWRjMS1JQqv6FbpR1vTb5b/GEuWSUQGk4gV6lfGzHxU/Ls13em8OivsRo3I667DPQQNy
+ ngIA==
+X-Gm-Message-State: AOAM531mzAFo4Vnz3pXBQMIXUedud28LRFMGXJfRhQxyHMKX7U2WzQ39
+ 3ir5eiAfxV2HBViP4Vydl0cqy8kvdzpCQdx1CFDZkQ==
+X-Google-Smtp-Source: ABdhPJzv4fiupIq0BP8aoyZl0EKj339UCB3ZRtMVV0Lv/baM7npJRmNBELCQcSGxXvHf8nlEIar0CsEzluqEKYruPtc=
+X-Received: by 2002:a05:6808:210e:: with SMTP id
+ r14mr2475518oiw.172.1625218444412; 
+ Fri, 02 Jul 2021 02:34:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAJuCfpFKDhcgjU=MGsz+JuetrWvYCe0EL3FMp91zopH+8T=mMQ@mail.gmail.com>
+References: <20210702085332.10035-1-yee.lee@mediatek.com>
+In-Reply-To: <20210702085332.10035-1-yee.lee@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Fri, 2 Jul 2021 11:33:53 +0200
+Message-ID: <CANpmjNPqHJqAaDBJDA1t-OOWKMSs5sqbwVRAkQr+E6w5EgJ1Nw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/2] mm: introduce helper to check slub_debug_enabled
+To: yee.lee@mediatek.com
+Cc: andreyknvl@gmail.com, wsd_upstream@mediatek.com, 
+ nicholas.tang@mediatek.com, Kuan-Ying.Lee@mediatek.com, 
+ chinwen.chang@mediatek.com, Christoph Lameter <cl@linux.com>, 
+ Pekka Enberg <penberg@kernel.org>, David Rientjes <rientjes@google.com>, 
+ Joonsoo Kim <iamjoonsoo.kim@lge.com>, Andrew Morton <akpm@linux-foundation.org>,
+ Vlastimil Babka <vbabka@suse.cz>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ "open list:SLAB ALLOCATOR" <linux-mm@kvack.org>,
+ open list <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20210702_023405_657175_45125011 
+X-CRM114-Status: GOOD (  20.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,41 +102,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 01, 2021 at 09:28:04AM -0700, Suren Baghdasaryan wrote:
-> On Thu, Jul 1, 2021 at 9:12 AM Peter Zijlstra <peterz@infradead.org> wrote:
-> >
-> > On Thu, Jul 01, 2021 at 09:09:25AM -0700, Suren Baghdasaryan wrote:
-> > > On Thu, Jul 1, 2021 at 1:59 AM Peter Zijlstra <peterz@infradead.org> wrote:
-> > > >
-> > > > On Wed, Jun 30, 2021 at 01:51:51PM -0700, Suren Baghdasaryan wrote:
-> > > > > +     /* cmpxchg should be called even when !force to set poll_scheduled */
-> > > > > +     if (atomic_cmpxchg(&group->poll_scheduled, 0, 1) && !force)
-> > > > >               return;
-> > > >
-> > > > Why is that a cmpxchg() ?
-> > >
-> > > We want to set poll_scheduled and proceed with rescheduling the timer
-> > > unless it's already scheduled, so cmpxchg helps us to make that
-> > > decision atomically. Or did I misunderstand your question?
-> >
-> > What's wrong with: atomic_xchg(&group->poll_scheduled, 1) ?
-> 
-> Yes, since poll_scheduled can be only 0 or 1 atomic_xchg should work
-> fine here. Functionally equivalent but I assume atomic_xchg() is more
-> efficient due to no comparison.
+On Fri, 2 Jul 2021 at 10:54, <yee.lee@mediatek.com> wrote:
+>
+> From: Marco Elver <elver@google.com>
+>
+> Introduce a helper to check slub_debug_enabled, so that we can confine
+> the use of #ifdef to the definition of the slub_debug_enabled_unlikely()
+> helper.
+>
+> ---
 
-Mostly conceptually simpler; the cmpxchg-on-0 makes that you have to
-check if there's ever any state outside of {0,1}. The xchg() thing is
-the classical test-and-set pattern.
+^^ this '---' is wrong. It needs to be removed, because anything after
+the first '---' will be discarded if it is turned into a commit by the
+maintainer.
 
-On top of all that, the cmpxchg() can fail, which brings ordering
-issues.
 
-Typically, I think, you want to ensure that everything that happens
-before psi_schedule_poll_work() is visible to the work when it runs
-(also see Johannes' email). In case poll_scheduled is already 1, the
-cmpxchg will fail and *NOT* provide that ordering. Meaning the work
-might not observe the latest changes. xchg() doesn't have this subtlety.
+> Signed-off-by: Marco Elver <elver@google.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+>
+> ---
+>  mm/slab.h | 15 +++++++++++----
+>  1 file changed, 11 insertions(+), 4 deletions(-)
+>
+> diff --git a/mm/slab.h b/mm/slab.h
+> index 7b60ef2f32c3..a11126afe24c 100644
+> --- a/mm/slab.h
+> +++ b/mm/slab.h
+> @@ -216,10 +216,18 @@ DECLARE_STATIC_KEY_FALSE(slub_debug_enabled);
+>  #endif
+>  extern void print_tracking(struct kmem_cache *s, void *object);
+>  long validate_slab_cache(struct kmem_cache *s);
+> +static inline bool slub_debug_enabled_unlikely(void)
+> +{
+> +       return static_branch_unlikely(&slub_debug_enabled);
+> +}
+>  #else
+>  static inline void print_tracking(struct kmem_cache *s, void *object)
+>  {
+>  }
+> +static inline bool slub_debug_enabled_unlikely(void)
+> +{
+> +       return false;
+> +}
+>  #endif
+>
+>  /*
+> @@ -229,11 +237,10 @@ static inline void print_tracking(struct kmem_cache *s, void *object)
+>   */
+>  static inline bool kmem_cache_debug_flags(struct kmem_cache *s, slab_flags_t flags)
+>  {
+> -#ifdef CONFIG_SLUB_DEBUG
+> -       VM_WARN_ON_ONCE(!(flags & SLAB_DEBUG_FLAGS));
+> -       if (static_branch_unlikely(&slub_debug_enabled))
+> +       if (IS_ENABLED(CONFIG_SLUB_DEBUG))
+> +               VM_WARN_ON_ONCE(!(flags & SLAB_DEBUG_FLAGS));
+> +       if (slub_debug_enabled_unlikely())
+>                 return s->flags & flags;
+> -#endif
+>         return false;
+>  }
+>
+> --
+> 2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
