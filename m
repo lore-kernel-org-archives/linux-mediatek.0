@@ -2,19 +2,19 @@ Return-Path: <SRS0=VpQz=L2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CCC1C11F68
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 04:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 931E5C11F68
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 04:53:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC6AA6141A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 04:11:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC6AA6141A
+	by mail.kernel.org (Postfix) with ESMTPS id 3908D61413
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 04:53:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3908D61413
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,72 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qCfAZEQP8uiZDvhiG/3ueQmtrdGQq+3emkF+QH2QeXI=; b=RPsQ5nHeqz3qQq
-	g29EtxYSf1sCk6t6soy97fkVitquzX2iYne4K5ZKIprPNu+QuZIjoSJPxz4G0kyijh5JmGI0p8QV3
-	WmyKaoK4iyGzZBMwp3fwMNlbhPemoJplP9hVasNu6rBWuOOjVnixbII5CyhMdNkb7/Xwvo+i/UsLq
-	ucBPWITEUsHExWA9JFwjVyvnTbp/ma9faRMyLzWEzexQCplQW2yNnUi646sHBHqjpXTVNIwxoKwAt
-	CB3T1v1V794fuLw9GnfCcf4t+GLKO8Di7kZOMKWVlJQwpTHBJG8Al2vl8364kH5en0Oh7AlP8t3Wm
-	EumHGCxFUZssT4JrjkMQ==;
+	List-Owner; bh=+Waj4t2MgrC7n/EXcbTuKdM5BG8YnKnXETv1Gx2hi0k=; b=h7FZw6YJ+ZzBc4
+	EgD8bCbnYoWPnyOYcB1lpfG6w+lD9hfZA1HkSmXHaYO4JSjbRk4257zqtZySsz1lOFh200wvPdc22
+	PyY+acLb8IyLHHuOqN2ErDMjhVeDd1BE1CoNYfhK+6GroLc2+GlADqBoD/QbUfYLnV5Sl51bHt/Um
+	pW7piRGEe5OOfug6KvyowuC/k16XaTC0GokGnA2q0cklBtFtVyXbq0+oU6V6dLUSOlnzIiagUi97M
+	ofL86rHLcQG9MYSt3q5w0CrRVb40zGY9BuMUdHxZ65FvI+u1OgponJ55aipoYB0JR5APTFSxsIrvE
+	56bJ4Z7tuHpxlJRv2KNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lzAW6-0021aG-86; Fri, 02 Jul 2021 04:11:02 +0000
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
+	id 1lzBAl-0026kK-LB; Fri, 02 Jul 2021 04:53:03 +0000
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzAW2-0021VZ-UN
- for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 04:11:00 +0000
-Received: by mail-io1-xd34.google.com with SMTP id i189so10142542ioa.8
- for <linux-mediatek@lists.infradead.org>; Thu, 01 Jul 2021 21:10:54 -0700 (PDT)
+ id 1lzBAY-0026hk-Ns
+ for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 04:52:51 +0000
+Received: by mail-il1-x129.google.com with SMTP id o10so8611743ils.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 01 Jul 2021 21:52:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zeSfxgHTcElRZoSpX3vn4Ly7z/IXRbCeFw0dHTkG7AY=;
- b=IuM+K/DrC/N1D8CS0EkEa3H706wC+2MyxRTwtdlaOVRQXrD1O8w7Ak9NSNpM/JQGdW
- 4Bpslu4+wwkq6u06q8ny1O51SVtLSqRnnZ7YBekiG0zikWd3ZGF0l6ACkcPgyZIVQWP1
- EXvgsk07oRH7T6lLI6wvDLR2FcIzd8wOz9o+6BCh9CgD/g2hH6jhEsx2ctv1NKMqKQ/0
- MkfamFBQBIcbgWJY+gVydu+F/z1KyT1ezsV8HY2ZDA9c8C9ZWPGinZdPbMqcMql9GkRd
- G2Q48cdZlVKAmqHBiQqGteQSZo3jAv33rzxqDiBlaq3hy4A54huCAin9LmrbfGhYRiIR
- BYRQ==
+ :cc; bh=OTnzHjgvCB7+prnqrgvMcjjG1MNUBAUB+vPqpckmDcQ=;
+ b=rN5k2yEgnRx9zB2epWCUB+oEitM0fhGltBcekUy79X1JPOgF6S6GKplw7zuHtBtQWh
+ hSWc6HaFoyYdgXwFiAWrXqAg/bSReCOcVWDgVIrBi9VA0fOQkhCbArxlXB+r1TncqExr
+ yts6rr8EPA3L2uk8AIQoOVFQuTeb6MGPY/vMK1ewx3J9Ib9/WNBSzqhSNkjs0TF07Rov
+ KDKMS5rUYExBpxgDD9R0i0p/7xXZSsWHMhQxYhFH1dECnSFE++hw2aJ7BpT7YdE2+gWt
+ PxQw7GtftdOx0u74EhQY/XAiwu5Bz2lOyi66eoetaWw7pstB6dX5pzKZ5/9N9kkWpW2v
+ VGiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zeSfxgHTcElRZoSpX3vn4Ly7z/IXRbCeFw0dHTkG7AY=;
- b=DDABGHy1U+9Om/CHuNmnKMOW46LZaJziw6mgVXP0OOc2Su1pyRMH6JnAbhlvpUvKkw
- 3zbHb2boTYT1ukzAdCXJSyFjPyfdnuuTwZ5+5q9RDjMy7w/LeCfuu5K2250T+P5nn5xE
- tXlagXzj3hKjZjWPl4v0Un6JnCH21gJt7LfohTeNBBKys2GtI/M2EroDxxYEssyIBZnt
- 1ZlfO1lExCbAwX/1S9s9R2T3q4Iqvy5JYkRxKWeghFAq0R2n0DtAIo3r3wRtHiU86gcY
- o4LDrZrgm1T8WUQt8Qg4brpRqKy4b0uE8Z2aXmvwoZ7kXh8U+cItx0tjsYdy+WKCll/Q
- Zv1w==
-X-Gm-Message-State: AOAM532DF4xKt1v1O7d3ZLFoYSIJKBjVC7EwTwKljvITEy22AfXL0cpy
- oEIzSs3/CrnWm1W01OTxxC2hcrauEguMd2FeRLDRTg==
-X-Google-Smtp-Source: ABdhPJyBQxBUgBEzL+AgJh2pPTIZG1lq9jnjj4ShF+UvDdDfl3o1JmKmztNrF6SH8uOwDhhHcI3j4ElRt8sBOwAeUb0=
-X-Received: by 2002:a5d:840c:: with SMTP id i12mr2078731ion.185.1625199053517; 
- Thu, 01 Jul 2021 21:10:53 -0700 (PDT)
+ bh=OTnzHjgvCB7+prnqrgvMcjjG1MNUBAUB+vPqpckmDcQ=;
+ b=n8OtTBKVUSakpBjd0ZK+CMtkCJLod4n1niTe/MkdoB4QBQeJBOwL+ZKPOWmvdCRK9c
+ 0gz3QSB3RIUVyTaBGHWtO4jmAqwr/mIRq1ueqA8J76EcyVHlfJfdlYo4EjKNvzUSSWnU
+ lyZ4WFUDLVM8+A6K6iO4Ty6X1+BrLa4WOshhza+y+ZGrXfFKEBwQ4VhIREytD1oldLAC
+ rS9BcqdQ9TeFUc+Tbm08cD4aQ27SChEWCXC+vZ3Z6UmZJTdWoYecgwazA0hiBxaQSeL3
+ NcANPhmIKU3ZsTNHhWkB7labnN8fUqWNwA4BRpWoZdfKNlzu4MV7uDz8qm/Uh91QFvoH
+ 4PbA==
+X-Gm-Message-State: AOAM533zNGqtuVACYhBSRJ16dK34Pp9pSE8G0M3dZnJCPlpztshPc9PF
+ lqcbJL9LDRhMq5LiecDmCx7FXHxCqOLS33F3EdZFHw==
+X-Google-Smtp-Source: ABdhPJwhXP/ufyVIDmgCSp6rO2H9xUUw+CPophC6XtJ+N/YZdTspTb7mwnqiEnIGiTPbRNVfGEfuB4wHDIzK4cjbBy0=
+X-Received: by 2002:a05:6e02:528:: with SMTP id
+ h8mr2094954ils.127.1625201569685; 
+ Thu, 01 Jul 2021 21:52:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210630085247.27554-1-irui.wang@mediatek.com>
-In-Reply-To: <20210630085247.27554-1-irui.wang@mediatek.com>
+References: <20210629094339.874120-1-fshao@chromium.org>
+In-Reply-To: <20210629094339.874120-1-fshao@chromium.org>
 From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Fri, 2 Jul 2021 12:10:42 +0800
-Message-ID: <CA+Px+wUZJQXtF2_eti5baY_z_24Rm-_+389KAeT5+sNretTD5A@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Support h264 encoder on MT8195
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>, 
- Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>, 
- Yunfei Dong <Yunfei.Dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+Date: Fri, 2 Jul 2021 12:52:38 +0800
+Message-ID: <CA+Px+wW2Vi0=+E+oAE4--At5wapn15t+TVxZXdNR03-iNrruPw@mail.gmail.com>
+Subject: Re: [PATCH 1/2] mfd: mt6360: Sort regulator resources
+To: Fei Shao <fshao@chromium.org>
+Cc: lee.jones@linaro.org, Gene Chen <gene_chen@richtek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210701_211059_028333_E6D65B66 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20210701_215250_846183_8B6CF585 
+X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,16 +95,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 4:52 PM Irui Wang <irui.wang@mediatek.com> wrote:
->
-> Add MT8195 H264 venc driver
->
-> Irui Wang (3):
->   media: mtk-vcodec: Clean redundant encoder format definition
->   dt-bindings: media: mtk-vcodec: Add binding for MT8195 VENC
->   media: mtk-vcodec: Add MT8195 H264 venc driver
-A typo in the commit message of DT binding patch.  With that:
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+On Tue, Jun 29, 2021 at 5:44 PM Fei Shao <fshao@chromium.org> wrote:
+> Reorder the regulator resources.
+Would be better to mention the list is sorted by their IRQ number.
+
+> Fixes: 4ee06e10dd26 ("mfd: mt6360: Combine mt6360 pmic/ldo resources
+> into mt6360 regulator resources")
+It doesn't need to be a fixup for 4ee06e10dd26 but a follow up cleanup.
 
 _______________________________________________
 Linux-mediatek mailing list
