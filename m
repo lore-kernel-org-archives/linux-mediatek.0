@@ -2,99 +2,89 @@ Return-Path: <SRS0=VpQz=L2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1D87C11F68
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA9D3C11F68
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 10:23:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DE41613EA
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 09:38:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DE41613EA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 98BD361410
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 10:23:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98BD361410
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j8ebYmt5nHbiKUogA7Pl91Hu7ozl0mzd0TbFB/9mh2Y=; b=1zGmTrVtoK71zC
-	Rj5YQDboxONItRDH9DaZfAmbNCubG+lWRdrmpPdz4ZysglFIegoZ1PO0bjL5bWo1zY76j7sELeeBy
-	DWTBURmOPLrcgU7u/RAYocCDzdTx129FkFtw6mMnUK6gjWYwpMlHmE2EAMIu+38MmkKN1Ps4LTqMQ
-	NSiJACg20E/r0NdAwgAx7pA1eB4WNFuAOkGeM5EpfrP+b6swupNb+oN22/+Q0unWPyqQAaAWMNGJe
-	W1xKxPo78v1lJKX9xlyYPLSt1rfJQCKJKEnu0SxrcGQFUeqvVnTMFtjH/Np/2h+Xxf5kFkLZO2Ddm
-	jIiRIfFiZYSsLOUbgRQQ==;
+	List-Owner; bh=7qGgF8B0QTzVGl40csCXP8w8pwJD2AZzILWRTY/KOCA=; b=IRIeP+6eV3KGBz
+	teynXB+WDbEyCliLjxncZlWmlumaWpxGlAnHiQdLC3UlrKKyCkbfjEesCcELj6Q1kvxhC6ttZFwnZ
+	Mc0xE+j0y3P6k44nu/n//YlgQNM1sjX7AwnfANRob2kNIk5EQh1Lpf0M/vx/rGTRZfqBAhDuJ7L84
+	/dIHQraGJnq9F5JBevir5ssu/INRvXNDP+cq3DQlq5Ou5B+An+Q3VqVcBqm0Nvfv7R3ex+LgrjiPp
+	tOfC12fYMKugHfmNffst0JSDTf3DUT5s9SwFyIrdUVSPQ0XJpW/ljwSOknwmGTT/zBsjyHSq5L+5q
+	5hRKYbglxXqA8aF3m7Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lzFcU-002fB5-Bz; Fri, 02 Jul 2021 09:37:58 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1lzGKc-002kre-2Y; Fri, 02 Jul 2021 10:23:34 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzFcF-002f6X-Pi
- for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 09:37:45 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id m18so11706685wrv.2
- for <linux-mediatek@lists.infradead.org>; Fri, 02 Jul 2021 02:37:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=zmw3iGewZOSDs+c1/yw4f6lr9XV4A3V9IcDrAGu7EUY=;
- b=seJWsMXt7a9DQs5DTguOn4v7czLJozx50c2KMxvJ4ChgjdtfcJyFCrU/niutcOA+17
- 6X6qQ+SHlKgbMtZkwaOwkt6RLhr9yuf9/tsn0WWkDbQaxS+ki4At8iFVOqMCU5a19yCe
- tm69GcfqmEfa8fMZdN8F6lEiHga/q9OMHvemh8fDmy/MS2BX3A6lrVZV7dm0VphoYvy7
- LEYAh/Y1/GZSaqOlINaCz/lyXL10VRCFUnLYhH7fkrYSsNOI+ZSemuqX9QPy13tNcqwd
- zhMMfns1XnzlKyfTOnGCPyXQcIn8JrwxNCXGEBWdW/JHoevLDs1QDlIB2D/Y3mbA1SX4
- AJ2A==
+ id 1lzGKN-002knO-GR
+ for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 10:23:21 +0000
+Received: by mail-pf1-x435.google.com with SMTP id x16so8509126pfa.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 02 Jul 2021 03:23:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=UhoYD5NgEf4BoTnpIK3bxc26o2f3DMv5QYbRT9lyhY0=;
+ b=ei1C7w4C7ILwqSzLafB9/8CxwhsIANZcBJoELDjHYON5cDQwlqXriDSKn2Q14wem6U
+ CynjpZ4A2/H8qW9XN6UcfOUHVrH/WFLKZfLQUTilkI84+4dFHoVgtlZTdqnkdZMirvgN
+ OLlUmlp5Wm2mrB1Gmr3KYq7DOhdP7BHGJB37g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=zmw3iGewZOSDs+c1/yw4f6lr9XV4A3V9IcDrAGu7EUY=;
- b=ROJWBIAiMcNetUarEAg7egDHjUCVah0M5z/4v6nb0BqjtA3aKhOwewIo1HiTl/bjGk
- GzA6LQkbA8OorwL16Rb/T7FKG7xCMEntkz1yk/tcvChIZjcOSvsNZa7fb0tGCuxz8eJW
- l6SOIgszTG+I3mJ6qL2IXfUpdV5H039QIrsKdJWGJ+qrMGsvOLIeNAD12ep6uXv0TTJW
- GCUA/dBqlmMNHRMOwe79K3iDGdUAFw9QVk/nfWkR6OkgMmB9pHRaXS+LiGBPBaNYeOVS
- BGU+C/4YcECrRU3g40NH7rwi2kQnFyyHqMibKXTENXQQFYvhiwesRCloFYzzugcgz11l
- UgoQ==
-X-Gm-Message-State: AOAM530Ijmm4NOnawZLv/jt839xu5Oc3mZNnSocQaSMoHZMJY1lLmlob
- i8b9k/ZchW1LIrHv05u8VikceA==
-X-Google-Smtp-Source: ABdhPJwVYrqppuZ9dDMO5GSgWooXxasPLeNPUlx9D0W1HifuqLwAmdYA1yAtMT4Xr+2+B5Xz11IQIQ==
-X-Received: by 2002:a05:6000:18af:: with SMTP id
- b15mr4769198wri.252.1625218662074; 
- Fri, 02 Jul 2021 02:37:42 -0700 (PDT)
-Received: from elver.google.com ([2a00:79e0:15:13:212e:6681:cd1c:caef])
- by smtp.gmail.com with ESMTPSA id n18sm6583605wms.3.2021.07.02.02.37.40
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=UhoYD5NgEf4BoTnpIK3bxc26o2f3DMv5QYbRT9lyhY0=;
+ b=PLtoCDUGjiMz0z6nnkP2Zn6Kg44Ut5VvePAUXdJu8ELgnsiWt3UuVnJCmWSeHSyUp0
+ j9eNG5Y0euuTknIdy3L57q676woKsUfNGsBL9oXVkcTg/gJ8u5C9i8x2Qn8MyFoaBxyI
+ kQ3Moe/9GYw6w/n7Vo/ruDQ5q4DLhDYVEVCn5eVUEIMuNT9aN+3K32Namv0eMvmbIdpr
+ wdYJW6baL/DC0qWSR5yUL3hsw7WuBJKgfqh29GAKeN9I32grKOAKy0AtxzGgJBLWrKjk
+ lAUEQPFbwEIV3CvivlscVg4Giv+aABz/niidn2XEy8f9ciKZliLUrM+Bq4Vk8sJIZJRa
+ uOeA==
+X-Gm-Message-State: AOAM532n279ZOazjjojQQxD9dQ9neekHsrwrh0ypdXjPMf/fOYNTtYUi
+ gv63MRsmVzxA6FptVUfmD5pIEg==
+X-Google-Smtp-Source: ABdhPJy/ZWQuZSLe/dkNz3Q11/wNxXdhcy1mjRjSeGuCv7THVpU48WmxfkQul3NL4GEqZ3CiA3JC7Q==
+X-Received: by 2002:aa7:8f2f:0:b029:313:f1e6:d576 with SMTP id
+ y15-20020aa78f2f0000b0290313f1e6d576mr4457944pfr.25.1625221398436; 
+ Fri, 02 Jul 2021 03:23:18 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:b63b:3ac0:4dda:fdd2])
+ by smtp.gmail.com with ESMTPSA id d13sm2863484pfn.136.2021.07.02.03.23.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jul 2021 02:37:41 -0700 (PDT)
-Date: Fri, 2 Jul 2021 11:37:34 +0200
-From: Marco Elver <elver@google.com>
-To: yee.lee@mediatek.com
-Cc: andreyknvl@gmail.com, wsd_upstream@mediatek.com,
- nicholas.Tang@mediatek.com, Kuan-Ying.lee@mediatek.com,
- chinwen.chang@mediatek.com, Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>,
- Dmitry Vyukov <dvyukov@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:KASAN" <kasan-dev@googlegroups.com>,
- "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v4 2/2] kasan: Add memzero int for unaligned size at DEBUG
-Message-ID: <YN7eXr30zVH7nLhQ@elver.google.com>
-References: <20210702085422.10092-1-yee.lee@mediatek.com>
+ Fri, 02 Jul 2021 03:23:18 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ maoguang.meng@mediatek.com, yong.wu@mediatek.com
+Subject: [PATCH v5 RESEND 2/3] dt-bindings: mediatek: Add mediatek,
+ mt8183-jpgenc compatible
+Date: Fri,  2 Jul 2021 18:23:03 +0800
+Message-Id: <20210702102304.3346429-2-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
+In-Reply-To: <20210702102304.3346429-1-hsinyi@chromium.org>
+References: <20210702102304.3346429-1-hsinyi@chromium.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210702085422.10092-1-yee.lee@mediatek.com>
-User-Agent: Mutt/2.0.5 (2021-01-21)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210702_023743_965080_98395FBF 
-X-CRM114-Status: GOOD (  18.81  )
+X-CRM114-CacheID: sfid-20210702_032319_620073_122A42BB 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,52 +101,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 02, 2021 at 04:54PM +0800, yee.lee@mediatek.com wrote:
-> From: Yee Lee <yee.lee@mediatek.com>
-> 
-> Issue: when SLUB debug is on, hwtag kasan_unpoison() would overwrite
-> the redzone of object with unaligned size.
-> 
-> An additional memzero_explicit() path is added to replacing init by
-> hwtag instruction for those unaligned size at SLUB debug mode.
-> 
-> The penalty is acceptable since they are only enabled in debug mode,
-> not production builds. A block of comment is added for explanation.
-> 
-> ---
->  v4:
->  - Add "slab.h" header
->  - Use slub_debug_enabled_unlikely() to replace IS_ENABLED
->  - Refine the comment block
+Add mediatek,mt8183-jpgenc compatible to binding document.
 
-^^ this changelog ...
- 
-> ---
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml         | 1 +
+ 1 file changed, 1 insertion(+)
 
-^^  this '---' is wrong unfortunately.
+diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+index 5e35ecfd21f1b..fcd9b829e0366 100644
+--- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
+@@ -17,6 +17,7 @@ properties:
+     items:
+       - enum:
+           - mediatek,mt2701-jpgenc
++          - mediatek,mt8183-jpgenc
+       - const: mediatek,mtk-jpgenc
+   reg:
+     maxItems: 1
+-- 
+2.32.0.93.g670b81a890-goog
 
-> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> Suggested-by: Marco Elver <elver@google.com>
-> Suggested-by: Andrey Konovalov <andreyknvl@gmail.com>
-> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
-> Cc: Alexander Potapenko <glider@google.com>
-> Cc: Dmitry Vyukov <dvyukov@google.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-
-
-... should come after the tags.
-
-
-git am removes anything between the first '---' and the actual patch
-from the commit message.
-
-The typical convention is to place the changelog after a '---' _after_
-the tags, so that it is removed from the final commit message.
-
-I think the code looks fine now, so please go ahead and send v5.
-
-Thanks,
--- Marco
 
 _______________________________________________
 Linux-mediatek mailing list
