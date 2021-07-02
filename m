@@ -2,19 +2,19 @@ Return-Path: <SRS0=VpQz=L2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0F70BC11F68
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 08:43:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C32AC11F68
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 08:49:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CAAA9613B5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 08:43:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAAA9613B5
+	by mail.kernel.org (Postfix) with ESMTPS id 099DA613CD
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Jul 2021 08:49:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 099DA613CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S9ksnu1/MKs+NKJcxfRdj23MM7wGbA4LjnC6w2qmZQk=; b=yc3fH01WIgWDJN
-	/bNskKK8WoCDh4hIVzfr9A0/bkBWJsvldUgwhkz4ycqNGJupKPxx7sNwNDTz/fygmiICvOhfixlI1
-	IMHC2fcUav+nm3pcOYO+UxM8ogJy36T5DQaZTyZVijsOOwAwS+GPJ+EL0S3U7y/PHWBeus0/gqJ6T
-	CCdkVWFpiRV19DTLyye6Ko9HSfegB6N0Iea98XUGwNvhJ50AUyQe4KtkGAXwMnfyNJA54H0ADtg1m
-	z/ZL7XZayPO7JDLCZWMHSCFjmXhDXQBctgo1UAsNZ3PwtgDoj3uk5u8E3ikQoUKBamn0GUEGSQJqU
-	anStnkOXHakwIpENr/5w==;
+	List-Owner; bh=qYZ0d8hZwpVkdIw5k8566B3L97A7ETRbGAG9+t575J8=; b=IYd8WlTNshPRbU
+	H13jEef9pxA6MdtldXRdFmrocYtGHkTNnCmseTwwtFlWNK+Xch+0GFkcLnDClVLnWUOf/XBI7AsBL
+	t5DO2u09zl3h0YrY8qbsvIEthKm6fl0BXodxg9DGXNiD+Bwd4JuAvNgvFQK4yhki+OYCchRL0/eYY
+	EalYvVV4/oS+mMRuvB2g1ymZDq4U6eIjwUrA4+xVGvVoYNV6WBMkza61OkKmWQTM/rpfwrkk9wunz
+	YHE8oQ6COFxpxnvEPtOdjypU7eB/7NApuw9rDiwsup9iqD02FogN7k6Dy6PWYzqP/qLkwRYuQl7Vp
+	c6Wv1v+qZIPDckJ+Icog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1lzElC-002VAG-VE; Fri, 02 Jul 2021 08:42:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1lzEqx-002W4k-PT; Fri, 02 Jul 2021 08:48:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1lzEl9-002V8a-Vp
- for linux-mediatek@lists.infradead.org; Fri, 02 Jul 2021 08:42:53 +0000
-X-UUID: db3606b268144f3ba5166ff4f681c679-20210702
+ id 1lzEqu-002W3w-27; Fri, 02 Jul 2021 08:48:49 +0000
+X-UUID: 08e6761b92d64af9a6c0571fdf9d5bbf-20210702
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1OnGl7xq3NOFK3e1GzhJyCLVnMWI/X73iPrxvmoKimg=; 
- b=rGcBqFz/mpIM8KXQQ9tSSx84OrIHihCS8FG/qi+MvvwJrqlKtCIiB3X3bhH0Ty0w6J2X813pwizq9CSAQPsfdZCkk3MR6NhaTwJJiqy7zCYx33hgwFjl78z3lrNBd7K28FtvAyETTjYy34x3BjMe22/OTWWOzFxy62wFR8E9l+k=;
-X-UUID: db3606b268144f3ba5166ff4f681c679-20210702
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
+ bh=jyp9iRWhXXvWz7h9W5VUYsFtGtPGx7zCFekZIW4V61Y=; 
+ b=axPtKCwZUcsXivptNmF0nmsGf49AyUGdpVUYZs2gLTXaBNCGkMsLC2aA3WqpfYxT03dt/uCrA1WFYkPFBqSFwGHp73xgEFITBNhyLCAEITKl9M/vmGsc+TIVAv7A9q/QkGEtqZPlqS9+VMCwr/5QO5Av2wjM9j/wowkOWRPDyaQ=;
+X-UUID: 08e6761b92d64af9a6c0571fdf9d5bbf-20210702
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2040673995; Fri, 02 Jul 2021 01:42:49 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 2 Jul 2021 01:40:01 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 2 Jul 2021 16:39:52 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 2 Jul 2021 16:39:52 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
- <sujuan.chen@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: cleanup miscellaneous errors and redundant codes
-Date: Fri, 2 Jul 2021 16:39:49 +0800
-Message-ID: <20210702083949.4431-1-bo.jiao@mediatek.com>
+ with ESMTP id 154869473; Fri, 02 Jul 2021 01:48:40 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 2 Jul 2021 01:48:39 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 2 Jul 2021 16:48:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 2 Jul 2021 16:48:37 +0800
+From: <yee.lee@mediatek.com>
+To: <andreyknvl@gmail.com>
+CC: <wsd_upstream@mediatek.com>, <nicholas.Tang@mediatek.com>,
+ <Kuan-Ying.lee@mediatek.com>, <chinwen.chang@mediatek.com>, Yee Lee
+ <yee.lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v4 0/2] kasan: solve redzone overwritten issue at debug
+Date: Fri, 2 Jul 2021 16:45:31 +0800
+Message-ID: <20210702084538.9436-1-yee.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: E5970F82D679ACA60D60ABEF64347722AD57499F5300A5D1BA73B0C9D78891502000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210702_014252_081003_94EA7BA5 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20210702_014848_153443_CC3D4FE0 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,83 +88,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+From: Yee Lee <yee.lee@mediatek.com>
 
-cleanup miscellaneous errors and redundant codes.
+Issue: In SLUB debug, hwtag kasan_unpoison() would overwrite the redzone
+ in those objects with unaligned size.
 
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+The first patch Introduces slub_debug_enable_unlikely() to check 
+the state of debug mode. 
+
+The second patch Adds memzero_explict() to separate the initialization for
+such condition. The new code path is executed about 1.1% during nromal
+booting process. The penalty is acceptable since it only works in debug mode.
+
+
+=============
+Exp: QEMUv5.2(+mte)/SLUB_debug mode
+code path exec : 941/80854 (1.1%)
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/init.c |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c  | 10 +++-------
- drivers/net/wireless/mediatek/mt76/mt7915/main.c |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  |  7 +------
- 4 files changed, 6 insertions(+), 15 deletions(-)
+Changed since v4:
+ - Introduce slub_debug_enable_unlikly() to check the debug state.
+ - Include "slab.h" and Add slub_debug_enable_unlikly() to lead 
+   the condition statement.
+ - Add comment block about this new code path in source code.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 4798d6344305..1d2214519f5a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -480,7 +480,7 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
- 	}
- 
- 	/* Beacon and mgmt frames should occupy wcid 0 */
--	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA - 1);
-+	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
- 	if (idx)
- 		return -ENOSPC;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 2462704094b0..186a8f44abb8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1377,13 +1377,9 @@ void mt7915_mac_reset_counters(struct mt7915_phy *phy)
- 		mt76_rr(dev, MT_TX_AGG_CNT2(ext_phy, i));
- 	}
- 
--	if (ext_phy) {
--		dev->mt76.phy2->survey_time = ktime_get_boottime();
--		i = ARRAY_SIZE(dev->mt76.aggr_stats) / 2;
--	} else {
--		dev->mt76.phy.survey_time = ktime_get_boottime();
--		i = 0;
--	}
-+	phy->mt76->survey_time = ktime_get_boottime();
-+	i = ext_phy ? ARRAY_SIZE(dev->mt76.aggr_stats) / 2 : 0;
-+
- 	memset(&dev->mt76.aggr_stats[i], 0, sizeof(dev->mt76.aggr_stats) / 2);
- 
- 	/* reset airtime counters */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index c25f8da590dd..d8abebcffe4b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -613,7 +613,7 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	int ret, idx;
- 
--	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA - 1);
-+	idx = mt76_wcid_alloc(dev->mt76.wcid_mask, MT7915_WTBL_STA);
- 	if (idx < 0)
- 		return -ENOSPC;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 863aa18b3024..62160ca721b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -975,12 +975,7 @@ mt7915_mcu_bss_rfch_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- 	}
- 
- 	if (vif->bss_conf.he_support && vif->type == NL80211_IFTYPE_STATION) {
--		struct mt7915_dev *dev = phy->dev;
--		struct mt76_phy *mphy = &dev->mt76.phy;
--		bool ext_phy = phy != &dev->phy;
--
--		if (ext_phy && dev->mt76.phy2)
--			mphy = dev->mt76.phy2;
-+		struct mt76_phy *mphy = phy->mt76;
- 
- 		ch->he_ru26_block =
- 			mt7915_check_he_obss_narrow_bw_ru(mphy->hw, vif);
+---
+Changed since v3:
+ - Apply IS_ENABLED to wrap codes under SLUB debug mode.
+ - Replace memset() by memzero_explict().
+
+---
+
+Yee Lee (2):
+  mm: introduce helper to check slub_debug_enabled
+  kasan: Add memzero int for unaligned size at DEBUG
+
+ mm/kasan/kasan.h | 12 ++++++++++++
+ mm/slab.h        | 15 +++++++++++----
+ 2 files changed, 23 insertions(+), 4 deletions(-)
+
 -- 
 2.18.0
 _______________________________________________
