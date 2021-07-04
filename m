@@ -1,20 +1,20 @@
-Return-Path: <SRS0=KhaQ=L4=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B74AAC07E95
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5255BC07E95
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 00:03:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 79F4D6128D
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:56:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 79F4D6128D
+	by mail.kernel.org (Postfix) with ESMTPS id 1857C613D1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 00:03:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1857C613D1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v6dSRaqEZ3nrx8agHFZFu4VpGz6c2L2a13bwVrMxKlo=; b=OG3sTMY3wUDlJU
-	q9ao3pGT/Ed/MK+98Lse9I0tZpId8pbGqiBWSFIVWi4ocMcDlk2TjWp5/9xVGhGG8zsxFcK8lK40N
-	NrzsKUdVSavU9x2TXj4GR76Vvpl/k0zooWZX6Z6xjDP9WCK4+lBtJswfQMr8E9NApwNcZz3pH2Ciq
-	sMU7Mo3+alhchYlxMsybN3g7Vt9NW/qw9Hv2q+ok6Q8B/htbraHq09TmjTBHMvEbouNoun/WB4qFf
-	ZY+4yQ7OrZL71W7XqgAIWU6g37OQx1TEhQeT7xneQKmaOuf7E4bJ8mzdxtblkw86bHC+tjEsEnegp
-	4pgBmiMRzz8ocGvqaP/Q==;
+	List-Owner; bh=3jbvFSLBE6eGUgm8Bf9SdVtGlDSFgXzNjy54P/n2PyE=; b=QA+FkR538o6Yla
+	HeFCUjYP/VOTut5kxKDZHILf8kL31OitRuKyhugRqCmj+9hTXd14cqFLimB+N/jEIWuq882ShgVZ2
+	lB79PATQSk1YOu5q57Oy3Dr8alRraqFUwF3RkRAxwMWOy1k0/1YnZ4L8tM2AXaTVip0WCSATS4XJ1
+	wpT8NNX4SVl7hJrhxEmJa4oK3X2GDq5MMvaY8x6iR1ai2y6B+CRfcYzSYOIsFgBgp7qsdhLa/eEiM
+	FODTwXn23RGCw9thBWuQICcRPt2CxmAxnUkB0px1uyMa6syq++oe0vLCZQnitxG8lIq8oioUNWp5n
+	QRawoIfJkzsqXj1eyjjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0ByU-007IYF-Qq; Sun, 04 Jul 2021 23:56:34 +0000
+	id 1m0C4t-007Lpx-Mt; Mon, 05 Jul 2021 00:03:11 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0BFC-006wEo-0I; Sun, 04 Jul 2021 23:09:47 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B6E12615FF;
- Sun,  4 Jul 2021 23:09:44 +0000 (UTC)
+ id 1m0BG4-006woQ-MA; Sun, 04 Jul 2021 23:10:42 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 786D56144E;
+ Sun,  4 Jul 2021 23:10:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625440185;
- bh=JLnj6qVcViE62bsL5Ow3MzU9nBG0zChzVptCI2Witqc=;
+ s=k20201202; t=1625440240;
+ bh=w9dbD+sdlf57EC9sS/z688WVEVIgvZnb6vC79ehbFsY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=L+30zOQ0HdGLarqfE4iCrVog2s6PN406XSG2HHw8qqBaNhSXCkjQCWmNrMxHpgUs9
- 6/Kj6K6wkxDilYkxB8CZrCdnwTR4mAQtTKuT1h+Ama0ozAzJiriqAtoB1MPTHKZQzE
- hUF5HgirOXo0fvkGUTiY3pKtDf2MbZYecs0Mk5jg8/CyYd59qnbxmC8wJpA1w6/tKA
- oZ4Y8pqtOs+Ed4HIJnLPdB+saPrYSpGb9xnIf5vF7fI7mhk5uVMpxs9qbbZUQ1x6IB
- iSM2VfLhUjucoKk0bOxXcx5RBmGGanxCfF8FdMLA/yli+0vIjEIWPdnk04Soe5XuTr
- zPmkilm8SOWTw==
+ b=i2TFkGBigiAFuKcZrixxhFS31AhEbD61ZCiu0yanoj8wKcy40Zo+FbCkurDqwrb5k
+ l6YwHe1J3RxFs8sZ9YpizrgfTGGX2wLMY4LwicPEeOR0qXbkqOkrbMyzPmgZ3njz8B
+ mIR0//uRqhqy9cHb0YjTJ3kfmH8ddnjDZ5zRpl7PZNSgy8oodMh8vmCaOCRZPHqfXc
+ LhHvmkoNsKO5yLFSNxCeb55h3jfvWkFpKmXMT1xSz5gxum5cjYWsAvfXRK4Tkmzi9t
+ dsWzOnO8+166Fl69WZE3/jEbkiQ58sxGTJGtVhgr8hU6lVu49t1LZg3wMPukwS9eYN
+ wVIjsGpMe4OXA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 05/50] media: mtk-vcodec: fix PM runtime get logic
-Date: Sun,  4 Jul 2021 19:08:53 -0400
-Message-Id: <20210704230938.1490742-5-sashal@kernel.org>
+Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Axel Lin <axel.lin@ingics.com>, Mark Brown <broonie@kernel.org>,
+ Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.4 48/50] regulator: mt6358: Fix vdram2 .vsel_mask
+Date: Sun,  4 Jul 2021 19:09:36 -0400
+Message-Id: <20210704230938.1490742-48-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210704230938.1490742-1-sashal@kernel.org>
 References: <20210704230938.1490742-1-sashal@kernel.org>
@@ -64,8 +64,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_160946_100363_682CC17C 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20210704_161040_795803_740C47D7 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +82,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 
-[ Upstream commit 908711f542c17fe61e5d653da1beb8e5ab5c7b50 ]
+[ Upstream commit 50c9462edcbf900f3d5097ca3ad60171346124de ]
 
-Currently, the driver just assumes that PM runtime logic
-succeded resuming the device.
+The valid vsel value are 0 and 12, so the .vsel_mask should be 0xf.
 
-That may not be the case, as pm_runtime_get_sync()
-can fail (but keeping the usage count incremented).
-
-Replace the code to use pm_runtime_resume_and_get(),
-and letting it return the error code.
-
-This way, if mtk_vcodec_dec_pw_on() fails, the logic
-under fops_vcodec_open() will do the right thing and
-return an error, instead of just assuming that the
-device is ready to be used.
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Reviewed-by: Axel Lin <axel.lin@ingics.com>
+Link: https://lore.kernel.org/r/1624424169-510-1-git-send-email-hsin-hsiung.wang@mediatek.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 4 +++-
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c  | 8 +++++---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h  | 2 +-
- 3 files changed, 9 insertions(+), 5 deletions(-)
+ drivers/regulator/mt6358-regulator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 00d090df11bb..4cde1a54e725 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -142,7 +142,9 @@ static int fops_vcodec_open(struct file *file)
- 	mtk_vcodec_dec_set_default_params(ctx);
- 
- 	if (v4l2_fh_is_singular(&ctx->fh)) {
--		mtk_vcodec_dec_pw_on(&dev->pm);
-+		ret = mtk_vcodec_dec_pw_on(&dev->pm);
-+		if (ret < 0)
-+			goto err_load_fw;
- 		/*
- 		 * vpu_load_firmware checks if it was loaded already and
- 		 * does nothing in that case
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-index f9bbd0000bf3..34e9e067de20 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-@@ -89,13 +89,15 @@ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
- 	put_device(dev->pm.larbvdec);
- }
- 
--void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
-+int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
- {
- 	int ret;
- 
--	ret = pm_runtime_get_sync(pm->dev);
-+	ret = pm_runtime_resume_and_get(pm->dev);
- 	if (ret)
--		mtk_v4l2_err("pm_runtime_get_sync fail %d", ret);
-+		mtk_v4l2_err("pm_runtime_resume_and_get fail %d", ret);
-+
-+	return ret;
- }
- 
- void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-index 872d8bf8cfaf..280aeaefdb65 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-@@ -12,7 +12,7 @@
- int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
- void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
- 
--void mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
-+int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm);
+diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
+index ba42682e06f3..40e09b1d323d 100644
+--- a/drivers/regulator/mt6358-regulator.c
++++ b/drivers/regulator/mt6358-regulator.c
+@@ -457,7 +457,7 @@ static struct mt6358_regulator_info mt6358_regulators[] = {
+ 	MT6358_REG_FIXED("ldo_vaud28", VAUD28,
+ 			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
+ 	MT6358_LDO("ldo_vdram2", VDRAM2, vdram2_voltages, vdram2_idx,
+-		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0x10, 0),
++		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0xf, 0),
+ 	MT6358_LDO("ldo_vsim1", VSIM1, vsim_voltages, vsim_idx,
+ 		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00, 8),
+ 	MT6358_LDO("ldo_vibr", VIBR, vibr_voltages, vibr_idx,
 -- 
 2.30.2
 
