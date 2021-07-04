@@ -2,66 +2,91 @@ Return-Path: <SRS0=KhaQ=L4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07440C07E95
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 14:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50AE9C07E95
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 15:00:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B98EB61261
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 14:39:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B98EB61261
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=omp.ru
+	by mail.kernel.org (Postfix) with ESMTPS id 05677613E0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 15:00:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 05677613E0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmx.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:CC:To:From:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=fRjXY7amrjtv3Ex32LKce2FBWGimdW+rh/ulSSfKjHU=; b=SAGjh6A+AHSP8QVqiMaqN9D5bl
-	vA1tBZefMJoC9k7AMPdebSabmLCMaUorgPBgKCg1ELZ24Ge9G6yR+zmHFVNOFrY2q6gg43+LKYxjI
-	CSbvs4SdwCGqoX14gvlJF79QG2zHWQux5CCs0vJPb7EjIZvktRuSV9+dWymHenhfWyTU82CJiMoxA
-	/1Q9Ygl9Pi0SE17d9N8NSSAavU8ih+ga3RIVtoX5jeRLaUOaX9dHyG+zEUALEjq2IFx7h5oETPfCg
-	qvZNm8kyxRrI8NQt+PzhXSAurfxJq3WCmmc8xNGh/10W7nX+JsNggZ1rhzsJ0c46hphOkOINClt/Z
-	bRvDuRmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=useJ5ZrJgORs9VSCQ/MB8IMRwIOObGjAQzsa32L0UlM=; b=eoUvF3DW75j7bE
+	d3SHBnaI2aDrWmdEXHa1V8M+c7SAjzWnpnJ10/ifYBJUBH6A5bh9tA8AG6/oyF/e6XcQvvw/BkX4n
+	ENtSZQ1u0PmAlB0heY8nfqI1uBG1T2kC4Jm+W81MFgslvuJsMG77b/2o1T1hz9CissPyd9V3MDhsR
+	i/XN8WZUkDI7KKOlCHKk/0fvYyVITYiKh1iFguNu5QoAXN6mE66zuGs9Ud+M6VCk93WNvSD/lLAJW
+	qoXbLu8Ei80VdtsON/OUIaWzqdv4qAdbDWfe/wTwdDOmhtF3Ti2xLDp2pUQBzEi5dp0g/KNudQ677
+	RSisTTCU1/CyXpcf8CiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m03H0-006Ohs-QB; Sun, 04 Jul 2021 14:39:06 +0000
-Received: from mxout03.lancloud.ru ([45.84.86.113])
+	id 1m03bj-006QKK-2j; Sun, 04 Jul 2021 15:00:31 +0000
+Received: from mout.gmx.net ([212.227.15.18])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m03Gn-006Ogk-VN; Sun, 04 Jul 2021 14:38:55 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout03.lancloud.ru C25A420F1D4C
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: [PATCH v2 2/5] i2c: mt65xx: fix IRQ check
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-To: <linux-i2c@vger.kernel.org>
-CC: Qii Wang <qii.wang@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-References: <3712e871-bf2f-32c5-f9c2-2968c42087f8@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <bab29007-8d74-0a68-2378-9db6ba0bc576@omp.ru>
-Date: Sun, 4 Jul 2021 17:38:45 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1m03bM-006QBF-3k; Sun, 04 Jul 2021 15:00:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1625410787;
+ bh=RNSQYYFuIriR47EualGe3dVp1QibTFyz3MT30NUh6sY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=WaA3l5izUOfpKq09VsyYtEPvfGNAxKPfn1QJewZviQ9xE3fVfsoEKszGO49PupjfP
+ DGsmYQOrD6qQxpZdSF9J/JtpSldUQrFH47JKXpFQFcattEnEi1bysQjyys/0Piq/Yb
+ xhlm7nJo3srfAfG0zQ5izlUJslGvYcMoa8K4DioE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from localhost.localdomain ([83.52.228.41]) by mail.gmx.net
+ (mrgmx005 [212.227.17.184]) with ESMTPSA (Nemesis) id
+ 1M3lY1-1m0KqP3TZj-000rM9; Sun, 04 Jul 2021 16:59:47 +0200
+From: John Wood <john.wood@gmx.com>
+To: Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
+ Ryder Lee <ryder.lee@mediatek.com>
+Cc: John Wood <john.wood@gmx.com>, Kalle Valo <kvalo@codeaurora.org>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+Subject: [PATCH v2] mt76/mt7915: Fix unsigned compared against zero
+Date: Sun,  4 Jul 2021 16:59:20 +0200
+Message-Id: <20210704145920.24899-1-john.wood@gmx.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <3712e871-bf2f-32c5-f9c2-2968c42087f8@omp.ru>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+X-Provags-ID: V03:K1:n/VraqA2jUH1gvdW771kpSf31uZTCCCagc9quqqb0EcgjiFgR5E
+ u02NcADrvAdAoJ7O8MzGR/tdK562pg3DCMXw2jvJ6HT4oH+WmA0ehebmASfgVEB5nmvgWNR
+ 1NjJGg1/vL2VQIaMMtHs/kXsIJYJk5QqRz3v7lwV7gjmmudpmhjzhnah2VMDpP09x5kvQs7
+ DVgkaDUr7f3r6wemEOY6w==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:oC2EW4JkHSE=:C895kBVBwg/Pcc8pMrv+Vk
+ uPfCGXmCkV9eRvAMFe6mTYc/cfYoozl33Sm53y9veWv+5NkvGFYWfH5mHa94R66A/mu8nLCs/
+ vhTca6Ihd3nbDwNiGqzw6XGWniL64q1OHF1yJdDWvCEROTbOuFVXXjBlCgPTqE/+OrsqaBYAY
+ TxN+n30EWO8K0J72k5VfaneU0m939BctjsPeqauDJ0FD0V4eDQLSWcE6vN1NyKGQ5Nh91q3Dy
+ Jy2wSi9YyQBuBjxco1XoAjwta1R+UzoHw6Qed4r3GWMWeygx8PTJo1umFa8tDhr/EH+6DH8y3
+ qFbBBmXFy2Uz7oKMPS8qs/CF/sPgNPX/TRY9MOQz6M+M47SVnb0f7F3rn/MpUY6buLToDLIze
+ UwKrWNZAhF+N1JsfziJr9LIEgdcjYHNbB7k22ZSa8xWRhFgL/WPQJY94AXyl7lHzufetyZz8V
+ md4kbrt2u12Hh4x1KCCw4NBUiOMhIdnmHKlbSYE7CxjIF2YozcST19EjXSVqg9xZBdW8ZxSh9
+ CN4SZSSiasvrMAkXkiSOPXjC0PXEQdzvacnHNiXvA0QynC+r+Y3WtjWfbDsWU5Q9mmnuKWhO2
+ +fZGzLSJJMcnwTnPkCAKycyC2b+XqzEmwkRv8HTiaQWgMdsRcJV0yA64MyNdV/NVX4eFnG/a3
+ JdUPzSb/w5rFhh6PCU2ApWRgciIdSpdp1LhLqmIQNMncgOWOjCL8Z2TnB+VF0fDK/Cqzw5Rlh
+ JUB1XrFsFSDLr07/awBpyPzkmlmlB3BGifPxRzNTUmqK7FKqjvwV3TLLVevG+hAD5gQ+map8N
+ HwHxcha1Mnx222JXzspCAPG3Ce9kKxffpUzT/K788EU/B66ePFovV9uyER0KIV8WxnUuJNFlQ
+ eLWaneAQRS4mK5ByGyhBIywhiB71uGEDhPlnkvzTOzird2XRGvao3ubpfr6Oc5bJhAB/raWnH
+ pg4ije8C7onQ/9Pggih+Wdo2GZrWdcSQdpBMolblCHwsdyIEGl2k2F88bQJXTSSpxmQVdhvnk
+ 4Qh2yjUR9N4igHuFqJQ4snz1jWLDFrE2tBaCYOxvtNBvA4s7iF0KqFRCJk27oM69c3K3wEI16
+ uYHRzlZXuHk7uhC8oxgDO+pFHE8dOOacElD
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_073854_239656_36E2658A 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20210704_080008_475534_D4DE50B9 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +103,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Iff platform_get_irq() returns 0, the driver's probe() method will return 0
-early (as if the method's call was successful).  Let's consider IRQ0 valid
-for simplicity -- devm_request_irq() can always override that decision...
+The mt7915_dpd_freq_idx() function can return a negative value but this
+value is assigned to an unsigned variable named idx. Then, the code
+tests if this variable is less than zero. This can never happen with an
+unsigned type.
 
-Fixes: ce38815d39ea ("I2C: mediatek: Add driver for MediaTek I2C controller")
-Signed-off-by: Sergey Shtylyov <s.shtylyov@omprussia.ru>
+So, change the idx type to a signed one.
 
+Addresses-Coverity-ID: 1484753 ("Unsigned compared against 0")
+Fixes: 495184ac91bb8 ("mt76: mt7915: add support for applying pre-calibration data")
+Signed-off-by: John Wood <john.wood@gmx.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changelog v1 -> v2
+- Add Cc to stable@vger.kernel.org
 
-Index: linux/drivers/i2c/busses/i2c-mt65xx.c
-===================================================================
---- linux.orig/drivers/i2c/busses/i2c-mt65xx.c
-+++ linux/drivers/i2c/busses/i2c-mt65xx.c
-@@ -1211,7 +1211,7 @@ static int mtk_i2c_probe(struct platform
- 		return PTR_ERR(i2c->pdmabase);
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0)
-+	if (irq < 0)
- 		return irq;
- 
- 	init_completion(&i2c->msg_complete);
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index b3f14ff67c5a..764f25a828fa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -3440,8 +3440,9 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+ 	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
+-	u16 total = 2, idx, center_freq = chandef->center_freq1;
++	u16 total = 2, center_freq = chandef->center_freq1;
+ 	u8 *cal = dev->cal, *eep = dev->mt76.eeprom.data;
++	int idx;
+
+ 	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_DPD))
+ 		return 0;
+--
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
