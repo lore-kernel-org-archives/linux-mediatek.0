@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93DD6C07E96
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 506C7C07E95
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:22:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6902061370
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:21:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6902061370
+	by mail.kernel.org (Postfix) with ESMTPS id 22CCA613B1
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:22:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22CCA613B1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/VD7KR9MFAdyj/v4zl//te2J+uTG8NJopzCSyLx3Js=; b=pGpwmVaRLew5Hp
-	hjnclxD7GspU++hANPRpey+Nrri/QMJLlcgGXvqRoPtNgCKWtfm96SejrR+bVF/H8axTMJ9UhPLIS
-	5tcSE8bKpnqFheUIa4L4sjkOZ3uBsi+3rBIWz4wi7TzEf+hjSocFApoVisEEN5IKZtzbMG6BoV+Qo
-	PiV3w2PNWaGnizK2+lQJweEnu0cartKaveOiFt2CTtggCCYdAEkC14p9nkdn0ruz6CHyAKrdIaijK
-	vBv1uV+fmwLgjRd/Lp2UXuHu1/pKD67U8yvSFdBFseIFSKmO6vKv9ptA4UG/zn61BwtY6YRwUsj4x
-	ajg8gcaNlnm+g800f5Og==;
+	List-Owner; bh=/H/S44GTRvpoPD4mxkkcZFclAa+Xfri1z7TsfAusv7k=; b=IklUlr7NKShHF/
+	kUmhqV7RiknrrkEq9NaFv8aLcRf9W1DIMlyUqJdP3BZy06eP4KJCOa0mUfCBt+oEY56+S4bgLB4ma
+	SuocKj5A6vz7e2ciriSWTAhMy0q1+EciTX5m/cGlj99vD+h6o8uRdA2D2KueBo+da9/HPD+XxlW/w
+	Is0OxrtIb2lq6tMCSHOu4lvXWLzBO7cMfXipQMFE839ULPqc/f9Xj+bfC3PrIqrH8L0qF7mfmKOw+
+	i8FSnMXigXh7XiL+k74RBhtxlU63Fa/rWwQrEmQtx3+zB2hRcWJAu4yJY7MM4MVjAL5RJ/dwRd+Gf
+	tyhcSfUTQoph4QUOqbBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0BPz-0072Eu-2s; Sun, 04 Jul 2021 23:20:55 +0000
+	id 1m0BR5-0072qs-Tf; Sun, 04 Jul 2021 23:22:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0BBj-006tWA-AW; Sun, 04 Jul 2021 23:06:12 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 30E44613F9;
- Sun,  4 Jul 2021 23:06:10 +0000 (UTC)
+ id 1m0BBx-006tgu-AF; Sun, 04 Jul 2021 23:06:26 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 31F4F61936;
+ Sun,  4 Jul 2021 23:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625439971;
- bh=Auz1i9Vu8ZGHbO+T/8MnQgeUUVcxEUmWz8KkWj4sn7s=;
+ s=k20201202; t=1625439985;
+ bh=/FSnNNOCk5OXokZXqDDrrMtWOMQjuygAvziNQZGw/TY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=XMWTpaSaG9bmPYba1vSjseojs3xQoRUWxm6qK+S7LDA0Cx+jNw8bnxjMyUAsmGMfF
- cs6WQNPTe0YP/5FAVoz4eSjcHKw7ArOqmT5FPPAgeU/sEcOWN8ZYpNjrSEDziWJxaL
- m1iE6qPx1eYqouksyHa29sUKu0mSQS3rHbZXYAq5EO7ByyyilavzNZ6fmfrHKt8DdI
- 2PHsC5ak4iU42AIdRwRZPeQX2q7zVyizEXtnmecEP+mGxlWgoIDtVSOmFeGz3akee9
- fD8bWMIIuCqHgEvFafvldff6TfvkvZfglR3ORDRnOgy0qaDbjX11yNWCINcYx+MTLM
- F+3EDrbzydC8g==
+ b=pOEL9+L9TziJ64W5cojcAiLH5y2LRO0f8vCdALbqR9W5rMGMdlqXURbSGa/nmrgWI
+ xBBkGGkd4JVmErIivIQ740HawhJGlACzSIgMJN8dsadPNpKmTjV+YdIPCFDIDzKYBW
+ wAscwpdGAkosSRxn8XteVxAjdvr37BM8YGHItuLnnO3c/0UvtKE/S9dWluC3G2C01P
+ aE2ZdtedtQ3oYvEfekRSgTyLOBm4eWsFpGfUwkGrEgrQAs5+31NPyqD0QGI25q8KrJ
+ pOpT9hrb+7o8JrMbtgWGQEkIqlWDXGTWhKe7YmNunG5WkoEpkcV+33ScqT+oCn5fIa
+ uGndfT0VloYjQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Axel Lin <axel.lin@ingics.com>, Mark Brown <broonie@kernel.org>,
- Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.13 82/85] regulator: mt6358: Fix vdram2 .vsel_mask
-Date: Sun,  4 Jul 2021 19:04:17 -0400
-Message-Id: <20210704230420.1488358-82-sashal@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.12 06/80] media: mdk-mdp: fix pm_runtime_get_sync()
+ usage count
+Date: Sun,  4 Jul 2021 19:05:02 -0400
+Message-Id: <20210704230616.1489200-6-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210704230420.1488358-1-sashal@kernel.org>
-References: <20210704230420.1488358-1-sashal@kernel.org>
+In-Reply-To: <20210704230616.1489200-1-sashal@kernel.org>
+References: <20210704230616.1489200-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_160611_419535_57E25667 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20210704_160625_471139_2BAEF5F8 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +83,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-[ Upstream commit 50c9462edcbf900f3d5097ca3ad60171346124de ]
+[ Upstream commit d07bb9702cf5f5ccf3fb661e6cab54bbc33cd23f ]
 
-The valid vsel value are 0 and 12, so the .vsel_mask should be 0xf.
+The pm_runtime_get_sync() internally increments the
+dev->power.usage_count without decrementing it, even on errors.
+Replace it by the new pm_runtime_resume_and_get(), introduced by:
+commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+in order to properly decrement the usage counter, avoiding
+a potential PM usage counter leak.
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Reviewed-by: Axel Lin <axel.lin@ingics.com>
-Link: https://lore.kernel.org/r/1624424169-510-1-git-send-email-hsin-hsiung.wang@mediatek.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+While here, fix the return contition of mtk_mdp_m2m_start_streaming(),
+as it doesn't make any sense to return 0 if the PM runtime failed
+to resume.
+
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/regulator/mt6358-regulator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/regulator/mt6358-regulator.c b/drivers/regulator/mt6358-regulator.c
-index 13cb6ac9a892..1d4eb5dc4fac 100644
---- a/drivers/regulator/mt6358-regulator.c
-+++ b/drivers/regulator/mt6358-regulator.c
-@@ -457,7 +457,7 @@ static struct mt6358_regulator_info mt6358_regulators[] = {
- 	MT6358_REG_FIXED("ldo_vaud28", VAUD28,
- 			 MT6358_LDO_VAUD28_CON0, 0, 2800000),
- 	MT6358_LDO("ldo_vdram2", VDRAM2, vdram2_voltages, vdram2_idx,
--		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0x10, 0),
-+		   MT6358_LDO_VDRAM2_CON0, 0, MT6358_LDO_VDRAM2_ELR0, 0xf, 0),
- 	MT6358_LDO("ldo_vsim1", VSIM1, vsim_voltages, vsim_idx,
- 		   MT6358_LDO_VSIM1_CON0, 0, MT6358_VSIM1_ANA_CON0, 0xf00, 8),
- 	MT6358_LDO("ldo_vibr", VIBR, vibr_voltages, vibr_idx,
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+index ace4528cdc5e..f14779e7596e 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+@@ -391,12 +391,12 @@ static int mtk_mdp_m2m_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	struct mtk_mdp_ctx *ctx = q->drv_priv;
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(&ctx->mdp_dev->pdev->dev);
++	ret = pm_runtime_resume_and_get(&ctx->mdp_dev->pdev->dev);
+ 	if (ret < 0)
+-		mtk_mdp_dbg(1, "[%d] pm_runtime_get_sync failed:%d",
++		mtk_mdp_dbg(1, "[%d] pm_runtime_resume_and_get failed:%d",
+ 			    ctx->id, ret);
+ 
+-	return 0;
++	return ret;
+ }
+ 
+ static void *mtk_mdp_m2m_buf_remove(struct mtk_mdp_ctx *ctx,
 -- 
 2.30.2
 
