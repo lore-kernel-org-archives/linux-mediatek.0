@@ -2,70 +2,71 @@ Return-Path: <SRS0=KhaQ=L4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D912C07E95
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 19:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02D61C11F6B
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:04:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1258C613F1
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 19:08:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1258C613F1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9937E613E5
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Jul 2021 23:04:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9937E613E5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mJZBvsJIZYGeRrZkpNEGTeoQFO4HISatDFszpeLTX/g=; b=5FrZki1riB7FyP
-	b5+rHNt9CXuhXkp7W0m0JhKozjXrqbwdYAbfnOmrJPrXAfRujqQTD+Fb1LWtsSpAnqOqGxawJ4jd9
-	ZTxch/IhfDSP5+PBtZ7pD6kRAsZ2Cz7r9gh2XXV4jnE3lKgqiOk5mWfKsZlFDok50iZNPNOzB6z6t
-	u3HfFaWxUvmUyQsTxSICMTgVkK1fYh/p0maIC7iIkq7/coIZ36r+epDrUoomqTchn0czJ9ltJRrAu
-	B5KvXY72/NIWcz7PqpZnvidvtwONks8q260mE50VByrJi90QlYGQgW5VetKxqoMJcNfaDZXKzzpvB
-	QeHYKbag9JuNKdvhnZFg==;
+	List-Owner; bh=/H/S44GTRvpoPD4mxkkcZFclAa+Xfri1z7TsfAusv7k=; b=mOnfVujfJbpIWi
+	cQ2oQ4NN2OY1UqbPe04oMtgc71TXPp/fvGGaOFRPa2K432JKCqtThEsrrlQH2RZqf4ySql4aV3n+U
+	bc608XxlojrOzEABgloVEfWCol680hNpOfyP9xAdFGXRgCIiE6Y5VUYnGvLQodhiCHQT9uLpgFGCj
+	poKF+1e38Hh8VRFiZyCwnQD3NMStLUCj0eectmsTmR4PpckXx6CSacobrZpj2/8lM6AQXW3pbNy2L
+	BnacZLR5sMyOHZHb6uvb4keJI8Z8WeqRUu1C8GvH5quqdpKeajpY3iqkmGmBne6NGk8s6y1Np2TIg
+	cxLH75dgDz2JtEjS15MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m07Tk-006f6M-0u; Sun, 04 Jul 2021 19:08:32 +0000
+	id 1m0BAJ-006sVI-D7; Sun, 04 Jul 2021 23:04:43 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m07TY-006f4p-Ch; Sun, 04 Jul 2021 19:08:21 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 88470613E2;
- Sun,  4 Jul 2021 19:08:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1625425699;
- bh=VLiKGR1v+9NnuwU1LjnHuZ6Su0GWomCpRT6OA2j6uFw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=qiTAXYmDvRFSZ4zinz8MPMNQnVXr4AtbiXkUHkBDWjOEGJ+slrPQMfdzp6h7mX+Ao
- KADweRq9ekxgcqmCe2PhV4qQV1cKm/qgHZXfChr9CcUjmBenf4z+teDmOIf4zX8j9S
- 919rdrq7H8t0db/BiLYpq3pf4GVvdnOh6m4eaoZc=
-Date: Sun, 4 Jul 2021 21:08:16 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: John Wood <john.wood@gmx.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
-Subject: Re: [PATCH v2] mt76/mt7915: Fix unsigned compared against zero
-Message-ID: <YOIHIC3qLsVdRjdh@kroah.com>
-References: <20210704145920.24899-1-john.wood@gmx.com>
+ id 1m0BA5-006sMs-TC; Sun, 04 Jul 2021 23:04:31 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id AE2A9613D2;
+ Sun,  4 Jul 2021 23:04:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1625439869;
+ bh=/FSnNNOCk5OXokZXqDDrrMtWOMQjuygAvziNQZGw/TY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=by6Fv+KJcSveRWAd5mFoxp0JwLQ0BCLptBPuInkxMhoyozLYBaZRaxgeVYq0hfNNx
+ IIIAlMM5ISxukxo8NwIy6vpZkhRhGsZeYUfFc6+A2LioLD3CmN1DkIT/A8d74e/adV
+ 49Ubo5geJDT8GTWysir4qDHY7chmgVCgMUAK46f+6PiP3yVpywI00K/fPwruwyat4p
+ jpVM7qAddlMsiJNhCyio/VdpuHeG6BsG8KH+/f1RFbhsUlV+b+/Usg8Kfw/AbWpepX
+ U0TU2dKGo7OrUuzyESkHZBRIxsjGLCy6sl52XW/2I7EqoAW0oxGxpC7xvTJpwDLBX3
+ dc/+5rEAEetRQ==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.13 06/85] media: mdk-mdp: fix pm_runtime_get_sync()
+ usage count
+Date: Sun,  4 Jul 2021 19:03:01 -0400
+Message-Id: <20210704230420.1488358-6-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210704230420.1488358-1-sashal@kernel.org>
+References: <20210704230420.1488358-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210704145920.24899-1-john.wood@gmx.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_120820_492840_93BFFEF0 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20210704_160430_006052_A837638A 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,50 +83,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 04, 2021 at 04:59:20PM +0200, John Wood wrote:
-> The mt7915_dpd_freq_idx() function can return a negative value but this
-> value is assigned to an unsigned variable named idx. Then, the code
-> tests if this variable is less than zero. This can never happen with an
-> unsigned type.
-> 
-> So, change the idx type to a signed one.
-> 
-> Addresses-Coverity-ID: 1484753 ("Unsigned compared against 0")
-> Fixes: 495184ac91bb8 ("mt76: mt7915: add support for applying pre-calibration data")
-> Signed-off-by: John Wood <john.wood@gmx.com>
-> ---
-> Changelog v1 -> v2
-> - Add Cc to stable@vger.kernel.org
-> 
->  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> index b3f14ff67c5a..764f25a828fa 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-> @@ -3440,8 +3440,9 @@ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy)
->  {
->  	struct mt7915_dev *dev = phy->dev;
->  	struct cfg80211_chan_def *chandef = &phy->mt76->chandef;
-> -	u16 total = 2, idx, center_freq = chandef->center_freq1;
-> +	u16 total = 2, center_freq = chandef->center_freq1;
->  	u8 *cal = dev->cal, *eep = dev->mt76.eeprom.data;
-> +	int idx;
-> 
->  	if (!(eep[MT_EE_DO_PRE_CAL] & MT_EE_WIFI_CAL_DPD))
->  		return 0;
-> --
-> 2.25.1
-> 
-<formletter>
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-This is not the correct way to submit patches for inclusion in the
-stable kernel tree.  Please read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly.
+[ Upstream commit d07bb9702cf5f5ccf3fb661e6cab54bbc33cd23f ]
 
-</formletter>
+The pm_runtime_get_sync() internally increments the
+dev->power.usage_count without decrementing it, even on errors.
+Replace it by the new pm_runtime_resume_and_get(), introduced by:
+commit dd8088d5a896 ("PM: runtime: Add pm_runtime_resume_and_get to deal with usage counter")
+in order to properly decrement the usage counter, avoiding
+a potential PM usage counter leak.
+
+While here, fix the return contition of mtk_mdp_m2m_start_streaming(),
+as it doesn't make any sense to return 0 if the PM runtime failed
+to resume.
+
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+index ace4528cdc5e..f14779e7596e 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+@@ -391,12 +391,12 @@ static int mtk_mdp_m2m_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	struct mtk_mdp_ctx *ctx = q->drv_priv;
+ 	int ret;
+ 
+-	ret = pm_runtime_get_sync(&ctx->mdp_dev->pdev->dev);
++	ret = pm_runtime_resume_and_get(&ctx->mdp_dev->pdev->dev);
+ 	if (ret < 0)
+-		mtk_mdp_dbg(1, "[%d] pm_runtime_get_sync failed:%d",
++		mtk_mdp_dbg(1, "[%d] pm_runtime_resume_and_get failed:%d",
+ 			    ctx->id, ret);
+ 
+-	return 0;
++	return ret;
+ }
+ 
+ static void *mtk_mdp_m2m_buf_remove(struct mtk_mdp_ctx *ctx,
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
