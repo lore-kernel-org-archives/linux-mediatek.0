@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 855F2C07E98
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 03:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C6A77C07E98
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 03:48:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50CC9613C8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 03:48:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 50CC9613C8
+	by mail.kernel.org (Postfix) with ESMTPS id 8E0A76135E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 03:48:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E0A76135E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7ueY64VqF6xYdD9OwVeTmEqN+kCaz8zFvVJzGeh7KhY=; b=2gBOEQjeF3bLCA
-	+tIG1+FEvaEeXx/1yxhi6Bt/whyWoceGzxwLT2LI+lzpTOPAMjPIrx7ZCFGTtNlklS4a0hAG70Leh
-	u6+R8wg1AA1Q4K7SNIjm2X3tDsq4LprLyBZdziO1m1my9+BxRLMmOKk/g993uNl/6C7TJGycc5Qpp
-	JCKU1W15GWkB6U6VGQcK3h8X42uKSElIRdDopCUmP4prmqg8hzxi41EcobTzcDlv4Qe5ZuNX6ZRHR
-	E/IiLZ+dOqJh2pyFMkRJPpeE9ubAssLp2/DL1HKbSVqJNas1CAt5sxY5SENbZlxTgiNEnDgUzryoL
-	qAkCqeRYpdoM0sCKoQ7Q==;
+	List-Owner; bh=YbtwWb94jaH19zOD+jxZXsW0Ml1bVmxLl9f5zMlBtCI=; b=Vnp1rXFUJB+sB0
+	/Uh2v/ey2umEoEoz+po7bS4t+wcaRmNW/ULyv0MbQx7njidYvm0v5WDPp1LKEWXqB+OA8zT2UfatQ
+	PqxnKlmKwd9mTpZNSu9tU4uO5Z7oPYvdjvVwNw6CSr9sb4/unh44iVN75/s6yreEp2OOiD0Qe3Tg2
+	pwmAf/4RinUozJe4kLnTtFaA5T+uHNsTSeo2So9rBXhgG+KOvg9veyx/a31IS7hbdILUg2wVioKen
+	+zqOeYDDFQ4+zruxZQFf+QQQGXYQUtV84tp4XpDH3qvcW9fwSRdoc14qykSub3AaawzhmadrCVcUz
+	qPWHoVvrKU1Ui3vzNN9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0FaH-007e5u-Sn; Mon, 05 Jul 2021 03:47:49 +0000
+	id 1m0Faj-007eJu-Oz; Mon, 05 Jul 2021 03:48:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0FZT-007dhm-56; Mon, 05 Jul 2021 03:47:00 +0000
-X-UUID: 74fb83c4250f4c3ca4675dd44268eb9a-20210704
+ id 1m0FZU-007dh7-4C; Mon, 05 Jul 2021 03:47:01 +0000
+X-UUID: 3b148f82c4a240989295aa65b9968d04-20210704
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=xNudl8DH8DLWjS43ELxK+tiWjHTOhvvrhHy//CgpjvA=; 
- b=g/HItaXaYQ6zEhc51oJmCx6ZXQAd4OqxdJkrsPDqr1mdjDFbu1a5e2cQbqGiDR53pjqdpzjZEOCUMouJNqrrKY+xTlr0V7LJcqkeGcvt3Jtw2s2unvCYGBIc53wpyMyvH6xVc0RfLPUVm7/GNUXSd/e6qXxfQDgBkR1a9m07/Ac=;
-X-UUID: 74fb83c4250f4c3ca4675dd44268eb9a-20210704
+ bh=pGlvX4hMXbWfdk9QCXBlueCMGGKH68p9BVRbYZ8Py2E=; 
+ b=XBUMrd84yOsn8Qr1NB5GIsnR0XCqzQAz8DhAkG49nOnXg+1BP83XLaJdnsvCm84CrrL7ILGVIidKMuKFlyvHdVh8WifUCwuOFb2jKsrYnLaOMh1ri+rSgwoiOgif0P2d2XaMeJHbVrb+c89ffyzNiEACbXX6p+lwnkZjWeGs1Kc=;
+X-UUID: 3b148f82c4a240989295aa65b9968d04-20210704
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 13881252; Sun, 04 Jul 2021 20:46:53 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1229089093; Sun, 04 Jul 2021 20:46:53 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 4 Jul 2021 20:41:54 -0700
+ 15.0.1497.2; Sun, 4 Jul 2021 20:41:32 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 11:41:53 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Jul 2021 11:41:31 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 5 Jul 2021 11:41:52 +0800
+ Frontend Transport; Mon, 5 Jul 2021 11:41:30 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -62,19 +62,19 @@ To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
 CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Subject: [v12 11/20] clk: mediatek: Add MT8192 imgsys clock support
-Date: Mon, 5 Jul 2021 11:38:15 +0800
-Message-ID: <20210705033824.1934-12-chun-jie.chen@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>
+Subject: [v12 04/20] clk: mediatek: Get regmap without syscon compatible check
+Date: Mon, 5 Jul 2021 11:38:08 +0800
+Message-ID: <20210705033824.1934-5-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
 References: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_204659_241158_2EB76292 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20210704_204700_219715_5F9F67E5 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,121 +91,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8192 imgsys and imgsys2 clock providers
+Not all clock providers need to be marked compatible with "syscon"
+for system configuration usage, so use device_node_to_regmap() to
+skip "syscon" check.
 
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Kconfig          |  6 +++
- drivers/clk/mediatek/Makefile         |  1 +
- drivers/clk/mediatek/clk-mt8192-img.c | 70 +++++++++++++++++++++++++++
- 3 files changed, 77 insertions(+)
- create mode 100644 drivers/clk/mediatek/clk-mt8192-img.c
+ drivers/clk/mediatek/clk-cpumux.c | 2 +-
+ drivers/clk/mediatek/clk-mtk.c    | 2 +-
+ drivers/clk/mediatek/clk-mux.c    | 2 +-
+ drivers/clk/mediatek/reset.c      | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index a39a4c201c9e..38011dccfe47 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -520,6 +520,12 @@ config COMMON_CLK_MT8192_CAMSYS
- 	help
- 	  This driver supports MediaTek MT8192 camsys and camsys_raw clocks.
+diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+index 79fe09028742..61eeae4e60fb 100644
+--- a/drivers/clk/mediatek/clk-cpumux.c
++++ b/drivers/clk/mediatek/clk-cpumux.c
+@@ -84,7 +84,7 @@ int mtk_clk_register_cpumuxes(struct device_node *node,
+ 	struct clk *clk;
+ 	struct regmap *regmap;
  
-+config COMMON_CLK_MT8192_IMGSYS
-+	bool "Clock driver for MediaTek MT8192 imgsys"
-+	depends on COMMON_CLK_MT8192
-+	help
-+	  This driver supports MediaTek MT8192 imgsys and imgsys2 clocks.
-+
- config COMMON_CLK_MT8516
- 	bool "Clock driver for MediaTek MT8516"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 94bf7a03fd88..91392cb333fd 100644
---- a/drivers/clk/mediatek/Makefile
-+++ b/drivers/clk/mediatek/Makefile
-@@ -70,5 +70,6 @@ obj-$(CONFIG_COMMON_CLK_MT8183_VENCSYS) += clk-mt8183-venc.o
- obj-$(CONFIG_COMMON_CLK_MT8192) += clk-mt8192.o
- obj-$(CONFIG_COMMON_CLK_MT8192_AUDSYS) += clk-mt8192-aud.o
- obj-$(CONFIG_COMMON_CLK_MT8192_CAMSYS) += clk-mt8192-cam.o
-+obj-$(CONFIG_COMMON_CLK_MT8192_IMGSYS) += clk-mt8192-img.o
- obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
- obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8192-img.c b/drivers/clk/mediatek/clk-mt8192-img.c
-new file mode 100644
-index 000000000000..7ce3abe42577
---- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8192-img.c
-@@ -0,0 +1,70 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+//
-+// Copyright (c) 2021 MediaTek Inc.
-+// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-+
-+#include <linux/clk-provider.h>
-+#include <linux/of_device.h>
-+#include <linux/platform_device.h>
-+
-+#include "clk-mtk.h"
-+#include "clk-gate.h"
-+
-+#include <dt-bindings/clock/mt8192-clk.h>
-+
-+static const struct mtk_gate_regs img_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
-+	.sta_ofs = 0x0,
-+};
-+
-+#define GATE_IMG(_id, _name, _parent, _shift)	\
-+	GATE_MTK(_id, _name, _parent, &img_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-+
-+static const struct mtk_gate img_clks[] = {
-+	GATE_IMG(CLK_IMG_LARB9, "img_larb9", "img1_sel", 0),
-+	GATE_IMG(CLK_IMG_LARB10, "img_larb10", "img1_sel", 1),
-+	GATE_IMG(CLK_IMG_DIP, "img_dip", "img1_sel", 2),
-+	GATE_IMG(CLK_IMG_GALS, "img_gals", "img1_sel", 12),
-+};
-+
-+static const struct mtk_gate img2_clks[] = {
-+	GATE_IMG(CLK_IMG2_LARB11, "img2_larb11", "img1_sel", 0),
-+	GATE_IMG(CLK_IMG2_LARB12, "img2_larb12", "img1_sel", 1),
-+	GATE_IMG(CLK_IMG2_MFB, "img2_mfb", "img1_sel", 6),
-+	GATE_IMG(CLK_IMG2_WPE, "img2_wpe", "img1_sel", 7),
-+	GATE_IMG(CLK_IMG2_MSS, "img2_mss", "img1_sel", 8),
-+	GATE_IMG(CLK_IMG2_GALS, "img2_gals", "img1_sel", 12),
-+};
-+
-+static const struct mtk_clk_desc img_desc = {
-+	.clks = img_clks,
-+	.num_clks = ARRAY_SIZE(img_clks),
-+};
-+
-+static const struct mtk_clk_desc img2_desc = {
-+	.clks = img2_clks,
-+	.num_clks = ARRAY_SIZE(img2_clks),
-+};
-+
-+static const struct of_device_id of_match_clk_mt8192_img[] = {
-+	{
-+		.compatible = "mediatek,mt8192-imgsys",
-+		.data = &img_desc,
-+	}, {
-+		.compatible = "mediatek,mt8192-imgsys2",
-+		.data = &img2_desc,
-+	}, {
-+		/* sentinel */
-+	}
-+};
-+
-+static struct platform_driver clk_mt8192_img_drv = {
-+	.probe = mtk_clk_simple_probe,
-+	.driver = {
-+		.name = "clk-mt8192-img",
-+		.of_match_table = of_match_clk_mt8192_img,
-+	},
-+};
-+
-+builtin_platform_driver(clk_mt8192_img_drv);
+-	regmap = syscon_node_to_regmap(node);
++	regmap = device_node_to_regmap(node);
+ 	if (IS_ERR(regmap)) {
+ 		pr_err("Cannot find regmap for %pOF: %ld\n", node,
+ 		       PTR_ERR(regmap));
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index cec1c8a27211..37d2aa32175e 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -106,7 +106,7 @@ int mtk_clk_register_gates_with_dev(struct device_node *node,
+ 	if (!clk_data)
+ 		return -ENOMEM;
+ 
+-	regmap = syscon_node_to_regmap(node);
++	regmap = device_node_to_regmap(node);
+ 	if (IS_ERR(regmap)) {
+ 		pr_err("Cannot find regmap for %pOF: %ld\n", node,
+ 				PTR_ERR(regmap));
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index b0c61709bacc..e97d58db28cc 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -165,7 +165,7 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+ 	struct clk *clk;
+ 	int i;
+ 
+-	regmap = syscon_node_to_regmap(node);
++	regmap = device_node_to_regmap(node);
+ 	if (IS_ERR(regmap)) {
+ 		pr_err("Cannot find regmap for %pOF: %ld\n", node,
+ 		       PTR_ERR(regmap));
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index cb939c071b0c..e562dc3c10a4 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -98,7 +98,7 @@ static void mtk_register_reset_controller_common(struct device_node *np,
+ 	int ret;
+ 	struct regmap *regmap;
+ 
+-	regmap = syscon_node_to_regmap(np);
++	regmap = device_node_to_regmap(np);
+ 	if (IS_ERR(regmap)) {
+ 		pr_err("Cannot find regmap for %pOF: %ld\n", np,
+ 				PTR_ERR(regmap));
 -- 
 2.18.0
 _______________________________________________
