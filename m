@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63366C07E98
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6CBC9C07E98
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:34:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39401613C9
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:34:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39401613C9
+	by mail.kernel.org (Postfix) with ESMTPS id 3F3E5613C9
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:34:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F3E5613C9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dm5Bw82xNG76Vit0kGyUvAufZL23NjqMqKwYWffGy6M=; b=ryNH9u7efs6mk9
-	/JqbJqb5bdoUcBVgRcjqBMb4fv6dVMS6Ah9+NqgfTu6TH6xkRNNkJN92eY98cHtFMr20cvL58XJ9+
-	plKzY1irG8J15FevSW7TU/IYGTr+YIWeJf2s5FeQ8H54J2kNLjDKkTlXl90J0tRPUoOTU5u6+Ws6X
-	ZHj5TeKPCtzIMM4K46ZxSal/VvPMuLkaODJORQ7ytOp0cQmTpeWgc+xxjo2XX0w4AvPcIGX5qGXGQ
-	WZMbvZHH3itTsK4jR2XP3ikYSrCjXT6bnBtjy8xmVGAUQ6WWgLfCoSRTzhrOsgUYZRKCOc1AfOFIp
-	AAbYc6G0buBQ7rZ9yCwQ==;
+	List-Owner; bh=HONwjQ/UJqmtBQehNdvIyiXehv3+qXX3/dX2MhwOuSw=; b=XrowkjJREDeQfY
+	hZFv7SUiBEmDecZH59OGTgVq9hRKw9uwlBqLpDSn7gsD/F3zrwc2lVIs8NxYNOvW/I/5wvtgE0zfa
+	PhGFCSRghxXF8pe1qEj8WWBNrsKo0BdNdfy+xwWOxFjs+VGDi56kXyWlji1t/AoBhUiXASgfSQO1b
+	kC7macOgHmj10laX9GO4Dy9oUxAqlG0oD+pdM71cBq0+0aUMM8RE6ueYAS3v2ceuL1A0MaiS6G4DH
+	ziVLK1zK0fZRpefQitC7yBEbpl6YSma96Z6oHUFYGnZfFeqDMNWuuuXgk/3E5U0jqebV3AWKE2EEa
+	PnX817y2BSgfGxyEkkgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0HF4-007qnh-0j; Mon, 05 Jul 2021 05:34:02 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1m0HF6-007qpm-4A; Mon, 05 Jul 2021 05:34:04 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0HF1-007qjS-0l
- for linux-mediatek@lists.infradead.org; Mon, 05 Jul 2021 05:34:00 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id t9so17243486pgn.4
- for <linux-mediatek@lists.infradead.org>; Sun, 04 Jul 2021 22:33:58 -0700 (PDT)
+ id 1m0HF3-007qme-Sm
+ for linux-mediatek@lists.infradead.org; Mon, 05 Jul 2021 05:34:03 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id v7so17273299pgl.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 04 Jul 2021 22:34:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=uXyqnOeoyJ4NZkEKPJHOl4w1hXSWWEzhqLTMS9dPfWg=;
- b=Jh1hPoDFYkVXHrWRwuJ4Scju5gaiBoK7/WyLA8g3EzRjNl9LEdaK04bb2ug55bnKea
- Pi9pbq/1u5IRfMKIl5xqpWvytO1MPAGHaA2H3pzWiwJXXj19Me1P0oTsVn2TUakHXHjo
- 1NxcGOQrBYmY01tKHLlVEnWcBvvxqXJrzTSz8=
+ bh=1Wsby3LClrEo2/xvJaYmxPCAce43LH7aBkEp9Egxfy4=;
+ b=ciOeWZgPMFrOVTP7nqd3vh4BK2H/kDoECH0M4NTEkvLjqklwcEvMZ6pOyuiZv+QQ6h
+ lDrBMGCeKRXaGAWDSu0UEiP0bU0dHHUbj1LyFXD8974EHU34QZf923FQPLIIHzmY+Flg
+ kSfePNmu2lWtckpm/B5Wfe4iQykGWcWzyPyRU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=uXyqnOeoyJ4NZkEKPJHOl4w1hXSWWEzhqLTMS9dPfWg=;
- b=B787XQyvB2EPQtGrQiSp/rdFMgE2Lb+dVKLqpIXd3h+yqkm3MjFUozr26zDCoSQ/AS
- 0pFYVB+N7TlJuHBPKGIVW2rveO1MSpjm6JcbRVDBTPrtRL4dCeFSen91UGtx82eGlVTL
- qoF15ftKmNCylfOHWia20fqvLPzcf56U0EprnvyEm0cwsAL5THnmsataqgUeJhV+++aL
- 9yjUMB6pVYkQxy0Wt/BmqwJINkScfnZKcUk08FdaqBtCX7PpZTr2xrUEBRVdpQGi/0Hs
- I1jnnYP8Md5qKT26Kq518/We7/J2MH7Sbi5v/a5NtnoRPPEpLhuDJ06E+pBjNJ5QgKZ1
- GtJw==
-X-Gm-Message-State: AOAM533MuDyDPCM8e2WdpWOe0/2t30QSlaPusrD9LLYxKANMhOMPkZLJ
- si/DLiif1cPvgYFhOC6Y/qc4tQ==
-X-Google-Smtp-Source: ABdhPJzcOf6htkQbr6g+Z9QUaRVopdGl4FPYu/027dmu4bdfATz1XeYdyiDTTv2CEipoO7bU+Z03MA==
-X-Received: by 2002:a63:445b:: with SMTP id t27mr13940726pgk.413.1625463238016; 
- Sun, 04 Jul 2021 22:33:58 -0700 (PDT)
+ bh=1Wsby3LClrEo2/xvJaYmxPCAce43LH7aBkEp9Egxfy4=;
+ b=FXzrQbP3mke7Mx9+JLa3X5zguq4PDoSN4mztGye3EHuB6+70VNEhoBoN9f5FnTO6fH
+ wl9601Cq8ulgrDjlZnEj7E7qakDb6oNOoysBY+sp5r1H8/XhRQZnIwdrLayR72PQhRH/
+ ni976f485Ea4lrv/hKpJND3NVhVwiCvPPHiPrUP6GV14kNuZEVSAAmhsJBfniIKwGnOX
+ RM8UrCi6xwvl6IrGuLnjBNreD/saUOPeI/qcqU0+3+DV6MGSvAyRyeFp5OOgh68l5niw
+ gVPg0R+2tsGv3H1bCQE4Tb2C0s9fcsCwqU1Ojs85xeVeqJ+IZx/6SJ1Zu8EsUtz3Q+Cb
+ Z2Ag==
+X-Gm-Message-State: AOAM533na3IGsYUBat7KMhMQwwfDv4JAD2Ahptg27ED4r8AI8N7i/zsm
+ YPc6kia/orPq4CfdFNt2ybEEuA==
+X-Google-Smtp-Source: ABdhPJzP2yjoBz66yyuwQKfBYNR+vQPbMTqUfKLq82KBIzHKMAhnU++++X2fY97oynm7v9ff5u19nQ==
+X-Received: by 2002:a63:fb11:: with SMTP id o17mr13787214pgh.177.1625463240848; 
+ Sun, 04 Jul 2021 22:34:00 -0700 (PDT)
 Received: from acourbot.tok.corp.google.com
  ([2401:fa00:8f:203:3fed:7130:60f:265a])
- by smtp.gmail.com with ESMTPSA id x19sm6805245pfp.115.2021.07.04.22.33.55
+ by smtp.gmail.com with ESMTPSA id x19sm6805245pfp.115.2021.07.04.22.33.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Jul 2021 22:33:57 -0700 (PDT)
+ Sun, 04 Jul 2021 22:34:00 -0700 (PDT)
 From: Alexandre Courbot <acourbot@chromium.org>
 To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
@@ -74,19 +74,18 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>,
  Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Alexandre Courbot <acourbot@chromium.org>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v6 13/14] dt-bindings: media: document mediatek,
- mt8183-vcodec-dec
-Date: Mon,  5 Jul 2021 14:32:57 +0900
-Message-Id: <20210705053258.1614177-14-acourbot@chromium.org>
+ Alexandre Courbot <acourbot@chromium.org>,
+ Tzung-Bi Shih <tzungbi@google.com>
+Subject: [PATCH v6 14/14] media: mtk-vcodec: enable MT8183 decoder
+Date: Mon,  5 Jul 2021 14:32:58 +0900
+Message-Id: <20210705053258.1614177-15-acourbot@chromium.org>
 X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
 In-Reply-To: <20210705053258.1614177-1-acourbot@chromium.org>
 References: <20210705053258.1614177-1-acourbot@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_223359_086348_7A1DD6CF 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210704_223401_937430_30442636 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,26 +102,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8183's decoder is instantiated similarly to MT8173's.
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
+Now that all the supporting blocks are present, enable decoder for
+MT8183.
+
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+[acourbot: refactor, cleanup and split]
+Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index ad1321e5a22d..c44a6e6943af 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -10,6 +10,7 @@ Required properties:
-   "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
-   "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
-   "mediatek,mt8192-vcodec-enc" for MT8192 encoder.
-+  "mediatek,mt8183-vcodec-dec" for MT8183 decoder.
- - reg : Physical base address of the video codec registers and length of
-   memory mapped region.
- - interrupts : interrupt number to the cpu.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index c8a84fa11e4a..55ae198dbcf9 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -374,12 +374,17 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ }
+ 
+ extern const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata;
++extern const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata;
+ 
+ static const struct of_device_id mtk_vcodec_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-vcodec-dec",
+ 		.data = &mtk_vdec_8173_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8183-vcodec-dec",
++		.data = &mtk_vdec_8183_pdata,
++	},
+ 	{},
+ };
+ 
 -- 
 2.32.0.93.g670b81a890-goog
 
