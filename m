@@ -2,77 +2,81 @@ Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 073AEC07E98
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 09:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7ECFEC07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 09:40:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB21261248
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 09:25:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB21261248
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 42137613CB
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 09:40:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42137613CB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dtoyHhQ1i4/Bwv9M3oKHN6eBKUyLejyIorKPAK6Rxe8=; b=u+ekO2Qp1nl6rs
-	vgjBz9kFeo6oZBY0yQ7x9OXB52AWeR22tZvYM5upknsETAwFwV3w2+QQp9qZy9JymAmZMz0vNwmE1
-	XCZi0T2VLOjpcFaAAnnrGcc87HgIJzSgxSVwfv7oRVP7M/g7fqf6c13NmqgV2naWuPa/0+l+Roevp
-	tp0ekM+mE4lRwlyzQwVSu2sr/Kzwv6BtKUUG+eVLctQimzvIljrhJlRqHVQCBVpMgJQNfv4rTvc1I
-	ppoGRgsWsIkBdwrVGMU3q+Yv7EmsQpyV3vMg6mcnMmfURHyaJSp9UOeWb1CxjD4fN/I8jfE6I3vuh
-	fOxVlYx3r/Lw9GOFJ4NQ==;
+	List-Owner; bh=HskXC2oWW8AJsxbrj5tXTdda9QHEKJGvBtIH16IEuoQ=; b=EaU2BSUUBhqtYV
+	+iSbGKeo8ciGRJsjEkQlvHJ9nfV5v6HIjrFtjS7hDwp0bbuX1iWeLjUBXoyhFI3lIwTu5Wu4cvXzS
+	bEM4nyyXgJ/2g5Kr8trwHOYXECY7o1ZR+9qO3JANN8ECLX63/uT7yuMIwy/IiO7uQ4qUKZVbA4pF5
+	W+PratRUJddhhDu6516RvvkvtMhDcrFOaLm5i2BHV3iVKEgd3Gkf/VPVyKyhJa7nscmBPCQM0n3d4
+	Cs8K30W1ZekaqaYIciuok2JUk/EwsEnvpyxzeFIPlmj6eMJTntPE84+rv60vQ67XsB6TKfJbiJdqR
+	zY/edAXeoCkTV8kAwYhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0KqW-008Q5Z-DE; Mon, 05 Jul 2021 09:24:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m0L5T-008Sap-Ip; Mon, 05 Jul 2021 09:40:23 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0KqR-008Q4p-Sw
- for linux-mediatek@lists.infradead.org; Mon, 05 Jul 2021 09:24:55 +0000
-X-UUID: 0941c51ecad747ebb180bf2ce32c9681-20210705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=dV2vuesOizqkAALaltoauNH3MR2oZFb5XVp6WIEb1T8=; 
- b=J/sFiNrMNP88Q7E7MLAaDcE0P5jADYaIOXFeUdieVC4nbKqr924Y+9Kvw+GwqDKtpuH7HRzKCN5TFm/1Ox8QXNXpMJ1xUqtY/eWuCeazVxZAu7n3wjL6D1Py476eb6TISxYnV9BERAq8QeIZLC9k2td3snWQ9GqvnwdswCJSRbU=;
-X-UUID: 0941c51ecad747ebb180bf2ce32c9681-20210705
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 193841624; Mon, 05 Jul 2021 02:24:44 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 02:24:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 17:24:41 +0800
-Received: from [172.21.77.33] (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 5 Jul 2021 17:24:41 +0800
-Message-ID: <1625477081.856.5.camel@mtkswgap22>
-Subject: Re: [PATCH] mm/sparse: clarify pgdat_to_phys
-From: Miles Chen <miles.chen@mediatek.com>
-To: Mike Rapoport <rppt@kernel.org>
-CC: Andrew Morton <akpm@linux-foundation.org>, Mark Rutland
- <mark.rutland@arm.com>, <linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>, 
- <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>
-Date: Mon, 5 Jul 2021 17:24:41 +0800
-In-Reply-To: <YN8QaoJuDP9Nr744@kernel.org>
-References: <20210630092309.17654-1-miles.chen@mediatek.com>
- <YN8QaoJuDP9Nr744@kernel.org>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1m0L5B-008STK-T9
+ for linux-mediatek@lists.infradead.org; Mon, 05 Jul 2021 09:40:07 +0000
+Received: by mail-pf1-x434.google.com with SMTP id q10so37785pfj.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 05 Jul 2021 02:40:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9NEgfDbLASj9u3BPxvvxZ1ejuTwiwGxydassBot+RfA=;
+ b=ZTT+24SsIiUhwkeb67dSyuBKmhWy+p0YSpEeoGTVkBO3KEhZgxVzb1M0N+dmnQOuP+
+ NplltYl4f/jGYlMzZsb15OP4tzy1A2OFmiFn6litXc8osD2m1f5nN4rgZ/MUBegoeZBg
+ N3yb3yfrpYYpjnoMubFhC4naGQ547oMIKczz4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9NEgfDbLASj9u3BPxvvxZ1ejuTwiwGxydassBot+RfA=;
+ b=EZJdolHxD1RmbottgSHuhg3UG/4/yvw0uaalRUn8Id0Qb8pDTVndFtobiSiQNBAjiF
+ JOlfp7WV+YkzuBxvrw/5Ss9+kqvXlKFkIRKZqyMpcIehqtW633CSPs6g3MIqXvzC+8nL
+ leijau0ZYsCpsB4oHVaF8w2Uq5tkc7E9VTC06nwtRIJ0dePgzc4wcNK16hz4exGP4pgN
+ sfcPvo77LbNIcXgWYC72kKhuDZtHZwnAiTn6Y4BO5hGZExIOvPeMvOXPrCRTmw0QQowU
+ dowL386OCCqU9MSi6X/4svqR2y0rmZYsMFkpZGBJS7UzIyslPoyL6Ro5RzaMiEMEjXgm
+ N+ug==
+X-Gm-Message-State: AOAM533kWSY8twHgmtNXScVcxGEJ9hcH5ZlPSyf4gD/lxq++5Z6H3cSp
+ lQuAJ9hrgWAb+j0Hr1J6pkAm+G7tPnhKziNdHesdGg==
+X-Google-Smtp-Source: ABdhPJxehs17Gva3Z1PLinNDiwy6ZNwOYg8wG9gpLsrwSz4om20wFIio8AUK7w5i5rU5PDWp2naXrlLFq3lMCZFFA6U=
+X-Received: by 2002:a63:e316:: with SMTP id f22mr14711550pgh.100.1625478003378; 
+ Mon, 05 Jul 2021 02:40:03 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210630090710.1873559-1-kansho@chromium.org>
+ <20210630180652.1.I88a52644e47e88b15f5db9841cb084dc53c5875c@changeid>
+ <716ab7a7-937d-df88-8d3c-8d35df473b4e@gmail.com>
+In-Reply-To: <716ab7a7-937d-df88-8d3c-8d35df473b4e@gmail.com>
+From: Kansho Nishida <kansho@chromium.org>
+Date: Mon, 5 Jul 2021 18:39:52 +0900
+Message-ID: <CAP3OrSLyoKNr7fMOx5sUtWi7PVQGuN-5w7k_0D2MhDUeXXmYCg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] arm64: dts: mt8183: add audio node
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, devicetree@vger.kernel.org, 
+ Rob Herring <robh+dt@kernel.org>, Shunli Wang <shunli.wang@mediatek.com>, 
+ linux-arm-kernel@lists.infradead.org, Eddie Huang <eddie.huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210705_022451_982917_E945D816 
-X-CRM114-Status: GOOD (  25.08  )
+X-CRM114-CacheID: sfid-20210705_024005_977300_9EB371E8 
+X-CRM114-Status: GOOD (  17.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,91 +93,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-07-02 at 16:11 +0300, Mike Rapoport wrote:
-> On Wed, Jun 30, 2021 at 05:23:09PM +0800, Miles Chen wrote:
-> > clarify pgdat_to_phys() by wrapping pgdat_to_phys
-> > with CONFIG_NUMA. (the same config as contig_page_data)
-> > 
-> > No functional change intended.
-> > 
-> > Comment from Mark [1]:
-> > "
-> > ... and I reckon it'd be clearer and more robust to define
-> > pgdat_to_phys() in the same ifdefs as contig_page_data so
-> > that these, stay in-sync. e.g. have:
-> > 
-> > | #ifdef CONFIG_NUMA
-> > | #define pgdat_to_phys(x)	virt_to_phys(x)
-> > | #else /* CONFIG_NUMA */
-> > |
-> > | extern struct pglist_data contig_page_data;
-> > | ...
-> > | #define pgdat_to_phys(x)	__pa_symbol(&contig_page_data)
-> > |
-> > | #endif /* CONIFIG_NUMA */
-> > "
-> > 
-> > [1] https://lore.kernel.org/linux-arm-kernel/20210615131902.GB47121@C02TD0UTHF1T.local/
-> > 
-> > Cc: Mark Rutland <mark.rutland@arm.com>
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+On Fri, Jul 2, 2021 at 3:20 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
+>
+>
+>
+> On 30/06/2021 11:07, Kansho Nishida wrote:
+> > Add afe (audio front end) device node to the MT8183 dtsi.
+> >
+> > Signed-off-by: Kansho Nishida <kansho@chromium.org>
 > > ---
-> >  mm/sparse.c | 17 +++++++++--------
-> >  1 file changed, 9 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/mm/sparse.c b/mm/sparse.c
-> > index 7272f7a1449d..62c21ec28e33 100644
-> > --- a/mm/sparse.c
-> > +++ b/mm/sparse.c
-> > @@ -344,14 +344,15 @@ size_t mem_section_usage_size(void)
-> >  	return sizeof(struct mem_section_usage) + usemap_size();
-> >  }
-> >  
-> > -static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
-> > -{
-> > -#ifndef CONFIG_NUMA
-> > -	return __pa_symbol(pgdat);
-> > -#else
-> > -	return __pa(pgdat);
-> > -#endif
-> > -}
-> > +#ifdef CONFIG_NUMA
-> > +#define pgdat_to_phys(pgdat) __pa(pgdat)
-> > +#else /* CONFIG_NUMA */
-> > +/*
-> > + * When !CONFIG_NUMA, we only expect pgdat == &contig_page_data,
-> > + * and use __pa_symbol().
-> > + */
-> > +#define pgdat_to_phys(pgdat) __pa_symbol(pgdat)
-> > +#endif /* CONFIG_NUMA */
-> 
-> I'm not sure a macro is better than a static inline.
-> 
-> Maybe we'd want to warn if pgdat passed to pgtat_to_phys() is not
-> &contig_page_data, e.g something like
-> 
-> static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
-> {
-> 	if (!IS_ENABLED(CONFIG_NUMA)) {
-> 		if (pgdat == &contig_page_data)
-> 			return __pa_symbol(&contig_page_data);
-> 		else
-> 			pr_warn("Unexpected pglist_data pointer!\n");
-> 	}
-> 	
-> 	return __pa(pgdat);
-> }
+> >
+> >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 94 +++++++++++++++++++++++-
+> >  1 file changed, 93 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > index f90df6439c08..b06acb8d6527 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> > @@ -1115,10 +1115,102 @@ usb_host: usb@11200000 {
+> >                       };
+> >               };
+> >
+> > -             audiosys: syscon@11220000 {
+> > +             audiosys: clock-controller@11220000 {
+>
+> Why do you change it from sysecon to clock-controller?
+>
+> Regards,
+> Matthias
 
-Sorry for my late response.
-Thanks for the guide. It looks better this way.I will submit patch v2.
+Hi Matthias,
 
->   
-> >  #ifdef CONFIG_MEMORY_HOTREMOVE
-> >  static struct mem_section_usage * __init
-> > -- 
-> > 2.18.0
-> > 
-> 
+Thanks for the comments!
+This should be "clock-controller" according to the binding description (*1).
+Moreover, you suggested doing so even though it's a long time ago (*2).
+
+*1) https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/mediatek/mediatek%2Caudsys.txt
+*2) https://patchwork.kernel.org/project/linux-mediatek/patch/1559360354-22974-1-git-send-email-jiaxin.yu@mediatek.com/
+
+Regards,
+Kansho
+
+>
+> >                       compatible = "mediatek,mt8183-audiosys", "syscon";
+> >                       reg = <0 0x11220000 0 0x1000>;
+> >                       #clock-cells = <1>;
+> > +                     afe: mt8183-afe-pcm {
+> > +                             compatible = "mediatek,mt8183-audio";
+> > +                             interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
+> > +                             resets = <&watchdog MT8183_TOPRGU_AUDIO_SW_RST>;
+> > +                             reset-names = "audiosys";
+> > +                             power-domains =
+> > +                                     <&spm MT8183_POWER_DOMAIN_AUDIO>;
+> > +                             clocks = <&audiosys CLK_AUDIO_AFE>,
+> > +                                      <&audiosys CLK_AUDIO_DAC>,
+> > +                                      <&audiosys CLK_AUDIO_DAC_PREDIS>,
+> > +                                      <&audiosys CLK_AUDIO_ADC>,
+> > +                                      <&audiosys CLK_AUDIO_PDN_ADDA6_ADC>,
+> > +                                      <&audiosys CLK_AUDIO_22M>,
+> > +                                      <&audiosys CLK_AUDIO_24M>,
+> > +                                      <&audiosys CLK_AUDIO_APLL_TUNER>,
+> > +                                      <&audiosys CLK_AUDIO_APLL2_TUNER>,
+> > +                                      <&audiosys CLK_AUDIO_I2S1>,
+> > +                                      <&audiosys CLK_AUDIO_I2S2>,
+> > +                                      <&audiosys CLK_AUDIO_I2S3>,
+> > +                                      <&audiosys CLK_AUDIO_I2S4>,
+> > +                                      <&audiosys CLK_AUDIO_TDM>,
+> > +                                      <&audiosys CLK_AUDIO_TML>,
+> > +                                      <&infracfg CLK_INFRA_AUDIO>,
+> > +                                      <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUDIO>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
+> > +                                      <&topckgen CLK_TOP_SYSPLL_D2_D4>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUD_1>,
+> > +                                      <&topckgen CLK_TOP_APLL1_CK>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUD_2>,
+> > +                                      <&topckgen CLK_TOP_APLL2_CK>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUD_ENG1>,
+> > +                                      <&topckgen CLK_TOP_APLL1_D8>,
+> > +                                      <&topckgen CLK_TOP_MUX_AUD_ENG2>,
+> > +                                      <&topckgen CLK_TOP_APLL2_D8>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S0>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S1>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S2>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S3>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S4>,
+> > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S5>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIV0>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIV1>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIV2>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIV3>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIV4>,
+> > +                                      <&topckgen CLK_TOP_APLL12_DIVB>,
+> > +                                      /*<&topckgen CLK_TOP_APLL12_DIV5>,*/
+> > +                                      <&clk26m>;
+> > +                             clock-names = "aud_afe_clk",
+> > +                                               "aud_dac_clk",
+> > +                                               "aud_dac_predis_clk",
+> > +                                               "aud_adc_clk",
+> > +                                               "aud_adc_adda6_clk",
+> > +                                               "aud_apll22m_clk",
+> > +                                               "aud_apll24m_clk",
+> > +                                               "aud_apll1_tuner_clk",
+> > +                                               "aud_apll2_tuner_clk",
+> > +                                               "aud_i2s1_bclk_sw",
+> > +                                               "aud_i2s2_bclk_sw",
+> > +                                               "aud_i2s3_bclk_sw",
+> > +                                               "aud_i2s4_bclk_sw",
+> > +                                               "aud_tdm_clk",
+> > +                                               "aud_tml_clk",
+> > +                                               "aud_infra_clk",
+> > +                                               "mtkaif_26m_clk",
+> > +                                               "top_mux_audio",
+> > +                                               "top_mux_aud_intbus",
+> > +                                               "top_syspll_d2_d4",
+> > +                                               "top_mux_aud_1",
+> > +                                               "top_apll1_ck",
+> > +                                               "top_mux_aud_2",
+> > +                                               "top_apll2_ck",
+> > +                                               "top_mux_aud_eng1",
+> > +                                               "top_apll1_d8",
+> > +                                               "top_mux_aud_eng2",
+> > +                                               "top_apll2_d8",
+> > +                                               "top_i2s0_m_sel",
+> > +                                               "top_i2s1_m_sel",
+> > +                                               "top_i2s2_m_sel",
+> > +                                               "top_i2s3_m_sel",
+> > +                                               "top_i2s4_m_sel",
+> > +                                               "top_i2s5_m_sel",
+> > +                                               "top_apll12_div0",
+> > +                                               "top_apll12_div1",
+> > +                                               "top_apll12_div2",
+> > +                                               "top_apll12_div3",
+> > +                                               "top_apll12_div4",
+> > +                                               "top_apll12_divb",
+> > +                                               /*"top_apll12_div5",*/
+> > +                                               "top_clk26m_clk";
+> > +                     };
+> >               };
+> >
+> >               mmc0: mmc@11230000 {
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
