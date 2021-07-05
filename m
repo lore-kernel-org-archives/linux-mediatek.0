@@ -2,76 +2,92 @@ Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 08B83C07E9B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 10:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DF14C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 10:46:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCA6E613FC
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 10:34:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCA6E613FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 42BF16145D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 10:46:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 42BF16145D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5ckazGH549EYq+oa5Y4L/GD24aXXjrnhio6jfctpqGk=; b=SsAIxudqn7dhWv
-	5oBCRI6EvaNjVAM7z1Nt86r11pEjbmQq2xK19o0BQCkxehQXYYpojxoLXg5nUqkrh2yr8XvJ7OD26
-	ZwJJQbN8O+wjnCjjoscljkLzzgYd7A6wxNSUBLGHPZOP+FaUHeCrk0GJKjW10YOeteZXKYq42xAWP
-	Fe/Qfm5X/52wha2d6cOfSoW326LfZ/WTacgDzO7uAQpO5ywknL0Z2y7PH69I4Z+qPgOlqdMhk4bmp
-	3Qb/G57foIo+E2imvOV1UX034PlmwdXHmQ48hGtD9ykqm4uXraQb5xjjNn3msZA3Gkany69zTFO8F
-	EWrUQmWtIi84j49O5CCQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wKLlkN/pafXh/QSG3qPZiqziE/RVKQXOCXLYlE5ZFeA=; b=aA5LOfXLOkiK7s
+	Zah99gPmbyQbIpR7dv5LZ1MiNtXKhW9JPHd+MnGJ1cUCxjwkGnZZEb/rXFiux19A/M3LosJ4XqGjF
+	oDjIcrdPsg/Ztq0AvyB1YdviMd44JlPytwUOn3eA2b3dfx1JrRcikjAlbdNDm7YKgDXyA2jbmPzcT
+	9UnLjrpCIAEEKDVxYl4zaYCOgUt56mYSJj8Jk5mVHlJsT19kUiDkL/7/TxzRf3KWjZZcX/7oZgROH
+	IxKskG4ZMVxttSHFoqCNaEqxDtHLR11Ju1b7h0dmb4n8pfBlZgZ4v5DoFfUcZ21mkD7g/PhKXybM8
+	AKN/1sSZxk7IE1MvEpGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0LvI-008aSO-Of; Mon, 05 Jul 2021 10:33:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m0M6z-008cv2-AB; Mon, 05 Jul 2021 10:46:01 +0000
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0Lv6-008aOA-1g; Mon, 05 Jul 2021 10:33:45 +0000
-X-UUID: 65ae7165130f40ae8acb0cdb9bb75c56-20210705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=kZzhr18LbCr2wKTe8h+zt4bHEDxlV7HexM1GYxoxHqE=; 
- b=iA3sMLVyRmP9AuEzBzgpxj05J8rgkH66o1d5lSIdf5t3vnKZ98b9iG5is1+T1s+TBO5sJJNzJiMJbxk+f476kKAIOy+Dq3Bltb6pxAOTkzs5QHxL82Nn6Dp+Z32M8cFfofXBbUdyNbOnSJaiQ+99PapVfJcjfsje8XuoBVYjepg=;
-X-UUID: 65ae7165130f40ae8acb0cdb9bb75c56-20210705
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yee.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1257810607; Mon, 05 Jul 2021 03:33:40 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 03:33:38 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 18:33:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 5 Jul 2021 18:33:24 +0800
-From: <yee.lee@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: <nicholas.Tang@mediatek.com>, <Kuan-Ying.lee@mediatek.com>,
- <chinwen.chang@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v6 0/2]  kasan: solve redzone overwritten issue at debug
-Date: Mon, 5 Jul 2021 18:32:25 +0800
-Message-ID: <20210705103229.8505-1-yee.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1m0M6O-008cm8-7p
+ for linux-mediatek@lists.infradead.org; Mon, 05 Jul 2021 10:45:25 +0000
+Received: by mail-ot1-x32b.google.com with SMTP id
+ o13-20020a9d404d0000b0290466630039caso17908654oti.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 05 Jul 2021 03:45:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/dlGtZu9Ej/xN5Tsuqsmc/vVOMpJLibVcfVItFdDo7U=;
+ b=rzSYkZK4ThrPA7smzcFNs/5Jpclbny/wcmfSQ8ORkq914C2DoGl0LnnmVaVBf+GSTU
+ cLg454r3cKsTz8r0/LI3A8jiqvat498AEPySwnwQDrkBQB2Z8MPavannymAkadlwCbfx
+ Csku08DMBzkEafDnNel69M7EN0kR7nB9LMem4pcRtUUH+kql+y8bf8n0b2GFWDknwps6
+ //spGXvECrbO40sSisf4xvjw2KfLYVu2/TIhODA91ZPkGbr3BWPAY+C8hUppoPo728RU
+ VKby50aiKF843yEXxbKAGEFYcuw8/4FVbXCC7lfE5ubVb87wKWwmyU5A+9xmy94ciW/Z
+ fe0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/dlGtZu9Ej/xN5Tsuqsmc/vVOMpJLibVcfVItFdDo7U=;
+ b=OO1/H3OxDa38NkIEeimvnbOp8G2ugh18Lk2EBe93FeP2HVVaVsRoN++oE2qRcFw/fB
+ oECqMg921A9yOsJEs8zFv7YRFuJRzkCyukyuSvABcNjKbAuZlcnpOXOfz/1lLdry1BQW
+ 1YGYA08s9bUC3eTGwXw8PhmZh0xLPzy0/CtOiwSYnMl5zZPLeCeGtZbBFy7KBAoCdeuk
+ 1w3rQjj4lk0y4/7VWE8z8RhvLSBPt4D0i2GoTqKo+7ibl/tWc+v/Rh5zXsR6c1raepOB
+ C5Px96jfwxQW/fPzcgfNfRxsN9ecDg0TjdPOWhSqI3PiD10A1aOLmFKga6Dw1U4r1c+q
+ LKaQ==
+X-Gm-Message-State: AOAM531JM820/mjaKZbwFOe5RZqyY66TBeGCsZsPXiyESf8E1mFeEdzy
+ mRYmtYx2vXHk9ypcXQ+OjWrbAdPym1Rq4zHaemLabg==
+X-Google-Smtp-Source: ABdhPJz7Ojrr+OaKK7eh0H330aLKUBIAQgR26pV3/KDO8TkXS7oJOSMJQ2lq5muUp+LwEhxnKBOuBoP/AfYymTXkTok=
+X-Received: by 2002:a9d:d04:: with SMTP id 4mr10779395oti.251.1625481922714;
+ Mon, 05 Jul 2021 03:45:22 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210705103229.8505-1-yee.lee@mediatek.com>
+ <20210705103229.8505-3-yee.lee@mediatek.com>
+In-Reply-To: <20210705103229.8505-3-yee.lee@mediatek.com>
+From: Marco Elver <elver@google.com>
+Date: Mon, 5 Jul 2021 12:45:11 +0200
+Message-ID: <CANpmjNMg7DwVJL10AesxTsiz_9UEuwZkAxdGrQdsmxOR4qiHXQ@mail.gmail.com>
+Subject: Re: [PATCH v6 2/2] kasan: Add memzero int for unaligned size at DEBUG
+To: yee.lee@mediatek.com
+Cc: linux-kernel@vger.kernel.org, nicholas.tang@mediatek.com, 
+ Kuan-Ying.Lee@mediatek.com, chinwen.chang@mediatek.com, 
+ Andrey Ryabinin <ryabinin.a.a@gmail.com>,
+ Alexander Potapenko <glider@google.com>, 
+ Dmitry Vyukov <dvyukov@google.com>, Andrew Morton <akpm@linux-foundation.org>, 
+ Andrey Konovalov <andreyknvl@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ "open list:KASAN" <kasan-dev@googlegroups.com>, 
+ "open list:MEMORY MANAGEMENT" <linux-mm@kvack.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210705_033344_136364_3FEF7D1F 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210705_034524_348989_95DCAFF5 
+X-CRM114-Status: GOOD (  21.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,54 +104,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yee Lee <yee.lee@mediatek.com>
+On Mon, 5 Jul 2021 at 12:33, <yee.lee@mediatek.com> wrote:
+> From: Yee Lee <yee.lee@mediatek.com>
+>
+> Issue: when SLUB debug is on, hwtag kasan_unpoison() would overwrite
+> the redzone of object with unaligned size.
+>
+> An additional memzero_explicit() path is added to replacing init by
+> hwtag instruction for those unaligned size at SLUB debug mode.
+>
+> The penalty is acceptable since they are only enabled in debug mode,
+> not production builds. A block of comment is added for explanation.
+>
+> Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>
+> Cc: Alexander Potapenko <glider@google.com>
+> Cc: Dmitry Vyukov <dvyukov@google.com>
+> Cc: Andrew Morton <akpm@linux-foundation.org>
+> Suggested-by: Marco Elver <elver@google.com>
+> Suggested-by: Andrey Konovalov <andreyknvl@gmail.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 
-Issue: In SLUB debug, hwtag kasan_unpoison() would overwrite the redzone
-in those objects with unaligned size.
+Reviewed-by: Marco Elver <elver@google.com>
 
-The first patch Introduces slub_debug_enable_unlikely() to check
-the state of debug mode.
+Thank you!
 
-The second patch Adds memzero_explict() to separate the initialization for
-such condition. The new code path is executed about 1.1% during nromal
-booting process. The penalty is acceptable since it only works in debug
-mode.
+> ---
+>  mm/kasan/kasan.h | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
+> index 98e3059bfea4..d739cdd1621a 100644
+> --- a/mm/kasan/kasan.h
+> +++ b/mm/kasan/kasan.h
+> @@ -9,6 +9,7 @@
+>  #ifdef CONFIG_KASAN_HW_TAGS
+>
+>  #include <linux/static_key.h>
+> +#include "../slab.h"
+>
+>  DECLARE_STATIC_KEY_FALSE(kasan_flag_stacktrace);
+>  extern bool kasan_flag_async __ro_after_init;
+> @@ -387,6 +388,17 @@ static inline void kasan_unpoison(const void *addr, size_t size, bool init)
+>
+>         if (WARN_ON((unsigned long)addr & KASAN_GRANULE_MASK))
+>                 return;
+> +       /*
+> +        * Explicitly initialize the memory with the precise object size to
+> +        * avoid overwriting the SLAB redzone. This disables initialization in
+> +        * the arch code and may thus lead to performance penalty. The penalty
+> +        * is accepted since SLAB redzones aren't enabled in production builds.
+> +        */
+> +       if (__slub_debug_enabled() &&
+> +           init && ((unsigned long)size & KASAN_GRANULE_MASK)) {
+> +               init = false;
+> +               memzero_explicit((void *)addr, size);
+> +       }
+>         size = round_up(size, KASAN_GRANULE_SIZE);
+>
+>         hw_set_mem_tag_range((void *)addr, size, tag, init);
+> --
+> 2.18.0
 
-=============
-Exp: QEMUv5.2(+mte)/SLUB_debug mode
-code path exec : 941/80854 (1.1%)
-
-Changed since v6:
- - Move helper instead of introducing a new one.
-
-Changed since v5:
- - Fix format
-
-Changed since v4:
- - Introduce slub_debug_enable_unlikly() to check the debug state.
- - Include "slab.h" and Add slub_debug_enable_unlikly() to lead
-   the condition statement.
- - Add comment block about this new code path in source code.
-
-Changed since v3:
- - Apply IS_ENABLED to wrap codes under SLUB debug mode.
- - Replace memset() by memzero_explict().
-
----
-
-Marco Elver (1):
-  mm: move helper to check slub_debug_enabled
-
-Yee Lee (1):
-  kasan: Add memzero int for unaligned size at DEBUG
-
- mm/kasan/kasan.h | 12 ++++++++++++
- mm/slab.h        | 15 +++++++++++----
- mm/slub.c        | 14 --------------
- 3 files changed, 23 insertions(+), 18 deletions(-)
-
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
