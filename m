@@ -2,86 +2,97 @@ Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FC95C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 13:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11D5CC07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 15:40:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 68B466145D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 13:54:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 68B466145D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C6DD86135F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 15:40:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C6DD86135F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MXzpSlRdAgVeIskMzSUaV706tnWwXMUzHYsS6bC3450=; b=3WBC8q4lWOA/CT
-	K1ugZ6VnYO/lZtvGpQpCoFzfo9DlaRHB6Hf45dEUXRc4Vf3QtOcK3SoKoceY6HeHDA9bCLxs0FK53
-	UcC3wRhv4l7ZG3E1xoRM53p2Cfl6UVqi4ZfaOZSKnTWaJ8uE23F+BZSbncZNy4TEwEeHu2yKahrkh
-	8J6F8JvCtf5ZwEBp337EIHz08kwLWMfd9Jd1QpAjSGRPhvw1X4RGz7Pus0gpSy9lmFO/Dysj9mZ4k
-	ucTwS1897WNTzJ3OtERo1i1Q7+nl5vwPS800DymjUUUbxDShZlylm/OZVLnUwk+pfsnNbOFJW6xlw
-	9NSibQmNIn8KcmOF3hyQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=m0uKLpmTHZrL1bavfPcNGQ3lOYHczlOeVvHlVrE3mtw=; b=J5yWyqiDwJe9LdiBmZQS1tHK5N
+	4vFhzyf+Dx4E7rJXUUTMXwlpQ8R3WnAGH6NYF+h7O1zeOdKkJO0MrgBw9rd28oa9O6ICOoe2TOKDK
+	lygLtgHWHZOmCRW9TaxjX5iZJBMBMz1/u+mbZ1HiKgoFUWxUMsW4hKG41BHRxcaKu6/mJP2DXK++x
+	GZAxc0oN5AwBpt9MBZW5DAcyBswSEoqOAfYMoHVzwaXHKBZVSWWCzula8SqFnC9zk76fiyG6jwE0I
+	0alzxTG1qPP1ubH0Zvpk8WZ2rYJr/g0DyNCEu4y0WbcnIR5zTd+85eNKgl8Hikn0Jj9oCpkUkECuA
+	mWTGTdVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0P2u-00936W-Gp; Mon, 05 Jul 2021 13:54:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m0Qhy-009OkI-Fj; Mon, 05 Jul 2021 15:40:30 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0P2p-00935h-Ez; Mon, 05 Jul 2021 13:53:58 +0000
-X-UUID: bf24aefd51104bdcaf98afe10ecaa851-20210705
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=tWi3mQSz+Lkgh0l0iwDGIwHxWLR6tJfo9WaRVowuGB8=; 
- b=dPu98BdeHWnRyxm+1sU6UNGnA2iaJesZdv5PEjiznJk4+WaIgUUTfKYe7REA1tXMI0nBZ/mgm7qTxliB8gbHMWMDscQngOVe2oHeLTNBNw0Cg+wb84GJcgcGYAFdQMR669u3ONnVB7MyagPlG0l7IXplHhnuzskqlLAM5MMHSEI=;
-X-UUID: bf24aefd51104bdcaf98afe10ecaa851-20210705
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yee.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1929215046; Mon, 05 Jul 2021 06:53:50 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 06:53:48 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 21:53:47 +0800
-Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 5 Jul 2021 21:53:47 +0800
-Message-ID: <da9034e02d0a2b5ce5fae01403a881e4d637ab16.camel@mediatek.com>
-Subject: Re: [PATCH v6 2/2] kasan: Add memzero int for unaligned size at DEBUG
-From: Yee Lee <yee.lee@mediatek.com>
-To: Andrey Konovalov <andreyknvl@gmail.com>, Marco Elver <elver@google.com>,
- Andrew Morton <akpm@linux-foundation.org>
-CC: LKML <linux-kernel@vger.kernel.org>, <nicholas.tang@mediatek.com>,
- Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, <chinwen.chang@mediatek.com>,
- Andrey Ryabinin <ryabinin.a.a@gmail.com>, Alexander Potapenko
- <glider@google.com>, Dmitry Vyukov <dvyukov@google.com>, Andrew Morton
- <akpm@linux-foundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, "open
- list:KASAN" <kasan-dev@googlegroups.com>, "open list:MEMORY MANAGEMENT"
- <linux-mm@kvack.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-Date: Mon, 5 Jul 2021 21:53:47 +0800
-In-Reply-To: <CA+fCnZfKAZuy9oyDpTgNUTcNz5gnfHpJK5WN-yBNDV5VF8cq0g@mail.gmail.com>
-References: <20210705103229.8505-1-yee.lee@mediatek.com>
- <20210705103229.8505-3-yee.lee@mediatek.com>
- <CA+fCnZdhrjo4RMBcj94MO7Huf_BVzaF5S_E97xS1vXGHoQdu5A@mail.gmail.com>
- <CANpmjNNXbszUL4M+-swi7k28h=zuY-KTfw+6W90hk2mgxr8hRQ@mail.gmail.com>
- <CA+fCnZfKAZuy9oyDpTgNUTcNz5gnfHpJK5WN-yBNDV5VF8cq0g@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1m0Qhw-009Ojm-5H; Mon, 05 Jul 2021 15:40:29 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id i8so9701269wrp.12;
+ Mon, 05 Jul 2021 08:40:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=+SRLE0tPUsz9JGstgxnhEOYaBDJCX4/2/ht+oLnNatg=;
+ b=AnNCZDrC3XgFdjPmO4zWV+8xVX1Th2OcBIhf7ZUoCjVQqYTtQji90c/PaaZ998+M6x
+ z+LgD+6xEdGuyQMtGu5eVL3xsvJRnlRlrbSnsrETnUchmH8g60zFl1eodg9a7wMptgt2
+ mtJnBD4uyv0FmTr1SjqDvXieQ6XJ0jicfWlDxlN7vH3mPI3hUvpRwhGEqNZMPJkn9XvH
+ h3GPLdT/qrgj9hrBLFogAitMbbhjNCHgUvAiWrBRkW5EZC/eDLGvSHphrlChLj4OyOT0
+ uGOTXi3M91mqAwcxUIcmir3cGsRO0QSK03TgAP65Ykpr94a50/1JgBItbp5e0Op9AHUc
+ 3QVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+SRLE0tPUsz9JGstgxnhEOYaBDJCX4/2/ht+oLnNatg=;
+ b=OMJir6nJNJu7+sTJ8nIs7PphgbzGfxoPey88oQZK0hvS5PL6NpdDAwgSNgbUCZU51u
+ Evf1V8EKr5H39YdogiYR6YwApkZjf+U9dfQxPA7pJ51Ymzg4mSgmBsjQcGlLlRXTOQQy
+ XZDlbUUL+N2azBpXJaEJHWJn2X8+c+Iv1vZLnV5a4UqwFn3pjRH97j5qOQO2OCmdCoUh
+ b4KdABQCYMGKPWj2QK48MpAI/onAJy/cFLNEAa/FdDyRfSZf0x+9fbrYDG4UKHWbNf8p
+ O2mzqCmvTfc8sczStK6lxpue7HJ7z7fjYwqXlqG8c89qWPir/pw+Kjq7Tzqez9yBsguC
+ PSOg==
+X-Gm-Message-State: AOAM530R84zE7cMAOH7M8xtZiHPR/j2VTaBQzB1O2kPW/eBxyyZZeGJu
+ PilD0vUdvfdF1NiyOwl39ko=
+X-Google-Smtp-Source: ABdhPJzIVjdY5LyWZGNBnQbxixb6xvnvBMZ3/L2ZACruHYs5eHf+9pOKYeyPGKILeKujuggFhiDH3w==
+X-Received: by 2002:a5d:4c88:: with SMTP id z8mr16172872wrs.259.1625499625999; 
+ Mon, 05 Jul 2021 08:40:25 -0700 (PDT)
+Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
+ [89.6.132.55])
+ by smtp.gmail.com with ESMTPSA id 31sm14971533wrs.79.2021.07.05.08.40.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Jul 2021 08:40:25 -0700 (PDT)
+Subject: Re: [v12 02/20] dt-bindings: ARM: Mediatek: Add mmsys document
+ binding for MT8192
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
+ <20210705033824.1934-3-chun-jie.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <564fa3c8-1d85-5e98-f3f9-f83cb17e905a@gmail.com>
+Date: Mon, 5 Jul 2021 17:40:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210705033824.1934-3-chun-jie.chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210705_065356_314826_FDE6AA85 
-X-CRM114-Status: GOOD (  19.97  )
+X-CRM114-CacheID: sfid-20210705_084028_256007_7A6BFDF6 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,56 +109,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you, Macro. I thought members in "suggested-by" would be put in
-the list as well... And thank you guys for the review these days. 
 
 
-@Andrew Motom
-Hi Andrew, 
-
-Could you help to push the patches? We are dealing with the issue and 
-would backport to Android porject right after the action.
-Appreciated!
-
-
-BR,
-Yee 
-
-
-On Mon, 2021-07-05 at 13:23 +0200, Andrey Konovalov wrote:
-> On Mon, Jul 5, 2021 at 1:18 PM Marco Elver <elver@google.com> wrote:
-> > 
-> > On Mon, 5 Jul 2021 at 13:12, Andrey Konovalov <andreyknvl@gmail.com
-> > > wrote:
-> > [...]
-> > > > +       /*
-> > > > +        * Explicitly initialize the memory with the precise
-> > > > object size to
-> > > > +        * avoid overwriting the SLAB redzone. This disables
-> > > > initialization in
-> > > > +        * the arch code and may thus lead to performance
-> > > > penalty. The penalty
-> > > > +        * is accepted since SLAB redzones aren't enabled in
-> > > > production builds.
-> > > > +        */
-> > > > +       if (__slub_debug_enabled() &&
-> > > 
-> > > What happened to slub_debug_enabled_unlikely()? Was it renamed?
-> > > Why? I
-> > > didn't receive patch #1 of v6 (nor of v5).
-> > 
-> > Somebody had the same idea with the helper:
-> > https://lkml.kernel.org/r/YOKsC75kJfCZwySD@elver.google.com
-> > and Matthew didn't like the _unlikely() prefix.
-> > 
-> > Which meant we should just move the existing helper introduced in
-> > the
-> > merge window.
-> > 
-> > Patch 1/2: 
-> > https://lkml.kernel.org/r/20210705103229.8505-2-yee.lee@mediatek.com
+On 05/07/2021 05:38, Chun-Jie Chen wrote:
+> This patch adds the mmsys document binding for MT8192 SoC.
 > 
-> Got it. Thank you, Marco!
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+
+> ---
+>  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.txt          | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> index 78c50733985c..9712a6831fab 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+> @@ -16,6 +16,7 @@ Required Properties:
+>  	- "mediatek,mt8167-mmsys", "syscon"
+>  	- "mediatek,mt8173-mmsys", "syscon"
+>  	- "mediatek,mt8183-mmsys", "syscon"
+> +	- "mediatek,mt8192-mmsys", "syscon"
+>  - #clock-cells: Must be 1
+>  
+>  For the clock control, the mmsys controller uses the common clk binding from
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
