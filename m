@@ -2,19 +2,19 @@ Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 533E8C07E98
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:48:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 055F1C07E98
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 06:04:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 107B8613E1
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 05:48:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 107B8613E1
+	by mail.kernel.org (Postfix) with ESMTPS id BC760613E7
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 06:04:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC760613E7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=90CSjGlpoHmA2/KZrZLH9RD9ag7fnpvD3E+EVmrqM18=; b=ZCz3C2rX7dYDRi
-	w/rWhDfd7ESz/pRAr3dJF0hl6rqxAZ+AfUl83KLeSe+4FrJNbvmYHg88OlReOINl/vxGH55aTTefw
-	ZMP0TfSyFTZr6xdDnfm/iIWQuS1hISc4JA9el0kAl2RKU2DRIXmUaIYEgVTVMfEmv8lg7HHt7Kv9s
-	CJTAuFAb6zsCrm8CcjJ5qwNlet5q/kmK26kbMgNspmLMmNlKtW/zDzs/2ODbId1VQMj6eQljZQTlJ
-	iSGBvJ6EUOyVLYFPwvtbUH9d2tkzr2o8JuImrkq8oModQPchK9HsbgkrmlfJjEhkllAnQx7x0l/qk
-	tqya3mkf8Q9cveKe2zeQ==;
+	List-Owner; bh=YJrXVPGF/c5ZYBiaTtWAwQTR6wPbkBi3szy21pIlcf8=; b=1iiYso0NXLzeLr
+	ELzTQwX9zYzrFnTfP6H4/YnmDAF0rQSfxiVFfF/gUJepYaJ9XGfCGFCMKfo4miBfvHnYsFgsF+Ncc
+	L7Flp+Y3yjUg1kFYeqJrYINeIXrGT1CAW364Nx00ZDB6KbvGemQsIlFjYcLFPL0WVrfaFG9oRB9mH
+	HkzR6DLCRa6Uw81Y3EjCQ+nKePFQjfmjuyWgpo2JXL/u4JFoJoQywfMvhU7PDnm7E73Kdf0ZtwCT5
+	BQY8oMIy8ObE83CfXCq6O+Xe0kVNTlfXvx/A7XLKamwPAuzCiD3IBysEFXUTekVsAAwHsZVvJ7dex
+	yDZQUrWgy9cXj9vsXfIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0HSi-007vgX-0Y; Mon, 05 Jul 2021 05:48:08 +0000
+	id 1m0HiC-007xS9-Kx; Mon, 05 Jul 2021 06:04:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0HSd-007vf6-Bv; Mon, 05 Jul 2021 05:48:05 +0000
-X-UUID: c1de3796727a4d919f65328ee6526fd3-20210704
+ id 1m0Hhz-007xPL-SZ; Mon, 05 Jul 2021 06:03:57 +0000
+X-UUID: 4bca15fb942b4b5498ccef5e5b910904-20210704
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5ylQESNvbmc18Q2AP63eVK8uMIMOURqkmGDXrbDXVsQ=; 
- b=Biyhr0MOpnzsoooaEvO8mifC/QcADpwTTt1zgjRUlsBWdbcNlh4q9GirPW9SjwCORy0MtepvCiviy/V+InOAZ+/OS79U3ivv3Kq6Fop7jYWkD84Uqz2cg2vuQ9g1OJfw042YgeFILUcyycyUBECUWwoGc4RMWQnDjdKJJek21t8=;
-X-UUID: c1de3796727a4d919f65328ee6526fd3-20210704
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chun-jie.chen@mediatek.com>)
+ bh=3Lbb8DnJYAqu4D4uxpr2YqSoPb60hyB0hAmGTAf//sU=; 
+ b=K/xUfzqaBDbkfMuQeeqVQf5PDaETdSFp93+dhnPGddkChDUUY1e0ZR0YFxZCtdYShkOVBDt0TCvVg+MjGWZW5F1QiEsytEygjGudh84VeNy6rqgomjA3ZLR56hTMMzZEm4HfTV2R++T/VHTCBf2au7N5X3xJGeaznK8fGrWoUWc=;
+X-UUID: 4bca15fb942b4b5498ccef5e5b910904-20210704
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1820873871; Sun, 04 Jul 2021 22:48:01 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1120041421; Sun, 04 Jul 2021 23:03:51 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 4 Jul 2021 22:41:25 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 5 Jul 2021 13:41:24 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 5 Jul 2021 13:41:23 +0800
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
- Herring" <robh+dt@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
- <chun-jie.chen@mediatek.com>
-Subject: [v3 2/5] dt-bindings: power: Add MT8195 power domains
-Date: Mon, 5 Jul 2021 13:41:08 +0800
-Message-ID: <20210705054111.4473-3-chun-jie.chen@mediatek.com>
+ 15.0.1497.2; Sun, 4 Jul 2021 23:03:49 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Jul 2021 14:03:42 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 5 Jul 2021 14:03:41 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: David Ahern <dsahern@gmail.com>
+CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <wsd_upstream@mediatek.com>, <rocco.yue@gmail.com>, <chao.song@mediatek.com>, 
+ <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>, Rocco Yue
+ <rocco.yue@mediatek.com>
+Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
+ addr_gen_mode
+Date: Mon, 5 Jul 2021 13:48:02 +0800
+Message-ID: <20210705054802.31052-1-rocco.yue@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210705054111.4473-1-chun-jie.chen@mediatek.com>
-References: <20210705054111.4473-1-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210701085117.19018-1-rocco.yue@mediatek.com>
+References: <20210701085117.19018-1-rocco.yue@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210704_224803_454506_179431FD 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20210704_230355_973266_0864D36D 
+X-CRM114-Status: GOOD (  23.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,96 +93,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add power domains dt-bindings for MT8195.
+On Thu, 2021-07-01 at 16:51 +0800, Rocco Yue wrote:
+> On Wed, 2021-06-30 at 22:41 -0600, David Ahern wrote:
+>> On 6/30/21 9:39 PM, Rocco Yue wrote:
+>>> 
+>>> Hi David,
+>>> 
+>>> Thanks for your review.
+>>> 
+>>> This patch is different with IN6_ADDR_GEN_MODE_NONE.
+>>> 
+>>> When the addr_gen_mode == IN6_ADDR_GEN_MODE_NONE, the Linux kernel
+>>> doesn't automatically generate the ipv6 link-local address.
+>>> 
+>> 
+>> ...
+>> 
+>>> 
+>>> After this patch, when the "disable_gen_linklocal_addr" value of a device
+>>> is 1, no matter in which addr_gen_mode, the Linux kernel will not automatically
+>>> generate an ipv6 link-local for this device.
+>>> 
+>> 
+>> those 2 sentences are saying the same thing to me.
+>> 
+>> for your use case, why is setting addr_gen_mode == 1 for the device not
+>> sufficient?
+>> 
+> 
+> For mobile operators that don't need to support RFC7217, setting
+> addr_gen_mode == 1 is sufficient;
+> 
+> But for some other mobile operators that need to support RFC7217, such as AT&T,
+> the mobile device's addr_gen_mode will be switched to the
+> IN6_ADDR_GEN_MODE_STABLE_PRIVACY, instead of using IN6_ADDR_GEN_MODE_NONE.
+> The purpose is: in the IN6_ADDR_GEN_MODE_STABLE_PRIVACY mode, kernel can
+> gererate a stable privacy global ipv6 address after receiveing RA, and
+> network processes can use this global address to communicate with the
+> outside network.
+> 
+> Of course, mobile operators that need to support RFC7217 should also meet
+> the requirement of 3GPP TS 29.061, that is, MT should use IID assigned by
+> the GGSN to build its ipv6 link-local address and use this address to send RS.
+> We don't want the kernel to automatically generate an ipv6 link-local address
+> when addr_gen_mode == 2. Otherwise, using the stable privacy ipv6 link-local
+> address automatically generated by the kernel to send RS message, GGSN will
+> not be able to respond to the RS and reply a RA message.
+> 
+> Therefore, after this patch, kernel will not generate ipv6 link-local address
+> for the corresponding device when addr_gen_mode == 1 or addr_gen_mode == 2.
+> 
+> Thanks,
+> Rocco
+> 
 
-Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
- .../power/mediatek,power-controller.yaml      |  2 +
- include/dt-bindings/power/mt8195-power.h      | 51 +++++++++++++++++++
- 2 files changed, 53 insertions(+)
- create mode 100644 include/dt-bindings/power/mt8195-power.h
+Hi David,
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-index f234a756c193..d6ebd77d28a7 100644
---- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-@@ -27,6 +27,7 @@ properties:
-       - mediatek,mt8173-power-controller
-       - mediatek,mt8183-power-controller
-       - mediatek,mt8192-power-controller
-+      - mediatek,mt8195-power-controller
- 
-   '#power-domain-cells':
-     const: 1
-@@ -64,6 +65,7 @@ patternProperties:
-               "include/dt-bindings/power/mt8173-power.h" - for MT8173 type power domain.
-               "include/dt-bindings/power/mt8183-power.h" - for MT8183 type power domain.
-               "include/dt-bindings/power/mt8192-power.h" - for MT8192 type power domain.
-+              "include/dt-bindings/power/mt8195-power.h" - for MT8195 type power domain.
-         maxItems: 1
- 
-       clocks:
-diff --git a/include/dt-bindings/power/mt8195-power.h b/include/dt-bindings/power/mt8195-power.h
-new file mode 100644
-index 000000000000..43fd36e1f538
---- /dev/null
-+++ b/include/dt-bindings/power/mt8195-power.h
-@@ -0,0 +1,51 @@
-+/* SPDX-License-Identifier: GPL-2.0
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_POWER_MT8195_POWER_H
-+#define _DT_BINDINGS_POWER_MT8195_POWER_H
-+
-+#define MT8195_POWER_DOMAIN_PCIE_MAC_P0		0
-+#define MT8195_POWER_DOMAIN_PCIE_MAC_P1		1
-+#define MT8195_POWER_DOMAIN_PCIE_PHY		2
-+#define MT8195_POWER_DOMAIN_SSUSB_PCIE_PHY	3
-+#define MT8195_POWER_DOMAIN_CSI_RX_TOP		4
-+#define MT8195_POWER_DOMAIN_ETHER		5
-+#define MT8195_POWER_DOMAIN_ADSP		6
-+#define MT8195_POWER_DOMAIN_AUDIO		7
-+#define MT8195_POWER_DOMAIN_AUDIO_ASRC		8
-+#define MT8195_POWER_DOMAIN_NNA			9
-+#define MT8195_POWER_DOMAIN_NNA0		10
-+#define MT8195_POWER_DOMAIN_NNA1		11
-+#define MT8195_POWER_DOMAIN_MFG0		12
-+#define MT8195_POWER_DOMAIN_MFG1		13
-+#define MT8195_POWER_DOMAIN_MFG2		14
-+#define MT8195_POWER_DOMAIN_MFG3		15
-+#define MT8195_POWER_DOMAIN_MFG4		16
-+#define MT8195_POWER_DOMAIN_MFG5		17
-+#define MT8195_POWER_DOMAIN_MFG6		18
-+#define MT8195_POWER_DOMAIN_VPPSYS0		19
-+#define MT8195_POWER_DOMAIN_VDOSYS0		20
-+#define MT8195_POWER_DOMAIN_VPPSYS1		21
-+#define MT8195_POWER_DOMAIN_VDOSYS1		22
-+#define MT8195_POWER_DOMAIN_DP_TX		23
-+#define MT8195_POWER_DOMAIN_EPD_TX		24
-+#define MT8195_POWER_DOMAIN_HDMI_TX		25
-+#define MT8195_POWER_DOMAIN_HDMI_RX		26
-+#define MT8195_POWER_DOMAIN_WPESYS		27
-+#define MT8195_POWER_DOMAIN_VDEC0		28
-+#define MT8195_POWER_DOMAIN_VDEC1		29
-+#define MT8195_POWER_DOMAIN_VDEC2		30
-+#define MT8195_POWER_DOMAIN_VENC		31
-+#define MT8195_POWER_DOMAIN_VENC_CORE1		32
-+#define MT8195_POWER_DOMAIN_IMG			33
-+#define MT8195_POWER_DOMAIN_DIP			34
-+#define MT8195_POWER_DOMAIN_IPE			35
-+#define MT8195_POWER_DOMAIN_CAM			36
-+#define MT8195_POWER_DOMAIN_CAM_RAWA		37
-+#define MT8195_POWER_DOMAIN_CAM_RAWB		38
-+#define MT8195_POWER_DOMAIN_CAM_MRAW		39
-+
-+#endif /* _DT_BINDINGS_POWER_MT8195_POWER_H */
--- 
-2.18.0
+Gentle ping for this patch.
+
+Thanks,
+Rocco
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
