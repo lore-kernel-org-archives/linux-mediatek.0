@@ -1,99 +1,83 @@
-Return-Path: <SRS0=Syrz=L5=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A88F3C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 16:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85A1BC07E9C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 02:09:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C60661952
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Jul 2021 16:35:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C60661952
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3DF7F6195A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 02:09:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3DF7F6195A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=PNYOCaDdeDnIVSi9k3Ux2pToijA2kbSA2gqnZ0D0eaU=; b=PTp8Dd7jviDD9dQLbaZ6P5B/HH
-	+YwH8/cHkG3DjhrOxIyfd7MYfMkE7YZiTv5kA9n2ciGAXjVs8t0x+7f3Wxc0igEHdJcBOaiKmPoKU
-	wVjIqearkbmblMTkZ7N8QzT3W7fjAtFbApMjSWR65fDaTv2HJHYWZG35w7k5mlnfsyalsu2qBxGXT
-	thZ81r2zSuR/s2QlY7Zz2dXUgINBW2q2YfembYjFFAjpGpdduOPLfTUqrOJWKwSGFqVU1FEI+ztTv
-	GLdl4mOLr0BdOdpYQEWtAZs+j1CuBB1zFGFBpI17PCNWGnPYQEPt1kfnaB7sq3gjgHvIGM7XN9755
-	arDK898Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=twBinTulvIpK9/VCTkenbCJ9c4r0fGdvkWbmpY5h464=; b=hsrszD4nqJvOJE
+	6qDwQiep+E/Acu/TnmzjQFy0heMglInW70NMvs8rSRUMEz0WQQOPBCzE1Tk+k2fWsxBdd3r35O9/U
+	XxxxDifaOMtyVEcvO02220m/M3PxOkZDMiJkpJL/KhgGeXkqoxaz/BPYgF1K62/5O7v+nbthHFk4w
+	RJ8PkqauABletyuG8R9KUW2XA6lpenHY8P70cExg2WdDcfyP+vSZ9x5kMt/OFLfd9zeAhkAFahHjR
+	0+0w45HtgGT2/FGYZGjZKpNzmuJHYcXuQ+8Y4QZkw8Yszn8gDVqzofXlKbzLnpvBiQK4W7ss624dd
+	wY9mRBa2E5xa/A7pVoZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0RYq-009VTB-1L; Mon, 05 Jul 2021 16:35:08 +0000
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+	id 1m0aWJ-00A903-6p; Tue, 06 Jul 2021 02:09:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0RYn-009VSH-6C; Mon, 05 Jul 2021 16:35:06 +0000
-Received: by mail-ot1-x330.google.com with SMTP id
- x22-20020a9d6d960000b0290474a76f8bd4so17217640otp.5; 
- Mon, 05 Jul 2021 09:35:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=2TAR10t0SeeOnNIpVqOCA/P0iG1nNKQebPXrjWaJtb8=;
- b=rHesvuimK2TFARWHbzpaATGZCmguf1XLopFhCTk8H0teOqcYrl44e1MoR0WPrDJo/Z
- +C1fVSdrhfunXLnR4etceGNEOxs/t9aC+7m3yg9wKrlQgilx6BGoXT6LN618mX9qAT8f
- NNXqsjZ1+/P7sXs00JmLMHkQC3XixmKhfV8PHXF6ftHAmI+4HDIal4T5f0eCM9lSomIW
- ojg8xfqc493+vgeCdpd2J8VLOGMn4xGFZCDXQVlhSiAthDI+HLz/i4ayptgYKMvpM9XI
- pB8NodwdI1FXS1JlISb48mrSVitpdYDyK0oeKEzwT/m33YV6ObsxbW2Ttz+dBVz1gmX8
- u44Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2TAR10t0SeeOnNIpVqOCA/P0iG1nNKQebPXrjWaJtb8=;
- b=SOJjAsm5dAUu8GL7TrPqAufTnjvS3Upyc6bqK7+lOpUcl3FTbtJE5A/lLBxATs6N/7
- p09S5oSoMk1anDkfoGKE0Juees2NSsmhdN0LXjEL9E7Y/1W/UJUtuzgowJ3cM4kwkfTQ
- gx9OAfYDw9i7Fs9L5jbjEyDJrNznv6Tk99FLZ+CoVaK6ab7ArbOAi14TrOugWliJXfbv
- jWxQVWIU8CQ9CeMsr1fpnx7XQHuzDdpZldonU60smjMW8jEPySAWXTarVQry3UdQN095
- gP/NoxYK/bBnkrkj/z8D87333ihesVbQJ6t7yTaKXHAL+WgIojpnSmf14ZNq5KAuiR6X
- 1Few==
-X-Gm-Message-State: AOAM533ZisPcYs9tEnPVIHkXcVke7x+MsyrQA9Pr/4k/H+fzotrir4H+
- bi2h3rta6JnUrHMIi6jmllc=
-X-Google-Smtp-Source: ABdhPJwnjz4hvEqwtKjSPE7H7MmjVjGF2KI7AM+yiP4/0VF/t9dcVNqbrVzot4kwkj/23frWhct5Qw==
-X-Received: by 2002:a9d:17d0:: with SMTP id j74mr11215444otj.92.1625502903254; 
- Mon, 05 Jul 2021 09:35:03 -0700 (PDT)
-Received: from Davids-MacBook-Pro.local ([8.48.134.38])
- by smtp.googlemail.com with ESMTPSA id b20sm132106ots.26.2021.07.05.09.35.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jul 2021 09:35:02 -0700 (PDT)
-Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
- addr_gen_mode
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: "David S . Miller" <davem@davemloft.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern
- <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
- rocco.yue@gmail.com, chao.song@mediatek.com, kuohong.wang@mediatek.com,
- zhuoliang.zhang@mediatek.com
-References: <46a9dbf2-9748-330a-963e-57e615a15440@gmail.com>
- <20210701085117.19018-1-rocco.yue@mediatek.com>
-From: David Ahern <dsahern@gmail.com>
-Message-ID: <62c9f5b7-84bd-d809-4e33-39fed7a9d780@gmail.com>
-Date: Mon, 5 Jul 2021 10:35:00 -0600
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.11.0
+ id 1m0aWF-00A8zc-Ar; Tue, 06 Jul 2021 02:09:06 +0000
+X-UUID: de126fbd04f941e684f7497bd1bc80da-20210705
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=rM/FDzGlB2uXisLxyE0DK9a6bsODNzTQuW4tR72IG4M=; 
+ b=jeCiLS2C66R2mdNDwZZYVLRHWvA/5tAbywjdK1stt9cqztSizA/Sj1hTeWZ/Yi7EtNijctvYuEceNOSjsY27eIia43tY47Y8W9QABcg2/9lMm9A+51IrMAEuoTOOQGTpc8uKByW3taiTbyX9xScsrdAykaaVAMqOUdXQVs3gV3s=;
+X-UUID: de126fbd04f941e684f7497bd1bc80da-20210705
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 442557642; Mon, 05 Jul 2021 19:08:32 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 5 Jul 2021 19:05:59 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 6 Jul 2021 10:05:57 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 6 Jul 2021 10:05:57 +0800
+Message-ID: <50ff125023425b58ba86eb50df51c34cea5ab7d8.camel@mediatek.com>
+Subject: Re: [v12 02/20] dt-bindings: ARM: Mediatek: Add mmsys document
+ binding for MT8192
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 6 Jul 2021 10:05:57 +0800
+In-Reply-To: <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
+References: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
+ <20210705033824.1934-3-chun-jie.chen@mediatek.com>
+ <564fa3c8-1d85-5e98-f3f9-f83cb17e905a@gmail.com>
+ <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20210701085117.19018-1-rocco.yue@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210705_093505_287107_E367A31F 
-X-CRM114-Status: GOOD (  25.79  )
+X-CRM114-CacheID: sfid-20210705_190903_423640_2ACDF880 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,66 +94,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/1/21 2:51 AM, Rocco Yue wrote:
-> On Wed, 2021-06-30 at 22:41 -0600, David Ahern wrote:
->> On 6/30/21 9:39 PM, Rocco Yue wrote:
->>>
->>> Hi David,
->>>
->>> Thanks for your review.
->>>
->>> This patch is different with IN6_ADDR_GEN_MODE_NONE.
->>>
->>> When the addr_gen_mode == IN6_ADDR_GEN_MODE_NONE, the Linux kernel
->>> doesn't automatically generate the ipv6 link-local address.
->>>
->>
->> ...
->>
->>>
->>> After this patch, when the "disable_gen_linklocal_addr" value of a device
->>> is 1, no matter in which addr_gen_mode, the Linux kernel will not automatically
->>> generate an ipv6 link-local for this device.
->>>
->>
->> those 2 sentences are saying the same thing to me.
->>
->> for your use case, why is setting addr_gen_mode == 1 for the device not
->> sufficient?
->>
+On Mon, 2021-07-05 at 17:45 +0200, Matthias Brugger wrote:
+> On 05/07/2021 17:40, Matthias Brugger wrote:
+> > 
+> > 
+> > On 05/07/2021 05:38, Chun-Jie Chen wrote:
+> > > This patch adds the mmsys document binding for MT8192 SoC.
+> > > 
+> > > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > 
+> > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > 
 > 
-> For mobile operators that don't need to support RFC7217, setting
-> addr_gen_mode == 1 is sufficient;
+> Of course, that's not what we need here...
 > 
-> But for some other mobile operators that need to support RFC7217, such as AT&T,
-> the mobile device's addr_gen_mode will be switched to the
-> IN6_ADDR_GEN_MODE_STABLE_PRIVACY, instead of using IN6_ADDR_GEN_MODE_NONE.
-> The purpose is: in the IN6_ADDR_GEN_MODE_STABLE_PRIVACY mode, kernel can
-> gererate a stable privacy global ipv6 address after receiveing RA, and
-> network processes can use this global address to communicate with the
-> outside network.
+> Now pushed to v5.14-tmp/dts64 until v5.14-rc1 is released.
 > 
-> Of course, mobile operators that need to support RFC7217 should also meet
-> the requirement of 3GPP TS 29.061, that is, MT should use IID assigned by
-> the GGSN to build its ipv6 link-local address and use this address to send RS.
-> We don't want the kernel to automatically generate an ipv6 link-local address
-> when addr_gen_mode == 2. Otherwise, using the stable privacy ipv6 link-local
-> address automatically generated by the kernel to send RS message, GGSN will
-> not be able to respond to the RS and reply a RA message.
-> 
-> Therefore, after this patch, kernel will not generate ipv6 link-local address
-> for the corresponding device when addr_gen_mode == 1 or addr_gen_mode == 2.
+> Thanks!
+> Matthias
 > 
 
-I think another addr_gen_mode is better than a separate sysctl. It looks
-like IN6_ADDR_GEN_MODE_STABLE_PRIVACY and IN6_ADDR_GEN_MODE_RANDOM are
-the ones used for RAs, so add something like:
+I see some discussion in [1] and check the implement of afe
+driver(soc/mediatek/mt8192/mt8192-afe-pcm.c)
+The audsys shoud be documented in mediatek,audsys.txt
+I will send v13 to apply it and update dts [2],
+sorry for the inconvenience.
 
-IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210630180652.1.I88a52644e47e88b15f5db9841cb084dc53c5875c@changeid/
+[2]
+https://patchwork.kernel.org/project/linux-mediatek/cover/20210616011551.29654-1-chun-jie.chen@mediatek.com/
 
-to in6_addr_gen_mode.
-
+Best Regards,
+Chun-Jie
+> > > ---
+> > >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.txt         
+> > >  | 1 +
+> > >  1 file changed, 1 insertion(+)
+> > > 
+> > > diff --git
+> > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.t
+> > > xt
+> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.t
+> > > xt
+> > > index 78c50733985c..9712a6831fab 100644
+> > > ---
+> > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.t
+> > > xt
+> > > +++
+> > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.t
+> > > xt
+> > > @@ -16,6 +16,7 @@ Required Properties:
+> > >  	- "mediatek,mt8167-mmsys", "syscon"
+> > >  	- "mediatek,mt8173-mmsys", "syscon"
+> > >  	- "mediatek,mt8183-mmsys", "syscon"
+> > > +	- "mediatek,mt8192-mmsys", "syscon"
+> > >  - #clock-cells: Must be 1
+> > >  
+> > >  For the clock control, the mmsys controller uses the common clk
+> > > binding from
+> > > 
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
