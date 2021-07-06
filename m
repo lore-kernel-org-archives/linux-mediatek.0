@@ -2,81 +2,92 @@ Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FEEEC07E9B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 12:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 299BBC07E9C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 15:17:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0435E611B0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 12:52:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0435E611B0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E193661C21
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 15:17:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E193661C21
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xkY6Ag/QvvJ1hdGNn7/9ahKuBmZYv7waO8tG8I7k9BI=; b=wuM5cSQazh/HQr
-	+iMBF8gOM8aHd9ocFspN+hxKW6tUwfSnom/hW6S3on01y2NVt0pdhvxnxfElJlATA/im0brlgG/vv
-	OXK9jTo3OzQstNhwDybjUKT3kluXebxWuXr9hTCh95Pvrh7EjcnZ3fYMqHzaFwfC/+R5MtecI46aL
-	cNPYJqLUmHUAmD071MXRDShl9riTUJOloSvdTfiETASIzWrwHaUW23LsqAVndsBjp6BCMWbzuO3wq
-	rX/0+riLhTkRHFH5G/8SKgVIGQrhSLN5IUdJf3LQdc9UB58SWhprD2h8++tGkPi3385Y94XfgoSC1
-	NB2PVSW8GiUn+X8FvA5A==;
+	List-Owner; bh=kF9237xeyXyOpS1LbfJ/VDboHE/LhhXi1d159+ch1Z0=; b=imO+vcB5Ipxuer
+	3XtYlfG67A5ipPYF31X/7mdRi4g3pW/oD3y9zq6RbdgeO17LngUsWBKHlCXK+6xpuV09j/SDgTCAl
+	hdESfmX8wS0zyS7QmoKjHZWv+9UyrJJPXw+7yNp08nrisy0YNk19IDYBdpIcrhtiazqxhQK1DT4Wj
+	Jol/Hfv71XFByTzcYHdxwbv0/Y2AO6HTiVBywdg3yKSlq5nlGU7LaDZnqNnYbO6LaU+dXLTtH7GWW
+	K/yqlTebbztbKl2UBUMnAQRzlxBtknBBCdu3rMDUzWohAX1VHvsFSGGx8CPpM10u7oMzK8PkHLwsr
+	VFCNLzfTa6i2c2ZljmkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0kZC-00Bpz4-GD; Tue, 06 Jul 2021 12:52:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m0mpD-00C8K0-Q8; Tue, 06 Jul 2021 15:17:27 +0000
+Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0kYy-00BpwT-1N; Tue, 06 Jul 2021 12:52:34 +0000
-X-UUID: a0e20190beb040b893424ec3e1100c3b-20210706
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=pT+nI49nT3uqhDAQkA681Y6x2H/UREcw3ZZ0AF20oKo=; 
- b=Qb5U6vr0Ydzi3O7RpDe3eOGgRKHosFNyvsTNaJR5WWqTNonmdP7beqaunlLttJDFJByOmz9ilOf49eJk5qoWScxPJeaL9EbX/5fM0so/67zcvQx7UR2wfb7LKIoQxNx8CndnqqmS9DGSRi0wglfXe56KE0MmNew2PSI8wjyRcnA=;
-X-UUID: a0e20190beb040b893424ec3e1100c3b-20210706
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 948413110; Tue, 06 Jul 2021 05:52:29 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Jul 2021 05:52:28 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Jul 2021 20:52:20 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 6 Jul 2021 20:52:19 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@gmail.com>
-CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <wsd_upstream@mediatek.com>, <rocco.yue@gmail.com>, <chao.song@mediatek.com>, 
- <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>, Rocco Yue
- <rocco.yue@mediatek.com>
-Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
- addr_gen_mode
-Date: Tue, 6 Jul 2021 20:37:02 +0800
-Message-ID: <20210706123702.29375-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <62c9f5b7-84bd-d809-4e33-39fed7a9d780@gmail.com>
-References: <62c9f5b7-84bd-d809-4e33-39fed7a9d780@gmail.com>
+ id 1m0mp9-00C8J3-QU
+ for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 15:17:25 +0000
+Received: by mail-oi1-x233.google.com with SMTP id m3so5985274oig.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 08:17:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FwaqWZ2gM7ETfNHaJFAqbQre0tedwT8ScYbGRh8Cbj8=;
+ b=po09UcPqPUGTT3Ljzu6EyVVa2dGi0koL5gBUA7/Udu8Q8QUVocjo+71HHAr2UJVdoe
+ +/XySKVgn+quf+PcI5LZe6PDb4PC1nj6ObHgZDxeYDK99/vRpJDEhXxCqpsyKezGuOh2
+ SiTmIylHMow5BpLR/9fFJSFJEnBjkgjlW4fOQXYbslvJR5yTd6QMLSkIUYlv6Oin0JiL
+ UpBTfsTJNcUtwp8W1vZw3u76+oD5dvV4bZoN6Du3Sy/S0Hh0DIHr7eXg6dRxzy9+I65D
+ MGQAh71shEDxseAHis676rpRCIT1Ys9hx7vTdSo6KpQw0LREFFNsRZBwFi646wfzDCKm
+ 1tyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FwaqWZ2gM7ETfNHaJFAqbQre0tedwT8ScYbGRh8Cbj8=;
+ b=Q7Y4ZgCh+uWE0LY6ROP4RRQOBHOdOQfqoGf2D3fYuOuyfPSRkmi6cjI+2d8MG1CHga
+ +6vLJ+cVAk8IhTHfC6BmflSTdzBPvmKOTzkj2cfcXaE9mi+iUHWukfvKellqD84TAIlu
+ 1iOZNv5QdVMXquColHLkuLfzEWGD8xKO8/cAPGp3w/CDb8acF8amklHze8q/nnwwUNAp
+ bhMhlB/ctzqMruTdB+ltatv1T3OixKt44sJ9kMjd1Uv9zaJeAzHt8ZfegEyuEpVGEzAe
+ y5pxQs5Ljp/a0VZmX4pHPJEyy+LqOFJsv6NoM7r1AfM+68dDHgUt9jGAMFlcz52++hTF
+ MsLQ==
+X-Gm-Message-State: AOAM533i3C+iTc5vvblGgxQ+2Eoa6TvHUB5ZBUFHe7pxBK3WCjEdoko3
+ MkUzeQqsVuul10x7ZbydpiGNwpWmj0qOSGgfguw=
+X-Google-Smtp-Source: ABdhPJymL0sA+uyY2bY0Taf/qcTN+2FeV8VkDm0yVBABAYSlAHE/SPKfz1qUNtsLf6yjsu/TmxVUzJfvXQAW7RQ/wrA=
+X-Received: by 2002:aca:3904:: with SMTP id g4mr790145oia.129.1625584642630;
+ Tue, 06 Jul 2021 08:17:22 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210519143011.1175546-1-acourbot@chromium.org>
+ <20210519143011.1175546-6-acourbot@chromium.org>
+ <9b37044d-f909-9169-3d22-fa6c5f788822@collabora.com>
+ <CAPBb6MV35sJ-LY8w-nhpnndRHtJXapSN63xFzUiAbYQFLvm1dQ@mail.gmail.com>
+In-Reply-To: <CAPBb6MV35sJ-LY8w-nhpnndRHtJXapSN63xFzUiAbYQFLvm1dQ@mail.gmail.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Tue, 6 Jul 2021 17:17:10 +0200
+Message-ID: <CAFqH_50PAEzH5_LT+aQusGUos7BGYATjx1qYVq2O5UYYkkNW2A@mail.gmail.com>
+Subject: Re: [PATCH v5 05/14] media: mtk-vcodec: venc: support START and STOP
+ commands
+To: Alexandre Courbot <acourbot@chromium.org>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_055233_542320_98F47A4C 
-X-CRM114-Status: GOOD (  20.97  )
+X-CRM114-CacheID: sfid-20210706_081723_888582_F3421ADF 
+X-CRM114-Status: GOOD (  32.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,79 +104,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-07-05 at 10:35 -0600, David Ahern wrote:
-> On 7/1/21 2:51 AM, Rocco Yue wrote:
->> On Wed, 2021-06-30 at 22:41 -0600, David Ahern wrote:
->> 
->> For mobile operators that don't need to support RFC7217, setting
->> addr_gen_mode == 1 is sufficient;
->> 
->> But for some other mobile operators that need to support RFC7217, such as AT&T,
->> the mobile device's addr_gen_mode will be switched to the
->> IN6_ADDR_GEN_MODE_STABLE_PRIVACY, instead of using IN6_ADDR_GEN_MODE_NONE.
->> The purpose is: in the IN6_ADDR_GEN_MODE_STABLE_PRIVACY mode, kernel can
->> gererate a stable privacy global ipv6 address after receiveing RA, and
->> network processes can use this global address to communicate with the
->> outside network.
->> 
->> Of course, mobile operators that need to support RFC7217 should also meet
->> the requirement of 3GPP TS 29.061, that is, MT should use IID assigned by
->> the GGSN to build its ipv6 link-local address and use this address to send RS.
->> We don't want the kernel to automatically generate an ipv6 link-local address
->> when addr_gen_mode == 2. Otherwise, using the stable privacy ipv6 link-local
->> address automatically generated by the kernel to send RS message, GGSN will
->> not be able to respond to the RS and reply a RA message.
->> 
->> Therefore, after this patch, kernel will not generate ipv6 link-local address
->> for the corresponding device when addr_gen_mode == 1 or addr_gen_mode == 2.
->> 
-> 
-> I think another addr_gen_mode is better than a separate sysctl. It looks
-> like IN6_ADDR_GEN_MODE_STABLE_PRIVACY and IN6_ADDR_GEN_MODE_RANDOM are
-> the ones used for RAs, so add something like:
-> 
-> IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-> IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
-> 
-> to in6_addr_gen_mode.
-> 
+Hi Dafna and Alex,
 
-Hi David,
+Now in text format, sorry for the noise.
 
-Thanks for your reply.
+Missatge de Alexandre Courbot <acourbot@chromium.org> del dia dl., 5
+de jul. 2021 a les 7:05:
+>
+> Hi Dafna, sorry for (again) taking so long to come back to this! >_<
+>
+> On Fri, May 28, 2021 at 4:03 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+> >
+> > Hi,
+> >
+> > I applied this patchset and tested the stateful encoder on debian with the command:
+> >
+> > [gst-master] root@debian:~/gst-build# gst-launch-1.0 filesrc location=images/jelly-800-640.YU12 ! rawvideoparse width=800 height=640 format=i420 ! videoconvert ! v4l2h264enc ! h264parse ! mp4mux ! filesink location=jelly-800-640.mp4
+> >
+> > I get:
+> >
+> > Setting pipeline[   79.703879] [MTK_V4L2] level=0 fops_vcodec_open(),190: encoder capability 10000000
+> >   to PAUSED ...
+> > Pipeline is PREROLLING ...
+> > Redistribute latency...
+> > [   80.621076] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.631232] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.640878] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.650766] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.660430] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.670194] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.680967] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.691376] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.701718] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.712106] mtk-iommu 10205000.iommu: Partial TLB flush timed out, falling back to full flush
+> > [   80.722272] [MTK_V4L2] level=0 mtk_venc_set_param(),371: fmt 0x3, P/L 0/0, w/h 800/640, buf 800/640, fps/bps 25/4000000, gop 0, i_period 0
+> > Pipeline is PREROLLED ...
+> > Setting pipeline to PLAYING ...
+> > New clock: GstSystemClock
+> > [   81.918747] [MTK_V4L2][ERROR] mtk_vcodec_wait_for_done_ctx:32: [3] ctx->type=1, cmd=1, wait_event_interruptible_timeout time=1000ms out 0 0!
+> > [   81.931392] [MTK_VCODEC][ERROR][3]: h264_encode_frame() irq_status=0 failed
+> > [   81.938470] [MTK_V4L2][ERROR] mtk_venc_worker:1219: venc_if_encode failed=-5
+> > [   82.974746] [MTK_V4L2][ERROR] mtk_vcodec_wait_for_done_ctx:32: [3] ctx->type=1, cmd=1, wait_event_interruptible_timeout time=1000ms out 0 0!
+> > [   82.987392] [MTK_VCODEC][ERROR][3]: h264_encode_frame() irq_status=0 failed
+> > [   82.994471] [MTK_V4L2][ERROR] mtk_venc_worker:1219: venc_if_encode failed=-5
+> > [  104.163977] cros-ec-dev cros-ec-dev.2.auto: Some logs may have been dropped...
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > 0:00:00.4 / 99:99:99.
+> > ^Chandling interrupt.
+> >
+> > And then the streaming hangs. The same error happens without this patchset, but without
+> > this patchset the statful encoder does not support V4L2_ENC_CMD_STOP/START needed by the spec.
+> > I am not sure what cause the error and wether those mtk-iommu erros has to do with that. The issue
+> > could also come from the mtk-vpu used by the encoder.
+> > Do you have any idea where this can come from?
+>
+> Mmm, this looks like the firmware is unhappy about something and
+> hangs. I wonder if the IOMMU messages above could not be linked to
+> that, I remember seeing similar problems when the buffers were not
+> properly synced on the device side.
+>
+> I'll try and see if I can deploy gstreamer on the old MT8173
+> Chromebook I am using to see if I have more success here, but no
+> guarantee I can test in the same conditions as you unfortunately. :/
+>
+> The MTK folks are the most qualified to look into this issue though.
+> Yunfei, do you have any idea about why this is happening?
+>
 
-According to your suggestion, I checked the ipv6 code again. In my
-opinion, adding another addr_gen_mode may not be suitable.
+Pending to test with the Dafna's environment. but looks like this
+draft fix [1] (already under discussion in gerrit) needs to be applied
+to mainline in order to have vcodec working. At least I am able to use
+it now.
 
-(1)
-In the user space, the process enable the ipv6 stable privacy mode by
-setting the "/proc/sys/net/ipv6/conf/<iface>/stable_secret".
+See https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2251840
 
-In the kernel, the addr_gen_mode of a networking device is switched to
-IN6_ADDR_GEN_MODE_STABLE_PRIVACY by judging the bool value of
-"cnf.stable_secret.initialized".
+diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+index c8a56271b259..af71fcf6fbae 100644
+--- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
++++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+@@ -316,6 +316,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+ {
+        struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+        struct share_obj __iomem *send_obj = vpu->send_buf;
++       unsigned char data[SHARE_BUF_SIZE];
+        unsigned long timeout;
+        int ret = 0;
 
-So, although adding an additional IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-user space process has some trouble to let kernel switch the iface's
-addr_gen_mode to the IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA.
+@@ -349,7 +350,10 @@ int vpu_ipi_send(struct platform_device *pdev,
+                }
+        } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
 
-This is not as flexible as adding a separate sysctl.
-
-(2)
-After adding "proc/sys/net/ipv6/<iface>/disable_gen_linklocal_addr",
-so that kernel can keep the original code logic of the stable_secret
-proc file, and expand when the subsequent kernel adds a new add_gen_mode
-more flexibility and applicability.
-
-And we only need to care about the networking device that do not
-generate an ipv6 link-local address, and not the addr_gen_mode that
-this device is using.
-
-Maybe adding a separate sysctl is a better choice.
-Looking forward to your professional reply again.
+-       memcpy_toio(send_obj->share_buf, buf, len);
++       //memcpy_toio(send_obj->share_buf, buf, len);
++       memset(data, 0, sizeof(data));
++       memcpy(data, buf, len);
++       memcpy_toio(send_obj->share_buf, data, sizeof(data));
+        writel(len, &send_obj->len);
+        writel(id, &send_obj->id);
 
 Thanks,
-Rocco
+  Enric
+
+
+
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
