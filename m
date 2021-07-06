@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 24F81C07E9B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:46:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC905C07E96
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:46:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EEB4061E53
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:46:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEB4061E53
+	by mail.kernel.org (Postfix) with ESMTPS id 7B27661EBC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:46:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B27661EBC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jxaJ+0ayqp7nuSJysIo5SESm+icYSaRfkuK3COSKxvo=; b=lFoutFd8z6QBv+
-	SYP/3zrXnCZDKUCivzzoKXOK0zJeNWFDlKJuT8X9yMxC+gSD8hYWij8EHaYlOtvn3iUWLxrXtICCd
-	ybyPXPEd5bayaizLZ36x7KykZCCBHKSx2yqCKETQSyrBc+jQBntD4xTawYEx2QK04Ne0h2f0pvsSt
-	OO95eqA3Wipna6P5nJn3I2C2fOJSkckDEJ3nJCp5RuTohqK3Rlio8pjdx+BxDSjEWl5auyRsJ/vBU
-	8o733ha1WM8qWQc4nknGBIZxlFs4AIlCx/+rdzkUZ5zBtCBvLyQs6INz9taWrYPLkkJm4p0y3NuA6
-	63sEykk78uFbuLJnAf7g==;
+	List-Owner; bh=3qVXn4RG/whqOKrkGum243HiDrzR0lHW8y+hBqExEsg=; b=VG5kHiOA8TeQzI
+	9RCu2GKUSgMBjvwTTpMgLOqUNHqqmdu5NbAPiGjtP6hp3BzDcR1oqpXO8HSrB/1kFflHppipPzDFJ
+	1InvEmfT/743bxlAhhFYjCJF/b2m++Y0x2l9+Di/6BHxNDMQEGB3HG6QCeugCAGEe5NaY3ru/xYeJ
+	RYOBgHcalmnSwergnP9EYE5crE2T1rdoW5VIFN0IPfxm3E7DZRy4O2VaI/sgJoCzGMf3HNK9qm2OL
+	wfTMmz5Du+MLjh7adqTlxmYeZBP+ZeSjhxzpMsSZXrEvsR+HrkT/dpLp616RA3PfPlWAWq1JwsGNu
+	LgdzttSYx2teili5pUcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0jWV-00BWYA-Gq; Tue, 06 Jul 2021 11:45:55 +0000
+	id 1m0jXH-00BWup-Da; Tue, 06 Jul 2021 11:46:43 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0jBI-00BIoK-SI; Tue, 06 Jul 2021 11:24:02 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B26B761DF6;
- Tue,  6 Jul 2021 11:23:59 +0000 (UTC)
+ id 1m0jBS-00BIud-0Z; Tue, 06 Jul 2021 11:24:12 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 92DDA61E1A;
+ Tue,  6 Jul 2021 11:24:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570640;
- bh=2yH1Q5BU3iPSLHbfiFuatKCYie8JbZm55iV0HyO/LBg=;
+ s=k20201202; t=1625570649;
+ bh=ZxhQ/s8KZpLwV9wFhgLlnsSd4+04GTiheMdXUWADhsk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=D5/PdCuozualgorYr393IMyewjkADtaJRcwYP4EfSWUbFHKafXX06ZfQwVGRh9cDG
- tTqSuVIxtzHr5y/pSE85VC5bf6fkA4KzCD6jcISe4i3XKawqhi7D5nvkZyUjGr+FzS
- K9qf53cKOlbsrjscmwRlLVDGKknIm0M1u/PzplJ0CBLuB+9ZkAGkc50akY5uvzPZK7
- Rfb2guTwtJB+qfduKFAvD0NNpvE1q7PpHzamJHyWtGSjWyZBHWaFSe41WsCkFRnpcA
- Cel6lQk0EHSvTYsxK06LlK6vdeeUkp6uU8PM9PX8tU/dM7g0kxhiik4AcCQqWKeKrN
- zyRyLgf0KucZw==
+ b=vOQVM3nrbqpkXwyxTrR7xomE7wnW1DTa7CqC2OnX7HY/jyLa4ezfbeiG5bW5GTBAj
+ ZA4H+GuFZRZAP/8kQNNz/bHtbyNVZlp9K3P0ya8lq+liTcyPBuOzsRfo4eR2O+rMA0
+ 2M21KAab8ifZRPm/P60CA5vShO2WjdFr3jP9hJb2EUlNqDzPZi/JBGaVEfZjfePJ8Q
+ E8DJguI3AyA3+Id4mr4f4eqqbR1a6tZcXaycQrjyI1NpxWwfGk/oKznKwdl9ImuBJ+
+ w2i5smrIn0+V60zi+80JzJzyaV7TejFpZE6PJ8kw+AayREL8gqCwTIVvO6z8a7nR7O
+ +UHCI/XdHBPvg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Sasha Levin <sashal@kernel.org>,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 090/137] mt76: mt7615: fix fixed-rate tx status
- reporting
-Date: Tue,  6 Jul 2021 07:21:16 -0400
-Message-Id: <20210706112203.2062605-90-sashal@kernel.org>
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+ Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 097/137] mt76: mt7915: fix
+ IEEE80211_HE_PHY_CAP7_MAX_NC for station mode
+Date: Tue,  6 Jul 2021 07:21:23 -0400
+Message-Id: <20210706112203.2062605-97-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210706112203.2062605-1-sashal@kernel.org>
 References: <20210706112203.2062605-1-sashal@kernel.org>
@@ -64,8 +65,9 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_042401_008330_1844C37D 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20210706_042410_133938_B42AB578 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,57 +84,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-[ Upstream commit ec8f1a90d006f7cedcf86ef19fd034a406a213d6 ]
+[ Upstream commit 2707ff4dd7b1479dbd44ebb3c74788084cc95245 ]
 
-Rely on the txs fixed-rate bit instead of info->control.rates
+The value of station mode is always 0.
 
+Fixed: 00b2e16e0063 ("mt76: mt7915: add TxBF capabilities")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 5795e44f8a52..f44f478bb970 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -1177,22 +1177,20 @@ static bool mt7615_fill_txs(struct mt7615_dev *dev, struct mt7615_sta *sta,
- 	int first_idx = 0, last_idx;
- 	int i, idx, count;
- 	bool fixed_rate, ack_timeout;
--	bool probe, ampdu, cck = false;
-+	bool ampdu, cck = false;
- 	bool rs_idx;
- 	u32 rate_set_tsf;
- 	u32 final_rate, final_rate_flags, final_nss, txs;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 0232b66acb4f..8f01ca1694bc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -335,6 +335,9 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 	if (nss < 2)
+ 		return;
  
--	fixed_rate = info->status.rates[0].count;
--	probe = !!(info->flags & IEEE80211_TX_CTL_RATE_CTRL_PROBE);
++	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
++	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
++
+ 	if (vif != NL80211_IFTYPE_AP)
+ 		return;
+ 
+@@ -348,9 +351,6 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 	c = IEEE80211_HE_PHY_CAP6_TRIG_SU_BEAMFORMER_FB |
+ 	    IEEE80211_HE_PHY_CAP6_TRIG_MU_BEAMFORMER_FB;
+ 	elem->phy_cap_info[6] |= c;
 -
- 	txs = le32_to_cpu(txs_data[1]);
--	ampdu = !fixed_rate && (txs & MT_TXS1_AMPDU);
-+	ampdu = txs & MT_TXS1_AMPDU;
+-	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
+-	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
+ }
  
- 	txs = le32_to_cpu(txs_data[3]);
- 	count = FIELD_GET(MT_TXS3_TX_COUNT, txs);
- 	last_idx = FIELD_GET(MT_TXS3_LAST_TX_RATE, txs);
- 
- 	txs = le32_to_cpu(txs_data[0]);
-+	fixed_rate = txs & MT_TXS0_FIXED_RATE;
- 	final_rate = FIELD_GET(MT_TXS0_TX_RATE, txs);
- 	ack_timeout = txs & MT_TXS0_ACK_TIMEOUT;
- 
-@@ -1214,7 +1212,7 @@ static bool mt7615_fill_txs(struct mt7615_dev *dev, struct mt7615_sta *sta,
- 
- 	first_idx = max_t(int, 0, last_idx - (count - 1) / MT7615_RATE_RETRY);
- 
--	if (fixed_rate && !probe) {
-+	if (fixed_rate) {
- 		info->status.rates[0].count = count;
- 		i = 0;
- 		goto out;
+ static void
 -- 
 2.30.2
 
