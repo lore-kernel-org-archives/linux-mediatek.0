@@ -2,86 +2,88 @@ Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DCF6EC07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:38:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4513EC07E96
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:55:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97B3E6199B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:38:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97B3E6199B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id E3690619A0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:55:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3690619A0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UNEVwFyJlNrZFgtTImRNZ/GWhS+1nbiVLLaHTKI13BM=; b=x6A8FnUX4YAqo/
-	MxRsDrB+DzZfa48AtU/RvYBVc14gk75LKmpfALeDCgrWtsbAFC4KSWI19nkZcQ9NrKM5xzye3dGDw
-	Gbvf29jKOkAFLZeOACmnydh4uUQbF35vSo+vBSIzEps2SKHlNRZSHkn6XbWRADz6ffscRKE4nOBWy
-	FFLls5LBFalj1anUD5mN5axHDwIBv6h6y7SY/sZtIJtoTBainZytuec0MbzKXBhiNq8+iuv+2pPHQ
-	EJU8iOO4WNG919FC0f/S9/kGHiuMJqNcCIOEYG59gfaJaJ3pNYId1lFjBgKo6w9I6UN9ZAQEa75IX
-	B3eORj9RYW1iIQmzDwRQ==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Subject:Cc:To:From:Message-ID:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=p6lx9gzTSx1fye1kmpkQS/IA55FwUPLqt0n2u4JeFLw=; b=REFigCncwayM70
+	aFArw3wSPL1TUkiHoS8ABBUVnsgy+DEjPkCXtPn26BDoloO3UiHviwhGfgqvGQ+NWdjl1K4tFWlSh
+	vkS/u/Hqi7sfW+mBHLV1q/iQ1x4pe9swsXBfJmlWkCSejcuLY6GDpx6CIWWvTmq2GhdQ46Bx0pMAZ
+	G/gxxN1dFHLo2cviQZRQT9iGnmJJq7OIBlPhcRb/QV8oC5oAyPIvqOa8qVx4FahE6yo4WEhLWSnjX
+	yT7lPgiu+Wj2vYodat9TW3YgmbQpkyeLMJwdDs4jTHE0WKJ/9eZlA1bSdLywCNgP3F7U+gcrx63YV
+	USO7ZHzFi0b5roL/rXpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0hXI-00AuIN-Rs; Tue, 06 Jul 2021 09:38:36 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1m0hnC-00AwNW-D5; Tue, 06 Jul 2021 09:55:02 +0000
+Received: from mout.gmx.net ([212.227.15.15])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0hXG-00AuHM-Bv
- for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 09:38:36 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id y2so5823012pff.11
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 02:38:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yF9OMxS2c/2tokATGGfLkvP79xoaq/JM2vOaNahFcrY=;
- b=K/xCtGhsSAOAnYR7nSSV1bWrTUYHM9dWS2fvDAwR0MMVeP28fB2KkgtgnqkSeywRFu
- 0eU7iezOAPPwFi+uYP8fMjxZJNhhZsyFnAcqdv9pYH8CI0ryXItb/KEVCYQedmk7sOzY
- yisRJyiOamke/HQTntFEz9Y7qsj8EKwJ8DfLs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yF9OMxS2c/2tokATGGfLkvP79xoaq/JM2vOaNahFcrY=;
- b=WTcFlR3/Je66miD08hOdax7ElCwntgKw11HSpJL3CxDTkIcdQzNogMua4c+PLa0yyv
- 3HEle/4lVa00eVXZEA7ak0cN/cet6I6quFFHElTPsHBNKpSf3RZ3P++IqkgmowxgEHXp
- yWXiRD9xSWnfv2sxV2uVO7nS2AeesYL2xQa2EV8y8VBwvNtW0xYcY0IR91vm4bE9XzR1
- sYTE+d2ECXy+bU5UpZOAI1jLypXebR+gt6pQsZe7wTkZTfqC+TW4BwE2pocqtn3nXwKj
- KC2gBxQzULfEamgNVCjWs+KQLhsG28LQLKzhxjk5x43v3UrLly5cJ4xMFysQE4hsUIik
- x19A==
-X-Gm-Message-State: AOAM533XJwEn4a6KJVprRk5jVmBsdxGUNtWmLsRD5JJ3FcGigQoyCaCF
- PFSP9O1xoXsqstIJSK8g3TkPOobhlkZjc41RdmjOjg==
-X-Google-Smtp-Source: ABdhPJymcCrNGCc0r7o3SY6VsAaA9EN5U5abtpl7YUfwb0OBhex7wh98FaICBfBIrhrVRx2hWrKi9mRnsUA3QbY35k0=
-X-Received: by 2002:a62:e307:0:b029:321:98d5:ae46 with SMTP id
- g7-20020a62e3070000b029032198d5ae46mr5909502pfh.66.1625564311602; Tue, 06 Jul
- 2021 02:38:31 -0700 (PDT)
+ id 1m0hn8-00AwKr-Hx
+ for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 09:55:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1625565279;
+ bh=HfI1fnAl8yXB7R6zw/6uGgLzJrfs1z8CTgu8YasTu8A=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date;
+ b=MSlfUBxlZvS9mg5TyrL+qgBsEYkpw4pJrf77rmAC5efOCMZRz1SimhrVBzBlfzexm
+ N0Vc0qlII3AwMyvyBydEaA3hHmZZ80sWLMbCshTfUFT2bI7V4ONGaTvyKJb0bgLnFS
+ 7MBKVYOKio+OM1q8fonyXBi4c68oVIXrGC7TcR/c=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.79.159] ([80.245.79.159]) by web-mail.gmx.net
+ (3c-app-gmx-bs60.server.lan [172.19.170.144]) (via HTTP); Tue, 6 Jul 2021
+ 11:54:39 +0200
 MIME-Version: 1.0
-References: <20210630090710.1873559-1-kansho@chromium.org>
- <20210630180652.1.I88a52644e47e88b15f5db9841cb084dc53c5875c@changeid>
- <716ab7a7-937d-df88-8d3c-8d35df473b4e@gmail.com>
- <CAP3OrSLyoKNr7fMOx5sUtWi7PVQGuN-5w7k_0D2MhDUeXXmYCg@mail.gmail.com>
- <CAGXv+5FVf3hu5Y+aFazqBwAcvWMGkyqXB-2VVnskmMsYKj2_yA@mail.gmail.com>
-In-Reply-To: <CAGXv+5FVf3hu5Y+aFazqBwAcvWMGkyqXB-2VVnskmMsYKj2_yA@mail.gmail.com>
-From: Kansho Nishida <kansho@chromium.org>
-Date: Tue, 6 Jul 2021 18:38:20 +0900
-Message-ID: <CAP3OrSK_CVJO3s3YhO5e_m_k0z8h1GrrC8WMcRw1WD41nJk=XA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] arm64: dts: mt8183: add audio node
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, 
- LKML <linux-kernel@vger.kernel.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, 
- Shunli Wang <shunli.wang@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
- Eddie Huang <eddie.huang@mediatek.com>
+Message-ID: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, linux-mediatek@lists.infradead.org, Matthias
+ Brugger <matthias.bgg@gmail.com>
+Subject: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+Date: Tue, 6 Jul 2021 11:54:39 +0200
+Importance: normal
+Sensitivity: Normal
+X-Priority: 3
+X-Provags-ID: V03:K1:OoEQiM/tnR+cNPyCdrhP49bAjgvwQ+lcL2OS2XXYultpQRZ3iKmx2n0JXV3n3Fd/VHVP9
+ URFMBbMlD29B8YWbPuG94J3F5zWccIqeUBT1b3/QLw7EcLA1JrI3PjO+FQx3imeyC8zgfU+KOerU
+ SBvcaufgt9H7rbyrAH7vebZLBS9lGqXs77pGRfMkntQEsAfeL8lO7PqFYuVKbfqsm2saOSxPGiZz
+ 1ywjhxyBlAPnO/j9ixwng5+18VP/dFCoD3JyS/5IHrvnwd1vKJnHRUax54UOu+AonufbuKYhQFcx
+ Nc=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:NiH7UObdIF4=:Bg0EwcLfhCF2bM3KUv6JSd
+ Q39d+oRzZNlz2GzCi6t2BMIrQIiPhiBUPc+0wnnrteIX6OuFa45YuJBgPrfIBXx6tguKBCp49
+ TGWem2GBYxZzGvsBFmWJaAF+PZ1qESJlVy8Erlqquwecq4q5ec2f4NZHwL+6bXn6MQh94FTb/
+ 7VCcOdZyhkZO12oi2vioRCcbwlqJBQt93keYwD5q9PXa8u2ES4hzaLLkfRKigJffBXop14S7w
+ ndcMLVDhRQ7RoEmE0z2jLSVoHqogiW4s/4lx5h2SfSX4GjxKOZYcdan9jjHgyljizL6ZqnSHk
+ vwlmTHtLChPXl7RdigxxPSyrmPsUH0CaPXY2O6i1obnMglJjNTehzP28kTKvH7KgE/1YGNe5F
+ Shf/BUgVaLsdnU239JwpE7RIaZI5legkv8qnx5icFi/uZL0oXWHIzGkkV2uWeXE6JvcX/HV71
+ 0q1qoLQb/ONFD9IFKO1+L0UDKuymVbAOXZAOxqvYXYXL4NhSMFA4aNdoAc+oqZmqdzzsJMnuS
+ jkrlfwdVRbCwremdvuZFG1yW6qXDPaIT/LV9PRnZR9a5GXNhcCZsf/nWPPbcw8C81mY+5EMB0
+ G87A0GZyvJboKu0tRvYvq71SZ4cDqgxutnJA5PwydKQbCxKiS75ao4pj7Hy78hw2KYOe1041Z
+ kEJQh3d7E+fMzyvRIHjiTrdZrFlFt02GNS+gu9Tvot+F/VfteqJIdJkTFVu8T5NP7KR6wj+oY
+ nkDj8u7qnn14WAyEqge63SRfsb/Yx6NNhTzlhkAoCTUHv8qr31k9Hcqpg/LhlnIrLwcqOm8I9
+ uk9Inzb0MBA89p4qj/3aVdcWSy1ZeHIldpXz6EqZ4EWd1qPCV8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_023834_473569_E86396DD 
-X-CRM114-Status: GOOD (  27.43  )
+X-CRM114-CacheID: sfid-20210706_025458_985835_BE20D7BE 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,183 +100,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chen,
+Hi,
 
-On Mon, Jul 5, 2021 at 6:55 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> Hi,
->
-> On Mon, Jul 5, 2021 at 5:40 PM Kansho Nishida <kansho@chromium.org> wrote:
-> >
-> > On Fri, Jul 2, 2021 at 3:20 AM Matthias Brugger <matthias.bgg@gmail.com> wrote:
-> > >
-> > >
-> > >
-> > > On 30/06/2021 11:07, Kansho Nishida wrote:
-> > > > Add afe (audio front end) device node to the MT8183 dtsi.
-> > > >
-> > > > Signed-off-by: Kansho Nishida <kansho@chromium.org>
-> > > > ---
-> > > >
-> > > >  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 94 +++++++++++++++++++++++-
-> > > >  1 file changed, 93 insertions(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > > > index f90df6439c08..b06acb8d6527 100644
-> > > > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > > > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > > > @@ -1115,10 +1115,102 @@ usb_host: usb@11200000 {
-> > > >                       };
-> > > >               };
-> > > >
-> > > > -             audiosys: syscon@11220000 {
-> > > > +             audiosys: clock-controller@11220000 {
-> > >
-> > > Why do you change it from sysecon to clock-controller?
-> > >
-> > > Regards,
-> > > Matthias
-> >
-> > Hi Matthias,
-> >
-> > Thanks for the comments!
-> > This should be "clock-controller" according to the binding description (*1).
-> > Moreover, you suggested doing so even though it's a long time ago (*2).
->
-> The address space really covers the whole audio subsystem though. The clock
-> controls only span a few registers. In hindsight the clock controls shouldn't
-> have been modelled separately, since they are only used internally within the
-> audio subsystem.
->
-> See https://lore.kernel.org/linux-mediatek/YOLKxrJin5kkwiIl@google.com/T/#u
-> for issues I raised on the MT8195.
->
-> Now we are probably not going to be able to fix this for existing bindings,
-> so let's just get the node name right. It should probably be audio-controller
-> or something close instead.
+i've noticed that HDMI is broken at least on my board (Bananapi-r2,mt7623) on 5.13.
 
-OK, let's use audio-controller instead. I'll submit the v3 patch.
+after some research i noticed that it is working till
 
-Regards,
-Kansho
+commit 2e477391522354e763aa62ee3e281c1ad9e8eb1b
+Author: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Date:   Tue Mar 30 13:09:02 2021 +0200
 
->
->
-> Regards
-> ChenYu
->
->
-> > *1) https://www.kernel.org/doc/Documentation/devicetree/bindings/arm/mediatek/mediatek%2Caudsys.txt
-> > *2) https://patchwork.kernel.org/project/linux-mediatek/patch/1559360354-22974-1-git-send-email-jiaxin.yu@mediatek.com/
-> >
-> > Regards,
-> > Kansho
-> >
-> > >
-> > > >                       compatible = "mediatek,mt8183-audiosys", "syscon";
-> > > >                       reg = <0 0x11220000 0 0x1000>;
-> > > >                       #clock-cells = <1>;
-> > > > +                     afe: mt8183-afe-pcm {
-> > > > +                             compatible = "mediatek,mt8183-audio";
-> > > > +                             interrupts = <GIC_SPI 161 IRQ_TYPE_LEVEL_LOW>;
-> > > > +                             resets = <&watchdog MT8183_TOPRGU_AUDIO_SW_RST>;
-> > > > +                             reset-names = "audiosys";
-> > > > +                             power-domains =
-> > > > +                                     <&spm MT8183_POWER_DOMAIN_AUDIO>;
-> > > > +                             clocks = <&audiosys CLK_AUDIO_AFE>,
-> > > > +                                      <&audiosys CLK_AUDIO_DAC>,
-> > > > +                                      <&audiosys CLK_AUDIO_DAC_PREDIS>,
-> > > > +                                      <&audiosys CLK_AUDIO_ADC>,
-> > > > +                                      <&audiosys CLK_AUDIO_PDN_ADDA6_ADC>,
-> > > > +                                      <&audiosys CLK_AUDIO_22M>,
-> > > > +                                      <&audiosys CLK_AUDIO_24M>,
-> > > > +                                      <&audiosys CLK_AUDIO_APLL_TUNER>,
-> > > > +                                      <&audiosys CLK_AUDIO_APLL2_TUNER>,
-> > > > +                                      <&audiosys CLK_AUDIO_I2S1>,
-> > > > +                                      <&audiosys CLK_AUDIO_I2S2>,
-> > > > +                                      <&audiosys CLK_AUDIO_I2S3>,
-> > > > +                                      <&audiosys CLK_AUDIO_I2S4>,
-> > > > +                                      <&audiosys CLK_AUDIO_TDM>,
-> > > > +                                      <&audiosys CLK_AUDIO_TML>,
-> > > > +                                      <&infracfg CLK_INFRA_AUDIO>,
-> > > > +                                      <&infracfg CLK_INFRA_AUDIO_26M_BCLK>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUDIO>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUD_INTBUS>,
-> > > > +                                      <&topckgen CLK_TOP_SYSPLL_D2_D4>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUD_1>,
-> > > > +                                      <&topckgen CLK_TOP_APLL1_CK>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUD_2>,
-> > > > +                                      <&topckgen CLK_TOP_APLL2_CK>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUD_ENG1>,
-> > > > +                                      <&topckgen CLK_TOP_APLL1_D8>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_AUD_ENG2>,
-> > > > +                                      <&topckgen CLK_TOP_APLL2_D8>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S0>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S1>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S2>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S3>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S4>,
-> > > > +                                      <&topckgen CLK_TOP_MUX_APLL_I2S5>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIV0>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIV1>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIV2>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIV3>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIV4>,
-> > > > +                                      <&topckgen CLK_TOP_APLL12_DIVB>,
-> > > > +                                      /*<&topckgen CLK_TOP_APLL12_DIV5>,*/
-> > > > +                                      <&clk26m>;
-> > > > +                             clock-names = "aud_afe_clk",
-> > > > +                                               "aud_dac_clk",
-> > > > +                                               "aud_dac_predis_clk",
-> > > > +                                               "aud_adc_clk",
-> > > > +                                               "aud_adc_adda6_clk",
-> > > > +                                               "aud_apll22m_clk",
-> > > > +                                               "aud_apll24m_clk",
-> > > > +                                               "aud_apll1_tuner_clk",
-> > > > +                                               "aud_apll2_tuner_clk",
-> > > > +                                               "aud_i2s1_bclk_sw",
-> > > > +                                               "aud_i2s2_bclk_sw",
-> > > > +                                               "aud_i2s3_bclk_sw",
-> > > > +                                               "aud_i2s4_bclk_sw",
-> > > > +                                               "aud_tdm_clk",
-> > > > +                                               "aud_tml_clk",
-> > > > +                                               "aud_infra_clk",
-> > > > +                                               "mtkaif_26m_clk",
-> > > > +                                               "top_mux_audio",
-> > > > +                                               "top_mux_aud_intbus",
-> > > > +                                               "top_syspll_d2_d4",
-> > > > +                                               "top_mux_aud_1",
-> > > > +                                               "top_apll1_ck",
-> > > > +                                               "top_mux_aud_2",
-> > > > +                                               "top_apll2_ck",
-> > > > +                                               "top_mux_aud_eng1",
-> > > > +                                               "top_apll1_d8",
-> > > > +                                               "top_mux_aud_eng2",
-> > > > +                                               "top_apll2_d8",
-> > > > +                                               "top_i2s0_m_sel",
-> > > > +                                               "top_i2s1_m_sel",
-> > > > +                                               "top_i2s2_m_sel",
-> > > > +                                               "top_i2s3_m_sel",
-> > > > +                                               "top_i2s4_m_sel",
-> > > > +                                               "top_i2s5_m_sel",
-> > > > +                                               "top_apll12_div0",
-> > > > +                                               "top_apll12_div1",
-> > > > +                                               "top_apll12_div2",
-> > > > +                                               "top_apll12_div3",
-> > > > +                                               "top_apll12_div4",
-> > > > +                                               "top_apll12_divb",
-> > > > +                                               /*"top_apll12_div5",*/
-> > > > +                                               "top_clk26m_clk";
-> > > > +                     };
-> > > >               };
-> > > >
-> > > >               mmc0: mmc@11230000 {
-> > > >
-> >
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+    drm/mediatek: Don't support hdmi connector creation
+
+
+which is the last of mtk-drm-next-5.13 [1] so i guess a problem with core-patches
+
+dmesg shows the following:
+
+[    7.071342] mediatek-drm mediatek-drm.1.auto: bound 14007000.ovl (ops mtk_dis
+p_ovl_component_ops)
+[    7.080330] mediatek-drm mediatek-drm.1.auto: bound 14008000.rdma (ops mtk_di
+sp_rdma_component_ops)
+[    7.089429] mediatek-drm mediatek-drm.1.auto: bound 1400b000.color (ops mtk_d
+isp_color_component_ops)
+[    7.098689] mediatek-drm mediatek-drm.1.auto: bound 14012000.rdma (ops mtk_di
+sp_rdma_component_ops)
+[    7.107814] mediatek-drm mediatek-drm.1.auto: bound 14014000.dpi (ops mtk_dpi
+_component_ops)
+[    7.116338] mediatek-drm mediatek-drm.1.auto: Not creating crtc 1 because com
+ponent 9 is disabled or missing
+....
+[   38.403957] Console: switching to colour frame buffer device 160x64
+[   48.516398] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+[   48.516422] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CRTC:41:cr
+tc-0] commit wait timed out
+[   58.756384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+[   58.756399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CONNECTOR:
+32:HDMI-A-1] commit wait timed out
+[   68.996384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+[   68.996399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [PLANE:33:p
+lane-0] commit wait timed out
+[   68.996423] [drm:mtk_drm_crtc_atomic_begin] *ERROR* new event while there is
+still a pending event
+[   69.106385] ------------[ cut here ]------------
+[   69.106392] WARNING: CPU: 2 PID: 7 at drivers/gpu/drm/drm_atomic_helper.c:151
+1 drm_atomic_helper_wait_for_vblanks.part.0+0x2a0/0x2a8
+[   69.106414] [CRTC:41:crtc-0] vblank wait timed out
+
+so i guess the breaking commit may be this:
+
+$ git logone -S"drm_crtc_commit_wait" -- drivers/gpu/drm/
+b99c2c95412c 2021-01-11 drm: Introduce a drm_crtc_commit_wait helper
+
+in drivers/gpu/drm/drm_atomic{,_helper}.c
+
+but i cannot confirm it because my git bisect does strange things (after defining 5.13 as bad and the 2e4773915223 as good, second step is before the good commit till the end, last steps are 5.11...). sorry, i'm still new to bisect.
+
+the fix is targeting to 5.12-rc2, is guess because CK Hu's tree is based on this...but the fix was not included in 5.12-rc2 (only after 5.12.0...got it by merging 5.12.14)
+
+maybe you can help me?
+
+regards Frank
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next-5.13
 
 _______________________________________________
 Linux-mediatek mailing list
