@@ -2,77 +2,88 @@ Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D39BDC07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 10:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD083C07E96
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0004613F3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 10:05:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0004613F3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 83E67619B6
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83E67619B6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b81Wyl7hWXb7EpBiImn0r+sqieIQuk5vwI4r3AgEfVs=; b=W0vdsxNoTiZhQ5
-	nuwYgStf52leKMPZH4Gv0qsffS8l469Nq62JLO6Dq4aKCjWopC1FpIp432ZWiyt3qH2TK5EZkQ/43
-	fNeE4/h5L/kwNC6jM0WMjdIJrvrn2Qr6GOpkuBego5kqUwy/QAHV/EtEZ2woLY6kj6WZMz9j3JgBW
-	SWjW98X3288rjlAMCrbMnrT8V5YZX0/O7pSXpgrOV4hAMZDzFpf1oKdhlXwXMgfhGe1XJhAo+dx3a
-	asxytEXXBxDkWhAv/dzUb5PrQ8vbZxOm70vT+UbDQa+JlDIhE5KiiealsyLWvQKLDhU+dGH94+0la
-	QtWcVipfJquBoqwPz0KQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=o1jHEFgU2BKS0HahMbqcqhIP1JlytJK2ZqzpvekFhyE=; b=MSlWsgevIg9E+8
+	x7d1N/5Tm2J57R/Yhfg5fFFLeTMfoV7qUsi/mi5UgWal/APd2yU6kjNeGHQ2nsDLh8c8Ey4HOkYPf
+	9swXwQoh/fZoP3vU0hM7D8Nd4GXrJndO8XwlPxDwmk7bRaF00y5ZUpDn12q9el3afU92Ktclnj4SQ
+	0WajIaLLAP2lHx/nQyTk3pL3k/4VuyzDv3IG7xdGHwRraWK2zu3wBUphYcXihUqfUSgt738IOQiSh
+	1yX2XCTJraOkC74sOlXf/H4GC0tCix9nX4QZcLf3w2Wepo/gc1SMM+PeJts7iSjhqCpfzx5dOJa9r
+	AF/a8kBuOMnMdi2okkkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0hwk-00AzVb-7h; Tue, 06 Jul 2021 10:04:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m0ioc-00B8wG-5i; Tue, 06 Jul 2021 11:00:34 +0000
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0hwg-00AzTO-Qh
- for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 10:04:52 +0000
-X-UUID: 5debba8b99554b0e8d199da8f2e6fa13-20210706
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=7zav9C8Ab8coO8QsXvtBun3/cARc5MdBmvVcP8UQ9rA=; 
- b=YmDMyI48yUMN+OmiyHos/IvE5PJSigbLcFsB1dgtQaM2CqiEw+Jx2kZkrX8QhISbHcOg3UJjG7YKIkTbslUO5sDNnnSphUtxBLHnWrvkk7UD1INm5/uqgK0VPqOOjSCiOoe5qzFfIYYcEKzt87CsbmZ4RpBgW23ImJ4JqezUj/Q=;
-X-UUID: 5debba8b99554b0e8d199da8f2e6fa13-20210706
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 661260531; Tue, 06 Jul 2021 03:04:48 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 6 Jul 2021 03:04:46 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 6 Jul 2021 18:04:38 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 6 Jul 2021 18:04:37 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>, Bo Jiao
- <Bo.Jiao@mediatek.com>
-Subject: [PATCH] mt76: mt7915: adapt new firmware to update BA winsize for Rx
- session
-Date: Tue, 6 Jul 2021 18:04:26 +0800
-Message-ID: <20210706100426.1763-1-bo.jiao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1m0ioY-00B8ue-D9
+ for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 11:00:32 +0000
+Received: by mail-io1-xd2b.google.com with SMTP id k16so24305474ios.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 04:00:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=85+RRGhjODs6lcH6FGoMJhqGI1UPU1GAYsHb+vDqTGI=;
+ b=kcovIMeHxj6d6wLhZ9CMLTwalFGptJT2AhB7Kp8+N3lEiQHjcOsi4c2/ggoM58tdcA
+ S39evUYCjLYP/6eY51tHdYzEl7GOPaCwr4GDqXkXsPX8vcgOnyZayFPvuuHaqGicqH61
+ hz/Nd9JWKB44kz3d3Ng4CIVm8WfbT8v4gGRO0MY0A/XoVjyEgchrXD/v3OQ221bUbNYi
+ NLK8xNdebbXAGR9KxoKq23Bz2yrx34YbloODkjeLElxtCbe6P/joEzomSRM0tCH4xJYt
+ cIXImUDQsVOe6upPw/A9lDbU7dRsRQjbq6yJYUCpzbGrNfMzTILlcc6ydf2sg7pNfe8X
+ wlkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=85+RRGhjODs6lcH6FGoMJhqGI1UPU1GAYsHb+vDqTGI=;
+ b=IxpurE+IxbPDKyh0Ege9e6VrjyKDhD7umpw3r1qEEtHqRGdnRsr4SGsuNIKOegwpna
+ NhWv0cA5iiFkW1zIRORZaSJo95iLkk/V3faKhhxB7ObwHqPDL40eXiNMnw7DqwClTpUr
+ pHyT14bRc7KgEvVJnLAlxAzp6BbAWW6llW8fIebo8xltsew58AedW0FOjt+fArRg2Dal
+ 8Yapdy6Skqz6N+OKw2XT34J52l7U7xqkabYW+HEbAByiS0rH1iFLdVw8fB7EqQYUKjLI
+ hPg2PjZ/iqv62GW/4GPpboB7PmA6z1DVyv00L9hiw5mxYIjFDp6IJ8mQ9bFaTyFGudWq
+ yfMQ==
+X-Gm-Message-State: AOAM533dYDYbsXvhTwZ2tTgqNMCTR1Cn0nQMObh4P05nEvvHbaAalJ2h
+ sCm7J9C4lXs8yBZUIgWI3c8+J13AoQ7MSyv2iFM91g==
+X-Google-Smtp-Source: ABdhPJwYqdX4uXaVnVQi0XP4/rzQ+1UfhvfYjksjrP95PYtkRwbQIPBuuu2IAg0m0BTSZ7BHhytyyXcXKrSXS2nUkA0=
+X-Received: by 2002:a5d:87d0:: with SMTP id q16mr15428748ios.109.1625569227924; 
+ Tue, 06 Jul 2021 04:00:27 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 5E9EBCD832329CCA81BA9DBD9ECFA2340AFE343B008E73A170618CD70E11EC2B2000:8
-X-MTK: N
+References: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
+In-Reply-To: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Tue, 6 Jul 2021 19:00:17 +0800
+Message-ID: <CA+Px+wVQFK1MXbq6=x7gSfRu8uRp5hbiNgSWtJ-9ok3Lt+vz8A@mail.gmail.com>
+Subject: Re: [PATCH v2,0/9] Support jpeg encode for MT8195
+To: "kyrie.wu" <kyrie.wu@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Bin Liu <bin.liu@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Tomasz Figa <tfiga@chromium.org>, 
+ xia.jiang@mediatek.com, maoguang.meng@mediatek.com, 
+ srv_heupstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_030450_897192_A4A82720 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20210706_040030_497998_0CF494DC 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,45 +100,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+On Wed, Jun 30, 2021 at 3:28 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
+> add component framework to using multi-HW for MT8195 jpeg encode.
+Could you add some summary for each patch for getting an overview of the series?
 
-The newer firmware requires host driver to set BA winsize
-on both Tx/Rx sessions, so modify it for the long run.
+>   dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
+>   media: mtk-jpegenc: Add MT8195 JPEG venc driver
+>   media: mtk-jpegenc: remove redundant code of irq
+>   media: mtk-jpegenc: Refactor jpeg clock interface
+>   media: mtk-jpegenc: Generalize jpeg encode irq interfaces
+>   media: mtk-jpegenc: Generalize jpegenc HW timeout interfaces
+>   media: mtk-jpegenc: Use component framework to manage each hardware
+>     information
+>   media: mtk-jpegenc: Generalize jpegenc HW operations interfaces
+>   media: mtk-jpegenc: Refactor jpegenc device run interface
+The series has some consistency issues which would make readers feel
+uncomfortable.
 
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.h | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+For example:
+- Whether to capitalize the first characters in the commit messages/titles.
+- Whether to add a period at the end of English sentences.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 863aa18b3024..b34571538ff9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1317,7 +1317,7 @@ mt7915_mcu_wtbl_ba_tlv(struct sk_buff *skb,
- 		ba->rst_ba_sb = 1;
- 	}
- 
--	if (enable && tx)
-+	if (enable)
- 		ba->ba_winsize = cpu_to_le16(params->buf_size);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index edd3ba3a0c2d..c903ccb01740 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -716,6 +716,7 @@ struct wtbl_ba {
- 	__le16 sn;
- 	u8 ba_en;
- 	u8 ba_winsize_idx;
-+	/* originator & recipient */
- 	__le16 ba_winsize;
- 	/* recipient only */
- 	u8 peer_addr[ETH_ALEN];
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
