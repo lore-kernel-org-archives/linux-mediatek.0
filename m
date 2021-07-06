@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40677C07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E824CC07E96
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:43:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FCCB61E87
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:41:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FCCB61E87
+	by mail.kernel.org (Postfix) with ESMTPS id B557A61F00
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:43:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B557A61F00
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,50 +23,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gXL5X4uO5EUNMQUmSP9UIcgXJTyR94Hq4GazI/9qlgo=; b=oiDeh0WRsvXiRf
-	RlHZtF4A66zx6KkytA0c+RPzx9BTDB/AScMP5R+HzDf7LhLJJ+Hvz6A5BKkKDVVjGeQpzMJjDb7rr
-	H999XrRu0FHQQrIsuhyDQb1Vt0+qOvvAt708rO4fAqZ7iiEuLv2aNfDi4qdc4N3zOcER/EfieLtS/
-	4ppYltBp7pJ2Jo6YHyXch3y0Z4w6ieFshfUM1gQnaWUAl1BxfgCEkHJ359Tdk/uYvGWGky/U9Ft1v
-	V8ywaE7fHJGyWZedjYIsgqvn/F3ocDtWd/AzabUfP+n+qu/+9JDTtZ6x3UosjjlfT6Mn9sHzpwTvM
-	9eGLXPeTGdHmmYo+JnBw==;
+	List-Owner; bh=SgaH8m37RNVx950Ww5/Em5QMiKXxbEDBkbq4XjWRAFk=; b=JlHcLpzzVKXkHr
+	rWYkMCDnTOf7+ZbbzD8ZTbvbtW7XbFYebt87EtQW647xstoGX1VLs9yQcf5OItkfpxoDW9SKlmUK/
+	qpG2tVmB+t41/9Rb1xc7b8wbHAYDpDP5GVEeN4vDlqQGzNewgx+fQTrtA++Ll6sjwlz83WM5lfoB6
+	Q3SGt/ljMGUQ0DecmNRTR1DaW/C0I6uP+6DHUcRtlUb99MSTnUm5canaxIqECbK+B1TC/7BvlfSuR
+	yxuECeQRiAm9eOKAcT6q/cFNCFBkqceBwTRwpzPFbY97NmeUYcP/ollo8gQGubgyIIT8EzJ/jfGBx
+	m1vv5gGFk4GHQyrQvz4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0jSL-00BTwM-MB; Tue, 06 Jul 2021 11:41:37 +0000
+	id 1m0jTb-00BUe0-49; Tue, 06 Jul 2021 11:42:55 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0j90-00BHOg-S8; Tue, 06 Jul 2021 11:21:40 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A680961DD9;
- Tue,  6 Jul 2021 11:21:37 +0000 (UTC)
+ id 1m0j9n-00BHnn-GJ; Tue, 06 Jul 2021 11:22:28 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 3F20561CCB;
+ Tue,  6 Jul 2021 11:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570498;
- bh=q/xI32GUZnF5MRSeaC0V+7RxRVKueJxbI8lVxADhDSM=;
+ s=k20201202; t=1625570547;
+ bh=UTqXKaW6JbYoJqpVG9EU8rB4wX9Lk/dAbhbGsvYNTr0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=c6R6Wine1+E+mnUFoLkb84qOdnEuMX9Ih+VfOa+HiMwVwWibfxOCfw3cnao4GmquZ
- 0hafPc1pKOuxdhzkAVkQYzGMMlz9iLf1BaneItxOzzoSAy7oIykZLNm/o6TaomX/SX
- Wbx0dFq3yr7UlBPXkzvniJDhKmzXdqmz+Prf8N1LYM2hZBkxK408DgHuSlz80q+hgq
- t1daAyLoonuAEkJWHYnE4+v75lXUXxBonTpp141lHxrkF12eCEotY2QG7bk81fwKJl
- EGfdt8Fq9vtaiO+WQj1OSbQTupa+Psq5EVsd9j1Q9Zg1F+7Mm9cjg4oIthfOfWc4Tk
- VhGLcDkHYTidw==
+ b=OJgCyJvE+BfGl3gwmEHluFs7t4IRt5djLdQMeiLDWLWr5RD3LpNeatBkJze9D2qxH
+ irhSHAl8q7GHeZKOUUXkK3q4RchjcA4UXCvP3JvhKY/h+G1t+ecoCF0EVykSaUDhv8
+ 0lgJHh+JS5NKK+eB8K4W9+icCUIxgbZ4sB5CnPWjy3OcW5xYke5RNcrKmXA06lHeMV
+ hJGUKpUbju0nG4Gtu5s4f5pJnM/MHWTFdErOirZp1/9YFOwu9+psWt1wtAeSuQjHmE
+ EZOArg9M4MHs2At2r+36xMkV/BT6QuK6xYYfZVyvnsV13MhLLeSUs2wi+7v6zXzr22
+ Gzk4G5yddQ3kg==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: "mark-yw.chen" <mark-yw.chen@mediatek.com>,
- Marcel Holtmann <marcel@holtmann.org>, Sasha Levin <sashal@kernel.org>,
- linux-bluetooth@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 142/160] Bluetooth: btusb: Fixed too many
- in-token issue for Mediatek Chip.
-Date: Tue,  6 Jul 2021 07:18:08 -0400
-Message-Id: <20210706111827.2060499-142-sashal@kernel.org>
+Cc: Wang Li <wangli74@huawei.com>, Hulk Robot <hulkci@huawei.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sasha Levin <sashal@kernel.org>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 017/137] drm/mediatek: Fix PM reference leak in
+ mtk_crtc_ddp_hw_init()
+Date: Tue,  6 Jul 2021 07:20:03 -0400
+Message-Id: <20210706112203.2062605-17-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210706111827.2060499-1-sashal@kernel.org>
-References: <20210706111827.2060499-1-sashal@kernel.org>
+In-Reply-To: <20210706112203.2062605-1-sashal@kernel.org>
+References: <20210706112203.2062605-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_042138_988758_88DE35AB 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20210706_042227_595135_4EF60651 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +83,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+From: Wang Li <wangli74@huawei.com>
 
-[ Upstream commit 8454ed9ff9647e31e061fb5eb2e39ce79bc5e960 ]
+[ Upstream commit 69777e6ca396f0a7e1baff40fcad4a9d3d445b7a ]
 
-This patch reduce in-token during download patch procedure.
-Don't submit urb for polling event before sending hci command.
+pm_runtime_get_sync will increment pm usage counter even it failed.
+Forgetting to putting operation will result in reference leak here.
+Fix it by replacing it with pm_runtime_resume_and_get to keep usage
+counter balanced.
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
-Signed-off-by: Marcel Holtmann <marcel@holtmann.org>
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Wang Li <wangli74@huawei.com>
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/bluetooth/btusb.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index ddc7b86725cd..b3ba5a9dc5fc 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3377,11 +3377,6 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
- 	struct btmtk_wmt_hdr *hdr;
- 	int err;
- 
--	/* Submit control IN URB on demand to process the WMT event */
--	err = btusb_mtk_submit_wmt_recv_urb(hdev);
--	if (err < 0)
--		return err;
--
- 	/* Send the WMT command and wait until the WMT event returns */
- 	hlen = sizeof(*hdr) + wmt_params->dlen;
- 	if (hlen > 255)
-@@ -3407,6 +3402,11 @@ static int btusb_mtk_hci_wmt_sync(struct hci_dev *hdev,
- 		goto err_free_wc;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index ac038572164d..dfd5ed15a7f4 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -274,7 +274,7 @@ static int mtk_crtc_ddp_hw_init(struct mtk_drm_crtc *mtk_crtc)
+ 		drm_connector_list_iter_end(&conn_iter);
  	}
  
-+	/* Submit control IN URB on demand to process the WMT event */
-+	err = btusb_mtk_submit_wmt_recv_urb(hdev);
-+	if (err < 0)
-+		return err;
-+
- 	/* The vendor specific WMT commands are all answered by a vendor
- 	 * specific event and will have the Command Status or Command
- 	 * Complete as with usual HCI command flow control.
+-	ret = pm_runtime_get_sync(crtc->dev->dev);
++	ret = pm_runtime_resume_and_get(crtc->dev->dev);
+ 	if (ret < 0) {
+ 		DRM_ERROR("Failed to enable power domain: %d\n", ret);
+ 		return ret;
 -- 
 2.30.2
 
