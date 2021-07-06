@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 397D1C11F7D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB421C11F9A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:40:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 08B7E61D8B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:38:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08B7E61D8B
+	by mail.kernel.org (Postfix) with ESMTPS id B9B40619C5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:40:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B9B40619C5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,42 +23,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d77hCL/v+hyjXl4Z8HOBzKjeBDyD6gpXxH5J9LLB9lA=; b=cztiNcofTfGPdE
-	J6jCfs8Mtl/zuFmtAdJeY/L8Q9jXVu5p2Aw0gF/8n6zDes/LjAsWn0LOhE2Nx93QBONtz6ltsWhPa
-	Tdm2hrspqTajQsscxlcCa++soSbBK7pxsvjVUrRa0JVQz273cFh3biPghttULxU8X1n2GudTeSv3k
-	UZXtsVycYPXUvY+nvWHM5vGbuFf6TUDummZI/LAAAXHtgBJ8WbkU5jShOlJb34yK8Hyd8WrDqZYkz
-	2Oehhs0qeCDxzMQZv98w3I8RgpR4HJn73r0rcL3Q2OeAzJtO65QVf39s1mksRiPCl1EP0AJAjI8g0
-	QVZdkdiO9WMUJyirImLw==;
+	List-Owner; bh=Olwly9fweMNaf5tbtkcVcJsTUAx/QVx3ChYzqg+hF9Y=; b=ZoxRDqYgd7wG5F
+	Wq0uxRqgctofGdYg1T0AYmStGBlvsMPRXTB6iAptt0bzLHQAgRMskBkeV6Jsiz/GjDxGdneDlMlvo
+	t0I7gNAu3JNUEESPRl1OPqvV2p2ygTARytJIB8I0/F0dlhTAFTPnGk26eUKCA8G/KyL4uEdy5bXgI
+	nFoSYB+h9ViQJETMaUPBQSf9ibALK7MifAUjBhTqCEbJN7G4YapHA3TDJia6+MFQpQcDHbLanqWv6
+	w4Z1lIEzQGxbrabAmsCPn39DQbHYugtT1ylLEVPeA+xAUkZ/6arKqIsutNvf6Fg/H8u2o1oaM2zHV
+	VeMacH6twOe4FUGT4UZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0jPX-00BRsB-WB; Tue, 06 Jul 2021 11:38:44 +0000
+	id 1m0jQi-00BSn8-C2; Tue, 06 Jul 2021 11:39:56 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0j8G-00BGxY-H3; Tue, 06 Jul 2021 11:20:53 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3019C61D9A;
- Tue,  6 Jul 2021 11:20:51 +0000 (UTC)
+ id 1m0j8I-00BGyV-2z; Tue, 06 Jul 2021 11:20:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BBAA461D94;
+ Tue,  6 Jul 2021 11:20:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625570452;
- bh=0Em+bgYmrDU1JOZhftUS5xrrOixdfruBKkFRuFCROBE=;
+ s=k20201202; t=1625570453;
+ bh=PYndkoxT8VJSQCBBjAEcCYBPObdOP0m3A43bg4uEqJg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ezmbkfPPBgn08cZzpOT0MzDt+NOvKBVcgESV38rpBroP97DOkBn7PAp5A02Xco46X
- 0Zzo3D8qE1a4bQ42deg9m3BPmAvQTXiQwtyFh6/QVsn0iX/WtlN0MR94Z9dBQ95ka0
- +DbKICXP1viYQKd+eyYW9MbnnWA7Fuk3bO9fC6KYfO9fn9Enyo0kP7VgvHewhDPZX7
- KYvsR0fjXOo6m4U/Pz/d9Dpu80DggStMO+11x5bADN6A1H77DnudWEMW+H18NWwmoX
- jzgKBU+bo75DoSQv7wPJA5XsWG4s/D36cfRerGsieBOihTsseY53DZLijy8m6Gha4v
- BbAwz06HDyXpg==
+ b=C9iX0r272KaqvZ7n7SGNw3Qejkk3pdMVIOimBMuYCIg4KqkVMhAfEFzGxur7YViaI
+ /wC08r0uE+AinizUVMLxMgGwbcIEum8sEdukNrt2sWyRMBh3wG+k+9UtFUd6ntMGRL
+ z8xsLD/IRa+Eq32QFZZSQvGloLoLCbaS9OMAI2G8Eb1xT3wu+aFMFbKv/xCKZUIufq
+ 14EHWLotIMkPXHZsRSstfwGFx58MQO4t9QNsKi51cY3yYVWgSLI2myXKneLAoPgcay
+ 8tkgliSAkSKt3RLASNN2ZeDtrzXheRCsF1OrwdFnN8E3uWqaiHW5QsSxqhy+IVrOIE
+ 0FWwn0YkqR+HA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Evelyn Tsai <evelyn.tsai@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
+Cc: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
  Sasha Levin <sashal@kernel.org>, linux-wireless@vger.kernel.org,
  netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 109/160] mt76: mt7915: fix tssi indication field
- of DBDC NICs
-Date: Tue,  6 Jul 2021 07:17:35 -0400
-Message-Id: <20210706111827.2060499-109-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.12 110/160] mt76: mt7915: fix
+ IEEE80211_HE_PHY_CAP7_MAX_NC for station mode
+Date: Tue,  6 Jul 2021 07:17:36 -0400
+Message-Id: <20210706111827.2060499-110-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210706111827.2060499-1-sashal@kernel.org>
 References: <20210706111827.2060499-1-sashal@kernel.org>
@@ -66,8 +65,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_042052_625835_49BE6C3C 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20210706_042054_201112_E5943686 
+X-CRM114-Status: UNSURE (   9.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,44 +84,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Evelyn Tsai <evelyn.tsai@mediatek.com>
+From: Ryder Lee <ryder.lee@mediatek.com>
 
-[ Upstream commit 64cf5ad3c2fa841e4b416343a7ea69c63d60fa4e ]
+[ Upstream commit 2707ff4dd7b1479dbd44ebb3c74788084cc95245 ]
 
-Correct the bitfield which indicates TSSI on/off for MT7915D NIC.
+The value of station mode is always 0.
 
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Fixed: 00b2e16e0063 ("mt76: mt7915: add TxBF capabilities")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-index 3ee8c27bb61b..40a51d99a781 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
-@@ -116,12 +116,15 @@ static inline bool
- mt7915_tssi_enabled(struct mt7915_dev *dev, enum nl80211_band band)
- {
- 	u8 *eep = dev->mt76.eeprom.data;
-+	u8 val = eep[MT_EE_WIFI_CONF + 7];
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index c7d4268d860a..5ab34606c021 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -452,6 +452,9 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 	if (nss < 2)
+ 		return;
  
--	/* TODO: DBDC */
--	if (band == NL80211_BAND_5GHZ)
--		return eep[MT_EE_WIFI_CONF + 7] & MT_EE_WIFI_CONF7_TSSI0_5G;
-+	if (band == NL80211_BAND_2GHZ)
-+		return val & MT_EE_WIFI_CONF7_TSSI0_2G;
++	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
++	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
 +
-+	if (dev->dbdc_support)
-+		return val & MT_EE_WIFI_CONF7_TSSI1_5G;
- 	else
--		return eep[MT_EE_WIFI_CONF + 7] & MT_EE_WIFI_CONF7_TSSI0_2G;
-+		return val & MT_EE_WIFI_CONF7_TSSI0_5G;
+ 	if (vif != NL80211_IFTYPE_AP)
+ 		return;
+ 
+@@ -465,9 +468,6 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 	c = IEEE80211_HE_PHY_CAP6_TRIG_SU_BEAMFORMER_FB |
+ 	    IEEE80211_HE_PHY_CAP6_TRIG_MU_BEAMFORMER_FB;
+ 	elem->phy_cap_info[6] |= c;
+-
+-	/* the maximum cap is 4 x 3, (Nr, Nc) = (3, 2) */
+-	elem->phy_cap_info[7] |= min_t(int, nss - 1, 2) << 3;
  }
  
- extern const struct sku_group mt7915_sku_groups[];
+ static void
 -- 
 2.30.2
 
