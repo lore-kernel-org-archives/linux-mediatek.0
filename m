@@ -2,19 +2,19 @@ Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD083C07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 87FC9C11F66
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83E67619B6
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83E67619B6
+	by mail.kernel.org (Postfix) with ESMTPS id 54FA861A0F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 11:00:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54FA861A0F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o1jHEFgU2BKS0HahMbqcqhIP1JlytJK2ZqzpvekFhyE=; b=MSlWsgevIg9E+8
-	x7d1N/5Tm2J57R/Yhfg5fFFLeTMfoV7qUsi/mi5UgWal/APd2yU6kjNeGHQ2nsDLh8c8Ey4HOkYPf
-	9swXwQoh/fZoP3vU0hM7D8Nd4GXrJndO8XwlPxDwmk7bRaF00y5ZUpDn12q9el3afU92Ktclnj4SQ
-	0WajIaLLAP2lHx/nQyTk3pL3k/4VuyzDv3IG7xdGHwRraWK2zu3wBUphYcXihUqfUSgt738IOQiSh
-	1yX2XCTJraOkC74sOlXf/H4GC0tCix9nX4QZcLf3w2Wepo/gc1SMM+PeJts7iSjhqCpfzx5dOJa9r
-	AF/a8kBuOMnMdi2okkkA==;
+	List-Owner; bh=EYNQZQ2SKLcZtMBb+mFTRa4HFcF3qagc4sUbljz7YJQ=; b=T5mhuFPge9hPn+
+	ob2MFvSdy25gyq1pdsuCL79XADTHHm5MNTe0NHw+60qsPtcgEnGL1ADkfipAkyZvTHros+oRNdoty
+	vHNqbiqpbSoGpG1c0WgTdUvJc/wY2qk3c/njzb6uHZzcREqZX46P680DriOEZL2wsBhUWFJVkI27a
+	HeCdXLp24oIW+Zw8ski+Ikk4/JWmGYsTIdjE0zGwH8iEzCBf+/XM5xminjL5jWsDkJ9evYBWGSADz
+	ATM92ERR3/JVG+A1OrnfeNdcCYjZ8TMqN8JYAW1FTHZj2qkVUvAN8d+ni4psG7QLa41FdDFniA2Qd
+	qOtdfEBYcX4qOdrOmjWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0ioc-00B8wG-5i; Tue, 06 Jul 2021 11:00:34 +0000
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+	id 1m0ion-00B90K-UL; Tue, 06 Jul 2021 11:00:45 +0000
+Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0ioY-00B8ue-D9
- for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 11:00:32 +0000
-Received: by mail-io1-xd2b.google.com with SMTP id k16so24305474ios.10
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 04:00:28 -0700 (PDT)
+ id 1m0iof-00B8wl-H8
+ for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 11:00:38 +0000
+Received: by mail-io1-xd31.google.com with SMTP id h6so7369533iok.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 04:00:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=85+RRGhjODs6lcH6FGoMJhqGI1UPU1GAYsHb+vDqTGI=;
- b=kcovIMeHxj6d6wLhZ9CMLTwalFGptJT2AhB7Kp8+N3lEiQHjcOsi4c2/ggoM58tdcA
- S39evUYCjLYP/6eY51tHdYzEl7GOPaCwr4GDqXkXsPX8vcgOnyZayFPvuuHaqGicqH61
- hz/Nd9JWKB44kz3d3Ng4CIVm8WfbT8v4gGRO0MY0A/XoVjyEgchrXD/v3OQ221bUbNYi
- NLK8xNdebbXAGR9KxoKq23Bz2yrx34YbloODkjeLElxtCbe6P/joEzomSRM0tCH4xJYt
- cIXImUDQsVOe6upPw/A9lDbU7dRsRQjbq6yJYUCpzbGrNfMzTILlcc6ydf2sg7pNfe8X
- wlkA==
+ :cc; bh=D9cJE9ZmLAhI4Z30OwANBpOGqptuN+YARhU6HockOH0=;
+ b=OHgy1t6yQ7FLN3DygkT/BL+g1Fd0Y0bRZKpFs6VjQGau1kDmMGzL7F0PoN0fZTXJd2
+ Qi9N0mqttZRAXdoPHG83q7gdrpYsOkUxdIvAJSSHYSGWL4DXfbc8zWv9CdDOsFCBwtT+
+ D23O7XCfv/5/VemHuPMLO7xRZ/ifUDfmjlDdKhcNWYhZ3Ybp1Q3BCBHt85KSa1KysN1P
+ VCJ6i61tTgQHnvs3ll/ziMz3PeOedLUZnwLerwbilVNQKAVBx13i15r3WJ6V0BBIDdUm
+ E0GS4Jm+xxRGuw1x7Jq93k2/zwBGAfrYJz1HGkhFn/hcxSJVliDJet/g+YqaXSia3VbK
+ P5EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=85+RRGhjODs6lcH6FGoMJhqGI1UPU1GAYsHb+vDqTGI=;
- b=IxpurE+IxbPDKyh0Ege9e6VrjyKDhD7umpw3r1qEEtHqRGdnRsr4SGsuNIKOegwpna
- NhWv0cA5iiFkW1zIRORZaSJo95iLkk/V3faKhhxB7ObwHqPDL40eXiNMnw7DqwClTpUr
- pHyT14bRc7KgEvVJnLAlxAzp6BbAWW6llW8fIebo8xltsew58AedW0FOjt+fArRg2Dal
- 8Yapdy6Skqz6N+OKw2XT34J52l7U7xqkabYW+HEbAByiS0rH1iFLdVw8fB7EqQYUKjLI
- hPg2PjZ/iqv62GW/4GPpboB7PmA6z1DVyv00L9hiw5mxYIjFDp6IJ8mQ9bFaTyFGudWq
- yfMQ==
-X-Gm-Message-State: AOAM533dYDYbsXvhTwZ2tTgqNMCTR1Cn0nQMObh4P05nEvvHbaAalJ2h
- sCm7J9C4lXs8yBZUIgWI3c8+J13AoQ7MSyv2iFM91g==
-X-Google-Smtp-Source: ABdhPJwYqdX4uXaVnVQi0XP4/rzQ+1UfhvfYjksjrP95PYtkRwbQIPBuuu2IAg0m0BTSZ7BHhytyyXcXKrSXS2nUkA0=
-X-Received: by 2002:a5d:87d0:: with SMTP id q16mr15428748ios.109.1625569227924; 
- Tue, 06 Jul 2021 04:00:27 -0700 (PDT)
+ bh=D9cJE9ZmLAhI4Z30OwANBpOGqptuN+YARhU6HockOH0=;
+ b=SaORfLUPoPTAF3+3TudHtbYseJQmVdEDqEA39tuaNZE4pSobOcnuCg1eJmEi48g68x
+ ACPlJ/RYFMg2/Fysrjhby2twIHPajWkWSJMVf6zQeqbQAROUyjIhe+9+QdKqir8ryZHW
+ UuzWORmUVP4krUh/N6K3EITIiV2Z0I48daMbWNTiSRxZOhCrQH4yHm0ef+uIBDY5E2Z9
+ /4PWu5TvpQqM0G287YD/n9WXs/sfBM2Q673+mPBlLajThUG4WRAymtUAsW+sDntTt2dB
+ hv7v6erTttA9AZgbBwFxIX4cxPik8pE/zj+Bpii3lHztMng9jwraC3dFiWp5oedRn0Oc
+ jwCQ==
+X-Gm-Message-State: AOAM533Svy9ByG/CgsNzJXmKhxmvQK2/UvDjweJhLvuP75nrRZvxAcjO
+ ADkTdxwR6FhRLP+IDI7GhhS1+NdajuEQwml0At9k+w==
+X-Google-Smtp-Source: ABdhPJwQeTYajARaI85ZZA6cdpsrwFxnkE+PReeU0ZLQgcXDRmZbVRnHS07ukEQ4C29jdKjOddBIiVCJy35vC5fgxEA=
+X-Received: by 2002:a5d:840c:: with SMTP id i12mr15050087ion.185.1625569236207; 
+ Tue, 06 Jul 2021 04:00:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
-In-Reply-To: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
+ <1625038079-25815-3-git-send-email-kyrie.wu@mediatek.com>
+In-Reply-To: <1625038079-25815-3-git-send-email-kyrie.wu@mediatek.com>
 From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Tue, 6 Jul 2021 19:00:17 +0800
-Message-ID: <CA+Px+wVQFK1MXbq6=x7gSfRu8uRp5hbiNgSWtJ-9ok3Lt+vz8A@mail.gmail.com>
-Subject: Re: [PATCH v2,0/9] Support jpeg encode for MT8195
+Date: Tue, 6 Jul 2021 19:00:25 +0800
+Message-ID: <CA+Px+wVE=QKh2-+RZevLUweFEUuoovW-1=Da2AWzB1fnJP=EKw@mail.gmail.com>
+Subject: Re: [PATCH v2,2/9] media: mtk-jpegenc: Add MT8195 JPEG venc driver
 To: "kyrie.wu" <kyrie.wu@mediatek.com>
 Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
@@ -82,8 +83,8 @@ Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  xia.jiang@mediatek.com, maoguang.meng@mediatek.com, 
  srv_heupstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_040030_497998_0CF494DC 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20210706_040037_611292_AB10F3ED 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,26 +101,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 3:28 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
-> add component framework to using multi-HW for MT8195 jpeg encode.
-Could you add some summary for each patch for getting an overview of the series?
+On Wed, Jun 30, 2021 at 3:32 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
+> Add MT8195 JPEG venc driver's compatible and device private data.
+> compatible = "mediatek,mt8195-jpgenc": this node would only register
+> jpgenc device node;
+> compatible = "mediatek,mt8195-jpgenc0": HW0 node, this node would not
+> register jpgenc device node, but register irq, init clk and power,
+> remmap register base and do other resource options;
+> compatible = "mediatek,mt8195-jpgenc1": HW1 node, just like HW0 node;
+The commit message is not easy to read.  Please rephrase the sentences.
 
->   dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
->   media: mtk-jpegenc: Add MT8195 JPEG venc driver
->   media: mtk-jpegenc: remove redundant code of irq
->   media: mtk-jpegenc: Refactor jpeg clock interface
->   media: mtk-jpegenc: Generalize jpeg encode irq interfaces
->   media: mtk-jpegenc: Generalize jpegenc HW timeout interfaces
->   media: mtk-jpegenc: Use component framework to manage each hardware
->     information
->   media: mtk-jpegenc: Generalize jpegenc HW operations interfaces
->   media: mtk-jpegenc: Refactor jpegenc device run interface
-The series has some consistency issues which would make readers feel
-uncomfortable.
+What does "venc" stand for?  I believe it is a copy-n-paste typo.
 
-For example:
-- Whether to capitalize the first characters in the commit messages/titles.
-- Whether to add a period at the end of English sentences.
+The commit title "support MT8195 JPEG encoder" looks better to me.
+
+> -static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
+> +static const struct mtk_jpeg_variant mtk_jpegenc_drvdata = {
+Why remove mtk_jpeg_drvdata?
+
+> -       .irq_handler = mtk_jpeg_enc_irq,
+Why remove the IRQ handler?
+
+> @@ -1548,10 +1551,6 @@ static const struct of_device_id mtk_jpeg_match[] = {
+>                 .compatible = "mediatek,mt2701-jpgdec",
+>                 .data = &mt8173_jpeg_drvdata,
+>         },
+> -       {
+> -               .compatible = "mediatek,mtk-jpgenc",
+> -               .data = &mtk_jpeg_drvdata,
+> -       },
+Why remove "mediatek,mtk-jpgenc"?
+
+> +#if defined(CONFIG_OF)
+> +static const struct of_device_id mtk_jpegenc_hw_ids[] = {
+> +       {
+> +               .compatible = "mediatek,mt8195-jpgenc0",
+> +       },
+> +       {       .compatible = "mediatek,mt8195-jpgenc1",
+> +       },
+> +       {},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_jpegenc_hw_ids);
+> +#endif
+Would expect somewhere to reference mtk_jpegenc_hw_ids but failed to find it.
 
 _______________________________________________
 Linux-mediatek mailing list
