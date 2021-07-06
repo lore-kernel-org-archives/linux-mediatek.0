@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B989DC07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 08:53:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A715C07E96
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:01:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74B97613C9
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 08:53:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74B97613C9
+	by mail.kernel.org (Postfix) with ESMTPS id BE2ED61995
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 09:01:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE2ED61995
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5Mu+Tsu6mTQyFRf5qNoj4chUDgQjc4FyS34NmuWfZxQ=; b=3dyFVjrsp50VwY
-	/5yozOHT+iU1tPkNDv6BEmrN8KqU/wfCzNjPBy3HqowNdKupNtAAX7TTMP5JXFk93ogJcx7omA3k8
-	fgKJ89ubRXnMtY1z3CAHd10abXC52QJ1QZvgzCeqRINQ1aupBHLWfFAnHymjyWdZWAWokaUlceujC
-	2aPaHsi3r3SsIiALmsHUcflHWdck+vW70siVAMxc1ZIHB+ZYSTPHAmUuDLkml0pEy0Ifly6AIrE4Q
-	CRYIlMj8/J9uJCalYlI0GdE5eF7YkiFTqIbo2WJsZFX0nSV2JFUvZ8gbBal2hNv4ScT+BRu3W9RBb
-	HMua7di1zz30FMiI32Ig==;
+	List-Owner; bh=3ZSkkvjG651v7yJ7cZN7h62ucfATjvOaoiQMN2a4S+I=; b=02jVIn62bBrRnX
+	Cr7vZQrxlrAPLleckCh4zkQSI5PsIgX222UqYAhxSlvNLzY43a01hFRDPAVyQiEb9RpQOiPzVvY5G
+	VIUjkyDQpcPKjoVjEuBUo+sYNXi90DYuRpIqL2U6c74a2NpkhnsC+HC4+Y6oYSuIqay5ZeeXRpKkj
+	V5hXfDh8BuelC+ScLZ+gKxf1+WNa9//SmjYmHSZ7QqPFzhwSrCVa0IVYb9rZ8Rxs1LRAeL6MTUo/7
+	3TaZG/N3/u4B8DHXdeRZ29lIgYs8W/Y7aUwl9eGtyKokg8E5E5IaBorvdgYMHcBqC0uliBTTaMXIz
+	ye0VdQ24jDZXS2SjRFYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0gpT-00AqMa-CA; Tue, 06 Jul 2021 08:53:19 +0000
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
+	id 1m0gwz-00Ar67-ID; Tue, 06 Jul 2021 09:01:05 +0000
+Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0gpQ-00AqLi-QS
- for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 08:53:18 +0000
-Received: by mail-lf1-x12c.google.com with SMTP id t17so37106476lfq.0
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 01:53:16 -0700 (PDT)
+ id 1m0gwl-00Ar3N-CQ
+ for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 09:00:52 +0000
+Received: by mail-lj1-x22a.google.com with SMTP id t30so8155252ljo.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 02:00:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=t/E4OXQ1yUpcqpJdsE6nCWBhoSFlkIPmfOxX8aPkV7w=;
- b=DTYiCFTiGgpyS+RK6tZKJbgUa+7mHga1RvVfVrk1e4Ldm1sbFpIZhGm7tIjGiHqEBn
- H+WdoNqqVTu5IzizCAHi0g5LLOV97JSXDujw598jH/XTyT3VvYHCoQTQm9f18n/Vv80G
- C7r4OLiRmY0K+sUaaxK0lUtNlsNlneXYi41RU=
+ :cc; bh=V+h3JtgA85w3ih3Ol+1pWqD1Au/+HrPPpAy2ittwSGA=;
+ b=K4USMV+7sbHwthRH15FlFzIc1yBbaeh0JttDHJ8wMAa2l2CP2YbGZUSGJTqmfVwqVi
+ Af53x9OQRuaF5L3jr+a+iScjWpHOaz8bqVpmJOf+NVTy83ktMCPtFN4cMZbYJsI2gIOH
+ NstOKL0ncWZp4rDgEXVlamWHnR3ZuckRgvbEk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=t/E4OXQ1yUpcqpJdsE6nCWBhoSFlkIPmfOxX8aPkV7w=;
- b=W8b+bqq6CkSzO1UFQ/1tc2Y4kpWxX8EnTeA3HzGua/qq8xTZlQJQpfbJPawGdqgEr4
- BF/gO+wQzTFQY1QmOmxYuFg+e3aHbRyRPrNtH8FIKaJP+ZMfuegXcDjj8fLllO9GFkXH
- P67n7eQWoGQNv/SmT6njcCi+WF8xIfcIbuILSQYpoev/jZz5vto3ZUmne5Nxij5zW4Yc
- zgrMsoDtK//C4nyuHpUt139x6gtQDMlyr71fIDqmnXbMzApQ62hBzXdTpGRjnCh69xQH
- Qzcd0/67ePF/zZ1AaKsTgJVxN1qPhEDWXkYslBUQ0SIdiW4TTSBUrAvHV2qPIwk4wJMR
- QuWQ==
-X-Gm-Message-State: AOAM532jBc/aQ0+sn1Zr37A4gZVTrcu3qNdYl6D0iHP4Zss8UJ4LhcOy
- Eph5FsPSQfYfNNDcXK1VZvhcz4GWZhsv9o4HM+Y3sw==
-X-Google-Smtp-Source: ABdhPJyN89wCwWKtKG3ZEK4xjbWdeK9ZZ/vgy3TxGsAGRi1r3BmzHgL8UfUr/Cu2Yy+9OcrWcEyzkdPQuOSJqRgs2VM=
-X-Received: by 2002:a05:6512:3f13:: with SMTP id
- y19mr13831825lfa.444.1625561595053; 
- Tue, 06 Jul 2021 01:53:15 -0700 (PDT)
+ bh=V+h3JtgA85w3ih3Ol+1pWqD1Au/+HrPPpAy2ittwSGA=;
+ b=bDIHV9tD0lf+n1GM26BgUGALxP/JiVDfLWGJc2KHrMj/pmcQUF0QOFrIh6UnRtlGER
+ WAXPt3/gmUEy4aprppZOaLhMMKzxbBLU7U5qr2foQ+MilfV77gpb+sgeT/WO1ATEfsIH
+ 5gm9h+AYV855fqyxWjq2HhIkGG9SmCLn+IlQrsU9BRPJ3Xpy9Eb01s0tUrF+YWl611NM
+ hLVnWzStYRBzuUJ2mm6nZtmiM+RhqhRJ2M0N5JJj6B4SsOhHDiVKHd3a10ZpvFigFJId
+ qHBTGaCpCd416G9AejGQ1JWYCVMBmoEisLlQU2UcvVpIVeVUr0Uj8Wzjt71C/3BQyK2A
+ ziAg==
+X-Gm-Message-State: AOAM531VySuiP+djOexr3vCxfInbeKHnsgh/qsKoIscQoWOMr7a+pc3C
+ QQYQRUJ52QUzrQluh1zQRTd4GTHb6WxJQ7v1HX5AVw==
+X-Google-Smtp-Source: ABdhPJysf+qvbozSY/BYEowLfeIAMZMyQE3d9EPm2uqEBDA6bWwtUjwO9iQrFfp7Cai6FwC0Uf4CrqOkCjtEcpE9hgo=
+X-Received: by 2002:a2e:9b8f:: with SMTP id z15mr10379699lji.437.1625562047660; 
+ Tue, 06 Jul 2021 02:00:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
- <20210616224743.5109-8-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210616224743.5109-8-chun-jie.chen@mediatek.com>
+ <20210616224743.5109-9-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210616224743.5109-9-chun-jie.chen@mediatek.com>
 From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 6 Jul 2021 16:53:04 +0800
-Message-ID: <CAGXv+5H9d48uZgQPNk6pnwgeduzq6Ov6aRXoNnmKpFDuPL1dew@mail.gmail.com>
-Subject: Re: [PATCH 07/22] clk: mediatek: Add MT8195 camsys clock support
+Date: Tue, 6 Jul 2021 17:00:36 +0800
+Message-ID: <CAGXv+5ETXT-pxuP1NFEUrV+m3RR25zD9RZmDjHxVOLOy7gGj8w@mail.gmail.com>
+Subject: Re: [PATCH 08/22] clk: mediatek: Add MT8195 ccusys clock support
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
@@ -77,8 +76,8 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  devicetree@vger.kernel.org, srv_heupstream@mediatek.com, 
  Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_015316_894277_3125F00A 
-X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-CacheID: sfid-20210706_020051_450276_5FC1F2F6 
+X-CRM114-Status: UNSURE (   8.49  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,14 +95,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 17, 2021 at 7:04 AM Chun-Jie Chen
+On Thu, Jun 17, 2021 at 6:59 AM Chun-Jie Chen
 <chun-jie.chen@mediatek.com> wrote:
 >
-> Add MT8195 camsys clock providers
+> Add MT8195 ccusys clock provider
 >
 > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+Also, I noticed that Mediatek drivers don't support the reset controls found
+in these clock controllers. Are there plans to add support for them?
 
 _______________________________________________
 Linux-mediatek mailing list
