@@ -2,20 +2,20 @@ Return-Path: <SRS0=DDi+=L7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E992C07E95
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 12:49:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43751C07E95
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 13:39:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0A0F61C73
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 12:49:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C0A0F61C73
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 02F2F61C98
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 13:39:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 02F2F61C98
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cmpxchg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,68 +23,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cLxF7ku1BMtNBnRAdethGAG6aj+q4PQFhcjHxoeZZHU=; b=bA8+mXG0yPJVOu
-	wYYHB0IhWuhW6QXTxNZ7hG+iNAqp3hEKezk/tKzYTamUH7/boOpQiy0yAlyAzB51JlOnhcRW6EcZ0
-	N/cOSffIjar+toW/Lsm6clpB+P31A/i7KGgOQgzjMjmph4RMJsWAedcjjw35iXra57+f9Ia8luZPN
-	97HsKopEOexd/z6aguKtlYxgUK9ZiilihH8lQy4RM08E2PZ/9DDTAfzjCCwCvpYXnwQ8SbpsjS5wY
-	B6lMQLsT68x8ySlSccpf3tqiM5pty/Bb5Jkq23qYJwhoPfr/X8NhnxhTKHS2XA7VbMzN5N4ZtbWgR
-	Vuqp2a9/dM4V5lq1zLDg==;
+	List-Owner; bh=EQFN+qcXYKVYTHnwFHIrkLzfkYbCP7zbLPnTKeNzY8E=; b=bZyjgTARA0IlLj
+	ztKJzL2GTnPo9BCwN8K8fCjL6ihQ2gu8606mN6QYLXYuN5SAi9uOTJS2gBFLdT87xBAllWQmnXOtK
+	Hkmd92JX1FZy58BOOj/yjKIrCm5rdvWGC/F9oGiMa+xY66XGSw129qPi/4Idypcrwi6CiqAIbnRJ+
+	WVij4lpoPuDQqENzMUSkehWLWpc3nAZv4CrU63YWl8CS6VNB3TSUkUzaAmV0IrDw4C/Gh3x9OQAoN
+	01gr6PLtKMJXV4Ewle5Csd79AAqSJxJuGsfMQTujrJfVzs9f8EeVV+SXMYqFmhtIhOev7WmN2v3I5
+	6YbcWp7msvtNJCZGUyNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m16zh-00EoOW-T4; Wed, 07 Jul 2021 12:49:37 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1m17mC-00Ewgy-7g; Wed, 07 Jul 2021 13:39:44 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m16zf-00EoNd-04
- for linux-mediatek@lists.infradead.org; Wed, 07 Jul 2021 12:49:37 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id
- g8-20020a1c9d080000b02901f13dd1672aso3179338wme.0
- for <linux-mediatek@lists.infradead.org>; Wed, 07 Jul 2021 05:49:34 -0700 (PDT)
+ id 1m17lk-00EwYp-Q8
+ for linux-mediatek@lists.infradead.org; Wed, 07 Jul 2021 13:39:20 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id v17so1003618qvw.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 07 Jul 2021 06:39:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ d=cmpxchg-org.20150623.gappssmtp.com; s=20150623;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=KcVbpDXBwG8roB+TO6DlcPLK7bK4RdgNLVJnHN+TkRQ=;
- b=dcUHXMxSAT5N3+Y3xGrq5MV8c9erhE8rQ0XUEI+GKuiDYs1YBOW2qIhuCu+8elNiL+
- I/lkTy1dyZ+iriIcF9mRlbGIvUnq9DGKi0FuP3hkN8Fr0DanWcNU8n4+km9dnoMZPV1T
- L9V9V+hewOh6ytU4MiHnv6EO7qkhIIgosPDUD6MEpzxg7kHAp9yF6hWbQuqZBd1B+YRN
- y6NqvI851tab8AoZYXCfwEl0pss0NkkUxHASq6cDFLfmTR8y/nnbcMvEqCXXh3QH7p2Z
- no132yLGn3n4QmO3n0iww4WubvtrfLlCLc3BalfjE84kXPEkPtU0UszXJZvgMtdIJGLh
- zRjg==
+ bh=NBmnpGkMnjPhE8k+PU98glx9l34cNHET8f7BGXMX2R8=;
+ b=NZX10fjCpzb0SE2l2VEWfJG3fn91unHKRPw9ug7EIii+bRg5jDv2gc6WWwVkDFgPGA
+ tddDX2jQoE9CabfJBbgPPow7bWTbe1JlPCbILBY5abezCHNVkWhtuvvP5iHSt6vrO3Yr
+ FlE9VOUug6ByDE3tJIUMgH0bZEyXc6G27Dkd8vX1zq+DzVFzdYLJijpmrlonM0s6Plr/
+ gL90PV11rvVZN17wmmNwRD0cAQnMf4RAIcTDxKJse5LSBruXIM3jNWqXZ8HZmyhFq3/l
+ lMEaHdBArGbkDLlV91Fjma9NI5FRfiMOXCQlrLp83d4jju0Y1b8d6z16XZr7VBylq7Bb
+ 3xVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=KcVbpDXBwG8roB+TO6DlcPLK7bK4RdgNLVJnHN+TkRQ=;
- b=eQPgAWGsW/elZe9vfsaFtEByAeosWPMs4/qD0EdnIwUGmfhlIYokN2EluMDOMHdEi4
- bj7a3GKXMw+yMoU0vgnmEwIciy+/h5cBRx3pxWJhXmT8Mcq5A+rr049OuCN5ua0gSmKw
- EEHnhswXLkfJbjYV9SHuBC4Hwp+ZNSv0u35ids4JnMZU8HRsYorI6ZTddge47SF05ckA
- 4DGhaazkc7v+//z9NK0FCaE6xsk9vRyY/C5hUdmRQyHVAtib2jCTf2S9xEyv5tXl3DM2
- kZrO+ZanZpcsRYkOBm0AW+YhE+Kf5/bx8Tpbb4LiZ6Ttn+eDOiag07EXluzsirqNBivP
- uedA==
-X-Gm-Message-State: AOAM531pasIjuFQvFLg9pNTJCAV78AxPiykejx4SJrD+NQqy5csm5Go/
- TSPZokypGH0nVlgaJJ0kin+Jrg==
-X-Google-Smtp-Source: ABdhPJzmzgBouap1ZBo1x9pyM1M5ABuyVzFJFY+tIqKP1eV53QccFWcDSLfvQOMRzmzDu4cTldUSDQ==
-X-Received: by 2002:a1c:f30a:: with SMTP id q10mr26479925wmq.138.1625662173175; 
- Wed, 07 Jul 2021 05:49:33 -0700 (PDT)
-Received: from blmsp ([2a02:2454:3e6:c900::97e])
- by smtp.gmail.com with ESMTPSA id t22sm5644082wmi.22.2021.07.07.05.49.32
+ bh=NBmnpGkMnjPhE8k+PU98glx9l34cNHET8f7BGXMX2R8=;
+ b=CmWfcQNrZE3WHvy+mVPJdzmXqdVjdNjDo9rppronAFafNyz5RYLmnLb5fUTQh184md
+ ggxlZdaeMGudYwZbGkmX1usbxEbyb/RjE2zBdgrcWGDqwuqykNsSlMXPRKOodQh0Y01o
+ dJuBuZ/HH1+HB2EGjvNSuye+s3BgVAWk0EHMV7sgiu9DsbVDME4RZu3cB6e1C8D8lWi2
+ TGd4dZq7yEdPcr0Lz3MstTZGSXWX4Kl9FRl+iBcx8NNnfjEj2IAvg54vqLSEX/qD/pYL
+ qSoIJZqb5YNvtgl6dC+vWwmMFgk6RYbMsgNv8erUqDgK6iPpu3EVQ59Aj2M8RqpNbv7h
+ Mypw==
+X-Gm-Message-State: AOAM532F6m+rxeYlEvhhSacI2zUuc9k/rlKXNm74Hxpg1NMsMLH91eT5
+ /7hvbDr4nLWA2M/p5RIDJbzjTQ==
+X-Google-Smtp-Source: ABdhPJzFnW37eDnemMfC+7m8hErzLP3g4Ti2rxVLZO5i1u6e+mzeDOuCmpIWN7gldbHPqWgUXQ5Gvg==
+X-Received: by 2002:ad4:56e4:: with SMTP id cr4mr2075482qvb.54.1625665154351; 
+ Wed, 07 Jul 2021 06:39:14 -0700 (PDT)
+Received: from localhost (70.44.39.90.res-cmts.bus.ptd.net. [70.44.39.90])
+ by smtp.gmail.com with ESMTPSA id y24sm6649032qtv.97.2021.07.07.06.39.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Jul 2021 05:49:32 -0700 (PDT)
-Date: Wed, 7 Jul 2021 14:49:32 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] irqchip: mtk-sysirq: Skip setting irq-wake
-Message-ID: <20210707124932.szw7zud63fl7xn6i@blmsp>
-References: <20210707062004.782787-1-msp@baylibre.com>
- <87sg0q77fc.wl-maz@kernel.org>
+ Wed, 07 Jul 2021 06:39:13 -0700 (PDT)
+Date: Wed, 7 Jul 2021 09:39:13 -0400
+From: Johannes Weiner <hannes@cmpxchg.org>
+To: Suren Baghdasaryan <surenb@google.com>
+Cc: peterz@infradead.org, mingo@redhat.com, juri.lelli@redhat.com,
+ vincent.guittot@linaro.org, dietmar.eggemann@arm.com,
+ rostedt@goodmis.org, bsegall@google.com, mgorman@suse.de,
+ bristot@redhat.com, matthias.bgg@gmail.com, minchan@google.com,
+ timmurray@google.com, yt.chang@mediatek.com, wenju.xu@mediatek.com,
+ jonathan.jmchen@mediatek.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel-team@android.com,
+ SH Chen <show-hong.chen@mediatek.com>
+Subject: Re: [PATCH v3 1/1] psi: stop relying on timer_pending for poll_work
+ rescheduling
+Message-ID: <YOWugYxQ9Yfsqba2@cmpxchg.org>
+References: <20210707023933.1691149-1-surenb@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <87sg0q77fc.wl-maz@kernel.org>
+In-Reply-To: <20210707023933.1691149-1-surenb@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210707_054935_076360_E21C4270 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20210707_063916_984276_BD72BCCD 
+X-CRM114-Status: GOOD (  21.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,56 +107,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
+This looks good to me now code wise. Just a comment on the comments:
 
-On Wed, Jul 07, 2021 at 11:19:19AM +0100, Marc Zyngier wrote:
-> Hi Markus,
-> 
-> On Wed, 07 Jul 2021 07:20:04 +0100,
-> Markus Schneider-Pargmann <msp@baylibre.com> wrote:
-> > 
-> > mtk-sysirq doesn't require specific logic to work with wakeup IRQs. To
-> > allow registered IRQs to be used as a wakeup-source, add the flag
-> > IRQCHIP_SKIP_SET_WAKE.
-> > 
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > ---
-> >  drivers/irqchip/irq-mtk-sysirq.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> > 
-> > diff --git a/drivers/irqchip/irq-mtk-sysirq.c b/drivers/irqchip/irq-mtk-sysirq.c
-> > index 6ff98b87e5c0..586e52d5442b 100644
-> > --- a/drivers/irqchip/irq-mtk-sysirq.c
-> > +++ b/drivers/irqchip/irq-mtk-sysirq.c
-> > @@ -65,6 +65,7 @@ static struct irq_chip mtk_sysirq_chip = {
-> >  	.irq_set_type		= mtk_sysirq_set_type,
-> >  	.irq_retrigger		= irq_chip_retrigger_hierarchy,
-> >  	.irq_set_affinity	= irq_chip_set_affinity_parent,
-> > +	.flags			= IRQCHIP_SKIP_SET_WAKE,
-> >  };
-> >  
-> >  static int mtk_sysirq_domain_translate(struct irq_domain *d,
-> 
-> Is this a fix? If so, please provide a Fixes: tag matching the commit
-> it addresses. Add a Cc stable if this requires backporting.
+On Tue, Jul 06, 2021 at 07:39:33PM -0700, Suren Baghdasaryan wrote:
+> @@ -559,18 +560,14 @@ static u64 update_triggers(struct psi_group *group, u64 now)
+>  	return now + group->poll_min_period;
+>  }
+>  
+> -/* Schedule polling if it's not already scheduled. */
+> -static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+> +/* Schedule polling if it's not already scheduled or forced. */
+> +static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
+> +				   bool force)
+>  {
+>  	struct task_struct *task;
+>  
+> -	/*
+> -	 * Do not reschedule if already scheduled.
+> -	 * Possible race with a timer scheduled after this check but before
+> -	 * mod_timer below can be tolerated because group->polling_next_update
+> -	 * will keep updates on schedule.
+> -	 */
+> -	if (timer_pending(&group->poll_timer))
+> +	/* xchg should be called even when !force to set poll_scheduled */
+> +	if (atomic_xchg(&group->poll_scheduled, 1) && !force)
+>  		return;
 
-At least from my point of view I would like to prepare the mtk-sysirq
-for powermanagement stuff, so not a fix. There may be some components
-trying to use this already but I would consider this more of a feature
-as it has probably never worked before.
-Currently calls to enable_irq_wake() using IRQs of sysirq will result in
--ENXIO.
+This explains what the code does, but not why. It would be good to
+explain the ordering with poll_work, here or there. But both sides
+should mention each other.
 
-Thanks,
-Markus
+> @@ -595,6 +595,28 @@ static void psi_poll_work(struct psi_group *group)
+>  
+>  	now = sched_clock();
+>  
+> +	if (now > group->polling_until) {
+> +		/*
+> +		 * We are either about to start or might stop polling if no
+> +		 * state change was recorded. Resetting poll_scheduled leaves
+> +		 * a small window for psi_group_change to sneak in and schedule
+> +		 * an immegiate poll_work before we get to rescheduling. One
+> +		 * potential extra wakeup at the end of the polling window
+> +		 * should be negligible and polling_next_update still keeps
+> +		 * updates correctly on schedule.
+> +		 */
+> +		atomic_set(&group->poll_scheduled, 0);
+> +		/*
+> +		 * Ensure that operations of clearing group->poll_scheduled and
+> +		 * obtaining changed_states are not reordered.
+> +		 */
+> +		smp_mb();
 
-> 
-> Thanks,
-> 
-> 	M.
-> 
-> -- 
-> Without deviation from the norm, progress is not possible.
+Same here, it would be good to explain that this is ordering the
+scheduler with the timer such that no events are missed. Feel free to
+reuse my race diagram from the other thread - those are better at
+conveying the situation than freeform text.
+
+Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
