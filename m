@@ -1,94 +1,90 @@
-Return-Path: <SRS0=SroS=L6=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=DDi+=L7=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DFAA6C07E96
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 22:34:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7799CC07E96
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 02:39:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93DC261A2D
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Jul 2021 22:34:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93DC261A2D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 369F761CB2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 02:39:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 369F761CB2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8N6Mb4Evo/9cLTkJU5zEthY+vzbMKpeRR7nGVU8b4y0=; b=FwbMbMuSknmKF6UW7/2h78812/
-	22AbNSMiwudYNcfu+ZJvUN8+URuQL6ZaKpkkqWd2nII9Mw0PxUUgdal93gYYiH2yW5sDsh//zyT1z
-	weCRa5t2FPWTi3alOwniCaDw+PuqC2+eoOA9/HyYv5wPNiCTejOSA9kGTSkVv9zD+zhy7oYp4JNWm
-	Dww74P/WLAeAIDh68YPI26ay1gtCbj6mkK52ckmHKRZKg0+JPEYSUNf2KovuCub0z9HwkE9TVE2pA
-	26/isU0N/jE7NTxYybcNUKVAhaEggtCtKRVsWu4q8u0bWpP4xsAFyDNTo9jx4nD/i+GiOuUzq0YQc
-	cwI3SQGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:Mime-Version:
+	Message-Id:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=C/RtNzfUfzwjrP2qbfZses7v/TxY30ZL3tI5tLTAcDo=; b=td8
+	FOmvpCi4shNW3hKO4GPsVSdp8deAhvEh9yX2cwYXlI5oPQB5ISB3MOGsaFOKXGRc41NcYI3KK7Fx6
+	r8IFpffCHyZSPFr3ciGRmCIJe9MdFoJYmmTHD6l0v5FZKGrTVJwShysIN0mQOlk/8PPBvEMNPdhmW
+	3V4KUVtIDdHo5mCbw8wh1ACK22A8iQXfzbjhLwRfReoEiTzsRIHOy+OxG8QdXgQ8h4bU+PVGSj9iO
+	PsH+z2ES/G9GZzSXfzlOdgrA6Se3wbDkVysgbL3RvPVmFG+I/DTSedbOkSnlw2zwHpIC9LlsJgQzz
+	MYnbd3YEnKvEN6GA/5GEnKqiHq6EVWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m0te9-00CxeZ-2M; Tue, 06 Jul 2021 22:34:29 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1m0xTU-00DDM7-1c; Wed, 07 Jul 2021 02:39:44 +0000
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m0te5-00Cxe5-Jl
- for linux-mediatek@lists.infradead.org; Tue, 06 Jul 2021 22:34:27 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id p1so482091lfr.12
- for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 15:34:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:references:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=kgdSSee64DhWpmw/1z/1CTjac6yaE8HcZZdt3bAb+SU=;
- b=S3OO7us35u7LrWCLfaRlkPN7Vnqt5FkfjSdvtJMJK89kaKw3XyVGGwetiZPmV6PM/y
- Gl92tqo3ue3MqHKJXy21mFgbv5e6T4OvtWsXhibXvFzCwTLxcW89EjADsjRVfMjRPz/S
- hQYe8xcjimooV0CVp45AR8QHaHI/HRudzdCgWhTAISWcC2cgNnNtvOd53cGf8EhFOApV
- v4hE22UJ+b8S4ueMLnmvvF98zhheJzMkCgT15Aq/SSAD/eTVjnLf67zcUnjpKYfFwSzj
- RzC9NkWA2CTiDWN9PcdR19HuvpDifIG7BweckmBIaIOUx2qj0RSzcXYZRaytsuw0rheX
- 07SA==
+ id 1m0xTQ-00DDL2-QP
+ for linux-mediatek@lists.infradead.org; Wed, 07 Jul 2021 02:39:42 +0000
+Received: by mail-yb1-xb49.google.com with SMTP id
+ g3-20020a256b030000b0290551bbd99700so716491ybc.6
+ for <linux-mediatek@lists.infradead.org>; Tue, 06 Jul 2021 19:39:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=SdfYnitcdKxWWf2Kojrvr4VcwIYCcJ2C+soGQWyAtM0=;
+ b=vW64oLzc/x82jLzJMp3A4WBFOCZVeBftClozdvf7J5hqLduAkQiqGc+3c0jJV1IaSp
+ l7Whg51gy8zIITEL85Z8uHuM5kr/7DLQsqpKnb+jBYEQrWl3PO7pFkjIBPiVZpFEqqqF
+ Z8qgBnSH0LzaQwF/blawqF1mzKZJH2usyl7uz+f5L1HgKLWb/Js/nk9DrSWw5hu5ZoKZ
+ j90D6dHyM6WzUuNyYR7Tg2kZX+ctr353x2vgAgxlf+0HeWYTCSLGjN/ZN2adNKVmXk1q
+ 0lJPSVCestr2sejlWBDUuYuZN4rHX5Ei52xibg9iaLN2d5UVwYeGwEfym9WlTJdA2dc5
+ vC5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=kgdSSee64DhWpmw/1z/1CTjac6yaE8HcZZdt3bAb+SU=;
- b=QTHPRoi5uFcndwN3voFSgC+tIZzj60mym7V9Ax4QXcOI+sYQ6VPsMI7u5jqsxc8jLK
- kvAtDu0pGiVjsHfVftH/An3qTz3E7nVr4a4nG9j5jiR03Gd3Lr1FOFffZy4T/eOSYPWL
- +Ff2HxK2n8nyiE4bLDLwZ8ohdcM2Nm8H1DRpWqbVzBVmrHw7cczepb8ATjLDlM4rqTc3
- bzBorVgx3Jflmt/9J9ibu0Q3EqpI3i79jcRSXFZyd//rJGzF3lna2gb7sg5+wWZOoP3/
- SZYGHXR87ObnBZccAPASiqvfDYHVLADO1i5BMxnpHsz4+p0QMAFBelth+CWf+lsju6xV
- X/xg==
-X-Gm-Message-State: AOAM530U9vdubW4fQ7YhiY5qYgMVTaYWesXJX7OAh4pNKuDrVSgz9E/4
- ILcwYOEACfM2erHcc/3K6fdl9Y7opYQ=
-X-Google-Smtp-Source: ABdhPJyF0MrJh2cuVWxqEwVZT8mAS5znQXqG5F/j/NCK7xfK87xEawFv3BdurKky7e1rSvEQlaSqnA==
-X-Received: by 2002:a19:ad4d:: with SMTP id s13mr313416lfd.432.1625610863227; 
- Tue, 06 Jul 2021 15:34:23 -0700 (PDT)
-Received: from localhost.localdomain
- (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
- by smtp.googlemail.com with ESMTPSA id f19sm1005423lfs.133.2021.07.06.15.34.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jul 2021 15:34:22 -0700 (PDT)
-Subject: Re: Unstable WiFi with mt76 on MT7628AN
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <7c96d5ee-86c1-8068-1b58-40db6087a24f@gmail.com>
- <2528003d-f45a-a771-e96d-5796035ccdfe@gmail.com>
-Message-ID: <e774cda7-761f-7fb1-25b8-fc096617dd77@gmail.com>
-Date: Wed, 7 Jul 2021 00:34:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
-MIME-Version: 1.0
-In-Reply-To: <2528003d-f45a-a771-e96d-5796035ccdfe@gmail.com>
-Content-Language: en-US
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=SdfYnitcdKxWWf2Kojrvr4VcwIYCcJ2C+soGQWyAtM0=;
+ b=b1O6pL85qmW20VW+6HmPWy6FfEw06XODWx0sWjNpI5rtZpKx/P777bKtmYy/JSlsuS
+ 8egWVWKaa0FtRxFXb39YYM/Fx7fibFPFtc5s3mFNjF88FvgbmnOgInRz4GoWDl24YDZ9
+ rLug5SQV6vIrfZh6RTn+qV7fOXYB5wwlmPVafoCm2GZRhBCCgiFXnFOPT7DVYbLGBQTT
+ 7p3DFQhT6qNERvofoiufwQ6gJB44wowd5hAPPqgmMVWTEcel6KijpozyF3HOXlCkucDd
+ oAbocsyB7pVu2NN6ohP+41YHpvnzDr019iLRz9RO7eZIAGo+OMVt07mO+/oJ2pB9W8aV
+ GEog==
+X-Gm-Message-State: AOAM533F9vxWTECSOVoY6/B7Rjk13s0NQB8UN9Lvvt3+aXjyyNp3USPg
+ NO2xpa41/YKLBAjAPdv4tIJPS/UC/wQ=
+X-Google-Smtp-Source: ABdhPJwgzFp9FRlq7wVCW5TekasO+WeWhtbQIgrpB2Jrh9u8PWY9gPHc6txlFnkeaEBDI0Exhj/bM4WyYXc=
+X-Received: from surenb1.mtv.corp.google.com
+ ([2620:15c:211:200:f0dd:9a09:7a78:b474])
+ (user=surenb job=sendgmr) by 2002:a25:e68e:: with SMTP id
+ d136mr26864313ybh.120.1625625578897; 
+ Tue, 06 Jul 2021 19:39:38 -0700 (PDT)
+Date: Tue,  6 Jul 2021 19:39:33 -0700
+Message-Id: <20210707023933.1691149-1-surenb@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
+Subject: [PATCH v3 1/1] psi: stop relying on timer_pending for poll_work
+ rescheduling
+From: Suren Baghdasaryan <surenb@google.com>
+To: peterz@infradead.org
+Cc: hannes@cmpxchg.org, mingo@redhat.com, juri.lelli@redhat.com, 
+ vincent.guittot@linaro.org, dietmar.eggemann@arm.com, rostedt@goodmis.org, 
+ bsegall@google.com, mgorman@suse.de, bristot@redhat.com, 
+ matthias.bgg@gmail.com, minchan@google.com, timmurray@google.com, 
+ yt.chang@mediatek.com, wenju.xu@mediatek.com, jonathan.jmchen@mediatek.com, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel-team@android.com, 
+ surenb@google.com, SH Chen <show-hong.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210706_153425_720516_A196ABF6 
-X-CRM114-Status: GOOD (  18.28  )
+X-CRM114-CacheID: sfid-20210706_193940_928159_37CDB369 
+X-CRM114-Status: GOOD (  22.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,185 +96,210 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDQuMDcuMjAyMSAwOTozNiwgUmFmYcWCIE1pxYJlY2tpIHdyb3RlOgo+IEEgc21hbGwgdXBk
-YXRlIChubyBnb29kIG5ld3MpLgoKRmVsaXggc3VnZ2VzdGVkIHRoYXQgRUVQUk9NIGFjY2VzcyBt
-YXkgYmUgbm90IHNldHVwIGNvcnJlY3RseSBvbiBteQpkZXZpY2UuCgoKRmlyc3QsIGxldCBtZSBw
-cm92aWRlIGEgZHVtcCBvZiB0aGUgImZhY3RvcnkiIE1URCBwYXJ0aXRpb246CgojIGhleGR1bXAg
-LW4gNDA5NiAtQyAvZGV2L210ZGJsb2NrMgowMDAwMDAwMCAgMjggNzYgMDAgMDIgOWMgOWQgN2Ug
-NTggIDEwIDU2IDAwIDAwIDAwIDAwIDAwIDAwICB8KHYuLi4uflguVi4uLi4uLnwKMDAwMDAwMTAg
-IGZmIGZmIGZmIGZmIGZmIGZmIGZmIGZmICBmZiBmZiBmZiBmZiBmZiBmZiBmZiBmZiAgfC4uLi4u
-Li4uLi4uLi4uLi58CjAwMDAwMDIwICAwMCAwMCAwMCAwMCAyMCAwMCAwMCAwMCAgOWMgOWQgN2Ug
-NTggMTAgNTUgMDAgMGMgIHwuLi4uIC4uLi4uflguVS4ufAowMDAwMDAzMCAgNDMgZTEgNzYgMmEg
-MjIgMzQgMDAgMjAgIGZmIGZmIDAwIDAxIDAwIDAwIDAwIDAwICB8Qy52KiI0LiAuLi4uLi4uLnwK
-MDAwMDAwNDAgIDAwIDAwIDIyIDAwIDAwIDAwIDAwIDAwICAzMCAwMCAwMCAwMCAwMCAwMCAwMCAw
-MCAgfC4uIi4uLi4uMC4uLi4uLi58CjAwMDAwMDUwICA4MCAwMCAwMCA5NCA0MCBiYSBjMCBjYSAg
-MTYgODQgODIgODIgNDAgY2EgMTYgODMgIHwuLi4uQC4uLi4uLi5ALi4ufAowMDAwMDA2MCAgODMg
-ODMgMDAgMDAgMDAgMDAgMDAgMDAgIDAwIDAwIDAwIDAwIDAwIDAwIDAwIDAwICB8Li4uLi4uLi4u
-Li4uLi4uLnwKMDAwMDAwNzAgIDAwIDAwIDAwIDAwIDAwIDAwIDAwIDAwICAwMCAwMCAwMCAwMCAw
-MCAwMCAwMCAwMCAgfC4uLi4uLi4uLi4uLi4uLi58CioKMDAwMDAwYTAgIGMwIGMwIGMwIGMwIGMw
-IGMwIGMwIGMwICBjMCBjMCBjMCBjMCBjMCBjMCAwMCAwMCAgfC4uLi4uLi4uLi4uLi4uLi58CjAw
-MDAwMGIwICAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAgMDAgMDAgMDAgMDAgMDAgMDAgMDAgMDAg
-IHwuLi4uLi4uLi4uLi4uLi4ufAowMDAwMDBjMCAgMDAgMDAgMDAgMDAgMDAgMDAgMDAgMDAgIDAw
-IDFhIDIyIDJhIDMxIDM1IDAxIDM1ICB8Li4uLi4uLi4uLiIqMTUuNXwKMDAwMDAwZDAgIDM5IDQw
-IDQ2IDRkIDdmIDdmIDdmIDAwICAwMCAwMCAwMCAwMCAwMCAwMCAwMCAwMCAgfDlARk0uLi4uLi4u
-Li4uLi58CjAwMDAwMGUwICAxMSAxZCAxMSAxZCAxYyAzNSAxYyAzNSAgMWUgMzUgMWUgMzUgMTcg
-MTkgMTcgMTkgIHwuLi4uLjUuNS41LjUuLi4ufAowMDAwMDBmMCAgMDIgMDAgMDAgMDAgYzMgMDAg
-YzAgMDAgIDBhIDAwIDAwIDAwIDAwIDAwIDAwIDAwICB8Li4uLi4uLi4uLi4uLi4uLnwKMDAwMDAx
-MDAgIGZmIGZmIGZmIGZmIGZmIGZmIGZmIGZmICBmZiBmZiBmZiBmZiBmZiBmZiBmZiBmZiAgfC4u
-Li4uLi4uLi4uLi4uLi58CioKMDAwMDAxMjAgIDAwIDAwIDAwIDAwIDAwIDAwIDAwIDAwICAwMCAw
-MCAwMCAwMCAwMCAwMCA3NyAwMCAgfC4uLi4uLi4uLi4uLi4udy58CjAwMDAwMTMwICAxMSAxZCAx
-MSAxZCAxNSA3ZiAxNSA3ZiAgMTcgN2YgMTcgN2YgMTAgM2IgMTAgM2IgIHwuLi4uLi4uLi4uLi4u
-Oy47fAowMDAwMDE0MCAgZmYgZmYgZmYgZmYgZmYgZmYgZmYgZmYgIGZmIGZmIGZmIGZmIGZmIGZm
-IGZmIGZmICB8Li4uLi4uLi4uLi4uLi4uLnwKKgowMDAwMTAwMAoKCkkgbW9kaWZpZWQgbXQ3NjAz
-X2VlcHJvbV9sb2FkIHRvIGR1bXAgRUVQUk9NIGJlZ2lubmluZyBtYWtlIHN1cmUgbXQ3NgphY2Nl
-c3MgZXhhY3RseSB0aGF0IGRhdGEuIEl0IGRvZXM6CgpbICAgMTEuMTg4NDQ3XSBbbXQ3NjAzX2Vl
-cHJvbV9sb2FkXSAyOCA3NiAwMCAwMiA5YyA5ZCA3ZSA1OCAxMCA1NiAwMCAwMCAwMCAwMCAwMCAw
-MApbICAgMTEuMTk1OTUwXSBbbXQ3NjAzX2VlcHJvbV9sb2FkXSBmZiBmZiBmZiBmZiBmZiBmZiBm
-ZiBmZiBmZiBmZiBmZiBmZiBmZiBmZiBmZiBmZgoKCkZpbmFsbHkgSSBkdW1wZWQgYWxsIGtub3du
-IEVFUFJPTSBlbnRyaWVzIHRvIGxldCB5b3UgY2hlY2sgdGhlbS4gSSB0aGluawp0aGV5IGRvbid0
-IGxvb2sgYWxsIHJhbmRvbSBhbmQgbWF5IG1ha2Ugc29tZSBzZW5zZToKClsgICAxMS4yMDQzMzJd
-IE1UX0VFX0NISVBfSUQ6ICAgMjggNzYKWyAgIDExLjIwNzU5OF0gTVRfRUVfVkVSU0lPTjogICAw
-MCAwMgpbICAgMTEuMjEwODc1XSBNVF9FRV9NQUNfQUREUjogIDljIDlkIDdlIDU4IDEwIDU2Clsg
-ICAxMS4yMTUyODRdIE1UX0VFX05JQ19DT05GXzA6ICAgICAgICAyMiAzNApbICAgMTEuMjE4ODIz
-XSBNVF9FRV9OSUNfQ09ORl8xOiAgICAgICAgMDAgMjAKWyAgIDExLjIyMjM1Ml0gTVRfRUVfTklD
-X0NPTkZfMjogICAgICAgIDIyIDAwClsgICAxMS4yMjU4ODFdIE1UX0VFX1hUQUxfVFJJTV8xOiAg
-ICAgICAwMApbICAgMTEuMjI5MjQzXSBNVF9FRV9SU1NJX09GRlNFVF8yRzogICAgMDAKWyAgIDEx
-LjIzMjg1OV0gTVRfRUVfV0lGSV9SRl9TRVRUSU5HOiAgIDMwClsgICAxMS4yMzY1NjRdIE1UX0VF
-X1JTU0lfT0ZGU0VUXzVHOiAgICAwMApbICAgMTEuMjQwMTkxXSBNVF9FRV9UWF9QT1dFUl9ERUxU
-QV9CVzQwOiAgICAgICA4MApbICAgMTEuMjQ0MjQ5XSBNVF9FRV9UWF9QT1dFUl9ERUxUQV9CVzgw
-OiAgICAgICAwMApbICAgMTEuMjQ4MzA2XSBNVF9FRV9UWF9QT1dFUl9FWFRfUEFfNUc6ICAgICAg
-ICA0MApbICAgMTEuMjUyMjgzXSBNVF9FRV9URU1QX1NFTlNPUl9DQUw6ICAgYmEKWyAgIDExLjI1
-NTk4OF0gTVRfRUVfVFhfUE9XRVJfMF9TVEFSVF8yRzogICAgICAgYzAgY2EgMTYgODQgODIgODIK
-WyAgIDExLjI2MTM3NV0gTVRfRUVfVFhfUE9XRVJfMV9TVEFSVF8yRzogICAgICAgNDAgY2EgMTYg
-ODMgODMgODMKWyAgIDExLjI2Njc1M10gTVRfRUVfVFhfUE9XRVJfMF9TVEFSVF81RzogICAgICAg
-MDAKWyAgIDExLjI3MDgyMF0gTVRfRUVfVFhfUE9XRVJfMF9HUlAzX1RYX1BPV0VSX0RFTFRBOiAg
-ICAwMApbICAgMTEuMjc1ODQ1XSBNVF9FRV9UWF9QT1dFUl8wX0dSUDRfVFNTSV9TTE9QRTogICAg
-ICAgIDAwClsgICAxMS4yODA1MjhdIE1UX0VFX1RYX1BPV0VSXzFfU1RBUlRfNUc6ICAgICAgIDAw
-ClsgICAxMS4yODQ1ODRdIE1UX0VFX1RYX1BPV0VSX0NDSzogICAgICBjMCBjMApbICAgMTEuMjg4
-MjkwXSBNVF9FRV9UWF9QT1dFUl9PRkRNXzJHXzZNOiAgICAgICBjMCBjMApbICAgMTEuMjkyNjIw
-XSBNVF9FRV9UWF9QT1dFUl9PRkRNXzJHXzI0TTogICAgICBjMCBjMApbICAgMTEuMjk3MDMwXSBN
-VF9FRV9UWF9QT1dFUl9PRkRNXzJHXzU0TTogICAgICBjMCBjMApbICAgMTEuMzAxNDQ4XSBNVF9F
-RV9UWF9QT1dFUl9IVF9CUFNLX1FQU0s6ICAgICBjMCBjMApbICAgMTEuMzA1OTQ2XSBNVF9FRV9U
-WF9QT1dFUl9IVF8xNl82NF9RQU06ICAgICBjMCBjMApbICAgMTEuMzEwNDUxXSBNVF9FRV9UWF9Q
-T1dFUl9IVF82NF9RQU06ICAgICAgICBjMCBjMApbICAgMTEuMzE0Njg1XSBNVF9FRV9FTEFOX1JY
-X01PREVfR0FJTjogMDAKWyAgIDExLjMxODU3NV0gTVRfRUVfRUxBTl9SWF9NT0RFX05GOiAgIDAw
-ClsgICAxMS4zMjIyODFdIE1UX0VFX0VMQU5fUlhfTU9ERV9QMURCOiAwMApbICAgMTEuMzI2MTYy
-XSBNVF9FRV9FTEFOX0JZUEFTU19NT0RFX0dBSU46ICAgICAwMApbICAgMTEuMzMwNDA0XSBNVF9F
-RV9FTEFOX0JZUEFTU19NT0RFX05GOiAgICAgICAwMApbICAgMTEuMzM0NDYyXSBNVF9FRV9FTEFO
-X0JZUEFTU19NT0RFX1AxREI6ICAgICAwMApbICAgMTEuMzM4NzA1XSBNVF9FRV9TVEVQX05VTV9O
-RUdfNl83OiAgMDAgMDAKWyAgIDExLjM0Mjc2Ml0gTVRfRUVfU1RFUF9OVU1fTkVHXzRfNTogIDAw
-IDFhClsgICAxMS4zNDY4MTldIE1UX0VFX1NURVBfTlVNX05FR18yXzM6ICAyMiAyYQpbICAgMTEu
-MzUwODg1XSBNVF9FRV9TVEVQX05VTV9ORUdfMF8xOiAgMzEgMzUKWyAgIDExLjM1NDk0Ml0gTVRf
-RUVfUkVGX1NURVBfMjRHOiAgICAgIDAxIDM1ClsgICAxMS4zNTg2NTddIE1UX0VFX1NURVBfTlVN
-X1BMVVNfMV8yOiAzOSA0MApbICAgMTEuMzYyODAyXSBNVF9FRV9TVEVQX05VTV9QTFVTXzNfNDog
-NDYgNGQKWyAgIDExLjM2Njk0N10gTVRfRUVfU1RFUF9OVU1fUExVU181XzY6IDdmIDdmClsgICAx
-MS4zNzExMDFdIE1UX0VFX1NURVBfTlVNX1BMVVNfNzogICA3ZgpbICAgMTEuMzc0ODA3XSBNVF9F
-RV9DUF9GVF9WRVJTSU9OOiAgICAgMDIKWyAgIDExLjM3ODMzNl0gTVRfRUVfVFhfUE9XRVJfVFNT
-SV9PRkY6IDAwClsgICAxMS4zODIyMzFdIE1UX0VFX1hUQUxfRlJFUV9PRkZTRVQ6ICBjMwpbICAg
-MTEuMzg2MDI1XSBNVF9FRV9YVEFMX1RSSU1fMl9DT01QOiAgMDAKWyAgIDExLjM4OTgyOF0gTVRf
-RUVfWFRBTF9UUklNXzNfQ09NUDogIGMwClsgICAxMS4zOTM2MjBdIE1UX0VFX1hUQUxfV0ZfUkZD
-QUw6ICAgICAwMAoKCk15IGRldmljZSBoYXMgT1RQIGJ1dCBEVFMgZmlsZSBkb2Vzbid0IGluY2x1
-ZGUKbWVkaWF0ZWssZWVwcm9tLW1lcmdlLW90cDsKCklmIEkgZGVjaWRlZCB0byBhZGQgdGhhdCBw
-cm9wZXJ0eSBpdCdkIHJlc3VsdCBpbiBmb2xsb3dpbmcgY2hhbmdlczoKWyAgIDExLjM5NzE1Nl0g
-W210NzYwM19hcHBseV9jYWxfZnJlZV9kYXRhOjEyMV0gWzA1NV0gYmEgLT4gYmEKWyAgIDExLjQw
-MjgxMF0gW210NzYwM19hcHBseV9jYWxfZnJlZV9kYXRhOjEyMV0gWzBmMF0gMDIgLT4gMDIKWyAg
-IDExLjQwODQ2NF0gW210NzYwM19hcHBseV9jYWxfZnJlZV9kYXRhOjEyMV0gWzBmNF0gYzMgLT4g
-YmEKWyAgIDExLjQxNDEwOV0gW210NzYwM19hcHBseV9jYWxfZnJlZV9kYXRhOjEyMV0gWzBmN10g
-MDAgLT4gODgKClNvIGl0IHNlZW1zIE9UUCBjb250YWlucyBkaWZmZXJlbnQgdmFsdWVzIGZvciBN
-VF9FRV9YVEFMX0ZSRVFfT0ZGU0VUIGFuZApNVF9FRV9YVEFMX1dGX1JGQ0FMLgoKCkFueSBvdGhl
-ciBpZGVhcyB3aGF0IG1heSBjYXVzZSB0aGlzIHVuc3RhYmxlIFdpRmksIGhvdyB0byBkZWJ1ZyBp
-dD8KCgpkaWZmIC0tZ2l0IGEvbXQ3NjAzL2VlcHJvbS5jIGIvbXQ3NjAzL2VlcHJvbS5jCmluZGV4
-IGQ5NTFjYjguLmNjNjgwODUgMTAwNjQ0Ci0tLSBhL210NzYwMy9lZXByb20uYworKysgYi9tdDc2
-MDMvZWVwcm9tLmMKQEAgLTExOCw2ICsxMTgsNyBAQCBtdDc2MDNfYXBwbHlfY2FsX2ZyZWVfZGF0
-YShzdHJ1Y3QgbXQ3NjAzX2RldiAqZGV2LCB1OCAqZWZ1c2UpCiAgCWZvciAoaSA9IDA7IGkgPCBu
-OyBpKyspIHsKICAJCWludCBvZmZzZXQgPSBjYWxfZnJlZV9ieXRlc1tpXTsKCisJCXByX2luZm8o
-IlslczolZF0gWyUwM3hdICUwMnggLT4gJTAyeFxuIiwgX19mdW5jX18sIF9fTElORV9fLCBvZmZz
-ZXQsIGVlcHJvbVtvZmZzZXRdLCBlZnVzZVtvZmZzZXRdKTsKICAJCWVlcHJvbVtvZmZzZXRdID0g
-ZWZ1c2Vbb2Zmc2V0XTsKICAJfQogIH0KQEAgLTEzMSw2ICsxMzIsOSBAQCBtdDc2MDNfZWVwcm9t
-X2xvYWQoc3RydWN0IG10NzYwM19kZXYgKmRldikKICAJaWYgKHJldCA8IDApCiAgCQlyZXR1cm4g
-cmV0OwoKKwlwcl9pbmZvKCJbJXNdICUqcGhcbiIsIF9fZnVuY19fLCAxNiwgZGV2LT5tdDc2LmVl
-cHJvbS5kYXRhKTsKKwlwcl9pbmZvKCJbJXNdICUqcGhcbiIsIF9fZnVuY19fLCAxNiwgZGV2LT5t
-dDc2LmVlcHJvbS5kYXRhICsgMTYpOworCiAgCXJldHVybiBtdDc2MDNfZWZ1c2VfaW5pdChkZXYp
-OwogIH0KCkBAIC0xNjIsNiArMTY2LDU2IEBAIGludCBtdDc2MDNfZWVwcm9tX2luaXQoc3RydWN0
-IG10NzYwM19kZXYgKmRldikKICAJaWYgKHJldCA8IDApCiAgCQlyZXR1cm4gcmV0OwoKKwllZXBy
-b20gPSAodTggKilkZXYtPm10NzYuZWVwcm9tLmRhdGE7CisJcHJfaW5mbygiTVRfRUVfQ0hJUF9J
-RDpcdCUqcGhcbiIsIDIsICZlZXByb21bTVRfRUVfQ0hJUF9JRF0pOworCXByX2luZm8oIk1UX0VF
-X1ZFUlNJT046XHQlKnBoXG4iLCAyLCAmZWVwcm9tW01UX0VFX1ZFUlNJT05dKTsKKwlwcl9pbmZv
-KCJNVF9FRV9NQUNfQUREUjpcdCUqcGhcbiIsIDYsICZlZXByb21bTVRfRUVfTUFDX0FERFJdKTsK
-Kwlwcl9pbmZvKCJNVF9FRV9OSUNfQ09ORl8wOlx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9O
-SUNfQ09ORl8wXSk7CisJcHJfaW5mbygiTVRfRUVfTklDX0NPTkZfMTpcdCUqcGhcbiIsIDIsICZl
-ZXByb21bTVRfRUVfTklDX0NPTkZfMV0pOworCXByX2luZm8oIk1UX0VFX05JQ19DT05GXzI6XHQl
-KnBoXG4iLCAyLCAmZWVwcm9tW01UX0VFX05JQ19DT05GXzJdKTsKKwlwcl9pbmZvKCJNVF9FRV9Y
-VEFMX1RSSU1fMTpcdCUqcGhcbiIsIDEsICZlZXByb21bTVRfRUVfWFRBTF9UUklNXzFdKTsKKwlw
-cl9pbmZvKCJNVF9FRV9SU1NJX09GRlNFVF8yRzpcdCUqcGhcbiIsIDEsICZlZXByb21bTVRfRUVf
-UlNTSV9PRkZTRVRfMkddKTsKKwlwcl9pbmZvKCJNVF9FRV9XSUZJX1JGX1NFVFRJTkc6XHQlKnBo
-XG4iLCAxLCAmZWVwcm9tW01UX0VFX1dJRklfUkZfU0VUVElOR10pOworCXByX2luZm8oIk1UX0VF
-X1JTU0lfT0ZGU0VUXzVHOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9SU1NJX09GRlNFVF81
-R10pOworCXByX2luZm8oIk1UX0VFX1RYX1BPV0VSX0RFTFRBX0JXNDA6XHQlKnBoXG4iLCAxLCAm
-ZWVwcm9tW01UX0VFX1RYX1BPV0VSX0RFTFRBX0JXNDBdKTsKKwlwcl9pbmZvKCJNVF9FRV9UWF9Q
-T1dFUl9ERUxUQV9CVzgwOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9UWF9QT1dFUl9ERUxU
-QV9CVzgwXSk7CisJcHJfaW5mbygiTVRfRUVfVFhfUE9XRVJfRVhUX1BBXzVHOlx0JSpwaFxuIiwg
-MSwgJmVlcHJvbVtNVF9FRV9UWF9QT1dFUl9FWFRfUEFfNUddKTsKKwlwcl9pbmZvKCJNVF9FRV9U
-RU1QX1NFTlNPUl9DQUw6XHQlKnBoXG4iLCAxLCAmZWVwcm9tW01UX0VFX1RFTVBfU0VOU09SX0NB
-TF0pOworCXByX2luZm8oIk1UX0VFX1RYX1BPV0VSXzBfU1RBUlRfMkc6XHQlKnBoXG4iLCA2LCAm
-ZWVwcm9tW01UX0VFX1RYX1BPV0VSXzBfU1RBUlRfMkddKTsKKwlwcl9pbmZvKCJNVF9FRV9UWF9Q
-T1dFUl8xX1NUQVJUXzJHOlx0JSpwaFxuIiwgNiwgJmVlcHJvbVtNVF9FRV9UWF9QT1dFUl8xX1NU
-QVJUXzJHXSk7CisJcHJfaW5mbygiTVRfRUVfVFhfUE9XRVJfMF9TVEFSVF81RzpcdCUqcGhcbiIs
-IDEsICZlZXByb21bTVRfRUVfVFhfUE9XRVJfMF9TVEFSVF81R10pOworCXByX2luZm8oIk1UX0VF
-X1RYX1BPV0VSXzBfR1JQM19UWF9QT1dFUl9ERUxUQTpcdCUqcGhcbiIsIDEsICZlZXByb21bTVRf
-RUVfVFhfUE9XRVJfMF9HUlAzX1RYX1BPV0VSX0RFTFRBXSk7CisJcHJfaW5mbygiTVRfRUVfVFhf
-UE9XRVJfMF9HUlA0X1RTU0lfU0xPUEU6XHQlKnBoXG4iLCAxLCAmZWVwcm9tW01UX0VFX1RYX1BP
-V0VSXzBfR1JQNF9UU1NJX1NMT1BFXSk7CisJcHJfaW5mbygiTVRfRUVfVFhfUE9XRVJfMV9TVEFS
-VF81RzpcdCUqcGhcbiIsIDEsICZlZXByb21bTVRfRUVfVFhfUE9XRVJfMV9TVEFSVF81R10pOwor
-CXByX2luZm8oIk1UX0VFX1RYX1BPV0VSX0NDSzpcdCUqcGhcbiIsIDIsICZlZXByb21bTVRfRUVf
-VFhfUE9XRVJfQ0NLXSk7CisJcHJfaW5mbygiTVRfRUVfVFhfUE9XRVJfT0ZETV8yR182TTpcdCUq
-cGhcbiIsIDIsICZlZXByb21bTVRfRUVfVFhfUE9XRVJfT0ZETV8yR182TV0pOworCXByX2luZm8o
-Ik1UX0VFX1RYX1BPV0VSX09GRE1fMkdfMjRNOlx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9U
-WF9QT1dFUl9PRkRNXzJHXzI0TV0pOworCXByX2luZm8oIk1UX0VFX1RYX1BPV0VSX09GRE1fMkdf
-NTRNOlx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9UWF9QT1dFUl9PRkRNXzJHXzU0TV0pOwor
-CXByX2luZm8oIk1UX0VFX1RYX1BPV0VSX0hUX0JQU0tfUVBTSzpcdCUqcGhcbiIsIDIsICZlZXBy
-b21bTVRfRUVfVFhfUE9XRVJfSFRfQlBTS19RUFNLXSk7CisJcHJfaW5mbygiTVRfRUVfVFhfUE9X
-RVJfSFRfMTZfNjRfUUFNOlx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9UWF9QT1dFUl9IVF8x
-Nl82NF9RQU1dKTsKKwlwcl9pbmZvKCJNVF9FRV9UWF9QT1dFUl9IVF82NF9RQU06XHQlKnBoXG4i
-LCAyLCAmZWVwcm9tW01UX0VFX1RYX1BPV0VSX0hUXzY0X1FBTV0pOworCXByX2luZm8oIk1UX0VF
-X0VMQU5fUlhfTU9ERV9HQUlOOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9FTEFOX1JYX01P
-REVfR0FJTl0pOworCXByX2luZm8oIk1UX0VFX0VMQU5fUlhfTU9ERV9ORjpcdCUqcGhcbiIsIDEs
-ICZlZXByb21bTVRfRUVfRUxBTl9SWF9NT0RFX05GXSk7CisJcHJfaW5mbygiTVRfRUVfRUxBTl9S
-WF9NT0RFX1AxREI6XHQlKnBoXG4iLCAxLCAmZWVwcm9tW01UX0VFX0VMQU5fUlhfTU9ERV9QMURC
-XSk7CisJcHJfaW5mbygiTVRfRUVfRUxBTl9CWVBBU1NfTU9ERV9HQUlOOlx0JSpwaFxuIiwgMSwg
-JmVlcHJvbVtNVF9FRV9FTEFOX0JZUEFTU19NT0RFX0dBSU5dKTsKKwlwcl9pbmZvKCJNVF9FRV9F
-TEFOX0JZUEFTU19NT0RFX05GOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9FTEFOX0JZUEFT
-U19NT0RFX05GXSk7CisJcHJfaW5mbygiTVRfRUVfRUxBTl9CWVBBU1NfTU9ERV9QMURCOlx0JSpw
-aFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9FTEFOX0JZUEFTU19NT0RFX1AxREJdKTsKKwlwcl9pbmZv
-KCJNVF9FRV9TVEVQX05VTV9ORUdfNl83Olx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9TVEVQ
-X05VTV9ORUdfNl83XSk7CisJcHJfaW5mbygiTVRfRUVfU1RFUF9OVU1fTkVHXzRfNTpcdCUqcGhc
-biIsIDIsICZlZXByb21bTVRfRUVfU1RFUF9OVU1fTkVHXzRfNV0pOworCXByX2luZm8oIk1UX0VF
-X1NURVBfTlVNX05FR18yXzM6XHQlKnBoXG4iLCAyLCAmZWVwcm9tW01UX0VFX1NURVBfTlVNX05F
-R18yXzNdKTsKKwlwcl9pbmZvKCJNVF9FRV9TVEVQX05VTV9ORUdfMF8xOlx0JSpwaFxuIiwgMiwg
-JmVlcHJvbVtNVF9FRV9TVEVQX05VTV9ORUdfMF8xXSk7CisJcHJfaW5mbygiTVRfRUVfUkVGX1NU
-RVBfMjRHOlx0JSpwaFxuIiwgMiwgJmVlcHJvbVtNVF9FRV9SRUZfU1RFUF8yNEddKTsKKwlwcl9p
-bmZvKCJNVF9FRV9TVEVQX05VTV9QTFVTXzFfMjpcdCUqcGhcbiIsIDIsICZlZXByb21bTVRfRUVf
-U1RFUF9OVU1fUExVU18xXzJdKTsKKwlwcl9pbmZvKCJNVF9FRV9TVEVQX05VTV9QTFVTXzNfNDpc
-dCUqcGhcbiIsIDIsICZlZXByb21bTVRfRUVfU1RFUF9OVU1fUExVU18zXzRdKTsKKwlwcl9pbmZv
-KCJNVF9FRV9TVEVQX05VTV9QTFVTXzVfNjpcdCUqcGhcbiIsIDIsICZlZXByb21bTVRfRUVfU1RF
-UF9OVU1fUExVU181XzZdKTsKKwlwcl9pbmZvKCJNVF9FRV9TVEVQX05VTV9QTFVTXzc6XHQlKnBo
-XG4iLCAxLCAmZWVwcm9tW01UX0VFX1NURVBfTlVNX1BMVVNfN10pOworCXByX2luZm8oIk1UX0VF
-X0NQX0ZUX1ZFUlNJT046XHQlKnBoXG4iLCAxLCAmZWVwcm9tW01UX0VFX0NQX0ZUX1ZFUlNJT05d
-KTsKKwlwcl9pbmZvKCJNVF9FRV9UWF9QT1dFUl9UU1NJX09GRjpcdCUqcGhcbiIsIDEsICZlZXBy
-b21bTVRfRUVfVFhfUE9XRVJfVFNTSV9PRkZdKTsKKwlwcl9pbmZvKCJNVF9FRV9YVEFMX0ZSRVFf
-T0ZGU0VUOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9YVEFMX0ZSRVFfT0ZGU0VUXSk7CisJ
-cHJfaW5mbygiTVRfRUVfWFRBTF9UUklNXzJfQ09NUDpcdCUqcGhcbiIsIDEsICZlZXByb21bTVRf
-RUVfWFRBTF9UUklNXzJfQ09NUF0pOworCXByX2luZm8oIk1UX0VFX1hUQUxfVFJJTV8zX0NPTVA6
-XHQlKnBoXG4iLCAxLCAmZWVwcm9tW01UX0VFX1hUQUxfVFJJTV8zX0NPTVBdKTsKKwlwcl9pbmZv
-KCJNVF9FRV9YVEFMX1dGX1JGQ0FMOlx0JSpwaFxuIiwgMSwgJmVlcHJvbVtNVF9FRV9YVEFMX1dG
-X1JGQ0FMXSk7CisKICAJaWYgKGRldi0+bXQ3Ni5vdHAuZGF0YSkgewogIAkJaWYgKG10NzYwM19j
-aGVja19lZXByb20oJmRldi0+bXQ3NikgPT0gMCkKICAJCQltdDc2MDNfYXBwbHlfY2FsX2ZyZWVf
-ZGF0YShkZXYsIGRldi0+bXQ3Ni5vdHAuZGF0YSk7CgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Psi polling mechanism is trying to minimize the number of wakeups to
+run psi_poll_work and is currently relying on timer_pending() to detect
+when this work is already scheduled. This provides a window of opportunity
+for psi_group_change to schedule an immediate psi_poll_work after
+poll_timer_fn got called but before psi_poll_work could reschedule itself.
+Below is the depiction of this entire window:
+
+poll_timer_fn
+  wake_up_interruptible(&group->poll_wait);
+
+psi_poll_worker
+  wait_event_interruptible(group->poll_wait, ...)
+  psi_poll_work
+    psi_schedule_poll_work
+      if (timer_pending(&group->poll_timer)) return;
+      ...
+      mod_timer(&group->poll_timer, jiffies + delay);
+
+Prior to 461daba06bdc we used to rely on poll_scheduled atomic which was
+reset and set back inside psi_poll_work and therefore this race window
+was much smaller.
+The larger window causes increased number of wakeups and our partners
+report visible power regression of ~10mA after applying 461daba06bdc.
+Bring back the poll_scheduled atomic and make this race window even
+narrower by resetting poll_scheduled only when we reach polling expiration
+time. This does not completely eliminate the possibility of extra wakeups
+caused by a race with psi_group_change however it will limit it to the
+worst case scenario of one extra wakeup per every tracking window (0.5s
+in the worst case).
+This patch also ensures correct ordering between clearing poll_scheduled
+flag and obtaining changed_states using memory barrier. Correct ordering
+between updating changed_states and setting poll_scheduled is ensured by
+atomic_xchg operation.
+By tracing the number of immediate rescheduling attempts performed by
+psi_group_change and the number of these attempts being blocked due to
+psi monitor being already active, we can assess the effects of this change:
+
+Before the patch:
+                                           Run#1    Run#2      Run#3
+Immediate reschedules attempted:           684365   1385156    1261240
+Immediate reschedules blocked:             682846   1381654    1258682
+Immediate reschedules (delta):             1519     3502       2558
+Immediate reschedules (% of attempted):    0.22%    0.25%      0.20%
+
+After the patch:
+                                           Run#1    Run#2      Run#3
+Immediate reschedules attempted:           882244   770298    426218
+Immediate reschedules blocked:             881996   769796    426074
+Immediate reschedules (delta):             248      502       144
+Immediate reschedules (% of attempted):    0.03%    0.07%     0.03%
+
+The number of non-blocked immediate reschedules dropped from 0.22-0.25%
+to 0.03-0.07%. The drop is attributed to the decrease in the race window
+size and the fact that we allow this race only when psi monitors reach
+polling window expiration time.
+
+Fixes: 461daba06bdc ("psi: eliminate kthread_worker from psi trigger scheduling mechanism")
+Reported-by: Kathleen Chang <yt.chang@mediatek.com>
+Reported-by: Wenju Xu <wenju.xu@mediatek.com>
+Reported-by: Jonathan Chen <jonathan.jmchen@mediatek.com>
+Signed-off-by: Suren Baghdasaryan <surenb@google.com>
+Tested-by: SH Chen <show-hong.chen@mediatek.com>
+---
+- Replaced atomic_cmpxchg() with atomic_xchg() to ensure correct ordering
+  per PeterZ
+- Added memory barrier between resetting poll_scheduled and obtaining
+  changed_states per PeterZ and Johannes
+- Added a paragraph in the patch description about the ordering guarantees
+  added in this patch
+
+ include/linux/psi_types.h |  1 +
+ kernel/sched/psi.c        | 46 +++++++++++++++++++++++++++++----------
+ 2 files changed, 36 insertions(+), 11 deletions(-)
+
+diff --git a/include/linux/psi_types.h b/include/linux/psi_types.h
+index 0a23300d49af..ef8bd89d065e 100644
+--- a/include/linux/psi_types.h
++++ b/include/linux/psi_types.h
+@@ -158,6 +158,7 @@ struct psi_group {
+ 	struct timer_list poll_timer;
+ 	wait_queue_head_t poll_wait;
+ 	atomic_t poll_wakeup;
++	atomic_t poll_scheduled;
+ 
+ 	/* Protects data used by the monitor */
+ 	struct mutex trigger_lock;
+diff --git a/kernel/sched/psi.c b/kernel/sched/psi.c
+index 1652f2bb54b7..544676b2c1dc 100644
+--- a/kernel/sched/psi.c
++++ b/kernel/sched/psi.c
+@@ -196,6 +196,7 @@ static void group_init(struct psi_group *group)
+ 	INIT_DELAYED_WORK(&group->avgs_work, psi_avgs_work);
+ 	mutex_init(&group->avgs_lock);
+ 	/* Init trigger-related members */
++	atomic_set(&group->poll_scheduled, 0);
+ 	mutex_init(&group->trigger_lock);
+ 	INIT_LIST_HEAD(&group->triggers);
+ 	memset(group->nr_triggers, 0, sizeof(group->nr_triggers));
+@@ -559,18 +560,14 @@ static u64 update_triggers(struct psi_group *group, u64 now)
+ 	return now + group->poll_min_period;
+ }
+ 
+-/* Schedule polling if it's not already scheduled. */
+-static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
++/* Schedule polling if it's not already scheduled or forced. */
++static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
++				   bool force)
+ {
+ 	struct task_struct *task;
+ 
+-	/*
+-	 * Do not reschedule if already scheduled.
+-	 * Possible race with a timer scheduled after this check but before
+-	 * mod_timer below can be tolerated because group->polling_next_update
+-	 * will keep updates on schedule.
+-	 */
+-	if (timer_pending(&group->poll_timer))
++	/* xchg should be called even when !force to set poll_scheduled */
++	if (atomic_xchg(&group->poll_scheduled, 1) && !force)
+ 		return;
+ 
+ 	rcu_read_lock();
+@@ -582,12 +579,15 @@ static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+ 	 */
+ 	if (likely(task))
+ 		mod_timer(&group->poll_timer, jiffies + delay);
++	else
++		atomic_set(&group->poll_scheduled, 0);
+ 
+ 	rcu_read_unlock();
+ }
+ 
+ static void psi_poll_work(struct psi_group *group)
+ {
++	bool force_reschedule = false;
+ 	u32 changed_states;
+ 	u64 now;
+ 
+@@ -595,6 +595,28 @@ static void psi_poll_work(struct psi_group *group)
+ 
+ 	now = sched_clock();
+ 
++	if (now > group->polling_until) {
++		/*
++		 * We are either about to start or might stop polling if no
++		 * state change was recorded. Resetting poll_scheduled leaves
++		 * a small window for psi_group_change to sneak in and schedule
++		 * an immegiate poll_work before we get to rescheduling. One
++		 * potential extra wakeup at the end of the polling window
++		 * should be negligible and polling_next_update still keeps
++		 * updates correctly on schedule.
++		 */
++		atomic_set(&group->poll_scheduled, 0);
++		/*
++		 * Ensure that operations of clearing group->poll_scheduled and
++		 * obtaining changed_states are not reordered.
++		 */
++		smp_mb();
++	} else {
++		/* Polling window is not over, keep rescheduling */
++		force_reschedule = true;
++	}
++
++
+ 	collect_percpu_times(group, PSI_POLL, &changed_states);
+ 
+ 	if (changed_states & group->poll_states) {
+@@ -620,7 +642,8 @@ static void psi_poll_work(struct psi_group *group)
+ 		group->polling_next_update = update_triggers(group, now);
+ 
+ 	psi_schedule_poll_work(group,
+-		nsecs_to_jiffies(group->polling_next_update - now) + 1);
++		nsecs_to_jiffies(group->polling_next_update - now) + 1,
++		force_reschedule);
+ 
+ out:
+ 	mutex_unlock(&group->trigger_lock);
+@@ -744,7 +767,7 @@ static void psi_group_change(struct psi_group *group, int cpu,
+ 	write_seqcount_end(&groupc->seq);
+ 
+ 	if (state_mask & group->poll_states)
+-		psi_schedule_poll_work(group, 1);
++		psi_schedule_poll_work(group, 1, false);
+ 
+ 	if (wake_clock && !delayed_work_pending(&group->avgs_work))
+ 		schedule_delayed_work(&group->avgs_work, PSI_FREQ);
+@@ -1239,6 +1262,7 @@ static void psi_trigger_destroy(struct kref *ref)
+ 		 * can no longer be found through group->poll_task.
+ 		 */
+ 		kthread_stop(task_to_destroy);
++		atomic_set(&group->poll_scheduled, 0);
+ 	}
+ 	kfree(t);
+ }
+-- 
+2.32.0.93.g670b81a890-goog
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
