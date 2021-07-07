@@ -2,92 +2,95 @@ Return-Path: <SRS0=DDi+=L7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20D61C07E95
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 20:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B6F1C07E95
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 22:44:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C63C961CD1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 20:54:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C63C961CD1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E5F5061CCA
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Jul 2021 22:44:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5F5061CCA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+/SY2Da0ri1TLc0jJqO8YJnjfi8uTCU4W6YY+iQN79I=; b=v5CsbV0sLCiQn7o156HzKDO0ks
-	VzfXXmso8R97hETyffihWO//WFVGlioyltbH4h8Dl3VHDLnrrC6IUafhm2BGFYm42Jdg4LM/wFCvt
-	fwKb2VaTpM6T5q/R96YkE6oHFmBN6tR9W10J7a2WX+QRsZdb0uPXDG8hOnE9mXj6gb3JFFVgkcOp6
-	IufTtZuDPP1gx6qngxYwDiOuLLmttu7dGjnzXzKPE60iAR32e9o5y02c1UaOIZyaT3KRKJciPVsRv
-	cAXV+u8SvjuNlF1W5SpAPUgydcy0NjKEgaoOv/TwDZvkEDzYpqzJXE0NR+HjsOyFV3qp4lxU2jHCU
-	x5xZfuLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KceZmhQSV5EnaEJcHPWm+QGfumZnhOoWP55uCfz/qv0=; b=Rfrjf2DK0sfRYZ
+	C0xw7Y5hzGetoFjJQghAgwfuglhEZtHroaJZxNn8S+R/ZwrK6s+A1ELCdy1CMTjvzOjyuFgbGvIra
+	/XLNKpVTWtpMtqv5ROpQ0WCxEc/OEZTPFOjwEuOWRqT00mtqasGWX5LRGqUMffXovEj0q1DuzrQ8r
+	c+T/axMk2uhnkIO1FJVJCsJcJsmZ7bOlrRj5ILIW9IoPuVnzQaqSEXJkq1gVHr40BaGAYnjbc+4OM
+	kmkymhDqfP0nmv4CygJh+rT6Mr6haAdQ30X0ceqazKqmSFyfRInEXZai00PXWxiMUTAkEv5CZzACS
+	vdv6kR4Tk1GQ5r6Iyj8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1EYK-00Fj51-5l; Wed, 07 Jul 2021 20:53:52 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1m1GGy-00Fp2S-Dt; Wed, 07 Jul 2021 22:44:04 +0000
+Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1EYG-00Fj30-TY
- for linux-mediatek@lists.infradead.org; Wed, 07 Jul 2021 20:53:50 +0000
-Received: by mail-lf1-x135.google.com with SMTP id q18so7737948lfc.7
- for <linux-mediatek@lists.infradead.org>; Wed, 07 Jul 2021 13:53:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:references:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=6Wp8xx1y13zDv9+ptI8UgWi/fuXwVxT7bTMwaSgknCI=;
- b=HRqY3NwXYMp/7k9uzipTPVp40AirgtiJsS7sB0HoH/1/E7P5wpz9jDBjTuUz+PdmDy
- bdI3sncjwzbTdcNURukKOsBeAUopnXHkmRXW/N4FrUoUnbIrWUzyy8oR01SpiQg3nSUv
- JWUYMB2Ya7NQPXRhq5bTXnQ7QTcsEnkTGzt9PBY1fW5nbRGf4P+dXsOZ1I1D9pdtgAmQ
- uyXP9q3mjsLmeflori4dUMw1RXs7LMrwUHhO6if4Vcfp8woQw2QcEl/8rrZ6bkaHFtcf
- WUHYINYALnV2SIq8mAMxBJ1/Oy8CoG0KqouVPmFNARBTXQlX/mPGhc/QT51XZePZ5eQn
- 9HMA==
+ id 1m1GGv-00Fp1T-2D
+ for linux-mediatek@lists.infradead.org; Wed, 07 Jul 2021 22:44:02 +0000
+Received: by mail-yb1-xb2c.google.com with SMTP id r135so5821412ybc.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 07 Jul 2021 15:44:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JzJsy1Gwb/DpffhxPKiomTMCjSp1XUEhZNn7jP3X0B8=;
+ b=fuza8TZG/+wORlx+skCd5tjI1UPpjBQQUA2jFWQg/Oh7e01Dp71R2yZOxJvJLhUGAp
+ IglrsozoUeOmc5G9oOAbtLOxiCVc9ofA7T9xmP1zQqUKEuI50+yIsXkqoLyFMYjfLFYu
+ vm2JylA/vj+/dNWLUu/XXVy/1e6zIR4xYl48x9A9LkonYmYqw05SB8T6U3RoCfdVAOR6
+ Kg4q4L4UkKszzidWs+1OUtf3oEkSWWUIpimNRSDBu8dSid7zqxDgroM7XpjFpI/jhecd
+ kIJIRSU43TwvStlVOCs4j837YU79qT1l6Vxix0jq3//bNzfFucfr8h7fuJQjUERfKKD2
+ hsXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6Wp8xx1y13zDv9+ptI8UgWi/fuXwVxT7bTMwaSgknCI=;
- b=tJn8QJX00yL8FXEUKA1DOzeJ+Q1+RNhi6JfSpUnIgvbD/W80l3bxLoXr0PtY9ahcu8
- 49W8e4ho9d9DdqWy4lr3VlUXt/DUt1KIJRSzzitX61nBgPHyn0FZuD5Fj1mVwRZqCAHQ
- p2C+9H8EAK80mfcPibcGR3l0d9pwyAF/9iCfLthdNSGTMMJNkSkSjneLk/VzrYKvL8D8
- U1ab7/3Ovwdsmmtxs82eRvR4SPk+lICq5BoXP3VJUQ3mE8UoO2UzXLvnGqEQ1IN60Ho+
- kCOYLv1kIRtI1G7mQVu1CJbHNhI7/P2gT9titlflqijeEPmRS8tSq4z2dVvDgnf7cU2T
- y7Cw==
-X-Gm-Message-State: AOAM533KIXrd/ZaeoBMhohLlwT08w4/jbZP0cw/R12T/g+AteuTxmXL+
- tlBz9A3vYDQtyMMDmSZfTLqeznno244=
-X-Google-Smtp-Source: ABdhPJzOr/pWWdU6/w7teufg+IjiSjFoLhovNeC7TKbtUreCBIdM4eIomM4VSn0j04ZE7uZ3K2s+Sw==
-X-Received: by 2002:a19:e05c:: with SMTP id g28mr20784386lfj.299.1625691227031; 
- Wed, 07 Jul 2021 13:53:47 -0700 (PDT)
-Received: from localhost.localdomain
- (ip-194-187-74-233.konfederacka.maverick.com.pl. [194.187.74.233])
- by smtp.googlemail.com with ESMTPSA id s17sm11044ljg.28.2021.07.07.13.53.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jul 2021 13:53:46 -0700 (PDT)
-Subject: Re: Unstable WiFi with mt76 on MT7628AN
-From: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <7c96d5ee-86c1-8068-1b58-40db6087a24f@gmail.com>
- <88dfb184-7f14-d31a-5e07-668f90c909d8@gmail.com>
-Message-ID: <14d485fc-eed4-a65c-747b-a83478da5d8f@gmail.com>
-Date: Wed, 7 Jul 2021 22:53:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JzJsy1Gwb/DpffhxPKiomTMCjSp1XUEhZNn7jP3X0B8=;
+ b=izs8qYcKEyPt/h/IXnYBVougGgW32CEaMRFbIzBI4cZ6TjOAJy3gPHcP/uNr3JaL8O
+ 3d44x5Wv9PBDqP019JKfA1JEPYcL6ijQlrc+X6aRSrPprXC5/r8hZhCvGCr7vCQPdmqx
+ IJhI3iXJCheaaqLxN2KH0akpkwYZdodJV0Q+SPeTH6WRSVSvruzPLp3dcVeN5Dyem6+7
+ xai0tlm86HJ54K099VzBSYkcZxaEnZ8Lq8TZGjsIn/isVb83gr0dZrHngWu+K7V+Ghfd
+ KX9+cTXEURniIrmth5nSH3dshseaWpzfCkfQoUdB1KSuYOJw7zeT0wt19pSPlAn/Ir8j
+ dd4Q==
+X-Gm-Message-State: AOAM531WAMBdXNj4VC6aTvsM+9g0q5OBz9xGtncGwJ+Uvc2J4c+DFMzq
+ rJxOz6Jl6PO0/e6XlHUkDHW6kh1lfruzJC4YWQtENw==
+X-Google-Smtp-Source: ABdhPJzjWRdscMuHWjaEPoeIecZQx43oo8ZD+Vf/VQroZQghr+QBugm9G0OPkAw3ywmF0ah7ilDJM/3M9Wex+Mcoki8=
+X-Received: by 2002:a25:4102:: with SMTP id o2mr33355128yba.23.1625697839576; 
+ Wed, 07 Jul 2021 15:43:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <88dfb184-7f14-d31a-5e07-668f90c909d8@gmail.com>
-Content-Language: en-US
+References: <20210707023933.1691149-1-surenb@google.com>
+ <YOWugYxQ9Yfsqba2@cmpxchg.org>
+In-Reply-To: <YOWugYxQ9Yfsqba2@cmpxchg.org>
+From: Suren Baghdasaryan <surenb@google.com>
+Date: Wed, 7 Jul 2021 15:43:48 -0700
+Message-ID: <CAJuCfpGx22iTaDGCfOrM_pD6PYZqQrni2+u5jQy+NpNeNg7B9w@mail.gmail.com>
+Subject: Re: [PATCH v3 1/1] psi: stop relying on timer_pending for poll_work
+ rescheduling
+To: Johannes Weiner <hannes@cmpxchg.org>
+Cc: Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>, 
+ Juri Lelli <juri.lelli@redhat.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>, 
+ Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>, 
+ Benjamin Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, 
+ Daniel Bristot de Oliveira <bristot@redhat.com>, matthias.bgg@gmail.com, 
+ Minchan Kim <minchan@google.com>, Tim Murray <timmurray@google.com>, 
+ YT Chang <yt.chang@mediatek.com>,
+ =?UTF-8?B?V2VuanUgWHUgKOiuuOaWh+S4vik=?= <wenju.xu@mediatek.com>, 
+ =?UTF-8?B?Sm9uYXRoYW4gSk1DaGVuICjpmbPlrrbmmI4p?=
+ <jonathan.jmchen@mediatek.com>, 
+ LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, kernel-team <kernel-team@android.com>, 
+ SH Chen <show-hong.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210707_135349_017911_EF1DE690 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20210707_154401_196983_214171B8 
+X-CRM114-Status: GOOD (  30.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,65 +102,137 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMDQuMDcuMjAyMSAwMDoxOSwgUmFmYcWCIE1pxYJlY2tpIHdyb3RlOgo+IEl0IG1heSBiZSB3
-b3J0aCBtZW50aW9uaW5nIEkgZm91bmQgMSBXQVJOSU5HIGluIG15IGRtZXNnLiBJIGNhbid0IHRl
-bGwKPiBpZiB0aGF0IGhhcyBoYXBwZW5lZCBkdXJpbmcgYW55IHNsb3cgZG93biAvIHN0YWxsIG9y
-IG5vdC4gVW5mb3J1bmF0ZWx5IEkKPiBkb24ndCBoYXZlIHN5bWJvbHMgaW4gbXkgYmFja3RyYWNl
-Lgo+IAo+IFsgMzI0NS4xNzA2ODRdIC0tLS0tLS0tLS0tLVsgY3V0IGhlcmUgXS0tLS0tLS0tLS0t
-LQo+IFsgMzI0NS4xNzU0MzRdIFdBUk5JTkc6IENQVTogMCBQSUQ6IDYyNyBhdCB0YXJnZXQtbWlw
-c2VsXzI0a2NfbXVzbC9saW51eC1yYW1pcHNfbXQ3Nng4L210NzYtMjAyMS0wNS0xNS05ZDczNjU0
-NS9tdDc2MDMvbWFjLmM6MjA2IDB4ODM1ZTQ0YWMgW210NzYwM2VAYmI4YzllNGMrMHg5NTIwXQoK
-SSd2ZSBpbnN0YWxsZWQgT3BlbldydCBzbmFwc2hvdCB3aXRoIGRlYnVnIHN5bWJvbHMgaW5jbHVk
-ZWQuIEkKcmVwcm9kdWNlZCB0aGUgV0FSTklORy4gSXQgZG9lc24ndCBzZWVtIHRvIGJlIHJlbGF0
-ZWQgdG8gc2xvdyBkb3ducyAvCnN0YWxscyAvIG5vIGJlYWNvbnMuCgpbIDMwOTAuMzMzOTI2XSAt
-LS0tLS0tLS0tLS1bIGN1dCBoZXJlIF0tLS0tLS0tLS0tLS0KWyAzMDkwLjMzODcxNF0gV0FSTklO
-RzogQ1BVOiAwIFBJRDogMTE4IGF0IHRhcmdldC1taXBzZWxfMjRrY19tdXNsL2xpbnV4LXJhbWlw
-c19tdDc2eDgvbXQ3Ni0yMDIxLTA2LTA2LTIyYjY5MDMzL210NzYwMy9tYWMuYzoyMDYgbXQ3NjAz
-X2ZpbHRlcl90eCsweDE2Yy8weDE3NCBbbXQ3NjAzZV0KWyAzMDkwLjM1MzYyM10gTW9kdWxlcyBs
-aW5rZWQgaW46IHBwcG9lIHBwcF9hc3luYyBpcHRhYmxlX25hdCB4dF9zdGF0ZSB4dF9uYXQgeHRf
-Y29ubnRyYWNrIHh0X1JFRElSRUNUIHh0X01BU1FVRVJBREUgeHRfRkxPV09GRkxPQUQgeHRfQ1Qg
-cHBwb3ggcHBwX2dlbmVyaWMgbmZfbmF0IG5mX2Zsb3dfdGFibGVfaHcgbmZfZmxvd190YWJsZSBu
-Zl9jb25udHJhY2sgbXQ3NjAzZSBtdDc2IG1hYzgwMjExIGlwdF9SRUpFQ1QgY2ZnODAyMTEgeHRf
-dGltZSB4dF90Y3B1ZHAgeHRfbXVsdGlwb3J0IHh0X21hcmsgeHRfbWFjIHh0X2xpbWl0IHh0X2Nv
-bW1lbnQgeHRfVENQTVNTIHh0X0xPRyBzbGhjIG5mX3JlamVjdF9pcHY0IG5mX2xvZ19pcHY0IG5m
-X2RlZnJhZ19pcHY2IG5mX2RlZnJhZ19pcHY0IGlwdGFibGVfbWFuZ2xlIGlwdGFibGVfZmlsdGVy
-IGlwX3RhYmxlcyBjcmNfY2NpdHQgY29tcGF0IG5mX2xvZ19pcHY2IG5mX2xvZ19jb21tb24gaXA2
-dGFibGVfbWFuZ2xlIAppcDZ0YWJsZV9maWx0ZXIgaXA2X3RhYmxlcyBpcDZ0X1JFSkVDVCB4X3Rh
-YmxlcyBuZl9yZWplY3RfaXB2NiBzaGEyNTZfZ2VuZXJpYyBsaWJzaGEyNTYgc2VxaXYgaml0dGVy
-ZW50cm9weV9ybmcgZHJiZyBobWFjIGdoYXNoX2dlbmVyaWMgZ2YxMjhtdWwgZ2NtIGN0ciBjbWFj
-IGNjbSBsZWRzX2dwaW8gZ3Bpb19idXR0b25faG90cGx1ZyBhZWFkIGNyeXB0b21nciBjcnlwdG9f
-bnVsbCBjcnlwdG9faGFzaApbIDMwOTAuNDE3NjM1XSBDUFU6IDAgUElEOiAxMTggQ29tbToga3dv
-cmtlci91MzowIE5vdCB0YWludGVkIDUuNC4xMjggIzAKWyAzMDkwLjQyNDE4Nl0gV29ya3F1ZXVl
-OiBuYXBpX3dvcmtxIG5hcGlfd29ya2ZuClsgMzA5MC40Mjg2MTZdIFN0YWNrIDogODA1ODlhYmMg
-ODM1NzQ0YWMgMDAwMDAwMDkgMDAwMDAwMDAgMDAwMDAwMDAgODAwNWIxMDAgODNkNjRjYzAgMDAw
-MDAwMDAKWyAzMDkwLjQzNzEwNl0gICAgICAgICAwMDAwMDAxNyA4M2M5OGRiYyA4MDU3YTZiOCA4
-M2RlNWJlYyA4MDYyMDAwMCAwMDAwMDAwMSA4M2RlNWJjMCA2MDFjMWUzNwpbIDMwOTAuNDQ1NTgz
-XSAgICAgICAgIDAwMDAwMDAwIDAwMDAwMDAwIDgwNjM5M2MwIDAwMDAwMDAwIDcxNmI3MjZmIDAw
-MDAwMGEwIDZmNzc1ZjY5IDZlNjY2YjcyClsgMzA5MC40NTQwNzBdICAgICAgICAgMDAwMDAwMDAg
-MDAwMDAwOTkgMDAwMDAwMDAgMDAwNjc4ZmEgMDAwMDAwMDAgMDAwMDAwMDkgMDAwMDAwMDAgODM1
-NzQ0YWMKWyAzMDkwLjQ2MjU1N10gICAgICAgICAwMDAwMDAwOSAwMDAwMDAwMCAwMDAwMDAwMCA4
-MzU4MDAwMCAwMDAwMDAwMCA4MDJiYmFjOCAwMDAwMDAwMCA4MDc4MDAwMApbIDMwOTAuNDcxMDQ2
-XSAgICAgICAgIC4uLgpbIDMwOTAuNDczNTIyXSBDYWxsIFRyYWNlOgpbIDMwOTAuNDc2MDE3XSBb
-PDgwMDA5YzkwPl0gc2hvd19zdGFjaysweDMwLzB4MTAwClsgMzA5MC40ODA1NDJdIFs8ODAwMjNi
-YTA+XSBfX3dhcm4rMHhjMC8weDEwYwpbIDMwOTAuNDg0NjkzXSBbPDgwMDIzYzQ4Pl0gd2Fybl9z
-bG93cGF0aF9mbXQrMHg1Yy8weGFjClsgMzA5MC40ODk3NTRdIFs8ODM1NzQ0YWM+XSBtdDc2MDNf
-ZmlsdGVyX3R4KzB4MTZjLzB4MTc0IFttdDc2MDNlXQpbIDMwOTAuNDk1NzY3XSBbPDgzNTc0NjQ0
-Pl0gbXQ3NjAzX3d0Ymxfc2V0X3BzKzB4MTJjLzB4MTM0IFttdDc2MDNlXQpbIDMwOTAuNTAxOTcz
-XSBbPDgzNTcxYTFjPl0gbXQ3NjAzX3N0YV9wcysweDM4LzB4NDI4IFttdDc2MDNlXQpbIDMwOTAu
-NTA3NjY5XSBbPDgzNTU0N2Y0Pl0gbXQ3Nl9yeF9wb2xsX2NvbXBsZXRlKzB4MmUwLzB4NWIwIFtt
-dDc2XQpbIDMwOTAuNTEzODYwXSBbPDgzNTUxNTNjPl0gbXQ3Nl9kbWFfcnhfcG9sbCsweDNkOC8w
-eGVmYyBbbXQ3Nl0KWyAzMDkwLjUxOTYzNF0gWzw4MDM1YjNkYz5dIF9fbmFwaV9wb2xsKzB4M2Mv
-MHgxMGMKWyAzMDkwLjUyNDIyN10gWzw4MDM1YjRlYz5dIG5hcGlfd29ya2ZuKzB4NDAvMHg5MApb
-IDMwOTAuNTI4NzUxXSBbPDgwMDNiMGU4Pl0gcHJvY2Vzc19vbmVfd29yaysweDIyMC8weDQ4MApb
-IDMwOTAuNTMzODc4XSBbPDgwMDNiNGIwPl0gd29ya2VyX3RocmVhZCsweDE2OC8weDVjOApbIDMw
-OTAuNTM4NzU5XSBbPDgwMDQwMWVjPl0ga3RocmVhZCsweDEzOC8weDE0MApbIDMwOTAuNTQzMDg4
-XSBbPDgwMDA1MTc4Pl0gcmV0X2Zyb21fa2VybmVsX3RocmVhZCsweDE0LzB4MWMKWyAzMDkwLjU0
-ODU3N10gLS0tWyBlbmQgdHJhY2UgMDY4YTc1OWVkMTY1NGI1MiBdLS0tCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5n
-IGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Wed, Jul 7, 2021 at 6:39 AM Johannes Weiner <hannes@cmpxchg.org> wrote:
+>
+> This looks good to me now code wise. Just a comment on the comments:
+>
+> On Tue, Jul 06, 2021 at 07:39:33PM -0700, Suren Baghdasaryan wrote:
+> > @@ -559,18 +560,14 @@ static u64 update_triggers(struct psi_group *group, u64 now)
+> >       return now + group->poll_min_period;
+> >  }
+> >
+> > -/* Schedule polling if it's not already scheduled. */
+> > -static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+> > +/* Schedule polling if it's not already scheduled or forced. */
+> > +static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
+> > +                                bool force)
+> >  {
+> >       struct task_struct *task;
+> >
+> > -     /*
+> > -      * Do not reschedule if already scheduled.
+> > -      * Possible race with a timer scheduled after this check but before
+> > -      * mod_timer below can be tolerated because group->polling_next_update
+> > -      * will keep updates on schedule.
+> > -      */
+> > -     if (timer_pending(&group->poll_timer))
+> > +     /* xchg should be called even when !force to set poll_scheduled */
+> > +     if (atomic_xchg(&group->poll_scheduled, 1) && !force)
+> >               return;
+>
+> This explains what the code does, but not why. It would be good to
+> explain the ordering with poll_work, here or there. But both sides
+> should mention each other.
+
+How about this:
+
+/*
+ * atomic_xchg should be called even when !force to always set poll_scheduled
+ * and to provide a memory barrier (see the comment inside psi_poll_work).
+ */
+
+>
+> > @@ -595,6 +595,28 @@ static void psi_poll_work(struct psi_group *group)
+> >
+> >       now = sched_clock();
+> >
+> > +     if (now > group->polling_until) {
+> > +             /*
+> > +              * We are either about to start or might stop polling if no
+> > +              * state change was recorded. Resetting poll_scheduled leaves
+> > +              * a small window for psi_group_change to sneak in and schedule
+> > +              * an immegiate poll_work before we get to rescheduling. One
+> > +              * potential extra wakeup at the end of the polling window
+> > +              * should be negligible and polling_next_update still keeps
+> > +              * updates correctly on schedule.
+> > +              */
+> > +             atomic_set(&group->poll_scheduled, 0);
+> > +             /*
+> > +              * Ensure that operations of clearing group->poll_scheduled and
+> > +              * obtaining changed_states are not reordered.
+> > +              */
+> > +             smp_mb();
+>
+> Same here, it would be good to explain that this is ordering the
+> scheduler with the timer such that no events are missed. Feel free to
+> reuse my race diagram from the other thread - those are better at
+> conveying the situation than freeform text.
+
+I tried to make your diagram a bit less abstract by using the actual
+names. How about this?
+
+/*
+ * We need to enforce ordering between poll_scheduled and psi_group_cpu.times
+ * reads and writes in psi_poll_work and psi_group_change functions.
+Otherwise we
+ * might fail to reschedule the timer when monitored states change:
+ *
+ * psi_poll_work:
+ *     poll_scheduled = 0
+ *     smp_mb()
+ *     changed_states = collect_percpu_times()
+ *     if changed_states && xchg(poll_scheduled, 1) == 0
+ *         mod_timer()
+ *
+ * psi_group_change:
+ *     record_times()
+ *     smp_mb()
+ *     if xchg(poll_scheduled, 1) == 0
+ *         mod_timer()
+ *
+ * atomic_xchg in psi_schedule_poll_work implements an implicit memory
+barrier but
+ * we need an explicit one here.
+ */
+
+If we remove smp_mb barriers then there are the following possible
+reordering cases:
+
+Case1: reordering in psi_poll_work
+psi_poll_work                    psi_group_change
+  changed_states = collect_percpu_times()
+                                              record_times()
+                                              if xchg(poll_scheduled,
+1) == 0 <-- false
+                                                  mod_timer()
+  poll_scheduled = 0
+  if changed_states && xchg(poll_scheduled, 1) == 0 <-- changed_states is false
+      mod_timer()
+
+Case2: reordering in psi_group_change
+psi_poll_work                    psi_group_change
+                                              if xchg(poll_scheduled,
+1) == 0 <-- false
+                                                  mod_timer()
+  poll_scheduled = 0
+  changed_states = collect_percpu_times()
+                                                  record_times()
+  if changed_states && xchg(poll_scheduled, 1) == 0 <-- changed_states is false
+      mod_timer()
+
+In both cases mod_timer() is not called, poll update is missed. But
+describing this all in the comments would be an overkill IMHO.
+WDYT?
+
+>
+> Thanks
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
