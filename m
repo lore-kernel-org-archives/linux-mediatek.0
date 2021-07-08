@@ -2,66 +2,93 @@ Return-Path: <SRS0=ooiB=MA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27E1EC07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 07:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2401C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 08:01:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BE38261CDF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 07:22:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE38261CDF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id B65ED61CDD
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 08:01:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B65ED61CDD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/P9t/nie23c7z2x3z31tTz9g7yTqE4bcPUrEuWP7Z1Q=; b=xk1EWpeMVbPD8pl0T0quGdMRvP
-	v1fz/j/2p9mzUjGe7suLyd01Hx2YRKbW0c+aY8XigVO4GeN5ubYjwpMpDkNFPHyqGacLJYt5ebyFa
-	HQnyvNhb2cbuOcy0ulIdyQNvEJxnd4OQdOYYSXvFrpEim56I1Q5hdPfSGH1xnVHJFSxo1kk6KPQe5
-	CvCrYuyTQ6/BaSC80XZpLMSx7XK93o+M6eLUODwSfa7ohH/3+TIEsptI0ebdXtoGeztjL9JhdZO8t
-	DbawifN5To0J8oaE874QVIkIU7fPGZBhJTtNCUdGxskXDqShMhBA5Irs60erRI18HpI/5jbAcIrDp
-	T2pegHrQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=03ovwTtv6D+Zscf3Dxqd095kDiflvZBvnpOHaUpcW/g=; b=Lc4ybhglx09U9O
+	a41x65IKF/6gB69SibXaGCDgkRI+gSa4tcb09i3fDGyncs1qLY02Baj4oBSPKXcD5YvHyqXFXCZy5
+	GMaEipVClPznbuD8Ky4XU/kzrQXLSZTKE98Z7751OgWWlT9F9jFB5hpT9CxLODXxmJ+yXZ3Ig1Z+c
+	OJBM8n0PoL6lYjDa9yiel9aNO4s4jpoSZjaskY6qzVJ9kq11jALNNtVUCadjjCd3+ayUdqtIBVj1E
+	LtzzStR2jLQV18EFhH7xIMQ2AOIxE0I2Q9Td80yS7SJ3+UWC4o5ARjJud8p2LGxYxgAamPOlw2aOM
+	thc+dOmePEz9Z7Xv98kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1OMc-00GBzD-34; Thu, 08 Jul 2021 07:22:26 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m1Oy0-00GGBI-J7; Thu, 08 Jul 2021 08:01:04 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1OMY-00GBxf-9y
- for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 07:22:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 1F3F31F437E4
-Subject: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
-To: Frank Wunderlich <frank-w@public-files.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>
-References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
-Date: Thu, 8 Jul 2021 09:22:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m1Oxw-00GG9o-0W
+ for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 08:01:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1625731244;
+ bh=wA9AHeLKWQAifBhqJObrOYwNMWaU97DuzYK45G3UaqQ=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=DknnnvKv5exA5u8/k8OoK3JdgfZQWpBWxm7uXEV+6fnx9mROFib0fMC6TgGl7vZ+a
+ U8MJ40rzDJu6kKAaNx3y+/R/n8PMTvH3UZHf9IesNzDYeARAFqNn2fdPKw1YPYg4kk
+ O8t5cq+SJIzl4OTZkI7uVHxarJgftBQUr6Nww8lU=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.147.159] ([217.61.147.159]) by web-mail.gmx.net
+ (3c-app-gmx-bap19.server.lan [172.19.172.89]) (via HTTP); Thu, 8 Jul 2021
+ 10:00:43 +0200
 MIME-Version: 1.0
-In-Reply-To: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
-Content-Language: en-US
+Message-ID: <trinity-08e89dce-23c4-42e8-8a66-ddf13921994c-1625731243898@3c-app-gmx-bap19>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
+ <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
+ <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Chun-Kuang
+ Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, Collabora Kernel ML <kernel@collabora.com>
+Subject: Aw: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+Date: Thu, 8 Jul 2021 10:00:43 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+ <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:nHzkuOoJrMHqh2Je6202/sBwJf5zSVTWs7E5v12F+xMyvzw3i4BUnkK3I3U/MXqTZNNoj
+ zFQ5iBqX7t3w2ceLqdmd/BmixdXFdfwC/ihhJvNvYRWJ1uSjSKw+qRgxwHLPAe8AACOFOz4DagUU
+ thXAGPauMG4wXnCn2tmRURrdHiiGNs65eFEftSUn6S8qL4n+xviT2+L/mIpdSz19xKVw4Q3Q0Qg+
+ XpnquKPs8FROWy96M+JiAaBq4W8aX5VMmjbJjRE5qUr6x8H/AoyoToiwtXtRxhtzvvOGGRPEy3eH
+ rM=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5nSblhn4RPY=:aIB/8XjVNnqEHS5OsgNem6
+ SFMEIO8pXoqqzF5sdiF4eSPztLE/P2loJC6Fev1sy1LcTq9ZGOkQ6dzonjft8gT7qrhPS5SZP
+ WJ4hOLO0eGsbKpLnBMExEJvFjoAss2fLWrTPFHDg5DXGDaHW8tlHrcHsYZ2EA4KF59JM11Dya
+ Sx+Fw/whu3ttSYwxByb95d9i8qNaCs9pWQN+1u92uSujV1kRDgOT3FsDNoRKoVVhKolqKZDk+
+ 79RPXG8S536zSY/4cTbzbaSY6156R7ysEfO6+CeYuxukn3zzKwcbqED51Or1dmfz2/VqJZewM
+ JAPw4ExE3jFb23k77M1wVZBIO+xL2nFE9FUvmGXODfjxFEHS7ZZgmdBL25MZFMATpXTguSElD
+ KJx4dk0M6WuEm0Ona+lpztZAx8isqq2jWnN45OpsfVKy1gWj/HVKfqdoPXCNnx2i4NChJwCmm
+ 0IvDOa68O8a5k6yEQlmVptmnFWLot+jcahzigF2TXeOKS+p3pOaZ+qgOlL/rT2aJr3Ur0N5JD
+ bAXqUSvb2H78hFgQrmOpe80P0kxLan2Jc6MHKChQNkD584Cf9X69FRZrvAj4Ul5ggO5EfDu3S
+ ipMfBKCu3c8ISYgZ1L6DgjUsfIbsIyVp52+Won0fbC91vcFpJOVG+/Wp6Gn4OFGTijn5JquiN
+ fenLnHl2ucUN1fCa1TjGzYtgyn8f2UlyIMFaHZNMmmconZ1HAx2tDguxTDwAk6gNxIkFgo0dE
+ BDipom+LSe9YaG09trlnFF4cGxO68AZeztI3E4Dh83+5wHAeZdFj+dxyakjPy/PRVMKlHAKyp
+ ChF6nPvX/9aTWLMy6OmS2CXikfAloLSmZTqeLPHHlnIN7KmtcY=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_002222_504712_55B16A73 
-X-CRM114-Status: GOOD (  25.75  )
+X-CRM114-CacheID: sfid-20210708_010100_380768_7C758A67 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,94 +100,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+> Gesendet: Donnerstag, 08. Juli 2021 um 09:22 Uhr
+> Von: "Dafna Hirschfeld" <dafna.hirschfeld@collabora.com>
+> We also encountered that warning on mt8173 device - Acer Chromebook R13. It happen after resuming from suspend to ram.
+> We could not find a version that works and we were not able to find the fix of the bug.
+> It seems like the irq isr is not called after resuming from suspend.
+> Please share if you have new findings regarding that bug.
 
+Hi,
 
-On 06.07.21 11:54, Frank Wunderlich wrote:
-> Hi,
-> 
-> i've noticed that HDMI is broken at least on my board (Bananapi-r2,mt7623) on 5.13.
-> 
-> after some research i noticed that it is working till
-> 
-> commit 2e477391522354e763aa62ee3e281c1ad9e8eb1b
-> Author: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> Date:   Tue Mar 30 13:09:02 2021 +0200
-> 
->      drm/mediatek: Don't support hdmi connector creation
-> 
-> 
-> which is the last of mtk-drm-next-5.13 [1] so i guess a problem with core-patches
-> 
-> dmesg shows the following:
-> 
-> [    7.071342] mediatek-drm mediatek-drm.1.auto: bound 14007000.ovl (ops mtk_dis
-> p_ovl_component_ops)
-> [    7.080330] mediatek-drm mediatek-drm.1.auto: bound 14008000.rdma (ops mtk_di
-> sp_rdma_component_ops)
-> [    7.089429] mediatek-drm mediatek-drm.1.auto: bound 1400b000.color (ops mtk_d
-> isp_color_component_ops)
-> [    7.098689] mediatek-drm mediatek-drm.1.auto: bound 14012000.rdma (ops mtk_di
-> sp_rdma_component_ops)
-> [    7.107814] mediatek-drm mediatek-drm.1.auto: bound 14014000.dpi (ops mtk_dpi
-> _component_ops)
-> [    7.116338] mediatek-drm mediatek-drm.1.auto: Not creating crtc 1 because com
-> ponent 9 is disabled or missing
-> ....
-> [   38.403957] Console: switching to colour frame buffer device 160x64
-> [   48.516398] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
-> [   48.516422] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CRTC:41:cr
-> tc-0] commit wait timed out
-> [   58.756384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
-> [   58.756399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CONNECTOR:
-> 32:HDMI-A-1] commit wait timed out
-> [   68.996384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
-> [   68.996399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [PLANE:33:p
-> lane-0] commit wait timed out
-> [   68.996423] [drm:mtk_drm_crtc_atomic_begin] *ERROR* new event while there is
-> still a pending event
-> [   69.106385] ------------[ cut here ]------------
-> [   69.106392] WARNING: CPU: 2 PID: 7 at drivers/gpu/drm/drm_atomic_helper.c:151
-> 1 drm_atomic_helper_wait_for_vblanks.part.0+0x2a0/0x2a8
-> [   69.106414] [CRTC:41:crtc-0] vblank wait timed out
+i have not yet found a way to make the commit-history flat for running bisect without the issue of disappearing childcommits when mergecommit is out of bisect scope. so i tried to start at working 5.12.0 with mtk-drm-patches and commits from drm core (i hope i have catched them all) by cherry-picking the single commits.
 
-We also encountered that warning on mt8173 device - Acer Chromebook R13. It happen after resuming from suspend to ram.
-We could not find a version that works and we were not able to find the fix of the bug.
-It seems like the irq isr is not called after resuming from suspend.
-Please share if you have new findings regarding that bug.
+c24e104c26aa 2021-06-09 drm: Lock pointer access in drm_master_release()  (HEAD -> 5.12-drm)
+2aa9212803a4 2021-06-08 drm: Fix use-after-free read in drm_getunique()
+23b8d6c3be47 2021-04-08 treewide: Change list_sort to use const pointers
+c1e987f51f06 2021-03-26 drm/dp_mst: Drop DRM_ERROR() on kzalloc() fail in drm_dp_mst_handle_up_req()
+2176a9e962be 2021-04-01 drm/drm_internal.h: Remove repeated struct declaration
+fc5d92c1485d 2021-04-08 drm/syncobj: use newly allocated stub fences
+23a03d271e87 2021-03-29 drm/displayid: rename displayid_hdr to displayid_header
+44ef605cb08f 2021-03-29 drm/displayid: allow data blocks with 0 payload length
+bbdc0aefd1b5 2021-03-29 drm/edid: use the new displayid iterator for tile info
+1ee4a22d671e 2021-03-29 drm/edid: use the new displayid iterator for finding CEA extension
+d9b8c26b8ddf 2021-03-29 drm/edid: use the new displayid iterator for detailed modes
+d9e95df8adc8 2021-03-29 drm/displayid: add new displayid section/block iterators
+2dd279949358 2021-03-29 drm/displayid: add separate drm_displayid.c
+bb1a3611abc1 2021-03-29 drm/edid: make a number of functions, parameters and variables const
+0b18f5b98c71 2021-03-23 drm/dp_helper: Define options for FRL training for HDMI2.1 PCON
+16fbc25ab84b 2021-03-25 drm/mst: Enhance MST topology logging
+bb93ad6ab4e4 2021-03-26 drm: Fix 3 typos in the inline doc
+27d30189b178 2021-03-22 drm/sysfs: Convert sysfs sprintf/snprintf family to sysfs_emit
+04ad4ed36cf2 2021-03-18 drm: Few typo fixes
+b8821cac052f 2021-03-13 drm: Add GUD USB Display driver
+d3df1b84b9ff 2021-03-13 drm/probe-helper: Check epoch counter in output_poll_execute()
+298372a0cda4 2021-03-13 drm/uapi: Add USB connector type
+040c9022809d 2021-03-30 drm/mediatek: Don't support hdmi connector creation
+7c6582b23551 2021-03-30 drm/mediatek: Switch the hdmi bridge ops to the atomic versions
+b1b43d5948b2 2021-02-03 drm/mediatek: Add missing MODULE_DEVICE_TABLE()
+fe5a0ff82cfb 2021-03-13 drm/mediatek: crtc: Make config-updating atomic
 
-Thanks,
-Dafna
+result: it is still working. so at least they do not break ;)
 
+have you found any irq-related message in dmesg (i have not found any irq-error/warning-message)?
+how have you traced that?
 
-> 
-> so i guess the breaking commit may be this:
-> 
-> $ git logone -S"drm_crtc_commit_wait" -- drivers/gpu/drm/
-> b99c2c95412c 2021-01-11 drm: Introduce a drm_crtc_commit_wait helper
-> 
-> in drivers/gpu/drm/drm_atomic{,_helper}.c
-> 
-> but i cannot confirm it because my git bisect does strange things (after defining 5.13 as bad and the 2e4773915223 as good, second step is before the good commit till the end, last steps are 5.11...). sorry, i'm still new to bisect.
-> 
-> the fix is targeting to 5.12-rc2, is guess because CK Hu's tree is based on this...but the fix was not included in 5.12-rc2 (only after 5.12.0...got it by merging 5.12.14)
-> 
-> maybe you can help me?
-> 
-> regards Frank
-> 
-> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next-5.13
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+can somebody point us to the interrupts used for pageflip/vblank "requests"? in the wait-chain i do not see them,
+it seems it is called asynchronous and wait only looks at a state in the completion-struct
+
+i have the issue on bootup, i see only a purple screen instead of fbcon/xserver and the tracebacks
+on serial are very annoying  as they repeating every x seconds (maybe change to WARN_ONCE?).
+But after a while it seems to stop.
+
+imho we need a way to make the history (temporary) flat (remove parent-information from commits to merge) so that bisect have only a list and not a "tree"
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
