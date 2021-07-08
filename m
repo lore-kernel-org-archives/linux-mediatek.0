@@ -2,80 +2,86 @@ Return-Path: <SRS0=ooiB=MA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E93D5C07E9C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6FD7C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:05:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AABCB61418
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:14:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AABCB61418
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8F67261493
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:05:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F67261493
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WHh/NjtqdAvd0tB0df0gnl3EAI3fWOuEX+rmt4ndjbg=; b=IrNLmmFIk1ZCgl
-	d1Z4nb5b4wSaa3GSMBMrxEVk5ReMOMbFphRT1hbmpq/fK2Z82FGdxv4HRgCGr1gln6dXQdpMUGQDi
-	l2tNO0ynCi8GX1iNtJF59+gcCvTBkbxu4FTreTmXWUKwTf2xdtC8BQmpdJW9KpUCy7PiNHUqqpq9z
-	BYo1W/jbFG42rNZKRnBtHfhB1Ck1exsYusskAP1tOjf/7J1rPM/z3kGwYUc0p6aj0DaGIMgyiJgoO
-	E94i09gLbigKR0z1KlrkSFVcqFlgS1kVykjRO4WA0xblCkacz2TPtH303PNporPIu1fC1lBMSO8Ev
-	dTfhXgtdMtdCzbFTk00g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2p0YFuQsBBOCsXIc7dROs4aapETkMG59VLx2LtmXjbw=; b=UMRuBRla0t3lnw+mHmE9zznsPy
+	j2C9M8sYdcu4eGGz+WmQMrC26NJ7JaliXG5TFcCfHGbwvrciqodafXNPHi7W6lY5bLnIVIT4BCCc/
+	zITlzyS5S7zpryY9McBm4GdxaOPQCsKJKshAWDF3258ihcPFvbyjqgId/Y0OzZRkvIYTb2xNqnKpt
+	67ICBldpXFPXK03YYksCkk8fhs3LGezO9wStWrBqQF3EW9MY3chDtMVP76t4TTTAPUXyxSJ6joDVo
+	5Ym2HQy38vaGXVLWQLb8oAAMoSzAxfP14z+17LuoLk/U7+xS5ACtz9G4RskwERzt0BJi/q/f3TEld
+	IdnTXXHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1R3F-00Gai1-3Y; Thu, 08 Jul 2021 10:14:37 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m1Sls-00GpUD-Sq; Thu, 08 Jul 2021 12:04:48 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1R3B-00Gafo-2o; Thu, 08 Jul 2021 10:14:35 +0000
-X-UUID: a7982f05c88b4ebd90928fb619d68231-20210708
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=BdKf2p9ZqSn+V2IGWR+PNooNX2lJcGUJfQegrqEiVdM=; 
- b=b9KBXnQhFfVkALohUmv/2LnhbOt1iUi904ILwVtQ1tYHLOaWrXl1XYroC752ZyZqDtJex2kTKqACUwgbm3cX8vQjTL97yy4w4zDXL8YDUxLp+ybU6dYhlz1T18HznDFrejFTF7tLeIyBkuB8OEs6eyMkf03jlsC5iSjlHijj/DE=;
-X-UUID: a7982f05c88b4ebd90928fb619d68231-20210708
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 8124391; Thu, 08 Jul 2021 03:14:27 -0700
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Jul 2021 03:14:26 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS33N2.mediatek.inc (172.27.4.76) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Jul 2021 18:14:23 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- MTKCAS06.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 8 Jul 2021 18:14:22 +0800
-From: <guangming.cao@mediatek.com>
-To: Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
- <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Benjamin Gaignard <benjamin.gaignard@linaro.org>, Liam Mark
- <lmark@codeaurora.org>, Laura Abbott <labbott@redhat.com>, Brian Starkey
- <Brian.Starkey@arm.com>, John Stultz <john.stultz@linaro.org>,
- <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <linaro-mm-sig@lists.linaro.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Guangming Cao <Guangming.Cao@mediatek.com>
-Subject: [PATCH] dma-heap: Let dma heap use dma_map_attrs to map & unmap iova
-Date: Thu, 8 Jul 2021 18:14:21 +0800
-Message-ID: <20210708101421.9101-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+ id 1m1Slf-00GpRm-DJ; Thu, 08 Jul 2021 12:04:37 +0000
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 13CC322293;
+ Thu,  8 Jul 2021 12:04:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1625745874; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q7GH1thQ2JWwQZFD8WQ4L0889oKgkhJnCtKtbRCFBd0=;
+ b=PL8dxrnh5ZOMVhmXwAaRCrXK2sSB8YY2MuyIUw2iTdnvetKNZ+NJmOgj3A6sx6o08o5AWw
+ VqUYhj4+Fc5fhNqOuKfhYAAvFEHaDyBxzKL3MxjlZyu1hkXh182g+C6WXa9MIeVLpa+FxG
+ EsYHIhy5De5RdbK+qFmHi562qyYO8RA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1625745874;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q7GH1thQ2JWwQZFD8WQ4L0889oKgkhJnCtKtbRCFBd0=;
+ b=kxdnPbDJ8Vj1LVgoVtWhXIKuCjd+1GF1ENIAQ4GfGKWBDr7Z+SsItO8n5N/Fk+nE5LJf7e
+ MzeddkGd1BrUgrDA==
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+ (No client certificate requested)
+ by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D9FD613BDF;
+ Thu,  8 Jul 2021 12:04:33 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+ by imap2.suse-dmz.suse.de with ESMTPSA id 9o49NNHp5mADUQAAMHmgww
+ (envelope-from <tzimmermann@suse.de>); Thu, 08 Jul 2021 12:04:33 +0000
+Subject: Re: [PATCH] drm/mediatek: Implement mmap as GEM object function
+To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, matthias.bgg@gmail.com
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ dri-devel@lists.freedesktop.org
+References: <20210624090126.8167-1-tzimmermann@suse.de>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <bfc36cc4-1efa-8b1d-710d-568ea366d6c5@suse.de>
+Date: Thu, 8 Jul 2021 14:04:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 879CEDBA69CA375324736404F3170BD4C1626A51C81092302B49131EC5ACEC612000:8
-X-MTK: N
+In-Reply-To: <20210624090126.8167-1-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_031434_444020_C3F3617D 
-X-CRM114-Status: UNSURE (   9.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210708_050435_653562_F5ECF109 
+X-CRM114-Status: GOOD (  28.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,85 +93,245 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0739350470141702290=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guangming Cao <Guangming.Cao@mediatek.com>
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============0739350470141702290==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx"
 
-For dma-heap users, they can't bypass cache sync when map/unmap iova
-with dma heap. But they can do it by adding DMA_ATTR_SKIP_CPU_SYNC
-into dma_alloc_attrs.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx
+Content-Type: multipart/mixed; boundary="cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, matthias.bgg@gmail.com
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+Message-ID: <bfc36cc4-1efa-8b1d-710d-568ea366d6c5@suse.de>
+Subject: Re: [PATCH] drm/mediatek: Implement mmap as GEM object function
+References: <20210624090126.8167-1-tzimmermann@suse.de>
+In-Reply-To: <20210624090126.8167-1-tzimmermann@suse.de>
 
-To keep alignment, at dma_heap side, also use
-dma_buf_attachment.dma_map_attrs to do iova map & unmap.
+--cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
----
- drivers/dma-buf/heaps/cma_heap.c    | 6 ++++--
- drivers/dma-buf/heaps/system_heap.c | 6 ++++--
- 2 files changed, 8 insertions(+), 4 deletions(-)
+ping for review
 
-diff --git a/drivers/dma-buf/heaps/cma_heap.c b/drivers/dma-buf/heaps/cma_heap.c
-index 0c05b79870f9..2c9feb3bfc3e 100644
---- a/drivers/dma-buf/heaps/cma_heap.c
-+++ b/drivers/dma-buf/heaps/cma_heap.c
-@@ -99,9 +99,10 @@ static struct sg_table *cma_heap_map_dma_buf(struct dma_buf_attachment *attachme
+Am 24.06.21 um 11:01 schrieb Thomas Zimmermann:
+> Moving the driver-specific mmap code into a GEM object function allows
+> for using DRM helpers for various mmap callbacks.
+>=20
+> The respective mediatek functions are being removed. The file_operation=
+s
+> structure fops is now being created by the helper macro
+> DEFINE_DRM_GEM_FOPS().
+>=20
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++------
+>   drivers/gpu/drm/mediatek/mtk_drm_gem.c | 44 +++++++------------------=
+-
+>   drivers/gpu/drm/mediatek/mtk_drm_gem.h |  3 --
+>   3 files changed, 14 insertions(+), 46 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/m=
+ediatek/mtk_drm_drv.c
+> index b46bdb8985da..bbfefb29c211 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -300,16 +300,7 @@ static void mtk_drm_kms_deinit(struct drm_device *=
+drm)
+>   	component_unbind_all(drm->dev, drm);
+>   }
+>  =20
+> -static const struct file_operations mtk_drm_fops =3D {
+> -	.owner =3D THIS_MODULE,
+> -	.open =3D drm_open,
+> -	.release =3D drm_release,
+> -	.unlocked_ioctl =3D drm_ioctl,
+> -	.mmap =3D mtk_drm_gem_mmap,
+> -	.poll =3D drm_poll,
+> -	.read =3D drm_read,
+> -	.compat_ioctl =3D drm_compat_ioctl,
+> -};
+> +DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
+>  =20
+>   /*
+>    * We need to override this because the device used to import the mem=
+ory is
+> @@ -332,7 +323,7 @@ static const struct drm_driver mtk_drm_driver =3D {=
+
+>   	.prime_fd_to_handle =3D drm_gem_prime_fd_to_handle,
+>   	.gem_prime_import =3D mtk_drm_gem_prime_import,
+>   	.gem_prime_import_sg_table =3D mtk_gem_prime_import_sg_table,
+> -	.gem_prime_mmap =3D mtk_drm_gem_mmap_buf,
+> +	.gem_prime_mmap =3D drm_gem_prime_mmap,
+>   	.fops =3D &mtk_drm_fops,
+>  =20
+>   	.name =3D DRIVER_NAME,
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/m=
+ediatek/mtk_drm_gem.c
+> index 280ea0d5e840..d0544962cfc1 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
+> @@ -14,11 +14,14 @@
+>   #include "mtk_drm_drv.h"
+>   #include "mtk_drm_gem.h"
+>  =20
+> +static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct =
+vm_area_struct *vma);
+> +
+>   static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs =3D=
  {
- 	struct dma_heap_attachment *a = attachment->priv;
- 	struct sg_table *table = &a->table;
-+	int attrs = attachment->dma_map_attrs;
- 	int ret;
- 
--	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
-+	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
- 	if (ret)
- 		return ERR_PTR(-ENOMEM);
- 	a->mapped = true;
-@@ -113,9 +114,10 @@ static void cma_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
- 				   enum dma_data_direction direction)
- {
- 	struct dma_heap_attachment *a = attachment->priv;
-+	int attrs = attachment->dma_map_attrs;
- 
- 	a->mapped = false;
--	dma_unmap_sgtable(attachment->dev, table, direction, 0);
-+	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
- }
- 
- static int cma_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
-diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
-index 23a7e74ef966..fc7b1e02988e 100644
---- a/drivers/dma-buf/heaps/system_heap.c
-+++ b/drivers/dma-buf/heaps/system_heap.c
-@@ -130,9 +130,10 @@ static struct sg_table *system_heap_map_dma_buf(struct dma_buf_attachment *attac
- {
- 	struct dma_heap_attachment *a = attachment->priv;
- 	struct sg_table *table = a->table;
-+	int attrs = attachment->dma_map_attrs;
- 	int ret;
- 
--	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
-+	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
- 	if (ret)
- 		return ERR_PTR(ret);
- 
-@@ -145,9 +146,10 @@ static void system_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
- 				      enum dma_data_direction direction)
- {
- 	struct dma_heap_attachment *a = attachment->priv;
-+	int attrs = attachment->dma_map_attrs;
- 
- 	a->mapped = false;
--	dma_unmap_sgtable(attachment->dev, table, direction, 0);
-+	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
- }
- 
- static int system_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
--- 
-2.17.1
+>   	.free =3D mtk_drm_gem_free_object,
+>   	.get_sg_table =3D mtk_gem_prime_get_sg_table,
+>   	.vmap =3D mtk_drm_gem_prime_vmap,
+>   	.vunmap =3D mtk_drm_gem_prime_vunmap,
+> +	.mmap =3D mtk_drm_gem_object_mmap,
+>   	.vm_ops =3D &drm_gem_cma_vm_ops,
+>   };
+>  =20
+> @@ -145,11 +148,19 @@ static int mtk_drm_gem_object_mmap(struct drm_gem=
+_object *obj,
+>   	struct mtk_drm_gem_obj *mtk_gem =3D to_mtk_gem_obj(obj);
+>   	struct mtk_drm_private *priv =3D obj->dev->dev_private;
+>  =20
+> +	/*
+> +	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
+e
+> +	 * whole buffer from the start.
+> +	 */
+> +	vma->vm_pgoff =3D 0;
+> +
+>   	/*
+>   	 * dma_alloc_attrs() allocated a struct page table for mtk_gem, so c=
+lear
+>   	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().=
+
+>   	 */
+> -	vma->vm_flags &=3D ~VM_PFNMAP;
+> +	vma->vm_flags |=3D VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
+> +	vma->vm_page_prot =3D pgprot_writecombine(vm_get_page_prot(vma->vm_fl=
+ags));
+> +	vma->vm_page_prot =3D pgprot_decrypted(vma->vm_page_prot);
+>  =20
+>   	ret =3D dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
+>   			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
+> @@ -159,37 +170,6 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_=
+object *obj,
+>   	return ret;
+>   }
+>  =20
+> -int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj, struct vm_area_st=
+ruct *vma)
+> -{
+> -	int ret;
+> -
+> -	ret =3D drm_gem_mmap_obj(obj, obj->size, vma);
+> -	if (ret)
+> -		return ret;
+> -
+> -	return mtk_drm_gem_object_mmap(obj, vma);
+> -}
+> -
+> -int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
+> -{
+> -	struct drm_gem_object *obj;
+> -	int ret;
+> -
+> -	ret =3D drm_gem_mmap(filp, vma);
+> -	if (ret)
+> -		return ret;
+> -
+> -	obj =3D vma->vm_private_data;
+> -
+> -	/*
+> -	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
+e
+> -	 * whole buffer from the start.
+> -	 */
+> -	vma->vm_pgoff =3D 0;
+> -
+> -	return mtk_drm_gem_object_mmap(obj, vma);
+> -}
+> -
+>   /*
+>    * Allocate a sg_table for this GEM object.
+>    * Note: Both the table's contents, and the sg_table itself must be f=
+reed by
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/m=
+ediatek/mtk_drm_gem.h
+> index 6da5ccb4b933..9a359a06cb73 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
+> @@ -39,9 +39,6 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm=
+_device *dev, size_t size,
+>   					   bool alloc_kmap);
+>   int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_de=
+vice *dev,
+>   			    struct drm_mode_create_dumb *args);
+> -int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
+> -int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj,
+> -			 struct vm_area_struct *vma);
+>   struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *ob=
+j);
+>   struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_devic=
+e *dev,
+>   			struct dma_buf_attachment *attach, struct sg_table *sg);
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y--
+
+--7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
+
+-----BEGIN PGP SIGNATURE-----
+
+wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDm6dEFAwAAAAAACgkQlh/E3EQov+DJ
+8hAAxqa6jZBGmkdWfCxGkAnp6HMWf0cUHxsxjcGrJsALOHE9TTGy4vIO7etzGXAxliD9yxggC0bL
+R434+PdJJojQGmHtouNWy0AfK5JOsjPm/hTNCpoSJ1O2l8TMn4buYUgTuJFZrPWVzo13HIWa/oQv
+jNDnfB5WaBuVRpYv5Cj7w2lKuB6v0PlaMY2N5qjKp4WSZzEeL7+0JQNM2fVR9RRYSChyLXqFaORP
+VlwWGKrUcIiCfj6QvaEHeI8h3byif5U/Yx+7HmRrEW/fnOc02QZzWO0LtOU1KKAPOAlXcicAUp7s
+ATOpIowdwQKRuPYOPufgJshJMeiVldddx/+08DHbe9/VEfwaN9+TYqA+1XSdQsTIkWyAMLxm2com
+1ymR3z8bOVv6IlSV/qnp9IMNaJ10Y5IU503yqBnwBkAgA+fOiSTYKZjuZoWm3dVh6eOEo/BYJkVX
+pt/BSlr+cahBmtA95FQCNG/nONVTdhFAgN0uxXhd/TibLR/JZ99ZtM4JORGQqQpu6qoo2M4BpGhV
+wwmQ8AJhUwBE5GK7xVXVMRYf+63jQn4e5f7xNqVrCBexzhSf6ssxNT1bijIRUwLty1Yn3wwBfPSj
+RqFtxTZbIxGZ8k1NS5SLno7AtbJKC5LeAiaTQEUP7+XTsa/1JevrjRj1uDDhMBQ+PMu74Rmy2Foh
+yPA=
+=gg2+
+-----END PGP SIGNATURE-----
+
+--7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx--
+
+
+--===============0739350470141702290==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0739350470141702290==--
+
