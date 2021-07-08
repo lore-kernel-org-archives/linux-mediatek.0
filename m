@@ -2,86 +2,68 @@ Return-Path: <SRS0=ooiB=MA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6FD7C07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1C38C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:31:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F67261493
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:05:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F67261493
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	by mail.kernel.org (Postfix) with ESMTPS id 723E2613B2
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 12:31:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 723E2613B2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2p0YFuQsBBOCsXIc7dROs4aapETkMG59VLx2LtmXjbw=; b=UMRuBRla0t3lnw+mHmE9zznsPy
-	j2C9M8sYdcu4eGGz+WmQMrC26NJ7JaliXG5TFcCfHGbwvrciqodafXNPHi7W6lY5bLnIVIT4BCCc/
-	zITlzyS5S7zpryY9McBm4GdxaOPQCsKJKshAWDF3258ihcPFvbyjqgId/Y0OzZRkvIYTb2xNqnKpt
-	67ICBldpXFPXK03YYksCkk8fhs3LGezO9wStWrBqQF3EW9MY3chDtMVP76t4TTTAPUXyxSJ6joDVo
-	5Ym2HQy38vaGXVLWQLb8oAAMoSzAxfP14z+17LuoLk/U7+xS5ACtz9G4RskwERzt0BJi/q/f3TEld
-	IdnTXXHw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EVB+PChz1zyh77mT4UQ9FMktLTVW/31gaonzt2t0jbY=; b=WOIkQosGR8G3WkOJMbTt+Vk+Gj
+	FinFDTiY75A7cyPM0LZqijGOGfVRGp4sTMBHUe6rkE40Zsn0m7MFHfjqU28GlGKUi7J23Lz9SqAB4
+	zSb104pk2m3BIZITdEutI89PrHi9ZEXsNjaafq6ZIgSmEtBy2qGOSy3UK/PcRtsazWhVk9HrOaUHn
+	Iv/oelJYOGdbxW49XJdYW0oo/PfJmD6DO1bZTePpW7G8XjztwcLVIpEVmjs93t83jCwitsFhKU/ih
+	GZ0fjOE3Hy+457sfZSrNeybTUSk8g+wZKOTf2girRD97bujG+e2Eiggqk4/q1WiQ/H6eCVJFAxFHH
+	omAPkEew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1Sls-00GpUD-Sq; Thu, 08 Jul 2021 12:04:48 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1m1TBC-00GtIu-66; Thu, 08 Jul 2021 12:30:58 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1Slf-00GpRm-DJ; Thu, 08 Jul 2021 12:04:37 +0000
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 13CC322293;
- Thu,  8 Jul 2021 12:04:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1625745874; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Q7GH1thQ2JWwQZFD8WQ4L0889oKgkhJnCtKtbRCFBd0=;
- b=PL8dxrnh5ZOMVhmXwAaRCrXK2sSB8YY2MuyIUw2iTdnvetKNZ+NJmOgj3A6sx6o08o5AWw
- VqUYhj4+Fc5fhNqOuKfhYAAvFEHaDyBxzKL3MxjlZyu1hkXh182g+C6WXa9MIeVLpa+FxG
- EsYHIhy5De5RdbK+qFmHi562qyYO8RA=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1625745874;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Q7GH1thQ2JWwQZFD8WQ4L0889oKgkhJnCtKtbRCFBd0=;
- b=kxdnPbDJ8Vj1LVgoVtWhXIKuCjd+1GF1ENIAQ4GfGKWBDr7Z+SsItO8n5N/Fk+nE5LJf7e
- MzeddkGd1BrUgrDA==
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
- (No client certificate requested)
- by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id D9FD613BDF;
- Thu,  8 Jul 2021 12:04:33 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
- by imap2.suse-dmz.suse.de with ESMTPSA id 9o49NNHp5mADUQAAMHmgww
- (envelope-from <tzimmermann@suse.de>); Thu, 08 Jul 2021 12:04:33 +0000
-Subject: Re: [PATCH] drm/mediatek: Implement mmap as GEM object function
-To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
- daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- dri-devel@lists.freedesktop.org
-References: <20210624090126.8167-1-tzimmermann@suse.de>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <bfc36cc4-1efa-8b1d-710d-568ea366d6c5@suse.de>
-Date: Thu, 8 Jul 2021 14:04:33 +0200
+ id 1m1TB8-00GtHP-Qz
+ for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 12:30:56 +0000
+Received: from [IPv6:2a02:810a:880:f54:e8eb:1d02:4dd8:a76b] (unknown
+ [IPv6:2a02:810a:880:f54:e8eb:1d02:4dd8:a76b])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id AAF981F43B8D;
+ Thu,  8 Jul 2021 13:30:50 +0100 (BST)
+Subject: Re: Aw: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger
+ <matthias.bgg@gmail.com>, Collabora Kernel ML <kernel@collabora.com>
+References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+ <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+ <trinity-e6443313-a436-4e9d-a93c-1bef1cce135d-1625736911475@3c-app-gmx-bap19>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <df431199-0c65-fb9a-02b4-9f84899f37ee@collabora.com>
+Date: Thu, 8 Jul 2021 14:30:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210624090126.8167-1-tzimmermann@suse.de>
+In-Reply-To: <trinity-e6443313-a436-4e9d-a93c-1bef1cce135d-1625736911475@3c-app-gmx-bap19>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_050435_653562_F5ECF109 
-X-CRM114-Status: GOOD (  28.43  )
+X-CRM114-CacheID: sfid-20210708_053055_195543_E5B98C48 
+X-CRM114-Status: GOOD (  29.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,245 +75,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0739350470141702290=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0739350470141702290==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx"
+Hi
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx
-Content-Type: multipart/mixed; boundary="cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
- daniel@ffwll.ch, matthias.bgg@gmail.com
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-Message-ID: <bfc36cc4-1efa-8b1d-710d-568ea366d6c5@suse.de>
-Subject: Re: [PATCH] drm/mediatek: Implement mmap as GEM object function
-References: <20210624090126.8167-1-tzimmermann@suse.de>
-In-Reply-To: <20210624090126.8167-1-tzimmermann@suse.de>
-
---cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-ping for review
-
-Am 24.06.21 um 11:01 schrieb Thomas Zimmermann:
-> Moving the driver-specific mmap code into a GEM object function allows
-> for using DRM helpers for various mmap callbacks.
->=20
-> The respective mediatek functions are being removed. The file_operation=
-s
-> structure fops is now being created by the helper macro
-> DEFINE_DRM_GEM_FOPS().
->=20
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c | 13 ++------
->   drivers/gpu/drm/mediatek/mtk_drm_gem.c | 44 +++++++------------------=
--
->   drivers/gpu/drm/mediatek/mtk_drm_gem.h |  3 --
->   3 files changed, 14 insertions(+), 46 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_drv.c
-> index b46bdb8985da..bbfefb29c211 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-> @@ -300,16 +300,7 @@ static void mtk_drm_kms_deinit(struct drm_device *=
-drm)
->   	component_unbind_all(drm->dev, drm);
+On 08.07.21 11:35, Frank Wunderlich wrote:
+> Hi
+> 
+> just a small update, added debug in the vendor-specific functions for page_flip and vblank and it seems they never get called
+> 
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -87,21 +87,25 @@ static void mtk_drm_crtc_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+>   {
+>          struct drm_crtc *crtc = &mtk_crtc->base;
+>          unsigned long flags;
+> -
+> +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
+>          spin_lock_irqsave(&crtc->dev->event_lock, flags);
+>          drm_crtc_send_vblank_event(crtc, mtk_crtc->event);
+>          drm_crtc_vblank_put(crtc);
+>          mtk_crtc->event = NULL;
+>          spin_unlock_irqrestore(&crtc->dev->event_lock, flags);
+> +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 >   }
->  =20
-> -static const struct file_operations mtk_drm_fops =3D {
-> -	.owner =3D THIS_MODULE,
-> -	.open =3D drm_open,
-> -	.release =3D drm_release,
-> -	.unlocked_ioctl =3D drm_ioctl,
-> -	.mmap =3D mtk_drm_gem_mmap,
-> -	.poll =3D drm_poll,
-> -	.read =3D drm_read,
-> -	.compat_ioctl =3D drm_compat_ioctl,
-> -};
-> +DEFINE_DRM_GEM_FOPS(mtk_drm_fops);
->  =20
->   /*
->    * We need to override this because the device used to import the mem=
-ory is
-> @@ -332,7 +323,7 @@ static const struct drm_driver mtk_drm_driver =3D {=
-
->   	.prime_fd_to_handle =3D drm_gem_prime_fd_to_handle,
->   	.gem_prime_import =3D mtk_drm_gem_prime_import,
->   	.gem_prime_import_sg_table =3D mtk_gem_prime_import_sg_table,
-> -	.gem_prime_mmap =3D mtk_drm_gem_mmap_buf,
-> +	.gem_prime_mmap =3D drm_gem_prime_mmap,
->   	.fops =3D &mtk_drm_fops,
->  =20
->   	.name =3D DRIVER_NAME,
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.c b/drivers/gpu/drm/m=
-ediatek/mtk_drm_gem.c
-> index 280ea0d5e840..d0544962cfc1 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.c
-> @@ -14,11 +14,14 @@
->   #include "mtk_drm_drv.h"
->   #include "mtk_drm_gem.h"
->  =20
-> +static int mtk_drm_gem_object_mmap(struct drm_gem_object *obj, struct =
-vm_area_struct *vma);
-> +
->   static const struct drm_gem_object_funcs mtk_drm_gem_object_funcs =3D=
- {
->   	.free =3D mtk_drm_gem_free_object,
->   	.get_sg_table =3D mtk_gem_prime_get_sg_table,
->   	.vmap =3D mtk_drm_gem_prime_vmap,
->   	.vunmap =3D mtk_drm_gem_prime_vunmap,
-> +	.mmap =3D mtk_drm_gem_object_mmap,
->   	.vm_ops =3D &drm_gem_cma_vm_ops,
->   };
->  =20
-> @@ -145,11 +148,19 @@ static int mtk_drm_gem_object_mmap(struct drm_gem=
-_object *obj,
->   	struct mtk_drm_gem_obj *mtk_gem =3D to_mtk_gem_obj(obj);
->   	struct mtk_drm_private *priv =3D obj->dev->dev_private;
->  =20
-> +	/*
-> +	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
-e
-> +	 * whole buffer from the start.
-> +	 */
-> +	vma->vm_pgoff =3D 0;
-> +
->   	/*
->   	 * dma_alloc_attrs() allocated a struct page table for mtk_gem, so c=
-lear
->   	 * VM_PFNMAP flag that was set by drm_gem_mmap_obj()/drm_gem_mmap().=
-
->   	 */
-> -	vma->vm_flags &=3D ~VM_PFNMAP;
-> +	vma->vm_flags |=3D VM_IO | VM_DONTEXPAND | VM_DONTDUMP;
-> +	vma->vm_page_prot =3D pgprot_writecombine(vm_get_page_prot(vma->vm_fl=
-ags));
-> +	vma->vm_page_prot =3D pgprot_decrypted(vma->vm_page_prot);
->  =20
->   	ret =3D dma_mmap_attrs(priv->dma_dev, vma, mtk_gem->cookie,
->   			     mtk_gem->dma_addr, obj->size, mtk_gem->dma_attrs);
-> @@ -159,37 +170,6 @@ static int mtk_drm_gem_object_mmap(struct drm_gem_=
-object *obj,
->   	return ret;
+> 
+>   static void mtk_drm_finish_page_flip(struct mtk_drm_crtc *mtk_crtc)
+>   {
+> +printk(KERN_ALERT "DEBUG: Passed %s %d update:%d,needsvblank:%d\n",__FUNCTION__,__LINE__,mtk_crtc->config_updating,mtk_crtc->pending_needs_vblank);
+>          drm_crtc_handle_vblank(&mtk_crtc->base);
+>          if (!mtk_crtc->config_updating && mtk_crtc->pending_needs_vblank) {
+> +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
+>                  mtk_drm_crtc_finish_page_flip(mtk_crtc);
+>                  mtk_crtc->pending_needs_vblank = false;
+>          }
+> +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 >   }
->  =20
-> -int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj, struct vm_area_st=
-ruct *vma)
-> -{
-> -	int ret;
-> -
-> -	ret =3D drm_gem_mmap_obj(obj, obj->size, vma);
-> -	if (ret)
-> -		return ret;
-> -
-> -	return mtk_drm_gem_object_mmap(obj, vma);
-> -}
-> -
-> -int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
-> -{
-> -	struct drm_gem_object *obj;
-> -	int ret;
-> -
-> -	ret =3D drm_gem_mmap(filp, vma);
-> -	if (ret)
-> -		return ret;
-> -
-> -	obj =3D vma->vm_private_data;
-> -
-> -	/*
-> -	 * Set vm_pgoff (used as a fake buffer offset by DRM) to 0 and map th=
-e
-> -	 * whole buffer from the start.
-> -	 */
-> -	vma->vm_pgoff =3D 0;
-> -
-> -	return mtk_drm_gem_object_mmap(obj, vma);
-> -}
-> -
->   /*
->    * Allocate a sg_table for this GEM object.
->    * Note: Both the table's contents, and the sg_table itself must be f=
-reed by
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_gem.h b/drivers/gpu/drm/m=
-ediatek/mtk_drm_gem.h
-> index 6da5ccb4b933..9a359a06cb73 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_gem.h
-> @@ -39,9 +39,6 @@ struct mtk_drm_gem_obj *mtk_drm_gem_create(struct drm=
-_device *dev, size_t size,
->   					   bool alloc_kmap);
->   int mtk_drm_gem_dumb_create(struct drm_file *file_priv, struct drm_de=
-vice *dev,
->   			    struct drm_mode_create_dumb *args);
-> -int mtk_drm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
-> -int mtk_drm_gem_mmap_buf(struct drm_gem_object *obj,
-> -			 struct vm_area_struct *vma);
->   struct sg_table *mtk_gem_prime_get_sg_table(struct drm_gem_object *ob=
-j);
->   struct drm_gem_object *mtk_gem_prime_import_sg_table(struct drm_devic=
-e *dev,
->   			struct dma_buf_attachment *attach, struct sg_table *sg);
->=20
+> 
+>   static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+> 
+> finish_page_flip is called by mtk_crtc_ddp_irq. this seems to be set in mtk_drm_crtc_enable_vblank with mtk_ddp_comp_enable_vblank. this is called correctly
+> 
+> 113 static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp,
+> 114                           void (*vblank_cb)(void *),
+> 115                           void *vblank_cb_data)
+> 116 {
+> 117 printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
+> 118     if (comp->funcs && comp->funcs->enable_vblank)
+> 119     {
+> 120         comp->funcs->enable_vblank(comp->dev, vblank_cb, vblank_cb_data);
+> 121 printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
+> 122     }
+> 123 }
+> 
+> i see both messages, but mtk_crtc_ddp_irq is never called and so the other 2 not.
 
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+Yes, In my case the irq isr is also not called after resume which cause the warning
+even though "enable_vblank" do get called. Don't know why is that.
 
+> 
+> root@bpi-r2:~# dmesg | grep -i DEBUG
+> [    6.433509] DEBUG: Passed mtk_drm_crtc_enable_vblank 510
+> [    6.433530] DEBUG: Passed mtk_ddp_comp_enable_vblank 117
+> [    6.433537] DEBUG: Passed mtk_ddp_comp_enable_vblank 121 <<<
+> 
+> 
+> comp->funcs->enable_vblank should be mtk_drm_crtc_enable_vblank, right?
 
---cKFGqa1ZsEmq5ZxZsYSqjQWhAakFmZQ1y--
+No, this is a bit confusing , there are also the funcs of the components, see in file mtk_drm_ddp_comp.c
+so for mt7623  it is mtk_ovl_enable_vblank.
 
---7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
+Thanks,
+Dafna
 
------BEGIN PGP SIGNATURE-----
-
-wsF5BAABCAAjFiEExndm/fpuMUdwYFFolh/E3EQov+AFAmDm6dEFAwAAAAAACgkQlh/E3EQov+DJ
-8hAAxqa6jZBGmkdWfCxGkAnp6HMWf0cUHxsxjcGrJsALOHE9TTGy4vIO7etzGXAxliD9yxggC0bL
-R434+PdJJojQGmHtouNWy0AfK5JOsjPm/hTNCpoSJ1O2l8TMn4buYUgTuJFZrPWVzo13HIWa/oQv
-jNDnfB5WaBuVRpYv5Cj7w2lKuB6v0PlaMY2N5qjKp4WSZzEeL7+0JQNM2fVR9RRYSChyLXqFaORP
-VlwWGKrUcIiCfj6QvaEHeI8h3byif5U/Yx+7HmRrEW/fnOc02QZzWO0LtOU1KKAPOAlXcicAUp7s
-ATOpIowdwQKRuPYOPufgJshJMeiVldddx/+08DHbe9/VEfwaN9+TYqA+1XSdQsTIkWyAMLxm2com
-1ymR3z8bOVv6IlSV/qnp9IMNaJ10Y5IU503yqBnwBkAgA+fOiSTYKZjuZoWm3dVh6eOEo/BYJkVX
-pt/BSlr+cahBmtA95FQCNG/nONVTdhFAgN0uxXhd/TibLR/JZ99ZtM4JORGQqQpu6qoo2M4BpGhV
-wwmQ8AJhUwBE5GK7xVXVMRYf+63jQn4e5f7xNqVrCBexzhSf6ssxNT1bijIRUwLty1Yn3wwBfPSj
-RqFtxTZbIxGZ8k1NS5SLno7AtbJKC5LeAiaTQEUP7+XTsa/1JevrjRj1uDDhMBQ+PMu74Rmy2Foh
-yPA=
-=gg2+
------END PGP SIGNATURE-----
-
---7aIhsQVnZUmmjx8X3jpJO4m49lRm2adCx--
-
-
---===============0739350470141702290==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> 641 static const struct drm_crtc_funcs mtk_crtc_funcs = {
+> 642     .set_config     = drm_atomic_helper_set_config,
+> 643     .page_flip      = drm_atomic_helper_page_flip,
+> 644     .destroy        = mtk_drm_crtc_destroy,
+> 645     .reset          = mtk_drm_crtc_reset,
+> 646     .atomic_duplicate_state = mtk_drm_crtc_duplicate_state,
+> 647     .atomic_destroy_state   = mtk_drm_crtc_destroy_state,
+> 648     .enable_vblank      = mtk_drm_crtc_enable_vblank, <<<<<<<
+> 649     .disable_vblank     = mtk_drm_crtc_disable_vblank,
+> 650 };
+> 
+> but it looks like a recursion:
+> mtk_drm_crtc_enable_vblank calls mtk_ddp_comp_enable_vblank => enable_vblank (=mtk_drm_crtc_enable_vblank), but i see the messages not repeating
+> 
+> mtk_drm_crtc_enable_vblank(struct drm_crtc *crtc)
+> 511     mtk_ddp_comp_enable_vblank(comp, mtk_crtc_ddp_irq, &mtk_crtc->base);
+> 
+> 113 static inline void mtk_ddp_comp_enable_vblank(struct mtk_ddp_comp *comp,
+> 114                           void (*vblank_cb)(void *),
+> 115                           void *vblank_cb_data)
+> 116 {
+> 118     if (comp->funcs && comp->funcs->enable_vblank)
+> 120         comp->funcs->enable_vblank(comp->dev, vblank_cb, vblank_cb_data);
+> 
+> but params do not match...comp->funcs->enable_vblank takes 3 arguments but comp->funcs->enable_vblank has only one.something i miss here...
+> 
+> i guess not, but is watchdog somehow involved? i ask because i see this on reboot/poweroff:
+> 
+> "watchdog: watchdog0: watchdog did not stop!"
+> 
+> i see this with my 5.13, 5.12-drm (5.12.0+mtk/core drm-patches) and 5.12.14 too (hdmi is working there), but not 5.12.0!
+> that means something in drm-patches (mtk/core) breaks watchdog. maybe the recursion mentioned above?
+> 
+> regards Frank
+> 
+> 
+>> Gesendet: Donnerstag, 08. Juli 2021 um 09:22 Uhr
+>> Von: "Dafna Hirschfeld" <dafna.hirschfeld@collabora.com>
+> 
+>>
+>> Hi Frank,
+>>
+>>
+>> On 06.07.21 11:54, Frank Wunderlich wrote:
+>>> Hi,
+>>>
+>>> i've noticed that HDMI is broken at least on my board (Bananapi-r2,mt7623) on 5.13.
+>>>
+>>> after some research i noticed that it is working till
+>>>
+>>> commit 2e477391522354e763aa62ee3e281c1ad9e8eb1b
+>>> Author: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> 
+>>
+>> We also encountered that warning on mt8173 device - Acer Chromebook R13. It happen after resuming from suspend to ram.
+>> We could not find a version that works and we were not able to find the fix of the bug.
+>> It seems like the irq isr is not called after resuming from suspend.
+>> Please share if you have new findings regarding that bug.
+>>
+>> Thanks,
+>> Dafna
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0739350470141702290==--
-
