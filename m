@@ -4,105 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3643AC07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 14:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54059C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 14:45:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0156361459
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 14:01:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0156361459
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id 156A561076
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 14:45:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 156A561076
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cmpxchg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IZNAqZhCn+rxrKiAq+qr9xFlNwd3w6q2zLK1ef6ZZFE=; b=kZORth0d8KDJZ5
-	1u6HoqhpSWeZLhjbopkTekuWi68UAqY0+THI3EIi1wJhvPedaT3gtRaV33oZSUDmoVLW/fVVCY3N4
-	avlSSwJNWkhNxetxfqEimQcx1mRFAPM4GC4fzWyp62fWAeEW1KdYvgrNDZaxBtlaqAGctPvFMh6sz
-	k37r4TCQEPkNeuiRg/2AfQqf6mgbc6E40DUhtIliKREkPOMaTaTYLS6eqIgJP64lk2nretpR2F8jp
-	zQOwkJrYsoV7sPdFyYmqsPPJOa+IFsoG6IJnesrN/uCU70hleOT6lKFH/6iqW20WvVVyxSVKJaNDy
-	eZLGO17VQXRyjU7NDVgQ==;
+	List-Owner; bh=Y2zy7m+QS0rhyNNg+IBiswOUXvoYRYs9FHFtH16RT3c=; b=BED1ODgxlWDQJ+
+	SRq/Vo1QNgg51lptmFAperc+Z7iHExmvaYDI68zkiJzZmvEyD/tTc/Ha7AFxwxvdt5NFD31egDaB3
+	BufniN0K39XyIUnKDqUROd75AIwbovIghkV2IB8bECGv8dO6059m0Yocj8kR+A9zaEpLbsalGI4mm
+	HnhTLnm0gyl1DfPrbmtTkaVDaBDCRB6CfWSrUUapiLHmziwC/Dnitpg9daj4OOW42q7F5GNsopL0N
+	Ntbb/jtJzed6tjp/+9fbsSzC//PJbaX/dh5zC/xZ0UeohNSSAGq5ZzuyLn7vntXyWnhgDqL2lyI6f
+	D57O4Urwe/OxB8oqPYwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1Uan-00H9qL-E6; Thu, 08 Jul 2021 14:01:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1m1VGn-00HEBf-97; Thu, 08 Jul 2021 14:44:53 +0000
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1Ual-00H9pn-8M
- for linux-mediatek@bombadil.infradead.org; Thu, 08 Jul 2021 14:01:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:References:
- In-Reply-To:Date:Content-Type:Subject:Cc:To:From:Message-ID:MIME-Version:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=oJpudRFbLGkwv4kEDr6XLVpi1hpyM7fEt6PI1D4Lzp4=; b=p0zc+PqagXgybeuaZTHPAXbakB
- Pl9qs1s+ueQ1g1PR1eQCsgt0A/7otdDC2lsbRb+rJ+xFY6cGwvoEs2kXN9n0a6fM21kw9/I0wRyuB
- qp26b6wcRvFpjpaw8OwBWwve+cUhwH5KnVmV8kQGxift8Adm0tfP4JxcuFUHXphMZXtFOzb/XtrtJ
- T97E8A5b4XmZ8JDZidH8t5CgqcSl0WHtEV6OmS3CWL1ojZ1u68z2q9c0ToYNMgMVtZsSbGos8ALn0
- vWEIK1TmEdliTsxwiPkeiG54erf/csKvflfMdhDn+JW6QiHiO952xBFAoYSK/mmmoMxOxT/BY3Qb5
- OifeUarw==;
-Received: from mout.gmx.net ([212.227.17.20])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1Uae-00Fjn5-US
- for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 14:01:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1625752868;
- bh=wJLSJn1hGsIV0cT50m36a3Mvxx5NqHn/rVaA7yriqQ4=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=hh7sgOhe6tpcP0zZFu9hYFPRWLbZXF5z6Z4O+MLvpwrmPfUKDH9ZbQWHC0xBijdUU
- MluClb3UbtUj+nMzx7ZUe4ULV01FCu6hEF50FV+6HqJS6s2mjB5eNO2NxFBBwdIrxj
- pGzu6/+TmmEcF0qqJlMjXWFEBmiBQ4KWNFXGlT0o=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.147.159] ([217.61.147.159]) by web-mail.gmx.net
- (3c-app-gmx-bap19.server.lan [172.19.172.89]) (via HTTP); Thu, 8 Jul 2021
- 16:01:08 +0200
+ id 1m1VGY-00HE8i-Ry
+ for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 14:44:41 +0000
+Received: by mail-qv1-xf35.google.com with SMTP id w2so539344qvh.13
+ for <linux-mediatek@lists.infradead.org>; Thu, 08 Jul 2021 07:44:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cmpxchg-org.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=X8jsAriZ0FZ/8CoPzjOwm+7OQW7LILKmtYoMcbL8c4E=;
+ b=e2XZzMPyEhkQ19tZ3n+3mWUjcOMbSnBskJjC2KQVmxqWe8ZlG3Rf1hN7hQpo3TtBjl
+ gtNs3/+NfpoQOM9oeJ/5wugB4rLhj0ez1A+DICXi2h8Q2RdzB7I7yb1F+oRQ2NgtAO+N
+ Ij+6c2XFfGioIkw1j+ybxeYios8j/DVRuxqqzM8XW7/1hxoH58A1Zb22g0qFJyZW+geD
+ xytaK8lCAlvRnU/55X6GZsYYfKCLw1H44lgbbeh1DEqPsunXSXWdTQucFQ5qS5tXMywn
+ LN6s4HDipcOdP0SSFUMGyTZ7T4Ipzy8a5cFd7G31hiARJDGTqoXnht8gKFbcyCT8SIS5
+ OBiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=X8jsAriZ0FZ/8CoPzjOwm+7OQW7LILKmtYoMcbL8c4E=;
+ b=pa3/6KEHdtYX0BnGz3uU77ZOVfMXos5/CUOxt0VM/GUjI7A6J9hptwpXxdUR4gof8m
+ bXdBXPNeowTyOkJ+nZGZhD5f6yKqkHJA9HlxTdpzJb4RLmATjbH8q0B3S415EK12sjAG
+ l830V+Kd+DZGtDNaOL8obhhyllaxsku+Zw58ROyGBktcf8FC2kEKzH47DPTAQLIMjT9e
+ rAjcUeJ/yuSlt4V09h3sF2j8jykHQXvh8rbAfMUA0UNabZGYvEOpAJ+GxWWBfQ9XyQaQ
+ 5aVFzykQ1RwIgVJfTbuEwJrZqiqdwwDQhq5UvRqZmDi3LW3Z2fq2BTwOh7su7B/qywln
+ B0uQ==
+X-Gm-Message-State: AOAM5323YFYy2JP9KqCObL3DFgkYOAwCzcvFhLCzezL+MNEgvglCCreE
+ F6dZq5IvjraNCSNwrnZvZyCQtQ==
+X-Google-Smtp-Source: ABdhPJzuw8oV0eCDdQ6qh6a2I4jEoDje0ZW3Af08iwnP8+VzOgt3uIuOMDO1yv5hwgwZeFxgFSvQaQ==
+X-Received: by 2002:a05:6214:21cf:: with SMTP id
+ d15mr30819565qvh.12.1625755476720; 
+ Thu, 08 Jul 2021 07:44:36 -0700 (PDT)
+Received: from localhost (70.44.39.90.res-cmts.bus.ptd.net. [70.44.39.90])
+ by smtp.gmail.com with ESMTPSA id g21sm1040748qtp.81.2021.07.08.07.44.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Jul 2021 07:44:35 -0700 (PDT)
+Date: Thu, 8 Jul 2021 10:44:34 -0400
+From: Johannes Weiner <hannes@cmpxchg.org>
+To: Suren Baghdasaryan <surenb@google.com>
+Cc: Peter Zijlstra <peterz@infradead.org>, Ingo Molnar <mingo@redhat.com>,
+ Juri Lelli <juri.lelli@redhat.com>,
+ Vincent Guittot <vincent.guittot@linaro.org>,
+ Dietmar Eggemann <dietmar.eggemann@arm.com>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Benjamin Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>,
+ Daniel Bristot de Oliveira <bristot@redhat.com>,
+ matthias.bgg@gmail.com, Minchan Kim <minchan@google.com>,
+ Tim Murray <timmurray@google.com>, YT Chang <yt.chang@mediatek.com>,
+ Wenju Xu =?utf-8?B?KOiuuOaWh+S4vik=?= <wenju.xu@mediatek.com>,
+ Jonathan JMChen =?utf-8?B?KOmZs+WutuaYjik=?= <jonathan.jmchen@mediatek.com>,
+ LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, kernel-team <kernel-team@android.com>,
+ SH Chen <show-hong.chen@mediatek.com>
+Subject: Re: [PATCH v3 1/1] psi: stop relying on timer_pending for poll_work
+ rescheduling
+Message-ID: <YOcPUs97epJ5VrEf@cmpxchg.org>
+References: <20210707023933.1691149-1-surenb@google.com>
+ <YOWugYxQ9Yfsqba2@cmpxchg.org>
+ <CAJuCfpGx22iTaDGCfOrM_pD6PYZqQrni2+u5jQy+NpNeNg7B9w@mail.gmail.com>
 MIME-Version: 1.0
-Message-ID: <trinity-4ed3af00-b67c-468b-be4c-1e4b2379eca6-1625752868027@3c-app-gmx-bap19>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Thomas Zimmermann
- <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Enric
- Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-mediatek@lists.infradead.org, Matthias Brugger
- <matthias.bgg@gmail.com>, Collabora Kernel ML <kernel@collabora.com>
-Subject: Aw: Re:  Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
-Date: Thu, 8 Jul 2021 16:01:08 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <df431199-0c65-fb9a-02b4-9f84899f37ee@collabora.com>
-References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
- <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
- <trinity-e6443313-a436-4e9d-a93c-1bef1cce135d-1625736911475@3c-app-gmx-bap19>
- <df431199-0c65-fb9a-02b4-9f84899f37ee@collabora.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:8e+4dnkz5HdUeEwQAIbBhX/zyuSBFGQIIRaR0vNHkeVSovxQzS8gZ42XihYzt8dz1/lDa
- S934zUN3XxKxF8jj1GqmJudA8mCZHQghn2OkR/0ufVP5AAYXhKUbvWhVSKsnPVzHNc3aDZ1XBF51
- X6/HOGeSxxcB7LJ5IwugC+QmRsa1/stBj68AkaXAf3muG7aTiQEnVH9YnAIa+moqX5Y05aTqDQKC
- V58CpzCUoNoLbNBrZWNgZqiRSHJpeOmrL0IlPO/6kR2MfJPx0d7ZLGF7Y3VVeDAafVai5sDXq76z
- tM=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:Z90GzCAze48=:gvRIenqr4jAzeeWVhzfOQP
- BtPbImyxhCbmc1PxyGIEepLj6KQJsnUfElejdvg0ZzrONhM/pSdfLy+zGVYCiWVeYUapXGVAp
- eSPBsqcZluzjWtS3VxncB7VF7HFbonk1mrJ8+sI4dPepWRedXEX5eCBasCZ6j1y16Q08+aFOr
- pC81vY32oqpUlCyPFQT//U5Lv5JBYw2tLYHlUaOS2zt3nMvdfRyt28z0g68U3DjoCg/r32x5Y
- oj1br4ye4uCkdXjz+A3/Dv+4rrrmwFsPf5Joe2sy2a0Vjb8uhDoDou80sRBORhqhMtGTWW7y0
- r8YJcJ+OrIE7I0fAqHUTWEpWAYFbf5+ojD4MBtC8vNIeCdhX26Joh2kKSL2oBBrcEH1da7fwk
- Z/svvyHUHdeAnAUPZ7KMnrY3LIBwIHoBBdsq3oJyL/J8tSv2cIwtOzPIk+ecFCzW57KLdit2w
- ZH50xC30cXHKRAJkxnxJHHbN6BSvQSclNz8JVkOA4n2vSWRPKAvIL1PukrBHRmSrYCTiGw2Nw
- do5BDKCVAyS11uAvVA4wqVQUvnOT1QzAS3j5cWrua544yC4js4fhKcw+JevcCfrREA/HaY1U0
- 6cZMWlfsdbjE87FiNDWYNcWMK3M/z5UnUn8b6RA4d8ojZ5LQF2irFza1F/RHgSKGypExfCGws
- 1DLwNXO5QfmHPZY5Gca/F0GfPM+ofgZHJlkM7fUhwTXZP6Pp4qIxkjeGN3HP0ypGny1CwuUaB
- Lzs1EmXkN/fVykD3yc22kNgj9b17cBbPCuKwkKuS0znpyAQprWR70YfDgWwekVNEolmiPHTh0
- LBa/d5xKhbeybEIky5X0wyZ67rbtQj0tVs7Nh/otjmR24mAHhE=
+Content-Disposition: inline
+In-Reply-To: <CAJuCfpGx22iTaDGCfOrM_pD6PYZqQrni2+u5jQy+NpNeNg7B9w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_150121_133072_DB9C76F1 
-X-CRM114-Status: GOOD (  18.69  )
+X-CRM114-CacheID: sfid-20210708_074438_978714_BED2CD2D 
+X-CRM114-Status: GOOD (  40.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,87 +115,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Donnerstag, 08. Juli 2021 um 14:30 Uhr
-> Von: "Dafna Hirschfeld" <dafna.hirschfeld@collabora.com>
-> > i see both messages, but mtk_crtc_ddp_irq is never called and so the other 2 not.
->
-> Yes, In my case the irq isr is also not called after resume which cause the warning
-> even though "enable_vblank" do get called. Don't know why is that.
-
-
-> > comp->funcs->enable_vblank should be mtk_drm_crtc_enable_vblank, right?
->
-> No, this is a bit confusing , there are also the funcs of the components, see in file mtk_drm_ddp_comp.c
-> so for mt7623  it is mtk_ovl_enable_vblank.
-
-thanks for pointing to this. in this function another struct is filled with the callback+data, and this callback seems to be called mtk_disp_ovl_irq_handler which name suggests also a irq as trigger
-
-412     ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
-413                    IRQF_TRIGGER_NONE, dev_name(dev), priv);
-414     if (ret < 0) {
-415         dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
-416         return ret;
-417     }
-
-as i don't see this error in dmesg, i guess the registration was successful. added again some debug and it looks like the interrupt callback (mtk_disp_ovl_irq_handler) is not called
-
-[    5.125002] DEBUG: Passed mtk_disp_ovl_probe 416 int reg:0
-[    6.344029] DEBUG: Passed mtk_drm_crtc_enable_vblank 510
-[    6.344051] DEBUG: Passed mtk_ddp_comp_enable_vblank 117
-[    6.344057] DEBUG: Passed mtk_ovl_enable_vblank 107
-[    6.344062] DEBUG: Passed mtk_ovl_enable_vblank 112
-[    6.344066] DEBUG: Passed mtk_ddp_comp_enable_vblank 121
-
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -86,6 +86,7 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
- {
-        struct mtk_disp_ovl *priv = dev_id;
-
-+printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
-        /* Clear frame completion interrupt */
-        writel(0x0, priv->regs + DISP_REG_OVL_INTSTA);
-
-@@ -93,6 +94,7 @@ static irqreturn_t mtk_disp_ovl_irq_handler(int irq, void *dev_id)
-                return IRQ_NONE;
-
-        priv->vblank_cb(priv->vblank_cb_data);
-+printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
-
-        return IRQ_HANDLED;
- }
-@@ -102,11 +104,12 @@ void mtk_ovl_enable_vblank(struct device *dev,
-                           void *vblank_cb_data)
- {
-        struct mtk_disp_ovl *ovl = dev_get_drvdata(dev);
--
-+printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
-        ovl->vblank_cb = vblank_cb;
-        ovl->vblank_cb_data = vblank_cb_data;
-        writel(0x0, ovl->regs + DISP_REG_OVL_INTSTA);
-        writel_relaxed(OVL_FME_CPL_INT, ovl->regs + DISP_REG_OVL_INTEN);
-+printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
- }
-
- void mtk_ovl_disable_vblank(struct device *dev)
-@@ -410,6 +413,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
-
-        ret = devm_request_irq(dev, irq, mtk_disp_ovl_irq_handler,
-                               IRQF_TRIGGER_NONE, dev_name(dev), priv);
-+printk(KERN_ALERT "DEBUG: Passed %s %d int reg:%d\n",__FUNCTION__,__LINE__,ret);
-        if (ret < 0) {
-                dev_err(dev, "Failed to request irq %d: %d\n", irq, ret);
-                return ret;
-
-
-how can we trace this further? maybe watchdog related?
-
+On Wed, Jul 07, 2021 at 03:43:48PM -0700, Suren Baghdasaryan wrote:
+> On Wed, Jul 7, 2021 at 6:39 AM Johannes Weiner <hannes@cmpxchg.org> wrote:
 > >
-> > "watchdog: watchdog0: watchdog did not stop!"
+> > This looks good to me now code wise. Just a comment on the comments:
 > >
-> > i see this with my 5.13, 5.12-drm (5.12.0+mtk/core drm-patches) and 5.12.14 too (hdmi is working there), but not 5.12.0!
-> > that means something in drm-patches (mtk/core) breaks watchdog. maybe the recursion mentioned above?
+> > On Tue, Jul 06, 2021 at 07:39:33PM -0700, Suren Baghdasaryan wrote:
+> > > @@ -559,18 +560,14 @@ static u64 update_triggers(struct psi_group *group, u64 now)
+> > >       return now + group->poll_min_period;
+> > >  }
+> > >
+> > > -/* Schedule polling if it's not already scheduled. */
+> > > -static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay)
+> > > +/* Schedule polling if it's not already scheduled or forced. */
+> > > +static void psi_schedule_poll_work(struct psi_group *group, unsigned long delay,
+> > > +                                bool force)
+> > >  {
+> > >       struct task_struct *task;
+> > >
+> > > -     /*
+> > > -      * Do not reschedule if already scheduled.
+> > > -      * Possible race with a timer scheduled after this check but before
+> > > -      * mod_timer below can be tolerated because group->polling_next_update
+> > > -      * will keep updates on schedule.
+> > > -      */
+> > > -     if (timer_pending(&group->poll_timer))
+> > > +     /* xchg should be called even when !force to set poll_scheduled */
+> > > +     if (atomic_xchg(&group->poll_scheduled, 1) && !force)
+> > >               return;
+> >
+> > This explains what the code does, but not why. It would be good to
+> > explain the ordering with poll_work, here or there. But both sides
+> > should mention each other.
+> 
+> How about this:
+> 
+> /*
+>  * atomic_xchg should be called even when !force to always set poll_scheduled
+>  * and to provide a memory barrier (see the comment inside psi_poll_work).
+>  */
 
+The memory barrier part makes sense, but the first part says what the
+code does and the message is unclear to me. Are you worried somebody
+might turn this around in the future and only conditionalize on
+poll_scheduled when !force? Essentially, I don't see the downside of
+dropping that. But maybe I'm missing something.
+
+	/*
+	 * The xchg implies a full barrier that matches the one
+	 * in psi_poll_work() (see corresponding comment there).
+	 */
+
+> > > @@ -595,6 +595,28 @@ static void psi_poll_work(struct psi_group *group)
+> > >
+> > >       now = sched_clock();
+> > >
+> > > +     if (now > group->polling_until) {
+> > > +             /*
+> > > +              * We are either about to start or might stop polling if no
+> > > +              * state change was recorded. Resetting poll_scheduled leaves
+> > > +              * a small window for psi_group_change to sneak in and schedule
+> > > +              * an immegiate poll_work before we get to rescheduling. One
+> > > +              * potential extra wakeup at the end of the polling window
+> > > +              * should be negligible and polling_next_update still keeps
+> > > +              * updates correctly on schedule.
+> > > +              */
+> > > +             atomic_set(&group->poll_scheduled, 0);
+> > > +             /*
+> > > +              * Ensure that operations of clearing group->poll_scheduled and
+> > > +              * obtaining changed_states are not reordered.
+> > > +              */
+> > > +             smp_mb();
+> >
+> > Same here, it would be good to explain that this is ordering the
+> > scheduler with the timer such that no events are missed. Feel free to
+> > reuse my race diagram from the other thread - those are better at
+> > conveying the situation than freeform text.
+> 
+> I tried to make your diagram a bit less abstract by using the actual
+> names. How about this?
+> 
+> /*
+>  * We need to enforce ordering between poll_scheduled and psi_group_cpu.times
+>  * reads and writes in psi_poll_work and psi_group_change functions.
+> Otherwise we
+>  * might fail to reschedule the timer when monitored states change:
+>  *
+>  * psi_poll_work:
+>  *     poll_scheduled = 0
+>  *     smp_mb()
+>  *     changed_states = collect_percpu_times()
+>  *     if changed_states && xchg(poll_scheduled, 1) == 0
+>  *         mod_timer()
+
+Those last two lines aren't relevant for the race, right? I'd leave
+those out to not distract from it.
+
+>  * psi_group_change:
+>  *     record_times()
+>  *     smp_mb()
+>  *     if xchg(poll_scheduled, 1) == 0
+>  *         mod_timer()
+
+The reason I tend to keep these more abstract is because 1) the names
+of the functions change (I had already sent out patches to rename half
+the variable and function names in this diagram), while the
+architecture (task change vs poll worker) likely won't, and 2) because
+it's easy to drown out what the reads, writes, and thus the race
+condition is with code details and function call indirections.
+
+How about a compromise?
+
+/*
+ * A task change can race with the poll worker that is supposed to
+ * report on it. To avoid missing events, ensure ordering between
+ * poll_scheduled and the task state accesses, such that if the poll
+ * worker misses the state update, the task change is guaranteed to
+ * reschedule the poll worker:
+ *
+ * poll worker:
+ *   atomic_set(poll_scheduled, 0)
+ *   smp_mb()
+ *   LOAD states
+ *
+ * task change:
+ *   STORE states
+ *   if atomic_xchg(poll_scheduled, 1) == 0:
+ *     schedule poll worker
+ *
+ * The atomic_xchg() implies a full barrier.
+ */
+ smp_mb();
+
+This gives a high-level view of what's happening but it can still be
+mapped to the code by following the poll_scheduled variable.
+
+> If we remove smp_mb barriers then there are the following possible
+> reordering cases:
+> 
+> Case1: reordering in psi_poll_work
+> psi_poll_work                    psi_group_change
+>   changed_states = collect_percpu_times()
+>                                               record_times()
+>                                               if xchg(poll_scheduled,
+> 1) == 0 <-- false
+>                                                   mod_timer()
+>   poll_scheduled = 0
+>   if changed_states && xchg(poll_scheduled, 1) == 0 <-- changed_states is false
+>       mod_timer()
+> 
+> Case2: reordering in psi_group_change
+> psi_poll_work                    psi_group_change
+>                                               if xchg(poll_scheduled,
+> 1) == 0 <-- false
+>                                                   mod_timer()
+>   poll_scheduled = 0
+>   changed_states = collect_percpu_times()
+>                                                   record_times()
+>   if changed_states && xchg(poll_scheduled, 1) == 0 <-- changed_states is false
+>       mod_timer()
+> 
+> In both cases mod_timer() is not called, poll update is missed. But
+> describing this all in the comments would be an overkill IMHO.
+> WDYT?
+
+Yeah, I also think that's overkill. The failure cases can be derived
+from the concurrency diagram and explanation.
+
+Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
