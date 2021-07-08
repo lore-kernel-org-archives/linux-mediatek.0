@@ -2,79 +2,66 @@ Return-Path: <SRS0=ooiB=MA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A848CC07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 06:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27E1EC07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 07:22:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 554A261C69
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 06:20:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 554A261C69
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id BE38261CDF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 07:22:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BE38261CDF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4edOposuVUeERTnfhVNPL0ju7CdtRKCv6bf09cgIHT4=; b=sIRYUaIplcj+CO
-	pq/wANvjZfVeXBJl6I+tpxcF7o5O4QrL0A7eghCrQ7dEK5yeX4/duz+/zqwAaagDHztq9cNUmWfv1
-	VSq0VzzFEjTIKPt5GzPb2YRabBG6fxOX3dc73b20LIOgiluGRtQG3BAP9944BkMQUAbpyeMqu9IbE
-	Q7GyRiQWCGx1C89Dq3fI8VdoQXNQbVPayiHJstuQBHukq8gfT8S92p4E0N7l+/5TnqEIKGSGxdzzV
-	8hjlKdeMA9GiXSrTUBTUEkDKYc0CzviTG+cJkJuLL+JaNrgge+IkF1RyIa0UX96DP6vpzkKqm4S7W
-	Zhz+iIoIjQeXL9z1zamw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/P9t/nie23c7z2x3z31tTz9g7yTqE4bcPUrEuWP7Z1Q=; b=xk1EWpeMVbPD8pl0T0quGdMRvP
+	v1fz/j/2p9mzUjGe7suLyd01Hx2YRKbW0c+aY8XigVO4GeN5ubYjwpMpDkNFPHyqGacLJYt5ebyFa
+	HQnyvNhb2cbuOcy0ulIdyQNvEJxnd4OQdOYYSXvFrpEim56I1Q5hdPfSGH1xnVHJFSxo1kk6KPQe5
+	CvCrYuyTQ6/BaSC80XZpLMSx7XK93o+M6eLUODwSfa7ohH/3+TIEsptI0ebdXtoGeztjL9JhdZO8t
+	DbawifN5To0J8oaE874QVIkIU7fPGZBhJTtNCUdGxskXDqShMhBA5Irs60erRI18HpI/5jbAcIrDp
+	T2pegHrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1NOx-00G8G0-78; Thu, 08 Jul 2021 06:20:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m1OMc-00GBzD-34; Thu, 08 Jul 2021 07:22:26 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1NOr-00G8Fc-8e
- for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 06:20:44 +0000
-X-UUID: 084fe66c68c843d6a6641c50536cd519-20210707
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=RDpr6ntUglGbkmdoj5Vw+AU6YP2+5ZVSFjZgAehYXhU=; 
- b=ruYdacKVE2S7RePGOtuVS+QnGu9stWKXV1O3AM+3HhpXF59oQU5E7Gp0VuYo632clb7nf61w7ZQPdF6Nli89dK2nAXhadrdbuezLBHX01iSZgfY0D6Uv7Ht0p0JbQqMqUVpmTymZCXeI+JWBbqTILiec1IITSdPiOD4BFSvts1s=;
-X-UUID: 084fe66c68c843d6a6641c50536cd519-20210707
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 173494694; Wed, 07 Jul 2021 23:20:38 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 7 Jul 2021 23:15:05 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 8 Jul 2021 14:15:03 +0800
-Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 8 Jul 2021 14:15:03 +0800
-Message-ID: <60de68ca4e48d1388a90f0ec59f477a93f01ab3d.camel@mediatek.com>
-Subject: Re: [PATCH 1/2] mt76: mt7921: fix mgmt frame using unexpected bitrate
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: <sean.wang@mediatek.com>, <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>,
- <Leon.Yen@mediatek.com>, <Eric-SY.Chang@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
- <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <jemele@google.com>, <yenlinlai@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Date: Thu, 8 Jul 2021 14:15:03 +0800
-In-Reply-To: <1625718546-14969-1-git-send-email-sean.wang@mediatek.com>
-References: <1625718546-14969-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1m1OMY-00GBxf-9y
+ for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 07:22:24 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 1F3F31F437E4
+Subject: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+To: Frank Wunderlich <frank-w@public-files.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Collabora Kernel ML <kernel@collabora.com>
+References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+Date: Thu, 8 Jul 2021 09:22:00 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210707_232042_154544_592BB681 
-X-CRM114-Status: GOOD (  20.77  )
+X-CRM114-CacheID: sfid-20210708_002222_504712_55B16A73 
+X-CRM114-Status: GOOD (  25.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,86 +73,95 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-07-08 at 12:29 +0800, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
-> 
-> Fix the current driver mgmt frame is not respecting the basic rates
-> field
-> provided by the AP and then unconditionally is using the lowest (1 or
-> 6
-> Mbps) rate.
-> 
-> For example, if the AP only supported basic rate {24, 36, 48, 54}
-> Mbps,
-> mt7921 cannot send mgmt frame with the rate not in the group. So,
-> instead, we pick up the lowest basic rate the AP can support to send.
-> 
-> The patch also fixed up the hw_value in ieee80211_rate for MT7921
-> hardware.
-> 
-> Fixes: 163f4d22c118 ("mt76: mt7921: add MAC support")
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> ---
->  .../net/wireless/mediatek/mt76/mt7921/init.c  | 19 +++++++++++++++--
->  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 21 +++++++++++++++
-> ----
->  .../wireless/mediatek/mt76/mt7921/mt7921.h    | 14 +++++++++++++
->  3 files changed, 48 insertions(+), 6 deletions(-)
-> 
-> 
-> +	int i, offset = 0;
-> +
-> +	if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
-> +		offset = 4;
-> +
-> +	i = ffs(vif->bss_conf.basic_rates) - 1;
-> +	rate = &mt7921_rates[offset + i];
-> +
-> +	return rate->hw_value;
-> +}
-> +
->  void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
->  			   struct sk_buff *skb, struct mt76_wcid *wcid,
->  			   struct ieee80211_key_conf *key, bool beacon)
-> @@ -815,10 +831,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev
-> *dev, __le32 *txwi,
->  		/* hardware won't add HTC for mgmt/ctrl frame */
->  		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
->  
-> -		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
-> -			rate = MT7921_5G_RATE_DEFAULT;
-> -		else
-> -			rate = MT7921_2G_RATE_DEFAULT;
-> +		rate = mt7921_default_basic_rates(dev, vif);
+Hi Frank,
 
-....
 
-> 			
-> \
-> +	.bitrate = _rate,					\
-> +	.flags = IEEE80211_RATE_SHORT_PREAMBLE,			\
-> +	.hw_value = (MT_PHY_TYPE_CCK << 6) | (_idx),		\
-> +	.hw_value_short = (MT_PHY_TYPE_CCK << 6) | (4 + _idx),	\
-> +}
-> +
-> +#define MT7921_OFDM_RATE(_idx, _rate) {				
-> \
-> +	.bitrate = _rate,					\
-> +	.hw_value = (MT_PHY_TYPE_OFDM << 6) | (_idx),		\
-> +	.hw_value_short = (MT_PHY_TYPE_OFDM << 6) | (_idx),	\
-> +}
-> +
+On 06.07.21 11:54, Frank Wunderlich wrote:
+> Hi,
+> 
+> i've noticed that HDMI is broken at least on my board (Bananapi-r2,mt7623) on 5.13.
+> 
+> after some research i noticed that it is working till
+> 
+> commit 2e477391522354e763aa62ee3e281c1ad9e8eb1b
+> Author: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Date:   Tue Mar 30 13:09:02 2021 +0200
+> 
+>      drm/mediatek: Don't support hdmi connector creation
+> 
+> 
+> which is the last of mtk-drm-next-5.13 [1] so i guess a problem with core-patches
+> 
+> dmesg shows the following:
+> 
+> [    7.071342] mediatek-drm mediatek-drm.1.auto: bound 14007000.ovl (ops mtk_dis
+> p_ovl_component_ops)
+> [    7.080330] mediatek-drm mediatek-drm.1.auto: bound 14008000.rdma (ops mtk_di
+> sp_rdma_component_ops)
+> [    7.089429] mediatek-drm mediatek-drm.1.auto: bound 1400b000.color (ops mtk_d
+> isp_color_component_ops)
+> [    7.098689] mediatek-drm mediatek-drm.1.auto: bound 14012000.rdma (ops mtk_di
+> sp_rdma_component_ops)
+> [    7.107814] mediatek-drm mediatek-drm.1.auto: bound 14014000.dpi (ops mtk_dpi
+> _component_ops)
+> [    7.116338] mediatek-drm mediatek-drm.1.auto: Not creating crtc 1 because com
+> ponent 9 is disabled or missing
+> ....
+> [   38.403957] Console: switching to colour frame buffer device 160x64
+> [   48.516398] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+> [   48.516422] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CRTC:41:cr
+> tc-0] commit wait timed out
+> [   58.756384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+> [   58.756399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [CONNECTOR:
+> 32:HDMI-A-1] commit wait timed out
+> [   68.996384] [drm:drm_crtc_commit_wait] *ERROR* flip_done timed out
+> [   68.996399] [drm:drm_atomic_helper_wait_for_dependencies] *ERROR* [PLANE:33:p
+> lane-0] commit wait timed out
+> [   68.996423] [drm:mtk_drm_crtc_atomic_begin] *ERROR* new event while there is
+> still a pending event
+> [   69.106385] ------------[ cut here ]------------
+> [   69.106392] WARNING: CPU: 2 PID: 7 at drivers/gpu/drm/drm_atomic_helper.c:151
+> 1 drm_atomic_helper_wait_for_vblanks.part.0+0x2a0/0x2a8
+> [   69.106414] [CRTC:41:crtc-0] vblank wait timed out
 
-Nice catching. I shifted the wrong offset while bringing up mt7915, but
-I used the correct offset in TxD resulting in this mt7921 issue. Can
-you do me a favor to fix the offset of mt7915 as well?
+We also encountered that warning on mt8173 device - Acer Chromebook R13. It happen after resuming from suspend to ram.
+We could not find a version that works and we were not able to find the fix of the bug.
+It seems like the irq isr is not called after resuming from suspend.
+Please share if you have new findings regarding that bug.
 
-Ryder
+Thanks,
+Dafna
+
+
+> 
+> so i guess the breaking commit may be this:
+> 
+> $ git logone -S"drm_crtc_commit_wait" -- drivers/gpu/drm/
+> b99c2c95412c 2021-01-11 drm: Introduce a drm_crtc_commit_wait helper
+> 
+> in drivers/gpu/drm/drm_atomic{,_helper}.c
+> 
+> but i cannot confirm it because my git bisect does strange things (after defining 5.13 as bad and the 2e4773915223 as good, second step is before the good commit till the end, last steps are 5.11...). sorry, i'm still new to bisect.
+> 
+> the fix is targeting to 5.12-rc2, is guess because CK Hu's tree is based on this...but the fix was not included in 5.12-rc2 (only after 5.12.0...got it by merging 5.12.14)
+> 
+> maybe you can help me?
+> 
+> regards Frank
+> 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/log/?h=mediatek-drm-next-5.13
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
