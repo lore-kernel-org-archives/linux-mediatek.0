@@ -2,92 +2,80 @@ Return-Path: <SRS0=ooiB=MA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E1CD5C07E99
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E93D5C07E9C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:14:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AEA15619BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:05:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AEA15619BE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id AABCB61418
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Jul 2021 10:14:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AABCB61418
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uVqmDAWxLrceWBNwJ7d3rWYimjjzKMmYPniYEUhYEPo=; b=pLqCxf6XuAMHIx
-	WRcYG+9Ai1tp61C2RAfCGl1PV9K1vLJYu3d/LvhCj7cUUgX9brtZBgzDEMUzomMHxh4wF/wisi1QY
-	fu9b8vowcAj0IwOxI8l+Q7zkpJePayemclXMMVcHz7sXx87nL+8JXGMLzItbIGAItL+/bnNlWBbud
-	8FKAkcaaNHgv72uIKWrLjkiRjl0vdXzSQxs9Jmp8zv35OORenyb2mZvHIYMOANpZyzvbTzxQfE/ON
-	yCwrvGE6GkzeeJzKGW7fBgNUxExTMDq/iMRbZZZZjGerS6wbNvIInjwOw+Ah0R67/MluO8eyj7muq
-	NyuQJxKbVENQkdU7d3rA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WHh/NjtqdAvd0tB0df0gnl3EAI3fWOuEX+rmt4ndjbg=; b=IrNLmmFIk1ZCgl
+	d1Z4nb5b4wSaa3GSMBMrxEVk5ReMOMbFphRT1hbmpq/fK2Z82FGdxv4HRgCGr1gln6dXQdpMUGQDi
+	l2tNO0ynCi8GX1iNtJF59+gcCvTBkbxu4FTreTmXWUKwTf2xdtC8BQmpdJW9KpUCy7PiNHUqqpq9z
+	BYo1W/jbFG42rNZKRnBtHfhB1Ck1exsYusskAP1tOjf/7J1rPM/z3kGwYUc0p6aj0DaGIMgyiJgoO
+	E94i09gLbigKR0z1KlrkSFVcqFlgS1kVykjRO4WA0xblCkacz2TPtH303PNporPIu1fC1lBMSO8Ev
+	dTfhXgtdMtdCzbFTk00g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1QuN-00GYSb-Vh; Thu, 08 Jul 2021 10:05:28 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1m1R3F-00Gai1-3Y; Thu, 08 Jul 2021 10:14:37 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1Qu4-00GYKo-7e
- for linux-mediatek@lists.infradead.org; Thu, 08 Jul 2021 10:05:09 +0000
-Received: by mail-io1-xd31.google.com with SMTP id l5so7453401iok.7
- for <linux-mediatek@lists.infradead.org>; Thu, 08 Jul 2021 03:05:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=R4fhY/yLoZMmhCqnp0rYwJfbvJ3m+VsDi3PuO02Dh10=;
- b=UYLH/VW8SI7ZogoX7fR4NWP4DRGl1d62SfimYKsYGCETDopjoL/y+RsptFQTSoByGW
- q+sENfaHQCddz+goHWQTbvBYRlZpPNGTD+hwSbScS+9stYayGZQXolfj/woo+NmCRBFa
- jGhhZ2GepPegJFGXuvZ83xSc31slF8PwiWyq/CFpd9Wkx+YE6ESZv0Bd/Zg2Bn1QN4L3
- XlwQ5Gw1bepr7GNdQBbKm28jDLcSJf11PX8aOk5pdKA+hC4hLLRMYbVPpSJHXz2ar6DR
- UDOSQX01Z+z/FHqmL6RR7vDsF7HIoczBZVtLjl/NWXDfF8VnYSiP+1906qUiWuzmA55S
- 3mlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=R4fhY/yLoZMmhCqnp0rYwJfbvJ3m+VsDi3PuO02Dh10=;
- b=R+NKMnMhVhIR/cDOG4e07a9Hj5v538mOeDm/iK4RSbpfGHoAA+f+dYCq7a1ZscjZFE
- 5yM0ZRI2EDe/rh4Gbbm2i5FQpRPwAp8R5ku26l1ojlgHHlb/WQlP2KIVLgQPQYNi73sV
- eUnzqvYqZWr6gL6p3x24bgTkZ1qTGBDZ81vRfEKJroFjizacZBGf52FA5WLA7ic5y6U0
- s9eEdaeT2yDw/6fCGavrP+drjT/5rLTh36oYZsc2plVF/dWTtClkQCPgI1Nu6da2ZpUM
- Hm26X4uFZZLEab+JozZFmcf/PK8V3wuxZ4KW7qPRfaLXvUgI8ekAq78k5Vr5Z+SqYup9
- g3Fw==
-X-Gm-Message-State: AOAM5302W9VTktMiKScbJaeNtoSRxu5TUx56tBrhixW6LMZIYD+5OkKV
- oL+/+W38D7KWHl2Gpogb+6GALEVvcwl43TSdBuJzIw==
-X-Google-Smtp-Source: ABdhPJxdKSoYDqcwBIX1WQ4+fbUqa84UqW8rvefJuvTTO1vwGh4lLoujDgkp/mZyijH1oUQhvQsnJcYa+CxvYJZElwI=
-X-Received: by 2002:a02:9402:: with SMTP id a2mr26130879jai.110.1625738705769; 
- Thu, 08 Jul 2021 03:05:05 -0700 (PDT)
+ id 1m1R3B-00Gafo-2o; Thu, 08 Jul 2021 10:14:35 +0000
+X-UUID: a7982f05c88b4ebd90928fb619d68231-20210708
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=BdKf2p9ZqSn+V2IGWR+PNooNX2lJcGUJfQegrqEiVdM=; 
+ b=b9KBXnQhFfVkALohUmv/2LnhbOt1iUi904ILwVtQ1tYHLOaWrXl1XYroC752ZyZqDtJex2kTKqACUwgbm3cX8vQjTL97yy4w4zDXL8YDUxLp+ybU6dYhlz1T18HznDFrejFTF7tLeIyBkuB8OEs6eyMkf03jlsC5iSjlHijj/DE=;
+X-UUID: a7982f05c88b4ebd90928fb619d68231-20210708
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 8124391; Thu, 08 Jul 2021 03:14:27 -0700
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Jul 2021 03:14:26 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ MTKMBS33N2.mediatek.inc (172.27.4.76) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 8 Jul 2021 18:14:23 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ MTKCAS06.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 8 Jul 2021 18:14:22 +0800
+From: <guangming.cao@mediatek.com>
+To: Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+ <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Benjamin Gaignard <benjamin.gaignard@linaro.org>, Liam Mark
+ <lmark@codeaurora.org>, Laura Abbott <labbott@redhat.com>, Brian Starkey
+ <Brian.Starkey@arm.com>, John Stultz <john.stultz@linaro.org>,
+ <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linaro-mm-sig@lists.linaro.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Guangming Cao <Guangming.Cao@mediatek.com>
+Subject: [PATCH] dma-heap: Let dma heap use dma_map_attrs to map & unmap iova
+Date: Thu, 8 Jul 2021 18:14:21 +0800
+Message-ID: <20210708101421.9101-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-References: <20210707062157.21176-1-yunfei.dong@mediatek.com>
- <20210707062157.21176-5-yunfei.dong@mediatek.com>
-In-Reply-To: <20210707062157.21176-5-yunfei.dong@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Thu, 8 Jul 2021 18:04:54 +0800
-Message-ID: <CA+Px+wWQREny2KSjDfgdnMvk8GKKqr+QvRdSR8YXc1i73wbJSQ@mail.gmail.com>
-Subject: Re: [PATCH v1, 04/14] dt-bindings: media: mtk-vcodec: Separate video
- encoder and decoder dt-bindings
-To: Yunfei Dong <Yunfei.Dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>, 
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-TM-SNTS-SMTP: 879CEDBA69CA375324736404F3170BD4C1626A51C81092302B49131EC5ACEC612000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210708_030508_327208_A756121B 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20210708_031434_444020_C3F3617D 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,22 +92,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 7, 2021 at 2:22 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
->  .../media/mediatek-vcodec-decoder.txt         | 169 ++++++++++++++++++
->  .../media/mediatek-vcodec-encoder.txt         |  73 ++++++++
->  2 files changed, 242 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-decoder.txt
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-encoder.txt
-The patch is weird.  Its title says "separate" but the changes are all
-creating new content.
+From: Guangming Cao <Guangming.Cao@mediatek.com>
 
-Would expect the patch to remove content from some files (e.g.
-Documentation/devicetree/bindings/media/mediatek-vcodec.txt) and
-separate into 2 files.
+For dma-heap users, they can't bypass cache sync when map/unmap iova
+with dma heap. But they can do it by adding DMA_ATTR_SKIP_CPU_SYNC
+into dma_alloc_attrs.
 
-Also would expect the patch is a refactor which shouldn't introduce
-any new things.
+To keep alignment, at dma_heap side, also use
+dma_buf_attachment.dma_map_attrs to do iova map & unmap.
 
+Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+---
+ drivers/dma-buf/heaps/cma_heap.c    | 6 ++++--
+ drivers/dma-buf/heaps/system_heap.c | 6 ++++--
+ 2 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/dma-buf/heaps/cma_heap.c b/drivers/dma-buf/heaps/cma_heap.c
+index 0c05b79870f9..2c9feb3bfc3e 100644
+--- a/drivers/dma-buf/heaps/cma_heap.c
++++ b/drivers/dma-buf/heaps/cma_heap.c
+@@ -99,9 +99,10 @@ static struct sg_table *cma_heap_map_dma_buf(struct dma_buf_attachment *attachme
+ {
+ 	struct dma_heap_attachment *a = attachment->priv;
+ 	struct sg_table *table = &a->table;
++	int attrs = attachment->dma_map_attrs;
+ 	int ret;
+ 
+-	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
++	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
+ 	if (ret)
+ 		return ERR_PTR(-ENOMEM);
+ 	a->mapped = true;
+@@ -113,9 +114,10 @@ static void cma_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
+ 				   enum dma_data_direction direction)
+ {
+ 	struct dma_heap_attachment *a = attachment->priv;
++	int attrs = attachment->dma_map_attrs;
+ 
+ 	a->mapped = false;
+-	dma_unmap_sgtable(attachment->dev, table, direction, 0);
++	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
+ }
+ 
+ static int cma_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
+diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
+index 23a7e74ef966..fc7b1e02988e 100644
+--- a/drivers/dma-buf/heaps/system_heap.c
++++ b/drivers/dma-buf/heaps/system_heap.c
+@@ -130,9 +130,10 @@ static struct sg_table *system_heap_map_dma_buf(struct dma_buf_attachment *attac
+ {
+ 	struct dma_heap_attachment *a = attachment->priv;
+ 	struct sg_table *table = a->table;
++	int attrs = attachment->dma_map_attrs;
+ 	int ret;
+ 
+-	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
++	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
+ 	if (ret)
+ 		return ERR_PTR(ret);
+ 
+@@ -145,9 +146,10 @@ static void system_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
+ 				      enum dma_data_direction direction)
+ {
+ 	struct dma_heap_attachment *a = attachment->priv;
++	int attrs = attachment->dma_map_attrs;
+ 
+ 	a->mapped = false;
+-	dma_unmap_sgtable(attachment->dev, table, direction, 0);
++	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
+ }
+ 
+ static int system_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
+-- 
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
