@@ -2,94 +2,91 @@ Return-Path: <SRS0=yaqe=MB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C945C07E99
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80D80C07E99
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:24:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 16301613CC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:21:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16301613CC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 39648600D1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:24:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39648600D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Zsn6MbeTPy21TCZBuRkmfKoQUNepgCXGTRX3EUn6M4=; b=xCuhrvBiXiVQbQ
-	9DIGRJziFY3OifQ+Qrmr80t/SD8DOc4OWMFcZsEKBjcJJ+rPhxCocdwM+QyBfrw64VZ/RkLq8IgJj
-	icz2Wq14YbcVDfTcOA+iZKjxWcDAIazF68eQD6y4VfkxshM8H1xwuudyNB+PoPqXY54KtoOxBn2hv
-	0z/qHJw0kr6sQbqm29rSblmEEQPDhGPKSYUKZIwH39xTTbhUc06j9g3k5LrfoXP7MjPRFnTiET5Xp
-	IXTfwtaWFGUK52ZW6dHmB6lHFalh9EEOS3pywrqoXPKASWAT4odlfrEjuq4ftdIRnQNwQDePHPE68
-	uuyW+710OOznH5wKfWvw==;
+	List-Owner; bh=/3mYc5ZJMpshaGnipvBOB3B9ezc/1aMziSmKYfnfn+k=; b=OH5h4jiFdo2uga
+	nW1VIZTx5dTq8LDZhmLU/aVLYXrGczyy7uV+Y9KntGwadfSC056G9JCNn0E1tO7QfPY7LAr7hLxKF
+	x5NK0oV+C6xX0zNECDlWlKgNSeD8J3cpyD6vujMn9OMHZcoutTQabFonaCcgBkxg+bn2oXuxczSpL
+	HKSxMTuL21amLdWB1r6Phml0D9WLifnqj+Mu+Jl/tq5NDLevbqOpMCWCEh756O/6DZ7lP8icHEbou
+	CD5phtzAJpugPgaytA8OmMU5SYn6m4GjvJ8f1awOk/cUvEcnaTyAdyA3c53xsHGbFcBkw4vsBSnu2
+	3velOumjrWdD/hcxD+sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1ncz-001TnX-Dw; Fri, 09 Jul 2021 10:21:01 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1m1ng9-001UnE-K1; Fri, 09 Jul 2021 10:24:17 +0000
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1ncv-001TlT-Nk
- for linux-mediatek@lists.infradead.org; Fri, 09 Jul 2021 10:20:59 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id y17so9476730pgf.12
- for <linux-mediatek@lists.infradead.org>; Fri, 09 Jul 2021 03:20:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=FpZZVvO/nqb5+3oq9ec1RZs4zl93sjUHtLVOS9XVNco=;
- b=Cufjm1yAewSQLxOhIhzNavEnMkLUr/zNSMm49SdFTfiNx9D8Ad8t5V1t/lHDiMnIS3
- ETUwMaeD8Lg/KEml+jIXDcXtQSesgwZ1fXW2P1eAxOIJCT2gOCQo8m/f7B1es48S7SY6
- T+00VIZrkFu9hlpED7veXs8sp6GOHjPy2inqU=
+ id 1m1ng5-001UlQ-PK
+ for linux-mediatek@lists.infradead.org; Fri, 09 Jul 2021 10:24:15 +0000
+Received: by mail-oi1-x231.google.com with SMTP id u66so5830487oif.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 09 Jul 2021 03:24:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LrFysvGtZpqXVqpBVFoh0317yBisoNGnai+6UrvUk7k=;
+ b=TH32T0AvvOADtM+gmhIZoLk/+/VEDgzB5+2M0dUWVpSlBWUGlcOaz0BiLzu9BEvsI+
+ Wl3Ao7p2GuOroM7UgOJtOTW/Nrwu0d12j/xKbLQrT9HNu0oCj2PsRAH6kg9nA/4D1yRq
+ jxtGLz58Ov6MihaI1QaS8RgtshCmSicenMxWvy4G6ArIxwlL2fRM2NYNfluSsDBfFU35
+ hV5Lqt9gMApLQccW3XUIEmRS7e9METSeTqQ33tUz5Mh7JVlvDODuEU0z0aa+Mu28EfSQ
+ IsilitjiyfVYBBHAn8g/Pv19QG/EupZX7p9md9W2Ot7f9uJz4JgIWCi1uonZ0ZALvKHw
+ yaKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=FpZZVvO/nqb5+3oq9ec1RZs4zl93sjUHtLVOS9XVNco=;
- b=LTAAc0hd+Z87eObegR0Lkilg9Sz2NGRaTMiAn4NIQATNCLLYNpl6Hay2kqtZBhCzV2
- 6I0KOl8r7AM35s0DGmnrDwTtnQA6sla/KeCT99/6VW1ZEHsRp0LFuKD+jRQhXtBesl3z
- j19V+4h/RhndowJEpozlImtImO2N8EBPVR+YkcUAmj+x3z6a1ZhVDtYguBfPSnQcgddn
- 9w7KwMGRgKXRxl/EVUAvQ45VnB+q1ne1iUFxwIjxxXS1j2JMmqFy27N1NC1TLYsQKZU3
- UhtjXomgkmatBLOGLAwrqj14t2B9vRwruTHc84z9a5KAcZjb1uTmcbPuaxkXv21X9OG1
- evdA==
-X-Gm-Message-State: AOAM533H3PqCwGB7KaCnSxUFi31rlqXJJV4QN5ks/2ZLWrvTy8wE3VDf
- PFpypwz9KnaWTwbSMl422ceEOg==
-X-Google-Smtp-Source: ABdhPJypdsIj3stZ4AltqJoQravT9m0ETdv//STN8vyZJIT3b7OfP6kVVwXBJDaDpwSjvzLxy/A4aQ==
-X-Received: by 2002:a05:6a00:14c4:b029:303:fd5e:3800 with SMTP id
- w4-20020a056a0014c4b0290303fd5e3800mr37177801pfu.41.1625826056815; 
- Fri, 09 Jul 2021 03:20:56 -0700 (PDT)
-Received: from chromium.org ([2401:fa00:8f:203:735b:c3cc:6957:ae6d])
- by smtp.gmail.com with ESMTPSA id n2sm466041pgt.46.2021.07.09.03.20.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Jul 2021 03:20:56 -0700 (PDT)
-Date: Fri, 9 Jul 2021 19:20:52 +0900
-From: Tomasz Figa <tfiga@chromium.org>
-To: "kyrie.wu" <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Bin Liu <bin.liu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, xia.jiang@mediatek.com,
- maoguang.meng@mediatek.com, srv_heupstream@mediatek.com
-Subject: Re: [PATCH v2,5/9] media: mtk-jpegenc: Generalize jpeg encode irq
- interfaces
-Message-ID: <YOgjBMFDzkrTZ3yJ@chromium.org>
-References: <1625038079-25815-1-git-send-email-kyrie.wu@mediatek.com>
- <1625038079-25815-6-git-send-email-kyrie.wu@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LrFysvGtZpqXVqpBVFoh0317yBisoNGnai+6UrvUk7k=;
+ b=K1tasj6mEKG5QTJmuMFY+NaSw0E/BgaszD2wBkPecewU0q7KI/kJpKu7MZX9uJHrgx
+ Mahhk+m1kT87TPiuuiBsQ8MT4nFeWstACuo3/ZiiTAvIHDCLzMwbyKHf8LHugtcBd4fP
+ BwSd9U3kfGkXzEredO68zOe1boTZyzmJXpLBXs2Y/5VNQCJqUGQaGk6gPizYJiu31rFe
+ Px1rJIt+u1eMQvHrL3Qgcz/KWxpfm25YRIHZZA5Ad7DOsNxFvfohjhQshOmYSDyfJz0p
+ GnMe+yKYSgq6Aj7DTmqnxMvMmK2YExeSOm5dTVrm7H70Y+/rJB1uejbY34G9Aqm2aDhY
+ lcgQ==
+X-Gm-Message-State: AOAM5307Y8kvhZqi+NSyLxMSMptTKtzsJpj5JJ8OsEYJnHOwnkasqNmV
+ XPzfND2XI5iANFyOt2qnMkMr9ljzZd9wOZmnBlA=
+X-Google-Smtp-Source: ABdhPJxayM4pdC8nMdAa1QJHD34ol8ekXE74iF0w0jDTquH5U6cu1w+75WuKowH+FhvxWQKWfZclSxqZJROIrKg+E2E=
+X-Received: by 2002:aca:cf82:: with SMTP id f124mr20633162oig.47.1625826251840; 
+ Fri, 09 Jul 2021 03:24:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1625038079-25815-6-git-send-email-kyrie.wu@mediatek.com>
+References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+ <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+ <trinity-e6443313-a436-4e9d-a93c-1bef1cce135d-1625736911475@3c-app-gmx-bap19>
+ <trinity-3f4f4b55-7e39-4d80-8fc3-7d0e2b3026de-1625758259993@3c-app-gmx-bap19>
+ <trinity-fd86a04e-81b6-45f0-8ab4-5c21655bdf53-1625824929532@3c-app-gmx-bap43>
+In-Reply-To: <trinity-fd86a04e-81b6-45f0-8ab4-5c21655bdf53-1625824929532@3c-app-gmx-bap43>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Fri, 9 Jul 2021 12:24:00 +0200
+Message-ID: <CAFqH_52OdB+H+yLh-b8ndbS_w3uwFyQEkZ-y2RQ2RnKnMEt6vQ@mail.gmail.com>
+Subject: Re: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: CK Hu <ck.hu@mediatek.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
+ chunkuang Hu <chunkuang.hu@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Collabora Kernel ML <kernel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210709_032057_846126_1B895066 
-X-CRM114-Status: GOOD (  42.42  )
+X-CRM114-CacheID: sfid-20210709_032413_922469_7236D7DE 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,297 +103,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jun 30, 2021 at 03:27:55PM +0800, kyrie.wu wrote:
-> Generalizes jpeg encode irq interfaces to support different hardware.
-> 
-> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
-> ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c | 124 +++++++++++++++++++++++-
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h |  24 ++++-
->  2 files changed, 146 insertions(+), 2 deletions(-)
-> 
+Hi Frank,
 
-This again doesn't look like a refactor, because there is only new code
-added.
+Missatge de Frank Wunderlich <frank-w@public-files.de> del dia dv., 9
+de jul. 2021 a les 12:02:
+>
+> Hi,
+>
+> i've found it :)
+>
+> hdmi-problem is caused by
+>
+> commit 440147639ac79f699a4eb9811d0bc39d3cc815f4
+> Author: CK Hu <ck.hu@mediatek.com>
+> Date:   Wed Mar 17 19:17:10 2021 +0100
+>
+>     soc: mediatek: mmsys: Use an array for setting the routing registers
+>
+> but i cannot revert it alone, but after reverting all mmsys-patches hdmi works (ovl irq-handler called)
+>
 
-Also see my comments inline.
+If this is the offending commit, could you try if the following patch
+fixes the issue for you?
 
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> index 7c053e3..062feab 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> @@ -106,10 +106,40 @@ static struct mtk_jpeg_fmt mtk_jpeg_dec_formats[] = {
->  #define MTK_JPEG_ENC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_enc_formats)
->  #define MTK_JPEG_DEC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_dec_formats)
->  
-> +/*
-> + * mtk_jpeg_enc_param:  General jpeg encoding parameters
-> + * @enc_w:		image width
-> + * @enc_h:		image height
-> + * @enable_exif:	EXIF enable for jpeg encode mode
-> + * @enc_quality:	destination image quality in encode mode
-> + * @enc_format:		input image format
-> + * @restart_interval:	JPEG restart interval for JPEG encoding
-> + * @img_stride:		jpeg encoder image stride
-> + * @mem_stride:		jpeg encoder memory stride
-> + * @total_encdu:	total 8x8 block number
-> + */
-> +struct mtk_jpeg_enc_param {
-> +	u32 enc_w;
-> +	u32 enc_h;
-> +	u32 enable_exif;
-> +	u32 enc_quality;
-> +	u32 enc_format;
-> +	u32 restart_interval;
-> +	u32 img_stride;
-> +	u32 mem_stride;
+https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.13-next/fixes&id=db39994e0bd852c6612a9709e63c09b98b161e00
 
-What is the difference between these two strides?
+If not, and that patch is the offending commit, it probably means that
+the default routing table doesn't work for mt7623. Needs a specific
+soc table.
 
-> +	u32 total_encdu;
+Thanks,
+  Enric.
 
-Is it really necessary to store this? Isn't it a trivial computation
-from width and height.
-
-> +};
-> +
->  struct mtk_jpeg_src_buf {
->  	struct vb2_v4l2_buffer b;
->  	struct list_head list;
-> +	u32 frame_num;
-
-Isn't this equivalent to the sequence field inside vb2_v4l2_buffer?
-
-> +	u32 bs_size;
-> +	int flags;
-
-What are these 2? I don't see them used in the code added by this patch.
-Please add new fields in the same patch that adds the code using them.
-
->  	struct mtk_jpeg_dec_param dec_param;
-> +
-> +	struct mtk_jpeg_enc_param enc_param;
-
-We can put these two into an union to reduce the size of the struct.
-
-> +	struct mtk_jpeg_ctx *curr_ctx;
->  };
->  
->  static int debug;
-> @@ -1163,6 +1193,98 @@ static irqreturn_t mtk_jpeg_dec_irq(int irq, void *priv)
->  	return IRQ_HANDLED;
->  }
->  
-> +void mtk_jpeg_put_buf(struct mtk_jpeg_dev *jpeg)
-> +{
-> +	struct mtk_jpeg_ctx *ctx;
-> +	struct vb2_v4l2_buffer *dst_buffer;
-> +	struct list_head *temp_entry;
-> +	struct list_head *pos;
-> +	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
-
-Wait, is the buffer src or dst?
-
-> +	unsigned long flags;
-> +
-> +	ctx = jpeg->hw_param.curr_ctx;
-> +	if (!ctx) {
-> +		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
-> +		return;
-> +	}
-> +
-> +	dst_buffer = jpeg->hw_param.dst_buffer;
-> +	if (!dst_buffer) {
-> +		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
-
-When can this happen?
-
-> +		return;
-> +	}
-> +
-> +	dst_done_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buffer->vb2_buf);
-> +
-> +	spin_lock_irqsave(&ctx->done_queue_lock, flags);
-> +	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
-> +	while (!list_empty(&ctx->dst_done_queue) &&
-> +	       (pos != &ctx->dst_done_queue)) {
-> +		list_for_each_prev_safe(pos, temp_entry,
-> +					(&ctx->dst_done_queue)) {
-> +			tmp_dst_done_buf = list_entry(pos,
-> +						      struct mtk_jpeg_src_buf,
-> +						      list);
-> +			if (tmp_dst_done_buf->frame_num ==
-> +				ctx->last_done_frame_num) {
-> +				list_del(&tmp_dst_done_buf->list);
-> +				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
-> +						  VB2_BUF_STATE_DONE);
-> +				ctx->last_done_frame_num++;
-> +			}
-> +		}
-> +	}
-
-Do we need the outer while loop here?
-
-Also, is the prev variant of list_for_each needed here? Wouldn't
-list_for_each_entry_safe() be enough?
-
-> +	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
-> +}
-> +
-> +irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-> +{
-> +	struct mtk_jpeg_dev *jpeg = priv;
-> +	struct mtk_jpeg_ctx *ctx;
-> +	struct mtk_jpeg_dev *master_jpeg;
-> +	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-> +
-> +	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
-> +	u32 result_size;
-> +	u32 irq_status;
-> +
-> +	cancel_delayed_work(&jpeg->job_timeout_work);
-> +
-> +	src_buf = jpeg->hw_param.src_buffer;
-> +	dst_buf = jpeg->hw_param.dst_buffer;
-> +	ctx = jpeg->hw_param.curr_ctx;
-> +	master_jpeg = ctx->jpeg;
-> +	irq_status = readl(jpeg->reg_base[MTK_JPEGENC_HW0] + JPEG_ENC_INT_STS) &
-
-Why is this always HW0?
-
-> +		JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
-> +	if (irq_status)
-> +		writel(0, jpeg->reg_base[MTK_JPEGENC_HW0] + JPEG_ENC_INT_STS);
-> +	if (!(irq_status & JPEG_ENC_INT_STATUS_DONE)) {
-> +		dev_err(jpeg->dev, "jpeg encode failed !!!\n");
-> +		goto irq_end;
-> +	}
-> +
-> +	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base[0]);
-> +	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
-> +
-> +	buf_state = VB2_BUF_STATE_DONE;
-> +
-> +irq_end:
-> +	v4l2_m2m_buf_done(src_buf, buf_state);
-> +	mtk_jpeg_put_buf(jpeg);
-> +	pm_runtime_put(jpeg->pm.dev);
-> +	clk_disable_unprepare(jpeg->pm.venc_clk.clk_info->jpegenc_clk);
-
-Shouldn't this be the other way around? I.e. first clock and then
-runtime PM? Otherwise the power domain could be powered off while the
-clock is still running.
-
-> +	if (ctx->fh.m2m_ctx &&
-> +	    (!list_empty(&ctx->fh.m2m_ctx->out_q_ctx.rdy_queue) ||
-> +	    !list_empty(&ctx->fh.m2m_ctx->cap_q_ctx.rdy_queue))) {
-> +		queue_work(master_jpeg->workqueue, &ctx->jpeg_work);
-
-This patch is missing the initialization of jpeg_work, so I have no idea
-what the work actually does. Please reorganize your patches, so that it
-adds all the interdependent pieces together. (As is, the code wouldn't
-even compile if you checked out your tree to have the series up to this
-patch but not the next ones, but it's a requirement for patch submission
-to the kernel.)
-
-I suspect that there is no need for a workqueue in this driver, but
-let's see after you reorganize the patches.
-
-> +	}
-> +
-> +	jpeg->hw_state = MTK_JPEG_HW_IDLE;
-
-Do we need this hw_state?
-
-> +	wake_up(&master_jpeg->hw_wq);
-> +	atomic_inc(&jpeg->hw_rdy);
-
-Do we really need these? (Again, it's not used by any code in this
-patch.)
-
-> +	return IRQ_HANDLED;
-> +}
-> +
->  static void mtk_jpeg_set_default_params(struct mtk_jpeg_ctx *ctx)
->  {
->  	struct mtk_jpeg_q_data *q = &ctx->out_q;
-> @@ -1352,7 +1474,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
->  	INIT_DELAYED_WORK(&jpeg->job_timeout_work, mtk_jpeg_job_timeout_work);
->  
->  	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> -	jpeg->reg_base = devm_ioremap_resource(&pdev->dev, res);
-> +	jpeg->reg_base[0] = devm_ioremap_resource(&pdev->dev, res);
->  	if (IS_ERR(jpeg->reg_base)) {
->  		ret = PTR_ERR(jpeg->reg_base);
->  		return ret;
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> index 93ea71c..03ff060 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> @@ -75,6 +75,17 @@ struct mtk_jpeg_variant {
->  	u32 cap_q_default_fourcc;
->  };
->  
-> +struct mtk_jpeg_hw_param {
-
-Could perhaps mtk_jpeg_hw_job be a better name?
-
-> +	struct vb2_v4l2_buffer *src_buffer;
-> +	struct vb2_v4l2_buffer *dst_buffer;
-> +	struct mtk_jpeg_ctx *curr_ctx;
-> +};
-> +
-> +enum mtk_jpeg_hw_state {
-> +	MTK_JPEG_HW_IDLE = 0,
-> +	MTK_JPEG_HW_BUSY = 1,
-> +};
-
-Wouldn't "bool busy" be good enough? (In case we really need to track
-the busy state at all.)
-
-Best regards,
-Tomasz
-
-> +
->  enum mtk_jpegenc_hw_id {
->  	MTK_JPEGENC_HW0,
->  	MTK_JPEGENC_HW1,
-> @@ -124,13 +135,18 @@ struct mtk_jpeg_dev {
->  	struct v4l2_m2m_dev	*m2m_dev;
->  	void			*alloc_ctx;
->  	struct video_device	*vdev;
-> -	void __iomem		*reg_base;
->  	struct device		*larb;
->  	struct delayed_work job_timeout_work;
->  	const struct mtk_jpeg_variant *variant;
->  
-> +	void __iomem *reg_base[MTK_JPEGENC_HW_MAX];
-> +	int jpegenc_irq;
->  	struct mtk_jpeg_dev *hw_dev[MTK_JPEGENC_HW_MAX];
->  	struct mtk_jpegenc_pm pm;
-> +	enum mtk_jpeg_hw_state hw_state;
-> +	struct mtk_jpeg_hw_param hw_param;
-> +	wait_queue_head_t hw_wq;
-> +	atomic_t hw_rdy;
->  };
->  
->  /**
-> @@ -189,6 +205,12 @@ struct mtk_jpeg_ctx {
->  	u8 enc_quality;
->  	u8 restart_interval;
->  	struct v4l2_ctrl_handler ctrl_hdl;
-> +
-> +	struct list_head dst_done_queue;
-> +	spinlock_t done_queue_lock;	/* spinlock protecting done queue */
-> +	u32 total_frame_num;
-> +	u32 last_done_frame_num;
-> +	struct work_struct jpeg_work;
->  };
->  
->  #endif /* _MTK_JPEG_CORE_H */
-> -- 
-> 2.6.4
-> 
+> $ git logone v5.12..v5.13-rc1 -- drivers/ | grep 'mtk\|mediatek' | grep mmsys
+> 060f7875bd23 2021-04-05 soc: mediatek: mmsys: Add support for MT8167 SoC
+> 1ff1270fca33 2021-03-30 soc: mediatek: mmsys: Add mt8183 mmsys routing table
+> 440147639ac7 2021-03-17 soc: mediatek: mmsys: Use an array for setting the routing registers
+> ce15e7faa2fc 2021-03-17 soc: mediatek: mmsys: Create struct mtk_mmsys to store context data
+>
+> git revert 060f7875bd23 1ff1270fca33 440147639ac7 ce15e7faa2fc
+>
+> and after reapplying them one-by-one it stops working on commit above (440147639ac7)
+>
+> @Dafna can you confirm it solves your issue too?
+>
+> btw. watchdog issue is caused by
+>
+> commit bbece05c0d3a96817483e0b249ad1e302ba95117
+> watchdog: mtk_wdt: Remove mtk_wdt_stop() in probe() to prevent the system freeze and it doesn't reboot by watchdog problem
+>
+> have already contacted author
+>
+> regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
