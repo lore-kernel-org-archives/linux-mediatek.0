@@ -2,83 +2,98 @@ Return-Path: <SRS0=yaqe=MB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 79126C07E99
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:46:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D170C07E99
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 11:28:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 40604613D6
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 10:46:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 40604613D6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 54DD8613BA
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Jul 2021 11:28:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54DD8613BA
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hsknA+bh273zi5SFK/46noQWeASongP9mwW6yAZltbc=; b=muTPIGsSHzrbNb
-	TStjIh+ZnzvU8XZAaYdXxWjrvBDS2mxylRNzMijfhQO0Q7Q/Z00QhIGSoSJdym82O45nH4iqgEQLd
-	V3FIZ4y5IZUyl8glPsMw0aV6bo3rXAZp3J3zU5GNTG28NX8qfUwLcJkVm7s/UDg4W4iMiSYQ3JFmc
-	oR7Lk0i7pqChiU+8FecN64TW75l01WTUoJMzXW234pDQqsLmIx1i6XB//QJ17oZjHYIJj9CXF9vAh
-	XshNq9timdbUi1iX6t8xEHhulEq21/XM9cepqTbg+5FF/xaxuOi0F0sPdqjRmwZXW3yjXVQDY+iwu
-	e4PGYdj7EG3u6mPS4pwQ==;
+	List-Owner; bh=5Db7GmQGLn8NCxVeRaZcedgq/2QP83GVT7ao7jiz4lw=; b=GMKU1DxFv32qPx
+	Mq/dezIRY/okv6b2+uzN1jdn/abE9B56J0nAmAZAkKUxwaT0K+AtV0RgaquTISEEUrG/1FWwkp7v0
+	nBj7LUHTifts85EXLnqSEq9oQYiO6iCBnEcgB7MnX7hTtEbjSSITNITMA51dWuz9fceU1S2Ny+JXx
+	cKyEuvBHYzqwbijiAKqhUohLlLdTGRvr/fkAONP1mMrDLO0Ji8b6RdHF95nxd+tuyGEddDzQofc/d
+	ncgcCAezzclhn2HQhnox+VWYAPpn4ewj2XS/AYEY+//McX1xad+RFZiHM9oIy1dO180s/XAiO2/Dk
+	BG0R5A5qjn9yO1+zl8Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m1o1B-001afv-Lw; Fri, 09 Jul 2021 10:46:01 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1m1ogX-001eSf-IP; Fri, 09 Jul 2021 11:28:45 +0000
+Received: from mout.gmx.net ([212.227.17.22])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m1o0x-001adK-L9
- for linux-mediatek@lists.infradead.org; Fri, 09 Jul 2021 10:45:49 +0000
-Received: by mail-lf1-x129.google.com with SMTP id c28so21916080lfp.11
- for <linux-mediatek@lists.infradead.org>; Fri, 09 Jul 2021 03:45:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=C6mnLkibuTq3O3RIj/A8hWNd/xjHPJDMjDp1O/G3Qf8=;
- b=LzauGJ/W0SJTz14zlRSNp3tG3n9Ws3VCF9I3Gog1j48Ial81lRhuyOJirZjXtkPrP+
- AixliN35gUn87RpjY/M1wP5drdEFDx0DidjeHpy0NUBPRCTf4I7F8iwvXNjRajr+JTNN
- Q6k1Aqwq55REnZXeSgNZwNlz7EsQUbgevJ/0o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=C6mnLkibuTq3O3RIj/A8hWNd/xjHPJDMjDp1O/G3Qf8=;
- b=bPQjrIw65vNT57PkBKg5WlHhbB1OKwYbSMq72SNP2AA7TLNXRUtAs/zb5ltoGQjdQo
- Og4MHB1UaYFQC4U8wdTAfHZf+ArwXaORyfavXITilsTe21kk/BZk+XGSgr1p+dG23WMU
- 2XgXBVb/T/E9lmFKblY+UswLteOiE7jyvS5IuL+nnYiydFoCQBxt2nU85OKn9fKZASz/
- aAvcSHeWZDRaaIUmW/84Qk1ZFqJAc9Xxb9msdhVZFfWeZ+oO5e5Nlttda+daTVVCX7r6
- lOOMOelJSZUY3kxObKkfSLsTNBF5v25NAr4+ey6vMwvUxOmLr8/OuliM/dvUb23W4DYA
- lhZA==
-X-Gm-Message-State: AOAM531UE4IzT8iGgqf0lwsapOceWYJfQzVd2ATDvTvq4LLMYFsw1qmC
- QBQiaWruBhJwRtCrFSmctYdsHmItF8vQHg29PpVn6Q==
-X-Google-Smtp-Source: ABdhPJx7RqOTMWa8I+UjEb9qnMaV29Z5bjjjl2WI7vBQRSsRr6A1xwWtK7BUmL37N4gurtLIBXKjiVTD256GsKYP1Jc=
-X-Received: by 2002:a05:6512:1303:: with SMTP id
- x3mr27753514lfu.276.1625827545601; 
- Fri, 09 Jul 2021 03:45:45 -0700 (PDT)
+ id 1m1ogT-001eRt-Mc
+ for linux-mediatek@lists.infradead.org; Fri, 09 Jul 2021 11:28:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1625830110;
+ bh=j6rzl1T2VppWbP//akxXTOsnokNfQHS/1AZyiol3FiY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=aQKTUaB+t57AI1VLXEbZeO4kiHHBr4GyDifUjWrRqEuRN75IHjwEFyJhyZEI4BXYo
+ B/TMplp2rMzI4g/4KcOYiIINMUTY38x/k0tXmxlKcx/yzZ6WlkuaByU9W3J/BIUFHe
+ u2WsCau4I8xJXd+CFjNFzX1XA+ol/Mkxc52wC6HY=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.72.148] ([80.245.72.148]) by web-mail.gmx.net
+ (3c-app-gmx-bap43.server.lan [172.19.172.113]) (via HTTP); Fri, 9 Jul 2021
+ 13:28:30 +0200
 MIME-Version: 1.0
-References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
- <20210616224743.5109-20-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210616224743.5109-20-chun-jie.chen@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 9 Jul 2021 18:45:34 +0800
-Message-ID: <CAGXv+5EyKJ=-hY+-kzzeFOZhSwiTTmGPi-4ux01hyimJfoEJRw@mail.gmail.com>
-Subject: Re: [PATCH 19/22] clk: mediatek: Add MT8195 vppsys1 clock support
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+Message-ID: <trinity-937ebfa3-d123-42de-a289-3ad0dbc09782-1625830110576@3c-app-gmx-bap43>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Enric Balletbo Serra <eballetbo@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, chunkuang Hu
+ <chunkuang.hu@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David
+ Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Collabora Kernel ML <kernel@collabora.com>
+Subject: Aw: Re: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
+Date: Fri, 9 Jul 2021 13:28:30 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <trinity-ac304676-173c-42c6-837c-38e62971ede0-1625827104214@3c-app-gmx-bap43>
+References: <trinity-cc8f5927-9aaf-43ae-a107-6a6229f1b481-1625565279264@3c-app-gmx-bs60>
+ <25d61873-38ae-5648-faab-03431b74f777@collabora.com>
+ <trinity-e6443313-a436-4e9d-a93c-1bef1cce135d-1625736911475@3c-app-gmx-bap19>
+ <trinity-3f4f4b55-7e39-4d80-8fc3-7d0e2b3026de-1625758259993@3c-app-gmx-bap19>
+ <trinity-fd86a04e-81b6-45f0-8ab4-5c21655bdf53-1625824929532@3c-app-gmx-bap43>
+ <CAFqH_52OdB+H+yLh-b8ndbS_w3uwFyQEkZ-y2RQ2RnKnMEt6vQ@mail.gmail.com>
+ <trinity-ac304676-173c-42c6-837c-38e62971ede0-1625827104214@3c-app-gmx-bap43>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:AhrRymJLG798R6GlUJTbNXqVLA1onupKDy3QLdwBQ5EYAo7ciyRAU2pghP2iI4fOpy0d3
+ HLJITFxviSNxFnviafc49JthpmaVeocjLJi2OqJHTilPAP0HeBFEz4Q2e5dp1RPLomdNw4hzaI3e
+ zVrFI31RZ0abng4Rr5ke1nXgsyTNC9cHTAv03vpYk0I5sCtsX0K2mo06J7mv1C5u3tThGHPkpCpi
+ KsWpqlFp7NtSfCph2QlCHSis9zn0C4lc3xgIk8n8HjOWZR+qyaM0LCdSW9I6GhKnK5KqDm5oVRcW
+ tg=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:u/imABG7Iec=:u2nsH1ZpUrdBA+kERlefig
+ JGl0qkxTikV9vr6rF1CNQmnX+KQWdMeSbOINRt4eobJDvdGVMOHJAWdemloYuj2An8Z5Bt1z/
+ y8odNW9trnqMqpHcg94RSyld8xW0TFZR1nWkGRcidcGDVQoEpaMGm8JJmPWJ/OlSQ7oBa0r0F
+ fAW2YyVM5SmQ4gRtV35Tk/rj+lHnm97AsTezin5NIqD2Tpmhg2M+lxcRVpzDEriT1unulX/zg
+ xCUPFqurpvbDGWUqbbJpr6lEBw1X4Py5pEaxNnM8XdoIYgHXti6knT4AYrssXKHjqwLs2SotK
+ xvweXIg0kTpHGCXWfJbkR9en47rjLgC7VcttYlD/6m5o/JnA4djtsZQqnOhDNwP8ZV8y4FFH6
+ PUimzCdiV6jYCb6R2P0rkJ/10Qf2huYZOnNog8OyQ9HHzUWF410cqA5ZjQ5IVGX2gc3JSub6Q
+ 7MXhA92e14Ik4EywTpPOA/LPHIcczUZLhPPEqZiPGJkkjw6Qg2WmbLrBQ7EXoXNDfhFbn2qnV
+ EIwai2UnUPY6eyWEYKL1AIzYcfERPjWqTkAiWdiLFeE9T2crlh7E86kEVK7bN/DZtp8cPVZDN
+ 6x7ueZs+JY0pB09SSKoqGQSIQmDqViH48oiiu17Z5a1BuOdg54v60WyLO4Ld0++6ZNsLlgBPt
+ 5ICgzjtR0ycZBr8nbDaWii7QwpBi0k6O8+nJrT7l84U4At7DcXTHJnltNb6rqjEWYUZ0QAnr1
+ 5rxJZMx/2Ca7Cr6bI4y73M5y1+FzKej00kqCkveVQinet4A9GhDEfntbW36VjE3VqTKgLFwyk
+ cYN8gs6AtXlA9cVYZr3Zb9CDuyuDmhnHXyC+9f556eoCuNHCu0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210709_034547_738360_E85DF394 
-X-CRM114-Status: GOOD (  22.27  )
+X-CRM114-CacheID: sfid-20210709_042842_128080_BE76CED9 
+X-CRM114-Status: GOOD (  21.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,182 +110,159 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, Jun 17, 2021 at 7:00 AM Chun-Jie Chen
-<chun-jie.chen@mediatek.com> wrote:
+> Gesendet: Freitag, 09. Juli 2021 um 12:38 Uhr
+> Von: "Frank Wunderlich" <frank-w@public-files.de>
+> An: "Enric Balletbo Serra" <eballetbo@gmail.com>
+> Cc: "CK Hu" <ck.hu@mediatek.com>, "Dafna Hirschfeld" <dafna.hirschfeld@collabora.com>, "chunkuang Hu" <chunkuang.hu@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie" <airlied@linux.ie>, "linux-kernel" <linux-kernel@vger.kernel.org>, "Enric Balletbo i Serra" <enric.balletbo@collabora.com>, "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "dri-devel" <dri-devel@lists.freedesktop.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Collabora Kernel ML" <kernel@collabora.com>
+> Betreff: Aw: Re: Re: BUG: MTK DRM/HDMI broken on 5.13 (mt7623/bpi-r2)
 >
-> Add MT8195 vppsys1 clock provider
 >
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> ---
->  drivers/clk/mediatek/Kconfig           |   6 ++
->  drivers/clk/mediatek/Makefile          |   1 +
->  drivers/clk/mediatek/clk-mt8195-vpp1.c | 110 +++++++++++++++++++++++++
->  3 files changed, 117 insertions(+)
->  create mode 100644 drivers/clk/mediatek/clk-mt8195-vpp1.c
+> > Gesendet: Freitag, 09. Juli 2021 um 12:24 Uhr
+> > Von: "Enric Balletbo Serra" <eballetbo@gmail.com>
+> > If this is the offending commit, could you try if the following patch
+> > fixes the issue for you?
+> >
+> > https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/commit/?h=v5.13-next/fixes&id=db39994e0bd852c6612a9709e63c09b98b161e00
+> >
+> > If not, and that patch is the offending commit, it probably means that
+> > the default routing table doesn't work for mt7623. Needs a specific
+> > soc table.
 >
-> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> index 2deef026fbb4..91b1c19da1ab 100644
-> --- a/drivers/clk/mediatek/Kconfig
-> +++ b/drivers/clk/mediatek/Kconfig
-> @@ -672,6 +672,12 @@ config COMMON_CLK_MT8195_VPPSYS0
->         help
->           This driver supports MediaTek MT8195 vppsys0 clocks.
+> Hi Eric,
 >
-> +config COMMON_CLK_MT8195_VPPSYS1
-> +       bool "Clock driver for MediaTek MT8195 vppsys1"
-> +       depends on COMMON_CLK_MT8195
-> +       help
-> +         This driver supports MediaTek MT8195 vppsys1 clocks.
-> +
->  config COMMON_CLK_MT8516
->         bool "Clock driver for MediaTek MT8516"
->         depends on ARCH_MEDIATEK || COMPILE_TEST
-> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> index 34cd7f2c71ac..fbf57473bb91 100644
-> --- a/drivers/clk/mediatek/Makefile
-> +++ b/drivers/clk/mediatek/Makefile
-> @@ -95,5 +95,6 @@ obj-$(CONFIG_COMMON_CLK_MT8195_VDOSYS0) += clk-mt8195-vdo0.o
->  obj-$(CONFIG_COMMON_CLK_MT8195_VDOSYS1) += clk-mt8195-vdo1.o
->  obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
->  obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS0) += clk-mt8195-vpp0.o
-> +obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS1) += clk-mt8195-vpp1.o
->  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
->  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-> diff --git a/drivers/clk/mediatek/clk-mt8195-vpp1.c b/drivers/clk/mediatek/clk-mt8195-vpp1.c
-> new file mode 100644
-> index 000000000000..0650ba86d5b6
-> --- /dev/null
-> +++ b/drivers/clk/mediatek/clk-mt8195-vpp1.c
-> @@ -0,0 +1,110 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +//
-> +// Copyright (c) 2021 MediaTek Inc.
-> +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> +
-> +#include <linux/clk-provider.h>
-> +#include <linux/platform_device.h>
-> +
-> +#include "clk-mtk.h"
-> +#include "clk-gate.h"
-> +
-> +#include <dt-bindings/clock/mt8195-clk.h>
-> +
-> +static const struct mtk_gate_regs vpp10_cg_regs = {
+> thanks for response, but it does not fix the issue for me. hdmi on mt7623 is DPI not DSI. There is already a mt7623 specific routing-table defined (one for DPI/HDMI and one for external=DSI/MIPI):
+>
+> https://elixir.bootlin.com/linux/latest/source/drivers/gpu/drm/mediatek/mtk_drm_drv.c#L74
+>
+> maybe it can be included or compared with the "default" route?
+>
+> regards Frank
 
-Again, please add a separator.
+Hi
 
-> +       .set_ofs = 0x104,
-> +       .clr_ofs = 0x108,
-> +       .sta_ofs = 0x100,
-> +};
-> +
-> +static const struct mtk_gate_regs vpp11_cg_regs = {
-> +       .set_ofs = 0x114,
-> +       .clr_ofs = 0x118,
-> +       .sta_ofs = 0x110,
-> +};
-> +
-> +#define GATE_VPP10(_id, _name, _parent, _shift)                        \
-> +       GATE_MTK(_id, _name, _parent, &vpp10_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-> +
-> +#define GATE_VPP11(_id, _name, _parent, _shift)                        \
-> +       GATE_MTK(_id, _name, _parent, &vpp11_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
-> +
-> +static const struct mtk_gate vpp1_clks[] = {
-> +       /* VPP10 */
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_OVL, "vpp1_svpp1_mdp_ovl", "vpp_sel", 0),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_TCC, "vpp1_svpp1_mdp_tcc", "vpp_sel", 1),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_WROT, "vpp1_svpp1_mdp_wrot", "vpp_sel", 2),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_VPP_PAD, "vpp1_svpp1_vpp_pad", "vpp_sel", 3),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_WROT, "vpp1_svpp2_mdp_wrot", "vpp_sel", 4),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_VPP_PAD, "vpp1_svpp2_vpp_pad", "vpp_sel", 5),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_MDP_WROT, "vpp1_svpp3_mdp_wrot", "vpp_sel", 6),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_VPP_PAD, "vpp1_svpp3_vpp_pad", "vpp_sel", 7),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_RDMA, "vpp1_svpp1_mdp_rdma", "vpp_sel", 8),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_FG, "vpp1_svpp1_mdp_fg", "vpp_sel", 9),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_RDMA, "vpp1_svpp2_mdp_rdma", "vpp_sel", 10),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_FG, "vpp1_svpp2_mdp_fg", "vpp_sel", 11),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_MDP_RDMA, "vpp1_svpp3_mdp_rdma", "vpp_sel", 12),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_MDP_FG, "vpp1_svpp3_mdp_fg", "vpp_sel", 13),
-> +       GATE_VPP10(CLK_VPP1_VPP_SPLIT, "vpp1_vpp_split", "vpp_sel", 14),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_VDO0_DL_RELAY, "vpp1_svpp2_vdo0_dl_relay", "vpp_sel", 15),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_TDSHP, "vpp1_svpp1_mdp_tdshp", "vpp_sel", 16),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_COLOR, "vpp1_svpp1_mdp_color", "vpp_sel", 17),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_VDO1_DL_RELAY, "vpp1_svpp3_vdo1_dl_relay", "vpp_sel", 18),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_VPP_MERGE, "vpp1_svpp2_vpp_merge", "vpp_sel", 19),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_COLOR, "vpp1_svpp2_mdp_color", "vpp_sel", 20),
-> +       GATE_VPP10(CLK_VPP1_VPPSYS1_GALS, "vpp1_vppsys1_gals", "vpp_sel", 21),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_VPP_MERGE, "vpp1_svpp3_vpp_merge", "vpp_sel", 22),
-> +       GATE_VPP10(CLK_VPP1_SVPP3_MDP_COLOR, "vpp1_svpp3_mdp_color", "vpp_sel", 23),
-> +       GATE_VPP10(CLK_VPP1_VPPSYS1_LARB, "vpp1_vppsys1_larb", "vpp_sel", 24),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_RSZ, "vpp1_svpp1_mdp_rsz", "vpp_sel", 25),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_HDR, "vpp1_svpp1_mdp_hdr", "vpp_sel", 26),
-> +       GATE_VPP10(CLK_VPP1_SVPP1_MDP_AAL, "vpp1_svpp1_mdp_aal", "vpp_sel", 27),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_HDR, "vpp1_svpp2_mdp_hdr", "vpp_sel", 28),
-> +       GATE_VPP10(CLK_VPP1_SVPP2_MDP_AAL, "vpp1_svpp2_mdp_aal", "vpp_sel", 29),
-> +       GATE_VPP10(CLK_VPP1_DL_ASYNC, "vpp1_dl_async", "vpp_sel", 30),
-> +       GATE_VPP10(CLK_VPP1_LARB5_FAKE_ENG, "vpp1_larb5_fake_eng", "vpp_sel", 31),
-> +       /* VPP11 */
-> +       GATE_VPP11(CLK_VPP1_SVPP3_MDP_HDR, "vpp1_svpp3_mdp_hdr", "vpp_sel", 0),
-> +       GATE_VPP11(CLK_VPP1_SVPP3_MDP_AAL, "vpp1_svpp3_mdp_aal", "vpp_sel", 1),
-> +       GATE_VPP11(CLK_VPP1_SVPP2_VDO1_DL_RELAY, "vpp1_svpp2_vdo1_dl_relay", "vpp_sel", 2),
-> +       GATE_VPP11(CLK_VPP1_LARB6_FAKE_ENG, "vpp1_larb6_fake_eng", "vpp_sel", 3),
-> +       GATE_VPP11(CLK_VPP1_SVPP2_MDP_RSZ, "vpp1_svpp2_mdp_rsz", "vpp_sel", 4),
-> +       GATE_VPP11(CLK_VPP1_SVPP3_MDP_RSZ, "vpp1_svpp3_mdp_rsz", "vpp_sel", 5),
-> +       GATE_VPP11(CLK_VPP1_SVPP3_VDO0_DL_RELAY, "vpp1_svpp3_vdo0_dl_relay", "vpp_sel", 6),
-> +       GATE_VPP11(CLK_VPP1_DISP_MUTEX, "vpp1_disp_mutex", "vpp_sel", 7),
-> +       GATE_VPP11(CLK_VPP1_SVPP2_MDP_TDSHP, "vpp1_svpp2_mdp_tdshp", "vpp_sel", 8),
-> +       GATE_VPP11(CLK_VPP1_SVPP3_MDP_TDSHP, "vpp1_svpp3_mdp_tdshp", "vpp_sel", 9),
-> +       GATE_VPP11(CLK_VPP1_VPP0_DL1_RELAY, "vpp1_vpp0_dl1_relay", "vpp_sel", 10),
-> +       GATE_VPP11(CLK_VPP1_HDMI_META, "vpp1_hdmi_meta", "hdmirx_p", 11),
-> +       GATE_VPP11(CLK_VPP1_VPP_SPLIT_HDMI, "vpp1_vpp_split_hdmi", "hdmirx_p", 12),
-> +       GATE_VPP11(CLK_VPP1_DGI_IN, "vpp1_dgi_in", "in_dgi", 13),
-> +       GATE_VPP11(CLK_VPP1_DGI_OUT, "vpp1_dgi_out", "dgi_out_sel", 14),
-> +       GATE_VPP11(CLK_VPP1_VPP_SPLIT_DGI, "vpp1_vpp_split_dgi", "dgi_out_sel", 15),
-> +       GATE_VPP11(CLK_VPP1_VPP0_DL_ASYNC, "vpp1_vpp0_dl_async", "vpp_sel", 16),
-> +       GATE_VPP11(CLK_VPP1_VPP0_DL_RELAY, "vpp1_vpp0_dl_relay", "vpp_sel", 17),
-> +       GATE_VPP11(CLK_VPP1_VPP_SPLIT_26M, "vpp1_vpp_split_26m", "clk26m", 26),
+i tried to convert the old routing table into the new format
 
-The last two aren't in the datasheet.
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 080660ef11bf..134dae13382f 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -20,6 +20,12 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+        .num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+ };
 
-Same general comments apply.
++static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
++       .clk_driver = "clk-mt2701-mm",
++       .routes = mmsys_mt7623_routing_table,
++       .num_routes = ARRAY_SIZE(mmsys_mt7623_routing_table),
++};
++
+ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+        .clk_driver = "clk-mt2712-mm",
+        .routes = mmsys_default_routing_table,
+@@ -133,6 +139,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+                .compatible = "mediatek,mt2701-mmsys",
+                .data = &mt2701_mmsys_driver_data,
+        },
++       {
++               .compatible = "mediatek,mt7623-mmsys",
++               .data = &mt7623_mmsys_driver_data,
++       },
+        {
+                .compatible = "mediatek,mt2712-mmsys",
+                .data = &mt2712_mmsys_driver_data,
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index 11388961dded..fd397f68339c 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -214,5 +214,14 @@ static const struct mtk_mmsys_routes mmsys_default_routing_table[] = {
+                DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, UFOE_MOUT_EN_DSI0,
+        }
+ };
+-
++static const struct mtk_mmsys_routes mmsys_mt7623_routing_table[] = {
++       //HDMI
++       {
++               DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++               DISP_REG_CONFIG_DISP_OVL_MOUT_EN, OVL_MOUT_EN_RDMA
++       }, {
++               DDP_COMPONENT_RDMA0, DDP_COMPONENT_DPI0,
++               DISP_REG_CONFIG_DISP_RDMA0_SOUT_EN, RDMA0_SOUT_DPI0
++       }
++};
+ #endif /* __SOC_MEDIATEK_MTK_MMSYS_H */
+:...skipping...
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 080660ef11bf..134dae13382f 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -20,6 +20,12 @@ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+        .num_routes = ARRAY_SIZE(mmsys_default_routing_table),
+ };
 
++static const struct mtk_mmsys_driver_data mt7623_mmsys_driver_data = {
++       .clk_driver = "clk-mt2701-mm",//leave clock as mt7623 is based on mt2701
++       .routes = mmsys_mt7623_routing_table,
++       .num_routes = ARRAY_SIZE(mmsys_mt7623_routing_table),
++};
++
+ static const struct mtk_mmsys_driver_data mt2712_mmsys_driver_data = {
+        .clk_driver = "clk-mt2712-mm",
+        .routes = mmsys_default_routing_table,
+@@ -133,6 +139,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
+                .compatible = "mediatek,mt2701-mmsys",
+                .data = &mt2701_mmsys_driver_data,
+        },
++       {
++               .compatible = "mediatek,mt7623-mmsys",
++               .data = &mt7623_mmsys_driver_data,
++       },
+        {
+                .compatible = "mediatek,mt2712-mmsys",
+                .data = &mt2712_mmsys_driver_data,
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index 11388961dded..fd397f68339c 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -214,5 +214,14 @@ static const struct mtk_mmsys_routes mmsys_default_routing_table[] = {
+                DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, UFOE_MOUT_EN_DSI0,
+        }
+ };
+-
++static const struct mtk_mmsys_routes mmsys_mt7623_routing_table[] = {
++       //HDMI
++       {
++               DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
++               DISP_REG_CONFIG_DISP_OVL_MOUT_EN, OVL_MOUT_EN_RDMA
++       }, {
++               DDP_COMPONENT_RDMA0, DDP_COMPONENT_DPI0,
++               DISP_REG_CONFIG_DISP_RDMA0_SOUT_EN, RDMA0_SOUT_DPI0
++       }
++};
 
-ChenYu
+here i've left out COLOR0 and BLS because i have not found the 3rd (address) and 4th params (value) for the routing between them and edging components
 
-> +};
-> +
-> +static const struct mtk_clk_desc vpp1_desc = {
-> +       .clks = vpp1_clks,
-> +       .num_clks = ARRAY_SIZE(vpp1_clks),
-> +};
-> +
-> +static const struct of_device_id of_match_clk_mt8195_vpp1[] = {
-> +       {
-> +               .compatible = "mediatek,mt8195-vppsys1",
-> +               .data = &vpp1_desc,
-> +       }, {
-> +               /* sentinel */
-> +       }
-> +};
-> +
-> +static struct platform_driver clk_mt8195_vpp1_drv = {
-> +       .probe = mtk_clk_simple_probe,
-> +       .driver = {
-> +               .name = "clk-mt8195-vpp1",
-> +               .of_match_table = of_match_clk_mt8195_vpp1,
-> +       },
-> +};
-> +
-> +builtin_platform_driver(clk_mt8195_vpp1_drv);
-> --
-> 2.18.0
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+this is the old route:
+
+	DDP_COMPONENT_OVL0,
+	DDP_COMPONENT_RDMA0,
+	DDP_COMPONENT_COLOR0,
+	DDP_COMPONENT_BLS,
+	DDP_COMPONENT_DPI0,
+
+so i guess i need:
+
+DISP_REG_CONFIG_DISP_RDMA0_MOUT_EN, RDMA0_MOUT_EN_COLOR0
+DISP_REG_CONFIG_DISP_COLOR0_MOUT_EN, COLOR0_MOUT_EN_BLS
+DISP_REG_CONFIG_DISP_BLS_MOUT_EN, BLS_MOUT_EN_DPI0
+
+thinking OUT is right for display...it's no HDMI-in
+but i'm unsure whats the difference between MOUT and SOUT
+
+compatible for mmsys is already set to mediatek,mt7623-mmsys in arch/arm/boot/dts/mt7623n.dtsi but it's not working, i guess because color0 and bls are missing in route
+
+any hint how to add them?
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
