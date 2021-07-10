@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5C5FC07E95
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 09:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24FC7C07E95
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 11:39:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 81AD1611CD
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 09:01:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 81AD1611CD
+	by mail.kernel.org (Postfix) with ESMTPS id CF318613C2
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 11:39:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF318613C2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u+rsLokMiL1w6/V/JWI0NswzQyNqIMbPm1apUpDDsvs=; b=g730F1vPuUOveA
-	Jkkil0UNCpVrgvoN3T+bVgsonaQVjXVGV5PKxdAp5b7RVdekIw2MnT/oHLnXEV8B6QRFzKQs7HsC4
-	2Djd6ZkBTBtyOFq6mu1hAmyuQl207SL7nZAW0TNRAXuUrwpGJNjv197cb/knM2u0ch928wRR4e8is
-	LoZ+T3EAX+o1R7Bn8916+Ix/Wc9+Ls7mloAIK2d/lyJemFKrZThkdjEacVjXkojYgkVb7BYH/N81f
-	UONLHDoKz0uh+C2VS1/yeOA/G577O7R1HRw2n+VOACw06iOPqJpZJhklnZyTGENN3u5aKJHMHrp7v
-	eSErdUvgv19BtqwsJMkg==;
+	List-Owner; bh=B+Lygqgfe70N1JesuqbALBIBSeQog/6/FQDxsGy2Juk=; b=wQ325dQnyIAZSk
+	h6z7FwaOn0F17QcC+hOkWczPECJB4NFnC2Q2n2xCFqgf/GML4GsN+y/GGAwKDb0CCUr47568wibsI
+	hqUipJuX0JdBZPcD1CGp+lJjC2R62LX7CAGVrSsg3P9nn4yL6d3JEuW6iwZ00nubz/E6233vrekXY
+	C4DMIkYZK27bUpxPr0YhhPbH3DxNsQxh0tblXzeuT3Bz24DSOYl0mUydTHS/WEb2AHrxlmd32Yyj3
+	JLZKSSExXZ9p0hPM9/eeiC7gVUyHY/XkJRRmiQ7Tiw5gSN9kE+lHQhxwLxNDiTRzUPnL3SO5KhcWB
+	xZR1LzbDgq91CrWw596Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m28ra-003Pe1-LP; Sat, 10 Jul 2021 09:01:30 +0000
+	id 1m2BJp-003WTY-IP; Sat, 10 Jul 2021 11:38:49 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m28rR-003Pby-0n; Sat, 10 Jul 2021 09:01:22 +0000
-X-UUID: 170370b4af8740cfb6c70c6a38192913-20210710
+ id 1m2BJk-003WSi-Qt; Sat, 10 Jul 2021 11:38:47 +0000
+X-UUID: db1ea9ea95884bb3badb2deb3774364b-20210710
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=CSbWgXbhqSuJgriKSy6ecczMWFwLOB2XqObfMGjC9wk=; 
- b=LGhnJ0d//zBb0to2v1junF0gxcA9H1VnI79al6G1lS16nzQtmgRmbn2S4/o0UxIUqFDTJs7uLj4F8tGdBsZjI2jTr3xirfk7YeA4Ldp3q4HU/3vHYoIhV/cs2fLQ9YbAbUHV0/EchkQkncnAl/SehZNjMj6ybYOKRp+zjY9GGCI=;
-X-UUID: 170370b4af8740cfb6c70c6a38192913-20210710
+ bh=4j0xUmNTz3XyXtuvozwysEwL1V/91SvaIY4pTjZ7aBA=; 
+ b=i2ZIx6M20+MGVLzHuIvkidfWIPrF6TfyFpulS2N3AbpWGjInX+Aok0pZBDjOcBYXUy5wRC1VycOJt55G/soFs8GpH044pICTtydGuPwzt1Xkb7dJLpQRe0EYMue5Jw2NPzj7CSQ2m9Gzg/949LAseKtOqxofJUg0KCogyIYERCg=;
+X-UUID: db1ea9ea95884bb3badb2deb3774364b-20210710
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 858932090; Sat, 10 Jul 2021 02:01:17 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 10 Jul 2021 02:01:15 -0700
+ with ESMTP id 420220722; Sat, 10 Jul 2021 04:38:39 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 10 Jul 2021 04:38:36 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 10 Jul 2021 17:01:06 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 10 Jul 2021 17:01:05 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <timur@kernel.org>, <linux@armlinux.org.uk>, <alcooperx@gmail.com>,
- <tklauser@distanz.ch>, <sean.wang@kernel.org>
-CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hui.liu@mediatek.com>, <yuchen.huang@mediatek.com>,
- <huihui.wang@mediatek.com>, <eddie.huang@mediatek.com>,
- <sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-serial@vger.kernel.org>
-Subject: [PATCH] uart: mediatek: fix memory corruption issue
-Date: Sat, 10 Jul 2021 17:01:03 +0800
-Message-ID: <20210710090103.2643-2-zhiyong.tao@mediatek.com>
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 10 Jul 2021 19:38:29 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 10 Jul 2021 19:38:29 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fshao@google.com>,
+ <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>
+Subject: [PATCH v2 9/9] drm/mediatek: add MERGE support for mt8195
+Date: Sat, 10 Jul 2021 19:38:19 +0800
+Message-ID: <20210710113819.5170-10-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210710090103.2643-1-zhiyong.tao@mediatek.com>
-References: <20210710090103.2643-1-zhiyong.tao@mediatek.com>
+In-Reply-To: <20210710113819.5170-1-jason-jh.lin@mediatek.com>
+References: <20210710113819.5170-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210710_020121_467030_62BD52DD 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20210710_043845_059869_EFB80B08 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,60 +89,709 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch is used to fix memory corruption issue when rx power off.
-1. add spin lock in mtk8250_dma_rx_complete function in APDMA mode.
-2. add processing mechanism which count value is 0
+1. Add MERGE module file.
+2. Add REG_FLD macro in mtk_dem_crtc header to support
+   bitwise register settings.
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- drivers/tty/serial/8250/8250_mtk.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 525 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h     |  14 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ 8 files changed, 570 insertions(+)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
 
-diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
-index f7d3023f860f..09f7d2166315 100644
---- a/drivers/tty/serial/8250/8250_mtk.c
-+++ b/drivers/tty/serial/8250/8250_mtk.c
-@@ -91,12 +91,15 @@ static void mtk8250_dma_rx_complete(void *param)
- 	struct mtk8250_data *data = up->port.private_data;
- 	struct tty_port *tty_port = &up->port.state->port;
- 	struct dma_tx_state state;
--	int copied, total, cnt;
-+	unsigned int copied, total, cnt;
- 	unsigned char *ptr;
-+	unsigned long flags;
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index a1b239135c8f..9044c5aabae1 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -6,6 +6,7 @@ mediatek-drm-y := mtk_disp_ccorr.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_rdma.o \
+ 		  mtk_disp_dsc.o \
++		  mtk_disp_merge.o \
+ 		  mtk_drm_crtc.o \
+ 		  mtk_drm_ddp_comp.o \
+ 		  mtk_drm_drv.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index 128d9fdbaf9e..dfb078541430 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -97,4 +97,12 @@ void mtk_dsc_config(struct device *dev, unsigned int width,
+ void mtk_dsc_start(struct device *dev);
+ void mtk_dsc_stop(struct device *dev);
  
- 	if (data->rx_status == DMA_RX_SHUTDOWN)
- 		return;
- 
-+	spin_lock_irqsave(&up->port.lock, flags);
++int mtk_merge_clk_enable(struct device *dev);
++void mtk_merge_clk_disable(struct device *dev);
++void mtk_merge_config(struct device *dev, unsigned int width,
++		      unsigned int height, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_merge_start(struct device *dev);
++void mtk_merge_stop(struct device *dev);
 +
- 	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
- 	total = dma->rx_size - state.residue;
- 	cnt = total;
-@@ -104,9 +107,11 @@ static void mtk8250_dma_rx_complete(void *param)
- 	if ((data->rx_pos + cnt) > dma->rx_size)
- 		cnt = dma->rx_size - data->rx_pos;
- 
--	ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
--	copied = tty_insert_flip_string(tty_port, ptr, cnt);
--	data->rx_pos += cnt;
-+	if (cnt != 0) {
-+		ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
-+		copied = tty_insert_flip_string(tty_port, ptr, cnt);
-+		data->rx_pos += cnt;
+ #endif
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+new file mode 100644
+index 000000000000..b7d633ca2f71
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -0,0 +1,525 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/clk.h>
++#include <linux/component.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
++#include "mtk_disp_drv.h"
++
++#define DISP_REG_MERGE_CTRL (0x000)
++#define FLD_MERGE_EN BIT(0)
++#define FLD_MERGE_RST BIT(4)
++#define FLD_MERGE_LR_SWAP BIT(8)
++#define FLD_MERGE_DCM_DIS BIT(12)
++
++#define DISP_REG_MERGE_WIDTH (0x004)
++#define FLD_IN_WIDHT_L GENMASK(15, 0)
++#define FLD_IN_WIDHT_R GENMASK(31, 16)
++
++#define DISP_REG_MERGE_HEIGHT (0x008)
++#define FLD_IN_HEIGHT GENMASK(15, 0)
++
++#define DISP_REG_MERGE_SHADOW_CRTL (0x00c)
++
++#define DISP_REG_MERGE_DGB0 (0x010)
++#define FLD_PIXEL_CNT GENMASK(15, 0)
++#define FLD_MERGE_STATE GENMASK(17, 16)
++
++#define DISP_REG_MERGE_DGB1 (0x014)
++#define FLD_LINE_CNT GENMASK(15, 0)
++
++#define DISP_REG_MERGE_CFG2_0 (0x160)
++
++#define DISP_REG_MERGE_CFG2_2 (0x168)
++
++#define DISP_MERGE_CFG_0		0x010
++#define DISP_MERGE_CFG_1		0x014
++#define DISP_MERGE_CFG_4		0x020
++#define DISP_MERGE_CFG_5		0x024
++#define DISP_MERGE_CFG_8		0x030
++#define DISP_MERGE_CFG_9		0x034
++#define DISP_MERGE_CFG_10	0x038
++#define DISP_MERGE_CFG_11	0x03c
++#define DISP_MERGE_CFG_12	0x040
++#define CFG_11_11_1PI_1PO_BYPASS	1
++#define CFG_11_11_2PI_2PO_BYPASS	2
++#define CFG_10_10_2PI_1PO_BYPASS	3
++#define CFG_10_10_2PI_2PO_BYPASS	4
++#define CFG_10_10_1PI_1PO_BUF_MODE	5
++#define CFG_10_10_1PI_2PO_BUF_MODE	6
++#define CFG_10_10_2PI_1PO_BUF_MODE	7
++#define CFG_10_10_2PI_2PO_BUF_MODE	8
++#define CFG_10_01_1PI_1PO_BUF_MODE	9
++#define CFG_10_01_2PI_1PO_BUF_MODE	10
++#define CFG_01_10_1PI_1PO_BUF_MODE	11
++#define CFG_01_10_1PI_2PO_BUF_MODE	12
++#define CFG_01_01_1PI_1PO_BUF_MODE	13
++#define CFG_10_11_1PI_1PO_SPLIT		14
++#define CFG_10_11_2PI_1PO_SPLIT		15
++#define CFG_01_11_1PI_1PO_SPLIT		16
++#define CFG_11_10_1PI_1PO_MERGE		17
++#define CFG_11_10_1PI_2PO_MERGE		18
++#define CFG_10_10_1PI_1PO_TO422		19
++#define CFG_10_10_1PI_2PO_TO444		20
++#define CFG_10_10_2PI_2PO_TO444		21
++#define DISP_MERGE_CFG_13	0x044
++#define DISP_MERGE_CFG_14	0x048
++#define DISP_MERGE_CFG_15	0x04c
++#define DISP_MERGE_CFG_17	0x054
++#define DISP_MERGE_CFG_18	0x058
++#define DISP_MERGE_CFG_19	0x05c
++#define DISP_MERGE_CFG_20	0x060
++#define DISP_MERGE_CFG_21	0x064
++#define DISP_MERGE_CFG_22	0x068
++#define DISP_MERGE_CFG_23	0x06c
++#define DISP_MERGE_CFG_24	0x070
++#define DISP_MERGE_CFG_25	0x074
++#define DISP_MERGE_CFG_26	0x078
++#define DISP_MERGE_CFG_27	0x07c
++#define DISP_MERGE_CFG_28	0x080
++#define DISP_MERGE_CFG_29	0x084
++#define DISP_MERGE_CFG_36	0x0a0
++#define DISP_MERGE_CFG_36_FLD_ULTRA_EN \
++	REG_FLD(1, 0)
++#define DISP_MERGE_CFG_36_FLD_PREULTRA_EN \
++	REG_FLD(1, 4)
++#define DISP_MERGE_CFG_36_FLD_HALT_FOR_DVFS_EN \
++	REG_FLD(1, 8)
++#define DISP_MERGE_CFG_36_VAL_ULTRA_EN(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_36_FLD_ULTRA_EN, val)
++#define DISP_MERGE_CFG_36_VAL_PREULTRA_EN(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_36_FLD_PREULTRA_EN, val)
++#define DISP_MERGE_CFG_36_VAL_HALT_FOR_DVFS_EN(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_36_FLD_HALT_FOR_DVFS_EN, val)
++#define DISP_MERGE_CFG_37	0x0a4
++#define DISP_MERGE_CFG_37_FLD_BUFFER_MODE \
++	REG_FLD(2, 0)
++#define DISP_MERGE_CFG_37_VAL_BUFFER_MODE(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_37_FLD_BUFFER_MODE, val)
++#define DISP_MERGE_CFG_38	0x0a8
++#define DISP_MERGE_CFG_38_FLD_VDE_BLOCK_ULTRA \
++	REG_FLD(1, 0)
++#define DISP_MERGE_CFG_38_FLD_VALID_TH_BLOCK_ULTRA \
++	REG_FLD(1, 4)
++#define DISP_MERGE_CFG_38_FLD_ULTRA_FIFO_VALID_TH \
++	REG_FLD(16, 16)
++#define DISP_MERGE_CFG_38_VAL_VDE_BLOCK_ULTRA(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_38_FLD_VDE_BLOCK_ULTRA, val)
++#define DISP_MERGE_CFG_38_VAL_VALID_TH_BLOCK_ULTRA(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_38_FLD_VALID_TH_BLOCK_ULTRA, val)
++#define DISP_MERGE_CFG_38_VAL_ULTRA_FIFO_VALID_TH(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_38_FLD_ULTRA_FIFO_VALID_TH, val)
++#define DISP_MERGE_CFG_39	0x0ac
++#define DISP_MERGE_CFG_39_FLD_NVDE_FORCE_PREULTRA \
++	REG_FLD(1, 8)
++#define DISP_MERGE_CFG_39_FLD_NVALID_TH_FORCE_PREULTRA \
++	REG_FLD(1, 12)
++#define DISP_MERGE_CFG_39_FLD_PREULTRA_FIFO_VALID_TH \
++	REG_FLD(16, 16)
++#define DISP_MERGE_CFG_39_VAL_NVDE_FORCE_PREULTRA(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_39_FLD_NVDE_FORCE_PREULTRA, val)
++#define DISP_MERGE_CFG_39_VAL_NVALID_TH_FORCE_PREULTRA(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_39_FLD_NVALID_TH_FORCE_PREULTRA, val)
++#define DISP_MERGE_CFG_39_VAL_PREULTRA_FIFO_VALID_TH(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_39_FLD_PREULTRA_FIFO_VALID_TH, val)
++#define DISP_MERGE_CFG_40	0x0b0
++#define DISP_MERGE_CFG_40_FLD_ULTRA_TH_LOW \
++	REG_FLD(16, 0)
++#define DISP_MERGE_CFG_40_FLD_ULTRA_TH_HIGH \
++	REG_FLD(16, 16)
++#define DISP_MERGE_CFG_40_VAL_ULTRA_TH_LOW(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_40_FLD_ULTRA_TH_LOW, (val))
++#define DISP_MERGE_CFG_40_VAL_ULTRA_TH_HIGH(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_40_FLD_ULTRA_TH_HIGH, val)
++#define DISP_MERGE_CFG_41	0x0b4
++#define DISP_MERGE_CFG_41_FLD_PREULTRA_TH_LOW \
++	REG_FLD(16, 0)
++#define DISP_MERGE_CFG_41_FLD_PREULTRA_TH_HIGH \
++	REG_FLD(16, 16)
++#define DISP_MERGE_CFG_41_VAL_PREULTRA_TH_LOW(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_41_FLD_PREULTRA_TH_LOW, val)
++#define DISP_MERGE_CFG_41_VAL_PREULTRA_TH_HIGH(val) \
++	REG_FLD_VAL(DISP_MERGE_CFG_41_FLD_PREULTRA_TH_HIGH, val)
++
++struct mtk_merge_config_struct {
++	unsigned short width_right;
++	unsigned short width_left;
++	unsigned int height;
++	unsigned int fmt;
++	unsigned int mode;
++	unsigned int swap;
++};
++
++struct mtk_disp_merge {
++	enum mtk_ddp_comp_id comp_id;
++	struct drm_crtc *crtc;
++	struct clk *clk;
++	struct clk *async_clk;
++	void __iomem *regs;
++	struct cmdq_client_reg		cmdq_reg;
++	int irq;
++	bool need_golden_setting;
++	enum mtk_ddp_comp_id gs_comp_id;
++};
++
++void mtk_merge_start(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	mtk_ddp_write(NULL, 0x1, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CTRL);
++}
++
++void mtk_merge_stop(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	mtk_ddp_write(NULL, 0x0, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CTRL);
++}
++
++static int mtk_merge_check_params(struct mtk_merge_config_struct *merge_config)
++{
++	if (!merge_config->height ||
++	    !merge_config->width_left || !merge_config->width_right) {
++		pr_err("%s:merge input width l(%u) w(%u) h(%u)\n",
++		       __func__, merge_config->width_left,
++		       merge_config->width_right, merge_config->height);
++		return -EINVAL;
 +	}
- 
- 	if (total > cnt) {
- 		ptr = (unsigned char *)(dma->rx_buf);
-@@ -120,6 +125,8 @@ static void mtk8250_dma_rx_complete(void *param)
- 	tty_flip_buffer_push(tty_port);
- 
- 	mtk8250_rx_dma(up);
++	pr_debug("%s:merge input width l(%u) r(%u) height(%u)\n",
++		 __func__, merge_config->width_left,
++		 merge_config->width_right, merge_config->height);
++	return 0;
++}
 +
-+	spin_unlock_irqrestore(&up->port.lock, flags);
- }
++static int mtk_merge_golden_setting(struct mtk_disp_merge *priv,
++				    struct cmdq_pkt *handle)
++{
++	int ultra_en = 1;
++	int preultra_en = 1;
++	int halt_for_dvfs_en = 0;
++	int buffer_mode = 3;
++	int vde_block_ultra = 0;
++	int valid_th_block_ultra = 0;
++	int ultra_fifo_valid_th = 0;
++	int nvde_force_preultra = 0;
++	int nvalid_th_force_preultra = 0;
++	int preultra_fifo_valid_th = 0;
++	int ultra_th_low = 0xe10;
++	int ultra_th_high = 0x12c0;
++	int preultra_th_low = 0x12c0;
++	int preultra_th_high = 0x1518;
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_36_VAL_ULTRA_EN
++				(ultra_en) |
++			   DISP_MERGE_CFG_36_VAL_PREULTRA_EN
++				(preultra_en) |
++			   DISP_MERGE_CFG_36_VAL_HALT_FOR_DVFS_EN
++				(halt_for_dvfs_en),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_36,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_36_FLD_ULTRA_EN) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_36_FLD_PREULTRA_EN) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_36_FLD_HALT_FOR_DVFS_EN));
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_37_VAL_BUFFER_MODE
++				(buffer_mode),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_37,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_37_FLD_BUFFER_MODE));
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_38_VAL_VDE_BLOCK_ULTRA
++				(vde_block_ultra) |
++			   DISP_MERGE_CFG_38_VAL_VALID_TH_BLOCK_ULTRA
++				(valid_th_block_ultra) |
++			   DISP_MERGE_CFG_38_VAL_ULTRA_FIFO_VALID_TH
++				(ultra_fifo_valid_th),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_38,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_38_FLD_VDE_BLOCK_ULTRA) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_38_FLD_VALID_TH_BLOCK_ULTRA) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_38_FLD_ULTRA_FIFO_VALID_TH));
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_39_VAL_NVDE_FORCE_PREULTRA
++				(nvde_force_preultra) |
++			   DISP_MERGE_CFG_39_VAL_NVALID_TH_FORCE_PREULTRA
++				(nvalid_th_force_preultra) |
++			   DISP_MERGE_CFG_39_VAL_PREULTRA_FIFO_VALID_TH
++				(preultra_fifo_valid_th),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_39,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_39_FLD_NVDE_FORCE_PREULTRA) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_39_FLD_NVALID_TH_FORCE_PREULTRA) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_39_FLD_PREULTRA_FIFO_VALID_TH));
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_40_VAL_ULTRA_TH_LOW
++				(ultra_th_low) |
++			   DISP_MERGE_CFG_40_VAL_ULTRA_TH_HIGH
++				(ultra_th_high),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_40,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_40_FLD_ULTRA_TH_LOW) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_40_FLD_ULTRA_TH_HIGH));
++
++	mtk_ddp_write_mask(handle,
++			   DISP_MERGE_CFG_41_VAL_PREULTRA_TH_LOW
++				(preultra_th_low) |
++			   DISP_MERGE_CFG_41_VAL_PREULTRA_TH_HIGH
++				(preultra_th_high),
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_41,
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_41_FLD_PREULTRA_TH_LOW) |
++			   REG_FLD_MASK
++				(DISP_MERGE_CFG_41_FLD_PREULTRA_TH_HIGH));
++
++	return 0;
++}
++
++void mtk_merge_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *handle)
++{
++	struct mtk_merge_config_struct merge_config;
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	/*golden setting*/
++	if (priv->need_golden_setting &&
++	    priv->gs_comp_id == priv->comp_id)
++		mtk_merge_golden_setting(priv, handle);
++
++	switch (priv->comp_id) {
++	case DDP_COMPONENT_MERGE0:
++		merge_config.mode = CFG_10_10_1PI_2PO_BUF_MODE;
++		merge_config.width_left = w;
++		merge_config.width_right = w;
++		merge_config.height = h;
++		merge_config.swap = 0;
++		break;
++	case DDP_COMPONENT_MERGE5:
++		merge_config.mode = CFG_10_10_2PI_2PO_BUF_MODE;
++		merge_config.width_left = w;
++		merge_config.width_right = w;
++		merge_config.height = h;
++		merge_config.swap = 0;
++		break;
++	default:
++		pr_err("No find component merge %d\n", priv->comp_id);
++		return;
++	}
++
++	mtk_merge_check_params(&merge_config);
++
++	switch (merge_config.mode) {
++	case CFG_10_10_1PI_2PO_BUF_MODE:
++	case CFG_10_10_2PI_2PO_BUF_MODE:
++		mtk_ddp_write_mask(handle,
++				   (merge_config.height << 16 |
++				   merge_config.width_left),
++				   &priv->cmdq_reg, priv->regs,
++				   DISP_MERGE_CFG_0, ~0);
++
++		mtk_ddp_write_mask(handle,
++				   (merge_config.height << 16 |
++				   merge_config.width_left),
++				   &priv->cmdq_reg, priv->regs,
++				   DISP_MERGE_CFG_4, ~0);
++
++		mtk_ddp_write_mask(handle,
++				   (merge_config.height << 16 |
++				   merge_config.width_left),
++				   &priv->cmdq_reg, priv->regs,
++				   DISP_MERGE_CFG_24, ~0);
++
++		mtk_ddp_write_mask(handle,
++				   (merge_config.height << 16 |
++				   merge_config.width_left),
++				   &priv->cmdq_reg, priv->regs,
++				   DISP_MERGE_CFG_25, ~0);
++
++		mtk_ddp_write_mask(handle,
++				   merge_config.swap,
++				   &priv->cmdq_reg, priv->regs,
++				   DISP_MERGE_CFG_10, 0x1f);
++	break;
++	default:
++	break;
++	}
++	mtk_ddp_write_mask(handle, merge_config.mode,
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_MERGE_CFG_12, 0x1f);
++	mtk_ddp_write_mask(handle, 0x1,
++			   &priv->cmdq_reg, priv->regs,
++			   DISP_REG_MERGE_CTRL, 0x1);
++}
++
++int mtk_merge_clk_enable(struct device *dev)
++{
++	int ret = 0;
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	ret = pm_runtime_get_sync(dev);
++
++	if (priv->clk) {
++		ret = clk_prepare_enable(priv->clk);
++		if (ret)
++			pr_err("merge clk prepare enable failed\n");
++	}
++
++	if (priv->async_clk) {
++		ret = clk_prepare_enable(priv->async_clk);
++		if (ret)
++			pr_err("async clk prepare enable failed\n");
++	}
++
++	return ret;
++}
++
++void mtk_merge_clk_disable(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	if (priv->async_clk)
++		clk_disable_unprepare(priv->async_clk);
++
++	if (priv->clk)
++		clk_disable_unprepare(priv->clk);
++
++	pm_runtime_put_sync(dev);
++}
++
++static int mtk_disp_merge_bind(struct device *dev, struct device *master,
++			       void *data)
++{
++	return 0;
++}
++
++static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
++				  void *data)
++{
++}
++
++static const struct component_ops mtk_disp_merge_component_ops = {
++	.bind	= mtk_disp_merge_bind,
++	.unbind = mtk_disp_merge_unbind,
++};
++
++static int mtk_disp_merge_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct resource *res;
++	struct mtk_disp_merge *priv;
++	enum mtk_ddp_comp_id comp_id;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	comp_id = mtk_ddp_comp_get_id(dev->of_node, MTK_DISP_MERGE);
++	if ((int)comp_id < 0) {
++		dev_err(dev, "Failed to identify by alias: %d\n", comp_id);
++		return comp_id;
++	}
++
++	priv->comp_id = comp_id;
++	priv->need_golden_setting = true;
++	priv->gs_comp_id = DDP_COMPONENT_MERGE5;
++
++	priv->clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(priv->clk)) {
++		dev_err(dev, "failed to get merge clk\n");
++		return PTR_ERR(priv->clk);
++	}
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs = devm_ioremap_resource(dev, res);
++	if (IS_ERR(priv->regs)) {
++		dev_err(dev, "failed to ioremap merge\n");
++		return PTR_ERR(priv->regs);
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	priv->irq = platform_get_irq(pdev, 0);
++	if (priv->irq < 0)
++		priv->irq = 0;
++
++	priv->async_clk = of_clk_get(dev->of_node, 1);
++	if (IS_ERR(priv->async_clk)) {
++		ret = PTR_ERR(priv->async_clk);
++		dev_dbg(dev, "No merge async clock: %d\n", ret);
++		priv->async_clk = NULL;
++	}
++
++	platform_set_drvdata(pdev, priv);
++
++	pm_runtime_enable(dev);
++
++	ret = component_add(dev, &mtk_disp_merge_component_ops);
++	if (ret != 0) {
++		dev_err(dev, "Failed to add component: %d\n", ret);
++		pm_runtime_disable(dev);
++	}
++
++	return ret;
++}
++
++static int mtk_disp_merge_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
++
++	pm_runtime_disable(&pdev->dev);
++
++	return 0;
++}
++
++static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8195-disp-merge", },
++	{},
++};
++
++MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
++
++struct platform_driver mtk_disp_merge_driver = {
++	.probe = mtk_disp_merge_probe,
++	.remove = mtk_disp_merge_remove,
++	.driver = {
++		.name = "mediatek-disp-merge",
++		.owner = THIS_MODULE,
++		.of_match_table = mtk_disp_merge_driver_dt_match,
++	},
++};
++
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+index cb9a36c48d4f..66d1cf03dfe8 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.h
+@@ -14,6 +14,20 @@
+ #define MTK_MAX_BPC	10
+ #define MTK_MIN_BPC	3
  
- static void mtk8250_rx_dma(struct uart_8250_port *up)
++#define REG_FLD(width, shift) \
++	((unsigned int)((((width) & 0xff) << 16) | ((shift) & 0xff)))
++
++#define REG_FLD_WIDTH(field) ((unsigned int)(((field) >> 16) & 0xff))
++
++#define REG_FLD_SHIFT(field) ((unsigned int)((field) & 0xff))
++
++#define REG_FLD_MASK(field) \
++	((unsigned int)((1ULL << REG_FLD_WIDTH(field)) - 1) \
++	 << REG_FLD_SHIFT(field))
++
++#define REG_FLD_VAL(field, val) \
++	(((val) << REG_FLD_SHIFT(field)) & REG_FLD_MASK(field))
++
+ void mtk_drm_crtc_commit(struct drm_crtc *crtc);
+ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 			const enum mtk_ddp_comp_id *path,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index d0b0f41dfe5a..fb5f260f5ae0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -341,6 +341,14 @@ static const struct mtk_ddp_comp_funcs ddp_dsc = {
+ 	.clk_disable = mtk_dsc_clk_disable,
+ };
+ 
++static const struct mtk_ddp_comp_funcs ddp_merge = {
++	.clk_enable = mtk_merge_clk_enable,
++	.clk_disable = mtk_merge_clk_disable,
++	.start = mtk_merge_start,
++	.stop = mtk_merge_stop,
++	.config = mtk_merge_config,
++};
++
+ static const struct mtk_ddp_comp_funcs ddp_ufoe = {
+ 	.clk_enable = mtk_ddp_clk_enable,
+ 	.clk_disable = mtk_ddp_clk_disable,
+@@ -365,6 +373,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_OD] = "od",
+ 	[MTK_DISP_BLS] = "bls",
+ 	[MTK_DISP_DSC] = "dsc",
++	[MTK_DISP_MERGE] = "merge",
+ };
+ 
+ struct mtk_ddp_comp_match {
+@@ -403,6 +412,12 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DSC0]	= { MTK_DISP_DSC,	0, &ddp_dsc },
+ 	[DDP_COMPONENT_DSC1]	= { MTK_DISP_DSC,	1, &ddp_dsc },
+ 	[DDP_COMPONENT_DSC1_VIRTUAL0]	= { MTK_DISP_DSC,	-1, &ddp_dsc },
++	[DDP_COMPONENT_MERGE0]	= { MTK_DISP_MERGE,	0, &ddp_merge },
++	[DDP_COMPONENT_MERGE1]	= { MTK_DISP_MERGE,	1, &ddp_merge },
++	[DDP_COMPONENT_MERGE2]	= { MTK_DISP_MERGE,	2, &ddp_merge },
++	[DDP_COMPONENT_MERGE3]	= { MTK_DISP_MERGE,	3, &ddp_merge },
++	[DDP_COMPONENT_MERGE4]	= { MTK_DISP_MERGE,	4, &ddp_merge },
++	[DDP_COMPONENT_MERGE5]	= { MTK_DISP_MERGE,	5, &ddp_merge },
+ 	[DDP_COMPONENT_UFOE]	= { MTK_DISP_UFOE,	0, &ddp_ufoe },
+ 	[DDP_COMPONENT_WDMA0]	= { MTK_DISP_WDMA,	0, NULL },
+ 	[DDP_COMPONENT_WDMA1]	= { MTK_DISP_WDMA,	1, NULL },
+@@ -522,6 +537,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_GAMMA ||
+ 	    type == MTK_DISP_DSC ||
++	    type == MTK_DISP_MERGE ||
+ 	    type == MTK_DPI ||
+ 	    type == MTK_DSI ||
+ 	    type == MTK_DISP_OVL ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 661fb620e266..0afd78c0bc92 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -35,6 +35,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_OD,
+ 	MTK_DISP_BLS,
+ 	MTK_DISP_DSC,
++	MTK_DISP_MERGE,
+ 	MTK_DDP_COMP_TYPE_MAX,
+ };
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 7dfca63c1042..24599fc0a597 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -448,6 +448,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_DITHER },
+ 	{ .compatible = "mediatek,mt8195-disp-dsc",
+ 	  .data = (void *)MTK_DISP_DSC },
++	{ .compatible = "mediatek,mt8195-disp-merge",
++	  .data = (void *)MTK_DISP_MERGE },
+ 	{ .compatible = "mediatek,mt8173-disp-ufoe",
+ 	  .data = (void *)MTK_DISP_UFOE },
+ 	{ .compatible = "mediatek,mt2701-dsi",
+@@ -566,6 +568,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		    comp_type == MTK_DISP_COLOR ||
+ 		    comp_type == MTK_DISP_GAMMA ||
+ 		    comp_type == MTK_DISP_DSC ||
++		    comp_type == MTK_DISP_MERGE ||
+ 		    comp_type == MTK_DISP_OVL ||
+ 		    comp_type == MTK_DISP_OVL_2L ||
+ 		    comp_type == MTK_DISP_RDMA ||
+@@ -671,6 +674,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
+ 	&mtk_dpi_driver,
+ 	&mtk_drm_platform_driver,
+ 	&mtk_disp_dsc_driver,
++	&mtk_disp_merge_driver,
+ 	&mtk_dsi_driver,
+ };
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 8b722330ef7d..c4d802a43531 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -52,6 +52,7 @@ extern struct platform_driver mtk_disp_gamma_driver;
+ extern struct platform_driver mtk_disp_ovl_driver;
+ extern struct platform_driver mtk_disp_rdma_driver;
+ extern struct platform_driver mtk_disp_dsc_driver;
++extern struct platform_driver mtk_disp_merge_driver;
+ extern struct platform_driver mtk_dpi_driver;
+ extern struct platform_driver mtk_dsi_driver;
+ 
 -- 
 2.18.0
 _______________________________________________
