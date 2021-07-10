@@ -2,71 +2,80 @@ Return-Path: <SRS0=Fd5v=MC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 557CCC07E9B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 39CFCC07E95
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 06:58:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B7FE613B7
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:29:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B7FE613B7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E1BA661380
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 06:58:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1BA661380
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oPiHJzGx4SIuYdHCgN9d5b9ugVJvIasDwwV6TfsdQuE=; b=RkTyvP4EBcVn00
-	UEJMxWaG5LxRFuPayWgV9752hC6QBfr7YW+Ceg+opsRdT+/Uid0c/ZVZUCHcqKovzPFNZhdYQIFap
-	me11rMYXO6GGuz5kSUMd19PlYVwlRWuyK+fI51CfSih4dl7TFHo4IzemJuFInUj4EahOX/8wCmdWo
-	FLrBA9rq0UiVjg50Ovho4iRmbbUl0i6WpijwgBfHhx8KwY7GEV9/WBQOvIJFhMdfCOJLJ+rCMvxlE
-	HDgSV6UwbOlNECm+7EwdgYksEd+xliVwNFyDR0XB7ysy2eX/zUgxal/dzm9nrDF9oYSsGFK4yDU7q
-	nGhsOHoB8IsP5ZjXxaIg==;
+	List-Owner; bh=m+mpiVfBNdY++gQpza4tMTr0Hu7nhgxwpu839Ma1rzQ=; b=tbB1BVIh5XxRG5
+	9n6fgDsPcs5bnGubsRhLasbdRg5tXVlHQdw/ODIwlVh8kNdOnwq8h3w+x1mAUqMMQ8yKYTzDQxY/z
+	4e+jhvJwFb3YmT74F/DT5ogelzco3S1aJR6dSn1nxqzejjPtr2cEMOiP8MkMmEwufWigHHq8jrk5i
+	/WlDsiQXms3DD6mfpEv0BxZL5oF7M4bN+ZDTvUpbTgWG/MTigt66VmdjDSYSqZ3j65lRuOgMGLvly
+	DuxLAaGkzZq1c+J0/PtassN+bSRqq0yPbgNlwxStaFoYderrme0NVpSFARsSs7PAEqTN95WiQZRPY
+	TLGDTFrTwIiN53AlXf/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m22kU-002rFv-DT; Sat, 10 Jul 2021 02:29:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m26vt-003AFd-HN; Sat, 10 Jul 2021 06:57:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m22fo-002oeB-Bu; Sat, 10 Jul 2021 02:24:58 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 36DE461412;
- Sat, 10 Jul 2021 02:24:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625883896;
- bh=N9tg4uOowuFl6i9wi0x5B9WKbHwNGTjWXkUqtqYIuno=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MbnlAEFrcOnNz+eoZYWQ6qSGcATngeQSXHn88v2ZmXoYB87ZTDdNzecleod16PvlR
- angAofPTSIUcXxeiSeNyMrxcIjZiEDyAjT4fzOvqdNyTLGq5FuUvRZdDhqLf1aLmoG
- K8yDtHNwbE169kkhbKRgst7h7Fkn1cjTnMquJQaJ2m34I5A45o8iKxHmTomlJKJvJP
- MLb6NGbyg2PtxX2GFqxjh7tW6r61bMmjYNIK2uT1ft4WgTvWEoHUipDMYH2TIGXWMa
- ZaUjpQ1G0oCa0IL+i3ArlPHT1zzDpz6TjdbR2qDYyANEtM5mGOrqtHhc7lA+iDR3Un
- tR7qum+PXqvAQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Sasha Levin <sashal@kernel.org>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 20/93] usb: common: usb-conn-gpio: fix NULL
- pointer dereference of charger
-Date: Fri,  9 Jul 2021 22:23:14 -0400
-Message-Id: <20210710022428.3169839-20-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210710022428.3169839-1-sashal@kernel.org>
-References: <20210710022428.3169839-1-sashal@kernel.org>
+ id 1m26vn-003AEN-NR; Sat, 10 Jul 2021 06:57:46 +0000
+X-UUID: 0316b01276744c4d8f0857f668e891d7-20210709
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=/dnEywQKWp9ACv8jd0Vo3hWOCwY6N3tJYDUL0CaU7c0=; 
+ b=FsFJF1AgjpdcfHBUd7u5xdauJlDTq6ZLoztwJ/CjGlhWv3kTV7wBOHWg+Bvq94nwXfMjmIphSImpGBUg05HM3TxkGl70T/4Iw7fRqfbLPigc/TF+DVekWRa5+fnCVeWsFJotkfneFMzV4Dk2om4aEYhZAvO4XbsdWE9L29CfCPQ=;
+X-UUID: 0316b01276744c4d8f0857f668e891d7-20210709
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1842721720; Fri, 09 Jul 2021 23:57:37 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 9 Jul 2021 23:57:35 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 10 Jul 2021 14:57:22 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 10 Jul 2021 14:57:22 +0800
+Message-ID: <b5dcf4cbe60cbd5503b228d8e1e6165a71df17d0.camel@mediatek.com>
+Subject: Re: [PATCH v1 01/17] dt-bindings: mediatek: add definition for
+ mt8195 display
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>
+CC: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fshao@google.com>,
+ <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>
+Date: Sat, 10 Jul 2021 14:57:22 +0800
+In-Reply-To: <1625632383.7824.2.camel@mtksdaap41>
+References: <20210707041249.29816-1-jason-jh.lin@mediatek.com>
+ <20210707041249.29816-2-jason-jh.lin@mediatek.com>
+ <1625632383.7824.2.camel@mtksdaap41>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210709_192456_458356_4129D4BA 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20210709_235745_214302_FDAF4C75 
+X-CRM114-Status: GOOD (  24.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,100 +92,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Hi CK,
 
-[ Upstream commit 880287910b1892ed2cb38977893b947382a09d21 ]
+OK, I'll resend this at the next version.
 
-When power on system with OTG cable, IDDIG's interrupt arises before
-the charger registration, it will cause a NULL pointer dereference,
-fix the issue by registering the power supply before requesting
-IDDIG/VBUS irq.
-
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Link: https://lore.kernel.org/r/1621406386-18838-1-git-send-email-chunfeng.yun@mediatek.com
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/usb/common/usb-conn-gpio.c | 44 ++++++++++++++++++------------
- 1 file changed, 26 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/usb/common/usb-conn-gpio.c b/drivers/usb/common/usb-conn-gpio.c
-index 6c4e3a19f42c..c9545a4eff66 100644
---- a/drivers/usb/common/usb-conn-gpio.c
-+++ b/drivers/usb/common/usb-conn-gpio.c
-@@ -149,14 +149,32 @@ static int usb_charger_get_property(struct power_supply *psy,
- 	return 0;
- }
- 
--static int usb_conn_probe(struct platform_device *pdev)
-+static int usb_conn_psy_register(struct usb_conn_info *info)
- {
--	struct device *dev = &pdev->dev;
--	struct power_supply_desc *desc;
--	struct usb_conn_info *info;
-+	struct device *dev = info->dev;
-+	struct power_supply_desc *desc = &info->desc;
- 	struct power_supply_config cfg = {
- 		.of_node = dev->of_node,
- 	};
-+
-+	desc->name = "usb-charger";
-+	desc->properties = usb_charger_properties;
-+	desc->num_properties = ARRAY_SIZE(usb_charger_properties);
-+	desc->get_property = usb_charger_get_property;
-+	desc->type = POWER_SUPPLY_TYPE_USB;
-+	cfg.drv_data = info;
-+
-+	info->charger = devm_power_supply_register(dev, desc, &cfg);
-+	if (IS_ERR(info->charger))
-+		dev_err(dev, "Unable to register charger\n");
-+
-+	return PTR_ERR_OR_ZERO(info->charger);
-+}
-+
-+static int usb_conn_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct usb_conn_info *info;
- 	bool need_vbus = true;
- 	int ret = 0;
- 
-@@ -218,6 +236,10 @@ static int usb_conn_probe(struct platform_device *pdev)
- 		return PTR_ERR(info->role_sw);
- 	}
- 
-+	ret = usb_conn_psy_register(info);
-+	if (ret)
-+		goto put_role_sw;
-+
- 	if (info->id_gpiod) {
- 		info->id_irq = gpiod_to_irq(info->id_gpiod);
- 		if (info->id_irq < 0) {
-@@ -252,20 +274,6 @@ static int usb_conn_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	desc = &info->desc;
--	desc->name = "usb-charger";
--	desc->properties = usb_charger_properties;
--	desc->num_properties = ARRAY_SIZE(usb_charger_properties);
--	desc->get_property = usb_charger_get_property;
--	desc->type = POWER_SUPPLY_TYPE_USB;
--	cfg.drv_data = info;
--
--	info->charger = devm_power_supply_register(dev, desc, &cfg);
--	if (IS_ERR(info->charger)) {
--		dev_err(dev, "Unable to register charger\n");
--		return PTR_ERR(info->charger);
--	}
--
- 	platform_set_drvdata(pdev, info);
- 
- 	/* Perform initial detection */
--- 
-2.30.2
+Regard,
+Jason-JH.Lin
 
 
+On Wed, 2021-07-07 at 12:33 +0800, CK Hu wrote:
+> Hi, Jason:
+> 
+> 
+> On Wed, 2021-07-07 at 12:12 +0800, jason-jh.lin wrote:
+> > Add definition for mt8195 display and add DSC module description.
+> 
+> Break this patch to two patch. One is mt8195 display, another one is
+> DSC
+> and describe more about what is DSC.
+> 
+> Regards,
+> CK
+> 
+> > 
+> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > ---
+> >  .../bindings/display/mediatek/mediatek,disp.txt     | 13
+> > +++++++++++--
+> >  1 file changed, 11 insertions(+), 2 deletions(-)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.
+> > txt
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.
+> > txt
+> > index fbb59c9ddda6..a5859e7883d5 100644
+> > ---
+> > a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.
+> > txt
+> > +++
+> > b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.
+> > txt
+> > @@ -37,6 +37,7 @@ Required properties (all function blocks):
+> >  	"mediatek,<chip>-disp-aal"   		- adaptive ambient
+> > light controller
+> >  	"mediatek,<chip>-disp-gamma" 		- gamma correction
+> >  	"mediatek,<chip>-disp-merge" 		- merge streams
+> > from two RDMA sources
+> > +	"mediatek,<chip>-disp-dsc"		- compressing /
+> > decompressing image display streams
+> >  	"mediatek,<chip>-disp-postmask" 	- control round corner for
+> > display frame
+> >  	"mediatek,<chip>-disp-split" 		- split stream to
+> > two encoders
+> >  	"mediatek,<chip>-disp-ufoe"  		- data compression
+> > engine
+> > @@ -44,7 +45,7 @@ Required properties (all function blocks):
+> >  	"mediatek,<chip>-dpi"        		- DPI controller,
+> > see mediatek,dpi.txt
+> >  	"mediatek,<chip>-disp-mutex" 		- display mutex
+> >  	"mediatek,<chip>-disp-od"    		- overdrive
+> > -  the supported chips are mt2701, mt7623, mt2712, mt8167, mt8173,
+> > mt8183 and mt8192.
+> > +  the supported chips are mt2701, mt7623, mt2712, mt8167, mt8173,
+> > mt8183, mt8192 and mt8195.
+> >  - reg: Physical base address and length of the function block
+> > register space
+> >  - interrupts: The interrupt signal from the function block
+> > (required, except for
+> >    merge and split function blocks).
+> > @@ -60,7 +61,7 @@ Required properties (DMA function blocks):
+> >  	"mediatek,<chip>-disp-ovl"
+> >  	"mediatek,<chip>-disp-rdma"
+> >  	"mediatek,<chip>-disp-wdma"
+> > -  the supported chips are mt2701, mt8167 and mt8173.
+> > +  the supported chips are mt2701, mt8167, mt8173 and mt8195.
+> >  - larb: Should contain a phandle pointing to the local arbiter
+> > device as defined
+> >    in Documentation/devicetree/bindings/memory-
+> > controllers/mediatek,smi-larb.yaml
+> >  - iommus: Should point to the respective IOMMU block with master
+> > port as
+> > @@ -195,6 +196,14 @@ ufoe@1401a000 {
+> >  	clocks = <&mmsys CLK_MM_DISP_UFOE>;
+> >  };
+> >  
+> > +dsc0@1c009000 {
+> > +	compatible = "mediatek,mt8195-disp-dsc";
+> > +	reg = <0 0x1c009000 0 0x1000>;
+> > +	interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH>;
+> > +	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
+> > +	clocks = <&mmsys CLK_VDO0_DSC_WRAP0>;
+> > +};
+> > +
+> >  dsi0: dsi@1401b000 {
+> >  	/* See mediatek,dsi.txt for details */
+> >  };
+> 
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
