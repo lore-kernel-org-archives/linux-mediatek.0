@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D43D1C07E9C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 557CCC07E9B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:29:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A26C7613EC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:22:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A26C7613EC
+	by mail.kernel.org (Postfix) with ESMTPS id 1B7FE613B7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Jul 2021 02:29:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1B7FE613B7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oPiHJzGx4SIuYdHCgN9d5b9ugVJvIasDwwV6TfsdQuE=; b=EPBst1wi+cHjrF
-	C5LQpe2HTOy0nExH7cRQHplBZbBAvG1u82wvncXHQ1FDCmTZ2vXLwKM5jK9Qt4GvuodJJ4VYm6uL0
-	oHAEnGyb0b/9uNLgA1PNp6FSthI/xPJVwRdV35edIj2PVhgMP/0GslVY+eNx5Uce8tfGn54fVCEF7
-	xLr5RQAxsd4aQOUB6taPXlJzHXA/xoPPMbtHjZ/CnTkqXk28hCySLBlsD0I+KfP0m1ibrWBlO95V2
-	6anJ79xdGRuCsOS++ChQJ15Y7OSaRvgFWO+HcLrcGetRiaYgVtKglikRv3RhufyARWvR+7ajvykDd
-	OJpaWm7Qj2HzymUTq0uQ==;
+	List-Owner; bh=oPiHJzGx4SIuYdHCgN9d5b9ugVJvIasDwwV6TfsdQuE=; b=RkTyvP4EBcVn00
+	UEJMxWaG5LxRFuPayWgV9752hC6QBfr7YW+Ceg+opsRdT+/Uid0c/ZVZUCHcqKovzPFNZhdYQIFap
+	me11rMYXO6GGuz5kSUMd19PlYVwlRWuyK+fI51CfSih4dl7TFHo4IzemJuFInUj4EahOX/8wCmdWo
+	FLrBA9rq0UiVjg50Ovho4iRmbbUl0i6WpijwgBfHhx8KwY7GEV9/WBQOvIJFhMdfCOJLJ+rCMvxlE
+	HDgSV6UwbOlNECm+7EwdgYksEd+xliVwNFyDR0XB7ysy2eX/zUgxal/dzm9nrDF9oYSsGFK4yDU7q
+	nGhsOHoB8IsP5ZjXxaIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m22dk-002nG4-3V; Sat, 10 Jul 2021 02:22:48 +0000
+	id 1m22kU-002rFv-DT; Sat, 10 Jul 2021 02:29:46 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m22dN-002n2x-RI; Sat, 10 Jul 2021 02:22:27 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id AE2CD613E6;
- Sat, 10 Jul 2021 02:22:24 +0000 (UTC)
+ id 1m22fo-002oeB-Bu; Sat, 10 Jul 2021 02:24:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 36DE461412;
+ Sat, 10 Jul 2021 02:24:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1625883745;
+ s=k20201202; t=1625883896;
  bh=N9tg4uOowuFl6i9wi0x5B9WKbHwNGTjWXkUqtqYIuno=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=swyS7SKCsqM3yDLRaE2A+hDf1c3nyOkKXW5SX4LsiRAQNumIu9SU7jrLEI1uAT46b
- 2Zf2p6iceP5WpF8aNqwNTh7Vpyu7kBLMNewDOGtkufegJhQGfV2CF2/9ZToeuFkvZu
- l8QdhO2lSzOG+0c3S7GQINs/lYK6Jd4Pqyo26b8c0aQjfw4zxyW4K7apa0xdgd6m6f
- 9xVG+l73kYFv6wPlHI1PFHpMbSkuWE1F2zYqGkqh/eMz5jnmLQwa6BoUg4RDrKCMwL
- VjdFJ0Dx79LtqXYgw3KnMQa69i4336ta/Mm0SWtvVs8LHnLcqSS7PBfThT7iriCeOR
- E0Q2u2K/XOolA==
+ b=MbnlAEFrcOnNz+eoZYWQ6qSGcATngeQSXHn88v2ZmXoYB87ZTDdNzecleod16PvlR
+ angAofPTSIUcXxeiSeNyMrxcIjZiEDyAjT4fzOvqdNyTLGq5FuUvRZdDhqLf1aLmoG
+ K8yDtHNwbE169kkhbKRgst7h7Fkn1cjTnMquJQaJ2m34I5A45o8iKxHmTomlJKJvJP
+ MLb6NGbyg2PtxX2GFqxjh7tW6r61bMmjYNIK2uT1ft4WgTvWEoHUipDMYH2TIGXWMa
+ ZaUjpQ1G0oCa0IL+i3ArlPHT1zzDpz6TjdbR2qDYyANEtM5mGOrqtHhc7lA+iDR3Un
+ tR7qum+PXqvAQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,18 +54,18 @@ Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Sasha Levin <sashal@kernel.org>, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 022/104] usb: common: usb-conn-gpio: fix NULL
+Subject: [PATCH AUTOSEL 5.10 20/93] usb: common: usb-conn-gpio: fix NULL
  pointer dereference of charger
-Date: Fri,  9 Jul 2021 22:20:34 -0400
-Message-Id: <20210710022156.3168825-22-sashal@kernel.org>
+Date: Fri,  9 Jul 2021 22:23:14 -0400
+Message-Id: <20210710022428.3169839-20-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210710022156.3168825-1-sashal@kernel.org>
-References: <20210710022156.3168825-1-sashal@kernel.org>
+In-Reply-To: <20210710022428.3169839-1-sashal@kernel.org>
+References: <20210710022428.3169839-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210709_192225_920415_A0AF158D 
+X-CRM114-CacheID: sfid-20210709_192456_458356_4129D4BA 
 X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
