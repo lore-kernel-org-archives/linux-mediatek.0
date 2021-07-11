@@ -2,81 +2,84 @@ Return-Path: <SRS0=zHGV=MD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3EFAC07E9C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jul 2021 06:54:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 059B5C07E96
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jul 2021 08:30:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A74FB61351
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jul 2021 06:54:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A74FB61351
+	by mail.kernel.org (Postfix) with ESMTPS id B068B611F1
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Jul 2021 08:30:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B068B611F1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=X9W/bYLnHA4+Pvakji9qBcWQ6JLrtXBgFkzYuunzeaQ=; b=Bm7uTfPFuGq77N
-	0rZ8gQqdy7rJrCH9sQHVan8DI7AE/cAuypco/0Q07IFHuwAC0bxq4cqEkYBW2HYUyKn1d1PTZwWtu
-	zgaIEGSg/+cZzwJ3lYKPB5AGv18E4ZkEKwYPVbjGJza9wGcy6tqbkqHXUfHkOAz8PXf1ahTuRvWyQ
-	DFnU4vJfkhTbI9K9RxWCLOWSkQwGlAgqJfdSr4IxceJT79R8MynaYgZJahEYtINHydM2Hfyr8XPo6
-	BVsiTs7do8HCldB0uyuS3xm4SpbCihFzjzMADZGIr3gQZnXBwQLhOZNl9LOEN7ldWupaCZvGmzwLL
-	/2u9tzMhJxXTJGfYpY5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aL0psUOZlfAO7kAfoB0+3twXcv2wuaGIdjvbAWEc8hw=; b=351cvA9JOWdr3V
+	EkRvyuztHklaRjkd/lRBn2ZqgkqkBUiRuBrzhUiZQpuEGXD6jNFE+bCMztfISPDlqauVXsxZ41wTh
+	xMBLLMyeI/nll+C/laZPUdpktVipgSWFEe505u5OAGnko4y6ReCjqmWYRlp8AUTokqWRBkXkJ4typ
+	LWDpv46GQVWsw3eWoxO4YuSlngMQ8+96hcYNNe6eq7NgZxAKUp8byQ+iFIUD1ZkKQJS60fIHGBIkj
+	0HkbrBXCKuZAFBgH5aATEkQKrLrW/PFYLrTeWZM55rZ6vbe3jOPptSeWRJMUm/r2YrDiaiOv7dvwk
+	mIqsN4pi/asUMpn6u6iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2TMQ-004dkA-II; Sun, 11 Jul 2021 06:54:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m2Uqv-004ict-HC; Sun, 11 Jul 2021 08:30:17 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2TM3-004dhQ-EI; Sun, 11 Jul 2021 06:54:20 +0000
-X-UUID: 7cce5314954f42d5bf9ac30c6477e71b-20210710
+ id 1m2Uqq-004icC-HI; Sun, 11 Jul 2021 08:30:14 +0000
+X-UUID: 9df0fe03d7c34f52a4fe38aafe522410-20210711
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=kGObTYFMM3DRfIwYaoNMkN4sTKS9LrJNThgVyAhf3+8=; 
- b=ohaYSBhzkKydMsD48P56Kzegb51FoFGKMxljtpLcuYhjgTjewwfcxt93c0AFtRatseNtI8LC7lF5knyMOLbCEwo9hSoyY2YyG10XVfDuz1RVOgqWG8UBAsDiXF6+fOiXWwZ4hjmyKis0L7jg8QtaKs1l3nYl9GGo9n6ux2847TE=;
-X-UUID: 7cce5314954f42d5bf9ac30c6477e71b-20210710
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=t9mLnCFBNPQ+QFBApPB3w3g/T+cWtNxPL3HGdUb3WsA=; 
+ b=iyijnGoDBCAKLaJbAoNDrkvq1J5QEqOoWQ401AkZkzyB8w4mmgc3XKcPgP9RYdgRj3/Ei5iVY8zXeDsvKVT5jPDagwKv9YV3ym4jg0i1S6mRM62hotVS5ovbsvGlv5YdSxVh8SmpL/iv6gXb7iPmkZaEUxx50oQhTADLPOJH8c4=;
+X-UUID: 9df0fe03d7c34f52a4fe38aafe522410-20210711
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 98431311; Sat, 10 Jul 2021 23:54:10 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 10 Jul 2021 23:54:08 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 11 Jul 2021 14:53:54 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 11 Jul 2021 14:53:53 +0800
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+ with ESMTP id 1119610898; Sun, 11 Jul 2021 01:30:04 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 11 Jul 2021 01:30:02 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 11 Jul 2021 16:29:59 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sun, 11 Jul 2021 16:29:59 +0800
+Message-ID: <1625992199.22309.15.camel@mhfsdcap03>
+Subject: Re: [PATCH 3/9] memory: mtk-smi: Use clk_bulk instead of the clk ops
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Jassi Brar
- <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- Fabien Parent <fparent@baylibre.com>, Dennis YC Hsieh
- <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>
-Subject: [PATCHi v3] drm/mediatek: adjust rdma fifo threshold calculate formula
-Date: Sun, 11 Jul 2021 14:53:50 +0800
-Message-ID: <1625986431-27399-1-git-send-email-yongqiang.niu@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
+ <matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>, "Joerg
+ Roedel" <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy
+ <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>,
+ <anan.sun@mediatek.com>, <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>, 
+ <anthony.huang@mediatek.com>
+Date: Sun, 11 Jul 2021 16:29:59 +0800
+In-Reply-To: <4047dfaf-f2f8-b6b2-52fd-41821475b162@canonical.com>
+References: <20210616114346.18812-1-yong.wu@mediatek.com>
+ <20210616114346.18812-4-yong.wu@mediatek.com>
+ <4047dfaf-f2f8-b6b2-52fd-41821475b162@canonical.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 755D024FD7727026C23CB3E6A5D8D9521A587CF4AB7DEEF2F8C0332526F861752000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210710_235419_523214_704CE449 
-X-CRM114-Status: UNSURE (   7.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210711_013012_625871_EB3BB50C 
+X-CRM114-Status: GOOD (  29.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,18 +96,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change since v2:
-- add more commit message
+On Thu, 2021-07-08 at 11:32 +0200, Krzysztof Kozlowski wrote:
+> On 16/06/2021 13:43, Yong Wu wrote:
+> > smi have many clocks: apb/smi/gals.
+> > This patch use clk_bulk interface instead of the orginal one to simply
+> > the code.
+> > 
+> > gals is optional clk(some larbs may don't have gals). use clk_bulk_optional
+> > instead. and then remove the has_gals flag.
+> > 
+> > Also remove clk fail logs since bulk interface already output fail log.
+> > 
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >  drivers/memory/mtk-smi.c | 124 +++++++++++----------------------------
+> >  1 file changed, 34 insertions(+), 90 deletions(-)
+> > 
+> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > index c5fb51f73b34..bcd2bf130655 100644
+> > --- a/drivers/memory/mtk-smi.c
+> > +++ b/drivers/memory/mtk-smi.c
+> > @@ -60,9 +60,18 @@ enum mtk_smi_gen {
+> >  	MTK_SMI_GEN2
+> >  };
+> >  
+> > +#define MTK_SMI_CLK_NR_MAX			4
+> > +
+> > +static const char * const mtk_smi_common_clocks[] = {
+> > +	"apb", "smi", "gals0", "gals1", /* glas is optional */
+> 
+> Typo here - glas.
 
+Will Fix. Thanks.
 
-Yongqiang Niu (1):
-  drm/mediatek: adjust rdma fifo threshold calculate formula
+> 
+> > +};
+> > +
 
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+[snip]
 
--- 
-1.8.1.1.dirty
+> > @@ -493,7 +449,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+> >  	struct device *dev = &pdev->dev;
+> >  	struct mtk_smi *common;
+> >  	struct resource *res;
+> > -	int ret;
+> > +	int i, ret;
+> >  
+> >  	common = devm_kzalloc(dev, sizeof(*common), GFP_KERNEL);
+> >  	if (!common)
+> > @@ -501,23 +457,13 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+> >  	common->dev = dev;
+> >  	common->plat = of_device_get_match_data(dev);
+> >  
+> > -	common->clk_apb = devm_clk_get(dev, "apb");
+> > -	if (IS_ERR(common->clk_apb))
+> > -		return PTR_ERR(common->clk_apb);
+> > -
+> > -	common->clk_smi = devm_clk_get(dev, "smi");
+> > -	if (IS_ERR(common->clk_smi))
+> > -		return PTR_ERR(common->clk_smi);
+> > +	common->clk_num = ARRAY_SIZE(mtk_smi_common_clocks);
+> > +	for (i = 0; i < common->clk_num; i++)
+> > +		common->clks[i].id = mtk_smi_common_clocks[i];
+> >  
+> > -	if (common->plat->has_gals) {
+> > -		common->clk_gals0 = devm_clk_get(dev, "gals0");
+> > -		if (IS_ERR(common->clk_gals0))
+> > -			return PTR_ERR(common->clk_gals0);
+> > -
+> > -		common->clk_gals1 = devm_clk_get(dev, "gals1");
+> > -		if (IS_ERR(common->clk_gals1))
+> > -			return PTR_ERR(common->clk_gals1);
+> > -	}
+> > +	ret = devm_clk_bulk_get_optional(dev, common->clk_num, common->clks);
+> > +	if (ret)
+> > +		return ret;
+> 
+> How do you handle now missing required clocks?
+
+It looks this is a common issue for this function which supports all the
+clocks could be optional. Is there common suggestion for this?
+
+For our case, the apb/smi clocks are required while "gals" are optional.
+
+thus, we should use devm_clk_bulk_get for the necessary clocks and
+devm_clk_bulk_get_optional for the optional ones. right?
+
+> 
+> >  
+> >  	/*
+> >  	 * for mtk smi gen 1, we need to get the ao(always on) base to config
+> > @@ -561,11 +507,9 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
+> >  	u32 bus_sel = common->plat->bus_sel;
+> >  	int ret;
+> >  
+> > -	ret = mtk_smi_clk_enable(common);
+> > -	if (ret) {
+> > -		dev_err(common->dev, "Failed to enable clock(%d).\n", ret);
+> > +	ret = clk_bulk_prepare_enable(common->clk_num, common->clks);
+> > +	if (ret)
+> >  		return ret;
+> > -	}
+> >  
+> >  	if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
+> >  		writel(bus_sel, common->base + SMI_BUS_SEL);
+> > @@ -576,7 +520,7 @@ static int __maybe_unused mtk_smi_common_suspend(struct device *dev)
+> >  {
+> >  	struct mtk_smi *common = dev_get_drvdata(dev);
+> >  
+> > -	mtk_smi_clk_disable(common);
+> > +	clk_bulk_disable_unprepare(common->clk_num, common->clks);
+> >  	return 0;
+> >  }
+> >  
+> > 
+> 
+> 
+> Best regards,
+> Krzysztof
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
