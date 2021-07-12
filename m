@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1D05C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53DD2C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:47:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EEEA61151
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:47:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EEEA61151
+	by mail.kernel.org (Postfix) with ESMTPS id 215CF61156
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:47:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 215CF61156
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4uLIZP+4HJgXU6mZcNoWsL3MbmpJCEGfEODFDUr/Bk=; b=E0nQTLYVFxLX68
-	4cYrCEYL6OcLEMh7jQ9+GZVQIYl9QijT/g/5eCVPiCzwu4MpC4lRwF4ZuIGUTsf+22+a4ek44N6O9
-	yrJcrcFFgO9FCNaZEGM/o9KOMrlfO3JAxtjcfCIVr6LilsKQOIvKGwEaEazjc85YUOEYiGnflJuj2
-	97l0KKu3iyRTlHyIEGyiLOtZ/yStDbZXIgmhllrBuBTY/UHr7/xkOkrqPvQ3JJuG9l3thUd+LRurx
-	7jcE2b1lY3RmmOuf0ijFS3skFpNb8/t3C4JfYVrk3vNoz5t+yu/v79JfGvzNh7CJ/mlKyWAFflH1v
-	GKnvAc/xPNSw/N2ruF+g==;
+	List-Owner; bh=Vj78Mk/9nBkrS7VFd2P5kU0n5nd//STJEdO8j2h2xEQ=; b=tyRn7umqpQd4+5
+	9BlVCMNBocG479b2lm8AjNW/n6edp38Uw6fHqZ8diIjd8p3YPsPbQjWtImchukZduBL96UnC+Y4/0
+	hKfUxMWdmobMZzDpvbfnPTfWth+snSV+3aNgNwSrOv0yhmlOgLMaWmjXfxEgN/8P7OchJ/P3O+YVm
+	lUcYNT81wbpEB5hpEX8eGw8nZlwdfL4+9OvY7gApLfvVqroYy9P+TgETGdH/foYPcG/UJdKR9JfVy
+	Hhn19rPHppBvx7ydLx4zAk5sZrPM2YmAawTvS8nALMkyWE/3qa3fjJKSv1C8Bbyd3bDJ+qrFzDeZW
+	52OibFBKebwZKhEb4rOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2tSz-0071AF-7Q; Mon, 12 Jul 2021 10:47:13 +0000
+	id 1m2tTB-0071F5-Lk; Mon, 12 Jul 2021 10:47:25 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2tSf-00717F-E3; Mon, 12 Jul 2021 10:46:54 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A0FAD610A7;
- Mon, 12 Jul 2021 10:46:52 +0000 (UTC)
+ id 1m2tSh-00717r-W0; Mon, 12 Jul 2021 10:46:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 32F7661106;
+ Mon, 12 Jul 2021 10:46:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626086813;
- bh=Ao3c5ZQCxM2QID6m4VZxbaPV+tdCnDhxUfo395ZRO4Q=;
+ s=k20201202; t=1626086815;
+ bh=s+olitVcChZMJGcS+kpqQWJ7gxyw/XxMyh2v/cXCmg8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QS+DcUhYhU5EcnC3uQl6KIo23hoLVhexryf+QJgueL7Kdzc8Kp8lMucMbl1MWMg3n
- hlIKa+KL4n0x2BzsYBMbu+o5mXk3sinXUPAxGeABmDvnei6YVVmdqVWypWhmKF1fvD
- IyzuBHb2Aiyxqym7MkJ9zLGRQgkPYlYA138MCE+PYQqphSj//SSg/kU6FSQz0p2hy6
- jM+AEETvquUxCQ9RFFHK9ALAzvNoRsb7zdRWS5XQjn4mmKIjZprZgV4p18i7cGnGDm
- X7c1VN7tDz0e+4k6STP6KPJxKYWSBjuR7cXmNqDfO3eZn3z/Um3ObLVFFSA8kVNwpX
- nJSmmo3QyCl2A==
+ b=eMH9edpbkpi1nI/fSamz9TwXwBOsZIGevcHb0hhOp2eVJeNptfX151q00O/PDAZJt
+ p2wthnmzwnE9cbIwTRXzn9++jj+Kc5iH+Esv9LSkGghHqkv+0CmOqbt14+C8+0a7Ak
+ 5OJE/q+iZ5L8UNSn3fvzh31PG3LspVdTNtRKCb/U+SnQMsmHmeky6CCWZoW1tBIO2+
+ wN5PgdBuFKIsevEaaheaZWNeyDV/EENeg4ShTLhGbiYR5yLoJF7+Xve1GwpacbNvkJ
+ 8kf0quxY0wLuQRmickbowGeMY1whS0QnQWbPzkfFaIA7cMqIBbHSnu+ps5zZwhurC8
+ 6vBGrIAqTNasQ==
 From: Mark Brown <broonie@kernel.org>
-To: Mason Zhang <mason.zhang@mediatek.com>,
-	Rob Herring <robh+dt@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
 Cc: Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Mason Zhang <Mason.Zhang@mediatek.com>, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com, linux-spi@vger.kernel.org,
- leilk.liu@mediatek.com
-Subject: Re: [PATCH 2/2] spi: mediatek: update spi master bingdings for MT6893
- SOC
-Date: Mon, 12 Jul 2021 11:45:40 +0100
-Message-Id: <162608669457.4543.2639315857957915855.b4-ty@kernel.org>
+ Leilk Liu <leilk.liu@mediatek.com>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Hess <peter.hess@ph-home.de>, linux-mediatek@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>, linux-spi@vger.kernel.org
+Subject: Re: [PATCH] spi: mediatek: fix fifo rx mode
+Date: Mon, 12 Jul 2021 11:45:41 +0100
+Message-Id: <162608669457.4543.2374973099687363958.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210629101310.21045-1-mason.zhang@mediatek.com>
-References: <20210629101310.21045-1-mason.zhang@mediatek.com>
+In-Reply-To: <20210706121609.680534-1-linux@fw-web.de>
+References: <20210706121609.680534-1-linux@fw-web.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_034653_543305_1A7BC967 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20210712_034656_097911_9CB72C62 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,8 +80,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 29 Jun 2021 18:13:11 +0800, Mason Zhang wrote:
-> this patch update spi master bingdings for MT6893 SOC.
+On Tue, 6 Jul 2021 14:16:09 +0200, Frank Wunderlich wrote:
+> In FIFO mode were two problems:
+> - RX mode was never handled and
+> - in this case the tx_buf pointer was NULL and caused an exception
+> 
+> fix this by handling RX mode in mtk_spi_fifo_transfer
 
 Applied to
 
@@ -91,8 +93,8 @@ Applied to
 
 Thanks!
 
-[2/2] spi: mediatek: update spi master bingdings for MT6893 SOC
-      commit: 3522d9aa19285bbff14da20cb3481e36ef4835fd
+[1/1] spi: mediatek: fix fifo rx mode
+      commit: 3a70dd2d050331ee4cf5ad9d5c0a32d83ead9a43
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
