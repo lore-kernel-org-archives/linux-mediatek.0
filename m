@@ -2,79 +2,83 @@ Return-Path: <SRS0=CLKU=ME=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F26D4C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 18:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 128D3C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 19:07:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A486B61221
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 18:50:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A486B61221
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id B3F5061222
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 19:07:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B3F5061222
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3LtMWeMa288hkcIfLGhFNYrq/GMINfJ3SiXrwPbzxsw=; b=pw+ij0vau6s5md
-	O9YNG9+fICCY6CHZg0KpI0nAr0Bvw1P2iFo4Jd3CUruFsKEuAOdusXoKNGnIiVMf9LlWwiZkGJREi
-	eQ3ujWi1wexmwd07PZNgKk2rCjQ34fBJ7G/jiIPlFtCyY5aS5/cnicSS21jTvVwQAsv3q39gImdmd
-	0mgJLHlFBBrTQj3bpNlRZ/23UmUPTqCIAkiar+JPse1NiaDGqQ50Ilm7cYE+/wwnppRR9ZBD06pfR
-	/WXNUY7CNlZCNcXwqQHtjFym+z9sPfIPbk247qAFEN7GUfFRDiCRWnF0ypAxYXd/YI/rRWebrSnkG
-	y6EtjIWagdnJLAyu5/CQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=et53pjEhJ0balilMuKWs2OD/BSbmWhNk110x56ey2JA=; b=ZWw/DGgoXkP6aO
+	UrhKOFzgJZkm83nLHYOcO7vZVibBnHA5LisTT1uObfcRwjVvHdr7zMYslviVeaPk/AL6fQ5WTMnCw
+	IQkE4dE840Eo4FseRgbDrGSxYhW/7WZeuUFTrKfpRL37jop9PuLDXfbrrWs4hs5mFTaQXduBXYTj6
+	KoSywoHwuK48F0AL1DHqSrE3x5zIKRhCmAqNJ6qagwHMFWvqQbgEGFkxzR4Y2gLIV911DdpX3qT8X
+	QZ1RIATQxPPUV+3KaiJ1Pe1jU9zGi/tDvQSpBmu4TB7X4GWd8tj56VA5ijkjeK9FBFg66Eszs7rK9
+	2toBWTqicChNiqx48B5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m310m-008CH9-M9; Mon, 12 Jul 2021 18:50:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m31HC-008ENr-Nn; Mon, 12 Jul 2021 19:07:34 +0000
+Received: from mail-io1-f42.google.com ([209.85.166.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m310j-008CGl-CW
- for linux-mediatek@lists.infradead.org; Mon, 12 Jul 2021 18:50:35 +0000
-X-UUID: 9f8ea0e2e3e14f1c8e3bca94a3f434a5-20210712
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=gm4pb6KvILYRfyj77gzf/eUMmPQgUsc7XZcHabRaxWU=; 
- b=p9TyLaTKTR+NgHey+LHHIf4Sy0mqFkmpeTj4AmIDA6V886jgjZKUoVUJwcfTREtwm4WEZHN2MaMVEphnNQ2orhqZ5eXGBxSE3IfPUbJKw/wFKMVOugHw1/oePF+gc1ZzjGQW422Q3AQK0fp7pFnptu1iQijXAeCmWG2MdC1s3z0=;
-X-UUID: 9f8ea0e2e3e14f1c8e3bca94a3f434a5-20210712
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1182348930; Mon, 12 Jul 2021 11:50:30 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Jul 2021 11:40:28 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Jul 2021 02:40:13 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 13 Jul 2021 02:40:14 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
- <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/2] mt76: fix mt76_rates for the multiple devices
-Date: Tue, 13 Jul 2021 02:40:11 +0800
-Message-ID: <a9586764e6cd94bb91e0a9addf9319bb95dfe4db.1626114777.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1m31Gx-008EIF-Vb; Mon, 12 Jul 2021 19:07:21 +0000
+Received: by mail-io1-f42.google.com with SMTP id k11so24057023ioa.5;
+ Mon, 12 Jul 2021 12:07:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=VmcRJht2x/uN0knUjln6QgNgSrdkyqiua1j8QRrNut0=;
+ b=H7KkEmBGmdNEvVbQJJkDIjiHeNu600UX3/+NJgIswIM2G4Bfhz7+IPSE3VnsaqnZiW
+ VBp6BpYLfBeClbPLoTMcSFpjxGJJ94/8jXHCJhp/tAoHlmrGrBOTKL2NEumNu3cfkKgk
+ TXcAL/EUsFR/Nx9cB/pCkPgCFQMwVXxLRtSJJVIaxpDk1BY4IrxOw+uTTG0HMaSja8On
+ 5VqUQ04gddaX/GaYiq7NSBewEVGXl4Mt74N3N+jNZmyBbxYRxXLeNnbtlB3iuvVdoRoQ
+ i3pdjxx395oUzLGn6cvQO2qZI8x1diNo0FjeBAqrvDITh6GuquulrL5xKfgKXYxAJAEQ
+ OueA==
+X-Gm-Message-State: AOAM533P86qugbPRf+OpO0j2XPpUle27uCZWoHw0SCJqLO4wiGm+r3zZ
+ SIUC8V0qQL0fwkabJ1dlUQ==
+X-Google-Smtp-Source: ABdhPJwAC+XS9JfOz2h1JYILI1SxRdnRBCsJxMoNWOPCYSdzKKl0qZBUqROHqRvEsywCbKS7YHsZ3w==
+X-Received: by 2002:a5e:8e44:: with SMTP id r4mr332283ioo.124.1626116838853;
+ Mon, 12 Jul 2021 12:07:18 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id y22sm1553509ioy.50.2021.07.12.12.07.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Jul 2021 12:07:18 -0700 (PDT)
+Received: (nullmailer pid 2310216 invoked by uid 1000);
+ Mon, 12 Jul 2021 19:07:14 -0000
+Date: Mon, 12 Jul 2021 13:07:14 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Felipe Balbi <balbi@kernel.org>, Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-usb@vger.kernel.org
+Subject: Re: [PATCH v2 01/13] dt-bindings: usb: mtu3: remove support VBUS
+ detection of extcon
+Message-ID: <20210712190714.GA2310182@robh.at.kernel.org>
+References: <1624008558-16949-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1624008558-16949-2-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1624008558-16949-2-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_115033_489168_B83A7660 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20210712_120720_066121_2534A589 
+X-CRM114-Status: GOOD (  15.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,152 +95,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Fri, 18 Jun 2021 17:29:06 +0800, Chunfeng Yun wrote:
+> Due to no platforms use a multi-funtion pin to detect VBUS
+> status until now when support dual role mode, prefer not to
+> support it anymore;
+> Another reason is that the controller doesn't support idle status,
+> the dual role port works as device or as host, using an IDDIG pin
+> is good enough, this will help to save another multi-function pin;
+> And fix a typo of 'neede';
+> Last modify example using VBUS to turn on/off device, for device
+> only mode, the driver doesn't get extcon.
+> 
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2: no changes
+> ---
+>  .../bindings/usb/mediatek,mtu3.yaml           | 22 +++++++++++++++----
+>  1 file changed, 18 insertions(+), 4 deletions(-)
+> 
 
-PHY offset in either .hw_value or .hw_value_short for mt7615, mt7663,
-mt7915 and mt7921 device all start at bit 6, not 8.
+Acked-by: Rob Herring <robh@kernel.org>
 
-Suggested-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: splitted out from the patch ("mt76: mt7921: fix mgmt frame using unexpected bitrate")
-    to cover more devices which have the same issue.
----
- drivers/net/wireless/mediatek/mt76/mac80211.c | 24 +++++++++----------
- drivers/net/wireless/mediatek/mt76/mt76.h     | 12 +++++-----
- .../net/wireless/mediatek/mt76/mt7603/init.c  | 19 +++++++++++++--
- .../net/wireless/mediatek/mt76/mt76x02_util.c | 16 ++++++-------
- 4 files changed, 43 insertions(+), 28 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index d03aedc3286b..20b2423efc19 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -84,18 +84,18 @@ static const struct ieee80211_tpt_blink mt76_tpt_blink[] = {
- };
- 
- struct ieee80211_rate mt76_rates[] = {
--	CCK_RATE(0, 10),
--	CCK_RATE(1, 20),
--	CCK_RATE(2, 55),
--	CCK_RATE(3, 110),
--	OFDM_RATE(11, 60),
--	OFDM_RATE(15, 90),
--	OFDM_RATE(10, 120),
--	OFDM_RATE(14, 180),
--	OFDM_RATE(9,  240),
--	OFDM_RATE(13, 360),
--	OFDM_RATE(8,  480),
--	OFDM_RATE(12, 540),
-+	CCK_RATE(0, 10, 6),
-+	CCK_RATE(1, 20, 6),
-+	CCK_RATE(2, 55, 6),
-+	CCK_RATE(3, 110, 6),
-+	OFDM_RATE(11, 60, 6),
-+	OFDM_RATE(15, 90, 6),
-+	OFDM_RATE(10, 120, 6),
-+	OFDM_RATE(14, 180, 6),
-+	OFDM_RATE(9,  240, 6),
-+	OFDM_RATE(13, 360, 6),
-+	OFDM_RATE(8,  480, 6),
-+	OFDM_RATE(12, 540, 6),
- };
- EXPORT_SYMBOL_GPL(mt76_rates);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 25c5ceef5257..e51ab917296d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -755,17 +755,17 @@ enum mt76_phy_type {
- 	MT_PHY_TYPE_HE_MU,
- };
- 
--#define CCK_RATE(_idx, _rate) {					\
-+#define CCK_RATE(_idx, _rate, _offset) {			\
- 	.bitrate = _rate,					\
- 	.flags = IEEE80211_RATE_SHORT_PREAMBLE,			\
--	.hw_value = (MT_PHY_TYPE_CCK << 8) | (_idx),		\
--	.hw_value_short = (MT_PHY_TYPE_CCK << 8) | (4 + _idx),	\
-+	.hw_value = (MT_PHY_TYPE_CCK << (_offset)) | (_idx),		\
-+	.hw_value_short = (MT_PHY_TYPE_CCK << (_offset)) | (4 + _idx),	\
- }
- 
--#define OFDM_RATE(_idx, _rate) {				\
-+#define OFDM_RATE(_idx, _rate, _offset) {			\
- 	.bitrate = _rate,					\
--	.hw_value = (MT_PHY_TYPE_OFDM << 8) | (_idx),		\
--	.hw_value_short = (MT_PHY_TYPE_OFDM << 8) | (_idx),	\
-+	.hw_value = (MT_PHY_TYPE_OFDM << (_offset)) | (_idx),	\
-+	.hw_value_short = (MT_PHY_TYPE_OFDM << (_offset)) | (_idx), \
- }
- 
- extern struct ieee80211_rate mt76_rates[12];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/init.c b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-index 031d39a48a55..59f684b08c55 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-@@ -304,6 +304,21 @@ mt7603_init_hardware(struct mt7603_dev *dev)
- 	return 0;
- }
- 
-+static struct ieee80211_rate mt7603_rates[] = {
-+	CCK_RATE(0, 10, 8),
-+	CCK_RATE(1, 20, 8),
-+	CCK_RATE(2, 55, 8),
-+	CCK_RATE(3, 110, 8),
-+	OFDM_RATE(11, 60, 8),
-+	OFDM_RATE(15, 90, 8),
-+	OFDM_RATE(10, 120, 8),
-+	OFDM_RATE(14, 180, 8),
-+	OFDM_RATE(9,  240, 8),
-+	OFDM_RATE(13, 360, 8),
-+	OFDM_RATE(8,  480, 8),
-+	OFDM_RATE(12, 540, 8),
-+};
-+
- static const struct ieee80211_iface_limit if_limits[] = {
- 	{
- 		.max = 1,
-@@ -541,8 +556,8 @@ int mt7603_register_device(struct mt7603_dev *dev)
- 
- 	wiphy->reg_notifier = mt7603_regd_notifier;
- 
--	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
--				   ARRAY_SIZE(mt76_rates));
-+	ret = mt76_register_device(&dev->mt76, true, mt7603_rates,
-+				   ARRAY_SIZE(mt7603_rates));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index ccdbab341271..70a62bf16425 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -19,14 +19,14 @@ struct ieee80211_rate mt76x02_rates[] = {
- 	MT76x02_CCK_RATE(1, 20),
- 	MT76x02_CCK_RATE(2, 55),
- 	MT76x02_CCK_RATE(3, 110),
--	OFDM_RATE(0, 60),
--	OFDM_RATE(1, 90),
--	OFDM_RATE(2, 120),
--	OFDM_RATE(3, 180),
--	OFDM_RATE(4, 240),
--	OFDM_RATE(5, 360),
--	OFDM_RATE(6, 480),
--	OFDM_RATE(7, 540),
-+	OFDM_RATE(0, 60, 8),
-+	OFDM_RATE(1, 90, 8),
-+	OFDM_RATE(2, 120, 8),
-+	OFDM_RATE(3, 180, 8),
-+	OFDM_RATE(4, 240, 8),
-+	OFDM_RATE(5, 360, 8),
-+	OFDM_RATE(6, 480, 8),
-+	OFDM_RATE(7, 540, 8),
- };
- EXPORT_SYMBOL_GPL(mt76x02_rates);
- 
--- 
-2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
