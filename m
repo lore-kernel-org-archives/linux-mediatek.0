@@ -2,20 +2,20 @@ Return-Path: <SRS0=CLKU=ME=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B11EC07E9B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 08:33:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5A3FC07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 08:34:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD77761002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 08:33:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DD77761002
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id AC9A161006
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 08:34:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC9A161006
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,67 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZrBH3bX1ddG8Tlo5ubI9h3xxRjXa/UitpxphhOxNvCM=; b=RDsZh90KZ+RVPB
-	YuQBz6OaH31kgQxN1Qm0BVVwsn8YkDwfZNc9FbAfN1r0YmbS9iu4XQve9xCDRNl+4llH5EOLlQmUt
-	irsPVQqehZbOQG7/nsaBCGm9e8+EjFXUEnnXe9VJxgeZOQbQIExzzb/cV5H3B0sSBj61nDhSm0w4y
-	Y+KAdz34haYWixpxQ4Wi9nkVKCc1NHifkTWltXL/EIpeEvcEhO7/CUciZsdNiy/L+mJVFh3eqbpZp
-	HNH1+6cWJG3ziA4BSlq7pjl8bueqpFKn/icTUSvPocBdkCTOEsVTFYRxot/elt8YgA3oOJ+eBZ9uW
-	vLUQU7YF0AJN1tULMEwA==;
+	List-Owner; bh=TrXkz0oB0MUYD+uBU/oCcsKGVpBE+yHAfj8nv13XNzI=; b=svg0iHd/JTQVdJ
+	8xNj490OZkyAgk1uLU15oW5k1eG+ZVwIOGozkLkIXVWW8GR4R5lRWjo6KIl/CocwH5z3jM8/I6mtN
+	39RAkw/BuY8KOtRt6fAFjtYXJUlTGPH4Y7NEaOPqHZOwdfT08FDVaS4l31ylKhUnQ29CY0e6Ouw/g
+	b6ZsbnDDI8VIp66EbXM00iZdBdzCK/OfLOMfGUUaktMLjV+p7S3eBeog4Y1Gp3i5sVP8M/kyvmeyR
+	Uje6Fzs3PuzVPUPn6lCStZF07GfwN1HuqxKXLUuIpIBPmhY/mC8P1428XoYU5WzlEXXN1VeXKHnM0
+	U1pj2cQ/UDENSbO6AR0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2rNq-006ajm-IG; Mon, 12 Jul 2021 08:33:46 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1m2rOg-006bDv-Rt; Mon, 12 Jul 2021 08:34:38 +0000
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2rNc-006aht-L8; Mon, 12 Jul 2021 08:33:34 +0000
-Received: by mail-ot1-x333.google.com with SMTP id
- h24-20020a9d64180000b029036edcf8f9a6so18125926otl.3; 
- Mon, 12 Jul 2021 01:33:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1m2rOT-006b6O-L4
+ for linux-mediatek@lists.infradead.org; Mon, 12 Jul 2021 08:34:27 +0000
+Received: by mail-lj1-x229.google.com with SMTP id u25so22865541ljj.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 12 Jul 2021 01:34:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=SZxKyapcP95t3Qouqp7FF9LfmDjUWdzEBklTYWphkD4=;
- b=AqgwP0m7QXx6dnrcT1SEtsn//U14Fy1BMa8c18UQ1dFsB/vG4uCfbpCHLWWrF6raoC
- 9+J7iqg++LqULNo1+GsN7Vpyamy1CZNzrAO5W9pJGpKWzA54QIZxkyGX4I3I2tzqnsIl
- Ob5Ja4V5ILkmJIq6GFYHXMdDElBRZWYDPoZ549jwR2UA5+xd0VwBPiNx99Xm8+x+wrAB
- Ckgv/8Ka/WiqFOLS2eMIMb9uIxwHXp78WhtQe6Zetr/v1Hyea1M0M8bzDvuYxhU2N7X9
- 6QD0laCm4smuNktELur4Ei1Df5YGLOnOnicGRiV7/1A7adPhAV6bdi+TvtvY4OnGSIFE
- 5eYw==
+ :cc; bh=zJuNTiw2bAkp/x3xoDaz/4iXGg6QuhO9H12Y5RswVAY=;
+ b=Upj1aAMvSSjVrIBLSBG1/ArPEg+RtCIqWSn8VtfvPFm+4dLX/hYh/lN9B2+SjtJ0VD
+ dsqrzKohAQn11rgT0yvIotdYQd8LmgTU2axJuDOwhvzFEtUxyIgycMsEhY2wdyoWMeLC
+ CzGpXBvSewJUnVQMHlbXXkQyOHm1BMnZX9GbQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=SZxKyapcP95t3Qouqp7FF9LfmDjUWdzEBklTYWphkD4=;
- b=omRvkDbD1aK41MM0ySIxt6w0u9dAP6VMLRf21Yyh/b4/kaubU1XXs1bNWMJ3TmPZwu
- L2plA4ZDuywSo3oqOH/dvDWipM7TcorvPyC+72ugX1nSjKYivX5I2ErUN5UocPHzPmfA
- jpOBcrXPEPlL++uvnYcRIBGBuUA/2hH2INO/JBMcDWeEo1J8RDwt46BZsw2tN/Qdy08m
- kpczSW2mflVg210LaloYaxUtKXl7FAAKAg0kfb3v5S1E7UdbQlCGGq6lyOqGIoP+vvbs
- o12JdaYpRV16NTHw5odo7oNiGZLbmfXL3jvg5aEBEV1smqj5BOe8yPZZYZzps4/GpJYV
- +dIw==
-X-Gm-Message-State: AOAM530bipcYPQTyOghhOYnx1W9WjDhducmsh0HHBKUJi6rxg9Pyu7aJ
- 7gMQbMZwof0Vl4vZQ++1HLLaN/PE/yw9VULMBtI=
-X-Google-Smtp-Source: ABdhPJyivpVPZ8cdSEoA3/WXmOk0cdeaWr9nSTp1nse+5dNXooOzccEZM5/E78bvn5OIBE8WXXCRvZClpvQy7pBbQH4=
-X-Received: by 2002:a9d:7686:: with SMTP id j6mr39672095otl.232.1626078811219; 
- Mon, 12 Jul 2021 01:33:31 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=zJuNTiw2bAkp/x3xoDaz/4iXGg6QuhO9H12Y5RswVAY=;
+ b=G9deMYwiLB3rUUYjUIwewizWURNuk7zCiWTSLY8N4V18kjHKF/NkGb3wMQehrNIazA
+ Iz8ggyXsqQ6+L+XydSd7zJ/PYRP5DH/UzRO9Wb+RA8JDqWEV6aFS9APrlmy6q0LuqrDY
+ l0Nt9DY+JCJ9/+2utKtp5LDbe0tQtq/TH9tncQW0oyI7src/PK6aNpmTAtHQM2kaFaX4
+ go/5D9jtrG6x9546ZQv77hA25WXmOlS2mofWozkPHrA7E5AX+r/i7xzthMSeX4FHPFoL
+ KOO3wGgrQhJqv3UqZp6Efi67TPAr99QEhMuvtmde+VPqDZpCtPr0eoMv9kTkLNsFTNpm
+ 3/cA==
+X-Gm-Message-State: AOAM5316WvCpLHKXcSP6HJJSHsAeEHYRwrvKOBKP7xAvF5fHdiopigzl
+ oXZjihxNogrL+1Vr38/fllFLRlTWvOhXcjlOlzRTwg==
+X-Google-Smtp-Source: ABdhPJxTwmQouyNY1518GgGLKn95Fz9OMBBHdc/D2dJN+ng1GSyTFAPjXSgn07w0W+HnJc3plqNsRFgWxNDSx2LRQ8g=
+X-Received: by 2002:a2e:a583:: with SMTP id m3mr41341251ljp.305.1626078863525; 
+ Mon, 12 Jul 2021 01:34:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
-In-Reply-To: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
-From: Gene Chen <gene.chen.richtek@gmail.com>
-Date: Mon, 12 Jul 2021 16:33:19 +0800
-Message-ID: <CAE+NS37kf1JAJ2Zt7UGsfsubp6O=xBNtnJgVEnz8-mm2rxFa+g@mail.gmail.com>
-Subject: Re: [PATCH v14 0/2] leds: mt6360: Add LED driver for MT6360
-To: Jacek Anaszewski <jacek.anaszewski@gmail.com>, Pavel Machek <pavel@ucw.cz>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Dan Murphy <dmurphy@ti.com>,
- Linux LED Subsystem <linux-leds@vger.kernel.org>, 
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Gene Chen <gene_chen@richtek.com>, 
- Wilma.Wu@mediatek.com, shufan_lee@richtek.com, 
- ChiYuan Huang <cy_huang@richtek.com>, benjamin.chao@mediatek.com
+References: <20210616224743.5109-1-chun-jie.chen@mediatek.com>
+ <20210616224743.5109-22-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210616224743.5109-22-chun-jie.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 12 Jul 2021 16:34:12 +0800
+Message-ID: <CAGXv+5G1-ruOkK4R1J-ZUzVARHHdyZ88hri6u3ej-+v1Ox8bKw@mail.gmail.com>
+Subject: Re: [PATCH 21/22] clk: mediatek: Add MT8195 imp i2c wrapper clock
+ support
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
+ linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org, 
+ devicetree@vger.kernel.org, srv_heupstream <srv_heupstream@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_013332_741252_0D7ED867 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20210712_013425_727835_8849C295 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,52 +91,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-R2VuZSBDaGVuIDxnZW5lLmNoZW4ucmljaHRla0BnbWFpbC5jb20+IOaWvCAyMDIx5bm0NeaciDI0
-5pelIOmAseS4gCDkuIvljYgxMToyNOWvq+mBk++8mgo+Cj4gVGhpcyBwYXRjaCBzZXJpZXMgYWRk
-IE1UNjM2MCBMRUQgc3VwcG9ydCBjb250YWlucyBkcml2ZXIgYW5kIGJpbmRpbmcgZG9jdW1lbnQK
-Pgo+IEdlbmUgQ2hlbiAoMikKPiAgZHQtYmluZGluZ3M6IGxlZHM6IEFkZCBiaW5kaW5ncyBmb3Ig
-TVQ2MzYwIExFRAo+ICBsZWRzOiBtdDYzNjA6IEFkZCBMRUQgZHJpdmVyIGZvciBNVDYzNjAKPgo+
-ICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbGVkcy9sZWRzLW10NjM2MC55YW1s
-IHwgIDE1OSArKwo+ICBkcml2ZXJzL2xlZHMvZmxhc2gvS2NvbmZpZyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHwgICAxMwo+ICBkcml2ZXJzL2xlZHMvZmxhc2gvTWFrZWZpbGUgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwgICAgMQo+ICBkcml2ZXJzL2xlZHMvZmxhc2gvbGVkcy1t
-dDYzNjAuYyAgICAgICAgICAgICAgICAgICAgICAgIHwgIDkxMCArKysrKysrKysrKysrKysrCj4g
-IDQgZmlsZXMgY2hhbmdlZCwgMTA4MyBpbnNlcnRpb25zKCspCj4KPiBjaGFuZ2Vsb2dzIGJldHdl
-ZW4gdjEgJiB2Mgo+ICAtIGFkZCBsZWQgZHJpdmVyIHdpdGggbWZkCj4KPiBjaGFuZ2Vsb2dzIGJl
-dHdlZW4gdjIgJiB2Mwo+ICAtIGluZGVwZW5kZW50IGFkZCBsZWQgZHJpdmVyCj4gIC0gYWRkIGR0
-LWJpbmRpbmcgZG9jdW1lbnQKPiAgLSByZWZhY3RvciBtYWNyb3MgZGVmaW5pdGlvbiBmb3IgZWFz
-eSB0byBkZWJ1Zwo+ICAtIHBhcnNlIGRldmljZSB0cmVlIGJ5IGZ3bm9kZQo+ICAtIHVzZSBkZXZt
-KmV4dCB0byByZWdpc3RlciBsZWQgY2xhc3MgZGV2aWNlCj4KPiBjaGFuZ2Vsb2dzIGJldHdlZW4g
-djMgJiB2NAo+ICAtIGZpeCBiaW5kaW5nIGRvY3VtZW50IGRlc2NyaXB0aW9uCj4gIC0gdXNlIEdF
-Tk1BU0sgYW5kIGFkZCB1bml0IHBvc3RmaXggdG8gZGVmaW5pdGlvbgo+ICAtIGlzaW5rIHJlZ2lz
-dGVyIGxlZCBjbGFzcyBkZXZpY2UKPgo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2NCAmIHY1Cj4gIC0g
-Y2hhbmdlIHJnYiBpc2luayB0byBtdWx0aWNvbG9yIGNvbnRyb2wKPiAgLSBhZGQgYmluZGluZyBy
-ZWZlcmVuY2UgdG8gbWZkIHlhbWwKPgo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2NSAmIHY2Cj4gIC0g
-VXNlIERUIHRvIGRlY2lkZSBSR0IgTEVEIGlzIG11bHRpY29sb3IgZGV2aWNlIG9yIGluZGljYXRv
-ciBkZXZpY2Ugb25seQo+Cj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHY2ICYgdjcKPiAgLSBBZGQgYmlu
-ZGluZyBtdWx0aWNvbG9yIGRldmljZSBzYW1wbGUgY29kZQo+ICAtIEFkZCBmbGFzaCBvcHMgbXV0
-ZXggbG9jawo+ICAtIFJlbW92ZSBWNEwyIGluaXQgd2l0aCBpbmRpY2F0b3IgZGV2aWNlCj4KPiBj
-aGFuZ2Vsb2dzIGJldHdlZW4gdjcgJiB2OAo+ICAtIEFkZCBtdXRleCBmb3IgbGVkIGZhdWx0IGdl
-dCBvcHMKPiAgLSBGaXggZmxhc2ggYW5kIG11bHRpY29sb3Igbm8tb3BzIHJldHVybiAwCj4gIC0g
-QWRkIExFRF9GVU5DVElPTl9NT09OTElHSFQKPgo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OCAmIHY5
-Cj4gIC0gcmV1c2UgYXBpIGluIGZsYXNoIGFuZCBtdWx0aWNvbG9yIGhlYWRlcgo+Cj4gY2hhbmdl
-bG9ncyBiZXR3ZWVuIHY5ICYgdjEwCj4gIC0gYWRkIGNvbW1lbnQgZm9yIHJldXNlIHJlZ2lzdHJh
-dGlvbiBmdW5jdGlvbnMgaW4gZmxhc2ggYW5kIG11bHRpY29sb3IKPgo+IGNoYW5nZWxvZ3MgYmV0
-d2VlbiB2MTAgJiB2MTEKPiAgLSBtYXRjaCBkdC1iaW5kaW5nIHJlZyBwcm9wZXJ0eSBjb21tZW50
-IHRvIHRoZSBmdW5jdGlvbmFsaXR5IG5hbWUKPiAgLSByZW1vdmUgZXhpc3QgcGF0Y2ggaW4gbGlu
-dXgtbmV4dAo+ICAtIGRpY2lkZSBtdWx0aWNvbG9yIGNoYW5uZWwgYnkgY29sb3IgZGVmaW5pdGlp
-b24KPgo+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2MTEgJiB2MTIKPiAgLSBGaXggcHJpbnQgc2l6ZV90
-IGJ5ICV6dQo+ICAtIEZpeCBkdC1iaW5kaW5nIG5hbWUgcmVndWxhciBleHBlcnNzaW9uCj4KPiBj
-aGFuZ2Vsb2dzIGJldHdlZW4gdjEyICYgdjEzCj4gIC0gRml4IGtidWlsZCB0ZXN0IHJlYm90IGJ1
-aWxkIGVycm9yCj4KPiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjEzICYgdjE0Cj4gIC0gTW92ZSBkcml2
-ZXIgdG8gZmxhc2ggZm9sZGVyCj4gIC0gUmVtb3ZlIExFRCBGVU5DVElPTiBNT09OTElHSFQKPiAg
-LSBLZWVwIDgwIGNoYXIgcGVyIGxpbmUKPgo+CgpEZWFyIFJldmlld2VycywKClBsZWFzZSBsZXQg
-bWUga25vdyBpZiBhbnkgdXBkYXRlLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi,
+
+On Thu, Jun 17, 2021 at 6:59 AM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> Add MT8195 imp i2c wrapper clock providers
+>
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> ---
+>  drivers/clk/mediatek/Kconfig                  |  6 ++
+>  drivers/clk/mediatek/Makefile                 |  1 +
+>  .../clk/mediatek/clk-mt8195-imp_iic_wrap.c    | 68 +++++++++++++++++++
+>  3 files changed, 75 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+>
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 5089bacdf0a5..ade85a52b7ed 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -684,6 +684,12 @@ config COMMON_CLK_MT8195_WPESYS
+>         help
+>           This driver supports MediaTek MT8195 wpesys clocks.
+>
+> +config COMMON_CLK_MT8195_IMP_IIC_WRAP
+> +       bool "Clock driver for MediaTek MT8195 imp_iic_wrap"
+> +       depends on COMMON_CLK_MT8195
+> +       help
+> +         This driver supports MediaTek MT8195 imp_iic_wrap clocks.
+> +
+
+General comments from other patches also apply.
+
+>  config COMMON_CLK_MT8516
+>         bool "Clock driver for MediaTek MT8516"
+>         depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index 32cfb0030d92..b10c6267ba98 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -97,5 +97,6 @@ obj-$(CONFIG_COMMON_CLK_MT8195_VENCSYS) += clk-mt8195-venc.o
+>  obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS0) += clk-mt8195-vpp0.o
+>  obj-$(CONFIG_COMMON_CLK_MT8195_VPPSYS1) += clk-mt8195-vpp1.o
+>  obj-$(CONFIG_COMMON_CLK_MT8195_WPESYS) += clk-mt8195-wpe.o
+> +obj-$(CONFIG_COMMON_CLK_MT8195_IMP_IIC_WRAP) += clk-mt8195-imp_iic_wrap.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+> diff --git a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+> new file mode 100644
+> index 000000000000..efb62f484bbe
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
+> @@ -0,0 +1,68 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +//
+> +// Copyright (c) 2021 MediaTek Inc.
+> +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> +
+> +#include <linux/clk-provider.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "clk-mtk.h"
+> +#include "clk-gate.h"
+> +
+> +#include <dt-bindings/clock/mt8195-clk.h>
+> +
+> +static const struct mtk_gate_regs imp_iic_wrap_cg_regs = {
+> +       .set_ofs = 0xe08,
+> +       .clr_ofs = 0xe04,
+> +       .sta_ofs = 0xe00,
+> +};
+> +
+> +#define GATE_IMP_IIC_WRAP(_id, _name, _parent, _shift)                         \
+> +       GATE_MTK_FLAGS(_id, _name, _parent, &imp_iic_wrap_cg_regs, _shift,      \
+> +               &mtk_clk_gate_ops_setclr, CLK_OPS_PARENT_ENABLE)
+> +
+> +static const struct mtk_gate imp_iic_wrap_s_clks[] = {
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C5, "imp_iic_wrap_s_i2c5", "i2c_sel", 0),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C6, "imp_iic_wrap_s_i2c6", "i2c_sel", 1),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_S_I2C7, "imp_iic_wrap_s_i2c7", "i2c_sel", 2),
+> +};
+> +
+> +static const struct mtk_gate imp_iic_wrap_w_clks[] = {
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C0, "imp_iic_wrap_w_i2c0", "i2c_sel", 0),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C1, "imp_iic_wrap_w_i2c1", "i2c_sel", 1),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C2, "imp_iic_wrap_w_i2c2", "i2c_sel", 2),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C3, "imp_iic_wrap_w_i2c3", "i2c_sel", 3),
+> +       GATE_IMP_IIC_WRAP(CLK_IMP_IIC_WRAP_W_I2C4, "imp_iic_wrap_w_i2c4", "i2c_sel", 4),
+
+The datasheet doesn't provide the actual index numbers for each bit,
+but based on the address range groupings I'd say the numbering here
+is reasonable.
+
+
+ChenYu
+
+> +};
+> +
+> +static const struct mtk_clk_desc imp_iic_wrap_s_desc = {
+> +       .clks = imp_iic_wrap_s_clks,
+> +       .num_clks = ARRAY_SIZE(imp_iic_wrap_s_clks),
+> +};
+> +
+> +static const struct mtk_clk_desc imp_iic_wrap_w_desc = {
+> +       .clks = imp_iic_wrap_w_clks,
+> +       .num_clks = ARRAY_SIZE(imp_iic_wrap_w_clks),
+> +};
+> +
+> +static const struct of_device_id of_match_clk_mt8195_imp_iic_wrap[] = {
+> +       {
+> +               .compatible = "mediatek,mt8195-imp_iic_wrap_s",
+> +               .data = &imp_iic_wrap_s_desc,
+> +       }, {
+> +               .compatible = "mediatek,mt8195-imp_iic_wrap_w",
+> +               .data = &imp_iic_wrap_w_desc,
+> +       }, {
+> +               /* sentinel */
+> +       }
+> +};
+> +
+> +static struct platform_driver clk_mt8195_imp_iic_wrap_drv = {
+> +       .probe = mtk_clk_simple_probe,
+> +       .driver = {
+> +               .name = "clk-mt8195-imp_iic_wrap",
+> +               .of_match_table = of_match_clk_mt8195_imp_iic_wrap,
+> +       },
+> +};
+> +
+> +builtin_platform_driver(clk_mt8195_imp_iic_wrap_drv);
+> --
+> 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
