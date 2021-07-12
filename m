@@ -2,81 +2,85 @@ Return-Path: <SRS0=CLKU=ME=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-19.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 800D2C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 15:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D76B0C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 15:33:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3156460720
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 15:20:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3156460720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 96B79611B0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 15:33:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 96B79611B0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O/N1zY2SXAd2j06eYSicqVSQ+lADN2wVhBbhXllsesI=; b=0UgX00VD0QJB1F
-	XDPZZp0W8LUgzF6mDZ4dUr2qBJWyEQVNekTattKjPmhsUfPqpgI4GhJPFzEFsQLOPXfutEeVCpWYh
-	AP//nnUJv5zrhD1lC1Z8LmnkLahOYJFGBVVIWyKFwe9AeqK1A8fdO0nK+HeXvxymgtyX1WdrVhm1k
-	H8DTBXpVJvIzKgU14IgjS3L3tSmz++8k1xmWtmzSJGPtsUDOL2yjBOpbEaD1WijExV8fZRBOm7dRG
-	m/MxnrBdCTRXkgjenxbF6aLJATXyng26XKjTDephefaQYAkJgIkEjp+vpMFiLitMv2IXz5Fom84St
-	u8cZudJi9C14yC5jqEYA==;
+	List-Owner; bh=sCa3e6e8Pdt3jUb1Siegd1Of6TwqOxtiaFKCXBtewOM=; b=xfTwC/AQ/ttUP8
+	h+bzrlY9sCgK5tml6l6XjS8GxOuwgMpR3C3aIDkfXdbmabT1YldM5XrNEAca5Xh3Fln65Qnt0CmHx
+	z+AW7z8vdmlJzrlzuiLco9D0aml6KRx+IZ2pWumSNdpfM5IxDxL9t78DA7IdyWucO1IM2XSuPukpH
+	T/1wBFDgelz57MqjAs+/WThujgHNEcXIJoAt5jfMTIQC7on4HUMX2d1q+UDhG0SXZerV94MlxD9eC
+	ycnbnMBgoxhRDjgNlTZr5IDiA8MV3AxmyFcv7DyBDZmZx6rUImBTd8BynkEOOK60ASvH2q5y1KM/n
+	Ti7vQVySkF7xFaDkfZtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2xjL-007iWB-P0; Mon, 12 Jul 2021 15:20:23 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m2xvl-007kKp-SK; Mon, 12 Jul 2021 15:33:13 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2xjI-007iVN-1K; Mon, 12 Jul 2021 15:20:22 +0000
-X-UUID: 27d3cd0b8ca945629c3696e3a8a8318c-20210712
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=s2Jj8A+/gRRkZUsAfcG2msfHvzYUimjIX+FoFvFaCNo=; 
- b=gG3ZyQ5EsYcCy6Smm7bFiJHsx/Po789nUYg29H38YpzT5E13anHCFWscvFgerUgs5FObv78UV68Lug4M917isqunYb0wJU+EPca0ce8xOwuw0noCDKnORMqYo4dCqpCXHDJd5yQ4x702H+2m4y6bHG5Z9/bRLKu2ybaGpkbHCZE=;
-X-UUID: 27d3cd0b8ca945629c3696e3a8a8318c-20210712
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1695767037; Mon, 12 Jul 2021 08:20:14 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Jul 2021 08:10:12 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Jul 2021 23:09:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 12 Jul 2021 23:09:59 +0800
-Message-ID: <9929a3a20df1a89fc94baf7c75c0c65d9a61de0f.camel@mediatek.com>
-Subject: Re: [PATCH v2 5/8] ASoC: mediatek: mt8195: add platform driver
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-CC: <broonie@kernel.org>, <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, <alsa-devel@alsa-project.org>, 
- <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, 
- LKML <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <bicycle.tsai@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
- <cychiang@google.com>, <aaronyu@google.com>
-Date: Mon, 12 Jul 2021 23:09:58 +0800
-In-Reply-To: <CAGXv+5FzOs+=9PbYAEahVXvdJG1FnRkSUo_r3AVYZzNKGqg0oA@mail.gmail.com>
-References: <20210629014736.31153-1-trevor.wu@mediatek.com>
- <20210629014736.31153-6-trevor.wu@mediatek.com>
- <CAGXv+5FzOs+=9PbYAEahVXvdJG1FnRkSUo_r3AVYZzNKGqg0oA@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1m2xvX-007kIR-Bm; Mon, 12 Jul 2021 15:33:01 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DA06C611C0;
+ Mon, 12 Jul 2021 15:32:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1626103978;
+ bh=fWbekOpMhLX3PEZPUoCL64Pn9B/M+6H2qgeQOkRxm+o=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=BEj5gNY2+z0xYKfAD9Pbn1WRUzsEmAN5iyV3zpMOEM3AntJFIntXm3b0J3+UWzjRx
+ T/sUh0X7WElC/5yW+wntew1EHCSBmrlPQmtIeATOm5ntAGOhd8vzb5NEzV8uEy4SV6
+ 60TVjObcZ/GZFtU5/jRNePa405sCyCnkWgBkoNNLfw8t/j+YTTihoGrq5wfFXC+xdX
+ 2dWTScMAoawVAPbMVgV89Puu58s3G8wZ411/GJEuUxXj8X7SVocXPjwlmGmnanodCv
+ N7XH3vWQo/OhJq+ErAqaqp7tZSw9xnkPstApUpYzT6FprQSja3IWn8RAkRZEyHAdSv
+ q8jtXG6f5sGVQ==
+Received: by mail-ej1-f51.google.com with SMTP id bu12so35480781ejb.0;
+ Mon, 12 Jul 2021 08:32:58 -0700 (PDT)
+X-Gm-Message-State: AOAM532CyiSwlCjqkmM/Z+Ae+LWvBhYJiTvXAmkHMwnT48anhGXvhf3n
+ 48f1UEwvTy3s9ZHlj015x744OJWvSdP7FDD4xw==
+X-Google-Smtp-Source: ABdhPJz/culjNgubU3ud52m8vTPSDAB5FCCTp5gDChByJbCSvasrcwETs5u3uMElGVBk9J9UVziTZyqnrvFiRVFWkRo=
+X-Received: by 2002:a17:906:4745:: with SMTP id
+ j5mr33200346ejs.75.1626103977285; 
+ Mon, 12 Jul 2021 08:32:57 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1626051778-13577-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1626051778-13577-2-git-send-email-yongqiang.niu@mediatek.com>
+In-Reply-To: <1626051778-13577-2-git-send-email-yongqiang.niu@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 12 Jul 2021 23:32:46 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_87RJ=jOh-cLZPpc8qhg3iLVUZRTjO1k39-UXaVxfCmKA@mail.gmail.com>
+Message-ID: <CAAOTY_87RJ=jOh-cLZPpc8qhg3iLVUZRTjO1k39-UXaVxfCmKA@mail.gmail.com>
+Subject: Re: [PATCH v2, 1/3] drm/mediatek: Separate aal module
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ Jassi Brar <jassisinghbrar@gmail.com>, Fabien Parent <fparent@baylibre.com>, 
+ Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
+ DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ Hsin-Yi Wang <hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_082020_128937_3F402E1E 
-X-CRM114-Status: GOOD (  36.47  )
+X-CRM114-CacheID: sfid-20210712_083259_509648_7B55B873 
+X-CRM114-Status: GOOD (  29.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,304 +92,225 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-07-12 at 14:57 +0800, Chen-Yu Tsai wrote:
->  are all internal Hi,
-> 
-> On Tue, Jun 29, 2021 at 9:49 AM Trevor Wu <trevor.wu@mediatek.com>
-> wrote:
-> > 
-> > This patch adds mt8195 platform and affiliated driver.
-> > 
-> > Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> > ---
-> >  sound/soc/mediatek/Kconfig                     |    9 +
-> >  sound/soc/mediatek/Makefile                   |    1 +
-> >  sound/soc/mediatek/mt8195/Makefile            |   11 +
-> >  sound/soc/mediatek/mt8195/mt8195-afe-clk.c    |  899 +++++
-> >  sound/soc/mediatek/mt8195/mt8195-afe-clk.h    |  201 +
-> >  sound/soc/mediatek/mt8195/mt8195-afe-common.h |  200 +
-> >  sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    | 3264
-> > +++++++++++++++++
-> >  sound/soc/mediatek/mt8195/mt8195-reg.h        | 2793
-> > ++++++++++++++
-> >  8 files changed, 7378 insertions(+)
-> >  create mode 100644 sound/soc/mediatek/mt8195/Makefile
-> >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.h
-> >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-common.h
-> >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-> >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-reg.h
-> > 
-> > diff --git a/sound/soc/mediatek/Kconfig
-> > b/sound/soc/mediatek/Kconfig
-> > index 74dae4332d17..3389f382be06 100644
-> > --- a/sound/soc/mediatek/Kconfig
-> > +++ b/sound/soc/mediatek/Kconfig
-> > @@ -184,3 +184,12 @@ config SND_SOC_MT8192_MT6359_RT1015_RT5682
-> >           with the MT6359 RT1015 RT5682 audio codec.
-> >           Select Y if you have such device.
-> >           If unsure select "N".
-> > +
-> > +config SND_SOC_MT8195
-> > +       tristate "ASoC support for Mediatek MT8195 chip"
-> > +       select SND_SOC_MEDIATEK
-> > +       help
-> > +         This adds ASoC platform driver support for Mediatek
-> > MT8195 chip
-> > +         that can be used with other codecs.
-> > +         Select Y if you have such device.
-> > +         If unsure select "N".
-> > diff --git a/sound/soc/mediatek/Makefile
-> > b/sound/soc/mediatek/Makefile
-> > index f6cb6b8508e3..34778ca12106 100644
-> > --- a/sound/soc/mediatek/Makefile
-> > +++ b/sound/soc/mediatek/Makefile
-> > @@ -5,3 +5,4 @@ obj-$(CONFIG_SND_SOC_MT6797) += mt6797/
-> >  obj-$(CONFIG_SND_SOC_MT8173) += mt8173/
-> >  obj-$(CONFIG_SND_SOC_MT8183) += mt8183/
-> >  obj-$(CONFIG_SND_SOC_MT8192) += mt8192/
-> > +obj-$(CONFIG_SND_SOC_MT8195) += mt8195/
-> > diff --git a/sound/soc/mediatek/mt8195/Makefile
-> > b/sound/soc/mediatek/mt8195/Makefile
-> > new file mode 100644
-> > index 000000000000..b2c9fd88f39e
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8195/Makefile
-> > @@ -0,0 +1,11 @@
-> > +# SPDX-License-Identifier: GPL-2.0
-> > +
-> > +# platform driver
-> > +snd-soc-mt8195-afe-objs := \
-> > +       mt8195-afe-clk.o \
-> > +       mt8195-afe-pcm.o \
-> > +       mt8195-dai-adda.o \
-> > +       mt8195-dai-etdm.o \
-> > +       mt8195-dai-pcm.o
-> > +
-> > +obj-$(CONFIG_SND_SOC_MT8195) += snd-soc-mt8195-afe.o
-> > diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > new file mode 100644
-> > index 000000000000..57aa799b4f41
-> > --- /dev/null
-> > +++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > @@ -0,0 +1,899 @@
-> > +// SPDX-License-Identifier: GPL-2.0
-> > +/*
-> > + * mt8195-afe-clk.c  --  Mediatek 8195 afe clock ctrl
-> > + *
-> > + * Copyright (c) 2021 MediaTek Inc.
-> > + * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
-> > + *         Trevor Wu <trevor.wu@mediatek.com>
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> > +
-> > +#include "mt8195-afe-common.h"
-> > +#include "mt8195-afe-clk.h"
-> > +#include "mt8195-reg.h"
-> > +
-> > +static const char *aud_clks[MT8195_CLK_NUM] = {
-> 
-> Most of these clocks are not described in the device tree binding. If
-> the driver needs to reference them, they should be described. We
-> should
-> not be hard-coding clock names across different drivers.
-> 
-Sorry, I didn't know I have to list all clocks in the dt-binding.
-Originally, I thought these clocks will be described in the clock
-binding, so I didn't add them to the binding of afe driver.
-I will add these clocks to mt8195-afe-pcm.yaml.
-
-> The more important question is, why does the driver need to reference
-> all of them? Maybe we should take a step back and draw out a clock
-> tree
-> diagram for the hardware?
-> 
-The clock structure is PLL -> MUX -> GATE.
-xtal, pll and divider are the possible clock inputs for MUX.
-Because we select the clock input of audio module based on the use
-case, we use clk_get to retrive all clocks which are possible to be
-used.
-Some of them are not used in this series, because some modules are
-still developing. Should I only keep the clocks that have been used in
-the series?
-
-> > +       /* xtal */
-> > +       [MT8195_CLK_XTAL_26M] = "clk26m",
-> > +       /* pll */
-> > +       [MT8195_CLK_APMIXED_APLL1] = "apll1",
-> > +       [MT8195_CLK_APMIXED_APLL2] = "apll2",
-> > +       [MT8195_CLK_APMIXED_APLL3] = "apll3",
-> > +       [MT8195_CLK_APMIXED_APLL4] = "apll4",
-> > +       [MT8195_CLK_APMIXED_APLL5] = "apll5",
-> > +       [MT8195_CLK_APMIXED_HDMIRX_APLL] = "hdmirx_apll",
-> > +       /* divider */
-> > +       [MT8195_CLK_TOP_APLL1] = "apll1_ck",
-> > +       [MT8195_CLK_TOP_APLL1_D4] = "apll1_d4",
-> > +       [MT8195_CLK_TOP_APLL2] = "apll2_ck",
-> > +       [MT8195_CLK_TOP_APLL2_D4] = "apll2_d4",
-> > +       [MT8195_CLK_TOP_APLL3] = "apll3_ck",
-> > +       [MT8195_CLK_TOP_APLL3_D4] = "apll3_d4",
-> > +       [MT8195_CLK_TOP_APLL4] = "apll4_ck",
-> > +       [MT8195_CLK_TOP_APLL4_D4] = "apll4_d4",
-> > +       [MT8195_CLK_TOP_APLL5] = "apll5_ck",
-> > +       [MT8195_CLK_TOP_APLL5_D4] = "apll5_d4",
-> > +       [MT8195_CLK_TOP_APLL12_DIV0] = "apll12_div0",
-> > +       [MT8195_CLK_TOP_APLL12_DIV1] = "apll12_div1",
-> > +       [MT8195_CLK_TOP_APLL12_DIV2] = "apll12_div2",
-> > +       [MT8195_CLK_TOP_APLL12_DIV3] = "apll12_div3",
-> > +       [MT8195_CLK_TOP_APLL12_DIV4] = "apll12_div4",
-> > +       [MT8195_CLK_TOP_APLL12_DIV9] = "apll12_div9",
-> > +       [MT8195_CLK_TOP_HDMIRX_APLL] = "hdmirx_apll_ck",
-> > +       [MT8195_CLK_TOP_MAINPLL_D4_D4] = "mainpll_d4_d4",
-> > +       [MT8195_CLK_TOP_MAINPLL_D5_D2] = "mainpll_d5_d2",
-> > +       [MT8195_CLK_TOP_MAINPLL_D7_D2] = "mainpll_d7_d2",
-> > +       [MT8195_CLK_TOP_UNIVPLL_D4] = "univpll_d4",
-> > +       /* mux */
-> > +       [MT8195_CLK_TOP_APLL1_SEL] = "apll1_sel",
-> > +       [MT8195_CLK_TOP_APLL2_SEL] = "apll2_sel",
-> > +       [MT8195_CLK_TOP_APLL3_SEL] = "apll3_sel",
-> > +       [MT8195_CLK_TOP_APLL4_SEL] = "apll4_sel",
-> > +       [MT8195_CLK_TOP_APLL5_SEL] = "apll5_sel",
-> > +       [MT8195_CLK_TOP_A1SYS_HP_SEL] = "a1sys_hp_sel",
-> > +       [MT8195_CLK_TOP_A2SYS_SEL] = "a2sys_sel",
-> > +       [MT8195_CLK_TOP_A3SYS_SEL] = "a3sys_sel",
-> > +       [MT8195_CLK_TOP_A4SYS_SEL] = "a4sys_sel",
-> > +       [MT8195_CLK_TOP_ASM_H_SEL] = "asm_h_sel",
-> > +       [MT8195_CLK_TOP_ASM_M_SEL] = "asm_m_sel",
-> > +       [MT8195_CLK_TOP_ASM_L_SEL] = "asm_l_sel",
-> > +       [MT8195_CLK_TOP_AUD_IEC_SEL] = "aud_iec_sel",
-> > +       [MT8195_CLK_TOP_AUD_INTBUS_SEL] = "aud_intbus_sel",
-> > +       [MT8195_CLK_TOP_AUDIO_H_SEL] = "audio_h_sel",
-> > +       [MT8195_CLK_TOP_AUDIO_LOCAL_BUS_SEL] =
-> > "audio_local_bus_sel",
-> > +       [MT8195_CLK_TOP_DPTX_M_SEL] = "dptx_m_sel",
-> > +       [MT8195_CLK_TOP_INTDIR_SEL] = "intdir_sel",
-> > +       [MT8195_CLK_TOP_I2SO1_M_SEL] = "i2so1_m_sel",
-> > +       [MT8195_CLK_TOP_I2SO2_M_SEL] = "i2so2_m_sel",
-> > +       [MT8195_CLK_TOP_I2SI1_M_SEL] = "i2si1_m_sel",
-> > +       [MT8195_CLK_TOP_I2SI2_M_SEL] = "i2si2_m_sel",
-> > +       /* clock gate */
-> > +       [MT8195_CLK_TOP_MPHONE_SLAVE_B] = "mphone_slave_b",
-> > +       [MT8195_CLK_TOP_CFG_26M_AUD] = "cfg_26m_aud",
-> > +       [MT8195_CLK_INFRA_AO_AUDIO] = "infra_ao_audio",
-> > +       [MT8195_CLK_INFRA_AO_AUDIO_26M_B] = "infra_ao_audio_26m_b",
-> > +       [MT8195_CLK_SCP_ADSP_AUDIODSP] = "scp_adsp_audiodsp",
-> 
-> 
-> > +       [MT8195_CLK_AUD_AFE] = "aud_afe",
-> > +       [MT8195_CLK_AUD_LRCK_CNT] = "aud_lrck_cnt",
-> > +       [MT8195_CLK_AUD_SPDIFIN_TUNER_APLL] =
-> > "aud_spdifin_tuner_apll",
-> > +       [MT8195_CLK_AUD_SPDIFIN_TUNER_DBG] =
-> > "aud_spdifin_tuner_dbg",
-> > +       [MT8195_CLK_AUD_UL_TML] = "aud_ul_tml",
-> > +       [MT8195_CLK_AUD_APLL1_TUNER] = "aud_apll1_tuner",
-> > +       [MT8195_CLK_AUD_APLL2_TUNER] = "aud_apll2_tuner",
-> > +       [MT8195_CLK_AUD_TOP0_SPDF] = "aud_top0_spdf",
-> > +       [MT8195_CLK_AUD_APLL] = "aud_apll",
-> > +       [MT8195_CLK_AUD_APLL2] = "aud_apll2",
-> > +       [MT8195_CLK_AUD_DAC] = "aud_dac",
-> > +       [MT8195_CLK_AUD_DAC_PREDIS] = "aud_dac_predis",
-> > +       [MT8195_CLK_AUD_TML] = "aud_tml",
-> > +       [MT8195_CLK_AUD_ADC] = "aud_adc",
-> > +       [MT8195_CLK_AUD_DAC_HIRES] = "aud_dac_hires",
-> > +       [MT8195_CLK_AUD_A1SYS_HP] = "aud_a1sys_hp",
-> > +       [MT8195_CLK_AUD_AFE_DMIC1] = "aud_afe_dmic1",
-> > +       [MT8195_CLK_AUD_AFE_DMIC2] = "aud_afe_dmic2",
-> > +       [MT8195_CLK_AUD_AFE_DMIC3] = "aud_afe_dmic3",
-> > +       [MT8195_CLK_AUD_AFE_DMIC4] = "aud_afe_dmic4",
-> > +       [MT8195_CLK_AUD_AFE_26M_DMIC_TM] = "aud_afe_26m_dmic_tm",
-> > +       [MT8195_CLK_AUD_UL_TML_HIRES] = "aud_ul_tml_hires",
-> > +       [MT8195_CLK_AUD_ADC_HIRES] = "aud_adc_hires",
-> > +       [MT8195_CLK_AUD_ADDA6_ADC] = "aud_adda6_adc",
-> > +       [MT8195_CLK_AUD_ADDA6_ADC_HIRES] = "aud_adda6_adc_hires",
-> > +       [MT8195_CLK_AUD_LINEIN_TUNER] = "aud_linein_tuner",
-> > +       [MT8195_CLK_AUD_EARC_TUNER] = "aud_earc_tuner",
-> > +       [MT8195_CLK_AUD_I2SIN] = "aud_i2sin",
-> > +       [MT8195_CLK_AUD_TDM_IN] = "aud_tdm_in",
-> > +       [MT8195_CLK_AUD_I2S_OUT] = "aud_i2s_out",
-> > +       [MT8195_CLK_AUD_TDM_OUT] = "aud_tdm_out",
-> > +       [MT8195_CLK_AUD_HDMI_OUT] = "aud_hdmi_out",
-> > +       [MT8195_CLK_AUD_ASRC11] = "aud_asrc11",
-> > +       [MT8195_CLK_AUD_ASRC12] = "aud_asrc12",
-> > +       [MT8195_CLK_AUD_MULTI_IN] = "aud_multi_in",
-> > +       [MT8195_CLK_AUD_INTDIR] = "aud_intdir",
-> > +       [MT8195_CLK_AUD_A1SYS] = "aud_a1sys",
-> > +       [MT8195_CLK_AUD_A2SYS] = "aud_a2sys",
-> > +       [MT8195_CLK_AUD_PCMIF] = "aud_pcmif",
-> > +       [MT8195_CLK_AUD_A3SYS] = "aud_a3sys",
-> > +       [MT8195_CLK_AUD_A4SYS] = "aud_a4sys",
-> > +       [MT8195_CLK_AUD_MEMIF_UL1] = "aud_memif_ul1",
-> > +       [MT8195_CLK_AUD_MEMIF_UL2] = "aud_memif_ul2",
-> > +       [MT8195_CLK_AUD_MEMIF_UL3] = "aud_memif_ul3",
-> > +       [MT8195_CLK_AUD_MEMIF_UL4] = "aud_memif_ul4",
-> > +       [MT8195_CLK_AUD_MEMIF_UL5] = "aud_memif_ul5",
-> > +       [MT8195_CLK_AUD_MEMIF_UL6] = "aud_memif_ul6",
-> > +       [MT8195_CLK_AUD_MEMIF_UL8] = "aud_memif_ul8",
-> > +       [MT8195_CLK_AUD_MEMIF_UL9] = "aud_memif_ul9",
-> > +       [MT8195_CLK_AUD_MEMIF_UL10] = "aud_memif_ul10",
-> > +       [MT8195_CLK_AUD_MEMIF_DL2] = "aud_memif_dl2",
-> > +       [MT8195_CLK_AUD_MEMIF_DL3] = "aud_memif_dl3",
-> > +       [MT8195_CLK_AUD_MEMIF_DL6] = "aud_memif_dl6",
-> > +       [MT8195_CLK_AUD_MEMIF_DL7] = "aud_memif_dl7",
-> > +       [MT8195_CLK_AUD_MEMIF_DL8] = "aud_memif_dl8",
-> > +       [MT8195_CLK_AUD_MEMIF_DL10] = "aud_memif_dl10",
-> > +       [MT8195_CLK_AUD_MEMIF_DL11] = "aud_memif_dl11",
-> > +       [MT8195_CLK_AUD_GASRC0] = "aud_gasrc0",
-> > +       [MT8195_CLK_AUD_GASRC1] = "aud_gasrc1",
-> > +       [MT8195_CLK_AUD_GASRC2] = "aud_gasrc2",
-> > +       [MT8195_CLK_AUD_GASRC3] = "aud_gasrc3",
-> > +       [MT8195_CLK_AUD_GASRC4] = "aud_gasrc4",
-> > +       [MT8195_CLK_AUD_GASRC5] = "aud_gasrc5",
-> > +       [MT8195_CLK_AUD_GASRC6] = "aud_gasrc6",
-> > +       [MT8195_CLK_AUD_GASRC7] = "aud_gasrc7",
-> > +       [MT8195_CLK_AUD_GASRC8] = "aud_gasrc8",
-> > +       [MT8195_CLK_AUD_GASRC9] = "aud_gasrc9",
-> > +       [MT8195_CLK_AUD_GASRC10] = "aud_gasrc10",
-> > +       [MT8195_CLK_AUD_GASRC11] = "aud_gasrc11",
-> > +       [MT8195_CLK_AUD_GASRC12] = "aud_gasrc12",
-> > +       [MT8195_CLK_AUD_GASRC13] = "aud_gasrc13",
-> > +       [MT8195_CLK_AUD_GASRC14] = "aud_gasrc14",
-> > +       [MT8195_CLK_AUD_GASRC15] = "aud_gasrc15",
-> > +       [MT8195_CLK_AUD_GASRC16] = "aud_gasrc16",
-> > +       [MT8195_CLK_AUD_GASRC17] = "aud_gasrc17",
-> > +       [MT8195_CLK_AUD_GASRC18] = "aud_gasrc18",
-> > +       [MT8195_CLK_AUD_GASRC19] = "aud_gasrc19",
-> 
-> The MT8195_CLK_AUD_* clocks are all internal to the audio subsystem:
-> the bits that control these clock gates are in the same address space
-> as the audio parts. Would it be possible to model them as internal
-> ASoC SUPPLY widgets? The external ones could be modeled using ASoC
-> CLK_SUPPLY widgets, and the dependencies could be modeled with ASoC
-> routes. The ASoC core could then handle power sequencing, which the
-> driver currently does manually.
-> 
-> IMO this is better than having two drivers handling two aspects of
-> the same piece of hardware, while the two aspects are intertwined.
-> 
-
-Yes, it's ok to use the CLK_SUPPLY and SUPPLY to model such clocks.
-But those clocks are managed by CCF in the preceding SOCs like mt2701,
-mt6779 and mt8183. Additionally, in some audio modules, clocks should
-be enabled before configuring parameters(hw_params). As far as I know,
-if we use CLK_SUPPLY or SUPPLY to model clocks, the power sequence is
-controlled by DAPM. It seems to be impossible to fulfill all use cases.
-That's why we just keep the manual control sequence and CCF seems to be
-the best choice to model such clock gatess.
-
-Thanks,
-Trevor
-> 
-> Regards
-> ChenYu
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
+PiDmlrwgMjAyMeW5tDfmnIgxMuaXpSDpgLHkuIAg5LiK5Y2IOTowM+Wvq+mBk++8mgo+Cj4gbXQ4
+MTgzIGFhbCBoYXMgbm8gZ2FtbWEgZnVuY3Rpb24KCkFwcGxpZWQgdG8gbWVkaWF0ZWstZHJtLW5l
+eHQgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4
+L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVkaWF0ZWstZHJtLW5l
+eHQKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5nIE5p
+dSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgfCAgIDMgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21l
+ZGlhdGVrL210a19kaXNwX2FhbC5jICAgICB8IDE2NiArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9kcnYuaCAgICAgfCAgIDkg
+KysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyB8ICAzOSAr
+LS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jICAgICAgfCAg
+IDYgKy0KPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggICAgICB8ICAg
+MSArCj4gIDYgZmlsZXMgY2hhbmdlZCwgMTg0IGluc2VydGlvbnMoKyksIDQwIGRlbGV0aW9ucygt
+KQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
+X2FhbC5jCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxl
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxlCj4gaW5kZXggZGM1NGE3YS4uMjkw
+OThkNyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUKPiAr
+KysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUKPiBAQCAtMSw2ICsxLDcgQEAK
+PiAgIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAo+Cj4gLW1lZGlhdGVrLWRybS15
+IDo9IG10a19kaXNwX2Njb3JyLm8gXAo+ICttZWRpYXRlay1kcm0teSA6PSBtdGtfZGlzcF9hYWwu
+byBcCj4gKyAgICAgICAgICAgICAgICAgbXRrX2Rpc3BfY2NvcnIubyBcCj4gICAgICAgICAgICAg
+ICAgICAgbXRrX2Rpc3BfY29sb3IubyBcCj4gICAgICAgICAgICAgICAgICAgbXRrX2Rpc3BfZ2Ft
+bWEubyBcCj4gICAgICAgICAgICAgICAgICAgbXRrX2Rpc3Bfb3ZsLm8gXAo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfYWFsLmMgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2Rpc3BfYWFsLmMKPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+IGluZGV4
+IDAwMDAwMDAuLmZiMjEyZTk2Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9tZWRpYXRlay9tdGtfZGlzcF9hYWwuYwo+IEBAIC0wLDAgKzEsMTY2IEBACj4gKy8vIFNQRFgt
+TGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9ubHkKPiArLyoKPiArICogQ29weXJpZ2h0IChj
+KSAyMDIxIE1lZGlhVGVrIEluYy4KPiArICovCj4gKwo+ICsjaW5jbHVkZSA8bGludXgvY2xrLmg+
+Cj4gKyNpbmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiArI2luY2x1ZGUgPGxpbnV4L21vZHVs
+ZS5oPgo+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9v
+Zl9pcnEuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+ICsjaW5jbHVk
+ZSA8bGludXgvc29jL21lZGlhdGVrL210ay1jbWRxLmg+Cj4gKwo+ICsjaW5jbHVkZSAibXRrX2Rp
+c3BfZHJ2LmgiCj4gKyNpbmNsdWRlICJtdGtfZHJtX2NydGMuaCIKPiArI2luY2x1ZGUgIm10a19k
+cm1fZGRwX2NvbXAuaCIKPiArCj4gKyNkZWZpbmUgRElTUF9BQUxfRU4gICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgMHgwMDAwCj4gKyNkZWZpbmUgQUFMX0VOICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBCSVQoMCkKPiArI2RlZmluZSBESVNQX0FBTF9TSVpFICAgICAg
+ICAgICAgICAgICAgICAgICAgICAweDAwMzAKPiArCj4gKwo+ICtzdHJ1Y3QgbXRrX2Rpc3BfYWFs
+X2RhdGEgewo+ICsgICAgICAgYm9vbCBoYXNfZ2FtbWE7Cj4gK307Cj4gKwo+ICsvKioKPiArICog
+c3RydWN0IG10a19kaXNwX2FhbCAtIERJU1BfQUFMIGRyaXZlciBzdHJ1Y3R1cmUKPiArICogQGRk
+cF9jb21wIC0gc3RydWN0dXJlIGNvbnRhaW5pbmcgdHlwZSBlbnVtIGFuZCBoYXJkd2FyZSByZXNv
+dXJjZXMKPiArICogQGNydGMgLSBhc3NvY2lhdGVkIGNydGMgdG8gcmVwb3J0IGlycSBldmVudHMg
+dG8KPiArICovCj4gK3N0cnVjdCBtdGtfZGlzcF9hYWwgewo+ICsgICAgICAgc3RydWN0IGNsayAq
+Y2xrOwo+ICsgICAgICAgdm9pZCBfX2lvbWVtICpyZWdzOwo+ICsgICAgICAgc3RydWN0IGNtZHFf
+Y2xpZW50X3JlZyBjbWRxX3JlZzsKPiArICAgICAgIGNvbnN0IHN0cnVjdCBtdGtfZGlzcF9hYWxf
+ZGF0YSAqZGF0YTsKPiArfTsKPiArCj4gK2ludCBtdGtfYWFsX2Nsa19lbmFibGUoc3RydWN0IGRl
+dmljZSAqZGV2KQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2Rpc3BfYWFsICphYWwgPSBkZXZf
+Z2V0X2RydmRhdGEoZGV2KTsKPiArCj4gKyAgICAgICByZXR1cm4gY2xrX3ByZXBhcmVfZW5hYmxl
+KGFhbC0+Y2xrKTsKPiArfQo+ICsKPiArdm9pZCBtdGtfYWFsX2Nsa19kaXNhYmxlKHN0cnVjdCBk
+ZXZpY2UgKmRldikKPiArewo+ICsgICAgICAgc3RydWN0IG10a19kaXNwX2FhbCAqYWFsID0gZGV2
+X2dldF9kcnZkYXRhKGRldik7Cj4gKwo+ICsgICAgICAgY2xrX2Rpc2FibGVfdW5wcmVwYXJlKGFh
+bC0+Y2xrKTsKPiArfQo+ICsKPiArdm9pZCBtdGtfYWFsX2NvbmZpZyhzdHJ1Y3QgZGV2aWNlICpk
+ZXYsIHVuc2lnbmVkIGludCB3LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2lnbmVk
+IGludCBoLCB1bnNpZ25lZCBpbnQgdnJlZnJlc2gsCj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgdW5zaWduZWQgaW50IGJwYywgc3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCkKPiArewo+ICsg
+ICAgICAgc3RydWN0IG10a19kaXNwX2FhbCAqYWFsID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4g
+Kwo+ICsgICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgdyA8PCAxNiB8IGgsICZhYWwtPmNt
+ZHFfcmVnLCBhYWwtPnJlZ3MsIERJU1BfQUFMX1NJWkUpOwo+ICt9Cj4gKwo+ICt2b2lkIG10a19h
+YWxfZ2FtbWFfc2V0KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRybV9jcnRjX3N0YXRlICpz
+dGF0ZSkKPiArewo+ICsgICAgICAgc3RydWN0IG10a19kaXNwX2FhbCAqYWFsID0gZGV2X2dldF9k
+cnZkYXRhKGRldik7Cj4gKwo+ICsgICAgICAgaWYgKGFhbC0+ZGF0YSAmJiBhYWwtPmRhdGEtPmhh
+c19nYW1tYSkKPiArICAgICAgICAgICAgICAgbXRrX2dhbW1hX3NldF9jb21tb24oYWFsLT5yZWdz
+LCBzdGF0ZSk7Cj4gK30KPiArCj4gK3ZvaWQgbXRrX2FhbF9zdGFydChzdHJ1Y3QgZGV2aWNlICpk
+ZXYpCj4gK3sKPiArICAgICAgIHN0cnVjdCBtdGtfZGlzcF9hYWwgKmFhbCA9IGRldl9nZXRfZHJ2
+ZGF0YShkZXYpOwo+ICsKPiArICAgICAgIHdyaXRlbChBQUxfRU4sIGFhbC0+cmVncyArIERJU1Bf
+QUFMX0VOKTsKPiArfQo+ICsKPiArdm9pZCBtdGtfYWFsX3N0b3Aoc3RydWN0IGRldmljZSAqZGV2
+KQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2Rpc3BfYWFsICphYWwgPSBkZXZfZ2V0X2RydmRh
+dGEoZGV2KTsKPiArCj4gKyAgICAgICB3cml0ZWxfcmVsYXhlZCgweDAsIGFhbC0+cmVncyArIERJ
+U1BfQUFMX0VOKTsKPiArfQo+ICsKPiArc3RhdGljIGludCBtdGtfZGlzcF9hYWxfYmluZChzdHJ1
+Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBkZXZpY2UgKm1hc3RlciwKPiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgdm9pZCAqZGF0YSkKPiArewo+ICsgICAgICAgcmV0dXJuIDA7Cj4gK30K
+PiArCj4gK3N0YXRpYyB2b2lkIG10a19kaXNwX2FhbF91bmJpbmQoc3RydWN0IGRldmljZSAqZGV2
+LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIHZvaWQgKmRhdGEpCj4gK3sKPiArfQo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBjb21w
+b25lbnRfb3BzIG10a19kaXNwX2FhbF9jb21wb25lbnRfb3BzID0gewo+ICsgICAgICAgLmJpbmQg
+ICA9IG10a19kaXNwX2FhbF9iaW5kLAo+ICsgICAgICAgLnVuYmluZCA9IG10a19kaXNwX2FhbF91
+bmJpbmQsCj4gK307Cj4gKwo+ICtzdGF0aWMgaW50IG10a19kaXNwX2FhbF9wcm9iZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICt7Cj4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXYg
+PSAmcGRldi0+ZGV2Owo+ICsgICAgICAgc3RydWN0IG10a19kaXNwX2FhbCAqcHJpdjsKPiArICAg
+ICAgIHN0cnVjdCByZXNvdXJjZSAqcmVzOwo+ICsgICAgICAgaW50IHJldDsKPiArCj4gKyAgICAg
+ICBwcml2ID0gZGV2bV9remFsbG9jKGRldiwgc2l6ZW9mKCpwcml2KSwgR0ZQX0tFUk5FTCk7Cj4g
+KyAgICAgICBpZiAoIXByaXYpCj4gKyAgICAgICAgICAgICAgIHJldHVybiAtRU5PTUVNOwo+ICsK
+PiArICAgICAgIHByaXYtPmNsayA9IGRldm1fY2xrX2dldChkZXYsIE5VTEwpOwo+ICsgICAgICAg
+aWYgKElTX0VSUihwcml2LT5jbGspKSB7Cj4gKyAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAi
+ZmFpbGVkIHRvIGdldCBhYWwgY2xrXG4iKTsKPiArICAgICAgICAgICAgICAgcmV0dXJuIFBUUl9F
+UlIocHJpdi0+Y2xrKTsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICByZXMgPSBwbGF0Zm9ybV9n
+ZXRfcmVzb3VyY2UocGRldiwgSU9SRVNPVVJDRV9NRU0sIDApOwo+ICsgICAgICAgcHJpdi0+cmVn
+cyA9IGRldm1faW9yZW1hcF9yZXNvdXJjZShkZXYsIHJlcyk7Cj4gKyAgICAgICBpZiAoSVNfRVJS
+KHByaXYtPnJlZ3MpKSB7Cj4gKyAgICAgICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRv
+IGlvcmVtYXAgYWFsXG4iKTsKPiArICAgICAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIocHJpdi0+
+cmVncyk7Cj4gKyAgICAgICB9Cj4gKwo+ICsjaWYgSVNfUkVBQ0hBQkxFKENPTkZJR19NVEtfQ01E
+USkKPiArICAgICAgIHJldCA9IGNtZHFfZGV2X2dldF9jbGllbnRfcmVnKGRldiwgJnByaXYtPmNt
+ZHFfcmVnLCAwKTsKPiArICAgICAgIGlmIChyZXQpCj4gKyAgICAgICAgICAgICAgIGRldl9kYmco
+ZGV2LCAiZ2V0IG1lZGlhdGVrLGdjZS1jbGllbnQtcmVnIGZhaWwhXG4iKTsKPiArI2VuZGlmCj4g
+Kwo+ICsgICAgICAgcHJpdi0+ZGF0YSA9IG9mX2RldmljZV9nZXRfbWF0Y2hfZGF0YShkZXYpOwo+
+ICsgICAgICAgcGxhdGZvcm1fc2V0X2RydmRhdGEocGRldiwgcHJpdik7Cj4gKwo+ICsgICAgICAg
+cmV0ID0gY29tcG9uZW50X2FkZChkZXYsICZtdGtfZGlzcF9hYWxfY29tcG9uZW50X29wcyk7Cj4g
+KyAgICAgICBpZiAocmV0KQo+ICsgICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIkZhaWxlZCB0
+byBhZGQgY29tcG9uZW50OiAlZFxuIiwgcmV0KTsKPiArCj4gKyAgICAgICByZXR1cm4gcmV0Owo+
+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IG10a19kaXNwX2FhbF9yZW1vdmUoc3RydWN0IHBsYXRmb3Jt
+X2RldmljZSAqcGRldikKPiArewo+ICsgICAgICAgY29tcG9uZW50X2RlbCgmcGRldi0+ZGV2LCAm
+bXRrX2Rpc3BfYWFsX2NvbXBvbmVudF9vcHMpOwo+ICsKPiArICAgICAgIHJldHVybiAwOwo+ICt9
+Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kaXNwX2FhbF9kYXRhIG10ODE3M19hYWxf
+ZHJpdmVyX2RhdGEgPSB7Cj4gKyAgICAgICAuaGFzX2dhbW1hID0gdHJ1ZSwKPiArfTsKPiArCj4g
+K3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIG10a19kaXNwX2FhbF9kcml2ZXJfZHRf
+bWF0Y2hbXSA9IHsKPiArICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRp
+c3AtYWFsIiwKPiArICAgICAgICAgLmRhdGEgPSAmbXQ4MTczX2FhbF9kcml2ZXJfZGF0YX0sCj4g
+KyAgICAgICB7fSwKPiArfTsKPiArTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgbXRrX2Rpc3BfYWFs
+X2RyaXZlcl9kdF9tYXRjaCk7Cj4gKwo+ICtzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kaXNw
+X2FhbF9kcml2ZXIgPSB7Cj4gKyAgICAgICAucHJvYmUgICAgICAgICAgPSBtdGtfZGlzcF9hYWxf
+cHJvYmUsCj4gKyAgICAgICAucmVtb3ZlICAgICAgICAgPSBtdGtfZGlzcF9hYWxfcmVtb3ZlLAo+
+ICsgICAgICAgLmRyaXZlciAgICAgICAgID0gewo+ICsgICAgICAgICAgICAgICAubmFtZSAgID0g
+Im1lZGlhdGVrLWRpc3AtYWFsIiwKPiArICAgICAgICAgICAgICAgLm93bmVyICA9IFRISVNfTU9E
+VUxFLAo+ICsgICAgICAgICAgICAgICAub2ZfbWF0Y2hfdGFibGUgPSBtdGtfZGlzcF9hYWxfZHJp
+dmVyX2R0X21hdGNoLAo+ICsgICAgICAgfSwKPiArfTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kaXNwX2Rydi5oIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
+L210a19kaXNwX2Rydi5oCj4gaW5kZXggY2FmZDlkZi4uODZjMzA2OCAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZHJ2LmgKPiArKysgYi9kcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfZHJ2LmgKPiBAQCAtOSw2ICs5LDE1IEBACj4gICNpbmNs
+dWRlIDxsaW51eC9zb2MvbWVkaWF0ZWsvbXRrLWNtZHEuaD4KPiAgI2luY2x1ZGUgIm10a19kcm1f
+cGxhbmUuaCIKPgo+ICtpbnQgbXRrX2FhbF9jbGtfZW5hYmxlKHN0cnVjdCBkZXZpY2UgKmRldik7
+Cj4gK3ZvaWQgbXRrX2FhbF9jbGtfZGlzYWJsZShzdHJ1Y3QgZGV2aWNlICpkZXYpOwo+ICt2b2lk
+IG10a19hYWxfY29uZmlnKHN0cnVjdCBkZXZpY2UgKmRldiwgdW5zaWduZWQgaW50IHcsCj4gKyAg
+ICAgICAgICAgICAgICAgICB1bnNpZ25lZCBpbnQgaCwgdW5zaWduZWQgaW50IHZyZWZyZXNoLAo+
+ICsgICAgICAgICAgICAgICAgICAgdW5zaWduZWQgaW50IGJwYywgc3RydWN0IGNtZHFfcGt0ICpj
+bWRxX3BrdCk7Cj4gK3ZvaWQgbXRrX2FhbF9nYW1tYV9zZXQoc3RydWN0IGRldmljZSAqZGV2LCBz
+dHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnN0YXRlKTsKPiArdm9pZCBtdGtfYWFsX3N0YXJ0KHN0cnVj
+dCBkZXZpY2UgKmRldik7Cj4gK3ZvaWQgbXRrX2FhbF9zdG9wKHN0cnVjdCBkZXZpY2UgKmRldik7
+Cj4gKwo+ICB2b2lkIG10a19jY29ycl9jdG1fc2V0KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0
+IGRybV9jcnRjX3N0YXRlICpzdGF0ZSk7Cj4gIGludCBtdGtfY2NvcnJfY2xrX2VuYWJsZShzdHJ1
+Y3QgZGV2aWNlICpkZXYpOwo+ICB2b2lkIG10a19jY29ycl9jbGtfZGlzYWJsZShzdHJ1Y3QgZGV2
+aWNlICpkZXYpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9kZHBfY29tcC5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAu
+Ywo+IGluZGV4IDc1YmMwMGUuLmYzNjcxNDIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2RkcF9jb21wLmMKPiBAQCAtMzIsOSArMzIsNiBAQAo+Cj4gICNkZWZpbmUg
+RElTUF9SRUdfVUZPX1NUQVJUICAgICAgICAgICAgICAgICAgICAgMHgwMDAwCj4KPiAtI2RlZmlu
+ZSBESVNQX0FBTF9FTiAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDAwMDAKPiAtI2RlZmlu
+ZSBESVNQX0FBTF9TSVpFICAgICAgICAgICAgICAgICAgICAgICAgICAweDAwMzAKPiAtCj4gICNk
+ZWZpbmUgRElTUF9ESVRIRVJfRU4gICAgICAgICAgICAgICAgICAgICAgICAgMHgwMDAwCj4gICNk
+ZWZpbmUgRElUSEVSX0VOICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklUKDApCj4gICNk
+ZWZpbmUgRElTUF9ESVRIRVJfQ0ZHICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDAw
+MjAKPiBAQCAtNDgsOCArNDUsNiBAQAo+Cj4gICNkZWZpbmUgVUZPX0JZUEFTUyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgQklUKDIpCj4KPiAtI2RlZmluZSBBQUxfRU4gICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICBCSVQoMCkKPiAtCj4gICNkZWZpbmUgRElTUF9ESVRIRVJJTkcg
+ICAgICAgICAgICAgICAgICAgICAgICAgQklUKDIpCj4gICNkZWZpbmUgRElUSEVSX0xTQl9FUlJf
+U0hJRlRfUih4KSAgICAgICAgICAgICAgKCgoeCkgJiAweDcpIDw8IDI4KQo+ICAjZGVmaW5lIERJ
+VEhFUl9PVkZMV19CSVRfUih4KSAgICAgICAgICAgICAgICAgICgoKHgpICYgMHg3KSA8PCAyNCkK
+PiBAQCAtMTkwLDM2ICsxODUsNiBAQCBzdGF0aWMgdm9pZCBtdGtfdWZvZV9zdGFydChzdHJ1Y3Qg
+ZGV2aWNlICpkZXYpCj4gICAgICAgICB3cml0ZWwoVUZPX0JZUEFTUywgcHJpdi0+cmVncyArIERJ
+U1BfUkVHX1VGT19TVEFSVCk7Cj4gIH0KPgo+IC1zdGF0aWMgdm9pZCBtdGtfYWFsX2NvbmZpZyhz
+dHJ1Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVkIGludCB3LAo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgICAgIHVuc2lnbmVkIGludCBoLCB1bnNpZ25lZCBpbnQgdnJlZnJlc2gsCj4gLSAgICAgICAg
+ICAgICAgICAgICAgICAgICAgdW5zaWduZWQgaW50IGJwYywgc3RydWN0IGNtZHFfcGt0ICpjbWRx
+X3BrdCkKPiAtewo+IC0gICAgICAgc3RydWN0IG10a19kZHBfY29tcF9kZXYgKnByaXYgPSBkZXZf
+Z2V0X2RydmRhdGEoZGV2KTsKPiAtCj4gLSAgICAgICBtdGtfZGRwX3dyaXRlKGNtZHFfcGt0LCB3
+IDw8IDE2IHwgaCwgJnByaXYtPmNtZHFfcmVnLCBwcml2LT5yZWdzLCBESVNQX0FBTF9TSVpFKTsK
+PiAtfQo+IC0KPiAtc3RhdGljIHZvaWQgbXRrX2FhbF9nYW1tYV9zZXQoc3RydWN0IGRldmljZSAq
+ZGV2LCBzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKnN0YXRlKQo+IC17Cj4gLSAgICAgICBzdHJ1Y3Qg
+bXRrX2RkcF9jb21wX2RldiAqcHJpdiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+IC0KPiAtICAg
+ICAgIG10a19nYW1tYV9zZXRfY29tbW9uKHByaXYtPnJlZ3MsIHN0YXRlKTsKPiAtfQo+IC0KPiAt
+c3RhdGljIHZvaWQgbXRrX2FhbF9zdGFydChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gLXsKPiAtICAg
+ICAgIHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2ICpwcml2ID0gZGV2X2dldF9kcnZkYXRhKGRldik7
+Cj4gLQo+IC0gICAgICAgd3JpdGVsKEFBTF9FTiwgcHJpdi0+cmVncyArIERJU1BfQUFMX0VOKTsK
+PiAtfQo+IC0KPiAtc3RhdGljIHZvaWQgbXRrX2FhbF9zdG9wKHN0cnVjdCBkZXZpY2UgKmRldikK
+PiAtewo+IC0gICAgICAgc3RydWN0IG10a19kZHBfY29tcF9kZXYgKnByaXYgPSBkZXZfZ2V0X2Ry
+dmRhdGEoZGV2KTsKPiAtCj4gLSAgICAgICB3cml0ZWxfcmVsYXhlZCgweDAsIHByaXYtPnJlZ3Mg
+KyBESVNQX0FBTF9FTik7Cj4gLX0KPiAtCj4gIHN0YXRpYyB2b2lkIG10a19kaXRoZXJfY29uZmln
+KHN0cnVjdCBkZXZpY2UgKmRldiwgdW5zaWduZWQgaW50IHcsCj4gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgdW5zaWduZWQgaW50IGgsIHVuc2lnbmVkIGludCB2cmVmcmVzaCwKPiAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICB1bnNpZ25lZCBpbnQgYnBjLCBzdHJ1Y3QgY21kcV9w
+a3QgKmNtZHFfcGt0KQo+IEBAIC0yNDcsOCArMjEyLDggQEAgc3RhdGljIHZvaWQgbXRrX2RpdGhl
+cl9zdG9wKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgfQo+Cj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
+bXRrX2RkcF9jb21wX2Z1bmNzIGRkcF9hYWwgPSB7Cj4gLSAgICAgICAuY2xrX2VuYWJsZSA9IG10
+a19kZHBfY2xrX2VuYWJsZSwKPiAtICAgICAgIC5jbGtfZGlzYWJsZSA9IG10a19kZHBfY2xrX2Rp
+c2FibGUsCj4gKyAgICAgICAuY2xrX2VuYWJsZSA9IG10a19hYWxfY2xrX2VuYWJsZSwKPiArICAg
+ICAgIC5jbGtfZGlzYWJsZSA9IG10a19hYWxfY2xrX2Rpc2FibGUsCj4gICAgICAgICAuZ2FtbWFf
+c2V0ID0gbXRrX2FhbF9nYW1tYV9zZXQsCj4gICAgICAgICAuY29uZmlnID0gbXRrX2FhbF9jb25m
+aWcsCj4gICAgICAgICAuc3RhcnQgPSBtdGtfYWFsX3N0YXJ0LAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZHJtX2Rydi5jCj4gaW5kZXggYjQ2YmRiOC4uNjdhNTg1ZSAxMDA2NDQKPiAtLS0g
+YS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTUzMiwxMSArNTMyLDEyIEBAIHN0
+YXRpYyBpbnQgbXRrX2RybV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAg
+ICAgICAgICAgICAgICBwcml2YXRlLT5jb21wX25vZGVbY29tcF9pZF0gPSBvZl9ub2RlX2dldChu
+b2RlKTsKPgo+ICAgICAgICAgICAgICAgICAvKgo+IC0gICAgICAgICAgICAgICAgKiBDdXJyZW50
+bHkgb25seSB0aGUgQ0NPUlIsIENPTE9SLCBHQU1NQSwgT1ZMLCBSRE1BLCBEU0ksIGFuZCBEUEkK
+PiArICAgICAgICAgICAgICAgICogQ3VycmVudGx5IG9ubHkgdGhlIEFBTCwgQ0NPUlIsIENPTE9S
+LCBHQU1NQSwgT1ZMLCBSRE1BLCBEU0ksIGFuZCBEUEkKPiAgICAgICAgICAgICAgICAgICogYmxv
+Y2tzIGhhdmUgc2VwYXJhdGUgY29tcG9uZW50IHBsYXRmb3JtIGRyaXZlcnMgYW5kIGluaXRpYWxp
+emUgdGhlaXIgb3duCj4gICAgICAgICAgICAgICAgICAqIEREUCBjb21wb25lbnQgc3RydWN0dXJl
+LiBUaGUgb3RoZXJzIGFyZSBpbml0aWFsaXplZCBoZXJlLgo+ICAgICAgICAgICAgICAgICAgKi8K
+PiAtICAgICAgICAgICAgICAgaWYgKGNvbXBfdHlwZSA9PSBNVEtfRElTUF9DQ09SUiB8fAo+ICsg
+ICAgICAgICAgICAgICBpZiAoY29tcF90eXBlID09IE1US19ESVNQX0FBTCB8fAo+ICsgICAgICAg
+ICAgICAgICAgICAgY29tcF90eXBlID09IE1US19ESVNQX0NDT1JSIHx8Cj4gICAgICAgICAgICAg
+ICAgICAgICBjb21wX3R5cGUgPT0gTVRLX0RJU1BfQ09MT1IgfHwKPiAgICAgICAgICAgICAgICAg
+ICAgIGNvbXBfdHlwZSA9PSBNVEtfRElTUF9HQU1NQSB8fAo+ICAgICAgICAgICAgICAgICAgICAg
+Y29tcF90eXBlID09IE1US19ESVNQX09WTCB8fAo+IEBAIC02MzYsNiArNjM3LDcgQEAgc3RhdGlj
+IFNJTVBMRV9ERVZfUE1fT1BTKG10a19kcm1fcG1fb3BzLCBtdGtfZHJtX3N5c19zdXNwZW5kLAo+
+ICB9Owo+Cj4gIHN0YXRpYyBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyICogY29uc3QgbXRrX2RybV9k
+cml2ZXJzW10gPSB7Cj4gKyAgICAgICAmbXRrX2Rpc3BfYWFsX2RyaXZlciwKPiAgICAgICAgICZt
+dGtfZGlzcF9jY29ycl9kcml2ZXIsCj4gICAgICAgICAmbXRrX2Rpc3BfY29sb3JfZHJpdmVyLAo+
+ICAgICAgICAgJm10a19kaXNwX2dhbW1hX2RyaXZlciwKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmggYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
+bXRrX2RybV9kcnYuaAo+IGluZGV4IDYzN2Y1NjYuLjNlN2QxZTYgMTAwNjQ0Cj4gLS0tIGEvZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmgKPiArKysgYi9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuaAo+IEBAIC00Niw2ICs0Niw3IEBAIHN0cnVjdCBtdGtf
+ZHJtX3ByaXZhdGUgewo+ICAgICAgICAgc3RydWN0IGRybV9hdG9taWNfc3RhdGUgKnN1c3BlbmRf
+c3RhdGU7Cj4gIH07Cj4KPiArZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2Rpc3Bf
+YWFsX2RyaXZlcjsKPiAgZXh0ZXJuIHN0cnVjdCBwbGF0Zm9ybV9kcml2ZXIgbXRrX2Rpc3BfY2Nv
+cnJfZHJpdmVyOwo+ICBleHRlcm4gc3RydWN0IHBsYXRmb3JtX2RyaXZlciBtdGtfZGlzcF9jb2xv
+cl9kcml2ZXI7Cj4gIGV4dGVybiBzdHJ1Y3QgcGxhdGZvcm1fZHJpdmVyIG10a19kaXNwX2dhbW1h
+X2RyaXZlcjsKPiAtLQo+IDEuOC4xLjEuZGlydHkKPgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
