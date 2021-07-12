@@ -2,81 +2,98 @@ Return-Path: <SRS0=CLKU=ME=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AAE6DC07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 20:13:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7551C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 20:24:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6CC1A61263
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 20:13:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6CC1A61263
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6D5EB611AD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 20:24:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D5EB611AD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qdjZ5RAedNh/EQJ2rt9rKhTjExJpHNSUQZaYoaoc1tM=; b=Uycaufx4Ndiaqv
-	z9EaHVG9yaYMJ60IYtbJGZNzS9v/r15N47d5dTlvC1QgPTm7jGPUZsCzXV0shWq+C42ioJG3UfXnO
-	3FlyJBQJBzqmHTID0CKriyycYMeDWJVqKlldssyUnbr3e23WHbixGmXApjjCLBxt/woegEspjWFbd
-	YOAKZaJXuY7m5y0EMEhUgfqVJy4XeIf14RJKeLcPRvKoq8dN8yu4Ip/69AiFneG6oqIsLj6zIQjIo
-	3B+istxDqZC0cjETujYDtrQJuAmhxP6XAdA9UQuUe6SM4dasb3rrhEPyXsu/psxqqkTdBxp8QaQEi
-	/vGv2fDkr6gvfq5UiAIg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rxJH272Tg/vJasGGP2NSLXXATG+PfUQ5LbWRBH3tXhc=; b=Dv63W6s5tIRX1OWiluCs1WoL+K
+	lKRYHLx0S7WSGbyzYyDX0U+lyAUn3Gs7d11+ZmRGsgNC1ueW3bbh822Wz8NvS/XtjYuOAmOPtxWnr
+	Zum6IUp9JUbRb1GCYHqtfPJopsA8QbnXyUe2qlaaJ21vwmBypRDrd4ir4tzTSFomLQPL+uE7hZ44x
+	TdqDmS4xKi0zUCYuN24pRstxx6CQTHGZQH8cqzis5XgD+m4HYRi4oGVUOTvMcNXqtFz9MV6EJqyUR
+	uS5+EC3NBhczgcjZkP/DjzGyfzg1J23xKZBBUxt98BzHzCGeD3ZUioDHvoRJGMxxXorP9f+BILhST
+	40x18qgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m32IS-008Lxj-Gp; Mon, 12 Jul 2021 20:12:56 +0000
-Received: from mail-il1-f169.google.com ([209.85.166.169])
+	id 1m32TJ-008PDk-CS; Mon, 12 Jul 2021 20:24:09 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m32IP-008Lvz-QZ; Mon, 12 Jul 2021 20:12:55 +0000
-Received: by mail-il1-f169.google.com with SMTP id p3so844170ilg.8;
- Mon, 12 Jul 2021 13:12:53 -0700 (PDT)
+ id 1m32TG-008PCw-Us; Mon, 12 Jul 2021 20:24:08 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id a12so675247lfb.7;
+ Mon, 12 Jul 2021 13:24:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yYeY2rP+pjFQVV1qgjvzt4BYgK0J1gLR1rodhNcaD0s=;
+ b=tvmjz300FQjJ3UYJdTBVRH5Br20ucCK/I3ge2oOSCKYfC1tyolE7JTQZrQZ+cv/XJf
+ /45Camoi0EXo+64MEprAndyxnh5SaUVWXJHGIpr18TW75ncn2Z+94+dpkSX3+jmFNoiX
+ hblAWhdrDmXxMr6s21IWV/6rda0rK24gwHsfsfwy7fGjJ8vYmAo9oq0E2shlBvjtS6Be
+ dzVtwDqHDSrSfHcHR5lxxgR1O5/N4Ay7OP0QibtVFE3ka2/IVtifv2Q4xQLdCaQOzaly
+ SoD6DwzjJWa0Wd9x2bOxlF49xV9KDdTJPLgbGKupSDYp+q4X4uqrtybWQDNw5tq2AtIl
+ 1wEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=tXKPZzwXcZV9/HhIQdnNlNgejKZgtrP4Woag5BXnZA8=;
- b=fasYGd55DX3tNXdlFT7W9qsw/3ABF79MxLQztL78NxTvIebkjITkmm6+0m5oJ5pmpm
- PLW8IBlyKfusHqoYyX4dm3YkQI7opDbKd/uur2XPqsgtTLxM+28Q6nOC7W92CVsyZyRD
- laHiKdYfJtTwmn9ieDOJUBdlBnqbqnhJmAf/XkI0GuC2Xc8mD2yN2+4wo+ptoptc2u+1
- iSWTokGFAuWRAx47AKy11Zup/BosJDA+z4fkkFfFDBG+wag0REBhVqH0Tfd+mZM5U12J
- 8/q1phe7+XXW9ACsDVUdZVwYLBRdo1wx4P8SPFFkweSJs6MnM7xal0zwuyXha61QkykS
- XSqA==
-X-Gm-Message-State: AOAM533BaIy03IK7HJZrV4igu/8ujNvDsSt6gy6EMbgz2PuisJIkTxnm
- tTCg8t+kDGUAooMvYjeGhQ==
-X-Google-Smtp-Source: ABdhPJwEiRi1fPrJ1vXs/JakffS9HIKIXv05lezYQORSM3cPk//aDIffadrxDcsjEBtl/OQj9SenMA==
-X-Received: by 2002:a92:dd02:: with SMTP id n2mr376597ilm.259.1626120772614;
- Mon, 12 Jul 2021 13:12:52 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id u16sm8177345iob.41.2021.07.12.13.12.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jul 2021 13:12:51 -0700 (PDT)
-Received: (nullmailer pid 2410180 invoked by uid 1000);
- Mon, 12 Jul 2021 20:12:49 -0000
-Date: Mon, 12 Jul 2021 14:12:49 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yYeY2rP+pjFQVV1qgjvzt4BYgK0J1gLR1rodhNcaD0s=;
+ b=bpCtyXoY4peBVdQ9/cLPmQvUw+a97WxAfzLb5vkd6Q6DuTvoAsJ0thhn0/Ed5Exb/d
+ vDY/azWwF/oqlE1KVEEvmwSxko2F4Ht3MnnY8H9FK5aj4QA0fBdfrMR/v8LJEVCHwh4u
+ ro+ub+JuOLgBEVGVzCOLhs9N3POUM1xV7cuKJ8/pOWSCFoJ0PXC03GyKNAzplTmOY3Vc
+ 1VVm6l3H3bbrxMWKGODTvZDFOZDcpKzRswkmFJcLUy2pQXiCgkv7C5hHVuPKlYrg+EAn
+ GgtIC1kyqQl2FJEkC1YUwYH824k0CjC0K4L4oty/Phy3ZBQkP5HKngGu4B1GBS0aAiqJ
+ xpPA==
+X-Gm-Message-State: AOAM532k5SOc6iDYC9/rXzkChKx6nYRvkLnajKXaRcKH76KL5pzCsmbd
+ prDdAjouI6/lHnv2ah60Ewg90Cb20rI=
+X-Google-Smtp-Source: ABdhPJzwgG7yKBZI6BuET4vQUu1NaGRvQQhFGAiTNcIfxyF+s0zZuoAL0naEC3wNmacXr0WekYC/DQ==
+X-Received: by 2002:ac2:50d6:: with SMTP id h22mr447041lfm.306.1626121444804; 
+ Mon, 12 Jul 2021 13:24:04 -0700 (PDT)
+Received: from [192.168.0.131] ([194.183.54.57])
+ by smtp.gmail.com with ESMTPSA id u3sm1288582lft.236.2021.07.12.13.24.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Jul 2021 13:24:04 -0700 (PDT)
+Subject: Re: [PATCH v14 0/2] leds: mt6360: Add LED driver for MT6360
+To: Gene Chen <gene.chen.richtek@gmail.com>, Pavel Machek <pavel@ucw.cz>,
  Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/3] dt-bindings: phy: mediatek: tphy: add support
- hardware version 3
-Message-ID: <20210712201249.GA2410138@robh.at.kernel.org>
-References: <1624070839-1233-1-git-send-email-chunfeng.yun@mediatek.com>
+Cc: Dan Murphy <dmurphy@ti.com>,
+ Linux LED Subsystem <linux-leds@vger.kernel.org>,
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, Wilma.Wu@mediatek.com,
+ shufan_lee@richtek.com, ChiYuan Huang <cy_huang@richtek.com>,
+ benjamin.chao@mediatek.com
+References: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
+ <CAE+NS37kf1JAJ2Zt7UGsfsubp6O=xBNtnJgVEnz8-mm2rxFa+g@mail.gmail.com>
+From: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Message-ID: <019cde8b-e4db-6ad4-fd71-5ed03f174da3@gmail.com>
+Date: Mon, 12 Jul 2021 22:24:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1624070839-1233-1-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <CAE+NS37kf1JAJ2Zt7UGsfsubp6O=xBNtnJgVEnz8-mm2rxFa+g@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_131253_909222_5E5A8833 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20210712_132407_038880_EDA99BC8 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +105,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 19 Jun 2021 10:47:17 +0800, Chunfeng Yun wrote:
-> The PHYA architecture is updated, and doesn't support slew rate
-> calibration anymore on 7nm or advanced process, add a new version
-> number to support it.
-> Due to the FreqMeter bank is not used but reserved, it's backward
-> with v2 until now.
-> For mt8195, no function changes when use generic v2 or v3 compatible,
-> but prefer to use v3's compatible, it will not waste the time to
-> calibrate the slew rate, and also correspond with hardware version.
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v2: add more commit log suggested by Rob
-> ---
->  .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
-> 
-
-Acked-by: Rob Herring <robh@kernel.org>
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgR2VuZSwKCllvdSBzdGlsbCBjYW4gY2FycnkgbXkgYWNrOgoKQWNrZWQtYnk6IEphY2VrIEFu
+YXN6ZXdza2kgPGphY2VrLmFuYXN6ZXdza2lAZ21haWwuY29tPgoKT24gNy8xMi8yMSAxMDozMyBB
+TSwgR2VuZSBDaGVuIHdyb3RlOgo+IEdlbmUgQ2hlbiA8Z2VuZS5jaGVuLnJpY2h0ZWtAZ21haWwu
+Y29tPiDmlrwgMjAyMeW5tDXmnIgyNOaXpSDpgLHkuIAg5LiL5Y2IMTE6MjTlr6vpgZPvvJoKPj4K
+Pj4gVGhpcyBwYXRjaCBzZXJpZXMgYWRkIE1UNjM2MCBMRUQgc3VwcG9ydCBjb250YWlucyBkcml2
+ZXIgYW5kIGJpbmRpbmcgZG9jdW1lbnQKPj4KPj4gR2VuZSBDaGVuICgyKQo+PiAgIGR0LWJpbmRp
+bmdzOiBsZWRzOiBBZGQgYmluZGluZ3MgZm9yIE1UNjM2MCBMRUQKPj4gICBsZWRzOiBtdDYzNjA6
+IEFkZCBMRUQgZHJpdmVyIGZvciBNVDYzNjAKPj4KPj4gICBEb2N1bWVudGF0aW9uL2RldmljZXRy
+ZWUvYmluZGluZ3MvbGVkcy9sZWRzLW10NjM2MC55YW1sIHwgIDE1OSArKwo+PiAgIGRyaXZlcnMv
+bGVkcy9mbGFzaC9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEzCj4+
+ICAgZHJpdmVycy9sZWRzL2ZsYXNoL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAgIDEKPj4gICBkcml2ZXJzL2xlZHMvZmxhc2gvbGVkcy1tdDYzNjAuYyAgICAgICAgICAg
+ICAgICAgICAgICAgIHwgIDkxMCArKysrKysrKysrKysrKysrCj4+ICAgNCBmaWxlcyBjaGFuZ2Vk
+LCAxMDgzIGluc2VydGlvbnMoKykKPj4KPj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHYxICYgdjIKPj4g
+ICAtIGFkZCBsZWQgZHJpdmVyIHdpdGggbWZkCj4+Cj4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2MiAm
+IHYzCj4+ICAgLSBpbmRlcGVuZGVudCBhZGQgbGVkIGRyaXZlcgo+PiAgIC0gYWRkIGR0LWJpbmRp
+bmcgZG9jdW1lbnQKPj4gICAtIHJlZmFjdG9yIG1hY3JvcyBkZWZpbml0aW9uIGZvciBlYXN5IHRv
+IGRlYnVnCj4+ICAgLSBwYXJzZSBkZXZpY2UgdHJlZSBieSBmd25vZGUKPj4gICAtIHVzZSBkZXZt
+KmV4dCB0byByZWdpc3RlciBsZWQgY2xhc3MgZGV2aWNlCj4+Cj4+IGNoYW5nZWxvZ3MgYmV0d2Vl
+biB2MyAmIHY0Cj4+ICAgLSBmaXggYmluZGluZyBkb2N1bWVudCBkZXNjcmlwdGlvbgo+PiAgIC0g
+dXNlIEdFTk1BU0sgYW5kIGFkZCB1bml0IHBvc3RmaXggdG8gZGVmaW5pdGlvbgo+PiAgIC0gaXNp
+bmsgcmVnaXN0ZXIgbGVkIGNsYXNzIGRldmljZQo+Pgo+PiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjQg
+JiB2NQo+PiAgIC0gY2hhbmdlIHJnYiBpc2luayB0byBtdWx0aWNvbG9yIGNvbnRyb2wKPj4gICAt
+IGFkZCBiaW5kaW5nIHJlZmVyZW5jZSB0byBtZmQgeWFtbAo+Pgo+PiBjaGFuZ2Vsb2dzIGJldHdl
+ZW4gdjUgJiB2Ngo+PiAgIC0gVXNlIERUIHRvIGRlY2lkZSBSR0IgTEVEIGlzIG11bHRpY29sb3Ig
+ZGV2aWNlIG9yIGluZGljYXRvciBkZXZpY2Ugb25seQo+Pgo+PiBjaGFuZ2Vsb2dzIGJldHdlZW4g
+djYgJiB2Nwo+PiAgIC0gQWRkIGJpbmRpbmcgbXVsdGljb2xvciBkZXZpY2Ugc2FtcGxlIGNvZGUK
+Pj4gICAtIEFkZCBmbGFzaCBvcHMgbXV0ZXggbG9jawo+PiAgIC0gUmVtb3ZlIFY0TDIgaW5pdCB3
+aXRoIGluZGljYXRvciBkZXZpY2UKPj4KPj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHY3ICYgdjgKPj4g
+ICAtIEFkZCBtdXRleCBmb3IgbGVkIGZhdWx0IGdldCBvcHMKPj4gICAtIEZpeCBmbGFzaCBhbmQg
+bXVsdGljb2xvciBuby1vcHMgcmV0dXJuIDAKPj4gICAtIEFkZCBMRURfRlVOQ1RJT05fTU9PTkxJ
+R0hUCj4+Cj4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OCAmIHY5Cj4+ICAgLSByZXVzZSBhcGkgaW4g
+Zmxhc2ggYW5kIG11bHRpY29sb3IgaGVhZGVyCj4+Cj4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OSAm
+IHYxMAo+PiAgIC0gYWRkIGNvbW1lbnQgZm9yIHJldXNlIHJlZ2lzdHJhdGlvbiBmdW5jdGlvbnMg
+aW4gZmxhc2ggYW5kIG11bHRpY29sb3IKPj4KPj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHYxMCAmIHYx
+MQo+PiAgIC0gbWF0Y2ggZHQtYmluZGluZyByZWcgcHJvcGVydHkgY29tbWVudCB0byB0aGUgZnVu
+Y3Rpb25hbGl0eSBuYW1lCj4+ICAgLSByZW1vdmUgZXhpc3QgcGF0Y2ggaW4gbGludXgtbmV4dAo+
+PiAgIC0gZGljaWRlIG11bHRpY29sb3IgY2hhbm5lbCBieSBjb2xvciBkZWZpbml0aWlvbgo+Pgo+
+PiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjExICYgdjEyCj4+ICAgLSBGaXggcHJpbnQgc2l6ZV90IGJ5
+ICV6dQo+PiAgIC0gRml4IGR0LWJpbmRpbmcgbmFtZSByZWd1bGFyIGV4cGVyc3Npb24KPj4KPj4g
+Y2hhbmdlbG9ncyBiZXR3ZWVuIHYxMiAmIHYxMwo+PiAgIC0gRml4IGtidWlsZCB0ZXN0IHJlYm90
+IGJ1aWxkIGVycm9yCj4+Cj4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2MTMgJiB2MTQKPj4gICAtIE1v
+dmUgZHJpdmVyIHRvIGZsYXNoIGZvbGRlcgo+PiAgIC0gUmVtb3ZlIExFRCBGVU5DVElPTiBNT09O
+TElHSFQKPj4gICAtIEtlZXAgODAgY2hhciBwZXIgbGluZQo+Pgo+Pgo+IAo+IERlYXIgUmV2aWV3
+ZXJzLAo+IAo+IFBsZWFzZSBsZXQgbWUga25vdyBpZiBhbnkgdXBkYXRlLgo+IAoKLS0gCkJlc3Qg
+cmVnYXJkcywKSmFjZWsgQW5hc3pld3NraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
+dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
