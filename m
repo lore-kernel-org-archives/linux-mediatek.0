@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DCDFCC07E9A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F2D5BC07E9A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:49:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B72D761151
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:48:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B72D761151
+	by mail.kernel.org (Postfix) with ESMTPS id C632E6101E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 10:49:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C632E6101E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,49 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Foeja2PwZtBqWm8F1kH5GfnNsPcMhpwFvaR9Ob/odCQ=; b=CqB12JN2qqbZqm
-	MrvwqUNyY91JIL6px/gk4ONzoOOZBNfjTsUEGes0NhwHNNxJNYKI7rkEZQm1rtXCLqARkfAHt5Sm0
-	RD5jeMogbQJ6QogKnhRT0T2qeobaWahxrVWSrV9kDKEFt9bIvGQgnz1SVRtL8lap5C2eEn/xm2F50
-	bqLvTMDEaL8rNgdDLVp8D357ZR51ULoYlmYy0FU/h1CwrK+Ph5caeh6W+m93eR+Mee6A9cxdpQn92
-	usl4G9zIEWzBkjQ1HkZoEwI8mXSwkdr/1ZvW4QGA03Cwb3UGERdPoc4aMPMvwsuDBsAhZ26lOMI8V
-	0ujR4NQy1qHxbwRPZpaA==;
+	List-Owner; bh=CbUzUx3NASFE5eiA7w5hqDPP4Yw2OtRAgTPbfjGvfS0=; b=hRIJS+8TxrhsgG
+	6NIE5qVL7ZLgsyKamxKJaUBP9G49dwsIyZDx1XK1EuudOO+6JA5lYIjXJrXFV6l+mLusY8Pgn7Wwf
+	hY+WdP6maeYCRk4bVkmXqOi8uriLeTRB0JtWeZmOSXF08fOUGd6QZg9l19et3MS31NRkjvjiDJvCv
+	fa8d96bZWPmx3Zo04zqhUO6kQmBnc3KzKrZywDbLNjK5vRIcaSG9vEAJz3uh1XppI3moajXzhfLi/
+	yPNnhumEaPOCjkzWV8wfNkCY8EQ38iQx9SxMhTJdn9tO47qymLRuAeYYcgX1HxHy1FDjUcOAHQuP3
+	AkJyOpo/OspM8Q83/04g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2tU2-0071jj-Lh; Mon, 12 Jul 2021 10:48:18 +0000
+	id 1m2tUZ-00727Z-UO; Mon, 12 Jul 2021 10:48:51 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2tTD-0071G1-IW
- for linux-mediatek@lists.infradead.org; Mon, 12 Jul 2021 10:47:29 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A6E9C61151;
- Mon, 12 Jul 2021 10:47:26 +0000 (UTC)
+ id 1m2tTf-0071Ud-T2; Mon, 12 Jul 2021 10:47:57 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0F6CE61106;
+ Mon, 12 Jul 2021 10:47:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626086847;
- bh=7/UmWKH1Ozyu7TpzG2ClSbp/MKl50ujt2+/1olErqcY=;
+ s=k20201202; t=1626086875;
+ bh=IeWvLG9dBW5i+3dXkgj42gvpmnDrw+Wdi1aLf/mY6BU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Ms19c+MabGKab61s1CkGBCCzfDqITq5vzb3pRKlzwj5Agt00ZFD0wKskd59QAEg3R
- xY7h5E2hYxkrxZTY3Yg5Pss0vAzNyQKLy3Y67EezV//4UYpdbvZQ/EDKQA34w4MrbI
- H8N5oI2PH8n1MjbpoHN+cVrSZ7sUrNrMzqJb+aWuieMs2pwS3zuRmqcY1j9jO1B8de
- B4jcLl0ZzA/K2WwSXQq3HYmvpes4mR5jvBJoNQ9MV3dmvlyK6TF7cs/5JBuGiGw/EP
- jUK3rKKG7jUOyf2ROmpZXUPBdOZumsR6coLV+YSKQBSXsDidzHdZI8bVbbCu3kVG5g
- tuwc9NhBAXbQQ==
+ b=Cn+/GGn9yVwf1DMPpHi79I1DSDJZvhgYzbajD1uXbEmo9fwD1GsOIVxKCLwi26Njj
+ 7V3zwzlEs35hlP3bt30/O2FQtLVBKo1U3wEMKlSSC5WfwAdCjt8KlgSU2cWhz2m5GS
+ vFW9jY2dqxCNqlY6DZQWIaNTLVWglkv7w32p3mg3TTyjrcSgbc0cbZ/Hquu+Y0m9Ic
+ BM8qvmF71V/sbX3LW2O5kqF972xX62Eayg04IL5FwF/nGguFG20w5EpEANgYTtXBbV
+ lRQOBqo2sX7lkXRe4RWtD5l040PN177jCPdWoumvb6Q3kCQ1/+Rgks32Ln/4lp2WdZ
+ FUInag9KOpzLA==
 From: Mark Brown <broonie@kernel.org>
-To: Axel Lin <axel.lin@ingics.com>
-Cc: Mark Brown <broonie@kernel.org>, Henry Chen <henryc.chen@mediatek.com>,
- linux-mediatek@lists.infradead.org,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Flora Fu <flora.fu@mediatek.com>, linux-kernel@vger.kernel.org,
- Wen Su <wen.su@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>
-Subject: Re: [PATCH 1/3] regulator: mt6358: Remove shift fields from struct
- mt6358_regulator_info
-Date: Mon, 12 Jul 2021 11:45:52 +0100
-Message-Id: <162608654078.4419.67036586786666358.b4-ty@kernel.org>
+To: matthias.bgg@gmail.com, tiwai@suse.com,
+ Zhang Qilong <zhangqilong3@huawei.com>, perex@perex.cz
+Cc: Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ kuninori.morimoto.gx@renesas.com, linux-arm-kernel@lists.infradead.org,
+ alsa-devel@alsa-project.org, lgirdwood@gmail.com
+Subject: Re: [PATCH -next 0/2] Fix unbalanced pm_runtime_enable in error handle
+Date: Mon, 12 Jul 2021 11:46:03 +0100
+Message-Id: <162608623153.3192.12439505219680705153.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210629130503.2183574-1-axel.lin@ingics.com>
-References: <20210629130503.2183574-1-axel.lin@ingics.com>
+In-Reply-To: <20210618141104.105047-1-zhangqilong3@huawei.com>
+References: <20210618141104.105047-1-zhangqilong3@huawei.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_034727_694321_4E02319C 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20210712_034755_989458_252E8ECC 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,26 +79,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 29 Jun 2021 21:05:01 +0800, Axel Lin wrote:
-> The shift setting can be calculated via the corresponding mask field,
-> so remove these shift fields.
+On Fri, 18 Jun 2021 22:11:02 +0800, Zhang Qilong wrote:
+> This two patches fixed the unbalanced PM disable depth. It could
+> avoid pm_runtime implementation complains when removing and probing
+> again the driver.
 > 
-> The usage of da_vsel_mask is different from other mask defines because
-> current code does shift regval before mask with the da_vsel_mask.
-> Do proper shit to da_vsel_mask setting so we can calculate the shift.
+> Zhang Qilong (2):
+>   ASoC: mediatek: mt8192:Fix Unbalanced pm_runtime_enable in
+>     mt8192_afe_pcm_dev_probe
+>   ASoC: mediatek: mt8183: Fix Unbalanced pm_runtime_enable in
+>     mt8183_afe_pcm_dev_probe
+> 
+> [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
 Thanks!
 
-[1/3] regulator: mt6358: Remove shift fields from struct mt6358_regulator_info
-      commit: b99b7b79a7c57d5f1550b9a507521c791c5f92ed
-[2/3] regulator: mt6359: Remove shift fields from struct mt6359_regulator_info
-      commit: d6208ba87066c981589ca41f07d29a5803807ead
-[3/3] regulator: mt6397: Remove modeset_shift from struct mt6397_regulator_info
-      commit: 12401a1cef787167aff52ef2dd28286e61054c38
+[1/2] ASoC: mediatek: mt8192:Fix Unbalanced pm_runtime_enable in mt8192_afe_pcm_dev_probe
+      commit: 2af2f861edd21c1456ef7dbec52122ce1b581568
+[2/2] ASoC: mediatek: mt8183: Fix Unbalanced pm_runtime_enable in mt8183_afe_pcm_dev_probe
+      commit: 19f479c37f76e926a6c0bec974a4d09826e32fc6
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
