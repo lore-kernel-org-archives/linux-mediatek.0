@@ -2,68 +2,61 @@ Return-Path: <SRS0=CLKU=ME=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E071C07E99
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 17:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 54BB7C07E99
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 18:12:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1EC55611CD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 17:33:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EC55611CD
+	by mail.kernel.org (Postfix) with ESMTPS id 08DB26120A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 18:12:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 08DB26120A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LnEiZ6ewDk7mLH88cEsLt51izGykYBLhVi5oUYbo/1I=; b=WMvHI0osAy/lLfZfvBweYBRTMD
-	5WIwqZHCllKOKRnQHhDwxgUU+wnpvUB14SNXhvDhodd/J7FbYUL00R+1KZSIE43SzhjYzeKWvtRuU
-	CUGvHxZA95Zizl3aUo/qe/275Drpkdm4rzvaatf1MBUoNgNWFZ37LzflQ/tneKCB8gKesq+BR3LL1
-	gve3CICbIRuqg/7+hFO3TaSATCaX1qzFBlKs/Q+cUeRPANGnn6nbzSXNb4Q5L31Vc9z2FTJzZJRm4
-	ZUL77NNtJf7GP+2YVwcxjsxNJVtfJ1KRCZm6XkEAVHhML3R/rk6TjTO2z2NoPXkZ7ROug6TwpTsGB
-	NmSliu4g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hoq8a5w3Hfe5rDXvOX/tpeEr9n5E6NlqVWECTaoO/zo=; b=nrh5IWIlHuw54p
+	mj57KAzdo4eUKRgpa9uioOYyqMqbbOjOqz9Zeochs8/f5lcAUsL4Nsla+BLkXY2Y++aNjTh5jd8HX
+	5GS8ufqOVeih6J+wAM1opLH73Pt3h9V1bJVdky2j8TsT0GCVonvWL+SyYBvRzbVdC00EbXst8m1wC
+	GvsEmuGVE+Je9w6+Pi4PaT0aEOpnmjIPf5Dqi+JL3/ZwahiavsChF5f6Euc64DBlnag3z0RZLw2vZ
+	Jrbn91qVWoe+fPIuAumaL5uqK58jCBH74wiU/LjgyviQGD2QGUjdQrR/x6uOjKZ82w9T+/DbEmemW
+	pFbdOJ2rRJGpTqJZYL5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2znb-0084Eg-AI; Mon, 12 Jul 2021 17:32:55 +0000
+	id 1m30Po-0088Oj-Jk; Mon, 12 Jul 2021 18:12:24 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2znO-0084Be-HD; Mon, 12 Jul 2021 17:32:44 +0000
-Received: from [IPv6:2a02:810a:880:f54:e464:19d5:3655:dde7] (unknown
+ id 1m30Pm-0088Nr-DW
+ for linux-mediatek@lists.infradead.org; Mon, 12 Jul 2021 18:12:23 +0000
+Received: from guri.fritz.box (unknown
  [IPv6:2a02:810a:880:f54:e464:19d5:3655:dde7])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 36EE51F41E3C;
- Mon, 12 Jul 2021 18:32:40 +0100 (BST)
-Subject: Re: Aw: Re: [PATCH] soc: mediatek: mmsys: fix HDMI output on
- mt7623/bananapi-r2
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, Frank Wunderlich
- <linux@fw-web.de>, linux-arm-kernel@lists.infradead.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>
-References: <20210710132431.265985-1-linux@fw-web.de>
- <456f0611-1fc7-75ac-ff45-9afd94190283@collabora.com>
- <trinity-02bc17fc-b458-4d17-baca-8afe30e4c92c-1626110171249@3c-app-gmx-bs28>
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 784C11F422BE;
+ Mon, 12 Jul 2021 19:12:17 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <dbe23d2a-cd29-0782-1b7d-bcb5c6683607@collabora.com>
-Date: Mon, 12 Jul 2021 19:32:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <trinity-02bc17fc-b458-4d17-baca-8afe30e4c92c-1626110171249@3c-app-gmx-bs28>
-Content-Language: en-US
+To: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: dafna.hirschfeld@collabora.com, kernel@collabora.com, dafna3@gmail.com,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, enric.balletbo@collabora.com,
+ laurent.pinchart@ideasonboard.com
+Subject: [PATCH] drm/mediatek: Test component initialization earlier in the
+ function mtk_drm_crtc_create
+Date: Mon, 12 Jul 2021 20:12:09 +0200
+Message-Id: <20210712181209.27023-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_103242_749406_4D790C89 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20210712_111222_631809_CC0AE51A 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,37 +68,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+The initialization is currently tested in a later stage in
+the function for no reason.
+In addition, the test '!comp' will never fail since comp is
+set with the '&' operator. Instead, test if a comp was not
+initialized by testing "!comp->dev".
 
-On 12.07.21 19:16, Frank Wunderlich wrote:
-> Hi,
-> 
-> it turns out that problem is the read+or of the new value
-> 
-> i reverted my patch and changed
-> 
-> reg = readl_relaxed(mmsys->regs + routes[i].addr) | routes[i].val;
-> writel_relaxed(reg, mmsys->regs + routes[i].addr);
-> 
-> to
-> 
-> writel_relaxed(routes[i].val, mmsys->regs + routes[i].addr);
-> 
-> and it works too, but maybe it breaks other platforms
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-Interesting, I can test if it fix that similar bug on mt8173 when resume from suspend.
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 474efb844249..06f40e589922 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -755,14 +755,22 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	for (i = 0; i < path_len; i++) {
+ 		enum mtk_ddp_comp_id comp_id = path[i];
+ 		struct device_node *node;
++		struct mtk_ddp_comp *comp;
+ 
+ 		node = priv->comp_node[comp_id];
++		comp = &priv->ddp_comp[comp_id];
++
+ 		if (!node) {
+ 			dev_info(dev,
+ 				 "Not creating crtc %d because component %d is disabled or missing\n",
+ 				 pipe, comp_id);
+ 			return 0;
+ 		}
++
++		if (!comp->dev) {
++			dev_err(dev, "Component %pOF not initialized\n", node);
++			return -ENODEV;
++		}
+ 	}
+ 
+ 	mtk_crtc = devm_kzalloc(dev, sizeof(*mtk_crtc), GFP_KERNEL);
+@@ -787,16 +795,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
+ 		enum mtk_ddp_comp_id comp_id = path[i];
+ 		struct mtk_ddp_comp *comp;
+-		struct device_node *node;
+ 
+-		node = priv->comp_node[comp_id];
+ 		comp = &priv->ddp_comp[comp_id];
+-		if (!comp) {
+-			dev_err(dev, "Component %pOF not initialized\n", node);
+-			ret = -ENODEV;
+-			return ret;
+-		}
+-
+ 		mtk_crtc->ddp_comp[i] = comp;
+ 
+ 		if (comp->funcs) {
+-- 
+2.17.1
 
-Thanks,
-Dafna
-
-> 
-> regards Frank
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
