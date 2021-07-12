@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 047EEC07E96
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 01:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6319BC07E96
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 01:04:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C72246100A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 01:03:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C72246100A
+	by mail.kernel.org (Postfix) with ESMTPS id 230EE6101E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Jul 2021 01:04:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 230EE6101E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0FYA6LRjuR5EBDqN18xF3aoWe6Kbc4opwACH+8DjPPQ=; b=o5CENj8dpQqfVJ
-	tNu2sgLedYmLWbVVSLdIHLlNxkWTrPWBVgPGCLe4m+FN/6Qo5m7+X/mKovEDu+euCwBhf1sI9+G0l
-	+z4Fzi6hoR4iwiWExjlIXHIL/pd3dFiwmGwrMOs+1YaZ0OegtCnwFRIWimWzFXcYj+00PzcYEDj3+
-	1eiMXTgTCivvUuC8/hP6l5zvjdtCS7AZGH39mAJc7ywH5s8qutfEuZNKsw9F8GnNR5ZvKriik5D9t
-	SMV/cAaM+H7oKDIXcwRRR5RghgPBfB9ZT/aJkNT38AZkpdMRb4FHoHlaw0tFOzsTgWXorgu0sSoyn
-	iX2L/vWjh0+ypEfMzf2A==;
+	List-Owner; bh=Jt9CGaxUmjoaw+qMYPPrlsRekRlPS2CY3ysgG030CiY=; b=o+B0sX8IZQ3mnO
+	rQBJD1ckUoEEzW0+6JqnZVnM9BskrCZamHBHKuBVA+kHSR7cdQE47syG+ESwmptGVsdjIzfoFjr+X
+	FpV5afHJjuuP5AD4OaniX0kQbyWSUgQWCfJXvQ+V1lyCtCwv5p1mLx1TDr8fNRKzARTUfqXNZp1f5
+	fVljqp3CBzxigM3XklnzCkkXVEnkAubSJNox7R1AT9WVjve2A8/eobt42wdUZPntq7eyZk1IeDGKe
+	69WGA4vfjms1+T9kTm6rMEKU7dDws3eQ6UQcnnCgnrO1ZAJlSfs4S6OrwA1rGJIajjW0XX6tisuJS
+	a4srF450a8nu/hEyKFtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m2kML-005eE6-Rg; Mon, 12 Jul 2021 01:03:45 +0000
+	id 1m2kMX-005eHx-IC; Mon, 12 Jul 2021 01:03:57 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m2kLt-005e73-WC; Mon, 12 Jul 2021 01:03:20 +0000
-X-UUID: 92173e3a25ca413bad0dea944e20b32f-20210711
+ id 1m2kLt-005e7c-W7; Mon, 12 Jul 2021 01:03:21 +0000
+X-UUID: b01cfeb4011643aeba7500007de292c6-20210711
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=N8V7w3QbeAdL+nWpPALzC5cgI2S9BtXkeTkHS0Li5XI=; 
- b=h5zOdH5w9mkLc/OGNfU8nx3rUQQRZ+r7WjNIqv4M0JJ9K+4jdlCTkcTX8zKtXJju+nfMnjRqNBCfH09tUVdZSqJcePwYHCZL/scFG75zU462lza+ACodBly1ZhMv1aBe0DTdGHA/QpZfY6w+hX2r8FxaZmqsnOpp8npvFsN7yCo=;
-X-UUID: 92173e3a25ca413bad0dea944e20b32f-20210711
+ bh=FVZ27MBRAL12Y6FTHquSP6zHfIIfpXADc1rQIC4Inls=; 
+ b=iYArNbzT7jqQIL+ktK7PxOaWziW83H5PD+VJC8abhrZyq537fvHc5sl7aODOJLELyaZd26znBrMKWSdnqh+C4w6I7LotV3bhqr2hF35pc5BE5Ugz5666XxKHUiJyBKMpIXKWoMbEmW6aTmJb0/qHSfoiLRQBjUwBvT3Rw6SvXXI=;
+X-UUID: b01cfeb4011643aeba7500007de292c6-20210711
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 346227360; Sun, 11 Jul 2021 18:03:11 -0700
+ with ESMTP id 1584128811; Sun, 11 Jul 2021 18:03:11 -0700
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 11 Jul 2021 18:03:10 -0700
+ 15.0.1497.2; Sun, 11 Jul 2021 18:03:09 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 12 Jul 2021 09:03:04 +0800
+ 15.0.1497.2; Mon, 12 Jul 2021 09:03:02 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 12 Jul 2021 09:03:03 +0800
+ Transport; Mon, 12 Jul 2021 09:03:01 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -67,17 +68,17 @@ CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
  <hsinyi@chromium.org>
-Subject: [PATCH v2, 3/3] arm64: dts: mt8183: refine aal compatible name
-Date: Mon, 12 Jul 2021 09:02:58 +0800
-Message-ID: <1626051778-13577-4-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v2, 1/3] drm/mediatek: Separate aal module
+Date: Mon, 12 Jul 2021 09:02:56 +0800
+Message-ID: <1626051778-13577-2-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1626051778-13577-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1626051778-13577-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210711_180318_103575_5A8751F8 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20210711_180318_155000_AD5B7297 
+X-CRM114-Status: GOOD (  26.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +95,334 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt8183 aal is different with mt8173
-remove mt8173 compatible name for mt8183 aal
+mt8183 aal has no gamma function
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/Makefile           |   3 +-
+ drivers/gpu/drm/mediatek/mtk_disp_aal.c     | 166 ++++++++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   9 ++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  39 +------
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   6 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ 6 files changed, 184 insertions(+), 40 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_aal.c
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index c5e822b..1ca5f9b 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1204,8 +1204,7 @@
- 		};
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index dc54a7a..29098d7 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
  
- 		aal0: aal@14010000 {
--			compatible = "mediatek,mt8183-disp-aal",
--				     "mediatek,mt8173-disp-aal";
-+			compatible = "mediatek,mt8183-disp-aal";
- 			reg = <0 0x14010000 0 0x1000>;
- 			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
+-mediatek-drm-y := mtk_disp_ccorr.o \
++mediatek-drm-y := mtk_disp_aal.o \
++		  mtk_disp_ccorr.o \
+ 		  mtk_disp_color.o \
+ 		  mtk_disp_gamma.o \
+ 		  mtk_disp_ovl.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+new file mode 100644
+index 0000000..fb212e96
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
+@@ -0,0 +1,166 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/clk.h>
++#include <linux/component.h>
++#include <linux/module.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
++#include "mtk_disp_drv.h"
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
++
++#define DISP_AAL_EN				0x0000
++#define AAL_EN						BIT(0)
++#define DISP_AAL_SIZE				0x0030
++
++
++struct mtk_disp_aal_data {
++	bool has_gamma;
++};
++
++/**
++ * struct mtk_disp_aal - DISP_AAL driver structure
++ * @ddp_comp - structure containing type enum and hardware resources
++ * @crtc - associated crtc to report irq events to
++ */
++struct mtk_disp_aal {
++	struct clk *clk;
++	void __iomem *regs;
++	struct cmdq_client_reg cmdq_reg;
++	const struct mtk_disp_aal_data *data;
++};
++
++int mtk_aal_clk_enable(struct device *dev)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	return clk_prepare_enable(aal->clk);
++}
++
++void mtk_aal_clk_disable(struct device *dev)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	clk_disable_unprepare(aal->clk);
++}
++
++void mtk_aal_config(struct device *dev, unsigned int w,
++			   unsigned int h, unsigned int vrefresh,
++			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	mtk_ddp_write(cmdq_pkt, w << 16 | h, &aal->cmdq_reg, aal->regs, DISP_AAL_SIZE);
++}
++
++void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	if (aal->data && aal->data->has_gamma)
++		mtk_gamma_set_common(aal->regs, state);
++}
++
++void mtk_aal_start(struct device *dev)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	writel(AAL_EN, aal->regs + DISP_AAL_EN);
++}
++
++void mtk_aal_stop(struct device *dev)
++{
++	struct mtk_disp_aal *aal = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, aal->regs + DISP_AAL_EN);
++}
++
++static int mtk_disp_aal_bind(struct device *dev, struct device *master,
++			       void *data)
++{
++	return 0;
++}
++
++static void mtk_disp_aal_unbind(struct device *dev, struct device *master,
++				  void *data)
++{
++}
++
++static const struct component_ops mtk_disp_aal_component_ops = {
++	.bind	= mtk_disp_aal_bind,
++	.unbind = mtk_disp_aal_unbind,
++};
++
++static int mtk_disp_aal_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_disp_aal *priv;
++	struct resource *res;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(priv->clk)) {
++		dev_err(dev, "failed to get aal clk\n");
++		return PTR_ERR(priv->clk);
++	}
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs = devm_ioremap_resource(dev, res);
++	if (IS_ERR(priv->regs)) {
++		dev_err(dev, "failed to ioremap aal\n");
++		return PTR_ERR(priv->regs);
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	priv->data = of_device_get_match_data(dev);
++	platform_set_drvdata(pdev, priv);
++
++	ret = component_add(dev, &mtk_disp_aal_component_ops);
++	if (ret)
++		dev_err(dev, "Failed to add component: %d\n", ret);
++
++	return ret;
++}
++
++static int mtk_disp_aal_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_disp_aal_component_ops);
++
++	return 0;
++}
++
++static const struct mtk_disp_aal_data mt8173_aal_driver_data = {
++	.has_gamma = true,
++};
++
++static const struct of_device_id mtk_disp_aal_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8173-disp-aal",
++	  .data = &mt8173_aal_driver_data},
++	{},
++};
++MODULE_DEVICE_TABLE(of, mtk_disp_aal_driver_dt_match);
++
++struct platform_driver mtk_disp_aal_driver = {
++	.probe		= mtk_disp_aal_probe,
++	.remove		= mtk_disp_aal_remove,
++	.driver		= {
++		.name	= "mediatek-disp-aal",
++		.owner	= THIS_MODULE,
++		.of_match_table = mtk_disp_aal_driver_dt_match,
++	},
++};
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index cafd9df..86c3068 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -9,6 +9,15 @@
+ #include <linux/soc/mediatek/mtk-cmdq.h>
+ #include "mtk_drm_plane.h"
+ 
++int mtk_aal_clk_enable(struct device *dev);
++void mtk_aal_clk_disable(struct device *dev);
++void mtk_aal_config(struct device *dev, unsigned int w,
++		    unsigned int h, unsigned int vrefresh,
++		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state);
++void mtk_aal_start(struct device *dev);
++void mtk_aal_stop(struct device *dev);
++
+ void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state);
+ int mtk_ccorr_clk_enable(struct device *dev);
+ void mtk_ccorr_clk_disable(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 75bc00e..f367142 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -32,9 +32,6 @@
+ 
+ #define DISP_REG_UFO_START			0x0000
+ 
+-#define DISP_AAL_EN				0x0000
+-#define DISP_AAL_SIZE				0x0030
+-
+ #define DISP_DITHER_EN				0x0000
+ #define DITHER_EN				BIT(0)
+ #define DISP_DITHER_CFG				0x0020
+@@ -48,8 +45,6 @@
+ 
+ #define UFO_BYPASS				BIT(2)
+ 
+-#define AAL_EN					BIT(0)
+-
+ #define DISP_DITHERING				BIT(2)
+ #define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
+ #define DITHER_OVFLW_BIT_R(x)			(((x) & 0x7) << 24)
+@@ -190,36 +185,6 @@ static void mtk_ufoe_start(struct device *dev)
+ 	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
+ }
+ 
+-static void mtk_aal_config(struct device *dev, unsigned int w,
+-			   unsigned int h, unsigned int vrefresh,
+-			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_AAL_SIZE);
+-}
+-
+-static void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	mtk_gamma_set_common(priv->regs, state);
+-}
+-
+-static void mtk_aal_start(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel(AAL_EN, priv->regs + DISP_AAL_EN);
+-}
+-
+-static void mtk_aal_stop(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel_relaxed(0x0, priv->regs + DISP_AAL_EN);
+-}
+-
+ static void mtk_dither_config(struct device *dev, unsigned int w,
+ 			      unsigned int h, unsigned int vrefresh,
+ 			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -247,8 +212,8 @@ static void mtk_dither_stop(struct device *dev)
+ }
+ 
+ static const struct mtk_ddp_comp_funcs ddp_aal = {
+-	.clk_enable = mtk_ddp_clk_enable,
+-	.clk_disable = mtk_ddp_clk_disable,
++	.clk_enable = mtk_aal_clk_enable,
++	.clk_disable = mtk_aal_clk_disable,
+ 	.gamma_set = mtk_aal_gamma_set,
+ 	.config = mtk_aal_config,
+ 	.start = mtk_aal_start,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b46bdb8..67a585e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -532,11 +532,12 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		private->comp_node[comp_id] = of_node_get(node);
+ 
+ 		/*
+-		 * Currently only the CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
++		 * Currently only the AAL, CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
+ 		 * blocks have separate component platform drivers and initialize their own
+ 		 * DDP component structure. The others are initialized here.
+ 		 */
+-		if (comp_type == MTK_DISP_CCORR ||
++		if (comp_type == MTK_DISP_AAL ||
++		    comp_type == MTK_DISP_CCORR ||
+ 		    comp_type == MTK_DISP_COLOR ||
+ 		    comp_type == MTK_DISP_GAMMA ||
+ 		    comp_type == MTK_DISP_OVL ||
+@@ -636,6 +637,7 @@ static SIMPLE_DEV_PM_OPS(mtk_drm_pm_ops, mtk_drm_sys_suspend,
+ };
+ 
+ static struct platform_driver * const mtk_drm_drivers[] = {
++	&mtk_disp_aal_driver,
+ 	&mtk_disp_ccorr_driver,
+ 	&mtk_disp_color_driver,
+ 	&mtk_disp_gamma_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 637f566..3e7d1e6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -46,6 +46,7 @@ struct mtk_drm_private {
+ 	struct drm_atomic_state *suspend_state;
+ };
+ 
++extern struct platform_driver mtk_disp_aal_driver;
+ extern struct platform_driver mtk_disp_ccorr_driver;
+ extern struct platform_driver mtk_disp_color_driver;
+ extern struct platform_driver mtk_disp_gamma_driver;
 -- 
 1.8.1.1.dirty
 _______________________________________________
