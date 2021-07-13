@@ -2,96 +2,74 @@ Return-Path: <SRS0=Rt7e=MF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53FDFC07E95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 11:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4DF0AC07E95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 11:58:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 148B1611C0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 11:32:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 148B1611C0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 16D9F61166
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 11:58:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16D9F61166
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=XRGpBShXyKv+Hlsbd8vwESFmJALzo8jDT8zpjEfdYmo=; b=fupbVO/xljLC1eFRrtV/jmHnR/
-	SiPZTdTj+Hsyn+xEoJHZ4sM8ZdQ0j1IlYPUooUWnphg2j9b4AUAKOHAorNvbjgPTSv+LJtkN35kff
-	+1joWgk1/DUuFLRlGaFoOmwK1aeuDqpTSTGdfy1r5fb5/RGE9YyGev+lerXFLsqHLSSmIU5QZiljn
-	ulAjln8cwVtrZaSvvxvAv7OqTxQFozuG9dPSDTvdgTSrHhwYixvknxRTsW9zNK8Z8OFfQbBcoSXL4
-	DefW+BxAe/hBmabtFHHz5bcdcaaT7Vn0CyTVs7xFuqD7IVmCHA57sAUG5D7NE8kHEvzhWrhcnTE0k
-	SLAMyifQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tyW+9pdjUqTEXfduEf8iNzJTeidi4/dK9jACrZXxYsM=; b=4wwkREF5MO0u6H
+	VUKVDIsP3OTF9nB66Q4wf4dx2SBUE/sfmLwo+L891z0hDwt5Y28IlyHIq9W0De+QbzloU3Ci9ddzy
+	btS/mIq7/a5naFiV68hPrIs6HptfH0z+OEA7t6hfOQ2pzUerL7QRcqcLKOi+ztIoPZpqtvvtqyUlc
+	y9MErNTdihpa1cKgPz7rcoi1/kQ8d/qQhfKLlnl4gf23yAM2+9O5GzkZbtyFbN47VgVBy7m5uUJes
+	5fwpI7E4Ut/MAUvG0Pm1MmebY/Rlmlmv1FXuRGexyvwd303gaQlbDGJvqaSYzb+qap2fG22EEPy7l
+	aqWmkGsyNnAEThly/SeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3Ged-00ADfy-KO; Tue, 13 Jul 2021 11:32:47 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1m3H3O-00AHyo-Q3; Tue, 13 Jul 2021 11:58:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3GeO-00ADPD-PJ; Tue, 13 Jul 2021 11:32:34 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id
- l18-20020a1ced120000b029014c1adff1edso1369355wmh.4; 
- Tue, 13 Jul 2021 04:32:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:references:from:subject:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=VxdNMTgC7RTJI/82gSAHHxnwIsTXy+NvVdODaOq4tmU=;
- b=jbrgQaNivHHWkIhys33LFvPyuiYLHxbq70sxVdJgim8ewGwhZtO9FUjdIMTe+omB3s
- DAxzDDGIqKo0OQ4mC/0OzgOEqLh4pCc3mhTZQ70dyfup1z3oHLB+wvyqZZKTjynnOwUX
- uNjy5YwuC3Qhe1z6V0DKxCgWr+pJv5vjLLaboqX9Fl1VGs2cX27ipJqIQ0UluoCiMNDm
- h9sIW5o7je9YRHhbDIcAQoh+Jid5V0oKBpKlgTph0zoL6xzX/+RkXYwPO4s6+XbUXbck
- alJLAHgki3I65JeyuI0yJ+rbagfm1mc6OZPVt5QCANqVd+IEQxTCzzsFjJdbUnbAjh+G
- K90w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=VxdNMTgC7RTJI/82gSAHHxnwIsTXy+NvVdODaOq4tmU=;
- b=RmCF+MnfNpQmIyIaa9oBGoRv6z770C2PBNTpP64YzSGr8KFoOI58O5KuS5APiMQF5n
- Xe5uMRqmpizVikA4/NyH2jKOEo2a5akmYrDF75sSjDgFIdBQjacJkoxWHCIs4rnLiejH
- ZATI02wg1u/+Vyi7Ias62zTf7y9svL4fUgC9ccSwaVZ4+S0vmfvSHqESQS38UhPZgNAW
- jxXBBGDi1QXw469f5NAuEWrUgT2fq64Y9YaUwa0PDHCIMt3vFdAg772xt+YLXQpmkDvA
- DEwu5GQocW0OAVJUt9q4KU1AjeU+FtAnuwVPQ8V9jroDj/rXkfU4uR5ZlFb/fuL9CNLM
- yakw==
-X-Gm-Message-State: AOAM532TIka6uk8Vz2+aKuS2/GpJ6hjDXQN6Tn21mUlBH0lHnIdVS7Wp
- 4gOwFfERHpksYfMJg7iyoQ4=
-X-Google-Smtp-Source: ABdhPJxiGPc++BzEpZlBMmV+XlyZZlbgyEGXgaNiGp0hI/Tv7hPRxDVW7mz937Gx9gR/Y6p1sdMtyg==
-X-Received: by 2002:a7b:c042:: with SMTP id u2mr4495286wmc.86.1626175950253;
- Tue, 13 Jul 2021 04:32:30 -0700 (PDT)
-Received: from ziggy.stardust ([213.195.127.100])
- by smtp.gmail.com with ESMTPSA id r16sm2056532wmg.11.2021.07.13.04.32.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jul 2021 04:32:29 -0700 (PDT)
-To: Chuanjia Liu <chuanjia.liu@mediatek.com>, lorenzo.pieralisi@arm.com,
- robh+dt@kernel.org, bhelgaas@google.com
-Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, yong.wu@mediatek.com,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210611060902.12418-1-chuanjia.liu@mediatek.com>
- <20210611060902.12418-3-chuanjia.liu@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v10 2/4] PCI: mediatek: Add new method to get shared
- pcie-cfg base address and parse node
-Message-ID: <e462d9f0-2fa3-6106-f060-9753dc604b9f@gmail.com>
-Date: Tue, 13 Jul 2021 13:32:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.2
+ id 1m3H3A-00AHwf-4h; Tue, 13 Jul 2021 11:58:11 +0000
+X-UUID: 3b8de30d28104fc095e41b89383fe4fb-20210713
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=YQqkdY8ls8dBGB1GjB65nBeN3TNCQVKWRZ9qwuwHYdo=; 
+ b=n94eEHTiLlD05ADYZGrWpr3VECSMliopPu0QYdWqHQ0CGwS1ot9+/hUFXpw0DkemVPiLF+MOLsD9ESZMOcZio5fIwwKatMawatKBdDBQXEcuBUzi80Arw0Hc5GjwYS98QyGlvL6sG0PG+yklW87yDLu90uA7fPRv8casD3eFg8c=;
+X-UUID: 3b8de30d28104fc095e41b89383fe4fb-20210713
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <mason.zhang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 288985213; Tue, 13 Jul 2021 04:58:02 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Jul 2021 04:58:00 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Jul 2021 19:57:52 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 13 Jul 2021 19:57:52 +0800
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <leilk.liu@mediatek.com>, <wsd_upstream@mediatek.com>, Mason Zhang
+ <Mason.Zhang@mediatek.com>
+Subject: [PATCH 1/2] spi: mediatek: add tick_delay support
+Date: Tue, 13 Jul 2021 19:40:49 +0800
+Message-ID: <20210713114048.29509-1-mason.zhang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20210611060902.12418-3-chuanjia.liu@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_043232_879620_2347DC15 
-X-CRM114-Status: GOOD (  21.42  )
+X-CRM114-CacheID: sfid-20210713_045809_649730_6613F917 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,78 +86,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Mason Zhang <Mason.Zhang@mediatek.com>
 
+This patch support tick_delay setting, some users need use
+high-speed spi speed, which can use tick_delay to tuning spi clk timing.
 
-On 11/06/2021 08:09, Chuanjia Liu wrote:
-> For the new dts format, add a new method to get
-> shared pcie-cfg base address and parse node.
-> 
-> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+---
+ drivers/spi/spi-mt65xx.c                 | 11 ++++++++++-
+ include/linux/platform_data/spi-mt65xx.h |  1 +
+ 2 files changed, 11 insertions(+), 1 deletion(-)
 
-You missed the
-Reviewed-by: Rob Herring <robh@kernel.org>
-given in v8. Or were there any substantial changes in this patch?
-
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 52 +++++++++++++++++++-------
->  1 file changed, 39 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 62a042e75d9a..950f577a2f44 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -14,6 +14,7 @@
->  #include <linux/irqchip/chained_irq.h>
->  #include <linux/irqdomain.h>
->  #include <linux/kernel.h>
-> +#include <linux/mfd/syscon.h>
->  #include <linux/msi.h>
->  #include <linux/module.h>
->  #include <linux/of_address.h>
-> @@ -23,6 +24,7 @@
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
->  #include <linux/reset.h>
->  
->  #include "../pci.h"
-> @@ -207,6 +209,7 @@ struct mtk_pcie_port {
->   * struct mtk_pcie - PCIe host information
->   * @dev: pointer to PCIe device
->   * @base: IO mapped register base
-> + * @cfg: IO mapped register map for PCIe config
->   * @free_ck: free-run reference clock
->   * @mem: non-prefetchable memory resource
->   * @ports: pointer to PCIe port information
-> @@ -215,6 +218,7 @@ struct mtk_pcie_port {
->  struct mtk_pcie {
->  	struct device *dev;
->  	void __iomem *base;
-> +	struct regmap *cfg;
->  	struct clk *free_ck;
->  
->  	struct list_head ports;
-> @@ -650,7 +654,11 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
->  		return err;
->  	}
->  
-> -	port->irq = platform_get_irq(pdev, port->slot);
-> +	if (of_find_property(dev->of_node, "interrupt-names", NULL))
-> +		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
-> +	else
-> +		port->irq = platform_get_irq(pdev, port->slot);
-> +
-
-Do I understand that this is used for backwards compatibility with older DTS? I
-just wonder why we don't need to mandate
-interrupt-names = "pcie_irq"
-in the binding description.
-
-Regards,
-Matthias
-
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 097625d7915e..b34fbc913fd6 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -42,8 +42,9 @@
+ #define SPI_CFG1_CS_IDLE_OFFSET           0
+ #define SPI_CFG1_PACKET_LOOP_OFFSET       8
+ #define SPI_CFG1_PACKET_LENGTH_OFFSET     16
+-#define SPI_CFG1_GET_TICK_DLY_OFFSET      30
++#define SPI_CFG1_GET_TICK_DLY_OFFSET      29
+ 
++#define SPI_CFG1_GET_TICK_DLY_MASK        0xe0000000
+ #define SPI_CFG1_CS_IDLE_MASK             0xff
+ #define SPI_CFG1_PACKET_LOOP_MASK         0xff00
+ #define SPI_CFG1_PACKET_LENGTH_MASK       0x3ff0000
+@@ -152,6 +153,7 @@ static const struct mtk_spi_compatible mt6893_compat = {
+  */
+ static const struct mtk_chip_config mtk_default_chip_info = {
+ 	.sample_sel = 0,
++	.tick_delay = 0,
+ };
+ 
+ static const struct of_device_id mtk_spi_of_match[] = {
+@@ -275,6 +277,13 @@ static int mtk_spi_prepare_message(struct spi_master *master,
+ 		writel(mdata->pad_sel[spi->chip_select],
+ 		       mdata->base + SPI_PAD_SEL_REG);
+ 
++	/* tick delay */
++	reg_val = readl(mdata->base + SPI_CFG1_REG);
++	reg_val &= ~SPI_CFG1_GET_TICK_DLY_MASK;
++	reg_val |= ((chip_config->tick_delay & 0x7)
++		<< SPI_CFG1_GET_TICK_DLY_OFFSET);
++	writel(reg_val, mdata->base + SPI_CFG1_REG);
++
+ 	return 0;
+ }
+ 
+diff --git a/include/linux/platform_data/spi-mt65xx.h b/include/linux/platform_data/spi-mt65xx.h
+index 65fd5ffd257c..f0db674f07b8 100644
+--- a/include/linux/platform_data/spi-mt65xx.h
++++ b/include/linux/platform_data/spi-mt65xx.h
+@@ -12,5 +12,6 @@
+ /* Board specific platform_data */
+ struct mtk_chip_config {
+ 	u32 sample_sel;
++	u32 tick_delay;
+ };
+ #endif
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
