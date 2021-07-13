@@ -2,85 +2,81 @@ Return-Path: <SRS0=Rt7e=MF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4671C07E9A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 00:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C22CC07E9A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 02:05:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A727611CB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 00:25:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A727611CB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 375AB6101B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 02:05:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 375AB6101B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iExP0RD/4KLeenIkQEEkJ2TCrO6BKwkhu6WPIzxQVec=; b=M9JdrGVeouU8JA
-	up/zS4o3Ktm23JZ7avsQsUixWN1q7bZ5/cpQwg5uIiYg4MBR9bt0tHYduPDAjChLNZf2zQDiWvOOs
-	USWEw4fB/X3JdFQhToodSQyd5cgNREu96ujd000KiRCi1Ypqt1MpHUlqFaRx7gC0uPhuYi6GWWyYN
-	dSgrjEtZT05CVwZPs7n/D/y4K2lmvhx59nolZFn/8YzXXgfqhheuB6RwoilbW+KKVN5W2rMWXnX0a
-	6NNRxUuxV720/q3Pioh6PB3/t8P+UMuu7UFnKAUsR0PSeGtPZO1temXQWFdtlodkPNnAcsztIskGa
-	SO93cj0JwuZA0Kjuwa0g==;
+	List-Owner; bh=KDUY9p0jzTEWS1OVVZqqzyw5kAVU/2BrwzpiG05gPVY=; b=C1ob2ubjLaULxC
+	aMj+bS2DHMqiN1z5yPyNKFgNaOl1+ovAeXAOFNlqUOJEl2458+AgTOeC7dVgW+KJla4STt9wcyU5l
+	Ls5gAhexe5PLdz/Wp1to6baLEJiHeCYSQVHLjJQrcMM3uiDNben5bnYIJhuoT2yaWYU4BM2B3aNvb
+	JJKN0wi5ztkIjPB2S9TlAOpqAJ5g8yJC8XmAUvUT8s3217ngQ975nhnibX4hsPXXppyCD2Nxnp0oO
+	T09LcHjX1KD3Ai7pQ3ORjCj7/8Q9RG/nK287UM5fKqyN7avZQdrCcRQnvihOIx/jdgh4149KtjceN
+	G2pjivi3OmkQoA8to86w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m36EQ-008nqJ-9u; Tue, 13 Jul 2021 00:25:02 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m37nK-008tzz-J5; Tue, 13 Jul 2021 02:05:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m36EC-008noX-Lz; Tue, 13 Jul 2021 00:24:50 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5070661245;
- Tue, 13 Jul 2021 00:24:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626135888;
- bh=KexV+4F3TgN4PPH4fBSUjkTODP7+uxdjEVPvdNWA3ek=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=efNv2ZKOQmeZOzjaWJvY+GGdSdjEMfy1vzaR/X6ySrmMtOdN/rb6XSpLr2EssXBsa
- c0ht1ljsmxEqenKRNycCRiooGY2sogJkyPHIJ2T9LWcK2C+n7B3/kWWUcbtUMQh8YQ
- Ipc/JneCNEEMgTb1Z7tXZOopQwElPl3roo5YgVGHNj+uugtCGu0+tMCBUa71MaQeiv
- AFIU3EnPzs3XJzlTxRxVpsmGZIocKROZc39+qoOS7xG/BCQT6OOZluMXud37p0yjN9
- d2WwQmrW/ULkhSZ18v4noIr5MP7g//aZ5rs2q7EagHbYPzXCTM4r+y61PcaTJ09a4I
- HtFMH2QFFBrIA==
-Received: by mail-ej1-f47.google.com with SMTP id ga14so23088488ejc.6;
- Mon, 12 Jul 2021 17:24:48 -0700 (PDT)
-X-Gm-Message-State: AOAM533o1QIu7L3TKY89f2uAVr7hzNvN8lppZintnWN06LXQ4/zWPOua
- D/vMihg4q0Kr1XLACmEP89S0mNTTPEXQGUH9Ng==
-X-Google-Smtp-Source: ABdhPJzbNtMkeM1yr6+TVDvgJG2LQ1xNzk1FIO6ziqPDzewhB10dddOwyHMlOtOpBIsKU25K3xu2hWGbrYxzWaqPvF0=
-X-Received: by 2002:a17:907:62a1:: with SMTP id
- nd33mr2043181ejc.303.1626135886765; 
- Mon, 12 Jul 2021 17:24:46 -0700 (PDT)
+ id 1m37nG-008tz2-D9; Tue, 13 Jul 2021 02:05:09 +0000
+X-UUID: e2bbc90d9fb243839e509724ed8c8df3-20210712
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=4oViP5uXnYLqf8hbYUOimIhkq2EuVTJGnVnMkuJN774=; 
+ b=o37aj2kFs/IHjIwJWTRHxi0jBQMINgzc+Jajc5SKZeV2j4yySD07izWCda5RQO+JsWmRRqPgPAt+UX6cQPsE/PpMin54m+CEm8nxT3dk/8hbH61I5Dr7OmE93o98Tkf8UbrZWDHr6Zh852Jo50M8n8xIykstJa4dHG3wyuet/78=;
+X-UUID: e2bbc90d9fb243839e509724ed8c8df3-20210712
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1868221768; Mon, 12 Jul 2021 19:05:02 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 12 Jul 2021 19:05:00 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Jul 2021 10:04:58 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 13 Jul 2021 10:04:57 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: David Ahern <dsahern@gmail.com>
+CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
+ <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <maze@google.com>, <lorenzo@google.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>,
+ <rocco.yue@gmail.com>, <chao.song@mediatek.com>, <kuohong.wang@mediatek.com>, 
+ <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
+Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
+ addr_gen_mode
+Date: Tue, 13 Jul 2021 09:49:24 +0800
+Message-ID: <20210713014924.1831-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <40951584-8f53-4e95-4a6b-14ae1cf7f011@gmail.com>
+References: <40951584-8f53-4e95-4a6b-14ae1cf7f011@gmail.com>
 MIME-Version: 1.0
-References: <1626072109-2657-1-git-send-email-yongqiang.niu@mediatek.com>
- <1626072109-2657-2-git-send-email-yongqiang.niu@mediatek.com>
-In-Reply-To: <1626072109-2657-2-git-send-email-yongqiang.niu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 13 Jul 2021 08:24:35 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8=fdhVosGKj0uAqYemka3=PX+LOvnDPpTWfqBHaJgJ_Q@mail.gmail.com>
-Message-ID: <CAAOTY_8=fdhVosGKj0uAqYemka3=PX+LOvnDPpTWfqBHaJgJ_Q@mail.gmail.com>
-Subject: Re: [PATCH v2] drm/mediatek: clear pending flag when cmdq packet is
- done.
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Jassi Brar <jassisinghbrar@gmail.com>, Fabien Parent <fparent@baylibre.com>, 
- Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- DTML <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Hsin-Yi Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210712_172448_807078_5390DEBF 
-X-CRM114-Status: GOOD (  19.41  )
+X-CRM114-CacheID: sfid-20210712_190507_913625_DA9BD5BF 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,126 +88,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
-PiDmlrwgMjAyMeW5tDfmnIgxMuaXpSDpgLHkuIAg5LiL5Y2IMjo0MuWvq+mBk++8mgo+Cj4gSW4g
-Y21kcSBtb2RlLCBwYWNrZXQgbWF5IGJlIGZsdXNoZWQgYmVmb3JlIGl0IGlzIGV4ZWN1dGVkLCBz
-bwo+IHRoZSBwZW5kaW5nIGZsYWcgc2hvdWxkIGJlIGNsZWFyZWQgYWZ0ZXIgY21kcSBwYWNrZXQg
-aXMgZG9uZS4KCkkgd291bGQgbGlrZSB0aGlzIHBhdGNoIHRvIGJhc2Ugb24gdGhlIHNlcmllcyBb
-MV0gYmVjYXVzZSB0aGF0IHNlcmllcwp1c2UgdGhlIHN0YW5kYXJkIG1haWxib3ggY2FsbGJhY2sg
-aW50ZXJmYWNlLgoKWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51
-eC1tZWRpYXRlay9saXN0Lz9zZXJpZXM9NTE0MzY5CgpSZWdhcmRzLApDaHVuLUt1YW5nLgoKPgo+
-IFNpZ25lZC1vZmYtYnk6IENLIEh1IDxjay5odUBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1i
-eTogWW9uZ3FpYW5nIE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2NydGMuYyB8IDkyICsrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgODUgaW5zZXJ0aW9ucygrKSwg
-NyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsv
-bXRrX2RybV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMK
-PiBpbmRleCA0MGRmMmM4Li44Y2QxMDdiIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2NydGMuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2NydGMuYwo+IEBAIC03Myw2ICs3MywxMyBAQCBzdHJ1Y3QgbXRrX2NydGNfc3RhdGUg
-ewo+ICAgICAgICAgdW5zaWduZWQgaW50ICAgICAgICAgICAgICAgICAgICBwZW5kaW5nX3ZyZWZy
-ZXNoOwo+ICB9Owo+Cj4gKyNpZiBJU19SRUFDSEFCTEUoQ09ORklHX01US19DTURRKQo+ICtzdHJ1
-Y3QgbXRrX2NtZHFfY2JfZGF0YSB7Cj4gKyAgICAgICBzdHJ1Y3QgY21kcV9wa3QgICAgICAgICAg
-ICAgICAgICpjbWRxX2hhbmRsZTsKPiArICAgICAgIHN0cnVjdCBtdGtfZHJtX2NydGMgICAgICAg
-ICAgICAgKm10a19jcnRjOwo+ICt9Owo+ICsjZW5kaWYKPiArCj4gIHN0YXRpYyBpbmxpbmUgc3Ry
-dWN0IG10a19kcm1fY3J0YyAqdG9fbXRrX2NydGMoc3RydWN0IGRybV9jcnRjICpjKQo+ICB7Cj4g
-ICAgICAgICByZXR1cm4gY29udGFpbmVyX29mKGMsIHN0cnVjdCBtdGtfZHJtX2NydGMsIGJhc2Up
-Owo+IEBAIC0yMjQsNyArMjMxLDY0IEBAIHN0cnVjdCBtdGtfZGRwX2NvbXAgKm10a19kcm1fZGRw
-X2NvbXBfZm9yX3BsYW5lKHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgI2lmIElTX1JFQUNIQUJM
-RShDT05GSUdfTVRLX0NNRFEpCj4gIHN0YXRpYyB2b2lkIGRkcF9jbWRxX2NiKHN0cnVjdCBjbWRx
-X2NiX2RhdGEgZGF0YSkKPiAgewo+IC0gICAgICAgY21kcV9wa3RfZGVzdHJveShkYXRhLmRhdGEp
-Owo+ICsgICAgICAgc3RydWN0IG10a19jbWRxX2NiX2RhdGEgKmNiX2RhdGEgPSBkYXRhLmRhdGE7
-Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RybV9jcnRjICptdGtfY3J0YzsKPiArICAgICAgIHN0cnVj
-dCBtdGtfY3J0Y19zdGF0ZSAqc3RhdGU7Cj4gKyAgICAgICB1bnNpZ25lZCBpbnQgaTsKPiArCj4g
-KyAgICAgICBpZiAoIWNiX2RhdGEpIHsKPiArICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJjbWRx
-IGNhbGxiYWNrIGRhdGEgaXMgbnVsbCBwb2ludGVyIVxuIik7Cj4gKyAgICAgICAgICAgICAgIHJl
-dHVybjsKPiArICAgICAgIH0KPiArCj4gKyAgICAgICBpZiAoZGF0YS5zdGEgIT0gMCkgewo+ICsg
-ICAgICAgICAgICAgICBEUk1fV0FSTigiY21kcSBjYWxsYmFjayBlcnJvciAlZCEhXG4iLCBkYXRh
-LnN0YSk7Cj4gKyAgICAgICAgICAgICAgIGdvdG8gZGVzdHJveV9wa3Q7Cj4gKyAgICAgICB9Cj4g
-Kwo+ICsgICAgICAgbXRrX2NydGMgPSBjYl9kYXRhLT5tdGtfY3J0YzsKPiArICAgICAgIGlmICgh
-bXRrX2NydGMpIHsKPiArICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJjbWRxIGNhbGxiYWNrIG10
-a19jcnRjIGlzIG51bGwgcG9pbnRlciFcbiIpOwo+ICsgICAgICAgICAgICAgICBnb3RvIGRlc3Ry
-b3lfcGt0Owo+ICsgICAgICAgfQo+ICsKPiArICAgICAgIHN0YXRlID0gdG9fbXRrX2NydGNfc3Rh
-dGUobXRrX2NydGMtPmJhc2Uuc3RhdGUpOwo+ICsKPiArICAgICAgIGlmIChzdGF0ZS0+cGVuZGlu
-Z19jb25maWcpIHsKPiArICAgICAgICAgICAgICAgc3RhdGUtPnBlbmRpbmdfY29uZmlnID0gZmFs
-c2U7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAgaWYgKG10a19jcnRjLT5wZW5kaW5nX3BsYW5l
-cykgewo+ICsgICAgICAgICAgICAgICBmb3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmxheWVyX25y
-OyBpKyspIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBzdHJ1Y3QgZHJtX3BsYW5lICpwbGFu
-ZSA9ICZtdGtfY3J0Yy0+cGxhbmVzW2ldOwo+ICsgICAgICAgICAgICAgICAgICAgICAgIHN0cnVj
-dCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5lX3N0YXRlOwo+ICsKPiArICAgICAgICAgICAgICAgICAg
-ICAgICBwbGFuZV9zdGF0ZSA9IHRvX210a19wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+ICsK
-PiArICAgICAgICAgICAgICAgICAgICAgICBpZiAocGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmln
-KQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGxhbmVfc3RhdGUtPnBlbmRpbmcu
-Y29uZmlnID0gZmFsc2U7Cj4gKyAgICAgICAgICAgICAgIH0KPiArICAgICAgICAgICAgICAgbXRr
-X2NydGMtPnBlbmRpbmdfcGxhbmVzID0gZmFsc2U7Cj4gKyAgICAgICB9Cj4gKwo+ICsgICAgICAg
-aWYgKG10a19jcnRjLT5wZW5kaW5nX2FzeW5jX3BsYW5lcykgewo+ICsgICAgICAgICAgICAgICBm
-b3IgKGkgPSAwOyBpIDwgbXRrX2NydGMtPmxheWVyX25yOyBpKyspIHsKPiArICAgICAgICAgICAg
-ICAgICAgICAgICBzdHJ1Y3QgZHJtX3BsYW5lICpwbGFuZSA9ICZtdGtfY3J0Yy0+cGxhbmVzW2ld
-Owo+ICsgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBtdGtfcGxhbmVfc3RhdGUgKnBsYW5l
-X3N0YXRlOwo+ICsKPiArICAgICAgICAgICAgICAgICAgICAgICBwbGFuZV9zdGF0ZSA9IHRvX210
-a19wbGFuZV9zdGF0ZShwbGFuZS0+c3RhdGUpOwo+ICsKPiArICAgICAgICAgICAgICAgICAgICAg
-ICBpZiAocGxhbmVfc3RhdGUtPnBlbmRpbmcuYXN5bmNfY29uZmlnKQo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgcGxhbmVfc3RhdGUtPnBlbmRpbmcuYXN5bmNfY29uZmlnID0gZmFs
-c2U7Cj4gKyAgICAgICAgICAgICAgIH0KPiArICAgICAgICAgICAgICAgbXRrX2NydGMtPnBlbmRp
-bmdfYXN5bmNfcGxhbmVzID0gZmFsc2U7Cj4gKyAgICAgICB9Cj4gKwo+ICtkZXN0cm95X3BrdDoK
-PiArICAgICAgIGlmIChjYl9kYXRhLT5jbWRxX2hhbmRsZSkKPiArICAgICAgICAgICAgICAgY21k
-cV9wa3RfZGVzdHJveShjYl9kYXRhLT5jbWRxX2hhbmRsZSk7Cj4gKwo+ICsgICAgICAga2ZyZWUo
-Y2JfZGF0YSk7Cj4gIH0KPiAgI2VuZGlmCj4KPiBAQCAtMzc4LDcgKzQ0Miw4IEBAIHN0YXRpYyB2
-b2lkIG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0YXRlLT5wZW5kaW5nX3ZyZWZyZXNoLCAwLAo+
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNtZHFfaGFuZGxlKTsKPgo+IC0g
-ICAgICAgICAgICAgICBzdGF0ZS0+cGVuZGluZ19jb25maWcgPSBmYWxzZTsKPiArICAgICAgICAg
-ICAgICAgaWYgKCFjbWRxX2hhbmRsZSkKPiArICAgICAgICAgICAgICAgICAgICAgICBzdGF0ZS0+
-cGVuZGluZ19jb25maWcgPSBmYWxzZTsKPiAgICAgICAgIH0KPgo+ICAgICAgICAgaWYgKG10a19j
-cnRjLT5wZW5kaW5nX3BsYW5lcykgewo+IEBAIC0zOTgsOSArNDYzLDEyIEBAIHN0YXRpYyB2b2lk
-IG10a19jcnRjX2RkcF9jb25maWcoc3RydWN0IGRybV9jcnRjICpjcnRjLAo+ICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgbXRrX2RkcF9jb21wX2xheWVyX2NvbmZpZyhjb21wLCBsb2Nh
-bF9sYXllciwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgcGxhbmVfc3RhdGUsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNtZHFfaGFuZGxlKTsKPiAtICAgICAgICAgICAg
-ICAgICAgICAgICBwbGFuZV9zdGF0ZS0+cGVuZGluZy5jb25maWcgPSBmYWxzZTsKPiArICAgICAg
-ICAgICAgICAgICAgICAgICBpZiAoIWNtZHFfaGFuZGxlKQo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgcGxhbmVfc3RhdGUtPnBlbmRpbmcuY29uZmlnID0gZmFsc2U7Cj4gICAgICAg
-ICAgICAgICAgIH0KPiAtICAgICAgICAgICAgICAgbXRrX2NydGMtPnBlbmRpbmdfcGxhbmVzID0g
-ZmFsc2U7Cj4gKwo+ICsgICAgICAgICAgICAgICBpZiAoIWNtZHFfaGFuZGxlKQo+ICsgICAgICAg
-ICAgICAgICAgICAgICAgIG10a19jcnRjLT5wZW5kaW5nX3BsYW5lcyA9IGZhbHNlOwo+ICAgICAg
-ICAgfQo+Cj4gICAgICAgICBpZiAobXRrX2NydGMtPnBlbmRpbmdfYXN5bmNfcGxhbmVzKSB7Cj4g
-QEAgLTQyMCw5ICs0ODgsMTMgQEAgc3RhdGljIHZvaWQgbXRrX2NydGNfZGRwX2NvbmZpZyhzdHJ1
-Y3QgZHJtX2NydGMgKmNydGMsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtdGtf
-ZGRwX2NvbXBfbGF5ZXJfY29uZmlnKGNvbXAsIGxvY2FsX2xheWVyLAo+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBwbGFuZV9zdGF0ZSwK
-PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgY21kcV9oYW5kbGUpOwo+IC0gICAgICAgICAgICAgICAgICAgICAgIHBsYW5lX3N0YXRlLT5w
-ZW5kaW5nLmFzeW5jX2NvbmZpZyA9IGZhbHNlOwo+ICsKPiArICAgICAgICAgICAgICAgICAgICAg
-ICBpZiAoIWNtZHFfaGFuZGxlKQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcGxh
-bmVfc3RhdGUtPnBlbmRpbmcuYXN5bmNfY29uZmlnID0gZmFsc2U7Cj4gICAgICAgICAgICAgICAg
-IH0KPiAtICAgICAgICAgICAgICAgbXRrX2NydGMtPnBlbmRpbmdfYXN5bmNfcGxhbmVzID0gZmFs
-c2U7Cj4gKwo+ICsgICAgICAgICAgICAgICBpZiAoIWNtZHFfaGFuZGxlKQo+ICsgICAgICAgICAg
-ICAgICAgICAgICAgIG10a19jcnRjLT5wZW5kaW5nX2FzeW5jX3BsYW5lcyA9IGZhbHNlOwo+ICAg
-ICAgICAgfQo+ICB9Cj4KPiBAQCAtNDY5LDEzICs1NDEsMTkgQEAgc3RhdGljIHZvaWQgbXRrX2Ry
-bV9jcnRjX3VwZGF0ZV9jb25maWcoc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2NydGMsCj4gICAg
-ICAgICB9Cj4gICNpZiBJU19SRUFDSEFCTEUoQ09ORklHX01US19DTURRKQo+ICAgICAgICAgaWYg
-KG10a19jcnRjLT5jbWRxX2NsaWVudCkgewo+ICsgICAgICAgICAgICAgICBzdHJ1Y3QgbXRrX2Nt
-ZHFfY2JfZGF0YSAqY2JfZGF0YTsKPiArCj4gICAgICAgICAgICAgICAgIG1ib3hfZmx1c2gobXRr
-X2NydGMtPmNtZHFfY2xpZW50LT5jaGFuLCAyMDAwKTsKPiAgICAgICAgICAgICAgICAgY21kcV9o
-YW5kbGUgPSBjbWRxX3BrdF9jcmVhdGUobXRrX2NydGMtPmNtZHFfY2xpZW50LCBQQUdFX1NJWkUp
-Owo+ICAgICAgICAgICAgICAgICBjbWRxX3BrdF9jbGVhcl9ldmVudChjbWRxX2hhbmRsZSwgbXRr
-X2NydGMtPmNtZHFfZXZlbnQpOwo+ICAgICAgICAgICAgICAgICBjbWRxX3BrdF93ZmUoY21kcV9o
-YW5kbGUsIG10a19jcnRjLT5jbWRxX2V2ZW50LCBmYWxzZSk7Cj4gICAgICAgICAgICAgICAgIG10
-a19jcnRjX2RkcF9jb25maWcoY3J0YywgY21kcV9oYW5kbGUpOwo+ICAgICAgICAgICAgICAgICBj
-bWRxX3BrdF9maW5hbGl6ZShjbWRxX2hhbmRsZSk7Cj4gLSAgICAgICAgICAgICAgIGNtZHFfcGt0
-X2ZsdXNoX2FzeW5jKGNtZHFfaGFuZGxlLCBkZHBfY21kcV9jYiwgY21kcV9oYW5kbGUpOwo+ICsK
-PiArICAgICAgICAgICAgICAgY2JfZGF0YSA9IGttYWxsb2Moc2l6ZW9mKCpjYl9kYXRhKSwgR0ZQ
-X0tFUk5FTCk7Cj4gKyAgICAgICAgICAgICAgIGNiX2RhdGEtPmNtZHFfaGFuZGxlID0gY21kcV9o
-YW5kbGU7Cj4gKyAgICAgICAgICAgICAgIGNiX2RhdGEtPm10a19jcnRjID0gbXRrX2NydGM7Cj4g
-KyAgICAgICAgICAgICAgIGNtZHFfcGt0X2ZsdXNoX2FzeW5jKGNtZHFfaGFuZGxlLCBkZHBfY21k
-cV9jYiwgY2JfZGF0YSk7Cj4gICAgICAgICB9Cj4gICNlbmRpZgo+ICAgICAgICAgbXRrX2NydGMt
-PmNvbmZpZ191cGRhdGluZyA9IGZhbHNlOwo+IC0tCj4gMS44LjEuMS5kaXJ0eQo+CgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
-YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+>> According to your suggestion, I checked the ipv6 code again. In my
+>> opinion, adding another addr_gen_mode may not be suitable.
+>> 
+>> (1)
+>> In the user space, the process enable the ipv6 stable privacy mode by
+>> setting the "/proc/sys/net/ipv6/conf/<iface>/stable_secret".
+>> 
+>> In the kernel, the addr_gen_mode of a networking device is switched to
+>> IN6_ADDR_GEN_MODE_STABLE_PRIVACY by judging the bool value of
+>> "cnf.stable_secret.initialized".
+> 
+> and that can be updated. If the default (inherited) setting is
+> IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA, then do not change to
+> IN6_ADDR_GEN_MODE_STABLE_PRIVACY.
+> 
+>> 
+>> So, although adding an additional IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
+>> user space process has some trouble to let kernel switch the iface's
+>> addr_gen_mode to the IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA.
+>> 
+>> This is not as flexible as adding a separate sysctl.
+>> 
+>> (2)
+>> After adding "proc/sys/net/ipv6/<iface>/disable_gen_linklocal_addr",
+>> so that kernel can keep the original code logic of the stable_secret
+>> proc file, and expand when the subsequent kernel adds a new add_gen_mode
+>> more flexibility and applicability.
+>> 
+>> And we only need to care about the networking device that do not
+>> generate an ipv6 link-local address, and not the addr_gen_mode that
+>> this device is using.
+>> 
+>> Maybe adding a separate sysctl is a better choice.
+>> Looking forward to your professional reply again.
+> 
+> per device sysctl's are not free. I do not see a valid reason for a
+> separate disable knob.
+
+Hi David,
+
+Thanks for your reply,
+
+honstly, this separate sysctl is really useful and convenient.
+
+It allows users to simply configure the disable_gen_linklocal_addr
+proc file to achieve customized configuration of ipv6 link-local
+address without worrying about when the kernel will automatically
+generate a link-local address.
+
+At the same time, maybe a new addr_gen_mode will be added in the
+future. If the method of adding a sysctl is adopted, we don't need
+to consider the existing addr_gen_mode and the impact of adding
+another new addr_gen_mode in the future.
+
+Just simply echoing different values to the disable_gen_linklocal_addr
+proc file can achieve this needs.
+
+Thanks,
+Rocco
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
