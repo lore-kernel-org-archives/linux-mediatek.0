@@ -7,55 +7,55 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2AF6BC11F67
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 20:16:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC58CC07E95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 20:16:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D2EB161360
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 20:16:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D2EB161360
+	by mail.kernel.org (Postfix) with ESMTPS id 962E561351
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Jul 2021 20:16:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 962E561351
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+OcIK6rCg9kufDxeiQzqISDttQ0k64Fj97nmDZ40lKI=; b=Y68yhvwgJcr51v
-	EubrXb89lGKAsBHzg616+zcdPNvZRpIv3BjRsluOxG/XqaOX6ob4xhAFbTWhG+fD1xIDtOpfBBAKH
-	TiMxVr5W4dMK69bHlqydUxDfd/Q4NkTQwZO8puj172KVTVfUpk1rbImr/JxNX5dUJRjg35GEnr+Ev
-	HOKhQuN6blaOohKCoxljKtQ2QxN1oZyVB3Zk08cNaJF6ZhqHmP34PZVTiX1npN30jWOplXt/CNLA3
-	zkYz1eOB/6DeXM+1dJ/Zy7VMBn0v8bbdrj0vmyiD87mwN4Bc18JrchnPI0dm+b5ocGcS1U8Pd8jUH
-	aBdzuJ4SEj5MyYXr0B7w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2ccJwtveIJ6fJaARhxIBek9QHurJHGajYlHnAMWWs24=; b=B8urwXeywJdu8e
+	NHnmllKxyNCHELgzQiV/SsqvvSaQDkFk1HPyt1IqXL0ygAKozBSdRpF3M5PJ1WinAdKKBmGiwv3eu
+	yNWZWn7AEgx8aKa1E99MCcXFqOqdpB1wKCjPlq6PB3pzNvW2i1jNjSrQW4eChOknb0ZU1QdiHcF7l
+	iJ7N7MczGmiFl7oueFDSgjSAt9q4dDgiHFtJXb2jJHmxC5nV8Ug+g2YCUWwXDO56d9mxDZGjBH9lv
+	KHWyK4EpwJCtjJI59GjPkivGAoiHlOMifWjgR6cxPz6vduAZOmbOFD+fiVo/9Zrmt5UbOJ+9BT9T7
+	SsoNJSzXMUYqnbsoQGkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3OpI-00BI7U-H2; Tue, 13 Jul 2021 20:16:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3OpQ-00BIAZ-DJ; Tue, 13 Jul 2021 20:16:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3OpE-00BI65-A5
- for linux-mediatek@lists.infradead.org; Tue, 13 Jul 2021 20:16:17 +0000
-X-UUID: c240df837aca47e3822593a9941dd41d-20210713
+ id 1m3OpO-00BI8I-AM
+ for linux-mediatek@lists.infradead.org; Tue, 13 Jul 2021 20:16:27 +0000
+X-UUID: 7034ef2805cc4009a34fffb7f7225aa5-20210713
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=u3u+dqy9P1rscpK44zrg0iHFckHIVon5Z1gcX6Qq0KQ=; 
- b=kH8tRj7sbjnkri4s7GgnXuYGmZftxh56IFxL11c9c0GXYFJBCXqSMBjU6w5jdZ0dfv2eJLYIrTmipv+AST6LNBEgqvuyfUJQ+boyYMMXIFrotmBD0yWy6jwPx2v6ekO2wNUcix8N0jAXIIgw6fq0tKM850Ui7YvRNbYYrbhwtX4=;
-X-UUID: c240df837aca47e3822593a9941dd41d-20210713
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=jpdFWpmKuOmAuiGW5WC8E84plpAbPLQtF//9P+m8Lqo=; 
+ b=CAqNevK5/2ekgcsyu38ekU8mN/ZVl+5UwkOEFaZVgJrNxbfgQdSiqfgMYKOPVn/S2SAYuPXTiv30NMKWrb4Jhfzlx/I1IMqQYmHSIYiwteSba94HWN2JDRVRG53XkOoogiRvBa6KnOi/88Ltm0abmJnm5ETxdawW898+yptcvPQ=;
+X-UUID: 7034ef2805cc4009a34fffb7f7225aa5-20210713
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1348886311; Tue, 13 Jul 2021 13:16:12 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Jul 2021 13:16:10 -0700
+ with ESMTP id 1051685400; Tue, 13 Jul 2021 13:16:22 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Jul 2021 13:16:21 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 04:16:02 +0800
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Jul 2021 04:16:07 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 14 Jul 2021 04:16:02 +0800
+ Frontend Transport; Wed, 14 Jul 2021 04:16:08 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -65,15 +65,17 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
  <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 1/4] mt76: fix mt76_rates for the multiple devices
-Date: Wed, 14 Jul 2021 04:15:58 +0800
-Message-ID: <92a8ecfdf198b34f98d5c1489a83adf151657760.1626207204.git.objelf@gmail.com>
+Subject: [PATCH v3 4/4] mt76: mt7915: fix mgmt frame using unexpected bitrate
+Date: Wed, 14 Jul 2021 04:16:01 +0800
+Message-ID: <e3599d52e8bd3fa590976fd047584c36c34ab412.1626207204.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <92a8ecfdf198b34f98d5c1489a83adf151657760.1626207204.git.objelf@gmail.com>
+References: <92a8ecfdf198b34f98d5c1489a83adf151657760.1626207204.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_131616_381457_67CB81F3 
-X-CRM114-Status: GOOD (  13.34  )
+X-CRM114-CacheID: sfid-20210713_131626_384529_0098E3EB 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,148 +94,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-PHY offset in either .hw_value or .hw_value_short for mt7615, mt7663,
-mt7915 and mt7921 device all start at bit 6, not 8.
+Fix the current driver mgmt frame is not respecting the basic rates field
+provided by the AP and then unconditionally is using the lowest (1 or 6
+Mbps) rate.
 
+For example, if the AP only supported basic rate {24, 36, 48, 54} Mbps,
+mt7921 cannot send mgmt frame with the rate not in the group. So,
+instead, we pick up the lowest basic rate the AP can support to send.
+
+Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based chipsets")
 Suggested-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-v2: splitted out from the patch ("mt76: mt7921: fix mgmt frame using unexpected bitrate")
-    to cover more devices which have the same issue.
-v3: no change.
+v3: created in v3 to solve the same issue found in mt7921.
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c | 24 +++++++++----------
- drivers/net/wireless/mediatek/mt76/mt76.h     | 12 +++++-----
- .../net/wireless/mediatek/mt76/mt7603/init.c  | 19 +++++++++++++--
- .../net/wireless/mediatek/mt76/mt76x02_util.c | 16 ++++++-------
- 4 files changed, 43 insertions(+), 28 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c    | 5 +----
+ drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 2 --
+ 2 files changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index d03aedc3286b..20b2423efc19 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -84,18 +84,18 @@ static const struct ieee80211_tpt_blink mt76_tpt_blink[] = {
- };
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 2462704094b0..b48249518459 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -979,10 +979,7 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
  
- struct ieee80211_rate mt76_rates[] = {
--	CCK_RATE(0, 10),
--	CCK_RATE(1, 20),
--	CCK_RATE(2, 55),
--	CCK_RATE(3, 110),
--	OFDM_RATE(11, 60),
--	OFDM_RATE(15, 90),
--	OFDM_RATE(10, 120),
--	OFDM_RATE(14, 180),
--	OFDM_RATE(9,  240),
--	OFDM_RATE(13, 360),
--	OFDM_RATE(8,  480),
--	OFDM_RATE(12, 540),
-+	CCK_RATE(0, 10, 6),
-+	CCK_RATE(1, 20, 6),
-+	CCK_RATE(2, 55, 6),
-+	CCK_RATE(3, 110, 6),
-+	OFDM_RATE(11, 60, 6),
-+	OFDM_RATE(15, 90, 6),
-+	OFDM_RATE(10, 120, 6),
-+	OFDM_RATE(14, 180, 6),
-+	OFDM_RATE(9,  240, 6),
-+	OFDM_RATE(13, 360, 6),
-+	OFDM_RATE(8,  480, 6),
-+	OFDM_RATE(12, 540, 6),
- };
- EXPORT_SYMBOL_GPL(mt76_rates);
+-		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
+-			rate = MT7915_5G_RATE_DEFAULT;
+-		else
+-			rate = MT7915_2G_RATE_DEFAULT;
++		rate = mt76_default_basic_rate(mphy, vif);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 25c5ceef5257..e51ab917296d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -755,17 +755,17 @@ enum mt76_phy_type {
- 	MT_PHY_TYPE_HE_MU,
- };
+ 		val = MT_TXD6_FIXED_BW |
+ 		      FIELD_PREP(MT_TXD6_TX_RATE, rate);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 3f613fae6218..b41a31ad316d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -36,8 +36,6 @@
  
--#define CCK_RATE(_idx, _rate) {					\
-+#define CCK_RATE(_idx, _rate, _offset) {			\
- 	.bitrate = _rate,					\
- 	.flags = IEEE80211_RATE_SHORT_PREAMBLE,			\
--	.hw_value = (MT_PHY_TYPE_CCK << 8) | (_idx),		\
--	.hw_value_short = (MT_PHY_TYPE_CCK << 8) | (4 + _idx),	\
-+	.hw_value = (MT_PHY_TYPE_CCK << (_offset)) | (_idx),		\
-+	.hw_value_short = (MT_PHY_TYPE_CCK << (_offset)) | (4 + _idx),	\
- }
+ #define MT7915_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
+ #define MT7915_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
+-#define MT7915_5G_RATE_DEFAULT		0x4b	/* OFDM 6M */
+-#define MT7915_2G_RATE_DEFAULT		0x0	/* CCK 1M */
  
--#define OFDM_RATE(_idx, _rate) {				\
-+#define OFDM_RATE(_idx, _rate, _offset) {			\
- 	.bitrate = _rate,					\
--	.hw_value = (MT_PHY_TYPE_OFDM << 8) | (_idx),		\
--	.hw_value_short = (MT_PHY_TYPE_OFDM << 8) | (_idx),	\
-+	.hw_value = (MT_PHY_TYPE_OFDM << (_offset)) | (_idx),	\
-+	.hw_value_short = (MT_PHY_TYPE_OFDM << (_offset)) | (_idx), \
- }
- 
- extern struct ieee80211_rate mt76_rates[12];
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/init.c b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-index 031d39a48a55..59f684b08c55 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/init.c
-@@ -304,6 +304,21 @@ mt7603_init_hardware(struct mt7603_dev *dev)
- 	return 0;
- }
- 
-+static struct ieee80211_rate mt7603_rates[] = {
-+	CCK_RATE(0, 10, 8),
-+	CCK_RATE(1, 20, 8),
-+	CCK_RATE(2, 55, 8),
-+	CCK_RATE(3, 110, 8),
-+	OFDM_RATE(11, 60, 8),
-+	OFDM_RATE(15, 90, 8),
-+	OFDM_RATE(10, 120, 8),
-+	OFDM_RATE(14, 180, 8),
-+	OFDM_RATE(9,  240, 8),
-+	OFDM_RATE(13, 360, 8),
-+	OFDM_RATE(8,  480, 8),
-+	OFDM_RATE(12, 540, 8),
-+};
-+
- static const struct ieee80211_iface_limit if_limits[] = {
- 	{
- 		.max = 1,
-@@ -541,8 +556,8 @@ int mt7603_register_device(struct mt7603_dev *dev)
- 
- 	wiphy->reg_notifier = mt7603_regd_notifier;
- 
--	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
--				   ARRAY_SIZE(mt76_rates));
-+	ret = mt76_register_device(&dev->mt76, true, mt7603_rates,
-+				   ARRAY_SIZE(mt7603_rates));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-index ccdbab341271..70a62bf16425 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_util.c
-@@ -19,14 +19,14 @@ struct ieee80211_rate mt76x02_rates[] = {
- 	MT76x02_CCK_RATE(1, 20),
- 	MT76x02_CCK_RATE(2, 55),
- 	MT76x02_CCK_RATE(3, 110),
--	OFDM_RATE(0, 60),
--	OFDM_RATE(1, 90),
--	OFDM_RATE(2, 120),
--	OFDM_RATE(3, 180),
--	OFDM_RATE(4, 240),
--	OFDM_RATE(5, 360),
--	OFDM_RATE(6, 480),
--	OFDM_RATE(7, 540),
-+	OFDM_RATE(0, 60, 8),
-+	OFDM_RATE(1, 90, 8),
-+	OFDM_RATE(2, 120, 8),
-+	OFDM_RATE(3, 180, 8),
-+	OFDM_RATE(4, 240, 8),
-+	OFDM_RATE(5, 360, 8),
-+	OFDM_RATE(6, 480, 8),
-+	OFDM_RATE(7, 540, 8),
- };
- EXPORT_SYMBOL_GPL(mt76x02_rates);
+ #define MT7915_THERMAL_THROTTLE_MAX	100
  
 -- 
 2.25.1
