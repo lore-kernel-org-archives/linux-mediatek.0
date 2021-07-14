@@ -2,115 +2,94 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04DFEC07E9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 10:35:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0E88C07E9A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:16:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A96F8610A7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 10:35:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A96F8610A7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	by mail.kernel.org (Postfix) with ESMTPS id 78DE8613B2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:16:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 78DE8613B2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HrIAjB91mipGYcGYGQr89ulnHSrmB96bQF6BpmbuJxc=; b=twdgbKLyIW/GEq
-	E1mgIcnWFRLqkoOalJwT+r+Ho08ujS5NgrCP286UpSXR1LGAvN5k1WAwK4NiPARDly4jQFNm2ys/E
-	Rh/CUaz8Culed+dTDIkeQneeNPFu8aRHHZ6Q/ehBqy3nuLszhv6OQtemJtC4qvDi+Dayep6OZtMTV
-	4nnDCCDJ9Wh+WQQmx839M2vUc8Fvm+gEjUjySqadj5gI/FXvFLdbSAB1dgZ9lpyNV8kz7rFiT8Srk
-	09oUxgF0JOCzafLgg2AsO559areTRb8DFd/6jRzNdYsox9xed/M+jhgsvVmEsbeZWsyHPEIg0GIlz
-	XxCjtQ+sm1S8pxYBr9Hw==;
+	List-Owner; bh=aylAHRQd1An9QrmJIA+TGSsQhJ7YZ5IFHLAtmbrkIV4=; b=ECPIPXvfTheI3h
+	onrLWPTain7l4G2BsmtUAl0SGFe/BjL+xn8XNdSMRDFXwiYvhVUDX9wXd5txWt9gptfzJhy5ebctQ
+	4N5LNrAVDIgVVBq6gS1JuXYJf3w1SDC290bO/e0vlWGHlmWuHlwqX6bmsmF18aSYgUmYgK5CS2kT9
+	vFjQI6Gn7Gr8fulv7JjkmUw0gazOeJC/r4KzjEFQ3s3T5zitv4OpRD1s/HKY8LdG6Nh00fDS1cy3c
+	paZmWiDINukjj5kWRdxuO2UdgeY+Qwj/YzJtq5ZnvWYANODN3PSiyZU0ANLCwdydLeeUTDo5aGgmI
+	Oc0xsi2/81zvtghQappw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3cEf-00DB6s-Kc; Wed, 14 Jul 2021 10:35:25 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1m3csh-00DJ6c-7h; Wed, 14 Jul 2021 11:16:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3cBV-00D9p5-01
- for linux-mediatek@lists.infradead.org; Wed, 14 Jul 2021 10:32:13 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id a13so2551538wrf.10
- for <linux-mediatek@lists.infradead.org>; Wed, 14 Jul 2021 03:32:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:mail-followup-to:references
- :mime-version:content-disposition:in-reply-to;
- bh=hA7grU+s8xTzHDiN3chHrqXRM0NV+J697ZPMtp629lU=;
- b=Z9sd383cULVxmZk+/4TY7e8qfi1MFLCXj0i9y3rEwQK/n4ncYe8f+Utlis30DSfCa0
- QnoiqFnfSN7VOI1+7p6anUk0p2PV8vJPEQlCms4fy/X69x+sP2SMofTWE+eSXn5zsPYP
- i2cCZBxNJOedzXzf2Dle3wOy+NcHuY/uWabYg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id
- :mail-followup-to:references:mime-version:content-disposition
- :in-reply-to;
- bh=hA7grU+s8xTzHDiN3chHrqXRM0NV+J697ZPMtp629lU=;
- b=tz0RFwkH1S5A+5pwGLe9uBKzD+qyqt9GN9n9CWTEOdx2WzS8z+ToZamgWHR6uHvGSb
- GmoGkDOHT6vae/t1WAlWv0Y3nNwJIg+q9k5iM3C3I/Fr7EwoFFE9a7BWMwmpH8WJd2MA
- ozMj8Ubv2pR2yLMii6dKn+kFhNnxPRw2ggH91E2eHhU3k6gFEDDtpAxNs7M2sDyj7eT4
- UTUJiVBxhUf6GPTZlE3CWOa6jMGXuS/RGsemTNwwCtxnsWXV1oPKZl/TqR3BgVCsRvDk
- 5y2EwbKLlJSrkD5JXu9t4w2yPe02D+ljuLBUQcxTwLxeGCXAUycs1pv16OGXrSfOIhKD
- MvYA==
-X-Gm-Message-State: AOAM532ojFA5VRQTWsK9YuU5cVp9xG0aISh8VECLTj3+XxYJoQtbjsg0
- 3Rw1yhIY+PwMpzqhdw+PaezeYw==
-X-Google-Smtp-Source: ABdhPJzvSc2OjoSlFuxPRvs9s3AyFVzpM4KB/ZPzIs3nRgrLA+4Sk5mYljlfPoCZzJpjqs697gBVBQ==
-X-Received: by 2002:a05:6000:1787:: with SMTP id
- e7mr12031463wrg.167.1626258725391; 
- Wed, 14 Jul 2021 03:32:05 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id d10sm1972253wro.43.2021.07.14.03.32.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Jul 2021 03:32:04 -0700 (PDT)
-Date: Wed, 14 Jul 2021 12:32:02 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Pi-Hsun Shih <pihsun@chromium.org>
-Cc: Tzung-Bi Shih <tzungbi@google.com>, Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Xin Ji <xji@analogixsemi.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Yu Jiahua <yujiahua1@huawei.com>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] drm/bridge: anx7625: Use pm_runtime_force_{suspend,resume}
-Message-ID: <YO69IsBXv+lbcuWp@phenom.ffwll.local>
-Mail-Followup-To: Pi-Hsun Shih <pihsun@chromium.org>,
- Tzung-Bi Shih <tzungbi@google.com>,
- Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Xin Ji <xji@analogixsemi.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Yu Jiahua <yujiahua1@huawei.com>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-References: <20210714060221.1483752-1-pihsun@chromium.org>
+ id 1m3csT-00DJ4w-5k; Wed, 14 Jul 2021 11:16:35 +0000
+X-UUID: c2ba5f4048d542fb9a0bd63a22481066-20210714
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=I1AIYOviiCLaz5bYm8DUlQalApcOd6QrzCO//5CMBTY=; 
+ b=UUMwI2Hva5KkyXmeriU15MNBrIen2YFbKTGgkaBSuSwND0V78KIHWcEZ4lAF7QxG7LZpiTK6RPsP/t4SjCujN6FePpkRSKSfmI3cpcYxxOAsih/fYHDXu6RZBY6lsYF3L3ai9LGYpJxIIOWJB1wPDj1yf83PFEnwybxLNBcq8Do=;
+X-UUID: c2ba5f4048d542fb9a0bd63a22481066-20210714
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 427707463; Wed, 14 Jul 2021 04:16:31 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Jul 2021 04:16:29 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 14 Jul 2021 19:16:25 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 14 Jul 2021 19:16:24 +0800
+Message-ID: <1626261384.14352.13.camel@mhfsdcap03>
+Subject: Re: [PATCH v6 03/11] iommu/mediatek: Add device_link between the
+ consumer and the larb devices
+From: Yong Wu <yong.wu@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, Evan Green <evgreen@chromium.org>,
+ Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>, "Will
+ Deacon" <will.deacon@arm.com>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>, "Nicolas
+ Boichat" <drinkcat@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
+ <anan.sun@mediatek.com>, <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>, 
+ <acourbot@chromium.org>, <linux-media@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Xia Jiang <xia.jiang@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Eizan
+ Miyamoto" <eizan@chromium.org>, <anthony.huang@mediatek.com>
+Date: Wed, 14 Jul 2021 19:16:24 +0800
+In-Reply-To: <f7b2c5e5-f540-b885-f063-9611031035bc@collabora.com>
+References: <20210714025626.5528-1-yong.wu@mediatek.com>
+ <20210714025626.5528-4-yong.wu@mediatek.com>
+ <f7b2c5e5-f540-b885-f063-9611031035bc@collabora.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210714060221.1483752-1-pihsun@chromium.org>
-X-Operating-System: Linux phenom 5.10.0-7-amd64 
+X-TM-SNTS-SMTP: 0F41A4D2E10A0920DEDC22C00094324303009B46911208F4D64AC685FD3491552000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_033209_148208_3E8ADF56 
-X-CRM114-Status: GOOD (  43.00  )
+X-CRM114-CacheID: sfid-20210714_041633_271698_640240F2 
+X-CRM114-Status: GOOD (  36.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,156 +106,171 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 14, 2021 at 02:01:59PM +0800, Pi-Hsun Shih wrote:
-> Use pm_runtime_force_suspend and pm_runtime_force_resume to ensure that
-> anx7625 would always be powered off when suspended. Also update the
-> bridge enable hook to always ensure that the anx7625 is powered on
-> before starting DP operations.
+On Wed, 2021-07-14 at 10:26 +0200, Dafna Hirschfeld wrote:
 > 
-> Fixes: 409776fa3c42 ("drm/bridge: anx7625: add suspend / resume hooks")
-> 
-> Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
-> 
-> ---
-> 
-> An issue was found that the anx7625 driver won't power off when used as
-> eDP bridge on Asurada board if suspend is entered via VT2.
-> 
-> The reason is that in this case, anx7625_suspend won't power off anx7625
-> (since intp_irq is not set). And anx7625_bridge_disable is only called
-> indirectly by other driver's (mediatek-drm) suspend.
-> pm_runtime_put_sync won't do anything since it's already in system
-> suspend.
-> 
-> If not in VT2, the bridge disable is indirectly called when Chrome
-> stops, so anx7625 will be powered off correctly.
-> 
-> To fix the issue, the suspend resume hooks are changed to
-> pm_runtime_force_{suspend,resume} to ensure the runtime suspend / resume
-> is always called correctly when system suspend / resume.
-> (Note that IRQ no longer needs to be disabled on suspend after commit
-> f03ab6629c7b ("drm/bridge: anx7625: Make hpd workqueue freezable"))
-> 
-> Since bridge disable is called indirectly by mediatek-drm driver's
-> suspend, it might happens after anx7625 suspend is called. So a check
-> if the driver is already suspended via pm_runtime_force_suspend is also
-> added, to ensure that the anx7625_dp_stop won't be called when power
-> is off. And also since bridge enable might happens before anx7625 resume
-> is called, a check to that is also added, and would force resume the
-> device in this case.
-> 
-> I'm not sure if the approach to fix this is the most appropriate way,
-> since using pm_runtime_force_resume in bridge enable kinda feels hacky
-> to me. I'm open to any suggestions.
+> On 14.07.21 04:56, Yong Wu wrote:
+> > MediaTek IOMMU-SMI diagram is like below. all the consumer connect with
+> > smi-larb, then connect with smi-common.
+> > 
+> >          M4U
+> >           |
+> >      smi-common
+> >           |
+> >    -------------
+> >    |         |    ...
+> >    |         |
+> > larb1     larb2
+> >    |         |
+> > vdec       venc
+> > 
+> > When the consumer works, it should enable the smi-larb's power which
+> > also need enable the smi-common's power firstly.
+> > 
+> > Thus, First of all, use the device link connect the consumer and the
+> > smi-larbs. then add device link between the smi-larb and smi-common.
+> > 
+> > This patch adds device_link between the consumer and the larbs.
+> > 
+> > When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
+> > pm_runtime_xx to keep the original status of clocks. It can avoid two
+> > issues:
+> > 1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
+> > all the clocks are enabled before entering kernel, but the clocks for
+> > display HW(always in larb0) will be gated after clk_enable and clk_disable
+> > called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
+> > operation happened before display driver probe. At that time, the display
+> > HW will be abnormal.
+> > 
+> > 2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
+> > pm_runtime_xx to avoid the deadlock.
+> > 
+> > Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
+> > device_link_removed should be added explicitly.
+> > 
+> > [1] https://lore.kernel.org/linux-mediatek/1564213888.22908.4.camel@mhfsdcap03/
+> > [2] https://lore.kernel.org/patchwork/patch/1086569/
+> > 
+> > Suggested-by: Tomasz Figa <tfiga@chromium.org>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >   drivers/iommu/mtk_iommu.c    | 22 ++++++++++++++++++++++
+> >   drivers/iommu/mtk_iommu_v1.c | 20 +++++++++++++++++++-
+> >   2 files changed, 41 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index a02dde094788..ee742900cf4b 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -571,22 +571,44 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+> >   {
+> >   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> >   	struct mtk_iommu_data *data;
+> > +	struct device_link *link;
+> > +	struct device *larbdev;
+> > +	unsigned int larbid;
+> >   
+> >   	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> >   		return ERR_PTR(-ENODEV); /* Not a iommu client device */
+> >   
+> >   	data = dev_iommu_priv_get(dev);
+> >   
+> > +	/*
+> > +	 * Link the consumer device with the smi-larb device(supplier)
+> > +	 * The device in each a larb is a independent HW. thus only link
+> > +	 * one larb here.
+> > +	 */
+> > +	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+> > +	larbdev = data->larb_imu[larbid].dev;
+> > +	link = device_link_add(dev, larbdev,
+> > +			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> > +	if (!link)
+> > +		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+> shoudn't ERR_PTR be returned in case of failure?
 
-I thought the real fix was to create device links between the bridge and
-the other parts of the overall drm driver, so that the driver core can
-resume devices in the right order.
+In the previous design, this is not a fatal error. the consumer device
+could probe continuously even though it fail here..Returning here may
+let the issue be caught earlier, I will add this in next version.
 
-Unfortunately those device link patches haven't made it in yet. Quick
-search on lore didn't find anything, maybe I was just dreaming, or maybe
-the patches only existed for panels.
-
-Either way, this is a drm_bridge.c problem that needs to be fixed there,
-not individually in each driver.
--Daniel
+ if (!link) {
+      ...
+      return ERR_PTR(EINVAL);
+  }
 
 > 
-> ---
->  drivers/gpu/drm/bridge/analogix/anx7625.c | 55 +++++++++--------------
->  1 file changed, 20 insertions(+), 35 deletions(-)
+> Thanks,
+> Dafna
 > 
-> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> index a3d82377066b..9d0f5dc88b16 100644
-> --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> @@ -1559,7 +1559,20 @@ static void anx7625_bridge_enable(struct drm_bridge *bridge)
->  
->  	DRM_DEV_DEBUG_DRIVER(dev, "drm enable\n");
->  
-> -	pm_runtime_get_sync(dev);
-> +	/*
-> +	 * The only case where pm_runtime is disabled here is when the function
-> +	 * is called other driver's resume hook by
-> +	 * drm_mode_config_helper_resume, but when the pm_runtime_force_resume
-> +	 * hasn't been called on this device.
-> +	 *
-> +	 * pm_runtime_get_sync won't power on anx7625 in this case since we're
-> +	 * in system resume, so instead we force resume anx7625 to make sure
-> +	 * the following anx7625_dp_start would succeed.
-> +	 */
-> +	if (pm_runtime_enabled(dev))
-> +		pm_runtime_get_sync(dev);
-> +	else
-> +		pm_runtime_force_resume(dev);
->  
->  	anx7625_dp_start(ctx);
->  }
-> @@ -1571,9 +1584,10 @@ static void anx7625_bridge_disable(struct drm_bridge *bridge)
->  
->  	DRM_DEV_DEBUG_DRIVER(dev, "drm disable\n");
->  
-> -	anx7625_dp_stop(ctx);
-> -
-> -	pm_runtime_put_sync(dev);
-> +	if (pm_runtime_enabled(dev)) {
-> +		anx7625_dp_stop(ctx);
-> +		pm_runtime_put_sync(dev);
-> +	}
->  }
->  
->  static enum drm_connector_status
-> @@ -1705,38 +1719,9 @@ static int __maybe_unused anx7625_runtime_pm_resume(struct device *dev)
->  	return 0;
->  }
->  
-> -static int __maybe_unused anx7625_resume(struct device *dev)
-> -{
-> -	struct anx7625_data *ctx = dev_get_drvdata(dev);
-> -
-> -	if (!ctx->pdata.intp_irq)
-> -		return 0;
-> -
-> -	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
-> -		enable_irq(ctx->pdata.intp_irq);
-> -		anx7625_runtime_pm_resume(dev);
-> -	}
-> -
-> -	return 0;
-> -}
-> -
-> -static int __maybe_unused anx7625_suspend(struct device *dev)
-> -{
-> -	struct anx7625_data *ctx = dev_get_drvdata(dev);
-> -
-> -	if (!ctx->pdata.intp_irq)
-> -		return 0;
-> -
-> -	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
-> -		anx7625_runtime_pm_suspend(dev);
-> -		disable_irq(ctx->pdata.intp_irq);
-> -	}
-> -
-> -	return 0;
-> -}
-> -
->  static const struct dev_pm_ops anx7625_pm_ops = {
-> -	SET_SYSTEM_SLEEP_PM_OPS(anx7625_suspend, anx7625_resume)
-> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> +				pm_runtime_force_resume)
->  	SET_RUNTIME_PM_OPS(anx7625_runtime_pm_suspend,
->  			   anx7625_runtime_pm_resume, NULL)
->  };
-> 
-> base-commit: c0d438dbc0b74901f1901d97a6c84f38daa0c831
-> -- 
-> 2.32.0.93.g670b81a890-goog
-> 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+> >   	return &data->iommu;
+> >   }
+> >   
+> >   static void mtk_iommu_release_device(struct device *dev)
+> >   {
+> >   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> > +	struct mtk_iommu_data *data;
+> > +	struct device *larbdev;
+> > +	unsigned int larbid;
+> >   
+> >   	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> >   		return;
+> >   
+> > +	data = dev_iommu_priv_get(dev);
+> > +	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
+> > +	larbdev = data->larb_imu[larbid].dev;
+> > +	device_link_remove(dev, larbdev);
+> > +
+> >   	iommu_fwspec_free(dev);
+> >   }
+> >   
+> > diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+> > index d9365a3d8dc9..d2a7c66b8239 100644
+> > --- a/drivers/iommu/mtk_iommu_v1.c
+> > +++ b/drivers/iommu/mtk_iommu_v1.c
+> > @@ -424,7 +424,9 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+> >   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> >   	struct of_phandle_args iommu_spec;
+> >   	struct mtk_iommu_data *data;
+> > -	int err, idx = 0;
+> > +	int err, idx = 0, larbid;
+> > +	struct device_link *link;
+> > +	struct device *larbdev;
+> >   
+> >   	while (!of_parse_phandle_with_args(dev->of_node, "iommus",
+> >   					   "#iommu-cells",
+> > @@ -445,6 +447,14 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+> >   
+> >   	data = dev_iommu_priv_get(dev);
+> >   
+> > +	/* Link the consumer device with the smi-larb device(supplier) */
+> > +	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
+> > +	larbdev = data->larb_imu[larbid].dev;
+> > +	link = device_link_add(dev, larbdev,
+> > +			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> > +	if (!link)
+> > +		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+> > +
+> >   	return &data->iommu;
+> >   }
+> >   
+> > @@ -465,10 +475,18 @@ static void mtk_iommu_probe_finalize(struct device *dev)
+> >   static void mtk_iommu_release_device(struct device *dev)
+> >   {
+> >   	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+> > +	struct mtk_iommu_data *data;
+> > +	struct device *larbdev;
+> > +	unsigned int larbid;
+> >   
+> >   	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+> >   		return;
+> >   
+> > +	data = dev_iommu_priv_get(dev);
+> > +	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
+> > +	larbdev = data->larb_imu[larbid].dev;
+> > +	device_link_remove(dev, larbdev);
+> > +
+> >   	iommu_fwspec_free(dev);
+> >   }
+> >   
+> > 
 
 _______________________________________________
 Linux-mediatek mailing list
