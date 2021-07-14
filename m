@@ -2,70 +2,71 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B96BFC12002
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 20:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 423B8C12002
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 23:13:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 82FDC613D1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 20:57:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 82FDC613D1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6EB42613BA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 23:13:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EB42613BA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=sipsolutions.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ro5oVQihcdN9G/tKtSfE4LWLX3qeLQEeT5sEFhNhvS4=; b=5ECLFZTyZ6QWYg
-	LWkNRw4Ut9YgcZV1oxKNIjULU/SJmDddHaDLG7YkhCHsL5kiD0fpqDrPKZjk1Oj59EODNqm/eUAhK
-	o1nyQO7xgog3gx0KqLyn6Gcy/PfkiRVtqCzDI+W1fjzwNDruMWxgqPUYEDoG/1J7i3hKpe6NNo5I2
-	oAZVmQAd5h6ehV9bB4A6OzJozRvQk+3+R4FglMkf1QRKsCkAiyfYsT7+3PT3Tx/nkzpwk9fYy/sW0
-	H+nGOQJK8qBI+1TgGTwbRr0ctp4NgOyJt0MR1MrCF10X2jw82rE2OKSyHbSfjuvQ+ZlspGpsCx7wV
-	07amPlNnW1Nhygmqk8RQ==;
+	List-Owner; bh=3PC+OUKDh2up62xTv6w4CGfwqiJM4h+BojDKW/x70XM=; b=wi8n7vlUMpzELL
+	Jfzw6oUn45pi6KmWX6iYn3UneOJmHE7SP5D6yzLctDVD15MntEBzAq0UyC6EDjLdIz4r1byKdykP5
+	5IQTXRzna0P5JWRuXONDr/Hektv1uxyMCFJFrkS0VG5J+0tr1uZrRNipuc1VSa6SL0GOM+dz1aC91
+	fx/ehaem1kqKkQs06Uar10dxsPYSdypA7hkMVzto9loD93AiwYHQxqBcUuKCRfi3QVk9a9GFnFweX
+	pXBkQd1wNq9x9DbOsRcwWu+qY9NjrFfAYb/HZPU8ZkwYJhuKlnjl+FGdhuTSHNjDu/FoVrCJEzOyP
+	anI78hYIeO14oqZK3WaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3lw6-00FCfy-0r; Wed, 14 Jul 2021 20:56:54 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m3o45-00GBDT-Rv; Wed, 14 Jul 2021 23:13:17 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
+ helo=sipsolutions.net)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3kks-00EdS1-RC; Wed, 14 Jul 2021 19:41:16 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 54D6F613F1;
- Wed, 14 Jul 2021 19:41:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626291674;
- bh=oYfTxqLGVBT5yg+xMwCwpdKCTFpfJ5wd+O/hqJoewfc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=id7NpUMDZiuEx341ljGc3/hZbh1Lc86eNcij5s09NcNQSY+yyxcr/Cc8yLaBXLfAZ
- KQwGaG4A2OsFrJpycfrdBsb1PsoJfOibC5h0g/PqKyxvwV+P7GlmD3SURnK8PdTPXO
- mLlaK+Xe2Qyh1gBcMGLOyZCrhzEvfpPqsFwyUkomdxwtFdbGUUrPBfPntIGYI6Q4Gz
- O7MTZ9D7BPiq0K+TdeQTNfVh4S6e+X/Ycy/foDWIzKaeT4V5vlv9QluCQP2FEpGNeo
- aguDAupew9tTaWnOEPE/MIhIZNbj7/MT4hp9ugeDJijH1crtYW586Lm5H/yuIg4drc
- Yms2Qwswquf/w==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Zou Wei <zou_wei@huawei.com>, Hulk Robot <hulkci@huawei.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sasha Levin <sashal@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.12 026/102] soc: mediatek: add missing
- MODULE_DEVICE_TABLE
-Date: Wed, 14 Jul 2021 15:39:19 -0400
-Message-Id: <20210714194036.53141-26-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210714194036.53141-1-sashal@kernel.org>
-References: <20210714194036.53141-1-sashal@kernel.org>
+ id 1m3krn-00EhI9-Em
+ for linux-mediatek@lists.infradead.org; Wed, 14 Jul 2021 19:48:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=X3NTtRZZfavq8tUwtnJa4YEwGxb8+reN+LzCH02gIG4=; 
+ t=1626292101; x=1627501701; b=tZfu6qVR8qRaJE+pneuJkbwjwPGAGIwkn+xkHtcTl6TwDrS
+ pdXuzxPuU2Gx0wW7h1VcS3Sz6q1KN389gRu7Mvd+3TqlqpUfs9TEe4EdfMy3eH1hHGTBEN6rYmHl9
+ MuDCTyWaw5ryya5UtdfBBYwiP38XcKlavMyrJLxOTbo+J4ISsT8XvyKXRO0lfp3iUu8g5aaUk9P09
+ 0UKjTI2lJcBOlUzJaZkqFFfzUQZxeLhb06jRzrBZQF2Sz3plmIluDK8bXXYsP4spjdXkA3SlHVwll
+ VjOQIH+k8wYOcmUxi2Xf3OdojHnQxKvdsW8leK4ubOcHUNL0SnysFrkjF7hk7j9Q==;
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94.2) (envelope-from <johannes@sipsolutions.net>)
+ id 1m3krd-002Jd6-EI; Wed, 14 Jul 2021 21:48:13 +0200
+Message-ID: <bf14b6de4229f18ab2dc7fa6a971f77638fc50c0.camel@sipsolutions.net>
+Subject: Re: [PATCH] mt76: mt7915: fix endianness warnings in mu radiotap
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, 
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 14 Jul 2021 21:48:12 +0200
+In-Reply-To: <042666b307b7a424680bd20b6ac3bd3a74e3a1f7.1626291427.git.ryder.lee@mediatek.com>
+References: <042666b307b7a424680bd20b6ac3bd3a74e3a1f7.1626291427.git.ryder.lee@mediatek.com>
+User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_124114_967902_E309EDE4 
-X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-CacheID: sfid-20210714_124823_636400_4D7DC24B 
+X-CRM114-Status: UNSURE (   6.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,37 +84,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zou Wei <zou_wei@huawei.com>
 
-[ Upstream commit ba96de3ae5a7e2121cac80053b277eb2ab51a0ae ]
+> 
+> -	he_mu->ru_ch1[0] = FIELD_GET(MT_CRXV_HE_RU0, cpu_to_le32(rxv[3]));
+> +	he_mu->ru_ch1[0] = FIELD_GET(MT_CRXV_HE_RU0, le32_to_cpu(rxv[3]));
 
-This patch adds missing MODULE_DEVICE_TABLE definition which generates
-correct modalias for automatic loading of this driver when it is built
-as an external module.
+Instead of
 
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Zou Wei <zou_wei@huawei.com>
-Link: https://lore.kernel.org/r/1620705350-104687-1-git-send-email-zou_wei@huawei.com
-Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/soc/mediatek/mtk-devapc.c | 1 +
- 1 file changed, 1 insertion(+)
+	FIELD_GET(MASK, le32_to_cpu(value))
 
-diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index f1cea041dc5a..7c65ad3d1f8a 100644
---- a/drivers/soc/mediatek/mtk-devapc.c
-+++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -234,6 +234,7 @@ static const struct of_device_id mtk_devapc_dt_match[] = {
- 	}, {
- 	},
- };
-+MODULE_DEVICE_TABLE(of, mtk_devapc_dt_match);
- 
- static int mtk_devapc_probe(struct platform_device *pdev)
- {
--- 
-2.30.2
+you should probably consider
+
+	le32_get_bits(value, MASK)
+
+(not really sure why the order of arguments got inverted though ...)
+
+We might even consider doing an spatch to get rid of all the FIELD_GET()
+I guess.
+
+johannes
 
 
 _______________________________________________
