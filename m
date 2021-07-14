@@ -2,76 +2,73 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7611CC07E9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 07:22:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AF21C07E9A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 07:32:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E229613B2
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 07:22:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3E229613B2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2B03C613AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 07:32:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B03C613AA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=sipsolutions.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=1LFKqRaZqvIqJf/YFDGzETYe4+d4V/oJzajLIfMX5e4=; b=qWSwl4N0ohLJwL
-	jtYBHckWxXDQLsLm9nXu6cHcZv38xsOzUv4E16qfwYWH9FgcEDP8KcRcc+1KoOiHbuWX8PdDP3KqJ
-	bGwpFmjkm9LiMh5XUxJ/4iWCW5mNF4BAc6w/OOtnVvUCNP9y/4Ihn7zx4iy2Qu0xjRDr5AWvU0vFn
-	PDc9t3EvnowvGvkuSLKTmKCUW3FxhzEHhBK4WNzyA0k7SKqKSYYRmJVYBQGitcwQXicoonG8f/pvd
-	ybhw3fbHqDbkToLaToSNhrYKnjHLGqEDKmiEBnM5gNXOqvOH5nFQ+HLJNjQZ08Ufqb7zReLfZlp1c
-	yFQejOOGH/xh5h9BfwSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PFIjE4GzreUQQSjzCwebzous0YLuixv3sJpUWDXOH3Q=; b=VR/Q3TBsDItIKF
+	7jVz8o8cKQvThlG4yKwOruxzRVFNck7dy67ifDp7IqjVofyy6vecntMKJ/aOshIjeKFLHsOHurlrf
+	DHxvg/WMQEhVqHIK1TNMjZs33T1NiZ8qEteXvxwjCfMDjG3QAKJtNakydYcIibccvxvE5vg/ZXRZ+
+	MwwD5huPLMuYvNxKDTNbzDZQ/AcV4tgo85ijrJTtRfMya3mekeQDS308ZpiLeBgsJtyGvGkx/bK7H
+	u9qaEj1fzqscsUzpjxJF3j7XPQw/nkQYXLlfvkr8vY21ww7e9PBLQvJBVSjkIg4pW5NUsPve4BYIQ
+	77nnEj+6/jhJ4aUJJPxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3ZDV-00CUdv-85; Wed, 14 Jul 2021 07:22:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3ZN2-00CWay-NY; Wed, 14 Jul 2021 07:31:52 +0000
+Received: from s3.sipsolutions.net ([2a01:4f8:191:4433::2]
+ helo=sipsolutions.net)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3ZDR-00CUcv-Cv; Wed, 14 Jul 2021 07:21:59 +0000
-X-UUID: 827bebe5dd9f4cbdbb361c08066d66a5-20210714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=BTU9yvp5MJwVRvT61eJcbp/R3GzRNC+5P6CEuXMDmFo=; 
- b=bTUW28/ScD9XbIV9GhcVpdh+yPTpVp4j3i8zIzH6XjDrvM7CRaQ/s8UopIVc6wtaph8KZmnicislDP3V+1HgQxzLa9Ska701fmdapb6l2kVLQClktJBbYXhT0gLEJPEL5fVd2ItutV5f50szjnU4XNPEFChERD2mla2V26xBLU4=;
-X-UUID: 827bebe5dd9f4cbdbb361c08066d66a5-20210714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1146425374; Wed, 14 Jul 2021 00:21:53 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 00:11:51 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 15:11:49 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 14 Jul 2021 15:11:49 +0800
-From: <guangming.cao@mediatek.com>
-To: Sumit Semwal <sumit.semwal@linaro.org>, <christian.koenig@amd.com>
-CC: <wsd_upstream@mediatek.com>, <linux-media@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Guangming Cao
- <Guangming.Cao@mediatek.com>
-Subject: [PATCH] dma-buf: add kernel count for dma_buf
-Date: Wed, 14 Jul 2021 15:11:44 +0800
-Message-ID: <20210714071144.62126-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+ id 1m3ZN0-00CWaI-3J
+ for linux-mediatek@lists.infradead.org; Wed, 14 Jul 2021 07:31:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sipsolutions.net; s=mail; h=Content-Transfer-Encoding:MIME-Version:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=RG1iCBaT6E1VgpQV+JwxWmlLZlmtPr/DHuj0X5NRrws=; 
+ t=1626247909; x=1627457509; b=NWRpyCtsJ95VAGE7ZJ5IKRq4NOc4ValGFCbhK0d9rnLN2Ab
+ uHfl+0zNCH9onlD+z/GF+sNo7dj0sJWw43AEa/beljjiqpkKVpt8Iv1uYhZTJKPuhRIhHnB4qi2z2
+ jfv6RWmiHTaeGoE48r0qt5js8C7CByYD/WTNPBY+HZuWMo8rELIjYB6tQTRHuB/aBLkBUO5LPyQih
+ dtHvqMotpDnpg5IxaPD6e3qUPy3LoDtN0lJvoXIERWVg04ad4KM8zWIj1BkzdciZrNeiaPDz9yUMs
+ YxavjSq72LYoGkbYZsjeHZWYTIsGwZ493WIEV0KB7X9X6JWDQqaCRA5ZiGK0Pdjg==;
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94.2) (envelope-from <johannes@sipsolutions.net>)
+ id 1m3ZMo-0025w2-Pe; Wed, 14 Jul 2021 09:31:38 +0200
+Message-ID: <59ca83f01601a47bf3cfaf38e85570b8a3c5c72a.camel@sipsolutions.net>
+Subject: Re: [PATCH 1/3] mt76 mt7915: take RCU read lock when calling
+ ieee80211_bss_get_elem()
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Ryder Lee <ryder.lee@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, 
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Date: Wed, 14 Jul 2021 09:31:37 +0200
+In-Reply-To: <510ef14986079c731ea2879b3095831b60e4f648.1626240767.git.ryder.lee@mediatek.com>
+References: <510ef14986079c731ea2879b3095831b60e4f648.1626240767.git.ryder.lee@mediatek.com>
+User-Agent: Evolution 3.38.4 (3.38.4-1.fc33) 
 MIME-Version: 1.0
-X-MTK: N
+X-malware-bazaar: not-scanned
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_002157_492900_B0A28310 
-X-CRM114-Status: GOOD (  17.95  )
+X-CRM114-CacheID: sfid-20210714_003150_182571_F55061D5 
+X-CRM114-Status: UNSURE (   6.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,152 +80,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guangming Cao <Guangming.Cao@mediatek.com>
-
-Add a refcount for kernel to prevent UAF(Use After Free) issue.
-
-We can assume a case like below:
-    1. kernel space alloc dma_buf(file count = 1)
-    2. kernel use dma_buf to get fd(file count = 1)
-    3. userspace use fd to do mapping (file count = 2)
-    4. kernel call dma_buf_put (file count = 1)
-    5. userpsace close buffer fd(file count = 0)
-    6. at this time, buffer is released, but va is valid!!
-       So we still can read/write buffer via mmap va,
-       it maybe cause memory leak, or kernel exception.
-       And also, if we use "ls -ll" to watch corresponding process
-           fd link info, it also will cause kernel exception.
-
-Another case:
-     Using dma_buf_fd to generate more than 1 fd, because
-     dma_buf_fd will not increase file count, thus, when close
-     the second fd, it maybe occurs error.
-
-Solution:
-    Add a kernel count for dma_buf, and make sure the file count
-        of dma_buf.file hold by kernel is 1.
-
-Notes: For this solution, kref couldn't work because kernel ref
-       maybe added from 0, but kref don't allow it.
-
-Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
----
- drivers/dma-buf/dma-buf.c | 23 +++++++++++++++++++----
- include/linux/dma-buf.h   |  6 ++++--
- 2 files changed, 23 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-index 511fe0d217a0..04ee92aac8b9 100644
---- a/drivers/dma-buf/dma-buf.c
-+++ b/drivers/dma-buf/dma-buf.c
-@@ -62,6 +62,7 @@ static void dma_buf_release(struct dentry *dentry)
- 	if (unlikely(!dmabuf))
- 		return;
- 
-+	WARN_ON(atomic64_read(&dmabuf->kernel_ref));
- 	BUG_ON(dmabuf->vmapping_counter);
- 
- 	/*
-@@ -555,6 +556,7 @@ struct dma_buf *dma_buf_export(const struct dma_buf_export_info *exp_info)
- 		goto err_module;
- 	}
- 
-+	atomic64_set(&dmabuf->kernel_ref, 1);
- 	dmabuf->priv = exp_info->priv;
- 	dmabuf->ops = exp_info->ops;
- 	dmabuf->size = exp_info->size;
-@@ -617,6 +619,9 @@ int dma_buf_fd(struct dma_buf *dmabuf, int flags)
- 
- 	fd_install(fd, dmabuf->file);
- 
-+	/* Add file cnt for each new fd */
-+	get_file(dmabuf->file);
-+
- 	return fd;
- }
- EXPORT_SYMBOL_GPL(dma_buf_fd);
-@@ -626,12 +631,13 @@ EXPORT_SYMBOL_GPL(dma_buf_fd);
-  * @fd:	[in]	fd associated with the struct dma_buf to be returned
-  *
-  * On success, returns the struct dma_buf associated with an fd; uses
-- * file's refcounting done by fget to increase refcount. returns ERR_PTR
-- * otherwise.
-+ * dmabuf's ref refcounting done by kref_get to increase refcount.
-+ * Returns ERR_PTR otherwise.
-  */
- struct dma_buf *dma_buf_get(int fd)
- {
- 	struct file *file;
-+	struct dma_buf *dmabuf;
- 
- 	file = fget(fd);
- 
-@@ -643,7 +649,12 @@ struct dma_buf *dma_buf_get(int fd)
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	return file->private_data;
-+	dmabuf = file->private_data;
-+	/* replace file count increase as ref increase for kernel user */
-+	get_dma_buf(dmabuf);
-+	fput(file);
-+
-+	return dmabuf;
- }
- EXPORT_SYMBOL_GPL(dma_buf_get);
- 
-@@ -662,7 +673,11 @@ void dma_buf_put(struct dma_buf *dmabuf)
- 	if (WARN_ON(!dmabuf || !dmabuf->file))
- 		return;
- 
--	fput(dmabuf->file);
-+	if (WARN_ON(!atomic64_read(&dmabuf->kernel_ref)))
-+		return;
-+
-+	if (!atomic64_dec_return(&dmabuf->kernel_ref))
-+		fput(dmabuf->file);
- }
- EXPORT_SYMBOL_GPL(dma_buf_put);
- 
-diff --git a/include/linux/dma-buf.h b/include/linux/dma-buf.h
-index efdc56b9d95f..bc790cb028eb 100644
---- a/include/linux/dma-buf.h
-+++ b/include/linux/dma-buf.h
-@@ -308,6 +308,7 @@ struct dma_buf_ops {
- struct dma_buf {
- 	size_t size;
- 	struct file *file;
-+	atomic64_t kernel_ref;
- 	struct list_head attachments;
- 	const struct dma_buf_ops *ops;
- 	struct mutex lock;
-@@ -436,7 +437,7 @@ struct dma_buf_export_info {
- 					 .owner = THIS_MODULE }
- 
- /**
-- * get_dma_buf - convenience wrapper for get_file.
-+ * get_dma_buf - increase a kernel ref of dma-buf
-  * @dmabuf:	[in]	pointer to dma_buf
-  *
-  * Increments the reference count on the dma-buf, needed in case of drivers
-@@ -446,7 +447,8 @@ struct dma_buf_export_info {
-  */
- static inline void get_dma_buf(struct dma_buf *dmabuf)
- {
--	get_file(dmabuf->file);
-+	if (atomic64_inc_return(&dmabuf->kernel_ref) == 1)
-+		get_file(dmabuf->file);
- }
- 
- /**
--- 
-2.17.1
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCAyMDIxLTA3LTE0IGF0IDEzOjM2ICswODAwLCBSeWRlciBMZWUgd3JvdGU6Cj4gCj4g
+wqAJaWYgKCFlbGVtIHx8IGVsZW0tPmRhdGFsZW4gPCAxMCB8fAo+IMKgCSAgICAhKGVsZW0tPmRh
+dGFbMTBdICYKPiDCoAkgICAgICBXTEFOX0VYVF9DQVBBMTBfT0JTU19OQVJST1dfQldfUlVfVE9M
+RVJBTkNFX1NVUFBPUlQpKQo+IMKgCQlkYXRhLT50b2xlcmF0ZWQgPSBmYWxzZTsKClVucmVsYXRl
+ZCB0byB0aGlzIHBhdGNoLCBidXQgdGhhdCBsb29rcyBsaWtlIGFuIG9mZi1ieS1vbmU/CgpJZiBk
+YXRhbGVuID09IDEwLCB0aGVuIHlvdSBjYW4gb25seSBhY2Nlc3MgZGF0YVswXSB0aHJvdWdoIGRh
+dGFbOV0sIG5vdApkYXRhWzEwXT8KCmpvaGFubmVzCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
