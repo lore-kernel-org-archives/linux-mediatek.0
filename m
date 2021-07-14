@@ -4,76 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95AE1C11F66
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 05:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07DCDC07E9A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 06:05:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33B52613AA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 05:47:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33B52613AA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id ABF1B613AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 06:05:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ABF1B613AA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FUPXME6ev47EbiH4UbbeQMLJkNMiF6y37ysfn4pfP3k=; b=TA8ooa7IdyIIfg
-	zXdSBH5IVCUhmMuZDSHF7CqP1sBSJ/jPAL0zhw+pejLCKlZDElmQzaFUfuolbVDSIsPF6DXGcCwqP
-	1oqz9j6NOCZx+Sktxj24Vp9RK7bUZNVZC5+RU2jEKO4LvIyEpGTp91ZmgJq8wqjR8SLFlv0OCqJpO
-	LUc+eS1kx3Ss7DvWu82wP8K5ltpSQleLGvuEHd5wZX9MCEQV1Zu8AJl/faWQir8d5eJU11G5jrdY4
-	9AP2vDxSQRWr1e9oQFNPe1MnjFxU5judN2S9aByZrDc8w9/nSbp9xj0aABaVdq5fv95YPcD3MeI0b
-	gVUChG1BUCZHaSw6hVTw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RMs7mv+FtA3xxs9K9M3z5IymSR3ckgcUK5UzExT0h4g=; b=y6FQFqEzOXE10E
+	V/BuOHEV/v9b66YuRu2cze74c6nALM7XU4mRshYRGbtUsD145qProZ+2lOwUnVL1h2xaciZFrOrrs
+	kgykpnqiHHuNOO33RagNqZ+5ped1Sg9gQziq0iCJ6bBHsakRgo+EJB2oN0g9Ekr4yP3kllydTVhd+
+	yWioKNUKWFWDOrggHeT3VxYK7osJJlhNKnC6Fo9DfDvNeBO8skV8mFpEwlIRXg4j5AF1ixjakorL0
+	AMWf7dNl8mFB4A7IUvrADAngfsvxk5T2tVdCpeZ8AE2O3lUEOaNBFPyOInWS24xYaiWHiQL8d05h+
+	oxAOfAccS9+bu91kCgJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3Xjc-00CO9l-Eu; Wed, 14 Jul 2021 05:47:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m3Y1K-00CP9S-Bv; Wed, 14 Jul 2021 06:05:22 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3XjZ-00CO9J-6j
- for linux-mediatek@lists.infradead.org; Wed, 14 Jul 2021 05:47:02 +0000
-X-UUID: f85b9c46dc844f328da2921fc4b54dd0-20210713
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=pRRm6L33GZHAYHijDhjIHhPQrld3vi8tPuigmQpL1uM=; 
- b=pG23ghtDZxB2FAVyoH2lCxyzZJzy45XVMKdsO4eWjXtX+0zLSSbnD6KrDZjMHVssWLC8hExJDZyNKPgYdoNXFhXn1Dcx5IZooPZUXAB30CRHrqxcAdmjTz4RXORkk7SIipj+aEDdOzdFyMjcFy8rSCZpwnu4zmz0C9Mcew3Md5I=;
-X-UUID: f85b9c46dc844f328da2921fc4b54dd0-20210713
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 546866774; Tue, 13 Jul 2021 22:46:58 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Jul 2021 22:36:56 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 13:36:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 14 Jul 2021 13:36:54 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 3/3] mt76: mt7915: remove mt7915_sta_stats
-Date: Wed, 14 Jul 2021 13:36:51 +0800
-Message-ID: <592f852ff298c8d4c3dca4cd435f03a3626a46c1.1626240767.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <510ef14986079c731ea2879b3095831b60e4f648.1626240767.git.ryder.lee@mediatek.com>
-References: <510ef14986079c731ea2879b3095831b60e4f648.1626240767.git.ryder.lee@mediatek.com>
+ id 1m3Y1H-00CP8Q-Av
+ for linux-mediatek@lists.infradead.org; Wed, 14 Jul 2021 06:05:20 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id
+ h1-20020a17090a3d01b0290172d33bb8bcso3186400pjc.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 13 Jul 2021 23:05:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=n3xrLCowHoV9+qyE8ZVGJpCIjAP5+VxK4UkQj5GcY2w=;
+ b=kLFkLuzZN/EMGHwlQGVS/UYmwM1Jor+xNSxXNx0vwbUEejkcyGW3ZmWZwpiB1TMCi/
+ X2cTIJGs3M4vgTulRuQtElHfqpwfIWordoE8h7elKxyTNW4Vj/KhFEuk/g+f8IzSVtWR
+ 1IkdCBY3OhNxNLCR8lAti4i9lqmVQ4fX4VV78=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=n3xrLCowHoV9+qyE8ZVGJpCIjAP5+VxK4UkQj5GcY2w=;
+ b=PZmLB2buXfhTwKU7apiLWGysHKxEzjFuZcC8PR+Qqj9JMBm3H8d+RxJ9zQ7UmSP7mS
+ FEJnPetIO2I3u1TMnJK2Z/yLRp53Pp27HS+73yJVbk26XUa+a0hPKdYCot/NNYIT0lmZ
+ wFpSzoFBGRyAY/5TWGgD5k07QPCBrvgyUMnBOPDgyL5d9aklBm42AhX2IkXC7mmhGlBo
+ d9wQW7OR/VwYLLZJZ2bwcRoiFC3jclIK3t6YXw3K0h+uiCYb4tcKihryGbd1zEbXny5L
+ XLbNMJVV82b5rSdJ0sI1GYWzeytmkyMBzbCt75pMougJKOWSFSG6VH65zH60OSMPvclE
+ U4MQ==
+X-Gm-Message-State: AOAM531vBMDwlDntpPwhJBKFqRwoYStAm+EjAmOqSup+CYp/kafny2RV
+ vmmGYQgMiYdfA5m9OQIOgu4LKA==
+X-Google-Smtp-Source: ABdhPJxMHrnpzw0TqHvFJSj9wz6UUif9iub0qocjpvcy/+qmAdEUClh8smx1q3mPpPVrt62tv/yGCA==
+X-Received: by 2002:a17:902:ff0c:b029:11d:3e9e:41ec with SMTP id
+ f12-20020a170902ff0cb029011d3e9e41ecmr6557656plj.1.1626242717623; 
+ Tue, 13 Jul 2021 23:05:17 -0700 (PDT)
+Received: from kafuu-chino.c.googlers.com.com
+ (105.219.229.35.bc.googleusercontent.com. [35.229.219.105])
+ by smtp.googlemail.com with ESMTPSA id m19sm4524468pjl.13.2021.07.13.23.05.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Jul 2021 23:05:17 -0700 (PDT)
+From: Pi-Hsun Shih <pihsun@chromium.org>
+To: 
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Tzung-Bi Shih <tzungbi@google.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Robert Foss <robert.foss@linaro.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Xin Ji <xji@analogixsemi.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Yu Jiahua <yujiahua1@huawei.com>,
+ dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+ linux-kernel@vger.kernel.org (open list),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH] drm/bridge: anx7625: Use pm_runtime_force_{suspend,resume}
+Date: Wed, 14 Jul 2021 14:01:59 +0800
+Message-Id: <20210714060221.1483752-1-pihsun@chromium.org>
+X-Mailer: git-send-email 2.32.0.93.g670b81a890-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_224701_294167_75C5F0F6 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20210713_230519_427749_9635EAB1 
+X-CRM114-Status: GOOD (  21.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,93 +107,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7915_sta_stats is no longer needed after tx rate reworking.
+Use pm_runtime_force_suspend and pm_runtime_force_resume to ensure that
+anx7625 would always be powered off when suspended. Also update the
+bridge enable hook to always ensure that the anx7625 is powered on
+before starting DP operations.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Fixes: 409776fa3c42 ("drm/bridge: anx7625: add suspend / resume hooks")
+
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c    | 8 ++++----
- drivers/net/wireless/mediatek/mt76/mt7915/main.c   | 4 ++--
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 9 ++-------
- 3 files changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 6962446c9d3c..16d60cf4b1e3 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1058,9 +1058,9 @@ int mt7915_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+An issue was found that the anx7625 driver won't power off when used as
+eDP bridge on Asurada board if suspend is entered via VT2.
+
+The reason is that in this case, anx7625_suspend won't power off anx7625
+(since intp_irq is not set). And anx7625_bridge_disable is only called
+indirectly by other driver's (mediatek-drm) suspend.
+pm_runtime_put_sync won't do anything since it's already in system
+suspend.
+
+If not in VT2, the bridge disable is indirectly called when Chrome
+stops, so anx7625 will be powered off correctly.
+
+To fix the issue, the suspend resume hooks are changed to
+pm_runtime_force_{suspend,resume} to ensure the runtime suspend / resume
+is always called correctly when system suspend / resume.
+(Note that IRQ no longer needs to be disabled on suspend after commit
+f03ab6629c7b ("drm/bridge: anx7625: Make hpd workqueue freezable"))
+
+Since bridge disable is called indirectly by mediatek-drm driver's
+suspend, it might happens after anx7625 suspend is called. So a check
+if the driver is already suspended via pm_runtime_force_suspend is also
+added, to ensure that the anx7625_dp_stop won't be called when power
+is off. And also since bridge enable might happens before anx7625 resume
+is called, a check to that is also added, and would force resume the
+device in this case.
+
+I'm not sure if the approach to fix this is the most appropriate way,
+since using pm_runtime_force_resume in bridge enable kinda feels hacky
+to me. I'm open to any suggestions.
+
+---
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 55 +++++++++--------------
+ 1 file changed, 20 insertions(+), 35 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index a3d82377066b..9d0f5dc88b16 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -1559,7 +1559,20 @@ static void anx7625_bridge_enable(struct drm_bridge *bridge)
  
- 		msta = (struct mt7915_sta *)sta->drv_priv;
+ 	DRM_DEV_DEBUG_DRIVER(dev, "drm enable\n");
  
--		if (time_after(jiffies, msta->stats.jiffies + HZ / 4)) {
-+		if (time_after(jiffies, msta->jiffies + HZ / 4)) {
- 			info->flags |= IEEE80211_TX_CTL_REQ_TX_STATUS;
--			msta->stats.jiffies = jiffies;
-+			msta->jiffies = jiffies;
- 		}
- 	}
+-	pm_runtime_get_sync(dev);
++	/*
++	 * The only case where pm_runtime is disabled here is when the function
++	 * is called other driver's resume hook by
++	 * drm_mode_config_helper_resume, but when the pm_runtime_force_resume
++	 * hasn't been called on this device.
++	 *
++	 * pm_runtime_get_sync won't power on anx7625 in this case since we're
++	 * in system resume, so instead we force resume anx7625 to make sure
++	 * the following anx7625_dp_start would succeed.
++	 */
++	if (pm_runtime_enabled(dev))
++		pm_runtime_get_sync(dev);
++	else
++		pm_runtime_force_resume(dev);
  
-@@ -1879,8 +1879,8 @@ void mt7915_mac_sta_rc_work(struct work_struct *work)
- 	while (!list_empty(&list)) {
- 		msta = list_first_entry(&list, struct mt7915_sta, rc_list);
- 		list_del_init(&msta->rc_list);
--		changed = msta->stats.changed;
--		msta->stats.changed = 0;
-+		changed = msta->changed;
-+		msta->changed = 0;
- 		spin_unlock_bh(&dev->sta_poll_lock);
+ 	anx7625_dp_start(ctx);
+ }
+@@ -1571,9 +1584,10 @@ static void anx7625_bridge_disable(struct drm_bridge *bridge)
  
- 		sta = container_of((void *)msta, struct ieee80211_sta, drv_priv);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-index 953d5caae5c2..825cb44c9107 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
-@@ -623,7 +623,7 @@ int mt7915_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	msta->wcid.idx = idx;
- 	msta->wcid.ext_phy = mvif->band_idx;
- 	msta->wcid.tx_info |= MT_WCID_TX_INFO_SET;
--	msta->stats.jiffies = jiffies;
-+	msta->jiffies = jiffies;
+ 	DRM_DEV_DEBUG_DRIVER(dev, "drm disable\n");
  
- 	mt7915_mac_wtbl_update(dev, idx,
- 			       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
-@@ -955,7 +955,7 @@ static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
- 	u32 *changed = data;
+-	anx7625_dp_stop(ctx);
+-
+-	pm_runtime_put_sync(dev);
++	if (pm_runtime_enabled(dev)) {
++		anx7625_dp_stop(ctx);
++		pm_runtime_put_sync(dev);
++	}
+ }
  
- 	spin_lock_bh(&dev->sta_poll_lock);
--	msta->stats.changed |= *changed;
-+	msta->changed |= *changed;
- 	if (list_empty(&msta->rc_list))
- 		list_add_tail(&msta->rc_list, &dev->sta_rc_list);
- 	spin_unlock_bh(&dev->sta_poll_lock);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index a9c36b515aa6..33be449309e0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -64,11 +64,6 @@ enum mt7915_rxq_id {
- 	MT7915_RXQ_MCU_WA_EXT,
+ static enum drm_connector_status
+@@ -1705,38 +1719,9 @@ static int __maybe_unused anx7625_runtime_pm_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused anx7625_resume(struct device *dev)
+-{
+-	struct anx7625_data *ctx = dev_get_drvdata(dev);
+-
+-	if (!ctx->pdata.intp_irq)
+-		return 0;
+-
+-	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
+-		enable_irq(ctx->pdata.intp_irq);
+-		anx7625_runtime_pm_resume(dev);
+-	}
+-
+-	return 0;
+-}
+-
+-static int __maybe_unused anx7625_suspend(struct device *dev)
+-{
+-	struct anx7625_data *ctx = dev_get_drvdata(dev);
+-
+-	if (!ctx->pdata.intp_irq)
+-		return 0;
+-
+-	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
+-		anx7625_runtime_pm_suspend(dev);
+-		disable_irq(ctx->pdata.intp_irq);
+-	}
+-
+-	return 0;
+-}
+-
+ static const struct dev_pm_ops anx7625_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(anx7625_suspend, anx7625_resume)
++	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
++				pm_runtime_force_resume)
+ 	SET_RUNTIME_PM_OPS(anx7625_runtime_pm_suspend,
+ 			   anx7625_runtime_pm_resume, NULL)
  };
- 
--struct mt7915_sta_stats {
--	unsigned long changed;
--	unsigned long jiffies;
--};
--
- struct mt7915_sta_key_conf {
- 	s8 keyidx;
- 	u8 key[16];
-@@ -83,8 +78,8 @@ struct mt7915_sta {
- 	struct list_head rc_list;
- 	u32 airtime_ac[8];
- 
--	struct mt7915_sta_stats stats;
--
-+	unsigned long changed;
-+	unsigned long jiffies;
- 	unsigned long ampdu_state;
- 
- 	struct mt7915_sta_key_conf bip;
+
+base-commit: c0d438dbc0b74901f1901d97a6c84f38daa0c831
 -- 
-2.29.2
+2.32.0.93.g670b81a890-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
