@@ -2,77 +2,95 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38471C07E9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 17:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D81C2C07E9A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 18:20:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED57B613AF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 17:03:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED57B613AF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9987C613C9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 18:20:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9987C613C9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VtMNBRTC7Zxhr1sox3dsnxpX1DDoCDtVdQNMsjI7BR0=; b=d2C8lXW5j0Xm0s
-	+StLZmDnUJJgsct+cjDvGvAwIIoC6S8YUeeRVtWdamYBDkKw+vyliEE9IJyuGYnteX1YKraRPZg/W
-	q5SsY28+3y5r7mba6wfzH5kZ4McNKWlMqnduH/LHXy51ybcj1X1Dk1DmiNnHos+x16E9/VtJ6O1eN
-	SBjcF0dulhSdbj5iiLsFbF2g3wSz/4nllx64UYshDo/5i51MaY0+BxFHvwPWuHp2Pc6RvuFqCA7w2
-	PCnv2Wsg3moDAyByUu0wIR4v6NX5wPnBqYBF7qGe1naCS1bU+IYZ7OfoquLJrHvFHoUyyxKD4QGVh
-	T5UQCs5H1KKGGQ5mxZ/Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=qRs6kGVnG1sMB8HcA3klNc22fMGQQp8XBQFX2z1jWPQ=; b=WE3IYDUCMyEbZKCLmDgrLPCDkF
+	dpB15puSZcKEbaB8psYBah0X9QjvV+bwQOY6DMBcLTBt9S0FzE3Iki2UeQrpTlFCcIuWfxpaXyzoj
+	HrNnkxXz7ntUHvzq1ckceFNKAUk74EytkgLGkEHjjUhKWWYa7QUR1sFgbs3S61+DTYf1NxAg6SWDd
+	Tvw6BoOoPwrI4nyQwhj2KoeVdPPomPKAYdI4Q5s4Y1+mpcPhm1HYslVaBAH37lV9GlAzfbaHnRK25
+	HwRalK1uRY5JIIe5NFiZbF81CBgyxXwNAQ4t+SVncpowJD/H4+h6ltNWHQHnjtBfJ1lkNEET2sJl3
+	zSP6mm3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3iI3-00EE1i-Rq; Wed, 14 Jul 2021 17:03:19 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3jUl-00EPZD-9p; Wed, 14 Jul 2021 18:20:31 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3iHM-00EDoH-Ns; Wed, 14 Jul 2021 17:02:38 +0000
-X-UUID: d36ca6003bc24de99eda0468c447928a-20210714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=xNtTHNaD2cPAScLu0Sq4EILdtNhsVEqXzfTgvFnO7qI=; 
- b=PmhIvtEnInwxaJzxlwv+UibredfS9e3Y0rvpk8gB+yAYyP1D5dbFglreTzMyP6ER8PxP8h/RuryWLI4HK4zH59Yv4/5CbBPD/0wecm5GT30nzg4TRhSMDAWOgy+XVHeUS9fPLX87mqDa1HeY60Wo43uksXTL62ygRWB3m+DqZUc=;
-X-UUID: d36ca6003bc24de99eda0468c447928a-20210714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 890912230; Wed, 14 Jul 2021 10:02:27 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 09:52:26 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 00:52:11 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 15 Jul 2021 00:52:11 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
-CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <hsinyi@google.com>,
- <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
- <singo.chang@mediatek.com>
-Subject: [PATCH v3 5/5] mailbox: cmdq: fix GCE can not receive hardward event
-Date: Thu, 15 Jul 2021 00:52:08 +0800
-Message-ID: <20210714165208.2841-6-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210714165208.2841-1-jason-jh.lin@mediatek.com>
-References: <20210714165208.2841-1-jason-jh.lin@mediatek.com>
+ id 1m3jUi-00EPXg-QK; Wed, 14 Jul 2021 18:20:30 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id
+ j4-20020a4ac5440000b029025992521cf0so848558ooq.7; 
+ Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=IZHV17HrDm3mXvlMglOQgvLLp42WlpMA1EiV1Ps+/BI=;
+ b=H+vm6oqHFE6x5nWY0AIBWZrMU/JFV1E7RlfPV+htdU7SqDZZNrKwrdLtrafZc/AorS
+ A1cI3NKH0fEKqOI4Al014QT8bwC0hHpab3fl6RAGB1cFpYFLf8fnP2oh4Rzrr+dfGKpw
+ Mf0r3bS175zI3IYORzlw2VwRPBmPKAVYUF2pmBbeHNKu4K6n75aOez1hPrxCwm6UtxNK
+ Jy+67R0NeXPH1meUzyTOjHe7YgUH46e0TKUhMdKS1PlV7MtP4wCP3tVD8ePGffDa5Xee
+ 9VcZqpMV9OmUPoBjvETHo5dMsjF5p98QUm1pHe16Z1ij/jmr9TMkRHlOPr8vZjoHrMJl
+ e0cQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IZHV17HrDm3mXvlMglOQgvLLp42WlpMA1EiV1Ps+/BI=;
+ b=LWd8fTcE0xW4PbzfzPZCEC9JbXsEYb1Y7NT18GOA0JZxJQnDf0QfrJArAGwtrqBfPW
+ t4KXYM4xn1SLm2k3EIpVIa+OFCnQRN577Gh/bBY81+z/vubAEKVMMxfxl9lJuxQXLElQ
+ pReP2XjMMHXARwacBapZ3fozHAYZYS8wiEddyzj0kUEd2HecIW7l5SAkARG1xr40yy1m
+ m4gAps1IhQGt4Xmce6Qd38HHH2ahKoWjlkFYdknX96K4t/W15YIUsLSndzbyzHejCDjv
+ xrUoMoMM75QUFUenmGTmlUfSLDJ5twe3LQuvITywIuQ7CFI+XwzRRMNIVE3d8EjHSy7S
+ pN3w==
+X-Gm-Message-State: AOAM531+YoUoRT8ap/XlFPhXxHi7dNBesZoKSolcBsXBwC481Od8zd8/
+ g9GPedKZXOar4KSlRYuNUWY=
+X-Google-Smtp-Source: ABdhPJzsxslVMe/u0X4ex3JA+B6DQS3NdJKCEqD6Tg0m4IaMXYXw659YBjHMM1dTLnt4gmZP+/qkdg==
+X-Received: by 2002:a4a:97ed:: with SMTP id x42mr8831385ooi.49.1626286827439; 
+ Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
+Received: from Davids-MacBook-Pro.local ([8.48.134.38])
+ by smtp.googlemail.com with ESMTPSA id b10sm645794oiy.4.2021.07.14.11.20.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
+Subject: Re: [PATCH] ipv6: remove unused local variable
+To: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
+ <davem@davemloft.net>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, rocco.yue@gmail.com
+References: <20210714151533.6210-1-rocco.yue@mediatek.com>
+From: David Ahern <dsahern@gmail.com>
+Message-ID: <c524c725-84ce-0106-6e28-bf5c7dc36e30@gmail.com>
+Date: Wed, 14 Jul 2021 12:20:25 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210714151533.6210-1-rocco.yue@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_100236_826707_EFCC68D4 
-X-CRM114-Status: GOOD (  19.71  )
+X-CRM114-CacheID: sfid-20210714_112028_940352_4D391619 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,270 +107,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the design of GCE hardware event signal transportation,
-evnet rx will send the event signal to all GCE event merges
-after receiving the event signal from the other hardware.
+On 7/14/21 9:15 AM, Rocco Yue wrote:
+> The local variable "struct net *net" in the two functions of
+> inet6_rtm_getaddr() and inet6_dump_addr() are actually useless,
+> so remove them.
+> 
+> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
+> ---
+>  net/ipv6/addrconf.c | 6 ++----
+>  1 file changed, 2 insertions(+), 4 deletions(-)
+> 
 
-Because GCE event merges need to response to event rx, their
-clocks must be enabled at that time.
+please add 'net' or 'net-next' in the subject line.  e.g.,
+[PATCH net-next]
 
-To make sure all the gce clock is enabled while receiving the
-hardware event, each cmdq mailbox should enable or disable
-the others gce clk at the same time.
+Reviewed-by: David Ahern <dsahern@kernel.org>
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 105 +++++++++++++++++++++++------
- 1 file changed, 86 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index fc67888a677c..7e9b0907ec56 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -19,6 +19,7 @@
- 
- #define CMDQ_OP_CODE_MASK		(0xff << CMDQ_OP_CODE_SHIFT)
- #define CMDQ_NUM_CMD(t)			(t->cmd_buf_size / CMDQ_INST_SIZE)
-+#define CMDQ_GCE_NUM_MAX		(2)
- 
- #define CMDQ_CURR_IRQ_STATUS		0x10
- #define CMDQ_SYNC_TOKEN_UPDATE		0x68
-@@ -73,14 +74,16 @@ struct cmdq {
- 	u32			thread_nr;
- 	u32			irq_mask;
- 	struct cmdq_thread	*thread;
--	struct clk		*clock;
-+	struct clk		*clock[CMDQ_GCE_NUM_MAX];
- 	bool			suspended;
- 	u8			shift_pa;
-+	u32			gce_num;
- };
- 
- struct gce_plat {
- 	u32 thread_nr;
- 	u8 shift;
-+	u32 gce_num;
- };
- 
- u8 cmdq_get_shift_pa(struct mbox_chan *chan)
-@@ -120,11 +123,15 @@ static void cmdq_init(struct cmdq *cmdq)
- {
- 	int i;
- 
--	WARN_ON(clk_enable(cmdq->clock) < 0);
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		WARN_ON(clk_enable(cmdq->clock[i]) < 0);
-+
- 	writel(CMDQ_THR_ACTIVE_SLOT_CYCLES, cmdq->base + CMDQ_THR_SLOT_CYCLES);
- 	for (i = 0; i <= CMDQ_MAX_EVENT; i++)
- 		writel(i, cmdq->base + CMDQ_SYNC_TOKEN_UPDATE);
--	clk_disable(cmdq->clock);
-+
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		clk_disable(cmdq->clock[i]);
- }
- 
- static int cmdq_thread_reset(struct cmdq *cmdq, struct cmdq_thread *thread)
-@@ -257,8 +264,12 @@ static void cmdq_thread_irq_handler(struct cmdq *cmdq,
- 	}
- 
- 	if (list_empty(&thread->task_busy_list)) {
-+		int i;
-+
- 		cmdq_thread_disable(cmdq, thread);
--		clk_disable(cmdq->clock);
-+
-+		for (i = 0; i < cmdq->gce_num; i++)
-+			clk_disable(cmdq->clock[i]);
- 	}
- }
- 
-@@ -303,7 +314,8 @@ static int cmdq_suspend(struct device *dev)
- 	if (task_running)
- 		dev_warn(dev, "exist running task(s) in suspend\n");
- 
--	clk_unprepare(cmdq->clock);
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		clk_unprepare(cmdq->clock[i]);
- 
- 	return 0;
- }
-@@ -311,8 +323,11 @@ static int cmdq_suspend(struct device *dev)
- static int cmdq_resume(struct device *dev)
- {
- 	struct cmdq *cmdq = dev_get_drvdata(dev);
-+	int i;
-+
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		WARN_ON(clk_prepare(cmdq->clock[i]) < 0);
- 
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
- 	cmdq->suspended = false;
- 	return 0;
- }
-@@ -320,8 +335,10 @@ static int cmdq_resume(struct device *dev)
- static int cmdq_remove(struct platform_device *pdev)
- {
- 	struct cmdq *cmdq = platform_get_drvdata(pdev);
-+	int i;
- 
--	clk_unprepare(cmdq->clock);
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		clk_unprepare(cmdq->clock[i]);
- 
- 	return 0;
- }
-@@ -348,7 +365,11 @@ static int cmdq_mbox_send_data(struct mbox_chan *chan, void *data)
- 	task->pkt = pkt;
- 
- 	if (list_empty(&thread->task_busy_list)) {
--		WARN_ON(clk_enable(cmdq->clock) < 0);
-+		int i;
-+
-+		for (i = 0; i < cmdq->gce_num; i++)
-+			WARN_ON(clk_enable(cmdq->clock[i]) < 0);
-+
- 		/*
- 		 * The thread reset will clear thread related register to 0,
- 		 * including pc, end, priority, irq, suspend and enable. Thus
-@@ -401,6 +422,7 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	struct cmdq *cmdq = dev_get_drvdata(chan->mbox->dev);
- 	struct cmdq_task *task, *tmp;
- 	unsigned long flags;
-+	int i;
- 
- 	spin_lock_irqsave(&thread->chan->lock, flags);
- 	if (list_empty(&thread->task_busy_list))
-@@ -420,7 +442,9 @@ static void cmdq_mbox_shutdown(struct mbox_chan *chan)
- 	}
- 
- 	cmdq_thread_disable(cmdq, thread);
--	clk_disable(cmdq->clock);
-+
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		clk_disable(cmdq->clock[i]);
- done:
- 	/*
- 	 * The thread->task_busy_list empty means thread already disable. The
-@@ -440,6 +464,7 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 	struct cmdq_task *task, *tmp;
- 	unsigned long flags;
- 	u32 enable;
-+	int i;
- 
- 	spin_lock_irqsave(&thread->chan->lock, flags);
- 	if (list_empty(&thread->task_busy_list))
-@@ -463,7 +488,9 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 
- 	cmdq_thread_resume(thread);
- 	cmdq_thread_disable(cmdq, thread);
--	clk_disable(cmdq->clock);
-+
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		clk_disable(cmdq->clock[i]);
- 
- out:
- 	spin_unlock_irqrestore(&thread->chan->lock, flags);
-@@ -512,6 +539,9 @@ static int cmdq_probe(struct platform_device *pdev)
- 	struct cmdq *cmdq;
- 	int err, i;
- 	struct gce_plat *plat_data;
-+	struct device_node *phandle = dev->of_node;
-+	struct device_node *node;
-+	int alias_id = 0;
- 
- 	cmdq = devm_kzalloc(dev, sizeof(*cmdq), GFP_KERNEL);
- 	if (!cmdq)
-@@ -536,6 +566,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 
- 	cmdq->thread_nr = plat_data->thread_nr;
- 	cmdq->shift_pa = plat_data->shift;
-+	cmdq->gce_num = plat_data->gce_num;
- 	cmdq->irq_mask = GENMASK(cmdq->thread_nr - 1, 0);
- 	err = devm_request_irq(dev, cmdq->irq, cmdq_irq_handler, IRQF_SHARED,
- 			       "mtk_cmdq", cmdq);
-@@ -547,10 +578,24 @@ static int cmdq_probe(struct platform_device *pdev)
- 	dev_dbg(dev, "cmdq device: addr:0x%p, va:0x%p, irq:%d\n",
- 		dev, cmdq->base, cmdq->irq);
- 
--	cmdq->clock = devm_clk_get(dev, "gce");
--	if (IS_ERR(cmdq->clock)) {
--		dev_err(dev, "failed to get gce clk\n");
--		return PTR_ERR(cmdq->clock);
-+	if (cmdq->gce_num > 1) {
-+		for_each_child_of_node(phandle->parent, node) {
-+			alias_id = of_alias_get_id(node, "gce");
-+			if (alias_id < cmdq->gce_num) {
-+				cmdq->clock[alias_id] = of_clk_get(node, 0);
-+				if (IS_ERR(cmdq->clock[alias_id])) {
-+					dev_err(dev, "failed to get gce clk: %d\n",
-+						alias_id);
-+					return PTR_ERR(cmdq->clock[alias_id]);
-+				}
-+			}
-+		}
-+	} else {
-+		cmdq->clock[alias_id] = devm_clk_get(&pdev->dev, "gce");
-+		if (IS_ERR(cmdq->clock[alias_id])) {
-+			dev_err(dev, "failed to get gce clk\n");
-+			return PTR_ERR(cmdq->clock[alias_id]);
-+		}
- 	}
- 
- 	cmdq->mbox.dev = dev;
-@@ -586,7 +631,9 @@ static int cmdq_probe(struct platform_device *pdev)
- 	}
- 
- 	platform_set_drvdata(pdev, cmdq);
--	WARN_ON(clk_prepare(cmdq->clock) < 0);
-+
-+	for (i = 0; i < cmdq->gce_num; i++)
-+		WARN_ON(clk_prepare(cmdq->clock[i]) < 0);
- 
- 	cmdq_init(cmdq);
- 
-@@ -598,15 +645,35 @@ static const struct dev_pm_ops cmdq_pm_ops = {
- 	.resume = cmdq_resume,
- };
- 
--static const struct gce_plat gce_plat_v2 = {.thread_nr = 16};
--static const struct gce_plat gce_plat_v3 = {.thread_nr = 24};
--static const struct gce_plat gce_plat_v4 = {.thread_nr = 24, .shift = 3};
-+static const struct gce_plat gce_plat_v2 = {
-+	.thread_nr = 16,
-+	.shift = 0,
-+	.gce_num = 1
-+};
-+
-+static const struct gce_plat gce_plat_v3 = {
-+	.thread_nr = 24,
-+	.shift = 0,
-+	.gce_num = 1
-+};
-+
-+static const struct gce_plat gce_plat_v4 = {
-+	.thread_nr = 24,
-+	.shift = 3,
-+	.gce_num = 1
-+};
-+
-+static const struct gce_plat gce_plat_v5 = {
-+	.thread_nr = 24,
-+	.shift = 3,
-+	.gce_num = 2
-+};
- 
- static const struct of_device_id cmdq_of_ids[] = {
- 	{.compatible = "mediatek,mt8173-gce", .data = (void *)&gce_plat_v2},
- 	{.compatible = "mediatek,mt8183-gce", .data = (void *)&gce_plat_v3},
- 	{.compatible = "mediatek,mt6779-gce", .data = (void *)&gce_plat_v4},
--	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_v4},
-+	{.compatible = "mediatek,mt8195-gce", .data = (void *)&gce_plat_v5},
- 	{}
- };
- 
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
