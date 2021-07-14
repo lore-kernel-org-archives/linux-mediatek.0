@@ -2,95 +2,71 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D81C2C07E9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 18:20:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC732C12002
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 19:59:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9987C613C9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 18:20:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9987C613C9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 900A661400
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 19:59:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 900A661400
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=qRs6kGVnG1sMB8HcA3klNc22fMGQQp8XBQFX2z1jWPQ=; b=WE3IYDUCMyEbZKCLmDgrLPCDkF
-	dpB15puSZcKEbaB8psYBah0X9QjvV+bwQOY6DMBcLTBt9S0FzE3Iki2UeQrpTlFCcIuWfxpaXyzoj
-	HrNnkxXz7ntUHvzq1ckceFNKAUk74EytkgLGkEHjjUhKWWYa7QUR1sFgbs3S61+DTYf1NxAg6SWDd
-	Tvw6BoOoPwrI4nyQwhj2KoeVdPPomPKAYdI4Q5s4Y1+mpcPhm1HYslVaBAH37lV9GlAzfbaHnRK25
-	HwRalK1uRY5JIIe5NFiZbF81CBgyxXwNAQ4t+SVncpowJD/H4+h6ltNWHQHnjtBfJ1lkNEET2sJl3
-	zSP6mm3w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ro5oVQihcdN9G/tKtSfE4LWLX3qeLQEeT5sEFhNhvS4=; b=N5IKa9KAEkwP4B
+	fPLuRFhUCw0a+YtgdWKkGPdeZXVQs/mMyxkiWnRRDDuesO0Unx8rRljKHCGFIdU3Az4c2aPTQ1tQ3
+	lE5yUoOgCIq2snLSJ6ltBa6+CRLcca7lO33KMrMQqrkUymQzd1bYr7mkd09IiZvqungCOExe5P7kt
+	/3vyv9pubztxTo0ZsyFrEl9ECBfntrBEuKC+va1ymizYHWGZSiTbFUUGqaj7wjtP3RtZQoRAhHPcv
+	gTDQrex8fe7PJVioGLh7wKwMoLDEss66MEAmDIozlImtP9TKfJ3M2l1PDXIPqJq5un+wJfJe65MNM
+	GoL+5kUfhjcXHr7zutOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3jUl-00EPZD-9p; Wed, 14 Jul 2021 18:20:31 +0000
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
+	id 1m3l1w-00EmKy-Eg; Wed, 14 Jul 2021 19:58:52 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3jUi-00EPXg-QK; Wed, 14 Jul 2021 18:20:30 +0000
-Received: by mail-oo1-xc36.google.com with SMTP id
- j4-20020a4ac5440000b029025992521cf0so848558ooq.7; 
- Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IZHV17HrDm3mXvlMglOQgvLLp42WlpMA1EiV1Ps+/BI=;
- b=H+vm6oqHFE6x5nWY0AIBWZrMU/JFV1E7RlfPV+htdU7SqDZZNrKwrdLtrafZc/AorS
- A1cI3NKH0fEKqOI4Al014QT8bwC0hHpab3fl6RAGB1cFpYFLf8fnP2oh4Rzrr+dfGKpw
- Mf0r3bS175zI3IYORzlw2VwRPBmPKAVYUF2pmBbeHNKu4K6n75aOez1hPrxCwm6UtxNK
- Jy+67R0NeXPH1meUzyTOjHe7YgUH46e0TKUhMdKS1PlV7MtP4wCP3tVD8ePGffDa5Xee
- 9VcZqpMV9OmUPoBjvETHo5dMsjF5p98QUm1pHe16Z1ij/jmr9TMkRHlOPr8vZjoHrMJl
- e0cQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IZHV17HrDm3mXvlMglOQgvLLp42WlpMA1EiV1Ps+/BI=;
- b=LWd8fTcE0xW4PbzfzPZCEC9JbXsEYb1Y7NT18GOA0JZxJQnDf0QfrJArAGwtrqBfPW
- t4KXYM4xn1SLm2k3EIpVIa+OFCnQRN577Gh/bBY81+z/vubAEKVMMxfxl9lJuxQXLElQ
- pReP2XjMMHXARwacBapZ3fozHAYZYS8wiEddyzj0kUEd2HecIW7l5SAkARG1xr40yy1m
- m4gAps1IhQGt4Xmce6Qd38HHH2ahKoWjlkFYdknX96K4t/W15YIUsLSndzbyzHejCDjv
- xrUoMoMM75QUFUenmGTmlUfSLDJ5twe3LQuvITywIuQ7CFI+XwzRRMNIVE3d8EjHSy7S
- pN3w==
-X-Gm-Message-State: AOAM531+YoUoRT8ap/XlFPhXxHi7dNBesZoKSolcBsXBwC481Od8zd8/
- g9GPedKZXOar4KSlRYuNUWY=
-X-Google-Smtp-Source: ABdhPJzsxslVMe/u0X4ex3JA+B6DQS3NdJKCEqD6Tg0m4IaMXYXw659YBjHMM1dTLnt4gmZP+/qkdg==
-X-Received: by 2002:a4a:97ed:: with SMTP id x42mr8831385ooi.49.1626286827439; 
- Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
-Received: from Davids-MacBook-Pro.local ([8.48.134.38])
- by smtp.googlemail.com with ESMTPSA id b10sm645794oiy.4.2021.07.14.11.20.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Jul 2021 11:20:27 -0700 (PDT)
-Subject: Re: [PATCH] ipv6: remove unused local variable
-To: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
- <davem@davemloft.net>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com, rocco.yue@gmail.com
-References: <20210714151533.6210-1-rocco.yue@mediatek.com>
-From: David Ahern <dsahern@gmail.com>
-Message-ID: <c524c725-84ce-0106-6e28-bf5c7dc36e30@gmail.com>
-Date: Wed, 14 Jul 2021 12:20:25 -0600
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
- Gecko/20100101 Thunderbird/78.11.0
+ id 1m3kiN-00Ebpy-Ux; Wed, 14 Jul 2021 19:38:41 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id EDC7E613D6;
+ Wed, 14 Jul 2021 19:38:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1626291519;
+ bh=oYfTxqLGVBT5yg+xMwCwpdKCTFpfJ5wd+O/hqJoewfc=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=pDOEL3HDnvdkfg0GgeT1Rogxj+wB62549G5BO48PERFx/bnTN+FgbetGh1b9M6XYw
+ c6pDxfirHqhCi46PctRLRksp3Viid6aqDL2buVpqr5nzxtyG/YrKzf9XybeE7hEMLr
+ oCf2TInAAJ+4I4Q2bwc9fjugrw/zqr7BjZyOE5W+ZQWo5A8DbQE8WW3VU8I67YlrN5
+ nmyZ3MkY0mDh/xqQLSa+t0gEyO+MvpN+x0i9BG6kipnc6A3lmyPZr/lCm01MV2Cr20
+ 86S+gY47isYeSSD9snuUtEozaaznm9QEBoOeHnOyocqHHoTRMSEK406jK/weJHx2hc
+ NElvxEiq3cE+A==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Zou Wei <zou_wei@huawei.com>, Hulk Robot <hulkci@huawei.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Sasha Levin <sashal@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.13 026/108] soc: mediatek: add missing
+ MODULE_DEVICE_TABLE
+Date: Wed, 14 Jul 2021 15:36:38 -0400
+Message-Id: <20210714193800.52097-26-sashal@kernel.org>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210714193800.52097-1-sashal@kernel.org>
+References: <20210714193800.52097-1-sashal@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20210714151533.6210-1-rocco.yue@mediatek.com>
-Content-Language: en-US
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_112028_940352_4D391619 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20210714_123840_052291_ACFB37A9 
+X-CRM114-Status: UNSURE (   9.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,21 +83,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 7/14/21 9:15 AM, Rocco Yue wrote:
-> The local variable "struct net *net" in the two functions of
-> inet6_rtm_getaddr() and inet6_dump_addr() are actually useless,
-> so remove them.
-> 
-> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
-> ---
->  net/ipv6/addrconf.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
-> 
+From: Zou Wei <zou_wei@huawei.com>
 
-please add 'net' or 'net-next' in the subject line.  e.g.,
-[PATCH net-next]
+[ Upstream commit ba96de3ae5a7e2121cac80053b277eb2ab51a0ae ]
 
-Reviewed-by: David Ahern <dsahern@kernel.org>
+This patch adds missing MODULE_DEVICE_TABLE definition which generates
+correct modalias for automatic loading of this driver when it is built
+as an external module.
+
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Zou Wei <zou_wei@huawei.com>
+Link: https://lore.kernel.org/r/1620705350-104687-1-git-send-email-zou_wei@huawei.com
+Signed-off-by: Matthias Brugger <matthias.bgg@gmail.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/soc/mediatek/mtk-devapc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
+index f1cea041dc5a..7c65ad3d1f8a 100644
+--- a/drivers/soc/mediatek/mtk-devapc.c
++++ b/drivers/soc/mediatek/mtk-devapc.c
+@@ -234,6 +234,7 @@ static const struct of_device_id mtk_devapc_dt_match[] = {
+ 	}, {
+ 	},
+ };
++MODULE_DEVICE_TABLE(of, mtk_devapc_dt_match);
+ 
+ static int mtk_devapc_probe(struct platform_device *pdev)
+ {
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
