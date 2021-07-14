@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B901C07E95
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 03:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DB5FC07E95
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 03:07:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 100DD61380
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 03:01:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 100DD61380
+	by mail.kernel.org (Postfix) with ESMTPS id 8C887613AA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 03:07:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C887613AA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=41Qva/vpnPGOTIMW0mZjXU0VKVDRMFVn8jnSxwJ02XI=; b=kx0uAUnWfAAeAD
-	NcqTgdjVk2AAu9oayrIlJRB4Ao3SMhmBmhEqlhB1XQBGAQBL/Eij//NXkAX5YBGcDG3B/sh3JEUuN
-	igd/xOxWwgJhyf+nEfQ4m1XPpc0oGmJkvsM95ASftVu/K7oRc8IvNc/dRTxCw9/0KYIR07HuS3iR5
-	iLWt0nzeSzot8e4Hqby85CBVoDucVpOrTlhwkOrC0nyxodbn/iY6oBZ52/Johl7b935GbF23AmBEg
-	4rDTGVd/5mhDV32X0aA185F4O06RrQIC+QuNC2Eftm385RCePnU9sG80+mRRwS+DRAlEL0bkeZ8UA
-	ETZTd8+CebTPzy8PC87A==;
+	List-Owner; bh=x4reguCt54DCt+6edQxJESoR1GTUCxiSqhaz1z6iA5g=; b=cihrPERaDcmr5Q
+	2j6VsjbQwTUmkYM9wsfy8GAdBjdrAs+m+JbPPanxBMC3NLUv97JM8zmttn7/JjsNf3TNgHJSLXd/E
+	PA5UyRjlj2B6ldV7i/vdoIb7GBZqDBP1q9Y35qhuqVDkZJruQsY5a02vqyY8/Y/f9aPu4z0aRi1cy
+	3Y+zEKJQsoWe+2x4TtWR0FY+/ftump0zDTxnjO6mIbNFssd8SXQQFgEXm6X8fddlc3PnJ1WPEcQkM
+	oZmI/pWxfsnuNLw4dxr/zaE0qQcg2yv/sAx1KSPzET+ZCGrxZMNWj57OGHaJKPjFzYxh3naZ5wwOv
+	7NVRghYQjPYE0tR14avA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3V9g-00C8Cj-HH; Wed, 14 Jul 2021 03:01:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3VFR-00C9s3-4N; Wed, 14 Jul 2021 03:07:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3V8a-00C7mz-65; Wed, 14 Jul 2021 03:00:41 +0000
-X-UUID: 45fdd9f416104f7fb231690a2f187347-20210713
+ id 1m3VFC-00C9om-8U; Wed, 14 Jul 2021 03:07:31 +0000
+X-UUID: 3030543cfade41028fd653904613446f-20210713
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=mnyIp8HsXb0h1cjvl3mefYa54+ful5dnG1HHmkCdtzg=; 
- b=h7lpuQqMzhqEFKsNM51SeZWIyF03Of0iWyL1jWqEgINW60hR/LgEVz3P7Pa6zWAhuIw5fa3tkPzRO+b2EUaaTen0xQXC5d/Az0ahthliNNN7ovpKifX997AOUeVJda/OlwwJ8g+MhposQtO5Red3/3tN523iK/XSnIWx3+yDaT0=;
-X-UUID: 45fdd9f416104f7fb231690a2f187347-20210713
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=fTFksYjJCri50f8/UoVGeYeoghdz8Iw2zQyzkCgQ5p8=; 
+ b=YgFQr5sgFln8KqFUa0QOp5SIV8c/McokU7qSPF6tECJje0Mpiy5KpUy1/tz2IWqVK4OzD551PWPDwOGykSgAH3ubATqsZ5xkwIvLb1HkRotquW08jCRc2p/QJD+49O/4RfOYAyvDeXL9IdkYTStDdppr3YMjAPY99tKuOZxlZHE=;
+X-UUID: 3030543cfade41028fd653904613446f-20210713
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1203106960; Tue, 13 Jul 2021 20:00:35 -0700
+ with ESMTP id 1651490060; Tue, 13 Jul 2021 20:07:27 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 13 Jul 2021 19:57:02 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 13 Jul 2021 19:57:25 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 10:57:00 +0800
+ 15.0.1497.2; Wed, 14 Jul 2021 10:57:23 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 14 Jul 2021 10:56:58 +0800
+ Transport; Wed, 14 Jul 2021 10:57:21 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -74,18 +75,19 @@ CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
  <p.zabel@pengutronix.de>, Xia Jiang <xia.jiang@mediatek.com>, Tiffany Lin
  <tiffany.lin@mediatek.com>, Dafna Hirschfeld
  <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Eizan
- Miyamoto" <eizan@chromium.org>, <anthony.huang@mediatek.com>
-Subject: [PATCH v6 02/11] iommu/mediatek: Add probe_defer for smi-larb
-Date: Wed, 14 Jul 2021 10:56:17 +0800
-Message-ID: <20210714025626.5528-3-yong.wu@mediatek.com>
+ Miyamoto" <eizan@chromium.org>, <anthony.huang@mediatek.com>, Rick Chang
+ <rick.chang@mediatek.com>
+Subject: [PATCH v6 04/11] media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
+Date: Wed, 14 Jul 2021 10:56:19 +0800
+Message-ID: <20210714025626.5528-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210714025626.5528-1-yong.wu@mediatek.com>
 References: <20210714025626.5528-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210713_200040_276074_57380A3C 
-X-CRM114-Status: GOOD (  18.14  )
+X-CRM114-CacheID: sfid-20210713_200730_352497_2A306CE7 
+X-CRM114-Status: GOOD (  18.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,55 +104,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prepare for adding device_link.
+MediaTek IOMMU has already added device_link between the consumer
+and smi-larb device. If the jpg device call the pm_runtime_get_sync,
+the smi-larb's pm_runtime_get_sync also be called automatically.
 
-The iommu consumer should use device_link to connect with the
-smi-larb(supplier). then the smi-larb should run before the iommu
-consumer. Here we delay the iommu driver until the smi driver is
-ready, then all the iommu consumer always is after the smi driver.
+After removing the larb_get operations, then mtk_jpeg_clk_init is
+also unnecessary. Remove it too.
 
-When there is no this patch, if some consumer drivers run before
-smi-larb, the supplier link_status is DL_DEV_NO_DRIVER(0) in the
-device_link_add, then device_links_driver_bound will use WARN_ON
-to complain that the link_status of supplier is not right.
-
+CC: Rick Chang <rick.chang@mediatek.com>
+CC: Xia Jiang <xia.jiang@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Evan Green <evgreen@chromium.org>
+Acked-by: Rick Chang <rick.chang@mediatek.com>
 ---
-since [1], device_is_bound is not allowed to be EXPORT. It will
-affect this driver built as module. thus still use dev.driver here.
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 45 +------------------
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  2 -
+ 2 files changed, 2 insertions(+), 45 deletions(-)
 
-[1] https://lore.kernel.org/patchwork/patch/1334670/
----
- drivers/iommu/mtk_iommu.c    | 2 +-
- drivers/iommu/mtk_iommu_v1.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6f7c69688ce2..a02dde094788 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -855,7 +855,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			id = i;
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+index a89c7b206eef..4fea2c512434 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
+@@ -22,7 +22,6 @@
+ #include <media/v4l2-ioctl.h>
+ #include <media/videobuf2-core.h>
+ #include <media/videobuf2-dma-contig.h>
+-#include <soc/mediatek/smi.h>
  
- 		plarbdev = of_find_device_by_node(larbnode);
--		if (!plarbdev) {
-+		if (!plarbdev || !plarbdev->dev.driver) {
- 			of_node_put(larbnode);
- 			return -EPROBE_DEFER;
- 		}
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 778e66f5f1aa..d9365a3d8dc9 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -594,7 +594,7 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 		}
+ #include "mtk_jpeg_enc_hw.h"
+ #include "mtk_jpeg_dec_hw.h"
+@@ -1055,10 +1054,6 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+ {
+ 	int ret;
  
- 		plarbdev = of_find_device_by_node(larbnode);
--		if (!plarbdev) {
-+		if (!plarbdev || !plarbdev->dev.driver) {
- 			of_node_put(larbnode);
- 			return -EPROBE_DEFER;
- 		}
+-	ret = mtk_smi_larb_get(jpeg->larb);
+-	if (ret)
+-		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
+-
+ 	ret = clk_bulk_prepare_enable(jpeg->variant->num_clks,
+ 				      jpeg->variant->clks);
+ 	if (ret)
+@@ -1069,7 +1064,6 @@ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
+ {
+ 	clk_bulk_disable_unprepare(jpeg->variant->num_clks,
+ 				   jpeg->variant->clks);
+-	mtk_smi_larb_put(jpeg->larb);
+ }
+ 
+ static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
+@@ -1284,35 +1278,6 @@ static struct clk_bulk_data mtk_jpeg_clocks[] = {
+ 	{ .id = "jpgenc" },
+ };
+ 
+-static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
+-{
+-	struct device_node *node;
+-	struct platform_device *pdev;
+-	int ret;
+-
+-	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
+-	if (!node)
+-		return -EINVAL;
+-	pdev = of_find_device_by_node(node);
+-	if (WARN_ON(!pdev)) {
+-		of_node_put(node);
+-		return -EINVAL;
+-	}
+-	of_node_put(node);
+-
+-	jpeg->larb = &pdev->dev;
+-
+-	ret = devm_clk_bulk_get(jpeg->dev, jpeg->variant->num_clks,
+-				jpeg->variant->clks);
+-	if (ret) {
+-		dev_err(&pdev->dev, "failed to get jpeg clock:%d\n", ret);
+-		put_device(&pdev->dev);
+-		return ret;
+-	}
+-
+-	return 0;
+-}
+-
+ static void mtk_jpeg_job_timeout_work(struct work_struct *work)
+ {
+ 	struct mtk_jpeg_dev *jpeg = container_of(work, struct mtk_jpeg_dev,
+@@ -1333,11 +1298,6 @@ static void mtk_jpeg_job_timeout_work(struct work_struct *work)
+ 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ }
+ 
+-static inline void mtk_jpeg_clk_release(struct mtk_jpeg_dev *jpeg)
+-{
+-	put_device(jpeg->larb);
+-}
+-
+ static int mtk_jpeg_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpeg_dev *jpeg;
+@@ -1376,7 +1336,8 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 		goto err_req_irq;
+ 	}
+ 
+-	ret = mtk_jpeg_clk_init(jpeg);
++	ret = devm_clk_bulk_get(jpeg->dev, jpeg->variant->num_clks,
++				jpeg->variant->clks);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
+ 		goto err_clk_init;
+@@ -1442,7 +1403,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
+ 	v4l2_device_unregister(&jpeg->v4l2_dev);
+ 
+ err_dev_register:
+-	mtk_jpeg_clk_release(jpeg);
+ 
+ err_clk_init:
+ 
+@@ -1460,7 +1420,6 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
+ 	video_device_release(jpeg->vdev);
+ 	v4l2_m2m_release(jpeg->m2m_dev);
+ 	v4l2_device_unregister(&jpeg->v4l2_dev);
+-	mtk_jpeg_clk_release(jpeg);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+index 595f7f10c9fd..3e4811a41ba2 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+@@ -85,7 +85,6 @@ struct mtk_jpeg_variant {
+  * @alloc_ctx:		videobuf2 memory allocator's context
+  * @vdev:		video device node for jpeg mem2mem mode
+  * @reg_base:		JPEG registers mapping
+- * @larb:		SMI device
+  * @job_timeout_work:	IRQ timeout structure
+  * @variant:		driver variant to be used
+  */
+@@ -99,7 +98,6 @@ struct mtk_jpeg_dev {
+ 	void			*alloc_ctx;
+ 	struct video_device	*vdev;
+ 	void __iomem		*reg_base;
+-	struct device		*larb;
+ 	struct delayed_work job_timeout_work;
+ 	const struct mtk_jpeg_variant *variant;
+ };
 -- 
 2.18.0
 _______________________________________________
