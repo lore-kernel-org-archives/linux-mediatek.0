@@ -2,86 +2,103 @@ Return-Path: <SRS0=d5Ie=MG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DAC5FC07E9A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:21:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3914BC07E9A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:24:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2D1C613B6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:21:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2D1C613B6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id EF8076128C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Jul 2021 11:24:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF8076128C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s4/oJ2c+yYwo5Iz2Cq47oaamGIPezpz09LO641cLTKA=; b=eKYmQuK0RDWOoM
-	EYkUqxB7asXSDkf3VU186ehLWrRGcS5/TfA2WFwESd1XKn6w+D6HWKBWT5gCQvctWuREhcMXcDN2f
-	x1z0zXEhnJoc9QDz/x5uB5n2TSo5yMBNI2f44bnGYtMWK8dfyTl+gXnb86hwxdRG9N/GfQtRA+ORb
-	3IzcUiGTbFD3A+Uz+eH342y/juT+X72oJbsY88+m8wfF1wEUkGOgQO1IQQVCrx9FYo7ec2NVw7Y40
-	qZ9F4Ofb8AOQxzVKJQLq/YxFA7s5y89aMIRvjtAWjzcWoINuEM1uP7/YfQZhKZRKmdbEZlaBk0pgB
-	Le8uGA3V5x9rsbK0Gtrg==;
+	List-Owner; bh=COZ0SbbnirK8fO6sQ/PjQpwYglCeUG84QHnUMm8bxFI=; b=zAtuVMcvnonLsU
+	ePZkAJpZWCp8JlCKgubcb/UnW7moVqPpJL3fg6kvMf80TcQBcHu1ylE0FCzZ3O/0VAA7zXKyj8hYM
+	CwNEkv9Epqlb26ytM5PQ4UkaoqGP0vT3JuFRcj0/bK9oJ2orf+COtT2ez6ClZhECjpizPwhAh2jju
+	U651J6cyzN4Ci4lT1NkHfhT79a0ixMoDbNGkpS3uirnzytdNpuIty2AW8790XmJEDW/rytuj5ttw2
+	CxLFZUC3O6EmAhOUBMFPvX4knVNfs+33Ymw+gdb47mp6Xn+r7JL/ke/su5XpVXrvcS8hVuz7z1K4z
+	8JuY+cPrfcXg+25iHhUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3cwc-00DKKl-9l; Wed, 14 Jul 2021 11:20:50 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3czc-00DLsi-Ay; Wed, 14 Jul 2021 11:23:56 +0000
+Received: from mout.gmx.net ([212.227.15.19])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3cwE-00DKBr-7s; Wed, 14 Jul 2021 11:20:27 +0000
-X-UUID: 91f6c532758148ba8d277aea63223dba-20210714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JvxaiGfMsn7QBnaqj6qePbCrrXbpLHrwC0rk4w7ViDc=; 
- b=sbz3OeVTXFtBumuY38Rq1MKrRmoRIIaGKIPQhOqcbuIdIemzVL2I1/g3MMo6AIdJr9jTQnK4WzVho3wknUxYK+Duzfj8ZGlKTTdh8xRHnZfMAjzJ4zZm+Z9H5E0DmViR9gazXPZBqw1ifPo9Ue/OuFqLHLLxRSmb3n8c2OJIYn0=;
-X-UUID: 91f6c532758148ba8d277aea63223dba-20210714
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 707002589; Wed, 14 Jul 2021 04:20:21 -0700
-Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 04:20:19 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
- (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 14 Jul 2021 19:20:13 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 14 Jul 2021 19:20:12 +0800
-Message-ID: <1626261612.8134.1.camel@mhfsdcap03>
-Subject: Re: [PATCH v3 1/2] dt-bindings: PCI: mediatek-gen3: Add property to
- disable dvfsrc voltage request
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Qizhong Cheng <qizhong.cheng@mediatek.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <youlin.pei@mediatek.com>, <chuanjia.liu@mediatek.com>,
- <ot_jiey.yang@mediatek.com>, <drinkcat@chromium.org>,
- <Rex-BC.Chen@mediatek.com>, Krzysztof Wilczyski <kw@linux.com>,
- <Ryan-JH.Yu@mediatek.com>
-Date: Wed, 14 Jul 2021 19:20:12 +0800
-In-Reply-To: <1625024423.20084.12.camel@mhfsdcap03>
-References: <20210630024934.18903-1-jianjun.wang@mediatek.com>
- <20210630024934.18903-2-jianjun.wang@mediatek.com>
- <1625024423.20084.12.camel@mhfsdcap03>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1m3czY-00DLpr-Pg; Wed, 14 Jul 2021 11:23:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1626261811;
+ bh=bRr42QOU3WxiGukaiKaQo9qQhX/uefmYG0L+VFBR0cY=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=MH7MDNZQYjkv/8bbwBkSy/dTHjnZEPLNjx58GhW9NiKHHaEhkZIBMgl+1jheOfYNx
+ sjSLqyorceUCLaV+PPaVTyVLnTnuLOwvgbv9UIdtSSouT/ugGyPoD0cnAxEyO/tBby
+ KIzRPQDofNHx0bvw8YjucC6+kgI+v0FtYHZpN/kY=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.152.136] ([217.61.152.136]) by web-mail.gmx.net
+ (3c-app-gmx-bs01.server.lan [172.19.170.50]) (via HTTP); Wed, 14 Jul 2021
+ 13:23:31 +0200
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 2BFD83614F95DED623F532636757125FFAAE8188D0AA27564AC8C064EC7B622D2000:8
-X-MTK: N
+Message-ID: <trinity-345a7606-49c0-417a-b40a-5ff156332354-1626261811356@3c-app-gmx-bs01>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel
+ <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Evan Green <evgreen@chromium.org>,
+ Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>, Will
+ Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com, Nicolas Boichat
+ <drinkcat@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
+ anan.sun@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
+ acourbot@chromium.org, linux-media@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Xia Jiang <xia.jiang@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Dafna Hirschfeld
+ <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Eizan
+ Miyamoto <eizan@chromium.org>, anthony.huang@mediatek.com
+Subject: Aw: Re:  [PATCH v6 00/11] Clean up "mediatek,larb"
+Date: Wed, 14 Jul 2021 13:23:31 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <1626261496.14352.16.camel@mhfsdcap03>
+References: <20210714025626.5528-1-yong.wu@mediatek.com>
+ <trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01>
+ <1626261496.14352.16.camel@mhfsdcap03>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:C0a90b1taoG2cfcfP1pde1q2MNu5r1lIgwNvN5NXJS81Z6XyWAFZhMImid05bZKAZUc1Z
+ fSbF+ihXoQ925TRhUh/2PryeQrkBTUM6JIUaLAvZhNfmBG35Ckp7hDn2PsC6SOkInfw03TSGwAnq
+ QVkUFPFGffmEj3883aNhVDGijVAV0Dj7a1YKE2SJcV1ysSSD1b5nQ6xxg4LGX+ho7QSyvTaUSA5/
+ VeO3HfkSU+3+B2YcXrhadx1ynHb86Y/11K6GLOIm5WEjhoUM5E0xij5biHeSELX8yOKYJratdjjD
+ DA=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:DZIjrERjTx0=:zO1GGiDuxmWNpY4kEGNX+H
+ Qsmf9C4I97mAD+wP1pU8z1eVgOesso/R5WsIidAM5D5eoNM9Jq9vra+7B0hV+BiXqHlm/N2U8
+ AU3rTTheff7I21iXOz3ILBB3bGN35C3B0KptIb4TN1MAOKfCNobq+RN/zUswYDl0kZ4eUR9c0
+ tQGm/bjLfNmBpNJHquyGdQvZYZNq2DH8QApwTchWdAEnpNcF+KOpKXpYjySgkTnaBYwVj27pW
+ nDbtsU5XednjYl88TCAk3MdLCU/njHPVEi8eLjrm12TvLdsgmyoYJgQ3BqBfit76+TcdTzEaj
+ 8oSosUKEC17F7PKZVCu360ZGcAfd7x+mFySyONxorqV3I0Ge29/VKMmQCUx6U4tGyE/tedka0
+ RX/CBC10tyIElacx5U7+9OoA+hRzKwTS9LRYmixBzk4cXG/5G4+j5ljnyn57NrDQp9fuMGkwH
+ vk4taR0w6XvN8s45fZ+qBA/Vzfq/o2D5Jnk1CrTsYwZRGO7EH3DubSJEKxu8Q/SfXw+yPfXD2
+ QcYHX3vFQ95LjF+yBhj7MDkk83UPCbZujqhgGuzFULXV9/KpR40RKpwh37QTl0x+I283hMmgo
+ yZjPMs8hjkNCjgYaF3X/Y6tG+n2TFGBWh36cu9O5iTbFSEXYKv0BUaEKLtwxiEUfLEYqFZeP1
+ RGJafeHCi3VQkh24Z0kvP/wCasLOFs3jsuq2je+vhXaEdZJ9NeCB9D3wVis0CVRxceZ/6F0z+
+ aWWCGUHZw8ekZPLQRrauLJKsPcMo3Awj4mlBI3ggYs1VbVrpwEBT98jdeIMoiUs72pausS9ap
+ BJ1DOYDL0HTAvkX8qv8ayhDVShLTwcji0NvCJczKYjZbdxnY7c=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_042026_346869_5D66C3FB 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20210714_042353_301145_2A927A1F 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,55 +115,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> Gesendet: Mittwoch, 14. Juli 2021 um 13:18 Uhr
+> Von: "Yong Wu" <yong.wu@mediatek.com>
+> Hi Frank,
+>
+> Thanks for your report. mt7623 use mtk_iommu_v1.c.
+>
+> I will try to reproduce this locally.
+
 Hi,
 
-Just gentle ping for this patch set, please kindly let me know your
-comments about this patch set.
+as far as i have debugged it dev->iommu_group is NULL, so it crashes on first access (dev_info)
 
-Thanks.
+drivers/iommu/iommu.c:
 
-On Wed, 2021-06-30 at 11:40 +0800, Qizhong Cheng wrote:
-> Reviewed-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
-> Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
-> 
-> On Wed, 2021-06-30 at 10:49 +0800, Jianjun Wang wrote:
-> > Add property to disable dvfsrc voltage request, if this property
-> > is presented, we assume that the requested voltage is always
-> > higher enough to keep the PCIe controller active.
-> > 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > ---
-> >  .../devicetree/bindings/pci/mediatek-pcie-gen3.yaml       | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > index e7b1f9892da4..3e26c032cea9 100644
-> > --- a/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie-gen3.yaml
-> > @@ -96,6 +96,12 @@ properties:
-> >    phys:
-> >      maxItems: 1
-> >  
-> > +  disable-dvfsrc-vlt-req:
-> > +    description: Disable dvfsrc voltage request, if this property is presented,
-> > +      we assume that the requested voltage is always higher enough to keep
-> > +      the PCIe controller active.
-> > +    type: boolean
-> > +
-> >    '#interrupt-cells':
-> >      const: 1
-> >  
-> > @@ -166,6 +172,8 @@ examples:
-> >                       <&infracfg_rst 3>;
-> >              reset-names = "phy", "mac";
-> >  
-> > +            disable-dvfsrc-vlt-req;
-> > +
-> >              #interrupt-cells = <1>;
-> >              interrupt-map-mask = <0 0 0 0x7>;
-> >              interrupt-map = <0 0 0 1 &pcie_intc 0>,
-> 
-> 
+ 923 void iommu_group_remove_device(struct device *dev)
+ 924 {
+ 925 printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
+ 926     struct iommu_group *group = dev->iommu_group;
+ 927     struct group_device *tmp_device, *device = NULL;
+ 928
+ 929 printk(KERN_ALERT "DEBUG: Passed %s %d 0x%08x\n",__FUNCTION__,__LINE__,(unsigned int)group);
+ 930     dev_info(dev, "Removing from iommu group %d\n", group->id);
+
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
