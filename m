@@ -7,51 +7,51 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA61AC47E48
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85444C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:49:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A439761358
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:48:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A439761358
+	by mail.kernel.org (Postfix) with ESMTPS id 3015061362
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:49:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3015061362
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bj4kQw3/pA5GZhI8pupk2q/S5YzBOLthNl16GmTceG4=; b=eq2Ivy13EvXGvb
-	h54C7StntaEauLFGL+xHneEhthxHCJUsfF3mkhjAZH+X5HUuIJuGmT+/piOg5rAa9/3X0Q+4Wi/X3
-	AuBK8wgpXTOjiLAYBjYzzJ//ERMzMqYb0LkvPn3K7x97Ya4HmcPzr98/BB304xh3jX4dblTI4b7co
-	R6DD9NVGZkw8s287aEjOImL9fcFEzdmU/CXyMKgphQZvnpaupE+JDevQHYvBKTY4Gcd3vs4Lk8ycC
-	KDLaJ7JLwKf4NFj4u574KSS2CcCH+9ADKmkLVwIBsftGDbT26axIkyHaFNMEmLNBWWp4DWlOqEWx4
-	Iih0TH2T/5e4Bia8SKAA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MDnX5xHmQdMa5FJIIlDx9sILmcTioFcEM6OLXeUYOTg=; b=4n0s6pisQPtMTw
+	4bNHtUmMrW4Sy4F8i+BHcLgm5EhcH+EZ+d7FWCAYcY6PCZfqkURZfFIM4tDFYpp+7PPjOqDxBJjUh
+	I3/7guzMmcRQpGwyUV6iBvzag/s4N0iX1I4BZ4m+XYhAWrX8wUu9ZgOHeMEiXyCxTdZtITDKqP6VF
+	WW5pXv0fIYN5P25sHccwP2b+lbLjCe03x6UfgRuOJaP5ABZigd0LU/q/kFGyMD1rjyrz312jNdoZo
+	U1HVrXja/7qrbU2YeZQlWX3Hs/rxY1fcEDmuxbh6iMhiiAwOulTiebVAXz7pE5GoY+ZdERYSEqEvn
+	+duUoIinVrqw0SGvTaKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3vAj-00HJ74-KG; Thu, 15 Jul 2021 06:48:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m3vAw-00HJA6-AX; Thu, 15 Jul 2021 06:48:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3vAh-00HJ5N-99; Thu, 15 Jul 2021 06:48:36 +0000
-X-UUID: 9a8a799dc9eb4427b0b7b72b54cbe9d7-20210714
+ id 1m3vAi-00HJ5U-8I; Thu, 15 Jul 2021 06:48:37 +0000
+X-UUID: ec9ccd6b27ac4a2b97955554e4da9fa9-20210714
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IF3uVjQ/ywZg0sFEpIqfcmfR7FbloG4Gv+OJZDMAreI=; 
- b=DnrlpGTUXea0uZ3m5++4DrBdlIqzMrKe8aIn/UKgCrVPdZuqvbqDAT+wwTxdiDRaCHM66B+OivZMZkzL4r8ijP9UmPlk86ohMlob1/iVjzhe1YO7KxWo9mZ75HPBSmr8R5ukapoJBRP/Jo571KdEFLilKNuhrZ0/xLVELuQ11wU=;
-X-UUID: 9a8a799dc9eb4427b0b7b72b54cbe9d7-20210714
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=6Vy5huXdOmhmToD+G5ACX0UJXo9+nuwr5HjBLElPdxE=; 
+ b=JTSE6U9IuYP4uLxi1KvBGWVMweWwMr1cCoY2Mg8ubHkBbuUL/hLF7Noav0o1e9H9mI8GylfX07KbRQ1/xd84G2KPZXywlLlVcXG2lHRNIS8ZmAeQcVVNQgKLmxCeikWvcNvJ725UEP1We0cnSCv79h5E5m3rsYpaKZaJ1/gTPfQ=;
+X-UUID: ec9ccd6b27ac4a2b97955554e4da9fa9-20210714
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1231443301; Wed, 14 Jul 2021 23:48:32 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 23:48:31 -0700
+ with ESMTP id 14444555; Wed, 14 Jul 2021 23:48:31 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 14 Jul 2021 23:48:30 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 14:48:29 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 15 Jul 2021 14:48:28 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
  Transport; Thu, 15 Jul 2021 14:48:28 +0800
@@ -63,17 +63,16 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH v3 2/3] phy: phy-mtk-tphy: support new hardware version
-Date: Thu, 15 Jul 2021 14:48:21 +0800
-Message-ID: <1626331702-27825-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH v3 1/3] dt-bindings: phy: mediatek: tphy: add support hardware
+ version 3
+Date: Thu, 15 Jul 2021 14:48:20 +0800
+Message-ID: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_234835_384655_59914F79 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20210714_234836_351876_C59DC401 
+X-CRM114-Status: GOOD (  12.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,120 +89,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PHYA arch is updated, and doesn't support slew rate calibrate
-anymore on 7nm or advanced process, add a new version number to
-support it.
-Note: the FreqMeter bank is not used but reserved.
+The PHYA architecture is updated, and doesn't support slew rate
+calibration anymore on 7nm or advanced process, add a new version
+number to support it.
+Due to the FreqMeter bank is not used but reserved, it's backward
+with v2 until now.
+For mt8195, no function changes when use generic v2 or v3 compatible,
+but prefer to use v3's compatible, it will not waste the time to
+calibrate the slew rate, and also correspond with hardware version.
 
+Acked-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2~3: no changes
+v3: add Acked-by Rob
+v2: add more commit log suggested by Rob
 ---
- drivers/phy/mediatek/phy-mtk-tphy.c | 40 +++++++++++++++++++++--------
- 1 file changed, 29 insertions(+), 11 deletions(-)
+ .../devicetree/bindings/phy/mediatek,tphy.yaml     | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 731c483a04de..42a1174da6cc 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -27,7 +27,8 @@
- #define SSUSB_SIFSLV_V1_U3PHYD		0x000
- #define SSUSB_SIFSLV_V1_U3PHYA		0x200
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index ef9d9d4e6875..838852cb8527 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -15,7 +15,7 @@ description: |
+   controllers on MediaTek SoCs, includes USB2.0, USB3.0, PCIe and SATA.
  
--/* version V2 sub-banks offset base address */
-+/* version V2/V3 sub-banks offset base address */
-+/* V3: U2FREQ is not used anymore, but reserved */
- /* u2 phy banks */
- #define SSUSB_SIFSLV_V2_MISC		0x000
- #define SSUSB_SIFSLV_V2_U2FREQ		0x100
-@@ -270,6 +271,7 @@
- enum mtk_phy_version {
- 	MTK_PHY_V1 = 1,
- 	MTK_PHY_V2,
-+	MTK_PHY_V3,
- };
+   Layout differences of banks between T-PHY V1 (mt8173/mt2701) and
+-  T-PHY V2 (mt2712) when works on USB mode:
++  T-PHY V2 (mt2712) / V3 (mt8195) when works on USB mode:
+   -----------------------------------
+   Version 1:
+   port        offset    bank
+@@ -34,7 +34,7 @@ description: |
+   u2 port2    0x1800    U2PHY_COM
+               ...
  
- struct mtk_phy_pdata {
-@@ -330,6 +332,10 @@ static void hs_slew_rate_calibrate(struct mtk_tphy *tphy,
- 	int fm_out;
- 	u32 tmp;
+-  Version 2:
++  Version 2/3:
+   port        offset    bank
+   u2 port0    0x0000    MISC
+               0x0100    FMREG
+@@ -59,7 +59,8 @@ description: |
  
-+	/* HW V3 doesn't support slew rate cal anymore */
-+	if (tphy->pdata->version == MTK_PHY_V3)
-+		return;
-+
- 	/* use force value */
- 	if (instance->eye_src)
- 		return;
-@@ -878,7 +884,7 @@ static void u2_phy_props_set(struct mtk_tphy *tphy,
- 		writel(tmp, com + U3P_U2PHYBC12C);
- 	}
+   SPLLC shared by u3 ports and FMREG shared by u2 ports on V1 are put back
+   into each port; a new bank MISC for u2 ports and CHIP for u3 ports are
+-  added on V2.
++  added on V2; the FMREG bank for slew rate calibration is not used anymore
++  and reserved on V3;
  
--	if (instance->eye_src) {
-+	if (tphy->pdata->version < MTK_PHY_V3 && instance->eye_src) {
- 		tmp = readl(com + U3P_USBPHYACR5);
- 		tmp &= ~PA5_RG_U2_HSTX_SRCTRL;
- 		tmp |= PA5_RG_U2_HSTX_SRCTRL_VAL(instance->eye_src);
-@@ -1042,11 +1048,15 @@ static struct phy *mtk_phy_xlate(struct device *dev,
- 		return ERR_PTR(-EINVAL);
- 	}
+ properties:
+   $nodename:
+@@ -79,8 +80,11 @@ properties:
+               - mediatek,mt2712-tphy
+               - mediatek,mt7629-tphy
+               - mediatek,mt8183-tphy
+-              - mediatek,mt8195-tphy
+           - const: mediatek,generic-tphy-v2
++      - items:
++          - enum:
++              - mediatek,mt8195-tphy
++          - const: mediatek,generic-tphy-v3
+       - const: mediatek,mt2701-u3phy
+         deprecated: true
+       - const: mediatek,mt2712-u3phy
+@@ -91,7 +95,7 @@ properties:
+     description:
+       Register shared by multiple ports, exclude port's private register.
+       It is needed for T-PHY V1, such as mt2701 and mt8173, but not for
+-      T-PHY V2, such as mt2712.
++      T-PHY V2/V3, such as mt2712.
+     maxItems: 1
  
--	if (tphy->pdata->version == MTK_PHY_V1) {
-+	switch (tphy->pdata->version) {
-+	case MTK_PHY_V1:
- 		phy_v1_banks_init(tphy, instance);
--	} else if (tphy->pdata->version == MTK_PHY_V2) {
-+		break;
-+	case MTK_PHY_V2:
-+	case MTK_PHY_V3:
- 		phy_v2_banks_init(tphy, instance);
--	} else {
-+		break;
-+	default:
- 		dev_err(dev, "phy version is not supported\n");
- 		return ERR_PTR(-EINVAL);
- 	}
-@@ -1075,6 +1085,10 @@ static const struct mtk_phy_pdata tphy_v2_pdata = {
- 	.version = MTK_PHY_V2,
- };
- 
-+static const struct mtk_phy_pdata tphy_v3_pdata = {
-+	.version = MTK_PHY_V3,
-+};
-+
- static const struct mtk_phy_pdata mt8173_pdata = {
- 	.avoid_rx_sen_degradation = true,
- 	.version = MTK_PHY_V1,
-@@ -1086,6 +1100,7 @@ static const struct of_device_id mtk_tphy_id_table[] = {
- 	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
-+	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
- 	{ },
- };
- MODULE_DEVICE_TABLE(of, mtk_tphy_id_table);
-@@ -1129,12 +1144,15 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	tphy->src_ref_clk = U3P_REF_CLK;
--	tphy->src_coef = U3P_SLEW_RATE_COEF;
--	/* update parameters of slew rate calibrate if exist */
--	device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
--		&tphy->src_ref_clk);
--	device_property_read_u32(dev, "mediatek,src-coef", &tphy->src_coef);
-+	if (tphy->pdata->version < MTK_PHY_V3) {
-+		tphy->src_ref_clk = U3P_REF_CLK;
-+		tphy->src_coef = U3P_SLEW_RATE_COEF;
-+		/* update parameters of slew rate calibrate if exist */
-+		device_property_read_u32(dev, "mediatek,src-ref-clk-mhz",
-+					 &tphy->src_ref_clk);
-+		device_property_read_u32(dev, "mediatek,src-coef",
-+					 &tphy->src_coef);
-+	}
- 
- 	port = 0;
- 	for_each_child_of_node(np, child_np) {
+   "#address-cells":
 -- 
 2.18.0
 _______________________________________________
