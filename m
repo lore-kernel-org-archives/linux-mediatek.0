@@ -2,21 +2,20 @@ Return-Path: <SRS0=ob7z=MH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D2DFC07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 09:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 65E4DC07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 10:29:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1277D613BB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 09:55:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1277D613BB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 30E306128D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 10:29:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 30E306128D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -24,67 +23,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x+wJtJgaBTbWeDQRAl1EzFRQtRn2ey5UqclzzCIA8xY=; b=bdHGf7zY9fps/M
-	OnT7npWAINogGEeCaV42CrdgiwTnS7C902Xqmokg4FFnpPwUuW3wx3+yyvWzCT+kCNqYM2n5QDnup
-	Op2veeC3IrmW1bOcJOkFdEfek8mfbgOuRXkhcbyLDS+e4dDeuFSUpBoA/neX1v3iYzK0NrNmZhXrX
-	JyJxF+H2IZq0nw9xd6AKmGUgX0rCOIAASe5rVrBIPUN6v5/FC0LT16UkbmwIu93x/7xIXLrmiDwoN
-	ZyOhbP6HE4hMAnb4G+yig07DkHtn5SrXbbgRbLWddmrh+Pp5ikKPSfRHiIQr/bNtd9AZ6KhSURDfT
-	WNRPD5Fzlo2ZJ+CLixWg==;
+	List-Owner; bh=dBcgkU+rOt9XjW4xRasjrMeImGweZ7fIX1RFs3TUrps=; b=vDb00BNhOZVR5m
+	sKwyFD3wbKA7gnl8uPCkkcYepUhymsNoy2HKyO6g/a93BYLzm4rrMEBO5gkxZvDtOFMvbIUmtmSBA
+	pXrk6v2i/tDGUmJZP6AUYi1AEAdmKPCPIxmYOvavhsuUjoOe2KWwL8x61TFvG+y7rYDFDir7bxEb6
+	uFh2haN8AHMOFVuh0+IfCzwhkDFJvS04+SbNdRBXZdfO9PyF1Kd2Hb1jSl3+i3GmstQN0gX/82Kuf
+	Nsgi6bCDBkQfywa9LW6XBwdsKi1Yl9lm+E4piU617SJWCqyo8AODaoxZ0AVH+D7htlJVEUBij04Pj
+	lZ1TwZSoHTkDTqLGKb1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3y5j-000MQD-Fa; Thu, 15 Jul 2021 09:55:39 +0000
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+	id 1m3ycY-000RM1-QJ; Thu, 15 Jul 2021 10:29:34 +0000
+Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3y5d-000MNw-SE; Thu, 15 Jul 2021 09:55:36 +0000
-Received: by mail-ot1-x333.google.com with SMTP id
- o17-20020a9d76510000b02903eabfc221a9so5633693otl.0; 
- Thu, 15 Jul 2021 02:55:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1m3ycL-000RJX-5b
+ for linux-mediatek@lists.infradead.org; Thu, 15 Jul 2021 10:29:22 +0000
+Received: by mail-io1-xd34.google.com with SMTP id k11so5829926ioa.5
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Jul 2021 03:29:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yWF3Hvbgh08HpLzNYqi8W7Brg9KKqZnQKe3nWZ0LC5s=;
- b=HPhiKoMkJZXa9bsTbSdkwz7TUv6P9ceRvRKuYcrse7TVngZPeqfeHPdYi8OsBVQiAW
- NkCwWWYCyhftC1Ny141mwLwk6XdOq7zXLnqqApCPqCj70nhfhpQtRigKSt9Prj11FP1H
- qA8rf4LA/lrsjiY+qQtI7b1l1EZVvjUIl++m1mvAsRMEmn6+qohwZlXmVMlxqwtEVxaQ
- taPFtClWlgYRNoXrPN3xbC5lxbIonzk7JQ3F+umayQnE/q9ER+Fu0yH5FMpU3PL8gZez
- mT9kiAhWe7J5FNDB84dUpiPBhs/f1BK7eDGx3I4kDE/Tt/J3UUcgKYjvvC3VykpbbS+R
- LN3g==
+ :cc; bh=kyAUEtVezo404CIhWOUhgzbjRjPd8h5hzpJdBeSKQTA=;
+ b=MgSlsyn3Nhbd3AUpNvhT2NNSOEuryc1QPty6/CeUj7ZT/L8YGN9vfY/5WhcT8oFpLq
+ +ZzDbI1DcXeY1bi612mypZhwKG1kbXlZuvQJEuYfkNWtHqrj196LtO9j93x2Xlo8GWk/
+ P2pJZFPwBtHM27073EVY13e4IEJ+71ppA5W2M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yWF3Hvbgh08HpLzNYqi8W7Brg9KKqZnQKe3nWZ0LC5s=;
- b=Z+tVsAv3ZLCP89TOWNDKj/EKiKvOaxTYs8pQO/URUYAlcQg4+UsFU3VHJQqye1XLfc
- JqKalGUSJFw56ePq6ePkNv8fHABNiM4Ah+8zcG4pThugkFKqKeDL0ylusQH0nkJsARI2
- H/jD/QL/hqslXUzNuAYGXlEDjZtVJ2e9XlwcEdECO8R1TgS6gD6j6gdVqVbYBOtr//zu
- DMnYF189+irSGmKsT+tGaBhRlfC6RZNsRtSTIBaLu73/Ec9K+ZkWgFpku7bOXO97Ac+T
- kLrZXU6bE8sfkF/4LDXY1pbvdIngXrOd/GdkbjYsfQVb8SsbPktI7lrriMxZHtjQpZXC
- FHSQ==
-X-Gm-Message-State: AOAM532Jb9LzQuH6pbaDDczwiq6FcRJqPP8IT7oLwbinwBTjH9uH9Axo
- Qs0EthDANzHcfuW0U99m1DzUK1Uv/MjOXKeql+s=
-X-Google-Smtp-Source: ABdhPJyIgNb7oBpKMThx7HzTU8Ne7Cr5wa3uzuGtL50ndLqf4fL2il7J/7s2sHuu+CohNSPurKfAa/Bq86/XWGpeG/k=
-X-Received: by 2002:a05:6830:19cd:: with SMTP id
- p13mr2053060otp.362.1626342930535; 
- Thu, 15 Jul 2021 02:55:30 -0700 (PDT)
+ bh=kyAUEtVezo404CIhWOUhgzbjRjPd8h5hzpJdBeSKQTA=;
+ b=eJ4GwNUtOtevhkF5JlTIAcxdiEjXxzk/W665h2kwly7m6S6x58F8rUT51sBdWBY+Ty
+ 45MP1TFO8VKWmgQfHyizl7Vg58RdS2EQ9lN9E2LnreBYInioyRkgcRnDcf8sn9n6MxJX
+ DJqmlga0iPEfpoeKkUIEIBJGaTrrkSugqBlpCIH6j1i6hed2Xah8NCVCXSksT3S1SaJA
+ HIJ9EijOqbcAEEGx1DG9cQxQyi74Cf3s2Vtd1WE9VhjpGntig6OAWYpgA4rJdPJvOwXo
+ cQ/bhhx/55iSs7SRi13/ge802PngsL6ZM3Gr9TO2XxKlrbc/0/mn/727F0aSVS6jsbyi
+ klPg==
+X-Gm-Message-State: AOAM533Oi3MblR3Cgyb+SEwNrUPfSsHDO7+vyU7Zesx2VTH+cf7N26DV
+ LGxRmvdTIukFsF8YQP8KArMuf/Sqg0zX3v/aUhblFg==
+X-Google-Smtp-Source: ABdhPJw2mxWU+xXAkJO3mI+OX6znH1/i0GZ7cnWBtNO+Lv/xTP1hKsZ7ryl5bIuMk2imtrZIb2VbdDupmxJUEhRymko=
+X-Received: by 2002:a02:cce6:: with SMTP id l6mr3377311jaq.114.1626344959355; 
+ Thu, 15 Jul 2021 03:29:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210624105517.3886963-1-hsinyi@chromium.org>
-In-Reply-To: <20210624105517.3886963-1-hsinyi@chromium.org>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Thu, 15 Jul 2021 11:55:19 +0200
-Message-ID: <CAFqH_51_QxzhDuHT823StDQ4esYtnFXwz1OLTFrxXA7MpX06+Q@mail.gmail.com>
-Subject: Re: [PATCH v6 RESEND 1/3] gpu: drm: separate panel orientation
- property creating and value setting
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, intel-gfx@lists.freedesktop.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org, 
- Thomas Zimmermann <tzimmermann@suse.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Sean Paul <sean@poorly.run>, linux-arm-kernel@lists.infradead.org
+References: <20210712080736.116435-1-linux@fw-web.de>
+In-Reply-To: <20210712080736.116435-1-linux@fw-web.de>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Thu, 15 Jul 2021 18:28:53 +0800
+Message-ID: <CAJMQK-i9cGUUXLDr95nCghLd6jmR0tmdPv_PiyN1gC1+JD-2Mw@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: dpi: fix NULL dereference in
+ mtk_dpi_bridge_atomic_check
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, 
+ Frank Wunderlich <frank-w@public-files.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Jitao Shi <jitao.shi@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>, 
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_025534_014175_0E4CF338 
-X-CRM114-Status: GOOD (  38.42  )
+X-CRM114-CacheID: sfid-20210715_032921_279446_4133C1B1 
+X-CRM114-Status: GOOD (  18.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,248 +98,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hsin-Yi,
-
-Thank you for your patch.
-
-Missatge de Hsin-Yi Wang <hsinyi@chromium.org> del dia dj., 24 de juny
-2021 a les 12:55:
+On Mon, Jul 12, 2021 at 4:08 PM Frank Wunderlich <linux@fw-web.de> wrote:
 >
-> drm_dev_register() sets connector->registration_state to
-> DRM_CONNECTOR_REGISTERED and dev->registered to true. If
-> drm_connector_set_panel_orientation() is first called after
-> drm_dev_register(), it will fail several checks and results in following
-> warning.
+> From: Frank Wunderlich <frank-w@public-files.de>
 >
-
-In fact, results with the following warning
-
-
-> Add a function to create panel orientation property and set default value
-> to UNKNOWN, so drivers can call this function to init the property earlier
-> , and let the panel set the real value later.
+> bridge->driver_private is not set (NULL) so use bridge_to_dpi(bridge)
+> like it's done in bridge_atomic_get_output_bus_fmts
 >
-> [    4.480976] ------------[ cut here ]------------
-> [    4.485603] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:45 __drm_mode_object_add+0xb4/0xbc
-> <snip>
-> [    4.609772] Call trace:
-> [    4.612208]  __drm_mode_object_add+0xb4/0xbc
-> [    4.616466]  drm_mode_object_add+0x20/0x2c
-> [    4.620552]  drm_property_create+0xdc/0x174
-> [    4.624723]  drm_property_create_enum+0x34/0x98
-> [    4.629241]  drm_connector_set_panel_orientation+0x64/0xa0
-> [    4.634716]  boe_panel_get_modes+0x88/0xd8
-> [    4.638802]  drm_panel_get_modes+0x2c/0x48
-> [    4.642887]  panel_bridge_get_modes+0x1c/0x28
-> [    4.647233]  drm_bridge_connector_get_modes+0xa0/0xd4
-> [    4.652273]  drm_helper_probe_single_connector_modes+0x218/0x700
-> [    4.658266]  drm_mode_getconnector+0x1b4/0x45c
-> [    4.662699]  drm_ioctl_kernel+0xac/0x128
-> [    4.666611]  drm_ioctl+0x268/0x410
-> [    4.670002]  drm_compat_ioctl+0xdc/0xf0
-> [    4.673829]  __arm64_compat_sys_ioctl+0xc8/0x100
-> [    4.678436]  el0_svc_common+0xf4/0x1c0
-> [    4.682174]  do_el0_svc_compat+0x28/0x3c
-> [    4.686088]  el0_svc_compat+0x10/0x1c
-> [    4.689738]  el0_sync_compat_handler+0xa8/0xcc
-> [    4.694171]  el0_sync_compat+0x178/0x180
-> [    4.698082] ---[ end trace b4f2db9d9c88610b ]---
-> [    4.702721] ------------[ cut here ]------------
-> [    4.707329] WARNING: CPU: 5 PID: 369 at drivers/gpu/drm/drm_mode_object.c:243 drm_object_attach_property+0x48/0xb8
-> <snip>
-> [    4.833830] Call trace:
-> [    4.836266]  drm_object_attach_property+0x48/0xb8
-> [    4.840958]  drm_connector_set_panel_orientation+0x84/0xa0
-> [    4.846432]  boe_panel_get_modes+0x88/0xd8
-> [    4.850516]  drm_panel_get_modes+0x2c/0x48
-> [    4.854600]  panel_bridge_get_modes+0x1c/0x28
-> [    4.858946]  drm_bridge_connector_get_modes+0xa0/0xd4
-> [    4.863984]  drm_helper_probe_single_connector_modes+0x218/0x700
-> [    4.869978]  drm_mode_getconnector+0x1b4/0x45c
-> [    4.874410]  drm_ioctl_kernel+0xac/0x128
-> [    4.878320]  drm_ioctl+0x268/0x410
-> [    4.881711]  drm_compat_ioctl+0xdc/0xf0
-> [    4.885536]  __arm64_compat_sys_ioctl+0xc8/0x100
-> [    4.890142]  el0_svc_common+0xf4/0x1c0
-> [    4.893879]  do_el0_svc_compat+0x28/0x3c
-> [    4.897791]  el0_svc_compat+0x10/0x1c
-> [    4.901441]  el0_sync_compat_handler+0xa8/0xcc
-> [    4.905873]  el0_sync_compat+0x178/0x180
-> [    4.909783] ---[ end trace b4f2db9d9c88610c ]---
->
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
+> Fixes: ec8747c52434 ("drm/mediatek: dpi: Add bus format negotiation")
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-And that patch fixes the problem, apart from, not being an expert, but
-the change looks reasonable to me, there is already some reviewed tags
-and I'm not sure I am the appropriate to review it but I can
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Tested on a mt8183 device.
 
-As together with the other two patches works and I don't see any
-problem on the Lenovo IdeaPad Duet.
 
 > ---
->  drivers/gpu/drm/drm_connector.c         | 58 ++++++++++++++++++-------
->  drivers/gpu/drm/i915/display/icl_dsi.c  |  1 +
->  drivers/gpu/drm/i915/display/intel_dp.c |  1 +
->  drivers/gpu/drm/i915/display/vlv_dsi.c  |  1 +
->  include/drm/drm_connector.h             |  2 +
->  5 files changed, 47 insertions(+), 16 deletions(-)
+>  drivers/gpu/drm/mediatek/mtk_dpi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> index 7631f76e7f345..7189baaabf416 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -1210,7 +1210,7 @@ static const struct drm_prop_enum_list dp_colorspaces[] = {
->   *     INPUT_PROP_DIRECT) will still map 1:1 to the actual LCD panel
->   *     coordinates, so if userspace rotates the picture to adjust for
->   *     the orientation it must also apply the same transformation to the
-> - *     touchscreen input coordinates. This property is initialized by calling
-> + *     touchscreen input coordinates. This property value is set by calling
->   *     drm_connector_set_panel_orientation() or
->   *     drm_connector_set_panel_orientation_with_quirk()
->   *
-> @@ -2173,8 +2173,8 @@ EXPORT_SYMBOL(drm_connector_set_vrr_capable_property);
->   * @connector: connector for which to set the panel-orientation property.
->   * @panel_orientation: drm_panel_orientation value to set
->   *
-> - * This function sets the connector's panel_orientation and attaches
-> - * a "panel orientation" property to the connector.
-> + * This function sets the connector's panel_orientation value. If the property
-> + * doesn't exist, it will return an error.
->   *
->   * Calling this function on a connector where the panel_orientation has
->   * already been set is a no-op (e.g. the orientation has been overridden with
-> @@ -2205,19 +2205,11 @@ int drm_connector_set_panel_orientation(
->         info->panel_orientation = panel_orientation;
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> index bced555648b0..a2eca1f66984 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -605,7 +605,7 @@ static int mtk_dpi_bridge_atomic_check(struct drm_bridge *bridge,
+>                                        struct drm_crtc_state *crtc_state,
+>                                        struct drm_connector_state *conn_state)
+>  {
+> -       struct mtk_dpi *dpi = bridge->driver_private;
+> +       struct mtk_dpi *dpi = bridge_to_dpi(bridge);
+>         unsigned int out_bus_format;
 >
->         prop = dev->mode_config.panel_orientation_property;
-> -       if (!prop) {
-> -               prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
-> -                               "panel orientation",
-> -                               drm_panel_orientation_enum_list,
-> -                               ARRAY_SIZE(drm_panel_orientation_enum_list));
-> -               if (!prop)
-> -                       return -ENOMEM;
-> -
-> -               dev->mode_config.panel_orientation_property = prop;
-> -       }
-> +       if (WARN_ON(!prop))
-> +               return -EINVAL;
->
-> -       drm_object_attach_property(&connector->base, prop,
-> -                                  info->panel_orientation);
-> +       drm_object_property_set_value(&connector->base, prop,
-> +                                     info->panel_orientation);
->         return 0;
->  }
->  EXPORT_SYMBOL(drm_connector_set_panel_orientation);
-> @@ -2225,7 +2217,7 @@ EXPORT_SYMBOL(drm_connector_set_panel_orientation);
->  /**
->   * drm_connector_set_panel_orientation_with_quirk -
->   *     set the connector's panel_orientation after checking for quirks
-> - * @connector: connector for which to init the panel-orientation property.
-> + * @connector: connector for which to set the panel-orientation property.
->   * @panel_orientation: drm_panel_orientation value to set
->   * @width: width in pixels of the panel, used for panel quirk detection
->   * @height: height in pixels of the panel, used for panel quirk detection
-> @@ -2252,6 +2244,40 @@ int drm_connector_set_panel_orientation_with_quirk(
->  }
->  EXPORT_SYMBOL(drm_connector_set_panel_orientation_with_quirk);
->
-> +/**
-> + * drm_connector_init_panel_orientation_property -
-> + *     create the connector's panel orientation property
-> + *
-> + * This function attaches a "panel orientation" property to the connector
-> + * and initializes its value to DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
-> + *
-> + * The value of the property can be set by drm_connector_set_panel_orientation()
-> + * or drm_connector_set_panel_orientation_with_quirk() later.
-> + *
-> + * Returns:
-> + * Zero on success, negative errno on failure.
-> + */
-> +int drm_connector_init_panel_orientation_property(
-> +       struct drm_connector *connector)
-> +{
-> +       struct drm_device *dev = connector->dev;
-> +       struct drm_property *prop;
-> +
-> +       prop = drm_property_create_enum(dev, DRM_MODE_PROP_IMMUTABLE,
-> +                       "panel orientation",
-> +                       drm_panel_orientation_enum_list,
-> +                       ARRAY_SIZE(drm_panel_orientation_enum_list));
-> +       if (!prop)
-> +               return -ENOMEM;
-> +
-> +       dev->mode_config.panel_orientation_property = prop;
-> +       drm_object_attach_property(&connector->base, prop,
-> +                                  DRM_MODE_PANEL_ORIENTATION_UNKNOWN);
-> +
-> +       return 0;
-> +}
-> +EXPORT_SYMBOL(drm_connector_init_panel_orientation_property);
-> +
->  int drm_connector_set_obj_prop(struct drm_mode_object *obj,
->                                     struct drm_property *property,
->                                     uint64_t value)
-> diff --git a/drivers/gpu/drm/i915/display/icl_dsi.c b/drivers/gpu/drm/i915/display/icl_dsi.c
-> index 9282978060b08..5ac4538e42833 100644
-> --- a/drivers/gpu/drm/i915/display/icl_dsi.c
-> +++ b/drivers/gpu/drm/i915/display/icl_dsi.c
-> @@ -1903,6 +1903,7 @@ static void icl_dsi_add_properties(struct intel_connector *connector)
->
->         connector->base.state->scaling_mode = DRM_MODE_SCALE_ASPECT;
->
-> +       drm_connector_init_panel_orientation_property(&connector->base);
->         drm_connector_set_panel_orientation_with_quirk(&connector->base,
->                                 intel_dsi_get_panel_orientation(connector),
->                                 connector->panel.fixed_mode->hdisplay,
-> diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
-> index a5231ac3443aa..f1d664e5abb28 100644
-> --- a/drivers/gpu/drm/i915/display/intel_dp.c
-> +++ b/drivers/gpu/drm/i915/display/intel_dp.c
-> @@ -5263,6 +5263,7 @@ static bool intel_edp_init_connector(struct intel_dp *intel_dp,
->         intel_panel_setup_backlight(connector, pipe);
->
->         if (fixed_mode) {
-> +               drm_connector_init_panel_orientation_property(connector);
->                 drm_connector_set_panel_orientation_with_quirk(connector,
->                                 dev_priv->vbt.orientation,
->                                 fixed_mode->hdisplay, fixed_mode->vdisplay);
-> diff --git a/drivers/gpu/drm/i915/display/vlv_dsi.c b/drivers/gpu/drm/i915/display/vlv_dsi.c
-> index 9bee99fe54954..853855482af14 100644
-> --- a/drivers/gpu/drm/i915/display/vlv_dsi.c
-> +++ b/drivers/gpu/drm/i915/display/vlv_dsi.c
-> @@ -1632,6 +1632,7 @@ static void vlv_dsi_add_properties(struct intel_connector *connector)
->
->                 connector->base.state->scaling_mode = DRM_MODE_SCALE_ASPECT;
->
-> +               drm_connector_init_panel_orientation_property(&connector->base);
->                 drm_connector_set_panel_orientation_with_quirk(
->                                 &connector->base,
->                                 intel_dsi_get_panel_orientation(connector),
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index 1922b278ffadf..4396c1c4a5dbc 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -1696,6 +1696,8 @@ int drm_connector_set_panel_orientation_with_quirk(
->         struct drm_connector *connector,
->         enum drm_panel_orientation panel_orientation,
->         int width, int height);
-> +int drm_connector_init_panel_orientation_property(
-> +       struct drm_connector *connector);
-
-nit: this could be probably in one line
-
->  int drm_connector_attach_max_bpc_property(struct drm_connector *connector,
->                                           int min, int max);
->
+>         out_bus_format = bridge_state->output_bus_cfg.format;
 > --
-> 2.32.0.288.g62a8d224e6-goog
+> 2.25.1
 >
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
