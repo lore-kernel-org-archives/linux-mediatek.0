@@ -2,78 +2,85 @@ Return-Path: <SRS0=ob7z=MH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88414C07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:49:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D41CC07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 07:10:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 502066117A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:49:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 502066117A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 62DA86120A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 07:10:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 62DA86120A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w70T0tK+2voYo2Z+ZUGCPJep9hRAuoyfYt1WcN1F5JE=; b=QZGXLYNEEebWQs
-	ZjQao128Ww86onoPw1rF4yXi/ICo7u71e6kxJFYUIcqOhoKIAN27qixApnIV1RKhp0RGU+oL9W3e7
-	M/5xSKZSl3KsCqNjA2m4A3/tsTp0zJZjbn6OPECTSshLsh0fJaaXYFhbO0/WH5TcD+C8MmRSbAEjw
-	kathv5jG81pY2YC+44ATPINULBgShiCkxsJxhrnzcVblsIn5s7a1VwcPhkFfhJ2iOUKkuiOFqzCvW
-	vGuX224VeaPCrVzRJKRxCmexyVNhxGbvRTgFPaqmhD7GCPC2I+7Pmi1ImUg2OlaOlYCWvDQpzk4xe
-	l3SxvXsOVBXzStTmZudw==;
+	List-Owner; bh=v3C459wM+A0E/tOULW2ntJ9Rk2OMgjUR/w/AMkVFLvs=; b=exTfggOpRZ2zol
+	oPGpq3z5GYO6gw9BekaX4R71Rx+39ixC/WnKQ5Huy8CFR6+WI6dqCClg4HtQiViV2J/yQL/VCftoJ
+	r/Jlqq9dZ1fGiSo/QzJ5+fzf5H+hhDlvP5GcXC+dWnqK218p/ak+ueSbD2/RlR+TWNcgpNUWrBxr5
+	hM1i3nK0p/+eCrt0VyHbR/3V+ipgf7VkPLjO3eFTnlmplxqOuCf+CfOUYyvPoHXAOnAQzkI3RZN8S
+	G7dYIATG10uLkJhzbAMS9R5cQH99YW2jAIFGwqlfCOINSj7+FB62H9tGJA0pRocKfzu/iVOW8gMVs
+	PZRZ3hn/GgXMuSj1HPeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3vB8-00HJDQ-59; Thu, 15 Jul 2021 06:49:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m3vVO-00HMXs-Nk; Thu, 15 Jul 2021 07:09:58 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3vAi-00HJ5o-8I; Thu, 15 Jul 2021 06:48:38 +0000
-X-UUID: d1850b02134947908372f0c36d78251b-20210714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=3kfALTFsULlKaJUPmG+fu5KPz/5JGXyvYYf2yzDffiM=; 
- b=F3kxOiDq5ZUkxiiFryGMw7hwuc9o9KXIgEro0v8H0PSuM5TMxJ+DvtlIIFNEk95P8plTx/vL0SBgbA1ioeEyqzeAJasDmHZg8DKYTzD1AgKUit6IOSjxnOS1gNAE+bDQj/3X1PmaMtNs8K5pNCYBeeGRNlnv8xraB0j+Z8HU0Qk=;
-X-UUID: d1850b02134947908372f0c36d78251b-20210714
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1145386664; Wed, 14 Jul 2021 23:48:31 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 23:48:30 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 14:48:30 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 15 Jul 2021 14:48:29 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- "Rob Herring" <robh+dt@kernel.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
- <eddie.hung@mediatek.com>
-Subject: [PATCH v3 3/3] phy: phy-mtk-tphy: add support mt8195
-Date: Thu, 15 Jul 2021 14:48:22 +0800
-Message-ID: <1626331702-27825-3-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
+ id 1m3vVC-00HMW0-3p
+ for linux-mediatek@lists.infradead.org; Thu, 15 Jul 2021 07:09:47 +0000
+Received: by mail-il1-x130.google.com with SMTP id o8so4115461ilf.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 15 Jul 2021 00:09:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9B+oTQwgmo4p1Ky+jMiYsVX5twnQnFrh+/KabLkfKoM=;
+ b=gXX+pNEeNfCIXnvpl5zzg72jHjH+3zkYJyYwbmO1kzh6ft7/OouMUm8xc5cxG1XPp8
+ Vfl1oHQrkntzz2y4B62MFB0npJvEz/EllABrsOjYb23ZWwcji9c17WbupAJqSMCKjf0q
+ P9puY5/sExP8rW+vR6b7vTTJ9DDQLHDyikWKMFxq6Z+CSp+C0hNwnB5kLycCHNfoPdF0
+ ZME0I/BW6gRIqG6XyZirldBU3sEofWoFpeDFdYt+CBSvj2oKp21RqmylUxRHM9lqPuuJ
+ Njxiq/CD9vBHyByW1XrAxcB0Y//F+cqnQDlTU5eH2uxU8VpUmofQm/oQOYs4ipZrnaFl
+ xsFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9B+oTQwgmo4p1Ky+jMiYsVX5twnQnFrh+/KabLkfKoM=;
+ b=dyoVh70gRK5HIzzSP0sL7ktDGjNitXuU5L/MmHqaMyl7We50fn+ok3PuxtG4NvdV6R
+ 7xn4QGJ6ytHHiD+2MDSFG8uRmQ7xFkzPUJx2q95RVWklb9YnsT5UTh3T9hRSitCuLb1x
+ Y+qV8LTJk2XcwJsABrSm9TqDaefD8e6erX0pLsATDSdoHw7dz1BlyiJPzjdWcVkJGpUs
+ 0MjWL6m0fxt3QH3zjHV95aPto46D3dBVx7ezGnRpLtY6WIoT8xy6BnwUyKTKD09xTsdz
+ 1dl5XuIUFow8MUDsmv1EPV0OrOyfo6DVbFZqPYs0cllb/3znypwtSO68NjJf1z7LjPm/
+ oNjA==
+X-Gm-Message-State: AOAM533G9p5xE3xENFj01B4pE2O2zz4lH8N86DllrL0y5/5sglbmT57S
+ +3ukMo6XhIKgTmPlZ9E4+bXPhMSLbtvrPjOKwOnmgQ==
+X-Google-Smtp-Source: ABdhPJwuKUmsa/XevSPh49jg4k4QcER8gMdTrKqp3qt3Rwy5IFwH+L9++y/Wz79S7Mh+BnEstfthYeRZOPSds8h1z9k=
+X-Received: by 2002:a92:d990:: with SMTP id r16mr1786919iln.204.1626332975821; 
+ Thu, 15 Jul 2021 00:09:35 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1626316157-24935-1-git-send-email-kewei.xu@mediatek.com>
+ <1626316157-24935-9-git-send-email-kewei.xu@mediatek.com>
+In-Reply-To: <1626316157-24935-9-git-send-email-kewei.xu@mediatek.com>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Thu, 15 Jul 2021 15:09:25 +0800
+Message-ID: <CA+Px+wWNcSkxvsEoUrgBN73+jhq8qjFJodYjQnY1zW2d0a5yRA@mail.gmail.com>
+Subject: Re: [PATCH 8/8] i2c: mediatek: modify bus speed calculation formula
+To: Kewei Xu <kewei.xu@mediatek.com>
+Cc: wsa@the-dreams.de, matthias.bgg@gmail.com, robh+dt@kernel.org, 
+ linux-i2c@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com, 
+ leilk.liu@mediatek.com, qii.wang@mediatek.com, qiangming.xia@mediatek.com, 
+ ot_daolong.zhu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_234836_353769_6E628DAB 
-X-CRM114-Status: GOOD (  14.55  )
+X-CRM114-CacheID: sfid-20210715_000946_221986_B207BDED 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,130 +97,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The controller is designed to use use PLL integer mode, but
-in fact used fractional mode for some ones on mt8195, this
-causes signal degradation (e.g. eye diagram test fail), fix
-it by switching PLL to 26Mhz from default 48Mhz to improve
-signal quality.
+On Thu, Jul 15, 2021 at 10:32 AM Kewei Xu <kewei.xu@mediatek.com> wrote:
+> When clock-div is 0 or greater than 1, the bus speed
+> calculated by the old speed calculation formula will be
+> larger than the target speed. So we update the formula.
+The patch sounds like a fix up.  Need a "Fixes" tag.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2~3: no changes
----
- drivers/phy/mediatek/phy-mtk-tphy.c | 52 +++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+>         for (clk_div = 1; clk_div <= max_clk_div; clk_div++) {
+>                 clk_src = parent_clk / clk_div;
+> +               i2c->ac_timing.inter_clk_div = clk_div - 1;
+Using the way to pass the parameter "inter_clk_div" to
+mtk_i2c_calculate_speed() looks like a hack.  inter_clk_div is set
+again[1] next to the for loop.
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index 42a1174da6cc..c3dc1763a7eb 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -41,6 +41,8 @@
- 
- #define U3P_USBPHYACR0		0x000
- #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
-+#define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
-+#define PA0_USB20_PLL_PREDIV_VAL(x)	((0x3 & (x)) << 6)
- #define PA0_RG_USB20_INTR_EN		BIT(5)
- 
- #define U3P_USBPHYACR1		0x004
-@@ -52,6 +54,8 @@
- #define PA1_RG_TERM_SEL_VAL(x)	((0x7 & (x)) << 8)
- 
- #define U3P_USBPHYACR2		0x008
-+#define PA2_RG_U2PLL_BW			GENMASK(21, 19)
-+#define PA2_RG_U2PLL_BW_VAL(x)		((0x7 & (x)) << 19)
- #define PA2_RG_SIF_U2PLL_FORCE_EN	BIT(18)
- 
- #define U3P_USBPHYACR5		0x014
-@@ -73,6 +77,14 @@
- #define P2C_USB20_GPIO_MODE		BIT(8)
- #define P2C_U2_GPIO_CTR_MSK	(P2C_RG_USB20_GPIO_CTL | P2C_USB20_GPIO_MODE)
- 
-+#define U3P_U2PHYA_RESV		0x030
-+#define P2R_RG_U2PLL_FBDIV_26M		0x1bb13b
-+#define P2R_RG_U2PLL_FBDIV_48M		0x3c0000
-+
-+#define U3P_U2PHYA_RESV1	0x044
-+#define P2R_RG_U2PLL_REFCLK_SEL	BIT(5)
-+#define P2R_RG_U2PLL_FRA_EN		BIT(3)
-+
- #define U3D_U2PHYDCR0		0x060
- #define P2C_RG_SIF_U2PLL_FORCE_ON	BIT(24)
- 
-@@ -277,6 +289,12 @@ enum mtk_phy_version {
- struct mtk_phy_pdata {
- 	/* avoid RX sensitivity level degradation only for mt8173 */
- 	bool avoid_rx_sen_degradation;
-+	/*
-+	 * u2phy should use integer mode instead of fractional mode of
-+	 * 48M PLL, fix it by switching PLL to 26M from default 48M
-+	 * for mt8195
-+	 */
-+	bool sw_pll_48m_to_26m;
- 	enum mtk_phy_version version;
- };
- 
-@@ -456,6 +474,33 @@ static void u3_phy_instance_init(struct mtk_tphy *tphy,
- 	dev_dbg(tphy->dev, "%s(%d)\n", __func__, instance->index);
- }
- 
-+static void u2_phy_pll_26m_set(struct mtk_tphy *tphy,
-+	struct mtk_phy_instance *instance)
-+{
-+	struct u2phy_banks *u2_banks = &instance->u2_banks;
-+	void __iomem *com = u2_banks->com;
-+	u32 tmp;
-+
-+	if (!tphy->pdata->sw_pll_48m_to_26m)
-+		return;
-+
-+	tmp = readl(com + U3P_USBPHYACR0);
-+	tmp &= ~PA0_USB20_PLL_PREDIV;
-+	tmp |= PA0_USB20_PLL_PREDIV_VAL(0);
-+	writel(tmp, com + U3P_USBPHYACR0);
-+
-+	tmp = readl(com + U3P_USBPHYACR2);
-+	tmp &= ~PA2_RG_U2PLL_BW;
-+	tmp |= PA2_RG_U2PLL_BW_VAL(3);
-+	writel(tmp, com + U3P_USBPHYACR2);
-+
-+	writel(P2R_RG_U2PLL_FBDIV_26M, com + U3P_U2PHYA_RESV);
-+
-+	tmp = readl(com + U3P_U2PHYA_RESV1);
-+	tmp |= P2R_RG_U2PLL_FRA_EN | P2R_RG_U2PLL_REFCLK_SEL;
-+	writel(tmp, com + U3P_U2PHYA_RESV1);
-+}
-+
- static void u2_phy_instance_init(struct mtk_tphy *tphy,
- 	struct mtk_phy_instance *instance)
- {
-@@ -941,6 +986,7 @@ static int mtk_phy_init(struct phy *phy)
- 
- 	switch (instance->type) {
- 	case PHY_TYPE_USB2:
-+		u2_phy_pll_26m_set(tphy, instance);
- 		u2_phy_instance_init(tphy, instance);
- 		u2_phy_props_set(tphy, instance);
- 		break;
-@@ -1094,10 +1140,16 @@ static const struct mtk_phy_pdata mt8173_pdata = {
- 	.version = MTK_PHY_V1,
- };
- 
-+static const struct mtk_phy_pdata mt8195_pdata = {
-+	.sw_pll_48m_to_26m = true,
-+	.version = MTK_PHY_V3,
-+};
-+
- static const struct of_device_id mtk_tphy_id_table[] = {
- 	{ .compatible = "mediatek,mt2701-u3phy", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,mt2712-u3phy", .data = &tphy_v2_pdata },
- 	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
-+	{ .compatible = "mediatek,mt8195-tphy", .data = &mt8195_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
- 	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
--- 
-2.18.0
+[1]: https://elixir.bootlin.com/linux/v5.14-rc1/source/drivers/i2c/busses/i2c-mt65xx.c#L831
+
+
+
+I have no domain knowledge of what/how the patch fixes.  But if this
+is a standalone fixup patch, suggest separating to an independent
+patch.
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
