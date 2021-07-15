@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A770C5CFC2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 579E6C636C7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:41:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 45E6960FEB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:40:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 45E6960FEB
+	by mail.kernel.org (Postfix) with ESMTPS id 2678A613C4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:41:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2678A613C4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C4EHYJmwtEITd77G+fDvbQmYgCahY8f13cd4U0P4d4s=; b=msvzQlHkz3SPmB
-	ct06uwNS+JCfCOMipfUCDZqxn3mES4EFauS8BOWPkpyfQN9gYKrZsQDQ2BXu1bDxXtjblPKDpSkUj
-	roFCc6MybgsNqL+h5TQ9CW9gNfYcgqlJcgcdai6nZJV53ZMBzN1V3TT4+UAn64kWCmpNcpS8xZuCj
-	4N+4e+/FpThtX2wNbICfDG8qgUhjulJnmYoZF1HtqJI9xfwY/r/WoTQyV4Gk1PaInntqW4AGQsN6X
-	xtCKLm0k2Hp+JdpTo8egHpXtDlZPW42QkY44Ji9UCV36dBHUY7fnI602PPlFA7ZDxql01cRzobQVX
-	yrG/06XO5xEQ38ZFcORA==;
+	List-Owner; bh=TRUej/vb0PvmyHA8ozK2Vs7AKmGZrmWrlDbDOKLVx2A=; b=atbEQEwp7VaEVb
+	/WX/qjUJHmBjZxLE1cWVln5uy5Ksa2DABv7l/KvdhmV5F7h60x0InYqhgnQFYYGTJsXxIgXvpEuVK
+	qDxophJs+Vih5CMQI01dxMLgczmfAmnxW/UvDSqI+l7SqTfOIzzfPAMioddjMGbo+cz/QmVE7Bx2x
+	51Phg3FjQUtt1x3i+9vraXfPRgcpqd95Y1z9vfcPxPpe1tCDXdYE/SDa99PsKYjCAhqyaXINNvMIk
+	404npzhwfsOgdQ6Y+Y/kb2SN2xOcJQghplQxADnHdGpwVpah5RM90nZmKARyB+Kx7sDSc6AIUER0z
+	0FWSy+JsL+bWFrHYfmGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m45LX-001no2-Qu; Thu, 15 Jul 2021 17:40:27 +0000
+	id 1m45Ma-001oIt-BI; Thu, 15 Jul 2021 17:41:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m45JN-001mrD-TX; Thu, 15 Jul 2021 17:38:15 +0000
-X-UUID: a4d49502594044d4bbedc8c5f919a556-20210715
+ id 1m45JO-001mrW-B6; Thu, 15 Jul 2021 17:38:17 +0000
+X-UUID: d71c921e18124fb9ad81ad1fb01e7acc-20210715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6rEl/oU/9aQV8BvCPFKaiTDNwkUjrNvD0Z/Ar0JKSqU=; 
- b=sbe4hKtJ/s7TIXBAvPhcZC3QQinr7ikGirk7mZ1+rdp77FuvrSnbyxkegcAJgR+k1YoLB5f71AVaE07kQYS4jQjp0luXiVwKiy/OsxtAbxgZ0Ggeaa87hH92WB+3Q9NmFO1Y4p+BgIO1n3t51eeoPJQzZI70VcJs9t2RIfZoBKM=;
-X-UUID: a4d49502594044d4bbedc8c5f919a556-20210715
+ bh=suLUlQTRW0hpgqqCj11g/NfvmzvThKfPCRUEVpqirz4=; 
+ b=EWqi4T/LJQ8J3A9Dl7LebBm9RbOv0el0KWW/RKwc/y0G2GZGinx6lpFU1F8//JBwevbB7Hg0z7LsKJgxQGULEZDKmwmsNU3+n8gypqi2zh4FKlFVJiudllGM2XL8X1Q/vVYzKcrdtlHzM2QKESw07nGxfKIuxG2EanWx+cvXUAE=;
+X-UUID: d71c921e18124fb9ad81ad1fb01e7acc-20210715
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 212749975; Thu, 15 Jul 2021 10:38:08 -0700
+ with ESMTP id 1777566575; Thu, 15 Jul 2021 10:38:08 -0700
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 10:38:07 -0700
+ 15.0.1497.2; Thu, 15 Jul 2021 10:38:06 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Jul 2021 01:37:52 +0800
+ 15.0.1497.2; Fri, 16 Jul 2021 01:37:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 16 Jul 2021 01:37:52 +0800
@@ -62,18 +62,18 @@ CC: <linux-arm-kernel@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fshao@google.com>,
  <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
  <singo.chang@mediatek.com>
-Subject: [PATCH v3 03/12] dt-bindings: mediatek: display: add MERGE additional
- description
-Date: Fri, 16 Jul 2021 01:37:41 +0800
-Message-ID: <20210715173750.10852-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 01/12] dt-bindings: mediatek: display: change txt to yaml
+ file
+Date: Fri, 16 Jul 2021 01:37:39 +0800
+Message-ID: <20210715173750.10852-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
 References: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_103813_995474_CA8123E4 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20210715_103814_554238_8EAA4509 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,54 +90,681 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. clock drivers of MERGE
-   The MERGE controller may have 2 clock inputs.
-   The second clock of MERGE is async clock which is controlling
-   the async buffer between MERGE and other display function blocks.
-
-2. MERGE fifo settings enable
-   The setting of merge fifo is mainly provided for the display
-   latency buffer. To ensure that the back-end panel display data
-   will not be underrun, a little more data is needed in the fifo.
-   According to the merge fifo settings, when the water level is
-   detected to be insufficient, it will trigger RDMA sending
-   ultra and preulra command to SMI to speed up the data rate.
+Change mediatek,dislpay.txt to mediatek,display.yaml.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- .../bindings/display/mediatek/mediatek,disp.yaml     | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ .../display/mediatek/mediatek,disp.txt        | 219 ---------
+ .../display/mediatek/mediatek,disp.yaml       | 434 ++++++++++++++++++
+ 2 files changed, 434 insertions(+), 219 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+deleted file mode 100644
+index fbb59c9ddda6..000000000000
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
++++ /dev/null
+@@ -1,219 +0,0 @@
+-Mediatek display subsystem
+-==========================
+-
+-The Mediatek display subsystem consists of various DISP function blocks in the
+-MMSYS register space. The connections between them can be configured by output
+-and input selectors in the MMSYS_CONFIG register space. Pixel clock and start
+-of frame signal are distributed to the other function blocks by a DISP_MUTEX
+-function block.
+-
+-All DISP device tree nodes must be siblings to the central MMSYS_CONFIG node.
+-For a description of the MMSYS_CONFIG binding, see
+-Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt.
+-
+-DISP function blocks
+-====================
+-
+-A display stream starts at a source function block that reads pixel data from
+-memory and ends with a sink function block that drives pixels on a display
+-interface, or writes pixels back to memory. All DISP function blocks have
+-their own register space, interrupt, and clock gate. The blocks that can
+-access memory additionally have to list the IOMMU and local arbiter they are
+-connected to.
+-
+-For a description of the display interface sink function blocks, see
+-Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt and
+-Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml.
+-
+-Required properties (all function blocks):
+-- compatible: "mediatek,<chip>-disp-<function>", one of
+-	"mediatek,<chip>-disp-ovl"   		- overlay (4 layers, blending, csc)
+-	"mediatek,<chip>-disp-ovl-2l"           - overlay (2 layers, blending, csc)
+-	"mediatek,<chip>-disp-rdma"  		- read DMA / line buffer
+-	"mediatek,<chip>-disp-wdma"  		- write DMA
+-	"mediatek,<chip>-disp-ccorr"            - color correction
+-	"mediatek,<chip>-disp-color" 		- color processor
+-	"mediatek,<chip>-disp-dither"           - dither
+-	"mediatek,<chip>-disp-aal"   		- adaptive ambient light controller
+-	"mediatek,<chip>-disp-gamma" 		- gamma correction
+-	"mediatek,<chip>-disp-merge" 		- merge streams from two RDMA sources
+-	"mediatek,<chip>-disp-postmask" 	- control round corner for display frame
+-	"mediatek,<chip>-disp-split" 		- split stream to two encoders
+-	"mediatek,<chip>-disp-ufoe"  		- data compression engine
+-	"mediatek,<chip>-dsi"        		- DSI controller, see mediatek,dsi.txt
+-	"mediatek,<chip>-dpi"        		- DPI controller, see mediatek,dpi.txt
+-	"mediatek,<chip>-disp-mutex" 		- display mutex
+-	"mediatek,<chip>-disp-od"    		- overdrive
+-  the supported chips are mt2701, mt7623, mt2712, mt8167, mt8173, mt8183 and mt8192.
+-- reg: Physical base address and length of the function block register space
+-- interrupts: The interrupt signal from the function block (required, except for
+-  merge and split function blocks).
+-- clocks: device clocks
+-  See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
+-  For most function blocks this is just a single clock input. Only the DSI and
+-  DPI controller nodes have multiple clock inputs. These are documented in
+-  mediatek,dsi.txt and mediatek,dpi.txt, respectively.
+-  An exception is that the mt8183 mutex is always free running with no clocks property.
+-
+-Required properties (DMA function blocks):
+-- compatible: Should be one of
+-	"mediatek,<chip>-disp-ovl"
+-	"mediatek,<chip>-disp-rdma"
+-	"mediatek,<chip>-disp-wdma"
+-  the supported chips are mt2701, mt8167 and mt8173.
+-- larb: Should contain a phandle pointing to the local arbiter device as defined
+-  in Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+-- iommus: Should point to the respective IOMMU block with master port as
+-  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
+-  for details.
+-
+-Optional properties (RDMA function blocks):
+-- mediatek,rdma-fifo-size: rdma fifo size may be different even in same SOC, add this
+-  property to the corresponding rdma
+-  the value is the Max value which defined in hardware data sheet.
+-  mediatek,rdma-fifo-size of mt8173-rdma0 is 8K
+-  mediatek,rdma-fifo-size of mt8183-rdma0 is 5K
+-  mediatek,rdma-fifo-size of mt8183-rdma1 is 2K
+-
+-Examples:
+-
+-mmsys: clock-controller@14000000 {
+-	compatible = "mediatek,mt8173-mmsys", "syscon";
+-	reg = <0 0x14000000 0 0x1000>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	#clock-cells = <1>;
+-};
+-
+-ovl0: ovl@1400c000 {
+-	compatible = "mediatek,mt8173-disp-ovl";
+-	reg = <0 0x1400c000 0 0x1000>;
+-	interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OVL0>;
+-	iommus = <&iommu M4U_PORT_DISP_OVL0>;
+-	mediatek,larb = <&larb0>;
+-};
+-
+-ovl1: ovl@1400d000 {
+-	compatible = "mediatek,mt8173-disp-ovl";
+-	reg = <0 0x1400d000 0 0x1000>;
+-	interrupts = <GIC_SPI 181 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OVL1>;
+-	iommus = <&iommu M4U_PORT_DISP_OVL1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-rdma0: rdma@1400e000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x1400e000 0 0x1000>;
+-	interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA0>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA0>;
+-	mediatek,larb = <&larb0>;
+-	mediatek,rdma-fifosize = <8192>;
+-};
+-
+-rdma1: rdma@1400f000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x1400f000 0 0x1000>;
+-	interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-rdma2: rdma@14010000 {
+-	compatible = "mediatek,mt8173-disp-rdma";
+-	reg = <0 0x14010000 0 0x1000>;
+-	interrupts = <GIC_SPI 184 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_RDMA2>;
+-	iommus = <&iommu M4U_PORT_DISP_RDMA2>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-wdma0: wdma@14011000 {
+-	compatible = "mediatek,mt8173-disp-wdma";
+-	reg = <0 0x14011000 0 0x1000>;
+-	interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_WDMA0>;
+-	iommus = <&iommu M4U_PORT_DISP_WDMA0>;
+-	mediatek,larb = <&larb0>;
+-};
+-
+-wdma1: wdma@14012000 {
+-	compatible = "mediatek,mt8173-disp-wdma";
+-	reg = <0 0x14012000 0 0x1000>;
+-	interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_WDMA1>;
+-	iommus = <&iommu M4U_PORT_DISP_WDMA1>;
+-	mediatek,larb = <&larb4>;
+-};
+-
+-color0: color@14013000 {
+-	compatible = "mediatek,mt8173-disp-color";
+-	reg = <0 0x14013000 0 0x1000>;
+-	interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_COLOR0>;
+-};
+-
+-color1: color@14014000 {
+-	compatible = "mediatek,mt8173-disp-color";
+-	reg = <0 0x14014000 0 0x1000>;
+-	interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_COLOR1>;
+-};
+-
+-aal@14015000 {
+-	compatible = "mediatek,mt8173-disp-aal";
+-	reg = <0 0x14015000 0 0x1000>;
+-	interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_AAL>;
+-};
+-
+-gamma@14016000 {
+-	compatible = "mediatek,mt8173-disp-gamma";
+-	reg = <0 0x14016000 0 0x1000>;
+-	interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_GAMMA>;
+-};
+-
+-ufoe@1401a000 {
+-	compatible = "mediatek,mt8173-disp-ufoe";
+-	reg = <0 0x1401a000 0 0x1000>;
+-	interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_UFOE>;
+-};
+-
+-dsi0: dsi@1401b000 {
+-	/* See mediatek,dsi.txt for details */
+-};
+-
+-dpi0: dpi@1401d000 {
+-	/* See mediatek,dpi.txt for details */
+-};
+-
+-mutex: mutex@14020000 {
+-	compatible = "mediatek,mt8173-disp-mutex";
+-	reg = <0 0x14020000 0 0x1000>;
+-	interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_MUTEX_32K>;
+-};
+-
+-od@14023000 {
+-	compatible = "mediatek,mt8173-disp-od";
+-	reg = <0 0x14023000 0 0x1000>;
+-	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+-	clocks = <&mmsys CLK_MM_DISP_OD>;
+-};
 diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-index 910bb9ce61d6..8beeb9c3c057 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
+new file mode 100644
+index 000000000000..63a6bc975b29
+--- /dev/null
 +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-@@ -237,6 +237,9 @@ properties:
-     description: clock drivers
-       See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-       For most function blocks this is just a single clock input.
-+      The MERGE controller may have 2 clock inputs. The second clock of MERGE is async clock,
-+      which is controlling the synchronous process between MERGE and other display function
-+      blocks cross clock domain.
-       Only the DSI and DPI controller nodes have multiple clock inputs. These are documented
-       in mediatek,dsi.txt and mediatek,dpi.yaml, respectively.
-       An exception is that the mt8183 mutex is always free running with no clocks property.
-@@ -270,6 +273,15 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/uint32
-     enum: [8*1024, 5*1024, 2*1024]
- 
-+  mediatek,merge-fifo-en:
-+    description: MERGE fifo settings enable
-+      The setting of merge fifo is mainly provided for the display latency buffer.
-+      To ensure that the back-end panel display data will not be underrun,
-+      a little more data is needed in the fifo. According to the merge fifo settings,
-+      when the water level is detected to be insufficient, it will trigger RDMA sending
-+      ultra and preulra command to SMI to speed up the data rate.
-+    type: boolean
+@@ -0,0 +1,434 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,disp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-   power-domains:
-     description: A phandle and PM domain specifier as defined by bindings of
-       the power controller specified by phandle. See
++title: mediatek Display Subsystem Device Tree Bindings
++
++maintainers:
++  - CK Hu <ck.hu@mediatek.com>
++  - Jason-JH Lin <jason-jh.lin@mediatek.com>
++
++description: |
++  The Mediatek display subsystem consists of various DISP function blocks in the
++  MMSYS register space. The connections between them can be configured by output
++  and input selectors in the MMSYS_CONFIG register space. Pixel clock and start
++  of frame signal are distributed to the other function blocks by a DISP_MUTEX
++  function block.
++  All DISP device tree nodes must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml for details.
++
++  DISP function blocks
++  ====================
++  A display stream starts at a source function block that reads pixel data from
++  memory and ends with a sink function block that drives pixels on a display
++  interface, or writes pixels back to memory. All DISP function blocks have
++  their own register space, interrupt, and clock gate. The blocks that can
++  access memory additionally have to list the IOMMU and local arbiter they are
++  connected to.
++
++properties:
++  compatible:
++    description: |
++      If the display function block of different soc have the same function,
++      you can use the same compatible name after it.
++      For example, if mt8183 COLOR function is the same as mt8173, then the
++      compatible of mt8183 cholud be set as:
++      compatible = "mediatek,mt8183-disp-color", "mediatek,mt8173-disp-color";
++    oneOf:
++        # OVL: overlay (4 layers, blending, csc)
++      - items:
++          - const: mediatek,mt2701-disp-ovl
++      - items:
++          - const: mediatek,mt8173-disp-ovl
++      - items:
++          - const: mediatek,mt8183-disp-ovl
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-ovl
++              - mediatek,mt2712-disp-ovl
++          - enum:
++              - mediatek,mt2701-disp-ovl
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-ovl
++          - enum:
++              - mediatek,mt8183-disp-ovl
++
++      # OVL2L: overlay (2 layers, blending, csc)
++      - items:
++          - const: mediatek,mt8183-disp-ovl-2l
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-ovl-2l
++          - enum:
++              - mediatek,mt8183-disp-ovl-2l
++
++      # RDMA: read DMA / line buffer
++      - items:
++          - const: mediatek,mt2701-disp-rdma
++      - items:
++          - const: mediatek,mt8173-disp-rdma
++      - items:
++          - const: mediatek,mt8183-disp-rdma
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-rdma
++              - mediatek,mt2712-disp-rdma
++          - enum:
++              - mediatek,mt2701-disp-rdma
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-rdma
++          - enum:
++              - mediatek,mt8183-disp-rdma
++
++      # WDMA: write DMA
++      - items:
++          - const: mediatek,mt8173-disp-wdma
++
++      # CCORR: color correction
++      - items:
++          - const: mediatek,mt8183-disp-ccorr
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-ccorr
++          - enum:
++              - mediatek,mt8183-disp-ccorr
++
++      # COLOR: color processor
++      - items:
++          - const: mediatek,mt2701-disp-color
++      - items:
++          - const: mediatek,mt8167-disp-color
++      - items:
++          - const: mediatek,mt8173-disp-color
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-color
++              - mediatek,mt2712-disp-color
++          - enum:
++              - mediatek,mt2701-disp-color
++      - items:
++          - enum:
++              - mediatek,mt8183-disp-color
++              - mediatek,mt8192-disp-color
++          - enum:
++              - mediatek,mt8173-disp-color
++
++      # DITHER
++      - items:
++          - const: mediatek,mt8183-disp-dither
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-dither
++          - enum:
++              - mediatek,mt8183-disp-dither
++
++      # AAL: adaptive ambient light controller
++      - items:
++          - const: mediatek,mt8173-disp-aal
++      - items:
++          - enum:
++              - mediatek,mt2712-disp-aal
++              - mediatek,mt8183-disp-aal
++              - mediatek,mt8192-disp-aal
++          - enum:
++              - mediatek,mt8173-disp-aal
++
++      # GAMMA: gamma correction
++      - items:
++          - const: mediatek,mt8173-disp-gamma
++      - items:
++          - const: mediatek,mt8183-disp-gamma
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-gamma
++          - enum:
++              - mediatek,mt8183-disp-gamma
++
++      # MERGE: merge streams from two RDMA sources
++
++      # POSTMASK: control round corner for display frame
++      - items:
++          - const: mediatek,mt8192-disp-postmask
++
++      # SPLIT: split stream to two encoders
++
++      # UFOE: data compression engine
++      - items:
++          - const: mediatek,mt8173-disp-ufoe
++
++      # DSI: see Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt for details.
++      - items:
++          - const: mediatek,mt2701-disp-dsi
++      - items:
++          - const: mediatek,mt8173-disp-dsi
++      - items:
++          - const: mediatek,mt8183-disp-dsi
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-dsi
++              - mediatek,mt2712-disp-dsi
++          - enum:
++              - mediatek,mt2701-disp-dsi
++      - items:
++          - enum:
++              - mediatek,mt8192-disp-dsi
++          - enum:
++              - mediatek,mt8183-disp-dsi
++
++      # DPI: see Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml for details.
++      - items:
++          - const: mediatek,mt2701-disp-dpi
++      - items:
++          - const: mediatek,mt8173-disp-dpi
++      - items:
++          - const: mediatek,mt8183-disp-dpi
++      - items:
++          - const: mediatek,mt8192-disp-dpi
++      - items:
++          - enum:
++              - mediatek,mt7623-disp-dpi
++              - mediatek,mt2712-disp-dpi
++          - enum:
++              - mediatek,mt2701-disp-dpi
++
++      # MUTEX: display mutex
++      - items:
++          - const: mediatek,mt2701-disp-mutex
++      - items:
++          - const: mediatek,mt2712-disp-mutex
++      - items:
++          - const: mediatek,mt8167-disp-mutex
++      - items:
++          - const: mediatek,mt8173-disp-mutex
++      - items:
++          - const: mediatek,mt8183-disp-mutex
++      - items:
++          - const: mediatek,mt8192-disp-mutex
++
++      # OD: overdrive
++      - items:
++          - const: mediatek,mt2712-disp-od
++      - items:
++          - const: mediatek,mt8173-disp-od
++
++  reg:
++    description: Physical base address and length of the function block register space.
++
++  interrupts:
++    description: The interrupt signal from the function block required,
++      except for merge and split function blocks.
++
++  clocks:
++    description: clock drivers
++      See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
++      For most function blocks this is just a single clock input.
++      Only the DSI and DPI controller nodes have multiple clock inputs. These are documented
++      in mediatek,dsi.txt and mediatek,dpi.yaml, respectively.
++      An exception is that the mt8183 mutex is always free running with no clocks property.
++
++  mediatek,larb:
++    description: The compatible property should be one of DMA function blocks,
++      such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
++      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
++      Should contain a phandle pointing to the local arbiter device as defined in
++      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
++      It must sort according to the local arbiter index, like larb0, larb1, larb2...
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    minItems: 1
++    maxItems: 32
++
++  iommus:
++    description: The compatible property should be one of DMA function blocks,
++      such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
++      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
++      Should point to the respective IOMMU block with master port as argument, see
++      Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
++
++  mediatek,rdma-fifo-size:
++    description: RDMA function blocks
++      rdma fifo size may be different even in same SOC, add this property to the
++      corresponding rdma.
++      The value below is the Max value which defined in hardware data sheet
++      mediatek,rdma-fifo-size of mt8173-rdma0 is 8K
++      mediatek,rdma-fifo-size of mt8183-rdma0 is 5K
++      mediatek,rdma-fifo-size of mt8183-rdma1 is 2K
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [8*1024, 5*1024, 2*1024]
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  mediatek,gce-client-reg:
++    description: The register of display function block to be set by gce.
++      There are 4 arguments in this property, such as gce node, subsys id, offset
++      and register size. The subsys id that is mapping to the register of display
++      function blocks is defined in the gce header
++      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
++      For example, The mediatek,gce-client-reg property of OVL in mt8173 is
++      <&gce SUBSYS_1400XXXX 0xc000 0x1000>.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    ovl0: ovl@1400c000 {
++        compatible = "mediatek,mt8173-disp-ovl";
++        reg = <0 0x1400c000 0 0x1000>;
++        interrupts = <GIC_SPI 180 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_OVL0>;
++        iommus = <&iommu M4U_PORT_DISP_OVL0>;
++        mediatek,larb = <&larb0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
++    };
++
++    ovl1: ovl@1400d000 {
++        compatible = "mediatek,mt8173-disp-ovl";
++        reg = <0 0x1400d000 0 0x1000>;
++        interrupts = <GIC_SPI 181 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_OVL1>;
++        iommus = <&iommu M4U_PORT_DISP_OVL1>;
++        mediatek,larb = <&larb4>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
++    };
++
++    rdma0: rdma@1400e000 {
++        compatible = "mediatek,mt8173-disp-rdma";
++        reg = <0 0x1400e000 0 0x1000>;
++        interrupts = <GIC_SPI 182 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_RDMA0>;
++        iommus = <&iommu M4U_PORT_DISP_RDMA0>;
++        mediatek,larb = <&larb0>;
++        mediatek,rdma-fifosize = <8192>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
++    };
++
++    rdma1: rdma@1400f000 {
++        compatible = "mediatek,mt8173-disp-rdma";
++        reg = <0 0x1400f000 0 0x1000>;
++        interrupts = <GIC_SPI 183 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_RDMA1>;
++        iommus = <&iommu M4U_PORT_DISP_RDMA1>;
++        mediatek,larb = <&larb4>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
++    };
++
++    rdma2: rdma@14010000 {
++        compatible = "mediatek,mt8173-disp-rdma";
++        reg = <0 0x14010000 0 0x1000>;
++        interrupts = <GIC_SPI 184 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_RDMA2>;
++        iommus = <&iommu M4U_PORT_DISP_RDMA2>;
++        mediatek,larb = <&larb4>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0 0x1000>;
++    };
++
++    wdma0: wdma@14011000 {
++        compatible = "mediatek,mt8173-disp-wdma";
++        reg = <0 0x14011000 0 0x1000>;
++        interrupts = <GIC_SPI 185 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_WDMA0>;
++        iommus = <&iommu M4U_PORT_DISP_WDMA0>;
++        mediatek,larb = <&larb0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
++    };
++
++    wdma1: wdma@14012000 {
++        compatible = "mediatek,mt8173-disp-wdma";
++        reg = <0 0x14012000 0 0x1000>;
++        interrupts = <GIC_SPI 186 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_WDMA1>;
++        iommus = <&iommu M4U_PORT_DISP_WDMA1>;
++        mediatek,larb = <&larb4>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
++    };
++
++    color0: color@14013000 {
++        compatible = "mediatek,mt8173-disp-color";
++        reg = <0 0x14013000 0 0x1000>;
++        interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_COLOR0>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x3000 0x1000>;
++    };
++
++    color1: color@14014000 {
++        compatible = "mediatek,mt8173-disp-color";
++        reg = <0 0x14014000 0 0x1000>;
++        interrupts = <GIC_SPI 188 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_COLOR1>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x4000 0x1000>;
++    };
++
++    aal@14015000 {
++        compatible = "mediatek,mt8173-disp-aal";
++        reg = <0 0x14015000 0 0x1000>;
++        interrupts = <GIC_SPI 189 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_AAL>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x5000 0x1000>;
++    };
++
++    gamma@14016000 {
++        compatible = "mediatek,mt8173-disp-gamma";
++        reg = <0 0x14016000 0 0x1000>;
++        interrupts = <GIC_SPI 190 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_GAMMA>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x6000 0x1000>;
++    };
++
++    ufoe@1401a000 {
++        compatible = "mediatek,mt8173-disp-ufoe";
++        reg = <0 0x1401a000 0 0x1000>;
++        interrupts = <GIC_SPI 191 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_UFOE>;
++    };
++
++    dsi0: dsi@1401b000 {
++        /* See mediatek,dsi.txt for details */
++    };
++
++    dpi0: dpi@1401d000 {
++        /* See mediatek,dpi.yaml for details */
++    };
++
++    mutex: mutex@14020000 {
++        compatible = "mediatek,mt8173-disp-mutex";
++        reg = <0 0x14020000 0 0x1000>;
++        interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_LOW>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_MUTEX_32K>;
++        };
++
++    od@14023000 {
++        compatible = "mediatek,mt8173-disp-od";
++        reg = <0 0x14023000 0 0x1000>;
++        power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
++        clocks = <&mmsys CLK_MM_DISP_OD>;
++    };
++
++...
 -- 
 2.18.0
 _______________________________________________
