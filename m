@@ -2,59 +2,59 @@ Return-Path: <SRS0=ob7z=MH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 911E2C5CFC2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E603DC5CFC2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:38:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5064B61357
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:38:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5064B61357
+	by mail.kernel.org (Postfix) with ESMTPS id A060161357
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 17:38:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A060161357
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FYNxqBFAsjT9mXO3NZiwBuITYsS30ir1zk7Q6ccdVIM=; b=f15E+i+ZYrUff7
-	GElHDFrbJVm9mObTBzMLFALsoCT5gkydiekNxYgd0IbqxHKyK9KrbdPFyx8/2opS35o6fQ4ZY3Z7J
-	nF56zafg33z39zwaAkcCvS+ycIgZCH1cBQj44TGlfSv1lVATSde0CMEO96FXdedKMuBH7jnm/RyZh
-	4UwVfTTA6kWXoTMuHbnxj36Rx1bexn7EulPnXKktmOIf7UzdqEMi3J5A8aMkWPywQuQmOYolihQGz
-	uLWu3BVzyrr1e0E0+8vMNf6IZym3jqJZXu0LOtGYpcnkyDYMvc7TEN9N7P06dQiiSVJ9Uui/5SoZO
-	UZmEp0BgRMjtgRmS+fCw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UeYh+ZHWdxx65ZcMDj95wXX847g0UStcq/r1BaqqPwc=; b=SxQbD7kpt9ZjZn
+	yIsXT6x9CKDfJT/7K12WxQArSjNo4Zng/3b8FwQF43Vk3agqgXfKD4igjgxba4jqX4fGjFEsOAXYK
+	tNHW2VUzjJCkTlebyzqkjQf/iV97wYKKCcg6NJBcXys1wakaontzkl+ETTlJI0FKt6CaQf2VSVbMt
+	iWLqNdAa40GGZHVwLuy+8qWeMFiBpHlLV5V/uIVyGGIMrMLEY7fdX15kEHCMneULy4BoecjiAPg2+
+	MefoJt8N/7DfxEWBe5GtuisNkOqmYVTK08ifbeVhgF35DMn1QQlQ7t4cJL8dhW3cKxYoSP+NIACBg
+	zOaKVslqbC91Jj1GQWTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m45JI-001mse-7v; Thu, 15 Jul 2021 17:38:08 +0000
+	id 1m45Ja-001myB-GV; Thu, 15 Jul 2021 17:38:26 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m45JE-001mqT-I7; Thu, 15 Jul 2021 17:38:06 +0000
-X-UUID: 2adda54fa6804573a84162c992223952-20210715
+ id 1m45JF-001mqa-JD; Thu, 15 Jul 2021 17:38:07 +0000
+X-UUID: 364673dd1cda47a7b6bc4fd22e3b40c1-20210715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NB/Mmevxqh9VrZIRCNnU9P/KJis/C/ffc328PnieOZA=; 
- b=cyUzBgu2zdctGv68rGWaqtOqeLO+ciFB7S/9ttLVvXNsvZ08w0t7oNS8TKtcxKWBrs5vqOSr7FBcbsF2jHO794Ee8NMpQnucQJIMMoFyGBlPdqyfCc/8SuBshQKJFG4oZ/hqLeIMCaVJ6Xfv0VwevTWFhKIzZYxI5hDQEHddY0Q=;
-X-UUID: 2adda54fa6804573a84162c992223952-20210715
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=nAK6ZJ3ee85JDcQCsneiDFMT/ejqwqCHFPYQdU/nj54=; 
+ b=l4naPozdvD6rCg29fIZVKo5WA3AgxyZ0SaSEmYqEIUza7z0PQg9ZvEje8Cgi/Z/T1GtOzy0WpZf6h5cB1iRYw71c6BrV+OZSt7e2xbrlQYzkSN80DyQXL8ua9TsQ05eZLOjZd6ivoa6ZXxON4Vl+WJ4WKxZVx4i6ed5ax95GKSU=;
+X-UUID: 364673dd1cda47a7b6bc4fd22e3b40c1-20210715
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 805004477; Thu, 15 Jul 2021 10:38:01 -0700
+ with ESMTP id 1523574766; Thu, 15 Jul 2021 10:38:01 -0700
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 10:38:00 -0700
+ 15.0.1497.2; Thu, 15 Jul 2021 10:37:59 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 16 Jul 2021 01:37:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 16 Jul 2021 01:37:52 +0800
+ Frontend Transport; Fri, 16 Jul 2021 01:37:51 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>
 CC: <linux-arm-kernel@lists.infradead.org>,
@@ -62,19 +62,15 @@ CC: <linux-arm-kernel@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fshao@google.com>,
  <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
  <singo.chang@mediatek.com>
-Subject: [PATCH v3 02/12] dt-bindings: mediatek: display: add definition for
- mt8195
-Date: Fri, 16 Jul 2021 01:37:40 +0800
-Message-ID: <20210715173750.10852-3-jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 00/12] Add MediaTek SoC DRM (vdosys0) support for mt8195
+Date: Fri, 16 Jul 2021 01:37:38 +0800
+Message-ID: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
-References: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_103804_649397_049FC079 
-X-CRM114-Status: UNSURE (   9.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210715_103805_692134_5FFB04CF 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,105 +87,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add definition for mt8195 display.
+The hardware path of vdosys0 with eDP panel output need to go through
+by several modules, such as, OVL, RDMA, COLOR, CCORR, AAL, GAMMA,
+DITHER, DSC and MERGE.
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
- .../bindings/display/mediatek/mediatek,disp.yaml   | 14 ++++++++++++--
- 1 file changed, 12 insertions(+), 2 deletions(-)
+Change in v3:
+- change mmsys and display dt-bindings document from txt to yaml
+- add MERGE additional description in display dt-bindings document
+- fix mboxes-cells number of vdosys0 node in dts
+- drop mutex eof convert define
+- remove pm_runtime apis in DSC and MERGE
+- change DSC and MERGE enum to alphabetic order
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-index 63a6bc975b29..910bb9ce61d6 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-@@ -54,6 +54,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-ovl
-+              - mediatek,mt8195-disp-ovl
-           - enum:
-               - mediatek,mt8183-disp-ovl
- 
-@@ -82,6 +83,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-rdma
-+              - mediatek,mt8195-disp-rdma
-           - enum:
-               - mediatek,mt8183-disp-rdma
- 
-@@ -95,6 +97,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-ccorr
-+              - mediatek,mt8195-disp-ccorr
-           - enum:
-               - mediatek,mt8183-disp-ccorr
- 
-@@ -115,6 +118,7 @@ properties:
-           - enum:
-               - mediatek,mt8183-disp-color
-               - mediatek,mt8192-disp-color
-+              - mediatek,mt8195-disp-color
-           - enum:
-               - mediatek,mt8173-disp-color
- 
-@@ -124,6 +128,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-dither
-+              - mediatek,mt8195-disp-dither
-           - enum:
-               - mediatek,mt8183-disp-dither
- 
-@@ -135,6 +140,7 @@ properties:
-               - mediatek,mt2712-disp-aal
-               - mediatek,mt8183-disp-aal
-               - mediatek,mt8192-disp-aal
-+              - mediatek,mt8195-disp-aal
-           - enum:
-               - mediatek,mt8173-disp-aal
- 
-@@ -146,10 +152,13 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8192-disp-gamma
-+              - mediatek,mt8195-disp-gamma
-           - enum:
-               - mediatek,mt8183-disp-gamma
- 
-       # MERGE: merge streams from two RDMA sources
-+      - items:
-+          - const: mediatek,mt8195-disp-merge
- 
-       # POSTMASK: control round corner for display frame
-       - items:
-@@ -209,6 +218,7 @@ properties:
-           - const: mediatek,mt8183-disp-mutex
-       - items:
-           - const: mediatek,mt8192-disp-mutex
-+          - const: mediatek,mt8195-disp-mutex
- 
-       # OD: overdrive
-       - items:
-@@ -234,7 +244,7 @@ properties:
-   mediatek,larb:
-     description: The compatible property should be one of DMA function blocks,
-       such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
--      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
-+      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
-       Should contain a phandle pointing to the local arbiter device as defined in
-       Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
-       It must sort according to the local arbiter index, like larb0, larb1, larb2...
-@@ -245,7 +255,7 @@ properties:
-   iommus:
-     description: The compatible property should be one of DMA function blocks,
-       such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
--      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
-+      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
-       Should point to the respective IOMMU block with master port as argument, see
-       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
- 
+Change in v2:
+- add DSC yaml file
+- add mt8195 drm driver porting parts in to one patch
+- remove useless define, variable, stucture member and function
+- simplify DSC and MERGE file and switch threre order
+
+jason-jh.lin (12):
+  dt-bindings: mediatek: display: change txt to yaml file
+  dt-bindings: mediatek: display: add definition for mt8195
+  dt-bindings: mediatek: display: add MERGE additional description
+  dt-bindings: mediatek: add DSC definition for mt8195
+  dt-bindings: arm: mediatek: change mmsys txt to yaml file
+  dt-bindings: arm: mediatek: add definition for mt8195 mmsys
+  arm64: dts: mt8195: add display node for vdosys0
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+  drm/mediatek: add mediatek-drm of vdosys0 support for MT8195
+  drm/mediatek: add DSC support for MT8195
+  drm/mediatek: add MERGE support for MT8195
+
+ .../bindings/arm/mediatek/mediatek,mmsys.txt  |  32 --
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 126 +++++
+ .../display/mediatek/mediatek,disp.txt        | 219 ---------
+ .../display/mediatek/mediatek,disp.yaml       | 464 ++++++++++++++++++
+ .../display/mediatek/mediatek,dsc.yaml        |  73 +++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 111 +++++
+ drivers/gpu/drm/mediatek/Makefile             |   2 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  16 +
+ drivers/gpu/drm/mediatek/mtk_disp_dsc.c       | 161 ++++++
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 372 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.h       |  14 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |  35 +-
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  36 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +
+ drivers/soc/mediatek/mt8195-mmsys.h           | 191 +++++++
+ drivers/soc/mediatek/mtk-mmsys.c              |  11 +
+ drivers/soc/mediatek/mtk-mutex.c              |  93 +++-
+ include/linux/soc/mediatek/mtk-mmsys.h        |  10 +
+ 20 files changed, 1717 insertions(+), 259 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+ create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+ delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+ create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
 -- 
 2.18.0
 _______________________________________________
