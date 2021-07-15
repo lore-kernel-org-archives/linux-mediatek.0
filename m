@@ -2,77 +2,85 @@ Return-Path: <SRS0=ob7z=MH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90A2AC07E96
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B2E5C07E96
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:22:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B4CC61358
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:06:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2B4CC61358
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5389461362
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Jul 2021 06:22:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5389461362
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RjroGL9xpP2osw2hJmfdO6+p0KILXJSYHzGIOhg4fR8=; b=uQ54oGjc6g6NNA
-	AXaWysqLvx3aOWN0yDFbqTNHOhtC7vVZjtYJAkb78i1RniPl6Oj575HCkBlWspmY7O6u8Diu/xhpP
-	3Pz7gYBEyFUc6YVlGFA9UR8VrfUdm/U9x0qB2Yv+zZILvdHsW2qUSbQpRfnOVpFyBEtNNUHr+MgnJ
-	fU8EA1KTFkLGiA+0Sa9yQwVFbzM1njiLG4LbziDFyjvb1vqEcUJTELv61dBPC7MWSv8Pe0fd5DsaW
-	MQzEy724dUEcaLN860u/IWi93GGszF6hLAsqnmtD5QbvxSznNithqzP+aPod4aEBE4nQw7Dkg953Z
-	o5woqtxQfpdtsBUJRWnQ==;
+	List-Owner; bh=h0bsRQFEnGdKIOayvH3MkKKEcrv4K6CeaKCAZDPRjF0=; b=a0Q4cXCh52jVud
+	5S0Uc/jJri7UMelILZNMJ83M7IjOy8vHlfOy7Ivxwj5bqyTquE6zYKQOX/wGLvI6AyeuB2jCfzdMQ
+	smnJM2+3Xe8IWIP14Egivj3EXGBf1QDJxdI7k1e8g8wrrUnU7xUzViYyY59HymRSPh2k1jDwZ6D0R
+	bGs4QpwLwqdd+U8H0FHVqjJofY+gdq9YHWb/98wJEJz8Usvm38uNzQcsMHvrFYni1VkCWm1HfSPBR
+	A9KVoeG/+oYGD/vf8H1Gt9uuYDIixBjPLrj2cUOaZfIhfIwJ/v2SKQxmWtSnFS2F4HCMhN8n2pNn4
+	rTqMNcEfu+aiMxVCC4sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m3uW7-00HECn-En; Thu, 15 Jul 2021 06:06:39 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m3ukm-00HFD2-BA; Thu, 15 Jul 2021 06:21:48 +0000
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m3uVs-00HEBW-Ol; Thu, 15 Jul 2021 06:06:28 +0000
-X-UUID: b2991c554ae042f096f9b453083c8121-20210714
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=BoxekSSqtK/u4nnDypc6LM4QXzRKT0nyXJEFLCws5Hc=; 
- b=kg3ZmWcEsYpeaQzbUTpCZshu5PepoaEhX13AvlPfj/Ucvbte8OoZANutwUDS4Xr1NSwmPCTWxw8p7mZEGWYz/T+KDIT+0DeMHAfxHontudgagitPXzViMYOBxWosLbRnLGjiH3ypSoSCnOybC4VFGbxDecJXRibEyAaltCYRiYE=;
-X-UUID: b2991c554ae042f096f9b453083c8121-20210714
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1462740933; Wed, 14 Jul 2021 23:06:20 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 14 Jul 2021 23:06:18 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 14:06:11 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- mtkcas07.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 15 Jul 2021 14:06:11 +0800
-From: <guangming.cao@mediatek.com>
-To: <christian.koenig@amd.com>
-CC: <caoguangming34@gmail.com>, <dri-devel@lists.freedesktop.org>,
- <guangming.cao@mediatek.com>, <linaro-mm-sig@lists.linaro.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-media@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <sumit.semwal@linaro.org>, <wsd_upstream@mediatek.com>
-Subject: Re: [PATCH] dma-buf: add kernel count for dma_buf
-Date: Thu, 15 Jul 2021 14:06:07 +0800
-Message-ID: <20210715060607.98339-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <424d5f2e-2ad5-cc33-5615-7d4a235af3dc@amd.com>
-References: <424d5f2e-2ad5-cc33-5615-7d4a235af3dc@amd.com>
+ id 1m3uki-00HFBv-6y
+ for linux-mediatek@lists.infradead.org; Thu, 15 Jul 2021 06:21:46 +0000
+Received: by mail-lf1-x130.google.com with SMTP id f30so7934948lfj.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 14 Jul 2021 23:21:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eDnZkWk4wGXBAneUQ2pO6M6fPGzr2/erew54duA0y+g=;
+ b=FQeFZgGIC5DZPxcbpv+PigdW3L94WikM7o2HBJFUZLcGIvndO8tCWrqIim+CESB1uQ
+ XlBda0IORHzSfIvirbM4bYZ+GL0v+pc94axE72Cq8CZgI765dpj+XaJQgCsf4riK2vmu
+ 9E5P+YVkM5GKGUn6nFfoojCn6v47o5K8qI9Fc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eDnZkWk4wGXBAneUQ2pO6M6fPGzr2/erew54duA0y+g=;
+ b=NDpESJHdgmBIH3WpfIpfhmoplsjH+GnmtgmEPP3p64a/ubHXEgrxVxXXbI5frEHXlb
+ B/CpekS67V/cGRp/FkMDxuEvrHRL7psxD0wN2phoMz4SgONIKhRQSJyGwVwR8v8ZQMU3
+ /V0yJJBn6AF9oB/8HW29KqwFRldKBUSHQ64nAHiODEZF4luqNShM/j5ENabVomQDn85h
+ LRvsn4vopRANBRpbtYpaUbyWNJrwYRWFFh1IL7hBsWQXgDv4/Nuuj0a5PldzvatA8WZp
+ Cge35NH/RN8BMPeifF9e1m/05+Vh64/101Ob4ClZ5xYaggfagMagoP2OiBDP1Jev9QnL
+ 11ug==
+X-Gm-Message-State: AOAM532qiJwYjA8KpAXOz2pqS52kt1i5P//TUzDH0sTFs0S5fv2zV2hl
+ Ay4NlSLuZ0SdXnRJ/b5QIpvz9QRsZIg77mOIA5yWyg==
+X-Google-Smtp-Source: ABdhPJzgSd49Fp4x/b7JoIZ4W4zF8u2EyzMr1QKyp1dccSFuXtyCO+7c2sDP+12iNgZW1LhYzoFhxQLddT1EKSUMVrM=
+X-Received: by 2002:a19:858b:: with SMTP id h133mr2083722lfd.656.1626330102820; 
+ Wed, 14 Jul 2021 23:21:42 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1626316157-24935-1-git-send-email-kewei.xu@mediatek.com>
+ <1626316157-24935-3-git-send-email-kewei.xu@mediatek.com>
+In-Reply-To: <1626316157-24935-3-git-send-email-kewei.xu@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 15 Jul 2021 14:21:31 +0800
+Message-ID: <CAGXv+5HjVaiaC5DhETNCV880aKjgfwxuVq9Rd=VhVrRNjDPOOQ@mail.gmail.com>
+Subject: Re: [PATCH 2/8] i2c: mediatek: Dump i2c/dma register when a timeout
+ occurs
+To: Kewei Xu <kewei.xu@mediatek.com>
+Cc: wsa@the-dreams.de, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, linux-i2c@vger.kernel.org,
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
+ linux-mediatek@lists.infradead.org, 
+ srv_heupstream <srv_heupstream@mediatek.com>, leilk.liu@mediatek.com,
+ qii.wang@mediatek.com, 
+ qiangming.xia@mediatek.com, ot_daolong.zhu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210714_230626_261198_7AA28F5A 
-X-CRM114-Status: GOOD (  61.36  )
+X-CRM114-CacheID: sfid-20210714_232144_317256_382CA7A6 
+X-CRM114-Status: GOOD (  24.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,222 +92,173 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogR3VhbmdtaW5nLkNhbyA8Z3VhbmdtaW5nLmNhb0BtZWRpYXRlay5jb20+DQoNCk9uIFdl
-ZCwgMjAyMS0wNy0xNCBhdCAxNDoyOCArMDIwMCwgQ2hyaXN0aWFuIEvDtm5pZyB3cm90ZToNCj4g
-QW0gMTQuMDcuMjEgdW0gMTQ6MDMgc2NocmllYiBndWFuZ21pbmcuY2FvQG1lZGlhdGVrLmNvbToN
-Cj4gPiBGcm9tOiBHdWFuZ21pbmcuQ2FvIDxndWFuZ21pbmcuY2FvQG1lZGlhdGVrLmNvbT4NCj4g
-PiANCj4gPiBPbiBXZWQsIDIwMjEtMDctMTQgYXQgMTI6NDMgKzAyMDAsIENocmlzdGlhbiBL6bCK
-aWcgd3JvdGU6DQo+ID4gPiBBbSAxNC4wNy4yMSB1bSAxMTo0NCBzY2hyaWViIGd1YW5nbWluZy5j
-YW9AbWVkaWF0ZWsuY29tOg0KPiA+ID4gPiBGcm9tOiBHdWFuZ21pbmcgQ2FvIDxHdWFuZ21pbmcu
-Q2FvQG1lZGlhdGVrLmNvbT4NCj4gPiA+ID4gDQo+ID4gPiA+IE9uIFdlZCwgMjAyMS0wNy0xNCBh
-dCAxMDo0NiArMDIwMCwgQ2hyaXN0aWFuIEvpsIppZyB3cm90ZToNCj4gPiA+ID4gPiBBbSAxNC4w
-Ny4yMSB1bSAwOToxMSBzY2hyaWViIGd1YW5nbWluZy5jYW9AbWVkaWF0ZWsuY29tOg0KPiA+ID4g
-PiA+ID4gRnJvbTogR3VhbmdtaW5nIENhbyA8R3VhbmdtaW5nLkNhb0BtZWRpYXRlay5jb20+DQo+
-ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IEFkZCBhIHJlZmNvdW50IGZvciBrZXJuZWwgdG8gcHJl
-dmVudCBVQUYoVXNlIEFmdGVyIEZyZWUpDQo+ID4gPiA+ID4gPiBpc3N1ZS4NCj4gPiA+ID4gPiAN
-Cj4gPiA+ID4gPiBXZWxsIE5BSyBvbiBzbyBtYW55IGxldmVscy4NCj4gPiA+ID4gPiANCj4gPiA+
-ID4gPiA+IFdlIGNhbiBhc3N1bWUgYSBjYXNlIGxpa2UgYmVsb3c6DQo+ID4gPiA+ID4gPiAgICAg
-ICAgMS4ga2VybmVsIHNwYWNlIGFsbG9jIGRtYV9idWYoZmlsZSBjb3VudCA9IDEpDQo+ID4gPiA+
-ID4gPiAgICAgICAgMi4ga2VybmVsIHVzZSBkbWFfYnVmIHRvIGdldCBmZChmaWxlIGNvdW50ID0g
-MSkNCj4gPiA+ID4gPiA+ICAgICAgICAzLiB1c2Vyc3BhY2UgdXNlIGZkIHRvIGRvIG1hcHBpbmcg
-KGZpbGUgY291bnQgPSAyKQ0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IENyZWF0aW5nIGFuIHVzZXJz
-cGFjZSBtYXBwaW5nIGluY3JlYXNlcyB0aGUgcmVmZXJlbmNlIGNvdW50DQo+ID4gPiA+ID4gZm9y
-DQo+ID4gPiA+ID4gdGhlDQo+ID4gPiA+ID4gdW5kZXJseWluZyBmaWxlIG9iamVjdC4NCj4gPiA+
-ID4gPiANCj4gPiA+ID4gPiBTZWUgdGhlIGltcGxlbWVudGF0aW9uIG9mIG1tYXBfcmVnaW9uKCk6
-DQo+ID4gPiA+ID4gLi4uDQo+ID4gPiA+ID4gICAgICAgICAgICAgICAgICAgIHZtYS0+dm1fZmls
-ZSA9IGdldF9maWxlKGZpbGUpOw0KPiA+ID4gPiA+ICAgICAgICAgICAgICAgICAgICBlcnJvciA9
-IGNhbGxfbW1hcChmaWxlLCB2bWEpOw0KPiA+ID4gPiA+IC4uLg0KPiA+ID4gPiA+IA0KPiA+ID4g
-PiA+IFdoYXQgY2FuIGhhcHBlbiBpcyB0aGUgdGhlIHVuZGVybHlpbmcgZXhwb3J0ZXIgcmVkaXJl
-Y3RzIHRoZQ0KPiA+ID4gPiA+IG1tYXANCj4gPiA+ID4gPiB0bw0KPiA+ID4gPiA+IGENCj4gPiA+
-ID4gPiBkaWZmZXJlbnQgZmlsZSwgZS5nLiBUVE0gb3IgR0VNIGRyaXZlcnMgZG8gdGhhdCBhbGwg
-dGhlIHRpbWUuDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gQnV0IHRoaXMgaXMgZmluZSBzaW5jZSB0
-aGVuIHRoZSBWQSBtYXBwaW5nIGlzIGluZGVwZW5kZW50IG9mDQo+ID4gPiA+ID4gdGhlDQo+ID4g
-PiA+ID4gRE1BLQ0KPiA+ID4gPiA+IGJ1Zi4NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiA+ICAgICAg
-ICA0LiBrZXJuZWwgY2FsbCBkbWFfYnVmX3B1dCAoZmlsZSBjb3VudCA9IDEpDQo+ID4gPiA+ID4g
-PiAgICAgICAgNS4gdXNlcnBzYWNlIGNsb3NlIGJ1ZmZlciBmZChmaWxlIGNvdW50ID0gMCkNCj4g
-PiA+ID4gPiA+ICAgICAgICA2LiBhdCB0aGlzIHRpbWUsIGJ1ZmZlciBpcyByZWxlYXNlZCwgYnV0
-IHZhIGlzDQo+ID4gPiA+ID4gPiB2YWxpZCEhDQo+ID4gPiA+ID4gPiAgICAgICAgICAgU28gd2Ug
-c3RpbGwgY2FuIHJlYWQvd3JpdGUgYnVmZmVyIHZpYSBtbWFwIHZhLA0KPiA+ID4gPiA+ID4gICAg
-ICAgICAgIGl0IG1heWJlIGNhdXNlIG1lbW9yeSBsZWFrLCBvciBrZXJuZWwgZXhjZXB0aW9uLg0K
-PiA+ID4gPiA+ID4gICAgICAgICAgIEFuZCBhbHNvLCBpZiB3ZSB1c2UgImxzIC1sbCIgdG8gd2F0
-Y2gNCj4gPiA+ID4gPiA+IGNvcnJlc3BvbmRpbmcNCj4gPiA+ID4gPiA+IHByb2Nlc3MNCj4gPiA+
-ID4gPiA+ICAgICAgICAgICAgICAgZmQgbGluayBpbmZvLCBpdCBhbHNvIHdpbGwgY2F1c2Uga2Vy
-bmVsDQo+ID4gPiA+ID4gPiBleGNlcHRpb24uDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IEFu
-b3RoZXIgY2FzZToNCj4gPiA+ID4gPiA+ICAgICAgICAgVXNpbmcgZG1hX2J1Zl9mZCB0byBnZW5l
-cmF0ZSBtb3JlIHRoYW4gMSBmZCwNCj4gPiA+ID4gPiA+IGJlY2F1c2UNCj4gPiA+ID4gPiA+ICAg
-ICAgICAgZG1hX2J1Zl9mZCB3aWxsIG5vdCBpbmNyZWFzZSBmaWxlIGNvdW50LCB0aHVzLCB3aGVu
-DQo+ID4gPiA+ID4gPiBjbG9zZQ0KPiA+ID4gPiA+ID4gICAgICAgICB0aGUgc2Vjb25kIGZkLCBp
-dCBtYXliZSBvY2N1cnMgZXJyb3IuDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gRWFjaCBvcGVuZWQg
-ZmQgd2lsbCBpbmNyZWFzZSB0aGUgcmVmZXJlbmNlIGNvdW50IHNvIHRoaXMgaXMNCj4gPiA+ID4g
-PiBjZXJ0YWlubHkNCj4gPiA+ID4gPiBub3QgY29ycmVjdCB3aGF0IHlvdSBkZXNjcmliZSBoZXJl
-Lg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IFJlZ2FyZHMsDQo+ID4gPiA+ID4gQ2hyaXN0aWFuLg0K
-PiA+ID4gPiA+IA0KPiA+ID4gPiANCj4gPiA+ID4gWWVzLCBtbWFwIHdpbGwgaW5jcmVhc2UgZmls
-ZSBjb3VudCBieSBjYWxsaW5nIGdldF9maWxlLCBzbw0KPiA+ID4gPiBzdGVwWzJdDQo+ID4gPiA+
-IC0+DQo+ID4gPiA+IHN0ZXBbM10sIGZpbGUgY291bnQgaW5jcmVhc2UgMS4NCj4gPiA+ID4gDQo+
-ID4gPiA+IEJ1dCwgZG1hX2J1Zl9mZCgpIHdpbGwgbm90IGluY3JlYXNlIGZpbGUgY291bnQuDQo+
-ID4gPiA+IGZ1bmN0aW9uICJkbWFfYnVmX2ZkKHN0cnVjdCBkbWFfYnVmICpkbWFidWYsIGludCBm
-bGFncykiIGp1c3QNCj4gPiA+ID4gZ2V0DQo+ID4gPiA+IGFuDQo+ID4gPiA+IHVudXNlZCBmZCwg
-dmlhIGNhbGwgImdldF91bnVzZWRfZmRfZmxhZ3MoZmxhZ3MpIiwgYW5kIGNhbGwNCj4gPiA+ID4g
-ImZkX2luc3RhbGwoZmQsIGRtYWJ1Zi0+ZmlsZSkiLCBpdCB3aWxsIGxldCBhc3NvY2lhdGVkICJz
-dHJ1Y3QNCj4gPiA+ID4gZmlsZSoiDQo+ID4gPiA+IGluIHRhc2sncyBmZHQtPmZkW2ZkXSBwb2lu
-dHMgdG8gdGhpcyBkbWFfYnVmLmZpbGUsIG5vdCBpbmNyZWFzZQ0KPiA+ID4gPiB0aGUNCj4gPiA+
-ID4gZmlsZSBjb3VudCBvZiBkbWFfYnVmLmZpbGUuDQo+ID4gPiA+IEkgdGhpbmsgdGhpcyBpcyBj
-b25mdXNpbmcsIEkgY2FuIGdldCBtb3JlIHRoYW4gMSBmZHMgdmlhDQo+ID4gPiA+IGRtYV9idWZf
-ZmQsDQo+ID4gPiA+IGJ1dCB0aGV5IGRvbid0IG5lZWQgdG8gY2xvc2UgaXQgYmVjYXVzZSB0aGV5
-IGRvbid0IGluY3JlYXNlDQo+ID4gPiA+IGZpbGUNCj4gPiA+ID4gY291bnQuDQo+ID4gPiA+IA0K
-PiA+ID4gPiBIb3dldmVyLCBkbWFfYnVmX3B1dCgpIGNhbiBkZWNyZWFzZSBmaWxlIGNvdW50IGF0
-IGtlcm5lbCBzaWRlDQo+ID4gPiA+IGRpcmVjdGx5Lg0KPiA+ID4gPiBJZiBzb21lYm9keSB3cml0
-ZSBhIGtvIHRvIHB1dCBmaWxlIGNvdW50IG9mIGRtYV9idWYuZmlsZSBtYW55DQo+ID4gPiA+IHRp
-bWVzLCBpdA0KPiA+ID4gPiB3aWxsIGNhdXNlIGJ1ZmZlciBmcmVlZCBlYXJsaWVyIHRoYW4gZXhj
-ZXB0LiBBdCBsYXN0IG9uDQo+ID4gPiA+IEFuZHJvaWQsIEkNCj4gPiA+ID4gdGhpbmsgdGhpcyBp
-cyBhIGxpdHRsZSBiaXQgZGFuZ2Vyb3VzLg0KPiA+ID4gDQo+ID4gPiBkbWFfYnVmX2ZkKCkgdGFr
-ZXMgdGhlIGRtYV9idWYgcG9pbnRlciBhbmQgY29udmVydHMgaXQgaW50byBhIGZkLg0KPiA+ID4g
-U28NCj4gPiA+IHRoZQ0KPiA+ID4gcmVmZXJlbmNlIGlzIGNvbnN1bWVkLg0KPiA+ID4gDQo+ID4g
-PiBUaGF0J3Mgd2h5IHVzZXJzIG9mIHRoaXMgaW50ZXJmYWNlIG1ha2Ugc3VyZSB0byBnZXQgYSBz
-ZXBhcmF0ZQ0KPiA+ID4gcmVmZXJlbmNlLCBzZWUgZHJtX2dlbV9wcmltZV9oYW5kbGVfdG9fZmQo
-KSBmb3IgZXhhbXBsZToNCj4gPiA+IA0KPiA+ID4gLi4uDQo+ID4gPiBvdXRfaGF2ZV9oYW5kbGU6
-DQo+ID4gPiAgICAgICByZXQgPSBkbWFfYnVmX2ZkKGRtYWJ1ZiwgZmxhZ3MpOw0KPiA+ID4gICAg
-ICAgLyoNCj4gPiA+ICAgICAgICAqIFdlIG11c3QgX25vdF8gcmVtb3ZlIHRoZSBidWZmZXIgZnJv
-bSB0aGUgaGFuZGxlIGNhY2hlDQo+ID4gPiBzaW5jZQ0KPiA+ID4gdGhlDQo+ID4gPiBuZXdseQ0K
-PiA+ID4gICAgICAgICogY3JlYXRlZCBkbWEgYnVmIGlzIGFscmVhZHkgbGlua2VkIGluIHRoZSBn
-bG9iYWwgb2JqLQ0KPiA+ID4gPmRtYV9idWYNCj4gPiA+IHBvaW50ZXIsDQo+ID4gPiAgICAgICAg
-KiBhbmQgdGhhdCBpcyBpbnZhcmlhbnQgYXMgbG9uZyBhcyBhIHVzZXJzcGFjZSBnZW0gaGFuZGxl
-DQo+ID4gPiBleGlzdHMuDQo+ID4gPiAgICAgICAgKiBDbG9zaW5nIHRoZSBoYW5kbGUgd2lsbCBj
-bGVhbiBvdXQgdGhlIGNhY2hlIGFueXdheSwgc28NCj4gPiA+IHdlDQo+ID4gPiBkb24ndA0KPiA+
-ID4gbGVhay4NCj4gPiA+ICAgICAgICAqLw0KPiA+ID4gICAgICAgaWYgKHJldCA8IDApIHsNCj4g
-PiA+ICAgICAgICAgICBnb3RvIGZhaWxfcHV0X2RtYWJ1ZjsNCj4gPiA+ICAgICAgIH0gZWxzZSB7
-DQo+ID4gPiAgICAgICAgICAgKnByaW1lX2ZkID0gcmV0Ow0KPiA+ID4gICAgICAgICAgIHJldCA9
-IDA7DQo+ID4gPiAgICAgICB9DQo+ID4gPiANCj4gPiA+ICAgICAgIGdvdG8gb3V0Ow0KPiA+ID4g
-DQo+ID4gPiBmYWlsX3B1dF9kbWFidWY6DQo+ID4gPiAgICAgICBkbWFfYnVmX3B1dChkbWFidWYp
-Ow0KPiA+ID4gb3V0Og0KPiA+ID4gLi4uDQo+ID4gPiANCj4gPiA+IFlvdSBjb3VsZCBzdWJtaXQg
-YSBwYXRjaCB0byBpbXByb3ZlIHRoZSBkb2N1bWVudGF0aW9uIGFuZA0KPiA+ID4gZXhwbGljaXRs
-eQ0KPiA+ID4gbm90ZSBvbiBkbWFfYnVmX2ZkKCkgdGhhdCB0aGUgcmVmZXJlbmNlIGlzIGNvbnN1
-bWVkLCBidXQgYWxsIG9mDQo+ID4gPiB0aGlzDQo+ID4gPiBpcw0KPiA+ID4gd29ya2luZyBwZXJm
-ZWN0bHkgZmluZS4NCj4gPiA+IA0KPiA+ID4gUmVnYXJkcywNCj4gPiA+IENocmlzdGlhbi4NCj4g
-PiA+IA0KPiA+IA0KPiA+IFRoYW5rcyBmb3IgeW91ciByZXBseSENCj4gPiANCj4gPiBZZXMsIGRy
-bSB3b3JrcyBmaW5lIGJlY2F1c2UgaXQgZnVsbHkgdW5kZXJzdGFuZCB3aGF0IGRtYS1idWYgYXBp
-DQo+ID4gd2lsbA0KPiA+IGRvLiBJbXByb3ZlIHRoZSBkb2N1bWVudGF0aW9uIGlzIHJlYWxseSBn
-b29kIGlkZWEgdG8gcHJldmVudCB0aGlzDQo+ID4gY2FzZS4NCj4gPiANCj4gPiBCdXQsIHdoYXQg
-SSBjYW4ndCB1bmRlcnN0YW5kIGlzLCBmb3Iga2VybmVsIGFwaSBleHBvcnRlZCB0bw0KPiA+IGNv
-cnJlc3BvbmRpbmcgdXNlcnMsIHdlIGRvbid0IG5lZWQgdG8gZW5zdXJlIGFsbCBhcGkgaXMgc2Fm
-ZT8NCj4gDQo+IFdlbGwgdGhlIEFQSSBpcyBwZXJmZWN0bHkgc2FmZSwgaXQgaXMganVzdCBub3Qg
-d2hhdCB5b3UgYXJlDQo+IGV4cGVjdGluZy4NCj4gDQo+ID4gQW5kIGZvciBnZW5lcmFsIGNhc2Vz
-LCBkbWEtYnVmIGZyYW1ld29yayBhbHNvIG5lZWQgdG8gcHJldmVudCB0aGlzDQo+ID4gY2FzZSwg
-aXNuJ3QgaXQsIGl0IHdpbGwgbWFrZSBkbWEtYnVmIGZyYW1ld29yayBtb3JlIHN0cm9uZz8NCj4g
-DQo+IFdoYXQgd2UgY291bGQgZG8gaXMgdG8gbW92ZSBnZXR0aW5nIHRoZSByZWZlcmVuY2UgaW50
-byB0aGF0IGZ1bmN0aW9uDQo+IGlmIA0KPiBhbGwgdXNlcnMgb2YgdGhhdCBmdW5jdGlvbiBkb2Vz
-IHRoYXQgYW55d2F5Lg0KPiANCj4gVGhpcyB3b3VsZCB0aGVuIGJlIG1vcmUgZGVmZW5zaXZlIGJl
-Y2F1c2UgbmV3IHVzZXJzIG9mIGRtYV9idWZfZmQoKSANCj4gY2FuJ3QgZm9yZ2V0IHRvIGdyYWIg
-YSByZWZlcmVuY2UuDQo+IA0KPiBCdXQgdGhpcyBuZWVkcyBhIGNvbXBsZXRlIGF1ZGl0IG9mIHRo
-ZSBrZXJuZWwgd2l0aCBhbGwgb2YgdGhlIHVzZXJzDQo+IG9mIA0KPiBkbWFfYnVmX2ZkKCkuDQo+
-IA0KPiBSZWdhcmRzLA0KPiBDaHJpc3RpYW4uDQo+IA0KVGhhbmtzIGZvciB5b3VyIHBhdGllbnQg
-ZXhwbGFuYXRpb24hIE5vdyBJIHRoaW5rIEkgZ2V0IHdoYXQgeW91IHNhaWQuDQpkbWFidWYgZnJh
-bWV3b3JrIHdvcmtzIGZpbmUsIG5vIHJpc2ssIGFuZCByZWZlcmVuY2Ugc2hvdWxkIGdyYWIgYnkg
-dXNlcnMuDQoNClRoaXMgZGlzY3Vzc2lvbiBjYW4gYmUgdGVybWluYXRlZCBub3cuDQpUaGFua3Mg
-Q2hyaXN0aWFuIQ0KDQpCUnMhDQpHdWFuZ21pbmcuDQo+ID4gDQo+ID4gDQo+ID4gQlJzIQ0KPiA+
-IEd1YW5nbWluZw0KPiA+ID4gPiA+ID4gU29sdXRpb246DQo+ID4gPiA+ID4gPiAgICAgICAgQWRk
-IGEga2VybmVsIGNvdW50IGZvciBkbWFfYnVmLCBhbmQgbWFrZSBzdXJlIHRoZQ0KPiA+ID4gPiA+
-ID4gZmlsZQ0KPiA+ID4gPiA+ID4gY291bnQNCj4gPiA+ID4gPiA+ICAgICAgICAgICAgb2YgZG1h
-X2J1Zi5maWxlIGhvbGQgYnkga2VybmVsIGlzIDEuDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+
-IE5vdGVzOiBGb3IgdGhpcyBzb2x1dGlvbiwga3JlZiBjb3VsZG4ndCB3b3JrIGJlY2F1c2Uga2Vy
-bmVsDQo+ID4gPiA+ID4gPiByZWYNCj4gPiA+ID4gPiA+ICAgICAgICAgICBtYXliZSBhZGRlZCBm
-cm9tIDAsIGJ1dCBrcmVmIGRvbid0IGFsbG93IGl0Lg0KPiA+ID4gPiA+ID4gDQo+ID4gPiA+ID4g
-PiBTaWduZWQtb2ZmLWJ5OiBHdWFuZ21pbmcgQ2FvIDxHdWFuZ21pbmcuQ2FvQG1lZGlhdGVrLmNv
-bT4NCj4gPiA+ID4gPiA+IC0tLQ0KPiA+ID4gPiA+ID4gICAgIGRyaXZlcnMvZG1hLWJ1Zi9kbWEt
-YnVmLmMgfCAyMyArKysrKysrKysrKysrKysrKysrLS0tLQ0KPiA+ID4gPiA+ID4gICAgIGluY2x1
-ZGUvbGludXgvZG1hLWJ1Zi5oICAgfCAgNiArKysrLS0NCj4gPiA+ID4gPiA+ICAgICAyIGZpbGVz
-IGNoYW5nZWQsIDIzIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pDQo+ID4gPiA+ID4gPiAN
-Cj4gPiA+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jIGIvZHJp
-dmVycy9kbWEtDQo+ID4gPiA+ID4gPiBidWYvZG1hLQ0KPiA+ID4gPiA+ID4gYnVmLmMNCj4gPiA+
-ID4gPiA+IGluZGV4IDUxMWZlMGQyMTdhMC4uMDRlZTkyYWFjOGI5IDEwMDY0NA0KPiA+ID4gPiA+
-ID4gLS0tIGEvZHJpdmVycy9kbWEtYnVmL2RtYS1idWYuYw0KPiA+ID4gPiA+ID4gKysrIGIvZHJp
-dmVycy9kbWEtYnVmL2RtYS1idWYuYw0KPiA+ID4gPiA+ID4gQEAgLTYyLDYgKzYyLDcgQEAgc3Rh
-dGljIHZvaWQgZG1hX2J1Zl9yZWxlYXNlKHN0cnVjdCBkZW50cnkNCj4gPiA+ID4gPiA+ICpkZW50
-cnkpDQo+ID4gPiA+ID4gPiAgICAgICBpZiAodW5saWtlbHkoIWRtYWJ1ZikpDQo+ID4gPiA+ID4g
-PiAgICAgICAgICAgICAgIHJldHVybjsNCj4gPiA+ID4gPiA+ICAgICANCj4gPiA+ID4gPiA+ICsg
-ICBXQVJOX09OKGF0b21pYzY0X3JlYWQoJmRtYWJ1Zi0+a2VybmVsX3JlZikpOw0KPiA+ID4gPiA+
-ID4gICAgICAgQlVHX09OKGRtYWJ1Zi0+dm1hcHBpbmdfY291bnRlcik7DQo+ID4gPiA+ID4gPiAg
-ICAgDQo+ID4gPiA+ID4gPiAgICAgICAvKg0KPiA+ID4gPiA+ID4gQEAgLTU1NSw2ICs1NTYsNyBA
-QCBzdHJ1Y3QgZG1hX2J1ZiAqZG1hX2J1Zl9leHBvcnQoY29uc3QNCj4gPiA+ID4gPiA+IHN0cnVj
-dA0KPiA+ID4gPiA+ID4gZG1hX2J1Zl9leHBvcnRfaW5mbyAqZXhwX2luZm8pDQo+ID4gPiA+ID4g
-PiAgICAgICAgICAgICAgIGdvdG8gZXJyX21vZHVsZTsNCj4gPiA+ID4gPiA+ICAgICAgIH0NCj4g
-PiA+ID4gPiA+ICAgICANCj4gPiA+ID4gPiA+ICsgICBhdG9taWM2NF9zZXQoJmRtYWJ1Zi0+a2Vy
-bmVsX3JlZiwgMSk7DQo+ID4gPiA+ID4gPiAgICAgICBkbWFidWYtPnByaXYgPSBleHBfaW5mby0+
-cHJpdjsNCj4gPiA+ID4gPiA+ICAgICAgIGRtYWJ1Zi0+b3BzID0gZXhwX2luZm8tPm9wczsNCj4g
-PiA+ID4gPiA+ICAgICAgIGRtYWJ1Zi0+c2l6ZSA9IGV4cF9pbmZvLT5zaXplOw0KPiA+ID4gPiA+
-ID4gQEAgLTYxNyw2ICs2MTksOSBAQCBpbnQgZG1hX2J1Zl9mZChzdHJ1Y3QgZG1hX2J1ZiAqZG1h
-YnVmLA0KPiA+ID4gPiA+ID4gaW50DQo+ID4gPiA+ID4gPiBmbGFncykNCj4gPiA+ID4gPiA+ICAg
-ICANCj4gPiA+ID4gPiA+ICAgICAgIGZkX2luc3RhbGwoZmQsIGRtYWJ1Zi0+ZmlsZSk7DQo+ID4g
-PiA+ID4gPiAgICAgDQo+ID4gPiA+ID4gPiArICAgLyogQWRkIGZpbGUgY250IGZvciBlYWNoIG5l
-dyBmZCAqLw0KPiA+ID4gPiA+ID4gKyAgIGdldF9maWxlKGRtYWJ1Zi0+ZmlsZSk7DQo+ID4gPiA+
-ID4gPiArDQo+ID4gPiA+ID4gPiAgICAgICByZXR1cm4gZmQ7DQo+ID4gPiA+ID4gPiAgICAgfQ0K
-PiA+ID4gPiA+ID4gICAgIEVYUE9SVF9TWU1CT0xfR1BMKGRtYV9idWZfZmQpOw0KPiA+ID4gPiA+
-ID4gQEAgLTYyNiwxMiArNjMxLDEzIEBAIEVYUE9SVF9TWU1CT0xfR1BMKGRtYV9idWZfZmQpOw0K
-PiA+ID4gPiA+ID4gICAgICAqIEBmZDogICBbaW5dICAgIGZkIGFzc29jaWF0ZWQgd2l0aCB0aGUg
-c3RydWN0IGRtYV9idWYNCj4gPiA+ID4gPiA+IHRvDQo+ID4gPiA+ID4gPiBiZQ0KPiA+ID4gPiA+
-ID4gcmV0dXJuZWQNCj4gPiA+ID4gPiA+ICAgICAgKg0KPiA+ID4gPiA+ID4gICAgICAqIE9uIHN1
-Y2Nlc3MsIHJldHVybnMgdGhlIHN0cnVjdCBkbWFfYnVmIGFzc29jaWF0ZWQNCj4gPiA+ID4gPiA+
-IHdpdGggYW4NCj4gPiA+ID4gPiA+IGZkOw0KPiA+ID4gPiA+ID4gdXNlcw0KPiA+ID4gPiA+ID4g
-LSAqIGZpbGUncyByZWZjb3VudGluZyBkb25lIGJ5IGZnZXQgdG8gaW5jcmVhc2UgcmVmY291bnQu
-DQo+ID4gPiA+ID4gPiByZXR1cm5zDQo+ID4gPiA+ID4gPiBFUlJfUFRSDQo+ID4gPiA+ID4gPiAt
-ICogb3RoZXJ3aXNlLg0KPiA+ID4gPiA+ID4gKyAqIGRtYWJ1ZidzIHJlZiByZWZjb3VudGluZyBk
-b25lIGJ5IGtyZWZfZ2V0IHRvIGluY3JlYXNlDQo+ID4gPiA+ID4gPiByZWZjb3VudC4NCj4gPiA+
-ID4gPiA+ICsgKiBSZXR1cm5zIEVSUl9QVFIgb3RoZXJ3aXNlLg0KPiA+ID4gPiA+ID4gICAgICAq
-Lw0KPiA+ID4gPiA+ID4gICAgIHN0cnVjdCBkbWFfYnVmICpkbWFfYnVmX2dldChpbnQgZmQpDQo+
-ID4gPiA+ID4gPiAgICAgew0KPiA+ID4gPiA+ID4gICAgICAgc3RydWN0IGZpbGUgKmZpbGU7DQo+
-ID4gPiA+ID4gPiArICAgc3RydWN0IGRtYV9idWYgKmRtYWJ1ZjsNCj4gPiA+ID4gPiA+ICAgICAN
-Cj4gPiA+ID4gPiA+ICAgICAgIGZpbGUgPSBmZ2V0KGZkKTsNCj4gPiA+ID4gPiA+ICAgICANCj4g
-PiA+ID4gPiA+IEBAIC02NDMsNyArNjQ5LDEyIEBAIHN0cnVjdCBkbWFfYnVmICpkbWFfYnVmX2dl
-dChpbnQgZmQpDQo+ID4gPiA+ID4gPiAgICAgICAgICAgICAgIHJldHVybiBFUlJfUFRSKC1FSU5W
-QUwpOw0KPiA+ID4gPiA+ID4gICAgICAgfQ0KPiA+ID4gPiA+ID4gICAgIA0KPiA+ID4gPiA+ID4g
-LSAgIHJldHVybiBmaWxlLT5wcml2YXRlX2RhdGE7DQo+ID4gPiA+ID4gPiArICAgZG1hYnVmID0g
-ZmlsZS0+cHJpdmF0ZV9kYXRhOw0KPiA+ID4gPiA+ID4gKyAgIC8qIHJlcGxhY2UgZmlsZSBjb3Vu
-dCBpbmNyZWFzZSBhcyByZWYgaW5jcmVhc2UgZm9yDQo+ID4gPiA+ID4gPiBrZXJuZWwNCj4gPiA+
-ID4gPiA+IHVzZXINCj4gPiA+ID4gPiA+ICovDQo+ID4gPiA+ID4gPiArICAgZ2V0X2RtYV9idWYo
-ZG1hYnVmKTsNCj4gPiA+ID4gPiA+ICsgICBmcHV0KGZpbGUpOw0KPiA+ID4gPiA+ID4gKw0KPiA+
-ID4gPiA+ID4gKyAgIHJldHVybiBkbWFidWY7DQo+ID4gPiA+ID4gPiAgICAgfQ0KPiA+ID4gPiA+
-ID4gICAgIEVYUE9SVF9TWU1CT0xfR1BMKGRtYV9idWZfZ2V0KTsNCj4gPiA+ID4gPiA+ICAgICAN
-Cj4gPiA+ID4gPiA+IEBAIC02NjIsNyArNjczLDExIEBAIHZvaWQgZG1hX2J1Zl9wdXQoc3RydWN0
-IGRtYV9idWYNCj4gPiA+ID4gPiA+ICpkbWFidWYpDQo+ID4gPiA+ID4gPiAgICAgICBpZiAoV0FS
-Tl9PTighZG1hYnVmIHx8ICFkbWFidWYtPmZpbGUpKQ0KPiA+ID4gPiA+ID4gICAgICAgICAgICAg
-ICByZXR1cm47DQo+ID4gPiA+ID4gPiAgICAgDQo+ID4gPiA+ID4gPiAtICAgZnB1dChkbWFidWYt
-PmZpbGUpOw0KPiA+ID4gPiA+ID4gKyAgIGlmIChXQVJOX09OKCFhdG9taWM2NF9yZWFkKCZkbWFi
-dWYtPmtlcm5lbF9yZWYpKSkNCj4gPiA+ID4gPiA+ICsgICAgICAgICAgIHJldHVybjsNCj4gPiA+
-ID4gPiA+ICsNCj4gPiA+ID4gPiA+ICsgICBpZiAoIWF0b21pYzY0X2RlY19yZXR1cm4oJmRtYWJ1
-Zi0+a2VybmVsX3JlZikpDQo+ID4gPiA+ID4gPiArICAgICAgICAgICBmcHV0KGRtYWJ1Zi0+Zmls
-ZSk7DQo+ID4gPiA+ID4gPiAgICAgfQ0KPiA+ID4gPiA+ID4gICAgIEVYUE9SVF9TWU1CT0xfR1BM
-KGRtYV9idWZfcHV0KTsNCj4gPiA+ID4gPiA+ICAgICANCj4gPiA+ID4gPiA+IGRpZmYgLS1naXQg
-YS9pbmNsdWRlL2xpbnV4L2RtYS1idWYuaCBiL2luY2x1ZGUvbGludXgvZG1hLQ0KPiA+ID4gPiA+
-ID4gYnVmLmgNCj4gPiA+ID4gPiA+IGluZGV4IGVmZGM1NmI5ZDk1Zi4uYmM3OTBjYjAyOGViIDEw
-MDY0NA0KPiA+ID4gPiA+ID4gLS0tIGEvaW5jbHVkZS9saW51eC9kbWEtYnVmLmgNCj4gPiA+ID4g
-PiA+ICsrKyBiL2luY2x1ZGUvbGludXgvZG1hLWJ1Zi5oDQo+ID4gPiA+ID4gPiBAQCAtMzA4LDYg
-KzMwOCw3IEBAIHN0cnVjdCBkbWFfYnVmX29wcyB7DQo+ID4gPiA+ID4gPiAgICAgc3RydWN0IGRt
-YV9idWYgew0KPiA+ID4gPiA+ID4gICAgICAgc2l6ZV90IHNpemU7DQo+ID4gPiA+ID4gPiAgICAg
-ICBzdHJ1Y3QgZmlsZSAqZmlsZTsNCj4gPiA+ID4gPiA+ICsgICBhdG9taWM2NF90IGtlcm5lbF9y
-ZWY7DQo+ID4gPiA+ID4gPiAgICAgICBzdHJ1Y3QgbGlzdF9oZWFkIGF0dGFjaG1lbnRzOw0KPiA+
-ID4gPiA+ID4gICAgICAgY29uc3Qgc3RydWN0IGRtYV9idWZfb3BzICpvcHM7DQo+ID4gPiA+ID4g
-PiAgICAgICBzdHJ1Y3QgbXV0ZXggbG9jazsNCj4gPiA+ID4gPiA+IEBAIC00MzYsNyArNDM3LDcg
-QEAgc3RydWN0IGRtYV9idWZfZXhwb3J0X2luZm8gew0KPiA+ID4gPiA+ID4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgLm93bmVyID0gVEhJU19NT0RVTEUNCj4gPiA+ID4g
-PiA+IH0NCj4gPiA+ID4gPiA+ICAgICANCj4gPiA+ID4gPiA+ICAgICAvKioNCj4gPiA+ID4gPiA+
-IC0gKiBnZXRfZG1hX2J1ZiAtIGNvbnZlbmllbmNlIHdyYXBwZXIgZm9yIGdldF9maWxlLg0KPiA+
-ID4gPiA+ID4gKyAqIGdldF9kbWFfYnVmIC0gaW5jcmVhc2UgYSBrZXJuZWwgcmVmIG9mIGRtYS1i
-dWYNCj4gPiA+ID4gPiA+ICAgICAgKiBAZG1hYnVmOiAgICAgICBbaW5dICAgIHBvaW50ZXIgdG8g
-ZG1hX2J1Zg0KPiA+ID4gPiA+ID4gICAgICAqDQo+ID4gPiA+ID4gPiAgICAgICogSW5jcmVtZW50
-cyB0aGUgcmVmZXJlbmNlIGNvdW50IG9uIHRoZSBkbWEtYnVmLA0KPiA+ID4gPiA+ID4gbmVlZGVk
-IGluDQo+ID4gPiA+ID4gPiBjYXNlDQo+ID4gPiA+ID4gPiBvZiBkcml2ZXJzDQo+ID4gPiA+ID4g
-PiBAQCAtNDQ2LDcgKzQ0Nyw4IEBAIHN0cnVjdCBkbWFfYnVmX2V4cG9ydF9pbmZvIHsNCj4gPiA+
-ID4gPiA+ICAgICAgKi8NCj4gPiA+ID4gPiA+ICAgICBzdGF0aWMgaW5saW5lIHZvaWQgZ2V0X2Rt
-YV9idWYoc3RydWN0IGRtYV9idWYgKmRtYWJ1ZikNCj4gPiA+ID4gPiA+ICAgICB7DQo+ID4gPiA+
-ID4gPiAtICAgZ2V0X2ZpbGUoZG1hYnVmLT5maWxlKTsNCj4gPiA+ID4gPiA+ICsgICBpZiAoYXRv
-bWljNjRfaW5jX3JldHVybigmZG1hYnVmLT5rZXJuZWxfcmVmKSA9PSAxKQ0KPiA+ID4gPiA+ID4g
-KyAgICAgICAgICAgZ2V0X2ZpbGUoZG1hYnVmLT5maWxlKTsNCj4gPiA+ID4gPiA+ICAgICB9DQo+
-ID4gPiA+ID4gPiAgICAgDQo+ID4gPiA+ID4gPiAgICAgLyoqDQo+IA0KPiAKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
-ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi,
+
+On Thu, Jul 15, 2021 at 10:31 AM Kewei Xu <kewei.xu@mediatek.com> wrote:
+>
+> When a timeout error occurs in i2c transter, it is usually related
+> to the i2c/dma IP hardware configuration. Therefore, the purpose of
+> this patch is to dump the key register values of i2c/dma when a
+> timeout occurs in i2c for debugging.
+>
+> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 95 ++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 94 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 5ddfa4e..64acd96 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -125,6 +125,7 @@ enum I2C_REGS_OFFSET {
+>         OFFSET_HS,
+>         OFFSET_SOFTRESET,
+>         OFFSET_DCM_EN,
+> +       OFFSET_MULTI_DMA,
+>         OFFSET_PATH_DIR,
+>         OFFSET_DEBUGSTAT,
+>         OFFSET_DEBUGCTRL,
+> @@ -192,6 +193,7 @@ enum I2C_REGS_OFFSET {
+>         [OFFSET_TRANSFER_LEN_AUX] = 0x44,
+>         [OFFSET_CLOCK_DIV] = 0x48,
+>         [OFFSET_SOFTRESET] = 0x50,
+> +       [OFFSET_MULTI_DMA] = 0x84,
+
+On the datasheets I have, MULTI_DMA is 0x8c, while 0x84 is CHANNEL_SEC on
+MT8192, and not defined on MT8183 nor MT8195.
+
+>         [OFFSET_SCL_MIS_COMP_POINT] = 0x90,
+>         [OFFSET_DEBUGSTAT] = 0xe0,
+>         [OFFSET_DEBUGCTRL] = 0xe8,
+> @@ -828,6 +830,96 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
+>         return 0;
+>  }
+>
+> +static void i2c_dump_register(struct mtk_i2c *i2c)
+> +{
+> +       dev_err(i2c->dev, "SLAVE_ADDR[0x%x]: 0x%x, INTR_MASK[0x%x]: 0x%x\n",
+> +               OFFSET_SLAVE_ADDR,
+> +               (mtk_i2c_readw(i2c, OFFSET_SLAVE_ADDR)),
+
+Drop the extra outer parentheses. Same goes for all the other invocations.
+
+> +               OFFSET_INTR_MASK,
+> +               (mtk_i2c_readw(i2c, OFFSET_INTR_MASK)));
+> +       dev_err(i2c->dev, "INTR_STAT[0x%x]: 0x%x, CONTROL[0x%x]: 0x%x\n",
+> +               OFFSET_INTR_STAT,
+> +               (mtk_i2c_readw(i2c, OFFSET_INTR_STAT)),
+> +               OFFSET_CONTROL,
+> +               (mtk_i2c_readw(i2c, OFFSET_CONTROL)));
+> +       dev_err(i2c->dev, "TRANSFER_LEN[0x%x]: 0x%x, TRANSAC_LEN[0x%x]: 0x%x\n",
+> +               OFFSET_TRANSFER_LEN,
+> +               (mtk_i2c_readw(i2c, OFFSET_TRANSFER_LEN)),
+> +               OFFSET_TRANSAC_LEN,
+> +               (mtk_i2c_readw(i2c, OFFSET_TRANSAC_LEN)));
+> +       dev_err(i2c->dev, "DELAY_LEN[0x%x]: 0x%x, HTIMING[0x%x]: 0x%x\n",
+> +               OFFSET_DELAY_LEN,
+> +               (mtk_i2c_readw(i2c, OFFSET_DELAY_LEN)),
+> +               OFFSET_TIMING,
+> +               (mtk_i2c_readw(i2c, OFFSET_TIMING)));
+> +       dev_err(i2c->dev, "OFFSET_START[0x%x]: 0x%x\n",
+> +               OFFSET_START,
+> +               mtk_i2c_readw(i2c, OFFSET_START));
+> +       dev_err(i2c->dev, "OFFSET_EXT_CONF[0x%x]: 0x%x\n",
+> +               OFFSET_EXT_CONF,
+> +               mtk_i2c_readw(i2c, OFFSET_EXT_CONF));
+> +       dev_err(i2c->dev, "OFFSET_HS[0x%x]: 0x%x\n",
+> +               OFFSET_HS,
+> +               mtk_i2c_readw(i2c, OFFSET_HS));
+> +       dev_err(i2c->dev, "OFFSET_IO_CONFIG[0x%x]: 0x%x\n",
+> +               OFFSET_IO_CONFIG,
+> +               mtk_i2c_readw(i2c, OFFSET_IO_CONFIG));
+> +       dev_err(i2c->dev, "OFFSET_FIFO_ADDR_CLR[0x%x]: 0x%x\n",
+> +               OFFSET_FIFO_ADDR_CLR,
+> +               mtk_i2c_readw(i2c, OFFSET_FIFO_ADDR_CLR));
+> +       dev_err(i2c->dev, "TRANSFER_LEN_AUX[0x%x]: 0x%x\n",
+> +               OFFSET_TRANSFER_LEN_AUX,
+> +               mtk_i2c_readw(i2c, OFFSET_TRANSFER_LEN_AUX));
+> +       dev_err(i2c->dev, "CLOCK_DIV[0x%x]: 0x%x\n",
+> +               OFFSET_CLOCK_DIV,
+> +               mtk_i2c_readw(i2c, OFFSET_CLOCK_DIV));
+> +       dev_err(i2c->dev, "FIFO_STAT[0x%x]: 0x%x, FIFO_THRESH[0x%x]: 0x%x\n",
+> +               OFFSET_FIFO_STAT,
+> +               mtk_i2c_readw(i2c, OFFSET_FIFO_STAT),
+> +               OFFSET_FIFO_THRESH,
+> +               mtk_i2c_readw(i2c, OFFSET_FIFO_THRESH));
+> +       dev_err(i2c->dev, "DCM_EN[0x%x] 0x%x\n",
+> +               OFFSET_DCM_EN,
+> +               mtk_i2c_readw(i2c, OFFSET_DCM_EN));
+> +       dev_err(i2c->dev, "DEBUGSTAT[0x%x]: 0x%x, DEBUGCTRL[0x%x]: 0x%x\n",
+
+Nit: Why do some have two registers per line, and some only have one?
+
+ChenYu
+
+
+> +               OFFSET_DEBUGSTAT,
+> +               (mtk_i2c_readw(i2c, OFFSET_DEBUGSTAT)),
+> +               OFFSET_DEBUGCTRL,
+> +               (mtk_i2c_readw(i2c, OFFSET_DEBUGCTRL)));
+> +
+> +       if (i2c->dev_comp->regs == mt_i2c_regs_v2) {
+> +               dev_err(i2c->dev, "OFFSET_LTIMING[0x%x]: 0x%x\n",
+> +                       OFFSET_LTIMING,
+> +                       mtk_i2c_readw(i2c, OFFSET_LTIMING));
+> +               dev_err(i2c->dev, "MULTI_DMA[0x%x]: 0x%x\n",
+> +                       OFFSET_MULTI_DMA,
+> +                       (mtk_i2c_readw(i2c, OFFSET_MULTI_DMA)));
+> +       }
+> +
+> +       dev_err(i2c->dev, "OFFSET_INT_FLAG = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_INT_FLAG));
+> +       dev_err(i2c->dev, "OFFSET_INT_EN = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_INT_EN));
+> +       dev_err(i2c->dev, "OFFSET_EN = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_EN));
+> +       dev_err(i2c->dev, "OFFSET_RST = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_RST));
+> +       dev_err(i2c->dev, "OFFSET_CON = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_CON));
+> +       dev_err(i2c->dev, "OFFSET_TX_MEM_ADDR = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_TX_MEM_ADDR));
+> +       dev_err(i2c->dev, "OFFSET_RX_MEM_ADDR = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_RX_MEM_ADDR));
+> +       dev_err(i2c->dev, "OFFSET_TX_LEN = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_TX_LEN));
+> +       dev_err(i2c->dev, "OFFSET_RX_LEN = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_RX_LEN));
+> +       dev_err(i2c->dev, "OFFSET_TX_4G_MODE = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_TX_4G_MODE));
+> +       dev_err(i2c->dev, "OFFSET_RX_4G_MODE = 0x%x\n",
+> +               readl(i2c->pdmabase + OFFSET_RX_4G_MODE));
+> +}
+> +
+>  static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>                                int num, int left_num)
+>  {
+> @@ -1034,7 +1126,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>         }
+>
+>         if (ret == 0) {
+> -               dev_dbg(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
+> +               dev_err(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
+> +               i2c_dump_register(i2c);
+>                 mtk_i2c_init_hw(i2c);
+>                 return -ETIMEDOUT;
+>         }
+> --
+> 1.9.1
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
