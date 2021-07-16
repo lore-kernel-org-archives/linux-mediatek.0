@@ -2,72 +2,82 @@ Return-Path: <SRS0=t3QX=MI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0306C12002
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 09:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28AE7C12002
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 09:11:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6734B613F3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 09:01:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6734B613F3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id E77ED613EE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 09:11:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E77ED613EE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:From:Cc:To:In-Reply-To:
-	References:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GF7bivUS7sKDdyq/TUdbSD+WwLoxdQ0N4Ea9qkS4C98=; b=kR+nWBnfjj33U3KLZ5bKa8zIb3
-	/lG94CZanivp7SOGVtPet+1jdEF9PKu3HMK2Gs2b3IlADOJBz2z2io9SxX6qmSNQ6NQULhkruEEod
-	GeC06cxTtg7NBn55hnYuLFUKtuPvEKIfKeW4+ae3Ce2KYYLC5tdAMfIY1G3iu79o9Dyd0HkrK5mh5
-	xCAtH7hPMLDvRtv0q4cs9AOgNw3ApPF8JPF5D4AAY9wFj75GPr2g1nK5qa4aCVa3MGK9M5caBI4xY
-	BznNLRdOwZcTnmmjffNecGas77sv002V7UYryqi6BZYlLfN68D21Hhr+wXDQV6IKsPgTxYX9dih0L
-	85tHYbDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8dVtpuHPk9ONBVI45rMdrfVLb3TEIX2eNpgGyQSn76I=; b=1lGAfmXu/PT75B
+	xq8sBN4Oxgsl5fLc/Akzj6ZdaPRaeXS4IRbuUh+VzVWFTdOzHmZyfIsKwlIhQkexiu+AbbtrBy9+j
+	GN2Uti5M6o8tt80ufHPf348PEwibes5tBqGezizF1bK/O9IdaPiQDH4fI04Tev38PCb4zEZ3TsOQq
+	TcnC5TcD86PLgqa04njFaB9zkaYD0GoPUDmpiNyyHpJlDqtD1JGVUJw2ogMMVL2PYcwSvuODBKwnU
+	CI5FQzL1thmqaaO16XmHYPV9YLx2PUZ72LwVr+4CA3+LICJuGkxAuAzaGlgg97qUL11ydPHLyHPpB
+	auHsY2iwNa0/Ab8CjqAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4Jj6-003sww-Qr; Fri, 16 Jul 2021 09:01:44 +0000
-Received: from mga04.intel.com ([192.55.52.120])
+	id 1m4Jsk-003txy-EG; Fri, 16 Jul 2021 09:11:42 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4Jj3-003swa-MD
- for linux-mediatek@lists.infradead.org; Fri, 16 Jul 2021 09:01:43 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10046"; a="208886063"
-X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; d="scan'208";a="208886063"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2021 02:01:40 -0700
-X-IronPort-AV: E=Sophos;i="5.84,244,1620716400"; d="scan'208";a="495985905"
-Received: from rongch2-mobl.ccr.corp.intel.com (HELO [10.255.28.42])
- ([10.255.28.42])
- by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2021 02:01:38 -0700
-Subject: Re: [PATCH v2 6/7] soc: mediatek: mmsys: Add reset controller support
-References: <202107150857.sniQJ86e-lkp@intel.com>
-In-Reply-To: <202107150857.sniQJ86e-lkp@intel.com>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- LKML <linux-kernel@vger.kernel.org>
-Cc: chunkuang.hu@kernel.org, hsinyi@chromium.org, kernel@collabora.com,
- drinkcat@chromium.org, eizan@chromium.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com, Philipp Zabel <p.zabel@pengutronix.de>,
- kbuild-all@lists.01.org
-From: kernel test robot <rong.a.chen@intel.com>
-X-Forwarded-Message-Id: <202107150857.sniQJ86e-lkp@intel.com>
-Message-ID: <baf4a35e-8025-460c-85b6-214ad23d7b89@intel.com>
-Date: Fri, 16 Jul 2021 17:01:36 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.12.0
+ id 1m4JsW-003twg-EC; Fri, 16 Jul 2021 09:11:29 +0000
+X-UUID: 6034360f624d4eb8be1162b4a1ec15ea-20210716
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=QJPe5Hrz+Ccs/oSD8OMTuwsvU24MenG6++k0YmRyOu8=; 
+ b=Z3rjG5ldCmvdR8xfndgP6uRnNJbkrypCkbactu6nJBQF8RUV4Ty76s4qO1KzzIiGGKEWvS1Xa6Har3zJYrfDgjaTJYGhh4KFq4LszK7exkwyiY4yCDik3FnWnM+jRhni+9L9ZQC8/VemurAsAPsqKOvqpHJiQKNcewmRjUsj8nE=;
+X-UUID: 6034360f624d4eb8be1162b4a1ec15ea-20210716
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <kewei.xu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2025127154; Fri, 16 Jul 2021 02:11:24 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 16 Jul 2021 02:09:57 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 16 Jul 2021 17:09:52 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 16 Jul 2021 17:09:52 +0800
+Message-ID: <1626426592.29703.2.camel@mhfsdcap03>
+Subject: Re: [PATCH 3/8] i2c: mediatek: fixing the incorrect register offset
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: <wsa@the-dreams.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Rob
+ Herring" <robh+dt@kernel.org>, <linux-i2c@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>, LKML
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, <leilk.liu@mediatek.com>,
+ <qii.wang@mediatek.com>, <qiangming.xia@mediatek.com>,
+ <ot_daolong.zhu@mediatek.com>
+Date: Fri, 16 Jul 2021 17:09:52 +0800
+In-Reply-To: <CAGXv+5EOkBvxyigPF8vgnYXfF5Qz472aonPzB-Yw0n=XQU+03g@mail.gmail.com>
+References: <1626316157-24935-1-git-send-email-kewei.xu@mediatek.com>
+ <1626316157-24935-4-git-send-email-kewei.xu@mediatek.com>
+ <CAGXv+5EOkBvxyigPF8vgnYXfF5Qz472aonPzB-Yw0n=XQU+03g@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Language: en-US
+X-TM-SNTS-SMTP: FC0D5B6CA3B4A06A7DB943822C655303E4E0D63BA706CBC4E3367977457C91722000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210716_020141_797172_205A46F9 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210716_021128_521425_7CF1F49C 
+X-CRM114-Status: GOOD (  14.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,77 +89,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 2021-07-15 at 13:23 +0800, Chen-Yu Tsai wrote:
+> Hi,
+> 
+> On Thu, Jul 15, 2021 at 10:31 AM Kewei Xu <kewei.xu@mediatek.com> wrote:
+> >
+> > The reason for the modification here is that the previous
+> > offset information is incorrect, OFFSET_DEBUGSTAT = 0xE4 is
+> > the correct value.
+> >
+> > Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+> 
+> This needs a fixes tag:
+> 
+> Fixes: 25708278f810 ("i2c: mediatek: Add i2c support for MediaTek MT8183")
+> 
+> Otherwise,
+> 
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-Hi Enric,
+Hi Chen-Yu,
 
-I love your patch! Perhaps something to improve:
+OK, I will resubmit a patch to add a fixes tag.
 
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on pza/reset/next linux/master linus/master 
-v5.14-rc1 next-20210714]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url: 
-https://github.com/0day-ci/linux/commits/Enric-Balletbo-i-Serra/Add-support-to-the-mmsys-driver-to-be-a-reset-controller/20210714-181318
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git 
-for-next
-compiler: riscv64-linux-gcc (GCC) 9.3.0
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-
-cppcheck possible warnings: (new ones prefixed by >>, may not real problems)
-
->> drivers/soc/mediatek/mtk-mmsys.c:104:6: warning: Unused variable: i [unusedVariable]
-     int i;
-         ^
-
-vim +104 drivers/soc/mediatek/mtk-mmsys.c
-
-2c758e301ed95a Enric Balletbo i Serra 2020-03-25   97  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14   98  static int 
-mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14   99  				  bool assert)
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  100  {
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  101  	struct mtk_mmsys 
-*mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  102  	unsigned long flags;
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  103  	u32 reg;
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14 @104  	int i;
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  105  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  106  	spin_lock_irqsave(&mmsys->lock, 
-flags);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  107  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  108  	reg = readl_relaxed(mmsys->regs 
-+ MMSYS_SW0_RST_B);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  109  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  110  	if (assert)
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  111  		reg &= ~BIT(id);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  112  	else
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  113  		reg |= BIT(id);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  114  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  115  	writel_relaxed(reg, mmsys->regs 
-+ MMSYS_SW0_RST_B);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  116  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  117 
-spin_unlock_irqrestore(&mmsys->lock, flags);
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  118  08a3068f9490f0 
-Enric Balletbo i Serra 2021-07-14  119  	return 0;
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  120  }
-08a3068f9490f0 Enric Balletbo i Serra 2021-07-14  121
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
-
-
+thanks
+Kewei
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
