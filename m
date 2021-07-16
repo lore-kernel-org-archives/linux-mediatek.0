@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30FB9C07E95
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E969C636CA
 	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:42:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90214613D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:42:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 90214613D0
+	by mail.kernel.org (Postfix) with ESMTPS id 57F90613EB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:42:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57F90613EB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lN2KjpZ0y0/uDNNoIcaKPA/Z3UP0EQeix/xST2GOQzs=; b=AOzLmv5M3c0Ou3
-	DMWuOLwA+S4Sp3lTq75OxgYgqXSAAELcSXU1tRilNV7/ydhbzB5oOqrGS72uHWQq3opEqw80yRkHf
-	krQlYKOhQfjN2gtO0dlbupusN4YYqocNggZjoWzmK6t0YF4ga2DstfeqJBwTS6ZP4dT5exWBY+TXK
-	QatZvUeHsa6Rsp7b2T8VP4yLsQJ9ietebALXf+071mGMZCBstopwnisvdbmWvSjePbv+WYApIHXVf
-	C3caXNLF8GKPe4mG5BVOABa6HoYlvybuGbjJIENDXo5oXr8Jmx7ker1N6eaPfD3+FLRgJhkVNeLza
-	FfnsHfNtAsAqrRspeDTA==;
+	List-Owner; bh=0FYA6LRjuR5EBDqN18xF3aoWe6Kbc4opwACH+8DjPPQ=; b=tUDyVbqTBy3f0u
+	gt4XRKxF8YCVvHYLAXnoewKVikuhaKwYqfnQ4nbe6BageCk4G5NoeOIFU9liinyrLWKv4c98odo9m
+	pHifWupXXV8SsxrfOI5CvtgCpqgqhhJmB0Mmf5TWf8Oi3xe7k7hq7IKefdsdSHLQ4j4/nAYtSc+ZU
+	coKgBcOdUOVwl+fF7ddILjSajtTs+ElQu2JiImZv+rw2X1jYpAk/BV58eQXNprpE4tpiMEemWJBEi
+	+SF3WQnzSiJOiH7G9f8vm3lrmCxLSiKqV0vCsLKtAQfuMlI93Bj64zrndizU52JQgSntpDwJHJ48p
+	oVpuNJCrZO6LL29zTE8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4HXs-003Okj-L9; Fri, 16 Jul 2021 06:42:00 +0000
+	id 1m4HXr-003OkU-NS; Fri, 16 Jul 2021 06:41:59 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4HXQ-003OeW-Kh; Fri, 16 Jul 2021 06:41:34 +0000
-X-UUID: 5260895cd4204a769f5e2900dfd90e9a-20210715
+ id 1m4HXQ-003OeT-Kt; Fri, 16 Jul 2021 06:41:34 +0000
+X-UUID: 1268a7e528594531a5e1e0c82809d80f-20210715
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=wv/1aEfLQ5cQjjBFOtR0GZszOIJgkKp0xt4UpyV4v4s=; 
- b=b/Ir+TngjcYprKKg/J5SLRDTolnZUAKTZFuKbmOnOrToY2Cg/4umKozmVSScK2vaUGLUov8TMUGKlztCfen/tivFGi70StACqcNCxQMzmtGlZpZxx2vUVJqLPFrSGNO7fPT5kjANM8yhBiLe8Q5lni0uAGN2smcOfkzCj/MCJ9A=;
-X-UUID: 5260895cd4204a769f5e2900dfd90e9a-20210715
+ bh=N8V7w3QbeAdL+nWpPALzC5cgI2S9BtXkeTkHS0Li5XI=; 
+ b=b/k6d1gvR+HbuSeJjPqrgoH0/BGZfvbztmcm59Q0hmgz5vZkQj4U+qt8y2TAvpyNNb/rvC/dHTxzr8veliFxdTvUSqv0t9dDk+DnTTNKjL565TAmVhQgwNwcuWnBBRhgVgz27gE6BCVTFatXZeJrx9LOuiBJ8/NL1Y1qGHqb68A=;
+X-UUID: 1268a7e528594531a5e1e0c82809d80f-20210715
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yongqiang.niu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 489622621; Thu, 15 Jul 2021 23:41:26 -0700
+ with ESMTP id 871091936; Thu, 15 Jul 2021 23:41:26 -0700
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 15 Jul 2021 23:32:29 -0700
+ 15.0.1497.2; Thu, 15 Jul 2021 23:32:30 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Jul 2021 14:32:28 +0800
+ 15.0.1497.2; Fri, 16 Jul 2021 14:32:29 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 16 Jul 2021 14:32:27 +0800
+ Transport; Fri, 16 Jul 2021 14:32:29 +0800
 From: Yongqiang Niu <yongqiang.niu@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -67,17 +67,17 @@ CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
  <hsinyi@chromium.org>
-Subject: [PATCH v3, 2/3] drm/mediatek: add mt8183 aal support
-Date: Fri, 16 Jul 2021 14:32:22 +0800
-Message-ID: <1626417143-8015-3-git-send-email-yongqiang.niu@mediatek.com>
+Subject: [PATCH v3, 3/3] arm64: dts: mt8183: refine aal compatible name
+Date: Fri, 16 Jul 2021 14:32:23 +0800
+Message-ID: <1626417143-8015-4-git-send-email-yongqiang.niu@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1626417143-8015-1-git-send-email-yongqiang.niu@mediatek.com>
 References: <1626417143-8015-1-git-send-email-yongqiang.niu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_234132_733168_16DD5FDD 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20210715_234132_733451_63D1FB81 
+X-CRM114-Status: GOOD (  11.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,39 +94,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add mt8183 private data
+mt8183 aal is different with mt8173
+remove mt8173 compatible name for mt8183 aal
 
 Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_aal.c | 1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c  | 2 ++
- 2 files changed, 3 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index fb212e96..64b4528 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -151,6 +151,7 @@ static int mtk_disp_aal_remove(struct platform_device *pdev)
- static const struct of_device_id mtk_disp_aal_driver_dt_match[] = {
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = &mt8173_aal_driver_data},
-+	{ .compatible = "mediatek,mt8183-disp-aal"},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_disp_aal_driver_dt_match);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 67a585e..143ba24 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -420,6 +420,8 @@ static void mtk_drm_unbind(struct device *dev)
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-aal",
- 	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8183-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index c5e822b..1ca5f9b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -1204,8 +1204,7 @@
+ 		};
+ 
+ 		aal0: aal@14010000 {
+-			compatible = "mediatek,mt8183-disp-aal",
+-				     "mediatek,mt8173-disp-aal";
++			compatible = "mediatek,mt8183-disp-aal";
+ 			reg = <0 0x14010000 0 0x1000>;
+ 			interrupts = <GIC_SPI 233 IRQ_TYPE_LEVEL_LOW>;
+ 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
 -- 
 1.8.1.1.dirty
 _______________________________________________
