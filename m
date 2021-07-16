@@ -2,85 +2,90 @@ Return-Path: <SRS0=t3QX=MI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+X-Spam-Status: No, score=-11.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,FSL_HELO_FAKE,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97E7CC07E95
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 07:47:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8869C07E95
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 08:02:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A022613E8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 07:47:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5A022613E8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6EC98613E9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 08:02:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EC98613E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TBa+kLuQfIFJK7+OJat2y7gcFMmMCehBXESbuJMF1C4=; b=jhXm84rMpDNsN+
-	arXS16ERLh7dUeYKYGKbTFK0P3e5skAWOEfN9BVygwKH1KbXOMeQabhBsyWkPUOlm56YOVUTP9lde
-	prfJkghyDqZ026Rer0oEBuH60KLuSaNVCD2bxYhN8vfTF698MHv6L6Ms8ZKgUVl/8YSgoI8qy685S
-	EBvcB+WBGdne8WEIogBirghGgBaAUD/nResKQskx+dT7gY9vmsLa0di2xjHofL2dY2uUmmy7bo0vy
-	Fsv8NU/HweCZ42e05C2w1RAAgDj8OGWBaZlzwNd53xBqsTlcfI6cyKVkIqNcQQkQCY3BJTCL7Qrzc
-	f6mxSTyg7TYx2sL/fNDQ==;
+	List-Owner; bh=gEwXvURTLKYKCvhD8fYIdIa3z3Qb7bbsoHmmlyQV/LA=; b=qG05jnRwgNPzIh
+	O5t+YLlvbQPboSf+FnyxGgY/fdRjqc+sSGaIkaIzSHnYQhmkoSmdHHXnzjxApRUxYR+rQ1eHwqkYy
+	tqbnEzlCeYQFYXs0NxYcMrPdmGcFJRQ6pDi8XSJajVBhKAAOp3uf1MxRhiwfio7EobymUY2i8WVsv
+	6twMjfJ6UOIDehp11EMY1Gnw/E7fNp4Srpk2EoczVmZSs25vI+UJzi6q3Lf+af6yI3YCRId2VrJxA
+	v52u5QTvPJ0TJaBsyHhGuPJXr4MTxA2MvbP959c4TNe0b7CWQ/FWtvi/7I80GCbLwqfB0sYWN+g/H
+	POtQca0/hcy7Q6vc6E2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4IYp-003Zsj-P6; Fri, 16 Jul 2021 07:47:03 +0000
-Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
+	id 1m4InF-003cva-Qu; Fri, 16 Jul 2021 08:01:57 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4IYk-003ZrC-Dl
- for linux-mediatek@lists.infradead.org; Fri, 16 Jul 2021 07:47:00 +0000
-Received: by mail-io1-xd33.google.com with SMTP id g22so9621403iom.1
- for <linux-mediatek@lists.infradead.org>; Fri, 16 Jul 2021 00:46:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MwWxgkdAW3/KS/WFR7/3/xY5+SDGRuBv+QXp7L0Q0Jc=;
- b=b7VPouuaVZFV2I1xQmpob+1Hqg/StYVfW/pz9NWF/a3+T8/4J00vw2h9Arl+gk2dCq
- xUip6K9pfwy8/MQrvna8y8c4qldGM8QzomehwA9mLnNyGug2Mbbsb6jTkzcjk8RCS1AG
- P1VZZQRFKy2sqSjuW29XAXCC4iGIMvstLDaODMMf5apFzwby8A7oBlKVbuP/Qi3L1J5i
- x/bPX4p9mbYNBBeaTQOortsHa6Zd0Qp7RKI/nVVl+Lpl6rc9eh1QChtqem/ch9pylCYJ
- ICCxDTrSEa5cG3EcUEDbzeVi4NvTB7YIkRCGG+i5xVjxhZ0LL/FJZEP3aUgnaoV9LSn6
- MpWw==
+ id 1m4In2-003cuL-BH
+ for linux-mediatek@lists.infradead.org; Fri, 16 Jul 2021 08:01:45 +0000
+Received: by mail-wr1-x435.google.com with SMTP id d12so10971379wre.13
+ for <linux-mediatek@lists.infradead.org>; Fri, 16 Jul 2021 01:01:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=LUaz+GS+zWVJuYW5ehQ4jb5HK9aKHSWwbmew2idPbho=;
+ b=BdKqQCvS1OZI1vnkUrwlg4+sNF0QtP/eBkkTMJNrbUlOeR1AMZ/1jtPieURz1HdQgY
+ MT6t23A4KqEcoQa5KfWeUftq62YBempq2JLzGwTZ3BtQPm8kLBLi9PCSM+T8bxmMhkPs
+ 6nb27IPNkgSmOIkt+fE551YPX+wb1LUVxtaS7JVNApwDsps+phm7aOa6ao2k/P+Ioxwg
+ W5ollUOsIqxevwZdbCZ6C/cIVy61dUXDgYzp5DepRBVVMj5agXuUHz3DV6Pc5UkUIUEq
+ E+Wp8mVRbk1FlvNxfgslrQrINbm6tGGOCLz9cMRKS0LNYQJ8bD/wcA2n5NuOg8izzuCW
+ H+LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MwWxgkdAW3/KS/WFR7/3/xY5+SDGRuBv+QXp7L0Q0Jc=;
- b=RrbzJMluSFfvMVV2kIYHFM6MF8ce77RLR4evyeQaD5/asJFENhxi+mqfpqZQRdiYZF
- H1ub8LqZ16P7tqFAsdZ4n39qYkjNxR280gDFlcjYxPvZ4fcSjm6pBIUluZRNHO4jel29
- CWfe8MRzvYoW4Uq2E37tY7wZq42wGBSEuVDzlKnP/DnPDYNBCnh29Cshr7bcA2jSA6b1
- 3vnfQmYiDXHFqDrJVR8Eoc3upkNni6P27MFve1wYqW48HhedjbxgJY8kHckW37t/ve2S
- LJrP8PCzVVctXXydGRGwH36ppe2PwKT/gojDnLSU3BuPmE7qUcLYLNvbyw0rpp++y4rg
- D1BA==
-X-Gm-Message-State: AOAM533wBO9XWZxgJ6ikrBCn8GKKxBLyC9cxpqZ6YquJBiacdB1ZUQOe
- NumQPG0cKtddzmBgiaoawUotAjt1O9HoPHfvcVhngQ==
-X-Google-Smtp-Source: ABdhPJyzb04RlDtz8fruYXzmz4HTB1lgHoj+8WfjSm3y3QNBifOue2sUTRlKMFFyIt9KMpKVPlh9U4/0apYosBfVDDM=
-X-Received: by 2002:a6b:6217:: with SMTP id f23mr6614522iog.173.1626421615310; 
- Fri, 16 Jul 2021 00:46:55 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=LUaz+GS+zWVJuYW5ehQ4jb5HK9aKHSWwbmew2idPbho=;
+ b=ACYOlAchTNUtn0MSXWaNxYu30hImJam3zz+sT547sd7nviH0mmDQPy39NilNqRDF2P
+ O5GT7kZqDMYM+T8C3D0C20Slcz6XS90D48tyDYPqM0kzBG82PzunRQ0gDXPaQzOcXBDq
+ PCnT80un0vLhDQqZP+L/+eCofcSSfWY4gyDKQbd6zp4XobBo79jQJ7eG9jcQjy/De1K2
+ r2l7Olnx9UAgl/i7YwQocT49EaoYriyfGmz6PFK1TtcqOrmguCxXvZ7LxZ54EwU/IaLu
+ AUy3Dz/khdC8OgthPDim3L0Hppd9ylrxTuXIDHGgf9o0Ffe8fQnc3pGmkHSyMzFZVMlu
+ rC0Q==
+X-Gm-Message-State: AOAM532E+Gd1wUcrviQclJTGaREdrUuJYFOMRJVfl81413lxafYCe0IB
+ /1jwUVt0RS5lTshx8e9qpcgT9Q==
+X-Google-Smtp-Source: ABdhPJxgSztBl+UjqzA//sgn6rC1JoTWkDQJvQSko/gR9NvTImxNOZC5SsC4kGfenn2tEITuemeOLA==
+X-Received: by 2002:adf:a2c3:: with SMTP id t3mr10448145wra.223.1626422502459; 
+ Fri, 16 Jul 2021 01:01:42 -0700 (PDT)
+Received: from google.com ([31.124.24.141])
+ by smtp.gmail.com with ESMTPSA id a207sm12292962wme.27.2021.07.16.01.01.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Jul 2021 01:01:41 -0700 (PDT)
+Date: Fri, 16 Jul 2021 09:01:40 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Fei Shao <fshao@chromium.org>
+Cc: Gene Chen <gene_chen@richtek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] mfd: mt6360: Sort regulator resources
+Message-ID: <YPE85IQ72QOhf3DK@google.com>
+References: <20210629094339.874120-1-fshao@chromium.org>
 MIME-Version: 1.0
-References: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
- <20210715173750.10852-6-jason-jh.lin@mediatek.com>
-In-Reply-To: <20210715173750.10852-6-jason-jh.lin@mediatek.com>
-From: Fei Shao <fshao@google.com>
-Date: Fri, 16 Jul 2021 15:46:19 +0800
-Message-ID: <CAC=S1nhi0rLpQznvUP1FVNtEDzdffFG_aMO7j-w4fHBY8ceJnw@mail.gmail.com>
-Subject: Re: [PATCH v3 05/12] dt-bindings: arm: mediatek: change mmsys txt to
- yaml file
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: chunkuang.hu@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, nancy.lin@mediatek.com, 
- singo.chang@mediatek.com
+Content-Disposition: inline
+In-Reply-To: <20210629094339.874120-1-fshao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210716_004658_541929_06AAD16D 
-X-CRM114-Status: GOOD (  22.95  )
+X-CRM114-CacheID: sfid-20210716_010144_439629_E8D769F4 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,194 +97,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 16, 2021 at 1:48 AM jason-jh.lin <jason-jh.lin@mediatek.com> wrote:
->
-> Change mediatek,mmsys.txt to mediatek,mmsys.yaml
->
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/arm/mediatek/mediatek,mmsys.txt  |  32 ------
->  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 102 ++++++++++++++++++
->  2 files changed, 102 insertions(+), 32 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
->
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-> deleted file mode 100644
-> index 9712a6831fab..000000000000
-> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-> +++ /dev/null
-> @@ -1,32 +0,0 @@
-> -Mediatek mmsys controller
-> -============================
-> -
-> -The Mediatek mmsys system controller provides clock control, routing control,
-> -and miscellaneous control in mmsys partition.
-> -
-> -Required Properties:
-> -
-> -- compatible: Should be one of:
-> -       - "mediatek,mt2701-mmsys", "syscon"
-> -       - "mediatek,mt2712-mmsys", "syscon"
-> -       - "mediatek,mt6765-mmsys", "syscon"
-> -       - "mediatek,mt6779-mmsys", "syscon"
-> -       - "mediatek,mt6797-mmsys", "syscon"
-> -       - "mediatek,mt7623-mmsys", "mediatek,mt2701-mmsys", "syscon"
-> -       - "mediatek,mt8167-mmsys", "syscon"
-> -       - "mediatek,mt8173-mmsys", "syscon"
-> -       - "mediatek,mt8183-mmsys", "syscon"
-> -       - "mediatek,mt8192-mmsys", "syscon"
-> -- #clock-cells: Must be 1
-> -
-> -For the clock control, the mmsys controller uses the common clk binding from
-> -Documentation/devicetree/bindings/clock/clock-bindings.txt
-> -The available clocks are defined in dt-bindings/clock/mt*-clk.h.
-> -
-> -Example:
-> -
-> -mmsys: syscon@14000000 {
-> -       compatible = "mediatek,mt8173-mmsys", "syscon";
-> -       reg = <0 0x14000000 0 0x1000>;
-> -       #clock-cells = <1>;
-> -};
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> new file mode 100644
-> index 000000000000..ea31c7c2792c
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> @@ -0,0 +1,102 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mmsys.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: mediatek mmsys Controller Device Tree Bindings
-> +
-> +maintainers:
-> +  - CK Hu <ck.hu@mediatek.com>
-> +  - Jason-JH Lin <jason-jh.lin@mediatek.com>
-> +
-> +description: |
-> +  The Mediatek mmsys system controller provides clock control, routing control,
-> +  and miscellaneous control in mmsys partition.
-> +
-> +properties:
-> +  compatible:
-> +    description: |
-> +      If the mmsys controller of different soc have the same function,
-> +      you can use the same compatible name after it.
-> +      For example, if the function of mt2701 mmsys controller is the same as syscon,
-> +      then the compatible property could be set as:
-> +      compatible = "mediatek,mt2701-mmsys", "syscon";
-> +    oneOf:
-> +      - items:
-> +          - const: syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt2701-mmsys
-> +              - mediatek,mt7623-mmsys
-> +          - enum:
-> +              - syscon
-
-Not a yaml expert but I think it's:
-  - items:
-    - enum:
-      - mediatek,mt7623-mmsys
-    - enum:
-      - mediatek,mt2701-mmsys
-    - enum:
-      - syscon
-
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt2712-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt6779-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt6797-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8167-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8173-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8183-mmsys
-> +          - enum:
-> +              - syscon
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt8192-mmsys
-> +          - enum:
-> +              - syscon
-
-Just
-  - enum:
-    - mediatek,mt2712-mmsys
-    ...
-    - mediatek,mt8192-mmsys
-  - enum:
-    - syscon
-
-Fei
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  '#clock-cells':
-> +    description: |
-> +      For the clock control, the mmsys controller uses the common clk binding from
-> +      Documentation/devicetree/bindings/clock/clock-bindings.txt
-> +      The available clocks are defined in dt-bindings/clock/mt*-clk.h
-> +    const: 1
-> +
-> +  mboxes:
-> +    description: |
-> +      Client use mailbox to communicate with GCE, it should have this
-> +      property and list of phandle with mailbox specifiers as defined in
-> +      Documentation/devicetree/bindings/mailbox/mtk-gce.txt
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - '#clocks-cells'
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +
-> +    mmsys: syscon@14000000 {
-> +        compatible = "mediatek,mt8173-mmsys", "syscon";
-> +        reg = <0 0x14000000 0 0x1000>;
-> +        #clock-cells = <1>;
-> +    };
-> +
-> +...
-> --
-> 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gVHVlLCAyOSBKdW4gMjAyMSwgRmVpIFNoYW8gd3JvdGU6Cgo+IFJlb3JkZXIgdGhlIHJlZ3Vs
+YXRvciByZXNvdXJjZXMuCj4gCj4gRml4ZXM6IDRlZTA2ZTEwZGQyNiAoIm1mZDogbXQ2MzYwOiBD
+b21iaW5lIG10NjM2MCBwbWljL2xkbyByZXNvdXJjZXMKPiBpbnRvIG10NjM2MCByZWd1bGF0b3Ig
+cmVzb3VyY2VzIikKCkkgcmVtb3ZlZCB0aGUgRml4ZXMgdGFnLCBhcyBpdCBkb2Vzbid0IGZpeCBh
+bnkgYnVncy4KCj4gU2lnbmVkLW9mZi1ieTogRmVpIFNoYW8gPGZzaGFvQGNocm9taXVtLm9yZz4K
+PiAtLS0KPiAKPiAgZHJpdmVycy9tZmQvbXQ2MzYwLWNvcmUuYyB8IDggKysrKy0tLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDQgaW5zZXJ0aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCkFwcGxpZWQsIHRo
+YW5rcy4KCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10KU2VuaW9yIFRlY2huaWNhbCBMZWFkIC0g
+RGV2ZWxvcGVyIFNlcnZpY2VzCkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZv
+ciBBcm0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
