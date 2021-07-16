@@ -2,20 +2,21 @@ Return-Path: <SRS0=t3QX=MI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74B3EC07E95
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F0E7C07E95
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:28:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 34571613E7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:15:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 34571613E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 038F6613EB
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Jul 2021 06:28:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 038F6613EB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,72 +24,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jUVQlEOxjTSYuaosnlW0v5Qh3NzDso3+0HUsfVeJOX8=; b=oPzgo2IQQxGSmj
-	5Qu06IdP5ClcTizPYB6Ex/6pG+2/sMae7TMsHRorHjvRuGzxyzdPcTjPYE1UWYVL6PmGVCPqdPqPF
-	hAnJRA3nDnF4QdAbiDiJ6M8in1VuMr5myUdTVyeFK3SS4syuEd2afleGpR28kf2JhD+8oN2CD+Dua
-	v93jQNm2KMWzISzpDsDI06gZV3MpibWOSZLQSEHJ8MK2q33UqLF0l3/hNnC6UbnjSn4c9D36+azQL
-	5oIUNXrp3VeejRj7CbXGem4fyY/Vg3T6y5VB9gus/AfMaJadfSR7gMegrqxGyhdmYU7fHQeU78gnc
-	OnxLkCkBCnOOOx1EpjVA==;
+	List-Owner; bh=BaUT/2vysk1xZRl2PB9y6AEjkUYzQwcurblbEPoFie8=; b=p9k5kkMSl+A4Dn
+	Mdj6Clq3jM5n2VPZJpbjREhMzz52HTvuUO8bvXTRjxofB3c9J7ZWhJBnYc4cMLfZECdAix1cKBxm2
+	PKhZT6y4+9LnmHyWZDv7gpxLi+VLgi0+yYjtUmgNkTxCskjDx6YjYekLITAXP48MJ6NFUhPR9CrLQ
+	lDenJ9NLQkxgSJlN5E3LHeDIL6+cgq35+yiWh/lfI9DcQoONZ+5gF4exmIWNotjW0Od0BsJAeuKFA
+	95BW4NUMMFkc3hwnVajaCeKQa3TUQtPIEBkwRa7OuED0DgWY9/cw3vfFRLKLbuFT0M0T/kVULOpSq
+	lPEBb0TFTJncyhuCM3Mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4H8D-003JwX-Lp; Fri, 16 Jul 2021 06:15:29 +0000
-Received: from mail-io1-xd36.google.com ([2607:f8b0:4864:20::d36])
+	id 1m4HKT-003LQg-8Z; Fri, 16 Jul 2021 06:28:09 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4H8A-003JvZ-Vx
- for linux-mediatek@lists.infradead.org; Fri, 16 Jul 2021 06:15:28 +0000
-Received: by mail-io1-xd36.google.com with SMTP id p186so9364283iod.13
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Jul 2021 23:15:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ id 1m4HKG-003LNy-61; Fri, 16 Jul 2021 06:27:57 +0000
+Received: by mail-oi1-x234.google.com with SMTP id e11so6697555oii.9;
+ Thu, 15 Jul 2021 23:27:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=E5Nw9v5MsWaDurLBbY+BcDcL+BDdTyOKPRaT2ACYHvE=;
- b=NxJniVE/k/2wgZOeb9DWJ3Q0FQoJ3J2ABv8rVvc1ZmO9aAcbXoK9jx27ceGGQiumbv
- cdSp/TQ1f7VFlAWyC45NUiqmLnGXhRQ1MU4rjy2TKuUt49UbbTzRTF6ay7NLOjMktCxB
- +uew8FvbsmEzy2Yru8+aCbIgqdydQ4B3tKUO0=
+ :cc:content-transfer-encoding;
+ bh=K/pyrr7Vafmg+dkNK/O4hCihXyzzFOW/LxGI4Zbc87U=;
+ b=nKg+jweLtsF6DxnI1wFe8sPeoOw4yVlgk4aoKvIxGpvd4YOFmuDEJfUkkTQoMeb29O
+ rYAISCiiAD/mmXYVnMFsTAlxU9Zt+JcURj+/zn9RvOcNPzAQWqjw4WWMagtiXRT9rW8f
+ 3t3KyqtSRVdFc651gj8N+2hIA+P1leWO00tDnIAxahVYS0U41o/AIajj2M94MkYnkNLG
+ 7hZzktnK10sKmpPE2ETxzS5/ct3mtzrH/KEtjqk1tjLlZg0XUM7IQlVAwQUFFToHTb/V
+ dkM0COa+TRxxyiFkU4qHUgnUfg/7dM6nuyVJ9Eae/WxX/hXG/biQfRHzLi3+Tc7lELmG
+ G8eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=E5Nw9v5MsWaDurLBbY+BcDcL+BDdTyOKPRaT2ACYHvE=;
- b=NbSiVwucZwvQLkHfnDtFMS3v46vA3FknfEMYELXZIgbrN4ZTkbWwCP6ry0gkV8V48e
- xP+9HhOzXsSSWQBCsuuAQ6x95Ke22gFdKC+L3Zgxn09cZlKVFHaOw97iCOFQXgyle49c
- V0GI3cibb/lPI7thggURdlq0jMKxzF1YrvS+lxHu2jWSrsgA2xNSZtRlpd0bALGi3YGd
- m6elHeASlBEUm0ucR9DAp5QlplwwBeKV+Xu24FJ99I8wjce1nrprrMYsq/a8ARzYUDjh
- mHNUkLxaBGJtArbNafL3av6Op3FTyeoqCMDia3X/E2aWz+pg7b2qDhyreFOn/oxApyu9
- 0+9Q==
-X-Gm-Message-State: AOAM531ZHgpPhSorowhbgfSAppxmCnwU2d9i7ZU61JzkR55KePOHFbQd
- T8SK2zbGA3aeZTIdWPzHbBeqiA5OZR+anQ==
-X-Google-Smtp-Source: ABdhPJxSHXbCQKIR3heAGo7KGBEbQgPMao1452p09xxLeD19pHNtGf3TKUzj68TtBq/Lw7yMSNd9fQ==
-X-Received: by 2002:a6b:d908:: with SMTP id r8mr6394034ioc.16.1626416125163;
- Thu, 15 Jul 2021 23:15:25 -0700 (PDT)
-Received: from mail-il1-f182.google.com (mail-il1-f182.google.com.
- [209.85.166.182])
- by smtp.gmail.com with ESMTPSA id u15sm4739322ion.34.2021.07.15.23.15.22
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jul 2021 23:15:23 -0700 (PDT)
-Received: by mail-il1-f182.google.com with SMTP id b6so7285517iln.12
- for <linux-mediatek@lists.infradead.org>; Thu, 15 Jul 2021 23:15:22 -0700 (PDT)
-X-Received: by 2002:a92:6902:: with SMTP id e2mr5481520ilc.275.1626416122431; 
- Thu, 15 Jul 2021 23:15:22 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=K/pyrr7Vafmg+dkNK/O4hCihXyzzFOW/LxGI4Zbc87U=;
+ b=AYcTZSphLwS0de4cbXQS7i16UsFJIgrkFhR2Wr5qWVXmmMtCyaFp7PmuG4XfzP7mLO
+ WHz8tDNtcVxaOogUUGO+NdwvtgTqAIQRfeRzIkuBSva1+1kEjUwNaEc5tPGCq/Bk09nY
+ ViZYSNGQovQkkQwJHu+1VTeoFouVgjrzU0qhwQcmG4RiVQqB+SYqs9RLYDB7h3C1r8ZQ
+ UVg3TR9FkNsP9nsO1v66adMRmp86ONo5XzGijeSla+dwSlaiIqs1djjM36tcqdEIc8CO
+ jF+nJU/tj0o065+Zq+URBcTOxnRDHp3ttr9ISWMA7BznR/PFq6LFoBtbUIhEQ4ak0Hsy
+ 3rdQ==
+X-Gm-Message-State: AOAM53298Eng+dePl6IrwNWmTcyss2EtWAe98Fc4LDTFfOrWFxr5KZ00
+ ZtiqRqGnP9o3pq4VgnBIAD43QDDqZiDs6Sn96yw=
+X-Google-Smtp-Source: ABdhPJxW8kycciW2kOm+JGHD/kLp+IQUDWTe6n8MR0tec8pGCbiFVUh1ZLgFHcNOhWBaC4yavKTkFVMQqTeco1ceA1w=
+X-Received: by 2002:a05:6808:bc1:: with SMTP id
+ o1mr11285145oik.55.1626416874759; 
+ Thu, 15 Jul 2021 23:27:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210715173750.10852-1-jason-jh.lin@mediatek.com>
- <20210715173750.10852-3-jason-jh.lin@mediatek.com>
-In-Reply-To: <20210715173750.10852-3-jason-jh.lin@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Fri, 16 Jul 2021 14:14:46 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niC1WKQwJ44Y1hqOyRm4FrwRWbCUB+Z-eHoObP3hTFRtg@mail.gmail.com>
-Message-ID: <CAC=S1niC1WKQwJ44Y1hqOyRm4FrwRWbCUB+Z-eHoObP3hTFRtg@mail.gmail.com>
-Subject: Re: [PATCH v3 02/12] dt-bindings: mediatek: display: add definition
- for mt8195
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: chunkuang.hu@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, nancy.lin@mediatek.com, 
- singo.chang@mediatek.com
+References: <20210524152427.123856-1-gene.chen.richtek@gmail.com>
+ <CAE+NS37kf1JAJ2Zt7UGsfsubp6O=xBNtnJgVEnz8-mm2rxFa+g@mail.gmail.com>
+ <019cde8b-e4db-6ad4-fd71-5ed03f174da3@gmail.com>
+In-Reply-To: <019cde8b-e4db-6ad4-fd71-5ed03f174da3@gmail.com>
+From: Gene Chen <gene.chen.richtek@gmail.com>
+Date: Fri, 16 Jul 2021 14:27:43 +0800
+Message-ID: <CAE+NS34PLwP95=85r15_xHOPn-_OfdPWmXZ3MpHKEyO7StGpzw@mail.gmail.com>
+Subject: Re: [PATCH v14 0/2] leds: mt6360: Add LED driver for MT6360
+To: Jacek Anaszewski <jacek.anaszewski@gmail.com>
+Cc: Pavel Machek <pavel@ucw.cz>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Dan Murphy <dmurphy@ti.com>, 
+ Linux LED Subsystem <linux-leds@vger.kernel.org>, 
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Gene Chen <gene_chen@richtek.com>, 
+ Wilma.Wu@mediatek.com, shufan_lee@richtek.com, 
+ ChiYuan Huang <cy_huang@richtek.com>, benjamin.chao@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210715_231527_083788_9C74EFE4 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20210715_232756_284548_ED90AD15 
+X-CRM114-Status: GOOD (  22.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,119 +98,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 16, 2021 at 1:38 AM jason-jh.lin <jason-jh.lin@mediatek.com> wrote:
->
-> Add definition for mt8195 display.
->
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
->  .../bindings/display/mediatek/mediatek,disp.yaml   | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-> index 63a6bc975b29..910bb9ce61d6 100644
-> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-> @@ -54,6 +54,7 @@ properties:
->        - items:
->            - enum:
->                - mediatek,mt8192-disp-ovl
-> +              - mediatek,mt8195-disp-ovl
->            - enum:
->                - mediatek,mt8183-disp-ovl
->
-> @@ -82,6 +83,7 @@ properties:
->        - items:
->            - enum:
->                - mediatek,mt8192-disp-rdma
-> +              - mediatek,mt8195-disp-rdma
-
-Make mediatek,mt8195-disp-rdma an individual item to align with the dts change.
-
->            - enum:
->                - mediatek,mt8183-disp-rdma
->
-> @@ -95,6 +97,7 @@ properties:
->        - items:
->            - enum:
->                - mediatek,mt8192-disp-ccorr
-> +              - mediatek,mt8195-disp-ccorr
->            - enum:
->                - mediatek,mt8183-disp-ccorr
->
-> @@ -115,6 +118,7 @@ properties:
->            - enum:
->                - mediatek,mt8183-disp-color
->                - mediatek,mt8192-disp-color
-> +              - mediatek,mt8195-disp-color
->            - enum:
->                - mediatek,mt8173-disp-color
->
-> @@ -124,6 +128,7 @@ properties:
->        - items:
->            - enum:
->                - mediatek,mt8192-disp-dither
-> +              - mediatek,mt8195-disp-dither
->            - enum:
->                - mediatek,mt8183-disp-dither
->
-> @@ -135,6 +140,7 @@ properties:
->                - mediatek,mt2712-disp-aal
->                - mediatek,mt8183-disp-aal
->                - mediatek,mt8192-disp-aal
-> +              - mediatek,mt8195-disp-aal
->            - enum:
->                - mediatek,mt8173-disp-aal
->
-> @@ -146,10 +152,13 @@ properties:
->        - items:
->            - enum:
->                - mediatek,mt8192-disp-gamma
-> +              - mediatek,mt8195-disp-gamma
->            - enum:
->                - mediatek,mt8183-disp-gamma
->
->        # MERGE: merge streams from two RDMA sources
-> +      - items:
-> +          - const: mediatek,mt8195-disp-merge
->
->        # POSTMASK: control round corner for display frame
->        - items:
-> @@ -209,6 +218,7 @@ properties:
->            - const: mediatek,mt8183-disp-mutex
->        - items:
->            - const: mediatek,mt8192-disp-mutex
-> +          - const: mediatek,mt8195-disp-mutex
->
->        # OD: overdrive
->        - items:
-> @@ -234,7 +244,7 @@ properties:
->    mediatek,larb:
->      description: The compatible property should be one of DMA function blocks,
->        such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
-> -      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
-> +      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
->        Should contain a phandle pointing to the local arbiter device as defined in
->        Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
->        It must sort according to the local arbiter index, like larb0, larb1, larb2...
-> @@ -245,7 +255,7 @@ properties:
->    iommus:
->      description: The compatible property should be one of DMA function blocks,
->        such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
-> -      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
-> +      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
->        Should point to the respective IOMMU block with master port as argument, see
->        Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
->
-> --
-> 2.18.0
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SmFjZWsgQW5hc3pld3NraSA8amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+IOaWvCAyMDIx5bm0
+N+aciDEz5pelIOmAseS6jCDkuIrljYg0OjI05a+r6YGT77yaCj4KPiBIaSBHZW5lLAo+Cj4gWW91
+IHN0aWxsIGNhbiBjYXJyeSBteSBhY2s6Cj4KPiBBY2tlZC1ieTogSmFjZWsgQW5hc3pld3NraSA8
+amFjZWsuYW5hc3pld3NraUBnbWFpbC5jb20+Cj4KCk9rLCB0aGFua3MuIEkgd2lsbCBhZGQgeW91
+ciBhY2sgaW4gcGF0Y2ggdjE1LgoKPiBPbiA3LzEyLzIxIDEwOjMzIEFNLCBHZW5lIENoZW4gd3Jv
+dGU6Cj4gPiBHZW5lIENoZW4gPGdlbmUuY2hlbi5yaWNodGVrQGdtYWlsLmNvbT4g5pa8IDIwMjHl
+ubQ15pyIMjTml6Ug6YCx5LiAIOS4i+WNiDExOjI05a+r6YGT77yaCj4gPj4KPiA+PiBUaGlzIHBh
+dGNoIHNlcmllcyBhZGQgTVQ2MzYwIExFRCBzdXBwb3J0IGNvbnRhaW5zIGRyaXZlciBhbmQgYmlu
+ZGluZyBkb2N1bWVudAo+ID4+Cj4gPj4gR2VuZSBDaGVuICgyKQo+ID4+ICAgZHQtYmluZGluZ3M6
+IGxlZHM6IEFkZCBiaW5kaW5ncyBmb3IgTVQ2MzYwIExFRAo+ID4+ICAgbGVkczogbXQ2MzYwOiBB
+ZGQgTEVEIGRyaXZlciBmb3IgTVQ2MzYwCj4gPj4KPiA+PiAgIERvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9sZWRzL2xlZHMtbXQ2MzYwLnlhbWwgfCAgMTU5ICsrCj4gPj4gICBkcml2
+ZXJzL2xlZHMvZmxhc2gvS2NvbmZpZyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAx
+Mwo+ID4+ICAgZHJpdmVycy9sZWRzL2ZsYXNoL01ha2VmaWxlICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICB8ICAgIDEKPiA+PiAgIGRyaXZlcnMvbGVkcy9mbGFzaC9sZWRzLW10NjM2MC5jICAg
+ICAgICAgICAgICAgICAgICAgICAgfCAgOTEwICsrKysrKysrKysrKysrKysKPiA+PiAgIDQgZmls
+ZXMgY2hhbmdlZCwgMTA4MyBpbnNlcnRpb25zKCspCj4gPj4KPiA+PiBjaGFuZ2Vsb2dzIGJldHdl
+ZW4gdjEgJiB2Mgo+ID4+ICAgLSBhZGQgbGVkIGRyaXZlciB3aXRoIG1mZAo+ID4+Cj4gPj4gY2hh
+bmdlbG9ncyBiZXR3ZWVuIHYyICYgdjMKPiA+PiAgIC0gaW5kZXBlbmRlbnQgYWRkIGxlZCBkcml2
+ZXIKPiA+PiAgIC0gYWRkIGR0LWJpbmRpbmcgZG9jdW1lbnQKPiA+PiAgIC0gcmVmYWN0b3IgbWFj
+cm9zIGRlZmluaXRpb24gZm9yIGVhc3kgdG8gZGVidWcKPiA+PiAgIC0gcGFyc2UgZGV2aWNlIHRy
+ZWUgYnkgZndub2RlCj4gPj4gICAtIHVzZSBkZXZtKmV4dCB0byByZWdpc3RlciBsZWQgY2xhc3Mg
+ZGV2aWNlCj4gPj4KPiA+PiBjaGFuZ2Vsb2dzIGJldHdlZW4gdjMgJiB2NAo+ID4+ICAgLSBmaXgg
+YmluZGluZyBkb2N1bWVudCBkZXNjcmlwdGlvbgo+ID4+ICAgLSB1c2UgR0VOTUFTSyBhbmQgYWRk
+IHVuaXQgcG9zdGZpeCB0byBkZWZpbml0aW9uCj4gPj4gICAtIGlzaW5rIHJlZ2lzdGVyIGxlZCBj
+bGFzcyBkZXZpY2UKPiA+Pgo+ID4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2NCAmIHY1Cj4gPj4gICAt
+IGNoYW5nZSByZ2IgaXNpbmsgdG8gbXVsdGljb2xvciBjb250cm9sCj4gPj4gICAtIGFkZCBiaW5k
+aW5nIHJlZmVyZW5jZSB0byBtZmQgeWFtbAo+ID4+Cj4gPj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHY1
+ICYgdjYKPiA+PiAgIC0gVXNlIERUIHRvIGRlY2lkZSBSR0IgTEVEIGlzIG11bHRpY29sb3IgZGV2
+aWNlIG9yIGluZGljYXRvciBkZXZpY2Ugb25seQo+ID4+Cj4gPj4gY2hhbmdlbG9ncyBiZXR3ZWVu
+IHY2ICYgdjcKPiA+PiAgIC0gQWRkIGJpbmRpbmcgbXVsdGljb2xvciBkZXZpY2Ugc2FtcGxlIGNv
+ZGUKPiA+PiAgIC0gQWRkIGZsYXNoIG9wcyBtdXRleCBsb2NrCj4gPj4gICAtIFJlbW92ZSBWNEwy
+IGluaXQgd2l0aCBpbmRpY2F0b3IgZGV2aWNlCj4gPj4KPiA+PiBjaGFuZ2Vsb2dzIGJldHdlZW4g
+djcgJiB2OAo+ID4+ICAgLSBBZGQgbXV0ZXggZm9yIGxlZCBmYXVsdCBnZXQgb3BzCj4gPj4gICAt
+IEZpeCBmbGFzaCBhbmQgbXVsdGljb2xvciBuby1vcHMgcmV0dXJuIDAKPiA+PiAgIC0gQWRkIExF
+RF9GVU5DVElPTl9NT09OTElHSFQKPiA+Pgo+ID4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OCAmIHY5
+Cj4gPj4gICAtIHJldXNlIGFwaSBpbiBmbGFzaCBhbmQgbXVsdGljb2xvciBoZWFkZXIKPiA+Pgo+
+ID4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2OSAmIHYxMAo+ID4+ICAgLSBhZGQgY29tbWVudCBmb3Ig
+cmV1c2UgcmVnaXN0cmF0aW9uIGZ1bmN0aW9ucyBpbiBmbGFzaCBhbmQgbXVsdGljb2xvcgo+ID4+
+Cj4gPj4gY2hhbmdlbG9ncyBiZXR3ZWVuIHYxMCAmIHYxMQo+ID4+ICAgLSBtYXRjaCBkdC1iaW5k
+aW5nIHJlZyBwcm9wZXJ0eSBjb21tZW50IHRvIHRoZSBmdW5jdGlvbmFsaXR5IG5hbWUKPiA+PiAg
+IC0gcmVtb3ZlIGV4aXN0IHBhdGNoIGluIGxpbnV4LW5leHQKPiA+PiAgIC0gZGljaWRlIG11bHRp
+Y29sb3IgY2hhbm5lbCBieSBjb2xvciBkZWZpbml0aWlvbgo+ID4+Cj4gPj4gY2hhbmdlbG9ncyBi
+ZXR3ZWVuIHYxMSAmIHYxMgo+ID4+ICAgLSBGaXggcHJpbnQgc2l6ZV90IGJ5ICV6dQo+ID4+ICAg
+LSBGaXggZHQtYmluZGluZyBuYW1lIHJlZ3VsYXIgZXhwZXJzc2lvbgo+ID4+Cj4gPj4gY2hhbmdl
+bG9ncyBiZXR3ZWVuIHYxMiAmIHYxMwo+ID4+ICAgLSBGaXgga2J1aWxkIHRlc3QgcmVib3QgYnVp
+bGQgZXJyb3IKPiA+Pgo+ID4+IGNoYW5nZWxvZ3MgYmV0d2VlbiB2MTMgJiB2MTQKPiA+PiAgIC0g
+TW92ZSBkcml2ZXIgdG8gZmxhc2ggZm9sZGVyCj4gPj4gICAtIFJlbW92ZSBMRUQgRlVOQ1RJT04g
+TU9PTkxJR0hUCj4gPj4gICAtIEtlZXAgODAgY2hhciBwZXIgbGluZQo+ID4+Cj4gPj4KPiA+Cj4g
+PiBEZWFyIFJldmlld2VycywKPiA+Cj4gPiBQbGVhc2UgbGV0IG1lIGtub3cgaWYgYW55IHVwZGF0
+ZS4KPiA+Cj4KPiAtLQo+IEJlc3QgcmVnYXJkcywKPiBKYWNlayBBbmFzemV3c2tpCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
+YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
