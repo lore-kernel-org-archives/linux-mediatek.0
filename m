@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A909EC636C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 08:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AE3CFC636CA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 08:24:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67010613C3
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 08:24:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 67010613C3
+	by mail.kernel.org (Postfix) with ESMTPS id 6F28F6127C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 08:24:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F28F6127C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QNUlVaERGBUTRnYbqqN9zpEh4clKXPDao0Ob9vH7w5I=; b=DUDZxhtXYMxYHQ
-	LlAivHrCnnvv7la4+EN6UFy/EMXQWDemjsAo5BfRPmRXuA6Jqtn58VBfhGCRypV/gT1lEFCcYXOXN
-	8//d8NgGjwGMk899rqxuknms83szxGAxptlx7NbMrmZlXvTfYv0K+5eJvCfqLqfX8yvyTIbhVk832
-	QQRfQz/AKfrEIobHapVq5mCdhEd9aznracMSTGGuqANWEUQfAsee4WNZusoukVZDaVtv/5Obpf5h9
-	HkgPwmCgjHUkArrC/5I+JH6/C7OXx9eJGhcbP77iXonjFSdtQshMxjlDzeepdoe1BvDEKfiYp8Upe
-	xUL1NiSyU8wHVBL2sa9A==;
+	List-Owner; bh=tw99tSjpWeQrdHSl2G1dR8lr7FmivAgQqRPIS6YpZAs=; b=uR6CXfJZtSpqZL
+	vCGKc+8UROwGaXyFdlzkUe7xxSRHvpmZIqpPWElawwFdFrBQn0YofLJ78cjv50dQl4VS4ENKyVh35
+	Pno8wxwhwjwlBazyswTsONO0uBhM/tJa5sorU3b+ygIrlQyH6Mfn4W5PPMtDi+WijM8trgxwS+hBs
+	9+0GAdNF1DnfNxV0VjSoQwZRnihNFy4jlaSfhogxQRya5ape3r29ay+PMVlPmZ8qS6jtV7Xw7gd+w
+	CJx1CS9JEih6BEO7FOCVHhLry+SpB9bJ8w6S4nF8e3X0cwsmPs4nJiDSBPDD5KUmQa4x+/Tp4YySv
+	6kn3pSx3WzYZ7KB9UBhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4fc0-006Ctz-5W; Sat, 17 Jul 2021 08:23:52 +0000
+	id 1m4fcr-006DGt-R0; Sat, 17 Jul 2021 08:24:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4fb9-006CdI-4R; Sat, 17 Jul 2021 08:23:00 +0000
-X-UUID: acacdcc0a7e14cb9afba9a27febcf3f7-20210717
+ id 1m4fbA-006Cdl-3m; Sat, 17 Jul 2021 08:23:01 +0000
+X-UUID: 6e18053c8ac641b093d8ce4e7b7ac834-20210717
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jfUuASRVRo4oeSUF6RQlV7NdF8sO9v2fQh7d0yosrBM=; 
- b=Ji1t8LzBUZgnE8xO7sKN2yb3ybl3zTtOUoPK7zxGZD7sbbX8DPtvNhkgCVLeJusQLfG241PMLtMfL+eYgIgt8yiZycvawI0E9GvfqlW+H9wDEtwA0fhe84RrliQG4LmGInKeyXpvtaUJviVaqddcGqxgG9P6e8DQb/fExSA9Ufk=;
-X-UUID: acacdcc0a7e14cb9afba9a27febcf3f7-20210717
+ bh=pPaTUh3o/nVbTX+Kl1ScXmwTwr/ABt+iSjvb5C4gC8s=; 
+ b=Lr98guy19/LEJRzUxEDlEGprDExvDiqb+Abtdr4NXTDxIOhM4vQFVIR8iasOD3kUBMnCTIAVQn6pnejicvKQeq33M1Zz/pVMA1Xf5tOcI/jbXkcfej9LPNDsT4zE70VJIBDDNpkOAibzCHzMfx7yf8alecSb9UE4BcqVGGZYnIk=;
+X-UUID: 6e18053c8ac641b093d8ce4e7b7ac834-20210717
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1221406270; Sat, 17 Jul 2021 01:22:58 -0700
+ with ESMTP id 1746704960; Sat, 17 Jul 2021 01:22:58 -0700
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sat, 17 Jul 2021 01:12:56 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 17 Jul 2021 16:12:49 +0800
+ 15.0.1497.2; Sat, 17 Jul 2021 16:12:47 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 17 Jul 2021 16:12:48 +0800
+ Transport; Sat, 17 Jul 2021 16:12:46 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -69,17 +69,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v2,
- 11/14] media: mtk-vcodec: Support 34bits dma address for vdec
-Date: Sat, 17 Jul 2021 16:12:30 +0800
-Message-ID: <20210717081233.7809-12-yunfei.dong@mediatek.com>
+ 09/14] media: mtk-vcodec: Add new interface to lock different hardware
+Date: Sat, 17 Jul 2021 16:12:28 +0800
+Message-ID: <20210717081233.7809-10-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210717081233.7809-1-yunfei.dong@mediatek.com>
 References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210717_012259_244979_EC740D68 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20210717_012300_234344_F1DFFA57 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,35 +96,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the dma_set_mask_and_coherent helper to set vdec
-DMA bit mask to support 34bits iova space(16GB) that
-the mt8192 iommu HW support.
-
-Whole the iova range separate to 0~4G/4G~8G/8G~12G/12G~16G,
-regarding which iova range VDEC actually locate, it
-depends on the dma-ranges property of vdec dtsi node.
+For add new hardware, not only need to lock lat hardware, also
+need to lock core hardware in case of different instance start
+to decoder at the same time.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
 v2: no changes
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c     | 4 ++--
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 5 +++--
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 2 +-
+ 3 files changed, 6 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 2b334a8a81c6..130ecef2e766 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -105,12 +105,12 @@ static int vidioc_decoder_cmd(struct file *file, void *priv,
+ 
+ void mtk_vdec_unlock(struct mtk_vcodec_ctx *ctx)
+ {
+-	mutex_unlock(&ctx->dev->dec_mutex);
++	mutex_unlock(&ctx->dev->dec_mutex[ctx->hw_id]);
+ }
+ 
+ void mtk_vdec_lock(struct mtk_vcodec_ctx *ctx)
+ {
+-	mutex_lock(&ctx->dev->dec_mutex);
++	mutex_lock(&ctx->dev->dec_mutex[ctx->hw_id]);
+ }
+ 
+ void mtk_vcodec_dec_release(struct mtk_vcodec_ctx *ctx)
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index e05224aca888..8ae11f890101 100644
+index 29c20269e0e4..078daeeff576 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -443,6 +443,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 			"mtk-%s", "core");
+@@ -397,7 +397,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+ 	struct device_node *comp_node;
+-	int ret;
++	int i, ret;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -437,7 +437,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_res;
  	}
  
-+	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
-+		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+
- 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
- 		mutex_init(&dev->dec_mutex[i]);
+-	mutex_init(&dev->dec_mutex);
++	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
++		mutex_init(&dev->dec_mutex[i]);
  	mutex_init(&dev->dev_mutex);
+ 	spin_lock_init(&dev->irqlock);
+ 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 22a34f264343..9207ce079960 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -513,7 +513,7 @@ struct mtk_vcodec_dev {
+ 	int dec_irq;
+ 	int enc_irq;
+ 
+-	struct mutex dec_mutex;
++	struct mutex dec_mutex[MTK_VDEC_HW_MAX];
+ 	struct mutex enc_mutex;
+ 
+ 	struct mtk_vcodec_pm pm;
 -- 
 2.25.1
 _______________________________________________
