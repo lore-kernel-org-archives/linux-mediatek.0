@@ -2,81 +2,94 @@ Return-Path: <SRS0=8BsG=MJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97E22C636C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 10:29:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28EC1C636CA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 13:02:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6863960FE4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 10:29:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6863960FE4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E3CDE613D0
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 13:02:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E3CDE613D0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=03eeHKJp3tMUUsNuB1Gyab3DYpueEyHpSb1tvCqdd4I=; b=O5oeAOB4fxbjOZ
-	JrGXxQ7xZhJiT1x808bSglVR574XpY0bCFOtImkmXY9aBEvByZbhqpHPBbk4V0vhsDtmT5HyXwxPI
-	8CpvxhHv9YcmamN4ELgRIuURdHDwHuURuiis9Ijf+TZYr76/8IS69kcK+E0DIb1Gra2u+0lfJ+vXR
-	7lw55669/IBvxxlwlCIbeU3ttNl8hdaI+T75m8Fz7KmCieEFs1OP0PEe1mbNCn8kUKmT4hEAq9rMb
-	15Qlk098CgBrAcq63rQnHEO7pGAPVR152p9r+0geJlGAVGrLQIxtcx6tWBjPTg1PhoUnn/pzP0fio
-	7kXU4/F0S2or9/zQksFw==;
+	List-Owner; bh=IaHhalzf4VXOM1ghDjD6t2Sy+kZDMpcPRiRhu3+bJH4=; b=xuThgmb1GKHw2F
+	Q8CFqhvql7FZGRCqOaFf30k+3H4kcKNCeRDMzu1JpvYfCgWe/Lsu9R1yS5QztcpaDUhgzYdDbzFna
+	Rxdi2xr9i90KZcyZUYZv+yp5mzgtgbon38umTEmFUa4WTbMfmVeFwiJb2VA6/MW6CQAjcbn9/WbPw
+	+Et/UtSTp4qEkDG97lyowr/QiDMhC9l7595xUSsBXhDWJEzM+BpqY2Oqru+sThYYvV+0j55/p3oBu
+	k4zKU7SZMjnC4Ed9D+kWKbIhydYIdsMx4XMzHTuOapwlxekvOr3SW+X6fWFgAYvw5c3JxbyjlWG3+
+	xpRh7M+NwD/jDGvx///Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4hZL-006UqH-Jr; Sat, 17 Jul 2021 10:29:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m4jxB-006etL-HB; Sat, 17 Jul 2021 13:02:01 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4hYM-006UXH-23; Sat, 17 Jul 2021 10:28:15 +0000
-X-UUID: 15462439ebb94b4a92149b59ee7de365-20210717
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ww5jy+xCAnGdVfnrFq3Muq6+6V5aPjjtz2apVpQ6yr0=; 
- b=P+twweaPyupwsh6MaLPgkR1MMZ0VLz6sKL87ZlP7+IULwdbZNtiGzrqmKS1Qk627mHeYAOYL9Ljlqo6r5PWTTreukiVA+dtbgDyKrDq3d4UYWeXtSBmjHhS4OvSEAqHUFSslhqJVVgT+uoGQQodTt1Z3gI5w6EBH5xg/f6nxuX0=;
-X-UUID: 15462439ebb94b4a92149b59ee7de365-20210717
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kewei.xu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 319573952; Sat, 17 Jul 2021 03:28:09 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 17 Jul 2021 03:18:07 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 17 Jul 2021 18:18:05 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 17 Jul 2021 18:18:04 +0800
-From: Kewei Xu <kewei.xu@mediatek.com>
-To: <wsa@the-dreams.de>
-CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
- <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>, <yuhan.wei@mediatek.com>,
- <kewei.xu@mediatek.com>, <ot_daolong.zhu@mediatek.com>,
- <liguo.zhang@mediatek.com>
-Subject: [PATCH v4 3/8] i2c: mediatek: Reset the handshake signal between i2c
- and dma
-Date: Sat, 17 Jul 2021 18:17:54 +0800
-Message-ID: <1626517079-9057-4-git-send-email-kewei.xu@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1626517079-9057-1-git-send-email-kewei.xu@mediatek.com>
-References: <1626517079-9057-1-git-send-email-kewei.xu@mediatek.com>
+ id 1m4jwy-006es3-Lf; Sat, 17 Jul 2021 13:01:49 +0000
+Received: by mail-ed1-x533.google.com with SMTP id ec55so16649155edb.1;
+ Sat, 17 Jul 2021 06:01:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=AE0vk+OWuD10Z0EqVPnQQ5x0ytDuchGXP77/oS4iF8w=;
+ b=Gg1y0YAKvo0Fc2m2o1vuYshTnVDoA7AEjImeWOohdIoi86RJZkQ9EGTCNygubW7UC0
+ iWF3gHPbv+OvaA6L/VxSeru3cY8xFDX3AQtEzr2W30cIN0JDF1Uo/IwO1AgZQ6unYQet
+ /v5mHaAhdST8LsAcNoSt42YKdWLMXQAad+TtwKNhXVcfyXqu5b2j61dWRNxGJt4WuEb6
+ /aRUj2nfjXLymb/CFQuNKmrCZ7jx45a/CvHxfyDCpHPpoV3diEvtmPCDIOc5J/sRnhhL
+ 89gECpkCFWK78McK6kEm3b+FdUvprUsVT7BaoKBMHDxdwAHArqlB/wzFq5l4Nv0j3r8g
+ iRlA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=AE0vk+OWuD10Z0EqVPnQQ5x0ytDuchGXP77/oS4iF8w=;
+ b=j84aDqm7sEfh325705f/mQTkhw1ejQ/HFwKVm7szbioL8pETcuaea/4hfmjbSRmyn2
+ 9hpK12eE8HKc1/n5y1r6OsJJYTgrOdEv4IU60BjAxEJss9L8QN9PsM99piN88gFKBI2P
+ VxsU88G/JteuUnPj6EqxFStV703C20i8CIlIbDwwbYlNrF9B49ebSevVRTrAhF9LdLPc
+ TwFNM8V42pFbm6DgJs8RyAP4Kg/nbPxGkDjkeBK+DvczEjA7Gjbf1KKOziXyBpeX92/j
+ rteal2/7jcLv2UPWN5BIsKNhJqvcsVW/yHxPmYHOZQWjeTzR7VW77kLCcWHR6cXdTJzf
+ LIhg==
+X-Gm-Message-State: AOAM5330hkCWv8VoM7jo5UqcDAB6TtB+7u9cLqqVho/xTVj1aHLPQCoz
+ 9u4ZhfATyazsbisVK1lB1JU=
+X-Google-Smtp-Source: ABdhPJwwTfY3aDydN4vgqwZ+1IdTA9/4VbUMf3AZZ5O7FnIURRVd000FJGicxnOWF91vKjlOHvQaQA==
+X-Received: by 2002:aa7:cfcf:: with SMTP id r15mr21810760edy.161.1626526905205; 
+ Sat, 17 Jul 2021 06:01:45 -0700 (PDT)
+Received: from skbuf ([82.76.66.29])
+ by smtp.gmail.com with ESMTPSA id e24sm3857192ejx.100.2021.07.17.06.01.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 17 Jul 2021 06:01:44 -0700 (PDT)
+Date: Sat, 17 Jul 2021 16:01:42 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Eric Woudstra <ericwouds@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <landen.chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ DENG Qingfang <dqfext@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+Subject: Re: [PATCH] mt7530 fix mt7530_fdb_write vid missing ivl bit
+Message-ID: <20210717130142.xm7ect5sc6i6hrii@skbuf>
+References: <20210716153641.4678-1-ericwouds@gmail.com>
+ <20210716210655.i5hxcwau5tdq4zhb@skbuf>
+ <eda300a2-4e36-4d0c-8ea8-eae5e6d62bea@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <eda300a2-4e36-4d0c-8ea8-eae5e6d62bea@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210717_032814_131772_8DF7151F 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210717_060148_751985_3381B008 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,50 +106,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to changes in the hardware design of the handshaking signal
-between i2c and dma, it is necessary to reset the handshaking
-signal before each transfer to ensure that the multi-msgs can
-be transferred correctly.
+On Sat, Jul 17, 2021 at 10:09:53AM +0200, Eric Woudstra wrote:
+> You are right now there is a problem with vlan unaware bridge.
+>
+> We need to change the line to:
+>
+> if (vid > 1) reg[1] |= ATA2_IVL;
+>
+> I have just tested this with a vlan unaware bridge and also with vlan
+> bridge option disabled in the kernel. Only after applying the if
+> statement it works for vlan unaware bridges/kernel.
 
-Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
----
- drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Ok, make sure to read Documentation/process/submitting-patches.rst for
+how to add a Fixes: tag to your patch, Documentation/networking/netdev-FAQ.rst
+for how to set the subject-prefix to "PATCH net" in your git-send-email command,
+and send a fixup patch.
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 222ff765e55d..c0108387f34b 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -47,6 +47,9 @@
- #define I2C_RD_TRANAC_VALUE		0x0001
- #define I2C_SCL_MIS_COMP_VALUE		0x0000
- #define I2C_CHN_CLR_FLAG		0x0000
-+#define I2C_CLR_DEBUGCTR		0x0000
-+#define I2C_RELIABILITY			0x0010
-+#define I2C_DMAACK_ENABLE		0x0008
- 
- #define I2C_DMA_CON_TX			0x0000
- #define I2C_DMA_CON_RX			0x0001
-@@ -850,6 +853,17 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
- 
- 	reinit_completion(&i2c->msg_complete);
- 
-+	if (i2c->dev_comp->apdma_sync) {
-+		mtk_i2c_writew(i2c, I2C_CLR_DEBUGCTR, OFFSET_DEBUGCTRL);
-+		writel(I2C_DMA_HANDSHAKE_RST | I2C_DMA_WARM_RST,
-+		       i2c->pdmabase + OFFSET_RST);
-+		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
-+		mtk_i2c_writew(i2c, I2C_HANDSHAKE_RST, OFFSET_SOFTRESET);
-+		mtk_i2c_writew(i2c, I2C_CHN_CLR_FLAG, OFFSET_SOFTRESET);
-+		mtk_i2c_writew(i2c, I2C_RELIABILITY | I2C_DMAACK_ENABLE,
-+			       OFFSET_DEBUGCTRL);
-+	}
-+
- 	control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
- 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
- 	if ((i2c->speed_hz > I2C_MAX_FAST_MODE_PLUS_FREQ) || (left_num >= 1))
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
