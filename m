@@ -7,72 +7,70 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5302C636C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 05:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0A29C636CA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 05:06:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64BED61164
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 05:06:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64BED61164
+	by mail.kernel.org (Postfix) with ESMTPS id AA9E7610D1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 05:06:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA9E7610D1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XYt5as2V75Ot/pCMe0BQkBlua3GxCfpt9rHvOA+go5w=; b=DBNscgMvxMI7d1
-	qo/PP9jjVhWfndggeJH93f6tLYvb2coTT21qdLr7/WgN7q0iZaFebNaY2YJFXdciwTnWTryyr20m4
-	zojp8rpHlNx4KBH6SIooigj1lMP5wo1WvfwlXlGq+ziEfItVWc8n/gkWlwwxmILHjAnqp3J6RL357
-	8fYNZNhTEYjpszGZV4A48oOuADZ2Cfu5e2JV8R3HgNJT5gRR6t84kuZZcS3/+Ul1ETTYbLlSQs7CK
-	MocRSCovAxmwekQEC10lFfvm6S/Apcva/nKy+QVbMNv2VlJho+xlRVpyaJMnNZ+L+F37axONXIVAs
-	RcCgUcIX83TaSYfEFROg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rjomw0wp1+A4VMUfXKgPRtakm5irGEo3QqwVRGLvUP8=; b=oe+vB2X8hjnZN7
+	Or599HTQ/UoSBTiNbiIR/7I8RQ3WqieT4u1A0h8WoW6zcPG/oV5tHQcq8Ggcog2c4/z5JDsPV8u/f
+	E5Aa0ewIp0Nh4tyFmKstqdxGB+EFESRegu509Yz0VKWivUALEQdB/KMVgKRkHFnIKBVyaCEf39QbQ
+	3tByFhM+ou3kVMdx3dozOoYsL97I0UZl1SasmAO9nUiso4kNpB2ritVD9/kabEtspFM548cDTCgz8
+	0BgrmsnAiQ2ZLUZGOHB6DIY2jik4OgQU+/tdNXCJm0WEP0jpb/QOgQSybU6jUAdPpG8bAKEePHjFj
+	ILlbUyrs13tFQG3rBi3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4cWZ-0060HS-4n; Sat, 17 Jul 2021 05:06:03 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m4cWn-0060Mu-VH; Sat, 17 Jul 2021 05:06:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4cWV-0060Fr-Jh
- for linux-mediatek@lists.infradead.org; Sat, 17 Jul 2021 05:06:01 +0000
-X-UUID: 195cad4f32c74550923ecf6771d9e2ca-20210716
+ id 1m4cWk-0060JL-B6
+ for linux-mediatek@lists.infradead.org; Sat, 17 Jul 2021 05:06:15 +0000
+X-UUID: 987eb99dbefa46a3b60ec8747a637a6b-20210716
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=e3sRdoFT02nVhSGkHEUZXS/w1QWkJVlllXBc00Doke0=; 
- b=WyOxCx9VMa1VCnEzCP6lfKl9HZnwW792i17YQ52EWLqAvw/UTGHJgP5qjsbEg1bpQFt5b6Lceya7ucAzN4bK74vFqCiIqNEcVfzUTtcQaBvs23cfKZvb7n1Oh0K/APp56JV5Ai2k/x8fY8+Ud+zAS2QOxoFgD6OSHTV64K5yjak=;
-X-UUID: 195cad4f32c74550923ecf6771d9e2ca-20210716
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=ipgE+yUVdOZXFRIMYzExOPN9eG6bKAxGCH9sHXZiejY=; 
+ b=bml/Wb1gbVRaRkF+bBvysBqmMJrIgd/7Am8PiMq1E7WryXnwML9g82hf7sthXTtcyJ+p/R5cxCFn2Z/zN8fwCIi8Wvpu4KtNkY8XXYxbCIsZd0vQjHFy5YsuwQrR1ka/r3RtM+YJhvl4aryDWe+Za0Qg5h/3qNhVj7zYXebiF7A=;
+X-UUID: 987eb99dbefa46a3b60ec8747a637a6b-20210716
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1788141652; Fri, 16 Jul 2021 22:05:56 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 360980783; Fri, 16 Jul 2021 22:06:07 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 16 Jul 2021 22:05:54 -0700
+ 15.0.1497.2; Fri, 16 Jul 2021 22:06:05 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 17 Jul 2021 13:05:53 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 17 Jul 2021 13:05:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 17 Jul 2021 13:05:53 +0800
+ Frontend Transport; Sat, 17 Jul 2021 13:05:52 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Sean Wang
  <sean.wang@mediatek.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
-Subject: [PATCH 2/2] mt76: mt7921: send EAPOL frames at lowest rate
-Date: Sat, 17 Jul 2021 13:05:49 +0800
-Message-ID: <089a52032471c2f058e0837582b21f6e9b039fba.1626498075.git.ryder.lee@mediatek.com>
+Subject: [PATCH 1/2] mt76: mt7915: send EAPOL frames at lowest rate
+Date: Sat, 17 Jul 2021 13:05:48 +0800
+Message-ID: <aea4d98082bea79c7e116fc56d2b0e0c1442deae.1626498075.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <aea4d98082bea79c7e116fc56d2b0e0c1442deae.1626498075.git.ryder.lee@mediatek.com>
-References: <aea4d98082bea79c7e116fc56d2b0e0c1442deae.1626498075.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210716_220559_709174_3852E090 
-X-CRM114-Status: UNSURE (   7.24  )
+X-CRM114-CacheID: sfid-20210716_220614_445118_09B765EF 
+X-CRM114-Status: UNSURE (   7.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,14 +93,14 @@ so checking IEEE80211_TX_CTL_USE_MINRATE to use the lowest TX rate.
 
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 3 ++-
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 7fe2e3a50428..eb0d98c8d5d8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -702,7 +702,8 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 2462704094b0..d47dd0f96bdb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -869,7 +869,8 @@ mt7915_mac_write_txwi_80211(struct mt7915_dev *dev, __le32 *txwi,
  		txwi[3] &= ~cpu_to_le32(MT_TXD3_PROTECT_FRAME);
  	}
  
