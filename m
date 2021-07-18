@@ -1,90 +1,81 @@
-Return-Path: <SRS0=8BsG=MJ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=A55m=MK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B62F4C636C9
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 19:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DD91C636C8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jul 2021 06:14:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7871C60E0B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Jul 2021 19:28:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7871C60E0B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 61C3461166
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Jul 2021 06:14:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61C3461166
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9dBteXGaYCyZAlh91Id8Y0WuzsqhmOl2RN/O/otLbbk=; b=ce4GEDGS8wzShf
-	D3/h/yfalcIz4GMofTMHkv/9lekeq3+8/8QAPG7IecH+4mEtbIuxkvyHCZ6KUxlsdLCgbYvlrg7Az
-	2LLvB4uq7yQAJQNNSOWnDlw2/fLV7tesOPWsqvtwBSQ/45nd08Wv54UuJSITC4VNbYOCSeHSbec2J
-	UVGsJ5hfvaHx/i3XyFl7yTvpzzlbKZz8W/JFY0etax5hvm8lcJD2Qc2umm7WBYIK31gL5sg96xFaA
-	rvbeA83TwVCr+5UePNpi6oZQ5Ed20pwMpO3mpE84SkNUDSQ6l8ScqrLHVxoeC2mWsl4/L9Ar7T33L
-	pTGpTu98YWPQ56ZuJHLg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9Uobu8aSBZskrQ0qPXOP0JeqDQf9PQId/oR2f/5CBCA=; b=Mhc+e4WRJufXKH
+	c48qCODjJMgUaZrd//HzN1HHjHl9RtsJ/XBXxf6IBf2qXU9nfnrF1+BFq/eLna6XH/1IpebqdrUrU
+	3HGBPS8Ig1KI/QQjvxWjvchYufheHxTpf8aVL/aTdBk4iRBhT/TpBIn/kfoBBCdVVkgIFpQr6wO9y
+	Hy63KK65kdGmLqPPY0TQRpgRKPQLS6A6N+LOso3tDjKFBklioBE6j+bIub9uSB7LVVEmdxsHtKSUw
+	ckt2fPtnDsBeQ+aCb+SAaEgQyKK64gjoph/A6PBH6A4YNPoa4i1CjXFQmfhUYdVy2QVnACIxiuudf
+	/fQ9eGSl7h+DBiI1hA7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m4pyx-006yQr-1i; Sat, 17 Jul 2021 19:28:15 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1m504X-007NcA-Gd; Sun, 18 Jul 2021 06:14:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m4pyk-006yQJ-61; Sat, 17 Jul 2021 19:28:03 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id
- h24-20020a9d64180000b029036edcf8f9a6so13584732otl.3; 
- Sat, 17 Jul 2021 12:28:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OY5P3Qs+aXS0GXol5NiwP3hCcodvv6jduZx0L8iwDwo=;
- b=GDk8Q5ty9EG6/PxzOvcNyuxFvY3tmhdqw7RivNyfIxypiERnzVII2o4n99M/A0CW7S
- VinDg91/OEAyiWKItlwXmj14zRZ2+Q8mI85uXkJoDaHFtxJVeCA2Rf0zj/MLDoB57sYD
- 3fdxcK3vIVbyxy+qai/R2xW9qhnXyixG658F7PJfVMdd8qOJ/hDdgESJGXzjeMbzj7GS
- Ybo/6iFiSMw8IeXYBFfCCeT30MgaoW4CvAi0ft8h6tycRO+eTSLtxIAMrEQ+HRkywvX+
- 6fhmYpWK1iqLEdnzqmw0U38orl/6XXuu0Tnl9Px7BQal2AWfR21w8eZrZWO0F/Y9aLW5
- kLxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OY5P3Qs+aXS0GXol5NiwP3hCcodvv6jduZx0L8iwDwo=;
- b=r4RitZCuTfafE7zRebZXzYMLT2AQ2vRjy/tiDHJQny+Lr3yjNArUemJnEeFjgxYCMC
- 6Ww64IQBRFC5P9t0w7M7CS8zxTeN3fwXzV5QbTtc1LypHii90WS9w76RRMBoX23hKMm8
- tJXDT6zlJa2MxXgJ1xsCqd2cLfhJJhGrrRDLETMduQ9fXx31Ggj9LgoiH8StndA91EPB
- T7eYoYa3jVV7e7Fk2L/VYw8rMlSa3D1KSHsduPEUE9mhRPm6W7kh+zYxCKiqO0DY1z1h
- AaRDQMYVtKldlFDGtuclXi1LstxdoAFlVOxpDK1p2a2lqgjF+8d0BUjIZdOONSgyPgCZ
- IBAQ==
-X-Gm-Message-State: AOAM5314u6K7nsuQmkqJPxegqwcZNWXNSP3Um0mKBayjiWqMN1LZiRXy
- dLFAEIRhR1OYldTdYZ5RPqdreChGb5XSoXADGAs=
-X-Google-Smtp-Source: ABdhPJwdOL3GQLIGVxozk87GaIpeCxhnrSlIsGBjkPcciuhg1QX81Gna8arxi6vshxr7dwIurSKHYHuctsQpn+aidjQ=
-X-Received: by 2002:a9d:7e6:: with SMTP id 93mr6516748oto.370.1626550080413;
- Sat, 17 Jul 2021 12:28:00 -0700 (PDT)
+ id 1m504T-007NaE-H8; Sun, 18 Jul 2021 06:14:40 +0000
+X-UUID: 28510cc3df6f4127ba23d4a1196770c2-20210717
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=CoK7U6J6YefYnH9ZaBC94cXA27CsPRIQGW2aoV0GT0M=; 
+ b=fPOySwxbjQVOHdg7SzksOSX2bsYw0mCyTXiVKrtY2wS5aPQWgLfPmHBVKDTh1I/A30YZzSaChQSHSf5kLE2ZfxZMjIy1OgPj+lJq897u0asei90KH5+jsYNAFYnORn7yLKQ5eHoCSvPMYdiwij8qv41DJNY6ntkaA6q9LjxgdWw=;
+X-UUID: 28510cc3df6f4127ba23d4a1196770c2-20210717
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <landen.chao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 9851828; Sat, 17 Jul 2021 23:14:31 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 17 Jul 2021 23:14:29 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 18 Jul 2021 14:14:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 18 Jul 2021 14:14:22 +0800
+From: Landen Chao <landen.chao@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <dqfext@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <frank-w@public-files.de>, <steven.liu@mediatek.com>, Landen Chao
+ <landen.chao@mediatek.com>
+Subject: [PATCH net, v2,
+ RESEND] net: Update MAINTAINERS for MediaTek switch driver
+Date: Sun, 18 Jul 2021 14:14:20 +0800
+Message-ID: <49e67daeadace13a9fa3f4553f1ec14c6a93bdc8.1622445132.git.landen.chao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20210716153641.4678-1-ericwouds@gmail.com>
- <20210716210655.i5hxcwau5tdq4zhb@skbuf>
- <eda300a2-4e36-4d0c-8ea8-eae5e6d62bea@gmail.com>
- <20210717154131.82657-1-dqfext@gmail.com>
-In-Reply-To: <20210717154131.82657-1-dqfext@gmail.com>
-From: Eric Woudstra <ericwouds@gmail.com>
-Date: Sat, 17 Jul 2021 21:27:48 +0200
-Message-ID: <CABROOSdLyDZd0SBrN7Su40cqZgK1o2hp19mTJ3t4vcgORd-pdg@mail.gmail.com>
-Subject: Re: [PATCH] mt7530 fix mt7530_fdb_write vid missing ivl bit
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Vladimir Oltean <olteanv@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
- Landen Chao <landen.chao@mediatek.com>, Andrew Lunn <andrew@lunn.ch>, 
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, 
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210717_122802_269964_6CED562C 
-X-CRM114-Status: GOOD (  18.35  )
+X-CRM114-CacheID: sfid-20210717_231439_022485_6D66FF66 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,35 +91,35 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20210718061420.rr9juRpRizpVKeJhMePdC2YOHSUb7zWUDfVqBs7WoeM@z>
 
-On Sat 17 jul. 2021 at 17:41, DENG Qingfang <dqfext@gmail.com>: wrote:
->
-> On Sat, Jul 17, 2021 at 10:09:53AM +0200, Eric Woudstra wrote:
-> >
-> > You are right now there is a problem with vlan unaware bridge.
-> >
-> > We need to change the line to:
-> >
-> > if (vid > 1) reg[1] |= ATA2_IVL;
->
-> Does it not work with vid 1?
+Update maintainers for MediaTek switch driver with Deng Qingfang who
+contributes many useful patches (interrupt, VLAN, GPIO, and etc.) to
+enhance MediaTek switch driver and will help maintenance.
 
-No, I also thought so, but it actually does not. I'm working here on
-5.12.11, but there should not be any difference. It needs: if (vid >
-1). Just tried it with (vid > 0) but then it does not work.
+Signed-off-by: Landen Chao <landen.chao@mediatek.com>
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+---
+v1 -> v2: Remove Change-Id.
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-I really like your fix on wifi roaming, it works nicely. However I
-found, still after this patch, it sadly does not work on vlan > 1. At
-least it does not on 5.12.11 (the 'self' entry does not get removed
-automatically, but after manual remove the client connects ok). I need
-to go 5.14 one of these days because I just read DSA has a major
-update. Then I also move from ubuntu focal to a more recent version.
-Then I'll try wifi roaming on vlan again.
-
->
-> >
-> > I have just tested this with a vlan unaware bridge and also with vlan bridge option disabled in the kernel. Only after applying the if statement it works for vlan unaware bridges/kernel.
-
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bd7aff0c120f..3315627ebb6b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11588,6 +11588,7 @@ F:	drivers/char/hw_random/mtk-rng.c
+ MEDIATEK SWITCH DRIVER
+ M:	Sean Wang <sean.wang@mediatek.com>
+ M:	Landen Chao <landen.chao@mediatek.com>
++M:	DENG Qingfang <dqfext@gmail.com>
+ L:	netdev@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/dsa/mt7530.*
+-- 
+2.29.2
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
