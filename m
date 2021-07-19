@@ -2,59 +2,59 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDEB2C12002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:43:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB1B6C12002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:46:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DDBB61019
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:43:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8DDBB61019
+	by mail.kernel.org (Postfix) with ESMTPS id A98AA61019
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:46:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A98AA61019
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tjqlr8ArIfwQ3V7r9TKcW+HgXmLbaFWr4aclsN1s7xk=; b=i3eH1cVpZEMokm
-	1KPstkAlKgJUTixpUByF2prD6CSsIyDUPHfse0uNm0ImhCQaRYO3OGp6iMnDa93Q0zT3ISfPeIMPe
-	Bt2Aj4isl/fGR/UkS75XYL3eTJWeLVJtQk2Znhvtl22bApzyd7g5CQSlm3FtpW2j7momMEAwTXJLi
-	cqMMmFrUDLjFN91c/835B9+WumPWk7lG8ndWB+DrnFkjDkioWggU2FvpX94N6oDvbqO65R+irZ5ly
-	rrJjH8CKN/qH5TnoyLTIVM7JSOq6ekk5TxpqQ4hWhyRTDUVN2aVCCdpxdLHgJTTV5QcedoG5zPRNM
-	PwKOrGVam82IYZOL2htg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9E8GiJ0/UPQcGTSaqN30JObWLjwslCWeOq3vnjVz9Hw=; b=FGvzVMWCg2fXiU
+	ecBzmQF20NCj4HYNaP/75JgoKO9hTq5vKkZ6Q8yKqal0pX131vuWZ4bxPKmw/TF22r29k4TRQnVwn
+	+G/Lme0Zq4l5PgpjAQcbbK3rd7y315YZvr2cuim/NgiGZSbbFr5bswgVlxshiHoeF8OUGP9e9B34k
+	ynZLD9rfXheKY8iNCcivCyFcFisOG0ezBLFZrsI/q083sI3+qbHVgj22vrXMgwh0F6qgggZwEqwDU
+	kvHBm/9eqc9AqaOnklvG2d5S2P7DLx0K9o/GPY7BbpfRJ+Rz2BFdkyweihqRrugNI8mP9nIOw2PvS
+	soqt4kU15lLsWuLVkQbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5Nvf-008d8k-Kx; Mon, 19 Jul 2021 07:43:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m5Nye-008e1u-6k; Mon, 19 Jul 2021 07:46:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5Nv6-008d0c-TX; Mon, 19 Jul 2021 07:42:34 +0000
-X-UUID: bd52ed5044ab4e91a35bb5eb17df48c8-20210719
+ id 1m5NyM-008dya-MJ; Mon, 19 Jul 2021 07:45:56 +0000
+X-UUID: 8a7a3bd7b25a49c48d860b7bb1093460-20210719
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=d9afGJnGI+2O7S2C3Joy0RrZeSGNxtKyILgHv/5GeuE=; 
- b=LGJNn6+BnlwP15muru974k79TgEREaRbNjnv2qLaIcY0O1jxThOsJqRqWd20rV9TZbhCw6kjre2wNiTQNRSX3l0YFbH+dZxmtS2y8llzsGWt1YGGDLXqyh8lccNqTFX2Bzve+U/LX1tbVhGfYCheMBD8b7bJmIgZfdKu80Nt7pk=;
-X-UUID: bd52ed5044ab4e91a35bb5eb17df48c8-20210719
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=8dszRBl71au1ywM1Inubjn+T8w7oI2xFjydYDkoA4+g=; 
+ b=R7OytuqL9I4HU3tLR5f5Z7zWF8cNxJdgR5LXyageLh4S6mcWp9TJ76nCKjkN/0D+PaOQA+tPP4lETOfxS3tpwRDtYo5IVAbQeE1hrX7UKs54CRrHrRTJRzm8AYCiYYBmrfBiYKUbrSatZ0htpgDe1Eh2V+XaV3P2/1U2FFD+K6k=;
+X-UUID: 8a7a3bd7b25a49c48d860b7bb1093460-20210719
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1528400630; Mon, 19 Jul 2021 00:42:28 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Jul 2021 00:36:13 -0700
+ with ESMTP id 25522870; Mon, 19 Jul 2021 00:45:48 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Jul 2021 00:35:48 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Jul 2021 15:36:11 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Jul 2021 15:35:46 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 19 Jul 2021 15:36:10 +0800
+ Transport; Mon, 19 Jul 2021 15:35:46 +0800
 From: Chuanjia Liu <chuanjia.liu@mediatek.com>
 To: <robh+dt@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
  <lorenzo.pieralisi@arm.com>
@@ -63,18 +63,16 @@ CC: <ryder.lee@mediatek.com>, <jianjun.wang@mediatek.com>,
  <chuanjia.liu@mediatek.com>, <linux-pci@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v11 2/4] PCI: mediatek: Add new method to get shared pcie-cfg
- base address and parse node
-Date: Mon, 19 Jul 2021 15:34:54 +0800
-Message-ID: <20210719073456.28666-3-chuanjia.liu@mediatek.com>
+Subject: [PATCH v11 0/4] PCI: mediatek: Spilt PCIe node to comply with
+ hardware design 
+Date: Mon, 19 Jul 2021 15:34:52 +0800
+Message-ID: <20210719073456.28666-1-chuanjia.liu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210719073456.28666-1-chuanjia.liu@mediatek.com>
-References: <20210719073456.28666-1-chuanjia.liu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_004232_991150_9B30F87E 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20210719_004554_784593_52372F0B 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,140 +89,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the new dts format, add a new method to get
-shared pcie-cfg base address and parse node.
+There are two independent PCIe controllers in MT2712 and MT7622 platform.
+Each of them should contain an independent MSI domain.
 
-Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
-Acked-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/pci/controller/pcie-mediatek.c | 52 +++++++++++++++++++-------
- 1 file changed, 39 insertions(+), 13 deletions(-)
+In old dts architecture, MSI domain will be inherited from the root bridge,
+and all of the devices will share the same MSI domain.Hence that,
+the PCIe devices will not work properly if the irq number 
+which required is more than 32.
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 25bee693834f..928e0983a900 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -14,6 +14,7 @@
- #include <linux/irqchip/chained_irq.h>
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
-+#include <linux/mfd/syscon.h>
- #include <linux/msi.h>
- #include <linux/module.h>
- #include <linux/of_address.h>
-@@ -23,6 +24,7 @@
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- #include <linux/reset.h>
- 
- #include "../pci.h"
-@@ -207,6 +209,7 @@ struct mtk_pcie_port {
-  * struct mtk_pcie - PCIe host information
-  * @dev: pointer to PCIe device
-  * @base: IO mapped register base
-+ * @cfg: IO mapped register map for PCIe config
-  * @free_ck: free-run reference clock
-  * @mem: non-prefetchable memory resource
-  * @ports: pointer to PCIe port information
-@@ -215,6 +218,7 @@ struct mtk_pcie_port {
- struct mtk_pcie {
- 	struct device *dev;
- 	void __iomem *base;
-+	struct regmap *cfg;
- 	struct clk *free_ck;
- 
- 	struct list_head ports;
-@@ -650,7 +654,11 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
- 		return err;
- 	}
- 
--	port->irq = platform_get_irq(pdev, port->slot);
-+	if (of_find_property(dev->of_node, "interrupt-names", NULL))
-+		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
-+	else
-+		port->irq = platform_get_irq(pdev, port->slot);
-+
- 	if (port->irq < 0)
- 		return port->irq;
- 
-@@ -682,6 +690,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		val |= PCIE_CSR_LTSSM_EN(port->slot) |
- 		       PCIE_CSR_ASPM_L1_EN(port->slot);
- 		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-+	} else if (pcie->cfg) {
-+		val = PCIE_CSR_LTSSM_EN(port->slot) |
-+		      PCIE_CSR_ASPM_L1_EN(port->slot);
-+		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
- 	}
- 
- 	/* Assert all reset signals */
-@@ -985,6 +997,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct platform_device *pdev = to_platform_device(dev);
- 	struct resource *regs;
-+	struct device_node *cfg_node;
- 	int err;
- 
- 	/* get shared registers, which are optional */
-@@ -995,6 +1008,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
- 			return PTR_ERR(pcie->base);
- 	}
- 
-+	cfg_node = of_find_compatible_node(NULL, NULL,
-+					   "mediatek,generic-pciecfg");
-+	if (cfg_node) {
-+		pcie->cfg = syscon_node_to_regmap(cfg_node);
-+		if (IS_ERR(pcie->cfg))
-+			return PTR_ERR(pcie->cfg);
-+	}
-+
- 	pcie->free_ck = devm_clk_get(dev, "free_ck");
- 	if (IS_ERR(pcie->free_ck)) {
- 		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
-@@ -1027,22 +1048,27 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
- 	struct device *dev = pcie->dev;
- 	struct device_node *node = dev->of_node, *child;
- 	struct mtk_pcie_port *port, *tmp;
--	int err;
-+	int err, slot;
-+
-+	slot = of_get_pci_domain_nr(dev->of_node);
-+	if (slot < 0) {
-+		for_each_available_child_of_node(node, child) {
-+			err = of_pci_get_devfn(child);
-+			if (err < 0) {
-+				dev_err(dev, "failed to get devfn: %d\n", err);
-+				goto error_put_node;
-+			}
- 
--	for_each_available_child_of_node(node, child) {
--		int slot;
-+			slot = PCI_SLOT(err);
- 
--		err = of_pci_get_devfn(child);
--		if (err < 0) {
--			dev_err(dev, "failed to parse devfn: %d\n", err);
--			goto error_put_node;
-+			err = mtk_pcie_parse_port(pcie, child, slot);
-+			if (err)
-+				goto error_put_node;
- 		}
--
--		slot = PCI_SLOT(err);
--
--		err = mtk_pcie_parse_port(pcie, child, slot);
-+	} else {
-+		err = mtk_pcie_parse_port(pcie, node, slot);
- 		if (err)
--			goto error_put_node;
-+			return err;
- 	}
- 
- 	err = mtk_pcie_subsys_powerup(pcie);
--- 
+Split the PCIe node for MT2712 and MT7622 platform to comply with 
+the hardware design and fix MSI issue.
+
+change note:
+  v11:Rebase for 5.14-rc1 and add "interrupt-names", "linux,pci-domain" 
+      description in binding file. No code change.
+  v10:Rebase for 5.13-rc1, no code change. 
+  v9:fix kernel-ci bot warning. In the scene of using new dts format,
+     when mtk_pcie_parse_port fails, of_node_put don't need to be called.
+  v8:remove slot node and fix yaml warning.
+  v7:dt-bindings file was modified as suggested by Rob, other file no
+     change.
+  v6:Fix yaml error. make sure driver compatible with old and 
+     new DTS format.
+  v5:rebase for 5.9-rc1, no code change. 
+  v4:change commit message due to bayes statistical bogofilter
+     considers this series patch SPAM.
+  v3:rebase for 5.8-rc1. Only collect ack of Ryder, No code change.
+  v2:change the allocation of MT2712 PCIe MMIO space due to the
+     allocation size is not right in v1.
+
+Chuanjia Liu (4):
+  dt-bindings: PCI: mediatek: Update the Device tree bindings
+  PCI: mediatek: Add new method to get shared pcie-cfg base address and parse node
+  arm64: dts: mediatek: Split PCIe node for MT2712 and MT7622
+  ARM: dts: mediatek: Update MT7629 PCIe node for new format
+
+  .../bindings/pci/mediatek-pcie-cfg.yaml       |  39 ++++
+  .../devicetree/bindings/pci/mediatek-pcie.txt | 206 ++++++++++--------
+  arch/arm/boot/dts/mt7629-rfb.dts              |   3 +-
+  arch/arm/boot/dts/mt7629.dtsi                 |  45 ++--
+  arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  97 +++++----
+  .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |  16 +-
+  arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   6 +-
+  arch/arm64/boot/dts/mediatek/mt7622.dtsi      | 112 +++++-----
+  drivers/pci/controller/pcie-mediatek.c        |  52 +++--
+  9 files changed, 330 insertions(+), 246 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/mediatek-pcie-cfg.yaml
+
+--
 2.18.0
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
