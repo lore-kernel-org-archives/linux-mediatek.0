@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42EC2C636C9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 03:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E08E8C636C9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 03:43:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0E6976101D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 03:43:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E6976101D
+	by mail.kernel.org (Postfix) with ESMTPS id A9D9C61042
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 03:43:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A9D9C61042
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k5zT1dHlIA91gMyxvWPXl85Lgnwd1N97J/0oFMJ4rn4=; b=rvcV8AD6FgHpjx
-	CNnuzmy8cX2Q+bTajR29zuE1GCbbJk1efK5HoIyEf5yqXtZqyGKyo/kQmbTESVWOYOc8whVdrHGe0
-	+GGLWhq31phSaHThhRO1Di+OTdtZmS8LqU86gLYqC/WS5iH4QukfLjsLhINpSbHVjLWG+S3zQjZts
-	z8BqSkCcV6KxcsT05Zjxs9dSmMSIzU58jM6oLCCO/F20+X6PEFGUHVMXB9fkbOM8A0CJynY3GiSsQ
-	aWo+GMwykeIbJiEE5pqi46YfNUNeB0ZuIRSivTdriAV+QWBYhBN0IrWVof4iZ9Nz4s2+hUTKQvwRs
-	WxO8dF65Dx8u4CVp28Ng==;
+	List-Owner; bh=We3mER+fQ717SOMuR8BIjGR26sW5argWijyIopBH374=; b=HJiUEglvGz2/kG
+	6LRhjE6jbWGKi6gN6qTg3rBlQzYTrzU29hndHGjT0Tl6RvLRDjVbCKX0eKjN4Dpj9dX2oI0cWXk/G
+	OyElfDJ14v1KcZqUqWk0ewLl/6Fgd2VKIUx2XNX/Z5Pz98rF2jV8/rlsXoQCoG35xiQWSKVGj/1yp
+	0T+HTU4NHgBS4OKAk75JRX5FY3uAafK4zsq9rjaGKsn3A+0GRBp4iOJg5SJFR41kDjWpufHcAH04b
+	m5sAD42thVA6uHzCDUTLMCX2ZU8ZVMX2w5OLzZQqGOEkD6p99kSFB7G+JEavZcYJEA86GG4T74IRF
+	DDD9OG4RswTqphX6Vu5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5KBX-008MEJ-5A; Mon, 19 Jul 2021 03:43:15 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1m5KBk-008MIr-Tk; Mon, 19 Jul 2021 03:43:28 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5KB8-008M7Q-1s; Mon, 19 Jul 2021 03:42:51 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id o201so15244690pfd.1;
- Sun, 18 Jul 2021 20:42:49 -0700 (PDT)
+ id 1m5KBC-008M8x-AZ; Mon, 19 Jul 2021 03:42:56 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id v14so8874296plg.9;
+ Sun, 18 Jul 2021 20:42:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=21xAaUHWeHof2ecP/y/d30huoLiokvMxn5AYQcuGXfg=;
- b=D/8BXP3AYSUmd4JSaASlNyfM0Bl3cbjpR8eC0fxHe+FIHiX0BT6loaPC2z5syM3wQi
- aP4Ykw7YzZnqL7w1UV/qFyJTeuwQjM7fqRjP5wkg0qK3VyfYA56JVxIKSAsWOjOGLZza
- 6jCIugmS1tT4wk/sKtq06twvtkr0jS81HwQsb4b4DhEQumhClbWBM/tY/GAxq16ETF/G
- 1pK4s3A4Lim5UVZn/NsZ+Pfr+21O4j8qB0Lz9j+gZLLg2s4aKpOTkdHm8QkPJvxh5U0V
- IYmyWydD/KFNpbY+k7cqhlBQ0nnDyz6LakgwKQta8pAvDCEtSpHWPfbD9W2RHLbrZzxV
- 8uaQ==
+ bh=1JuzSaJeX++ckGWb53wf2z0OIXSlH3HjOOCWZ8LzlB8=;
+ b=rfSFdAuoGFQZVDyuWy2BxzI4AynDBx0hHl/9vKjc/eQQCvce5P3ypRQpz2bPirqGtz
+ go9HCGb+7ZsMzw/bjmIFgomUGOjp/TquQ1Tqrn8Sk6A/D75sutnN3nn/H6RgWg9POzA0
+ EI3rlPPbv/xgW6V08J439/bZ92EzXtGOnWa0e7NqozCRzQKTxUAvqOPM6Y+7MPoCcJz0
+ aPMvgYjOgH7L9XoEgv5nsQFfHewqOuYw3bV7QsSBwOCmybmgbnL0aAd7SD5UaDPSfhpf
+ pkKU38njatxDC4c1S1i7w6OjRmQyura23jmA6Ry4dyrzjmrk7hYClCU5RotbuJrJVkYv
+ um2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=21xAaUHWeHof2ecP/y/d30huoLiokvMxn5AYQcuGXfg=;
- b=Fie0X7SQJ+fvM9BWHtbjZWrEsE+K5NnXS0XeLXzVM/0u6200vn+4BgsAxkOaNnjMax
- oLXeli/pfXttt5sHPri/QxlOAEWIDNi3vKPJn8BIstW7rb+f98dPPP55kWmjQkgJHXEV
- RRtwCaUypx1jlgpOpXWZbFpbR4SCQ4cU+bhObLjEKdmIVUAytKP3AfYamdx2Bu/K1a2B
- VCg/mXRVCh2A4E4ixr3c1yORkOPugUZGodwVw4SkJfJtU6HM7YuJ0ytkQWycPDj73GCn
- 4kNUvndOysPeSUK5JLykWsTwKVzPAvygOuCkey+JXdRTr2MHCPuTZckLQU2jum8WNvM2
- Bj/Q==
-X-Gm-Message-State: AOAM531RoL4G3CgJEvB/p4jjr6hU9zQxSOMx7NQZccw0lYkY8AXEm3Ry
- jZO8zi1k1I8AWtRUnPbVkbY=
-X-Google-Smtp-Source: ABdhPJxh1gCosQbN6iuToKSHRV624TaQLLlFEGQdSr/6pNsMBX731uOYH/mdQme4MO9Gp94rUFpWJw==
-X-Received: by 2002:a62:dd42:0:b029:330:6bf8:b02c with SMTP id
- w63-20020a62dd420000b02903306bf8b02cmr23315961pff.67.1626666169333; 
- Sun, 18 Jul 2021 20:42:49 -0700 (PDT)
+ bh=1JuzSaJeX++ckGWb53wf2z0OIXSlH3HjOOCWZ8LzlB8=;
+ b=PWOc5baVPi4v4Gl1tb/lf7QqbHYslHbs8gLaYSKW7ZV6ZZG3U0TYCWalvYKji0slb5
+ vs/vMEnrd20kucChvxly04tynOI8OVbJP5wvOqOzddrDJavbNFuSsd7jV9QNviz5kAVm
+ Bm5NeTC6FLpG4HDCPA/fwggLvyP++yFX7TNKKd3C91IiFxtzTaLBgLNbD5MQdf8ngbgx
+ h3F/3eZOCxXpQU2NlMoeKuq2RdZVJnVEjCEuNgjW+cbNEky06hHxhUWf62A0sa3iGwSm
+ +nMRWwd1Ajx0dzzjXxfpj5FK3Kja36xn1ILR5RwOSqQWVLOCOGTWdRluvjpLy60W6iUE
+ cKkQ==
+X-Gm-Message-State: AOAM530Pm28m/HSncQFloGnt6hmRPd9VHzlQJv3xTj0TFb0s5rZSJNnL
+ aYkdjc0uMnv3IUdgdOiS7Eo=
+X-Google-Smtp-Source: ABdhPJzp+ue0kBm5Uego9ybT0VJOyR3eJwMn50/b15mFJpH6Aah0Q2o50anwEnDpFt2fn7k+QVNuAA==
+X-Received: by 2002:a17:90b:347:: with SMTP id
+ fh7mr28330233pjb.2.1626666173545; 
+ Sun, 18 Jul 2021 20:42:53 -0700 (PDT)
 Received: from localhost.localdomain ([2402:7500:58d:ffe9:427:42b0:88c7:1ff9])
  by smtp.gmail.com with ESMTPSA id
- c12sm17949448pfl.27.2021.07.18.20.42.45
+ c12sm17949448pfl.27.2021.07.18.20.42.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Jul 2021 20:42:49 -0700 (PDT)
+ Sun, 18 Jul 2021 20:42:53 -0700 (PDT)
 From: Gene Chen <gene.chen.richtek@gmail.com>
 To: sre@kernel.org, matthias.bgg@gmail.com, matti.vaittinen@fi.rohmeurope.com
 Cc: broonie@kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
@@ -77,17 +77,18 @@ Cc: broonie@kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
  rdunlap@infradead.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com,
  cy_huang@richtek.com, benjamin.chao@mediatek.com,
- sebastian.reichel@collabora.com
-Subject: [PATCH resend v6 1/3] lib: add linear range get selector within
-Date: Mon, 19 Jul 2021 11:39:12 +0800
-Message-Id: <20210719033914.16990-2-gene.chen.richtek@gmail.com>
+ sebastian.reichel@collabora.com, Rob Herring <robh@kernel.org>
+Subject: [PATCH resend v6 2/3] dt-bindings: power: Add bindings document for
+ Charger support on MT6360 PMIC
+Date: Mon, 19 Jul 2021 11:39:13 +0800
+Message-Id: <20210719033914.16990-3-gene.chen.richtek@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210719033914.16990-1-gene.chen.richtek@gmail.com>
 References: <20210719033914.16990-1-gene.chen.richtek@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210718_204250_193193_DF02B123 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20210718_204254_401231_201F549D 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,69 +107,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Gene Chen <gene_chen@richtek.com>
 
-Add linear range get selector within for choose closest selector
-between minimum and maximum selector.
+Add bindings document for Charger support on MT6360 PMIC
 
 Signed-off-by: Gene Chen <gene_chen@richtek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- include/linux/linear_range.h |  2 ++
- lib/linear_ranges.c          | 31 +++++++++++++++++++++++++++++++
- 2 files changed, 33 insertions(+)
+ .../bindings/power/supply/mt6360_charger.yaml | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
 
-diff --git a/include/linux/linear_range.h b/include/linux/linear_range.h
-index 17b5943727d5..fd3d0b358f22 100644
---- a/include/linux/linear_range.h
-+++ b/include/linux/linear_range.h
-@@ -41,6 +41,8 @@ int linear_range_get_selector_low(const struct linear_range *r,
- int linear_range_get_selector_high(const struct linear_range *r,
- 				   unsigned int val, unsigned int *selector,
- 				   bool *found);
-+void linear_range_get_selector_within(const struct linear_range *r,
-+				      unsigned int val, unsigned int *selector);
- int linear_range_get_selector_low_array(const struct linear_range *r,
- 					int ranges, unsigned int val,
- 					unsigned int *selector, bool *found);
-diff --git a/lib/linear_ranges.c b/lib/linear_ranges.c
-index ced5c15d3f04..a1a7dfa881de 100644
---- a/lib/linear_ranges.c
-+++ b/lib/linear_ranges.c
-@@ -241,5 +241,36 @@ int linear_range_get_selector_high(const struct linear_range *r,
- }
- EXPORT_SYMBOL_GPL(linear_range_get_selector_high);
- 
-+/**
-+ * linear_range_get_selector_within - return linear range selector for value
-+ * @r:		pointer to linear range where selector is looked from
-+ * @val:	value for which the selector is searched
-+ * @selector:	address where found selector value is updated
-+ *
-+ * Return selector for which range value is closest match for given
-+ * input value. Value is matching if it is equal or lower than given
-+ * value. But return maximum selector if given value is higher than
-+ * maximum value.
-+ */
-+void linear_range_get_selector_within(const struct linear_range *r,
-+				      unsigned int val, unsigned int *selector)
-+{
-+	if (r->min > val) {
-+		*selector = r->min_sel;
-+		return;
-+	}
+diff --git a/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+new file mode 100644
+index 000000000000..b89b15a5bfa4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/supply/mt6360_charger.yaml
+@@ -0,0 +1,48 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/supply/mt6360_charger.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	if (linear_range_get_max_value(r) < val) {
-+		*selector = r->max_sel;
-+		return;
-+	}
++title: Battery charger driver for MT6360 PMIC from MediaTek Integrated.
 +
-+	if (r->step == 0)
-+		*selector = r->min_sel;
-+	else
-+		*selector = (val - r->min) / r->step + r->min_sel;
-+}
-+EXPORT_SYMBOL_GPL(linear_range_get_selector_within);
++maintainers:
++  - Gene Chen <gene_chen@richtek.com>
 +
- MODULE_DESCRIPTION("linear-ranges helper");
- MODULE_LICENSE("GPL");
++description: |
++  This module is part of the MT6360 MFD device.
++  Provides Battery Charger, Boost for OTG devices and BC1.2 detection.
++
++properties:
++  compatible:
++    const: mediatek,mt6360-chg
++
++  richtek,vinovp-microvolt:
++    description: Maximum CHGIN regulation voltage in uV.
++    enum: [ 5500000, 6500000, 11000000, 14500000 ]
++
++
++  usb-otg-vbus-regulator:
++    type: object
++    description: OTG boost regulator.
++    $ref: /schemas/regulator/regulator.yaml#
++
++required:
++  - compatible
++
++additionalProperties: false
++
++examples:
++  - |
++    mt6360_charger: charger {
++      compatible = "mediatek,mt6360-chg";
++      richtek,vinovp-microvolt = <14500000>;
++
++      otg_vbus_regulator: usb-otg-vbus-regulator {
++        regulator-compatible = "usb-otg-vbus";
++        regulator-name = "usb-otg-vbus";
++        regulator-min-microvolt = <4425000>;
++        regulator-max-microvolt = <5825000>;
++      };
++    };
++...
 -- 
 2.25.1
 
