@@ -2,88 +2,75 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D027C12002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEDD7C12002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:12:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF09D610F7
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:06:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EF09D610F7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id A3861608FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:12:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3861608FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6+05B4fx9HZUQvB7b13hhdSyM941lqGndRBEM8gUiQQ=; b=D5ie6asoPQhh1t
-	yw348CN0A0rpw7e7f8+A8K9XSGjcWnd3ajnffW5lhLye+exbFeeT45hoGYT5qGsXUAbgy2sj5giL6
-	/20YYks6uTblQLPDCNRzP2wOPcqzXSOerCB9SRlatJkVxdLfNt9KOE0wBmHOIhl7HVjyAbNalGBfu
-	/G1kc45IEVxyLjdxV9f3PqSToxDhMDkLFAD0vaGAjDDnFixNXslUSATAnE9RqzctN47EyIbGKe5kY
-	UFbL/JixrbOXvVqHbNd5nV6wcW40cIyUWJyEM/ugnjGDIGDp6+R2I+w4koJG4bY4GL8rcYE/ezz+C
-	6FHU7B88/Y/hD75OZCIw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uYRrVGiPq4eBMrvolJqw/uQWUS4COAGwKVlFhKoE7bY=; b=y2dpUtie/EEStdvdnS0A3qFwzW
+	FuEpkjEbFm2Yiv0lCJoqJ8oyQIhaEqpnF4pLVh84vFWHMNAGLgVsikyJXJ/UxJ3UlZTU/EHX5HEXw
+	zq2WeAUc34fURfx+L9k/qeNWUaaSUyRlm4K63YVwUkMBmCl5HplXOfdDSGu3D/xjZyaQnP2XqdYmy
+	eMoSSHzIiyTJl0O5QbEmq3HVFL4nAD5Ws+V4AT3uKZL2gxpV8Z3e3J2ki6/Qhqo/RkH00tQPdolmg
+	DVwljGFFkMWeuy8k7P/SNiUJ9uq9C+RxYkvZ/JducOQjNnnNCfGH7B+9MdMtQpiNyQXIn54OKrpmT
+	R3fGmEdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5Q9r-009Bpm-Oa; Mon, 19 Jul 2021 10:05:55 +0000
-Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
+	id 1m5QFe-009Dw9-Dr; Mon, 19 Jul 2021 10:11:54 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5Q9X-009BlE-91
- for linux-mediatek@lists.infradead.org; Mon, 19 Jul 2021 10:05:38 +0000
-Received: by mail-lj1-x231.google.com with SMTP id q4so25418755ljp.13
- for <linux-mediatek@lists.infradead.org>; Mon, 19 Jul 2021 03:05:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ROS63eA4eMtueLLBIpoZBWybNJst7HeNqrpv8eomGtY=;
- b=CrR0V9MtAJhrmDYHgx6QMBClk/pgCC0p1kSblCK+aXICGhCIv0JhRgQFy7K4oGAr3J
- T3ofioI+RrZu3zZCBCBfkVVGfZ9m/tFK2C3hpyDaTH0Nv7Dy6oAnKLupG3SxTHYJRYEV
- 4Ux5rEMVFNA1vxMBvIzaI7+wVsdTfZ9Hvn90k=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ROS63eA4eMtueLLBIpoZBWybNJst7HeNqrpv8eomGtY=;
- b=o6PJMjVfkvNUNFJ3X5sFMeaZvV4GkI5C0Wav7O1wF/g33kFeZzRZoAAkJjDDgA6PLj
- KJ+hXaP4A1FG/zsnRoJO8Op4/Ok0ZqMf6HvlEAK5pGWLOSpdesCfU9J1PqyhX3iEUXF1
- T3AH3JGnK2uvRalS1wjZLULqfftpwQL++HA+VTonohMmX3yfWSti1q6kUvx3n2QmFRDk
- J8dOsiAZvRMltLZCl44MW/tuNMV7n2AfOPrlBXHRSnNcP8+TI+oYScs5lMC/zbmpqBEa
- Lkkjj99B+CQaCaNzrHDQuG23e8Aqd3dI3mrnqY3sFIafQQjRcfITR/NUC+c9K1+AUtBg
- d+OQ==
-X-Gm-Message-State: AOAM530E5qG+RpbtGqRPWyo1pgz22KwbccAfILczlQpbK3oXUr/bo+yZ
- f7TY9W8e6J3sP9+tHkRXzKsK5hQNmEf/Obs2VX5D5g==
-X-Google-Smtp-Source: ABdhPJy3yMQLjmuUCZgE18WRtXTymtKSnw1VMjs4GT/YulhmJdffaDX7c+0mUzGHzjpZDjRmahLdxUOoOErZl8xN7e0=
-X-Received: by 2002:a2e:b6c2:: with SMTP id m2mr243906ljo.91.1626689132553;
- Mon, 19 Jul 2021 03:05:32 -0700 (PDT)
+ id 1m5QF0-009DiJ-Bt; Mon, 19 Jul 2021 10:11:16 +0000
+Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
+ [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 609391F4248F;
+ Mon, 19 Jul 2021 11:11:12 +0100 (BST)
+Subject: Re: [PATCH v2, 10/14] media: mtk-vcodec: Add core thread
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+ <20210717081233.7809-11-yunfei.dong@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <6bcb5964-0afa-f3c3-a80e-c34ef26eea4b@collabora.com>
+Date: Mon, 19 Jul 2021 12:11:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <20210629014736.31153-1-trevor.wu@mediatek.com>
- <20210629014736.31153-6-trevor.wu@mediatek.com>
- <CAGXv+5FzOs+=9PbYAEahVXvdJG1FnRkSUo_r3AVYZzNKGqg0oA@mail.gmail.com>
- <9929a3a20df1a89fc94baf7c75c0c65d9a61de0f.camel@mediatek.com>
- <CAGXv+5HFjM_N_MM5ZddGLcuYVsOXAJwfNuKvB5Cfo0k=nO456g@mail.gmail.com>
- <266fd1f5de56743292ac5fc64664113c0bb0e41a.camel@mediatek.com>
-In-Reply-To: <266fd1f5de56743292ac5fc64664113c0bb0e41a.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 19 Jul 2021 18:05:21 +0800
-Message-ID: <CAGXv+5FVWNgCeAseULOJbU3=6ggQ=b=mtP_sEQd0NgtdX-ttiQ@mail.gmail.com>
-Subject: Re: [PATCH v2 5/8] ASoC: mediatek: mt8195: add platform driver
-To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>, broonie@kernel.org,
- tiwai@suse.com, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- alsa-devel@alsa-project.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- LKML <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, 
- bicycle.tsai@mediatek.com, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- Jimmy Cheng-Yi Chiang <cychiang@google.com>, Li-Yu Yu <aaronyu@google.com>
+In-Reply-To: <20210717081233.7809-11-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_030535_385705_282A4A60 
-X-CRM114-Status: GOOD (  69.83  )
+X-CRM114-CacheID: sfid-20210719_031114_731149_6D8D32AC 
+X-CRM114-Status: GOOD (  28.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,521 +82,136 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, Jul 15, 2021 at 7:05 PM Trevor Wu <trevor.wu@mediatek.com> wrote:
->
-> On Tue, 2021-07-13 at 14:00 +0800, Chen-Yu Tsai wrote:
-> > On Mon, Jul 12, 2021 at 11:10 PM Trevor Wu <trevor.wu@mediatek.com>
-> > wrote:
-> > >
-> > > On Mon, 2021-07-12 at 14:57 +0800, Chen-Yu Tsai wrote:
-> > > >  are all internal Hi,
-> > > >
-> > > > On Tue, Jun 29, 2021 at 9:49 AM Trevor Wu <trevor.wu@mediatek.com
-> > > > >
-> > > > wrote:
-> > > > >
-> > > > > This patch adds mt8195 platform and affiliated driver.
-> > > > >
-> > > > > Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> > > > > ---
-> > > > >  sound/soc/mediatek/Kconfig                     |    9 +
-> > > > >  sound/soc/mediatek/Makefile                   |    1 +
-> > > > >  sound/soc/mediatek/mt8195/Makefile            |   11 +
-> > > > >  sound/soc/mediatek/mt8195/mt8195-afe-clk.c    |  899 +++++
-> > > > >  sound/soc/mediatek/mt8195/mt8195-afe-clk.h    |  201 +
-> > > > >  sound/soc/mediatek/mt8195/mt8195-afe-common.h |  200 +
-> > > > >  sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    | 3264
-> > > > > +++++++++++++++++
-> > > > >  sound/soc/mediatek/mt8195/mt8195-reg.h        | 2793
-> > > > > ++++++++++++++
-> > > > >  8 files changed, 7378 insertions(+)
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/Makefile
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-clk.h
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-
-> > > > > common.h
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-> > > > >  create mode 100644 sound/soc/mediatek/mt8195/mt8195-reg.h
-> > > > >
-> > > > > diff --git a/sound/soc/mediatek/Kconfig
-> > > > > b/sound/soc/mediatek/Kconfig
-> > > > > index 74dae4332d17..3389f382be06 100644
-> > > > > --- a/sound/soc/mediatek/Kconfig
-> > > > > +++ b/sound/soc/mediatek/Kconfig
-> > > > > @@ -184,3 +184,12 @@ config SND_SOC_MT8192_MT6359_RT1015_RT5682
-> > > > >           with the MT6359 RT1015 RT5682 audio codec.
-> > > > >           Select Y if you have such device.
-> > > > >           If unsure select "N".
-> > > > > +
-> > > > > +config SND_SOC_MT8195
-> > > > > +       tristate "ASoC support for Mediatek MT8195 chip"
-> > > > > +       select SND_SOC_MEDIATEK
-> > > > > +       help
-> > > > > +         This adds ASoC platform driver support for Mediatek
-> > > > > MT8195 chip
-> > > > > +         that can be used with other codecs.
-> > > > > +         Select Y if you have such device.
-> > > > > +         If unsure select "N".
-> > > > > diff --git a/sound/soc/mediatek/Makefile
-> > > > > b/sound/soc/mediatek/Makefile
-> > > > > index f6cb6b8508e3..34778ca12106 100644
-> > > > > --- a/sound/soc/mediatek/Makefile
-> > > > > +++ b/sound/soc/mediatek/Makefile
-> > > > > @@ -5,3 +5,4 @@ obj-$(CONFIG_SND_SOC_MT6797) += mt6797/
-> > > > >  obj-$(CONFIG_SND_SOC_MT8173) += mt8173/
-> > > > >  obj-$(CONFIG_SND_SOC_MT8183) += mt8183/
-> > > > >  obj-$(CONFIG_SND_SOC_MT8192) += mt8192/
-> > > > > +obj-$(CONFIG_SND_SOC_MT8195) += mt8195/
-> > > > > diff --git a/sound/soc/mediatek/mt8195/Makefile
-> > > > > b/sound/soc/mediatek/mt8195/Makefile
-> > > > > new file mode 100644
-> > > > > index 000000000000..b2c9fd88f39e
-> > > > > --- /dev/null
-> > > > > +++ b/sound/soc/mediatek/mt8195/Makefile
-> > > > > @@ -0,0 +1,11 @@
-> > > > > +# SPDX-License-Identifier: GPL-2.0
-> > > > > +
-> > > > > +# platform driver
-> > > > > +snd-soc-mt8195-afe-objs := \
-> > > > > +       mt8195-afe-clk.o \
-> > > > > +       mt8195-afe-pcm.o \
-> > > > > +       mt8195-dai-adda.o \
-> > > > > +       mt8195-dai-etdm.o \
-> > > > > +       mt8195-dai-pcm.o
-> > > > > +
-> > > > > +obj-$(CONFIG_SND_SOC_MT8195) += snd-soc-mt8195-afe.o
-> > > > > diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > > > > b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > > > > new file mode 100644
-> > > > > index 000000000000..57aa799b4f41
-> > > > > --- /dev/null
-> > > > > +++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-> > > > > @@ -0,0 +1,899 @@
-> > > > > +// SPDX-License-Identifier: GPL-2.0
-> > > > > +/*
-> > > > > + * mt8195-afe-clk.c  --  Mediatek 8195 afe clock ctrl
-> > > > > + *
-> > > > > + * Copyright (c) 2021 MediaTek Inc.
-> > > > > + * Author: Bicycle Tsai <bicycle.tsai@mediatek.com>
-> > > > > + *         Trevor Wu <trevor.wu@mediatek.com>
-> > > > > + */
-> > > > > +
-> > > > > +#include <linux/clk.h>
-> > > > > +
-> > > > > +#include "mt8195-afe-common.h"
-> > > > > +#include "mt8195-afe-clk.h"
-> > > > > +#include "mt8195-reg.h"
-> > > > > +
-> > > > > +static const char *aud_clks[MT8195_CLK_NUM] = {
-> > > >
-> > > > Most of these clocks are not described in the device tree
-> > > > binding. If
-> > > > the driver needs to reference them, they should be described. We
-> > > > should
-> > > > not be hard-coding clock names across different drivers.
-> > > >
-> > >
-> > > Sorry, I didn't know I have to list all clocks in the dt-binding.
-> > > Originally, I thought these clocks will be described in the clock
-> > > binding, so I didn't add them to the binding of afe driver.
-> > > I will add these clocks to mt8195-afe-pcm.yaml.
-> >
-> > If the device consumes clocks, then the clocks that get consumed
-> > should
-> > be listed in the device's bindings. This is not related to the clock
-> > bindings, which is a clock provider.
-> >
-> Got it. Thanks.
->
-> > > > The more important question is, why does the driver need to
-> > > > reference
-> > > > all of them? Maybe we should take a step back and draw out a
-> > > > clock
-> > > > tree
-> > > > diagram for the hardware?
-> > > >
-> > >
-> > > The clock structure is PLL -> MUX -> GATE.
-> > > xtal, pll and divider are the possible clock inputs for MUX.
-> > > Because we select the clock input of audio module based on the use
-> > > case, we use clk_get to retrive all clocks which are possible to be
-> > > used.
-> >
-> > So I see a couple the driver is doing reparenting:
-> >
-> >   a. Reparent audio_h to standard oscillator when ADDA is not used,
-> >      presumably to let the APLL be turned off
-> >
-> > Why not just turn off audio_h? It looks like audio_h feeds a couple
-> > clock
-> > gates in the audio subsystem. Just a guess, but is this the AHB bus
-> > clock?
-> > Why not just have it parented to "univpll_d7" all the time then?
-> >
->
-> Sorry, I am not sure if it is the AHB bus clock.
-> I only know how audio module uses the clock.
-> audio_h feeds to some clock gate like aud_adc_hires, which is used when
-> sampling rate is higher than 48kHz, and hardware designer suggests us
-> use apll1_ck when AFE requrires the clock.
-
-I see. So the simplified explanation is high clock rate for high res audio.
-Would high clock rate work for standard sample rates?
-Would using apll1 or univpll all the time work, instead of reparenting?
-What's the gain if we do reparenting?
-
-> As I know, DSP also requires audio_h.
-> When we disable the clock in AFE driver, the ref count in CCF is not
-> becoming zero if DSP still uses it.
-> But only AFE requires higher clock rate, so we reparent audio_h to 26M
-> when it's not required in adda module.
-
-I see. Wouldn't reparenting the clock while it is in use by another module
-cause glitches?
-
-> > Also, reparenting really should be done implicitly with
-> > clk_set_rate()
-> > with the clock driver supporting reparenting on rate changes.
-> >
-> >   b. Assignment of PLLs for I2S/PCM MCLK outputs
-> >
-> > Is there a reason for explicit assignment, other than clock rate
-> > conflicts?
-> > CCF supports requesting and locking the clock rate. And again,
-> > implicit
-> > reparenting should be the norm. The clock driver's purpose is to
-> > fulfill
-> > any and all clock rate requirements from its consumers. The consumer
-> > should
-> > only need to ask for the clock rate, not a specific parent, unless
-> > there
-> > are details that are not yet covered by the CCF.
-> >
->
-> For MCLK output, we should configure divider to get the target rate,
-> and it can only divide the clock from current parent source.
-> So we should do reparent to divider's parent in case the parent rate is
-> not a multiple of target rate.
-
-Right. That is expected. What I'm saying is that the CCF provides the
-framework for automatically reparenting based on the requested clock
-rate. This is done in the clock driver's .determine_rate op.
-
-When properly implemented, and also restricting or locking the clock rates
-of the PLLs, then you can simply request a clock rate on the leaf clock,
-in this case one of the MCLKs, and the CCF and clock driver would handle
-everything else. The consumer should not be reparenting clocks manually
-unless for a very good reason which cannot be satisfied by the CCF.
-
-> > A related question: the chip has five APLLs. How many MCLK
-> > combinations
-> > does the application need to support? I assume this includes the
-> > standard
-> > 24.576 MHz and 22.5792 MHz clock rates.
-> >
->
-> APLL1 and APLL2 are used in most AFE modules, so their rate should be
-> fixed.
-> APLL1 is fixed to 196608000Hz.
-> APLL2 is fixed to 180633600Hz.
-> APLL is inputed to the divider(8bit), and MCLK is the output of
-> divider.
-> Other APLLs are reserved for some special usage which can't be
-> supported by APLL1 & APLL2.
-> But APLL3~APLL5 aren't used in the series, so I will remove them in v3.
->
-> > > Some of them are not used in this series, because some modules are
-> > > still developing. Should I only keep the clocks that have been used
-> > > in
-> > > the series?
-> >
-> > Yes please. Only add the ones that are used. Things that aren't used
-> > don't get tested and verified, and end up as dead code. If there are
-> > plans to extend them in the future, and you can leave comments
-> > stating
-> > that intent, and also mention it in the cover letter.
-> >
-> OK, I will remove the unused clock in v3.
->
-> > > > > +       /* xtal */
-> > > > > +       [MT8195_CLK_XTAL_26M] = "clk26m",
-> > > > > +       /* pll */
-> > > > > +       [MT8195_CLK_APMIXED_APLL1] = "apll1",
-> > > > > +       [MT8195_CLK_APMIXED_APLL2] = "apll2",
-> > > > > +       [MT8195_CLK_APMIXED_APLL3] = "apll3",
-> > > > > +       [MT8195_CLK_APMIXED_APLL4] = "apll4",
-> > > > > +       [MT8195_CLK_APMIXED_APLL5] = "apll5",
-> > > > > +       [MT8195_CLK_APMIXED_HDMIRX_APLL] = "hdmirx_apll",
-> > > > > +       /* divider */
-> > > > > +       [MT8195_CLK_TOP_APLL1] = "apll1_ck",
-> > > > > +       [MT8195_CLK_TOP_APLL1_D4] = "apll1_d4",
-> > > > > +       [MT8195_CLK_TOP_APLL2] = "apll2_ck",
-> > > > > +       [MT8195_CLK_TOP_APLL2_D4] = "apll2_d4",
-> > > > > +       [MT8195_CLK_TOP_APLL3] = "apll3_ck",
-> > > > > +       [MT8195_CLK_TOP_APLL3_D4] = "apll3_d4",
-> > > > > +       [MT8195_CLK_TOP_APLL4] = "apll4_ck",
-> > > > > +       [MT8195_CLK_TOP_APLL4_D4] = "apll4_d4",
-> > > > > +       [MT8195_CLK_TOP_APLL5] = "apll5_ck",
-> > > > > +       [MT8195_CLK_TOP_APLL5_D4] = "apll5_d4",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV0] = "apll12_div0",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV1] = "apll12_div1",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV2] = "apll12_div2",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV3] = "apll12_div3",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV4] = "apll12_div4",
-> > > > > +       [MT8195_CLK_TOP_APLL12_DIV9] = "apll12_div9",
-> > > > > +       [MT8195_CLK_TOP_HDMIRX_APLL] = "hdmirx_apll_ck",
-> > > > > +       [MT8195_CLK_TOP_MAINPLL_D4_D4] = "mainpll_d4_d4",
-> > > > > +       [MT8195_CLK_TOP_MAINPLL_D5_D2] = "mainpll_d5_d2",
-> > > > > +       [MT8195_CLK_TOP_MAINPLL_D7_D2] = "mainpll_d7_d2",
-> > > > > +       [MT8195_CLK_TOP_UNIVPLL_D4] = "univpll_d4",
-> > > > > +       /* mux */
-> > > > > +       [MT8195_CLK_TOP_APLL1_SEL] = "apll1_sel",
-> > > > > +       [MT8195_CLK_TOP_APLL2_SEL] = "apll2_sel",
-> > > > > +       [MT8195_CLK_TOP_APLL3_SEL] = "apll3_sel",
-> > > > > +       [MT8195_CLK_TOP_APLL4_SEL] = "apll4_sel",
-> > > > > +       [MT8195_CLK_TOP_APLL5_SEL] = "apll5_sel",
-> > > > > +       [MT8195_CLK_TOP_A1SYS_HP_SEL] = "a1sys_hp_sel",
-> > > > > +       [MT8195_CLK_TOP_A2SYS_SEL] = "a2sys_sel",
-> > > > > +       [MT8195_CLK_TOP_A3SYS_SEL] = "a3sys_sel",
-> > > > > +       [MT8195_CLK_TOP_A4SYS_SEL] = "a4sys_sel",
-> > > > > +       [MT8195_CLK_TOP_ASM_H_SEL] = "asm_h_sel",
-> > > > > +       [MT8195_CLK_TOP_ASM_M_SEL] = "asm_m_sel",
-> > > > > +       [MT8195_CLK_TOP_ASM_L_SEL] = "asm_l_sel",
-> > > > > +       [MT8195_CLK_TOP_AUD_IEC_SEL] = "aud_iec_sel",
-> > > > > +       [MT8195_CLK_TOP_AUD_INTBUS_SEL] = "aud_intbus_sel",
-> > > > > +       [MT8195_CLK_TOP_AUDIO_H_SEL] = "audio_h_sel",
-> > > > > +       [MT8195_CLK_TOP_AUDIO_LOCAL_BUS_SEL] =
-> > > > > "audio_local_bus_sel",
-> > > > > +       [MT8195_CLK_TOP_DPTX_M_SEL] = "dptx_m_sel",
-> > > > > +       [MT8195_CLK_TOP_INTDIR_SEL] = "intdir_sel",
-> > > > > +       [MT8195_CLK_TOP_I2SO1_M_SEL] = "i2so1_m_sel",
-> > > > > +       [MT8195_CLK_TOP_I2SO2_M_SEL] = "i2so2_m_sel",
-> > > > > +       [MT8195_CLK_TOP_I2SI1_M_SEL] = "i2si1_m_sel",
-> > > > > +       [MT8195_CLK_TOP_I2SI2_M_SEL] = "i2si2_m_sel",
-> > > > > +       /* clock gate */
-> > > > > +       [MT8195_CLK_TOP_MPHONE_SLAVE_B] = "mphone_slave_b",
-> > > > > +       [MT8195_CLK_TOP_CFG_26M_AUD] = "cfg_26m_aud",
-> > > > > +       [MT8195_CLK_INFRA_AO_AUDIO] = "infra_ao_audio",
-> > > > > +       [MT8195_CLK_INFRA_AO_AUDIO_26M_B] =
-> > > > > "infra_ao_audio_26m_b",
-> > > > > +       [MT8195_CLK_SCP_ADSP_AUDIODSP] = "scp_adsp_audiodsp",
-> > > >
-> > > >
-> > > > > +       [MT8195_CLK_AUD_AFE] = "aud_afe",
-> > > > > +       [MT8195_CLK_AUD_LRCK_CNT] = "aud_lrck_cnt",
-> > > > > +       [MT8195_CLK_AUD_SPDIFIN_TUNER_APLL] =
-> > > > > "aud_spdifin_tuner_apll",
-> > > > > +       [MT8195_CLK_AUD_SPDIFIN_TUNER_DBG] =
-> > > > > "aud_spdifin_tuner_dbg",
-> > > > > +       [MT8195_CLK_AUD_UL_TML] = "aud_ul_tml",
-> > > > > +       [MT8195_CLK_AUD_APLL1_TUNER] = "aud_apll1_tuner",
-> > > > > +       [MT8195_CLK_AUD_APLL2_TUNER] = "aud_apll2_tuner",
-> > > > > +       [MT8195_CLK_AUD_TOP0_SPDF] = "aud_top0_spdf",
-> > > > > +       [MT8195_CLK_AUD_APLL] = "aud_apll",
-> > > > > +       [MT8195_CLK_AUD_APLL2] = "aud_apll2",
-> > > > > +       [MT8195_CLK_AUD_DAC] = "aud_dac",
-> > > > > +       [MT8195_CLK_AUD_DAC_PREDIS] = "aud_dac_predis",
-> > > > > +       [MT8195_CLK_AUD_TML] = "aud_tml",
-> > > > > +       [MT8195_CLK_AUD_ADC] = "aud_adc",
-> > > > > +       [MT8195_CLK_AUD_DAC_HIRES] = "aud_dac_hires",
-> > > > > +       [MT8195_CLK_AUD_A1SYS_HP] = "aud_a1sys_hp",
-> > > > > +       [MT8195_CLK_AUD_AFE_DMIC1] = "aud_afe_dmic1",
-> > > > > +       [MT8195_CLK_AUD_AFE_DMIC2] = "aud_afe_dmic2",
-> > > > > +       [MT8195_CLK_AUD_AFE_DMIC3] = "aud_afe_dmic3",
-> > > > > +       [MT8195_CLK_AUD_AFE_DMIC4] = "aud_afe_dmic4",
-> > > > > +       [MT8195_CLK_AUD_AFE_26M_DMIC_TM] =
-> > > > > "aud_afe_26m_dmic_tm",
-> > > > > +       [MT8195_CLK_AUD_UL_TML_HIRES] = "aud_ul_tml_hires",
-> > > > > +       [MT8195_CLK_AUD_ADC_HIRES] = "aud_adc_hires",
-> > > > > +       [MT8195_CLK_AUD_ADDA6_ADC] = "aud_adda6_adc",
-> > > > > +       [MT8195_CLK_AUD_ADDA6_ADC_HIRES] =
-> > > > > "aud_adda6_adc_hires",
-> > > > > +       [MT8195_CLK_AUD_LINEIN_TUNER] = "aud_linein_tuner",
-> > > > > +       [MT8195_CLK_AUD_EARC_TUNER] = "aud_earc_tuner",
-> > > > > +       [MT8195_CLK_AUD_I2SIN] = "aud_i2sin",
-> > > > > +       [MT8195_CLK_AUD_TDM_IN] = "aud_tdm_in",
-> > > > > +       [MT8195_CLK_AUD_I2S_OUT] = "aud_i2s_out",
-> > > > > +       [MT8195_CLK_AUD_TDM_OUT] = "aud_tdm_out",
-> > > > > +       [MT8195_CLK_AUD_HDMI_OUT] = "aud_hdmi_out",
-> > > > > +       [MT8195_CLK_AUD_ASRC11] = "aud_asrc11",
-> > > > > +       [MT8195_CLK_AUD_ASRC12] = "aud_asrc12",
-> > > > > +       [MT8195_CLK_AUD_MULTI_IN] = "aud_multi_in",
-> > > > > +       [MT8195_CLK_AUD_INTDIR] = "aud_intdir",
-> > > > > +       [MT8195_CLK_AUD_A1SYS] = "aud_a1sys",
-> > > > > +       [MT8195_CLK_AUD_A2SYS] = "aud_a2sys",
-> > > > > +       [MT8195_CLK_AUD_PCMIF] = "aud_pcmif",
-> > > > > +       [MT8195_CLK_AUD_A3SYS] = "aud_a3sys",
-> > > > > +       [MT8195_CLK_AUD_A4SYS] = "aud_a4sys",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL1] = "aud_memif_ul1",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL2] = "aud_memif_ul2",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL3] = "aud_memif_ul3",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL4] = "aud_memif_ul4",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL5] = "aud_memif_ul5",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL6] = "aud_memif_ul6",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL8] = "aud_memif_ul8",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL9] = "aud_memif_ul9",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_UL10] = "aud_memif_ul10",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL2] = "aud_memif_dl2",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL3] = "aud_memif_dl3",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL6] = "aud_memif_dl6",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL7] = "aud_memif_dl7",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL8] = "aud_memif_dl8",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL10] = "aud_memif_dl10",
-> > > > > +       [MT8195_CLK_AUD_MEMIF_DL11] = "aud_memif_dl11",
-> > > > > +       [MT8195_CLK_AUD_GASRC0] = "aud_gasrc0",
-> > > > > +       [MT8195_CLK_AUD_GASRC1] = "aud_gasrc1",
-> > > > > +       [MT8195_CLK_AUD_GASRC2] = "aud_gasrc2",
-> > > > > +       [MT8195_CLK_AUD_GASRC3] = "aud_gasrc3",
-> > > > > +       [MT8195_CLK_AUD_GASRC4] = "aud_gasrc4",
-> > > > > +       [MT8195_CLK_AUD_GASRC5] = "aud_gasrc5",
-> > > > > +       [MT8195_CLK_AUD_GASRC6] = "aud_gasrc6",
-> > > > > +       [MT8195_CLK_AUD_GASRC7] = "aud_gasrc7",
-> > > > > +       [MT8195_CLK_AUD_GASRC8] = "aud_gasrc8",
-> > > > > +       [MT8195_CLK_AUD_GASRC9] = "aud_gasrc9",
-> > > > > +       [MT8195_CLK_AUD_GASRC10] = "aud_gasrc10",
-> > > > > +       [MT8195_CLK_AUD_GASRC11] = "aud_gasrc11",
-> > > > > +       [MT8195_CLK_AUD_GASRC12] = "aud_gasrc12",
-> > > > > +       [MT8195_CLK_AUD_GASRC13] = "aud_gasrc13",
-> > > > > +       [MT8195_CLK_AUD_GASRC14] = "aud_gasrc14",
-> > > > > +       [MT8195_CLK_AUD_GASRC15] = "aud_gasrc15",
-> > > > > +       [MT8195_CLK_AUD_GASRC16] = "aud_gasrc16",
-> > > > > +       [MT8195_CLK_AUD_GASRC17] = "aud_gasrc17",
-> > > > > +       [MT8195_CLK_AUD_GASRC18] = "aud_gasrc18",
-> > > > > +       [MT8195_CLK_AUD_GASRC19] = "aud_gasrc19",
-> > > >
-> > > > The MT8195_CLK_AUD_* clocks are all internal to the audio
-> > > > subsystem:
-> > > > the bits that control these clock gates are in the same address
-> > > > space
-> > > > as the audio parts. Would it be possible to model them as
-> > > > internal
-> > > > ASoC SUPPLY widgets? The external ones could be modeled using
-> > > > ASoC
-> > > > CLK_SUPPLY widgets, and the dependencies could be modeled with
-> > > > ASoC
-> > > > routes. The ASoC core could then handle power sequencing, which
-> > > > the
-> > > > driver currently does manually.
-> > > >
-> > > > IMO this is better than having two drivers handling two aspects
-> > > > of
-> > > > the same piece of hardware, while the two aspects are
-> > > > intertwined.
-> > > >
-> > >
-> > > Yes, it's ok to use the CLK_SUPPLY and SUPPLY to model such clocks.
-> > > But those clocks are managed by CCF in the preceding SOCs like
-> > > mt2701,
-> > > mt6779 and mt8183. Additionally, in some audio modules, clocks
-> > > should
-> >
-> > This being a new driver, we have some more freedom to improve the
-> > design.
-> >
-> > > be enabled before configuring parameters(hw_params). As far as I
-> > > know,
-> > > if we use CLK_SUPPLY or SUPPLY to model clocks, the power sequence
-> > > is
-> > > controlled by DAPM. It seems to be impossible to fulfill all use
-> > > cases.
-> > > That's why we just keep the manual control sequence and CCF seems
-> > > to be
-> > > the best choice to model such clock gatess.
-> >
-> > I see. So yes, using CCF does give you reference counting, dependency
-> > tracking and other advantages. And using DAPM supplies means you
-> > can't
-> > enable the clock gates outside of DAPM without both pieces of code
-> > fighting for control.
-> >
-> > Can we at least move the audio clock gates into the audio driver
-> > though?
-> > The arbitrary separation into two devices and drivers is fishy. And
-> > with
-> > the move the external references to the audio clock gates can be
-> > removed.
-> >
-> Because DAPM SUPPLY can't fit our control scenario.
-> Did you suggest us implement the simple logic control(including ref
-> count, clock dependency) for clock gate(MT8195_CLK_AUD_*) in afe driver
-> instead of using CCF?
-
-I meant simply moving the CCF-based clk driver code (clk-mt8516-aud.c)
-from `drivers/clk` and incorporating it into the audio driver, likely
-in `mt8195-afe-clk.c` or maybe as a separate file. So the audio driver
-would be a clock provider, and a clock consumer. It will directly use
-the clocks it provides, internally, and you could remove all those
-clock references from the device tree.
-
-The goal is to have one hardware representation (device node) only, so
-that it matches the hardware, which is one single unified block.
-
-After the driver is completed, we can look for opportunities to improve
-it, if resources are available.
-
-> > And regarding the clock requirements for different modules, could we
-> > have
-> > that information put in comments somewhere, so if someone were to
-> > revisit
-> > it later, they would have the information needed to understand and
-> > possibly
-> > improve it? Because right now there's just a bunch of clocks enabled
-> > and
-> > disabled and nothing to explain why that's needed.
-> >
->
-> For example,
-> MT8195_CLK_AUD_ADC(clock gate) is one of the clock feeding to ADDA
-> module.
-> Did you want me show the clock gate list feeding to ADDA?
-> On the other hand, I didn't know how to show the information properly
-> in comments. Could you kindly share me an example for reference?
 
 
-For example, in `mt8195_afe_enable_reg_rw_clk()` in mt8195-afe-clk.c:
+On 17.07.21 10:12, Yunfei Dong wrote:
+> Core thread:
+> 1. Gets lat_buf from core msg queue.
+> 2. Proceeds core decode.
+> 3. Puts the lat_buf back to lat msg queue.
+> 
+> Both H264 and VP9 rely on the core thread.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+> v2: no changes
+> ---
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  6 ++++
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 ++
+>   .../platform/mtk-vcodec/vdec_msg_queue.c      | 32 +++++++++++++++++++
+>   .../platform/mtk-vcodec/vdec_msg_queue.h      |  6 ++++
+>   4 files changed, 47 insertions(+)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index 078daeeff576..e05224aca888 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -437,6 +437,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   		goto err_res;
+>   	}
+>   
+> +	if (VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
+> +		vdec_msg_queue_init_ctx(&dev->core_ctx, MTK_VDEC_CORE);
+> +		dev->kthread_core = kthread_run(vdec_msg_queue_core_thead, dev,
+> +			"mtk-%s", "core");
 
-        unsigned int clk_array[] = {
-                MT8195_CLK_SCP_ADSP_AUDIODSP,
-                MT8195_CLK_TOP_AUDIO_LOCAL_BUS_SEL,
-                MT8195_CLK_TOP_CFG_26M_AUD,
-                MT8195_CLK_INFRA_AO_AUDIO,
-                MT8195_CLK_INFRA_AO_AUDIO_26M_B,
-                MT8195_CLK_TOP_AUD_INTBUS_SEL,
-                MT8195_CLK_TOP_A1SYS_HP_SEL,
-                MT8195_CLK_AUD_A1SYS_HP,
-                MT8195_CLK_AUD_A1SYS,
-                MT8195_CLK_TOP_AUDIO_H_SEL,
-        };
+why would we want to run this thread when probing?
+also, don't we need to check errors?
 
-You could add a comment after each line stating why that clock needs to
-be enabled. A simple note like "bus access clock" or "internal logic clock"
-would suffice.
-
-The above list also has some redundancies that could be eliminated.
-MT8195_CLK_TOP_A1SYS_HP_SEL is parent to both MT8195_CLK_AUD_A1SYS_HP and
-MT8195_CLK_AUD_A1SYS. When clocks are enabled, their parents are also
-enabled by CCF, so there's no need to enable them explicitly, unless
-that clock also directly feeds the clock consumer.
-
-
-Another thing I wanted to bring up: is any of the code after
-
-    struct mt8195_afe_tuner_cfg {
-
-used? It looks like it is used to configure the five extra PLLs in the audio
-subsystem, but the exposed (non-static) functions don't seem to be called
-anywhere. Are they for modules not yet supported?
-
-
-Regards
-ChenYu
+> +	}
+> +
+>   	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+>   		mutex_init(&dev->dec_mutex[i]);
+>   	mutex_init(&dev->dev_mutex);
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index 9207ce079960..3beba0e2ea91 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -32,6 +32,7 @@
+>   #define MTK_VCODEC_MAX_PLANES	3
+>   #define MTK_V4L2_BENCHMARK	0
+>   #define WAIT_INTR_TIMEOUT_MS	1000
+> +#define VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
+>   
+>   /*
+>    * enum mtk_hw_reg_idx - MTK hw register base index
+> @@ -480,6 +481,7 @@ struct mtk_vcodec_enc_pdata {
+>    * @component_node: component node
+>    * @comp_idx: component index
+>    *
+> + * @kthread_core: thread used for core hardware decode
+>    * @core_ctx: core queue context
+>    */
+>   struct mtk_vcodec_dev {
+> @@ -524,6 +526,7 @@ struct mtk_vcodec_dev {
+>   	struct device_node *component_node[MTK_VDEC_HW_MAX];
+>   	int comp_idx;
+>   
+> +	struct task_struct *kthread_core;
+>   	struct vdec_msg_queue_ctx core_ctx;
+>   };
+>   
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+> index 016a70416e55..60bc3796bb58 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+> +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+> @@ -252,3 +252,35 @@ void vdec_msg_queue_deinit(
+>   			kfree(lat_buf->private_data);
+>   	}
+>   }
+> +
+> +int vdec_msg_queue_core_thead(void *data)
+> +{
+> +	struct mtk_vcodec_dev *dev = data;
+> +	struct vdec_lat_buf *lat_buf;
+> +	struct mtk_vcodec_ctx *ctx;
+> +
+> +	set_freezable();
+> +	for (;;) {
+> +		try_to_freeze();
+> +		if (kthread_should_stop())
+> +			break;
+> +
+> +		lat_buf = vdec_msg_queue_dqbuf(&dev->core_ctx);
+> +		if (!lat_buf)
+> +			continue;
+> +
+> +		ctx = lat_buf->ctx;
+> +		mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
+> +
+> +		if (!lat_buf->core_decode)
+> +			mtk_v4l2_err("Core decode callback func is NULL");
+> +		else
+> +			lat_buf->core_decode(lat_buf);
+> +
+> +		mtk_vcodec_set_curr_ctx(dev, NULL, MTK_VDEC_CORE);
+> +		vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
+> +	}
+> +
+> +	mtk_v4l2_debug(3, "Video Capture Thread End");
+> +	return 0;
+> +}
+> diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> index 297aa1598788..27ce528cbe89 100644
+> --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> @@ -134,4 +134,10 @@ void vdec_msg_queue_deinit(
+>   	struct vdec_msg_queue *msg_queue,
+>   	struct mtk_vcodec_ctx *ctx);
+>   
+> +/**
+> + * vdec_msg_queue_core_thead - used for core decoder.
+> + * @data: private data used for each codec
+> + */
+> +int vdec_msg_queue_core_thead(void *data);
+> +
+>   #endif
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
