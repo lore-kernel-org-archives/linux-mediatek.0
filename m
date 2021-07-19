@@ -2,76 +2,74 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94F53C12002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 29FB7C12002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:34:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FD1A6108B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:26:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FD1A6108B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id E27DD6108B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:34:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E27DD6108B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xw6N9hnXjmuAtaOA4XpiRGtaHwBJhNgJo21QjENRtxA=; b=iWXZdgyvEymerrGiripXwIkkeD
-	825QhvZarRcYtsKZKeUMZhnpsLIhIoWRtENG0FxqhimFX8MCbXKnTuKaLYkKNxpK2z/DN9rP8iXzF
-	rTL3QhRsyZ4mlNbIsWcmtHuo7aLyjAj8tQQwiD3DnziPV6hlq6v4ydoB6l8n25k8GdYVSh2eqvoIc
-	pTBxj75v3X3t41NXuKMO6pFeqvzsXD91zBtIT1CDIIjqvwti6c9kNi1dgpirBvufCygdGXiLfEkLA
-	CbCeXF5c5vondvl0o7NhMQAbIzPrQ8QzFx1XaRoyeRbk9iH8iKS9s9P22iFl2kNrOvUhM36cfxj5+
-	/yXJaNbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LG8Y4zZy3HvkhusWtzFyCK6fRtPp8rDGCx9fOBDz+no=; b=atShbASAVyQ0MM
+	SjZy5KECINd+zwaRmo45CqxVnOVZlFZ5BeS0Rhr1JMQJfEpSnUmX9mjiMqc5oKvOMCD9i+jcrX/sr
+	dsKMHR8Y15RV+Bjii+Dsxgc+voUyU0Mbss4TIEGHwDZ7Oz5yJIbMCHEbGQ/sDE2aH1Q/h0ZoR53DZ
+	MqfMUWuH+Kha0nwrcddYoH0Bz7uCtnSlpPnK6iAw8OlMnolEsJpwWrnKGCpoKoNHHLDqzvpe/MBRO
+	PyM54CQdwIpDtRPiz2bV1FcE4iNuXciTMKzLiSRB864IYbv/uT4ZGmzFwKAgi7PpjBcAbZ3aJHx5S
+	EdEh2kBm3rvMqHmTUBGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5PXA-0094tz-NW; Mon, 19 Jul 2021 09:25:56 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1m5PfY-0096q3-84; Mon, 19 Jul 2021 09:34:36 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5PWs-0094ok-3e; Mon, 19 Jul 2021 09:25:40 +0000
-Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
- [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 762FA1F423B0;
- Mon, 19 Jul 2021 10:25:35 +0100 (BST)
-Subject: Re: [PATCH v2, 06/14] media: mtk-vcodec: Add irq interface for core
- hardware
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Collabora Kernel ML <kernel@collabora.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
-References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
- <20210717081233.7809-7-yunfei.dong@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <87713751-3938-fa68-dea0-ff48806f7d52@collabora.com>
-Date: Mon, 19 Jul 2021 11:25:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m5PfK-0096o3-6G; Mon, 19 Jul 2021 09:34:25 +0000
+X-UUID: c8cdb7fe80cc45a0aeaf66b9a7abb277-20210719
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=cg5/t/nn3vKVFVI8yaUncLj+TKkvackSYBpAE26A4rs=; 
+ b=DPdBYJAGZpjh/szba/Wtrza1VSQmiq9d3Oc/1jbhyIuZI16KKe/SlHhNqbnBX4QhqO2KUnhtMR5AwR2AHXoc97U2TXJjhtHMIu8/co3UUoeT3sMTC//gS+AgCZSK14Y0TtIuYoawVlq85LXd85chKaY/tSzSfYiyR+m6lnKLL10=;
+X-UUID: c8cdb7fe80cc45a0aeaf66b9a7abb277-20210719
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <mason.zhang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1223137262; Mon, 19 Jul 2021 02:34:21 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Jul 2021 02:32:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Jul 2021 17:32:15 +0800
+Received: from localhost.localdomain (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 19 Jul 2021 17:32:15 +0800
+From: Mason Zhang <mason.zhang@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <linux-spi@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <leilk.liu@mediatek.com>, <wsd_upstream@mediatek.com>, Mason Zhang
+ <Mason.Zhang@mediatek.com>
+Subject: [PATCH 1/3] spi: move cs spi_delay to spi_device
+Date: Mon, 19 Jul 2021 17:16:12 +0800
+Message-ID: <20210719091611.15303-1-mason.zhang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <20210717081233.7809-7-yunfei.dong@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_022538_468184_A752C82E 
-X-CRM114-Status: GOOD (  35.39  )
+X-CRM114-CacheID: sfid-20210719_023422_288529_82C6318E 
+X-CRM114-Status: GOOD (  15.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,247 +81,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Mason Zhang <Mason.Zhang@mediatek.com>
 
+As we know, spi core layer has removed spi_set_cs_timing() API.
+So this patch moved spi_delay for cs_timing from spi_controller
+to spi_device, because cs timing should be set by spi_device but
+not controller.
 
-On 17.07.21 10:12, Yunfei Dong wrote:
-> Adds irq interface for core hardware.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> v2: Using enum mtk_vdec_hw_count instead of magic numbers
-> ---
->   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 31 ++++++++++++++++--
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 11 ++++---
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 19 +++++++++++
->   .../platform/mtk-vcodec/mtk_vcodec_intr.c     | 32 ++++++++++++++++++-
->   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |  4 ++-
->   5 files changed, 88 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> index e7f60e948fe8..d1c4124f6092 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> @@ -75,6 +75,20 @@ static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
->   	wake_up_interruptible(&ctx->queue);
->   }
->   
-> +static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
-> +{
-> +	switch (dev->vdec_pdata->hw_arch) {
-> +	case MTK_VDEC_PURE_SINGLE_CORE:
-> +		return MTK_VDEC_ONE_CORE;
-> +	case MTK_VDEC_LAT_SINGLE_CORE:
-> +		return MTK_VDEC_ONE_LAT_ONE_CORE;
-> +	default:
-> +		mtk_v4l2_err("not support hw arch:%d",
-> +			dev->vdec_pdata->hw_arch);
-> +		return MTK_VDEC_NO_HW;
-> +	}
-> +}
-> +
->   static struct component_match *mtk_vcodec_match_add(
->   	struct mtk_vcodec_dev *vdec_dev)
->   {
-> @@ -246,7 +260,7 @@ static int fops_vcodec_open(struct file *file)
->   {
->   	struct mtk_vcodec_dev *dev = video_drvdata(file);
->   	struct mtk_vcodec_ctx *ctx = NULL;
-> -	int ret = 0;
-> +	int ret = 0, i, hw_count;
->   	struct vb2_queue *src_vq;
->   
->   	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-> @@ -260,7 +274,19 @@ static int fops_vcodec_open(struct file *file)
->   	v4l2_fh_add(&ctx->fh);
->   	INIT_LIST_HEAD(&ctx->list);
->   	ctx->dev = dev;
-> -	init_waitqueue_head(&ctx->queue);
-> +
-> +	if (ctx->dev->is_support_comp) {
-> +		hw_count = mtk_vcodec_get_hw_count(dev);
-> +		if (!hw_count) {
-> +			ret = -EINVAL;
-> +			goto err_init_queue;
-> +		}
-> +		for (i = 0; i < hw_count; i++)
-> +			init_waitqueue_head(&ctx->core_queue[i]);
-> +	} else {
-> +		init_waitqueue_head(&ctx->queue);
-> +	}
-> +
->   	mutex_init(&ctx->lock);
->   
->   	ctx->type = MTK_INST_DECODER;
-> @@ -317,6 +343,7 @@ static int fops_vcodec_open(struct file *file)
->   err_m2m_ctx_init:
->   	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
->   err_ctrls_setup:
-> +err_init_queue:
->   	v4l2_fh_del(&ctx->fh);
->   	v4l2_fh_exit(&ctx->fh);
->   	kfree(ctx);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> index ea6d289d9773..34d51fe409c6 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> @@ -59,11 +59,12 @@ static const struct component_ops mtk_vdec_hw_component_ops = {
->   	.unbind = mtk_vdec_comp_unbind,
->   };
->   
-> -/* Wake up context wait_queue */
-> -static void mtk_vdec_comp_wake_up_ctx(struct mtk_vcodec_ctx *ctx)
-> +/* Wake up core context wait_queue */
-> +static void mtk_vdec_comp_wake_up_ctx(struct mtk_vcodec_ctx *ctx,
-> +	unsigned int hw_id)
->   {
-> -	ctx->int_cond = 1;
-> -	wake_up_interruptible(&ctx->queue);
-> +	ctx->int_core_cond[hw_id] = 1;
-> +	wake_up_interruptible(&ctx->core_queue[hw_id]);
->   }
->   
->   static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
-> @@ -94,7 +95,7 @@ static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
->   	writel(readl(vdec_misc_addr) | VDEC_IRQ_CFG, vdec_misc_addr);
->   	writel(readl(vdec_misc_addr) & ~VDEC_IRQ_CLR, vdec_misc_addr);
->   
-> -	mtk_vdec_comp_wake_up_ctx(ctx);
-> +	mtk_vdec_comp_wake_up_ctx(ctx, dev->comp_idx);
->   
->   	mtk_v4l2_debug(3, "wake up ctx %d, dec_done_status=%x",
->   		ctx->id, dec_done_status);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index 9d05ee72b2a7..76160b6f4152 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -109,6 +109,16 @@ enum mtk_vdec_hw_id {
->   	MTK_VDEC_HW_MAX,
->   };
->   
-> +/**
-> + * struct mtk_vdec_hw_count - Supported hardware count
-> + */
-> +enum mtk_vdec_hw_count {
-> +	MTK_VDEC_NO_HW = 0,
-> +	MTK_VDEC_ONE_CORE,
-> +	MTK_VDEC_ONE_LAT_ONE_CORE,
-> +	MTK_VDEC_MAX_HW_COUNT,
-> +};
-> +
->   /*
->    * struct mtk_video_fmt - Structure used to store information about pixelformats
->    */
-> @@ -261,6 +271,11 @@ struct vdec_pic_info {
->    *	   finish
->    * @irq_status: irq status
->    *
-> + * @int_core_cond: variable used by the waitqueue  for component arch
-> + * @int_core_type: type of the last interrupt for component arch
-> + * @core_queue: waitqueue that can be used to wait for this context to
-> + *	   finish for component arch
-> + *
->    * @ctrl_hdl: handler for v4l2 framework
->    * @decode_work: worker for the decoding
->    * @encode_work: worker for the encoding
-> @@ -303,6 +318,10 @@ struct mtk_vcodec_ctx {
->   	wait_queue_head_t queue;
->   	unsigned int irq_status;
->   
-> +	int int_core_cond[MTK_VDEC_HW_MAX];
-> +	int int_core_type[MTK_VDEC_HW_MAX];
-> +	wait_queue_head_t core_queue[MTK_VDEC_HW_MAX];
+Signed-off-by: Mason Zhang <Mason.Zhang@mediatek.com>
+---
+ drivers/spi/spi.c       |  6 +++---
+ include/linux/spi/spi.h | 20 +++++++++-----------
+ 2 files changed, 12 insertions(+), 14 deletions(-)
 
-can't the code be generalized so that, instead of having both fields
-'core_queue' and 'queue' and both fields
-'core_cond' + 'int_code' / 'core_type' + 'int_type' that only one of them is used
-we can have only the array version of the fields and access the index 0 if only one is used.
-So for example instead of accessing 'queue' field we can access 'core_queue[0]' etc and we can remove the field 'queue' from the struct.
-
-This why we don't need both "mtk_vcodec_wait_for_done_ctx" and "mtk_vcodec_wait_for_comp_done_ctx"
-for example.
-
-> +
->   	struct v4l2_ctrl_handler ctrl_hdl;
->   	struct work_struct decode_work;
->   	struct work_struct encode_work;
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> index 70580c2525ba..306358d9bef0 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> @@ -11,7 +11,7 @@
->   #include "mtk_vcodec_intr.h"
->   #include "mtk_vcodec_util.h"
->   
-> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
-> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx, int command,
-
-This line just remove an extra space? better remove  from this patch
-
->   				 unsigned int timeout_ms)
->   {
->   	wait_queue_head_t *waitqueue;
-> @@ -43,3 +43,33 @@ int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
->   	return status;
->   }
->   EXPORT_SYMBOL(mtk_vcodec_wait_for_done_ctx);
-> +
-> +int mtk_vcodec_wait_for_comp_done_ctx(struct mtk_vcodec_ctx *ctx,
-> +	int command, unsigned int timeout_ms, unsigned hw_id)
-> +{
-> +	long timeout_jiff, ret;
-> +	int status = 0;
-> +
-> +	timeout_jiff = msecs_to_jiffies(timeout_ms);
-> +	ret = wait_event_interruptible_timeout(ctx->core_queue[hw_id],
-> +				ctx->int_core_cond[hw_id],
-> +				timeout_jiff);
-> +
-> +	if (!ret) {
-> +		status = -1;	/* timeout */
-> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec timeout=%ums (%d %d)",
-> +				ctx->id, command, ctx->type, timeout_ms,
-> +				ctx->int_core_cond[hw_id], ctx->int_core_type[hw_id]);
-> +	} else if (-ERESTARTSYS == ret) {
-> +		status = -1;
-> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec inter fail (%d %d)",
-> +				ctx->id, command, ctx->type,
-> +				ctx->int_core_cond[hw_id], ctx->int_core_type[hw_id]);
-> +	}
-> +
-> +	ctx->int_core_cond[hw_id] = 0;
-> +	ctx->int_core_type[hw_id] = 0;
-> +
-> +	return status;
-> +}
-> +EXPORT_SYMBOL(mtk_vcodec_wait_for_comp_done_ctx);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> index 638cd1f3526a..5ca611a1ddab 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> @@ -12,7 +12,9 @@
->   struct mtk_vcodec_ctx;
->   
->   /* timeout is ms */
-> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *data, int command,
-> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx, int command,
-
-I would remove this line since it does not belong to the patch
-
-Thanks,
-Dafna
-
->   				unsigned int timeout_ms);
-> +int mtk_vcodec_wait_for_comp_done_ctx(struct mtk_vcodec_ctx *ctx,
-> +				int command, unsigned int timeout_ms, unsigned int hw_id);
->   
->   #endif /* _MTK_VCODEC_INTR_H_ */
-> 
-
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index c99181165321..5d68e6cd2a18 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -842,9 +842,9 @@ static void spi_set_cs(struct spi_device *spi, bool enable, bool force)
+ 	if (spi->cs_gpiod || gpio_is_valid(spi->cs_gpio) ||
+ 	    !spi->controller->set_cs_timing) {
+ 		if (activate)
+-			spi_delay_exec(&spi->controller->cs_setup, NULL);
++			spi_delay_exec(&spi->cs_setup, NULL);
+ 		else
+-			spi_delay_exec(&spi->controller->cs_hold, NULL);
++			spi_delay_exec(&spi->cs_hold, NULL);
+ 	}
+ 
+ 	if (spi->mode & SPI_CS_HIGH)
+@@ -887,7 +887,7 @@ static void spi_set_cs(struct spi_device *spi, bool enable, bool force)
+ 	if (spi->cs_gpiod || gpio_is_valid(spi->cs_gpio) ||
+ 	    !spi->controller->set_cs_timing) {
+ 		if (!activate)
+-			spi_delay_exec(&spi->controller->cs_inactive, NULL);
++			spi_delay_exec(&spi->cs_inactive, NULL);
+ 	}
+ }
+ 
+diff --git a/include/linux/spi/spi.h b/include/linux/spi/spi.h
+index 97b8d12b5f2b..651e19ba3415 100644
+--- a/include/linux/spi/spi.h
++++ b/include/linux/spi/spi.h
+@@ -147,7 +147,11 @@ extern int spi_delay_exec(struct spi_delay *_delay, struct spi_transfer *xfer);
+  *	not using a GPIO line)
+  * @word_delay: delay to be inserted between consecutive
+  *	words of a transfer
+- *
++ * @cs_setup: delay to be introduced by the controller after CS is asserted
++ * @cs_hold: delay to be introduced by the controller before CS is deasserted
++ * @cs_inactive: delay to be introduced by the controller after CS is
++ *	deasserted. If @cs_change_delay is used from @spi_transfer, then the
++ *	two delays will be added up.
+  * @statistics: statistics for the spi_device
+  *
+  * A @spi_device is used to interchange data between an SPI slave
+@@ -188,6 +192,10 @@ struct spi_device {
+ 	int			cs_gpio;	/* LEGACY: chip select gpio */
+ 	struct gpio_desc	*cs_gpiod;	/* chip select gpio desc */
+ 	struct spi_delay	word_delay; /* inter-word delay */
++	/* CS delays */
++	struct spi_delay	cs_setup;
++	struct spi_delay	cs_hold;
++	struct spi_delay	cs_inactive;
+ 
+ 	/* the statistics */
+ 	struct spi_statistics	statistics;
+@@ -412,11 +420,6 @@ extern struct spi_device *spi_new_ancillary_device(struct spi_device *spi, u8 ch
+  *	     controller has native support for memory like operations.
+  * @unprepare_message: undo any work done by prepare_message().
+  * @slave_abort: abort the ongoing transfer request on an SPI slave controller
+- * @cs_setup: delay to be introduced by the controller after CS is asserted
+- * @cs_hold: delay to be introduced by the controller before CS is deasserted
+- * @cs_inactive: delay to be introduced by the controller after CS is
+- *	deasserted. If @cs_change_delay is used from @spi_transfer, then the
+- *	two delays will be added up.
+  * @cs_gpios: LEGACY: array of GPIO descs to use as chip select lines; one per
+  *	CS number. Any individual value may be -ENOENT for CS lines that
+  *	are not GPIOs (driven by the SPI controller itself). Use the cs_gpiods
+@@ -638,11 +641,6 @@ struct spi_controller {
+ 	/* Optimized handlers for SPI memory-like operations. */
+ 	const struct spi_controller_mem_ops *mem_ops;
+ 
+-	/* CS delays */
+-	struct spi_delay	cs_setup;
+-	struct spi_delay	cs_hold;
+-	struct spi_delay	cs_inactive;
+-
+ 	/* gpio chip select */
+ 	int			*cs_gpios;
+ 	struct gpio_desc	**cs_gpiods;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
