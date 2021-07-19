@@ -2,19 +2,19 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B19DC636C9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 631E3C12002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:07:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BABAE611AB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:01:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BABAE611AB
+	by mail.kernel.org (Postfix) with ESMTPS id 2A2D16100C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:07:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A2D16100C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,26 +23,26 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YcS0Qd9vAoabOMKxhrQ3v/BxPq2rgzrYyRp9g8XBZZo=; b=bSu6pqYT10at0VUFzQ2gQdUbXy
-	Zi+sz4f1XHpjwEt4eqSTxMVg3Kjhgdm/tH2Ttl21/NSXF0UxAdYwbDZIymx1QMKYd+N3xsw3YNpaZ
-	kLtV5Eo7z4uyp/mpIObcK8Otaflq8Rtv9rL3EUtyIkmSTmXQXyCKpfGOVnQTjI2juTtZoXktSgv/W
-	acav+akkWV8cHtR3Ak7n5SjeQV6T+OQgeFAQE38otv7NSfX2i51rAM3ADR3P9UdeG1TrWoE99zWUW
-	/tGXevPo+3oxkafbtKbXB80upTTl0SJoUXaY0mat1WGkf4UzFH3icsRdz/CBGvMwWNGJdtyJ0OuIO
-	wtgDcMSg==;
+	bh=J72qvHfz3LKnGAywzO/hyl84tYS+VBPgu3SF8XJ4eUA=; b=PuChpbwpbL/V4nP672sNVw9AHQ
+	2qzgdH9LYKwR/VLPmYS/brNVtRNFfc7hG+bln++QHRetdujnws0HaXGM6axB3wCwll8l3m3RqzRR9
+	R1GGYhT+WtfIqWu0dvHOvviHSKmM6K8Cv5qE081Yyl/8ds2H9qYvJhEk25fHtiPF3adKzwjUiLumq
+	h/LJbxiWb/GFpX/BRviahrorWXk8agY08qS1L9x2U8HoUCn9yBtXuX7fVxyHAaUGWd8LBWJ2XK84I
+	lxWGP3rMbx0G1urqSnqIMh0um9x45c3ZNYUwj0v8ldxMT8lCtZC252ocsefdjZzcwn5ziGtwQT7e0
+	Myca8Oyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5NHB-008X7Q-TP; Mon, 19 Jul 2021 07:01:17 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m5NMh-008Y10-W6; Mon, 19 Jul 2021 07:07:00 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5NGx-008X2k-FC; Mon, 19 Jul 2021 07:01:05 +0000
+ id 1m5NMU-008Xyq-7e; Mon, 19 Jul 2021 07:06:47 +0000
 Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
  [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 25DE81F422A8;
- Mon, 19 Jul 2021 08:00:59 +0100 (BST)
-Subject: Re: [PATCH v2, 00/14] Using component framework to support multi
- hardware decode
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id E4B571F422EC;
+ Mon, 19 Jul 2021 08:06:43 +0100 (BST)
+Subject: Re: [PATCH v2, 01/14] media: mtk-vcodec: Get numbers of register
+ bases from DT
 To: Yunfei Dong <yunfei.dong@mediatek.com>,
  Alexandre Courbot <acourbot@chromium.org>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
@@ -60,17 +60,18 @@ Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  Collabora Kernel ML <kernel@collabora.com>,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>
 References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+ <20210717081233.7809-2-yunfei.dong@mediatek.com>
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <bac9fe10-50e1-a91f-8f71-b6295227d01b@collabora.com>
-Date: Mon, 19 Jul 2021 09:00:56 +0200
+Message-ID: <77ec9eec-0b93-102c-4e6e-a1a491d0ae7a@collabora.com>
+Date: Mon, 19 Jul 2021 09:06:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+In-Reply-To: <20210717081233.7809-2-yunfei.dong@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_000103_803162_9825254B 
-X-CRM114-Status: GOOD (  29.69  )
+X-CRM114-CacheID: sfid-20210719_000646_463019_052BF753 
+X-CRM114-Status: GOOD (  27.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,100 +91,89 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 17.07.21 10:12, Yunfei Dong wrote:
-> This series adds support for multi hardware decode into mtk-vcodec, by first
-> adding component framework to manage each hardware information: interrupt,
-> clock, register bases and power. Secondly add core thread to deal with core
-> hardware message, at the same time, add msg queue for different hardware
-> share messages. Lastly, the architecture of different specs are not the same,
-> using specs type to separate them.
+> Different platform may has different numbers of register bases. Gets the
+> numbers of register bases from DT (sizeof(u32) * 4 bytes for each).
 > 
-> This series has been tested with both MT8183 and MT8173. Decoding was working
-> for both chips.
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+> v2: no changes
+> ---
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 38 ++++++++++++++-----
+>   1 file changed, 29 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index 55ae198dbcf9..d3f34cd04759 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -78,6 +78,31 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+>   	return IRQ_HANDLED;
+>   }
+>   
+> +static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+> +{
+> +	struct platform_device *pdev = dev->plat_dev;
+> +	int reg_num, i, ret = 0;
+> +
+> +	/* Sizeof(u32) * 4 bytes for each register base. */
+> +	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
+> +		sizeof(u32) * 4);
 
-Hi, I am currently working on stabilizing the codec drivers on mt8173 chromeos
-  device (elm). It would be very helpful if you provide information on how you
-tested the code.
-Did you test it on chromeos userspace?
-Did you use the test-tast framework?
-What tests did you run?
+'reg_num' can also be negative if the 'of_..' function fails. So this case should
+also be checked
 
-Thanks,
+> +	if (!reg_num || reg_num > NUM_MAX_VDEC_REG_BASE) {
+> +		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
+> +		return -EINVAL;
+> +	}
+> +
+> +	for (i = 0; i < reg_num; i++) {
+> +		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+> +		if (IS_ERR((__force void *)dev->reg_base[i])) {
+> +			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+> +			break;
+
+you can replace this two lines with "return PTR_ERR((__force void *)dev->reg_base[i]);"
+
+thanks,
 Dafna
 
-> 
-> Patches 1,2 rewrite get register bases and power on/off interface.
-> 
-> Patch 3-5 add component framework to support multi hardware.
-> 
-> Patches 6-14 add interfaces to support core hardware.
-> ----
-> This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
-> 
-> Multi hardware decode is based on stateless decoder, MT8183 is the first
-> time to add stateless decoder. Otherwise it will cause conflict.
-> Please also accept this patch together with [1].
-> 
-> [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
-> ----
-> 
-> Changes compared with v1:
-> - Fix many comments for patch 3/14
-> - Remove unnecessary code for patch 4/14
-> - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
-> - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
-> - Using yaml format to instead of txt file for patch 12/14
-> 
-> Yunfei Dong (14):
->    media: mtk-vcodec: Get numbers of register bases from DT
->    media: mtk-vcodec: Refactor vcodec pm interface
->    media: mtk-vcodec: Use component framework to manage each hardware
->      information
->    dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
->      dt-bindings
->    media: mtk-vcodec: Use pure single core for MT8183
->    media: mtk-vcodec: Add irq interface for core hardware
->    media: mtk-vcodec: Add msg queue feature for lat and core architecture
->    media: mtk-vcodec: Generalize power and clock on/off interfaces
->    media: mtk-vcodec: Add new interface to lock different hardware
->    media: mtk-vcodec: Add core thread
->    media: mtk-vcodec: Support 34bits dma address for vdec
->    dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
->    media: mtk-vcodec: Add core dec and dec end ipi msg
->    media: mtk-vcodec: Use codec type to separate different hardware
-> 
->   .../media/mediatek-vcodec-comp-decoder.yaml   | 150 +++++++++
->   ...vcodec.txt => mediatek-vcodec-decoder.txt} |  62 +---
->   .../media/mediatek-vcodec-encoder.txt         |  73 +++++
->   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
->   .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
->   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
->   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 297 +++++++++++++++---
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 194 ++++++++++++
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  50 +++
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
->   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
->   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  72 ++++-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
->   .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  32 +-
->   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
->   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
->   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
->   .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
->   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
->   .../platform/mtk-vcodec/vdec_msg_queue.c      | 286 +++++++++++++++++
->   .../platform/mtk-vcodec/vdec_msg_queue.h      | 143 +++++++++
->   .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
->   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
->   25 files changed, 1516 insertions(+), 168 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-comp-decoder.yaml
->   rename Documentation/devicetree/bindings/media/{mediatek-vcodec.txt => mediatek-vcodec-decoder.txt} (56%)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-encoder.txt
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> +		}
+> +		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+>   static int fops_vcodec_open(struct file *file)
+>   {
+>   	struct mtk_vcodec_dev *dev = video_drvdata(file);
+> @@ -206,7 +231,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   	struct resource *res;
+>   	phandle rproc_phandle;
+>   	enum mtk_vcodec_fw_type fw_type;
+> -	int i, ret;
+> +	int ret;
+>   
+>   	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+>   	if (!dev)
+> @@ -238,14 +263,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   		goto err_dec_pm;
+>   	}
+>   
+> -	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+> -		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+> -		if (IS_ERR((__force void *)dev->reg_base[i])) {
+> -			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+> -			goto err_res;
+> -		}
+> -		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+> -	}
+> +	ret = mtk_vcodec_get_reg_bases(dev);
+> +	if (ret)
+> +		goto err_res;
+>   
+>   	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+>   	if (res == NULL) {
 > 
 
 _______________________________________________
