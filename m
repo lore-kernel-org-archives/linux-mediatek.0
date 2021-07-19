@@ -2,80 +2,75 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 284A4C12002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 05:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B19DC636C9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:01:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DF2336109E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 05:50:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DF2336109E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id BABAE611AB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 07:01:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BABAE611AB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gThxAqlDpjnoSsqAORkOB7f62Y+cr9YH2hTCseJA4v8=; b=1/+X/GfsxSQR/R
-	wVTef3GcRlVRIkYwQqM1w44/o5/mKfckiiEqHhliYGP3e2QtzypS44JIRoiSG4EIiyFK0wDN4mZgB
-	uj+N7N9wl+iJteggfwaLH5VxDl0f8/TAWtZYrX0fGCAu7ptztPNYAd4jbIIDWtf20XvfwdFGbZnNQ
-	AeLpLMkcVFRdbiDp88wlt+UdMrz/uF/R7iZXDTyvBRY+8FCP04mYlHky610YsPGgYFAh5M0+jkn6k
-	8+JmHv2gdDMwh6u4YGJekJSsaK6oExvIaN7yGtKAwYfF1fO4bdChxYN/LbDJ3tmGVjN9M7USSQMso
-	6y6Hmv4OFdTEVE8KaFjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YcS0Qd9vAoabOMKxhrQ3v/BxPq2rgzrYyRp9g8XBZZo=; b=bSu6pqYT10at0VUFzQ2gQdUbXy
+	Zi+sz4f1XHpjwEt4eqSTxMVg3Kjhgdm/tH2Ttl21/NSXF0UxAdYwbDZIymx1QMKYd+N3xsw3YNpaZ
+	kLtV5Eo7z4uyp/mpIObcK8Otaflq8Rtv9rL3EUtyIkmSTmXQXyCKpfGOVnQTjI2juTtZoXktSgv/W
+	acav+akkWV8cHtR3Ak7n5SjeQV6T+OQgeFAQE38otv7NSfX2i51rAM3ADR3P9UdeG1TrWoE99zWUW
+	/tGXevPo+3oxkafbtKbXB80upTTl0SJoUXaY0mat1WGkf4UzFH3icsRdz/CBGvMwWNGJdtyJ0OuIO
+	wtgDcMSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5MAd-008RmE-0q; Mon, 19 Jul 2021 05:50:27 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m5NHB-008X7Q-TP; Mon, 19 Jul 2021 07:01:17 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5MAX-008RlY-Li; Mon, 19 Jul 2021 05:50:25 +0000
-X-UUID: 2c983585969a40319e7be0757c7710bb-20210718
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=uwsyjC64UPmkuA1CJ/drsMnYD0bFNNOkGv8alX06PI0=; 
- b=lzKWK+qKtUzYtx97oNrbtUSXoLPysoVWu+xeGrlK0zpADbk+8MR4VW0ga7hfj2kmx9KKqARMGSiyg52Zz+dgW0Lq+F1JZC3v3tb2JRtgWDx2OlRGDDLwVlIio8oir0wBzaQsYm9ZUPd2bNJgQffvDr6/eG+sqpt6MDpu9G6/5mo=;
-X-UUID: 2c983585969a40319e7be0757c7710bb-20210718
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1871618604; Sun, 18 Jul 2021 22:50:15 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 18 Jul 2021 22:50:13 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Jul 2021 13:19:46 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- mtkcas07.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Mon, 19 Jul 2021 13:19:46 +0800
-From: <guangming.cao@mediatek.com>
-To: Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
- <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- "open
- list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>, "open
- list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK"
- <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Guangming Cao <Guangming.Cao@mediatek.com>
-Subject: [PATCH] dma_buf: remove dmabuf sysfs teardown before release/detach
-Date: Mon, 19 Jul 2021 13:19:44 +0800
-Message-ID: <20210719051944.40871-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
+ id 1m5NGx-008X2k-FC; Mon, 19 Jul 2021 07:01:05 +0000
+Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
+ [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 25DE81F422A8;
+ Mon, 19 Jul 2021 08:00:59 +0100 (BST)
+Subject: Re: [PATCH v2, 00/14] Using component framework to support multi
+ hardware decode
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <bac9fe10-50e1-a91f-8f71-b6295227d01b@collabora.com>
+Date: Mon, 19 Jul 2021 09:00:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210718_225023_193770_84566A0D 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20210719_000103_803162_9825254B 
+X-CRM114-Status: GOOD (  29.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,55 +82,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guangming Cao <Guangming.Cao@mediatek.com>
 
-Dmabuf sysfs stat is used for dmabuf info track.
-but these file maybe still use after buffer release/detach,
-should clear it before buffer release/detach.
 
-Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
----
- drivers/dma-buf/dma-buf.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+On 17.07.21 10:12, Yunfei Dong wrote:
+> This series adds support for multi hardware decode into mtk-vcodec, by first
+> adding component framework to manage each hardware information: interrupt,
+> clock, register bases and power. Secondly add core thread to deal with core
+> hardware message, at the same time, add msg queue for different hardware
+> share messages. Lastly, the architecture of different specs are not the same,
+> using specs type to separate them.
+> 
+> This series has been tested with both MT8183 and MT8173. Decoding was working
+> for both chips.
 
-diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-index 510b42771974..9fa4620bd4bb 100644
---- a/drivers/dma-buf/dma-buf.c
-+++ b/drivers/dma-buf/dma-buf.c
-@@ -76,12 +76,12 @@ static void dma_buf_release(struct dentry *dentry)
- 	 */
- 	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
- 
-+	dma_buf_stats_teardown(dmabuf);
- 	dmabuf->ops->release(dmabuf);
- 
- 	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
- 		dma_resv_fini(dmabuf->resv);
- 
--	dma_buf_stats_teardown(dmabuf);
- 	module_put(dmabuf->owner);
- 	kfree(dmabuf->name);
- 	kfree(dmabuf);
-@@ -875,10 +875,11 @@ void dma_buf_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attach)
- 	dma_resv_lock(dmabuf->resv, NULL);
- 	list_del(&attach->node);
- 	dma_resv_unlock(dmabuf->resv);
-+
-+	dma_buf_attach_stats_teardown(attach);
- 	if (dmabuf->ops->detach)
- 		dmabuf->ops->detach(dmabuf, attach);
- 
--	dma_buf_attach_stats_teardown(attach);
- 	kfree(attach);
- }
- EXPORT_SYMBOL_GPL(dma_buf_detach);
--- 
-2.17.1
+Hi, I am currently working on stabilizing the codec drivers on mt8173 chromeos
+  device (elm). It would be very helpful if you provide information on how you
+tested the code.
+Did you test it on chromeos userspace?
+Did you use the test-tast framework?
+What tests did you run?
+
+Thanks,
+Dafna
+
+> 
+> Patches 1,2 rewrite get register bases and power on/off interface.
+> 
+> Patch 3-5 add component framework to support multi hardware.
+> 
+> Patches 6-14 add interfaces to support core hardware.
+> ----
+> This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
+> 
+> Multi hardware decode is based on stateless decoder, MT8183 is the first
+> time to add stateless decoder. Otherwise it will cause conflict.
+> Please also accept this patch together with [1].
+> 
+> [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
+> ----
+> 
+> Changes compared with v1:
+> - Fix many comments for patch 3/14
+> - Remove unnecessary code for patch 4/14
+> - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
+> - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
+> - Using yaml format to instead of txt file for patch 12/14
+> 
+> Yunfei Dong (14):
+>    media: mtk-vcodec: Get numbers of register bases from DT
+>    media: mtk-vcodec: Refactor vcodec pm interface
+>    media: mtk-vcodec: Use component framework to manage each hardware
+>      information
+>    dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
+>      dt-bindings
+>    media: mtk-vcodec: Use pure single core for MT8183
+>    media: mtk-vcodec: Add irq interface for core hardware
+>    media: mtk-vcodec: Add msg queue feature for lat and core architecture
+>    media: mtk-vcodec: Generalize power and clock on/off interfaces
+>    media: mtk-vcodec: Add new interface to lock different hardware
+>    media: mtk-vcodec: Add core thread
+>    media: mtk-vcodec: Support 34bits dma address for vdec
+>    dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
+>    media: mtk-vcodec: Add core dec and dec end ipi msg
+>    media: mtk-vcodec: Use codec type to separate different hardware
+> 
+>   .../media/mediatek-vcodec-comp-decoder.yaml   | 150 +++++++++
+>   ...vcodec.txt => mediatek-vcodec-decoder.txt} |  62 +---
+>   .../media/mediatek-vcodec-encoder.txt         |  73 +++++
+>   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 297 +++++++++++++++---
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 194 ++++++++++++
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  50 +++
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
+>   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
+>   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  72 ++++-
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  32 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
+>   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
+>   .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
+>   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
+>   .../platform/mtk-vcodec/vdec_msg_queue.c      | 286 +++++++++++++++++
+>   .../platform/mtk-vcodec/vdec_msg_queue.h      | 143 +++++++++
+>   .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
+>   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
+>   25 files changed, 1516 insertions(+), 168 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-comp-decoder.yaml
+>   rename Documentation/devicetree/bindings/media/{mediatek-vcodec.txt => mediatek-vcodec-decoder.txt} (56%)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-encoder.txt
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+>   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> 
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
