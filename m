@@ -2,95 +2,76 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3FE9C12002
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94F53C12002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:26:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C25766108B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:20:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C25766108B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5FD1A6108B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 09:26:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FD1A6108B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1D6z9BSLJoqC1sLfCXGMOVt7uo8mcLp/b/G2XwclkhA=; b=bubDR0sqyDjR8Q
-	KetXEG/3Hig3XEd9AE41fTBtDzZqVQOMyFhn693DK5zkGci1WCBOOVCpihVDKcJsGuOhKBGnJ4Lx0
-	RUJUYZCxi/IYUCXetHHgcp+PdoDSwIi3WXwvV0jquOMwy2krGqiHir1/m1SsBJlrCK3Mx21u0/2zD
-	BXkeCFF57Q2Yu3VUXMTEL2MFxN9UTnRFLfAY/kUr+lXdbmCQhEH0ZB81x0faTB4b7KR3d5UVNtPgB
-	5ZodTz3pOOma51SYsmomqg6eibBrerNP/IFE8zG7lepD1YeRKgvG9z1yN9gDG2TN+EDSE+5Fwxmnv
-	T94srwDqJKW42ikAfSog==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=xw6N9hnXjmuAtaOA4XpiRGtaHwBJhNgJo21QjENRtxA=; b=iWXZdgyvEymerrGiripXwIkkeD
+	825QhvZarRcYtsKZKeUMZhnpsLIhIoWRtENG0FxqhimFX8MCbXKnTuKaLYkKNxpK2z/DN9rP8iXzF
+	rTL3QhRsyZ4mlNbIsWcmtHuo7aLyjAj8tQQwiD3DnziPV6hlq6v4ydoB6l8n25k8GdYVSh2eqvoIc
+	pTBxj75v3X3t41NXuKMO6pFeqvzsXD91zBtIT1CDIIjqvwti6c9kNi1dgpirBvufCygdGXiLfEkLA
+	CbCeXF5c5vondvl0o7NhMQAbIzPrQ8QzFx1XaRoyeRbk9iH8iKS9s9P22iFl2kNrOvUhM36cfxj5+
+	/yXJaNbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5PRG-0093TL-Hi; Mon, 19 Jul 2021 09:19:50 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1m5PXA-0094tz-NW; Mon, 19 Jul 2021 09:25:56 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5PR0-0093P4-Ep; Mon, 19 Jul 2021 09:19:35 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id qb4so27502184ejc.11;
- Mon, 19 Jul 2021 02:19:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Mpyf33A1sQVVQcz3IapdZfoMQHbi8kdYOp0EbZmfX78=;
- b=S6uDV/pnjhfUad+Fhz2AyaqUCoayLOP/g4IN8r0EfRR8oDvnRExLva/CukvdnO40sD
- vzR1D4Hb2LpIsgQshTDQ4mLFJ+uqxER2Wx5M5SXRWyIFAtODhKce21A8YdfgMfs7gkzQ
- 0/yReZvWOoNZsjE2EoOFVhXr8lr/EYaq1fefKarutbYIcMY1k6W/UR6vShile3mLfoOD
- uWV4T9rvH8VuLHQFDS4JMqQkfNsGkY/JfdWHm9GDn3gL81TAqm5BjfhL6dIrHCTEfsfk
- zohUt/mzuM1r8/0tHVo+wakZRA10KTrNld40sJCrk0YTh/6oFIcV3DfXElkoOBqms2zl
- N2JQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Mpyf33A1sQVVQcz3IapdZfoMQHbi8kdYOp0EbZmfX78=;
- b=aN/P7UhisogU2Wp351l1JdvAJcn20lgoT8M3xKAPvcSAx7qQ345qAXkIOyDWSTx/6Y
- qj9O4OYbx+yyCtplF+gsUsQ/uhm3vB4gsmy9rHGCnOVIs9p8j/19oMk3sMQcZ5ABrHgx
- MAEGeMX1Bivf1Ic5dDuncfGgbgu7ym5Qkt2N7PhVHtZkQZDVs0CElc1Yk5wGOe6KkV6Q
- CFAHNQsd8bq1n9vaL1wOjRFUAkBiMDSu6QezDrdOusy9wiZES1edM86VVtBmzCm1WQNM
- 69p1QMo+FnbutCJgNDQhhBBQ7lPcXxeiCUPGwZFLWa9Na/MtHEFQ+1zzaZVgJUbk7oEa
- i1og==
-X-Gm-Message-State: AOAM531eGQVNFPwvxZDUs0+XiUs63lx2ff3ZyvZF496s0AhHxwQQ3JsK
- ZyOFo4n+FrMjXl4EXDAM0A0=
-X-Google-Smtp-Source: ABdhPJyT23y0r4YXMvj0whLX3nD63SU+Q30IVtB8Af5zLWCwNoqBApEUY6EuVisVvgFJp4RSYXavTg==
-X-Received: by 2002:a17:906:2a08:: with SMTP id
- j8mr25810993eje.449.1626686371909; 
- Mon, 19 Jul 2021 02:19:31 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id jg9sm5611900ejc.6.2021.07.19.02.19.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Jul 2021 02:19:31 -0700 (PDT)
-Date: Mon, 19 Jul 2021 12:19:30 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Landen Chao <landen.chao@mediatek.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, dqfext@gmail.com,
- Sean Wang <sean.wang@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, frank-w@public-files.de,
- steven.liu@mediatek.com
-Subject: Re: [PATCH net, v2, RESEND] net: Update MAINTAINERS for MediaTek
- switch driver
-Message-ID: <20210719091930.36l2zjlgngeq34wa@skbuf>
-References: <49e67daeadace13a9fa3f4553f1ec14c6a93bdc8.1622445132.git.landen.chao@mediatek.com>
+ id 1m5PWs-0094ok-3e; Mon, 19 Jul 2021 09:25:40 +0000
+Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
+ [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 762FA1F423B0;
+ Mon, 19 Jul 2021 10:25:35 +0100 (BST)
+Subject: Re: [PATCH v2, 06/14] media: mtk-vcodec: Add irq interface for core
+ hardware
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Collabora Kernel ML <kernel@collabora.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
+ <20210717081233.7809-7-yunfei.dong@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <87713751-3938-fa68-dea0-ff48806f7d52@collabora.com>
+Date: Mon, 19 Jul 2021 11:25:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <49e67daeadace13a9fa3f4553f1ec14c6a93bdc8.1622445132.git.landen.chao@mediatek.com>
+In-Reply-To: <20210717081233.7809-7-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_021934_551881_A5C3BD44 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210719_022538_468184_A752C82E 
+X-CRM114-Status: GOOD (  35.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,25 +83,246 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 18, 2021 at 02:14:20PM +0800, Landen Chao wrote:
-> Update maintainers for MediaTek switch driver with Deng Qingfang who
-> contributes many useful patches (interrupt, VLAN, GPIO, and etc.) to
-> enhance MediaTek switch driver and will help maintenance.
+
+
+On 17.07.21 10:12, Yunfei Dong wrote:
+> Adds irq interface for core hardware.
 > 
-> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
+> v2: Using enum mtk_vdec_hw_count instead of magic numbers
+> ---
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 31 ++++++++++++++++--
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 11 ++++---
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 19 +++++++++++
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.c     | 32 ++++++++++++++++++-
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |  4 ++-
+>   5 files changed, 88 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index e7f60e948fe8..d1c4124f6092 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -75,6 +75,20 @@ static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
+>   	wake_up_interruptible(&ctx->queue);
+>   }
+>   
+> +static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
+> +{
+> +	switch (dev->vdec_pdata->hw_arch) {
+> +	case MTK_VDEC_PURE_SINGLE_CORE:
+> +		return MTK_VDEC_ONE_CORE;
+> +	case MTK_VDEC_LAT_SINGLE_CORE:
+> +		return MTK_VDEC_ONE_LAT_ONE_CORE;
+> +	default:
+> +		mtk_v4l2_err("not support hw arch:%d",
+> +			dev->vdec_pdata->hw_arch);
+> +		return MTK_VDEC_NO_HW;
+> +	}
+> +}
+> +
+>   static struct component_match *mtk_vcodec_match_add(
+>   	struct mtk_vcodec_dev *vdec_dev)
+>   {
+> @@ -246,7 +260,7 @@ static int fops_vcodec_open(struct file *file)
+>   {
+>   	struct mtk_vcodec_dev *dev = video_drvdata(file);
+>   	struct mtk_vcodec_ctx *ctx = NULL;
+> -	int ret = 0;
+> +	int ret = 0, i, hw_count;
+>   	struct vb2_queue *src_vq;
+>   
+>   	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
+> @@ -260,7 +274,19 @@ static int fops_vcodec_open(struct file *file)
+>   	v4l2_fh_add(&ctx->fh);
+>   	INIT_LIST_HEAD(&ctx->list);
+>   	ctx->dev = dev;
+> -	init_waitqueue_head(&ctx->queue);
+> +
+> +	if (ctx->dev->is_support_comp) {
+> +		hw_count = mtk_vcodec_get_hw_count(dev);
+> +		if (!hw_count) {
+> +			ret = -EINVAL;
+> +			goto err_init_queue;
+> +		}
+> +		for (i = 0; i < hw_count; i++)
+> +			init_waitqueue_head(&ctx->core_queue[i]);
+> +	} else {
+> +		init_waitqueue_head(&ctx->queue);
+> +	}
+> +
+>   	mutex_init(&ctx->lock);
+>   
+>   	ctx->type = MTK_INST_DECODER;
+> @@ -317,6 +343,7 @@ static int fops_vcodec_open(struct file *file)
+>   err_m2m_ctx_init:
+>   	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+>   err_ctrls_setup:
+> +err_init_queue:
+>   	v4l2_fh_del(&ctx->fh);
+>   	v4l2_fh_exit(&ctx->fh);
+>   	kfree(ctx);
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+> index ea6d289d9773..34d51fe409c6 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+> @@ -59,11 +59,12 @@ static const struct component_ops mtk_vdec_hw_component_ops = {
+>   	.unbind = mtk_vdec_comp_unbind,
+>   };
+>   
+> -/* Wake up context wait_queue */
+> -static void mtk_vdec_comp_wake_up_ctx(struct mtk_vcodec_ctx *ctx)
+> +/* Wake up core context wait_queue */
+> +static void mtk_vdec_comp_wake_up_ctx(struct mtk_vcodec_ctx *ctx,
+> +	unsigned int hw_id)
+>   {
+> -	ctx->int_cond = 1;
+> -	wake_up_interruptible(&ctx->queue);
+> +	ctx->int_core_cond[hw_id] = 1;
+> +	wake_up_interruptible(&ctx->core_queue[hw_id]);
+>   }
+>   
+>   static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
+> @@ -94,7 +95,7 @@ static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
+>   	writel(readl(vdec_misc_addr) | VDEC_IRQ_CFG, vdec_misc_addr);
+>   	writel(readl(vdec_misc_addr) & ~VDEC_IRQ_CLR, vdec_misc_addr);
+>   
+> -	mtk_vdec_comp_wake_up_ctx(ctx);
+> +	mtk_vdec_comp_wake_up_ctx(ctx, dev->comp_idx);
+>   
+>   	mtk_v4l2_debug(3, "wake up ctx %d, dec_done_status=%x",
+>   		ctx->id, dec_done_status);
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index 9d05ee72b2a7..76160b6f4152 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -109,6 +109,16 @@ enum mtk_vdec_hw_id {
+>   	MTK_VDEC_HW_MAX,
+>   };
+>   
+> +/**
+> + * struct mtk_vdec_hw_count - Supported hardware count
+> + */
+> +enum mtk_vdec_hw_count {
+> +	MTK_VDEC_NO_HW = 0,
+> +	MTK_VDEC_ONE_CORE,
+> +	MTK_VDEC_ONE_LAT_ONE_CORE,
+> +	MTK_VDEC_MAX_HW_COUNT,
+> +};
+> +
+>   /*
+>    * struct mtk_video_fmt - Structure used to store information about pixelformats
+>    */
+> @@ -261,6 +271,11 @@ struct vdec_pic_info {
+>    *	   finish
+>    * @irq_status: irq status
+>    *
+> + * @int_core_cond: variable used by the waitqueue  for component arch
+> + * @int_core_type: type of the last interrupt for component arch
+> + * @core_queue: waitqueue that can be used to wait for this context to
+> + *	   finish for component arch
+> + *
+>    * @ctrl_hdl: handler for v4l2 framework
+>    * @decode_work: worker for the decoding
+>    * @encode_work: worker for the encoding
+> @@ -303,6 +318,10 @@ struct mtk_vcodec_ctx {
+>   	wait_queue_head_t queue;
+>   	unsigned int irq_status;
+>   
+> +	int int_core_cond[MTK_VDEC_HW_MAX];
+> +	int int_core_type[MTK_VDEC_HW_MAX];
+> +	wait_queue_head_t core_queue[MTK_VDEC_HW_MAX];
 
-Acked-by: Vladimir Oltean <olteanv@gmail.com>
+can't the code be generalized so that, instead of having both fields
+'core_queue' and 'queue' and both fields
+'core_cond' + 'int_code' / 'core_type' + 'int_type' that only one of them is used
+we can have only the array version of the fields and access the index 0 if only one is used.
+So for example instead of accessing 'queue' field we can access 'core_queue[0]' etc and we can remove the field 'queue' from the struct.
 
-Landen, please resend this patch properly (to the list and not as a
-reply to the v1 patch). It is not tracked by patchwork otherwise.
+This why we don't need both "mtk_vcodec_wait_for_done_ctx" and "mtk_vcodec_wait_for_comp_done_ctx"
+for example.
+
+> +
+>   	struct v4l2_ctrl_handler ctrl_hdl;
+>   	struct work_struct decode_work;
+>   	struct work_struct encode_work;
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
+> index 70580c2525ba..306358d9bef0 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
+> @@ -11,7 +11,7 @@
+>   #include "mtk_vcodec_intr.h"
+>   #include "mtk_vcodec_util.h"
+>   
+> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
+> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx, int command,
+
+This line just remove an extra space? better remove  from this patch
+
+>   				 unsigned int timeout_ms)
+>   {
+>   	wait_queue_head_t *waitqueue;
+> @@ -43,3 +43,33 @@ int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
+>   	return status;
+>   }
+>   EXPORT_SYMBOL(mtk_vcodec_wait_for_done_ctx);
+> +
+> +int mtk_vcodec_wait_for_comp_done_ctx(struct mtk_vcodec_ctx *ctx,
+> +	int command, unsigned int timeout_ms, unsigned hw_id)
+> +{
+> +	long timeout_jiff, ret;
+> +	int status = 0;
+> +
+> +	timeout_jiff = msecs_to_jiffies(timeout_ms);
+> +	ret = wait_event_interruptible_timeout(ctx->core_queue[hw_id],
+> +				ctx->int_core_cond[hw_id],
+> +				timeout_jiff);
+> +
+> +	if (!ret) {
+> +		status = -1;	/* timeout */
+> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec timeout=%ums (%d %d)",
+> +				ctx->id, command, ctx->type, timeout_ms,
+> +				ctx->int_core_cond[hw_id], ctx->int_core_type[hw_id]);
+> +	} else if (-ERESTARTSYS == ret) {
+> +		status = -1;
+> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec inter fail (%d %d)",
+> +				ctx->id, command, ctx->type,
+> +				ctx->int_core_cond[hw_id], ctx->int_core_type[hw_id]);
+> +	}
+> +
+> +	ctx->int_core_cond[hw_id] = 0;
+> +	ctx->int_core_type[hw_id] = 0;
+> +
+> +	return status;
+> +}
+> +EXPORT_SYMBOL(mtk_vcodec_wait_for_comp_done_ctx);
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+> index 638cd1f3526a..5ca611a1ddab 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
+> @@ -12,7 +12,9 @@
+>   struct mtk_vcodec_ctx;
+>   
+>   /* timeout is ms */
+> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *data, int command,
+> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx, int command,
+
+I would remove this line since it does not belong to the patch
+
+Thanks,
+Dafna
+
+>   				unsigned int timeout_ms);
+> +int mtk_vcodec_wait_for_comp_done_ctx(struct mtk_vcodec_ctx *ctx,
+> +				int command, unsigned int timeout_ms, unsigned int hw_id);
+>   
+>   #endif /* _MTK_VCODEC_INTR_H_ */
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
