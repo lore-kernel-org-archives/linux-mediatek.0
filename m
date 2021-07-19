@@ -2,76 +2,91 @@ Return-Path: <SRS0=Po0r=ML=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D7EFC07E9B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:27:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26CBAC07E9D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:28:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 546BE60233
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:27:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 546BE60233
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id DA59A60233
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Jul 2021 10:28:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA59A60233
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3BJZ3Hp75i2oWnIgUOOPqxfJiN7RZVnsYeT37Kiolt4=; b=d79vl9m0sxCB4m+oa3LsnPAMvt
-	60iFU/b5+gNkLFSVJ/2J3qK01lTul6jpvJS2OSSvn8FIa2khobasAM6aeqIUY9PbJCJD0Cd9Kyd4e
-	pDAYBbkh7ZWC7SmZogdgOwhm1WBvejashsM9+rdJ7iZmP7ZCnOrNEmBmZ5grhSMeQUKGLfrpZoBj3
-	35Kjo97qz1fB0k3gN+wQEkaRURvjCxvkAHrSU0OmEe+Z70M1ewjpm7dh9RcaVkrSnrqRxx08WlZaA
-	lchuJwwyFIcPhp2LXVw3lbQfU7zVSXH2SpROdfW5lkDMTo1R6Cb1mg7/8U4NZATlzEG050w/X6DJH
-	/nYAToLw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kAQ+mr6X8jiuHvE4SpYWAh5z8JaYSxSZ0jF/V+Yj7SI=; b=chqCvVeMm0tiDE
+	lNGoSy1+XOfx213iBtDvlX/n+NmYYwcXnWOdj22cLMg4Zu6zgziT1RT/YBNvemWxE0hgbQuh3OGyA
+	EVn5GKf9dw3SoR1uDPDZonjE9V/XBFT9wOCQxQ1GYJJOtAlLblRWhi8kFy4M5cxpnkgcWEXhiZQI/
+	rTHOrWv81PFr2tJOM1SZ8am+Iz8QYRxhhBcF41CcGd3vnDRMiYkV0vtDykucuc5JqZ85We/XP8QMq
+	5FgskyUdgLCz1QUY9etScnujiVdASBICp151GRwoPBHE34D+uy3weCkbdRD/qQvdmvPUaZK14Wpwm
+	NJ5LdxGKQVkId4CkN4QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5QU8-009GOP-3O; Mon, 19 Jul 2021 10:26:52 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1m5QVH-009GbF-VT; Mon, 19 Jul 2021 10:28:04 +0000
+Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5QTu-009GLt-A4; Mon, 19 Jul 2021 10:26:40 +0000
-Received: from [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc] (unknown
- [IPv6:2a02:810a:880:f54:121:b44d:bc4b:65bc])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 239FD1F42572;
- Mon, 19 Jul 2021 11:26:36 +0100 (BST)
-Subject: Re: [PATCH v2, 14/14] media: mtk-vcodec: Use codec type to separate
- different hardware
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Collabora Kernel ML <kernel@collabora.com>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
-References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
- <20210717081233.7809-15-yunfei.dong@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <7d2a7f79-850a-bdc7-bbda-ae36c5a5ab4b@collabora.com>
-Date: Mon, 19 Jul 2021 12:26:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m5QVE-009GaC-UU; Mon, 19 Jul 2021 10:28:02 +0000
+Received: by mail-oi1-x233.google.com with SMTP id w194so20176842oie.5;
+ Mon, 19 Jul 2021 03:28:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=v2dUDnfhrWV1GcdFhFWODw8LtsoVKTvHQwSdjp2I7IE=;
+ b=Me6X5lcw9AeyzCra5gqYX3bWrJoAw/trfs/eSG+FCVUui6VoQdFL+6r+wGCi3gohBE
+ PUZpAfZuQ0C83pBLQosfS7erxoKvt+uq/nHlIlPvg1nDAsa35npI+UuLqGEOLuVr4Lsz
+ LiF8KRDBeghye9L4rTF7Fq/nLBtuCgALbeWPQH6a1/52kkCS9t1jXmaQR8gLLJGS4ma8
+ zLD1KEjYWmNRCaSnBZNqa2RVNG0psHIcIX427CgPzfCP0Gd/J9nugOo69bBng/6RXejp
+ uWWuKsww5YB3Ps+op63rA0xTKofWMwk+WVcE0iuobYMs3k1+QbZiC8GIxemmHKuCbeiz
+ u5xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=v2dUDnfhrWV1GcdFhFWODw8LtsoVKTvHQwSdjp2I7IE=;
+ b=HOleIFHafyMRE9HIajkDj6oxTSKC/9Gtl0vtC1VA1JLTEe5mFubDmhBSoepeS3o3QS
+ ly209s2Nsh+x46LE4TAG17FuxEWpFLvekFaqX3jBr/ukzK1UincfCQxFEDqI3LJeP5E1
+ FRnq99gjyoDtVIHVgAcLxjs4dFLFvCxJyG20h5oWJXHV6Z3CCOKwhuQ5hkbzNZ+vqh11
+ y1dLftt52bksD5xwFeZ8RH2P+FuwsedFWU61ER4VF0X1b/267SjGqVbIctvpU+4RY8Sb
+ yk/0GR6hmuyxAs4h0anUJ87ys2DVYL1PlUqUGMDkutKaaqBSEirMPWUpU5tPacB4TksB
+ RNeg==
+X-Gm-Message-State: AOAM533XQ+8/3znvLkA8DiQemEF1AOOX0GydCAdwXu6lhANqrsQlvpB9
+ xMGU91mb/tsuMMiE0uUjkLO05wg4v94DoyeCIR4=
+X-Google-Smtp-Source: ABdhPJzDVmukU2cfX815a2lb5DnoBTMmh+nwXAPmFnqqzkWYorjPe/Np7EQDK4m5XQgMGcQiCEphGA7VAs6IuAeHHoM=
+X-Received: by 2002:aca:c6c9:: with SMTP id w192mr16617749oif.47.1626690479452; 
+ Mon, 19 Jul 2021 03:27:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20210717081233.7809-15-yunfei.dong@mediatek.com>
-Content-Language: en-US
+References: <20210719082238.26210-1-jason-jh.lin@mediatek.com>
+ <20210719082238.26210-2-jason-jh.lin@mediatek.com>
+In-Reply-To: <20210719082238.26210-2-jason-jh.lin@mediatek.com>
+From: Enric Balletbo Serra <eballetbo@gmail.com>
+Date: Mon, 19 Jul 2021 12:27:47 +0200
+Message-ID: <CAFqH_5224qCXnLGKsO+iF8bG8fLa9Q9VYMpSmcnnh9yc3FevYA@mail.gmail.com>
+Subject: Re: [PATCH v2 1/1] Fix cursor plane didn't update
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Maxime Ripard <maxime@cerno.tech>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, 
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, fshao@chromium.org,
+ hsinyi@google.com, 
+ nancy.lin@mediatek.com, singo.chang@mediatek.com, David-YH.Chiu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_032638_669368_618CD73A 
-X-CRM114-Status: GOOD (  29.31  )
+X-CRM114-CacheID: sfid-20210719_032801_051454_398DD882 
+X-CRM114-Status: GOOD (  26.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,201 +98,159 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Jason-jh,
 
+Thank you for your patch. Please prefix this patch with 'drm/mediatek'
+so it is clear what the changes are.
 
-On 17.07.21 10:12, Yunfei Dong wrote:
-> There are just one core thread, in order to separeate different
-> hardware, using codec type to separeate it in scp driver.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Missatge de jason-jh.lin <jason-jh.lin@mediatek.com> del dia dl., 19
+de jul. 2021 a les 10:24:
+>
+> The cursor plane should use the current plane state in atomic_async_update
+> because it would not be the new plane state in the global atomic state
+> since _swap_state happened when those hook are run.
+>
+> Fix cursor plane issue by below modification:
+> 1. Remove plane_helper_funcs->atomic_update(plane, state) in
+>    mtk_drm_crtc_async_update.
+> 2. Add mtk_drm_update_new_state in to mtk_plane_atomic_async_update to
+>    update the cursor plane by current plan hook and update the normal
+>    plane by the new_state.
+>
+> Fixes: 37418bf14c13 ("drm: Use state helper instead of the plane state pointer")
+>
+
+Drop this new line
+
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+
+The patch below fixes the cursor issue on my two boards, one based on
+mt8173 and the other on mt8183, so
+
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+
 > ---
-> v2: no changes
-> ---
->   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
->   .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34 ++++++++++++++++---
->   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
->   3 files changed, 41 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-> index 9d8079c4f976..c488f0c40190 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-> @@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
->    * @msg_id	: vdec_ipi_msgid
->    * @vpu_inst_addr : VPU decoder instance address. Used if ABI version < 2.
->    * @inst_id     : instance ID. Used if the ABI version >= 2.
-> + * @codec_type	: Codec fourcc
-> + * @reserved	: reserved param
->    */
->   struct vdec_ap_ipi_cmd {
->   	uint32_t msg_id;
-> @@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
->   		uint32_t vpu_inst_addr;
->   		uint32_t inst_id;
->   	};
-> +	uint32_t codec_type;
-> +	uint32_t reserved;
->   };
->   
->   /**
-> @@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
->   /**
->    * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
->    * @msg_id	: AP_IPIMSG_DEC_INIT
-> - * @reserved	: Reserved field
-> + * @codec_type	: Codec fourcc
->    * @ap_inst_addr	: AP video decoder instance address
->    */
->   struct vdec_ap_ipi_init {
->   	uint32_t msg_id;
-> -	uint32_t reserved;
-> +	uint32_t codec_type;
->   	uint64_t ap_inst_addr;
->   };
->   
-> @@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
->    *	H264 decoder [0]:buf_sz [1]:nal_start
->    *	VP8 decoder  [0]:width/height
->    *	VP9 decoder  [0]:profile, [1][2] width/height
-> - * @reserved	: Reserved field
-> + * @codec_type	: Codec fourcc
->    */
->   struct vdec_ap_ipi_dec_start {
->   	uint32_t msg_id;
-> @@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
->   		uint32_t inst_id;
->   	};
->   	uint32_t data[3];
-> -	uint32_t reserved;
-> +	uint32_t codec_type;
->   };
->   
->   /**
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-> index bfd8e87dceff..c84fac52fe26 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-> @@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
->   
->   static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
->   {
-> -	int err;
-> +	int err, id, msgid;
->   
-> -	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
-> +	msgid = *(uint32_t *)msg;
-> +	mtk_vcodec_debug(vpu, "id=%X", msgid);
->   
->   	vpu->failure = 0;
->   	vpu->signaled = 0;
->   
-> -	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, vpu->id, msg,
-> +	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-> +		if (msgid == AP_IPIMSG_DEC_CORE ||
-> +			msgid == AP_IPIMSG_DEC_CORE_END)
-> +			id = vpu->core_id;
-> +		else
-> +			id = vpu->id;
-> +	} else {
-> +		id = vpu->id;
-> +	}
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |  1 -
+>  drivers/gpu/drm/mediatek/mtk_drm_plane.c | 60 ++++++++++++++----------
+>  2 files changed, 34 insertions(+), 27 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index 474efb844249..063c75bab3a8 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -538,7 +538,6 @@ void mtk_drm_crtc_async_update(struct drm_crtc *crtc, struct drm_plane *plane,
+>         if (!mtk_crtc->enabled)
+>                 return;
+>
+> -       plane_helper_funcs->atomic_update(plane, state);
+>         mtk_drm_crtc_update_config(mtk_crtc, false);
+>  }
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> index b5582dcf564c..e6dcb34d3052 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+> @@ -110,6 +110,35 @@ static int mtk_plane_atomic_async_check(struct drm_plane *plane,
+>                                                    true, true);
+>  }
+>
+> +static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+> +                                      struct mtk_plane_state *mtk_plane_state)
+> +{
+> +       struct drm_framebuffer *fb = new_state->fb;
+> +       struct drm_gem_object *gem;
+> +       struct mtk_drm_gem_obj *mtk_gem;
+> +       unsigned int pitch, format;
+> +       dma_addr_t addr;
 > +
-> +	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
->   				     len, 2000);
->   	if (err) {
->   		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X status=%d",
-> -			       vpu->id, *(uint32_t *)msg, err);
-> +			       id, msgid, err);
->   		return err;
->   	}
->   
-> @@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct vdec_vpu_inst *vpu, unsigned int msg_id)
->   		msg.vpu_inst_addr = vpu->inst_addr;
->   	else
->   		msg.inst_id = vpu->inst_id;
-> +	msg.codec_type = vpu->codec_type;
->   
->   	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
->   	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
-> @@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
->   
->   	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
->   					 vpu->handler, "vdec", NULL);
-> -	if (err != 0) {
-> +	if (err) {
->   		mtk_vcodec_err(vpu, "vpu_ipi_register fail status=%d", err);
->   		return err;
->   	}
->   
-> +	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-> +		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
-> +					 vpu->core_id, vpu->handler,
-> +					 "vdec", NULL);
-
-where is vpu->core_id initialized?
-
-Thanks,
-Dafna
-
-> +		if (err) {
-> +			mtk_vcodec_err(vpu, "vpu_ipi_register core fail status=%d", err);
-> +			return err;
-> +		}
-> +	}
+> +       gem = fb->obj[0];
+> +       mtk_gem = to_mtk_gem_obj(gem);
+> +       addr = mtk_gem->dma_addr;
+> +       pitch = fb->pitches[0];
+> +       format = fb->format->format;
 > +
->   	memset(&msg, 0, sizeof(msg));
->   	msg.msg_id = AP_IPIMSG_DEC_INIT;
->   	msg.ap_inst_addr = (unsigned long)vpu;
-> +	msg.codec_type = vpu->codec_type;
->   
->   	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
->   
-> @@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
->   
->   	for (i = 0; i < len; i++)
->   		msg.data[i] = data[i];
-> +	msg.codec_type = vpu->codec_type;
->   
->   	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
->   	mtk_vcodec_debug(vpu, "- ret=%d", err);
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-> index ae24b75d1649..802660770a87 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-> @@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
->   /**
->    * struct vdec_vpu_inst - VPU instance for video codec
->    * @id          : ipi msg id for each decoder
-> + * @core_id     : core id used to separate different hardware
->    * @vsi         : driver structure allocated by VPU side and shared to AP side
->    *                for control and info share
->    * @failure     : VPU execution result status, 0: success, others: fail
-> @@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
->    * @dev		: platform device of VPU
->    * @wq          : wait queue to wait VPU message ack
->    * @handler     : ipi handler for each decoder
-> + * @codec_type     : used codec type to separate different codecs
->    */
->   struct vdec_vpu_inst {
->   	int id;
-> +	int core_id;
->   	void *vsi;
->   	int32_t failure;
->   	uint32_t inst_addr;
-> @@ -38,6 +41,7 @@ struct vdec_vpu_inst {
->   	struct mtk_vcodec_ctx *ctx;
->   	wait_queue_head_t wq;
->   	mtk_vcodec_ipi_handler handler;
-> +	unsigned int codec_type;
->   };
->   
->   /**
-> 
+> +       addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
+> +       addr += (new_state->src.y1 >> 16) * pitch;
+> +
+> +       mtk_plane_state->pending.enable = true;
+> +       mtk_plane_state->pending.pitch = pitch;
+> +       mtk_plane_state->pending.format = format;
+> +       mtk_plane_state->pending.addr = addr;
+> +       mtk_plane_state->pending.x = new_state->dst.x1;
+> +       mtk_plane_state->pending.y = new_state->dst.y1;
+> +       mtk_plane_state->pending.width = drm_rect_width(&new_state->dst);
+> +       mtk_plane_state->pending.height = drm_rect_height(&new_state->dst);
+> +       mtk_plane_state->pending.rotation = new_state->rotation;
+> +}
+> +
+>  static void mtk_plane_atomic_async_update(struct drm_plane *plane,
+>                                           struct drm_atomic_state *state)
+>  {
+> @@ -126,8 +155,10 @@ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
+>         plane->state->src_h = new_state->src_h;
+>         plane->state->src_w = new_state->src_w;
+>         swap(plane->state->fb, new_state->fb);
+> -       new_plane_state->pending.async_dirty = true;
+>
+> +       mtk_plane_update_new_state(new_state, new_plane_state);
+> +       wmb(); /* Make sure the above parameters are set before update */
+> +       new_plane_state->pending.async_dirty = true;
+>         mtk_drm_crtc_async_update(new_state->crtc, plane, state);
+>  }
+>
+> @@ -189,14 +220,8 @@ static void mtk_plane_atomic_update(struct drm_plane *plane,
+>         struct drm_plane_state *new_state = drm_atomic_get_new_plane_state(state,
+>                                                                            plane);
+>         struct mtk_plane_state *mtk_plane_state = to_mtk_plane_state(new_state);
+> -       struct drm_crtc *crtc = new_state->crtc;
+> -       struct drm_framebuffer *fb = new_state->fb;
+> -       struct drm_gem_object *gem;
+> -       struct mtk_drm_gem_obj *mtk_gem;
+> -       unsigned int pitch, format;
+> -       dma_addr_t addr;
+>
+> -       if (!crtc || WARN_ON(!fb))
+> +       if (!new_state->crtc || WARN_ON(!new_state->fb))
+>                 return;
+>
+>         if (!new_state->visible) {
+> @@ -204,24 +229,7 @@ static void mtk_plane_atomic_update(struct drm_plane *plane,
+>                 return;
+>         }
+>
+> -       gem = fb->obj[0];
+> -       mtk_gem = to_mtk_gem_obj(gem);
+> -       addr = mtk_gem->dma_addr;
+> -       pitch = fb->pitches[0];
+> -       format = fb->format->format;
+> -
+> -       addr += (new_state->src.x1 >> 16) * fb->format->cpp[0];
+> -       addr += (new_state->src.y1 >> 16) * pitch;
+> -
+> -       mtk_plane_state->pending.enable = true;
+> -       mtk_plane_state->pending.pitch = pitch;
+> -       mtk_plane_state->pending.format = format;
+> -       mtk_plane_state->pending.addr = addr;
+> -       mtk_plane_state->pending.x = new_state->dst.x1;
+> -       mtk_plane_state->pending.y = new_state->dst.y1;
+> -       mtk_plane_state->pending.width = drm_rect_width(&new_state->dst);
+> -       mtk_plane_state->pending.height = drm_rect_height(&new_state->dst);
+> -       mtk_plane_state->pending.rotation = new_state->rotation;
+> +       mtk_plane_update_new_state(new_state, mtk_plane_state);
+>         wmb(); /* Make sure the above parameters are set before update */
+>         mtk_plane_state->pending.dirty = true;
+>  }
+> --
+> 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
