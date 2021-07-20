@@ -2,84 +2,80 @@ Return-Path: <SRS0=Q4g2=MM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93F4BC07E95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 03:07:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E9C8C07E95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 03:52:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46E8C610CC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 03:07:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 46E8C610CC
+	by mail.kernel.org (Postfix) with ESMTPS id 3F50860C41
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 03:52:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F50860C41
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fr+0kJFu2DXrogw9mtFqsY6V0mNCd5Dn8R0rrUFVJOE=; b=kEmGwAiHGoiIFF
-	x31mAxsUOJ4kZJbx+9V1EF/yLqz4D7CXEdNnLRP6H02fqpwUmKEJvrb0GCUFemuM/uUKllbpJSiDQ
-	0cl7xg0abK/GWwqkVnHb/CQsTyHTuFUkO4RDmp7qyB54Lwj/ySnCLKw4ECXINj3KWKY2/54kwXcJ+
-	7UfG7Wz0RKkeZGTa61cRbdXXB0MegVxFjydFoeOC/g1h6WNrXPtSOLjqgrWzNKkJNEySjY8nLnbDD
-	QLXnp7P/aj3OIrqzOUs/7yZf/QgGx1B19Zrm0pjThq7DWXAMkrU0aY75RGeNka8mgxQpWfoZ3HAeS
-	mes2xzf4TIBJ4kVIDKBQ==;
+	List-Owner; bh=F9P7nvFFJguKrqOcYxjc6tr9zxdPFiiRWuNhKcqVPQA=; b=vUvVrAhGJWIKm+
+	AhVfHatdYklm4d8X7umdjO+aNV0+DprlOltdd4Fyi+5CaUjzXSDGPezKMDckXpfP0XB892UDJ0tuy
+	GJV7zbXLdUFbEx4QNGeWOxmvllt862IUaGd48TmKBjNflHlS8C0iz+R9NiR2PcrNy86fIxE748yLi
+	6VhvpRuLiqrCbeCjL2Lrcxxi1ldltonJ0FmOzM2mJHzp/7cejuK2aZUKbojFEBIWmST/wMB3C1I10
+	9KX+3pAd9OgPwK5sK8MgboBoFNeaLlKQ1beYqR7xpRZ2VVv5BV/9hHtORX18fKEd0qR5DSU6C8bhG
+	k1auXzPskHgW7BcZGi7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5g6B-00BlFU-U2; Tue, 20 Jul 2021 03:07:11 +0000
+	id 1m5gnw-00Bp6S-N9; Tue, 20 Jul 2021 03:52:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5g68-00BlF1-TH; Tue, 20 Jul 2021 03:07:10 +0000
-X-UUID: 01d91e1d340541f2815ff45d32721db6-20210719
+ id 1m5gnu-00Bp4r-KF; Tue, 20 Jul 2021 03:52:23 +0000
+X-UUID: b1b6c49c96554e31adc940877e9cad51-20210719
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Oix+NKONo3dc98HO65gjSGiue5LNvnVPNsPdxoehHC0=; 
- b=qLWHGOLye72IHuvgDNrvZDRZTx7oqfgxPPBK6n93kWohTEF/p3qJEAqac1XprwzjvardCfHm5gHlw4wR1yl1tWk/nQuupgsTCieQTvCFBUL9tfNhpQV0Ymw6cUb209krQw4dwxFZcX3t08kX8gddoFxebhrMHJmsO5UTsgvh3o0=;
-X-UUID: 01d91e1d340541f2815ff45d32721db6-20210719
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=7q3C2n8o+ah8sQ4nGV4WUfMOSZmLDa8kDM/dzqZCwSA=; 
+ b=payZ3u9noQhAl7G8viYsyW9uHFDM3vvpDZL4gwGyqOgVHNVAXNkIKH5xa3GhpTwEMrUU0a0WeJlvE67rlsDCMq0KRm88wFSC550f6WEOt9g/+APDHSETbmkd5Se8HJgctRpiumVAZWpes8/yhQNWHysw8UfyBA6eGB8yFj75rK0=;
+X-UUID: b1b6c49c96554e31adc940877e9cad51-20210719
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chuanjia.liu@mediatek.com>)
+ (envelope-from <landen.chao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 39933920; Mon, 19 Jul 2021 20:07:07 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 19 Jul 2021 19:59:40 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Jul 2021 10:59:39 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 20 Jul 2021 10:59:38 +0800
-Message-ID: <1626749978.2466.14.camel@mhfsdcap03>
-Subject: Re: [PATCH v11 2/4] PCI: mediatek: Add new method to get shared
- pcie-cfg base address and parse node
-From: Chuanjia Liu <chuanjia.liu@mediatek.com>
-To: <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>
-CC: <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
- <lorenzo.pieralisi@arm.com>, <ryder.lee@mediatek.com>,
- <jianjun.wang@mediatek.com>, <yong.wu@mediatek.com>, Frank Wunderlich
- <frank-w@public-files.de>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Chuanjia Liu <chuanjia.liu@mediatek.com>
-Date: Tue, 20 Jul 2021 10:59:38 +0800
-In-Reply-To: <20210719073456.28666-3-chuanjia.liu@mediatek.com>
-References: <20210719073456.28666-1-chuanjia.liu@mediatek.com>
- <20210719073456.28666-3-chuanjia.liu@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ with ESMTP id 900618329; Mon, 19 Jul 2021 20:52:16 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 19 Jul 2021 20:50:11 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Jul 2021 11:50:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 20 Jul 2021 11:50:09 +0800
+From: Landen Chao <landen.chao@mediatek.com>
+To: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <dqfext@gmail.com>, Sean Wang
+ <sean.wang@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <frank-w@public-files.de>, <steven.liu@mediatek.com>, Landen Chao
+ <landen.chao@mediatek.com>
+Subject: [PATCH net-next v3] net: Update MAINTAINERS for MediaTek switch driver
+Date: Tue, 20 Jul 2021 11:50:07 +0800
+Message-ID: <49e1aa8aac58dcbf1b5e036d09b3fa3bbb1d94d0.1626751861.git.landen.chao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <cover.1626751861.git.landen.chao@mediatek.com>
+References: <cover.1626751861.git.landen.chao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210719_200708_999417_EAA3F541 
-X-CRM114-Status: GOOD (  26.33  )
+X-CRM114-CacheID: sfid-20210719_205222_719794_66CFBAD3 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,95 +87,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCAyMDIxLTA3LTE5IGF0IDE1OjM0ICswODAwLCBDaHVhbmppYSBMaXUgd3JvdGU6DQo+
-IEZvciB0aGUgbmV3IGR0cyBmb3JtYXQsIGFkZCBhIG5ldyBtZXRob2QgdG8gZ2V0DQo+IHNoYXJl
-ZCBwY2llLWNmZyBiYXNlIGFkZHJlc3MgYW5kIHBhcnNlIG5vZGUuDQo+IA0KPiBTaWduZWQtb2Zm
-LWJ5OiBDaHVhbmppYSBMaXUgPGNodWFuamlhLmxpdUBtZWRpYXRlay5jb20+DQo+IEFja2VkLWJ5
-OiBSeWRlciBMZWUgPHJ5ZGVyLmxlZUBtZWRpYXRlay5jb20+DQo+IC0tLQ0KPiAgZHJpdmVycy9w
-Y2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMgfCA1MiArKysrKysrKysrKysrKysrKysrLS0t
-LS0tLQ0KPiAgMSBmaWxlIGNoYW5nZWQsIDM5IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygt
-KQ0KPiANCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRl
-ay5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMNCj4gaW5kZXggMjVi
-ZWU2OTM4MzRmLi45MjhlMDk4M2E5MDAgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRy
-b2xsZXIvcGNpZS1tZWRpYXRlay5jDQo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNp
-ZS1tZWRpYXRlay5jDQo+IEBAIC0xNCw2ICsxNCw3IEBADQo+ICAjaW5jbHVkZSA8bGludXgvaXJx
-Y2hpcC9jaGFpbmVkX2lycS5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L2lycWRvbWFpbi5oPg0KPiAg
-I2luY2x1ZGUgPGxpbnV4L2tlcm5lbC5oPg0KPiArI2luY2x1ZGUgPGxpbnV4L21mZC9zeXNjb24u
-aD4NCj4gICNpbmNsdWRlIDxsaW51eC9tc2kuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9tb2R1bGUu
-aD4NCj4gICNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+DQo+IEBAIC0yMyw2ICsyNCw3IEBA
-DQo+ICAjaW5jbHVkZSA8bGludXgvcGh5L3BoeS5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRm
-b3JtX2RldmljZS5oPg0KPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4NCj4gKyNpbmNs
-dWRlIDxsaW51eC9yZWdtYXAuaD4NCj4gICNpbmNsdWRlIDxsaW51eC9yZXNldC5oPg0KPiAgDQo+
-ICAjaW5jbHVkZSAiLi4vcGNpLmgiDQo+IEBAIC0yMDcsNiArMjA5LDcgQEAgc3RydWN0IG10a19w
-Y2llX3BvcnQgew0KPiAgICogc3RydWN0IG10a19wY2llIC0gUENJZSBob3N0IGluZm9ybWF0aW9u
-DQo+ICAgKiBAZGV2OiBwb2ludGVyIHRvIFBDSWUgZGV2aWNlDQo+ICAgKiBAYmFzZTogSU8gbWFw
-cGVkIHJlZ2lzdGVyIGJhc2UNCj4gKyAqIEBjZmc6IElPIG1hcHBlZCByZWdpc3RlciBtYXAgZm9y
-IFBDSWUgY29uZmlnDQo+ICAgKiBAZnJlZV9jazogZnJlZS1ydW4gcmVmZXJlbmNlIGNsb2NrDQo+
-ICAgKiBAbWVtOiBub24tcHJlZmV0Y2hhYmxlIG1lbW9yeSByZXNvdXJjZQ0KPiAgICogQHBvcnRz
-OiBwb2ludGVyIHRvIFBDSWUgcG9ydCBpbmZvcm1hdGlvbg0KPiBAQCAtMjE1LDYgKzIxOCw3IEBA
-IHN0cnVjdCBtdGtfcGNpZV9wb3J0IHsNCj4gIHN0cnVjdCBtdGtfcGNpZSB7DQo+ICAJc3RydWN0
-IGRldmljZSAqZGV2Ow0KPiAgCXZvaWQgX19pb21lbSAqYmFzZTsNCj4gKwlzdHJ1Y3QgcmVnbWFw
-ICpjZmc7DQo+ICAJc3RydWN0IGNsayAqZnJlZV9jazsNCj4gIA0KPiAgCXN0cnVjdCBsaXN0X2hl
-YWQgcG9ydHM7DQo+IEBAIC02NTAsNyArNjU0LDExIEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc2V0
-dXBfaXJxKHN0cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0LA0KPiAgCQlyZXR1cm4gZXJyOw0KPiAg
-CX0NCj4gIA0KPiAtCXBvcnQtPmlycSA9IHBsYXRmb3JtX2dldF9pcnEocGRldiwgcG9ydC0+c2xv
-dCk7DQo+ICsJaWYgKG9mX2ZpbmRfcHJvcGVydHkoZGV2LT5vZl9ub2RlLCAiaW50ZXJydXB0LW5h
-bWVzIiwgTlVMTCkpDQo+ICsJCXBvcnQtPmlycSA9IHBsYXRmb3JtX2dldF9pcnFfYnluYW1lKHBk
-ZXYsICJwY2llX2lycSIpOw0KPiArCWVsc2UNCj4gKwkJcG9ydC0+aXJxID0gcGxhdGZvcm1fZ2V0
-X2lycShwZGV2LCBwb3J0LT5zbG90KTsNCj4gKw0KPiAgCWlmIChwb3J0LT5pcnEgPCAwKQ0KPiAg
-CQlyZXR1cm4gcG9ydC0+aXJxOw0KPiAgDQo+IEBAIC02ODIsNiArNjkwLDEwIEBAIHN0YXRpYyBp
-bnQgbXRrX3BjaWVfc3RhcnR1cF9wb3J0X3YyKHN0cnVjdCBtdGtfcGNpZV9wb3J0ICpwb3J0KQ0K
-PiAgCQl2YWwgfD0gUENJRV9DU1JfTFRTU01fRU4ocG9ydC0+c2xvdCkgfA0KPiAgCQkgICAgICAg
-UENJRV9DU1JfQVNQTV9MMV9FTihwb3J0LT5zbG90KTsNCj4gIAkJd3JpdGVsKHZhbCwgcGNpZS0+
-YmFzZSArIFBDSUVfU1lTX0NGR19WMik7DQo+ICsJfSBlbHNlIGlmIChwY2llLT5jZmcpIHsNCj4g
-KwkJdmFsID0gUENJRV9DU1JfTFRTU01fRU4ocG9ydC0+c2xvdCkgfA0KPiArCQkgICAgICBQQ0lF
-X0NTUl9BU1BNX0wxX0VOKHBvcnQtPnNsb3QpOw0KPiArCQlyZWdtYXBfdXBkYXRlX2JpdHMocGNp
-ZS0+Y2ZnLCBQQ0lFX1NZU19DRkdfVjIsIHZhbCwgdmFsKTsNCj4gIAl9DQo+ICANCj4gIAkvKiBB
-c3NlcnQgYWxsIHJlc2V0IHNpZ25hbHMgKi8NCj4gQEAgLTk4NSw2ICs5OTcsNyBAQCBzdGF0aWMg
-aW50IG10a19wY2llX3N1YnN5c19wb3dlcnVwKHN0cnVjdCBtdGtfcGNpZSAqcGNpZSkNCj4gIAlz
-dHJ1Y3QgZGV2aWNlICpkZXYgPSBwY2llLT5kZXY7DQo+ICAJc3RydWN0IHBsYXRmb3JtX2Rldmlj
-ZSAqcGRldiA9IHRvX3BsYXRmb3JtX2RldmljZShkZXYpOw0KPiAgCXN0cnVjdCByZXNvdXJjZSAq
-cmVnczsNCj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKmNmZ19ub2RlOw0KPiAgCWludCBlcnI7DQo+
-ICANCj4gIAkvKiBnZXQgc2hhcmVkIHJlZ2lzdGVycywgd2hpY2ggYXJlIG9wdGlvbmFsICovDQo+
-IEBAIC05OTUsNiArMTAwOCwxNCBAQCBzdGF0aWMgaW50IG10a19wY2llX3N1YnN5c19wb3dlcnVw
-KHN0cnVjdCBtdGtfcGNpZSAqcGNpZSkNCj4gIAkJCXJldHVybiBQVFJfRVJSKHBjaWUtPmJhc2Up
-Ow0KPiAgCX0NCj4gIA0KPiArCWNmZ19ub2RlID0gb2ZfZmluZF9jb21wYXRpYmxlX25vZGUoTlVM
-TCwgTlVMTCwNCj4gKwkJCQkJICAgIm1lZGlhdGVrLGdlbmVyaWMtcGNpZWNmZyIpOw0KPiArCWlm
-IChjZmdfbm9kZSkgew0KPiArCQlwY2llLT5jZmcgPSBzeXNjb25fbm9kZV90b19yZWdtYXAoY2Zn
-X25vZGUpOw0KPiArCQlpZiAoSVNfRVJSKHBjaWUtPmNmZykpDQo+ICsJCQlyZXR1cm4gUFRSX0VS
-UihwY2llLT5jZmcpOw0KPiArCX0NCj4gKw0KPiAgCXBjaWUtPmZyZWVfY2sgPSBkZXZtX2Nsa19n
-ZXQoZGV2LCAiZnJlZV9jayIpOw0KPiAgCWlmIChJU19FUlIocGNpZS0+ZnJlZV9jaykpIHsNCj4g
-IAkJaWYgKFBUUl9FUlIocGNpZS0+ZnJlZV9jaykgPT0gLUVQUk9CRV9ERUZFUikNCj4gQEAgLTEw
-MjcsMjIgKzEwNDgsMjcgQEAgc3RhdGljIGludCBtdGtfcGNpZV9zZXR1cChzdHJ1Y3QgbXRrX3Bj
-aWUgKnBjaWUpDQo+ICAJc3RydWN0IGRldmljZSAqZGV2ID0gcGNpZS0+ZGV2Ow0KPiAgCXN0cnVj
-dCBkZXZpY2Vfbm9kZSAqbm9kZSA9IGRldi0+b2Zfbm9kZSwgKmNoaWxkOw0KPiAgCXN0cnVjdCBt
-dGtfcGNpZV9wb3J0ICpwb3J0LCAqdG1wOw0KPiAtCWludCBlcnI7DQo+ICsJaW50IGVyciwgc2xv
-dDsNCj4gKw0KPiArCXNsb3QgPSBvZl9nZXRfcGNpX2RvbWFpbl9ucihkZXYtPm9mX25vZGUpOw0K
-PiArCWlmIChzbG90IDwgMCkgew0KPiArCQlmb3JfZWFjaF9hdmFpbGFibGVfY2hpbGRfb2Zfbm9k
-ZShub2RlLCBjaGlsZCkgew0KPiArCQkJZXJyID0gb2ZfcGNpX2dldF9kZXZmbihjaGlsZCk7DQo+
-ICsJCQlpZiAoZXJyIDwgMCkgew0KPiArCQkJCWRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIGdldCBk
-ZXZmbjogJWRcbiIsIGVycik7DQo+ICsJCQkJZ290byBlcnJvcl9wdXRfbm9kZTsNCj4gKwkJCX0N
-Cj4gIA0KPiAtCWZvcl9lYWNoX2F2YWlsYWJsZV9jaGlsZF9vZl9ub2RlKG5vZGUsIGNoaWxkKSB7
-DQo+IC0JCWludCBzbG90Ow0KPiArCQkJc2xvdCA9IFBDSV9TTE9UKGVycik7DQo+ICANCj4gLQkJ
-ZXJyID0gb2ZfcGNpX2dldF9kZXZmbihjaGlsZCk7DQo+IC0JCWlmIChlcnIgPCAwKSB7DQo+IC0J
-CQlkZXZfZXJyKGRldiwgImZhaWxlZCB0byBwYXJzZSBkZXZmbjogJWRcbiIsIGVycik7DQo+IC0J
-CQlnb3RvIGVycm9yX3B1dF9ub2RlOw0KPiArCQkJZXJyID0gbXRrX3BjaWVfcGFyc2VfcG9ydChw
-Y2llLCBjaGlsZCwgc2xvdCk7DQo+ICsJCQlpZiAoZXJyKQ0KPiArCQkJCWdvdG8gZXJyb3JfcHV0
-X25vZGU7DQo+ICAJCX0NCj4gLQ0KPiAtCQlzbG90ID0gUENJX1NMT1QoZXJyKTsNCj4gLQ0KPiAt
-CQllcnIgPSBtdGtfcGNpZV9wYXJzZV9wb3J0KHBjaWUsIGNoaWxkLCBzbG90KTsNCj4gKwl9IGVs
-c2Ugew0KPiArCQllcnIgPSBtdGtfcGNpZV9wYXJzZV9wb3J0KHBjaWUsIG5vZGUsIHNsb3QpOw0K
-PiAgCQlpZiAoZXJyKQ0KPiAtCQkJZ290byBlcnJvcl9wdXRfbm9kZTsNCj4gKwkJCXJldHVybiBl
-cnI7DQoNCkhp77yMUm9iDQpJIGNoYW5nZWQgdGhpcyBpbiB0aGUgdjkgdmVyc2lvbjoNCldoZW4g
-dGhlIG5ldyBkdHMgZm9ybWF0IGlzIHVzZWQsIG9mX25vZGVfZ2V0KCkgaXMgbm90IGNhbGxlZC4N
-ClNvIHdoZW4gbXRrX3BjaWVfcGFyc2VfcG9ydCBmYWlscywgb2Zfbm9kZV9wdXQgZG9uJ3QgbmVl
-ZCB0byBiZSBjYWxsZWQuDQppZiB5b3Ugc3RpbGwgb2sgZm9yIHRoaXMsIEkgd2lsbCBhZGQgUi1i
-IGluIG5leHQgdmVyc2lvbi4NCg0KQmVzdCBSZWdhcmRzDQo+ICAJfQ0KPiAgDQo+ICAJZXJyID0g
-bXRrX3BjaWVfc3Vic3lzX3Bvd2VydXAocGNpZSk7DQoNCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Update maintainers for MediaTek switch driver with Deng Qingfang who has
+contributed many high-quality patches (interrupt, VLAN, GPIO, and etc.)
+and will help maintenance.
+
+Signed-off-by: Landen Chao <landen.chao@mediatek.com>
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+Acked-by: Vladimir Oltean <olteanv@gmail.com>
+---
+v2 -> v3: Change Message-Id from v1.
+v1 -> v2: Remove Change-Id.
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index bd7aff0c120f..3315627ebb6b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11588,6 +11588,7 @@ F:	drivers/char/hw_random/mtk-rng.c
+ MEDIATEK SWITCH DRIVER
+ M:	Sean Wang <sean.wang@mediatek.com>
+ M:	Landen Chao <Landen.Chao@mediatek.com>
++M:	DENG Qingfang <dqfext@gmail.com>
+ L:	netdev@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/dsa/mt7530.*
+-- 
+2.29.2
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
