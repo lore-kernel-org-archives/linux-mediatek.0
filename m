@@ -2,157 +2,95 @@ Return-Path: <SRS0=Q4g2=MM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0100C07E95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34323C07E95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:06:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8E4E76120F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:32:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E4E76120F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
+	by mail.kernel.org (Postfix) with ESMTPS id E7D4E6113A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:06:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E7D4E6113A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yEQhLriAN3AIdqoHBCphn/unfxq4A1VsgXQueMuxgsQ=; b=bd81O9Xg4t+q2/p/AjHQpN0aqa
-	PbznZN1vVofGAQXOOLu8e3WcW/NYbVccqbQ+yJTZ9WY62O0pIuiLZjrk1/WvQcnnKBx0JExclNDgh
-	+kAzcBPJLlJOx87AeDIWb6OmQpO1rdEKaQKew7BESJBTYdWSum+fqaLJ7CxmqdAfe0k0vYSeL3Iud
-	Tyh3BxPhieS7wjE+r5MhgY6XqQ+UjieBhpDBPxeqnWHZBxvfHiLj6AblNdPzWyvN4qSXZIyvPly9V
-	FsJL2rkrJ66hePO0/ytdnCvMMuK/2wQOmgRe48q7hGgPTeRe4Y+n5AMgYR0SlEd5xflb5S5T2pYMH
-	2rC1Jtfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=0xMAgmGN/CRP1NoQ26HwXJ4RTbg3pOZN1JsXWwHT4es=; b=fAYEpVLTC6XIto
+	ylPYSQDvcplEdbN853+6Ds8Gxb3ILNCnujh9fs5vSWlwkOjy7GWZzuo9LvDljr7hF4HcHvfwhZbM2
+	7VF6asD+9H1V+2Gq1nftDIhilQGxPsmAcWADLCK1v3naQ+i7ZpRVGIc69WXFes+YT6bqW0xn8RhLy
+	rBf0uP2LUSppu/H0tQUHWcicYF+M5jNYc1iO6qYcWwDLUIxuGYzwzmQpijhRf9N5dA77yoXmL0wmT
+	dCQnBNA6gKBVrEOWKXVWuUNo7kulIOD+usYQ9fp1YSG7aEUioGtxZMfk/gQZRtWNI6UtLFkb8CUr2
+	Ss5TnU4+4/b6u/FYPbbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5m6e-00CPFB-Jv; Tue, 20 Jul 2021 09:32:04 +0000
-Received: from mail-bn8nam11on2057.outbound.protection.outlook.com
- ([40.107.236.57] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1m5mdr-00CT5G-7J; Tue, 20 Jul 2021 10:06:23 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5m6b-00CPEU-V2; Tue, 20 Jul 2021 09:32:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=TnSID1+KHLBMYKCMX7nNZBsSvQRw44ylmxj+gM1sqmdzPEUmAdK/L539q0pCcEvaKRS6WwfR1kp5QD5PYfWKufZSp3KyOIjfK19bRcn+QdT1wlqBGaNq0Lw1eqePFWncc4nAs/chWkH4Cud8+yDEeY8HpfCkRnpTQLyfUslWb3vhmhC7GtxckgrL/oOnXL945HEyslSTfeXvLoSE5PbK3JncWdl/tCS7eEevz2VBlYfTcQ7CG0vuVLLSiG73Hf300Mf+WmIvrpULhJCxwQugil34fb+5ryLvtL4jZjJiVNs0x+56TeEmygIhL/EuDLzcW7xuy7biH9Te2Elq79im6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XoP1tStw7r80ZKYid5rPEI3odof0MEe0DeSs936apUE=;
- b=nlRZyCHuFgCSzdzWVKO+R9WfMrfxRJExDsDB5TNK7oL4aoXP/ELLixHQrQO8fM5qInss8miYH9nvKMNvsINdvnJeqFp4tXASGA6BItfdb3A5sgjPuP0KDVp7Crm7rqCZTfkGrs9wlWkY0rI+beqHb+JtUhiRz+HEB+F5SwyREYSZXGe88xPzWt29j6wd52DRjFV9entc2ePIzBzXirP2uC8/Jn6ogAZjSzsxOesMXZgiJTxwlSQ5N1qZRHDAw+yybcfepNrp4YU+p6CcJLw6fJRhW+ML+i8dyY3Y0WIc1YAuaMK1K30IEEOg/prJ81sZ+/jeZEUiYZYe3V0A/DwTNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XoP1tStw7r80ZKYid5rPEI3odof0MEe0DeSs936apUE=;
- b=b2G4e7bzpXEUQJ2mnHvG7QOozsj9GCpqtqGTrOXoZ7yChpQJCfo67rlh5CLL0V4sl0dAnG5YfLYQQBKjKHRMWYZnqWVtvIDlWBIBLL69zHuTHMZuHX/+VeCP7Kr1MMUtwfOML5h57J4eusUqro8cIK8570p2XOA8ZxkycSTyqug=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
- by MN2PR12MB3967.namprd12.prod.outlook.com (2603:10b6:208:16c::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.29; Tue, 20 Jul
- 2021 09:31:55 +0000
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::6c9e:1e08:7617:f756]) by MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::6c9e:1e08:7617:f756%5]) with mapi id 15.20.4331.034; Tue, 20 Jul 2021
- 09:31:55 +0000
-Subject: Re: [PATCH] dma_buf: remove dmabuf sysfs teardown before
- release/detach
-To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
+ id 1m5mdY-00CT1s-A9
+ for linux-mediatek@lists.infradead.org; Tue, 20 Jul 2021 10:06:09 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id
+ d9-20020a17090ae289b0290172f971883bso1604289pjz.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 20 Jul 2021 03:06:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E6dvoxU82sdq8hrtHo6MNtrAkdmF4Qfs1QHBwRf0tvA=;
+ b=Cp59n2Cb272AzmErANtJnFMRXbhxIXwpy4y+lZNu4HXwA0rY3ycd0yal8gjH4KS/8B
+ tX7HiQlqzbMpHXvkhj2/8EtDSZVA5KLyTBhW7d8tTrmJmBbNDOWpfkD76197FZBz7zti
+ ydKpQM1bMd+Ia1gvMedLl7LNhCSltVNot4Bc8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=E6dvoxU82sdq8hrtHo6MNtrAkdmF4Qfs1QHBwRf0tvA=;
+ b=Wy5g1Rst9j4eJzwRFj3QTgXfM0Ov8nx0Hq3s2DY4RZErRea0Xu3J4ZYXFrd1fg2VNl
+ oLWv7OwhtC1m6o7sA6po7b1m3Y5V80DmsSSev1l12ayiu9/CMj5Q27+Zek4iyRjD3mwK
+ BStK7Ybw9u0KlBga+rPEMAXezg9ZIH8JybILrYDfzsQ+RYJ8uxAy4r2tDO0pNqDf9i1X
+ 381iQ1bFtH5UKdZHs1WJefeAQV1vT2io0siCb5gQioVWSFQGLYviJLDSo//NPmIdszF2
+ cEucaDs6KnDOuzv+E0M9vXd64hEH0F6rJ/1QetuesngIDEKByPfvmY5i4asOhDL9Eo9W
+ bPRw==
+X-Gm-Message-State: AOAM533Pt4BsgQ9QhNJeXt0mZWWDeIRyYhybgzTSqXiW82vGJzdjaSv+
+ jujr0H3I0BfcW6qLuxedyl6JvQ==
+X-Google-Smtp-Source: ABdhPJymK2i/4VfbrYc8qY2j3o9aCSyBSwL36wWIQBgl7jKUzWJ4Lv9BHbGe+7BeA9pC5I4dtFqRRw==
+X-Received: by 2002:a17:90a:4302:: with SMTP id
+ q2mr33210703pjg.189.1626775562319; 
+ Tue, 20 Jul 2021 03:06:02 -0700 (PDT)
+Received: from kafuu-chino.c.googlers.com.com
+ (105.219.229.35.bc.googleusercontent.com. [35.229.219.105])
+ by smtp.googlemail.com with ESMTPSA id y5sm22843830pfn.87.2021.07.20.03.05.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Jul 2021 03:06:01 -0700 (PDT)
+From: Pi-Hsun Shih <pihsun@chromium.org>
+To: 
+Cc: Pi-Hsun Shih <pihsun@chromium.org>, Tzung-Bi Shih <tzungbi@google.com>,
+ Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Robert Foss <robert.foss@linaro.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK"
- <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com
-References: <20210719051944.40871-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <8d7dfc78-aa85-48b5-2828-21ec6b463ac3@amd.com>
-Date: Tue, 20 Jul 2021 11:31:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-In-Reply-To: <20210719051944.40871-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: PR1PR01CA0031.eurprd01.prod.exchangelabs.com
- (2603:10a6:102::44) To MN2PR12MB3775.namprd12.prod.outlook.com
- (2603:10b6:208:159::19)
+ Hsin-Yi Wang <hsinyi@chromium.org>, Xin Ji <xji@analogixsemi.com>,
+ dri-devel@lists.freedesktop.org (open list:DRM DRIVERS),
+ linux-kernel@vger.kernel.org (open list),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v2] drm/bridge: anx7625: Use pm_runtime_force_{suspend, resume}
+Date: Tue, 20 Jul 2021 18:05:21 +0800
+Message-Id: <20210720100553.2340425-1-pihsun@chromium.org>
+X-Mailer: git-send-email 2.32.0.402.g57bb445576-goog
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [IPv6:2a02:908:1252:fb60:8651:5b5e:8648:2fd0]
- (2a02:908:1252:fb60:8651:5b5e:8648:2fd0) by
- PR1PR01CA0031.eurprd01.prod.exchangelabs.com (2603:10a6:102::44) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.23 via Frontend
- Transport; Tue, 20 Jul 2021 09:31:53 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f436312b-c6a0-4631-9b56-08d94b61367f
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3967:
-X-Microsoft-Antispam-PRVS: <MN2PR12MB3967D240B1C80182883A16B183E29@MN2PR12MB3967.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: n+c/qpSRUF8F08FXwvV4yLH/axj7+nGOFPaBu/xp1GS7Up65mKqwhfD67dxj5wS31VLtV30sXtTrJhqxkxFVn6z+onavIDx6y3S5/Zt/vyQINYPgO58rzzYPZCyMaKO7KUTZcadyIE0oTAM3OxTA4Jzb7dAXSE0BAh1ssZ1YpZwnxuQQNK9e4sFI7uEE0tKt0k3DlzUCQonNXaADNA3GLw+muqLcAdOfHVBJjiOU+0Qj/HQaZWbGW88upnbv1mVZBgQyJ6/+s/Qv+/6vZ3HOge2dnrK4ms3S3JcBhoAW9xHkFlZb/woYD6a1wTpDWLK8xdCbPnoa4UXYrcS2jYb+awtYbx/xKgdFnStosNUSMIiGzd/rhGvSyApJBViBHTqGMlgXfuTIfEGrh1PGVSSu+T3vFfiv3Zl3rfOgspTgCy2glZJ4vUL+LgGbCKLDYVZZD6w1r7lEojiwlv56u0mstj3if2hTs1jEvNAvGnzIQovZdH2JLnGVidfMP+oJhiDEzEJ1cbEAzF/eOdYEccbeQgy/AilYsq575Y1vWH8vQ0njW1bBKkin3EBY4668tfAYbXN19WsBhnKxwgGJ1DpQ6pDtutltAGEyJ7O68Fp77mpb+w23N0KpF3X7jLyfOKoPV6gpJYbpE6tOBE4xNUMM0VZDdMUQ+7tLoTSOSXVsydFakldEdDv5E9cjBHhvkeqFbYhaFgOa7aPnYaREH9oFPA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(346002)(396003)(39860400002)(366004)(136003)(478600001)(8676002)(5660300002)(36756003)(8936002)(86362001)(7416002)(2616005)(66946007)(31696002)(316002)(83380400001)(110136005)(4326008)(2906002)(66476007)(186003)(66556008)(6666004)(31686004)(38100700002)(6486002)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Ym5PV0szVVRmYkxhcTN2U3hhM285dGxWOEU5U21QamlmZy9MYlo4RW5PYTEw?=
- =?utf-8?B?ZzVvNjJ2YUEva2o1bGZISGQvMURaMlBjalpJS2dFSmgvMXVJeU1naC94UUN0?=
- =?utf-8?B?aDdma2R6dlRRWklVVnpXLzBkbk1XRUJja3REckozUDZWVUhnbWtubWppUzBq?=
- =?utf-8?B?ZTJBdlpFMktPY2c4dXR2Y1VMVzNGbnpBUDNHeE5lbTVqZlAzNGw4WVp0L2Jv?=
- =?utf-8?B?bElDd3hRa0xNQXZXS0wvZ0k2MkZ0aGRDVTNTTGpOTVBDQWpzOEVvL3NyT1Jt?=
- =?utf-8?B?anU0b3JjNlROV28yaVZ3ZXFJaEszU2l4TExqZldLYWEvY0QvdE1FNm1OVnkv?=
- =?utf-8?B?azNGbjJiSGhhS3VDY2kxUytHV3QxaWJuZElid1pNTk5zYTZwNWR3R1IyZ1Zr?=
- =?utf-8?B?UWNlV2Rzb1lrMjhSVEIzWG11NGY0cHVuZ3ZwejZZdldpTnNPZUU4SVBGZ2Jn?=
- =?utf-8?B?RW5xV002MU5pMHhJNFhZS2MzNWlYVzloNGlwMTdqYVNXOE50V2JnTHQ5dXcy?=
- =?utf-8?B?YlQyTmpqNkIyVkNyWEwxMzNiQ3VudFZTUSs5aEMrYmkzdXpwazdIWTVJL2ZN?=
- =?utf-8?B?ZFhycTI3d2pXN21INTZqY2NQQzhTb2pJMjBwTG9GTXdOd3hYekFTVWlCbVZD?=
- =?utf-8?B?QmVDczU3ZThoRVNsd2IyL2RVc0RZODdWUTdCRG1pNWM4eE9DK094QVpFYmlt?=
- =?utf-8?B?UGhKWUhsLy9WbmhNVlJCYUNWdDdFaVBUQnhYem1hc0M5R05mSHF0dmJmekdX?=
- =?utf-8?B?MUMyYUI1QXMyTGppWmJycnlLc1VuV054QjFHejNTM29uN08zTGR3bUc4RUwy?=
- =?utf-8?B?TWlNUkV2OEVIMUF5MVVLbm1vOUx3VVhCZjZVMVRoZ0d0VUttZXpaekZIRWVq?=
- =?utf-8?B?a3RDa2pMazk5Zm1VYkRFZjJaZ0RIWkJ0NnM0OTRCam1vRXQ3SlA2N3JIL0xX?=
- =?utf-8?B?NkNtSkFSdTk0U1VURXJlWlNLaTlVQUxQRGNuWE5Nei85cjU1R0xnOHNaOW41?=
- =?utf-8?B?RnNFS3dmMU1OendGQXM1cXUrRjdKWDRuYytrUXErUjdRcVhSallsZnVDUkUw?=
- =?utf-8?B?ay9RQXIxbFNsbkRYNUxOU1RncU5ZTjByQUhRZnB0TDl5eGU5WjZ3b2tFY3ZZ?=
- =?utf-8?B?dFZwM21kblJMN203cnoyVUtpVE1uWENxWFhrbWhTN2hLWGdxWUNqWmluOEVh?=
- =?utf-8?B?M0JMTHdGMll0NTJ4MXlha1QrTnJuK3V5NURyMjlsbFRYWG4yVGl1Z1VOajdK?=
- =?utf-8?B?SEN3anJvSjYrS3VoekI2aFZzVVJtbVlyRXdISDZQMVBBNERBSFFtWFJ1R3FO?=
- =?utf-8?B?T1NJSHpGYmoyQy9Mckx6SHlSOCs1VHRwZm9ZMC9PL1RFUTRpZWFNRGdaUW9y?=
- =?utf-8?B?VDh4U1JRWWNGTGJyNjAxZVp4eHFDSFVVVC92Z3ZLOHBGazN5SDhhRG1KVGha?=
- =?utf-8?B?dldYeVFVQUJLU0FJT0U2bFY3UmlMNzlnaGY0Vk50QTdNSWJtUFBqbzN3T0Uv?=
- =?utf-8?B?cUNVcGthSHd0elZzRUQwd1NHREllaUpWUk5GZmJralJCSlQzbHBhWDcyMnNW?=
- =?utf-8?B?M1hiZGlaNlVRWUZYMUo1aHR0ajMySnpjdFV5NWNKQjJtQVZWUnhDZnpzQlRz?=
- =?utf-8?B?eU8vZ0x5R2FuNytpMXVMclUzM2tFUCtqOVdZY1RkSTJneHdiR0xsbVFrQlZh?=
- =?utf-8?B?NUNrV1V0bmxacEo1WElVTG9TS21Yek1HaEZ5VDhZU0RzNm9veitHdXp2czNQ?=
- =?utf-8?B?MnBvYXlIdWEvRGdhUmtMb2VGU3RPRlZ0QkZxc1NYaDQ5THBMYzNhYUxadHk0?=
- =?utf-8?B?ZmFselVJa21LVVF0WGRja01ySkRtbTVNQndqUktUc3BGNlBxS1pmZVFYVTAr?=
- =?utf-8?Q?RblXqZTrTKcVP?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f436312b-c6a0-4631-9b56-08d94b61367f
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2021 09:31:55.1337 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9wJGt2MZDIDedH6DGpPOMpWlhG3aZBBTPtornQd9pA3ewWYCWxoRHGTUH8UcoTw7
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3967
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_023202_080348_B5F84148 
-X-CRM114-Status: GOOD (  16.53  )
+X-CRM114-CacheID: sfid-20210720_030604_429651_280933EB 
+X-CRM114-Status: GOOD (  19.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -164,61 +102,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 19.07.21 um 07:19 schrieb guangming.cao@mediatek.com:
-> From: Guangming Cao <Guangming.Cao@mediatek.com>
->
-> Dmabuf sysfs stat is used for dmabuf info track.
-> but these file maybe still use after buffer release/detach,
-> should clear it before buffer release/detach.
+Use pm_runtime_force_{suspend,resume} as system suspend/resume hook, to
+ensure that anx7625 is always powered off on suspend.
 
-Please rebase on current drm-misc-next. The attachment sysfs files have 
-been removed in the meantime.
+Also add a device link between anx7625 driver and the encoder, to ensure
+that bridge_disable will be called before suspend.
 
-Thanks,
-Christian.
+Signed-off-by: Pi-Hsun Shih <pihsun@chromium.org>
+---
 
->
-> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
-> ---
->   drivers/dma-buf/dma-buf.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-> index 510b42771974..9fa4620bd4bb 100644
-> --- a/drivers/dma-buf/dma-buf.c
-> +++ b/drivers/dma-buf/dma-buf.c
-> @@ -76,12 +76,12 @@ static void dma_buf_release(struct dentry *dentry)
->   	 */
->   	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
->   
-> +	dma_buf_stats_teardown(dmabuf);
->   	dmabuf->ops->release(dmabuf);
->   
->   	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
->   		dma_resv_fini(dmabuf->resv);
->   
-> -	dma_buf_stats_teardown(dmabuf);
->   	module_put(dmabuf->owner);
->   	kfree(dmabuf->name);
->   	kfree(dmabuf);
-> @@ -875,10 +875,11 @@ void dma_buf_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attach)
->   	dma_resv_lock(dmabuf->resv, NULL);
->   	list_del(&attach->node);
->   	dma_resv_unlock(dmabuf->resv);
-> +
-> +	dma_buf_attach_stats_teardown(attach);
->   	if (dmabuf->ops->detach)
->   		dmabuf->ops->detach(dmabuf, attach);
->   
-> -	dma_buf_attach_stats_teardown(attach);
->   	kfree(attach);
->   }
->   EXPORT_SYMBOL_GPL(dma_buf_detach);
+Changes from v1:
+* Use device link to ensure suspend resume order, instead of manually
+  calling force resume.
+
+This is the second approach mentioned in v1 of this patch
+(https://lore.kernel.org/patchwork/patch/1459569/#1655836).
+
+An issue was found that the anx7625 driver won't power off when used as
+eDP bridge on Asurada board if suspend is entered via VT2.
+
+The reason is that in this case, anx7625_suspend won't power off anx7625
+(since intp_irq is not set). And anx7625_bridge_disable is only called
+indirectly by other driver's (mediatek-drm) suspend.
+pm_runtime_put_sync won't do anything since it's already in system
+suspend.
+
+If not in VT2, the bridge disable is indirectly called when Chrome
+stops, so anx7625 will be powered off correctly.
+
+To fix the issue, the suspend resume hooks are changed to
+pm_runtime_force_{suspend,resume} to ensure the runtime suspend / resume
+is always called correctly when system suspend / resume.
+(Note that IRQ no longer needs to be disabled on suspend after commit
+f03ab6629c7b ("drm/bridge: anx7625: Make hpd workqueue freezable"))
+
+Also adds a stateless device link to ensure that the bridge disable is
+called before anx7625 is suspended.
+
+---
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 54 +++++++++--------------
+ drivers/gpu/drm/bridge/analogix/anx7625.h |  1 +
+ 2 files changed, 22 insertions(+), 33 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index 7519b7a0f29d..e248f0da2f8b 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -1331,6 +1331,8 @@ static void anx7625_bridge_detach(struct drm_bridge *bridge)
+ 		mipi_dsi_detach(ctx->dsi);
+ 		mipi_dsi_device_unregister(ctx->dsi);
+ 	}
++	if (ctx->link)
++		device_link_del(ctx->link);
+ }
+ 
+ static int anx7625_bridge_attach(struct drm_bridge *bridge,
+@@ -1355,6 +1357,13 @@ static int anx7625_bridge_attach(struct drm_bridge *bridge,
+ 		return err;
+ 	}
+ 
++	ctx->link = device_link_add(bridge->dev->dev, dev, DL_FLAG_STATELESS);
++	if (!ctx->link) {
++		DRM_DEV_ERROR(dev, "device link creation failed");
++		err = -EINVAL;
++		goto detach_dsi;
++	}
++
+ 	if (ctx->pdata.panel_bridge) {
+ 		err = drm_bridge_attach(bridge->encoder,
+ 					ctx->pdata.panel_bridge,
+@@ -1362,13 +1371,22 @@ static int anx7625_bridge_attach(struct drm_bridge *bridge,
+ 		if (err) {
+ 			DRM_DEV_ERROR(dev,
+ 				      "Fail to attach panel bridge: %d\n", err);
+-			return err;
++			goto remove_device_link;
+ 		}
+ 	}
+ 
+ 	ctx->bridge_attached = 1;
+ 
+ 	return 0;
++
++remove_device_link:
++	device_link_del(ctx->link);
++detach_dsi:
++	if (ctx->dsi) {
++		mipi_dsi_detach(ctx->dsi);
++		mipi_dsi_device_unregister(ctx->dsi);
++	}
++	return err;
+ }
+ 
+ static enum drm_mode_status
+@@ -1705,39 +1723,9 @@ static int __maybe_unused anx7625_runtime_pm_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused anx7625_resume(struct device *dev)
+-{
+-	struct anx7625_data *ctx = dev_get_drvdata(dev);
+-
+-	if (!ctx->pdata.intp_irq)
+-		return 0;
+-
+-	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
+-		enable_irq(ctx->pdata.intp_irq);
+-		anx7625_runtime_pm_resume(dev);
+-	}
+-
+-	return 0;
+-}
+-
+-static int __maybe_unused anx7625_suspend(struct device *dev)
+-{
+-	struct anx7625_data *ctx = dev_get_drvdata(dev);
+-
+-	if (!ctx->pdata.intp_irq)
+-		return 0;
+-
+-	if (!pm_runtime_enabled(dev) || !pm_runtime_suspended(dev)) {
+-		anx7625_runtime_pm_suspend(dev);
+-		disable_irq(ctx->pdata.intp_irq);
+-		flush_workqueue(ctx->workqueue);
+-	}
+-
+-	return 0;
+-}
+-
+ static const struct dev_pm_ops anx7625_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(anx7625_suspend, anx7625_resume)
++	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
++				pm_runtime_force_resume)
+ 	SET_RUNTIME_PM_OPS(anx7625_runtime_pm_suspend,
+ 			   anx7625_runtime_pm_resume, NULL)
+ };
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
+index 034c3840028f..c941b7a32859 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.h
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
+@@ -385,6 +385,7 @@ struct anx7625_data {
+ 	struct drm_bridge bridge;
+ 	u8 bridge_attached;
+ 	struct mipi_dsi_device *dsi;
++	struct device_link *link;
+ };
+ 
+ #endif  /* __ANX7625_H__ */
+
+base-commit: 3568c2c543e25d1a47bd97a607171511e7d44a45
+-- 
+2.32.0.402.g57bb445576-goog
 
 
 _______________________________________________
