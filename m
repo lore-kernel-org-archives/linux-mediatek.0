@@ -4,148 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 84955C07E95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 11:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0293DC07E9B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 12:34:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3BE656100C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 11:01:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3BE656100C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
+	by mail.kernel.org (Postfix) with ESMTPS id 989066120F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 12:34:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 989066120F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QJ7JnGVyirFN+OYFidDJnfpOinvUEq0eOQ9xPqBVySI=; b=B11aPaVN+xJFcDVa9hBvSOv27S
-	2bHhVoQQNafXCs9lj3HMxqUqMEvpmYJgQfMDb3CT5pJCLynHx6A/3vZExlRvQcmKAY7Ab7hwG8oTn
-	UNbGJb39iFF9eOVjbEicLbNsAk2GuSELx1U7JoNDyulOAlYriviwdJjFG3C9qoCWFWPy4PO1EZNVx
-	E8eQAEr/4zsJL6q3CksecnyLZBp/G5JpLKSxpxeucu7J8zhG+xi8hKaibSTRS6m4jtOjJ3nV5sLBE
-	z15gQRzE2uWkQzvK39H2//1JgQG37R3CXwRIYqFJiRpLgzMhApX9sNQ1qJeL9TO4gPHSxKQVGhyD5
-	f5rQJjcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=uvQEkgQcSYk9NvUrMvsCBIce+TGFWuWmVz3DNyTCZGM=; b=txSkKP2WIXeDDj+oODAGriH+Cz
+	CyZLPrWoqqCBI3jPoxy4QsxErX2RB64pmIHvYBK5VxagrbP0CuvMxqgtXtOouBrvuahYOHrrYaB7E
+	ZXlfuz0uSyAmolilVUk8SkQRWGrMgmKYSzH4NfQ0iCdoTjWfqs9GYYKr++eiQiOpuIerEtyPFVU01
+	zoOPWvWM3w8oZ0k4fLMhF3in7CEHCbdeDWwN2wS9BplcNs0JaJQPq/9f+HCos4WeX/tP/Cec86UYC
+	2JXsS5HMt6i++9WEc4oioIqostIR8SrGH02oY5tCqdxkwnc6IFtJWGn2I7SVwx6gRn1tQu1jKAkj3
+	jeSPnUTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5nUf-00Cb10-8V; Tue, 20 Jul 2021 11:00:57 +0000
-Received: from mail-dm6nam08on2087.outbound.protection.outlook.com
- ([40.107.102.87] helo=NAM04-DM6-obe.outbound.protection.outlook.com)
+	id 1m5owl-00CluJ-J5; Tue, 20 Jul 2021 12:34:03 +0000
+Received: from lb3-smtp-cloud9.xs4all.net ([194.109.24.30])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5nUc-00Cb0D-Vw; Tue, 20 Jul 2021 11:00:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=HrIim88j1tuepynqupZvAXB0P+0UpaDyWK6VoQG3W8GknjlcqPLRcMrr0iF66kNz89w2EhD2uLdi0XvwWLl5Um+Yw/ADn6TIcFE8TjYfgPOmZOEgOIgV5pZyQ8hPumUzM44k0Npb20swye9hrv921hVFeyZxDoYXbRykTwYBrjIco6YA552vn0b2b881BbahyTC+rWEL0186xSJCB6I8QRbOL5NoGXqY7un3uDLQQImqJ0+xC3NWDdUv9tYA8FdaNPLKFoOYYOrKGgg0GkXLVHlSLwxPY6f0WtmSODhI11aGAD1Q7ijBeUZXwSNtPXOl3zHYd195vf7xlsZxuofoIw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PvaE8AtmHGcKjsyBBUGafXkOuJRv4aBKMcqGzECqITY=;
- b=fx6rw7GifFdK5Q8sxkfF2WXrB4Jv31W45J+ag/gFWYXfTzvCxNaTmh571svXRnWNVk8Pz8wii/8OGYq2sieTF6A4W3Vo2zrV3UijxvLJEtLStYRIC/WIMN4umqA1dNcPIF8/iEk0uqLlr2TB36QyjYaCtXoSkRW3aljtx5vBFAap+45enDjLAmwDww2fMk8iIaFaFAMam7VYE7lqyWF9lwIJJsxkKR8qvuJmmdqEAm9iyicOPym0rUQVhmpdt8BEHCiO12UOMFV5V2xntnPIhBW16AhXUvEvCjLZv3cGRFh/4nUfxDukdWBg5kHb+jhwWIRtnQ4l3xR+20I0D97+Bg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PvaE8AtmHGcKjsyBBUGafXkOuJRv4aBKMcqGzECqITY=;
- b=0gfxrXBh5PnYOaIB7d+MKhnK3LUcvPpoN6E6vCIGK9AG60iitW+gc/0hXWGssDueNkOAget9BsMpiXn6ruvSWdrSQDoAAJK6w2BHMlBIzXI0srys+XohSU8eF4zwT7vnX3JHKIGpsx8Fj2QmtOMfNLiyarNPeY2X/tuZnB/ks5E=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
- by MN2PR12MB3902.namprd12.prod.outlook.com (2603:10b6:208:169::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.23; Tue, 20 Jul
- 2021 11:00:51 +0000
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::6c9e:1e08:7617:f756]) by MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::6c9e:1e08:7617:f756%5]) with mapi id 15.20.4331.034; Tue, 20 Jul 2021
- 11:00:50 +0000
-Subject: Re: [PATCH v2] dma_buf: remove dmabuf sysfs teardown before release
-To: guangming.cao@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ id 1m5owj-00ClsJ-AD
+ for linux-mediatek@lists.infradead.org; Tue, 20 Jul 2021 12:34:02 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id 5owamtGFUhqx95owbmvnD5; Tue, 20 Jul 2021 14:33:55 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1626784435; bh=SgVs08xYrU8M4EGDyVeDdbrqJ8SP9V6wFirHCrmdvWk=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=j30/Z68GcwkfvDIwKIcHD5UZBtjxUBp0URCumfhfHzfYH3AG5MBQcXHSi4JHq6ygN
+ eWA0U/Uu6DjAsKNajekPkLUr+UylB29/u3Kd9mst0zRE7qK7xBCJOpxXMwmFb3cxmM
+ o+y4P+Ubghsu1TYyFs6NdiWMGlzCzgTb+f+gQy6jhrer/m6VV7zKO21asbPyXttFRe
+ KoW8gUUTl2o0WzESLARGmQyDe/SucQrwnlTdDbp+JJKd1uuqKlcstsTJySFCYmNjm6
+ Qeo/UJyX8WRZKEGaEgiTUB2YxQM3NIwQE3Cs/6Mr2bwFEsZkHzxYxp3IMQwl+nwZdV
+ U8V0X0T4+TRlw==
+Subject: Re: [PATCH] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, sumit.semwal@linaro.org, wsd_upstream@mediatek.com
-References: <8d7dfc78-aa85-48b5-2828-21ec6b463ac3@amd.com>
- <20210720103158.83439-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <a12fc0c7-ed60-0724-fa56-097cb9a694ee@amd.com>
-Date: Tue, 20 Jul 2021 13:00:37 +0200
+ linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, dafna3@gmail.com, mchehab@kernel.org,
+ tfiga@chromium.org, enric.balletbo@collabora.com,
+ minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com,
+ andrew-ct.chen@mediatek.com, tiffany.lin@mediatek.com,
+ matthias.bgg@gmail.com, acourbot@chromium.org, hsinyi@chromium.org,
+ eizan@chromium.org
+References: <20210714134850.402-1-dafna.hirschfeld@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <119da2d7-9e7b-10e0-a948-877b494dbeac@xs4all.nl>
+Date: Tue, 20 Jul 2021 14:33:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
-In-Reply-To: <20210720103158.83439-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: PR0P264CA0238.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:100:1e::34) To MN2PR12MB3775.namprd12.prod.outlook.com
- (2603:10b6:208:159::19)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [IPv6:2a02:908:1252:fb60:8651:5b5e:8648:2fd0]
- (2a02:908:1252:fb60:8651:5b5e:8648:2fd0) by
- PR0P264CA0238.FRAP264.PROD.OUTLOOK.COM (2603:10a6:100:1e::34) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4331.23 via Frontend Transport; Tue, 20 Jul 2021 11:00:44 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3769e975-0835-47ec-af06-08d94b6da2a0
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3902:
-X-Microsoft-Antispam-PRVS: <MN2PR12MB390202C74762B2AF6D2F8EBE83E29@MN2PR12MB3902.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4502;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MWS337TOR35i1gKd05DkAsSvzaE+7nsunCre3xgmLBHuka6WFh/4N+ac3ymqcY82I+qGWXCmoIz1b3/dcJjnpOXl7y2/a0InZnN03SoesbRom+dfkkG+PLInmbWEej3FGpsxwKKlAIHk/WdWLv2edLbMdgL9QcDgYVhRVaqX4rD3Rnq/w67h/HHfCtiU3AeLWCIJ5EOMMWIYtOnnd865acEEU0Ve0KGNntEiSHjLrG0ZzTlz/LgQ/3xKVJdCE9OfUXg4f5vcZ8C/rtLuxqbcnFLUM0o78R53AfK+TV36eHZKKPy1XoWzvvNL3JdT+5JKOvqQ2ngx9nKgMnD8+w4qRAS9XGDaprfo3QjOiV4HOumMrXmN9kb8Qq3XgletmX66zcJdyHwFDcnDBdkyGCKgBltMooBUjXjUsPc5Jeph8vB1V8r0LaXPwQu5vr87VM9pr2hGuL4DQljwySpRdWzG9f+VP8OYxs5lTDQ42vzvcEGXUqOXY3fb5xDvqh+hNX0oys7bxF5KsGK0guljqNh1FaG+XGfpiQ/eWdyoNfcebW9zTN3jh3Iiw0+aghcqsv9DXqNIfz0TAzs+xTHCjRreP8EECCpOGimDen7DGS8oFV9yALq3GcrBbd8ehXhdYoYxiwUrWoU/ZMhRXxcw0GMir7q2cKtqfIZEDLswwKn6lib88wmd/JKDFzRJKAK7lL4KDRnAhKdt7U5VAS9MV2bTALXxG5Mv9fNO6YbbWxqb87I6irMG2FtjLYFbgFwtl6nE
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(31686004)(6486002)(31696002)(36756003)(5660300002)(86362001)(508600001)(83380400001)(8936002)(2906002)(6916009)(6666004)(2616005)(66556008)(4326008)(66476007)(8676002)(66946007)(38100700002)(7416002)(186003)(316002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cnRmK254azhVaklWMHJKTkQzOUcwS2ErVXNuVlo3YkxkTzNGZmRsSGpTQjNR?=
- =?utf-8?B?UE1rZU1xa25nT2R6ak1aeGY5NGdvVFJ4eHExM25ENjFsenBsc2g3NW5UTVg4?=
- =?utf-8?B?djZTazhYRnozbm4yU3pIYmtKUnlTZHFOYkZKMTloU2p5YksvU3dvM0dZQXhn?=
- =?utf-8?B?dFROWTJXNFcvWFlyblB0SFFnZ2p2S2VtSUl4WDdmaFpHTlIyTXlOL3JIU0w0?=
- =?utf-8?B?dmRZWjA2RFByeW1EOURrNjNwbmVIWmhGVGlDYWtDcHpjWDl5WEVNdVAyYkt3?=
- =?utf-8?B?OUNnNGtPRTlBcHh1bEpqcThveGFtdnBCdzZXWWJ2Mk92bysxak9YNGQ0cFNk?=
- =?utf-8?B?N2p1ckdZaEUrTTB1MU5VWHRoMGFjcmMyK0RYTEY3Z0tPMVFGSE1yckY2bkJu?=
- =?utf-8?B?OFRWWmdtNFlVdWhrWDhWWGsvd0dFMUdQbW9IUmdqL3NBZnFIS0lWeWRyVTZq?=
- =?utf-8?B?WmN3cmVFVkhQOGlleXk0WXhjWGhYRUFaMEdwNjNOa1h4bDJWN0l2QUQrTGxz?=
- =?utf-8?B?clRRV3FnWUhvcmFHUUdvdUc4SklYSTNKQ3pPbitSOUpSN2gzQ1Rvbmw1dzBQ?=
- =?utf-8?B?ZkIrR0ZONjJiTmluWnRMUDVjbzdnc2orNGJDUEhaKzNJMExOTjd3ZVNjSHlZ?=
- =?utf-8?B?TTVEV01rMTNIK2VVYTdCOXhiR1grTVAyTmhISVhmMHZCMnlrSzQ5NVVPbWl6?=
- =?utf-8?B?bGlhQ2gxNmFxejJOWmttMUlLRDRuNXdmZ2w0SlBOaHhRMU9wM1gzcldKd3hF?=
- =?utf-8?B?aUhZTzBIQWk3di95WmllblNBa3czOHg1Tyt1Q1U0MDQzYTJkdWVUSUFzWGF6?=
- =?utf-8?B?S2F2QXN2NGd0dlpncTRMUVZaWlVLaHplMWttTzMxanFTVFZ0dzJSc2FlaVFH?=
- =?utf-8?B?cTBIQ1lYUnU4Rml0OFg0RVZrTlVwS1A2T09sRUIwSkpsN0R6V3VWOW0xbFJo?=
- =?utf-8?B?OVA4cUovMkpIZjF1ZDBkNEU1VUJLK2Z5ZlJtOFRlMmpWc2FCQWh2S21VYjNq?=
- =?utf-8?B?c3VYbmo1eHErWldmQm1TOGhKZGdXL2taV3k1RDdYblhFSGFXdWFrNU5lT2tO?=
- =?utf-8?B?eG0rSTUzKzVYc2dJc0JjQnBSUkZCNzBWMjJUVUY5dWtDdXQ5eGFwbDR5TVBX?=
- =?utf-8?B?OXRqSWNpTVI3U1Fjb1hZcEl0c3pjZ1M5dEpnTmxpNW15b1RET3FBRzdQM0U5?=
- =?utf-8?B?Y3FEUDhwUVFPbWR6RnBpNktIdFdrOTA4Tit3RUJVSE02WnJHSlZFdUlBRkcx?=
- =?utf-8?B?VVl6bXh3YW95QWtkM21SZm5wWFRhYVA4M1RtMVhxTnpsc25vYTVDRW5FQ3BR?=
- =?utf-8?B?UU50ZjRSV3kzYzJuYzF0bDZ6UXhLa01HR3RqQ1MvZjJZZmZ2ZzQ0TEs3MENR?=
- =?utf-8?B?ZUdEaXdQNWxpTUdGYXlTaWN0WDFmKzh1S2ZvY251MjVPOEg1Qkh1Yi9DYjBW?=
- =?utf-8?B?bjQ3L2xaZ1AzTU85NjFMT0E2R2E5QzZwM2RKeHFML2lQVVY0Wll3Z0ZXc0xx?=
- =?utf-8?B?RzZraGhwelpoa0F4UXNYc2N6VzlTTkpNN2hvYyszVW1QY3FHbVA1WG5ubFRB?=
- =?utf-8?B?THZUVTB1NG9GLzB0SU1sZm0rYU9XdVZkQllVeUhCOU1iUXYwYkNpdUVLNXR1?=
- =?utf-8?B?bU1yQTZCVVFSeEpZYnpjZk5VMmlnVmpEcjFXTkVyKzQzVjhJVVBXTTk3V1RI?=
- =?utf-8?B?U1hXeDNXRmxPZGxuVEgyQ0VDT29NOXpSYlNCTDM5WGd2Y0dnK1V3NWlnYjF2?=
- =?utf-8?B?ZVIrbnRBUUtQVGtIOG1HQ3ArQTdMYWZnSnZiTHB2ZUJtUGc5anQ3ek1mNWJI?=
- =?utf-8?B?QUNuUjFoeW92dE5Nb3p2QlRoWDdOZ3FQWE5oaDQxaGZzZ3doVEJxYWNvd1Fu?=
- =?utf-8?Q?gmGJnlbc3bSry?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3769e975-0835-47ec-af06-08d94b6da2a0
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2021 11:00:50.8749 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: j1T3tPMMO0eankp8XxZQOepBzbmmKhlVGdxrVHa3JV+WclUpGlEGz4f53ZPyJqHJ
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3902
+In-Reply-To: <20210714134850.402-1-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfLM2pz3o+9rE3y62LVO6TGFlEtP4S7gknqM2eaFM5q6vjbkp8Sqi2EyWzp+kbLGnnL+G9psB7Hzo5UMpOsA7EH9YE73dm6nkY4pgsZICrF1ZMlYaCy5u
+ Wh65vqdKsnNNU5pJD5WT91CiOg0KaaCjruu+V6E95UkQ3Fi2DjfVIwe49shErDgYN14PPdGTx2jfvkLayIsnjUpMjnb+6Vpt7i6DfmC10c1aKeHnp4DIHrjp
+ Xo6M2gHdT8ZbnHVLn0M+KeHAFAlxR11hEklhzNvIRfNKAb0tsNpzP0AaDoOrdJ4wwFgvCGzCrVTovnSI1AJY04S9n9gZ+4cq2ToavVNdUdJl/KyIhnjMdxYU
+ Z2kyqGq+K+9OZbaPB2MChUuSLJYPAb6mXlQfqvNqFyb0YAco3f+7+yD4K7rF6xc5jfuLXKqLrhbEpoMdkyG+XfD4cKtOFtScbQZ53mIwo/MAfBTliYdOoJCz
+ FejzeFD5JRHRFfdfFJpnEjZgdasUAyi/3VP3W5r8BSmqnzNJjOl0wY0MRn00KbxGFjWnGYikIWCBLI+vtR1zOcGlDS6BDXpI2upRnsaNWLkp+h00pky+TQYH
+ HUw9OWJgd7YYl2xar0m6oXuw2OhvwyqaHcQ/CRO7k/uuz+B9B5XxpBLy5HgEcgTiG8D4iYxt+rf9/eR+xXB+6oXilTzzzIM5CstLCLry3gEskonXELf4E5l4
+ vhVCH7qLgBqVFFSeOp1rtAL+kXzxvBh+mnC23It/7m6MyOLcOQmeMz54kmh2paT35QXIN+Hj7agzqeC9QqViNNGLxGoeDeirLKHdGA6J5YtzgcDH7prFSTMt
+ Ka9M07tjtCN+hr+oEKgYPsuVdZ744qP7gMLcmHUhWG1X8MCOFx5nw0MwvcXvXw==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_040055_239056_0712A438 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20210720_053401_532483_7622B6C8 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,48 +91,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 20.07.21 um 12:31 schrieb guangming.cao@mediatek.com:
-> From: Guangming Cao <Guangming.Cao@mediatek.com>
->
-> Dmabuf sysfs stat is used for dmabuf info track.
-> But these file maybe still in use after buffer released,
-> should clear it before buffer release.
->
-> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
-
-Reviewed and pushed to drm-misc-next.
-
-Thanks,
-Christian.
-
+On 14/07/2021 15:48, Dafna Hirschfeld wrote:
+> From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> 
+> When running memcpy_toio:
+> memcpy_toio(send_obj->share_buf, buf, len);
+> it was found that errors appear if len is not a multiple of 8:
+> 
+> [58.350841] mtk-mdp 14001000.rdma: processing failed: -22
+> 
+> This patch ensure copy of a multile of 8 size by calling
+> round_up(len, 8) when copying
+> 
+> Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned access to DTCM buffer.")
+> Reported-by: Alexandre Courbot <acourbot@chromium.org>
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->   drivers/dma-buf/dma-buf.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-> index b1a6db71c656..63d32261b63f 100644
-> --- a/drivers/dma-buf/dma-buf.c
-> +++ b/drivers/dma-buf/dma-buf.c
-> @@ -76,12 +76,12 @@ static void dma_buf_release(struct dentry *dentry)
->   	 */
->   	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
->   
-> +	dma_buf_stats_teardown(dmabuf);
->   	dmabuf->ops->release(dmabuf);
->   
->   	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
->   		dma_resv_fini(dmabuf->resv);
->   
-> -	dma_buf_stats_teardown(dmabuf);
->   	module_put(dmabuf->owner);
->   	kfree(dmabuf->name);
->   	kfree(dmabuf);
+>  drivers/media/platform/mtk-vpu/mtk_vpu.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> index ec290dde59cf..b464d8192119 100644
+> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> @@ -316,6 +316,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+>  {
+>  	struct mtk_vpu *vpu = platform_get_drvdata(pdev);
+>  	struct share_obj __iomem *send_obj = vpu->send_buf;
+> +	unsigned char data[SHARE_BUF_SIZE];
+>  	unsigned long timeout;
+>  	int ret = 0;
+>  
+> @@ -349,7 +350,9 @@ int vpu_ipi_send(struct platform_device *pdev,
+>  		}
+>  	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
+>  
+> -	memcpy_toio(send_obj->share_buf, buf, len);
+> +	memset(data, 0, sizeof(data));
 
+Hmm, how about:
+
+	memset(data + len, 0, sizeof(data) - len);
+
+> +	memcpy(data, buf, len);
+> +	memcpy_toio(send_obj->share_buf, data, round_up(len, 8));
+>  	writel(len, &send_obj->len);
+>  	writel(id, &send_obj->id);
+>  
+> 
+
+Also note Enric's reply.
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-mediatek mailing list
