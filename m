@@ -2,70 +2,78 @@ Return-Path: <SRS0=Q4g2=MM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94589C07E9B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 05BCDC636C8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:36:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 662A5610D2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:30:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 662A5610D2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CD349610F7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 10:36:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD349610F7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FyadTBVE8mMDZVh6jOh+Vi1Eyj3gzb1heJ3NRiEssm0=; b=Z7NM4v6EpYalj8
-	/LNwFAKIlmL3vCReVsoukYefBqxfvPOm+b5QHpu6bNOaNJg/KHGoPYsXtsJ1Qw25E976FEqYsTPMK
-	PVNrVvF7q8ZdJ0jSOaaLXzBXuV2obhe8vPhdRp5ePTuPXxdfBfpiWqesDMWmaRKA4skm9nse+6hX2
-	KvPw4G9RBGzBh498Qh3STYu4l8J9lYMzLtXKbPDms0Hx7JKqZBLPFPEFr10nZUOBVYea41HcAUPRk
-	tBhgw0K2zjg//4NdlcG5GueX/VTWl5+mbcxn+nwhbkTtGZrUgASKtbhRLh6Rvy/9pPS9Fm/ox1MR8
-	01bO/szBlWc/uO4F79gg==;
+	List-Owner; bh=f4TiM+k9eVQDKyn2OWRihHrB15FgqhrNICYt8WRzSEo=; b=CNybENNxiNDMq6
+	4pWhPHVNs9CnsomeOfOdWOw3fJU0G/qGRLTcKzkOG4C87dm6lcxOV7XD3MpB0ETg8qQzIOdA/2ynl
+	g7HQEikO5divIiEZHJ4iyB8YeTbU87L6Kc6QOsuH++0wcGrg+zPDzjsBVjTpzzHC56kqPaGZlXClr
+	SlapAHqfR6Q0tBoXzaaeoGg+pEcFAXY3yVaNfjUFXaueBDjfc7UpilqpyiQk31fsUHt6S71zLlXIu
+	HWw3WGDUsWWCma4v/kYTAWMN+udIVX570Ujjd+dS8UKsJvGtgR9ZrllmpitqIostLn5odYCKDNJhz
+	6gFWKKWSSOnuT/xK2bFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5n15-00CWNr-Pn; Tue, 20 Jul 2021 10:30:23 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m5n6o-00CXbd-5Y; Tue, 20 Jul 2021 10:36:18 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5n0m-00CWKd-Ts; Tue, 20 Jul 2021 10:30:06 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPS id 8D5486101E;
- Tue, 20 Jul 2021 10:30:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626777004;
- bh=BM5wkoPMjRKGoktEBVz+5Rr7FRFAatjsayz8taHQU8k=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=VMZY2aPV5hrCbtiYUS939t1TgLXAaXWyoAm5vR2wkmr+qLHuSjiRD1l0zEka6nUfQ
- D2fk/uVhnetZPPpEkYtuujS9drmp6M76fWyyessgtB3oJ//SqJwiVdTLEoqGauYw1X
- ovWi9unfnHI/KMCNtkCkLqlTbMqz2VB32tfNXVOVqNhfPBQD6ohUYPkQCWjqj/jIdd
- 2bYqj9HdccOwOG0fKYoXHNogNnX0SxWluO3mb1wDRcjROdH3+rZIThEGNjfT7xTH1q
- S95LD24GlxrN2U/5Dg5+ycZuE2X5KwaDD2T8UlpXh5p/nrojMds/oGETp6sMrCD/Qa
- Gl640BdQJgJ8g==
+ id 1m5n6l-00CXad-Ma; Tue, 20 Jul 2021 10:36:17 +0000
+X-UUID: 41d247072f644afabcc0ad4a6ab22ab1-20210720
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ew/pGAj5afQMxxeaRB5JfjKi9AE3y95r0aenItp8b7g=; 
+ b=JztDZnPYWJ8zt7qj2f7UZWXZCgqHs5gyP89E2tTRWgLBN7d16C8O3HkzR6PNDidCez8w5k5+WbJm4DZk/kOWGWbA/8JEd1pp5xRQagtJo4Ma1ZvehD+fzU7eQ5EWiKuK5MIqvwwVPyFeIvfIqoIG9Oza/HGL8vlO3eKCbKldeDA=;
+X-UUID: 41d247072f644afabcc0ad4a6ab22ab1-20210720
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1886337054; Tue, 20 Jul 2021 03:36:13 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Jul 2021 03:32:15 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Jul 2021 18:32:08 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ MTKCAS06.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 20 Jul 2021 18:32:01 +0800
+From: <guangming.cao@mediatek.com>
+To: <christian.koenig@amd.com>
+CC: <dri-devel@lists.freedesktop.org>, <guangming.cao@mediatek.com>,
+ <linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <sumit.semwal@linaro.org>, <wsd_upstream@mediatek.com>, Guangming Cao
+ <Guangming.Cao@mediatek.com>
+Subject: [PATCH v2] dma_buf: remove dmabuf sysfs teardown before release
+Date: Tue, 20 Jul 2021 18:31:58 +0800
+Message-ID: <20210720103158.83439-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <8d7dfc78-aa85-48b5-2828-21ec6b463ac3@amd.com>
+References: <8d7dfc78-aa85-48b5-2828-21ec6b463ac3@amd.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next v3] net: Update MAINTAINERS for MediaTek switch
- driver
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <162677700451.29107.12570499893022239705.git-patchwork-notify@kernel.org>
-Date: Tue, 20 Jul 2021 10:30:04 +0000
-References: <49e1aa8aac58dcbf1b5e036d09b3fa3bbb1d94d0.1626751861.git.landen.chao@mediatek.com>
-In-Reply-To: <49e1aa8aac58dcbf1b5e036d09b3fa3bbb1d94d0.1626751861.git.landen.chao@mediatek.com>
-To: Landen Chao <landen.chao@mediatek.com>
-Cc: andrew@lunn.ch, vivien.didelot@gmail.com, f.fainelli@gmail.com,
- davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
- dqfext@gmail.com, sean.wang@mediatek.com, p.zabel@pengutronix.de,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- frank-w@public-files.de, steven.liu@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_033005_031106_A3544F97 
-X-CRM114-Status: UNSURE (   7.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210720_033615_787703_61B4F314 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,33 +90,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+From: Guangming Cao <Guangming.Cao@mediatek.com>
 
-This patch was applied to netdev/net.git (refs/heads/master):
+Dmabuf sysfs stat is used for dmabuf info track.
+But these file maybe still in use after buffer released,
+should clear it before buffer release.
 
-On Tue, 20 Jul 2021 11:50:07 +0800 you wrote:
-> Update maintainers for MediaTek switch driver with Deng Qingfang who has
-> contributed many high-quality patches (interrupt, VLAN, GPIO, and etc.)
-> and will help maintenance.
-> 
-> Signed-off-by: Landen Chao <landen.chao@mediatek.com>
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
-> Acked-by: Vladimir Oltean <olteanv@gmail.com>
-> 
-> [...]
+Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+---
+ drivers/dma-buf/dma-buf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Here is the summary with links:
-  - [net-next,v3] net: Update MAINTAINERS for MediaTek switch driver
-    https://git.kernel.org/netdev/net/c/6c2d125823ae
-
-You are awesome, thank you!
---
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
-
+diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+index b1a6db71c656..63d32261b63f 100644
+--- a/drivers/dma-buf/dma-buf.c
++++ b/drivers/dma-buf/dma-buf.c
+@@ -76,12 +76,12 @@ static void dma_buf_release(struct dentry *dentry)
+ 	 */
+ 	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
+ 
++	dma_buf_stats_teardown(dmabuf);
+ 	dmabuf->ops->release(dmabuf);
+ 
+ 	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
+ 		dma_resv_fini(dmabuf->resv);
+ 
+-	dma_buf_stats_teardown(dmabuf);
+ 	module_put(dmabuf->owner);
+ 	kfree(dmabuf->name);
+ 	kfree(dmabuf);
+-- 
+2.17.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
