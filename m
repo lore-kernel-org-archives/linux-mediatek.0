@@ -2,85 +2,157 @@ Return-Path: <SRS0=Q4g2=MM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D503C07E9B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D0100C07E95
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:32:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39E536120E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:02:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39E536120E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8E4E76120F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 09:32:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8E4E76120F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0P97rWjt225zZtunlAYr6YlF21TAsumop/yk3tEZwts=; b=LdlOzsRrlhHPe9
-	7/ZuYeu81fPgZlw7UGBqJ7QaJV2IEvyKhQASDNALQBbTukXsgpeWi/rUNjEKOfoisj1LhFdthb8yl
-	Ga91UWHWFa+hDCJqwbPiu950NzRiE5smEuyjbIec0mfBNpkK4CYTxpzopsV9LmuAm2X0D3tF+SHlx
-	U0qhzyNXESBJbS4WfKtIlmgbCB+LiSYnOv7Lh3KRjGU+16PYiFdZB48DSFSjoN0NUQFRTIU6lKZL+
-	kZHGvSdZ1ioudn9CNPbpcX5XU7hOSIGUYBCjhwNRWrz3OVy/gOH7aOULJ/mN+KTBWA7GsjVudJWXw
-	SvzHM7iOUYmZEUjqz4YA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yEQhLriAN3AIdqoHBCphn/unfxq4A1VsgXQueMuxgsQ=; b=bd81O9Xg4t+q2/p/AjHQpN0aqa
+	PbznZN1vVofGAQXOOLu8e3WcW/NYbVccqbQ+yJTZ9WY62O0pIuiLZjrk1/WvQcnnKBx0JExclNDgh
+	+kAzcBPJLlJOx87AeDIWb6OmQpO1rdEKaQKew7BESJBTYdWSum+fqaLJ7CxmqdAfe0k0vYSeL3Iud
+	Tyh3BxPhieS7wjE+r5MhgY6XqQ+UjieBhpDBPxeqnWHZBxvfHiLj6AblNdPzWyvN4qSXZIyvPly9V
+	FsJL2rkrJ66hePO0/ytdnCvMMuK/2wQOmgRe48q7hGgPTeRe4Y+n5AMgYR0SlEd5xflb5S5T2pYMH
+	2rC1Jtfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5ldy-00CLjI-6U; Tue, 20 Jul 2021 09:02:26 +0000
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
+	id 1m5m6e-00CPFB-Jv; Tue, 20 Jul 2021 09:32:04 +0000
+Received: from mail-bn8nam11on2057.outbound.protection.outlook.com
+ ([40.107.236.57] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5ldD-00CLSg-1y
- for linux-mediatek@lists.infradead.org; Tue, 20 Jul 2021 09:01:40 +0000
-Received: by mail-lj1-x22f.google.com with SMTP id j1so1259803ljo.10
- for <linux-mediatek@lists.infradead.org>; Tue, 20 Jul 2021 02:01:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tnoB85UIIXDrQD64ueca3gaGjcMK04EaCPSYPJaZvpQ=;
- b=OeTaL4/IWvzx7LOmzrfp2LMLNMPHh/h/AFR2jUsByR4Td7VmN/9pAgEb5pXoQQVBs9
- js3HDiSsPKa8l3p75zcdnaHUecUGGrDaIZzXpU9cYALr00wiJLGRx29iHHvDex99Hk/l
- 0uYLElvrpwEtA+XEFTMLPWbmnCDRbQDNZh2yg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tnoB85UIIXDrQD64ueca3gaGjcMK04EaCPSYPJaZvpQ=;
- b=OixojuzxQmeg70fjiBcaX4wN95UnPju38bs+XiqBUmCMvdiBwKNnTDhrE1ZcdWbG3D
- 62T6N4n2bd/4RkQEq6ABw2H+HepvFz0DvqTXqNGC+LfQ2nsX94AGKyzax2HX7JNV8iGv
- Hg0SIr+BLMghHyhPFnBIBpi9mGjli6FmQaUHKYAK9mKHHyGzNInof+3wDOrw0y5XWBvz
- DUr+TU0gP4imZ3e92h/W/zqEdED36wJNtAT5t4lLx/ww19eBEtvZxFKTi7GAYiiRJrFe
- dZBJek7Xtb2unUBq+biClGhDOPrtqjHZXBN877s+kPohh3QHLXIWmLeWdGSAlCvJpS3q
- TFtA==
-X-Gm-Message-State: AOAM533MmDOqM8YMYxE08r80oKmKFySgFia1RIZSqT/FdRfI3UZOqRgx
- dHfryztyfbI9SZ4cAZDN3siaP3Q6WqDnL9oop2YNLg==
-X-Google-Smtp-Source: ABdhPJx1bFnN8vnbajWZqUBg10wU5MRRWLphGYMR2NS1xt7mvLn7cSS15GlFPLwDFeVk794mBMeqqAGGpm+6n7kZURE=
-X-Received: by 2002:a2e:760d:: with SMTP id r13mr3651436ljc.437.1626771697091; 
- Tue, 20 Jul 2021 02:01:37 -0700 (PDT)
+ id 1m5m6b-00CPEU-V2; Tue, 20 Jul 2021 09:32:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TnSID1+KHLBMYKCMX7nNZBsSvQRw44ylmxj+gM1sqmdzPEUmAdK/L539q0pCcEvaKRS6WwfR1kp5QD5PYfWKufZSp3KyOIjfK19bRcn+QdT1wlqBGaNq0Lw1eqePFWncc4nAs/chWkH4Cud8+yDEeY8HpfCkRnpTQLyfUslWb3vhmhC7GtxckgrL/oOnXL945HEyslSTfeXvLoSE5PbK3JncWdl/tCS7eEevz2VBlYfTcQ7CG0vuVLLSiG73Hf300Mf+WmIvrpULhJCxwQugil34fb+5ryLvtL4jZjJiVNs0x+56TeEmygIhL/EuDLzcW7xuy7biH9Te2Elq79im6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XoP1tStw7r80ZKYid5rPEI3odof0MEe0DeSs936apUE=;
+ b=nlRZyCHuFgCSzdzWVKO+R9WfMrfxRJExDsDB5TNK7oL4aoXP/ELLixHQrQO8fM5qInss8miYH9nvKMNvsINdvnJeqFp4tXASGA6BItfdb3A5sgjPuP0KDVp7Crm7rqCZTfkGrs9wlWkY0rI+beqHb+JtUhiRz+HEB+F5SwyREYSZXGe88xPzWt29j6wd52DRjFV9entc2ePIzBzXirP2uC8/Jn6ogAZjSzsxOesMXZgiJTxwlSQ5N1qZRHDAw+yybcfepNrp4YU+p6CcJLw6fJRhW+ML+i8dyY3Y0WIc1YAuaMK1K30IEEOg/prJ81sZ+/jeZEUiYZYe3V0A/DwTNA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XoP1tStw7r80ZKYid5rPEI3odof0MEe0DeSs936apUE=;
+ b=b2G4e7bzpXEUQJ2mnHvG7QOozsj9GCpqtqGTrOXoZ7yChpQJCfo67rlh5CLL0V4sl0dAnG5YfLYQQBKjKHRMWYZnqWVtvIDlWBIBLL69zHuTHMZuHX/+VeCP7Kr1MMUtwfOML5h57J4eusUqro8cIK8570p2XOA8ZxkycSTyqug=
+Authentication-Results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
+Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
+ by MN2PR12MB3967.namprd12.prod.outlook.com (2603:10b6:208:16c::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.29; Tue, 20 Jul
+ 2021 09:31:55 +0000
+Received: from MN2PR12MB3775.namprd12.prod.outlook.com
+ ([fe80::6c9e:1e08:7617:f756]) by MN2PR12MB3775.namprd12.prod.outlook.com
+ ([fe80::6c9e:1e08:7617:f756%5]) with mapi id 15.20.4331.034; Tue, 20 Jul 2021
+ 09:31:55 +0000
+Subject: Re: [PATCH] dma_buf: remove dmabuf sysfs teardown before
+ release/detach
+To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>,
+ "open list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
+ "moderated list:DMA BUFFER SHARING FRAMEWORK"
+ <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+Cc: wsd_upstream@mediatek.com
+References: <20210719051944.40871-1-guangming.cao@mediatek.com>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+Message-ID: <8d7dfc78-aa85-48b5-2828-21ec6b463ac3@amd.com>
+Date: Tue, 20 Jul 2021 11:31:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+In-Reply-To: <20210719051944.40871-1-guangming.cao@mediatek.com>
+Content-Language: en-US
+X-ClientProxiedBy: PR1PR01CA0031.eurprd01.prod.exchangelabs.com
+ (2603:10a6:102::44) To MN2PR12MB3775.namprd12.prod.outlook.com
+ (2603:10b6:208:159::19)
 MIME-Version: 1.0
-References: <20210705054111.4473-1-chun-jie.chen@mediatek.com>
- <20210705054111.4473-5-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210705054111.4473-5-chun-jie.chen@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 20 Jul 2021 17:01:26 +0800
-Message-ID: <CAGXv+5EX=15JN579_NYNqr6wh5QZqW-_jGYFWuBehMTOZU=O8w@mail.gmail.com>
-Subject: Re: [v3 4/5] soc: mediatek: pm-domains: Add wakeup capacity support
- in power domain
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
- linux-arm-kernel@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, 
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- srv_heupstream <srv_heupstream@mediatek.com>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [IPv6:2a02:908:1252:fb60:8651:5b5e:8648:2fd0]
+ (2a02:908:1252:fb60:8651:5b5e:8648:2fd0) by
+ PR1PR01CA0031.eurprd01.prod.exchangelabs.com (2603:10a6:102::44) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4331.23 via Frontend
+ Transport; Tue, 20 Jul 2021 09:31:53 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f436312b-c6a0-4631-9b56-08d94b61367f
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3967:
+X-Microsoft-Antispam-PRVS: <MN2PR12MB3967D240B1C80182883A16B183E29@MN2PR12MB3967.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: n+c/qpSRUF8F08FXwvV4yLH/axj7+nGOFPaBu/xp1GS7Up65mKqwhfD67dxj5wS31VLtV30sXtTrJhqxkxFVn6z+onavIDx6y3S5/Zt/vyQINYPgO58rzzYPZCyMaKO7KUTZcadyIE0oTAM3OxTA4Jzb7dAXSE0BAh1ssZ1YpZwnxuQQNK9e4sFI7uEE0tKt0k3DlzUCQonNXaADNA3GLw+muqLcAdOfHVBJjiOU+0Qj/HQaZWbGW88upnbv1mVZBgQyJ6/+s/Qv+/6vZ3HOge2dnrK4ms3S3JcBhoAW9xHkFlZb/woYD6a1wTpDWLK8xdCbPnoa4UXYrcS2jYb+awtYbx/xKgdFnStosNUSMIiGzd/rhGvSyApJBViBHTqGMlgXfuTIfEGrh1PGVSSu+T3vFfiv3Zl3rfOgspTgCy2glZJ4vUL+LgGbCKLDYVZZD6w1r7lEojiwlv56u0mstj3if2hTs1jEvNAvGnzIQovZdH2JLnGVidfMP+oJhiDEzEJ1cbEAzF/eOdYEccbeQgy/AilYsq575Y1vWH8vQ0njW1bBKkin3EBY4668tfAYbXN19WsBhnKxwgGJ1DpQ6pDtutltAGEyJ7O68Fp77mpb+w23N0KpF3X7jLyfOKoPV6gpJYbpE6tOBE4xNUMM0VZDdMUQ+7tLoTSOSXVsydFakldEdDv5E9cjBHhvkeqFbYhaFgOa7aPnYaREH9oFPA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(376002)(346002)(396003)(39860400002)(366004)(136003)(478600001)(8676002)(5660300002)(36756003)(8936002)(86362001)(7416002)(2616005)(66946007)(31696002)(316002)(83380400001)(110136005)(4326008)(2906002)(66476007)(186003)(66556008)(6666004)(31686004)(38100700002)(6486002)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Ym5PV0szVVRmYkxhcTN2U3hhM285dGxWOEU5U21QamlmZy9MYlo4RW5PYTEw?=
+ =?utf-8?B?ZzVvNjJ2YUEva2o1bGZISGQvMURaMlBjalpJS2dFSmgvMXVJeU1naC94UUN0?=
+ =?utf-8?B?aDdma2R6dlRRWklVVnpXLzBkbk1XRUJja3REckozUDZWVUhnbWtubWppUzBq?=
+ =?utf-8?B?ZTJBdlpFMktPY2c4dXR2Y1VMVzNGbnpBUDNHeE5lbTVqZlAzNGw4WVp0L2Jv?=
+ =?utf-8?B?bElDd3hRa0xNQXZXS0wvZ0k2MkZ0aGRDVTNTTGpOTVBDQWpzOEVvL3NyT1Jt?=
+ =?utf-8?B?anU0b3JjNlROV28yaVZ3ZXFJaEszU2l4TExqZldLYWEvY0QvdE1FNm1OVnkv?=
+ =?utf-8?B?azNGbjJiSGhhS3VDY2kxUytHV3QxaWJuZElid1pNTk5zYTZwNWR3R1IyZ1Zr?=
+ =?utf-8?B?UWNlV2Rzb1lrMjhSVEIzWG11NGY0cHVuZ3ZwejZZdldpTnNPZUU4SVBGZ2Jn?=
+ =?utf-8?B?RW5xV002MU5pMHhJNFhZS2MzNWlYVzloNGlwMTdqYVNXOE50V2JnTHQ5dXcy?=
+ =?utf-8?B?YlQyTmpqNkIyVkNyWEwxMzNiQ3VudFZTUSs5aEMrYmkzdXpwazdIWTVJL2ZN?=
+ =?utf-8?B?ZFhycTI3d2pXN21INTZqY2NQQzhTb2pJMjBwTG9GTXdOd3hYekFTVWlCbVZD?=
+ =?utf-8?B?QmVDczU3ZThoRVNsd2IyL2RVc0RZODdWUTdCRG1pNWM4eE9DK094QVpFYmlt?=
+ =?utf-8?B?UGhKWUhsLy9WbmhNVlJCYUNWdDdFaVBUQnhYem1hc0M5R05mSHF0dmJmekdX?=
+ =?utf-8?B?MUMyYUI1QXMyTGppWmJycnlLc1VuV054QjFHejNTM29uN08zTGR3bUc4RUwy?=
+ =?utf-8?B?TWlNUkV2OEVIMUF5MVVLbm1vOUx3VVhCZjZVMVRoZ0d0VUttZXpaekZIRWVq?=
+ =?utf-8?B?a3RDa2pMazk5Zm1VYkRFZjJaZ0RIWkJ0NnM0OTRCam1vRXQ3SlA2N3JIL0xX?=
+ =?utf-8?B?NkNtSkFSdTk0U1VURXJlWlNLaTlVQUxQRGNuWE5Nei85cjU1R0xnOHNaOW41?=
+ =?utf-8?B?RnNFS3dmMU1OendGQXM1cXUrRjdKWDRuYytrUXErUjdRcVhSallsZnVDUkUw?=
+ =?utf-8?B?ay9RQXIxbFNsbkRYNUxOU1RncU5ZTjByQUhRZnB0TDl5eGU5WjZ3b2tFY3ZZ?=
+ =?utf-8?B?dFZwM21kblJMN203cnoyVUtpVE1uWENxWFhrbWhTN2hLWGdxWUNqWmluOEVh?=
+ =?utf-8?B?M0JMTHdGMll0NTJ4MXlha1QrTnJuK3V5NURyMjlsbFRYWG4yVGl1Z1VOajdK?=
+ =?utf-8?B?SEN3anJvSjYrS3VoekI2aFZzVVJtbVlyRXdISDZQMVBBNERBSFFtWFJ1R3FO?=
+ =?utf-8?B?T1NJSHpGYmoyQy9Mckx6SHlSOCs1VHRwZm9ZMC9PL1RFUTRpZWFNRGdaUW9y?=
+ =?utf-8?B?VDh4U1JRWWNGTGJyNjAxZVp4eHFDSFVVVC92Z3ZLOHBGazN5SDhhRG1KVGha?=
+ =?utf-8?B?dldYeVFVQUJLU0FJT0U2bFY3UmlMNzlnaGY0Vk50QTdNSWJtUFBqbzN3T0Uv?=
+ =?utf-8?B?cUNVcGthSHd0elZzRUQwd1NHREllaUpWUk5GZmJralJCSlQzbHBhWDcyMnNW?=
+ =?utf-8?B?M1hiZGlaNlVRWUZYMUo1aHR0ajMySnpjdFV5NWNKQjJtQVZWUnhDZnpzQlRz?=
+ =?utf-8?B?eU8vZ0x5R2FuNytpMXVMclUzM2tFUCtqOVdZY1RkSTJneHdiR0xsbVFrQlZh?=
+ =?utf-8?B?NUNrV1V0bmxacEo1WElVTG9TS21Yek1HaEZ5VDhZU0RzNm9veitHdXp2czNQ?=
+ =?utf-8?B?MnBvYXlIdWEvRGdhUmtMb2VGU3RPRlZ0QkZxc1NYaDQ5THBMYzNhYUxadHk0?=
+ =?utf-8?B?ZmFselVJa21LVVF0WGRja01ySkRtbTVNQndqUktUc3BGNlBxS1pmZVFYVTAr?=
+ =?utf-8?Q?RblXqZTrTKcVP?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f436312b-c6a0-4631-9b56-08d94b61367f
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2021 09:31:55.1337 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9wJGt2MZDIDedH6DGpPOMpWlhG3aZBBTPtornQd9pA3ewWYCWxoRHGTUH8UcoTw7
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3967
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_020139_130168_42217FBD 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20210720_023202_080348_B5F84148 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,28 +164,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 5, 2021 at 1:42 PM Chun-Jie Chen <chun-jie.chen@mediatek.com> wrote:
+Am 19.07.21 um 07:19 schrieb guangming.cao@mediatek.com:
+> From: Guangming Cao <Guangming.Cao@mediatek.com>
 >
-> Due to some power domain needs to keep on for wakeup in system suspend,
-> so add GENPD_FLAG_ACTIVE_WAKEUP support in Mediatek power domain driver.
+> Dmabuf sysfs stat is used for dmabuf info track.
+> but these file maybe still use after buffer release/detach,
+> should clear it before buffer release/detach.
+
+Please rebase on current drm-misc-next. The attachment sysfs files have 
+been removed in the meantime.
+
+Thanks,
+Christian.
+
 >
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+> ---
+>   drivers/dma-buf/dma-buf.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+> index 510b42771974..9fa4620bd4bb 100644
+> --- a/drivers/dma-buf/dma-buf.c
+> +++ b/drivers/dma-buf/dma-buf.c
+> @@ -76,12 +76,12 @@ static void dma_buf_release(struct dentry *dentry)
+>   	 */
+>   	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
+>   
+> +	dma_buf_stats_teardown(dmabuf);
+>   	dmabuf->ops->release(dmabuf);
+>   
+>   	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
+>   		dma_resv_fini(dmabuf->resv);
+>   
+> -	dma_buf_stats_teardown(dmabuf);
+>   	module_put(dmabuf->owner);
+>   	kfree(dmabuf->name);
+>   	kfree(dmabuf);
+> @@ -875,10 +875,11 @@ void dma_buf_detach(struct dma_buf *dmabuf, struct dma_buf_attachment *attach)
+>   	dma_resv_lock(dmabuf->resv, NULL);
+>   	list_del(&attach->node);
+>   	dma_resv_unlock(dmabuf->resv);
+> +
+> +	dma_buf_attach_stats_teardown(attach);
+>   	if (dmabuf->ops->detach)
+>   		dmabuf->ops->detach(dmabuf, attach);
+>   
+> -	dma_buf_attach_stats_teardown(attach);
+>   	kfree(attach);
+>   }
+>   EXPORT_SYMBOL_GPL(dma_buf_detach);
 
-I think this patch should have a fixes tag:
-
-Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
-
-And it should be either the first or second patch of the series, either
-before or just after the cleanup (remove unused macro) patch.
-
-Otherwise,
-
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
 _______________________________________________
 Linux-mediatek mailing list
