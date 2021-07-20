@@ -2,63 +2,76 @@ Return-Path: <SRS0=Q4g2=MM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93F3DC07E95
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 17:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 809B2C07E9B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 22:54:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E642610C7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 17:07:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E642610C7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 237426101E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Jul 2021 22:54:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 237426101E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=PT4lLkXeqMlVCpJIMOAbT6CCMYFmupS0aMdRaXiufAk=; b=I7r8AgqxmUbXiCB/OXPCmhlEYo
-	k3VCbjbVSajkYOEhOI9Txhb5uUHLD0P/vbheCXBWr/T5yHZrCiMigo+ZuN1U8+ZWGA94XBOb8ZjND
-	tYVmRrYdqz/MWZsUo3/sA5jSStQ63yuHrp92v5OBXEUqiMRw2pHCLVHatlpX1pD8O+oOOxDKND3m6
-	K489KSikO4uCO+xPKE5t+66kdKx+XVcJcTpQ73shblXfkNnF7cFI3TC1m9v+H5SLNYwk0cpqXyf11
-	MEeNyFbzJxSmlXljTC5pIv2sH9+1yoWCdl+cbZChQ8haH1j0ap6MzmnNvrqUYyNipevDDiq7dQ68z
-	6N5A7F9g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T8HuZfwap8VtG8ESykU8eqYE/BYVn9nHVFQpE8xuMso=; b=iTcl6hzi52Hynv
+	3PwTZxVe2XX4YEFqSV391c+7y8n051yoA10yzV2qjo0Qyry2Pdta5xoA+WbyRYWLw2JmFiASpAbWe
+	zpCXxf2XbPPAQHSxGZkBZVZhRA3d74SYTmKAL2SaYG6LG0C837XZEpYOxE34Vt9PxoeMHm3eg6xmM
+	MxXPj7oVueZ3yMjT41JpNzDpAqkDm+CL/tPOGGRwVP+r5lLCJp1JYFQ5C0TxcibNGIiszMO3oVxPR
+	Uz6Sv26ZGTR/6I6kQGVC0q9gZhGaSzeZcpFte/v54LAreSs1KJpeKRV5y4IxUgq9lxjIKN0YxrVri
+	I8+dqKBwSWXRlHiCUYkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m5tDZ-00DcDL-06; Tue, 20 Jul 2021 17:07:41 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m5ycc-00E6hU-II; Tue, 20 Jul 2021 22:53:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m5tDM-00DcCR-HN; Tue, 20 Jul 2021 17:07:30 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id E657D1F43318
-Subject: Re: [PATCH v2 6/7] soc: mediatek: mmsys: Add reset controller support
-To: Philipp Zabel <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org
-Cc: chunkuang.hu@kernel.org, hsinyi@chromium.org, kernel@collabora.com,
- drinkcat@chromium.org, eizan@chromium.org,
- linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- jitao.shi@mediatek.com, linux-arm-kernel@lists.infradead.org
-References: <20210714101141.2089082-1-enric.balletbo@collabora.com>
- <20210714121116.v2.6.I15e2419141a69b2e5c7e700c34d92a69df47e04d@changeid>
- <039151e1f17676a101fb9c0682f5ee9fb8ad502d.camel@pengutronix.de>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <a3227633-626d-10f5-c190-86dbf36a469c@collabora.com>
-Date: Tue, 20 Jul 2021 19:07:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m5ycX-00E6g6-M2
+ for linux-mediatek@lists.infradead.org; Tue, 20 Jul 2021 22:53:53 +0000
+X-UUID: 769d43be34c94135b94ec04d508fdfb5-20210720
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=3O/4hdN/Mwf6gmr8Q51rEmAlaVrPhHvJxmibNs05nss=; 
+ b=dy8X7INCyz8jCndrKo7dY41PVx2e+g5RdQPJNEPA6ZZKUC5fLg83GQ+yFg/Uttb+Q6tyV6VqH//wOtuLISI3hYdsUcnxqiN/3LDPi2YoKjr5jxIVV4dydLcPi2NOE4gblh0/zLujXa7gUnkpD0w25xVM6O9B5ixDoovhs9skrOc=;
+X-UUID: 769d43be34c94135b94ec04d508fdfb5-20210720
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1403028680; Tue, 20 Jul 2021 15:53:37 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 20 Jul 2021 15:53:35 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Jul 2021 06:38:23 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 21 Jul 2021 06:38:23 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Sean Wang
+ <sean.wang@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Ryder Lee <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: add support for setting mcast rate
+Date: Wed, 21 Jul 2021 06:38:22 +0800
+Message-ID: <541360d219d6443b39f37f1806d563563233ca34.1626820535.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <039151e1f17676a101fb9c0682f5ee9fb8ad502d.camel@pengutronix.de>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_100728_764908_55F4EB9E 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20210720_155351_190788_C17F08E4 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +88,214 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Philipp,
+Mesh and ad-hoc interfaces allow users to set mcast rate through
+NL80211_ATTR_MCAST_RATE, so rework mt76_default_basic_rate() to
+adapt that.
 
-Thank you to take a look
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c |  8 +++----
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  2 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 24 +++++++++++++------
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 24 +++++++++++++------
+ 4 files changed, 39 insertions(+), 19 deletions(-)
 
-On 20/7/21 12:52, Philipp Zabel wrote:
-> Hi Enric,
-> 
-> On Wed, 2021-07-14 at 12:11 +0200, Enric Balletbo i Serra wrote:
->> Among other features the mmsys driver should implement a reset
->> controller to be able to reset different bits from their space.
->>
->> Cc: Jitao Shi <jitao.shi@mediatek.com>
->> Suggested-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> 
-> The reset controller driver looks fine, just two questions below.
-> 
->> ---
->>
->> (no changes since v1)
->>
->>  drivers/soc/mediatek/mtk-mmsys.c | 69 ++++++++++++++++++++++++++++++++
->>  drivers/soc/mediatek/mtk-mmsys.h |  2 +
->>  2 files changed, 71 insertions(+)
->>
->> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
->> index e681029fe804..6ac4deff0164 100644
->> --- a/drivers/soc/mediatek/mtk-mmsys.c
->> +++ b/drivers/soc/mediatek/mtk-mmsys.c
-> [...]
->> @@ -91,6 +95,59 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
-> [...]
->> +static int mtk_mmsys_reset(struct reset_controller_dev *rcdev, unsigned long id)
->> +{
->> +	int ret;
->> +
->> +	ret = mtk_mmsys_reset_assert(rcdev, id);
->> +	if (ret)
->> +		return ret;
->> +
->> +	usleep_range(1000, 1100);
-> 
-> Is this known to be enough for all IP cores that can be reset by this
-> controller?
-> 
-
-This time is copied from the downstream kernel, so, tbh, I am not totally sure
-is enough or needed. Let me try to reach the Mediatek people for if they can
-answer this.
-
-
->> +	return mtk_mmsys_reset_deassert(rcdev, id);
->> +}
->> +
->> +static const struct reset_control_ops mtk_mmsys_reset_ops = {
->> +	.assert = mtk_mmsys_reset_assert,
->> +	.deassert = mtk_mmsys_reset_deassert,
->> +	.reset = mtk_mmsys_reset,
->> +};
->> +
->>  static int mtk_mmsys_probe(struct platform_device *pdev)
->>  {
->>  	struct device *dev = &pdev->dev;
->> @@ -111,6 +168,18 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
->>  		return ret;
->>  	}
->>  
->> +	spin_lock_init(&mmsys->lock);
->> +
->> +	mmsys->rcdev.owner = THIS_MODULE;
->> +	mmsys->rcdev.nr_resets = 32;
-> 
-> Are all bits in the MMSYS_SW0_RST_B register individual reset controls?
-
-Yes, all are individual reset controls, mostly related to display but not all
-(i.e dsi, dpi ...)
-
-Thanks,
-  Enric
-
-> 
-> regards
-> Philipp
-> 
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index d9a724a0f15e..4c11ffcfa901 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -1337,16 +1337,16 @@ mt76_init_queue(struct mt76_dev *dev, int qid, int idx, int n_desc,
+ }
+ EXPORT_SYMBOL_GPL(mt76_init_queue);
+ 
+-u16 mt76_default_basic_rate(struct mt76_phy *phy, struct ieee80211_vif *vif)
++u16 mt76_calculate_default_rate(struct mt76_phy *phy, int rateidx)
+ {
+-	int i = ffs(vif->bss_conf.basic_rates) - 1, offset = 0;
++	int offset = 0;
+ 	struct ieee80211_rate *rate;
+ 
+ 	if (phy->chandef.chan->band == NL80211_BAND_5GHZ)
+ 		offset = 4;
+ 
+-	rate = &mt76_rates[offset + i];
++	rate = &mt76_rates[offset + rateidx];
+ 
+ 	return rate->hw_value;
+ }
+-EXPORT_SYMBOL_GPL(mt76_default_basic_rate);
++EXPORT_SYMBOL_GPL(mt76_calculate_default_rate);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 0322847f554c..53949a365fdd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -883,7 +883,7 @@ int mt76_get_of_eeprom(struct mt76_dev *dev, void *data, int offset, int len);
+ struct mt76_queue *
+ mt76_init_queue(struct mt76_dev *dev, int qid, int idx, int n_desc,
+ 		int ring_base);
+-u16 mt76_default_basic_rate(struct mt76_phy *phy, struct ieee80211_vif *vif);
++u16 mt76_calculate_default_rate(struct mt76_phy *phy, int rateidx);
+ static inline int mt76_init_tx_queue(struct mt76_phy *phy, int qid, int idx,
+ 				     int n_desc, int ring_base)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 1c6f066de2dd..dfc5ea2cf7d0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -904,17 +904,19 @@ mt7915_mac_write_txwi_8023(struct mt7915_dev *dev, __le32 *txwi,
+ 
+ static void
+ mt7915_mac_write_txwi_80211(struct mt7915_dev *dev, __le32 *txwi,
+-			    struct sk_buff *skb, struct ieee80211_key_conf *key)
++			    struct sk_buff *skb, struct ieee80211_key_conf *key,
++			    bool *mcast)
+ {
+ 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-	bool multicast = is_multicast_ether_addr(hdr->addr1);
+ 	u8 tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 	__le16 fc = hdr->frame_control;
+ 	u8 fc_type, fc_stype;
+ 	u32 val;
+ 
++	*mcast = is_multicast_ether_addr(hdr->addr1);
++
+ 	if (ieee80211_is_action(fc) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+ 	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ) {
+@@ -940,15 +942,15 @@ mt7915_mac_write_txwi_80211(struct mt7915_dev *dev, __le32 *txwi,
+ 
+ 	val = FIELD_PREP(MT_TXD2_FRAME_TYPE, fc_type) |
+ 	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype) |
+-	      FIELD_PREP(MT_TXD2_MULTICAST, multicast);
++	      FIELD_PREP(MT_TXD2_MULTICAST, *mcast);
+ 
+-	if (key && multicast && ieee80211_is_robust_mgmt_frame(skb) &&
++	if (key && *mcast && ieee80211_is_robust_mgmt_frame(skb) &&
+ 	    key->cipher == WLAN_CIPHER_SUITE_AES_CMAC) {
+ 		val |= MT_TXD2_BIP;
+ 		txwi[3] &= ~cpu_to_le32(MT_TXD3_PROTECT_FRAME);
+ 	}
+ 
+-	if (!ieee80211_is_data(fc) || multicast ||
++	if (!ieee80211_is_data(fc) || *mcast ||
+ 	    info->flags & IEEE80211_TX_CTL_USE_MINRATE)
+ 		val |= MT_TXD2_FIX_RATE;
+ 
+@@ -989,6 +991,7 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
+ 	bool ext_phy = info->hw_queue & MT_TX_HW_QUEUE_EXT_PHY;
+ 	u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
+ 	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
++	bool mcast = false;
+ 	u16 tx_count = 15;
+ 	u32 val;
+ 
+@@ -1051,15 +1054,22 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
+ 	if (is_8023)
+ 		mt7915_mac_write_txwi_8023(dev, txwi, skb, wcid);
+ 	else
+-		mt7915_mac_write_txwi_80211(dev, txwi, skb, key);
++		mt7915_mac_write_txwi_80211(dev, txwi, skb, key, &mcast);
+ 
+ 	if (txwi[2] & cpu_to_le32(MT_TXD2_FIX_RATE)) {
++		u8 band = mphy->chandef.chan->band;
++		int rateidx, mcast_rate = vif->bss_conf.mcast_rate[band];
+ 		u16 rate, mode;
+ 
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
+ 
+-		rate = mt76_default_basic_rate(mphy, vif);
++		if (mcast && mcast_rate > 0)
++			rateidx = mcast_rate - 1;
++		else
++			rateidx = ffs(vif->bss_conf.basic_rates) - 1;
++
++		rate = mt76_calculate_default_rate(mphy, rateidx);
+ 		mode = rate >> 8;
+ 		rate &= GENMASK(7, 0);
+ 		rate |= FIELD_PREP(MT_TX_RATE_MODE, mode);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index b326525e4b65..2ae594f539e2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -658,17 +658,19 @@ mt7921_mac_write_txwi_8023(struct mt7921_dev *dev, __le32 *txwi,
+ 
+ static void
+ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+-			    struct sk_buff *skb, struct ieee80211_key_conf *key)
++			    struct sk_buff *skb, struct ieee80211_key_conf *key,
++			    bool *mcast)
+ {
+ 	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+ 	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
+ 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+-	bool multicast = is_multicast_ether_addr(hdr->addr1);
+ 	u8 tid = skb->priority & IEEE80211_QOS_CTL_TID_MASK;
+ 	__le16 fc = hdr->frame_control;
+ 	u8 fc_type, fc_stype;
+ 	u32 val;
+ 
++	*mcast = is_multicast_ether_addr(hdr->addr1);
++
+ 	if (ieee80211_is_action(fc) &&
+ 	    mgmt->u.action.category == WLAN_CATEGORY_BACK &&
+ 	    mgmt->u.action.u.addba_req.action_code == WLAN_ACTION_ADDBA_REQ) {
+@@ -694,15 +696,15 @@ mt7921_mac_write_txwi_80211(struct mt7921_dev *dev, __le32 *txwi,
+ 
+ 	val = FIELD_PREP(MT_TXD2_FRAME_TYPE, fc_type) |
+ 	      FIELD_PREP(MT_TXD2_SUB_TYPE, fc_stype) |
+-	      FIELD_PREP(MT_TXD2_MULTICAST, multicast);
++	      FIELD_PREP(MT_TXD2_MULTICAST, *mcast);
+ 
+-	if (key && multicast && ieee80211_is_robust_mgmt_frame(skb) &&
++	if (key && *mcast && ieee80211_is_robust_mgmt_frame(skb) &&
+ 	    key->cipher == WLAN_CIPHER_SUITE_AES_CMAC) {
+ 		val |= MT_TXD2_BIP;
+ 		txwi[3] &= ~cpu_to_le32(MT_TXD3_PROTECT_FRAME);
+ 	}
+ 
+-	if (!ieee80211_is_data(fc) || multicast ||
++	if (!ieee80211_is_data(fc) || *mcast ||
+ 	    info->flags & IEEE80211_TX_CTL_USE_MINRATE)
+ 		val |= MT_TXD2_FIX_RATE;
+ 
+@@ -759,6 +761,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 	struct mt76_phy *mphy = &dev->mphy;
+ 	u8 p_fmt, q_idx, omac_idx = 0, wmm_idx = 0;
+ 	bool is_8023 = info->flags & IEEE80211_TX_CTL_HW_80211_ENCAP;
++	bool mcast = false;
+ 	u16 tx_count = 15;
+ 	u32 val;
+ 
+@@ -808,15 +811,22 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 	if (is_8023)
+ 		mt7921_mac_write_txwi_8023(dev, txwi, skb, wcid);
+ 	else
+-		mt7921_mac_write_txwi_80211(dev, txwi, skb, key);
++		mt7921_mac_write_txwi_80211(dev, txwi, skb, key, &mcast);
+ 
+ 	if (txwi[2] & cpu_to_le32(MT_TXD2_FIX_RATE)) {
++		u8 band = mphy->chandef.chan->band;
++		int rateidx, mcast_rate = vif->bss_conf.mcast_rate[band];
+ 		u16 rate, mode;
+ 
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
+ 
+-		rate = mt76_default_basic_rate(mphy, vif);
++		if (mcast && mcast_rate > 0)
++			rateidx = mcast_rate - 1;
++		else
++			rateidx = ffs(vif->bss_conf.basic_rates) - 1;
++
++		rate = mt76_calculate_default_rate(mphy, rateidx);
+ 		mode = rate >> 8;
+ 		rate &= GENMASK(7, 0);
+ 		rate |= FIELD_PREP(MT_TX_RATE_MODE, mode);
+-- 
+2.29.2
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
