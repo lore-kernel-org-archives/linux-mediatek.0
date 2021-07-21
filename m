@@ -2,21 +2,20 @@ Return-Path: <SRS0=lmF9=MN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 636DFC07E9B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 11:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9683C636C9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 11:44:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 180F560698
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 11:02:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 180F560698
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A5E206113C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 11:44:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A5E206113C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -24,77 +23,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fF32MfZ325S1mesH+vtkI0/J9LEucBqInPltk+mpSmw=; b=F/9tlvHWjyyKEg
-	3+zTZXFfWAK9He9KGDRtcs9INzevRxiNejVAIyTbXtziqfxV4R67HJb3mDKS8Ka4JPbqd8/lgc8LQ
-	8Xvoqv8b1dxL+2RpoY5oycxuvXIGUpU7qw03lY0E0Zj8j6BXjjXCaXlvAEgUQifqfQGjq/NeTbOYW
-	dKzMVHwxYXMLcg/UNcATTvqON+hm5nWBjx+thy2L/ldutptHFGU9TLZDWEvqEAsjUSWQuZBlGXIIj
-	ABRm+aaFF1WGaoKK/GeTGrNkX2ufbvv047CtlQT6bDsqfafK+HwxqMNHcU11rUWvcwlwj4kRNKAYH
-	o+Cf5hcHXAs+Q1iTs8RQ==;
+	List-Owner; bh=dPkh4MJdOv6wCa0/u5b6iD03Uhyk3hS7p8EqjzjhTts=; b=u10GxY4afPxr2k
+	rvMz4mJLClS0J8KrxHGHMAlXTiHPFt+sU5O6g97MaHi6wE48MtlMW3mp4l1/jH/2kGFsTtb4r9Wvy
+	maL11V19U2j/h17fQquTRrvq20u9K992JzpQ0zND9AZng66nv83Xrd8EMz32GwfKN5H4PFrxRSN74
+	BSB65edZLKQYVQokj8rqBaoHBgx6IqpxIqf8ouAzSOcX9zvPfvhrfjwoJ+fgxlI0ITUt3UgoIqdmz
+	18sz9V/EwWX4+i3SzWwP0DWE2KrwqVcPs4ISTTfZhP16EsOunLI3x6sptjPWbLr26tM9pwxK7I3UY
+	8iqTuOhOC5YYcOlI8etQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m69zC-00FMSs-PS; Wed, 21 Jul 2021 11:01:58 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1m6AeR-00FUaB-G7; Wed, 21 Jul 2021 11:44:35 +0000
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m69yx-00FMOb-HP; Wed, 21 Jul 2021 11:01:45 +0000
-Received: by mail-oi1-x229.google.com with SMTP id h9so2444093oih.4;
- Wed, 21 Jul 2021 04:01:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1m6Adz-00FUQQ-O0
+ for linux-mediatek@lists.infradead.org; Wed, 21 Jul 2021 11:44:09 +0000
+Received: by mail-pg1-x536.google.com with SMTP id a6so1624275pgw.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 21 Jul 2021 04:44:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XWPf/+CJJGxtNs51Z0OKBEat1OtXBiGmD0zndSXh3DA=;
- b=Cq78ZM2u9FWWJoAkNw6CuDQt8f/b1sxs2pKtSJSVr5Y222SFhH1B+0lkHtPHbrt1Z1
- qCpmTfPc0XHpwy9boBmSDloREXojuK9ebif3G+qrTGKlndHNj1bX/nqLNQh1iPB5zNnt
- gJDD1ucMjHDaD7zmvnmxwbQLMbt2jFZdysuUFqKTjQbfYTQRJaJuyOAf9R6k9CVS0iWw
- 3F1s1mlofU1dB2O4c1BD2ucybggNQYH1jdbv4gA9NepuNVNz360DBeUAi6CKa5TVv2Fx
- oAzYiVoJ1lpPe2jN7ZNXp9xGfmiEjGSQXAo0qIA1ihCSK2eqpbVmfVQ0IbKeV7txUTm7
- 8mwA==
+ :cc; bh=4eOE5oXt0Te/GnUqshzOeQhr7DeyqOGjYygIrkfQGGA=;
+ b=KdQI6LuD8Wmsu8sCpYBmVNr4uqXouJd6KbQ3iYRLn2UXIAxs+TuEUbZye6F9L7aj1V
+ ZAgxxPSOUOm+s48Q3N1vGWUj2UI5ovvKG0zNnKpAZ+Y4nQZHgOrkuO2NxaUrVYYpljXg
+ lyBhu/YTGUcqASeyyy69yxEUAvWHEkFO5P9HA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=XWPf/+CJJGxtNs51Z0OKBEat1OtXBiGmD0zndSXh3DA=;
- b=GObSAyCEePbumAGaiP3JcXv7qzJ0Ii4oehkC3S0OeIuXZ9FJdtOMxGxa3Oga4xVfPX
- O0Cg2DNH/YA3/yDxuXPno63V1zO0nB72NTCQEJs6qJq/MI2GJ+ah7puPKnWop1kzkY4/
- 800Pp6QcgvPds0rK9/j3IAJBZnlwO2Xut4ZGMv69BLG4BL9o/L4YTLmi/oVtjjoO9wfG
- Hqysz/pWbRj49tFVKzMhU2vMKUDrzg4ii0Ts7tyQ686f5pTYXD4Uwne/46QDhJ0u+xgo
- 2nESMEPe7gv05c1As1vY76RgX3JTZf09R9x3nOIvs3FXiFpeXOHceuOG9oGHqvWPDsUz
- jWHg==
-X-Gm-Message-State: AOAM531NXSydqh7sE8vG6cngE5ow6CS2uKStgTjFqVLZOD6aN2hF3A4I
- +EfhMTxgfs604ZNGmfUkjmcZchAQyrhsqIo0Yv8=
-X-Google-Smtp-Source: ABdhPJyfKuFt2xk1BaDSAtm7kABppX4tSQuEHbEDuUON4kUr0V8u7jRiOSYTeAdKIw53117/WT7ehq1B7c3uwJSagzs=
-X-Received: by 2002:aca:c6c9:: with SMTP id w192mr23797287oif.47.1626865302269; 
- Wed, 21 Jul 2021 04:01:42 -0700 (PDT)
+ bh=4eOE5oXt0Te/GnUqshzOeQhr7DeyqOGjYygIrkfQGGA=;
+ b=s9P9toOqx99PQwKPurhnQqZbRcNCKPrwwAEWHKFaSjo5EZ+lvGA0815qfi+nyIHkVF
+ X5zuiBgynq6H6/Mf6Pv7GVsYTIiD2B8HcKBXoyCmod8OQmIZE3KnxBXWZCYVGiQ4YMgX
+ Iyyk3s52YalHUGN3m/xF5efcABCwogKdIbbcYuVQq2GQGAY2oc2wM7FkwPKp4MzmZ2LE
+ hIuLO1D4QKB1BmD0pREVeGRaVp6nuaG7upeKTrmyeH542By+8RbeCEViAq9gaWETz5f4
+ rxh9EX6dLFJ7fr0PPzKcxmFgr2J80zSbu9PtpLZ28kXwj5ibTqP2v0/bRlujRij/S4ES
+ XCMw==
+X-Gm-Message-State: AOAM533/wURzDEPF2pV6DHNAGaVYMQuQKH0yJVe4MCPlUwBUArj9m9nk
+ x82iYA6q+Wmjniz9IhdF5EUQvT890xWT/mPVl3Y15Q==
+X-Google-Smtp-Source: ABdhPJwOBnuO9cyF8OBviJSYN7tjfT+V3IKi0eKLRcwtLf+HGoO48XKeVyIURCRqP1SfZkP8A4tRfzpBVnepdhLBrCI=
+X-Received: by 2002:a05:6a00:2407:b029:341:185e:8674 with SMTP id
+ z7-20020a056a002407b0290341185e8674mr20738643pfh.42.1626867846555; Wed, 21
+ Jul 2021 04:44:06 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210719074640.25058-1-moudy.ho@mediatek.com>
- <20210719074640.25058-3-moudy.ho@mediatek.com>
-In-Reply-To: <20210719074640.25058-3-moudy.ho@mediatek.com>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Wed, 21 Jul 2021 13:01:30 +0200
-Message-ID: <CAFqH_52sJC=Ey6VUMLgAiFz0x0z+9=Y6r-Ueg8U=4kBdAnXNNw@mail.gmail.com>
-Subject: Re: [PATCH v5 2/3] dts: arm64: mt8183: Add Mediatek MDP3 nodes
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+References: <20210715121209.31024-1-yong.wu@mediatek.com>
+ <20210715121209.31024-8-yong.wu@mediatek.com>
+In-Reply-To: <20210715121209.31024-8-yong.wu@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Wed, 21 Jul 2021 19:43:55 +0800
+Message-ID: <CAATdQgBDsPHcuPYd=a+fjjTuqwXdJ-1GuSkj47cH1Ju5geqSLg@mail.gmail.com>
+Subject: Re: [PATCH v2 07/11] memory: mtk-smi: Add smi sub common support
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Rob Herring <robh+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Maoguang Meng <maoguang.meng@mediatek.com>, 
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>, 
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, 
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, 
- Nicolas Boichat <drinkcat@chromium.org>,
- Alexandre Courbot <acourbot@chromium.org>, 
- Pi-Hsun Shih <pihsun@chromium.org>, menghui.lin@mediatek.com,
- sj.huang@mediatek.com, ben.lok@mediatek.com, randy.wu@mediatek.com, 
- srv_heupstream <srv_heupstream@mediatek.com>
+ srv_heupstream <srv_heupstream@mediatek.com>,
+ open list <linux-kernel@vger.kernel.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, iommu@lists.linux-foundation.org, 
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, ming-fan.chen@mediatek.com, 
+ yi.kuo@mediatek.com, anthony.huang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210721_040143_618076_11208B3B 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20210721_044407_835452_48A096D6 
+X-CRM114-Status: GOOD (  36.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,168 +103,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Moudy Ho,
-
-Thank you for your patch.
-
-Missatge de Moudy Ho <moudy.ho@mediatek.com> del dia dl., 19 de jul.
-2021 a les 9:47:
+On Thu, Jul 15, 2021 at 8:25 PM Yong Wu <yong.wu@mediatek.com> wrote:
 >
-> Add device nodes for Media Data Path 3 (MDP3) modules.
+> In mt8195, there are some larbs connect with the smi-sub-common, then
+> connect with smi-common.
+
+Not critical but I suggest to describe what is smi-sub-common.
+e.g. "some larbs are not directly connected to smi-common,
+they are connected to smi-sub-common which is a bridge(?) interface to..."
+
 >
-> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Before we create device link between smi-larb with smi-common. If we have
+> sub-common, we should use device link the smi-larb and smi-sub-common,
+> then use device link between the smi-sub-common with smi-common. This is
+> for enabling clock/power automatically.
+>
+> Move the device link code to a new interface for reusing.
+>
+> There is no SW extra setting for smi-sub-common.
+>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+
+Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
+
 > ---
-> Depend on:
->    [1] https://lore.kernel.org/patchwork/patch/1164746/
->    [2] https://patchwork.kernel.org/patch/11703299/
->    [3] https://patchwork.kernel.org/patch/11283773/
-
-I think all these patches are old, some of them already landed in
-other forms, like the first one. I don't think these dependencies are
-still valid, so please review and remove them if they are not needed.
-
-
-> ---
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi | 114 +++++++++++++++++++++++
->  1 file changed, 114 insertions(+)
+>  drivers/memory/mtk-smi.c | 75 +++++++++++++++++++++++++++-------------
+>  1 file changed, 51 insertions(+), 24 deletions(-)
 >
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index c5e822b6b77a..30920d6ce7d2 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -1127,6 +1127,112 @@
->                         mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
->                 };
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index e68cbb51dd12..ee49bb50f5f5 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -60,7 +60,8 @@
 >
-> +               mdp3_rdma0: mdp3_rdma0@14001000 {
-> +                       compatible = "mediatek,mt8183-mdp3",
-> +                                    "mediatek,mt8183-mdp3-rdma";
-> +                       mediatek,scp = <&scp>;
-> +                       mediatek,mdp3-id = <0>;
-> +                       mdp3-comps = "mediatek,mt8183-mdp3-dl", "mediatek,mt8183-mdp3-dl",
-> +                                    "mediatek,mt8183-mdp3-imgi", "mediatek,mt8183-mdp3-exto";
-> +                       mdp3-comp-ids = <0 1 0 1>;
-> +                       reg = <0 0x14001000 0 0x1000>,
-> +                             <0 0x14000000 0 0x1000>,
-> +                             <0 0x15020000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
-> +                                                 <&gce SUBSYS_1400XXXX 0 0x1000>,
-> +                                                 <&gce SUBSYS_1502XXXX 0 0x1000>;
-> +                       power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +                       clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +                                <&mmsys CLK_MM_MDP_RSZ1>,
-> +                                <&mmsys CLK_MM_MDP_DL_TXCK>,
-> +                                <&mmsys CLK_MM_MDP_DL_RX>,
-> +                                <&mmsys CLK_MM_IPU_DL_TXCK>,
-> +                                <&mmsys CLK_MM_IPU_DL_RX>;
-> +                       iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-> +                       mediatek,mmsys = <&mmsys>;
-> +                       mediatek,mm-mutex = <&mutex>;
-> +                       mediatek,mailbox-gce = <&gce>;
-> +                       mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +                                <&gce 21 CMDQ_THR_PRIO_LOWEST 0>,
-> +                                <&gce 22 CMDQ_THR_PRIO_LOWEST 0>,
-> +                                <&gce 23 CMDQ_THR_PRIO_LOWEST 0>;
-> +                       mdp3-rsz0 = <&mdp3_rsz0>; /* debug only */
-> +                       mdp3-rsz1 = <&mdp3_rsz1>; /* debug only */
-> +                       mdp3-wrot0 = <&mdp3_wrot0>; /* debug only */
-> +                       mdp3-wdma0 = <&mdp3_wdma>; /* debug only */
-> +                       mdp3-ccorr0 = <&mdp3_ccorr>; /* debug only */
-> +                       gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +                                    <&gce 0x14010000 SUBSYS_1401XXXX>,
-> +                                    <&gce 0x14020000 SUBSYS_1402XXXX>,
-> +                                    <&gce 0x15020000 SUBSYS_1502XXXX>;
-> +                       mediatek,gce-events = <CMDQ_EVENT_MDP_RDMA0_SOF>,
-> +                                             <CMDQ_EVENT_MDP_RDMA0_EOF>,
-> +                                             <CMDQ_EVENT_MDP_RSZ0_SOF>,
-> +                                             <CMDQ_EVENT_MDP_RSZ1_SOF>,
-> +                                             <CMDQ_EVENT_MDP_TDSHP_SOF>,
-> +                                             <CMDQ_EVENT_MDP_WROT0_SOF>,
-> +                                             <CMDQ_EVENT_MDP_WROT0_EOF>,
-> +                                             <CMDQ_EVENT_MDP_WDMA0_SOF>,
-> +                                             <CMDQ_EVENT_MDP_WDMA0_EOF>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_0>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_1>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_2>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_3>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_4>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_5>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_6>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_7>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_8>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_9>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_10>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_11>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_12>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_13>,
-> +                                             <CMDQ_EVENT_ISP_FRAME_DONE_P2_14>,
-> +                                             <CMDQ_EVENT_WPE_A_DONE>,
-> +                                             <CMDQ_EVENT_SPE_B_DONE>;
-> +               };
-> +
-> +               mdp3_rsz0: mdp3_rsz0@14003000 {
-> +                       compatible = "mediatek,mt8183-mdp3-rsz";
-> +                       mediatek,mdp3-id = <0>;
-> +                       reg = <0 0x14003000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-> +                       clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-> +               };
-> +
-> +               mdp3_rsz1: mdp3_rsz1@14004000 {
-> +                       compatible = "mediatek,mt8183-mdp3-rsz";
-> +                       mediatek,mdp3-id = <1>;
-> +                       reg = <0 0x14004000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-> +                       clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-> +               };
-> +
-> +               mdp3_wrot0: mdp3_wrot0@14005000 {
-> +                       compatible = "mediatek,mt8183-mdp3-wrot";
-> +                       mediatek,mdp3-id = <0>;
-> +                       mdp3-comps = "mediatek,mt8183-mdp3-path";
-> +                       mdp3-comp-ids = <0>;
-> +                       reg = <0 0x14005000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-> +                       power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +                       clocks = <&mmsys CLK_MM_MDP_WROT0>;
-> +                       iommus = <&iommu M4U_PORT_MDP_WROT0>;
-> +               };
-> +
-> +               mdp3_wdma: mdp3_wdma@14006000 {
-> +                       compatible = "mediatek,mt8183-mdp3-wdma";
-> +                       mediatek,mdp3-id = <0>;
-> +                       mdp3-comps = "mediatek,mt8183-mdp3-path";
-> +                       mdp3-comp-ids = <1>;
-> +                       reg = <0 0x14006000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-> +                       power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +                       clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-> +                       iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-> +               };
-> +
->                 ovl0: ovl@14008000 {
->                         compatible = "mediatek,mt8183-disp-ovl";
->                         reg = <0 0x14008000 0 0x1000>;
-> @@ -1272,6 +1378,14 @@
->                         clock-names = "apb", "smi", "gals0", "gals1";
->                 };
+>  enum mtk_smi_type {
+>         MTK_SMI_GEN1,
+> -       MTK_SMI_GEN2
+> +       MTK_SMI_GEN2,           /* gen2 smi common */
+> +       MTK_SMI_GEN2_SUB_COMM,  /* gen2 smi sub common */
+>  };
 >
-> +               mdp3_ccorr: mdp3_ccorr@1401c000 {
-> +                       compatible = "mediatek,mt8183-mdp3-ccorr";
-> +                       mediatek,mdp3-id = <0>;
-> +                       reg = <0 0x1401c000 0 0x1000>;
-> +                       mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-> +                       clocks = <&mmsys CLK_MM_MDP_CCORR>;
-> +               };
+>  #define MTK_SMI_CLK_NR_MAX                     4
+> @@ -90,13 +91,14 @@ struct mtk_smi {
+>                 void __iomem            *smi_ao_base; /* only for gen1 */
+>                 void __iomem            *base;        /* only for gen2 */
+>         };
+> +       struct device                   *smi_common_dev; /* for sub common */
+>         const struct mtk_smi_common_plat *plat;
+>  };
+>
+>  struct mtk_smi_larb { /* larb: local arbiter */
+>         struct mtk_smi                  smi;
+>         void __iomem                    *base;
+> -       struct device                   *smi_common_dev;
+> +       struct device                   *smi_common_dev; /* common or sub-common dev */
+>         const struct mtk_smi_larb_gen   *larb_gen;
+>         int                             larbid;
+>         u32                             *mmu;
+> @@ -259,6 +261,38 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
+>         {}
+>  };
+>
+> +static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
+> +{
+> +       struct platform_device *smi_com_pdev;
+> +       struct device_node *smi_com_node;
+> +       struct device *smi_com_dev;
+> +       struct device_link *link;
 > +
->                 imgsys: syscon@15020000 {
->                         compatible = "mediatek,mt8183-imgsys", "syscon";
->                         reg = <0 0x15020000 0 0x1000>;
+> +       smi_com_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+> +       if (!smi_com_node)
+> +               return -EINVAL;
+> +
+> +       smi_com_pdev = of_find_device_by_node(smi_com_node);
+> +       of_node_put(smi_com_node);
+> +       if (smi_com_pdev) {
+> +               /* smi common is the supplier, Make sure it is ready before */
+> +               if (!platform_get_drvdata(smi_com_pdev))
+> +                       return -EPROBE_DEFER;
+> +               smi_com_dev = &smi_com_pdev->dev;
+> +               link = device_link_add(dev, smi_com_dev,
+> +                                      DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> +               if (!link) {
+> +                       dev_err(dev, "Unable to link smi-common dev\n");
+> +                       return -ENODEV;
+> +               }
+> +               *com_dev = smi_com_dev;
+> +       } else {
+> +               dev_err(dev, "Failed to get the smi_common device\n");
+> +               return -EINVAL;
+> +       }
+> +       return 0;
+> +}
+> +
+>  static int mtk_smi_dts_clk_init(struct device *dev, struct mtk_smi *smi,
+>                                 unsigned int clk_nr_optional,
+>                                 const char * const clk_optional[])
+> @@ -285,9 +319,6 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>         struct mtk_smi_larb *larb;
+>         struct resource *res;
+>         struct device *dev = &pdev->dev;
+> -       struct device_node *smi_node;
+> -       struct platform_device *smi_pdev;
+> -       struct device_link *link;
+>         int ret;
+>
+>         larb = devm_kzalloc(dev, sizeof(*larb), GFP_KERNEL);
+> @@ -307,26 +338,10 @@ static int mtk_smi_larb_probe(struct platform_device *pdev)
+>                 return ret;
+>
+>         larb->smi.dev = dev;
+> -       smi_node = of_parse_phandle(dev->of_node, "mediatek,smi", 0);
+> -       if (!smi_node)
+> -               return -EINVAL;
+>
+> -       smi_pdev = of_find_device_by_node(smi_node);
+> -       of_node_put(smi_node);
+> -       if (smi_pdev) {
+> -               if (!platform_get_drvdata(smi_pdev))
+> -                       return -EPROBE_DEFER;
+> -               larb->smi_common_dev = &smi_pdev->dev;
+> -               link = device_link_add(dev, larb->smi_common_dev,
+> -                                      DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
+> -               if (!link) {
+> -                       dev_err(dev, "Unable to link smi-common dev\n");
+> -                       return -ENODEV;
+> -               }
+> -       } else {
+> -               dev_err(dev, "Failed to get the smi_common device\n");
+> -               return -EINVAL;
+> -       }
+> +       ret = mtk_smi_device_link_common(dev, &larb->smi_common_dev);
+> +       if (ret < 0)
+> +               return ret;
+>
+>         pm_runtime_enable(dev);
+>         platform_set_drvdata(pdev, larb);
+> @@ -471,6 +486,14 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+>                 if (IS_ERR(common->base))
+>                         return PTR_ERR(common->base);
+>         }
+> +
+> +       /* link its smi-common if this is smi-sub-common */
+> +       if (common->plat->type == MTK_SMI_GEN2_SUB_COMM) {
+> +               ret = mtk_smi_device_link_common(dev, &common->smi_common_dev);
+> +               if (ret < 0)
+> +                       return ret;
+> +       }
+> +
+>         pm_runtime_enable(dev);
+>         platform_set_drvdata(pdev, common);
+>         return 0;
+> @@ -478,6 +501,10 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+>
+>  static int mtk_smi_common_remove(struct platform_device *pdev)
+>  {
+> +       struct mtk_smi *common = dev_get_drvdata(&pdev->dev);
+> +
+> +       if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
+> +               device_link_remove(&pdev->dev, common->smi_common_dev);
+>         pm_runtime_disable(&pdev->dev);
+>         return 0;
+>  }
 > --
 > 2.18.0
->
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
