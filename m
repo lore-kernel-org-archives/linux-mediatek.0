@@ -2,79 +2,84 @@ Return-Path: <SRS0=lmF9=MN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70403C07E9B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 03:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F42FC07E9B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 07:15:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 213AC611CE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 03:18:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 213AC611CE
+	by mail.kernel.org (Postfix) with ESMTPS id 09F9A6113C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Jul 2021 07:15:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 09F9A6113C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=15+vhdifgeF/rtlU0DE6aN4cnzwjRIlXtVinEmAIyhY=; b=sH+FqrNcloRcyr
-	IECfMqm5N+yrJIDXAZYajjyB4/daqyAOgkZ4iMJbSv+b1hut4OJ1N8Qmq/sGS7L3adL8PFqcap5M/
-	Ur1CWRHDAtwhd59wOTEy3NZP3+Il5kd22qXBC0I457LH14CeoXkbnOyiyuoa3r/VI777HmZgJ4ZpL
-	BBQLBL9e9NLHIsj9RlRezDTfGCkjoO0N7zLSHL16E//UslKmlLA0sYInvP3yM939JUzlMgBW7U+Hr
-	N8VvxLoWF9/i1afKZ2NgiSqnagW/+NwnqLEL8RWOOAtjxlHFNbxyjOeZDyYkGhVkujmLL5tTWfkFD
-	do0X4EBjqsKJ+PGIsCJw==;
+	List-Owner; bh=4gNB6E/MihBCmz+mN7n8WMeLRhk/3y+scyw7omYT5tg=; b=xbJNBao1Iul72P
+	oV/B46NpwEBNa13j2sl0bnQKGDRJ40Btkr8+2/h8IuHkwvGf/cN4UBRRBw5QSBaEKDr19eRi261OA
+	DyVJCbfZqgiEE6tPuhGDMpGUjUt0VQpJB1zupn+JsNgqTkag1BJo5relFrNyVyHxMYRCFtKUKlDC4
+	O3Gh/DY/pBz6PiIRcFgXDpWZsY0FSRns/hxv1GodoWSjhHzCVy9iQRWQiFsljgRRl7/ajuA+kbeq9
+	M2CFGsdSNd2yj6ZEA3Os8plXvbvdhFT9Z2B5W3+JN4NASIdJc64xiQvQrEjKmQPaqfbz56u2Lvx88
+	Qo/1RdqbfQ6OuWPWquzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m62kI-00EOBn-1n; Wed, 21 Jul 2021 03:18:06 +0000
+	id 1m66Rh-00Ed75-Iq; Wed, 21 Jul 2021 07:15:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m62kD-00EOB8-0x; Wed, 21 Jul 2021 03:18:04 +0000
-X-UUID: f2e56929d602480b972140346321820c-20210720
+ id 1m66RT-00Ed4l-Ka; Wed, 21 Jul 2021 07:14:57 +0000
+X-UUID: 06f1d6fe23b248a897c3e73a12f14888-20210721
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=zmxQjGdFqyA3uAn2rxS3iv5n86oQfg1uYDVx+P9Idkw=; 
- b=dCrK3PEuV/ySoCzadrRvVWS8ZzeqDGMbyiU+yI2yPC5/wuneOvT/lD6TctsTrLWbOpkUG1jeU3b/P/MTfDHtmvb+Y0E1uyhD1nk9KxqBLkw/ymxurTFK8FM6b/jts4aj8FnbC7LWkqDTCpfdnunh0H8JAVwaKbpBuGZHSx6w0Ds=;
-X-UUID: f2e56929d602480b972140346321820c-20210720
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=X50nXop30cnwwcmGkikGFe2s6bFECIzzj+a35koVrhA=; 
+ b=T7FdnUV9AwCE/WFNMlNsDUO2rhdL5Vd/jSyy2DzDyea6dTZyZF0bEBu0/uJ1mPszZZNmcOY10f1oL8CaU59Jey8uFazX4U18CPej0WIRcLms4IRcKv9R6PySSE7rYEbvyKL/DRXyAxQ2JZPg0+QpaH5KGxNddUD1smcmEYWYUl0=;
+X-UUID: 06f1d6fe23b248a897c3e73a12f14888-20210721
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1733128277; Tue, 20 Jul 2021 20:17:52 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 20 Jul 2021 20:17:51 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs06n1.mediatek.inc
- (172.21.101.129) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 21 Jul 2021 11:17:49 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 21 Jul 2021 11:17:48 +0800
-Message-ID: <1626837468.4247.3.camel@mhfsdcap03>
-Subject: Re: [PATCH v3 3/3] phy: phy-mtk-tphy: add support mt8195
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Vinod Koul <vkoul@kernel.org>
-CC: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
+ with ESMTP id 525498273; Wed, 21 Jul 2021 00:14:50 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Jul 2021 00:09:14 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Jul 2021 15:09:06 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 21 Jul 2021 15:09:06 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
+ <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Date: Wed, 21 Jul 2021 11:17:48 +0800
-In-Reply-To: <YPaIYI70823rK68w@matsya>
-References: <1626331702-27825-1-git-send-email-chunfeng.yun@mediatek.com>
- <1626331702-27825-3-git-send-email-chunfeng.yun@mediatek.com>
- <YPaIYI70823rK68w@matsya>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Subject: [PATCH v20 6/7] arm64: dts: mt8192: add svs device information
+Date: Wed, 21 Jul 2021 15:09:03 +0800
+Message-ID: <20210721070904.15636-7-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210721070904.15636-1-roger.lu@mediatek.com>
+References: <20210721070904.15636-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210720_201801_122461_4ED122DD 
-X-CRM114-Status: GOOD (  25.63  )
+X-CRM114-CacheID: sfid-20210721_001455_721598_4FB3F297 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,141 +96,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-07-20 at 13:55 +0530, Vinod Koul wrote:
-> On 15-07-21, 14:48, Chunfeng Yun wrote:
-> > The controller is designed to use use PLL integer mode, but
-> > in fact used fractional mode for some ones on mt8195, this
-> > causes signal degradation (e.g. eye diagram test fail), fix
-> > it by switching PLL to 26Mhz from default 48Mhz to improve
-> > signal quality.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> > v2~3: no changes
-> > ---
-> >  drivers/phy/mediatek/phy-mtk-tphy.c | 52 +++++++++++++++++++++++++++++
-> >  1 file changed, 52 insertions(+)
-> > 
-> > diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-> > index 42a1174da6cc..c3dc1763a7eb 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-tphy.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-> > @@ -41,6 +41,8 @@
-> >  
-> >  #define U3P_USBPHYACR0		0x000
-> >  #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
-> > +#define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
-> > +#define PA0_USB20_PLL_PREDIV_VAL(x)	((0x3 & (x)) << 6)
-> >  #define PA0_RG_USB20_INTR_EN		BIT(5)
-> >  
-> >  #define U3P_USBPHYACR1		0x004
-> > @@ -52,6 +54,8 @@
-> >  #define PA1_RG_TERM_SEL_VAL(x)	((0x7 & (x)) << 8)
-> >  
-> >  #define U3P_USBPHYACR2		0x008
-> > +#define PA2_RG_U2PLL_BW			GENMASK(21, 19)
-> > +#define PA2_RG_U2PLL_BW_VAL(x)		((0x7 & (x)) << 19)
-> >  #define PA2_RG_SIF_U2PLL_FORCE_EN	BIT(18)
-> >  
-> >  #define U3P_USBPHYACR5		0x014
-> > @@ -73,6 +77,14 @@
-> >  #define P2C_USB20_GPIO_MODE		BIT(8)
-> >  #define P2C_U2_GPIO_CTR_MSK	(P2C_RG_USB20_GPIO_CTL | P2C_USB20_GPIO_MODE)
-> >  
-> > +#define U3P_U2PHYA_RESV		0x030
-> > +#define P2R_RG_U2PLL_FBDIV_26M		0x1bb13b
-> > +#define P2R_RG_U2PLL_FBDIV_48M		0x3c0000
-> > +
-> > +#define U3P_U2PHYA_RESV1	0x044
-> > +#define P2R_RG_U2PLL_REFCLK_SEL	BIT(5)
-> > +#define P2R_RG_U2PLL_FRA_EN		BIT(3)
-> > +
-> >  #define U3D_U2PHYDCR0		0x060
-> >  #define P2C_RG_SIF_U2PLL_FORCE_ON	BIT(24)
-> >  
-> > @@ -277,6 +289,12 @@ enum mtk_phy_version {
-> >  struct mtk_phy_pdata {
-> >  	/* avoid RX sensitivity level degradation only for mt8173 */
-> >  	bool avoid_rx_sen_degradation;
-> > +	/*
-> > +	 * u2phy should use integer mode instead of fractional mode of
-> > +	 * 48M PLL, fix it by switching PLL to 26M from default 48M
-> > +	 * for mt8195
-> > +	 */
-> > +	bool sw_pll_48m_to_26m;
-> >  	enum mtk_phy_version version;
-> >  };
-> >  
-> > @@ -456,6 +474,33 @@ static void u3_phy_instance_init(struct mtk_tphy *tphy,
-> >  	dev_dbg(tphy->dev, "%s(%d)\n", __func__, instance->index);
-> >  }
-> >  
-> > +static void u2_phy_pll_26m_set(struct mtk_tphy *tphy,
-> > +	struct mtk_phy_instance *instance)
-> > +{
-> > +	struct u2phy_banks *u2_banks = &instance->u2_banks;
-> > +	void __iomem *com = u2_banks->com;
-> > +	u32 tmp;
-> > +
-> > +	if (!tphy->pdata->sw_pll_48m_to_26m)
-> > +		return;
-> > +
-> > +	tmp = readl(com + U3P_USBPHYACR0);
-> > +	tmp &= ~PA0_USB20_PLL_PREDIV;
-> > +	tmp |= PA0_USB20_PLL_PREDIV_VAL(0);
-> > +	writel(tmp, com + U3P_USBPHYACR0);
-> > +
-> > +	tmp = readl(com + U3P_USBPHYACR2);
-> > +	tmp &= ~PA2_RG_U2PLL_BW;
-> > +	tmp |= PA2_RG_U2PLL_BW_VAL(3);
-> > +	writel(tmp, com + U3P_USBPHYACR2);
-> > +
-> > +	writel(P2R_RG_U2PLL_FBDIV_26M, com + U3P_U2PHYA_RESV);
-> > +
-> > +	tmp = readl(com + U3P_U2PHYA_RESV1);
-> > +	tmp |= P2R_RG_U2PLL_FRA_EN | P2R_RG_U2PLL_REFCLK_SEL;
-> > +	writel(tmp, com + U3P_U2PHYA_RESV1);
-> > +}
-> > +
-> >  static void u2_phy_instance_init(struct mtk_tphy *tphy,
-> >  	struct mtk_phy_instance *instance)
-> >  {
-> > @@ -941,6 +986,7 @@ static int mtk_phy_init(struct phy *phy)
-> >  
-> >  	switch (instance->type) {
-> >  	case PHY_TYPE_USB2:
-> > +		u2_phy_pll_26m_set(tphy, instance);
-> 
-> should this not be set only for MTK_PHY_V3?
-Workaround only for mt8195, HW will fix it for others (V3)
+add compitable/reg/irq/clock/efuse/reset setting in svs node
 
-Thanks
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 ++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-> 
-> >  		u2_phy_instance_init(tphy, instance);
-> >  		u2_phy_props_set(tphy, instance);
-> >  		break;
-> > @@ -1094,10 +1140,16 @@ static const struct mtk_phy_pdata mt8173_pdata = {
-> >  	.version = MTK_PHY_V1,
-> >  };
-> >  
-> > +static const struct mtk_phy_pdata mt8195_pdata = {
-> > +	.sw_pll_48m_to_26m = true,
-> > +	.version = MTK_PHY_V3,
-> > +};
-> > +
-> >  static const struct of_device_id mtk_tphy_id_table[] = {
-> >  	{ .compatible = "mediatek,mt2701-u3phy", .data = &tphy_v1_pdata },
-> >  	{ .compatible = "mediatek,mt2712-u3phy", .data = &tphy_v2_pdata },
-> >  	{ .compatible = "mediatek,mt8173-u3phy", .data = &mt8173_pdata },
-> > +	{ .compatible = "mediatek,mt8195-tphy", .data = &mt8195_pdata },
-> >  	{ .compatible = "mediatek,generic-tphy-v1", .data = &tphy_v1_pdata },
-> >  	{ .compatible = "mediatek,generic-tphy-v2", .data = &tphy_v2_pdata },
-> >  	{ .compatible = "mediatek,generic-tphy-v3", .data = &tphy_v3_pdata },
-> > -- 
-> > 2.18.0
-> 
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 2f0b4824a024..f3a339de8992 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -268,6 +268,14 @@
+ 			compatible = "mediatek,mt8192-infracfg", "syscon";
+ 			reg = <0 0x10001000 0 0x1000>;
+ 			#clock-cells = <1>;
++
++			infracfg_rst: reset-controller {
++				compatible = "mediatek,infra-reset", "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <
++					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
++				>;
++			};
+ 		};
+ 
+ 		pericfg: syscon@10003000 {
+@@ -362,6 +370,20 @@
+ 			status = "disabled";
+ 		};
+ 
++		svs: svs@1100b000 {
++			compatible = "mediatek,mt8192-svs";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			clock-names = "main";
++			nvmem-cells = <&svs_calibration>,
++				      <&lvts_e_data1>;
++			nvmem-cell-names = "svs-calibration-data",
++					   "t-calibration-data";
++			resets = <&infracfg_rst 0>;
++			reset-names = "svs_rst";
++		};
++
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -473,6 +495,18 @@
+ 			status = "disable";
+ 		};
+ 
++		efuse: efuse@11c10000 {
++			compatible = "mediatek,efuse";
++			reg = <0 0x11c10000 0 0x1000>;
++
++			lvts_e_data1: data1 {
++				reg = <0x1C0 0x58>;
++			};
++			svs_calibration: calib@580 {
++				reg = <0x580 0x68>;
++			};
++		};
++
+ 		i2c3: i2c3@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
