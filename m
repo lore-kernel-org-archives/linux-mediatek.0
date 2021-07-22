@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70C53C6377D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:27:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 24D9BC6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:27:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28E39610CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:27:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28E39610CC
+	by mail.kernel.org (Postfix) with ESMTPS id D6CA36120C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:27:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D6CA36120C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,29 +23,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2uM/DHJY1RY72PWgvUmVkWFmXgNZeplvbcK9AabUANM=; b=ElE/iNo381Nlor
-	qoWtKsu86Eghz15obSqFw6aZppJFnfaY4lrElQo6Cm2y2FNE3Lxtl43gv0y+Jp4rLb8+T8jDzY3ad
-	MNjw7xKY+DiI/pjbFuXcYP5DVwX2IjjrVbG+s1GQOi6sJstWJCcd6lOUWILYJgY6YsUiYqiByk6GA
-	co7egSscW9Sgaujb0nWaG24CPf6BqdunbUqoHYy0KAXSQg1IY3vvpKWn6fls+HC55oiCCOBSCGFZG
-	heo5j11JGP5hUpj4vQxndLUunjwAFx4TpaBqx912ux8pMiLfjy18c4pxb9GWcoEKjdHHqI2+Yz0Sv
-	ipE5klmEdPRQO3RhQk6Q==;
+	List-Owner; bh=j+fV22dIZLUnP0ICMlmXdCKPJCsCkTUj49vFiVnJ/LM=; b=Gfl0z/TZLh33bi
+	V4IEY+2X42H1rQt03o15AwRUUG+6L4F7lG0p5a2ypAuVI0QcP5+HwnJb4QQsLJ914NM70LsxbsbMj
+	ly7EMLUXCkqqW6vrcYbBR/U/gJkzb9FNRmGzbrZRS2V/UT3racvN0Fl6XL8G1POBGuUpupi3XIvyb
+	pBYRG3/faD/ZMRJGXPI4RXbVo3iOB3EPlHu56RWRRBf+OM0shOkhOoiAGc4ZVvS8stp4m+8lct1EG
+	AfmcBChBaO16WKVKJE4YLf7mtpZqsz7dnTOEsWXdeOgpq0lcJYKNa1luZebBPs0ZmvYMvcxDvVdhQ
+	vvgawNGBSEnwvKdsfNGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6UzQ-000sxN-Ix; Thu, 22 Jul 2021 09:27:36 +0000
+	id 1m6UzX-000szk-Bo; Thu, 22 Jul 2021 09:27:43 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6UyO-000sgX-Nc; Thu, 22 Jul 2021 09:26:35 +0000
-X-UUID: aa588feb9a8645b1a31e285c54a09986-20210722
+ id 1m6UyO-000sfz-Nf; Thu, 22 Jul 2021 09:26:35 +0000
+X-UUID: 4063a6353a3b487caa9166f1ee4d21af-20210722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=17jBXrTkXRY3GWP94PPNHMy9c654uhsLxzr/Cvs3/Fc=; 
- b=kDX2DWcwVXdwpO+jJy2HXj68mmaVGvGqpJ6+jxTKT0W9LmqosqEnaV1T4lhwF0fNN2GQABZNOov0egbsJIctrCTLpN1vayUBP5iK8fH02+USXAirkXy927VnvhcXQHsjEmyOjKaxACqsDAucDEfd0UJqAWJ0nmyHLnmUKCxAiMo=;
-X-UUID: aa588feb9a8645b1a31e285c54a09986-20210722
+ bh=h80BEfOVdj6ApMxfxzTZC0Bqfvefj/iznjHRnj53pLQ=; 
+ b=doyTjIwpxphxOCAC6KTLDIZkJWtwtYMPk4p2U/s1SNGObXj3ZBfOtYv+1uqPm/I4nIVl5hDMBNEw+sP5wYf/1ieCMDmvRccjH6Ox9TjVSVCWnfKuWmaiqCmIuF3pVtHeMNfX2y4XjFzEo2w19/pCa73EhLkAERUOVv2ANpYkrQI=;
+X-UUID: 4063a6353a3b487caa9166f1ee4d21af-20210722
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 404988106; Thu, 22 Jul 2021 02:26:30 -0700
+ with ESMTP id 1413098234; Thu, 22 Jul 2021 02:26:30 -0700
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 22 Jul 2021 02:26:29 -0700
@@ -66,18 +65,19 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH v1 3/5] dt-bindings: mediatek: display: add MERGE additional
- description
-Date: Thu, 22 Jul 2021 17:26:22 +0800
-Message-ID: <20210722092624.14401-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH v1 1/5] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC
+ binding
+Date: Thu, 22 Jul 2021 17:26:20 +0800
+Message-ID: <20210722092624.14401-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210722092624.14401-1-jason-jh.lin@mediatek.com>
 References: <20210722092624.14401-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_022632_857122_7B55D56D 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20210722_022632_868606_CBA68085 
+X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,54 +94,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. clock drivers of MERGE
-   The MERGE controller may have 2 clock inputs.
-   The second clock of MERGE is async clock which is controlling
-   the async buffer between MERGE and other display function blocks.
-
-2. MERGE fifo settings enable
-   The setting of merge fifo is mainly provided for the display
-   latency buffer. To ensure that the back-end panel display data
-   will not be underrun, a little more data is needed in the fifo.
-   According to the merge fifo settings, when the water level is
-   detected to be insufficient, it will trigger RDMA sending
-   ultra and preulra command to SMI to speed up the data rate.
+There are 2 display hardware path in mt8195, namely vdosys0 and
+vdosys1, so add their definition in mtk-mmsys documentation.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- .../bindings/display/mediatek/mediatek,disp.yaml     | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+this patch is base on [1][2]
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-index f01ecf7fcbde..f16ee592735d 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
-@@ -227,6 +227,9 @@ properties:
-     description: clock drivers
-       See Documentation/devicetree/bindings/clock/clock-bindings.txt for details.
-       For most function blocks this is just a single clock input.
-+      The MERGE controller may have 2 clock inputs. The second clock of MERGE is async clock,
-+      which is controlling the synchronous process between MERGE and other display function
-+      blocks cross clock domain.
-       Only the DSI and DPI controller nodes have multiple clock inputs. These are documented
-       in mediatek,dsi.txt and mediatek,dpi.yaml, respectively.
-       An exception is that the mt8183 mutex is always free running with no clocks property.
-@@ -260,6 +263,15 @@ properties:
-     $ref: /schemas/types.yaml#/definitions/uint32
-     enum: [8*1024, 5*1024, 2*1024]
- 
-+  mediatek,merge-fifo-en:
-+    description: MERGE fifo settings enable
-+      The setting of merge fifo is mainly provided for the display latency buffer.
-+      To ensure that the back-end panel display data will not be underrun,
-+      a little more data is needed in the fifo. According to the merge fifo settings,
-+      when the water level is detected to be insufficient, it will trigger RDMA sending
-+      ultra and preulra command to SMI to speed up the data rate.
-+    type: boolean
-+
-   power-domains:
-     description: A phandle and PM domain specifier as defined by bindings of
-       the power controller specified by phandle. See
+[1] dt-bindings: arm: mediatek: mmsys: convert to YAML format
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/
+[2] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC binding
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-2-fparent@baylibre.com/
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 2d4ff0ce387b..0789a9614f12 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -30,6 +30,8 @@ properties:
+               - mediatek,mt8173-mmsys
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8365-mmsys
++              - mediatek,mt8195-vdosys0
++              - mediatek,mt8195-vdosys1
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-mmsys
 -- 
 2.18.0
 _______________________________________________
