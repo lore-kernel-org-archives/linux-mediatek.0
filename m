@@ -2,78 +2,88 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 90DEEC63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EAA50C6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:38:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 637D2610CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:25:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 637D2610CC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	by mail.kernel.org (Postfix) with ESMTPS id B2BCC61279
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:38:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B2BCC61279
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r8YFR86GnIo3agqb4ZekYdBpz0L9X/TrPDcBHJZumLs=; b=uJXwutZPnNJgFl
-	GyoqD3HdPGGEDiVrPtwb92p3K/EzYcVmQ1p3Snwu/zkT8HH6N0PQxBL8ezs8wj/fPt+oebOnNLX4u
-	XO+2AZvzyM96gV2uhmFm1s3ZlTt42//Uom/IsWLmef5ZmMwwKj1TErOwu3k7zjtQZ8ycYP2Enhn6M
-	VXd1N23BXc5pDajmGvmLDDjf1TGNBDGLGxkKfzjMmjEpaAiIoAAlEAmM8drBMtUyEu2GGP+FhAhAN
-	RHQtw9DDvtYwK6GAUpNawB8NE/q6QsU4joUJAp03fXdo9WFe3/qmEKznTsqUfi70ZLfTzjNP4JVuM
-	8Ka5J2It0v57koU8WI9A==;
+	List-Owner; bh=/7Ux0o/+zUKH0u70Wm3PrfQNttq7xDDCPpC5SYqXheg=; b=klGJ4JGG5uVCOa
+	t2koTyofzARNKzzlkfEVNgePq0d9U34/TiO90DjB4QPkVSmioZPgPCWNY5g4pkNcqSjQ7YP9ACZuk
+	tQkdtpwtbkTD1CtJgwk27M6/hAgZY806ml3KKqk1j7ARi6ksuph8EOKtfwAW4zKYTmegR/bXIJ1gu
+	Vn74+XsspZvSG0DVJE8199b25ncmhbAFOr3Lfd25L0BlMX8AAuCb5FmnvaQncKtasRr2WeRepXTLd
+	8LtojGtbjL52MLoFsnocMNRemwNe9FeYwdkNW36w2yuqbMqYWihA9iqCWQmGYSr0+pTfXfFlzv3YU
+	GWb8a6AtdwJetz1Qhkeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6S9O-000MNm-6P; Thu, 22 Jul 2021 06:25:42 +0000
-Received: from mx1.smtp.larsendata.com ([91.221.196.215])
+	id 1m6SLn-000Pit-Nd; Thu, 22 Jul 2021 06:38:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6S6u-000L1K-V5
- for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 06:23:12 +0000
-Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
- by mx1.smtp.larsendata.com (Halon) with ESMTPS
- id 49a34d20-eab5-11eb-9082-0050568c148b;
- Thu, 22 Jul 2021 06:23:11 +0000 (UTC)
-Received: from saturn.lan (80-162-45-141-cable.dk.customer.tdc.net
- [80.162.45.141])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sam@ravnborg.org)
- by mail01.mxhotel.dk (Postfix) with ESMTPSA id 13542194B25;
- Thu, 22 Jul 2021 08:23:24 +0200 (CEST)
-X-Report-Abuse-To: abuse@mxhotel.dk
-From: Sam Ravnborg <sam@ravnborg.org>
-To: dri-devel@lists.freedesktop.org
-Cc: Sam Ravnborg <sam@ravnborg.org>, Andrzej Hajda <a.hajda@samsung.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- Jernej Skrabec <jernej.skrabec@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Ripard <mripard@kernel.org>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Robert Foss <robert.foss@linaro.org>,
- Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v1 7/7] drm/todo: Add bridge related todo items
-Date: Thu, 22 Jul 2021 08:22:46 +0200
-Message-Id: <20210722062246.2512666-8-sam@ravnborg.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210722062246.2512666-1-sam@ravnborg.org>
-References: <20210722062246.2512666-1-sam@ravnborg.org>
+ id 1m6SLi-000Pga-Uy; Thu, 22 Jul 2021 06:38:29 +0000
+X-UUID: 79d036bbabd849378cd73901db3c4ade-20210721
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=oaxYxn3IILWuJbREf8SCmDPb7cFpjJSu+Lb7BiUbx7g=; 
+ b=XysRMbWJ8wjQ0Y3UXTNNFa/3mPg/H/hhOL1RrKpA3cZspA0ZB1jUfflXXqC2ToTCCZBkCoqqieXJFH7o0jkRBYdv14RQpeYSXiknWg1xTAHWWgwESewWoIVZKBADmI8S2Z4jUgVgsOpEeO9rW81EdFw5UbdE0AXRHYcEE37HDnY=;
+X-UUID: 79d036bbabd849378cd73901db3c4ade-20210721
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1917419345; Wed, 21 Jul 2021 23:38:24 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 21 Jul 2021 23:38:22 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 22 Jul 2021 14:38:15 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Jul 2021 14:38:14 +0800
+Message-ID: <1626935894.27875.6.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 07/11] memory: mtk-smi: Add smi sub common support
+From: Yong Wu <yong.wu@mediatek.com>
+To: Ikjoon Jang <ikjn@chromium.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>, Will Deacon
+ <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
+ <tfiga@chromium.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, open list <linux-kernel@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
+ <anthony.huang@mediatek.com>
+Date: Thu, 22 Jul 2021 14:38:14 +0800
+In-Reply-To: <CAATdQgBDsPHcuPYd=a+fjjTuqwXdJ-1GuSkj47cH1Ju5geqSLg@mail.gmail.com>
+References: <20210715121209.31024-1-yong.wu@mediatek.com>
+ <20210715121209.31024-8-yong.wu@mediatek.com>
+ <CAATdQgBDsPHcuPYd=a+fjjTuqwXdJ-1GuSkj47cH1Ju5geqSLg@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 8C9462D89BEED59F465508FE8E285B0DAFEB43CE951A7B5CDA310B4B06BC23302000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210721_232309_216895_7F42A0FB 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20210721_233827_049056_ECCE341A 
+X-CRM114-Status: GOOD (  23.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,65 +95,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-LSBkZXByZWNhdGVkIGNhbGxiYWNrcyBpbiBkcm1fYnJpZGdlX2Z1bmNzCi0gbW92ZSBjb25uZWN0
-b3IgY3JlYXRpb24gdG8gZGlzcGxheSBkcml2ZXJzCgpTaWduZWQtb2ZmLWJ5OiBTYW0gUmF2bmJv
-cmcgPHNhbUByYXZuYm9yZy5vcmc+CkNjOiBMYXVyZW50IFBpbmNoYXJ0IDxsYXVyZW50LnBpbmNo
-YXJ0QGlkZWFzb25ib2FyZC5jb20+CkNjOiBNYWFydGVuIExhbmtob3JzdCA8bWFhcnRlbi5sYW5r
-aG9yc3RAbGludXguaW50ZWwuY29tPgpDYzogTWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwu
-b3JnPgpDYzogVGhvbWFzIFppbW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2UuZGU+CkNjOiBEYXZp
-ZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+CkNjOiBEYW5pZWwgVmV0dGVyIDxkYW5pZWxAZmZ3
-bGwuY2g+Ci0tLQogRG9jdW1lbnRhdGlvbi9ncHUvdG9kby5yc3QgfCA0NyArKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDQ3IGluc2VydGlvbnMo
-KykKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2dwdS90b2RvLnJzdCBiL0RvY3VtZW50YXRp
-b24vZ3B1L3RvZG8ucnN0CmluZGV4IDEyZTYxODY5OTM5ZS4uMGVkMWY0OWRmNzNlIDEwMDY0NAot
-LS0gYS9Eb2N1bWVudGF0aW9uL2dwdS90b2RvLnJzdAorKysgYi9Eb2N1bWVudGF0aW9uL2dwdS90
-b2RvLnJzdApAQCAtNDc3LDYgKzQ3Nyw1MyBAQCBDb250YWN0OiBUaG9tYXMgWmltbWVybWFubiA8
-dHppbW1lcm1hbm5Ac3VzZS5kZT4sIENocmlzdGlhbiBLw7ZuaWcsIERhbmllbCBWZXR0ZQogCiBM
-ZXZlbDogSW50ZXJtZWRpYXRlCiAKK0Ryb3AgdXNlIG9mIGRlcHJlY2F0ZWQgY2FsbGJhY2tzIGlu
-IGJyaWRnZSBkcml2ZXJzCistLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQorCismc3RydWN0IGRybV9icmlkZ2VfZnVuY3MgY29udGFpbnMgYSBudW1iZXIg
-b2YgZGVwcmVjYXRlZCBvcGVyYXRpb25zCit3aGljaCB1c2UgY2FuIGJlIHJlcGxhY2VkIGJ5IHRo
-ZSBhdG9taWMgdmFyaWFudHMuCisKKyogcHJlX2VuYWJsZSA9PiBhdG9taWNfcHJlX2VuYWJsZQor
-KiBlbmFibGUgPT4gYXRvbWljX2VuYWJsZQorKiBkaXNhYmxlID0+IGF0b21pY19kaXNhYmxlCisq
-IHBvc3RfZGlzYWJsZSA9PiBhdG9taWNfcG9zdF9kaXNhYmxlCisKK1RoZSBhYm92ZSBhcmUgaW4g
-bW9zdCBjYXNlcyBhIHNpbXBsZSBhZGp1c3RtZW50IG9mIHRoZSBhcmd1bWVudHMgYW5kIG5hbWVz
-LgorCisqIG1vZGVfc2V0IGlzIG5vIGxvbmdlciByZXF1aXJlZCBhbmQgdGhlIGltcGxlbWVudGF0
-aW9uIHNoYWxsIGJlIG1lcmdlZAorICB3aXRoIGF0b21pY19lbmFibGUuCisKKyogbW9kZV9maXh1
-cCA9PiBhdG9taWNfY2hlY2sKKyAgbW9kZV9maXh1cCgpIHdhcyBjcmVhdGVkIGEgbG9uZyB0aW1l
-IGFnbywgd2hlbiB3ZSB3ZXJlIHN1cHBvc2VkIHRvIGhhdmUKKyAgYSBzaW5nbGUgYnJpZGdlIGF0
-IHRoZSBvdXRwdXQgb2YgdGhlIENSVEMuIFRoZSBicmlkZ2UgY291bGQgdGhlbiBpbnN0cnVjdAor
-ICB0aGUgQ1JUQyB0byBvdXRwdXQgYSBkaWZmZXJlbnQgbW9kZSB0aGFuIHdoYXQgdGhlIGRpc3Bs
-YXkgcmVxdWlyZXMuCisgIE5vdyB0aGF0IHdlIGhhdmUgc3VwcG9ydCBmb3IgbXVsdGlwbGUgYnJp
-ZGdlcywgaXQncyBub3QgYXMgc3RyYWlnaHRmb3J3YXJkLAorICBhbmQgd2UndmUgc28gZmFyIGp1
-c3QgcHJldGVuZGVkIHRvIGlnbm9yZSB0aGUgcHJvYmxlbS4gVGhlIC5tb2RlX2ZpeHVwKCkKKyAg
-b3BlcmF0aW9uIGlzIHVzZWQgYW5kIGFidXNlZCwgYW5kIGp1c3QgdGVsbGluZyBwZW9wbGUgdG8g
-dXNlIC5hdG9taWNfY2hlY2soKQorICB3aWxsIGxpa2VseSBtYWtlIHRoaW5ncyB3b3JzZSBhcyB0
-aGF0IG9wZXJhdGlvbiBoYXMgYWNjZXNzIHRvIHRoZSBmdWxsIGF0b21pYworICBjb21taXQgYW5k
-IGNhbiBhbHRlciB0aGUgbW9kZSBvZiBwcmV0dHkgbXVjaCBhbnl0aGluZy4gV2UgbmVlZCB0byBk
-ZWZpbmUgY2xlYXIKKyAgc2VtYW50aWNzIGZvciAuYXRvbWljX2NoZWNrKCkgaW4gYnJpZGdlcy4K
-KworCitDb250YWN0OiBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9yZy5vcmc+LCBMYXVyZW50IFBp
-bmNoYXJ0IDxsYXVyZW50LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+CisKK0xldmVsOiBCZWdp
-bm5lciBvciBpbnRlcm1lZGlhdGUgKGRlcGVuZGluZyBvbiB0aGUgZHJpdmVyKQorCitNb3ZlIGNv
-bm5lY3RvciBjcmVhdGlvbiB0byBkaXNwbGF5IGRyaXZlcnMKKy0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQorCitXaXRoIHRoZSBpbnRyb2R1Y3Rpb24gb2YgY2hhaW5l
-ZCBicmlkZ2VzIHRoZSBjcmVhdGlvbiBvZiBjb25uZWN0b3JzIGFyZSBtb3ZlZCB0byB0aGUKK2Rp
-c3BsYXkgZHJpdmVycy4gVGhlIGZsYWcgRFJNX0JSSURHRV9BVFRBQ0hfTk9fQ09OTkVDVE9SIGlz
-IHVzZWQgdG8gc2lnbmFsIHRvIHRoZSBicmlkZ2UKK2RyaXZlciB0aGF0IG5vIGNvbm5lY3RvciBz
-aGFsbCBiZSBjcmVhdGVkIGFuZCB0aGF0IHRoZSBkaXNwbGF5IGRyaXZlciB3aWxsIHRha2UgY2Fy
-ZS4KK0Rpc3BsYXkgZHJpdmVycyB3aWxsIGluIG1vc3QgY2FzZXMgYmUgYWJsZSB0byB1dGlsaXNl
-IGRybV9icmlkZ2VfY29ubmVjdG9yX2luaXQoKSBmb3IgYWxsCit0aGUgbG9naWMuCisKK1RoaXMg
-dGFzayByZXF1aXJlcyBhbGwgYnJpZGdlIGRyaXZlcnMgdG8gc3VwcG9ydCBvcHRpb25hbCBvciBu
-byBjb25uZWN0b3IgY3JlYXRpb24gYW5kIGFsbAorZGlzcGxheSBkcml2ZXJzIHVzaW5nIGJyaWRn
-ZXMgdG8gc3VwcG9ydCBjcmVhdGluZyB0aGUgY29ubmVjdG9yLgorCitDb250YWN0OiBTYW0gUmF2
-bmJvcmcgPHNhbUByYXZuYm9yZy5vcmc+LCBicmlkZ2UgbWFpbnRhaW5lcnMsIGRyaXZlciBtYWlu
-dGFpbmVyCisKK0xldmVsOiBJbnRlcm1lZGlhdGUgb3IgYWR2YW5jZWQgKGRlcGVuZGluZyBvbiB0
-aGUgZHJpdmVyKQogCiBDb3JlIHJlZmFjdG9yaW5ncwogPT09PT09PT09PT09PT09PT0KLS0gCjIu
-MzAuMgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVk
-aWF0ZWsK
+Hi Ikjoon,
+
+Thanks very much for your help reviewing..
+
+On Wed, 2021-07-21 at 19:43 +0800, Ikjoon Jang wrote:
+> On Thu, Jul 15, 2021 at 8:25 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> >
+> > In mt8195, there are some larbs connect with the smi-sub-common, then
+> > connect with smi-common.
+> 
+> Not critical but I suggest to describe what is smi-sub-common.
+> e.g. "some larbs are not directly connected to smi-common,
+> they are connected to smi-sub-common which is a bridge(?) interface to..."
+
+OK. I will add some brief description about this sub-common in next
+version.
+
+> 
+> >
+> > Before we create device link between smi-larb with smi-common. If we have
+> > sub-common, we should use device link the smi-larb and smi-sub-common,
+> > then use device link between the smi-sub-common with smi-common. This is
+> > for enabling clock/power automatically.
+> >
+> > Move the device link code to a new interface for reusing.
+> >
+> > There is no SW extra setting for smi-sub-common.
+> >
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> 
+> Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
+
+Thanks.
+
+> 
+> > ---
+> >  drivers/memory/mtk-smi.c | 75 +++++++++++++++++++++++++++-------------
+> >  1 file changed, 51 insertions(+), 24 deletions(-)
+> >
+> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > index e68cbb51dd12..ee49bb50f5f5 100644
+> > --- a/drivers/memory/mtk-smi.c
+> > +++ b/drivers/memory/mtk-smi.c
+> > @@ -60,7 +60,8 @@
+
+[snip..]
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
