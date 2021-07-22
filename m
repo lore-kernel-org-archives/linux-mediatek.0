@@ -2,62 +2,83 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-20.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3B5CC63799
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 18:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E362C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 22:20:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A26CC6135F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 18:01:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A26CC6135F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
-Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+	by mail.kernel.org (Postfix) with ESMTPS id 63EC260EB1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 22:20:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 63EC260EB1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+xDZ1Q+lkj9G7IcyEvxyuH2LybgjBsd0cP2Qqp6h7N0=; b=f1Hkw8oRG8obY6
-	lYg8sDGli8EUofjLsN6xzxRg0Dxv/cRvxpq8QxSu0lXFq86h9mlcprJDtU5wfMs0Rfvk2C8uh8O6A
-	jLrZVo+ANZGScPNoeVyfBPel/yfc9x+pRptmHn1xjn9iwu/VsXCu4KDxI1OzfPY50SyQ3oFEQTCdP
-	zI1W81swkGHuA31g2rE3M1JE7aEtNiaTpQYUDF6cipf4bGXfgSQfuHF6QKbnzURT7rHE0GTAB/kIX
-	FeRlkuuC0o8PmV91KjYd+EHpvwQW7z2RiQeNOtqcjsptfj3+c6F/jz4s11mhTdG2rUeY0kFQ2LdJP
-	44OWSCUStNfuTHKAE8gw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m4cNRZpQZ3mwpyuvz6BAzENVBEPGbUg3oDCzwJy7kaY=; b=XnDPZllE7SDKl1
+	zpLf0ewXtjD+WjPCEucNtXjG1EgYHx+uZ6Wy4xkyfwgL3b07LNpnDAknCJmqi1s5MEp0PmEiQGTlU
+	KbRQm2sjjHfE6Nr6LBrME5SlJ54msWdj1ELLt0yKj0bjRg2swLaaP8GykoyX89JUg2oNR0n5IPOxv
+	waBRELBpFkQXD2i1+RhAFVHX1ywEbhle8ixL5eLnNzGkbyH7MJV+LQhTWVYnbfOdG/irr2FHNd7ko
+	lV3Dm9YRj4GBeIpJ+GwHw6XTOM6/D6Z2uAuLkNt4SUi+0kb2/E/5EI6oOFvKKEvSwMcoML152yu8v
+	xwjfVStBR2lcVNjqQg8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6d0M-002NF0-6Q; Thu, 22 Jul 2021 18:01:06 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6d0I-002NC2-HX
- for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 18:01:04 +0000
-Received: from smtpclient.apple (p5b3d2eb8.dip0.t-ipconnect.de [91.61.46.184])
- by mail.holtmann.org (Postfix) with ESMTPSA id 1E098CECE5;
- Thu, 22 Jul 2021 20:00:56 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.100.0.2.22\))
-Subject: Re: [PATCH v2] Bluetooth: btusb: Add support for Foxconn Mediatek Chip
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210722171718.134034-1-aaron.ma@canonical.com>
-Date: Thu, 22 Jul 2021 20:00:55 +0200
-Cc: Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, matthias.bgg@gmail.com,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- linux-mediatek@lists.infradead.org
-Message-Id: <A24B292E-9E05-410E-8EF1-D815AEAE8165@holtmann.org>
-References: <E6EC3615-DAC0-4267-AD9B-3B0604EDAD87@holtmann.org>
- <20210722171718.134034-1-aaron.ma@canonical.com>
-To: Aaron Ma <aaron.ma@canonical.com>
-X-Mailer: Apple Mail (2.3654.100.0.2.22)
+	id 1m6h3c-002sU4-Se; Thu, 22 Jul 2021 22:20:44 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1m6h3O-002sSW-Vw; Thu, 22 Jul 2021 22:20:32 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A4DDF60ED8;
+ Thu, 22 Jul 2021 22:20:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1626992430;
+ bh=UBbRW2dJdthNRV7ahn+zuo6vi/63CEXtWz9EMVemDGc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=aeQCl8506WTehxEgSoqz2X579VZCIjQPDPuIi8+C6YZUAquNaVThYmdnOEvTk+EBE
+ ovvcOZeHKdrWrqY48qn1jcrG2CE+lwPEO6W47Owj10NZAJaVOqt06Kzh0IoAvAoOll
+ fgMcM681st3dfzTAFaRfFfM2SLgK32ESHrE938jm3xIptc7cR/R9vsNv3Gwv9CX3zX
+ ax4uKbUtF1AeHz2EwYpJVvI3FlLNMD0SNAiyvbI03BVeXBM0m0cauCL0tupia6rZsv
+ BSuzu0dZDR6zzWw+6snuTKV5bXXfw8iRvh6wKfqel09pj89euMBYxpybwuFfxIZOw7
+ pAYPpGDUCNv1A==
+Received: by mail-ej1-f42.google.com with SMTP id nb11so897346ejc.4;
+ Thu, 22 Jul 2021 15:20:30 -0700 (PDT)
+X-Gm-Message-State: AOAM5311PEJyNnTfgFTSWsEi8Kd8Xid8N4LJwaiX18YgVntQy6OjY99N
+ OkfXZQO20e5HZI5IrbXuC//FciKj9FXrtYI+jQ==
+X-Google-Smtp-Source: ABdhPJwXWEw3S7jLgBAbvYSuo9ZwWc4hAPLcprn5CYHYEKMQ+XqOBxwDM/cEWRHTHPKaZNZdv/8X/1DchdPffow9340=
+X-Received: by 2002:a17:906:27da:: with SMTP id
+ k26mr1895403ejc.267.1626992429164; 
+ Thu, 22 Jul 2021 15:20:29 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210722014743.8377-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20210722014743.8377-1-jason-jh.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 23 Jul 2021 06:20:17 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_9qY2OruAQwtAp4L+dDmeyh0iVm_-Ongk9CfsRjZi-CwQ@mail.gmail.com>
+Message-ID: <CAAOTY_9qY2OruAQwtAp4L+dDmeyh0iVm_-Ongk9CfsRjZi-CwQ@mail.gmail.com>
+Subject: Re: [PATCH v4] drm/mediatek: Fix cursor plane didn't update
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Maxime Ripard <maxime@cerno.tech>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ ville.syrjala@linux.intel.com, Thomas Zimmermann <tzimmermann@suse.de>,
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ seanpaul@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+ Nancy Lin <nancy.lin@mediatek.com>, singo.chang@mediatek.com, 
+ David-YH.Chiu@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_110102_808847_2F3E2DC4 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210722_152031_106372_C5F84971 
+X-CRM114-Status: GOOD (  21.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,68 +90,124 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Aaron,
-
-> Add support for another Foxconn / Hon Hai device with MT7921 chip.
-> 
-> T:  Bus=05 Lev=01 Prnt=01 Port=03 Cnt=02 Dev#=  3 Spd=480  MxCh= 0
-> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-> P:  Vendor=0489 ProdID=e0cd Rev= 1.00
-> S:  Manufacturer=MediaTek Inc.
-> S:  Product=Wireless_Device
-> S:  SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> Signed-off-by: Aaron Ma <aaron.ma@canonical.com>
-> ---
-> drivers/bluetooth/btusb.c | 3 +++
-> 1 file changed, 3 insertions(+)
-
-patch has been applied to bluetooth-next tree.
-
-Regards
-
-Marcel
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEphc29uOgoKamFzb24tamgubGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPiDmlrwg
+MjAyMeW5tDfmnIgyMuaXpSDpgLHlm5sg5LiK5Y2IOTo0N+Wvq+mBk++8mgo+Cj4gVGhlIGN1cnNv
+ciBwbGFuZSBzaG91bGQgdXNlIHRoZSBjdXJyZW50IHBsYW5lIHN0YXRlIGluIGF0b21pY19hc3lu
+Y191cGRhdGUKPiBiZWNhdXNlIGl0IHdvdWxkIG5vdCBiZSB0aGUgbmV3IHBsYW5lIHN0YXRlIGlu
+IHRoZSBnbG9iYWwgYXRvbWljIHN0YXRlCj4gc2luY2UgX3N3YXBfc3RhdGUgaGFwcGVuZWQgd2hl
+biB0aG9zZSBob29rIGFyZSBydW4uCj4KPiBGaXggY3Vyc29yIHBsYW5lIGlzc3VlIGJ5IGJlbG93
+IG1vZGlmaWNhdGlvbjoKPiAxLiBSZW1vdmUgcGxhbmVfaGVscGVyX2Z1bmNzLT5hdG9taWNfdXBk
+YXRlKHBsYW5lLCBzdGF0ZSkgaW4KPiAgICBtdGtfZHJtX2NydGNfYXN5bmNfdXBkYXRlLgo+IDIu
+IEFkZCBtdGtfZHJtX3VwZGF0ZV9uZXdfc3RhdGUgaW4gdG8gbXRrX3BsYW5lX2F0b21pY19hc3lu
+Y191cGRhdGUgdG8KPiAgICB1cGRhdGUgdGhlIGN1cnNvciBwbGFuZSBieSBjdXJyZW50IHBsYW5l
+IHN0YXRlIGhvb2sgYW5kIHVwZGF0ZQo+ICAgIG90aGVycyBwbGFuZSBieSB0aGUgbmV3X3N0YXRl
+LgoKQXBwbGllZCB0byBtZWRpYXRlay1kcm0tZml4ZXMgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6
+Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xp
+bnV4LmdpdC9sb2cvP2g9bWVkaWF0ZWstZHJtLWZpeGVzCgpSZWdhcmRzLApDaHVuLUt1YW5nLgoK
+Pgo+IEZpeGVzOiAzNzQxOGJmMTRjMTMgKCJkcm06IFVzZSBzdGF0ZSBoZWxwZXIgaW5zdGVhZCBv
+ZiB0aGUgcGxhbmUgc3RhdGUgcG9pbnRlciIpCj4gU2lnbmVkLW9mZi1ieTogamFzb24tamgubGlu
+IDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPgo+IFRlc3RlZC1ieTogRW5yaWMgQmFsbGV0Ym8g
+aSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgIENoYW5nZSBp
+biB2NDoKPiAgIC0gRml4IGNvbXBpbGUgd2FybmluZzoKPiAgICAgLi4vZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fY3J0Yy5jOjU3ODozOTogd2FybmluZzogdW51c2VkCj4gICAgIHZh
+cmlhYmxlIOKAmHBsYW5lX2hlbHBlcl9mdW5jc+KAmSBbLVd1bnVzZWQtdmFyaWFibGUKPiAtLS0K
+PiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5jICB8ICAzIC0tCj4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5lLmMgfCA2MCArKysrKysrKysrKysr
+Ky0tLS0tLS0tLS0KPiAgMiBmaWxlcyBjaGFuZ2VkLCAzNCBpbnNlcnRpb25zKCspLCAyOSBkZWxl
+dGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Ry
+bV9jcnRjLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiBpbmRl
+eCA0MGRmMmM4MjMxODcuLjUxNTMxNTUwNWUzYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9jcnRjLmMKPiBAQCAtNTMyLDEzICs1MzIsMTAgQEAgdm9pZCBtdGtfZHJtX2Ny
+dGNfYXN5bmNfdXBkYXRlKHN0cnVjdCBkcm1fY3J0YyAqY3J0Yywgc3RydWN0IGRybV9wbGFuZSAq
+cGxhbmUsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBkcm1fYXRvbWlj
+X3N0YXRlICpzdGF0ZSkKPiAgewo+ICAgICAgICAgc3RydWN0IG10a19kcm1fY3J0YyAqbXRrX2Ny
+dGMgPSB0b19tdGtfY3J0YyhjcnRjKTsKPiAtICAgICAgIGNvbnN0IHN0cnVjdCBkcm1fcGxhbmVf
+aGVscGVyX2Z1bmNzICpwbGFuZV9oZWxwZXJfZnVuY3MgPQo+IC0gICAgICAgICAgICAgICAgICAg
+ICAgIHBsYW5lLT5oZWxwZXJfcHJpdmF0ZTsKPgo+ICAgICAgICAgaWYgKCFtdGtfY3J0Yy0+ZW5h
+YmxlZCkKPiAgICAgICAgICAgICAgICAgcmV0dXJuOwo+Cj4gLSAgICAgICBwbGFuZV9oZWxwZXJf
+ZnVuY3MtPmF0b21pY191cGRhdGUocGxhbmUsIHN0YXRlKTsKPiAgICAgICAgIG10a19kcm1fY3J0
+Y191cGRhdGVfY29uZmlnKG10a19jcnRjLCBmYWxzZSk7Cj4gIH0KPgo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jIGIvZHJpdmVycy9ncHUvZHJt
+L21lZGlhdGVrL210a19kcm1fcGxhbmUuYwo+IGluZGV4IGI1NTgyZGNmNTY0Yy4uZTZkY2IzNGQz
+MDUyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX3BsYW5l
+LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9wbGFuZS5jCj4gQEAg
+LTExMCw2ICsxMTAsMzUgQEAgc3RhdGljIGludCBtdGtfcGxhbmVfYXRvbWljX2FzeW5jX2NoZWNr
+KHN0cnVjdCBkcm1fcGxhbmUgKnBsYW5lLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHRydWUsIHRydWUpOwo+ICB9Cj4KPiArc3RhdGljIHZvaWQg
+bXRrX3BsYW5lX3VwZGF0ZV9uZXdfc3RhdGUoc3RydWN0IGRybV9wbGFuZV9zdGF0ZSAqbmV3X3N0
+YXRlLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBtdGtf
+cGxhbmVfc3RhdGUgKm10a19wbGFuZV9zdGF0ZSkKPiArewo+ICsgICAgICAgc3RydWN0IGRybV9m
+cmFtZWJ1ZmZlciAqZmIgPSBuZXdfc3RhdGUtPmZiOwo+ICsgICAgICAgc3RydWN0IGRybV9nZW1f
+b2JqZWN0ICpnZW07Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RybV9nZW1fb2JqICptdGtfZ2VtOwo+
+ICsgICAgICAgdW5zaWduZWQgaW50IHBpdGNoLCBmb3JtYXQ7Cj4gKyAgICAgICBkbWFfYWRkcl90
+IGFkZHI7Cj4gKwo+ICsgICAgICAgZ2VtID0gZmItPm9ialswXTsKPiArICAgICAgIG10a19nZW0g
+PSB0b19tdGtfZ2VtX29iaihnZW0pOwo+ICsgICAgICAgYWRkciA9IG10a19nZW0tPmRtYV9hZGRy
+Owo+ICsgICAgICAgcGl0Y2ggPSBmYi0+cGl0Y2hlc1swXTsKPiArICAgICAgIGZvcm1hdCA9IGZi
+LT5mb3JtYXQtPmZvcm1hdDsKPiArCj4gKyAgICAgICBhZGRyICs9IChuZXdfc3RhdGUtPnNyYy54
+MSA+PiAxNikgKiBmYi0+Zm9ybWF0LT5jcHBbMF07Cj4gKyAgICAgICBhZGRyICs9IChuZXdfc3Rh
+dGUtPnNyYy55MSA+PiAxNikgKiBwaXRjaDsKPiArCj4gKyAgICAgICBtdGtfcGxhbmVfc3RhdGUt
+PnBlbmRpbmcuZW5hYmxlID0gdHJ1ZTsKPiArICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGlu
+Zy5waXRjaCA9IHBpdGNoOwo+ICsgICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLmZvcm1h
+dCA9IGZvcm1hdDsKPiArICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGluZy5hZGRyID0gYWRk
+cjsKPiArICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGluZy54ID0gbmV3X3N0YXRlLT5kc3Qu
+eDE7Cj4gKyAgICAgICBtdGtfcGxhbmVfc3RhdGUtPnBlbmRpbmcueSA9IG5ld19zdGF0ZS0+ZHN0
+LnkxOwo+ICsgICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLndpZHRoID0gZHJtX3JlY3Rf
+d2lkdGgoJm5ld19zdGF0ZS0+ZHN0KTsKPiArICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGlu
+Zy5oZWlnaHQgPSBkcm1fcmVjdF9oZWlnaHQoJm5ld19zdGF0ZS0+ZHN0KTsKPiArICAgICAgIG10
+a19wbGFuZV9zdGF0ZS0+cGVuZGluZy5yb3RhdGlvbiA9IG5ld19zdGF0ZS0+cm90YXRpb247Cj4g
+K30KPiArCj4gIHN0YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfYXN5bmNfdXBkYXRlKHN0cnVj
+dCBkcm1fcGxhbmUgKnBsYW5lLAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIHN0cnVjdCBkcm1fYXRvbWljX3N0YXRlICpzdGF0ZSkKPiAgewo+IEBAIC0xMjYsOCAr
+MTU1LDEwIEBAIHN0YXRpYyB2b2lkIG10a19wbGFuZV9hdG9taWNfYXN5bmNfdXBkYXRlKHN0cnVj
+dCBkcm1fcGxhbmUgKnBsYW5lLAo+ICAgICAgICAgcGxhbmUtPnN0YXRlLT5zcmNfaCA9IG5ld19z
+dGF0ZS0+c3JjX2g7Cj4gICAgICAgICBwbGFuZS0+c3RhdGUtPnNyY193ID0gbmV3X3N0YXRlLT5z
+cmNfdzsKPiAgICAgICAgIHN3YXAocGxhbmUtPnN0YXRlLT5mYiwgbmV3X3N0YXRlLT5mYik7Cj4g
+LSAgICAgICBuZXdfcGxhbmVfc3RhdGUtPnBlbmRpbmcuYXN5bmNfZGlydHkgPSB0cnVlOwo+Cj4g
+KyAgICAgICBtdGtfcGxhbmVfdXBkYXRlX25ld19zdGF0ZShuZXdfc3RhdGUsIG5ld19wbGFuZV9z
+dGF0ZSk7Cj4gKyAgICAgICB3bWIoKTsgLyogTWFrZSBzdXJlIHRoZSBhYm92ZSBwYXJhbWV0ZXJz
+IGFyZSBzZXQgYmVmb3JlIHVwZGF0ZSAqLwo+ICsgICAgICAgbmV3X3BsYW5lX3N0YXRlLT5wZW5k
+aW5nLmFzeW5jX2RpcnR5ID0gdHJ1ZTsKPiAgICAgICAgIG10a19kcm1fY3J0Y19hc3luY191cGRh
+dGUobmV3X3N0YXRlLT5jcnRjLCBwbGFuZSwgc3RhdGUpOwo+ICB9Cj4KPiBAQCAtMTg5LDE0ICsy
+MjAsOCBAQCBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX3VwZGF0ZShzdHJ1Y3QgZHJtX3Bs
+YW5lICpwbGFuZSwKPiAgICAgICAgIHN0cnVjdCBkcm1fcGxhbmVfc3RhdGUgKm5ld19zdGF0ZSA9
+IGRybV9hdG9taWNfZ2V0X25ld19wbGFuZV9zdGF0ZShzdGF0ZSwKPiAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBwbGFuZSk7Cj4gICAgICAgICBzdHJ1Y3QgbXRrX3BsYW5lX3N0YXRlICptdGtfcGxhbmVfc3Rh
+dGUgPSB0b19tdGtfcGxhbmVfc3RhdGUobmV3X3N0YXRlKTsKPiAtICAgICAgIHN0cnVjdCBkcm1f
+Y3J0YyAqY3J0YyA9IG5ld19zdGF0ZS0+Y3J0YzsKPiAtICAgICAgIHN0cnVjdCBkcm1fZnJhbWVi
+dWZmZXIgKmZiID0gbmV3X3N0YXRlLT5mYjsKPiAtICAgICAgIHN0cnVjdCBkcm1fZ2VtX29iamVj
+dCAqZ2VtOwo+IC0gICAgICAgc3RydWN0IG10a19kcm1fZ2VtX29iaiAqbXRrX2dlbTsKPiAtICAg
+ICAgIHVuc2lnbmVkIGludCBwaXRjaCwgZm9ybWF0Owo+IC0gICAgICAgZG1hX2FkZHJfdCBhZGRy
+Owo+Cj4gLSAgICAgICBpZiAoIWNydGMgfHwgV0FSTl9PTighZmIpKQo+ICsgICAgICAgaWYgKCFu
+ZXdfc3RhdGUtPmNydGMgfHwgV0FSTl9PTighbmV3X3N0YXRlLT5mYikpCj4gICAgICAgICAgICAg
+ICAgIHJldHVybjsKPgo+ICAgICAgICAgaWYgKCFuZXdfc3RhdGUtPnZpc2libGUpIHsKPiBAQCAt
+MjA0LDI0ICsyMjksNyBAQCBzdGF0aWMgdm9pZCBtdGtfcGxhbmVfYXRvbWljX3VwZGF0ZShzdHJ1
+Y3QgZHJtX3BsYW5lICpwbGFuZSwKPiAgICAgICAgICAgICAgICAgcmV0dXJuOwo+ICAgICAgICAg
+fQo+Cj4gLSAgICAgICBnZW0gPSBmYi0+b2JqWzBdOwo+IC0gICAgICAgbXRrX2dlbSA9IHRvX210
+a19nZW1fb2JqKGdlbSk7Cj4gLSAgICAgICBhZGRyID0gbXRrX2dlbS0+ZG1hX2FkZHI7Cj4gLSAg
+ICAgICBwaXRjaCA9IGZiLT5waXRjaGVzWzBdOwo+IC0gICAgICAgZm9ybWF0ID0gZmItPmZvcm1h
+dC0+Zm9ybWF0Owo+IC0KPiAtICAgICAgIGFkZHIgKz0gKG5ld19zdGF0ZS0+c3JjLngxID4+IDE2
+KSAqIGZiLT5mb3JtYXQtPmNwcFswXTsKPiAtICAgICAgIGFkZHIgKz0gKG5ld19zdGF0ZS0+c3Jj
+LnkxID4+IDE2KSAqIHBpdGNoOwo+IC0KPiAtICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGlu
+Zy5lbmFibGUgPSB0cnVlOwo+IC0gICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLnBpdGNo
+ID0gcGl0Y2g7Cj4gLSAgICAgICBtdGtfcGxhbmVfc3RhdGUtPnBlbmRpbmcuZm9ybWF0ID0gZm9y
+bWF0Owo+IC0gICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLmFkZHIgPSBhZGRyOwo+IC0g
+ICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLnggPSBuZXdfc3RhdGUtPmRzdC54MTsKPiAt
+ICAgICAgIG10a19wbGFuZV9zdGF0ZS0+cGVuZGluZy55ID0gbmV3X3N0YXRlLT5kc3QueTE7Cj4g
+LSAgICAgICBtdGtfcGxhbmVfc3RhdGUtPnBlbmRpbmcud2lkdGggPSBkcm1fcmVjdF93aWR0aCgm
+bmV3X3N0YXRlLT5kc3QpOwo+IC0gICAgICAgbXRrX3BsYW5lX3N0YXRlLT5wZW5kaW5nLmhlaWdo
+dCA9IGRybV9yZWN0X2hlaWdodCgmbmV3X3N0YXRlLT5kc3QpOwo+IC0gICAgICAgbXRrX3BsYW5l
+X3N0YXRlLT5wZW5kaW5nLnJvdGF0aW9uID0gbmV3X3N0YXRlLT5yb3RhdGlvbjsKPiArICAgICAg
+IG10a19wbGFuZV91cGRhdGVfbmV3X3N0YXRlKG5ld19zdGF0ZSwgbXRrX3BsYW5lX3N0YXRlKTsK
+PiAgICAgICAgIHdtYigpOyAvKiBNYWtlIHN1cmUgdGhlIGFib3ZlIHBhcmFtZXRlcnMgYXJlIHNl
+dCBiZWZvcmUgdXBkYXRlICovCj4gICAgICAgICBtdGtfcGxhbmVfc3RhdGUtPnBlbmRpbmcuZGly
+dHkgPSB0cnVlOwo+ICB9Cj4gLS0KPiAyLjE4LjAKPgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4
+LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
