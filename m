@@ -2,19 +2,19 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E545C63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 12:50:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C650C6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 12:53:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 690D161378
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 12:50:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 690D161378
+	by mail.kernel.org (Postfix) with ESMTPS id 476F361378
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 12:53:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 476F361378
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,65 +23,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rgfz5gu8h/WcT5TSwokQ7U9t8f8BUsfF4ENOicWt69Q=; b=yfU5C0V3fBccxE
-	WZ7jiKtuyt3BKbmskKH363jvOTzQAb4lVEwJRczi/Wh/kmN+wzMKDeuTLjj6yila6oSfD6fth9Pcr
-	OIs0YDh5w96RUj1kEfEERC3bu/w5puAwohEXs+WJfRWscxjMu++e2Y8RSohdJVT7FjS4gBVwUnCPR
-	W9cwFgm2uz6+lY+AJFtXZ9GXGBhlS0S+1glOP2VX93StqH0dzXaUDsselFI4bCccqLOh/OxvLzdZD
-	tGwGBUvcf/6D5BSkS/+VMjyXr4Py/hZ3pMjXRWcaXBGYE7ZZHErbltGwnnpSctZvIGEvTuLmxOXPM
-	ajm6YaY/ed/iL64Mx4JQ==;
+	List-Owner; bh=/jn7/kyZD582XV0uR0pLoUoAWRqJLsrw5FYQElDmNCQ=; b=PMg0M9XhgTbVZl
+	HmvH3XjKaep1HQzVYux/ObMWF+2sFmUM3GCoqIJoC2+c+xR5RK2sz2v2hUbyNmRs8T9A+BeLlEgLt
+	LmTLRs2kAUo2UuQKWaHb2q78X5Q6job5VPOcMr/tX6rbSmYoi4E3cL2L2EMdVuamJVgTBkODgry15
+	iMiXKmRMKijJFhdwjMlkYeXWvRb40ICNpjZEOv3HgRlzxNA1KDmZVm/6Eo5p7aSLtl0FcG9W63Ypk
+	4LW0Hj1FnulbKgEr2PMpB66ZfDK8mjp0KajqGocBiSUpaeIAF9qiBJdD8GiZBfgADzUEYf4AQFHUz
+	4An21xmsJVK2YoqncDLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6Y9P-001XfI-CJ; Thu, 22 Jul 2021 12:50:07 +0000
+	id 1m6YCl-001YDw-9e; Thu, 22 Jul 2021 12:53:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6X7l-001OVi-8B; Thu, 22 Jul 2021 11:44:28 +0000
-X-UUID: 3d1e6a55904c44bdb07317669a74bdcb-20210722
+ id 1m6XGB-001PY4-4H; Thu, 22 Jul 2021 11:53:05 +0000
+X-UUID: 77b2cedc863845e78efca3e798f3ee9c-20210722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=sVejKnwGWH8m17twQO8kI259z77f4UObKDcLs86o0BA=; 
- b=EHRTMlUnReWQ0/AZzpR5ZH0pJZ1bqzhqLQfF3LKLSDMrVwwpItYrSXc/YAoei3uu2w1ly83E93EXNpAe15aDe9248ZDNGXQWUW+N5/kHpgYWhXUQmgLF5+XaDwBNHmI8ojfA1vrQ8DWTUqySAkr2Nqg633JwP6yIRYpqR73UJzI=;
-X-UUID: 3d1e6a55904c44bdb07317669a74bdcb-20210722
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ bh=HI+e/xvoUOH4i2trhO8dcOHc+LQTOalKpiniQMNVN5I=; 
+ b=jB2RGs9DabERlVdkoje6zFj040j2iY7Xjhrw91klEjI9h3I+neZxnAVdRE9QecDFv0i7oD+wvac41HTeba9p5V5hpcFy6itdDIKv3p1DGobWh4KEDOtvFjYmtUxGXNQGPA4SVDph8hKC9hwoudRv8LqYw39sfNKA+fZnJoxz7YQ=;
+X-UUID: 77b2cedc863845e78efca3e798f3ee9c-20210722
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 553344500; Thu, 22 Jul 2021 04:44:13 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Jul 2021 04:44:11 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Jul 2021 19:44:10 +0800
-Received: from [10.17.3.153] (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Jul 2021 19:44:09 +0800
-Message-ID: <1626954248.32022.5.camel@mhfsdcap03>
-Subject: Re: [PATCH v2, 00/14] Using component framework to support multi
- hardware decode
-From: mtk12024 <yunfei.dong@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ with ESMTP id 1783484179; Thu, 22 Jul 2021 04:52:59 -0700
+Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Jul 2021 04:52:58 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS32N1.mediatek.inc
+ (172.27.4.71) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 22 Jul 2021 19:52:51 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Jul 2021 19:52:50 +0800
+Message-ID: <1626954770.29611.55.camel@mhfsdcap03>
+Subject: Re: [PATCH] uart: mediatek: fix memory corruption issue
+From: zhiyong tao <zhiyong.tao@mediatek.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+CC: <timur@kernel.org>, <linux@armlinux.org.uk>, <alcooperx@gmail.com>,
+ <tklauser@distanz.ch>, <sean.wang@kernel.org>, <srv_heupstream@mediatek.com>, 
+ <hui.liu@mediatek.com>, <yuchen.huang@mediatek.com>,
+ <huihui.wang@mediatek.com>, <eddie.huang@mediatek.com>,
+ <sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Collabora Kernel ML
- <kernel@collabora.com>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Date: Thu, 22 Jul 2021 19:44:08 +0800
-In-Reply-To: <bac9fe10-50e1-a91f-8f71-b6295227d01b@collabora.com>
-References: <20210717081233.7809-1-yunfei.dong@mediatek.com>
- <bac9fe10-50e1-a91f-8f71-b6295227d01b@collabora.com>
+ <linux-mediatek@lists.infradead.org>, <linux-serial@vger.kernel.org>
+Date: Thu, 22 Jul 2021 19:52:50 +0800
+In-Reply-To: <YPlEjlKn5Hav/GNH@kroah.com>
+References: <20210710090103.2643-1-zhiyong.tao@mediatek.com>
+ <20210710090103.2643-2-zhiyong.tao@mediatek.com>
+ <YPf67gw2KJCk/Ucs@kroah.com> <1626948212.29611.47.camel@mhfsdcap03>
+ <YPlEjlKn5Hav/GNH@kroah.com>
 X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: EA5696D511CFA7729DB6F188DE337549E8F4B85D9D40B97435D180AAF18AFE812000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_044425_144768_C99EB604 
-X-CRM114-Status: GOOD (  35.00  )
+X-CRM114-CacheID: sfid-20210722_045303_380569_716C9B6C 
+X-CRM114-Status: GOOD (  45.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,114 +95,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-07-19 at 09:00 +0200, Dafna Hirschfeld wrote:
-> 
-> On 17.07.21 10:12, Yunfei Dong wrote:
-> > This series adds support for multi hardware decode into mtk-vcodec, by first
-> > adding component framework to manage each hardware information: interrupt,
-> > clock, register bases and power. Secondly add core thread to deal with core
-> > hardware message, at the same time, add msg queue for different hardware
-> > share messages. Lastly, the architecture of different specs are not the same,
-> > using specs type to separate them.
+On Thu, 2021-07-22 at 12:12 +0200, Greg KH wrote:
+> On Thu, Jul 22, 2021 at 06:03:32PM +0800, zhiyong tao wrote:
+> > On Wed, 2021-07-21 at 12:46 +0200, Greg KH wrote:
+> > > On Sat, Jul 10, 2021 at 05:01:03PM +0800, Zhiyong Tao wrote:
+> > > > This patch is used to fix memory corruption issue when rx power off.
+> > > > 1. add spin lock in mtk8250_dma_rx_complete function in APDMA mode.
+> > > 
+> > > What does a lock protect from?  Please be explicit and detailed.
 > > 
-> > This series has been tested with both MT8183 and MT8173. Decoding was working
-> > for both chips.
+> > ==> Hi Gregkh,
+> > 
+> > when uart is used as a communication port with external device(GPS).
+> > when external device(GPS) power off, the power of rx pin is also from
+> > 1.8v to 0v. Even if there is not any data in rx. But uart rx pin can
+> > capture the data "0".
 > 
-> Hi, I am currently working on stabilizing the codec drivers on mt8173 chromeos
->   device (elm). It would be very helpful if you provide information on how you
-> tested the code.
-> Did you test it on chromeos userspace?
-> Did you use the test-tast framework?
-> What tests did you run?
+> That sounds like a broken hardware design.
 > 
-> Thanks,
-> Dafna
+> > If uart don't receive any data in specified cycle, uart will generates
+> > BI(Break interrupt) interrupt.
+> > If external device(GPS) power off, we found that BI interrupt appeared
+> > continuously and very frequently.
+> > When uart interrupt type is BI, uart IRQ handler(8250 framwork
+> > API:serial8250_handle_irq) will push data to tty buffer.
+> > The code path:
+> > https://elixir.bootlin.com/linux/latest/source/drivers/tty/serial/8250/8250_port.c#L1917
+> > 
+> > mtk8250_dma_rx_complete is a task of mtk_uart_apdma_rx_handler.
+> > mtk8250_dma_rx_complete priority is lower than uart irq
+> > handler(serial8250_handle_irq).
+> > if we are in process of mtk8250_dma_rx_complete, uart appear BI
+> > interrupt:1)serial8250_handle_irq will priority execution.2)it may cause
+> > write tty buffer conflict in mtk8250_dma_rx_complete.
+> > So the spin lock protect the rx receive data process is not break.
 > 
-Hi Dafna,
+> Then put something like this in the changelog text, as it is, it is not
+> descriptive at all.
 
-Adding component framework is just used for mt8192 and mt8195.
-MT8173 and MT8183 still use the the older architecture. In another way,
-mt8192 and mt8195 is stateless decode, mt8173 is stateful decode, it is
-different. I just porting these patches to mt8173 branch, and just need
-to do several simple test.
+==> 
+Thanks for your suggestion.
+we will add it in changelog text([PATCH 0/1] Mediatek uart patch) in v1.
 
-Thanks,
-Yunfei Dong
+> 
+> > > > 2. add processing mechanism which count value is 0
+> > > 
+> > > What does this do?  And why is it needed?
 > > 
-> > Patches 1,2 rewrite get register bases and power on/off interface.
+> > ==> when count value is 0, we don't need push data to tty buffer.
+> > so we add it.
+> 
+> But that does not actually do anything different from what it does
+> today.  And it has nothing to do with the lock, so this should be 2
+> different patches, right?
+==>
+yes, it has nothing to do with the lock. we will separate it in v1.
+
+> 
+> > > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > 
+> > > What commit does this fix?  Does this need to go to stable kernel trees?
+> > > If so, how far back?
+> > > 
+> > > > ---
+> > > >  drivers/tty/serial/8250/8250_mtk.c | 15 +++++++++++----
+> > > >  1 file changed, 11 insertions(+), 4 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > > > index f7d3023f860f..09f7d2166315 100644
+> > > > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > > > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > > > @@ -91,12 +91,15 @@ static void mtk8250_dma_rx_complete(void *param)
+> > > >  	struct mtk8250_data *data = up->port.private_data;
+> > > >  	struct tty_port *tty_port = &up->port.state->port;
+> > > >  	struct dma_tx_state state;
+> > > > -	int copied, total, cnt;
+> > > > +	unsigned int copied, total, cnt;
+> > > >  	unsigned char *ptr;
+> > > > +	unsigned long flags;
+> > > >  
+> > > >  	if (data->rx_status == DMA_RX_SHUTDOWN)
+> > > >  		return;
+> > > >  
+> > > > +	spin_lock_irqsave(&up->port.lock, flags);
+> > > > +
+> > > >  	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> > > >  	total = dma->rx_size - state.residue;
+> > > >  	cnt = total;
+> > > > @@ -104,9 +107,11 @@ static void mtk8250_dma_rx_complete(void *param)
+> > > >  	if ((data->rx_pos + cnt) > dma->rx_size)
+> > > >  		cnt = dma->rx_size - data->rx_pos;
+> > > >  
+> > > > -	ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > > > -	copied = tty_insert_flip_string(tty_port, ptr, cnt);
+> > > > -	data->rx_pos += cnt;
+> > > > +	if (cnt != 0) {
+> > > 
+> > > Why does cnt matter here?  If cnt is 0, the code above should not do
+> > > anything at all, right?
 > > 
-> > Patch 3-5 add component framework to support multi hardware.
-> > 
-> > Patches 6-14 add interfaces to support core hardware.
-> > ----
-> > This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
-> > 
-> > Multi hardware decode is based on stateless decoder, MT8183 is the first
-> > time to add stateless decoder. Otherwise it will cause conflict.
-> > Please also accept this patch together with [1].
-> > 
-> > [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
-> > ----
-> > 
-> > Changes compared with v1:
-> > - Fix many comments for patch 3/14
-> > - Remove unnecessary code for patch 4/14
-> > - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
-> > - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
-> > - Using yaml format to instead of txt file for patch 12/14
-> > 
-> > Yunfei Dong (14):
-> >    media: mtk-vcodec: Get numbers of register bases from DT
-> >    media: mtk-vcodec: Refactor vcodec pm interface
-> >    media: mtk-vcodec: Use component framework to manage each hardware
-> >      information
-> >    dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
-> >      dt-bindings
-> >    media: mtk-vcodec: Use pure single core for MT8183
-> >    media: mtk-vcodec: Add irq interface for core hardware
-> >    media: mtk-vcodec: Add msg queue feature for lat and core architecture
-> >    media: mtk-vcodec: Generalize power and clock on/off interfaces
-> >    media: mtk-vcodec: Add new interface to lock different hardware
-> >    media: mtk-vcodec: Add core thread
-> >    media: mtk-vcodec: Support 34bits dma address for vdec
-> >    dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
-> >    media: mtk-vcodec: Add core dec and dec end ipi msg
-> >    media: mtk-vcodec: Use codec type to separate different hardware
-> > 
-> >   .../media/mediatek-vcodec-comp-decoder.yaml   | 150 +++++++++
-> >   ...vcodec.txt => mediatek-vcodec-decoder.txt} |  62 +---
-> >   .../media/mediatek-vcodec-encoder.txt         |  73 +++++
-> >   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 297 +++++++++++++++---
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 194 ++++++++++++
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  50 +++
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
-> >   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
-> >   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
-> >   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  72 ++++-
-> >   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
-> >   .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  32 +-
-> >   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
-> >   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
-> >   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
-> >   .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
-> >   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
-> >   .../platform/mtk-vcodec/vdec_msg_queue.c      | 286 +++++++++++++++++
-> >   .../platform/mtk-vcodec/vdec_msg_queue.h      | 143 +++++++++
-> >   .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
-> >   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
-> >   25 files changed, 1516 insertions(+), 168 deletions(-)
-> >   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-comp-decoder.yaml
-> >   rename Documentation/devicetree/bindings/media/{mediatek-vcodec.txt => mediatek-vcodec-decoder.txt} (56%)
-> >   create mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec-encoder.txt
-> >   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> >   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
-> >   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> >   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > 
+> > ==> yes, if the counter value is 0, we don't need push data to the tty
+> > buffer.
+> 
+> But this does not change the logic as if cnt is 0, nothing gets pushed
+> with the current code either, right?
+==>
+yes, it is.
+
+> 
+> > > Or if it does, should we change tty_insert_flip_string() to always check
+> > > for cnt != 0 before it does the first loop?  Hm, it looks like it will
+> > > abort if cnt is 0, so what is this change really doing?  Why do you need
+> > > it?  What is it "fixing"?
+> > > 
+> > ==> It is not fix anything, we just think if count value is 0, we don't
+> > need do anything.
+> 
+> Then make it a separate patch, independant from the lock patch, and we
+> can discuss it there.  Do NOT have patches do multiple things.
+==>
+I will make it a separate patch in v1.
+
+Thanks.
+> 
+> thanks,
+> 
+> greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
