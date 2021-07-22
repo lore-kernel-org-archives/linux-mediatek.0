@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6279FC63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:24:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDFCFC6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:25:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 22F0061264
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:24:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22F0061264
+	by mail.kernel.org (Postfix) with ESMTPS id B90EF610CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:25:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B90EF610CC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s/asEJQp1akCydZfCkvx1LbKRo9wUUSNIXaPB1eEAhg=; b=X3jBgm2a3h0iSq
-	aV52or196dorDKa5rr/ONLELWp+z1oysVsOxs5C/GGx2JfHIL7P9xk2HXLb9nAwIwTQ8mF+OSfR7M
-	ELyoYSKGAkklPVExZSbm3TGTOobD1+sAFIOMiR5fiGOsRXP9e03GP4X7f2IvcNxefEHBs/BInMyaH
-	2YuLg7mCe4JmxL86USsNDZpDzDNUoy9tjuxaLUhHVjP7nVbDxn5/Chsle0Nt+c6Tve75aaZIiMBlQ
-	741WgIAOUgpxRdh3mITqiSgM2UQuokOKsdEl/nXeOJRpvZHMboNHZeaWqeGXDS+CLYfpIjApSovs2
-	PUD8tW6s30eYRtGaRrUg==;
+	List-Owner; bh=Iqq0eJFm/eYMy7Ql39PuqUfSqWHXWR6eWU+fJ8Vnvtc=; b=GrByMb8xGfyX8n
+	LMAuMANK4GeIquABpzMW4a0PJd/eZ0PtXnXTiW7fDMqOdtrPu1KvLYCfBj3ZwbnnodAkaEJ3ZzNeb
+	a9RhCCs5a9tMtErs5HIeSs/eLu5pj71ttYF+vuZUd6pK3ZcJQi4TnCJ/S1RcDQobFEK3EsaQ0gkXz
+	0nV1q+fFz9TWN6g0jRdhYDJXRjgJMY9y8mAwRC+676ofD9Io+vZ7YP3vf3C7JLD34DsMDl64vEGI7
+	As+NFtPX5PNMfohFr3Pj/lLZvOerNP+qOP8JPxLlzLaLiQgCWiL/+OeQhVtvZSC81oeukWTckzIp/
+	miRbZJy7F6TU5K2jtFmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6S8R-000Ll8-NP; Thu, 22 Jul 2021 06:24:43 +0000
-Received: from mx1.smtp.larsendata.com ([91.221.196.215])
+	id 1m6S8q-000M1V-IS; Thu, 22 Jul 2021 06:25:08 +0000
+Received: from mx2.smtp.larsendata.com ([91.221.196.228])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6S6s-000KyZ-NG
- for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 06:23:10 +0000
+ id 1m6S6t-000KzY-T2
+ for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 06:23:11 +0000
 Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
- by mx1.smtp.larsendata.com (Halon) with ESMTPS
- id 47bf6ecf-eab5-11eb-9082-0050568c148b;
- Thu, 22 Jul 2021 06:23:07 +0000 (UTC)
+ by mx2.smtp.larsendata.com (Halon) with ESMTPS
+ id 4f1f5e26-eab5-11eb-8d1a-0050568cd888;
+ Thu, 22 Jul 2021 06:23:20 +0000 (UTC)
 Received: from saturn.lan (80-162-45-141-cable.dk.customer.tdc.net
  [80.162.45.141])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
  (Authenticated sender: sam@ravnborg.org)
- by mail01.mxhotel.dk (Postfix) with ESMTPSA id DCE2F194B3A;
- Thu, 22 Jul 2021 08:23:20 +0200 (CEST)
+ by mail01.mxhotel.dk (Postfix) with ESMTPSA id 17737194B04;
+ Thu, 22 Jul 2021 08:23:23 +0200 (CEST)
 X-Report-Abuse-To: abuse@mxhotel.dk
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org
@@ -63,19 +63,17 @@ Cc: Sam Ravnborg <sam@ravnborg.org>, Andrzej Hajda <a.hajda@samsung.com>,
  Neil Armstrong <narmstrong@baylibre.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Robert Foss <robert.foss@linaro.org>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Subject: [PATCH v1 4/7] drm/bridge: lontium-lt9611: Use atomic variants of
- drm_bridge_funcs
-Date: Thu, 22 Jul 2021 08:22:43 +0200
-Message-Id: <20210722062246.2512666-5-sam@ravnborg.org>
+ Thomas Zimmermann <tzimmermann@suse.de>
+Subject: [PATCH v1 6/7] drm/bridge: Drop drm_bridge_chain_mode_fixup
+Date: Thu, 22 Jul 2021 08:22:45 +0200
+Message-Id: <20210722062246.2512666-7-sam@ravnborg.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210722062246.2512666-1-sam@ravnborg.org>
 References: <20210722062246.2512666-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210721_232307_231012_5B99FFAE 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20210721_232308_121343_49E90FE3 
+X-CRM114-Status: GOOD (  13.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,134 +90,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The atomic variants of enable/disable in drm_bridge_funcs are the
-preferred operations - introduce these.
+There are no users left and we do not want to have this function
+available.
 
-Use of mode_set is deprecated - merge the functionality with
-atomic_enable()
+drm_atomic_bridge_check() is used to call the mode_fixup() operation for
+the chained bridges and there is no need for drm_atomic_bridge_check().
+Drop it.
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-Cc: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Robert Foss <robert.foss@linaro.org>
-Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>
-Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+Cc: Maxime Ripard <mripard@kernel.org>
+Cc: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: David Airlie <airlied@linux.ie>
+Cc: Daniel Vetter <daniel@ffwll.ch>
 ---
- drivers/gpu/drm/bridge/lontium-lt9611.c | 69 ++++++++++---------------
- 1 file changed, 27 insertions(+), 42 deletions(-)
+ drivers/gpu/drm/drm_bridge.c | 37 ------------------------------------
+ include/drm/drm_bridge.h     |  3 ---
+ 2 files changed, 40 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/lontium-lt9611.c b/drivers/gpu/drm/bridge/lontium-lt9611.c
-index 29b1ce2140ab..dfa7baefe2ab 100644
---- a/drivers/gpu/drm/bridge/lontium-lt9611.c
-+++ b/drivers/gpu/drm/bridge/lontium-lt9611.c
-@@ -700,9 +700,17 @@ lt9611_connector_mode_valid(struct drm_connector *connector,
- }
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index f34a3382a738..fff5abb2a733 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -336,43 +336,6 @@ void drm_bridge_detach(struct drm_bridge *bridge)
+  *   needed, in order to gradually transition to the new model.
+  */
  
- /* bridge funcs */
--static void lt9611_bridge_enable(struct drm_bridge *bridge)
-+static void lt9611_bridge_atomic_enable(struct drm_bridge *bridge,
-+					struct drm_bridge_state *old_bridge_state)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
-+	const struct drm_display_mode *mode;
-+	const struct drm_crtc_state *crtc_state;
-+	struct hdmi_avi_infoframe avi_frame;
-+	int ret;
-+
-+	crtc_state = drm_bridge_new_crtc_state(bridge, old_bridge_state);
-+	mode = &crtc_state->mode;
- 
- 	if (lt9611_power_on(lt9611)) {
- 		dev_err(lt9611->dev, "power on failed\n");
-@@ -719,9 +727,21 @@ static void lt9611_bridge_enable(struct drm_bridge *bridge)
- 
- 	/* Enable HDMI output */
- 	regmap_write(lt9611->regmap, 0x8130, 0xea);
-+
-+	lt9611_mipi_input_digital(lt9611, mode);
-+	lt9611_pll_setup(lt9611, mode);
-+	lt9611_mipi_video_setup(lt9611, mode);
-+	lt9611_pcr_setup(lt9611, mode);
-+
-+	ret = drm_hdmi_avi_infoframe_from_display_mode(&avi_frame,
-+						       &lt9611->connector,
-+						       mode);
-+	if (!ret)
-+		lt9611->vic = avi_frame.video_code;
- }
- 
--static void lt9611_bridge_disable(struct drm_bridge *bridge)
-+static void lt9611_bridge_atomic_disable(struct drm_bridge *bridge,
-+					 struct drm_bridge_state *old_bridge_state)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
- 	int ret;
-@@ -877,48 +897,14 @@ static enum drm_mode_status lt9611_bridge_mode_valid(struct drm_bridge *bridge,
- 		return MODE_OK;
- }
- 
--static void lt9611_bridge_pre_enable(struct drm_bridge *bridge)
+-/**
+- * drm_bridge_chain_mode_fixup - fixup proposed mode for all bridges in the
+- *				 encoder chain
+- * @bridge: bridge control structure
+- * @mode: desired mode to be set for the bridge
+- * @adjusted_mode: updated mode that works for this bridge
+- *
+- * Calls &drm_bridge_funcs.mode_fixup for all the bridges in the
+- * encoder chain, starting from the first bridge to the last.
+- *
+- * Note: the bridge passed should be the one closest to the encoder
+- *
+- * RETURNS:
+- * true on success, false on failure
+- */
+-bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 struct drm_display_mode *adjusted_mode)
 -{
--	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
+-	struct drm_encoder *encoder;
 -
--	if (!lt9611->sleep)
--		return;
+-	if (!bridge)
+-		return true;
 -
--	lt9611_reset(lt9611);
--	regmap_write(lt9611->regmap, 0x80ee, 0x01);
+-	encoder = bridge->encoder;
+-	list_for_each_entry_from(bridge, &encoder->bridge_chain, chain_node) {
+-		if (!bridge->funcs->mode_fixup)
+-			continue;
 -
--	lt9611->sleep = false;
+-		if (!bridge->funcs->mode_fixup(bridge, mode, adjusted_mode))
+-			return false;
+-	}
+-
+-	return true;
 -}
+-EXPORT_SYMBOL(drm_bridge_chain_mode_fixup);
 -
--static void lt9611_bridge_post_disable(struct drm_bridge *bridge)
-+static void lt9611_bridge_atomic_post_disable(struct drm_bridge *bridge,
-+					      struct drm_bridge_state *old_bridge_state)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
+ /**
+  * drm_bridge_chain_mode_valid - validate the mode against all bridges in the
+  *				 encoder chain.
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 7bf3d44ecf46..a39531406bfe 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -829,9 +829,6 @@ drm_bridge_chain_get_first_bridge(struct drm_encoder *encoder)
+ #define drm_for_each_bridge_in_chain(encoder, bridge)			\
+ 	list_for_each_entry(bridge, &(encoder)->bridge_chain, chain_node)
  
- 	lt9611_sleep_setup(lt9611);
- }
- 
--static void lt9611_bridge_mode_set(struct drm_bridge *bridge,
--				   const struct drm_display_mode *mode,
--				   const struct drm_display_mode *adj_mode)
--{
--	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
--	struct hdmi_avi_infoframe avi_frame;
--	int ret;
--
--	lt9611_bridge_pre_enable(bridge);
--
--	lt9611_mipi_input_digital(lt9611, mode);
--	lt9611_pll_setup(lt9611, mode);
--	lt9611_mipi_video_setup(lt9611, mode);
--	lt9611_pcr_setup(lt9611, mode);
--
--	ret = drm_hdmi_avi_infoframe_from_display_mode(&avi_frame,
--						       &lt9611->connector,
--						       mode);
--	if (!ret)
--		lt9611->vic = avi_frame.video_code;
--}
--
- static enum drm_connector_status lt9611_bridge_detect(struct drm_bridge *bridge)
- {
- 	struct lt9611 *lt9611 = bridge_to_lt9611(bridge);
-@@ -954,10 +940,9 @@ static const struct drm_bridge_funcs lt9611_bridge_funcs = {
- 	.attach = lt9611_bridge_attach,
- 	.detach = lt9611_bridge_detach,
- 	.mode_valid = lt9611_bridge_mode_valid,
--	.enable = lt9611_bridge_enable,
--	.disable = lt9611_bridge_disable,
--	.post_disable = lt9611_bridge_post_disable,
--	.mode_set = lt9611_bridge_mode_set,
-+	.atomic_enable = lt9611_bridge_atomic_enable,
-+	.atomic_disable = lt9611_bridge_atomic_disable,
-+	.atomic_post_disable = lt9611_bridge_atomic_post_disable,
- 	.detect = lt9611_bridge_detect,
- 	.get_edid = lt9611_bridge_get_edid,
- 	.hpd_enable = lt9611_bridge_hpd_enable,
+-bool drm_bridge_chain_mode_fixup(struct drm_bridge *bridge,
+-				 const struct drm_display_mode *mode,
+-				 struct drm_display_mode *adjusted_mode);
+ enum drm_mode_status
+ drm_bridge_chain_mode_valid(struct drm_bridge *bridge,
+ 			    const struct drm_display_info *info,
 -- 
 2.30.2
 
