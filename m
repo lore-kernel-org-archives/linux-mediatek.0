@@ -2,90 +2,111 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8F5FC63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:39:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6212BC63797
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:19:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D45A610F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:39:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7D45A610F7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E52BF61283
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:19:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E52BF61283
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oUVoWQrX7qa85pBebNJpjuQW0oQA0qfu7CX7fsa14I4=; b=jTjcRZmuKzputI
-	n++6SbM3x+SpHyzbctmvA4qLPoz5RSjHhLiig6YFA4qik4XeO/st36ZejIOJhcEYe+FQ/dA549uRm
-	1H9MNMCHcKUn55EM84VhVVneH8nF3kqXH2iktTrlycFzw+nGeHt3dp4rbfJPLLm6AvkEzDwaI2buz
-	2ttMyfwYSkf4lvtjb4+R04CTQ8/ebEe9yHGwpvGfKh4L/Xca31G4C75jsZnuyCIW7J5ir4Flov17U
-	faap2csbKA3B613bkrSWkfEkLNbOf9QjnRJFt6nvHH8XbWm+/xWyLOAZxGZfYmOdAlSjOwPg7HGgX
-	Lq/BmdzhNBrodNnfAysQ==;
+	List-Owner; bh=j633EolblIGS0bQUP01cuh39tdTKdpUl23rBVKw7dRk=; b=Mt0sv5NiEvM5iP
+	+59cRa8kkCjvPUHWnnxRJGg3HZlO62eEstAF+wsHtXrOi1Wm1/0PwfKL65I63sueBYuWaJ6gC3DbY
+	zhwnlL6IMBZwpZEu/EkFBDA+qTQswfy9S7yJZpXbWN00V0DccfEhlUnR56IF1MBsO9dCNYJPrCtoN
+	Rv+Id0lYHq3d55sG9xHLp+5LoUEye0d95uzYvrB6OFm3o7ZhioEQdwoYTzrnv3f5wKuc7BKEXS0+D
+	YuV1CNnsbVWGt1LYR8Ck1YpXGjXf3cxhibVZQ0dULzWaGf/Uum4HmaGGHPy2heVB5qBdepUEJ9asp
+	O/I1v3f+WJfgSIe3eVPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6SMO-000Pvq-4j; Thu, 22 Jul 2021 06:39:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m6Sz9-000U0x-L3; Thu, 22 Jul 2021 07:19:11 +0000
+Received: from new2-smtp.messagingengine.com ([66.111.4.224])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6SM7-000Ppd-6o; Thu, 22 Jul 2021 06:38:52 +0000
-X-UUID: d4486c138ec94694b3b2710e33cda605-20210721
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=W5iu4yn7qNOz8O4L5niY76z7dUrVPoTbT38cQYHyaGE=; 
- b=BsWI1Hd7SbxRaMAXdov9QsxTyPV6BzFs5VDH04IK0r9b4xYMEQpeb/vN2AmR5j7uxy9TYCKZ9jPCOSnt9uOhcZ98l2E/7n7c5YdAC7OU6A02CyIePAqWmBIbSwimgy3uay0fgp8cINwZA91z3s2kul1rkciS2RWIi7VYlkcitB8=;
-X-UUID: d4486c138ec94694b3b2710e33cda605-20210721
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 989251646; Wed, 21 Jul 2021 23:38:43 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 21 Jul 2021 23:38:41 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 22 Jul 2021 14:38:34 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 22 Jul 2021 14:38:33 +0800
-Message-ID: <1626935913.27875.8.camel@mhfsdcap03>
-Subject: Re: [PATCH v2 10/11] memory: mtk-smi: mt8195: Add initial setting
- for smi-common
-From: Yong Wu <yong.wu@mediatek.com>
-To: Ikjoon Jang <ikjn@chromium.org>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
- Kozlowski" <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>, Will Deacon
- <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
- <tfiga@chromium.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, srv_heupstream
- <srv_heupstream@mediatek.com>, open list <linux-kernel@vger.kernel.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
- <anthony.huang@mediatek.com>
-Date: Thu, 22 Jul 2021 14:38:33 +0800
-In-Reply-To: <CAATdQgDOGW7nudDoR5UPbax+d3e9omhPstrNd_FCPLd+96ZC9w@mail.gmail.com>
-References: <20210715121209.31024-1-yong.wu@mediatek.com>
- <20210715121209.31024-11-yong.wu@mediatek.com>
- <CAATdQgDOGW7nudDoR5UPbax+d3e9omhPstrNd_FCPLd+96ZC9w@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1m6Syw-000Tyg-VI; Thu, 22 Jul 2021 07:19:00 +0000
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 91390580A89;
+ Thu, 22 Jul 2021 03:18:49 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute1.internal (MEProxy); Thu, 22 Jul 2021 03:18:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:content-transfer-encoding:in-reply-to; s=fm3; bh=M
+ MS57oheX02/j+i8L4R78gMJwqx7BCT+iNUbaucQL0o=; b=pbHzH66XoVemAYn+n
+ 0kl+xtwZoTWlmj4B3y1x/tI8esxHfdXOvcdqPMTqytR4n8INwhKL7EMr1nGc9ep7
+ uzffQ/N/ceUzWRXwFzLADykEnkg9C0xTB1ScaVGqnoTf6opYywV2/AUuXX1LfkX+
+ 1l5rjGpQnjr4qQCd7cVdjOSEOwmNLdoeci9f7ed6on0fhcByPOo46Gwuexu1uGaX
+ p36bn6V29Pdccsq4RFp0pzJ8gdSzzkDM5Q510PryODYsgxXHsHfKpw/36ufi1kDr
+ tpgocoGPx2x7MX/HH6jtrJwp4XgDK9uifMr8R5e489aatJi8V65WhefiUbTWUid6
+ yq5jQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; bh=MMS57oheX02/j+i8L4R78gMJwqx7BCT+iNUbaucQL
+ 0o=; b=oo/cd6FYAjfGq4mDh7z4q5F8hi8ffXIoSX5uZrOcIHkVCRW92Gh8OGSQZ
+ d/vqRzQOoJvL8cTY5+nUVTuxfKpl5EIygHrRM1fbPpDR9XmU9xCwQfK6WmM17B0w
+ fFXCByc82oqMoUpBCRakI0VTthvW0B0inwLJCTkeEPwts73EO1HM6mC4MUfYC6gG
+ Zw6K0gm1Zv6WP6Jw9RmRzF545IiMPkRaN/uDnczbuL4HMZDjNkgKI5o3aDvPNFuO
+ oajY7A1S7oaA7vbMUEK37p1tLGnbr05+1y8evSZG9p7ZRiBdrF8vc8ObYukvgXVR
+ ec1A2kCG9SRZg4oBEjjEoMHaf+PnQ==
+X-ME-Sender: <xms:1xv5YNX6GYxaMU4-W5n5t3QKEyp0q7Yo5urSJ3AU91lMqUlOXzqg6w>
+ <xme:1xv5YNlGvTgLyxrolPp9l2jGGh0aGsm2aB0ObVUdUkUV7mXplcs1QuXRb8UuFZo9r
+ e1eKNKr4nDbJRJ8cHg>
+X-ME-Received: <xmr:1xv5YJZ4qqviH36l_3GFwH02NRaxnDqvS9XcTWQzmSOwTpWWfDz84dSKwmwaRiW_SUqEMwe5oKPJ-aWpu4NZGL5rstHCVph-TbO3>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrfeehgdduudeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepfffhvffukfhfgggtugfgjgesthhqredttddtvdenucfhrhhomhepofgrgihi
+ mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+ htthgvrhhnpefgjeettdejgffgffdvteeutdehtdehgeehueetkeefgefhtdetjeekledu
+ gedvudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:1xv5YAWIF8MQcmkV17sj6Db2LOmkOklinoXKUWM6syNpNsAie1y0kA>
+ <xmx:1xv5YHksGSwrEmPBwbBqbnMRiReZ1DZJ-xIpC3Ylxf_ORpVIpvw3Bg>
+ <xmx:1xv5YNdBH9PshBH8M0p46X6WDa1rDnBQJgzK7-x8E7w9tCotjLZNqw>
+ <xmx:2Rv5YJ2SY8YzIfyId2rkqD-Tt5eYeQEpEUlVNnTiiIC5PTHuuQ2CGA>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 22 Jul 2021 03:18:46 -0400 (EDT)
+Date: Thu, 22 Jul 2021 09:18:44 +0200
+From: Maxime Ripard <maxime@cerno.tech>
+To: Sam Ravnborg <sam@ravnborg.org>
+Cc: dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>, Jonas Karlman <jonas@kwiboo.se>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Robert Foss <robert.foss@linaro.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v1 1/7] drm/bridge: ps8640: Use atomic variants of
+ drm_bridge_funcs
+Message-ID: <20210722071844.g2kkmc7y2gcc6nir@gilmour>
+References: <20210722062246.2512666-1-sam@ravnborg.org>
+ <20210722062246.2512666-2-sam@ravnborg.org>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 09C7E65E6584ADFA42B61DD670F9B1049F10F210E285069CFBA433B0E7C4F5862000:8
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210722062246.2512666-2-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210721_233851_312474_F299645F 
-X-CRM114-Status: GOOD (  28.23  )
+X-CRM114-CacheID: sfid-20210722_001859_105951_A1481B1A 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,69 +123,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-07-21 at 20:54 +0800, Ikjoon Jang wrote:
-> On Thu, Jul 15, 2021 at 8:25 PM Yong Wu <yong.wu@mediatek.com> wrote:
-> >
-> > To improve the performance, add initial setting for smi-common.
-> > some register use some fix setting(suggested from DE).
-> >
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  drivers/memory/mtk-smi.c | 42 ++++++++++++++++++++++++++++++++++++----
-> >  1 file changed, 38 insertions(+), 4 deletions(-)
-
-[...]
-
-> >  static const struct mtk_smi_common_plat mtk_smi_sub_common_mt8195 = {
-> > @@ -530,15 +558,21 @@ static int mtk_smi_common_remove(struct platform_device *pdev)
-> >  static int __maybe_unused mtk_smi_common_resume(struct device *dev)
-> >  {
-> >         struct mtk_smi *common = dev_get_drvdata(dev);
-> > -       u32 bus_sel = common->plat->bus_sel;
-> > -       int ret;
-> > +       const struct mtk_smi_reg_pair *init = common->plat->init;
-> > +       u32 bus_sel = common->plat->bus_sel; /* default is 0 */
-> > +       int ret, i;
-> >
-> >         ret = clk_bulk_prepare_enable(common->clk_num, common->clks);
-> >         if (ret)
-> >                 return ret;
-> >
-> > -       if (common->plat->type == MTK_SMI_GEN2 && bus_sel)
-> > -               writel(bus_sel, common->base + SMI_BUS_SEL);
-> > +       if (common->plat->type != MTK_SMI_GEN2)
-> > +               return 0;
-> > +
-> > +       for (i = 0; i < SMI_COMMON_INIT_REGS_NR && init && init[i].offset; i++)
-> > +               writel_relaxed(init[i].value, common->base + init[i].offset);
+On Thu, Jul 22, 2021 at 08:22:40AM +0200, Sam Ravnborg wrote:
+> The atomic variants of enable/disable in drm_bridge_funcs are the
+> preferred operations - introduce these.
 > 
-> I'm not sure this array for register settings could be applied to other
-> platforms in future or only applied to mt8195. If it's only for mt8195,
+> The ps8640 driver used the non-atomic variants of the drm_bridge chain
+> functions - convert these to the atomic variants.
+> 
+> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
+> Cc: Andrzej Hajda <a.hajda@samsung.com>
+> Cc: Neil Armstrong <narmstrong@baylibre.com>
+> Cc: Robert Foss <robert.foss@linaro.org>
+> Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+> Cc: Jonas Karlman <jonas@kwiboo.se>
+> Cc: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-The other platforms have the nearly same setting.
+Reviewed-by: Maxime Ripard <maxime@cerno.tech>
 
-> I think taking callback function instead of mtk_smi_reg_pair[] as init member
-> would be better:
-> 
-> if (common->plat->init)
->     common->plat->init(...);
-> 
-> > +
-> > +       writel(bus_sel, common->base + SMI_BUS_SEL);
-> >         return 0;
-> >  }
-> >
-> > --
-> > 2.18.0
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Maxime
 
 _______________________________________________
 Linux-mediatek mailing list
