@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D1436C6377D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:23:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3143CC6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:23:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 99D1661264
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:23:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99D1661264
+	by mail.kernel.org (Postfix) with ESMTPS id EB2EF610CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 06:23:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB2EF610CC
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u+0y09nQC4tPtixp2ERfAjHqjoptST6P/u381VAP1nk=; b=UIZYtfdVRkIv1h
-	GUGukEGu8p+8p2NNcnYbJXad3VfxkUbaW8CU5agku0iXZNzNQaB+Za9E6v4uvIvxwHiB7KWkt8q3s
-	9/3Ir24I3Db1Wd14iHOUjmkz8aELkFG5DInYnYCEPQi99JAneKwfqBcTzoRhQOUCk4xGp87+lVuqE
-	TPHgVgVxa9xvRagepzox8Rm3WuvNZ3Qe7KFH+HOvPDDIcbFQ/eaEb3CGTQq0tixDaB6rWfokYKxc7
-	M35SjdpQ+cv8FU0TiANnOXEgpbVt/XGsDCeqO1Emnb7Z3ZcOpzjWAWFnDaqMfb4Ei9FmtB4+eeDbh
-	82+uvEWKn5F2CSd51gaw==;
+	List-Owner; bh=+KYNPLaIhByi3ae+sBwY2/1j9/L9PAUnS2hT+VOV5Y8=; b=B7Rt6eUTPG9ymr
+	U4s+cQcMHEz4NlGJ9dwdUWiIdgoLMoanjt2lHC5poxlk2k79zo8PhTXW1Ps6n2GHaVmg4fP1ByY8k
+	SgTxE1V0CnED48hqpvrghorRF0jVU7HYQUya0XHwC8WOv4EI7FYW2MWk9b0XkHPaBA5+f+yqHgGzD
+	ue659FijcUbjn8rjHzk23qzcYHW1AMLHLlfB5Y9AODs+kaycL7KHOFFxj3ur9aDBaLTmSLKT8npS+
+	RS2jCWcjgpU6XROC9ZJ9r5rFcOZvhn8Dy9tcJItj0JQ1U7SOIQ0E8vh7LpHzb8Jt5lKw67ILkFxyD
+	oFenaXWPMaacWKZo/BhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6S7I-000L99-BC; Thu, 22 Jul 2021 06:23:32 +0000
+	id 1m6S7V-000LDI-8a; Thu, 22 Jul 2021 06:23:45 +0000
 Received: from mx2.smtp.larsendata.com ([91.221.196.228])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6S6p-000Kx4-MU
- for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 06:23:06 +0000
+ id 1m6S6s-000Kyz-QL
+ for linux-mediatek@lists.infradead.org; Thu, 22 Jul 2021 06:23:09 +0000
 Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
  by mx2.smtp.larsendata.com (Halon) with ESMTPS
- id 4c755a92-eab5-11eb-8d1a-0050568cd888;
- Thu, 22 Jul 2021 06:23:15 +0000 (UTC)
+ id 4e801781-eab5-11eb-8d1a-0050568cd888;
+ Thu, 22 Jul 2021 06:23:19 +0000 (UTC)
 Received: from saturn.lan (80-162-45-141-cable.dk.customer.tdc.net
  [80.162.45.141])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
  (Authenticated sender: sam@ravnborg.org)
- by mail01.mxhotel.dk (Postfix) with ESMTPSA id 78666194B13;
- Thu, 22 Jul 2021 08:23:18 +0200 (CEST)
+ by mail01.mxhotel.dk (Postfix) with ESMTPSA id 06E1C194B13;
+ Thu, 22 Jul 2021 08:23:22 +0200 (CEST)
 X-Report-Abuse-To: abuse@mxhotel.dk
 From: Sam Ravnborg <sam@ravnborg.org>
 To: dri-devel@lists.freedesktop.org
@@ -64,16 +64,17 @@ Cc: Sam Ravnborg <sam@ravnborg.org>, Andrzej Hajda <a.hajda@samsung.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Robert Foss <robert.foss@linaro.org>,
  Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v1 2/7] drm/bridge: Drop unused drm_bridge_chain functions
-Date: Thu, 22 Jul 2021 08:22:41 +0200
-Message-Id: <20210722062246.2512666-3-sam@ravnborg.org>
+Subject: [PATCH v1 5/7] drm/mediatek: Drop chain_mode_fixup call in
+ mode_valid()
+Date: Thu, 22 Jul 2021 08:22:44 +0200
+Message-Id: <20210722062246.2512666-6-sam@ravnborg.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210722062246.2512666-1-sam@ravnborg.org>
 References: <20210722062246.2512666-1-sam@ravnborg.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210721_232303_924329_115F25B4 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20210721_232307_216523_788FDA2E 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,224 +91,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The drm_bridge_chain_{pre_enable,enable,disable,post_disable} has no
-users left and we have atomic variants that should be used.
-Drop them so they do not gain new users.
+The mode_valid implementation had a call to
+drm_bridge_chain_mode_fixup() which would be wrong as the mode_valid is
+not allowed to change anything - only to validate the mode.
 
-Adjust a few comments to avoid references to the dropped functions.
+As the next bridge is often/always a connector the call had no effect
+anyway. So drop it.
+
+From the git history I could see this call was included in the original
+version of the driver so there was no help there to find out why it was
+added in the first place. But a lot has changed since the initial driver
+were added and is seems safe to remove the call now.
 
 Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-Cc: Maxime Ripard <mripard@kernel.org>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>
-Cc: Andrzej Hajda <a.hajda@samsung.com>
-Cc: Neil Armstrong <narmstrong@baylibre.com>
-Cc: Robert Foss <robert.foss@linaro.org>
-Cc: Daniel Vetter <daniel@ffwll.ch>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org
 ---
- drivers/gpu/drm/drm_bridge.c | 110 -----------------------------------
- include/drm/drm_bridge.h     |  28 ---------
- 2 files changed, 138 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_hdmi.c | 11 -----------
+ 1 file changed, 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index 044acd07c153..f34a3382a738 100644
---- a/drivers/gpu/drm/drm_bridge.c
-+++ b/drivers/gpu/drm/drm_bridge.c
-@@ -415,61 +415,6 @@ drm_bridge_chain_mode_valid(struct drm_bridge *bridge,
- }
- EXPORT_SYMBOL(drm_bridge_chain_mode_valid);
+diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+index dea46d66e712..c45e4dbd9a2f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
++++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+@@ -1206,22 +1206,11 @@ static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+ 				      const struct drm_display_mode *mode)
+ {
+ 	struct mtk_hdmi *hdmi = hdmi_ctx_from_bridge(bridge);
+-	struct drm_bridge *next_bridge;
  
--/**
-- * drm_bridge_chain_disable - disables all bridges in the encoder chain
-- * @bridge: bridge control structure
-- *
-- * Calls &drm_bridge_funcs.disable op for all the bridges in the encoder
-- * chain, starting from the last bridge to the first. These are called before
-- * calling the encoder's prepare op.
-- *
-- * Note: the bridge passed should be the one closest to the encoder
-- */
--void drm_bridge_chain_disable(struct drm_bridge *bridge)
--{
--	struct drm_encoder *encoder;
--	struct drm_bridge *iter;
--
--	if (!bridge)
--		return;
--
--	encoder = bridge->encoder;
--	list_for_each_entry_reverse(iter, &encoder->bridge_chain, chain_node) {
--		if (iter->funcs->disable)
--			iter->funcs->disable(iter);
--
--		if (iter == bridge)
--			break;
--	}
--}
--EXPORT_SYMBOL(drm_bridge_chain_disable);
--
--/**
-- * drm_bridge_chain_post_disable - cleans up after disabling all bridges in the
-- *				   encoder chain
-- * @bridge: bridge control structure
-- *
-- * Calls &drm_bridge_funcs.post_disable op for all the bridges in the
-- * encoder chain, starting from the first bridge to the last. These are called
-- * after completing the encoder's prepare op.
-- *
-- * Note: the bridge passed should be the one closest to the encoder
-- */
--void drm_bridge_chain_post_disable(struct drm_bridge *bridge)
--{
--	struct drm_encoder *encoder;
--
--	if (!bridge)
--		return;
--
--	encoder = bridge->encoder;
--	list_for_each_entry_from(bridge, &encoder->bridge_chain, chain_node) {
--		if (bridge->funcs->post_disable)
--			bridge->funcs->post_disable(bridge);
--	}
--}
--EXPORT_SYMBOL(drm_bridge_chain_post_disable);
--
- /**
-  * drm_bridge_chain_mode_set - set proposed mode for all bridges in the
-  *			       encoder chain
-@@ -499,61 +444,6 @@ void drm_bridge_chain_mode_set(struct drm_bridge *bridge,
- }
- EXPORT_SYMBOL(drm_bridge_chain_mode_set);
+ 	dev_dbg(hdmi->dev, "xres=%d, yres=%d, refresh=%d, intl=%d clock=%d\n",
+ 		mode->hdisplay, mode->vdisplay, drm_mode_vrefresh(mode),
+ 		!!(mode->flags & DRM_MODE_FLAG_INTERLACE), mode->clock * 1000);
  
--/**
-- * drm_bridge_chain_pre_enable - prepares for enabling all bridges in the
-- *				 encoder chain
-- * @bridge: bridge control structure
-- *
-- * Calls &drm_bridge_funcs.pre_enable op for all the bridges in the encoder
-- * chain, starting from the last bridge to the first. These are called
-- * before calling the encoder's commit op.
-- *
-- * Note: the bridge passed should be the one closest to the encoder
-- */
--void drm_bridge_chain_pre_enable(struct drm_bridge *bridge)
--{
--	struct drm_encoder *encoder;
--	struct drm_bridge *iter;
+-	next_bridge = drm_bridge_get_next_bridge(&hdmi->bridge);
+-	if (next_bridge) {
+-		struct drm_display_mode adjusted_mode;
 -
--	if (!bridge)
--		return;
--
--	encoder = bridge->encoder;
--	list_for_each_entry_reverse(iter, &encoder->bridge_chain, chain_node) {
--		if (iter->funcs->pre_enable)
--			iter->funcs->pre_enable(iter);
--
--		if (iter == bridge)
--			break;
+-		drm_mode_copy(&adjusted_mode, mode);
+-		if (!drm_bridge_chain_mode_fixup(next_bridge, mode,
+-						 &adjusted_mode))
+-			return MODE_BAD;
 -	}
--}
--EXPORT_SYMBOL(drm_bridge_chain_pre_enable);
 -
--/**
-- * drm_bridge_chain_enable - enables all bridges in the encoder chain
-- * @bridge: bridge control structure
-- *
-- * Calls &drm_bridge_funcs.enable op for all the bridges in the encoder
-- * chain, starting from the first bridge to the last. These are called
-- * after completing the encoder's commit op.
-- *
-- * Note that the bridge passed should be the one closest to the encoder
-- */
--void drm_bridge_chain_enable(struct drm_bridge *bridge)
--{
--	struct drm_encoder *encoder;
--
--	if (!bridge)
--		return;
--
--	encoder = bridge->encoder;
--	list_for_each_entry_from(bridge, &encoder->bridge_chain, chain_node) {
--		if (bridge->funcs->enable)
--			bridge->funcs->enable(bridge);
--	}
--}
--EXPORT_SYMBOL(drm_bridge_chain_enable);
--
- /**
-  * drm_atomic_bridge_chain_disable - disables all bridges in the encoder chain
-  * @bridge: bridge control structure
-diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
-index 46bdfa48c413..7bf3d44ecf46 100644
---- a/include/drm/drm_bridge.h
-+++ b/include/drm/drm_bridge.h
-@@ -297,12 +297,6 @@ struct drm_bridge_funcs {
- 	 * not enable the display link feeding the next bridge in the chain (if
- 	 * there is one) when this callback is called.
- 	 *
--	 * Note that this function will only be invoked in the context of an
--	 * atomic commit. It will not be invoked from
--	 * &drm_bridge_chain_pre_enable. It would be prudent to also provide an
--	 * implementation of @pre_enable if you are expecting driver calls into
--	 * &drm_bridge_chain_pre_enable.
--	 *
- 	 * The @atomic_pre_enable callback is optional.
- 	 */
- 	void (*atomic_pre_enable)(struct drm_bridge *bridge,
-@@ -323,11 +317,6 @@ struct drm_bridge_funcs {
- 	 * callback must enable the display link feeding the next bridge in the
- 	 * chain if there is one.
- 	 *
--	 * Note that this function will only be invoked in the context of an
--	 * atomic commit. It will not be invoked from &drm_bridge_chain_enable.
--	 * It would be prudent to also provide an implementation of @enable if
--	 * you are expecting driver calls into &drm_bridge_chain_enable.
--	 *
- 	 * The @atomic_enable callback is optional.
- 	 */
- 	void (*atomic_enable)(struct drm_bridge *bridge,
-@@ -345,12 +334,6 @@ struct drm_bridge_funcs {
- 	 * The bridge can assume that the display pipe (i.e. clocks and timing
- 	 * signals) feeding it is still running when this callback is called.
- 	 *
--	 * Note that this function will only be invoked in the context of an
--	 * atomic commit. It will not be invoked from
--	 * &drm_bridge_chain_disable. It would be prudent to also provide an
--	 * implementation of @disable if you are expecting driver calls into
--	 * &drm_bridge_chain_disable.
--	 *
- 	 * The @atomic_disable callback is optional.
- 	 */
- 	void (*atomic_disable)(struct drm_bridge *bridge,
-@@ -370,13 +353,6 @@ struct drm_bridge_funcs {
- 	 * signals) feeding it is no longer running when this callback is
- 	 * called.
- 	 *
--	 * Note that this function will only be invoked in the context of an
--	 * atomic commit. It will not be invoked from
--	 * &drm_bridge_chain_post_disable.
--	 * It would be prudent to also provide an implementation of
--	 * @post_disable if you are expecting driver calls into
--	 * &drm_bridge_chain_post_disable.
--	 *
- 	 * The @atomic_post_disable callback is optional.
- 	 */
- 	void (*atomic_post_disable)(struct drm_bridge *bridge,
-@@ -860,13 +836,9 @@ enum drm_mode_status
- drm_bridge_chain_mode_valid(struct drm_bridge *bridge,
- 			    const struct drm_display_info *info,
- 			    const struct drm_display_mode *mode);
--void drm_bridge_chain_disable(struct drm_bridge *bridge);
--void drm_bridge_chain_post_disable(struct drm_bridge *bridge);
- void drm_bridge_chain_mode_set(struct drm_bridge *bridge,
- 			       const struct drm_display_mode *mode,
- 			       const struct drm_display_mode *adjusted_mode);
--void drm_bridge_chain_pre_enable(struct drm_bridge *bridge);
--void drm_bridge_chain_enable(struct drm_bridge *bridge);
- 
- int drm_atomic_bridge_chain_check(struct drm_bridge *bridge,
- 				  struct drm_crtc_state *crtc_state,
+ 	if (mode->clock < 27000)
+ 		return MODE_CLOCK_LOW;
+ 	if (mode->clock > 297000)
 -- 
 2.30.2
 
