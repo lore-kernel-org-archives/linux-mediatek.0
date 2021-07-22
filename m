@@ -2,69 +2,91 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9948C63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:07:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 748AFC63793
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:11:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 86A3F610F7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:07:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 86A3F610F7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4039961001
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 09:11:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4039961001
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dUqB/68A3Q3/A/phK9HT6F/cDqCg76ZvJDgGVawVqxM=; b=Yh+qj+j8JjKRcC
-	3MW/PWf7BJxZOdlBVyNxMvW3UuEJRVR5INweVxn9Q2fgx228qF/4C1h/m+sB5cVMJYSiHsNypC3xa
-	YbmVAyv/bdYCxTSsebI/uEn8iCcHUF132Burt3Q6pDRpTw7dYZLVRSCslq+gDObK0cfu5aVlIie1l
-	ac47mFs0iI+nQyE5GFpCTZR+SJeeg8cfdmgnN+n+qQOjmb8kskHLNjY73AfbEaMJFdD5Yx4M9VmZ8
-	NYri1ASirPEN1b2x29636LxvO///p2jS91HwQ8FyLde+h4Uj3DmyLVQMPRr3pAt4rQA1YfC1GHYIc
-	lqyvWBo5TudKAxcEmGVQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Jzs+8Msb+l7xv5biTtzHHYEh0C7PHfUCq/ZTt+L95AQ=; b=zV9i80ws9/KhyE
+	jARuokxSxM1tQVbnC2iPLLKYDuuz+Yjg400Pp6XOHbp71En7/gJ6J3hKGYbB5t/ZgC1aWO/OJpRUi
+	OjOqZ21rsXOTtRpg1xryc8DR5rvMMBt8WWcZvnl9UpTX0R8OdF8rbhlq5GpwY/cWtdFmbHMZrTzB+
+	8HLFcYWxC2wswVRTfL1LLnRm+P9ctGiSUM6vpQvxthxD4JORJbQKBJwGy6b5ZI+gBpJGZ5TM0Wymy
+	8cn+ikYB2BHEI8ApGokzu9eVSFMswGbMUMv4GW2TjyISmRgAKT6hrbTHIGsHBEEkfVoyjcdFbIjC3
+	WtE0hfN1YL0lvcVLiVaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6Ug3-000nhe-Gz; Thu, 22 Jul 2021 09:07:35 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m6Ujs-000odi-57; Thu, 22 Jul 2021 09:11:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6Ufq-000nfT-OB; Thu, 22 Jul 2021 09:07:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3EC9B610F7;
- Thu, 22 Jul 2021 09:07:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1626944842;
- bh=G6uggNtHBw06DrLEyrx3+EPLEQiuV1JfBOJ1R+sWWJ8=;
- h=From:To:Cc:Subject:Date:From;
- b=KQeV/yh9kA3Pd9NOV0uvBntromN90sb9aiaaPGvLkaYVfUNU7O8bsgBgmvO/GMaao
- LFhN0mq06HHJtG4ZO2HKrb9Y35Kf+x8VSCBty7LmZAqDvWlAN+01q6+P9hsjnc/pS5
- Pq3wCiWrVQU+WsT+gJQa+4fqc6bRKBuB/W6E6fP4MRcNNHIFPUEGqMjbyX03kniPRw
- HJqqoQZI6u1tjkjzwkx6c9yl/xRlmtD7bGpzoZYgJjaL2KuqMcAP4T7YW/T7wyRzf8
- c1CeIPgNxz3WG9CfzPamEggWU3i9gd4RVaDmSPm20nO0AkFK7eBPZkDXhbFe8dLMsB
- LGD0yeHyDmw0g==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Zhang Rui <rui.zhang@intel.com>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jean-Francois Dagenais <jeff.dagenais@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Amit Kucheria <amitk@kernel.org>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Thara Gopinath <thara.gopinath@linaro.org>, linux-pm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH] thermal: fix thermal_cooling_device_register() prototype
-Date: Thu, 22 Jul 2021 11:06:44 +0200
-Message-Id: <20210722090717.1116748-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.29.2
+ id 1m6Ujk-000obe-AT; Thu, 22 Jul 2021 09:11:25 +0000
+X-UUID: e6a4abec8d92410ba4a85c008735e38d-20210722
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=SUfFUHHeAiy7xHB0h/Imsj6WwwpQ9EOfIzx4JdwN/vE=; 
+ b=GsEi1ZINroU+gGMj6dryC39Rbo1RNYLRaqwQwRa0LNApMnhChyl7SeZGuskAbdw1md+HIFRXAHYanlY5Lprlu3hD2eQ5mKZUON8T3H5UvoCi3exy+VRuMLr+3ix9XAc4pNR/a7qfGhdi4bfO6UVuCGykz9NsH2ttTnRLp7qocx4=;
+X-UUID: e6a4abec8d92410ba4a85c008735e38d-20210722
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2145819929; Thu, 22 Jul 2021 02:11:20 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 22 Jul 2021 02:04:30 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 22 Jul 2021 17:04:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Jul 2021 17:04:25 +0800
+Message-ID: <1626944665.29611.22.camel@mhfsdcap03>
+Subject: Re: [PATCH] uart: mediatek: fix memory corruption issue
+From: zhiyong tao <zhiyong.tao@mediatek.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+CC: "timur@kernel.org" <timur@kernel.org>, "linux@armlinux.org.uk"
+ <linux@armlinux.org.uk>, "alcooperx@gmail.com" <alcooperx@gmail.com>,
+ "tklauser@distanz.ch" <tklauser@distanz.ch>, "sean.wang@kernel.org"
+ <sean.wang@kernel.org>, "srv_heupstream@mediatek.com"
+ <srv_heupstream@mediatek.com>, "hui.liu@mediatek.com" <hui.liu@mediatek.com>, 
+ "yuchen.huang@mediatek.com" <yuchen.huang@mediatek.com>,
+ "huihui.wang@mediatek.com" <huihui.wang@mediatek.com>,
+ "eddie.huang@mediatek.com" <eddie.huang@mediatek.com>,
+ "sean.wang@mediatek.com" <sean.wang@mediatek.com>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "linux-serial@vger.kernel.org"
+ <linux-serial@vger.kernel.org>
+Date: Thu, 22 Jul 2021 17:04:25 +0800
+In-Reply-To: <CAHp75VeZL53VN0w3O160vMurmRT9ZJzJek6=4X6osqjJDuxD3g@mail.gmail.com>
+References: <20210710090103.2643-1-zhiyong.tao@mediatek.com>
+ <20210710090103.2643-2-zhiyong.tao@mediatek.com>
+ <CAHp75VeZL53VN0w3O160vMurmRT9ZJzJek6=4X6osqjJDuxD3g@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 807C9821DB6278E61EADEB2C44AB602CE8CBB4FB77B86B8C8DCE9240BB9B9AA02000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_020722_853903_13060C4C 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20210722_021124_397971_940812CF 
+X-CRM114-Status: GOOD (  26.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,60 +98,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
-
-There are two pairs of declarations for thermal_cooling_device_register()
-and thermal_of_cooling_device_register(), and only one set was changed
-in a recent patch, so the other one now causes a compile-time warning:
-
-drivers/net/wireless/mediatek/mt76/mt7915/init.c: In function 'mt7915_thermal_init':
-drivers/net/wireless/mediatek/mt76/mt7915/init.c:134:48: error: passing argument 1 of 'thermal_cooling_device_register' discards 'const' qualifier from pointer target type [-Werror=discarded-qualifiers]
-  134 |         cdev = thermal_cooling_device_register(wiphy_name(wiphy), phy,
-      |                                                ^~~~~~~~~~~~~~~~~
-In file included from drivers/net/wireless/mediatek/mt76/mt7915/init.c:7:
-include/linux/thermal.h:407:39: note: expected 'char *' but argument is of type 'const char *'
-  407 | thermal_cooling_device_register(char *type, void *devdata,
-      |                                 ~~~~~~^~~~
-
-Change the dummy helper functions to have the same arguments as the
-normal version.
-
-Fixes: f991de53a8ab ("thermal: make device_register's type argument const")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- include/linux/thermal.h | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-index d296f3b88fb9..8050d929a5b4 100644
---- a/include/linux/thermal.h
-+++ b/include/linux/thermal.h
-@@ -404,12 +404,13 @@ static inline void thermal_zone_device_unregister(
- 	struct thermal_zone_device *tz)
- { }
- static inline struct thermal_cooling_device *
--thermal_cooling_device_register(char *type, void *devdata,
-+thermal_cooling_device_register(const char *type, void *devdata,
- 	const struct thermal_cooling_device_ops *ops)
- { return ERR_PTR(-ENODEV); }
- static inline struct thermal_cooling_device *
- thermal_of_cooling_device_register(struct device_node *np,
--	char *type, void *devdata, const struct thermal_cooling_device_ops *ops)
-+	const char *type, void *devdata,
-+	const struct thermal_cooling_device_ops *ops)
- { return ERR_PTR(-ENODEV); }
- static inline struct thermal_cooling_device *
- devm_thermal_of_cooling_device_register(struct device *dev,
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCAyMDIxLTA3LTE0IGF0IDAxOjIwICswMzAwLCBBbmR5IFNoZXZjaGVua28gd3JvdGU6
+DQo+IA0KPiANCj4gT24gU2F0dXJkYXksIEp1bHkgMTAsIDIwMjEsIFpoaXlvbmcgVGFvIDx6aGl5
+b25nLnRhb0BtZWRpYXRlay5jb20+DQo+IHdyb3RlOg0KPiANCj4gDQo+IFBsZWFzZSwgdXNlIOKA
+nHNlcmlhbDogODI2MF9tdGs64oCdIHByZWZpeC4NCg0KPT0+IEhpIEFuZHksDQoNClRoYW5rcyBm
+b3IgeW91ciBzdWdnZXN0aW9uLg0Kd2Ugd2lsbCBjaGFuZ2UgaXQgaW4gdGhlIG5leHQgdmVyc2lv
+bi4NCj4gDQo+ICAgICAgICAgVGhpcyBwYXRjaCBpcyB1c2VkIHRvIGZpeCBtZW1vcnkgDQo+ICAg
+ICAgICAgDQo+IA0KPiANCj4gVGhpcyBpcyBjb21wbGV0ZWx5IGNvbmZ1c2luZyBzdGFydCBvZiB0
+aGUgc2VudGVuY2UuIFRoZSBmb3JtIG9mIOKAnGJlDQo+IHVzZWQgdG/igJ0gc3Ryb25nbHkgc3Vn
+Z2VzdHMgdHdvIHRoaW5nczogMSkgaXQgd2FzIGEgcGF0Y2ggdG8gZml4DQo+IHNvbWV0aGluZzsg
+MikgaXQgaXMgbm90IHVzZWQgYW55bW9yZSBhbmQgbmV2ZXIgY29uc2lkZXJlZCB0byBiZSB1c2Vk
+DQo+IGFnYWluLA0KPiANCj4gDQo+IEJlc2lkZXMgdGhhdCBTdWJtaXR0aW5nIFBhdGNoZXMgZG9j
+dW1lbnQgaGlnaGx5IHJlY29tbWVuZHMgdG8gYXZvaWQNCj4gc2VudGVuY2VzIHRoYXQgc3RhcnRz
+IHdpdGgg4oCcdGhpcyBwYXRjaOKAnS4NCj4gIA0KDQo9PT5XZSB3aWxsIGNoYW5nZSB0aGUgY29t
+bWl0IG1lc3NhZ2UgYXMgIkZpeCB1YXJ0IGNvcnJ1cHRpb24gaXNzdWUgd2hlbg0KcnggcG93ZXIg
+b2ZmICJpbiB0aGUgbmV4dCB2ZXJzaW9uLg0KDQpUaGFua3MuDQo+ICAgICAgICAgDQo+ICAgICAg
+ICAgY29ycnVwdGlvbiBpc3N1ZSB3aGVuIHJ4IHBvd2VyIG9mZi4NCj4gICAgICAgICAxLiBhZGQg
+c3BpbiBsb2NrIGluIG10azgyNTBfZG1hX3J4X2NvbXBsZXRlIGZ1bmN0aW9uIGluIEFQRE1BDQo+
+ICAgICAgICAgbW9kZS4NCj4gICAgICAgICAyLiBhZGQgcHJvY2Vzc2luZyBtZWNoYW5pc20gd2hp
+Y2ggY291bnQgdmFsdWUgaXMgMA0KPiAgICAgICAgIA0KPiAgICAgICAgIFNpZ25lZC1vZmYtYnk6
+IFpoaXlvbmcgVGFvIDx6aGl5b25nLnRhb0BtZWRpYXRlay5jb20+DQo+ICAgICAgICAgLS0tDQo+
+ICAgICAgICAgIGRyaXZlcnMvdHR5L3NlcmlhbC84MjUwLzgyNTBfbXRrLmMgfCAxNSArKysrKysr
+KysrKy0tLS0NCj4gICAgICAgICAgMSBmaWxlIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKyksIDQg
+ZGVsZXRpb25zKC0pDQo+ICAgICAgICAgDQo+ICAgICAgICAgZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+dHR5L3NlcmlhbC84MjUwLzgyNTBfbXRrLmMNCj4gICAgICAgICBiL2RyaXZlcnMvdHR5L3Nlcmlh
+bC84MjUwLzgyNTBfbXRrLmMNCj4gICAgICAgICBpbmRleCBmN2QzMDIzZjg2MGYuLjA5ZjdkMjE2
+NjMxNSAxMDA2NDQNCj4gICAgICAgICAtLS0gYS9kcml2ZXJzL3R0eS9zZXJpYWwvODI1MC84MjUw
+X210ay5jDQo+ICAgICAgICAgKysrIGIvZHJpdmVycy90dHkvc2VyaWFsLzgyNTAvODI1MF9tdGsu
+Yw0KPiAgICAgICAgIEBAIC05MSwxMiArOTEsMTUgQEAgc3RhdGljIHZvaWQgbXRrODI1MF9kbWFf
+cnhfY29tcGxldGUodm9pZA0KPiAgICAgICAgICpwYXJhbSkNCj4gICAgICAgICAgICAgICAgIHN0
+cnVjdCBtdGs4MjUwX2RhdGEgKmRhdGEgPSB1cC0+cG9ydC5wcml2YXRlX2RhdGE7DQo+ICAgICAg
+ICAgICAgICAgICBzdHJ1Y3QgdHR5X3BvcnQgKnR0eV9wb3J0ID0gJnVwLT5wb3J0LnN0YXRlLT5w
+b3J0Ow0KPiAgICAgICAgICAgICAgICAgc3RydWN0IGRtYV90eF9zdGF0ZSBzdGF0ZTsNCj4gICAg
+ICAgICAtICAgICAgIGludCBjb3BpZWQsIHRvdGFsLCBjbnQ7DQo+ICAgICAgICAgKyAgICAgICB1
+bnNpZ25lZCBpbnQgY29waWVkLCB0b3RhbCwgY250Ow0KPiAgICAgICAgICAgICAgICAgdW5zaWdu
+ZWQgY2hhciAqcHRyOw0KPiAgICAgICAgICsgICAgICAgdW5zaWduZWQgbG9uZyBmbGFnczsNCj4g
+ICAgICAgICANCj4gICAgICAgICAgICAgICAgIGlmIChkYXRhLT5yeF9zdGF0dXMgPT0gRE1BX1JY
+X1NIVVRET1dOKQ0KPiAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm47DQo+ICAgICAgICAg
+DQo+ICAgICAgICAgKyAgICAgICBzcGluX2xvY2tfaXJxc2F2ZSgmdXAtPnBvcnQubG9jaywgZmxh
+Z3MpOw0KPiAgICAgICAgICsNCj4gICAgICAgICAgICAgICAgIGRtYWVuZ2luZV90eF9zdGF0dXMo
+ZG1hLT5yeGNoYW4sIGRtYS0+cnhfY29va2llLA0KPiAgICAgICAgICZzdGF0ZSk7DQo+ICAgICAg
+ICAgICAgICAgICB0b3RhbCA9IGRtYS0+cnhfc2l6ZSAtIHN0YXRlLnJlc2lkdWU7DQo+ICAgICAg
+ICAgICAgICAgICBjbnQgPSB0b3RhbDsNCj4gICAgICAgICBAQCAtMTA0LDkgKzEwNywxMSBAQCBz
+dGF0aWMgdm9pZCBtdGs4MjUwX2RtYV9yeF9jb21wbGV0ZSh2b2lkDQo+ICAgICAgICAgKnBhcmFt
+KQ0KPiAgICAgICAgICAgICAgICAgaWYgKChkYXRhLT5yeF9wb3MgKyBjbnQpID4gZG1hLT5yeF9z
+aXplKQ0KPiAgICAgICAgICAgICAgICAgICAgICAgICBjbnQgPSBkbWEtPnJ4X3NpemUgLSBkYXRh
+LT5yeF9wb3M7DQo+ICAgICAgICAgDQo+ICAgICAgICAgLSAgICAgICBwdHIgPSAodW5zaWduZWQg
+Y2hhciAqKShkYXRhLT5yeF9wb3MgKyBkbWEtPnJ4X2J1Zik7DQo+ICAgICAgICAgLSAgICAgICBj
+b3BpZWQgPSB0dHlfaW5zZXJ0X2ZsaXBfc3RyaW5nKHR0eV9wb3J0LCBwdHIsIGNudCk7DQo+ICAg
+ICAgICAgLSAgICAgICBkYXRhLT5yeF9wb3MgKz0gY250Ow0KPiAgICAgICAgICsgICAgICAgaWYg
+KGNudCAhPSAwKSB7DQo+ICAgICAgICAgKyAgICAgICAgICAgICAgIHB0ciA9ICh1bnNpZ25lZCBj
+aGFyICopKGRhdGEtPnJ4X3BvcyArDQo+ICAgICAgICAgZG1hLT5yeF9idWYpOw0KPiAgICAgICAg
+ICsgICAgICAgICAgICAgICBjb3BpZWQgPSB0dHlfaW5zZXJ0X2ZsaXBfc3RyaW5nKHR0eV9wb3J0
+LCBwdHIsDQo+ICAgICAgICAgY250KTsNCj4gICAgICAgICArICAgICAgICAgICAgICAgZGF0YS0+
+cnhfcG9zICs9IGNudDsNCj4gICAgICAgICArICAgICAgIH0NCj4gICAgICAgICANCj4gICAgICAg
+ICAgICAgICAgIGlmICh0b3RhbCA+IGNudCkgew0KPiAgICAgICAgICAgICAgICAgICAgICAgICBw
+dHIgPSAodW5zaWduZWQgY2hhciAqKShkbWEtPnJ4X2J1Zik7DQo+ICAgICAgICAgQEAgLTEyMCw2
+ICsxMjUsOCBAQCBzdGF0aWMgdm9pZCBtdGs4MjUwX2RtYV9yeF9jb21wbGV0ZSh2b2lkDQo+ICAg
+ICAgICAgKnBhcmFtKQ0KPiAgICAgICAgICAgICAgICAgdHR5X2ZsaXBfYnVmZmVyX3B1c2godHR5
+X3BvcnQpOw0KPiAgICAgICAgIA0KPiAgICAgICAgICAgICAgICAgbXRrODI1MF9yeF9kbWEodXAp
+Ow0KPiAgICAgICAgICsNCj4gICAgICAgICArICAgICAgIHNwaW5fdW5sb2NrX2lycXJlc3RvcmUo
+JnVwLT5wb3J0LmxvY2ssIGZsYWdzKTsNCj4gICAgICAgICAgfQ0KPiAgICAgICAgIA0KPiAgICAg
+ICAgICBzdGF0aWMgdm9pZCBtdGs4MjUwX3J4X2RtYShzdHJ1Y3QgdWFydF84MjUwX3BvcnQgKnVw
+KQ0KPiANCj4gDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LW1lZGlhdGVrCg==
