@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3461BC63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CA59C6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:32:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E593D61279
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:32:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E593D61279
+	by mail.kernel.org (Postfix) with ESMTPS id D62E660551
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 07:32:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D62E660551
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cerno.tech
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,63 +23,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V49YqRRTTOwu1OV2eNFENpm0N3150lu6VFlE5ro6qYQ=; b=C2HXX/OX2sphWx
-	2DgDqLc90m1BLkftaEzT3NzG+jmNhvofcICjUj1HlGbhRUUBVSxsVtuxr4fqmy5gemKGnn4yz3heE
-	CvSo3aCCpthab55T0MCJjSvMJAhm5xv9aw7dKNSrnTj9pNkyMjyIXDYhVbcU4zYmUcEKrNfXfGfCm
-	Y/LKGYFcX/y7rb96kcdHlQLnvbvmRwU3+hY80vmpN48UZzJq6R3Fg5aZ/okDVds6uX/HVn0MFuAJz
-	cjsfYcqsMjnKBxbAKVbUL6M1hlGm6FaKnsYyRMqHpK/bgqkJEqs4X/lBQoIYgplNlt2gcxIOFJMCl
-	LVYSHu7mHIZyy4c6Gmjw==;
+	List-Owner; bh=9qiSXqfLgUDHaS6pjTNWQ5rzuMnIQBZ6i6q+RiEby4o=; b=eoU3UFcnLeQCKA
+	VDuz4bGDZRvAgM3R0Km4pZYDMUbVbTyakOONOOdFjl3u10dzsyQ0lcOYOiVQJaKjz7nusVV0EUn//
+	97SOsZjfciP3ZNXmIsgCJX/S5WNwnbVBZKZuRqJv0XTisKI7nbUBIuDcY0vLRw0RyyNiFGdcXzKnj
+	VLJcMYqfNnIKT7MzINwZCIxNxIsByrS4dIcNbQ6/N+xvUPuvobx92ueJiKEqFV4P7/rJaJ9+dwMkU
+	Yrz/7jlJxkWrlWymk0vTgPZ2MWfQNDWxNRWGLLH+y3QKtZEK6Z5uyDiVEX8cD1TROWfFnq/lLzb9Y
+	dD9ObLZKG9OxPAgMhLMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6TBk-000W8s-1J; Thu, 22 Jul 2021 07:32:12 +0000
+	id 1m6TC0-000WGF-8W; Thu, 22 Jul 2021 07:32:28 +0000
 Received: from new2-smtp.messagingengine.com ([66.111.4.224])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6TBQ-000W3Y-AA; Thu, 22 Jul 2021 07:31:53 +0000
+ id 1m6TBi-000W8U-GI; Thu, 22 Jul 2021 07:32:11 +0000
 Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailnew.nyi.internal (Postfix) with ESMTP id 6A3305816CC;
- Thu, 22 Jul 2021 03:31:51 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Thu, 22 Jul 2021 03:31:51 -0400
+ by mailnew.nyi.internal (Postfix) with ESMTP id 69F4B5816CC;
+ Thu, 22 Jul 2021 03:32:09 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute4.internal (MEProxy); Thu, 22 Jul 2021 03:32:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
  date:from:to:cc:subject:message-id:references:mime-version
- :content-type:content-transfer-encoding:in-reply-to; s=fm3; bh=/
- I4etZeEnDA+034NbHZPFsmfe1xdUqAONXI0N+Ofdbw=; b=YjaVhF5u4EalTcQYp
- XlPYecVWnReNLESjPxrTCjYsnol4ZeRqrKS5P38PSBDXdoHhF+4COp3FV/g06IOZ
- MmLDQEwcUMFHQcpKnDyfcuJEAJH9GC4PzHAuyTwLHiUaunpp/cTB9ZVf/AACyeyp
- ZCXcTbPWf2s0brf0XpJGU9UWi5TYyYvpG4zQ4Hf8v/+/akL6J+o7GCWpCO4n8v/y
- qsaO15WyXkWK/vMZeCZpGEmfJe/AIHgtQn/XtBFW8dyLo9dwRnd5lLJsSj8PK3lG
- kV6OBPTDhp9EwAqRZthIFtQCANlMS6N4jTZ8MPx1iPEWDYLVPLJJkmJJkod1Lxsy
- MOBvA==
+ :content-type:content-transfer-encoding:in-reply-to; s=fm3; bh=X
+ FqgXhrVncJn1RmeEackjt647URidH76/zWxbiz4y74=; b=AkZLmqOOm6LOkSrq/
+ 97CnYUYDmaOBlK5QdmE658LXMgy9gYXjI3r7nwXNtIk3w6q9eHlpFqsj0mjNDu8w
+ YWwR68MBVhn3Jh8p5V8rSGEBud1SSE6S4gwjv7QXfvoCTsECvR/3dI4V5gwANs7w
+ m0S6Jh+cCGRQ78aRofVIheE34p6qJ/wOZHuyEBSFzGhwPsJk2BxgqEh6n9kg8Rcd
+ JfELl/e2WwKdIG8DatVDAzPFNLLI94hCGAmC+GuoNHfEBLy9kkBNyVN9ZOLdv+GI
+ D2eYDSGajFZoAlENom1HmPdn2iAAFjbHZ6/UX2MmfaY1UBlSM+8uyI25W9Sr/aZR
+ qdKLA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:content-transfer-encoding:content-type
  :date:from:in-reply-to:message-id:mime-version:references
  :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm3; bh=/I4etZeEnDA+034NbHZPFsmfe1xdUqAONXI0N+Ofd
- bw=; b=lhxmBOXhDcB7NXHcrBa4kzZTu6EMGfRieJNn0yCuwVLvyOZc4gk5/BPRe
- BGyVHpnstMUbAmeBxnxfIFo2qgKYpIcvCiq5DN+E2B8btE3EUX8dREB4PGkXBdmk
- W3j4y0AIJXgetK6OSMS561pNqUiMQoQ5Cy7328r00yUToHzRTxLpgsNpgTJ8cCm6
- 8fIzfAbGz7jEvzS40MVr2NWVS4Nc7ycJ0A7HzJt73o2hVO07XKp28hyirCTr6mVE
- Ve40+jylhLivequ5ooJR0D47r0UF07mDeAt/8NKt6hAc6h6UPfHg6nrig6OEIaRN
- /Ce9R+JYMl0lJBVsxE1tc7GmmKWNw==
-X-ME-Sender: <xms:5R75YPNyQXq_eIj371inR-SaYJGCBw8pjTGFROTtfjPJXhda43qlDg>
- <xme:5R75YJ9fHtWShxIw8ZJdk9cJl06xvCFDUM5-bY-UPd-S4gAFeeq2J2JNaARsTSHqe
- 3oR7yjkpl_MZcpipFk>
-X-ME-Received: <xmr:5R75YOToywd2CDXgnGOhG2FFcylD_zeyeeGP0Amn7qTlT46-HMRWxHyngE7pmcQUeUammWx9BIj7HSipnxV_Vy5RXbBDbwPLED-Q>
+ :x-sasl-enc; s=fm3; bh=XFqgXhrVncJn1RmeEackjt647URidH76/zWxbiz4y
+ 74=; b=d4MmOL+DYKXen08+/PINeptmHTcC9xaDGHGYTAB8lomgFzXV60+pyiHxq
+ 7TxTX4WbXKpTHJ0p1pItoTs7uIgGIE3Tc0LhFzDaUv+L2Vu6H7Phd4R9C8ra2Gxi
+ neBRi+1lDCn795F3Q3bl3xSfeov8agXn39Q8Gtc0PsgAbVtOzvQd6ilvTBL7MhDm
+ n+hKyU9NSs78og8KK41dC24Zgk5S2VWMBWFhJsdWi+WcrP8hHLeX+yvZ7xn1RW4v
+ 96/mkLH4UXI7bN6vWN6uUgH98n2iBIjyUw9zG1Bas1vt6KTxUDZ9KkQz11cFoWXW
+ kMaDF/jdIXKDwTZ8oaDUEPh1iiMXw==
+X-ME-Sender: <xms:-R75YMLMZdANodbo7gxj2h0GWyWlQpruBalRWi7ZaHecsyfNyuL6Zw>
+ <xme:-R75YMKWHHi5RXNBddB_iUXTvdUsw1bHDLTOPYEFmPtn5_TNTsWbl36g_F6yhfzqp
+ 2lkTU3giYL1AOLt0nM>
+X-ME-Received: <xmr:-R75YMvU1gE90FeqJf0DCkF1bqosmheDVH9r6KzjyOJauZv7ON1yGe5Wa6ZYxkA7jqd0kchhVg1lXXOcWeX8XxNhcdrvb5gFOCK1>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrfeehgdduudelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhepfffhvffukfhfgggtugfgjgesthhqredttddtvdenucfhrhhomhepofgrgihi
  mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
  htthgvrhhnpefgjeettdejgffgffdvteeutdehtdehgeehueetkeefgefhtdetjeekledu
- gedvudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ gedvudenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhgrihhlfhhrohhmpe
  hmrgigihhmvgestggvrhhnohdrthgvtghh
-X-ME-Proxy: <xmx:5R75YDttIjQxfKXs6iCjAnMonygpfTAHBZGpDk-T0EPMcn1BvBlhmQ>
- <xmx:5R75YHdIczkQBdCzTtq7lf4jeun2p2IewT6l-5rPCH-tZN1LQ53_nA>
- <xmx:5R75YP1gy4ngQkPyOmpsTIz5Ac4lCfy2iWt3op8WxDLhWIV7VwHTbQ>
- <xmx:5x75YCueZJDnY4KgZT8DhHnfLEX-zJbZf7o1N7AZe4_PElbcm__WRQ>
+X-ME-Proxy: <xmx:-R75YJZorkVlvAHZnPjF2bBBuQLw0N8uxKEH1WoL_VklMWUUmLB4QA>
+ <xmx:-R75YDYQxRcnzwewyf8pKwJxKufVwRYyyzhZlpytjDK7g8Usq6Y1OA>
+ <xmx:-R75YFAHJ3LkmiSsbHwPO_Y4xoT-4j76URwqJt6p9qzzaUeP0-ahXQ>
+ <xmx:-R75YLJ_nAfsRn8uId0TjaDbktSTencVNUNSH8ZsdQlYmO3nI5wQHQ>
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 22 Jul 2021 03:31:49 -0400 (EDT)
-Date: Thu, 22 Jul 2021 09:31:48 +0200
+ 22 Jul 2021 03:32:08 -0400 (EDT)
+Date: Thu, 22 Jul 2021 09:32:07 +0200
 From: Maxime Ripard <maxime@cerno.tech>
 To: Sam Ravnborg <sam@ravnborg.org>
 Cc: dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
@@ -95,17 +95,16 @@ Cc: dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>,
  Philipp Zabel <p.zabel@pengutronix.de>,
  Robert Foss <robert.foss@linaro.org>,
  Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v1 5/7] drm/mediatek: Drop chain_mode_fixup call in
- mode_valid()
-Message-ID: <20210722073148.rkgsvam37ytafykf@gilmour>
+Subject: Re: [PATCH v1 6/7] drm/bridge: Drop drm_bridge_chain_mode_fixup
+Message-ID: <20210722073207.bsbydwc2f43ri7iy@gilmour>
 References: <20210722062246.2512666-1-sam@ravnborg.org>
- <20210722062246.2512666-6-sam@ravnborg.org>
+ <20210722062246.2512666-7-sam@ravnborg.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210722062246.2512666-6-sam@ravnborg.org>
+In-Reply-To: <20210722062246.2512666-7-sam@ravnborg.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_003152_465995_460D0198 
-X-CRM114-Status: GOOD (  15.21  )
+X-CRM114-CacheID: sfid-20210722_003210_650049_B5419319 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,26 +121,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 22, 2021 at 08:22:44AM +0200, Sam Ravnborg wrote:
-> The mode_valid implementation had a call to
-> drm_bridge_chain_mode_fixup() which would be wrong as the mode_valid is
-> not allowed to change anything - only to validate the mode.
+On Thu, Jul 22, 2021 at 08:22:45AM +0200, Sam Ravnborg wrote:
+> There are no users left and we do not want to have this function
+> available.
 > 
-> As the next bridge is often/always a connector the call had no effect
-> anyway. So drop it.
-> 
-> From the git history I could see this call was included in the original
-> version of the driver so there was no help there to find out why it was
-> added in the first place. But a lot has changed since the initial driver
-> were added and is seems safe to remove the call now.
+> drm_atomic_bridge_check() is used to call the mode_fixup() operation for
+> the chained bridges and there is no need for drm_atomic_bridge_check().
+> Drop it.
 > 
 > Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-> Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> Cc: Maxime Ripard <mripard@kernel.org>
+> Cc: Thomas Zimmermann <tzimmermann@suse.de>
+> Cc: David Airlie <airlied@linux.ie>
+> Cc: Daniel Vetter <daniel@ffwll.ch>
 
 Reviewed-by: Maxime Ripard <maxime@cerno.tech>
 
