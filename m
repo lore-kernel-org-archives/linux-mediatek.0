@@ -2,83 +2,83 @@ Return-Path: <SRS0=Khw4=MO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UPPERCASE_50_75,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30816C63793
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 10:01:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 336DBC6377D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 10:16:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E204861249
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 10:01:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E204861249
+	by mail.kernel.org (Postfix) with ESMTPS id DB01061264
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Jul 2021 10:16:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB01061264
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3VChGyKfrzSITqPUMFheaWODqQKRdO5iF/tNP7jdSMQ=; b=0W8HM6xsWXl8uB
-	UDbdm+lUOtjZxwTfIjyvhjVPqhWzt6KI7PhGICawvefMcdf1ZYIGrolILsx3H9BnMgoTYwaLkHvnX
-	oThHl2C73VXmSFXRRCBl54TnOIDUTLIjzgI06wJiih9omgwE/208+Pm+9QAqxTsQDHUcJ+4Z9RMA2
-	+QikEEe7/smz6490yUbrdTleLD17qEDf0DDaY8bZVfQGjGPjQfGuXH+mc7Ua9uUHj4Jl2qa0n2okt
-	F74QWEV7uQb21Zr33rnsowLVTq4D2F6jomOF9z3fCTUogOC9klaYLvwaGPk2ywuJ3YHw7wE4Z7X6A
-	a5HbdTXudtYGAte5pSYQ==;
+	List-Owner; bh=qFlz6dz4/qd0rNkLVw6N8MEJ+pXyqmtGrYux8CuVt1g=; b=2wR8RV5brfTral
+	b21SCYIL1TtBLuVOfag5gJjV6POb3DkYj+piLoYdSZn3mLHlPat9z3VFvcpJplQLYL8mByVtaruVA
+	iczXrT5l081YDHwTr5KQ1yYItvq+xe4UTfuB5mluzTH7OlyOcbq11nXsiPxe/tLqYeMW0bmfSzfdU
+	ZPvKi+TF3QAOgU07PTM7lQs1oMHvCflhZqkAPA349ZSqCJs0QWoB+x25oX1iykcvqH7w2YBruRqrn
+	RrFHh2FRJ+pbmHOTqNUdDp+YUQ4S2xeV5+N+DCa2r+G626/wllp/zC9wAgg+T28eE479lkLmS9VUb
+	leJCStfXUlhfFaDaK1IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6VVx-0015Gw-9t; Thu, 22 Jul 2021 10:01:13 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m6VkW-001AlE-HU; Thu, 22 Jul 2021 10:16:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6VQt-0012jJ-JB; Thu, 22 Jul 2021 09:56:02 +0000
-X-UUID: 275510e42f624a6699778bf8eeeb5c99-20210722
+ id 1m6Vgw-0019Sb-Nx; Thu, 22 Jul 2021 10:12:36 +0000
+X-UUID: 34c958c527614db99cec79e293216d52-20210722
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PtjVzogBhiBo0WgIM5z9gDyPN4/OHaga+51X4wXwGBw=; 
- b=aOB+zJozJK1DFnms35s9ywVJKXHs3kLXqlAYKKTA98E/xfce6Jc3VU7RwKYoBU3UkRVrcCpMJjRyJxIzoXv2Da3vrcFSUiWZAfLsdNAMO8vv+au5EsXw8CXjHdNt53c97fNhjyN99YGUXQCDPx/EkFohAPimJkN6+N5nJFb33vc=;
-X-UUID: 275510e42f624a6699778bf8eeeb5c99-20210722
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=l6KbJziSHG3anQMOz7NsvNX052w7IZh/nwF6Sf4i7VM=; 
+ b=G1Zlg0d2m1uTvVu1DNIraR/opbUCugjO9pZBl68TDxb/xYzMn/VCBVLMbxgA3IJIku6nevQFhsHbP1Du+dq/aZaVkZVSuR+SKSM3USSmcaO9XNuIEOcjjoXxR9ETQdBU4G0He5tUELcXllxSZjolNAjLKRAfG7CLL9RtJSd+2bw=;
+X-UUID: 34c958c527614db99cec79e293216d52-20210722
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1958526554; Thu, 22 Jul 2021 02:55:58 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 2034209817; Thu, 22 Jul 2021 03:12:31 -0700
+Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Jul 2021 02:45:56 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 22 Jul 2021 17:45:54 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 22 Jul 2021 17:45:54 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- "Nancy . Lin" <nancy.lin@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v2 11/14] soc: mediatek: add mtk-mutex support for mt8195
- vdosys1
-Date: Thu, 22 Jul 2021 17:45:48 +0800
-Message-ID: <20210722094551.15255-12-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210722094551.15255-1-nancy.lin@mediatek.com>
-References: <20210722094551.15255-1-nancy.lin@mediatek.com>
+ 15.0.1497.2; Thu, 22 Jul 2021 03:03:42 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
+ (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 22 Jul 2021 18:03:33 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 22 Jul 2021 18:03:32 +0800
+Message-ID: <1626948212.29611.47.camel@mhfsdcap03>
+Subject: Re: [PATCH] uart: mediatek: fix memory corruption issue
+From: zhiyong tao <zhiyong.tao@mediatek.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+CC: <timur@kernel.org>, <linux@armlinux.org.uk>, <alcooperx@gmail.com>,
+ <tklauser@distanz.ch>, <sean.wang@kernel.org>, <srv_heupstream@mediatek.com>, 
+ <hui.liu@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <yuchen.huang@mediatek.com>, <huihui.wang@mediatek.com>,
+ <eddie.huang@mediatek.com>, <sean.wang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-serial@vger.kernel.org>
+Date: Thu, 22 Jul 2021 18:03:32 +0800
+In-Reply-To: <YPf67gw2KJCk/Ucs@kroah.com>
+References: <20210710090103.2643-1-zhiyong.tao@mediatek.com>
+ <20210710090103.2643-2-zhiyong.tao@mediatek.com>
+ <YPf67gw2KJCk/Ucs@kroah.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 5812E3E14726AC00B2603BE441B9A33120E85081E654CF0F84FBEE315A7F59C12000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210722_025559_690866_8CB2DF9F 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20210722_031234_878959_98D09F0D 
+X-CRM114-Status: GOOD (  30.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,390 +95,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mtk-mutex support for mt8195 vdosys1.
-The vdosys1 path component contains pseudo_ovl, ethdr, merge5,
-and dp_intf1. Pseudo_ovl and ethdr components are both composed
-of several sub-elements, so change it to support multi-bit control.
+On Wed, 2021-07-21 at 12:46 +0200, Greg KH wrote:
+> On Sat, Jul 10, 2021 at 05:01:03PM +0800, Zhiyong Tao wrote:
+> > This patch is used to fix memory corruption issue when rx power off.
+> > 1. add spin lock in mtk8250_dma_rx_complete function in APDMA mode.
+> 
+> What does a lock protect from?  Please be explicit and detailed.
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
----
- drivers/soc/mediatek/mtk-mutex.c | 270 ++++++++++++++++++-------------
- 1 file changed, 162 insertions(+), 108 deletions(-)
+==> Hi Gregkh,
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index cb8bbf7f3fd8..df289821f8e9 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -29,101 +29,130 @@
- 
- #define INT_MUTEX				BIT(1)
- 
--#define MT8167_MUTEX_MOD_DISP_PWM		1
--#define MT8167_MUTEX_MOD_DISP_OVL0		6
--#define MT8167_MUTEX_MOD_DISP_OVL1		7
--#define MT8167_MUTEX_MOD_DISP_RDMA0		8
--#define MT8167_MUTEX_MOD_DISP_RDMA1		9
--#define MT8167_MUTEX_MOD_DISP_WDMA0		10
--#define MT8167_MUTEX_MOD_DISP_CCORR		11
--#define MT8167_MUTEX_MOD_DISP_COLOR		12
--#define MT8167_MUTEX_MOD_DISP_AAL		13
--#define MT8167_MUTEX_MOD_DISP_GAMMA		14
--#define MT8167_MUTEX_MOD_DISP_DITHER		15
--#define MT8167_MUTEX_MOD_DISP_UFOE		16
--
--#define MT8183_MUTEX_MOD_DISP_RDMA0		0
--#define MT8183_MUTEX_MOD_DISP_RDMA1		1
--#define MT8183_MUTEX_MOD_DISP_OVL0		9
--#define MT8183_MUTEX_MOD_DISP_OVL0_2L		10
--#define MT8183_MUTEX_MOD_DISP_OVL1_2L		11
--#define MT8183_MUTEX_MOD_DISP_WDMA0		12
--#define MT8183_MUTEX_MOD_DISP_COLOR0		13
--#define MT8183_MUTEX_MOD_DISP_CCORR0		14
--#define MT8183_MUTEX_MOD_DISP_AAL0		15
--#define MT8183_MUTEX_MOD_DISP_GAMMA0		16
--#define MT8183_MUTEX_MOD_DISP_DITHER0		17
--
--#define MT8173_MUTEX_MOD_DISP_OVL0		11
--#define MT8173_MUTEX_MOD_DISP_OVL1		12
--#define MT8173_MUTEX_MOD_DISP_RDMA0		13
--#define MT8173_MUTEX_MOD_DISP_RDMA1		14
--#define MT8173_MUTEX_MOD_DISP_RDMA2		15
--#define MT8173_MUTEX_MOD_DISP_WDMA0		16
--#define MT8173_MUTEX_MOD_DISP_WDMA1		17
--#define MT8173_MUTEX_MOD_DISP_COLOR0		18
--#define MT8173_MUTEX_MOD_DISP_COLOR1		19
--#define MT8173_MUTEX_MOD_DISP_AAL		20
--#define MT8173_MUTEX_MOD_DISP_GAMMA		21
--#define MT8173_MUTEX_MOD_DISP_UFOE		22
--#define MT8173_MUTEX_MOD_DISP_PWM0		23
--#define MT8173_MUTEX_MOD_DISP_PWM1		24
--#define MT8173_MUTEX_MOD_DISP_OD		25
--
--#define MT8195_MUTEX_MOD_DISP_OVL0		0
--#define MT8195_MUTEX_MOD_DISP_WDMA0		1
--#define MT8195_MUTEX_MOD_DISP_RDMA0		2
--#define MT8195_MUTEX_MOD_DISP_COLOR0		3
--#define MT8195_MUTEX_MOD_DISP_CCORR0		4
--#define MT8195_MUTEX_MOD_DISP_AAL0		5
--#define MT8195_MUTEX_MOD_DISP_GAMMA0		6
--#define MT8195_MUTEX_MOD_DISP_DITHER0		7
--#define MT8195_MUTEX_MOD_DISP_DSI0		8
--#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0	9
--#define MT8195_MUTEX_MOD_DISP_OVL1		10
--#define MT8195_MUTEX_MOD_DISP_WDMA1		11
--#define MT8195_MUTEX_MOD_DISP_RDMA1		12
--#define MT8195_MUTEX_MOD_DISP_COLOR1		13
--#define MT8195_MUTEX_MOD_DISP_CCORR1		14
--#define MT8195_MUTEX_MOD_DISP_AAL1		15
--#define MT8195_MUTEX_MOD_DISP_GAMMA1		16
--#define MT8195_MUTEX_MOD_DISP_DITHER1		17
--#define MT8195_MUTEX_MOD_DISP_DSI1		18
--#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE1	19
--#define MT8195_MUTEX_MOD_DISP_VPP_MERGE		20
--#define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
--#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY0	22
--#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY1	23
--#define MT8195_MUTEX_MOD_DISP_VDO1_DL_RELAY2	24
--#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY3	25
--#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY4	26
--#define MT8195_MUTEX_MOD_DISP_PWM0		27
--#define MT8195_MUTEX_MOD_DISP_PWM1		28
--
--#define MT2712_MUTEX_MOD_DISP_PWM2		10
--#define MT2712_MUTEX_MOD_DISP_OVL0		11
--#define MT2712_MUTEX_MOD_DISP_OVL1		12
--#define MT2712_MUTEX_MOD_DISP_RDMA0		13
--#define MT2712_MUTEX_MOD_DISP_RDMA1		14
--#define MT2712_MUTEX_MOD_DISP_RDMA2		15
--#define MT2712_MUTEX_MOD_DISP_WDMA0		16
--#define MT2712_MUTEX_MOD_DISP_WDMA1		17
--#define MT2712_MUTEX_MOD_DISP_COLOR0		18
--#define MT2712_MUTEX_MOD_DISP_COLOR1		19
--#define MT2712_MUTEX_MOD_DISP_AAL0		20
--#define MT2712_MUTEX_MOD_DISP_UFOE		22
--#define MT2712_MUTEX_MOD_DISP_PWM0		23
--#define MT2712_MUTEX_MOD_DISP_PWM1		24
--#define MT2712_MUTEX_MOD_DISP_OD0		25
--#define MT2712_MUTEX_MOD2_DISP_AAL1		33
--#define MT2712_MUTEX_MOD2_DISP_OD1		34
--
--#define MT2701_MUTEX_MOD_DISP_OVL		3
--#define MT2701_MUTEX_MOD_DISP_WDMA		6
--#define MT2701_MUTEX_MOD_DISP_COLOR		7
--#define MT2701_MUTEX_MOD_DISP_BLS		9
--#define MT2701_MUTEX_MOD_DISP_RDMA0		10
--#define MT2701_MUTEX_MOD_DISP_RDMA1		12
-+#define MT8167_MUTEX_MOD_DISP_PWM		BIT(1)
-+#define MT8167_MUTEX_MOD_DISP_OVL0		BIT(6)
-+#define MT8167_MUTEX_MOD_DISP_OVL1		BIT(7)
-+#define MT8167_MUTEX_MOD_DISP_RDMA0		BIT(8)
-+#define MT8167_MUTEX_MOD_DISP_RDMA1		BIT(9)
-+#define MT8167_MUTEX_MOD_DISP_WDMA0		BIT(10)
-+#define MT8167_MUTEX_MOD_DISP_CCORR		BIT(11)
-+#define MT8167_MUTEX_MOD_DISP_COLOR		BIT(12)
-+#define MT8167_MUTEX_MOD_DISP_AAL		BIT(13)
-+#define MT8167_MUTEX_MOD_DISP_GAMMA		BIT(14)
-+#define MT8167_MUTEX_MOD_DISP_DITHER		BIT(15)
-+#define MT8167_MUTEX_MOD_DISP_UFOE		BIT(16)
-+
-+#define MT8183_MUTEX_MOD_DISP_RDMA0		BIT(0)
-+#define MT8183_MUTEX_MOD_DISP_RDMA1		BIT(1)
-+#define MT8183_MUTEX_MOD_DISP_OVL0		BIT(9)
-+#define MT8183_MUTEX_MOD_DISP_OVL0_2L		BIT(10)
-+#define MT8183_MUTEX_MOD_DISP_OVL1_2L		BIT(11)
-+#define MT8183_MUTEX_MOD_DISP_WDMA0		BIT(12)
-+#define MT8183_MUTEX_MOD_DISP_COLOR0		BIT(13)
-+#define MT8183_MUTEX_MOD_DISP_CCORR0		BIT(14)
-+#define MT8183_MUTEX_MOD_DISP_AAL0		BIT(15)
-+#define MT8183_MUTEX_MOD_DISP_GAMMA0		BIT(16)
-+#define MT8183_MUTEX_MOD_DISP_DITHER0		BIT(17)
-+
-+#define MT8173_MUTEX_MOD_DISP_OVL0		BIT(11)
-+#define MT8173_MUTEX_MOD_DISP_OVL1		BIT(12)
-+#define MT8173_MUTEX_MOD_DISP_RDMA0		BIT(13)
-+#define MT8173_MUTEX_MOD_DISP_RDMA1		BIT(14)
-+#define MT8173_MUTEX_MOD_DISP_RDMA2		BIT(15)
-+#define MT8173_MUTEX_MOD_DISP_WDMA0		BIT(16)
-+#define MT8173_MUTEX_MOD_DISP_WDMA1		BIT(17)
-+#define MT8173_MUTEX_MOD_DISP_COLOR0		BIT(18)
-+#define MT8173_MUTEX_MOD_DISP_COLOR1		BIT(19)
-+#define MT8173_MUTEX_MOD_DISP_AAL		BIT(20)
-+#define MT8173_MUTEX_MOD_DISP_GAMMA		BIT(21)
-+#define MT8173_MUTEX_MOD_DISP_UFOE		BIT(22)
-+#define MT8173_MUTEX_MOD_DISP_PWM0		BIT(23)
-+#define MT8173_MUTEX_MOD_DISP_PWM1		BIT(24)
-+#define MT8173_MUTEX_MOD_DISP_OD		BIT(25)
-+
-+#define MT8195_MUTEX_MOD_DISP_OVL0		BIT(0)
-+#define MT8195_MUTEX_MOD_DISP_WDMA0		BIT(1)
-+#define MT8195_MUTEX_MOD_DISP_RDMA0		BIT(2)
-+#define MT8195_MUTEX_MOD_DISP_COLOR0		BIT(3)
-+#define MT8195_MUTEX_MOD_DISP_CCORR0		BIT(4)
-+#define MT8195_MUTEX_MOD_DISP_AAL0		BIT(5)
-+#define MT8195_MUTEX_MOD_DISP_GAMMA0		BIT(6)
-+#define MT8195_MUTEX_MOD_DISP_DITHER0		BIT(7)
-+#define MT8195_MUTEX_MOD_DISP_DSI0		BIT(8)
-+#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0	BIT(9)
-+#define MT8195_MUTEX_MOD_DISP_OVL1		BIT(10)
-+#define MT8195_MUTEX_MOD_DISP_WDMA1		BIT(11)
-+#define MT8195_MUTEX_MOD_DISP_RDMA1		BIT(12)
-+#define MT8195_MUTEX_MOD_DISP_COLOR1		BIT(13)
-+#define MT8195_MUTEX_MOD_DISP_CCORR1		BIT(14)
-+#define MT8195_MUTEX_MOD_DISP_AAL1		BIT(15)
-+#define MT8195_MUTEX_MOD_DISP_GAMMA1		BIT(16)
-+#define MT8195_MUTEX_MOD_DISP_DITHER1		BIT(17)
-+#define MT8195_MUTEX_MOD_DISP_DSI1		BIT(18)
-+#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE1	BIT(19)
-+#define MT8195_MUTEX_MOD_DISP_VPP_MERGE		BIT(20)
-+#define MT8195_MUTEX_MOD_DISP_DP_INTF0		BIT(21)
-+#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY0	BIT(22)
-+#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY1	BIT(23)
-+#define MT8195_MUTEX_MOD_DISP_VDO1_DL_RELAY2	BIT(24)
-+#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY3	BIT(25)
-+#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY4	BIT(26)
-+#define MT8195_MUTEX_MOD_DISP_PWM0		BIT(27)
-+#define MT8195_MUTEX_MOD_DISP_PWM1		BIT(28)
-+
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA0 BIT(0)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA1 BIT(1)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA2 BIT(2)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA3 BIT(3)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA4 BIT(4)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA5 BIT(5)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA6 BIT(6)
-+#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA7 BIT(7)
-+#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE0 BIT(8)
-+#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE1 BIT(9)
-+#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE2 BIT(10)
-+#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE3 BIT(11)
-+#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE4 BIT(12)
-+#define MT8195_MUTEX_MOD_DISP1_VPP2_DL_RELAY BIT(13)
-+#define MT8195_MUTEX_MOD_DISP1_VPP3_DL_RELAY BIT(14)
-+#define MT8195_MUTEX_MOD_DISP1_VDO0_DSC_DL_ASYNC BIT(15)
-+#define MT8195_MUTEX_MOD_DISP1_VDO0_MERGE_DL_ASYNC BIT(16)
-+#define MT8195_MUTEX_MOD_DISP1_VDO1_OUT_DL_RELAY BIT(17)
-+#define MT8195_MUTEX_MOD_DISP1_DISP_MIXER BIT(18)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE0 BIT(19)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE1 BIT(20)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE0 BIT(21)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE1 BIT(22)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_BE0 BIT(23)
-+#define MT8195_MUTEX_MOD_DISP1_HDR_MLOAD BIT(24)
-+#define MT8195_MUTEX_MOD_DISP1_DPI0 BIT(25)
-+#define MT8195_MUTEX_MOD_DISP1_DPI1 BIT(26)
-+#define MT8195_MUTEX_MOD_DISP1_DP_INTF0 BIT(27)
-+
-+#define MT2712_MUTEX_MOD_DISP_PWM2		BIT(10)
-+#define MT2712_MUTEX_MOD_DISP_OVL0		BIT(11)
-+#define MT2712_MUTEX_MOD_DISP_OVL1		BIT(12)
-+#define MT2712_MUTEX_MOD_DISP_RDMA0		BIT(13)
-+#define MT2712_MUTEX_MOD_DISP_RDMA1		BIT(14)
-+#define MT2712_MUTEX_MOD_DISP_RDMA2		BIT(15)
-+#define MT2712_MUTEX_MOD_DISP_WDMA0		BIT(16)
-+#define MT2712_MUTEX_MOD_DISP_WDMA1		BIT(17)
-+#define MT2712_MUTEX_MOD_DISP_COLOR0		BIT(18)
-+#define MT2712_MUTEX_MOD_DISP_COLOR1		BIT(19)
-+#define MT2712_MUTEX_MOD_DISP_AAL0		BIT(20)
-+#define MT2712_MUTEX_MOD_DISP_UFOE		BIT(22)
-+#define MT2712_MUTEX_MOD_DISP_PWM0		BIT(23)
-+#define MT2712_MUTEX_MOD_DISP_PWM1		BIT(24)
-+#define MT2712_MUTEX_MOD_DISP_OD0		BIT(25)
-+#define MT2712_MUTEX_MOD2_DISP_AAL1		BIT(33)
-+#define MT2712_MUTEX_MOD2_DISP_OD1		BIT(34)
-+
-+#define MT2701_MUTEX_MOD_DISP_OVL		BIT(3)
-+#define MT2701_MUTEX_MOD_DISP_WDMA		BIT(6)
-+#define MT2701_MUTEX_MOD_DISP_COLOR		BIT(7)
-+#define MT2701_MUTEX_MOD_DISP_BLS		BIT(9)
-+#define MT2701_MUTEX_MOD_DISP_RDMA0		BIT(10)
-+#define MT2701_MUTEX_MOD_DISP_RDMA1		BIT(12)
- 
- #define MT2712_MUTEX_SOF_SINGLE_MODE		0
- #define MT2712_MUTEX_SOF_DSI0			1
-@@ -174,7 +203,7 @@ enum mtk_mutex_sof_id {
- };
- 
- struct mtk_mutex_data {
--	const unsigned int *mutex_mod;
-+	const unsigned long *mutex_mod;
- 	const unsigned int *mutex_sof;
- 	const unsigned int mutex_mod_reg;
- 	const unsigned int mutex_sof_reg;
-@@ -189,7 +218,7 @@ struct mtk_mutex_ctx {
- 	const struct mtk_mutex_data	*data;
- };
- 
--static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_BLS] = MT2701_MUTEX_MOD_DISP_BLS,
- 	[DDP_COMPONENT_COLOR0] = MT2701_MUTEX_MOD_DISP_COLOR,
- 	[DDP_COMPONENT_OVL0] = MT2701_MUTEX_MOD_DISP_OVL,
-@@ -198,7 +227,7 @@ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT2701_MUTEX_MOD_DISP_WDMA,
- };
- 
--static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT2712_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_AAL1] = MT2712_MUTEX_MOD2_DISP_AAL1,
- 	[DDP_COMPONENT_COLOR0] = MT2712_MUTEX_MOD_DISP_COLOR0,
-@@ -218,7 +247,7 @@ static const unsigned int mt2712_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA1] = MT2712_MUTEX_MOD_DISP_WDMA1,
- };
- 
--static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8167_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_CCORR] = MT8167_MUTEX_MOD_DISP_CCORR,
- 	[DDP_COMPONENT_COLOR0] = MT8167_MUTEX_MOD_DISP_COLOR,
-@@ -233,7 +262,7 @@ static const unsigned int mt8167_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8167_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8173_MUTEX_MOD_DISP_AAL,
- 	[DDP_COMPONENT_COLOR0] = MT8173_MUTEX_MOD_DISP_COLOR0,
- 	[DDP_COMPONENT_COLOR1] = MT8173_MUTEX_MOD_DISP_COLOR1,
-@@ -251,7 +280,7 @@ static const unsigned int mt8173_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA1] = MT8173_MUTEX_MOD_DISP_WDMA1,
- };
- 
--static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_AAL0] = MT8183_MUTEX_MOD_DISP_AAL0,
- 	[DDP_COMPONENT_CCORR] = MT8183_MUTEX_MOD_DISP_CCORR0,
- 	[DDP_COMPONENT_COLOR0] = MT8183_MUTEX_MOD_DISP_COLOR0,
-@@ -265,7 +294,7 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+static const unsigned long mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_OVL0] = MT8195_MUTEX_MOD_DISP_OVL0,
- 	[DDP_COMPONENT_WDMA0] = MT8195_MUTEX_MOD_DISP_WDMA0,
- 	[DDP_COMPONENT_RDMA0] = MT8195_MUTEX_MOD_DISP_RDMA0,
-@@ -278,6 +307,27 @@ static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DSC0] = MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0,
- 	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
- 	[DDP_COMPONENT_PWM0] = MT8195_MUTEX_MOD_DISP_PWM0,
-+	[DDP_COMPONENT_PSEUDO_OVL] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA0 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA1 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA2 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA3 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA4 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA5 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA6 |
-+				     MT8195_MUTEX_MOD_DISP1_MDP_RDMA7 |
-+				     MT8195_MUTEX_MOD_DISP1_VPP_MERGE0 |
-+				     MT8195_MUTEX_MOD_DISP1_VPP_MERGE1 |
-+				     MT8195_MUTEX_MOD_DISP1_VPP_MERGE2 |
-+				     MT8195_MUTEX_MOD_DISP1_VPP_MERGE3 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE0 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE1 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE0 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE1 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_VDO_BE0 |
-+				     MT8195_MUTEX_MOD_DISP1_HDR_MLOAD |
-+				     MT8195_MUTEX_MOD_DISP1_DISP_MIXER,
-+	[DDP_COMPONENT_MERGE5] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE4,
-+	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
- };
- 
- static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-@@ -432,17 +482,20 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
- 	case DDP_COMPONENT_DPI1:
- 		sof_id = MUTEX_SOF_DPI1;
- 		break;
-+	case DDP_COMPONENT_DP_INTF1:
-+		sof_id = MUTEX_SOF_DP_INTF1;
-+		break;
- 	default:
--		if (mtx->data->mutex_mod[id] < 32) {
-+		if (mtx->data->mutex_mod[id] <= BIT(31)) {
- 			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
- 						    mutex->id);
- 			reg = readl_relaxed(mtx->regs + offset);
--			reg |= 1 << mtx->data->mutex_mod[id];
-+			reg |= mtx->data->mutex_mod[id];
- 			writel_relaxed(reg, mtx->regs + offset);
- 		} else {
- 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
- 			reg = readl_relaxed(mtx->regs + offset);
--			reg |= 1 << (mtx->data->mutex_mod[id] - 32);
-+			reg |= (mtx->data->mutex_mod[id] >> 32);
- 			writel_relaxed(reg, mtx->regs + offset);
- 		}
- 		return;
-@@ -471,22 +524,23 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
- 	case DDP_COMPONENT_DSI3:
- 	case DDP_COMPONENT_DPI0:
- 	case DDP_COMPONENT_DPI1:
-+	case DDP_COMPONENT_DP_INTF1:
- 		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
- 			       mtx->regs +
- 			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
- 						  mutex->id));
- 		break;
- 	default:
--		if (mtx->data->mutex_mod[id] < 32) {
-+		if (mtx->data->mutex_mod[id] <= BIT(31)) {
- 			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
- 						    mutex->id);
- 			reg = readl_relaxed(mtx->regs + offset);
--			reg &= ~(1 << mtx->data->mutex_mod[id]);
-+			reg &= ~(mtx->data->mutex_mod[id]);
- 			writel_relaxed(reg, mtx->regs + offset);
- 		} else {
- 			offset = DISP_REG_MUTEX_MOD2(mutex->id);
- 			reg = readl_relaxed(mtx->regs + offset);
--			reg &= ~(1 << (mtx->data->mutex_mod[id] - 32));
-+			reg &= ~(mtx->data->mutex_mod[id] >> 32);
- 			writel_relaxed(reg, mtx->regs + offset);
- 		}
- 		break;
--- 
-2.18.0
+when uart is used as a communication port with external device(GPS).
+when external device(GPS) power off, the power of rx pin is also from
+1.8v to 0v. Even if there is not any data in rx. But uart rx pin can
+capture the data "0".
+If uart don't receive any data in specified cycle, uart will generates
+BI(Break interrupt) interrupt.
+If external device(GPS) power off, we found that BI interrupt appeared
+continuously and very frequently.
+When uart interrupt type is BI, uart IRQ handler(8250 framwork
+API:serial8250_handle_irq) will push data to tty buffer.
+The code path:
+https://elixir.bootlin.com/linux/latest/source/drivers/tty/serial/8250/8250_port.c#L1917
+
+mtk8250_dma_rx_complete is a task of mtk_uart_apdma_rx_handler.
+mtk8250_dma_rx_complete priority is lower than uart irq
+handler(serial8250_handle_irq).
+if we are in process of mtk8250_dma_rx_complete, uart appear BI
+interrupt:1)serial8250_handle_irq will priority execution.2)it may cause
+write tty buffer conflict in mtk8250_dma_rx_complete.
+So the spin lock protect the rx receive data process is not break.
+> 
+> > 2. add processing mechanism which count value is 0
+> 
+> What does this do?  And why is it needed?
+
+==> when count value is 0, we don't need push data to tty buffer.
+so we add it.
+> 
+> > 
+> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> 
+> What commit does this fix?  Does this need to go to stable kernel trees?
+> If so, how far back?
+> 
+> > ---
+> >  drivers/tty/serial/8250/8250_mtk.c | 15 +++++++++++----
+> >  1 file changed, 11 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> > index f7d3023f860f..09f7d2166315 100644
+> > --- a/drivers/tty/serial/8250/8250_mtk.c
+> > +++ b/drivers/tty/serial/8250/8250_mtk.c
+> > @@ -91,12 +91,15 @@ static void mtk8250_dma_rx_complete(void *param)
+> >  	struct mtk8250_data *data = up->port.private_data;
+> >  	struct tty_port *tty_port = &up->port.state->port;
+> >  	struct dma_tx_state state;
+> > -	int copied, total, cnt;
+> > +	unsigned int copied, total, cnt;
+> >  	unsigned char *ptr;
+> > +	unsigned long flags;
+> >  
+> >  	if (data->rx_status == DMA_RX_SHUTDOWN)
+> >  		return;
+> >  
+> > +	spin_lock_irqsave(&up->port.lock, flags);
+> > +
+> >  	dmaengine_tx_status(dma->rxchan, dma->rx_cookie, &state);
+> >  	total = dma->rx_size - state.residue;
+> >  	cnt = total;
+> > @@ -104,9 +107,11 @@ static void mtk8250_dma_rx_complete(void *param)
+> >  	if ((data->rx_pos + cnt) > dma->rx_size)
+> >  		cnt = dma->rx_size - data->rx_pos;
+> >  
+> > -	ptr = (unsigned char *)(data->rx_pos + dma->rx_buf);
+> > -	copied = tty_insert_flip_string(tty_port, ptr, cnt);
+> > -	data->rx_pos += cnt;
+> > +	if (cnt != 0) {
+> 
+> Why does cnt matter here?  If cnt is 0, the code above should not do
+> anything at all, right?
+
+==> yes, if the counter value is 0, we don't need push data to the tty
+buffer.
+> 
+> Or if it does, should we change tty_insert_flip_string() to always check
+> for cnt != 0 before it does the first loop?  Hm, it looks like it will
+> abort if cnt is 0, so what is this change really doing?  Why do you need
+> it?  What is it "fixing"?
+> 
+==> It is not fix anything, we just think if count value is 0, we don't
+need do anything.
+
+Thanks.
+
+> thanks,
+> 
+> greg k-h
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
