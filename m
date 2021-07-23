@@ -2,78 +2,79 @@ Return-Path: <SRS0=Y38d=MP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8CCC9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 08:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 519D0C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 09:03:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5107960E77
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 08:40:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5107960E77
+	by mail.kernel.org (Postfix) with ESMTPS id E5FF860EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 09:03:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E5FF860EBD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+4G1oMZRjlvr3tVeBsYhgZAxKrNPj3YX5tUhlA3pwRg=; b=2yKcy+U99K6/pS
-	O1wdLAdY+HiPNnJp+1tFZ2XYtyLHj971ffTiTh93T0OD+O2F4psle2gtjXX54g1bjaDGVkhN1OPks
-	NSc1qF4ibeHuEgs7oskgD2MuWelBk2H+dpNBmeXDgQcWQJrf2GedyvSqXWIE+kvtv1w6P4kpzaC/b
-	DbTyovxs3tGCEVSCtNZVilosjT9nQCvOKdxNQNE5lfihgEC4zHIO2x1t0XlARuRYvqOUQyIyG62pC
-	sXInLsuliFVTkZqDZMCfDSCosdveFoD2rcsM5ecTCirv7aJGQRYV6Sy84zOmuANpkWeS9gEbxtcmr
-	3Itsn5M0TcEtuNWEfb/g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7VxqYV1zlpJ3ZaOKfzo81uBUNHI9aDMJIy5q4kWR6yc=; b=mpea1y2A1TAJZ/
+	SqNnl0S7JEqQg2jBB/gg3CfPokTV+15A0FLVuK6/q42moSdChneMVcrOcEfVSEplf1Q/WRVI3KkCz
+	qZzSu5QDEh9wJs5chK5nGMaLCX0YW1M1emQHWysGQedyNoNcTVbyY38arJLlCC4AM3oUZk4SML67l
+	lGYQvpm5SFCGqW/En70KNghvu17l1fY7GKsIJF/McKcGr0ZWesnqX0/GA3TGeVnWwyLrqhK7uJ3mC
+	30aQFVjsIIR28ncdcGW0OfSGiwRihEys4M8oIx/7+YGRmswHlw4bOIwP/OcSPWIyp0zwvZocgPzt7
+	x7+y0FzvqbvQ8PCrAGzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m6qj6-003yl1-El; Fri, 23 Jul 2021 08:40:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m6r57-00412K-Ao; Fri, 23 Jul 2021 09:02:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m6qj2-003yjZ-Tk
- for linux-mediatek@lists.infradead.org; Fri, 23 Jul 2021 08:40:10 +0000
-X-UUID: e834613c1e7e43e684e3b16fe8c30480-20210723
+ id 1m6r4r-0040vK-4m; Fri, 23 Jul 2021 09:02:43 +0000
+X-UUID: 4a5a8198a0cf4cd284a38c4d7637d652-20210723
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=6eFxbfXU1aGruy1a6KsbRzQX11yjS2zTUljrzlkeqUU=; 
- b=hr79QuZ31l8PtsKCPcPzv+oHGdsHt3MktK/1aYXM1h48h69CZQE+srWopEqrpXsCDNP7kFKkDmvDtBcD/BXYF9MzhwtiJVU90NHMPqzPg/Ha79sUlv/2uTjrqYtEutODQmvZvcxZxyADoVplg9WSQFMkYuTzXhYnJKPHXlJL2M4=;
-X-UUID: e834613c1e7e43e684e3b16fe8c30480-20210723
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=I/VzUlofHL1S02TEnh88vCL/yO7tg8DHz1aWNBTzeF0=; 
+ b=L1D+KejX5JhovWVqi24TlAUDQEvEmNsC2dKlWqYsExWPmLmlbB9qu4XLaDjXx3DeKjkIMmudTDha/+D0OlFJ1HSsnqudITJNpeqZkUQaGal0armOOW/21/zmPrDsLICie4ratSmRcVrfqB/7NyB1eVyB70JVAiric6+K/91GcCA=;
+X-UUID: 4a5a8198a0cf4cd284a38c4d7637d652-20210723
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1426315244; Fri, 23 Jul 2021 01:40:05 -0700
-Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ with ESMTP id 944874748; Fri, 23 Jul 2021 02:02:38 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Jul 2021 01:40:04 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 23 Jul 2021 16:40:02 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 23 Jul 2021 16:40:01 +0800
-Message-ID: <1627029602.14347.6.camel@mtkswgap22>
-Subject: Re: [RESEND PATCH v2] mm/sparse: clarify pgdat_to_phys
-From: Miles Chen <miles.chen@mediatek.com>
-To: David Hildenbrand <david@redhat.com>
-CC: Andrew Morton <akpm@linux-foundation.org>, Mike Rapoport
- <rppt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, <linux-mm@kvack.org>, 
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <wsd_upstream@mediatek.com>
-Date: Fri, 23 Jul 2021 16:40:02 +0800
-In-Reply-To: <a042906d-7d07-d1af-57d2-ab4cbdc53f36@redhat.com>
-References: <20210723070137.23321-1-miles.chen@mediatek.com>
- <a042906d-7d07-d1af-57d2-ab4cbdc53f36@redhat.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ 15.0.1497.2; Fri, 23 Jul 2021 02:02:36 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 23 Jul 2021 17:02:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 23 Jul 2021 17:02:34 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, <fshao@chromium.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Enric
+ Balletbo i Serra" <enric.balletbo@collabora.com>, <hsinyi@chromium.org>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
+Subject: [PATCH v4 0/6] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Date: Fri, 23 Jul 2021 17:02:27 +0800
+Message-ID: <20210723090233.24007-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_014009_054846_4DFCCED7 
-X-CRM114-Status: GOOD (  28.03  )
+X-CRM114-CacheID: sfid-20210723_020241_237848_ADF2E977 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,94 +91,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-07-23 at 09:10 +0200, David Hildenbrand wrote:
-> On 23.07.21 09:01, Miles Chen wrote:
-> > Clarify pgdat_to_phys() by testing if
-> > pgdat == &contig_page_data when CONFIG_NUMA=n.
-> > 
-> > contig_page_data is only available when CONFIG_NUMA=n
-> > so we have to use #ifndef here.
-> > 
-> > No functional change intended.
-> > 
-> > Comment from Mark [1]:
-> > "
-> > ... and I reckon it'd be clearer and more robust to define
-> > pgdat_to_phys() in the same ifdefs as contig_page_data so
-> > that these, stay in-sync. e.g. have:
-> > 
-> > | #ifdef CONFIG_NUMA
-> > | #define pgdat_to_phys(x)	virt_to_phys(x)
-> > | #else /* CONFIG_NUMA */
-> > |
-> > | extern struct pglist_data contig_page_data;
-> > | ...
-> > | #define pgdat_to_phys(x)	__pa_symbol(&contig_page_data)
-> > |
-> > | #endif /* CONIFIG_NUMA */
-> > "
-> > 
-> > Comment from Mike [2]:
-> > "
-> > I'm not sure a macro is better than a static inline.
-> > 
-> > Maybe we'd want to warn if pgdat passed to pgtat_to_phys() is not
-> > &contig_page_data, e.g something like
-> > 
-> > static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
-> > {
-> > 	if (!IS_ENABLED(CONFIG_NUMA)) {
-> > 		if (pgdat == &contig_page_data)
-> > 			return __pa_symbol(&contig_page_data);
-> > 		else
-> > 			pr_warn("Unexpected pglist_data pointer!\n");
-> > 	}
-> > 
-> > 	return __pa(pgdat);
-> > }
-> > "
-> > 
-> > [1] https://urldefense.com/v3/__https://lore.kernel.org/linux-arm-kernel/20210615131902.GB47121@C02TD0UTHF1T.local/__;!!CTRNKA9wMg0ARbw!1bJTnH2gJ6QvsBKTXH8xOiKfHF-xq_1dok3cnETD4e4qjryntFm8K0XjtEmkHAxG6g$ 
-> > [2] https://urldefense.com/v3/__https://lore.kernel.org/patchwork/patch/1452903/*1650759__;Iw!!CTRNKA9wMg0ARbw!1bJTnH2gJ6QvsBKTXH8xOiKfHF-xq_1dok3cnETD4e4qjryntFm8K0XjtEmbGXEkVg$ 
-> > 
-> > Cc: Mike Rapoport <rppt@kernel.org>
-> > Cc: Mark Rutland <mark.rutland@arm.com>
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> > 
-> > ---
-> > 
-> > Change since v1:
-> > Thanks for Mike's comment, check if pgdat == &contig_page_data,
-> > so it is clearer that we only expect contig_page_data when
-> > CONFIG_NUMA=n.
-> > ---
-> >   mm/sparse.c | 7 ++++---
-> >   1 file changed, 4 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/mm/sparse.c b/mm/sparse.c
-> > index 6326cdf36c4f..f73ff3c124c5 100644
-> > --- a/mm/sparse.c
-> > +++ b/mm/sparse.c
-> > @@ -348,10 +348,11 @@ size_t mem_section_usage_size(void)
-> >   static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
-> >   {
-> >   #ifndef CONFIG_NUMA
-> > -	return __pa_symbol(pgdat);
-> > -#else
-> > +	if (pgdat == &contig_page_data)
-> > +		return __pa_symbol(&contig_page_data);
-> > +	pr_warn("Unexpected pglist_data pointer!\n");
-> 
-> Shouldn't this rather be a VM_BUG_ON()?
-> 
-> Because it looks like something that should barely happen and we might 
-> not want to perform runtime checks on each and every system?
+The hardware path of vdosys0 with eDP panel output need to go through
+by several modules, such as, OVL, RDMA, COLOR, CCORR, AAL, GAMMA,
+DITHER, DSC and MERGE.
 
-thanks for your comment, I will use VM_BUG_ON() to check if pgdat ==
-contig_page_data to avoid the runtime check.
-> 
-> 
+Change in v4:
+- extract dt-binding patches to another patch series
+  https://patchwork.kernel.org/project/linux-mediatek/list/?series=519597
+- squash DSC module into mtk_drm_ddp_comp.c
+- add coment and simplify MERGE config function
 
+Change in v3:
+- change mmsys and display dt-bindings document from txt to yaml
+- add MERGE additional description in display dt-bindings document
+- fix mboxes-cells number of vdosys0 node in dts
+- drop mutex eof convert define
+- remove pm_runtime apis in DSC and MERGE
+- change DSC and MERGE enum to alphabetic order
+
+Change in v2:
+- add DSC yaml file
+- add mt8195 drm driver porting parts in to one patch
+- remove useless define, variable, structure member and function
+- simplify DSC and MERGE file and switch threre order
+
+jason-jh.lin (6):
+  arm64: dts: mt8195: add display node for vdosys0
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+  drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+  drm/mediatek: add DSC support for mt8195
+  drm/mediatek: add MERGE support for mt8195
+
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 111 ++++++++
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 277 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  62 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  32 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ drivers/soc/mediatek/mt8195-mmsys.h         | 191 ++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.c            |  11 +
+ drivers/soc/mediatek/mtk-mutex.c            |  93 ++++++-
+ include/linux/soc/mediatek/mtk-mmsys.h      |   9 +
+ 13 files changed, 800 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+ create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
