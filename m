@@ -2,69 +2,79 @@ Return-Path: <SRS0=BtH1=MQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BB7FC432BE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 07:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B5E5C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:04:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A4EA60E96
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 07:47:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8A4EA60E96
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id EA6D260E9C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:04:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EA6D260E9C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K0SJhDdbbNR39xTrva7Kmri55b0inREEbWnKNnmaMSo=; b=ggm0okLiZSCvgB
-	UAGbQ1KoWLdBdPI+pLH0ur46CAX1zAZBSO6dMVQHmdIG2J2wh/99OWtjPF763C8/FX1YY+4xpKrB1
-	i2afHPT1uWl712QWG/4mj2tIFmqV13dwkdVDuiETfsLo8XZJvyuktmZRM8eUgp8421/1jz3+5AFAs
-	VM6mGzOiMWq9KPazAddPDHQgbXOsxwfxYjr/b5/5U/QBEKI09CbPWgkZQOUlck3fcwBk3FcGeZoLC
-	an+ciFSt+ItscwFB9MpkHcN6GecDV+3dPFvWN46+25+zQqJXUqthsFXwR97TXT5ZZi4jV/9F8UaNZ
-	BLAlgkHsBJGROD2n8gJw==;
+	List-Owner; bh=2Xz7oVHjYoZhwNc0pOZa6UZ0mdPC+anP8qokNGNf+E4=; b=LClIBqz6Ly4jTP
+	HHA2VbY7Q5vZBHztxgv68S9+U9swGE+shCGxy5PGH/lfq53bQqNvWcWWNyPlQSp43R6fIUANIpFPi
+	uKf2uChv+jqIMmbDZZ4p/HFwpGXFt/igXabst+4dy6lv54wrDfxAvBL/08MARxXt2jabiMkME7gEG
+	vcUpODkzHazatOCnB8EAOZzZGUcuXp643OcIWowxMZiQlI8eZU9JqwU81TSTIF/NUeyCq7pPuOgg5
+	2TlZpLJpmm9vtglkuoLEt+OVy/97PdRX3a87vnIt/MEfK0765D75lk4N50e/5YdO1g/97m2QCrfmf
+	HZzPPWXbIUg6EeeCAiEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7CNq-006qZo-5H; Sat, 24 Jul 2021 07:47:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m7Cdx-006sEG-Uh; Sat, 24 Jul 2021 08:04:21 +0000
+Received: from smtp-out2.suse.de ([195.135.220.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7CNn-006qZF-AF
- for linux-mediatek@lists.infradead.org; Sat, 24 Jul 2021 07:47:40 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D02E160E93;
- Sat, 24 Jul 2021 07:47:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627112859;
- bh=83jYqHd7Z3wZAPt5SDx4EmmdLiCWHkDxcjRrWNIZ0kE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=dV+JwbWV9suCiexF3CXkLJt4ap8IBg5xYeWS7BVIDBXUtK33/2VPwz9pSvQdHO1A3
- yIrHu3+n1ufzNNfG1igKzqVT1hcEH/iMlQUvkRPrv1HO9FmO4HHM/SaoH5vdLO75Xt
- 82aiN+l4G+1Z9Kz8UTGFmXYa8xad5zeGCLzUMdP9E5ezcoOVBqOb4kWVXT59yaFEhG
- i4D04rUrLcpJ7HtUr13dBD0kkYLRCN0WmdAo3q9UC98qSWlbPf0QIr3JtqkWtNqMtA
- QZpyiVT0NIL/r+deATsBXLKcs9QG7X31C5TzhlzS1KQisaBB6aZjXeWW9cy28+fjEQ
- 5+UMcZFUNjrJQ==
-Date: Sat, 24 Jul 2021 10:47:33 +0300
-From: Mike Rapoport <rppt@kernel.org>
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
- Mark Rutland <mark.rutland@arm.com>,
- David Hildenbrand <david@redhat.com>, linux-mm@kvack.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com
-Subject: Re: [PATCH v3] mm/sparse: clarify pgdat_to_phys
-Message-ID: <YPvFlagk2Z/4ceS1@kernel.org>
-References: <20210723123342.26406-1-miles.chen@mediatek.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210723123342.26406-1-miles.chen@mediatek.com>
+ id 1m7Cdk-006sDK-Tf; Sat, 24 Jul 2021 08:04:10 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+ by smtp-out2.suse.de (Postfix) with ESMTP id 4EC3C2001B;
+ Sat, 24 Jul 2021 08:04:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1627113845; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=24IQqn9FXptEdDFM0uvk5v9JwwGmH7qRb69eCI8SxgI=;
+ b=WtQlljWjRL/CjVz5fyWTfQVwmwpsKvkz5L4ASWaikYX97ZKg9d2H9t9A6niDUDT/6phiGX
+ 1QnQFlfkVrbLO/lnWUJ+rr2PtEvXp7vCmLwxtefqkeQMvLe6dKWbqV2hCD1HeZKa/zY6aH
+ 2HBBR/LFn6C8ei+9Wir1HgfOGxCvan4=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1627113845;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=24IQqn9FXptEdDFM0uvk5v9JwwGmH7qRb69eCI8SxgI=;
+ b=MTkc/JF87R3cvXo51USXV8O+c1pl2c2NBub8Ce5QknywyBUKrf/C/fNIuDeWTQ6iCeXOlS
+ URW7hRR0YVOkFzAg==
+Received: from alsa1.suse.de (alsa1.suse.de [10.160.4.42])
+ by relay2.suse.de (Postfix) with ESMTP id 1A5A0A3B87;
+ Sat, 24 Jul 2021 08:04:05 +0000 (UTC)
+Date: Sat, 24 Jul 2021 10:04:05 +0200
+Message-ID: <s5h7dhgi1e2.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: <chihhao.chen@mediatek.com>
+Cc: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <alsa-devel@alsa-project.org>, <damien@zamaudio.com>, <perex@perex.cz>,
+ <tiwai@suse.com>, <matthias.bgg@gmail.com>, <wsd_upstream@mediatek.com>
+Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
+In-Reply-To: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
+References: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI/1.14.6 (Maruoka)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 Emacs/25.3
+ (x86_64-suse-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI 1.14.6 - "Maruoka")
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210724_004739_421231_E009C181 
-X-CRM114-Status: GOOD (  19.07  )
+X-CRM114-CacheID: sfid-20210724_010409_156592_07287D87 
+X-CRM114-Status: GOOD (  19.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,76 +91,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 23, 2021 at 08:33:42PM +0800, Miles Chen wrote:
-> Clarify pgdat_to_phys() by testing if
-> pgdat == &contig_page_data when CONFIG_NUMA=n.
+On Sat, 24 Jul 2021 06:23:41 +0200,
+<chihhao.chen@mediatek.com> wrote:
 > 
-> We only expect contig_page_data in such case, so we
-> use &contig_page_data directly instead of pgdat.
+> From: "chihhao.chen" <chihhao.chen@mediatek.com>
 > 
-> No functional change intended when CONFIG_BUG_VM=n.
+> The following scenario describes an echo test for
+> Samsung USBC Headset (AKG) with VID/PID (0x04e8/0xa051).
 > 
-> Comment from Mark [1]:
-> "
-> ... and I reckon it'd be clearer and more robust to define
-> pgdat_to_phys() in the same ifdefs as contig_page_data so
-> that these, stay in-sync. e.g. have:
+> We first start a capture stream(USB IN transfer) in 96Khz/24bit/1ch mode.
+> In clock find source function, we get value 0x2 for clock selector
+> and 0x1 for clock source.
 > 
-> | #ifdef CONFIG_NUMA
-> | #define pgdat_to_phys(x)	virt_to_phys(x)
-> | #else /* CONFIG_NUMA */
-> |
-> | extern struct pglist_data contig_page_data;
-> | ...
-> | #define pgdat_to_phys(x)	__pa_symbol(&contig_page_data)
-> |
-> | #endif /* CONIFIG_NUMA */
-> "
+> Kernel-4.14 behavior
+> Since clock source is valid so clock selector was not set again.
+> We pass through this function and start a playback stream(USB OUT transfer)
+> in 48Khz/32bit/2ch mode. This time we get value 0x1 for clock selector
+> and 0x1 for clock source. Finally clock id with this setting is 0x9.
 > 
-> [1] https://lore.kernel.org/linux-arm-kernel/20210615131902.GB47121@C02TD0UTHF1T.local/
+> Kernel-5.10 behavior
+> Clock selector was always set one more time even it is valid.
+> When we start a playback stream, we will get 0x2 for clock selector
+> and 0x1 for clock source. In this case clock id becomes 0xA.
+> This is an incorrect clock source setting and results in severe noises.
+> We see wrong data rate in USB IN transfer.
+> (From 288 bytes/ms becomes 144 bytes/ms) It should keep in 288 bytes/ms.
 > 
-> Cc: Mike Rapoport <rppt@kernel.org>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: David Hildenbrand <david@redhat.com>
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> This earphone works fine on older kernel version load because
+> this is a newly-added behavior.
+> 
+> Signed-off-by: chihhao.chen <chihhao.chen@mediatek.com>
 
-Acked-by: Mike Rapoport <rppt@linux.ibm.com>
+Thanks for the patch.
 
-> 
-> --
-> 
-> Change since v1:
-> Thanks for Mike's comment, check if pgdat == &contig_page_data,
-> so it is clearer that we only expect contig_page_data when
-> CONFIG_NUMA=n.
-> 
-> Change since v2:
-> use VM_BUG_ON() to avoid runtime checking when CONFIG_BUG_VM=n
-> ---
->  mm/sparse.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/mm/sparse.c b/mm/sparse.c
-> index 6326cdf36c4f..d13d831f88a5 100644
-> --- a/mm/sparse.c
-> +++ b/mm/sparse.c
-> @@ -348,7 +348,8 @@ size_t mem_section_usage_size(void)
->  static inline phys_addr_t pgdat_to_phys(struct pglist_data *pgdat)
->  {
->  #ifndef CONFIG_NUMA
-> -	return __pa_symbol(pgdat);
-> +	VM_BUG_ON(pgdat != &contig_page_data);
-> +	return __pa_symbol(&contig_page_data);
->  #else
->  	return __pa(pgdat);
->  #endif
-> -- 
-> 2.18.0
-> 
+This looks like a regression introduced by the recent commit
+d2e8f641257d ("ALSA: usb-audio: Explicitly set up the clock
+selector"), which is a fix for certain devices.  Too bad that the
+behavior really depends on the device...
 
--- 
-Sincerely yours,
-Mike.
+Maybe we need to introduce some flag to handle this commonly, but for
+now, let's take the fix as is.
+
+
+Takashi
 
 _______________________________________________
 Linux-mediatek mailing list
