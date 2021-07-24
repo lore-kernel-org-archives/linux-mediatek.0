@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B1AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:20:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BC5D4C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:29:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A250460E9C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:20:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A250460E9C
+	by mail.kernel.org (Postfix) with ESMTPS id 7937860E97
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 08:29:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7937860E97
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K7AjwuEt7A/X5Z2wVgceCPSgyKxLJkbIy2+a1txPb44=; b=H5nioOQwisVPha
-	8qUS9hkpxlkYR4wNs8eU6Gap6lerlY+STDAWPzFWFg8SXr9DaVC3j2c+KzAshJeba98wkbUBJiYu9
-	nnCjRcNKpX43Re751vh9aBvfRpw+sTesYctSfSe8bsWZFhAWg0igizimH0ycwlWr6ZWP9ueNKf2WW
-	IRElINqLGsFhl9Lmwq5Q3KKSdiFHSlRP0rChiiqA1I+oE9TJuM5eJuobvz3/ZqW7Y7idHf2k8QwYj
-	yeNllrxchkBmYcgowJrI5S/phZGonjxfWOguG5swXG8owdbN9mJFwVxd90JRJZV8HAXLBB8izd7Mn
-	TykWXOfve46Elxcn2dNQ==;
+	List-Owner; bh=RDVg6urEVaSqlmgN0Qal4Hu2W10yZdh2dS7jZExHGKI=; b=0FgnGjT3ZOqOFY
+	MrxS6T/ERZ1ef3aynk0Urcvxb9OZfF0utJv5Zw8fYMxEc7v1KXVHqDpDMbdozD7+22fnpYWZ8/8M6
+	vxuiMLF+aevbWgnM41deTWoQwQbAQK4OM1rZ/BiQcVpoAuKtWb/gAuLnh4XBEkh2X8euLH7nPfrPx
+	PEc3ihoi14PA7mBcBgrF/6IY5MR/yI/OnZzdnPKX8abD2yk8shQ0XZFUdWTyJTR9PO9DQx/PEhBBu
+	kvYcaRjPve/8cpHiGrQc4fHxEcl+olBOKdGJj2tXWMpn0tvTOGlx+HI6PMwWy8w6bYUxF56JfYrd4
+	AYaBUTKJVXDnIJ2jNm8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7CtI-006tat-Oj; Sat, 24 Jul 2021 08:20:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m7D25-006vlR-15; Sat, 24 Jul 2021 08:29:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7CsE-006t4S-MP; Sat, 24 Jul 2021 08:19:08 +0000
-X-UUID: 3f78f5852e0e4e76b2b6864753c23ce0-20210724
+ id 1m7D21-006vkz-KW; Sat, 24 Jul 2021 08:29:15 +0000
+X-UUID: b086ca54331d47349b82b30499189d70-20210724
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=tM+NAWWNnNhPu8Jhbb2yxWWm9Io9X8Hw5AFm5lz7rYk=; 
- b=QuI2TKHfDhFB/MoGgOKIJHJm7FSdjw2w1Pmw4SXPftK93aVKe8iM92eCdIowW8BIWwlx/o9pcAPKs85Rpj8JwKc/PDL/6gqCjzjbmrGVZOCCLrZ3B/2qCQV1nE/Rn1g6lJvK51nhdl4BSdYlJ4wdlsfZBPODPgtuUF9yc9cPX8E=;
-X-UUID: 3f78f5852e0e4e76b2b6864753c23ce0-20210724
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=oz8R6JzK/dsLcXIYjmpTj+oBt2JJQ5u816nXyN6D10Q=; 
+ b=IInVGTfxFKK/kwhZh6NBWauSj7SH+RAMxhrDQxjLoAuFOr/MIWapDZ5uNQTlIcnXjWh0sFMVDmRch/hwFAcB0GrKGxc+hLdnfdVfLs0Hf9w9JnBbdd94v3yDspoGykawCOOw1B8M2uEegY7Ka3BLcRrQTECOAlt/r65ohM5nn0w=;
+X-UUID: b086ca54331d47349b82b30499189d70-20210724
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1858342294; Sat, 24 Jul 2021 01:19:02 -0700
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 24 Jul 2021 01:19:00 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 24 Jul 2021 16:18:54 +0800
+ with ESMTP id 1086093771; Sat, 24 Jul 2021 01:29:06 -0700
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 24 Jul 2021 01:19:04 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 24 Jul 2021 16:18:55 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 24 Jul 2021 16:18:53 +0800
+ 15.0.1497.2 via Frontend Transport; Sat, 24 Jul 2021 16:18:54 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
 To: Thierry Reding <thierry.reding@gmail.com>, Lee Jones
  <lee.jones@linaro.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=
@@ -65,18 +65,19 @@ CC: <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <eddie.huang@mediatek.com>, <ck.hu@mediatek.com>, <stonea168@163.com>,
  <huijuan.xie@mediatek.com>, <shuijing.li@mediatek.com>, Jitao Shi
  <jitao.shi@mediatek.com>
-Subject: [PATCH v6 3/5] pwm: mtk_disp: implement atomic API .apply()
-Date: Sat, 24 Jul 2021 16:18:47 +0800
-Message-ID: <20210724081849.182108-4-jitao.shi@mediatek.com>
+Subject: [PATCH v6 4/5] pwm: mtk_disp: fix overflow in period and duty
+ calcalation
+Date: Sat, 24 Jul 2021 16:18:48 +0800
+Message-ID: <20210724081849.182108-5-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210724081849.182108-1-jitao.shi@mediatek.com>
 References: <20210724081849.182108-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 84B648C66343D480554DDA935607FA7ECB21D8A66B80C5C70D1FDDEB5C1E63982000:8
+X-TM-SNTS-SMTP: 00542DEEE62E7D67BBB1D34FA5DE6387FF294617A841F8A5F6153D1AF11FE15A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210724_011906_781836_EB631DC4 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20210724_012913_726412_EB622F15 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,162 +94,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch the driver to support the .apply() method.
+Current calculation for period and high_width may have
+64-bit overflow. state->period and rate are u64.
+rate * state->period will overflow.
+
+clk_div = div_u64(rate * state->period, NSEC_PER_SEC)
+period = div64_u64(rate * state->period, div);
+high_width = div64_u64(rate * state->duty_cycle, div);
+
+This patch is to resolve it by using mul_u64_u64_div_u64().
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/pwm/pwm-mtk-disp.c | 93 ++++++++++++++++----------------------
- 1 file changed, 38 insertions(+), 55 deletions(-)
+ drivers/pwm/pwm-mtk-disp.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 1070d78d4940..599d7dd8ecab 100644
+index 599d7dd8ecab..4f6de6f24484 100644
 --- a/drivers/pwm/pwm-mtk-disp.c
 +++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -47,6 +47,7 @@ struct mtk_disp_pwm {
- 	struct clk *clk_main;
- 	struct clk *clk_mm;
- 	void __iomem *base;
-+	bool enabled;
- };
- 
- static inline struct mtk_disp_pwm *to_mtk_disp_pwm(struct pwm_chip *chip)
-@@ -66,25 +67,42 @@ static void mtk_disp_pwm_update_bits(struct mtk_disp_pwm *mdp, u32 offset,
- 	writel(value, address);
- }
- 
--static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
--			       int duty_ns, int period_ns)
-+static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
-+			      const struct pwm_state *state)
- {
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
- 	u32 clk_div, period, high_width, value;
- 	u64 div, rate;
- 	int err;
- 
--	err = clk_prepare_enable(mdp->clk_main);
--	if (err < 0) {
--		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
--		return err;
-+	if (state->polarity != PWM_POLARITY_NORMAL)
-+		return -EINVAL;
-+
-+	if (!state->enabled) {
-+		mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
-+					 0x0);
-+		if (mdp->enabled) {
-+			clk_disable_unprepare(mdp->clk_mm);
-+			clk_disable_unprepare(mdp->clk_main);
-+		}
-+		mdp->enabled = false;
-+		return 0;
- 	}
- 
--	err = clk_prepare_enable(mdp->clk_mm);
--	if (err < 0) {
--		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
--		clk_disable_unprepare(mdp->clk_main);
--		return err;
-+	if (!mdp->enabled) {
-+		err = clk_prepare_enable(mdp->clk_main);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n",
-+				ERR_PTR(err));
-+			return err;
-+		}
-+		err = clk_prepare_enable(mdp->clk_mm);
-+		if (err < 0) {
-+			dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n",
-+				ERR_PTR(err));
-+			clk_disable_unprepare(mdp->clk_main);
-+			return err;
-+		}
- 	}
- 
- 	/*
-@@ -98,20 +116,22 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
+@@ -116,7 +116,7 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
  	 * high_width = (PWM_CLK_RATE * duty_ns) / (10^9 * (clk_div + 1))
  	 */
  	rate = clk_get_rate(mdp->clk_main);
--	clk_div = div_u64(rate * period_ns, NSEC_PER_SEC) >>
-+	clk_div = div_u64(rate * state->period, NSEC_PER_SEC) >>
+-	clk_div = div_u64(rate * state->period, NSEC_PER_SEC) >>
++	clk_div = mul_u64_u64_div_u64(state->period, rate, NSEC_PER_SEC) >>
  			  PWM_PERIOD_BIT_WIDTH;
  	if (clk_div > PWM_CLKDIV_MAX) {
--		clk_disable_unprepare(mdp->clk_mm);
--		clk_disable_unprepare(mdp->clk_main);
-+		if (!mdp->enabled) {
-+			clk_disable_unprepare(mdp->clk_mm);
-+			clk_disable_unprepare(mdp->clk_main);
-+		}
- 		return -EINVAL;
+ 		if (!mdp->enabled) {
+@@ -127,11 +127,11 @@ static int mtk_disp_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
  	}
  
  	div = NSEC_PER_SEC * (clk_div + 1);
--	period = div64_u64(rate * period_ns, div);
-+	period = div64_u64(rate * state->period, div);
+-	period = div64_u64(rate * state->period, div);
++	period = mul_u64_u64_div_u64(state->period, rate, div);
  	if (period > 0)
  		period--;
  
--	high_width = div64_u64(rate * duty_ns, div);
-+	high_width = div64_u64(rate * state->duty_cycle, div);
+-	high_width = div64_u64(rate * state->duty_cycle, div);
++	high_width = mul_u64_u64_div_u64(state->duty_cycle, rate, div);
  	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
  
  	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
-@@ -140,52 +160,15 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 					 mdp->data->con0_sel,
- 					 mdp->data->con0_sel);
- 	}
--
--	clk_disable_unprepare(mdp->clk_mm);
--	clk_disable_unprepare(mdp->clk_main);
--
--	return 0;
--}
--
--static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
--	int err;
--
--	err = clk_prepare_enable(mdp->clk_main);
--	if (err < 0) {
--		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
--		return err;
--	}
--
--	err = clk_prepare_enable(mdp->clk_mm);
--	if (err < 0) {
--		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
--		clk_disable_unprepare(mdp->clk_main);
--		return err;
--	}
--
- 	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
- 				 mdp->data->enable_mask);
-+	mdp->enabled = true;
- 
- 	return 0;
- }
- 
--static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
--{
--	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
--
--	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
--				 0x0);
--
--	clk_disable_unprepare(mdp->clk_mm);
--	clk_disable_unprepare(mdp->clk_main);
--}
--
- static const struct pwm_ops mtk_disp_pwm_ops = {
--	.config = mtk_disp_pwm_config,
--	.enable = mtk_disp_pwm_enable,
--	.disable = mtk_disp_pwm_disable,
-+	.apply = mtk_disp_pwm_apply,
- 	.owner = THIS_MODULE,
- };
- 
 -- 
 2.25.1
 _______________________________________________
