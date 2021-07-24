@@ -1,82 +1,76 @@
-Return-Path: <SRS0=Y38d=MP=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=BtH1=MQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DC047C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 23:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 365E5C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 04:34:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A458D601FC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Jul 2021 23:36:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A458D601FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B7B6160E98
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 04:34:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B7B6160E98
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c+Byd0jFd6jm7wyV7I3DRW7iuYVFnlb+hOWPXAhBSF0=; b=32numt1nj+k238
-	omYHulstxx60hnWGmSwqOPW7agWo4PUA+L+yo1GfDlDYvL8p33U9YurYXMLv0Ulx3Agc9uHsbNxZ+
-	Mnjg0VK8qCVgQ1654ysDjwjNVPcYxRTWrBkVsZ+w3YEuyVjEeUiCV1waD+6umojoU7JXW0wHpgtVV
-	xeZuZvUG4pUQGP923uJs9tJ/X546WCsx56NBmr5Dmbv01jIAVfLqwIDvodH55ne25KWqNzGKj3DkL
-	vPt8whEWHTnDWjeUHvFh/c45UHSh7eaOULMJrmfLzLUq2BPZrX2iWREWtMO5261sreHMQUV4GNJGK
-	hRs7xqoSLo31K+AQJYMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=41f+kyPITrZzSPfF8CLeNj20tErRqPP8wg2d3ZvWQ74=; b=sgzXHmFvWM0tL1
+	cn2dXXzZ6bxMj1V6yraZzlrnRWe7DfzvDVeTunR8khwSzdG4bm8xaCwFhSZ4QfERKHcsjhKWyoiuY
+	0thHV56q7zYbXefrF1ij7uQPOvcEXqfuWumScffct+ZVm1RyFGT4SUYikr3tzU1fJSzpAkmrm431F
+	yjxGBSXS7zXhfiI1LLUhuxd4HFSdsKkNnH4n2EJgAPnblh63HbZ/RLau/wLmb+ZRrHYsGetZYoCZw
+	BjlGhFjgt2Uw9ryK967oZxsXTxBOeGw5eRcTjjLbTDSxGy6au9iWv/KCQkcD84mhPvI61u9JIbXze
+	zRLksctF+rUOk661Xn0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m74ia-006Oxb-NE; Fri, 23 Jul 2021 23:36:36 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m79Mq-006h52-NN; Sat, 24 Jul 2021 04:34:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m74iN-006Ouz-5f; Fri, 23 Jul 2021 23:36:24 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1F32360F23;
- Fri, 23 Jul 2021 23:36:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627083382;
- bh=OgmN047jAuLjM5BKQ46Fip2OTLJSsCLtOO5/JwB+VY4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=V4B/bP/wttZGa5Bpb/JMdmDYR5VzCb55h2j420M50J8Q6G6hPHSDONKZuj6yUBk03
- 1ZV+N+YappLmblGOhO0bPuh1iVbWNj2iEVKFcKb5uq+JOCIDOrup2ZqpRqlPOrX6bY
- iQFQ7zgXOV3dIsKmA9SsckWbH5ws7YidrLQ0FeucDjUUCcG/7xnIqrQJ7a7icGatoz
- OvZxoXxoBHIPSNOYqBRrifCl2lwCVoBtOt82bKmVOBoPCiKI2wZGjs75FbGkUDGNDQ
- hKrSQqnoKch/3to6VNf/GIipqXUWg3G/NXQE/aRg20fJlY2cwwv88ieQsjYOW8Ox6V
- AvpZoLx2cLiWA==
-Received: by mail-ed1-f53.google.com with SMTP id l6so1753876edc.5;
- Fri, 23 Jul 2021 16:36:22 -0700 (PDT)
-X-Gm-Message-State: AOAM533cNhpStYCfkHi3J5TEBnzIPjY0wVFn2m8F0M/kYjLJs4Fd7iqI
- Hj9ocvzfSATptmH7/hBt/+QB8sVYOgu50xgciA==
-X-Google-Smtp-Source: ABdhPJyZST6mg5GShwdylESiCi8iKzOx7W2m4QuplhuIQas0YRkQ2/nGFg4qa+gkYWbLK8bEZZVxgJWR002O9d1/BlQ=
-X-Received: by 2002:aa7:df12:: with SMTP id c18mr8438913edy.62.1627083380778; 
- Fri, 23 Jul 2021 16:36:20 -0700 (PDT)
+ id 1m79Mc-006h4F-Fx; Sat, 24 Jul 2021 04:34:17 +0000
+X-UUID: 0e5724e9439d4b7da7f8d6e3cc7019cb-20210723
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=sMA+NIDOptqdgoK7wbBd+obz60ILm4YtnZ+cMnZqPxo=; 
+ b=o5nnyM6KIXndt+vmMtNM+oKqav/205hpJT4y7PqNJEBNTziGSfETJSl9ONBYmUsZ3pWBxPc1wADkC383OOp6yyKjWIu+R8ExsEXZ4WKMU3iN7KMFWR/ejNNmbdRA48Wa4/qQpuG0o+HPPICY/QyJ/Lp5BInA5/DSONBstaRxxMg=;
+X-UUID: 0e5724e9439d4b7da7f8d6e3cc7019cb-20210723
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chihhao.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1935137124; Fri, 23 Jul 2021 21:34:10 -0700
+Received: from MTKMBS01N2.mediatek.inc (172.21.101.79) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 23 Jul 2021 21:24:08 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs01n2.mediatek.inc (172.21.101.79) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 24 Jul 2021 12:24:06 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 24 Jul 2021 12:24:06 +0800
+From: <chihhao.chen@mediatek.com>
+To: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <alsa-devel@alsa-project.org>, <damien@zamaudio.com>,
+ <chihhao.chen@mediatek.com>, <perex@perex.cz>, <tiwai@suse.com>,
+ <matthias.bgg@gmail.com>
+CC: <wsd_upstream@mediatek.com>
+Subject: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
+Date: Sat, 24 Jul 2021 12:23:41 +0800
+Message-ID: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-References: <20210519161847.3747352-1-fparent@baylibre.com>
- <20210521014815.GA2476751@robh.at.kernel.org>
- <CAL_Jsq+HWxQwFuKM==g-PBROxGN_xoWCc060U0pDpsDdfWJWPg@mail.gmail.com>
- <CAFqH_50rKvYZGeRMoaqtYZ6Hdbm6tjLTHB3N9JGsFai1ad0Dzg@mail.gmail.com>
-In-Reply-To: <CAFqH_50rKvYZGeRMoaqtYZ6Hdbm6tjLTHB3N9JGsFai1ad0Dzg@mail.gmail.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 23 Jul 2021 17:36:08 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKyA+Br=44gvK66VX_Ardx7QOgkqCZ5Xv=5+enn4vZtsQ@mail.gmail.com>
-Message-ID: <CAL_JsqKyA+Br=44gvK66VX_Ardx7QOgkqCZ5Xv=5+enn4vZtsQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: arm: mediatek: mmsys: convert to YAML
- format
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- Mattijs Korpershoek <mkorpershoek@baylibre.com>,
- devicetree <devicetree@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210723_163623_280758_8138EF86 
-X-CRM114-Status: GOOD (  19.23  )
+X-CRM114-CacheID: sfid-20210723_213415_994194_BB84DBCE 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,45 +87,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 23, 2021 at 3:45 AM Enric Balletbo Serra
-<eballetbo@gmail.com> wrote:
->
-> Hi Rob,
->
-> Missatge de Rob Herring <robh+dt@kernel.org> del dia dv., 21 de maig
-> 2021 a les 3:51:
-> >
-> > On Thu, May 20, 2021 at 8:48 PM Rob Herring <robh@kernel.org> wrote:
-> > >
-> > > On Wed, 19 May 2021 18:18:44 +0200, Fabien Parent wrote:
-> > > > Convert the mmsys bindings to the YAML format.
-> > > >
-> > > > Signed-off-by: Fabien Parent <fparent@baylibre.com>
-> > > > ---
-> > > >  .../bindings/arm/mediatek/mediatek,mmsys.txt  | 31 ----------
-> > > >  .../bindings/arm/mediatek/mediatek,mmsys.yaml | 57 +++++++++++++++++++
-> > > >  2 files changed, 57 insertions(+), 31 deletions(-)
-> > > >  delete mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
-> > > >  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> > > >
-> > >
-> > > Applied, thanks!
-> >
-> > Actually, should go with patch 3. So dropped and:
-> >
->
-> I think that this patch can be applied alone through your tree, patch
-> 2 and 3 can be applied later for the maintainers when they are fine.
-> There are other patches in the ML that depend on having this meged, so
-> it would be really nice to have it. Although it has already your
-> ack/review if it help I also took a look and I know the hardware so:
->
-> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+From: "chihhao.chen" <chihhao.chen@mediatek.com>
 
-Okay, patch 1 and 2 applied.
+The following scenario describes an echo test for
+Samsung USBC Headset (AKG) with VID/PID (0x04e8/0xa051).
 
-Rob
+We first start a capture stream(USB IN transfer) in 96Khz/24bit/1ch mode.
+In clock find source function, we get value 0x2 for clock selector
+and 0x1 for clock source.
 
+Kernel-4.14 behavior
+Since clock source is valid so clock selector was not set again.
+We pass through this function and start a playback stream(USB OUT transfer)
+in 48Khz/32bit/2ch mode. This time we get value 0x1 for clock selector
+and 0x1 for clock source. Finally clock id with this setting is 0x9.
+
+Kernel-5.10 behavior
+Clock selector was always set one more time even it is valid.
+When we start a playback stream, we will get 0x2 for clock selector
+and 0x1 for clock source. In this case clock id becomes 0xA.
+This is an incorrect clock source setting and results in severe noises.
+We see wrong data rate in USB IN transfer.
+(From 288 bytes/ms becomes 144 bytes/ms) It should keep in 288 bytes/ms.
+
+This earphone works fine on older kernel version load because
+this is a newly-added behavior.
+
+Signed-off-by: chihhao.chen <chihhao.chen@mediatek.com>
+---
+ sound/usb/clock.c |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/sound/usb/clock.c b/sound/usb/clock.c
+index 52de522..14456f6 100644
+--- a/sound/usb/clock.c
++++ b/sound/usb/clock.c
+@@ -324,6 +324,12 @@ static int __uac_clock_find_source(struct snd_usb_audio *chip,
+ 					      sources[ret - 1],
+ 					      visited, validate);
+ 		if (ret > 0) {
++			/*
++			 * For Samsung USBC Headset (AKG), setting clock selector again
++			 * will result in incorrect default clock setting problems
++			 */
++			if (chip->usb_id == USB_ID(0x04e8, 0xa051))
++				return ret;
+ 			err = uac_clock_selector_set_val(chip, entity_id, cur);
+ 			if (err < 0)
+ 				return err;
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
