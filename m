@@ -2,68 +2,82 @@ Return-Path: <SRS0=BtH1=MQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=0.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4390EC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 17:28:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AB4BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:04:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0786060E09
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 17:28:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0786060E09
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4A3E260E8B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:04:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4A3E260E8B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V0qOdJXOlItlWj/UiWc3RvePJE+lrYTjF8QwbIb4IGI=; b=bUWO5tucl+ooV4
-	qr6iNHxeeLOXs3G2ENIHR4EWb7sigUzo9UJtyzE3R8hnYnDGxVqUGcsq/RTpSkjq34KGNBSv9NtYT
-	LclSw5YQd1TRjjGD/t+oVaaQ2gfIVX6b56pyFJrY2S2nh7AueXvzdZsOOrktCgF2q6Ifi61BrzSa9
-	ODpWqzbVRSsv0yiEYQlXXhGqwnRZJQ5U+ACkd8WFNc+aAwQQ4ldk2Z6NFirUFgkUpIWEPp3vh+jjL
-	igJS72P0J2Z5tBitUTBEsP3QTjzC2kidaOPIEJnz3EAmSU/6o6XvILlxGYZ969iuDIvJi5ajc6eIA
-	n2zLmVqn0pvIyJ2Fz9FQ==;
+	List-Owner; bh=6ysi7Ej4U0PYkM3GCzsjzxrSJuXHifhHnAbpFLv4bS8=; b=c9nbcnGUzKsfEE
+	zJRc8S3PGRKv2zW9h/koTs2Z5FLEWbu2kTNTIGFH40Ttg/3LqyZGZ0F9Ku1uGcB0ba4ks0WU8nZBD
+	i2GyDJ9UjZycFULS21zc4agfIZyK40J6B+fO8XWXItLID07KQNepdLnNSq3QYW1pOnIg47YignPNv
+	zlf1dl4XClN45BXGy7/gQ5Q/VL8tLJ4/By9FJ9OYcPfC4bvX6UgeyBNPy4zxpqC1c1GoeKzYQjfgW
+	N/oSviqvO8MMWwAhpAp8JjIeIx0LFsiUcLlcy/mg7RNkSz1Ip/IBb+JOA2pVBktSxUoPtCzLuvdM2
+	N6ACqQ4kBudUWeDyWf/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7LRH-007WZh-P8; Sat, 24 Jul 2021 17:27:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m7M0h-007bbq-N3; Sat, 24 Jul 2021 18:04:27 +0000
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7LR4-007WY1-2R; Sat, 24 Jul 2021 17:27:40 +0000
-Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
- [81.101.6.87])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 82F5F60E8E;
- Sat, 24 Jul 2021 17:27:32 +0000 (UTC)
-Date: Sat, 24 Jul 2021 18:30:03 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: "hui.liu" <hui.liu@mediatek.com>
-Cc: <robh+dt@kernel.org>, <knaack.h@gmx.de>, <lars@metafoo.de>,
- <pmeerw@pmeerw.net>, <srv_heupstream@mediatek.com>,
- <zhiyong.tao@mediatek.com>, <chun-hung.wu@mediatek.com>,
- <yingjoe.chen@mediatek.com>, <seiya.wang@mediatek.com>,
- <matthias.bgg@gmail.com>, <s.hauer@pengutronix.de>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] iio: mtk-auxadc: add mutex_destroy
-Message-ID: <20210724183003.6f3bc1d5@jic23-huawei>
-In-Reply-To: <1627042875.27985.15.camel@mhfsdcap03>
-References: <20210715093523.29844-1-hui.liu@mediatek.com>
- <20210715093523.29844-2-hui.liu@mediatek.com>
- <20210717174432.7e69e4e9@jic23-huawei>
- <1627042875.27985.15.camel@mhfsdcap03>
-X-Mailer: Claws Mail 3.18.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+ id 1m7M0f-007bad-CT; Sat, 24 Jul 2021 18:04:26 +0000
+Received: by mail-qt1-x82b.google.com with SMTP id a19so4018964qtx.1;
+ Sat, 24 Jul 2021 11:04:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ySjT+9vhA6LvbQeBz3snrx5GQAIqPB2FJPEofd/VFlc=;
+ b=CpeZupTFKNWztEfPSidkKyHokcBAMt2Wi3fxZGNLVd9kQwfMEr8hmCzrpiZN8OajUR
+ 1+Xgsg4E676KQ74nsIIUiTPr4+Zw4V/ZN5RKuKdZ6K8oXET13wSGXe+qjA54BIHiMkKm
+ sHm8dYljb49cClUOdGMEM0pvJj4lj4UDwxdJinCyQHxn9TCwvT70YBBHtQPFkZbobDu9
+ WF6iQDBjKpudNhx11mX6Mo0MhxNMN6RVUnju9CLdigEgMEXAXweTi0zWlz3/Ykl66JXW
+ N+vs6XUlGIKVitlY1Q7e8wm2R9Y2VsNVnlQKT0a5UqVO6HFYANzF8JobRi+jguYBiwJO
+ y3BA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ySjT+9vhA6LvbQeBz3snrx5GQAIqPB2FJPEofd/VFlc=;
+ b=Kng4cJ9ZOjprO/1g+hnneEBfZAoRP5KA/+mexVjX6dbyTqSh+4FuwKMFQFqsaXhQv1
+ 9EGk7oaWf/zuzL0E1ZqF+C37m7n31DjFgniA+f/6A7eRKW2HQmAg1twHp0eMEItuIPvJ
+ iBQ14rWtsxtSrsDi/VvHHmyvJ8mNAvCkPWrByt2pVjN6ob58rVsjaGLOCinOssNl9y+U
+ ky07S8DcLQZjooCArsnqji5Qa0ol+S66I0iMPjsVgJOLXYZfm9T+7JlSgGPuur3fWYg9
+ mTJV4scqrFuh5EseYEk4oT5Zn9LxZ6fMlfJkx7g96dJvsaE7MX5LA/UE2GTkhG2euEKb
+ v/Wg==
+X-Gm-Message-State: AOAM533T8UMrvVWANCUq5qX9R18vyQf3jDJwzbYgzkVaeL1FPMM/WnV3
+ 9LdcCjo+JZT0LVcmNAOknh2PBBnw4QdMSNh7CdA=
+X-Google-Smtp-Source: ABdhPJxMOQJzEBbdDPWv1NzazwoX7K1S3r0NWDDWZvXR+QrtOrw9xPXY6S+kNGfbhguYEAiamAOcEG/7A5ZLh49DO54=
+X-Received: by 2002:ac8:1483:: with SMTP id l3mr8917231qtj.142.1627149861044; 
+ Sat, 24 Jul 2021 11:04:21 -0700 (PDT)
 MIME-Version: 1.0
+References: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
+ <s5h7dhgi1e2.wl-tiwai@suse.de>
+In-Reply-To: <s5h7dhgi1e2.wl-tiwai@suse.de>
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+Date: Sat, 24 Jul 2021 15:04:13 +0000
+Message-ID: <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
+Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
+To: Takashi Iwai <tiwai@suse.de>
+Cc: chihhao.chen@mediatek.com, alsa-devel@alsa-project.org, 
+ wsd_upstream@mediatek.com, damien@zamaudio.com, tiwai@suse.com, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210724_102739_191899_EF1C805D 
-X-CRM114-Status: GOOD (  36.81  )
+X-CRM114-CacheID: sfid-20210724_110425_488920_CD882898 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,90 +94,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 23 Jul 2021 20:21:15 +0800
-hui.liu <hui.liu@mediatek.com> wrote:
+On Sat, Jul 24, 2021 at 8:05 AM Takashi Iwai <tiwai@suse.de> wrote:
+>
+> This looks like a regression introduced by the recent commit
+> d2e8f641257d ("ALSA: usb-audio: Explicitly set up the clock
+> selector"), which is a fix for certain devices.  Too bad that the
+> behavior really depends on the device...
 
-> On Sat, 2021-07-17 at 17:44 +0100, Jonathan Cameron wrote:
-> > On Thu, 15 Jul 2021 17:35:23 +0800
-> > Hui Liu <hui.liu@mediatek.com> wrote:
-> >   
-> > > Add mutex_destroy when probe fail and remove device.
-> > > 
-> > > Signed-off-by: Hui Liu <hui.liu@mediatek.com>  
-> > Hi Hui Liu,
-> > 
-> > We very very rarely bother to call mutex_destroy().  The reason is
-> > that it is only a non noop in when mutex debugging is enabled and
-> > that is only useful if there is a plausible route in which it could
-> > be used after the mutex_destroy.   Given these are both at the ends
-> > of removal paths, I don't think this is useful.  That's why you will
-> > rarely find mutex_destroy() being called.
-> > 
-> > Thanks,
-> > 
-> > Jonathan  
-> 
-> Hi Jonathon,
-> 
-> I think this patch could assurance the integrity of code.
-> mutex_init will be called when driver probe. If driver probe fail or
-> device removed, mutex_destroy could set lock->magic to NULL.
+Dr. Iwai, perhaps we could restrict the generalized fix for the
+Behringer UFX1604 / UFX1204 with some simple logic to devices that
+only have *one* clock source.
 
-I'm not seeing the use case here given the location doesn't leave
-a huge amount of code that could have such a bug.  There might have been
-something if we had any route to increment the reference count of the
-structure this mutex is ultimately embedded in and so have it outlast
-the remove function or error path. In this driver it looks like there is
-no such path.  Hence you are protecting against a automated
-cleanup of core code (nothing in the driver itself) which is obviously
-not going to try taking a driver specific mutex.
+In that case the clock selector must be set to the only clock source.
 
-A few side notes:
+This way we keep the generalization without breaking devices with more
+than one clock source.
 
-You are calling it wrong place in remove. The ordering in remove
-should be the opposite of that in probe so the mutex_destroy should either
-be a few lines earlier, or you should have a comment there to say why you
-are doing it where you have chosen to do so.
+Just an idea.
 
-The style of this probe is to do error handling in a block at the end.
-So this handling should be there, not in the if statement.
-
-Jonathan
-
-
-
-> 
-> Thanks.
-> Hui
-> 
-> >   
-> > > ---
-> > >  drivers/iio/adc/mt6577_auxadc.c | 2 ++
-> > >  1 file changed, 2 insertions(+)
-> > > 
-> > > diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> > > index 79c1dd68b909..d57243037ad6 100644
-> > > --- a/drivers/iio/adc/mt6577_auxadc.c
-> > > +++ b/drivers/iio/adc/mt6577_auxadc.c
-> > > @@ -289,6 +289,7 @@ static int mt6577_auxadc_probe(struct platform_device *pdev)
-> > >  	ret = iio_device_register(indio_dev);
-> > >  	if (ret < 0) {
-> > >  		dev_err(&pdev->dev, "failed to register iio device\n");
-> > > +		mutex_destroy(&adc_dev->lock);
-> > >  		goto err_power_off;
-> > >  	}
-> > >  
-> > > @@ -313,6 +314,7 @@ static int mt6577_auxadc_remove(struct platform_device *pdev)
-> > >  			      0, MT6577_AUXADC_PDN_EN);
-> > >  
-> > >  	clk_disable_unprepare(adc_dev->adc_clk);
-> > > +	mutex_destroy(&adc_dev->lock);
-> > >  
-> > >  	return 0;
-> > >  }  
-> >   
-> 
-
+Thank you,
+Geraldo Nascimento
 
 _______________________________________________
 Linux-mediatek mailing list
