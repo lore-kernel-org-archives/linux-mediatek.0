@@ -7,14 +7,14 @@ X-Spam-Status: No, score=0.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AB4BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 402DFC4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:21:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A3E260E8B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:04:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4A3E260E8B
+	by mail.kernel.org (Postfix) with ESMTPS id 087B060E92
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Jul 2021 18:21:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 087B060E92
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6ysi7Ej4U0PYkM3GCzsjzxrSJuXHifhHnAbpFLv4bS8=; b=c9nbcnGUzKsfEE
-	zJRc8S3PGRKv2zW9h/koTs2Z5FLEWbu2kTNTIGFH40Ttg/3LqyZGZ0F9Ku1uGcB0ba4ks0WU8nZBD
-	i2GyDJ9UjZycFULS21zc4agfIZyK40J6B+fO8XWXItLID07KQNepdLnNSq3QYW1pOnIg47YignPNv
-	zlf1dl4XClN45BXGy7/gQ5Q/VL8tLJ4/By9FJ9OYcPfC4bvX6UgeyBNPy4zxpqC1c1GoeKzYQjfgW
-	N/oSviqvO8MMWwAhpAp8JjIeIx0LFsiUcLlcy/mg7RNkSz1Ip/IBb+JOA2pVBktSxUoPtCzLuvdM2
-	N6ACqQ4kBudUWeDyWf/g==;
+	List-Owner; bh=CU0UL30lRO6k9L4zqLAVBqoz06ir6OUBcbuR1zSKtV4=; b=s5qbhol2YSAVok
+	lIOwcg5pol872z4tg1dYdhhFUijOmezXJa5qEAxw2KjxwwYkT9Vcfm3gsyI7oUy+RnnJj+DZzQFRP
+	gqB/28OASW2Dv3EeHB0QiA5FC4qDeX7nRMVkunOyl00fel63XagQjG11KwIF7iNRo8yb9DsmfaUR2
+	ZR+iGlGADxdWZPPDBvseR5oddkmVLOD4y0vpafG5WcOcoHsPXaBuyn3kfX33pTjyW3Cxa5FLMr+LI
+	0BShka5zan/skgCLISbtCz6tVFY/KAnVeqzNb4SSLJZOHopL6VFtfBqDm1FiMi7+o29wzQaaM7IDj
+	lMsDrPevDWTJ9vU3wzkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7M0h-007bbq-N3; Sat, 24 Jul 2021 18:04:27 +0000
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+	id 1m7MGi-007dOB-PI; Sat, 24 Jul 2021 18:21:00 +0000
+Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7M0f-007bad-CT; Sat, 24 Jul 2021 18:04:26 +0000
-Received: by mail-qt1-x82b.google.com with SMTP id a19so4018964qtx.1;
- Sat, 24 Jul 2021 11:04:22 -0700 (PDT)
+ id 1m7MGf-007dNA-FH; Sat, 24 Jul 2021 18:20:58 +0000
+Received: by mail-qv1-xf2f.google.com with SMTP id w6so3034176qvh.3;
+ Sat, 24 Jul 2021 11:20:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ySjT+9vhA6LvbQeBz3snrx5GQAIqPB2FJPEofd/VFlc=;
- b=CpeZupTFKNWztEfPSidkKyHokcBAMt2Wi3fxZGNLVd9kQwfMEr8hmCzrpiZN8OajUR
- 1+Xgsg4E676KQ74nsIIUiTPr4+Zw4V/ZN5RKuKdZ6K8oXET13wSGXe+qjA54BIHiMkKm
- sHm8dYljb49cClUOdGMEM0pvJj4lj4UDwxdJinCyQHxn9TCwvT70YBBHtQPFkZbobDu9
- WF6iQDBjKpudNhx11mX6Mo0MhxNMN6RVUnju9CLdigEgMEXAXweTi0zWlz3/Ykl66JXW
- N+vs6XUlGIKVitlY1Q7e8wm2R9Y2VsNVnlQKT0a5UqVO6HFYANzF8JobRi+jguYBiwJO
- y3BA==
+ :cc; bh=KeMJR/oOT6vnUfEf1QGuRaqBtn1buVaEAa8SwfA3FM8=;
+ b=ZgQiFzz0yfKej069imP4GcuB6HeHasV7gVLeT/CfcWN/DTJJg/Spjk6rqSuFDFhlT1
+ oVmOW7zBobMisHPGm2lJ6U2deTrWP2dVpcAnkBwrEckp1xEgEVLqrGzio/uH9L0FtJ5x
+ YwuITmQmANyJv6cVc1xXEw2bnfEQi9ni8vCVJEQierUO67Va65eBkypz5yIlWnx/sRnj
+ Rn1vhvhajRBLIKYV1ZblyUfw7X488U151n4vUehE3r4BY6PlShmmVWoqx8oKVthyfLw6
+ T5LvrGgwzMWi8l148NpGRoEnKkQskY2AUFedNhoTmCnP1WvfH1mAVmzhtgS6HRfQ60yb
+ t50Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=ySjT+9vhA6LvbQeBz3snrx5GQAIqPB2FJPEofd/VFlc=;
- b=Kng4cJ9ZOjprO/1g+hnneEBfZAoRP5KA/+mexVjX6dbyTqSh+4FuwKMFQFqsaXhQv1
- 9EGk7oaWf/zuzL0E1ZqF+C37m7n31DjFgniA+f/6A7eRKW2HQmAg1twHp0eMEItuIPvJ
- iBQ14rWtsxtSrsDi/VvHHmyvJ8mNAvCkPWrByt2pVjN6ob58rVsjaGLOCinOssNl9y+U
- ky07S8DcLQZjooCArsnqji5Qa0ol+S66I0iMPjsVgJOLXYZfm9T+7JlSgGPuur3fWYg9
- mTJV4scqrFuh5EseYEk4oT5Zn9LxZ6fMlfJkx7g96dJvsaE7MX5LA/UE2GTkhG2euEKb
- v/Wg==
-X-Gm-Message-State: AOAM533T8UMrvVWANCUq5qX9R18vyQf3jDJwzbYgzkVaeL1FPMM/WnV3
- 9LdcCjo+JZT0LVcmNAOknh2PBBnw4QdMSNh7CdA=
-X-Google-Smtp-Source: ABdhPJxMOQJzEBbdDPWv1NzazwoX7K1S3r0NWDDWZvXR+QrtOrw9xPXY6S+kNGfbhguYEAiamAOcEG/7A5ZLh49DO54=
-X-Received: by 2002:ac8:1483:: with SMTP id l3mr8917231qtj.142.1627149861044; 
- Sat, 24 Jul 2021 11:04:21 -0700 (PDT)
+ bh=KeMJR/oOT6vnUfEf1QGuRaqBtn1buVaEAa8SwfA3FM8=;
+ b=bZyLFUPQx6P1MDvlGLRqcPbURObBApHR/LMBor75oxhjaZCiwKa0iGlGmXfRWwvt/h
+ FGF24hsBrSfNhvbicLkd1IiZf+l3Y0pXoe2eEE9ny2wHLwnWQ2rE21xunmg+Xt2ygrpR
+ v8qdaAApuYJcUHTAoRbBWNUTgSAjECqExOiXHesIcfYwG9b9XNxhl7XEkOhiJf5kCHOQ
+ A7352KMUlJoAAAx2a6Z6kGmA6SLnoXo+GHJgKYz9IEyCfBNyDY44v+j0CJiey1h2qiVh
+ CIULF9l9mvwt9QSGTmbagtSQLFFZq+TawoRF4wK7USS/O1hmkyPNk+/wojpI+FmkSNAe
+ gzDw==
+X-Gm-Message-State: AOAM533RSi2RKMqMJDM6vWet9HJweRVWsUKmPtA1Iq133ND7SqcAF34/
+ Igh9T3HNBne9tVPow8TUsczkltT85sKQWP/YhDw=
+X-Google-Smtp-Source: ABdhPJwue+Tzkl6UbAMvQoa11TWdFyaB3DBO04u2KVlOxPM50w9P2ankRPrOl20M6vwOqwo8EisbJUGjr8bJVz62/Qo=
+X-Received: by 2002:a0c:d68f:: with SMTP id k15mr10642939qvi.14.1627150855374; 
+ Sat, 24 Jul 2021 11:20:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
  <s5h7dhgi1e2.wl-tiwai@suse.de>
-In-Reply-To: <s5h7dhgi1e2.wl-tiwai@suse.de>
+ <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
+In-Reply-To: <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
 From: Geraldo Nascimento <geraldogabriel@gmail.com>
-Date: Sat, 24 Jul 2021 15:04:13 +0000
-Message-ID: <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
+Date: Sat, 24 Jul 2021 15:20:47 +0000
+Message-ID: <CAEsQvcu3jXa4fXJAu7nvT+G+-S2bZ1BPkcuwnT4VjbrnW1Pkog@mail.gmail.com>
 Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
 To: Takashi Iwai <tiwai@suse.de>
 Cc: chihhao.chen@mediatek.com, alsa-devel@alsa-project.org, 
@@ -76,8 +77,9 @@ Cc: chihhao.chen@mediatek.com, alsa-devel@alsa-project.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
  matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210724_110425_488920_CD882898 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20210724_112057_572658_A9A68918 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,26 +96,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 24, 2021 at 8:05 AM Takashi Iwai <tiwai@suse.de> wrote:
->
-> This looks like a regression introduced by the recent commit
-> d2e8f641257d ("ALSA: usb-audio: Explicitly set up the clock
-> selector"), which is a fix for certain devices.  Too bad that the
-> behavior really depends on the device...
+> Dr. Iwai, perhaps we could restrict the generalized fix for the
+> Behringer UFX1604 / UFX1204 with some simple logic to devices that
+> only have *one* clock source.
 
-Dr. Iwai, perhaps we could restrict the generalized fix for the
-Behringer UFX1604 / UFX1204 with some simple logic to devices that
-only have *one* clock source.
+Okay, rereading the original commit log from Cihhao Chen I gather
+Samsung USBC Headset (AKG) with VID/PID (0x04e8/0xa051) actually has
+two clock selectors and only one clock source.
 
-In that case the clock selector must be set to the only clock source.
+Correct me if I'm wrong.
 
-This way we keep the generalization without breaking devices with more
-than one clock source.
+This is complicated by the fact I haven't been able to find a lsusb -v
+of Samsung USBC Headset (AKG) with VID/PID (0x04e8/0xa051)
 
-Just an idea.
-
-Thank you,
-Geraldo Nascimento
+Even so, my proposition still stands: devices with only one clock
+source and only one clock selector should be able to handle us
+selecting the clock selector to the only clock source.
 
 _______________________________________________
 Linux-mediatek mailing list
