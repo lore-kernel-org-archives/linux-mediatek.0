@@ -2,86 +2,81 @@ Return-Path: <SRS0=WTSR=MS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7095AC4320A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 10:15:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D96DEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 10:17:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3DA4860F37
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 10:15:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3DA4860F37
+	by mail.kernel.org (Postfix) with ESMTPS id 9BCBB60F37
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 10:17:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9BCBB60F37
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wwflRLwD/yc0xqMQqZ2a96I82volSwU5H3QJx3rH668=; b=4WLXIBXF1i8uF5
-	bE5kcKX544Hlny6ZZ6UhW6tKJn5+7EDmYGYSOtcQ/3wOIrZ+YVFVX/uMq/FICD2njU13qtk8WIevR
-	6OpLQH+jLUMOQaHVEnhP9edfap46MY7gvZUqFJdl3NupAVFjKoa8QM/t1oOMiDCUSkEEdeUVIv/0v
-	vchvCt1qEfOB+Kf/uSg4yhF538tamEqAkHEfZMr+wNHZ6RaDm2sTAN3dqoErlEmbzVtWoqFRaUACN
-	7vsA/Y87ygrhCQjzyCI77GVnZ2vn9bqf531SrMGmi5uzaV82rMGspAqY+JKEOyEU8hRSwueSiuYcC
-	RO5d3xp3e4iGr9wmvuLw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lYzrzj4lg0iWpz6m0JkW8h46PwoPhcaesm8VRxTU2/k=; b=yFGYyFFOgOxgkK
+	RJ8aDIsYi2tWMI3cydeEh+GyooZttp2gkc45pi2k3zne//AUOHwkAQM+FMYFDnL+sEVE9D1w55ml9
+	QlI5yU8MJi5STjztCnIYgt9dm+SWpYhy51X9PBeEGALFewpsYgNCqnzw3Ri+do9TE1PHf+yLhuJhp
+	gwQrR9s5qt1cODjDCLpl1uh+h01iHH913242wDiXGRkArBV/zY9Al0HTFFn4+eN7ZbPDVfev8faYU
+	55KBB605WD8arp8rUCFdhgXKHe/gY2xYbsI1/SqbuRqxhJAlDnksmmw9gUOdyswmaNzelyby/QyKS
+	3wwwOG1LGgwWVSfuL+jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7xdW-00Ag5J-2D; Mon, 26 Jul 2021 10:15:02 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1m7xfb-00AgxV-E7; Mon, 26 Jul 2021 10:17:11 +0000
+Received: from mail-io1-xd2a.google.com ([2607:f8b0:4864:20::d2a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7xdT-00Ag2u-17
- for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 10:15:00 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- mz5-20020a17090b3785b0290176ecf64922so3147547pjb.3
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 03:14:57 -0700 (PDT)
+ id 1m7xer-00Agge-QP
+ for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 10:16:27 +0000
+Received: by mail-io1-xd2a.google.com with SMTP id y9so11109053iox.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 03:16:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6cNmNVuZ2BFsOuXfbpUCz3MMqhnpAF9Cx6jU51cYVSc=;
- b=iS8JuFmAyRhk2OXIxVLoTABTcrtYVlLLYlc5yayhHOjjC4scqJ44arnzWJs0djA6WT
- dcOq8G9yWeMvmiFKETVhPMDfXwtmDHq5z2Fw64kHbvSG1VxaexSCFNhrdWqdyFKcltxF
- iI6sT0SeGMVhw4L80z/0sbZE77iX38IZGU+9I=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pKm9EcDme8pJHFOXtEbqZSQVHJJ+TbQM1VPZ24DBvwA=;
+ b=X+IoIMuJH2ZijTePJyIs6T3oSX69YS0Rj+602X5tzCjx1R7H5deruUXBy88v3d7stV
+ sb1n7pGVe21QI9HvlAGYNsQ7Eyg3+ET0x6wnD2ErXuHKI5mWGP7NWYiDZLLNL18AQBTu
+ a4w0ONGnjsYzXIt+fiFQIThJpIJbBpxgjYNxA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=6cNmNVuZ2BFsOuXfbpUCz3MMqhnpAF9Cx6jU51cYVSc=;
- b=oShJeK1WxbwFvRpVstKinFhDO57w4Ly92NDyqeqTEV8BSp2HTW3lP64bNX9EkxZRi8
- IVGwcwiKhjCdELer98H9CWgeTy8BjqT3hmVz6K4wnmyPijZTJpihccA4+cVH6vl0xvuK
- FfrZFQdlw8u5ehi5Htc5/D0FkiJ5r+2j8K/zuAa/dgoNyoOoYNww9fnVqvW7B9kaGrlH
- WYYASyfn1k0yXisfaJuT6Oi4FxFPS9zKIW+wb4wPqyIrFfUaPfPbsKIR6dkFknxJqDVj
- BqROWIKnETddwIjU40qQZI6U8VetpCak84rQNeJN5z8YxUGzD1PD9AczusCDOQRrhAyh
- pLLg==
-X-Gm-Message-State: AOAM5331L+Rc1PvcZepTwUELH4HH1AxKL6Y8iYBUiHg/oSRtMEw+ftNH
- z4MUpOYk3v8B+rVvMroGmhltIA==
-X-Google-Smtp-Source: ABdhPJwtbzs9Py71e1eLFU81oGgxRo1XzTbjigdfghgMbb6gBQkjM9Zc8+T1twmwN0Dq1lmRa8I5jw==
-X-Received: by 2002:a62:154f:0:b029:331:b0d6:9adc with SMTP id
- 76-20020a62154f0000b0290331b0d69adcmr17505047pfv.73.1627294497090; 
- Mon, 26 Jul 2021 03:14:57 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:24d6:d449:2832:1652])
- by smtp.gmail.com with ESMTPSA id az15sm7289913pjb.57.2021.07.26.03.14.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jul 2021 03:14:56 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>, eizan@chromium.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mt8173: elm: Use aliases to mmc nodes
-Date: Mon, 26 Jul 2021 18:14:51 +0800
-Message-Id: <20210726101451.2118076-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.432.gabb21c7263-goog
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pKm9EcDme8pJHFOXtEbqZSQVHJJ+TbQM1VPZ24DBvwA=;
+ b=eQ4SFNcs6ASeXeVL2OUC8xDRHEOJOAuubxg+RLEwz5DHcizRF2cC37/Z6V6BJ7ojys
+ hpmCww8LaNW4YXYwH0MbSfPOuR3cO7CKJKaJ6n03O12b9JYFGBEsRFvOVDUcdS2ehfyq
+ JmAD5G7HWhHpoSVOWYbarNO+xtHXddecBCuSBGWz9eh8dKf/zRvSa2AYbTNrTQbLKD1i
+ 5GhFQbjFP2mRyFfpQO2g/LAyIevs/fBRtWyAd/xrI98/pUVx4C5IOLDKfeKNoIyAmltf
+ 8swSXN9GTWDDR+5H4g1GUjQ03ACs4zT0cn0qDfOLia7D5aEbwhXqCmpyjj15cbPUPuiV
+ GWyg==
+X-Gm-Message-State: AOAM532eGk3FeYu1WO0Hz1fuDj7aUFaGhNauWoCbNQ13e38f5BXZkaR1
+ xUwzt3qskiUcJwWypt95cgleah5Fgw5Txo1rZYshrQ==
+X-Google-Smtp-Source: ABdhPJyhs6/VJlK39tRjkVThyIrMjZQOguga/L0sVp4xovp5RErc5dbjNDeDpRT7Q/vE8sdHiDz2tR0mQ4+gi3ZYr1E=
+X-Received: by 2002:a02:6946:: with SMTP id e67mr15605786jac.4.1627294584585; 
+ Mon, 26 Jul 2021 03:16:24 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210726050831.1917982-1-hsinyi@chromium.org>
+ <CAFqH_53zJp7ejwXn3qqiVPnoTy6W3WonvvDxsZDCjmaQA57h6A@mail.gmail.com>
+In-Reply-To: <CAFqH_53zJp7ejwXn3qqiVPnoTy6W3WonvvDxsZDCjmaQA57h6A@mail.gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Mon, 26 Jul 2021 18:15:58 +0800
+Message-ID: <CAJMQK-jkUCVgRXL5dcDUd6vpEojEG6heuAXgvbYwikz_sPjnHQ@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: mt8183: kukui: Use aliases to mmc nodes
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Eizan Miyamoto <eizan@chromium.org>, devicetree <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_031459_133900_0EF73D86 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20210726_031625_928215_FD9FBE23 
+X-CRM114-Status: GOOD (  21.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,35 +93,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use aliases to mmc nodes so the partition name for eMMC and SD card will
-be consistent across boots.
+On Mon, Jul 26, 2021 at 5:32 PM Enric Balletbo Serra
+<eballetbo@gmail.com> wrote:
+>
+> Hi Hsin-Yi,
+>
+> Thank you for the patch.
+>
+> Missatge de Hsin-Yi Wang <hsinyi@chromium.org> del dia dl., 26 de jul.
+> 2021 a les 7:08:
+> >
+> > Use aliases to mmc nodes so the partition name for eMMC and SD card will
+> > be consistent across boots.
+> >
+>
+> This definitely helps with my "troubles" flashing the kernel to the
+> correct place" so
+>
+> > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+>
+> Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+>
+> Btw, I think that a similar patch should be send for Elm, could you
+> take care of it?
+>
+It's sent here:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210726101451.2118076-1-hsinyi@chromium.org/
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 7 +++++++
- 1 file changed, 7 insertions(+)
+Thanks!
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 21452c51a20a8..be21740d682d0 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -10,6 +10,13 @@
- #include "mt8173.dtsi"
- 
- / {
-+	aliases {
-+		mmc0 = &mmc0;
-+		mmc1 = &mmc1;
-+		mmc2 = &mmc2;
-+		mmc3 = &mmc3;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
--- 
-2.32.0.432.gabb21c7263-goog
-
+> Thanks,
+>   Enric
+>
+> > ---
+> >  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+> >  1 file changed, 2 insertions(+)
+> >
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > index ae549d55a94fc..ed499e17b6570 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> > @@ -13,6 +13,8 @@
+> >  / {
+> >         aliases {
+> >                 serial0 = &uart0;
+> > +                mmc0 = &mmc0;
+> > +                mmc1 = &mmc1;
+> >         };
+> >
+> >         chosen {
+> > --
+> > 2.32.0.432.gabb21c7263-goog
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
