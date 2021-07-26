@@ -2,85 +2,85 @@ Return-Path: <SRS0=WTSR=MS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=0.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9314DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:16:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5998DC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:02:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 559D560F0F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:16:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 559D560F0F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 073E9603E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:02:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 073E9603E7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ywrOjAc7MGTzCBT54F7ihLmktTE2G3Ny1mABcLd+4sc=; b=NrjL9sZdQyfZlO
-	vFzpHwN1g8fMrxH8p/6/aIgfs2K/AtpijCAovRVnGPs71SLudzue0N7qIMHd4gYeakmJaz2/6lVri
-	LDMiNhqBNTivAQ3xSXGHfo/mlOIqMKNpJoALmLnIfxgPsdpoYC3o3Mo97assMqBWWrkcW2aHzSywU
-	/02U2cLCAEvttGSUL0EVE5AEh0oXGc0AQURVNvmbKMcyC1cMuW4Ek5n8xTXiBaZHv9LF/lx1a5Ggf
-	m6mT/GaYzGiKyMX60RjeF0ynkoWP2o7Hh0dTGdsVtRW6vkZRSMnuA5qkhw8ydvvFHVhCV1EiVnb8g
-	PDXetrdrs2yXaLXGmINQ==;
+	List-Owner; bh=yT/O2Ji/q8eDbULxr5uHxCdviVpNskapLQwRRzosGJE=; b=NygpY0XhFHo4kn
+	DPyas8tAcg+I1egVMEjpRpjPyXOzzP2F+8R9W0xHkDK0GgozLzCBzft6LcLVpNXJmkaP+eLBczmT6
+	2TA1A6sFC2xfLlniaEZ2JhvUdBkb6a0bkLcpJtZLRiMkLeIcUdBhg8fS03vf1Zn1D6ozGPB3/vxFV
+	OPRdT4hrrk6+32JLpdWiEPD53ecTEgl9caNtPg8ua0kF63gnRUUmmPnvRYl/PB2NG+s52V63/KcG3
+	fwW6CKkjU9xse5F9D7INyoGuDJcKLYoT1FY2Mop6ly2ukvXC4gtvAhqv9n0Jc/HYVCVPKlA9GrUaV
+	7xEnPyndvC81bVdy5ZgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7syX-009cwZ-F2; Mon, 26 Jul 2021 05:16:25 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1m7udN-009oJm-Gw; Mon, 26 Jul 2021 07:02:41 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7syT-009cvI-Ov; Mon, 26 Jul 2021 05:16:23 +0000
-Received: by mail-qk1-x731.google.com with SMTP id z24so7732609qkz.7;
- Sun, 25 Jul 2021 22:16:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=XygC5wCkMDbFQQ9ce88kjiV4VAshB5QTsAEs+cXfzBo=;
- b=V8MXuFFKyGipObIamnLlOLefvbGxx8fkYXPtJXfQaR6zPfL/sGcnUox+MUW6t3kNhX
- BJw+rGDeH1JGkQSSG5zJynhThfUINGX2dPi+NCPN48fkRyFn+aFXi/AcO/7cJJDAM5DF
- AL6dsSpy2Ahm28uUQTYOAWlKSxNTTN0m+9KeJCuV4LpaNH9lEDGYei1zpZngRnyIGv16
- jXfdiwJK+om/0/+qnATixilPqLd6igKtGOdGYMjTe62l4xcIMK/4sYegrpvGoyHBq7pP
- l5uhhjp/yZ3Xus6oGwGx6pPMBDxHUpsiKqatKgzcknjU0EAzy2OyVNe2zzIyeK0md5Bl
- 6+Tw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=XygC5wCkMDbFQQ9ce88kjiV4VAshB5QTsAEs+cXfzBo=;
- b=DZuvU0X/3m6WY8eaRZh/koAAX3YiqMK3+fnXB+pL3s49kfJispC2PdQ0Z01Y9wv7ej
- rGVOY2KMBHV588auSKHgIz2UDpdmzJ+vMkEZbblDVaVazL8wrM2DPHXgKFkWjIa5ILof
- h9JCd4IEtCj9uAYVw6tvYbqPFC3ER27B7NqEyYxxRwcuvyAthVgDTMWhOjmwl/4aJmMX
- QB+S6G9Vfbxvirzo5izzkL5nxXnNWFBGtKpNN1uNi0XZDju23/8Q1r31vvhRiwa9tgZ3
- WCSVWY08dn3KlfFhOtQuqp+A3E+iffC4YVAt1Jpp8/r037c7vFtyVNNzbDQGLF8p9z3e
- g2ow==
-X-Gm-Message-State: AOAM531FlN3c6C1DU6Oj8su+mkJJyijf0GLGf8MRcR4YmK2ajf/oFtWK
- d9cwYdROYjTOifdwziKQ8tkNIGfKqi1TwBoO8bM=
-X-Google-Smtp-Source: ABdhPJxvuO0i1cOxHKEIeKjGh7PuOqW1BCoICcn1IG0kXrcAMZC5H6irn+d1FLDu5WKxOfVJpitbnWiFrFfoLek0xww=
-X-Received: by 2002:a05:620a:1278:: with SMTP id
- b24mr15914369qkl.250.1627276579628; 
- Sun, 25 Jul 2021 22:16:19 -0700 (PDT)
+ id 1m7ud9-009oGf-9k; Mon, 26 Jul 2021 07:02:29 +0000
+X-UUID: 2c4ae02e6dab487ca6cb97d535d1103c-20210726
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=TnDpOLMBPd+DG/4dxckfQjpW0HbygoqTWQXU0LBOEZs=; 
+ b=gYvJBEnGEZAVHkpa3Vk06R9je8KqvFBgOzAjg04DIxuYx0UNnmHkW/Rw7WBLgUjcbLYPGZ2Up1rgB0b3JfN5ZlkR4mry9V45xQ9h7iAsFKAeZGkJzHOKRXhcDjiUHrv+pCNr6HwAjZWrlJLB1ryPTgMDltxbSQpotoyLYQts6JQ=;
+X-UUID: 2c4ae02e6dab487ca6cb97d535d1103c-20210726
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1538724826; Mon, 26 Jul 2021 00:02:17 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Jul 2021 00:02:16 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 26 Jul 2021 15:02:14 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 26 Jul 2021 15:02:14 +0800
+Message-ID: <4c0fe16988c559a5a4b1ce714eeaa31f4628f68f.camel@mediatek.com>
+Subject: Re: [PATCH v1 1/5] dt-bindings: arm: mediatek: mmsys: add mt8195
+ SoC binding
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+CC: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree
+ <devicetree@vger.kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
+ <fshao@chromium.org>, David Airlie <airlied@linux.ie>,
+ <singo.chang@mediatek.com>, linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Fabien Parent
+ <fparent@baylibre.com>, Nancy.Lin <nancy.lin@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>
+Date: Mon, 26 Jul 2021 15:02:14 +0800
+In-Reply-To: <CAFqH_51qKkxMit5fkSh_AyeNAYwKnoPe09nwJLKaKez26+HUew@mail.gmail.com>
+References: <20210722092624.14401-1-jason-jh.lin@mediatek.com>
+ <20210722092624.14401-2-jason-jh.lin@mediatek.com>
+ <CAFqH_51qKkxMit5fkSh_AyeNAYwKnoPe09nwJLKaKez26+HUew@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
- <s5h7dhgi1e2.wl-tiwai@suse.de>
- <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
- <s5hwnpehm7y.wl-tiwai@suse.de>
-In-Reply-To: <s5hwnpehm7y.wl-tiwai@suse.de>
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-Date: Mon, 26 Jul 2021 02:16:11 +0000
-Message-ID: <CAEsQvcumEDOKgUB6h2-im5QabhPfaSaU63RF8pegPt5ZCPx+Pw@mail.gmail.com>
-Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
-To: Takashi Iwai <tiwai@suse.de>
-Cc: chihhao.chen@mediatek.com, alsa-devel@alsa-project.org, 
- wsd_upstream@mediatek.com, damien@zamaudio.com, tiwai@suse.com, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210725_221621_865233_C2A60502 
-X-CRM114-Status: GOOD (  27.95  )
+X-CRM114-CacheID: sfid-20210726_000227_373491_9F9C33EE 
+X-CRM114-Status: GOOD (  22.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,76 +97,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 25, 2021 at 7:44 AM Takashi Iwai <tiwai@suse.de> wrote:
->
-> On Sat, 24 Jul 2021 17:04:13 +0200,
-> Geraldo Nascimento wrote:
-> >
-> > On Sat, Jul 24, 2021 at 8:05 AM Takashi Iwai <tiwai@suse.de> wrote:
-> > >
-> > > This looks like a regression introduced by the recent commit
-> > > d2e8f641257d ("ALSA: usb-audio: Explicitly set up the clock
-> > > selector"), which is a fix for certain devices.  Too bad that the
-> > > behavior really depends on the device...
-> >
-> > Dr. Iwai, perhaps we could restrict the generalized fix for the
-> > Behringer UFX1604 / UFX1204 with some simple logic to devices that
-> > only have *one* clock source.
-> >
-> > In that case the clock selector must be set to the only clock source.
-> >
-> > This way we keep the generalization without breaking devices with more
-> > than one clock source.
-> >
-> > Just an idea.
->
-> I don't think it's easy to generalize.  All those bugs are more or
-> less BIOS bugs, and a logic doesn't apply always, just because it's a
-> bug :)  For example, setting the clock selector itself should be a
-> valid operation from the specification POV, while this leads to
-> breakage on some devices.  So, even if we add a more generic
-> workaround, we need to see which side effect is more commonly seen at
-> first.
->
->
-> Takashi
+On Fri, 2021-07-23 at 13:13 +0200, Enric Balletbo Serra wrote:
+> Hi Jason,
+> 
+> Thank you for your patch.
+> 
+> Missatge de jason-jh.lin <jason-jh.lin@mediatek.com> del dia dj., 22
+> de jul. 2021 a les 11:26:
+> > 
+> > There are 2 display hardware path in mt8195, namely vdosys0 and
+> > vdosys1, so add their definition in mtk-mmsys documentation.
+> > 
+> 
+> Just having 2 display hardware paths is not a reason to have two
+> compatibles, isn't the IP block the same? Why do you need to
+> introduce
+> the two compatibles?
+> 
+> Thanks,
+>   Enric
+> 
 
-Hello,
+Hi Enric,
 
-Like I said in one of the other emails in this thread, it's hard to
-pinpoint a cause for the breakage of Samsung USBC Headset (AKG) with
-VID/PID (0x04e8/0xa051) without the lsusb -v of the device in
-question.
+Thanks for reviewing my patch.
 
-But from the description Chihhao Chen gave in the original message,
-I'm *guessing* the Clock Source for the Samsung USB Headset (AKG) runs
-at 48000hz and that we'd see a 2x Clock Multiplier in the lsusb -v
+The reason for using two compatibles is that vdosys0 and vdosys1 are
+different IP blocks.
 
-This is all a wild guess, without the lsusb -v it's impossible to be
-sure, but if I'm right then the valid setting for the Microphone's
-Clock Selector is the Clock Multiplier, not the Clock Source, which,
-remember, runs at half the clock, hence why Chihhao Chen sees half the
-data rate for USB IN.
+Because mmsys provides clock control, other display function blocks may
+use them as clock provider.
 
-Unfortunately our kernel code presently *does* always set the Clock
-Selector to the Clock Source, which is a bad assumption to make in my
-humble opinion.
+E.g.
+1. mmsys with compatible="mediatek,mt8195-vdosys0"
+[v4,1/6] arm64: dts: mt8195: add display node for vdosys0
 
-The only valid case for setting the Clock Selector to the Clock Source
-is when there's precisely one Clock Selector, precisely one Clock
-Source and no Clock Multipliers.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210723090233.24007-2-jason-jh.lin@mediatek.com/
 
-In that special case we may be able to touch the setting of the only
-Clock Selector to match the only Clock Source.
+ovl0: disp_ovl@1c000000 {
+	...
+	clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
+	...
+};
 
-And, frankly, the only reason we're forced to do that explicitly is
-because some Behringer gear (Archwave AG DACs) gets confused and seems
-to somehow keep the old rate on the Clock Selector upon sample rate
-change.
+2. mmsys with compatible="mediatek,mt8195-vdosys1"
+[v2,06/14] arm64: dts: mt8195: add display node for vdosys1
 
-Thank you,
-Geraldo Nascimento
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210722094551.15255-7-nancy.lin@mediatek.com/
 
+vdo1_rdma0: vdo1_rdma@1c104000 {
+	...
+	clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+	...
+};
+
+Regards,
+Jason-JH.Lin
+
+> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > ---
+> > this patch is base on [1][2]
+> > 
+> > [1] dt-bindings: arm: mediatek: mmsys: convert to YAML format
+> > - 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/__;!!CTRNKA9wMg0ARbw!ycgPEK4yBDojiiZJC2E9mGwvxJbaLqhyUxzJIq0ckEP-JVteBcjFdc6ixkNbmknH8f2P$
+> >  
+> > [2] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC binding
+> > - 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-2-fparent@baylibre.com/__;!!CTRNKA9wMg0ARbw!ycgPEK4yBDojiiZJC2E9mGwvxJbaLqhyUxzJIq0ckEP-JVteBcjFdc6ixkNbmju2GBrD$
+> >  
+> > ---
+> >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        |
+> > 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > index 2d4ff0ce387b..0789a9614f12 100644
+> > ---
+> > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > +++
+> > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yam
+> > l
+> > @@ -30,6 +30,8 @@ properties:
+> >                - mediatek,mt8173-mmsys
+> >                - mediatek,mt8183-mmsys
+> >                - mediatek,mt8365-mmsys
+> > +              - mediatek,mt8195-vdosys0
+> > +              - mediatek,mt8195-vdosys1
+> >            - const: syscon
+> >        - items:
+> >            - const: mediatek,mt7623-mmsys
+> > --
+> > 2.18.0
+> > 
+-- 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
