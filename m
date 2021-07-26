@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	UPPERCASE_50_75,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 14962C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99107C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7E576052B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B7E576052B
+	by mail.kernel.org (Postfix) with ESMTPS id 5E37260E0C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E37260E0C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=govqIUAOXfckeD5VqMHtD+1oXMWzP/2IniXDsQzWvCY=; b=W7DLZKbhm+uGck
-	5C9vVI+5PqZRxeVQW/9D7SY5gyS+JYm+BqQ1RAUXkRQHxcs4E1OOCzl4FfSdk0AXX+UFX0hVioMpm
-	ZvYz8Uw3w9bGjPU2bB+tGVDOh49Y4KcSIbXauiRcIUn9kWbCpFJUT6EWWXh0dbjtAZtOH9mTtILkS
-	uVK3qkwCQZvEb1Iy5hGo+QnTYnaDZm2UQ67RRpL9T8q6gVj28eCGqQHQmjgAZvnUap76VzQEQvJwb
-	cPz3xRio9dvCL528/SPsu1CSmH4DBgzcPkf8fAEvzUXZ2ZlOD/DlLthMOm0UlP2ZAK6mdwDGI7R1f
-	ca5IuZ+Nyl9HLty0nSYw==;
+	List-Owner; bh=OvytfHw7QZHjAL4Ce0SurZyOi+r079p7QzoEHbg6PlI=; b=W8Lp8/P7jcZ/fg
+	wq8D0xpCfg/L/N3I9Xfvg5tQ6Vv7WwQpgSBxxjj+Vo7ynlxQEm613xC3fJlTczHoLi7bo87GE4Ty6
+	bSosvKZZyMF7iTci+XEsfcbHw0gbjeXstHnAC5hv3WRJ4r7QTpxlDZk2gj3NfX3CJ7WvujJEY4O7R
+	UtgyKaHuhKmlPq0wazTP1E6qn/R7yzDsB86OfHjEDvJD+qBEfRPtAKraLW+sQPzG3X/fZIxEJ6zgZ
+	OogwW0rLzgq7flskbQUKB/LSCpv4LdOmPVmMz8RhOhR66+bX/GC48v2qfYOECz3RPlIVrZ59axyah
+	bjh/6pczzGfckdKi96Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7v11-009vEe-43; Mon, 26 Jul 2021 07:27:07 +0000
+	id 1m7v12-009vF9-33; Mon, 26 Jul 2021 07:27:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7v0T-009v6A-CL; Mon, 26 Jul 2021 07:26:34 +0000
-X-UUID: c98cf3a0b88545188f070ea19598b139-20210726
+ id 1m7v0T-009v5X-SY; Mon, 26 Jul 2021 07:26:35 +0000
+X-UUID: 3dfa92d9bd7e419e99e0cae7f60f6ab1-20210726
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=vN/liS5z1yK+4ZWhWMYEqMz98rNQb8EWxZ5FjuAiLnM=; 
- b=AEVCW2rT/Lu9bN9lbCLjwdlpI2hPaGm0s/Xhe4R8cLe9fjAlHIooVZbn6MgRVjyWKoinlhMcA8Z97iMONoAieQEh9iSHkgD/lGkQxwGniFiHXRDMkRAcrJUFHHTC4/asXdj0QO8G8+kHibGIitgQo3Ydl96xouxJW+dwnC/Hb6g=;
-X-UUID: c98cf3a0b88545188f070ea19598b139-20210726
+ bh=ul0qhskV4sYkGaBcW6gix73XMG3hPx7g+GrDFzA+Q+E=; 
+ b=DrjLz3Xihhup2mY6wqzCzXW9vNWOajcgcMZr3eZiTSMqhwWhYQFkylNXO55pONIxETDR3cZTulIh51u7vZkfVeeO61i2v7a++toI4Or/+W5OEPRenP0KxBno9mEs7YqV9MAzkDGM4DxPnfaf3IPrXjkWq8/CF5n1njb0cwEm0PM=;
+X-UUID: 3dfa92d9bd7e419e99e0cae7f60f6ab1-20210726
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1445323280; Mon, 26 Jul 2021 00:26:30 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 30368987; Mon, 26 Jul 2021 00:26:30 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Jul 2021 00:17:48 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 26 Jul 2021 15:17:47 +0800
+ 15.0.1497.2; Mon, 26 Jul 2021 00:17:25 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 26 Jul 2021 15:17:12 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 26 Jul 2021 15:17:47 +0800
+ Frontend Transport; Mon, 26 Jul 2021 15:17:12 +0800
 From: Sam Shih <sam.shih@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  Walleij" <linus.walleij@linaro.org>, Matthias Brugger
@@ -73,18 +73,17 @@ To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  <linux-clk@vger.kernel.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
  Shih" <sam.shih@mediatek.com>
-Subject: [PATCH 10/12] dt-bindings: watchdog: Add compatible for Mediatek
- MT7986
-Date: Mon, 26 Jul 2021 15:14:37 +0800
-Message-ID: <20210726071439.14248-11-sam.shih@mediatek.com>
+Subject: [PATCH 02/12] clk: mediatek: add mt7986 clock IDs
+Date: Mon, 26 Jul 2021 15:14:29 +0800
+Message-ID: <20210726071439.14248-3-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210726071439.14248-1-sam.shih@mediatek.com>
 References: <20210726071439.14248-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_002633_475128_E625F034 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20210726_002633_960383_34423BA4 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,26 +100,265 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit adds dt-binding documentation of watchdog for Mediatek MT7986
-SoC Platform.
+Add MT7986 clock dt-bindings, include topckgen, apmixedsys,
+infracfg, infracfg_ao, and ethernet subsystem clocks.
 
 Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 ---
- Documentation/devicetree/bindings/watchdog/mtk-wdt.txt | 1 +
- 1 file changed, 1 insertion(+)
+ include/dt-bindings/clock/mt7986-clk.h | 244 +++++++++++++++++++++++++
+ 1 file changed, 244 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mt7986-clk.h
 
-diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-index 416d716403f6..a4e31ce96e0e 100644
---- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-+++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-@@ -13,6 +13,7 @@ Required properties:
- 	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
- 	"mediatek,mt7623-wdt", "mediatek,mt6589-wdt": for MT7623
- 	"mediatek,mt7629-wdt", "mediatek,mt6589-wdt": for MT7629
-+	"mediatek,mt7986-wdt", "mediatek,mt6589-wdt": for MT7986
- 	"mediatek,mt8183-wdt": for MT8183
- 	"mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
- 	"mediatek,mt8192-wdt": for MT8192
+diff --git a/include/dt-bindings/clock/mt7986-clk.h b/include/dt-bindings/clock/mt7986-clk.h
+new file mode 100644
+index 000000000000..dd11d0a717bc
+--- /dev/null
++++ b/include/dt-bindings/clock/mt7986-clk.h
+@@ -0,0 +1,244 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT7986_H
++#define _DT_BINDINGS_CLK_MT7986_H
++
++/* INFRACFG */
++
++#define CK_INFRA_CK_F26M		0
++#define CK_INFRA_UART			1
++#define CK_INFRA_ISPI0			2
++#define CK_INFRA_I2C			3
++#define CK_INFRA_ISPI1			4
++#define CK_INFRA_PWM			5
++#define CK_INFRA_66M_MCK		6
++#define CK_INFRA_CK_F32K		7
++#define CK_INFRA_PCIE_CK		8
++#define CK_INFRA_PWM_BCK		9
++#define CK_INFRA_PWM_CK1		10
++#define CK_INFRA_PWM_CK2		11
++#define CK_INFRA_133M_HCK		12
++#define CK_INFRA_EIP_CK			13
++#define CK_INFRA_66M_PHCK		14
++#define CK_INFRA_FAUD_L_CK		15
++#define CK_INFRA_FAUD_AUD_CK		16
++#define CK_INFRA_FAUD_EG2_CK		17
++#define CK_INFRA_I2CS_CK		18
++#define CK_INFRA_MUX_UART0		19
++#define CK_INFRA_MUX_UART1		20
++#define CK_INFRA_MUX_UART2		21
++#define CK_INFRA_NFI_CK			22
++#define CK_INFRA_SPINFI_CK		23
++#define CK_INFRA_MUX_SPI0		24
++#define CK_INFRA_MUX_SPI1		25
++#define CK_INFRA_RTC_32K		26
++#define CK_INFRA_FMSDC_CK		27
++#define CK_INFRA_FMSDC_HCK_CK		28
++#define CK_INFRA_PERI_133M		29
++#define CK_INFRA_133M_PHCK		30
++#define CK_INFRA_USB_SYS_CK		31
++#define CK_INFRA_USB_CK			32
++#define CK_INFRA_USB_XHCI_CK		33
++#define CK_INFRA_PCIE_GFMUX_TL_O_PRE	34
++#define CK_INFRA_F26M_CK0		35
++#define CK_INFRA_HD_133M	        36
++#define CLK_INFRA_NR_CLK		37
++
++/* TOPCKGEN */
++
++#define CK_TOP_CB_CKSQ_40M		0
++#define CK_TOP_CB_M_416M		1
++#define CK_TOP_CB_M_D2			2
++#define CK_TOP_CB_M_D4			3
++#define CK_TOP_CB_M_D8			4
++#define CK_TOP_M_D8_D2			5
++#define CK_TOP_M_D3_D2			6
++#define CK_TOP_CB_MM_D2			7
++#define CK_TOP_CB_MM_D4			8
++#define CK_TOP_CB_MM_D8			9
++#define CK_TOP_MM_D8_D2			10
++#define CK_TOP_MM_D3_D8			11
++#define CK_TOP_CB_U2_PHYD_CK		12
++#define CK_TOP_CB_APLL2_196M		13
++#define CK_TOP_APLL2_D4			14
++#define CK_TOP_CB_NET1_D4		15
++#define CK_TOP_CB_NET1_D5		16
++#define CK_TOP_NET1_D5_D2		17
++#define CK_TOP_NET1_D5_D4		18
++#define CK_TOP_NET1_D8_D2		19
++#define CK_TOP_NET1_D8_D4		20
++#define CK_TOP_CB_NET2_800M		21
++#define CK_TOP_CB_NET2_D4		22
++#define CK_TOP_NET2_D4_D2		23
++#define CK_TOP_NET2_D3_D2		24
++#define CK_TOP_CB_WEDMCU_760M		25
++#define CK_TOP_WEDMCU_D5_D2		26
++#define CK_TOP_CB_SGM_325M		27
++#define CK_TOP_CB_CKSQ_40M_D2		28
++#define CK_TOP_CB_RTC_32K		29
++#define CK_TOP_CB_RTC_32P7K		30
++#define CK_TOP_NFI1X			31
++#define CK_TOP_USB_EQ_RX250M		32
++#define CK_TOP_USB_TX250M		33
++#define CK_TOP_USB_LN0_CK		34
++#define CK_TOP_USB_CDR_CK		35
++#define CK_TOP_SPINFI_BCK		36
++#define CK_TOP_I2C_BCK			37
++#define CK_TOP_PEXTP_TL			38
++#define CK_TOP_EMMC_250M		39
++#define CK_TOP_EMMC_416M		40
++#define CK_TOP_F_26M_ADC_CK		41
++#define CK_TOP_SYSAXI			42
++#define CK_TOP_NETSYS_WED_MCU		43
++#define CK_TOP_NETSYS_2X		44
++#define CK_TOP_SGM_325M			45
++#define CK_TOP_A1SYS			46
++#define CK_TOP_EIP_B			47
++#define CK_TOP_F26M			48
++#define CK_TOP_AUD_L			49
++#define CK_TOP_A_TUNER			50
++#define CK_TOP_U2U3_REF			51
++#define CK_TOP_U2U3_SYS			52
++#define CK_TOP_U2U3_XHCI		53
++#define CK_TOP_AP2CNN_HOST		54
++#define CK_TOP_NFI1X_SEL		55
++#define CK_TOP_SPINFI_SEL		56
++#define CK_TOP_SPI_SEL			57
++#define CK_TOP_SPIM_MST_SEL		58
++#define CK_TOP_UART_SEL			59
++#define CK_TOP_PWM_SEL			60
++#define CK_TOP_I2C_SEL			61
++#define CK_TOP_PEXTP_TL_SEL		62
++#define CK_TOP_EMMC_250M_SEL		63
++#define CK_TOP_EMMC_416M_SEL		64
++#define CK_TOP_F_26M_ADC_SEL		65
++#define CK_TOP_DRAMC_SEL		66
++#define CK_TOP_DRAMC_MD32_SEL		67
++#define CK_TOP_SYSAXI_SEL		68
++#define CK_TOP_SYSAPB_SEL		69
++#define CK_TOP_ARM_DB_MAIN_SEL		70
++#define CK_TOP_ARM_DB_JTSEL		71
++#define CK_TOP_NETSYS_SEL		72
++#define CK_TOP_NETSYS_500M_SEL		73
++#define CK_TOP_NETSYS_MCU_SEL		74
++#define CK_TOP_NETSYS_2X_SEL		75
++#define CK_TOP_SGM_325M_SEL		76
++#define CK_TOP_SGM_REG_SEL		77
++#define CK_TOP_A1SYS_SEL		78
++#define CK_TOP_CONN_MCUSYS_SEL		79
++#define CK_TOP_EIP_B_SEL		80
++#define CK_TOP_PCIE_PHY_SEL		81
++#define CK_TOP_USB3_PHY_SEL		82
++#define CK_TOP_F26M_SEL			83
++#define CK_TOP_AUD_L_SEL		84
++#define CK_TOP_A_TUNER_SEL		85
++#define CK_TOP_U2U3_SEL			86
++#define CK_TOP_U2U3_SYS_SEL		87
++#define CK_TOP_U2U3_XHCI_SEL		88
++#define CK_TOP_DA_U2_REFSEL		89
++#define CK_TOP_DA_U2_CK_1P_SEL		90
++#define CK_TOP_AP2CNN_HOST_SEL		91
++#define CLK_TOP_NR_CLK			92
++
++/* INFRACFG_AO */
++
++#define CK_INFRA_UART0_SEL		0
++#define CK_INFRA_UART1_SEL		1
++#define CK_INFRA_UART2_SEL		2
++#define CK_INFRA_SPI0_SEL		3
++#define CK_INFRA_SPI1_SEL		4
++#define CK_INFRA_PWM1_SEL		5
++#define CK_INFRA_PWM2_SEL		6
++#define CK_INFRA_PWM_BSEL		7
++#define CK_INFRA_PCIE_SEL		8
++#define CK_INFRA_GPT_STA		9
++#define CK_INFRA_PWM_HCK		10
++#define CK_INFRA_PWM_STA		11
++#define CK_INFRA_PWM1_CK		12
++#define CK_INFRA_PWM2_CK		13
++#define CK_INFRA_CQ_DMA_CK		14
++#define CK_INFRA_EIP97_CK		15
++#define CK_INFRA_AUD_BUS_CK		16
++#define CK_INFRA_AUD_26M_CK		17
++#define CK_INFRA_AUD_L_CK		18
++#define CK_INFRA_AUD_AUD_CK		19
++#define CK_INFRA_AUD_EG2_CK		20
++#define CK_INFRA_DRAMC_26M_CK		21
++#define CK_INFRA_DBG_CK			22
++#define CK_INFRA_AP_DMA_CK		23
++#define CK_INFRA_SEJ_CK			24
++#define CK_INFRA_SEJ_13M_CK		25
++#define CK_INFRA_THERM_CK		26
++#define CK_INFRA_I2CO_CK		27
++#define CK_INFRA_UART0_CK		28
++#define CK_INFRA_UART1_CK		29
++#define CK_INFRA_UART2_CK		30
++#define CK_INFRA_NFI1_CK		31
++#define CK_INFRA_SPINFI1_CK		32
++#define CK_INFRA_NFI_HCK_CK		33
++#define CK_INFRA_SPI0_CK		34
++#define CK_INFRA_SPI1_CK		35
++#define CK_INFRA_SPI0_HCK_CK		36
++#define CK_INFRA_SPI1_HCK_CK		37
++#define CK_INFRA_FRTC_CK		38
++#define CK_INFRA_MSDC_CK		39
++#define CK_INFRA_MSDC_HCK_CK		40
++#define CK_INFRA_MSDC_133M_CK		41
++#define CK_INFRA_MSDC_66M_CK		42
++#define CK_INFRA_ADC_26M_CK		43
++#define CK_INFRA_ADC_FRC_CK		44
++#define CK_INFRA_FBIST2FPC_CK		45
++#define CK_INFRA_IUSB_133_CK		46
++#define CK_INFRA_IUSB_66M_CK		47
++#define CK_INFRA_IUSB_SYS_CK		48
++#define CK_INFRA_IUSB_CK		49
++#define CK_INFRA_IPCIE_CK		50
++#define CK_INFRA_IPCIE_PIPE_CK  51
++#define CK_INFRA_IPCIER_CK		52
++#define CK_INFRA_IPCIEB_CK		53
++#define CK_INFRA_TRNG_CK		54
++#define CLK_INFRA_AO_NR_CLK		55
++
++/* APMIXEDSYS */
++
++#define CK_APMIXED_ARMPLL		0
++#define CK_APMIXED_NET2PLL		1
++#define CK_APMIXED_MMPLL		2
++#define CK_APMIXED_SGMPLL		3
++#define CK_APMIXED_WEDMCUPLL		4
++#define CK_APMIXED_NET1PLL		5
++#define CK_APMIXED_MPLL			6
++#define CK_APMIXED_APLL2		7
++#define CLK_APMIXED_NR_CLK		8
++
++/* SGMIISYS_0 */
++
++#define CK_SGM0_TX_EN			0
++#define CK_SGM0_RX_EN			1
++#define CK_SGM0_CK0_EN			2
++#define CK_SGM0_CDR_CK0_EN		3
++#define CLK_SGMII0_NR_CLK		4
++
++/* SGMIISYS_1 */
++
++#define CK_SGM1_TX_EN			0
++#define CK_SGM1_RX_EN			1
++#define CK_SGM1_CK1_EN			2
++#define CK_SGM1_CDR_CK1_EN		3
++#define CLK_SGMII1_NR_CLK		4
++
++/* ETHSYS */
++
++#define CK_ETH_FE_EN			0
++#define CK_ETH_GP2_EN			1
++#define CK_ETH_GP1_EN			2
++#define CK_ETH_WOCPU1_EN		3
++#define CK_ETH_WOCPU0_EN		4
++#define CLK_ETH_NR_CLK			5
++
++#endif /* _DT_BINDINGS_CLK_MT7986_H */
++
 -- 
 2.29.2
 _______________________________________________
