@@ -7,72 +7,77 @@ X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2A4DC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEF74C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:51:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A61DD60F51
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:20:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A61DD60F51
+	by mail.kernel.org (Postfix) with ESMTPS id B1B7D603E7
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:51:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B1B7D603E7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rTzUBn6UuKBjfUtdGq7hl3FMqV57CgdhYwthJLf4v98=; b=4K8u8IKgTkj8/h
-	xhx3dPNJkkjdXHyoDw30+YZD0R58SX0zMhXDyUhbG0DdEtDZM4gasRgngpIwMmEltzULIaR0EfsDx
-	RN6uVcZ6fKrzWPIiFvz18TuIroEyNV2gXHLZZzVXXIg7iSGPjl1cvABtmYO6qft0PLwmPmIik3UsY
-	YugGT1wSqZtSklMh9AobwCribMD/sX8eIib4JrRW/w7s8ofz32utD9SS063FigUaDB0BIJYr1Xxkv
-	GCGoxpqVQ0MbDekdME6U48a7Lcgxm68nhdXRcJdnIKP84q0D3mAlvaGkyHLlud9oG7oFRdkXxZbSd
-	+el5zBYi/Hm6yno4Igcg==;
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2tGgy40/WFfPjHoSELg+1yyyDtQSbTesmWNfLKhdyj8=; b=tqo4brSIaBp7yB
+	3kWEQpNWvGxtAv8E0jTqjZYKb3Akm52LlDyhebI1wvsTtwoHyGc4KOa+hJBWTdYgMNP96e579yKMm
+	PtIgcZckgzg31gbevsJNEA7HcqTFSYM8Wdfwe67o5FGa1LfhUBgMNsyToACW0+50AI8Ves1wzzi+G
+	LBf8VxiZo3vN/+hg4fNmzQ3FAEyic1QnxQfPtjDB3QAKG+X3r51V7latJv/EkKAPktXFkQ6R7sM1m
+	5EQPaMPbCiVA7RwxonXw7b2BiMyFbK8cXMcPPWh+fllk76XLK3nl/U4821erx7bcYbrNlhMSxG2JA
+	7rQR2EkwhsgT64y2VS3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7vqp-00A9wG-O3; Mon, 26 Jul 2021 08:20:39 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1m7wKJ-00AIRL-Fa; Mon, 26 Jul 2021 08:51:07 +0000
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7vqY-00A9rG-Qf
- for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 08:20:24 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id f18so13954063lfu.10
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 01:20:22 -0700 (PDT)
+ id 1m7wK7-00AIQQ-0K
+ for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 08:50:56 +0000
+Received: by mail-il1-x12d.google.com with SMTP id z3so8111674ile.12
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 01:50:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:from:date:message-id:subject:to:cc;
- bh=91yXb1VgXd5JhIW1bX57GkCbuisDS0fNOG8Fkd81qLY=;
- b=FygJv0Sm71wlNsHO+sqMNccJlsftKpOA/wgSG/X15ho9In3iyj7q2bEnSLlCtjD12L
- N/M7zXxrwMCTf3a4UtmdqGojLPb9b7WaJOnty8rww0ORl+tzW8hTdRfEpfRm/BmXKpG4
- yCuxashLUeZU1hZS4DgXeoD2PStAB022xLxYc=
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=etHnoGQzq47ZbynR6VywyxbslQdcHyhoH/zh/8FN3v4=;
+ b=aIG5zAsePtKUiKEs+FQ2KuXU0hUSBthKszmmcGaxvZmMgRWvAOFZQt0BPPVtbshcpz
+ PSrR2WA2Qg8v7Vv5UPSoesnLqCpcj8peq+o7vriSGh64BJMez+n8DFrpTcn68sbdSAzp
+ WddMRXm8Usz/CiMQPwt4gk2JuAT1IUHM2SYwU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
- bh=91yXb1VgXd5JhIW1bX57GkCbuisDS0fNOG8Fkd81qLY=;
- b=ZmwoIu2T5o0MxqjwsWgIeVgOXMUBNibIHcxd8X8VtozZXwZ8JcsRim7fzEDcNeB3fy
- csJ9/y2LFEPEm5xIGTlBLwBXS4QInNEMYDBU2t5Ppq5C+B/ukS1K1c39NCUTqe/Hs/1S
- ZREufQSyeu7B2eMfEJpNMwA2fW6VI9wCc82Qa3F5UHXJLCmKmT0DbrqO5xkafO50Q932
- JMQbG0xAUExVKpxbn6R1QNOecdGItRxhpu/jK+N6tKlEIZ7g4ywOSkOsNG+oYQxLLwQ6
- Sf0OSlCzb9KZTWGCwAp7AKh4TzH4ok0TFjiSf9w4ZlysZKxdqtB13C8tYIgPV7+48VmX
- /Uxg==
-X-Gm-Message-State: AOAM530CEQBnJpwsbO9R0FdikKONr2/WCVsLRK4C0nS2Az1qC5yanOZG
- YFxOVvSE+IIPKmkDnuvTTTyb/sX30B3HQIYgHzuTkle8BRceK99d
-X-Google-Smtp-Source: ABdhPJwfbJe3IIQsY3UXhqvOx83qo8udghPA/zhl6SSU23YZpe1JFdaeLb5Lxi5GlOdmAKbpunqhPBD06JXT87jgpNk=
-X-Received: by 2002:a19:f00c:: with SMTP id p12mr12028038lfc.647.1627287620624; 
- Mon, 26 Jul 2021 01:20:20 -0700 (PDT)
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=etHnoGQzq47ZbynR6VywyxbslQdcHyhoH/zh/8FN3v4=;
+ b=PpXRlL1kWkWJNAyBEZRvYf8U9zqCvfYkND/wPqbuheICONpBiCugKRKO9bhq5SuSU7
+ emQ7wKFbQEi5//Jfx1jl26pT0Mr3ZmM2uYEqKXBMyltush2M/KjRKYT4E9XgEXaxC4dI
+ up7qrpFHGTHQNBmbVroRUkXbRFmYFW7NI6sakxCVCGx4Tt4sUUblOYwx9prkSEyGxqvm
+ YzPr/RlzdzuwYxw0SIb5Ssjm8uiNDOwiJga6SFJWMkdiEkmTUVGD6Hdfj4cap1BfKmQC
+ wvQ6hMRgsU70+vRs3JGjxPNB8ryPKHjHSB5TJAuXjt8zmzqOR9FoIm32C1hWqEi6t0dt
+ AHLg==
+X-Gm-Message-State: AOAM533XlYFKS9jC+AH49/vfR4GVqljhJJNp/VmrYSrLnd4F90FzsooY
+ RT/k7k5Wufof3Hxn25/nX/9sFC4JTPSnD+jr1S12NA==
+X-Google-Smtp-Source: ABdhPJyf3HOQ4rIWmbymbwS4Lo1gx39HDWnmdLabEGO/SfTi3dLLNw40jleJ1klLdqzruzc0SrV4mCWJIyRwhVtTl2U=
+X-Received: by 2002:a92:d251:: with SMTP id v17mr11970560ilg.283.1627289454063; 
+ Mon, 26 Jul 2021 01:50:54 -0700 (PDT)
 MIME-Version: 1.0
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 26 Jul 2021 16:20:09 +0800
-Message-ID: <CAGXv+5Ev4QU72cMqMW7sA=dijzh7-DCsfHY+Lmqd36uzg_7Nww@mail.gmail.com>
-Subject: arm64: dts: mt8183: Incorrect mediatek,pull-*-adv values
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fabien Parent <fparent@baylibre.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+References: <CAGXv+5Ev4QU72cMqMW7sA=dijzh7-DCsfHY+Lmqd36uzg_7Nww@mail.gmail.com>
+In-Reply-To: <CAGXv+5Ev4QU72cMqMW7sA=dijzh7-DCsfHY+Lmqd36uzg_7Nww@mail.gmail.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Mon, 26 Jul 2021 16:50:27 +0800
+Message-ID: <CAJMQK-hH5HM5iN4q6UgUf8T5fwj+0oULKPw=XafYOPrki-aDkg@mail.gmail.com>
+Subject: Re: arm64: dts: mt8183: Incorrect mediatek,pull-*-adv values
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, linux-gpio@vger.kernel.org, 
+ Devicetree List <devicetree@vger.kernel.org>,
  Zhiyong Tao <zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_012022_897716_0D7B3ACC 
-X-CRM114-Status: UNSURE (   6.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210726_015055_113495_65FB023C 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +94,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Mon, Jul 26, 2021 at 4:20 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> Hi,
+>
+> I was looking at MTK pinctrl stuff upstream, and it seems there are a few
+> `mediatek,pull-*-adv` entries that have invalid values:
+>
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-up-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-up-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
+> mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-up-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-down-adv = <10>;
+> arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
+>  mediatek,pull-up-adv = <10>;
+>
+> According to the bindings, the values should 0~3. <10> is probably a
+> incorrect attempt at using binary representation, which is wrong. This
+> probably leads to the pull-up/down getting disabled or ignored.
+>
+> Cound people still working on these two devices take a look?
+>
+Thanks for pointing this out. It's an incorrect value but 10=0b1010 so
+the result is same as 2, since the driver test the value by checking
+the last 2 bit. We should still fix this in dts.
 
-I was looking at MTK pinctrl stuff upstream, and it seems there are a few
-`mediatek,pull-*-adv` entries that have invalid values:
-
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-up-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-up-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-up-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-down-adv = <10>;
-arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
- mediatek,pull-up-adv = <10>;
-
-According to the bindings, the values should 0~3. <10> is probably a
-incorrect attempt at using binary representation, which is wrong. This
-probably leads to the pull-up/down getting disabled or ignored.
-
-Cound people still working on these two devices take a look?
-
-
-Regards
-ChenYu
+>
+> Regards
+> ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
