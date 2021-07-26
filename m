@@ -2,88 +2,87 @@ Return-Path: <SRS0=WTSR=MS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UPPERCASE_50_75,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99107C432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1EFBDC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:03:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E37260E0C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 07:32:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E37260E0C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C318460F6D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 08:02:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C318460F6D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OvytfHw7QZHjAL4Ce0SurZyOi+r079p7QzoEHbg6PlI=; b=W8Lp8/P7jcZ/fg
-	wq8D0xpCfg/L/N3I9Xfvg5tQ6Vv7WwQpgSBxxjj+Vo7ynlxQEm613xC3fJlTczHoLi7bo87GE4Ty6
-	bSosvKZZyMF7iTci+XEsfcbHw0gbjeXstHnAC5hv3WRJ4r7QTpxlDZk2gj3NfX3CJ7WvujJEY4O7R
-	UtgyKaHuhKmlPq0wazTP1E6qn/R7yzDsB86OfHjEDvJD+qBEfRPtAKraLW+sQPzG3X/fZIxEJ6zgZ
-	OogwW0rLzgq7flskbQUKB/LSCpv4LdOmPVmMz8RhOhR66+bX/GC48v2qfYOECz3RPlIVrZ59axyah
-	bjh/6pczzGfckdKi96Rw==;
+	List-Owner; bh=MrOSjGlCWbdj7OhoezYhzAo3ad4piJeUXyq37rp8cos=; b=Nf8g4qVXrivXzK
+	33x8ll7BbURl410b9ta92FZV9CZJ+5yYYomqueQw5Z0LVpK037+z3qdwM6rDKVC2Cz32zE6QWxZE6
+	UKUbTxJD1J9odHXfc9pvS8jvfNt2rfNm4VUuJ3Mcn8NqOdiSslleYEkIpFHNhL6iYy8Z0OtsybpvC
+	fEdZxtVf2cX0DfrMFnIqX6GSjsi/dUZSp71z3i+iSfHYvrZAN/wvWknmYL6jNrDFDwJ+wxI8MTtC/
+	ha/8Hr/PEvtRhe/lm1i7Y+TgdDul+Ab8eF/WUultK83MXNd9dQwl24w4Gel9CBK3rgLFWSnMoXAas
+	QfYt4kp4lm2vsxmyF8tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7v12-009vF9-33; Mon, 26 Jul 2021 07:27:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m7vZV-00A4MI-My; Mon, 26 Jul 2021 08:02:45 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7v0T-009v5X-SY; Mon, 26 Jul 2021 07:26:35 +0000
-X-UUID: 3dfa92d9bd7e419e99e0cae7f60f6ab1-20210726
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ul0qhskV4sYkGaBcW6gix73XMG3hPx7g+GrDFzA+Q+E=; 
- b=DrjLz3Xihhup2mY6wqzCzXW9vNWOajcgcMZr3eZiTSMqhwWhYQFkylNXO55pONIxETDR3cZTulIh51u7vZkfVeeO61i2v7a++toI4Or/+W5OEPRenP0KxBno9mEs7YqV9MAzkDGM4DxPnfaf3IPrXjkWq8/CF5n1njb0cwEm0PM=;
-X-UUID: 3dfa92d9bd7e419e99e0cae7f60f6ab1-20210726
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 30368987; Mon, 26 Jul 2021 00:26:30 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 26 Jul 2021 00:17:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 26 Jul 2021 15:17:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 26 Jul 2021 15:17:12 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu
- <herbert@gondor.apana.org.au>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
- Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-crypto@vger.kernel.org>,
- <linux-serial@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <linux-clk@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
- Shih" <sam.shih@mediatek.com>
-Subject: [PATCH 02/12] clk: mediatek: add mt7986 clock IDs
-Date: Mon, 26 Jul 2021 15:14:29 +0800
-Message-ID: <20210726071439.14248-3-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210726071439.14248-1-sam.shih@mediatek.com>
-References: <20210726071439.14248-1-sam.shih@mediatek.com>
+ id 1m7vZA-00A4Fi-Fm
+ for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 08:02:26 +0000
+Received: by mail-lj1-x231.google.com with SMTP id l4so10283746ljq.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 01:02:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=nBC+AAdhNSp6Y9PCeNESZDrAjbJvLVNma/9NfsdXY8Q=;
+ b=AXP8voMcitYr0FtY19uK6rPp9WgozJUcA/Z+cX/hXU4xDU77JzIPu0wMKOeI15djiG
+ HisdjAnSIvZLpxqpCQaCCCkN6xPnuESllQ4+5pvuNQqMPqi2xMzBefZqP5qYLW143+bl
+ J4xthycSsZ19yOHBcO/Gq9BD/nTkSzXWhnXMc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=nBC+AAdhNSp6Y9PCeNESZDrAjbJvLVNma/9NfsdXY8Q=;
+ b=oDsJQSBpY29GSdTHNp/LLwVcXYp3EW3qvJpyrvzUg7J3SjmTxTMjAhmuDmgwIWzTmg
+ sDyt7dfVbplfj0/kwVCkAF5j4vmL3/DbV6FdnB0VSD+AxXCJUg0V31ColVu3BxwfaM6x
+ tpGUuOkSTA7Ed1PpVdpUXuPEp9uJMJHbGIFnrWxXkw6v5UWJ4y0TRJ4hE8xYLLOUcmoz
+ cG/3T5s00jSNs4CmGteA2M09aGD/PllNqkt+cTJZBngVfpZ4PmJwO2zXu7UIMlXtRfDw
+ 6MNRuGtl5s3ZszLKfWuuXGwlal5M8h9YLyNxqrU4EWOvQfqaO2RaPqnOmJDxoc5q2fH/
+ vq5w==
+X-Gm-Message-State: AOAM532WwSLw8QrOeAn50t+kGM/MRchXUgRhoykTxasH2/f/XyLMHake
+ Ocdzv5ke/JqM4sFaZ1I2sYPwNpS0qF8eJfvGMAk/oQ==
+X-Google-Smtp-Source: ABdhPJwYvdNT594j5uoh7LhyYxtS6ye0Z/3uprl22Skc07KrFd35T1KpwcWE3PdCoIKu/2m3rCsleSWx5M/7mH2uzx8=
+X-Received: by 2002:a2e:760d:: with SMTP id r13mr11728695ljc.437.1627286540610; 
+ Mon, 26 Jul 2021 01:02:20 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210710081722.1828-1-zhiyong.tao@mediatek.com>
+ <20210710081722.1828-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5GXg0RuOQkh4vaRmcLpehZiXnEUXBvEaObiatAa1sXvaA@mail.gmail.com>
+ <1626940470.29611.9.camel@mhfsdcap03>
+In-Reply-To: <1626940470.29611.9.camel@mhfsdcap03>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 26 Jul 2021 16:02:09 +0800
+Message-ID: <CAGXv+5F_-W4aNt0WVSDBGLo_t8orNUq59GMKk_4xVr+hMb9Ctg@mail.gmail.com>
+Subject: Re: [PATCH v10 1/2] dt-bindings: pinctrl: mt8195: add rsel define
+To: zhiyong tao <zhiyong.tao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ mark.rutland@arm.com, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, hui.liu@mediatek.com, 
+ Eddie Huang <eddie.huang@mediatek.com>, light.hsieh@mediatek.com, 
+ biao.huang@mediatek.com, hongzhou.yang@mediatek.com, sean.wang@mediatek.com, 
+ seiya.wang@mediatek.com, devicetree@vger.kernel.org, 
+ LKML <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_002633_960383_34423BA4 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20210726_010224_559183_036F5DF7 
+X-CRM114-Status: GOOD (  38.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,267 +99,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT7986 clock dt-bindings, include topckgen, apmixedsys,
-infracfg, infracfg_ao, and ethernet subsystem clocks.
+On Thu, Jul 22, 2021 at 3:54 PM zhiyong tao <zhiyong.tao@mediatek.com> wrote:
+>
+> On Tue, 2021-07-13 at 15:17 +0800, Chen-Yu Tsai wrote:
+> > Hi,
+> >
+> > On Sat, Jul 10, 2021 at 4:17 PM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+> > >
+> > > This patch adds rsel define for mt8195.
+> > >
+> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > ---
+> > >  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
+> > >  1 file changed, 9 insertions(+)
+> > >
+> > > diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
+> > > index 7e16e58fe1f7..f5934abcd1bd 100644
+> > > --- a/include/dt-bindings/pinctrl/mt65xx.h
+> > > +++ b/include/dt-bindings/pinctrl/mt65xx.h
+> > > @@ -16,6 +16,15 @@
+> > >  #define MTK_PUPD_SET_R1R0_10 102
+> > >  #define MTK_PUPD_SET_R1R0_11 103
+> > >
+> > > +#define MTK_PULL_SET_RSEL_000  200
+> > > +#define MTK_PULL_SET_RSEL_001  201
+> > > +#define MTK_PULL_SET_RSEL_010  202
+> > > +#define MTK_PULL_SET_RSEL_011  203
+> > > +#define MTK_PULL_SET_RSEL_100  204
+> > > +#define MTK_PULL_SET_RSEL_101  205
+> > > +#define MTK_PULL_SET_RSEL_110  206
+> > > +#define MTK_PULL_SET_RSEL_111  207
+> > > +
+> >
+> > Instead of all the obscure macros and the new custom "rsel" property,
+> > which BTW is not in the bindings, can't we just list the actual bias
+> > resistance of each setting? We could also migrate away from R1R0.
+> >
+> ==>Hi Chenyu,
+> The rsel actual bias resistance of each setting:
+>
+> MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_001:10k in PU, 5k in PD;
+> MTK_PULL_SET_RSEL_010:5k in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_011:4k in PU, 5K in PD;
+> MTK_PULL_SET_RSEL_100:3k in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_101:2k in PU, 5K in PD;
+> MTK_PULL_SET_RSEL_110:1.5k in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_111:1k in PU, 5k in PD.
+>
+> The rsel actual bias resistance is different between PU and PD.
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
----
- include/dt-bindings/clock/mt7986-clk.h | 244 +++++++++++++++++++++++++
- 1 file changed, 244 insertions(+)
- create mode 100644 include/dt-bindings/clock/mt7986-clk.h
+Thanks. Somehow I missed this when looking through the datasheet. This
+encoding is interesting. Since it doesn't make sense to have both
+pull-up and pull-down, even though the hardware seems capable of doing
+so, I suppose the intent is to support 75k or 5k for pull-down, and
+(75k, 10k, 5k, 4k, 3k, 2k, 1.5k, 1k) for pull-up?
 
-diff --git a/include/dt-bindings/clock/mt7986-clk.h b/include/dt-bindings/clock/mt7986-clk.h
-new file mode 100644
-index 000000000000..dd11d0a717bc
---- /dev/null
-+++ b/include/dt-bindings/clock/mt7986-clk.h
-@@ -0,0 +1,244 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Sam Shih <sam.shih@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_CLK_MT7986_H
-+#define _DT_BINDINGS_CLK_MT7986_H
-+
-+/* INFRACFG */
-+
-+#define CK_INFRA_CK_F26M		0
-+#define CK_INFRA_UART			1
-+#define CK_INFRA_ISPI0			2
-+#define CK_INFRA_I2C			3
-+#define CK_INFRA_ISPI1			4
-+#define CK_INFRA_PWM			5
-+#define CK_INFRA_66M_MCK		6
-+#define CK_INFRA_CK_F32K		7
-+#define CK_INFRA_PCIE_CK		8
-+#define CK_INFRA_PWM_BCK		9
-+#define CK_INFRA_PWM_CK1		10
-+#define CK_INFRA_PWM_CK2		11
-+#define CK_INFRA_133M_HCK		12
-+#define CK_INFRA_EIP_CK			13
-+#define CK_INFRA_66M_PHCK		14
-+#define CK_INFRA_FAUD_L_CK		15
-+#define CK_INFRA_FAUD_AUD_CK		16
-+#define CK_INFRA_FAUD_EG2_CK		17
-+#define CK_INFRA_I2CS_CK		18
-+#define CK_INFRA_MUX_UART0		19
-+#define CK_INFRA_MUX_UART1		20
-+#define CK_INFRA_MUX_UART2		21
-+#define CK_INFRA_NFI_CK			22
-+#define CK_INFRA_SPINFI_CK		23
-+#define CK_INFRA_MUX_SPI0		24
-+#define CK_INFRA_MUX_SPI1		25
-+#define CK_INFRA_RTC_32K		26
-+#define CK_INFRA_FMSDC_CK		27
-+#define CK_INFRA_FMSDC_HCK_CK		28
-+#define CK_INFRA_PERI_133M		29
-+#define CK_INFRA_133M_PHCK		30
-+#define CK_INFRA_USB_SYS_CK		31
-+#define CK_INFRA_USB_CK			32
-+#define CK_INFRA_USB_XHCI_CK		33
-+#define CK_INFRA_PCIE_GFMUX_TL_O_PRE	34
-+#define CK_INFRA_F26M_CK0		35
-+#define CK_INFRA_HD_133M	        36
-+#define CLK_INFRA_NR_CLK		37
-+
-+/* TOPCKGEN */
-+
-+#define CK_TOP_CB_CKSQ_40M		0
-+#define CK_TOP_CB_M_416M		1
-+#define CK_TOP_CB_M_D2			2
-+#define CK_TOP_CB_M_D4			3
-+#define CK_TOP_CB_M_D8			4
-+#define CK_TOP_M_D8_D2			5
-+#define CK_TOP_M_D3_D2			6
-+#define CK_TOP_CB_MM_D2			7
-+#define CK_TOP_CB_MM_D4			8
-+#define CK_TOP_CB_MM_D8			9
-+#define CK_TOP_MM_D8_D2			10
-+#define CK_TOP_MM_D3_D8			11
-+#define CK_TOP_CB_U2_PHYD_CK		12
-+#define CK_TOP_CB_APLL2_196M		13
-+#define CK_TOP_APLL2_D4			14
-+#define CK_TOP_CB_NET1_D4		15
-+#define CK_TOP_CB_NET1_D5		16
-+#define CK_TOP_NET1_D5_D2		17
-+#define CK_TOP_NET1_D5_D4		18
-+#define CK_TOP_NET1_D8_D2		19
-+#define CK_TOP_NET1_D8_D4		20
-+#define CK_TOP_CB_NET2_800M		21
-+#define CK_TOP_CB_NET2_D4		22
-+#define CK_TOP_NET2_D4_D2		23
-+#define CK_TOP_NET2_D3_D2		24
-+#define CK_TOP_CB_WEDMCU_760M		25
-+#define CK_TOP_WEDMCU_D5_D2		26
-+#define CK_TOP_CB_SGM_325M		27
-+#define CK_TOP_CB_CKSQ_40M_D2		28
-+#define CK_TOP_CB_RTC_32K		29
-+#define CK_TOP_CB_RTC_32P7K		30
-+#define CK_TOP_NFI1X			31
-+#define CK_TOP_USB_EQ_RX250M		32
-+#define CK_TOP_USB_TX250M		33
-+#define CK_TOP_USB_LN0_CK		34
-+#define CK_TOP_USB_CDR_CK		35
-+#define CK_TOP_SPINFI_BCK		36
-+#define CK_TOP_I2C_BCK			37
-+#define CK_TOP_PEXTP_TL			38
-+#define CK_TOP_EMMC_250M		39
-+#define CK_TOP_EMMC_416M		40
-+#define CK_TOP_F_26M_ADC_CK		41
-+#define CK_TOP_SYSAXI			42
-+#define CK_TOP_NETSYS_WED_MCU		43
-+#define CK_TOP_NETSYS_2X		44
-+#define CK_TOP_SGM_325M			45
-+#define CK_TOP_A1SYS			46
-+#define CK_TOP_EIP_B			47
-+#define CK_TOP_F26M			48
-+#define CK_TOP_AUD_L			49
-+#define CK_TOP_A_TUNER			50
-+#define CK_TOP_U2U3_REF			51
-+#define CK_TOP_U2U3_SYS			52
-+#define CK_TOP_U2U3_XHCI		53
-+#define CK_TOP_AP2CNN_HOST		54
-+#define CK_TOP_NFI1X_SEL		55
-+#define CK_TOP_SPINFI_SEL		56
-+#define CK_TOP_SPI_SEL			57
-+#define CK_TOP_SPIM_MST_SEL		58
-+#define CK_TOP_UART_SEL			59
-+#define CK_TOP_PWM_SEL			60
-+#define CK_TOP_I2C_SEL			61
-+#define CK_TOP_PEXTP_TL_SEL		62
-+#define CK_TOP_EMMC_250M_SEL		63
-+#define CK_TOP_EMMC_416M_SEL		64
-+#define CK_TOP_F_26M_ADC_SEL		65
-+#define CK_TOP_DRAMC_SEL		66
-+#define CK_TOP_DRAMC_MD32_SEL		67
-+#define CK_TOP_SYSAXI_SEL		68
-+#define CK_TOP_SYSAPB_SEL		69
-+#define CK_TOP_ARM_DB_MAIN_SEL		70
-+#define CK_TOP_ARM_DB_JTSEL		71
-+#define CK_TOP_NETSYS_SEL		72
-+#define CK_TOP_NETSYS_500M_SEL		73
-+#define CK_TOP_NETSYS_MCU_SEL		74
-+#define CK_TOP_NETSYS_2X_SEL		75
-+#define CK_TOP_SGM_325M_SEL		76
-+#define CK_TOP_SGM_REG_SEL		77
-+#define CK_TOP_A1SYS_SEL		78
-+#define CK_TOP_CONN_MCUSYS_SEL		79
-+#define CK_TOP_EIP_B_SEL		80
-+#define CK_TOP_PCIE_PHY_SEL		81
-+#define CK_TOP_USB3_PHY_SEL		82
-+#define CK_TOP_F26M_SEL			83
-+#define CK_TOP_AUD_L_SEL		84
-+#define CK_TOP_A_TUNER_SEL		85
-+#define CK_TOP_U2U3_SEL			86
-+#define CK_TOP_U2U3_SYS_SEL		87
-+#define CK_TOP_U2U3_XHCI_SEL		88
-+#define CK_TOP_DA_U2_REFSEL		89
-+#define CK_TOP_DA_U2_CK_1P_SEL		90
-+#define CK_TOP_AP2CNN_HOST_SEL		91
-+#define CLK_TOP_NR_CLK			92
-+
-+/* INFRACFG_AO */
-+
-+#define CK_INFRA_UART0_SEL		0
-+#define CK_INFRA_UART1_SEL		1
-+#define CK_INFRA_UART2_SEL		2
-+#define CK_INFRA_SPI0_SEL		3
-+#define CK_INFRA_SPI1_SEL		4
-+#define CK_INFRA_PWM1_SEL		5
-+#define CK_INFRA_PWM2_SEL		6
-+#define CK_INFRA_PWM_BSEL		7
-+#define CK_INFRA_PCIE_SEL		8
-+#define CK_INFRA_GPT_STA		9
-+#define CK_INFRA_PWM_HCK		10
-+#define CK_INFRA_PWM_STA		11
-+#define CK_INFRA_PWM1_CK		12
-+#define CK_INFRA_PWM2_CK		13
-+#define CK_INFRA_CQ_DMA_CK		14
-+#define CK_INFRA_EIP97_CK		15
-+#define CK_INFRA_AUD_BUS_CK		16
-+#define CK_INFRA_AUD_26M_CK		17
-+#define CK_INFRA_AUD_L_CK		18
-+#define CK_INFRA_AUD_AUD_CK		19
-+#define CK_INFRA_AUD_EG2_CK		20
-+#define CK_INFRA_DRAMC_26M_CK		21
-+#define CK_INFRA_DBG_CK			22
-+#define CK_INFRA_AP_DMA_CK		23
-+#define CK_INFRA_SEJ_CK			24
-+#define CK_INFRA_SEJ_13M_CK		25
-+#define CK_INFRA_THERM_CK		26
-+#define CK_INFRA_I2CO_CK		27
-+#define CK_INFRA_UART0_CK		28
-+#define CK_INFRA_UART1_CK		29
-+#define CK_INFRA_UART2_CK		30
-+#define CK_INFRA_NFI1_CK		31
-+#define CK_INFRA_SPINFI1_CK		32
-+#define CK_INFRA_NFI_HCK_CK		33
-+#define CK_INFRA_SPI0_CK		34
-+#define CK_INFRA_SPI1_CK		35
-+#define CK_INFRA_SPI0_HCK_CK		36
-+#define CK_INFRA_SPI1_HCK_CK		37
-+#define CK_INFRA_FRTC_CK		38
-+#define CK_INFRA_MSDC_CK		39
-+#define CK_INFRA_MSDC_HCK_CK		40
-+#define CK_INFRA_MSDC_133M_CK		41
-+#define CK_INFRA_MSDC_66M_CK		42
-+#define CK_INFRA_ADC_26M_CK		43
-+#define CK_INFRA_ADC_FRC_CK		44
-+#define CK_INFRA_FBIST2FPC_CK		45
-+#define CK_INFRA_IUSB_133_CK		46
-+#define CK_INFRA_IUSB_66M_CK		47
-+#define CK_INFRA_IUSB_SYS_CK		48
-+#define CK_INFRA_IUSB_CK		49
-+#define CK_INFRA_IPCIE_CK		50
-+#define CK_INFRA_IPCIE_PIPE_CK  51
-+#define CK_INFRA_IPCIER_CK		52
-+#define CK_INFRA_IPCIEB_CK		53
-+#define CK_INFRA_TRNG_CK		54
-+#define CLK_INFRA_AO_NR_CLK		55
-+
-+/* APMIXEDSYS */
-+
-+#define CK_APMIXED_ARMPLL		0
-+#define CK_APMIXED_NET2PLL		1
-+#define CK_APMIXED_MMPLL		2
-+#define CK_APMIXED_SGMPLL		3
-+#define CK_APMIXED_WEDMCUPLL		4
-+#define CK_APMIXED_NET1PLL		5
-+#define CK_APMIXED_MPLL			6
-+#define CK_APMIXED_APLL2		7
-+#define CLK_APMIXED_NR_CLK		8
-+
-+/* SGMIISYS_0 */
-+
-+#define CK_SGM0_TX_EN			0
-+#define CK_SGM0_RX_EN			1
-+#define CK_SGM0_CK0_EN			2
-+#define CK_SGM0_CDR_CK0_EN		3
-+#define CLK_SGMII0_NR_CLK		4
-+
-+/* SGMIISYS_1 */
-+
-+#define CK_SGM1_TX_EN			0
-+#define CK_SGM1_RX_EN			1
-+#define CK_SGM1_CK1_EN			2
-+#define CK_SGM1_CDR_CK1_EN		3
-+#define CLK_SGMII1_NR_CLK		4
-+
-+/* ETHSYS */
-+
-+#define CK_ETH_FE_EN			0
-+#define CK_ETH_GP2_EN			1
-+#define CK_ETH_GP1_EN			2
-+#define CK_ETH_WOCPU1_EN		3
-+#define CK_ETH_WOCPU0_EN		4
-+#define CLK_ETH_NR_CLK			5
-+
-+#endif /* _DT_BINDINGS_CLK_MT7986_H */
-+
--- 
-2.29.2
+We could add these values to the binding so we could check for misuse.
+
+The range of values seems to also cover those supported by the
+alternative R0/R1 settings. The values for kprow[01] and kpcol[01]
+seem to be different though.
+
+We should get rid of the MTK_PUPD_SET_R1R0_* macros at the same time.
+They seem to be some magic values used with bias-pull-*, which is not
+how the properties should be used. At the same time, they overlap with
+mediatek,pull-* properties.
+
+It would be great if we could standardize on the generic pinconf
+properties, and also use real values that fit the requirements of the
+properties, i.e. using real resistance values. I'm not sure if it
+would make sense to enumerate which pins support which configurations
+though.
+
+
+Thanks
+ChenYu
+
+
+> > Then we can specify the setting with the standard bias-pull-up/down
+> > properties [1].
+> >
+> > Also, please ask internally if Mediatek could relicense all the header
+> > files that Mediatek has contributed under include/dt-bindings/pinctrl/ [2]
+> > to GPL-2.0 and BSD dual license. These files are part of the DT bindings
+> > and we really want them to be dual licensed as well, and not just the
+> > YAML files.
+> >
+>
+> ==> We will confirm it internally and reply it later.
+>
+> Thanks.
+> >
+> > Regards
+> > ChenYu
+> >
+> >
+> > [1] https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/pinctrl/pincfg-node.yaml#L37
+> > [2] Note that a few files were contributed by other people
+> >
+> > >  #define MTK_DRIVE_2mA  2
+> > >  #define MTK_DRIVE_4mA  4
+> > >  #define MTK_DRIVE_6mA  6
+> > > --
+> > > 2.18.0
+> > > _______________________________________________
+> > > Linux-mediatek mailing list
+> > > Linux-mediatek@lists.infradead.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
