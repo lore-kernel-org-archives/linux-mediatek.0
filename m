@@ -2,86 +2,85 @@ Return-Path: <SRS0=WTSR=MS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=0.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 737DBC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:09:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9314DC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:16:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B47BF6056B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:09:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B47BF6056B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 559D560F0F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 05:16:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 559D560F0F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BxoNsLgrew+fVdXlkzM2H5WYjeh+LzZN1zwUrha56Ms=; b=a5p6q6+3/OtYr5
-	x8edHGr5y/Gol+uDEZ++d7kBm/2RQMnt6jnX6tSJn3AfIZKRVT4pjB/6voZOu+j+AluBoUDfvbN4e
-	N/6iLnx7d/aPnE92hkZuB9befGhpmye3pB/TNM7V3+5IJinIiVmAA3qMhvIGYxXitKYV3y1OIl5qe
-	WovWnguTCG5bw0TZFLIED2HdL7JrQ87rt1Uojg9Kt1Er3omtBuYS6E65wjlKnp04iK+BrhRR3QmtB
-	Dcmz+2IdtpTH/OMp2y/r/a7dHog2hVM3mRqFUpOQcizLLaXGgTsgOG46KZPM3F8Csq6WHcZQawF28
-	IdhwmxSOs/H9CDBxFUEg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ywrOjAc7MGTzCBT54F7ihLmktTE2G3Ny1mABcLd+4sc=; b=NrjL9sZdQyfZlO
+	vFzpHwN1g8fMrxH8p/6/aIgfs2K/AtpijCAovRVnGPs71SLudzue0N7qIMHd4gYeakmJaz2/6lVri
+	LDMiNhqBNTivAQ3xSXGHfo/mlOIqMKNpJoALmLnIfxgPsdpoYC3o3Mo97assMqBWWrkcW2aHzSywU
+	/02U2cLCAEvttGSUL0EVE5AEh0oXGc0AQURVNvmbKMcyC1cMuW4Ek5n8xTXiBaZHv9LF/lx1a5Ggf
+	m6mT/GaYzGiKyMX60RjeF0ynkoWP2o7Hh0dTGdsVtRW6vkZRSMnuA5qkhw8ydvvFHVhCV1EiVnb8g
+	PDXetrdrs2yXaLXGmINQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7srC-009c4V-Om; Mon, 26 Jul 2021 05:08:50 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1m7syX-009cwZ-F2; Mon, 26 Jul 2021 05:16:25 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7sr9-009c3X-TI
- for linux-mediatek@lists.infradead.org; Mon, 26 Jul 2021 05:08:49 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- gv20-20020a17090b11d4b0290173b9578f1cso12126036pjb.0
- for <linux-mediatek@lists.infradead.org>; Sun, 25 Jul 2021 22:08:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=q19QZx3IM7uTYknYeZNzKDjl5AnKkceiIehImoXzjxY=;
- b=CZwPjWqV6j/Knp8s+qP42VKurVJ7iRtYSe7bZAsIb0X+kP/kjIqY9XEyX+FF/s0oXS
- OVkuYjiP7st6B/JKf5Mcff0AmZmDvoBaE6dDbA8MLHCfceW0Vyit7zkCByRGqUVTKHPj
- B0BNVVDg/Nx+woF7Ld5wL/jT3mYvue9wtfkTg=
+ id 1m7syT-009cvI-Ov; Mon, 26 Jul 2021 05:16:23 +0000
+Received: by mail-qk1-x731.google.com with SMTP id z24so7732609qkz.7;
+ Sun, 25 Jul 2021 22:16:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=XygC5wCkMDbFQQ9ce88kjiV4VAshB5QTsAEs+cXfzBo=;
+ b=V8MXuFFKyGipObIamnLlOLefvbGxx8fkYXPtJXfQaR6zPfL/sGcnUox+MUW6t3kNhX
+ BJw+rGDeH1JGkQSSG5zJynhThfUINGX2dPi+NCPN48fkRyFn+aFXi/AcO/7cJJDAM5DF
+ AL6dsSpy2Ahm28uUQTYOAWlKSxNTTN0m+9KeJCuV4LpaNH9lEDGYei1zpZngRnyIGv16
+ jXfdiwJK+om/0/+qnATixilPqLd6igKtGOdGYMjTe62l4xcIMK/4sYegrpvGoyHBq7pP
+ l5uhhjp/yZ3Xus6oGwGx6pPMBDxHUpsiKqatKgzcknjU0EAzy2OyVNe2zzIyeK0md5Bl
+ 6+Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=q19QZx3IM7uTYknYeZNzKDjl5AnKkceiIehImoXzjxY=;
- b=HQEWVnJj2SyB+bNoHBZk/yO+XaeWZKR/beqF3ZF2v94B6BURRmQr8jFhNkdhG5iD5q
- FV9i+127E0aE1l2HhqlYOrRLJ5wIlkOAQtC6KbK73b8Dv5whfsBAC6VIhoS+zQus7+pJ
- HfcQgWhFXqLsYCV1k9qwxw8yY9E/Y8McnboQI+ueUgC3DHHzwllqg1I2pMgvk3kzHUip
- LE9YeMKOdyStYlsD1jH7s0bVJzZ/qAZ5H+hVzk/F0QjDBrFTrPPgcchO6IqvhzL19RC3
- MHhHTlwh2uNjIhdB6IdtFfL4bLc42BQWdefTkyYs5AD3Lrym8wBh3kNRTmuekpjTEzjf
- 6Omw==
-X-Gm-Message-State: AOAM533xCHZk5wLsmlDFFvD5pVzQ5l6LuEEwMGjexYw2oLZaw1sewtkK
- EKMuGRQQZexX/SIwzlba1OWnCQ==
-X-Google-Smtp-Source: ABdhPJxNYNIzJ6h+knYVR+R+nInHYQ0LoXhr0E0f86kyTkieRytU+Cg57mNifxFausYXPKEyySAXsQ==
-X-Received: by 2002:a17:902:c10a:b029:12b:565f:637a with SMTP id
- 10-20020a170902c10ab029012b565f637amr13037468pli.57.1627276123312; 
- Sun, 25 Jul 2021 22:08:43 -0700 (PDT)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:24d6:d449:2832:1652])
- by smtp.gmail.com with ESMTPSA id a20sm39810768pfv.101.2021.07.25.22.08.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Jul 2021 22:08:42 -0700 (PDT)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>, eizan@chromium.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: mt8183: kukui: Use aliases to mmc nodes
-Date: Mon, 26 Jul 2021 13:08:31 +0800
-Message-Id: <20210726050831.1917982-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.32.0.432.gabb21c7263-goog
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=XygC5wCkMDbFQQ9ce88kjiV4VAshB5QTsAEs+cXfzBo=;
+ b=DZuvU0X/3m6WY8eaRZh/koAAX3YiqMK3+fnXB+pL3s49kfJispC2PdQ0Z01Y9wv7ej
+ rGVOY2KMBHV588auSKHgIz2UDpdmzJ+vMkEZbblDVaVazL8wrM2DPHXgKFkWjIa5ILof
+ h9JCd4IEtCj9uAYVw6tvYbqPFC3ER27B7NqEyYxxRwcuvyAthVgDTMWhOjmwl/4aJmMX
+ QB+S6G9Vfbxvirzo5izzkL5nxXnNWFBGtKpNN1uNi0XZDju23/8Q1r31vvhRiwa9tgZ3
+ WCSVWY08dn3KlfFhOtQuqp+A3E+iffC4YVAt1Jpp8/r037c7vFtyVNNzbDQGLF8p9z3e
+ g2ow==
+X-Gm-Message-State: AOAM531FlN3c6C1DU6Oj8su+mkJJyijf0GLGf8MRcR4YmK2ajf/oFtWK
+ d9cwYdROYjTOifdwziKQ8tkNIGfKqi1TwBoO8bM=
+X-Google-Smtp-Source: ABdhPJxvuO0i1cOxHKEIeKjGh7PuOqW1BCoICcn1IG0kXrcAMZC5H6irn+d1FLDu5WKxOfVJpitbnWiFrFfoLek0xww=
+X-Received: by 2002:a05:620a:1278:: with SMTP id
+ b24mr15914369qkl.250.1627276579628; 
+ Sun, 25 Jul 2021 22:16:19 -0700 (PDT)
 MIME-Version: 1.0
+References: <1627100621-19225-1-git-send-email-chihhao.chen@mediatek.com>
+ <s5h7dhgi1e2.wl-tiwai@suse.de>
+ <CAEsQvcs3P+TqQFzQetPfRycpo66eJFwnzwhk2JyCXFaCLFHmFg@mail.gmail.com>
+ <s5hwnpehm7y.wl-tiwai@suse.de>
+In-Reply-To: <s5hwnpehm7y.wl-tiwai@suse.de>
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+Date: Mon, 26 Jul 2021 02:16:11 +0000
+Message-ID: <CAEsQvcumEDOKgUB6h2-im5QabhPfaSaU63RF8pegPt5ZCPx+Pw@mail.gmail.com>
+Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
+To: Takashi Iwai <tiwai@suse.de>
+Cc: chihhao.chen@mediatek.com, alsa-devel@alsa-project.org, 
+ wsd_upstream@mediatek.com, damien@zamaudio.com, tiwai@suse.com, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ matthias.bgg@gmail.com, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210725_220847_971024_04DD2CBC 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20210725_221621_865233_C2A60502 
+X-CRM114-Status: GOOD (  27.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,30 +97,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use aliases to mmc nodes so the partition name for eMMC and SD card will
-be consistent across boots.
+On Sun, Jul 25, 2021 at 7:44 AM Takashi Iwai <tiwai@suse.de> wrote:
+>
+> On Sat, 24 Jul 2021 17:04:13 +0200,
+> Geraldo Nascimento wrote:
+> >
+> > On Sat, Jul 24, 2021 at 8:05 AM Takashi Iwai <tiwai@suse.de> wrote:
+> > >
+> > > This looks like a regression introduced by the recent commit
+> > > d2e8f641257d ("ALSA: usb-audio: Explicitly set up the clock
+> > > selector"), which is a fix for certain devices.  Too bad that the
+> > > behavior really depends on the device...
+> >
+> > Dr. Iwai, perhaps we could restrict the generalized fix for the
+> > Behringer UFX1604 / UFX1204 with some simple logic to devices that
+> > only have *one* clock source.
+> >
+> > In that case the clock selector must be set to the only clock source.
+> >
+> > This way we keep the generalization without breaking devices with more
+> > than one clock source.
+> >
+> > Just an idea.
+>
+> I don't think it's easy to generalize.  All those bugs are more or
+> less BIOS bugs, and a logic doesn't apply always, just because it's a
+> bug :)  For example, setting the clock selector itself should be a
+> valid operation from the specification POV, while this leads to
+> breakage on some devices.  So, even if we add a more generic
+> workaround, we need to see which side effect is more commonly seen at
+> first.
+>
+>
+> Takashi
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+Hello,
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index ae549d55a94fc..ed499e17b6570 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -13,6 +13,8 @@
- / {
- 	aliases {
- 		serial0 = &uart0;
-+                mmc0 = &mmc0;
-+                mmc1 = &mmc1;
- 	};
- 
- 	chosen {
--- 
-2.32.0.432.gabb21c7263-goog
+Like I said in one of the other emails in this thread, it's hard to
+pinpoint a cause for the breakage of Samsung USBC Headset (AKG) with
+VID/PID (0x04e8/0xa051) without the lsusb -v of the device in
+question.
 
+But from the description Chihhao Chen gave in the original message,
+I'm *guessing* the Clock Source for the Samsung USB Headset (AKG) runs
+at 48000hz and that we'd see a 2x Clock Multiplier in the lsusb -v
+
+This is all a wild guess, without the lsusb -v it's impossible to be
+sure, but if I'm right then the valid setting for the Microphone's
+Clock Selector is the Clock Multiplier, not the Clock Source, which,
+remember, runs at half the clock, hence why Chihhao Chen sees half the
+data rate for USB IN.
+
+Unfortunately our kernel code presently *does* always set the Clock
+Selector to the Clock Source, which is a bad assumption to make in my
+humble opinion.
+
+The only valid case for setting the Clock Selector to the Clock Source
+is when there's precisely one Clock Selector, precisely one Clock
+Source and no Clock Multipliers.
+
+In that special case we may be able to touch the setting of the only
+Clock Selector to match the only Clock Source.
+
+And, frankly, the only reason we're forced to do that explicitly is
+because some Behringer gear (Archwave AG DACs) gets confused and seems
+to somehow keep the old rate on the Clock Selector upon sample rate
+change.
+
+Thank you,
+Geraldo Nascimento
 
 _______________________________________________
 Linux-mediatek mailing list
