@@ -1,71 +1,85 @@
-Return-Path: <SRS0=Hp3b=MR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=WTSR=MS=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 064E9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Jul 2021 16:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA32CC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 00:28:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA72C60F37
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Jul 2021 16:35:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AA72C60F37
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
+	by mail.kernel.org (Postfix) with ESMTPS id 8F2BD60F11
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Jul 2021 00:28:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8F2BD60F11
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kKCvHl6szjtvTvBefLicmc1eZ28uvsYBLsFrN6niey8=; b=b6fgQ/7365hCHj
-	SBF49wOCyYV6rSEFMn5h7o29Z6WEF45X8yQfniUnJEAOcgxhAP7g1m20dcfa0IBid2I14d0aU+Nhs
-	NI66OkRf+BkmCSpkZT0ZrYsoAPTi3x1vT2uAufrWAllLhVoG5H57JAEZB8YDTXBtO6ewXXplEBtbB
-	GU/uOwTmT/JmukU6/9lGU5WPghnHjGl1xznWpWiB0eLRsRL8VBhxrZ5B1DvKy4XGfcnAIaWO4g+FD
-	MBD53p+2eZdha1MzcBGJyUM5M4J1DH3NYF2vFQJQEiA6iFweeNuB1cuJibHKg/jxQKkbI+w/GSjBa
-	r1fdNjVrmfyL2XSC6dgQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Dihw5oivbMy+2jjNRh8uMWMAblS0XSfTsp5YcQUi57Q=; b=29sHmnAaDcnuNW
+	hOPgZCLcaf4ivoO2WEYTkF+MjQWxlwCpCie92Q3Hs6T6KMU9XFuE9koR6WXAYxyz1EAt0yye9TJDv
+	mY/GAzaW5tjZ6YUx8LkixT30WW9mVsvJ4bddSt3kEeQv2XvSVlz0DWLbLCS+yhfd8CK3y5WmrllqZ
+	RE0hbaFpNaeZFn0f1j6TWpXg6cJFWedMWfj5vUVskfnBxIFWtnAJtnK5RHDvkrtt2N64oY+/gAA6z
+	HolOUXDTtmDWzE/PWO05CAdvGwSv3twRLVoHW9dzaYGbyACtyEV4VHgIx90sczSUnoV9GljONYal7
+	KjdL1kyO4GeD/JqfkOWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m7h5x-008qPd-2R; Sun, 25 Jul 2021 16:35:17 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1m7oTZ-009JWe-P1; Mon, 26 Jul 2021 00:28:09 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m7h5j-008qO5-QS; Sun, 25 Jul 2021 16:35:05 +0000
-Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
- by mxout1.routing.net (Postfix) with ESMTP id 95A893FE0A;
- Sun, 25 Jul 2021 16:34:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1627230896;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=Lg1oxsELMZqDQIrjH4RSgZ9fqtlF3mLOVTFIS4nov8g=;
- b=o5maxEdrEe49lcIYpRM5ZHrnwMiylZPtlTDNW8qWdz9gjwfmB1xF56jNKZzSGfVoDlKXkY
- 02tkghIUpwlnzDuFxrvI4v71yLfo3zVKs43p4HTLMuaksu3tqV9WVdDFbtf904gQ6FLFmz
- 6TQAiXKH5li5nQ3EHpJoFrNAZviPo5w=
-Received: from localhost.localdomain (fttx-pool-80.245.77.24.bambit.de
- [80.245.77.24])
- by mxbox1.masterlogin.de (Postfix) with ESMTPSA id E80F440126;
- Sun, 25 Jul 2021 16:34:55 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] arm: dts: mt7623: increase passive cooling trip
-Date: Sun, 25 Jul 2021 18:34:51 +0200
-Message-Id: <20210725163451.217610-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
+ id 1m7oTL-009JVF-G6; Mon, 26 Jul 2021 00:27:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1033560F37;
+ Mon, 26 Jul 2021 00:27:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1627259275;
+ bh=5EChaJLtwzbVLsyJuV9buEjUeWDZmjFho5daWXnpViA=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=MppDXIdsiBMiySzBFpji3JswurhlZiUe4vRlRAsMMDXmb1oOYcXFlnh1ct7FL7/GO
+ +yB+20IZLC8fgYfYELzwf+WwfjDSS0/6c3FOxwdHBvChATAFfviwTAaeIpEE5vDTgS
+ rJKHJH3lNKZItUrFxKZqoqrJNWuQSbF+JuV/zi74WbTpbmRnV9vr7TYAkMEpSsi4cv
+ HLTrYfjOWYcqCwdWMaFYxDMdCJxKnhzWr4S0WEZidBtds36Krmi+BSZ1Abq7iM6bVc
+ 0JTBxQk8q503JTxwlGg8fYDGpKsClKjfR7UIQHfmZyLSpvi2G3VEb8TXQVMfvMbJ1G
+ FQ6UYY3V9bZ7g==
+Received: by mail-ed1-f45.google.com with SMTP id h8so8375784ede.4;
+ Sun, 25 Jul 2021 17:27:54 -0700 (PDT)
+X-Gm-Message-State: AOAM531TvOeKOBvbhw5T3wMP7VkBx94pPIYObKKzsCwkg/t9X0/IyKI2
+ NzKvddbrn0f4tlvVzzYpSjaLQR/aF4Zj9exovQ==
+X-Google-Smtp-Source: ABdhPJxRxMiVcAhVNADQkv4nKSd6s3qZWXOhXefQlHs2yzs/g7fStJDFNaMTrIHfMGLrgfiBNRfAzU7erf01ulqv+y0=
+X-Received: by 2002:a50:d71e:: with SMTP id t30mr6473038edi.72.1627259273649; 
+ Sun, 25 Jul 2021 17:27:53 -0700 (PDT)
 MIME-Version: 1.0
-X-Mail-ID: aaa04f1c-3dcd-4e4a-a25e-3c7da6c05f12
+References: <20210710132431.265985-1-linux@fw-web.de>
+ <456f0611-1fc7-75ac-ff45-9afd94190283@collabora.com>
+ <trinity-02bc17fc-b458-4d17-baca-8afe30e4c92c-1626110171249@3c-app-gmx-bs28>
+ <dbe23d2a-cd29-0782-1b7d-bcb5c6683607@collabora.com>
+ <6EF00182-1FF4-4061-BCE4-E2AD7275211B@public-files.de>
+In-Reply-To: <6EF00182-1FF4-4061-BCE4-E2AD7275211B@public-files.de>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 26 Jul 2021 08:27:42 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-2vJE_v2vV=fJqK9--yx=++P9x53T-g3Cv4qKfHhqbLg@mail.gmail.com>
+Message-ID: <CAAOTY_-2vJE_v2vV=fJqK9--yx=++P9x53T-g3Cv4qKfHhqbLg@mail.gmail.com>
+Subject: Re: Aw: Re: [PATCH] soc: mediatek: mmsys: fix HDMI output on
+ mt7623/bananapi-r2
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ David Airlie <airlied@linux.ie>, linux-kernel <linux-kernel@vger.kernel.org>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Frank Wunderlich <linux@fw-web.de>, Collabora Kernel ML <kernel@collabora.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210725_093504_047112_32722112 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20210725_172755_600956_BB3A8BE3 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,40 +91,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
-
-MT7623/BPI-R2 has idle temperature after bootup from 48 degrees celsius
-increase the passive trip temp threshold to not trottle CPU frequency at
-this temperature
-
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- arch/arm/boot/dts/mt7623.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index b7247ab082aa..11933494e03d 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -160,7 +160,7 @@ cpu_thermal: cpu-thermal {
- 
- 				trips {
- 					cpu_passive: cpu-passive {
--						temperature = <47000>;
-+						temperature = <57000>;
- 						hysteresis = <2000>;
- 						type = "passive";
- 					};
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEZyYW5rOgoKRnJhbmsgV3VuZGVybGljaCA8ZnJhbmstd0BwdWJsaWMtZmlsZXMuZGU+IOaW
+vCAyMDIx5bm0N+aciDI15pelIOmAseaXpSDkuIrljYgxOjA25a+r6YGT77yaCj4KPiA+T24gMTIu
+MDcuMjEgMTk6MTYsIEZyYW5rIFd1bmRlcmxpY2ggd3JvdGU6Cj4gPj4gSGksCj4gPj4KPiA+PiBp
+dCB0dXJucyBvdXQgdGhhdCBwcm9ibGVtIGlzIHRoZSByZWFkK29yIG9mIHRoZSBuZXcgdmFsdWUK
+PiA+Pgo+ID4+IGkgcmV2ZXJ0ZWQgbXkgcGF0Y2ggYW5kIGNoYW5nZWQKPiA+Pgo+ID4+IHJlZyA9
+IHJlYWRsX3JlbGF4ZWQobW1zeXMtPnJlZ3MgKyByb3V0ZXNbaV0uYWRkcikgfCByb3V0ZXNbaV0u
+dmFsOwo+ID4+IHdyaXRlbF9yZWxheGVkKHJlZywgbW1zeXMtPnJlZ3MgKyByb3V0ZXNbaV0uYWRk
+cik7Cj4gPj4KPiA+PiB0bwo+ID4+Cj4gPj4gd3JpdGVsX3JlbGF4ZWQocm91dGVzW2ldLnZhbCwg
+bW1zeXMtPnJlZ3MgKyByb3V0ZXNbaV0uYWRkcik7Cj4gPj4KPiA+PiBhbmQgaXQgd29ya3MgdG9v
+LCBidXQgbWF5YmUgaXQgYnJlYWtzIG90aGVyIHBsYXRmb3Jtcwo+Cj4gQSBnZW50bGUgcGluZy4g
+QW15IGZ1cnRoZXIgY29tbWVudHMgd2hpY2ggb2YgYm90aCB3YXlzIGlzIHRoZSByaWdodCBvbmUg
+KHJlc3RvcmluZyBvbGQgb3V0cHV0IHNlbGVjdCBmdW5jdGlvbiBvciB3cml0ZSBvbmx5IHdpdGhv
+dXQgcmVhZCtvcik/CgpBcyBJJ3ZlIGRpc2N1c3NlZCBpbiBbMV0sIFNPVVQgaGFzIG1hbnkgYml0
+cyBhbmQgbmVlZCB0byBiZSBjbGVhcmVkCmJlZm9yZSBzZXQgbmV3IHZhbHVlLiBPZiBjb3Vyc2Us
+IHdyaXRlIG9ubHkgY291bGQgZG8gdGhlIGNsZWFyLCBidXQKZm9yIE1PVVQsIGl0IGNsZWFyIHRo
+ZSBiaXRzIHRoYXQgc2hvdWxkIG5vdCBiZSBjbGVhcmVkLiBJZiB5b3Ugd2FudCB0bwp1c2UgdGhl
+IHRhYmxlLCB5b3UgbmVlZCB0byBpbXBsZW1lbnQgdGhlICdtYXNrJy4KClsxXSBodHRwczovL3Bh
+dGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtbWVkaWF0ZWsvcGF0Y2gvdHJpbml0eS05
+MzdlYmZhMy1kMTIzLTQyZGUtYTI4OS0zYWQwZGJjMDk3ODItMTYyNTgzMDExMDU3NkAzYy1hcHAt
+Z214LWJhcDQzLwoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4KPiByZWdhcmRzIEZyYW5rCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
+ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
