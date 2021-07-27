@@ -2,87 +2,84 @@ Return-Path: <SRS0=KH1D=MT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86F47C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4994C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:15:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E8206187C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:06:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3E8206187C
+	by mail.kernel.org (Postfix) with ESMTPS id 70A2261263
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:15:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 70A2261263
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ntUICWZE9a4LhZLPwYSychbQkv176zBiljRHb2XpdsA=; b=mzs3xJ+cvke2Dy
-	7H+U68uZuRjlnOup1Owz4wmvJMyOIdTI709zPpRcmRG4b9Y3foUcn5ZKVPNV6LoObsB9sHZ2x5gD4
-	mlzz2vu5tR1b8YtJ01hcT1iXa8FyAf5A3HynCO9mBUf8ZtRWZPzgr8HIiekGWeFtBL7360vVWM415
-	tmQG9WQnx39gyFOzASFOlpHkUw3SAllued8SimMdQdOlsYWKSAWNmMHM0us3Zp5EcqtFGevf13FiI
-	Aqw6guFBAPD7S9ySDHyGp0ialykWS5XCMOZX7KM1ptK/1oSqVOIA5bi5/Pr8RZ8yPO1ZamVZ59I47
-	PW0qy1OBWYQBEVT6PYIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WOwKxNKww7wemdO2vd8cBpArbmVq4XNP2+urmRBPDf4=; b=yVzGbezkLJnfMp
+	qhzLViv4CohDVfkZ+qvcmbbrsi6X4aFFMuTShH56OlSM460lziaqD84PWIv6s+hXGjiAuPfoA410y
+	TGIGtMxDDGpF/59Ozlrz4ruZ1hHSF1Bb6lXl2eNgkQz17tdCBGfPQdqL9vjUtDHRZt2hExhwbiBU+
+	toLxiMbe5a8DKu3LyosvUC4Kyuw/Y68PE8mdLcV7o63NevZxNPBSBjokPwTjAIvZdRddeloqSm2Rq
+	wNbDmBy0Up84va22Yp91vEsA/gBTc7qtdbIh8PvS3yU4jqh1m3QHGNvWyK0nf67jl+3n+Vw+yfmXI
+	fhCheJk185a9IgXycV5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8Kv5-00EYt8-NH; Tue, 27 Jul 2021 11:06:43 +0000
-Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
+	id 1m8L3J-00EaFk-9A; Tue, 27 Jul 2021 11:15:13 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8Kuq-00EYok-Sc
- for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 11:06:31 +0000
-Received: by mail-il1-x12b.google.com with SMTP id l11so11705278iln.4
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 04:06:26 -0700 (PDT)
+ id 1m8L3G-00EaDP-9Y
+ for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 11:15:11 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id d1so8105327pll.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 04:15:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KaH6OTwrWG90914prFT1/hBGveSe1LpJn6vY9Adila8=;
- b=SDh/ZiBj+wM/6RLopNPtxhhmjY4AOhwtUlsj7CBXB5kWyYXr4/eEwwMraRCCYOGBu8
- 4+gwT7UhgkK6MDRdhMlBprwwCgOKmjdnT+99U8rD/ZksvEtppzkTxzsX/KkM4vygStQR
- 5W8tG5BXychsijrX3WI5DDmbAZsvu6Xwzxre0=
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BHNyu7k4UK63DVq7rOYoExZI6cBgQIh7p/Fi6u7I8PE=;
+ b=DGLK8ZaGcLZ9qrMkM7KdMWjTsFlwbZzg7dIvgy3A8POI0ux2QLqiOutfmPLYOEy4S3
+ SP9jaEuFOZwpSipJm9CdJ26hVsVcFyDj2KUHgIZUqc0dxdkxJ7F20hWTGNo4LjSloYR6
+ 76hzq7Dk1EiJMfPvfji7Zk5dTMsT4XQXW9j8o=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=KaH6OTwrWG90914prFT1/hBGveSe1LpJn6vY9Adila8=;
- b=G91qw5RORpJd4M18yxA+aTCQG3GHmjS2j7PlCNubQbsFDisYLVhbZUdxTk+KB+fJrK
- 6Fpy/oqDovu+CYMFHd/2gC9FR074zopadnjUhN3RxsyPLFtiPQFG9w6gv4gApPdVJpTx
- A8z+520XFrIcTYz0TF15rXxi1+UI/DCMBseisyGGsHz6EsbzqYnAH9/d7TMIU4z/02Y4
- dvt/I6g1H/Po2s1Smy+Q4WwslnoUgWd2qfYNW+bXkoGlsJnLTALKTLvrRlkur9yZi8Ln
- cdYUGARsEc1b8GnHNMecg5X934pn3P7wPCsbnu24gKmz3FUFGsoZ+Z7cwxu8fn4pjCs3
- 0L3g==
-X-Gm-Message-State: AOAM531uYdNIpUe4ZBkDudk1j5zHMYmAKU0yIfX0sf1/Au4D6eeshWyh
- UUMHwp2J1SN+5/29+GHdyuABZvimaw7xXSK61P9YJg==
-X-Google-Smtp-Source: ABdhPJzN3bMcohyLx+BmCBR3X6vZL0tTvooFjXp3y2FFWtT9H5YBTmKIeAGF+vyrAAa7JitBin1NHaVrXGI4vBGiKTs=
-X-Received: by 2002:a05:6e02:13e2:: with SMTP id
- w2mr16501620ilj.308.1627383986040; 
- Tue, 27 Jul 2021 04:06:26 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAGXv+5Ev4QU72cMqMW7sA=dijzh7-DCsfHY+Lmqd36uzg_7Nww@mail.gmail.com>
- <CAJMQK-hH5HM5iN4q6UgUf8T5fwj+0oULKPw=XafYOPrki-aDkg@mail.gmail.com>
- <CAGXv+5E9MWzHtJLEab_ZKQNgVqhL5H_Teor9c5zCQD8OHOcYYA@mail.gmail.com>
- <CAFqH_51Sg0h+CC9whUAgpp80OxDsB461NYSdKQvGxho_VF8oJg@mail.gmail.com>
-In-Reply-To: <CAFqH_51Sg0h+CC9whUAgpp80OxDsB461NYSdKQvGxho_VF8oJg@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=BHNyu7k4UK63DVq7rOYoExZI6cBgQIh7p/Fi6u7I8PE=;
+ b=ROx6UJfBsA+UFqqyQ2laqfcSgv6Vwz+j0+Gxh00DWRywTFubQA0I8LF0fdYEWN2xyt
+ H9yICOERq4Ow3B5UcFL67AYK2/EgosxgvV+PbjRQUxr23FpPjCBbZfyPj1zvPIHnd0K8
+ c2pmvzL58QzsT4Yvk6LeL3huGx162BVHzi9+6bGTQvi1LbGk6m06hwnT+ku37HsktfS9
+ S4AkiQYI9P46Tm3/KOSaSZfP2/WSoAbDV5K+jpaD0FzfIG9ofDkbYUvHXhf/4wI4eTXL
+ l0ZGDuT+IYLa3NKs0beT3rJvgwzk6PWbFyIrYH7m82CwAKpeg8kbn1tamf1JYRAB700+
+ P0dw==
+X-Gm-Message-State: AOAM533L9JrtPADCTBFdxLmZR1AjDaKWrwpekNC6VIEB6MNqZ8r5uMSu
+ 55Tjsx8PtbeYFi7vW6SoZOWYnw==
+X-Google-Smtp-Source: ABdhPJzIMWQIKWL3D4AB+HqQObX91XCw/5cAdIwjOgJtQrBbMGoOuLOom54j+toKSzvKj0sN+PeEJw==
+X-Received: by 2002:a63:5344:: with SMTP id t4mr5589835pgl.372.1627384507409; 
+ Tue, 27 Jul 2021 04:15:07 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:5176:76cc:2193:9b8f])
+ by smtp.gmail.com with ESMTPSA id t1sm3362305pgp.42.2021.07.27.04.15.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Jul 2021 04:15:07 -0700 (PDT)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Tue, 27 Jul 2021 19:06:00 +0800
-Message-ID: <CAJMQK-j_SFVOA7KcZpGaE+mS3WZf3fe9CaXw4pHPND_UWUU6Kg@mail.gmail.com>
-Subject: Re: arm64: dts: mt8183: Incorrect mediatek,pull-*-adv values
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, linux-gpio@vger.kernel.org, 
- Devicetree List <devicetree@vger.kernel.org>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, eizan@chromium.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/2] arm64: dts: mt8183: kukui: Use aliases to mmc nodes
+Date: Tue, 27 Jul 2021 19:15:01 +0800
+Message-Id: <20210727111502.2506311-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.432.gabb21c7263-goog
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_040628_956798_204C353D 
-X-CRM114-Status: GOOD (  23.07  )
+X-CRM114-CacheID: sfid-20210727_041510_411929_662AE937 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,94 +96,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 26, 2021 at 5:48 PM Enric Balletbo Serra
-<eballetbo@gmail.com> wrote:
->
-> Hi Chen-Yu and Hsin-Yi,
->
->
-> Missatge de Chen-Yu Tsai <wenst@chromium.org> del dia dl., 26 de jul.
-> 2021 a les 10:58:
-> >
-> > On Mon, Jul 26, 2021 at 4:50 PM Hsin-Yi Wang <hsinyi@chromium.org> wrote:
-> > >
-> > > On Mon, Jul 26, 2021 at 4:20 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > > >
-> > > > Hi,
-> > > >
-> > > > I was looking at MTK pinctrl stuff upstream, and it seems there are a few
-> > > > `mediatek,pull-*-adv` entries that have invalid values:
-> > > >
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-down-adv = <10>;
->
-> The confusion comes probably because the binding says that this value
-> is valid, see
->
->    Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
->
-> it'd be nice to convert that binding and the others to yaml format and
-> remove the possibility to specify it in binary format.
->
->   Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
->   Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
->   Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
->
-> Should be pretty easy as there is already an example:
-> Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
->
+fa2d0aa96941 ("mmc: core: Allow setting slot index via device tree alias")
+allows the use of aliases to number SD/MMC slots. This patch use aliases
+to mmc nodes so the partition name for eMMC and SD card will be consistent
+across boots.
 
-Hi Enric,
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I've sent a patch for converting these into yaml here:
-https://lore.kernel.org/patchwork/patch/1468449/
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ae549d55a94fc..ed499e17b6570 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -13,6 +13,8 @@
+ / {
+ 	aliases {
+ 		serial0 = &uart0;
++                mmc0 = &mmc0;
++                mmc1 = &mmc1;
+ 	};
+ 
+ 	chosen {
+-- 
+2.32.0.432.gabb21c7263-goog
 
-Thanks
-
-> Thanks,
->   Enric
->
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-up-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-up-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi:
-> > > > mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-up-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-down-adv = <10>;
-> > > > arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts:
-> > > >  mediatek,pull-up-adv = <10>;
-> > > >
-> > > > According to the bindings, the values should 0~3. <10> is probably a
-> > > > incorrect attempt at using binary representation, which is wrong. This
-> > > > probably leads to the pull-up/down getting disabled or ignored.
-> > > >
-> > > > Cound people still working on these two devices take a look?
-> > > >
-> > > Thanks for pointing this out. It's an incorrect value but 10=0b1010 so
-> > > the result is same as 2, since the driver test the value by checking
-> > > the last 2 bit. We should still fix this in dts.
-> >
->
-> I see that the are
->
->
->
-> > That probably explains why no one noticed.
 
 _______________________________________________
 Linux-mediatek mailing list
