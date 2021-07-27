@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5EA3C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:27:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D826C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:38:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9528460FEE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:27:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9528460FEE
+	by mail.kernel.org (Postfix) with ESMTPS id DF9C961050
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:38:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DF9C961050
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w6cuIDZaZ44uKhWVJrUo+aDcFVgxDhJ0abw/WONUY9s=; b=wucK7lc2v+wS6o
-	KbXnecDp5f8aX+w7Z3++r7Lod2bwsh20KHw9d6+tftaibr48T3AKzUjhDeRikyrt/sx0s07MBADdq
-	QyEwktM+92qmCIcbTUfca7TWPRFcWUCc/T6AE0YxUq9T+pe4K54seYQoPzCSGQKK1sNVBFgHE8BQc
-	R3aTbimSNIp1+rootOOLWB06TC7xliD4MzCleWG75bU9JIVtg6F84lrv+OiDLd3pejvt6nflbWGJZ
-	5x8Y8GKIf4IYT3MW0x/ywGuqOBbdPDmR0PBVq1LyyGgD6lQLGGqLGhpLNGmkuaugYnBCVeO1nH7Sd
-	iGHEFkBaBR8hzWlj+0vg==;
+	List-Owner; bh=/jzuWn1Z6LDAgPKAhbaLKz8vqbvzaZ8cqzJrY36Rm7Q=; b=vczZd6s9btAnF2
+	CiDDHgzphxG9jX56lF9d/bzk5C/gNeFhq/pnwYmt0sVblEuj2A/0H8Ys3dCFR9dM3Dinvcp37iPYS
+	1IvOZ09bl5jvmKnLXPC0DpoeDGKhUZiwZEinbnY/JNjhJAkcBAf5rg5ebduhy5H+H+c3JS7/YHmiU
+	J4h++0WcgZGokyX8i1hcyee/cwnHD4vSTMIRpTWmES3BYnzcdKVqenKui0zL97Uej3ts9Fyux+MKO
+	j7R5nACMGxcgz3QLT2lGHaS6cO67N6eAC6Vc6XEyw988pWh/FBFjDMjw4TW3VnE7FDdqT51Bd3UD0
+	fVUHfvhvazBYMG0lAD0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8Egy-00D9rA-5L; Tue, 27 Jul 2021 04:27:44 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1m8Eqq-00DBzF-RO; Tue, 27 Jul 2021 04:37:56 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8Egv-00D9oW-8e
- for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 04:27:42 +0000
-Received: by mail-pl1-x633.google.com with SMTP id a20so14569966plm.0
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 21:27:38 -0700 (PDT)
+ id 1m8Eqd-00DBxz-Tl
+ for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 04:37:45 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id mt6so16079264pjb.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 21:37:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GXQhLU0KIJvDHX5sb6jl1W+wgDKUS1guQrE0JC7Yn3Y=;
- b=RKYTKymblzDOhbLv7PWiW7eSUaUlTkIvosw0kwN52o4QZ13MQ+pI3E3f9BLAXyxuRV
- zPgtVU+DORJ+W+MTaB1FlAT1p+dCRv1YFYa0QtARGTVKNCLUmTgFRwX+xdOLhdU6CXa8
- Qz56OKEZVFeHnr8rYzXRXJ5//xYDcWaG6H1Es=
+ :cc; bh=sHCpjMG3bJheGspgPwPgXoTuuhMeCojN1Vcw1raYNbg=;
+ b=XImY6I5BO9PSo6vX6AyLIflKwvN5weee2a4Oh4nHjX8SbZeTMAYJXg0QeK2FKOnAh2
+ J7Iao0Pmh2ZE30+livAgtKfi6ljvex1FccPw3GWqwx2pJ3E6axqUC/LTf0Atarck2uor
+ KuPkt8VrZlVVYG3ft4eCSuLwyqmxlEFIJFots=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GXQhLU0KIJvDHX5sb6jl1W+wgDKUS1guQrE0JC7Yn3Y=;
- b=rYIsCQXgIAn8BYquaN+ILK4UT8zpV1aM6EbR8+pHFkXyYfAhcE6jLqy7tMGcR1hG2k
- ETemIi3ZYLC5eIChyyQV4YVcmEKwgH9TSXjjnZiDs9YV5SV4UU+lrINqim2VBrcb3/Nr
- YOhUkZ4ghIVYCMeKM7f0y8Pux5RMzoffNTXkCFSsrpmtOsWgOZ0S23yt7tR5ngcQ5SpE
- cj4BbcMJpengAxE1mk0m+2yGOrxFGwgrr6WcAizdzYkELs9aKXl3oU7iQhgYdK9NhMAd
- tQWOcCjvOUCsnOMES+wfprWwFmf/nXr+ana/W6JerCplipJoJfwX+CD+RO36k2l8l6w/
- wwzA==
-X-Gm-Message-State: AOAM532T0ZXKDInLL2tt5EteVtn9HjJVbVfcDSZYJS+yU7aj4elQjfJm
- AwVVBF/MY+nYkxo112ZiiUkZh82J4CmEpTBIV7VDrA==
-X-Google-Smtp-Source: ABdhPJxkczvv9x68Kqa5d1aZDdqcHw3Asoy9mySgxuq7/MfpZdsYtC1IRV3W3oHxZjYYhlcYOpCkAF6RuR5x8MDB0sg=
-X-Received: by 2002:a17:902:b788:b029:12c:2888:9589 with SMTP id
- e8-20020a170902b788b029012c28889589mr6345723pls.60.1627360058151; Mon, 26 Jul
- 2021 21:27:38 -0700 (PDT)
+ bh=sHCpjMG3bJheGspgPwPgXoTuuhMeCojN1Vcw1raYNbg=;
+ b=mSE+Aoi2uVxPcnT5n6YX9GVNFCQYK/hg6anbxU/tJNTYFplP9CB1QeXwSEtRo0Ctdd
+ Mypwf3axo/dxVuXhXbvzcoID7JsXsvXWNx8mWw9ge+XVeuVkUg3RVK2A4jRBbB93WXkR
+ FmKDz2Ac0BmWJ8Cv+tT1xm9AWxJzvk4ZZBaTbZUzXn64guHwDC8apzLRTFOTaua2m3b2
+ d+eXudQJnZ53Hn0ZOoAuihj0/olDVRtc8AZJjYjgwu/EvJj5d60abJbYN+W7aMGwP1Qi
+ dhkAbrPu6FPSH3b0RAfSFHDd0RO1H0TATsCDXhKCJWTQDrV6hjNCv5+u2UDVjBUzeHXl
+ dMRA==
+X-Gm-Message-State: AOAM532zzImi9KH4crjctI6K/yzxmGmhK7rDFAjD+l9/CPxKCnUPfZVv
+ hLG2FQ0EWW7BR1YrzNp7CYd4zl5kZrz5VwU+OFfMSQ==
+X-Google-Smtp-Source: ABdhPJxoMQnZyC8tW7HpIKMFF7+41G/TLa4K7yYK4o+MYvmtPlRKMcIhTLK2m30euPRcf43I2fDHvUwmfzLx9pB6wjg=
+X-Received: by 2002:a17:90a:8403:: with SMTP id
+ j3mr2289387pjn.112.1627360662060; 
+ Mon, 26 Jul 2021 21:37:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20210706061920.16013-1-chun-jie.chen@mediatek.com>
- <20210706061920.16013-9-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210706061920.16013-9-chun-jie.chen@mediatek.com>
+References: <20210726105719.15793-1-chun-jie.chen@mediatek.com>
+ <20210726105719.15793-6-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210726105719.15793-6-chun-jie.chen@mediatek.com>
 From: Ikjoon Jang <ikjn@chromium.org>
-Date: Tue, 27 Jul 2021 12:27:27 +0800
-Message-ID: <CAATdQgCb5WxE3MjFzWsB5s-rjtTMGF7a3bNbrO8OmRiFrOLEGg@mail.gmail.com>
-Subject: Re: [v13 08/21] clk: mediatek: Add mtk_clk_simple_probe() to simplify
- clock providers
+Date: Tue, 27 Jul 2021 12:37:31 +0800
+Message-ID: <CAATdQgBdSqotJ_ZWSGzq7SbK-=qzwc+ptQidNgXFjR2C2VcPgQ@mail.gmail.com>
+Subject: Re: [v14 05/21] clk: mediatek: Get regmap without syscon compatible
+ check
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
@@ -81,11 +81,10 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
  <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>, 
  Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- Weiyi Lu <weiyi.lu@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_212741_390179_C019890E 
-X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-CacheID: sfid-20210726_213743_988400_DA888B96 
+X-CRM114-Status: UNSURE (   8.07  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,15 +102,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Tue, Jul 6, 2021 at 2:28 PM Chun-Jie Chen <chun-jie.chen@mediatek.com> wrote:
+On Mon, Jul 26, 2021 at 6:59 PM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
 >
-> Most of subsystem clock providers only need to register clock gates
-> in their probe() function.
-> To reduce the duplicated code by add a generic function.
+> Not all clock providers need to be marked compatible with "syscon"
+> for system configuration usage, so use device_node_to_regmap() to
+> skip "syscon" check.
 >
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 
 Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
