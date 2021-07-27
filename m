@@ -2,71 +2,87 @@ Return-Path: <SRS0=KH1D=MT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 02EA6C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 18:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B502BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 18:28:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF77160F59
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 18:13:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BF77160F59
+	by mail.kernel.org (Postfix) with ESMTPS id 86D4060F8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 18:28:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 86D4060F8F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LphIuMnLl7frHupxIYa/qcY6uFwx1zqvdy5LqbUpeFM=; b=vopgfc1lPJTq51
-	FkfrMvTEe/LXZKCftjPYd6vfTVDvW3DU3bBfaxVjuuYBjW/q3aOMeWuayoVy1p1SQM/niq7v5j4Ix
-	yZRrUmmHY1h6Ei+0484k9aCStzV69V57Kw71d0ZJ2y1k9Sb7WIz0tY3BrLdPYDm7YaIxbOqhVNUDB
-	oi9Aaz6432M3b6EArA9KE9zsX37uG0o+LVn+a1se+bsNyD5Vn+5J5q60AyX1BnQ0JH/SjOdHaUQXO
-	s4Ut1z+YU140gqMiexGf1uk/i5BKc4MWeeXbGH3T4JtASK8y7j3SXjo6hpxw3tp4FG9yEPKmM7IRw
-	lSJ/hAJZXh8pAd5HXnAA==;
+	List-Owner; bh=ksrmK6wMzB+Fl8c3pUHEKrr0uD0d8UA3YfUB9DhNGhI=; b=FE3ZkBQl3rvWO4
+	MEtQHdDNxI3kdHsZqw/d4ess78ZyRrnzofkc88r8Ft10ciiFjjYJ3SRHDBaxB4e6HVvnCBth0Q+XV
+	ANb0mTCiUR9xj8XDYaB21XXx5fYjm4LkmQ7+fYllegCmPAOhzfJLsdSIbXCo2YSsclOgTju0eCnpv
+	yqKx8UOv5RLTiTrHj1ITG2r5jxjV31zo4+AoDbz4lb1cWCm4YTInoPqlWqFXqYG8GKbNKbcL19tWK
+	bI+NwphAqNQ3AnKe8Okv06n1Vs+C8I7ULV7gBALyvhZhy0cJ1g5NUwmW7FWZU1aYuWJLUEz1gyMNT
+	Pq+144c6phXw9tCF7E0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8RaA-00FlaQ-HK; Tue, 27 Jul 2021 18:13:34 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m8RoG-00Fs7D-KF; Tue, 27 Jul 2021 18:28:08 +0000
+Received: from mail-il1-f179.google.com ([209.85.166.179])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8RL4-00FeUh-4r; Tue, 27 Jul 2021 17:57:59 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A42906056B;
- Tue, 27 Jul 2021 17:57:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627408677;
- bh=NApySyNNkHtOVvBftwxAyibsqZWM7xqG2gsVMaN0Rlw=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=YNieRNQGb5tD8D3X9F4qWchot+fVqvWWBgGSvQWNYq9O3VRx6VutzOiTRDFhwIoYQ
- 1aFaIaTW3hTUK/dKj7kD6/6JwEQUlnjDtJe/ZjopjoiNQCZ2+/n6JCjl1e80UorCr6
- Wmdd9GxawdHh2idWaMywtkkhAeR50W5CmHT4gzD9kCxrwTNJ/PGjCY2fvfvEAAFD3H
- WoUQiDFOzs8+XasFOeO1pVTYpM9WOMzY+FllvfX7CsFDCcW6APFgVNnn1c8OZNJckw
- SRozZWpib/DI59OhrD8G0anP7ICrXUaMJnZdyJLEC6jD1Tj6TJpVh7tGL+rNcieWUb
- TcUKIZE9YAjeA==
-MIME-Version: 1.0
-In-Reply-To: <20210726105719.15793-22-chun-jie.chen@mediatek.com>
-References: <20210726105719.15793-1-chun-jie.chen@mediatek.com>
- <20210726105719.15793-22-chun-jie.chen@mediatek.com>
-Subject: Re: [v14 21/21] clk: mediatek: Add MT8192 vencsys clock support
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Weiyi Lu <weiyi.lu@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
-Date: Tue, 27 Jul 2021 10:57:55 -0700
-Message-ID: <162740867556.2368309.6510644230868732963@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+ id 1m8Rmr-00FrPM-0E; Tue, 27 Jul 2021 18:26:43 +0000
+Received: by mail-il1-f179.google.com with SMTP id a14so218301ila.1;
+ Tue, 27 Jul 2021 11:26:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=3DEZXygmMlbze51t61j0f6IluPe9JhL1JPPs4o0+k/c=;
+ b=C0B4WtJ+xF6vCrl+y096540oOKMtiM19eGNHrklOa8tAgVebApqCTkxvnMBuj7Xc1v
+ zcJDASsChJQdiPsSGekzIedkkNLUNUkPtv3dBQdMBRrazMBtey9+I4DiqGz4/5X7y30B
+ u1iVVS0LPxSO49HqkY01mInT4W0ElSLA2By4ZbcNfPgzd6N4ztdJA/0w/RltTgBb2lE5
+ fwXrRNr0XJDJGuUBgUinfwi/tqtsYUs3IB0S5EyPqjLUjXKveICXFGVzxO00CN9Qifz1
+ RW7irNz1+iOeqva4L/rvehLKpB1iPtaJNjrHTt03pknsyrZrZS34mm83WUKV3U808sqM
+ fE5g==
+X-Gm-Message-State: AOAM533XE+6MhsiSr5ZKpIwY81RzyiVPfuSv9h3efXnPCJqkZERIoH8M
+ eN3wDmjFHO2Xu1T8u4IKiQ==
+X-Google-Smtp-Source: ABdhPJwfRr8AvkY38MhYpDZWVP8j2iQzXoN0b+J+lJpwI2+Gqkmx9sagb5uvIKdLN+TXbdBGUM5t2Q==
+X-Received: by 2002:a92:7d08:: with SMTP id y8mr17500252ilc.111.1627410399986; 
+ Tue, 27 Jul 2021 11:26:39 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id i11sm2301722ilb.15.2021.07.27.11.26.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Jul 2021 11:26:39 -0700 (PDT)
+Received: (nullmailer pid 3210651 invoked by uid 1000);
+ Tue, 27 Jul 2021 18:26:35 -0000
+From: Rob Herring <robh@kernel.org>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-media@vger.kernel.org, Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Tomasz Figa <tfiga@google.com>,
+ Irui Wang <irui.wang@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com
+In-Reply-To: <20210727101051.24418-14-yunfei.dong@mediatek.com>
+References: <20210727101051.24418-1-yunfei.dong@mediatek.com>
+ <20210727101051.24418-14-yunfei.dong@mediatek.com>
+Subject: Re: [PATCH v3,
+ 13/15] dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for
+ mt8192
+Date: Tue, 27 Jul 2021 12:26:35 -0600
+Message-Id: <1627410395.860934.3210650.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_105758_329565_2FA76931 
-X-CRM114-Status: UNSURE (   4.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210727_112641_159459_B5CEFD25 
+X-CRM114-Status: GOOD (  13.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,19 +94,147 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chun-Jie Chen (2021-07-26 03:57:19)
-> Add MT8192 vencsys clock provider
+On Tue, 27 Jul 2021 18:10:49 +0800, Yunfei Dong wrote:
+> Adds decoder dt-bindings for mt8192.
 > 
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > ---
+> v3: Fix yaml check fail.
+> ---
+>  .../media/mediatek,vcodec-comp-decoder.yaml   | 154 ++++++++++++++++++
+>  1 file changed, 154 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
+> 
 
-Applied to clk-next
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+make[1]: *** Deleting file 'Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.example.dts'
+Traceback (most recent call last):
+  File "/usr/local/bin/dt-extract-example", line 45, in <module>
+    binding = yaml.load(open(args.yamlfile, encoding='utf-8').read())
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 434, in load
+    return constructor.get_single_data()
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 122, in get_single_data
+    return self.construct_document(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 132, in construct_document
+    for _dummy in generator:
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 722, in construct_yaml_map
+    value = self.construct_mapping(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 446, in construct_mapping
+    return BaseConstructor.construct_mapping(self, node, deep=deep)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 264, in construct_mapping
+    if self.check_mapping_key(node, key_node, mapping, key, value):
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 295, in check_mapping_key
+    raise DuplicateKeyError(*args)
+ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+  in "<unicode string>", line 19, column 5
+found duplicate key "items" with value "[]" (original value: "[]")
+  in "<unicode string>", line 21, column 5
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+Duplicate keys will become an error in future releases, and are errors
+by default when using the new API.
+
+make[1]: *** [Documentation/devicetree/bindings/Makefile:20: Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.example.dts] Error 1
+make[1]: *** Waiting for unfinished jobs....
+Traceback (most recent call last):
+  File "/usr/local/bin/dt-doc-validate", line 67, in <module>
+    ret = check_doc(f)
+  File "/usr/local/bin/dt-doc-validate", line 25, in check_doc
+    testtree = dtschema.load(filename, line_number=line_number)
+  File "/usr/local/lib/python3.8/dist-packages/dtschema/lib.py", line 623, in load
+    return yaml.load(f.read())
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 434, in load
+    return constructor.get_single_data()
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 122, in get_single_data
+    return self.construct_document(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 132, in construct_document
+    for _dummy in generator:
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 722, in construct_yaml_map
+    value = self.construct_mapping(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 446, in construct_mapping
+    return BaseConstructor.construct_mapping(self, node, deep=deep)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 264, in construct_mapping
+    if self.check_mapping_key(node, key_node, mapping, key, value):
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 295, in check_mapping_key
+    raise DuplicateKeyError(*args)
+ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+  in "<unicode string>", line 19, column 5
+found duplicate key "items" with value "[]" (original value: "[]")
+  in "<unicode string>", line 21, column 5
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+Duplicate keys will become an error in future releases, and are errors
+by default when using the new API.
+
+make[1]: *** Deleting file 'Documentation/devicetree/bindings/processed-schema-examples.json'
+Traceback (most recent call last):
+  File "/usr/local/bin/dt-mk-schema", line 38, in <module>
+    schemas = dtschema.process_schemas(args.schemas, core_schema=(not args.useronly))
+  File "/usr/local/lib/python3.8/dist-packages/dtschema/lib.py", line 585, in process_schemas
+    sch = process_schema(os.path.abspath(filename))
+  File "/usr/local/lib/python3.8/dist-packages/dtschema/lib.py", line 558, in process_schema
+    schema = load_schema(filename)
+  File "/usr/local/lib/python3.8/dist-packages/dtschema/lib.py", line 125, in load_schema
+    return do_load(os.path.join(schema_basedir, schema))
+  File "/usr/local/lib/python3.8/dist-packages/dtschema/lib.py", line 111, in do_load
+    return yaml.load(f.read())
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 434, in load
+    return constructor.get_single_data()
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 122, in get_single_data
+    return self.construct_document(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 132, in construct_document
+    for _dummy in generator:
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 722, in construct_yaml_map
+    value = self.construct_mapping(node)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 446, in construct_mapping
+    return BaseConstructor.construct_mapping(self, node, deep=deep)
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 264, in construct_mapping
+    if self.check_mapping_key(node, key_node, mapping, key, value):
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 295, in check_mapping_key
+    raise DuplicateKeyError(*args)
+ruamel.yaml.constructor.DuplicateKeyError: while constructing a mapping
+  in "<unicode string>", line 19, column 5
+found duplicate key "items" with value "[]" (original value: "[]")
+  in "<unicode string>", line 21, column 5
+
+To suppress this check see:
+    http://yaml.readthedocs.io/en/latest/api.html#duplicate-keys
+
+Duplicate keys will become an error in future releases, and are errors
+by default when using the new API.
+
+make[1]: *** [Documentation/devicetree/bindings/Makefile:62: Documentation/devicetree/bindings/processed-schema-examples.json] Error 1
+make: *** [Makefile:1418: dt_binding_check] Error 2
+\ndoc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1510417
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
