@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B128C432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:48:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BDC1C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:49:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 32897610A0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:48:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 32897610A0
+	by mail.kernel.org (Postfix) with ESMTPS id 6204960FE4
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 04:49:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6204960FE4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,53 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MTZwS5ZQmiSMUxq7xqrG5JZP/3uFd1KQmg7QDXVtAvs=; b=qaB9gqSMQ5/AG4
-	MNagL6fnQhatoEpYvMxpxh2MeI6QsnT9y/AyQiOEgCl2cg6gE8gDD1mUwcL9ZXCgQZCTLVUlDhU3b
-	JeAOLFAlXaKQMz2WGXhtlpABQ3KJ+FNgGQPTXFIIWegluEMeZ8B/w3Hz8GsTyN3sANBPp3jNcAZh6
-	6CYJ0uZFHedYKZ56mVnSNrtrY8fFF10qKLqHldOU6VQA7S81/atGDUv1AbKRdx220xs+mu6wG46wx
-	ldExuJVmJa6eZZhK1RmT60fGWhkPdUnCm2kjfujanJmbnGtZ3nfLvJP2chcX68ifDrjQJuM5MeUCo
-	qL7cxDw/qNakglP/rzPw==;
+	List-Owner; bh=Q7KHlBIHJSX/eJWUijUHZJbcD100CpEGKt/o1BhY36M=; b=QtGWRCyh2rY/LG
+	hftEobD01b0T+BuYb0TCdOrmAkYfNAN0P4IHpD9wFenWzFX/PDMZo8I9LzGKCiO0cpJ2CUWr22+Et
+	fArZ86Ovev/0Dlx9bLcRnEL2Eff9wjywBO0db9CtPbRABhh/0OFX5BLL5C+sgEqS04xsrTCLLkXHB
+	HV8IN4rneWkc6/u2RvxfWQlwY7fszgwTZnvodRGYPqmHZxV75DujYadENmbAUGMjLjpYEfc0tVAxN
+	bZG7Fu11diOkkQ3EwJxce3v0/tR+W+yNy1uyL5dqJoNoNpoFkhpTYs1xltus7LLDA/765+NGTyv9c
+	Rm0g6eBKBXw64P0MIyUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8F0p-00DFiq-EU; Tue, 27 Jul 2021 04:48:15 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1m8F1i-00DG7F-A4; Tue, 27 Jul 2021 04:49:10 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8F00-00DFNu-07
- for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 04:47:25 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- q17-20020a17090a2e11b02901757deaf2c8so3254289pjd.0
- for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 21:47:23 -0700 (PDT)
+ id 1m8F0W-00DFbR-Q5
+ for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 04:47:58 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ e2-20020a17090a4a02b029016f3020d867so3194558pjh.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 26 Jul 2021 21:47:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=KZrbt9yR8hbrQ8uYyC/1sSAYUKzr6dRf2IBuVuefs44=;
- b=M9rmhyJs0OAWFelfhkQwSWB48PlkyYfaxXouNKWkCTVZK5xj1A5A07a2FTc+WX50vx
- X9FWYB5LhBrtwtqOkD3mwjzsfFTNcUAiTalq8AU305lAgHdmskc6dPLVGWnAkhwxIhya
- qTtn3xB6e/XzKGTGhf5NqtsbbnhSwHgbTd71k=
+ :cc; bh=dGG7RdUKVnT/omOvzH3kep9Wm/lxv7TRThq47QpIc6U=;
+ b=fPBwG3J8Gj98l4Fltb9Yei/aEYXt+b+10cEkqeUH2qfJlKpIYVmENKFdDMnfCmjMzc
+ WZR0jfwmpiuDcihSVapgx48UBxugPpFm2BaibyPCX/L8pXurh8eN5TadhNDjTF0mrbT9
+ B6IFMynY5O6UZIG80/lsQLdkaNZEMsFtS5v4A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=KZrbt9yR8hbrQ8uYyC/1sSAYUKzr6dRf2IBuVuefs44=;
- b=mhA4ulSNxNBmIH/OsrgyBMhHOUY+s+N8chChpBvfjZLW/f3PNOwqQsIMac5uU1U1lI
- j8Q5n+CxTR4bTeeWMUne3qz2DZ2Ps/FPo3fSm2KzSEyKBYN/nst3Uk4dLjO30fxKiamk
- nma3WtKPYzPMEkAAl6ZUglC58jouExkHxL1Ax4vr4Tsf3HzR7sjDobdFzcqFh1bMXzxg
- njc1ZJa5iFNaJmLrcUlwumu+HT89X8EGCJlD6iVsT05IdQyHPmxQ5IqCy/IbmO8W3Kls
- FhjL92m4I79Pafu7HTzZw1ywQ8l+VkZwQLX3O70MxWBBIr5u2OY/UEYeKRrJbueUCUkI
- nsnQ==
-X-Gm-Message-State: AOAM533/A0oRu/mX/0EQVobycnLoBuJJh7HbxZep8rzP/VxRIy6Q2rww
- /lI1oGNa7ttHPj4vFrVMTMepJDSWtsRG8rWTT938+A==
-X-Google-Smtp-Source: ABdhPJyMrzz2w0ZyuzNoS3umV6X1k23qvdWBuG/YbXZPQ68RCfZGsiO8UslIzHyStg5/1car2IaVGcpVboN/TDltUzc=
-X-Received: by 2002:a17:90a:8403:: with SMTP id
- j3mr2318141pjn.112.1627361243434; 
- Mon, 26 Jul 2021 21:47:23 -0700 (PDT)
+ bh=dGG7RdUKVnT/omOvzH3kep9Wm/lxv7TRThq47QpIc6U=;
+ b=CvSCiNwOlG7nuBRA6AK1o85LaKmSGSfWBUoa0kHY1IzdwCOYz5zSHNq1fcKpGKhg2Y
+ iYzy5h/449kEEkYn/EbbFUDaCjpDrefAKudASVgDt9vFt2RBVn/vmpkw0E69lxx3d9jD
+ kM7gFoaZU7Xp1ZffrrUc1hekKADq5t2u4lPwWUSKbqlm5EvsqHRTEkOhQI41NgKZ9cBI
+ LSwtXjB5gbKpn3Kumrrk4RZzHtG557lpVYNCj4e9aCtxWCcadEQVQaHH1J0CrMLk3tHD
+ Mke+8OrRgct4WXIdQF0Tm+ur7UlYIVX2D1PEGxwQqLTLuQ5rVQVTUUbWTWc+TkRZs6si
+ H5gA==
+X-Gm-Message-State: AOAM531Q8dErFLU0Rc4KGNYQOlKudZ2+F82tXV7ORx4/twXijTO5TYYd
+ 0ta5dbZzNWPZdS3YxuTyfr3ZvaYn+3WBlA/dWvHf5g==
+X-Google-Smtp-Source: ABdhPJySJP+/ZQoBEHFro/AzJ188fCTnIOO/lwuwj0nJAUhz+aPHfYkIzGrffavFmHSBLICxTeAXj4op7J6mUDK/CV8=
+X-Received: by 2002:a17:90b:2251:: with SMTP id
+ hk17mr2401217pjb.126.1627361276245; 
+ Mon, 26 Jul 2021 21:47:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210726105719.15793-1-chun-jie.chen@mediatek.com>
- <20210726105719.15793-21-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210726105719.15793-21-chun-jie.chen@mediatek.com>
+ <20210726105719.15793-22-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210726105719.15793-22-chun-jie.chen@mediatek.com>
 From: Ikjoon Jang <ikjn@chromium.org>
-Date: Tue, 27 Jul 2021 12:47:12 +0800
-Message-ID: <CAATdQgCzVffmJ=CQ0JqFQPjreySQNUsfNamjP05m8Jq+e5g=gQ@mail.gmail.com>
-Subject: Re: [v14 20/21] clk: mediatek: Add MT8192 vdecsys clock support
+Date: Tue, 27 Jul 2021 12:47:45 +0800
+Message-ID: <CAATdQgDhiG_Omph14o-Wu79+4W1AVyC70o5Rdq3Q37T4cJ+xnA@mail.gmail.com>
+Subject: Re: [v14 21/21] clk: mediatek: Add MT8192 vencsys clock support
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
@@ -83,8 +83,8 @@ Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
  Project_Global_Chrome_Upstream_Group
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210726_214724_134675_6AD06042 
-X-CRM114-Status: UNSURE (   7.14  )
+X-CRM114-CacheID: sfid-20210726_214756_893674_765F5FF8 
+X-CRM114-Status: UNSURE (   6.96  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,10 +102,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 26, 2021 at 7:11 PM Chun-Jie Chen
+On Mon, Jul 26, 2021 at 7:03 PM Chun-Jie Chen
 <chun-jie.chen@mediatek.com> wrote:
 >
-> Add MT8192 vdecsys and vdecsys soc clock providers
+> Add MT8192 vencsys clock provider
 >
 > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
 > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
