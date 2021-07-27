@@ -2,91 +2,82 @@ Return-Path: <SRS0=KH1D=MT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83FADC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 07:52:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58EEDC432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 08:32:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4EFBA611CE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 07:52:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4EFBA611CE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id F216560F94
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 08:32:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F216560F94
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0ykg0LTHofIPWG9H6z1sCIPLusV1Wm486GfeH48dJ2A=; b=yZlmbhbi60OyxP
-	yCEQbW0ethUdw2BD86gwvMwpt5gtANcNYX7lStaMnIQZN+HeXhjHBFJoOjuZ52ss9Wl5qdMwG4Qdu
-	iS4xPdRj9evV3Wwv6IT4Fx2TOXxcB/DgW1nm0FO4HZx7LRxqs5tOm1JyJr+y23fwhQqDg+AA6+wDj
-	ycTZVIKXslb0OuhEVCjl1nKPOwZMxQjrpG25Bez14CMRNPMJTJT8rWUUJj12nswPGSVjtMK4rV57T
-	ypvgONpdBqHNVtWqE9inkUlFGuoiqizuk0jJ+ijzsyR6WXuhIDX3s2iT0c+z0V2nNO0iF13azXJv7
-	H9BO4xNmfAqT1ijIlovg==;
+	List-Owner; bh=c+qFGHvIagKH39o2QwqNn3beYPMWr+DJglMyvh3+xCQ=; b=kjhZWYyFAZHMsW
+	rx7iwTY817tCHBC9RqjyXQso3oo68vsUV451+qSzaVZQmLgGqLEG+7KSwydvugEyggoKqM2DpnXLo
+	Oyw546lDyoUh4hHxnkKnT85oGwYqxy2jL26zFaWl7NfB78t+rwyeOGAfufWdxvx/rMuUj7GEfJHzJ
+	gjTu75Y81N54q4HkgEIyzTC91V0JhwFt/AQSjaXq0/ZegRQyfbQzk35ywQEMqZADPW9N/8li2Ihhq
+	HZJsrALJNsp93Fkdz1g6K8cqzvYHGuXVLdvRi1/SrHGWCshQlWMtrlXrlJ0jWkJxERRB4y2hpXkbX
+	V0GnnuoB26c6bO93ZWLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8Ht5-00Dvam-OP; Tue, 27 Jul 2021 07:52:27 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1m8IVf-00E4d9-Q9; Tue, 27 Jul 2021 08:32:19 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8HOq-00Dnf2-QW
- for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 07:21:14 +0000
-Received: by mail-ot1-x334.google.com with SMTP id
- 68-20020a9d0f4a0000b02904b1f1d7c5f4so11598883ott.9
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 00:21:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yQhhZe+MXmpfkLnh85/Z8tkXEKIvw/AuYXzOfTRKZJE=;
- b=PZr5f2UnPFBMoWR1tobduCnk9rwIYH0AijHubObKP5CcIUo3ugfnpdz8aVEMsOP23K
- Y2TcJTFda7LwyNcdNmPEuuatoLOHYMFBp2l57/E+W7SnNQbsFDxhBY3xolhgqQLVpLK2
- tqh88JtVCKyHcU5COG4k7DTjKfZtpF9i63jgeht4qDJBACzdSN/jgRETxx6JWIM7jYFx
- TtYLW0uQjewgHIp4TmrFS2DH68l5DIfeQgkF1k8OZxujnje6oJG7+iADiYrt86fgOJg5
- Zl//iEWZqJJyRiz77b2rLlQy6pgL1QWy6/xXQK8wSCDPDlwC/RcSjV/FHf5haFD243yl
- lgcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yQhhZe+MXmpfkLnh85/Z8tkXEKIvw/AuYXzOfTRKZJE=;
- b=jvkbUQ0xNjisKAfEQYSwg+dKcxLhl2aJFONH7tKZeUR5GHDVNoZCZfRqK25CqQC1d6
- wORplH4av8I2RsoSI64es68G/7ROlZ8vcOVUsCzajCb0Zngh2ZWpHjJ5orHtJnYfv14m
- 2R6vC10I6rB/zNY938Ph/xx5rHfEsszBrw1/ZoTXT+JenppWSWkmPM4scCm/8uf586t4
- 5lUAjPGmIALcuTdO98SVBr+qxxTGMIpa5lDQkPtSWq4TkjZspcm3abxjM3kMf/KZjEia
- AJNHBIQbbljkuunCzs+boZiM+lnrT9uzPXAoSyogVBa1imn+Sv2y8GL5J59F6A+NS3ps
- cx6g==
-X-Gm-Message-State: AOAM530DPBm7i5w3Tv6+Dhyns+ueaB74tEUVpKmj6Tu2i6mVpZoInbb8
- oSVCeuCyYGIX4FukmmMgloNPooO6+8sQpaUpVz9+iw==
-X-Google-Smtp-Source: ABdhPJz4sT4HTIASRu0q2t8NdjaqXI6ESVvlLRb0xkzVD7J1pd9jPoZvaxTYZ/B5e777xfunN9Qvkpz/1DYXmfkKJTY=
-X-Received: by 2002:a05:6830:23a7:: with SMTP id
- m7mr14536006ots.17.1627370471381; 
- Tue, 27 Jul 2021 00:21:11 -0700 (PDT)
-MIME-Version: 1.0
+ id 1m8IVc-00E4cZ-8s; Tue, 27 Jul 2021 08:32:18 +0000
+X-UUID: e0d0ac8aeb7f429dae01ea45d6e0facf-20210727
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=K6HRnr73XEh5xE2ceOhDEOAvjV1178SrYS2eQwvfCZI=; 
+ b=d2TkR2Vv5+cFCbl/q9Cu2qKLcoal/iRzJwGuX/0BkdP1Ap8I/LGw9yy45VCBL14HvxVUNxsCy1F6nXAfIlRIuu+s7SJqEPMBl+CP19dWvosYN5JdXg87YjMvuILwNGHFdDz3caOdo5MjJHOLq8GnpG3F2Puaoc2rHjLq9nZA8eM=;
+X-UUID: e0d0ac8aeb7f429dae01ea45d6e0facf-20210727
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <kuan-ying.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 387519655; Tue, 27 Jul 2021 01:32:11 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Jul 2021 01:32:09 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 27 Jul 2021 16:32:02 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 27 Jul 2021 16:32:02 +0800
+Message-ID: <b6b96caf30e62996fa3b75ae8d146c9cc0dcbbf6.camel@mediatek.com>
+Subject: Re: [PATCH 1/2] kasan, mm: reset tag when access metadata
+From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+To: Marco Elver <elver@google.com>
+CC: Nicholas Tang <nicholas.tang@mediatek.com>, Andrew Yang
+ <andrew.yang@mediatek.com>, Andrey Konovalov <andreyknvl@gmail.com>, "Andrey
+ Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
+ Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Morton
+ <akpm@linux-foundation.org>, <kasan-dev@googlegroups.com>,
+ <linux-mm@kvack.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Catalin Marinas <catalin.marinas@arm.com>, <Kuan-Ying.Lee@mediatek.com>
+Date: Tue, 27 Jul 2021 16:32:02 +0800
+In-Reply-To: <CANpmjNM03Pag9OvBBVnWnSBePRxsT+BvZtBwrh_61Qzmvp+dvA@mail.gmail.com>
 References: <20210727040021.21371-1-Kuan-Ying.Lee@mediatek.com>
- <20210727040021.21371-3-Kuan-Ying.Lee@mediatek.com>
-In-Reply-To: <20210727040021.21371-3-Kuan-Ying.Lee@mediatek.com>
-From: Marco Elver <elver@google.com>
-Date: Tue, 27 Jul 2021 09:20:59 +0200
-Message-ID: <CANpmjNNOkCspsf4=gPLLw=29vtv4qEDaErB1i1sz-p+bzLxNKg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] kasan, mm: reset tag for hex dump address
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Nicholas Tang <nicholas.tang@mediatek.com>,
- Andrew Yang <andrew.yang@mediatek.com>, 
- Andrey Konovalov <andreyknvl@gmail.com>,
- Andrey Ryabinin <ryabinin.a.a@gmail.com>, 
- Alexander Potapenko <glider@google.com>,
- Chinwen Chang <chinwen.chang@mediatek.com>, 
- Andrew Morton <akpm@linux-foundation.org>, kasan-dev@googlegroups.com,
- linux-mm@kvack.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
+ <20210727040021.21371-2-Kuan-Ying.Lee@mediatek.com>
+ <CANpmjNM03Pag9OvBBVnWnSBePRxsT+BvZtBwrh_61Qzmvp+dvA@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_002112_993064_7AF76064 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20210727_013216_371457_25DD3EC8 
+X-CRM114-Status: GOOD (  28.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,54 +94,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 27 Jul 2021 at 06:00, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
->
-> Text is a string. We need to move this kasan_reset_tag()
-> to address but text.
->
-> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+On Tue, 2021-07-27 at 09:10 +0200, Marco Elver wrote:
+> +Cc Catalin
+> 
+> On Tue, 27 Jul 2021 at 06:00, Kuan-Ying Lee <
+> Kuan-Ying.Lee@mediatek.com> wrote:
+> > 
+> > Hardware tag-based KASAN doesn't use compiler instrumentation, we
+> > can not use kasan_disable_current() to ignore tag check.
+> > 
+> > Thus, we need to reset tags when accessing metadata.
+> > 
+> > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> 
+> This looks reasonable, but the patch title is not saying this is
+> kmemleak, nor does the description say what the problem is. What
+> problem did you encounter? Was it a false positive?
 
-This patch also makes sense (I think), thanks for sending. But it's
-unclear what the problem is. The fact that when the address is printed
-it still includes the tag? Or a false positive?
-It'd be good to clarify in the commit message.
+kmemleak would scan kernel memory to check memory leak.
+When it scans on the invalid slab and dereference, the issue
+will occur like below.
 
-Here I'd also use a more descriptive patch title, something like
-"kasan, slub: reset tag when printing address".
+So I think we should reset the tag before scanning.
 
-Also, I think this patch requires a:
+# echo scan > /sys/kernel/debug/kmemleak
+[  151.905804]
+==================================================================
+[  151.907120] BUG: KASAN: out-of-bounds in scan_block+0x58/0x170
+[  151.908773] Read at addr f7ff0000c0074eb0 by task kmemleak/138
+[  151.909656] Pointer tag: [f7], memory tag: [fe]
+[  151.910195]
+[  151.910876] CPU: 7 PID: 138 Comm: kmemleak Not tainted 5.14.0-rc2-
+00001-g8cae8cd89f05-dirty #134
+[  151.912085] Hardware name: linux,dummy-virt (DT)
+[  151.912868] Call trace:
+[  151.913211]  dump_backtrace+0x0/0x1b0
+[  151.913796]  show_stack+0x1c/0x30
+[  151.914248]  dump_stack_lvl+0x68/0x84
+[  151.914778]  print_address_description+0x7c/0x2b4
+[  151.915340]  kasan_report+0x138/0x38c
+[  151.915804]  __do_kernel_fault+0x190/0x1c4
+[  151.916386]  do_tag_check_fault+0x78/0x90
+[  151.916856]  do_mem_abort+0x44/0xb4
+[  151.917308]  el1_abort+0x40/0x60
+[  151.917754]  el1h_64_sync_handler+0xb4/0xd0
+[  151.918270]  el1h_64_sync+0x78/0x7c
+[  151.918714]  scan_block+0x58/0x170
+[  151.919157]  scan_gray_list+0xdc/0x1a0
+[  151.919626]  kmemleak_scan+0x2ac/0x560
+[  151.920129]  kmemleak_scan_thread+0xb0/0xe0
+[  151.920635]  kthread+0x154/0x160
+[  151.921115]  ret_from_fork+0x10/0x18
+[  151.921717]
+[  151.922077] Allocated by task 0:
+[  151.922523]  kasan_save_stack+0x2c/0x60
+[  151.923099]  __kasan_kmalloc+0xec/0x104
+[  151.923502]  __kmalloc+0x224/0x3c4
+[  151.924172]  __register_sysctl_paths+0x200/0x290
+[  151.924709]  register_sysctl_table+0x2c/0x40
+[  151.925175]  sysctl_init+0x20/0x34
+[  151.925665]  proc_sys_init+0x3c/0x48
+[  151.926136]  proc_root_init+0x80/0x9c
+[  151.926547]  start_kernel+0x648/0x6a4
+[  151.926987]  __primary_switched+0xc0/0xc8
+[  151.927557]
+[  151.927994] Freed by task 0:
+[  151.928340]  kasan_save_stack+0x2c/0x60
+[  151.928766]  kasan_set_track+0x2c/0x40
+[  151.929173]  kasan_set_free_info+0x44/0x54
+[  151.929568]  ____kasan_slab_free.constprop.0+0x150/0x1b0
+[  151.930063]  __kasan_slab_free+0x14/0x20
+[  151.930449]  slab_free_freelist_hook+0xa4/0x1fc
+[  151.930924]  kfree+0x1e8/0x30c
+[  151.931285]  put_fs_context+0x124/0x220
+[  151.931731]  vfs_kern_mount.part.0+0x60/0xd4
+[  151.932280]  kern_mount+0x24/0x4c
+[  151.932686]  bdev_cache_init+0x70/0x9c
+[  151.933122]  vfs_caches_init+0xdc/0xf4
+[  151.933578]  start_kernel+0x638/0x6a4
+[  151.934014]  __primary_switched+0xc0/0xc8
+[  151.934478]
+[  151.934757] The buggy address belongs to the object at
+ffff0000c0074e00
+[  151.934757]  which belongs to the cache kmalloc-256 of size 256
+[  151.935744] The buggy address is located 176 bytes inside of
+[  151.935744]  256-byte region [ffff0000c0074e00, ffff0000c0074f00)
+[  151.936702] The buggy address belongs to the page:
+[  151.937378] page:(____ptrval____) refcount:1 mapcount:0
+mapping:0000000000000000 index:0x0 pfn:0x100074
+[  151.938682] head:(____ptrval____) order:2 compound_mapcount:0
+compound_pincount:0
+[  151.939440] flags:
+0xbfffc0000010200(slab|head|node=0|zone=2|lastcpupid=0xffff|kasantag=0x
+0)
+[  151.940886] raw: 0bfffc0000010200 0000000000000000 dead000000000122
+f5ff0000c0002300
+[  151.941634] raw: 0000000000000000 0000000000200020 00000001ffffffff
+0000000000000000
+[  151.942353] page dumped because: kasan: bad access detected
+[  151.942923]
+[  151.943214] Memory state around the buggy address:
+[  151.943896]  ffff0000c0074c00: f0 f0 f0 f0 f0 f0 f0 f0 f0 fe fe fe
+fe fe fe fe
+[  151.944857]  ffff0000c0074d00: fe fe fe fe fe fe fe fe fe fe fe fe
+fe fe fe fe
+[  151.945892] >ffff0000c0074e00: f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 fe
+fe fe fe fe
+[  151.946407]                                                     ^
+[  151.946939]  ffff0000c0074f00: fe fe fe fe fe fe fe fe fe fe fe fe
+fe fe fe fe
+[  151.947445]  ffff0000c0075000: fb fb fb fb fb fb fb fb fb fb fb fb
+fb fb fb fb
+[  151.947999]
+==================================================================
+[  151.948524] Disabling lock debugging due to kernel taint
+[  156.434569] kmemleak: 181 new suspected memory leaks (see
+/sys/kernel/debug/kmemleak)
 
-  Fixes: aa1ef4d7b3f6 ("kasan, mm: reset tags when accessing metadata")
+> 
+> Perhaps this should have been "kmemleak, kasan: reset pointer tags to
+> avoid false positives" ?
 
-So that stable kernels can pick this up if appropriate.
+Thanks for the suggestions.
+But I think it doesn't belong to false
+positive becuase scan block
+touched invalid metadata certainly.
 
-> ---
->  mm/slub.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/mm/slub.c b/mm/slub.c
-> index 6dad2b6fda6f..d20674f839ba 100644
-> --- a/mm/slub.c
-> +++ b/mm/slub.c
-> @@ -576,8 +576,8 @@ static void print_section(char *level, char *text, u8 *addr,
->                           unsigned int length)
->  {
->         metadata_access_enable();
-> -       print_hex_dump(level, kasan_reset_tag(text), DUMP_PREFIX_ADDRESS,
-> -                       16, 1, addr, length, 1);
-> +       print_hex_dump(level, text, DUMP_PREFIX_ADDRESS,
-> +                       16, 1, kasan_reset_tag((void *)addr), length, 1);
->         metadata_access_disable();
->  }
->
-> --
-> 2.18.0
->
-> --
-> You received this message because you are subscribed to the Google Groups "kasan-dev" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to kasan-dev+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/kasan-dev/20210727040021.21371-3-Kuan-Ying.Lee%40mediatek.com.
+Maybe "kmemleak, kasan: reset tags when scanning block"?
 
+> 
+> > ---
+> >  mm/kmemleak.c | 6 +++---
+> >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/mm/kmemleak.c b/mm/kmemleak.c
+> > index 228a2fbe0657..73d46d16d575 100644
+> > --- a/mm/kmemleak.c
+> > +++ b/mm/kmemleak.c
+> > @@ -290,7 +290,7 @@ static void hex_dump_object(struct seq_file
+> > *seq,
+> >         warn_or_seq_printf(seq, "  hex dump (first %zu bytes):\n",
+> > len);
+> >         kasan_disable_current();
+> >         warn_or_seq_hex_dump(seq, DUMP_PREFIX_NONE, HEX_ROW_SIZE,
+> > -                            HEX_GROUP_SIZE, ptr, len, HEX_ASCII);
+> > +                            HEX_GROUP_SIZE, kasan_reset_tag((void
+> > *)ptr), len, HEX_ASCII);
+> >         kasan_enable_current();
+> >  }
+> > 
+> > @@ -1171,7 +1171,7 @@ static bool update_checksum(struct
+> > kmemleak_object *object)
+> > 
+> >         kasan_disable_current();
+> >         kcsan_disable_current();
+> > -       object->checksum = crc32(0, (void *)object->pointer,
+> > object->size);
+> > +       object->checksum = crc32(0, kasan_reset_tag((void *)object-
+> > >pointer), object->size);
+> >         kasan_enable_current();
+> >         kcsan_enable_current();
+> > 
+> > @@ -1246,7 +1246,7 @@ static void scan_block(void *_start, void
+> > *_end,
+> >                         break;
+> > 
+> >                 kasan_disable_current();
+> > -               pointer = *ptr;
+> > +               pointer = *(unsigned long *)kasan_reset_tag((void
+> > *)ptr);
+> >                 kasan_enable_current();
+> > 
+> >                 untagged_ptr = (unsigned long)kasan_reset_tag((void
+> > *)pointer);
+> > --
+> > 2.18.0
+> > 
+> > --
+> > You received this message because you are subscribed to the Google
+> > Groups "kasan-dev" group.
+> > To unsubscribe from this group and stop receiving emails from it,
+> > send an email to kasan-dev+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit 
+> > https://urldefense.com/v3/__https://groups.google.com/d/msgid/kasan-dev/20210727040021.21371-2-Kuan-Ying.Lee*40mediatek.com__;JQ!!CTRNKA9wMg0ARbw!wNP4ZkYDM7Xvs9xfzKwYuG1X2h9zFqST8_Vm2jSvZUl9BiS8SPFMTvMp3VAPKCnuWELL7Q$
+> >  .
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
