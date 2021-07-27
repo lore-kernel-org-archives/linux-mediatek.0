@@ -2,70 +2,89 @@ Return-Path: <SRS0=KH1D=MT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C815C4320E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FFA6C4320E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:02:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA8876134F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:56:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CA8876134F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1714761155
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 11:02:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1714761155
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LMDk/lFBTEJ5dMAE7cURhtEjaOjaOo7RJ0UZVOO+ezM=; b=zbj8BKZCfDVdC4tnmnBRD/FhWj
-	JDbchXSPAvLhdWEDJcnAIPmvXtSmMP8iuNcwiiX71SqUwGeNYfo0MIQ8Np5/tGQGnkAAbW0/0VLms
-	k3ipMR5d1/+RnFvzjJdTmpZAsIQy9YOK5vMP1CQsYEANOnkM9nyCGx67g0sjASu5TBrm+HVnzjH3j
-	uJskcIVEm3ILREajjGwyd3VFDbUeYJqPO9JbG7JUSJ4A4Ll83kpQM8BYTeYQuILcp20OhOvQP177g
-	0mCIQR8Eq5VZzavrZGo+UjSY1r/BzX6d1WvApS234/b/DCupxe85Nb6MICjuCbhaLslcobH/m1Bv+
-	yVhb+Zeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kMqyCiK9dz+7YpManfkcSoqO1Ex2GorWMRjaSCdTpME=; b=fsSpPVQiXWyxMj
+	p7/cOhL8EaVU87S+q7XJVTfHq8O4qxKHSzyF5QWgcsZ2Yv1gIUUPgG6qMeEmpOFlTYIgX/a6Zm66D
+	98XAGkXi28qqsKJAD2mfO9V2b7nBgVEIf1LIpIJw9cd4Q33Y59tDxmaMlEcW2SkAG9/eY5j76GEm4
+	sue7OJQeQwpITb+9G+koQBMj+MHfVvqxxGZ77D6/2lNotmk3hOLTMmAFNJeOFHBIhNtvEmN/jzSA6
+	0XHEPpnxYGBy5l4ytZ99t9AGbP1yOSGGnf+UKJl7vMLw1M5HGo8OzM5RUBCMXEPNCnsduhHB1PraC
+	ucNJddxlKQaccCzQq8LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8KkY-00EVjP-Gt; Tue, 27 Jul 2021 10:55:50 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1m8KrG-00EXfN-Mc; Tue, 27 Jul 2021 11:02:46 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8KkJ-00EVfC-Sw; Tue, 27 Jul 2021 10:55:37 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id B4F591F42CA0
-Subject: Re: [PATCH v3, 00/15] Using component framework to support multi
- hardware decode
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-References: <20210727101051.24418-1-yunfei.dong@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <2b562943-534a-b53d-696d-9f2a4836f76e@collabora.com>
-Date: Tue, 27 Jul 2021 12:55:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ id 1m8KrE-00EXeH-75
+ for linux-mediatek@lists.infradead.org; Tue, 27 Jul 2021 11:02:45 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d17so15292462plh.10
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 04:02:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=62cZorY/aqW6/nmoaXLGfSvBqflphL+XPQS97Zl3weY=;
+ b=MilN6BFgMUc1fMRsL+GBnviiIuEZq41bfDVDgnvImZKTDMjr+zw0G+VGHf1XFX08nn
+ TT3D8wraoknyERJ3meYs2GBWmJ/Q2RrEd4V06SMX1L35VPKo3Qz6+BodoZoirVyjPaJS
+ lWLw0puHNt3DSLcI/H3lXrvY6Jx04cvy3+Guk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=62cZorY/aqW6/nmoaXLGfSvBqflphL+XPQS97Zl3weY=;
+ b=sYokkxUD6ieHJy3ZsWxtkeO97eYkYOMtIKKFo9CmUoL2pY8SaQttkjVexjJBMTb3Pu
+ 7EZwzfytGuO6SUcF7YpK3EV+qb4H5cVF4bXKQVYhf21i8SNKtiPhCCgf01/ZuyCo87aq
+ aE/eJln4YgwBquEaaHYgVLjsPb+ILdcF7GgDxyQxEZ6SlwuWLMQDnVWk8dl1GOtMo2hQ
+ YeCp+fR7C3xpnpDIKESQWHuvdHrFiwn9aqFSTpNtMID9AEP6WgFE/ZhUq4QaZ6DHlIBj
+ cz9PmbycCmGCyw2I4mFzCvtewr5eYDNLaPWC8QPmyAVB+/ho6h7hia9T2zHG+8AgQV8w
+ Qz3Q==
+X-Gm-Message-State: AOAM53225kLjo6N/MGT/t8KVA1InetGr9+xXE5qcSNkvPSGc+qFF83mr
+ W8arSDSUgykpt/5wow+Fi42F9A==
+X-Google-Smtp-Source: ABdhPJxnSDI/sZWXmp6xkjw+XlVjQ4cwPwMrjvLXbVayACXXDVyNSipETcDQM0Ui9jBlYDCJBXsBag==
+X-Received: by 2002:a17:90b:1195:: with SMTP id
+ gk21mr21705514pjb.150.1627383762744; 
+ Tue, 27 Jul 2021 04:02:42 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:5176:76cc:2193:9b8f])
+ by smtp.gmail.com with ESMTPSA id 33sm3553683pgs.59.2021.07.27.04.02.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Jul 2021 04:02:42 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 1/3] arm: dts: mt8135: Move pinfunc to
+ include/dt-bindings/pinctrl
+Date: Tue, 27 Jul 2021 19:02:30 +0800
+Message-Id: <20210727110232.2503763-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.432.gabb21c7263-goog
 MIME-Version: 1.0
-In-Reply-To: <20210727101051.24418-1-yunfei.dong@mediatek.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_035536_210503_5A31AE4F 
-X-CRM114-Status: GOOD (  29.28  )
+X-CRM114-CacheID: sfid-20210727_040244_322011_9B3F626A 
+X-CRM114-Status: GOOD (  10.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,126 +96,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for the patchset.
+Move mt8135-pinfunc.h into include/dt-bindings/pinctrl so that we can
+include it in yaml examples.
 
-Could you provide information on how you
-tested the code.
-Did you test it on chromeos userspace?
-Did you use the test-tast framework?
-What tests did you run?
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm/boot/dts/mt8135.dtsi                                   | 2 +-
+ .../boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h   | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename {arch/arm/boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h (100%)
 
-Dafna
+diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+index 0e4e835026db0..a031b36363187 100644
+--- a/arch/arm/boot/dts/mt8135.dtsi
++++ b/arch/arm/boot/dts/mt8135.dtsi
+@@ -9,7 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/reset/mt8135-resets.h>
+-#include "mt8135-pinfunc.h"
++#include <dt-bindings/pinctrl/mt8135-pinfunc.h>
+ 
+ / {
+ 	#address-cells = <2>;
+diff --git a/arch/arm/boot/dts/mt8135-pinfunc.h b/include/dt-bindings/pinctrl/mt8135-pinfunc.h
+similarity index 100%
+rename from arch/arm/boot/dts/mt8135-pinfunc.h
+rename to include/dt-bindings/pinctrl/mt8135-pinfunc.h
+-- 
+2.32.0.432.gabb21c7263-goog
 
-
-On 27.07.21 12:10, Yunfei Dong wrote:
-> This series adds support for multi hardware decode into mtk-vcodec, by first
-> adding component framework to manage each hardware information: interrupt,
-> clock, register bases and power. Secondly add core thread to deal with core
-> hardware message, at the same time, add msg queue for different hardware
-> share messages. Lastly, the architecture of different specs are not the same,
-> using specs type to separate them.
-> 
-> This series has been tested with both MT8183 and MT8173. Decoding was working
-> for both chips.
-> 
-> Patches 1,2 rewrite get register bases and power on/off interface.
-> 
-> Patch 3-5 add component framework to support multi hardware.
-> 
-> Patches 6-14 add interfaces to support core hardware.
-> ----
-> This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
-> 
-> Multi hardware decode is based on stateless decoder, MT8183 is the first time
-> to add stateless decoder. Otherwise it will cause conflict. Please also accept
-> this patch together with [1].
-> 
-> [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
-> ----
-> Changes compared with v2:
-> - Fix return value for patch 1/15
-> - Add this new patch to align vdec and venc wake up ctx interface for patch 2/15
-> - Fix comments for patch 4/15
-> - Change txt files to yaml for patch 5/15
-> - Generalize wake up ctx interface for stateless and stateful decode for patch 7/15
-> - Add document for structs and functions for patch 8/15
-> - Add condition to check the return value of kthread_run for patch 11/15
-> - Fix yaml check fail for patch 13/15
-> 
-> Changes compared with v1:
-> - Fix many comments for patch 3/14
-> - Remove unnecessary code for patch 4/14
-> - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
-> - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
-> - Using yaml format to instead of txt file for patch 12/14
-> 
-> Yunfei Dong (15):
->    media: mtk-vcodec: Get numbers of register bases from DT
->    media: mtk-vcodec: Align vcodec wake up interrupt interface
->    media: mtk-vcodec: Refactor vcodec pm interface
->    media: mtk-vcodec: Use component framework to manage each hardware
->      information
->    dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
->      dt-bindings
->    media: mtk-vcodec: Use pure single core for MT8183
->    media: mtk-vcodec: Add irq interface for multi hardware
->    media: mtk-vcodec: Add msg queue feature for lat and core architecture
->    media: mtk-vcodec: Generalize power and clock on/off interfaces
->    media: mtk-vcodec: Add new interface to lock different hardware
->    media: mtk-vcodec: Add core thread
->    media: mtk-vcodec: Support 34bits dma address for vdec
->    dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
->    media: mtk-vcodec: Add core dec and dec end ipi msg
->    media: mtk-vcodec: Use codec type to separate different hardware
-> 
->   .../media/mediatek,vcodec-comp-decoder.yaml   | 154 +++++++++
->   .../media/mediatek,vcodec-decoder.yaml        | 138 ++++++++
->   .../media/mediatek,vcodec-encoder.yaml        | 128 ++++++++
->   .../bindings/media/mediatek-vcodec.txt        | 130 --------
->   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
->   .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
->   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
->   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 296 +++++++++++++++---
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 184 +++++++++++
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  48 +++
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
->   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
->   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  76 ++++-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  12 +-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
->   .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  27 +-
->   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
->   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
->   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
->   .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 +-
->   .../mtk-vcodec/vdec/vdec_h264_req_if.c        |   2 +-
->   .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 +-
->   .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 +-
->   .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
->   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
->   .../platform/mtk-vcodec/vdec_msg_queue.c      | 290 +++++++++++++++++
->   .../platform/mtk-vcodec/vdec_msg_queue.h      | 157 ++++++++++
->   .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
->   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
->   .../platform/mtk-vcodec/venc/venc_h264_if.c   |   2 +-
->   .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
->   33 files changed, 1697 insertions(+), 280 deletions(-)
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
->   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
->   delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
