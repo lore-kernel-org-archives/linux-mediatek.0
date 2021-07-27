@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8732FC4320E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 13:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F06A4C4320E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 13:20:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5618761A3A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 13:19:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5618761A3A
+	by mail.kernel.org (Postfix) with ESMTPS id C5A3E61B00
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 13:20:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C5A3E61B00
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,40 +23,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t2RGilh3ROZUhvZrsDyzhmCDltySHVp0opHtP73pXYU=; b=v1CQP8ZD54ZBTJ
-	rynXTvfGNSQBip0RJgcDxlT3mU2Ht517nEK9AgXfBcbNdx6p+XKkjYKF/jJ5lOJ8OY9wB+gWjHW6l
-	0ZA6nfJ/KkcmuqYLIWNNy27Nz0nYcPh3obj072/4EiPjoZgYX5uG0m6ZsLo77BrhVDGC++julb0Q5
-	Z2kYfGW9pD9z0FhXClrtEkqTvMPTHWjBB1AXpi4XdgoiG9tXjr70JdFFu/ehy++HEVj759BypTz9H
-	A/vGAeiVE0teS6/b/Wf/rvvZfvzlVzpuY7pQepe5sfNtK24ahJmjFIIFkSqUfTBQ+UpobiDfPg0TG
-	HoMG9FyxhgoJYvkZdVyw==;
+	List-Owner; bh=w21aNQtO1U7J3NJOw/Uw1qQBozfDXVvkaqm3SkAvowM=; b=zADdVjA8NVlQKx
+	M7FUd9zwD6B2qEGbhRsNFGcNR8XIMlr5Unl6zFbwMPq6jZ1FGDNnvV/fpB3ZFFhaMl9E52jSnnK5K
+	bc/L1Z9EJ+gS/1DgnZw4YeemF/9uTwxcckv+noYuDQcp1d2thBHdHL07WjIpcwUonWlUy8+galQva
+	ryvF20gCYZFUgdCirUU1Zf9D6EeabtjKRmE3FEIMLMIxCZoUmf7RnVp++BfS9bP9BScE2pr+VD0SQ
+	LZJiQaCJMLnN47nDoyhJSyDdaJXyXJSpWFmdqbaEoVcm2naNgjA5gUlibvugHy5N2+9oSuDH60LtE
+	GGS2CTx9z4WSMFHwjqMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8Mzl-00Eqs8-Tr; Tue, 27 Jul 2021 13:19:41 +0000
+	id 1m8Mzy-00EqvB-J8; Tue, 27 Jul 2021 13:19:54 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8MzN-00Eqm5-Gn; Tue, 27 Jul 2021 13:19:19 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 237F361A3D;
- Tue, 27 Jul 2021 13:19:15 +0000 (UTC)
+ id 1m8MzU-00Eqnj-Og; Tue, 27 Jul 2021 13:19:27 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8CF7A61A8E;
+ Tue, 27 Jul 2021 13:19:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627391955;
- bh=mBenjGICbGqU4sL6JcNUEpVkieVEjgsM+z7KIGEOHJE=;
+ s=k20201202; t=1627391964;
+ bh=dzHacBHHy8yhCpZQWE2cxyOoZig1mtOHoMWGS7uCpvo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=M+ugYWeP/xvYjK61sZjwE7Adtl7tA54WmBj/QmbJ4IbA+c5tQJogoYfdVvAr1Aszh
- OTDAubGyMZrwSvslfFFro7iMdbMdJEVUPBz/LnCWentKQgXG7yPwOgq0X0C9Aq3aLh
- 7+EwPPOGxdgJ9bW3mN3EQ9/HSPVlDjbgOS08c1Y2Lucjp/Sl3V0kZCXMq3WNByV3gL
- 3lvZ4twRvnY+/X7etSxvwC9nwAI7pqIyLdO0XfpDklCU/g2RcHVpT4srAa64Jl0um5
- kv+02QVCPtz1ONRcPZ2PDWYPL+MvyddRXX9AnA0LLNpQ1hjMHeS0snc+7gTXwOvW+2
- 3M83u2DaMtLBA==
+ b=kQ97DV6fv1wtKoV5X9j6AErTOwHWGrXSYw9cADBmAcdwgza4+B07kU/UvDZB3zwCq
+ ifDU25EV23/vS0l6o0J3uBQv6qokhBmk/aIUmce93/MaPe423+SchrMOm7cL07Dfzr
+ Os9PbRgwyrghzq9QhZg3FXrj+QRZpdvzoqApMYD2NZvfj8BkroiCmCtjkUW7v6r3vy
+ 85d55foAaeWlV4DNPRIlguOq7vcBl/+yTjnu0+0j3c0t5XBsfWYnTpLfYKSmAMfxzN
+ P+r2HMVX7k7oCQyk2zifBotjNGgUUMIc2loxlwQrEohYfPz6PpDyKUrOdE6Ribxw+D
+ UN/nTbnutuRDQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Axel Lin <axel.lin@ingics.com>, Mark Brown <broonie@kernel.org>,
- Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org,
+Cc: Eric Woudstra <ericwouds@gmail.com>,
+ "David S . Miller" <davem@davemloft.net>, Sasha Levin <sashal@kernel.org>,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.13 05/21] regulator: mtk-dvfsrc: Fix wrong dev
- pointer for devm_regulator_register
-Date: Tue, 27 Jul 2021 09:18:52 -0400
-Message-Id: <20210727131908.834086-5-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.13 11/21] mt7530 fix mt7530_fdb_write vid missing
+ ivl bit
+Date: Tue, 27 Jul 2021 09:18:58 -0400
+Message-Id: <20210727131908.834086-11-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210727131908.834086-1-sashal@kernel.org>
 References: <20210727131908.834086-1-sashal@kernel.org>
@@ -64,8 +65,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_061917_613478_C0D6798B 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20210727_061924_877305_D5A1C11B 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +83,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Axel Lin <axel.lin@ingics.com>
+From: Eric Woudstra <ericwouds@gmail.com>
 
-[ Upstream commit ea986908ccfcc53204a03bb0841227e1b26578c4 ]
+[ Upstream commit 11d8d98cbeef1496469b268d79938b05524731e8 ]
 
-If use dev->parent, the regulator_unregister will not be called when this
-driver is unloaded. Fix it by using dev instead.
+According to reference guides mt7530 (mt7620) and mt7531:
 
-Signed-off-by: Axel Lin <axel.lin@ingics.com>
-Link: https://lore.kernel.org/r/20210702142140.2678130-1-axel.lin@ingics.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+NOTE: When IVL is reset, MAC[47:0] and FID[2:0] will be used to
+read/write the address table. When IVL is set, MAC[47:0] and CVID[11:0]
+will be used to read/write the address table.
+
+Since the function only fills in CVID and no FID, we need to set the
+IVL bit. The existing code does not set it.
+
+This is a fix for the issue I dropped here earlier:
+
+http://lists.infradead.org/pipermail/linux-mediatek/2021-June/025697.html
+
+With this patch, it is now possible to delete the 'self' fdb entry
+manually. However, wifi roaming still has the same issue, the entry
+does not get deleted automatically. Wifi roaming also needs a fix
+somewhere else to function correctly in combination with vlan.
+
+Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/regulator/mtk-dvfsrc-regulator.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/dsa/mt7530.c | 1 +
+ drivers/net/dsa/mt7530.h | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/regulator/mtk-dvfsrc-regulator.c b/drivers/regulator/mtk-dvfsrc-regulator.c
-index d3d876198d6e..234af3a66c77 100644
---- a/drivers/regulator/mtk-dvfsrc-regulator.c
-+++ b/drivers/regulator/mtk-dvfsrc-regulator.c
-@@ -179,8 +179,7 @@ static int dvfsrc_vcore_regulator_probe(struct platform_device *pdev)
- 	for (i = 0; i < regulator_init_data->size; i++) {
- 		config.dev = dev->parent;
- 		config.driver_data = (mt_regulators + i);
--		rdev = devm_regulator_register(dev->parent,
--					       &(mt_regulators + i)->desc,
-+		rdev = devm_regulator_register(dev, &(mt_regulators + i)->desc,
- 					       &config);
- 		if (IS_ERR(rdev)) {
- 			dev_err(dev, "failed to register %s\n",
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 9b90f3d3a8f5..5ee7089da37c 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -365,6 +365,7 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+ 	int i;
+ 
+ 	reg[1] |= vid & CVID_MASK;
++	reg[1] |= ATA2_IVL;
+ 	reg[2] |= (aging & AGE_TIMER_MASK) << AGE_TIMER;
+ 	reg[2] |= (port_mask & PORT_MAP_MASK) << PORT_MAP;
+ 	/* STATIC_ENT indicate that entry is static wouldn't
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 0204da486f3a..ebb86a646c7b 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -78,6 +78,7 @@ enum mt753x_bpdu_port_fw {
+ #define  STATIC_EMP			0
+ #define  STATIC_ENT			3
+ #define MT7530_ATA2			0x78
++#define  ATA2_IVL			BIT(15)
+ 
+ /* Register for address table write data */
+ #define MT7530_ATWD			0x7c
 -- 
 2.30.2
 
