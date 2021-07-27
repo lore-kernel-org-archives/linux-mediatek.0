@@ -2,80 +2,70 @@ Return-Path: <SRS0=KH1D=MT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-11.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6B37BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:54:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C815C4320E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:56:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2489360FDB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:54:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2489360FDB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CA8876134F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Jul 2021 10:56:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CA8876134F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=vw7CoDIDuh/1VqCuMTAyNsPb+LIuEj4qlEgy+uwENHU=; b=2XaV4vbPu/16Pu
-	DARosV6fgWD9gHljHyw7mrjOnJyqCfsUvng36NpwDQXO/dhmXZ8VAcuSmjLCoyy1NSmKZ4Z2U6CdE
-	EJtSHLIbTS8Pg3/SMJyOqzRN0edvVPTrSVOFcIT0jd+vTDwIHYKip+3Ncz3d2LEPlKIZzM23qhH4C
-	WVNVtU+ZXX+yr5Cd9HR1+lweSB+hsAewi8W1QiLfrI1ksgukIWIHDFn1Xu9/+4+3l5Ags7BNxD2KG
-	txVnomuFNAjLFfPppdnJ7cdGPhvf0GterO6Dy4Sf7JFrwO2gjonNRKgE0cn1TQecZYGSNDBTLFMwr
-	jTCi4f96ANO9Sd2rkN5Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LMDk/lFBTEJ5dMAE7cURhtEjaOjaOo7RJ0UZVOO+ezM=; b=zbj8BKZCfDVdC4tnmnBRD/FhWj
+	JDbchXSPAvLhdWEDJcnAIPmvXtSmMP8iuNcwiiX71SqUwGeNYfo0MIQ8Np5/tGQGnkAAbW0/0VLms
+	k3ipMR5d1/+RnFvzjJdTmpZAsIQy9YOK5vMP1CQsYEANOnkM9nyCGx67g0sjASu5TBrm+HVnzjH3j
+	uJskcIVEm3ILREajjGwyd3VFDbUeYJqPO9JbG7JUSJ4A4Ll83kpQM8BYTeYQuILcp20OhOvQP177g
+	0mCIQR8Eq5VZzavrZGo+UjSY1r/BzX6d1WvApS234/b/DCupxe85Nb6MICjuCbhaLslcobH/m1Bv+
+	yVhb+Zeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8KjH-00EVMk-FZ; Tue, 27 Jul 2021 10:54:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m8KkY-00EVjP-Gt; Tue, 27 Jul 2021 10:55:50 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8Kj4-00EVKK-NS; Tue, 27 Jul 2021 10:54:20 +0000
-X-UUID: 85fb98d2fc3e4d209ddeda57dfecc95b-20210727
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=iiJ9TlMy1Y3hIWltnCNZ1n1OG+Lm6SmtBMcv7Xs9hlE=; 
- b=JaJJLVZul2qP11T0A0VL90GfKtAmYZT+kkn1jHOxVMWb8VgJk8BgvSAX7tSyffLsx95b1lK0kBj9qkYld19Lbxw1Q7C3FWfdi+ZHsJfkIbln8ak3w/SVZ1XpQcTBHAbrokutcqHTWdxiHAovJngnVOo+a0elVdoiM1g3TwSqdho=;
-X-UUID: 85fb98d2fc3e4d209ddeda57dfecc95b-20210727
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1250745340; Tue, 27 Jul 2021 03:54:10 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Jul 2021 03:50:45 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Jul 2021 18:50:44 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 27 Jul 2021 18:50:44 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: <linux-phy@lists.infradead.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Ainge Hsu <ainge.hsu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>, 
- Kuohong Wang <kuohong.wang@mediatek.com>, Mediatek WSD Upstream
- <wsd_upstream@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, "Macpaul
- Lin" <macpaul@gmail.com>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-usb@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 1/2] phy: introduce phy mode PHY_MODE_UART and
- phy_get_mode_ext()
-Date: Tue, 27 Jul 2021 18:50:12 +0800
-Message-ID: <1627383013-4535-1-git-send-email-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1m8KkJ-00EVfC-Sw; Tue, 27 Jul 2021 10:55:37 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id B4F591F42CA0
+Subject: Re: [PATCH v3, 00/15] Using component framework to support multi
+ hardware decode
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+References: <20210727101051.24418-1-yunfei.dong@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <2b562943-534a-b53d-696d-9f2a4836f76e@collabora.com>
+Date: Tue, 27 Jul 2021 12:55:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210727101051.24418-1-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_035418_817646_0FE031E5 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20210727_035536_210503_5A31AE4F 
+X-CRM114-Status: GOOD (  29.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,88 +77,127 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some embedded platform shared PINs between USB and UART.
+Thank you for the patchset.
 
-For example, some phone will use special cable detection in boot loader
-to switch USB port function into UART mode. Hence Kernel need to query
-the hardware state from PHY registers to confirm the initialzation flow
-for PHY and USB driver.
+Could you provide information on how you
+tested the code.
+Did you test it on chromeos userspace?
+Did you use the test-tast framework?
+What tests did you run?
 
-To support this kind of PIN switch, new PHY MODE and query API is
-required. Here we introduce a new PHY mode: PHY_MODE_UART.
+Dafna
 
-API phy_get_mode_ext() can be used to query the MODE from hardware
-instead of reading it from phy attributes.
 
-Signed-off-by: Macpaul Lin <macpaul.lin@mediatek.com>
----
- drivers/phy/phy-core.c  |   17 +++++++++++++++++
- include/linux/phy/phy.h |    3 +++
- 2 files changed, 20 insertions(+)
+On 27.07.21 12:10, Yunfei Dong wrote:
+> This series adds support for multi hardware decode into mtk-vcodec, by first
+> adding component framework to manage each hardware information: interrupt,
+> clock, register bases and power. Secondly add core thread to deal with core
+> hardware message, at the same time, add msg queue for different hardware
+> share messages. Lastly, the architecture of different specs are not the same,
+> using specs type to separate them.
+> 
+> This series has been tested with both MT8183 and MT8173. Decoding was working
+> for both chips.
+> 
+> Patches 1,2 rewrite get register bases and power on/off interface.
+> 
+> Patch 3-5 add component framework to support multi hardware.
+> 
+> Patches 6-14 add interfaces to support core hardware.
+> ----
+> This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
+> 
+> Multi hardware decode is based on stateless decoder, MT8183 is the first time
+> to add stateless decoder. Otherwise it will cause conflict. Please also accept
+> this patch together with [1].
+> 
+> [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
+> ----
+> Changes compared with v2:
+> - Fix return value for patch 1/15
+> - Add this new patch to align vdec and venc wake up ctx interface for patch 2/15
+> - Fix comments for patch 4/15
+> - Change txt files to yaml for patch 5/15
+> - Generalize wake up ctx interface for stateless and stateful decode for patch 7/15
+> - Add document for structs and functions for patch 8/15
+> - Add condition to check the return value of kthread_run for patch 11/15
+> - Fix yaml check fail for patch 13/15
+> 
+> Changes compared with v1:
+> - Fix many comments for patch 3/14
+> - Remove unnecessary code for patch 4/14
+> - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
+> - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
+> - Using yaml format to instead of txt file for patch 12/14
+> 
+> Yunfei Dong (15):
+>    media: mtk-vcodec: Get numbers of register bases from DT
+>    media: mtk-vcodec: Align vcodec wake up interrupt interface
+>    media: mtk-vcodec: Refactor vcodec pm interface
+>    media: mtk-vcodec: Use component framework to manage each hardware
+>      information
+>    dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
+>      dt-bindings
+>    media: mtk-vcodec: Use pure single core for MT8183
+>    media: mtk-vcodec: Add irq interface for multi hardware
+>    media: mtk-vcodec: Add msg queue feature for lat and core architecture
+>    media: mtk-vcodec: Generalize power and clock on/off interfaces
+>    media: mtk-vcodec: Add new interface to lock different hardware
+>    media: mtk-vcodec: Add core thread
+>    media: mtk-vcodec: Support 34bits dma address for vdec
+>    dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
+>    media: mtk-vcodec: Add core dec and dec end ipi msg
+>    media: mtk-vcodec: Use codec type to separate different hardware
+> 
+>   .../media/mediatek,vcodec-comp-decoder.yaml   | 154 +++++++++
+>   .../media/mediatek,vcodec-decoder.yaml        | 138 ++++++++
+>   .../media/mediatek,vcodec-encoder.yaml        | 128 ++++++++
+>   .../bindings/media/mediatek-vcodec.txt        | 130 --------
+>   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 296 +++++++++++++++---
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 184 +++++++++++
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  48 +++
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
+>   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
+>   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  76 ++++-
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  12 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  27 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
+>   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
+>   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
+>   .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 +-
+>   .../mtk-vcodec/vdec/vdec_h264_req_if.c        |   2 +-
+>   .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 +-
+>   .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 +-
+>   .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
+>   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
+>   .../platform/mtk-vcodec/vdec_msg_queue.c      | 290 +++++++++++++++++
+>   .../platform/mtk-vcodec/vdec_msg_queue.h      | 157 ++++++++++
+>   .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
+>   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
+>   .../platform/mtk-vcodec/venc/venc_h264_if.c   |   2 +-
+>   .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
+>   33 files changed, 1697 insertions(+), 280 deletions(-)
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
+>   create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+>   delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+>   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+> 
 
-diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
-index ccb575b..b8f6539 100644
---- a/drivers/phy/phy-core.c
-+++ b/drivers/phy/phy-core.c
-@@ -373,6 +373,23 @@ int phy_set_mode_ext(struct phy *phy, enum phy_mode mode, int submode)
- }
- EXPORT_SYMBOL_GPL(phy_set_mode_ext);
- 
-+int phy_get_mode_ext(struct phy *phy)
-+{
-+	int ret;
-+
-+	if (!phy || !phy->ops->get_mode_ext)
-+		return 0;
-+
-+	mutex_lock(&phy->mutex);
-+	ret = phy->ops->get_mode_ext(phy);
-+	if (!ret)
-+		ret = phy->attrs.mode;
-+	mutex_unlock(&phy->mutex);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(phy_get_mode_ext);
-+
- int phy_set_media(struct phy *phy, enum phy_media media)
- {
- 	int ret;
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index 0ed434d..7d32c6b 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -34,6 +34,7 @@ enum phy_mode {
- 	PHY_MODE_USB_DEVICE_HS,
- 	PHY_MODE_USB_DEVICE_SS,
- 	PHY_MODE_USB_OTG,
-+	PHY_MODE_UART,
- 	PHY_MODE_UFS_HS_A,
- 	PHY_MODE_UFS_HS_B,
- 	PHY_MODE_PCIE,
-@@ -70,6 +71,7 @@ enum phy_media {
-  * @power_on: powering on the phy
-  * @power_off: powering off the phy
-  * @set_mode: set the mode of the phy
-+ * @get_mode_ext: get the extented mode of the phy
-  * @set_media: set the media type of the phy (optional)
-  * @set_speed: set the speed of the phy (optional)
-  * @reset: resetting the phy
-@@ -83,6 +85,7 @@ struct phy_ops {
- 	int	(*power_on)(struct phy *phy);
- 	int	(*power_off)(struct phy *phy);
- 	int	(*set_mode)(struct phy *phy, enum phy_mode mode, int submode);
-+	int	(*get_mode_ext)(struct phy *phy);
- 	int	(*set_media)(struct phy *phy, enum phy_media media);
- 	int	(*set_speed)(struct phy *phy, int speed);
- 
--- 
-1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
