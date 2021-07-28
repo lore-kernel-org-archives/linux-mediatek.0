@@ -4,77 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AF53C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 04:03:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB4D8C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 04:07:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25F9760D07
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 04:03:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 25F9760D07
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 75F9360EBB
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 04:07:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 75F9360EBB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nb/miAIvybV/3L0TC9UT0YOtQX6O2gLKgdWvlDceW7U=; b=2/uQshtrjg0qrV
-	9y+vFE4PAvf2JpUYvsrY7y7lOIVaLWW0cNVBUu4QeOFHRcEXcPYLw2NMXc6zlsi5Zws/ViJfUtppa
-	HJG/abjLEQIcCRWMzkppyKcMluyPfNYpzsH+JnV2WNrU/+HD+wmhvvf0L3fZVBm+aKJ7nGd4vikD5
-	WfHLOgL0+aphYVutkUmLpzn1qWWZhKnNpQrdNon8BQGY7/62HnPhItOrCqTQeOVJp63O1sjAfUxZo
-	IuuYwyE5SETClxIsEe3ctph1BHCQOZ2UM4Gi+vjPwxKoYM0URvXncdYlWfCE3Gg5myEpRdOal7AdE
-	DzcR1R3tRMhf9PtCKPeA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pg72spnwJaObGDqDkzWs2+L/HjVee17XglozxS3PsZA=; b=QfuYfX5fqfELvV
+	hat/x+K+yZ+tJROpEzvzlvoKxqWKetFLRqfjd4RXGJHEhUzBxeTex9VbF80OLgi8/CMM+X3DzsNkH
+	AnlyqiGbr0vkPPPXiXgmdu33COAQVmu+kSgK2EuP0NB0PRrlIDVUajrgFLCp7eg7Odhovmp54nbrU
+	TxY2rC1BtHzUkRg+ABvdpHzAvIVB7bUNv8BqjgfiZwaNN3QV8PhSPn/OZKeGPwiE2LbGd2YWgk7Au
+	ylGN1zIl2NXsRFv2s7wBh9BvQWwl9A5JSF8iV409mPi61ITtCryuU6LtlW55hb3hSAbZjGhNRMbb+
+	Yqc6nKxFJPDT+G97Q3qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8anA-00Gzwf-2s; Wed, 28 Jul 2021 04:03:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m8aqy-00H12U-Ca; Wed, 28 Jul 2021 04:07:32 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8amw-00Gztb-23; Wed, 28 Jul 2021 04:03:23 +0000
-X-UUID: 2b82962076b9448db7e3a76451fe8e5f-20210727
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=X0qFVzx03hG57Q63UwhDXagdsRjvkFlHaxpHCQ9cy3c=; 
- b=UB4yxji1FvgixIVkqRaQT15pEQ5Uofox6+2NTGsVbIkqaIuTjIry1gr4srmueBKa7vNy1znlNlgd4+JyMUiiHx3sJhGnlS9B9bJm+ofRBZBlJTBR8AO8DlZNQbPKSR/2BEsLVb6J68lCumpLjbnuYVjWmz58MFwBFn0nNPhP/RU=;
-X-UUID: 2b82962076b9448db7e3a76451fe8e5f-20210727
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 268987340; Tue, 27 Jul 2021 21:03:20 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 27 Jul 2021 20:59:11 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 28 Jul 2021 11:59:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 28 Jul 2021 11:59:03 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
- <mathieu.poirier@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <srv_heupstream@mediatek.com>,
- <tzungbi@google.com>, <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-Subject: [PATCH v4 2/4] dt-bindings: remoteproc: mediatek: Add binding for
- mt8192 scp
-Date: Wed, 28 Jul 2021 11:58:57 +0800
-Message-ID: <20210728035859.5405-3-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.15.GIT
-In-Reply-To: <20210728035859.5405-1-tinghan.shen@mediatek.com>
-References: <20210728035859.5405-1-tinghan.shen@mediatek.com>
+ id 1m8aqk-00H0yp-2d
+ for linux-mediatek@lists.infradead.org; Wed, 28 Jul 2021 04:07:19 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id
+ g23-20020a17090a5797b02901765d605e14so2307386pji.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 21:07:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pks90ivSERYpMZj4hwgFuxICQ3PbMdWHSdug+r6DdN0=;
+ b=fN6OB9+rOqF2+0AFhpPtM/haCGqRJ7JsODJOFsCEcERuuTE3aB5cIrjUKdhQwJ8CII
+ LVp+mM1J0c/7BLHTLg9gnQhyGP3nQ64G6jaiMP97sFY7vxwaItPm8n+1OvUMvyB7jQfC
+ NX7Gls4xWfl4rgH6SxBlHQNP3qk4b4mbNEF98=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pks90ivSERYpMZj4hwgFuxICQ3PbMdWHSdug+r6DdN0=;
+ b=C1xHGYpduM7nV5f31rmHy7B93+jWByMvPV2bae6Wn+LsOvTN7KUKV87N3UzlYyiadh
+ TtsNL5jH9MVz4Rc4cNaKCwt8cp7SdubLYSKqHQokpn+jeTfkBbFZoOnXEFH6QmFbXza2
+ SOVVYFOOuxHDnIgffCwxPLsQmLUiNtpwQADqZme8LzyqEeP4JIDCFIV6z/Te9SNh6ske
+ 5FSWcCTOMvUAgbdU0d4nSMk404phXlbbqFNrf29tGsNnZ5I74Nd0/VbIs+8/b1OQ7Rtj
+ +xrW+7X6F0hOAEbULRkjv6Huf+l0o3HXjKXNbnAeci/erJqob1384MBaUOjuuWJ18ILp
+ wjCg==
+X-Gm-Message-State: AOAM531ZLy/31jd5CG0lan5GsjvjnUiE8ouOFhV4dA8jl1KOdV1Wbfyk
+ NpG87dYrzHiE01KllRzHosRXAg==
+X-Google-Smtp-Source: ABdhPJzA5Yn7qXrzqWhBBZSJiX8eTQpgB2GRbV65UIQ8yec4OJwIMR1tPd7b67aFSc/ImJX+yARX9g==
+X-Received: by 2002:a17:902:ab98:b029:12b:acc0:e18c with SMTP id
+ f24-20020a170902ab98b029012bacc0e18cmr21358229plr.10.1627445236800; 
+ Tue, 27 Jul 2021 21:07:16 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:5176:76cc:2193:9b8f])
+ by smtp.gmail.com with ESMTPSA id 6sm5536012pfg.108.2021.07.27.21.07.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Jul 2021 21:07:16 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, eizan@chromium.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v4 1/2] arm64: dts: mt8183: kukui: Use aliases to mmc nodes
+Date: Wed, 28 Jul 2021 12:07:09 +0800
+Message-Id: <20210728040710.2891955-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.432.gabb21c7263-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_210322_133330_30DE701C 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20210727_210718_199677_40411057 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,40 +98,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8192 compatible to binding document.
+With commit 1796164fac7e ("dt-bindings: mmc: document alias support"),
+a way to specify fixed index numbers was provided. This patch use aliases
+to mmc nodes so the partition name for eMMC and SD card will be consistent
+across boots.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+Tested-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 ---
- Documentation/devicetree/bindings/remoteproc/mtk,scp.txt | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+v3->v4: change commit message based on review in v3.
+---
+ arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-index d64466eefbe3..88f37dee7bca 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
-@@ -7,14 +7,17 @@ Mediatek SoCs.
- Required properties:
- - compatible		Should be one of:
- 				"mediatek,mt8183-scp"
-+				"mediatek,mt8192-scp"
- 				"mediatek,mt8195-scp"
- - reg			Should contain the address ranges for memory regions:
- 			SRAM, CFG, and L1TCM.
- - reg-names		Contains the corresponding names for the memory regions:
- 			"sram", "cfg", and "l1tcm".
--- clocks		Required by mt8183. Clock for co-processor (See: ../clock/clock-bindings.txt)
--- clock-names		Required by mt8183. Contains the corresponding name for the clock. This
--			should be named "main".
-+- clocks		Required by mt8183 and mt8192. Clock for co-processor
-+			(See: ../clock/clock-bindings.txt)
-+- clock-names		Required by mt8183 and mt8192. Contains the
-+			corresponding name for the clock. This should be
-+			named "main".
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+index ae549d55a94fc..8e9cf36a9a41a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+@@ -13,6 +13,8 @@
+ / {
+ 	aliases {
+ 		serial0 = &uart0;
++		mmc0 = &mmc0;
++		mmc1 = &mmc1;
+ 	};
  
- Subnodes
- --------
+ 	chosen {
 -- 
-2.18.0
+2.32.0.432.gabb21c7263-goog
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
