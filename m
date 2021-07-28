@@ -2,91 +2,92 @@ Return-Path: <SRS0=pZ6D=MU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EB96C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 18:09:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36690C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 18:27:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E779660F00
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 18:09:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E779660F00
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id ED61E6101B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 18:27:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ED61E6101B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z+6c5UWspNmqKFOPm2zRKt10u2wbRl8y/hilEKp7jlw=; b=mOKdQGk2GXaNAP
-	iL9vrT3NoRUPpNi0S3/N/iKzl9jT7NIHcwiwl9v8w085r4rLams51qiSGrpNhWUeZMAnJCdubEKCY
-	LU+UyPt4xG28jycMlw4cMkZQ5cHszXAqXuG1fZw9WJcl3A57MGaPsAE6OEvDWCOd2VdI0ZxmEszuw
-	t66ejYI8/4OpufPsXpaMF6vHDUcyaOJgS5HaUEXpjrc6BgzeIG66KNhMc3m7YQUGqpGMKip8Nr6YY
-	RlFdz9sdfAVIj3Q41NyK/IPQhZOpKMbujJGVjT99jPsBTE2NPHKs1Z/9fDO3RVjKqoZ1fhKLNDIYq
-	xaU7TtVCp566ty4o+hRA==;
+	List-Owner; bh=aggiPX9QCVZa0LQlLcPUK8Gs/zBUxAruUUjoGL8luyc=; b=uSHtc9m7sGgF3O
+	f5ujZBK1zAjiPNRrnTLiXzgKhSqv2k5ZmCHfiY5Jm6c9PCtdYNR3sywucdSWnkCWIUJhk1GOvoKCX
+	a6J8Vz999htACFk3TFtJhA4Z4hF57ZF29dTzYujNxkK3Y3KvQcNUeTDJAc5rWYD2XDFKcsjnnW0fB
+	3bNJXddSBdHcf5W1PDWBZv4+/M1xmO+3JlVwdhkn3BLlT1qfSmrajZxf0bZ73VZEUpaFWaMgmisS1
+	KdAw7l4W4nbqq4g4Kqjy27xtmQF+8GI6kA2myg2sQ9zCJzstQW3ofyf4RPRIGRHQ63rcCW3rYXxhD
+	ff4bsx+ECULdWyR8jXkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8nzA-0021DA-LF; Wed, 28 Jul 2021 18:08:52 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1m8oH9-0024ny-TM; Wed, 28 Jul 2021 18:27:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8nyh-00212i-LI; Wed, 28 Jul 2021 18:08:25 +0000
-Received: by mail-ed1-x535.google.com with SMTP id h8so4463916ede.4;
- Wed, 28 Jul 2021 11:08:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=0ZTJnZtraIG0xPipALR10pj5tmmjQMjK6shf1JTwqpk=;
- b=JgPC/3JBmvWiLoyT2NK/dn+kzAbbqaqEpRXKf55vkck4YPBZRdLOwv2yRCvOoVpMEi
- aBS0ltY4gtDOwISN64UiY7MQyxGOuHwV0pj5KulGZMK1zJRFi8esjjQOPJqeqslDRuTp
- vU3X76haMpN+qSk4DgJ0Org9uNSF9E1aIw//lNjmGZ8/ZCaeCPeci7TU8blJVRXfOhKQ
- kEj+a5p8W1P+P6tEDmYLR/HyaQwIR9dB0neIY9v/YtR3wFu54Cma8AUOFxZgk2t1p5TT
- Mz7LcRtOfkCnqzfc64ZUh+gQuAIbhmD5ZNY0qidALiD6YQPjtlJUY5lKGy4kXkSC7sKU
- NGjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=0ZTJnZtraIG0xPipALR10pj5tmmjQMjK6shf1JTwqpk=;
- b=ces2OXWDK/W6q5j/drmG7NKNa8QVc/OKNe/7xpq2s6jlrMlh+omvnks08oMCoVh1yC
- qskSH85v5WTP5Y25nHzIkWKKMpNxV5/ruMM7zF1GOYpDKubK1HgVnpwqCe4UQRu/fX7k
- nnTi79tW7vLhy/mzx5J6hXcoRxGB7xLvGVzYipd5oAsEWYDHTSc0zraSIxqJaPsttle4
- l0LO/5Tt262u9hy+UaYMZbeFX0iZ8SPJxbOHOdafF1xE9/zjP7EK0kckAtBST60vr3Fp
- QSd42a7Rp1nWKnh1TL+SQLTkgCZ+BgJHJHpptsrUUV/Y/Tjl2sJDLbGxN1qRRijQsk6V
- 24Cw==
-X-Gm-Message-State: AOAM5337OpXU7k1nAszR99DN8EkgN4fyU73ZrFglzvLBRA4O/jm0atB6
- px/it2fO6v8b+NUEa7S2rb4=
-X-Google-Smtp-Source: ABdhPJwEqVB8zqyKQ4K2P8TAEa37pHxPMHxMS6a23Sxq7bHR4vQ2I2cH6uzNfreWqKQe++YLwYM31Q==
-X-Received: by 2002:a05:6402:291a:: with SMTP id
- ee26mr1342296edb.220.1627495701024; 
- Wed, 28 Jul 2021 11:08:21 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id x2sm211241edj.37.2021.07.28.11.08.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jul 2021 11:08:20 -0700 (PDT)
-Date: Wed, 28 Jul 2021 21:08:19 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC net-next 0/2] mt7530 software fallback bridging fix
-Message-ID: <20210728180819.egvin5gyllmwqp3n@skbuf>
-References: <20210728175327.1150120-1-dqfext@gmail.com>
+ id 1m8oGv-0024mM-Om; Wed, 28 Jul 2021 18:27:15 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9A1D061057;
+ Wed, 28 Jul 2021 18:27:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1627496832;
+ bh=P7Nj61y10RxwtvDu8NSjNYumxT5Mu8ftk2gukjRAMpA=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=RtvVFUSN/PJopXn29kQL/ZCodQf6lPdbtlAQq5eOGXaHdYKTnAw7NQ3p2Kr8a3Nsq
+ dFmVCUzbkdM1L9ol22nRp2rCSZqfBTCHUQoaOKnxm1eNFK4kW5j5u8ZI+W0wUX6EQo
+ Zfy0zlnpbyhOudkVAQUMyGKUiIsNoDwxvSRt8tqm+m8Yv/CnZyfy7f5ohApS3yLIEJ
+ H9ygJBb+kkk0am2jUnepTR4/GgSDOrbwKmKhT10hXpmR4zHXSyZYzi3ewvb1iAyOsi
+ sB+PEX6ygpjA9pRwfqDVl1LLFj0ERle87t06SNXPw2pGhjTtedzf6Lr12gYEXcjFbJ
+ B2QTzZ53/1/xw==
+Received: by mail-ej1-f45.google.com with SMTP id nb11so6133354ejc.4;
+ Wed, 28 Jul 2021 11:27:12 -0700 (PDT)
+X-Gm-Message-State: AOAM533HSzPX8s7ovLJ/HWW7GUJCm6Dg/sPaz5uhCK50xLSvyQ1VZ6wR
+ ewBjiHtwvhxt+WSb93ShK3ZuD1JJyejFbkV+IZg=
+X-Google-Smtp-Source: ABdhPJwMW5TrgITkkwrO7xV+n72DQlxYsctwNVZtDNp+QCHzDRSCcI4DekRwXzXmKxU51+nQz47w8VSo+rzFf/tPNpE=
+X-Received: by 2002:a17:906:c7c2:: with SMTP id
+ dc2mr788351ejb.472.1627496831060; 
+ Wed, 28 Jul 2021 11:27:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210728175327.1150120-1-dqfext@gmail.com>
+References: <20210726071439.14248-1-sam.shih@mediatek.com>
+ <20210726071439.14248-5-sam.shih@mediatek.com>
+In-Reply-To: <20210726071439.14248-5-sam.shih@mediatek.com>
+From: Sean Wang <sean.wang@kernel.org>
+Date: Wed, 28 Jul 2021 11:26:59 -0700
+X-Gmail-Original-Message-ID: <CAGp9LzqhseLhM=6aMxUJ2-YuU9sVk-u4gT=kem-o9RwXOAUwxA@mail.gmail.com>
+Message-ID: <CAGp9LzqhseLhM=6aMxUJ2-YuU9sVk-u4gT=kem-o9RwXOAUwxA@mail.gmail.com>
+Subject: Re: [PATCH 04/12] pinctrl: mediatek: moore: use pin number in
+ mtk_pin_desc instead of array index
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>, 
+ Herbert Xu <herbert@gondor.apana.org.au>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, 
+ Seiya Wang <seiya.wang@mediatek.com>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>,
+ linux-crypto@vger.kernel.org, 
+ linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org, 
+ linux-clk <linux-clk@vger.kernel.org>, John Crispin <john@phrozen.org>, 
+ Ryder Lee <Ryder.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_110823_814064_4B6CF692 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20210728_112713_897204_572E64B4 
+X-CRM114-Status: GOOD (  27.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,26 +104,180 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 29, 2021 at 01:53:24AM +0800, DENG Qingfang wrote:
-> DSA core has gained software fallback support since commit 2f5dc00f7a3e,
-> but it does not work properly on mt7530. This patch series fixes the
-> issues.
+ Hi Sam,
 
-I haven't looked at the patches, just read the commit messages. Your
-approach makes sense considering that mt7530 supports ACL rules. For
-switches that don't, I was thinking that we could add a check within DSA
-that bridging with software uppers such as LAGs can be allowed only as
-long as the bridge is VLAN-aware. If it is, then the classified VLAN for
-packets on standalone ports can be made == 0, and if independent VLAN
-learning is used, then the FDB entries learned on bridged ports will
-always have a VLAN ID != 0, so the standalone switch port won't attempt
-to shortcircuit the forwarding process towards the bridge port.
-Anyway, we can have both solutions, yours and the generic DSA restriction.
-I was just not expecting to see a fix for this already, it makes me
-think that the DSA restriction for VLAN-unaware software bridging should
-not be unconditional, but we should guard it behind a new bool option
-like ds->fdb_shared_across_all_ports = true or something like that.
-What do you think?
+On Mon, Jul 26, 2021 at 12:17 AM Sam Shih <sam.shih@mediatek.com> wrote:
+>
+> Certain SoC are missing the middle part gpios in consecutive pins,
+> it's better to use pin number in mtk_pin_desc instead of array index
+> for the extensibility
+
+Now the driver pin number has to be consistent with the array index
+because the driver would use pin number as the array index to fetch
+the pin descriptor.
+
+For those missing GPIOs, we could just fill out .name in struct
+mtk_pin_desc as NULL to indicate the pin is unavailable for users (pin
+not ballout) on the certain SoC and then allow us to reuse all of the
+pinctrl operations with minimal modification.
+
+>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-moore.c | 61 ++++++++++++++++++++++++
+>  1 file changed, 61 insertions(+)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
+> index 3a4a23c40a71..16206254ec3d 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-moore.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
+> @@ -35,6 +35,19 @@ static const struct pin_config_item mtk_conf_items[] = {
+>  };
+>  #endif
+>
+> +static int mtk_pin_desc_lookup(struct mtk_pinctrl *hw, int pin)
+> +{
+> +       int idx;
+> +
+> +       for (idx = 0 ; idx < hw->soc->npins ; idx++)
+> +               if (hw->soc->pins[idx].number == pin)
+> +                       break;
+> +       if (idx < hw->soc->npins)
+> +               return idx;
+> +
+> +       return -EINVAL;
+> +}
+> +
+>  static int mtk_pinmux_set_mux(struct pinctrl_dev *pctldev,
+>                               unsigned int selector, unsigned int group)
+>  {
+> @@ -74,6 +87,13 @@ static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev *pctldev,
+>  {
+>         struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
+>         const struct mtk_pin_desc *desc;
+> +       int err;
+> +
+> +       err = mtk_pin_desc_lookup(hw, pin);
+> +       if (err >= 0)
+> +               pin = err;
+> +       else
+> +               return err;
+>
+
+We can drop it and use the following snippet instead
+
+desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+
+/* !desc->name to show the pin is not ballout */
+if (!desc->name)
+         return -ENOTSUPP;
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+> @@ -87,6 +107,13 @@ static int mtk_pinmux_gpio_set_direction(struct pinctrl_dev *pctldev,
+>  {
+>         struct mtk_pinctrl *hw = pinctrl_dev_get_drvdata(pctldev);
+>         const struct mtk_pin_desc *desc;
+> +       int err;
+> +
+> +       err = mtk_pin_desc_lookup(hw, pin);
+> +       if (err >= 0)
+> +               pin = err;
+> +       else
+> +               return err;
+>
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+> @@ -102,6 +129,12 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+>         int val, val2, err, reg, ret = 1;
+>         const struct mtk_pin_desc *desc;
+>
+> +       err = mtk_pin_desc_lookup(hw, pin);
+> +       if (err >= 0)
+> +               pin = err;
+> +       else
+> +               return err;
+> +
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+>         switch (param) {
+> @@ -217,6 +250,12 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+>         u32 reg, param, arg;
+>         int cfg, err = 0;
+>
+> +       err = mtk_pin_desc_lookup(hw, pin);
+> +       if (err >= 0)
+> +               pin = err;
+> +       else
+> +               return err;
+> +
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
+>
+>         for (cfg = 0; cfg < num_configs; cfg++) {
+> @@ -434,6 +473,12 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
+>         const struct mtk_pin_desc *desc;
+>         int value, err;
+>
+> +       err = mtk_pin_desc_lookup(hw, gpio);
+> +       if (err >= 0)
+> +               gpio = err;
+> +       else
+> +               return err;
+> +
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+>         err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
+> @@ -447,6 +492,15 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
+>  {
+>         struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+>         const struct mtk_pin_desc *desc;
+> +       int err;
+> +
+> +       err = mtk_pin_desc_lookup(hw, gpio);
+> +       if (err >= 0) {
+> +               gpio = err;
+> +       } else {
+> +               dev_err(hw->dev, "Failed to set gpio %d\n", gpio);
+> +               return;
+> +       }
+>
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
+>
+> @@ -488,6 +542,13 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, unsigned int offset,
+>         struct mtk_pinctrl *hw = gpiochip_get_data(chip);
+>         const struct mtk_pin_desc *desc;
+>         u32 debounce;
+> +       int err;
+> +
+> +       err = mtk_pin_desc_lookup(hw, offset);
+> +       if (err >= 0)
+> +               offset = err;
+> +       else
+> +               return err;
+>
+
+Ditto
+
+>         desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
+>
+> --
+> 2.29.2
+>
 
 _______________________________________________
 Linux-mediatek mailing list
