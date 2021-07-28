@@ -2,86 +2,71 @@ Return-Path: <SRS0=pZ6D=MU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E62D5C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 06:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36551C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:35:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AA91160EB9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 06:14:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AA91160EB9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id F0ED760E78
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:35:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F0ED760E78
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IamWN1OOIyDtwNunJxJj67PpldWXyaxrSNyr0GAT1z8=; b=AAGVkMRZR+CSyp
-	FbIk1Gz6oiDozl5ZYXYyx6DM02fLpyFmZvoLp+FIbr6FKXmEJhLSE9E2uEaLeJF2CR3pvBcCC92+C
-	Mv5hJnj73Cy/KTHU2c/kPPIp9CPKKWYLMGgbW4WiCYWGpeyLuWlvyeU4MFcjrLl25jfA1EP+8u08y
-	Laa8BNQ0ZRokfF/II8hHwe8oyU235lKZJYUQx+Wc7qufqQr6JdrATgVUD9CcWxnxeZudoAeU0M/NV
-	Nd37diVfydKbICKFlVpibRzAY2o7pMsd88z18yGR+rIcdvaP5xJki8FMTLZGzxLKzCpua9rRQwMAF
-	NRjzCydUlIe2JWFW/t9g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b+3zxlOBCcmazhoP5SaNH1BPVhwFyt1jXYtw03Wf7II=; b=T1Z/0sCBLgmvWJmmFT6KxM6xxH
+	WwxRKVnAgLWGAAPaLU3AWIX2I7Hqcwa3jmNnYYbkI7hPUUhCDgl8/XEGyCR0EVxDABgiSUhs7EU4q
+	Tb8cS+5cByAWZOxkGo0tcCGtIoBK2nVfzIjFl/OwHuIOKgoQgTLkUWcqztkcsarf2EIG9E56JQgbU
+	mblkKqbpwmB+xW+PijCstEDxdJWUu/7b91OBkYez5Xu26ggM+0R8anVHJ2zjRxQop+QSWY9E4iCX2
+	GV7O1QYxuP2phPJKTkA5vLv/LzCMmjWGAbSQMlteAkQSNr6Zqbbd6i7F0fYck940rsdsyiitKrb15
+	C5mst07Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8cq4-00HEnX-55; Wed, 28 Jul 2021 06:14:44 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1m8e68-00HO0P-U3; Wed, 28 Jul 2021 07:35:24 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8cpp-00HEjf-IR
- for linux-mediatek@lists.infradead.org; Wed, 28 Jul 2021 06:14:31 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id n10so1427471plf.4
- for <linux-mediatek@lists.infradead.org>; Tue, 27 Jul 2021 23:14:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+eCPJolnjFD6s7o/D7/wCD8S3LJbNwZNkFAhDgmHNdg=;
- b=mR4Tt7DzUQaHNxHJQDGkFhLLLljZDCuHSLxVhBOpom3iS+QI99MjDfopHJ9XmURL/i
- bCugbreHHQ0xBU095vg6uHwXTSdQsTKtVFGvhxCtiLbvzN8yaKuepp0M9CeZxG8Nr3Zq
- /Qe7l6ARfY6A59sOduR69WOdWo96M4zLL4GRU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+eCPJolnjFD6s7o/D7/wCD8S3LJbNwZNkFAhDgmHNdg=;
- b=mn4YXGaQ19Sc4xqKF8mkN1vf36p7oBOpHkwd4eSZF6w3OkWEQ+n/zX+u2lk78aGt5r
- Uzg8ZBQIpJgodc94YpLvZh491Jpxg/B6AdzDTfcfMsp2xq25zpcB/MbDNcQ96CWswpvQ
- 9WNFHXjGpRPMwMv6KFcRzPnV7X0b+9JbuDuiiyOeKSB/xrES5N8NIbQI9RvtzpEIvRAh
- XTy9jNquGT7tBlPV2acpdC8B30b2SZ6zmobrg0/r7aNse2Q64UUF6hNrGxwlTKKkY5iZ
- jVKm5QkXV+oGokhju52yXtVH/t4wE4UMjYlLGSYUy2hGadNrXdjH22oJ7BicPUP3ANeZ
- z43Q==
-X-Gm-Message-State: AOAM533vHYzhy68a2LfncYl7nEEidtp7MIQbGhQubb4Wn7vCxcW8GjUF
- 0VzlgTbyBs8IBKDfAPbQ2QJwEzSIInlPG9IA+dzy+w==
-X-Google-Smtp-Source: ABdhPJzmByxKqYRSbuErkA4p8ANUorSkgXNNWkdhJmCqT7YsTx5hk209/4gRAztv7igdNUaEYtPZLsDig5mlURlglKQ=
-X-Received: by 2002:a63:8f04:: with SMTP id n4mr26845226pgd.317.1627452868772; 
- Tue, 27 Jul 2021 23:14:28 -0700 (PDT)
+ id 1m8e64-00HNzV-Vj
+ for linux-mediatek@lists.infradead.org; Wed, 28 Jul 2021 07:35:23 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 61FCF60F91;
+ Wed, 28 Jul 2021 07:35:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1627457719;
+ bh=G0rWKfDaNY22lUY/PXw1Ue16UDla1YpF0to/w+YJYmA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=C2X0/92gKczgOgV7pr5CmsjZMi1pWRCH+2iEAXHzB5YcT/OxKjWy8EgiDdyhVpXcQ
+ jYCa2fBHumQM0TdDUWtF7VO07J9QfBT7jZWKO1S2sBC8F5hnlHcQxaZdV1QmroSj0c
+ wrDFpAOtbrZLtOVi3Yw+sxYvc8bacaEVFvOfbJivpkjjQTJewgaTgF+wWDhNiUhOkx
+ WMHbflBIV+x5jGazWuFktjoTmvHq5jGMikf2lPNaMnrULd5hdI+rJOyhTb1TLQBG9y
+ zYgnnFnY8kuHcyHStsnS2yGhlCdUjvC8YEYntQ6FDIBsLSoyhTWH7S6L1rW+IoNv5e
+ VRwSojRIAne1w==
+Date: Wed, 28 Jul 2021 09:35:15 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
+ km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
+ posh.sun@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, jemele@google.com, yenlinlai@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] mt76: connac: add support maximum regulatory Tx power
+Message-ID: <YQEIs876ksTVjIl0@lore-desk>
+References: <1627426757-14811-1-git-send-email-sean.wang@mediatek.com>
+ <1627426757-14811-2-git-send-email-sean.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20210727023205.20319-1-chun-jie.chen@mediatek.com>
- <20210727023205.20319-3-chun-jie.chen@mediatek.com>
-In-Reply-To: <20210727023205.20319-3-chun-jie.chen@mediatek.com>
-From: Ikjoon Jang <ikjn@chromium.org>
-Date: Wed, 28 Jul 2021 14:14:17 +0800
-Message-ID: <CAATdQgC-X6pijkgTBsWJJKp__J6N=7JNKHQJmOMvTAjivwPM5w@mail.gmail.com>
-Subject: Re: [v6 2/2] arm64: dts: mediatek: Correct UART0 bus clock of MT8192
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- open list <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
+In-Reply-To: <1627426757-14811-2-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210727_231429_656677_744716A0 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20210728_003521_100288_1FEB47CD 
+X-CRM114-Status: GOOD (  19.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,48 +78,140 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1483824277503331092=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Tue, Jul 27, 2021 at 10:43 AM Chun-Jie Chen
-<chun-jie.chen@mediatek.com> wrote:
->
-> infra_uart0 clock is the real one what uart0 uses as bus clock.
->
-> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+--===============1483824277503331092==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="HD5cfJbB7Qv0wneP"
+Content-Disposition: inline
+
+
+--HD5cfJbB7Qv0wneP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> From: YN Chen <YN.Chen@mediatek.com>
+>=20
+> Consider .max_reg_power in struct ieee80211_channel to limit the
+> maximum power the wireless device allowed to transmit on the
+> corresponding channel according to the regulatory domain.
+>=20
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 > ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index c7c7d4e017ae..9810f1d441da 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -327,7 +327,7 @@
->                                      "mediatek,mt6577-uart";
->                         reg = <0 0x11002000 0 0x1000>;
->                         interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-> -                       clocks = <&clk26m>, <&clk26m>;
-> +                       clocks = <&clk26m>, <&infracfg CLK_INFRA_UART0>;
->                         clock-names = "baud", "bus";
->                         status = "disabled";
->                 };
+>  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 43 ++++++++++++++++++-
+>  1 file changed, 41 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
+rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index d71393b1c5e6..84f42ce12626 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -1773,6 +1773,43 @@ static s8 mt76_connac_get_sar_power(struct mt76_ph=
+y *phy,
+>  	return target_power;
+>  }
+> =20
+> +static s8 mt76_connac_get_ch_power(struct mt76_phy *phy,
+> +				   struct ieee80211_channel *chan,
+> +				   s8 target_power)
+> +{
+> +	struct mt76_dev *dev =3D phy->dev;
 
-There're many other nodes still having only clk26m. Will you update them too?
+is it used?
 
-> --
-> 2.18.0
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> +	struct ieee80211_supported_band *sband;
+> +	int i;
+> +
+> +	switch (chan->band) {
+> +	case NL80211_BAND_2GHZ:
+> +		sband =3D &phy->sband_2g.sband;
+> +		break;
+> +	case NL80211_BAND_5GHZ:
+> +		sband =3D &phy->sband_5g.sband;
+> +		break;
+> +	default:
+> +		return target_power;
+> +	}
+> +
+> +	for (i =3D 0; i < sband->n_channels; i++) {
+> +		struct ieee80211_channel *ch =3D &sband->channels[i];
+> +
+> +		if (ch->hw_value =3D=3D chan->hw_value) {
+> +			if (!(ch->flags & IEEE80211_CHAN_DISABLED)) {
+> +				int power =3D 2 * ch->max_reg_power;
+> +
+> +				if (power > 127 || power < -127)
+> +					power =3D 127;
+
+please correct me if I am wrong, but I guess the limit for mt7663 should be=
+ 63,
+isn't it?
+
+Regards,
+Lorenzo
+
+> +				target_power =3D min_t(s8, power, target_power);
+> +			}
+> +			break;
+> +		}
+> +	}
+> +
+> +	return target_power;
+> +}
+> +
+>  static int
+>  mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
+>  				  enum nl80211_band band)
+> @@ -1840,10 +1877,12 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy=
+ *phy,
+>  				.hw_value =3D ch_list[idx],
+>  				.band =3D band,
+>  			};
+> -			s8 sar_power;
+> +			s8 reg_power, sar_power;
+> =20
+> +			reg_power =3D mt76_connac_get_ch_power(phy, &chan,
+> +							     tx_power);
+>  			sar_power =3D mt76_connac_get_sar_power(phy, &chan,
+> -							      tx_power);
+> +							      reg_power);
+> =20
+>  			mt76_get_rate_power_limits(phy, &chan, &limits,
+>  						   sar_power);
+> --=20
+> 2.25.1
+>=20
+
+--HD5cfJbB7Qv0wneP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYQEIsAAKCRA6cBh0uS2t
+rOt8AP95ov/z4ReB4ZY7fTytbfpDFkXdZwnkFTj4ewwteOrG/gD9GGC/FkHM7ZVY
+kUBejtiUfKraUVcityNQO/PMzF83Qwo=
+=cRqC
+-----END PGP SIGNATURE-----
+
+--HD5cfJbB7Qv0wneP--
+
+
+--===============1483824277503331092==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1483824277503331092==--
+
