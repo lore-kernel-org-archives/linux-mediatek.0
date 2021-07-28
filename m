@@ -2,71 +2,78 @@ Return-Path: <SRS0=pZ6D=MU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36551C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57720C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:59:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0ED760E78
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:35:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F0ED760E78
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1849660F9E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 07:59:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1849660F9E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b+3zxlOBCcmazhoP5SaNH1BPVhwFyt1jXYtw03Wf7II=; b=T1Z/0sCBLgmvWJmmFT6KxM6xxH
-	WwxRKVnAgLWGAAPaLU3AWIX2I7Hqcwa3jmNnYYbkI7hPUUhCDgl8/XEGyCR0EVxDABgiSUhs7EU4q
-	Tb8cS+5cByAWZOxkGo0tcCGtIoBK2nVfzIjFl/OwHuIOKgoQgTLkUWcqztkcsarf2EIG9E56JQgbU
-	mblkKqbpwmB+xW+PijCstEDxdJWUu/7b91OBkYez5Xu26ggM+0R8anVHJ2zjRxQop+QSWY9E4iCX2
-	GV7O1QYxuP2phPJKTkA5vLv/LzCMmjWGAbSQMlteAkQSNr6Zqbbd6i7F0fYck940rsdsyiitKrb15
-	C5mst07Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=s7EAewd7YTxISarpp0rv0swTKgV26J0steja51Hy1No=; b=v3mpyQ5TJOF3X6
+	gDmPYJq9+6FCh4jVrADukYWDSxqFvFhGZrPcrs2cXIN2W2QGHRmvFhofm9UYa3vqYaIfeJd56tCI2
+	ofppEHmUDcMgTdpqtephpLjBhQq8IpH9iXp/GiSs4uB45DjCatmIJwj26b9dXu5sW7fUU/h6rpoTV
+	vejnZFNTTL2VYFlELsZGoZWjvnmgU2wJqHlPXm73FsDM2RuW7YL9NHbYLCO893NSWRFodx1w34Ysu
+	TvzT4vsiT7q2/F8QvqQU7jynuo16wzZnCo5tCVOXbjgtWB83pGUnsWWMgvugmDAp1ZyBDtTRRC9mp
+	x762IztW4zp6U52NZjeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8e68-00HO0P-U3; Wed, 28 Jul 2021 07:35:24 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m8eTA-00HPU6-QH; Wed, 28 Jul 2021 07:59:12 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8e64-00HNzV-Vj
- for linux-mediatek@lists.infradead.org; Wed, 28 Jul 2021 07:35:23 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 61FCF60F91;
- Wed, 28 Jul 2021 07:35:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627457719;
- bh=G0rWKfDaNY22lUY/PXw1Ue16UDla1YpF0to/w+YJYmA=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=C2X0/92gKczgOgV7pr5CmsjZMi1pWRCH+2iEAXHzB5YcT/OxKjWy8EgiDdyhVpXcQ
- jYCa2fBHumQM0TdDUWtF7VO07J9QfBT7jZWKO1S2sBC8F5hnlHcQxaZdV1QmroSj0c
- wrDFpAOtbrZLtOVi3Yw+sxYvc8bacaEVFvOfbJivpkjjQTJewgaTgF+wWDhNiUhOkx
- WMHbflBIV+x5jGazWuFktjoTmvHq5jGMikf2lPNaMnrULd5hdI+rJOyhTb1TLQBG9y
- zYgnnFnY8kuHcyHStsnS2yGhlCdUjvC8YEYntQ6FDIBsLSoyhTWH7S6L1rW+IoNv5e
- VRwSojRIAne1w==
-Date: Wed, 28 Jul 2021 09:35:15 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, lorenzo.bianconi@redhat.com, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, jemele@google.com, yenlinlai@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] mt76: connac: add support maximum regulatory Tx power
-Message-ID: <YQEIs876ksTVjIl0@lore-desk>
-References: <1627426757-14811-1-git-send-email-sean.wang@mediatek.com>
- <1627426757-14811-2-git-send-email-sean.wang@mediatek.com>
+ id 1m8eT7-00HPRt-0q; Wed, 28 Jul 2021 07:59:11 +0000
+X-UUID: c82c56ebb60448bcb40af3a928ef5201-20210728
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=+z5bSJb+rUuSHs1EW07Sifftwl15m7Mg316eEqU34ok=; 
+ b=JrAzfSg+t9u1zubh/lKm/Rnz6e/KhlCuBZJqBYwsu2++Ivar1R4fxVStv73Ki2VMkMACJnCW/sBd7Sa6caXRGywe2GNOBs+GaMbcYrxHULU2oTih/h99GycksdknLT2dccums5+82Cq4jzj7awHTu0cgtwmDogrOlmGlbKBQ3hY=;
+X-UUID: c82c56ebb60448bcb40af3a928ef5201-20210728
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 114014830; Wed, 28 Jul 2021 00:59:06 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Jul 2021 00:59:04 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Jul 2021 15:59:03 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 28 Jul 2021 15:59:01 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>, Eddie Hung <eddie.hung@mediatek.com>
+Subject: [PATCH 1/9] dt-bindings: phy: mediatek: tphy: support type switch by
+ pericfg
+Date: Wed, 28 Jul 2021 15:58:23 +0800
+Message-ID: <1627459111-2907-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
-In-Reply-To: <1627426757-14811-2-git-send-email-sean.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_003521_100288_1FEB47CD 
-X-CRM114-Status: GOOD (  19.47  )
+X-CRM114-CacheID: sfid-20210728_005910_566234_DAD8C92C 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,140 +85,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1483824277503331092=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Add support type switch by pericfg register between USB3, PCIe,
+SATA, SGMII, this is used to replace the way through efuse or
+jumper.
 
---===============1483824277503331092==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="HD5cfJbB7Qv0wneP"
-Content-Disposition: inline
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../devicetree/bindings/phy/mediatek,tphy.yaml   | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-
---HD5cfJbB7Qv0wneP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: YN Chen <YN.Chen@mediatek.com>
->=20
-> Consider .max_reg_power in struct ieee80211_channel to limit the
-> maximum power the wireless device allowed to transmit on the
-> corresponding channel according to the regulatory domain.
->=20
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
-> ---
->  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 43 ++++++++++++++++++-
->  1 file changed, 41 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drive=
-rs/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index d71393b1c5e6..84f42ce12626 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -1773,6 +1773,43 @@ static s8 mt76_connac_get_sar_power(struct mt76_ph=
-y *phy,
->  	return target_power;
->  }
-> =20
-> +static s8 mt76_connac_get_ch_power(struct mt76_phy *phy,
-> +				   struct ieee80211_channel *chan,
-> +				   s8 target_power)
-> +{
-> +	struct mt76_dev *dev =3D phy->dev;
-
-is it used?
-
-> +	struct ieee80211_supported_band *sband;
-> +	int i;
-> +
-> +	switch (chan->band) {
-> +	case NL80211_BAND_2GHZ:
-> +		sband =3D &phy->sband_2g.sband;
-> +		break;
-> +	case NL80211_BAND_5GHZ:
-> +		sband =3D &phy->sband_5g.sband;
-> +		break;
-> +	default:
-> +		return target_power;
-> +	}
-> +
-> +	for (i =3D 0; i < sband->n_channels; i++) {
-> +		struct ieee80211_channel *ch =3D &sband->channels[i];
-> +
-> +		if (ch->hw_value =3D=3D chan->hw_value) {
-> +			if (!(ch->flags & IEEE80211_CHAN_DISABLED)) {
-> +				int power =3D 2 * ch->max_reg_power;
-> +
-> +				if (power > 127 || power < -127)
-> +					power =3D 127;
-
-please correct me if I am wrong, but I guess the limit for mt7663 should be=
- 63,
-isn't it?
-
-Regards,
-Lorenzo
-
-> +				target_power =3D min_t(s8, power, target_power);
-> +			}
-> +			break;
-> +		}
-> +	}
-> +
-> +	return target_power;
-> +}
-> +
->  static int
->  mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->  				  enum nl80211_band band)
-> @@ -1840,10 +1877,12 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy=
- *phy,
->  				.hw_value =3D ch_list[idx],
->  				.band =3D band,
->  			};
-> -			s8 sar_power;
-> +			s8 reg_power, sar_power;
-> =20
-> +			reg_power =3D mt76_connac_get_ch_power(phy, &chan,
-> +							     tx_power);
->  			sar_power =3D mt76_connac_get_sar_power(phy, &chan,
-> -							      tx_power);
-> +							      reg_power);
-> =20
->  			mt76_get_rate_power_limits(phy, &chan, &limits,
->  						   sar_power);
-> --=20
-> 2.25.1
->=20
-
---HD5cfJbB7Qv0wneP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYQEIsAAKCRA6cBh0uS2t
-rOt8AP95ov/z4ReB4ZY7fTytbfpDFkXdZwnkFTj4ewwteOrG/gD9GGC/FkHM7ZVY
-kUBejtiUfKraUVcityNQO/PMzF83Qwo=
-=cRqC
------END PGP SIGNATURE-----
-
---HD5cfJbB7Qv0wneP--
-
-
---===============1483824277503331092==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index 838852cb8527..9e6c0f43f1c6 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -201,6 +201,22 @@ patternProperties:
+           Specify the flag to enable BC1.2 if support it
+         type: boolean
+ 
++      mediatek,syscon-type:
++        $ref: /schemas/types.yaml#/definitions/phandle-array
++        maxItems: 1
++        description:
++          A phandle to syscon used to access the register of type switch,
++          the field should always be 3 cells long.
++        items:
++          items:
++            - description:
++                The first cell represents a phandle to syscon
++            - description:
++                The second cell represents the register offset
++            - description:
++                The third cell represents the index of config segment
++              enum: [0, 1, 2, 3]
++
+     required:
+       - reg
+       - "#phy-cells"
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1483824277503331092==--
-
