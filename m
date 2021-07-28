@@ -2,90 +2,84 @@ Return-Path: <SRS0=pZ6D=MU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E4426C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 10:06:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36B06C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 10:21:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B218660F23
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 10:06:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B218660F23
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0727E60524
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Jul 2021 10:21:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0727E60524
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hnSD9lGPISGSLY9AMkp3Bf1/+c3Vopxk+Qfzya8STFE=; b=26VOegGtc40Mmv
-	o/nqof1ykexpib6hTySfKcM+DxLoA1EF8YgX6wT8keiKzwNUynVn6RKlnRVu+SlrXAY8hCK3xI+Oh
-	qupfjM+KJ7E81YaHQr/L6xFGcRuuJ0oWkVOMz/F0R9G0V7fxGS+7vnqWtXaOfGlH8ZGSDxhTAcCpd
-	BUtU8Vcnw2fIod+PP6FV+Jyh5cuJ6VtrgAklcf/B/PCled82UhGV8+OUU+sKHym9OaKmary5MrCEb
-	gahlx6tyqpRWaclx7T/JeHFHUsbDzcN9oJVQK0mHgLskjOFhEVDQd9fEO9U3DVMmAqLlFyJni2qHd
-	ZGTUM05+almihjpO4eqw==;
+	List-Owner; bh=t8wO47gZfQ10/70hcSw0OTxiBcHGybBaGnkb4hjSpj8=; b=GaRhZGHtdXRgJN
+	BlQfYxXCiN9WTQByEG0UHpOanyzlJGQRDmLsiwyTrihvLXn8WZQJruteLrT3n4zqlIV17dQ6XCGj2
+	zyi6Ns0LdBW0Eng1cJc3t4/S0icse1f9AgiEKl1omphoINrH+5HCZlnL47stHmfprOTTiqzYNikGz
+	g9UqoPT6CijnbEEuWC8/+uciilXeHYX9MxH2KMKrt56LxPMwsqwPAYXjm+vUdOS/hNFI23fbvNwyD
+	OKnqCek1oHE/czmx3keI4u+Hl0acEC20/FNTY2ETdtYeg+C1yiWC44jFMY3O/n9uSnZHLkVi+C5oB
+	EyB+2UdIv5LE6lYYk5bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8gRx-000Koq-QM; Wed, 28 Jul 2021 10:06:05 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m8ggb-000N1l-Ug; Wed, 28 Jul 2021 10:21:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8gRg-000Kij-L3; Wed, 28 Jul 2021 10:05:49 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 6595060E78;
- Wed, 28 Jul 2021 10:05:48 +0000 (UTC)
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1m8gRe-001VHO-Bj; Wed, 28 Jul 2021 11:05:46 +0100
-Date: Wed, 28 Jul 2021 11:05:45 +0100
-Message-ID: <87zgu6da86.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Suzuki K Poulose <suzuki.poulose@arm.com>
-Cc: yee.lee@mediatek.com, linux-kernel@vger.kernel.org,
- nicholas.Tang@mediatek.com, Kuan-Ying.lee@mediatek.com,
- chinwen.chang@mediatek.com, Catalin Marinas <catalin.marinas@arm.com>,
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- David Brazdil <dbrazdil@google.com>, Mark Rutland <mark.rutland@arm.com>,
- Ionela Voinescu <ionela.voinescu@arm.com>,
- Amit Daniel Kachhap <amit.kachhap@arm.com>,
- Quentin Perret <qperret@google.com>, Andrew Scull <ascull@google.com>,
- James Morse <james.morse@arm.com>, Fuad Tabba <tabba@google.com>,
- "moderated list:ARM64 PORT (AARCH64 ARCHITECTURE)"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 1/1] arm64/cpufeature: Add option to disable mte support
-In-Reply-To: <88cded87-bc06-4aeb-4996-76a5faa58afe@arm.com>
-References: <20210728094302.9949-1-yee.lee@mediatek.com>
- <20210728094302.9949-2-yee.lee@mediatek.com>
- <88cded87-bc06-4aeb-4996-76a5faa58afe@arm.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: suzuki.poulose@arm.com, yee.lee@mediatek.com,
- linux-kernel@vger.kernel.org, nicholas.Tang@mediatek.com,
- Kuan-Ying.lee@mediatek.com, chinwen.chang@mediatek.com,
- catalin.marinas@arm.com, will@kernel.org, matthias.bgg@gmail.com,
- dbrazdil@google.com, mark.rutland@arm.com, ionela.voinescu@arm.com,
- amit.kachhap@arm.com, qperret@google.com, ascull@google.com,
- james.morse@arm.com, tabba@google.com, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1m8ggY-000N0n-Mm; Wed, 28 Jul 2021 10:21:12 +0000
+X-UUID: c29694affcdb4836b0edc0e33a511cb9-20210728
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=pOtzGqpNSphuXXqUkv0xXxPPYQqKavCRJjR/ns5nsaE=; 
+ b=Tk67lpeXIABoys/9Twvsix2+Lwo8zk+DjnM/l9dkiKzn2GuVvg+PCvD0fUfprX9MtTgXBrY2FFTB7U8E/ud0vAkzBL/K03r4+meFtJiYyMpCXUJi3cYC20NOeKfKpbnB+6tma5f6fnJ/4NYiNLvL+ufbbgXZ0lHYQYP2aoF8e+w=;
+X-UUID: c29694affcdb4836b0edc0e33a511cb9-20210728
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1416631870; Wed, 28 Jul 2021 03:21:07 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Jul 2021 03:21:05 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Jul 2021 18:21:04 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 28 Jul 2021 18:21:04 +0800
+Message-ID: <fd1a7b95ea63296e350aa04dce1dbb4f8c84092c.camel@mediatek.com>
+Subject: Re: [v14 02/21] dt-bindings: ARM: Mediatek: Add mmsys document
+ binding for MT8192
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>, Stephen Boyd <sboyd@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Nicolas Boichat
+ <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>, linux-kernel
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>, devicetree
+ <devicetree@vger.kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 28 Jul 2021 18:21:04 +0800
+In-Reply-To: <CAFqH_51D0A_Oht785cxvWjuNFYgLL25-qX1QEpLhWBARtTgVMA@mail.gmail.com>
+References: <20210726105719.15793-1-chun-jie.chen@mediatek.com>
+ <20210726105719.15793-3-chun-jie.chen@mediatek.com>
+ <162740843452.2368309.13157283201271440368@swboyd.mtv.corp.google.com>
+ <CAFqH_51D0A_Oht785cxvWjuNFYgLL25-qX1QEpLhWBARtTgVMA@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_030548_785999_E73193B4 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20210728_032110_794327_A5BEF3C6 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,36 +96,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 28 Jul 2021 10:59:24 +0100,
-Suzuki K Poulose <suzuki.poulose@arm.com> wrote:
+On Wed, 2021-07-28 at 10:47 +0200, Enric Balletbo Serra wrote:
+> Hi Chun-Jie and Stephen,
 > 
-> On 28/07/2021 10:42, yee.lee@mediatek.com wrote:
-> > From: Yee Lee <yee.lee@mediatek.com>
+> Missatge de Stephen Boyd <sboyd@kernel.org> del dia dt., 27 de jul.
+> 2021 a les 19:54:
 > > 
-> > Add a static key to exapnd the logic of system_supports_mte().
-> > This function controls mte enablement in both EL1 and EL0.
+> > Quoting Chun-Jie Chen (2021-07-26 03:57:00)
+> > > This patch adds the mmsys document binding for MT8192 SoC.
+> > > 
+> > > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > > Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > > Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Acked-by: Rob Herring <robh@kernel.org>
+> > > ---
 > > 
-> > The static key, "arm64_mte_support" is default true and can
-> > be disabled via the early_param.
+> > Applied to clk-next
+> > 
 > 
-> Please could we use the id-reg override mechanism and give it
-> an alias ?
+> This will conflict in linux-next as the binding was already converted
+> to yaml. See
 > 
-> See :
 > 
-> arch/arm64/kernel/idreg-override.c
+https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml?id=63e1125e6bb8eae3cd20292f6a10ee421dd574ae__;!!CTRNKA9wMg0ARbw!1l9IyuzzydUJmGaERPLcaL2pSdzbuBStMR4_jqW1aVyVwBGdUU_g22jyDhqbClx4DaNT$
+>  
 > 
-> And could add something along the lines of :
+> Thanks,
+>   Enric
 > 
-> arm64.nomte
 
-Damn, you beat me to it! :D
+I will resend mmsys binding document singly based on [1].
 
-	M.
+[1] 
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=485165
 
--- 
-Without deviation from the norm, progress is not possible.
 
+Best Regards,
+Chun-Jie
+
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!1l9IyuzzydUJmGaERPLcaL2pSdzbuBStMR4_jqW1aVyVwBGdUU_g22jyDhqbCpKYlq6I$
+> >  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
