@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF8F2C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 22:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D2BCBC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 22:58:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 916796023E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 22:55:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 916796023E
+	by mail.kernel.org (Postfix) with ESMTPS id 9C6D360560
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 22:58:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9C6D360560
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,70 +23,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QWRnbhUNApCQcsGr+InLpnE3VPbAFK7FJ8lltvPQNFk=; b=l8iojfL7D8MhlZ
-	1njwr4+lObF+3CP10eD6S9nZHBGRX8alZYLc2iWZeD0OOrl+Vnh1od3/I1i2NP0p9ypskZiGnILLW
-	aumAIo2fuHProiIZArg6IcgGXITorDZ6kcgiNVutA3sCPc9sCAtE4EJw0F1KsuZYUsPyp8ZmbKnpT
-	jLrLUZvwwPvCrHKTka4CQYQFdnuWO6F6ExUbymo5+x8RWn4BkpFl+DLq2AdD/wIzWJF6rQFmKZFtF
-	90kxqSgv6EccVDMyiX3MXGNNiqzTwBGeVh0V/Ob0K2wFZKZ+PIJUHL0xvV9Ws4ix6PQK+CZwTu/lW
-	9AtjhnFKX6lWGpnSJv+Q==;
+	List-Owner; bh=2Yifc7FIf3Vpx7WwE0IH9u2AhCDyedEzuzC1OOElEDQ=; b=KnkOLxgS1iEJ5P
+	TNkX6CLVa/7KeHGbsSinTt1rSdONUj90IWlh8byr+ed6aopi6yFgaYhF7guALseAdunsQ+sicatTS
+	nf2UnvxkgYXdKbCjUYvtnA1/iXFn0AdepHoBhdNEdovnAvGHOQaQs7Yvbt5AF+IqQopINutPkBgcz
+	WAi6+mIDLtxPLpLo8ndnHD3/UDecLZtJL6RU+hbnwh4G5ylIXRh5mhdHmHmea4Ap91MzT3zWT2obF
+	/+N+nxcYQGTPKiqcavLeNoBGvsEYYFhoQkswbfcRM8QRF08nvDLIsN3avVqMdIBYHiUoQPVKYk9u5
+	GSa1s8wsDEh6HGsMQ7Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9Ew5-006Jgm-W7; Thu, 29 Jul 2021 22:55:30 +0000
-Received: from mail-il1-f179.google.com ([209.85.166.179])
+	id 1m9Eyd-006KfX-0Q; Thu, 29 Jul 2021 22:58:07 +0000
+Received: from mail-il1-f171.google.com ([209.85.166.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9Es3-006I2l-Rv; Thu, 29 Jul 2021 22:51:21 +0000
-Received: by mail-il1-f179.google.com with SMTP id c3so7514555ilh.3;
- Thu, 29 Jul 2021 15:51:19 -0700 (PDT)
+ id 1m9Esj-006IIw-GY; Thu, 29 Jul 2021 22:52:02 +0000
+Received: by mail-il1-f171.google.com with SMTP id r5so7478587ilc.13;
+ Thu, 29 Jul 2021 15:52:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=gWxlLweJQNhlRL0/DUplNg/SDpZzR8jOTWXmRYnCmmM=;
- b=JrIGqFmN5wHoajIfkkownwKQlMakITv9lsI8jwpA+prpLyyAlvCyFhnsmlab0qX+IB
- XO/7O6ORkyphcB/3AllbrvogH978iKbXT6yYFwO4uUEvLy1nb7AfbiN7XLQ6/8SJY2Ll
- I8j6gRTe9yXV0Qb9eNWj/FYG3GVhLi+SUw0e53ez5zhwzLAmDzTA1TwxkO2gqn3yC4Wq
- pXfbcXxnAbCpBFwLYZaWioXBcH2s4O5DvQ5TfaZdjYNWnjOsIa/WHvINcXwHsLgaOFil
- 8iCDhCmx0qL4Bplgds4vFdA/A+kEOK2xUqyH49O23hIawz9kT5mmz9r2vAXy9wU50rdM
- nbwg==
-X-Gm-Message-State: AOAM530qb3TB2nzToPKWX+1VtEVLL6hDFYO3qjSFjWki4YIq/vdmSgCY
- 4r2qUWDNwfc735eManqKUA==
-X-Google-Smtp-Source: ABdhPJxE0S6s3FLD5yKTnzi2Pn4YDBkze8cQUCq7Ay/b4kKYHPu7HwjO3npjdwNFKoGRGzq9+QqVrg==
-X-Received: by 2002:a05:6e02:d09:: with SMTP id g9mr39729ilj.153.1627599078974; 
- Thu, 29 Jul 2021 15:51:18 -0700 (PDT)
+ bh=HTJgy5VBZ0oMAHE9O7XmVIIL13K6DpLlQbEnJdwiDGg=;
+ b=Jp8bC3rU1dQ1HRJZQOsqRoKOxgC9OI05Tq9myCHfQgFEgur8Sdti0SCn94MFk16fU5
+ xr/v/Blp+skOxK/J8mrjZ1QR9Q8UIIbXvlsvWUjJ+Bko86IWs4rARwojXTeQexcElgY1
+ TbPBDQZCEN8HU+l4xZJf6+Ra182XyRlqxErPC4t9rfOFJsVN03ViZtB4Bago4jkAio8W
+ dlazQz132ihHNE3uwIAgKWSNMI8SS93eS1c9eFgE7vW0YIfCfUfdYL/5dWneNH3BX66b
+ xItveudGO+AQyEVO2tEOFxkiWbJhhTgXuvKh3AaP8R8oosATVufIpYP0Zpcr++v0nyL3
+ jUnw==
+X-Gm-Message-State: AOAM532qsIZbOyG0yVR+XpykI3RT97A+EiFSD9MEsSc5uTNXl1Qk3c3J
+ dzIJUde2R6Oqk+LsondyDg==
+X-Google-Smtp-Source: ABdhPJxvwdp6rY9SUaluCLYLkZoGuVPcomNzfE5Ygq462J5Max8ViPgmc099fsR25cf7mnvNu3kFRQ==
+X-Received: by 2002:a05:6e02:2162:: with SMTP id
+ s2mr5369766ilv.99.1627599120624; 
+ Thu, 29 Jul 2021 15:52:00 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id r3sm2500646ilg.20.2021.07.29.15.51.16
+ by smtp.gmail.com with ESMTPSA id q11sm1623611ile.71.2021.07.29.15.51.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 15:51:18 -0700 (PDT)
-Received: (nullmailer pid 1053555 invoked by uid 1000);
- Thu, 29 Jul 2021 22:51:15 -0000
-Date: Thu, 29 Jul 2021 16:51:15 -0600
+ Thu, 29 Jul 2021 15:51:59 -0700 (PDT)
+Received: (nullmailer pid 1054722 invoked by uid 1000);
+ Thu, 29 Jul 2021 22:51:56 -0000
+Date: Thu, 29 Jul 2021 16:51:56 -0600
 From: Rob Herring <robh@kernel.org>
 To: Sam Shih <sam.shih@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>,
- Herbert Xu <herbert@gondor.apana.org.au>,
+Cc: Seiya Wang <seiya.wang@mediatek.com>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-watchdog@vger.kernel.org,
+ Ryder Lee <Ryder.Lee@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
  Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org,
- linux-clk@vger.kernel.org, John Crispin <john@phrozen.org>,
- Ryder Lee <Ryder.Lee@mediatek.com>
-Subject: Re: [PATCH 05/12] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Message-ID: <YQMw4zbhxCTqXqLC@robh.at.kernel.org>
+ Sean Wang <sean.wang@kernel.org>, linux-serial@vger.kernel.org,
+ Guenter Roeck <linux@roeck-us.net>, Stephen Boyd <sboyd@kernel.org>,
+ Matt Mackall <mpm@selenic.com>, John Crispin <john@phrozen.org>,
+ Fabien Parent <fparent@baylibre.com>, linux-gpio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Herbert Xu <herbert@gondor.apana.org.au>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Wim Van Sebroeck <wim@linux-watchdog.org>
+Subject: Re: [PATCH 07/12] dt-bindings: arm64: dts: mediatek: Add mt7986 series
+Message-ID: <YQMxDIKR6+mR0gZt@robh.at.kernel.org>
 References: <20210726071439.14248-1-sam.shih@mediatek.com>
- <20210726071439.14248-6-sam.shih@mediatek.com>
+ <20210726071439.14248-8-sam.shih@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210726071439.14248-6-sam.shih@mediatek.com>
+In-Reply-To: <20210726071439.14248-8-sam.shih@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_155119_959170_7157AE75 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20210729_155201_591202_1C03FB8C 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,22 +105,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 26, 2021 at 03:14:32PM +0800, Sam Shih wrote:
-> This updates bindings for MT7986 pinctrl driver.
-> The difference of pinctrl between mt7986a and mt7986b
-> is that pin-41 to pin-65 do not exist on mt7986b
-
-Sounds like you could use the same compatible string. Wouldn't the DT 
-for mt7986b simply not have any config for those pins?
-
+On Mon, 26 Jul 2021 15:14:34 +0800, Sam Shih wrote:
+> MT7986 is Mediatek's new 4-core SoC, which is mainly for wifi-router
+> application. The difference between mt7986a and mt7986b is that some
+> pins do not exist on mt7986b.
 > 
 > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > ---
->  .../bindings/pinctrl/pinctrl-mt7622.txt       | 284 ++++++++++++++++++
->  1 file changed, 284 insertions(+)
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
 
-This is a big change. Please convert to a schema. It probably should be 
-a separate schema.
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
