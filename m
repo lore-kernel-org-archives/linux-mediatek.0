@@ -2,83 +2,78 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9784AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 08:48:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 014E3C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 08:50:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BA8A60240
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 08:48:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5BA8A60240
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B91046103B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 08:50:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B91046103B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UdLWW2TuB59hLyz60m42uPLkngeD3dKFwqYGdWkjylg=; b=wSUOG6FI7h+/Vt
-	EvKxQZE0K/MSUQQi+CD0Xpda5DTtlLgsGa9yjjbK3G5YrtqQErhdZitu/zTW3tOVUntg1NjWagG6V
-	DevXPDEObAr7Xhh+cApLluEuKE2vJBtoNdrHKkQvX3IdzanL+FGDTqIJzi6JcacRcQK/0nnphD6q4
-	zzpG2Wk2cSCxiWCI4vm9v2G6ZVa+ioGuvJqLI0Htfozl16ACbi8pT8nJfWZqEVgFSRLtFbaND0KBX
-	zgSMbgGxkgtY3zaKuBIvk5KjkfVwhCUqeYbyt2P5QnjrHZqXRydRYp3qScT/FURyyqem+vJqRBbyY
-	/v0V0sJIzqIE+KGt687w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DTEp2u4TyilqPMBWCJsu/7SH72zpUY0kVevnWNDkB0E=; b=L/dPbp6N+epNYO
+	xX2pngXRAm9Jb9K9xHnhTnJ1xR6Iq1S5YN/QFYZsDqeRHe+aYPIB272t2wsJpZ/JYq3oB4z53lNWQ
+	OfwCukcdm+TOzFuTF3pmTZegDuejI31LADFEUYo4UMqv4e0xOKeJ9ix9ipyEXBCfgAD5fzHOOWAjC
+	4OYtKdTpi2ibsH9Bdwut6vmY/F5EdkwIvW6J/GnV31PncEHThDE6WGdYhzPIfGwP6orx4oVqOUz/k
+	mVMJW1dKEwL6p4DFfURUm2eZU9T03MnK1hMaYTv5sGgjAtcWTky3i+IfGP0j53PJzIxwmoVDY4cp/
+	cSHll9vratNzeyRwFCfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m91hw-003Xxz-8q; Thu, 29 Jul 2021 08:48:00 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1m91kR-003YN9-V6; Thu, 29 Jul 2021 08:50:35 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m91hi-003Xx5-2W; Thu, 29 Jul 2021 08:47:47 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id AEA6C60240;
- Thu, 29 Jul 2021 08:47:45 +0000 (UTC)
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1m91hf-001hrf-MX; Thu, 29 Jul 2021 09:47:43 +0100
-Date: Thu, 29 Jul 2021 09:47:40 +0100
-Message-ID: <87o8ala4lv.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: <yee.lee@mediatek.com>
-Cc: <linux-kernel@vger.kernel.org>, <nicholas.Tang@mediatek.com>,
- <Kuan-Ying.lee@mediatek.com>, <chinwen.chang@mediatek.com>, Catalin Marinas
- <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, David Brazdil <dbrazdil@google.com>,
- Ard Biesheuvel <ardb@kernel.org>, Fuad Tabba <tabba@google.com>,
- "moderated list:ARM64 PORT (AARCH64 ARCHITECTURE)"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC\
- support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2 1/1] arm64/cpufeature: Add arm64.nomte to override
- id-reg
-In-Reply-To: <20210729020717.15142-2-yee.lee@mediatek.com>
-References: <20210729020717.15142-1-yee.lee@mediatek.com>
- <20210729020717.15142-2-yee.lee@mediatek.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: yee.lee@mediatek.com, linux-kernel@vger.kernel.org,
- nicholas.Tang@mediatek.com, Kuan-Ying.lee@mediatek.com,
- chinwen.chang@mediatek.com, catalin.marinas@arm.com, will@kernel.org,
- matthias.bgg@gmail.com, dbrazdil@google.com, ardb@kernel.org, tabba@google.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+ id 1m91kP-003YLj-14; Thu, 29 Jul 2021 08:50:34 +0000
+X-UUID: 137b8e4f3a8641978a96f11ccfac7133-20210729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=xyl/5sLBXMurzOU5SHjBiLtTJoM0qNXZ07Bx/+sc65I=; 
+ b=g32Ulqg3DFyrODyALTq+CE+X6T6UIZpaQTIu4i51I/tz+NN/Pv1/DOLgGU/9YfNOQB5F4bVl+KJueigUZUE2/PjQBjI9aGLxQekpoLe/xX9L5TIvG0XRmCWCI3PWnPc0uCCCmKscV2Uktzrv439o1E0U0IxQLek09y5WTL4/cJg=;
+X-UUID: 137b8e4f3a8641978a96f11ccfac7133-20210729
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1270803413; Thu, 29 Jul 2021 01:50:27 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 01:47:14 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 16:47:12 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Jul 2021 16:47:11 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <timur@kernel.org>, <linux@armlinux.org.uk>, <alcooperx@gmail.com>,
+ <tklauser@distanz.ch>, <sean.wang@kernel.org>
+CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <hui.liu@mediatek.com>, <yuchen.huang@mediatek.com>,
+ <huihui.wang@mediatek.com>, <eddie.huang@mediatek.com>,
+ <sean.wang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-serial@vger.kernel.org>
+Subject: [PATCH v2 0/1] Mediatek uart patch 
+Date: Thu, 29 Jul 2021 16:46:39 +0800
+Message-ID: <20210729084640.17613-1-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_014746_191150_F7EC09CD 
-X-CRM114-Status: GOOD (  21.05  )
+X-CRM114-CacheID: sfid-20210729_015033_164187_B73CCB29 
+X-CRM114-Status: UNSURE (   8.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,66 +90,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 29 Jul 2021 03:07:12 +0100,
-<yee.lee@mediatek.com> wrote:
-> 
-> From: Yee Lee <yee.lee@mediatek.com>
-> 
-> Add an alias, "arm64.nomte", to override id-reg and
+This series includes 1 patches:
+1.fix uart corruption issue when rx power off
 
-This isn't just an alias. This patch does two things:
+Changes in patch v2:
+1. move the detailed reason explain to patch[1/1].
 
-- it allows the ID_AA64PFR1_EL1.MTE shadow capability to be set from
-  the command line,
-- it provides the arm64.nomte alias that sets the above to 0 to
-  disable the MTE feature.
+Changes in patch v1:
+1. remove processing mechanism which count value is 0.
+2. change patch title and commit message.
+3. explain the detailed reason for the patch in changelog.
 
-> suppress mte feature.
+Zhiyong Tao (1):
+  serial: 8250_mtk: fix uart corruption issue when rx power off
 
-s/mte/MTE/
+ drivers/tty/serial/8250/8250_mtk.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Maybe also worth indicating *why* this is needed. Possible
-justifications include errata workarounds, performance issues... Pick
-your own.
-
-> 
-> Suggested-by: Marc Zyngier <maz@kernel.org>
-> Suggested-by: Suzuki K Poulose <suzuki.poulose@arm.com>
-> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
-> ---
->  arch/arm64/kernel/idreg-override.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/arch/arm64/kernel/idreg-override.c b/arch/arm64/kernel/idreg-override.c
-> index 53a381a7f65d..d8e606fe3c21 100644
-> --- a/arch/arm64/kernel/idreg-override.c
-> +++ b/arch/arm64/kernel/idreg-override.c
-> @@ -54,6 +54,7 @@ static const struct ftr_set_desc pfr1 __initconst = {
->  	.override	= &id_aa64pfr1_override,
->  	.fields		= {
->  	        { "bt", ID_AA64PFR1_BT_SHIFT },
-> +		{ "mte", ID_AA64PFR1_MTE_SHIFT},
->  		{}
->  	},
->  };
-> @@ -100,6 +101,7 @@ static const struct {
->  	{ "arm64.nopauth",
->  	  "id_aa64isar1.gpi=0 id_aa64isar1.gpa=0 "
->  	  "id_aa64isar1.api=0 id_aa64isar1.apa=0"	   },
-> +	{ "arm64.nomte",		"id_aa64pfr1.mte=0" },
->  	{ "nokaslr",			"kaslr.disabled=1" },
->  };
->  
-
-This needs to be documented in kernel-parameters.txt. See the nobti
-and nopauth options for guidance.
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+--
+2.18.0
 
 _______________________________________________
 Linux-mediatek mailing list
