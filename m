@@ -2,89 +2,94 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9F04C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:31:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43107C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:43:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 862EE61054
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:31:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 862EE61054
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0CB3861058
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:43:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0CB3861058
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D7zQkh+EV4I8e8TAWGD1ew/m+CtMhxKo/CVokm5SSNc=; b=Pp0r0MIZhXPPmu
-	yp0BOJlpFpKYZkvaTrsZOENHKI8FY80FPzJppzkLQ9jXWP3fato+XQqCzOcko4ZbJHpKbW3PsSMKl
-	ymYDmj1b4PD1bUBTdQ45IvKsjqiKNNIfV9466UkGR1oT4V9uPTc6Cen0klDZ3GCvlFwRawALL87xC
-	8On805pOdv0hLVwFvLt6+ApvaYpko/Qjk3ta/QuVxGPAcXnp8aXWfSKSJgJiuFhYE5OUNGvX4NjxH
-	95LQ2w2wq8bnQkV3sDc9J8dNcTEgQn8JCKmF2QLSvgPBlFUAeYeSznxYH4U+BxHooIZP1bsst/307
-	8xetAPAGTfw7/QW1NDug==;
+	List-Owner; bh=rPVU/PYYGuSusoVuumZnBwv4W2pZwibh/cJWPES3ayk=; b=gO4G4rn4EFxiRX
+	qXmUOmPGkupa8oydoBGQICAnYMm5LZu7vaICRkK7A/vHaBx+egeQai9vJq/pQ/eOQuXULQqP2sUQ3
+	uX/aVnKSqhx0hvIWyWvR7uvEklx0y3Q1iE7H9BBs2Uv1bZ9Z5ZUtq86Hk2pJmy6JZ3K/a1bnDmweT
+	lKgBn5TJJwQbBEtGR4e/4OOb0wVnNl0Tu7CAqDM12J0cjim87re1eZe9fSWvACEm/12lgS0YRUoH8
+	RaYamFPmnERx8RHm6nvkT4imenJD2M0p8ED3xcKklljA9VAUFDG04bauE5rAP5ZvrgFSLC4HFHpGm
+	QupNn8tnhV9i/YJYjQng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m92OB-003eL6-5Z; Thu, 29 Jul 2021 09:31:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m92Zv-003h4z-G9; Thu, 29 Jul 2021 09:43:47 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m92Nv-003eIB-Av; Thu, 29 Jul 2021 09:31:25 +0000
-X-UUID: 04a624defbc54403a3a02135b513bf66-20210729
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=58wHSuP4xelT+9n+FUdGokfORJ3tpoWX0PlqDrg48R8=; 
- b=FoYeCU4Wz9/2zlhZEYChfuEuKipyhyHSVRtNoB0myzXrSPXFaUUQjnhHfvsxmgYahIlDr+Us7U96lPq6VHMT3/Fj1rZa6jlhnS6LRI0fmGSP2CvfuNB/Hg7PH7A83IMOdsSyWqVdShuqnBBhTYGO5gkMpxfzhvQFi/cP2UslXT0=;
-X-UUID: 04a624defbc54403a3a02135b513bf66-20210729
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1680571403; Thu, 29 Jul 2021 02:31:19 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 02:31:18 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 17:31:16 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Jul 2021 17:31:16 +0800
-Message-ID: <b944cf4a9d7499913d31d2599d841124d74a24cf.camel@mediatek.com>
-Subject: Re: [PATCH v1 1/5] dt-bindings: arm: mediatek: mmsys: add mt8195
- SoC binding
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Enric Balletbo Serra <eballetbo@gmail.com>
-CC: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, devicetree
- <devicetree@vger.kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
- <fshao@chromium.org>, David Airlie <airlied@linux.ie>,
- <singo.chang@mediatek.com>, linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, Fabien Parent
- <fparent@baylibre.com>, Nancy.Lin <nancy.lin@mediatek.com>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 29 Jul 2021 17:31:16 +0800
-In-Reply-To: <CAFqH_51_Ns-ZLqwaj+_8P_49rGse0h9GTu4Jk6R+0FVO8Rq1pw@mail.gmail.com>
-References: <20210722092624.14401-1-jason-jh.lin@mediatek.com>
- <20210722092624.14401-2-jason-jh.lin@mediatek.com>
- <CAFqH_51qKkxMit5fkSh_AyeNAYwKnoPe09nwJLKaKez26+HUew@mail.gmail.com>
- <4c0fe16988c559a5a4b1ce714eeaa31f4628f68f.camel@mediatek.com>
- <CAFqH_512RCNBufS=zL5hQSQJya3565dm2D3zznWie9rKUN_sAw@mail.gmail.com>
- <a0e5322bdde4d1b51de57cbfe98e9d9ed64490ed.camel@mediatek.com>
- <CAFqH_51_Ns-ZLqwaj+_8P_49rGse0h9GTu4Jk6R+0FVO8Rq1pw@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1m92Zs-003h3R-4f
+ for linux-mediatek@lists.infradead.org; Thu, 29 Jul 2021 09:43:46 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id bp1so9891772lfb.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 29 Jul 2021 02:43:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=rsaad1GJ/XkOm8cfftebiAxoVa/TpWToS62izuGJ9pY=;
+ b=ROFh5zsDdjGB7xsZ3gfN08X4TCqyLE5GcRkJ/K9oEApY7i/IignrvExID9mp+hgOyH
+ m+q2hwtfQ3PcGy4Zu1LihgEvq5qWFR/OkQ+71zz+O8nUDZjw76nkxxU3HSuT73irF7KN
+ 57aQnO2wW+VyKNylkZJkCNV4eqIcS2Gdtt3M0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=rsaad1GJ/XkOm8cfftebiAxoVa/TpWToS62izuGJ9pY=;
+ b=hen6/2atINrO1qhP4wbVZMOeAtILZBhbTmQtalaO55qMJA/yW6mV1s9lWmbSipMF3s
+ 5vCBXs+oHeHjV+kcBC2gvp0I21pBtPnVrNdwcRWcMWmsKDLmaVUihuzyOQt32GIhaDWG
+ n+WboduEEAgHMulpxryipaKuLyFUrqQlwzTt5ov14FnV2+ihe/2VPUDUFBzuf0/1E+T2
+ r3z0vbixUqq5gjVrJQ3BQF0qo15ZJ6Jj0t6rLLT81LsjRfqF3izrzs9lJG0K6qV6E5KA
+ +T90uqaP1SDcDoaWC4/9dzHaU4huKNuPiP15O6OukrbzM5IReaqXrTg4sE0WrN1MxsKk
+ DLrA==
+X-Gm-Message-State: AOAM530r0+cj5W8lqQ3dKsU8jt4I6+y9jZAQodF3Z0emW+V27/KLClR7
+ RuruaTUZRAmq859bNvKKBus9zx9iOnpCC+J6SUVttA==
+X-Google-Smtp-Source: ABdhPJxZA8w1PV7njkB8YqwoZbP8na6AFtXiJ942E2I1irAuG8V7nC6e8Ne+qo+7pXOc9OavLte6E41ZTbaK5boATXU=
+X-Received: by 2002:a05:6512:a89:: with SMTP id
+ m9mr3260592lfu.342.1627551821389; 
+ Thu, 29 Jul 2021 02:43:41 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210710081722.1828-1-zhiyong.tao@mediatek.com>
+ <20210710081722.1828-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5GXg0RuOQkh4vaRmcLpehZiXnEUXBvEaObiatAa1sXvaA@mail.gmail.com>
+ <1626940470.29611.9.camel@mhfsdcap03>
+ <CAGXv+5F_-W4aNt0WVSDBGLo_t8orNUq59GMKk_4xVr+hMb9Ctg@mail.gmail.com>
+ <07388dac4e25e0f260725e8f80ba099d5aa80949.camel@mediatek.com>
+In-Reply-To: <07388dac4e25e0f260725e8f80ba099d5aa80949.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 29 Jul 2021 17:43:30 +0800
+Message-ID: <CAGXv+5EagmhYYpri+nzo6WgGz8A=oiU3Vy+2AVjho=eo6Z+DLw@mail.gmail.com>
+Subject: Re: [PATCH v10 1/2] dt-bindings: pinctrl: mt8195: add rsel define
+To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ mark.rutland@arm.com, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, hui.liu@mediatek.com, 
+ Eddie Huang <eddie.huang@mediatek.com>, light.hsieh@mediatek.com, 
+ biao.huang@mediatek.com, hongzhou.yang@mediatek.com, 
+ Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
+ Devicetree List <devicetree@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-gpio@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_023123_434622_5CD7391A 
-X-CRM114-Status: GOOD (  51.60  )
+X-CRM114-CacheID: sfid-20210729_024344_258138_A422D410 
+X-CRM114-Status: GOOD (  48.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,307 +106,151 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Enric,
+On Thu, Jul 29, 2021 at 4:23 PM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
+>
+> On Mon, 2021-07-26 at 16:02 +0800, Chen-Yu Tsai wrote:
+> > On Thu, Jul 22, 2021 at 3:54 PM zhiyong tao <zhiyong.tao@mediatek.com
+> > > wrote:
+> > >
+> > > On Tue, 2021-07-13 at 15:17 +0800, Chen-Yu Tsai wrote:
+> > > > Hi,
+> > > >
+> > > > On Sat, Jul 10, 2021 at 4:17 PM Zhiyong Tao <
+> > > > zhiyong.tao@mediatek.com> wrote:
+> > > > >
+> > > > > This patch adds rsel define for mt8195.
+> > > > >
+> > > > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > > > ---
+> > > > >  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
+> > > > >  1 file changed, 9 insertions(+)
+> > > > >
+> > > > > diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-
+> > > > > bindings/pinctrl/mt65xx.h
+> > > > > index 7e16e58fe1f7..f5934abcd1bd 100644
+> > > > > --- a/include/dt-bindings/pinctrl/mt65xx.h
+> > > > > +++ b/include/dt-bindings/pinctrl/mt65xx.h
+> > > > > @@ -16,6 +16,15 @@
+> > > > >  #define MTK_PUPD_SET_R1R0_10 102
+> > > > >  #define MTK_PUPD_SET_R1R0_11 103
+> > > > >
+> > > > > +#define MTK_PULL_SET_RSEL_000  200
+> > > > > +#define MTK_PULL_SET_RSEL_001  201
+> > > > > +#define MTK_PULL_SET_RSEL_010  202
+> > > > > +#define MTK_PULL_SET_RSEL_011  203
+> > > > > +#define MTK_PULL_SET_RSEL_100  204
+> > > > > +#define MTK_PULL_SET_RSEL_101  205
+> > > > > +#define MTK_PULL_SET_RSEL_110  206
+> > > > > +#define MTK_PULL_SET_RSEL_111  207
+> > > > > +
+> > > >
+> > > > Instead of all the obscure macros and the new custom "rsel"
+> > > > property,
+> > > > which BTW is not in the bindings, can't we just list the actual
+> > > > bias
+> > > > resistance of each setting? We could also migrate away from R1R0.
+> > > >
+> > >
+> > > ==>Hi Chenyu,
+> > > The rsel actual bias resistance of each setting:
+> > >
+> > > MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> > > MTK_PULL_SET_RSEL_001:10k in PU, 5k in PD;
+> > > MTK_PULL_SET_RSEL_010:5k in PU, 75k in PD;
+> > > MTK_PULL_SET_RSEL_011:4k in PU, 5K in PD;
+> > > MTK_PULL_SET_RSEL_100:3k in PU, 75k in PD;
+> > > MTK_PULL_SET_RSEL_101:2k in PU, 5K in PD;
+> > > MTK_PULL_SET_RSEL_110:1.5k in PU, 75k in PD;
+> > > MTK_PULL_SET_RSEL_111:1k in PU, 5k in PD.
+> > >
+> > > The rsel actual bias resistance is different between PU and PD.
+> >
+> > Thanks. Somehow I missed this when looking through the datasheet.
+> > This
+> > encoding is interesting. Since it doesn't make sense to have both
+> > pull-up and pull-down, even though the hardware seems capable of
+> > doing
+> > so, I suppose the intent is to support 75k or 5k for pull-down, and
+> > (75k, 10k, 5k, 4k, 3k, 2k, 1.5k, 1k) for pull-up?
+> >
+> > We could add these values to the binding so we could check for
+> > misuse.
+> >
+> > The range of values seems to also cover those supported by the
+> > alternative R0/R1 settings. The values for kprow[01] and kpcol[01]
+> > seem to be different though.
+> >
+> > We should get rid of the MTK_PUPD_SET_R1R0_* macros at the same time.
+> > They seem to be some magic values used with bias-pull-*, which is not
+> > how the properties should be used. At the same time, they overlap
+> > with
+> > mediatek,pull-* properties.
+> >
+> > It would be great if we could standardize on the generic pinconf
+> > properties, and also use real values that fit the requirements of the
+> > properties, i.e. using real resistance values. I'm not sure if it
+> > would make sense to enumerate which pins support which configurations
+> > though.
+> >
+> >
+> > Thanks
+> > ChenYu
+> >
+> >
+> The rsel actual bias resistance of each setting is different in
+> different IC. we think that the define "MTK_PULL_SET_RSEL_000" is more
+> common for all different IC.
 
-Thanks for your review.
+I see. I personally prefer having things clearly described. I can
+understand this might be an extra burden to support different chips
+with different parameters, though this should be fairly straightforward
+with lookup tables tied to the compatible strings.
 
-On Wed, 2021-07-28 at 12:56 +0200, Enric Balletbo Serra wrote:
-> Hi Jason,
-> 
-> Missatge de Jason-JH Lin <jason-jh.lin@mediatek.com> del dia dt., 27
-> de jul. 2021 a les 4:53:
-> > 
-> > Hi Enric,
-> > 
-> > On Mon, 2021-07-26 at 12:08 +0200, Enric Balletbo Serra wrote:
-> > > Hi Jason,
-> > > 
-> > > Missatge de Jason-JH Lin <jason-jh.lin@mediatek.com> del dia dl.,
-> > > 26
-> > > de jul. 2021 a les 9:02:
-> > > > 
-> > > > On Fri, 2021-07-23 at 13:13 +0200, Enric Balletbo Serra wrote:
-> > > > > Hi Jason,
-> > > > > 
-> > > > > Thank you for your patch.
-> > > > > 
-> > > > > Missatge de jason-jh.lin <jason-jh.lin@mediatek.com> del dia
-> > > > > dj.,
-> > > > > 22
-> > > > > de jul. 2021 a les 11:26:
-> > > > > > 
-> > > > > > There are 2 display hardware path in mt8195, namely vdosys0
-> > > > > > and
-> > > > > > vdosys1, so add their definition in mtk-mmsys
-> > > > > > documentation.
-> > > > > > 
-> > > > > 
-> > > > > Just having 2 display hardware paths is not a reason to have
-> > > > > two
-> > > > > compatibles, isn't the IP block the same? Why do you need to
-> > > > > introduce
-> > > > > the two compatibles?
-> > > > > 
-> > > > > Thanks,
-> > > > >   Enric
-> > > > > 
-> > > > 
-> > > > Hi Enric,
-> > > > 
-> > > > Thanks for reviewing my patch.
-> > > > 
-> > > > The reason for using two compatibles is that vdosys0 and
-> > > > vdosys1
-> > > > are
-> > > > different IP blocks.
-> > > > 
-> > > 
-> > > With that there are different IP blocks, what do you mean? Do you
-> > > mean
-> > > that there are two completely different blocks with completely
-> > > different functionalities?
-> > > 
-> > > Or that there is the same IP block twice? I mean, of course, the
-> > > registers are different but has exactly the same functionality.
-> > > 
-> > 
-> > They are not the same IP block twice.
-> > Although both vdosys0 and vdosys1 will probe meiatek-drm driver,
-> > but
-> > the components on their hardware path are different and their
-> > output
-> > panel are also different.
-> > 
-> > > > Because mmsys provides clock control, other display function
-> > > > blocks
-> > > > may
-> > > > use them as clock provider.
-> > > > 
-> > > > E.g.
-> > > > 1. mmsys with compatible="mediatek,mt8195-vdosys0"
-> > > > [v4,1/6] arm64: dts: mt8195: add display node for vdosys0
-> > > > 
-> > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210723090233.24007-2-jason-jh.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!xHjKwv34W7ETFcmQPXRViylF2LbV7C7pE8OeJeNvA93jDdzr_ZBRRm8aIUCvAHSD_qGo$
-> > > > 
-> > > > 
-> > > > ovl0: disp_ovl@1c000000 {
-> > > >         ...
-> > > >         clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
-> > > >         ...
-> > > > };
-> > > > 
-> > > > 2. mmsys with compatible="mediatek,mt8195-vdosys1"
-> > > > [v2,06/14] arm64: dts: mt8195: add display node for vdosys1
-> > > > 
-> > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210722094551.15255-7-nancy.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!xHjKwv34W7ETFcmQPXRViylF2LbV7C7pE8OeJeNvA93jDdzr_ZBRRm8aIUCvAP0FOfkc$
-> > > > 
-> > > > 
-> > > > vdo1_rdma0: vdo1_rdma@1c104000 {
-> > > >         ...
-> > > >         clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> > > >         ...
-> > > > };
-> > > > 
-> > > 
-> > > Note that I am talking without knowing the hardware in detail,
-> > > but I
-> > > am wondering why I can't have something like this, where every
-> > > mmsys
-> > > is a clock and reset controller provider.
-> > > 
-> > > vdosys0: syscon@14000000 {
-> > >           compatible = "mediatek,mt8195-mmsys", "syscon";
-> > >           reg = <0 0x14000000 0 0x1000>;
-> > >           #clock-cells = <1>;
-> > >           #reset-cells = <1>;
-> > > };
-> > > 
-> > > vdosys1: syscon@15000000 {
-> > >           compatible = "mediatek,mt8195-mmsys", "syscon";
-> > >           reg = <0 0x15000000 0 0x1000>;
-> > >           #clock-cells = <1>;
-> > >           #reset-cells = <1>;
-> > > };
-> > > 
-> > > ovl0: disp_ovl@1c000000 {
-> > >         ...
-> > >        clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
-> > >         ...
-> > > };
-> > > 
-> > > vdo1_rdma0: vdo1_rdma@1c104000 {
-> > >         ...
-> > >         clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-> > >         ...
-> > > };
-> > > 
-> > > What are the differences between vdosys0 and vdosys1 from a
-> > > hardware
-> > > point of view?
-> > > 
-> > > Cheers,
-> > >   Enric
-> > > 
-> > > > Regards,
-> > > > Jason-JH.Lin
-> > > > 
-> > 
-> > From a hardware point of view, the components and the ouptut panel
-> > of
-> > vdosys0 and vdosys1:
-> > 1. The components on meiatek-drm of vdosys0 are OVL0, RDMA0,
-> > COLOR0,
-> > CCORR, AAL0, GAMMA, DITHER, DSC0, MERGE0, DP_INTF0 and its output
-> > panel
-> > is eDP.
-> > 
-> > 2. The components on meiatek-drm of vdosys1 are PSEUDO_OVL, MERGE5,
-> > DP_INTF1 and its ouptut panel is DP.
-> > 
-> > 
-> > The resaon for using two compatibales is that we use different
-> > driver
-> > data in mtk-mmsys.c and mtk_drm_drv.c to identify the corresponding
-> > mmsys is vdosys0 or vdosys1.
-> > 
-> 
-> So IIUC the two mmsys block ares basically the same, they provide the
-> same, a reset controller, a clock controller and being able to write
-> to the routing registers, and what you only need to identify is which
-> one is is vdosys0 and which one is vdosys1 to apply different routing
-> tables? Can these routing tables change at runtime? Or are they
-> hardware fixed?
-> 
-> Regards,
->  Enric
-> 
-In the case of vdosys1 DP_TX switch to HDMI_TX, routing tables will
-change at runtime.
-
-Refer to mt8173.dtsi:
-
-https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-I forgot to put the power domain property in vdosys0 dts node.
-So I'll add this into DRM vdosys0 series at the next version:
-vdosys0: syscon@1c01a000 {
- 	compatible = "mediatek,mt8195-vdosys0", "syscon";
- 	reg = <0 0x1c01a000 0 0x1000>;
-	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-	...
-};
-I'll also tell Nancy to add this:
-vdosys1: syscon@1c100000 {
-	compatible = "mediatek,mt8195-vdosys1", "syscon";
-	reg = <0 0x1c100000 0 0x1000>;
-	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;	...
-};
-I'll also add the power-domian description into this yaml.
-power-domains:
-description: A phandle and PM domain specifier as defined by bindings
-of the power controller specified by phandle. See
-Documentation/devicetree/bindings/power/power-domain.yaml for details.
-
-In the SoC before, such as mt8173, it has 2 pipelines binding to one
-mmsys with the same clock driver and the same power domain.
-
-In mt8195, 2 pipelines are binding to different mmsys, such as vdosys0
-and vdosys1. Each mmsys uses different clock drivers and different
-power domain.
-So I think it is more appropriate to use 2 compatibles to identify
-which mmsys represents the pipeline.
+Let's see if Rob and Linus have anything to add.
 
 
-Regards,
-Jason-JH.Lin
+ChenYu
 
-> > Their driver data in mtk_drm_drv.c is defined here:
-> > [v4,4/6] drm/mediatek: add mediatek-drm of vdosys0 support for
-> > mt8195
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210723090233.24007-5-jason-jh.lin@mediatek.com/
-> >  
-> > [v2,14/14] drm/mediatek: add mediatek-drm of vdosys1 support for
-> > MT8195
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210722094551.15255-15-nancy.lin@mediatek.com
-> > 
-> > 
-> > I think using the same compatible is unable to do this. Or do you
-> > have
-> > other suggestions to do this with the same compatibe?
-> > 
-> > Regards,
-> > Jason-JH.Lin
-> > 
-> > > > > > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> > > > > > ---
-> > > > > > this patch is base on [1][2]
-> > > > > > 
-> > > > > > [1] dt-bindings: arm: mediatek: mmsys: convert to YAML
-> > > > > > format
-> > > > > > -
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/
-> > > > > > 
-> > > > > > [2] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC
-> > > > > > binding
-> > > > > > -
-> > > > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-2-fparent@baylibre.com/
-> > > > > > 
-> > > > > > ---
-> > > > > >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> > > > > >   |
-> > > > > > 2 ++
-> > > > > >  1 file changed, 2 insertions(+)
-> > > > > > 
-> > > > > > diff --git
-> > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
-> > > > > > msys
-> > > > > > .yam
-> > > > > > l
-> > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
-> > > > > > msys
-> > > > > > .yam
-> > > > > > l
-> > > > > > index 2d4ff0ce387b..0789a9614f12 100644
-> > > > > > ---
-> > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
-> > > > > > msys
-> > > > > > .yam
-> > > > > > l
-> > > > > > +++
-> > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
-> > > > > > msys
-> > > > > > .yam
-> > > > > > l
-> > > > > > @@ -30,6 +30,8 @@ properties:
-> > > > > >                - mediatek,mt8173-mmsys
-> > > > > >                - mediatek,mt8183-mmsys
-> > > > > >                - mediatek,mt8365-mmsys
-> > > > > > +              - mediatek,mt8195-vdosys0
-> > > > > > +              - mediatek,mt8195-vdosys1
-> > > > > >            - const: syscon
-> > > > > >        - items:
-> > > > > >            - const: mediatek,mt7623-mmsys
-> > > > > > --
-> > > > > > 2.18.0
-> > > > > > 
-> > > > 
-> > > > --
-> > 
-> > --
-> > Jason-JH Lin <jason-jh.lin@mediatek.com>
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+
+> Thanks.
+>
+> > > > Then we can specify the setting with the standard bias-pull-
+> > > > up/down
+> > > > properties [1].
+> > > >
+> > > > Also, please ask internally if Mediatek could relicense all the
+> > > > header
+> > > > files that Mediatek has contributed under include/dt-
+> > > > bindings/pinctrl/ [2]
+> > > > to GPL-2.0 and BSD dual license. These files are part of the DT
+> > > > bindings
+> > > > and we really want them to be dual licensed as well, and not just
+> > > > the
+> > > > YAML files.
+> > > >
+> > >
+> > > ==> We will confirm it internally and reply it later.
+> > >
+> > > Thanks.
+> > > >
+> > > > Regards
+> > > > ChenYu
+> > > >
+> > > >
+> > > > [1]
+> > > > https://elixir.bootlin.com/linux/latest/source/Documentation/devicetree/bindings/pinctrl/pincfg-node.yaml#L37
+> > > > [2] Note that a few files were contributed by other people
+> > > >
+> > > > >  #define MTK_DRIVE_2mA  2
+> > > > >  #define MTK_DRIVE_4mA  4
+> > > > >  #define MTK_DRIVE_6mA  6
+> > > > > --
+> > > > > 2.18.0
+> > > > > _______________________________________________
+> > > > > Linux-mediatek mailing list
+> > > > > Linux-mediatek@lists.infradead.org
+> > > > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
