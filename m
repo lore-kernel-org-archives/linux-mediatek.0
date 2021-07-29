@@ -7,79 +7,75 @@ X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA286C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79F77C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:54:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B090661054
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:47:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B090661054
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 3641F60C51
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:54:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3641F60C51
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7TwNDjgzXOWZBjs0lzKHm7GLdyCuaP1IMjkfp1G0CLY=; b=pi7VUVddO6jZZG
-	3KFgvoOotAxt5jn/b9QUkCLft84aw97W+f/kOvRBi1TwaGMXvF+PQsaMzAC9ZJU5Xcyaj7PXp/iY5
-	6V61txjhUIMfN6q7yT1MgY++9mQUkfSk0tep4KUi1Ax5h3+phmGajhc/tTT20ptcrSNmgbqzhxt9y
-	Lvt4n11TG06sAp0S6kf3Rmjzd9vQkbaISyyER4Ab9k24H39gigxSZIZq8cIPp5PEztj8VYiR3m+v8
-	7G3WyhEsn3UhfxOpGlimYQpjO/GE4eV+8vg7iVn29/xsAg7uTWA4SDJfpvkp2ZdUcyJLzeIfKJqph
-	AYiKiNy5BXVHpdnn1/5w==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject:
+	MIME-Version:References:In-Reply-To:Date:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=cLjwK28ZldKadCFQ4NsNtEOAHG2qLI1ws8xlnvBigU8=; b=E8F3/mjK+1mr7nrJ2kTrl8kJH1
+	eL7KN8CODuIjWqxf74UYxf97gU0UgwMVq4uLzl3Z4a3giD0bsYIH8vpmy88cDKzUYiEuTt5n8Obj3
+	agOV7Juw7xQAgzK43RAvpq3raigaLfZFxXq1uPeFZC5ztzuF5Dr+1/I0ufX69bXL5dX51WQgKpIP8
+	DEHb5QIWHxCjCza46lPWYar6lgTqraB0qykiw8K8xT9U0dKq296eCpxpAtzBTbf2w5RqHa56wz8Wt
+	KX5lD1InGTaV0VoULq/5Wfwn/BobraKlmjSwxkSRcfwfszhp8v/7WceQ5nkLmNrBkCUhOcDOTEhoN
+	8aCuTmfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8ytU-003ATQ-Ni; Thu, 29 Jul 2021 05:47:44 +0000
-Received: from mail-io1-xd31.google.com ([2607:f8b0:4864:20::d31])
+	id 1m8yzr-003B4r-SO; Thu, 29 Jul 2021 05:54:19 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8ytH-003ARj-I4
- for linux-mediatek@lists.infradead.org; Thu, 29 Jul 2021 05:47:33 +0000
-Received: by mail-io1-xd31.google.com with SMTP id f11so5539640ioj.3
- for <linux-mediatek@lists.infradead.org>; Wed, 28 Jul 2021 22:47:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=w60/VELNDBnq6j43CmiV7Bx6nr6aPzyLJ2Noe+SivnU=;
- b=VuKnsO+XEmpG5oBRxRnV4vci8jUzDUJaY8oLacnkFTs1pQJf9EeWbGzarIi36gyTGd
- k+v0GMNZu+INYDyKSbwqC0mWrmrBLymIDpOOpIehPCXQ+Y6ZwbKBHsX3YbQBbhnfE4zP
- PQ8bi7V7Pf6pIxuHsl9EvhHrpPp6J5iaO9/Ec=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=w60/VELNDBnq6j43CmiV7Bx6nr6aPzyLJ2Noe+SivnU=;
- b=OSLtMbRT1FtvGYXFnEh/OZ2gWLq+1Xc8R6WFnTyI24swSE7WCwdRF2R19oOESFahRX
- kYjBa37ZP0fjb1hUGFqaofJPBnLhX+IXyMugdYQ7GJdBLR8AVdxAMqGPW2AR+SBoztyh
- gqOHB0sg/Xyd6qtZCI/nMIvOT+FaZONckonzI0Db6Mkvc4zg/uIX/vBnjn/5Oc9udCDD
- RJxXACllitL/8WbDRMyBOqzkY7Rb8cu6zxny5aw4Ue+SiO9YF0zjYMP8umjdYE6Me4yQ
- IXvZ2JlWII59uNIoGvf6Jiz3OAef4risN/UNq+YQlQMDCuqO1dLkIADjOPvMvSTvK89w
- atLg==
-X-Gm-Message-State: AOAM531iVEjg1UII3C1KjVcbOR9vE/YPpys6ETeY0B48TMxA2DWyOZde
- O/arG/GHwN00f9K3hmvs3MhhW077H7k3vk4N+Skt0Q==
-X-Google-Smtp-Source: ABdhPJwsKcPUZyLkIjwGaAUj8BpR75Su46CVaCo58W4CpPpfcjnsCOLGplNVhzoC+fkaqbXezwlnNhfwrLpJ1BoHuSs=
-X-Received: by 2002:a02:6946:: with SMTP id e67mr3016189jac.4.1627537649171;
- Wed, 28 Jul 2021 22:47:29 -0700 (PDT)
-MIME-Version: 1.0
+ id 1m8yze-003B3Y-JC; Thu, 29 Jul 2021 05:54:07 +0000
+Received: from mxbox4.masterlogin.de (unknown [192.168.10.79])
+ by mxout2.routing.net (Postfix) with ESMTP id D25AD5FA4D;
+ Thu, 29 Jul 2021 05:54:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1627538044;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cVlxDO10y/7Na3xuH5jj4ZdMVQFeOoVyuZjIQ6RviyU=;
+ b=Uq1sKiNjQJ0Zm+dOb18ivYGNCHTeMkuK7PpObxwKV/2oWFOlKyIKfQcCaDmo53VZyAFv/I
+ UNXYwyw1iWllc7hzvApDMnXNPS6gO8p/37Sij0PbV4uvnsJkPYVIrq9p8bNW0mzdHhaLca
+ mVnHVi/0XGal+BIVCfAUJwxGXLjM5ac=
+Received: from [IPv6:2a01:598:a001:9235:1:2:c0e0:123a] (unknown
+ [IPv6:2a01:598:a001:9235:1:2:c0e0:123a])
+ by mxbox4.masterlogin.de (Postfix) with ESMTPSA id 0D6968001F;
+ Thu, 29 Jul 2021 05:54:03 +0000 (UTC)
+Date: Thu, 29 Jul 2021 07:53:58 +0200
+User-Agent: K-9 Mail for Android
+In-Reply-To: <CAJMQK-gQeMidjBZ1E=ReMmffC5G8oiFawB4Ey1PNb2ZWXw_1Bg@mail.gmail.com>
 References: <20210727174025.10552-1-linux@fw-web.de>
  <CAJMQK-g8g5QJbBkU-A6th1VSWafxVv2fGtym+enQa_hDVaVoBw@mail.gmail.com>
  <97C4FA94-B28A-4F0E-9CD3-4E33B01BA353@fw-web.de>
-In-Reply-To: <97C4FA94-B28A-4F0E-9CD3-4E33B01BA353@fw-web.de>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 29 Jul 2021 13:47:03 +0800
-Message-ID: <CAJMQK-gQeMidjBZ1E=ReMmffC5G8oiFawB4Ey1PNb2ZWXw_1Bg@mail.gmail.com>
+ <CAJMQK-gQeMidjBZ1E=ReMmffC5G8oiFawB4Ey1PNb2ZWXw_1Bg@mail.gmail.com>
+MIME-Version: 1.0
 Subject: Re: [PATCH] soc: mmsys: mediatek: add mask to mmsys routes
-To: Frank Wunderlich <linux@fw-web.de>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, CK Hu <ck.hu@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+CC: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, CK Hu <ck.hu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, 
+ <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>,
  stable@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>
+From: Frank Wunderlich <linux@fw-web.de>
+Message-ID: <6BFE13A3-6A42-455E-BDF7-CD285CC6C66D@fw-web.de>
+X-Mail-ID: 35ad2a0b-3622-4f69-b59c-67b9f9caa6aa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_224731_687146_9A487749 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20210728_225406_827555_703E9BBB 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,42 +92,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 29, 2021 at 1:40 PM Frank Wunderlich <linux@fw-web.de> wrote:
+Am 29. Juli 2021 07:47:03 MESZ schrieb Hsin-Yi Wang <hsinyi@chromium.org>:
+>On Thu, Jul 29, 2021 at 1:40 PM Frank Wunderlich <linux@fw-web.de>
+>wrote:
+>>
 >
-> Am 29. Juli 2021 05:15:23 MESZ schrieb Hsin-Yi Wang <hsinyi@chromium.org>:
->
-> >This patch is breaking the mt8183 internal display. I think it's
-> >because  ~routes[i].val; is removed?
-> >Also what should the routes[i].mask be if it's not set in
-> >mmsys_mt8183_routing_table?
-> >
-> >>                         writel_relaxed(reg, mmsys->regs +
-> >routes[i].addr);
-> >>                 }
-> >>  }
-> ><snip>
->
-> The mask should reset the needed bits,maybe it needs to be adjusted for your ddp components...
->
-> Can you add some debugs inside loops in mtk_mmsys_ddp_connect and mtk_mmsys_ddp_disconnect (show read val,mask and final mask before write) to show differences before and after the patch?
->
- struct mtk_mmsys_routes {
-         u32 from_comp;
-         u32 to_comp;
-         u32 addr;
- +       u32 mask;
-         u32 val;
-  };
-mask is not the last element, and mmsys_mt8183_routing_table = {
-  {
-    DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
-    MT8183_DISP_OVL0_MOUT_EN, MT8183_OVL0_MOUT_EN_OVL0_2L
-  }
-...
-so the mask and val will be wrong. CK, do you know what mask we should
-set for mt8183? Or can we just set a dummy 0 mask.
+>>
+> struct mtk_mmsys_routes {
+>         u32 from_comp;
+>         u32 to_comp;
+>         u32 addr;
+> +       u32 mask;
+>         u32 val;
+>  };
+>mask is not the last element, and mmsys_mt8183_routing_table = {
+>  {
+>    DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
+>    MT8183_DISP_OVL0_MOUT_EN, MT8183_OVL0_MOUT_EN_OVL0_2L
+>  }
+>...
+>so the mask and val will be wrong. CK, do you know what mask we should
+>set for mt8183? Or can we just set a dummy 0 mask.
 
-> regards Frank
+Ahhh...mt8183 has own mmsys-table and
+i had only changed the default one,so
+value is now missing because value is now the mask. I have used same order as
+CK to avoid confusion and make it easier
+to review.
+Afaik you could use same value as value to reset same bits...did this in default routing table too.
+
+regards Frank
 
 _______________________________________________
 Linux-mediatek mailing list
