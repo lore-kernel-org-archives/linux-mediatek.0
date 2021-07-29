@@ -2,93 +2,82 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC2F9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 15:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE924C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 15:49:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7D2A060F01
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 15:38:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7D2A060F01
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id BF80960F43
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 15:49:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BF80960F43
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SDe8beFlqmLmHnbCCSI6Ugg/I1RBfh9MI0zmP1kyYMM=; b=EagR/6CfPaIA9z
-	iNnsh/tDrGu2Ht1yQGpA5uJtjECEuI6mmeIjCTjdw3JAu00+5tVOqK7yyBK9epcIZCa8EX21wFDlK
-	qbgF6fGq7jC8sI8uLXe2qtgdX9zmKCN7O/ChmvWm3lWxxNklZFPU5BJamFRRXlkb0S2aiFfsA9peZ
-	rBc0xHXR+UEC+pBvt658SKXe/lZb0BtCTHCfjDE98jTTmCv3cTrSUIHxCdaXsM8eKSfNie/tpXDky
-	uNy65z2F69ArBRP/9u9UlQ6OShgTD9G+aVdX9Eq+Pdz5mH/kZ6iXaTM23mb1wyPA9aUeXzJWdT54x
-	hL++szihKHU8hTmMz1BQ==;
+	List-Owner; bh=gyQViuvxu7wDHKJ14tRXrT0fvOnj3d3s4OyjeRQSepg=; b=HDyaADv8RUpAuk
+	OZNLAs0gMpJBRRctkbfVVnWXl06oq1IAY0nuKbYa/7Rh8TIeH2lUUen9084sr2/YhJF+WSuveSmD7
+	w/LN9cT/bLrkMReDr5wMm3fc5DXHxb46Y3ylo78OEnjgee2Lzyo2j7tm1XyENhL5uftuXLYSpZOlb
+	PnAVQ71yUHkOcU8NKwRFsOC2n/BvDChHXHAN2AJ99EuPjjaCw66VpdIg7bmAxloIc5f2FOmLekils
+	hbLXPj525efthmhnzCPVETvYsm7wXpsYpqDwNsxz7spyYFjBFa7KJrvE8+e+FglAyh5QD352xx4Ko
+	lhf7gftN8s80bBCNb0fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m987B-004lRj-Ci; Thu, 29 Jul 2021 15:38:29 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1m98Hv-004oyd-L9; Thu, 29 Jul 2021 15:49:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m97xB-004iRD-Lm; Thu, 29 Jul 2021 15:28:29 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id gn26so11415562ejc.3;
- Thu, 29 Jul 2021 08:28:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=KE22c1Ad5gonkCTcGvngPYElxeArkuqbrIzxFeSwHAY=;
- b=JetzgI9snLh9gHSQtjDoTivcJXzq1kKOvclnaK+MCZ6DvY89LFB0CWrkt7ZCuJ+Imw
- oB54aTWQ4dVe347xR6K8GxDEpafJTNsyhUyElIoXoAVIHZmy/MB3De8fBIPBFxRRQC6r
- NjuFkuN6LYbH50BwQAGT1LtYaZjgK39dqXb7tjlTIArnQTYmMbTUE8afU326KCPopZmr
- ZCtIAz/vmWa/RcKY1RwK6W2OYB99AVSvRkaHzawiCEB5tv9nnvW5gFArxAJbUSm8tA/O
- H/meAr4DXD2Zft0pG8yFMhj9m9qPf6zM4Z09PxCqpHo/eNy3acpI08loYwi30vcTNRKe
- qIZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=KE22c1Ad5gonkCTcGvngPYElxeArkuqbrIzxFeSwHAY=;
- b=EhvsipUhLdxgBuem5HFRwqxv0VOJ6F3SMXMzp1uHPMaMBGRV5RT3ehBLMsuEuRDjUS
- S4+tByjqgnam03POEdzQes1wF2CqBjIP1REbR1D7qtVUSkuYDdqDt9VumVWVV50Vm8Yk
- RP7wW6Wu4HlLDXWThjYEDs946cyTW6VCljUk98CG2QRQKRbijrT5IBW2OzXX925R8O+8
- GqUKISzzzE/dibH7IuYxYGwTNcA0XrlBWH66hE4rgh29Qw63cHr7Xo2jEoPi557ZGcc5
- ecOfA9jrMFvsXyxaBJM6AiVSBenVaTW4Q/qz7qso2NGWjWBnCXYZF4prst9r1LD7yG7l
- KbEA==
-X-Gm-Message-State: AOAM531wimag6MFZNs9RkZt5AdCL8fm+n41ZEAi7/RXd0XP8PJZir50R
- en06TR5H1nLtWZf+ICVruEo=
-X-Google-Smtp-Source: ABdhPJws25x+5xhXV2Dr2zU8FJu9Q1J/fMCHNUU0hFEyvnt6R1J0U3UzIcVhhlrThKtW/vR6GCg4Vg==
-X-Received: by 2002:a17:907:629c:: with SMTP id
- nd28mr5019983ejc.403.1627572487725; 
- Thu, 29 Jul 2021 08:28:07 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id ck25sm1340106edb.96.2021.07.29.08.28.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 08:28:07 -0700 (PDT)
-Date: Thu, 29 Jul 2021 18:28:05 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC net-next 2/2] net: dsa: mt7530: trap packets from
- standalone ports to the CPU
-Message-ID: <20210729152805.o2pur7pp2kpxvvnq@skbuf>
-References: <20210728175327.1150120-1-dqfext@gmail.com>
- <20210728175327.1150120-3-dqfext@gmail.com>
+ id 1m98Hp-004ovC-LC; Thu, 29 Jul 2021 15:49:34 +0000
+X-UUID: b0e46810cd924877b84907edc90f1d28-20210729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=9QdMg0/cPtS/3IO5qFbKWT+QUsFZVYAImgyLoE5y9VY=; 
+ b=r1ftZmj3jZ5dgk/lVycf/13lLnkMh5Avm39iN1JDVvHn9VjUcifitVdpI+R860+gPfltnSVyEkIuhuUmvFQNuCj0hva2ZpjXiuh6k7xftZwCXGPoBguMuSlyIW/Y4jJOcHwzQHD1+31pgdrZyTHHyiBSif6H+Z23OWVqxYfdyKM=;
+X-UUID: b0e46810cd924877b84907edc90f1d28-20210729
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1895587506; Thu, 29 Jul 2021 08:49:23 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 08:49:22 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 23:49:14 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 29 Jul 2021 23:49:14 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Enric Balletbo Serra
+ <eballetbo@gmail.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Fabien Parent
+ <fparent@baylibre.com>, <jason-jh.lin@mediatek.com>, Jitao shi
+ <jitao.shi@mediatek.com>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Subject: [PATCH v2 5/5] dt-bindings: mediatek: display: add mt8195 SoC binding
+Date: Thu, 29 Jul 2021 23:49:12 +0800
+Message-ID: <20210729154912.20051-6-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210729154912.20051-1-jason-jh.lin@mediatek.com>
+References: <20210729154912.20051-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210728175327.1150120-3-dqfext@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_082809_823338_7D70A8E7 
-X-CRM114-Status: GOOD (  13.83  )
+X-CRM114-CacheID: sfid-20210729_084929_768305_C9D4C4E3 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,33 +94,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 29, 2021 at 01:53:26AM +0800, DENG Qingfang wrote:
-> MT7530's FDB has 8 filter IDs, but they are only available for shared
-> VLAN learning, and all VLAN-unaware ports use 0 as the default filter
-> ID.
+Add mt8195 SoC display binding.
 
-Actually, on second thought...
-If MT7530 supports 8 FIDs and it has 7 ports, then you can assign one
-FID to each standalone port or VLAN-unaware bridge it is a member of.
-The drivers/net/ethernet/freescale/dpaa2/dpaa2-switch.c driver has a
-similar concept, only instead of FID, it manages FDB IDs - each port is
-assigned to an FDB ID and it learns and looks up MAC addresses only
-within that FDB ID. Every standalone port uses its own fdb_id, and every
-port under the same bridge shares the same fdb_id (the fdb_id associated
-with a bridge is equal with the fdb_id of the first standalone port that
-joins that bridge; every other standalone port that joins a bridge will
-change its fdb_id to that of the bridge). When a port leaves a bridge
-and becomes standalone again, its fdb_id will again change to the first
-unused value. My point is that if you search for "fdb_id" in that driver
-you will maybe find some inspiration for how things like this can be
-managed. I know it's not 100% the same as your situation (the FDBs in
-the dpaa2-switch are selected by the VLAN table, and for that reason,
-the dpaa2-switch can only operate as VLAN-aware, and with shared VLAN
-learning per FDB), but the same concept can be reused, I think. With
-each port and VLAN-unaware bridge having its own FID, I think you will
-not have the shortcircuit issue any longer (and with VLAN-aware bridges
-you shouldn't have it anyway).
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ .../display/mediatek/mediatek,disp.yaml       | 24 +++++++++++++++++--
+ 1 file changed, 22 insertions(+), 2 deletions(-)
 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
+index f16ee592735d..db0491ddb1d2 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.yaml
+@@ -54,6 +54,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8192-disp-ovl
++              - mediatek,mt8195-disp-ovl
+           - enum:
+               - mediatek,mt8183-disp-ovl
+ 
+@@ -73,6 +74,8 @@ properties:
+           - const: mediatek,mt8173-disp-rdma
+       - items:
+           - const: mediatek,mt8183-disp-rdma
++      - items:
++          - const: mediatek,mt8195-disp-rdma
+       - items:
+           - enum:
+               - mediatek,mt7623-disp-rdma
+@@ -95,6 +98,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8192-disp-ccorr
++              - mediatek,mt8195-disp-ccorr
+           - enum:
+               - mediatek,mt8183-disp-ccorr
+ 
+@@ -115,6 +119,7 @@ properties:
+           - enum:
+               - mediatek,mt8183-disp-color
+               - mediatek,mt8192-disp-color
++              - mediatek,mt8195-disp-color
+           - enum:
+               - mediatek,mt8173-disp-color
+ 
+@@ -124,6 +129,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8192-disp-dither
++              - mediatek,mt8195-disp-dither
+           - enum:
+               - mediatek,mt8183-disp-dither
+ 
+@@ -135,6 +141,7 @@ properties:
+               - mediatek,mt2712-disp-aal
+               - mediatek,mt8183-disp-aal
+               - mediatek,mt8192-disp-aal
++              - mediatek,mt8195-disp-aal
+           - enum:
+               - mediatek,mt8173-disp-aal
+ 
+@@ -146,10 +153,17 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8192-disp-gamma
++              - mediatek,mt8195-disp-gamma
+           - enum:
+               - mediatek,mt8183-disp-gamma
+ 
++      # DSC: see Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml for details.
++      - items:
++          - const: mediatek,mt8195-disp-dsc
++
+       # MERGE: merge streams from two RDMA sources
++      - items:
++          - const: mediatek,mt8195-disp-merge
+ 
+       # POSTMASK: control round corner for display frame
+       - items:
+@@ -209,6 +223,8 @@ properties:
+           - const: mediatek,mt8183-disp-mutex
+       - items:
+           - const: mediatek,mt8192-disp-mutex
++      - items:
++          - const: mediatek,mt8195-disp-mutex
+ 
+       # OD: overdrive
+       - items:
+@@ -237,7 +253,7 @@ properties:
+   mediatek,larb:
+     description: The compatible property should be one of DMA function blocks,
+       such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
+-      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
++      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
+       Should contain a phandle pointing to the local arbiter device as defined in
+       Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml.
+       It must sort according to the local arbiter index, like larb0, larb1, larb2...
+@@ -248,7 +264,7 @@ properties:
+   iommus:
+     description: The compatible property should be one of DMA function blocks,
+       such as "mediatek,<chip>-disp-ovl", "mediatek,<chip>-disp-rdma" or
+-      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167 and mt8173.
++      "mediatek,<chip>-disp-wdma". The supported chips are mt2701, mt8167, mt8173 and mt8195.
+       Should point to the respective IOMMU block with master port as argument, see
+       Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml for details.
+ 
+@@ -442,3 +458,7 @@ examples:
+         power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
+         clocks = <&mmsys CLK_MM_DISP_OD>;
+     };
++
++    dsc0: disp_dsc_wrap@1c009000 {
++        /* See mediatek,dsc.yaml for details */
++    };
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
