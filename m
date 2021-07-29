@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEA84C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:08:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0042C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:09:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77EAD60F01
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:08:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 77EAD60F01
+	by mail.kernel.org (Postfix) with ESMTPS id 82EDD60C40
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:09:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 82EDD60C40
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,29 +24,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fz0V/gf7G9kjTd1MkCl/95mZYBjaRBWRH+iVsy/ezbk=; b=3PqikFR12vQZf0
-	mMmw4IXC3dZPUI6wJ8ZrXwVV9IwUweuGHZaqT/ONmoccUR0AgQJSgHoX+G/sEm/lmZtsO1Ee2BTK0
-	RL3MAhbfeJO7YkTeUykVAL90GMsbekpHEa15h94pLxWEUycsIwganBHw+RjWkoScNfN9wlnlG9P1v
-	6+CUtFIsaWx2CuLi3XimcqWnOYT3/OFNAKpwLkEfWtkCCwZsTdIdo8WJvyHc9M0YSFjLv2FZ7eveC
-	Shk1nQH5T6RUOtP6Y1v8C+k8w3emixP9wy21/72PWJ9+JwuronEBGMb/EOupP/FD4Z2D+G71kFFTk
-	RSyRPsuqrwT363J96FwQ==;
+	List-Owner; bh=VFj9qol+nW03/Y0jy5Uu/jUyn9sZi00qcKOWhdk9wkg=; b=EmjWnNfrNQ7fX9
+	IvwpKHfyhB5ffajT+JjMMLfU4bmlkSIxMIxYns3WLY2et90Qg7PGXKVCVZXLtmfuZN/pOge3X5Dt0
+	67kXEgAsR/Zbz5DJK/MRWbuwI/+kqrbaYYslJteObSDxn3ILgnSLcR/XMRY9s99fObBR+SNkCsHk2
+	KftyES444eCqlPXih9owyu4CFcDqTM4Gq/UexCfDdKuU40sPSgB4MiQUWIYVZwgH3ZxEjrk2Rwfa6
+	DNUVCLYPobYyaGw0wqKCtZZGK6j18DItRD48l3ko1TYa5XP2Zi2w3yY9ANxatE4Li282lPJLfU8Tc
+	7ZNv4m+qoXlBP7M70k4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m99WL-005ESZ-UQ; Thu, 29 Jul 2021 17:08:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1m99Wd-005EYr-Oj; Thu, 29 Jul 2021 17:08:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m99Vr-005EEH-D0; Thu, 29 Jul 2021 17:08:05 +0000
-X-UUID: 40fc5db379f548bf907c93fd9c7b6b38-20210729
+ id 1m99Vr-005EEG-RZ; Thu, 29 Jul 2021 17:08:08 +0000
+X-UUID: a34e201ce90d41ff87f60e3a83acf000-20210729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PAYz9Zrii6ToRok5FOUh9fUGXKZ22i37Ib60VDZHiUY=; 
- b=jjmkrTcoP/iIuopoPUuTWhvUP0zYFrkq8g9ldjRxGUyf1HAW1b0V/2uj88ZWdp5XkAvFV8/1bSLMTeOlG+bfN9YjaGmtdCUSn49KW1oGSDiC/I9zOSIT3KtVZK3A7C5MtpK2rdA4eRWgw77/3Qe/TGcU6u99itHgnqIZhFF5Qos=;
-X-UUID: 40fc5db379f548bf907c93fd9c7b6b38-20210729
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=+m8fFlYS5cDnt5pYX10UO70Uam0upMqDYDnNkhBY34A=; 
+ b=RmsPEtiAhCj8ahKW+eKJHO3YZ/57KAsd+bFYz4NN4Lq9AOxAL5ZqQaol2iIh5ULdvpNt+pK2FTYpzFLH4g112RFton2hKG6eKBmiV28WFbgKnfqu4o7frmi/OA8UJN2T4sQTAylWvanEAolHC8qczaDkuJM3fxZzmTVy5z0PuqU=;
+X-UUID: a34e201ce90d41ff87f60e3a83acf000-20210729
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1171241350; Thu, 29 Jul 2021 10:07:42 -0700
+ with ESMTP id 80420030; Thu, 29 Jul 2021 10:07:43 -0700
 Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 29 Jul 2021 10:07:41 -0700
@@ -67,17 +67,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v5 2/6] soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
-Date: Fri, 30 Jul 2021 01:07:33 +0800
-Message-ID: <20210729170737.21424-3-jason-jh.lin@mediatek.com>
+Subject: [PATCH v5 4/6] drm/mediatek: add mediatek-drm of vdosys0 support for
+ mt8195
+Date: Fri, 30 Jul 2021 01:07:35 +0800
+Message-ID: <20210729170737.21424-5-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210729170737.21424-1-jason-jh.lin@mediatek.com>
 References: <20210729170737.21424-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_100803_514177_5C431B00 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20210729_100803_972290_535FD39D 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,8 +95,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8195 vdosys0 clock driver name and routing table to
-the driver data of mtk-mmsys.
+Add driver data of mt8195 vdosys0 to mediatek-drm and the sub driver.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
@@ -104,170 +104,97 @@ This patch is base on [1]
 [1]add mt8195 SoC DRM binding
 - https://patchwork.kernel.org/project/linux-mediatek/list/?series=519597
 ---
- drivers/soc/mediatek/mt8195-mmsys.h    | 96 ++++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c       | 11 +++
- include/linux/soc/mediatek/mtk-mmsys.h |  9 +++
- 3 files changed, 116 insertions(+)
- create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c |  6 ++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c   | 24 ++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
-new file mode 100644
-index 000000000000..9339a786ec5d
---- /dev/null
-+++ b/drivers/soc/mediatek/mt8195-mmsys.h
-@@ -0,0 +1,96 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+
-+#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
-+#define __SOC_MEDIATEK_MT8195_MMSYS_H
-+
-+#define MT8195_VDO0_OVL_MOUT_EN					0xf14
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
-+#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1			BIT(4)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1			BIT(5)
-+#define MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0			BIT(6)
-+
-+#define MT8195_VDO0_SEL_IN					0xf34
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT		(0 << 0)
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1		(1 << 0)
-+#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0		(2 << 0)
-+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0		(0 << 4)
-+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE		(1 << 4)
-+#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1		(0 << 5)
-+#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE		(1 << 5)
-+#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE		(0 << 8)
-+#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT		(1 << 8)
-+#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT		(0 << 9)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT		(0 << 12)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE			(1 << 12)
-+#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0		(2 << 12)
-+#define MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT			(0 << 16)
-+#define MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0			(1 << 16)
-+#define MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT			(0 << 17)
-+#define MT8195_SEL_IN_DSI1_FROM_VPP_MERGE			(1 << 17)
-+#define MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1			(0 << 20)
-+#define MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE			(1 << 20)
-+#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN		(0 << 21)
-+#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1		(1 << 21)
-+#define MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0			(0 << 22)
-+#define MT8195_SEL_IN_DISP_WDMA0_FROM_VPP_MERGE			(1 << 22)
-+
-+#define MT8195_VDO0_SEL_OUT					0xf38
-+#define MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN		(0 << 0)
-+#define MT8195_SOUT_DISP_DITHER0_TO_DSI0			(1 << 0)
-+#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN		(0 << 1)
-+#define MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE			(1 << 1)
-+#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT		(2 << 1)
-+#define MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE			(0 << 4)
-+#define MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0			(1 << 4)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSI1				(0 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DP_INTF0			(1 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0			(2 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1			(3 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN			(4 << 8)
-+#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN			(0 << 11)
-+#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA0			(1 << 11)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0			(0 << 12)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0		(1 << 12)
-+#define MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE			(2 << 12)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1			(0 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0			(1 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 << 16)
-+#define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			(3 << 16)
-+
-+static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
-+	{
-+		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
-+	}, {
-+		DDP_COMPONENT_OVL1, DDP_COMPONENT_RDMA1,
-+		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT
-+	}, {
-+		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_IN, MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0
-+	}, {
-+		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSC0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN
-+	}, {
-+		DDP_COMPONENT_DITHER, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DISP_DITHER0_TO_DSI0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_DSI0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0
-+	}, {
-+		DDP_COMPONENT_DSC0, DDP_COMPONENT_MERGE0,
-+		MT8195_VDO0_SEL_OUT, MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE
-+	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+index 728aaadfea8c..00e9827acefe 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
+@@ -355,6 +355,10 @@ static const struct mtk_disp_rdma_data mt8183_rdma_driver_data = {
+ 	.fifo_size = 5 * SZ_1K,
+ };
+ 
++static const struct mtk_disp_rdma_data mt8195_rdma_driver_data = {
++	.fifo_size = 1920,
 +};
 +
-+#endif /* __SOC_MEDIATEK_MT8195_MMSYS_H */
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 080660ef11bf..1fb241750897 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -13,6 +13,7 @@
- #include "mtk-mmsys.h"
- #include "mt8167-mmsys.h"
- #include "mt8183-mmsys.h"
-+#include "mt8195-mmsys.h"
+ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
+ 	{ .compatible = "mediatek,mt2701-disp-rdma",
+ 	  .data = &mt2701_rdma_driver_data},
+@@ -362,6 +366,8 @@ static const struct of_device_id mtk_disp_rdma_driver_dt_match[] = {
+ 	  .data = &mt8173_rdma_driver_data},
+ 	{ .compatible = "mediatek,mt8183-disp-rdma",
+ 	  .data = &mt8183_rdma_driver_data},
++	{ .compatible = "mediatek,mt8195-disp-rdma",
++	  .data = &mt8195_rdma_driver_data},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_disp_rdma_driver_dt_match);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index b46bdb8985da..d6f6d1bdad85 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -147,6 +147,19 @@ static const enum mtk_ddp_comp_id mt8183_mtk_ddp_ext[] = {
+ 	DDP_COMPONENT_DPI0,
+ };
  
++static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
++	DDP_COMPONENT_OVL0,
++	DDP_COMPONENT_RDMA0,
++	DDP_COMPONENT_COLOR0,
++	DDP_COMPONENT_CCORR,
++	DDP_COMPONENT_AAL0,
++	DDP_COMPONENT_GAMMA,
++	DDP_COMPONENT_DITHER,
++	DDP_COMPONENT_DSC0,
++	DDP_COMPONENT_MERGE0,
++	DDP_COMPONENT_DP_INTF0,
++};
++
  static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
- 	.clk_driver = "clk-mt2701-mm",
-@@ -52,6 +53,12 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+ 	.main_path = mt2701_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+@@ -186,6 +199,11 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.ext_len = ARRAY_SIZE(mt8183_mtk_ddp_ext),
  };
  
 +static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
-+	.clk_driver = "clk-mt8195-vdo0",
-+	.routes = mmsys_mt8195_routing_table,
-+	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
++	.main_path = mt8195_mtk_ddp_main,
++	.main_len = ARRAY_SIZE(mt8195_mtk_ddp_main),
 +};
 +
- struct mtk_mmsys {
- 	void __iomem *regs;
- 	const struct mtk_mmsys_driver_data *data;
-@@ -157,6 +164,10 @@ static const struct of_device_id of_match_mtk_mmsys[] = {
- 		.compatible = "mediatek,mt8183-mmsys",
- 		.data = &mt8183_mmsys_driver_data,
- 	},
-+	{
-+		.compatible = "mediatek,mt8195-vdosys0",
-+		.data = &mt8195_vdosys0_driver_data,
-+	},
+ static int mtk_drm_kms_init(struct drm_device *drm)
+ {
+ 	struct mtk_drm_private *private = drm->dev_private;
+@@ -410,6 +428,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_RDMA },
+ 	{ .compatible = "mediatek,mt8183-disp-rdma",
+ 	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8195-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
+ 	{ .compatible = "mediatek,mt8173-disp-wdma",
+ 	  .data = (void *)MTK_DISP_WDMA },
+ 	{ .compatible = "mediatek,mt8183-disp-ccorr",
+@@ -448,6 +468,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8183-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8195-disp-mutex",
++	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt2701-disp-pwm",
+ 	  .data = (void *)MTK_DISP_BLS },
+ 	{ .compatible = "mediatek,mt8173-disp-pwm",
+@@ -468,6 +490,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8173_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8183-mmsys",
+ 	  .data = &mt8183_mmsys_driver_data},
++	{.compatible = "mediatek,mt8195-vdosys0",
++	  .data = &mt8195_vdosys0_driver_data},
  	{ }
  };
- 
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 2228bf6133da..01bedfb08094 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -39,6 +39,15 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_UFOE,
- 	DDP_COMPONENT_WDMA0,
- 	DDP_COMPONENT_WDMA1,
-+	DDP_COMPONENT_MERGE0,
-+	DDP_COMPONENT_MERGE1,
-+	DDP_COMPONENT_MERGE2,
-+	DDP_COMPONENT_MERGE3,
-+	DDP_COMPONENT_MERGE4,
-+	DDP_COMPONENT_MERGE5,
-+	DDP_COMPONENT_DSC0,
-+	DDP_COMPONENT_DSC1,
-+	DDP_COMPONENT_DP_INTF0,
- 	DDP_COMPONENT_ID_MAX,
- };
- 
+ MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
 -- 
 2.18.0
 _______________________________________________
