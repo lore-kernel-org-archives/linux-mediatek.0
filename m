@@ -2,78 +2,89 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27BCFC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:19:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9F04C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:31:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E19CA6103B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:19:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E19CA6103B
+	by mail.kernel.org (Postfix) with ESMTPS id 862EE61054
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 09:31:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 862EE61054
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uQWoAwFHrryLhKMCCD5rVOTSNhAZDq2ja4z/9kLaZa8=; b=QbFrZJIva1/jpq
-	6fXEN2d+meBVo6esoN7ZMsRFPrwMLcyYCAsmOltTHkX3Np503KZjyOVpFXz9AtQAcvilvN9dRo+4J
-	PT/Ca+kgp8hjHzlrv6JlyLIg2u5cPK8cND/4mr7E+aGC1M6P+4VYYhtCuiRMlQajmnYhB3uOhcE+K
-	s7Ap2ONSvsFj91+1yzAAM/4QUMegbQAUtNhK90WDfPGuntcI4833LF1e3oj16XbXTusJcy2U7wvss
-	ry9mwDmT4n5wCniv0Aw3UzFHV447Z7Xy1EzHYQBBiT9QveTjsiwcmnUkeUTBw3kFhSgdHrnrJqu7D
-	6W25J9fy4GLF/zC4+XIw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D7zQkh+EV4I8e8TAWGD1ew/m+CtMhxKo/CVokm5SSNc=; b=Pp0r0MIZhXPPmu
+	yp0BOJlpFpKYZkvaTrsZOENHKI8FY80FPzJppzkLQ9jXWP3fato+XQqCzOcko4ZbJHpKbW3PsSMKl
+	ymYDmj1b4PD1bUBTdQ45IvKsjqiKNNIfV9466UkGR1oT4V9uPTc6Cen0klDZ3GCvlFwRawALL87xC
+	8On805pOdv0hLVwFvLt6+ApvaYpko/Qjk3ta/QuVxGPAcXnp8aXWfSKSJgJiuFhYE5OUNGvX4NjxH
+	95LQ2w2wq8bnQkV3sDc9J8dNcTEgQn8JCKmF2QLSvgPBlFUAeYeSznxYH4U+BxHooIZP1bsst/307
+	8xetAPAGTfw7/QW1NDug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m92Bn-003d4U-WC; Thu, 29 Jul 2021 09:18:52 +0000
+	id 1m92OB-003eL6-5Z; Thu, 29 Jul 2021 09:31:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m92BZ-003d35-AN; Thu, 29 Jul 2021 09:18:40 +0000
-X-UUID: e4d8982beb8a4163b87dc20c16f7df40-20210729
+ id 1m92Nv-003eIB-Av; Thu, 29 Jul 2021 09:31:25 +0000
+X-UUID: 04a624defbc54403a3a02135b513bf66-20210729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=G+COT87y+Z6DG4NDfX9Iwq6diHtbbp0sFqJpWMSQjxI=; 
- b=AQod5C+xpEVkrqLENnSHFbMVax/p9aQ2ugkXledoUfQSKk9BaWNrBpVXJSgV34o2vlWIfR6JVTQvz8e2el7yD2uS0ezCN+pSwGVWFKjBa2xnpC+ZU6WochdCl6LcrZeWo/8x6axt2Z7S1EAM2q2u+iIHjilNvJWDmdVUqjxSeCM=;
-X-UUID: e4d8982beb8a4163b87dc20c16f7df40-20210729
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=58wHSuP4xelT+9n+FUdGokfORJ3tpoWX0PlqDrg48R8=; 
+ b=FoYeCU4Wz9/2zlhZEYChfuEuKipyhyHSVRtNoB0myzXrSPXFaUUQjnhHfvsxmgYahIlDr+Us7U96lPq6VHMT3/Fj1rZa6jlhnS6LRI0fmGSP2CvfuNB/Hg7PH7A83IMOdsSyWqVdShuqnBBhTYGO5gkMpxfzhvQFi/cP2UslXT0=;
+X-UUID: 04a624defbc54403a3a02135b513bf66-20210729
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2105037725; Thu, 29 Jul 2021 02:18:33 -0700
-Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ with ESMTP id 1680571403; Thu, 29 Jul 2021 02:31:19 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 02:18:32 -0700
+ 15.0.1497.2; Thu, 29 Jul 2021 02:31:18 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 17:18:23 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas11.mediatek.inc
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 17:31:16 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Jul 2021 17:18:23 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern
- <dsahern@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <wsd_upstream@mediatek.com>, <rocco.yue@gmail.com>, <chao.song@mediatek.com>, 
- <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: [PATCH net-next] net: ipv6: add IFLA_RA_MTU to expose mtu value in
- the RA message
-Date: Thu, 29 Jul 2021 17:02:06 +0800
-Message-ID: <20210729090206.11138-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Transport; Thu, 29 Jul 2021 17:31:16 +0800
+Message-ID: <b944cf4a9d7499913d31d2599d841124d74a24cf.camel@mediatek.com>
+Subject: Re: [PATCH v1 1/5] dt-bindings: arm: mediatek: mmsys: add mt8195
+ SoC binding
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Enric Balletbo Serra <eballetbo@gmail.com>
+CC: Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree
+ <devicetree@vger.kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
+ <fshao@chromium.org>, David Airlie <airlied@linux.ie>,
+ <singo.chang@mediatek.com>, linux-kernel <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, Fabien Parent
+ <fparent@baylibre.com>, Nancy.Lin <nancy.lin@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>
+Date: Thu, 29 Jul 2021 17:31:16 +0800
+In-Reply-To: <CAFqH_51_Ns-ZLqwaj+_8P_49rGse0h9GTu4Jk6R+0FVO8Rq1pw@mail.gmail.com>
+References: <20210722092624.14401-1-jason-jh.lin@mediatek.com>
+ <20210722092624.14401-2-jason-jh.lin@mediatek.com>
+ <CAFqH_51qKkxMit5fkSh_AyeNAYwKnoPe09nwJLKaKez26+HUew@mail.gmail.com>
+ <4c0fe16988c559a5a4b1ce714eeaa31f4628f68f.camel@mediatek.com>
+ <CAFqH_512RCNBufS=zL5hQSQJya3565dm2D3zznWie9rKUN_sAw@mail.gmail.com>
+ <a0e5322bdde4d1b51de57cbfe98e9d9ed64490ed.camel@mediatek.com>
+ <CAFqH_51_Ns-ZLqwaj+_8P_49rGse0h9GTu4Jk6R+0FVO8Rq1pw@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_021838_815029_CC22E92F 
-X-CRM114-Status: GOOD (  26.60  )
+X-CRM114-CacheID: sfid-20210729_023123_434622_5CD7391A 
+X-CRM114-Status: GOOD (  51.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,196 +101,307 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The kernel provides a "/proc/sys/net/ipv6/conf/<iface>/mtu"
-file, which can temporarily record the mtu value of the last
-received RA message when the RA mtu value is lower than the
-interface mtu, but this proc has following limitations:
-(1) when the interface mtu (/sys/class/net/<iface>/mtu) is
-updeated, mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) will be
-updated to the value of interface mtu;
-(2) mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) only affect
-ipv6 connection, and not affect ipv4.
+Hi Enric,
 
-Therefore, when the mtu option is carried in the RA message,
-there will be a problem that the user sometimes cannot obtain
-RA mtu value by reading mtu6.
+Thanks for your review.
 
-After this patch set, if a RA message carries the mtu option,
-you can use RTM_GETLINK to get the mtu value carried in the
-RA message received on the interface.
+On Wed, 2021-07-28 at 12:56 +0200, Enric Balletbo Serra wrote:
+> Hi Jason,
+> 
+> Missatge de Jason-JH Lin <jason-jh.lin@mediatek.com> del dia dt., 27
+> de jul. 2021 a les 4:53:
+> > 
+> > Hi Enric,
+> > 
+> > On Mon, 2021-07-26 at 12:08 +0200, Enric Balletbo Serra wrote:
+> > > Hi Jason,
+> > > 
+> > > Missatge de Jason-JH Lin <jason-jh.lin@mediatek.com> del dia dl.,
+> > > 26
+> > > de jul. 2021 a les 9:02:
+> > > > 
+> > > > On Fri, 2021-07-23 at 13:13 +0200, Enric Balletbo Serra wrote:
+> > > > > Hi Jason,
+> > > > > 
+> > > > > Thank you for your patch.
+> > > > > 
+> > > > > Missatge de jason-jh.lin <jason-jh.lin@mediatek.com> del dia
+> > > > > dj.,
+> > > > > 22
+> > > > > de jul. 2021 a les 11:26:
+> > > > > > 
+> > > > > > There are 2 display hardware path in mt8195, namely vdosys0
+> > > > > > and
+> > > > > > vdosys1, so add their definition in mtk-mmsys
+> > > > > > documentation.
+> > > > > > 
+> > > > > 
+> > > > > Just having 2 display hardware paths is not a reason to have
+> > > > > two
+> > > > > compatibles, isn't the IP block the same? Why do you need to
+> > > > > introduce
+> > > > > the two compatibles?
+> > > > > 
+> > > > > Thanks,
+> > > > >   Enric
+> > > > > 
+> > > > 
+> > > > Hi Enric,
+> > > > 
+> > > > Thanks for reviewing my patch.
+> > > > 
+> > > > The reason for using two compatibles is that vdosys0 and
+> > > > vdosys1
+> > > > are
+> > > > different IP blocks.
+> > > > 
+> > > 
+> > > With that there are different IP blocks, what do you mean? Do you
+> > > mean
+> > > that there are two completely different blocks with completely
+> > > different functionalities?
+> > > 
+> > > Or that there is the same IP block twice? I mean, of course, the
+> > > registers are different but has exactly the same functionality.
+> > > 
+> > 
+> > They are not the same IP block twice.
+> > Although both vdosys0 and vdosys1 will probe meiatek-drm driver,
+> > but
+> > the components on their hardware path are different and their
+> > output
+> > panel are also different.
+> > 
+> > > > Because mmsys provides clock control, other display function
+> > > > blocks
+> > > > may
+> > > > use them as clock provider.
+> > > > 
+> > > > E.g.
+> > > > 1. mmsys with compatible="mediatek,mt8195-vdosys0"
+> > > > [v4,1/6] arm64: dts: mt8195: add display node for vdosys0
+> > > > 
+> > > > 
+> > 
+> > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210723090233.24007-2-jason-jh.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!xHjKwv34W7ETFcmQPXRViylF2LbV7C7pE8OeJeNvA93jDdzr_ZBRRm8aIUCvAHSD_qGo$
+> > > > 
+> > > > 
+> > > > ovl0: disp_ovl@1c000000 {
+> > > >         ...
+> > > >         clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
+> > > >         ...
+> > > > };
+> > > > 
+> > > > 2. mmsys with compatible="mediatek,mt8195-vdosys1"
+> > > > [v2,06/14] arm64: dts: mt8195: add display node for vdosys1
+> > > > 
+> > > > 
+> > 
+> > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210722094551.15255-7-nancy.lin@mediatek.com/__;!!CTRNKA9wMg0ARbw!xHjKwv34W7ETFcmQPXRViylF2LbV7C7pE8OeJeNvA93jDdzr_ZBRRm8aIUCvAP0FOfkc$
+> > > > 
+> > > > 
+> > > > vdo1_rdma0: vdo1_rdma@1c104000 {
+> > > >         ...
+> > > >         clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+> > > >         ...
+> > > > };
+> > > > 
+> > > 
+> > > Note that I am talking without knowing the hardware in detail,
+> > > but I
+> > > am wondering why I can't have something like this, where every
+> > > mmsys
+> > > is a clock and reset controller provider.
+> > > 
+> > > vdosys0: syscon@14000000 {
+> > >           compatible = "mediatek,mt8195-mmsys", "syscon";
+> > >           reg = <0 0x14000000 0 0x1000>;
+> > >           #clock-cells = <1>;
+> > >           #reset-cells = <1>;
+> > > };
+> > > 
+> > > vdosys1: syscon@15000000 {
+> > >           compatible = "mediatek,mt8195-mmsys", "syscon";
+> > >           reg = <0 0x15000000 0 0x1000>;
+> > >           #clock-cells = <1>;
+> > >           #reset-cells = <1>;
+> > > };
+> > > 
+> > > ovl0: disp_ovl@1c000000 {
+> > >         ...
+> > >        clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
+> > >         ...
+> > > };
+> > > 
+> > > vdo1_rdma0: vdo1_rdma@1c104000 {
+> > >         ...
+> > >         clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
+> > >         ...
+> > > };
+> > > 
+> > > What are the differences between vdosys0 and vdosys1 from a
+> > > hardware
+> > > point of view?
+> > > 
+> > > Cheers,
+> > >   Enric
+> > > 
+> > > > Regards,
+> > > > Jason-JH.Lin
+> > > > 
+> > 
+> > From a hardware point of view, the components and the ouptut panel
+> > of
+> > vdosys0 and vdosys1:
+> > 1. The components on meiatek-drm of vdosys0 are OVL0, RDMA0,
+> > COLOR0,
+> > CCORR, AAL0, GAMMA, DITHER, DSC0, MERGE0, DP_INTF0 and its output
+> > panel
+> > is eDP.
+> > 
+> > 2. The components on meiatek-drm of vdosys1 are PSEUDO_OVL, MERGE5,
+> > DP_INTF1 and its ouptut panel is DP.
+> > 
+> > 
+> > The resaon for using two compatibales is that we use different
+> > driver
+> > data in mtk-mmsys.c and mtk_drm_drv.c to identify the corresponding
+> > mmsys is vdosys0 or vdosys1.
+> > 
+> 
+> So IIUC the two mmsys block ares basically the same, they provide the
+> same, a reset controller, a clock controller and being able to write
+> to the routing registers, and what you only need to identify is which
+> one is is vdosys0 and which one is vdosys1 to apply different routing
+> tables? Can these routing tables change at runtime? Or are they
+> hardware fixed?
+> 
+> Regards,
+>  Enric
+> 
+In the case of vdosys1 DP_TX switch to HDMI_TX, routing tables will
+change at runtime.
 
-In this way, If the MTU values that the device receives from the
-network in the PCO IPv4 and the RA IPv6 procedures are different,
-the user space process can read ra_mtu to get the mtu value carried
-in the RA message without worrying about the issue of ipv4 being
-stuck due to the late arrival of RA message. After comparing the
-value of ra_mtu and ipv4 mtu, then the device can use the lower
-MTU value for both IPv4 and IPv6.
+Refer to mt8173.dtsi:
 
-Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
----
- include/linux/ipv6.h               |  3 +++
- include/uapi/linux/if_link.h       |  2 +-
- include/uapi/linux/ipv6.h          |  1 +
- net/core/rtnetlink.c               |  7 +++++--
- net/ipv6/addrconf.c                | 13 +++++++++++++
- net/ipv6/ndisc.c                   |  5 +++++
- tools/include/uapi/linux/if_link.h |  1 +
- 7 files changed, 29 insertions(+), 3 deletions(-)
+https://elixir.bootlin.com/linux/latest/source/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+I forgot to put the power domain property in vdosys0 dts node.
+So I'll add this into DRM vdosys0 series at the next version:
+vdosys0: syscon@1c01a000 {
+ 	compatible = "mediatek,mt8195-vdosys0", "syscon";
+ 	reg = <0 0x1c01a000 0 0x1000>;
+	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
+	...
+};
+I'll also tell Nancy to add this:
+vdosys1: syscon@1c100000 {
+	compatible = "mediatek,mt8195-vdosys1", "syscon";
+	reg = <0 0x1c100000 0 0x1000>;
+	power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;	...
+};
+I'll also add the power-domian description into this yaml.
+power-domains:
+description: A phandle and PM domain specifier as defined by bindings
+of the power controller specified by phandle. See
+Documentation/devicetree/bindings/power/power-domain.yaml for details.
 
-diff --git a/include/linux/ipv6.h b/include/linux/ipv6.h
-index 70b2ad3b9884..71aa0a3853f8 100644
---- a/include/linux/ipv6.h
-+++ b/include/linux/ipv6.h
-@@ -76,6 +76,7 @@ struct ipv6_devconf {
- 	__s32		disable_policy;
- 	__s32           ndisc_tclass;
- 	__s32		rpl_seg_enabled;
-+	__s32		ra_mtu;
- 
- 	struct ctl_table_header *sysctl_header;
- };
-@@ -321,6 +322,8 @@ struct tcp6_timewait_sock {
- 	struct tcp_timewait_sock   tcp6tw_tcp;
- };
- 
-+u32 inet6_dev_ramtu(struct net_device *dev);
-+
- #if IS_ENABLED(CONFIG_IPV6)
- bool ipv6_mod_enabled(void);
- 
-diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-index 4882e81514b6..ea6c872c5f2c 100644
---- a/include/uapi/linux/if_link.h
-+++ b/include/uapi/linux/if_link.h
-@@ -347,7 +347,7 @@ enum {
- 	 */
- 	IFLA_PARENT_DEV_NAME,
- 	IFLA_PARENT_DEV_BUS_NAME,
--
-+	IFLA_RA_MTU,
- 	__IFLA_MAX
- };
- 
-diff --git a/include/uapi/linux/ipv6.h b/include/uapi/linux/ipv6.h
-index 70603775fe91..3dbcf212b766 100644
---- a/include/uapi/linux/ipv6.h
-+++ b/include/uapi/linux/ipv6.h
-@@ -190,6 +190,7 @@ enum {
- 	DEVCONF_NDISC_TCLASS,
- 	DEVCONF_RPL_SEG_ENABLED,
- 	DEVCONF_RA_DEFRTR_METRIC,
-+	DEVCONF_RA_MTU,
- 	DEVCONF_MAX
- };
- 
-diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index f6af3e74fc44..3f660bbbd7b8 100644
---- a/net/core/rtnetlink.c
-+++ b/net/core/rtnetlink.c
-@@ -37,7 +37,7 @@
- #include <linux/pci.h>
- #include <linux/etherdevice.h>
- #include <linux/bpf.h>
--
-+#include <linux/ipv6.h>
- #include <linux/uaccess.h>
- 
- #include <linux/inet.h>
-@@ -1063,6 +1063,7 @@ static noinline size_t if_nlmsg_size(const struct net_device *dev,
- 	       + nla_total_size(4)  /* IFLA_MAX_MTU */
- 	       + rtnl_prop_list_size(dev)
- 	       + nla_total_size(MAX_ADDR_LEN) /* IFLA_PERM_ADDRESS */
-+	       + nla_total_size(4)  /* IFLA_RA_MTU */
- 	       + 0;
- }
- 
-@@ -1753,7 +1754,8 @@ static int rtnl_fill_ifinfo(struct sk_buff *skb,
- 	    nla_put_u32(skb, IFLA_CARRIER_UP_COUNT,
- 			atomic_read(&dev->carrier_up_count)) ||
- 	    nla_put_u32(skb, IFLA_CARRIER_DOWN_COUNT,
--			atomic_read(&dev->carrier_down_count)))
-+			atomic_read(&dev->carrier_down_count)) ||
-+	    nla_put_u32(skb, IFLA_RA_MTU, inet6_dev_ramtu(dev)))
- 		goto nla_put_failure;
- 
- 	if (rtnl_fill_proto_down(skb, dev))
-@@ -1891,6 +1893,7 @@ static const struct nla_policy ifla_policy[IFLA_MAX+1] = {
- 	[IFLA_PROTO_DOWN_REASON] = { .type = NLA_NESTED },
- 	[IFLA_NEW_IFINDEX]	= NLA_POLICY_MIN(NLA_S32, 1),
- 	[IFLA_PARENT_DEV_NAME]	= { .type = NLA_NUL_STRING },
-+	[IFLA_RA_MTU]		= { .type = NLA_U32 },
- };
- 
- static const struct nla_policy ifla_info_policy[IFLA_INFO_MAX+1] = {
-diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
-index 3bf685fe64b9..d213400ee8a0 100644
---- a/net/ipv6/addrconf.c
-+++ b/net/ipv6/addrconf.c
-@@ -237,6 +237,7 @@ static struct ipv6_devconf ipv6_devconf __read_mostly = {
- 	.addr_gen_mode		= IN6_ADDR_GEN_MODE_EUI64,
- 	.disable_policy		= 0,
- 	.rpl_seg_enabled	= 0,
-+	.ra_mtu			= 0,
- };
- 
- static struct ipv6_devconf ipv6_devconf_dflt __read_mostly = {
-@@ -293,6 +294,7 @@ static struct ipv6_devconf ipv6_devconf_dflt __read_mostly = {
- 	.addr_gen_mode		= IN6_ADDR_GEN_MODE_EUI64,
- 	.disable_policy		= 0,
- 	.rpl_seg_enabled	= 0,
-+	.ra_mtu			= 0,
- };
- 
- /* Check if link is ready: is it up and is a valid qdisc available */
-@@ -5526,6 +5528,17 @@ static inline void ipv6_store_devconf(struct ipv6_devconf *cnf,
- 	array[DEVCONF_DISABLE_POLICY] = cnf->disable_policy;
- 	array[DEVCONF_NDISC_TCLASS] = cnf->ndisc_tclass;
- 	array[DEVCONF_RPL_SEG_ENABLED] = cnf->rpl_seg_enabled;
-+	array[DEVCONF_RA_MTU] = cnf->ra_mtu;
-+}
-+
-+u32 inet6_dev_ramtu(struct net_device *dev)
-+{
-+	struct inet6_dev *idev = __in6_dev_get(dev);
-+
-+	if (idev)
-+		return idev->cnf.ra_mtu;
-+
-+	return 0;
- }
- 
- static inline size_t inet6_ifla6_size(void)
-diff --git a/net/ipv6/ndisc.c b/net/ipv6/ndisc.c
-index c467c6419893..1da626267662 100644
---- a/net/ipv6/ndisc.c
-+++ b/net/ipv6/ndisc.c
-@@ -1496,6 +1496,11 @@ static void ndisc_router_discovery(struct sk_buff *skb)
- 		memcpy(&n, ((u8 *)(ndopts.nd_opts_mtu+1))+2, sizeof(mtu));
- 		mtu = ntohl(n);
- 
-+		if (in6_dev->cnf.ra_mtu != mtu) {
-+			in6_dev->cnf.ra_mtu = mtu;
-+			ND_PRINTK(2, info, "update ra_mtu to %d\n", in6_dev->cnf.ra_mtu);
-+		}
-+
- 		if (mtu < IPV6_MIN_MTU || mtu > skb->dev->mtu) {
- 			ND_PRINTK(2, warn, "RA: invalid mtu: %d\n", mtu);
- 		} else if (in6_dev->cnf.mtu6 != mtu) {
-diff --git a/tools/include/uapi/linux/if_link.h b/tools/include/uapi/linux/if_link.h
-index d208b2af697f..abc3607b7bab 100644
---- a/tools/include/uapi/linux/if_link.h
-+++ b/tools/include/uapi/linux/if_link.h
-@@ -170,6 +170,7 @@ enum {
- 	IFLA_PROP_LIST,
- 	IFLA_ALT_IFNAME, /* Alternative ifname */
- 	IFLA_PERM_ADDRESS,
-+	IFLA_RA_MTU,
- 	__IFLA_MAX
- };
- 
+In the SoC before, such as mt8173, it has 2 pipelines binding to one
+mmsys with the same clock driver and the same power domain.
+
+In mt8195, 2 pipelines are binding to different mmsys, such as vdosys0
+and vdosys1. Each mmsys uses different clock drivers and different
+power domain.
+So I think it is more appropriate to use 2 compatibles to identify
+which mmsys represents the pipeline.
+
+
+Regards,
+Jason-JH.Lin
+
+> > Their driver data in mtk_drm_drv.c is defined here:
+> > [v4,4/6] drm/mediatek: add mediatek-drm of vdosys0 support for
+> > mt8195
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210723090233.24007-5-jason-jh.lin@mediatek.com/
+> >  
+> > [v2,14/14] drm/mediatek: add mediatek-drm of vdosys1 support for
+> > MT8195
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210722094551.15255-15-nancy.lin@mediatek.com
+> > 
+> > 
+> > I think using the same compatible is unable to do this. Or do you
+> > have
+> > other suggestions to do this with the same compatibe?
+> > 
+> > Regards,
+> > Jason-JH.Lin
+> > 
+> > > > > > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> > > > > > ---
+> > > > > > this patch is base on [1][2]
+> > > > > > 
+> > > > > > [1] dt-bindings: arm: mediatek: mmsys: convert to YAML
+> > > > > > format
+> > > > > > -
+> > > > > > 
+> > 
+> > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/
+> > > > > > 
+> > > > > > [2] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC
+> > > > > > binding
+> > > > > > -
+> > > > > > 
+> > 
+> > 
+https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-2-fparent@baylibre.com/
+> > > > > > 
+> > > > > > ---
+> > > > > >  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> > > > > >   |
+> > > > > > 2 ++
+> > > > > >  1 file changed, 2 insertions(+)
+> > > > > > 
+> > > > > > diff --git
+> > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
+> > > > > > msys
+> > > > > > .yam
+> > > > > > l
+> > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
+> > > > > > msys
+> > > > > > .yam
+> > > > > > l
+> > > > > > index 2d4ff0ce387b..0789a9614f12 100644
+> > > > > > ---
+> > > > > > a/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
+> > > > > > msys
+> > > > > > .yam
+> > > > > > l
+> > > > > > +++
+> > > > > > b/Documentation/devicetree/bindings/arm/mediatek/mediatek,m
+> > > > > > msys
+> > > > > > .yam
+> > > > > > l
+> > > > > > @@ -30,6 +30,8 @@ properties:
+> > > > > >                - mediatek,mt8173-mmsys
+> > > > > >                - mediatek,mt8183-mmsys
+> > > > > >                - mediatek,mt8365-mmsys
+> > > > > > +              - mediatek,mt8195-vdosys0
+> > > > > > +              - mediatek,mt8195-vdosys1
+> > > > > >            - const: syscon
+> > > > > >        - items:
+> > > > > >            - const: mediatek,mt7623-mmsys
+> > > > > > --
+> > > > > > 2.18.0
+> > > > > > 
+> > > > 
+> > > > --
+> > 
+> > --
+> > Jason-JH Lin <jason-jh.lin@mediatek.com>
 -- 
-2.18.0
+Jason-JH Lin <jason-jh.lin@mediatek.com>
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
