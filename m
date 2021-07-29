@@ -2,102 +2,87 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B381C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:04:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C1EDEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:42:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10BF061052
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:04:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 10BF061052
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kroah.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5E4A961019
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:42:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E4A961019
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q0rA+VAbuqyioJWWMzL35C62qrcLWFGJbgqxYetLdJU=; b=cKZb8VxqT14tQT
-	sRBmRHYLXqwSPGPfOSTnJJl9wTRend7feyjuk2hCGgpDpwzvakuAgVF17Bw8saVEd9lhCirqeKnW3
-	HVTme1epykdrCyP+O4FGdT8smzKfA0AKGJs7+MI3DiRiO7A06HUbRohG2K4Jcp11MZ79Y9OVqk3ME
-	G/8nTfC4Y5PKZPMM5BEjPuFA0Cvb+wKBCSson33qsoo1U0ugYJW96UVvwjhPqtf+e0GphcfoPGCOY
-	WD8eyY7DnwlRMwnaZVSe2Rjt9mOYRUanFCXNtdQ3IEhBum5EXB0IuSK/yqMjKh4KzOAPvtyQIPfWv
-	efXeV/8IEDyK+UjS/9hA==;
+	List-Owner; bh=0Stp4+g9O25YKPzrGM+BZ8wUyiG2r+NSRKCyOFQnjcY=; b=A0oBrtgoDJUoG7
+	RUaKPP969q1+HOCdF/W10/8RBzS+QfCMa9VWp+tfWHdcCXL+jQ4uUYNDYoJKUejFjcHz5e/zj/9oH
+	JxLnAAgIuTJhibJn9PdfhGn2fHCYWhLLdyzjhV3fgKMsq6LIcA2OakQbcww8hvIHGxaVrEdi89Ngk
+	UpAOt2W6HwxPZlRikewZTWbYpWvlN4TCxNvndxLSpsm9fXd1G0PulTDJ7vEK5GTHN+tayKUDaQIpJ
+	+fm19+L4k0ZnWHCEtpXNuLWxh0XrNBZnfe7yKCL5fuVVKFJejADnO8xpn4avgshxtdudcEhgSNgug
+	Z29BODC56DrMdMw9e9+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8z9Y-003DZt-Po; Thu, 29 Jul 2021 06:04:20 +0000
-Received: from new2-smtp.messagingengine.com ([66.111.4.224])
+	id 1m8zjs-003GV5-SQ; Thu, 29 Jul 2021 06:41:52 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8z9L-003DUS-4T; Thu, 29 Jul 2021 06:04:08 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailnew.nyi.internal (Postfix) with ESMTP id 51A46580B39;
- Thu, 29 Jul 2021 02:04:01 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Thu, 29 Jul 2021 02:04:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=oOA9yKbtZrclxkXt8oi2w9Qy4VI
- sBkPwwH4Zip+yF2Q=; b=jlS/9w7SQZpmcYyil/QHB10d4j+LqD1BBnEeV4VpVbv
- YZcHJh/Vq7gQ63HSRfNySSGszZLBGMRyX1HZCbzDmg98A2mDQDi9CL2eo/w+lBeZ
- 9rpP82l3iy8NfhCPOD4RfvQs5zQGdY9wjNBUtjqYjF1AFeAJ3mEGZSxluDAgsqSX
- YcJUHUl1XVpqLVSIG+P7e52LxOPCsz3M/NPpapeIjUKNYZmhv/lebtp/qOd2meNd
- rEUU8cBd+lDKoxPGgYkpcbdhX3u974W8teP+KCvkJ4I1cT1OyQrtyR8pToEKAhuh
- i8/SQExgJwN6Q2vtcdzs1yf3lKlMoM4xPjQPYuouStg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=oOA9yK
- btZrclxkXt8oi2w9Qy4VIsBkPwwH4Zip+yF2Q=; b=ErtoLAJ54DmhkFR0iJpgqm
- 9ERknF9Qyd1Esscd3Cy/Jh109VV7+BA16zm23A4kNc+Q5nhpTd1Ncu19h+a8bOWD
- rss1BNt43SQWfUysU2ae1tPSYAAPOhpRkvnWjdcBx0BGuh2FKfDxgxCx3zdnnwTh
- aGWwKrbBr67B4XNUUAitjbo+WQAYZEHhyBjlCKWFvyHQNYoCqwoPi6adNPoTuDfK
- FIwj5ID3KnQ9Jh+cEuzw8s8bQZTusEXoKwn4PSHeNwV5LOZvcpQmTqRBkbNI73w9
- MCEaOoM/fdDer11hxBw/9Ow43j2/r671/LX7PS3SiGFeNBJkqyY6uN7EAlJj1Gpg
- ==
-X-ME-Sender: <xms:0EQCYbyYxtkJu4glF-PyF7Vmo43tTOkmvx7vk1EntVZdLMEsHu3C3Q>
- <xme:0EQCYTQMDkRSNrRfWPG-hblj2PmnOTxNvFK7bUM5dB0oC_22euwHulzvy7WykXbDR
- hcIb45NDz3qsA>
-X-ME-Received: <xmr:0EQCYVVCQuiiDMb-vlKynWBt1gusm3RY0N0qSpi8uTEjqcbSEDY8vYCjsGkVpQytv_Ajx3LMmq2fb0184BL90bN5-mEmdm76>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrhedtgdelfecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghgucfm
- jfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepfeefueduhe
- egtddvueejueeiveelhedthfejudehteejgfegudffgedttdetheeknecuffhomhgrihhn
- pegsohhothhlihhnrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
- hmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
-X-ME-Proxy: <xmx:0EQCYVgIDo1Ew43r7hAFpqP8nmJpY5A5vd9QDYdocfnL7YV5_tY1qw>
- <xmx:0EQCYdBh3Od3AAwJM5CHD0pPk69bSsf7bG7F1_I1lMG6ty4Onw0P6g>
- <xmx:0EQCYeIhXcVY50E1ruC0Z8OVs-Gv2-qNTmHE6IJR-H-yWCCk6BNUhQ>
- <xmx:0UQCYdansu-BxNZUR8BiGYppnOc_z2YNFJumpJ6Ouh-OROzART6GgQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 29 Jul 2021 02:04:00 -0400 (EDT)
-Date: Thu, 29 Jul 2021 08:03:58 +0200
-From: Greg KH <greg@kroah.com>
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: timur@kernel.org, linux@armlinux.org.uk, alcooperx@gmail.com,
- tklauser@distanz.ch, sean.wang@kernel.org,
- srv_heupstream@mediatek.com, hui.liu@mediatek.com,
- yuchen.huang@mediatek.com, huihui.wang@mediatek.com,
- eddie.huang@mediatek.com, sean.wang@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org
-Subject: Re: [PATCH v1 0/1] Mediatek uart patch
-Message-ID: <YQJEzlb2NyxD1EpD@kroah.com>
-References: <20210729014817.11879-1-zhiyong.tao@mediatek.com>
+ id 1m8zjq-003GUL-CF; Thu, 29 Jul 2021 06:41:52 +0000
+X-UUID: a8748e5678e3482f872ca5766ef65b28-20210728
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=OVLK3H5y5iwA63PL1InnEGJOkT0m5xgZgp18ut59SDc=; 
+ b=YvmL2EEDeBsnxfEGzPpgElS3DnAmPGxXUfZI+SajdwDwRufewozPnohsltjt2ur8a6ZwvLIgUrMTt5k753cjdqLT/0NWCKBkTgIKosKyImbv0860S6Fnve6QVbopskyGzxtDa++EiNRfefvgZIE7B0YaEUnMKQRSNWuOCN9c7R0=;
+X-UUID: a8748e5678e3482f872ca5766ef65b28-20210728
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 129795884; Wed, 28 Jul 2021 23:41:46 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 28 Jul 2021 23:41:44 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 14:41:43 +0800
+Received: from [10.17.3.153] (10.17.3.153) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 29 Jul 2021 14:41:42 +0800
+Message-ID: <1627540902.13818.3.camel@mhfsdcap03>
+Subject: Re: [PATCH v2 11/11] memory: mtk-smi: mt8195: Add initial setting
+ for smi-larb
+From: Yong Wu <yong.wu@mediatek.com>
+To: Ikjoon Jang <ikjn@chromium.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Krzysztof
+ Kozlowski" <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>, Will Deacon
+ <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
+ <tfiga@chromium.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, open list <linux-kernel@vger.kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>
+Date: Thu, 29 Jul 2021 14:41:42 +0800
+In-Reply-To: <1626935902.27875.7.camel@mhfsdcap03>
+References: <20210715121209.31024-1-yong.wu@mediatek.com>
+ <20210715121209.31024-12-yong.wu@mediatek.com>
+ <CAATdQgAfo9oNR5=ogEottHajODngi1ahvKUnEOUczzjreYpPcQ@mail.gmail.com>
+ <1626935902.27875.7.camel@mhfsdcap03>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210729014817.11879-1-zhiyong.tao@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_230407_290209_E05BA5E8 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20210728_234150_469152_797A08E3 
+X-CRM114-Status: GOOD (  23.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,39 +99,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 29, 2021 at 09:48:16AM +0800, Zhiyong Tao wrote:
-> This series includes 1 patches:
-> 1.fix uart corruption issue when rx power off
+Hi Ikjoon,
+
+Just a ping.
+
+On Thu, 2021-07-22 at 14:38 +0800, Yong Wu wrote:
+> On Wed, 2021-07-21 at 21:40 +0800, Ikjoon Jang wrote:
+> > On Thu, Jul 15, 2021 at 8:23 PM Yong Wu <yong.wu@mediatek.com> wrote:
+> > >
+> > > To improve the performance, We add some initial setting for smi larbs.
+> > > there are two part:
+> > > 1), Each port has the special ostd(outstanding) value in each larb.
+> > > 2), Two general setting for each larb.
+> > >
+> > > In some SoC, this setting maybe changed dynamically for some special case
+> > > like 4K, and this initial setting is enough in mt8195.
+> > >
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > ---
+> [...]
+> > >  struct mtk_smi {
+> > > @@ -213,12 +228,22 @@ static void mtk_smi_larb_config_port_mt8173(struct device *dev)
+> > >  static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
+> > >  {
+> > >         struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> > > -       u32 reg;
+> > > +       u32 reg, flags_general = larb->larb_gen->flags_general;
+> > > +       const u8 *larbostd = larb->larb_gen->ostd[larb->larbid];
+> > >         int i;
+> > >
+> > >         if (BIT(larb->larbid) & larb->larb_gen->larb_direct_to_common_mask)
+> > >                 return;
+> > >
+> > > +       if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_LARB_THRT_EN))
+> > > +               writel_relaxed(SMI_LARB_THRT_EN, larb->base + SMI_LARB_CMD_THRT_CON);
+> > > +
+> > > +       if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_LARB_SW_FLAG))
+> > > +               writel_relaxed(SMI_LARB_SW_FLAG_1, larb->base + SMI_LARB_SW_FLAG);
+> > > +
+> > > +       for (i = 0; i < SMI_LARB_PORT_NR_MAX && larbostd && !!larbostd[i]; i++)
+> > > +               writel_relaxed(larbostd[i], larb->base + SMI_LARB_OSTDL_PORTx(i));
+> > 
+> > All other mtk platform's larbs have the same format for SMI_LARB_OSTDL_PORTx()
+> > registers at the same offset? or is this unique feature for mt8195?
 > 
-> when uart is used as a communication port with external device(GPS).
-> when external device(GPS) power off, the power of rx pin is also from
-> 1.8v to 0v. Even if there is not any data in rx. But uart rx pin can
-> capture the data "0".
-> If uart don't receive any data in specified cycle, uart will generates
-> BI(Break interrupt) interrupt.
-> If external device(GPS) power off, we found that BI interrupt appeared
-> continuously and very frequently.
-> When uart interrupt type is BI, uart IRQ handler(8250 framwork
-> API:serial8250_handle_irq) will push data to tty buffer.
-> The code path:
-> https://elixir.bootlin.com/linux/latest/source/drivers/tty/serial/8250/8250_port.c#L1917
-> mtk8250_dma_rx_complete is a task of mtk_uart_apdma_rx_handler.
-> mtk8250_dma_rx_complete priority is lower than uart irq
-> handler(serial8250_handle_irq).
-> if we are in process of mtk8250_dma_rx_complete, uart appear BI
-> interrupt:1)serial8250_handle_irq will priority execution.2)it may cause
-> write tty buffer conflict in mtk8250_dma_rx_complete.
-> So the spin lock protect the rx receive data process is not break.
+> All the other Platform's larbs have the same format at the same offset.
 
-All of this information should be in the changelog for the patch itself.
-There is no need for a "cover letter" for a single patch like this.
+In this case, Do you have some other further comment? If no, I will keep
+the current solution for this.
 
-Can you redo your 1/1 patch and add the above information to the
-changelog text and resend it as a v2?
+Thanks.
 
-thanks,
-
-greg k-h
+> 
+> > 
+> > > +
+> > >         for_each_set_bit(i, (unsigned long *)larb->mmu, 32) {
+> > >                 reg = readl_relaxed(larb->base + SMI_LARB_NONSEC_CON(i));
+> > >                 reg |= F_MMU_EN;
+> > > @@ -227,6 +252,51 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
+> > >         }
+> > >  }
+> > >
+> 
+> [...]
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
