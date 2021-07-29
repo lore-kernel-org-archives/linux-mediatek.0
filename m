@@ -7,81 +7,97 @@ X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E547C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B381C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:04:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 02C4561042
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 05:59:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 02C4561042
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 10BF061052
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 06:04:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 10BF061052
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kroah.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZNe9FJnvxfXYOMi2evDHlvrs8qBWaMGZiNK0thxGrJY=; b=rzOiKTz8riw40U
-	TebR3sXFYQ/a4vpdUCzThqXVPJNfcxH0wItpKOz0hON+B6vtMMdZD7UNfSBPtuZk0JFIL8vHT6ufz
-	DbOJtNdnMYRDShgk7TUxxvj2z2DlDfL+kPBpImj7q+UWaYrwZqkIPiSUQpGVaKqbR2FwoWvPjRmwZ
-	coLgerZZjXr9qq6dnhC9K9mCmhVOi0bOmqSLsQ1/7xQx5QQDO25ResBP4MwLyHxBvM7GmsFK+Y95t
-	RK6RZbI7H1fcBbsx+Opsd+B/vF0QU/Sp3vsZpZsJEuAubQU98gRtYygT5dG/MbW22lyqbKwzqtRss
-	vUGgJSg5SYUTf/EWBP6g==;
+	List-Owner; bh=Q0rA+VAbuqyioJWWMzL35C62qrcLWFGJbgqxYetLdJU=; b=cKZb8VxqT14tQT
+	sRBmRHYLXqwSPGPfOSTnJJl9wTRend7feyjuk2hCGgpDpwzvakuAgVF17Bw8saVEd9lhCirqeKnW3
+	HVTme1epykdrCyP+O4FGdT8smzKfA0AKGJs7+MI3DiRiO7A06HUbRohG2K4Jcp11MZ79Y9OVqk3ME
+	G/8nTfC4Y5PKZPMM5BEjPuFA0Cvb+wKBCSson33qsoo1U0ugYJW96UVvwjhPqtf+e0GphcfoPGCOY
+	WD8eyY7DnwlRMwnaZVSe2Rjt9mOYRUanFCXNtdQ3IEhBum5EXB0IuSK/yqMjKh4KzOAPvtyQIPfWv
+	efXeV/8IEDyK+UjS/9hA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m8z4M-003BdO-5n; Thu, 29 Jul 2021 05:58:58 +0000
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+	id 1m8z9Y-003DZt-Po; Thu, 29 Jul 2021 06:04:20 +0000
+Received: from new2-smtp.messagingengine.com ([66.111.4.224])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m8z48-003BbQ-Gs
- for linux-mediatek@lists.infradead.org; Thu, 29 Jul 2021 05:58:45 +0000
-Received: by mail-io1-xd2b.google.com with SMTP id l126so5534423ioa.12
- for <linux-mediatek@lists.infradead.org>; Wed, 28 Jul 2021 22:58:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QpDRWGFIK+Oln4PWA6QkkpVe40JSJ8McnR2s+RnmGkE=;
- b=mmEdZWH9QO6nTwu1Vap8c1ufo0haYzJ8+AoIt9koR+Oq6F9tciWkxYwiyOr/1kks/t
- +wKXMxFzePzvH3ebDbbHnYTXduaI5UNG9WqujvKrMq0oix+whigIbboTajwuo5SArw9r
- xA/96OufmolG8tE1YH1ypC4LDe3rKlEtDr8TE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QpDRWGFIK+Oln4PWA6QkkpVe40JSJ8McnR2s+RnmGkE=;
- b=Y/uW9fCeH10OsQQWIrA7BTJzrmUc2noVTkqw0pUea3NEnSk+nfIC82gVGSntw/4ipA
- u6CKqZJp2evnZBdYvN8yU5V6rgBNELnnm3pNqeXvHKb9npOuf6wtjRu4Jb3wInvMRcaq
- bj17L8yuc3rZ50nrZ0uMvsaczYD/eqxx40xxFQwI1kt4J1blS1waPDgwNL4WswyaoOwC
- WT/xKDnoTisg1lRTT+vYaT2bAplZ6fOlptwbH+4Ox9VEACKeXmyFTT9o8KnYpERaBnsM
- 1nt8w7zX/4bgGckP94oq7og44L8V/S+6dTcYvn39dXQsDdMxtuFLnSiD5+3YikQd/1eY
- WwHA==
-X-Gm-Message-State: AOAM532q6hJqmx/9SJ+gAsba7XspUZIDlZS53iZ19qmfad8T4mTSgCAe
- hJ1avu39qkW4ibOyeDdLnD6/M7C+G89TndnFIlIg7lj5+yQ=
-X-Google-Smtp-Source: ABdhPJyuGOXvEqwUIs3qU6ruO+/WOCDkqKZfKJc8oEGOVFJCqgihZ7D+ruxIRmlxDQfsEfCMhexgtinohW6+4bJCHhU=
-X-Received: by 2002:a6b:c9d3:: with SMTP id z202mr2669436iof.44.1627538323171; 
- Wed, 28 Jul 2021 22:58:43 -0700 (PDT)
+ id 1m8z9L-003DUS-4T; Thu, 29 Jul 2021 06:04:08 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 51A46580B39;
+ Thu, 29 Jul 2021 02:04:01 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute5.internal (MEProxy); Thu, 29 Jul 2021 02:04:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=oOA9yKbtZrclxkXt8oi2w9Qy4VI
+ sBkPwwH4Zip+yF2Q=; b=jlS/9w7SQZpmcYyil/QHB10d4j+LqD1BBnEeV4VpVbv
+ YZcHJh/Vq7gQ63HSRfNySSGszZLBGMRyX1HZCbzDmg98A2mDQDi9CL2eo/w+lBeZ
+ 9rpP82l3iy8NfhCPOD4RfvQs5zQGdY9wjNBUtjqYjF1AFeAJ3mEGZSxluDAgsqSX
+ YcJUHUl1XVpqLVSIG+P7e52LxOPCsz3M/NPpapeIjUKNYZmhv/lebtp/qOd2meNd
+ rEUU8cBd+lDKoxPGgYkpcbdhX3u974W8teP+KCvkJ4I1cT1OyQrtyR8pToEKAhuh
+ i8/SQExgJwN6Q2vtcdzs1yf3lKlMoM4xPjQPYuouStg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=oOA9yK
+ btZrclxkXt8oi2w9Qy4VIsBkPwwH4Zip+yF2Q=; b=ErtoLAJ54DmhkFR0iJpgqm
+ 9ERknF9Qyd1Esscd3Cy/Jh109VV7+BA16zm23A4kNc+Q5nhpTd1Ncu19h+a8bOWD
+ rss1BNt43SQWfUysU2ae1tPSYAAPOhpRkvnWjdcBx0BGuh2FKfDxgxCx3zdnnwTh
+ aGWwKrbBr67B4XNUUAitjbo+WQAYZEHhyBjlCKWFvyHQNYoCqwoPi6adNPoTuDfK
+ FIwj5ID3KnQ9Jh+cEuzw8s8bQZTusEXoKwn4PSHeNwV5LOZvcpQmTqRBkbNI73w9
+ MCEaOoM/fdDer11hxBw/9Ow43j2/r671/LX7PS3SiGFeNBJkqyY6uN7EAlJj1Gpg
+ ==
+X-ME-Sender: <xms:0EQCYbyYxtkJu4glF-PyF7Vmo43tTOkmvx7vk1EntVZdLMEsHu3C3Q>
+ <xme:0EQCYTQMDkRSNrRfWPG-hblj2PmnOTxNvFK7bUM5dB0oC_22euwHulzvy7WykXbDR
+ hcIb45NDz3qsA>
+X-ME-Received: <xmr:0EQCYVVCQuiiDMb-vlKynWBt1gusm3RY0N0qSpi8uTEjqcbSEDY8vYCjsGkVpQytv_Ajx3LMmq2fb0184BL90bN5-mEmdm76>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvtddrhedtgdelfecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghgucfm
+ jfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepfeefueduhe
+ egtddvueejueeiveelhedthfejudehteejgfegudffgedttdetheeknecuffhomhgrihhn
+ pegsohhothhlihhnrdgtohhmnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpe
+ hmrghilhhfrhhomhepghhrvghgsehkrhhorghhrdgtohhm
+X-ME-Proxy: <xmx:0EQCYVgIDo1Ew43r7hAFpqP8nmJpY5A5vd9QDYdocfnL7YV5_tY1qw>
+ <xmx:0EQCYdBh3Od3AAwJM5CHD0pPk69bSsf7bG7F1_I1lMG6ty4Onw0P6g>
+ <xmx:0EQCYeIhXcVY50E1ruC0Z8OVs-Gv2-qNTmHE6IJR-H-yWCCk6BNUhQ>
+ <xmx:0UQCYdansu-BxNZUR8BiGYppnOc_z2YNFJumpJ6Ouh-OROzART6GgQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 29 Jul 2021 02:04:00 -0400 (EDT)
+Date: Thu, 29 Jul 2021 08:03:58 +0200
+From: Greg KH <greg@kroah.com>
+To: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: timur@kernel.org, linux@armlinux.org.uk, alcooperx@gmail.com,
+ tklauser@distanz.ch, sean.wang@kernel.org,
+ srv_heupstream@mediatek.com, hui.liu@mediatek.com,
+ yuchen.huang@mediatek.com, huihui.wang@mediatek.com,
+ eddie.huang@mediatek.com, sean.wang@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org
+Subject: Re: [PATCH v1 0/1] Mediatek uart patch
+Message-ID: <YQJEzlb2NyxD1EpD@kroah.com>
+References: <20210729014817.11879-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-References: <20210727174025.10552-1-linux@fw-web.de>
- <CAJMQK-g8g5QJbBkU-A6th1VSWafxVv2fGtym+enQa_hDVaVoBw@mail.gmail.com>
- <97C4FA94-B28A-4F0E-9CD3-4E33B01BA353@fw-web.de>
- <CAJMQK-gQeMidjBZ1E=ReMmffC5G8oiFawB4Ey1PNb2ZWXw_1Bg@mail.gmail.com>
- <6BFE13A3-6A42-455E-BDF7-CD285CC6C66D@fw-web.de>
-In-Reply-To: <6BFE13A3-6A42-455E-BDF7-CD285CC6C66D@fw-web.de>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Thu, 29 Jul 2021 13:58:17 +0800
-Message-ID: <CAJMQK-iHfJWnGQRq299pZ9B9ABMsXPEkptyCrGtQqkEyc=HNFg@mail.gmail.com>
-Subject: Re: [PATCH] soc: mmsys: mediatek: add mask to mmsys routes
-To: Frank Wunderlich <linux@fw-web.de>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, CK Hu <ck.hu@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, lkml <linux-kernel@vger.kernel.org>, 
- stable@vger.kernel.org, Frank Wunderlich <frank-w@public-files.de>
+Content-Disposition: inline
+In-Reply-To: <20210729014817.11879-1-zhiyong.tao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210728_225844_636934_56BC09CD 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20210728_230407_290209_E05BA5E8 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,43 +114,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 29, 2021 at 1:54 PM Frank Wunderlich <linux@fw-web.de> wrote:
->
-> Am 29. Juli 2021 07:47:03 MESZ schrieb Hsin-Yi Wang <hsinyi@chromium.org>:
-> >On Thu, Jul 29, 2021 at 1:40 PM Frank Wunderlich <linux@fw-web.de>
-> >wrote:
-> >>
-> >
-> >>
-> > struct mtk_mmsys_routes {
-> >         u32 from_comp;
-> >         u32 to_comp;
-> >         u32 addr;
-> > +       u32 mask;
-> >         u32 val;
-> >  };
-> >mask is not the last element, and mmsys_mt8183_routing_table = {
-> >  {
-> >    DDP_COMPONENT_OVL0, DDP_COMPONENT_OVL_2L0,
-> >    MT8183_DISP_OVL0_MOUT_EN, MT8183_OVL0_MOUT_EN_OVL0_2L
-> >  }
-> >...
-> >so the mask and val will be wrong. CK, do you know what mask we should
-> >set for mt8183? Or can we just set a dummy 0 mask.
->
-> Ahhh...mt8183 has own mmsys-table and
-> i had only changed the default one,so
-> value is now missing because value is now the mask. I have used same order as
-> CK to avoid confusion and make it easier
-> to review.
-> Afaik you could use same value as value to reset same bits...did this in default routing table too.
->
-Should I create another patch based on this or can you help update the
-mt8183 table in this patch?
+On Thu, Jul 29, 2021 at 09:48:16AM +0800, Zhiyong Tao wrote:
+> This series includes 1 patches:
+> 1.fix uart corruption issue when rx power off
+> 
+> when uart is used as a communication port with external device(GPS).
+> when external device(GPS) power off, the power of rx pin is also from
+> 1.8v to 0v. Even if there is not any data in rx. But uart rx pin can
+> capture the data "0".
+> If uart don't receive any data in specified cycle, uart will generates
+> BI(Break interrupt) interrupt.
+> If external device(GPS) power off, we found that BI interrupt appeared
+> continuously and very frequently.
+> When uart interrupt type is BI, uart IRQ handler(8250 framwork
+> API:serial8250_handle_irq) will push data to tty buffer.
+> The code path:
+> https://elixir.bootlin.com/linux/latest/source/drivers/tty/serial/8250/8250_port.c#L1917
+> mtk8250_dma_rx_complete is a task of mtk_uart_apdma_rx_handler.
+> mtk8250_dma_rx_complete priority is lower than uart irq
+> handler(serial8250_handle_irq).
+> if we are in process of mtk8250_dma_rx_complete, uart appear BI
+> interrupt:1)serial8250_handle_irq will priority execution.2)it may cause
+> write tty buffer conflict in mtk8250_dma_rx_complete.
+> So the spin lock protect the rx receive data process is not break.
 
-Thanks
+All of this information should be in the changelog for the patch itself.
+There is no need for a "cover letter" for a single patch like this.
 
-> regards Frank
+Can you redo your 1/1 patch and add the above information to the
+changelog text and resend it as a v2?
+
+thanks,
+
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
