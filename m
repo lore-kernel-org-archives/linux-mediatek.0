@@ -2,80 +2,77 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A56D7C4320A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:04:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1451C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:12:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EFA560F4A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:04:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6EFA560F4A
+	by mail.kernel.org (Postfix) with ESMTPS id 74DB760EBB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:12:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 74DB760EBB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dNDT9rhH4fAn3qIW9+ZgkvhJoI3CKxCfTeJdf+PEqkE=; b=wiKapraVQqrM71
-	8pzM6n8PTTE4m9JRbeieqFdL9/+7uAtlGSNLneU57GXz0Yj7lxWA7St47fWDLfkYcjWoNLurednEj
-	TvGDsbS6/Aies+sy58XGGRTJf0/E8dPFStg2LvlY5f/I6UWzqDfm8EmLLdRMwkuyuYHJanS6zPTnB
-	C6Gg/iwA9LbovfIuDOo7GqXCRGdl2N0Ty7fNHEaAyBVXTLp/zNg1Lxf5awwcUP3sc5effrdGuR1cN
-	vDf55XVeTSovLJsGvvBCQMoXbjHf5m4Zxm0ING/2aavxTIQQZMKRGwlr3cG71MKucUPkBM65ot7Y7
-	0CGtxtZsdqCz3gqEbECg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Jvk11rhqeFoyZLnUp+c0ssF+3SvJgwHUqYLglSTU+eU=; b=jHfk6OIam/AD6b
+	OmsX4dsrSUFKRVY7fDoff2B+6lGrqHUSXJen+YybFBAWfs4e1PTbfODnb1LTQub3SwfvbFeNGFP+6
+	vbEI6FBPtmNSE/aHKjyOafQGRX0y5yRJl6lh2kPpgkItTxbP9lHpw7xAQ1oki0lHAHYRF5u/gMRpU
+	bfGg+6wSULV+Do+JkmcHnhymo++2wYLIUno8VedApp4lpT7QPyqkWrz2l8QetLvd3X8ckrHOpFRx5
+	Bhw05otnnzLJXG+JQt3NlpXqTmY5JQC3zLl7zP3G7eu57SS+b7+BJFerfFjNGvSlAfu8XaWHT0pDu
+	T8t7LTWvpgUlMbgvU9Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m98WI-004vv9-7s; Thu, 29 Jul 2021 16:04:26 +0000
+	id 1m98e4-004znZ-0b; Thu, 29 Jul 2021 16:12:28 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m98RQ-004seQ-S3; Thu, 29 Jul 2021 15:59:26 +0000
-X-UUID: f5698c0d1ad844afa98908b8fadf58df-20210729
+ id 1m98aI-004xwB-Mo; Thu, 29 Jul 2021 16:08:36 +0000
+X-UUID: 05886c39351c428e86c4d7c2f01da2fe-20210729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=FmMPo1YNUA+2iUSxBL6ChqAQr9+S6f3vHwPsCvfChoo=; 
- b=IPdNOmnVtffvAZPsvYRXBno+LDszfNichAqebQd6xhHt5wjPUQeF7ofMuRkkaJLmL3mmaa23XlV4u8D44MO9A/sZjaWPecFBCEVHnWnUIu0yHLmW2n8J37wBQRGTU36zpNqkLGW/uUKVUrJMfnyMKJ1ebuAYzE23HM9sUutPN14=;
-X-UUID: f5698c0d1ad844afa98908b8fadf58df-20210729
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=YJawrhMfhjoeWOVjOR9Sn5Nr8LaAfnsXui/zqiH9VVc=; 
+ b=TkOW2EsfxuGUQoSKWxTyAaA3dtXQppgxdlGMEQrz01As6XYBr0lSVMTtezsI6DQRzUQJd9rumIbcuJCZtgkpkxuBaPiBhDOuAfkSj3jsu5/n/bVbtHt//KEn8whR9EbsnbdLQOlcBQ3sk84k2PI2tXbO0LCdVz6NxIx6ccfpFWM=;
+X-UUID: 05886c39351c428e86c4d7c2f01da2fe-20210729
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1335201524; Thu, 29 Jul 2021 08:59:20 -0700
-Received: from MTKMBS32N2.mediatek.inc (172.27.4.72) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 08:59:19 -0700
+ with ESMTP id 1858643960; Thu, 29 Jul 2021 09:08:26 -0700
+Received: from MTKMBS01N1.mediatek.inc (172.21.101.68) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 09:08:24 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS32N2.mediatek.inc (172.27.4.72) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 23:59:16 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 29 Jul 2021 23:59:15 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@gmail.com>
-CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <rocco.yue@gmail.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: Re: [PATCH net-next] net: ipv6: add IFLA_RA_MTU to expose mtu value
- in the RA message
-Date: Thu, 29 Jul 2021 23:42:51 +0800
-Message-ID: <20210729154251.1380-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <c4099beb-1c22-ac71-ae05-e3f9a8ab69e2@gmail.com>
-References: <c4099beb-1c22-ac71-ae05-e3f9a8ab69e2@gmail.com>
+ mtkmbs01n1.mediatek.inc (172.21.101.68) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Jul 2021 00:08:16 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 30 Jul 2021 00:08:16 +0800
+From: Hector Yuan <hector.yuan@mediatek.com>
+To: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rafael
+ J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, "Rob
+ Herring" <robh+dt@kernel.org>, <devicetree@vger.kernel.org>
+CC: <linux-kernel@vger.kernel.org>, <wsd_upstream@mediatek.com>,
+ <hector.yuan@mediatek.com>
+Subject: [PATCH v13] cpufreq: mediatek-hw: Add support for Mediatek cpufreq HW
+ driver
+Date: Fri, 30 Jul 2021 00:08:09 +0800
+Message-ID: <1627574891-26514-1-git-send-email-hector.yuan@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 84ED98E54976BBFA2B0C83D314996E8EF6CAE2511184AF380DDEB250A244991C2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_085924_978701_4F9959FE 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20210729_090834_829809_D8A05E4A 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,53 +89,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-07-29 at 08:41 -0600, David Ahern wrote:
-> On 7/29/21 3:02 AM, Rocco Yue wrote:
->> diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
->> index 4882e81514b6..ea6c872c5f2c 100644
->> --- a/include/uapi/linux/if_link.h
->> +++ b/include/uapi/linux/if_link.h
->> @@ -347,7 +347,7 @@ enum {
->>  	 */
->>  	IFLA_PARENT_DEV_NAME,
->>  	IFLA_PARENT_DEV_BUS_NAME,
->> -
->> +	IFLA_RA_MTU,
->>  	__IFLA_MAX
->>  };
->>  
->> diff --git a/include/uapi/linux/ipv6.h b/include/uapi/linux/ipv6.h
->> index 70603775fe91..3dbcf212b766 100644
->> --- a/include/uapi/linux/ipv6.h
->> +++ b/include/uapi/linux/ipv6.h
->> @@ -190,6 +190,7 @@ enum {
->>  	DEVCONF_NDISC_TCLASS,
->>  	DEVCONF_RPL_SEG_ENABLED,
->>  	DEVCONF_RA_DEFRTR_METRIC,
->> +	DEVCONF_RA_MTU,
->>  	DEVCONF_MAX
->>  };
->>  
-> 
-> you do not need both IFLA and DEVCONF. Drop the DEVCONF completely. IFLA
-> attribute can be used for both inspection and notification on change.
+The CPUfreq HW present in some Mediatek chipsets offloads the steps necessary for changing the frequency of CPUs. 
+The driver implements the cpufreq driver interface for this hardware engine. 
 
-Hi David,
+From v12 to v13, there are two modifications.
+1. Move related_cpus function to common place, so all performance-domain cpufreq driver can refer.
+2. Make cpu resource init to each policy rather than per-cpu
 
-Thanks for your review.
+From v11 to v12, there are two modifications.
+1. Based on patchset[1], align binding with scmi for performance domain(latest version).
+2. Shrink binding example wording. 
 
-Because the purpose of this patch is for userspace to correctly read the
-ra_mtu value of different network device, if the DEVCONF is completely dropped,
-does that mean I can add the "ra_mtu" member in the "struct net_device" .
+From v8 to v9, there are three more modifications.
+1. Based on patchset[2], align binding with scmi for performance domain.
+2. Add the CPUFREQ fast switch function support and define DVFS latency.
+3. Based on patchser[3], add energy model API parameter for mW.
 
-> Also do not add mailing lists that cause bounces. Specifically, you tend
-> to add wsd_upstream@mediatek.com as a cc and every response to you
-> generates a bounce message for this address.
+From v7 to v8, there are three more patches based on patchset v8[4].
+This patchset is about to register power table to Energy model for EAS and thermal usage.
+1. EM CPU power table
+- Register energy model table for EAS and thermal cooling device usage.
+- Read the coresponding LUT for power table.
+2. SVS initialization
+- The SVS(Smart Voltage Scaling) engine is a hardware which is
+  used to calculate optimized voltage values for CPU power domain.
+  DVFS driver could apply those optimized voltage values to reduce power consumption.
+- Driver will polling if HW engine is done for SVS initialization.
+  After that, driver will read power table and register it to EAS.
+- CPUs must be in power on state when doing SVS. Use pm_qos to block cpu-idle state for SVS initializing.
+3. Cooling device flag
+- Add cooling device flag for thermal
+[1]  https://lore.kernel.org/linux-devicetree/20210517155458.1016707-1-sudeep.holla@arm.com/
+[2]  https://lore.kernel.org/lkml/20201116181356.804590-1-sudeep.holla@arm.com/
+[3]  https://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm.git/commit/?h=linux-next&id=c250d50fe2ce627ca9805d9c8ac11cbbf922a4a6
+[4]  https://lkml.org/lkml/2020/9/23/384
 
-Thanks for pointing out the problem, I will remove it from the mailing list.
 
-Best Regards,
-Rocco
+Hector.Yuan (2):
+  dt-bindings: cpufreq: add bindings for MediaTek cpufreq HW
+  cpufreq: mediatek-hw: Add support for CPUFREQ HW
+
+ .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   70 ++++
+ drivers/cpufreq/Kconfig.arm                        |   12 +
+ drivers/cpufreq/Makefile                           |    1 +
+ drivers/cpufreq/mediatek-cpufreq-hw.c              |  357 ++++++++++++++++++++
+ include/linux/cpufreq.h                            |   39 +++
+ 5 files changed, 479 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+ create mode 100644 drivers/cpufreq/mediatek-cpufreq-hw.c
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
