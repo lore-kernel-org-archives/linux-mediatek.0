@@ -2,96 +2,79 @@ Return-Path: <SRS0=Fikf=MV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2978AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE0BFC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:08:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFC7D600CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 16:51:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EFC7D600CD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A039060F01
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Jul 2021 17:08:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A039060F01
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hX1mZA0p/AZscnkZLcnDu2ruXG2/vqF18QgvFocRnqY=; b=yiYb6ls96vL7pg
-	k93EAuBUczJcMWf/Yw92uA28M68kU3FnyQdKs15wn35TPz+M1HDru3jGk7dq77WdRstdI/K3eXLbR
-	iAJLPCQebeRpGhLEXwJpJEHYKGOd9l9o6HPwa7141pDzDFWn1LAeNEpLtvugOuVlphtiOVFRrnfAe
-	NxgvJzfV0bgYjFTyVKL1eoU9rW51562PatRGlPNlj9VUouFggzXaAHdFH/1av/2M/4Vqn1PH2NR36
-	aJxIBXHTGq0vXwb55II5kn4EDkvC8l0Lq8w4wfn9sf0Vp4CcB7xwMvQMgfXIKQDPwa5G34wru1J8j
-	ggn+zow2RwJPDstjpQrw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mT4eT+6CMeNAWV1fLNQWspaCLjPtiB9VtzsHnuFtVmc=; b=Fzoe0KhV+XJcmq
+	sFUZUi3m7zMABeQubt/56Ekk/6Pl/0khwXNxlhhZ5iFTXh0i7XLlrijVoBL5Pjozzsv/IU2SkRWOU
+	pzA/9Z637MZ9A2a7vHumaWtJvnRg0KDpV3/7yu1XHQOmWA9kBhp8QUkDRvXsTgh0wB0e99ASnEuKN
+	onY/8UJawNDFRpuB6jKiQEj/5xbJtWHfF/ujwvNvS2udZhSD+/DmKV55s/JJtb70Z751Z9PX0b+u0
+	RWcaHEwCvazEako0/jI2nn+rcCvdDHv4NQQ4Cb1GuOgmB/SlEsx8QYktdrIA9OZ7aPfxzJQziotvq
+	72DkLZZPu012bZ1MSBHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m99F7-0059Fk-NQ; Thu, 29 Jul 2021 16:50:45 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1m99W9-005EQ3-5C; Thu, 29 Jul 2021 17:08:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m99Et-0059Bh-0w; Thu, 29 Jul 2021 16:50:33 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id x90so9068941ede.8;
- Thu, 29 Jul 2021 09:50:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ge2c2dD+EBmDmaGN5nupteoqdj28OTIbcgEuzsesBTw=;
- b=qL2Rj3JukTZAxtcWyetmk0LTL3hs8/mi9vn+JdDmSkmyeRjbMqR9jXg8gFWsv6kGdz
- O0mVq9BBHW+9GVS+YDVrhRf0mXLlO5vCDryASFucgvyh0dkAlvrfzd/ieoXEO75YfthV
- P3NThxNT4ZFkznm+Tkruy0vS3BJakX4rGnzOqjRuyu1qC9V8Ydx9GUQnjJbXIy+Y6DOo
- Jwx+w1uqo7G9P/fIIdEpYI81sGJQaMfU4fn1MlNIs6Uh8wlE1YenINqJN6SFKeF6cmN6
- l1l0o1orLp4On4m4sET2NN461fgFveISmPlIFkRWIAH9vXEz16WarCNbpNHwG+kNT+SC
- a2oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ge2c2dD+EBmDmaGN5nupteoqdj28OTIbcgEuzsesBTw=;
- b=S9cyyWjON8Pg2NqD2u3qTfWwqXrk5uDmyPE5gW5Ny7dVhuSwhZgJ9ncTaaQXAF1Jju
- Qm6BhYCsQ2A3y5rGFMBgqKFRzxrejBVJ6/WjUNg7+Bd3Ml8h8poAqy48bvcxjtTCz/ey
- H+FGwK5HQohSKAG4mbzn8pUvIQ1sJwQni+7Nh63n4+3nayFItw3g17CKwDF6hR1zM2ns
- yszVFHxexsWVe2k90ZhUTLcQShDGo8rw9PPRlYi6ffLgHZIWAhDE5otV1EMHYRA3SR9e
- 2UOmfNKDkbGrquSCFD9nmJCD35RN4St79W5aij0ih96jBPCnicl4KYQDezVMoMCREbQm
- KePw==
-X-Gm-Message-State: AOAM531hZnEbECkxuVrmfPEeELGsQFsPn0teSDmFYyZWA7iUlgTmIXYT
- BwJez/wCy/TszChxCaNx+Ys=
-X-Google-Smtp-Source: ABdhPJw3QV3+/J7tiE+JZbeIL/dUyVkeZkd4O2CYoDmctiP9takCqIOmAAt5RBeHoxF+m8qK2doyCw==
-X-Received: by 2002:a05:6402:d63:: with SMTP id
- ec35mr7069658edb.347.1627577429163; 
- Thu, 29 Jul 2021 09:50:29 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id la23sm1155008ejc.63.2021.07.29.09.50.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 09:50:28 -0700 (PDT)
-Date: Thu, 29 Jul 2021 19:50:27 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev <netdev@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>
-Subject: Re: [RFC net-next 2/2] net: dsa: mt7530: trap packets from
- standalone ports to the CPU
-Message-ID: <20210729165027.okmfa3ulpd3e6gte@skbuf>
-References: <20210728175327.1150120-1-dqfext@gmail.com>
- <20210728175327.1150120-3-dqfext@gmail.com>
- <20210729152805.o2pur7pp2kpxvvnq@skbuf>
- <CALW65jbHwRhekX=7xoFvts2m7xTRM4ti9zpTiah8ed0n0fCrRg@mail.gmail.com>
+ id 1m99Vr-005EE5-D0; Thu, 29 Jul 2021 17:08:05 +0000
+X-UUID: 10f8f8c53a8b47e685dc4d17ad4fb59b-20210729
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=J1/H0UedCcBc7kSIZEZcCT2NB9kcrb8ZNqwPpJwCwcE=; 
+ b=n2imaTetrTe3f0SyYjhTJ9qFKbmmgXzmBnApUJ+07wdtsPecUQAAC5aX+tqO4VC+7agbbaIYJFMq9IzJ3VH0TTlqMqLBH80q6n/ikmDnnde0i+ZBrzca4yCC9Aoqw9Lz76tLJNfQ2wcNYhSjqaG2SU1Fn0N95QhLc0Wfh+vX308=;
+X-UUID: 10f8f8c53a8b47e685dc4d17ad4fb59b-20210729
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2050920844; Thu, 29 Jul 2021 10:07:42 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 10:07:40 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Jul 2021 01:07:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 30 Jul 2021 01:07:39 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, <fshao@chromium.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ <hsinyi@chromium.org>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
+Subject: [PATCH v5 0/6] Add Mediatek Soc DRM (vdosys0) support for mt8195
+Date: Fri, 30 Jul 2021 01:07:31 +0800
+Message-ID: <20210729170737.21424-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CALW65jbHwRhekX=7xoFvts2m7xTRM4ti9zpTiah8ed0n0fCrRg@mail.gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_095031_113300_6B72298F 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20210729_100803_511929_2DB7D8E2 
+X-CRM114-Status: GOOD (  13.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,40 +91,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 30, 2021 at 12:11:45AM +0800, DENG Qingfang wrote:
-> On Thu, Jul 29, 2021 at 11:28 PM Vladimir Oltean <olteanv@gmail.com> wrote:
-> > Actually, on second thought...
-> > If MT7530 supports 8 FIDs and it has 7 ports, then you can assign one
-> > FID to each standalone port or VLAN-unaware bridge it is a member of.
-> 
-> The problem is, there is no way to do that..
-> 
-> According to the reference manual:
-> Filter ID is learned automatically from VLAN Table. 0 is the default value if
-> VLAN Table is not applicable.
-> 
-> So it is always 0 in VLAN-unaware mode.
+The hardware path of vdosys0 with eDP panel output need to go through
+by several modules, such as, OVL, RDMA, COLOR, CCORR, AAL, GAMMA,
+DITHER, DSC and MERGE.
 
-I have the MT7621 GSW, and sadly this reference manual isn't the best in
-explaining what is and what is not possible. For example, I am still not
-clear what is meant by "VID1" and "VID0". Is "VID1" the inner (customer)
-VLAN tag, and "VID0" the outer (service) VLAN tag, or "VID1" means the
-actual VLAN ID 1?
+Change in v5:
+- add power-domain property into vdosys0 and vdosys1 dts node.
+- add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
 
-And the bits 3:1 of VAWD1 (VLAN table access register) indicate a FID
-field per VLAN. I cannot find the piece that you quoted in this manual.
-But what I expect to happen for a Transparent Port is that the packets
-are always classified to that port's PVID, and the VLAN Table is looked
-up with that PVID. There, it will find the FID, which this driver
-currently always configures as zero. In my manual's description, in the
-"Transparent Port" chapter, it does explicitly say:
+Change in v4:
+- extract dt-binding patches to another patch series
+  https://patchwork.kernel.org/project/linux-mediatek/list/?series=519597
+- squash DSC module into mtk_drm_ddp_comp.c
+- add coment and simplify MERGE config function
 
-	VID0 and VID1 will store PVID as the default VID which is used
-	to look up the VLAN table.
+Change in v3:
+- change mmsys and display dt-bindings document from txt to yaml
+- add MERGE additional description in display dt-bindings document
+- fix mboxes-cells number of vdosys0 node in dts
+- drop mutex eof convert define
+- remove pm_runtime apis in DSC and MERGE
+- change DSC and MERGE enum to alphabetic order
 
-So I get the impression that the phrase "the VLAN table is not applicable"
-is not quite correct, but I might be wrong...
+Change in v2:
+- add DSC yaml file
+- add mt8195 drm driver porting parts in to one patch
+- remove useless define, variable, structure member and function
+- simplify DSC and MERGE file and switch threre order
 
+jason-jh.lin (6):
+  arm64: dts: mt8195: add display node for vdosys0
+  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+  drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+  drm/mediatek: add DSC support for mt8195
+  drm/mediatek: add MERGE support for mt8195
+
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 112 ++++++++
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 277 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  62 +++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  32 ++-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ drivers/soc/mediatek/mt8195-mmsys.h         |  96 +++++++
+ drivers/soc/mediatek/mtk-mmsys.c            |  11 +
+ drivers/soc/mediatek/mtk-mutex.c            |  93 ++++++-
+ include/linux/soc/mediatek/mtk-mmsys.h      |   9 +
+ 13 files changed, 706 insertions(+), 4 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+ create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
