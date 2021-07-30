@@ -2,97 +2,81 @@ Return-Path: <SRS0=u2zk=MW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04BF5C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 19:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75F0DC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 22:28:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C459560F26
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 19:31:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C459560F26
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 30E4C60F48
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 22:28:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 30E4C60F48
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e1gG9rZ7mTjHkssXpOXMco1DrkR3Z1AwpmKERXSekvk=; b=vDyXWw6LOx89U5
-	dOva8Lz/oKT7Mk4+4rXMbAFf3AhWXnywU+c4xl1sbfGFkiyky9wp8R1z1NfFGxI8Bidtc0XOuioty
-	Vw5tEduTNqQDHS4LYuKBk9rZKLdEhWDcSyLZe86qHBUrFCGvam+lvwGoS/NjG471eOZuE/hETDLwl
-	nJfIj9ksNoOmM5MHekliYvUqwCPMyx2f1aYv3QErTiJqey7QT3vWXJKBzNFNy3ktTcEbAZeQoW1Bo
-	THNTGhni8muY33QJucMc0k1Fab284aWK+GKinnWEja8wuVMHyzRuRfB1cPBoLwaEMcJXZevK7rltR
-	+/RObY3fDfghVwIgfWqQ==;
+	List-Owner; bh=yIwK/hXMcHTkCCNbzx+Nvj72v3W8fyOLmqNkANuLchs=; b=dnQEQ/YKX6CwBz
+	Lwcu1UHZINB+6LvZNA/QaAKsjz1rGQ8Ve2YuEGnEZ2tKAcedXyButkDuOn+InbVKifHL7rwRx2mWn
+	dmblN+I55unzuHQHhIOd7Hu0pUUmL8znMUiPXnzzKbMGOcDoDhwxr7oeTiQQ3Vw0pwD/VPxAjjROH
+	dYqCJtHbCU17u1brBuKuNCIGtMFB7PogBMla5Tt2jwPhHaSlRdZI8tYj884Q2b1GdWfONzEBaLBpv
+	6P4l40MOm9b4GKzOYmss3ax4qtCaDYp5AHiwI1WKfsZbeFCFglLcEU7XDB1opl8ZbjBtWRmYCH6zd
+	l/vifSo6ql6hKpFUSR/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9YDz-00A66z-HM; Fri, 30 Jul 2021 19:31:15 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1m9azU-00AQBN-PC; Fri, 30 Jul 2021 22:28:28 +0000
+Received: from mail-io1-f41.google.com ([209.85.166.41])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9YDk-00A5zm-5s; Fri, 30 Jul 2021 19:31:01 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id y7so12425472eda.5;
- Fri, 30 Jul 2021 12:31:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=zxmFnKmrbzC01vibbcZbCwfThDgwyJDKO9mjaDJdf4Q=;
- b=klZjUNFrmqh5cLgy/VXo6hou9+QrP5pePgd9SLL+4SDgA3y6GAOaSxd+DfADIerLWZ
- quXYnuiIrIqh52hZ2AwKn4e7TF5llnKebULpa7ny0C/lliSiZwdkmvesZOBefQzsHbKb
- MntKTtjxs/ydSHgQ8nRuahv1ZgfCgLCA+WlI9Alrkv6bCuxdhGd93q/XeT/rR7DG82Qg
- LquVD2d8Tmb/TkN1QnmaMqV1MWEagEOoALqLZpy0t25N6Mdu5iVGbaRLuMagnoqg/f7U
- CSKU089Is04zsMwWdtCGOMxb9JwJ+sOAUfTUmMvwcI+kjO2+0iVgVv5cc3Ovc3rAXe8m
- Ze9Q==
+ id 1m9azH-00AQ8h-A0; Fri, 30 Jul 2021 22:28:16 +0000
+Received: by mail-io1-f41.google.com with SMTP id r6so4922266ioj.8;
+ Fri, 30 Jul 2021 15:28:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=zxmFnKmrbzC01vibbcZbCwfThDgwyJDKO9mjaDJdf4Q=;
- b=UvIcOrE5gbZZQe48X8JQ+1Z8U9gi75bLKUTbLZNUMYQAv7avczo+pBOCYaz7dGvey8
- GXcVcQIdsFW1iNKKXlj8Mj7/F9bTM95Wy3l37cmqN2k1PvSYQuj8LvqHdWtt4JarRR98
- KiSAG7bttnLzGvoL6c5TBj4k4uIflBzdxHxvG6BHw1rurp+o65Muu3/dVKoC6YGz7kdQ
- 5HB9KDx/qz5B8QxOBXbwy44OpcegCNIe56kAHZR5q27s1pFpwReRlex9HrodMbpgNwg/
- Js/j9BuNh/rr5kIe+MqThwvP2+72GnUg9qyJD4kqKmz9eneqphcj4qtNrTIrYC24Hg3Y
- yzNA==
-X-Gm-Message-State: AOAM530Xf8IydnRoyX+/1jR1pHGyeiNomIzCe1lZQBtB+/dytLLUEKu/
- IvwHbo5h6NhfVbXv1Pqniwg=
-X-Google-Smtp-Source: ABdhPJwmaQpRc62eWEILeOk95XVTegm2+paD53ybnJ7M0WRyCXpfkE7Y+duCEOXbhFOpsyQ6lXHEpw==
-X-Received: by 2002:a50:c092:: with SMTP id k18mr2544420edf.361.1627673458891; 
- Fri, 30 Jul 2021 12:30:58 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id b5sm886286ejq.56.2021.07.30.12.30.57
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=1SioxWYOB4GKQF75otjmPAgYQGJ4juMB4TymylBvulE=;
+ b=YsbmRPIVf7Ex0YTMM/0yEacStJc4Beqr8x8/69457QnF4asFWMuGQRVkzwduExEMCP
+ qrq9yJ1cT8GAn65kgHdvQfwC5hnDiVA+w83qeDpstnatNYZmzvd3XaS3FmMphjmSBgW1
+ +8n+gi0RaV3k5OQCNn80Zg9dFlpiNvXt8+ZkgdZOe6B5Ecd4DoUDezl3piomMzSL1XuK
+ M5q6AAwjLJz+yiBUU2+/b3EmPbmGgUnPNEx77XZn+7xUPMEn9B/YuLhW8HfnqwGxo8ed
+ zKeI4ezqWdUwZxcAWnEKV0402N3RteQJ3QJhjOAa+Laob1ggaYVY4nyoGlR0iDLUghxi
+ 5X9g==
+X-Gm-Message-State: AOAM533eIp3Bu3lrCOHnEIX0XqHgxZAs2IqZJd8KLQ9DxDwqJZxK7u6L
+ vk/3Hr9lJHtFw/cGmeoxVw==
+X-Google-Smtp-Source: ABdhPJw92Pxgc45lpYhnZL98mHP5QmwqnkzlX6tQ6SiGz6QcI3EsfiGGEi2BDOlTWCaMN4QVg4tTIA==
+X-Received: by 2002:a02:90cb:: with SMTP id c11mr3909371jag.53.1627684092766; 
+ Fri, 30 Jul 2021 15:28:12 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id q1sm1887882ioi.42.2021.07.30.15.28.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Jul 2021 12:30:58 -0700 (PDT)
-Date: Fri, 30 Jul 2021 22:30:57 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ Fri, 30 Jul 2021 15:28:12 -0700 (PDT)
+Received: (nullmailer pid 3442792 invoked by uid 1000);
+ Fri, 30 Jul 2021 22:28:10 -0000
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Andy Teng <andy.teng@mediatek.com>,
+ Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC net-next 1/2] net: dsa: tag_mtk: skip address learning on
- transmit to standalone ports
-Message-ID: <20210730193057.k7su2njgdakhsnah@skbuf>
-References: <20210728175327.1150120-1-dqfext@gmail.com>
- <20210728175327.1150120-2-dqfext@gmail.com>
- <20210728183705.4gea64qlbe64kkpl@skbuf>
- <20210730162403.p2dnwvwwgsxttomg@skbuf>
- <20210730190020.638409-1-dqfext@gmail.com>
- <20210730190706.jm7uizyqltmle2bi@skbuf>
- <20210730192555.638774-1-dqfext@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210730192555.638774-1-dqfext@gmail.com>
+ Enric Balletbo Serra <eballetbo@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>
+In-Reply-To: <20210730120937.1435204-3-hsinyi@chromium.org>
+References: <20210730120937.1435204-1-hsinyi@chromium.org>
+ <20210730120937.1435204-3-hsinyi@chromium.org>
+Subject: Re: [PATCH v2 3/3] dt-bindings: mediatek: convert pinctrl to yaml
+Date: Fri, 30 Jul 2021 16:28:10 -0600
+Message-Id: <1627684090.548356.3442791.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210730_123100_288273_BA48BCD1 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20210730_152815_388146_91F09A60 
+X-CRM114-Status: GOOD (  14.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,29 +88,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 31, 2021 at 03:25:55AM +0800, DENG Qingfang wrote:
-> On Fri, Jul 30, 2021 at 10:07:06PM +0300, Vladimir Oltean wrote:
-> > > After enabling it, I noticed .port_fdb_{add,del} are called with VID=0
-> > > (which it does not use now) unless I turn on VLAN filtering. Is that
-> > > normal?
-> > 
-> > They are called with the VID from the learned packet.
-> > If the bridge is VLAN-unaware, the MAC SA is learned with VID 0.
-> > Generally, VID 0 is always used for VLAN-unaware bridging. You can
-> > privately translate VID 0 to whatever VLAN ID you use in VLAN-unaware
-> > mode.
+On Fri, 30 Jul 2021 20:09:37 +0800, Hsin-Yi Wang wrote:
+> Convert mt65xx, mt6796, mt7622, mt8183 bindings to yaml.
 > 
-> Now the issue is PVID is always set to the bridge's vlan_default_pvid,
-> regardless of VLAN awareless.
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+> v1->v2:
+> - fix comments in v1.
+> - fix mt7622 where groups is not required for conf node.
+> ---
+>  .../pinctrl/mediatek,mt65xx-pinctrl.yaml      | 206 ++++++++
+>  .../pinctrl/mediatek,mt6797-pinctrl.yaml      | 173 +++++++
+>  .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 416 +++++++++++++++
+>  .../pinctrl/mediatek,mt8183-pinctrl.yaml      | 228 ++++++++
+>  .../bindings/pinctrl/pinctrl-mt65xx.txt       | 156 ------
+>  .../bindings/pinctrl/pinctrl-mt6797.txt       |  83 ---
+>  .../bindings/pinctrl/pinctrl-mt7622.txt       | 490 ------------------
+>  .../bindings/pinctrl/pinctrl-mt8183.txt       | 132 -----
+>  8 files changed, 1023 insertions(+), 861 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6797-pinctrl.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+>  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+> 
 
-Then change that, sja1105 and ocelot/felix are good examples of how to
-set a pvid in VLAN-unaware mode that is independent of what the bridge
-asks for.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.example.dts:21:18: fatal error: dt-bindings/pinctrl/mt8183-pinfunc.h: No such file or directory
+   21 |         #include <dt-bindings/pinctrl/mt8183-pinfunc.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:380: Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1419: dt_binding_check] Error 2
+\ndoc reference errors (make refcheckdocs):
+Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+MAINTAINERS: Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
+MAINTAINERS: Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
+
+See https://patchwork.ozlabs.org/patch/1511632
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
