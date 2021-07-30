@@ -2,101 +2,90 @@ Return-Path: <SRS0=u2zk=MW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CAB9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 12:07:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFC90C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 12:10:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0840C60F00
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 12:07:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0840C60F00
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id ADA6E61042
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 12:10:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ADA6E61042
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8oNQJuqeGLiVNuqNmgdfsNxP5Qv52/VSX+cKARQP9SE=; b=GXBanW/OOPIQDy
-	44C9hc3jRbLONUBQ1OR/qPMm5lAvT6rrkM36HNgdvQq8cUiFdRXB8aFvRL9Rxo+EpwkbHV8Iqxu63
-	ABFC5r+ABGqPK7apubBE1ZNQWgap7UhkzHcFpyn7tQhIPzX1bmgq8E6TJQodoZGN+lEkEjgCmfbHT
-	LqKWaICD48p02bpbVYuQZFLXKd5LKp8/yc5zxO4ZWyJPHp4R5EQAz/ZPyKitkVxktGrVf53zt/7jf
-	QTD0l6/g31cnDDonOszX6Wm8KHBXO3zTWagvWjRqqO5z4gaKhtGqPxGb07gOwB1SZ9Ov3LMEOiIGQ
-	QOdwQyoect8BuncXhbjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GlDQ7SwhZaQbrYQQ9pY3mCHIK9BGUmvjKexQQNCE+5k=; b=K5v1N7Vqz9KAlm
+	jF4L2rHgW/irukCLK1d5rQ6NdVIgezoCv1farjQC5h3C0fgiMuplWO8IujT+7LuGd1agFzqph1HC7
+	BCZHabjYTn6qAw985ZI875OVZn03OpS7Y0ICe3ry8QUChgVvbk8VND6Ad2+0gwq+ueB2egFyVShlO
+	X5sQX1OFTD6Fh7Rj8onUWFmaLCgt4LjUwC2nJWpm14dLr8QM2GBXNN0zWw4icW3m8r+mwRoeJbjOz
+	NDBKgRKflY2LApowWCCxPhGnNmXpITnbV4WFMCakYuNVNPSpbgCb4G0/SWjnZvrZnpgjSQdaY07jf
+	we2Xm+ibZ531U+oJCoXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9RIB-008Uvf-W3; Fri, 30 Jul 2021 12:07:08 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1m9RL3-008VcE-52; Fri, 30 Jul 2021 12:10:05 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9RI5-008Utz-Pl; Fri, 30 Jul 2021 12:07:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1627646799;
- bh=FOQ3kf7nC91N2pAcyJy+ukr7C27FR3nQ3DekDqj8uEI=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=SlQlS2e/5cr5IQ2fa8QR7A4b+mf+myEnxGLmMZJMRsxc7C6QbaN6sxtPbeJ9DKjcQ
- KTKVbDH/GfqMcD9V/ooYsKa4KA0Vbhdx9noBM6+LD71cRA+6UXJPVBriHDvNN0DmKI
- yyEtUDQVHUJ5U48CFjKqPjhfuocD8p842IRX/jRs=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.152.200] ([217.61.152.200]) by web-mail.gmx.net
- (3c-app-gmx-bs05.server.lan [172.19.170.54]) (via HTTP); Fri, 30 Jul 2021
- 14:06:39 +0200
+ id 1m9RKk-008VVd-Uw
+ for linux-mediatek@lists.infradead.org; Fri, 30 Jul 2021 12:09:48 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id
+ ds11-20020a17090b08cbb0290172f971883bso20515471pjb.1
+ for <linux-mediatek@lists.infradead.org>; Fri, 30 Jul 2021 05:09:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9jhmmW00U1t6nu8Et2gPe9VWIRq7R6Jr8Ar5v9ZMFtg=;
+ b=VgT+e2A0IF77HhCmq2v6gbviN4IFKA14+DyHg8G0xXNc0t531MsdMsNgKTJhiUViYc
+ ggx33OQt6gRHAzv/ahTT5A6vhoFV36OjYD4WTGda6NKOqY8jeXrwa6D+n3QeM+2d9vxi
+ aKgXY76W0OMXpUKyeu4ztuhnxxFUYijR1+F6g=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9jhmmW00U1t6nu8Et2gPe9VWIRq7R6Jr8Ar5v9ZMFtg=;
+ b=jwFCJUqGagkb1orhT4wMm8XbLvaOpRo5d7x6sc7B09xFcbQ6trDfVevIFSUfM4rvPt
+ 71sx83me04uRF6eNsRUi5YBI5ypS7P3/RGF27UQVZrpGfcF8zGdQYdxHEUW/nl2V1mht
+ OcRTdCN6YXnRMv+/LzlAoc7NDQkKyDl+O2TwwqVSCTsHSB7cqnxNPyZAN8alQ8m8b5O5
+ dXRaB5ezfrA0XE8Z0riQu7aPcv+VjvSg1L+R9lxtekqIN+rQ85P+LQb6/KRV+AErIBVM
+ /48sMHBdlbgKZ2Gt0O8KeBxxK7U0gmcS23bzoDPauoK+zXBpaYSE607as2QyPI0hSYb1
+ VoEQ==
+X-Gm-Message-State: AOAM533t8VRInbkNyvHykSQGOj8nTzCD5DeTl6hdmoEZp+BO6fnT2sUQ
+ tIQWGxC2BcDX51lHsPPLbIS4uQ==
+X-Google-Smtp-Source: ABdhPJyUiLCxqCC6f1d5CYwKUP8Qk7BYcm75N+d9XbtZsZfdM08Fxck+IkBKHdeny9OLqapp+4YTTQ==
+X-Received: by 2002:a62:8f0b:0:b029:356:ba53:a041 with SMTP id
+ n11-20020a628f0b0000b0290356ba53a041mr2443083pfd.10.1627646985133; 
+ Fri, 30 Jul 2021 05:09:45 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:c144:3a3e:e06f:59])
+ by smtp.gmail.com with ESMTPSA id a9sm2182071pjs.32.2021.07.30.05.09.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Jul 2021 05:09:44 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/3] arm: dts: mt8135: Move pinfunc to
+ include/dt-bindings/pinctrl
+Date: Fri, 30 Jul 2021 20:09:35 +0800
+Message-Id: <20210730120937.1435204-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.554.ge1b32706d8-goog
 MIME-Version: 1.0
-Message-ID: <trinity-166e2707-ca11-4d84-803f-43732de72e2b-1627646799181@3c-app-gmx-bs05>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel
- <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Evan Green <evgreen@chromium.org>,
- Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>, Will
- Deacon <will.deacon@arm.com>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, yong.wu@mediatek.com,
- youlin.pei@mediatek.com, Nicolas Boichat <drinkcat@chromium.org>, Matthias
- Kaehlcke <mka@chromium.org>, anan.sun@mediatek.com,
- ming-fan.chen@mediatek.com, yi.kuo@mediatek.com, acourbot@chromium.org,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org, Daniel Vetter
- <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Xia Jiang <xia.jiang@mediatek.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Dafna Hirschfeld
- <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Eizan
- Miyamoto <eizan@chromium.org>, anthony.huang@mediatek.com
-Subject: Aw: [PATCH v7 00/12] Clean up "mediatek,larb"
-Date: Fri, 30 Jul 2021 14:06:39 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20210730025238.22456-1-yong.wu@mediatek.com>
-References: <20210730025238.22456-1-yong.wu@mediatek.com>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:Ju8UvQ9aQQ211RZizAddcu/LK0Fbm40eWbtOgPOujam+ZiApQCh89ygqJKUfghzFx3Em+
- 2gYhue+9Tw2MD6gxpnG7k1n49GwJ96zbYr1t0dKh0XNlowbze19Bdjyh25AQrFqjwwEBD5zmvd83
- mhgHUGlB8Ek/ujixS17y/tmLUcS6lj6J3JAEdYwCmEJOBtpSoiNFM3NNFkq6C1Kia0XV7mTPl8vn
- vIhfuilUuastgrBdB7uKylodyw+GkvQKNLmACZ0chLIvF4sg96dcRXaudTEuldb+NRZCXQ2lp6Fe
- X4=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:A1JU1CJi+pQ=:iWEaNtvfYekBmQdj4p6NXW
- UCTDP5kHinGH0vNnqhIZRPdE39sbNxHrVO/p9Q24RiiXHAyeUJq8L+93SGGOg4tPCbdTxfiKV
- QNPWJF70uYhxy7mgbZlvInK5n6x9M1/K1gNBf3lccsTjt0t4n7WcI4NKCruv73h/djU0LVXne
- u+0SY70AaL3ley93WPeezkfjb8VSz88R2HcvX9McS6Od/X98F06af4B/GbOm1djPXU1SXfpKo
- KUIyySiyy6TRpyKROR56bXkdpixhsjixdqQCnx1NOPihzse8xL39ftyMRCoEojHVSiXTDrgV0
- wYLpEHQ3csdA1t3aEvcUXJrFC/iilayKyvXe9HrWP5LjD5hZlvX++dSXMC2bS+sjJ+eOU4CkG
- q5M0m7y1SLgWSah28VRg6keBpjwkiusGHwSeFrJBy9o+wBg7RZq2fwYkcq/79Mq9yixMZOoR6
- nhiymGdyIERrtxqU6M7A2syxtcjcXbLCmxadopF91xMgIPyRJLQmESawqxIuX/JKCRU8WnICX
- yaVOTYoq5ZT+yOg7fTBack7iK2KxkkNeuDn9dy/MhyU31tAOibr7pfGIyuHmU+MKjqOSn8sD2
- yJIhbYA42sZeUNd4oYzJMShnDHIkHHbMBy5uAgWrxznbOECqrG5/wUBFgzPZW93EAvMmi7d6r
- lk0vBXlmisYQWoMoO9WVZCx1Jf118gMwBc5emj7E35X/YicRI/KoVpTwSfgLVwFIUf/8E1yYK
- NxOYhTRYoQfJZSsRL/ySFrn1KZ2Wx9AntKI1JV3pQblcuhCCvu9yfmLU+oxe/6k6j32YmVzRy
- sVTI6932Tsaqfe0g/gNwzm3RroETnuenND43TwPhPdSsqPyflo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210730_050702_154259_F3BEA92C 
-X-CRM114-Status: UNSURE (   6.39  )
+X-CRM114-CacheID: sfid-20210730_050947_089190_36212689 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,11 +103,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Full Series tested on BPI-R2/MT7623
+Move mt8135-pinfunc.h into include/dt-bindings/pinctrl so that we can
+include it in yaml examples.
 
-Tested-By: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm/boot/dts/mt8135.dtsi                                   | 2 +-
+ .../boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h   | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename {arch/arm/boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h (100%)
 
-regards Frank
+diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+index 0e4e835026db0..a031b36363187 100644
+--- a/arch/arm/boot/dts/mt8135.dtsi
++++ b/arch/arm/boot/dts/mt8135.dtsi
+@@ -9,7 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/reset/mt8135-resets.h>
+-#include "mt8135-pinfunc.h"
++#include <dt-bindings/pinctrl/mt8135-pinfunc.h>
+ 
+ / {
+ 	#address-cells = <2>;
+diff --git a/arch/arm/boot/dts/mt8135-pinfunc.h b/include/dt-bindings/pinctrl/mt8135-pinfunc.h
+similarity index 100%
+rename from arch/arm/boot/dts/mt8135-pinfunc.h
+rename to include/dt-bindings/pinctrl/mt8135-pinfunc.h
+-- 
+2.32.0.554.ge1b32706d8-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
