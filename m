@@ -2,93 +2,81 @@ Return-Path: <SRS0=u2zk=MW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26F0DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 03:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D8CEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 03:13:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DE2BF60EB5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 03:06:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE2BF60EB5
+	by mail.kernel.org (Postfix) with ESMTPS id 0E56260ED4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 03:13:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0E56260ED4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yeMrh8Y9oB9HDuojd84ivgMhItfr53o1KUQjLagP6D4=; b=4GwdQX9kN/90YU
-	LTuDLqEyrtpRbGuzKSkKG6kJqwi2rM7QgcET+LhvznoXQF1gkfXagQMiNzYYuCvRBHduyjf9397nN
-	yO86we0fgcc/CUHKwq+aUNEeT+IxX4IKibp6NpJjjgovbujxf3bBOiaA2pSDkD5SiFB5yW5oMoQsL
-	DGWGIdFiP7qQdojDD0cqmNE3QJx8uNVaYsU+s1LfwcA9teQtUr6cuEmo2Jkv/GocI5FGqNH8brOZL
-	5qf758WCs8Rb06imvu9WYavPKSpHEnEyJw43tvIcs/GOTANAy5nkKl2lTs8YJ11TYzUH74k1y03N+
-	vokWE/cFxC6hZm0XoNzQ==;
+	List-Owner; bh=N64Q+URPrxBEuH5S5uTKMYs6cGBZJmcSGmfDYLlzpbc=; b=h+ZHTq1fsLAbHx
+	ZCIyGmypBWpQxAZXDsNMnz770aM47JRzmPikEOWEzFF039Ppzo9sYTAeqbSa9mcdBu9Hcn8b34Bn8
+	L2jXkLEUwWxZKMOUc+AMhh47NYjVxSlrs44B5cDk+8KWp4oaXxKXMumBEpbGF0sV2y8oSGNQhj2Ch
+	ApNZzepsIBqoIWln4QmsfYibbFybEEBSmW4VJNL9Lo2ri28eJRVouqbl9WObuIJcp4AvezQqR0UXH
+	fmCeKm/65LFMUFm5PjDavLBpuHKlDP4tpPz6HnG0Kuv+GyBsJ/lOJO5kdI4JWpDdsT+6HAo5PtuLk
+	6fmJS7+nw5LynLy6oGCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9Iqs-006npz-34; Fri, 30 Jul 2021 03:06:22 +0000
+	id 1m9Iy1-006sEX-Ij; Fri, 30 Jul 2021 03:13:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9Ipt-006nSO-A9; Fri, 30 Jul 2021 03:05:23 +0000
-X-UUID: ca08acb181f34b1da49d0ce266e8d36a-20210729
+ id 1m9IxI-006rjp-HD; Fri, 30 Jul 2021 03:13:02 +0000
+X-UUID: ea50fadba73b404fbef1650e1c1f11d9-20210729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=YiJ0qvViWMzeh9kp48fgZICnaF2xXx+eb/tZNDqGNsg=; 
- b=nP6ktE0GEmxHj33szEecLDiNF8hjz6wz86SO/zjwj2L7fL2L7s4umj5SnHU1sBl3GvDYyjPNMMLuTRIu8KYinjo1J3Q0sqw4FU+fLFPdNnIHyn4H2lwXp7EYTMY3ia8Nf/sL4Ycs997joqH0EKlHPe+XdsI/pQJ9OGWj84wqolo=;
-X-UUID: ca08acb181f34b1da49d0ce266e8d36a-20210729
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=LejJWnZ2JOLo/DhJM3s97omYPuDb/lLAN8IlUBxwa7k=; 
+ b=h1+sYkduhXDBwaUJTp2EDoRCqHiU2fZAqAVrU6beVzXSojWToT8zMSE3q3X6js8O/L8optyeXYkCm5sJkapGC1zWUKb5vR4RS1FMmvLLH5AuclJHiJHCa24O1FC7LmwHJ1fdH3VtM7FrGKqin7I2av57DRVK2did+BPU5QyGZes=;
+X-UUID: ea50fadba73b404fbef1650e1c1f11d9-20210729
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 990742462; Thu, 29 Jul 2021 20:05:19 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 975429444; Thu, 29 Jul 2021 20:12:57 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 19:55:39 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Jul 2021 10:55:37 +0800
-Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ 15.0.1497.2; Thu, 29 Jul 2021 20:12:55 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Jul 2021 11:12:54 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 30 Jul 2021 10:55:31 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>
-CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, Nicolas Boichat
- <drinkcat@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
- <anan.sun@mediatek.com>, <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>, 
- <acourbot@chromium.org>, <linux-media@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, Daniel Vetter <daniel@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Xia Jiang <xia.jiang@mediatek.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Dafna Hirschfeld
- <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Eizan
- Miyamoto" <eizan@chromium.org>, <anthony.huang@mediatek.com>, Frank
- Wunderlich <frank-w@public-files.de>
-Subject: [PATCH v7 12/12] arm64: dts: mediatek: Get rid of mediatek,
- larb for MM nodes
-Date: Fri, 30 Jul 2021 10:52:38 +0800
-Message-ID: <20210730025238.22456-13-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210730025238.22456-1-yong.wu@mediatek.com>
-References: <20210730025238.22456-1-yong.wu@mediatek.com>
+ Transport; Fri, 30 Jul 2021 11:12:53 +0800
+Message-ID: <526dc9077c696015d1f1065cb6e7f2c7c446ad61.camel@mediatek.com>
+Subject: Re: [v3 3/5] soc: mediatek: pm-domains: Add support for mt8195
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Nicolas Boichat <drinkcat@chromium.org>, "Rob
+ Herring" <robh+dt@kernel.org>, <linux-arm-kernel@lists.infradead.org>, LKML
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 30 Jul 2021 11:12:53 +0800
+In-Reply-To: <CAGXv+5EG00P4EzNjm=7nRNwYwEF9aXorhELsmbxtrYM20SW0KQ@mail.gmail.com>
+References: <20210705054111.4473-1-chun-jie.chen@mediatek.com>
+ <20210705054111.4473-4-chun-jie.chen@mediatek.com>
+ <CAGXv+5EG00P4EzNjm=7nRNwYwEF9aXorhELsmbxtrYM20SW0KQ@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_200521_443290_32245176 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20210729_201300_634331_1FCAD713 
+X-CRM114-Status: GOOD (  26.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,204 +93,299 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After adding device_link between the IOMMU consumer and smi,
-the mediatek,larb is unnecessary now.
+On Tue, 2021-07-20 at 16:51 +0800, Chen-Yu Tsai wrote:
+> Hi,
+> On Mon, Jul 5, 2021 at 1:42 PM Chun-Jie Chen <
+> chun-jie.chen@mediatek.com> wrote:
+> > 
+> > Add domain control data including bus protection data size
+> > change due to more protection steps in mt8195.
+> > 
+> > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > ---
+> >  drivers/soc/mediatek/mt8195-pm-domains.h | 738
+> > +++++++++++++++++++++++
+> >  drivers/soc/mediatek/mtk-pm-domains.c    |   5 +
+> >  drivers/soc/mediatek/mtk-pm-domains.h    |   2 +-
+> >  include/linux/soc/mediatek/infracfg.h    | 103 ++++
+> >  4 files changed, 847 insertions(+), 1 deletion(-)
+> >  create mode 100644 drivers/soc/mediatek/mt8195-pm-domains.h
+> > 
+> > diff --git a/drivers/soc/mediatek/mt8195-pm-domains.h
+> > b/drivers/soc/mediatek/mt8195-pm-domains.h
+> > new file mode 100644
+> > index 000000000000..54bb7af8e9a3
+> > --- /dev/null
+> > +++ b/drivers/soc/mediatek/mt8195-pm-domains.h
+> > @@ -0,0 +1,738 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-only */
+> > +/*
+> > + * Copyright (c) 2021 MediaTek Inc.
+> > + * Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > + */
+> > +
+> > +#ifndef __SOC_MEDIATEK_MT8195_PM_DOMAINS_H
+> > +#define __SOC_MEDIATEK_MT8195_PM_DOMAINS_H
+> > +
+> > +#include "mtk-pm-domains.h"
+> > +#include <dt-bindings/power/mt8195-power.h>
+> > +
+> > +/*
+> > + * MT8195 power domain support
+> > + */
+> > +
+> > +static const struct scpsys_domain_data scpsys_domain_data_mt8195[]
+> > = {
+> 
+> The SCPSYS block is not documented in the datasheets available.
+> However
+> I did look at all the register and bit offsets and confirmed nothing
+> overlapped.
+> 
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.c
+> > b/drivers/soc/mediatek/mtk-pm-domains.c
+> > index 2689f02d7a41..12552c9996ac 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.c
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.c
+> > @@ -20,6 +20,7 @@
+> >  #include "mt8173-pm-domains.h"
+> >  #include "mt8183-pm-domains.h"
+> >  #include "mt8192-pm-domains.h"
+> > +#include "mt8195-pm-domains.h"
+> > 
+> >  #define MTK_POLL_DELAY_US              10
+> >  #define MTK_POLL_TIMEOUT               USEC_PER_SEC
+> > @@ -576,6 +577,10 @@ static const struct of_device_id
+> > scpsys_of_match[] = {
+> >                 .compatible = "mediatek,mt8192-power-controller",
+> >                 .data = &mt8192_scpsys_data,
+> >         },
+> > +       {
+> > +               .compatible = "mediatek,mt8195-power-controller",
+> > +               .data = &mt8195_scpsys_data,
+> > +       },
+> >         { }
+> >  };
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pm-domains.h
+> > b/drivers/soc/mediatek/mtk-pm-domains.h
+> > index 8b86ed22ca56..caaa38100093 100644
+> > --- a/drivers/soc/mediatek/mtk-pm-domains.h
+> > +++ b/drivers/soc/mediatek/mtk-pm-domains.h
+> > @@ -37,7 +37,7 @@
+> >  #define PWR_STATUS_AUDIO               BIT(24)
+> >  #define PWR_STATUS_USB                 BIT(25)
+> > 
+> > -#define SPM_MAX_BUS_PROT_DATA          5
+> > +#define SPM_MAX_BUS_PROT_DATA          6
+> > 
+> >  #define _BUS_PROT(_mask, _set, _clr, _sta, _update, _ignore) { \
+> >                 .bus_prot_mask = (_mask),                       \
+> > diff --git a/include/linux/soc/mediatek/infracfg.h
+> > b/include/linux/soc/mediatek/infracfg.h
+> > index 4615a228da51..3e90fb9b926a 100644
+> > --- a/include/linux/soc/mediatek/infracfg.h
+> > +++ b/include/linux/soc/mediatek/infracfg.h
+> > @@ -2,6 +2,109 @@
+> >  #ifndef __SOC_MEDIATEK_INFRACFG_H
+> >  #define __SOC_MEDIATEK_INFRACFG_H
+> > 
+> > +#define MT8195_TOP_AXI_PROT_EN_STA1                     0x228
+> > +#define MT8195_TOP_AXI_PROT_EN_1_STA1                   0x258
+> > +#define MT8195_TOP_AXI_PROT_EN_SET                     0x2a0
+> > +#define MT8195_TOP_AXI_PROT_EN_CLR                      0x2a4
+> > +#define MT8195_TOP_AXI_PROT_EN_1_SET                    0x2a8
+> > +#define MT8195_TOP_AXI_PROT_EN_1_CLR                    0x2ac
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_SET                   0x2d4
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_CLR                   0x2d8
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_STA1                  0x2ec
+> > +#define MT8195_TOP_AXI_PROT_EN_2_SET                    0x714
+> > +#define MT8195_TOP_AXI_PROT_EN_2_CLR                    0x718
+> > +#define MT8195_TOP_AXI_PROT_EN_2_STA1                   0x724
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_SET                 0xb84
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_CLR                 0xb88
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_STA1                0xb90
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_SET               0xba4
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_CLR               0xba8
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_STA1              0xbb0
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_SET               0xbb8
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_CLR               0xbbc
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_STA1              0xbc4
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_SET       0xbcc
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_CLR       0xbd0
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_STA1      0xbd8
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_SET                 0xdcc
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_CLR                 0xdd0
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_STA1                0xdd8
+> 
+> These all look correct.
+> 
+> > +#define MT8195_TOP_AXI_PROT_EN_NNA0                    BIT(1)
+> > +#define MT8195_TOP_AXI_PROT_EN_NNA1                    BIT(2)
+> > +#define MT8195_TOP_AXI_PROT_EN_NNA                     GENMASK(2,
+> > 1)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDOSYS0                 BIT(6)
+> > +#define MT8195_TOP_AXI_PROT_EN_VPPSYS0                 BIT(10)
+> > +#define MT8195_TOP_AXI_PROT_EN_MFG1                    BIT(11)
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MFG1_2ND                        GENMASK(22,
+> > 21)
+> > +#define MT8195_TOP_AXI_PROT_EN_VPPSYS0_2ND             BIT(23)
+> > +#define MT8195_TOP_AXI_PROT_EN_1_MFG1                  GENMASK(20,
+> > 19)
+> > +#define MT8195_TOP_AXI_PROT_EN_1_CAM                   BIT(22)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_CAM                   BIT(0)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_MFG1_2ND              GENMASK(6,
+> > 5)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_MFG1                  BIT(7)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_AUDIO_ASRC            (BIT(8) |
+> > BIT(17))
+> > +#define MT8195_TOP_AXI_PROT_EN_2_AUDIO                 (BIT(9) |
+> > BIT(11))
+> > +#define MT8195_TOP_AXI_PROT_EN_2_ADSP                  (BIT(12) |
+> > GENMASK(16, 14))
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA0_2ND              BIT(19)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA1_2ND              BIT(20)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA_2ND               GENMASK(20,
+> > 19)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA0                  BIT(21)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA1                  BIT(22)
+> > +#define MT8195_TOP_AXI_PROT_EN_2_NNA                   GENMASK(22,
+> > 21)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_CAM                  (BIT(0) |
+> > BIT(2) | BIT(4))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_IPE                  BIT(1)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_IMG                  (BIT(1) |
+> > BIT(3))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VPPSYS0              (GENMASK(2,
+> > 0) | GENMASK(8, 6) |        \
+> > +                                                       GENMASK(12,
+> > 10) | GENMASK(21, 19) |     \
+> > +                                                       BIT(31))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDOSYS0              (GENMASK(5,
+> > 3) | BIT(9) |       \
+> > +                                                       GENMASK(14,
+> > 13) | GENMASK(21, 17) |     \
+> > +                                                       BIT(30))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VPPSYS1              GENMASK(8,
+> > 5)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VENC                 (BIT(9) |
+> > BIT(11))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VENC_CORE1           (BIT(10) |
+> > BIT(12))
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_VDEC0                        BIT(13)
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_VDEC1                        BIT(14)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDOSYS1_2ND          BIT(22)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VPPSYS1_2ND          BIT(23)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_CAM_2ND              BIT(24)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_IMG_2ND              BIT(25)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VENC_2ND             BIT(26)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_WPESYS               BIT(27)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDEC0_2ND            BIT(28)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDEC1_2ND            BIT(29)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDOSYS0_2ND          GENMASK(29,
+> > 22)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_VDOSYS1              GENMASK(31,
+> > 30)
+> 
+> There's significant overlap within this block. This means when the
+> base
+> VDOSYS0 power domain is on, all the overlapped protection bits get
+> turned
+> off. I'm not sure that's correct.
+> 
+> Same goes for IMG, which overlaps with IPE.
+> 
 
-CC: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Evan Green <evgreen@chromium.org>
-Tested-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 16 ----------------
- arch/arm64/boot/dts/mediatek/mt8183.dtsi |  6 ------
- 2 files changed, 22 deletions(-)
+Because the timing of enable & disable protection are different, we
+duplicate some control bit in different power domain.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 2f0fc1e317d7..cf5d26db82b8 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -1009,7 +1009,6 @@
- 				 <&mmsys CLK_MM_MUTEX_32K>;
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
--			mediatek,larb = <&larb0>;
- 		};
- 
- 		mdp_rdma1: rdma@14002000 {
-@@ -1019,7 +1018,6 @@
- 				 <&mmsys CLK_MM_MUTEX_32K>;
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			iommus = <&iommu M4U_PORT_MDP_RDMA1>;
--			mediatek,larb = <&larb4>;
- 		};
- 
- 		mdp_rsz0: rsz@14003000 {
-@@ -1049,7 +1047,6 @@
- 			clocks = <&mmsys CLK_MM_MDP_WDMA>;
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			iommus = <&iommu M4U_PORT_MDP_WDMA>;
--			mediatek,larb = <&larb0>;
- 		};
- 
- 		mdp_wrot0: wrot@14007000 {
-@@ -1058,7 +1055,6 @@
- 			clocks = <&mmsys CLK_MM_MDP_WROT0>;
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			iommus = <&iommu M4U_PORT_MDP_WROT0>;
--			mediatek,larb = <&larb0>;
- 		};
- 
- 		mdp_wrot1: wrot@14008000 {
-@@ -1067,7 +1063,6 @@
- 			clocks = <&mmsys CLK_MM_MDP_WROT1>;
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			iommus = <&iommu M4U_PORT_MDP_WROT1>;
--			mediatek,larb = <&larb4>;
- 		};
- 
- 		ovl0: ovl@1400c000 {
-@@ -1077,7 +1072,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_OVL0>;
- 			iommus = <&iommu M4U_PORT_DISP_OVL0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
- 		};
- 
-@@ -1088,7 +1082,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_OVL1>;
- 			iommus = <&iommu M4U_PORT_DISP_OVL1>;
--			mediatek,larb = <&larb4>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xd000 0x1000>;
- 		};
- 
-@@ -1099,7 +1092,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
- 			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xe000 0x1000>;
- 		};
- 
-@@ -1110,7 +1102,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
- 			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
--			mediatek,larb = <&larb4>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xf000 0x1000>;
- 		};
- 
-@@ -1121,7 +1112,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_RDMA2>;
- 			iommus = <&iommu M4U_PORT_DISP_RDMA2>;
--			mediatek,larb = <&larb4>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0 0x1000>;
- 		};
- 
-@@ -1132,7 +1122,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_WDMA0>;
- 			iommus = <&iommu M4U_PORT_DISP_WDMA0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x1000 0x1000>;
- 		};
- 
-@@ -1143,7 +1132,6 @@
- 			power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
- 			clocks = <&mmsys CLK_MM_DISP_WDMA1>;
- 			iommus = <&iommu M4U_PORT_DISP_WDMA1>;
--			mediatek,larb = <&larb4>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0x2000 0x1000>;
- 		};
- 
-@@ -1394,7 +1382,6 @@
- 			      <0 0x16027800 0 0x800>,	/* VDEC_HWB */
- 			      <0 0x16028400 0 0x400>;	/* VDEC_HWG */
- 			interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
--			mediatek,larb = <&larb1>;
- 			iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
- 				 <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
- 				 <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
-@@ -1462,7 +1449,6 @@
- 			compatible = "mediatek,mt8173-vcodec-enc";
- 			reg = <0 0x18002000 0 0x1000>;	/* VENC_SYS */
- 			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
--			mediatek,larb = <&larb3>;
- 			iommus = <&iommu M4U_PORT_VENC_RCPU>,
- 				 <&iommu M4U_PORT_VENC_REC>,
- 				 <&iommu M4U_PORT_VENC_BSDMA>,
-@@ -1490,7 +1476,6 @@
- 			clock-names = "jpgdec-smi",
- 				      "jpgdec";
- 			power-domains = <&spm MT8173_POWER_DOMAIN_VENC>;
--			mediatek,larb = <&larb3>;
- 			iommus = <&iommu M4U_PORT_JPGDEC_WDMA>,
- 				 <&iommu M4U_PORT_JPGDEC_BSDMA>;
- 		};
-@@ -1524,7 +1509,6 @@
- 				 <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
- 				 <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
- 				 <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
--			mediatek,larb = <&larb5>;
- 			mediatek,vpu = <&vpu>;
- 			clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
- 			clock-names = "venc_lt_sel";
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index ca8ad953de91..d21e1ffc9b35 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1239,7 +1239,6 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_OVL0>;
- 			iommus = <&iommu M4U_PORT_DISP_OVL0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x8000 0x1000>;
- 		};
- 
-@@ -1250,7 +1249,6 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_OVL0_2L>;
- 			iommus = <&iommu M4U_PORT_DISP_2L_OVL0_LARB0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x9000 0x1000>;
- 		};
- 
-@@ -1261,7 +1259,6 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_OVL1_2L>;
- 			iommus = <&iommu M4U_PORT_DISP_2L_OVL1_LARB0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xa000 0x1000>;
- 		};
- 
-@@ -1272,7 +1269,6 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_RDMA0>;
- 			iommus = <&iommu M4U_PORT_DISP_RDMA0>;
--			mediatek,larb = <&larb0>;
- 			mediatek,rdma-fifo-size = <5120>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xb000 0x1000>;
- 		};
-@@ -1284,7 +1280,6 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			clocks = <&mmsys CLK_MM_DISP_RDMA1>;
- 			iommus = <&iommu M4U_PORT_DISP_RDMA1>;
--			mediatek,larb = <&larb0>;
- 			mediatek,rdma-fifo-size = <2048>;
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0xc000 0x1000>;
- 		};
-@@ -1439,7 +1434,6 @@
- 			compatible = "mediatek,mt8183-jpgenc", "mediatek,mtk-jpgenc";
- 			reg = <0 0x17030000 0 0x1000>;
- 			interrupts = <GIC_SPI 249 IRQ_TYPE_LEVEL_LOW>;
--			mediatek,larb = <&larb4>;
- 			iommus = <&iommu M4U_PORT_JPGENC_RDMA>,
- 				 <&iommu M4U_PORT_JPGENC_BSDMA>;
- 			power-domains = <&spm MT8183_POWER_DOMAIN_VENC>;
--- 
-2.18.0
+For example: IMG & IPE are parent and child relation, so IMG must power
+on before IPE, IPE must power off before IMG.
+We want to clear some bits (protection disable) when power on IMG and
+set some bits (protection enable) when power off IPE.
+
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_2_VPPSYS0_2ND                (GENMASK(7,
+> > 0) | GENMASK(18, 11))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VENC               BIT(2)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VENC_CORE1         (BIT(3) |
+> > BIT(15))
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_2_CAM                        (BIT(5) |
+> > BIT(17))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VPPSYS1            (GENMASK(7,
+> > 6) | BIT(18))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VPPSYS0            (GENMASK(9,
+> > 8) | GENMASK(22, 21) | BIT(24))
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDOSYS1            BIT(10)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDEC2_2ND          BIT(12)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDEC0_2ND          BIT(13)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_WPESYS_2ND         BIT(14)
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_2_IMG                        BIT(16)
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_MM_2_IPE                        BIT(16)
+> 
+> And here, IMG and IPE are the same.
+> 
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDEC2              BIT(21)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDEC0              BIT(22)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_VDOSYS0            BIT(23)
+> > +#define MT8195_TOP_AXI_PROT_EN_MM_2_WPESYS             GENMASK(24,
+> > 23)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_EPD_TX           BIT(1)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_DP_TX            BIT(2)
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_VDNR_PCIE_MAC_P0                (BIT(11) |
+> > BIT(28))
+> > +#define
+> > MT8195_TOP_AXI_PROT_EN_VDNR_PCIE_MAC_P1                (BIT(12) |
+> > BIT(29))
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_PCIE_MAC_P0      BIT(13)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_1_PCIE_MAC_P1      BIT(14)
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_MFG1     (BIT(17) |
+> > BIT(19))
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_VPPSYS0  BIT(20)
+> > +#define MT8195_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_VDOSYS0  BIT(21)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_NNA0             BIT(25)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_NNA1             BIT(26)
+> > +#define MT8195_TOP_AXI_PROT_EN_VDNR_2_NNA              GENMASK(26,
+> > 25)
+> > +
+> 
+> All these MT8195_TOP_AXI_PROT_EN_* bit offsets aren't documented.
+> Besides
+> the huge overlap above, it seems NNA also includes NNA0 and NNA1.
+> 
+> 
+> Regards
+> ChenYu
+> 
+
+The detail of MT8195_TOP_AXI_PROT_EN_* bit is related to the bus
+design, so we don't descript the detail in datasheet.
+
+I will remove the unused power domain and data (like NNA) because these
+are not used in 8195 chrome project.
+
+Best Regards,
+Chun-Jie
+
+> 
+> >  #define MT8192_TOP_AXI_PROT_EN_STA1                    0x228
+> >  #define MT8192_TOP_AXI_PROT_EN_1_STA1                  0x258
+> >  #define MT8192_TOP_AXI_PROT_EN_SET                     0x2a0
+> > --
+> > 2.18.0
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!3jALcSgob2IQknQnQlIPVKd79QdKmXI1Y9X7kaQ2KR8AYdyP0V8Km3u_Cfq8VPMJ4-zn$
+> >  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
