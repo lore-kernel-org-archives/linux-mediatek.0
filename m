@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49553C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 05:04:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBAA8C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 05:10:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 111F760F12
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 05:04:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 111F760F12
+	by mail.kernel.org (Postfix) with ESMTPS id 8180960F46
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 05:10:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8180960F46
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,76 +23,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YB99ntELop0YW+N9BGqlBximqwyTFngc9u9eYMwPRyg=; b=ueGRNNuR1pUAva
-	5C9dPkM8iLzF/eCfFez1DYa0+/L2z/+8rNmm3MyS/Ewn7ipXH502w4Q0MyF/bAyFu9SfsNkhSlg3h
-	qCH8raAgh53CQgdWsbzSElafYNC2cIiCHuMDZPyaW7lFeJX376z2MSIkDXwQaVNP95c1rcZrKAX73
-	GQ61807WbxQdQf7AKDB7TmKncZo4oVZzUnaeBirhrTTw7VmIKlh0Kw0DfHWu42h4nLopIqi3LZUJI
-	hMjqBFJw/P9uqOQCCoLnLjCbjn0COa6KNuO3fPo6MZ9aBt1if2iNIhP9Iyhw4p4jlCCCG/K3yiTuZ
-	YPoVGcvT/L4S5KHP8qdw==;
+	List-Owner; bh=tpEz+u9IldqbbUx7OToj36xj0jG35wNmENlErIKVzOo=; b=cBuH9Rw9N189/d
+	t3ljeHDTNH3+mnM75x5D4dxMVvjee+aVpS5yu7ys1WAbySQu2oCkOZMc6AlCD6gOAIkgEonii9Ayv
+	93JurX0xF/Brac8dff3WyeBCclKA/R1QpTmlV1O8YRg5q704Y0k/hnXcaG4YPj3o9Rx7sDnm182L2
+	+vS8niWVQWXKg08+LBGOovIxvs34aauze2fJHczV9tOvSQkKeYFwgURqgyzBxztjWBsZ5pFIBHnT0
+	QylYt3iSbTm2myHY2+wtNA/AFcCB/5xwDPSWhX109hK6klEQNl4OxLbabw2O7FIa1xhNsugo6PkyW
+	mzdos7Qm3aZfOKhY8lHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9Kh9-007ErQ-CI; Fri, 30 Jul 2021 05:04:27 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1m9KmM-007FqC-0M; Fri, 30 Jul 2021 05:09:50 +0000
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9Kh6-007El0-8m; Fri, 30 Jul 2021 05:04:25 +0000
-Received: by mail-ot1-x334.google.com with SMTP id
- v8-20020a0568301bc8b02904d5b4e5ca3aso8219824ota.13; 
- Thu, 29 Jul 2021 22:04:23 -0700 (PDT)
+ id 1m9KmJ-007FpI-Ka; Fri, 30 Jul 2021 05:09:49 +0000
+Received: by mail-oo1-xc32.google.com with SMTP id
+ o17-20020a4a64110000b0290263e1ba7ff9so2160695ooc.2; 
+ Thu, 29 Jul 2021 22:09:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=QTrn0BTsXb5eMFLfisWRaOsNj5krMHUX7c9uHRc9jpw=;
- b=aAxaP/IViquA7ehrAhDav0tANk4uxVifNZ+P8UqFltP6SsIESy5EISKdgqc3k6dv4g
- /pVU3Gn6+z7exw5GBFxglMt7KlC6d6f643qXBC2CYA8/+YyBHMPveSEGDg+9y0qZaDsy
- rkYs0+PxPVW9/6ahlvYFUouz9CvFe6zJI+BuYoEF0nNEj46STvsHCpSCdkA4Wg+kdgvd
- gJLHYMXgULbVTB0LJQupw+jxQkhP+ZebH1iBda0sCkIb3oL4MO1Ef8Ogbt9m+jA3RQo1
- weMbiYxIzqrNE9SYbARDh+lKHTyz7vRt7J+kxrqm05VPKA53cVKiUWTFAn8VKjBMqCJA
- o/ng==
+ bh=DtOXr89OzIUFPwE95nTmJSuToUjtwfHb2hL/EyTTeLc=;
+ b=XY33TRonS6iaFY857RRIQ5xAHb5O7L8Jrt4fQzW+qvvevuzod7Xg8is59dM5ETkBJ4
+ wYWWROpIyuB2L67wmNUMRY35h3FfSQeiVKCWaPWJcdc8/mvg4bF8W4iGiaGEvAvgKp0I
+ 6GjooQqaU07rJv//dEwa75a8mjLFg/xo2ybK/5lUnMfeOGAfglml4Fa2I1tQjqwc5V3B
+ fUgF41r5dR96gDmnyiGArQGCFLH+dau1Dx3vHOZ4GZotNZXUDkKTs00VBtY6kKlTjavu
+ Pz37oaj2IsjpSq3R9Y2i6Nwddl/6b6nu9y1QxwqYsxv1l6wRSOQzzq5400YFKQZjbsu8
+ m4/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
  :references:mime-version:content-disposition:in-reply-to;
- bh=QTrn0BTsXb5eMFLfisWRaOsNj5krMHUX7c9uHRc9jpw=;
- b=nJpdJJzyRPZZfYQud6Cb4RUHs0EYF4ZywkG87ubzr7Fjj78tY5Qa62XwDXjEYCXTgH
- Iq8brXVs0AF0DOj6fMLVoyqMrXDDxTEW7EXU7qPGeNXjywoqApd5yROvyjO3thEghNCb
- 1Io4nzyvCOgDXCJm0P0FAEnDdeMbkU2EZ6mQ7PiqIugMm9thwCl3bQ7KqSRv9PMqnpO+
- MxH9hqBn2v7b7CZvZDdnH1kduAjbqMyaDHI38VTbu5EYA6Pvwsjhe9bO+FXRVXi15JgA
- nqlf7xGyEr8aZrhhrwiomkDLite8c/5IfJCPExH0KS+wVAnWntOp/xD6aO01arjzm2Ry
- H8Jw==
-X-Gm-Message-State: AOAM530Uf9SSTBgmzgqpXnT9NE7Us3Eo53lvyljXfYhiVsBbdR9EKaDG
- WBIgAnSQVU3s+4OJ6n4HQHU=
-X-Google-Smtp-Source: ABdhPJxtkR1AJp0+RjTnXagyAGwmGRYMZKxnIR6Nd/brnDD+iRSYcNYylRu/2ugWeLTWy9Nnh1lrtQ==
-X-Received: by 2002:a05:6830:4b0:: with SMTP id
- l16mr686993otd.97.1627621462965; 
- Thu, 29 Jul 2021 22:04:22 -0700 (PDT)
+ bh=DtOXr89OzIUFPwE95nTmJSuToUjtwfHb2hL/EyTTeLc=;
+ b=t+y3qjGYBDjzmOIbGWAzYLP1GIIlqG94CmWG6I6ux8ky0VcTffQmjjIYuSvkp+NLI/
+ HTKRKPeDSMb38gw9CfKC9X9C5tiSX1AuAVrE8GI5nN0yQvDrq1VTfkWsTuGZoBO3Pv+O
+ vsTLDNlMdFoCGp+EOrmKCFDJcw+D5RoCuTXcMokdZ2e5/ONYRweFw7CWw24CmfbuiESd
+ jxIH2mBhehP9wS4+Oe7kJbPcx1BBkjbmFiRJyMdjE6IUnFYLqZ00Q9TEclvCxEvseFPc
+ 3iSP7GJviLf0Yo1YwTTABtUICULxFPWFZUcUHQHsFDZTPDf5kEX7Wqoa1gkO1/hDMdeN
+ exaQ==
+X-Gm-Message-State: AOAM531nu05g0wopsjbE86+oi0BwGrZhtr7sHL/Gv1xhP/AbXoxbbEzm
+ eP2tOtzl/KSTKV1TxSc+NIo=
+X-Google-Smtp-Source: ABdhPJwfnmqbVIz/NnmIZ/LXSibJIG3tB+bMED54PtXcQRW60tZjj7o7wIbGMW91sxaKQT6whWsfFQ==
+X-Received: by 2002:a4a:7b4b:: with SMTP id l72mr473141ooc.9.1627621786751;
+ Thu, 29 Jul 2021 22:09:46 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- w190sm126274oif.17.2021.07.29.22.04.22
+ q186sm127995oib.31.2021.07.29.22.09.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jul 2021 22:04:22 -0700 (PDT)
-Date: Thu, 29 Jul 2021 22:04:21 -0700
+ Thu, 29 Jul 2021 22:09:46 -0700 (PDT)
+Date: Thu, 29 Jul 2021 22:09:44 -0700
 From: Guenter Roeck <linux@roeck-us.net>
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-kernel@vger.kernel.org, chunkuang.hu@kernel.org,
- hsinyi@chromium.org, kernel@collabora.com, drinkcat@chromium.org,
- eizan@chromium.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, jitao.shi@mediatek.com,
- Crystal Guo <crystal.guo@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-watchdog@vger.kernel.org
-Subject: Re: [PATCH v2 1/7] arm64: dts: mediatek: Move reset controller
- constants into common location
-Message-ID: <20210730050421.GA2111504@roeck-us.net>
-References: <20210714101141.2089082-1-enric.balletbo@collabora.com>
- <20210714121116.v2.1.I514d9aafff3a062f751b37d3fea7402f67595b86@changeid>
+To: Christine Zhu <Christine.Zhu@mediatek.com>
+Cc: wim@linux-watchdog.org, robh+dt@kernel.org, matthias.bgg@gmail.com,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+ seiya.wang@mediatek.com,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: Re: [v5, 2/3] dt-bindings: reset: mt8195: add toprgu reset-controller
+ head file
+Message-ID: <20210730050944.GA2111694@roeck-us.net>
+References: <20210628113730.26107-1-Christine.Zhu@mediatek.com>
+ <20210628113730.26107-3-Christine.Zhu@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210714121116.v2.1.I514d9aafff3a062f751b37d3fea7402f67595b86@changeid>
+In-Reply-To: <20210628113730.26107-3-Christine.Zhu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_220424_376195_43DB12F6 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20210729_220947_741276_C00590D2 
+X-CRM114-Status: GOOD (  16.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,73 +105,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 14, 2021 at 12:11:35PM +0200, Enric Balletbo i Serra wrote:
-> The DT binding includes for reset controllers are located in
-> include/dt-bindings/reset/. Move the Mediatek reset constants in there.
+On Mon, Jun 28, 2021 at 07:37:30PM +0800, Christine Zhu wrote:
+> From: "Christine Zhu" <Christine.Zhu@mediatek.com>
 > 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-
-For the watchdog part:
-
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-
+> Add toprgu reset-controller head file for MT8195 platform.
+> 
+> Signed-off-by: Christine Zhu <Christine.Zhu@mediatek.com>
 > ---
+>  .../reset-controller/mt8195-resets.h          | 29 +++++++++++++++++++
+
+There is another patch pending which moves the mtk reset controller
+include files to another directory. See [1]. Maybe it would make
+sense to use the same directory for this file ?
+
+Thanks,
+Guenter
+
+>  1 file changed, 29 insertions(+)
+>  create mode 100644 include/dt-bindings/reset-controller/mt8195-resets.h
 > 
-> Changes in v2:
-> - Fix build test ERROR Reported-by: kernel test robot <lkp@intel.com>
-> 
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi                    | 2 +-
->  drivers/watchdog/mtk_wdt.c                                  | 6 +++---
->  .../dt-bindings/{reset-controller => reset}/mt2712-resets.h | 0
->  .../dt-bindings/{reset-controller => reset}/mt8183-resets.h | 0
->  .../dt-bindings/{reset-controller => reset}/mt8192-resets.h | 0
->  5 files changed, 4 insertions(+), 4 deletions(-)
->  rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
->  rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (100%)
->  rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 96473d88f391..4ef0b5b23047 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -11,7 +11,7 @@
->  #include <dt-bindings/interrupt-controller/irq.h>
->  #include <dt-bindings/memory/mt8183-larb-port.h>
->  #include <dt-bindings/power/mt8183-power.h>
-> -#include <dt-bindings/reset-controller/mt8183-resets.h>
-> +#include <dt-bindings/reset/mt8183-resets.h>
->  #include <dt-bindings/phy/phy.h>
->  #include <dt-bindings/thermal/thermal.h>
->  #include "mt8183-pinfunc.h"
-> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-> index 16b6aff324a7..6986bc740465 100644
-> --- a/drivers/watchdog/mtk_wdt.c
-> +++ b/drivers/watchdog/mtk_wdt.c
-> @@ -9,9 +9,9 @@
->   * Based on sunxi_wdt.c
->   */
->  
-> -#include <dt-bindings/reset-controller/mt2712-resets.h>
-> -#include <dt-bindings/reset-controller/mt8183-resets.h>
-> -#include <dt-bindings/reset-controller/mt8192-resets.h>
-> +#include <dt-bindings/reset/mt2712-resets.h>
-> +#include <dt-bindings/reset/mt8183-resets.h>
-> +#include <dt-bindings/reset/mt8192-resets.h>
->  #include <linux/delay.h>
->  #include <linux/err.h>
->  #include <linux/init.h>
-> diff --git a/include/dt-bindings/reset-controller/mt2712-resets.h b/include/dt-bindings/reset/mt2712-resets.h
-> similarity index 100%
-> rename from include/dt-bindings/reset-controller/mt2712-resets.h
-> rename to include/dt-bindings/reset/mt2712-resets.h
-> diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset/mt8183-resets.h
-> similarity index 100%
-> rename from include/dt-bindings/reset-controller/mt8183-resets.h
-> rename to include/dt-bindings/reset/mt8183-resets.h
-> diff --git a/include/dt-bindings/reset-controller/mt8192-resets.h b/include/dt-bindings/reset/mt8192-resets.h
-> similarity index 100%
-> rename from include/dt-bindings/reset-controller/mt8192-resets.h
-> rename to include/dt-bindings/reset/mt8192-resets.h
+> diff --git a/include/dt-bindings/reset-controller/mt8195-resets.h b/include/dt-bindings/reset-controller/mt8195-resets.h
+> new file mode 100644
+> index 000000000000..7ec27a64afc7
+> --- /dev/null
+> +++ b/include/dt-bindings/reset-controller/mt8195-resets.h
+> @@ -0,0 +1,29 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Crystal Guo <crystal.guo@mediatek.com>
+> + */
+> +
+> +#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT8195
+> +#define _DT_BINDINGS_RESET_CONTROLLER_MT8195
+> +
+> +#define MT8195_TOPRGU_CONN_MCU_SW_RST          0
+> +#define MT8195_TOPRGU_INFRA_GRST_SW_RST        1
+> +#define MT8195_TOPRGU_APU_SW_RST               2
+> +#define MT8195_TOPRGU_INFRA_AO_GRST_SW_RST     6
+> +#define MT8195_TOPRGU_MMSYS_SW_RST             7
+> +#define MT8195_TOPRGU_MFG_SW_RST               8
+> +#define MT8195_TOPRGU_VENC_SW_RST              9
+> +#define MT8195_TOPRGU_VDEC_SW_RST              10
+> +#define MT8195_TOPRGU_IMG_SW_RST               11
+> +#define MT8195_TOPRGU_APMIXEDSYS_SW_RST        13
+> +#define MT8195_TOPRGU_AUDIO_SW_RST             14
+> +#define MT8195_TOPRGU_CAMSYS_SW_RST            15
+> +#define MT8195_TOPRGU_EDPTX_SW_RST             16
+> +#define MT8195_TOPRGU_ADSPSYS_SW_RST           21
+> +#define MT8195_TOPRGU_DPTX_SW_RST              22
+> +#define MT8195_TOPRGU_SPMI_MST_SW_RST          23
+> +
+> +#define MT8195_TOPRGU_SW_RST_NUM               16
+> +
+> +#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT8195 */
+
+[1] https://patchwork.kernel.org/project/linux-watchdog/patch/20210714121116.v2.1.I514d9aafff3a062f751b37d3fea7402f67595b86@changeid/
+
 
 _______________________________________________
 Linux-mediatek mailing list
