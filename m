@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 69453C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 02:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 877C8C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 02:54:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 329E160FD7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 02:54:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 329E160FD7
+	by mail.kernel.org (Postfix) with ESMTPS id 5022760FE7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 02:54:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5022760FE7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dnneU0P5KKXnY5XsRW1zkwyTr1wIhXBgfvghOsIGi5M=; b=vZS3wSRY9XFr5e
-	y8Tiw97j7Z+c9PPSW18UuClEafSh+fTuljf1zXXs5SLiIJ/Wh4AbK4no7/Xt7JeL/2us2wOVdAQA5
-	ybv+F5fV3UHD1XA8k/1J3cRL8b21pmboq8vg6i3fEEFDAjTVJpC+rDdfSNkpviZXXmzTkY8RhK+w0
-	pQuUujLL5GhIhUcSleKq2UUovU4xFuvVDQstXWlU0hqSgPPYBzsRw/5/MIQ4R4inKM15ZOZG3jzU8
-	SS6XCT2lhbEpKZ2pr9IbiWxwF4kljdjoMTP/A6BsWmfyos5FkkD7h0IeUXUcLvIYx3knwTJUtvpUf
-	tNU0OHPl2saLsdyF/t+A==;
+	List-Owner; bh=1qQguBHRjevPec8evLcoEAUs8y+YmwIWuVSUeqawqjM=; b=ILsEav/n0lfY1N
+	BwrKwqq9S2mkqlkNghn/yzV+dJv/xcXRGXdjqSfwyrHxWmcKvGP/SlAiuFVm1XV7FEchMp5fPr6RI
+	P7jrbYDQI6OJo4/1HU5gkzbdR7t5pT8/I8J9ohWpV4pTwgcLdlzJRadbjZ40cfYdlUwd0U+WhRkEy
+	CrT1zQtnYUGYAX975S8I0lRz41SNnQgX/0ZlTxxSVWnPCgOtl3RF9zeFrPlzldRZGx9WY0OLHSZhT
+	unUuxBz7zTaIdBAWWofmAxEcClJCpLkvR7itpPzHg8jV5CzLCcNIUnezUFcFbfKVCFBq2DmtjdQYF
+	ItBn8Fro1nWliUJiQpAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9Iex-006ivY-Ku; Fri, 30 Jul 2021 02:54:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m9IfG-006j3L-4d; Fri, 30 Jul 2021 02:54:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9Ieh-006ioN-OV; Fri, 30 Jul 2021 02:53:49 +0000
-X-UUID: e8157bd7ad9e461399afc19c7e9c2b29-20210729
+ id 1m9Iel-006iqG-6P; Fri, 30 Jul 2021 02:53:52 +0000
+X-UUID: f19af9e8d28048cb9bbd02476c6d9e78-20210729
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1p7KpBl5EV9CpS4QcVdbsFWEhHjOxMRdSOZnYzCMKRU=; 
- b=qgwheJC5/R54b0WB2aqfKX5l/nMlDAwsiRpaKP/DJ3x70cjrY+mYFsTz3k6iB0jJNV8NQ9tXc+8iPMuZmgySQHT546yzUnEEalFkZ2EhRWrIEe0HsykXAReDBZC6hQ1ojl/OPExPaF8+foDOV/iNK3BOwZNQodHwd7g3E26egBg=;
-X-UUID: e8157bd7ad9e461399afc19c7e9c2b29-20210729
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=WMF/TETsOLeZ3Qo2vHkMBXmEz8ofx5855VnmBbdmJiE=; 
+ b=Lu9SHfNGPJWsZMTQS26KWlD/yCWCHJ+uxoJ+oLR09HF3CVpNi9UhGvMyw5qgl4z57c5EaAzVetTsSQG74lO9igWlKqwqd5meNGUlmzrHhM+JIZBdjICMUpTA4spdT72bRrTC/thR1WHu4kIfwNqCTQHLRPJOqx758ZdOQLaY/Mw=;
+X-UUID: f19af9e8d28048cb9bbd02476c6d9e78-20210729
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1975347021; Thu, 29 Jul 2021 19:53:42 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 29 Jul 2021 19:53:40 -0700
+ with ESMTP id 1752946687; Thu, 29 Jul 2021 19:53:50 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 29 Jul 2021 19:53:48 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Jul 2021 10:53:38 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 30 Jul 2021 10:53:46 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 30 Jul 2021 10:53:32 +0800
+ Transport; Fri, 30 Jul 2021 10:53:42 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -77,18 +77,18 @@ CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
  <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Eizan
  Miyamoto" <eizan@chromium.org>, <anthony.huang@mediatek.com>, Frank
  Wunderlich <frank-w@public-files.de>
-Subject: [PATCH v7 01/12] dt-binding: mediatek: Get rid of mediatek,
- larb for multimedia HW
-Date: Fri, 30 Jul 2021 10:52:27 +0800
-Message-ID: <20210730025238.22456-2-yong.wu@mediatek.com>
+Subject: [PATCH v7 02/12] iommu/mediatek-v1: Free the existed fwspec if the
+ master dev already has
+Date: Fri, 30 Jul 2021 10:52:28 +0800
+Message-ID: <20210730025238.22456-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210730025238.22456-1-yong.wu@mediatek.com>
 References: <20210730025238.22456-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210729_195347_857676_D8B39D58 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20210729_195351_285490_E1941949 
+X-CRM114-Status: GOOD (  17.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,250 +105,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-After adding device_link between the consumer with the smi-larbs,
-if the consumer call its owner pm_runtime_get(_sync), the
-pm_runtime_get(_sync) of smi-larb and smi-common will be called
-automatically. Thus, the consumer don't need the property.
+When the iommu master device enters of_iommu_xlate, the ops may be
+NULL(iommu dev is defered), then it will initialize the fwspec here:
 
-And IOMMU also know which larb this consumer connects with from
-iommu id in the "iommus=" property.
+[<c0c9c5bc>] (dev_iommu_fwspec_set) from [<c06bda80>]
+(iommu_fwspec_init+0xbc/0xd4)
+[<c06bd9c4>] (iommu_fwspec_init) from [<c06c0db4>]
+(of_iommu_xlate+0x7c/0x12c)
+[<c06c0d38>] (of_iommu_xlate) from [<c06c10e8>]
+(of_iommu_configure+0x144/0x1e8)
 
+BUT the mtk_iommu_v1.c only supports arm32, the probing flow still is a bit
+weird. We always expect create the fwspec internally. otherwise it will
+enter here and return fail.
+
+static int mtk_iommu_create_mapping(struct device *dev,
+				    struct of_phandle_args *args)
+{
+        ...
+	if (!fwspec) {
+	        ....
+	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
+                >>>>>>>>>>Enter here. return fail.<<<<<<<<<<<<
+		return -EINVAL;
+	}
+	...
+}
+
+Thus, Free the existed fwspec if the master device already has fwspec.
+
+This issue is reported at:
+https://lore.kernel.org/linux-mediatek/trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01/
+
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Evan Green <evgreen@chromium.org>
 ---
- .../bindings/display/mediatek/mediatek,disp.txt          | 9 ---------
- .../devicetree/bindings/media/mediatek-jpeg-decoder.yaml | 9 ---------
- .../devicetree/bindings/media/mediatek-jpeg-encoder.yaml | 9 ---------
- Documentation/devicetree/bindings/media/mediatek-mdp.txt | 8 --------
- .../devicetree/bindings/media/mediatek-vcodec.txt        | 4 ----
- 5 files changed, 39 deletions(-)
+No need fix tag, since it is ok before this cleanup patchset.
+the issue may be revealed by the patch adding probe_defer what adjust the
+device probing sequency.
+---
+ drivers/iommu/mtk_iommu_v1.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-index fbb59c9ddda6..867bd82e2f03 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
-@@ -61,8 +61,6 @@ Required properties (DMA function blocks):
- 	"mediatek,<chip>-disp-rdma"
- 	"mediatek,<chip>-disp-wdma"
-   the supported chips are mt2701, mt8167 and mt8173.
--- larb: Should contain a phandle pointing to the local arbiter device as defined
--  in Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
- - iommus: Should point to the respective IOMMU block with master port as
-   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-   for details.
-@@ -91,7 +89,6 @@ ovl0: ovl@1400c000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_OVL0>;
- 	iommus = <&iommu M4U_PORT_DISP_OVL0>;
--	mediatek,larb = <&larb0>;
- };
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 778e66f5f1aa..6861eeab182d 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -426,6 +426,15 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+ 	struct mtk_iommu_data *data;
+ 	int err, idx = 0;
  
- ovl1: ovl@1400d000 {
-@@ -101,7 +98,6 @@ ovl1: ovl@1400d000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_OVL1>;
- 	iommus = <&iommu M4U_PORT_DISP_OVL1>;
--	mediatek,larb = <&larb4>;
- };
- 
- rdma0: rdma@1400e000 {
-@@ -111,7 +107,6 @@ rdma0: rdma@1400e000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_RDMA0>;
- 	iommus = <&iommu M4U_PORT_DISP_RDMA0>;
--	mediatek,larb = <&larb0>;
- 	mediatek,rdma-fifosize = <8192>;
- };
- 
-@@ -122,7 +117,6 @@ rdma1: rdma@1400f000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_RDMA1>;
- 	iommus = <&iommu M4U_PORT_DISP_RDMA1>;
--	mediatek,larb = <&larb4>;
- };
- 
- rdma2: rdma@14010000 {
-@@ -132,7 +126,6 @@ rdma2: rdma@14010000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_RDMA2>;
- 	iommus = <&iommu M4U_PORT_DISP_RDMA2>;
--	mediatek,larb = <&larb4>;
- };
- 
- wdma0: wdma@14011000 {
-@@ -142,7 +135,6 @@ wdma0: wdma@14011000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_WDMA0>;
- 	iommus = <&iommu M4U_PORT_DISP_WDMA0>;
--	mediatek,larb = <&larb0>;
- };
- 
- wdma1: wdma@14012000 {
-@@ -152,7 +144,6 @@ wdma1: wdma@14012000 {
- 	power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 	clocks = <&mmsys CLK_MM_DISP_WDMA1>;
- 	iommus = <&iommu M4U_PORT_DISP_WDMA1>;
--	mediatek,larb = <&larb4>;
- };
- 
- color0: color@14013000 {
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-index 9b87f036f178..052e752157b4 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-decoder.yaml
-@@ -42,13 +42,6 @@ properties:
-   power-domains:
-     maxItems: 1
- 
--  mediatek,larb:
--    $ref: '/schemas/types.yaml#/definitions/phandle'
--    description: |
--      Must contain the local arbiters in the current Socs, see
--      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
--      for details.
--
-   iommus:
-     maxItems: 2
-     description: |
-@@ -63,7 +56,6 @@ required:
-   - clocks
-   - clock-names
-   - power-domains
--  - mediatek,larb
-   - iommus
- 
- additionalProperties: false
-@@ -83,7 +75,6 @@ examples:
-       clock-names = "jpgdec-smi",
-                     "jpgdec";
-       power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
--      mediatek,larb = <&larb2>;
-       iommus = <&iommu MT2701_M4U_PORT_JPGDEC_WDMA>,
-                <&iommu MT2701_M4U_PORT_JPGDEC_BSDMA>;
-     };
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-index fcd9b829e036..8bfdfdfaba59 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-@@ -35,13 +35,6 @@ properties:
-   power-domains:
-     maxItems: 1
- 
--  mediatek,larb:
--    $ref: '/schemas/types.yaml#/definitions/phandle'
--    description: |
--      Must contain the local arbiters in the current Socs, see
--      Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
--      for details.
--
-   iommus:
-     maxItems: 2
-     description: |
-@@ -56,7 +49,6 @@ required:
-   - clocks
-   - clock-names
-   - power-domains
--  - mediatek,larb
-   - iommus
- 
- additionalProperties: false
-@@ -75,7 +67,6 @@ examples:
-       clocks =  <&imgsys CLK_IMG_VENC>;
-       clock-names = "jpgenc";
-       power-domains = <&scpsys MT2701_POWER_DOMAIN_ISP>;
--      mediatek,larb = <&larb2>;
-       iommus = <&iommu MT2701_M4U_PORT_JPGENC_RDMA>,
-                <&iommu MT2701_M4U_PORT_JPGENC_BSDMA>;
-     };
-diff --git a/Documentation/devicetree/bindings/media/mediatek-mdp.txt b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-index caa24943da33..53ef26e2c857 100644
---- a/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-mdp.txt
-@@ -27,9 +27,6 @@ Required properties (DMA function blocks, child node):
- - iommus: should point to the respective IOMMU block with master port as
-   argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-   for details.
--- mediatek,larb: must contain the local arbiters in the current Socs, see
--  Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
--  for details.
- 
- Example:
- 	mdp_rdma0: rdma@14001000 {
-@@ -40,7 +37,6 @@ Example:
- 			 <&mmsys CLK_MM_MUTEX_32K>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_RDMA0>;
--		mediatek,larb = <&larb0>;
- 		mediatek,vpu = <&vpu>;
- 	};
- 
-@@ -51,7 +47,6 @@ Example:
- 			 <&mmsys CLK_MM_MUTEX_32K>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_RDMA1>;
--		mediatek,larb = <&larb4>;
- 	};
- 
- 	mdp_rsz0: rsz@14003000 {
-@@ -81,7 +76,6 @@ Example:
- 		clocks = <&mmsys CLK_MM_MDP_WDMA>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_WDMA>;
--		mediatek,larb = <&larb0>;
- 	};
- 
- 	mdp_wrot0: wrot@14007000 {
-@@ -90,7 +84,6 @@ Example:
- 		clocks = <&mmsys CLK_MM_MDP_WROT0>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_WROT0>;
--		mediatek,larb = <&larb0>;
- 	};
- 
- 	mdp_wrot1: wrot@14008000 {
-@@ -99,5 +92,4 @@ Example:
- 		clocks = <&mmsys CLK_MM_MDP_WROT1>;
- 		power-domains = <&scpsys MT8173_POWER_DOMAIN_MM>;
- 		iommus = <&iommu M4U_PORT_MDP_WROT1>;
--		mediatek,larb = <&larb4>;
- 	};
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index ad1321e5a22d..71237355cc7e 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -13,7 +13,6 @@ Required properties:
- - reg : Physical base address of the video codec registers and length of
-   memory mapped region.
- - interrupts : interrupt number to the cpu.
--- mediatek,larb : must contain the local arbiters in the current Socs.
- - clocks : list of clock specifiers, corresponding to entries in
-   the clock-names property.
- - clock-names: avc encoder must contain "venc_sel", vp8 encoder must
-@@ -46,7 +45,6 @@ vcodec_dec: vcodec@16000000 {
-           <0 0x16027800 0 0x800>,   /*VP8_VL*/
-           <0 0x16028400 0 0x400>;   /*VP9_VD*/
-     interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
--    mediatek,larb = <&larb1>;
-     iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
-              <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
-              <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
-@@ -99,7 +97,6 @@ vcodec_enc_avc: vcodec@18002000 {
-              <&iommu M4U_PORT_VENC_REF_CHROMA>,
-              <&iommu M4U_PORT_VENC_NBM_RDMA>,
-              <&iommu M4U_PORT_VENC_NBM_WDMA>;
--    mediatek,larb = <&larb3>;
-     mediatek,vpu = <&vpu>;
-     clocks = <&topckgen CLK_TOP_VENC_SEL>;
-     clock-names = "venc_sel";
-@@ -120,7 +117,6 @@ vcodec_enc_vp8: vcodec@19002000 {
-              <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
-              <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
-              <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
--    mediatek,larb = <&larb5>;
-     mediatek,vpu = <&vpu>;
-     clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-     clock-names = "venc_lt_sel";
++	/*
++	 * In the deferred case, free the existed fwspec if the dev already has,
++	 * Always initialize the fwspec internally.
++	 */
++	if (fwspec) {
++		iommu_fwspec_free(dev);
++		fwspec = dev_iommu_fwspec_get(dev);
++	}
++
+ 	while (!of_parse_phandle_with_args(dev->of_node, "iommus",
+ 					   "#iommu-cells",
+ 					   idx, &iommu_spec)) {
 -- 
 2.18.0
 _______________________________________________
