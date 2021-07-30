@@ -2,19 +2,19 @@ Return-Path: <SRS0=u2zk=MW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A608C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 10:03:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B5399C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 10:10:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D31FE60F48
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 10:03:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D31FE60F48
+	by mail.kernel.org (Postfix) with ESMTPS id 83BA160F12
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 10:10:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 83BA160F12
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TWU6VuSQHe4dO/Nq/SvYOxW+ONZrny+Dc1WVJFRTrQo=; b=EjSERVBYrOgrEWbPC19KQQEjwN
-	P613Li/difrImKWrIUawO9si0w8EPPPsWao0aLj5Pe1CG0lsSlBJaz2uLbIz/PvuX4OtVu+dozUY0
-	YQ4mdbwFBEsdkwvszk+FFNA+WYiSTZTSXHDxYoqEMKtW+20P584u4/b3J+C0Ph57paVggN+42xhyL
-	MdoXJhoMJtoWSylJKJ06oiJBYvj37vFF3OEHWx6Ea+pOPurw3f30imUANXzaBuyFl5CLeBKDoL/Ah
-	2hSW8Mq61aF1VjhyWnmF0fF+ctuXPXUZG+/pT9SZYZtGYCNWRk6Xqe65X9XzwhZ0e9Y5rSRmSGuX/
-	zr3oStgQ==;
+	bh=rBHABFYAPXCk8pAJhKRf7JOXKiWwsrh7vH519Oo0z7E=; b=TgQvgupK1QVCc8Gih1iDeRf6fT
+	XyGK/wn/eDzR2zchsuKUTQTQISv2pvYV1nniYBaBo9v4vnJqOcfgM818N0R0IBgZtr0/difAWUw/B
+	F2h1LuXDQsQe0dbC8Mf3z/NRp0RZEMfneKjBu3gYe/9L/gUjnWIWYW2/zUp/RKkoc+wN4imGoGfAs
+	/ftI4S3jK0XTomIOjeDEn8QlfiKU/o75FzQhF+Cbbo/E/SVszuBuiIDqvjvYNXjhdEedhcVBPWbgw
+	kxAZN6N4O4shZoZOthajy/bSECj/h2tg+c9+cjnIMHEnil6y8CuKfR3ys2P3W2XbZVkqbVAgHLWep
+	7TlaKUlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9PLs-0083i3-V1; Fri, 30 Jul 2021 10:02:48 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1m9PSp-0085bP-Pl; Fri, 30 Jul 2021 10:09:59 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9PLd-0083W6-SS; Fri, 30 Jul 2021 10:02:36 +0000
+ id 1m9PSX-0085XR-Am; Fri, 30 Jul 2021 10:09:42 +0000
 Received: from [IPv6:2a02:810a:880:f54:51e7:d967:c146:d0c] (unknown
  [IPv6:2a02:810a:880:f54:51e7:d967:c146:d0c])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id EAD381F4479B;
- Fri, 30 Jul 2021 11:02:25 +0100 (BST)
-Subject: Re: [PATCH v3, 00/15] Using component framework to support multi
- hardware decode
-To: yunfei dong <yunfei.dong@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Alexandre Courbot <acourbot@chromium.org>,
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 98A291F446BD;
+ Fri, 30 Jul 2021 11:09:37 +0100 (BST)
+Subject: Re: [PATCH v3, 01/15] media: mtk-vcodec: Get numbers of register
+ bases from DT
+To: Tzung-Bi Shih <tzungbi@google.com>, Yunfei Dong <Yunfei.Dong@mediatek.com>
+Cc: Alexandre Courbot <acourbot@chromium.org>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
  <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20210727101051.24418-1-yunfei.dong@mediatek.com>
- <2b562943-534a-b53d-696d-9f2a4836f76e@collabora.com>
- <1627546086.17009.7.camel@mhfsdcap03>
+ <20210727101051.24418-2-yunfei.dong@mediatek.com>
+ <CA+Px+wUXmpT6TBOvD9J6ircLQ_X5D=bByOotfk+L7U+sXev3nQ@mail.gmail.com>
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <e053d727-b04d-686e-b1e0-528e039f3c26@collabora.com>
-Date: Fri, 30 Jul 2021 12:02:23 +0200
+Message-ID: <c6ecd39b-a756-b1b7-3191-6d9536f72b87@collabora.com>
+Date: Fri, 30 Jul 2021 12:09:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <1627546086.17009.7.camel@mhfsdcap03>
+In-Reply-To: <CA+Px+wUXmpT6TBOvD9J6ircLQ_X5D=bByOotfk+L7U+sXev3nQ@mail.gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210730_030234_255754_3F7DE709 
-X-CRM114-Status: GOOD (  35.38  )
+X-CRM114-CacheID: sfid-20210730_030941_562532_12C07765 
+X-CRM114-Status: GOOD (  16.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,147 +88,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 29.07.21 10:08, yunfei dong wrote:
-> On Tue, 2021-07-27 at 12:55 +0200, Dafna Hirschfeld wrote:
->> Thank you for the patchset.
->>
->> Could you provide information on how you
->> tested the code.
->> Did you test it on chromeos userspace?
->> Did you use the test-tast framework?
->> What tests did you run?
->>
->> Dafna
->>
-> Hi Dafna,
+On 30.07.21 11:31, Tzung-Bi Shih wrote:
+> On Tue, Jul 27, 2021 at 06:10:37PM +0800, Yunfei Dong wrote:
+>> +static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+>> +{
+>> +     struct platform_device *pdev = dev->plat_dev;
+>> +     int reg_num, i, ret = 0;
+> ret don't need to be initialized.
 > 
-> I just merge the code to kernel 4.19 and build pass.
+>> +     for (i = 0; i < reg_num; i++) {
+>> +             dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+>> +             if (IS_ERR((__force void *)dev->reg_base[i])) {
+>> +                     return PTR_ERR((__force void *)dev->reg_base[i]);
+>> +             }
+> { } can be removed.
 
-Since those patches are sent to upstream , you should probably also make
-sure that they are built on the media_tree repo.
+I think that also the "__fore void*" can be removed
 
-> When the system boot up, I will play some vdec h264/vp8/vp9 bitstreams.
-> The code should be ok when all bitstreams can play well.
-> 
-> For MT8173 is statefull decode, I won't change the arch and component is
-> used for stateless decode(mt8192), mt8183 not use component arch also.
-> Only if decode driver can play well, the change should be ok for mt8173.
-> 
-> I needn't to do tast test for mt8173 for the arch not be changed.
-
-But the frist patches in that series are general bug fixes that influance all arch
-
-Thanks,
+thanks,
 Dafna
 
-> 
-> Thanks,
-> Yunfei Dong
->>
->> On 27.07.21 12:10, Yunfei Dong wrote:
->>> This series adds support for multi hardware decode into mtk-vcodec, by first
->>> adding component framework to manage each hardware information: interrupt,
->>> clock, register bases and power. Secondly add core thread to deal with core
->>> hardware message, at the same time, add msg queue for different hardware
->>> share messages. Lastly, the architecture of different specs are not the same,
->>> using specs type to separate them.
->>>
->>> This series has been tested with both MT8183 and MT8173. Decoding was working
->>> for both chips.
->>>
->>> Patches 1,2 rewrite get register bases and power on/off interface.
->>>
->>> Patch 3-5 add component framework to support multi hardware.
->>>
->>> Patches 6-14 add interfaces to support core hardware.
->>> ----
->>> This patch dependents on "media: mtk-vcodec: support for MT8183 decoder"[1].
->>>
->>> Multi hardware decode is based on stateless decoder, MT8183 is the first time
->>> to add stateless decoder. Otherwise it will cause conflict. Please also accept
->>> this patch together with [1].
->>>
->>> [1]https://lore.kernel.org/patchwork/project/lkml/list/?series=507084
->>> ----
->>> Changes compared with v2:
->>> - Fix return value for patch 1/15
->>> - Add this new patch to align vdec and venc wake up ctx interface for patch 2/15
->>> - Fix comments for patch 4/15
->>> - Change txt files to yaml for patch 5/15
->>> - Generalize wake up ctx interface for stateless and stateful decode for patch 7/15
->>> - Add document for structs and functions for patch 8/15
->>> - Add condition to check the return value of kthread_run for patch 11/15
->>> - Fix yaml check fail for patch 13/15
->>>
->>> Changes compared with v1:
->>> - Fix many comments for patch 3/14
->>> - Remove unnecessary code for patch 4/14
->>> - Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
->>> - Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
->>> - Using yaml format to instead of txt file for patch 12/14
->>>
->>> Yunfei Dong (15):
->>>     media: mtk-vcodec: Get numbers of register bases from DT
->>>     media: mtk-vcodec: Align vcodec wake up interrupt interface
->>>     media: mtk-vcodec: Refactor vcodec pm interface
->>>     media: mtk-vcodec: Use component framework to manage each hardware
->>>       information
->>>     dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
->>>       dt-bindings
->>>     media: mtk-vcodec: Use pure single core for MT8183
->>>     media: mtk-vcodec: Add irq interface for multi hardware
->>>     media: mtk-vcodec: Add msg queue feature for lat and core architecture
->>>     media: mtk-vcodec: Generalize power and clock on/off interfaces
->>>     media: mtk-vcodec: Add new interface to lock different hardware
->>>     media: mtk-vcodec: Add core thread
->>>     media: mtk-vcodec: Support 34bits dma address for vdec
->>>     dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
->>>     media: mtk-vcodec: Add core dec and dec end ipi msg
->>>     media: mtk-vcodec: Use codec type to separate different hardware
->>>
->>>    .../media/mediatek,vcodec-comp-decoder.yaml   | 154 +++++++++
->>>    .../media/mediatek,vcodec-decoder.yaml        | 138 ++++++++
->>>    .../media/mediatek,vcodec-encoder.yaml        | 128 ++++++++
->>>    .../bindings/media/mediatek-vcodec.txt        | 130 --------
->>>    drivers/media/platform/mtk-vcodec/Makefile    |   2 +
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 296 +++++++++++++++---
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 184 +++++++++++
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  48 +++
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   |  98 ++++--
->>>    .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  13 +-
->>>    .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
->>>    .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
->>>    .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  76 ++++-
->>>    .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  12 +-
->>>    .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |   1 -
->>>    .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  27 +-
->>>    .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
->>>    .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 ++++-
->>>    .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
->>>    .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 +-
->>>    .../mtk-vcodec/vdec/vdec_h264_req_if.c        |   2 +-
->>>    .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 +-
->>>    .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 +-
->>>    .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
->>>    .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
->>>    .../platform/mtk-vcodec/vdec_msg_queue.c      | 290 +++++++++++++++++
->>>    .../platform/mtk-vcodec/vdec_msg_queue.h      | 157 ++++++++++
->>>    .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
->>>    .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
->>>    .../platform/mtk-vcodec/venc/venc_h264_if.c   |   2 +-
->>>    .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
->>>    33 files changed, 1697 insertions(+), 280 deletions(-)
->>>    create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
->>>    create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
->>>    create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
->>>    delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
->>>    create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
->>>    create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
->>>    create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
->>>    create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
->>>
 > 
 
 _______________________________________________
