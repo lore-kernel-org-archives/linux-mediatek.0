@@ -2,93 +2,82 @@ Return-Path: <SRS0=u2zk=MW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 805B4C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 16:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8201CC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 16:25:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4825E60F4B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 16:24:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4825E60F4B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4F03860F4B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Jul 2021 16:25:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4F03860F4B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ec07rx01alarMZV1jTOu23S2dnvVKaAdCdWY0WbrBeo=; b=gmJAdnvbqj7fGw
-	G6liomFVYw6VJcpU4ln3Yn/M7jXnsvvTWEcG2Sw8rW53xzs/qLEySfZlYAUOhbX2239uzJzF6Rl1r
-	2Ui943HmkHKRc4lDAAY7SK0hMVz/0L1elZj4KWPAGh8I7BQlO3U7YmKEkjOiqwRM/edJ1rrqMKz5Q
-	MpPsi8hdaEfXBB/3xPKo/3rCxSgWVFXGHKuedwfuDd8fh08sN8YLSxGjpx9r3EAWqFfoeEaS3IkcB
-	feGmD229AIRmmeLKR4uxtcIXTP4zd+iSlA4EAWiIHUkxqGmFfk6bGEki4pQFevlu7cKDVnh0sLYTx
-	2Sz9m+qZ//+ehd2N3/Wg==;
+	List-Owner; bh=VtjWwTqt2oUJ+LfzEZcOFNOsyGo8d/KKeLMZvGMIgLk=; b=sLDZKBpnPnN9qa
+	4bDdBj91tcV49rJSFy8sPU0h3qIz9JFuxq6U3qI1ZVYQH08i7D8c8va2dxgwKzurgmSns2N1CTpHL
+	LnKA2KiLtefCPtMnjfi/PMKbww1Z0Yv/N1icqoVuoP9V1nIzHllnUUusm4vUw02ldh99PlzcDoEOT
+	P4NBQ7GuLhviE8w8G+RdmvHY3SG8KSwTEy2lqxRyNoZ9vHFkqXo29TiEeWejWwe7vK9WX47Is68j2
+	qeQCQw5Ky0clcJByR/d1+sD0Qfi0powdgnoe/O0GAfRnnZUCearMuT7VFU56DicADmIvzMV4Welc6
+	OuHd9fMaxCr7k4bXh+iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9VJ9-009U7H-Ro; Fri, 30 Jul 2021 16:24:23 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1m9VJj-009UIT-Go; Fri, 30 Jul 2021 16:24:59 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9VIv-009U2b-Ap; Fri, 30 Jul 2021 16:24:10 +0000
-Received: by mail-ed1-x532.google.com with SMTP id b7so13991863edu.3;
- Fri, 30 Jul 2021 09:24:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=v5PtflUOMFCz8VFrpVreqK0QkFZ0DCmbVl+BetEIMLA=;
- b=cx88dZsM/gESTquoQdw282H1eLFTucH+6Tjr9ymA9x5y/o/3+r15SBQpKO+zilfmmP
- 9dz9Bo2yeYbD+3gsxy8toxmJMuuD7qn43TiQ3r+xOk1IIdSoSByqPaoidcvoXhaeXT1F
- jUpSk7XB6yMSGVvefwl7HyDsRhl3FukxyR9ksZz7NEXyHW4FueOjd+SzGOEXpz/LxO8f
- NqE66HK4Ghkwlai7pVgn1Y+1Z758a1pj5+ee6M31K2Oo61DodXaUFKd4AjUuE3SQGd8I
- OObBXhXHluZbgtRyoek1h6MBnehYhKbnj9GeCAL9iDGHPLC3mkL++4juKnNGn5ORgIpX
- A5OQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=v5PtflUOMFCz8VFrpVreqK0QkFZ0DCmbVl+BetEIMLA=;
- b=WXy1Yo34ICvOWdMxyOGXBKJjhIcve3FcGdlvh7S5AAHshv9bEuLtrohu6hz6dq2N+m
- M9IqM37hFhr59uv5/WUjgalxGALO5Z2M0Pj+c3oxZRmNPvsOxHt7An9+QsK5OhFP1JU0
- inGVj/yosEfWQXoctGXSV81BUAzZk9elsQtZ2psamD9bR5nhPEFZb9VGKWHBErI5pZVW
- BSaF5s+OJcVny4T+5EIq9DtGEl721+ulbJyzA+XMoVGtERRHbsMOJE9yKtRZ4RLA7n2D
- wzJXHe3rZQ2OMjtr0b0dhxTA2C9bgt8VGIAi14b7/je2IbLqVyzM++HKuDTdZHIFG+97
- dmgg==
-X-Gm-Message-State: AOAM532sN0m1sL8VhqR0hIB+3pMmFYxw694kQPHO1qXWYsYbbnE0oxni
- ZRSePTeU104LNTHLFb3ef6c=
-X-Google-Smtp-Source: ABdhPJweLORroV9hhMblkUOnSMbOxS8yH/JDLiFxs2LDuTbNnKpwpXAHnRkrTXKkthWxAW+5/EAUkw==
-X-Received: by 2002:aa7:c98f:: with SMTP id c15mr19553edt.286.1627662245837;
- Fri, 30 Jul 2021 09:24:05 -0700 (PDT)
-Received: from skbuf ([82.76.66.29])
- by smtp.gmail.com with ESMTPSA id gu2sm715595ejb.96.2021.07.30.09.24.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 Jul 2021 09:24:05 -0700 (PDT)
-Date: Fri, 30 Jul 2021 19:24:03 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC net-next 1/2] net: dsa: tag_mtk: skip address learning on
- transmit to standalone ports
-Message-ID: <20210730162403.p2dnwvwwgsxttomg@skbuf>
-References: <20210728175327.1150120-1-dqfext@gmail.com>
- <20210728175327.1150120-2-dqfext@gmail.com>
- <20210728183705.4gea64qlbe64kkpl@skbuf>
+ id 1m9VJT-009UDI-Hr; Fri, 30 Jul 2021 16:24:44 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 372A56101C;
+ Fri, 30 Jul 2021 16:24:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1627662283;
+ bh=rJGnm55O1tNTXXwwxOhfbNirfLkXYq7zue02n7Tdz6g=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=oiGzBHlg862uFecdCPxiopLytEgtT9H1q/AcThot49jQjIX0/d5bVk+dLn37KqRGH
+ BEJyH+6mdVrVF0tRLmWiO7o1PbM8jL0YVqZBN0Q4rgb8dRbSi6L1bRLPH1ocjzoirT
+ cp4r77MxFGSCqexTnykNH+UpxKj1SWzfg2c9j4wGfiHUB1Zsgm0+hrqZHFv/k3w0EC
+ brPZJ9F45MuY4VagEY4q4F5W3wJwcH4JZaEQn+s4lzkoQYAkZNpNUCoRGdaKecfPhc
+ mB7/zX7jbSUiVl6llFHL6nxGTUpZIzevCYu5z12RyOwZTDTUa7hkbcCp+FiAIJlPj0
+ rjsgnSxSRyVKg==
+Received: by mail-ed1-f53.google.com with SMTP id j2so13912820edp.11;
+ Fri, 30 Jul 2021 09:24:43 -0700 (PDT)
+X-Gm-Message-State: AOAM531xXx4zcLHlUSH+CgcPwPbg3EwQ+KO3z1OcUZl4tQPLF5gqtNJK
+ 5bTXLy/VUD2KPAjA4p8wXE9eeW4GogIIlswE3w==
+X-Google-Smtp-Source: ABdhPJyA06qzYSh+f7EEVqAUfFRLkrZuqD1G+Hvft9QlGEOSN9ieg2X5H3Hxms9/ORgFt0VU+fGNT3l+kVqqUAMyCdw=
+X-Received: by 2002:a50:d71e:: with SMTP id t30mr3917906edi.72.1627662281812; 
+ Fri, 30 Jul 2021 09:24:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210728183705.4gea64qlbe64kkpl@skbuf>
+References: <1627459111-2907-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1627459111-2907-8-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1627459111-2907-8-git-send-email-chunfeng.yun@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Sat, 31 Jul 2021 00:24:31 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8XCeWbiHziB9=2EdUFmOg1m6eOi1qTN1QppqRKaS07xA@mail.gmail.com>
+Message-ID: <CAAOTY_8XCeWbiHziB9=2EdUFmOg1m6eOi1qTN1QppqRKaS07xA@mail.gmail.com>
+Subject: Re: [PATCH 8/9] phy: phy-mtk-mipi-dsi: remove dummy assignment of
+ error number
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-phy@lists.infradead.org, 
+ DTML <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Eddie Hung <eddie.hung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210730_092409_423383_304F89F9 
-X-CRM114-Status: GOOD (  12.36  )
+X-CRM114-CacheID: sfid-20210730_092443_659001_B7971629 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,25 +89,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 28, 2021 at 09:37:05PM +0300, Vladimir Oltean wrote:
-> Otherwise this is as correct as can be without implementing TX
-> forwarding offload for the bridge (which you've explained why it doesn't
-> map 1:1 with what your hw can do). But just because a port is under a bridge
-> doesn't mean that the only packets it sends belong to that bridge. Think
-> AF_PACKET sockets, PTP etc. The bridge also has a no_linklocal_learn
-> option that maybe should be taken into consideration for drivers that
-> can do something meaningful about it. Anyway, food for thought.
-
-Considering that you also have the option of setting
-ds->assisted_learning_on_cpu_port = true and this will have less false
-positives, what are the reasons why you did not choose that approach?
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIENodW5mZW5nOgoKQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPiDm
+lrwgMjAyMeW5tDfmnIgyOOaXpSDpgLHkuIkg5LiL5Y2IMzo1OeWvq+mBk++8mgo+Cj4gUmV0dXJu
+IHRoZSBlcnJvciBudW1iZXIgZGlyZWN0bHkgd2l0aG91dCBhc3NpZ25tZW50CgpBY2tlZC1ieTog
+Q2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gU2lnbmVkLW9mZi1i
+eTogQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55dW5AbWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2
+ZXJzL3BoeS9tZWRpYXRlay9waHktbXRrLW1pcGktZHNpLmMgfCA2ICsrLS0tLQo+ICAxIGZpbGUg
+Y2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2kuYyBiL2RyaXZlcnMvcGh5L21l
+ZGlhdGVrL3BoeS1tdGstbWlwaS1kc2kuYwo+IGluZGV4IDAxY2YzMTYzMzAxOS4uNjFjOTQyZmJm
+NGExIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2ku
+Ywo+ICsrKyBiL2RyaXZlcnMvcGh5L21lZGlhdGVrL3BoeS1tdGstbWlwaS1kc2kuYwo+IEBAIC0y
+MDMsMTAgKzIwMyw4IEBAIHN0YXRpYyBpbnQgbXRrX21pcGlfdHhfcHJvYmUoc3RydWN0IHBsYXRm
+b3JtX2RldmljZSAqcGRldikKPiAgICAgICAgIHBoeV9zZXRfZHJ2ZGF0YShwaHksIG1pcGlfdHgp
+Owo+Cj4gICAgICAgICBwaHlfcHJvdmlkZXIgPSBkZXZtX29mX3BoeV9wcm92aWRlcl9yZWdpc3Rl
+cihkZXYsIG9mX3BoeV9zaW1wbGVfeGxhdGUpOwo+IC0gICAgICAgaWYgKElTX0VSUihwaHlfcHJv
+dmlkZXIpKSB7Cj4gLSAgICAgICAgICAgICAgIHJldCA9IFBUUl9FUlIocGh5X3Byb3ZpZGVyKTsK
+PiAtICAgICAgICAgICAgICAgcmV0dXJuIHJldDsKPiAtICAgICAgIH0KPiArICAgICAgIGlmIChJ
+U19FUlIocGh5X3Byb3ZpZGVyKSkKPiArICAgICAgICAgICAgICAgcmV0dXJuIFBUUl9FUlIocGh5
+X3Byb3ZpZGVyKTsKPgo+ICAgICAgICAgbWlwaV90eC0+ZGV2ID0gZGV2Owo+Cj4gLS0KPiAyLjE4
+LjAKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
+YXRlawo=
