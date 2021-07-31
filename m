@@ -2,98 +2,96 @@ Return-Path: <SRS0=E1wD=MX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83F46C4338F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 13:27:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF007C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 17:18:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 02AD86101C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 13:27:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 02AD86101C
+	by mail.kernel.org (Postfix) with ESMTPS id 8887B60F94
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 17:18:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8887B60F94
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:CC:To:Date:From:Subject:
-	MIME-Version:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FDo4XccxisZFEiDotBOXXzV19CPw3v05LZ7gi0pLPXU=; b=tRecwq1tHfd5ru
-	UWYX8lc/H+3IpB8o26QhABltqQZ08tB7OBQsvjgu2LE8v27IzlVaLXH19kTkR6W03vY3W1sjqYd/c
-	NNisuWOGxsK5NwBUuYkAqTc9mTfwxRYtRs0QjjgjF4azeqkA2fnBzy23/XXu5Y+6d/db+/Qm1gLiT
-	8Rt3/sJeu89FFmLTBPYOilRTt/N4W41irlSOJaOMP/Tj5CwTaGG6biBFpL2P3hWYYJWNE2WJEQeyN
-	/RdtKVLUPPY73DthfR0DBvrHyIZSaQgQZ9tUkv7s2bz++FgJJgnsYx4agdjG4SPrp+EIk0cLuMmHn
-	/+FSYJf0w3iB3f21Os+g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=arpJsRtpDvl5XXPiWlyxJmhjxEai1+RiHUmJPT9fiJk=; b=kbyTm8FFYCngAYFzyJdXXccMTk
+	lzE85D6UINmVPAc5IuX/QX9zR07tfBXj3GFlaXu76wnEADioY1YJwTGMoKsfjKGolSvkZ1vISvLpM
+	RdxGQdMABUfizE2J0Q1PdP2s1p2n8UO/rhlZsmvrK/9vb4gPiN3F6zg3KHZtGroCjpXoKWkck5mEW
+	6BblTgSfjVCPqw5v63EFJazMh2a8vU9TlOgq4j68iFhwcCbi3QmnjPgVRRu/0QpFpo3ropVOZw4U8
+	xp8FfOlNUMkY2KTKYP/Ypfdb3So9YTBoQOf9QD428FkTwXxf82/HMj9krwnJ083Z6iuzRriXNM/n9
+	h6Y02mkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9p1P-00BgpB-8v; Sat, 31 Jul 2021 13:27:23 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1m9scZ-00ByeE-He; Sat, 31 Jul 2021 17:17:59 +0000
+Received: from mail-ot1-x32f.google.com ([2607:f8b0:4864:20::32f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9p1B-00Bgny-EE; Sat, 31 Jul 2021 13:27:11 +0000
-Received: by mail-ed1-x531.google.com with SMTP id y12so17533422edo.6;
- Sat, 31 Jul 2021 06:27:08 -0700 (PDT)
+ id 1m9scW-00BydU-Lh; Sat, 31 Jul 2021 17:17:58 +0000
+Received: by mail-ot1-x32f.google.com with SMTP id
+ c2-20020a0568303482b029048bcf4c6bd9so13093887otu.8; 
+ Sat, 31 Jul 2021 10:17:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=in-reply-to:references:thread-topic:user-agent:mime-version
- :content-transfer-encoding:subject:from:date:to:cc:message-id;
- bh=xl09+cxouK/J8oQbWqVsZd+JkQVF+Hr4QFi7eK3edzg=;
- b=nQgLQpxWPfiFCI3TlKKidWTFMQj5R2bx5WVEcdYTDRAIO5H7Ki22zu4sGPWAHI0246
- aEm1k5BLdaoYUAN6ifFPowXWMiJzJH2wC12SKbmsD6h2g1rpquOy2ntEsMjD9RAwbBHC
- 65yy2xHFzo3hj4jHF8On0YcLlRbnUsA0c9CAkk4xedWzFBXnypui1qTU6mVC1V8CkUhw
- B9Xa3g6aPyMxgfmAqZWiswEARMM8yfW6Ro+wMDLpkZ/S6BKk6RMTz2k84R47VsB8tW5A
- Gk4VfrKIButSiEBtsVBM9IsDlPrE2IlARmuURy2pYI3SjoYXYhKZbOkSRyD8ObMfxBEe
- 3HVA==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=VBFOhjOELzONs4QzqrGKY4r1pt4kNYPN+iXUO9A8HRo=;
+ b=N9bRK/48BMswzWvFDp+hnpgMPXfBw7DFPC19+KpweWJt3pFkZsVC4AMiq/Yyg61GWb
+ axBC1y3M1D05GTfP0vk5GdqMOOHqnOlJBbGS20g5Th1RIO7LvIHFH/mTWfXvRxX/fjVd
+ OPbzwTCGhJrrygPx9QD6QHKSBApwu1ZOwOPvSEskg/uMzPU3/g9KAC19hPXWkMqQFzi8
+ 3Ut9ULN5QhczSVYl3uh9I8Rz2htQz8oGy3fvOsV8GOLJMN8fTr7K1t8ZVztUer0rwYSz
+ iQ4DEuOhKk4+gUWKpGNVebBaDEv8UqxFxF0cdlNfzRWjb+Po3W/0qIhF0Jna/mjvJtAR
+ CJeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:in-reply-to:references:thread-topic:user-agent
- :mime-version:content-transfer-encoding:subject:from:date:to:cc
- :message-id;
- bh=xl09+cxouK/J8oQbWqVsZd+JkQVF+Hr4QFi7eK3edzg=;
- b=bFuK5wY4HC2HgLLTB3mW61Q0lJlDofOgepiAUSikZiggRbu2vYTfl0QDobzNnNraoP
- 145Pcp65RjLxjtwThpCxwzrsbDy5ezqsQyH2QUC+Xj3w9pPbYTOK5HliF1YsSYqyA6ir
- eGsdcvjGGoUgzGFyDj8OOJHvFS9ywqlBgGeTr415FomAww/tIpsp3NIRMeEdBrLe+ihV
- VndkNLo4Q1NIb69Byw9+/0cDCfgqsYQLLM+BVYjdSiEWB437a+kBNVk+P0LPge/+z0vR
- Xd+EBQxxJRyMbwZptQMqKZUGe37cmJsRTSSp03kjum0grS6P/rAnxIPPhg24zKsARKRr
- w/qA==
-X-Gm-Message-State: AOAM531bI05JdhqZoy7mt2pMCKOE5Vl/Blpiyl9WfX9y7V6z8GfrT/vW
- JzVVsNK+eamCGH5zx74+tbM=
-X-Google-Smtp-Source: ABdhPJzlw31pNS40a/9JFPmy1rPxcNXk5ZQGBfrczjR6U3W2TJEh4j5Csva/YdpkPS3o00SAyEjjWA==
-X-Received: by 2002:a05:6402:c01:: with SMTP id
- co1mr9067625edb.287.1627738027162; 
- Sat, 31 Jul 2021 06:27:07 -0700 (PDT)
-Received: from [192.168.1.158] (83-87-52-217.cable.dynamic.v4.ziggo.nl.
- [83.87.52.217])
- by smtp.gmail.com with ESMTPSA id l16sm1701766eje.67.2021.07.31.06.27.05
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VBFOhjOELzONs4QzqrGKY4r1pt4kNYPN+iXUO9A8HRo=;
+ b=CW1+ZBbLVVD8ccm9RIO02rQKlc597aeah918klMBG7ee/G6tESaX1hkk9kNjZCqYlf
+ I1ESr9W/zObljio2l2iJuuQ0095c24qrBpqQE/d57kUkca2ds4nxOPLXg4xJuC4ppINc
+ +XR2u0LkBF5y8OA9mKLF3Bdh4jQ8gj6y6vBuvpvBj8xa9/far/JjL7C6yCPudW7On+Fj
+ n+WmEANG4YO0rA/aPimTKXaCxCMnZyh0UoVV/7BhfPUA1SBKFsXYBMrsubtHD73ZsDkG
+ 0HDQKlCsQhXClSzd8Hjy/lnUVF8r3O6r0SbqwsGo6VLvLSLmRGXz7r3M46/V7Vy4Uqta
+ mVEA==
+X-Gm-Message-State: AOAM532utRweK99GKHhOng5rslBmkZvpl9ibvj6nwdlOULYeGNnLAswb
+ /GuWs862SngrvYcqM/4t92E=
+X-Google-Smtp-Source: ABdhPJx8dMsfdRNVpMvtjqsv4yB7q1OfwLARLxoOCcl5wQCeeGCDMPXRWVPYcKy1drB1zqT/sE7kCw==
+X-Received: by 2002:a9d:7651:: with SMTP id o17mr6259175otl.205.1627751875242; 
+ Sat, 31 Jul 2021 10:17:55 -0700 (PDT)
+Received: from Davids-MacBook-Pro.local ([8.48.134.27])
+ by smtp.googlemail.com with ESMTPSA id i43sm934749ota.53.2021.07.31.10.17.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 31 Jul 2021 06:27:06 -0700 (PDT)
-In-Reply-To: <20210727132015.835651-5-sashal@kernel.org>
-References: <20210727132015.835651-1-sashal@kernel.org>
- <20210727132015.835651-5-sashal@kernel.org>
-X-Referenced-Uid: 5707
-Thread-Topic: [PATCH AUTOSEL 4.19 5/6] mt7530 fix mt7530_fdb_write vid missing
- ivl bit
-X-Blue-Identity: !l=240&o=43&fo=2660&pl=166&po=0&qs=PREFIX&f=HTML&m=!%3ANzRiZDk5M2QtNTJhNy00MTE4LThlNmYtYTk2ZDg2NDQzNGU0%3ASU5CT1g%3D%3ANTcwNw%3D%3D%3AANSWERED&p=164&q=SHOW
-X-Is-Generated-Message-Id: true
-User-Agent: Android
+ Sat, 31 Jul 2021 10:17:54 -0700 (PDT)
+Subject: Re: [PATCH net-next v2] ipv6: add IFLA_INET6_RA_MTU to expose mtu
+ value in the RA message
+To: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
+ <davem@davemloft.net>, David Ahern <dsahern@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ rocco.yue@gmail.com, chao.song@mediatek.com, zhuoliang.zhang@mediatek.com
+References: <20210731015230.11589-1-rocco.yue@mediatek.com>
+From: David Ahern <dsahern@gmail.com>
+Message-ID: <5be90cf4-f603-c2f2-fd7e-3886854457ba@gmail.com>
+Date: Sat, 31 Jul 2021 11:17:53 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.12.0
 MIME-Version: 1.0
-X-Local-Message-Id: <e1508978-8f0e-40a6-baa8-3d3bc4c82811@gmail.com>
-Subject: Re: [PATCH AUTOSEL 4.19 5/6] mt7530 fix mt7530_fdb_write vid missing
- ivl bit
-From: Eric Woudstra <ericwouds@gmail.com>
-Date: Sat, 31 Jul 2021 15:27:04 +0200
-To: Sasha Levin <sashal@kernel.org>
-CC: linux-kernel@vger.kernel.org,stable@vger.kernel.org,
- "David S . Miller" <davem@davemloft.net>,netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,linux-mediatek@lists.infradead.org
-Message-ID: <e1508978-8f0e-40a6-baa8-3d3bc4c82811@gmail.com>
+In-Reply-To: <20210731015230.11589-1-rocco.yue@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210731_062709_545428_A918700A 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20210731_101756_789597_1531A7F9 
+X-CRM114-Status: GOOD (  36.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,66 +108,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-A few days after this patch, I send in another as it needs a fix. If you apply this patch, please also apply the other: set ivl bit only for vid larger than 1.
-
-On Jul 27, 2021, 3:20 PM, at 3:20 PM, Sasha Levin <sashal@kernel.org> wrote:
->From: Eric Woudstra <ericwouds@gmail.com>
->
->[ Upstream commit 11d8d98cbeef1496469b268d79938b05524731e8 ]
->
->According to reference guides mt7530 (mt7620) and mt7531:
->
->NOTE: When IVL is reset, MAC[47:0] and FID[2:0] will be used to
->read/write the address table. When IVL is set, MAC[47:0] and CVID[11:0]
->will be used to read/write the address table.
->
->Since the function only fills in CVID and no FID, we need to set the
->IVL bit. The existing code does not set it.
->
->This is a fix for the issue I dropped here earlier:
->
->http://lists.infradead.org/pipermail/linux-mediatek/2021-June/025697.html
->
->With this patch, it is now possible to delete the 'self' fdb entry
->manually. However, wifi roaming still has the same issue, the entry
->does not get deleted automatically. Wifi roaming also needs a fix
->somewhere else to function correctly in combination with vlan.
->
->Signed-off-by: Eric Woudstra <ericwouds@gmail.com>
->Signed-off-by: David S. Miller <davem@davemloft.net>
->Signed-off-by: Sasha Levin <sashal@kernel.org>
->---
-> drivers/net/dsa/mt7530.c | 1 +
-> drivers/net/dsa/mt7530.h | 1 +
-> 2 files changed, 2 insertions(+)
->
->diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
->index 6335c4ea0957..96dbc51caf48 100644
->--- a/drivers/net/dsa/mt7530.c
->+++ b/drivers/net/dsa/mt7530.c
->@@ -414,6 +414,7 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
-> 	int i;
+On 7/30/21 7:52 PM, Rocco Yue wrote:
+> The kernel provides a "/proc/sys/net/ipv6/conf/<iface>/mtu"
+> file, which can temporarily record the mtu value of the last
+> received RA message when the RA mtu value is lower than the
+> interface mtu, but this proc has following limitations:
 > 
-> 	reg[1] |= vid & CVID_MASK;
->+	reg[1] |= ATA2_IVL;
-> 	reg[2] |= (aging & AGE_TIMER_MASK) << AGE_TIMER;
-> 	reg[2] |= (port_mask & PORT_MAP_MASK) << PORT_MAP;
-> 	/* STATIC_ENT indicate that entry is static wouldn't
->diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
->index 101d309ee445..72f53e6bc145 100644
->--- a/drivers/net/dsa/mt7530.h
->+++ b/drivers/net/dsa/mt7530.h
->@@ -43,6 +43,7 @@
-> #define  STATIC_EMP			0
-> #define  STATIC_ENT			3
-> #define MT7530_ATA2			0x78
->+#define  ATA2_IVL			BIT(15)
+> (1) when the interface mtu (/sys/class/net/<iface>/mtu) is
+> updeated, mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) will
+> be updated to the value of interface mtu;
+> (2) mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) only affect
+> ipv6 connection, and not affect ipv4.
 > 
-> /* Register for address table write data */
-> #define MT7530_ATWD			0x7c
->-- 
->2.30.2
+> Therefore, when the mtu option is carried in the RA message,
+> there will be a problem that the user sometimes cannot obtain
+> RA mtu value correctly by reading mtu6.
+> 
+> After this patch set, if a RA message carries the mtu option,
+> you can send a netlink msg which nlmsg_type is RTM_GETLINK,
+> and then by parsing the attribute of IFLA_INET6_RA_MTU to
+> get the mtu value carried in the RA message received on the
+> inet6 device.
+> 
+> In this way, if the MTU values that the device receives from
+> the network in the PCO IPv4 and the RA IPv6 procedures are
+> different, the user space process can read ra_mtu to get
+> the mtu value carried in the RA message without worrying
+> about the issue of ipv4 being stuck due to the late arrival
+> of RA message. After comparing the value of ra_mtu and ipv4
+> mtu, then the device can use the lower MTU value for both
+> IPv4 and IPv6.
+
+you are storing the value and sending to userspace but never using it
+when sending a message. What's the pointing of processing the MTU in the
+RA if you are not going to use it to control message size?
+
+> 
+> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
+> ---
+>  include/net/if_inet6.h             | 2 ++
+>  include/uapi/linux/if_link.h       | 1 +
+>  net/ipv6/addrconf.c                | 5 +++++
+>  net/ipv6/ndisc.c                   | 5 +++++
+>  tools/include/uapi/linux/if_link.h | 1 +
+>  5 files changed, 14 insertions(+)
+> 
+> diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
+> index 4882e81514b6..fcd1ae29f154 100644
+> --- a/include/uapi/linux/if_link.h
+> +++ b/include/uapi/linux/if_link.h
+> @@ -417,6 +417,7 @@ enum {
+>  	IFLA_INET6_ICMP6STATS,	/* statistics (icmpv6)		*/
+>  	IFLA_INET6_TOKEN,	/* device token			*/
+>  	IFLA_INET6_ADDR_GEN_MODE, /* implicit address generator mode */
+> +	IFLA_INET6_RA_MTU,	/* mtu carried in the RA message  */
+>  	__IFLA_INET6_MAX
+>  };
+>  
+> diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
+> index 3bf685fe64b9..98eeaba9f86c 100644
+> --- a/net/ipv6/addrconf.c
+> +++ b/net/ipv6/addrconf.c
+> @@ -5537,6 +5537,7 @@ static inline size_t inet6_ifla6_size(void)
+>  	     + nla_total_size(ICMP6_MIB_MAX * 8) /* IFLA_INET6_ICMP6STATS */
+>  	     + nla_total_size(sizeof(struct in6_addr)) /* IFLA_INET6_TOKEN */
+>  	     + nla_total_size(1) /* IFLA_INET6_ADDR_GEN_MODE */
+> +	     + nla_total_size(4) /* IFLA_INET6_RA_MTU */
+>  	     + 0;
+>  }
+>  
+> @@ -5645,6 +5646,9 @@ static int inet6_fill_ifla6_attrs(struct sk_buff *skb, struct inet6_dev *idev,
+>  	if (nla_put_u8(skb, IFLA_INET6_ADDR_GEN_MODE, idev->cnf.addr_gen_mode))
+>  		goto nla_put_failure;
+>  
+> +	if (nla_put_u32(skb, IFLA_INET6_RA_MTU, idev->ra_mtu))
+> +		goto nla_put_failure;
+> +
+>  	return 0;
+>  
+>  nla_put_failure:
+> @@ -5761,6 +5765,7 @@ static int inet6_set_iftoken(struct inet6_dev *idev, struct in6_addr *token,
+>  static const struct nla_policy inet6_af_policy[IFLA_INET6_MAX + 1] = {
+>  	[IFLA_INET6_ADDR_GEN_MODE]	= { .type = NLA_U8 },
+>  	[IFLA_INET6_TOKEN]		= { .len = sizeof(struct in6_addr) },
+> +	[IFLA_INET6_RA_MTU]		= { .type = NLA_U32 },
+>  };
+>  
+>  static int check_addr_gen_mode(int mode)
+
+Its value is derived from an RA not set by userspace, so set the type to
+NLA_REJECT so that inet6_validate_link_af will reject messages that have
+IFLA_INET6_RA_MTU set. You can set "reject_message" in the policy to
+return a message that "IFLA_INET6_RA_MTU can not be set".
 
 
 _______________________________________________
