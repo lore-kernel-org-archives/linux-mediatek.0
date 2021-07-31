@@ -2,77 +2,90 @@ Return-Path: <SRS0=E1wD=MX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36FFCC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 02:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B4F4C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 08:38:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0173560F3A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 02:18:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0173560F3A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1E1A16103B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Jul 2021 08:38:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1E1A16103B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
+	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4LPfrTv78kBWS2Z5i90cwjpCNB85GMhshuwokp6xmGY=; b=2yZ+1xZKTN04EA
-	cQefUHEGrAryeaVagxpIYMcN9lhZuovrmk/hFRTyBZ32vOkuL337VvVM7zt71+lpXT48mfQ3kpuKQ
-	PyisUQUYqoPFAoxS7N6KXaLGdl+kW32bZomlukFieGl8lma7NUTWaMF5kzbCPATrHcM6GrkIYWJl9
-	IeioDTEGlnEW7ceebfEloJtrdF9WnDI7XHa0yvEx+fUe4F9iRlNI7N0lOOBXEK7lL9LRFrDuA45AL
-	ri45uwULlA3xzs9qyR0HG6BY8ldyyp/KUe3lFW8/vfoG6G+o2vExmIcO4Prk+F+rHYUrJBGnCkMYN
-	/Xb7ldKplBG5aY01TfNg==;
+	List-Owner; bh=ZU75cPRLR4dYq+rk1FfG16qbia+oqruhQIdBONe8tKg=; b=2iJnQVsjsqrBgG
+	6KsrTKu0h1H4KkDI9CSrjoLeoy2Ezp4qyCu8BeQDCW3aO5jl6QfN7dXv7BOVzUYUIKBTyjWxEZWOr
+	MdxOkajUWnSGTzisYSwLEtZJz5ld/Hn3iIh3kWjELp6gP/FalK1An1vMWEkqFtVUVNR7uIgyohG2f
+	aM8TDMVgqKgYcSmgp5Jf3QOZrgYiQD5IUvebhTZLkE5IqZbUz/mmnMQ6Qv2WuhnPNFM6/+rqfFyFR
+	6LdLUbccylKJ+GmDXx/mcQJ+jrNHQVS8OeK1loVG8tzxOeQitzuwqoBOVrk+I4aQAxQIcRV+OZHFI
+	CUTdRdbidpntoUSAMNMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1m9eZP-00AkaR-2Z; Sat, 31 Jul 2021 02:17:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1m9kVp-00BHR6-6m; Sat, 31 Jul 2021 08:38:29 +0000
+Received: from so254-9.mailgun.net ([198.61.254.9])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1m9eZM-00AkZg-5e
- for linux-mediatek@lists.infradead.org; Sat, 31 Jul 2021 02:17:45 +0000
-X-UUID: c535c3b0f52f455990103acecfa8ef76-20210730
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=jXlDqZtfWp8v8lYfRhBgiJJJbqycpywHtjhxQDmOxIE=; 
- b=saoxhy5uEGErHxtn1AtPpiQczWlFUXNjfNj7bbBULuxxCI+2OHwEH4Bkm5tOmF8xutvoBY3OBIVA2X2ZigptoY1ViISl+1/CkZsRMQasGKbntprr/kwanTf2qcAFL/hcF2IRWRTPOiIGiqQRUzRYMQN7yXo4aDWqIivWwbnGMWQ=;
-X-UUID: c535c3b0f52f455990103acecfa8ef76-20210730
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1296221855; Fri, 30 Jul 2021 19:17:34 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 30 Jul 2021 19:17:32 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 31 Jul 2021 10:17:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 31 Jul 2021 10:17:31 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH v4 2/2] mt76: mt7615: fix hwmon temp sensor mem use-after-free
-Date: Sat, 31 Jul 2021 10:17:28 +0800
-Message-ID: <48d120ce3711ee50aebf4f75c959a480b2267cf4.1627696765.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <9f5b0cf6c4296d3a9e78a95516cf26d1db4baba9.1627696765.git.ryder.lee@mediatek.com>
-References: <9f5b0cf6c4296d3a9e78a95516cf26d1db4baba9.1627696765.git.ryder.lee@mediatek.com>
+ id 1m9kVk-00BHQa-EA
+ for linux-mediatek@lists.infradead.org; Sat, 31 Jul 2021 08:38:25 +0000
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
+ q=dns/txt; 
+ s=smtp; t=1627720702; h=Content-Type: MIME-Version: Message-ID:
+ In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
+ bh=GmmWfCUra51DdcDZI83pLqJ9O3jdxFx8YXjXVt6UXbw=;
+ b=GtajRgfaqGaAyvqpTX95h9R8ZcgtHeFYpIJr6MDDNXf/hdVVTLNbjLBQX+DLl10+OeT2L7Mz
+ XKUCbv7Vh1c36UbH84sC5Tm+kyqeW3TYYrpstSCa/RPv34gcTi1syZaf/DSpuer3M4E/pQlh
+ bcXDUVswSXrwBFS/qqrKXnYr8+M=
+X-Mailgun-Sending-Ip: 198.61.254.9
+X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
+Received: from smtp.codeaurora.org
+ (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
+ smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
+ 61050bfd1dd16c87880a6204 (version=TLS1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Sat, 31 Jul 2021 08:38:21
+ GMT
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+ id 7F18DC4323A; Sat, 31 Jul 2021 08:38:20 +0000 (UTC)
+Received: from tykki (tynnyri.adurom.net [51.15.11.48])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested) (Authenticated sender: kvalo)
+ by smtp.codeaurora.org (Postfix) with ESMTPSA id 98AC2C433D3;
+ Sat, 31 Jul 2021 08:38:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 98AC2C433D3
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ dmarc=none (p=none dis=none) header.from=codeaurora.org
+Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
+ spf=fail smtp.mailfrom=kvalo@codeaurora.org
+From: Kalle Valo <kvalo@codeaurora.org>
+To: Arnd Bergmann <arnd@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
+ Ryder Lee <ryder.lee@mediatek.com>, "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Soul Huang <Soul.Huang@mediatek.com>, Deren Wu <deren.wu@mediatek.com>,
+ Xing Song <xing.song@mediatek.com>, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] mt76: fix enum type mismatch
+References: <20210721150745.1914829-1-arnd@kernel.org>
+Date: Sat, 31 Jul 2021 11:38:11 +0300
+In-Reply-To: <20210721150745.1914829-1-arnd@kernel.org> (Arnd Bergmann's
+ message of "Wed, 21 Jul 2021 17:06:56 +0200")
+Message-ID: <87tukaev4c.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210730_191744_260412_BA995DA9 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20210731_013824_570984_CF3BA846 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,30 +102,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Without this change, garbage is seen in the hwmon name
-and sensors output for mt7615 is garbled.
+Arnd Bergmann <arnd@kernel.org> writes:
 
-Fixes: 109e505ad944 (mt76: mt7615: add thermal sensor device support)
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/init.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> There is no 'NONE' version of 'enum mcu_cipher_type', and returning
+> 'MT_CIPHER_NONE' causes a warning:
+>
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c: In function 'mt7921_mcu_get_cipher':
+> drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:114:24: error: implicit conversion from 'enum mt76_cipher_type' to 'enum mcu_cipher_type' [-Werror=enum-conversion]
+>   114 |                 return MT_CIPHER_NONE;
+>       |                        ^~~~~~~~~~~~~~
+>
+> Add the missing MCU_CIPHER_NONE defintion that fits in here with
+> the same value.
+>
+> Fixes: c368362c36d3 ("mt76: fix iv and CCMP header insertion")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+> This problem currently exists in 5.14-rc2, please ignore my patch
+> if a fix is already queued up elsewhere.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index 05235a60d413..6e8feceb1ff2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -54,7 +54,7 @@ int mt7615_thermal_init(struct mt7615_dev *dev)
- 		return 0;
- 
- 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev,
--						       wiphy_name(wiphy), dev,
-+						       KBUILD_MODNAME, dev,
- 						       mt7615_hwmon_groups);
- 	if (IS_ERR(hwmon))
- 		return PTR_ERR(hwmon);
+Should I take this to wireless-drivers? Felix, ack?
+
 -- 
-2.29.2
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
