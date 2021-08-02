@@ -2,80 +2,81 @@ Return-Path: <SRS0=Q+Xe=MZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70FB3C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 03:44:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C367CC4320A
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 07:09:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2FD2C6024A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 03:44:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2FD2C6024A
+	by mail.kernel.org (Postfix) with ESMTPS id 8145F60F58
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 07:09:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8145F60F58
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oDG456J6ErP2QIvR0Z6A1IGRK8BtxBUa+Ch3RbY1ags=; b=xtH5odV6A04ne7
-	jrbGIR7W4YkasiFbBj9odK5MirEEaGMf7sHhd6FDJDdGYCMcoXtG4hwirPyGgAEpmS+7XR38HP3s4
-	1tOaBTP4ZuT2aUheP5CUi80UhhNt7j4LPOJIC5e8Iw/MCidg/7z7rvnF8oD7aVnzvvUzV6yd5ehpq
-	8rFH96tSQBGL5En6yCM70SfPmAHxVk0oZU9gdEBfSimuFhbADpya/Xiy0bl0U7f5Xh7BkHrpcIeyI
-	F54e46mCX+vs/0wpiqPkb5lgYlA0PttUtn/kJcOHzjutbh5qv0X5/apWXvF5gupDTpUeuo854AHL2
-	FnBNkSDGOUaTHETc/U6A==;
+	List-Owner; bh=w9v638aesdvlsRd5hlQqcT1cQBlKJMlgArDtuB0JE2w=; b=ESMMQKrynE6aq7
+	nAjHKMtRyYDAh4f8i4jdvYCLlvhRlSnH2ZiF5grhjjs+jWUtKYpM50dbh8zqtGGQy0q2Uhv2HB2Mm
+	2Bn42UCRPltS3SbKsqrGM8D3qhnzAIkw6JS2LHyxz1wB/jURFF59QPaAdF/BUZQY89HjEyaKorBF6
+	nFk1QfFJpWqw1EB2U7Sb0n4msA235WkTWk6n6XJxwjGQwUwFLI4PN19CY5TyZpHXLZ/QcIEmJ6K34
+	edcXBT7M+6DLYrfU2DNQ5V9ixISIdCx0PPUQf+qCmN1q8awTjB78hEwBo23K2qb8DFqUNxMhiFgiv
+	lAmrJ7PBA/cTWbqxQuFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAOs9-00ErYe-Um; Mon, 02 Aug 2021 03:44:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mAS44-00FEje-IN; Mon, 02 Aug 2021 07:08:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAOrx-00ErWb-EX; Mon, 02 Aug 2021 03:44:02 +0000
-X-UUID: fdbdc411b7c64042aac401da6ab0dde5-20210801
+ id 1mAS40-00FEic-QA; Mon, 02 Aug 2021 07:08:43 +0000
+X-UUID: d3d95e50291e414bbe719599a538be74-20210802
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZK3e9Sg7ghuyh77VEHKTRyGoBtj/73rumt2QQW4OnHM=; 
- b=I1sTjCKmkm3Pr3FQlnuF3fvH+3ffvbvnfU5jGUKMMyBKeEdvjbffWFmT0UgOc54aN3XB7mcpmbzdf9zdyu+YuZEAVI6qqmyHdgzzoMPKPRmvbbSD5UkRGPBsZDEaGvxPLXYQDRA3yioZUN31DLcaQpYvdULWrdjJh7q5kQuNep0=;
-X-UUID: fdbdc411b7c64042aac401da6ab0dde5-20210801
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=21ZQL0O+AYNYOVFc0STZ7qW2KMKVaTPFPt6AU1g4ZHY=; 
+ b=WX6FnVSFJdUXjVhxXqOCRqwFQMaxZI7xH8q6uVRPDecNMKc8lNp+iGETgUqb/ZyFIE/O1EIFMttw7fS6uLyrQ2EcmRuLfnSrXhc3C2TfcQ6/C3ogCIisvzPSISmKORffyO0id1ZmeqbF8/dl3sRb3MOGcKzSdHF5FEfLtS8jHqE=;
+X-UUID: d3d95e50291e414bbe719599a538be74-20210802
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1302458776; Sun, 01 Aug 2021 20:43:58 -0700
-Received: from MTKMBS32N1.mediatek.inc (172.27.4.71) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 1 Aug 2021 20:35:56 -0700
+ with ESMTP id 20501569; Mon, 02 Aug 2021 00:08:30 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 2 Aug 2021 00:07:24 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- MTKMBS32N1.mediatek.inc (172.27.4.71) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 2 Aug 2021 11:35:49 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 2 Aug 2021 15:07:23 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 2 Aug 2021 11:35:48 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@kernel.org>
-CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <rocco.yue@gmail.com>, <chao.song@mediatek.com>,
- <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: Re: [PATCH net-next v2] ipv6: add IFLA_INET6_RA_MTU to expose mtu
- value in the RA message
-Date: Mon, 2 Aug 2021 11:19:24 +0800
-Message-ID: <20210802031924.3256-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <5be90cf4-f603-c2f2-fd7e-3886854457ba@gmail.com>
-References: <5be90cf4-f603-c2f2-fd7e-3886854457ba@gmail.com>
+ Transport; Mon, 2 Aug 2021 15:07:22 +0800
+Message-ID: <1627888042.1118.2.camel@mhfsdcap03>
+Subject: Re: [PATCH v11 2/4] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address and parse node
+From: Chuanjia Liu <chuanjia.liu@mediatek.com>
+To: <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>
+CC: <ryder.lee@mediatek.com>, <jianjun.wang@mediatek.com>,
+ <yong.wu@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
+ <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <chuanjia.liu@mediatek.com>
+Date: Mon, 2 Aug 2021 15:07:22 +0800
+In-Reply-To: <20210719073456.28666-3-chuanjia.liu@mediatek.com>
+References: <20210719073456.28666-1-chuanjia.liu@mediatek.com>
+ <20210719073456.28666-3-chuanjia.liu@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 717DC6BBB0EEBCBF51C02B29FAF02E489CDAC93F80059C78A30F86F824E5FC2D2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210801_204401_541119_2E1379FF 
-X-CRM114-Status: GOOD (  20.64  )
+X-CRM114-CacheID: sfid-20210802_000840_895305_93B83FC2 
+X-CRM114-Status: GOOD (  24.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,58 +93,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2021-07-31 at 11:17 -0600, David Ahern wrote:
-On 7/30/21 7:52 PM, Rocco Yue wrote:
->> In this way, if the MTU values that the device receives from
->> the network in the PCO IPv4 and the RA IPv6 procedures are
->> different, the user space process can read ra_mtu to get
->> the mtu value carried in the RA message without worrying
->> about the issue of ipv4 being stuck due to the late arrival
->> of RA message. After comparing the value of ra_mtu and ipv4
->> mtu, then the device can use the lower MTU value for both
->> IPv4 and IPv6.
+On Mon, 2021-07-19 at 15:34 +0800, Chuanjia Liu wrote:
+
+Gently ping...
+> For the new dts format, add a new method to get
+> shared pcie-cfg base address and parse node.
 > 
-> you are storing the value and sending to userspace but never using it
-> when sending a message. What's the pointing of processing the MTU in the
-> RA if you are not going to use it to control message size?
-
-Hi David,
-
-In the requirement of mobile operator at&t in 2021:
-AT&T <CDR-CDS-116> Prioritize Lower MTU value:
-If the MTU values that the device receives from the network in the PCO
-IPv4 <CDR-CDS-110> and the RA IPv6 <CDR-CDS-112> procedures are different,
-then the device shall use the lower MTU value for both IPv4 and IPv6.
-
-And in the 3GPP 23.060:
-The PDP PDUs shall be routed and transferred between the MS and the GGSN
-or P-GW as N-PDUs. In order to avoid IP layer fragmentation between the
-MS and the GGSN or P-GW, the link MTU size in the MS should be set to the
-value provided by the network as a part of the IP configuration. This
-applies to both IPv6 and IPv4.
-
-That means user needs to be able to correctly read the mtu value carried
-in the RA message so that user can correctly compare PCO ipv4 mtu and
-RA ipv6 mtu.
-
->> @@ -5761,6 +5765,7 @@ static int inet6_set_iftoken(struct inet6_dev *idev, struct in6_addr *token,
->>  static const struct nla_policy inet6_af_policy[IFLA_INET6_MAX + 1] = {
->>  	[IFLA_INET6_ADDR_GEN_MODE]	= { .type = NLA_U8 },
->>  	[IFLA_INET6_TOKEN]		= { .len = sizeof(struct in6_addr) },
->> +	[IFLA_INET6_RA_MTU]		= { .type = NLA_U32 },
->>  };
->>  
->>  static int check_addr_gen_mode(int mode)
+> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek.c | 52 +++++++++++++++++++-------
+>  1 file changed, 39 insertions(+), 13 deletions(-)
 > 
-> Its value is derived from an RA not set by userspace, so set the type to
-> NLA_REJECT so that inet6_validate_link_af will reject messages that have
-> IFLA_INET6_RA_MTU set. You can set "reject_message" in the policy to
-> return a message that "IFLA_INET6_RA_MTU can not be set".
+> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> index 25bee693834f..928e0983a900 100644
+> --- a/drivers/pci/controller/pcie-mediatek.c
+> +++ b/drivers/pci/controller/pcie-mediatek.c
+> @@ -14,6 +14,7 @@
+>  #include <linux/irqchip/chained_irq.h>
+>  #include <linux/irqdomain.h>
+>  #include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/msi.h>
+>  #include <linux/module.h>
+>  #include <linux/of_address.h>
+> @@ -23,6 +24,7 @@
+>  #include <linux/phy/phy.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <linux/reset.h>
+>  
+>  #include "../pci.h"
+> @@ -207,6 +209,7 @@ struct mtk_pcie_port {
+>   * struct mtk_pcie - PCIe host information
+>   * @dev: pointer to PCIe device
+>   * @base: IO mapped register base
+> + * @cfg: IO mapped register map for PCIe config
+>   * @free_ck: free-run reference clock
+>   * @mem: non-prefetchable memory resource
+>   * @ports: pointer to PCIe port information
+> @@ -215,6 +218,7 @@ struct mtk_pcie_port {
+>  struct mtk_pcie {
+>  	struct device *dev;
+>  	void __iomem *base;
+> +	struct regmap *cfg;
+>  	struct clk *free_ck;
+>  
+>  	struct list_head ports;
+> @@ -650,7 +654,11 @@ static int mtk_pcie_setup_irq(struct mtk_pcie_port *port,
+>  		return err;
+>  	}
+>  
+> -	port->irq = platform_get_irq(pdev, port->slot);
+> +	if (of_find_property(dev->of_node, "interrupt-names", NULL))
+> +		port->irq = platform_get_irq_byname(pdev, "pcie_irq");
+> +	else
+> +		port->irq = platform_get_irq(pdev, port->slot);
+> +
+>  	if (port->irq < 0)
+>  		return port->irq;
+>  
+> @@ -682,6 +690,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+>  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
+>  		       PCIE_CSR_ASPM_L1_EN(port->slot);
+>  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> +	} else if (pcie->cfg) {
+> +		val = PCIE_CSR_LTSSM_EN(port->slot) |
+> +		      PCIE_CSR_ASPM_L1_EN(port->slot);
+> +		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+>  	}
+>  
+>  	/* Assert all reset signals */
+> @@ -985,6 +997,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+>  	struct device *dev = pcie->dev;
+>  	struct platform_device *pdev = to_platform_device(dev);
+>  	struct resource *regs;
+> +	struct device_node *cfg_node;
+>  	int err;
+>  
+>  	/* get shared registers, which are optional */
+> @@ -995,6 +1008,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+>  			return PTR_ERR(pcie->base);
+>  	}
+>  
+> +	cfg_node = of_find_compatible_node(NULL, NULL,
+> +					   "mediatek,generic-pciecfg");
+> +	if (cfg_node) {
+> +		pcie->cfg = syscon_node_to_regmap(cfg_node);
+> +		if (IS_ERR(pcie->cfg))
+> +			return PTR_ERR(pcie->cfg);
+> +	}
+> +
+>  	pcie->free_ck = devm_clk_get(dev, "free_ck");
+>  	if (IS_ERR(pcie->free_ck)) {
+>  		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
+> @@ -1027,22 +1048,27 @@ static int mtk_pcie_setup(struct mtk_pcie *pcie)
+>  	struct device *dev = pcie->dev;
+>  	struct device_node *node = dev->of_node, *child;
+>  	struct mtk_pcie_port *port, *tmp;
+> -	int err;
+> +	int err, slot;
+> +
+> +	slot = of_get_pci_domain_nr(dev->of_node);
+> +	if (slot < 0) {
+> +		for_each_available_child_of_node(node, child) {
+> +			err = of_pci_get_devfn(child);
+> +			if (err < 0) {
+> +				dev_err(dev, "failed to get devfn: %d\n", err);
+> +				goto error_put_node;
+> +			}
+>  
+> -	for_each_available_child_of_node(node, child) {
+> -		int slot;
+> +			slot = PCI_SLOT(err);
+>  
+> -		err = of_pci_get_devfn(child);
+> -		if (err < 0) {
+> -			dev_err(dev, "failed to parse devfn: %d\n", err);
+> -			goto error_put_node;
+> +			err = mtk_pcie_parse_port(pcie, child, slot);
+> +			if (err)
+> +				goto error_put_node;
+>  		}
+> -
+> -		slot = PCI_SLOT(err);
+> -
+> -		err = mtk_pcie_parse_port(pcie, child, slot);
+> +	} else {
+> +		err = mtk_pcie_parse_port(pcie, node, slot);
+>  		if (err)
+> -			goto error_put_node;
+> +			return err;
+>  	}
+>  
+>  	err = mtk_pcie_subsys_powerup(pcie);
 
-will do.
-
-Thanks
-Rocco
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
