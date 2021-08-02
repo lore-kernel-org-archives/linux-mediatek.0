@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 04C74C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83FA3C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:44:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB99560527
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:44:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BB99560527
+	by mail.kernel.org (Postfix) with ESMTPS id 4C0A560527
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:44:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4C0A560527
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,52 +24,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wMTFi2ZQ1SF3Ii0fqViK/zLETTx7d+b5TeOxxmtmTHI=; b=Q1uEu+1LoWc8tA
-	jNdazh+opeO4YSX0UbmsTsJklx/WU2A1tnOfbVTjh4v2hn2Q5UMdhQuPSI8COvORhW025bVaOMCCO
-	fJmzg5fL7/H/bN7U5HANbVY44RYYrA0bx7D7QWM5HJpvUd2Ak9PUKolcpIHGjlrfcCo03jOn2B/jy
-	fU0aMMFrZBSN6hvaUhj1UuGWRj6s2wfh/AZcsKqrKpRrbqBhTSK1DZlIiUG+y6BEguaXhuCPPMH2J
-	JOioGy1+VVDf3jl6ZDRpumX9DksYl45YYicpzLgeHi0C9sl49x5EsfGhwOUVPl8qmkGZH7slpgwht
-	yh/ZNlZ2perUFFv9Qywg==;
+	List-Owner; bh=csj6MPiYI2Bdp1V4CPfTTz6jnacCr6NQIj2iSTdkxpk=; b=rfG2Alu/WIS7P6
+	IZYXULYTsxIFXlCZQEH+z9IIUbsHZlf9noevSnGZnMnFXhasn0Me0f/xuQOAYMr4ENbhkjSDeNldL
+	2KpYBJVnlUS2TK/b81jkU0ETds6jdATNoKsBfje47cyWIH9CYPUpqUoSTx/Wtiy1h5o7a25Af92k8
+	UIPJCKj4DuV4dfRQaSJwFTaCp9vNCo3naOSy7qpoNxWS4ESQKd+6wDswShW7WUoqQLQIC380ECLCk
+	fEUvdzFIbRHBukm911KA2c0X+LHwmesUoJ5HASqYhnrhCRIHV6EHSSmLFj6YGEJKKqXB1wpO+jPVa
+	QooCDCexYjyCMByAW73w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAYEa-00GSlE-9c; Mon, 02 Aug 2021 13:44:00 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1mAYF7-00GSyj-4W; Mon, 02 Aug 2021 13:44:33 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAYEG-00GSfE-Ge; Mon, 02 Aug 2021 13:43:42 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id x11so30053342ejj.8;
- Mon, 02 Aug 2021 06:43:39 -0700 (PDT)
+ id 1mAYEn-00GSqF-KH; Mon, 02 Aug 2021 13:44:15 +0000
+Received: by mail-ej1-x636.google.com with SMTP id nd39so30984934ejc.5;
+ Mon, 02 Aug 2021 06:44:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=q3LMLHUiJgMv1kBej5JGB879UzZgEmTMwjmj9nvqpWc=;
- b=gHbazKLYudEs+w+lX0U7K9hhRGdnhsn/KcpXhThORDMW3TyJSP3iStfdLH4IZcD/KE
- dWtA8BrrCZn8gGZ4PS8uDQdZIiHbJLYKoGJ6J2h2u2H2ML+69vEb1Ir0m3Vn14v16SkR
- TKrW5qITrEz9rIvsy5UqEEURLSEredQJhscto4GzmdZ7xQAyEbE8tU+FNVhmh3ML7iUc
- rq6IVBHpcBMisSS9yeOZO9xmcYujWaH/X3hEFGbBBVQ0fWK+3muiSFTPtUMyJSrxEmiV
- 4YZ2pNkIB3VO7C1lghjUihRb1VoUWdXDZoIs2GyL/2B9clA6NDLezCKwtqQjDn3iB9rY
- cPJg==
+ bh=zZ7rhldZ+cdc9EqfS9Eva0TvOjm8dfvenVKVtcg422Y=;
+ b=IwbZ6B+pF47Xng1s78mPiBUYaQ5aBKg3wm/z8Zf+dRDnd9JHqCPeZeSzfgBLfgz3Pb
+ kzwakyr7T0qbulvNT2eSNH0cuOZhn5PBMOTRHBas9FrrjhvKTAz868D/W8Ag3Toue/ku
+ o6jkzQpVcaJW922zxSaKshF62ZnI7FfDbD4Q78D9w/PiMHRZHtdk1f0urAMDer7wxQYr
+ pBn1MSW8X4mVo/0msyUj5KRWENimLDq9FJelqpMvGyyO4jz1HHrHKn6cZ9XMC/owXE6K
+ WPXn2665pW5/qU+KKW/gVMGz12PC/DOytMgmM7lTJHIR6gCt+FoZ8HPe0aQXYlwXdqba
+ l28w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=q3LMLHUiJgMv1kBej5JGB879UzZgEmTMwjmj9nvqpWc=;
- b=Ekz52qHMuNX9C4T+ZMyqXpj/S7rdvo1Jor1cdtufVuUrYzOZ+bCuB4J1kt/VaU3bk7
- /qxRfbAnvtd51BgpedWWLEafn6o8FecNjFFjUx/yDXkZ5t0+WkbmobZHNRjEUy0HG8EI
- yOT6zltLnzrHUShi7fu3apVX7ipvHFJHcPxLpzjkMXkWYTLjYUWlLoB7mdcV88nk7W1R
- S3KbUJGvk+tSq4k7SZmsyTeV9exfNhLoKKWMJm83VJhzX1Cvfy2NgDimFB5cgKoTrSat
- 5mlb3QJRO2DlKvaq/9eq3hanGDLRo6lONiIfOSDjxQGxUpEgoRd6DWPxQqMJot/N0gxs
- qndg==
-X-Gm-Message-State: AOAM5320O5kPdDFdkkZddcP4/XjEw832bb8FPb9RIQ1OfHMxam1QsNQ7
- OZl0mnpSXgozNlLXAFRXmEM=
-X-Google-Smtp-Source: ABdhPJw6vCmkFlF6kE0P2ErCDImL+4aRsa1VJAzRVkcEAF3Ce6rnneVKlUR57hGKi6X6whoXtcRaRw==
-X-Received: by 2002:a17:906:314e:: with SMTP id
- e14mr3596232eje.165.1627911817933; 
- Mon, 02 Aug 2021 06:43:37 -0700 (PDT)
+ bh=zZ7rhldZ+cdc9EqfS9Eva0TvOjm8dfvenVKVtcg422Y=;
+ b=fyb175yCfD6KdS/LMYr+DViILWLXtRgqfIrcNMn3E6OxLE8QCVZVWYpl8IcGkYO3QT
+ /kKB++PXCPMzTrP3iJFOD7e/oCWGiAuYF7CZVsr28xsEklAIwT4q/zuTjKng8f90c+0z
+ gmKzm9EItP7YT6rnMRP57NI3z0GkBydtyz1Y0qwN3+sUNiTxsufMPDJ8QguiJSasZcyA
+ zy6Tyl+94csFvhM79Zt83bLBzG3x21N3SHb5y7t2kdgw6wx1xYJFDM7mTxCL7DGbxAhz
+ y6NGt4r0+L5H4uRj8/YS+oGq8YOeMCt2bcUDMtP3twZ/nvw9jZGHD8rOhBbfsbBuLrfH
+ 1UtA==
+X-Gm-Message-State: AOAM5317kECDKewi/H9IHxpYBavwpI5/hOKLJTbneRlLS3gdmiXqz9k5
+ Sfcx65aY31P1tDQ8IPZNWys=
+X-Google-Smtp-Source: ABdhPJwts+YudSRSXy9pRi3a8kYt31p4mHowDXQpv05buLyULTEyz+FI7GaE1wMik/sIkdeWkeZIfQ==
+X-Received: by 2002:a17:907:9d4:: with SMTP id
+ bx20mr15480021ejc.123.1627911851716; 
+ Mon, 02 Aug 2021 06:44:11 -0700 (PDT)
 Received: from skbuf ([188.25.144.60])
- by smtp.gmail.com with ESMTPSA id b2sm6130288edr.16.2021.08.02.06.43.36
+ by smtp.gmail.com with ESMTPSA id p23sm6267915edw.94.2021.08.02.06.44.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Aug 2021 06:43:37 -0700 (PDT)
-Date: Mon, 2 Aug 2021 16:43:36 +0300
+ Mon, 02 Aug 2021 06:44:11 -0700 (PDT)
+Date: Mon, 2 Aug 2021 16:44:09 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: DENG Qingfang <dqfext@gmail.com>
 Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
@@ -82,17 +82,17 @@ Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Eric Woudstra <ericwouds@gmail.com>,
  =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>,
  Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: [RFC net-next v2 3/4] net: dsa: mt7530: set STP state also on
- filter ID 1
-Message-ID: <20210802134336.gv66le6u2z52kfkh@skbuf>
+Subject: Re: [RFC net-next v2 4/4] Revert "mt7530 mt7530_fdb_write only set
+ ivl bit vid larger than 1"
+Message-ID: <20210802134409.dro5zjp5ymocpglf@skbuf>
 References: <20210731191023.1329446-1-dqfext@gmail.com>
- <20210731191023.1329446-4-dqfext@gmail.com>
+ <20210731191023.1329446-5-dqfext@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210731191023.1329446-4-dqfext@gmail.com>
+In-Reply-To: <20210731191023.1329446-5-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210802_064340_638741_363AF732 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20210802_064413_722745_FFE5D0D1 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,56 +109,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 01, 2021 at 03:10:21AM +0800, DENG Qingfang wrote:
-> As filter ID 1 is used, set STP state also on it.
+On Sun, Aug 01, 2021 at 03:10:22AM +0800, DENG Qingfang wrote:
+> This reverts commit 7e777021780e9c373fc0c04d40b8407ce8c3b5d5.
+> 
+> As independent VLAN learning is also used on VID 0 and 1, remove the
+> special case.
 > 
 > Signed-off-by: DENG Qingfang <dqfext@gmail.com>
 > ---
->  drivers/net/dsa/mt7530.c | 3 ++-
->  drivers/net/dsa/mt7530.h | 2 +-
->  2 files changed, 3 insertions(+), 2 deletions(-)
+>  drivers/net/dsa/mt7530.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
 > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 3876e265f844..38d6ce37d692 100644
+> index 38d6ce37d692..d72e04011cc5 100644
 > --- a/drivers/net/dsa/mt7530.c
 > +++ b/drivers/net/dsa/mt7530.c
-> @@ -1147,7 +1147,8 @@ mt7530_stp_state_set(struct dsa_switch *ds, int port, u8 state)
->  		break;
->  	}
+> @@ -366,8 +366,7 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
+>  	int i;
 >  
-> -	mt7530_rmw(priv, MT7530_SSP_P(port), FID_PST_MASK, stp_state);
-> +	mt7530_rmw(priv, MT7530_SSP_P(port), FID_PST_MASK,
-> +		   FID_PST(stp_state));
->  }
->  
->  static int
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index a308886fdebc..294ff1cbd9e0 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -181,7 +181,7 @@ enum mt7530_vlan_egress_attr {
->  
->  /* Register for port STP state control */
->  #define MT7530_SSP_P(x)			(0x2000 + ((x) * 0x100))
-> -#define  FID_PST(x)			((x) & 0x3)
-
-Shouldn't these macros have _two_ arguments, the FID and the port state?
-
-> +#define  FID_PST(x)			(((x) & 0x3) * 0x5)
-
-"* 5": explanation?
-
->  #define  FID_PST_MASK			FID_PST(0x3)
->  
->  enum mt7530_stp_state {
+>  	reg[1] |= vid & CVID_MASK;
+> -	if (vid > 1)
+> -		reg[1] |= ATA2_IVL;
+> +	reg[1] |= ATA2_IVL;
+>  	reg[2] |= (aging & AGE_TIMER_MASK) << AGE_TIMER;
+>  	reg[2] |= (port_mask & PORT_MAP_MASK) << PORT_MAP;
+>  	/* STATIC_ENT indicate that entry is static wouldn't
 > -- 
 > 2.25.1
 > 
 
-I don't exactly understand how this patch works, sorry.
-Are you altering port state only on bridged ports, or also on standalone
-ports after this patch? Are standalone ports in the proper STP state
-(FORWARDING)?
+Would you mind explaining what made VID 1 special in Eric's patch in the
+first place?
 
 _______________________________________________
 Linux-mediatek mailing list
