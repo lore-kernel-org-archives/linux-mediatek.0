@@ -2,97 +2,96 @@ Return-Path: <SRS0=Q+Xe=MZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-2.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 687C9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1532BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:37:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 316B060F6D
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:37:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 316B060F6D
+	by mail.kernel.org (Postfix) with ESMTPS id CBD5660FA0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 13:37:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CBD5660FA0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ffH90onXlfJOmzZD5jZ7WmF0gN13N9AhhwMJCmbcUdE=; b=eGSPI+NuULxQha
-	pypgEVaUFktEtzA+hY7zK8RdKCSbROa0mEX4lR/KI9fPMleQ2gwgdmucQVjIreyRgVAAQO0sr1eaC
-	npK5XxUMXaAquPd/NKOU5Ju9F5bxzkRqvGw34hkYUrtXUYnkAq9w6YKvwSY/WH9g0icYepLy5edBw
-	jxHKyxUSnWy7U7F+Mx0KveRqKFJKoYLHp4oZGIiYYObGUobFz5EvudkRG6FmxqkLROBIs6cVLcL2I
-	QaYzbODL9Bugr0bNovymijPDNkHNhJ8nuScOFXo54cvZdPRFj3X6Fm0RXQX225vSJh2HyaSvtkGNk
-	sdHOtAAaSAvakLOJ5Tkg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=PGQKq27UopXWLQ0Ns+R4H6xmQqs+b5cBmN/hJOq/khg=; b=gg2BOynB+0Lu40UFXCBiTh1vJe
+	gJzV+e3SjtL/69ny+15gKQ9+cruKXiko+whu5yj9Hlzcd7qoDt2hTQgopTyLFl46Emde8bfXH1qS2
+	j179q5XBRV2I3ZBzjQWqYo3NsnJv9iZyEa/gyaqswD9G/yFsclqEQWf1Dq/P1JSGHCkU38kfNoCWp
+	9g5W3A+L8W0XK4kAROh9UpoiBrQFbRCyFwQAW115qAWTSPw6YPYrsauJ3qmR3nd9YPLJzYg9gNoHL
+	uaSo/ac4nj8kKU1kzm4qTBgK/SL+x3sploz1t8CTNMr2o/1wVDt7oj3WWT2lmURa9TdeSv/FmtYhz
+	hc5tt4kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAY7g-00GPsj-Cl; Mon, 02 Aug 2021 13:36:52 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1mAY84-00GQ7N-0I; Mon, 02 Aug 2021 13:37:16 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAY76-00GPaa-Nw; Mon, 02 Aug 2021 13:36:18 +0000
-Received: by mail-ej1-x630.google.com with SMTP id h9so15488668ejs.4;
- Mon, 02 Aug 2021 06:36:16 -0700 (PDT)
+ id 1mAY80-00GQ58-Jb; Mon, 02 Aug 2021 13:37:14 +0000
+Received: by mail-oi1-x235.google.com with SMTP id u25so24086568oiv.5;
+ Mon, 02 Aug 2021 06:37:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=bK2bkrawXVe/iwSsShHZMIlbsdeYTekKYR2ujWMha24=;
- b=E5QXphU4BxXn27B40yx+wpDl0Kk+bL/8yzynVO2r6pJucHDYRuDANVOWJ1zyXY6Zv3
- nEujc4WjJnEKfY7Xd/g20S8KYFXRGLxa6Dv1UxnILfFxfxUkxaWnNCdKs9L2GEdUk0OR
- U1NKaiKtEtnKuDSH6hF+dGN2d/dRO8otg+rJh/OddSaoZRxQ4YyVynUC7ziwlk6asexA
- eZ/RCee/A7rVmHmY3SlQU3C8q+neSGBUYfwxKwu+9cPR/ME/+/jsbJMqpLAMWQxX42wK
- DJXn8iQvnIiq1XSQ0HyPDPnPM5g4p2ELvsJ3dIlwjK3l/n9HQrYAOkRSZcog8Mac7z30
- etjA==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PbcBzYCDzjM/TKXUy4gd/mf09bcYCldaAFLfvfQnHzQ=;
+ b=DwaAWEc4Q6Uca77i1pa2FzsHjwr9/FjCJvqewvhgiKAby+uKugn8R/1vtl381tQ9TD
+ zD6mjWM7EDPmBy87dl6240otKOcRKK1tPlXJY1ZXkmxjjFZBhIk06BhMdPmByoKvaPqg
+ Y3mtrBAYzvH3br9rxFH3OmFeiQ//k8GQ/IFamrv3tamOfxhY+RJQzGqYHx+AToApOs17
+ mwY54HJmk5kv5ObixIBouxDiRRWFFhhXyumRy56FpmsZ18OAF6ob0pvtdJsHllSVets1
+ NRS7JS7nUCA04dXRUjgz0WM4Mcm0r3xQY8IQnLSI9OoH+2FoLlk6ZZDuNurkvBpCGMUJ
+ l9CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=bK2bkrawXVe/iwSsShHZMIlbsdeYTekKYR2ujWMha24=;
- b=VytPt+gY/hKT6yhGe/DqA9+hJQ8lyJ8z30KqVtyR0dBbqD/cbTf5dqKav9QeidrEAP
- KVgI8cTtCxHTT6D6/0TLLOMkchgW7UuHeoAO2DV8rakVwPSZuLTa0GZl/ZVredp98W0U
- cmr4kvuXghp7YBGO50hGzifwjZ1zhDHaS18QbJk1n8nswHzd6eaZcpowhvlTUJry42Zd
- bfK2+V1PWMpn9KSM2aWaMgN3d/CmmdeE0nbBjgcpPiV5FUdRtMZtk6qHAW1xXH+Q9t/x
- Kqv/m5qoBh2H1bs6GWW3S8NwJxD1IgdYU6xvM8qvzktED/fsORZ2uP32RZioc7PSvRHd
- b+QQ==
-X-Gm-Message-State: AOAM532WV5w8dB3xylk3kYi48va/U9uzDDS7CJ7RJi21XSjazBinV7pv
- K5jJ+KGG/rCm2jKgAvcljIk=
-X-Google-Smtp-Source: ABdhPJymEae6BX0rQ11ElNvvGehP3EceNqsqqQbHdSjof0adhmw0UyXD/GJiK2DVjdsMBvELsmUgVw==
-X-Received: by 2002:a17:906:9fc1:: with SMTP id
- hj1mr15184556ejc.103.1627911375037; 
- Mon, 02 Aug 2021 06:36:15 -0700 (PDT)
-Received: from skbuf ([188.25.144.60])
- by smtp.gmail.com with ESMTPSA id j5sm6032959edv.10.2021.08.02.06.36.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Aug 2021 06:36:14 -0700 (PDT)
-Date: Mon, 2 Aug 2021 16:36:13 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Eric Woudstra <ericwouds@gmail.com>,
- =?utf-8?B?UmVuw6k=?= van Dorst <opensource@vdorst.com>,
- Frank Wunderlich <frank-w@public-files.de>
-Subject: Re: [RFC net-next v2 2/4] net: dsa: mt7530: use independent VLAN
- learning on VLAN-unaware bridges
-Message-ID: <20210802133613.aeyduvt6qvy2ei7r@skbuf>
-References: <20210731191023.1329446-1-dqfext@gmail.com>
- <20210731191023.1329446-3-dqfext@gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=PbcBzYCDzjM/TKXUy4gd/mf09bcYCldaAFLfvfQnHzQ=;
+ b=bxA83JTkdichQTnVCUtKfirKCOrNyMGmNivGN9csceujd9Vb+Lx7VLVLunsrpFjcxa
+ BiR8EqLdArksOAcA3jNwjJWZiF8ccYpfRvXiiT/bXC3gQJT9RQs5wjpSntOb9Sbqi4fI
+ BVXg8V3T/wjBXI13hyaIIk4SIzIQoSZTiNsQAJ+s83g+Te83nLib8llGK5Snlyq+JKEA
+ 7is7udd5zmOXlJ+Orx9aeR8N5L4e0U8L6HeKfrB9Nau7ak/ga/IgAxuaWhCG6dKM5Fri
+ PK7VoTV5h6ftBkVH8/LTWEKxYprVnPAWgzUhtWkQjVfVr0cRFK3EjbB9fU7MdW6/yyXL
+ jNaQ==
+X-Gm-Message-State: AOAM530gxxgXW9whhx85njrY+atq2Pyi+SNgkCQhS2ynn4MtRNKh6J/o
+ XXk7+ImM0zuzWzT+s/cGBT4=
+X-Google-Smtp-Source: ABdhPJyf6PwIBiYKEvn/j5AUOIaUsrJFqOISQa5mzqZHiymrzID1xoPdYD1lL+ot9DwqGtiWx7VCEQ==
+X-Received: by 2002:a05:6808:13c5:: with SMTP id
+ d5mr10367796oiw.56.1627911431838; 
+ Mon, 02 Aug 2021 06:37:11 -0700 (PDT)
+Received: from Davids-MacBook-Pro.local ([8.48.134.27])
+ by smtp.googlemail.com with ESMTPSA id r5sm1856639oti.5.2021.08.02.06.37.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Aug 2021 06:37:11 -0700 (PDT)
+Subject: Re: [PATCH net-next v2] ipv6: add IFLA_INET6_RA_MTU to expose mtu
+ value in the RA message
+To: Rocco Yue <rocco.yue@mediatek.com>, David Ahern <dsahern@kernel.org>
+Cc: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ rocco.yue@gmail.com, chao.song@mediatek.com, zhuoliang.zhang@mediatek.com
+References: <5be90cf4-f603-c2f2-fd7e-3886854457ba@gmail.com>
+ <20210802031924.3256-1-rocco.yue@mediatek.com>
+From: David Ahern <dsahern@gmail.com>
+Message-ID: <f66750af-cbda-6d49-2b39-860c10357e95@gmail.com>
+Date: Mon, 2 Aug 2021 07:37:08 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.12.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210731191023.1329446-3-dqfext@gmail.com>
+In-Reply-To: <20210802031924.3256-1-rocco.yue@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210802_063616_854380_E74EFD63 
-X-CRM114-Status: GOOD (  47.51  )
+X-CRM114-CacheID: sfid-20210802_063712_721254_D942C942 
+X-CRM114-Status: GOOD (  23.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,272 +108,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Aug 01, 2021 at 03:10:20AM +0800, DENG Qingfang wrote:
-> Consider the following bridge configuration, where bond0 is not
-> offloaded:
+On 8/1/21 9:19 PM, Rocco Yue wrote:
+> On Sat, 2021-07-31 at 11:17 -0600, David Ahern wrote:
+> On 7/30/21 7:52 PM, Rocco Yue wrote:
+>>> In this way, if the MTU values that the device receives from
+>>> the network in the PCO IPv4 and the RA IPv6 procedures are
+>>> different, the user space process can read ra_mtu to get
+>>> the mtu value carried in the RA message without worrying
+>>> about the issue of ipv4 being stuck due to the late arrival
+>>> of RA message. After comparing the value of ra_mtu and ipv4
+>>> mtu, then the device can use the lower MTU value for both
+>>> IPv4 and IPv6.
+>>
+>> you are storing the value and sending to userspace but never using it
+>> when sending a message. What's the pointing of processing the MTU in the
+>> RA if you are not going to use it to control message size?
 > 
->          +-- br0 --+
->         / /   |     \
->        / /    |      \
->       /  |    |     bond0
->      /   |    |     /   \
->    swp0 swp1 swp2 swp3 swp4
->      .        .       .
->      .        .       .
->      A        B       C
+> Hi David,
 > 
-> Ideally, when the switch receives a packet from swp3 or swp4, it should
-> forward the packet to the CPU, according to the port matrix and unknown
-> unicast flood settings.
+> In the requirement of mobile operator at&t in 2021:
+> AT&T <CDR-CDS-116> Prioritize Lower MTU value:
+> If the MTU values that the device receives from the network in the PCO
+> IPv4 <CDR-CDS-110> and the RA IPv6 <CDR-CDS-112> procedures are different,
+> then the device shall use the lower MTU value for both IPv4 and IPv6.
 > 
-> But packet loss will happen if the destination address is at one of the
-> offloaded ports (swp0~2). For example, when client C sends a packet to
-> A, the FDB lookup will indicate that it should be forwarded to swp0, but
-> the port matrix of swp3 and swp4 is configured to only allow the CPU to
-> be its destination, so it is dropped.
+> And in the 3GPP 23.060:
+> The PDP PDUs shall be routed and transferred between the MS and the GGSN
+> or P-GW as N-PDUs. In order to avoid IP layer fragmentation between the
+> MS and the GGSN or P-GW, the link MTU size in the MS should be set to the
+> value provided by the network as a part of the IP configuration. This
+> applies to both IPv6 and IPv4.
 > 
-> However, this issue does not happen if the bridge is VLAN-aware. That is
-> because VLAN-aware bridges use independent VLAN learning, i.e. use VID
-> for FDB lookup, on offloaded ports. As swp3 and swp4 are not offloaded,
-> shared VLAN learning with default filter ID of 0 is used instead. So the
-> lookup for A with filter ID 0 never hits and the packet can be forwarded
-> to the CPU.
-> 
-> In the current code, only two combinations were used to toggle user
-> ports' VLAN awareness: one is PCR.PORT_VLAN set to port matrix mode with
-> PVC.VLAN_ATTR set to transparent port, the other is PCR.PORT_VLAN set to
-> security mode with PVC.VLAN_ATTR set to user port.
-> 
-> It turns out that only PVC.VLAN_ATTR contributes to VLAN awareness, and
-> port matrix mode just skips the VLAN table lookup. The reference manual
-> is somehow misleading when describing PORT_VLAN modes. It states that
-> PORT_MEM (VLAN port member) is used for destination if the VLAN table
-> lookup hits, but actually **PORT_MEM & PORT_MATRIX** (bitwise AND of
-> VLAN port member and port matrix) is used instead, which means we can
-> have two or more separate VLAN-aware bridges with the same PVID and
-> traffic won't leak between them.
-
-"traffic won't leak" is only half the story. It won't leak, but when
-multiple VLAN-unaware bridges share the same FID, they are still subject
-to shortcircuit attempts if the same MAC address is present in the FDB
-of both bridges. This patch doesn't solve that, maybe it is worth adding
-a big comment in the code itself that clarifies that FDBs between
-multiple VLAN-unaware bridges, as well as between multiple VLAN-aware
-bridges, are not isolated per se, only that standalone ports are placed
-under a different FID compared to bridges of whatever kind.
-
-> 
-> Therefore, to solve this, enable independent VLAN learning with PVID 0
-> on VLAN-unaware bridges, by setting their PCR.PORT_VLAN to fallback
-> mode, while leaving standalone ports in port matrix mode. The CPU port
-> is always set to fallback mode to serve those bridges.
-> 
-> During testing, it is found that FDB lookup with filter ID of 0 will
-> also hit entries with VID 0 even with independent VLAN learning. To
-> avoid that, install all VLANs with filter ID of 1.
-> 
-> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-> ---
->  drivers/net/dsa/mt7530.c | 70 ++++++++++++++++++++++++++++------------
->  drivers/net/dsa/mt7530.h |  4 ++-
->  2 files changed, 53 insertions(+), 21 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 7e7e0a35e351..3876e265f844 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -1021,6 +1021,10 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
->  	mt7530_write(priv, MT7530_PCR_P(port),
->  		     PCR_MATRIX(dsa_user_ports(priv->ds)));
->  
-> +	/* Set to fallback mode for independent VLAN learning */
-> +	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> +		   MT7530_PORT_FALLBACK_MODE);
-> +
->  	return 0;
->  }
->  
-> @@ -1229,6 +1233,10 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
->  			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
->  	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
->  
-> +	/* Set to fallback mode for independent VLAN learning */
-> +	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> +		   MT7530_PORT_FALLBACK_MODE);
-> +
->  	mutex_unlock(&priv->reg_mutex);
->  
->  	return 0;
-> @@ -1241,16 +1249,21 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
->  	bool all_user_ports_removed = true;
->  	int i;
->  
-> -	/* When a port is removed from the bridge, the port would be set up
-> -	 * back to the default as is at initial boot which is a VLAN-unaware
-> -	 * port.
-> +	/* This is called after .port_bridge_leave when leaving a VLAN-aware
-> +	 * bridge. Don't set standalone ports to fallback mode.
->  	 */
-> -	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> -		   MT7530_PORT_MATRIX_MODE);
-> +	if (dsa_to_port(ds, port)->bridge_dev)
-> +		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> +			   MT7530_PORT_FALLBACK_MODE);
-> +
-
-hmm, okay, the ordering between dsa_broadcast() and
-dsa_port_switchdev_unsync_attrs() in dsa_port_bridge_leave() is a bit
-awkward for you, but this looks okay.
-
->  	mt7530_rmw(priv, MT7530_PVC_P(port), VLAN_ATTR_MASK | PVC_EG_TAG_MASK,
->  		   VLAN_ATTR(MT7530_VLAN_TRANSPARENT) |
->  		   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
->  
-> +	/* Set PVID to 0 */
-> +	mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
-> +		   G0_PORT_VID_DEF);
-> +
->  	for (i = 0; i < MT7530_NUM_PORTS; i++) {
->  		if (dsa_is_user_port(ds, i) &&
->  		    dsa_port_is_vlan_filtering(dsa_to_port(ds, i))) {
-> @@ -1276,15 +1289,14 @@ mt7530_port_set_vlan_aware(struct dsa_switch *ds, int port)
->  	struct mt7530_priv *priv = ds->priv;
->  
->  	/* Trapped into security mode allows packet forwarding through VLAN
-> -	 * table lookup. CPU port is set to fallback mode to let untagged
-> -	 * frames pass through.
-> +	 * table lookup.
->  	 */
-> -	if (dsa_is_cpu_port(ds, port))
-> -		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> -			   MT7530_PORT_FALLBACK_MODE);
-> -	else
-> +	if (dsa_is_user_port(ds, port)) {
->  		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
->  			   MT7530_PORT_SECURITY_MODE);
-> +		mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
-> +			   G0_PORT_VID(priv->ports[port].pvid));
-> +	}
->  
->  	/* Set the port as a user port which is to be able to recognize VID
->  	 * from incoming packets before fetching entry within the VLAN table.
-> @@ -1329,6 +1341,13 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
->  			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
->  	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
->  
-> +	/* When a port is removed from the bridge, the port would be set up
-> +	 * back to the default as is at initial boot which is a VLAN-unaware
-> +	 * port.
-> +	 */
-> +	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_PORT_VLAN_MASK,
-> +		   MT7530_PORT_MATRIX_MODE);
-> +
->  	mutex_unlock(&priv->reg_mutex);
->  }
->  
-> @@ -1511,7 +1530,7 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
->  	/* Validate the entry with independent learning, create egress tag per
->  	 * VLAN and joining the port as one of the port members.
->  	 */
-> -	val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) | VLAN_VALID;
-> +	val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) | FID(1) | VLAN_VALID;
->  	mt7530_write(priv, MT7530_VAWD1, val);
->  
->  	/* Decide whether adding tag or not for those outgoing packets from the
-> @@ -1601,9 +1620,13 @@ mt7530_port_vlan_add(struct dsa_switch *ds, int port,
->  	mt7530_hw_vlan_update(priv, vlan->vid, &new_entry, mt7530_hw_vlan_add);
->  
->  	if (pvid) {
-> -		mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
-> -			   G0_PORT_VID(vlan->vid));
->  		priv->ports[port].pvid = vlan->vid;
-> +
-> +		/* Only configure PVID if VLAN filtering is enabled */
-> +		if (dsa_port_is_vlan_filtering(dsa_to_port(ds, port)))
-> +			mt7530_rmw(priv, MT7530_PPBV1_P(port),
-> +				   G0_PORT_VID_MASK,
-> +				   G0_PORT_VID(vlan->vid));
->  	}
->  
->  	mutex_unlock(&priv->reg_mutex);
-> @@ -1617,11 +1640,9 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
->  {
->  	struct mt7530_hw_vlan_entry target_entry;
->  	struct mt7530_priv *priv = ds->priv;
-> -	u16 pvid;
->  
->  	mutex_lock(&priv->reg_mutex);
->  
-> -	pvid = priv->ports[port].pvid;
->  	mt7530_hw_vlan_entry_init(&target_entry, port, 0);
->  	mt7530_hw_vlan_update(priv, vlan->vid, &target_entry,
->  			      mt7530_hw_vlan_del);
-> @@ -1629,11 +1650,12 @@ mt7530_port_vlan_del(struct dsa_switch *ds, int port,
->  	/* PVID is being restored to the default whenever the PVID port
->  	 * is being removed from the VLAN.
->  	 */
-> -	if (pvid == vlan->vid)
-> -		pvid = G0_PORT_VID_DEF;
-> +	if (priv->ports[port].pvid == vlan->vid) {
-> +		priv->ports[port].pvid = G0_PORT_VID_DEF;
-> +		mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK,
-> +			   G0_PORT_VID_DEF);
-> +	}
->  
-> -	mt7530_rmw(priv, MT7530_PPBV1_P(port), G0_PORT_VID_MASK, pvid);
-> -	priv->ports[port].pvid = pvid;
->  
->  	mutex_unlock(&priv->reg_mutex);
->  
-> @@ -2134,6 +2156,10 @@ mt7530_setup(struct dsa_switch *ds)
->  				return ret;
->  		} else {
->  			mt7530_port_disable(ds, i);
-> +
-> +			/* Set default PVID to 0 on all user ports */
-> +			mt7530_rmw(priv, MT7530_PPBV1_P(i), G0_PORT_VID_MASK,
-> +				   G0_PORT_VID_DEF);
->  		}
->  		/* Enable consistent egress tag */
->  		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
-> @@ -2301,6 +2327,10 @@ mt7531_setup(struct dsa_switch *ds)
->  				return ret;
->  		} else {
->  			mt7530_port_disable(ds, i);
-> +
-> +			/* Set default PVID to 0 on all user ports */
-> +			mt7530_rmw(priv, MT7530_PPBV1_P(i), G0_PORT_VID_MASK,
-> +				   G0_PORT_VID_DEF);
->  		}
->  
->  		/* Enable consistent egress tag */
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index b19b389ff10a..a308886fdebc 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -148,6 +148,8 @@ enum mt7530_vlan_cmd {
->  #define  VTAG_EN			BIT(28)
->  /* VLAN Member Control */
->  #define  PORT_MEM(x)			(((x) & 0xff) << 16)
-> +/* Filter ID */
-> +#define  FID(x)				(((x) & 0x7) << 1)
->  /* VLAN Entry Valid */
->  #define  VLAN_VALID			BIT(0)
->  #define  PORT_MEM_SHFT			16
-> @@ -247,7 +249,7 @@ enum mt7530_vlan_port_attr {
->  #define MT7530_PPBV1_P(x)		(0x2014 + ((x) * 0x100))
->  #define  G0_PORT_VID(x)			(((x) & 0xfff) << 0)
->  #define  G0_PORT_VID_MASK		G0_PORT_VID(0xfff)
-> -#define  G0_PORT_VID_DEF		G0_PORT_VID(1)
-> +#define  G0_PORT_VID_DEF		G0_PORT_VID(0)
->  
->  /* Register for port MAC control register */
->  #define MT7530_PMCR_P(x)		(0x3000 + ((x) * 0x100))
-> -- 
-> 2.25.1
+> That means user needs to be able to correctly read the mtu value carried
+> in the RA message so that user can correctly compare PCO ipv4 mtu and
+> RA ipv6 mtu.
 > 
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+Then userspace should get a link notification when ra_mtu is set so it
+does not have to poll.
 
 _______________________________________________
 Linux-mediatek mailing list
