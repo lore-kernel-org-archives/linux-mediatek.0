@@ -2,76 +2,94 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0800CC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 12:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE3F7C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 12:59:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEFCF60F93
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 12:49:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CEFCF60F93
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A7A6260F8F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 12:59:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A7A6260F8F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3IOy5E0eauDqJjRI0f6ak4yANMaCc5hIRxT0S8IiL3c=; b=Tij5/bB+Hr9Ro+
-	3CT/MaNl/rYRRT4saz6bXVk6utKtsn0ZQc1hNnIa5BOVwXwuCr5l8BNTvoIpky2rlmZQfhXbM3Rxt
-	cLRgJkyHWOwPTl+HesnPGMWd7FRpKi5TAQrqIf2yF2ZiLAbmPJovzGC/piv34vRU8ya+RmW0b55Ix
-	xevk6/PGHNMPi3o5vPL785h4mBXjRcZh+6olfZXdfMo57+XKSVpLzuV0TnYmpQWqrPhSOG/F17xZa
-	mm4s02eAPPjfRoFHtHWtTyXy7NdOkK8x0qZa3WQUJlhL86jmIWkQnwGWOSrNG1ALMbHvIWqcP9TZf
-	sXFpK+xOeQg024Sa0CNg==;
+	List-Owner; bh=KeJ0uNSi1B0kg82HHUNX1+Fx2q7c56WHQc7hdg8zlzA=; b=Z36kdlWpT7YYdp
+	q4VdMPq7Fzf3sA8OHSzwdwKOsvWnMLxBH7XWl0GARdFtMxmTooofYb2xjlFDwzourjD5wb4X/u+uV
+	tc3vmoEgqoBIflLYZQueSGtRf+aYms/MNpo5uYuSfmDmYcsotVrgVvUHE475qEM+WWE13+aDnNy5j
+	XzypyftDOTgRzUtIIGk30VCOxqfmt2P+vWd0JlxufJxADofKJl7LxpA87N85oZVTY0zukmdszX7hL
+	fxhXYoRgVHKLsroCw3lA6BpvSiFOw8OKZBxskh4f744uYivROfXxyA3GM1PG96sYTUq7Rd9bDqR0R
+	hh+tV+EeeBwfI3/EfFIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAtrA-002kO7-OZ; Tue, 03 Aug 2021 12:49:16 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mAu0V-002nvT-Po; Tue, 03 Aug 2021 12:58:55 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAtOI-002acN-Ng; Tue, 03 Aug 2021 12:19:28 +0000
-X-UUID: 5f0af844ae4d47f5a93fea6eaa21aa34-20210803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=Vda9KSNqfQuuwuPjSrl+R3ubgQBHg85IEBNXocsQ4ps=; 
- b=dTKIG7XfDXWdFFU9WYWPAu64w9XIeNmwAU9iZAhHmduq2WfCl+9HmUJfqSwirYlUgPMG8XSxsarhci26WLCnx/eRW/rMtrmSPuYu0Ll4BrxXex0OQ11WzhzYyTnUMqKD4QDOYg0pDDL3WwY+MqxBS3DS1uA4qhNc+qdxXlT6ZkA=;
-X-UUID: 5f0af844ae4d47f5a93fea6eaa21aa34-20210803
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1561624406; Tue, 03 Aug 2021 05:19:23 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 Aug 2021 05:19:22 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 Aug 2021 20:19:20 +0800
-Received: from localhost.localdomain (10.15.20.246) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 3 Aug 2021 20:19:19 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@kernel.org>, "David S . Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <rocco.yue@gmail.com>, <chao.song@mediatek.com>,
- <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: [PATCH net-next] net: add extack arg for link ops
-Date: Tue, 3 Aug 2021 20:02:50 +0800
-Message-ID: <20210803120250.32642-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mAtij-002hMM-G2; Tue, 03 Aug 2021 12:40:34 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id
+ u13-20020a17090abb0db0290177e1d9b3f7so3643064pjr.1; 
+ Tue, 03 Aug 2021 05:40:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dQ9TyR/ElfRpbm66B73yjjkp4wHEV5Mt6Yp5m7wMnpM=;
+ b=Pj6L45Z5d1eZKMGaDjGEn+k38rvy794EmzxLdJb/SBe9YcVz+Am/OQ2Jc9YAn3dH56
+ NkN+NKB8dBgiUuBspVurnd1M2ZGcauGNp0w98ejIF6BPhziigns9l/nvFpsjEp+QxTeP
+ 1qg+5au+gYhCsgMNP1q3myQQaOnlQrLgxsZbKt1IsCncbJLzZlzP5qialHQ6k8kBN4Wc
+ lufhtmrVT2A6OdlrcdtwYhDCOekmQbh1DbxY66wIDO54BMgIDx0ynuGEaXAQ3/ebHLZz
+ HzEosZ1FUd9VCBYFLs10i8GCICS6vzUHmNSfPAShvkfnBqm+FmN2ViyS78b7OXjKF/wj
+ Qduw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dQ9TyR/ElfRpbm66B73yjjkp4wHEV5Mt6Yp5m7wMnpM=;
+ b=MoXo7n/k82HKyY1i0Tlf0DTlTnONyovzJnFyX8NUAVf6cC3lxY5SIwS/arkCTLw99r
+ Q+ZcR0pG0HDAy1BsCl76nz5OATCL0hSyYHMgba+p/x/kQWFCgJpnrXixElz8ewtFXyOu
+ 2/KD2qiETycVktOjqSO2ERIKoA71cnOQpthf+dOlT0E49g4KzX/smFDw3WHytwbL/pEQ
+ fasly36ynovw6pwQPbHfhK5n73dMEwSh+3kcEQrTrmX3Ui3WiHhxIr4fD6pfzKv4ODNc
+ giqo9Olk47C0MCFv4K6b0D0e12c3DB5NCSAQBLRDqHyFHTm56mmRpjOKdM3JD4Na4D+x
+ 9xnQ==
+X-Gm-Message-State: AOAM532qXDsmPYhs1q37YSDqwnHPxrvckLGdks5FhO8ptIH9ausfr7c6
+ saIwop/if7fKtlL+C7Oz1kE=
+X-Google-Smtp-Source: ABdhPJwZx7+VO53Jv6LZiPKW412Lt5aGVRYJ7kbue0DP70WdatNFYtNsAGuAlhq7/AwKuQp8i2TUUA==
+X-Received: by 2002:a65:6813:: with SMTP id l19mr51800pgt.118.1627994431593;
+ Tue, 03 Aug 2021 05:40:31 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id g25sm15747499pfk.138.2021.08.03.05.40.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Aug 2021 05:40:30 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: Eric Woudstra <ericwouds@gmail.com>,
+ =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Subject: [PATCH net-next 0/4] mt7530 software fallback bridging fix
+Date: Tue,  3 Aug 2021 20:40:18 +0800
+Message-Id: <20210803124022.2912298-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_051926_858474_DFD278D4 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20210803_054033_631943_ED26BD08 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,121 +106,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pass extack arg to validate_linkmsg and validate_link_af callbacks.
-If a netlink attribute has a reject_message, use the extended ack
-mechanism to carry the message back to user space.
+DSA core has gained software fallback support since commit 2f5dc00f7a3e,
+but it does not work properly on mt7530. This patch series fixes the
+issues.
 
-Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
----
- include/net/rtnetlink.h | 3 ++-
- net/core/rtnetlink.c    | 9 +++++----
- net/ipv4/devinet.c      | 5 +++--
- net/ipv6/addrconf.c     | 5 +++--
- 4 files changed, 13 insertions(+), 9 deletions(-)
+DENG Qingfang (4):
+  net: dsa: mt7530: enable assisted learning on CPU port
+  net: dsa: mt7530: use independent VLAN learning on VLAN-unaware
+    bridges
+  net: dsa: mt7530: set STP state on filter ID 1
+  net: dsa: mt7530: always install FDB entries with IVL and FID 1
 
-diff --git a/include/net/rtnetlink.h b/include/net/rtnetlink.h
-index 384e800665f2..9f48733bfd21 100644
---- a/include/net/rtnetlink.h
-+++ b/include/net/rtnetlink.h
-@@ -153,7 +153,8 @@ struct rtnl_af_ops {
- 						    u32 ext_filter_mask);
- 
- 	int			(*validate_link_af)(const struct net_device *dev,
--						    const struct nlattr *attr);
-+						    const struct nlattr *attr,
-+						    struct netlink_ext_ack *extack);
- 	int			(*set_link_af)(struct net_device *dev,
- 					       const struct nlattr *attr,
- 					       struct netlink_ext_ack *extack);
-diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index f6af3e74fc44..8c78715338b0 100644
---- a/net/core/rtnetlink.c
-+++ b/net/core/rtnetlink.c
-@@ -2268,7 +2268,8 @@ static int rtnl_ensure_unique_netns(struct nlattr *tb[],
- 	return -EINVAL;
- }
- 
--static int validate_linkmsg(struct net_device *dev, struct nlattr *tb[])
-+static int validate_linkmsg(struct net_device *dev, struct nlattr *tb[],
-+			    struct netlink_ext_ack *extack)
- {
- 	if (dev) {
- 		if (tb[IFLA_ADDRESS] &&
-@@ -2295,7 +2296,7 @@ static int validate_linkmsg(struct net_device *dev, struct nlattr *tb[])
- 				return -EOPNOTSUPP;
- 
- 			if (af_ops->validate_link_af) {
--				err = af_ops->validate_link_af(dev, af);
-+				err = af_ops->validate_link_af(dev, af, extack);
- 				if (err < 0)
- 					return err;
- 			}
-@@ -2603,7 +2604,7 @@ static int do_setlink(const struct sk_buff *skb,
- 	const struct net_device_ops *ops = dev->netdev_ops;
- 	int err;
- 
--	err = validate_linkmsg(dev, tb);
-+	err = validate_linkmsg(dev, tb, extack);
- 	if (err < 0)
- 		return err;
- 
-@@ -3301,7 +3302,7 @@ static int __rtnl_newlink(struct sk_buff *skb, struct nlmsghdr *nlh,
- 			m_ops = master_dev->rtnl_link_ops;
- 	}
- 
--	err = validate_linkmsg(dev, tb);
-+	err = validate_linkmsg(dev, tb, extack);
- 	if (err < 0)
- 		return err;
- 
-diff --git a/net/ipv4/devinet.c b/net/ipv4/devinet.c
-index 73721a4448bd..26856064096a 100644
---- a/net/ipv4/devinet.c
-+++ b/net/ipv4/devinet.c
-@@ -1950,7 +1950,8 @@ static const struct nla_policy inet_af_policy[IFLA_INET_MAX+1] = {
- };
- 
- static int inet_validate_link_af(const struct net_device *dev,
--				 const struct nlattr *nla)
-+				 const struct nlattr *nla,
-+				 struct netlink_ext_ack *extack)
- {
- 	struct nlattr *a, *tb[IFLA_INET_MAX+1];
- 	int err, rem;
-@@ -1959,7 +1960,7 @@ static int inet_validate_link_af(const struct net_device *dev,
- 		return -EAFNOSUPPORT;
- 
- 	err = nla_parse_nested_deprecated(tb, IFLA_INET_MAX, nla,
--					  inet_af_policy, NULL);
-+					  inet_af_policy, extack);
- 	if (err < 0)
- 		return err;
- 
-diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
-index 3bf685fe64b9..59792779551e 100644
---- a/net/ipv6/addrconf.c
-+++ b/net/ipv6/addrconf.c
-@@ -5784,7 +5784,8 @@ static int check_stable_privacy(struct inet6_dev *idev, struct net *net,
- }
- 
- static int inet6_validate_link_af(const struct net_device *dev,
--				  const struct nlattr *nla)
-+				  const struct nlattr *nla,
-+				  struct netlink_ext_ack *extack)
- {
- 	struct nlattr *tb[IFLA_INET6_MAX + 1];
- 	struct inet6_dev *idev = NULL;
-@@ -5797,7 +5798,7 @@ static int inet6_validate_link_af(const struct net_device *dev,
- 	}
- 
- 	err = nla_parse_nested_deprecated(tb, IFLA_INET6_MAX, nla,
--					  inet6_af_policy, NULL);
-+					  inet6_af_policy, extack);
- 	if (err)
- 		return err;
- 
+ drivers/net/dsa/mt7530.c | 87 +++++++++++++++++++++++++++-------------
+ drivers/net/dsa/mt7530.h |  9 +++--
+ 2 files changed, 66 insertions(+), 30 deletions(-)
+
 -- 
-2.18.0
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
