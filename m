@@ -2,20 +2,20 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09486C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:15:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B655EC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:29:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5DA0603E7
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:15:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C5DA0603E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gorani.run
+	by mail.kernel.org (Postfix) with ESMTPS id 7C25A60FC2
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:29:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C25A60FC2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,61 +23,80 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qOO20cVOnUVHERA0EmJikeAYUGNXn5rmtoEFX/cuxCI=; b=RWZU239uQsTczC
-	8qqxhxbtOv1+nUowNJJMFG/SyAaBkptbb1stdEY8FV0lWnPjh4vlLExUOJ6z2E2KXqwcRiGFfJAWT
-	N1CqPX5rBrwlzhsBb7FcNC+hesHMteiSX5iVIY2sjrd01LdQvOsvCzVOUMZPhheaYJ3xfwNoLn4y9
-	LNGkm4XbfAlz1Ogc3ZsUtRnkDBBY8rrm/6unJ4gylvLpERCrZhIxpTGoML8u+BPVCmMlleW0vyD3c
-	ubYB2MZ0yCjdhXQX17y2ReXcXb/GVy3RnCuNxLtlpeIdpkTC5EpMM1P6+baHra7/dRnHipKoBLOgV
-	6LkR2XBgijj2uur8noAQ==;
+	List-Owner; bh=lAr6Ce2hpufNPJj9d73eCLnyZsVX4515fkDnelE4nuY=; b=FrHS4+74mqcaIM
+	plhjfY07C3yZzQi9mzQZwQC3dQQyC52mnRWw/Jb6J8tnK0y8o54B/ZJt3TfmOWorPkoU1BuKCuPXf
+	iX0wJeRnhKCFHlrulwDrWleQNytEYLFO1dNsxaRL5D2VhkmP0OcFeWo2fTznn8oLznFxpfI2g9oNF
+	ct/HUYRiRFfXqgbM9OXCG+D+nwGJqhbkGGCvLPbJiDGrHJa0UU54xgb9/vCSnN6AT2SThCkhmCwAY
+	F650hKS0ZO3WWtyC64TSnMSN97yB0O40UP9B8Iykogai2N78p7gPEfslHHTA0GaPQP1OqhbIf63cT
+	Sf2yOAsQb/GDYDwWez0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAw8D-003Mz7-Q5; Tue, 03 Aug 2021 15:15:01 +0000
-Received: from mout-p-202.mailbox.org ([2001:67c:2050::465:202])
+	id 1mAwM8-003PGN-K6; Tue, 03 Aug 2021 15:29:24 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAw7m-003Mop-5Y; Tue, 03 Aug 2021 15:14:35 +0000
-Received: from smtp1.mailbox.org (smtp1.mailbox.org [80.241.60.240])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mout-p-202.mailbox.org (Postfix) with ESMTPS id 4GfJLw1BNRzQk8f;
- Tue,  3 Aug 2021 17:14:32 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at heinlein-support.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gorani.run; s=MBO0001; 
- t=1628003670;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jaY5xQwQPN4FkdmzkED2VE4/tPDCWvCJPyi34G3W5ag=;
- b=oF31Z4Mr2fOWKi4op48MQlJmPoIDoo9cKjd9qkpA7BpzQdGmNbBJVNZoMiqEwjFpvfC3ca
- qTyR7vCmQfTfz60K6uE/z6zMMdoZQg2hL40ZFiLGSwXV0s/PPUSaKfj/AOjajNYhIbQTJf
- +QIvos7q7gc/MMwrrOT3TKpQj8jhNhP/tNjXnwuGMXJQyUhCdI+Y3oJ0qKTq9r5WpD0Yb0
- 9DIqswDoeEqdgXguxV90DgYwVKieI0gYx2W/BBK1MovXoVoJrIfulJA8WrOEy/LAqbIkE4
- 1T0GdhDw1lNoBy7wk/D2JykJ9zn70IzgYVrY/GWLxp5vPQvjdyr+iaoF01NK8Q==
-Received: from smtp1.mailbox.org ([80.241.60.240])
- by hefe.heinlein-support.de (hefe.heinlein-support.de [91.198.250.172])
- (amavisd-new, port 10030)
- with ESMTP id ts-v0sY3q_Pm; Tue,  3 Aug 2021 17:14:28 +0200 (CEST)
-From: Sungbo Eo <mans0n@gorani.run>
-To: linux-mediatek@lists.infradead.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
- Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sungbo Eo <mans0n@gorani.run>
-Subject: [PATCH 2/2] arm: dts: mt7623: add musb device nodes
-Date: Wed,  4 Aug 2021 00:13:20 +0900
-Message-Id: <20210803151320.71531-3-mans0n@gorani.run>
-In-Reply-To: <20210803151320.71531-1-mans0n@gorani.run>
-References: <20210803151320.71531-1-mans0n@gorani.run>
+ id 1mAwLw-003PEu-DO; Tue, 03 Aug 2021 15:29:13 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id
+ j18-20020a17090aeb12b029017737e6c349so3157714pjz.0; 
+ Tue, 03 Aug 2021 08:29:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=TlfK2VJ6iI6/r4Nhmzrn4xmy7cO/lNNzYPI68RNrCFQ=;
+ b=fTs/Iloe6nn8kpH7p7BX16GKQoe81CLly2hJENeR9Qj7CindAwu9tAhFbrRRZC/euG
+ tlf8FkOzthBGdNkPoTCoo0xxHvFBmdThHm35IOUzwelepzVFbWtp2DylyW1T9NOhUHgx
+ 5iqBvvdKtq1Kz3d/6cfa9fM9ntigN6X/W92bEWf3bCdLdU3idj5tm9FNOmA2ZqkYBI9l
+ 3yz4iUNpJqVPtEt6mvAxkf7gzM97Mg7VwLFa4TRLY+JPA4XhX90KDfMh7UoPbtuJrqYH
+ YZwcchAzRdB0mFb9b4zBTXmCEpkYvFM1qIc6kqhH18gxRPU88ZXYZshWCsOhBJbKoqcM
+ TVmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=TlfK2VJ6iI6/r4Nhmzrn4xmy7cO/lNNzYPI68RNrCFQ=;
+ b=HXCnvdl9stJRl3kGtJ7AZkAwed6ekNj5dzDCaWxtcByHzEmt14fFDiFzChnJvFmEhR
+ uOp4MPmDfdoCQ+fNlBIFzX/5dTlawQQbWh9R/1GASL77ctUx5GfLq927DUXXXm55RJUu
+ aflngsF+MjatiHMQ0/99QFwOr8qNBKods/MgqLn6KPRZGEbBMivCHWEHw0N15DKcjK/b
+ EBOBXB2heRJ12xVKoQP2hu4YzVtL6CA/mvlJD2fKoWKvU/EINJ+QIERIP2saBO5g81Yk
+ NtTAR5U2kpS11pM8WA080J9X6Oria1x0KKjS573Q1a0Y9p6RzKvKzK79khLFq90cO0yQ
+ BtDw==
+X-Gm-Message-State: AOAM5318HoG6WN/BGi5x8oLxIRsOaw/r3iXuLisGiQt334GAbtGgj7Jt
+ 1plYUwWaR01ADTABZljsy+g=
+X-Google-Smtp-Source: ABdhPJyWy13jq6LAmzzH+btwVFS22zDWog94fqgmyTGBy8+HveSaFu8pfbjvptmpLz0rQ/dMQhP5PA==
+X-Received: by 2002:a17:902:d383:b029:12c:bebe:725a with SMTP id
+ e3-20020a170902d383b029012cbebe725amr7086064pld.24.1628004551377; 
+ Tue, 03 Aug 2021 08:29:11 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id g1sm9205786pfo.0.2021.08.03.08.29.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Aug 2021 08:29:10 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Eric Woudstra <ericwouds@gmail.com>,
+ =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
+Subject: Re: [PATCH net-next 4/4] net: dsa: mt7530: always install FDB entries
+ with IVL and FID 1
+Date: Tue,  3 Aug 2021 23:29:01 +0800
+Message-Id: <20210803152901.2913035-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210803144552.fluxxfoey2tbqyyu@skbuf>
+References: <20210803124022.2912298-1-dqfext@gmail.com>
+ <20210803124022.2912298-5-dqfext@gmail.com>
+ <20210803144552.fluxxfoey2tbqyyu@skbuf>
 MIME-Version: 1.0
-X-Rspamd-Queue-Id: 3E44F18B5
-X-Rspamd-UID: 30f0b3
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_081434_490066_EEA0F44A 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20210803_082912_496225_11C444A5 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,74 +113,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT7623 has an musb controller that is compatible with the one from MT2701.
+On Tue, Aug 03, 2021 at 05:45:52PM +0300, Vladimir Oltean wrote:
+> 
+> Maybe it would be good to resend with a set of #defines for the
+> standalone/bridged port FID values after all, what do you think?
 
-Signed-off-by: Sungbo Eo <mans0n@gorani.run>
----
- arch/arm/boot/dts/mt7623.dtsi  | 34 ++++++++++++++++++++++++++++++++++
- arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
- 2 files changed, 38 insertions(+)
-
-diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-index 3c11f7cfcc40..806dc067ec8f 100644
---- a/arch/arm/boot/dts/mt7623.dtsi
-+++ b/arch/arm/boot/dts/mt7623.dtsi
-@@ -905,6 +905,40 @@ u3port1: usb-phy@1a244900 {
- 		};
- 	};
- 
-+	usb3: usb@11200000 {
-+		compatible = "mediatek,mt7623-musb",
-+			     "mediatek,mtk-musb";
-+		reg = <0 0x11200000 0 0x1000>;
-+		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-names = "mc";
-+		phys = <&u2port2 PHY_TYPE_USB2>;
-+		dr_mode = "otg";
-+		clocks = <&pericfg CLK_PERI_USB0>,
-+			 <&pericfg CLK_PERI_USB0_MCU>,
-+			 <&pericfg CLK_PERI_USB_SLV>;
-+		clock-names = "main","mcu","univpll";
-+		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-+		status = "disabled";
-+	};
-+
-+	u2phy1: t-phy@11210000 {
-+		compatible = "mediatek,mt7623-tphy",
-+			     "mediatek,generic-tphy-v1";
-+		reg = <0 0x11210000 0 0x0800>;
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		status = "okay";
-+
-+		u2port2: usb-phy@1a1c4800 {
-+			reg = <0 0x11210800 0 0x0100>;
-+			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-+			clock-names = "ref";
-+			#phy-cells = <1>;
-+			status = "okay";
-+		};
-+	};
-+
- 	ethsys: syscon@1b000000 {
- 		compatible = "mediatek,mt7623-ethsys",
- 			     "mediatek,mt2701-ethsys",
-diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
-index 0735a1fb8ad9..c10ce6f4ab27 100644
---- a/arch/arm/boot/dts/mt7623a.dtsi
-+++ b/arch/arm/boot/dts/mt7623a.dtsi
-@@ -42,3 +42,7 @@ &usb1 {
- &usb2 {
- 	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
- };
-+
-+&usb3 {
-+	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
-+};
--- 
-2.32.0
-
+Will do.
 
 _______________________________________________
 Linux-mediatek mailing list
