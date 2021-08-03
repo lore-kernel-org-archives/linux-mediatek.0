@@ -2,98 +2,114 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	INVALID_DATE_TZ_ABSURD,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AEC51C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 13:04:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CA7AAC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 13:33:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 76AC960F8F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 13:04:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 76AC960F8F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8ABB360F58
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 13:33:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8ABB360F58
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xfl8ojbZ71okjEv4k3AGTf7A1lSgvQUVIF34JVaubDs=; b=XG9Zo8kA+8Twfr
-	JAqjp/K2RY5eJpN7Fz2yEep8lyTmslpAo5ryna4foFDAFablVJKJtN53OcxuqAO2AGWpp5c+IjZUO
-	eYbcLsYHG8dTb0pEeUOQ4OUUsUvQcvbFHIn83SfUoHXxaVqMyhyYXMtO3vgutoIQ8JnDYERfDFlpE
-	XR6F9XLsYj8/FydS0HDblthA1DO31LflFufWK9/ix7qptO+P1XIdWFGP1zGkUFjD3gBmaECU60yH0
-	Tl+711tey/a555QkTX9ZRr+g7q0H7uGqucNTva2W4QaekCWFk1W/P7bRHWJheQ5uts/eoScXVfTCX
-	5Z+CCj6sRZGbM+jeWVFQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4emPnIhJUJA9WPAxlleJVUx0tSHFolp0TFGTFU34w3s=; b=rPjrLOjctbCO2w
+	GXV1zwSMya5n5RXT0EPniLAWXG4FQpCnmtLUAm+NabHKu94STi9Ji6gfaDCxW93oJo/Q3ywypAaPm
+	R1W0r91pvbFioZR9Vhezp/nsnJsqAMu+HTkiGrXvisPhGUpH4N3nhzgPvgd5P0c9Hz+RzRicDact2
+	UmxRF3PawFo9auoZJDx06G8JFF4e73VgvSFnQmZDV9YL9aKyY0rLgPvy7fLODKHO+Crqkw3UOEYW+
+	paQWmjwnXua4RrB6zfspkpywwGKgz0mFNUl9Nkp+WH2WRsXOznuQLXyiylpdoKhuUGbpjlvCAvFKg
+	Yd1NutAiLyUnqrFhPOOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAu5I-002q07-Gn; Tue, 03 Aug 2021 13:03:52 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1mAuXR-0032zf-Ad; Tue, 03 Aug 2021 13:32:57 +0000
+Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAtj5-002hVY-R3; Tue, 03 Aug 2021 12:40:57 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id
- g23-20020a17090a5797b02901765d605e14so4466466pji.5; 
- Tue, 03 Aug 2021 05:40:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=w7Kn6QXEQelFeTJ7+s8dsrUhrZSrqjRMDTa6894wxts=;
- b=BvH79tKxT+NJ46lxOpJ274QfCECXsRyYzb2ZSo1cZj+WIVl03lsEbe9ERzMM0qz978
- dJuZx6U0MV27iFEllkqn5XGMgtEYcyQhGUiqU1M8I6SqqAuYfSrI+TRQnpziyRJNVhhV
- Wp4O20eq8LfUYXWHIaNvopHWaZsFURti6KuVJmJoSrkF+bpvVpv9yGiUg54YLTMfLnR+
- qVXxKLXUG4Msr3wMowoGKN8SlIrrfoS6VtO50LHf/iN1tUEn5/QA6Hk4VDcf8LUvecl6
- PI/Mwimzj40c6bFOqckTw8McfFMMDSSEIf/FAVaMrVXNvlIy64n8tS4dkezRsl1lc5on
- QGCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=w7Kn6QXEQelFeTJ7+s8dsrUhrZSrqjRMDTa6894wxts=;
- b=L9/YvHPBXWPOvtixVJzKBxLU82gbwcYs0BAZF8hYgpUuiEs4ger5ookfW5/1lkQ2Xn
- NorOYOEI8PaQwAGZev1TQn8vUP2rBh9pl3izU9gES5yBwgunweVT0b2EUKBQdbKB3ani
- 05CTaK8pESTtuICDarK/euFXklTdaAqO6wUBlp0tEsri0qFSfFc/XklF17l09YZhIEzI
- 3NZLOAfZCVGRaQK6ImUchNANOJiAqqGMRjNaLkZ5jfXsVsHNCAwtaTlPSC7yI20y2aSC
- c24ymM9j1oxjGMDjbl5Q6AJ5bgxOxu9PZq6IPuRvWlh5ekIQkIPidc+cJbLGZ6KmWBam
- LCrg==
-X-Gm-Message-State: AOAM530+ELhAipq0mqMwSTvb4eB7I3HgvWCeGjFckBmF7G9VmKidRp2P
- N6PVuDoSw5F/VhSHKkKVb0E=
-X-Google-Smtp-Source: ABdhPJxp9gFg7/j3CDtrOHNrsfB9FqVBSArVmrXgyH3SowyPhAc2Fu3mBv6qHFQ34Iwgo+eYhe7SHA==
-X-Received: by 2002:a17:902:7b8b:b029:12b:8d3e:70e7 with SMTP id
- w11-20020a1709027b8bb029012b8d3e70e7mr18389531pll.76.1627994455018; 
- Tue, 03 Aug 2021 05:40:55 -0700 (PDT)
-Received: from haswell-ubuntu20.lan ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id g25sm15747499pfk.138.2021.08.03.05.40.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Aug 2021 05:40:54 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Eric Woudstra <ericwouds@gmail.com>,
- =?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
- Frank Wunderlich <frank-w@public-files.de>,
- Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>
-Subject: [PATCH net-next 4/4] net: dsa: mt7530: always install FDB entries
- with IVL and FID 1
-Date: Tue,  3 Aug 2021 20:40:22 +0800
-Message-Id: <20210803124022.2912298-5-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210803124022.2912298-1-dqfext@gmail.com>
-References: <20210803124022.2912298-1-dqfext@gmail.com>
+ id 1mAuEJ-002uMN-BX; Tue, 03 Aug 2021 13:13:13 +0000
+From: John Ogness <john.ogness@linutronix.de>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020; t=1627996383;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=zratP/d2dqbzr5A3KZPCTDEa+UpOjiFaTT3D2EIH/Pg=;
+ b=zk5sPz0A/N68QiMZNa4XnUH53XQGAkBgxmMF9RdDFSoOGdHXqC//ofK9o10vkQtIIgxpxy
+ o3gzfJIWcGuD/7CJSo5P2+b6eNhxoNOxZol539AjZC3laI2y9WkzZGJ7p/8XuGC/SI6py5
+ 6Mpztfu+HxmsRcOTqIZJcFq3yrOVV08E2vhgrY8or5Z3uRGykD2IiT/TXmzbGy4LL+sBHS
+ cGTPp1pxVnfmrDUBXMNIf7pO9xGKJUUaHa3+Iftq3TyMFoNPnqWV077wktj4wMXkILY+0N
+ qrvzjb5E1n/5VK5Jn8gch/Yneaa2fDy8JybmbeFc/b2DSqzfflXIeOBn73Azfw==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+ s=2020e; t=1627996383;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=zratP/d2dqbzr5A3KZPCTDEa+UpOjiFaTT3D2EIH/Pg=;
+ b=eiwsN3XDO7gIOKIO/tyPKCl9YBM/K+0P9ejFJ1AFeHJgY6RpWMpxmcaTC14bbaMpVCrVQI
+ kAWF+aftd/6aNtAw==
+To: Petr Mladek <pmladek@suse.com>
+Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Steven Rostedt <rostedt@goodmis.org>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-kernel@vger.kernel.org, Andrew Morton <akpm@linux-foundation.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ "Paul E. McKenney" <paulmck@kernel.org>,
+ Michael Ellerman <mpe@ellerman.id.au>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Paul Mackerras <paulus@samba.org>, Ingo Molnar <mingo@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, x86@kernel.org,
+ "H. Peter Anvin" <hpa@zytor.com>,
+ Jason Wessel <jason.wessel@windriver.com>,
+ Daniel Thompson <daniel.thompson@linaro.org>,
+ Douglas Anderson <dianders@chromium.org>,
+ Srikar Dronamraju <srikar@linux.vnet.ibm.com>,
+ "Gautham R. Shenoy" <ego@linux.vnet.ibm.com>,
+ Chengyang Fan <cy.fan@huawei.com>,
+ Christophe Leroy <christophe.leroy@csgroup.eu>,
+ Bhaskar Chowdhury <unixbhaskar@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ linuxppc-dev@lists.ozlabs.org, kgdb-bugreport@lists.sourceforge.net,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Masahiro Yamada <masahiroy@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Tetsuo Handa <penguin-kernel@I-love.SAKURA.ne.jp>,
+ Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
+ Changbin Du <changbin.du@intel.com>, Sumit Garg <sumit.garg@linaro.org>,
+ Cengiz Can <cengiz@kernel.wtf>, Jiri Slaby <jirislaby@kernel.org>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Andrew Jeffery <andrew@aj.id.au>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kuldip dwivedi <kuldip.dwivedi@puresoftware.com>,
+ Wang Qing <wangqing@vivo.com>, Andrij Abyzov <aabyzov@slb.com>,
+ Johan Hovold <johan@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>,
+ Claire Chang <tientzu@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Zhang Qilong <zhangqilong3@huawei.com>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ Al Cooper <alcooperx@gmail.com>, linux-serial@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH printk v1 00/10] printk: introduce atomic consoles and sync
+ mode
+Date: Tue,  3 Aug 2021 15:18:51 +0206
+Message-Id: <20210803131301.5588-1-john.ogness@linutronix.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_054055_942921_DDA24F96 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20210803_061311_708599_27DBA5B6 
+X-CRM114-Status: GOOD (  14.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,61 +126,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This reverts commit 7e777021780e ("mt7530 mt7530_fdb_write only set ivl
-bit vid larger than 1").
+Hi,
 
-Before this series, the default value of all ports' PVID is 1, which is
-copied into the FDB entry, even if the ports are VLAN unaware. So
-`bridge fdb show` will show entries like `dev swp0 vlan 1 self` even on
-a VLAN-unaware bridge.
+This is the next part of our printk-rework effort (points 3 and
+4 of the LPC 2019 summary [0]).
 
-The blamed commit does not solve that issue completely, instead it may
-cause a new issue that FDB is inaccessible in a VLAN-aware bridge with
-PVID 1.
+Here the concept of "atomic consoles" is introduced through  a
+new (optional) write_atomic() callback for console drivers. This
+callback must be implemented as an NMI-safe variant of the
+write() callback, meaning that it can function from any context
+without relying on questionable tactics such as ignoring locking
+and also without relying on the synchronization of console
+semaphore.
 
-This series sets PVID to 0 on VLAN-unaware ports, so `bridge fdb show`
-will no longer print `vlan 1` on VLAN-unaware bridges, and that special
-case in fdb_write is not required anymore.
+As an example of how such an atomic console can look like, this
+series implements write_atomic() for the 8250 UART driver.
 
-Set FDB entries' filter ID to 1 to match the VLAN table.
+This series also introduces a new console printing mode called
+"sync mode" that is only activated when the kernel is about to
+end (such as panic, oops, shutdown, reboot). Sync mode can only
+be activated if atomic consoles are available. A system without
+registered atomic consoles will be unaffected by this series.
 
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
----
-RFC -> v1: Detailed commit message. Also set FDB entries' FID to 1.
+When in sync mode, the console printing behavior becomes:
 
- drivers/net/dsa/mt7530.c | 4 ++--
- drivers/net/dsa/mt7530.h | 1 +
- 2 files changed, 3 insertions(+), 2 deletions(-)
+- only consoles implementing write_atomic() will be called
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 8d84d7ddad38..ac2b45e472bd 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -366,8 +366,8 @@ mt7530_fdb_write(struct mt7530_priv *priv, u16 vid,
- 	int i;
- 
- 	reg[1] |= vid & CVID_MASK;
--	if (vid > 1)
--		reg[1] |= ATA2_IVL;
-+	reg[1] |= ATA2_IVL;
-+	reg[1] |= ATA2_FID(1);
- 	reg[2] |= (aging & AGE_TIMER_MASK) << AGE_TIMER;
- 	reg[2] |= (port_mask & PORT_MAP_MASK) << PORT_MAP;
- 	/* STATIC_ENT indicate that entry is static wouldn't
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 53b7bb1f5368..73b0e0eb8f2f 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -80,6 +80,7 @@ enum mt753x_bpdu_port_fw {
- #define  STATIC_ENT			3
- #define MT7530_ATA2			0x78
- #define  ATA2_IVL			BIT(15)
-+#define  ATA2_FID(x)			(((x) & 0x7) << 12)
- 
- /* Register for address table write data */
- #define MT7530_ATWD			0x7c
+- printing occurs within vprintk_store() instead of
+  console_unlock(), since the console semaphore is irrelevant
+  for atomic consoles
+
+For systems that have registered atomic consoles, this series
+improves the reliability of seeing crash messages by using new
+locking techniques rather than "ignoring locks and hoping for
+the best". In particular, atomic consoles rely on the
+CPU-reentrant spinlock (i.e. the printk cpulock) for
+synchronizing console output.
+
+John Ogness
+
+[0] https://lore.kernel.org/lkml/87k1acz5rx.fsf@linutronix.de/
+
+John Ogness (10):
+  printk: relocate printk cpulock functions
+  printk: rename printk cpulock API and always disable interrupts
+  kgdb: delay roundup if holding printk cpulock
+  printk: relocate printk_delay()
+  printk: call boot_delay_msec() in printk_delay()
+  printk: use seqcount_latch for console_seq
+  console: add write_atomic interface
+  printk: introduce kernel sync mode
+  kdb: if available, only use atomic consoles for output mirroring
+  serial: 8250: implement write_atomic
+
+ arch/powerpc/include/asm/smp.h         |   1 +
+ arch/powerpc/kernel/kgdb.c             |  10 +-
+ arch/powerpc/kernel/smp.c              |   5 +
+ arch/x86/kernel/kgdb.c                 |   9 +-
+ drivers/tty/serial/8250/8250.h         |  47 ++-
+ drivers/tty/serial/8250/8250_core.c    |  17 +-
+ drivers/tty/serial/8250/8250_fsl.c     |   9 +
+ drivers/tty/serial/8250/8250_ingenic.c |   7 +
+ drivers/tty/serial/8250/8250_mtk.c     |  29 +-
+ drivers/tty/serial/8250/8250_port.c    |  92 ++--
+ drivers/tty/serial/8250/Kconfig        |   1 +
+ include/linux/console.h                |  32 ++
+ include/linux/kgdb.h                   |   3 +
+ include/linux/printk.h                 |  57 +--
+ include/linux/serial_8250.h            |   5 +
+ kernel/debug/debug_core.c              |  45 +-
+ kernel/debug/kdb/kdb_io.c              |  16 +
+ kernel/printk/printk.c                 | 554 +++++++++++++++++--------
+ lib/Kconfig.debug                      |   3 +
+ lib/dump_stack.c                       |   4 +-
+ lib/nmi_backtrace.c                    |   4 +-
+ 21 files changed, 684 insertions(+), 266 deletions(-)
+
+
+base-commit: 23d8adcf8022b9483605531d8985f5b77533cb3a
 -- 
-2.25.1
+2.20.1
 
 
 _______________________________________________
