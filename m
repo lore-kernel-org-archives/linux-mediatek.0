@@ -2,95 +2,86 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68DB7C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 490B6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:09:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2748D60F46
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:06:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2748D60F46
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0C58960EE7
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:09:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C58960EE7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NzuHuOgwhME1M5w+orUSmAQlj1t0YXgZnz/XubxzHhA=; b=2suYCMuLTKwWUV
-	BI7B/+SGqI4w67JsMTTD4PirqwAa7KS1lVRfWYTM10QNRkwaUFDJQta2b3nA4qLIWLXy4my2i55hD
-	qxjG/4ej/g/EOz6YWYWYG5f0Q2sHeizJqELLgi6tt5s8v2eAGHja/FFmXLJCYenSno9Fo8a3UiPgo
-	3oz8cFZvZx1O5j2DvzBNfjm9uoqECYIVegWVq7otCM+gk9QcQ4auSrzU+WI17MNCCUqHET7Ka6ZtM
-	2QDz219x5XsMDXgSv7ZBlMkCbhKOi0aI6CGiP39wQcwJmMO5wMLd4/VkmJryultOmADT/akUexI47
-	yEhRaoRvEAn3xAT0eNMA==;
+	List-Owner; bh=5OaOd5idmjCOkIt2XB4rX8hOcXFW5XawzHRDD5CGUPw=; b=JZR9zw73NIU2w8
+	fQdt9OcErrF0R4NUVNdGouaB8OK3BqNszPheZiojciisZXX1g+y1V1UsLwlBYAWhFq6v9Naalj7SD
+	HPkukDFd8cfIZolqsgsVvddwVBw7MGxmgaXrd0KR6PlnR0NQlMeyfB/uOFMJZcYakoWnehxyWruMK
+	nYmlJdFQbYOoMLdKufu5+oWlJpKCojXEuv/Rr0A5LFJAGr+IJlUio02VsPe0nHFMttg6d0oC9kecD
+	L91Ajw8SZ3mmY/En8OMv0LP+DhlCHKLzHVKXQLmm+CDzGHN3hfetXsgWjp3aJwfRAYmJagPBZ3fnf
+	0FV8rS72dJ3DwDTzzVzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAv3k-0039bk-5M; Tue, 03 Aug 2021 14:06:20 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1mAv6K-003AaK-5U; Tue, 03 Aug 2021 14:09:00 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAv3X-0039Zl-Hq; Tue, 03 Aug 2021 14:06:09 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id
- 61-20020a9d0d430000b02903eabfc221a9so20824959oti.0; 
- Tue, 03 Aug 2021 07:06:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=9LHsCD6sz9wNhH1vtkCQf1FqbNJPwvaCAE0YJ0j2R7w=;
- b=VkVA03WnvIbU0w5pAkJxucEhOVmMyPIGopV+A5nTR9MbOLToC0njzoLMEveUubTb00
- 5n43SlXrmkzTVH2FxxhHBnE8cMEXpFC91Tj8Q7YFfDvxgsMNGyhR5Mdyw4vYwsen9ZGO
- UQpWB0FivMf8gerZ9TlcnsnwAh+yNwZq26EBgOkZlGCwKUjN9uDuONWhoaek4AHadkb6
- 4EhelpCPYNmwBwYFBokq6Fb8qWTKdXVQokT2/+Aebyd4dz9NgbpJ9gqNkxDDdWAEo0WV
- 4EPre3e9tdQrCnJ9zz2xBPaPYF3mhVfDxCZv2ea7VeZbuaPAXwZ9iQjV4sqEtQkNJaR5
- lmCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=9LHsCD6sz9wNhH1vtkCQf1FqbNJPwvaCAE0YJ0j2R7w=;
- b=ry9lfB6nDYHqm5awNZUpbeQ1T6yv6jc41kb0H9d36mw8meqCmgrXbicKPIxDBVtHwn
- yAUix9PlBxur2QFN2RCGOkWIAHr/07+cb2Y5oAAo4/41Z5r70YW8pAkJDascK+Z11O6V
- 1xEPvITIil1W5S61WP0AAQLOhj60LiWPY3Bf+0Fdv/yiEuQPzIYKXUSqqzNOTxac8VZg
- DpyPo0doAPi9swzYYtcQg+N/iioLp0dz+vusE5xzxhb6ZUcvsMhuVNSjIcHF83s9qshb
- /TmIuFhmuK2iLI0t0FrYNd6qNuBsoxNRNA9SO5boubapTVhnZlC2Z57byw+36iLagRy1
- lUEg==
-X-Gm-Message-State: AOAM531B5os+qZFaQHrTAzi4fRT92y5pSXhuPH9s0HD4RjIov7q9mRip
- LS2WJEYRUia7BctBntcU087SutC7XUKXU8zfBJ4=
-X-Google-Smtp-Source: ABdhPJyq0t9mj746XFxQEg/6h07dFt3yj6h2kE9c/bL6DGsWC0yDBuUvcbX9JdQPNtK2bJ/ItJgUIgD1m8JMTA7+XfM=
-X-Received: by 2002:a9d:27a4:: with SMTP id c33mr15976408otb.281.1627999564866; 
- Tue, 03 Aug 2021 07:06:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <1627894773-23872-1-git-send-email-yongqiang.niu@mediatek.com>
- <1627894773-23872-3-git-send-email-yongqiang.niu@mediatek.com>
-In-Reply-To: <1627894773-23872-3-git-send-email-yongqiang.niu@mediatek.com>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Tue, 3 Aug 2021 16:05:53 +0200
-Message-ID: <CAFqH_50eD=KihDrE3Vi0w+qEh6USF-sZTD+ZBjUeCiwXz4HD8Q@mail.gmail.com>
-Subject: Re: [PATCH v8,
- 2/2] soc: mediatek: mmsys: Add mt8192 mmsys routing table
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ id 1mAv5g-003A8l-4A; Tue, 03 Aug 2021 14:08:21 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10064"; a="193289999"
+X-IronPort-AV: E=Sophos;i="5.84,291,1620716400"; d="scan'208";a="193289999"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Aug 2021 07:08:05 -0700
+X-IronPort-AV: E=Sophos;i="5.84,291,1620716400"; d="scan'208";a="568680226"
+Received: from smile.fi.intel.com (HELO smile) ([10.237.68.40])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Aug 2021 07:07:58 -0700
+Received: from andy by smile with local (Exim 4.94.2)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1mAv5C-004kW7-El; Tue, 03 Aug 2021 17:07:50 +0300
+Date: Tue, 3 Aug 2021 17:07:50 +0300
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: John Ogness <john.ogness@linutronix.de>
+Cc: Petr Mladek <pmladek@suse.com>,
+ Sergey Senozhatsky <senozhatsky@chromium.org>,
+ Steven Rostedt <rostedt@goodmis.org>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Jassi Brar <jassisinghbrar@gmail.com>, Fabien Parent <fparent@baylibre.com>, 
- Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- devicetree <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Hsin-Yi Wang <hsinyi@chromium.org>
+ Andrew Jeffery <andrew@aj.id.au>,
+ Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
+ kuldip dwivedi <kuldip.dwivedi@puresoftware.com>,
+ Wang Qing <wangqing@vivo.com>, Andrij Abyzov <aabyzov@slb.com>,
+ Johan Hovold <johan@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>,
+ Claire Chang <tientzu@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Zhang Qilong <zhangqilong3@huawei.com>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
+ Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Al Cooper <alcooperx@gmail.com>, linux-serial@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH printk v1 10/10] serial: 8250: implement write_atomic
+Message-ID: <YQlNtr7TNAWtB8XF@smile.fi.intel.com>
+References: <20210803131301.5588-1-john.ogness@linutronix.de>
+ <20210803131301.5588-11-john.ogness@linutronix.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210803131301.5588-11-john.ogness@linutronix.de>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_070607_676510_F3A8434B 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20210803_070820_222221_1455B4F0 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,106 +93,144 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgWW9uZ3FpYW5nLAoKVGhhbmsgeW91IGZvciB5b3VyIHBhdGNoCgpNaXNzYXRnZSBkZSBZb25n
-cWlhbmcgTml1IDx5b25ncWlhbmcubml1QG1lZGlhdGVrLmNvbT4gZGVsIGRpYSBkbC4sIDIKZOKA
-mWFnLiAyMDIxIGEgbGVzIDExOjAwOgo+Cj4gbXQ4MTkyIGhhcyBkaWZmZXJlbnQgcm91dGluZyBy
-ZWdpc3RlcnMgdGhhbiBtdDgxODMKPgoKLi4uIHRoYW4gbXQ4MTgzIGFuZCBvdGhlciBNZWRpYXRl
-ayBTb0MncyBJIGd1ZXNzIDstKQoKPiBTaWduZWQtb2ZmLWJ5OiBZb25ncWlhbmcgTml1IDx5b25n
-cWlhbmcubml1QG1lZGlhdGVrLmNvbT4KClJldmlld2VkLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNl
-cnJhIDxlbnJpYy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgoKVGhhbmtzLAogICBFbnJpYwoKCj4g
-LS0tCj4gIGRyaXZlcnMvc29jL21lZGlhdGVrL210ODE5Mi1tbXN5cy5oIHwgNjcgKysrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGst
-bW1zeXMuYyAgICB8IDExICsrKysrKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDc4IGluc2VydGlvbnMo
-KykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc29jL21lZGlhdGVrL210ODE5Mi1tbXN5
-cy5oCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zb2MvbWVkaWF0ZWsvbXQ4MTkyLW1tc3lzLmgg
-Yi9kcml2ZXJzL3NvYy9tZWRpYXRlay9tdDgxOTItbW1zeXMuaAo+IG5ldyBmaWxlIG1vZGUgMTAw
-NjQ0Cj4gaW5kZXggMDAwMDAwMC4uMGU0YjIzMwo+IC0tLSAvZGV2L251bGwKPiArKysgYi9kcml2
-ZXJzL3NvYy9tZWRpYXRlay9tdDgxOTItbW1zeXMuaAo+IEBAIC0wLDAgKzEsNjcgQEAKPiArLyog
-U1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seSAqLwo+ICsKPiArI2lmbmRlZiBf
-X1NPQ19NRURJQVRFS19NVDgxOTJfTU1TWVNfSAo+ICsjZGVmaW5lIF9fU09DX01FRElBVEVLX01U
-ODE5Ml9NTVNZU19ICj4gKwo+ICsjZGVmaW5lIE1UODE5Ml9NTVNZU19PVkxfTU9VVF9FTiAgICAg
-ICAgICAgICAgIDB4ZjA0Cj4gKyNkZWZpbmUgTVQ4MTkyX0RJU1BfT1ZMMV8yTF9NT1VUX0VOICAg
-ICAgICAgICAgMHhmMDgKPiArI2RlZmluZSBNVDgxOTJfRElTUF9PVkwwXzJMX01PVVRfRU4gICAg
-ICAgICAgICAweGYxOAo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX09WTDBfTU9VVF9FTiAgICAgICAg
-ICAgICAgIDB4ZjFjCj4gKyNkZWZpbmUgTVQ4MTkyX0RJU1BfUkRNQTBfU0VMX0lOICAgICAgICAg
-ICAgICAgMHhmMmMKPiArI2RlZmluZSBNVDgxOTJfRElTUF9SRE1BMF9TT1VUX1NFTCAgICAgICAg
-ICAgICAweGYzMAo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX0NDT1JSMF9TT1VUX1NFTCAgICAgICAg
-ICAgIDB4ZjM0Cj4gKyNkZWZpbmUgTVQ4MTkyX0RJU1BfQUFMMF9TRUxfSU4gICAgICAgICAgICAg
-ICAgICAgICAgICAweGYzOAo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX0RJVEhFUjBfTU9VVF9FTiAg
-ICAgICAgICAgIDB4ZjNjCj4gKyNkZWZpbmUgTVQ4MTkyX0RJU1BfRFNJMF9TRUxfSU4gICAgICAg
-ICAgICAgICAgICAgICAgICAweGY0MAo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX09WTDJfMkxfTU9V
-VF9FTiAgICAgICAgICAgIDB4ZjRjCj4gKwo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX09WTDBfR09f
-QkxFTkQgICAgICAgICAgICAgICAgICAgICAgQklUKDApCj4gKyNkZWZpbmUgTVQ4MTkyX0RJVEhF
-UjBfTU9VVF9JTl9EU0kwICAgICAgICAgICAgICAgICAgICBCSVQoMCkKPiArI2RlZmluZSBNVDgx
-OTJfT1ZMMF9NT1VUX0VOX0RJU1BfUkRNQTAgICAgICAgICAgICAgICAgIEJJVCgwKQo+ICsjZGVm
-aW5lIE1UODE5Ml9PVkwyXzJMX01PVVRfRU5fUkRNQTQgICAgICAgICAgICAgICAgICAgQklUKDAp
-Cj4gKyNkZWZpbmUgTVQ4MTkyX0RJU1BfT1ZMMF9HT19CRyAgICAgICAgICAgICAgICAgICAgICAg
-ICBCSVQoMSkKPiArI2RlZmluZSBNVDgxOTJfRElTUF9PVkwwXzJMX0dPX0JMRU5EICAgICAgICAg
-ICAgICAgICAgIEJJVCgyKQo+ICsjZGVmaW5lIE1UODE5Ml9ESVNQX09WTDBfMkxfR09fQkcgICAg
-ICAgICAgICAgICAgICAgICAgQklUKDMpCj4gKyNkZWZpbmUgTVQ4MTkyX09WTDFfMkxfTU9VVF9F
-Tl9SRE1BMSAgICAgICAgICAgICAgICAgICBCSVQoNCkKPiArI2RlZmluZSBNVDgxOTJfT1ZMMF9N
-T1VUX0VOX09WTDBfMkwgICAgICAgICAgICAgICAgICAgIEJJVCg0KQo+ICsjZGVmaW5lIE1UODE5
-Ml9SRE1BMF9TRUxfSU5fT1ZMMF8yTCAgICAgICAgICAgICAgICAgICAgMHgzCj4gKyNkZWZpbmUg
-TVQ4MTkyX1JETUEwX1NPVVRfQ09MT1IwICAgICAgICAgICAgICAgICAgICAgICAweDEKPiArI2Rl
-ZmluZSBNVDgxOTJfQ0NPUlIwX1NPVVRfQUFMMCAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgMHgxCj4gKyNkZWZpbmUgTVQ4MTkyX0FBTDBfU0VMX0lOX0NDT1JSMCAgICAgICAgICAgICAg
-ICAgICAgICAweDEKPiArI2RlZmluZSBNVDgxOTJfRFNJMF9TRUxfSU5fRElUSEVSMCAgICAgICAg
-ICAgICAgICAgICAgIDB4MQo+ICsKPiArc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfbW1zeXNfcm91
-dGVzIG1tc3lzX210ODE5Ml9yb3V0aW5nX3RhYmxlW10gPSB7Cj4gKyAgICAgICB7Cj4gKyAgICAg
-ICAgICAgICAgIEREUF9DT01QT05FTlRfT1ZMXzJMMCwgRERQX0NPTVBPTkVOVF9SRE1BMCwKPiAr
-ICAgICAgICAgICAgICAgTVQ4MTkyX0RJU1BfT1ZMMF8yTF9NT1VUX0VOLCBNVDgxOTJfT1ZMMF9N
-T1VUX0VOX0RJU1BfUkRNQTAsCj4gKyAgICAgICB9LCB7Cj4gKyAgICAgICAgICAgICAgIEREUF9D
-T01QT05FTlRfT1ZMXzJMMiwgRERQX0NPTVBPTkVOVF9SRE1BNCwKPiArICAgICAgICAgICAgICAg
-TVQ4MTkyX0RJU1BfT1ZMMl8yTF9NT1VUX0VOLCBNVDgxOTJfT1ZMMl8yTF9NT1VUX0VOX1JETUE0
-Cj4gKyAgICAgICB9LCB7Cj4gKyAgICAgICAgICAgICAgIEREUF9DT01QT05FTlRfRElUSEVSLCBE
-RFBfQ09NUE9ORU5UX0RTSTAsCj4gKyAgICAgICAgICAgICAgIE1UODE5Ml9ESVNQX0RJVEhFUjBf
-TU9VVF9FTiwgTVQ4MTkyX0RJVEhFUjBfTU9VVF9JTl9EU0kwCj4gKyAgICAgICB9LCB7Cj4gKyAg
-ICAgICAgICAgICAgIEREUF9DT01QT05FTlRfT1ZMXzJMMCwgRERQX0NPTVBPTkVOVF9SRE1BMCwK
-PiArICAgICAgICAgICAgICAgTVQ4MTkyX0RJU1BfUkRNQTBfU0VMX0lOLCBNVDgxOTJfUkRNQTBf
-U0VMX0lOX09WTDBfMkwKPiArICAgICAgIH0sIHsKPiArICAgICAgICAgICAgICAgRERQX0NPTVBP
-TkVOVF9DQ09SUiwgRERQX0NPTVBPTkVOVF9BQUwwLAo+ICsgICAgICAgICAgICAgICBNVDgxOTJf
-RElTUF9BQUwwX1NFTF9JTiwgTVQ4MTkyX0FBTDBfU0VMX0lOX0NDT1JSMAo+ICsgICAgICAgfSwg
-ewo+ICsgICAgICAgICAgICAgICBERFBfQ09NUE9ORU5UX0RJVEhFUiwgRERQX0NPTVBPTkVOVF9E
-U0kwLAo+ICsgICAgICAgICAgICAgICBNVDgxOTJfRElTUF9EU0kwX1NFTF9JTiwgTVQ4MTkyX0RT
-STBfU0VMX0lOX0RJVEhFUjAKPiArICAgICAgIH0sIHsKPiArICAgICAgICAgICAgICAgRERQX0NP
-TVBPTkVOVF9SRE1BMCwgRERQX0NPTVBPTkVOVF9DT0xPUjAsCj4gKyAgICAgICAgICAgICAgIE1U
-ODE5Ml9ESVNQX1JETUEwX1NPVVRfU0VMLCBNVDgxOTJfUkRNQTBfU09VVF9DT0xPUjAKPiArICAg
-ICAgIH0sIHsKPiArICAgICAgICAgICAgICAgRERQX0NPTVBPTkVOVF9DQ09SUiwgRERQX0NPTVBP
-TkVOVF9BQUwwLAo+ICsgICAgICAgICAgICAgICBNVDgxOTJfRElTUF9DQ09SUjBfU09VVF9TRUws
-IE1UODE5Ml9DQ09SUjBfU09VVF9BQUwwCj4gKyAgICAgICB9LCB7Cj4gKyAgICAgICAgICAgICAg
-IEREUF9DT01QT05FTlRfT1ZMMCwgRERQX0NPTVBPTkVOVF9PVkxfMkwwLAo+ICsgICAgICAgICAg
-ICAgICBNVDgxOTJfTU1TWVNfT1ZMX01PVVRfRU4sIE1UODE5Ml9ESVNQX09WTDBfR09fQkcsCj4g
-KyAgICAgICB9LCB7Cj4gKyAgICAgICAgICAgICAgIEREUF9DT01QT05FTlRfT1ZMXzJMMCwgRERQ
-X0NPTVBPTkVOVF9SRE1BMCwKPiArICAgICAgICAgICAgICAgTVQ4MTkyX01NU1lTX09WTF9NT1VU
-X0VOLCBNVDgxOTJfRElTUF9PVkwwXzJMX0dPX0JMRU5ELAo+ICsgICAgICAgfQo+ICt9Owo+ICsK
-PiArI2VuZGlmIC8qIF9fU09DX01FRElBVEVLX01UODE5Ml9NTVNZU19IICovCj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5jIGIvZHJpdmVycy9zb2MvbWVkaWF0
-ZWsvbXRrLW1tc3lzLmMKPiBpbmRleCAwODA2NjBlLi5kZTdiMTIyIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5jCj4gKysrIGIvZHJpdmVycy9zb2MvbWVkaWF0
-ZWsvbXRrLW1tc3lzLmMKPiBAQCAtMTMsNiArMTMsNyBAQAo+ICAjaW5jbHVkZSAibXRrLW1tc3lz
-LmgiCj4gICNpbmNsdWRlICJtdDgxNjctbW1zeXMuaCIKPiAgI2luY2x1ZGUgIm10ODE4My1tbXN5
-cy5oIgo+ICsjaW5jbHVkZSAibXQ4MTkyLW1tc3lzLmgiCj4KPiAgc3RhdGljIGNvbnN0IHN0cnVj
-dCBtdGtfbW1zeXNfZHJpdmVyX2RhdGEgbXQyNzAxX21tc3lzX2RyaXZlcl9kYXRhID0gewo+ICAg
-ICAgICAgLmNsa19kcml2ZXIgPSAiY2xrLW10MjcwMS1tbSIsCj4gQEAgLTUyLDYgKzUzLDEyIEBA
-Cj4gICAgICAgICAubnVtX3JvdXRlcyA9IEFSUkFZX1NJWkUobW1zeXNfbXQ4MTgzX3JvdXRpbmdf
-dGFibGUpLAo+ICB9Owo+Cj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9k
-YXRhIG10ODE5Ml9tbXN5c19kcml2ZXJfZGF0YSA9IHsKPiArICAgICAgIC5jbGtfZHJpdmVyID0g
-ImNsay1tdDgxOTItbW0iLAo+ICsgICAgICAgLnJvdXRlcyA9IG1tc3lzX210ODE5Ml9yb3V0aW5n
-X3RhYmxlLAo+ICsgICAgICAgLm51bV9yb3V0ZXMgPSBBUlJBWV9TSVpFKG1tc3lzX210ODE5Ml9y
-b3V0aW5nX3RhYmxlKSwKPiArfTsKPiArCj4gIHN0cnVjdCBtdGtfbW1zeXMgewo+ICAgICAgICAg
-dm9pZCBfX2lvbWVtICpyZWdzOwo+ICAgICAgICAgY29uc3Qgc3RydWN0IG10a19tbXN5c19kcml2
-ZXJfZGF0YSAqZGF0YTsKPiBAQCAtMTU3LDYgKzE2NCwxMCBAQCBzdGF0aWMgaW50IG10a19tbXN5
-c19wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAgICAgICAgICAgICAgICAu
-Y29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxODMtbW1zeXMiLAo+ICAgICAgICAgICAgICAgICAu
-ZGF0YSA9ICZtdDgxODNfbW1zeXNfZHJpdmVyX2RhdGEsCj4gICAgICAgICB9LAo+ICsgICAgICAg
-ewo+ICsgICAgICAgICAgICAgICAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxOTItbW1zeXMi
-LAo+ICsgICAgICAgICAgICAgICAuZGF0YSA9ICZtdDgxOTJfbW1zeXNfZHJpdmVyX2RhdGEsCj4g
-KyAgICAgICB9LAo+ICAgICAgICAgeyB9Cj4gIH07Cj4KPiAtLQo+IDEuOC4xLjEuZGlydHkKPgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Tue, Aug 03, 2021 at 03:19:01PM +0206, John Ogness wrote:
+> Implement an NMI-safe write_atomic() console function in order to
+> support synchronous console printing.
+> 
+> Since interrupts need to be disabled during transmit, all usage of
+> the IER register is wrapped with access functions that use the
+> printk cpulock to synchronize register access while tracking the
+> state of the interrupts. This is necessary because write_atomic()
+> can be called from an NMI context that has preempted write_atomic().
+
+...
+
+> +static inline void serial8250_set_IER(struct uart_8250_port *up,
+> +				      unsigned char ier)
+> +{
+> +	struct uart_port *port = &up->port;
+> +	unsigned long flags;
+> +	bool is_console;
+
+> +	is_console = uart_console(port);
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_lock(flags);
+> +
+> +	serial_out(up, UART_IER, ier);
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_unlock(flags);
+
+I would rewrite it as
+
+	if (uart_console()) {
+		console_atomic_cpu_lock(flags);
+		serial_out(up, UART_IER, ier);
+		console_atomic_cpu_unlock(flags);
+	} else {
+		serial_out(up, UART_IER, ier);
+	}
+
+No additional variable, easier to get the algorithm on the first glance, less
+error prone.
+
+> +}
+
+> +static inline unsigned char serial8250_clear_IER(struct uart_8250_port *up)
+> +{
+> +	struct uart_port *port = &up->port;
+> +	unsigned int clearval = 0;
+> +	unsigned long flags;
+> +	unsigned int prior;
+> +	bool is_console;
+> +
+> +	is_console = uart_console(port);
+> +
+> +	if (up->capabilities & UART_CAP_UUE)
+> +		clearval = UART_IER_UUE;
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_lock(flags);
+> +
+> +	prior = serial_port_in(port, UART_IER);
+> +	serial_port_out(port, UART_IER, clearval);
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_unlock(flags);
+
+Ditto.
+
+> +	return prior;
+> +}
+
+...
+
+> +		is_console = uart_console(port);
+> +
+> +		if (is_console)
+> +			console_atomic_cpu_lock(flags);
+>  		up->ier = port->serial_in(port, UART_IER);
+> +		if (is_console)
+> +			console_atomic_cpu_unlock(flags);
+> +
+
+I'm wondering why you can't call above function here?
+
+...
+
+> +		is_console = uart_console(p);
+> +		if (is_console)
+> +			console_atomic_cpu_lock(flags);
+>  		ier = p->serial_in(p, UART_IER);
+> +		if (is_console)
+> +			console_atomic_cpu_unlock(flags);
+
+Ditto.
+
+...
+
+> +	is_console = uart_console(port);
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_lock(flags);
+> +
+> +	ier = serial_in(up, UART_IER);
+> +	serial_out(up, UART_IER, ier & (~mask));
+> +
+> +	if (is_console)
+> +		console_atomic_cpu_unlock(flags);
+
+Ditto.
+
+...
+
+> +	if (uart_console(port))
+> +		console_atomic_cpu_lock(flags);
+> +
+> +	ier = serial_in(up, UART_IER);
+> +	serial_out(up, UART_IER, ier | mask);
+> +
+> +	if (uart_console(port))
+> +		console_atomic_cpu_unlock(flags);
+
+Ditto.
+
+Looking into above note, that uart_console(port) can give different results
+here, AFAIR.
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
