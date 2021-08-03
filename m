@@ -1,83 +1,83 @@
-Return-Path: <SRS0=Q+Xe=MZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE29AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 23:22:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F445C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 02:25:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE50660EE6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Aug 2021 23:22:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AE50660EE6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 200686052B
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 02:25:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 200686052B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RMiNDOyNtl1VLWtFNX9vfy2DnSDqdAPU76ntggUoHQE=; b=q0iV6gkbxDp32+
-	mQ1sbiU6UUjZXDxRX8Vy2SPutUy0YZfBxX1b9XsBDe4UKd4TnIw3I3DsrVRopoq0h0yv5YSZcL92p
-	J2rFqv64JIzO5HJOVPC+hC5B212Rz99aeT9wv9ddpvZ7zAosq2EREb6eUQOTuZ91ivlYojfv6fUwP
-	6OBID195GnqFh1icil5fhRXsmgkYgOnqRIHBhRtNpIpU23W91tYGbhLVnrJydu22LbES8nnWRMrbl
-	R1l25NYvKGcTfEI4Lh1IBEBxnIs3IffmwzwMOZ+L0yGFfC4iu79VaNZjfadmPfrIjNh+RsahECSxd
-	68oMmJTx/GxUA2FJLffQ==;
+	List-Owner; bh=y7mNhNuDZZGs0Domuh5ZLJhy2sZ750nCaD2MCQGOtv8=; b=0ENdwhIrdEcP46
+	6HlPCzAVYr8euEd41ou0kbvaznmG1VdRS5tvpNighzhCowW38pemkZlXgymIelQMPNGQh09NLkH0m
+	hykmjuNNB5TTayJK1yRzloPk8RN4W56HAQTTggDrNnUMR7wwEeY5FGRwJi8PRoYPODFJkh6arqcF6
+	uePjjHJ2aA3fqer7OR4VKXF/MWYMLIK2FLQWSIY9fF7N1IplQ4xlIGjvWcqqScgFDq19Iq72BKJ+c
+	7ljkwDbV1p4z7UWTG8VruIsHyUX8t/cWG2EI3GId3KCWaCWUHEZQ9P0nNoDjMbeY2y8DPCjUaKeXM
+	SK1DepC67hJhs6E87Unw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAhGC-000a8I-7p; Mon, 02 Aug 2021 23:22:16 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mAk6m-000oTz-H8; Tue, 03 Aug 2021 02:24:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAhFy-000a3l-27; Mon, 02 Aug 2021 23:22:03 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 89E3560F0F;
- Mon,  2 Aug 2021 23:22:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1627946521;
- bh=3UoqdS3ZjZO9aG1FWGZpLNJXpg3edmkfj19jMqgZlag=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=fZhBqZC5RN6LFgGTGAhcn9gnxLB6jXBYSgOOOb3AzHHBvQBRGi0ncfOX+8XzA3G+b
- uRWDWytkUy+fILgu0GiBK/xlCsIiOBJQ/P3aTSYFsoynHfrSRGezrzY5rQRd+d1tgd
- enAjzKNkNQdAzL+CTW3IRAwInHu8WyyFLBFFzk5EGN7hpEs6yf1f5A3PRM2jhtoJgN
- aIa3A7EByOkol74HKb3UynsYZFhIl+Ut5hDk5XNUxCSB+Oropz9drSfdJcjcK1XQiv
- X2tzH143UQee2M7iIboGmRrlKHp/F5y1/gSMFEAGvWufIPxVp2UVwvahkDHr0mtcln
- Fb4lPigquJArA==
-Received: by mail-ej1-f41.google.com with SMTP id hw6so19584301ejc.10;
- Mon, 02 Aug 2021 16:22:01 -0700 (PDT)
-X-Gm-Message-State: AOAM533+fUuQfxk2N4p03fMFgPVm4FJNiL/ZXeP3Bh5sxT6vyOTpUr76
- G4oXoy6Yy5lJ7eUp0O4FHNJfumvO1Wce9rSDwA==
-X-Google-Smtp-Source: ABdhPJzVHbdqkXZSKJFkdObdtrHHP6P1rJNANKJM5suYmF9hkJsLk9QTqNsPcHe3pRC+2S0r6+TIODJy9UBBYIcSj/0=
-X-Received: by 2002:a17:906:2451:: with SMTP id
- a17mr17629191ejb.75.1627946520087; 
- Mon, 02 Aug 2021 16:22:00 -0700 (PDT)
+ id 1mAk6Q-000oBH-45; Tue, 03 Aug 2021 02:24:27 +0000
+X-UUID: 7970acd666ce418081e6b061df399952-20210802
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=YibCADqH2XOJCVXj1Bt0Vvd8PdtC3chR2Y7d+3Ske7s=; 
+ b=ao/z+c8ADMmVD1/u6nW/uP2GiIuK9yM/V+1yekLxKyvhPZE3oLGr3USMuJpcx4cDSKaWjlb/CMfF5s4uWw73Y0vz7BrhVbVq1CL0K3pHkBAeE71nS/caBR7/6JterZ2rgWVdM4xNL/Drbk8Tc6LpsqgQ+3JOAzv2tsxnlUjhOXg=;
+X-UUID: 7970acd666ce418081e6b061df399952-20210802
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 527937900; Mon, 02 Aug 2021 19:24:16 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 2 Aug 2021 19:24:14 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 Aug 2021 10:24:13 +0800
+Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 3 Aug 2021 10:24:13 +0800
+Message-ID: <a18c9073b5dec59a4bdb3253dbc75dd56763da47.camel@mediatek.com>
+Subject: Re: [PATCH v5 0/6] Add Mediatek Soc DRM (vdosys0) support for mt8195
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Chun-Kuang
+ Hu" <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ <fshao@chromium.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ <hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>
+Date: Tue, 3 Aug 2021 10:24:13 +0800
+In-Reply-To: <a8ce9da7-21c2-f9ef-161a-647d3f8748f3@collabora.com>
+References: <20210729170737.21424-1-jason-jh.lin@mediatek.com>
+ <a8ce9da7-21c2-f9ef-161a-647d3f8748f3@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210714101141.2089082-1-enric.balletbo@collabora.com>
- <20210714121116.v2.7.Idbb4727ddf00ba2fe796b630906baff10d994d89@changeid>
-In-Reply-To: <20210714121116.v2.7.Idbb4727ddf00ba2fe796b630906baff10d994d89@changeid>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 3 Aug 2021 07:21:49 +0800
-X-Gmail-Original-Message-ID: <CAAOTY__EA323tC+BswgTfx4EM9FF8Hf9AAkqoxuacuxQwr4SnA@mail.gmail.com>
-Message-ID: <CAAOTY__EA323tC+BswgTfx4EM9FF8Hf9AAkqoxuacuxQwr4SnA@mail.gmail.com>
-Subject: Re: [PATCH v2 7/7] drm/mediatek: mtk_dsi: Reset the dsi0 hardware
-To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Cc: linux-kernel <linux-kernel@vger.kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Collabora Kernel ML <kernel@collabora.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Eizan Miyamoto <eizan@chromium.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jitao Shi <jitao.shi@mediatek.com>, 
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- DRI Development <dri-devel@lists.freedesktop.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210802_162202_170409_54FFF33F 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20210802_192423_663908_B6881830 
+X-CRM114-Status: GOOD (  29.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +89,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEVucmljOgoKRW5yaWMgQmFsbGV0Ym8gaSBTZXJyYSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFi
-b3JhLmNvbT4g5pa8IDIwMjHlubQ35pyIMTTml6Ug6YCx5LiJIOS4i+WNiDY6MTLlr6vpgZPvvJoK
-Pgo+IFJlc2V0IGRzaTAgSFcgdG8gZGVmYXVsdCB3aGVuIHBvd2VyIG9uLiBUaGlzIHByZXZlbnRz
-IHRvIGhhdmUgZGlmZmVyZW50Cj4gc2V0dGluZ2JldHdlZW4gdGhlIGJvb3Rsb2FkZXIgYW5kIHRo
-ZSBrZXJuZWwuCj4KPiBBcyBub3QgYWxsIE1lZGlhdGVrIGJvYXJkcyBoYXZlIHRoZSByZXNldCBj
-b25zdW1lciBjb25maWd1cmVkIGluIHRoZWlyCj4gYm9hcmQgZGVzY3JpcHRpb24sIGFsc28gaXMg
-bm90IG5lZWRlZCBvbiBhbGwgb2YgdGhlbSwgdGhlIHJlc2V0IGlzIG9wdGlvbmFsLAo+IHNvIHRo
-ZSBjaGFuZ2UgaXMgY29tcGF0aWJsZSB3aXRoIGFsbCBib2FyZHMuCgpBY2tlZC1ieTogQ2h1bi1L
-dWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5vcmc+Cgo+Cj4gQ2M6IEppdGFvIFNoaSA8aml0
-YW8uc2hpQG1lZGlhdGVrLmNvbT4KPiBTdWdnZXN0ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5r
-dWFuZy5odUBrZXJuZWwub3JnPgo+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2Vy
-cmEgPGVucmljLmJhbGxldGJvQGNvbGxhYm9yYS5jb20+Cj4gLS0tCj4KPiAobm8gY2hhbmdlcyBz
-aW5jZSB2MSkKPgo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIHwgNSArKysr
-LQo+ICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBk
-aWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYyBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiBpbmRleCBhZTQwM2M2N2NiZDkuLmQ4YjgxZTJh
-Yjg0MSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
-KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+IEBAIC0xMSw2ICsxMSw3
-IEBACj4gICNpbmNsdWRlIDxsaW51eC9vZl9wbGF0Zm9ybS5oPgo+ICAjaW5jbHVkZSA8bGludXgv
-cGh5L3BoeS5oPgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gKyNpbmNs
-dWRlIDxsaW51eC9yZXNldC5oPgo+Cj4gICNpbmNsdWRlIDx2aWRlby9taXBpX2Rpc3BsYXkuaD4K
-PiAgI2luY2x1ZGUgPHZpZGVvL3ZpZGVvbW9kZS5oPgo+IEBAIC05ODAsOCArOTgxLDEwIEBAIHN0
-YXRpYyBpbnQgbXRrX2RzaV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IGRldmljZSAq
-bWFzdGVyLCB2b2lkICpkYXRhKQo+ICAgICAgICAgc3RydWN0IG10a19kc2kgKmRzaSA9IGRldl9n
-ZXRfZHJ2ZGF0YShkZXYpOwo+Cj4gICAgICAgICByZXQgPSBtdGtfZHNpX2VuY29kZXJfaW5pdChk
-cm0sIGRzaSk7Cj4gKyAgICAgICBpZiAocmV0KQo+ICsgICAgICAgICAgICAgICByZXR1cm4gcmV0
-Owo+Cj4gLSAgICAgICByZXR1cm4gcmV0Owo+ICsgICAgICAgcmV0dXJuIGRldmljZV9yZXNldF9v
-cHRpb25hbChkZXYpOwo+ICB9Cj4KPiAgc3RhdGljIHZvaWQgbXRrX2RzaV91bmJpbmQoc3RydWN0
-IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsCj4gLS0KPiAyLjMwLjIKPgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
-ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Enric,
+
+On Fri, 2021-07-30 at 13:45 +0200, Enric Balletbo i Serra wrote:
+> Hi Jason,
+> 
+> Thank you for your patch.
+> 
+> On 29/7/21 19:07, jason-jh.lin wrote:
+> > The hardware path of vdosys0 with eDP panel output need to go
+> > through
+> > by several modules, such as, OVL, RDMA, COLOR, CCORR, AAL, GAMMA,
+> > DITHER, DSC and MERGE.
+> > 
+> 
+> 
+> You said in other discussions that vdosys0 has eDP panel output and
+> vdosys1 has
+> DP output. Is it possible to switch the outputs? What I am wondering
+> is if this
+> configuration is hardware specific or board specific, i.e it'll be
+> possible to
+> have another board that has DP output on vdosys0 and eDP output for
+> vdosys1?
+> 
+> Thanks,
+>   Enric
+> 
+
+Because the configuration is hardware specific in mt8195 SoC, it is
+possible to switch the output to DP or HDMI for vdosys1 and to switch
+the output to DSI or eDP for vdosys0.
+Due to the hot plug reqirement for HDMI and DP, vdosys1 will support
+runtime sitching output. vdosys0 can do that too, but there is no hot
+plug requirement for DSI panel or eDP panel.
+So we configure the output to eDP for vdosys0 in build time currently.
+
+In another board, such as mt8173 SoC, it doesn't have vdosys1 but it is
+able to set the output to DSI and HDMI for vdosys0 at the same time.
+
+Regards,
+Jason-JH.Lin
+
+> 
+> > Change in v5:
+> > - add power-domain property into vdosys0 and vdosys1 dts node.
+> > - add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
+> > 
+> > Change in v4:
+> > - extract dt-binding patches to another patch series
+> >   
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=519597__;!!CTRNKA9wMg0ARbw!3juKPT3EahvXs9aSRTDPxQfapIiXFGGx996Kss9b8DITyA19pd5F4K0AWsEp1U3C3FSl$
+> >  
+> > - squash DSC module into mtk_drm_ddp_comp.c
+> > - add coment and simplify MERGE config function
+> > 
+> > Change in v3:
+> > - change mmsys and display dt-bindings document from txt to yaml
+> > - add MERGE additional description in display dt-bindings document
+> > - fix mboxes-cells number of vdosys0 node in dts
+> > - drop mutex eof convert define
+> > - remove pm_runtime apis in DSC and MERGE
+> > - change DSC and MERGE enum to alphabetic order
+> > 
+> > Change in v2:
+> > - add DSC yaml file
+> > - add mt8195 drm driver porting parts in to one patch
+> > - remove useless define, variable, structure member and function
+> > - simplify DSC and MERGE file and switch threre order
+> > 
+> > jason-jh.lin (6):
+> >   arm64: dts: mt8195: add display node for vdosys0
+> >   soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
+> >   soc: mediatek: add mtk-mutex support for mt8195 vdosys0
+> >   drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
+> >   drm/mediatek: add DSC support for mt8195
+> >   drm/mediatek: add MERGE support for mt8195
+> > 
+> >  arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 112 ++++++++
+> >  drivers/gpu/drm/mediatek/Makefile           |   1 +
+> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+> >  drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 277
+> > ++++++++++++++++++++
+> >  drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  62 +++++
+> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   2 +
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  32 ++-
+> >  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+> >  drivers/soc/mediatek/mt8195-mmsys.h         |  96 +++++++
+> >  drivers/soc/mediatek/mtk-mmsys.c            |  11 +
+> >  drivers/soc/mediatek/mtk-mutex.c            |  93 ++++++-
+> >  include/linux/soc/mediatek/mtk-mmsys.h      |   9 +
+> >  13 files changed, 706 insertions(+), 4 deletions(-)
+> >  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> >  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+> > 
+-- 
+Jason-JH Lin <jason-jh.lin@mediatek.com>
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
