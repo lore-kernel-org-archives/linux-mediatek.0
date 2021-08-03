@@ -2,85 +2,88 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21A9DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 05:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30815C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 06:03:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E275C60EBD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 05:38:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E275C60EBD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id E137360F92
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 06:03:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E137360F92
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hb9f/b13JpPXMHSTwB1zEpCBJxZ6vxg/4AV3S/YnV6g=; b=dTrKyKFWqcyQYt
-	kfecUVrEof2B8ZuZKypYBJn6ehqtyzbap5/VJrFPQNbAk31/oRK6UD7U5iYfIqfSxL5aqYSno8Zz1
-	DqLifJwKs1tQ/8vPdtZ9GG635RfFXojXzLBZ//BnHH2GwJRxGyjSfGvgsrwkHTRjHZpFM2diDnJzV
-	b0DlM/BIM8nBUkNkAspbXcIFiYeoQrZgwnMkXJf6rpq9DsM86KW9pTfzlq7QAnJ9WfKmw6WZYQtV/
-	TW50375P9wEtK79+t7uhNYwCVJPlDP4MYWHo1ELj9Vq0Ppejd0CJ4cQJ29t9cuPerLyPZgvCoxy8e
-	wf6tsxSGdLO98xaiqQDQ==;
+	List-Owner; bh=n2wx+O6KHA1ZE2S5U1p9JJwy9cDutnQUf+rbq/CwH60=; b=tw0GMhU6xkRMpn
+	ig2ilfAZ2TVtbUItmGzUOG2K+eT62H50xul2vA3Fpf8bIXRsXg+Bk77vyzF6QnooKJ0/XOxWKXT0Z
+	Ns8vBG0mO8dh4WmFIBDT0EY02bEmmycxOqg1NldlBBoZA2Ys1R+MW3AO3I7DEM6odRSsu8vo8T7hq
+	ZT5kGCUz/s7zcqv2iewBSOx3VIhz2OCTnzlGG55W/GLPm2wAFQEXKK2N1eT1QqHHrZJeEC57QIm9v
+	HSbwvXsQunkWkLwWII3sflpzyZ8n8N8ROf0PSa9n085g1vl8ggzLll89XEE0GLUyDRexyi8adnuxj
+	YSWpqImhkVmrA/iVAXyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAn7w-001BoZ-Vv; Tue, 03 Aug 2021 05:38:09 +0000
-Received: from mail-io1-xd35.google.com ([2607:f8b0:4864:20::d35])
+	id 1mAnW1-001FgT-Ba; Tue, 03 Aug 2021 06:03:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAn7u-001Bmz-FF
- for linux-mediatek@lists.infradead.org; Tue, 03 Aug 2021 05:38:07 +0000
-Received: by mail-io1-xd35.google.com with SMTP id y9so23023486iox.2
- for <linux-mediatek@lists.infradead.org>; Mon, 02 Aug 2021 22:38:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vi76Iy2+G7lRArH6vuam1Hfh2GEzigTGHE+mXu3eEQw=;
- b=qLj1y6fObSImVY0F0di8u/IF17wANqqqgvULYkhwRpKAGIdln28rEco4Riz8tMS4z+
- 3ZfBL+GTgm0I3uYsrPqR38H1ZePcnoxJJA5jHljoEUgk57jKKhKJvmj1uXlK8Fcrcnfw
- IYoUcNNbQStu/smuDcK/AU7hIRpe5mCbAHIJtLG4wBYq1OiM5cIO1KCjwMHyu3O6SzwR
- VSrTFDVzKDqdZwOqIY+qk3GT8nxZWCAXeKQiVxkNrWwQKgihwE1nYU1//j0WTbUzxCiw
- GlEZZTBXyEK8nzark4WGWGiA/azDDniWdirEvCdMJ9NtpU6nygtVUuN0+rQgaX56lt0I
- pD5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vi76Iy2+G7lRArH6vuam1Hfh2GEzigTGHE+mXu3eEQw=;
- b=Z5GMKA7ffNVgkzvoneDYfGhZoce6UXayag6nXTs8XRunQKkoJ1cAxUMfOahG2JEu53
- WWvCg9Yf/Gdvyq8vpny/RJnaWTquSeuasrOf3cPJuXc7gOs8p50uDBP/VwHXRYbxCKeT
- bUbb632KKFuxojf0b6droSM9/YxBIRxAuQRfjiUx8KkqqwNrVDL8l1kPw/Uoo5pV4ZwG
- F+zxD/5a0X63btiZC8Uw8kLQfVa/kzoJJdRrhi01grct2yh1//Zue7WGmt6L/a775mSI
- rH18m/j0Ri+F+u4YE+Nzo7BjbQRBG8+jXlWXG1ZbAxpqO7fKnu3BegHUxWtNEYxkS1mw
- 0JXQ==
-X-Gm-Message-State: AOAM532uxtGv2NhO8SoJ8aQ9YF2zL43CitdZrh8gIa+0yWTCsWGo7SD7
- dlHxXPnkClYYP/GZVqjXbRJ9S3RImo2gsjJct0mpCA==
-X-Google-Smtp-Source: ABdhPJw/2YigJyn4JYO2+qd6bLRkOERLsf4W8mUBRLblDDC0N6ey6KPmqUc7erPS6iYqy2aN3qVsIE+0gB6rMCfF710=
-X-Received: by 2002:a02:ba87:: with SMTP id g7mr11453418jao.110.1627969081709; 
- Mon, 02 Aug 2021 22:38:01 -0700 (PDT)
+ id 1mAnVm-001FdY-5y; Tue, 03 Aug 2021 06:02:49 +0000
+X-UUID: f2cdcbc241584be297745b179244d0d8-20210802
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=nnUKDbyFZW3JVZ0V6b9Q1wtkI9K03QZZSPTEVvJYTFo=; 
+ b=QFaoDQ1BiEh/SEPueX3+f9tyxPEJ3eds/jJ/UwJzqn/DBfXWFm9LGPvgj8107VBLSs+hjYAZp3qIeC4yx73yHZf6cyT1v9KsfB0sndOi/f7/3MaLA57XxTtzfqwILz87mGL0NqY/04jDDCVraPN1sbOQEOmLxGHJD2gjSFRnCLI=;
+X-UUID: f2cdcbc241584be297745b179244d0d8-20210802
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2115334309; Mon, 02 Aug 2021 23:02:42 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 2 Aug 2021 22:55:48 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 3 Aug 2021 13:55:47 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 3 Aug 2021 13:55:47 +0800
+Message-ID: <a200fcaf086b590d5c675eea8e0546fa9db9849e.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] arm64/cpufeature: Optionally disable MTE via
+ command-line
+From: Yee Lee <yee.lee@mediatek.com>
+To: Catalin Marinas <catalin.marinas@arm.com>
+CC: <linux-kernel@vger.kernel.org>, <nicholas.Tang@mediatek.com>,
+ <Kuan-Ying.lee@mediatek.com>, <chinwen.chang@mediatek.com>, Jonathan Corbet
+ <corbet@lwn.net>, Will Deacon <will@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "Paul E. McKenney" <paulmck@kernel.org>, "Randy
+ Dunlap" <rdunlap@infradead.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, "Maciej W. Rozycki"
+ <macro@orcam.me.uk>, Viresh Kumar <viresh.kumar@linaro.org>, Peter Zijlstra
+ <peterz@infradead.org>, Vlastimil Babka <vbabka@suse.cz>, Marc Zyngier
+ <maz@kernel.org>, David Brazdil <dbrazdil@google.com>, Ard Biesheuvel
+ <ardb@kernel.org>, Fuad Tabba <tabba@google.com>, "open list:DOCUMENTATION"
+ <linux-doc@vger.kernel.org>, "moderated list:ARM64 PORT (AARCH64
+ ARCHITECTURE)" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Date: Tue, 3 Aug 2021 13:55:47 +0800
+In-Reply-To: <20210802153036.GH18685@arm.com>
+References: <20210730144957.30938-1-yee.lee@mediatek.com>
+ <20210730144957.30938-2-yee.lee@mediatek.com>
+ <20210802153036.GH18685@arm.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210726122901.12195-1-Christine.Zhu@mediatek.com>
- <20210726122901.12195-2-Christine.Zhu@mediatek.com>
-In-Reply-To: <20210726122901.12195-2-Christine.Zhu@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Tue, 3 Aug 2021 13:37:50 +0800
-Message-ID: <CA+Px+wX+gy4hV3BsTU81ThS=FUe0HidUV-iZZvQ3qm4WxKXGxQ@mail.gmail.com>
-Subject: Re: [v7,1/3] dt-bindings: mediatek: mt8195: update mtk-wdt document
-To: Christine Zhu <christine.zhu@mediatek.com>
-Cc: wim@linux-watchdog.org, linux@roeck-us.net, robh+dt@kernel.org, 
- matthias.bgg@gmail.com, srv_heupstream@mediatek.com, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-watchdog@vger.kernel.org, 
- devicetree@vger.kernel.org, seiya.wang@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210802_223806_572899_BB053271 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210802_230247_713252_0D4A9A7A 
+X-CRM114-Status: GOOD (  37.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,17 +100,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 26, 2021 at 8:30 PM Christine Zhu
-<Christine.Zhu@mediatek.com> wrote:
-> @@ -13,6 +13,7 @@ Required properties:
->         "mediatek,mt8183-wdt": for MT8183
->         "mediatek,mt8516-wdt", "mediatek,mt6589-wdt": for MT8516
->         "mediatek,mt8192-wdt": for MT8192
-> +       "mediatek,mt8195-wdt": for MT8195
-Just realized the patch has been applied in commit b326f2c85f3d
-("dt-bindings: watchdog: Add compatible for Mediatek MT8195").  Could
-you rebase the series to the latest tree and resend?
+On Mon, 2021-08-02 at 16:30 +0100, Catalin Marinas wrote:
+> On Fri, Jul 30, 2021 at 10:49:53PM +0800, yee.lee@mediatek.com wrote:
+> > From: Yee Lee <yee.lee@mediatek.com>
+> > 
+> > For some low-end devices with limited resources,
+> > MTE needs to be optionally disabled to save system
+> > costs such as tag memory and firmware controls.
+> 
+> I understand the cost of using MTE but I don't fully get what you
+> mean
+> by firmware controls. If the ID_AA64PFR1_EL1.MTE reports that MTE is
+> present, the firmware should have initialised MTE correctly (e.g. tag
+> allocation storage, SCR_EL3.ATA) and not rely on a kernel command
+> line
+> argument that may or may not be present.
 
+Thanks for the reminding. 
+Yes, it seems not able to fully disable MTE.
+This still provides an option in runtime for evaluation and test.
+And it is also useful for firmware development and hw issue workaround.
+> 
+> > This allows ID_AA64PFR1_EL1.MTE to be overridden on 
+> > its shadow value by giving "arm64.nomte" on cmdline,
+> > and to suppress MTE feature.
+> > 
+> > Suggested-by: Marc Zyngier <maz@kernel.org>
+> > Suggested-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+> > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> 
+> While this patch appears to disable MTE, I don't think it can fully
+> prevent the access to the allocation tag storage, so the firmware
+> must
+> still initialise it correctly.
+> 
+> The issue is that __cpu_setup already configures the MAIR_EL1
+> register
+> to use Normal Tagged memory for the kernel mapping and SCTLR_EL1.ATA
+> is
+> set. The TCF field is zero, so no tag checking, but I couldn't figure
+> out from the ARM ARM whether this also prevents LDR/STR from
+> attempting
+> to fetch the allocation tags. I think it's only the ATA bit and the
+> MAIR
+> configuration.
+> 
+> With this patch, KASAN_HW_TAGS (if configured) won't be used and MTE
+> will not be presented to user applications, if that's what you want,
+> but
+> does not fully disable MTE.
+> 
+> Since May this year, the ARM ARM was updated so that
+> SCTLR_EL1.ATA/ATA0
+> are not permitted to be cached in the TLB. We could therefore move
+> the
+> setting to cpu_enable_mte(). Something like below, untested (to be
+> folded into your patch):
+> 
+ok. will be integrated in v4 and tested.
+
+BR,
+Yee
+
+> diff --git a/arch/arm64/include/asm/sysreg.h
+> b/arch/arm64/include/asm/sysreg.h
+> index aa53954c2f6b..cac23455a2b5 100644
+> --- a/arch/arm64/include/asm/sysreg.h
+> +++ b/arch/arm64/include/asm/sysreg.h
+> @@ -698,8 +698,7 @@
+>  	(SCTLR_ELx_M    | SCTLR_ELx_C    | SCTLR_ELx_SA   |
+> SCTLR_EL1_SA0   | \
+>  	 SCTLR_EL1_SED  | SCTLR_ELx_I    | SCTLR_EL1_DZE  |
+> SCTLR_EL1_UCT   | \
+>  	 SCTLR_EL1_NTWE | SCTLR_ELx_IESB | SCTLR_EL1_SPAN |
+> SCTLR_ELx_ITFSB | \
+> -	 SCTLR_ELx_ATA  | SCTLR_EL1_ATA0 | ENDIAN_SET_EL1 |
+> SCTLR_EL1_UCI   | \
+> -	 SCTLR_EL1_EPAN | SCTLR_EL1_RES1)
+> +	 ENDIAN_SET_EL1 | SCTLR_EL1_UCI  | SCTLR_EL1_EPAN |
+> SCTLR_EL1_RES1)
+> 
+>  /* MAIR_ELx memory attributes (used by Linux) */
+>  #define MAIR_ATTR_DEVICE_nGnRnE		UL(0x00)
+> diff --git a/arch/arm64/kernel/cpufeature.c
+> b/arch/arm64/kernel/cpufeature.c
+> index 9035c367d08b..23b1e3d83603 100644
+> --- a/arch/arm64/kernel/cpufeature.c
+> +++ b/arch/arm64/kernel/cpufeature.c
+> @@ -1841,6 +1841,9 @@ static void bti_enable(const struct
+> arm64_cpu_capabilities *__unused)
+>  #ifdef CONFIG_ARM64_MTE
+>  static void cpu_enable_mte(struct arm64_cpu_capabilities const *cap)
+>  {
+> +	sysreg_clear_set(sctlr_el1, 0, SCTLR_ELx_ATA | SCTLR_EL1_ATA0);
+> +	isb();
+> +
+>  	/*
+>  	 * Clear the tags in the zero page. This needs to be done via
+> the
+>  	 * linear map which has the Tagged attribute.
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
