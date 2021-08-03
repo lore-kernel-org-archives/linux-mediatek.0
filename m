@@ -2,81 +2,80 @@ Return-Path: <SRS0=vV1m=M2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61DA8C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:56:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B76BBC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:14:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2F30C60F70
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 14:56:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2F30C60F70
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 86FED60243
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Aug 2021 15:14:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 86FED60243
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gorani.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4SvDoRBZxkmM7wf/SQEEqqLjo/45sCD/vUvh9DpApwE=; b=AZi83oSZ6qX+Ko
-	yq7tqNLzFEVoqTXXZi9EYi+7eFYDSvF3Pw6oIlfeQa+lAz/lJzpC8hX1LkNW7lkz36hxB4QjvYXxk
-	Hn/R9WjiPExt1LOdJTZfQtswIxHqfHSB2AzhDOmEzBskIA1v4gBy7kSfemgT2r1PmXWb3yeJIiSt0
-	dcVQ6h7FHQ174PG8rCJmsadt0m0+R98wJXd0cLDM3pYPYXGsjZ3CsSXtk2sPYtH+a2PLTHbL4CQsa
-	EFoCZg5Z9ty8phMIx3H6um+P1oyWsDlVAUf0EpPGVA9C61+K1M20SuyFluRvwiw4ifyVBPKsSXjOS
-	I5582R+sCWBLF1ks6fnw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MkFC6bP3GTBkGLqFTZ7nNurnHONMhtpWibpI14tvJOM=; b=LT5lew7h6cNnVX
+	SaY9h0fSFuRIyCtKXXBkXGSqRQpzc8ndlE5SxcORMhFKjnHGC2nEfHz0yPSVeS68K/TuPhy5NZ5s0
+	ObdoFsCZ6JAuD22/xOoeWOrpeqZbN7owPFofu3w87o+wI73Abg6v2pMZyXia3vtlNlf39Tpanvsog
+	FNkYPe1GT81Q2AJtNSnjAJ7n6hYqKtX9I90s+eZysaCNyfhT4neN+LUX9aXXWNGwj9vkyB5q7u2br
+	2XovIz8eI/nK1KLkUwQbSgnpAYf8HKP2Tb1Bnx6iTicyyIWk9QGFQ41QNRKbdcSdS3pl5zcK0HS3V
+	sTWiNiVvUTQefRB2NqYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mAvq1-003IVE-Jd; Tue, 03 Aug 2021 14:56:13 +0000
-Received: from mail-io1-f52.google.com ([209.85.166.52])
+	id 1mAw7n-003MpM-Jj; Tue, 03 Aug 2021 15:14:35 +0000
+Received: from mout-p-102.mailbox.org ([2001:67c:2050::465:102])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mAvpj-003IPl-0L; Tue, 03 Aug 2021 14:56:00 +0000
-Received: by mail-io1-f52.google.com with SMTP id d22so1228247ioy.11;
- Tue, 03 Aug 2021 07:55:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=kD7lkwGnBrAWtQ4Yvyumyu5YNOwGaLH82mshMsNuV0s=;
- b=pCYnQNXWq4gjybkE3Kk3B2sC4Zji+MXFvVxEidhqxNDJxDMa0HVx2qX0VvBFkHshIe
- ohVqApIffYOp3R6WwB0S6jX/jb/O0kQfpaQm4ruje7gxAvu9arDfwAOFY3Hml4pDXGVS
- AMhBqog4l57AITJzUNIMKbY8ic3ZhKhZldZoI+n4nVPIZs/yQH5LuQfLwioVcFHrp3Sj
- QTs/a4/uh4AePNpXACpu6d5/hCxwHdb1XXia1Iib51qS1elnQfMX4SdZui16hd9SmszX
- KLxhDVCy6vj+NZjJENSXBFkRKZCTLJ4BOB1TVrQj4z6iNkFAMBbxAxsU7YM2idJupeK9
- 0pHQ==
-X-Gm-Message-State: AOAM532xDK6KMwoWKYzRc7dd2jdiAj4Wt7laKEmGe6srz+hblidUwr2q
- SsgtitcabH4SESt4wFD/0g==
-X-Google-Smtp-Source: ABdhPJzY36XqMTJ9t/2g2jsTX7vFaYI7b8gh0CL1YPRGzel3gnv1zaaoWZzPOx7BB/gaoMf2w4EdMA==
-X-Received: by 2002:a5e:9743:: with SMTP id h3mr433048ioq.52.1628002553781;
- Tue, 03 Aug 2021 07:55:53 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.248])
- by smtp.gmail.com with ESMTPSA id k9sm8646960ioq.55.2021.08.03.07.55.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Aug 2021 07:55:52 -0700 (PDT)
-Received: (nullmailer pid 3254509 invoked by uid 1000);
- Tue, 03 Aug 2021 14:55:51 -0000
-Date: Tue, 3 Aug 2021 08:55:51 -0600
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Enric Balletbo Serra <eballetbo@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- Andy Teng <andy.teng@mediatek.com>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 3/3] dt-bindings: mediatek: convert pinctrl to yaml
-Message-ID: <YQlY9/5GNOGKG4gv@robh.at.kernel.org>
-References: <20210803051318.2570994-1-hsinyi@chromium.org>
- <20210803051318.2570994-3-hsinyi@chromium.org>
+ id 1mAw7Z-003MnJ-2X; Tue, 03 Aug 2021 15:14:23 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org
+ [IPv6:2001:67c:2050:105:465:1:1:0])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mout-p-102.mailbox.org (Postfix) with ESMTPS id 4GfJLb6TSyzQk1r;
+ Tue,  3 Aug 2021 17:14:15 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at heinlein-support.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gorani.run; s=MBO0001; 
+ t=1628003653;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Jpnrv079HohfYHZxHFOih7cazCqNwznCHGvgjVDV5OI=;
+ b=cPSRzG5fVE5ANJTePkpxHl2VaB6rm+S7H32l68zL0PeiJ3pUG7IcAkHjCICir+jPJ+D8yp
+ BwVW8r15/M6T0RJnyHVDEMIQvtVmUvPMyikjhFbxNsb1puF5Yi3zEHQJzRRsplkAvDDZC6
+ MM5U41bztqUj6wFJ3P35dP/T2CWTBmwes7oZZYvFGxg76IKkrgRXqfUg8oO3OMgKdqR0kk
+ P+/+EXvUPz3BmGQ0E4ogzwoyD/R9hMsrHFOoQX36+4RCUjJOPsyKYLyMGmz9S5kIOCJ/8u
+ PKW/bbrPWTNrpiaa8nDBVEmlgiZ5oFyw2Oiru+sZT27nMrKZTJmeGEEKu9XCpA==
+Received: from smtp1.mailbox.org ([80.241.60.240])
+ by spamfilter04.heinlein-hosting.de (spamfilter04.heinlein-hosting.de
+ [80.241.56.122]) (amavisd-new, port 10030)
+ with ESMTP id eYw7Q2qDqF7P; Tue,  3 Aug 2021 17:14:12 +0200 (CEST)
+From: Sungbo Eo <mans0n@gorani.run>
+To: linux-mediatek@lists.infradead.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sungbo Eo <mans0n@gorani.run>
+Subject: [PATCH 0/2] Add MUSB for MT7623
+Date: Wed,  4 Aug 2021 00:13:18 +0900
+Message-Id: <20210803151320.71531-1-mans0n@gorani.run>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210803051318.2570994-3-hsinyi@chromium.org>
+X-Rspamd-Queue-Id: 887F618BC
+X-Rspamd-UID: ef8fb2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_075555_116525_9C831AC8 
-X-CRM114-Status: GOOD (  12.99  )
+X-CRM114-CacheID: sfid-20210803_081421_335371_4691610C 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,42 +92,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 03, 2021 at 01:13:19PM +0800, Hsin-Yi Wang wrote:
-> Convert mt65xx, mt6796, mt7622, mt8183 bindings to yaml.
-> 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
-> v2->v3:
-> fix comments in v2.
+These patches add support for the MUSB controller on Mediatek MT7623.
+Tested on Mercury RUSH-318AC Wi-Fi router.
 
-That's assumed... A good revision history will list out what changed to 
-remind reviewers what they said. (I kind of remember since it was just 
-yesterday, more more than that assume I've forgotten.) This is different 
-than the commit msg which should tell us 'why' and not 'what' as there 
-we have the diff and can read what changed.
+I got to know this from a BPI-R2 forum post [1], and managed to make it work on OpenWrt snapshot.
+I'd like to know if this also works on BPI-R2, I can happily share the details if needed.
+And I've just copy & pasted nodes from mt2701, please let me know if I missed some big differences between SoCs...
 
-> ---
->  .../pinctrl/mediatek,mt65xx-pinctrl.yaml      | 206 ++++++++
->  .../pinctrl/mediatek,mt6797-pinctrl.yaml      | 173 +++++++
->  .../pinctrl/mediatek,mt7622-pinctrl.yaml      | 373 +++++++++++++
->  .../pinctrl/mediatek,mt8183-pinctrl.yaml      | 228 ++++++++
->  .../bindings/pinctrl/pinctrl-mt65xx.txt       | 156 ------
->  .../bindings/pinctrl/pinctrl-mt6797.txt       |  83 ---
->  .../bindings/pinctrl/pinctrl-mt7622.txt       | 490 ------------------
->  .../bindings/pinctrl/pinctrl-mt8183.txt       | 132 -----
->  8 files changed, 980 insertions(+), 861 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt65xx-pinctrl.yaml
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt6797-pinctrl.yaml
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7622-pinctrl.yaml
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
->  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt65xx.txt
->  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt6797.txt
->  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
->  delete mode 100644 Documentation/devicetree/bindings/pinctrl/pinctrl-mt8183.txt
+[1] http://forum.banana-pi.org/t/bpi-r2-otg-port/10551
 
-With the MAINTAINERS references fixed,
+Sungbo Eo (2):
+  dt-bindings: usb: mtk-musb: add MT7623 compatible
+  arm: dts: mt7623: add musb device nodes
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+ .../bindings/usb/mediatek,musb.yaml           |  1 +
+ arch/arm/boot/dts/mt7623.dtsi                 | 34 +++++++++++++++++++
+ arch/arm/boot/dts/mt7623a.dtsi                |  4 +++
+ 3 files changed, 39 insertions(+)
+
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
