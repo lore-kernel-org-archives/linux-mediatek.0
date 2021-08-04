@@ -2,85 +2,90 @@ Return-Path: <SRS0=9YCi=M3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2138EC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 00:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D83ADC4320A
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 04:40:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3C1C61037
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 00:15:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C3C1C61037
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gorani.run
+	by mail.kernel.org (Postfix) with ESMTPS id A615061029
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 04:40:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A615061029
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=3LFyg78Oa/CW3V1U5kj+Jfz1j4vFs452TBueqQ41eMw=; b=PtUCqnuoKYrfnQB1toJq51/oEq
-	OVWzW+UM/38O1c2TQNRjUnwlBE68N6NYFVZ5eu9IkDY5fb/7Rt2v+mlQJrakBGs67Dw79pURNL6X6
-	kiUIuSPUGT07bGH6dlsTs4DIPRQHaF/fwx45Bex7aHrNA25/taaZMBnCuwnZbj1hJg7I244TTW2oG
-	BcruDyL/ZxINH57RxARgtQ88G2IWP7o9xLRxEK+aqwwnTnnEmxktFziilVXDL48wYVtGVcdPVYZeM
-	ohYfnP5qzioE+Cd9f5qlP5sl8Wsw6GBYZwUZ7OQD4J1wflzYhDI4bus8NRLniXDH3N7jByXNUiXvR
-	JVpxBdTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GlDQ7SwhZaQbrYQQ9pY3mCHIK9BGUmvjKexQQNCE+5k=; b=A8JdwEpGO26jfS
+	x9UK4/z9Yj6jjPKsigLXSVtcu4GDEcrNMUQgVEDn6qrHUP83CellmKXf5jy+fC4S0gs+DBYZpnn/U
+	rKNUZnLaPNvNs1Nqv+ACCHiewsH4cy3xdYKHCMsUnTrK7Ep8hOpW2vVXDF+YtHM2AXuWYqzM58ZUF
+	cUHNkINt9o17Tearw8S8bSSzIJ/FvCgA5hdFH8kqQhuY6OWbOKv4EjsyjlJ346BMmpurEM1vLY7lH
+	XC10xRQg29a0cLyUBoRQ6LlcywpI7y1imuJCPGm7AMHMOzI8t3SvmbfF4p2v8ElIU30LVwilgpvzL
+	5o2FgbxOlkb+cnA2OKYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mB4ZE-004TBU-FI; Wed, 04 Aug 2021 00:15:28 +0000
-Received: from mout-p-103.mailbox.org ([2001:67c:2050::465:103])
+	id 1mB8ht-004mxw-8S; Wed, 04 Aug 2021 04:40:41 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mB4Yz-004TA9-OC; Wed, 04 Aug 2021 00:15:15 +0000
-Received: from smtp2.mailbox.org (smtp2.mailbox.org
- [IPv6:2001:67c:2050:105:465:1:2:0])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4GfXLl0vqkzQkBP;
- Wed,  4 Aug 2021 02:15:11 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at heinlein-support.de
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gorani.run; s=MBO0001; 
- t=1628036106;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=osrq7GUdFnMqBqCWbVCjowh5IkYaeAyzwUW1YGisEHQ=;
- b=TY3qFzNOTrXdQKtOHJkQwORhOmi/BKFazb2TJQ2t1DOCvYpWYaYM7GQb3JSaFjiOQgvHej
- HXfE6JHQdDt+KWZ8D/UUY/P2k3rwr2E7YxnGzg8hfQhr1kCUzdI0UDy4zS+dyv0ZALgCrO
- QLcV3VGMfacR7EMNe0EVk2seDCEftOi3cGlYgEjMdFhqWRI+2VrdCjtPBQvR0gaontrM2y
- X+l0nap3R8J+j80isbJBN1T4Rx8ZdR0nncCkynXq7V12zT9kTqIjpitzIWesNvx0IzW6kv
- 4VkNvNGKieC1aqEUyllBLCqSZ/0bblPzzbpjM8mVTKtCYziRFRd+6RaR1x1QRA==
-Received: from smtp2.mailbox.org ([80.241.60.241])
- by spamfilter06.heinlein-hosting.de (spamfilter06.heinlein-hosting.de
- [80.241.56.125]) (amavisd-new, port 10030)
- with ESMTP id IUKY_tgvliXS; Wed,  4 Aug 2021 02:15:05 +0200 (CEST)
-Subject: Re: Aw: [PATCH 0/2] Add MUSB for MT7623
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: linux-mediatek@lists.infradead.org,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Min Guo <min.guo@mediatek.com>, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ id 1mB8hq-004mwj-Ea
+ for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 04:40:39 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id
+ g23-20020a17090a5797b02901765d605e14so1823851pji.5
+ for <linux-mediatek@lists.infradead.org>; Tue, 03 Aug 2021 21:40:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9jhmmW00U1t6nu8Et2gPe9VWIRq7R6Jr8Ar5v9ZMFtg=;
+ b=C6y5SxeHxcQPbiYJNEuZUOdXAMN0f3Xc8xH9Ygbn/hNDSn14ghCz0sGQpITHos0BQa
+ JrE3C1CglA2pwcaHfx7/EB6VvB87KaT0YahU+WcFsOJAhonOJmDG0QEomSkc79ULEe47
+ N4E2PLpRaZTHaXuiPsG2pcdkhjy2EjYudYnaU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=9jhmmW00U1t6nu8Et2gPe9VWIRq7R6Jr8Ar5v9ZMFtg=;
+ b=qi1XEgo1j11nUqwQmppmLdnNr5w0EeF3GWbKapya0iJaQ3RyJLyTCguWjKxzBapDRG
+ P3vXPlUWa6cbykf428ljVxq0jPDOEckpXDK+8dlLOOb11+hBfG9UhSQxBSuTgc85QiNy
+ sxFRlnDe7jzRAvudPAw1vuN1ugU/hQNA6W79dnTEaJgvf3h5PlaLhzkzeBTbElTLgDxf
+ 6GLPx3jf0V+qnqNJfx4HFG1urjj1UT4q1oSQgMQZe1K5jlRQ4f11dML4onC106ftoVde
+ 9hl0Fjq3vHyRx5n2rK44R8eJQE17I/jYy8ozUKv22tfbV8Kpe41yIsBS4CraJ1E8L9AM
+ YI1w==
+X-Gm-Message-State: AOAM531HTwjC/i9A/j9JhPwQ0mtvxvw1RLoVM85+chfFs+gOv8dfY4RS
+ VgZbMntpLE0TRJyt0JQMNpKqqg==
+X-Google-Smtp-Source: ABdhPJwRCZNNwOft/vBDSjHy8F7s60+dQbATz9EE8dK0AkmsFjq5q4WBV9dh1tP917W4u9TI2KWUaA==
+X-Received: by 2002:a05:6a00:a18:b029:382:e172:653e with SMTP id
+ p24-20020a056a000a18b0290382e172653emr25615508pfh.19.1628052037658; 
+ Tue, 03 Aug 2021 21:40:37 -0700 (PDT)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:6fea:f7c3:8233:dc51])
+ by smtp.gmail.com with ESMTPSA id t9sm1075355pgc.81.2021.08.03.21.40.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Aug 2021 21:40:37 -0700 (PDT)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Enric Balletbo Serra <eballetbo@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, Andy Teng <andy.teng@mediatek.com>,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-References: <20210803151320.71531-1-mans0n@gorani.run>
- <trinity-0f9449b8-5114-46e5-9a4f-00b62155a938-1628010948338@3c-app-gmx-bs54>
-From: Sungbo Eo <mans0n@gorani.run>
-Message-ID: <f3607979-ea50-fc1c-0afe-a55881aa24f0@gorani.run>
-Date: Wed, 4 Aug 2021 09:14:55 +0900
+Subject: [PATCH v4 1/3] arm: dts: mt8135: Move pinfunc to
+ include/dt-bindings/pinctrl
+Date: Wed,  4 Aug 2021 12:40:31 +0800
+Message-Id: <20210804044033.3047296-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.32.0.554.ge1b32706d8-goog
 MIME-Version: 1.0
-In-Reply-To: <trinity-0f9449b8-5114-46e5-9a4f-00b62155a938-1628010948338@3c-app-gmx-bs54>
-X-Rspamd-Queue-Id: A1035183B
-X-Rspamd-UID: 235c2f
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_171514_075024_C142656C 
-X-CRM114-Status: GOOD (  25.94  )
+X-CRM114-CacheID: sfid-20210803_214038_549343_2C4E8667 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,163 +102,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+Move mt8135-pinfunc.h into include/dt-bindings/pinctrl so that we can
+include it in yaml examples.
 
-On 2021-08-04 02:15, Frank Wunderlich wrote:
-> Hi,
-> 
->> Gesendet: Dienstag, 03. August 2021 um 17:13 Uhr
->> Von: "Sungbo Eo" <mans0n@gorani.run>
->> An: linux-mediatek@lists.infradead.org
->> Cc: "Chunfeng Yun" <chunfeng.yun@mediatek.com>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rob Herring" <robh+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Min Guo" <min.guo@mediatek.com>, "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Sungbo Eo" <mans0n@gorani.run>
->> Betreff: [PATCH 0/2] Add MUSB for MT7623
->>
->> These patches add support for the MUSB controller on Mediatek MT7623.
->> Tested on Mercury RUSH-318AC Wi-Fi router.
->>
->> I got to know this from a BPI-R2 forum post [1], and managed to make it work on OpenWrt snapshot.
->> I'd like to know if this also works on BPI-R2, I can happily share the details if needed.
->> And I've just copy & pasted nodes from mt2701, please let me know if I missed some big differences between SoCs...
->>
->> [1] http://forum.banana-pi.org/t/bpi-r2-otg-port/10551
-> 
-> thanks for working on it. do both otg-roles (host/client) work on your device?
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+ arch/arm/boot/dts/mt8135.dtsi                                   | 2 +-
+ .../boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h   | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename {arch/arm/boot/dts => include/dt-bindings/pinctrl}/mt8135-pinfunc.h (100%)
 
-Yes, I tested it with host mode and device mode.
-I also tried manual role-switch via sysfs and it worked with some prior setup.
-Note that my device has a USB Type-A connector and not micro B, so I can't help with id pin stuff...
+diff --git a/arch/arm/boot/dts/mt8135.dtsi b/arch/arm/boot/dts/mt8135.dtsi
+index 0e4e835026db0..a031b36363187 100644
+--- a/arch/arm/boot/dts/mt8135.dtsi
++++ b/arch/arm/boot/dts/mt8135.dtsi
+@@ -9,7 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/reset/mt8135-resets.h>
+-#include "mt8135-pinfunc.h"
++#include <dt-bindings/pinctrl/mt8135-pinfunc.h>
+ 
+ / {
+ 	#address-cells = <2>;
+diff --git a/arch/arm/boot/dts/mt8135-pinfunc.h b/include/dt-bindings/pinctrl/mt8135-pinfunc.h
+similarity index 100%
+rename from arch/arm/boot/dts/mt8135-pinfunc.h
+rename to include/dt-bindings/pinctrl/mt8135-pinfunc.h
+-- 
+2.32.0.554.ge1b32706d8-goog
 
-> 
-> unfortunately at least host-mode does not work (do not know how to test client mode). i guess because iddig and vusb nodes are missing.
-> 
-> i took your Patchset and enabled the usb-node for bpi-r2.
-> 
-> +&usb3 {
-> +       status = "okay";
-> +};
-> 
-> and added these config-symbols:
-> 
-> +CONFIG_USB_CONN_GPIO=y
-> +CONFIG_USB_MUSB_HDRC=y
-> +CONFIG_USB_MUSB_MEDIATEK=y
-> +CONFIG_NOP_USB_XCEIV=y
-> +CONFIG_USB_CONFIGFS=y
-> +#CONFIG_USB_CONFIGFS_MASS_STORAGE=y
-> +#CONFIG_PHY_MTK_TPHY=y
-> +CONFIG_USB_GADGET=y
-> +CONFIG_USB_MUSB_DUAL_ROLE=y
-> +CONFIG_USB_INVENTRA_DMA=y
-> 
-> btw. imho otg-node should be named usb0 as other dts (kernel 4.4) also use usb0, else i think it's confusing.
-
-You certainly have a point. I'll follow your suggestion. Thanks!
-
-> 
-> in my last attempt i had these below usb-node in boards devicetree:
-> 
-> +       usb_vbus: regulator@0 {
-> +               compatible = "regulator-fixed";
-> +               regulator-name = "usb_vbus";
-> +               regulator-min-microvolt = <5000000>;
-> +               regulator-max-microvolt = <5000000>;
-> +               gpio = <&pio 237 GPIO_ACTIVE_HIGH>;
-> +               enable-active-high;
-> +       };
-> +
-> +       connector{
-> +               compatible = "gpio-usb-b-connector", "usb-b-connector";
-> +               type = "micro";
-> +               id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
-> +               vbus-supply = <&usb_vbus>;
-> +       };
-> 
-> after adding these i see the connection of otg-cable with usb-stick in dmesg:
-> 
-> [   53.656304] usb-conn-gpio 11200000.usb:connector: repeated rot
-> [   53.696324] usb-conn-gpio 11200000.usb:connector: repeated role: host
-> 
-> but usb-stick is not powered (led of the stick is off) and of course i see no mass-storage device.
-
-I observed the same symptom (but different error log).
-
-[    2.722253] musb-hdrc musb-hdrc.1.auto: VBUS_ERROR in a_idle (80, <SessEnd), retry #0, port1 00000104
-
-In my case adding `regulator-always-on;` in the regulator node solved the problem temporarily.
-But after that I switched to relying on pinctrl.
-
-+&pio {
-+       musb_pins: musb {
-+               pins-musb {
-+                       pinmux = <MT7623_PIN_237_EXT_SDIO2_FUNC_DRV_VBUS>;
-+               };
-+       };
-+};
-+
-+&usb3 {
-+       pinctrl-names = "default";
-+       pinctrl-0 = <&musb_pins>;
-+       status = "okay";
-+
-+       dr_mode = "host";
-+
-+       connector {
-+               compatible = "usb-a-connector";
-+       };
-+};
-
-root@OpenWrt:~# lsusb -t
-/:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=musb-hdrc/1p, 480M
-    |__ Port 1: Dev 2, If 0, Class=, Driver=usb-storage, 480M
-/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 5000M
-/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 480M
-
-I tested device mode with legacy CDC composite device module.
-You can also take more complicated configfs approach, though.
-https://elinux.org/images/e/ef/USB_Gadget_Configfs_API_0.pdf
-
-+       dr_mode = "host";
--       dr_mode = "peripheral";
-
-root@OpenWrt:/# insmod g_cdc
-[   64.565254] using random self ethernet address
-[   64.569711] using random host ethernet address
-[   64.575966] usb0: HOST MAC 26:36:2d:e5:8f:6f
-[   64.580501] usb0: MAC 92:d7:f9:c7:88:01
-[   64.584409] g_cdc gadget: CDC Composite Gadget, version: King Kamehameha Day 2008
-[   64.592454] g_cdc gadget: g_cdc ready
-
-I also tried usb-role-switch,
-
--       dr_mode = "host";
-+       usb-role-switch;
-
-After boot the initial mode of musb is "none", and it did not turn vbus on even if I set it to host mode.
-Later I found out that I need to load any gadget driver before setting it to host mode.
-
-# echo peripheral > /sys/devices/platform/11200000.usb/musb-hdrc.1.auto/mode
-# insmod g_cdc
-# echo host > /sys/devices/platform/11200000.usb/musb-hdrc.1.auto/mode
-
-That's all I know. Please let me know if I skipped some details.
-Thanks.
-
-> 
-> and now i'm back on the traceback on power down i've reported Author of musb driver some time ago
-> 
-> [  156.785185] WARNING: CPU: 0 PID: 1 at drivers/power/reset/mt6323-poweroff.c:4
-> [  156.795156] Unable to power off system
-> 
-> [  156.884496] [<c0cca1ec>] (warn_slowpath_fmt) from [<c090562c>] (mt6323_do_pw)
-> [  156.893203]  r8:c3296d40 r7:00000024 r6:0ccccb60 r5:c10fe3d8 r4:00000000
-> [  156.900030] [<c09054b0>] (mt6323_do_pwroff) from [<c010ba68>] (machine_power)
-> [  156.908558]  r8:fee1dead r7:c1312590 r6:92f61d00 r5:00000000 r4:4321fedc
-> [  156.915385] [<c010ba34>] (machine_power_off) from [<c01524bc>] (kernel_power)
-> 
-> i guess it's related to the usb_vbus.
-> 
-> regards Frank
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
