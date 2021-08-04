@@ -2,91 +2,82 @@ Return-Path: <SRS0=9YCi=M3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F64FC432BE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 08:11:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 064DBC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 08:23:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5751B60EE5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 08:11:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5751B60EE5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id BF15B60F02
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 08:23:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BF15B60F02
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3/5iDq2UWgZvJzgCLFJ2EPiBHfEUCWYl+rpWJ6oL6rk=; b=b/bzPrXzemYZxB
-	ThbYJRltCokvN/2EWOby54ZQ/C/n1oaFrwzpa0/y+Q846jVrWfUjRTMx5f6svRDxH/3impFCCcMRe
-	sAoPjlMz/5u/hekPuask2p4OOKrZMQ/RUHkoNk0krHOfE1OvsNtphXF25cwKOerTF1hndfPXT+mlT
-	VhW7tmENHaRU3NEC6Mz2LdwEIpFfK1qdbIbVIkNJ8MMjZSIegv4876vndKq9EZ2L7sb+4JnDQlqg2
-	3UNalmIPdFoW5qGXeAbN9nCPPfAOkczZkKX5jzibVmYXfOrqgPszXcXCT37PvgPMvxt3KDZtXbjO/
-	SKYR1812DXIk3gvX7fEQ==;
+	List-Owner; bh=8ptv0iFuFyjAvUNDF404LenZQuIkAuRcflYWeHq4nLw=; b=S5L0PGrxmlL+Ja
+	AicKPrPajLnYo10wDoJdOvPYRIjOTm2R1DhrLNPTgzfqYvHzG5LD7elxME3pa5ZO8JiblXcG8sqaM
+	2NaXrdjTWMDSh5Ptyfa+64SZIbnF0XqVpFETP1j5dCrOftEjKjs36FfjYa6ZiZ1wUP8kDRcv2LNE3
+	0jA9xZ2lR85hA928cZL3ImCOOmbk+CekoZNbgMZqXhzHst9giYgGjHfbj6rbwgv2zmC1IMhUPWBur
+	/AIeHX5pOqUYR5dZ/xYcFT3vv6vUrkZHflL/qIIhEFWswiEVzyiA5f18yBvMkBgFRcBue3lqsNP6p
+	xduxTznYVK0XyKpNLcEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBBzn-0055qG-DI; Wed, 04 Aug 2021 08:11:23 +0000
-Received: from mout.gmx.net ([212.227.17.20])
+	id 1mBCBZ-00581w-2C; Wed, 04 Aug 2021 08:23:33 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBBzj-0055p1-UM; Wed, 04 Aug 2021 08:11:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1628064669;
- bh=YvEcXrHPBfYzp2tdYOHNvNnbANlyDTHvf2AxPW3et7M=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Fy/Egp/3GARYqkIFltMKbJNDvxrQxAdZPd/FG+EPOeOPvcj5lDTc+2cyPjQ+rPcAh
- F+DRAdGc3p50UCEcZ84vi68k7TA2saYSj0wA0jf/pWtxOHfcLED1ILm3LKUvFlHQe+
- sJoNVLOemd4yH7Qax7tBT/ryvWmflmFxrIgLH+8s=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.147.17] ([217.61.147.17]) by web-mail.gmx.net
- (3c-app-gmx-bap67.server.lan [172.19.172.67]) (via HTTP); Wed, 4 Aug 2021
- 10:11:08 +0200
+ id 1mBCBK-0057y4-JM; Wed, 04 Aug 2021 08:23:20 +0000
+X-UUID: 3764ebe255ad42559da7e61c57f91024-20210804
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ttJQXD+RhSPgjF4AdTo78preKZinodO9i9V/f7UcD80=; 
+ b=acn5tusQFDH+M25rQ4MnGjfKN48hC956YUwexQBzUgfnnoqfA0cFMTVLw09fJhnk6/J+RyAQtBDv0shYoykxrNXiD+NoSWLqDU7Vc/vWIZIp9rJs7nxw1zyvMRO0iV3mRKPI3tEU04FtKo1xTsdhvNVe7TkUWXH4jHcliXEoDFs=;
+X-UUID: 3764ebe255ad42559da7e61c57f91024-20210804
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <kuan-ying.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1497711002; Wed, 04 Aug 2021 01:23:14 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Aug 2021 01:23:13 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Aug 2021 16:23:11 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 4 Aug 2021 16:23:11 +0800
+From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+To: Nicholas Tang <nicholas.tang@mediatek.com>, Andrew Yang
+ <andrew.tang@mediatek.com>, Andrey Konovalov <andreyknvl@gmail.com>, "Andrey
+ Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
+ Marco Elver <elver@google.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Morton
+ <akpm@linux-foundation.org>
+CC: <kasan-dev@googlegroups.com>, <linux-mm@kvack.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Kuan-Ying Lee
+ <Kuan-Ying.Lee@mediatek.com>
+Subject: [PATCH v2 1/2] kasan, kmemleak: reset tags when scanning block
+Date: Wed, 4 Aug 2021 16:22:29 +0800
+Message-ID: <20210804082230.10837-2-Kuan-Ying.Lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210804082230.10837-1-Kuan-Ying.Lee@mediatek.com>
+References: <20210804082230.10837-1-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
-Message-ID: <trinity-8910c659-6e4e-4979-a6d0-eaf5b8bee213-1628064668849@3c-app-gmx-bap67>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Sungbo Eo <mans0n@gorani.run>
-Cc: linux-mediatek@lists.infradead.org, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
- devicetree@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Aw: Re:  [PATCH 0/2] Add MUSB for MT7623
-Date: Wed, 4 Aug 2021 10:11:08 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <f3607979-ea50-fc1c-0afe-a55881aa24f0@gorani.run>
-References: <20210803151320.71531-1-mans0n@gorani.run>
- <trinity-0f9449b8-5114-46e5-9a4f-00b62155a938-1628010948338@3c-app-gmx-bs54>
- <f3607979-ea50-fc1c-0afe-a55881aa24f0@gorani.run>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:KDWodkr75906Bt6g62XmHQa9PoCrBrWNqNZQVvojYAf8r83q+NlJOQdWStEWgAwcp5Xsk
- UBrdYAoLIWiKBUNCkshM22OkDenDDKkXTdCGpNPHsRpT4Wx7NpCSfylBw3DGvsJI4iQBxUx3rFzg
- r5tr9NAliXV9Oz3JwDUN075FmTSILzA/ad/BSHs/OMYst7FzkqUB276NgPqNvZN4UtUbsXp71uhR
- cUGSp3BaI8LIYuB9lmspvlNrBFy6dCjcxg7VSUEUz63oilokVa9noH32eIIZ0jjs7CTnsx8PUGhj
- hY=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2BPuurnNY30=:oEguZKWjzcVKUemXYbFOBL
- qPt7dgNXyh4CiAnPe58jGKgbqpjJHmKk28h6ywQZiTkGw/2ijp0pXmY3Pd9BWnsNcODMOGcmW
- 0+rkY3QRC7its2+Zh50j7bTrpvK5vu+mbqy334oM/S1rx9s/SMqRqkTFs16GwwSyAcaz17Ev1
- 6K8Jkcy69W4GP/r7n9QtSinrHqqIY40ybdeVRYQVAa7w0qh+H7wwx9FEtd6X7+yUcGC6TryrX
- 3qYLxMwyEz2svfG73RII2ks1B+7du3W8H+/66i50EBWSq3PJRaWoxSrh3Kqphpeduby2MfWqt
- 7DiEDvbOKEQTzkqVLchJ3Aywuh1PPhLjTEMwAeTdsK4tjAM3NQqakUYWYITPpLTE2jfh5rR8e
- ovZmTOANBXXjFgFrJdLJznQvEaQ9rf4SmDel2dqrz57ODup77jFvX+F0BrxuU0wqANp2MYv5y
- ZtyzuyYRcGBkMCA0CfNSJ2xxDQRGEJ3chwGKAkNLVcs+HnfldVerRPecgj+RWQRptCoSsIWGD
- d5s2llHpqJrhGqrQM/Aq5jSihhW/6iARd/AwdW3tanMQQ6xksGpZIBqU8Aem/0B/dNOg5JuAF
- Nk64jvRBiF0/njrbEZsohO5rqb7nxWqX7bTV3+WMmfv7cxTElsURxCnLhpQ+tigo47vvKEbkW
- ATKEkpKzvu2k9ldzczf36Myc97SZVe07nMa6FoCnUSG4V/BQVfIQvTFSsAewqF7e2qWTQl3EX
- cROVamWwDr/Gt7pSJf7OdssHxUhfahXxi8Fy04IkvtkOvY5Rz8MAhRz/TnBhmZjLlvSo5zyVe
- o9TO4Xg4FX/pEc/f4+YrT/mtN36ZvBZFv3SqVaLjQrRUNjmp8k=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_011120_325540_6CFE466C 
-X-CRM114-Status: GOOD (  23.20  )
+X-CRM114-CacheID: sfid-20210804_012318_699909_187EACB1 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,109 +94,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Mittwoch, 04. August 2021 um 02:14 Uhr
-> Von: "Sungbo Eo" <mans0n@gorani.run>
+Kmemleak need to scan kernel memory to check memory leak.
+With hardware tag-based kasan enabled, when it scans on
+the invalid slab and dereference, the issue will occur
+as below.
 
-> > thanks for working on it. do both otg-roles (host/client) work on your device?
->
-> Yes, I tested it with host mode and device mode.
-> I also tried manual role-switch via sysfs and it worked with some prior setup.
-> Note that my device has a USB Type-A connector and not micro B, so I can't help with id pin stuff...
+Hardware tag-based KASAN doesn't use compiler instrumentation, we
+can not use kasan_disable_current() to ignore tag check.
 
-> > but usb-stick is not powered (led of the stick is off) and of course i see no mass-storage device.
->
-> I observed the same symptom (but different error log).
->
-> [    2.722253] musb-hdrc musb-hdrc.1.auto: VBUS_ERROR in a_idle (80, <SessEnd), retry #0, port1 00000104
->
-> In my case adding `regulator-always-on;` in the regulator node solved the problem temporarily.
-> But after that I switched to relying on pinctrl.
+Based on the below report, there are 11 0xf7 granules, which amounts to
+176 bytes, and the object is allocated from the kmalloc-256 cache. So
+when kmemleak accesses the last 256-176 bytes, it causes faults, as
+those are marked with KASAN_KMALLOC_REDZONE == KASAN_TAG_INVALID ==
+0xfe.
 
-i've found out that usb-stick is powered if i first connect otg-cable and then the stick to the cable...regulator always on does not change anything for me (only supporess "disabling vusb" message on boot). traceback on poweroff is still there.
+Thus, we reset tags before accessing metadata to avoid from false positives.
 
-role switch happen on inserting stick into cable, not before (insert cable into r2) as i expected.
+[  151.905804] ==================================================================
+[  151.907120] BUG: KASAN: out-of-bounds in scan_block+0x58/0x170
+[  151.908773] Read at addr f7ff0000c0074eb0 by task kmemleak/138
+[  151.909656] Pointer tag: [f7], memory tag: [fe]
+[  151.910195]
+[  151.910876] CPU: 7 PID: 138 Comm: kmemleak Not tainted 5.14.0-rc2-00001-g8cae8cd89f05-dirty #134
+[  151.912085] Hardware name: linux,dummy-virt (DT)
+[  151.912868] Call trace:
+[  151.913211]  dump_backtrace+0x0/0x1b0
+[  151.913796]  show_stack+0x1c/0x30
+[  151.914248]  dump_stack_lvl+0x68/0x84
+[  151.914778]  print_address_description+0x7c/0x2b4
+[  151.915340]  kasan_report+0x138/0x38c
+[  151.915804]  __do_kernel_fault+0x190/0x1c4
+[  151.916386]  do_tag_check_fault+0x78/0x90
+[  151.916856]  do_mem_abort+0x44/0xb4
+[  151.917308]  el1_abort+0x40/0x60
+[  151.917754]  el1h_64_sync_handler+0xb4/0xd0
+[  151.918270]  el1h_64_sync+0x78/0x7c
+[  151.918714]  scan_block+0x58/0x170
+[  151.919157]  scan_gray_list+0xdc/0x1a0
+[  151.919626]  kmemleak_scan+0x2ac/0x560
+[  151.920129]  kmemleak_scan_thread+0xb0/0xe0
+[  151.920635]  kthread+0x154/0x160
+[  151.921115]  ret_from_fork+0x10/0x18
+[  151.921717]
+[  151.922077] Allocated by task 0:
+[  151.922523]  kasan_save_stack+0x2c/0x60
+[  151.923099]  __kasan_kmalloc+0xec/0x104
+[  151.923502]  __kmalloc+0x224/0x3c4
+[  151.924172]  __register_sysctl_paths+0x200/0x290
+[  151.924709]  register_sysctl_table+0x2c/0x40
+[  151.925175]  sysctl_init+0x20/0x34
+[  151.925665]  proc_sys_init+0x3c/0x48
+[  151.926136]  proc_root_init+0x80/0x9c
+[  151.926547]  start_kernel+0x648/0x6a4
+[  151.926987]  __primary_switched+0xc0/0xc8
+[  151.927557]
+[  151.927994] Freed by task 0:
+[  151.928340]  kasan_save_stack+0x2c/0x60
+[  151.928766]  kasan_set_track+0x2c/0x40
+[  151.929173]  kasan_set_free_info+0x44/0x54
+[  151.929568]  ____kasan_slab_free.constprop.0+0x150/0x1b0
+[  151.930063]  __kasan_slab_free+0x14/0x20
+[  151.930449]  slab_free_freelist_hook+0xa4/0x1fc
+[  151.930924]  kfree+0x1e8/0x30c
+[  151.931285]  put_fs_context+0x124/0x220
+[  151.931731]  vfs_kern_mount.part.0+0x60/0xd4
+[  151.932280]  kern_mount+0x24/0x4c
+[  151.932686]  bdev_cache_init+0x70/0x9c
+[  151.933122]  vfs_caches_init+0xdc/0xf4
+[  151.933578]  start_kernel+0x638/0x6a4
+[  151.934014]  __primary_switched+0xc0/0xc8
+[  151.934478]
+[  151.934757] The buggy address belongs to the object at ffff0000c0074e00
+[  151.934757]  which belongs to the cache kmalloc-256 of size 256
+[  151.935744] The buggy address is located 176 bytes inside of
+[  151.935744]  256-byte region [ffff0000c0074e00, ffff0000c0074f00)
+[  151.936702] The buggy address belongs to the page:
+[  151.937378] page:(____ptrval____) refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x100074
+[  151.938682] head:(____ptrval____) order:2 compound_mapcount:0 compound_pincount:0
+[  151.939440] flags: 0xbfffc0000010200(slab|head|node=0|zone=2|lastcpupid=0xffff|kasantag=0x0)
+[  151.940886] raw: 0bfffc0000010200 0000000000000000 dead000000000122 f5ff0000c0002300
+[  151.941634] raw: 0000000000000000 0000000000200020 00000001ffffffff 0000000000000000
+[  151.942353] page dumped because: kasan: bad access detected
+[  151.942923]
+[  151.943214] Memory state around the buggy address:
+[  151.943896]  ffff0000c0074c00: f0 f0 f0 f0 f0 f0 f0 f0 f0 fe fe fe fe fe fe fe
+[  151.944857]  ffff0000c0074d00: fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe
+[  151.945892] >ffff0000c0074e00: f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 fe fe fe fe fe
+[  151.946407]                                                     ^
+[  151.946939]  ffff0000c0074f00: fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe
+[  151.947445]  ffff0000c0075000: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[  151.947999] ==================================================================
+[  151.948524] Disabling lock debugging due to kernel taint
+[  156.434569] kmemleak: 181 new suspected memory leaks (see /sys/kernel/debug/kmemleak)
 
-need to figure out which CONFIG options i need to get USB-Stick as mass storage working.
+Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Acked-by: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Marco Elver <elver@google.com>
+Cc: Andrey Konovalov <andreyknvl@gmail.com>
+---
+ mm/kmemleak.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-i wonder why it works on your board without the vusb/connector subnodes
-
-> +&pio {
-> +       musb_pins: musb {
-> +               pins-musb {
-> +                       pinmux = <MT7623_PIN_237_EXT_SDIO2_FUNC_DRV_VBUS>;
-> +               };
-> +       };
-> +};
-
-imho it's the same gpio used for regulator, right? whats the difference?
-i tried this instead of the regulator-node => not powered (cable first, then stick).
-
-> +&usb3 {
-> +       pinctrl-names = "default";
-> +       pinctrl-0 = <&musb_pins>;
-> +       status = "okay";
-> +
-> +       dr_mode = "host";
-> +
-> +       connector {
-> +               compatible = "usb-a-connector";
-> +       };
-> +};
->
-> root@OpenWrt:~# lsusb -t
-> /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=musb-hdrc/1p, 480M
->     |__ Port 1: Dev 2, If 0, Class=, Driver=usb-storage, 480M
-> /:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 5000M
-> /:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci-mtk/1p, 480M
->
-> I tested device mode with legacy CDC composite device module.
-> You can also take more complicated configfs approach, though.
-> https://elinux.org/images/e/ef/USB_Gadget_Configfs_API_0.pdf
->
-> +       dr_mode = "host";
-> -       dr_mode = "peripheral";
->
-> root@OpenWrt:/# insmod g_cdc
-> [   64.565254] using random self ethernet address
-> [   64.569711] using random host ethernet address
-> [   64.575966] usb0: HOST MAC 26:36:2d:e5:8f:6f
-> [   64.580501] usb0: MAC 92:d7:f9:c7:88:01
-> [   64.584409] g_cdc gadget: CDC Composite Gadget, version: King Kamehameha Day 2008
-> [   64.592454] g_cdc gadget: g_cdc ready
->
-> I also tried usb-role-switch,
->
-> -       dr_mode = "host";
-> +       usb-role-switch;
->
-> After boot the initial mode of musb is "none", and it did not turn vbus on even if I set it to host mode.
-> Later I found out that I need to load any gadget driver before setting it to host mode.
->
-> # echo peripheral > /sys/devices/platform/11200000.usb/musb-hdrc.1.auto/mode
-> # insmod g_cdc
-> # echo host > /sys/devices/platform/11200000.usb/musb-hdrc.1.auto/mode
->
-> That's all I know. Please let me know if I skipped some details.
-> Thanks.
->
-> >
-> > and now i'm back on the traceback on power down i've reported Author of musb driver some time ago
-> >
-> > [  156.785185] WARNING: CPU: 0 PID: 1 at drivers/power/reset/mt6323-poweroff.c:4
-> > [  156.795156] Unable to power off system
-> >
-> > [  156.884496] [<c0cca1ec>] (warn_slowpath_fmt) from [<c090562c>] (mt6323_do_pw)
-> > [  156.893203]  r8:c3296d40 r7:00000024 r6:0ccccb60 r5:c10fe3d8 r4:00000000
-> > [  156.900030] [<c09054b0>] (mt6323_do_pwroff) from [<c010ba68>] (machine_power)
-> > [  156.908558]  r8:fee1dead r7:c1312590 r6:92f61d00 r5:00000000 r4:4321fedc
-> > [  156.915385] [<c010ba34>] (machine_power_off) from [<c01524bc>] (kernel_power)
-> >
-> > i guess it's related to the usb_vbus.
-> >
-> > regards Frank
-> >
->
-
+diff --git a/mm/kmemleak.c b/mm/kmemleak.c
+index 228a2fbe0657..73d46d16d575 100644
+--- a/mm/kmemleak.c
++++ b/mm/kmemleak.c
+@@ -290,7 +290,7 @@ static void hex_dump_object(struct seq_file *seq,
+ 	warn_or_seq_printf(seq, "  hex dump (first %zu bytes):\n", len);
+ 	kasan_disable_current();
+ 	warn_or_seq_hex_dump(seq, DUMP_PREFIX_NONE, HEX_ROW_SIZE,
+-			     HEX_GROUP_SIZE, ptr, len, HEX_ASCII);
++			     HEX_GROUP_SIZE, kasan_reset_tag((void *)ptr), len, HEX_ASCII);
+ 	kasan_enable_current();
+ }
+ 
+@@ -1171,7 +1171,7 @@ static bool update_checksum(struct kmemleak_object *object)
+ 
+ 	kasan_disable_current();
+ 	kcsan_disable_current();
+-	object->checksum = crc32(0, (void *)object->pointer, object->size);
++	object->checksum = crc32(0, kasan_reset_tag((void *)object->pointer), object->size);
+ 	kasan_enable_current();
+ 	kcsan_enable_current();
+ 
+@@ -1246,7 +1246,7 @@ static void scan_block(void *_start, void *_end,
+ 			break;
+ 
+ 		kasan_disable_current();
+-		pointer = *ptr;
++		pointer = *(unsigned long *)kasan_reset_tag((void *)ptr);
+ 		kasan_enable_current();
+ 
+ 		untagged_ptr = (unsigned long)kasan_reset_tag((void *)pointer);
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
