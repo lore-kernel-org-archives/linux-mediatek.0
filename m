@@ -5,74 +5,79 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED975C432BE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A2409C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B478460F10
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B478460F10
+	by mail.kernel.org (Postfix) with ESMTPS id 6212460F14
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6212460F14
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DwcRV505k/JoVTGeCSklzfLSO8Yx218aEckEAlpPdt8=; b=Qz39DyOt82ve9R
-	v9jq0l+TcoSCzKF4CM8l1/txnBUuok0kNiSs4u0kV2W2str82EEwkEpKs8b4nQ8Akg80tTOMvH0X/
-	qQXv74goPII3dBwwGdcd3xU/KZRTL4y4MjSokqD6A8EFs5TkEsoJnax/s21Tut/iMqgHeeu0M2OwC
-	5yNNXwYN7Z2B2wlMzsnJvvMtaHqEdCeRfstO+k80MHeuRfF0Km09GHRC7BlHb9BWRV41zpgS6KrJ6
-	5oOimtF7s/IcdOWBCE3UV75olz8xYe29+FQ/JiW9ImOH5VYAROjAhN5nHtAV4ABCiOxL3p4Bc06HH
-	wAMudnVNeXZjWH1nftPQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8ptv0iFuFyjAvUNDF404LenZQuIkAuRcflYWeHq4nLw=; b=DEF2Lps0VrSTiM
+	FKZnbtJ3uH4xZ0RFTdB9dR5Mx3J0mWeGPOcSfTIXce9RdEb+glgjydTH3cr/tIrLhs4NV1dTfQNSV
+	zWkoQqOnCSRrWmF1ep8GuD4rV3uq7bKjEm3FV8U4+40+esv9P/pkmvm0sfFh29jvxJxQmkIlBwiNa
+	RR+OlhwoVmoIXcxcWWwxTJ3P2Lya8ffok9gL6XdnolBoUkr6sQxRc9C3xXVuf6nRvbuI0Jy4LcD8O
+	WPH6zd0dtDK2lDjCfZh9ur/CgfhzOk57nkfisBhKJ2DouIO8GGtW6FT6mnUjgvNLZPvhEeNFOYMhe
+	mFrwUoSObHKfXDFzl4Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBD91-005PqK-CI; Wed, 04 Aug 2021 09:24:59 +0000
+	id 1mBD9K-005Q0S-C8; Wed, 04 Aug 2021 09:25:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBCz1-005Lme-BN
- for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 09:14:41 +0000
-X-UUID: dd0799ef331d4626b130285427be7d18-20210804
+ id 1mBCz0-005Ln7-AA; Wed, 04 Aug 2021 09:14:40 +0000
+X-UUID: 66523e080308468594debc251e0c189b-20210804
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=qMuyqvxRBiYB46/70z1+0hjRqH5nGn4b0n9iinVFKzI=; 
- b=LdxpLceu7sd2kb3etD7hhMlHTSddH7BJLAnMVGS2QOJVScKgspctlE/zk+dHq6KRW9BUxlvBYJEwHCG2vxoK53eKrrhqtAxfiuVUu1Uh1caZvHBoIZ7s94gjQ7CJE+QEw4A46FXGQjt9dLOetamkQbr63F/zVskcnKwhgmhkVws=;
-X-UUID: dd0799ef331d4626b130285427be7d18-20210804
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=ttJQXD+RhSPgjF4AdTo78preKZinodO9i9V/f7UcD80=; 
+ b=CWq295q7No2cHX0M8s74qdFJI3LxTDURMAQ2HSS3bhPN9LM+VRqHYMot8nAqheoEvm025qGw+7jvJQGCEWg6rrumfoGvOBONXwyNxV0Vj9Nzd7pSD+e183oR2Ls+pP70F+QfxuDJpazI1y5Hp1un0yAuGS8jvsLhAV8SKdNAq90=;
+X-UUID: 66523e080308468594debc251e0c189b-20210804
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
+ (envelope-from <kuan-ying.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1263410791; Wed, 04 Aug 2021 02:14:34 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 733347344; Wed, 04 Aug 2021 02:14:34 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 02:05:55 -0700
+ 15.0.1497.2; Wed, 4 Aug 2021 02:10:24 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 17:05:47 +0800
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Aug 2021 17:10:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 4 Aug 2021 17:05:46 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
- <sean.wang@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <michaelfsun@google.com>, <shawnku@google.com>, <jemele@google.com>,
- <apusaka@google.com>, <mcchou@chromium.org>, mark-yw.chen
- <mark-yw.chen@mediatek.com>
-Subject: [PATCH v5 1/2] Bluetooth: btusb: Record debug log for Mediatek Chip.
-Date: Wed, 4 Aug 2021 17:03:15 +0800
-Message-ID: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
+ Frontend Transport; Wed, 4 Aug 2021 17:10:17 +0800
+From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+To: Nicholas Tang <nicholas.tang@mediatek.com>, Andrew Yang
+ <andrew.yang@mediatek.com>, Andrey Konovalov <andreyknvl@gmail.com>, "Andrey
+ Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
+ Marco Elver <elver@google.com>, Catalin Marinas <catalin.marinas@arm.com>,
+ Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Morton
+ <akpm@linux-foundation.org>
+CC: <kasan-dev@googlegroups.com>, <linux-mm@kvack.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Kuan-Ying Lee
+ <Kuan-Ying.Lee@mediatek.com>
+Subject: [PATCH v3 1/2] kasan, kmemleak: reset tags when scanning block
+Date: Wed, 4 Aug 2021 17:09:56 +0800
+Message-ID: <20210804090957.12393-2-Kuan-Ying.Lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210804090957.12393-1-Kuan-Ying.Lee@mediatek.com>
+References: <20210804090957.12393-1-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_021439_467366_8129EBCD 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20210804_021438_410465_98B3437F 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,136 +94,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+Kmemleak need to scan kernel memory to check memory leak.
+With hardware tag-based kasan enabled, when it scans on
+the invalid slab and dereference, the issue will occur
+as below.
 
-Mediatek Bluetooth controller sends the FW log and FW dump via EP2.
-This patch creates an MTK specified callback(btusb_recv_acl_mtk) to
-replace the original one (hci_recv_frame) when an MTK controller is
-detected. The new callback will separate the firmware dump traffics
-from the ACL data to have them process separately.
+Hardware tag-based KASAN doesn't use compiler instrumentation, we
+can not use kasan_disable_current() to ignore tag check.
 
-1. Add a new field (recv_acl) to the btusb_data struct to store
-vendor-specific ACL callback handler.
-2. Add the MTK-specific ACL callback handler (btusb_recv_acl_mtk) to
-process ACL data, debug log, and firmware dump.
-3. The debug log traces LMP/LL events and connection quality reports.
-4. The upper layer can use hci_channel_monitor to receive these
-packets.
+Based on the below report, there are 11 0xf7 granules, which amounts to
+176 bytes, and the object is allocated from the kmalloc-256 cache. So
+when kmemleak accesses the last 256-176 bytes, it causes faults, as
+those are marked with KASAN_KMALLOC_REDZONE == KASAN_TAG_INVALID ==
+0xfe.
 
-Example btmon: firmware debug log.
-1. Enable firmware debug log.
-< HCI Command: Vendor (0x3f|0x005d) plen 4
-        00 00 02 02                                      ....
-> HCI Event: Command Complete (0x0e) plen 8
-      Vendor (0x3f|0x005d) ncmd 1
-        Status: Success (0x00)
-        00 00 02 02                                      ....
-2. Diagnostic packet from controller
-= Vendor Diagnostic (len 500)
-          ff 05 f0 01 fd ff 02 0e 08 01 5d fc 00 00 00 02
-          02 aa aa aa cb e3 f0 15 b0 0c 5f 01 00 d1 0f 33
-          01 7f 00 08 57 61 0c 00 00 00 00 00 23 37 17 00
-          fd ff 00 00 29 60 ff ff b1 56 e8 00 57 40 0a 40
-          39 95 f2 00 47 40 43 00 fc f0 16 00 57 61 0c 00
-          00 00 00 00 23 37 17 00 fd ff 00 00 29 60 ff ff
-          65 95 f2 00 57 40 0a 40 ec d3 fc 00 47 40 3b 00
-          2c f1 17 00 57 61 0c 00 00 00 00 00 23 37 17 00
-          fd ff 00 00 29 60 ff ff 19 d4 fc 00 57 40 76 1c
-          b2 61 01 01 47 40 b3 04 0b 63 18 00 fe ff 02 01
-          04 05 33 8b 9e 08 00 aa aa aa aa aa 27 38 01 02
-          01 00 00 00 02 e0 10 00 20 00 20 00 2a 08 40 00
-          20 00 20 08 2a 08 02 00 40 00 00 01 2e 08 40 00
-          01 67 b0 c2 2e 08 3e 07 ff ff ff ff 40 08 01 00
-          02 00 00 00 34 08 a3 00 00 00 00 00 34 08 a3 00
-          00 00 00 00 35 08 45 01 00 00 00 00 2e 08 40 00
-          01 67 b0 c2 30 35 01 02 00 00 00 00 2c 31 01 00
-          02 00 00 40 2d 19 03 00 00 40 00 00 fd ff 02 0f
-          04 00 01 01 04 aa aa aa aa aa aa aa 57 61 0c 00
-          00 00 00 00 23 46 32 00 01 00 00 00 2f 35 00 02
-          00 00 00 00 29 35 ff 02 00 22 00 00 2d 31 a6 02
-          02 00 00 00 31 6c 40 00 14 63 18 1b 31 6c 40 00
-          14 63 18 23 51 08 53 00 12 63 18 00 2c 35 12 01
-          fe 00 00 00 2b 35 fe 02 02 00 00 00 2f 31 21 00
-          00 00 02 00 75 61 01 00 4c 1b 93 00 79 61 01 00
-          00 00 00 00 12 e3 63 18 20 31 86 01 74 61 68 03
-          00 00 04 00 a1 73 ff 00 b9 01 00 00 a1 73 04 00
-          00 00 00 00 a1 73 00 00 00 00 00 00 a1 73 00 00
-          02 00 00 00 31 6c 40 00 16 63 18 0c 31 6c 40 00
-          16 63 18 1c 77 61 40 00 48 33 40 00 14 e3 63 18
-          40 31 86 01 00 d1 02 c5 07 23 a1 34 73 61 37 02
-          02 00 00 a1
+Thus, we reset tags before accessing metadata to avoid from false positives.
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
-Reviewed-by: Michael Sun <michaelfsun@google.com>
-Reviewed-by: Archie Pusaka <apusaka@chromium.org>
+[  151.905804] ==================================================================
+[  151.907120] BUG: KASAN: out-of-bounds in scan_block+0x58/0x170
+[  151.908773] Read at addr f7ff0000c0074eb0 by task kmemleak/138
+[  151.909656] Pointer tag: [f7], memory tag: [fe]
+[  151.910195]
+[  151.910876] CPU: 7 PID: 138 Comm: kmemleak Not tainted 5.14.0-rc2-00001-g8cae8cd89f05-dirty #134
+[  151.912085] Hardware name: linux,dummy-virt (DT)
+[  151.912868] Call trace:
+[  151.913211]  dump_backtrace+0x0/0x1b0
+[  151.913796]  show_stack+0x1c/0x30
+[  151.914248]  dump_stack_lvl+0x68/0x84
+[  151.914778]  print_address_description+0x7c/0x2b4
+[  151.915340]  kasan_report+0x138/0x38c
+[  151.915804]  __do_kernel_fault+0x190/0x1c4
+[  151.916386]  do_tag_check_fault+0x78/0x90
+[  151.916856]  do_mem_abort+0x44/0xb4
+[  151.917308]  el1_abort+0x40/0x60
+[  151.917754]  el1h_64_sync_handler+0xb4/0xd0
+[  151.918270]  el1h_64_sync+0x78/0x7c
+[  151.918714]  scan_block+0x58/0x170
+[  151.919157]  scan_gray_list+0xdc/0x1a0
+[  151.919626]  kmemleak_scan+0x2ac/0x560
+[  151.920129]  kmemleak_scan_thread+0xb0/0xe0
+[  151.920635]  kthread+0x154/0x160
+[  151.921115]  ret_from_fork+0x10/0x18
+[  151.921717]
+[  151.922077] Allocated by task 0:
+[  151.922523]  kasan_save_stack+0x2c/0x60
+[  151.923099]  __kasan_kmalloc+0xec/0x104
+[  151.923502]  __kmalloc+0x224/0x3c4
+[  151.924172]  __register_sysctl_paths+0x200/0x290
+[  151.924709]  register_sysctl_table+0x2c/0x40
+[  151.925175]  sysctl_init+0x20/0x34
+[  151.925665]  proc_sys_init+0x3c/0x48
+[  151.926136]  proc_root_init+0x80/0x9c
+[  151.926547]  start_kernel+0x648/0x6a4
+[  151.926987]  __primary_switched+0xc0/0xc8
+[  151.927557]
+[  151.927994] Freed by task 0:
+[  151.928340]  kasan_save_stack+0x2c/0x60
+[  151.928766]  kasan_set_track+0x2c/0x40
+[  151.929173]  kasan_set_free_info+0x44/0x54
+[  151.929568]  ____kasan_slab_free.constprop.0+0x150/0x1b0
+[  151.930063]  __kasan_slab_free+0x14/0x20
+[  151.930449]  slab_free_freelist_hook+0xa4/0x1fc
+[  151.930924]  kfree+0x1e8/0x30c
+[  151.931285]  put_fs_context+0x124/0x220
+[  151.931731]  vfs_kern_mount.part.0+0x60/0xd4
+[  151.932280]  kern_mount+0x24/0x4c
+[  151.932686]  bdev_cache_init+0x70/0x9c
+[  151.933122]  vfs_caches_init+0xdc/0xf4
+[  151.933578]  start_kernel+0x638/0x6a4
+[  151.934014]  __primary_switched+0xc0/0xc8
+[  151.934478]
+[  151.934757] The buggy address belongs to the object at ffff0000c0074e00
+[  151.934757]  which belongs to the cache kmalloc-256 of size 256
+[  151.935744] The buggy address is located 176 bytes inside of
+[  151.935744]  256-byte region [ffff0000c0074e00, ffff0000c0074f00)
+[  151.936702] The buggy address belongs to the page:
+[  151.937378] page:(____ptrval____) refcount:1 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x100074
+[  151.938682] head:(____ptrval____) order:2 compound_mapcount:0 compound_pincount:0
+[  151.939440] flags: 0xbfffc0000010200(slab|head|node=0|zone=2|lastcpupid=0xffff|kasantag=0x0)
+[  151.940886] raw: 0bfffc0000010200 0000000000000000 dead000000000122 f5ff0000c0002300
+[  151.941634] raw: 0000000000000000 0000000000200020 00000001ffffffff 0000000000000000
+[  151.942353] page dumped because: kasan: bad access detected
+[  151.942923]
+[  151.943214] Memory state around the buggy address:
+[  151.943896]  ffff0000c0074c00: f0 f0 f0 f0 f0 f0 f0 f0 f0 fe fe fe fe fe fe fe
+[  151.944857]  ffff0000c0074d00: fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe
+[  151.945892] >ffff0000c0074e00: f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 f7 fe fe fe fe fe
+[  151.946407]                                                     ^
+[  151.946939]  ffff0000c0074f00: fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe fe
+[  151.947445]  ffff0000c0075000: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[  151.947999] ==================================================================
+[  151.948524] Disabling lock debugging due to kernel taint
+[  156.434569] kmemleak: 181 new suspected memory leaks (see /sys/kernel/debug/kmemleak)
+
+Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Acked-by: Catalin Marinas <catalin.marinas@arm.com>
+Cc: Marco Elver <elver@google.com>
+Cc: Andrey Konovalov <andreyknvl@gmail.com>
 ---
- drivers/bluetooth/btusb.c | 25 ++++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ mm/kmemleak.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index b1a05bb9f4bf..115c01150c02 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -585,6 +585,7 @@ struct btusb_data {
- 	int suspend_count;
- 
- 	int (*recv_event)(struct hci_dev *hdev, struct sk_buff *skb);
-+	int (*recv_acl)(struct hci_dev *hdev, struct sk_buff *skb);
- 	int (*recv_bulk)(struct btusb_data *data, void *buffer, int count);
- 
- 	int (*setup_on_usb)(struct hci_dev *hdev);
-@@ -792,7 +793,7 @@ static int btusb_recv_bulk(struct btusb_data *data, void *buffer, int count)
- 
- 		if (!hci_skb_expect(skb)) {
- 			/* Complete frame */
--			hci_recv_frame(data->hdev, skb);
-+			data->recv_acl(data->hdev, skb);
- 			skb = NULL;
- 		}
- 	}
-@@ -3887,6 +3888,25 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	return 0;
+diff --git a/mm/kmemleak.c b/mm/kmemleak.c
+index 228a2fbe0657..73d46d16d575 100644
+--- a/mm/kmemleak.c
++++ b/mm/kmemleak.c
+@@ -290,7 +290,7 @@ static void hex_dump_object(struct seq_file *seq,
+ 	warn_or_seq_printf(seq, "  hex dump (first %zu bytes):\n", len);
+ 	kasan_disable_current();
+ 	warn_or_seq_hex_dump(seq, DUMP_PREFIX_NONE, HEX_ROW_SIZE,
+-			     HEX_GROUP_SIZE, ptr, len, HEX_ASCII);
++			     HEX_GROUP_SIZE, kasan_reset_tag((void *)ptr), len, HEX_ASCII);
+ 	kasan_enable_current();
  }
  
-+static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
-+{
-+	struct btusb_data *data = hci_get_drvdata(hdev);
-+	u16 handle = le16_to_cpu(hci_acl_hdr(skb)->handle);
-+
-+	switch (handle) {
-+	case 0xfc6f:		/* Firmware dump from device */
-+		/* When the firmware hangs, the device can no longer
-+		 * suspend and thus disable auto-suspend.
-+		 */
-+		usb_disable_autosuspend(data->udev);
-+	case 0x05ff:		/* Firmware debug logging 1 */
-+	case 0x05fe:		/* Firmware debug logging 2 */
-+		return hci_recv_diag(hdev, skb);
-+	}
-+
-+	return hci_recv_frame(hdev, skb);
-+}
-+
- MODULE_FIRMWARE(FIRMWARE_MT7663);
- MODULE_FIRMWARE(FIRMWARE_MT7668);
+@@ -1171,7 +1171,7 @@ static bool update_checksum(struct kmemleak_object *object)
  
-@@ -4590,6 +4610,8 @@ static int btusb_probe(struct usb_interface *intf,
- 		data->recv_bulk = btusb_recv_bulk;
- 	}
+ 	kasan_disable_current();
+ 	kcsan_disable_current();
+-	object->checksum = crc32(0, (void *)object->pointer, object->size);
++	object->checksum = crc32(0, kasan_reset_tag((void *)object->pointer), object->size);
+ 	kasan_enable_current();
+ 	kcsan_enable_current();
  
-+	data->recv_acl = hci_recv_frame;
-+
- 	hdev = hci_alloc_dev();
- 	if (!hdev)
- 		return -ENOMEM;
-@@ -4717,6 +4739,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->shutdown = btusb_mtk_shutdown;
- 		hdev->manufacturer = 70;
- 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
-+		data->recv_acl = btusb_recv_acl_mtk;
- 	}
+@@ -1246,7 +1246,7 @@ static void scan_block(void *_start, void *_end,
+ 			break;
  
- 	if (id->driver_info & BTUSB_SWAVE) {
+ 		kasan_disable_current();
+-		pointer = *ptr;
++		pointer = *(unsigned long *)kasan_reset_tag((void *)ptr);
+ 		kasan_enable_current();
+ 
+ 		untagged_ptr = (unsigned long)kasan_reset_tag((void *)pointer);
 -- 
 2.18.0
 _______________________________________________
