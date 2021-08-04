@@ -7,55 +7,55 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F21AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:24:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1618DC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E79A660F38
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:24:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E79A660F38
+	by mail.kernel.org (Postfix) with ESMTPS id D202460F10
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D202460F10
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fiOFr8cTzgCsR+SPrRq7X1jKiuY82nHdirpyVhGGzeU=; b=s1UnqF5H2wzfEA
-	EtlCkTv9nbi8i95PkpJAUbRTVhwt9dLUlhh4UIc1vyjTCNuyg7YWJ7S3j1QnoawA1sjXcs7Eab5/z
-	qeKqrQTUAWpVJ2myxqWBNd80CPcA9/zoRvfStk11YeuJAELvrSAVrKVo1Pk0zLrU2sONHxksdKIPj
-	vklXsMwJEXD3n8WVXwfKVaH9W0bIgjn9pbugQQHt/HhQ0QnVahU/Ya5ZivcMC67rl6XRhwXbsmLkD
-	u9+tNuCQ/S3ELJYevDnaonXxCFibfx9eRW9QDMpPD/CnfHdX/UIG9cAIO0BA+dmEXhEjWKnJYDXhT
-	TZIjOxXpmVmNPULUEHGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fiOFr8cTzgCsR+SPrRq7X1jKiuY82nHdirpyVhGGzeU=; b=XA9HcHqCFsYJwL
+	3Xf8QtJtE4Meu2OZ/bmC7DNe2Jk/I5V55zatSy5d/ozwt5HOk4Sw13rGdc6jvx/AbuAYKWQNtiLPn
+	Nx//WpI2p8VmITCHgVCnll6KoRoitH45qhnsNF6/pIBNzbeVnIDJ/Sm/kfnWSaAQF2Pl5vq19EhyX
+	liEMw9oJuUXwwHx2fX4wtYrpEypolS1LMlcRFIkrHBXx7zAVI0a3/H5vAGmp2+rDBG4brFQuyfFbu
+	phPj8WnXoBlHKa8tGjtdCTMBqr7HlNPJew6ppQymnaDLF+W61QxH5Qh9gZI+4QG5P2OPYGldce1kB
+	Vxd4BGIQjvvzDHtWSk1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBD7x-005PP9-CV; Wed, 04 Aug 2021 09:23:53 +0000
+	id 1mBD8y-005Pox-AE; Wed, 04 Aug 2021 09:24:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBCxa-005LLW-FI
- for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 09:13:12 +0000
-X-UUID: bc713e8fb21a44efa15b501ff0450539-20210804
+ id 1mBCyz-005Lme-Fv
+ for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 09:14:39 +0000
+X-UUID: 2d8dc52edb974e96b3223fee9ad24da8-20210804
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
  bh=HqckSUEhQnIEJZML7gKBR32WPFvGve2OpyeKq4HCINA=; 
- b=SYMaQoot2mKCxOG82Sx7rKTom7CEVtCGNW4KjcwzDXVpkIKtAe8eRvx7wajFmiD/XD5vqMX2lrvgGRKcPrRV1b4jT5cjNcXHZiELYAm7FLnM/jyqsjTYJ73Cm6hRNCZyXrC4AvSEiOl2SY5FiOmEQnLPE3MMv8CRxUSD5zlDT6o=;
-X-UUID: bc713e8fb21a44efa15b501ff0450539-20210804
+ b=UlnAttP29JxHHoZDuMeV6GvesEz2cY4hVKHMP8b1CUqLIVumN/1mjuT3AqhYDZmb34bEKMexrxfuTic2zURCKfgJcGBH0CPFrsh38Q2VWk8LUHpCz5Q4w6GrAYpf5LWUYS5SPpNokEh3JtSzu/SCQZShIlWyYas53b/RvEPerHU=;
+X-UUID: 2d8dc52edb974e96b3223fee9ad24da8-20210804
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <mark-yw.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 438612044; Wed, 04 Aug 2021 02:13:06 -0700
+ with ESMTP id 1222938136; Wed, 04 Aug 2021 02:14:34 -0700
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 02:06:56 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Aug 2021 02:05:56 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 17:06:54 +0800
+ 15.0.1497.2; Wed, 4 Aug 2021 17:05:48 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 4 Aug 2021 17:06:54 +0800
+ Frontend Transport; Wed, 4 Aug 2021 17:05:48 +0800
 From: <mark-yw.chen@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
@@ -66,14 +66,16 @@ CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
  <mark-yw.chen@mediatek.com>
 Subject: [PATCH v5 2/2] Bluetooth: btusb: Support Bluetooth Reset for Mediatek
  Chip(MT7921)
-Date: Wed, 4 Aug 2021 17:06:47 +0800
-Message-ID: <20210804090647.12193-1-mark-yw.chen@mediatek.com>
+Date: Wed, 4 Aug 2021 17:03:16 +0800
+Message-ID: <20210804090316.12080-2-mark-yw.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
+References: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_021310_599157_367F3B39 
-X-CRM114-Status: GOOD (  17.57  )
+X-CRM114-CacheID: sfid-20210804_021437_594295_F87238ED 
+X-CRM114-Status: GOOD (  17.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
