@@ -2,74 +2,97 @@ Return-Path: <SRS0=9YCi=M3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C428C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 16:22:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8C03C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 16:59:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E08F361002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 16:22:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E08F361002
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7952360F22
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 16:59:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7952360F22
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5sR7Q2gwvRPJ3k8wiciLK4YuP6rVBt0oeWUSvJ78Wh4=; b=Zevi8RPKRnHY78mSQH2ZW3izbx
-	pPSxNSEU47kN44qLOzNrz/VwYNW1B4H+6oYhEPG7mIJjC0wKy8eff9avmSTqqD5QnrdqxvkHYULrY
-	O07CLCMSuuRI/vFVBHwvrgvWE1ccIwUGsJbqzFc3YDB6drjKxq8W5Dxti8zCIsM/lpg7tMjGuWbgR
-	2nQE5cZGVgtV7flaSM3dM33AImRLEHjbLJx5TuXwug217TOr0XBHgQHNl8EZznMgSjoHmuf0I0mFj
-	Z9uj7xyGunTkhz1vObGNBK9DvDUOr4WnSwX8VS8bbgeW7hGjLYNKNjB9hhKdyMuopW90CT5qkvpCG
-	7asyLeHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=YTjfd9Z0B75U3CZCI1pNNXOaWt9PGrqx4t+k4TfPIno=; b=BFiOpsizcZzf6Izn1RKwrl24wT
+	yPnZ8oesGlXtfJGrks63ykTbdMQugA/V7AUuTYvjF4vE5uFbK8yiMJe5sxQpblb7iuDKG18lYkPI4
+	8ASGEJoAZ0CPGrdtNA2gIWqz/KCnPZYMJpxVmz7FseJWQKBeNGfo03qpg2+OUuNiCLZIYkuwuPBJd
+	GOUmCLJ+crhqrpJUKp3Jt8HTzhSQcYxa5jQOp10ko/SChqLTkBRx96qEPsnKJO7MkkD6tHIdLKElG
+	anfxWSljtfg+7N5UU7pUb/1pZ0olE6C1466LyKeox7yucy+jmENebdkow0/w4gu1fWk7jH1vJRAhe
+	7qcnH0WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBJeR-006kTX-SQ; Wed, 04 Aug 2021 16:21:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mBKEP-006q33-4l; Wed, 04 Aug 2021 16:59:01 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBJeP-006kT2-4H
- for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 16:21:50 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E438860F94;
- Wed,  4 Aug 2021 16:21:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628094108;
- bh=3KghkMAaEVvO0bpaXEGPMyBaiRpeQXsRfgm2tvbKbFc=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=etP3HeEVLchoQYPkz3OdxNNwoQofy2/aGrtIeOZGh2QzxVAcfDYwx22PX+X3JT3Qn
- lskhxWVyibhOmVbaxw5EzjmndGfFD5/GjZjdrerWa/SOmaG/ajlIiFIIBEy/cYVskr
- Q+k4AtYTnndrzra1dR/j7q83T4kM/syMtjFA88pLlkn18DAAAVmw18heD4clqEINxT
- KK3+RRYNDjJAZPyPtMzJvY4AqwBqhKST4nh9M8B7jjdIhy/IZF/mQamW2bW65srG9M
- pzL31t1SEcYTDxMvWvjgjrV2lEz1/pd4F2ws9zu2tbP6QT4cFlPDwurEXbPTiBjvdj
- N4Gehi8pjP3kg==
-Date: Wed, 4 Aug 2021 18:21:43 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: YN Chen <YN.Chen@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- Leon Yen <Leon.Yen@mediatek.com>,
- Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
- Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
- Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>,
- Stella Chang <Stella.Chang@mediatek.com>, jemele@google.com,
- yenlinlai@google.com, linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2] mt76: mt7921: enable VO tx aggregation
-Message-ID: <YQq+lxbs7SlKt87h@lore-desk>
-References: <889fc1f28a8402f82cb83243af4916c3311c3eb1.1628072837.git.deren.wu@mediatek.com>
+ id 1mBKED-006q1R-Mg; Wed, 04 Aug 2021 16:58:51 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id
+ o7-20020a05600c5107b0290257f956e02dso4391046wms.1; 
+ Wed, 04 Aug 2021 09:58:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=3Ssyrr/LekuqyfoFP6rWy6sS/bB/kXsH0XIHqq6qrRA=;
+ b=d6yEoAllZGCIiIueIGkiRtizcnZJvJZz/7grSWi60dtuThwbzCP0txQSI6PW24vBof
+ ujuku+sbZ68B5JTfrq6BT3/8UTDqIur4gqE10o6M4zIOLKbvrhAg1h7wozS5Wkd1Fwpq
+ oKkBNOOG780dSz0LDPznyhNlqAbwM9xh7fX+dLqS6F8FaEs88//3x20aubIhfqHYVneQ
+ fJq0dPwibQlpflo6yKIVqaqRAXWgVxlgMLj3mICKTVxcFq19v8K8uAdgAwmL+DWD3WMX
+ W4WhBAE/PhnqjBMDHkCsPVbaFJB7FHjHfHCPIVHud4TGPFAKiOqPzyKXKEwA53BHJgYB
+ HKEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3Ssyrr/LekuqyfoFP6rWy6sS/bB/kXsH0XIHqq6qrRA=;
+ b=WogLpmmMC/r4EdD+9ULFFynU1hqACioO1Pb+uhS2EgVblO3nv2CPji0ZexBw6QKdCk
+ cet/W+ois2T0MRmFfeLxndwFXBWLECZmnpM+d1wEFcys2GgJWtHLELktYjlM1ab+zsjy
+ EhzabvlaMUkEJ1lghouT2WcWmZsdUdY/qcpzsQLvfKo1l6HFGNXWgS0+Jxe9/bQuM0wW
+ Npt6RgXvXZjxhmuflWr4xR/GBgLTMFl2p5mqaozu3suNt2eEqXmBqnXozuHTqHQGlVTQ
+ ov8fyNU5gcTj6+Ea07xwjsB+BuK7lUpFF1eaXWUaYO4RgodBvghjBYLgjDbjdXDl0iWx
+ ladQ==
+X-Gm-Message-State: AOAM530z6odCBUXOFtLXfdRKxhCBX4XEWrGT4n9EmdSFawoBEgUn5dby
+ nPL0lSwbP47ukr0kQDlJFxA=
+X-Google-Smtp-Source: ABdhPJwafgMJoBvwzw0+RnBkoe8PPw1by0O0pbkbU82e5MFA8Z4ROKKfNhJh/lAx6gweEKQ7LWzKjA==
+X-Received: by 2002:a05:600c:acd:: with SMTP id
+ c13mr526867wmr.189.1628096328471; 
+ Wed, 04 Aug 2021 09:58:48 -0700 (PDT)
+Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
+ [89.6.132.55])
+ by smtp.gmail.com with ESMTPSA id q5sm3428112wrx.33.2021.08.04.09.58.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Aug 2021 09:58:48 -0700 (PDT)
+Subject: Re: [v15] dt-bindings: ARM: Mediatek: Add mmsys document binding for
+ MT8192
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210802025839.16763-1-chun-jie.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <aa0602cb-c4f3-53e0-7ce4-47e9eabe84ee@gmail.com>
+Date: Wed, 4 Aug 2021 18:58:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <889fc1f28a8402f82cb83243af4916c3311c3eb1.1628072837.git.deren.wu@mediatek.com>
+In-Reply-To: <20210802025839.16763-1-chun-jie.chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_092149_232147_F83DF52D 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20210804_095849_796981_0C58D069 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,84 +104,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4680067809017733307=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Rob,
 
---===============4680067809017733307==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="vNJtZXllMJRnjY3o"
-Content-Disposition: inline
-
-
---vNJtZXllMJRnjY3o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Deren Wu <deren.wu@mediatek.com>
->=20
-> Avoid throughput drop in VO streaming, enable TX BA by default.
-
-802.11 ampdu is disabled for VO traffic in order to avoid introducing delay=
- I guess.
-
-Regards,
-Lorenzo
-
->=20
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+On 02/08/2021 04:58, Chun-Jie Chen wrote:
+> This patch adds the mmsys document binding for MT8192 SoC.
+> 
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 > ---
-> v1 -> v2 : commit format adjustment
+> This patch is based on 5.14-rc1 and [1].
+> 
+> Due to mmsys binding document has been converted to YAML format in [1],
+> so resend the patch in [2].
+> 
+> [1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=485165
+> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20210726105719.15793-3-chun-jie.chen@mediatek.com/
 > ---
->  drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 2 --
->  1 file changed, 2 deletions(-)
->=20
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
-t/wireless/mediatek/mt76/mt7921/mac.c
-> index 296e0f7a1d14..1be1e07ae786 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-> @@ -913,8 +913,6 @@ mt7921_tx_check_aggr(struct ieee80211_sta *sta, __le3=
-2 *txwi)
->  		return;
-> =20
->  	tid =3D FIELD_GET(MT_TXD1_TID, le32_to_cpu(txwi[1]));
-> -	if (tid >=3D 6) /* skip VO queue */
-> -		return;
-> =20
->  	val =3D le32_to_cpu(txwi[2]);
->  	fc =3D FIELD_GET(MT_TXD2_FRAME_TYPE, val) << 2 |
-> --=20
-> 2.25.1
->=20
+>  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml         | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> index 2d4ff0ce387b..f9ffa5b703a5 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+> @@ -29,6 +29,7 @@ properties:
+>                - mediatek,mt8167-mmsys
+>                - mediatek,mt8173-mmsys
+>                - mediatek,mt8183-mmsys
+> +              - mediatek,mt8192-mmsys
+>                - mediatek,mt8365-mmsys
+>            - const: syscon
+>        - items:
+> 
 
---vNJtZXllMJRnjY3o
-Content-Type: application/pgp-signature; name="signature.asc"
+This patch has a dependency to [1] which you merged in your tree. Would you mind
+to take this one as well?
 
------BEGIN PGP SIGNATURE-----
+Acked-by: Matthias Brugger <matthias.bgg@gmail.com>
 
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYQq+lAAKCRA6cBh0uS2t
-rOWPAQD9D952emRHoqvknYacCFHvccY6iDjStYHSolG6jiE/VQEAq7k5f4u7Sh58
-MG0GaWDIbZ4/javYeZ2HrTAQF+R+wAA=
-=fERJ
------END PGP SIGNATURE-----
+Thanks,
+Matthias
 
---vNJtZXllMJRnjY3o--
-
-
---===============4680067809017733307==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4680067809017733307==--
-
