@@ -2,59 +2,59 @@ Return-Path: <SRS0=9YCi=M3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BE5CEC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61C12C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:23:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7BE3160F38
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:22:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7BE3160F38
+	by mail.kernel.org (Postfix) with ESMTPS id 20B9660F38
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:23:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 20B9660F38
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XpMJX0eAtWkFnLJ+/P0pbFNHeAGw95kM6s4TuqXDJyY=; b=OCFcOaYgIY731n
-	PPWFv53y/Wlrp1Vjhd1X/pc8Zbq4fVtv/Hupxl7aB203G8w1D+tB0EUtuNboCaTFlErKFLXa0KDJ+
-	j7+4aOfz1R01CED/DSI8g5v4YVkOvWO+GpgTCbvVdhtjZ8z2gS0GWIiBpHvWXycXSu/jsAKcPhkco
-	UNRGlE0UHi4DgX4e7mPX81tKcN/u+VS/B/sDL9FPm5fFDzFGv12dbUciJwmV8f/Ywro8ID+pQ86uv
-	D/EtsqjrFa7mZCqoIcKIVSG+zCXZsIZ0ND/bihVaUQHh8AFUlQ3hZMqwunpgxllW/ALShoU0B7tvZ
-	8G3knsNb5gNugWZ36ZBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=49M/Zo0/HOViOB7UzxOjbtTwbcaoQtBqSIR2Gejz758=; b=u3/bv1gcXp7IkV
+	EjH+WdmzC6Dja9Ldrv19NebNjzsYMgVkQPWLB7NaqWR9Hwoxr3lhhmRGiz0Tg+ul3HGhDqY1TYhNe
+	ZlbhKc+v3SmhU82gW7vEX8jovuqUAb2rWi4ZSReQ9XFmKvLqU1/dMPA2+ocBzluUheGbi2FgvPf/H
+	7d8dyWzVslliiXEVXfnwxIh4IVuqmfSqsmJVPHY3FIonoRzx0u0EXqu5c88eFJ3WsgqOcf2jxk2Vf
+	X4EEeW9iIvVuhxe3fPv6HvOgc/y5cUQ2WhmhITwseet1GEnCT4ClHrnUTPWhRLT7utqhxi3Wj2cbm
+	UksxMCPiIoCmUfNDtHPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBD6b-005Omg-Ds; Wed, 04 Aug 2021 09:22:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mBD7j-005PGp-KJ; Wed, 04 Aug 2021 09:23:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBCut-005KUS-2r; Wed, 04 Aug 2021 09:10:24 +0000
-X-UUID: c9dd70394264400a9f3c8be708d2d07e-20210804
+ id 1mBCuu-005KVe-5p; Wed, 04 Aug 2021 09:10:25 +0000
+X-UUID: 2b751f22f78a4446a4aeacb167e69142-20210804
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=nbo7vz4RLod6c4i8MJeHJL0Wcz1XEBh5veqoog70Kpg=; 
- b=Ne/f3qv221sdvVTkSEFAnNzIrZPLliB/W0lrCGx78oRnFTBF9Byi8Nxw46RC7b1ubOK5BbSODHd2EGmSU0cxsJQ91jIVHmF6VVJmUdNjzAhya1wqjl98HyGT3yMm6M8yXIBTxJGFK8iMJZTMzXLS5Akwbk7h3SUXyPPFl77dQYo=;
-X-UUID: c9dd70394264400a9f3c8be708d2d07e-20210804
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=9LDpHozNn7dKIzhq2mSS8+9jqY4udNOKQJbJu5wzkcw=; 
+ b=u2U5oeYBiJDk9EpG7p6UJHczFdwhffrJqKAOzlG5TgdUigQkLd2sxGy/yEw/LQrD6C+45bKUSB9oG1uNUescaiJjHvhDqKSQ/We98Bkb4iD3hQxvqr7/HVVwDNXenDZO7hxb4xb6lJAyT9s9JvJsCQGXa2dWLbUR9FlKcq0721w=;
+X-UUID: 2b751f22f78a4446a4aeacb167e69142-20210804
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <kuan-ying.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1581526916; Wed, 04 Aug 2021 02:10:18 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
+ with ESMTP id 2028046496; Wed, 04 Aug 2021 02:10:21 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 02:10:17 -0700
+ 15.0.1497.2; Wed, 4 Aug 2021 02:10:19 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 17:10:15 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 4 Aug 2021 17:10:18 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 4 Aug 2021 17:10:15 +0800
+ Frontend Transport; Wed, 4 Aug 2021 17:10:18 +0800
 From: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
 To: Nicholas Tang <nicholas.tang@mediatek.com>, Andrew Yang
  <andrew.yang@mediatek.com>, Andrey Konovalov <andreyknvl@gmail.com>, "Andrey
@@ -66,15 +66,17 @@ CC: <kasan-dev@googlegroups.com>, <linux-mm@kvack.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, Kuan-Ying Lee
  <Kuan-Ying.Lee@mediatek.com>
-Subject: [PATCH v3 0/2] kasan: reset tag when accessing invalid metadata
-Date: Wed, 4 Aug 2021 17:09:55 +0800
-Message-ID: <20210804090957.12393-1-Kuan-Ying.Lee@mediatek.com>
+Subject: [PATCH v3 2/2] kasan, slub: reset tag when printing address
+Date: Wed, 4 Aug 2021 17:09:57 +0800
+Message-ID: <20210804090957.12393-3-Kuan-Ying.Lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210804090957.12393-1-Kuan-Ying.Lee@mediatek.com>
+References: <20210804090957.12393-1-Kuan-Ying.Lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_021023_204124_8E222ED3 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20210804_021024_277571_08574C83 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,25 +93,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-With hardware tag-based kasan enabled, we reset the tag
-when we access metadata to avoid from false alarm.
+The address still includes the tags when it is printed.
+With hardware tag-based kasan enabled, we will get a
+false positive KASAN issue when we access metadata.
 
-Changes since v3:
- - Remove inappropriate suggested-by
+Reset the tag before we access the metadata.
 
-Changes since v2:
- - Refine the commit message in detail.
- - Thanks Andrey's explanation about false alarm
-   of kmemleak.
+Fixes: aa1ef4d7b3f6 ("kasan, mm: reset tags when accessing metadata")
+Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+Reviewed-by: Marco Elver <elver@google.com>
+---
+ mm/slub.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Kuan-Ying Lee (2):
-  kasan, kmemleak: reset tags when scanning block
-  kasan, slub: reset tag when printing address
-
- mm/kmemleak.c | 6 +++---
- mm/slub.c     | 4 ++--
- 2 files changed, 5 insertions(+), 5 deletions(-)
-
+diff --git a/mm/slub.c b/mm/slub.c
+index b6c5205252eb..f77d8cd79ef7 100644
+--- a/mm/slub.c
++++ b/mm/slub.c
+@@ -576,8 +576,8 @@ static void print_section(char *level, char *text, u8 *addr,
+ 			  unsigned int length)
+ {
+ 	metadata_access_enable();
+-	print_hex_dump(level, kasan_reset_tag(text), DUMP_PREFIX_ADDRESS,
+-			16, 1, addr, length, 1);
++	print_hex_dump(level, text, DUMP_PREFIX_ADDRESS,
++			16, 1, kasan_reset_tag((void *)addr), length, 1);
+ 	metadata_access_disable();
+ }
+ 
 -- 
 2.18.0
 _______________________________________________
