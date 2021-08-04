@@ -2,87 +2,96 @@ Return-Path: <SRS0=9YCi=M3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2280BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 05:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5779C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 07:31:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D708D60F10
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 05:31:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D708D60F10
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AC1FF60EB9
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 07:31:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AC1FF60EB9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X2gzVva8sQbSt3aQThB1yie8FZuUuyFDiG16i/qbiPM=; b=bpTdFWre9XqfOB
-	bAb1OEtg6C7A4ojzOPwcIgY/dGeEQH7htWBaxBRtQ24XPU4EW+xl/DpdmV0BuvqQ1pOF71eOhtK/o
-	BiD24CEH6vapzcZgkqoyXg7hRMr3C4/3wYzS2tPRKxSckfjipvkK3/dUXj6CYXXgY23ohFehUq1Qg
-	/9gLTiuVoPTlGSzRh2xyKSQzL/6XaxyJ8cJ9rC9bJiF1e3WKDOmN/qoh09MPyzdo0GDPnM0l50K3e
-	T7l9MpYtRkc7IRw9cy7NaZUQiHv2dfrFENVXYykp1jIb/JzN4/aCLLFe6nA4K+T/XsQMwZpgkYbcx
-	b/Q+C2wbxgU+FT03D+Lw==;
+	List-Owner; bh=B+KX1Nd0GvvqSCnUlbt8MJNYNXb+5WWQZh66+ho0mEg=; b=pfD2EzdZiybCmY
+	Aia6RXeH2sslYaxRwygK+F+Ha3XN/XqtxOqRYTcDfcSFI0tee1ERsvfg68I93VMPNQ/lchMAhAcv4
+	AEBASWpNCQBmMNab8cnwI7hHHbAPa+9d/0C0bHrfWckCrRbe1Jyt4mZMTqnNRxprE5jXfINDw/vZS
+	LDttGnMGb1VQvEPfi6Um6Y2NS1Fu6BBm1fJyQkoItURAJmIsxoii8or6aBvAuDkY30qpis8dmg7kJ
+	MUexcr55/Loy1K5puU9s692c3JMHOIrhzW8luylenMfEiQbzmn2exUuq6XHeJ0n7dsWYDGDTIUgx4
+	3Xr64Dbbt9vQ+pgqAtAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mB9V1-004tp9-Sf; Wed, 04 Aug 2021 05:31:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mBBMd-0052Cs-W2; Wed, 04 Aug 2021 07:30:56 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mB9Up-004tnn-9a; Wed, 04 Aug 2021 05:31:16 +0000
-X-UUID: 9484f596abef43aaa9a9d5c0e9822622-20210803
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nbXYjxVU9fU2eATKlueXsHPNx3eT6r3T8BtKOjcV62g=; 
- b=mFjAanG1rh7tYIHOmzFL1ww1AWqbE5OSDhfgjbm0wj9iDsD/L0WlIY74j1ch6Ta5PB/4G2Sx7Q0NT8h0P/a+8KPbQExMWYbr4UconeimS9ymV/t0Hf1vsQ6pUWVitBt7y2mQudTvnyiR0g6I1S5w5FkWCXZ8XbgPLo93Crw5320=;
-X-UUID: 9484f596abef43aaa9a9d5c0e9822622-20210803
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <kuan-ying.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1751798495; Tue, 03 Aug 2021 22:31:11 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 3 Aug 2021 22:31:09 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 13:31:08 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 4 Aug 2021 13:31:08 +0800
-Message-ID: <bbba73eb31ac508792d2b8e0971229f3660e7847.camel@mediatek.com>
-Subject: Re: [PATCH 1/2] kasan, mm: reset tag when access metadata
-From: kuan.ying lee <kuan-ying.lee@mediatek.com>
-To: Andrey Konovalov <andreyknvl@gmail.com>, Catalin Marinas
- <catalin.marinas@arm.com>
-CC: Marco Elver <elver@google.com>, Nicholas Tang
- <nicholas.tang@mediatek.com>, Andrew Yang <andrew.yang@mediatek.com>, "Andrey
- Ryabinin" <ryabinin.a.a@gmail.com>, Alexander Potapenko <glider@google.com>,
- Chinwen Chang <chinwen.chang@mediatek.com>, Andrew Morton
- <akpm@linux-foundation.org>, kasan-dev <kasan-dev@googlegroups.com>, "Linux
- Memory Management List" <linux-mm@kvack.org>, LKML
- <linux-kernel@vger.kernel.org>, Linux ARM
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, <kuan-ying.lee@mediatek.com>
-Date: Wed, 4 Aug 2021 13:31:08 +0800
-In-Reply-To: <CA+fCnZdprormHJHHuEMC07+OnHdC9MLb9PLpBnE1P9TvrVisfw@mail.gmail.com>
-References: <20210727040021.21371-1-Kuan-Ying.Lee@mediatek.com>
- <20210727040021.21371-2-Kuan-Ying.Lee@mediatek.com>
- <CANpmjNM03Pag9OvBBVnWnSBePRxsT+BvZtBwrh_61Qzmvp+dvA@mail.gmail.com>
- <b6b96caf30e62996fa3b75ae8d146c9cc0dcbbf6.camel@mediatek.com>
- <20210727192217.GV13920@arm.com>
- <CA+fCnZdprormHJHHuEMC07+OnHdC9MLb9PLpBnE1P9TvrVisfw@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mBBMO-00528W-8S; Wed, 04 Aug 2021 07:30:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1628062222;
+ bh=P4wBvc85h3fXlWdQcXelaLmQpD4A4GD47g72UVNj57I=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=MY1RIEdV/YTZijOtU6ffuHajpvE/20+zoOy4oMIA9PMA3e8aXwTzaWPC7MBwPQv9v
+ zxZzXV80UaXChtfhqATFIYAKu67BsJ6Bz3v1inyeOEs2eNHmfydh/xW8GT3DvjbbGy
+ U9jSZDDOEcU1R6ZK2AfZFBmrKJZJ899NQx7CctXU=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.147.17] ([217.61.147.17]) by web-mail.gmx.net
+ (3c-app-gmx-bap67.server.lan [172.19.172.67]) (via HTTP); Wed, 4 Aug 2021
+ 09:30:21 +0200
 MIME-Version: 1.0
-X-MTK: N
+Message-ID: <trinity-a5eeacb8-1625-4111-b613-19ee1609b902-1628062221917@3c-app-gmx-bap67>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Yongqiang Niu <yongqiang.niu@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Philipp
+ Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel
+ Vetter <daniel@ffwll.ch>, Jassi Brar <jassisinghbrar@gmail.com>, Yongqiang
+ Niu <yongqiang.niu@mediatek.com>, Fabien Parent <fparent@baylibre.com>,
+ Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, Hsin-Yi Wang
+ <hsinyi@chromium.org>
+Subject: Aw: [PATCH v8, 2/2] soc: mediatek: mmsys: Add mt8192 mmsys routing
+ table
+Date: Wed, 4 Aug 2021 09:30:21 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <1627894773-23872-3-git-send-email-yongqiang.niu@mediatek.com>
+References: <1627894773-23872-1-git-send-email-yongqiang.niu@mediatek.com>
+ <1627894773-23872-3-git-send-email-yongqiang.niu@mediatek.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:FTFMR063lUiqNFEXMYKR9Nt6kBJb+tvRQII2gEh1asf4eB17tIoXkk2zLgq9ZD1OfoZwa
+ zwQa5mpCvFQBtgET6CZ/J7NtfPT9Bk8eILs7hs9zUEJ356V/YkowKCFFYgFuC5vh804RgGRtvI7S
+ nN/4NVGY4SKwh3JwOyAbL5N6eyxGAapF+Qt7UbVMzOun+eMRCx/q2qjqlGp3A92+tmr3Oxt4iFpr
+ WxfpR8duyZViNpCMnmrdQSeLBnDM9/A+UnMfbmH4lXNI18H4pcGPM373s5b5GEWpkg89+mJ5Ihsq
+ mQ=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:pe3B7hYMLN8=:xYFKFGHPzPUBrVYDFk7erl
+ jCyPvToDYyqeGdTfuO5erRCplUODZQ2TuJJTXrNllkHHVX+Q/xgVq0GKWHQV3KLGEreWxpo7d
+ XuU/FRHqPq7uKnltpXonljHTWVPtSv+lp2tPV0+wDrTSU5vYIsrnacPtTmNg2KfT2xbuSKBIJ
+ g35lTXsvY70UqFgAtB5vAwdu6cvSdM1vEZFeBpbdJDDdPdVRnh77ajOPurEJTqVU+MO3PlP6e
+ VkRPJx0RikfPKW7fd6qRXqGal/KDecSIIxzjFCltzjLYdiYF+XRYwOzKeSGR95hMMMggCdMz8
+ iYtXCF1kkmI1b/gGBNPqktDysHJYfO6xC1mUr7zdhtpxS70PkdPdSKP/S/Q2PmzlrXpIPaPdv
+ 7F3/a30PnTmhxNZElXqCoFQJbFirK3s7LfuzbysOw5tuaTZpqF122rvWqEY6z/RdKlKIxsYKW
+ wPieYJYeNVnxgFZkdRfMjwEANhdYzIJkXUaiFwOKT4OydA9m1lie++9HLB7/ew7Irdhr/+2rI
+ 7xhz9zJtLT2d4i/64rW2kLhXWhraE7ZVKhbJtN21MRQ2eGC/VjY1ItEqfKl14UyNEL/CA/1ps
+ FlNKtiSJATQq/OkmLx0fiub23Mve1SBSNWj3XfP8ZsLlAIXg86oaBmnaaTyK3av+huAJ2RRtC
+ uZCpWZVNQUG02nrYcaOWBMtHWW3s4s/QfEcDp6rD05SgwQxnB04FXWgv3u8pDFGevUh4Xiu71
+ iiUOreyBgptkJa63QoxIL6RfHndWbwa8g8Cu+gMb6g4gxL2i7vV5zVXWV2oln6MXZt5fAtt5a
+ Dbie10PssSR6fDvZdVRpeDDnnoQ4EbTxssHUiZY1tjOlujPB48=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210803_223115_390641_44A75A06 
-X-CRM114-Status: GOOD (  35.44  )
+X-CRM114-CacheID: sfid-20210804_003040_643973_F070CF36 
+X-CRM114-Status: UNSURE (   6.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,85 +108,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-07-30 at 16:57 +0200, Andrey Konovalov wrote:
-> On Tue, Jul 27, 2021 at 9:22 PM Catalin Marinas <
-> catalin.marinas@arm.com> wrote:
-> > 
-> > On Tue, Jul 27, 2021 at 04:32:02PM +0800, Kuan-Ying Lee wrote:
-> > > On Tue, 2021-07-27 at 09:10 +0200, Marco Elver wrote:
-> > > > +Cc Catalin
-> > > > 
-> > > > On Tue, 27 Jul 2021 at 06:00, Kuan-Ying Lee <
-> > > > Kuan-Ying.Lee@mediatek.com> wrote:
-> > > > > 
-> > > > > Hardware tag-based KASAN doesn't use compiler
-> > > > > instrumentation, we
-> > > > > can not use kasan_disable_current() to ignore tag check.
-> > > > > 
-> > > > > Thus, we need to reset tags when accessing metadata.
-> > > > > 
-> > > > > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> > > > 
-> > > > This looks reasonable, but the patch title is not saying this
-> > > > is
-> > > > kmemleak, nor does the description say what the problem is.
-> > > > What
-> > > > problem did you encounter? Was it a false positive?
-> > > 
-> > > kmemleak would scan kernel memory to check memory leak.
-> > > When it scans on the invalid slab and dereference, the issue
-> > > will occur like below.
-> > > 
-> > > So I think we should reset the tag before scanning.
-> > > 
-> > > # echo scan > /sys/kernel/debug/kmemleak
-> > > [  151.905804]
-> > > =================================================================
-> > > =
-> > > [  151.907120] BUG: KASAN: out-of-bounds in scan_block+0x58/0x170
-> > > [  151.908773] Read at addr f7ff0000c0074eb0 by task kmemleak/138
-> > > [  151.909656] Pointer tag: [f7], memory tag: [fe]
-> > 
-> > It would be interesting to find out why the tag doesn't match.
-> > Kmemleak
-> > should in principle only scan valid objects that have been
-> > allocated and
-> > the pointer can be safely dereferenced. 0xfe is KASAN_TAG_INVALID,
-> > so it
-> > either goes past the size of the object (into the red zone) or it
-> > still
-> > accesses the object after it was marked as freed but before being
-> > released from kmemleak.
-> > 
-> > With slab, looking at __cache_free(), it calls kasan_slab_free()
-> > before
-> > ___cache_free() -> kmemleak_free_recursive(), so the second
-> > scenario is
-> > possible. With slub, however, slab_free_hook() first releases the
-> > object
-> > from kmemleak before poisoning it. Based on the stack dump, you are
-> > using slub, so it may be that kmemleak goes into the object red
-> > zones.
-> > 
-> > I'd like this clarified before blindly resetting the tag.
-> 
-> AFAIK, kmemleak scans the whole object including the leftover redzone
-> for kmalloc-allocated objects.
-> 
-> Looking at the report, there are 11 0xf7 granules, which amounts to
-> 176 bytes, and the object is allocated from the kmalloc-256 cache. So
-> when kmemleak accesses the last 256-176 bytes, it causes faults, as
-> those are marked with KASAN_KMALLOC_REDZONE == KASAN_TAG_INVALID ==
-> 0xfe.
-> 
-> Generally, resetting tags in kasan_disable/enable_current() section
-> should be fine to suppress MTE faults, provided those sections had
-> been added correctly in the first place.
+Hi
 
-Thanks Andrey for explanation.
-I will refine commit and upload v2.
+can you please test if your device still work after applying this
 
-Thanks.
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210729070549.5514-1-linux@fw-web.de/
+
+and
+
+duplicate value constants in your routes?
+
+e.g. changing
+
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
++		MT8192_DISP_OVL0_2L_MOUT_EN, MT8192_OVL0_MOUT_EN_DISP_RDMA0,
+
+to
+
++		DDP_COMPONENT_OVL_2L0, DDP_COMPONENT_RDMA0,
++		MT8192_DISP_OVL0_2L_MOUT_EN, MT8192_OVL0_MOUT_EN_DISP_RDMA0,
++		MT8192_OVL0_MOUT_EN_DISP_RDMA0
+
+regards Frank
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
