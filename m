@@ -7,55 +7,55 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1618DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED975C432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D202460F10
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D202460F10
+	by mail.kernel.org (Postfix) with ESMTPS id B478460F10
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Aug 2021 09:25:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B478460F10
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fiOFr8cTzgCsR+SPrRq7X1jKiuY82nHdirpyVhGGzeU=; b=XA9HcHqCFsYJwL
-	3Xf8QtJtE4Meu2OZ/bmC7DNe2Jk/I5V55zatSy5d/ozwt5HOk4Sw13rGdc6jvx/AbuAYKWQNtiLPn
-	Nx//WpI2p8VmITCHgVCnll6KoRoitH45qhnsNF6/pIBNzbeVnIDJ/Sm/kfnWSaAQF2Pl5vq19EhyX
-	liEMw9oJuUXwwHx2fX4wtYrpEypolS1LMlcRFIkrHBXx7zAVI0a3/H5vAGmp2+rDBG4brFQuyfFbu
-	phPj8WnXoBlHKa8tGjtdCTMBqr7HlNPJew6ppQymnaDLF+W61QxH5Qh9gZI+4QG5P2OPYGldce1kB
-	Vxd4BGIQjvvzDHtWSk1g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DwcRV505k/JoVTGeCSklzfLSO8Yx218aEckEAlpPdt8=; b=Qz39DyOt82ve9R
+	v9jq0l+TcoSCzKF4CM8l1/txnBUuok0kNiSs4u0kV2W2str82EEwkEpKs8b4nQ8Akg80tTOMvH0X/
+	qQXv74goPII3dBwwGdcd3xU/KZRTL4y4MjSokqD6A8EFs5TkEsoJnax/s21Tut/iMqgHeeu0M2OwC
+	5yNNXwYN7Z2B2wlMzsnJvvMtaHqEdCeRfstO+k80MHeuRfF0Km09GHRC7BlHb9BWRV41zpgS6KrJ6
+	5oOimtF7s/IcdOWBCE3UV75olz8xYe29+FQ/JiW9ImOH5VYAROjAhN5nHtAV4ABCiOxL3p4Bc06HH
+	wAMudnVNeXZjWH1nftPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBD8y-005Pox-AE; Wed, 04 Aug 2021 09:24:56 +0000
+	id 1mBD91-005PqK-CI; Wed, 04 Aug 2021 09:24:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBCyz-005Lme-Fv
- for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 09:14:39 +0000
-X-UUID: 2d8dc52edb974e96b3223fee9ad24da8-20210804
+ id 1mBCz1-005Lme-BN
+ for linux-mediatek@lists.infradead.org; Wed, 04 Aug 2021 09:14:41 +0000
+X-UUID: dd0799ef331d4626b130285427be7d18-20210804
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=HqckSUEhQnIEJZML7gKBR32WPFvGve2OpyeKq4HCINA=; 
- b=UlnAttP29JxHHoZDuMeV6GvesEz2cY4hVKHMP8b1CUqLIVumN/1mjuT3AqhYDZmb34bEKMexrxfuTic2zURCKfgJcGBH0CPFrsh38Q2VWk8LUHpCz5Q4w6GrAYpf5LWUYS5SPpNokEh3JtSzu/SCQZShIlWyYas53b/RvEPerHU=;
-X-UUID: 2d8dc52edb974e96b3223fee9ad24da8-20210804
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=qMuyqvxRBiYB46/70z1+0hjRqH5nGn4b0n9iinVFKzI=; 
+ b=LdxpLceu7sd2kb3etD7hhMlHTSddH7BJLAnMVGS2QOJVScKgspctlE/zk+dHq6KRW9BUxlvBYJEwHCG2vxoK53eKrrhqtAxfiuVUu1Uh1caZvHBoIZ7s94gjQ7CJE+QEw4A46FXGQjt9dLOetamkQbr63F/zVskcnKwhgmhkVws=;
+X-UUID: dd0799ef331d4626b130285427be7d18-20210804
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <mark-yw.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1222938136; Wed, 04 Aug 2021 02:14:34 -0700
+ with ESMTP id 1263410791; Wed, 04 Aug 2021 02:14:34 -0700
 Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 02:05:56 -0700
+ 15.0.1497.2; Wed, 4 Aug 2021 02:05:55 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 4 Aug 2021 17:05:48 +0800
+ 15.0.1497.2; Wed, 4 Aug 2021 17:05:47 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 4 Aug 2021 17:05:48 +0800
+ Frontend Transport; Wed, 4 Aug 2021 17:05:46 +0800
 From: <mark-yw.chen@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
@@ -64,18 +64,15 @@ CC: <chris.lu@mediatek.com>, <will-cy.lee@mediatek.com>,
  <michaelfsun@google.com>, <shawnku@google.com>, <jemele@google.com>,
  <apusaka@google.com>, <mcchou@chromium.org>, mark-yw.chen
  <mark-yw.chen@mediatek.com>
-Subject: [PATCH v5 2/2] Bluetooth: btusb: Support Bluetooth Reset for Mediatek
- Chip(MT7921)
-Date: Wed, 4 Aug 2021 17:03:16 +0800
-Message-ID: <20210804090316.12080-2-mark-yw.chen@mediatek.com>
+Subject: [PATCH v5 1/2] Bluetooth: btusb: Record debug log for Mediatek Chip.
+Date: Wed, 4 Aug 2021 17:03:15 +0800
+Message-ID: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
-References: <20210804090316.12080-1-mark-yw.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210804_021437_594295_F87238ED 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20210804_021439_467366_8129EBCD 
+X-CRM114-Status: GOOD (  19.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,193 +91,134 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
 
-When the firmware hang or command no response, driver can reset the
-bluetooth mcu via USB to recovery it. The reset steps as follows.
+Mediatek Bluetooth controller sends the FW log and FW dump via EP2.
+This patch creates an MTK specified callback(btusb_recv_acl_mtk) to
+replace the original one (hci_recv_frame) when an MTK controller is
+detected. The new callback will separate the firmware dump traffics
+from the ACL data to have them process separately.
 
-1. Cancel USB transfer requests before reset.
-2. It use speicific USB HW Register to reset Bluetooth MCU, at the
-   same time, the USB Endpoint0 still keep alive.
-3. Poll the USB HW register until reset is completed by Endpoint0.
-4. To recovery unexpected USB state and behavior during resetting the
-   Bluetooth MCU, the driver need to reset the USB device for MT7921.
-5. After the reset is completed, the Bluetooth MCU need to re-setup,
-   such as download patch, power-on sequence and etc.
+1. Add a new field (recv_acl) to the btusb_data struct to store
+vendor-specific ACL callback handler.
+2. Add the MTK-specific ACL callback handler (btusb_recv_acl_mtk) to
+process ACL data, debug log, and firmware dump.
+3. The debug log traces LMP/LL events and connection quality reports.
+4. The upper layer can use hci_channel_monitor to receive these
+packets.
+
+Example btmon: firmware debug log.
+1. Enable firmware debug log.
+< HCI Command: Vendor (0x3f|0x005d) plen 4
+        00 00 02 02                                      ....
+> HCI Event: Command Complete (0x0e) plen 8
+      Vendor (0x3f|0x005d) ncmd 1
+        Status: Success (0x00)
+        00 00 02 02                                      ....
+2. Diagnostic packet from controller
+= Vendor Diagnostic (len 500)
+          ff 05 f0 01 fd ff 02 0e 08 01 5d fc 00 00 00 02
+          02 aa aa aa cb e3 f0 15 b0 0c 5f 01 00 d1 0f 33
+          01 7f 00 08 57 61 0c 00 00 00 00 00 23 37 17 00
+          fd ff 00 00 29 60 ff ff b1 56 e8 00 57 40 0a 40
+          39 95 f2 00 47 40 43 00 fc f0 16 00 57 61 0c 00
+          00 00 00 00 23 37 17 00 fd ff 00 00 29 60 ff ff
+          65 95 f2 00 57 40 0a 40 ec d3 fc 00 47 40 3b 00
+          2c f1 17 00 57 61 0c 00 00 00 00 00 23 37 17 00
+          fd ff 00 00 29 60 ff ff 19 d4 fc 00 57 40 76 1c
+          b2 61 01 01 47 40 b3 04 0b 63 18 00 fe ff 02 01
+          04 05 33 8b 9e 08 00 aa aa aa aa aa 27 38 01 02
+          01 00 00 00 02 e0 10 00 20 00 20 00 2a 08 40 00
+          20 00 20 08 2a 08 02 00 40 00 00 01 2e 08 40 00
+          01 67 b0 c2 2e 08 3e 07 ff ff ff ff 40 08 01 00
+          02 00 00 00 34 08 a3 00 00 00 00 00 34 08 a3 00
+          00 00 00 00 35 08 45 01 00 00 00 00 2e 08 40 00
+          01 67 b0 c2 30 35 01 02 00 00 00 00 2c 31 01 00
+          02 00 00 40 2d 19 03 00 00 40 00 00 fd ff 02 0f
+          04 00 01 01 04 aa aa aa aa aa aa aa 57 61 0c 00
+          00 00 00 00 23 46 32 00 01 00 00 00 2f 35 00 02
+          00 00 00 00 29 35 ff 02 00 22 00 00 2d 31 a6 02
+          02 00 00 00 31 6c 40 00 14 63 18 1b 31 6c 40 00
+          14 63 18 23 51 08 53 00 12 63 18 00 2c 35 12 01
+          fe 00 00 00 2b 35 fe 02 02 00 00 00 2f 31 21 00
+          00 00 02 00 75 61 01 00 4c 1b 93 00 79 61 01 00
+          00 00 00 00 12 e3 63 18 20 31 86 01 74 61 68 03
+          00 00 04 00 a1 73 ff 00 b9 01 00 00 a1 73 04 00
+          00 00 00 00 a1 73 00 00 00 00 00 00 a1 73 00 00
+          02 00 00 00 31 6c 40 00 16 63 18 0c 31 6c 40 00
+          16 63 18 1c 77 61 40 00 48 33 40 00 14 e3 63 18
+          40 31 86 01 00 d1 02 c5 07 23 a1 34 73 61 37 02
+          02 00 00 a1
 
 Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
 Reviewed-by: Michael Sun <michaelfsun@google.com>
 Reviewed-by: Archie Pusaka <apusaka@chromium.org>
 ---
- drivers/bluetooth/btusb.c | 129 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 129 insertions(+)
+ drivers/bluetooth/btusb.c | 25 ++++++++++++++++++++++++-
+ 1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 115c01150c02..a4cee8327295 100644
+index b1a05bb9f4bf..115c01150c02 100644
 --- a/drivers/bluetooth/btusb.c
 +++ b/drivers/bluetooth/btusb.c
-@@ -3110,6 +3110,17 @@ static int btusb_shutdown_intel_new(struct hci_dev *hdev)
+@@ -585,6 +585,7 @@ struct btusb_data {
+ 	int suspend_count;
+ 
+ 	int (*recv_event)(struct hci_dev *hdev, struct sk_buff *skb);
++	int (*recv_acl)(struct hci_dev *hdev, struct sk_buff *skb);
+ 	int (*recv_bulk)(struct btusb_data *data, void *buffer, int count);
+ 
+ 	int (*setup_on_usb)(struct hci_dev *hdev);
+@@ -792,7 +793,7 @@ static int btusb_recv_bulk(struct btusb_data *data, void *buffer, int count)
+ 
+ 		if (!hci_skb_expect(skb)) {
+ 			/* Complete frame */
+-			hci_recv_frame(data->hdev, skb);
++			data->recv_acl(data->hdev, skb);
+ 			skb = NULL;
+ 		}
+ 	}
+@@ -3887,6 +3888,25 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
  	return 0;
  }
  
-+/* UHW CR mapping */
-+#define MTK_BT_MISC		0x70002510
-+#define MTK_BT_SUBSYS_RST	0x70002610
-+#define MTK_UDMA_INT_STA_BT	0x74000024
-+#define MTK_UDMA_INT_STA_BT1	0x74000308
-+#define MTK_BT_WDT_STATUS	0x740003A0
-+#define MTK_EP_RST_OPT		0x74011890
-+#define MTK_EP_RST_IN_OUT_OPT	0x00010001
-+#define MTK_BT_RST_DONE		0x00000100
-+#define MTK_BT_RESET_WAIT_MS	100
-+#define MTK_BT_RESET_NUM_TRIES	10
- #define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
- #define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
- 
-@@ -3684,6 +3695,63 @@ static int btusb_mtk_func_query(struct hci_dev *hdev)
- 	return status;
- }
- 
-+static int btusb_mtk_uhw_reg_write(struct btusb_data *data, u32 reg, u32 val)
-+{
-+	struct hci_dev *hdev = data->hdev;
-+	int pipe, err;
-+	void *buf;
-+
-+	buf = kzalloc(4, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	put_unaligned_le32(val, buf);
-+
-+	pipe = usb_sndctrlpipe(data->udev, 0);
-+	err = usb_control_msg(data->udev, pipe, 0x02,
-+			      0x5E,
-+			      reg >> 16, reg & 0xffff,
-+			      buf, 4, USB_CTRL_SET_TIMEOUT);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to write uhw reg(%d)", err);
-+		goto err_free_buf;
-+	}
-+
-+err_free_buf:
-+	kfree(buf);
-+
-+	return err;
-+}
-+
-+static int btusb_mtk_uhw_reg_read(struct btusb_data *data, u32 reg, u32 *val)
-+{
-+	struct hci_dev *hdev = data->hdev;
-+	int pipe, err;
-+	void *buf;
-+
-+	buf = kzalloc(4, GFP_KERNEL);
-+	if (!buf)
-+		return -ENOMEM;
-+
-+	pipe = usb_rcvctrlpipe(data->udev, 0);
-+	err = usb_control_msg(data->udev, pipe, 0x01,
-+			      0xDE,
-+			      reg >> 16, reg & 0xffff,
-+			      buf, 4, USB_CTRL_SET_TIMEOUT);
-+	if (err < 0) {
-+		bt_dev_err(hdev, "Failed to read uhw reg(%d)", err);
-+		goto err_free_buf;
-+	}
-+
-+	*val = get_unaligned_le32(buf);
-+	bt_dev_dbg(hdev, "reg=%x, value=0x%08x", reg, *val);
-+
-+err_free_buf:
-+	kfree(buf);
-+
-+	return err;
-+}
-+
- static int btusb_mtk_reg_read(struct btusb_data *data, u32 reg, u32 *val)
- {
- 	int pipe, err, size = sizeof(u32);
-@@ -3763,6 +3831,9 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 			 dev_id & 0xffff, (fw_version & 0xff) + 1);
- 		err = btusb_mtk_setup_firmware_79xx(hdev, fw_bin_name);
- 
-+		/* It's Device EndPoint Reset Option Register */
-+		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_OPT);
-+
- 		/* Enable Bluetooth protocol */
- 		param = 1;
- 		wmt_params.op = BTMTK_WMT_FUNC_CTRL;
-@@ -3888,6 +3959,63 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	return 0;
- }
- 
-+static void btusb_mtk_cmd_timeout(struct hci_dev *hdev)
++static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
 +{
 +	struct btusb_data *data = hci_get_drvdata(hdev);
-+	u32 val;
-+	int err, retry = 0;
++	u16 handle = le16_to_cpu(hci_acl_hdr(skb)->handle);
 +
-+	/* It's MediaTek specific bluetooth reset mechanism via USB */
-+	if (test_and_set_bit(BTUSB_HW_RESET_ACTIVE, &data->flags)) {
-+		bt_dev_err(hdev, "last reset failed? Not resetting again");
-+		return;
++	switch (handle) {
++	case 0xfc6f:		/* Firmware dump from device */
++		/* When the firmware hangs, the device can no longer
++		 * suspend and thus disable auto-suspend.
++		 */
++		usb_disable_autosuspend(data->udev);
++	case 0x05ff:		/* Firmware debug logging 1 */
++	case 0x05fe:		/* Firmware debug logging 2 */
++		return hci_recv_diag(hdev, skb);
 +	}
 +
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		return;
-+
-+	btusb_stop_traffic(data);
-+	usb_kill_anchored_urbs(&data->tx_anchor);
-+
-+	/* It's Device EndPoint Reset Option Register */
-+	bt_dev_dbg(hdev, "Initiating reset mechanism via uhw");
-+	btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_OPT);
-+	btusb_mtk_uhw_reg_read(data, MTK_BT_WDT_STATUS, &val);
-+
-+	/* Reset the bluetooth chip via USB interface. */
-+	btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 1);
-+	btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT, 0x000000FF);
-+	btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT, &val);
-+	btusb_mtk_uhw_reg_write(data, MTK_UDMA_INT_STA_BT1, 0x000000FF);
-+	btusb_mtk_uhw_reg_read(data, MTK_UDMA_INT_STA_BT1, &val);
-+	/* MT7921 need to delay 20ms between toggle reset bit */
-+	msleep(20);
-+	btusb_mtk_uhw_reg_write(data, MTK_BT_SUBSYS_RST, 0);
-+	btusb_mtk_uhw_reg_read(data, MTK_BT_SUBSYS_RST, &val);
-+
-+	/* Poll the register until reset is completed */
-+	do {
-+		btusb_mtk_uhw_reg_read(data, MTK_BT_MISC, &val);
-+		if (val & MTK_BT_RST_DONE) {
-+			bt_dev_dbg(hdev, "Bluetooth Reset Successfully");
-+			break;
-+		}
-+
-+		bt_dev_dbg(hdev, "Polling Bluetooth Reset CR");
-+		retry++;
-+		msleep(MTK_BT_RESET_WAIT_MS);
-+	} while (retry < MTK_BT_RESET_NUM_TRIES);
-+
-+	btusb_mtk_id_get(data, 0x70010200, &val);
-+	if (!val)
-+		bt_dev_err(hdev, "Can't get device id, subsys reset fail.");
-+
-+	usb_queue_reset_device(data->intf);
-+
-+	clear_bit(BTUSB_HW_RESET_ACTIVE, &data->flags);
++	return hci_recv_frame(hdev, skb);
 +}
 +
- static int btusb_recv_acl_mtk(struct hci_dev *hdev, struct sk_buff *skb)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
-@@ -4738,6 +4866,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->setup = btusb_mtk_setup;
+ MODULE_FIRMWARE(FIRMWARE_MT7663);
+ MODULE_FIRMWARE(FIRMWARE_MT7668);
+ 
+@@ -4590,6 +4610,8 @@ static int btusb_probe(struct usb_interface *intf,
+ 		data->recv_bulk = btusb_recv_bulk;
+ 	}
+ 
++	data->recv_acl = hci_recv_frame;
++
+ 	hdev = hci_alloc_dev();
+ 	if (!hdev)
+ 		return -ENOMEM;
+@@ -4717,6 +4739,7 @@ static int btusb_probe(struct usb_interface *intf,
  		hdev->shutdown = btusb_mtk_shutdown;
  		hdev->manufacturer = 70;
-+		hdev->cmd_timeout = btusb_mtk_cmd_timeout;
  		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
- 		data->recv_acl = btusb_recv_acl_mtk;
++		data->recv_acl = btusb_recv_acl_mtk;
  	}
+ 
+ 	if (id->driver_info & BTUSB_SWAVE) {
 -- 
 2.18.0
 _______________________________________________
