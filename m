@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7F8DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 70B89C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:24:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A344B60F42
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:24:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A344B60F42
+	by mail.kernel.org (Postfix) with ESMTPS id 352C261040
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:24:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 352C261040
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pjuOQKGmYAUA9MSSk6i7CW4XhLq+dTbLpTPNIdwWFhs=; b=nscjtnWv/ELrt2
-	On4fpuzhAKv3AsARI+Ma30BU9JQrIHBEsBjGBuS/SMW+VB7v3V3Ynys9lizZTyE4zxIgv6K2AJHC4
-	SNoXt1JX/jaGzCPpbomn/9mxcPOxlpvu6aoFUi5DU28TGnn/YXkNkVMMLKJaQ9VlV1uIwr3pCcHOK
-	QCuBV8xqLv4nInk5Vt8qRE6rrNbOxRLgxl/A6VBWhmnol3zrvr4D1Jd5Dy6a+uYH8jusXj8P9SUlc
-	MdcS+wpbGq7plyO0j2XSG+T0uEM0QcaaBrshrdLLwQ6VlT3PN46s1VUIT0xPyCvDarw+hNUpbfe8c
-	osoLx4XnxtLt68hM/CTA==;
+	List-Owner; bh=FbHzTZkQC2bUQ9H62QGsppJH8SqMmus/3k/BmGWd7Gc=; b=Udkm4alCils8Lt
+	uBilCRdDznHU9m9sAF6KYidG0Be/HDLuAe1glhixOZ19pXjlxufwGBcaDfSFJ1RIEccGGgYzskxrx
+	WKl9AhAFyn82nl1sue9QeUFWp/ZZrDQBVayetFckGVimN0j0lZHB2qT2V2/aevNOA+PzqcfKaf6gO
+	2XueQRHZsSAKrZ8YEiLoEEM2/f0UbOkHPK+sQsEdhQx7AHJvhSSU4zNfz3qFcpfl8VW9DO6dOiCGr
+	lpkxyDzcY3e3Upk/JAYKoluVxuFh1s55Wzrn3e9V93ttCMVnj/7tiQD8YUt1vOBFHP3wW6EbT1Bix
+	GLuMcPqjX2Se3sthrB+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBh6I-00APXu-GJ; Thu, 05 Aug 2021 17:24:10 +0000
+	id 1mBh6X-00APeE-So; Thu, 05 Aug 2021 17:24:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBh63-00APS6-Un; Thu, 05 Aug 2021 17:23:57 +0000
-X-UUID: 89508a7d4808409586b11c98f3c83edd-20210805
+ id 1mBh64-00APSk-NZ; Thu, 05 Aug 2021 17:23:58 +0000
+X-UUID: f0c32d9a1e254d49b3f49b2d57d14826-20210805
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NiP/PyAF0zjYYuodQ4hnfPoqd+QSrCpP6Fc/6FavYjE=; 
- b=SlgUXsqSLitzsNG2j0g8ZpL2oeXkb8HGprik4tsjfUwcPUaIUZNKgmjADZhRvMSMF9jCE2uqyja0jAimzi3uYEQDWiuDA2jTSb8gpiGFZtgf1qqgMW7+S77HQ9KZbG1psHz6ZoDSepUvQFxlw22fcPnMvV7VEyyd9yrXTItS+9Y=;
-X-UUID: 89508a7d4808409586b11c98f3c83edd-20210805
+ bh=Xh0RlIQ/D/IwmYQ6v4NqlINZuG7CFoiuQWhqZ+V6zhw=; 
+ b=MscDuixhf9YZTYYYzMxmG2aBHnbmGPD27THmcRyxxl5tILUi3AW5NRL/n1wBDCncgyMWRzsrGcE3jH8Kt3ESRyS5mOVHpXz+gZNVa2bxRDWYu/LyReFVeL3aOB5bdqlEp6zQcAjrWUyPc7jl7vAthK9suqvh2A/aeeSPNZzlkaw=;
+X-UUID: f0c32d9a1e254d49b3f49b2d57d14826-20210805
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 628227940; Thu, 05 Aug 2021 10:23:54 -0700
+ with ESMTP id 1200142560; Thu, 05 Aug 2021 10:23:54 -0700
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 5 Aug 2021 10:13:52 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 6 Aug 2021 01:13:51 +0800
+ 15.0.1497.2; Fri, 6 Aug 2021 01:13:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 6 Aug 2021 01:13:51 +0800
+ Frontend Transport; Fri, 6 Aug 2021 01:13:50 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -68,18 +67,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Fabien
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v3 3/4] dt-bindings: mediatek: add mediatek,
- dsc.yaml for mt8195 SoC binding
-Date: Fri, 6 Aug 2021 01:13:45 +0800
-Message-ID: <20210805171346.24249-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 1/4] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC
+ binding
+Date: Fri, 6 Aug 2021 01:13:43 +0800
+Message-ID: <20210805171346.24249-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210805171346.24249-1-jason-jh.lin@mediatek.com>
 References: <20210805171346.24249-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_102356_053245_B9491034 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20210805_102356_814329_D655329D 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,90 +95,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Add mediatek,dsc.yaml to describe DSC module in details.
-2. Add mt8195 SoC binding to mediatek,dsc.yaml.
+1. There are 2 mmsys, namely vdosys0 and vdosys1 in mt8195.
+   Each of them is bound to a display pipeline, so add their
+   definition in mtk-mmsys documentation with 2 compatibles.
+
+2. Add description for power-domain property.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- .../display/mediatek/mediatek,dsc.yaml        | 69 +++++++++++++++++++
- 1 file changed, 69 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+this patch is base on [1][2]
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-new file mode 100644
-index 000000000000..f94a95c6a1c5
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
-@@ -0,0 +1,69 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,dsc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: mediatek display DSC controller
-+
-+maintainers:
-+  - CK Hu <ck.hu@mediatek.com>
-+
-+description: |
-+  The DSC standard is a specification of the algorithms used for
-+  compressing and decompressing image display streams, including
-+  the specification of the syntax and semantics of the compressed
-+  video bit stream. DSC is designed for real-time systems with
-+  real-time compression, transmission, decompression and Display.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-disp-dsc
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: DSC Wrapper Clock
-+
+[1] dt-bindings: arm: mediatek: mmsys: convert to YAML format
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-1-fparent@baylibre.com/
+[2] dt-bindings: arm: mediatek: mmsys: add MT8365 SoC binding
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20210519161847.3747352-2-fparent@baylibre.com/
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml  | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 2d4ff0ce387b..68cb330d7595 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -30,6 +30,8 @@ properties:
+               - mediatek,mt8173-mmsys
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8365-mmsys
++              - mediatek,mt8195-vdosys0
++              - mediatek,mt8195-vdosys1
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-mmsys
+@@ -39,6 +41,12 @@ properties:
+   reg:
+     maxItems: 1
+ 
 +  power-domains:
-+    description: A phandle and PM domain specifier as defined by bindings of
-+      the power controller specified by phandle. See
++    description:
++      A phandle and PM domain specifier as defined by bindings
++      of the power controller specified by phandle. See
 +      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
-+  mediatek,gce-client-reg:
-+      description:
-+        The register of display function block to be set by gce. There are 4 arguments,
-+        such as gce node, subsys id, offset and register size. The subsys id that is
-+        mapping to the register of display function blocks is defined in the gce header
-+        include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-+      $ref: /schemas/types.yaml#/definitions/phandle-array
-+      maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - power-domains
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+
-+    dsc0: disp_dsc_wrap@1c009000 {
-+        compatible = "mediatek,mt8195-disp-dsc";
-+        reg = <0 0x1c009000 0 0x1000>;
-+        interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH 0>;
-+        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+        clocks = <&vdosys0 CLK_VDO0_DSC_WRAP0>;
-+        mediatek,gce-client-reg = <&gce1 SUBSYS_1c00XXXX 0x9000 0x1000>;
-+    };
-+
+   "#clock-cells":
+     const: 1
+ 
 -- 
 2.18.0
 _______________________________________________
