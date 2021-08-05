@@ -6,95 +6,94 @@ X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13135C4320A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:41:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D7B2C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:43:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D224E6115C
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:41:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D224E6115C
+	by mail.kernel.org (Postfix) with ESMTPS id 155B061151
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:43:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 155B061151
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:Cc:To:From:Subject:Reply-To:Content-ID:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Aj/bJam3n5RQBDoPAsSrszs16Q+9FoAc/t5zvL/wKes=; b=Ux+KxkQgFRr3lDRGKLjoRG7xom
-	oiKDScoMDf2E6krCaUwGhWBlsnBlRcB81GReyclKDxuwW86orKClHdtYu03p0lW89MBhPh8z4eqvC
-	75sWJk0n23xbfT1Zeb1SpWVpLbzlQ99C0XDTgq1ziDfFkNLgPR5bujDMe75RK4X2KLVxRqdI/+WH2
-	hq1ywxUtrp6u+Ovrt6/heEtVrIUkJMmEyrAu51E7dihSP7QV0c4ukP0hZMewV72JVHVJxrMNvwKY4
-	JbD6fpnh85Gf9a7R7TRG5V02jRaPBthUUx9ymexXf1F+l7wQSZLNuMztF3sEgcvhF2v08ZcaXdlZg
-	dUzVorpw==;
+	bh=E0uHjQI/ka94yrgFDKLUCvuwnKBzKSyQG2n4yQ2Hl4g=; b=Pw/PMsjkaOAJO9uDVkj71C3Rf+
+	zgg9r3JvmOV5lH6Aa0lisTTtVjp4EUhCd3kj8Jbl76I4nv1Fn93pD0SJl7Ks5MLMyO9kMcpaSutN8
+	YSz0V6u7j51mnD0ztK0hacmZJVHczF8TGZpoqGGhzV5yLz8zx1yfY0rtBCTYmEojWk47yk6UK0UsH
+	CospE1nRPxYBjDeNQhNNo9bsWr9MEyznrM1sg0a7DlmIU2tuRRKyHod72xYyJNSuBhC9cfroG0teS
+	cO9qgkmEcgUlWw+Cg9MDWApA/Reegy3+tvhleVjM9k7dVIFLqgMdUmGEytIgHKt1Jj93Ozju6GC12
+	D99rxd5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBfUc-00A5Wp-Hk; Thu, 05 Aug 2021 15:41:10 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1mBfWo-00A6Mb-1z; Thu, 05 Aug 2021 15:43:26 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBfUZ-00A5VF-0O; Thu, 05 Aug 2021 15:41:09 +0000
-Received: by mail-wr1-x431.google.com with SMTP id b11so7172657wrx.6;
- Thu, 05 Aug 2021 08:41:06 -0700 (PDT)
+ id 1mBfWl-00A6Kr-3A; Thu, 05 Aug 2021 15:43:24 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id
+ n12-20020a05600c3b8cb029025a67bbd40aso6710734wms.0; 
+ Thu, 05 Aug 2021 08:43:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mVQSQN7gzFUu+SQZHn++i1EQsf1unkn38HuidAPY1jk=;
- b=EnSWxeBF1ZgrkW2cs8zQj6XSQRMdMi2KJwuWBliPKMN5E5fwIQrR6W1KoP6J2MZOQp
- qtlLcHlvJqbZ9kkwlszodvYM6HSw+1S0fM/KiF1iiDgw0jzZXilEehO5hojIG31rU4RP
- u2MkbGtI/Di7NufyLVvJwiXbrjChWzgElYtWu2HrlED5EDf0exg/hnt9lJNZp5G39obB
- BmCx4i3hSxbOhjJnanOoxP75P3guSfyF4RI5AqvlYL4sPfgLVe93T7jHsW5lSeuR+3uO
- CcKh6CDjt9tfz4Y2U0d6QacHzN5zDz7e8Ed+o7RDYzsMFw7FlMt2lOY36XtW8E/Xtk9k
- JHRA==
+ bh=HLMOhVLbljb+rc/o3B+4aERU4BHnBYm4XvzVswVbX4E=;
+ b=BVtMMWpv4J0xrm84M+/UP9ui6rlbnSOcY1LttOu0zH2IrhGJ30D5jCk65ygbvauhJK
+ 8w/qZG1t2/U6g/eLH3Xmz9UW2KOk9osBz+HkJJ4IRVB1PYAbyT67XKzEYG4XDQ+rB/XR
+ RGE5tbTcT9YQuHh3zirWLq2fDNI4soGSN4NXzWFn1zXJarhOKAm1HvFWwIz+yJ/o4AGo
+ sJHhALQtNnEnsIYHHwVQietX9goCUrAeVQ1WA+Z496Uw+XabkBdtOMfmq2AHtQSLdsrM
+ ehVAhPZdUvPrI3xi9vv8btZTc3F5kfEg1ko9sAERRGifsL/w7o2QrceY7kFrHfACf3UH
+ 30rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=mVQSQN7gzFUu+SQZHn++i1EQsf1unkn38HuidAPY1jk=;
- b=tPlYyEvvk/qEsIewB92mk2yokW39qcHpYtwllYnJZ7WXvVDAaUI3OFPWrRtfJ2Us5j
- VbCE6p0t4oPshGhZnXcM3eJ77lXeNnV2jaJ4NhcN7adKRUYPKHI2l5D9HMKjs7YsLXn3
- 4z2XvVEsykVWHLJyog1iJ8shun/8UbPl1+fASpLe8ro3eaIGKsoJZntLgoUOu4xe3MMY
- CaHY8yOGnVtExGhdk/Gkwn+Pm398LskgCwh4Y19ufG9JOXQxGR4zfxZoOQk40w8+6eEi
- 2SmLI6BqpoVF4V60J/fMsPrwFrpE6y10WhCIuUZ2nCCTyix2mIkin2HVSfsSV0OK+DVG
- EXNQ==
-X-Gm-Message-State: AOAM532BoCUrk4Yn9ui70A4E0dSj1uvqJ4deVCZm9DCfHZmY1RP7ka98
- mGWz9ZK2HG+bx6xYU5O0JsM=
-X-Google-Smtp-Source: ABdhPJxCtpqIunU/mFZBvCoYDNuqfTLTZ2pUolhGj+wx3TK++qKad7kmgUfuhNZIAOYiVXXE+6nQ4Q==
-X-Received: by 2002:a5d:6789:: with SMTP id v9mr6099277wru.254.1628178065390; 
- Thu, 05 Aug 2021 08:41:05 -0700 (PDT)
+ bh=HLMOhVLbljb+rc/o3B+4aERU4BHnBYm4XvzVswVbX4E=;
+ b=FVMEkmhMNs8StGb8ewWHJlLefka93xE4aSCLnvhGb339FKHJvqXei4IHMBIipNlXvP
+ F+sWbsUjb5v7jUbg73kMuJFNy0BPalKle/7bBmL8rSqf8MVKeQ4w7vkgoJ6s2STw71eP
+ bbzI9xObreJeKOBcTUd+ps4aun+PcCkcdVN47rmPoNSIDekPm2fyCL+zjtYaeBnIh4ct
+ yRM0LGG+KIrfz2t1afJOF9YEZ0DozotFU78jh74CeYAVYGUYS34BWImwKEklY3KdkNgO
+ I39Xu0nfSarBJ1Hft/nijYmRjXXF5xF9QyyIo0Nr6LaWarvID0OJrFyDFCl/YS42IZdU
+ Dhgg==
+X-Gm-Message-State: AOAM531NtCkmAshcedEEPD/kL5bvOm5ml9ni7KoKLJv4jrVSV6BFaIDQ
+ rXLUHW00A4DBwYQGdn26oyY=
+X-Google-Smtp-Source: ABdhPJxXuXaxWRVPF3y/KvqVMbS+a0BfKGWHXRTtMxB3b/nc9MTb/WyudGj4pLdPc4mKp0vpylcakg==
+X-Received: by 2002:a7b:c204:: with SMTP id x4mr5679136wmi.70.1628178201630;
+ Thu, 05 Aug 2021 08:43:21 -0700 (PDT)
 Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
  [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id l4sm6504709wrw.32.2021.08.05.08.41.04
+ by smtp.gmail.com with ESMTPSA id g16sm7688718wro.63.2021.08.05.08.43.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Aug 2021 08:41:04 -0700 (PDT)
-Subject: Re: [v12 02/20] dt-bindings: ARM: Mediatek: Add mmsys document
- binding for MT8192
-From: Matthias Brugger <matthias.bgg@gmail.com>
+ Thu, 05 Aug 2021 08:43:21 -0700 (PDT)
+Subject: Re: [v6 1/2] arm64: dts: mediatek: Add mt8192 clock controllers
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
- <20210705033824.1934-3-chun-jie.chen@mediatek.com>
- <564fa3c8-1d85-5e98-f3f9-f83cb17e905a@gmail.com>
- <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
-Message-ID: <e3210d22-7960-f8e4-c12d-d49ac5465463@gmail.com>
-Date: Thu, 5 Aug 2021 17:41:04 +0200
+ Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Stephen Boyd <sboyd@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Weiyi Lu <weiyi.lu@mediatek.com>
+References: <20210727023205.20319-1-chun-jie.chen@mediatek.com>
+ <20210727023205.20319-2-chun-jie.chen@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Message-ID: <c9c0bd84-5c62-d64b-efad-7d374f751a73@gmail.com>
+Date: Thu, 5 Aug 2021 17:43:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
+In-Reply-To: <20210727023205.20319-2-chun-jie.chen@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_084107_102180_E8D5F15B 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20210805_084323_207520_AA578654 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,51 +110,269 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 05/07/2021 17:45, Matthias Brugger wrote:
-> On 05/07/2021 17:40, Matthias Brugger wrote:
->>
->>
->> On 05/07/2021 05:38, Chun-Jie Chen wrote:
->>> This patch adds the mmsys document binding for MT8192 SoC.
->>>
->>> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->>
->> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->>
-> 
-> Of course, that's not what we need here...
-> 
-> Now pushed to v5.14-tmp/dts64 until v5.14-rc1 is released.
-> 
 
-Given that the change to yaml was taken by Rob Herring I drop this patch from my
-queue.
+
+On 27/07/2021 04:32, Chun-Jie Chen wrote:
+> Add clock controller nodes for SoC mt8192
+> 
+> Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 163 +++++++++++++++++++++++
+>  1 file changed, 163 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> index 9757138a8bbd..c7c7d4e017ae 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -5,6 +5,7 @@
+>   */
+>  
+>  /dts-v1/;
+> +#include <dt-bindings/clock/mt8192-clk.h>
+
+I'd need a stable branch from Stephen to be able to take this one. Otherwise
+we'll need to wait for v5.15-rc1 to be published before I can take them without
+compile errors.
 
 Regards,
 Matthias
 
-> Thanks!
-> Matthias
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+> @@ -257,6 +258,24 @@
+>  			};
+>  		};
+>  
+> +		topckgen: syscon@10000000 {
+> +			compatible = "mediatek,mt8192-topckgen", "syscon";
+> +			reg = <0 0x10000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		infracfg: syscon@10001000 {
+> +			compatible = "mediatek,mt8192-infracfg", "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		pericfg: syscon@10003000 {
+> +			compatible = "mediatek,mt8192-pericfg", "syscon";
+> +			reg = <0 0x10003000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		pio: pinctrl@10005000 {
+>  			compatible = "mediatek,mt8192-pinctrl";
+>  			reg = <0 0x10005000 0 0x1000>,
+> @@ -282,6 +301,12 @@
+>  			#interrupt-cells = <2>;
+>  		};
+>  
+> +		apmixedsys: syscon@1000c000 {
+> +			compatible = "mediatek,mt8192-apmixedsys", "syscon";
+> +			reg = <0 0x1000c000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		systimer: timer@10017000 {
+>  			compatible = "mediatek,mt8192-timer",
+>  				     "mediatek,mt6765-timer";
+> @@ -291,6 +316,12 @@
+>  			clock-names = "clk13m";
+>  		};
+>  
+> +		scp_adsp: clock-controller@10720000 {
+> +			compatible = "mediatek,mt8192-scp_adsp";
+> +			reg = <0 0x10720000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		uart0: serial@11002000 {
+>  			compatible = "mediatek,mt8192-uart",
+>  				     "mediatek,mt6577-uart";
+> @@ -311,6 +342,12 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		imp_iic_wrap_c: clock-controller@11007000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_c";
+> +			reg = <0 0x11007000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		spi0: spi@1100a000 {
+>  			compatible = "mediatek,mt8192-spi",
+>  				     "mediatek,mt6765-spi";
+> @@ -436,6 +473,12 @@
+>  			status = "disable";
+>  		};
+>  
+> +		audsys: clock-controller@11210000 {
+> +			compatible = "mediatek,mt8192-audsys", "syscon";
+> +			reg = <0 0x11210000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		i2c3: i2c3@11cb0000 {
+>  			compatible = "mediatek,mt8192-i2c";
+>  			reg = <0 0x11cb0000 0 0x1000>,
+> @@ -449,6 +492,12 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		imp_iic_wrap_e: clock-controller@11cb1000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_e";
+> +			reg = <0 0x11cb1000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		i2c7: i2c7@11d00000 {
+>  			compatible = "mediatek,mt8192-i2c";
+>  			reg = <0 0x11d00000 0 0x1000>,
+> @@ -488,6 +537,12 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		imp_iic_wrap_s: clock-controller@11d03000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_s";
+> +			reg = <0 0x11d03000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		i2c1: i2c1@11d20000 {
+>  			compatible = "mediatek,mt8192-i2c";
+>  			reg = <0 0x11d20000 0 0x1000>,
+> @@ -527,6 +582,12 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		imp_iic_wrap_ws: clock-controller@11d23000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_ws";
+> +			reg = <0 0x11d23000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		i2c5: i2c5@11e00000 {
+>  			compatible = "mediatek,mt8192-i2c";
+>  			reg = <0 0x11e00000 0 0x1000>,
+> @@ -540,6 +601,12 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		imp_iic_wrap_w: clock-controller@11e01000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_w";
+> +			reg = <0 0x11e01000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		i2c0: i2c0@11f00000 {
+>  			compatible = "mediatek,mt8192-i2c";
+>  			reg = <0 0x11f00000 0 0x1000>,
+> @@ -565,5 +632,101 @@
+>  			#size-cells = <0>;
+>  			status = "disabled";
+>  		};
+> +
+> +		imp_iic_wrap_n: clock-controller@11f02000 {
+> +			compatible = "mediatek,mt8192-imp_iic_wrap_n";
+> +			reg = <0 0x11f02000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		msdc_top: clock-controller@11f10000 {
+> +			compatible = "mediatek,mt8192-msdc_top";
+> +			reg = <0 0x11f10000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		msdc: clock-controller@11f60000 {
+> +			compatible = "mediatek,mt8192-msdc";
+> +			reg = <0 0x11f60000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		mfgcfg: clock-controller@13fbf000 {
+> +			compatible = "mediatek,mt8192-mfgcfg";
+> +			reg = <0 0x13fbf000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		mmsys: syscon@14000000 {
+> +			compatible = "mediatek,mt8192-mmsys", "syscon";
+> +			reg = <0 0x14000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		imgsys: clock-controller@15020000 {
+> +			compatible = "mediatek,mt8192-imgsys";
+> +			reg = <0 0x15020000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		imgsys2: clock-controller@15820000 {
+> +			compatible = "mediatek,mt8192-imgsys2";
+> +			reg = <0 0x15820000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		vdecsys_soc: clock-controller@1600f000 {
+> +			compatible = "mediatek,mt8192-vdecsys_soc";
+> +			reg = <0 0x1600f000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		vdecsys: clock-controller@1602f000 {
+> +			compatible = "mediatek,mt8192-vdecsys";
+> +			reg = <0 0x1602f000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		vencsys: clock-controller@17000000 {
+> +			compatible = "mediatek,mt8192-vencsys";
+> +			reg = <0 0x17000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		camsys: clock-controller@1a000000 {
+> +			compatible = "mediatek,mt8192-camsys";
+> +			reg = <0 0x1a000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		camsys_rawa: clock-controller@1a04f000 {
+> +			compatible = "mediatek,mt8192-camsys_rawa";
+> +			reg = <0 0x1a04f000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		camsys_rawb: clock-controller@1a06f000 {
+> +			compatible = "mediatek,mt8192-camsys_rawb";
+> +			reg = <0 0x1a06f000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		camsys_rawc: clock-controller@1a08f000 {
+> +			compatible = "mediatek,mt8192-camsys_rawc";
+> +			reg = <0 0x1a08f000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		ipesys: clock-controller@1b000000 {
+> +			compatible = "mediatek,mt8192-ipesys";
+> +			reg = <0 0x1b000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		mdpsys: clock-controller@1f000000 {
+> +			compatible = "mediatek,mt8192-mdpsys";
+> +			reg = <0 0x1f000000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+>  	};
+>  };
 > 
->>> ---
->>>  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.txt          | 1 +
->>>  1 file changed, 1 insertion(+)
->>>
->>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->>> index 78c50733985c..9712a6831fab 100644
->>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
->>> @@ -16,6 +16,7 @@ Required Properties:
->>>  	- "mediatek,mt8167-mmsys", "syscon"
->>>  	- "mediatek,mt8173-mmsys", "syscon"
->>>  	- "mediatek,mt8183-mmsys", "syscon"
->>> +	- "mediatek,mt8192-mmsys", "syscon"
->>>  - #clock-cells: Must be 1
->>>  
->>>  For the clock control, the mmsys controller uses the common clk binding from
->>>
-> 
-
 
 _______________________________________________
 Linux-mediatek mailing list
