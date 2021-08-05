@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D0B78C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 21:04:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01A0CC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 21:04:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72C3760ED6
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 21:04:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 72C3760ED6
+	by mail.kernel.org (Postfix) with ESMTPS id B34D06112F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 21:04:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B34D06112F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,32 +24,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wcV4u1URuJMLL4ALk6Prx1Y0hTYhVsV7W3gO5mch01M=; b=eqRTHeY9PRF/ep
-	ZHGyXeNlxKMPNNEsV4/cyqvD7M6HAtsR9qYd6arE6aCeDzX1Q6s8nVkoo33+jdKnQIgl6dHEsutbo
-	AhHG+t5ik66oje69NL0a0MhKP2mtrfPvXVfQbcLLkCwo3910sQh2jHl9SJdwxll9yGScBN92Da3fB
-	ARKEXRsezLNob0bhvgbK1CXvmUUQ7odDX2PkMGQjK4PJg4s3Iv/KydS046RVAvi5a+eN8Bv6M3OLa
-	s4kb5dkrn+1F/E+oQFik5ybwETgqjQFgRcMQVzBop/9BSgKUK1VBgj96xBrmp2SZ1aEu7f+U/XMzM
-	se8u8bDWCpm61JbnwLcQ==;
+	List-Owner; bh=L9vJ/bTetshI5v62Tz4Mdn2lZCa1aVqntGIVcJl7fn8=; b=EeX2P+eedNdeXF
+	nLI/WDhEppVqOi9/JBVh9+zgCYe+ZHnTswfFZn8sQAZNWpMDcRHBbpsRxS96Nn7oBcdvmrlfvNpRH
+	WMfE4f3gNfkPGk+6wSK8eSW6f9KB9FZkxiM0G60gbKpw4O4M5a/xQy/iLq53YM+sxBweQ8T9RoDn5
+	OL1hqVO4s+SNh2szrBMJigZxL6C7icD06ce4MeAvkmwhQhpvHgeIQpo4BgpHzHJ+WLjjpqwGV0D96
+	zD3QWWRDeJcK3K3nYe1YjwYHl7XpAUujdKIYee9dFwfDwDwKfxZ7u79URixwI/OyAUmELTk9Rd+Xq
+	SEr9KCgW/Mjv/68Jzvpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBkX8-00Alxq-3I; Thu, 05 Aug 2021 21:04:06 +0000
+	id 1mBkXd-00AmE5-0L; Thu, 05 Aug 2021 21:04:37 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBkVi-00AlJc-3Z; Thu, 05 Aug 2021 21:02:40 +0000
-X-UUID: 703bdd07ff944563a839b712cc074a41-20210805
+ id 1mBkVi-00AlJt-HI; Thu, 05 Aug 2021 21:02:40 +0000
+X-UUID: 9df268126d764c86979fd0904870639e-20210805
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=66Z+HC9kh3GNYtYTPBFUPdjiVYOnjQd4U1YkY9CNJ/k=; 
- b=VOpR+pfS3Mbv2QYNwLxgZpMO0OUnrEewsoQeXgI3J6cduPxKSoU4W6Hx/D26OHLr3WdgYtGgp02ebhwz2GjzwrWPyw7qr+LfSY9XVK2S452QDCt8BZ7m0CC4df47s77+eohAFUED3/zzdgpSFZq0hhvu+W2uVQ+rq5twdyz+DfQ=;
-X-UUID: 703bdd07ff944563a839b712cc074a41-20210805
+ bh=qVGcZD/L8r6t3dD4ehOT5TYQzfvcBO04Rvfq1Kq+jLI=; 
+ b=IiQ69choHCCVVw/Aar5MdMyFnLr4Bx7jwlr9e3LOXhAEgpC2EFyotaxnA2DS2qP2JYoYrjmpZOeLpTyURtPmaywHPmn3+3Oamcfxf8095aZdnsyXiaI9yEx18BAdYZFns4v3jxuZT9G3p9T21qzjORIsuUhwozxYcyaW9TJ8A6I=;
+X-UUID: 9df268126d764c86979fd0904870639e-20210805
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1872060951; Thu, 05 Aug 2021 14:02:31 -0700
+ with ESMTP id 832683548; Thu, 05 Aug 2021 14:02:31 -0700
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Aug 2021 13:52:29 -0700
+ 15.0.1497.2; Thu, 5 Aug 2021 13:52:30 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 6 Aug 2021 04:52:28 +0800
@@ -68,17 +68,17 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Fabien
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v6 3/7] soc: mediatek: add mtk-mutex support for mt8195 vdosys0
-Date: Fri, 6 Aug 2021 04:52:22 +0800
-Message-ID: <20210805205226.24880-4-jason-jh.lin@mediatek.com>
+Subject: [PATCH v6 5/7] drm/mediatek: add DSC support for mediatek-drm
+Date: Fri, 6 Aug 2021 04:52:24 +0800
+Message-ID: <20210805205226.24880-6-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210805205226.24880-1-jason-jh.lin@mediatek.com>
 References: <20210805205226.24880-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_140238_206700_2F4F42F7 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20210805_140238_632384_D69785C1 
+X-CRM114-Status: GOOD (  14.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,189 +95,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mtk-mutex support for mt8195 vdosys0.
+DSC is designed for real-time systems with real-time compression,
+transmission, decompression and display.
+The DSC standard is a specification of the algorithms used for
+compressing and decompressing image display streams, including
+the specification of the syntax and semantics of the compressed
+video bit stream.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
 This patch is base on [1]
 
-[1] dt-bindings: mediatek: display: add mt8195 SoC binding
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210805171346.24249-5-jason-jh.lin@mediatek.com/
+[1] dt-bindings: mediatek: add mediatek, dsc.yaml for mt8195 SoC binding
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210805171346.24249-4-jason-jh.lin@mediatek.com/
 ---
- drivers/soc/mediatek/mtk-mutex.c | 93 ++++++++++++++++++++++++++++++--
- 1 file changed, 90 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 62 +++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
+ 2 files changed, 63 insertions(+)
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 2e4bcc300576..cb8bbf7f3fd8 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -17,6 +17,9 @@
- #define MT8183_MUTEX0_MOD0			0x30
- #define MT8183_MUTEX0_SOF0			0x2c
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 328ee19f931e..24c7b004fe4d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -43,6 +43,12 @@
+ #define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
+ #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
  
-+#define MT8195_DISP_MUTEX0_MOD0			0x30
-+#define MT8195_DISP_MUTEX0_SOF			0x2c
++#define DISP_REG_DSC_CON			0x0000
++#define DSC_EN					BIT(0)
++#define DSC_DUAL_INOUT				BIT(2)
++#define DSC_BYPASS				BIT(4)
++#define DSC_UFOE_SEL				BIT(16)
 +
- #define DISP_REG_MUTEX_EN(n)			(0x20 + 0x20 * (n))
- #define DISP_REG_MUTEX(n)			(0x24 + 0x20 * (n))
- #define DISP_REG_MUTEX_RST(n)			(0x28 + 0x20 * (n))
-@@ -67,6 +70,36 @@
- #define MT8173_MUTEX_MOD_DISP_PWM1		24
- #define MT8173_MUTEX_MOD_DISP_OD		25
+ #define DISP_REG_OD_EN				0x0000
+ #define DISP_REG_OD_CFG				0x0020
+ #define OD_RELAYMODE				BIT(0)
+@@ -209,6 +215,35 @@ static void mtk_dither_set(struct device *dev, unsigned int bpc,
+ 			      DISP_DITHERING, cmdq_pkt);
+ }
  
-+#define MT8195_MUTEX_MOD_DISP_OVL0		0
-+#define MT8195_MUTEX_MOD_DISP_WDMA0		1
-+#define MT8195_MUTEX_MOD_DISP_RDMA0		2
-+#define MT8195_MUTEX_MOD_DISP_COLOR0		3
-+#define MT8195_MUTEX_MOD_DISP_CCORR0		4
-+#define MT8195_MUTEX_MOD_DISP_AAL0		5
-+#define MT8195_MUTEX_MOD_DISP_GAMMA0		6
-+#define MT8195_MUTEX_MOD_DISP_DITHER0		7
-+#define MT8195_MUTEX_MOD_DISP_DSI0		8
-+#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0	9
-+#define MT8195_MUTEX_MOD_DISP_OVL1		10
-+#define MT8195_MUTEX_MOD_DISP_WDMA1		11
-+#define MT8195_MUTEX_MOD_DISP_RDMA1		12
-+#define MT8195_MUTEX_MOD_DISP_COLOR1		13
-+#define MT8195_MUTEX_MOD_DISP_CCORR1		14
-+#define MT8195_MUTEX_MOD_DISP_AAL1		15
-+#define MT8195_MUTEX_MOD_DISP_GAMMA1		16
-+#define MT8195_MUTEX_MOD_DISP_DITHER1		17
-+#define MT8195_MUTEX_MOD_DISP_DSI1		18
-+#define MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE1	19
-+#define MT8195_MUTEX_MOD_DISP_VPP_MERGE		20
-+#define MT8195_MUTEX_MOD_DISP_DP_INTF0		21
-+#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY0	22
-+#define MT8195_MUTEX_MOD_DISP_VPP1_DL_RELAY1	23
-+#define MT8195_MUTEX_MOD_DISP_VDO1_DL_RELAY2	24
-+#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY3	25
-+#define MT8195_MUTEX_MOD_DISP_VDO0_DL_RELAY4	26
-+#define MT8195_MUTEX_MOD_DISP_PWM0		27
-+#define MT8195_MUTEX_MOD_DISP_PWM1		28
++static void mtk_dsc_config(struct device *dev, unsigned int w,
++			   unsigned int h, unsigned int vrefresh,
++			   unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
 +
- #define MT2712_MUTEX_MOD_DISP_PWM2		10
- #define MT2712_MUTEX_MOD_DISP_OVL0		11
- #define MT2712_MUTEX_MOD_DISP_OVL1		12
-@@ -101,12 +134,27 @@
- #define MT2712_MUTEX_SOF_DSI3			6
- #define MT8167_MUTEX_SOF_DPI0			2
- #define MT8167_MUTEX_SOF_DPI1			3
++	/* dsc bypass mode */
++	mtk_ddp_write_mask(cmdq_pkt, DSC_BYPASS, &priv->cmdq_reg, priv->regs,
++			   DISP_REG_DSC_CON, DSC_BYPASS);
++	mtk_ddp_write_mask(cmdq_pkt, DSC_UFOE_SEL, &priv->cmdq_reg, priv->regs,
++			   DISP_REG_DSC_CON, DSC_UFOE_SEL);
++	mtk_ddp_write_mask(cmdq_pkt, DSC_DUAL_INOUT, &priv->cmdq_reg, priv->regs,
++			   DISP_REG_DSC_CON, DSC_DUAL_INOUT);
++}
 +
- #define MT8183_MUTEX_SOF_DSI0			1
- #define MT8183_MUTEX_SOF_DPI0			2
- 
- #define MT8183_MUTEX_EOF_DSI0			(MT8183_MUTEX_SOF_DSI0 << 6)
- #define MT8183_MUTEX_EOF_DPI0			(MT8183_MUTEX_SOF_DPI0 << 6)
- 
-+#define MT8195_MUTEX_SOF_DSI0			1
-+#define MT8195_MUTEX_SOF_DSI1			2
-+#define MT8195_MUTEX_SOF_DP_INTF0		3
-+#define MT8195_MUTEX_SOF_DP_INTF1		4
-+#define MT8195_MUTEX_SOF_DPI0			6 /* for HDMI_TX */
-+#define MT8195_MUTEX_SOF_DPI1			5 /* for digital video out */
++static void mtk_dsc_start(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
 +
-+#define MT8195_MUTEX_EOF_DSI0			(MT8195_MUTEX_SOF_DSI0 << 7)
-+#define MT8195_MUTEX_EOF_DSI1			(MT8195_MUTEX_SOF_DSI1 << 7)
-+#define MT8195_MUTEX_EOF_DP_INTF0		(MT8195_MUTEX_SOF_DP_INTF0 << 7)
-+#define MT8195_MUTEX_EOF_DP_INTF1		(MT8195_MUTEX_SOF_DP_INTF1 << 7)
-+#define MT8195_MUTEX_EOF_DPI0			(MT8195_MUTEX_SOF_DPI0 << 7)
-+#define MT8195_MUTEX_EOF_DPI1			(MT8195_MUTEX_SOF_DPI1 << 7)
++	writel_relaxed(DSC_EN, &priv->regs + DISP_REG_DSC_CON);
++}
 +
- struct mtk_mutex {
- 	int id;
- 	bool claimed;
-@@ -120,6 +168,9 @@ enum mtk_mutex_sof_id {
- 	MUTEX_SOF_DPI1,
- 	MUTEX_SOF_DSI2,
- 	MUTEX_SOF_DSI3,
-+	MUTEX_SOF_DP_INTF0,
-+	MUTEX_SOF_DP_INTF1,
-+	DDP_MUTEX_SOF_MAX,
++static void mtk_dsc_stop(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, priv->regs + DISP_REG_DSC_CON);
++}
++
+ static void mtk_od_config(struct device *dev, unsigned int w,
+ 			  unsigned int h, unsigned int vrefresh,
+ 			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -272,6 +307,14 @@ static const struct mtk_ddp_comp_funcs ddp_dpi = {
+ 	.stop = mtk_dpi_stop,
  };
  
- struct mtk_mutex_data {
-@@ -214,7 +265,22 @@ static const unsigned int mt8183_mutex_mod[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_WDMA0] = MT8183_MUTEX_MOD_DISP_WDMA0,
- };
- 
--static const unsigned int mt2712_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
-+static const unsigned int mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-+	[DDP_COMPONENT_OVL0] = MT8195_MUTEX_MOD_DISP_OVL0,
-+	[DDP_COMPONENT_WDMA0] = MT8195_MUTEX_MOD_DISP_WDMA0,
-+	[DDP_COMPONENT_RDMA0] = MT8195_MUTEX_MOD_DISP_RDMA0,
-+	[DDP_COMPONENT_COLOR0] = MT8195_MUTEX_MOD_DISP_COLOR0,
-+	[DDP_COMPONENT_CCORR] = MT8195_MUTEX_MOD_DISP_CCORR0,
-+	[DDP_COMPONENT_AAL0] = MT8195_MUTEX_MOD_DISP_AAL0,
-+	[DDP_COMPONENT_GAMMA] = MT8195_MUTEX_MOD_DISP_GAMMA0,
-+	[DDP_COMPONENT_DITHER] = MT8195_MUTEX_MOD_DISP_DITHER0,
-+	[DDP_COMPONENT_MERGE0] = MT8195_MUTEX_MOD_DISP_VPP_MERGE,
-+	[DDP_COMPONENT_DSC0] = MT8195_MUTEX_MOD_DISP_DSC_WRAP0_CORE0,
-+	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
-+	[DDP_COMPONENT_PWM0] = MT8195_MUTEX_MOD_DISP_PWM0,
++static const struct mtk_ddp_comp_funcs ddp_dsc = {
++	.clk_enable = mtk_ddp_clk_enable,
++	.clk_disable = mtk_ddp_clk_disable,
++	.config = mtk_dsc_config,
++	.start = mtk_dsc_start,
++	.stop = mtk_dsc_stop,
 +};
 +
-+static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
- 	[MUTEX_SOF_DSI1] = MUTEX_SOF_DSI1,
-@@ -224,7 +290,7 @@ static const unsigned int mt2712_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
- 	[MUTEX_SOF_DSI3] = MUTEX_SOF_DSI3,
+ static const struct mtk_ddp_comp_funcs ddp_dsi = {
+ 	.start = mtk_dsi_ddp_start,
+ 	.stop = mtk_dsi_ddp_stop,
+@@ -286,6 +329,14 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+ 	.stop = mtk_gamma_stop,
  };
  
--static const unsigned int mt8167_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
-+static const unsigned int mt8167_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0,
- 	[MUTEX_SOF_DPI0] = MT8167_MUTEX_SOF_DPI0,
-@@ -232,12 +298,24 @@ static const unsigned int mt8167_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
- };
- 
- /* Add EOF setting so overlay hardware can receive frame done irq */
--static const unsigned int mt8183_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
-+static const unsigned int mt8183_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
- 	[MUTEX_SOF_DSI0] = MUTEX_SOF_DSI0 | MT8183_MUTEX_EOF_DSI0,
- 	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
- };
- 
-+static const unsigned int mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
-+	[MUTEX_SOF_SINGLE_MODE] = MUTEX_SOF_SINGLE_MODE,
-+	[MUTEX_SOF_DSI0] = MT8195_MUTEX_SOF_DSI0 | MT8195_MUTEX_EOF_DSI0,
-+	[MUTEX_SOF_DSI1] = MT8195_MUTEX_SOF_DSI1 | MT8195_MUTEX_EOF_DSI1,
-+	[MUTEX_SOF_DPI0] = MT8195_MUTEX_SOF_DPI0 | MT8195_MUTEX_EOF_DPI0,
-+	[MUTEX_SOF_DPI1] = MT8195_MUTEX_SOF_DPI1 | MT8195_MUTEX_EOF_DPI1,
-+	[MUTEX_SOF_DP_INTF0] =
-+		MT8195_MUTEX_SOF_DP_INTF0 | MT8195_MUTEX_EOF_DP_INTF0,
-+	[MUTEX_SOF_DP_INTF1] =
-+		MT8195_MUTEX_SOF_DP_INTF1 | MT8195_MUTEX_EOF_DP_INTF1,
++static const struct mtk_ddp_comp_funcs ddp_merge = {
++	.clk_enable = mtk_merge_clk_enable,
++	.clk_disable = mtk_merge_clk_disable,
++	.start = mtk_merge_start,
++	.stop = mtk_merge_stop,
++	.config = mtk_merge_config,
 +};
 +
- static const struct mtk_mutex_data mt2701_mutex_driver_data = {
- 	.mutex_mod = mt2701_mutex_mod,
- 	.mutex_sof = mt2712_mutex_sof,
-@@ -275,6 +353,13 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
- 	.no_clk = true,
- };
- 
-+static const struct mtk_mutex_data mt8195_mutex_driver_data = {
-+	.mutex_mod = mt8195_mutex_mod,
-+	.mutex_sof = mt8195_mutex_sof,
-+	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
-+	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
-+};
-+
- struct mtk_mutex *mtk_mutex_get(struct device *dev)
- {
- 	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
-@@ -507,6 +592,8 @@ static const struct of_device_id mutex_driver_dt_match[] = {
- 	  .data = &mt8173_mutex_driver_data},
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = &mt8183_mutex_driver_data},
-+	{ .compatible = "mediatek,mt8195-disp-mutex",
-+	  .data = &mt8195_mutex_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mutex_driver_dt_match);
+ static const struct mtk_ddp_comp_funcs ddp_od = {
+ 	.clk_enable = mtk_ddp_clk_enable,
+ 	.clk_disable = mtk_ddp_clk_disable,
+@@ -333,7 +384,9 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_CCORR] = "ccorr",
+ 	[MTK_DISP_COLOR] = "color",
+ 	[MTK_DISP_DITHER] = "dither",
++	[MTK_DISP_DSC] = "dsc",
+ 	[MTK_DISP_GAMMA] = "gamma",
++	[MTK_DISP_MERGE] = "merge",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+ 	[MTK_DISP_OVL] = "ovl",
+@@ -362,11 +415,19 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DITHER]	= { MTK_DISP_DITHER,	0, &ddp_dither },
+ 	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, &ddp_dpi },
+ 	[DDP_COMPONENT_DPI1]	= { MTK_DPI,		1, &ddp_dpi },
++	[DDP_COMPONENT_DSC0]	= { MTK_DISP_DSC,	0, &ddp_dsc },
++	[DDP_COMPONENT_DSC1]	= { MTK_DISP_DSC,	1, &ddp_dsc },
+ 	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI1]	= { MTK_DSI,		1, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI2]	= { MTK_DSI,		2, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI3]	= { MTK_DSI,		3, &ddp_dsi },
+ 	[DDP_COMPONENT_GAMMA]	= { MTK_DISP_GAMMA,	0, &ddp_gamma },
++	[DDP_COMPONENT_MERGE0]	= { MTK_DISP_MERGE,	0, &ddp_merge },
++	[DDP_COMPONENT_MERGE1]	= { MTK_DISP_MERGE,	1, &ddp_merge },
++	[DDP_COMPONENT_MERGE2]	= { MTK_DISP_MERGE,	2, &ddp_merge },
++	[DDP_COMPONENT_MERGE3]	= { MTK_DISP_MERGE,	3, &ddp_merge },
++	[DDP_COMPONENT_MERGE4]	= { MTK_DISP_MERGE,	4, &ddp_merge },
++	[DDP_COMPONENT_MERGE5]	= { MTK_DISP_MERGE,	5, &ddp_merge },
+ 	[DDP_COMPONENT_OD0]	= { MTK_DISP_OD,	0, &ddp_od },
+ 	[DDP_COMPONENT_OD1]	= { MTK_DISP_OD,	1, &ddp_od },
+ 	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, &ddp_ovl },
+@@ -497,6 +558,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	    type == MTK_DISP_CCORR ||
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_GAMMA ||
++	    type == MTK_DISP_MERGE ||
+ 	    type == MTK_DISP_OVL ||
+ 	    type == MTK_DISP_OVL_2L ||
+ 	    type == MTK_DISP_PWM ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index d317b944df66..560be6bc9d0e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -23,6 +23,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_CCORR,
+ 	MTK_DISP_COLOR,
+ 	MTK_DISP_DITHER,
++	MTK_DISP_DSC,
+ 	MTK_DISP_GAMMA,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
 -- 
 2.18.0
 _______________________________________________
