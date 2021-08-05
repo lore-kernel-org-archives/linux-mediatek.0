@@ -2,20 +2,19 @@ Return-Path: <SRS0=uG8S=M4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CFC92C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 07:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7181C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 08:00:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8BE6861040
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 07:50:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8BE6861040
+	by mail.kernel.org (Postfix) with ESMTPS id 613F861040
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 08:00:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 613F861040
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,58 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hMcKvqWLxH95mCQLscvNbcyrFL11utVSrWGFH90ljVE=; b=CVxB0LvGcF+PVU
-	LLKogda1dC1wr4CxabR630OJ5CvKw4DuGrmXnSdB3ipMDtL+cVmdFQJPxgHFYxoi6r5Ie/GI35X61
-	wjLf4SACgzEFdJQWiU5UcvM0/JsDnpnOocdXLeM38H5GBPJro/IIQYa+z+kjEgh5wicqSTvnqbt6l
-	7QusZZCl77c65QOts0/XeRJZcQCVItWJnRWQ4v8A3o3RSpKLHCF2252UoRmI2EwXgE5S5ceSlhRAX
-	EnHALcLDI+VYEiCDKZqJMXBm1f55s+a/goSqqmJEImHotZ8cNaULJQ0U631njT4p7QH7ayS1qxbwI
-	1N77fjEB42VMm5Tqhx8g==;
+	List-Owner; bh=Ardz09miLf1jtEb11UYFVt8uTVcCAbvzmpiTQ7JRhkc=; b=EriCnqAbsU4mr0
+	mIRiqlkBcziNL2rremlwEbt9/Bg3XK/hzWmpzdvy3OAz4myCzy58CWYbjUMKnAoUNxgPjmW/Bq74j
+	E9bgup8m8ZkTpOUjqGV588rUbngYaAxWnhQB1BRQSJxRhp9hW+OX53XWQvaiqjy9nvyIHYBaoazgq
+	B3i8Khps9aNmfkYSgi7DNRLSzBxF1e5Gp/BcuXwVhmw6DSwbvc3L5BSXywaj/f3/lfh/4utOXs2w1
+	MNjFGd8e57heLyavsFY2X7/SMqWWX9+OJD4Bg8c0wkJYYbYoOveGJ2GvngPKENFtbqGquK3wTs925
+	xn9zYBjc94r8ZG0RAd8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBY92-008TgF-Ic; Thu, 05 Aug 2021 07:50:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mBYIy-008YB9-By; Thu, 05 Aug 2021 08:00:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBY8u-008Tdc-VJ
- for linux-mediatek@lists.infradead.org; Thu, 05 Aug 2021 07:50:18 +0000
-X-UUID: 0bd482f8d9ab4216bb4e864f11ca85e5-20210805
+ id 1mBYIv-008Y52-SI; Thu, 05 Aug 2021 08:00:39 +0000
+X-UUID: fec91911fe13437ab1d5dc1e0ce73d1a-20210805
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IEJasd7vjHMBovS93+J85TfhlcomEvjTWLhbIAGAdRQ=; 
- b=UpgIC1fh+kSRrf158pi4IEKdUT48vzl3akqYlDOOqHo/NPOW/amRzPzwA0ikCEWOW1ScG9FN5T9FA3NtIwXRkPMKBOajEqI6TVw/KSqx4O4eIZhLvegxfi5jp+Gj+IqSnOappnqkO1jHmBAwr3DGDfdfnlrwRMwqlIX5ms02trw=;
-X-UUID: 0bd482f8d9ab4216bb4e864f11ca85e5-20210805
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
+ bh=6g+G19yOBM7NMq+Lhft2E2pkIHoHbfTNbAIluvK7rfM=; 
+ b=gXG+4riHIK7Uzj7Ikt5KHfOAkHad5e+a9t64dY6AOwRbx6nC+bfY3x3Fk5rOqJS7+Tg0/uXgTIv3VwJ+2jM/DPzW6LrLKHgPcX3leV/OrCQyVjR+NpKBnKL4ucKUpk/shYrgYig4GBJULAB3iitQ1WwWlrlMcIvyM8ZAVZqf5fo=;
+X-UUID: fec91911fe13437ab1d5dc1e0ce73d1a-20210805
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chihhao.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 479595289; Thu, 05 Aug 2021 00:50:06 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Aug 2021 00:50:05 -0700
+ with ESMTP id 11768871; Thu, 05 Aug 2021 01:00:31 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Aug 2021 00:54:07 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Aug 2021 15:50:03 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Aug 2021 15:54:05 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 5 Aug 2021 15:50:03 +0800
-From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>, <Deren.Wu@mediatek.com>,
- <km.lin@mediatek.com>, <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <jemele@google.com>, <yenlinlai@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2] mt76: connac: add support maximum regulatory Tx power
-Date: Thu, 5 Aug 2021 15:50:02 +0800
-Message-ID: <1628149802-26387-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YQuI/Zf8vYjKx9LR@lore-desk--annotate>
-References: <YQuI/Zf8vYjKx9LR@lore-desk--annotate>
+ Frontend Transport; Thu, 5 Aug 2021 15:54:05 +0800
+From: <chihhao.chen@mediatek.com>
+To: <geraldogabriel@gmail.com>
+CC: <alsa-devel@alsa-project.org>, <chihhao.chen@mediatek.com>,
+ <damien@zamaudio.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <matthias.bgg@gmail.com>, <tiwai@suse.com>, <tiwai@suse.de>,
+ <wsd_upstream@mediatek.com>
+Subject: Re: [PATCH] ALSA: usb-audio: fix incorrect clock source setting
+Date: Thu, 5 Aug 2021 15:54:01 +0800
+Message-ID: <20210805075401.21170-1-chihhao.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <CAEsQvctJDnsaRTXAGAJ6==juKazoo2=AJrWabLzqE=jCfg5EEA@mail.gmail.com>
+References: <CAEsQvctJDnsaRTXAGAJ6==juKazoo2=AJrWabLzqE=jCfg5EEA@mail.gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_005017_058168_6E1FB025 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20210805_010037_975761_ACCB2242 
+X-CRM114-Status: UNSURE (   6.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,104 +90,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: chihhao chen <chihhao.chen@mediatek.com>
 
->> From: YN Chen <YN.Chen@mediatek.com>
->>
->> Consider .max_reg_power in struct ieee80211_channel to limit the
->> maximum power the wireless device allowed to transmit on the
->> corresponding channel according to the regulatory domain.
->>
->> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
->> ---
->> v2: consider the power limit that can be allowed on mt7663
->> ---
->>  .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 43
->> ++++++++++++++++++-
->>  1 file changed, 41 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> index d71393b1c5e6..80987af03efe 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> @@ -1773,6 +1773,43 @@ static s8 mt76_connac_get_sar_power(struct mt76_phy *phy,
->>	return target_power;
->>  }
->>
->> +static s8 mt76_connac_get_ch_power(struct mt76_phy *phy,
->> +				   struct ieee80211_channel *chan,
->> +				   s8 target_power)
->> +{
->> +	struct mt76_dev *dev = phy->dev;
->> +	struct ieee80211_supported_band *sband;
->> +	int i;
->> +
->> +	switch (chan->band) {
->> +	case NL80211_BAND_2GHZ:
->> +		sband = &phy->sband_2g.sband;
->> +		break;
->> +	case NL80211_BAND_5GHZ:
->> +		sband = &phy->sband_5g.sband;
->> +		break;
->> +	default:
->> +		return target_power;
->> +	}
->> +
->> +	for (i = 0; i < sband->n_channels; i++) {
->> +		struct ieee80211_channel *ch = &sband->channels[i];
->> +
->> +		if (ch->hw_value == chan->hw_value) {
->> +			if (!(ch->flags & IEEE80211_CHAN_DISABLED)) {
->> +				int power = 2 * ch->max_reg_power;
->> +
->> +				if (is_mt7663(dev) && (power > 63 || power < -64))
->> +					power = 63;
->
->I guess now you are missing the value for mt7921. What I mean is something similar to mt76_connac_mcu_build_sku()
->
->int max_power = is_mt7921(dev) ? 127 : 63;
+Hi Geraldo Nascimento,
 
-the power limit that can be allowed on mt7921 would be -128 to 127 and target_power is s8 type
+For echo test, it means we use this earphone to receive and play sounds at the same time.
+We found in this case serious noise problem happens.
 
-so I think the boundary check for mt7921 case is unnecessary
+Log as follows with your patch
+<6>[  175.960387][T401365] __uac_clock_find_source: Clock Selector 0xc has pin 2 selected
+<6>[  175.966980][T401365] __uac_clock_find_source: Clock Selector 0xb has pin 2 selected
+<6>[  176.026251][T400354] __uac_clock_find_source: Clock Selector 0xc has pin 1 selected
+<6>[  176.032406][T400354] __uac_clock_find_source: Clock Selector 0xb has pin 1 selected
 
->Regards,
->Lorenzo
->
->> +				target_power = min_t(s8, power, target_power);
->> +			}
->> +			break;
->> +		}
->> +	}
->> +
->> +	return target_power;
->> +}
->> +
->>  static int
->>  mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->>				  enum nl80211_band band)
->> @@ -1840,10 +1877,12 @@ mt76_connac_mcu_rate_txpower_band(struct mt76_phy *phy,
->>				.hw_value = ch_list[idx],
->>				.band = band,
->>			};
->> -			s8 sar_power;
->> +			s8 reg_power, sar_power;
->>
->> +			reg_power = mt76_connac_get_ch_power(phy, &chan,
->> +							     tx_power);
->>			sar_power = mt76_connac_get_sar_power(phy, &chan,
->> -							      tx_power);
->> +							      reg_power);
->>
->>			mt76_get_rate_power_limits(phy, &chan, &limits,
->>						   sar_power);
->> --
->> 2.25.1
->>
->
+There is no noise and I think this should be a firmware bug.
+
+Thanks
+Chihhao
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
