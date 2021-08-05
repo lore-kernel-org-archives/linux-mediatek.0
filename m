@@ -2,100 +2,99 @@ Return-Path: <SRS0=uG8S=M4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 122FCC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13135C4320A
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:41:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D407060EE8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:35:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D407060EE8
+	by mail.kernel.org (Postfix) with ESMTPS id D224E6115C
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:41:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D224E6115C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Message-ID:References:Cc:To:From:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=qmmfwbqYIVG/wphkYFPSNvao6hs8RF8H9IOSL50Av54=; b=n62AJ+BPOTta3kv5FYniznGPTI
-	BOQGipIpkdGBAq/lvoUOpD4a+gynbFh2VOnfkk/i5vnncigalCuHAFH+exA8jHZzq7MVz24H4hl21
-	6jJnTulQVNIDbGp8NMJl6dprwBhRH+t+sRWM/3ZDinxuO6PoHvWpG0nn1X/BK0v3QRXk1s05Iy0Ho
-	e60FdgxxJm4RmQrf1Dh6Atn0WGc+j1iJ7qqJCkh/HkChN2u8c/1mLZGoHVlp/giWmJgAw5V1svLX8
-	VhaeZnhi0vz5pXNUVxtQuEi0EYz1126JdEM6mjOSITvyuwJdoCqIOLwOBIlvtXvahhRZi9XEwtCdw
-	+qbIQPbw==;
+	bh=Aj/bJam3n5RQBDoPAsSrszs16Q+9FoAc/t5zvL/wKes=; b=Ux+KxkQgFRr3lDRGKLjoRG7xom
+	oiKDScoMDf2E6krCaUwGhWBlsnBlRcB81GReyclKDxuwW86orKClHdtYu03p0lW89MBhPh8z4eqvC
+	75sWJk0n23xbfT1Zeb1SpWVpLbzlQ99C0XDTgq1ziDfFkNLgPR5bujDMe75RK4X2KLVxRqdI/+WH2
+	hq1ywxUtrp6u+Ovrt6/heEtVrIUkJMmEyrAu51E7dihSP7QV0c4ukP0hZMewV72JVHVJxrMNvwKY4
+	JbD6fpnh85Gf9a7R7TRG5V02jRaPBthUUx9ymexXf1F+l7wQSZLNuMztF3sEgcvhF2v08ZcaXdlZg
+	dUzVorpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBfOu-00A4de-9F; Thu, 05 Aug 2021 15:35:16 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1mBfUc-00A5Wp-Hk; Thu, 05 Aug 2021 15:41:10 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBfOr-00A4co-4V; Thu, 05 Aug 2021 15:35:14 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- d131-20020a1c1d890000b02902516717f562so4014108wmd.3; 
- Thu, 05 Aug 2021 08:35:12 -0700 (PDT)
+ id 1mBfUZ-00A5VF-0O; Thu, 05 Aug 2021 15:41:09 +0000
+Received: by mail-wr1-x431.google.com with SMTP id b11so7172657wrx.6;
+ Thu, 05 Aug 2021 08:41:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ h=subject:from:to:cc:references:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=e8yF7W5kwQSE15C2w3dwLP7AW+KLjZQaFC34eOyj880=;
- b=Px2DyqRFw+DcAzN9Se80GLd810eRZUri4kxdIHMZeKFsJfh3/6FtPXhGCV9c3s2lye
- VI8X6Wr0DsfEX/S/vS2BCJHenbX67o2jCmoOJBTgqsfqFOHwHADmduKKudoFp7R2MjGx
- IQyzhbAYlZwhQ71Zb6Cvo1QKixvMksvjDQns0i39Tchkn3CWZ6SGmGOZtDkJYmnW3VAr
- n/fmT5sn5+vScAJK705SI1CF0E3p5RFwhfHDFKkXpFViT/TcPVuY2IXHyzomdWHEDx1g
- D4gyzjLc/ys6RMSQdQva9eBlbcuqjYqikGClDyxn7hfsS7XMLW9ggv+0BzTAbLzt4Vzs
- nPhg==
+ bh=mVQSQN7gzFUu+SQZHn++i1EQsf1unkn38HuidAPY1jk=;
+ b=EnSWxeBF1ZgrkW2cs8zQj6XSQRMdMi2KJwuWBliPKMN5E5fwIQrR6W1KoP6J2MZOQp
+ qtlLcHlvJqbZ9kkwlszodvYM6HSw+1S0fM/KiF1iiDgw0jzZXilEehO5hojIG31rU4RP
+ u2MkbGtI/Di7NufyLVvJwiXbrjChWzgElYtWu2HrlED5EDf0exg/hnt9lJNZp5G39obB
+ BmCx4i3hSxbOhjJnanOoxP75P3guSfyF4RI5AqvlYL4sPfgLVe93T7jHsW5lSeuR+3uO
+ CcKh6CDjt9tfz4Y2U0d6QacHzN5zDz7e8Ed+o7RDYzsMFw7FlMt2lOY36XtW8E/Xtk9k
+ JHRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=e8yF7W5kwQSE15C2w3dwLP7AW+KLjZQaFC34eOyj880=;
- b=fIAJbXOHYeIbcTncEBXCLC3tgYTFmZH5/4cN3pnRGTzViGLaxy5xeshS8KLTooeILh
- xEEEkl5fi024sJsZDq45njuTKWLO/IVHsH9YLOR6X5/1msLBUKXNvNczm349Tcwh3eew
- 4UFgcyRHizbSD6lKQZKncfu+4FLIyQyiMxcEk23onUkvvuKp45mCzdrteZVNmu58Dug7
- +qWWV088rotFtnHQs4nX4WG+mWK9H/0ln9YDQ7YzRD12snC3EmH824H8gFKl1pzE/90G
- 8NaOPnrXiYyNKcIXyffRDkYIzJ0g7LglDgzrdnV02a/6NauZA2CyiIz2MgHwUa/G5Gbn
- CEKQ==
-X-Gm-Message-State: AOAM531ZXi6EVwkUvp1KGoihL2on4xLrpG8ogEYeHfSkPStpzFAfk3oU
- yHE+yygE+cLmAyxzzuDEFSg=
-X-Google-Smtp-Source: ABdhPJzUbDsFxcl3SF9H4VKEhhq1IOGoLpg6RQ0UVVnvwVDJP321SBzN7VPw7laWZejK9voRoiB63Q==
-X-Received: by 2002:a05:600c:4f42:: with SMTP id
- m2mr16383078wmq.47.1628177711058; 
- Thu, 05 Aug 2021 08:35:11 -0700 (PDT)
+ bh=mVQSQN7gzFUu+SQZHn++i1EQsf1unkn38HuidAPY1jk=;
+ b=tPlYyEvvk/qEsIewB92mk2yokW39qcHpYtwllYnJZ7WXvVDAaUI3OFPWrRtfJ2Us5j
+ VbCE6p0t4oPshGhZnXcM3eJ77lXeNnV2jaJ4NhcN7adKRUYPKHI2l5D9HMKjs7YsLXn3
+ 4z2XvVEsykVWHLJyog1iJ8shun/8UbPl1+fASpLe8ro3eaIGKsoJZntLgoUOu4xe3MMY
+ CaHY8yOGnVtExGhdk/Gkwn+Pm398LskgCwh4Y19ufG9JOXQxGR4zfxZoOQk40w8+6eEi
+ 2SmLI6BqpoVF4V60J/fMsPrwFrpE6y10WhCIuUZ2nCCTyix2mIkin2HVSfsSV0OK+DVG
+ EXNQ==
+X-Gm-Message-State: AOAM532BoCUrk4Yn9ui70A4E0dSj1uvqJ4deVCZm9DCfHZmY1RP7ka98
+ mGWz9ZK2HG+bx6xYU5O0JsM=
+X-Google-Smtp-Source: ABdhPJxCtpqIunU/mFZBvCoYDNuqfTLTZ2pUolhGj+wx3TK++qKad7kmgUfuhNZIAOYiVXXE+6nQ4Q==
+X-Received: by 2002:a5d:6789:: with SMTP id v9mr6099277wru.254.1628178065390; 
+ Thu, 05 Aug 2021 08:41:05 -0700 (PDT)
 Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
  [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id w13sm7901714wru.72.2021.08.05.08.35.10
+ by smtp.gmail.com with ESMTPSA id l4sm6504709wrw.32.2021.08.05.08.41.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Aug 2021 08:35:10 -0700 (PDT)
-Subject: Re: [v14 02/21] dt-bindings: ARM: Mediatek: Add mmsys document
+ Thu, 05 Aug 2021 08:41:04 -0700 (PDT)
+Subject: Re: [v12 02/20] dt-bindings: ARM: Mediatek: Add mmsys document
  binding for MT8192
-To: Stephen Boyd <sboyd@kernel.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
  devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20210726105719.15793-1-chun-jie.chen@mediatek.com>
- <20210726105719.15793-3-chun-jie.chen@mediatek.com>
- <162740843452.2368309.13157283201271440368@swboyd.mtv.corp.google.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <b98aeeee-c544-3025-cc06-ec04be7ab638@gmail.com>
-Date: Thu, 5 Aug 2021 17:35:09 +0200
+References: <20210705033824.1934-1-chun-jie.chen@mediatek.com>
+ <20210705033824.1934-3-chun-jie.chen@mediatek.com>
+ <564fa3c8-1d85-5e98-f3f9-f83cb17e905a@gmail.com>
+ <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
+Message-ID: <e3210d22-7960-f8e4-c12d-d49ac5465463@gmail.com>
+Date: Thu, 5 Aug 2021 17:41:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <162740843452.2368309.13157283201271440368@swboyd.mtv.corp.google.com>
+In-Reply-To: <15d27282-54b2-2cfe-7f44-2df3be11dd40@gmail.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_083513_233166_7EC5D0D6 
-X-CRM114-Status: GOOD (  11.37  )
+X-CRM114-CacheID: sfid-20210805_084107_102180_E8D5F15B 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,26 +111,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 27/07/2021 19:53, Stephen Boyd wrote:
-> Quoting Chun-Jie Chen (2021-07-26 03:57:00)
->> This patch adds the mmsys document binding for MT8192 SoC.
+On 05/07/2021 17:45, Matthias Brugger wrote:
+> On 05/07/2021 17:40, Matthias Brugger wrote:
 >>
->> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+>>
+>> On 05/07/2021 05:38, Chun-Jie Chen wrote:
+>>> This patch adds the mmsys document binding for MT8192 SoC.
+>>>
+>>> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+>>
 >> Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
->> Acked-by: Rob Herring <robh@kernel.org>
->> ---
+>>
 > 
-> Applied to clk-next
+> Of course, that's not what we need here...
+> 
+> Now pushed to v5.14-tmp/dts64 until v5.14-rc1 is released.
 > 
 
-Please drop this patch. The mmsys binding will change to yaml in this merge
-window and this will create a merge conflict.
+Given that the change to yaml was taken by Rob Herring I drop this patch from my
+queue.
 
-Thanks,
+Regards,
 Matthias
+
+> Thanks!
+> Matthias
+> 
+>>> ---
+>>>  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.txt          | 1 +
+>>>  1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>>> index 78c50733985c..9712a6831fab 100644
+>>> --- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>>> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.txt
+>>> @@ -16,6 +16,7 @@ Required Properties:
+>>>  	- "mediatek,mt8167-mmsys", "syscon"
+>>>  	- "mediatek,mt8173-mmsys", "syscon"
+>>>  	- "mediatek,mt8183-mmsys", "syscon"
+>>> +	- "mediatek,mt8192-mmsys", "syscon"
+>>>  - #clock-cells: Must be 1
+>>>  
+>>>  For the clock control, the mmsys controller uses the common clk binding from
+>>>
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
