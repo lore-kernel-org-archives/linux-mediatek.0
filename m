@@ -2,114 +2,83 @@ Return-Path: <SRS0=uG8S=M4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 383F0C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E307AC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:14:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3AFA60EE8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 15:47:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F3AFA60EE8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=suse.com
+	by mail.kernel.org (Postfix) with ESMTPS id AB0E461102
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Aug 2021 17:14:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AB0E461102
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lHyZW0G5QQxtYUkO+JTAopIBJ3Nj4rfWgJ4kFkq+8Ic=; b=SOr35hasM+2jVv
-	mCn5HBjdPq6OUvsTI7f4LGDShXUb/5lEwp6/z/YNZn7ZJEisHY8rBCrTAi1fqWMJKIjseVvSct3wR
-	Kq/89WR4SlTAjJ3j73e83PLm/QsDPAeCmkwXe8bwWHTjIIHFKw+lO1scXw7gvyh930jqFldH/IjrR
-	OaQTCemAIQWzr1PJ7bT73JBajuzd44UPpBvUAtVr1mFiP2EXBtbIPbbOiGI4KakokqRORWSqjAUbi
-	MwfyzI/35yJL+WjmxqlQIZBVkFUu5vMRQAH0gVdSeHJ1ntbh185p7QdWn2DKlwIxTuLVMddQMCajw
-	ICmlZd5rXgcT0A6Jf12w==;
+	List-Owner; bh=v/oyy72d+wvgJRDO1/bRKNvyZoiF+3uz9ag7JFNsGic=; b=UIzAWg7sgqBnAW
+	NKRX/oLM/WR6+QU+2M/3/5sVme7LoC13cHGaaYp2eRe/t4RP6mPSksWf2N8T2AIRHvE/G6q0GIMp9
+	lMTKOBV0VoDbTJdueB3qWek71kIKp5ZZxKj2DZuTGmuDmyLHnt1Y2K7NgQtMlEm8tXulBRuhTK7og
+	RAB256JomsOoTZb7OvOnIoObA2wMW2+UulosfUf9eb9GumxifI2Y8hJOV+tzZATuAGru+1zX9WHui
+	rk/wI2vYSUTPniRcLHeET0zKJ+g6ZDXMNZQA7vgnERQW5NTNpgFGEVeuwTAAQyCFbAWj6Jcgob39S
+	zsqo2Jds/bMH3Ouf2wQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBfal-00A7WF-T7; Thu, 05 Aug 2021 15:47:31 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1mBgwj-00ANCq-BC; Thu, 05 Aug 2021 17:14:17 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBfah-00A7Tg-OH; Thu, 05 Aug 2021 15:47:29 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out1.suse.de (Postfix) with ESMTP id 05803223C9;
- Thu,  5 Aug 2021 15:47:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
- t=1628178443; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=xjyShzouPrJcHBbruWtTQutmAQhza4mB7qEDF4um5Mg=;
- b=HFFKv1lODf3gm58MqBGWAh8qSB3SjD0CWH1FfzIS9Ttb2ITfRIGZdfCH1BtAnoyP4ESIec
- etQbWzYl+6ASAoafzEiq37hiOIvpPGQL0Maxr2rIGqwGWJypE77o36bBPH1bIEeFynFgxE
- JPgwV+WeWHfe1PUy2fE9+HyrOT/gvco=
-Received: from suse.cz (pmladek.udp.ovpn1.prg.suse.de [10.100.224.162])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id 9259EA3EC0;
- Thu,  5 Aug 2021 15:47:22 +0000 (UTC)
-Date: Thu, 5 Aug 2021 17:47:22 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
- Steven Rostedt <rostedt@goodmis.org>,
- Thomas Gleixner <tglx@linutronix.de>, linux-kernel@vger.kernel.org,
- Andrew Morton <akpm@linux-foundation.org>,
- Peter Zijlstra <peterz@infradead.org>,
- "Paul E. McKenney" <paulmck@kernel.org>,
- Michael Ellerman <mpe@ellerman.id.au>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>, Ingo Molnar <mingo@redhat.com>,
- Borislav Petkov <bp@alien8.de>, x86@kernel.org,
- "H. Peter Anvin" <hpa@zytor.com>,
- Jason Wessel <jason.wessel@windriver.com>,
- Daniel Thompson <daniel.thompson@linaro.org>,
- Douglas Anderson <dianders@chromium.org>,
- Srikar Dronamraju <srikar@linux.vnet.ibm.com>,
- "Gautham R. Shenoy" <ego@linux.vnet.ibm.com>,
- Chengyang Fan <cy.fan@huawei.com>,
- Christophe Leroy <christophe.leroy@csgroup.eu>,
- Bhaskar Chowdhury <unixbhaskar@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- linuxppc-dev@lists.ozlabs.org, kgdb-bugreport@lists.sourceforge.net,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Masahiro Yamada <masahiroy@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Tetsuo Handa <penguin-kernel@i-love.sakura.ne.jp>,
- Vitor Massaru Iha <vitor@massaru.org>, Sedat Dilek <sedat.dilek@gmail.com>,
- Changbin Du <changbin.du@intel.com>,
- Sumit Garg <sumit.garg@linaro.org>, Cengiz Can <cengiz@kernel.wtf>,
- Jiri Slaby <jirislaby@kernel.org>, Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- kuldip dwivedi <kuldip.dwivedi@puresoftware.com>,
- Wang Qing <wangqing@vivo.com>, Andrij Abyzov <aabyzov@slb.com>,
- Johan Hovold <johan@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>,
- Claire Chang <tientzu@chromium.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Zhang Qilong <zhangqilong3@huawei.com>,
- "Maciej W. Rozycki" <macro@orcam.me.uk>,
- Guenter Roeck <linux@roeck-us.net>,
- Sergey Senozhatsky <sergey.senozhatsky@gmail.com>,
- Al Cooper <alcooperx@gmail.com>, linux-serial@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH printk v1 00/10] printk: introduce atomic consoles and
- sync mode
-Message-ID: <YQwHwT2wYM1dJfVk@alley>
-References: <20210803131301.5588-1-john.ogness@linutronix.de>
+ id 1mBgwR-00AN5J-3L; Thu, 05 Aug 2021 17:14:01 +0000
+X-UUID: c464e111a51e4dd9a726bfc9963699b1-20210805
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=zHfJNb394C+brLhvSOxt9N6/QhWbqwCvs4qwJwV5v40=; 
+ b=qDRq9qEx/3eLG/qpylK8QI0wpUyImkCBBpitLSPusCS485f8DRTeF3IbB3lwoBX8UsjgNxdxdO08OGh4kL8vjM66Iyu1OBMFCX63QLbBHf28UR1fHzyaPIdEfLiVzVrIU6/CV9C3rV9dYUIbQfb4aF0t11TpE2VhDwYYkXDzUzw=;
+X-UUID: c464e111a51e4dd9a726bfc9963699b1-20210805
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2095427071; Thu, 05 Aug 2021 10:13:55 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Aug 2021 10:13:53 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 6 Aug 2021 01:13:51 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 6 Aug 2021 01:13:51 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, <fshao@chromium.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Fabien
+ Parent" <fparent@baylibre.com>, <hsinyi@chromium.org>, "jason-jh . lin"
+ <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>
+Subject: [PATCH v3 4/4] dt-bindings: mediatek: display: add mt8195 SoC binding
+Date: Fri, 6 Aug 2021 01:13:46 +0800
+Message-ID: <20210805171346.24249-5-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210805171346.24249-1-jason-jh.lin@mediatek.com>
+References: <20210805171346.24249-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210803131301.5588-1-john.ogness@linutronix.de>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_084727_974270_1998EF70 
-X-CRM114-Status: GOOD (  30.20  )
+X-CRM114-CacheID: sfid-20210805_101359_211351_1BB065EC 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,121 +95,205 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue 2021-08-03 15:18:51, John Ogness wrote:
-> Hi,
-> 
-> This is the next part of our printk-rework effort (points 3 and
-> 4 of the LPC 2019 summary [0]).
-> 
-> Here the concept of "atomic consoles" is introduced through  a
-> new (optional) write_atomic() callback for console drivers. This
-> callback must be implemented as an NMI-safe variant of the
-> write() callback, meaning that it can function from any context
-> without relying on questionable tactics such as ignoring locking
-> and also without relying on the synchronization of console
-> semaphore.
-> 
-> As an example of how such an atomic console can look like, this
-> series implements write_atomic() for the 8250 UART driver.
-> 
-> This series also introduces a new console printing mode called
-> "sync mode" that is only activated when the kernel is about to
-> end (such as panic, oops, shutdown, reboot). Sync mode can only
-> be activated if atomic consoles are available. A system without
-> registered atomic consoles will be unaffected by this series.
->
-> When in sync mode, the console printing behavior becomes:
-> 
-> - only consoles implementing write_atomic() will be called
-> 
-> - printing occurs within vprintk_store() instead of
->   console_unlock(), since the console semaphore is irrelevant
->   for atomic consoles
+1. Add mt8195 SoC binding to AAL, CCORR, COLOR, DITHER, GAMMA, MERGE,
+   MUTEX, OVL and RDMA yaml schema.
 
-I am fine with the new behavior at this stage. It is a quite clear
-win when (only) the atomic console is used. And it does not make any
-difference when atomic consoles are disabled.
+2. Add MERGE additional property description for mt8195
+- async clock
+- fifo setting enable
+- reset controller
 
-But I am not sure about the proposed terms and implementation.
-I want to be sure that we are on the right way for introducing
-console kthreads.
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ .../display/mediatek/mediatek,aal.yaml        |  1 +
+ .../display/mediatek/mediatek,ccorr.yaml      |  5 +++
+ .../display/mediatek/mediatek,color.yaml      |  1 +
+ .../display/mediatek/mediatek,dither.yaml     |  5 +++
+ .../display/mediatek/mediatek,gamma.yaml      |  5 +++
+ .../display/mediatek/mediatek,merge.yaml      | 40 +++++++++++++++++++
+ .../display/mediatek/mediatek,mutex.yaml      |  2 +
+ .../display/mediatek/mediatek,ovl.yaml        |  5 +++
+ .../display/mediatek/mediatek,rdma.yaml       |  2 +
+ 9 files changed, 66 insertions(+)
 
-Let me try to compare the behavior:
-
-1. before this patchset():
-
-	/* printk: store immediately; try all consoles immediately */
-	int printk(...)
-	{
-		vprintk_store();
-		if (console_try_lock()) {
-			/* flush pending messages to the consoles */
-			console_unlock();
-		}
-	}
-
-	/* panic: try hard to flush messages to the consoles and avoid deadlock */
-	void panic()
-	{
-		/* Ignore locks in console drivers */
-		bust_spinlocks(1);
-
-		printk("Kernel panic ...);
-		dump_stack();
-
-		smp_send_stop();
-		/* ignore console lock */
-		console_flush_on_panic();
-	}
-
-
-2. after this patchset():
-
-   + same as before in normal mode or when there is no atomic console
-
-   + in panic with atomic console; it modifies the behavior:
-
-	/*
-	 * printk: store immediately; immediately flush atomic consoles;
-	 *         unsafe consoles are not used anymore;
-	 */
-	int printk(...)
-	{
-		vprintk_store();
-		flush_atomic_consoles();
-	}
-
-	/* panic: no hacks; only atomic consoles are used */
-	void panic()
-	{
-		printk("Kernel panic ...);
-		dump_stack();
-	}
-
-
-3. After introducing console kthread(s):
-
-	int printk(...)
-	{
-		vprintk_store();
-		wake_consoles_via_irqwork();
-	}
-
-	+ in panic:
-
-	    + with atomic console like after this patchset?
-	    + without atomic consoles?
-
-	+ during early boot?
-
-
-I guess that we will need another sync mode for the early boot,
-panic, suspend, kexec, etc.. It must be posible to debug these states
-even wihtout atomic console and working kthreads.
-
-Best Regards,
-Petr
-
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+index 7be772d77e36..e1820238db43 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
+@@ -25,6 +25,7 @@ properties:
+           - enum:
+               - mediatek,mt2712-disp-aal
+               - mediatek,mt8183-disp-aal
++              - mediatek,mt8195-disp-aal
+           - enum:
+               - mediatek,mt8173-disp-aal
+ 
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+index 5a1c27d6b3e2..4c556a2bc64a 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
+@@ -21,6 +21,11 @@ properties:
+     oneOf:
+       - items:
+           - const: mediatek,mt8183-disp-ccorr
++      - items:
++          - enum:
++              - mediatek,mt8195-disp-ccorr
++          - enum:
++              - mediatek,mt8183-disp-ccorr
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+index 9a3edf6f0b8e..a13096196a0c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
+@@ -35,6 +35,7 @@ properties:
+       - items:
+           - enum:
+               - mediatek,mt8183-disp-color
++              - mediatek,mt8195-disp-color
+           - enum:
+               - mediatek,mt8173-disp-color
+   reg:
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+index 20419f876410..e89fe7393291 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
+@@ -22,6 +22,11 @@ properties:
+     oneOf:
+       - items:
+           - const: mediatek,mt8183-disp-dither
++      - items:
++          - enum:
++              - mediatek,mt8195-disp-dither
++          - enum:
++              - mediatek,mt8183-disp-dither
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+index e2a1fc218e4f..dc78d6d05dee 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
+@@ -23,6 +23,11 @@ properties:
+           - const: mediatek,mt8173-disp-gamma
+       - items:
+           - const: mediatek,mt8183-disp-gamma
++      - items:
++          - enum:
++              - mediatek,mt8195-disp-gamma
++          - enum:
++              - mediatek,mt8183-disp-gamma
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+index 4cdce11d7fcd..1a27b037086b 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+@@ -21,6 +21,8 @@ properties:
+     oneOf:
+       - items:
+           - const: mediatek,mt8173-disp-merge
++      - items:
++          - const: mediatek,mt8195-disp-merge
+ 
+   reg:
+     maxItems: 1
+@@ -36,6 +38,31 @@ properties:
+   clocks:
+     items:
+       - description: MERGE Clock
++      - description: MERGE Async Clock
++          Controlling the synchronous process between MERGE and other display function
++          blocks cross clock domain.
++
++  mediatek,merge-fifo-en:
++      description:
++	    The setting of merge fifo is mainly provided for the display latency buffer.
++        to ensure that the back-end panel display data will not be underrun,
++        a little more data is needed in the fifo. According to the merge fifo settings,
++        when the water level is detected to be insufficient, it will trigger RDMA sending
++        ultra and preulra command to SMI to speed up the data rate.
++      type: boolean
++
++  mediatek,gce-client-reg:
++    description:
++      The register of display function block to be set by gce. There are 4 arguments,
++      such as gce node, subsys id, offset and register size. The subsys id that is
++      mapping to the register of display function blocks is defined in the gce header
++      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++  resets:
++    description: reset controller
++      See Documentation/devicetree/bindings/reset/reset.txt for details.
+ 
+ required:
+   - compatible
+@@ -55,3 +82,16 @@ examples:
+         clocks = <&mmsys CLK_MM_DISP_MERGE>;
+     };
+ 
++    merge5: disp_vpp_merge5@1c110000 {
++        compatible = "mediatek,mt8195-disp-merge";
++        reg = <0 0x1c110000 0 0x1000>;
++        interrupts = <GIC_SPI 507 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&vdosys1 CLK_VDO1_VPP_MERGE4>,
++                 <&vdosys1 CLK_VDO1_MERGE4_DL_ASYNC>;
++        clock-names = "merge","merge_async";
++        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1c11XXXX 0x0000 0x1000>;
++        mediatek,merge-fifo-en = <1>;
++        resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
++    };
++
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+index aaba6bbfb4da..0dced7a53329 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
+@@ -30,6 +30,8 @@ properties:
+           - const: mediatek,mt8173-disp-mutex
+       - items:
+           - const: mediatek,mt8183-disp-mutex
++      - items:
++          - const: mediatek,mt8195-disp-mutex
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+index 833b0ca09b21..1973eee4244f 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
+@@ -31,6 +31,11 @@ properties:
+               - mediatek,mt2712-disp-ovl
+           - enum:
+               - mediatek,mt2701-disp-ovl
++      - items:
++          - enum:
++              - mediatek,mt8195-disp-ovl
++          - enum:
++              - mediatek,mt8183-disp-ovl
+ 
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+index ce3bcca30609..847bc55252ca 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
+@@ -27,6 +27,8 @@ properties:
+           - const: mediatek,mt8173-disp-rdma
+       - items:
+           - const: mediatek,mt8183-disp-rdma
++      - items:
++          - const: mediatek,mt8195-disp-rdma
+       - items:
+           - enum:
+               - mediatek,mt7623-disp-rdma
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
