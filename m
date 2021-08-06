@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DEA3C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 04:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41329C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 04:24:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C563961154
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 04:24:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C563961154
+	by mail.kernel.org (Postfix) with ESMTPS id 00435611C5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 04:24:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 00435611C5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,67 +24,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Mime-Version:Message-Id:In-Reply-To:Date:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Tser7C4ZE3pNUxXl2YMk5+JHpZwsy/+MpKuFCHdHCQ8=; b=OhH001LjQ1fi3eYQSwKLpq+nkF
-	1rtfAB4MHscuTddcIW7czvr6IJaR5ktQ+PbuxaCFApp5OH5qDrRYL/EucJRaK7xqmhzCdRdqIE6I7
-	lpQJr3aM/zJUjwGdf/gX9BDlW5MCNE2VCZAgapjq0LuekGANfdbQBobevL/JCDXEAFphK0SD2q7dC
-	lIk2Yc4ehHcDyPPsZf0J0Zx9WIoPqeIGXlRNToyLagC5Y//tgNWOobOgGowx1B/3C7/YrQ6AgzoNM
-	0/F1V0X2oBKm7wxLZSR0TZrHPZ8nhwUrVipDJxXJOT3EzH4aw1hhB1lVR3HTiSkF79KIzFE4JbhmM
-	oD8vm4lQ==;
+	bh=PNq8YoGQ16YmbWtENcBzhkDW/KzYIt6qwjp0/t9aYs8=; b=a1d82oCfYvOSzmDTQ4UVH8SlU7
+	cSHco9JVOlvUJ9R36Ua0LR9+328WbEeduPaZvnmDAeJCkDMsSlefKDly8VeBfegabILDRcl9bO6Xr
+	eebU+TlkIS3aneg0PJD6DKgWbWBmLall5bu9uL1ETwnGLglV/JZSGUUkkxExyQaveqYJETFxwiaGX
+	736LC8gt+rWrfFux1jU+aQNME0U5ithdf+I2V2e4+wPvoYnKApbCGo6ekxW2bvRQXCVghOmDHhcLN
+	u1qs+zta1W7LeP4bUPs+3We/Bn6YRrmpnovhL/8BjfRsxMmYWa72+QRp82IrwVg2yI89awwTTLVSc
+	wuYbwlNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBrPZ-00BX1S-0D; Fri, 06 Aug 2021 04:24:45 +0000
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+	id 1mBrPc-00BX2w-IM; Fri, 06 Aug 2021 04:24:48 +0000
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBrHm-00BTB8-3C
- for linux-mediatek@lists.infradead.org; Fri, 06 Aug 2021 04:16:43 +0000
-Received: by mail-yb1-xb49.google.com with SMTP id
- 203-20020a250bd40000b02905933fff7091so835231ybl.16
- for <linux-mediatek@lists.infradead.org>; Thu, 05 Aug 2021 21:16:41 -0700 (PDT)
+ id 1mBrHp-00BTES-Gb
+ for linux-mediatek@lists.infradead.org; Fri, 06 Aug 2021 04:16:46 +0000
+Received: by mail-pj1-x104a.google.com with SMTP id
+ q6-20020a17090aa006b02901779796d79eso1513133pjp.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 05 Aug 2021 21:16:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=Q40VTyrZ8Jb3xiuLDWJt6+4MmyDxko7tqCpmYIXIET0=;
- b=KFfQ68eJZhEOu8WCeUjfFQd8FJzMNLuIbt1sBK+Zex7v8uDpxuX3qJAzY+rlDVkCzx
- ddgml7gc7yo115aJu0qJ7YFRhOH8EacWt4TFqPyugYmvZlkzGymGrEe78IRkuoTeAPIQ
- IGPEHz9/qYkpe4H4PMkNJ7jPaJ0WWG/RCMNa9z9wT7z0OXKaQksRDXFP+eeAGiunL1lE
- AxICXMcYN4tpXeX4HKJ2R6aQkGzjiINLeRiRMoQYibsJZEj1NKopEJ8EUIewwYLdidHt
- 24zi8T8Ovqs2psTayROx8d7JgvDSh+lbY1iEqTfFky4qIMSW5XhfN+nOgJIjVAKfIK2Y
- YFZA==
+ :cc; bh=VRCp1gt1+Tm8DKrP/bEBz4/wYC+uwc+iQhHn0pgVUPM=;
+ b=qqjK53VfiiIyZXKieqMrPne4RfS+RoIGd+Vs+zgcRBTVQ2or7efv+fyQDpWwa/v6yc
+ V2Nm8vCaiHPeMuv0tWK3acbZMTTGJDO2oJoTzidqaYzCZWcB7J2DhUhxwHKq53O8JkJj
+ SK1Rbi6+5eeC95kPp0xm8PkPJ/3MiwEdsG0raX5T/LIC3AANrZBoQJC5bjEdBN19taKt
+ 56LPVMFcKBRQ2XWEXM4WGz6TQAEbMHjUXAUGOaoupgKZGLBfCfCUN+ygKSi1umW+qeBT
+ l4U4qvtDOxXKoCDa8E+CsPe6LE9rR/fz8oUc2TPmRpmzzPA2zYjWsQjq1ZWbd0GKvZTC
+ WX+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=Q40VTyrZ8Jb3xiuLDWJt6+4MmyDxko7tqCpmYIXIET0=;
- b=dfmDi2UAniBQBZxzGP273u+Y0oVS3exo7OyXHst2vlpJU/krkpJfGb09q/xuiQW/cg
- SzDh0axFYHFe1rGOowvDOuVopNdBEHsQSQlE+Ak8gxzaxm7IiqE/B2w8hqXHS2xSlnCu
- Ltd+7ncMOu+AJofUiQYZhpLRzfWsy67uKU2QjbY8r7/XREh7AN134UR0nHO14cPCPV43
- LUpui1zJwB5UT6VBUQT+5ldyn1jQXW9XdyHaSan58o+iFjCQdtEm04DCSL8aHhM2sBnc
- pgQAGS295z1jsUZ+K6luD9W3nkHutegzt9+h9l5hNsQbxQVMZhHV3TbpIkl/mqhJy9bX
- 7XNA==
-X-Gm-Message-State: AOAM531qaZ5UC4WhVqwDTqludvCk7OM9QID50QnsbXIOJzC+J8Y58kR9
- JF2rP/rVm48zAko6RwmdsnhDpXWZ/rfa
-X-Google-Smtp-Source: ABdhPJy7KEPygmtbEYTAh7CaN/i2KocvupvFKwvGA77PqToujXIpHnTvPQ/IKCQ1AV7lU8YQE63ExtiPNS3T
+ bh=VRCp1gt1+Tm8DKrP/bEBz4/wYC+uwc+iQhHn0pgVUPM=;
+ b=HovpWHHph/D8yoHca05steYSL/cafz0yi8vVPOoug2ZfUKdsW8ePQDn/k+eXtDzEIF
+ NFnrXMKVolg5860bmVDQz8kU2Z92XVsWV8aTu7S8BnPMKnCl/5o5KyKV+zMnaJxyRfvs
+ POnKeWis8MR7+0sdTNbkH5KSavk8bM7CtxidAlshJDe/xAW5f/V/OKCJepjKvtBPhmdA
+ C8OTnKS6J07N+1HLoWdMQbjk868WZFFW0gMOmsgsWtbs826kuche8PBr+/54cA6IZ8Qh
+ nJGdW14IDj5MV2GR823kbL/v0jHqekOlBuNQX5JUGNtJFKnkaWYJh9chufQ1+AV2NLMn
+ bjqA==
+X-Gm-Message-State: AOAM532veVfMMD7QnwGJyGK9/XrjaGGJ/MZfI/sEmXZdKCgfEKxrQFfY
+ t4vi+EuQ26AH920lwulvi+Dqi36Lp8mj
+X-Google-Smtp-Source: ABdhPJxYcHrjQQ4a3Sxpy0Mj49WvdIyMPVK6N5vcc2g+T/OMwr+DJisr+Meut0Leq4TWpLJPRTzKEAjWkSfK
 X-Received: from tzungbi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:ebc2:859f:4153:773e])
- (user=tzungbi job=sendgmr) by 2002:a25:bc02:: with SMTP id
- i2mr9968274ybh.98.1628223400442; Thu, 05 Aug 2021 21:16:40 -0700 (PDT)
-Date: Fri,  6 Aug 2021 12:15:29 +0800
+ (user=tzungbi job=sendgmr) by 2002:a17:902:d652:b029:12b:45c1:21ba with SMTP
+ id y18-20020a170902d652b029012b45c121bamr4702610plh.9.1628223404249; Thu, 05
+ Aug 2021 21:16:44 -0700 (PDT)
+Date: Fri,  6 Aug 2021 12:15:30 +0800
 In-Reply-To: <20210806041530.4170869-1-tzungbi@google.com>
-Message-Id: <20210806041530.4170869-14-tzungbi@google.com>
+Message-Id: <20210806041530.4170869-15-tzungbi@google.com>
 Mime-Version: 1.0
 References: <20210806041530.4170869-1-tzungbi@google.com>
 X-Mailer: git-send-email 2.32.0.605.g8dce9f2422-goog
-Subject: [PATCH v7 13/14] dt-bindings: media: document mediatek,
- mt8183-vcodec-dec
+Subject: [PATCH v7 14/14] media: mtk-vcodec: enable MT8183 decoder
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: hverkuil-cisco@xs4all.nl, yunfei.dong@mediatek.com, acourbot@chromium.org
 Cc: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, 
  dafna.hirschfeld@collabora.com, mchehab@kernel.org, 
  linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, tzungbi@google.com, 
- Rob Herring <robh@kernel.org>
+ linux-arm-kernel@lists.infradead.org, tzungbi@google.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210805_211642_214393_85A783E0 
-X-CRM114-Status: UNSURE (   7.96  )
+X-CRM114-CacheID: sfid-20210805_211645_622704_A1C6586F 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,29 +101,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexandre Courbot <acourbot@chromium.org>
+From: Yunfei Dong <yunfei.dong@mediatek.com>
 
-MT8183's decoder is instantiated similarly to MT8173's.
+Now that all the supporting blocks are present, enable decoder for
+MT8183.
 
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+[acourbot: refactor, cleanup and split]
+Co-developed-by: Alexandre Courbot <acourbot@chromium.org>
 Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
 ---
- Documentation/devicetree/bindings/media/mediatek-vcodec.txt | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-index ad1321e5a22d..c44a6e6943af 100644
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-@@ -10,6 +10,7 @@ Required properties:
-   "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
-   "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
-   "mediatek,mt8192-vcodec-enc" for MT8192 encoder.
-+  "mediatek,mt8183-vcodec-dec" for MT8183 decoder.
- - reg : Physical base address of the video codec registers and length of
-   memory mapped region.
- - interrupts : interrupt number to the cpu.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index fe345aab9853..36ae3e6017f0 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -373,12 +373,17 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ }
+ 
+ extern const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata;
++extern const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata;
+ 
+ static const struct of_device_id mtk_vcodec_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-vcodec-dec",
+ 		.data = &mtk_vdec_8173_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8183-vcodec-dec",
++		.data = &mtk_vdec_8183_pdata,
++	},
+ 	{},
+ };
+ 
 -- 
 2.32.0.605.g8dce9f2422-goog
 
