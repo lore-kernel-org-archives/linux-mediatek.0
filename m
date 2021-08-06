@@ -7,65 +7,77 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A148C19F34
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 912AEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 20:38:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 18452610E7
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:49:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 18452610E7
+	by mail.kernel.org (Postfix) with ESMTPS id 56FE561181
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 20:38:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 56FE561181
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d9snUCsyn9ZmrBrBsQ7jReje5pb7DsbEkjLWCSU7faU=; b=dWTzi5Q6zAiY89
-	D86YuL39C6oKW/oPUgcTaCEGiga6LVudX2uv1NqKyRvDoNq73Sd88tjimd9PwVRka6SlzpLtFvvz2
-	XhCxS6E9XIJi3nbwyh542jimfHzjuZanlQaILjna70DCqF8dXJ9Z8M4W35sG62JJT0AZrR7MJ7rim
-	vfPHm4hYOLIsasRvnbQv/Fp/LZX6cBl3ZV+C2LEfYGqpdqT0iooJyVFlxvQ5UgF1XOM/43bZ5NZHt
-	QqnoGNIx6szXyA+BzK7TdQzWTcN89J7Zwy7cYWEQemW3y4xrrsn7VelLpzWFHIs/mPPd+hE9amdq+
-	HojEEuxpfVAdyAu97ieQ==;
+	List-Owner; bh=o/pjaJEaBnSmzOyrW40CHuZu4uCofrxTXZRkwm8U/VI=; b=Ocwm5+jN1aGfc4
+	Jljg7q4oZKvwUVi4BLODaz74QcUqFhzGtQMa2j2mCPk2rrotcNvwtHMeKOhVLBQUzXXK2WEIeg1GX
+	clZu6m/NVjnJt6XCEXeKn1VMoF1Py0CwhbKOVlnNTHzyHMPUO3NNGP3nbi35gzJ+teKkHrmwPozkH
+	yu4AQZIOa8xP1J4QVY90M6SI3xYbL9gV581O426jyxdpQyBGN3rJknShPeC4GVINtcEXvf9fZZcJ1
+	bTLktdEmqNF4ZhCqKDXdJE1zNMyDbH54GQk43WTns+R/flZh9IFkA0M0koqy4aCyDX++j9v2R9Itq
+	hbO8zF4nsUDNGhxkie2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mC3yP-00D4B6-TT; Fri, 06 Aug 2021 17:49:33 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mC6bJ-00DVZX-Jk; Fri, 06 Aug 2021 20:37:53 +0000
+Received: from mail-io1-f45.google.com ([209.85.166.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mC3yD-00D49r-0X; Fri, 06 Aug 2021 17:49:22 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6A8F1610E7;
- Fri,  6 Aug 2021 17:49:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628272160;
- bh=T7XbKNjz6J9bdpleiSzEHZfZGDNL3V/Rt8lKFm7vdVI=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=qehl2nYGu56NQ47YvZFb3tco6q5uF6+RgLz1Kn3KSngor7+15bJVjupCtFsHtlJm5
- Jgniw7UjdxMvraFBDsq0orNLK92elvMPSHcGjXwkvMA+6fiVbHRqoYqwjc21b+awvV
- /pbrbeMp6W1j4eN3+GBjqMpOTRhW0DFMkiPReSNTSxyBEuKYi/CC0Jacy6WEGThrdH
- tPl/XiPEJxNKmoHE2GN/ndBSeBB64dLJsSgWzq5M4odHaFpnZK9wddB5lxSV552tt4
- k3pGnMXJs13mqRPLQvDtprHOE5jMpGMNF4US0eUt02ghnSVyTw8g+2++lz3J2LXC4L
- mpkbSXSuftc0g==
-MIME-Version: 1.0
-In-Reply-To: <1627972461-2627-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1627972461-2627-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1627972461-2627-5-git-send-email-hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v10 4/5] spmi: mediatek: Add support for MT8195
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ id 1mC6b6-00DVXf-33; Fri, 06 Aug 2021 20:37:42 +0000
+Received: by mail-io1-f45.google.com with SMTP id y1so13844904iod.10;
+ Fri, 06 Aug 2021 13:37:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=TVKXYieXCB1DKiHzXxHGsFLtK6oj4KnoWI2F5Iz4p4M=;
+ b=bba40GXt2cxOZxpsrJXXw+PHiPgicFOH9EgQGgONMMHWJzXQx6BV8iwjhEVzdf8gsr
+ 64vC4ntoYtiPWRlrvAfMEgiBCIcsyAD29lzwZQPI1uHBn4XIckEIGAClLQs3L29kfqrz
+ d85pob2n4GjSZ4gK+KhQTpfot0qiEj6pC3ALVjNM4iXPSKoO+fIV7DnbsD8WEkBVRSLo
+ jEDNsJ824M63jywUqKZz1PoaQfr42SRkUECquTXO0lyRTNUkmwiKaKfpXOk89F0V9T2y
+ uB3cHBAMnq9nHyQZFxzCVyMi5ZSrfiEiaIU8EAaKOxRHMWKtkmuG/3Xx2iMd+xewlKGy
+ J87g==
+X-Gm-Message-State: AOAM530DQitBK/nGwJ2izKeltdkmLVv5mk65wDB3xK2h8gUHmJAB+Qxc
+ D7m50kWtF3NHdlE0VBwDdw==
+X-Google-Smtp-Source: ABdhPJxZCOZE9OxcqkC1fCzq3EI+rcQGE5VzKj6Tdg7VFwKzvA8LJ/8AIBSVEFv+o1tKeKa0bdflOA==
+X-Received: by 2002:a6b:db03:: with SMTP id t3mr684509ioc.3.1628282258694;
+ Fri, 06 Aug 2021 13:37:38 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id u6sm5050320ilk.36.2021.08.06.13.37.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Aug 2021 13:37:38 -0700 (PDT)
+Received: (nullmailer pid 1753643 invoked by uid 1000);
+ Fri, 06 Aug 2021 20:37:37 -0000
+Date: Fri, 6 Aug 2021 14:37:37 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mathias Nyman <mathias.nyman@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com,
- Henry Chen <henryc.chen@mediatek.com>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Date: Fri, 06 Aug 2021 10:49:19 -0700
-Message-ID: <162827215909.1975443.852277412377742323@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eddie Hung <eddie.hung@mediatek.com>
+Subject: Re: [PATCH 01/11] dt-bindings: usb: mtk-xhci: add support property
+ 'tpl-support'
+Message-ID: <YQ2dkcKiXxIHLCOT@robh.at.kernel.org>
+References: <1627635002-24521-1-git-send-email-chunfeng.yun@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <1627635002-24521-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210806_104921_114307_376E590E 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20210806_133740_173729_A8E5A7F9 
+X-CRM114-Status: GOOD (  15.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,62 +94,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Hsin-Hsiung Wang (2021-08-02 23:34:20)
-> From: Henry Chen <henryc.chen@mediatek.com>
-> 
-> Add spmi support for MT8195.
-> 
-> Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+On Fri, Jul 30, 2021 at 04:49:52PM +0800, Chunfeng Yun wrote:
+> Add property 'tpl-support' to support targeted peripheral list
+> for USB-IF Embedded Host Compliance Test
 
-Missing Signed-off-by from hsin-hsiung.wang here
+Given you have to configure the TPL somehow, how is this useful to be in 
+DT? And no, that's not a suggestion to put all the TPL config into DT.
 
-> ---
-> changes since v9:
-> - No change.
-> ---
->  drivers/spmi/spmi-mtk-pmif.c | 90 ++++++++++++++++++++++++++++++++++++
->  1 file changed, 90 insertions(+)
 > 
-> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-> index 94c45d46ab0c..0c320801c9d5 100644
-> --- a/drivers/spmi/spmi-mtk-pmif.c
-> +++ b/drivers/spmi/spmi-mtk-pmif.c
-> @@ -348,6 +427,14 @@ static const struct pmif_data mt6873_pmif_arb = {
->         .soc_chan = 2,
->  };
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> index 240882b12565..49729aab6d1a 100644
+> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+> @@ -115,6 +115,8 @@ properties:
 >  
-> +static const struct pmif_data mt8195_pmif_arb[] = {
-
-This is an array of type pmif_data.
-
-> +       {
-> +               .regs = mt8195_regs,
-> +               .spmimst_regs = mt8195_spmi_regs,
-> +               .soc_chan = 2,
-> +       },
-> +};
+>    usb2-lpm-disable: true
+>  
+> +  tpl-support: true
 > +
->  static int mtk_spmi_probe(struct platform_device *pdev)
->  {
->         struct pmif *arb;
-> @@ -444,6 +531,9 @@ static const struct of_device_id mtk_spmi_match_table[] = {
->         {
->                 .compatible = "mediatek,mt6873-spmi",
->                 .data = &mt6873_pmif_arb,
-
-mt6873_pmif_arb is not an array, see the context header above.
-
-How does this work? Has this been tested?
-
-> +       }, {
-> +               .compatible = "mediatek,mt8195-spmi",
-> +               .data = &mt8195_pmif_arb,
->         }, {
->                 /* sentinel */
->         },
+>    imod-interval-ns:
+>      description:
+>        Interrupt moderation interval value, it is 8 times as much as that
 > -- 
 > 2.18.0
->
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
