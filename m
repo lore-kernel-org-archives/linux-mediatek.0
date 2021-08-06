@@ -2,101 +2,70 @@ Return-Path: <SRS0=iyt4=M5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 10118C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 11:28:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8C46C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 12:00:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0F34611C9
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 11:28:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C0F34611C9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 67519610FF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 12:00:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 67519610FF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Y/+FiudQ9EDlv/sWO2QgrodeeeLz/WJqnFpkgQ6RjDI=; b=B11EravTyc2z8s5gVxle3SFlFv
-	9+RP5d2jB/jtzsoMbdCGja13KTMY4xgh4qlbB8hBmOPTx49ac2cYPYER+a2lgYCefNwHIw1NL0gbY
-	EH+klbVTBOnEJHF40m+7uelSX+FJ8qFa2OX32VnEK7IzqW1WlnfiBONpudW/V2e0el86sdwQzB1ju
-	NvRjljHwbFbLXxdmGZowc5L8A63pC3FE+N1byG76NZaw4/1EmYRsgB5iTF6q5ixvhXJegK5cYjd5E
-	X/audHP9jke9STtmFegqthNg2FKcfoZ6aF+OL5QEly160wougiO8GeHiwpEX1rRH/TWVdUptkYGnU
-	5oE1/MJg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zptS6w2vO4Ap+rdhgsnwK0FmpwNlNrjdO/O2mS+HAVY=; b=Hl4q+IeqmntO5H
+	jRP90uExLdoJqxOwOZ0YxUMzfd6DHJSrjzUZojnMLWM7LbQw8DsHMqcy0LymLoPjeji+8Fz6vIFv7
+	Mx+NSHW2HdI54Q3UB+mYUIqvki0l3G0Xz24cqU85olD4jEN5cF+udz2UzRBIPkJu6K23P83Ogfol3
+	L5/twxxr/Ix1OzgoD4qFttOs3Wf3TxdSNvPqpRFxgwCqSaG4QMQGGhZf8jtkBM8tzXWkYyXiNX/HW
+	ds5oTsNFr9NMj/6BjaogphYBPn/f1WRAC905ecfQkbm3s/ix7YrLQH9SOytUZ/7Iz+tB9WWOl5+g0
+	33yfVl2smpkY4schONJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mBy1e-00CHGt-FQ; Fri, 06 Aug 2021 11:28:30 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1mByWM-00CPSD-7E; Fri, 06 Aug 2021 12:00:14 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mBy1a-00CHGD-VJ; Fri, 06 Aug 2021 11:28:28 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id l18so10658799wrv.5;
- Fri, 06 Aug 2021 04:28:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:references:from:subject:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=d8FSL7ZCHhgZJIiY+idJw40OTs70Iw57nrfJP9BGnbE=;
- b=cAxKsiIaDgfRnuK/zxPsdagpkDcHcEQp5x82mqYiacbzYQa3b0Zu6LFIilYHKIVPdR
- rKu1lxz4DWx6nkMHVgdDVchdZWQjp8L7BPpKS9SQzBLXkzMDcl6alTwARujqfvTWttKd
- xIZy2d53EtPkoJN6x6qi9/OwutqKvxidTFBfqPL7gwuuazxQY1xF7um9sBOSD+M7dnW6
- iC+UO/Rgt0wnvV5NQXSkEqkDATOupE9PWXVpeOPFdrwTkhIWV8t6rQ3jwYjDB7XBrb4X
- RMO6egnUCa+vQyRJ6ivPZ/yIsG5Gn3DHedzcV+EZc1wLwFOktehl6pqlIH/L74KJNDMi
- OQTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:references:from:subject:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=d8FSL7ZCHhgZJIiY+idJw40OTs70Iw57nrfJP9BGnbE=;
- b=mcPUvGvqWiexKYM8Qgg2Ua0U8bdQuHwxZto/HH0uhWdLPtH4V5NdtMRFd0/PvxmdDo
- HA0oCh+p2tl06revH0ygTyoYOrPJEeJ8eMocUVSCzow1qSQRyvrHVCFrMv1xLpgh2Fk9
- WvgtTLH0ZMHRKUCUjXgoycxFJE997s+gZWQB87EqHBjRoLLi0UkO31rYuC4s4RZWY6C0
- cvYUOwNQSh3nuvJZAUyI0CYYfImp2LdNolczxB0eIfbiuMKG8/enD9NPHEgv+ZQ8FdI+
- AWEOkizdjfFpMyx6wsxEUL0FVaJ5hbTyFzXsS3eV79SI4eSSgMRpB2NF1DZ192vJYLf0
- Z4yA==
-X-Gm-Message-State: AOAM531W49tQAM7WwhVR2EeETvs/ct7Is7RiC37ntdfW1oALvFR7Ojnc
- KSea1ikbPGGLR0VbRaLdkO0=
-X-Google-Smtp-Source: ABdhPJwVaisygyPEmh8rvqau5LUUoWi2AYDqvKoquWsOcIg0kkdBtKCdCMtJJY8NSXuStdH+ruD4dA==
-X-Received: by 2002:adf:f707:: with SMTP id r7mr9920048wrp.175.1628249302788; 
- Fri, 06 Aug 2021 04:28:22 -0700 (PDT)
-Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
- [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id j1sm11411934wmo.4.2021.08.06.04.28.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Aug 2021 04:28:22 -0700 (PDT)
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, fshao@chromium.org
-Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Fabien Parent <fparent@baylibre.com>, hsinyi@chromium.org,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, nancy.lin@mediatek.com,
- singo.chang@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
-References: <20210805205226.24880-1-jason-jh.lin@mediatek.com>
- <20210805205226.24880-3-jason-jh.lin@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v6 2/7] soc: mediatek: add mtk-mmsys support for mt8195
- vdosys0
-Message-ID: <28cc4599-6eda-4784-3d8f-4570c9ab60e8@gmail.com>
-Date: Fri, 6 Aug 2021 13:28:21 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ id 1mByW9-00CPLM-N9; Fri, 06 Aug 2021 12:00:02 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 568EF61102;
+ Fri,  6 Aug 2021 12:00:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628251201;
+ bh=8CWEa5pug1TqjU/0+6MgZWQeHoGlugaUWEqNFqlUCL4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=RDSN6L+kPd4HfYFQhwnsZqxDGut6rHSipG3b2BU+aVZiPXU/OSzSP0jMtsp8oTe/V
+ oA5ypb5sWtsk9GbVmMWG9AaUDsULpVWGmIrV+U8QCEn1fgTzzr9aH47vKrluUtsTg+
+ W0zPEtZTT0TQL27yD/QOcV4ft7ivU85W5og+M2Mm0IQmSBGbGgtYIPYGtZhfWuSIl6
+ d0ohNqLAJe6uNGlPoxlCFnqeAXUYqm7hHtHTp/XGBdOBmNBuFAH22Zq7BeKAN13u+1
+ mhRM9Dba44N0Ih+zx/bwD4M3epNZP3FFvmAu3Mjpviuf5k1TVZmZ+bg+qXJjSIUnHo
+ nKZOBZdLZemDw==
+Date: Fri, 6 Aug 2021 17:29:55 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eddie Hung <eddie.hung@mediatek.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: phy: mediatek: tphy: add support
+ hardware version 3
+Message-ID: <YQ0kO7ZWO3y0Xmne@matsya>
+References: <1627028562-23584-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210805205226.24880-3-jason-jh.lin@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <1627028562-23584-1-git-send-email-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210806_042827_053873_10553A73 
-X-CRM114-Status: GOOD (  21.28  )
+X-CRM114-CacheID: sfid-20210806_050001_819175_C21BAA52 
+X-CRM114-Status: UNSURE (   9.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,108 +82,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+On 23-07-21, 16:22, Chunfeng Yun wrote:
+> The PHYA architecture is updated, and doesn't support slew rate
+> calibration anymore on 7nm or advanced process, add a new version
+> number to support it.
+> Due to the FreqMeter bank is not used but reserved, it's backward
+> with v2 until now.
+> For mt8195, no function changes when use generic v2 or v3 compatible,
+> but prefer to use v3's compatible, it will not waste the time to
+> calibrate the slew rate, and also correspond with hardware version.
 
-On 05/08/2021 22:52, jason-jh.lin wrote:
-> Add mt8195 vdosys0 clock driver name and routing table to
-> the driver data of mtk-mmsys.
-> 
+Applied all, thanks
 
-I'd like to see the implementation of vdosys1 as well, to better understand why
-we need two compatibles.
-
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
-> This patch is base on [1]
-> 
-> [1] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20210805171346.24249-2-jason-jh.lin@mediatek.com/
-
-Please add the binding description to this series.
-
-> ---
->  drivers/soc/mediatek/mt8195-mmsys.h    | 96 ++++++++++++++++++++++++++
->  drivers/soc/mediatek/mtk-mmsys.c       | 11 +++
->  include/linux/soc/mediatek/mtk-mmsys.h |  9 +++
->  3 files changed, 116 insertions(+)
->  create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
-> 
-> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
-> new file mode 100644
-> index 000000000000..9339a786ec5d
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
-> @@ -0,0 +1,96 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
-> +#define __SOC_MEDIATEK_MT8195_MMSYS_H
-> +
-> +#define MT8195_VDO0_OVL_MOUT_EN					0xf14
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1			BIT(4)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1			BIT(5)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0			BIT(6)
-> +
-> +#define MT8195_VDO0_SEL_IN					0xf34
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT		(0 << 0)
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1		(1 << 0)
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0		(2 << 0)
-> +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0		(0 << 4)
-> +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE		(1 << 4)
-> +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1		(0 << 5)
-> +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE		(1 << 5)
-> +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE		(0 << 8)
-> +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT		(1 << 8)
-> +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT		(0 << 9)
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT		(0 << 12)
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE			(1 << 12)
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0		(2 << 12)
-> +#define MT8195_SEL_IN_DSI0_FROM_DSC_WRAP0_OUT			(0 << 16)
-> +#define MT8195_SEL_IN_DSI0_FROM_DISP_DITHER0			(1 << 16)
-> +#define MT8195_SEL_IN_DSI1_FROM_DSC_WRAP1_OUT			(0 << 17)
-> +#define MT8195_SEL_IN_DSI1_FROM_VPP_MERGE			(1 << 17)
-> +#define MT8195_SEL_IN_DISP_WDMA1_FROM_DISP_OVL1			(0 << 20)
-> +#define MT8195_SEL_IN_DISP_WDMA1_FROM_VPP_MERGE			(1 << 20)
-> +#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DSC_WRAP1_IN		(0 << 21)
-> +#define MT8195_SEL_IN_DSC_WRAP1_OUT_FROM_DISP_DITHER1		(1 << 21)
-> +#define MT8195_SEL_IN_DISP_WDMA0_FROM_DISP_OVL0			(0 << 22)
-> +#define MT8195_SEL_IN_DISP_WDMA0_FROM_VPP_MERGE			(1 << 22)
-> +
-> +#define MT8195_VDO0_SEL_OUT					0xf38
-> +#define MT8195_SOUT_DISP_DITHER0_TO_DSC_WRAP0_IN		(0 << 0)
-> +#define MT8195_SOUT_DISP_DITHER0_TO_DSI0			(1 << 0)
-> +#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_IN		(0 << 1)
-> +#define MT8195_SOUT_DISP_DITHER1_TO_VPP_MERGE			(1 << 1)
-> +#define MT8195_SOUT_DISP_DITHER1_TO_DSC_WRAP1_OUT		(2 << 1)
-> +#define MT8195_SOUT_VDO1_VIRTUAL0_TO_VPP_MERGE			(0 << 4)
-> +#define MT8195_SOUT_VDO1_VIRTUAL0_TO_DP_INTF0			(1 << 4)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DSI1				(0 << 8)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DP_INTF0			(1 << 8)
-> +#define MT8195_SOUT_VPP_MERGE_TO_SINA_VIRTUAL0			(2 << 8)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA1			(3 << 8)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP0_IN			(4 << 8)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DSC_WRAP1_IN			(0 << 11)
-> +#define MT8195_SOUT_VPP_MERGE_TO_DISP_WDMA0			(1 << 11)
-> +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_DSI0			(0 << 12)
-> +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_SINB_VIRTUAL0		(1 << 12)
-> +#define MT8195_SOUT_DSC_WRAP0_OUT_TO_VPP_MERGE			(2 << 12)
-> +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DSI1			(0 << 16)
-> +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_DP_INTF0			(1 << 16)
-> +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_SINA_VIRTUAL0		(2 << 16)
-> +#define MT8195_SOUT_DSC_WRAP1_OUT_TO_VPP_MERGE			(3 << 16)
-> +
-> +static const struct mtk_mmsys_routes mmsys_mt8195_routing_table[] = {
-> +	{
-> +		DDP_COMPONENT_OVL0, DDP_COMPONENT_RDMA0,
-> +		MT8195_VDO0_OVL_MOUT_EN, MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0
-
-Please update the struct to the new version that includes a mask field.
-
-Regards,
-Matthias
+-- 
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
