@@ -6,16 +6,17 @@ X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AC9D2C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07F18C432BE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:35:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 638F26113B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:34:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 638F26113B
+	by mail.kernel.org (Postfix) with ESMTPS id B11FF610FC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Aug 2021 17:35:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B11FF610FC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,75 +26,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=l0zLDXJTgAn2hplI3VOKbjPTKQkrG+r1rlu4OH5s1Nc=; b=1QXX+pDzUIL1tVeiVem3b87QtF
-	gcenejtmy21ORmD91mOHJkNNiNVZYjFq2oefoyS8wwfarhA5HokfhHwAG6IIvrsRL0YcLPvqpo1ry
-	nD1kGInqsW93RmONvKOcRb75SoX1oBvDn2a4R7O2nCHPHW5xUf3T7c/rrk2sGfkBrtckLysLyeuBf
-	c5pzIR1TBsE5BT+WUBx4Z20TQj7WKaGSbXIoIcBGxKun1fKFqc5H5ltcTlFa2el6xBKy2IFQqsU/n
-	broKJWMMVMvTzNSjpte9YKDy3WVyffc+byZQ5HA2TNWU+JG/K1e/hbvNm0PMgHodWD06dXUnQd/Na
-	DP3iF1kg==;
+	bh=IFHMWpuP70px4DYQGZgxHx/m6mX90fpHYgO4mGMFCuo=; b=L3CmyDl4WUUp/paUtwkM1beWWI
+	zTlzoMJOQdtTTGyaJnikd9I56urPTYhiwAuB+W+/qoF8wZXnkUiYNo3HzarLPkmQgGXOAbej13zjt
+	Mv4NP/A6mdCr6NLLkIbHHsChlaZOvzxLmYXXshM7eX/1jvLXX5rlF0KRmxke6haPsDdfdMZZbLnc2
+	c+yEBGoIMQ0GtPeeatVjGUQW9OMwJFnh7J32ZQZGAvQhnaEOz4TtTNZu18V1DFR/Di9+ChEuF1nLH
+	o8vlh/mEoTGxYevyOL73sr8BwhTy+WHp8MUtPwzG9qUwyz1OL/kadv9v8+yVs/bfZIsSqrhNWlNH6
+	0fLnuBeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mC3jW-00D336-JZ; Fri, 06 Aug 2021 17:34:10 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1mC3kN-00D3AM-3P; Fri, 06 Aug 2021 17:35:03 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mC3jJ-00D31x-FA; Fri, 06 Aug 2021 17:33:58 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id b11so12049030wrx.6;
- Fri, 06 Aug 2021 10:33:56 -0700 (PDT)
+ id 1mC3kA-00D37N-0o; Fri, 06 Aug 2021 17:34:51 +0000
+Received: by mail-wr1-x434.google.com with SMTP id c9so11989597wri.8;
+ Fri, 06 Aug 2021 10:34:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=51Wt/epNCWPynZo+P6Tn8h9IazfrQzknOp2Tf5pj0cA=;
- b=hjwqkNIiEJwKS1s/Te9KqI1+7oDR4SYvX5/4vGEi/Ix4wAC0PeG+0xw8Sse6IV4WI9
- hWxlp6woHvgNjuEPWp2cs5WcJRwS0QiKxXDTXe4yLnXkkS1yxEBhJq3hBus+3GVpzyhf
- bt++srvFqauqJefvVBdz8hMKbhq4RAPidYEUGa0hbrqvS26TCoofEePDW+rSZ2DV4Lqp
- 7Jk43NjqTehcwv+M++9+vGw3swh8m8jWmYMNYS7+ToUqTK0y13Sd6wQznmlV/MPLlxsJ
- NBUd544c4/R2Er6/VNP+x+sCmA1yV8592BACRaYW4ZNUbH75wFM6hylCwgE2me5ybZuE
- qeuA==
+ bh=gV269OIUhGTszW6Q8c+CYkGmUwrY5qfXqHnqAFsmSzA=;
+ b=utNyYGZ+djwSEXtVwd3D4fowWShjRbQriv9sgUerDLdjj3US8bktFZlwMBygR2q4z7
+ u9dOKN3DD7xDtziBa3EftFmyCmfzax3i1jb2iR1Bzzya0RhYOEHUNLZmKxBNSks5AqHe
+ lgIiMO4R4x3kqe/SfuUpXu5fKdnZHIoRMObnd/WRAxgK0AGkDavMsajg/Qm4P0Fix/Px
+ LKCrqR3TL50j9kTpyGqrOR2M74di1m8jMl09uKa3qAbm6AW+Muc/iE7Wrn8H/c/dXY/N
+ zKq1PwsytRJgrHB6dcueS9fxl976/1ckPcL1jTS/Sw9sS5w0kw3XeDdD9AsXvYyqK/c8
+ yVIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=51Wt/epNCWPynZo+P6Tn8h9IazfrQzknOp2Tf5pj0cA=;
- b=uk3yTBhrEIsRD5SiBr3Mym3SRHzrBhf/hotPpOEOuSbyP5wVyWOpEq3HtNtnKMDc3M
- 5fgH5qfmoLI3MOgCH8SZAqfff39YU08eLHxEr0mJfnqhKJy41k9cHPsdV4Kqpzpm40bm
- tyUdqkHVQL/7ZTrKVhYSn+UFDjXt/I3pMv+TXX/+Kc/REwTdAMPwK1rYO4RwxVHxH0SL
- YTSJBGPVqQIV/VQM90xbb0EjfSM0JLhztJHgFtkP6Yz9k5zM7MnKgJeTCFDJbiGUb8/J
- hH1PEJpmwFPLe2zn7VcgDMaELvsSrjDeXfMN267JKHSuW9WJ51L61zK1mcuU9cEDePCg
- Q1MQ==
-X-Gm-Message-State: AOAM530nKFTMLPBQZhILmUg/YIUXYMNJHrseiV01w9EAsODGsgTrur05
- hHjPE/TT99szWib1uZ+94Ep6Y5P4bThDaw==
-X-Google-Smtp-Source: ABdhPJzOTJ2EX8FsBZts+T/paw3f2zPRquLswWYFayFLKIcZGolcAU16ulg29fb0QV9HVRhGQ73qNw==
-X-Received: by 2002:a05:6000:227:: with SMTP id
- l7mr11558350wrz.289.1628271235701; 
- Fri, 06 Aug 2021 10:33:55 -0700 (PDT)
+ bh=gV269OIUhGTszW6Q8c+CYkGmUwrY5qfXqHnqAFsmSzA=;
+ b=VRNHq4+GjRYG1G6D6+IRYZcXcVGYnz2CX6qQMmRY4anbpJ7huWcmYJIlNxiP+YnErX
+ PEX4bOE1Hx92+7W6uAkHImRWoffHzZQk1PYA7JZXmJ9cKhx8ikvU0K/ELbLJq75CXoiu
+ kjWC/ot1dv9t9PzHb54+KxK8eL5epsWiNDxIILSAxoC29dayvy3Bwqzd7eqtt52+qgc4
+ UQssQfpl9z4rEqE+3jN2a73dZZuFb5/5B8ody7Xua2vw77l7l+kNlooLtisJmGwPApgm
+ 69Cao4Z2g/HoXW9SBb5xMCgCLEsTEFJYQONb1MVomnoQ0gqs7hjAxGNDY25/S4wVQ2tw
+ zBFQ==
+X-Gm-Message-State: AOAM5339KeO7JVrQz2vjIdG/wjqOq3K3PxTHf53ApWwp25wXqeHIECCd
+ 0yJ97gyKSkUK8pNHcT88CuM8f1q20KDWyQ==
+X-Google-Smtp-Source: ABdhPJy5hRKXobHagFL31FeoP4BBTEq9NAEGv6N3mFMMrYd2T20tIldbtQDUo0iGUjBgFsneu5wqEQ==
+X-Received: by 2002:adf:f544:: with SMTP id j4mr12260576wrp.51.1628271288260; 
+ Fri, 06 Aug 2021 10:34:48 -0700 (PDT)
 Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
  [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id q14sm10474504wrm.66.2021.08.06.10.33.54
+ by smtp.gmail.com with ESMTPSA id p15sm9060219wmi.29.2021.08.06.10.34.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Aug 2021 10:33:55 -0700 (PDT)
-Subject: Re: [PATCH v2 7/7] drm/mediatek: mtk_dsi: Reset the dsi0 hardware
+ Fri, 06 Aug 2021 10:34:47 -0700 (PDT)
+Subject: Re: [PATCH v2 6/7] soc: mediatek: mmsys: Add reset controller support
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  linux-kernel@vger.kernel.org
 Cc: chunkuang.hu@kernel.org, hsinyi@chromium.org, kernel@collabora.com,
  drinkcat@chromium.org, eizan@chromium.org,
  linux-mediatek@lists.infradead.org, jitao.shi@mediatek.com,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org
 References: <20210714101141.2089082-1-enric.balletbo@collabora.com>
- <20210714121116.v2.7.Idbb4727ddf00ba2fe796b630906baff10d994d89@changeid>
+ <20210714121116.v2.6.I15e2419141a69b2e5c7e700c34d92a69df47e04d@changeid>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <07319ed2-aed9-cbd7-06aa-6603a9bd4567@gmail.com>
-Date: Fri, 6 Aug 2021 19:33:54 +0200
+Message-ID: <91bee4b6-2b43-e4ef-52ab-72e4e0b0c7b3@gmail.com>
+Date: Fri, 6 Aug 2021 19:34:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <20210714121116.v2.7.Idbb4727ddf00ba2fe796b630906baff10d994d89@changeid>
+In-Reply-To: <20210714121116.v2.6.I15e2419141a69b2e5c7e700c34d92a69df47e04d@changeid>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210806_103357_583327_A2D68147 
-X-CRM114-Status: GOOD (  21.18  )
+X-CRM114-CacheID: sfid-20210806_103450_129875_7C772D72 
+X-CRM114-Status: GOOD (  24.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,53 +111,144 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 14/07/2021 12:11, Enric Balletbo i Serra wrote:
-> Reset dsi0 HW to default when power on. This prevents to have different
-> settingbetween the bootloader and the kernel.
-
-settings between the...
-
-> 
-> As not all Mediatek boards have the reset consumer configured in their
-> board description, also is not needed on all of them, the reset is optional,
-> so the change is compatible with all boards.
+> Among other features the mmsys driver should implement a reset
+> controller to be able to reset different bits from their space.
 > 
 > Cc: Jitao Shi <jitao.shi@mediatek.com>
 > Suggested-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+I'm happy to take this, as soon as we have the updated binding description.
+
+Regards,
+Matthias
 
 > ---
 > 
 > (no changes since v1)
 > 
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  drivers/soc/mediatek/mtk-mmsys.c | 69 ++++++++++++++++++++++++++++++++
+>  drivers/soc/mediatek/mtk-mmsys.h |  2 +
+>  2 files changed, 71 insertions(+)
 > 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index ae403c67cbd9..d8b81e2ab841 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -11,6 +11,7 @@
->  #include <linux/of_platform.h>
->  #include <linux/phy/phy.h>
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index e681029fe804..6ac4deff0164 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -4,10 +4,12 @@
+>   * Author: James Liao <jamesjj.liao@mediatek.com>
+>   */
+>  
+> +#include <linux/delay.h>
+>  #include <linux/device.h>
+>  #include <linux/io.h>
+>  #include <linux/of_device.h>
 >  #include <linux/platform_device.h>
-> +#include <linux/reset.h>
+> +#include <linux/reset-controller.h>
+>  #include <linux/soc/mediatek/mtk-mmsys.h>
 >  
->  #include <video/mipi_display.h>
->  #include <video/videomode.h>
-> @@ -980,8 +981,10 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->  	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+>  #include "mtk-mmsys.h"
+> @@ -55,6 +57,8 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>  struct mtk_mmsys {
+>  	void __iomem *regs;
+>  	const struct mtk_mmsys_driver_data *data;
+> +	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+> +	struct reset_controller_dev rcdev;
+>  };
 >  
->  	ret = mtk_dsi_encoder_init(drm, dsi);
+>  void mtk_mmsys_ddp_connect(struct device *dev,
+> @@ -91,6 +95,59 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+>  }
+>  EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
+>  
+> +static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
+> +				  bool assert)
+> +{
+> +	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+> +	unsigned long flags;
+> +	u32 reg;
+> +	int i;
+> +
+> +	spin_lock_irqsave(&mmsys->lock, flags);
+> +
+> +	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
+> +
+> +	if (assert)
+> +		reg &= ~BIT(id);
+> +	else
+> +		reg |= BIT(id);
+> +
+> +	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
+> +
+> +	spin_unlock_irqrestore(&mmsys->lock, flags);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_mmsys_reset_assert(struct reset_controller_dev *rcdev, unsigned long id)
+> +{
+> +	return mtk_mmsys_reset_update(rcdev, id, true);
+> +}
+> +
+> +static int mtk_mmsys_reset_deassert(struct reset_controller_dev *rcdev, unsigned long id)
+> +{
+> +	return mtk_mmsys_reset_update(rcdev, id, false);
+> +}
+> +
+> +static int mtk_mmsys_reset(struct reset_controller_dev *rcdev, unsigned long id)
+> +{
+> +	int ret;
+> +
+> +	ret = mtk_mmsys_reset_assert(rcdev, id);
 > +	if (ret)
 > +		return ret;
+> +
+> +	usleep_range(1000, 1100);
+> +
+> +	return mtk_mmsys_reset_deassert(rcdev, id);
+> +}
+> +
+> +static const struct reset_control_ops mtk_mmsys_reset_ops = {
+> +	.assert = mtk_mmsys_reset_assert,
+> +	.deassert = mtk_mmsys_reset_deassert,
+> +	.reset = mtk_mmsys_reset,
+> +};
+> +
+>  static int mtk_mmsys_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> @@ -111,6 +168,18 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+>  		return ret;
+>  	}
 >  
-> -	return ret;
-> +	return device_reset_optional(dev);
->  }
+> +	spin_lock_init(&mmsys->lock);
+> +
+> +	mmsys->rcdev.owner = THIS_MODULE;
+> +	mmsys->rcdev.nr_resets = 32;
+> +	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+> +	mmsys->rcdev.of_node = pdev->dev.of_node;
+> +	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+>  	mmsys->data = of_device_get_match_data(&pdev->dev);
+>  	platform_set_drvdata(pdev, mmsys);
 >  
->  static void mtk_dsi_unbind(struct device *dev, struct device *master,
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+> index 11388961dded..f9f9e12ceab8 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.h
+> +++ b/drivers/soc/mediatek/mtk-mmsys.h
+> @@ -66,6 +66,8 @@
+>  #define DPI_SEL_IN_BLS				0x0
+>  #define DSI_SEL_IN_RDMA				0x1
+>  
+> +#define MMSYS_SW0_RST_B				0x140
+> +
+>  struct mtk_mmsys_routes {
+>  	u32 from_comp;
+>  	u32 to_comp;
 > 
 
 _______________________________________________
