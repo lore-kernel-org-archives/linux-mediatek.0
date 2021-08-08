@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5618DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Aug 2021 13:26:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FFEFC4338F
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Aug 2021 13:42:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 095956023B
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Aug 2021 13:26:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 095956023B
+	by mail.kernel.org (Postfix) with ESMTPS id A69B361002
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Aug 2021 13:42:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A69B361002
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,60 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k5orwBqxyypUVnkKW0SWOHhBN2BWb/o2KoaVbhQm0ic=; b=Hfh/UwapePf8Zy
-	5O1+vinE3aqMCksMhgFT+HUrUV1vX3zIIcQ7/B2edUP7y8hpliA5MQP5KJpjdLZSvzXHUfNG46+ql
-	2ilevxN8o0nkubw7JfMdNfzW6CuJ9uvtLBclFnFQYkxQi47qafOpYHEJaBWuYdO+mnw7j7TeTcoPj
-	mnK2Cve/x3/vGgdH3mnjYqj6aFGk5XG3RMZhR/uGxQRO9eFc9f8U2kXSBxaLsXcKnY1RVMErq8338
-	mYVtU/Vz0iU1BWZwQRS97qnYapgBs0gprmihoPoEI8VVtBKKsBzhLP0BAiv0VwlI8yn8n2REZbjD+
-	Zo05bC4z3TwVJJLilulg==;
+	List-Owner; bh=sQ5KA6KqDX0DDI1YETN1eZIMEU9OGdGdYesjuptn5cg=; b=RGx49Uw7yFUj27
+	2k37JzTgIYHN4dbJ7be/xGYrXmCaRMc5IvW4KYXAf24YxxCOErZKSYRKXFQpnyhI7SvpKH/m2gW19
+	lcFDpntnbfM7Dp9tBHrKUPu/YBEI9J13ZhOasbC2OE62fvFyN2a6iZK2FBruGZlj1Rac/5hSqsDbb
+	W5P0SMfpkZ2MZLnsefb0FEfWOuCMzDC114IEYVir21iZa7akVeALVgHjP4jpKdrVnS0813flowmMq
+	4N+fR7+QeIfCmnuTHA+sHQLMplVZ9oq495R7k9q5F2WHcDEhnnjaA9E6stpMAabPuB3rjkbSUmv65
+	F0Ln3Ff2UTgp9PM5+n2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mCioJ-00FtFN-Ju; Sun, 08 Aug 2021 13:25:51 +0000
+	id 1mCj3l-00FvZI-CL; Sun, 08 Aug 2021 13:41:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mCinJ-00Fss6-VC; Sun, 08 Aug 2021 13:24:51 +0000
-X-UUID: 204f8777e4214c32888fdcbe796201ff-20210808
+ id 1mCj3Y-00FvXM-KL; Sun, 08 Aug 2021 13:41:38 +0000
+X-UUID: a3fe6dffa178400db2c7610ec91d0f7d-20210808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=+Z/S5gvgTbfuWoIv/+O6+a1edaRbLLjzRtmuVf/eXns=; 
- b=KhSsiapp6b1s+bVppNkoZQwM/vSGTGFQLj9XCTkI6feQBEZjGMwy89PeDT0lIT7SGoAOq+gQp0jFQikkLtOSpwwkzQenjzcvSBHQQPDrWF6pQinAe83AKbg8tkWNfS1Jn1G+FZOH+oUo5ICIYDsBP8mTcI3aZvKZcg5LGDcJSMk=;
-X-UUID: 204f8777e4214c32888fdcbe796201ff-20210808
+ bh=HsuGLAwsb6hWbp0zS4Q7vbv/qCVU95pAWkTL3vdVshE=; 
+ b=t0QIp9aDBg+gYgJ4Mn+ULvviJvBh+UpmdBq088SQ3yBqhKb+0Ihz0clyRodZ+a5KULt92NrPKzMw6JnTHRyGChKVsBMm5ZTiWWDKkZ8sM/JsF7uuHkr/woEHK8l2QCsucubh8Go08F5AXQ2QD47L+b5Na2Z1mpa6jxY3eNYbyrM=;
+X-UUID: a3fe6dffa178400db2c7610ec91d0f7d-20210808
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jitao.shi@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2131548674; Sun, 08 Aug 2021 06:24:44 -0700
-Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 8 Aug 2021 06:24:43 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N1.mediatek.inc
- (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sun, 8 Aug 2021 21:24:36 +0800
+ with ESMTP id 212569558; Sun, 08 Aug 2021 06:41:32 -0700
+Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 8 Aug 2021 06:41:25 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
+ (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sun, 8 Aug 2021 21:41:22 +0800
 Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
  MTKCAS36.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sun, 8 Aug 2021 21:24:36 +0800
+ 15.0.1497.2 via Frontend Transport; Sun, 8 Aug 2021 21:41:21 +0800
 From: Jitao Shi <jitao.shi@mediatek.com>
-To: Thierry Reding <thierry.reding@gmail.com>, Lee Jones
- <lee.jones@linaro.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?=
- <u.kleine-koenig@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pwm@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <srv_heupstream@mediatek.com>, <yingjoe.chen@mediatek.com>,
- <eddie.huang@mediatek.com>, <ck.hu@mediatek.com>, <stonea168@163.com>,
- <huijuan.xie@mediatek.com>, <shuijing.li@mediatek.com>, Jitao Shi
- <jitao.shi@mediatek.com>
-Subject: [PATCH v7 1/5] pwm: mtk-disp: adjust the clocks to avoid them mismatch
-Date: Sun, 8 Aug 2021 21:24:29 +0800
-Message-ID: <20210808132433.66037-2-jitao.shi@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Daniel
+ Vetter" <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <ck.hu@mediatek.com>,
+ <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
+ <shuijing.li@mediatek.com>, <robh+dt@kernel.org>,
+ <devicetree@vger.kernel.org>, Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v6 1/1] drm/mediatek: force hsa hbp hfp packets multiple of
+ lanenum to avoid screen shift
+Date: Sun, 8 Aug 2021 21:41:17 +0800
+Message-ID: <20210808134117.66798-2-jitao.shi@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210808132433.66037-1-jitao.shi@mediatek.com>
-References: <20210808132433.66037-1-jitao.shi@mediatek.com>
+In-Reply-To: <20210808134117.66798-1-jitao.shi@mediatek.com>
+References: <20210808134117.66798-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 476BE76CBF5C7BD298A3F64330E52BAEC8D8249FA9A0A774288EB40B18DAA1282000:8
+X-TM-SNTS-SMTP: 89CAE4489DF374D6EA52F8B4A37A36F547D75518C1FB79138F6B3F4C046C338A2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210808_062450_124128_97906509 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20210808_064136_725003_8CE01DF3 
+X-CRM114-Status: GOOD (  11.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,168 +94,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The clks "main" and "mm" are prepared in .probe() (and
-unprepared in .remove()). This results in the clocks being on
-during suspend which results in unnecessarily increased power
-consumption.
-
-Remove the clock operations from .probe() and .remove().
-Add the clk_prepare_enable() in .enable().
-Add the clk_disable_unprepare() in .disable().
+The bridge chip ANX7625 requires the packets on lanes aligned at the end,
+or ANX7625 will shift the screen.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 ---
- drivers/pwm/pwm-mtk-disp.c | 72 ++++++++++++++++----------------------
- 1 file changed, 31 insertions(+), 41 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/pwm/pwm-mtk-disp.c b/drivers/pwm/pwm-mtk-disp.c
-index 9b3ba401a3db..3ade525adcc3 100644
---- a/drivers/pwm/pwm-mtk-disp.c
-+++ b/drivers/pwm/pwm-mtk-disp.c
-@@ -74,6 +74,19 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	u64 div, rate;
- 	int err;
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index ae403c67cbd9..033234d51e86 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -194,6 +194,8 @@ struct mtk_dsi {
+ 	struct clk *hs_clk;
  
-+	err = clk_prepare_enable(mdp->clk_main);
-+	if (err < 0) {
-+		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
-+		return err;
+ 	u32 data_rate;
++	/* force dsi line end without dsi_null data */
++	bool force_dsi_end_without_null;
+ 
+ 	unsigned long mode_flags;
+ 	enum mipi_dsi_pixel_format format;
+@@ -499,6 +501,13 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+ 		DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\n");
+ 	}
+ 
++	if (dsi->force_dsi_end_without_null) {
++		horizontal_sync_active_byte = roundup(horizontal_sync_active_byte, dsi->lanes) - 2;
++		horizontal_frontporch_byte = roundup(horizontal_frontporch_byte, dsi->lanes) - 2;
++		horizontal_backporch_byte = roundup(horizontal_backporch_byte, dsi->lanes) - 2;
++		horizontal_backporch_byte -= (vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
 +	}
 +
-+	err = clk_prepare_enable(mdp->clk_mm);
-+	if (err < 0) {
-+		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
-+		clk_disable_unprepare(mdp->clk_main);
-+		return err;
-+	}
+ 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
+ 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
+ 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+@@ -1095,6 +1104,10 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	dsi->bridge.of_node = dev->of_node;
+ 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
+ 
++	if (dsi->next_bridge)
++		dsi->force_dsi_end_without_null = of_device_is_compatible(dsi->next_bridge->of_node,
++									  "analogix,anx7625");
 +
- 	/*
- 	 * Find period, high_width and clk_div to suit duty_ns and period_ns.
- 	 * Calculate proper div value to keep period value in the bound.
-@@ -87,8 +100,11 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	rate = clk_get_rate(mdp->clk_main);
- 	clk_div = div_u64(rate * period_ns, NSEC_PER_SEC) >>
- 			  PWM_PERIOD_BIT_WIDTH;
--	if (clk_div > PWM_CLKDIV_MAX)
-+	if (clk_div > PWM_CLKDIV_MAX) {
-+		clk_disable_unprepare(mdp->clk_mm);
-+		clk_disable_unprepare(mdp->clk_main);
- 		return -EINVAL;
-+	}
+ 	drm_bridge_add(&dsi->bridge);
  
- 	div = NSEC_PER_SEC * (clk_div + 1);
- 	period = div64_u64(rate * period_ns, div);
-@@ -98,16 +114,6 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 	high_width = div64_u64(rate * duty_ns, div);
- 	value = period | (high_width << PWM_HIGH_WIDTH_SHIFT);
- 
--	err = clk_enable(mdp->clk_main);
--	if (err < 0)
--		return err;
--
--	err = clk_enable(mdp->clk_mm);
--	if (err < 0) {
--		clk_disable(mdp->clk_main);
--		return err;
--	}
--
- 	mtk_disp_pwm_update_bits(mdp, mdp->data->con0,
- 				 PWM_CLKDIV_MASK,
- 				 clk_div << PWM_CLKDIV_SHIFT);
-@@ -124,8 +130,8 @@ static int mtk_disp_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 					 0x0);
- 	}
- 
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
-+	clk_disable_unprepare(mdp->clk_mm);
-+	clk_disable_unprepare(mdp->clk_main);
- 
- 	return 0;
- }
-@@ -135,13 +141,16 @@ static int mtk_disp_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	struct mtk_disp_pwm *mdp = to_mtk_disp_pwm(chip);
- 	int err;
- 
--	err = clk_enable(mdp->clk_main);
--	if (err < 0)
-+	err = clk_prepare_enable(mdp->clk_main);
-+	if (err < 0) {
-+		dev_err(chip->dev, "Can't enable mdp->clk_main: %pe\n", ERR_PTR(err));
- 		return err;
-+	}
- 
--	err = clk_enable(mdp->clk_mm);
-+	err = clk_prepare_enable(mdp->clk_mm);
- 	if (err < 0) {
--		clk_disable(mdp->clk_main);
-+		dev_err(chip->dev, "Can't enable mdp->clk_mm: %pe\n", ERR_PTR(err));
-+		clk_disable_unprepare(mdp->clk_main);
- 		return err;
- 	}
- 
-@@ -158,8 +167,8 @@ static void mtk_disp_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	mtk_disp_pwm_update_bits(mdp, DISP_PWM_EN, mdp->data->enable_mask,
- 				 0x0);
- 
--	clk_disable(mdp->clk_mm);
--	clk_disable(mdp->clk_main);
-+	clk_disable_unprepare(mdp->clk_mm);
-+	clk_disable_unprepare(mdp->clk_main);
- }
- 
- static const struct pwm_ops mtk_disp_pwm_ops = {
-@@ -192,22 +201,14 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 	if (IS_ERR(mdp->clk_mm))
- 		return PTR_ERR(mdp->clk_mm);
- 
--	ret = clk_prepare(mdp->clk_main);
--	if (ret < 0)
--		return ret;
--
--	ret = clk_prepare(mdp->clk_mm);
--	if (ret < 0)
--		goto disable_clk_main;
--
- 	mdp->chip.dev = &pdev->dev;
- 	mdp->chip.ops = &mtk_disp_pwm_ops;
- 	mdp->chip.npwm = 1;
- 
- 	ret = pwmchip_add(&mdp->chip);
- 	if (ret < 0) {
--		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
--		goto disable_clk_mm;
-+		dev_err(&pdev->dev, "pwmchip_add() failed: %pe\n", ERR_PTR(ret));
-+		return ret;
- 	}
- 
- 	platform_set_drvdata(pdev, mdp);
-@@ -226,24 +227,13 @@ static int mtk_disp_pwm_probe(struct platform_device *pdev)
- 	}
- 
- 	return 0;
--
--disable_clk_mm:
--	clk_unprepare(mdp->clk_mm);
--disable_clk_main:
--	clk_unprepare(mdp->clk_main);
--	return ret;
- }
- 
- static int mtk_disp_pwm_remove(struct platform_device *pdev)
- {
- 	struct mtk_disp_pwm *mdp = platform_get_drvdata(pdev);
--	int ret;
--
--	ret = pwmchip_remove(&mdp->chip);
--	clk_unprepare(mdp->clk_mm);
--	clk_unprepare(mdp->clk_main);
- 
--	return ret;
-+	return pwmchip_remove(&mdp->chip);
- }
- 
- static const struct mtk_pwm_data mt2701_pwm_data = {
+ 	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
 -- 
 2.25.1
 _______________________________________________
