@@ -2,86 +2,71 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A21B5C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 07:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21C65C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 07:43:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4A5BC61055
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 07:32:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4A5BC61055
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id D759361055
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 07:43:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D759361055
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zDv6iOHJI/rR4fj+ocSY4bupzh6RUxr7QI90FPIgGxA=; b=OTf/IKCmWga1p2
-	1/GvW2x/ubFPPx0iSexDE5kw0oa6YL7C7VzdFf6IVeZie1Z1hOXUnzPVMNKRyeOUcGz79WwnTrrRh
-	7Y1cZa8xJPgxXyWCKU3/8XgDZALPp1p0Zb3KBl8SKq6aFWfS2MOqjIYPP29mQmK8PaqvrVw2BFnEQ
-	uc3ZKRQsujtjTqunVeeHQm15f0RuCtWLzP4/QgGfx8q7/JNGwRkBnCbKHLMUbbmC4mcyEIjRuyXdr
-	zzAYQqk6GAr/rpEeiinRdtpFUIZbs2DDJmDytTuSpK2xn0JTfrn5eIBWTSEWTJSwqxACcoVWNHKQc
-	Z/O2WKasyDTVHEwJN1RA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WieqPXW4P6e4P5A1c4mTkS5fi0Y3c69C/Iwq6Q4wl3I=; b=BtHU45uC0kfzMqO7SZoDpNmHTj
+	hQssdSeDSNZyZlyBTtAy1v++rFr+kziOlULWty3kGjE4yl7YzfRjoHVosETCKOkkNb+iHvhzHu9+N
+	e8FJkxjPsWtdOYn22aKrJJvoBW2ZjHA6MmcRk0ZX01u+PuVN12E7UAUDzvXx1e31o2MXA+SsZri/H
+	bcZ8FDQvt2ad8vRcEmjgYg8mSRZTFV0B+yjJMdN5bVzWDTGXUPF0Powdvwe4q0dwyOx/Nk++deqRL
+	Ptyy20qbuEr1EvGdQsRB77LnHrsgg6lCi8wC5Am/uJvvH9gpKam4tppJsINMaeAkcqwiUSG0Idabl
+	3cqNTXng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mCzmB-00HMdT-83; Mon, 09 Aug 2021 07:32:47 +0000
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+	id 1mCzwL-00HP5b-Fm; Mon, 09 Aug 2021 07:43:17 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mCzm8-00HMc8-VS
- for linux-mediatek@lists.infradead.org; Mon, 09 Aug 2021 07:32:46 +0000
-Received: by mail-pj1-x1029.google.com with SMTP id
- w13-20020a17090aea0db029017897a5f7bcso5084823pjy.5
- for <linux-mediatek@lists.infradead.org>; Mon, 09 Aug 2021 00:32:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NVCCSnIXYykkg2R7yVA5Ld91gUKOn2zITwPVLJyBQvQ=;
- b=JJ0xgqBnD9h/5UXKJJkdIH5qjmoVw6ZhAxv2ayd+S0yB+m/LShHqM8AynrVtiYUuPD
- alwnu+6AGSPiAaPuawgIIconPh0TGQkupInxxbQwuXXiLrMagcGMZJzAZPpnexiGg+6Q
- yKPYKw7FJTDbtEkvB2KSnDDzvYmbkM/E5jEWg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=NVCCSnIXYykkg2R7yVA5Ld91gUKOn2zITwPVLJyBQvQ=;
- b=tDjx+fhq9Qh57hKitpmS+SZLl9xJpTLz021LSeNocbw0WbSBGhdGCw/5/F2W7bcvDo
- 4dYfK1XrAJLXzFozxkYooRz5KGedI8oXL9289TAWm8q6hC7UhABFDMkiDnSU/AjrYThw
- cLOZ/B7VLKPWnmTh6SecUf9Qvt9CXdTAjJItQuFjXQE4U3AHV5cSSTBJ4i54NigR+5v1
- /jP6kQlnVi10hZ+iiQvEJhOTlbvj2IfQqpReC/Iwn/DroM0Ro5rbRs0zvwFuaG6QuWV8
- liwc/6x2mIHw8hrZc/3g7bh/QkwFY1v1ZLigZKua7zaalhZTXNSICsrE8qamv/Sg2L6M
- H4CQ==
-X-Gm-Message-State: AOAM532KSFtiwEYiA8aupphFGZZOoK3CY/JBZpf/BfIuYCFvOGU+HsM4
- MuMFou4WHVXF7Itw7mH4gifKHJcQcKr4qg4DIpkQLw==
-X-Google-Smtp-Source: ABdhPJzPT1GiwQpBd6U/85ILPMLMrLPdsU7/6fuodJb9JGdW/fcRu0XqgpdJcPoOgwhC12HFQLmJTOHVjKPOQOD+oQ8=
-X-Received: by 2002:a17:90b:102:: with SMTP id p2mr150614pjz.126.1628494362683; 
- Mon, 09 Aug 2021 00:32:42 -0700 (PDT)
+ id 1mCzw7-00HP2I-Ui; Mon, 09 Aug 2021 07:43:05 +0000
+Received: from [IPv6:2a02:810a:880:f54:bc37:c53f:a9f8:ed01] (unknown
+ [IPv6:2a02:810a:880:f54:bc37:c53f:a9f8:ed01])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 99E751F42802;
+ Mon,  9 Aug 2021 08:42:59 +0100 (BST)
+Subject: Re: [PATCH v6 1/9] mtk-mdp: propagate errors from clock_on
+To: Eizan Miyamoto <eizan@google.com>
+Cc: linux-kernel@vger.kernel.org, wenst@chromium.org,
+ houlong.wei@mediatek.com, yong.wu@mediatek.com,
+ enric.balletbo@collabora.com, devicetree@vger.kernel.org,
+ chunkuang.hu@kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20210802121215.703023-1-eizan@chromium.org>
+ <20210802220943.v6.1.I9db0d408ef79d300672ec0311a6bee9556801631@changeid>
+ <8fe5ac46-a9db-710e-a6d1-856805ab2773@collabora.com>
+ <CAOak1e_xw84Q+ikAn7TEqie00Sbv4Qpaax==jZ5MJVfPP1pf0Q@mail.gmail.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <171db357-0d8a-6676-32dd-7c506708375c@collabora.com>
+Date: Mon, 9 Aug 2021 09:42:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-References: <1627635002-24521-1-git-send-email-chunfeng.yun@mediatek.com>
- <1627635002-24521-9-git-send-email-chunfeng.yun@mediatek.com>
-In-Reply-To: <1627635002-24521-9-git-send-email-chunfeng.yun@mediatek.com>
-From: Ikjoon Jang <ikjn@chromium.org>
-Date: Mon, 9 Aug 2021 15:32:31 +0800
-Message-ID: <CAATdQgA4qwKb=Uee1pUj-Fk8G31zA40OD7o49W1YLUhZh7BHWA@mail.gmail.com>
-Subject: Re: [PATCH 09/11] usb: xhci-mtk: check boundary before check tt
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
- Eddie Hung <eddie.hung@mediatek.com>
+In-Reply-To: <CAOak1e_xw84Q+ikAn7TEqie00Sbv4Qpaax==jZ5MJVfPP1pf0Q@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_003245_077911_540A8E2D 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20210809_004304_151669_C8D360BB 
+X-CRM114-Status: GOOD (  24.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,52 +78,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chunfeng,
+Hi,
 
-On Fri, Jul 30, 2021 at 4:50 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> check_sch_tt() will access fs_bus_bw[] array, check boundary
-> firstly to avoid out-of-bounds issue.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/usb/host/xhci-mtk-sch.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-> index 10c0f0f6461f..c2f13d69c607 100644
-> --- a/drivers/usb/host/xhci-mtk-sch.c
-> +++ b/drivers/usb/host/xhci-mtk-sch.c
-> @@ -600,13 +600,14 @@ static int check_sch_bw(struct mu3h_sch_bw_info *sch_bw,
->          * and find a microframe where its worst bandwidth is minimum.
->          */
->         for (offset = 0; offset < sch_ep->esit; offset++) {
-> -               ret = check_sch_tt(sch_ep, offset);
-> -               if (ret)
-> -                       continue;
->
->                 if ((offset + sch_ep->num_budget_microframes) > esit_boundary)
->                         break;
+On 09.08.21 05:23, Eizan Miyamoto wrote:
+> Hi Dafna, thank you very much for spending time to review the patch,
+> your time spent is very much appreciated.
+> 
+> On Thu, Aug 5, 2021 at 4:06 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>> +err_clk_prepare_enable:
+>>> +     for (--i; i >= 0; i--) {
+>>> +             if (IS_ERR(comp->clk[i]))
+>>> +                     continue;
+>>> +             clk_disable_unprepare(comp->clk[i]);
+>>>        }
+>>> +
+>>> +     return status;
+>>
+>> There is an API function clk_bulk_prepare_enable to prepare and enable an array of clks
+>> so you can just use it.
+> 
+> As per Enric's suggestion earlier in this email thread, are you OK
+> with me making this change in a follow-up patch, particularly since
+> the logic as it is was preserved from previous functionality?
 
-Instead of dropping it,
-I'm wondering if it should be checked against (offset & 63) == 0 when it's 64?
+sure,
+I just give suggestions.
+A follow-up patch would be nice.
 
->
-> +               ret = check_sch_tt(sch_ep, offset);
-> +               if (ret)
-> +                       continue;
-> +
->                 worst_bw = get_max_bw(sch_bw, sch_ep, offset);
->                 if (worst_bw > bw_boundary)
->                         continue;
-> --
-> 2.18.0
->
+> 
+>>> -static void mtk_mdp_clock_on(struct mtk_mdp_dev *mdp)
+>>> +static int mtk_mdp_clock_on(struct mtk_mdp_dev *mdp)
+>>>    {
+>>> -     struct device *dev = &mdp->pdev->dev;
+>>>        struct mtk_mdp_comp *comp_node;
+>>> +     int status;
+>>> +     struct device *dev = &mdp->pdev->dev;
+>>> +     int err;
+>>>
+>>> -     list_for_each_entry(comp_node, &mdp->comp_list, node)
+>>> -             mtk_mdp_comp_clock_on(dev, comp_node);
+>>> +     list_for_each_entry(comp_node, &mdp->comp_list, node) {
+>>> +             err = mtk_mdp_comp_clock_on(dev, comp_node);
+>>> +             if (err) {
+>>> +                     status = err;
+>>
+>> You can get rid of the new var 'status' and just return ret in case of error
+> 
+> This seems like a nit (please let me know if you disagree), and it's
+> also cleaned up in a follow-on patch in the series ("don't
+> pm_run_time_get/put for master comp in clock_on"). Is making the
+> change you are suggesting here something that should require uploading
+> a new series version?
+
+Hi, no, I am fine with it. No need for new version.
+
+
+Thanks,
+Dafna
+
+> 
+> Eizan
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
