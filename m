@@ -2,89 +2,80 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F560C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A2B7C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 05:20:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D95F860FC2
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:24:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D95F860FC2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2183F60F55
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 05:20:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2183F60F55
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HUYkY6NTWCCGwiOG6jqPnD9UK6dPo6JSY+/04bC6ieg=; b=bZWzDiOFXPR1E0
-	7/Y7eXEcaaM5hIdZhBzj1B6nmbbwM88T6YmF09oIgOJkciUOroLmZxNsTce9NJd0WQ5SJD28svxKJ
-	HC2yhmYNpjLyZNWY7oXSFkynv/woQdeNAQU8BoYB6F0/GSnmJPfEud4Ci0eKkRk8A1FMTs8Pxz8J7
-	BoCehBK0eqoJRjKdf3JCEsq2jzpH4rnKwvnAz4VA++kJaaVa3VzjpoodxjhNDUQpWWHZ/TRIWOUkb
-	83YH5+PQHrpAtLwtV9c6bNivZ8uuoFVSsNsxCN/qhsDXU//anuHU89iUyvWGkdg1vQLb9eTgfR6bz
-	yVZj1HS2Qp19wmVjz7yg==;
+	List-Owner; bh=VKLYWJFpM1qiD3H3jtM/6s4R+g/2mBJvPSc0wq/7sFY=; b=f4KGQZABSL5hvR
+	AlzcGsceDKhKZc7tElB3ZKz082UdxF5GwxxKgMcaMIZGeREYL7T3cPT4ulc9Zf61MFFnuLCDVLWyu
+	ySAVo5LxKd9bvbIW5C5lWwjt+kyH9l1ezLy68onsaT9esE2MpREEhMnsiCIdNagWiOUOIbhRvkF09
+	28Zr1sv2pXOWHUpRyRhfnhcO1JQus6MO6BYpi1ZeuriYJ5ZR/8IOdKwjhrdBya7bywX8nmnBeWzVP
+	tQPZF/SMjW1WwGa3AtjrBRqP2e8O8CbtVzUOtW/8BDYT4L9PqfxydCkbzH1lS5HDVDfGWXO9DST46
+	E4OpmCplYsKQtovQoaGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mCvta-00H1VX-FF; Mon, 09 Aug 2021 03:24:10 +0000
-Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+	id 1mCxhv-00H9iq-Hn; Mon, 09 Aug 2021 05:20:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mCvtN-00H1SY-5m
- for linux-mediatek@lists.infradead.org; Mon, 09 Aug 2021 03:23:58 +0000
-Received: by mail-lj1-x232.google.com with SMTP id h2so9411656lji.6
- for <linux-mediatek@lists.infradead.org>; Sun, 08 Aug 2021 20:23:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DeHqVi50CBdFqd2+LMixauUxIiHfce3Yzl/5XSJiGW4=;
- b=udwP6An1CopsSJoND9TlRMg9C+2um44ZaVmKGf2a64xc4zfU4B+ba9JQrNJi7MAs8M
- TYEk25w2jsN0FflqKdIu+nBRbjdZX+LZiiFcR+9C+rPscQrfWRvUbTHVO73bRfAtJgCy
- xy3oLjEh4rLObEK2Lh+uFTsJBKhqqcJzPmrWpmjkjL8Ut9li5azzrDc9cYodoVsM9r1l
- 61bL4/j+xEgq3dG5qbFQuOy+c2KRplm2ID2KeD3hrVxRWz5+6coq92wN9tfRVx1ktKCH
- TSA4/f1IBPIOMagR2QvkrAo5oXxfJKHihMqLSfevR2stW/TMZFnJuoxCdMvlBPrlhMnC
- 1dzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DeHqVi50CBdFqd2+LMixauUxIiHfce3Yzl/5XSJiGW4=;
- b=HRuZnUJSrGa8alA20H5Ub3llLNZetm672efY32Ce0QZ3Pk6nOfieOTJzwOIickDxzU
- N8LtjqRfPjKZM3r2aHsyYQwSrjd2lA8icG91Z1aZeeDDgyNTv5XKkqywRrOiuruW1Pwt
- HllBycT8WbkuVxkvj9xxi33Z/ErtDZ1XhKfaOO0POx7Dqk4UUwgSunvlLK7LrnvxAXt+
- pzEzUcibbvdUYI3WxDAUOJbeObcVwuFFbxysz3Owu/+mrXU+Dld/DL6t/Jv3QxA8G36t
- aSEua+cebjL+aSZ/65zxw/5CsUeM7AGa6ZSpzoKkMhy5JdL1rxeEm5748a+bwoZWVN3I
- iUtg==
-X-Gm-Message-State: AOAM533dRMwpm1/Jt8iEWdUbg4aD6ZkCE2y3BGwNt1Ez+U6U6R7+n4t+
- Oph0d2q76wPDA010aSodU+lekOFDI8Ho1U1Jz6Uc8w==
-X-Google-Smtp-Source: ABdhPJzWrze6pAE8SouLNWKvQSYVzPjq/X4MfGn/t6RZQRfJMwb3DGCw0Pw2Pt5DPOfM3ZweoUmSdCNVONUnlfB2Cpo=
-X-Received: by 2002:a2e:9e0b:: with SMTP id e11mr14181716ljk.423.1628479435239; 
- Sun, 08 Aug 2021 20:23:55 -0700 (PDT)
+ id 1mCxht-00H9g4-B4; Mon, 09 Aug 2021 05:20:14 +0000
+X-UUID: c9d43990c88e476998cc00585c051618-20210808
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=t0hkl5zGRmxjNWmUwYmlaOLF99pnIX1VOCnNJA7EyMU=; 
+ b=KYTI1tFsdP9rPeYKBhqU80iX7jjk4xl/A24j2uK88xJ7+RU/pszPZ4Z6lBRlpQUFkWtJib6MQh99qUNuHgJ0QsDHhpQZ+5CRtVf5/FBLDvoWn6n9MvwnsS54MBYKrYPGkjKnb9NI84d76Od+f8nI4ldIFxIuxYR/w6wwWZvrLfs=;
+X-UUID: c9d43990c88e476998cc00585c051618-20210808
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 550336015; Sun, 08 Aug 2021 22:20:04 -0700
+Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 8 Aug 2021 22:20:03 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Aug 2021 13:20:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 9 Aug 2021 13:20:02 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
+ <mathieu.poirier@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>, 
+ <krzysztof.kozlowski@canonical.com>, <shawnguo@kernel.org>,
+ <sam@ravnborg.org>, <linux@rempel-privat.de>, <daniel@0x0f.com>,
+ <Max.Merchel@tq-group.com>, <geert+renesas@glider.be>, <fanghao11@huawei.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>
+Subject: [PATCH v6 2/6] dt-bindings: remoteproc: mediatek: Add binding for
+ mt8192 scp
+Date: Mon, 9 Aug 2021 13:19:55 +0800
+Message-ID: <20210809051959.31136-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
+In-Reply-To: <20210809051959.31136-1-tinghan.shen@mediatek.com>
+References: <20210809051959.31136-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
-References: <20210802121215.703023-1-eizan@chromium.org>
- <20210802220943.v6.2.Ie6d1e6e39cf9b5d6b2108ae1096af34c3d55880b@changeid>
- <0aff1abb-734f-c714-6ecc-c906862255c3@collabora.com>
-In-Reply-To: <0aff1abb-734f-c714-6ecc-c906862255c3@collabora.com>
-From: Eizan Miyamoto <eizan@google.com>
-Date: Mon, 9 Aug 2021 13:23:37 +1000
-Message-ID: <CAOak1e8n6JpNKODfM57OTtbCNz8UBbj+wefwipVWP_Ep6SHmHA@mail.gmail.com>
-Subject: Re: [PATCH v6 2/9] mtk-mdp: add driver to probe mdp components
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-kernel@vger.kernel.org, wenst@chromium.org, houlong.wei@mediatek.com,
- yong.wu@mediatek.com, enric.balletbo@collabora.com, 
- devicetree@vger.kernel.org, chunkuang.hu@kernel.org, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
- linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210808_202357_298509_889E9AE3 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20210808_222013_435065_8A254BF4 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,38 +92,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
+Add mt8192 compatible to binding document.
 
-On Thu, Aug 5, 2021 at 4:40 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
-> > +int mtk_mdp_comp_init(struct mtk_mdp_comp *comp, struct device *dev)
->
-> This function can be static
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/remoteproc/mtk,scp.txt | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-If it's all the same to you, are you okay for me to make this change either:
-- If upstream requests changes be made to this series, I will include
-this suggestion
-- If the series is accepted as-is, I will make a follow-up patch
-
-This is to reduce workload on reviewers having to re-ack changes for
-(what I hope you agree is) a nit.
-
-If you don't agree, I will happily oblige and make the change and
-upload a new version of the series.
-
-> >       for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
-> >               comp->clk[i] = of_clk_get(node, i);
->
-> that iteration can be replaced with clk_bulk_get
-
-As per Enric's suggestion in response to "propagate errors from
-clock_on" in this series, are you okay for me to make the change in a
-follow-up patch?
-
-Thanks again for your review,
-
-Eizan
-
+diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+index d64466eefbe3..88f37dee7bca 100644
+--- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
++++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+@@ -7,14 +7,17 @@ Mediatek SoCs.
+ Required properties:
+ - compatible		Should be one of:
+ 				"mediatek,mt8183-scp"
++				"mediatek,mt8192-scp"
+ 				"mediatek,mt8195-scp"
+ - reg			Should contain the address ranges for memory regions:
+ 			SRAM, CFG, and L1TCM.
+ - reg-names		Contains the corresponding names for the memory regions:
+ 			"sram", "cfg", and "l1tcm".
+-- clocks		Required by mt8183. Clock for co-processor (See: ../clock/clock-bindings.txt)
+-- clock-names		Required by mt8183. Contains the corresponding name for the clock. This
+-			should be named "main".
++- clocks		Required by mt8183 and mt8192. Clock for co-processor
++			(See: ../clock/clock-bindings.txt)
++- clock-names		Required by mt8183 and mt8192. Contains the
++			corresponding name for the clock. This should be
++			named "main".
+ 
+ Subnodes
+ --------
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
