@@ -2,77 +2,109 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00604C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:31:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40D4BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:02:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FA5660F38
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:31:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6FA5660F38
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	by mail.kernel.org (Postfix) with ESMTPS id BCFC160E78
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:02:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BCFC160E78
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=WZrP2rzWVwgN8rnILp7/nw1EBmoUtEwz7f4Tkfi2gZg=; b=yjlzqoJi7XHVSXNP0ZxWZgpJFh
-	LWAlYEzvwRlDHpb6oN4xukUflfTTE4VR4TkQkTnPxT6W75FyqTaTXHYOh1V5bwmH6DSBhKGMb3eAT
-	seHFHVlmcRQP11kujPHF9Hdvr+pLqgpLlLj1Rh5SAo7csUXurvZ9MJnX/pRtwOuQAUPCV4d+BcbT3
-	OBB8aOB6TldAg6jAdeEYc7cU56MXRGUX5pQzE+vBEU8EG0VhUkljrW/cxJRH3Y+keBZMeswHh1CBQ
-	kLQIiNpsGl31ZMiYjHZ+RKUUguaZJyTMv+dsJsO6aLuCHS3eSoAcsU/9e3frY6OQqJN0AnIClGaJu
-	IVzbIHkQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ajhnctLAha/wsNFc9xOd3+RGLUhxKeNRLvSnMjhd65o=; b=4AYWdj1IpZ0q4D
+	UtFDRrSSGnkyWGPGXnlc++xSB3mfYbnIGaIBfEdc1ceuMPjazK7oB5sW5WzGoyFJ5GllM8E2vavt5
+	gI7GJe1cBw8+7aLi/snV08u74aviUgS2Q9MQScYhmNhOhR/Bd5He/MKHrWT+RMg9uXpsbY/44rn4n
+	UsLk94zx/ce7IET/Ko8q9ONLsFnQpU47BUZq0mnijQS86V/K0qNiiHiYHVmX+FiGxnYR6HeGDBiSm
+	eaYDSuSHJdtxEpVvGIGymD+6lQjckunbohWTBq/70xvSyeHetNHduUWOfgnqjbrFwPVXHMsSUUZnx
+	M7vGMbkitpo3RmYHx1XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD4RA-000YD9-1B; Mon, 09 Aug 2021 12:31:24 +0000
-Received: from lb2-smtp-cloud7.xs4all.net ([194.109.24.28])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mD4Qw-000YBr-T0; Mon, 09 Aug 2021 12:31:12 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id D4Qnm0UzS4SnAD4QqmmSQa; Mon, 09 Aug 2021 14:31:05 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
- t=1628512265; bh=1JnpY81zYR22eAIMj8YwHdE2jfxpqz8Bq/xmPMsAibU=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=PssgTV2OeSyUhiW/DVzPrCf9omGPJ/Zo3xyPdR7zwCUYzwbnPTDO2vLCvnqhxq0pk
- 3uj6AmMP20khXXpjqS0QvXkOtCxhRh8jfGphYW9QsjfICZ+a+892NFeylQZGm2L/JK
- tfoMHqMeacH3Q4+kiFd2LoZzVan7JX0vqoUL8tl4twU5Z6Ejk2Di7kC0PA7V8QB5jr
- ch/7b8eDZ/mFX68K3ZY2UJPHE6sEQSH4mhQrvlHLTYtNTMgEGDEuvVErfsYmF20dKx
- Gen99t041S4NdCKTXKzKWEYt0g674/9HGsrUuV49Df9KqxYrBQ0jN6DVJj2jNsmQZy
- VAs84im2OCIvg==
-Subject: Re: [PATCH v7 00/14] media: mtk-vcodec: support for MT8183 decoder
-To: Tzung-Bi Shih <tzungbi@google.com>, yunfei.dong@mediatek.com,
- acourbot@chromium.org
-Cc: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- dafna.hirschfeld@collabora.com, mchehab@kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20210806041530.4170869-1-tzungbi@google.com>
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Message-ID: <104309d4-0973-cf1f-d61f-731b0642c1cf@xs4all.nl>
-Date: Mon, 9 Aug 2021 14:31:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.12.0
+	id 1mD4vT-000fZf-QX; Mon, 09 Aug 2021 13:02:43 +0000
+Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1mD4vF-000fXM-19; Mon, 09 Aug 2021 13:02:30 +0000
+Authenticated-By: 
+X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 179D1wGH2026755,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexh36502.realtek.com.tw[172.21.6.25])
+ by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 179D1wGH2026755
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Mon, 9 Aug 2021 21:01:58 +0800
+Received: from RTEXMBS03.realtek.com.tw (172.21.6.96) by
+ RTEXH36502.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Mon, 9 Aug 2021 21:01:57 +0800
+Received: from localhost (172.21.132.185) by RTEXMBS03.realtek.com.tw
+ (172.21.6.96) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 9 Aug 2021
+ 21:01:56 +0800
+From: <max.chou@realtek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>, 
+ <matthias.bgg@gmail.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+CC: <alex_lu@realsil.com.cn>, <hildawu@realtek.com>, <kidman@realtek.com>,
+ <apusaka@chromium.org>, <abhishekpandit@chromium.org>,
+ <josephsih@chromium.org>, <max.chou@realtek.com>
+Subject: [PATCH] Bluetooth: btusb: Remove WAKEUP_DISABLE and add
+ WAKEUP_AUTOSUSPEND for Realtek devices
+Date: Mon, 9 Aug 2021 21:01:52 +0800
+Message-ID: <20210809130152.12528-1-max.chou@realtek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <20210806041530.4170869-1-tzungbi@google.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4xfKHcYEgO5nUvEjWF9VvuOaGi8Xs1S3AddrVTU30ZsQPerr20ruSyK9C6mP13FtplYyLgn3GIRdTL8qJjeXvdxRk4wKv2bTNASL7brbvlB1M074pLCp9+
- teiCCo7SSdSEPn2OiFyMfPT9O0hvPVppgzR8lhNQX50tFJyZHj1PG9iOac8ZjLB16QRKajFqWICOVuLrOlYPbwucU/QDa8RoY8vdENJD9HATjfMXDX7sOBen
- WNIt7yqeRYSK9IX145iVK/9BFJTZqMvDVZtbZzHsmMphq09UACA9xUcrMxUDl9INiD8g3sTLN9NWpz6yVudP3u4Q1cbztf1Uqn96cb2/fbR1HnNemm7nsYvX
- cf/wiHmhBsrKzcWVnZeF2s9eQ9ak24+5t04dLZvpMJGvxvtD/LjbnTdtKMgpXRwUlH6KHhtKpfeBY+sQgLcTof93xPFps4TqARAH8Ln9gPScafDxX9qnhS7+
- t3tsKybO18UAK+qgtQ+ONljCB3jKf8KlhNs82dwe6iJd1Si6q8cN9L689aXWjpRuo+sgCDFQXnq0ACGK4snT5tQ7D2Asfct2f6BrBA==
+X-Originating-IP: [172.21.132.185]
+X-ClientProxiedBy: RTEXMBS02.realtek.com.tw (172.21.6.95) To
+ RTEXMBS03.realtek.com.tw (172.21.6.96)
+X-KSE-ServerInfo: RTEXMBS03.realtek.com.tw, 9
+X-KSE-AntiSpam-Interceptor-Info: trusted connection
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Deterministic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 08/09/2021 12:50:00
+X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
+ rules found
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: =?big5?B?Q2xlYW4sIGJhc2VzOiAyMDIxLzgvOSCkV6TIIDA3OjA0OjAw?=
+X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
+X-KSE-ServerInfo: RTEXH36502.realtek.com.tw, 9
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
+X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 5.9.20, Database issued on: 08/09/2021 12:47:36
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 165471 [Aug 09 2021]
+X-KSE-AntiSpam-Info: Version: 5.9.20.0
+X-KSE-AntiSpam-Info: Envelope from: max.chou@realtek.com
+X-KSE-AntiSpam-Info: LuaCore: 454 454 39c6e442fd417993330528e7f9d13ac1bf7fdf8c
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: 127.0.0.199:7.1.2; realtek.com:7.1.1;
+ d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 08/09/2021 12:50:00
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_053111_118951_4275DCC7 
-X-CRM114-Status: GOOD (  31.45  )
+X-CRM114-CacheID: sfid-20210809_060229_260394_61063ADE 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,127 +121,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Tzung-Bi,
+From: Max Chou <max.chou@realtek.com>
 
-I made a PR for this series, but I would like a follow-up patch that fixes this
-sparse warning:
+For the commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d, wakeup is
+always disabled for Realtek devices. However, there's the capability
+for Realtek devices to apply USB wake-up.
 
-SPARSE:mtk-vcodec/mtk_vcodec_dec_stateful.c:615:35: warning: symbol 'mtk_vdec_8173_pdata' was not declared. Should it be static?
-SPARSE:mtk-vcodec/mtk_vcodec_dec_stateless.c:346:35: warning: symbol 'mtk_vdec_8183_pdata' was not declared. Should it be static?
+In this commit, remove WAKEUP_DISABLE feature for Realtek devices.
+If users would switch wake-up, they should access
+"/sys/bus/usb/.../power/wakeup"
 
-mtk_vcodec_dec.h is probably a good header to put the extern declaration.
+In this commit, it also adds the feature as WAKEUP_AUTOSUSPEND
+for Realtek devices because it should set do_remote_wakeup on autosuspend.
 
-Regards,
+Signed-off-by: Max Chou <max.chou@realtek.com>
+Tested-by: Hilda Wu <hildawu@realtek.com>
+Reviewed-by: Archie Pusaka <apusaka@chromium.org>
+Reviewed-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
+---
+ drivers/bluetooth/btusb.c | 25 +++++++++----------------
+ 1 file changed, 9 insertions(+), 16 deletions(-)
 
-	Hans
-
-On 06/08/2021 06:15, Tzung-Bi Shih wrote:
-> This series adds support for the stateless API into mtk-vcodec, by first
-> separating the stateful ops into their own source file, and introducing
-> a new set of ops suitable for stateless decoding. As such, support for
-> stateful decoders should remain completely unaffected.
-> 
-> This series has been tested with both MT8183 and MT8173. Decoding was
-> working for both chips, and in the case of MT8173 no regression has been
-> spotted.
-> 
-> Patches 1-5 fix a few compliance issues with the decoder and encoder, most
-> notably by adding support for the START and STOP command for the latter. These
-> patches were last up until v4 but have been moved to the beginning so they can
-> be applied sooner.
-> 
-> Patches 6-9 separates the "stateful" part of the driver into its own file and
-> add support for the new firmware and pixel format used by MT8183.
-> 
-> Patches 10-14 add support for H.264 stateless decoding and MT8183.
-> 
-> Note that a few checkpatch issues have been left unadressed on purpose:
-> * Conversion from e.g. uint32_t to u32 can't be done without breaking
->   consistency. This should be done by a driver-wide patch.
-> * Some macro warning suggesting parentheses for parameters expanded as struct
->   members, which is obviously not applicable here.
-> * Warnings about adding new files without an update the MAINTAINERS, which is
->   irrelevant as the new files are already covered by the existing wildcards.
-> 
-> Changes since v6:
-> (https://patchwork.linuxtv.org/project/linux-media/cover/20210705053258.1614177-1-acourbot@chromium.org/)
-> * Fix errors from 'checkpatch.pl --strict'.
-> * Fix missing kerneldoc issue.
-> * Fix wrong device minor number reference.
-> 
-> Changes since v5:
-> * Rebased against latest media tree.
-> * Applied most suggestions of `checkpatch.pl --strict`. Some proposed fixes were
->   not applied because they would require a larger refactoring (i.e. large-scale
->   type changes) of the code.
-> * Applied Reviewed-by and fix suggestions from Tzung-bi.
-> * Check for ABORT state in vidioc_encoder_cmd.
-> 
-> Changes since v4:
-> * Reorganized fixup patches first.
-> * Select MEDIA_CONTROLLER_REQUEST_API.
-> * Properly capitalize MM21's format description string.
-> * Reorganize stateless code as suggested by Hans.
-> * Fix compilation errors when DEBUG is defined.
-> * Merge double-free fixup patch into the patch that introduced the issue.
-> 
-> Changes since v3:
-> * Stop checking that controls are set for every request.
-> * Add V4L2_CID_STATELESS_H264_START_CODE control.
-> * Stop mapping OUTPUT buffers and getting the NAL type from them, use the
->   nal_ref_idc field instead.
-> * Make V4L2_CID_MIN_BUFFERS_FOR_CAPTURE control stateful-only.
-> * Set vb2_buffer's field to V4L2_FIELD_NONE in buffer validation hook.
-> 
-> Changes since v2:
-> * Add follow-up patches fixing support for START/STOP commands for the
->   encoder, and stateful decoder.
-> 
-> Alexandre Courbot (8):
->   media: mtk-vcodec: vdec: use helpers in VIDIOC_(TRY_)DECODER_CMD
->   media: mtk-vcodec: vdec: clamp OUTPUT resolution to hardware limits
->   media: mtk-vcodec: make flush buffer reusable by encoder
->   media: mtk-vcodec: venc: support START and STOP commands
->   media: mtk-vcodec: vdec: handle firmware version field
->   media: mtk-vcodec: support version 2 of decoder firmware ABI
->   media: add Mediatek's MM21 format
->   dt-bindings: media: document mediatek,mt8183-vcodec-dec
-> 
-> Hirokazu Honda (1):
->   media: mtk-vcodec: vdec: Support H264 profile control
-> 
-> Yunfei Dong (5):
->   media: mtk-vcodec: vdec: move stateful ops into their own file
->   media: mtk-vcodec: vdec: support stateless API
->   media: mtk-vcodec: vdec: support stateless H.264 decoding
->   media: mtk-vcodec: vdec: add media device if using stateless api
->   media: mtk-vcodec: enable MT8183 decoder
-> 
->  .../bindings/media/mediatek-vcodec.txt        |   1 +
->  .../media/v4l/pixfmt-reserved.rst             |   7 +
->  drivers/media/platform/Kconfig                |   3 +
->  drivers/media/platform/mtk-vcodec/Makefile    |   3 +
->  .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 820 +++---------------
->  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |  25 +-
->  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  68 +-
->  .../mtk-vcodec/mtk_vcodec_dec_stateful.c      | 628 ++++++++++++++
->  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 360 ++++++++
->  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  58 +-
->  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 140 ++-
->  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   6 +-
->  .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 774 +++++++++++++++++
->  .../media/platform/mtk-vcodec/vdec_drv_if.c   |   3 +
->  .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
->  .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  23 +-
->  .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  43 +-
->  .../media/platform/mtk-vcodec/vdec_vpu_if.h   |   5 +
->  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
->  include/uapi/linux/videodev2.h                |   1 +
->  20 files changed, 2241 insertions(+), 729 deletions(-)
->  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
->  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
->  create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> 
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 488f110e17e2..73a835bf37f7 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -527,7 +527,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
+ #define BTUSB_OOB_WAKE_ENABLED	11
+ #define BTUSB_HW_RESET_ACTIVE	12
+ #define BTUSB_TX_WAIT_VND_EVT	13
+-#define BTUSB_WAKEUP_DISABLE	14
++#define BTUSB_WAKEUP_AUTOSUSPEND	14
+ 
+ struct btusb_data {
+ 	struct hci_dev       *hdev;
+@@ -1349,13 +1349,6 @@ static int btusb_open(struct hci_dev *hdev)
+ 
+ 	data->intf->needs_remote_wakeup = 1;
+ 
+-	/* Disable device remote wakeup when host is suspended
+-	 * For Realtek chips, global suspend without
+-	 * SET_FEATURE (DEVICE_REMOTE_WAKEUP) can save more power in device.
+-	 */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
+-		device_wakeup_disable(&data->udev->dev);
+-
+ 	if (test_and_set_bit(BTUSB_INTR_RUNNING, &data->flags))
+ 		goto done;
+ 
+@@ -1422,7 +1415,7 @@ static int btusb_close(struct hci_dev *hdev)
+ 	data->intf->needs_remote_wakeup = 0;
+ 
+ 	/* Enable remote wake up for auto-suspend */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
++	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags))
+ 		data->intf->needs_remote_wakeup = 1;
+ 
+ 	usb_autopm_put_interface(data->intf);
+@@ -3877,11 +3870,8 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->shutdown = btrtl_shutdown_realtek;
+ 		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
+ 
+-		/* Realtek devices lose their updated firmware over global
+-		 * suspend that means host doesn't send SET_FEATURE
+-		 * (DEVICE_REMOTE_WAKEUP)
+-		 */
+-		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
++		/* Realtek devices need to set remote wakeup on auto-suspend */
++		set_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags);
+ 	}
+ 
+ 	if (!reset)
+@@ -4056,12 +4046,15 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
+ 	 * Actually, it depends on whether the usb host sends
+ 	 * set feature (enable wakeup) or not.
+ 	 */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags)) {
++	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags)) {
+ 		if (PMSG_IS_AUTO(message) &&
+ 		    device_can_wakeup(&data->udev->dev))
+ 			data->udev->do_remote_wakeup = 1;
+-		else if (!PMSG_IS_AUTO(message))
++		else if (!PMSG_IS_AUTO(message) &&
++			 !device_may_wakeup(&data->udev->dev)) {
++			data->udev->do_remote_wakeup = 0;
+ 			data->udev->reset_resume = 1;
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.17.1
 
 
 _______________________________________________
