@@ -2,67 +2,68 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-22.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7527C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 15:06:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF0CAC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 17:55:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DE9760EBB
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 15:06:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DE9760EBB
+	by mail.kernel.org (Postfix) with ESMTPS id 5FE5360F25
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 17:55:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5FE5360F25
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kPGZB7NAs46FA4Y7HQM3kv6v95KmCo8clDEJs/+W+YQ=; b=RTZuYZP+lT0h7V
-	IM/swISIKs0bWDFEV8crUvEDxDz1W543HHtWs7m/1bjTzBrM3BcvgOm8ZRk/yHkPqCCAZzvklC0iy
-	hahSXwl3VGHkJ6VyZL5PJl329jVo2RBqzCEiYWWqDhPihUhWzM5e08wWDnqvadxuKToetOaJmtq5w
-	ynP+2Wj/QI2Ih74SfBY26zswriWFGCNHBdq82Sq+46d3owjhZSLLVZ78uTSxo2p4iqI7nykke7x6L
-	EfDIj+cldiUsVUcYwz929WDH06DRDAlaC9moZslQvDlxfLjD5BjJhorg4JbS/pPDBsIn7OGpLsXOI
-	98r9UCuGoIr30/Q8Q/wQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cc0Iq+qNHdC3ZBFDgLaiT/lZGh6uDs1Q1oYTl7xu8uw=; b=ietEPyENBJecoy
+	YpPLoP9mFnJB5MzITUrfuObB2Dy+9BkJSQblDoLsk4n89wKfJFLrKNTB2P9G2+BNelftdaS9vGBqy
+	mLskudtRHcILkHNYa03oGaew0jzX2aAFWRi4ndvpf8on+7UNh2Qh/EjVUAsc3OOqxvvl92gN4F3ar
+	c5+WLefU75Dc7Cw/yPw1hvMrCUqCmyWwnnTdrO6/uXiUifW/lOAY4+pvqq9khfn1in5R3dgcjWzfF
+	T+YLs3gF0HQ18dhlbndv47CWRvxrwX7kQvGJVyu9BVx8p6y5RMo2cK9lA8A/kd2pIieFwIk9mOta0
+	R+udYi3LecQOHQzUMKDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD6qy-0013mj-1U; Mon, 09 Aug 2021 15:06:12 +0000
+	id 1mD9Uk-001bRK-Mo; Mon, 09 Aug 2021 17:55:26 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mD6qv-0013li-4I
- for linux-mediatek@lists.infradead.org; Mon, 09 Aug 2021 15:06:11 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 523ED60F11;
- Mon,  9 Aug 2021 15:06:07 +0000 (UTC)
+ id 1mD9UX-001bPz-7S; Mon, 09 Aug 2021 17:55:15 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B37F260E78;
+ Mon,  9 Aug 2021 17:55:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628521568;
- bh=kKiTuvHFidh89Tnf5j3aUlnVrP9Bk+cJepda4RZf2JI=;
- h=From:To:Cc:Subject:Date:From;
- b=MgJjEUF13nttx8J2Xigea3vHPNd2QgnbhooTznezLCoo0S0WEdzmbSZfKg6ZsWHGA
- Mv7QtW5HWpVneh1qmI/zj+xiSRtp8VXmIQU0vVYkCLvN4fjvr/PRWRc01t/hYjWzAB
- 9N3yoKJq0aMhghTyvAlybhBvIv0bka+0gXQTfTts3HnyyLXP4GeEHrLv3rihWNIgrz
- GshO2FbX8JYitGFHHCA0p/pOG5T2uBbbBdvCzTfmwj/l8aqxaxXtySowC1lDhzSB4w
- mPPAQ64H8TLYNoH64arFPkjAZmjQoCAzVfLAh7byWaCIQDgpOPJ17A2FKQKG5zLJC8
- NUokdSDESNeDA==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>
-Subject: [GIT PULL] mediatek drm fixes for 5.14
-Date: Mon,  9 Aug 2021 23:06:04 +0800
-Message-Id: <20210809150604.32426-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.25.1
+ s=k20201202; t=1628531710;
+ bh=xt5HUGt3PKLJ5RZuYecvLk5allJyEl1mTduSPvyDnO0=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=kOQSutxxbkMJsjoK78auSzAw5REL24ZY99I1nNSZh/QbzXzgMb9NZTXeUVcwefUWE
+ ynYFdakZzkypBhDG7HwX0mdwvhnykx6tp8HHg41T9Hcbog7CbgLLWAKnRwvP6vT3lm
+ 9C/y22aYDycMWlMOI6cuxNg1nng+ohUQg7zgB+2Nj9C9xHWSMjBc/57sngDTnjxGID
+ S7BgVJxPO4H7OUHHW+suttm4ixzstakxqYVh94FJYdDSOxdQpYlQMpvy7TX4WazBYL
+ d/YaSms0MIZBFdYUDHfQe7NQanD9IQDYNlkvbC3XJn7FUHPMa0oK0xGqXh1lHaKwj2
+ GHN2r2vBQXZHA==
 MIME-Version: 1.0
+In-Reply-To: <1627972461-2627-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+References: <1627972461-2627-1-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <1627972461-2627-4-git-send-email-hsin-hsiung.wang@mediatek.com>
+Subject: Re: [PATCH v10 3/5] spmi: mediatek: Add support for MT6873/8192
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, Project_Global_Chrome_Upstream_Group@mediatek.com
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Date: Mon, 09 Aug 2021 10:55:09 -0700
+Message-ID: <162853170949.1975443.12492156194100139076@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_080609_226593_E6088398 
-X-CRM114-Status: UNSURE (   5.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210809_105513_352848_7A00780E 
+X-CRM114-Status: GOOD (  26.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,48 +80,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
+Quoting Hsin-Hsiung Wang (2021-08-02 23:34:19)
+> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+> new file mode 100644
+> index 000000000000..94c45d46ab0c
+> --- /dev/null
+> +++ b/drivers/spmi/spmi-mtk-pmif.c
+> @@ -0,0 +1,465 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2021 MediaTek Inc.
+> +
+> +#include <linux/clk.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
 
-This includes:
+include platform_device.h for the platform device driver that this is.
 
-1. Fix dpi bridge bug.
-2. Fix cursor plane no update.
+> +#include <linux/spmi.h>
+> +
+> +#define SWINF_IDLE     0x00
+> +#define SWINF_WFVLDCLR 0x06
+> +
+> +#define GET_SWINF(x)   (((x) >> 1) & 0x7)
+> +
+> +#define PMIF_CMD_REG_0         0
+> +#define PMIF_CMD_REG           1
+> +#define PMIF_CMD_EXT_REG       2
+> +#define PMIF_CMD_EXT_REG_LONG  3
+> +
+> +#define PMIF_DELAY_US   10
+> +#define PMIF_TIMEOUT_US (10 * 1000)
+> +
+> +#define PMIF_CHAN_OFFSET 0x5
+> +
+> +#define PMIF_MAX_CLKS  3
+> +
+> +#define SPMI_OP_ST_BUSY 1
+> +
+> +struct ch_reg {
+> +       u32 ch_sta;
+> +       u32 wdata;
+> +       u32 rdata;
+> +       u32 ch_send;
+> +       u32 ch_rdy;
+> +};
+> +
+> +struct pmif_data {
+> +       const u32       *regs;
+> +       const u32       *spmimst_regs;
+> +       u32     soc_chan;
+> +};
+> +
+> +struct pmif {
+> +       void __iomem    *base;
+> +       void __iomem    *spmimst_base;
+> +       struct ch_reg   chan;
+> +       struct clk_bulk_data clks[PMIF_MAX_CLKS];
+> +       u32 nclks;
 
-Regards,
-Chun-Kuang.
+size_t? Surely 32-bits isn't important.
 
-The following changes since commit e73f0f0ee7541171d89f2e2491130c7771ba58d3:
+> +       const struct pmif_data *data;
+> +};
+> +
+> +static const char * const pmif_clock_names[] = {
+> +       "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
+> +};
+[...]
+> +
+> +static bool pmif_is_fsm_vldclr(struct pmif *arb)
+> +{
+> +       u32 reg_rdata;
+> +
+> +       reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
 
-  Linux 5.14-rc1 (2021-07-11 15:07:40 -0700)
+Newline here please.
 
-are available in the Git repository at:
+> +       return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
+> +}
+> +
+> +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
+> +{
+> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +       u32 rdata, cmd;
+> +       int ret;
+> +
+> +       /* Check the opcode */
+> +       if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
+> +               return -EINVAL;
+> +
+> +       cmd = opc - SPMI_CMD_RESET;
+> +
+> +       mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
+> +       ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
+> +                                       rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
+> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +       if (ret < 0)
+> +               dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
+> +
+> +       return ret;
+> +}
+> +
+> +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +                             u16 addr, u8 *buf, size_t len)
+> +{
+> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +       struct ch_reg *inf_reg;
+> +       int ret;
+> +       u32 data, cmd;
+> +
+> +       /* Check for argument validation. */
+> +       if (sid & ~0xf) {
+> +               dev_err(&ctrl->dev, "exceed the max slv id\n");
+> +               return -EINVAL;
+> +       }
+> +
+> +       if (len > 4) {
+> +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-fixes-5.14
+Missing newline
 
-for you to fetch changes up to 1a64a7aff8da352c9419de3d5c34343682916411:
+> +               return -EINVAL;
+> +       }
+> +
+> +       if (opc >= 0x60 && opc <= 0x7f)
+> +               opc = PMIF_CMD_REG;
+> +       else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
+> +               opc = PMIF_CMD_EXT_REG_LONG;
+> +       else
+> +               return -EINVAL;
+> +
+> +       /* Wait for Software Interface FSM state to be IDLE. */
+> +       inf_reg = &arb->chan;
+> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +                                       data, GET_SWINF(data) == SWINF_IDLE,
+> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +       if (ret < 0) {
+> +               /* set channel ready if the data has transferred */
+> +               if (pmif_is_fsm_vldclr(arb))
+> +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +               goto out;
+> +       }
+> +
+> +       /* Send the command. */
+> +       cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
+> +       pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +       /*
+> +        * Wait for Software Interface FSM state to be WFVLDCLR,
+> +        * read the data and clear the valid flag.
+> +        */
+> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +                                       data, GET_SWINF(data) == SWINF_WFVLDCLR,
+> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +       if (ret < 0) {
+> +               dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
+> +               goto out;
+> +       }
+> +
+> +       data = pmif_readl(arb, inf_reg->rdata);
+> +       memcpy(buf, &data, len);
+> +       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +
+> +out:
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       return 0;
+> +}
+> +
+> +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +                              u16 addr, const u8 *buf, size_t len)
+> +{
+> +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +       struct ch_reg *inf_reg;
+> +       int ret;
+> +       u32 data, cmd;
+> +
+> +       if (len > 4) {
+> +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
 
-  drm/mediatek: Fix cursor plane no update (2021-07-22 22:57:52 +0800)
+Missing newline
 
-----------------------------------------------------------------
-Mediatek DRM Fixes for Linux 5.14
+> +               return -EINVAL;
+> +       }
+> +
+> +       /* Check the opcode */
+> +       if (opc >= 0x40 && opc <= 0x5F)
+> +               opc = PMIF_CMD_REG;
+> +       else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
+> +               opc = PMIF_CMD_EXT_REG_LONG;
+> +       else if (opc >= 0x80)
+> +               opc = PMIF_CMD_REG_0;
+> +       else
+> +               return -EINVAL;
+> +
+> +       /* Wait for Software Interface FSM state to be IDLE. */
+> +       inf_reg = &arb->chan;
+> +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +                                       data, GET_SWINF(data) == SWINF_IDLE,
+> +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +       if (ret < 0) {
+> +               /* set channel ready if the data has transferred */
+> +               if (pmif_is_fsm_vldclr(arb))
+> +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +               goto out;
+> +       }
+> +
+> +       /* Set the write data. */
+> +       memcpy(&data, buf, len);
+> +       pmif_writel(arb, data, inf_reg->wdata);
+> +
+> +       /* Send the command. */
+> +       cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
+> +       pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +out:
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       return 0;
 
-1. Fix dpi bridge bug.
-2. Fix cursor plane no update.
+Simplify to 
 
-----------------------------------------------------------------
-Frank Wunderlich (1):
-      drm/mediatek: dpi: Fix NULL dereference in mtk_dpi_bridge_atomic_check
+	out:
+		return ret;
 
-Hsin-Yi Wang (1):
-      drm/mediatek: mtk-dpi: Set out_fmt from config if not the last bridge
+> +}
+> +
+> +static const struct pmif_data mt6873_pmif_arb = {
+> +       .regs = mt6873_regs,
+> +       .spmimst_regs = mt6873_spmi_regs,
+> +       .soc_chan = 2,
+> +};
+> +
+> +static int mtk_spmi_probe(struct platform_device *pdev)
+> +{
+> +       struct pmif *arb;
+> +       struct spmi_controller *ctrl;
+> +       int err, i;
+> +       u32 chan_offset;
+> +
+> +       ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*arb));
+> +       if (!ctrl)
+> +               return -ENOMEM;
+> +
+> +       arb = spmi_controller_get_drvdata(ctrl);
+> +       arb->data = of_device_get_match_data(&pdev->dev);
 
-jason-jh.lin (1):
-      drm/mediatek: Fix cursor plane no update
+Use device_get_match_data() instead please.
 
- drivers/gpu/drm/mediatek/mtk_dpi.c       |  6 +++-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c  |  3 --
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 60 ++++++++++++++++++--------------
- 3 files changed, 39 insertions(+), 30 deletions(-)
+> +       if (!arb->data) {
+> +               err = -EINVAL;
+> +               dev_err(&pdev->dev, "Cannot get drv_data\n");
+> +               goto err_put_ctrl;
+> +       }
+> +
+> +       arb->base = devm_platform_ioremap_resource_byname(pdev, "pmif");
+> +       if (IS_ERR(arb->base)) {
+> +               err = PTR_ERR(arb->base);
+> +               dev_err(&pdev->dev, "pmif failed to get the remappped memory\n");
+
+Please drop print as the API already prints errors for every problem.
+
+> +               goto err_put_ctrl;
+> +       }
+> +
+> +       arb->spmimst_base = devm_platform_ioremap_resource_byname(pdev, "spmimst");
+> +       if (IS_ERR(arb->spmimst_base)) {
+> +               err = PTR_ERR(arb->spmimst_base);
+> +               dev_err(&pdev->dev, "spmimst failed to get the remappped memory\n");
+
+Please drop print as the API already prints errors for every problem.
+
+> +               goto err_put_ctrl;
+> +       }
+> +
+> +       arb->nclks = ARRAY_SIZE(pmif_clock_names);
+> +       if (arb->nclks > PMIF_MAX_CLKS) {
+> +               err = -EINVAL;
+> +               dev_err(&pdev->dev, "exceed the max clock numbers\n");
+
+Do we really care? The dt schema should be checking this instead of the
+driver.
+
+> +               goto err_put_ctrl;
+> +       }
+> +
+> +       for (i = 0; i < arb->nclks; i++)
+> +               arb->clks[i].id = pmif_clock_names[i];
+> +
 
 _______________________________________________
 Linux-mediatek mailing list
