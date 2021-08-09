@@ -2,19 +2,20 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-22.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15D93C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6F8AC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC35D60FD8
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BC35D60FD8
+	by mail.kernel.org (Postfix) with ESMTPS id 54D346069E
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 54D346069E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hGhGyeCxThZEm/DvsahzxoT+nqnUEYBLjbfqz18TRYw=; b=0AWxtFkhZ9BCrX
-	xfmUYtYSAl91qmZNQodOHPeAzY54swZ8pQ1Z51AlJ3zAF6wIzpALxyUmlSUfVLvyoUkpRI04hnRWD
-	57yKhkw6Tv9BDnR2UsreJBNQcifU99v2aj84SKzSSx8PrFdsZabqvLCS03nCwy2VVwCljjKGB+fuj
-	eMPCs1NnvRsXKO5MRWVFXLTlJVzsTh88lXqQMf90cS6QYSOP8EFElzztfK8p1FYTaogi5lr9c+7Lk
-	Ju5De9tEQSLPKy2i1whAINDmkGeaoEMNgaoSjCmLl64if5pfJ9wt0paI5bOYJbLqj75V37nTVt7sH
-	HbUCLzzoTcw0tWfaot+A==;
+	List-Owner; bh=p6Ac5jYW9jv0j9pu12RTo7jzfoOqepngw8lFvpywIIo=; b=1fqjOg3/4mrX32
+	uqrj8GButVwHuw3pCHA8ShgwvfDfObq0otdzvvOQwZSaj8MhNsC4MFww3i/HjkEYH4Lnu5iF9rCto
+	e8g9AAgHxFStZdrY+92/vguqxgPc+sI9QrVDWGgs+Ohogo44ilpVXoxvx/Lefad/Mtwyir1+YIJb4
+	UPOb8hxsf0rlxe/pdpaLbzZGhb9OXIwYTKjR73YJ/ANyEyME13ZqKAqpqE1KqAPKyPxKZHB19iVAo
+	/rVafeSb9wkL46M5eS5kTXZSed/UrRgQKp2FkF3GJlX37PyZDDdiRmtHczFIF+ZXr8GilAnMl5i9m
+	OG8MExvBEa3VFwPMiaow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mCvet-00Gy8s-U5; Mon, 09 Aug 2021 03:08:59 +0000
+	id 1mCvf4-00GyB3-SS; Mon, 09 Aug 2021 03:09:10 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mCveg-00Gy5Y-Kd; Mon, 09 Aug 2021 03:08:48 +0000
-X-UUID: 743bd71f9632482bbf84c7a7319a4916-20210808
+ id 1mCveh-00Gy5d-CJ; Mon, 09 Aug 2021 03:08:49 +0000
+X-UUID: a42c92a58a304feb836a63ce3de8ef74-20210808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=EfbFaKG45SBGFraeJ3dS15whyIa3cteg1uCH/YYPU4s=; 
- b=SyrI/49CTOMlzdHCIP0LoUUlhbMupY9RO5FtsO2q/9DCia2GSc0tTU7wykRuokI2budhmSSaZ7O+knl+9teSpWDREIrJv88hD+TFXtZ5O79YoB1D57GRE9P5sylxj6VwSHo8F5Mc2gRinc/6XPRWZq2aSNNCjVma80HilNVpCzI=;
-X-UUID: 743bd71f9632482bbf84c7a7319a4916-20210808
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=4wbncosZGckzcvqXepc+aS9hIjgQJAVMd+QrAfJrStk=; 
+ b=qtcNPuVKQa1GnZy8JnIhvvFNUImvCSSRAW5OIHWCEo2XV2L2crNLjm86vByVxqaMI+DiNulouqQEirHk25hRxiCpoIcP/6Eb3Rr6zMDpt3k6alIz4ZWGp1NAoCJ87Lrup/LHyhyxo4bXIhsbgtoKLE5Q5oVBpFbcONPKW1yJTGw=;
+X-UUID: a42c92a58a304feb836a63ce3de8ef74-20210808
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <nina-cm.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 163232461; Sun, 08 Aug 2021 20:08:39 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1703593299; Sun, 08 Aug 2021 20:08:44 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 8 Aug 2021 20:08:38 -0700
+ 15.0.1497.2; Sun, 8 Aug 2021 20:08:42 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Aug 2021 11:08:36 +0800
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Aug 2021 11:08:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 9 Aug 2021 11:08:36 +0800
+ Frontend Transport; Mon, 9 Aug 2021 11:08:39 +0800
 From: Nina Wu <nina-cm.wu@mediatek.com>
 To: 
 CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -64,17 +65,17 @@ CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <srv_heupstream@mediatek.com>, <Jackson-kt.Chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [v4 3/7] soc: mediatek: devapc: add shared flag to IRQ
-Date: Mon, 9 Aug 2021 11:08:15 +0800
-Message-ID: <1628478499-29460-3-git-send-email-nina-cm.wu@mediatek.com>
+Subject: [v4 7/7] arm64: dts: mt8192: Add devapc node
+Date: Mon, 9 Aug 2021 11:08:19 +0800
+Message-ID: <1628478499-29460-7-git-send-email-nina-cm.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1628478499-29460-1-git-send-email-nina-cm.wu@mediatek.com>
 References: <1628478499-29460-1-git-send-email-nina-cm.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210808_200846_730623_76FC97E1 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20210808_200847_467139_02D3F505 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,27 +94,73 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nina Wu <Nina-CM.Wu@mediatek.com>
 
-For new ICs, there are multiple devapc HWs for different subsys.
-They all share the same IRQ number.
+Add devapc nodes to mt8192.
 
 Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-devapc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This patch depends on "Add dt-bindings of MT8192 clocks" [1]
+and "Add mt8192 clock controllers" [2]
 
-diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index 86bddb2..abc0962 100644
---- a/drivers/soc/mediatek/mtk-devapc.c
-+++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -282,7 +282,7 @@ static int mtk_devapc_probe(struct platform_device *pdev)
- 		return -EINVAL;
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/include/dt-bindings/clock/mt8192-clk.h?h=next-20210806&id=f35f1a23e0e12e3173e9e9dedbc150d139027189
+[2] https://patchwork.kernel.org/project/linux-mediatek/patch/20210727023205.20319-2-chun-jie.chen@mediatek.com/
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 36 ++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index 6b22441..accbd07 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -517,6 +517,33 @@
+ 			clock-names = "clk13m";
+ 		};
  
- 	ret = devm_request_irq(&pdev->dev, devapc_irq, devapc_violation_irq,
--			       IRQF_TRIGGER_NONE, "devapc", ctx);
-+			       IRQF_TRIGGER_NONE | IRQF_SHARED, "devapc", ctx);
- 	if (ret) {
- 		clk_disable_unprepare(ctx->infra_clk);
- 		return ret;
++		devapc_infra: devapc@10207000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10207000 0 0x1000>;
++			vio-idx-num = <367>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
++
++		devapc_peri: devapc@10274000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10274000 0 0x1000>;
++			vio-idx-num = <292>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
++
++		devapc_peri2: devapc@10275000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x10275000 0 0x1000>;
++			vio-idx-num = <242>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
++
+ 		scp_adsp: clock-controller@10720000 {
+ 			compatible = "mediatek,mt8192-scp_adsp";
+ 			reg = <0 0x10720000 0 0x1000>;
+@@ -661,6 +688,15 @@
+ 			status = "disabled";
+ 		};
+ 
++		devapc_peri_par: devapc@11020000 {
++			compatible = "mediatek,mt8192-devapc";
++			reg = <0 0x11020000 0 0x1000>;
++			vio-idx-num = <58>;
++			interrupts = <GIC_SPI 187 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&infracfg CLK_INFRA_DEVICE_APC>;
++			clock-names = "devapc-infra-clock";
++		};
++
+ 		nor_flash: spi@11234000 {
+ 			compatible = "mediatek,mt8192-nor";
+ 			reg = <0 0x11234000 0 0xe0>;
 -- 
 2.6.4
 _______________________________________________
