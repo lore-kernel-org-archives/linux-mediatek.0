@@ -2,109 +2,118 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40D4BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8520CC432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:09:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BCFC160E78
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:02:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BCFC160E78
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4396A60F93
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 13:09:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4396A60F93
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ajhnctLAha/wsNFc9xOd3+RGLUhxKeNRLvSnMjhd65o=; b=4AYWdj1IpZ0q4D
-	UtFDRrSSGnkyWGPGXnlc++xSB3mfYbnIGaIBfEdc1ceuMPjazK7oB5sW5WzGoyFJ5GllM8E2vavt5
-	gI7GJe1cBw8+7aLi/snV08u74aviUgS2Q9MQScYhmNhOhR/Bd5He/MKHrWT+RMg9uXpsbY/44rn4n
-	UsLk94zx/ce7IET/Ko8q9ONLsFnQpU47BUZq0mnijQS86V/K0qNiiHiYHVmX+FiGxnYR6HeGDBiSm
-	eaYDSuSHJdtxEpVvGIGymD+6lQjckunbohWTBq/70xvSyeHetNHduUWOfgnqjbrFwPVXHMsSUUZnx
-	M7vGMbkitpo3RmYHx1XQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G3kXEJ2R1k1Qw3QqvMsWxQLEimWScvwEJnQN1LOPBiI=; b=huL79L3RP9wcZZ
+	zaXOBsF4ybSDaAcwwgB6IFkc9RGPjsipx4wpGZ4IdT/yG7UShmBCCC6u4ybTQtVDcDmpzKSXhsBjX
+	ZH4vX7TEsJ3qVyBodPE+Sl+MAKNhT6HfXFWEUQWU6iBvwVeNauhbxn394jABnu96EwYumrv9vRLL6
+	4ptXMsBmdj+Ru0UcgEzhnzpj/z3epecg5PzZl8qUT6PUFYENwRrm+i2aenRv55NovCC/5ICRegNFC
+	IlLK/KDJJ8CFqX1CCSQQEAYxKxDdwO4VW5uXPkcoqC4F4tlz+sTnrmopiBnbZCyh1ztnq9AGarwQ+
+	vgobjznyFX2954QK3WNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD4vT-000fZf-QX; Mon, 09 Aug 2021 13:02:43 +0000
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat
- Linux)) id 1mD4vF-000fXM-19; Mon, 09 Aug 2021 13:02:30 +0000
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 179D1wGH2026755,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexh36502.realtek.com.tw[172.21.6.25])
- by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 179D1wGH2026755
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Mon, 9 Aug 2021 21:01:58 +0800
-Received: from RTEXMBS03.realtek.com.tw (172.21.6.96) by
- RTEXH36502.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Mon, 9 Aug 2021 21:01:57 +0800
-Received: from localhost (172.21.132.185) by RTEXMBS03.realtek.com.tw
- (172.21.6.96) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 9 Aug 2021
- 21:01:56 +0800
-From: <max.chou@realtek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>, 
- <matthias.bgg@gmail.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-CC: <alex_lu@realsil.com.cn>, <hildawu@realtek.com>, <kidman@realtek.com>,
- <apusaka@chromium.org>, <abhishekpandit@chromium.org>,
- <josephsih@chromium.org>, <max.chou@realtek.com>
-Subject: [PATCH] Bluetooth: btusb: Remove WAKEUP_DISABLE and add
- WAKEUP_AUTOSUSPEND for Realtek devices
-Date: Mon, 9 Aug 2021 21:01:52 +0800
-Message-ID: <20210809130152.12528-1-max.chou@realtek.com>
-X-Mailer: git-send-email 2.17.1
+	id 1mD51o-000h0K-Gz; Mon, 09 Aug 2021 13:09:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mD51j-000gyL-9s; Mon, 09 Aug 2021 13:09:14 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C7D6760F93;
+ Mon,  9 Aug 2021 13:09:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628514550;
+ bh=YzG7BnFCln4Yyp6LxrxvxeyUMj5GmzMjIhVfIPMKSYc=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=YmsjoOgVwiRCGySrWrLQ8XAV3Hz23Fmp6MLYCvervZuSKrMaAZslkj4v/hhPPLKYQ
+ bo4QrDLjJrAvJT4Sd0fFUGs0bCtBNV1gh9i13HYWdDpmSjWwAPqOqDotgvqQICL/9Y
+ deEweM9WJz5jdqJoqsQZgcTZV+NXWanhFYNPKzRzWfLqLezWsmne8IOBXWMghv+42c
+ 3e92f/x6lQZcC4+5PxT+UOaHppXO5oJy1OLg6W6OseMdg7x1vithmCkJX2fxZEG4zE
+ IhHqfjPsdDALo4O3nuWicYy+9Pvk6q8Uy5rL93t76MlZVJPARFLmZDQ+t4kUlBFCkY
+ 3KK017L+mf6TQ==
+Received: by mail-lj1-f182.google.com with SMTP id x9so21562302ljj.2;
+ Mon, 09 Aug 2021 06:09:10 -0700 (PDT)
+X-Gm-Message-State: AOAM533WhYrYTy1ew118DQMmOXG47AM2htD5zoGN8WJSaWSrS+yTzkz4
+ PUQSWita9Y7Vtf/JRwOQ0+LhgG5hrRqu9Auw7Q==
+X-Google-Smtp-Source: ABdhPJzottn9lR1w4Ou5tspJmaMhExuHvfqLuRluAKs7dQZoer2iHn4k6bWFWu6HusN3FgH38v3t3o0558IoBlRW8NU=
+X-Received: by 2002:a17:906:4156:: with SMTP id
+ l22mr6919385ejk.75.1628514539014; 
+ Mon, 09 Aug 2021 06:08:59 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [172.21.132.185]
-X-ClientProxiedBy: RTEXMBS02.realtek.com.tw (172.21.6.95) To
- RTEXMBS03.realtek.com.tw (172.21.6.96)
-X-KSE-ServerInfo: RTEXMBS03.realtek.com.tw, 9
-X-KSE-AntiSpam-Interceptor-Info: trusted connection
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Deterministic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 08/09/2021 12:50:00
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: =?big5?B?Q2xlYW4sIGJhc2VzOiAyMDIxLzgvOSCkV6TIIDA3OjA0OjAw?=
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-KSE-ServerInfo: RTEXH36502.realtek.com.tw, 9
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 5.9.20, Database issued on: 08/09/2021 12:47:36
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 165471 [Aug 09 2021]
-X-KSE-AntiSpam-Info: Version: 5.9.20.0
-X-KSE-AntiSpam-Info: Envelope from: max.chou@realtek.com
-X-KSE-AntiSpam-Info: LuaCore: 454 454 39c6e442fd417993330528e7f9d13ac1bf7fdf8c
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: 127.0.0.199:7.1.2; realtek.com:7.1.1;
- d41d8cd98f00b204e9800998ecf8427e.com:7.1.1
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-AntiSpam-Info: Auth:dkim=none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Heuristic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 08/09/2021 12:50:00
+References: <20210625082222.3845-1-tzimmermann@suse.de>
+ <20210625082222.3845-14-tzimmermann@suse.de>
+In-Reply-To: <20210625082222.3845-14-tzimmermann@suse.de>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 9 Aug 2021 21:08:48 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_8Y7VZm2JWtPXVGfsPQ-j72wMULQJHCHdmQEV+a=TyW1Q@mail.gmail.com>
+Message-ID: <CAAOTY_8Y7VZm2JWtPXVGfsPQ-j72wMULQJHCHdmQEV+a=TyW1Q@mail.gmail.com>
+Subject: Re: [PATCH v4 13/27] drm/mediatek: Don't set struct
+ drm_device.irq_enabled
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, 
+ Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Xinhui.Pan@amd.com, james.qian.wang@arm.com, liviu.dudau@arm.com, 
+ mihail.atanassov@arm.com, brian.starkey@arm.com, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, 
+ Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>, 
+ Seung-Woo Kim <sw0312.kim@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ krzysztof.kozlowski@canonical.com, xinliang.liu@linaro.org, 
+ tiantao6@hisilicon.com, john.stultz@linaro.org, kong.kongxinwei@hisilicon.com, 
+ puck.chen@hisilicon.com, Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Ben Skeggs <bskeggs@redhat.com>, 
+ Tomi Valkeinen <tomba@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>,
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Chen-Yu Tsai <wens@csie.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, jonathanh@nvidia.com, 
+ Jyri Sarha <jyri.sarha@iki.fi>, emma@anholt.net,
+ linux-graphics-maintainer@vmware.com, 
+ zackr@vmware.com, hyun.kwon@xilinx.com, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, michal.simek@xilinx.com, 
+ jani.nikula@linux.intel.com, rodrigo.vivi@intel.com, 
+ Russell King <linux@armlinux.org.uk>, kieran.bingham+renesas@ideasonboard.com, 
+ Rodrigo Siqueira <rodrigosiqueiramelo@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, amd-gfx@lists.freedesktop.org, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-samsung-soc@vger.kernel.org, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ nouveau@lists.freedesktop.org, 
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Daniel Vetter <daniel.vetter@ffwll.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_060229_260394_61063ADE 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20210809_060911_427169_03B73D01 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,105 +125,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Max Chou <max.chou@realtek.com>
-
-For the commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d, wakeup is
-always disabled for Realtek devices. However, there's the capability
-for Realtek devices to apply USB wake-up.
-
-In this commit, remove WAKEUP_DISABLE feature for Realtek devices.
-If users would switch wake-up, they should access
-"/sys/bus/usb/.../power/wakeup"
-
-In this commit, it also adds the feature as WAKEUP_AUTOSUSPEND
-for Realtek devices because it should set do_remote_wakeup on autosuspend.
-
-Signed-off-by: Max Chou <max.chou@realtek.com>
-Tested-by: Hilda Wu <hildawu@realtek.com>
-Reviewed-by: Archie Pusaka <apusaka@chromium.org>
-Reviewed-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
----
- drivers/bluetooth/btusb.c | 25 +++++++++----------------
- 1 file changed, 9 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 488f110e17e2..73a835bf37f7 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -527,7 +527,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
- #define BTUSB_OOB_WAKE_ENABLED	11
- #define BTUSB_HW_RESET_ACTIVE	12
- #define BTUSB_TX_WAIT_VND_EVT	13
--#define BTUSB_WAKEUP_DISABLE	14
-+#define BTUSB_WAKEUP_AUTOSUSPEND	14
- 
- struct btusb_data {
- 	struct hci_dev       *hdev;
-@@ -1349,13 +1349,6 @@ static int btusb_open(struct hci_dev *hdev)
- 
- 	data->intf->needs_remote_wakeup = 1;
- 
--	/* Disable device remote wakeup when host is suspended
--	 * For Realtek chips, global suspend without
--	 * SET_FEATURE (DEVICE_REMOTE_WAKEUP) can save more power in device.
--	 */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
--		device_wakeup_disable(&data->udev->dev);
--
- 	if (test_and_set_bit(BTUSB_INTR_RUNNING, &data->flags))
- 		goto done;
- 
-@@ -1422,7 +1415,7 @@ static int btusb_close(struct hci_dev *hdev)
- 	data->intf->needs_remote_wakeup = 0;
- 
- 	/* Enable remote wake up for auto-suspend */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
-+	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags))
- 		data->intf->needs_remote_wakeup = 1;
- 
- 	usb_autopm_put_interface(data->intf);
-@@ -3877,11 +3870,8 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->shutdown = btrtl_shutdown_realtek;
- 		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
- 
--		/* Realtek devices lose their updated firmware over global
--		 * suspend that means host doesn't send SET_FEATURE
--		 * (DEVICE_REMOTE_WAKEUP)
--		 */
--		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
-+		/* Realtek devices need to set remote wakeup on auto-suspend */
-+		set_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags);
- 	}
- 
- 	if (!reset)
-@@ -4056,12 +4046,15 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
- 	 * Actually, it depends on whether the usb host sends
- 	 * set feature (enable wakeup) or not.
- 	 */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags)) {
-+	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags)) {
- 		if (PMSG_IS_AUTO(message) &&
- 		    device_can_wakeup(&data->udev->dev))
- 			data->udev->do_remote_wakeup = 1;
--		else if (!PMSG_IS_AUTO(message))
-+		else if (!PMSG_IS_AUTO(message) &&
-+			 !device_may_wakeup(&data->udev->dev)) {
-+			data->udev->do_remote_wakeup = 0;
- 			data->udev->reset_resume = 1;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIFRob21hczoKClRob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPiDmlrwg
+MjAyMeW5tDbmnIgyNeaXpSDpgLHkupQg5LiL5Y2INDoyMuWvq+mBk++8mgo+Cj4gVGhlIGZpZWxk
+IGRybV9kZXZpY2UuaXJxX2VuYWJsZWQgaXMgb25seSB1c2VkIGJ5IGxlZ2FjeSBkcml2ZXJzCj4g
+d2l0aCB1c2Vyc3BhY2UgbW9kZXNldHRpbmcuIERvbid0IHNldCBpdCBpbiBtZWRpYXRlay4KPgoK
+QWNrZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPiBTaWdu
+ZWQtb2ZmLWJ5OiBUaG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KPiBSZXZp
+ZXdlZC1ieTogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQu
+Y29tPgo+IEFja2VkLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5pZWwudmV0dGVyQGZmd2xsLmNoPgo+
+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYyB8IDYgLS0tLS0t
+Cj4gIDEgZmlsZSBjaGFuZ2VkLCA2IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jIGIvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kcm1fZHJ2LmMKPiBpbmRleCBiNDZiZGI4OTg1ZGEuLjliNjBiZWMzM2QzYiAxMDA2
+NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kcnYuYwo+ICsrKyBi
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gQEAgLTI3MCwxMiArMjcw
+LDYgQEAgc3RhdGljIGludCBtdGtfZHJtX2ttc19pbml0KHN0cnVjdCBkcm1fZGV2aWNlICpkcm0p
+Cj4gICAgICAgICAgICAgICAgIGdvdG8gZXJyX2NvbXBvbmVudF91bmJpbmQ7Cj4gICAgICAgICB9
+Cj4KPiAtICAgICAgIC8qCj4gLSAgICAgICAgKiBXZSBkb24ndCB1c2UgdGhlIGRybV9pcnFfaW5z
+dGFsbCgpIGhlbHBlcnMgcHJvdmlkZWQgYnkgdGhlIERSTQo+IC0gICAgICAgICogY29yZSwgc28g
+d2UgbmVlZCB0byBzZXQgdGhpcyBtYW51YWxseSBpbiBvcmRlciB0byBhbGxvdyB0aGUKPiAtICAg
+ICAgICAqIERSTV9JT0NUTF9XQUlUX1ZCTEFOSyB0byBvcGVyYXRlIGNvcnJlY3RseS4KPiAtICAg
+ICAgICAqLwo+IC0gICAgICAgZHJtLT5pcnFfZW5hYmxlZCA9IHRydWU7Cj4gICAgICAgICByZXQg
+PSBkcm1fdmJsYW5rX2luaXQoZHJtLCBNQVhfQ1JUQyk7Cj4gICAgICAgICBpZiAocmV0IDwgMCkK
+PiAgICAgICAgICAgICAgICAgZ290byBlcnJfY29tcG9uZW50X3VuYmluZDsKPiAtLQo+IDIuMzIu
+MAo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
+dGVrCg==
