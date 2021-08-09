@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9613BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7346C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:11:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 34A166069E
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:09:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 34A166069E
+	by mail.kernel.org (Postfix) with ESMTPS id 67DF060F9F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 03:11:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 67DF060F9F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aVVT9O4mfiOWATVAdSE1L5XLRds4XteYkgfYrdqoUjk=; b=OJOIZjYv3M8Mw7
-	AushbCrok16tdrzVhB6uq3FCVoVydac6tuGir9jUpkQ+R8uqUWydoAjDiHPghIuq6lBmcrB/EFRbn
-	MoRWsAw5361nFLBQ+HtslsV7aoOBz2Eul1mbcWs1uOR4PnecY/ZJms7mnMOWCrDXTNlnW3MX+d9+G
-	UBRdhQn4p4w//wF2bDqenFqKXU27FtwBZxvEBls4dD0AkEEid1s0obfk7mSOOM3cwKT6fLacIlTS3
-	pXkQYE3LP126MSz1/tPmktvQTFLrg8GKmKeob4D98WP5bm0E+ZUiLs9wlPUzEBaAvR+Ixf8TeEkV0
-	QNQeU4FRxhgihUf4R7hg==;
+	List-Owner; bh=0vSvHmpQxt8cLVfsL6Nxr8h6dNMcl/eFtnRQVwFIOOI=; b=gU+W4S5jq6T/N4
+	jUdWTme0tfQjkSY5k7sZERofDJlxnTTieajFISt25B/q0FzQ7BvtwAPOF/qY9Q5Fg0tM25+beED/W
+	1ppLzQBlH2DLfYpyDb3iGzA962UFAKdHTG2Qhn0D8zWhfSNmCS/dqvM/jeo5i1F4d4YTpnd0F1do3
+	FQW7hm0EZeHFQ5Uy+binZ/2lyvs8ah2CTrPvu3XT81gyPftZYsBHXS59Lg9B1AHOzOioKDu5HuCph
+	kyXpZ4eCMyWBko6I4Q6Ih6o3d9wO11n+bSpmXNA/usn0xWKVZdAHjVJNzhfVntpuuJcngKPZ4uOvL
+	7XDSSc5DId4XNGpX7X9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mCvfG-00GyE9-0b; Mon, 09 Aug 2021 03:09:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mCvhY-00GysR-Pr; Mon, 09 Aug 2021 03:11:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mCvei-00Gy5c-Ov; Mon, 09 Aug 2021 03:08:50 +0000
-X-UUID: 9849dc71891e415da69490b5c79909bb-20210808
+ id 1mCvhL-00Gyo8-0r; Mon, 09 Aug 2021 03:11:32 +0000
+X-UUID: 373b89389cf74d0fbe2a83ba28649f70-20210808
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=80Lt3r8QnLvkH14mXeKlfl5USxGdy9jFsEKJV9b6qaU=; 
- b=rQPoAQurscItusKSndaF7K1kv7RS0+HY3D6hFJlLIcmHf0zv+ShCv3R1f5lfIT7ERwr27Qa8CYDYPRTi/bJhJlzYIGfdlXI42gfF2pJO0DTJzuailMO3qw05pdY435nWnAT41q80ScCBcopLnfyQ7GQ+zu9sODNUXWmU3obUceI=;
-X-UUID: 9849dc71891e415da69490b5c79909bb-20210808
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=4aXo/1ErHT3O397het6HH8GxOxwVH5t1aD5EzbUHfok=; 
+ b=O1yMfLz5tAt+Raq1hl16wdX3uqjNTbV5RVqYfheNX8Z/x+aMma4iRtrTj1CUtqP4LZ27n2Ni8YiR93fg+gxGn19y42LXf2Pv8/IRWgCdyk6tRUx3KI0Sdnx9SQ+NEZkNusgx+aHaMp3YpygUXpbrUU0BU9eLS+llU6LG1EP4+lw=;
+X-UUID: 373b89389cf74d0fbe2a83ba28649f70-20210808
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nina-cm.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1848921003; Sun, 08 Aug 2021 20:08:41 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1893567038; Sun, 08 Aug 2021 20:11:29 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Sun, 8 Aug 2021 20:08:40 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Aug 2021 11:08:38 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Aug 2021 11:08:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 9 Aug 2021 11:08:38 +0800
+ Frontend Transport; Mon, 9 Aug 2021 11:08:39 +0800
 From: Nina Wu <nina-cm.wu@mediatek.com>
 To: 
 CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
@@ -65,17 +64,17 @@ CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <srv_heupstream@mediatek.com>, <Jackson-kt.Chang@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [v4 5/7] soc: mediatek: devapc: add debug register for new IC support
-Date: Mon, 9 Aug 2021 11:08:17 +0800
-Message-ID: <1628478499-29460-5-git-send-email-nina-cm.wu@mediatek.com>
+Subject: [v4 6/7] soc: mediatek: devapc: support mt8192
+Date: Mon, 9 Aug 2021 11:08:18 +0800
+Message-ID: <1628478499-29460-6-git-send-email-nina-cm.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
 In-Reply-To: <1628478499-29460-1-git-send-email-nina-cm.wu@mediatek.com>
 References: <1628478499-29460-1-git-send-email-nina-cm.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210808_200848_861144_B3F923CA 
-X-CRM114-Status: GOOD (  16.56  )
+X-CRM114-CacheID: sfid-20210808_201131_124835_64F32D78 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,108 +93,45 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nina Wu <Nina-CM.Wu@mediatek.com>
 
-There are 3 debug info registers in new ICs while in legacy ones,
-we have only 2. We add a 'version' field in compatible data to
-decide how we extract the debug info.
+Add compatible to support mt8192.
 
 Signed-off-by: Nina Wu <Nina-CM.Wu@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-devapc.c | 43 +++++++++++++++++++++++++++++++++++----
- 1 file changed, 39 insertions(+), 4 deletions(-)
+ drivers/soc/mediatek/mtk-devapc.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/drivers/soc/mediatek/mtk-devapc.c b/drivers/soc/mediatek/mtk-devapc.c
-index 8eb65dc0..42d3be5 100644
+index 42d3be5..c857678 100644
 --- a/drivers/soc/mediatek/mtk-devapc.c
 +++ b/drivers/soc/mediatek/mtk-devapc.c
-@@ -26,12 +26,24 @@ struct mtk_devapc_vio_dbgs {
- 			u32 addr_h:4;
- 			u32 resv:4;
- 		} dbg0_bits;
-+
-+		struct {
-+			u32 dmnid:6;
-+			u32 vio_w:1;
-+			u32 vio_r:1;
-+			u32 addr_h:4;
-+			u32 resv:20;
-+		} dbg0_bits_ver2;
- 	};
- 
- 	u32 vio_dbg1;
-+	u32 vio_dbg2;
+@@ -265,11 +265,27 @@ static const struct mtk_devapc_data devapc_mt6779 = {
+ 	.vio_shift_con_offset = 0xF20,
  };
  
- struct mtk_devapc_data {
-+	/* architecture version */
-+	u32 version;
++static const struct mtk_devapc_data devapc_mt8192 = {
++	.version = 2,
++	.vio_mask_offset = 0x0,
++	.vio_sta_offset = 0x400,
++	.vio_dbg0_offset = 0x900,
++	.vio_dbg1_offset = 0x904,
++	.vio_dbg2_offset = 0x908,
++	.apc_con_offset = 0xF00,
++	.vio_shift_sta_offset = 0xF20,
++	.vio_shift_sel_offset = 0xF30,
++	.vio_shift_con_offset = 0xF10,
++};
 +
- 	/* default numbers of violation index */
- 	u32 vio_idx_num;
- 
-@@ -40,6 +52,7 @@ struct mtk_devapc_data {
- 	u32 vio_sta_offset;
- 	u32 vio_dbg0_offset;
- 	u32 vio_dbg1_offset;
-+	u32 vio_dbg2_offset;
- 	u32 apc_con_offset;
- 	u32 vio_shift_sta_offset;
- 	u32 vio_shift_sel_offset;
-@@ -163,22 +176,43 @@ static void devapc_extract_vio_dbg(struct mtk_devapc_context *ctx)
- 	struct mtk_devapc_vio_dbgs vio_dbgs;
- 	void __iomem *vio_dbg0_reg;
- 	void __iomem *vio_dbg1_reg;
-+	void __iomem *vio_dbg2_reg;
-+	u32 vio_addr, bus_id, domain_id;
-+	u32 vio_w, vio_r;
- 
- 	vio_dbg0_reg = ctx->base + ctx->data->vio_dbg0_offset;
- 	vio_dbg1_reg = ctx->base + ctx->data->vio_dbg1_offset;
-+	vio_dbg2_reg = ctx->base + ctx->data->vio_dbg2_offset;
- 
- 	vio_dbgs.vio_dbg0 = readl(vio_dbg0_reg);
- 	vio_dbgs.vio_dbg1 = readl(vio_dbg1_reg);
-+	if (ctx->data->version == 2U)
-+		vio_dbgs.vio_dbg2 = readl(vio_dbg2_reg);
-+
-+	if (ctx->data->version == 1U) {
-+		/* arch version 1 */
-+		bus_id = vio_dbgs.dbg0_bits.mstid;
-+		vio_addr = vio_dbgs.vio_dbg1;
-+		domain_id = vio_dbgs.dbg0_bits.dmnid;
-+		vio_w = vio_dbgs.dbg0_bits.vio_w;
-+		vio_r = vio_dbgs.dbg0_bits.vio_r;
-+	} else {
-+		/* arch version 2 */
-+		bus_id = vio_dbgs.vio_dbg1;
-+		vio_addr = vio_dbgs.vio_dbg2;
-+		domain_id = vio_dbgs.dbg0_bits_ver2.dmnid;
-+		vio_w = vio_dbgs.dbg0_bits_ver2.vio_w;
-+		vio_r = vio_dbgs.dbg0_bits_ver2.vio_r;
-+	}
- 
- 	/* Print violation information */
--	if (vio_dbgs.dbg0_bits.vio_w)
-+	if (vio_w)
- 		dev_info(ctx->dev, "Write Violation\n");
--	else if (vio_dbgs.dbg0_bits.vio_r)
-+	else if (vio_r)
- 		dev_info(ctx->dev, "Read Violation\n");
- 
- 	dev_info(ctx->dev, "Bus ID:0x%x, Dom ID:0x%x, Vio Addr:0x%x\n",
--		 vio_dbgs.dbg0_bits.mstid, vio_dbgs.dbg0_bits.dmnid,
--		 vio_dbgs.vio_dbg1);
-+		 bus_id, domain_id, vio_addr);
- }
- 
- /*
-@@ -219,6 +253,7 @@ static void stop_devapc(struct mtk_devapc_context *ctx)
- }
- 
- static const struct mtk_devapc_data devapc_mt6779 = {
-+	.version = 1,
- 	.vio_idx_num = 511,
- 	.vio_mask_offset = 0x0,
- 	.vio_sta_offset = 0x400,
+ static const struct of_device_id mtk_devapc_dt_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt6779-devapc",
+ 		.data = &devapc_mt6779,
+ 	}, {
++		.compatible = "mediatek,mt8192-devapc",
++		.data = &devapc_mt8192,
++	}, {
+ 	},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_devapc_dt_match);
 -- 
 2.6.4
 _______________________________________________
