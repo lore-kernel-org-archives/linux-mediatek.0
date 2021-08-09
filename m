@@ -2,79 +2,82 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-19.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EA494C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 14:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FB73C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 14:06:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E5D760F35
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 14:03:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9E5D760F35
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A587F60E52
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 14:06:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A587F60E52
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=02bjodaQuMSCbpbJKKd3BXIBJLEXvqAZS9t6AU8J23k=; b=dugZCCbdT5LuCk
-	qb9XuHEyNa0bi3hE6XGLp+DXofcEW//xfReZHnFb3Re988gE7Ys7dV5aqmKtysBaZyuBpiHgK3/HL
-	vX94qa5LN/SDgclSHC+mqEcMo7ZwPPMcSW1D8U59iQUscTjl9wHpvEgyxTnh9jh+iN0yiX1TuKsP8
-	0+Uz/c/BLmLCgxDEfO1JUYgQaDmmDhfG5mSzfxdQk2PdqabuU5+G6UpJD7w5jBlzwSWkcogWmz74a
-	dE8lgun43jVufxe7cTwmg0yTOKOWNytkHgTV9W+MuEqJdlKo8L29hSM72BnbS1idpzqCbpNKqNQSe
-	+uACLWpBqOpGF01ql1FA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iRcFblMvIUomiqKUsRaQqQK8CCvLqeK3h/zj3GGBSsM=; b=eNBYNFcI31Da9h
+	s9cg90HaROiF1N25Hf0lmcDcws0Y6fQtqZm6DqIShHE9u0BULHS4uGj6rGBxngEff0Qu0PcjjiRJG
+	9eo6Mu6ac9VdKdyQB3gQxJ3jHJz/VjnuazF7FGNRjGYumW47Tlmg8S3PUq5vcBRjlriQMeM86sjKG
+	7H7m/Re/5nh9ZGhnnBKksfBKnyQGMvogwOEnhwghwVKJOOAFW13l5sljpQlh75x8mIV1A1Mbnk0VW
+	hpLSDyHvPC5Ouoaz7u2+TcyEIapMWnKAfjo1v/02/ib6KsiJqSwhkjFgHfzPuOKjRasGUzMCWvY7R
+	Iao3SyFNlh0S+1zS6jzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD5sS-000rLl-7W; Mon, 09 Aug 2021 14:03:40 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1mD5ug-000s2C-OX; Mon, 09 Aug 2021 14:05:58 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mD5s8-000rDw-UI; Mon, 09 Aug 2021 14:03:24 +0000
-X-UUID: 53fba3482cd747e28b434db7da2d031b-20210809
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=l38sAvTdDMSG39WWWPttGlu/AgOMdCQ1C6KTUdY54qI=; 
- b=mlDoCvyHjpqpVKSuPq7J3jogSJm+azD12ff02QQ/X/ZlqHlRqeee6KJvk6h83gRQ30II6gMznV/HZn1KdEg7JkVzeRxcmcJW3qm7uie/cdV47vEWbNWsWQkREYnO/xY8+MrD7cV/hZg2Bym1IewOVasII+nF/odcWG3lkeeDUuc=;
-X-UUID: 53fba3482cd747e28b434db7da2d031b-20210809
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1466168864; Mon, 09 Aug 2021 07:03:12 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Aug 2021 07:03:11 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 9 Aug 2021 22:03:09 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 9 Aug 2021 22:03:02 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern
- <dsahern@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <rocco.yue@gmail.com>, <chao.song@mediatek.com>,
- <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: [PATCH net-next v3] ipv6: add IFLA_INET6_RA_MTU to expose mtu value
- in the RA message
-Date: Mon, 9 Aug 2021 22:01:09 +0800
-Message-ID: <20210809140109.32595-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mD5uP-000rx5-4Q; Mon, 09 Aug 2021 14:05:45 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C632161056;
+ Mon,  9 Aug 2021 14:05:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628517940;
+ bh=B16BkVOlzvMofRNxZCCPfBpfJWKgMemm4c5pHZIX5uE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=P/rj+RsZilC5qcXQ/+8k1PaWasOHfI6V7uARzwTxsJxOtKgBnRiawROZavf8ARIk1
+ VfkoxdO3tgLoju+FV2uKH1olUAnunxOnd4esoz/i7R801K0z0AjzorDn5c+Zn1Ovu3
+ pEyJ9FVykcNU+88fLz9pHKHfKtMQsYpGjlIX3Y75Z+ZsStwbhFkZ3RpmwWpdgrs4i9
+ AoO0HEgbca8ZtVyNsTjos3Kg3/jNHrI3DvMxBjbOrvH/JttZSlZmR3pqVvOeWrxHGi
+ 5OPdYG/jTQRpPN/r5Hi+T/wOBDhpbg/SHcZ3ljwR1q7tT2iDlxNqudcW//kF7Qgaee
+ 7OKfeKQXXRkIQ==
+Received: by mail-ed1-f44.google.com with SMTP id n12so903572edx.8;
+ Mon, 09 Aug 2021 07:05:40 -0700 (PDT)
+X-Gm-Message-State: AOAM531De1GvK3P5hz7YZO1yfb06dQrKEUXldxRNBWo3qZXKNOHSg4ss
+ qX68Jnr/UsmENo5sWDYpas0aeKZlS/c7CIU/7Q==
+X-Google-Smtp-Source: ABdhPJzq3vGkwq0LwxmantDeoehWwnPrH+tI1JJ76dOOXmOZpmtTgTRuHk9cLXTrSQ0qQJPtXQG+i+a4FW+Oe+pp8Ms=
+X-Received: by 2002:a05:6402:648:: with SMTP id
+ u8mr30935144edx.162.1628517939275; 
+ Mon, 09 Aug 2021 07:05:39 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20201023133130.194140-1-fparent@baylibre.com>
+ <20201023133130.194140-6-fparent@baylibre.com>
+In-Reply-To: <20201023133130.194140-6-fparent@baylibre.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 9 Aug 2021 22:05:28 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-9zscXmC83oDkk-JZvnooZbiqtei+R2+c=VhBJ7xW84A@mail.gmail.com>
+Message-ID: <CAAOTY_-9zscXmC83oDkk-JZvnooZbiqtei+R2+c=VhBJ7xW84A@mail.gmail.com>
+Subject: Re: [PATCH v2 5/5] drm/mediatek: Add support for main DDP path on
+ MT8167
+To: Fabien Parent <fparent@baylibre.com>
+Cc: "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, DTML <devicetree@vger.kernel.org>,
+ DRI Development <dri-devel@lists.freedesktop.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_070321_038562_557DCEF1 
-X-CRM114-Status: GOOD (  28.65  )
+X-CRM114-CacheID: sfid-20210809_070541_273056_9E9F5E41 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,219 +89,102 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The kernel provides a "/proc/sys/net/ipv6/conf/<iface>/mtu"
-file, which can temporarily record the mtu value of the last
-received RA message when the RA mtu value is lower than the
-interface mtu, but this proc has following limitations:
-
-(1) when the interface mtu (/sys/class/net/<iface>/mtu) is
-updeated, mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) will
-be updated to the value of interface mtu;
-(2) mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) only affect
-ipv6 connection, and not affect ipv4.
-
-Therefore, when the mtu option is carried in the RA message,
-there will be a problem that the user sometimes cannot obtain
-RA mtu value correctly by reading mtu6.
-
-After this patch set, if a RA message carries the mtu option,
-you can send a netlink msg which nlmsg_type is RTM_GETLINK,
-and then by parsing the attribute of IFLA_INET6_RA_MTU to
-get the mtu value carried in the RA message received on the
-inet6 device. In addition, you can also get a link notification
-when ra_mtu is updated so it doesn't have to poll.
-
-In this way, if the MTU values that the device receives from
-the network in the PCO IPv4 and the RA IPv6 procedures are
-different, the user space process can read ra_mtu to get
-the mtu value carried in the RA message without worrying
-about the issue of ipv4 being stuck due to the late arrival
-of RA message. After comparing the value of ra_mtu and ipv4
-mtu, then the device can use the lower MTU value for both
-IPv4 and IPv6.
-
-Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
----
- include/net/if_inet6.h             |  2 +
- include/net/ndisc.h                |  1 +
- include/uapi/linux/if_link.h       |  1 +
- net/ipv6/addrconf.c                | 67 ++++++++++++++++++++++++++++++
- net/ipv6/ndisc.c                   |  6 +++
- tools/include/uapi/linux/if_link.h |  1 +
- 6 files changed, 78 insertions(+)
-
-diff --git a/include/net/if_inet6.h b/include/net/if_inet6.h
-index 42235c178b06..653e7d0f65cb 100644
---- a/include/net/if_inet6.h
-+++ b/include/net/if_inet6.h
-@@ -210,6 +210,8 @@ struct inet6_dev {
- 
- 	unsigned long		tstamp; /* ipv6InterfaceTable update timestamp */
- 	struct rcu_head		rcu;
-+
-+	unsigned int		ra_mtu;
- };
- 
- static inline void ipv6_eth_mc_map(const struct in6_addr *addr, char *buf)
-diff --git a/include/net/ndisc.h b/include/net/ndisc.h
-index 38e4094960ce..c7b7f1b002fd 100644
---- a/include/net/ndisc.h
-+++ b/include/net/ndisc.h
-@@ -501,5 +501,6 @@ int ndisc_ifinfo_sysctl_strategy(struct ctl_table *ctl,
- #endif
- 
- void inet6_ifinfo_notify(int event, struct inet6_dev *idev);
-+void inet6_iframtu_notify(struct inet6_dev *idev);
- 
- #endif
-diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-index 5310003523ce..6dfdae1bb860 100644
---- a/include/uapi/linux/if_link.h
-+++ b/include/uapi/linux/if_link.h
-@@ -417,6 +417,7 @@ enum {
- 	IFLA_INET6_ICMP6STATS,	/* statistics (icmpv6)		*/
- 	IFLA_INET6_TOKEN,	/* device token			*/
- 	IFLA_INET6_ADDR_GEN_MODE, /* implicit address generator mode */
-+	IFLA_INET6_RA_MTU,	/* mtu carried in the RA message  */
- 	__IFLA_INET6_MAX
- };
- 
-diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
-index 8381288a0d6e..3e3cdd49c295 100644
---- a/net/ipv6/addrconf.c
-+++ b/net/ipv6/addrconf.c
-@@ -5543,6 +5543,7 @@ static inline size_t inet6_ifla6_size(void)
- 	     + nla_total_size(ICMP6_MIB_MAX * 8) /* IFLA_INET6_ICMP6STATS */
- 	     + nla_total_size(sizeof(struct in6_addr)) /* IFLA_INET6_TOKEN */
- 	     + nla_total_size(1) /* IFLA_INET6_ADDR_GEN_MODE */
-+	     + nla_total_size(4) /* IFLA_INET6_RA_MTU */
- 	     + 0;
- }
- 
-@@ -5651,6 +5652,9 @@ static int inet6_fill_ifla6_attrs(struct sk_buff *skb, struct inet6_dev *idev,
- 	if (nla_put_u8(skb, IFLA_INET6_ADDR_GEN_MODE, idev->cnf.addr_gen_mode))
- 		goto nla_put_failure;
- 
-+	if (nla_put_u32(skb, IFLA_INET6_RA_MTU, idev->ra_mtu))
-+		goto nla_put_failure;
-+
- 	return 0;
- 
- nla_put_failure:
-@@ -5767,6 +5771,9 @@ static int inet6_set_iftoken(struct inet6_dev *idev, struct in6_addr *token,
- static const struct nla_policy inet6_af_policy[IFLA_INET6_MAX + 1] = {
- 	[IFLA_INET6_ADDR_GEN_MODE]	= { .type = NLA_U8 },
- 	[IFLA_INET6_TOKEN]		= { .len = sizeof(struct in6_addr) },
-+	[IFLA_INET6_RA_MTU]		= { .type = NLA_REJECT,
-+					    .reject_message =
-+					    "IFLA_INET6_RA_MTU can not be set" },
- };
- 
- static int check_addr_gen_mode(int mode)
-@@ -6129,6 +6136,66 @@ static void ipv6_ifa_notify(int event, struct inet6_ifaddr *ifp)
- 		__ipv6_ifa_notify(event, ifp);
- }
- 
-+static inline size_t inet6_iframtu_msgsize(void)
-+{
-+	return NLMSG_ALIGN(sizeof(struct ifinfomsg))
-+	     + nla_total_size(IFNAMSIZ)	/* IFLA_IFNAME */
-+	     + nla_total_size(4);	/* IFLA_INET6_RA_MTU */
-+}
-+
-+static int inet6_fill_iframtu(struct sk_buff *skb, struct inet6_dev *idev)
-+{
-+	struct net_device *dev = idev->dev;
-+	struct ifinfomsg *hdr;
-+	struct nlmsghdr *nlh;
-+
-+	nlh = nlmsg_put(skb, 0, 0, RTM_NEWLINK, sizeof(*hdr), 0);
-+	if (!nlh)
-+		return -EMSGSIZE;
-+
-+	hdr = nlmsg_data(nlh);
-+	hdr->ifi_family = AF_INET6;
-+	hdr->__ifi_pad = 0;
-+	hdr->ifi_index = dev->ifindex;
-+	hdr->ifi_flags = dev_get_flags(dev);
-+	hdr->ifi_change = 0;
-+
-+	if (nla_put_string(skb, IFLA_IFNAME, dev->name) ||
-+	    nla_put_u32(skb, IFLA_INET6_RA_MTU, idev->ra_mtu))
-+		goto nla_put_failure;
-+
-+	nlmsg_end(skb, nlh);
-+	return 0;
-+
-+nla_put_failure:
-+	nlmsg_cancel(skb, nlh);
-+	return -EMSGSIZE;
-+}
-+
-+void inet6_iframtu_notify(struct inet6_dev *idev)
-+{
-+	struct sk_buff *skb;
-+	struct net *net = dev_net(idev->dev);
-+	int err = -ENOBUFS;
-+
-+	skb = nlmsg_new(inet6_iframtu_msgsize(), GFP_ATOMIC);
-+	if (!skb)
-+		goto errout;
-+
-+	err = inet6_fill_iframtu(skb, idev);
-+	if (err < 0) {
-+		/* -EMSGSIZE implies BUG in inet6_iframtu_msgsize() */
-+		WARN_ON(err == -EMSGSIZE);
-+		kfree_skb(skb);
-+		goto errout;
-+	}
-+	rtnl_notify(skb, net, 0, RTNLGRP_IPV6_IFINFO, NULL, GFP_ATOMIC);
-+	return;
-+errout:
-+	if (err < 0)
-+		rtnl_set_sk_err(net, RTNLGRP_IPV6_IFINFO, err);
-+}
-+
- #ifdef CONFIG_SYSCTL
- 
- static int addrconf_sysctl_forward(struct ctl_table *ctl, int write,
-diff --git a/net/ipv6/ndisc.c b/net/ipv6/ndisc.c
-index c467c6419893..a04164cbd77f 100644
---- a/net/ipv6/ndisc.c
-+++ b/net/ipv6/ndisc.c
-@@ -1496,6 +1496,12 @@ static void ndisc_router_discovery(struct sk_buff *skb)
- 		memcpy(&n, ((u8 *)(ndopts.nd_opts_mtu+1))+2, sizeof(mtu));
- 		mtu = ntohl(n);
- 
-+		if (in6_dev->ra_mtu != mtu) {
-+			in6_dev->ra_mtu = mtu;
-+			inet6_iframtu_notify(in6_dev);
-+			ND_PRINTK(2, info, "update ra_mtu to %d\n", in6_dev->ra_mtu);
-+		}
-+
- 		if (mtu < IPV6_MIN_MTU || mtu > skb->dev->mtu) {
- 			ND_PRINTK(2, warn, "RA: invalid mtu: %d\n", mtu);
- 		} else if (in6_dev->cnf.mtu6 != mtu) {
-diff --git a/tools/include/uapi/linux/if_link.h b/tools/include/uapi/linux/if_link.h
-index eb15f319aa57..36a8ae4793f1 100644
---- a/tools/include/uapi/linux/if_link.h
-+++ b/tools/include/uapi/linux/if_link.h
-@@ -230,6 +230,7 @@ enum {
- 	IFLA_INET6_ICMP6STATS,	/* statistics (icmpv6)		*/
- 	IFLA_INET6_TOKEN,	/* device token			*/
- 	IFLA_INET6_ADDR_GEN_MODE, /* implicit address generator mode */
-+	IFLA_INET6_RA_MTU,	/* mtu carried in the RA message  */
- 	__IFLA_INET6_MAX
- };
- 
--- 
-2.18.0
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEZhYmllbjoKCkZhYmllbiBQYXJlbnQgPGZwYXJlbnRAYmF5bGlicmUuY29tPiDmlrwgMjAy
+MOW5tDEw5pyIMjPml6Ug6YCx5LqUIOS4i+WNiDk6MzHlr6vpgZPvvJoKPgo+IEFkZCB0aGUgbWFp
+biAoRFNJKSBkcm0gZGlzcGxheSBwYXRoIGZvciBNVDgxNjcuCj4KCkFwcGxpZWQgdG8gbWVkaWF0
+ZWstZHJtLW5leHQgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIv
+c2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVkaWF0
+ZWstZHJtLW5leHQKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+IFNpZ25lZC1vZmYtYnk6IEZhYmll
+biBQYXJlbnQgPGZwYXJlbnRAYmF5bGlicmUuY29tPgo+IC0tLQo+Cj4gQ2hhbmdlbG9nOgo+Cj4g
+VjI6IE5vIGNoYW5nZQo+Cj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5j
+IHwgMzggKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDM4IGlu
+c2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
+X2RybV9kcnYuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jCj4gaW5k
+ZXggNTljODVjNjNiN2NjLi4zOTUyNDM1MDkzZmUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0
+ZWsvbXRrX2RybV9kcnYuYwo+IEBAIC0xMTIsNiArMTEyLDE3IEBAIHN0YXRpYyBjb25zdCBlbnVt
+IG10a19kZHBfY29tcF9pZCBtdDI3MTJfbXRrX2RkcF90aGlyZFtdID0gewo+ICAgICAgICAgRERQ
+X0NPTVBPTkVOVF9QV00yLAo+ICB9Owo+Cj4gK3N0YXRpYyBlbnVtIG10a19kZHBfY29tcF9pZCBt
+dDgxNjdfbXRrX2RkcF9tYWluW10gPSB7Cj4gKyAgICAgICBERFBfQ09NUE9ORU5UX09WTDAsCj4g
+KyAgICAgICBERFBfQ09NUE9ORU5UX0NPTE9SMCwKPiArICAgICAgIEREUF9DT01QT05FTlRfQ0NP
+UlIsCj4gKyAgICAgICBERFBfQ09NUE9ORU5UX0FBTDAsCj4gKyAgICAgICBERFBfQ09NUE9ORU5U
+X0dBTU1BLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9ESVRIRVIsCj4gKyAgICAgICBERFBfQ09N
+UE9ORU5UX1JETUEwLAo+ICsgICAgICAgRERQX0NPTVBPTkVOVF9EU0kwLAo+ICt9Owo+ICsKPiAg
+c3RhdGljIGNvbnN0IGVudW0gbXRrX2RkcF9jb21wX2lkIG10ODE3M19tdGtfZGRwX21haW5bXSA9
+IHsKPiAgICAgICAgIEREUF9DT01QT05FTlRfT1ZMMCwKPiAgICAgICAgIEREUF9DT01QT05FTlRf
+Q09MT1IwLAo+IEBAIC0xNjMsNiArMTc0LDExIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX21t
+c3lzX2RyaXZlcl9kYXRhIG10ODE3M19tbXN5c19kcml2ZXJfZGF0YSA9IHsKPiAgICAgICAgIC5l
+eHRfbGVuID0gQVJSQVlfU0laRShtdDgxNzNfbXRrX2RkcF9leHQpLAo+ICB9Owo+Cj4gK3N0YXRp
+YyBjb25zdCBzdHJ1Y3QgbXRrX21tc3lzX2RyaXZlcl9kYXRhIG10ODE2N19tbXN5c19kcml2ZXJf
+ZGF0YSA9IHsKPiArICAgICAgIC5tYWluX3BhdGggPSBtdDgxNjdfbXRrX2RkcF9tYWluLAo+ICsg
+ICAgICAgLm1haW5fbGVuID0gQVJSQVlfU0laRShtdDgxNjdfbXRrX2RkcF9tYWluKSwKPiArfTsK
+PiArCj4gIHN0YXRpYyBpbnQgbXRrX2RybV9rbXNfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJt
+KQo+ICB7Cj4gICAgICAgICBzdHJ1Y3QgbXRrX2RybV9wcml2YXRlICpwcml2YXRlID0gZHJtLT5k
+ZXZfcHJpdmF0ZTsKPiBAQCAtNDAxLDI2ICs0MTcsNDIgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBj
+b21wb25lbnRfbWFzdGVyX29wcyBtdGtfZHJtX29wcyA9IHsKPiAgc3RhdGljIGNvbnN0IHN0cnVj
+dCBvZl9kZXZpY2VfaWQgbXRrX2RkcF9jb21wX2R0X2lkc1tdID0gewo+ICAgICAgICAgeyAuY29t
+cGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1vdmwiLAo+ICAgICAgICAgICAuZGF0YSA9
+ICh2b2lkICopTVRLX0RJU1BfT1ZMIH0sCj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlh
+dGVrLG10ODE2Ny1kaXNwLW92bCIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElT
+UF9PVkwgfSwKPiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRpc3At
+b3ZsIiwKPiAgICAgICAgICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX09WTCB9LAo+ICAgICAg
+ICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1yZG1hIiwKPiAgICAgICAg
+ICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX1JETUEgfSwKPiArICAgICAgIHsgLmNvbXBhdGli
+bGUgPSAibWVkaWF0ZWssbXQ4MTY3LWRpc3AtcmRtYSIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZv
+aWQgKilNVEtfRElTUF9SRE1BIH0sCj4gICAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVr
+LG10ODE3My1kaXNwLXJkbWEiLAo+ICAgICAgICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RJU1Bf
+UkRNQSB9LAo+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC13
+ZG1hIiwKPiAgICAgICAgICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX1dETUEgfSwKPiArICAg
+ICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTY3LWRpc3AtY2NvcnIiLAo+ICsgICAg
+ICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RJU1BfQ0NPUlIgfSwKPiAgICAgICAgIHsgLmNvbXBh
+dGlibGUgPSAibWVkaWF0ZWssbXQyNzAxLWRpc3AtY29sb3IiLAo+ICAgICAgICAgICAuZGF0YSA9
+ICh2b2lkICopTVRLX0RJU1BfQ09MT1IgfSwKPiArICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVk
+aWF0ZWssbXQ4MTY3LWRpc3AtY29sb3IiLAo+ICsgICAgICAgICAuZGF0YSA9ICh2b2lkICopTVRL
+X0RJU1BfQ09MT1IgfSwKPiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTcz
+LWRpc3AtY29sb3IiLAo+ICAgICAgICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RJU1BfQ09MT1Ig
+fSwKPiArICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTY3LWRpc3AtYWFsIiwK
+PiArICAgICAgICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX0FBTH0sCj4gICAgICAgICB7IC5j
+b21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE3My1kaXNwLWFhbCIsCj4gICAgICAgICAgIC5kYXRh
+ID0gKHZvaWQgKilNVEtfRElTUF9BQUx9LAo+ICsgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRp
+YXRlayxtdDgxNjctZGlzcC1nYW1tYSIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtf
+RElTUF9HQU1NQSwgfSwKPiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTcz
+LWRpc3AtZ2FtbWEiLAo+ICAgICAgICAgICAuZGF0YSA9ICh2b2lkICopTVRLX0RJU1BfR0FNTUEs
+IH0sCj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10ODE2Ny1kaXNwLWRpdGhl
+ciIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9ESVRIRVIgfSwKPiAgICAg
+ICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRpc3AtdWZvZSIsCj4gICAgICAg
+ICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9VRk9FIH0sCj4gICAgICAgICB7IC5jb21wYXRp
+YmxlID0gIm1lZGlhdGVrLG10MjcwMS1kc2kiLAo+ICAgICAgICAgICAuZGF0YSA9ICh2b2lkICop
+TVRLX0RTSSB9LAo+ICsgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNjctZHNp
+IiwKPiArICAgICAgICAgLmRhdGEgPSAodm9pZCAqKU1US19EU0kgfSwKPiAgICAgICAgIHsgLmNv
+bXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRzaSIsCj4gICAgICAgICAgIC5kYXRhID0gKHZv
+aWQgKilNVEtfRFNJIH0sCj4gICAgICAgICB7IC5jb21wYXRpYmxlID0gIm1lZGlhdGVrLG10Mjcw
+MS1kcGkiLAo+IEBAIC00MzEsMTAgKzQ2MywxNCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2Rl
+dmljZV9pZCBtdGtfZGRwX2NvbXBfZHRfaWRzW10gPSB7Cj4gICAgICAgICAgIC5kYXRhID0gKHZv
+aWQgKilNVEtfRElTUF9NVVRFWCB9LAo+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRl
+ayxtdDI3MTItZGlzcC1tdXRleCIsCj4gICAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElT
+UF9NVVRFWCB9LAo+ICsgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNjctZGlz
+cC1tdXRleCIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9NVVRFWCB9LAo+
+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1tdXRleCIsCj4g
+ICAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtfRElTUF9NVVRFWCB9LAo+ICAgICAgICAgeyAu
+Y29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MDEtZGlzcC1wd20iLAo+ICAgICAgICAgICAuZGF0
+YSA9ICh2b2lkICopTVRLX0RJU1BfQkxTIH0sCj4gKyAgICAgICB7IC5jb21wYXRpYmxlID0gIm1l
+ZGlhdGVrLG10ODE2Ny1kaXNwLXB3bSIsCj4gKyAgICAgICAgIC5kYXRhID0gKHZvaWQgKilNVEtf
+RElTUF9QV00gfSwKPiAgICAgICAgIHsgLmNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTczLWRp
+c3AtcHdtIiwKPiAgICAgICAgICAgLmRhdGEgPSAodm9pZCAqKU1US19ESVNQX1BXTSB9LAo+ICAg
+ICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNzMtZGlzcC1vZCIsCj4gQEAgLTQ0
+OSw2ICs0ODUsOCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBtdGtfZHJtX29m
+X2lkc1tdID0gewo+ICAgICAgICAgICAuZGF0YSA9ICZtdDc2MjNfbW1zeXNfZHJpdmVyX2RhdGF9
+LAo+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDI3MTItbW1zeXMiLAo+ICAg
+ICAgICAgICAuZGF0YSA9ICZtdDI3MTJfbW1zeXNfZHJpdmVyX2RhdGF9LAo+ICsgICAgICAgeyAu
+Y29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgxNjctbW1zeXMiLAo+ICsgICAgICAgICAuZGF0YSA9
+ICZtdDgxNjdfbW1zeXNfZHJpdmVyX2RhdGF9LAo+ICAgICAgICAgeyAuY29tcGF0aWJsZSA9ICJt
+ZWRpYXRlayxtdDgxNzMtbW1zeXMiLAo+ICAgICAgICAgICAuZGF0YSA9ICZtdDgxNzNfbW1zeXNf
+ZHJpdmVyX2RhdGF9LAo+ICAgICAgICAgeyB9Cj4gLS0KPiAyLjI4LjAKPgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGlu
+ZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
