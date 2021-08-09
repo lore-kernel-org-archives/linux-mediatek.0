@@ -2,92 +2,77 @@ Return-Path: <SRS0=Eo9X=NA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1317C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00604C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:31:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 791FF60F55
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:20:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 791FF60F55
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6FA5660F38
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Aug 2021 12:31:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6FA5660F38
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-ID:Subject:
-	From:Cc:To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aZcBs8i6xvV18Qb9/m6oc0NqpOhzjCAXIrdCHLVscSM=; b=Mt+pNUrqSIIlZR
-	vqBpobSC1nz4gKlbPGBaIISapcpMGWZG7pmpdY9YIAfzSZjBVia2Zyw9VxwMnHwvFVCmOX/NJPWWz
-	Sx++RzAKqf82iO6MQXU9Y3LslJEapn4EBY9+da9p175HuPF8H1JyJK9S398XiGKNd9e4g+R4eDiVE
-	FBWIAx9nORx9jphe0+QFxE+RRgR7T2SDBPuZqdNY/Wxxjbk0LaJN4TTJhAPkPJf7CE6CKyfOuyv7Q
-	E7nTJMj9+7Q009b2YYvFpnxFSWG2Pk1HbX3KcJsh/kK8qLm2MMBjmzKh6ljaGPydEJV8gp0lO1a1V
-	GnhVsQYNMCtAugvT0elQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=WZrP2rzWVwgN8rnILp7/nw1EBmoUtEwz7f4Tkfi2gZg=; b=yjlzqoJi7XHVSXNP0ZxWZgpJFh
+	LWAlYEzvwRlDHpb6oN4xukUflfTTE4VR4TkQkTnPxT6W75FyqTaTXHYOh1V5bwmH6DSBhKGMb3eAT
+	seHFHVlmcRQP11kujPHF9Hdvr+pLqgpLlLj1Rh5SAo7csUXurvZ9MJnX/pRtwOuQAUPCV4d+BcbT3
+	OBB8aOB6TldAg6jAdeEYc7cU56MXRGUX5pQzE+vBEU8EG0VhUkljrW/cxJRH3Y+keBZMeswHh1CBQ
+	kLQIiNpsGl31ZMiYjHZ+RKUUguaZJyTMv+dsJsO6aLuCHS3eSoAcsU/9e3frY6OQqJN0AnIClGaJu
+	IVzbIHkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mD4Gl-000WT5-JJ; Mon, 09 Aug 2021 12:20:39 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1mD4RA-000YD9-1B; Mon, 09 Aug 2021 12:31:24 +0000
+Received: from lb2-smtp-cloud7.xs4all.net ([194.109.24.28])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mD4GM-000WMW-E3; Mon, 09 Aug 2021 12:20:15 +0000
-Received: by mail-wr1-x434.google.com with SMTP id b13so21173892wrs.3;
- Mon, 09 Aug 2021 05:20:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=to:cc:from:subject:message-id:date:user-agent:mime-version
- :content-language:content-transfer-encoding;
- bh=1/Vf6khXnMrxkAMIT2n3x/n+5pDItmvi3VuJWN3SJoc=;
- b=Aag/zScHv2Uw7pewKl5p/Tli0gqoxQqe4OsnKmuW9smx2rAGXO8CCeVCjXblDpmYJt
- nMVMMEwf6CRvU5T6qjOsvKV3PjdWRTDWl/YSuUUQ0uK4kL0mTLXDhJwKVk0M2AC9p07M
- hQx073MNXcWmtA65uuLSP/ZHbJm07BPgW2gDCfjtIN7Arn+qOHwIsZVb+pOdUfbZC9ce
- 4i2M/l4ahpImfqkLqnIZq4ry9gpv/HzB0ip+M2XrjEqv1VaYMTbk+la49hZFR4zqb+od
- HL07drGAh7X7m3YGkwO75Tcl5RIeGRTdKRxiGY+/xRz7uNATiUhpb1TvraMcc+Cop8YL
- h+mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:message-id:date:user-agent
- :mime-version:content-language:content-transfer-encoding;
- bh=1/Vf6khXnMrxkAMIT2n3x/n+5pDItmvi3VuJWN3SJoc=;
- b=DKC+PNsgP1yUpS0qUAM86/PJcbvS4Hc1N98N04HsMw2Y+cQRI6cUeiS1Uv0Hkf6vmJ
- 2sc2hx6bO6a03hgh5QDnoU+do65IxKqJUMsn1Ia2jXEzQ4uYJ0Cjiu3pF14JwMNtwsX3
- vvBI0B6N1u3gjIvKNDHSMHpz1tYn7bpS4qVuonrJ+kkzsNH4/vxr/FQINCBmV0CoxsMR
- vX/2ZuKnNLxzsJB6KOo75CE2gklvB5GAE1xHyrJhQPvZyJpjuTyXQtLs95ldbB68j4vh
- tF6IrrbIef7hNCDjK1scLTHAgtciVmf6uv/ZEwdFmGXeXFJEbRnazA0w5qfxvxSVjMUZ
- qJ5Q==
-X-Gm-Message-State: AOAM531AKOdUey81JGuwj2DpgdVnXrSyJRtuggk/tWVswiFSIusrbODA
- gehbXZK3V/Qe7BbD/I25VqQ=
-X-Google-Smtp-Source: ABdhPJyeQrS6U506drqM/mRWodOZkXMDuZnGOitClStMmWat9pBhcNXm2avMXsszjMO1sMPL+MwuWA==
-X-Received: by 2002:a5d:44cb:: with SMTP id z11mr25066859wrr.100.1628511613037; 
- Mon, 09 Aug 2021 05:20:13 -0700 (PDT)
-Received: from ziggy.stardust (static-55-132-6-89.ipcom.comunitel.net.
- [89.6.132.55])
- by smtp.gmail.com with ESMTPSA id j4sm17427937wmi.4.2021.08.09.05.20.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Aug 2021 05:20:12 -0700 (PDT)
-List-Id: <soc.lore.kernel.org>
-To: SoC Team <soc@kernel.org>, arm-soc <arm@kernel.org>
-Cc: "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, Bilal Wasim
- <bilalwasim676@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [GIT PULL] arm64: dts updates for v5.15
-Message-ID: <26c4026a-9f26-d5a3-c30f-439120a4eaa0@gmail.com>
-Date: Mon, 9 Aug 2021 14:20:11 +0200
+ id 1mD4Qw-000YBr-T0; Mon, 09 Aug 2021 12:31:12 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id D4Qnm0UzS4SnAD4QqmmSQa; Mon, 09 Aug 2021 14:31:05 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1628512265; bh=1JnpY81zYR22eAIMj8YwHdE2jfxpqz8Bq/xmPMsAibU=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=PssgTV2OeSyUhiW/DVzPrCf9omGPJ/Zo3xyPdR7zwCUYzwbnPTDO2vLCvnqhxq0pk
+ 3uj6AmMP20khXXpjqS0QvXkOtCxhRh8jfGphYW9QsjfICZ+a+892NFeylQZGm2L/JK
+ tfoMHqMeacH3Q4+kiFd2LoZzVan7JX0vqoUL8tl4twU5Z6Ejk2Di7kC0PA7V8QB5jr
+ ch/7b8eDZ/mFX68K3ZY2UJPHE6sEQSH4mhQrvlHLTYtNTMgEGDEuvVErfsYmF20dKx
+ Gen99t041S4NdCKTXKzKWEYt0g674/9HGsrUuV49Df9KqxYrBQ0jN6DVJj2jNsmQZy
+ VAs84im2OCIvg==
+Subject: Re: [PATCH v7 00/14] media: mtk-vcodec: support for MT8183 decoder
+To: Tzung-Bi Shih <tzungbi@google.com>, yunfei.dong@mediatek.com,
+ acourbot@chromium.org
+Cc: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
+ dafna.hirschfeld@collabora.com, mchehab@kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20210806041530.4170869-1-tzungbi@google.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Message-ID: <104309d4-0973-cf1f-d61f-731b0642c1cf@xs4all.nl>
+Date: Mon, 9 Aug 2021 14:31:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ Firefox/78.0 Thunderbird/78.12.0
 MIME-Version: 1.0
+In-Reply-To: <20210806041530.4170869-1-tzungbi@google.com>
 Content-Language: en-US
+X-CMAE-Envelope: MS4xfKHcYEgO5nUvEjWF9VvuOaGi8Xs1S3AddrVTU30ZsQPerr20ruSyK9C6mP13FtplYyLgn3GIRdTL8qJjeXvdxRk4wKv2bTNASL7brbvlB1M074pLCp9+
+ teiCCo7SSdSEPn2OiFyMfPT9O0hvPVppgzR8lhNQX50tFJyZHj1PG9iOac8ZjLB16QRKajFqWICOVuLrOlYPbwucU/QDa8RoY8vdENJD9HATjfMXDX7sOBen
+ WNIt7yqeRYSK9IX145iVK/9BFJTZqMvDVZtbZzHsmMphq09UACA9xUcrMxUDl9INiD8g3sTLN9NWpz6yVudP3u4Q1cbztf1Uqn96cb2/fbR1HnNemm7nsYvX
+ cf/wiHmhBsrKzcWVnZeF2s9eQ9ak24+5t04dLZvpMJGvxvtD/LjbnTdtKMgpXRwUlH6KHhtKpfeBY+sQgLcTof93xPFps4TqARAH8Ln9gPScafDxX9qnhS7+
+ t3tsKybO18UAK+qgtQ+ONljCB3jKf8KlhNs82dwe6iJd1Si6q8cN9L689aXWjpRuo+sgCDFQXnq0ACGK4snT5tQ7D2Asfct2f6BrBA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_052014_539577_9FAA6663 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20210809_053111_118951_4275DCC7 
+X-CRM114-Status: GOOD (  31.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,56 +89,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd and Olof,
+Hi Tzung-Bi,
 
-Please have a look for the arm64 DTS updates. This time we only have smaller
-changes for existing boards, but no new HW. But don't worry, probably for v5.16
-we will see some new SoCs.
+I made a PR for this series, but I would like a follow-up patch that fixes this
+sparse warning:
+
+SPARSE:mtk-vcodec/mtk_vcodec_dec_stateful.c:615:35: warning: symbol 'mtk_vdec_8173_pdata' was not declared. Should it be static?
+SPARSE:mtk-vcodec/mtk_vcodec_dec_stateless.c:346:35: warning: symbol 'mtk_vdec_8183_pdata' was not declared. Should it be static?
+
+mtk_vcodec_dec.h is probably a good header to put the extern declaration.
 
 Regards,
-Matthias
 
----
-The following changes since commit e73f0f0ee7541171d89f2e2491130c7771ba58d3:
+	Hans
 
-  Linux 5.14-rc1 (2021-07-11 15:07:40 -0700)
+On 06/08/2021 06:15, Tzung-Bi Shih wrote:
+> This series adds support for the stateless API into mtk-vcodec, by first
+> separating the stateful ops into their own source file, and introducing
+> a new set of ops suitable for stateless decoding. As such, support for
+> stateful decoders should remain completely unaffected.
+> 
+> This series has been tested with both MT8183 and MT8173. Decoding was
+> working for both chips, and in the case of MT8173 no regression has been
+> spotted.
+> 
+> Patches 1-5 fix a few compliance issues with the decoder and encoder, most
+> notably by adding support for the START and STOP command for the latter. These
+> patches were last up until v4 but have been moved to the beginning so they can
+> be applied sooner.
+> 
+> Patches 6-9 separates the "stateful" part of the driver into its own file and
+> add support for the new firmware and pixel format used by MT8183.
+> 
+> Patches 10-14 add support for H.264 stateless decoding and MT8183.
+> 
+> Note that a few checkpatch issues have been left unadressed on purpose:
+> * Conversion from e.g. uint32_t to u32 can't be done without breaking
+>   consistency. This should be done by a driver-wide patch.
+> * Some macro warning suggesting parentheses for parameters expanded as struct
+>   members, which is obviously not applicable here.
+> * Warnings about adding new files without an update the MAINTAINERS, which is
+>   irrelevant as the new files are already covered by the existing wildcards.
+> 
+> Changes since v6:
+> (https://patchwork.linuxtv.org/project/linux-media/cover/20210705053258.1614177-1-acourbot@chromium.org/)
+> * Fix errors from 'checkpatch.pl --strict'.
+> * Fix missing kerneldoc issue.
+> * Fix wrong device minor number reference.
+> 
+> Changes since v5:
+> * Rebased against latest media tree.
+> * Applied most suggestions of `checkpatch.pl --strict`. Some proposed fixes were
+>   not applied because they would require a larger refactoring (i.e. large-scale
+>   type changes) of the code.
+> * Applied Reviewed-by and fix suggestions from Tzung-bi.
+> * Check for ABORT state in vidioc_encoder_cmd.
+> 
+> Changes since v4:
+> * Reorganized fixup patches first.
+> * Select MEDIA_CONTROLLER_REQUEST_API.
+> * Properly capitalize MM21's format description string.
+> * Reorganize stateless code as suggested by Hans.
+> * Fix compilation errors when DEBUG is defined.
+> * Merge double-free fixup patch into the patch that introduced the issue.
+> 
+> Changes since v3:
+> * Stop checking that controls are set for every request.
+> * Add V4L2_CID_STATELESS_H264_START_CODE control.
+> * Stop mapping OUTPUT buffers and getting the NAL type from them, use the
+>   nal_ref_idc field instead.
+> * Make V4L2_CID_MIN_BUFFERS_FOR_CAPTURE control stateful-only.
+> * Set vb2_buffer's field to V4L2_FIELD_NONE in buffer validation hook.
+> 
+> Changes since v2:
+> * Add follow-up patches fixing support for START/STOP commands for the
+>   encoder, and stateful decoder.
+> 
+> Alexandre Courbot (8):
+>   media: mtk-vcodec: vdec: use helpers in VIDIOC_(TRY_)DECODER_CMD
+>   media: mtk-vcodec: vdec: clamp OUTPUT resolution to hardware limits
+>   media: mtk-vcodec: make flush buffer reusable by encoder
+>   media: mtk-vcodec: venc: support START and STOP commands
+>   media: mtk-vcodec: vdec: handle firmware version field
+>   media: mtk-vcodec: support version 2 of decoder firmware ABI
+>   media: add Mediatek's MM21 format
+>   dt-bindings: media: document mediatek,mt8183-vcodec-dec
+> 
+> Hirokazu Honda (1):
+>   media: mtk-vcodec: vdec: Support H264 profile control
+> 
+> Yunfei Dong (5):
+>   media: mtk-vcodec: vdec: move stateful ops into their own file
+>   media: mtk-vcodec: vdec: support stateless API
+>   media: mtk-vcodec: vdec: support stateless H.264 decoding
+>   media: mtk-vcodec: vdec: add media device if using stateless api
+>   media: mtk-vcodec: enable MT8183 decoder
+> 
+>  .../bindings/media/mediatek-vcodec.txt        |   1 +
+>  .../media/v4l/pixfmt-reserved.rst             |   7 +
+>  drivers/media/platform/Kconfig                |   3 +
+>  drivers/media/platform/mtk-vcodec/Makefile    |   3 +
+>  .../platform/mtk-vcodec/mtk_vcodec_dec.c      | 820 +++---------------
+>  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |  25 +-
+>  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  68 +-
+>  .../mtk-vcodec/mtk_vcodec_dec_stateful.c      | 628 ++++++++++++++
+>  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     | 360 ++++++++
+>  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  58 +-
+>  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 140 ++-
+>  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |   6 +-
+>  .../mtk-vcodec/vdec/vdec_h264_req_if.c        | 774 +++++++++++++++++
+>  .../media/platform/mtk-vcodec/vdec_drv_if.c   |   3 +
+>  .../media/platform/mtk-vcodec/vdec_drv_if.h   |   1 +
+>  .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  23 +-
+>  .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  43 +-
+>  .../media/platform/mtk-vcodec/vdec_vpu_if.h   |   5 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+>  include/uapi/linux/videodev2.h                |   1 +
+>  20 files changed, 2241 insertions(+), 729 deletions(-)
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+>  create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
+> 
 
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
-tags/v5.14-next-dts64
-
-for you to fetch changes up to ce5db043d2e8811f30de3ebb5d9e6bd8a33596c4:
-
-  dt-bindings: mediatek: Add optional mediatek,gce-events property (2021-08-05
-17:37:54 +0200)
-
-----------------------------------------------------------------
-MT8173:
-- Add regulator for MFG_ASYNC power domain
-- Use alias for MMC to get fixed numbers
-
-MT8183:
-- Use alia for MMC to get fixed numbers
-- Add optional event number for Global Comman Engine
-
-----------------------------------------------------------------
-Bilal Wasim (1):
-      arm64: dts: mediatek: mt8173: Add domain supply for mfg_async
-
-Hsin-Yi Wang (4):
-      arm64: dts: mt8183: kukui: Use aliases to mmc nodes
-      arm64: dts: mt8173: elm: Use aliases to mmc nodes
-      arm64: dts: mt8183: add mediatek,gce-events in mutex
-      dt-bindings: mediatek: Add optional mediatek,gce-events property
-
- Documentation/devicetree/bindings/mailbox/mtk-gce.txt | 15 +++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi          | 10 ++++++++++
- arch/arm64/boot/dts/mediatek/mt8173-evb.dts           |  4 ++++
- arch/arm64/boot/dts/mediatek/mt8173.dtsi              |  2 +-
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi        |  2 ++
- arch/arm64/boot/dts/mediatek/mt8183.dtsi              |  2 ++
- 6 files changed, 34 insertions(+), 1 deletion(-)
 
 _______________________________________________
 Linux-mediatek mailing list
