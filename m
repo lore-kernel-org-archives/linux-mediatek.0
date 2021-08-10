@@ -2,78 +2,109 @@ Return-Path: <SRS0=C/QR=NB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-21.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ECC2DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 01:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35296C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:02:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AAACF6105A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 01:59:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AAACF6105A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9875D61075
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:02:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9875D61075
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XSLg2QFg1cNqQogkc1Ocx5D+sOEH2ndQhK7jC6AIXUQ=; b=CSNW8TFipTYvvp
-	hrqakU/y9X4kQPGh6efDtQKwu+bNzwxZDpShvqvUmffK8Dj/MBQyXv23BpncKslb6nl/RC9pOoeEA
-	fMaQ38JZUQByFGdMVYhrqFIpI3/ESq7Bk0mu63oCozRv9dXGk0tBgF3lwJb3EmtfnSUoJja8rYpIO
-	sz7o1mtD0YPggumAk09Oi8D1lDwxeuT8eA/dWn//UVw3iXTN19tOSAB1UmPaPeYdkK67W1Zlp6h68
-	0GZWeDU3gbSS5Vky9Qm2atC1QCT+L+wgYSarx4tuygpf//XqnIrBfSal1Di+8E3mBclXu7FgkWE72
-	pgC3ydMcfzV8yRTuRMqw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g/6N8Ej9YgCgu3ER+OaL3J4ka6A+JA/DxptfgzkWTSg=; b=IL86ex7+38gHj3
+	1zsuVLKzAQbtBqn9Os9Pu5RSAaxH7QYtWhfkq/ve+ZkrhIGuJduidHKIVTMVtu9vjBfbxyyTGgDnd
+	kchrIv3IO00OAtubjs+vNdJGmt/nsxNr2gDEiMwfB88zrhYYC5ciBIINgOlmSYgbW+mJO2HwA5VYW
+	KNFjEfdh53UqMbSHMmDoVeGuWpGHo2UrMJCACwji3uGve07QZrcu8xxC5aof84Wd5gVPvYlyjhdY/
+	3uIX22W6oD59XubrKTo4C9+FlFUdW87rr32UNOL6OGU+bJVrZS538SFFqmoMljCUro6843yPa3opr
+	oKYdN5b4h73daV7SJoMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDH2a-002F2T-I8; Tue, 10 Aug 2021 01:58:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDH2V-002F1o-9d; Tue, 10 Aug 2021 01:58:51 +0000
-X-UUID: 6073aa968e4a481a83522beb3ab7a48c-20210809
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=diU0Hsu91WZVMmaynXFuDuQLOfFchc5sqJSovsTuW/g=; 
- b=KEsA+8gSz5LYMZA1JWF+DOmJR4ngiqVHg4Ei6Pu8IztRy2fLZnFsqOvq+f58RjLNjNMpY5Csh5ketf0Y1/o2CEmuWsCy335/217JWmnkEs5k8gmmve6KmC732bkIH05v/PqFAJ+/b/vOP/r05WQDsPioWjlKrM0/5e7ukDuzWWQ=;
-X-UUID: 6073aa968e4a481a83522beb3ab7a48c-20210809
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1149835331; Mon, 09 Aug 2021 18:58:43 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Aug 2021 18:58:41 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Aug 2021 09:58:40 +0800
-Received: from [172.21.77.4] (172.21.77.4) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 10 Aug 2021 09:58:40 +0800
-Message-ID: <1628560720.15645.4.camel@mtksdaap41>
-Subject: Re: [PATCH v1] drm/mediatek: Add component_del in OVL remove function
-From: CK Hu <ck.hu@mediatek.com>
-To: jason-jh.lin <jason-jh.lin@mediatek.com>
-CC: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <fshao@google.com>,
- <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>
-Date: Tue, 10 Aug 2021 09:58:40 +0800
-In-Reply-To: <20210709034308.21713-1-jason-jh.lin@mediatek.com>
-References: <20210709034308.21713-1-jason-jh.lin@mediatek.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+	id 1mDH61-002FNu-3G; Tue, 10 Aug 2021 02:02:25 +0000
+Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat
+ Linux)) id 1mDH5n-002FMU-6c; Tue, 10 Aug 2021 02:02:13 +0000
+Authenticated-By: 
+X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 17A21qE52028562,
+ This message is accepted by code: ctloc85258
+Received: from mail.realtek.com (rtexh36502.realtek.com.tw[172.21.6.25])
+ by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 17A21qE52028562
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Tue, 10 Aug 2021 10:01:52 +0800
+Received: from RTEXMBS03.realtek.com.tw (172.21.6.96) by
+ RTEXH36502.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2106.2; Tue, 10 Aug 2021 10:01:52 +0800
+Received: from localhost (172.21.132.185) by RTEXMBS03.realtek.com.tw
+ (172.21.6.96) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Tue, 10 Aug
+ 2021 10:01:51 +0800
+From: <max.chou@realtek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>, 
+ <matthias.bgg@gmail.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+CC: <alex_lu@realsil.com.cn>, <hildawu@realtek.com>, <kidman@realtek.com>,
+ <apusaka@chromium.org>, <abhishekpandit@chromium.org>,
+ <josephsih@chromium.org>, <max.chou@realtek.com>
+Subject: [PATCH v2] Bluetooth: btusb: Remove WAKEUP_DISABLE and add
+ WAKEUP_AUTOSUSPEND for Realtek devices
+Date: Tue, 10 Aug 2021 10:01:47 +0800
+Message-ID: <20210810020147.14276-1-max.chou@realtek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-X-MTK: N
+X-Originating-IP: [172.21.132.185]
+X-ClientProxiedBy: RTEXMBS02.realtek.com.tw (172.21.6.95) To
+ RTEXMBS03.realtek.com.tw (172.21.6.96)
+X-KSE-ServerInfo: RTEXMBS03.realtek.com.tw, 9
+X-KSE-AntiSpam-Interceptor-Info: trusted connection
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Deterministic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 08/10/2021 01:36:00
+X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
+ rules found
+X-KSE-Antivirus-Interceptor-Info: scan successful
+X-KSE-Antivirus-Info: =?big5?B?Q2xlYW4sIGJhc2VzOiAyMDIxLzgvOSCkVaTIIDEwOjE4OjAw?=
+X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
+X-KSE-ServerInfo: RTEXH36502.realtek.com.tw, 9
+X-KSE-Attachment-Filter-Triggered-Rules: Clean
+X-KSE-Attachment-Filter-Triggered-Filters: Clean
+X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
+X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
+X-KSE-AntiSpam-Version: 5.9.20, Database issued on: 08/10/2021 01:47:48
+X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
+X-KSE-AntiSpam-Method: none
+X-KSE-AntiSpam-Rate: 0
+X-KSE-AntiSpam-Info: Lua profiles 165484 [Aug 10 2021]
+X-KSE-AntiSpam-Info: Version: 5.9.20.0
+X-KSE-AntiSpam-Info: Envelope from: max.chou@realtek.com
+X-KSE-AntiSpam-Info: LuaCore: 454 454 39c6e442fd417993330528e7f9d13ac1bf7fdf8c
+X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
+X-KSE-AntiSpam-Info: d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;
+ realtek.com:7.1.1; 127.0.0.199:7.1.2
+X-KSE-AntiSpam-Info: Rate: 0
+X-KSE-AntiSpam-Info: Status: not_detected
+X-KSE-AntiSpam-Info: Method: none
+X-KSE-AntiSpam-Info: Auth:dkim=none
+X-KSE-Antiphishing-Info: Clean
+X-KSE-Antiphishing-ScanningType: Heuristic
+X-KSE-Antiphishing-Method: None
+X-KSE-Antiphishing-Bases: 08/10/2021 01:51:00
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_185847_382783_784770F4 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20210809_190211_427060_C44F8765 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,52 +121,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Jason:
+From: Max Chou <max.chou@realtek.com>
 
-On Fri, 2021-07-09 at 11:43 +0800, jason-jh.lin wrote:
-> Add component_del in OVL remove function to make it symmetrical
-> to component_add in probe function.
-> 
-> Fixes: ff1395609e20 ("drm/mediatek: Move mtk_ddp_comp_init() from sub driver to DRM driver")
-> 
+For the commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d, wakeup is
+always disabled for Realtek devices. However, there's the capability
+for Realtek devices to apply USB wake-up.
 
-In patch [1], both OVL and COLOR has the same problem. I would like you
-to fix both bug. It could be in one patch.
+In this commit, remove WAKEUP_DISABLE feature for Realtek devices.
+If users would switch wake-up, they should access
+"/sys/bus/usb/.../power/wakeup"
 
+In this commit, it also adds the feature as WAKEUP_AUTOSUSPEND
+for Realtek devices because it should set do_remote_wakeup on autosuspend.
 
-[1]
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?h=v5.14-rc5&id=ff1395609e20c1cd98b3ec65d16dc18f0471dca3
+Signed-off-by: Max Chou <max.chou@realtek.com>
+Tested-by: Hilda Wu <hildawu@realtek.com>
+Reviewed-by: Archie Pusaka <apusaka@chromium.org>
+Reviewed-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
+---
+Changes in v2:
+-fix the compiling error due to the incorrect patch file submited
+---
+ drivers/bluetooth/btusb.c | 28 +++++++++-------------------
+ 1 file changed, 9 insertions(+), 19 deletions(-)
 
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 1876a960b3dc..92919f379331 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -537,7 +537,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
+ #define BTUSB_OOB_WAKE_ENABLED	11
+ #define BTUSB_HW_RESET_ACTIVE	12
+ #define BTUSB_TX_WAIT_VND_EVT	13
+-#define BTUSB_WAKEUP_DISABLE	14
++#define BTUSB_WAKEUP_AUTOSUSPEND	14
+ 
+ struct btusb_data {
+ 	struct hci_dev       *hdev;
+@@ -1358,13 +1358,6 @@ static int btusb_open(struct hci_dev *hdev)
+ 
+ 	data->intf->needs_remote_wakeup = 1;
+ 
+-	/* Disable device remote wakeup when host is suspended
+-	 * For Realtek chips, global suspend without
+-	 * SET_FEATURE (DEVICE_REMOTE_WAKEUP) can save more power in device.
+-	 */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
+-		device_wakeup_disable(&data->udev->dev);
+-
+ 	if (test_and_set_bit(BTUSB_INTR_RUNNING, &data->flags))
+ 		goto done;
+ 
+@@ -1431,7 +1424,7 @@ static int btusb_close(struct hci_dev *hdev)
+ 	data->intf->needs_remote_wakeup = 0;
+ 
+ 	/* Enable remote wake up for auto-suspend */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
++	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags))
+ 		data->intf->needs_remote_wakeup = 1;
+ 
+ 	usb_autopm_put_interface(data->intf);
+@@ -4452,9 +4445,6 @@ static bool btusb_prevent_wake(struct hci_dev *hdev)
+ {
+ 	struct btusb_data *data = hci_get_drvdata(hdev);
+ 
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
+-		return true;
+-
+ 	return !device_may_wakeup(&data->udev->dev);
+ }
+ 
+@@ -4752,11 +4742,8 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->shutdown = btrtl_shutdown_realtek;
+ 		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
+ 
+-		/* Realtek devices lose their updated firmware over global
+-		 * suspend that means host doesn't send SET_FEATURE
+-		 * (DEVICE_REMOTE_WAKEUP)
+-		 */
+-		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
++		/* Realtek devices need to set remote wakeup on auto-suspend */
++		set_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags);
+ 	}
+ 
+ 	if (!reset)
+@@ -4931,12 +4918,15 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
+ 	 * Actually, it depends on whether the usb host sends
+ 	 * set feature (enable wakeup) or not.
+ 	 */
+-	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags)) {
++	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags)) {
+ 		if (PMSG_IS_AUTO(message) &&
+ 		    device_can_wakeup(&data->udev->dev))
+ 			data->udev->do_remote_wakeup = 1;
+-		else if (!PMSG_IS_AUTO(message))
++		else if (!PMSG_IS_AUTO(message) &&
++			 !device_may_wakeup(&data->udev->dev)) {
++			data->udev->do_remote_wakeup = 0;
+ 			data->udev->reset_resume = 1;
++		}
+ 	}
+ 
+ 	return 0;
+-- 
+2.17.1
 
-Regards,
-CK
-
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> index 961f87f8d4d1..081c96aa7f72 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> @@ -158,7 +158,6 @@ void mtk_ovl_stop(struct device *dev)
->  		reg = reg & ~OVL_LAYER_SMI_ID_EN;
->  		writel_relaxed(reg, ovl->regs + DISP_REG_OVL_DATAPATH_CON);
->  	}
-> -
->  }
->  
->  void mtk_ovl_config(struct device *dev, unsigned int w,
-> @@ -424,6 +423,8 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
->  
->  static int mtk_disp_ovl_remove(struct platform_device *pdev)
->  {
-> +	component_del(&pdev->dev, &mtk_disp_ovl_component_ops);
-> +
->  	return 0;
->  }
->  
 
 _______________________________________________
 Linux-mediatek mailing list
