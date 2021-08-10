@@ -5,81 +5,77 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C8754C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB23CC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:55:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 86AF360200
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:10:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 86AF360200
+	by mail.kernel.org (Postfix) with ESMTPS id AA7CB6101D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 02:55:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AA7CB6101D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oEmLXSwGi33efiBY/u/W1eH3ufHK8ZBGIHvCC3OEIPE=; b=uktm8A6+FDRsVP
-	TlWOJDCV2KfYjXX7LVcKKJmBctVF1kdU2eUD8/UoSyT+xHA7XZAFegIsItcc8ttkijOg9UACgvF9k
-	6LxevxGPtfBh3xZ1yxI2s2d3wx+8K/OCOvDy18iGTPf/1QtGe8yGShuMlXv1b2J84hmcOzX/i65dI
-	QwPDKPN/NrOtg8y6fF64h+u/3P+1Bdx9xN8dfGQP9vxk/TaF39sB0G3hbUtJi24d/+xH+YD1apCcr
-	fXkBdtD03ITwR9VE3ELqA2Su7l0igkfdTIhzDHDdnLMZNncOd11c16aACIQwJ/8Zt5KigW9e4OMnr
-	CDr2BNgaBQpmX4qBHDDw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Nzrj9J0QKWjRwVp9nPh8kjj6eKqnOEKEBz4oUZkliZM=; b=o3ZbikTmfWg1gG
+	Bewy2jGxpmLwyt74yqcdsI/SkEp2pYs8HnmWpD/++gCzuKX5ZF058LgTATGiqiWLQyAwU1cRvHIMz
+	NiKe97GnAo67JaHoO4SED5pTHd1d1TUS7r8hOM9EG4e+YlJQyQvpSNSzt6DiSSUOG6EJhzNiFQIHX
+	q3NPacYWzVg9yL/JcA3qUMFLWsCQSAqMrMKnyIOreJU+hSkaF1bWfI814KMyhsg2H8WDrtKHWWKJU
+	orrT/9BevB4H1Oy5QNmHu97WZmWoim2bG83d+fYHPzboOav8R9bPGW3hIRLnfFDy5MeQIZ2Z+S45R
+	BR9Tec10A9LwwB5FkGKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDHDs-002GEk-TZ; Tue, 10 Aug 2021 02:10:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mDHvP-002JFj-Ae; Tue, 10 Aug 2021 02:55:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDHDm-002GEK-QR; Tue, 10 Aug 2021 02:10:30 +0000
-X-UUID: 59db95f872f741d9ba52a3a22aa81db9-20210809
+ id 1mDHv6-002J68-Er; Tue, 10 Aug 2021 02:55:16 +0000
+X-UUID: d615388bf9e64633ad2da12c3779eafe-20210809
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=5hnGesfA12+Pr1k/cY7GKBNkSvW2EUpkBk3eX3BrUHY=; 
- b=U1EADHPp7YX3+pLIBb6JuiDJ0C41DhMxEEToz4EINpnsceYjSzklsMi3SKKLfXyYI4DeVCZA+z0mYAkQQ21HO7D9W5byK9n8HHgq7U9qnigy05A03Og+m3rZ+MquMjHcZ5ds0iSoFcuyKdamFuxYhxP6LnPgaY0gUScPrYR8kxA=;
-X-UUID: 59db95f872f741d9ba52a3a22aa81db9-20210809
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=+dGpRKNowxgPN3/BNuQiP3ruq+BQk0z3w6YygV21kuM=; 
+ b=dq+Ngnmg8HPuJxj/PyQItlb1gNK9/Le/09bA5dBnMi4/guZkjyGK3lXIFTlQi8+/fALLRSzlRMkQz/RdJ9r6PIswM6huI6Hn5/zGtoDUkPzFWmDa1St81VfV5P5/5PmrkVhDHMK8jc+jngFTCfQMUVMKgKHCZpnS3ftXuijTERw=;
+X-UUID: d615388bf9e64633ad2da12c3779eafe-20210809
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 119182936; Mon, 09 Aug 2021 19:10:22 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 9 Aug 2021 19:02:57 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Aug 2021 10:02:56 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- mtkcas07.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 10 Aug 2021 10:02:55 +0800
-From: <guangming.cao@mediatek.com>
-To: Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@linaro.org>, Liam Mark <lmark@codeaurora.org>, "Laura
- Abbott" <labbott@redhat.com>, Brian Starkey <Brian.Starkey@arm.com>, "John
- Stultz" <john.stultz@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
- <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>, "open
- list:DMA-BUF HEAPS FRAMEWORK" <linux-media@vger.kernel.org>, "open
- list:DMA-BUF HEAPS FRAMEWORK" <dri-devel@lists.freedesktop.org>, "moderated
- list:DMA-BUF HEAPS FRAMEWORK" <linaro-mm-sig@lists.linaro.org>, open list
- <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>
-CC: <wsd_upstream@mediatek.com>, Guangming Cao <Guangming.Cao@mediatek.com>
-Subject: [PATCH] dma_heap: enable map_attrs when (un)map_attachment
-Date: Tue, 10 Aug 2021 10:02:54 +0800
-Message-ID: <20210810020254.103134-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210721094314.117413-1-guangming.cao@mediatek.com>
-References: <20210721094314.117413-1-guangming.cao@mediatek.com>
+ with ESMTP id 1885692039; Mon, 09 Aug 2021 19:55:06 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 9 Aug 2021 19:55:05 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 Aug 2021 10:55:04 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 10 Aug 2021 10:55:03 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, <fshao@chromium.org>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Fabien
+ Parent" <fparent@baylibre.com>, <hsinyi@chromium.org>, "jason-jh . lin"
+ <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>
+Subject: [PATCH v2] drm/mediatek: add AAL output size configuration
+Date: Tue, 10 Aug 2021 10:55:03 +0800
+Message-ID: <20210810025503.16353-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210809_191026_942315_1AC46E34 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20210809_195512_541902_309DF43D 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,79 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Guangming Cao <Guangming.Cao@mediatek.com>
+To avoid the output width and height is incorrect,
+AAL_OUTPUT_SIZE configuration should be set.
 
-For dma-heap users, they can't bypass cache sync when (un)map
-iova with dma heap. But they can do it by adding
-DMA_ATTR_SKIP_CPU_SYNC into dma_alloc_attrs.
-
-To Keep alignment, add map_attrs support for dma_heap when
-(un)map_attachment.
-
-Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+Fixes: 0664d1392c26 ("drm/mediatek: Add AAL engine basic function")
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- drivers/dma-buf/heaps/cma_heap.c    | 6 ++++--
- drivers/dma-buf/heaps/system_heap.c | 6 ++++--
- 2 files changed, 8 insertions(+), 4 deletions(-)
+Change in v2:
+- fix to one line
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/dma-buf/heaps/cma_heap.c b/drivers/dma-buf/heaps/cma_heap.c
-index 0c05b79870f9..2c9feb3bfc3e 100644
---- a/drivers/dma-buf/heaps/cma_heap.c
-+++ b/drivers/dma-buf/heaps/cma_heap.c
-@@ -99,9 +99,10 @@ static struct sg_table *cma_heap_map_dma_buf(struct dma_buf_attachment *attachme
- {
- 	struct dma_heap_attachment *a = attachment->priv;
- 	struct sg_table *table = &a->table;
-+	int attrs = attachment->dma_map_attrs;
- 	int ret;
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 75bc00e17fc4..50d20562e612 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -34,6 +34,7 @@
  
--	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
-+	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
- 	if (ret)
- 		return ERR_PTR(-ENOMEM);
- 	a->mapped = true;
-@@ -113,9 +114,10 @@ static void cma_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
- 				   enum dma_data_direction direction)
- {
- 	struct dma_heap_attachment *a = attachment->priv;
-+	int attrs = attachment->dma_map_attrs;
+ #define DISP_AAL_EN				0x0000
+ #define DISP_AAL_SIZE				0x0030
++#define DISP_AAL_OUTPUT_SIZE			0x04d8
  
- 	a->mapped = false;
--	dma_unmap_sgtable(attachment->dev, table, direction, 0);
-+	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
+ #define DISP_DITHER_EN				0x0000
+ #define DITHER_EN				BIT(0)
+@@ -197,6 +198,7 @@ static void mtk_aal_config(struct device *dev, unsigned int w,
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+ 
+ 	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_AAL_SIZE);
++	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_AAL_OUTPUT_SIZE);
  }
  
- static int cma_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
-diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
-index 23a7e74ef966..fc7b1e02988e 100644
---- a/drivers/dma-buf/heaps/system_heap.c
-+++ b/drivers/dma-buf/heaps/system_heap.c
-@@ -130,9 +130,10 @@ static struct sg_table *system_heap_map_dma_buf(struct dma_buf_attachment *attac
- {
- 	struct dma_heap_attachment *a = attachment->priv;
- 	struct sg_table *table = a->table;
-+	int attrs = attachment->dma_map_attrs;
- 	int ret;
- 
--	ret = dma_map_sgtable(attachment->dev, table, direction, 0);
-+	ret = dma_map_sgtable(attachment->dev, table, direction, attrs);
- 	if (ret)
- 		return ERR_PTR(ret);
- 
-@@ -145,9 +146,10 @@ static void system_heap_unmap_dma_buf(struct dma_buf_attachment *attachment,
- 				      enum dma_data_direction direction)
- {
- 	struct dma_heap_attachment *a = attachment->priv;
-+	int attrs = attachment->dma_map_attrs;
- 
- 	a->mapped = false;
--	dma_unmap_sgtable(attachment->dev, table, direction, 0);
-+	dma_unmap_sgtable(attachment->dev, table, direction, attrs);
- }
- 
- static int system_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
+ static void mtk_aal_gamma_set(struct device *dev, struct drm_crtc_state *state)
 -- 
-2.17.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
