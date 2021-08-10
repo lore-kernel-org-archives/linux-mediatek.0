@@ -2,85 +2,83 @@ Return-Path: <SRS0=C/QR=NB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AC26C4320A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 07:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2162C4320A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:10:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D2AE460F13
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 07:59:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D2AE460F13
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 61B4261052
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:10:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 61B4261052
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ihr9zOIMd81Cr6iWv553sNoqKgCES9aYTEisDxXaFbQ=; b=kDFwVINkRe7zBm
-	IOZ8RinK8E0H8XaKmisvJPHzIlnrHkriqNLOWcNADCSI5x5MPSY2ekdiXx5AFcO8DNH/spbSr8qZN
-	rpuDFeZnEcW8Mw6I+w4gr2gdRlQb5gxv471cZC9KO0++d9BGxHNSEiKhlClB4DxOnbSwBQJby+zBM
-	0eTZILT+QA9o1Kz4mcwhQlyjzCw3QW6MCsSXm7S3XM8vpsSVKE5IYeqWx01cU0H9vI89/s7EgINtY
-	8vq5LxMe6Z9hp3mLbdNbG3u4q9cDv74bmk7GElkkJTC2dELjsIsRMTtfRCbPVPBso24hsJksJfs8M
-	vwZgsyynd05FxiEDPrjw==;
+	List-Owner; bh=Ygryrks5KjRLakkxU6s+OFsqWz4mWtT6JQAU68bsOi0=; b=MZ6/C58c8ubAd4
+	Xaq3cPFqNsU1r3FPZEVNjoiwrxookjLo/vysTLewU+i9ltX5vKB7w6diXsiL5A1qLiMWDNbTH581w
+	65iO5JpMKvCm4thckwe+CD+8lJpxWHpGv7zB674Qt6/8E3PX7HSVnEZPHVhNJRIvJyWjvO27aVxqu
+	7SqRrolBdaK8He0R2KXxCWdaR2yQ/AIAGG6cX1ZMRd2U+71KPVaUtVCmn/h4tYzdjs20bUJbaEB1f
+	9TJpnHUL8ZoBcqCGfBVhQbdf+pt1XjjCurfkBdG+h0CdePGj1t3q/nlnsY1EQhtJln3P7xqxDXlpc
+	HLdBCUUoSZ+JdjFAhfAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDMf6-002qb0-4I; Tue, 10 Aug 2021 07:59:00 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1mDMpW-002teB-Dy; Tue, 10 Aug 2021 08:09:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDMeX-002qNU-Jl
- for linux-mediatek@lists.infradead.org; Tue, 10 Aug 2021 07:58:29 +0000
-Received: by mail-il1-x131.google.com with SMTP id v16so5014281ilj.7
- for <linux-mediatek@lists.infradead.org>; Tue, 10 Aug 2021 00:58:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7mVZPY0yEuCZiQ/XlSPysqwgMRwGoFuxw2FRcr2Upjw=;
- b=n87+ADn6REp26HOZSbgheW02IxMmJA8AAkDFK6Q/uYlhjzlGTRkR0IAiO73oTPy5fD
- rZF+QUT4Q10j9gDx0pEIdthmY+ZZbvtAi1UPYm3aiVIMxwpsCJQAD4rV3eDVGBRM+Q/w
- XDZqhHNKWsqmjb0OHHZZgJZV0Jc7UItPnncoI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7mVZPY0yEuCZiQ/XlSPysqwgMRwGoFuxw2FRcr2Upjw=;
- b=RM+pwFKQIgAKwqxu/4zrbv6Wv+c/j8j860fyPi5SGh/vjh48e2vhAPIPpNVoi0+0Q/
- n8xisdu8hxg+x3iwpZ3ScM8hCTtic2J9Q47Y4X9TO7yFExDOGhN/GqNfxI3/6NytDBzz
- 2G3qsylJbGRWdHBrOuYtE0W06BKYhoYo+ry5LGeaPY0zYBIC5ql+ukiqGlZzjv/hyXQp
- ZfjfZRR0N5QKwBTKUagLvMQAMQIWxzM2BuUb1G6UCEircOpHeXnQyrIPcgmJoS862jrp
- bVB+14vy2LlESQpUIvz9u8eKgT4SDZbZ5imTemuwi6FkD9ZcVkPyMZq4bef73aBv9V3k
- r+tA==
-X-Gm-Message-State: AOAM531wD5CuczvejThTX8Yi1rfAIimTyBNUl5fmSZGSm7uNqGSxKZCZ
- 8Vgx01JuixCKDa4b/2GsVnpkMphPKlprt5hvOH1H9g==
-X-Google-Smtp-Source: ABdhPJwouKs9MwjKH8QkjNK9MKYf33eJcgU78hqkYm2mQqdDRvL2nmAMyQpE+9sZLxPMGr7FsbpDt8gM2iMNa4f3a5s=
-X-Received: by 2002:a05:6e02:1a83:: with SMTP id
- k3mr347831ilv.150.1628582303722; 
- Tue, 10 Aug 2021 00:58:23 -0700 (PDT)
+ id 1mDMpH-002taz-6I; Tue, 10 Aug 2021 08:09:35 +0000
+X-UUID: f784e639abc94795a888d04bf84d8892-20210810
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=zbswz593C/l+q3B8ZSvEatNPrYCSwqWTtSmJLjssRDU=; 
+ b=JRqINgKNGQNrfQt76hkQoMgvbOOGHNue5fgQFuTXfLcoPc6PdVL0j4OLaB6r7DkV37CVjyd9/pzhtwqnjNWWjMs9T+4gYhfZtZ9wB9aRyAgp41CkZFQSFgWPup0yPNmwrzjWuA0fyBFt1OysgFnjGzy90ILCak66w1MnYe4OQrs=;
+X-UUID: f784e639abc94795a888d04bf84d8892-20210810
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 193812008; Tue, 10 Aug 2021 01:09:21 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 Aug 2021 01:09:19 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 10 Aug 2021 16:09:18 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 10 Aug 2021 16:09:17 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
+ Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <yong.wu@mediatek.com>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
+ <anthony.huang@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>
+Subject: [PATCH v3 01/13] dt-bindings: memory: mediatek: Add mt8195 smi binding
+Date: Tue, 10 Aug 2021 16:08:47 +0800
+Message-ID: <20210810080859.29511-2-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210810080859.29511-1-yong.wu@mediatek.com>
+References: <20210810080859.29511-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
-References: <20210706100136.1205047-1-kansho@chromium.org>
-In-Reply-To: <20210706100136.1205047-1-kansho@chromium.org>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Tue, 10 Aug 2021 15:57:57 +0800
-Message-ID: <CAJMQK-jDNcDYcMY8tTxyVhbEP0g8z5E+cWc3Cu_gqr4fQaUmoQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] arm64: dts: mt8183: Add kukui platform audio node
- to the device tree
-To: Kansho Nishida <kansho@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Shunli Wang <shunli.wang@mediatek.com>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Eddie Huang <eddie.huang@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Devicetree List <devicetree@vger.kernel.org>,
- Jiaxin Yu <jiaxin.yu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_005825_756619_A5DFE982 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20210810_010931_285042_52081D9E 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,73 +95,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 6, 2021 at 6:01 PM Kansho Nishida <kansho@chromium.org> wrote:
->
->
-> Hi Matthias,
->
-> This patchset is the v3 patch!
->
-> Regards,
-> Kansho
->
+Add mt8195 smi supporting in the bindings.
 
-Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
+In mt8195, there are two smi-common HW, one is for vdo(video output),
+the other is for vpp(video processing pipe). They connect with different
+smi-larbs, then some setting(bus_sel) is different. Differentiate them
+with the compatible string.
 
-Tested on several mt8183 models
+Something like this:
 
->
-> Changes in v3:
-> - Use audio-controller as the audio node instead.
->
-> Changes in v2:
-> - Changed to the dual license GPL + MIT.
->
-> Kansho Nishida (2):
->   arm64: dts: mt8183: add audio node
->   arm64: dts: mt8183: add kukui platform audio node
->
->  arch/arm64/boot/dts/mediatek/mt6358.dtsi      |  1 +
->  .../mt8183-kukui-audio-da7219-max98357a.dtsi  | 13 +++
->  .../mt8183-kukui-audio-da7219-rt1015p.dtsi    | 13 +++
->  .../mediatek/mt8183-kukui-audio-da7219.dtsi   | 54 +++++++++++
->  .../mt8183-kukui-audio-max98357a.dtsi         | 13 +++
->  .../mediatek/mt8183-kukui-audio-rt1015p.dtsi  | 13 +++
->  ...mt8183-kukui-audio-ts3a227e-max98357a.dtsi | 13 +++
->  .../mt8183-kukui-audio-ts3a227e-rt1015p.dtsi  | 13 +++
->  .../mediatek/mt8183-kukui-audio-ts3a227e.dtsi | 32 +++++++
->  .../mediatek/mt8183-kukui-jacuzzi-burnet.dts  |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-damu.dts    |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-fennel.dtsi |  1 +
->  .../mt8183-kukui-jacuzzi-juniper-sku16.dts    |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-kappa.dts   |  1 +
->  .../mediatek/mt8183-kukui-jacuzzi-kenzo.dts   |  1 +
->  .../mt8183-kukui-jacuzzi-willow-sku0.dts      |  1 +
->  .../mt8183-kukui-jacuzzi-willow-sku1.dts      |  1 +
->  .../boot/dts/mediatek/mt8183-kukui-kakadu.dts |  1 +
->  .../dts/mediatek/mt8183-kukui-kodama.dtsi     |  1 +
->  .../boot/dts/mediatek/mt8183-kukui-krane.dtsi |  5 +
->  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 67 ++++++++++++-
->  arch/arm64/boot/dts/mediatek/mt8183.dtsi      | 94 ++++++++++++++++++-
->  22 files changed, 336 insertions(+), 5 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-da7219.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-max98357a.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e-rt1015p.dtsi
->  create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-audio-ts3a227e.dtsi
->
-> --
-> 2.32.0.93.g670b81a890-goog
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+    IOMMU(VDO)          IOMMU(VPP)
+       |                   |
+ SMI_COMMON_VDO      SMI_COMMON_VPP
+ ----------------     ----------------
+  |      |   ...      |      |     ...
+larb0 larb2  ...    larb1 larb3    ...
 
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/memory-controllers/mediatek,smi-common.yaml    | 6 +++++-
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml      | 3 +++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index e87e4382807c..602592b6c3f5 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -16,7 +16,7 @@ description: |
+   MediaTek SMI have two generations of HW architecture, here is the list
+   which generation the SoCs use:
+   generation 1: mt2701 and mt7623.
+-  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183 and mt8192.
++  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8192 and mt8195.
+ 
+   There's slight differences between the two SMI, for generation 2, the
+   register which control the iommu port is at each larb's register base. But
+@@ -36,6 +36,8 @@ properties:
+           - mediatek,mt8173-smi-common
+           - mediatek,mt8183-smi-common
+           - mediatek,mt8192-smi-common
++          - mediatek,mt8195-smi-common-vdo
++          - mediatek,mt8195-smi-common-vpp
+ 
+       - description: for mt7623
+         items:
+@@ -98,6 +100,8 @@ allOf:
+             - mediatek,mt6779-smi-common
+             - mediatek,mt8183-smi-common
+             - mediatek,mt8192-smi-common
++            - mediatek,mt8195-smi-common-vdo
++            - mediatek,mt8195-smi-common-vpp
+ 
+     then:
+       properties:
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index 2353f6cf3c80..eaeff1ada7f8 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -24,6 +24,7 @@ properties:
+           - mediatek,mt8173-smi-larb
+           - mediatek,mt8183-smi-larb
+           - mediatek,mt8192-smi-larb
++          - mediatek,mt8195-smi-larb
+ 
+       - description: for mt7623
+         items:
+@@ -74,6 +75,7 @@ allOf:
+         compatible:
+           enum:
+             - mediatek,mt8183-smi-larb
++            - mediatek,mt8195-smi-larb
+ 
+     then:
+       properties:
+@@ -108,6 +110,7 @@ allOf:
+               - mediatek,mt6779-smi-larb
+               - mediatek,mt8167-smi-larb
+               - mediatek,mt8192-smi-larb
++              - mediatek,mt8195-smi-larb
+ 
+     then:
+       required:
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
