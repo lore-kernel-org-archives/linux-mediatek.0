@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0119C4320A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:14:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5CC74C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:15:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6667C6105A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:14:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6667C6105A
+	by mail.kernel.org (Postfix) with ESMTPS id 284256105A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 08:15:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 284256105A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VvNQoRzNyco3C0UmvDNrwXmgvs1VPTFZVwoqq33cdHg=; b=cvkHxtH9WvDKec
-	xD/DkjrC/dZQ09h1V2ovv//03HvJ5oZJst+gLahx9fJvg+OJxvlOCX30RJvT56oKnCqHFfRPjRvTm
-	dFj9a6wq0mAKwqak21srrz3O/QmUC3JnzGvfD9ytXlB4fWCBWcMjTDkE4ZAHx7wCgxkgDAZMUt0xU
-	GUezPvTSkUjQDyNOMK9BjJXsxT2RCjrXCsgbHtivct5yPr9MQP9PATmBoGll5J9A7Ifg+N/2pxaoE
-	iPITquheTLdcxMtEIPrUkyECnZitB8HQ1j+wOjZ0UrJWJ39lv1aqT5u50eJRu5J/KSvGHO2BvNZa8
-	j2hmC5EVPnaWZwYNoViw==;
+	List-Owner; bh=XHLwnxNHM1mxXB8QwkIOvTDyzohuxLwmVpe+zeXwETI=; b=noGWk+eC0JqyPr
+	4l9N64rA9tUCY1pfmMPb/kKmlRc2r59TWVBcoYBJcxYskE6gOO0KyLLoy2BnZmG2Kw62k06frqEML
+	krYQan/GKFcqLM0nKiVpXFAppo9K6qJ51lJZL1au49VqALrjrS8qkyWiaRbjm51UeYwklShR9Z4Tf
+	3SCYT/l68UeYGBjAZBwVyMIMVv4IJSO6NZ5HE4BtatPNpS1v1SC8uvkK6CzIZkZ32Za34ZdkruqWH
+	00tnNEQe/N71N8DglQQ4IcxlNnueUmZ7Pj6fIrwzfDxS7U2Wusd7vce4+n2x5d+jg1IBuRdlUKDTc
+	hDA0icVoMaDrOJWownXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDMtT-002vkY-Is; Tue, 10 Aug 2021 08:13:51 +0000
+	id 1mDMvG-002wfv-32; Tue, 10 Aug 2021 08:15:42 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDMsV-002vH4-0E; Tue, 10 Aug 2021 08:12:56 +0000
-X-UUID: b2bb4cddb99947a592acaa6a6c13d847-20210810
+ id 1mDMsa-002vH4-2Y; Tue, 10 Aug 2021 08:13:00 +0000
+X-UUID: d2788d2a5aec413ba1711dfd8d3d9cb3-20210810
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=/hORNAsSM26G6W0ogUpTTbcNyqK0CqrWuR/ugxfjkdQ=; 
- b=e03ZUgPQSh3NrhVjQyJt+DYXrrL82qRN5Z7f9xQbp0Rni84uzVWpuYv1NyHMXxpq9osGUjnOQ7iJDH8i7LVOhG16UpDR5hVtHTH+LVhwP4u+kSUd/NMBb6Pp++2sjqOlL7zHMtUG9evAm2I051cUWJqPbhS8sCSVln9lmepMv/k=;
-X-UUID: b2bb4cddb99947a592acaa6a6c13d847-20210810
+ bh=eS2PkbwQA2VxRtVs67/0XBMN0WeHTq6I7ZhDKl1J2PQ=; 
+ b=kzZb7PNdjUBd15fe3I7m2cyUfnJsadgyKeB6mmW8CuTxN3dtVbP4XUDbUrWA6gHRjVnShS1WknNHZQu/wiWzUv7/seYI6coUopx9rROH0ag6vwA0gaiW0MUALjNzYpANJg+H1gWPaDUfTZu7VXxAhnayZ7K4S2NU/psxWsy/M6w=;
+X-UUID: d2788d2a5aec413ba1711dfd8d3d9cb3-20210810
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 966896845; Tue, 10 Aug 2021 01:12:48 -0700
+ with ESMTP id 1384631238; Tue, 10 Aug 2021 01:12:48 -0700
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Aug 2021 01:10:44 -0700
+ 15.0.1497.2; Tue, 10 Aug 2021 01:09:53 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Aug 2021 16:10:42 +0800
+ 15.0.1497.2; Tue, 10 Aug 2021 16:09:51 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 10 Aug 2021 16:10:41 +0800
+ Transport; Tue, 10 Aug 2021 16:09:50 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -68,18 +68,17 @@ CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
  <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
  <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
  <anthony.huang@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>
-Subject: [PATCH v3 12/13] memory: mtk-smi: mt8195: Add initial setting for
- smi-larb
-Date: Tue, 10 Aug 2021 16:08:58 +0800
-Message-ID: <20210810080859.29511-13-yong.wu@mediatek.com>
+Subject: [PATCH v3 04/13] memory: mtk-smi: Rename smi_gen to smi_type
+Date: Tue, 10 Aug 2021 16:08:50 +0800
+Message-ID: <20210810080859.29511-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210810080859.29511-1-yong.wu@mediatek.com>
 References: <20210810080859.29511-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_011251_128138_C4DDCEEB 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20210810_011256_224971_1B421E90 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,158 +95,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To improve the performance, We add some initial setting for smi larbs.
-there are two part:
-1), Each port has the special ostd(outstanding) value in each larb.
-2), Two general settings for each larb.
-   a. THRT_UPDATE: the value in bits[7:4] of 0x24 is not so good.
-   The HW default is 4, and we expect it is 5, thus, add a flag to update
-   it. This is only a DE recommendatory value, not a actual issue.
-   The register name(THRT_CON) means: throttling control, and the field
-   RD_NU_LMT means: Read Non-ultra commands limit.
-   This change means update the Read non-ultra command from 4 to 5 here.
+Prepare for adding smi sub common. Only rename from smi_gen to smi_type.
+No functional change.
 
-   b. SW_FLAG: Set 1 to the FLAG register. this is only for helping
-   debug. We could confirm if the larb is reset from this value is 1 or 0.
-
-In some SoC, this setting maybe changed dynamically for some special case
-like 4K, and this initial setting is enough in mt8195.
+About the current "smi_gen", we have gen1/gen2 that stand for the
+generation number for HW. I plan to add a new type(sub_common), then the
+name "gen" is not proper.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
 ---
- drivers/memory/mtk-smi.c | 79 +++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 78 insertions(+), 1 deletion(-)
+ drivers/memory/mtk-smi.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 689a45b39a65..b883dcc0bbfa 100644
+index f91eaf5c3ab0..02a584dfb9b1 100644
 --- a/drivers/memory/mtk-smi.c
 +++ b/drivers/memory/mtk-smi.c
-@@ -32,6 +32,15 @@
- #define SMI_DUMMY			0x444
+@@ -55,7 +55,7 @@
+ /* All are MMU0 defaultly. Only specialize mmu1 here. */
+ #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
  
- /* SMI LARB */
-+#define SMI_LARB_CMD_THRT_CON		0x24
-+#define SMI_LARB_THRT_RD_NU_LMT_MSK	GENMASK(7, 4)
-+#define SMI_LARB_THRT_RD_NU_LMT		(5 << 4)
-+
-+#define SMI_LARB_SW_FLAG		0x40
-+#define SMI_LARB_SW_FLAG_1		0x1
-+
-+#define SMI_LARB_OSTDL_PORT		0x200
-+#define SMI_LARB_OSTDL_PORTx(id)	(SMI_LARB_OSTDL_PORT + (((id) & 0x1f) << 2))
+-enum mtk_smi_gen {
++enum mtk_smi_type {
+ 	MTK_SMI_GEN1,
+ 	MTK_SMI_GEN2
+ };
+@@ -75,9 +75,9 @@ static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1
+ #define MTK_SMI_COM_GALS_REQ_CLK_NR	MTK_SMI_CLK_NR_MAX
  
- /* Below are about mmu enable registers, they are different in SoCs */
- /* gen1: mt2701 */
-@@ -68,6 +77,11 @@
- })
- 
- #define SMI_COMMON_INIT_REGS_NR		6
-+#define SMI_LARB_PORT_NR_MAX		32
-+
-+#define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
-+#define MTK_SMI_FLAG_SW_FLAG		BIT(1)
-+#define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
- 
- struct mtk_smi_reg_pair {
- 	unsigned int		offset;
-@@ -108,6 +122,8 @@ struct mtk_smi_larb_gen {
- 	int port_in_larb[MTK_LARB_NR_MAX + 1];
- 	void (*config_port)(struct device *dev);
- 	unsigned int			larb_direct_to_common_mask;
-+	unsigned int			flags_general;
-+	const u8			(*ostd)[SMI_LARB_PORT_NR_MAX];
+ struct mtk_smi_common_plat {
+-	enum mtk_smi_gen gen;
+-	bool             has_gals;
+-	u32              bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
++	enum mtk_smi_type	type;
++	bool			has_gals;
++	u32			bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
  };
  
- struct mtk_smi {
-@@ -224,12 +240,26 @@ static void mtk_smi_larb_config_port_mt8173(struct device *dev)
- static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- {
- 	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
--	u32 reg;
-+	u32 reg, flags_general = larb->larb_gen->flags_general;
-+	const u8 *larbostd = larb->larb_gen->ostd[larb->larbid];
- 	int i;
+ struct mtk_smi_larb_gen {
+@@ -409,29 +409,29 @@ static struct platform_driver mtk_smi_larb_driver = {
+ };
  
- 	if (BIT(larb->larbid) & larb->larb_gen->larb_direct_to_common_mask)
- 		return;
+ static const struct mtk_smi_common_plat mtk_smi_common_gen1 = {
+-	.gen = MTK_SMI_GEN1,
++	.type     = MTK_SMI_GEN1,
+ };
  
-+	if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_THRT_UPDATE)) {
-+		reg = readl_relaxed(larb->base + SMI_LARB_CMD_THRT_CON);
-+		reg &= ~SMI_LARB_THRT_RD_NU_LMT_MSK;
-+		reg |= SMI_LARB_THRT_RD_NU_LMT;
-+		writel_relaxed(reg, larb->base + SMI_LARB_CMD_THRT_CON);
-+	}
-+
-+	if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_SW_FLAG))
-+		writel_relaxed(SMI_LARB_SW_FLAG_1, larb->base + SMI_LARB_SW_FLAG);
-+
-+	for (i = 0; i < SMI_LARB_PORT_NR_MAX && larbostd && !!larbostd[i]; i++)
-+		writel_relaxed(larbostd[i], larb->base + SMI_LARB_OSTDL_PORTx(i));
-+
- 	for_each_set_bit(i, (unsigned long *)larb->mmu, 32) {
- 		reg = readl_relaxed(larb->base + SMI_LARB_NONSEC_CON(i));
- 		reg |= F_MMU_EN;
-@@ -238,6 +268,51 @@ static void mtk_smi_larb_config_port_gen2_general(struct device *dev)
- 	}
+ static const struct mtk_smi_common_plat mtk_smi_common_gen2 = {
+-	.gen = MTK_SMI_GEN2,
++	.type	  = MTK_SMI_GEN2,
+ };
+ 
+ static const struct mtk_smi_common_plat mtk_smi_common_mt6779 = {
+-	.gen		= MTK_SMI_GEN2,
+-	.has_gals	= true,
+-	.bus_sel	= F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(4) |
+-			  F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
++	.type	  = MTK_SMI_GEN2,
++	.has_gals = true,
++	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(4) |
++		    F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
+ };
+ 
+ static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
+-	.gen      = MTK_SMI_GEN2,
++	.type     = MTK_SMI_GEN2,
+ 	.has_gals = true,
+ 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(5) |
+ 		    F_MMU1_LARB(7),
+ };
+ 
+ static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
+-	.gen      = MTK_SMI_GEN2,
++	.type     = MTK_SMI_GEN2,
+ 	.has_gals = true,
+ 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(5) |
+ 		    F_MMU1_LARB(6),
+@@ -494,7 +494,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	 * clock into emi clock domain, but for mtk smi gen2, there's no smi ao
+ 	 * base.
+ 	 */
+-	if (common->plat->gen == MTK_SMI_GEN1) {
++	if (common->plat->type == MTK_SMI_GEN1) {
+ 		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 		common->smi_ao_base = devm_ioremap_resource(dev, res);
+ 		if (IS_ERR(common->smi_ao_base))
+@@ -534,7 +534,7 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
++	if (common->plat->type == MTK_SMI_GEN2 && bus_sel)
+ 		writel(bus_sel, common->base + SMI_BUS_SEL);
+ 	return 0;
  }
- 
-+static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX] = {
-+	[0] = {0x0a, 0xc, 0x22, 0x22, 0x01, 0x0a,}, /* larb0 */
-+	[1] = {0x0a, 0xc, 0x22, 0x22, 0x01, 0x0a,}, /* larb1 */
-+	[2] = {0x12, 0x12, 0x12, 0x12, 0x0a,},      /* ... */
-+	[3] = {0x12, 0x12, 0x12, 0x12, 0x28, 0x28, 0x0a,},
-+	[4] = {0x06, 0x01, 0x17, 0x06, 0x0a,},
-+	[5] = {0x06, 0x01, 0x17, 0x06, 0x06, 0x01, 0x06, 0x0a,},
-+	[6] = {0x06, 0x01, 0x06, 0x0a,},
-+	[7] = {0x0c, 0x0c, 0x12,},
-+	[8] = {0x0c, 0x0c, 0x12,},
-+	[9] = {0x0a, 0x08, 0x04, 0x06, 0x01, 0x01, 0x10, 0x18, 0x11, 0x0a,
-+		0x08, 0x04, 0x11, 0x06, 0x02, 0x06, 0x01, 0x11, 0x11, 0x06,},
-+	[10] = {0x18, 0x08, 0x01, 0x01, 0x20, 0x12, 0x18, 0x06, 0x05, 0x10,
-+		0x08, 0x08, 0x10, 0x08, 0x08, 0x18, 0x0c, 0x09, 0x0b, 0x0d,
-+		0x0d, 0x06, 0x10, 0x10,},
-+	[11] = {0x0e, 0x0e, 0x0e, 0x0e, 0x0e, 0x0e, 0x01, 0x01, 0x01, 0x01,},
-+	[12] = {0x09, 0x09, 0x05, 0x05, 0x0c, 0x18, 0x02, 0x02, 0x04, 0x02,},
-+	[13] = {0x02, 0x02, 0x12, 0x12, 0x02, 0x02, 0x02, 0x02, 0x08, 0x01,},
-+	[14] = {0x12, 0x12, 0x02, 0x02, 0x02, 0x02, 0x16, 0x01, 0x16, 0x01,
-+		0x01, 0x02, 0x02, 0x08, 0x02,},
-+	[15] = {},
-+	[16] = {0x28, 0x02, 0x02, 0x12, 0x02, 0x12, 0x10, 0x02, 0x02, 0x0a,
-+		0x12, 0x02, 0x0a, 0x16, 0x02, 0x04,},
-+	[17] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
-+	[18] = {0x12, 0x06, 0x12, 0x06,},
-+	[19] = {0x01, 0x04, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04, 0x04, 0x01,
-+		0x01, 0x01, 0x04, 0x0a, 0x06, 0x01, 0x01, 0x01, 0x0a, 0x06,
-+		0x01, 0x01, 0x05, 0x03, 0x03, 0x04, 0x01,},
-+	[20] = {0x01, 0x04, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04, 0x04, 0x01,
-+		0x01, 0x01, 0x04, 0x0a, 0x06, 0x01, 0x01, 0x01, 0x0a, 0x06,
-+		0x01, 0x01, 0x05, 0x03, 0x03, 0x04, 0x01,},
-+	[21] = {0x28, 0x19, 0x0c, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04,},
-+	[22] = {0x28, 0x19, 0x0c, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04,},
-+	[23] = {0x18, 0x01,},
-+	[24] = {0x01, 0x01, 0x04, 0x01, 0x01, 0x01, 0x01, 0x01, 0x04, 0x01,
-+		0x01, 0x01,},
-+	[25] = {0x02, 0x02, 0x02, 0x28, 0x16, 0x02, 0x02, 0x02, 0x12, 0x16,
-+		0x02, 0x01,},
-+	[26] = {0x02, 0x02, 0x02, 0x28, 0x16, 0x02, 0x02, 0x02, 0x12, 0x16,
-+		0x02, 0x01,},
-+	[27] = {0x02, 0x02, 0x02, 0x28, 0x16, 0x02, 0x02, 0x02, 0x12, 0x16,
-+		0x02, 0x01,},
-+	[28] = {0x1a, 0x0e, 0x0a, 0x0a, 0x0c, 0x0e, 0x10,},
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt2701 = {
- 	.port_in_larb = {
- 		LARB0_PORT_OFFSET, LARB1_PORT_OFFSET,
-@@ -280,6 +355,8 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
- 
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8195 = {
- 	.config_port                = mtk_smi_larb_config_port_gen2_general,
-+	.flags_general	            = MTK_SMI_FLAG_THRT_UPDATE | MTK_SMI_FLAG_SW_FLAG,
-+	.ostd		            = mtk_smi_larb_mt8195_ostd,
- };
- 
- static const struct of_device_id mtk_smi_larb_of_ids[] = {
 -- 
 2.18.0
 _______________________________________________
