@@ -2,74 +2,102 @@ Return-Path: <SRS0=C/QR=NB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61B7FC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 09:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E7F62C4320A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 10:19:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D83661076
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 09:37:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2D83661076
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9261B6109E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Aug 2021 10:19:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9261B6109E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ITTlzLlgSIhGgJqaurAp4dfbZ9S1RTK9uRmKQtRGrLQ=; b=WU/nL6ZfJxc8j+G+sBrGVgqn2a
-	I7eSED211yYj4k3ICiOTqWZbpn94fAru/sDcNt13SWOEn6d2M9SQGqL9hDmfdlbDmpQht7Fysx4Lm
-	oOOujF2c74edRIeFPhBI5ndiEANEtNDkfoIKHOkSx43qmGc1bcDuC0Eia7kv7rs5IwKI3dI/Wg7Pf
-	VJe6nJUSEBsrihEtT31d6qJSSFY3YDFIRyMBBvgGR6gg472QTo6QBWZjD9INYX8r7aBwrl4QAbUK1
-	8vfEcaukPo0qqWYqjeutxt5esnLxEOXuw4gQybpc3mK4JPCbYeJ7x+znG9rRVDLm+NxV4WEODnrLE
-	JKry7e+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3I78DKDsK0o7NGbQS9nKhw87fgroVFUb5FVm1E6AbNM=; b=jlHr6pMT7uDjcz
+	98+axkBellRxEu71K29NYlOX0wY9KDi7SEVXOVI7dfTeb0aUuZjOPxHx+ClD2jMF6qNovRlbPPOIH
+	9w05SxOQo+Agg0/rFc5OC1CSDj4HEqB1fRuNnCpDDhm1caZ/5fy5KWp8Vw75HJIsWDp48TXoABGcn
+	a8NfAghW87nOWWTTqMY5Ak6FxoyBikogQD+mZrLTg2ConkAExB4K8ruGmdPHFrrkoaTzuVSTsHos0
+	FneMqPTU1vbVOuDZwv4MHadqd1/NCry78BPQMXqox2oJQ3VAvGzPKR26uzCWRV6BnfeEcJjd5FBne
+	o2Ck9HVxYvmoCSk5iQ1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDOC6-003JtG-Gy; Tue, 10 Aug 2021 09:37:10 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDOAX-003J8s-1f; Tue, 10 Aug 2021 09:35:34 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DF9611063;
- Tue, 10 Aug 2021 02:35:26 -0700 (PDT)
-Received: from [10.57.9.181] (unknown [10.57.9.181])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5F9EB3F718;
- Tue, 10 Aug 2021 02:35:22 -0700 (PDT)
-Subject: Re: [PATCH 0/8] cpufreq: Auto-register with energy model
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Andy Gross <agross@kernel.org>, Rafael Wysocki <rjw@rjwysocki.net>,
- Vincent Donnefort <vincent.donnefort@arm.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Fabio Estevam <festevam@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, NXP Linux Team
- <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
- Vincent Guittot <vincent.guittot@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org
-References: <cover.1628579170.git.viresh.kumar@linaro.org>
- <6449a61f-a5fc-0b81-65b2-7bf77b8a71aa@arm.com>
- <20210810092705.ctf43hwhzdepmcrv@vireshk-i7>
-From: Lukasz Luba <lukasz.luba@arm.com>
-Message-ID: <765a5fd5-1109-1af1-b339-624561070890@arm.com>
-Date: Tue, 10 Aug 2021 10:35:21 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+	id 1mDOqO-003UJY-Iw; Tue, 10 Aug 2021 10:18:48 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mDOqJ-003UHz-As
+ for linux-mediatek@lists.infradead.org; Tue, 10 Aug 2021 10:18:47 +0000
+Received: by mail-wr1-x430.google.com with SMTP id h13so25517879wrp.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 10 Aug 2021 03:18:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:mail-followup-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ypz43Y7ht5yYPrHsmCF+aueU4gZCkS1cG/1GAPtZPFc=;
+ b=R+OW/xFuOkLahmCf4qAPxmhZ0v0kNmMW8QPSLqB83Ihp6rlDsVgu3zCMRpFZdHI8L5
+ EO9zUOTjLrZckWIMazJuhc9wx9MUiAHuFJnK5r5irvffTxUcLQw+TscabHn9fkt+Ox6/
+ kYCi1+bs1d48eKqq5cXH8sw9Ny5ATK9r62gMU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to;
+ bh=ypz43Y7ht5yYPrHsmCF+aueU4gZCkS1cG/1GAPtZPFc=;
+ b=AEJNCXZHwE2JvvD0qzEsjld2lKUyI68CC0ZFIoKemjlDvPUNbsv5fUNdToxx/qU/OW
+ MdwgyInxYET4ZmLCxnC0XOFBqSPPTVBpbwewoGHfJNGB7kcm+xKzPEIn7E13vFEOfmg/
+ lLTNnnJHdD8ojgkVpSaiEahYzyWDvdMTYmDs58zW+0xyDGuPf2PPhEpCV3FuwAYGcQVe
+ q+IypOxXv1swH9BELTaVuYiTiM4YRO9FPzIUVTBdWVK3aX8x8xSggQCeFJSggXAqsg+k
+ OLGKR7px/dWokNIoCIvoCnGvicqG3KzOpFUsPuFm7Y6HKIZjVhDs5UHeYSnbiThQYyhq
+ WDdA==
+X-Gm-Message-State: AOAM533m893Qz9beET+Sb98HIUbeTzqS2Dxss0V8maUlljbuw0pjnZhq
+ UsHPTM/zAZ0RP5izKauIFvghcA==
+X-Google-Smtp-Source: ABdhPJyJynbXqePsNSwEyVY1512w9lGozC+ZnWM7Y5j68AQk7xYtQOTJceaK4TGRZ3ho9pMitB0j/Q==
+X-Received: by 2002:a5d:4309:: with SMTP id h9mr15828319wrq.299.1628590720316; 
+ Tue, 10 Aug 2021 03:18:40 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id j6sm2332384wmq.29.2021.08.10.03.18.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Aug 2021 03:18:39 -0700 (PDT)
+Date: Tue, 10 Aug 2021 12:18:37 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Jitao Shi <jitao.shi@mediatek.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com,
+ ck.hu@mediatek.com, stonea168@163.com
+Subject: Re: [PATCH v2 1/3] drm/panel: seperate panel power control from
+ panel prepare/unprepare
+Message-ID: <YRJSfdsAv9gZCO2R@phenom.ffwll.local>
+Mail-Followup-To: Jitao Shi <jitao.shi@mediatek.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Sam Ravnborg <sam@ravnborg.org>, David Airlie <airlied@linux.ie>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ yingjoe.chen@mediatek.com, eddie.huang@mediatek.com,
+ cawa.cheng@mediatek.com, bibby.hsieh@mediatek.com,
+ ck.hu@mediatek.com, stonea168@163.com
+References: <20210808125218.63029-1-jitao.shi@mediatek.com>
+ <20210808125218.63029-2-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210810092705.ctf43hwhzdepmcrv@vireshk-i7>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20210808125218.63029-2-jitao.shi@mediatek.com>
+X-Operating-System: Linux phenom 5.10.0-7-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_023533_239181_6811FF2D 
-X-CRM114-Status: GOOD (  29.58  )
+X-CRM114-CacheID: sfid-20210810_031843_421486_D867BEA6 
+X-CRM114-Status: GOOD (  30.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,71 +109,186 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 8/10/21 10:27 AM, Viresh Kumar wrote:
-> On 10-08-21, 10:17, Lukasz Luba wrote:
->> Hi Viresh,
->>
->> I like the idea, only small comments here in the cover letter.
->>
->> On 8/10/21 8:36 AM, Viresh Kumar wrote:
->>> Provide a cpufreq driver flag so drivers can ask the cpufreq core to register
->>> with the EM core on their behalf. This allows us to get rid of duplicated code
->>> in the drivers and fix the unregistration part as well, which none of the
->>> drivers have done until now.
->>
->> The EM is never freed for CPUs by design. The unregister function was
->> introduced for devfreq devices.
+On Sun, Aug 08, 2021 at 08:52:16PM +0800, Jitao Shi wrote:
+> Some dsi panels require the dsi lanes keeping low before panel power
+> on. So seperate the panel power control and the communication with panel.
 > 
-> I see. So if a cpufreq driver unregisters and registers again, it will
-> be required to use the entries created by the registration itself,
-> right ? Technically speaking, it is better to unregister and free any
-> related resources and parse everything again.
+> And put the power control in drm_panel_prepare_power and
+> drm_panel_unprepare_power. Put the communication with panel in
+> drm_panel_prepare and drm_panel_unprepare.
 > 
-> Lets say, just for fun, I want to test two copies of a cpufreq driver
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 
-It's good that it's just for fun ;)
+This solves your problem, but it breaks the panel standard for everyone
+else since you're not converting them over.
 
-> (providing different set of freq-tables). I build both of them as
-> modules, insert the first version, remove it, insert the second one.
-> Ideally, this should just work as expected. But I don't think it will
-> in this case as you never parse the EM stuff again.
+There needs to be more thought here in how to make this all compatible.
 
-The EM is directly used by scheduler in the hot-path, there are no
-checks even if the EM if for CPUs. We are sure it's is for CPUs and
-is always there for all CPUs.
+Also I think we need very precise spec for how this is supposed to work
+with DSI panels, and then making sure existing drivers mostly follow this.
 
-I'm currently working on a EM v2 which would have stronger mechanisms
-and do better job in this field. The patches are under internal review
-and hopefully ready to post by the end of month.
+Hacking up a shared interface that's used by lots of drivers just to then
+fix a bug in one user and one implementation is not good.
+-Daniel
 
+> ---
+>  drivers/gpu/drm/bridge/panel.c | 17 +++++++++++++++
+>  drivers/gpu/drm/drm_panel.c    | 38 ++++++++++++++++++++++++++++++++++
+>  include/drm/drm_bridge.h       |  2 ++
+>  include/drm/drm_panel.h        | 17 +++++++++++++++
+>  4 files changed, 74 insertions(+)
 > 
-> Again, since the routine is there already, I think it is better/fine
-> to just use it.
+> diff --git a/drivers/gpu/drm/bridge/panel.c b/drivers/gpu/drm/bridge/panel.c
+> index c916f4b8907e..3a846ac8e24c 100644
+> --- a/drivers/gpu/drm/bridge/panel.c
+> +++ b/drivers/gpu/drm/bridge/panel.c
+> @@ -137,6 +137,23 @@ static int panel_bridge_get_modes(struct drm_bridge *bridge,
+>  	return drm_panel_get_modes(panel_bridge->panel, connector);
+>  }
+>  
+> +int panel_bridge_prepare_power(struct drm_bridge *bridge)
+> +{
+> +	struct panel_bridge *panel_bridge = drm_bridge_to_panel_bridge(bridge);
+> +
+> +	return drm_panel_prepare_power(panel_bridge->panel);
+> +}
+> +EXPORT_SYMBOL(panel_bridge_prepare_power);
+> +
+> +int panel_bridge_unprepare_power(struct drm_bridge *bridge)
+> +{
+> +        struct panel_bridge *panel_bridge = drm_bridge_to_panel_bridge(bridge);
+> +
+> +        return drm_panel_unprepare_power(panel_bridge->panel);
+> +}
+> +EXPORT_SYMBOL(panel_bridge_unprepare_power);
+> +
+> +
+>  static const struct drm_bridge_funcs panel_bridge_bridge_funcs = {
+>  	.attach = panel_bridge_attach,
+>  	.detach = panel_bridge_detach,
+> diff --git a/drivers/gpu/drm/drm_panel.c b/drivers/gpu/drm/drm_panel.c
+> index f634371c717a..7bb5185db17d 100644
+> --- a/drivers/gpu/drm/drm_panel.c
+> +++ b/drivers/gpu/drm/drm_panel.c
+> @@ -115,6 +115,24 @@ int drm_panel_prepare(struct drm_panel *panel)
+>  }
+>  EXPORT_SYMBOL(drm_panel_prepare);
+>  
+> +/**
+> + * drm_panel_prepare_power - power on a panel's power
+> + * @panel: DRM panel
+> + *
+> + * Calling this function will enable power and deassert any reset signals to
+> + * the panel.
+> + *
+> + * Return: 0 on success or a negative error code on failure.
+> + */
+> +int drm_panel_prepare_power(struct drm_panel *panel)
+> +{
+> +	if (panel && panel->funcs && panel->funcs->prepare_power)
+> +		return panel->funcs->prepare_power(panel);
+> +
+> +	return panel ? -ENOSYS : -EINVAL;
+> +}
+> +EXPORT_SYMBOL(drm_panel_prepare_power);
+> +
+>  /**
+>   * drm_panel_unprepare - power off a panel
+>   * @panel: DRM panel
+> @@ -138,6 +156,26 @@ int drm_panel_unprepare(struct drm_panel *panel)
+>  }
+>  EXPORT_SYMBOL(drm_panel_unprepare);
+>  
+> +/**
+> + * drm_panel_unprepare_power - power off a panel
+> + * @panel: DRM panel
+> + *
+> + * Calling this function will completely power off a panel (assert the panel's
+> + * reset, turn off power supplies, ...). After this function has completed, it
+> + * is usually no longer possible to communicate with the panel until another
+> + * call to drm_panel_prepare_power and drm_panel_prepare().
+> + *
+> + * Return: 0 on success or a negative error code on failure.
+> + */
+> +int drm_panel_unprepare_power(struct drm_panel *panel)
+> +{
+> +	if (panel && panel->funcs && panel->funcs->unprepare_power)
+> +		return panel->funcs->unprepare_power(panel);
+> +
+> +	return panel ? -ENOSYS : -EINVAL;
+> +}
+> +EXPORT_SYMBOL(drm_panel_unprepare_power);
+> +
+>  /**
+>   * drm_panel_enable - enable a panel
+>   * @panel: DRM panel
+> diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+> index 2195daa289d2..cc94c9da47d8 100644
+> --- a/include/drm/drm_bridge.h
+> +++ b/include/drm/drm_bridge.h
+> @@ -892,6 +892,8 @@ struct drm_bridge *devm_drm_panel_bridge_add_typed(struct device *dev,
+>  						   struct drm_panel *panel,
+>  						   u32 connector_type);
+>  struct drm_connector *drm_panel_bridge_connector(struct drm_bridge *bridge);
+> +int panel_bridge_prepare_power(struct drm_bridge *bridge);
+> +int panel_bridge_unprepare_power(struct drm_bridge *bridge);
+>  #endif
+>  
+>  #endif
+> diff --git a/include/drm/drm_panel.h b/include/drm/drm_panel.h
+> index 33605c3f0eba..48e83712ad44 100644
+> --- a/include/drm/drm_panel.h
+> +++ b/include/drm/drm_panel.h
+> @@ -68,6 +68,13 @@ enum drm_panel_orientation;
+>   * functionality to enable/disable backlight.
+>   */
+>  struct drm_panel_funcs {
+> +	/**
+> +	 * @prepare_power:
+> +	 *
+> +	 * Turn on panel power.
+> +	 */
+> +	int (*prepare_power)(struct drm_panel *panel);
+> +
+>  	/**
+>  	 * @prepare:
+>  	 *
+> @@ -115,6 +122,13 @@ struct drm_panel_funcs {
+>  	int (*get_modes)(struct drm_panel *panel,
+>  			 struct drm_connector *connector);
+>  
+> +	/**
+> +	 * @unprepare_power:
+> +	 *
+> +	 * Turn off panel_power.
+> +	 */
+> +	int (*unprepare_power)(struct drm_panel *panel);
+> +
+>  	/**
+>  	 * @get_timings:
+>  	 *
+> @@ -180,6 +194,9 @@ void drm_panel_init(struct drm_panel *panel, struct device *dev,
+>  void drm_panel_add(struct drm_panel *panel);
+>  void drm_panel_remove(struct drm_panel *panel);
+>  
+> +int drm_panel_prepare_power(struct drm_panel *panel);
+> +int drm_panel_unprepare_power(struct drm_panel *panel);
+> +
+>  int drm_panel_prepare(struct drm_panel *panel);
+>  int drm_panel_unprepare(struct drm_panel *panel);
+>  
+> -- 
+> 2.25.1
 
-True, it doesn't harm, so I commented it in the patch 1/8 that it
-could stay.
-
-> 
->>> This would also make the registration with EM core to happen only after policy
->>> is fully initialized, and the EM core can do other stuff from in there, like
->>> marking frequencies as inefficient (WIP). Though this patchset is useful without
->>> that work being done and should be merged nevertheless.
->>>
->>> This doesn't update scmi cpufreq driver for now as it is a special case and need
->>> to be handled differently. Though we can make it work with this if required.
->>
->> The scmi cpufreq driver uses direct EM API, which provides flexibility
->> and should stay as is.
-> 
-> Right, so I left it as is for now.
-> 
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-mediatek mailing list
