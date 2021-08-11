@@ -8,79 +8,74 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29AF7C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 03:09:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31A1BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 03:14:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6C5060ED8
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 03:09:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C6C5060ED8
+	by mail.kernel.org (Postfix) with ESMTPS id D1F1E60ED8
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 03:14:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D1F1E60ED8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=//q+LtNZh/rC4AUwCj8q9E6Ldmn4WtCTY6nafYvpXyQ=; b=WeRTh+FOgY7ZoJ
-	I9OS878piIUVHQt1PKj7zlBGPMdJHjp5lpAUa2d3c/VxujgHFvMnncmB11aDICuUr1fa5SN6EcpzQ
-	3jPGZ44hL2kNVDSX9R5ai/vBAPqUL8vWKg10bkk2geVl0I8le7ZyM6bhVzSRe1OJDF1es+F5/q7yH
-	IS3SDqXdLESLkxqrbXM7Ka+RYJEfvlD+5/QdmUfJVC2K8LhxUkBQ3UHOvDaHoHV+8bctbStbU5P/v
-	OHQYYvYIx0glP3p9drOtvwmKQlxf1m2ZD2HFyWMrjAEQG9zzmBxLPvHLEIYxQbrPya/SsHbpOiWV9
-	5P7YQx3gczWI9iD0K06A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=STw+dwiYhcfMlyegBqRx/gsFPXckzuuv5hfHy1UGcMk=; b=bnSbGaMkrLuaRn
+	e9wCW5QePZKtqut2XwngMv8xZwzv+ow+PPmo1zZazCQwsrrHnMgFgClNjRPfgxz1mMRkVQWXEGJ0y
+	SrPG3CUGYiBqIspq5it26C2cM0jTmLbfzU+SuTtj5Pzmxn1u0Qpy8jzIgJsmtokquaNmmc/08X8RC
+	aiCOx5B/7pQm85W6oM4zpwhRiXLGFvcB37qQssKMIyOk7yTvzUu4BphozgI2xADDIm/CQac1kv+xB
+	FIdVmYvca9S49T0sPvAY9TmicrDdLq1srQ6BTZMxxDVLpJZwzsTO/71d77dsY+agU194vAmp2kybY
+	5HGVm9V5Il6ZcIeodWmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDecg-005O5d-Hf; Wed, 11 Aug 2021 03:09:42 +0000
+	id 1mDegx-005Pu9-SW; Wed, 11 Aug 2021 03:14:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDeVG-005Jz0-7F; Wed, 11 Aug 2021 03:02:04 +0000
-X-UUID: ee1093892169422a8fbcaf960b6523c6-20210810
+ id 1mDeYG-005Lgu-Hw; Wed, 11 Aug 2021 03:05:12 +0000
+X-UUID: 5b8f45d76c7b4a5780a8af5cbcc6c661-20210810
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=dFxsvEJCXq8yAFnCcjpDYVhd3vGdyghW3vdaCDS7G4A=; 
- b=lCoMSp+/vdSQVWUswwK1vnedge59sw88TZMc3XH9/WyWtSsqOKZ2tD91SKP6Xa4UlFjB/VhiWSSuv9QZDO4VEm8gC3ZEj6KOoy9UI5NmXZSZHLG59N9l2jnJJPQdWqCi4Io25Ybzg3Ij09dtqo38deCR5azyrxnB0zGc7XWZSb4=;
-X-UUID: ee1093892169422a8fbcaf960b6523c6-20210810
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=iY2AT4YW9Pn/DYgme6Pn3ZuXSRxSKyMlFTVaKVai5Ms=; 
+ b=iD5d7AzRLbY6fLKubofUDOQDkFEBikr3F4o79pMCnuIGzeeFOleGM5DJRVQrKyb4o9dCicPyyA8PRURsdeum+1c53+jCDM1rYUnvCyYaiQ4vHPXdVBPTxpUa20Ant+3LMrVtN8wJ4nzrsJTrvVXpVTErc6C6zBKSgQxYi0mRAbA=;
+X-UUID: 5b8f45d76c7b4a5780a8af5cbcc6c661-20210810
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 263055811; Tue, 10 Aug 2021 20:01:53 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1912944952; Tue, 10 Aug 2021 20:05:04 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 10 Aug 2021 19:58:39 -0700
+ 15.0.1497.2; Tue, 10 Aug 2021 20:05:02 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 11 Aug 2021 10:58:37 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 11 Aug 2021 11:05:01 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 11 Aug 2021 10:58:36 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
- <george.sun@mediatek.com>
-Subject: [PATCH v5, 03/15] media: mtk-vcodec: Refactor vcodec pm interface
-Date: Wed, 11 Aug 2021 10:57:49 +0800
-Message-ID: <20210811025801.21597-4-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210811025801.21597-1-yunfei.dong@mediatek.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
+ Transport; Wed, 11 Aug 2021 11:05:00 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: "Rafael J. Wysocki" <rjw@rjwysocki.net>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+CC: Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <linux-pm@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-usb@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ Eddie Hung <eddie.hung@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>
+Subject: [PATCH v3 1/2] PM / wakeirq: support enabling wake-up irq after
+ runtime_suspend called
+Date: Wed, 11 Aug 2021 11:04:28 +0800
+Message-ID: <1628651069-22162-1-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210810_200202_306965_5A1E5B0D 
-X-CRM114-Status: GOOD (  17.69  )
+X-CRM114-CacheID: sfid-20210810_200508_662309_FF71E2E4 
+X-CRM114-Status: GOOD (  21.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,149 +92,228 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Using the needed param for pm init/release function and remove unused
-param mtkdev in 'struct mtk_vcodec_pm'.
+When the dedicated wake-irq is level trigger, and it uses the
+consumer's sleep status as the wakeup source, that means if the
+consumer is not in sleep state, the wake-irq will be triggered
+when enable it; For this case, need enable the wake-irq after
+invoking the consumer's runtime_suspend() which make the consumer
+enter sleep state.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
----
-v5: no changes
----
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  6 ++---
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 22 ++++++++-----------
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  5 +++--
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  1 -
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  1 -
- 5 files changed, 15 insertions(+), 20 deletions(-)
+e.g.
+Assume the wake-irq is a low level trigger type, and the wakeup
+signal comes from the sleep status of consumer.
+The wakeup signal is low level at running time (0), and becomes
+high level when the consumer enters sleep state (runtime_suspend
+(1) is called), a wakeup event at (2) make the consumer exit sleep
+state, then the wakeup signal also becomes low level.
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 8db9cdc66043..dd749d41c75a 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -249,7 +249,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 	if (IS_ERR(dev->fw_handler))
- 		return PTR_ERR(dev->fw_handler);
+                ------------------
+               |           ^     ^|
+----------------           |     | --------------
+ |<---(0)--->|<--(1)--|   (3)   (2)    (4)
+
+if enable the wake-irq before calling runtime_suspend during (0),
+an interrupt will arise, it causes resume immediately;
+it works if enable wake-irq ( e.g. at (3) or (4)) after calling
+runtime_suspend.
+
+This patch introduces a new status WAKE_IRQ_DEDICATED_LATE_ENABLED
+to optionally support enabling wake-irq after calling runtime_suspend().
+
+Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v3: add new status suggested by Rafael
+
+v2: add more commit message
+
+  Use the falling edge trigger interrupt suggested by Ikjoon [1], it
+works well at firstly when only use this related wakeup source, but
+encounter issues if use other wakeup sources to wakeup platform as
+below steps:
+1. use another wakeup source to wake up the suspended system;
+2. the consumer's resume() will be called, and exits sleep state;
+3. the consumer's wakeup signal will fall into low level, due to
+   currently the wakeup irq is disabled, the wake-irq is pending;
+4. the consumer tries to enter runtime suspend, but there is a
+   pending wakeup irq, so will resume again, this will repeat
+   endlessly.
+
+  Send out the patch again for further discussion.
+
+[1]: https://patchwork.kernel.org/patch/12190407
+
+---
+ drivers/base/power/power.h   |  7 ++++--
+ drivers/base/power/runtime.c |  6 +++--
+ drivers/base/power/wakeirq.c | 49 +++++++++++++++++++++++++++++++++---
+ include/linux/pm_wakeirq.h   |  5 ++++
+ 4 files changed, 60 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
+index 54292cdd7808..2d5dfc886f0b 100644
+--- a/drivers/base/power/power.h
++++ b/drivers/base/power/power.h
+@@ -25,8 +25,10 @@ extern u64 pm_runtime_active_time(struct device *dev);
  
--	ret = mtk_vcodec_init_dec_pm(dev);
-+	ret = mtk_vcodec_init_dec_pm(dev->plat_dev, &dev->pm);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "Failed to get mt vcodec clock source");
- 		goto err_dec_pm;
-@@ -379,7 +379,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- err_dec_alloc:
- 	v4l2_device_unregister(&dev->v4l2_dev);
- err_res:
--	mtk_vcodec_release_dec_pm(dev);
-+	mtk_vcodec_release_dec_pm(&dev->pm);
- err_dec_pm:
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return ret;
-@@ -422,7 +422,7 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
- 		video_unregister_device(dev->vfd_dec);
+ #define WAKE_IRQ_DEDICATED_ALLOCATED	BIT(0)
+ #define WAKE_IRQ_DEDICATED_MANAGED	BIT(1)
++#define WAKE_IRQ_DEDICATED_LATE_ENABLED	BIT(2)
+ #define WAKE_IRQ_DEDICATED_MASK		(WAKE_IRQ_DEDICATED_ALLOCATED | \
+-					 WAKE_IRQ_DEDICATED_MANAGED)
++					 WAKE_IRQ_DEDICATED_MANAGED | \
++					 WAKE_IRQ_DEDICATED_LATE_ENABLED)
  
- 	v4l2_device_unregister(&dev->v4l2_dev);
--	mtk_vcodec_release_dec_pm(dev);
-+	mtk_vcodec_release_dec_pm(&dev->pm);
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return 0;
+ struct wake_irq {
+ 	struct device *dev;
+@@ -39,7 +41,8 @@ extern void dev_pm_arm_wake_irq(struct wake_irq *wirq);
+ extern void dev_pm_disarm_wake_irq(struct wake_irq *wirq);
+ extern void dev_pm_enable_wake_irq_check(struct device *dev,
+ 					 bool can_change_status);
+-extern void dev_pm_disable_wake_irq_check(struct device *dev);
++extern void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_enable_late);
++extern void dev_pm_enable_wake_irq_complete(struct device *dev);
+ 
+ #ifdef CONFIG_PM_SLEEP
+ 
+diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
+index 8a66eaf731e4..97646aa11376 100644
+--- a/drivers/base/power/runtime.c
++++ b/drivers/base/power/runtime.c
+@@ -645,6 +645,8 @@ static int rpm_suspend(struct device *dev, int rpmflags)
+ 	if (retval)
+ 		goto fail;
+ 
++	dev_pm_enable_wake_irq_complete(dev);
++
+  no_callback:
+ 	__update_runtime_status(dev, RPM_SUSPENDED);
+ 	pm_runtime_deactivate_timer(dev);
+@@ -690,7 +692,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
+ 	return retval;
+ 
+  fail:
+-	dev_pm_disable_wake_irq_check(dev);
++	dev_pm_disable_wake_irq_check(dev, false);
+ 	__update_runtime_status(dev, RPM_ACTIVE);
+ 	dev->power.deferred_resume = false;
+ 	wake_up_all(&dev->power.wait_queue);
+@@ -873,7 +875,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
+ 
+ 	callback = RPM_GET_CALLBACK(dev, runtime_resume);
+ 
+-	dev_pm_disable_wake_irq_check(dev);
++	dev_pm_disable_wake_irq_check(dev, true);
+ 	retval = rpm_callback(callback, dev);
+ 	if (retval) {
+ 		__update_runtime_status(dev, RPM_SUSPENDED);
+diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
+index 3bad3266a2ad..a612f5c26c6c 100644
+--- a/drivers/base/power/wakeirq.c
++++ b/drivers/base/power/wakeirq.c
+@@ -215,6 +215,24 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
  }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-index 6038db96f71c..20bd157a855c 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-@@ -13,18 +13,15 @@
- #include "mtk_vcodec_dec_pm.h"
- #include "mtk_vcodec_util.h"
+ EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq);
  
--int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
-+int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
-+	struct mtk_vcodec_pm *pm)
- {
- 	struct device_node *node;
--	struct platform_device *pdev;
--	struct mtk_vcodec_pm *pm;
-+	struct platform_device *larb_pdev;
- 	struct mtk_vcodec_clk *dec_clk;
- 	struct mtk_vcodec_clk_info *clk_info;
- 	int i = 0, ret = 0;
++/**
++ * dev_pm_wake_irq_set_late_enabled_status - set status WAKE_IRQ_DEDICATED_LATE_ENABLED
++ * @dev: Device
++ *
++ * Set the status of WAKE_IRQ_DEDICATED_LATE_ENABLED to tell rpm_suspend()
++ * to enable dedicated wake-up interrupt after invoking the runtime_suspend(),
++ *
++ * Should be called after setting dedicated wake-up interrupt.
++ */
++void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
++{
++	struct wake_irq *wirq = dev->power.wakeirq;
++
++	if (wirq && (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED))
++		wirq->status |= WAKE_IRQ_DEDICATED_LATE_ENABLED;
++}
++EXPORT_SYMBOL_GPL(dev_pm_wake_irq_set_late_enabled_status);
++
+ /**
+  * dev_pm_enable_wake_irq - Enable device wake-up interrupt
+  * @dev: Device
+@@ -285,27 +303,52 @@ void dev_pm_enable_wake_irq_check(struct device *dev,
+ 	return;
  
--	pdev = mtkdev->plat_dev;
--	pm = &mtkdev->pm;
--	pm->mtkdev = mtkdev;
- 	dec_clk = &pm->vdec_clk;
- 	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
- 	if (!node) {
-@@ -32,13 +29,12 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 		return -1;
- 	}
- 
--	pdev = of_find_device_by_node(node);
-+	larb_pdev = of_find_device_by_node(node);
- 	of_node_put(node);
--	if (WARN_ON(!pdev)) {
-+	if (WARN_ON(!larb_pdev)) {
- 		return -1;
- 	}
--	pm->larbvdec = &pdev->dev;
--	pdev = mtkdev->plat_dev;
-+	pm->larbvdec = &larb_pdev->dev;
- 	pm->dev = &pdev->dev;
- 
- 	dec_clk->clk_num =
-@@ -82,10 +78,10 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
- 	return ret;
+ enable:
+-	enable_irq(wirq->irq);
++	if (!can_change_status || !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED))
++		enable_irq(wirq->irq);
  }
- 
--void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
-+void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm)
- {
--	pm_runtime_disable(dev->pm.dev);
--	put_device(dev->pm.larbvdec);
-+	pm_runtime_disable(pm->dev);
-+	put_device(pm->larbvdec);
- }
- 
- int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-index 280aeaefdb65..a3df6aef6cb9 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
-@@ -9,8 +9,9 @@
- 
- #include "mtk_vcodec_drv.h"
- 
--int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
--void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
-+int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
-+	struct mtk_vcodec_pm *pm);
-+void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm);
- 
- int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 3b1e5e3a450e..973b0b3649c6 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -195,7 +195,6 @@ struct mtk_vcodec_pm {
- 	struct mtk_vcodec_clk	venc_clk;
- 	struct device	*larbvenc;
- 	struct device	*dev;
--	struct mtk_vcodec_dev	*mtkdev;
- };
  
  /**
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 1b2e4930ed27..0c8c8f86788c 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -26,7 +26,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
- 	pdev = mtkdev->plat_dev;
- 	pm = &mtkdev->pm;
- 	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
--	pm->mtkdev = mtkdev;
- 	pm->dev = &pdev->dev;
- 	dev = &pdev->dev;
- 	enc_clk = &pm->venc_clk;
+  * dev_pm_disable_wake_irq_check - Checks and disables wake-up interrupt
+  * @dev: Device
++ * @skip_late_enabled_status: skip checking WAKE_IRQ_DEDICATED_LATE_ENABLED
+  *
+  * Disables wake-up interrupt conditionally based on status.
+  * Should be only called from rpm_suspend() and rpm_resume() path.
+  */
+-void dev_pm_disable_wake_irq_check(struct device *dev)
++void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_late_enabled_status)
+ {
+ 	struct wake_irq *wirq = dev->power.wakeirq;
+ 
+ 	if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
+ 		return;
+ 
+-	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED)
++	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
++	    (skip_late_enabled_status ||
++	     !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)))
+ 		disable_irq_nosync(wirq->irq);
+ }
+ 
++/**
++ * dev_pm_enable_wake_irq_complete - enable wake irq based on status
++ * @dev: Device
++ *
++ * Enable wake-up interrupt conditionally based on status, mainly for
++ * enabling wake-up interrupt after runtime_suspend() is called.
++ *
++ * Should be only called from rpm_suspend() path.
++ */
++void dev_pm_enable_wake_irq_complete(struct device *dev)
++{
++	struct wake_irq *wirq = dev->power.wakeirq;
++
++	if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
++		return;
++
++	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
++	    wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)
++		enable_irq(wirq->irq);
++}
++
+ /**
+  * dev_pm_arm_wake_irq - Arm device wake-up
+  * @wirq: Device wake-up interrupt
+diff --git a/include/linux/pm_wakeirq.h b/include/linux/pm_wakeirq.h
+index cd5b62db9084..92f814d583f8 100644
+--- a/include/linux/pm_wakeirq.h
++++ b/include/linux/pm_wakeirq.h
+@@ -22,6 +22,7 @@ extern int dev_pm_set_dedicated_wake_irq(struct device *dev,
+ extern void dev_pm_clear_wake_irq(struct device *dev);
+ extern void dev_pm_enable_wake_irq(struct device *dev);
+ extern void dev_pm_disable_wake_irq(struct device *dev);
++extern void dev_pm_wake_irq_set_late_enabled_status(struct device *dev);
+ 
+ #else	/* !CONFIG_PM */
+ 
+@@ -47,5 +48,9 @@ static inline void dev_pm_disable_wake_irq(struct device *dev)
+ {
+ }
+ 
++static inline void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
++{
++}
++
+ #endif	/* CONFIG_PM */
+ #endif	/* _LINUX_PM_WAKEIRQ_H */
 -- 
 2.25.1
 _______________________________________________
