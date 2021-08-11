@@ -2,20 +2,20 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F27FC432BE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 17:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8582BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 18:00:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D4A260560
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 17:41:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2D4A260560
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 226C76101D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 18:00:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 226C76101D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,52 +23,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x+OCWcXgYJh8rflf+tZRXAqueo0nZsqXirAY8ms08tI=; b=MpPWrS4QgY2rwW
-	UnGQV+ZzTDTtTw4L1K6S1WrTbvEqAfAoS4KHbELWMVT/3/xEHWoYLTnH5YFsq7+2Ge0gzlcFFEtku
-	iedxxPw+RjYSKSZlKYW/2bDsJXAvY1RoH5NRrcXDZ7a6bkerMAYyifJoHDoSNLGj5HhqiO1zi1TcD
-	58TnI3zwqluUaOl9zXBtjXTsjth0UTSWPvXszwfRsdXe8letsnyba4Vp5Yb7nAzy7kMYB34WGde1r
-	cdUL681Iajf8vfpRDVBJ3c5qgiaYKqmo+XX7LlH98mnhlkYyuF0xMpv9/lcZmg5hW83ez5rYNe8Jf
-	bXhdAmw9v7DZmPGvbImA==;
+	List-Owner; bh=zRP//4Jw4s5qdIrugFtBML9kz7NsuNzOQVVduKtSmK4=; b=OV10ny34YASHKP
+	Qu5dvPWxCErdoNA3T4eSJuX1UOZeyIqeGokJ4KjHihHaKqqKlEw/S7BsyV34b66AnQqilfYaB1/e4
+	TWHNFspfdnSPIE94EheHSffgv2SWT8+/QB+0QpJh0jybVGZQ0tmdARNWERRdQhSJbSAQevySPhGCl
+	52lq6SOwSxaLsWUsTNPWndra9vEsGyakX/UG2oYYTfhi+5Q/WuG/BCpWVm1bosWpK5vgCa5c6xCOK
+	QIEBsfhiwxkli+1fepMd+wfiDn9ImwhGIQm4jYCks0/RiEnIOoC/JgqSe9NRtKYAz6Kn4/3AWZ0GJ
+	iK7bXjLsRUIzbt3DpGnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDsER-007oNk-ID; Wed, 11 Aug 2021 17:41:35 +0000
-Received: from mail-pl1-f182.google.com ([209.85.214.182])
+	id 1mDsWD-007poz-O7; Wed, 11 Aug 2021 17:59:57 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDsEC-007oLm-DV; Wed, 11 Aug 2021 17:41:24 +0000
-Received: by mail-pl1-f182.google.com with SMTP id e15so3612257plh.8;
- Wed, 11 Aug 2021 10:41:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=SKwYFo8dYv0QNS156XTY/lU7jm4l1+2FwbKLknPJvfU=;
- b=Shv+IMUIKcThUNTCLhAy7YWY7DLykoBfdOkgytzVyJKvMEtTQfE/xPHcmbah5SU60Y
- ZiPQTHoHVD1P3IkD8buwzojItfzHj+z+teWNchVLpXkXqAjsB21MTwkepP65DtuA0YxK
- K+EqJC2ig6T2ifHCHsYeCJ8i6jIJ+bFysWcB2KGZs6Zfrs6VCK/PUl0MFFMLa0GVIKpB
- q8djSb8uQHcSOGm56yHrnp0aB5zdMMwysXdbPSzZE3y1qDySyalYQ6OXn2LEvMUHL2HG
- /B3PjW+fR2ALKVez1ugoglQqulTeejqbpPkh6XrMGBaAfmTuwM9jnxe7+Tqu2PwqMEGE
- JJ9w==
-X-Gm-Message-State: AOAM532beyutdfFWS+kKPGzkQCM+4fsd4PEsiQcBabhdTi2TlXd5uj0r
- vKlue8/5SDYxB7pKCTTn5Q==
-X-Google-Smtp-Source: ABdhPJzd0Rv9z9sTfwYP6BWh5jwSA3kbD4w+MhfZ0jc+4Oh8j0z36V1h4a362NG4HRXAo2xErhqfqw==
-X-Received: by 2002:a63:d044:: with SMTP id s4mr1391317pgi.32.1628703679422;
- Wed, 11 Aug 2021 10:41:19 -0700 (PDT)
-Received: from robh.at.kernel.org ([208.184.162.215])
- by smtp.gmail.com with ESMTPSA id e13sm95836pfi.210.2021.08.11.10.41.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 10:41:18 -0700 (PDT)
-Received: (nullmailer pid 4130314 invoked by uid 1000);
- Wed, 11 Aug 2021 17:41:09 -0000
-Date: Wed, 11 Aug 2021 11:41:09 -0600
-From: Rob Herring <robh@kernel.org>
+ id 1mDsVw-007pmV-Tw; Wed, 11 Aug 2021 17:59:45 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 67DDFEE;
+ Wed, 11 Aug 2021 19:59:35 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1628704775;
+ bh=BMsdi7My1VYTMrplXoEmSnQucwP+J/DbPd0dzrnNBsM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=IHxA1AMILWKIHji8vmE4Bnzr2zmoUHodN+zQtrlMsQXc2KnZ8/0jXPdvhcRyMK9Y0
+ biqdsyNn4CTwpBw/Wf+8yaT/O4PgR/8Akw0izPsfspboLK84s9qqEGgnTlP3HzMB7o
+ 2CsHjgO66+Hz0AV3k68PC9sB+etZaCQAptgb114Q=
+Date: Wed, 11 Aug 2021 20:59:32 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>
 Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
  Tiffany Lin <tiffany.lin@mediatek.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>,
  Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
@@ -77,15 +67,15 @@ Cc: Alexandre Courbot <acourbot@chromium.org>,
  George Sun <george.sun@mediatek.com>
 Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
  dt-bindings for mt8192
-Message-ID: <YRQLtd+IyISzlreI@robh.at.kernel.org>
+Message-ID: <YRQQBL8AN0925zj9@pendragon.ideasonboard.com>
 References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
  <20210811025801.21597-14-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20210811025801.21597-14-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_104120_506244_1BFD2D86 
-X-CRM114-Status: GOOD (  21.76  )
+X-CRM114-CacheID: sfid-20210811_105941_156688_CB42256D 
+X-CRM114-Status: GOOD (  22.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,6 +91,10 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+
+Hi Yunfei,
+
+Thank you for the patch.
 
 On Wed, Aug 11, 2021 at 10:57:59AM +0800, Yunfei Dong wrote:
 > Adds decoder dt-bindings for mt8192.
@@ -140,13 +134,13 @@ On Wed, Aug 11, 2021 at 10:57:59AM +0800, Yunfei Dong wrote:
 > +  Mediatek Video Decode is the video decode hardware present in Mediatek
 > +  SoCs which supports high resolution decoding functionalities. Required
 > +  master and component node.
+
+This should explain how the three IP cores relate to each other.
+
 > +
 > +properties:
 > +  compatible:
 > +    oneOf:
-
-Don't need 'oneOf' when only one entry.
-
 > +      - enum:
 > +          - mediatek,mt8192-vcodec-dec  # for lat hardware
 > +          - mediatek,mtk-vcodec-lat     # for core hardware
@@ -169,13 +163,9 @@ Don't need 'oneOf' when only one entry.
 > +      - const: vdec-vdec
 > +      - const: vdec-top
 > +
-
 > +  assigned-clocks: true
 > +
 > +  assigned-clock-parents: true
-
-Don't need these 2. Always valid if 'clocks' is present.
-
 > +
 > +  power-domains:
 > +    maxItems: 1
@@ -304,10 +294,19 @@ Don't need these 2. Always valid if 'clocks' is present.
 > +        assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
 > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
 > +    };
-> -- 
-> 2.25.1
-> 
-> 
+
+I'm a bit late in the game, reviewing v5 only, but I'm wondering if
+those IP cores need to be modelled in separate nodes. It would be much
+easier, from a software point of view, to have a single node, with
+multiple register ranges.
+
+Are some of those IP cores used in different SoCs, combined in different
+ways, that make a modular design better ?
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-mediatek mailing list
