@@ -2,104 +2,81 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A922DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AA4D7C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:35:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61CB060F55
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:34:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 61CB060F55
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 71A3260E97
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:35:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 71A3260E97
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=acE0vp5s8EV9CLT8UyrMidpV6VNYMkwQN1CPCmg5xcY=; b=n8gwHJX+uQqg54
-	IoSHSxuBie00WXU77Ref7QGZ2lLdLewyNRyjvQaXrwVPKT3h2ii5LOP570lvnrUVofU06NabWERqE
-	2iG+4MEXm2JcU//9PX9wwzWwt4DlHFCoAZWxQwKY+qbPb+pgu01oztm6pr48oX+axhKBA8+hyRpvG
-	b+f9cTgPaol6PaJaAheBP3IMGGezJ3u9eyThdXil7L9IP+gUomdU6/mt6xzOE79iu8zsRs3J010Ze
-	hdCssWMdo4d2UlRTJXTju1F5Nv0Bo/XhAUrN/lvUphQQx5Fun38Y3GF9frg1LZQqKfQe/2B9dNON6
-	stuIXLUmydrn2Bq/+ncQ==;
+	List-Owner; bh=9sNuWg16581Uqf2dQSt9L6s8kKFq9G4aZUDgYPTLKXM=; b=X3mmLyWOIvHg9h
+	75coXZvR+CtcnwGs6fmqiMiEzy1Up+fw2ekNjZU3GmBKQ5dRiowJMS0LkTtV67WjVgC8ByAKfu/V/
+	fMRBOaMZ+DuHc0dBhcF/nqeglMHOMnaArVmr6WYHtPC8qjYn96k7J6DLDl+aoGvO1uJmRGtPRxXyj
+	pjxYL6tqck5EVzSoiyXfafhIoXmc+hjb1Zf1vJsXtl5jeSWvzza6mGmayXhJO3mAyTfYqkE29YrxG
+	WruEYVQUC6SNTYLXmy0SvFFPS92phWJiZXmrFl0HX0QMDeg7ck8wczA9sf/EUj51kixY1E8CYh3WC
+	O5r4ljgBAhGnIG1YYkAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDkcT-006KNU-BC; Wed, 11 Aug 2021 09:33:53 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1mDkdW-006KnN-Dg; Wed, 11 Aug 2021 09:34:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDkIg-006DiM-KJ
- for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 09:13:30 +0000
-Received: by mail-pl1-x629.google.com with SMTP id b7so1828214plh.7
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 02:13:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=3ZkAU2QHfzdbeB6vZcR6DekWG4U8QzIxN1zOaeYHseo=;
- b=oDomj3rRcyWzJT98WWaMn3iUHVhd213N1K7Dc6cCQNOuPXxWqAQZdSD0fDwhqTUN5H
- bL4VRM/Iq7Wnsd4s6S13jK+Oga0ym2De4dTzSegfF9dfZet2+bbu2ZPOCAdoSEawJ8FA
- UXppbc0qPyrJkus/W8SGWprMiFPmMrprxll6d0dRRhVC3CslE0T9qVutq9EI9huG3Iwn
- EZLXH52csD4G2MXoVd5zYIl9SRzm3VzrvoM4OsXUpBoo/cNdomdEy5OlucKVNj2x0R2J
- /DHNb0L4ubFFusIvvIuglUm9c8BXGcewvgnZTrXsT4nQLY9mvU80q5OyqS4C+dliiQtr
- 7XHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=3ZkAU2QHfzdbeB6vZcR6DekWG4U8QzIxN1zOaeYHseo=;
- b=SFzgxlcHwGbz+txbyRHxZbWmDAsFifrf5xIo/LPjYx7kJz/VZuNaASU6YZKR34X9wC
- 48avjk5IpRI4qn2cGHIbM6vxHZo47zvE/3JKrF1BpWAimUxpMU4RltApaT3XdMh71qBC
- 73p0WFuFevNRRYCPsqS65dlMiDpc0A4RqpGGvWK7Q+qHKtJwWDIaP18/sEAPC/Qoeajf
- wnRIJteJ6Pi3sO2MHLXkxZiYn6/xgrQ28197RYGqXegYE2K9lCh9yq8ZxOZeAzyv5lQq
- 2q0nqEup4VHEvyqMV1xQP4No63ktwL437m60Zr1/KnExzGsbnEG+HoJBkk6dd3/q9O73
- WAng==
-X-Gm-Message-State: AOAM531XeywdJXuluv1JXHR7n6DTuHFIFPEsTOrSdNAepi5K0X8vxfAI
- cSPkt2fdtXj4pp+n2Q6e5H0jEQ==
-X-Google-Smtp-Source: ABdhPJw6gEf2Fw6iBxua2gL1EBsBW5dHh3H63IoaqHdI9KWyzvZpYGzAm266LjhE7aZjzOuSMwvjGg==
-X-Received: by 2002:a62:e914:0:b029:3dd:a1d0:be57 with SMTP id
- j20-20020a62e9140000b02903dda1d0be57mr2957701pfh.11.1628673204607; 
- Wed, 11 Aug 2021 02:13:24 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id mr18sm24660227pjb.39.2021.08.11.02.13.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 02:13:24 -0700 (PDT)
-Date: Wed, 11 Aug 2021 14:43:21 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Quentin Perret <qperret@google.com>
-Cc: Rafael Wysocki <rjw@rjwysocki.net>,
- Vincent Donnefort <vincent.donnefort@arm.com>, lukasz.luba@arm.com,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Fabio Estevam <festevam@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
- Vincent Guittot <vincent.guittot@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org
-Subject: Re: [PATCH 0/8] cpufreq: Auto-register with energy model
-Message-ID: <20210811091321.xtb776q4t6cwyanx@vireshk-i7>
-References: <cover.1628579170.git.viresh.kumar@linaro.org>
- <YRJym+Vn4bbwQzzs@google.com>
- <20210811051859.ihjzhvrnuct2knvy@vireshk-i7>
- <YROMZFHCor3pbhMr@google.com>
+ id 1mDkOi-006Fhs-Na; Wed, 11 Aug 2021 09:19:44 +0000
+X-UUID: 8b0507a939be4255a79026c5bcb3bd6b-20210811
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=2T7cRxnxjKqbG2z7+Lu7qX+7SQjSDkOQqvneV5I7sF8=; 
+ b=twnSEme5M48iO4nwDpL2963L+M5OvhKO6I4ahkHtIOvCr4BXW+GpwhPiagw9H+wgb6FIx8ZCOWHLITbUTSozfQDJFhWLxfNlM1Gtzw1r/iwNDHvsc269cHwaeyRAzaB+75Jw6sgQiDiNTk+09gTWCrwMQKI5CRjwQFsrsUgTe20=;
+X-UUID: 8b0507a939be4255a79026c5bcb3bd6b-20210811
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 758573433; Wed, 11 Aug 2021 02:19:36 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Aug 2021 02:19:34 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 11 Aug 2021 17:19:33 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 11 Aug 2021 17:19:32 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Vinod Koul <vkoul@kernel.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <dri-devel@lists.freedesktop.org>
+Subject: [PATCH v2 7/9] phy: phy-mtk-hdmi: convert to
+ devm_platform_ioremap_resource
+Date: Wed, 11 Aug 2021 17:18:38 +0800
+Message-ID: <1628673520-23537-7-git-send-email-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1628673520-23537-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1628673520-23537-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YROMZFHCor3pbhMr@google.com>
-User-Agent: NeoMutt/20180716-391-311a52
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_021326_713713_E15280FA 
-X-CRM114-Status: GOOD (  26.15  )
+X-CRM114-CacheID: sfid-20210811_021940_841283_15EC8D4E 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,47 +93,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11-08-21, 09:37, Quentin Perret wrote:
-> On Wednesday 11 Aug 2021 at 10:48:59 (+0530), Viresh Kumar wrote:
-> > I had to use the pm-opp version, since almost everyone was using that.
-> > 
-> > On the other hand, there isn't a lot of OPP specific stuff in
-> > dev_pm_opp_of_register_em(). It just uses dev_pm_opp_get_opp_count(),
-> > that's all. This ended up in the OPP core, nothing else. Maybe we can
-> > now move it back to the EM core and name it differently ?
-> 
-> Well it also uses dev_pm_opp_find_freq_ceil() and
-> dev_pm_opp_get_voltage(), so not sure how easy it will be to move, but
-> if it is possible no objection from me.
+Use devm_platform_ioremap_resource to simplify code
 
-What uses these routines ? dev_pm_opp_of_register_em() ? I am not able
-to see that at least :(
+Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+v2: add acked-by CK
+---
+ drivers/phy/mediatek/phy-mtk-hdmi.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-> Right but the EM is a description of the hardware, so it seemed fair
-> to assume this wouldn't change across the lifetime of the OS, similar
-> to the DT which we can't reload at run-time. Yes it can be a little odd
-> if you load/unload your driver module, but note that you generally can't
-> load two completely different drivers on a single system. You'll just
-> load the same one again and the hardware hasn't changed in the meantime,
-> so the previously loaded EM will still be correct.
-
-Yeah, it will be the same driver but a different version of it, which
-may have updated the freq table. For me the EM is attached to the
-freq-table, and the freq-table is not available anymore after the
-driver is gone.
-
-Anyway, I will leave that for you guys to decide :)
-
-> I hear your argument
-> about cpufreq driver development, but the locking involved to allow
-> 'just' that is pretty involved, and nobody has complained about this
-> specific issue so far, so that didn't seem worth it. If we do have good
-> reasons to change the EM at runtime, then yes I think we should do it,
-> it just didn't seem like that was the case until now.
-
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
+index 8ad8f717ef43..5fb4217fb8e0 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
+@@ -100,7 +100,6 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_hdmi_phy *hdmi_phy;
+-	struct resource *mem;
+ 	struct clk *ref_clk;
+ 	const char *ref_clk_name;
+ 	struct clk_init_data clk_init = {
+@@ -116,11 +115,9 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ 	if (!hdmi_phy)
+ 		return -ENOMEM;
+ 
+-	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	hdmi_phy->regs = devm_ioremap_resource(dev, mem);
+-	if (IS_ERR(hdmi_phy->regs)) {
++	hdmi_phy->regs = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(hdmi_phy->regs))
+ 		return PTR_ERR(hdmi_phy->regs);
+-	}
+ 
+ 	ref_clk = devm_clk_get(dev, "pll_ref");
+ 	if (IS_ERR(ref_clk)) {
 -- 
-viresh
-
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
