@@ -2,108 +2,101 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44B36C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 10:15:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D44A6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 11:16:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0536D60D07
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 10:15:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0536D60D07
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8DEAC604DC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 11:16:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DEAC604DC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48xpLWmdoehjj1yj0UviW3QA6X8XhpjfDOR4eUxhTcg=; b=2KvxHppqVB2N5n
-	kCsSyl/ZpjtaamiHpxtp/AveMMys0poyn+PgsVDGHCbTBB7boiJEpJjRNgTCRpj3VaQelEcB2rQj8
-	ysz2Ba0++RDXBL28Whmxi5bXXtDOAivo4Bm8kgsQIn9S76cEN15/nrbzv3bv0t7WrEGRvdebai8SS
-	kvN+Xg+NUKJHojdUkub+aVtbauAH1MrCNl753nC7zSWsgW9XbpSfAns3uKnd3zT7fmgjuxeDLOWgQ
-	y89VQrR+Twi2mgmB/BC/wiSrUwrDzhMbuK1UXfR7+DIC8O3kt5ghaSkjvOMv6RR+i49bkO5Ld0ZvB
-	UQz3OfOubsT++6Pz2GoA==;
+	List-Owner; bh=slSER562UkgBT6Q3rIbBdPgjzPrd9rrMwnc2bmBCQwE=; b=AZbsjIatq/QMWZ
+	xmAtsq6w9b/qRz8bjgcZnNypo+mdEpsS6dJ00wrc231aQbdHXw1GMYMkdvleS4sTAFX4ht+hjSWnU
+	cvDjvbwHcB1JiAONYhUiAL8WfQQ1lvnwAVTm8aSpBpTPipvD38Zu+PQH8F735ctrgfSBhFinNGEUX
+	8y/1tc6y/Hed3u3RpntknNaJk5EEYy3jrjQoTZ+5/BjQEiGvfafhe0bVaL+it6R1tlxH2nZlDmVsl
+	F7e9a2GxhvNlBp98aBm0wjJG1n4ZuFdfSNwh0nnJKHOHFyoB1Q4xDR8DeL9WNO+nnn7Sf9Dox9Mxn
+	oMnCFMx6GYdNSocq6oPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDlGj-006abK-FR; Wed, 11 Aug 2021 10:15:29 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1mDmD8-006kJY-Rt; Wed, 11 Aug 2021 11:15:50 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDlG9-006aIL-6b
- for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 10:15:00 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id
- t7-20020a17090a5d87b029017807007f23so8739205pji.5
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 03:14:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=Rg+nfqNpN4KVS6P5Kg2kgnadiI4aRZsAUMlE7w6kB2k=;
- b=ac4casP3kUB13OsUJQcv38FKO7pVIq50bZ6uPGU1NEdpQ0ASqnp8urXzheGfF4JgZJ
- F0GBVqBxpnRY7eoErIyp2IabG5QIpaejNKNbwc0aQqxzw6oZgMJeXCdM+On3gP7GcwAm
- Ze6ZM7NUk6+K3utV/jdB+12kqYzQTqBoRF8pt/wvWMKT0t0AejJqeovqCSNaOQMJbO1L
- dD5NFrhUjhU22SWOPidIBz2QfpP5F/XNnFPgeAwhtmB5nt6HWk+7H9MN4LVZKKuaHvyE
- KiuTQa4lU4FT+xPngVH2NJUbPObjZ/HoPrBwxQiQRHH+/uoJ61KSOscQQ3Qen6LcUrLD
- YtkQ==
+ id 1mDmD3-006kIa-Fu
+ for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 11:15:49 +0000
+Received: by mail-lf1-x133.google.com with SMTP id x27so4918830lfu.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 04:15:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=E4L1scxTWu6C9n26vo2qgoZeLEILa/cvadfoeBRn16c=;
+ b=PBc4H6TCN8oNeqbaSgDwDWagMBXKbNt1oKWB35rQaKRrQtpSKCgtaCrQCExT3sbXU3
+ EtL2uzoqZr4BiELxdl+Ag+4acwfWjjW1GXa5Qc0sjQzLjVwazoUZaGYZc0MPqNoOImuN
+ erckDhpJnqjfJqupW69vQsiXFvAcQyHG1nvsM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Rg+nfqNpN4KVS6P5Kg2kgnadiI4aRZsAUMlE7w6kB2k=;
- b=S605hyAkmwF/aVwaarkcRkAO1gnRXode1I14kBqOyFuIqwWxEUdBnzxba1CV0teL8h
- emYcgC+sQ9mRXIn++pQii7aa136bOytv139yE1jO5QhbJok8GGMhjmW4eHb2c+dCjQgL
- FH+Vi633dMmlFmWRb9OvrssAVjERkLmWBc9w7LYQc6xdEUJyuF7cFIAY0tgltmdTSCfv
- V2n/LOckl244UJ1Whj6zZEKPS7/J7NYLpmIfPnGvd0xfU+uAYyRB8BEASEozo6pNjJ29
- Tq5nNzfiYf2wyhUWivbWpmm0KxpdTBGm0eEn5DrZ0MAH2aWqnLZYhEai8L7an84R7vTo
- r34A==
-X-Gm-Message-State: AOAM5315WCES9CN7JNSwrAOBQNBQtoXpf1ti8cOhK54EFcCEZw9WCLL3
- KgruulUPbWPNExaDY78Hry9Kuw==
-X-Google-Smtp-Source: ABdhPJzXjMW9vKhvdq5O6Gt8ct98tc27N2TMRTz0kLhqKVJ5iHf/FGC7+T3yYcwqi1noPFO5FkhCyA==
-X-Received: by 2002:aa7:9f5b:0:b029:3be:2a1f:ca58 with SMTP id
- h27-20020aa79f5b0000b02903be2a1fca58mr27592438pfr.46.1628676892055; 
- Wed, 11 Aug 2021 03:14:52 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id j25sm27085750pfe.198.2021.08.11.03.14.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 03:14:51 -0700 (PDT)
-Date: Wed, 11 Aug 2021 15:44:49 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Quentin Perret <qperret@google.com>
-Cc: Rafael Wysocki <rjw@rjwysocki.net>,
- Vincent Donnefort <vincent.donnefort@arm.com>, lukasz.luba@arm.com,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Fabio Estevam <festevam@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
- Vincent Guittot <vincent.guittot@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org
-Subject: Re: [PATCH 0/8] cpufreq: Auto-register with energy model
-Message-ID: <20210811101449.c2533ediwboeplqj@vireshk-i7>
-References: <cover.1628579170.git.viresh.kumar@linaro.org>
- <YRJym+Vn4bbwQzzs@google.com>
- <20210811051859.ihjzhvrnuct2knvy@vireshk-i7>
- <20210811053406.jqwextgtnxhgsjd2@vireshk-i7>
- <YROc95YKA1Y/TfYI@google.com>
- <20210811095311.e6wnma2ubkqdtuic@vireshk-i7>
- <YROin5WudmmEPard@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=E4L1scxTWu6C9n26vo2qgoZeLEILa/cvadfoeBRn16c=;
+ b=SdeFgF8VYS9m/VP0MlHv+VPC0qqsd3xDWAK2C0dhU8PFn7t/3Hj6Wz3He7955zpM72
+ QPr+rsdIXpIf1pqlnjCZD20tFL1n6aS9Q2QGv8pq3kdMSWaf55wt+cnc+6koYjdi8+QA
+ 39dsJwDH2u47Gj9h0CLueadCcVX7bLRCNedpjiBD+F4slQvVYope9Q/L8mckgKz4c4Ts
+ 6nzGbanZQEQWPr6pjzZwLKJnUx2rN15DlzGxVNUHn1MszfvIa70PP6n7yRx7gtPAWf3u
+ oJ7EFuEw5LfFCnBkeO3+0SrcwL3e8t/Ld5xGLgoMfEg/kg+HU8p3hCyWDB5KAxyGZg0N
+ HEIw==
+X-Gm-Message-State: AOAM532zigct3KE6nHFADZxvWysdKf/Lv9fOUpgEUVtP1M+hICLxjksb
+ AgWYu/+X9qQNME4CMv7b+x2c+dQxs/b7yXQw
+X-Google-Smtp-Source: ABdhPJyFjI/CPiDExcpKUXqBwUfNmhz8bEAHT8Kwy39aOG+4XJ094Y2C8SX71SNw2IrAkIhHfrQOnQ==
+X-Received: by 2002:a05:6512:33d3:: with SMTP id
+ d19mr2139932lfg.394.1628680543566; 
+ Wed, 11 Aug 2021 04:15:43 -0700 (PDT)
+Received: from mail-lf1-f49.google.com (mail-lf1-f49.google.com.
+ [209.85.167.49])
+ by smtp.gmail.com with ESMTPSA id d15sm2102388lfq.96.2021.08.11.04.15.43
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Aug 2021 04:15:43 -0700 (PDT)
+Received: by mail-lf1-f49.google.com with SMTP id n17so4818151lft.13
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 04:15:43 -0700 (PDT)
+X-Received: by 2002:ac2:55b4:: with SMTP id y20mr24729347lfg.33.1628680542749; 
+ Wed, 11 Aug 2021 04:15:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YROin5WudmmEPard@google.com>
-User-Agent: NeoMutt/20180716-391-311a52
+References: <20210802121215.703023-1-eizan@chromium.org>
+ <20210802220943.v6.2.Ie6d1e6e39cf9b5d6b2108ae1096af34c3d55880b@changeid>
+ <0aff1abb-734f-c714-6ecc-c906862255c3@collabora.com>
+ <CAOak1e8n6JpNKODfM57OTtbCNz8UBbj+wefwipVWP_Ep6SHmHA@mail.gmail.com>
+ <014b8075-8588-d741-e6f2-edc0567e8c8f@collabora.com>
+In-Reply-To: <014b8075-8588-d741-e6f2-edc0567e8c8f@collabora.com>
+From: Eizan Miyamoto <eizan@chromium.org>
+Date: Wed, 11 Aug 2021 21:15:25 +1000
+X-Gmail-Original-Message-ID: <CAOak1e-+v1e+x1SE_Pr2T8eH+gyLikBL6J243ry5tkWAVVx7tA@mail.gmail.com>
+Message-ID: <CAOak1e-+v1e+x1SE_Pr2T8eH+gyLikBL6J243ry5tkWAVVx7tA@mail.gmail.com>
+Subject: Re: [PATCH v6 2/9] mtk-mdp: add driver to probe mdp components
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-kernel@vger.kernel.org, wenst@chromium.org, houlong.wei@mediatek.com,
+ yong.wu@mediatek.com, enric.balletbo@collabora.com, 
+ devicetree@vger.kernel.org, chunkuang.hu@kernel.org, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_031453_280803_29C88E9A 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20210811_041545_589692_0B838256 
+X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,21 +113,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11-08-21, 11:12, Quentin Perret wrote:
-> I think using the ready() callback can work just fine as long as we
-> document clearly it is important to register the EM from there and not
-> anywhere else. The dedicated em_register() callback makes that a bit
-> clearer and should avoid a bit of boilerplate in the driver, but it's
-> not a big deal really, so I'm happy either way ;)
+Hi Dafna,
 
-Yeah, I think just the same. It is better to have register_em as a
-separate call. I was just wondering if it is the right choice :)
+On Mon, Aug 9, 2021 at 5:53 PM Dafna Hirschfeld
+<dafna.hirschfeld@collabora.com> wrote:
+> You can send it also as a separate patch. I don't care too much.
 
-Anyway, I think ready() will get removed pretty soon, so register_em()
-will work well. I will redo this series and send it.
+Great. I've sent a separate patch to make mtk_mdp_comp_init static in
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=529639
 
--- 
-viresh
+I will continue with further work to use the clk_blk_* API.
+
+Thanks,
+
+Eizan
 
 _______________________________________________
 Linux-mediatek mailing list
