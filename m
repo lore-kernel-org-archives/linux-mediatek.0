@@ -2,20 +2,20 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FSL_HELO_FAKE,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91B86C4320E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:48:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A90E5C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:48:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37B496101E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:48:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 37B496101E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6BE5E60FC4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 09:48:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6BE5E60FC4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -23,54 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eodb3XuMSuunFH2qofMJpGRKrwoaLiS7X3YjXOsLUF8=; b=d/O703a2xGK+wG
-	LBSS5qpYlatVkxjipTBzwC0LYgcgjw/GaerjSDg2hQjpkBLcrtseoiv2pPthwdYo6PkWEkpkbd4XI
-	pvNaILnW8+Qme+bswqkZq1+vAlz5H52ztNpQuWUC32M3kwPBxEnzKpuVLJ81uioq2MpeqLIed2jdu
-	LPuzr4aeB4UoHvY9OOBOFUvOTnIpGsoFSJc3c4CWCgj7K3KVahJugofo8m09SWdZNnTBOqAj9nsRQ
-	TuMjwjoJBqTtipFyLpEQZheuUVz7ymQML3IMV927BKeKDq1Ki66oEm2CYAYoOYH8kX+ydxXlRgLRf
-	pFLJbIbCCZ7CqUmhF+9A==;
+	List-Owner; bh=0NA1VeulaFOG1k0zBB9VkNo+4SUmKuCKOGzj71zjlXw=; b=KieY5QHltNgFuJ
+	v5zLlQUfXCXYm/0qqrwXoW4Ee2bLLjFOD/Wmkk2CvGahk3z2quEjMZPb7otaYgAiMmLyyawUonJ8F
+	ap9L4DMMuSiPd7Xs8l8qIH8GGsBK9b8yVEcEQEKNRvCkekX0mgzq0ZCUsTaOFrCh52mfyOLfD+VR1
+	Y2GI8fL/2+iiLYM26TlPA4Y0Mo6wBF1QHxwebMAi+SVetLvGQsEnduD3M9HXQTLSKtkQGdSY8iwWt
+	rnCoAlJT7k5ZDpVq/RQPBUULnf/+uYjIINl6oo58JDARTHa34J3LGln1YSYGVhT7VuqQ1UB3GZ3Ld
+	CAG+hMWS8yf16oaV20EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDkq2-006Pha-MW; Wed, 11 Aug 2021 09:47:54 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1mDkqJ-006Pqk-JD; Wed, 11 Aug 2021 09:48:11 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDkcr-006KXk-Un
- for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 09:34:19 +0000
-Received: by mail-wm1-x331.google.com with SMTP id k4so1462525wms.3
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 02:34:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ id 1mDkes-006LNg-Cn
+ for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 09:36:26 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id
+ mq2-20020a17090b3802b0290178911d298bso3791995pjb.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 02:36:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=vnsVN4bcM0E0y8yL+4jX4NPKN0s5XVfHXg6t0sA+kKU=;
- b=u8FXx8PbqKg72yRV7K6aX2nwg+RaUIMIKfNSyZDi54QHZNgrnmHHhpQ3uW6MNefq+t
- X/92op1mryh95Wm/AH8EEK6FZ9dY6WHyWJJ6gWW9CV/snKBi8+dpGzZiAUW4j3bT+sQA
- kEkRFMvY/K+F2WRBhUU/Aw+ZhvCvgDYP07VdNhurn9IQQUMuRJhYvRvsUghUHu0Cd7lm
- 2HxjMjXHAezdkF4PXpqZnFGn0GCPqevGzJ4qOY7sM7q2tRu5scxmVsHV2bkXeB5xOZay
- Vb/qjRNLocExEd0jwIXNuWn1dpNVgbP5WBCp0KJvYay/+69ktW+ZNYmVv3DQXiNSoqSs
- F/Vw==
+ :content-disposition:in-reply-to:user-agent;
+ bh=J02656YR2Fe+Hj72RiSigwAaGmAyuf7/C51n8U6jOdY=;
+ b=wxXAi1TAzSCXJ4QCDlmvMQ90aBtvPmzeF2vdBsrRB91gYbhARcpyzZfqnHoV4G2xNg
+ VC24e1WDKeK4nD1bFXlgcjRNkZCt2bEojXrNOOtiMgnVDLZSA489i6baRAfgRRe5oIwo
+ k29UcaiaX1PjrV5lKsYOfvc8V6bWqq3Ey8mg7DOycJQ9elkfHIjitqfBM7RdeNY4X6RQ
+ KqqiU13RUPRjNFXs6tG5Yh95/J38x6x5phrwCwYSFSmjuuClGEd84rHeij+/Kyszpz2B
+ g4lbXalMWU282IPf6r4BarnwBCb45ZcWtA43eB2xFUwvyAlttMZbSvBTXlhirVuOsHV9
+ KMsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=vnsVN4bcM0E0y8yL+4jX4NPKN0s5XVfHXg6t0sA+kKU=;
- b=odVgFtAW2DYqo1kZ+fBUnBvPgUtRYxKiwedOYID5W4zTBYm8rLvRX5WtI56eUl3HW/
- UWfjMr7QaFInvFiM8Zplvt0xltWEykmmyKZknNQMx0VqLLfxx5Ey+zLHUu9brlaUSxR1
- eusZ+t6q08MFdrWt0ptGCEYw2PTdeVMdU4S8dDGnqnkTAh125KJJkqzxOLnT+u4Wh8cd
- 25UgV/HJq5TZFmOzZry3qvskS8eL4P6jGYnw3AxPSUsylszGAVhPts9izkFDhYROC/JG
- ecjvOD+vK6hBnnmvQUL707buCDeiLKzgt3DPU8RD4Zo+x3wwCLnoiMo+rfoiofsajd5w
- q3oQ==
-X-Gm-Message-State: AOAM530DBV6S+rFTlN4rrojspqbCKXmzYtBJb5hEroD8n0qawT5lcT2q
- amHf8LyaOURYIKrSgMoh8WEKOg==
-X-Google-Smtp-Source: ABdhPJwkwReehafMcUbIlZNd433otHjSQ1cTcW/iaeTfVVwqL8nOZJoLVmtkJ6iZwqwM5f+LD1MLMA==
-X-Received: by 2002:a7b:cd83:: with SMTP id y3mr26353421wmj.126.1628674455789; 
- Wed, 11 Aug 2021 02:34:15 -0700 (PDT)
-Received: from google.com ([2a00:79e0:d:210:43fd:e634:73d9:e10e])
- by smtp.gmail.com with ESMTPSA id i14sm20670426wmq.40.2021.08.11.02.34.15
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=J02656YR2Fe+Hj72RiSigwAaGmAyuf7/C51n8U6jOdY=;
+ b=QkPgDwxzgEwkXPxvMCsvKf9hoeLqkakNNP33T+poSwx12MMB5kvwXSfjHXNrlmvFwR
+ MDt51ieCbqsr9x++17pAj5z8DWtiRnnkoKHYPn4yoN4+WkynwV2DfAqhBUtidIAF1YNn
+ wUNM4Xt54XtZdhw2vuW940PhvWEurvxCR25FwO30RNvooLpMKbEgTydQcZvZyM2Gc7p+
+ qoV2kk4VtZ5LBSR4qquwiCx0W99CX+7hlScjDjpfT0sh0rZ0SdEr3Yrvrxa6YD0cFNxt
+ uxhcA5tUpBF584NPhpxVRIeGZZzwkDiI687mZCXkCMIkP4dEfGyC4UdUuGL36Fj++KvP
+ W+hg==
+X-Gm-Message-State: AOAM533pySrT9QPVE04xJSdQXgUKgqna3MPgwcAFp0qQUB016bKmSjTM
+ MC+DCmqwPQpSFh6xjbEgJ5wYTMB12oT0Hw==
+X-Google-Smtp-Source: ABdhPJys+C5eNI9Pw3BvNOuNX3w2Mr6lTrvVQYtWv/q628SqQBf/F7vEkJNqmZGhccHk0WzM588r5g==
+X-Received: by 2002:a17:90a:4a88:: with SMTP id
+ f8mr9875619pjh.226.1628674581006; 
+ Wed, 11 Aug 2021 02:36:21 -0700 (PDT)
+Received: from localhost ([122.172.201.85])
+ by smtp.gmail.com with ESMTPSA id 26sm32218359pgx.72.2021.08.11.02.36.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 02:34:15 -0700 (PDT)
-Date: Wed, 11 Aug 2021 10:34:09 +0100
-From: Quentin Perret <qperret@google.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
+ Wed, 11 Aug 2021 02:36:20 -0700 (PDT)
+Date: Wed, 11 Aug 2021 15:06:18 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Quentin Perret <qperret@google.com>
 Cc: Rafael Wysocki <rjw@rjwysocki.net>,
  Vincent Donnefort <vincent.donnefort@arm.com>, lukasz.luba@arm.com,
  Andy Gross <agross@kernel.org>,
@@ -87,18 +89,21 @@ Cc: Rafael Wysocki <rjw@rjwysocki.net>,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-omap@vger.kernel.org
 Subject: Re: [PATCH 0/8] cpufreq: Auto-register with energy model
-Message-ID: <YROZkbMEMAeXMt1W@google.com>
+Message-ID: <20210811093618.7ncznvblttk6hjlt@vireshk-i7>
 References: <cover.1628579170.git.viresh.kumar@linaro.org>
  <YRJym+Vn4bbwQzzs@google.com>
  <20210811051859.ihjzhvrnuct2knvy@vireshk-i7>
  <YROMZFHCor3pbhMr@google.com>
  <20210811091321.xtb776q4t6cwyanx@vireshk-i7>
+ <YROZkbMEMAeXMt1W@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210811091321.xtb776q4t6cwyanx@vireshk-i7>
+In-Reply-To: <YROZkbMEMAeXMt1W@google.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_023418_041232_EE313B8D 
-X-CRM114-Status: GOOD (  27.77  )
+X-CRM114-CacheID: sfid-20210811_023622_471287_7D28AD18 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,46 +120,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 11 Aug 2021 at 14:43:21 (+0530), Viresh Kumar wrote:
-> On 11-08-21, 09:37, Quentin Perret wrote:
-> > On Wednesday 11 Aug 2021 at 10:48:59 (+0530), Viresh Kumar wrote:
-> > > I had to use the pm-opp version, since almost everyone was using that.
-> > > 
-> > > On the other hand, there isn't a lot of OPP specific stuff in
-> > > dev_pm_opp_of_register_em(). It just uses dev_pm_opp_get_opp_count(),
-> > > that's all. This ended up in the OPP core, nothing else. Maybe we can
-> > > now move it back to the EM core and name it differently ?
-> > 
-> > Well it also uses dev_pm_opp_find_freq_ceil() and
-> > dev_pm_opp_get_voltage(), so not sure how easy it will be to move, but
-> > if it is possible no objection from me.
-> 
-> What uses these routines ? dev_pm_opp_of_register_em() ? I am not able
-> to see that at least :(
+On 11-08-21, 10:34, Quentin Perret wrote:
+> Yep, it's not immediately obvious, but see how it sets the struct
+> em_data_callback to point at _get_power() where the actual energy
+> calculation is done. So strictly speaking _get_power() is what uses
+> these routines, but it goes in hand with dev_pm_opp_of_register_em() so
+> I guess the same reasoning applies.
 
-Yep, it's not immediately obvious, but see how it sets the struct
-em_data_callback to point at _get_power() where the actual energy
-calculation is done. So strictly speaking _get_power() is what uses
-these routines, but it goes in hand with dev_pm_opp_of_register_em() so
-I guess the same reasoning applies.
+My bad.
 
-> > Right but the EM is a description of the hardware, so it seemed fair
-> > to assume this wouldn't change across the lifetime of the OS, similar
-> > to the DT which we can't reload at run-time. Yes it can be a little odd
-> > if you load/unload your driver module, but note that you generally can't
-> > load two completely different drivers on a single system. You'll just
-> > load the same one again and the hardware hasn't changed in the meantime,
-> > so the previously loaded EM will still be correct.
-> 
-> Yeah, it will be the same driver but a different version of it, which
-> may have updated the freq table. For me the EM is attached to the
-> freq-table, and the freq-table is not available anymore after the
-> driver is gone.
-> 
-> Anyway, I will leave that for you guys to decide :)
-
-IIUC Lukasz is working on something that should allow changing the EM at
-run-time, so hopefully it'll enable this use-case as well, but we'll see :)
+-- 
+viresh
 
 _______________________________________________
 Linux-mediatek mailing list
