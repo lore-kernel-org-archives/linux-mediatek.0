@@ -2,101 +2,86 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FSL_HELO_FAKE,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F08E2C4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 08:38:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E67D4C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 08:41:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ABDB260527
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 08:38:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ABDB260527
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id B008B60F41
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 08:41:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B008B60F41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NoE2W1cXQeVIIGZYF1amOmPqGz9bsC7/GfwfGywS4N0=; b=NIAaLSLemM4UgF
-	p60ATEWJffVaGr2g4W/Ro+unRWGDsAK/JNgDs48xpp9C7OergeQxCRER8q6jrCTj1xAq8wBACePBk
-	B74kAKln2HwAdyBotxZx19UWR5NIB/gbtIH68lmgFegVS8kgFhLGZyekZGp3zE6XvGX/IbqO2OPkw
-	kkQ9e9JS4FM1B/QyXAd2sFXr415MEyLPUBxfyuDuyNmMsWfnmJ8wdeF1fLB9RixSdUE0HtnVeO6ZE
-	E1FXpI/1sH5uwhx7Ger2V5NzH3SwVn+KDU+AUCzHOUzXAV20rrVnGAeeum+txVFgP9V927noGHuj7
-	Fc7OgViBn4OGDcRVrouQ==;
+	List-Owner; bh=B1RT9xGYyIWkh458rXhWKNglm0+kVaC/Tm8DhH3uF2c=; b=inQ64tZYok6PBJ
+	LIov1sMxn3zu7zcd3NDT/n8Z0Glv8e00L5hdiNWRuznnGABD4FLlOuDSQyTLl9VPybAi5b1qZPxLo
+	jiTQtFGo1xRrhW+iO+eH2RBkHnwmK5qY03c+4OQvGHkERl9eS9m7+oji9lhTg5K+FeJY68nS6B3+6
+	9WMVGFAGC7pTHYkLsBmCEz+jUhKCfFPlXALfa7bbTEDlzYuACNFvjy5jDAsHp21xG+QUzzZdcjS5H
+	E9bx3gAH7jqJqXD/d8gG1b9O6uXevLAXF4Z1e/zKpgzADXU86zAVRHqbYhTWFYQW0VBdU17CZQ/JM
+	e4SdDTnPKCJEr7R2TCrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDjkf-0062ek-SB; Wed, 11 Aug 2021 08:38:17 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1mDjo0-0063tc-LP; Wed, 11 Aug 2021 08:41:44 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDjkS-0062bb-Ev
- for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 08:38:05 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id q11so1893837wrr.9
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 01:38:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=8ctvExXHxoU7MDz0lLq/Tgi84JQatciTVAxD+Fn/jcQ=;
- b=rEq02tPeUoTDMJlCRt+ttFdA0Jr7daFhR+2ie5RBcOI3BzWNUuUWa9Gbkn4HGOW7WY
- 4dGznTdp6VXTPNE9W13rtYzeqx7tx7wQ393pENejnQSXz9eLj1RNBFRM1k3jq7xv7egq
- HC0wLX7Gfq1JdtcjNVDY4wLVGIFgnDphxa8SKvMeE6pZoYh5aVDsC/sruC06SYWsY3uM
- J7cw2lg+GbQUi7uuzGE1t6Q0KYY1VP89pD3oxKNUKWXB+QlwgXjHIwdMYwDYJtjhm4GA
- VV1DzVJB/z5IitVlWxedaVu1jjrQLyAUK9KtmHXlZnADSSCcDIKhD2TqwcqLbaym+Na8
- XOdg==
+ id 1mDjnb-0063hP-2a
+ for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 08:41:23 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id t9so4076769lfc.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 01:41:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RRXhxpsGGBaiNGCyD3hg6td+QSBXWB5z0qL251IrDq4=;
+ b=eUmIOHzwisXtFKg49mSlkUJt8dGRHaqzBozWiWhzdPe8zHaOj6f30AKTlAcDd/lwb5
+ t4zLhSo+WFWFP1R0ImhHYjgR4CCSbFHRxMLECl2Qshn1OxF5jzpVhIUE/4+FYbFet3f+
+ gmve+QbPDuRAm+TQyHyiksrDXBapJDsvmXRBI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8ctvExXHxoU7MDz0lLq/Tgi84JQatciTVAxD+Fn/jcQ=;
- b=tj6/hhFhm1nfVH+BWhecssF8ea19VoP3XnXjcjZZexEr9PwY+UicxYyVyofNSDroTR
- 2VTqMLXf3U+X+sb1C+Crq3yJOffbAWvp5E3IcheFac27dkAWw4M46s/iAOtJGEnweVzJ
- dJEYfMUkKMvpqmxSdnR4w1vFJe76lT8UfowrEpD+AFbRmBc+nx29DatqKBBQC9lhAu1u
- pfyHbZ8pMHBDzkuclZCTEnkmLqqszg8X3fLQuJDzezi8OFPNYEpZTBQtmkq2A+/qjDpp
- yxJSy7+3dWF/TwQk1rskZJpQJmiAW/XyIN3zdQYEHM6RWARlS4W64QtvqbFO7bSiT3Zs
- LEgA==
-X-Gm-Message-State: AOAM532fTfjybjqtzSeIviLOnLBWC9yQxYJcHKgRzB+LerCGCqqoFD3n
- lbj7kwujpS+xDy1MG+K07wn5sA==
-X-Google-Smtp-Source: ABdhPJzU9YQR62yDNq9PrF7gkVKzwniyJFxIxg9cOJLgH9YZSN7yJXWq44plPsS4/Qn9sPmMW8M/QQ==
-X-Received: by 2002:a5d:490b:: with SMTP id x11mr35305440wrq.322.1628671082736; 
- Wed, 11 Aug 2021 01:38:02 -0700 (PDT)
-Received: from google.com ([2a00:79e0:d:210:43fd:e634:73d9:e10e])
- by smtp.gmail.com with ESMTPSA id e25sm13986334wra.90.2021.08.11.01.38.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 01:38:02 -0700 (PDT)
-Date: Wed, 11 Aug 2021 09:37:56 +0100
-From: Quentin Perret <qperret@google.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-Cc: Rafael Wysocki <rjw@rjwysocki.net>,
- Vincent Donnefort <vincent.donnefort@arm.com>, lukasz.luba@arm.com,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Cristian Marussi <cristian.marussi@arm.com>,
- Fabio Estevam <festevam@gmail.com>, Kevin Hilman <khilman@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
- Sudeep Holla <sudeep.holla@arm.com>, linux-pm@vger.kernel.org,
- Vincent Guittot <vincent.guittot@linaro.org>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-omap@vger.kernel.org
-Subject: Re: [PATCH 0/8] cpufreq: Auto-register with energy model
-Message-ID: <YROMZFHCor3pbhMr@google.com>
-References: <cover.1628579170.git.viresh.kumar@linaro.org>
- <YRJym+Vn4bbwQzzs@google.com>
- <20210811051859.ihjzhvrnuct2knvy@vireshk-i7>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RRXhxpsGGBaiNGCyD3hg6td+QSBXWB5z0qL251IrDq4=;
+ b=W/MQq1XtpwjceFp7ua8MEJt6HVlWuxybgGCaprZckCqdg73Za9/J9YMd6YcsrCWQ74
+ CdeYEJfHZqha9kciFYh5Aj1IG4Xp55MQROeH74Iz2AGhWG6cZZX4GrEJX2yMAsr733YM
+ T7vd05AaJBrp5sJrKcV6Q96lOuKpVwbIFsxZ+l2MCSRyzBLJTotN8BWQFxDfMR8SMG1h
+ hDiSFKBLVqjEPBwMa+RhlbdL9WMQEBL/sUD2hQ6SdrpXwyY2p0NsinflT4Sj/SOSNa9+
+ tF1Oz4IwGQDSQSJ9N/j+u9o8fs9XyTrA+K7qreRJUy/opd5MREnqG0jxDJlz7otsiBDW
+ Fb8w==
+X-Gm-Message-State: AOAM531mzP+ZcFKt9CC7kwq86I3Dl1YtfoxL3hv4uxHEp/zIu03O+GCL
+ G91SnHvi+LvTyqLjmt9NFEYXCThOty4CGW27/Xf7UQ==
+X-Google-Smtp-Source: ABdhPJwsZ0kR+wuRdn0H8ALHibyWYiHn6X3kKvBgnSFW7akG+ZYd5RyTPL8iL85Od9MwX7ggGlwRnvEVfNe08yrDK+g=
+X-Received: by 2002:a19:c202:: with SMTP id l2mr24358532lfc.276.1628671276094; 
+ Wed, 11 Aug 2021 01:41:16 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210811051859.ihjzhvrnuct2knvy@vireshk-i7>
+References: <1626517079-9057-1-git-send-email-kewei.xu@mediatek.com>
+ <1626517079-9057-4-git-send-email-kewei.xu@mediatek.com>
+In-Reply-To: <1626517079-9057-4-git-send-email-kewei.xu@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 11 Aug 2021 16:41:04 +0800
+Message-ID: <CAGXv+5EGpUV0eaQ6duZ8y8u2dvc1y3uc2YwWP=07D+ZZpzMCvQ@mail.gmail.com>
+Subject: Re: [PATCH v4 3/8] i2c: mediatek: Reset the handshake signal between
+ i2c and dma
+To: Kewei Xu <kewei.xu@mediatek.com>
+Cc: wsa@the-dreams.de, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, linux-i2c@vger.kernel.org, 
+ Devicetree List <devicetree@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, leilk.liu@mediatek.com,
+ qii.wang@mediatek.com, 
+ yuhan.wei@mediatek.com, ot_daolong.zhu@mediatek.com, liguo.zhang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_013804_565267_C4032EBE 
-X-CRM114-Status: GOOD (  44.10  )
+X-CRM114-CacheID: sfid-20210811_014119_167130_9886EB31 
+X-CRM114-Status: GOOD (  20.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,75 +98,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wednesday 11 Aug 2021 at 10:48:59 (+0530), Viresh Kumar wrote:
-> On 10-08-21, 13:35, Quentin Perret wrote:
-> > On Tuesday 10 Aug 2021 at 13:06:47 (+0530), Viresh Kumar wrote:
-> > > Provide a cpufreq driver flag so drivers can ask the cpufreq core to register
-> > > with the EM core on their behalf.
-> > 
-> > Hmm, that's not quite what this does. This asks the cpufreq core to
-> > use *PM_OPP* to register an EM, which I think is kinda wrong to do from
-> > there IMO. The decision to use PM_OPP or another mechanism to register
-> > an EM belongs to platform specific code (drivers), so it is odd for the
-> > PM_OPP registration to have its own cpufreq flag but not the other ways.
-> > 
-> > As mentioned in another thread, the very reason to have PM_EM is to not
-> > depend on PM_OPP, so I'm worried about the direction of travel with this
-> > series TBH.
-> 
-> I had to use the pm-opp version, since almost everyone was using that.
-> 
-> On the other hand, there isn't a lot of OPP specific stuff in
-> dev_pm_opp_of_register_em(). It just uses dev_pm_opp_get_opp_count(),
-> that's all. This ended up in the OPP core, nothing else. Maybe we can
-> now move it back to the EM core and name it differently ?
+Hi,
 
-Well it also uses dev_pm_opp_find_freq_ceil() and
-dev_pm_opp_get_voltage(), so not sure how easy it will be to move, but
-if it is possible no objection from me.
+On Sat, Jul 17, 2021 at 6:29 PM Kewei Xu <kewei.xu@mediatek.com> wrote:
+>
+> Due to changes in the hardware design of the handshaking signal
+> between i2c and dma, it is necessary to reset the handshaking
+> signal before each transfer to ensure that the multi-msgs can
+> be transferred correctly.
 
-> > > This allows us to get rid of duplicated code
-> > > in the drivers and fix the unregistration part as well, which none of the
-> > > drivers have done until now.
-> > 
-> > This series adds more code than it removes,
-> 
-> Sadly yes :(
-> 
-> > and the unregistration is
-> > not a fix as we don't ever remove the EM tables by design, so not sure
-> > either of these points are valid arguments.
-> 
-> I think that design needs to be looked over again, it looks broken to
-> me everytime I land onto this code. I wonder why we don't unregister
-> stuff.
-> 
-> Lets say, I am working on the cpufreq driver and I want to test that
-> on my ARM machine. Rebooting a simpler board to test stuff out is
-> easy, but if I am working on an ARM server which is running lots of
-> other userspace stuff as well, I won't want to reboot the machine just
-> to test a different versions of the driver. I will rather want to
-> build the driver as module and insert/remove it again and again.
-> 
-> If the frequency table changes in between versions, this just breaks
-> as EM won't be updated again.
-> 
-> This breaks one of the most basic rules of Linux Kernel. Inserting a
-> module should have exactly the same final behavior every single time.
-> This model doesn't guarantee it. It simply looks broken.
+This also affects MT8192. Has this been tested on that SoC as well?
 
-Right but the EM is a description of the hardware, so it seemed fair
-to assume this wouldn't change across the lifetime of the OS, similar
-to the DT which we can't reload at run-time. Yes it can be a little odd
-if you load/unload your driver module, but note that you generally can't
-load two completely different drivers on a single system. You'll just
-load the same one again and the hardware hasn't changed in the meantime,
-so the previously loaded EM will still be correct. I hear your argument
-about cpufreq driver development, but the locking involved to allow
-'just' that is pretty involved, and nobody has complained about this
-specific issue so far, so that didn't seem worth it. If we do have good
-reasons to change the EM at runtime, then yes I think we should do it,
-it just didn't seem like that was the case until now.
+> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
+> ---
+>  drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+>
+> diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
+> index 222ff765e55d..c0108387f34b 100644
+> --- a/drivers/i2c/busses/i2c-mt65xx.c
+> +++ b/drivers/i2c/busses/i2c-mt65xx.c
+> @@ -47,6 +47,9 @@
+>  #define I2C_RD_TRANAC_VALUE            0x0001
+>  #define I2C_SCL_MIS_COMP_VALUE         0x0000
+>  #define I2C_CHN_CLR_FLAG               0x0000
+> +#define I2C_CLR_DEBUGCTR               0x0000
+> +#define I2C_RELIABILITY                        0x0010
+> +#define I2C_DMAACK_ENABLE              0x0008
+>
+>  #define I2C_DMA_CON_TX                 0x0000
+>  #define I2C_DMA_CON_RX                 0x0001
+> @@ -850,6 +853,17 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+>
+>         reinit_completion(&i2c->msg_complete);
+>
+> +       if (i2c->dev_comp->apdma_sync) {
+> +               mtk_i2c_writew(i2c, I2C_CLR_DEBUGCTR, OFFSET_DEBUGCTRL);
+> +               writel(I2C_DMA_HANDSHAKE_RST | I2C_DMA_WARM_RST,
+> +                      i2c->pdmabase + OFFSET_RST);
+> +               writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
+
+I2C_DMA_WARM_RST is self-clearing. Is I2C_DMA_HANDSHAKE_RST not
+self-clearing? If both are self-clearing, don't you need to wait and
+check for them to cleared? If they aren't self-clearing, do you need
+to delay some time for them to complete?
+
+> +               mtk_i2c_writew(i2c, I2C_HANDSHAKE_RST, OFFSET_SOFTRESET);
+> +               mtk_i2c_writew(i2c, I2C_CHN_CLR_FLAG, OFFSET_SOFTRESET);
+
+Same here. No time delay needed?
+
+> +               mtk_i2c_writew(i2c, I2C_RELIABILITY | I2C_DMAACK_ENABLE,
+> +                              OFFSET_DEBUGCTRL);
+
+A comment explaining what the section above does would be nice. AFAICU
+this is force resetting the DMA handling.
+
+
+Regards
+ChenYu
+
+> +       }
+> +
+>         control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
+>                         ~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
+>         if ((i2c->speed_hz > I2C_MAX_FAST_MODE_PLUS_FREQ) || (left_num >= 1))
+> --
+> 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
