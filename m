@@ -2,91 +2,84 @@ Return-Path: <SRS0=F7c8=NC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 826F6C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 12:06:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6AD6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 12:13:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28F4460F22
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 12:06:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 28F4460F22
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7548360FC0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Aug 2021 12:13:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7548360FC0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kuq1iLOccbOnJXcZJ0O0OB527vMpX1RqxpL9kVaxLEI=; b=ls+MoiEdBK/9eq
-	ujtpuNQ8A9Wuw7CxgNkSngT07BagNpx7zuXAMGz1REnSHkrTGgfwJlsp6Pt8wkh88h57nsLnBpLST
-	2hmCzBVcQkQyj5JgqctR5YWT0IDuDJmCRZHX5no9mRNYZpte6yajgATWY6uwFvQfvUNe3d3g5dmmh
-	qhKSA0eYX6rqUy56qotaXREW7d1id/5Vc/4WAi2d7irdfPvT/1vYXewSl/g/wAYiw4xRFJkvRpyHE
-	4HlkFnNtd2UWwN9Mp63/gPhnaLZOc3Cff6a5cePappyVmuA/DgbScGPAOCAibwrc/3q3tjguyZcQd
-	Mh4ZuWPlei0NYTD/SdnQ==;
+	List-Owner; bh=A22CfXIeAfGE/PA5PIkwqo13iMKLqpHmnmf3JYdI/3g=; b=VCxM983NB7po4n
+	Xmbh1NS1w7zf/QlADiQm71d5p/ExEL4jC0o8uMeKT1X/vdhDDJkxhZIqyTEplngCAveWJQb1hz1xv
+	g1z/uxk3HjvOL6pP2Dobx2LrK8lzkC8bwLpUPxoRVJgy4tYuWi9Avlyg4/YXQgvvAitfZs3DoduX7
+	obMGeLSdAxZzw8fkbqt+E4w0tBWluHXsqfmCCHapY+vBVeilYEs9aWAX3fP17v0mLiUvVqNlsnMLK
+	rkKvjlxCFsR9I+oeemM+dBR28eb6GIgAhrH5Ut6tvKBWX3f5v/Ep1gViODylgNvIiQvkH8eWgjMWu
+	VC8p2y6IOTy3APU+siVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mDn0N-006tdh-Ap; Wed, 11 Aug 2021 12:06:43 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1mDn6m-006wVK-Do; Wed, 11 Aug 2021 12:13:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mDn08-006tZc-Cx
- for linux-mediatek@lists.infradead.org; Wed, 11 Aug 2021 12:06:32 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- 28-20020a17090a031cb0290178dcd8a4d1so4784520pje.0
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 05:06:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=6ufaB+OMXdYU7j7TBo3XtAZpCHOejyA+3wA93Op1lzU=;
- b=t8lLzjPFZAWIYgTJOrFd2HG+scMTfIhGn3oErjtmiM//ccrcySFz8JOOZKulU+EiNL
- OXO+8zbdgMhoqwmYzFPpIQvy4NwR+3xGy5J0bpgHy4m6WaA+Vf+QrgkpMTwpC5PcNtPD
- +3lIVvpcRqaoz4+sOPxLsf88Wq0iRFXBDSECTlXfjDnmdjovXDpk2WgY//lc1NDMlyiD
- OH+cO8WaQ/hiuH1bJmO6CiXIanr5Wlii23Zg8EHPNS8qNTCNeQvGb7mbutXNddc+MLFl
- bh2hLW7kZP4owycILCEv6xAz8aM45z9ROAHxGDHqSi3Dwf27fyvzFcDHRtXM4FVUR9Kw
- QHfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=6ufaB+OMXdYU7j7TBo3XtAZpCHOejyA+3wA93Op1lzU=;
- b=hxY8HYz+a1zNLgS+glrfMM177WvpJnYN+5sN/3yjcJYcySYmWmUAbsCPkqQoZFkKpZ
- veaDBiN+yL49ViGDZ7O98Oi6EiWz+3o7wWhmcRFBvswhRw6U9Q9TDXOVVwufO2U4cF9W
- l7/idNcqdi9Qst93F7++f/iCsy86ynSeC75Itno1jns7TfJujagZDROg5G90FYSaReaK
- 61s6Ae7Rotq3eMkS+jaeP9KirrdQAmw5kco3Aj8cr3s1GqBDvndCCMXMpAWhGHSIOz/G
- ATbPVm2nIEzBeSkX6p1V/0ulce8XOFRoLL9lhVstyHC/sjCXElgYAtHMxfhoeOAhbUj7
- +IzA==
-X-Gm-Message-State: AOAM532COjgB2ik4pPhmN7vUedrzXWroRYQBnv5C8HFca93GhTgPW+pW
- wnLI/vxG2+NIB17teClEwnMIaQ==
-X-Google-Smtp-Source: ABdhPJwMwN2fm97TlkXuwYPxuFuL4cxb2WPXC0Be7ZXZT7ga2QkHLotZZsNvgbZMaOm1uLqj8hwR+w==
-X-Received: by 2002:a63:4b60:: with SMTP id k32mr562898pgl.198.1628683587396; 
- Wed, 11 Aug 2021 05:06:27 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id j22sm31239903pgb.62.2021.08.11.05.06.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 05:06:27 -0700 (PDT)
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rafael Wysocki <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- Lukasz Luba <lukasz.luba@arm.com>, Quentin Perret <qperret@google.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH V2 4/9] cpufreq: mediatek: Use auto-registration for energy
- model
-Date: Wed, 11 Aug 2021 17:28:42 +0530
-Message-Id: <c643714aa4e525aea4d54c2fd35950c046555621.1628682874.git.viresh.kumar@linaro.org>
-X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
-In-Reply-To: <cover.1628682874.git.viresh.kumar@linaro.org>
-References: <cover.1628682874.git.viresh.kumar@linaro.org>
+ id 1mDn6J-006wNG-SE; Wed, 11 Aug 2021 12:12:57 +0000
+X-UUID: 2c737f17639945c7a1eee65afad22c15-20210811
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=wozoe7kFjE8qPjz1M4fr5WJfU/E/RA/En/zjFHWQWkw=; 
+ b=Sejl83A0OmWHSJ1DtKCGwFt7Wfc2mJ41D/kz8HlxOU0fproBCcFihfCuS0pxIvRCYVHBhWZ4bWpeXTo6V5MPVrR1upSEp2LwfQG/gZD+gQKz9mogO9NxUGFQpUwZflbRpHhSd46EdNsLVrd/G5ZdFyRpvSe22FCc98iOhbnNCJM=;
+X-UUID: 2c737f17639945c7a1eee65afad22c15-20210811
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1743534199; Wed, 11 Aug 2021 05:12:41 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Aug 2021 05:12:40 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 11 Aug 2021 20:12:38 +0800
+Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 11 Aug 2021 20:12:38 +0800
+Message-ID: <ba4174599b40b5cc2f6397bb9b8772f75b945365.camel@mediatek.com>
+Subject: Re: [v6 2/2] arm64: dts: mediatek: Correct UART0 bus clock of MT8192
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>
+CC: Rob Herring <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, open list
+ <linux-kernel@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Wed, 11 Aug 2021 20:12:38 +0800
+In-Reply-To: <913973ef-e3ee-5015-a010-b436fe620e1c@gmail.com>
+References: <20210727023205.20319-1-chun-jie.chen@mediatek.com>
+ <20210727023205.20319-3-chun-jie.chen@mediatek.com>
+ <CAATdQgC-X6pijkgTBsWJJKp__J6N=7JNKHQJmOMvTAjivwPM5w@mail.gmail.com>
+ <a48525422d4c953a2dac2a907895c20b9fd6d232.camel@mediatek.com>
+ <913973ef-e3ee-5015-a010-b436fe620e1c@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_050628_487701_686B4E20 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20210811_051251_979110_54CCE895 
+X-CRM114-Status: GOOD (  27.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,40 +96,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the newly added .register_em() callback with
-cpufreq_register_em_with_opp() to automatically register with the EM
-core.
+On Thu, 2021-08-05 at 17:44 +0200, Matthias Brugger wrote:
+> 
+> On 30/07/2021 04:43, Chun-Jie Chen wrote:
+> > On Wed, 2021-07-28 at 14:14 +0800, Ikjoon Jang wrote:
+> > > Hi,
+> > > 
+> > > On Tue, Jul 27, 2021 at 10:43 AM Chun-Jie Chen
+> > > <chun-jie.chen@mediatek.com> wrote:
+> > > > 
+> > > > infra_uart0 clock is the real one what uart0 uses as bus clock.
+> > > > 
+> > > > Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+> > > > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> > > > ---
+> > > >  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > > index c7c7d4e017ae..9810f1d441da 100644
+> > > > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > > > @@ -327,7 +327,7 @@
+> > > >                                      "mediatek,mt6577-uart";
+> > > >                         reg = <0 0x11002000 0 0x1000>;
+> > > >                         interrupts = <GIC_SPI 109
+> > > > IRQ_TYPE_LEVEL_HIGH 0>;
+> > > > -                       clocks = <&clk26m>, <&clk26m>;
+> > > > +                       clocks = <&clk26m>, <&infracfg
+> > > > CLK_INFRA_UART0>;
+> > > >                         clock-names = "baud", "bus";
+> > > >                         status = "disabled";
+> > > >                 };
+> > > 
+> > > There're many other nodes still having only clk26m. Will you
+> > > update
+> > > them too?
+> > > 
+> > 
+> > Others will be updated by IP owner.
+> > 
+> 
+> As it seems we will have some time before this can be merged, could
+> you help
+> work with the other IP owners to get one big patch that updates all
+> clocks?
+> 
+> Thanks a lot,
+> Matthias
+> 
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Ok, I will update all clock setting (uart/nor_flash/i2c/spi) in
+mt8192.dtsi at the latest kernel version. Did you suggest to merge all
+to one patch or separate to different patches but put in same
+series?
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 87019d5a9547..866163883b48 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -448,8 +448,6 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 	policy->driver_data = info;
- 	policy->clk = info->cpu_clk;
- 
--	dev_pm_opp_of_register_em(info->cpu_dev, policy->cpus);
--
- 	return 0;
- }
- 
-@@ -471,6 +469,7 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
- 	.get = cpufreq_generic_get,
- 	.init = mtk_cpufreq_init,
- 	.exit = mtk_cpufreq_exit,
-+	.register_em = cpufreq_register_em_with_opp,
- 	.name = "mtk-cpufreq",
- 	.attr = cpufreq_generic_attr,
- };
--- 
-2.31.1.272.g89b43f80a514
+Best Regards,
+Chun-Jie
 
-
+> > Best Regards,
+> > Chun-Jie
+> > 
+> > > > --
+> > > > 2.18.0
+> > > > _______________________________________________
+> > > > Linux-mediatek mailing list
+> > > > Linux-mediatek@lists.infradead.org
+> > > > 
+> > 
+> > 
+https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-mediatek__;!!CTRNKA9wMg0ARbw!1bIz6X2EiFbigCImzQmbqtezIFfl1LRBuPOYTqBdl5wfx8b-zp0zQP68R7RhaIcAAXXF$
+> > > >  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
