@@ -2,75 +2,82 @@ Return-Path: <SRS0=QG8e=ND=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55778C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6EAF1C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:01:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D50206101E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:53:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D50206101E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1A3BA61059
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:01:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1A3BA61059
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aCHFuh+fjeuYc4eAU3CHviDVWDd4G56lu2UuW+UYIoU=; b=JN0gH9SiwjP5M+
-	lpBnbfSYqh6NocNGQRB6k4o8p5j/OIJwttAFd8r8gyHa34mvEm7FIC8Lqzv2TuGumVXUDRY3Kch/I
-	Rbsam1FIuUWcvqmp6hs4cWigRc6EbosGMp2RgFqF/nHBep/g1s1i2D/DDieIqcbTJqSdKNaX4bVgH
-	ExMkdEL27cB/2PijJgf1+xzwOoKVGtY/wAtcogx14T8Pvq4B/3/Jq1+ECXbkdktiD5TuGa1sH8iBY
-	Y1nUmD0AybQt81itJNQroMY5aO/fZylma2eg9mD528sDwFY8SpQ9OwII+tCNU+F/Xv64N2ypTWEDx
-	VnUVZ5tMHrYNwhSRnQgQ==;
+	List-Owner; bh=akv/ve3/XGesda7ymlKR+dLk5ELeWHJ1DjYijNt0e1w=; b=ih3o/HVddwn/r8
+	+VxAGKysfaCtGeZPpFz/GMg1el+MxMvNSIvFw0MigcGpMSJUYisMrY1hL0MeCxyYIgTY+ZlsVavTb
+	KkApe2HBoxNJDvVBi81ZHBxHitbUzjqZqR+MVKEX/cQM9lmd1Mk8g68KJVWp7LroC2X6cZVGrxDTg
+	pvEbVRW6jqAKZsJPrBVQAnEDWV+5rQpNAEUOmj/DuEJS7hTe1eYeVeUO8lq2Au20HqwIMEKOMIZPc
+	+nH4ueqVydy4VwEF4i17gyUCa1B4vyzEfxXGpGDhiCNfarxy99bYSSTPwo7v5FANbeaOfz5kWm2MZ
+	NUpaG/MdfFscP2Ts1UQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mE4ay-008mjd-23; Thu, 12 Aug 2021 06:53:40 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mE6aG-009Fbl-8f; Thu, 12 Aug 2021 09:01:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mE4ab-008mXI-Oa; Thu, 12 Aug 2021 06:53:18 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0C3E16103E;
- Thu, 12 Aug 2021 06:53:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628751197;
- bh=7mu4Ipsd06cm4QBrmrbucxTGVRGJN4PzWTMdE9wwbrU=;
- h=References:From:To:Cc:Subject:Date:In-reply-to:From;
- b=U8hfaaReRKr31YD8Y78F+DecLCcZCKu9GSkI//D7NDFOvKxtPeu2YlwqHTZE+j9i4
- SJco5frFsk2UVhbLDzXU/Z7qX+gmd/zfUAAw/i7fb1Lk8dyMjukXj57ZmA0Q5pah7a
- CBD7hUbe5yGaPkj2rigv9WhgwFrTB/i9tt5X+ZfpYPTkFklXFAFymftnGsCcLLyTbQ
- S5DWtpeAc1zObQC9tGdGmaTOCAL/L7xFzp7RfOdFTiZsEopchH+oJHCR8UDqORD01n
- 1ctSSeRfyWZVxcdUVX8oQOElJj6VAeKN6tSsOgC0XG7CuaS5z5UJ6x2cl5q3rQoSFo
- Lp8qqOrYp3rZw==
-References: <1628739182-30089-1-git-send-email-chunfeng.yun@mediatek.com>
- <1628739182-30089-6-git-send-email-chunfeng.yun@mediatek.com>
-User-agent: mu4e 1.6.2; emacs 27.2
-From: Felipe Balbi <balbi@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Pawel Laszczak
- <pawell@cadence.com>, Al Cooper <alcooperx@gmail.com>, Thierry Reding
- <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Christophe JAILLET
- <christophe.jaillet@wanadoo.fr>, Yang Yingliang
- <yangyingliang@huawei.com>, Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 6/6] usb: gadget: remove unnecessary AND operation when
- get ep maxp
-Date: Thu, 12 Aug 2021 09:52:58 +0300
-In-reply-to: <1628739182-30089-6-git-send-email-chunfeng.yun@mediatek.com>
-Message-ID: <87eeazyx0o.fsf@kernel.org>
+ id 1mE6Zg-009FDd-Og; Thu, 12 Aug 2021 09:00:34 +0000
+X-UUID: a8b8785f0d4040fa97b44698a52aa7ec-20210812
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=/Rd5Fq4eOoU0J2AgLrKUgkYySID+/uk7ylEfHDWohNI=; 
+ b=TuVAT560wTC4Mkch6rUUwHmtV6L/5P/w6MO/9AO6Di6hL+fpvpJFnU98CwgQtVaHC9lwZuz3CEKd59I6g/7itmBWXCLFXy/iV/9mXTsuCibzco5XlSuKeWH085tVCmZXlnEPjqQJ2F3qeazKE3Do8HqVApzlWXT3IfmaKCya8AU=;
+X-UUID: a8b8785f0d4040fa97b44698a52aa7ec-20210812
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <dawei.chien@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 53904071; Thu, 12 Aug 2021 02:00:24 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 Aug 2021 02:00:22 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 Aug 2021 17:00:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 12 Aug 2021 17:00:21 +0800
+From: Dawei Chien <dawei.chien@mediatek.com>
+To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <swboyd@chromium.org>, Ryan Case <ryandcase@chromium.org>
+CC: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
+ <drinkcat@google.com>, <devicetree@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ Fan Chen <fan.chen@mediatek.com>, Arvin Wang <arvin.wang@mediatek.com>,
+ "James Liao" <jamesjj.liao@mediatek.com>, Dawei Chien
+ <dawei.chien@mediatek.com>
+Subject: [V11,
+ PATCH 02/19] dt-bindings: mediatek: add compatible for MT8195 dvfsrc
+Date: Thu, 12 Aug 2021 16:58:29 +0800
+Message-ID: <20210812085846.2628-3-dawei.chien@mediatek.com>
+X-Mailer: git-send-email 2.14.1
+In-Reply-To: <20210812085846.2628-1-dawei.chien@mediatek.com>
+References: <20210812085846.2628-1-dawei.chien@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_235317_867445_85CC85CE 
-X-CRM114-Status: UNSURE (   4.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210812_020030_296910_6874F8E1 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,19 +94,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This adds dt-binding documentation of dvfsrc for Mediatek MT8195
+SoCs Platform.
 
-Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
+Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
+---
+ Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-> usb_endpoint_maxp() already returns actual max packet size, no need
-> AND 0x7ff.
->
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-
-Acked-by: Felipe Balbi <balbi@kernel.org>
-
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+index f2b67b99921b..ec3feaf1ef73 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/dvfsrc.yaml
+@@ -25,6 +25,7 @@ properties:
+       - mediatek,mt6873-dvfsrc
+       - mediatek,mt8183-dvfsrc
+       - mediatek,mt8192-dvfsrc
++      - mediatek,mt8195-dvfsrc
+ 
+   '#interconnect-cells':
+     const: 1
 -- 
-balbi
-
+2.14.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
