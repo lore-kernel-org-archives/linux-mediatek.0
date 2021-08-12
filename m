@@ -2,19 +2,18 @@ Return-Path: <SRS0=QG8e=ND=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4975DC4320A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:52:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEB7AC4320A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:53:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 097546103E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:52:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 097546103E
+	by mail.kernel.org (Postfix) with ESMTPS id B2BB96101E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:53:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B2BB96101E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,32 +22,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
 	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mUreZMbDe9rtgpfsTK4O+CvV8ybVHgsKku+fJja7xzk=; b=v/qkkJP6/Z0pKY
-	v4JPSmSIlnV0zL5lRyxiGCsC39H/NHwTmj7xiiXxz5H5WpGIn8TgxZ8HrMbVe0KgqkVgcfD/d8hAF
-	ZVnwfhH3WIPn4Z0xD3Mo3B2k7M5LnX/+qktM7MswdS3IeQ5RouuAe9BiggsuO6BrHmPma8fXHQBAC
-	xtenzMYdRJBiT/K51wz4+m8nSqYnwSsf2afEBudbu+3bcnKTYiVQP6O69SbpH03TKinZTLBXg3/gX
-	Ev/wFhWepKbiPu4gdwylajqqTQWGb5x8CI+o+r0MpNSXRpVkr6Te4VDHAhLRftVTTwFvYCGGxTZd2
-	9OxWRwPB6aqKtugWmg4Q==;
+	List-Owner; bh=aCHFuh+fjeuYc4eAU3CHviDVWDd4G56lu2UuW+UYIoU=; b=SpfAJbB+HIUpst
+	tq9aum+5lnN+zpUHVkGCq0HWn/GGEiT47cU+8XlhmZxdBZYr8r0asPHCIvP/N1fWVu7BOlxjONm5/
+	eGoanMCoNMT3+4PCg+84BmaFaZFDFae33mWj6UyFDLCjCqnVLK0DH4yIxhptveTg1CEh9iqIO8LM8
+	L9oNeZE5HhELoJlUBq7CsiCgVusgqvF07BreofRn1unpwuR+34Gcokm/7vCiOmMXRtJmWDUy49dPW
+	avri9KKAF6us1rancIln1CKft5zxTsAvMudPTBB6VdpPpYjUOasx05YWCHLrI7FO2w57mut6DbuDU
+	SHjvFB2ARS4J1FkEHtWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mE4a3-008mGo-SC; Thu, 12 Aug 2021 06:52:43 +0000
+	id 1mE4aU-008mTf-Su; Thu, 12 Aug 2021 06:53:10 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mE4Zp-008mCA-CX; Thu, 12 Aug 2021 06:52:30 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A984E6101E;
- Thu, 12 Aug 2021 06:52:25 +0000 (UTC)
+ id 1mE4aB-008mKg-GN; Thu, 12 Aug 2021 06:52:54 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id DBC6F6103A;
+ Thu, 12 Aug 2021 06:52:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1628751149;
- bh=bqEWfOZN0xk2EuCTwKF5niW1R0IpEsX+S8gvv0lSuj8=;
+ s=k20201202; t=1628751171;
+ bh=7mu4Ipsd06cm4QBrmrbucxTGVRGJN4PzWTMdE9wwbrU=;
  h=References:From:To:Cc:Subject:Date:In-reply-to:From;
- b=DNwW1miNAufE67B8umgctZbFiTe682bcNz+tC4NrKz96H814QyIeeBnsNeDPEdkaM
- Kv+xBMuxFGpgwkUSJFjtIbRwNvrmpx+RLkrB9B7O8jZGD1mb1dbTJ/yJUmvZHfY3AC
- fhDSkGduLPDkILCAd5Ustdcl4RoKlYCeCtAT8v9p6QCvWzXdzldPICLHFA1DyEDwW6
- tNs/8EmS515RgP6y1tZxihRez6uVNtw8ZVmJ7GmNd39ewHy/rFcUd2EyRpPu7PpXKI
- lZA9wrEq9mVTKBHoA2L6c/BpuJ7gcPgqc/KX0Z8vX2I7VUq3R+v4oHG9SBP3FCypa6
- r0UvV5EmhUNXw==
+ b=JXDPas5I8yBxBrn2AxEiGDa3RwNLAXJO9hQlCzbFqbUkaZ0jcCDQowUEDDSqc6Mu8
+ pqRS+6vP4ds0XZaHNGwUhjDC0qgOpsgt9AUTTVM2TFjQogxrIP7jQzhb4o1GJWTavV
+ ywCgbZKghTaMmVpunD4t1w7ooZhrt+Yi8lhVjhe/YBWca/a3mMCL9KboAeQ6BvsHiH
+ l6hOqveJ3aIw3bUxC1xGOZN1nlak+8Zn/QEq8tu0FnXWVU6aLcOxUMYMqpxniHO+AY
+ x/LjYgM53vQGKFWHEd9JZj1xmojz1/e40WNthUUNCCJW/jUdDWyBZ+xL+cjm3tdwX1
+ mRYQGYTtUFzgg==
 References: <1628739182-30089-1-git-send-email-chunfeng.yun@mediatek.com>
- <1628739182-30089-4-git-send-email-chunfeng.yun@mediatek.com>
+ <1628739182-30089-5-git-send-email-chunfeng.yun@mediatek.com>
 User-agent: mu4e 1.6.2; emacs 27.2
 From: Felipe Balbi <balbi@kernel.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
@@ -62,15 +61,16 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Pawel Laszczak
  bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH 4/6] usb: gadget: tegra-xudc: fix the wrong mult value
- for HS isoc or intr
-Date: Thu, 12 Aug 2021 09:51:52 +0300
-In-reply-to: <1628739182-30089-4-git-send-email-chunfeng.yun@mediatek.com>
-Message-ID: <87k0kryx20.fsf@kernel.org>
+Subject: Re: [PATCH 5/6] usb: gadget: bdc: remove unnecessary AND operation
+ when get ep maxp
+Date: Thu, 12 Aug 2021 09:52:34 +0300
+In-reply-to: <1628739182-30089-5-git-send-email-chunfeng.yun@mediatek.com>
+Message-ID: <87h7fvyx1e.fsf@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_235229_483006_36BB0636 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20210811_235251_585439_62239722 
+X-CRM114-Status: UNSURE (   4.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,40 +90,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
 
-> usb_endpoint_maxp() only returns the bit[10:0] of wMaxPacketSize
-> of endpoint descriptor, not includes bit[12:11] anymore, so use
-> usb_endpoint_maxp_mult() instead.
-> Meanwhile no need AND 0x7ff when get maxp, remove it.
+> usb_endpoint_maxp() already returns actual max packet size, no need
+> AND 0x7ff.
 >
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  drivers/usb/gadget/udc/tegra-xudc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/usb/gadget/udc/tegra-xudc.c b/drivers/usb/gadget/udc/tegra-xudc.c
-> index a54d1cef17db..40a7417e7ae4 100644
-> --- a/drivers/usb/gadget/udc/tegra-xudc.c
-> +++ b/drivers/usb/gadget/udc/tegra-xudc.c
-> @@ -1610,7 +1610,7 @@ static void tegra_xudc_ep_context_setup(struct tegra_xudc_ep *ep)
->  	u16 maxpacket, maxburst = 0, esit = 0;
->  	u32 val;
->  
-> -	maxpacket = usb_endpoint_maxp(desc) & 0x7ff;
-> +	maxpacket = usb_endpoint_maxp(desc);
->  	if (xudc->gadget.speed == USB_SPEED_SUPER) {
->  		if (!usb_endpoint_xfer_control(desc))
->  			maxburst = comp_desc->bMaxBurst;
-> @@ -1621,7 +1621,7 @@ static void tegra_xudc_ep_context_setup(struct tegra_xudc_ep *ep)
->  		   (usb_endpoint_xfer_int(desc) ||
->  		    usb_endpoint_xfer_isoc(desc))) {
->  		if (xudc->gadget.speed == USB_SPEED_HIGH) {
-> -			maxburst = (usb_endpoint_maxp(desc) >> 11) & 0x3;
-> +			maxburst = usb_endpoint_maxp_mult(desc) - 1;
-
-this looks like a bug fix. Before this change, maxburst was always 0,
-right?
-
-In any case:
 
 Acked-by: Felipe Balbi <balbi@kernel.org>
 
