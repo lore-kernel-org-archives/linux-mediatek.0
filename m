@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1015C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:17:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50AF1C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:17:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42CE960FC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:17:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 42CE960FC4
+	by mail.kernel.org (Postfix) with ESMTPS id EED8360FC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:17:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EED8360FC4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gGLj9cPoilU0qlvwNMHD1kwmPEdNOrBl+7UpoVDEL2k=; b=Uo6mw2voM6aRkT
-	x/W046H+jSlTWzgQKfMKU7LinWLwRtoVOQsZeomEpv1f9b8ZS6uH7hmY3FDdLkSMVD/ZEPk0+cDua
-	J6NTqxO11aC7aLuJnpaRGZhrkx+jpUjMGyAZM945DUUdSNu0W7VhWi/3ymHysXRimIfKNhJwXkwQb
-	u8Fo8TN3IE0wv4pLP9lCGj8bpOem7BZNRezu40KtFBKRZmEIYdxPR0fLlumEGlQmdRvEHUv+uZ6bQ
-	Gv4GLHklVqqyRJjDPbUaEgFI9AKqi/UPmBYaAoAE1LuN4PmPJX5f19dfRFKgcAOKN4knmouzg23Lv
-	pZKjbm5pebSYYWntrKnw==;
+	List-Owner; bh=S5BG0uMFJR13dTU+wk4/MP1W3Z+KudiQh2YUPhMSz2A=; b=3vf6KVeisTdB9m
+	UYuvpN5PSHVmUyVAG7RGQFkCewhy2jqeQ8ptoqkUuB3m30sbOb65ckdMwP8iDBbKoD+vQjevwXyE/
+	YqJMTTkjtfg/Zds3fXb9rbS9geZYP01Aq3o8wYCLj8JAdb+6OCNC7FhzR9jBzhm2msLk4czSN3x1q
+	LW7l3d7cwGX7f0kQCDN8TEhGLhMK8DAakN6s8ZIVB2QVqr/G+Zl3943NcvtLFJFOXIL2M3baYlo+s
+	C5qtvrRYAI8R0Vkpo2Xk7H7tKoNRpU7mu0zmegxkZRPYKT2Gp0S95GnYfnSWkXq3W3sQZE4wnkdEQ
+	jvGknJh11XZXC84Rfosw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mE6qB-009NFp-SY; Thu, 12 Aug 2021 09:17:31 +0000
+	id 1mE6qH-009NI0-9L; Thu, 12 Aug 2021 09:17:37 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mE6jP-009KKg-DI; Thu, 12 Aug 2021 09:10:35 +0000
-X-UUID: 6306d2d9965b41b88bd9d4811ec83292-20210812
+ id 1mE6jT-009KKg-C5; Thu, 12 Aug 2021 09:10:37 +0000
+X-UUID: b399d3425e3349318025161e7cfd126c-20210812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=/u0BIU3bEcgg/15KXiGVFMoL8RBBq+3wyL5ahU5jJps=; 
- b=JVGlFxPQfOT8xxvtRT6RU4Uf51vFbWspUFUi0sjOAMi8Yz2bCh0HriwiiTQaybwIvhOnt4RHF5LbVyYBIVkhQpcLZNGK5PIVmrSbXZfzHZr9krDk03wtWFj+ZpPJQH8A7WwOD/8Rir2A1/yEjXbGPDJ8azCi3ivondb5wyPzEQ4=;
-X-UUID: 6306d2d9965b41b88bd9d4811ec83292-20210812
+ bh=bsNlE2sdw0OCjlz5L+5Ti1pUP1ucLy7JOkOBdEXossE=; 
+ b=BY44KLXfC/pryR38V1yFnOenW0cKULUBg5EvnMn89Bf/YxP/rWDuczb1Dnltu7m21sleL1jZLJxamtYKlaUxD3kvFDaHcGjyWl2nJHnDrt8KrUlBDVLUE9OnvXtxWIA+h0z61zoYN/aMuNOM45veoaahsZNgUs+ao189GXyulOE=;
+X-UUID: b399d3425e3349318025161e7cfd126c-20210812
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <dawei.chien@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1593697233; Thu, 12 Aug 2021 02:10:25 -0700
+ with ESMTP id 753971586; Thu, 12 Aug 2021 02:10:25 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 02:00:26 -0700
+ 15.0.1497.2; Thu, 12 Aug 2021 02:00:24 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 17:00:24 +0800
+ 15.0.1497.2; Thu, 12 Aug 2021 17:00:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 12 Aug 2021 17:00:24 +0800
+ Frontend Transport; Thu, 12 Aug 2021 17:00:22 +0800
 From: Dawei Chien <dawei.chien@mediatek.com>
 To: Georgi Djakov <georgi.djakov@linaro.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
@@ -66,17 +66,17 @@ CC: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
  Fan Chen <fan.chen@mediatek.com>, Arvin Wang <arvin.wang@mediatek.com>,
  "James Liao" <jamesjj.liao@mediatek.com>, Dawei Chien
  <dawei.chien@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>
-Subject: [V11,PATCH 17/19] arm64: dts: mt8192: add dvfsrc related nodes
-Date: Thu, 12 Aug 2021 16:58:44 +0800
-Message-ID: <20210812085846.2628-18-dawei.chien@mediatek.com>
+Subject: [V11,PATCH 07/19] arm64: dts: mt8183: add dvfsrc related nodes
+Date: Thu, 12 Aug 2021 16:58:34 +0800
+Message-ID: <20210812085846.2628-8-dawei.chien@mediatek.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20210812085846.2628-1-dawei.chien@mediatek.com>
 References: <20210812085846.2628-1-dawei.chien@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_021031_530062_64C9609C 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20210812_021035_488660_C3CEDF94 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,35 +95,29 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Henry Chen <henryc.chen@mediatek.com>
 
-Add DDR EMI provider dictating dram interconnect bus performance found on
-MT8183-based platforms
+Enable dvfsrc on mt8183 platform.
 
 Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index c70a3bf744fa..ab3dabcc722e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -5,6 +5,7 @@
-  */
- 
- /dts-v1/;
-+#include <dt-bindings/interconnect/mtk,mt6873-emi.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
-@@ -286,6 +287,7 @@
- 			compatible = "mediatek,mt8192-dvfsrc",
- 				     "mediatek,mt6873-dvfsrc";
- 			reg = <0 0x10012000 0 0x1000>;
-+			#interconnect-cells = <1>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index f90df6439c08..7ad4cf646579 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -583,6 +583,11 @@
+ 			#clock-cells = <1>;
  		};
  
- 		systimer: timer@10017000 {
++		ddr_emi: dvfsrc@10012000 {
++			compatible = "mediatek,mt8183-dvfsrc";
++			reg = <0 0x10012000 0 0x1000>;
++		};
++
+ 		pwrap: pwrap@1000d000 {
+ 			compatible = "mediatek,mt8183-pwrap";
+ 			reg = <0 0x1000d000 0 0x1000>;
 -- 
 2.14.1
 _______________________________________________
