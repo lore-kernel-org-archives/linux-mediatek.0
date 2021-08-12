@@ -2,94 +2,74 @@ Return-Path: <SRS0=QG8e=ND=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47981C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 04:36:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 860EEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:50:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E49EB60F91
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 04:36:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E49EB60F91
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 33B8B60EFE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 06:50:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 33B8B60EFE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
+	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CofTADnScMm+jbImlI+A73rnpXbWMjBqKw6nYSJBhZo=; b=0W9F+QY9tpzBHr
-	bs+SSNYU0vFxcvhJjJW08lu8r6n5PDHjZLMSfx0Filc4YNCR5GO3HVq2qOvk2Zh+9jPbB10r9mhRd
-	naNu/fzGJrNgFgAQpa4Udm415UCDRBdNR+j2FukxpVQmKq1FrAPq9h3pqo3yw40AIED719Qun4rQJ
-	6UlTOHx0xki3b1xsqhZRBoU7ajNcVIpR7msSgrqwc9ek9LuvdjuciGojsF0Az26QJbNjsoq1A+FBb
-	fHKz90/B/4er77jR6b4PJXnPXs7/cPZTwQdEbK73iO2pdUKMEi4BKdjt1EZcoGCOtLfyVzXqV1Zxv
-	swsjKiGqPOkzLFoj9v1g==;
+	List-Owner; bh=nyyqSZdBkkLbZuF8cqLIDLm8knfdUrlDdNEs63UAC5s=; b=JFmaNBYY+np3e9
+	b6hlH5DpV8GrE35iSC7sKnELvw/8wrTXlNB3mczmDhO2BLt92/uWrDWbyBkGaCX8payuG7sEhEpCM
+	LHv4YBdjoui2GQw0yTs1GyahbXnWd6zJGmjoBzL2wpDKS3KsggivmImMaDv8U20VMjJIzt1zz1rpY
+	ECaOXfHWdZ2/0Lvf8gS8gpZtC05E+QebXhHHpOeKuAEjJguZbZVgP+k4iNKShiyw7LH+DdQtJ5V0d
+	gwdH8piDi4WWEq/3Hev7P3wBWdhk5zqw2XwTC9elI4B5XsYp3H677ked/dY7uTgcHfVYlOmTj+z+E
+	1z7bDSejQiV8k3djQdSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mE2SB-008adY-5D; Thu, 12 Aug 2021 04:36:27 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1mE4Y4-008log-8l; Thu, 12 Aug 2021 06:50:40 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mE2Ri-008aWb-Tu
- for linux-mediatek@lists.infradead.org; Thu, 12 Aug 2021 04:36:05 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- fa24-20020a17090af0d8b0290178bfa69d97so8784456pjb.0
- for <linux-mediatek@lists.infradead.org>; Wed, 11 Aug 2021 21:35:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5B6LAGyn6qpvhvvXqvmp0F5nk8/QX8RYvQTVx1M0/gM=;
- b=QP4d91nKyPuYgkXOj2993WRqr7vFWjzAt2pAYEpOqBJrX79KK7X7Lye9RW33nVemOS
- glTh3230AbIEle58TNmDHg+mGlObfxcChEqEIgpM51UFcNuoT5t2gwEZYo9rstSe+BUh
- G8oAVPZc4Or2lHFxR9TnUcIaCZpTTeNW497UmbMV9rdrFsDQX3C4DbEyHzT9ETDcJuHH
- 44M487nZNgj5a1TirMtTv5x8vkPi0ZRWgBVRFM/hm1MZ4gPWlnqSsL9XbuORZM21Fqvq
- 2Kb9HOtRennF8T/9AvDxP+8H2lNL1JiYws1Z/YqfyQ//45J/2m8OCM9lP/bKaiSF0mx/
- SA2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5B6LAGyn6qpvhvvXqvmp0F5nk8/QX8RYvQTVx1M0/gM=;
- b=ZTfdQArBDNgPoY4ZHJKQ0SQOprXhu4D+NpfqvKTasU7PCGYWM0gin7UTCOqpjcYolf
- 86ilojCCVWekXISIH9T2uaE2xzHNZrzBI79N98EaxQjaTzPvBwKlShJscSLKPjdHn7Gx
- omigtZdztfEWQRgPfvQOFUizezYEhSZZ8h8hRLEk7x4Kv/JlkAqAIiuvypDkaYUti9Lj
- 5EGxy1tvLUSOjIpQfcScRbNdsFCDLcUvBBjQ9kw+3SLhbn5FdZetS9vDRnZapV30gajB
- MowSWARPoo5afcmt55FReYdDHFEdemjBCP6QgGAB+1ryjUI4odENwROz9yR0lPvSv1zJ
- Acew==
-X-Gm-Message-State: AOAM531hjE61CSFpXQzlOCKenQU8IfO/xcHADuyWd5eBLZJv9eBDuvFX
- q0AowQFerQSfGFsQjN3pjDjmEQ==
-X-Google-Smtp-Source: ABdhPJywxltlmffoNhquAq7k75/erYD2KPWkiClGULINl/c/3BgHh8iADap4QiF3r0hcPTmn6BYUhg==
-X-Received: by 2002:a17:902:bc41:b029:12d:3f9b:401e with SMTP id
- t1-20020a170902bc41b029012d3f9b401emr2042045plz.47.1628742957070; 
- Wed, 11 Aug 2021 21:35:57 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id v31sm1420379pgl.49.2021.08.11.21.35.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Aug 2021 21:35:56 -0700 (PDT)
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Rafael Wysocki <rjw@rjwysocki.net>,
- Vincent Donnefort <vincent.donnefort@arm.com>, lukasz.luba@arm.com,
- Quentin Perret <qperret@google.com>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH V3 4/9] cpufreq: mediatek: Use .register_em() to register with
- energy model
-Date: Thu, 12 Aug 2021 10:05:17 +0530
-Message-Id: <3701fd64a3fb947fc805ca0d108ab87562a9659b.1628742634.git.viresh.kumar@linaro.org>
-X-Mailer: git-send-email 2.31.1.272.g89b43f80a514
-In-Reply-To: <cover.1628742634.git.viresh.kumar@linaro.org>
-References: <cover.1628742634.git.viresh.kumar@linaro.org>
+ id 1mE4Xq-008lnK-QK; Thu, 12 Aug 2021 06:50:28 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C19F461019;
+ Thu, 12 Aug 2021 06:50:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628751026;
+ bh=c+4J0FBEXZ/2tJWPz7C9GfE7YiH9bbjcw8SPYAJS6ro=;
+ h=References:From:To:Cc:Subject:Date:In-reply-to:From;
+ b=GJ0TZ7WtpRHEqU1S1DGcFW6ofointi9Ktt2jnsFJ9MuJk9kmCdalPbTE4K+kGUop5
+ TRMDRvP7ty7D4KjrBIteDDIr0Yaq9ei88ekggTyNBe+XCJeom8qz8Y38G6nxGM8iu0
+ 4r3mOwaUFy0vE6OZG+vCFrOlDA8mbR6zyUxBZ9pGZiIKJJ3uWzwGzTmimU/14q17RY
+ 7RcirRQ7Nq2hx2WFJTVX9d5o2tpsh88QJhItKHtFqiAmPXmyxw/MxRen3f6Kk32oV/
+ W1IePoKNBNSUdIDtg6mU5M+8XQmzj2TZLLUmGTYQcVHQkDlOsbafrMo650ccj2iu/a
+ MSgnM/nyzex3g==
+References: <1628739182-30089-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1628739182-30089-2-git-send-email-chunfeng.yun@mediatek.com>
+User-agent: mu4e 1.6.2; emacs 27.2
+From: Felipe Balbi <balbi@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Pawel Laszczak
+ <pawell@cadence.com>, Al Cooper <alcooperx@gmail.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>, Yang Yingliang
+ <yangyingliang@huawei.com>, Rikard Falkeborn <rikard.falkeborn@gmail.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ bcm-kernel-feedback-list@broadcom.com, linux-tegra@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Eddie Hung <eddie.hung@mediatek.com>, stable <stable@vger.kernel.org>
+Subject: Re: [PATCH 2/6] usb: mtu3: fix the wrong HS mult value
+Date: Thu, 12 Aug 2021 09:49:36 +0300
+In-reply-to: <1628739182-30089-2-git-send-email-chunfeng.yun@mediatek.com>
+Message-ID: <87pmujyx5f.fsf@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210811_213559_024475_AAE110AC 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20210811_235026_912464_4EA45DF8 
+X-CRM114-Status: UNSURE (   6.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,38 +86,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set the newly added .register_em() callback with
-cpufreq_register_em_with_opp() to register with the EM core.
 
-Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
----
- drivers/cpufreq/mediatek-cpufreq.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index 87019d5a9547..866163883b48 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -448,8 +448,6 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
- 	policy->driver_data = info;
- 	policy->clk = info->cpu_clk;
- 
--	dev_pm_opp_of_register_em(info->cpu_dev, policy->cpus);
--
- 	return 0;
- }
- 
-@@ -471,6 +469,7 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
- 	.get = cpufreq_generic_get,
- 	.init = mtk_cpufreq_init,
- 	.exit = mtk_cpufreq_exit,
-+	.register_em = cpufreq_register_em_with_opp,
- 	.name = "mtk-cpufreq",
- 	.attr = cpufreq_generic_attr,
- };
+> Use usb_endpoint_maxp() and usb_endpoint_maxp_mult() seperately
+> to get maxpacket and mult.
+> Meanwhile fix the bug that should use @mult but not @burst
+> to save mult value.
+
+I really think you should split this into two patches. One which *only*
+fixes the bug and another (patch 2) which *only* corrects the use
+usb_endpoint_maxp()
+
 -- 
-2.31.1.272.g89b43f80a514
-
+balbi
 
 _______________________________________________
 Linux-mediatek mailing list
