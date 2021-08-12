@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38588C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:02:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDDCEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:03:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1AF5603E7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:02:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E1AF5603E7
+	by mail.kernel.org (Postfix) with ESMTPS id 7449F603E7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 09:03:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7449F603E7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tLszEzTHMs6FPy7NhgR6nXnZm3qAIWPCPbspsx9KnjQ=; b=fG76RSlhbugZfb
-	ekWJwIGtrH2nVnG65GW2oiOzS4/FDQZ9XPAdkLBtAayCCg7EtQb3zD2K+WJ5pvwzEXYfBOebSGcdU
-	O/Mh9A2zhYzTIOvi+fh4Kbbg+Y8PqxLIAjj7V5AhRZHDswLwu5deR+Qdwhf48AXJ8wKO5XxYiT9Yx
-	7Gs0Nv7LI8e3NXI9DcXdoypp4f72ih03ETWjzYWFJ3TrXsRoq5LdYo/xV1J+G8FviheJH6PZylgEd
-	zQ/+yfuU01SlFnWSrfSNE9jWZfnnWPxHBoNEC3Y/vBt+IQIlX/cRrPZmpjTNLlw0G37GxXk57Uefh
-	Yuptu40nyH19wdwm8Mxw==;
+	List-Owner; bh=hKaJPBPN0IirmKoUf7fyJmbFjOlx8wf+r3lvSHR9/g8=; b=BRTcSJz5MQLEjD
+	F/6aszRnp7eLEMlpJoDlGuw+aoW+uLVpaQoy1rJffO7QvvsnCxLhl6y5nDadIddQAhaGwuuYVtxns
+	kQvQOUyGxu17LgOom1dLYpguh+Uc9eUjZJRkMTmc7Fn02tyqcLs7+IF4+qUa3V3v9y6MmB7oW6exp
+	dvG6qwFtpepM1nd+XgjsPec8awbqzRD9/mM4XybChOHbRtlE7fOrDx6YxsphpqNnTjINxsV7rV+xV
+	2/W0qkPKR4iq/P4R2FaGqos6oMoRW7fPrN2X5lgh6XDOMpvKsStMY+p4xOjhqV1m4wMX808yWH9FJ
+	nQJAt4vjScOMFYmI7BZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mE6bg-009GXv-Dv; Thu, 12 Aug 2021 09:02:32 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mE6bu-009GjS-QF; Thu, 12 Aug 2021 09:02:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mE6Zm-009FDd-4s; Thu, 12 Aug 2021 09:00:38 +0000
-X-UUID: c013e54e8d9440f79bb4ddf4250502d7-20210812
+ id 1mE6Zi-009FDr-Fl; Thu, 12 Aug 2021 09:00:38 +0000
+X-UUID: 418a8340a54e472eb1d872f630165e68-20210812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=9HJZctQG458/INchOAj1nh6LYVAFqhThZin3AW/0GH8=; 
- b=OHBN6fv1O9TnNu/4WA9QjgUQ79vsPKy/lb75IxQAAi7XqUc/jHLJSLI3mLLIzRn0sYcSQs72ErqBCFG61N1SSrSikeTYgQ13MWb1P6FTaj4TRkhFE2FzU7eI1ph/TZG1/ivz7LbiBWb/tBbs+HQNgWK37tkLfCLfRbwD1KNNOoY=;
-X-UUID: c013e54e8d9440f79bb4ddf4250502d7-20210812
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=B7tSYLF9NkkaitJgqrLz8FpMLheQ0Rim7IWQYyGK08o=; 
+ b=hGCUbzi9JpCZhG1nmDaVqdwDsGCGmrgzA4H0qQDZdLmfykQ263xcxEj2F5f4r6J4gNsXKOEyNMg7yIJaIkb6IHZD5Jr1HLh3MHJcVXr9peeQKaW/Y1qeM2fKjUB9PsKBe1skYC/+cDxnzM/c029jJv0TZjSPn9HoruyNWqaH88Y=;
+X-UUID: 418a8340a54e472eb1d872f630165e68-20210812
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <dawei.chien@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1091605387; Thu, 12 Aug 2021 02:00:31 -0700
-Received: from MTKMBS02N1.mediatek.inc (172.21.101.77) by
+ with ESMTP id 1807144553; Thu, 12 Aug 2021 02:00:25 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 02:00:29 -0700
+ 15.0.1497.2; Thu, 12 Aug 2021 02:00:23 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs02n1.mediatek.inc (172.21.101.77) with Microsoft SMTP Server (TLS) id
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 12 Aug 2021 17:00:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -65,18 +65,18 @@ CC: Mark Rutland <mark.rutland@arm.com>, Nicolas Boichat
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
  Fan Chen <fan.chen@mediatek.com>, Arvin Wang <arvin.wang@mediatek.com>,
  "James Liao" <jamesjj.liao@mediatek.com>, Dawei Chien
- <dawei.chien@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>
-Subject: [V11,PATCH 08/19] arm64: dts: mt8192: add dvfsrc related nodes
-Date: Thu, 12 Aug 2021 16:58:35 +0800
-Message-ID: <20210812085846.2628-9-dawei.chien@mediatek.com>
+ <dawei.chien@mediatek.com>
+Subject: [V11,PATCH 06/19] soc: mediatek: add support for mt8195
+Date: Thu, 12 Aug 2021 16:58:33 +0800
+Message-ID: <20210812085846.2628-7-dawei.chien@mediatek.com>
 X-Mailer: git-send-email 2.14.1
 In-Reply-To: <20210812085846.2628-1-dawei.chien@mediatek.com>
 References: <20210812085846.2628-1-dawei.chien@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_020034_271555_58022C00 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20210812_020030_638472_14EE4C22 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,33 +93,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Henry Chen <henryc.chen@mediatek.com>
+add support for mt8195
 
-Enable dvfsrc on mt8192 platform.
-
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
 Signed-off-by: Dawei Chien <dawei.chien@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/soc/mediatek/mtk-dvfsrc.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 9757138a8bbd..c70a3bf744fa 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -282,6 +282,12 @@
- 			#interrupt-cells = <2>;
- 		};
- 
-+		ddr_emi: dvfsrc@10012000 {
-+			compatible = "mediatek,mt8192-dvfsrc",
-+				     "mediatek,mt6873-dvfsrc";
-+			reg = <0 0x10012000 0 0x1000>;
-+		};
-+
- 		systimer: timer@10017000 {
- 			compatible = "mediatek,mt8192-timer",
- 				     "mediatek,mt6765-timer";
+diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
+index 1f053367eabe..692846d8b233 100644
+--- a/drivers/soc/mediatek/mtk-dvfsrc.c
++++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+@@ -505,6 +505,9 @@ static const struct of_device_id mtk_dvfsrc_of_match[] = {
+ 	}, {
+ 		.compatible = "mediatek,mt6873-dvfsrc",
+ 		.data = &mt6873_data,
++	}, {
++		.compatible = "mediatek,mt8195-dvfsrc",
++		.data = &mt6873_data,
+ 	}, {
+ 		/* sentinel */
+ 	},
 -- 
 2.14.1
 _______________________________________________
