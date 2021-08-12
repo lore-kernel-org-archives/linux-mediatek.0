@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 66D20C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 13:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 357E6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 13:23:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 19CB3610A7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 13:22:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 19CB3610A7
+	by mail.kernel.org (Postfix) with ESMTPS id E902A60FC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 13:23:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E902A60FC4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4HhTewWAcrmtX05U66IHqn4Ntd+sZjagnbYja74ArXg=; b=Too9cLqZySh6fy
-	gbzGPgu4GbSetbAoMdOTazOflyU8iMs8n+AWTXjJ0dO1UOQCI6Hy4+jIEZUWhqqFmWvSQSs2NE1hS
-	opBoUopd/2xYH/l/zhHaVCizTclrZQQH08DNiua5Gu1DWcgvmEkN5zavy1CYbkTkyQJm8pLpFwWcI
-	fM6Vc7cnzjwFsVMWQKxXqBVLnBWT/2dZAjUQeF/gNKUCyzHJ7HXF+mjPwno1ZoM8IbdrcNw6T9dRi
-	zTihN6zeOb/JFeFqQThZ7bCi5FSkhqmUYig2dV9NYADTXMWLLnJypvMfzFekciDFFuJaygDsWczEp
-	IjFinIsSzAB4ZNnZazeQ==;
+	List-Owner; bh=WBmlJL+kbAAdNKlOn+YU3OAh903EVdwEE8BcOlHeudg=; b=FRf8lVjQfi4Kmd
+	mfKnrKvrrdcAtn1NvXug6xjX2jtqxeH0I3iw81cUzIn5CUQAbXv0V2KdfewsvqJhb1cVFxo7Hj3xn
+	VRxHtYb4ILs++ck9Ba78FZhAKSg2SbY6NfIK2TEKBkwIZhnLz3ESu8X5kaU5nubnmq2QmiTvRW17n
+	KJ4JolBpS0Lhc6go3uD9IqxlHH6s8pF3WWEyBvhnalPDZKEcoCmRSmD1ukH3m3+o91ZavbZjJCdBb
+	Z27xHR61cNZdNo4OyyY24HqCdPBRGRo/O1w5OVrajoMDokx1yp0zxkdtU+2eGrDGFO1gdWN1TGfyg
+	W3uX/vM1Ektz8rDLVQEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEAfV-00AAgx-AO; Thu, 12 Aug 2021 13:22:45 +0000
+	id 1mEAgB-00AAyv-EO; Thu, 12 Aug 2021 13:23:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEAfC-00AAbF-Sf; Thu, 12 Aug 2021 13:22:32 +0000
-X-UUID: 14e5db1e517747d285271c67757996c8-20210812
+ id 1mEAfI-00AAaU-0w; Thu, 12 Aug 2021 13:22:35 +0000
+X-UUID: ff4cd1a5d36f421eacd39e75a07c58e8-20210812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=isZewrvhUAspj+Ym9WjkmsDhRj1UHJLxR6oBM9ThYKY=; 
- b=t2dKCVn42kEXs8zLm1NLIBwiCaMIBcUYLcCM6z0N5LXDqRQTcADmM9idSjvr/NNtPScJ3/XKKzVw/36pDY9IFcKq3HfGDqN2b9GBuE22vP1JG+DodZLON9VfsTtb3jZzDTkFNneIVkEH4NQCU62RdOe8OhSvOCs3TQ9SH/RuI4o=;
-X-UUID: 14e5db1e517747d285271c67757996c8-20210812
+ bh=tHstMLVZjCD2Vl10a0+PbM+3J6apWhGG51WfD/5Nwm4=; 
+ b=T/foLOUedIuV6sOCZ4hKE5Cm+7+vIDzgruLrr9WSSmMSCKBZkASiutKNZDi/qmVDMfJNsl87BDrAEzPrXmR4dWSjVAz9ODOP09C/OehB+WhQwUjeaqrMacavrRrjuQzefjxL/PTuW7ET9VImDec2fX0dTbdcYB4pZ2Oe+ZdMFsI=;
+X-UUID: ff4cd1a5d36f421eacd39e75a07c58e8-20210812
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 987583130; Thu, 12 Aug 2021 06:22:24 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 1139306149; Thu, 12 Aug 2021 06:22:24 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 06:18:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 21:18:43 +0800
+ 15.0.1497.2; Thu, 12 Aug 2021 06:18:39 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 12 Aug 2021 21:18:38 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 12 Aug 2021 21:18:42 +0800
+ Transport; Thu, 12 Aug 2021 21:18:36 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Felipe Balbi
  <balbi@kernel.org>
@@ -66,19 +66,19 @@ CC: Pawel Laszczak <pawell@cadence.com>, Al Cooper <alcooperx@gmail.com>,
  Rikard Falkeborn <rikard.falkeborn@gmail.com>, <linux-usb@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <bcm-kernel-feedback-list@broadcom.com>,
  <linux-tegra@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH v2 7/7] usb: gadget: remove unnecessary AND operation when get
- ep maxp
-Date: Thu, 12 Aug 2021 21:18:03 +0800
-Message-ID: <1628774283-475-7-git-send-email-chunfeng.yun@mediatek.com>
+ <linux-mediatek@lists.infradead.org>, Eddie Hung <eddie.hung@mediatek.com>,
+ stable <stable@vger.kernel.org>
+Subject: [PATCH v2 2/7] usb: mtu3: use @mult for HS isoc or intr
+Date: Thu, 12 Aug 2021 21:17:58 +0800
+Message-ID: <1628774283-475-2-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1628774283-475-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1628774283-475-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_062227_171205_8A6E74F3 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20210812_062232_098437_5B455DB4 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,30 +95,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-usb_endpoint_maxp() already returns actual max packet size, no need
-AND 0x7ff.
+For HS isoc or intr, should use @mult but not @burst
+to save mult value.
 
-Acked-by: Felipe Balbi <balbi@kernel.org>
+Fixes: 4d79e042ed8b ("usb: mtu3: add support for usb3.1 IP")
+Cc: stable <stable@vger.kernel.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: add acked-by felipe
+v2: new patch, split from [2/6] suggested by Felipe
 ---
- include/linux/usb/gadget.h | 2 +-
+ drivers/usb/mtu3/mtu3_gadget.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/linux/usb/gadget.h b/include/linux/usb/gadget.h
-index 75c7538e350a..f181c84310b6 100644
---- a/include/linux/usb/gadget.h
-+++ b/include/linux/usb/gadget.h
-@@ -491,7 +491,7 @@ extern char *usb_get_gadget_udc_name(void);
-  */
- static inline size_t usb_ep_align(struct usb_ep *ep, size_t len)
- {
--	int max_packet_size = (size_t)usb_endpoint_maxp(ep->desc) & 0x7ff;
-+	int max_packet_size = (size_t)usb_endpoint_maxp(ep->desc);
- 
- 	return round_up(len, max_packet_size);
- }
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index 5e21ba05ebf0..635ad277cb13 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -92,7 +92,7 @@ static int mtu3_ep_enable(struct mtu3_ep *mep)
+ 				usb_endpoint_xfer_int(desc)) {
+ 			interval = desc->bInterval;
+ 			interval = clamp_val(interval, 1, 16) - 1;
+-			burst = (max_packet & GENMASK(12, 11)) >> 11;
++			mult = (max_packet & GENMASK(12, 11)) >> 11;
+ 		}
+ 		break;
+ 	default:
 -- 
 2.18.0
 _______________________________________________
