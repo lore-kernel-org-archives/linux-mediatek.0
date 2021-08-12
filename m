@@ -2,103 +2,76 @@ Return-Path: <SRS0=QG8e=ND=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F1E9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 16:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B50CC4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 18:08:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E0CF06104F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 16:15:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E0CF06104F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3571460295
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 18:08:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3571460295
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=Huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=ulO2cuO8p4xvFr9fkmo6IBGKKthDoujZU508p/zgiz0=; b=CjY4O3R5r713Gcx8bW2mxR7/qU
-	u3rbQE3loI4PspIWKC+SbHMsz7OpybmjFgKDJ/KKYSN/+PDcm3Jw/+Q1HOCYH1kN6nUnG7RSaqwlj
-	562bI5cmi9T2See7j5mjmgdORJDLgBNNHS7cKv80RnzvI8yxIgPsyzBY9M70f4H40U2JdtQtKyK8Z
-	oFJBEJkx9+2IdVsuhvsSR5HkjXYQwhgF87/fZnZd/4iLhxVaSDfki8/1b2WaIIqzeNjuferrE14Gj
-	zzn4ptPhJGEPm0q59JkSi7EZ/sPSZ6SCnLvzyvQixUUi5Ab4KbQPYjy1u8adiguy32ypYZ6JUOYVJ
-	hD/qRXBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9IVqs89JnLAwr8dHEpVgnD8uybPc7RCiqpmA5Sd006U=; b=jftUF6fsgP588y
+	NMsS8FVMoKt1/XMudqdnXueUROl2EnfMGGffJXXKopNXmOMsKTx/nGITpA5kYJvAFKV/zgmSYQpfD
+	MB+btcg3zFbWHrvCMVLahzcS6MKBW7tI0k5B8iNC2SrVHfuOj+/saWcgOQykvxRqWzCOIwQRFQJEQ
+	hUKm4ZhzS/n6m/iHvdmMfRljGV0rnvd28ZGb5DZJj+R39lhKzIpaMrdYsjisSUXttjvrMh7ImZFro
+	4GfVgIxdeiN/r9S3btG2XMxrO+ZbmP4hBzZzeN3oEb3dOeMD8p1/IVvZ9AEou56W15nQJUb+vvNQU
+	dW0kwQpdRTaehRb7wYTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEDMT-00AdJf-6W; Thu, 12 Aug 2021 16:15:17 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1mEF7w-00ApOh-Cw; Thu, 12 Aug 2021 18:08:24 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEDMR-00AdJ3-2E; Thu, 12 Aug 2021 16:15:16 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id h2so11348472lji.6;
- Thu, 12 Aug 2021 09:15:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=q1kP8IDfWs3KYwhhLGYrvublLDH8i7aJatyFRJI0aDQ=;
- b=O2nG2V6paudkRTLvKKBvSW4Vzfdiqn7OBX0xqWqsk4KJFuZFlfV7qIIY0RnpjQspV6
- JZxD+D1sXcF6B9cBMHcrG+rtbo1eaHJg5+u6FtbJAAMt1+EHhPEAfIrGS2baPavi2ULQ
- gJFy+ugYFJ2KAZWQsUZk5Vrp3wH22DbiT0nIOETuFQQ7n5MZbVzwWTeqxx5RU+nBVD0m
- 6T3kMvrUIrGLrwvjCgwAY7o6OwaTJ/XgC960HZiZEU3RhGJmh3kN2/+9zYhSYhCncceh
- o0ThDntonzjPShFU3ywxcfVh01s8IN4VKcGxR/T/ouSZRB6o5VEoNG1XqXjaklAZ0F1D
- Tx7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=q1kP8IDfWs3KYwhhLGYrvublLDH8i7aJatyFRJI0aDQ=;
- b=qotbZhzHtHhxSdArYqBmnO+yYIirG2mVwV1Qem/+khdPiOYQnktvOYNIInFV0D5dg8
- CYCKcdNSs6eGbaqzmYdFq7mx7fccY6l8wahyXV5XxM548ETE1VI+QbblY8KCxnwaH3uQ
- TwproM3Pcq4Sa9JKLkABBseFcVmD9YTOJMlEy4QOI70Ygs/ZlenIeQ/3hYdVnIHDCNYa
- UUoEIU9Pyum1w3mhfegAZ3v76J6Ta95mgqzKM0Z4OwiqSATsaacgnwxv/CrY3XuFaqsO
- geCu+3Yt3c8scSRSBB5fltRvVQkusuuau9YC+WLWcISGCl2uM5jiWz37t0MPa4PvtR5v
- 6n3Q==
-X-Gm-Message-State: AOAM530YSHLY16ernuzkaQZHVnZFc/m4rW/VttBK3kPNZ0SZFHBLw/wo
- J1yrvmQzOarx1qG0DyyifpA=
-X-Google-Smtp-Source: ABdhPJw8Y+4oboFgVDcsxDZ5DafHZB6Fmy0rHyftgqwU1KidVKdYV7L6Oq0+j6F4JOqgaGTP6nwKjw==
-X-Received: by 2002:a2e:a70f:: with SMTP id s15mr3366180lje.343.1628784904468; 
- Thu, 12 Aug 2021 09:15:04 -0700 (PDT)
-Received: from [192.168.1.102] ([178.176.76.126])
- by smtp.gmail.com with ESMTPSA id d17sm346650lji.102.2021.08.12.09.15.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Aug 2021 09:15:04 -0700 (PDT)
-Subject: Re: [PATCH v2 6/7] usb: gadget: bdc: remove unnecessary AND operation
- when get ep maxp
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Felipe Balbi <balbi@kernel.org>
-Cc: Pawel Laszczak <pawell@cadence.com>, Al Cooper <alcooperx@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
- Yang Yingliang <yangyingliang@huawei.com>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
- linux-tegra@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Eddie Hung <eddie.hung@mediatek.com>
-References: <1628774283-475-1-git-send-email-chunfeng.yun@mediatek.com>
- <1628774283-475-6-git-send-email-chunfeng.yun@mediatek.com>
-From: Sergei Shtylyov <sergei.shtylyov@gmail.com>
-Message-ID: <4e751ea2-7e42-3378-397f-7bf913752da2@gmail.com>
-Date: Thu, 12 Aug 2021 19:15:01 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1mEF7i-00ApJT-8h; Thu, 12 Aug 2021 18:08:12 +0000
+Received: from fraeml706-chm.china.huawei.com (unknown [172.18.147.226])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Glvm64WYlz6CBbF;
+ Fri, 13 Aug 2021 02:07:18 +0800 (CST)
+Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
+ fraeml706-chm.china.huawei.com (10.206.15.55) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.2308.8; Thu, 12 Aug 2021 20:07:58 +0200
+Received: from localhost (10.52.121.184) by lhreml710-chm.china.huawei.com
+ (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2176.2; Thu, 12 Aug
+ 2021 19:07:56 +0100
+Date: Thu, 12 Aug 2021 19:07:25 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Hui Liu <hui.liu@mediatek.com>
+CC: <robh+dt@kernel.org>, <jic23@kernel.org>, <lars@metafoo.de>,
+ <pmeerw@pmeerw.net>, <srv_heupstream@mediatek.com>,
+ <zhiyong.tao@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <yingjoe.chen@mediatek.com>, <seiya.wang@mediatek.com>,
+ <matthias.bgg@gmail.com>, <s.hauer@pengutronix.de>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v1 1/2] iio: mtk-auxadc: add support IIO_CHAN_INFO_RAW case
+Message-ID: <20210812190725.00007449@Huawei.com>
+In-Reply-To: <20210812054844.30575-2-hui.liu@mediatek.com>
+References: <20210812054844.30575-1-hui.liu@mediatek.com>
+ <20210812054844.30575-2-hui.liu@mediatek.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <1628774283-475-6-git-send-email-chunfeng.yun@mediatek.com>
-Content-Language: en-US
+X-Originating-IP: [10.52.121.184]
+X-ClientProxiedBy: lhreml702-chm.china.huawei.com (10.201.108.51) To
+ lhreml710-chm.china.huawei.com (10.201.108.61)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_091515_179359_3C0114FD 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210812_110810_507346_055CAB21 
+X-CRM114-Status: GOOD (  17.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,20 +88,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/12/21 4:18 PM, Chunfeng Yun wrote:
+On Thu, 12 Aug 2021 13:48:43 +0800
+Hui Liu <hui.liu@mediatek.com> wrote:
 
-> usb_endpoint_maxp() already returns actual max packet size, no need
+> Add support IIO_CHAN_INFO_RAW case.
+Why?
 
-  "No ndeed to", perhaps?
+We almost never support both RAW and PROCESSED as userspace should be
+fine to use either.  There are a few reasons we've let drivers do
+this but I would like know why it matters to you and it definitely
+needs to be in the patch description.
 
-> AND 0x7ff.
 > 
-> Acked-by: Felipe Balbi <balbi@kernel.org>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Hui Liu <hui.liu@mediatek.com>
 > ---
-[...]
+>  drivers/iio/adc/mt6577_auxadc.c | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index 79c1dd68b909..e995d43287b2 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -60,7 +60,8 @@ static const struct mtk_auxadc_compatible mt6765_compat = {
+>  		.type = IIO_VOLTAGE,				    \
+>  		.indexed = 1,					    \
+>  		.channel = (idx),				    \
+> -		.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED), \
+> +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	    \
+> +				      BIT(IIO_CHAN_INFO_PROCESSED), \
+>  }
+>  
+>  static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
+> @@ -181,6 +182,19 @@ static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
+>  	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
+>  
+>  	switch (info) {
+> +	case IIO_CHAN_INFO_RAW:
+> +		*val = mt6577_auxadc_read(indio_dev, chan);
+> +		if (*val < 0) {
+> +			dev_notice(indio_dev->dev.parent,
+> +				"failed to sample data on channel[%d]\n",
+> +				chan->channel);
+> +			return *val;
+> +		}
+> +		if (adc_dev->dev_comp->sample_data_cali)
+> +			*val = mt_auxadc_get_cali_data(*val, true);
+> +
+> +		return IIO_VAL_INT;
+> +
+>  	case IIO_CHAN_INFO_PROCESSED:
+>  		*val = mt6577_auxadc_read(indio_dev, chan);
+>  		if (*val < 0) {
 
-MBR, Sergei
 
 _______________________________________________
 Linux-mediatek mailing list
