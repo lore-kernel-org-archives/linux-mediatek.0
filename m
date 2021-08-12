@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 94F16C4338F
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D44DAC4320A
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 21:15:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4BF196101E
+	by mail.kernel.org (Postfix) with ESMTPS id 94F4C6108C
 	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 21:15:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4BF196101E
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94F4C6108C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,56 +24,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DwRTYKQlfLRFYOBqZ7jANquQ1QHjKfE1zFGB1vx0CF4=; b=x5YpFPShEmmmUN
-	YGP9X153MFWuifT1Qhs+TPcSMK77+326Zpvj+kYysHSxtT1DFCtQRRPgiGIMBaWU9xqsgc9R/8EzL
-	Ova3Lah2k70ISOIqmw08wdi7fFu8RJ+mhYKRmRCs1XDeu4WNbEJHvwlu2HwevCXArxPe0JOuPzASV
-	fjw/g5TLqIinv22+YlzRnE+eCrFx0Q00ZzlmytqkuU4KPWtm734gtjBpmL2HOKa3DvFkSZlcOffle
-	mVm/t1sxYparXaQXbalg5ZfdCgswTLTL9dt4MJ/9NO3Jhr+h5T9NG29Rm9bXWLqGgXuY7g0BXdIfY
-	ocNLd27ULZdRzvYp9JJg==;
+	List-Owner; bh=1jMWmyt4xS/q5z4jZjxeOm2FWXaatwjD3fFvRSJutjE=; b=In5xTzkaOoGDPK
+	ouO/9MwkmF+CmpqLwFfueV24Uy7xdwV8zoCG/i8NGNW57Videel+qFX6HrEJjqg0G9CHRHa/UkB1o
+	rVd1ncdPecIje/wKpnQ4hIhk1oxxwlSOtWY7AC8XDxD4ZX8W4/YOXk9pPJsXIHaUHweUFOpWAToI8
+	ffDspSV05Qzuh5m6cDDrslERraJTqqBdMVZSKqGrpWDA8ukQX9DWvJElY9nr9fC61EXkcL0bXazA7
+	QfRCZfNk0MKndP5BhIztrx8brLs7WLFX5iIN6nZNZ1JwMdU2bwHv27DgWQCfnSMCEtGnQwf11LUin
+	F4ubZqYKLGIMduVivypQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEI2I-00BNF5-Eh; Thu, 12 Aug 2021 21:14:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mEI2L-00BNG6-Qn; Thu, 12 Aug 2021 21:14:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEI2B-00BN9t-5p
- for linux-mediatek@lists.infradead.org; Thu, 12 Aug 2021 21:14:43 +0000
-X-UUID: 1519c6b8e5184a04b56e48becb040e35-20210812
+ id 1mEI27-00BN9L-Tg
+ for linux-mediatek@lists.infradead.org; Thu, 12 Aug 2021 21:14:42 +0000
+X-UUID: cd130b7dc1a4421ebbad49c8df7c64f2-20210812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=JtcKqtON76llW0P32bD5ajM3qq7G+uQv8mv/ULg0M3o=; 
- b=O+kjD1OLCU3/um+3lRU2BZEBL2uIWC8zqjV0cXCz7i01kG6sE5yn4FcK1W8q+O7ivJyiSMdsV+pNrcOhjUG/XmBxhU7jC2cMoJkhcbC+dCqwVJjhpk/HGMwrXxdt/ehaUm+f3fXnqH48VyG6vc+XqGlHtqTbnux1Oij9/BxNVxA=;
-X-UUID: 1519c6b8e5184a04b56e48becb040e35-20210812
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=kV/xDLDBP4pOtihZdhrah18A5aRqVHYBHnUWhKmvU4Y=; 
+ b=dVuEciSiq/fplFT9aWr//BtCIH8BIFMB/NnzsIHaNXmVqJKaSK29UowN5IUcZJplhFXYN+CVO+pCp5IeM+3+eNEuSvYX865TfZFrHSdiLxtnQhYGIaRnF6A/vkyqiJ2In1Oaj9MDwUowS1Gpc+ZFJRqSi2K87rPFDDYqKuy850U=;
+X-UUID: cd130b7dc1a4421ebbad49c8df7c64f2-20210812
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1556393300; Thu, 12 Aug 2021 14:14:33 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 14:04:31 -0700
+ with ESMTP id 1280925525; Thu, 12 Aug 2021 14:14:31 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 12 Aug 2021 14:04:30 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 05:04:29 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 13 Aug 2021 05:04:28 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 13 Aug 2021 05:04:29 +0800
+ Frontend Transport; Fri, 13 Aug 2021 05:04:28 +0800
 From: Ryder Lee <ryder.lee@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH 3/3] mt76: mt7915: rework debugfs fixed-rate knob
-Date: Fri, 13 Aug 2021 05:04:26 +0800
-Message-ID: <9286919a9098d3ce3d77fbf3df8fb408670dc7d9.1628799602.git.ryder.lee@mediatek.com>
+Subject: [PATCH 2/3] mt76: mt7915: rework .set_bitrate_mask() to support more
+ options
+Date: Fri, 13 Aug 2021 05:04:25 +0800
+Message-ID: <94a371579db2c2c18f18984ad5b3f06cb642c68a.1628799602.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <1c3fc7ff6d5ab129a58160cd878787d9fbeba9c2.1628799602.git.ryder.lee@mediatek.com>
 References: <1c3fc7ff6d5ab129a58160cd878787d9fbeba9c2.1628799602.git.ryder.lee@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_141439_293276_83054557 
-X-CRM114-Status: GOOD (  16.73  )
+X-CRM114-CacheID: sfid-20210812_141437_152463_92C48E92 
+X-CRM114-Status: GOOD (  21.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,182 +91,380 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to use new mt7915_mcu_set_fixed_rate_ctrl().
+With this patch, driver can support single rate, (HE)GI and HE_LTF
+configuration through .set_bitrate_mask().
 
+Tested-by: MeiChia Chiu <meichia.chiu@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-@Felix, please ignore the following one 
-https://patchwork.kernel.org/project/linux-wireless/patch/c3fd9c4ea692f28e2eb78073fd8da7753199ba60.1628301616.git.ryder.lee@mediatek.com/
-[3/4] mt76: mt7915: add HE-LTF into fixed rate command
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 68 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 48 +------------
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 -
- 3 files changed, 61 insertions(+), 57 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |  32 ++--
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 148 +++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  16 +-
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |   5 +
+ 5 files changed, 175 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index d9d18f662039..e1cdfbe52199 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -365,19 +365,71 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- #ifdef CONFIG_MAC80211_DEBUGFS
- /** per-station debugfs **/
- 
--static int mt7915_sta_fixed_rate_set(void *data, u64 rate)
-+static ssize_t mt7915_sta_fixed_rate_set(struct file *file,
-+					 const char __user *user_buf,
-+					 size_t count, loff_t *ppos)
- {
--	struct ieee80211_sta *sta = data;
-+	struct ieee80211_sta *sta = file->private_data;
- 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
--
--	/* usage: <he ltf> <tx mode> <ldpc> <stbc> <bw> <gi> <nss> <mcs>
--	 * <tx mode>: see enum mt76_phy_type
-+	struct mt7915_dev *dev = msta->vif->phy->dev;
-+	struct ieee80211_vif *vif;
-+	struct sta_phy phy = {};
-+	char buf[100];
-+	int ret;
-+	u32 field;
-+	u8 i, gi, he_ltf;
-+
-+	if (count >= sizeof(buf))
-+		return -EINVAL;
-+
-+	if (copy_from_user(buf, user_buf, count))
-+		return -EFAULT;
-+
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
-+
-+	/* Mode: CCK:0, OFDM:1, HT:2, GF:3, VHT:4, HE_SU:8, HE_ER:9
-+	 * BW: BW20:0, BW40:1, BW80:2, BW160:3
-+	 * NSS: VHT:1~4, HE:1~4, Others:Ignore
-+	 * MCS: CCK:0~4, OFDM:0~7, HT:0~32, VHT:0~9, HE_SU:0~11, HE_ER:0~2
-+	 * GI: (HT/VHT) LGI:0, SGI:1; (HE) 0.8us:0, 1.6us:1, 3.2us:2
-+	 * LDPC: Off:0, On:1
-+	 * STBC: Off:0, On:1
-+	 * HE_LTF: 1xLTF:0, 2xLTF:1, 4xLTF:2
- 	 */
--	return mt7915_mcu_set_fixed_rate(msta->vif->phy->dev, sta, rate);
-+	if (sscanf(buf, "%hhu %hhu %hhu %hhu %hhu %hhu %hhu %hhu",
-+		   &phy.type, &phy.bw, &phy.nss, &phy.mcs, &gi,
-+		   &phy.ldpc, &phy.stbc, &he_ltf) != 8) {
-+		dev_warn(dev->mt76.dev,
-+			 "format: Mode BW NSS MCS (HE)GI LDPC STBC HE_LTF\n");
-+		field = RATE_PARAM_AUTO;
-+		goto out;
-+	}
-+
-+	phy.ldpc = (phy.bw || phy.ldpc) * GENMASK(2, 0);
-+	for (i = 0; i <= phy.bw; i++) {
-+		phy.sgi |= gi << (i << sta->he_cap.has_he);
-+		phy.he_ltf |= he_ltf << (i << sta->he_cap.has_he);
-+	}
-+	field = RATE_PARAM_FIXED;
-+
-+out:
-+	vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-+	ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy, field);
-+	if (ret)
-+		return -EFAULT;
-+
-+	return count;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 5349736eac73..0ed86cbf722b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -101,7 +101,7 @@ bool mt7915_mac_wtbl_update(struct mt7915_dev *dev, int idx, u32 mask)
+ 			 0, 5000);
  }
  
--DEFINE_DEBUGFS_ATTRIBUTE(fops_fixed_rate, NULL,
--			 mt7915_sta_fixed_rate_set, "%llx\n");
-+static const struct file_operations fops_fixed_rate = {
-+	.write = mt7915_sta_fixed_rate_set,
-+	.open = simple_open,
-+	.owner = THIS_MODULE,
-+	.llseek = default_llseek,
-+};
+-static u32 mt7915_mac_wtbl_lmac_addr(struct mt7915_dev *dev, u16 wcid, u8 dw)
++u32 mt7915_mac_wtbl_lmac_addr(struct mt7915_dev *dev, u16 wcid, u8 dw)
+ {
+ 	mt76_wr(dev, MT_WTBLON_TOP_WDUCR,
+ 		FIELD_PREP(MT_WTBLON_TOP_WDUCR_GROUP, (wcid >> 7)));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 20b47ac33083..9f9ad3a75122 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -172,6 +172,9 @@ static void mt7915_init_bitrate_mask(struct ieee80211_vif *vif)
+ 	int i;
  
- void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			    struct ieee80211_sta *sta, struct dentry *dir)
+ 	for (i = 0; i < ARRAY_SIZE(mvif->bitrate_mask.control); i++) {
++		mvif->bitrate_mask.control[i].gi = NL80211_TXRATE_DEFAULT_GI;
++		mvif->bitrate_mask.control[i].he_gi = GENMASK(7, 0);
++		mvif->bitrate_mask.control[i].he_ltf = GENMASK(7, 0);
+ 		mvif->bitrate_mask.control[i].legacy = GENMASK(31, 0);
+ 		memset(mvif->bitrate_mask.control[i].ht_mcs, GENMASK(7, 0),
+ 		       sizeof(mvif->bitrate_mask.control[i].ht_mcs));
+@@ -952,7 +955,6 @@ static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
+ {
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+ 	struct mt7915_dev *dev = msta->vif->phy->dev;
+-	struct ieee80211_hw *hw = msta->vif->phy->mt76->hw;
+ 	u32 *changed = data;
+ 
+ 	spin_lock_bh(&dev->sta_poll_lock);
+@@ -960,8 +962,6 @@ static void mt7915_sta_rc_work(void *data, struct ieee80211_sta *sta)
+ 	if (list_empty(&msta->rc_list))
+ 		list_add_tail(&msta->rc_list, &dev->sta_rc_list);
+ 	spin_unlock_bh(&dev->sta_poll_lock);
+-
+-	ieee80211_queue_work(hw, &dev->rc_work);
+ }
+ 
+ static void mt7915_sta_rc_update(struct ieee80211_hw *hw,
+@@ -969,7 +969,11 @@ static void mt7915_sta_rc_update(struct ieee80211_hw *hw,
+ 				 struct ieee80211_sta *sta,
+ 				 u32 changed)
+ {
++	struct mt7915_phy *phy = mt7915_hw_phy(hw);
++	struct mt7915_dev *dev = phy->dev;
++
+ 	mt7915_sta_rc_work(&changed, sta);
++	ieee80211_queue_work(hw, &dev->rc_work);
+ }
+ 
+ static int
+@@ -977,22 +981,22 @@ mt7915_set_bitrate_mask(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 			const struct cfg80211_bitrate_mask *mask)
+ {
+ 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
+-	enum nl80211_band band = mvif->phy->mt76->chandef.chan->band;
+-	u32 changed;
+-
+-	if (mask->control[band].gi == NL80211_TXRATE_FORCE_LGI)
+-		return -EINVAL;
++	struct mt7915_phy *phy = mt7915_hw_phy(hw);
++	struct mt7915_dev *dev = phy->dev;
++	u32 changed = IEEE80211_RC_SUPP_RATES_CHANGED;
+ 
+-	changed = IEEE80211_RC_SUPP_RATES_CHANGED;
+ 	mvif->bitrate_mask = *mask;
+ 
+-	/* Update firmware rate control to add a boundary on top of table
+-	 * to limit the rate selection for each peer, so when set bitrates
+-	 * vht-mcs-5 1:9, which actually means nss = 1 mcs = 0~9. This only
+-	 * applies to data frames as for the other mgmt, mcast, bcast still
+-	 * use legacy rates as it is.
++	/* if multiple rates across different preambles are given we can
++	 * reconfigure this info with all peers using sta_rec command with
++	 * the below exception cases.
++	 * - single rate : if a rate is passed along with different preambles,
++	 * we select the highest one as fixed rate. i.e VHT MCS for VHT peers.
++	 * - multiple rates: if it's not in range format i.e 0-{7,8,9} for VHT
++	 * then multiple MCS setting (MCS 4,5,6) is not supported.
+ 	 */
+ 	ieee80211_iterate_stations_atomic(hw, mt7915_sta_rc_work, &changed);
++	ieee80211_queue_work(hw, &dev->rc_work);
+ 
+ 	return 0;
+ }
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index dfe9b47c8f4e..5f4cab743f56 100644
+index 028ee5bb0532..dfe9b47c8f4e 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2065,6 +2065,7 @@ int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
- 	switch (field) {
- 	case RATE_PARAM_AUTO:
- 		break;
-+	case RATE_PARAM_FIXED:
- 	case RATE_PARAM_FIXED_MCS:
- 	case RATE_PARAM_FIXED_GI:
- 	case RATE_PARAM_FIXED_HE_LTF:
-@@ -2416,53 +2417,6 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				     MCU_EXT_CMD(STA_REC_UPDATE), true);
+@@ -2042,6 +2042,128 @@ mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	return 0;
  }
  
--int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
--			      struct ieee80211_sta *sta, u32 rate)
--{
--	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
--	struct mt7915_vif *mvif = msta->vif;
--	struct sta_rec_ra_fixed *ra;
--	struct sk_buff *skb;
--	struct tlv *tlv;
--	int len = sizeof(struct sta_req_hdr) + sizeof(*ra);
++int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
++				   struct ieee80211_vif *vif,
++				   struct ieee80211_sta *sta,
++				   void *data, u32 field)
++{
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++	struct sta_phy *phy = data;
++	struct sta_rec_ra_fixed *ra;
++	struct sk_buff *skb;
++	struct tlv *tlv;
++	int len = sizeof(struct sta_req_hdr) + sizeof(*ra);
++
++	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
++	if (IS_ERR(skb))
++		return PTR_ERR(skb);
++
++	tlv = mt7915_mcu_add_tlv(skb, STA_REC_RA_UPDATE, sizeof(*ra));
++	ra = (struct sta_rec_ra_fixed *)tlv;
++
++	switch (field) {
++	case RATE_PARAM_AUTO:
++		break;
++	case RATE_PARAM_FIXED_MCS:
++	case RATE_PARAM_FIXED_GI:
++	case RATE_PARAM_FIXED_HE_LTF:
++		ra->phy = *phy;
++		break;
++	default:
++		break;
++	}
++	ra->field = cpu_to_le32(field);
++
++	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				     MCU_EXT_CMD(STA_REC_UPDATE), true);
++}
++
++static int
++mt7915_mcu_add_rate_ctrl_fixed(struct mt7915_dev *dev,
++			       struct ieee80211_vif *vif,
++			       struct ieee80211_sta *sta)
++{
++	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
++	struct cfg80211_chan_def *chandef = &mvif->phy->mt76->chandef;
++	struct cfg80211_bitrate_mask *mask = &mvif->bitrate_mask;
++	enum nl80211_band band = chandef->chan->band;
++	struct sta_phy phy = {};
++	int ret, nrates;
++
++#define __sta_phy_bitrate_mask_check(_mcs, _gi, _he)				\
++	do {									\
++		u8 i, gi = (_he) ? mask->control[band]._gi :			\
++			   mask->control[band]._gi == NL80211_TXRATE_FORCE_SGI;	\
++		for (i = 0; i <= sta->bandwidth; i++) {				\
++			phy.sgi |= gi << (i << (_he));				\
++			phy.he_ltf |= mask->control[band].he_ltf << (i << (_he));\
++		}								\
++		for (i = 0; i < ARRAY_SIZE(mask->control[band]._mcs); i++) 	\
++			nrates += hweight16(mask->control[band]._mcs[i]);  	\
++		phy.mcs = ffs(mask->control[band]._mcs[0]) - 1;			\
++	} while (0)
++
++	if (sta->he_cap.has_he) {
++		__sta_phy_bitrate_mask_check(he_mcs, he_gi, 1);
++	} else if (sta->vht_cap.vht_supported) {
++		__sta_phy_bitrate_mask_check(vht_mcs, gi, 0);
++	} else if (sta->ht_cap.ht_supported) {
++		__sta_phy_bitrate_mask_check(ht_mcs, gi, 0);
++	} else {
++		nrates = hweight32(mask->control[band].legacy);
++		phy.mcs = ffs(mask->control[band].legacy) - 1;
++	}
++#undef __sta_phy_bitrate_mask_check
++
++	/* fall back to auto rate control */
++	if (mask->control[band].gi == NL80211_TXRATE_DEFAULT_GI &&
++	    mask->control[band].he_gi == GENMASK(7, 0) &&
++	    mask->control[band].he_ltf == GENMASK(7, 0) &&
++	    nrates != 1)
++		return 0;
++
++	/* fixed single rate */
++	if (nrates == 1) {
++		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
++						     RATE_PARAM_FIXED_MCS);
++		if (ret)
++			return ret;
++	}
++
++	/* fixed GI */
++	if (mask->control[band].gi != NL80211_TXRATE_DEFAULT_GI ||
++	    mask->control[band].he_gi != GENMASK(7, 0)) {
++		struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
++		u32 addr;
++
++		/* firmware updates only TXCMD but doesn't take WTBL into
++		 * account, so driver should update here to reflect the
++		 * actual txrate hardware sends out.
++		 */
++		addr = mt7915_mac_wtbl_lmac_addr(dev, msta->wcid.idx, 7);
++		if (sta->he_cap.has_he)
++			mt76_rmw_field(dev, addr, GENMASK(31, 24), phy.sgi);
++		else
++			mt76_rmw_field(dev, addr, GENMASK(15, 12), phy.sgi);
++
++		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
++						     RATE_PARAM_FIXED_GI);
++		if (ret)
++			return ret;
++	}
++
++	/* fixed HE_LTF */
++	if (mask->control[band].he_ltf != GENMASK(7, 0)) {
++		ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy,
++						     RATE_PARAM_FIXED_HE_LTF);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
+ static void
+ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 			     struct ieee80211_vif *vif, struct ieee80211_sta *sta)
+@@ -2084,8 +2206,6 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 	}
+ 
+ 	if (sta->ht_cap.ht_supported) {
+-		const u8 *mcs_mask = mask->control[band].ht_mcs;
 -
--	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
--	if (IS_ERR(skb))
--		return PTR_ERR(skb);
--
--	tlv = mt7915_mcu_add_tlv(skb, STA_REC_RA_UPDATE, sizeof(*ra));
--	ra = (struct sta_rec_ra_fixed *)tlv;
--
--	if (!rate) {
--		ra->field = cpu_to_le32(RATE_PARAM_AUTO);
--		goto out;
--	}
--
--	ra->field = cpu_to_le32(RATE_PARAM_FIXED);
--	ra->phy.type = FIELD_GET(RATE_CFG_PHY_TYPE, rate);
--	ra->phy.bw = FIELD_GET(RATE_CFG_BW, rate);
--	ra->phy.nss = FIELD_GET(RATE_CFG_NSS, rate);
--	ra->phy.mcs = FIELD_GET(RATE_CFG_MCS, rate);
--	ra->phy.stbc = FIELD_GET(RATE_CFG_STBC, rate);
--
--	if (ra->phy.bw)
--		ra->phy.ldpc = 7;
--	else
--		ra->phy.ldpc = FIELD_GET(RATE_CFG_LDPC, rate) * 7;
--
--	/* HT/VHT - SGI: 1, LGI: 0; HE - SGI: 0, MGI: 1, LGI: 2 */
--	if (ra->phy.type > MT_PHY_TYPE_VHT) {
--		ra->phy.he_ltf = FIELD_GET(RATE_CFG_HE_LTF, rate) * 85;
--		ra->phy.sgi = FIELD_GET(RATE_CFG_GI, rate) * 85;
--	} else {
--		ra->phy.sgi = FIELD_GET(RATE_CFG_GI, rate) * 15;
--	}
--
--out:
+ 		ra->supp_mode |= MODE_HT;
+ 		ra->af = sta->ht_cap.ampdu_factor;
+ 		ra->ht_gf = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_GRN_FLD);
+@@ -2103,12 +2223,12 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 		    (sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING))
+ 			cap |= STA_CAP_LDPC;
+ 
+-		mt7915_mcu_set_sta_ht_mcs(sta, ra->ht_mcs, mcs_mask);
++		mt7915_mcu_set_sta_ht_mcs(sta, ra->ht_mcs,
++					  mask->control[band].ht_mcs);
+ 		ra->supp_ht_mcs = *(__le32 *)ra->ht_mcs;
+ 	}
+ 
+ 	if (sta->vht_cap.vht_supported) {
+-		const u16 *mcs_mask = mask->control[band].vht_mcs;
+ 		u8 af;
+ 
+ 		ra->supp_mode |= MODE_VHT;
+@@ -2129,7 +2249,8 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
+ 		    (sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC))
+ 			cap |= STA_CAP_VHT_LDPC;
+ 
+-		mt7915_mcu_set_sta_vht_mcs(sta, ra->supp_vht_mcs, mcs_mask);
++		mt7915_mcu_set_sta_vht_mcs(sta, ra->supp_vht_mcs,
++					   mask->control[band].vht_mcs);
+ 	}
+ 
+ 	if (sta->he_cap.has_he) {
+@@ -2146,7 +2267,7 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
+ 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
+ 	struct sk_buff *skb;
+-	int len;
++	int ret, len;
+ 
+ 	len = sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_ra) +
+ 	      sizeof(struct sta_rec_he);
+@@ -2161,10 +2282,21 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
+ 	if (sta->he_cap.has_he && changed)
+ 		mt7915_mcu_sta_he_tlv(skb, sta);
+ 
++	/* sta_rec_ra accommodates BW, NSS and only MCS range format
++	 * i.e 0-{7,8,9} for VHT.
++	 */
+ 	mt7915_mcu_sta_rate_ctrl_tlv(skb, dev, vif, sta);
+ 
 -	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
 -				     MCU_EXT_CMD(STA_REC_UPDATE), true);
--}
--
- int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
- 			    struct ieee80211_vif *vif, bool enable)
- {
++	ret = mt76_mcu_skb_send_msg(&dev->mt76, skb,
++				    MCU_EXT_CMD(STA_REC_UPDATE), true);
++	if (ret)
++		return ret;
++
++	/* sta_rec_ra_fixed accommodates single rate, (HE)GI and HE_LTE,
++	 * and updates as peer fixed rate parameters, which overrides
++	 * sta_rec_ra and firmware rate control algorithm.
++	 */
++	return mt7915_mcu_add_rate_ctrl_fixed(dev, vif, sta);
+ }
+ 
+ static int
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 2b47cdf0fd17..64f06d4445fe 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -871,7 +871,7 @@ struct sta_rec_sec {
+ 	struct sec_key key[2];
+ } __packed;
+ 
+-struct ra_phy {
++struct sta_phy {
+ 	u8 type;
+ 	u8 flag;
+ 	u8 stbc;
+@@ -915,7 +915,7 @@ struct sta_rec_ra {
+ 
+ 	__le32 sta_cap;
+ 
+-	struct ra_phy phy;
++	struct sta_phy phy;
+ } __packed;
+ 
+ struct sta_rec_ra_fixed {
+@@ -928,7 +928,7 @@ struct sta_rec_ra_fixed {
+ 	u8 op_vht_rx_nss;
+ 	u8 op_vht_rx_nss_type;
+ 
+-	struct ra_phy phy;
++	struct sta_phy phy;
+ 
+ 	u8 spe_en;
+ 	u8 short_preamble;
+@@ -936,8 +936,14 @@ struct sta_rec_ra_fixed {
+ 	u8 mmps_mode;
+ } __packed;
+ 
+-#define RATE_PARAM_FIXED		3
+-#define RATE_PARAM_AUTO			20
++enum {
++	RATE_PARAM_FIXED = 3,
++	RATE_PARAM_FIXED_HE_LTF = 7,
++	RATE_PARAM_FIXED_MCS,
++	RATE_PARAM_FIXED_GI = 11,
++	RATE_PARAM_AUTO = 20,
++};
++
+ #define RATE_CFG_MCS			GENMASK(3, 0)
+ #define RATE_CFG_NSS			GENMASK(7, 4)
+ #define RATE_CFG_GI			GENMASK(11, 8)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 477a8621550a..c0da97f2774c 100644
+index f842452af897..477a8621550a 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -331,8 +331,6 @@ int mt7915_set_channel(struct mt7915_phy *phy);
- int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd);
- int mt7915_mcu_set_tx(struct mt7915_dev *dev, struct ieee80211_vif *vif);
+@@ -333,6 +333,10 @@ int mt7915_mcu_set_tx(struct mt7915_dev *dev, struct ieee80211_vif *vif);
  int mt7915_mcu_update_edca(struct mt7915_dev *dev, void *req);
--int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
--			      struct ieee80211_sta *sta, u32 rate);
- int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_sta *sta,
+ int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
+ 			      struct ieee80211_sta *sta, u32 rate);
++int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
++				   struct ieee80211_vif *vif,
++				   struct ieee80211_sta *sta,
++				   void *data, u32 field);
+ int mt7915_mcu_set_eeprom(struct mt7915_dev *dev);
+ int mt7915_mcu_get_eeprom(struct mt7915_dev *dev, u32 offset);
+ int mt7915_mcu_set_mac(struct mt7915_dev *dev, int band, bool enable,
+@@ -392,6 +396,7 @@ static inline void mt7915_irq_disable(struct mt7915_dev *dev, u32 mask)
+ 		mt76_set_irq_mask(&dev->mt76, MT_INT_MASK_CSR, mask, 0);
+ }
+ 
++u32 mt7915_mac_wtbl_lmac_addr(struct mt7915_dev *dev, u16 wcid, u8 dw);
+ bool mt7915_mac_wtbl_update(struct mt7915_dev *dev, int idx, u32 mask);
+ void mt7915_mac_reset_counters(struct mt7915_phy *phy);
+ void mt7915_mac_cca_stats_reset(struct mt7915_phy *phy);
 -- 
 2.29.2
 _______________________________________________
