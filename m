@@ -2,76 +2,71 @@ Return-Path: <SRS0=QG8e=ND=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B50CC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 18:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E093C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 20:49:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3571460295
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 18:08:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3571460295
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=Huawei.com
+	by mail.kernel.org (Postfix) with ESMTPS id 221F9610A3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Aug 2021 20:49:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 221F9610A3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9IVqs89JnLAwr8dHEpVgnD8uybPc7RCiqpmA5Sd006U=; b=jftUF6fsgP588y
-	NMsS8FVMoKt1/XMudqdnXueUROl2EnfMGGffJXXKopNXmOMsKTx/nGITpA5kYJvAFKV/zgmSYQpfD
-	MB+btcg3zFbWHrvCMVLahzcS6MKBW7tI0k5B8iNC2SrVHfuOj+/saWcgOQykvxRqWzCOIwQRFQJEQ
-	hUKm4ZhzS/n6m/iHvdmMfRljGV0rnvd28ZGb5DZJj+R39lhKzIpaMrdYsjisSUXttjvrMh7ImZFro
-	4GfVgIxdeiN/r9S3btG2XMxrO+ZbmP4hBzZzeN3oEb3dOeMD8p1/IVvZ9AEou56W15nQJUb+vvNQU
-	dW0kwQpdRTaehRb7wYTg==;
+	List-Owner; bh=GVsx4R13jPUU/eqY+svtCMVGPmWQ8AxmBnRMJ1SZsZs=; b=pDZn6sySHw7YOV
+	O0oTmXwlY831bjLmq3tEJ7ku5Px0qOj3uAXcZnM7Jo2sSyJmdbXhQUcNN4nFUwZTFusuHhOsb2z6k
+	7wXqCbQIaxCrOgN+g32Kra7KKDvS+wfE7TCcekR9Gj6bYCUhBA6m/b3wEgNo9Vn3dGtCk2syE3O2M
+	yo/ZWAbDIf6BG0ZKO6JEUAitDGej+FhUONBmbAq9tPOmcMiGdmMRwTnvgkE8KgmJK54wrrssNMJeN
+	hAnBW/d87WrbyjfyMLpja/1uOBtBddA/SIDIN0croimuYhSifkXdOs2cfklYIeh/v5/h2RouRbF2g
+	L+0NDLMZ/kztwXNg41vA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEF7w-00ApOh-Cw; Thu, 12 Aug 2021 18:08:24 +0000
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+	id 1mEHdb-00BEqP-Ty; Thu, 12 Aug 2021 20:49:16 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEF7i-00ApJT-8h; Thu, 12 Aug 2021 18:08:12 +0000
-Received: from fraeml706-chm.china.huawei.com (unknown [172.18.147.226])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Glvm64WYlz6CBbF;
- Fri, 13 Aug 2021 02:07:18 +0800 (CST)
-Received: from lhreml710-chm.china.huawei.com (10.201.108.61) by
- fraeml706-chm.china.huawei.com (10.206.15.55) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.8; Thu, 12 Aug 2021 20:07:58 +0200
-Received: from localhost (10.52.121.184) by lhreml710-chm.china.huawei.com
- (10.201.108.61) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.1.2176.2; Thu, 12 Aug
- 2021 19:07:56 +0100
-Date: Thu, 12 Aug 2021 19:07:25 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Hui Liu <hui.liu@mediatek.com>
-CC: <robh+dt@kernel.org>, <jic23@kernel.org>, <lars@metafoo.de>,
- <pmeerw@pmeerw.net>, <srv_heupstream@mediatek.com>,
- <zhiyong.tao@mediatek.com>, <chun-hung.wu@mediatek.com>,
- <yingjoe.chen@mediatek.com>, <seiya.wang@mediatek.com>,
- <matthias.bgg@gmail.com>, <s.hauer@pengutronix.de>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v1 1/2] iio: mtk-auxadc: add support IIO_CHAN_INFO_RAW case
-Message-ID: <20210812190725.00007449@Huawei.com>
-In-Reply-To: <20210812054844.30575-2-hui.liu@mediatek.com>
-References: <20210812054844.30575-1-hui.liu@mediatek.com>
- <20210812054844.30575-2-hui.liu@mediatek.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; i686-w64-mingw32)
+ id 1mEHYm-00BCbs-TJ; Thu, 12 Aug 2021 20:44:18 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 617C0610A3;
+ Thu, 12 Aug 2021 20:44:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628801056;
+ bh=3oBMhQTsZ0JGmoRoNan1Fu4e/2ROq4vLcJGLs+VXjQs=;
+ h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=kveoZYmEcRWdKMSslWCl833egZjWoeUiv2XV5POnBpH2goTk1uB9vb61JgHmfrNg1
+ NFHvVfqG1/j2kDKYVXp3nZeCoTgbK9jktfgWuJ6dO54FXsTUJ7POm/3j1i285JDfKA
+ tv9VURxE+hW/wYypxhl6idkgauHD0Dr/bEO7TpN5BksHVZuFGeGHzwGITW6HN426ie
+ EzywVW/4HiI40dI42eEwBvwEAapz9EL8qr54rs4eq1xpRf9Rob2R8DpHJ3EkqWocWb
+ PdKzuGkTlyb29C+Dv9VYHxTOpB5pszRerZ7SAgUNjIie66hRHqjGglgY+luT7fg0IX
+ IugecXToOP+wg==
+From: Arnd Bergmann <arnd@kernel.org>
+List-Id: <soc.lore.kernel.org>
+To: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ Stephen Boyd <sboyd@kernel.org>, Fabien Parent <fparent@baylibre.com>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ CK HU <ck.hu@mediatek.com>, Bilal Wasim <bilalwasim676@gmail.com>
+Subject: Re: [GIT PULL] drivers: soc: mediatek: updates for v5.15
+Date: Thu, 12 Aug 2021 22:44:02 +0200
+Message-Id: <162880092618.1372486.1035988848948197417.b4-ty@arndb.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <49fc7bef-20db-b98c-9437-dd9e4d00e870@gmail.com>
+References: <49fc7bef-20db-b98c-9437-dd9e4d00e870@gmail.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.52.121.184]
-X-ClientProxiedBy: lhreml702-chm.china.huawei.com (10.201.108.51) To
- lhreml710-chm.china.huawei.com (10.201.108.61)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_110810_507346_055CAB21 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20210812_134417_009083_E8015598 
+X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,58 +83,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 12 Aug 2021 13:48:43 +0800
-Hui Liu <hui.liu@mediatek.com> wrote:
+From: Arnd Bergmann <arnd@arndb.de>
 
-> Add support IIO_CHAN_INFO_RAW case.
-Why?
-
-We almost never support both RAW and PROCESSED as userspace should be
-fine to use either.  There are a few reasons we've let drivers do
-this but I would like know why it matters to you and it definitely
-needs to be in the patch description.
-
+On Mon, 9 Aug 2021 14:19:57 +0200, Matthias Brugger wrote:
+> Hi Arnd,
 > 
-> Signed-off-by: Hui Liu <hui.liu@mediatek.com>
-> ---
->  drivers/iio/adc/mt6577_auxadc.c | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
+> Please have a look for the updates of the SoC drivers for Mediatek. If you
+> wonder why there is no binding patch for the MT8365 mmsys: The binding was
+> converted to YAML. This got taken by Rob. To minimize merge conflicts I left it
+> to him to take other mmsys binding patches. Unfortunately there is one mmsys
+> binding patch taken by Stephen through the clock tree. So there will be a
+> trivial merge conflict (although not in your tree). A bit of a mess this time,
+> I'll try to make sure that the bindings for drivers/soc will go through my tree
+> in the future (which will make my life easier as well...).
 > 
-> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
-> index 79c1dd68b909..e995d43287b2 100644
-> --- a/drivers/iio/adc/mt6577_auxadc.c
-> +++ b/drivers/iio/adc/mt6577_auxadc.c
-> @@ -60,7 +60,8 @@ static const struct mtk_auxadc_compatible mt6765_compat = {
->  		.type = IIO_VOLTAGE,				    \
->  		.indexed = 1,					    \
->  		.channel = (idx),				    \
-> -		.info_mask_separate = BIT(IIO_CHAN_INFO_PROCESSED), \
-> +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	    \
-> +				      BIT(IIO_CHAN_INFO_PROCESSED), \
->  }
->  
->  static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
-> @@ -181,6 +182,19 @@ static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
->  	struct mt6577_auxadc_device *adc_dev = iio_priv(indio_dev);
->  
->  	switch (info) {
-> +	case IIO_CHAN_INFO_RAW:
-> +		*val = mt6577_auxadc_read(indio_dev, chan);
-> +		if (*val < 0) {
-> +			dev_notice(indio_dev->dev.parent,
-> +				"failed to sample data on channel[%d]\n",
-> +				chan->channel);
-> +			return *val;
-> +		}
-> +		if (adc_dev->dev_comp->sample_data_cali)
-> +			*val = mt_auxadc_get_cali_data(*val, true);
-> +
-> +		return IIO_VAL_INT;
-> +
->  	case IIO_CHAN_INFO_PROCESSED:
->  		*val = mt6577_auxadc_read(indio_dev, chan);
->  		if (*val < 0) {
+> [...]
 
+Merged into arm/drivers, thanks!
+
+merge commit: a8c371f0cfe7224e4bc3f3f0495e54a035107653
+
+       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
