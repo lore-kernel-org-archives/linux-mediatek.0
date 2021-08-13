@@ -2,80 +2,87 @@ Return-Path: <SRS0=ikIt=NE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85987C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 18:09:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DA64C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 20:54:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2146E610E9
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 18:09:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2146E610E9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id DEB4A60F91
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 20:54:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DEB4A60F91
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0aRwGg0dzrHWWaZO2O5cCjiCmhy/BM1FkSnKydYU94U=; b=wFYXBsHUY1HSRj
-	q4yZqsoyQEiREu26XJAgYDhNlHcil7ycnSAvWRNFUdtgdFqvUr/n4+nnjcHdgu5QeBPkTOae0zHrN
-	eTF4P1CXFx6aTV7UrFew61TxVAXBAYgC9ldlXs2XGpI7StVnqGyXjfmBuv1lHk4zX2vYbeYsPbWBx
-	qyGgdUnEmxrgTBywXuOItY+IXpBFpZb3ohwVvhswwaZkvkEvXpQqyV+/wLP96PcTvLMIErLpt2EEK
-	ZTQfSU1TxQNY2zrLjIuNwO2HPxcYMYn/AzizKtKY2DdcCsjbzkeCGGFhgbLB4pXYARSTsMQcGKOu1
-	u8MDEMWe9L/z2cIAGmCg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ltYyZqysYUiTmL0SW84k9HGsoXkfeethWDWNsQax7+U=; b=Dbu4mJ2g21Z1Fx
+	vLxhgXSWVa2COeKg/i4klvHVvGG62GznqdJMO6HDaqGTv9Kz16Y+gtXLO6tAGHjl+0yCITKD+suwO
+	LZunisX+tK8ccP047/n5tzyvN9Q+ZKVtFrxdyfvT5yvzHK6mh94NaFByhW2MhM2VFpUarHU0ZNc3r
+	fk3GlSz5Wk1Fc36rbC8SixhsLJr/kHlT8nXwDdT+9mBWJYUuvBcRd+HJO2BS4mxCwG2Phuf+U92+K
+	JBrnYo2zxTk4B74Vh7+0m68M+WGwSSUFp+oit+ZpVwy35u3jbgtdeE8pxV9hAuv0VXCPMov6WNLwE
+	mh0SxB0fNMPvKMI4RBQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEbci-00DKgu-D0; Fri, 13 Aug 2021 18:09:40 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mEe6j-00DZkS-SM; Fri, 13 Aug 2021 20:48:49 +0000
+Received: from mail-oo1-f49.google.com ([209.85.161.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEbcb-00DKfN-KS
- for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 18:09:37 +0000
-X-UUID: f9998e255f0e412581fa74b7d6003edb-20210813
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1AX8F79qACvbJzGrhNwzJ3VCwjf7YRFcxyDJLJfDQcQ=; 
- b=HuMsM37M7Ro2lVCCei4I5lmVlrWt5LqTO+YB9HBEXvV9RG4MrKLlAuD9/xv4Y+0CKNPSAbtRPenwLJlVstSWUGO5uaZnKRZnSvKcbiwLpfa2o8oLXFcArfKAtNp0MwLxv388CRP01KAgJE0o8Nr9PdGoiEenr7g/ivsguVnY02g=;
-X-UUID: f9998e255f0e412581fa74b7d6003edb-20210813
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 886096985; Fri, 13 Aug 2021 11:09:30 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 11:09:28 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 14 Aug 2021 02:09:20 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 14 Aug 2021 02:09:21 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
- <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] mt76: mt7921: fix kernel warning from
- cfg80211_calculate_bitrate
-Date: Sat, 14 Aug 2021 02:09:18 +0800
-Message-ID: <a781b573380564be395500898269f27e5e4d2ba9.1628877755.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1mEe6h-00DZjC-09; Fri, 13 Aug 2021 20:48:48 +0000
+Received: by mail-oo1-f49.google.com with SMTP id
+ s21-20020a4ae5550000b02902667598672bso3153926oot.12; 
+ Fri, 13 Aug 2021 13:48:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=bPCRYSb4R3QRR/TZOTUEc168jUR0KRnGrwUUxVnp0ZY=;
+ b=C5L81bGiB6DWxjgG7+tlpsLUAzftNCNxezJ405hpkyC1jdGY164kaffFBngeAQ/txl
+ znyUgdElbDEnX/cLU4/onQutOabBtwzvtT2/3AZbCniuWbio32y+x37eLL6zEgZkpU06
+ yJlYv5sf+MHOeMHs2fBKX75ojRRTX7ROJ5P3Fryh4Ak2gomJIH9lFJyo3Q6Jeq3NrqYh
+ oO0Q2tjZ97WBsqCBw0UkoINv1idFYv7h5Fj5pdShZwIZtx5vXGCJKZ/S1ebZ0wkQalZZ
+ 7vOI/WK8wQi4K1YJKoAYI+VcRjnkmuL1ha9YmxKLC888ZoLmoqHn4ifj+tqIIzBLE1HF
+ Uuww==
+X-Gm-Message-State: AOAM533WVrqpOAylq24lla198ajb0s3J2nEgum+HnwRsyUBOACdtql6N
+ q6Qiy60HPDZtL2hZGHF6LA==
+X-Google-Smtp-Source: ABdhPJyZNXWYZLbhbYEyv82dBusJ4poQxct5LqJsFDCJXH2Khf0S/rfsNnLPdLrkZXj63k50uh2bgw==
+X-Received: by 2002:a4a:e907:: with SMTP id z7mr3212174ood.20.1628887723401;
+ Fri, 13 Aug 2021 13:48:43 -0700 (PDT)
+Received: from robh.at.kernel.org
+ (2603-8080-2a06-ed00-7254-0b80-dd3c-00c6.res6.spectrum.com.
+ [2603:8080:2a06:ed00:7254:b80:dd3c:c6])
+ by smtp.gmail.com with ESMTPSA id w16sm559046oiv.15.2021.08.13.13.48.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Aug 2021 13:48:42 -0700 (PDT)
+Received: (nullmailer pid 4005099 invoked by uid 1000);
+ Fri, 13 Aug 2021 20:48:41 -0000
+Date: Fri, 13 Aug 2021 15:48:41 -0500
+From: Rob Herring <robh@kernel.org>
+To: Sungbo Eo <mans0n@gorani.run>
+Cc: linux-mediatek@lists.infradead.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] arm: dts: mt7623: add musb device nodes
+Message-ID: <YRbaqdF0EJxNcpsX@robh.at.kernel.org>
+References: <20210803151320.71531-1-mans0n@gorani.run>
+ <20210808123840.176738-1-mans0n@gorani.run>
+ <20210808123840.176738-3-mans0n@gorani.run>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210808123840.176738-3-mans0n@gorani.run>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_110933_758439_3A80BBD7 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20210813_134847_071413_5E20C6C1 
+X-CRM114-Status: GOOD (  18.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,94 +99,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Sun, Aug 08, 2021 at 09:38:40PM +0900, Sungbo Eo wrote:
+> MT7623 has an musb controller that is compatible with the one from MT2701.
+> 
+> Signed-off-by: Sungbo Eo <mans0n@gorani.run>
+> ---
+> v2:
+> * rename usb3 label to usb0
+> * move usb0 & u2phy1 nodes to the right sorted place
+> * disable u2phy1 by default
+> * correct u2port2 node name to match its reg address
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi  | 34 ++++++++++++++++++++++++++++++++++
+>  arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
+>  2 files changed, 38 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 3c11f7cfcc40..790d74439cc6 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -585,6 +585,40 @@ spi2: spi@11017000 {
+>  		status = "disabled";
+>  	};
+>  
+> +	usb0: usb@11200000 {
+> +		compatible = "mediatek,mt7623-musb",
+> +			     "mediatek,mtk-musb";
+> +		reg = <0 0x11200000 0 0x1000>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "mc";
+> +		phys = <&u2port2 PHY_TYPE_USB2>;
+> +		dr_mode = "otg";
+> +		clocks = <&pericfg CLK_PERI_USB0>,
+> +			 <&pericfg CLK_PERI_USB0_MCU>,
+> +			 <&pericfg CLK_PERI_USB_SLV>;
+> +		clock-names = "main","mcu","univpll";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +		status = "disabled";
+> +	};
+> +
+> +	u2phy1: t-phy@11210000 {
+> +		compatible = "mediatek,mt7623-tphy",
+> +			     "mediatek,generic-tphy-v1";
+> +		reg = <0 0x11210000 0 0x0800>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		status = "disabled";
+> +
+> +		u2port2: usb-phy@11210800 {
+> +			reg = <0 0x11210800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
+> +			#phy-cells = <1>;
+> +			status = "okay";
 
-Fix the kernel warning from cfg80211_calculate_bitrate
-due to the legacy rate is not parsed well in the current driver.
+Enabled is the default and doesn't really make sense here given the 
+parent is disabled. Drop.
 
-Also, zeros struct rate_info before we fill it out to avoid the old value
-is kept such as rate->legacy.
+> +		};
+> +	};
+> +
+>  	audsys: clock-controller@11220000 {
+>  		compatible = "mediatek,mt7623-audsys",
+>  			     "mediatek,mt2701-audsys",
+> diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
+> index 0735a1fb8ad9..d304b62d24b5 100644
+> --- a/arch/arm/boot/dts/mt7623a.dtsi
+> +++ b/arch/arm/boot/dts/mt7623a.dtsi
+> @@ -35,6 +35,10 @@ &scpsys {
+>  	clock-names = "ethif";
+>  };
+>  
+> +&usb0 {
+> +	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
+> +};
+> +
+>  &usb1 {
+>  	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
+>  };
+> -- 
+> 2.32.0
+> 
+> 
 
-[  790.921560] WARNING: CPU: 7 PID: 970 at net/wireless/util.c:1298 cfg80211_calculate_bitrate+0x354/0x35c [cfg80211]
-[  790.987738] Hardware name: MediaTek Asurada rev1 board (DT)
-[  790.993298] pstate: a0400009 (NzCv daif +PAN -UAO)
-[  790.998104] pc : cfg80211_calculate_bitrate+0x354/0x35c [cfg80211]
-[  791.004295] lr : cfg80211_calculate_bitrate+0x180/0x35c [cfg80211]
-[  791.010462] sp : ffffffc0129c3880
-[  791.013765] x29: ffffffc0129c3880 x28: ffffffd38305bea8
-[  791.019065] x27: ffffffc0129c3970 x26: 0000000000000013
-[  791.024364] x25: 00000000000003ca x24: 000000000000002f
-[  791.029664] x23: 00000000000000d0 x22: ffffff8d108bc000
-[  791.034964] x21: ffffff8d108bc0d0 x20: ffffffc0129c39a8
-[  791.040264] x19: ffffffc0129c39a8 x18: 00000000ffff0a10
-[  791.045563] x17: 0000000000000050 x16: 00000000000000ec
-[  791.050910] x15: ffffffd3f9ebed9c x14: 0000000000000006
-[  791.056211] x13: 00000000000b2eea x12: 0000000000000000
-[  791.061511] x11: 00000000ffffffff x10: 0000000000000000
-[  791.066811] x9 : 0000000000000000 x8 : 0000000000000000
-[  791.072110] x7 : 0000000000000000 x6 : ffffffd3fafa5a7b
-[  791.077409] x5 : 0000000000000000 x4 : 0000000000000000
-[  791.082708] x3 : 0000000000000000 x2 : 0000000000000000
-[  791.088008] x1 : ffffff8d3f79c918 x0 : 0000000000000000
-[  791.093308] Call trace:
-[  791.095770]  cfg80211_calculate_bitrate+0x354/0x35c [cfg80211]
-[  791.101615]  nl80211_put_sta_rate+0x6c/0x2c0 [cfg80211]
-[  791.106853]  nl80211_send_station+0x980/0xaa4 [cfg80211]
-[  791.112178]  nl80211_get_station+0xb4/0x134 [cfg80211]
-[  791.117308]  genl_rcv_msg+0x3a0/0x440
-[  791.120960]  netlink_rcv_skb+0xcc/0x118
-[  791.124785]  genl_rcv+0x34/0x48
-[  791.127916]  netlink_unicast+0x144/0x1dc
-
-Fixes: 1c099ab44727 ("mt76: mt7921: add MCU support")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: don't do unnecessary line removal
----
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index cadb633639d3..9b35b5da3619 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -328,11 +328,13 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
- 			 struct rate_info *rate, u16 r)
- {
- 	struct ieee80211_supported_band *sband;
--	u16 flags = 0;
-+	u16 flags = 0, rate_idx;
- 	u8 txmode = FIELD_GET(MT_WTBL_RATE_TX_MODE, r);
- 	u8 gi = 0;
- 	u8 bw = 0;
-+	bool cck = false;
- 
-+	memset(rate, 0, sizeof(*rate));
- 	rate->mcs = FIELD_GET(MT_WTBL_RATE_MCS, r);
- 	rate->nss = FIELD_GET(MT_WTBL_RATE_NSS, r) + 1;
- 
-@@ -357,13 +359,18 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
- 
- 	switch (txmode) {
- 	case MT_PHY_TYPE_CCK:
-+		cck = true;
-+		fallthrough;
- 	case MT_PHY_TYPE_OFDM:
- 		if (mphy->chandef.chan->band == NL80211_BAND_5GHZ)
- 			sband = &mphy->sband_5g.sband;
- 		else
- 			sband = &mphy->sband_2g.sband;
- 
--		rate->legacy = sband->bitrates[rate->mcs].bitrate;
-+		rate_idx = FIELD_GET(MT_TX_RATE_IDX, r);
-+		rate_idx = mt76_get_rate(mphy->dev, sband, rate_idx,
-+					 cck);
-+		rate->legacy = sband->bitrates[rate_idx].bitrate;
- 		break;
- 	case MT_PHY_TYPE_HT:
- 	case MT_PHY_TYPE_HT_GF:
--- 
-2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
