@@ -2,80 +2,74 @@ Return-Path: <SRS0=ikIt=NE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2266C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 08:20:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E389C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 10:15:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 813306109E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 08:20:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 813306109E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id DE9F2610A4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 10:15:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE9F2610A4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6BDquf+F594Dhtip5HrCQLiUhWoYc+tjNwenzV+s6Q=; b=1GvqTgfGV2zE5X
-	o7mDkZ9ULkI0F4U5zPLBnIbAkor2S0pUelSIluFkHXEX3dqR0sxVJ1lqSQmuxaEtBV+0+EhKSeb+6
-	mDe8nH5qC/7dit5TFcpQPiOe7bNBuMo1C18oUKds7tTA8w7ZjtzgJlIb2TJxHWi1WHebGgvZX0IUc
-	QUl8iwHpsvFNJX5viok2L4lVPLIqknMrsQR7DmLTTLFF60Rs42dZAmqIvTw4akvEOXYiQOtALRqp2
-	qraTco/jm2qY9tWnxJFsxr5AeLGq4Oqfa5IVglecUJz8XvFzTqs6akd12S+gi5+cWV+6yOY8G1GC8
-	x1hqdL4X+xkGfYvTSweQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Il1YzffiGvb1g5r3Lo3bqSYWkfTQFyh6YugX7xTnaCE=; b=vUy/oZg+1iA5srbXf9QYlcYptp
+	fqZ+CRy7jCER6r2j1bwc2fzDdTqvk4wPC8MfNNgDvZLGhwBh9o8/59+9JFCSNKPFHGy0gINkdiq2F
+	014nHL49Kx9PSDALiXuoH/9z6aZjn/vVWzxOmkfwR2l1XPBj+zex+QkVUwtoOxr/e0RROONL/pyGG
+	0c6fBgL3fZP6rEou2DH0R3YGBvb50YAvEFII/BSrxacvbsodYGmzhUEJQ3Tq/kNf4G4WfPHV80rIN
+	8wQOYi6hJlWAGUbe48x3LJNiWCVxnfn7EbsPQsCixfTTO+pAA1nGiTxVHmbPmQ/TAmnYmRLioZo98
+	rYCrumnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mESQc-00CDVt-Ia; Fri, 13 Aug 2021 08:20:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mEUDd-00CQZ7-NR; Fri, 13 Aug 2021 10:15:17 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mESQW-00CDUK-3h; Fri, 13 Aug 2021 08:20:33 +0000
-X-UUID: 8bcf9096dec24702a4b7b48fd053797e-20210813
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=wU1JtTZVI3blUl1aK1IxSm9dWJZeuXhAazPC30pjDfk=; 
- b=Q878bHIuUN9CaORIm+qs3JfsCHqcFOVM4LX7ItK7qL3BIq1ZtTxLMg2FkT2WxuTHSZ94cgeAyNQSA4tzIXK8ffz820JUf+CMXvCjVxNnFK8qzSFN3VTlDe7fS6qD7FxU5kVaiAw1u6Q201QXDBuvRhQ2kWiv4JopGA9BG0sV7kE=;
-X-UUID: 8bcf9096dec24702a4b7b48fd053797e-20210813
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1135911335; Fri, 13 Aug 2021 01:20:21 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 01:10:19 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 13 Aug 2021 16:10:06 +0800
-Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 13 Aug 2021 16:10:05 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: David Ahern <dsahern@gmail.com>
-CC: "David S . Miller" <davem@davemloft.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <rocco.yue@gmail.com>, <chao.song@mediatek.com>,
- <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
-Subject: Re: [PATCH net-next v3] ipv6: add IFLA_INET6_RA_MTU to expose mtu
- value in the RA message
-Date: Fri, 13 Aug 2021 16:07:40 +0800
-Message-ID: <20210813080740.31571-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <4624cc10-1fc8-12cd-e9e1-9585f5b496a0@gmail.com>
-References: <4624cc10-1fc8-12cd-e9e1-9585f5b496a0@gmail.com>
+ id 1mEUDY-00CQY2-4e
+ for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 10:15:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=EwBDn+MmZXsf2retNthI5UkmLCBolXZWJ/auLbis7XI=; b=emVUoEH4fQBscl4npECKzQRThY
+ N1Qrb5YdQWpvAL8IUDrYISnYxdL66bqVXsao4YjlNp1GsTmRL0bt6xCneVmdwr2VNm1z7HhceG806
+ igwYVsocgJ8It/V9QYrPUidnYug2eDAQ8vtJDMf9okWJJu2XgH59vWPfOTvDw2aZFPjU=;
+Received: from p4ff13206.dip0.t-ipconnect.de ([79.241.50.6] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1mEUDN-00069Y-EJ; Fri, 13 Aug 2021 12:15:01 +0200
+Subject: Re: [PATCH v4 1/2] mt76: mt7915: fix hwmon temp sensor mem
+ use-after-free
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Ben Greear <greearb@candelatech.com>
+References: <9f5b0cf6c4296d3a9e78a95516cf26d1db4baba9.1627696765.git.ryder.lee@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <04c61f83-e4ce-536f-7030-9050d8edfe78@nbd.name>
+Date: Fri, 13 Aug 2021 12:15:00 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <9f5b0cf6c4296d3a9e78a95516cf26d1db4baba9.1627696765.git.ryder.lee@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_012029_606234_14D70B52 
-X-CRM114-Status: GOOD (  23.14  )
+X-CRM114-CacheID: sfid-20210813_031512_432062_650C7530 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,80 +81,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-08-11 at 12:05 -0600, David Ahern wrote:
-> On 8/11/21 7:56 AM, David Ahern wrote:
->> On 8/10/21 6:33 AM, Rocco Yue wrote:
->>> On Mon, 2021-08-09 at 16:43 -0600, David Ahern wrote:
->>>>
->>>> Since this MTU is getting reported via af_info infrastructure,
->>>> rtmsg_ifinfo should be sufficient.
->>>>
->>>> From there use 'ip monitor' to make sure you are not generating multiple
->>>> notifications; you may only need this on the error path.
->>>
->>> Hi David,
->>>
->>> To avoid generating multiple notifications, I added a separate ramtu notify
->>> function in this patch, and I added RTNLGRP_IPV6_IFINFO nl_mgrp to the ipmonitor.c
->>> to verify this patch was as expected.
->>>
->>> I look at the rtmsg_ifinfo code, it should be appropriate and I will use it and
->>> verify it.
->>>
->>> But there's one thing, I'm sorry I didn't fully understand the meaning of this
->>> sentence "you may only need this on the error path". Honestly, I'm not sure what
->>> the error patch refers to, do you mean "if (mtu < IPV6_MIN_MTU || mtu > skb->dev->mtu)" ?
->>>
->> 
->> looks like nothing under:
->>     if (ndopts.nd_opts_mtu && in6_dev->cnf.accept_ra_mtu) {
->> 
->>     }
->> 
->> is going to send a link notification so you can just replace
->> inet6_iframtu_notify with rtmsg_ifinfo in your proposed change.
->> 
-> 
-> Taking a deeper dive on the code, you do not need to call rtmsg_ifinfo.
-> Instead, the existing:
-> 
->         /*
->          *      Send a notify if RA changed managed/otherconf flags or
-> timer settings
->          */
->         if (send_ifinfo_notify)
->                 inet6_ifinfo_notify(RTM_NEWLINK, in6_dev);
-> 
-> is called too early. For one the RA can change the MTU and that is done
-> after this notify.
-> 
-> I think if you moved this down to the out:
-> 
-> out:
->         /*
->          *      Send a notify if RA changed managed/otherconf flags or
-> timer settings
->          */
->         if (send_ifinfo_notify)
->                 inet6_ifinfo_notify(RTM_NEWLINK, in6_dev);
-> 
-> and then set send_ifinfo_notify when the mtu is *changed* by the RA you
-> should be good.
-
-Hi David,
-
-Thanks for your suggestion,
-this looks like a better choice without adding a separate notification function,
-I will modify it and push the next iteration .
-
-Best Regards,
-Rocco
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Ck9uIDIwMjEtMDctMzEgMDQ6MTcsIFJ5ZGVyIExlZSB3cm90ZToKPiBGcm9tOiBCZW4gR3JlZWFy
+IDxncmVlYXJiQGNhbmRlbGF0ZWNoLmNvbT4KPiAKPiBXaXRob3V0IHRoaXMgY2hhbmdlLCBnYXJi
+YWdlIGlzIHNlZW4gaW4gdGhlIGh3bW9uIG5hbWUKPiBhbmQgc2Vuc29ycyBvdXRwdXQgZm9yIG10
+NzkxNSBpcyBnYXJibGVkLgpXaGVyZSBkb2VzIHRoZSB1c2UtYWZ0ZXItZnJlZSBidWcgY29tZSBm
+cm9tPyBJdCdzIG5vdCBvYnZpb3VzIHRvIG1lIHdoeQp1c2luZyBLQlVJTERfTU9ETkFNRSBpbnN0
+ZWFkIG9mIHdpcGh5X25hbWUoKSBmaXhlcyBpdC4KSSBzdGlsbCB0aGluayB0aGUgcGh5IG5hbWUg
+c2hvdWxkIHByb2JhYmx5IGJlIHBhcnQgb2YgdGhlIHByZWZpeC4KCj4gV2l0aCB0aGUgY2hhbmdl
+Ogo+IAo+IG10NzkxNS1wY2ktMTQwMAo+IEFkYXB0ZXI6IFBDSSBhZGFwdGVyCj4gdGVtcDE6ICAg
+ICAgICArNDkuMMKwQwo+IAo+IEZpeGVzOiBkNjkzODI1MWJiNWIgKG10NzY6IG10NzkxNTogYWRk
+IHRoZXJtYWwgc2Vuc29yIGRldmljZSBzdXBwb3J0KQpUaGUgZm9ybWF0IGlzIHdyb25nIChtaXNz
+aW5nIHF1b3RlcyksIGFuZCB0aGUgaGFzaCByZWZlcmVuY2VzIGEgY29tbWl0CnRoYXQncyBub3Qg
+aW4gYW55IHVwc3RyZWFtIHRyZWUuCgotIEZlbGl4CgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
+bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
