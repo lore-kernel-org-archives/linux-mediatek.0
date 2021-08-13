@@ -2,80 +2,85 @@ Return-Path: <SRS0=ikIt=NE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42AA5C4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8816AC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 05:27:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 02440603E7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 02440603E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2C8B96103E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 05:27:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C8B96103E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D9XRFoEZhJ6nhCPvL/Opg/1GqBc69aVYYvxo3OLRUeM=; b=46yQeSv2fsUjW2
-	3Y/SHhEa7foQG3KCdLC1OvaVzwkjS98Yb0vNybwa6HdV7XSkIxQOWUzQUM1kwhIMYQHFO67GCLS9Q
-	Lzks3klO1j9sxYKRlvrH7muE55/6Q/1VAPcrX5d2pHAjR6yWU1IeH9i6aW20QuUhiqcignzMhNyc3
-	ngSiJzmt1w2BsLHOlxPSzhWBy2QV6zJWMmlcTsHivAXOm2hPgss0ce8W/Kd7Qk0p8bNIyAcKgDLwc
-	LW4VvcjP+SEOlAa3Q6bZNPH+BLPqCfeJ5bwVXIN72wZxvpv2B6/nrIQKCrRzuPesOSGoI8amXIkgk
-	5f3M1oFq15bz4d3Xqbuw==;
+	List-Owner; bh=MHs/K727LarQAmwMDWne18bPWmtzbcTW7T6dSCSD440=; b=sleJd7gQXx1Ygt
+	GZG5Z+ilOsPXIPV/cmhRBI9gRSdovG1GfraYQ/EdwDAxPShkK1QcLmcg5DiNOPZAyLxJ20hZegNqP
+	9//TnV02FUF/glSrM+/jq5d6YKI5opReq7F/ywOSOZsh8kUJg1YkTheBbR09eeu9wbOHerSs8c+rl
+	PorLp5ECNFZApXqAegp7qQQ1gu8/LOds3w1lrkPm82mNMLcBWpFbp4V2PTOQe88XS3jqr8ulxSFt6
+	wB6j3H0vIQ0f8HFrPGi1stsJpGWOQQAVVOGCRLelAuRFBtB10eZ1qa2DSKkr0Kb7/E90ttBPkyZR6
+	25FTppZEDrExtGYVUK/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mENpI-00Bd3X-67; Fri, 13 Aug 2021 03:25:44 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mEPiS-00Bjrw-Ak; Fri, 13 Aug 2021 05:26:48 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mENoJ-00Bcgl-J0; Fri, 13 Aug 2021 03:24:46 +0000
-X-UUID: 0375d6c3269846a4b07d4b77c04aeb7e-20210812
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=bvPEIm4Ji3kzYv7f/3U+Sccfpn3ueE8uGlNTWdf5QPU=; 
- b=rrWfbwtIy20pP6drY7VjwI4Dl1x16s15F2lh3S6AhpF173Ey9nZ3hciDCkbMHspp7ZTtejBMHrJCLHRA+hcPcwbLei3clnxxTxJ4ojLvpjPgpt6Xg6+oCvLJ0YNy/SX2cIbR37HZyRPC1BRtvbrecuGfvOHC8bZqQqvN0eZ+Dsc=;
-X-UUID: 0375d6c3269846a4b07d4b77c04aeb7e-20210812
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1287735932; Thu, 12 Aug 2021 20:24:33 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 12 Aug 2021 20:24:32 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 11:24:31 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 13 Aug 2021 11:24:31 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Wendell Lin <wendell.lin@mediatek.com>, Hanks Chen
- <hanks.chen@mediatek.com>, <linux-clk@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Miles Chen
- <miles.chen@mediatek.com>, Lee Jones <lee.jones@linaro.org>
-Subject: [RESEND PATCH 3/4] clk: mediatek: support COMMON_CLK_MT6779 module
- build
-Date: Fri, 13 Aug 2021 11:24:28 +0800
-Message-ID: <20210813032429.14715-4-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210813032429.14715-1-miles.chen@mediatek.com>
-References: <20210813032429.14715-1-miles.chen@mediatek.com>
+ id 1mEPiM-00Bjqp-Sd
+ for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 05:26:47 +0000
+Received: by mail-pl1-x636.google.com with SMTP id l11so10408942plk.6
+ for <linux-mediatek@lists.infradead.org>; Thu, 12 Aug 2021 22:26:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1ocdM6c2cinlXX1kZNnF83LUMUxlQMibTtFjKC/p0qQ=;
+ b=R+AVgrUdAT0DO61zcf2nNP6YwLVeEH+xYBgVGH2ye7tbv2+LN/mtkD2DBac6fUdKyO
+ iE7rqZZACC/Za5jIIuAaiAFFHcx45bf0+VrfEc2nDoiZk8tLtpxx3g7J4erxBSNNzVzg
+ HSLpxfDNUdVNkHCqYG6NDmEH7faLalmesZdIM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1ocdM6c2cinlXX1kZNnF83LUMUxlQMibTtFjKC/p0qQ=;
+ b=TS2eTNG47MzZxmv3NbGQEVFL9QucNRZUjyJxxmvAlybgldLwG51hfNHrYQlMstfKre
+ ucp4w1cwrj+8PzxwV5NaUMcKcqNWbIwfBptQoIf0vhOGL7jdoC2DOJiIgs5WO4s5Z6DK
+ qJXIF7zynxhGPOI9PHEJ8eC6PM+95tN3NwlH9gnlyMXemN7PRU9gmHTIyrIZb8pX+z3R
+ 9jyezHBqB8aqsXhL3LZz2KHPMndikIiA1KzhxYGO7IZFy4E9KaBJ59CSUg//xPEWXKJL
+ FH82UFa9ujfS6XvH0o0zniB/Mohw8aY3RKlgZarRqPpkNaJzNMzdwSKQ0xzj+vRfqsln
+ fh/Q==
+X-Gm-Message-State: AOAM530ukZKDhDgbb5s+wi9VlzPzqL0lHBLR4wSziPa+CIS8KZfQKTHe
+ xY9lNFAkUk52mhJIIQ9dtavbX9MfTP6DYmyjPOXwSQ==
+X-Google-Smtp-Source: ABdhPJyQaVIf1p9CcXmskDZyungHHN1Ox9/AmjAJTBtnxFY1rjsASN0ix1i9LxTbcmzwWe60qju7DBet2NbT00eBwMU=
+X-Received: by 2002:a63:682:: with SMTP id 124mr713904pgg.299.1628832402140;
+ Thu, 12 Aug 2021 22:26:42 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1627635002-24521-1-git-send-email-chunfeng.yun@mediatek.com>
+ <1627635002-24521-4-git-send-email-chunfeng.yun@mediatek.com>
+In-Reply-To: <1627635002-24521-4-git-send-email-chunfeng.yun@mediatek.com>
+From: Ikjoon Jang <ikjn@chromium.org>
+Date: Fri, 13 Aug 2021 13:26:30 +0800
+Message-ID: <CAATdQgBeFHJV+=phaEBaXpKwMJygtGVzxJ0yC5hfvijpgwVMAg@mail.gmail.com>
+Subject: Re: [PATCH 04/11] usb: xhci-mtk: fix use-after-free of mtk->hcd
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, open list <linux-kernel@vger.kernel.org>, 
+ Eddie Hung <eddie.hung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_202443_677319_8A2A582A 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20210812_222643_234943_22842F17 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,181 +97,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To support COMMON_CLK_MT6779* module build,
-add MODULE_LICENSE and export necessary symbols.
+On Fri, Jul 30, 2021 at 4:50 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+>  BUG: KASAN: use-after-free in usb_hcd_is_primary_hcd+0x38/0x60
+>  Call trace:
+>   dump_backtrace+0x0/0x3dc
+>   show_stack+0x20/0x2c
+>   dump_stack+0x15c/0x1d4
+>   print_address_description+0x7c/0x510
+>   kasan_report+0x164/0x1ac
+>   __asan_report_load8_noabort+0x44/0x50
+>   usb_hcd_is_primary_hcd+0x38/0x60
+>   xhci_mtk_runtime_suspend+0x68/0x148
+>   pm_generic_runtime_suspend+0x90/0xac
+>   __rpm_callback+0xb8/0x1f4
+>   rpm_callback+0x54/0x1d0
+>   rpm_suspend+0x4e0/0xc84
+>   __pm_runtime_suspend+0xc4/0x114
+>   xhci_mtk_probe+0xa58/0xd00
+>
+> This may happen when probe fails, needn't suspend it synchronously,
+> fix it by using pm_runtime_put_noidle().
+>
+> Reported-by: Pi Hsun <pihsun@google.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: Hanks Chen <hanks.chen@mediatek.com>
-Cc: Wendell Lin <wendell.lin@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/clk/mediatek/clk-mt6779-aud.c  | 2 ++
- drivers/clk/mediatek/clk-mt6779-cam.c  | 2 ++
- drivers/clk/mediatek/clk-mt6779-img.c  | 2 ++
- drivers/clk/mediatek/clk-mt6779-ipe.c  | 2 ++
- drivers/clk/mediatek/clk-mt6779-mfg.c  | 2 ++
- drivers/clk/mediatek/clk-mt6779-mm.c   | 2 ++
- drivers/clk/mediatek/clk-mt6779-vdec.c | 2 ++
- drivers/clk/mediatek/clk-mt6779-venc.c | 2 ++
- drivers/clk/mediatek/clk-mt6779.c      | 2 ++
- 9 files changed, 18 insertions(+)
+Reviewed-and-Tested-by: Ikjoon Jang <ikjn@chromium.org>
 
-diff --git a/drivers/clk/mediatek/clk-mt6779-aud.c b/drivers/clk/mediatek/clk-mt6779-aud.c
-index 11b209f95e25..439c0bc94b73 100644
---- a/drivers/clk/mediatek/clk-mt6779-aud.c
-+++ b/drivers/clk/mediatek/clk-mt6779-aud.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-@@ -115,3 +116,4 @@ static struct platform_driver clk_mt6779_aud_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_aud_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-cam.c b/drivers/clk/mediatek/clk-mt6779-cam.c
-index 244d4208b7fb..c99ddb210b70 100644
---- a/drivers/clk/mediatek/clk-mt6779-cam.c
-+++ b/drivers/clk/mediatek/clk-mt6779-cam.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/clock/mt6779-clk.h>
-@@ -64,3 +65,4 @@ static struct platform_driver clk_mt6779_cam_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_cam_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-img.c b/drivers/clk/mediatek/clk-mt6779-img.c
-index 26292a45c613..bf652052879c 100644
---- a/drivers/clk/mediatek/clk-mt6779-img.c
-+++ b/drivers/clk/mediatek/clk-mt6779-img.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/clock/mt6779-clk.h>
-@@ -56,3 +57,4 @@ static struct platform_driver clk_mt6779_img_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_img_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-ipe.c b/drivers/clk/mediatek/clk-mt6779-ipe.c
-index bb519075639c..a1a1c9cb329a 100644
---- a/drivers/clk/mediatek/clk-mt6779-ipe.c
-+++ b/drivers/clk/mediatek/clk-mt6779-ipe.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/clock/mt6779-clk.h>
-@@ -58,3 +59,4 @@ static struct platform_driver clk_mt6779_ipe_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_ipe_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-mfg.c b/drivers/clk/mediatek/clk-mt6779-mfg.c
-index c6ee2a89c070..9bf48c56d852 100644
---- a/drivers/clk/mediatek/clk-mt6779-mfg.c
-+++ b/drivers/clk/mediatek/clk-mt6779-mfg.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- 
-@@ -53,3 +54,4 @@ static struct platform_driver clk_mt6779_mfg_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_mfg_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-mm.c b/drivers/clk/mediatek/clk-mt6779-mm.c
-index 059c1a41ac7a..d5ead5531026 100644
---- a/drivers/clk/mediatek/clk-mt6779-mm.c
-+++ b/drivers/clk/mediatek/clk-mt6779-mm.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- #include <dt-bindings/clock/mt6779-clk.h>
-@@ -106,3 +107,4 @@ static struct platform_driver clk_mt6779_mm_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_mm_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-vdec.c b/drivers/clk/mediatek/clk-mt6779-vdec.c
-index 1900da2586a1..ff7390e4c5f5 100644
---- a/drivers/clk/mediatek/clk-mt6779-vdec.c
-+++ b/drivers/clk/mediatek/clk-mt6779-vdec.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- 
-@@ -65,3 +66,4 @@ static struct platform_driver clk_mt6779_vdec_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_vdec_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779-venc.c b/drivers/clk/mediatek/clk-mt6779-venc.c
-index b41d1f859edc..489bf64346e3 100644
---- a/drivers/clk/mediatek/clk-mt6779-venc.c
-+++ b/drivers/clk/mediatek/clk-mt6779-venc.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/clk-provider.h>
- #include <linux/platform_device.h>
- 
-@@ -56,3 +57,4 @@ static struct platform_driver clk_mt6779_venc_drv = {
- };
- 
- builtin_platform_driver(clk_mt6779_venc_drv);
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mt6779.c b/drivers/clk/mediatek/clk-mt6779.c
-index 6e0d3a166729..9825385c9f94 100644
---- a/drivers/clk/mediatek/clk-mt6779.c
-+++ b/drivers/clk/mediatek/clk-mt6779.c
-@@ -4,6 +4,7 @@
-  * Author: Wendell Lin <wendell.lin@mediatek.com>
-  */
- 
-+#include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-@@ -1314,3 +1315,4 @@ static int __init clk_mt6779_init(void)
- }
- 
- arch_initcall(clk_mt6779_init);
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+
+> ---
+>  drivers/usb/host/xhci-mtk.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+> index 2548976bcf05..cb27569186a0 100644
+> --- a/drivers/usb/host/xhci-mtk.c
+> +++ b/drivers/usb/host/xhci-mtk.c
+> @@ -569,7 +569,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+>         xhci_mtk_ldos_disable(mtk);
+>
+>  disable_pm:
+> -       pm_runtime_put_sync_autosuspend(dev);
+> +       pm_runtime_put_noidle(dev);
+>         pm_runtime_disable(dev);
+>         return ret;
+>  }
+> --
+> 2.18.0
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
