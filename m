@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D389BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 17:52:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85987C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 18:09:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8626D610A4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 17:52:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8626D610A4
+	by mail.kernel.org (Postfix) with ESMTPS id 2146E610E9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 18:09:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2146E610E9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,39 +24,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=I3BVp9iFvUTP6pbh/NzTjR2vbj16P9DV091wh+A56ug=; b=uq0ihHy1bRUw1d
-	R+nuZWVXz4Y2HhGwsylmB1Ckix3hJ5yyJ+JeIpmbWVwR+3c+IzDItphXUqWtsxoBQ2zHbj+zoQKgo
-	qdldM0fZTU/SMtFRq6UWzXeRZSeRFpXCR4DxpuoloDyiAfbPsBm927+ej6wdJ0SYuQkfQ3+cREwx7
-	nBPQUGjR0knjm2CmjBlNPXVQOtJPiLaMrl5LK7/oCQfWsuLJaIUYFevbmPqRdYjVpH94WmhDOAduG
-	IPemW6vDoqzUZke9qhm2oT80Y3rr9FlCBcpgshDPnrHMfaem9Dk61jK/BbD0RVi5KePJnEsAnq99x
-	1C4qkQWd6WBu0pvHeTog==;
+	List-Owner; bh=0aRwGg0dzrHWWaZO2O5cCjiCmhy/BM1FkSnKydYU94U=; b=wFYXBsHUY1HSRj
+	q4yZqsoyQEiREu26XJAgYDhNlHcil7ycnSAvWRNFUdtgdFqvUr/n4+nnjcHdgu5QeBPkTOae0zHrN
+	eTF4P1CXFx6aTV7UrFew61TxVAXBAYgC9ldlXs2XGpI7StVnqGyXjfmBuv1lHk4zX2vYbeYsPbWBx
+	qyGgdUnEmxrgTBywXuOItY+IXpBFpZb3ohwVvhswwaZkvkEvXpQqyV+/wLP96PcTvLMIErLpt2EEK
+	ZTQfSU1TxQNY2zrLjIuNwO2HPxcYMYn/AzizKtKY2DdcCsjbzkeCGGFhgbLB4pXYARSTsMQcGKOu1
+	u8MDEMWe9L/z2cIAGmCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEbLg-00DJ85-Bo; Fri, 13 Aug 2021 17:52:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mEbci-00DKgu-D0; Fri, 13 Aug 2021 18:09:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEbLb-00DJ6u-7B
- for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 17:52:03 +0000
-X-UUID: e631883c23c541258ab24b781ab9a48a-20210813
+ id 1mEbcb-00DKfN-KS
+ for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 18:09:37 +0000
+X-UUID: f9998e255f0e412581fa74b7d6003edb-20210813
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=1XcrGk1cOS+RXzOb5YCoyNIwp8yqRWJRCTP2k0MqGE8=; 
- b=SqCTLvYbLpUtz4MSE+lUf+o02QPiF5doVP6F28KRfA/zpdtOG3JYHW5qqrSgrmt8IENtxbu+HPgUv6GOdCO9rU9lGh3BrJzfCgLY8yLNydsBjLk9cVjOOEZquIUu2vT07AmWfvEIWXjBtuWqjoX7xzvdBObdTx2XO4Jo2/NB7/s=;
-X-UUID: e631883c23c541258ab24b781ab9a48a-20210813
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=1AX8F79qACvbJzGrhNwzJ3VCwjf7YRFcxyDJLJfDQcQ=; 
+ b=HuMsM37M7Ro2lVCCei4I5lmVlrWt5LqTO+YB9HBEXvV9RG4MrKLlAuD9/xv4Y+0CKNPSAbtRPenwLJlVstSWUGO5uaZnKRZnSvKcbiwLpfa2o8oLXFcArfKAtNp0MwLxv388CRP01KAgJE0o8Nr9PdGoiEenr7g/ivsguVnY02g=;
+X-UUID: f9998e255f0e412581fa74b7d6003edb-20210813
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 3590874; Fri, 13 Aug 2021 10:51:53 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 886096985; Fri, 13 Aug 2021 11:09:30 -0700
+Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 10:51:52 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 14 Aug 2021 01:51:50 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Fri, 13 Aug 2021 11:09:28 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 14 Aug 2021 02:09:20 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 14 Aug 2021 01:51:50 +0800
+ Frontend Transport; Sat, 14 Aug 2021 02:09:21 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -65,16 +66,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
  <yenlinlai@google.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mt76: mt7921: fix kernel warning from
+Subject: [PATCH v2] mt76: mt7921: fix kernel warning from
  cfg80211_calculate_bitrate
-Date: Sat, 14 Aug 2021 01:51:48 +0800
-Message-ID: <e0389646cd508d9a5c7055eb85c44cc459cdf59d.1628876256.git.objelf@gmail.com>
+Date: Sat, 14 Aug 2021 02:09:18 +0800
+Message-ID: <a781b573380564be395500898269f27e5e4d2ba9.1628877755.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_105159_318976_3BBEBCA3 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20210813_110933_758439_3A80BBD7 
+X-CRM114-Status: GOOD (  12.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,7 +95,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 From: Sean Wang <sean.wang@mediatek.com>
 
 Fix the kernel warning from cfg80211_calculate_bitrate
-due to the legacy rate is not parsed well in current driver.
+due to the legacy rate is not parsed well in the current driver.
 
 Also, zeros struct rate_info before we fill it out to avoid the old value
 is kept such as rate->legacy.
@@ -133,14 +134,16 @@ is kept such as rate->legacy.
 Fixes: 1c099ab44727 ("mt76: mt7921: add MCU support")
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+v2: don't do unnecessary line removal
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index cadb633639d3..27317c121256 100644
+index cadb633639d3..9b35b5da3619 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -328,14 +328,15 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
+@@ -328,11 +328,13 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
  			 struct rate_info *rate, u16 r)
  {
  	struct ieee80211_supported_band *sband;
@@ -154,11 +157,8 @@ index cadb633639d3..27317c121256 100644
 +	memset(rate, 0, sizeof(*rate));
  	rate->mcs = FIELD_GET(MT_WTBL_RATE_MCS, r);
  	rate->nss = FIELD_GET(MT_WTBL_RATE_NSS, r) + 1;
--
- 	switch (peer->bw) {
- 	case IEEE80211_STA_RX_BW_160:
- 		gi = peer->g16;
-@@ -357,13 +358,18 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
+ 
+@@ -357,13 +359,18 @@ mt7921_mcu_tx_rate_parse(struct mt76_phy *mphy,
  
  	switch (txmode) {
  	case MT_PHY_TYPE_CCK:
