@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D87DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD1ACC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB70D610A4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DB70D610A4
+	by mail.kernel.org (Postfix) with ESMTPS id 78BF9610A4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 03:25:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78BF9610A4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,34 +24,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nt1kyTMUmksdOod+PqVD+5tjejv8nZPtZo7lzD2ODSo=; b=sfMRrCJZS2HbLR
-	qWiFHXowGr04jkaaRoUkv2vEU5vJ9QrpT9CNjPJUa7PmeS+NnjWPtHZo3oYQoBy0WgNwhkwNJltT8
-	TQsZvYw4zaZQHqC3eHk/U2MxOnsoMCH7uidT+rbcYGkSRQzME1wf/8g+Ivvn6IPcuOIbSlWR5IgK8
-	WFn5QDwEXcj1ApeMFHwtOsOi984Yn/VpJNBbRfEOB/VNio7QaVPTgZVM6lcL1sL+1t/dgdbLZux2b
-	2qJFILypkhIdvQJx5V7tF5IDwvTkJNOJ4whVR9ezqQc5tqVIG6RtiIz6k4nO1SKR5OW9HRA2s8DXx
-	tiZDhsTxfFtafKkcYHPA==;
+	List-Owner; bh=HicygIFmPTn8zOS9gEXbMkZmRFjtFisQsw4DjF9sYgE=; b=zf+xnD+aEvf3m8
+	aP7Rb/6th6FFFUPXo1DLNXLwBJzO6FrPd/tOzwcFZejpMvn6OkCPq0jkegpkh+diuBuuCqFOl0ra2
+	JoAqv+6Iz0KmDPv0yNlsmOWG5kBX+j/kymJ2rbO8yvzSotYIpea4hqTv8Dg/650t6iIOMcF4rUiRO
+	xEU87UGuGOf7a8n9xtM/5Vf9Ud09KH00ZztevIIhmpkfN6f7An85NKnwNijl3IpXfbyV+X0BKf0/Z
+	DUVd3sgZRRx3zyl3e9L6aS9oCsrQ+SKwSVN+7Jjx+qd3Pd+qXBWSmyZFnHDhdwfG3fSdp+vs6Jwwq
+	b9TRmEOwF4f6a4Ah3r1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mENoq-00Bcq5-07; Fri, 13 Aug 2021 03:25:16 +0000
+	id 1mENp3-00BcwM-AH; Fri, 13 Aug 2021 03:25:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mENoF-00Bcgl-NB; Fri, 13 Aug 2021 03:24:43 +0000
-X-UUID: 5d54b92a67284ceeb69b866c4631c077-20210812
+ id 1mENoF-00Bch2-Ub; Fri, 13 Aug 2021 03:24:43 +0000
+X-UUID: 1a403882f43e450eb7bfd7f81cb0b096-20210812
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=mdKbCrJHzX7PQET/h4H3Cnf7k47hyAvxLIMKCm96udQ=; 
- b=kaO3ex7HTx2KOHhwl+njIk9K5d7/utVBw1kpOqGev+D6L2SrfL+wgp6WRvbAzi0FlplxXUEkz18/WOhTclatLXiSgUKEOtcOL/rpxIP7e09iwJPHrJXSVsbZyHEJZ28XzLaiLZj0KYkoqzUtRgjR+xuN/Dp7Nq5ZzDLjNo+Biw4=;
-X-UUID: 5d54b92a67284ceeb69b866c4631c077-20210812
+ bh=3U8w+e3LpKk5cdQ3UDCyyORtv3cZCN2f6D9Cj3TqcEw=; 
+ b=ahfsR/bte9yoFl1nYFEqm7O0LBg39Ns6uwfA0fJUEpwG91XhJCn947MdcJ++cE15EMknuTg4Q4rZShjPBa3e7QTB7Nz/ZLAKaVOQ9vMWa4ArMiK4YqA2NBdrH7T4393e46NgB2ZvLsR7ws0qGgSTp9b6NAakF5I9BFVk5vP9yKM=;
+X-UUID: 1a403882f43e450eb7bfd7f81cb0b096-20210812
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1578890146; Thu, 12 Aug 2021 20:24:34 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 395702955; Thu, 12 Aug 2021 20:24:34 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 12 Aug 2021 20:24:32 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 13 Aug 2021 11:24:31 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -64,19 +64,18 @@ CC: Wendell Lin <wendell.lin@mediatek.com>, Hanks Chen
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Miles Chen
  <miles.chen@mediatek.com>, Lee Jones <lee.jones@linaro.org>
-Subject: [RESEND PATCH 4/4] clk: mediatek: use tristate for
- COMMON_CLK_MEDAITEK and COMMON_CLK_MT6779
-Date: Fri, 13 Aug 2021 11:24:29 +0800
-Message-ID: <20210813032429.14715-5-miles.chen@mediatek.com>
+Subject: [RESEND PATCH 2/4] clk: mediatek: support COMMON_CLK_MEDIATEK module
+ build
+Date: Fri, 13 Aug 2021 11:24:27 +0800
+Message-ID: <20210813032429.14715-3-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210813032429.14715-1-miles.chen@mediatek.com>
 References: <20210813032429.14715-1-miles.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210812_202439_786533_7F8E1AB7 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210812_202440_031068_8D359F11 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,8 +92,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Now we have all necessary exported symbols, change
-COMMON_CLK_MEDAITEK and COMMON_CLK_MT6779* to tristate.
+To support COMMON_CLK_MEDIATEK module build,
+add MODULE_LICENSE and export necessary symbols.
 
 Cc: Stephen Boyd <sboyd@kernel.org>
 Cc: Hanks Chen <hanks.chen@mediatek.com>
@@ -102,89 +101,205 @@ Cc: Wendell Lin <wendell.lin@mediatek.com>
 Cc: Lee Jones <lee.jones@linaro.org>
 Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Kconfig | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/clk/mediatek/clk-apmixed.c | 3 +++
+ drivers/clk/mediatek/clk-cpumux.c  | 3 +++
+ drivers/clk/mediatek/clk-gate.c    | 8 ++++++++
+ drivers/clk/mediatek/clk-mtk.c     | 8 ++++++++
+ drivers/clk/mediatek/clk-mux.c     | 4 ++++
+ drivers/clk/mediatek/clk-pll.c     | 4 ++++
+ drivers/clk/mediatek/reset.c       | 2 ++
+ 7 files changed, 32 insertions(+)
 
-diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-index 886e2d9fced5..62ed2054a849 100644
---- a/drivers/clk/mediatek/Kconfig
-+++ b/drivers/clk/mediatek/Kconfig
-@@ -6,7 +6,7 @@ menu "Clock driver for MediaTek SoC"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/clk-apmixed.c b/drivers/clk/mediatek/clk-apmixed.c
+index 258d128370f2..caa9119413f1 100644
+--- a/drivers/clk/mediatek/clk-apmixed.c
++++ b/drivers/clk/mediatek/clk-apmixed.c
+@@ -5,6 +5,7 @@
+  */
  
- config COMMON_CLK_MEDIATEK
--	bool
-+	tristate
- 	select RESET_CONTROLLER
- 	help
- 	  MediaTek SoCs' clock support.
-@@ -204,7 +204,7 @@ config COMMON_CLK_MT6765_MIPI2BSYS
-          This driver supports MediaTek MT6765 mipi2bsys clocks.
+ #include <linux/delay.h>
++#include <linux/module.h>
+ #include <linux/of_address.h>
+ #include <linux/slab.h>
  
- config COMMON_CLK_MT6779
--	bool "Clock driver for MediaTek MT6779"
-+	tristate "Clock driver for MediaTek MT6779"
- 	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
- 	select COMMON_CLK_MEDIATEK
- 	default ARCH_MEDIATEK && ARM64
-@@ -212,49 +212,49 @@ config COMMON_CLK_MT6779
- 	  This driver supports MediaTek MT6779 basic clocks.
+@@ -97,3 +98,5 @@ struct clk * __init mtk_clk_register_ref2usb_tx(const char *name,
  
- config COMMON_CLK_MT6779_MMSYS
--	bool "Clock driver for MediaTek MT6779 mmsys"
-+	tristate "Clock driver for MediaTek MT6779 mmsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 mmsys clocks.
+ 	return clk;
+ }
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
+index 79fe09028742..f85c755c9fc1 100644
+--- a/drivers/clk/mediatek/clk-cpumux.c
++++ b/drivers/clk/mediatek/clk-cpumux.c
+@@ -6,6 +6,7 @@
  
- config COMMON_CLK_MT6779_IMGSYS
--	bool "Clock driver for MediaTek MT6779 imgsys"
-+	tristate "Clock driver for MediaTek MT6779 imgsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 imgsys clocks.
+ #include <linux/clk-provider.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/module.h>
+ #include <linux/slab.h>
  
- config COMMON_CLK_MT6779_IPESYS
--	bool "Clock driver for MediaTek MT6779 ipesys"
-+	tristate "Clock driver for MediaTek MT6779 ipesys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 ipesys clocks.
+ #include "clk-mtk.h"
+@@ -106,3 +107,5 @@ int mtk_clk_register_cpumuxes(struct device_node *node,
  
- config COMMON_CLK_MT6779_CAMSYS
--	bool "Clock driver for MediaTek MT6779 camsys"
-+	tristate "Clock driver for MediaTek MT6779 camsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 camsys clocks.
+ 	return 0;
+ }
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
+index a35cf0b22150..b02d2f74dd0d 100644
+--- a/drivers/clk/mediatek/clk-gate.c
++++ b/drivers/clk/mediatek/clk-gate.c
+@@ -11,6 +11,7 @@
+ #include <linux/slab.h>
+ #include <linux/delay.h>
+ #include <linux/clkdev.h>
++#include <linux/module.h>
  
- config COMMON_CLK_MT6779_VDECSYS
--	bool "Clock driver for MediaTek MT6779 vdecsys"
-+	tristate "Clock driver for MediaTek MT6779 vdecsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 vdecsys clocks.
+ #include "clk-mtk.h"
+ #include "clk-gate.h"
+@@ -122,24 +123,28 @@ const struct clk_ops mtk_clk_gate_ops_setclr = {
+ 	.enable		= mtk_cg_enable,
+ 	.disable	= mtk_cg_disable,
+ };
++EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr);
  
- config COMMON_CLK_MT6779_VENCSYS
--	bool "Clock driver for MediaTek MT6779 vencsys"
-+	tristate "Clock driver for MediaTek MT6779 vencsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 vencsys clocks.
+ const struct clk_ops mtk_clk_gate_ops_setclr_inv = {
+ 	.is_enabled	= mtk_cg_bit_is_set,
+ 	.enable		= mtk_cg_enable_inv,
+ 	.disable	= mtk_cg_disable_inv,
+ };
++EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr_inv);
  
- config COMMON_CLK_MT6779_MFGCFG
--	bool "Clock driver for MediaTek MT6779 mfgcfg"
-+	tristate "Clock driver for MediaTek MT6779 mfgcfg"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports MediaTek MT6779 mfgcfg clocks.
+ const struct clk_ops mtk_clk_gate_ops_no_setclr = {
+ 	.is_enabled	= mtk_cg_bit_is_cleared,
+ 	.enable		= mtk_cg_enable_no_setclr,
+ 	.disable	= mtk_cg_disable_no_setclr,
+ };
++EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr);
  
- config COMMON_CLK_MT6779_AUDSYS
--	bool "Clock driver for Mediatek MT6779 audsys"
-+	tristate "Clock driver for Mediatek MT6779 audsys"
- 	depends on COMMON_CLK_MT6779
- 	help
- 	  This driver supports Mediatek MT6779 audsys clocks.
+ const struct clk_ops mtk_clk_gate_ops_no_setclr_inv = {
+ 	.is_enabled	= mtk_cg_bit_is_set,
+ 	.enable		= mtk_cg_enable_inv_no_setclr,
+ 	.disable	= mtk_cg_disable_inv_no_setclr,
+ };
++EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr_inv);
+ 
+ struct clk *mtk_clk_register_gate(
+ 		const char *name,
+@@ -181,3 +186,6 @@ struct clk *mtk_clk_register_gate(
+ 
+ 	return clk;
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_gate);
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
+index cec1c8a27211..cb2dabe60aaf 100644
+--- a/drivers/clk/mediatek/clk-mtk.c
++++ b/drivers/clk/mediatek/clk-mtk.c
+@@ -11,6 +11,7 @@
+ #include <linux/slab.h>
+ #include <linux/delay.h>
+ #include <linux/clkdev.h>
++#include <linux/module.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/device.h>
+ 
+@@ -41,6 +42,7 @@ struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
+ 
+ 	return NULL;
+ }
++EXPORT_SYMBOL_GPL(mtk_alloc_clk_data);
+ 
+ void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
+ 		int num, struct clk_onecell_data *clk_data)
+@@ -67,6 +69,7 @@ void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
+ 			clk_data->clks[rc->id] = clk;
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_fixed_clks);
+ 
+ void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
+ 		int num, struct clk_onecell_data *clk_data)
+@@ -93,6 +96,7 @@ void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
+ 			clk_data->clks[ff->id] = clk;
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_factors);
+ 
+ int mtk_clk_register_gates_with_dev(struct device_node *node,
+ 		const struct mtk_gate *clks,
+@@ -145,6 +149,7 @@ int mtk_clk_register_gates(struct device_node *node,
+ 	return mtk_clk_register_gates_with_dev(node,
+ 		clks, num, clk_data, NULL);
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_gates);
+ 
+ struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
+ 		void __iomem *base, spinlock_t *lock)
+@@ -258,6 +263,7 @@ void mtk_clk_register_composites(const struct mtk_composite *mcs,
+ 			clk_data->clks[mc->id] = clk;
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_composites);
+ 
+ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+ 			int num, void __iomem *base, spinlock_t *lock,
+@@ -286,3 +292,5 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
+ 			clk_data->clks[mcd->id] = clk;
+ 	}
+ }
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
+index b0c61709bacc..a507eea26cc7 100644
+--- a/drivers/clk/mediatek/clk-mux.c
++++ b/drivers/clk/mediatek/clk-mux.c
+@@ -8,6 +8,7 @@
+ #include <linux/of_address.h>
+ #include <linux/slab.h>
+ #include <linux/mfd/syscon.h>
++#include <linux/module.h>
+ 
+ #include "clk-mtk.h"
+ #include "clk-mux.h"
+@@ -190,3 +191,6 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
+ 
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_muxes);
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index f440f2cd0b69..399e7b4297c8 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -7,6 +7,7 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/io.h>
++#include <linux/module.h>
+ #include <linux/slab.h>
+ #include <linux/clkdev.h>
+ #include <linux/delay.h>
+@@ -368,3 +369,6 @@ void mtk_clk_register_plls(struct device_node *node,
+ 		clk_data->clks[pll->id] = clk;
+ 	}
+ }
++EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
++
++MODULE_LICENSE("GPL");
+diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
+index cb939c071b0c..9079bfc29ec0 100644
+--- a/drivers/clk/mediatek/reset.c
++++ b/drivers/clk/mediatek/reset.c
+@@ -137,3 +137,5 @@ void mtk_register_reset_controller_set_clr(struct device_node *np,
+ 	mtk_register_reset_controller_common(np, num_regs, regofs,
+ 		&mtk_reset_ops_set_clr);
+ }
++
++MODULE_LICENSE("GPL");
 -- 
 2.18.0
 _______________________________________________
