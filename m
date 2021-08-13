@@ -2,78 +2,74 @@ Return-Path: <SRS0=ikIt=NE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C06CAC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 16:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B86AEC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 16:33:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F57460462
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 16:24:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F57460462
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 818C6610E9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Aug 2021 16:33:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 818C6610E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UzyWPLsL+7OidY7LyvL1ZMOkxzrOO7iC0ezl/KZRC8A=; b=tlyt2LeJy/4ZrV
-	tVp92Z7J7HplaqHY5vMSqjvVDMCFgOKg4Zj92h3uOL39R+a0x8HDKYp6InPwMwn8e95rkJCdIy+hc
-	9yn3Pz5xircpprQ9GIkVXaRb55FobvvECsCNLx1Uw/rdR7Rq+7ZlmfyyVGajh+tHHK/0Xvg4+HjY0
-	ES31P5ZQp/rsqxb6lXSnDL0uq8s+hA3bGFXNDgGhP+pSG3gOs1ZP70tP1lVFVs3kWDTM/h0SDQwE0
-	ZVaIrjFvAGkcvdiMxa0iZJ8ndzrz27uMWcr+H53PT8bepsnQNmyl0yWiOMzigensoUb7fMl1H2tjT
-	J7/B6T7boVTHyzw7bDFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=M1JwcduOaLOMruwrzeimjX33Stuv9XQwtPmhwdGTaHA=; b=lAey5MdlCaSjFhgWw/rG/vtROp
+	clB5hQsBjkaxOddQFNpmg1TKUOg1762yZJWTObD/b1vMh7s/51cv4v5gyzToOrEoiFtl1tJpGv2K+
+	+uAoEvKpAxIxjk1RldU4t5DLeA1fgb5a04IHWyklqs800aoN2kyYWcpnCsfgRIADFTBwKiWcE0NM2
+	LSYXQVLsd3Eb5+qiGeSfyZLe/FTyMlf8d3XMRYsyfdFZqh5+MUI1ngVGgYeFJIoNxC2AJorTbag1O
+	PW4lwCoY0DrHNojnqcBO3A5y9gcg148ywTKXtG6WDZiD3CmEokO4cdirORztgd4J22UCeOLNVt+fl
+	EQJCyFoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mEZyL-00D5p1-CV; Fri, 13 Aug 2021 16:23:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mEa7c-00D8IL-C8; Fri, 13 Aug 2021 16:33:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mEZxC-00D5Jh-7L
- for linux-mediatek@lists.infradead.org; Fri, 13 Aug 2021 16:22:47 +0000
-X-UUID: 6f3bce4dcebe4c358fa828d4fab925a9-20210813
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=4ipK/n276K43SVTuHIm8PCKQ4QK8IW/wn35W9KNVM6E=; 
- b=u3rcPFyrf8p8DeYXPqClW2M3sjyUdSfyAv3FLPIkbI6jsnf+72ixdrmPTe+9dNKw676Xx0XJKJmxEIh+FGukFdFrK3kuZoQ7Z1R777KN7uschIkwdAxXK/Hb0bFJssuq80X8toadpR0ZXMuALkurq1oshmZL1c+osJdlaUeXmuA=;
-X-UUID: 6f3bce4dcebe4c358fa828d4fab925a9-20210813
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1785287297; Fri, 13 Aug 2021 09:22:37 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 13 Aug 2021 09:22:36 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 14 Aug 2021 00:22:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 14 Aug 2021 00:22:35 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH v3 3/3] mt76: mt7915: rework debugfs fixed-rate knob
-Date: Sat, 14 Aug 2021 00:22:32 +0800
-Message-ID: <2e9996cc7e2d5545ee61e04438e5dd12f2591a0f.1628871454.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <1c3fc7ff6d5ab129a58160cd878787d9fbeba9c2.1628871454.git.ryder.lee@mediatek.com>
-References: <1c3fc7ff6d5ab129a58160cd878787d9fbeba9c2.1628871454.git.ryder.lee@mediatek.com>
+ id 1mEa7Q-00D8GS-3e; Fri, 13 Aug 2021 16:33:17 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E011610E9;
+ Fri, 13 Aug 2021 16:33:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1628872394;
+ bh=RsV8b7RStf2aqBJP+j/Ai99xGWXWnGgnyJ6Mj4v1/4g=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=UA6Ffbs4QUyvRzsMPdO7rMhcGsOFpNMxceFWbpvL8FZ9RVpBNCt6EDoHuLdVEjzmg
+ tXqSFeABDp+bCfql/5Gt25nfVPJwqsotFphDY15t9zmicU/g9VbLfs+4SP0nNTwcGM
+ kyVp3rOEIZ9yuRhn5VzWvhVuMIHQU8wX4Oh1pFri0cdiPH+RA+UwYCooL1fHjJuvWt
+ UQnUUW6cfMSbqSLPVDvUy4QdpwGdWBWbIBgSD+5o/HBgjSL0Ucn9LuheyxTt6TgoB4
+ FHvj6ywBn8d1Dff8cch3kZnO6ouhIwGfDOxiyeIZycGZUKwouvZrPjmut+8uykNZGb
+ ILANYOViAGq2A==
+Date: Fri, 13 Aug 2021 17:32:54 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Gene Chen <gene.chen.richtek@gmail.com>, matthias.bgg@gmail.com,
+ matti.vaittinen@fi.rohmeurope.com, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ rdunlap@infradead.org, gene_chen@richtek.com, Wilma.Wu@mediatek.com,
+ cy_huang@richtek.com, benjamin.chao@mediatek.com
+Subject: Re: [PATCH resend v6 0/3] power: supply: mt6360_charger: add MT6360
+ charger support
+Message-ID: <20210813163254.GF5209@sirena.org.uk>
+References: <20210719033914.16990-1-gene.chen.richtek@gmail.com>
+ <20210813155438.4ssph6deqksob2uv@earth.universe>
+ <20210813155858.GD5209@sirena.org.uk>
+ <20210813162029.q5slrkubelfy3mvh@earth.universe>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210813162029.q5slrkubelfy3mvh@earth.universe>
+X-Cookie: E Pluribus Unix
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210813_092242_347568_B93B35C5 
-X-CRM114-Status: GOOD (  15.54  )
+X-CRM114-CacheID: sfid-20210813_093316_211271_3B03DD71 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,188 +81,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1553324515210664362=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Switch to use new mt7915_mcu_set_fixed_rate_ctrl().
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-please help to fold [3/4] mt76: mt7915: add HE-LTF into fixed rate command into this 
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 68 ++++++++++++++++---
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 48 +------------
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  2 -
- 3 files changed, 61 insertions(+), 57 deletions(-)
+--===============1553324515210664362==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="l+goss899txtYvYf"
+Content-Disposition: inline
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index d9d18f662039..e1cdfbe52199 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -365,19 +365,71 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- #ifdef CONFIG_MAC80211_DEBUGFS
- /** per-station debugfs **/
- 
--static int mt7915_sta_fixed_rate_set(void *data, u64 rate)
-+static ssize_t mt7915_sta_fixed_rate_set(struct file *file,
-+					 const char __user *user_buf,
-+					 size_t count, loff_t *ppos)
- {
--	struct ieee80211_sta *sta = data;
-+	struct ieee80211_sta *sta = file->private_data;
- 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
--
--	/* usage: <he ltf> <tx mode> <ldpc> <stbc> <bw> <gi> <nss> <mcs>
--	 * <tx mode>: see enum mt76_phy_type
-+	struct mt7915_dev *dev = msta->vif->phy->dev;
-+	struct ieee80211_vif *vif;
-+	struct sta_phy phy = {};
-+	char buf[100];
-+	int ret;
-+	u32 field;
-+	u8 i, gi, he_ltf;
-+
-+	if (count >= sizeof(buf))
-+		return -EINVAL;
-+
-+	if (copy_from_user(buf, user_buf, count))
-+		return -EFAULT;
-+
-+	if (count && buf[count - 1] == '\n')
-+		buf[count - 1] = '\0';
-+	else
-+		buf[count] = '\0';
-+
-+	/* Mode: CCK:0, OFDM:1, HT:2, GF:3, VHT:4, HE_SU:8, HE_ER:9
-+	 * BW: BW20:0, BW40:1, BW80:2, BW160:3
-+	 * NSS: VHT:1~4, HE:1~4, Others:Ignore
-+	 * MCS: CCK:0~4, OFDM:0~7, HT:0~32, VHT:0~9, HE_SU:0~11, HE_ER:0~2
-+	 * GI: (HT/VHT) LGI:0, SGI:1; (HE) 0.8us:0, 1.6us:1, 3.2us:2
-+	 * LDPC: Off:0, On:1
-+	 * STBC: Off:0, On:1
-+	 * HE_LTF: 1xLTF:0, 2xLTF:1, 4xLTF:2
- 	 */
--	return mt7915_mcu_set_fixed_rate(msta->vif->phy->dev, sta, rate);
-+	if (sscanf(buf, "%hhu %hhu %hhu %hhu %hhu %hhu %hhu %hhu",
-+		   &phy.type, &phy.bw, &phy.nss, &phy.mcs, &gi,
-+		   &phy.ldpc, &phy.stbc, &he_ltf) != 8) {
-+		dev_warn(dev->mt76.dev,
-+			 "format: Mode BW NSS MCS (HE)GI LDPC STBC HE_LTF\n");
-+		field = RATE_PARAM_AUTO;
-+		goto out;
-+	}
-+
-+	phy.ldpc = (phy.bw || phy.ldpc) * GENMASK(2, 0);
-+	for (i = 0; i <= phy.bw; i++) {
-+		phy.sgi |= gi << (i << sta->he_cap.has_he);
-+		phy.he_ltf |= he_ltf << (i << sta->he_cap.has_he);
-+	}
-+	field = RATE_PARAM_FIXED;
-+
-+out:
-+	vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-+	ret = mt7915_mcu_set_fixed_rate_ctrl(dev, vif, sta, &phy, field);
-+	if (ret)
-+		return -EFAULT;
-+
-+	return count;
- }
- 
--DEFINE_DEBUGFS_ATTRIBUTE(fops_fixed_rate, NULL,
--			 mt7915_sta_fixed_rate_set, "%llx\n");
-+static const struct file_operations fops_fixed_rate = {
-+	.write = mt7915_sta_fixed_rate_set,
-+	.open = simple_open,
-+	.owner = THIS_MODULE,
-+	.llseek = default_llseek,
-+};
- 
- void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			    struct ieee80211_sta *sta, struct dentry *dir)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 25086f8f76c1..ed09d9df747d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2065,6 +2065,7 @@ int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
- 	switch (field) {
- 	case RATE_PARAM_AUTO:
- 		break;
-+	case RATE_PARAM_FIXED:
- 	case RATE_PARAM_FIXED_MCS:
- 	case RATE_PARAM_FIXED_GI:
- 	case RATE_PARAM_FIXED_HE_LTF:
-@@ -2416,53 +2417,6 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 				     MCU_EXT_CMD(STA_REC_UPDATE), true);
- }
- 
--int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
--			      struct ieee80211_sta *sta, u32 rate)
--{
--	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
--	struct mt7915_vif *mvif = msta->vif;
--	struct sta_rec_ra_fixed *ra;
--	struct sk_buff *skb;
--	struct tlv *tlv;
--	int len = sizeof(struct sta_req_hdr) + sizeof(*ra);
--
--	skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
--	if (IS_ERR(skb))
--		return PTR_ERR(skb);
--
--	tlv = mt7915_mcu_add_tlv(skb, STA_REC_RA_UPDATE, sizeof(*ra));
--	ra = (struct sta_rec_ra_fixed *)tlv;
--
--	if (!rate) {
--		ra->field = cpu_to_le32(RATE_PARAM_AUTO);
--		goto out;
--	}
--
--	ra->field = cpu_to_le32(RATE_PARAM_FIXED);
--	ra->phy.type = FIELD_GET(RATE_CFG_PHY_TYPE, rate);
--	ra->phy.bw = FIELD_GET(RATE_CFG_BW, rate);
--	ra->phy.nss = FIELD_GET(RATE_CFG_NSS, rate);
--	ra->phy.mcs = FIELD_GET(RATE_CFG_MCS, rate);
--	ra->phy.stbc = FIELD_GET(RATE_CFG_STBC, rate);
--
--	if (ra->phy.bw)
--		ra->phy.ldpc = 7;
--	else
--		ra->phy.ldpc = FIELD_GET(RATE_CFG_LDPC, rate) * 7;
--
--	/* HT/VHT - SGI: 1, LGI: 0; HE - SGI: 0, MGI: 1, LGI: 2 */
--	if (ra->phy.type > MT_PHY_TYPE_VHT) {
--		ra->phy.he_ltf = FIELD_GET(RATE_CFG_HE_LTF, rate) * 85;
--		ra->phy.sgi = FIELD_GET(RATE_CFG_GI, rate) * 85;
--	} else {
--		ra->phy.sgi = FIELD_GET(RATE_CFG_GI, rate) * 15;
--	}
--
--out:
--	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
--				     MCU_EXT_CMD(STA_REC_UPDATE), true);
--}
--
- int mt7915_mcu_add_dev_info(struct mt7915_phy *phy,
- 			    struct ieee80211_vif *vif, bool enable)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 477a8621550a..c0da97f2774c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -331,8 +331,6 @@ int mt7915_set_channel(struct mt7915_phy *phy);
- int mt7915_mcu_set_chan_info(struct mt7915_phy *phy, int cmd);
- int mt7915_mcu_set_tx(struct mt7915_dev *dev, struct ieee80211_vif *vif);
- int mt7915_mcu_update_edca(struct mt7915_dev *dev, void *req);
--int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
--			      struct ieee80211_sta *sta, u32 rate);
- int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
- 				   struct ieee80211_vif *vif,
- 				   struct ieee80211_sta *sta,
--- 
-2.29.2
+
+--l+goss899txtYvYf
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Aug 13, 2021 at 06:20:29PM +0200, Sebastian Reichel wrote:
+> On Fri, Aug 13, 2021 at 04:58:58PM +0100, Mark Brown wrote:
+
+> > We're still waiting for review from Matti on the linear ranges bit -
+> > normally that goes through the regulator tree, do you have a tag to pull
+> > in case of merge conflicts?
+
+> He actually already provided his Rb in v5, Gene did not carry it
+> over properly (I added it) and the patch looks simple enough, that
+> Linus will know what to do in case of a conflict. But if you insist
+> I can unroll my tree and create a topic branch for this.
+
+It would be better, the issues I'm worrying about are more general
+refactorings or whatever that create actual dependencies rather than
+just trivial add/add type issues - it can make doing some kinds of work
+really painful if things go via a different tree.
+
+--l+goss899txtYvYf
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmEWnrUACgkQJNaLcl1U
+h9CcoQf/Winqb6RX4ilu9FDNU8XLNiJFX2+ApqvxEDI72rwph0/OJ5DfJ2sbXltf
+EQaGfnmUSWRlGRsGnuE/QdnmgJ++HwfaA6NL4BmYalIAsRZvg/+bGxRLwEDLZZpz
+grdaGitjklhn3vrT00339tbQcPn4gOSMxvnO0gCMtRnGd1MWYenRg02Dptq60v2K
+xF+i06p+PQX2aIHk+Xnyo9QCap1y+6A2Yjd8z/BEuQ+0hJBLXpzeNAxltd5DsbGA
+DjFDEokCy+9eZ6gvjnU9/T2Dl6rn7iNIP3NA0CJZcesIFLgx9i/bmfhbdVXsXDGS
+ggSqbh8TenBgdCiK/riOYOLQ7nOCDQ==
+=InBg
+-----END PGP SIGNATURE-----
+
+--l+goss899txtYvYf--
+
+
+--===============1553324515210664362==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1553324515210664362==--
+
