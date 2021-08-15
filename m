@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 571EDC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Aug 2021 14:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D81ECC432BE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Aug 2021 15:00:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1FA6B611C0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Aug 2021 14:59:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1FA6B611C0
+	by mail.kernel.org (Postfix) with ESMTPS id A917A61181
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Aug 2021 15:00:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A917A61181
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v/oyy72d+wvgJRDO1/bRKNvyZoiF+3uz9ag7JFNsGic=; b=MfcjwjLlOEvOmo
-	Y9fWDJckTHndlgL5OwRhKmiumjmB0d7yBIzkYClasphCQWKXmTdeOtVTh3/io0dJsiPic/5y3UUIg
-	F8z3nHQyOC7BpINPeeG+k7swDnjdeVq+qQx/Ru9Pre2mPqQzCrJqXCxPgMBWh9AWub0aMgrOapVWx
-	yM1Jay1ob3dAfw+dAClRrjBhrxgodS1J89ehFwOW/bVEPbCOfPSsbJdmD8yEkiqMQ8DRoNX4qtzbj
-	ElVyaf+H1wYhhrJcVray+1gYYlWrweA+sYU4yyTVEiQQGb53CKXCkW2WwxSxwQe0mZYsue72dBM1m
-	t+MMUoTwnCIwCSIYjuwQ==;
+	List-Owner; bh=IJM01u/ftsSKa8swnV/GAxQmpsH4BOlivsC9PN8pFUY=; b=XsqfjB7xFdVaS2
+	RJGAHLvBwbI25z4CruCCj+ZMrA4//VEis8ChMp8aKFw3cQkzR9tBODobShV4D1oGqqKyfs2TgSwsy
+	JFzYJjklnc/h1ca1+4Pfb6agJVp/Z++SfvQN3KkzeaVVtYGLy3BEgTiurhdEP15rYf8/X0iNY6Ewe
+	Bw1lDyhE4khSkfmEcUOq9k3EnzzsMtIdTzpEr8qYM4ONLquY1vzGaQHW4kcAKO25sUDzCYdSfWZa4
+	KKtZf33oU8thNXg7tC1ixBoWKBSeBIUuwQC+MCzLcCmWSsOCySgevOX1Dv3FdKqKpr8fzCMRkLd2A
+	wHYrp1hw9gcgMbg9V6NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFHc3-00FN8p-5m; Sun, 15 Aug 2021 14:59:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mFHc5-00FNA1-Ic; Sun, 15 Aug 2021 14:59:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFHYv-00FLVR-AR; Sun, 15 Aug 2021 14:56:36 +0000
-X-UUID: 46d7a54f80734bada4e546a32567e72e-20210815
+ id 1mFHYu-00FLWC-M4; Sun, 15 Aug 2021 14:56:36 +0000
+X-UUID: 1290963ce654453089d25e3bab8d977b-20210815
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=zHfJNb394C+brLhvSOxt9N6/QhWbqwCvs4qwJwV5v40=; 
- b=J5ePoEctlzt2y9YUxNlWLBBaGNfQWm7tPDxio8+wLkcVkkPbmzWv//rvd/FqKygM8bpQQhMFBy0FWez7gGg5QtRfnU/IhKObRZkG48qdAz7GaAyoDHcxNvt3WQ9jYIVykfUntXcDnpk+KqcbEtQ9EBXUt/wrQMn2GvJ+h5LZ4xY=;
-X-UUID: 46d7a54f80734bada4e546a32567e72e-20210815
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=2Qq/cM/0Uwa/OCJxJcLQqWMO4+09DbdSIPGmisPoSDM=; 
+ b=Evivm/An/WYAb306beXr3b0/DkBeGLbhwl7QNtzvhKfOv6MvO2Zgji9xjYsgmE0oEucr34NYIO1y5j9yRYLiVG0etmOYEKkLBviujzQWlP49v4dxrcbVO/E0Rf6pmO48V72Yq00xyKk2UyOluKKDeXjhnwxeRyYq1koSCnAeYtM=;
+X-UUID: 1290963ce654453089d25e3bab8d977b-20210815
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1117125238; Sun, 15 Aug 2021 07:56:19 -0700
+ with ESMTP id 1141545817; Sun, 15 Aug 2021 07:56:20 -0700
 Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 15 Aug 2021 07:56:17 -0700
+ 15.0.1497.2; Sun, 15 Aug 2021 07:56:19 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 15 Aug 2021 22:56:15 +0800
+ 15.0.1497.2; Sun, 15 Aug 2021 22:56:17 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 15 Aug 2021 22:56:15 +0800
+ Frontend Transport; Sun, 15 Aug 2021 22:56:17 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -67,18 +67,17 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Fabien
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v7 04/13] dt-bindings: mediatek: display: add mt8195 SoC
- binding
-Date: Sun, 15 Aug 2021 22:56:01 +0800
-Message-ID: <20210815145610.2050-5-jason-jh.lin@mediatek.com>
+Subject: [PATCH v7 12/13] drm/mediatek: add MERGE support for mediatek-drm
+Date: Sun, 15 Aug 2021 22:56:09 +0800
+Message-ID: <20210815145610.2050-13-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210815145610.2050-1-jason-jh.lin@mediatek.com>
 References: <20210815145610.2050-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210815_075633_450602_F52B8F1D 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20210815_075632_810513_67127DAB 
+X-CRM114-Status: GOOD (  21.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,203 +94,428 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. Add mt8195 SoC binding to AAL, CCORR, COLOR, DITHER, GAMMA, MERGE,
-   MUTEX, OVL and RDMA yaml schema.
-
-2. Add MERGE additional property description for mt8195
-- async clock
-- fifo setting enable
-- reset controller
+Add MERGE engine file:
+MERGE module is used to merge two slice-per-line inputs
+into one side-by-side output.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- .../display/mediatek/mediatek,aal.yaml        |  1 +
- .../display/mediatek/mediatek,ccorr.yaml      |  5 +++
- .../display/mediatek/mediatek,color.yaml      |  1 +
- .../display/mediatek/mediatek,dither.yaml     |  5 +++
- .../display/mediatek/mediatek,gamma.yaml      |  5 +++
- .../display/mediatek/mediatek,merge.yaml      | 40 +++++++++++++++++++
- .../display/mediatek/mediatek,mutex.yaml      |  2 +
- .../display/mediatek/mediatek,ovl.yaml        |  5 +++
- .../display/mediatek/mediatek,rdma.yaml       |  2 +
- 9 files changed, 66 insertions(+)
+ drivers/gpu/drm/mediatek/Makefile           |   1 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+ drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 268 ++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 ++
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+ 7 files changed, 298 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-index 7be772d77e36..e1820238db43 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-@@ -25,6 +25,7 @@ properties:
-           - enum:
-               - mediatek,mt2712-disp-aal
-               - mediatek,mt8183-disp-aal
-+              - mediatek,mt8195-disp-aal
-           - enum:
-               - mediatek,mt8173-disp-aal
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index dc54a7a69005..538e0087a44c 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -3,6 +3,7 @@
+ mediatek-drm-y := mtk_disp_ccorr.o \
+ 		  mtk_disp_color.o \
+ 		  mtk_disp_gamma.o \
++		  mtk_disp_merge.o \
+ 		  mtk_disp_ovl.o \
+ 		  mtk_disp_rdma.o \
+ 		  mtk_drm_crtc.o \
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+index cafd9df2d63b..f407cd9d873e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+@@ -46,6 +46,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
+ void mtk_gamma_start(struct device *dev);
+ void mtk_gamma_stop(struct device *dev);
  
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-index 5a1c27d6b3e2..4c556a2bc64a 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-@@ -21,6 +21,11 @@ properties:
-     oneOf:
-       - items:
-           - const: mediatek,mt8183-disp-ccorr
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-disp-ccorr
-+          - enum:
-+              - mediatek,mt8183-disp-ccorr
- 
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-index 9a3edf6f0b8e..a13096196a0c 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-@@ -35,6 +35,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8183-disp-color
-+              - mediatek,mt8195-disp-color
-           - enum:
-               - mediatek,mt8173-disp-color
-   reg:
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-index 20419f876410..e89fe7393291 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
-@@ -22,6 +22,11 @@ properties:
-     oneOf:
-       - items:
-           - const: mediatek,mt8183-disp-dither
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-disp-dither
-+          - enum:
-+              - mediatek,mt8183-disp-dither
- 
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-index e2a1fc218e4f..dc78d6d05dee 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
-@@ -23,6 +23,11 @@ properties:
-           - const: mediatek,mt8173-disp-gamma
-       - items:
-           - const: mediatek,mt8183-disp-gamma
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-disp-gamma
-+          - enum:
-+              - mediatek,mt8183-disp-gamma
- 
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index 4cdce11d7fcd..1a27b037086b 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -21,6 +21,8 @@ properties:
-     oneOf:
-       - items:
-           - const: mediatek,mt8173-disp-merge
-+      - items:
-+          - const: mediatek,mt8195-disp-merge
- 
-   reg:
-     maxItems: 1
-@@ -36,6 +38,31 @@ properties:
-   clocks:
-     items:
-       - description: MERGE Clock
-+      - description: MERGE Async Clock
-+          Controlling the synchronous process between MERGE and other display function
-+          blocks cross clock domain.
++int mtk_merge_clk_enable(struct device *dev);
++void mtk_merge_clk_disable(struct device *dev);
++void mtk_merge_config(struct device *dev, unsigned int width,
++		      unsigned int height, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_merge_start(struct device *dev);
++void mtk_merge_stop(struct device *dev);
 +
-+  mediatek,merge-fifo-en:
-+      description:
-+	    The setting of merge fifo is mainly provided for the display latency buffer.
-+        to ensure that the back-end panel display data will not be underrun,
-+        a little more data is needed in the fifo. According to the merge fifo settings,
-+        when the water level is detected to be insufficient, it will trigger RDMA sending
-+        ultra and preulra command to SMI to speed up the data rate.
-+      type: boolean
+ void mtk_ovl_bgclr_in_on(struct device *dev);
+ void mtk_ovl_bgclr_in_off(struct device *dev);
+ void mtk_ovl_bypass_shadow(struct device *dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+new file mode 100644
+index 000000000000..ebcb646bde9c
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+@@ -0,0 +1,268 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
 +
-+  mediatek,gce-client-reg:
-+    description:
-+      The register of display function block to be set by gce. There are 4 arguments,
-+      such as gce node, subsys id, offset and register size. The subsys id that is
-+      mapping to the register of display function blocks is defined in the gce header
-+      include/include/dt-bindings/gce/<chip>-gce.h of each chips.
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    maxItems: 1
++#include <linux/clk.h>
++#include <linux/component.h>
++#include <linux/of_device.h>
++#include <linux/of_irq.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
 +
-+  resets:
-+    description: reset controller
-+      See Documentation/devicetree/bindings/reset/reset.txt for details.
- 
- required:
-   - compatible
-@@ -55,3 +82,16 @@ examples:
-         clocks = <&mmsys CLK_MM_DISP_MERGE>;
-     };
- 
-+    merge5: disp_vpp_merge5@1c110000 {
-+        compatible = "mediatek,mt8195-disp-merge";
-+        reg = <0 0x1c110000 0 0x1000>;
-+        interrupts = <GIC_SPI 507 IRQ_TYPE_LEVEL_HIGH 0>;
-+        clocks = <&vdosys1 CLK_VDO1_VPP_MERGE4>,
-+                 <&vdosys1 CLK_VDO1_MERGE4_DL_ASYNC>;
-+        clock-names = "merge","merge_async";
-+        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+        mediatek,gce-client-reg = <&gce1 SUBSYS_1c11XXXX 0x0000 0x1000>;
-+        mediatek,merge-fifo-en = <1>;
-+        resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
-+    };
++#include "mtk_drm_ddp_comp.h"
++#include "mtk_drm_drv.h"
++#include "mtk_disp_drv.h"
 +
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-index aaba6bbfb4da..0dced7a53329 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-@@ -30,6 +30,8 @@ properties:
-           - const: mediatek,mt8173-disp-mutex
-       - items:
-           - const: mediatek,mt8183-disp-mutex
-+      - items:
-+          - const: mediatek,mt8195-disp-mutex
++#define DISP_REG_MERGE_CTRL		0x000
++#define MERGE_EN				1
++#define DISP_REG_MERGE_CFG_0		0x010
++#define DISP_REG_MERGE_CFG_4		0x020
++#define DISP_REG_MERGE_CFG_10		0x038
++/* no swap */
++#define SWAP_MODE				0
++#define FLD_SWAP_MODE				GENMASK(4, 0)
++#define DISP_REG_MERGE_CFG_12		0x040
++#define CFG_10_10_1PI_2PO_BUF_MODE		6
++#define CFG_10_10_2PI_2PO_BUF_MODE		8
++#define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
++#define DISP_REG_MERGE_CFG_24		0x070
++#define DISP_REG_MERGE_CFG_25		0x074
++#define DISP_REG_MERGE_CFG_36		0x0a0
++#define ULTRA_EN				1
++#define PREULTRA_EN				1
++#define HALT_FOR_DVFS_EN			0
++#define FLD_ULTRA_EN				GENMASK(0, 0)
++#define FLD_PREULTRA_EN				GENMASK(4, 4)
++#define FLD_HALT_FOR_DVFS_EN			GENMASK(8, 8)
++#define DISP_REG_MERGE_CFG_37		0x0a4
++/* 0: Off, 1: SRAM0, 2: SRAM1, 3: SRAM0 + SRAM1 */
++#define BUFFER_MODE				3
++#define FLD_BUFFER_MODE				GENMASK(1, 0)
++#define DISP_REG_MERGE_CFG_38			0x0a8
++#define FLD_VDE_BLOCK_ULTRA			GENMASK(0, 0)
++#define FLD_VALID_TH_BLOCK_ULTRA		GENMASK(4, 4)
++#define FLD_ULTRA_FIFO_VALID_TH			GENMASK(31, 16)
++#define DISP_REG_MERGE_CFG_39		0x0ac
++#define FLD_NVDE_FORCE_PREULTRA			GENMASK(8, 8)
++#define FLD_NVALID_TH_FORCE_PREULTRA		GENMASK(12, 12)
++#define FLD_PREULTRA_FIFO_VALID_TH		GENMASK(31, 16)
++
++/*
++ * For the ultra and preultra settings, 6us ~ 9us is experience value
++ * and the maximum frequency of mmsys clock is 594MHz.
++ */
++#define DISP_REG_MERGE_CFG_40		0x0b0
++/* 6 us, 594M pixel/sec */
++#define ULTRA_TH_LOW			(6 * 594)
++/* 8 us, 594M pixel/sec */
++#define ULTRA_TH_HIGH			(8 * 594)
++#define FLD_ULTRA_TH_LOW		GENMASK(15, 0)
++#define FLD_ULTRA_TH_HIGH		GENMASK(31, 16)
++#define DISP_REG_MERGE_CFG_41		0x0b4
++/* 8 us, 594M pixel/sec */
++#define PREULTRA_TH_LOW			(8 * 594)
++/* 9 us, 594M pixel/sec */
++#define PREULTRA_TH_HIGH		(9 * 594)
++#define FLD_PREULTRA_TH_LOW		GENMASK(15, 0)
++#define FLD_PREULTRA_TH_HIGH		GENMASK(31, 16)
++
++struct mtk_disp_merge {
++	void __iomem *regs;
++	struct clk *clk;
++	struct clk *async_clk;
++	struct cmdq_client_reg		cmdq_reg;
++	bool				fifo_en;
++};
++
++void mtk_merge_start(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
++}
++
++void mtk_merge_stop(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
++}
++
++static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
++				   struct cmdq_pkt *handle)
++{
++	mtk_ddp_write_mask(handle, ULTRA_EN | PREULTRA_EN << 4 | HALT_FOR_DVFS_EN << 8,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_36,
++			   FLD_ULTRA_EN | FLD_PREULTRA_EN | FLD_HALT_FOR_DVFS_EN);
++
++	mtk_ddp_write_mask(handle, BUFFER_MODE,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_37,
++			   FLD_BUFFER_MODE);
++
++	mtk_ddp_write_mask(handle, 0,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_38,
++			   FLD_VDE_BLOCK_ULTRA | FLD_VALID_TH_BLOCK_ULTRA |
++			   FLD_ULTRA_FIFO_VALID_TH);
++
++	mtk_ddp_write_mask(handle, 0,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_39,
++			   FLD_NVDE_FORCE_PREULTRA | FLD_NVALID_TH_FORCE_PREULTRA |
++			   FLD_PREULTRA_FIFO_VALID_TH);
++
++	mtk_ddp_write_mask(handle, ULTRA_TH_LOW | ULTRA_TH_HIGH << 16,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_40,
++			   FLD_ULTRA_TH_LOW | FLD_ULTRA_TH_HIGH);
++
++	mtk_ddp_write_mask(handle, PREULTRA_TH_LOW | PREULTRA_TH_HIGH << 16,
++			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_41,
++			   FLD_PREULTRA_TH_LOW | FLD_PREULTRA_TH_HIGH);
++}
++
++void mtk_merge_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *handle)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
++
++	if (!h || !w) {
++		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
++		return;
++	}
++
++	if (priv->fifo_en) {
++		mtk_merge_fifo_setting(priv, handle);
++		mode = CFG_10_10_2PI_2PO_BUF_MODE;
++	}
++
++	mtk_ddp_write(handle, h << 16 | w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_0);
++	mtk_ddp_write(handle, h << 16 | w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_4);
++	mtk_ddp_write(handle, h << 16 | w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_24);
++	mtk_ddp_write(handle, h << 16 | w, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_MERGE_CFG_25);
++	mtk_ddp_write_mask(handle, SWAP_MODE, &priv->cmdq_reg, priv->regs,
++			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
++	mtk_ddp_write_mask(handle, mode, &priv->cmdq_reg, priv->regs,
++			   DISP_REG_MERGE_CFG_12, FLD_CFG_MERGE_MODE);
++}
++
++int mtk_merge_clk_enable(struct device *dev)
++{
++	int ret = 0;
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	ret = clk_prepare_enable(priv->clk);
++	if (ret)
++		pr_err("merge clk prepare enable failed\n");
++
++	if (priv->async_clk) {
++		ret = clk_prepare_enable(priv->async_clk);
++		if (ret)
++			pr_err("async clk prepare enable failed\n");
++	}
++
++	return ret;
++}
++
++void mtk_merge_clk_disable(struct device *dev)
++{
++	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
++
++	if (priv->async_clk)
++		clk_disable_unprepare(priv->async_clk);
++
++	clk_disable_unprepare(priv->clk);
++}
++
++static int mtk_disp_merge_bind(struct device *dev, struct device *master,
++			       void *data)
++{
++	return 0;
++}
++
++static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
++				  void *data)
++{
++}
++
++static const struct component_ops mtk_disp_merge_component_ops = {
++	.bind	= mtk_disp_merge_bind,
++	.unbind = mtk_disp_merge_unbind,
++};
++
++static int mtk_disp_merge_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct resource *res;
++	struct mtk_disp_merge *priv;
++	int ret;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	priv->regs = devm_ioremap_resource(dev, res);
++	if (IS_ERR(priv->regs)) {
++		dev_err(dev, "failed to ioremap merge\n");
++		return PTR_ERR(priv->regs);
++	}
++
++	priv->clk = devm_clk_get(dev, NULL);
++	if (IS_ERR(priv->clk)) {
++		dev_err(dev, "failed to get merge clk\n");
++		return PTR_ERR(priv->clk);
++	}
++
++	priv->async_clk = of_clk_get(dev->of_node, 1);
++	if (IS_ERR(priv->async_clk)) {
++		ret = PTR_ERR(priv->async_clk);
++		dev_dbg(dev, "No merge async clock: %d\n", ret);
++		priv->async_clk = NULL;
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
++	if (ret)
++		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	priv->fifo_en = of_property_read_bool(dev->of_node,
++					      "mediatek,merge-fifo-en");
++
++	platform_set_drvdata(pdev, priv);
++
++	ret = component_add(dev, &mtk_disp_merge_component_ops);
++	if (ret != 0)
++		dev_err(dev, "Failed to add component: %d\n", ret);
++
++	return ret;
++}
++
++static int mtk_disp_merge_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
++
++	return 0;
++}
++
++static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8195-disp-merge", },
++	{},
++};
++
++MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
++
++struct platform_driver mtk_disp_merge_driver = {
++	.probe = mtk_disp_merge_probe,
++	.remove = mtk_disp_merge_remove,
++	.driver = {
++		.name = "mediatek-disp-merge",
++		.owner = THIS_MODULE,
++		.of_match_table = mtk_disp_merge_driver_dt_match,
++	},
++};
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index beabadd206c9..c8413d5d8a84 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -331,6 +331,14 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
+ 	.stop = mtk_gamma_stop,
+ };
  
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-index 833b0ca09b21..1973eee4244f 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
-@@ -31,6 +31,11 @@ properties:
-               - mediatek,mt2712-disp-ovl
-           - enum:
-               - mediatek,mt2701-disp-ovl
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-disp-ovl
-+          - enum:
-+              - mediatek,mt8183-disp-ovl
++static const struct mtk_ddp_comp_funcs ddp_merge = {
++	.clk_enable = mtk_merge_clk_enable,
++	.clk_disable = mtk_merge_clk_disable,
++	.start = mtk_merge_start,
++	.stop = mtk_merge_stop,
++	.config = mtk_merge_config,
++};
++
+ static const struct mtk_ddp_comp_funcs ddp_od = {
+ 	.clk_enable = mtk_ddp_clk_enable,
+ 	.clk_disable = mtk_ddp_clk_disable,
+@@ -380,6 +388,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_DITHER] = "dither",
+ 	[MTK_DISP_DSC] = "dsc",
+ 	[MTK_DISP_GAMMA] = "gamma",
++	[MTK_DISP_MERGE] = "merge",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+ 	[MTK_DISP_OVL] = "ovl",
+@@ -415,6 +424,12 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DSI2]	= { MTK_DSI,		2, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI3]	= { MTK_DSI,		3, &ddp_dsi },
+ 	[DDP_COMPONENT_GAMMA]	= { MTK_DISP_GAMMA,	0, &ddp_gamma },
++	[DDP_COMPONENT_MERGE0]	= { MTK_DISP_MERGE,	0, &ddp_merge },
++	[DDP_COMPONENT_MERGE1]	= { MTK_DISP_MERGE,	1, &ddp_merge },
++	[DDP_COMPONENT_MERGE2]	= { MTK_DISP_MERGE,	2, &ddp_merge },
++	[DDP_COMPONENT_MERGE3]	= { MTK_DISP_MERGE,	3, &ddp_merge },
++	[DDP_COMPONENT_MERGE4]	= { MTK_DISP_MERGE,	4, &ddp_merge },
++	[DDP_COMPONENT_MERGE5]	= { MTK_DISP_MERGE,	5, &ddp_merge },
+ 	[DDP_COMPONENT_OD0]	= { MTK_DISP_OD,	0, &ddp_od },
+ 	[DDP_COMPONENT_OD1]	= { MTK_DISP_OD,	1, &ddp_od },
+ 	[DDP_COMPONENT_OVL0]	= { MTK_DISP_OVL,	0, &ddp_ovl },
+@@ -546,6 +561,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_DSC ||
+ 	    type == MTK_DISP_GAMMA ||
++	    type == MTK_DISP_MERGE ||
+ 	    type == MTK_DISP_OVL ||
+ 	    type == MTK_DISP_OVL_2L ||
+ 	    type == MTK_DISP_PWM ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index 560be6bc9d0e..b42a47c06956 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -25,6 +25,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_DITHER,
+ 	MTK_DISP_DSC,
+ 	MTK_DISP_GAMMA,
++	MTK_DISP_MERGE,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
+ 	MTK_DISP_OVL,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index dae4f8e883ac..c7f369390ce6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -532,7 +532,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		private->comp_node[comp_id] = of_node_get(node);
  
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-index ce3bcca30609..847bc55252ca 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
-@@ -27,6 +27,8 @@ properties:
-           - const: mediatek,mt8173-disp-rdma
-       - items:
-           - const: mediatek,mt8183-disp-rdma
-+      - items:
-+          - const: mediatek,mt8195-disp-rdma
-       - items:
-           - enum:
-               - mediatek,mt7623-disp-rdma
+ 		/*
+-		 * Currently only the CCORR, COLOR, DSC, GAMMA, OVL, RDMA, DSI, and DPI
++		 * Currently only the CCORR, COLOR, DSC, GAMMA, MERGE, OVL, RDMA, DSI, and DPI
+ 		 * blocks have separate component platform drivers and initialize their own
+ 		 * DDP component structure. The others are initialized here.
+ 		 */
+@@ -540,6 +540,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		    comp_type == MTK_DISP_COLOR ||
+ 		    comp_type == MTK_DISP_DSC ||
+ 		    comp_type == MTK_DISP_GAMMA ||
++		    comp_type == MTK_DISP_MERGE ||
+ 		    comp_type == MTK_DISP_OVL ||
+ 		    comp_type == MTK_DISP_OVL_2L ||
+ 		    comp_type == MTK_DISP_RDMA ||
+@@ -640,6 +641,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
+ 	&mtk_disp_ccorr_driver,
+ 	&mtk_disp_color_driver,
+ 	&mtk_disp_gamma_driver,
++	&mtk_disp_merge_driver,
+ 	&mtk_disp_ovl_driver,
+ 	&mtk_disp_rdma_driver,
+ 	&mtk_dpi_driver,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 637f5669e895..0fa417219a69 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -49,6 +49,7 @@ struct mtk_drm_private {
+ extern struct platform_driver mtk_disp_ccorr_driver;
+ extern struct platform_driver mtk_disp_color_driver;
+ extern struct platform_driver mtk_disp_gamma_driver;
++extern struct platform_driver mtk_disp_merge_driver;
+ extern struct platform_driver mtk_disp_ovl_driver;
+ extern struct platform_driver mtk_disp_rdma_driver;
+ extern struct platform_driver mtk_dpi_driver;
 -- 
 2.18.0
 _______________________________________________
