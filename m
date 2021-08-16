@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4ADD3C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 11:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 64027C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 11:12:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1CE4261C13
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 11:11:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1CE4261C13
+	by mail.kernel.org (Postfix) with ESMTPS id 26AD163213
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 11:12:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 26AD163213
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QVDh/tUnC04dV1APMC+zzWQiBv07O2rOO1coCmdTRuA=; b=Oe6T/9UpIl9UsT
-	ij1kSa0dKO/XaQKNZRMUfxNiankD8mixJJJfeNjc2pP+5Xg1b79oL3uKLeGsDbHeCIbTRyaSlBtSl
-	Sdj9DMWQo6xRWUgTnD0vG5FH/X1K6MCe7joEZDi7+3AGoU5uJPbmdZvIRmnLrAe9qK/5DZZAG5UCa
-	W6BEYIOuGB+5cI7VSRe2lO9dRi5/yRxAWL8lso9d3ECOLQviBhUmaAA1L+1YxFcPwlguF2ddh4VqS
-	VnM6hXJJH0UmrxZIMkUvWA4gDQFq16qiwsLEWhSniWXYSvVXKR0r+eAtl6Q89OhHnO5z9mpI0VBFC
-	LjBW+h9X2YqC23LZ5+/Q==;
+	List-Owner; bh=vROxomj4GzkyvCzESp+bR8cq7qOcU9W/n01EFVk/WI8=; b=UnnGMlITeXgkfZ
+	FSVaaWXw1cKc7NkjoR8PwXOGOEqlNDd6Yd3m8gySOlht+phm9EVlQFVlEP/hQabnfa5wcZgmFhYUO
+	femv2Fnr9lX8+tSUy3OoaRiPe8Nj7CX+vxUM+wK98+fc3wRwh0tsAcPvPMczEYaLFmp8ktu2YlZfz
+	hU+A1uTWduHtczDJNrspMEMR+m8+FlrtJXJpflG4xkk9GpzO5PUz4FEDVvP71G7bLrjrIVV+fiUo+
+	9mgN164hVJkEXJIxJWoJBucrPqJa4C6qsH5DtkqlCkyhDwJM9qZ60REhDdZreMXurIe3c9w5qNz7E
+	Io0cECHa2dHST9axr3og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFaWd-00GqW5-L8; Mon, 16 Aug 2021 11:11:27 +0000
+	id 1mFaWy-00Gqio-I9; Mon, 16 Aug 2021 11:11:48 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFaVi-00Gq7B-W4; Mon, 16 Aug 2021 11:10:34 +0000
-X-UUID: e1278920ca0a4d8ca050eef03ce8ab98-20210816
+ id 1mFaVj-00Gq7W-Uj; Mon, 16 Aug 2021 11:10:35 +0000
+X-UUID: 98e76b041cf04c9c8209987cc4852f41-20210816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=NdkF+SwKKhl023Iui6Q+1UHMJNJdHsbS4C4Ob/cqHe8=; 
- b=jOVHks0SIZN2Qt1ks+clSw7JPIsu8HSZ1MYg+mIqdQYSxzKfAJ23FKz/k913WlfSdrOiOmsMBiz75Dxq9aZDJnaFh9KWAzKmRgyamTJlv3rVJtcA29p2hhIZwy2P3jft4PmY/Z1cY2D5ICC6urb215TCO5TlFfupD/2lX1Hi5qU=;
-X-UUID: e1278920ca0a4d8ca050eef03ce8ab98-20210816
+ bh=kHIEIi7da9Sts4wPuHxXNJLxIaxF+bzORVUrlB4pY4U=; 
+ b=RnXjvK1qR4yOMsaRaWL7uZtYSed8jZeItJv7Qpoht8Vfzm/+sydr8cmiYcZymRB1Ag7GlnICPPbbXRuDRYVYRMK4hc0GWLeCbCGJwYF/LSUoiYInaAbuNaZFEsguV0InI58PzZtbUJV2RY4DfCXul92+/PnQYc963wka080AHcc=;
+X-UUID: 98e76b041cf04c9c8209987cc4852f41-20210816
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 890343422; Mon, 16 Aug 2021 04:10:25 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ with ESMTP id 600850185; Mon, 16 Aug 2021 04:10:25 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 04:00:35 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 16 Aug 2021 19:00:33 +0800
+ 15.0.1497.2; Mon, 16 Aug 2021 04:00:23 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 Aug 2021 19:00:21 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 16 Aug 2021 19:00:32 +0800
+ Transport; Mon, 16 Aug 2021 19:00:20 +0800
 From: Irui Wang <irui.wang@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
  <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Tiffany
@@ -71,17 +71,18 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH 5/9] media: mtk-vcodec: Rewrite venc clock interface
-Date: Mon, 16 Aug 2021 18:59:30 +0800
-Message-ID: <20210816105934.28265-6-irui.wang@mediatek.com>
+Subject: [PATCH 2/9] media: mtk-vcodec: Use component framework to manage
+ encoder hardware
+Date: Mon, 16 Aug 2021 18:59:27 +0800
+Message-ID: <20210816105934.28265-3-irui.wang@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210816105934.28265-1-irui.wang@mediatek.com>
 References: <20210816105934.28265-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_041031_076697_1491D879 
-X-CRM114-Status: GOOD (  19.52  )
+X-CRM114-CacheID: sfid-20210816_041032_049549_6FA1F351 
+X-CRM114-Status: GOOD (  28.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,242 +99,634 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Frame-racing mode need enable the specific core's clk, add an
-another param for clock_on/clock_off interface.
+There are two venc cores for H264 inside MT8195, uses component
+framework to manage each hardware so that the two cores can be
+used through one venc driver.
+
+Adds new encoder hardware mode to indicate different hardware
+modes:
+VENC_SINGLE_CORE_MODE means only one core, the device has its
+own power/clk/irq, init_pm/request_irq helper can be used.
+
+VENC_FRAME_RACING_MODE means more than one core inside, the core
+device driver can use the init_pm/request_irq helper to
+initialize their own power/clk/irq. And the master device doesn't
+need use these helper anymore.
 
 Signed-off-by: Irui Wang <irui.wang@mediatek.com>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 104 ++++++++++++++----
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |   4 +-
- .../media/platform/mtk-vcodec/venc_drv_if.c   |  10 +-
- 3 files changed, 86 insertions(+), 32 deletions(-)
+ drivers/media/platform/mtk-vcodec/Makefile    |   1 +
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  22 ++
+ .../platform/mtk-vcodec/mtk_vcodec_enc.h      |   2 +
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 189 +++++++++++++++---
+ .../platform/mtk-vcodec/mtk_vcodec_enc_hw.c   | 179 +++++++++++++++++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_hw.h   |  36 ++++
+ 6 files changed, 397 insertions(+), 32 deletions(-)
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.h
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index d9df0e3701f1..bfb9e21bfd26 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -86,25 +86,50 @@ void mtk_vcodec_release_enc_pm(struct mtk_vcodec_pm *pm)
- }
+diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
+index 4618d43dbbc8..661d4afeb628 100644
+--- a/drivers/media/platform/mtk-vcodec/Makefile
++++ b/drivers/media/platform/mtk-vcodec/Makefile
+@@ -20,6 +20,7 @@ mtk-vcodec-enc-y := venc/venc_vp8_if.o \
+ 		mtk_vcodec_enc_pm.o \
+ 		venc_drv_if.o \
+ 		venc_vpu_if.o \
++		mtk_vcodec_enc_hw.o \
  
  
--void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
-+void mtk_vcodec_enc_clock_on(struct mtk_vcodec_dev *dev, int core_id)
- {
--	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
--	int ret, i = 0;
-+	struct mtk_venc_comp_dev *venc;
-+	struct mtk_vcodec_pm *enc_pm;
-+	struct mtk_vcodec_clk *enc_clk;
-+	struct clk		*clk;
-+	int ret, i;
+ mtk-vcodec-common-y := mtk_vcodec_intr.o \
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 3f83710b4fa5..c160b9e505eb 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -8,6 +8,7 @@
+ #ifndef _MTK_VCODEC_DRV_H_
+ #define _MTK_VCODEC_DRV_H_
  
--	for (i = 0; i < enc_clk->clk_num; i++) {
--		ret = clk_prepare_enable(enc_clk->clk_info[i].vcodec_clk);
--		if (ret) {
--			mtk_v4l2_err("venc clk_prepare_enable %d %s fail %d", i,
--				enc_clk->clk_info[i].clk_name, ret);
--			goto clkerr;
-+	if (dev->venc_pdata->hw_mode == VENC_FRAME_RACING_MODE) {
-+		venc = (struct mtk_venc_comp_dev *)dev->enc_comp_dev[core_id];
-+		enc_pm = &venc->pm;
-+		enc_clk = &enc_pm->venc_clk;
++#include <linux/component.h>
+ #include <linux/platform_device.h>
+ #include <linux/videodev2.h>
+ #include <media/v4l2-ctrls.h>
+@@ -92,6 +93,20 @@ enum mtk_fmt_type {
+ 	MTK_FMT_FRAME = 2,
+ };
+ 
++enum mtk_venc_hw_id {
++	MTK_VENC_CORE0 = 0,
++	MTK_VENC_CORE1 = 1,
++	MTK_VENC_HW_MAX,
++};
 +
-+		for (i = 0; i < enc_clk->clk_num; i++) {
-+			clk = enc_clk->clk_info[i].vcodec_clk;
-+			ret = clk_enable(clk);
-+			if (ret) {
-+				mtk_v4l2_err("clk_enable %d %s fail %d", i,
-+					     enc_clk->clk_info[i].clk_name,
-+					     ret);
-+				goto comp_clk_err;
-+			}
- 		}
--	}
-+	} else {
-+		enc_pm = &dev->pm;
-+		enc_clk = &enc_pm->venc_clk;
- 
--	ret = mtk_smi_larb_get(pm->larbvenc);
--	if (ret) {
--		mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
--		goto clkerr;
-+		for (i = 0; i < enc_clk->clk_num; i++) {
-+			clk = enc_clk->clk_info[i].vcodec_clk;
-+			ret = clk_prepare_enable(clk);
-+			if (ret) {
-+				mtk_v4l2_err("clk_prepare_enable %d %s fail %d",
-+					     i, enc_clk->clk_info[i].clk_name,
-+					     ret);
-+				goto clkerr;
-+			}
-+		}
- 	}
++/**
++ * enmu mtk_venc_hw_mode - Used to indicate different encode mode
++ */
++enum mtk_venc_hw_mode {
++	VENC_SINGLE_CORE_MODE = 0,
++	VENC_FRAME_RACING_MODE = 1,
++};
 +
-+	return;
+ /*
+  * struct mtk_video_fmt - Structure used to store information about pixelformats
+  */
+@@ -320,6 +335,7 @@ enum mtk_chip {
+  * @output_formats: array of supported output formats
+  * @num_output_formats: number of entries in output_formats
+  * @core_id: stand for h264 or vp8 encode index
++ * @hw_mode: indicate encode mode
+  */
+ struct mtk_vcodec_enc_pdata {
+ 	enum mtk_chip chip;
+@@ -332,6 +348,7 @@ struct mtk_vcodec_enc_pdata {
+ 	const struct mtk_video_fmt *output_formats;
+ 	size_t num_output_formats;
+ 	int core_id;
++	enum mtk_venc_hw_mode hw_mode;
+ };
+ 
+ #define MTK_ENC_CTX_IS_EXT(ctx) ((ctx)->dev->venc_pdata->uses_ext)
+@@ -372,6 +389,8 @@ struct mtk_vcodec_enc_pdata {
+  * @pm: power management control
+  * @dec_capability: used to identify decode capability, ex: 4k
+  * @enc_capability: used to identify encode capability
++ * @enc_comp_node: used to store venc component node
++ * @enc_comp_dev: used to store venc component device
+  */
+ struct mtk_vcodec_dev {
+ 	struct v4l2_device v4l2_dev;
+@@ -407,6 +426,9 @@ struct mtk_vcodec_dev {
+ 	struct mtk_vcodec_pm pm;
+ 	unsigned int dec_capability;
+ 	unsigned int enc_capability;
 +
-+comp_clk_err:
-+	for (i -= 1; i >= 0; i--)
-+		clk_disable(enc_clk->clk_info[i].vcodec_clk);
- 	return;
++	struct device_node *enc_comp_node[MTK_VENC_HW_MAX];
++	void *enc_comp_dev[MTK_VENC_HW_MAX];
+ };
  
- clkerr:
-@@ -112,20 +137,35 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
- 		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
- }
+ static inline struct mtk_vcodec_ctx *fh_to_ctx(struct v4l2_fh *fh)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
+index 513ee7993e34..30b6d7f22ed7 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.h
+@@ -21,6 +21,8 @@
+ #define MTK_VENC_IRQ_STATUS_OFFSET	0x05C
+ #define MTK_VENC_IRQ_ACK_OFFSET	0x060
  
--void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
-+void mtk_vcodec_enc_clock_off(struct mtk_vcodec_dev *dev, int core_id)
- {
--	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
--	int i = 0;
-+	struct mtk_venc_comp_dev *venc;
-+	struct mtk_vcodec_pm *enc_pm;
-+	struct mtk_vcodec_clk *enc_clk;
++extern struct platform_driver mtk_venc_comp_driver;
++
+ /**
+  * struct mtk_video_enc_buf - Private data related to each VB2 buffer.
+  * @m2m_buf:	M2M buffer
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 7b3e0ea4c410..f7538d4b5cbb 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -26,6 +26,81 @@
+ module_param(mtk_v4l2_dbg_level, int, S_IRUGO | S_IWUSR);
+ module_param(mtk_vcodec_dbg, bool, S_IRUGO | S_IWUSR);
+ 
++static const struct of_device_id mtk_venc_comp_ids[] = {
++	{
++		.compatible = "mediatek,mtk-venc-core0",
++		.data = (void *)MTK_VENC_CORE0,
++	},
++	{
++		.compatible = "mediatek,mtk-venc-core1",
++		.data = (void *)MTK_VENC_CORE1,
++	},
++	{},
++};
++
++static inline int mtk_venc_compare_of(struct device *dev, void *data)
++{
++	return dev->of_node == data;
++}
++
++static inline void mtk_venc_release_of(struct device *dev, void *data)
++{
++	of_node_put(data);
++}
++
++static inline int mtk_venc_bind(struct device *dev)
++{
++	struct mtk_vcodec_dev *data = dev_get_drvdata(dev);
++
++	return component_bind_all(dev, data);
++}
++
++static inline void mtk_venc_unbind(struct device *dev)
++{
++	struct mtk_vcodec_dev *data = dev_get_drvdata(dev);
++
++	component_unbind_all(dev, data);
++}
++
++static const struct component_master_ops mtk_venc_ops = {
++	.bind = mtk_venc_bind,
++	.unbind = mtk_venc_unbind,
++};
++
++static struct component_match *mtk_venc_match_add(struct mtk_vcodec_dev *dev)
++{
++	struct platform_device *pdev = dev->plat_dev;
++	struct component_match *match = NULL;
 +	int i;
- 
--	mtk_smi_larb_put(pm->larbvenc);
--	for (i = enc_clk->clk_num - 1; i >= 0; i--)
--		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
-+	if (dev->venc_pdata->hw_mode == VENC_FRAME_RACING_MODE) {
-+		venc = (struct mtk_venc_comp_dev *)dev->enc_comp_dev[core_id];
-+		enc_pm = &venc->pm;
-+		enc_clk = &enc_pm->venc_clk;
 +
-+		for (i = enc_clk->clk_num - 1; i >= 0; i--)
-+			clk_disable(enc_clk->clk_info[i].vcodec_clk);
-+	} else {
-+		enc_pm = &dev->pm;
-+		enc_clk = &enc_pm->venc_clk;
++	for (i = 0; i < ARRAY_SIZE(mtk_venc_comp_ids); i++) {
++		enum mtk_venc_hw_id comp_idx;
++		struct device_node *comp_node;
++		const struct of_device_id *of_id;
 +
-+		for (i = enc_clk->clk_num - 1; i >= 0; i--)
-+			clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
++		comp_node = of_find_compatible_node(NULL, NULL,
++			mtk_venc_comp_ids[i].compatible);
++		if (!comp_node)
++			continue;
++
++		of_id = of_match_node(mtk_venc_comp_ids, comp_node);
++		if (!of_id) {
++			dev_err(&pdev->dev, "Failed to get match node\n");
++			return ERR_PTR(-EINVAL);
++		}
++
++		comp_idx = (enum mtk_venc_hw_id)of_id->data;
++		dev->enc_comp_node[comp_idx] = comp_node;
++
++		component_match_add_release(&pdev->dev, &match,
++					    mtk_venc_release_of,
++					    mtk_venc_compare_of,
++					    comp_node);
 +	}
- }
- 
- int mtk_venc_enable_comp_hw(struct mtk_vcodec_dev *dev)
- {
- 	int i, ret;
- 	struct mtk_venc_comp_dev *venc_comp;
-+	struct mtk_vcodec_clk *enc_clk;
-+	int j = 0;
- 
- 	/*
- 	 * frame_racing mode needs power on all available component devices.
-@@ -140,23 +180,38 @@ int mtk_venc_enable_comp_hw(struct mtk_vcodec_dev *dev)
- 			mtk_v4l2_err("power on core[%d] fail %d", i, ret);
- 				goto pw_err;
- 		}
 +
-+		enc_clk = &venc_comp->pm.venc_clk;
-+		for (j = 0; j < enc_clk->clk_num; j++) {
-+			ret = clk_prepare(enc_clk->clk_info[j].vcodec_clk);
-+			if (ret) {
-+				mtk_v4l2_err("prepare clk [%s] fail %d",
-+					     enc_clk->clk_info[j].clk_name,
-+					     ret);
-+				goto pw_err;
-+			}
++	return match;
++}
++
+ static const struct mtk_video_fmt mtk_video_formats_output[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12M,
+@@ -239,6 +314,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+ 	int ret;
++	struct component_match *match = NULL;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -264,39 +340,41 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		return PTR_ERR(dev->fw_handler);
+ 
+ 	dev->venc_pdata = of_device_get_match_data(&pdev->dev);
+-	ret = mtk_vcodec_init_enc_pm(dev);
+-	if (ret < 0) {
+-		dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
+-		goto err_enc_pm;
+-	}
++	if (dev->venc_pdata->hw_mode == VENC_SINGLE_CORE_MODE) {
++		ret = mtk_vcodec_init_enc_pm(dev);
++		if (ret < 0) {
++			dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
++			goto err_enc_pm;
++		}
+ 
+-	pm_runtime_enable(&pdev->dev);
++		pm_runtime_enable(&pdev->dev);
+ 
+-	dev->reg_base[dev->venc_pdata->core_id] =
+-		devm_platform_ioremap_resource(pdev, 0);
+-	if (IS_ERR(dev->reg_base[dev->venc_pdata->core_id])) {
+-		ret = PTR_ERR(dev->reg_base[dev->venc_pdata->core_id]);
+-		goto err_res;
+-	}
++		dev->reg_base[dev->venc_pdata->core_id] =
++			devm_platform_ioremap_resource(pdev, 0);
++		if (IS_ERR(dev->reg_base[dev->venc_pdata->core_id])) {
++			ret = PTR_ERR(dev->reg_base[dev->venc_pdata->core_id]);
++			goto err_res;
++		}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+-	if (res == NULL) {
+-		dev_err(&pdev->dev, "failed to get irq resource");
+-		ret = -ENOENT;
+-		goto err_res;
+-	}
++		res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
++		if (!res) {
++			dev_err(&pdev->dev, "failed to get irq resource");
++			ret = -ENOENT;
++			goto err_res;
++		}
+ 
+-	dev->enc_irq = platform_get_irq(pdev, 0);
+-	irq_set_status_flags(dev->enc_irq, IRQ_NOAUTOEN);
+-	ret = devm_request_irq(&pdev->dev, dev->enc_irq,
+-			       mtk_vcodec_enc_irq_handler,
+-			       0, pdev->name, dev);
+-	if (ret) {
+-		dev_err(&pdev->dev,
+-			"Failed to install dev->enc_irq %d (%d) core_id (%d)",
+-			dev->enc_irq, ret, dev->venc_pdata->core_id);
+-		ret = -EINVAL;
+-		goto err_res;
++		dev->enc_irq = platform_get_irq(pdev, 0);
++		irq_set_status_flags(dev->enc_irq, IRQ_NOAUTOEN);
++		ret = devm_request_irq(&pdev->dev, dev->enc_irq,
++				       mtk_vcodec_enc_irq_handler,
++				       0, pdev->name, dev);
++		if (ret) {
++			dev_err(&pdev->dev,
++				"Failed to install dev->enc_irq %d (%d) core_id (%d)",
++				dev->enc_irq, ret, dev->venc_pdata->core_id);
++			ret = -EINVAL;
++			goto err_res;
 +		}
  	}
- 	return 0;
  
- pw_err:
- 	for (i -= 1; i >= 0; i--) {
- 		venc_comp = (struct mtk_venc_comp_dev *)dev->enc_comp_dev[i];
-+		enc_clk = &venc_comp->pm.venc_clk;
-+
-+		for (j -= 1; j >= 0; j--)
-+			clk_unprepare(enc_clk->clk_info[j].vcodec_clk);
- 
- 		mtk_smi_larb_put(venc_comp->pm.larbvenc);
+ 	mutex_init(&dev->enc_mutex);
+@@ -362,6 +440,22 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_enc_reg;
  	}
--
+ 
++	if (dev->venc_pdata->hw_mode == VENC_FRAME_RACING_MODE) {
++		match = mtk_venc_match_add(dev);
++		if (IS_ERR_OR_NULL(match)) {
++			mtk_v4l2_err("match venc component failed\n");
++			ret = -EINVAL;
++			goto err_enc_reg;
++		}
++		ret = component_master_add_with_match(&pdev->dev,
++						      &mtk_venc_ops, match);
++		if (ret) {
++			mtk_v4l2_err("Failed to bring up master");
++			ret = -EINVAL;
++			goto err_enc_reg;
++		}
++	}
++
+ 	mtk_v4l2_debug(0, "encoder %d registered as /dev/video%d",
+ 		       dev->venc_pdata->core_id, vfd_enc->num);
+ 
+@@ -376,7 +470,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ err_enc_alloc:
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ err_res:
+-	mtk_vcodec_release_enc_pm(dev);
++	if (dev->venc_pdata->hw_mode == VENC_SINGLE_CORE_MODE)
++		mtk_vcodec_release_enc_pm(dev);
+ err_enc_pm:
+ 	mtk_vcodec_fw_release(dev->fw_handler);
  	return ret;
+@@ -391,6 +486,7 @@ static const struct mtk_vcodec_enc_pdata mt8173_avc_pdata = {
+ 	.min_bitrate = 1,
+ 	.max_bitrate = 4000000,
+ 	.core_id = VENC_SYS,
++	.hw_mode = VENC_SINGLE_CORE_MODE,
+ };
+ 
+ static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
+@@ -402,6 +498,7 @@ static const struct mtk_vcodec_enc_pdata mt8173_vp8_pdata = {
+ 	.min_bitrate = 64,
+ 	.max_bitrate = 4000000,
+ 	.core_id = VENC_LT_SYS,
++	.hw_mode = VENC_SINGLE_CORE_MODE,
+ };
+ 
+ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
+@@ -414,6 +511,7 @@ static const struct mtk_vcodec_enc_pdata mt8183_pdata = {
+ 	.min_bitrate = 64,
+ 	.max_bitrate = 40000000,
+ 	.core_id = VENC_SYS,
++	.hw_mode = VENC_SINGLE_CORE_MODE,
+ };
+ 
+ static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
+@@ -426,6 +524,7 @@ static const struct mtk_vcodec_enc_pdata mt8192_pdata = {
+ 	.min_bitrate = 64,
+ 	.max_bitrate = 100000000,
+ 	.core_id = VENC_SYS,
++	.hw_mode = VENC_SINGLE_CORE_MODE,
+ };
+ 
+ static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
+@@ -438,6 +537,7 @@ static const struct mtk_vcodec_enc_pdata mt8195_pdata = {
+ 	.min_bitrate = 64,
+ 	.max_bitrate = 100000000,
+ 	.core_id = VENC_SYS,
++	.hw_mode = VENC_FRAME_RACING_MODE,
+ };
+ 
+ static const struct of_device_id mtk_vcodec_enc_match[] = {
+@@ -466,8 +566,15 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
+ 		video_unregister_device(dev->vfd_enc);
+ 
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+-	mtk_vcodec_release_enc_pm(dev);
++
++	if (dev->venc_pdata->hw_mode == VENC_SINGLE_CORE_MODE)
++		mtk_vcodec_release_enc_pm(dev);
++
+ 	mtk_vcodec_fw_release(dev->fw_handler);
++
++	if (dev->venc_pdata->hw_mode == VENC_FRAME_RACING_MODE)
++		component_master_del(&pdev->dev, &mtk_venc_ops);
++
+ 	return 0;
  }
  
- int mtk_venc_disable_comp_hw(struct mtk_vcodec_dev *dev)
- {
--	int i;
-+	int i, j;
- 	struct mtk_venc_comp_dev *venc_comp;
-+	struct mtk_vcodec_clk *enc_clk;
+@@ -480,7 +587,25 @@ static struct platform_driver mtk_vcodec_enc_driver = {
+ 	},
+ };
  
- 	/*power off all available component device*/
- 	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
-@@ -164,6 +219,11 @@ int mtk_venc_disable_comp_hw(struct mtk_vcodec_dev *dev)
- 		if (!venc_comp)
- 			return 0;
- 
-+		enc_clk = &venc_comp->pm.venc_clk;
+-module_platform_driver(mtk_vcodec_enc_driver);
++static struct platform_driver * const mtk_venc_drivers[] = {
++	&mtk_venc_comp_driver,
++	&mtk_vcodec_enc_driver,
++};
 +
-+		for (j = enc_clk->clk_num - 1; j >= 0; j--)
-+			clk_unprepare(enc_clk->clk_info[j].vcodec_clk);
++static int __init mtk_venc_init(void)
++{
++	return platform_register_drivers(mtk_venc_drivers,
++					 ARRAY_SIZE(mtk_venc_drivers));
++}
 +
- 		mtk_smi_larb_put(venc_comp->pm.larbvenc);
- 	}
++static void __exit mtk_venc_exit(void)
++{
++	platform_unregister_drivers(mtk_venc_drivers,
++				    ARRAY_SIZE(mtk_venc_drivers));
++}
++
++module_init(mtk_venc_init);
++module_exit(mtk_venc_exit);
  
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-index 2e76b858fed1..f3a819cc0e56 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-@@ -13,8 +13,8 @@ int mtk_vcodec_init_enc_pm(struct platform_device *pdev,
- 			   struct mtk_vcodec_pm *pm);
- void mtk_vcodec_release_enc_pm(struct mtk_vcodec_pm *pm);
  
--void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
--void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
-+void mtk_vcodec_enc_clock_on(struct mtk_vcodec_dev *dev, int core_id);
-+void mtk_vcodec_enc_clock_off(struct mtk_vcodec_dev *dev, int core_id);
- 
- int mtk_venc_enable_comp_hw(struct mtk_vcodec_dev *dev);
- int mtk_venc_disable_comp_hw(struct mtk_vcodec_dev *dev);
-diff --git a/drivers/media/platform/mtk-vcodec/venc_drv_if.c b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-index ce0bce811615..6cbdb7e30bb3 100644
---- a/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc_drv_if.c
-@@ -32,9 +32,7 @@ int venc_if_init(struct mtk_vcodec_ctx *ctx, unsigned int fourcc)
- 	}
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->init(ctx);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	return ret;
-@@ -46,9 +44,7 @@ int venc_if_set_param(struct mtk_vcodec_ctx *ctx,
- 	int ret = 0;
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->set_param(ctx->drv_handle, type, in);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	return ret;
-@@ -68,10 +64,10 @@ int venc_if_encode(struct mtk_vcodec_ctx *ctx,
- 	ctx->dev->curr_ctx = ctx;
- 	spin_unlock_irqrestore(&ctx->dev->irqlock, flags);
- 
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
-+	mtk_vcodec_enc_clock_on(ctx->dev, 0);
- 	ret = ctx->enc_if->encode(ctx->drv_handle, opt, frm_buf,
- 				  bs_buf, result);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
-+	mtk_vcodec_enc_clock_off(ctx->dev, 0);
- 
- 	spin_lock_irqsave(&ctx->dev->irqlock, flags);
- 	ctx->dev->curr_ctx = NULL;
-@@ -89,9 +85,7 @@ int venc_if_deinit(struct mtk_vcodec_ctx *ctx)
- 		return 0;
- 
- 	mtk_venc_lock(ctx);
--	mtk_vcodec_enc_clock_on(&ctx->dev->pm);
- 	ret = ctx->enc_if->deinit(ctx->drv_handle);
--	mtk_vcodec_enc_clock_off(&ctx->dev->pm);
- 	mtk_venc_unlock(ctx);
- 
- 	ctx->drv_handle = NULL;
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
+new file mode 100644
+index 000000000000..4e6a8a81ff67
+--- /dev/null
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
+@@ -0,0 +1,179 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/pm_runtime.h>
++#include <linux/interrupt.h>
++#include <linux/irq.h>
++#include <linux/of_platform.h>
++#include <linux/module.h>
++
++#include "mtk_vcodec_enc_hw.h"
++#include "mtk_vcodec_enc.h"
++
++static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
++{
++	if (irq_status & MTK_VENC_IRQ_STATUS_PAUSE)
++		writel(MTK_VENC_IRQ_STATUS_PAUSE, addr);
++
++	if (irq_status & MTK_VENC_IRQ_STATUS_SWITCH)
++		writel(MTK_VENC_IRQ_STATUS_SWITCH, addr);
++
++	if (irq_status & MTK_VENC_IRQ_STATUS_DRAM)
++		writel(MTK_VENC_IRQ_STATUS_DRAM, addr);
++
++	if (irq_status & MTK_VENC_IRQ_STATUS_SPS)
++		writel(MTK_VENC_IRQ_STATUS_SPS, addr);
++
++	if (irq_status & MTK_VENC_IRQ_STATUS_PPS)
++		writel(MTK_VENC_IRQ_STATUS_PPS, addr);
++
++	if (irq_status & MTK_VENC_IRQ_STATUS_FRM)
++		writel(MTK_VENC_IRQ_STATUS_FRM, addr);
++}
++
++static irqreturn_t mtk_enc_comp_irq_handler(int irq, void *priv)
++{
++	struct mtk_venc_comp_dev *dev = priv;
++	struct mtk_vcodec_ctx *ctx;
++	unsigned long flags;
++	void __iomem *addr;
++
++	spin_lock_irqsave(&dev->master_dev->irqlock, flags);
++	ctx = dev->curr_ctx;
++	spin_unlock_irqrestore(&dev->master_dev->irqlock, flags);
++	if (!ctx)
++		return IRQ_HANDLED;
++
++	addr = dev->reg_base + MTK_VENC_IRQ_ACK_OFFSET;
++	ctx->irq_status = readl(dev->reg_base + MTK_VENC_IRQ_STATUS_OFFSET);
++	clean_irq_status(ctx->irq_status, addr);
++
++	return IRQ_HANDLED;
++}
++
++static int mtk_venc_comp_bind(struct device *dev,
++			      struct device *master, void *data)
++{
++	struct mtk_venc_comp_dev *comp_dev = dev_get_drvdata(dev);
++	struct mtk_vcodec_dev *master_dev = data;
++	int i;
++
++	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
++		if (dev->of_node != master_dev->enc_comp_node[i])
++			continue;
++
++		/*add component device by order*/
++		if (comp_dev->core_id == MTK_VENC_CORE0)
++			master_dev->enc_comp_dev[MTK_VENC_CORE0] = comp_dev;
++		else if (comp_dev->core_id == MTK_VENC_CORE1)
++			master_dev->enc_comp_dev[MTK_VENC_CORE1] = comp_dev;
++		else
++			return -EINVAL;
++
++		comp_dev->master_dev = master_dev;
++		break;
++	}
++
++	if (i == MTK_VENC_HW_MAX) {
++		dev_err(dev, "Failed to get component node\n");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
++static void mtk_venc_comp_unbind(struct device *dev,
++				 struct device *master, void *data)
++{
++}
++
++static const struct component_ops mtk_venc_component_ops = {
++	.bind = mtk_venc_comp_bind,
++	.unbind = mtk_venc_comp_unbind,
++};
++
++static int mtk_venc_comp_probe(struct platform_device *pdev)
++{
++	struct mtk_venc_comp_dev *comp_dev;
++	int ret;
++
++	comp_dev = devm_kzalloc(&pdev->dev, sizeof(*comp_dev), GFP_KERNEL);
++	if (!comp_dev)
++		return -ENOMEM;
++
++	comp_dev->plat_dev = pdev;
++
++	comp_dev->core_id =
++		(enum mtk_venc_hw_id)of_device_get_match_data(&pdev->dev);
++
++	comp_dev->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(comp_dev->reg_base)) {
++		dev_err(&pdev->dev, "Failed to get reg base");
++		ret = PTR_ERR(comp_dev->reg_base);
++		goto err;
++	}
++
++	comp_dev->enc_irq = platform_get_irq(pdev, 0);
++	if (comp_dev->enc_irq < 0) {
++		dev_err(&pdev->dev, "Failed to get irq resource");
++		ret = comp_dev->enc_irq;
++		goto err;
++	}
++
++	ret = devm_request_irq(&pdev->dev, comp_dev->enc_irq,
++			       mtk_enc_comp_irq_handler, 0,
++			       pdev->name, comp_dev);
++	if (ret) {
++		dev_err(&pdev->dev,
++			"Failed to install comp_dev->enc_irq %d (%d)",
++			comp_dev->enc_irq, ret);
++		ret = -EINVAL;
++		goto err;
++	}
++
++	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
++		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
++
++	platform_set_drvdata(pdev, comp_dev);
++
++	ret = component_add(&pdev->dev, &mtk_venc_component_ops);
++	if (ret) {
++		dev_err(&pdev->dev, "Failed to add component: %d\n", ret);
++		goto err;
++	}
++
++	return 0;
++err:
++	return ret;
++}
++
++static int mtk_venc_comp_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_venc_component_ops);
++	return 0;
++}
++
++static const struct of_device_id mtk_venc_comp_ids[] = {
++	{
++		.compatible = "mediatek,mtk-venc-core0",
++		.data = (void *)MTK_VENC_CORE0,
++	},
++	{
++		.compatible = "mediatek,mtk-venc-core1",
++		.data = (void *)MTK_VENC_CORE1,
++	},
++	{},
++};
++
++MODULE_DEVICE_TABLE(of, mtk_venc_comp_ids);
++
++struct platform_driver mtk_venc_comp_driver = {
++	.probe  = mtk_venc_comp_probe,
++	.remove = mtk_venc_comp_remove,
++	.driver = {
++		.name	 = "mtk-venc-comp",
++		.of_match_table = mtk_venc_comp_ids,
++	},
++};
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.h
+new file mode 100644
+index 000000000000..f9ae97e252dc
+--- /dev/null
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.h
+@@ -0,0 +1,36 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#ifndef _MTK_VCODEC_ENC_HW_H_
++#define _MTK_VCODEC_ENC_HW_H_
++
++#include <linux/platform_device.h>
++#include "mtk_vcodec_drv.h"
++
++/*
++ * struct mtk_venc_comp_dev - driver data
++ * @plat_dev: platform_device
++ * @master_dev: master device
++ * @pm: power management data
++ * @curr_ctx: the context that is waiting for venc hardware
++ * @reg_base: mapped address of venc registers
++ * @irq_status: venc hw irq status
++ * @enc_irq: venc device irq
++ * @core id: for venc core id: core#0, core#1...
++ */
++struct mtk_venc_comp_dev {
++	struct platform_device *plat_dev;
++	struct mtk_vcodec_dev *master_dev;
++
++	struct mtk_vcodec_pm pm;
++	struct mtk_vcodec_ctx *curr_ctx;
++
++	void __iomem *reg_base;
++	unsigned int irq_status;
++	int enc_irq;
++	int core_id;
++};
++
++#endif /* _MTK_VCODEC_ENC_HW_H_ */
 -- 
 2.25.1
 _______________________________________________
