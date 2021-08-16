@@ -2,61 +2,90 @@ Return-Path: <SRS0=ZvcN=NH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 141B1C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 15:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1255C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 16:42:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CDE4060E09
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 15:46:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CDE4060E09
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6203960ED5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 16:42:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6203960ED5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ej9x0KRVRg1AJsJUh3ICSM5SZ+phdqFrmo/tuaPMLjU=; b=T+T8XQR666kJet
-	pvqjXHsYwMAMM3yx09ErRO7DAPuwjDMRavQ5YTLWUVX/kCchdouiC+u3C9pjw6IxVGx4oxrT1lcnH
-	DDYNZHZ5n7tSgiswFWUB80snVFSJM+We0CaIxmp1mOd3OKNcv8IKES2ZtUYp30bdSxqg/HcJu2jE4
-	uxd2aZ8P+5Yjvc7jz8Iw4slduoOZSpxLMRDfWpt8G9G5KyhyfkFgbnkkBpdG79zM6PZplhGBjO+IG
-	2ISONtL+xa4+YzID9Jp2sZIf1sJK3kVt+FnRJJMTjc0lgqwmmgQe0unVpA2gh3WFeYAVVcSXfnYdK
-	04Gmijnr7kvW2/oQnUCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mut1CokKUVqstgmeLGwUdDgdgoAlFdqk1J2nbBiwgUM=; b=qndt1eV2t+NvAN
+	mXH4cutvPXVfG6UW1B7cYCUM48rHH7qXxnwOtfCGBkA5ewDYjoQ8WqIJjSeNIqG9XZg5MZx63EicA
+	Xotiv7Ycw1k+UPLD6hTjtbmcmdJGqAwgT6C+4+M56rcyrvZdeurdCvzNqm7Q2I/96RGZfrbIOHyiF
+	eFkNQz4+u9v+b24QsIfp0oQAhbaG99aukHM+VBFN5PftdrbE/3LR//F+RNigSgeYYvaoousyVNgTH
+	MPcEJ4fcdCtCCOkv4chOOboAABZAuz2ZtzH2fVQO1aQbVwGnReDmmT976E4kWRnvRxPVEzaEnRdnl
+	xOR2p9cfkY+XvaqeD/4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFeoR-00HNsm-HZ; Mon, 16 Aug 2021 15:46:07 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFeoD-00HNqP-B7; Mon, 16 Aug 2021 15:45:55 +0000
-Received: from smtpclient.apple (p5b3d23f8.dip0.t-ipconnect.de [91.61.35.248])
- by mail.holtmann.org (Postfix) with ESMTPSA id 95832CECC9;
- Mon, 16 Aug 2021 17:45:44 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH v2] Bluetooth: btusb: Remove WAKEUP_DISABLE and add
- WAKEUP_AUTOSUSPEND for Realtek devices
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210810020147.14276-1-max.chou@realtek.com>
-Date: Mon, 16 Aug 2021 17:45:44 +0200
-Cc: Johan Hedberg <johan.hedberg@gmail.com>,
- Luiz Augusto von Dentz <luiz.dentz@gmail.com>, matthias.bgg@gmail.com,
- linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- alex_lu@realsil.com.cn, hildawu@realtek.com, kidman@realtek.com,
- apusaka@chromium.org, abhishekpandit@chromium.org, josephsih@chromium.org
-Message-Id: <08B718ED-F885-4870-BB80-AB547FEC52B1@holtmann.org>
-References: <20210810020147.14276-1-max.chou@realtek.com>
-To: Max Chou <max.chou@realtek.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+	id 1mFfgP-00HRRO-3J; Mon, 16 Aug 2021 16:41:53 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mFfgK-00HROL-Sh
+ for linux-mediatek@lists.infradead.org; Mon, 16 Aug 2021 16:41:51 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id k29so24513452wrd.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 09:41:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VaH1mb4YJaNfLIoBKAGqOfF1CidyUq6GE8UUo9yf+IA=;
+ b=0FL71FFEFYgZAt/2TDNCQRJcLZD2MkQLLdGdsGCqZYWqpra+iVRmwzXSODwQZtO7gt
+ QU9YZW3WRnh50AlUz/MsVFLpME9SsElyFHsUnbwad24NUpGtq74VMBZ1Kopr161ovvQk
+ A+yVSlk26gYm/FmroNM/RifBzC6zfHcaqzlotstlTYmgMBjE85WzFkOhkpfJpB0TyfDF
+ vnNeX9EVBOPkURpdcjsTZNDlsyMWPhtVf35FqOJCUZd7nki3E+uMHMtuhUIqqn46g+e5
+ aT7sw8vOMx1QLx3vhhdbE3Z8VBKk4SVr+zpvaqjAFRFmsGKEq3OuP8BFoY/yfj40jTXg
+ KM5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VaH1mb4YJaNfLIoBKAGqOfF1CidyUq6GE8UUo9yf+IA=;
+ b=LSaXpZOxRpYfp9a1Ey9YyihOSoFl2oO3wxG7/hlNLwcUfHe0mhGR6r1+vZZsFk9Wd+
+ 9R2N5XVEW7krvFaYdXigmKZV8xBkYOE1fl7WzAMnEkQsQrjhCYO22/Y2+EG0+1W3SIyo
+ mbkL9BpfGudbvmufzBlKfWq20/NcUirur4LOIaZXpltlfVEkkCdVCpwrRoVvLUKgCnM5
+ OQzgkAJsxRwD7cMN6sPYh3oxj9uHyFXsHm1JLhcTIohlub/yzlt83kkfJDvum7p6IPeB
+ D7yeB1COHjjtYoCQNGnX5N3F48ujlDLTeWWouWL3V+aMCeqa3btF+ZaDRykfW3ORbuVr
+ uvMA==
+X-Gm-Message-State: AOAM531GAZhcMaL55ib9l3jICHrQX7CIlnMuIGAbmMnmu0+AGodmbZtl
+ GN2XaUhkauVrsw5EQM/ZZg2ytw==
+X-Google-Smtp-Source: ABdhPJxQMWnKzZ0ECLs1a7IEhF2g+rE7+74yku7t8LzXIre6H3dSFys3LS0NMgoW5aqYBTJQ3z4dqg==
+X-Received: by 2002:a05:6000:184a:: with SMTP id
+ c10mr19924577wri.26.1629132106459; 
+ Mon, 16 Aug 2021 09:41:46 -0700 (PDT)
+Received: from localhost.localdomain ([2001:861:3a81:3690:b885:8dcf:f8c6:7841])
+ by smtp.gmail.com with ESMTPSA id m10sm15211730wro.63.2021.08.16.09.41.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Aug 2021 09:41:45 -0700 (PDT)
+From: Alexandre Bailon <abailon@baylibre.com>
+To: rui.zhang@intel.com, daniel.lezcano@linaro.org, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: ben.tseng@mediatek.com, michael.kao@mediatek.com, ethan.chang@mediatek.com,
+ fparent@baylibre.com, linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Alexandre Bailon <abailon@baylibre.com>
+Subject: [PATCH 0/3] Add support of thermal for mt8195
+Date: Mon, 16 Aug 2021 18:43:04 +0200
+Message-Id: <20210816164307.557315-1-abailon@baylibre.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_084553_577050_4E23F296 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20210816_094149_004051_355BA685 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,35 +102,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Max,
+This adds thermal support for mt8195.
+Depends on https://patchwork.kernel.org/project/linux-mediatek/list/?series=502403
 
-> For the commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d, wakeup is
-> always disabled for Realtek devices. However, there's the capability
-> for Realtek devices to apply USB wake-up.
-> 
-> In this commit, remove WAKEUP_DISABLE feature for Realtek devices.
-> If users would switch wake-up, they should access
-> "/sys/bus/usb/.../power/wakeup"
-> 
-> In this commit, it also adds the feature as WAKEUP_AUTOSUSPEND
-> for Realtek devices because it should set do_remote_wakeup on autosuspend.
-> 
-> Signed-off-by: Max Chou <max.chou@realtek.com>
-> Tested-by: Hilda Wu <hildawu@realtek.com>
-> Reviewed-by: Archie Pusaka <apusaka@chromium.org>
-> Reviewed-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
-> ---
-> Changes in v2:
-> -fix the compiling error due to the incorrect patch file submited
-> ---
-> drivers/bluetooth/btusb.c | 28 +++++++++-------------------
-> 1 file changed, 9 insertions(+), 19 deletions(-)
+The changes required to support the mt8195 look very similar to those for
+the mt6873 but the differences make code factorisation difficult.
 
-this does not apply cleanly to bluetooth-next tree.
+Alexandre Bailon (1):
+  dt-bindings: thermal: Add binding document for mt8195 thermal
+    controller
 
-Regards
+Michael Kao (1):
+  thermal: mediatek: Add thermal zone settings for mt8195
 
-Marcel
+Tinghan Shen (1):
+  arm64: dts: mt8195: Add thermal zone and thermal policy
+
+ .../thermal/mediatek-thermal-lvts.yaml        |   6 +-
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 164 ++++++++++++++
+ drivers/thermal/mediatek/soc_temp_lvts.c      | 209 ++++++++++++++++--
+ 3 files changed, 361 insertions(+), 18 deletions(-)
+
+-- 
+2.31.1
 
 
 _______________________________________________
