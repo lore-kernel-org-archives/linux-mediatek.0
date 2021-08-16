@@ -2,78 +2,103 @@ Return-Path: <SRS0=ZvcN=NH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 13613C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 18:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63831C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 18:57:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCF7F60F14
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 18:38:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CCF7F60F14
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 206B360F36
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 18:57:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 206B360F36
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BE7nuV4nZFJLq7am6QJJiXbxZ3mK38EhnJHz4g99LUw=; b=j5osaQKIkuunX+
-	yYhOnFkpjKPjf/dUzbYsEWsudG6YAa/sFO8NzGXKt8lAGHCvcQSAjJGuBLtQ8nXoG5yaJ3T6ONpE1
-	Royk7ml9vfjcB/LL9WxhCUQ3n21M2FETKg2C9Mwzn4b4GFHCVohvQ6GefStxEK1lUg/bL7tOZhrvG
-	ghGMX2FrQD109OuYW73QmowAM6xGkMW2GJgV8+KAWeQs7rHSLwWWC3y9JSJkSIMr5B0fWucZz/Cpt
-	9ED4V8JBbaCX4JeKOdAwKvdC1HqfEASFeBv6haYFzXjJH9GhUMfBu1iMOfiofOV3AjyFmKHjh8FCy
-	GEGh7Lodg+2tGdTd2zGg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=H2yE27+98N7SEOnYdDYkirUx32a7i8exCt5QWSbZ0jk=; b=n4dJP/RQ3TEPvcwQY3BLNTb8wF
+	43FX2Ox53tqneuifXqJqzEuLFm4azbEnScrBb4laZrBKHY6KXQ0DUX43Hnn6oLEWg3iieSpu0rZvY
+	5oXA2bBKqF+JuPVFyE7dhzJicYDUJi9oR4ACC5QWy6aW3eZrAykkSvNDheW7Z2hbuhS26DFeFONAZ
+	0Wemgvjy/DoKJz6lr0LcoI5xlFPJN1tqhSMoDM289KG78EEXoFsa60b103HkhVXy5hxk2td5zUu/z
+	HkGFL4TI4rHt5LLXZChSIS5nHmZ31aYj7KezpPOvw2Yo/7N7F7lBYKjfo1i3i7EH0uh+IvMKmvB+y
+	pzCvw/+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFhUj-0000NR-SA; Mon, 16 Aug 2021 18:37:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mFhnE-0002kS-PQ; Mon, 16 Aug 2021 18:57:04 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFhUe-0000Lc-IF
- for linux-mediatek@lists.infradead.org; Mon, 16 Aug 2021 18:37:56 +0000
-X-UUID: 0195d0e8cf5742fe8f384104167c2730-20210816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=PQcoog2fke908PnZhlH5cs8QGCPiRBavoBEj3CfVZ4o=; 
- b=eLLrBbvGByK+oGV/PgMTbWO2eG4zIYKm+6UB5lEVz7Tq9cII4c3s2DCGfNAhho+E9b6k+u8c2A8W3tACWngpf1Is4pGtqeqhBySM3AemLp76K+OdyZ/KKU46c6DSwluSZXH7rQWjL60WDCokk0qsuqetDo1B1T1MvkkF+h5FdJs=;
-X-UUID: 0195d0e8cf5742fe8f384104167c2730-20210816
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1048461289; Mon, 16 Aug 2021 11:37:41 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 11:37:39 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 02:37:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 17 Aug 2021 02:37:38 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>
-Subject: [PATCH v2 2/3] mt76: mt7915: rework debugfs queue info
-Date: Tue, 17 Aug 2021 02:37:34 +0800
-Message-ID: <ca22390dd07253ed3cc7ce3acb1f423c5e41e342.1629133569.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <3f393508b9ed8251f4e2408356110af092c8ad3e.1629133569.git.ryder.lee@mediatek.com>
-References: <3f393508b9ed8251f4e2408356110af092c8ad3e.1629133569.git.ryder.lee@mediatek.com>
+ id 1mFhn9-0002hd-8Z
+ for linux-mediatek@lists.infradead.org; Mon, 16 Aug 2021 18:57:03 +0000
+Received: by mail-wm1-x335.google.com with SMTP id g138so12164098wmg.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 11:56:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=m7ZOM7cdRkICqtiyacBDNsj4qURRxO1sWw5i5EgJhx0=;
+ b=HzJ75RUvClIBbqraulv6LCtCEKRyhF9l86bNICahsL0BMDn+tr2MAGedaCoiS/M7HI
+ 3Ttln2ZDTzMQV/73OAgb5gWdhqVTcAfaMui/jwC/yGkqKyrWPECIE5BGB9wuRotTtJZR
+ n8glPdDvrAkL6NsfQuijpU7NTf+EitF7KrlYHBWiagTBD87z3EiqPC6ePhyVfex4LW1R
+ bzJOqbK5rRd2/pUmjgicupfKYa5CF6ZgyjklG6WR05kEG1tJglD4u63hsIct80uAMX0l
+ mufsLlgPEG0x9jXY+YS8QfK1nmsTKOsGjQu5tgwNUmQkNLRKK/BFJRlM20iaJgIeqnG2
+ Ks6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=m7ZOM7cdRkICqtiyacBDNsj4qURRxO1sWw5i5EgJhx0=;
+ b=OMdmAXgkhmTb6D5AZojQs0JoJZfm1T4inU52kETdtkW2YC16TNmJIp+rUXssoCI+z2
+ wqT1gkFWtJBQjduQA1oppoOQqlaL9gNIzz67gQgf55Inmef7UDDOdbaOh4OxHtQGYDWb
+ QRlg1MsdiuRZTkYRGol4w5vvnEXiPvNGW/lv8+rcjaGD1ZtLm8im4yiqRtOMrrzvDjud
+ u/8d8jtuSE31M0vk4kYIP+2MtI1PPHiwGlJu3fl3pEL5Hy0EmYCVAgTga/9izmjpvJq4
+ WS8uBIQ/7hm0rJH9wtjBzY+5b9eUNdki+f7+cGmnp8s0I6agu0+v7dZAioY3R/qQL7x9
+ AZfg==
+X-Gm-Message-State: AOAM531gUev66/d6l9NYEQtdNJPiG5nzFlgkSVDbiV2R0bADOd0yw6zz
+ x77xgymSNYlDty2JQWNXSo/vbGbX75u1Crb5
+X-Google-Smtp-Source: ABdhPJzoBGbVSUBBJBd79CzIiBUvM5rY3Ebc57V8YSLGDbhAuaNana1b9dAMLW1tLEGIgbbn9dJJ0g==
+X-Received: by 2002:a1c:f414:: with SMTP id z20mr524519wma.94.1629140216638;
+ Mon, 16 Aug 2021 11:56:56 -0700 (PDT)
+Received: from ?IPv6:2a01:e34:ed2f:f020:e1b0:48c1:6199:9cb4?
+ ([2a01:e34:ed2f:f020:e1b0:48c1:6199:9cb4])
+ by smtp.googlemail.com with ESMTPSA id g9sm386690wmk.34.2021.08.16.11.56.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Aug 2021 11:56:56 -0700 (PDT)
+Subject: Re: [PATCH v5 2/3] thermal: mediatek: Add LVTS drivers for SoC
+ theraml zones
+To: Ben Tseng <ben.tseng@mediatek.com>, Fan Chen <fan.chen@mediatek.com>,
+ Zhang Rui <rui.zhang@intel.com>, linux-pm@vger.kernel.org,
+ srv_heupstream@mediatek.com
+Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@chromium.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Michael Kao <michael.kao@mediatek.com>,
+ Yu-Chia Chang <ethan.chang@mediatek.com>
+References: <20210617114707.10618-1-ben.tseng@mediatek.com>
+ <20210617114707.10618-3-ben.tseng@mediatek.com>
+ <06b1804c-4675-2997-8c5c-bcdffbcfc4a1@linaro.org>
+ <1f92b245537d6390b7b2bde62ce8b99a3df9d445.camel@mediatek.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Message-ID: <8a38b9fe-0448-3ddc-9ffc-c43137b5ecaa@linaro.org>
+Date: Mon, 16 Aug 2021 20:56:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1f92b245537d6390b7b2bde62ce8b99a3df9d445.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_113752_649901_1629DFA3 
-X-CRM114-Status: GOOD (  16.15  )
+X-CRM114-CacheID: sfid-20210816_115659_384594_1A9358BB 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,286 +110,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Complete PSE/PLE queue statistics, including per-sta AC queue
-information.
-
-Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-v2: add a missing enum
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 160 +++++++++++++++---
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   6 +-
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  19 ++-
- 3 files changed, 159 insertions(+), 26 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index e1cdfbe52199..fdb4017e1ff9 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -7,6 +7,13 @@
- 
- /** global debugfs **/
- 
-+struct hw_queue_map {
-+	const char *name;
-+	u8 index;
-+	u8 pid;
-+	u8 qid;
-+};
-+
- static int
- mt7915_implicit_txbf_set(void *data, u64 val)
- {
-@@ -233,30 +240,131 @@ mt7915_tx_stats_show(struct seq_file *file, void *data)
- 
- DEFINE_SHOW_ATTRIBUTE(mt7915_tx_stats);
- 
--static int
--mt7915_queues_acq(struct seq_file *s, void *data)
-+static void
-+mt7915_hw_queue_read(struct seq_file *s, u32 base, u32 size,
-+		     const struct hw_queue_map *map)
- {
- 	struct mt7915_dev *dev = dev_get_drvdata(s->private);
--	int i;
-+	u32 i, val;
- 
--	for (i = 0; i < 16; i++) {
--		int j, acs = i / 4, index = i % 4;
--		u32 ctrl, val, qlen = 0;
-+	val = mt76_rr(dev, base + MT_FL_Q_EMPTY);
-+	for (i = 0; i < size; i++) {
-+		u32 ctrl, head, tail, queued;
- 
--		val = mt76_rr(dev, MT_PLE_AC_QEMPTY(acs, index));
--		ctrl = BIT(31) | BIT(15) | (acs << 8);
-+		if (val & BIT(map[i].index))
-+			continue;
-+
-+		ctrl = BIT(31) | (map[i].pid << 10) | (map[i].qid << 24);
-+		mt76_wr(dev, base + MT_FL_Q0_CTRL, ctrl);
- 
--		for (j = 0; j < 32; j++) {
--			if (val & BIT(j))
--				continue;
-+		head = mt76_get_field(dev, base + MT_FL_Q2_CTRL,
-+				      GENMASK(11, 0));
-+		tail = mt76_get_field(dev, base + MT_FL_Q2_CTRL,
-+				      GENMASK(27, 16));
-+		queued = mt76_get_field(dev, base + MT_FL_Q3_CTRL,
-+					GENMASK(11, 0));
- 
--			mt76_wr(dev, MT_PLE_FL_Q0_CTRL,
--				ctrl | (j + (index << 5)));
--			qlen += mt76_get_field(dev, MT_PLE_FL_Q3_CTRL,
--					       GENMASK(11, 0));
--		}
--		seq_printf(s, "AC%d%d: queued=%d\n", acs, index, qlen);
-+		seq_printf(s, "\t%s: ", map[i].name);
-+		seq_printf(s, "queued:0x%03x head:0x%03x tail:0x%03x\n",
-+			   queued, head, tail);
- 	}
-+}
-+
-+static void
-+mt7915_sta_hw_queue_read(void *data, struct ieee80211_sta *sta)
-+{
-+	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct mt7915_dev *dev = msta->vif->phy->dev;
-+	struct seq_file *s = data;
-+	u8 ac;
-+
-+	for (ac = 0; ac < 4; ac++) {
-+		u32 qlen, ctrl, val;
-+		u32 idx = msta->wcid.idx >> 5;
-+		u8 offs = msta->wcid.idx & GENMASK(4, 0);
-+
-+		ctrl = BIT(31) | BIT(11) | (ac << 24);
-+		val = mt76_rr(dev, MT_PLE_AC_QEMPTY(ac, idx));
-+
-+		if (val & BIT(offs))
-+			continue;
-+
-+		mt76_wr(dev, MT_PLE_BASE + MT_FL_Q0_CTRL, ctrl | msta->wcid.idx);
-+		qlen = mt76_get_field(dev, MT_PLE_BASE + MT_FL_Q3_CTRL,
-+				      GENMASK(11, 0));
-+		seq_printf(s, "\tSTA %pM wcid %d: AC%d%d queued:%d\n",
-+			   sta->addr, msta->wcid.idx, msta->vif->wmm_idx,
-+			   ac, qlen);
-+	}
-+}
-+
-+static int
-+mt7915_hw_queues_read(struct seq_file *s, void *data)
-+{
-+	struct mt7915_dev *dev = dev_get_drvdata(s->private);
-+	struct mt7915_phy *phy = mt7915_ext_phy(dev);
-+	static const struct hw_queue_map ple_queue_map[] = {
-+		{"CPU_Q0",  0,  1, MT_CTX0},
-+		{"CPU_Q1",  1,  1, MT_CTX0 + 1},
-+		{"CPU_Q2",  2,  1, MT_CTX0 + 2},
-+		{"CPU_Q3",  3,  1, MT_CTX0 + 3},
-+		{"ALTX_Q0", 8,  2, MT_LMAC_ALTX0},
-+		{"BMC_Q0",  9,  2, MT_LMAC_BMC0},
-+		{"BCN_Q0",  10, 2, MT_LMAC_BCN0},
-+		{"PSMP_Q0", 11, 2, MT_LMAC_PSMP0},
-+		{"ALTX_Q1", 12, 2, MT_LMAC_ALTX0 + 4},
-+		{"BMC_Q1",  13, 2, MT_LMAC_BMC0 + 4},
-+		{"BCN_Q1",  14, 2, MT_LMAC_BCN0 + 4},
-+		{"PSMP_Q1", 15, 2, MT_LMAC_PSMP0 + 4},
-+	};
-+	static const struct hw_queue_map pse_queue_map[] = {
-+		{"CPU Q0",  0,  1, MT_CTX0},
-+		{"CPU Q1",  1,  1, MT_CTX0 + 1},
-+		{"CPU Q2",  2,  1, MT_CTX0 + 2},
-+		{"CPU Q3",  3,  1, MT_CTX0 + 3},
-+		{"HIF_Q0",  8,  0, MT_HIF0},
-+		{"HIF_Q1",  9,  0, MT_HIF0 + 1},
-+		{"HIF_Q2",  10, 0, MT_HIF0 + 2},
-+		{"HIF_Q3",  11, 0, MT_HIF0 + 3},
-+		{"HIF_Q4",  12, 0, MT_HIF0 + 4},
-+		{"HIF_Q5",  13, 0, MT_HIF0 + 5},
-+		{"LMAC_Q",  16, 2, 0},
-+		{"MDP_TXQ", 17, 2, 1},
-+		{"MDP_RXQ", 18, 2, 2},
-+		{"SEC_TXQ", 19, 2, 3},
-+		{"SEC_RXQ", 20, 2, 4},
-+	};
-+	u32 val, head, tail;
-+
-+	/* ple queue */
-+	val = mt76_rr(dev, MT_PLE_FREEPG_CNT);
-+	head = mt76_get_field(dev, MT_PLE_FREEPG_HEAD_TAIL, GENMASK(11, 0));
-+	tail = mt76_get_field(dev, MT_PLE_FREEPG_HEAD_TAIL, GENMASK(27, 16));
-+	seq_puts(s, "PLE page info:\n");
-+	seq_printf(s, "\tTotal free page: 0x%08x head: 0x%03x tail: 0x%03x\n",
-+		   val, head, tail);
-+
-+	val = mt76_rr(dev, MT_PLE_PG_HIF_GROUP);
-+	head = mt76_get_field(dev, MT_PLE_HIF_PG_INFO, GENMASK(11, 0));
-+	tail = mt76_get_field(dev, MT_PLE_HIF_PG_INFO, GENMASK(27, 16));
-+	seq_printf(s, "\tHIF free page: 0x%03x res: 0x%03x used: 0x%03x\n",
-+		   val, head, tail);
-+
-+	seq_puts(s, "PLE non-empty queue info:\n");
-+	mt7915_hw_queue_read(s, MT_PLE_BASE, ARRAY_SIZE(ple_queue_map),
-+			     &ple_queue_map[0]);
-+
-+	/* iterate per-sta ple queue */
-+	ieee80211_iterate_stations_atomic(dev->mphy.hw,
-+					  mt7915_sta_hw_queue_read, s);
-+	if (phy)
-+		ieee80211_iterate_stations_atomic(phy->mt76->hw,
-+						  mt7915_sta_hw_queue_read, s);
-+
-+	/* pse queue */
-+	seq_puts(s, "PSE non-empty queue info:\n");
-+	mt7915_hw_queue_read(s, MT_PSE_BASE, ARRAY_SIZE(pse_queue_map),
-+			     &pse_queue_map[0]);
- 
- 	return 0;
- }
-@@ -345,8 +453,8 @@ int mt7915_init_debugfs(struct mt7915_dev *dev)
- 
- 	debugfs_create_devm_seqfile(dev->mt76.dev, "queues", dir,
- 				    mt7915_queues_read);
--	debugfs_create_devm_seqfile(dev->mt76.dev, "acq", dir,
--				    mt7915_queues_acq);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "hw-queues", dir,
-+				    mt7915_hw_queues_read);
- 	debugfs_create_file("tx_stats", 0400, dir, dev, &mt7915_tx_stats_fops);
- 	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
- 	debugfs_create_file("implicit_txbf", 0600, dir, dev,
-@@ -431,9 +539,23 @@ static const struct file_operations fops_fixed_rate = {
- 	.llseek = default_llseek,
- };
- 
-+static int
-+mt7915_queues_show(struct seq_file *s, void *data)
-+{
-+	struct ieee80211_sta *sta = s->private;
-+
-+	mt7915_sta_hw_queue_read(s, sta);
-+
-+	return 0;
-+}
-+
-+DEFINE_SHOW_ATTRIBUTE(mt7915_queues);
-+
- void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 			    struct ieee80211_sta *sta, struct dentry *dir)
- {
- 	debugfs_create_file("fixed_rate", 0600, dir, sta, &fops_fixed_rate);
-+	debugfs_create_file("hw-queues", 0400, dir, sta, &mt7915_queues_fops);
- }
-+
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index c0da97f2774c..f5a53a61754d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -219,13 +219,17 @@ enum {
- };
- 
- enum {
--	MT_LMAC_AC00,
-+	MT_CTX0,
-+	MT_HIF0 = 0x0,
-+
-+	MT_LMAC_AC00 = 0x0,
- 	MT_LMAC_AC01,
- 	MT_LMAC_AC02,
- 	MT_LMAC_AC03,
- 	MT_LMAC_ALTX0 = 0x10,
- 	MT_LMAC_BMC0,
- 	MT_LMAC_BCN0,
-+	MT_LMAC_PSMP0,
- };
- 
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 91c1fb56b0ed..3be53b73fc00 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -22,15 +22,22 @@
- #define MT_PLE_BASE			0x8000
- #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
- 
--#define MT_PLE_FL_Q0_CTRL		MT_PLE(0x1b0)
--#define MT_PLE_FL_Q1_CTRL		MT_PLE(0x1b4)
--#define MT_PLE_FL_Q2_CTRL		MT_PLE(0x1b8)
--#define MT_PLE_FL_Q3_CTRL		MT_PLE(0x1bc)
--
--#define MT_PLE_AC_QEMPTY(ac, n)		MT_PLE(0x300 + 0x10 * (ac) + \
-+#define MT_FL_Q_EMPTY			0x0b0
-+#define MT_FL_Q0_CTRL			0x1b0
-+#define MT_FL_Q2_CTRL			0x1b8
-+#define MT_FL_Q3_CTRL			0x1bc
-+
-+#define MT_PLE_FREEPG_CNT		MT_PLE(0x100)
-+#define MT_PLE_FREEPG_HEAD_TAIL		MT_PLE(0x104)
-+#define MT_PLE_PG_HIF_GROUP		MT_PLE(0x110)
-+#define MT_PLE_HIF_PG_INFO		MT_PLE(0x114)
-+#define MT_PLE_AC_QEMPTY(ac, n)		MT_PLE(0x500 + 0x40 * (ac) + \
- 					       ((n) << 2))
- #define MT_PLE_AMSDU_PACK_MSDU_CNT(n)	MT_PLE(0x10e0 + ((n) << 2))
- 
-+#define MT_PSE_BASE			0xc000
-+#define MT_PSE(ofs)			(MT_PSE_BASE + (ofs))
-+
- #define MT_MDP_BASE			0xf000
- #define MT_MDP(ofs)			(MT_MDP_BASE + (ofs))
- 
--- 
-2.29.2
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CkhpIEJlbiwKCk9uIDIzLzA3LzIwMjEgMDg6MTcsIEJlbiBUc2VuZyB3cm90ZToKPiBPbiBNb24s
+IDIwMjEtMDYtMjEgYXQgMTM6MjYgKzAyMDAsIERhbmllbCBMZXpjYW5vIHdyb3RlOgo+PiBPbiAx
+Ny8wNi8yMDIxIDEzOjQ3LCBCZW4gVHNlbmcgd3JvdGU6Cj4+PiBGcm9tOiBNaWNoYWVsIEthbyA8
+bWljaGFlbC5rYW9AbWVkaWF0ZWsuY29tPgo+Pj4KPj4+IEFkZCBhIExWVFMgKExvdyB2b2x0YWdl
+IHRoZXJtYWwgc2Vuc29yKSBkcml2ZXIgdG8gcmVwb3J0IGp1bmN0aW9uCj4+PiB0ZW1wZXJhdHVy
+ZXMgaW4gTWVkaWF0ZWsgU29DIGFuZCByZWdpc3RlciB0aGUgbWF4aW11bSB0ZW1wZXJhdHVyZQo+
+Pj4gb2Ygc2Vuc29ycyBhbmQgZWFjaCBzZW5zb3IgYXMgYSB0aGVybWFsIHpvbmUuCj4+Cj4+IEkg
+dGhpbmsgd2UgYWxyZWFkeSB0YWxrZWQgYWJvdXQgdGhhdC4gV2UgZG9uJ3Qgd2FudCBhIHRoZXJt
+YWwgc2Vuc29yCj4+IGRyaXZlciB0byBhZ2dyZWdhdGUgdGhlIHRlbXBlcmF0dXJlcyBidXQgY3Jl
+YXRlIHNvbWUga2luZG9mIHZpcnR1YWwKPj4gc2Vuc29yIHdpdGggYSBwcm9wZXJ0eSAobWluLCBt
+YXgsIGF2ZywgLi4uKSB3aGljaCBpcyB1c2FibGUgYnkKPj4gYW55b25lLgo+Pgo+PiBbIC4uLiBd
+Cj4+Cj4+Cj4+Cj4gCj4gRGVhciBEYW5pZWwsCj4gCj4gU29ycnkgZm9yIHRoZSBsYXRlIHJlcGx5
+LgoKc29ycnkgdG9vLCBtaXNzZWQgdG8gYW5zd2VyLiBBbm90aGVyIHRocmVhZCBwb2ludGVkIHRv
+IHRoaXMgb25lIGFuZCBJCmZpZ3VyZWQgb3V0IEkgZm9yZ290IHRvIGFuc3dlci4KCj4gQWZ0ZXIg
+c3VydmV5ICxJJ20gbm90IHN1cmUgd2hldGhlciB0aGUgcGF0Y2hbMV0gaXMgdGhlIGFyY2hpdGVj
+dHVyZSBvZgo+IHZpcnR1YWwgdGhlcm1hbCBzZW5zb3Igd2hpY2ggeW91IGNvbW1lbnRlZC4KCkFo
+LCB5ZXMgdGhhdCBpcyBraW5kIG9mIHdoYXQgaXQgd291bGQgYmUgcmVxdWVzdGVkIGJ1dCByZWFs
+bHkgZ2VuZXJpYyBzbwphbnlvbmUgY2FuIHVzZSBpdC4KCj4gT3IsIGlzIHRoZXJlIGFueSBleGlz
+dGluZyBmcmFtZXdvcmsgb24gbWFpbmxpbmUgYWxyZWFkeSBzdXBwb3J0IHZpcnR1YWwKPiBzZW5z
+b3I/CgpObyB1bmZvcnR1bmF0ZWx5LCBpdCBpcyBub3QgZG9uZSBbeWV0XS4KCj4gQ291bGQgeW91
+IGhlbHAgdG8gcHJvdmlkZSByZWZlcmVuY2UgdG8gdXM/CgpPaywgd2UgaGFkIHRoaXMgZGlzY3Vz
+c2lvbiBzZXZlcmFsIHRpbWVzIG9uIHRoZSBtYWlsaW5nIGxpc3QgYW5kIGF0IHRoZQpkaWZmZXJl
+bnQgZXZlbnRzIGxpa2UgdGhlIExpbnV4IFBsdW1iZXJzIGNvbmZlcmVuY2UuIEJ1dCBJIHdhcyBu
+b3QgYWJsZQp0byBmaW5kIG91dCBhIHBvaW50ZXIuCgpCYXNpY2FsbHkgdGhlIGlkZWEgaXMgc2lt
+cGxlLCB3ZSBkb24ndCB3YW50IGRyaXZlcnMgZG9pbmcgd2VpcmQgdGhpbmdzCmluIHRoZWlyIGdl
+dF90ZW1wIGNhbGxiYWNrLiBUaGlzIGNhbGxiYWNrIG11c3QgcmV0dXJuIHRoZSB0ZW1wZXJhdHVy
+ZQphc3NvY2lhdGVkIHRvIGEgcGh5c2ljYWwgc2Vuc29yIGluIGEgMToxIG1hbm5lci4KCkhvd2V2
+ZXIsIHNvbWUgcGVvcGxlIHdhbnQgdG8gZGVmaW5lIGEgdGhlcm1hbCB6b25lIGJ1dCB3aXRoIGFu
+CmFnZ3JlZ2F0aW9uIG9mIGRpZmZlcmVudCBzZW5zb3JzLgoKQXQgdGhpcyBwb2ludCwgd2UgYXJl
+IHVuc3VyZSBob3cgdG8gZG8gdGhhdC4KCkhhdmluZyBhIHZpcnR1YWwgc2Vuc29yIHdvdWxkIGJl
+IG1vcmUgYWRlcXVhdGUgYXMgaXQgd29uJ3QgaW1wYWN0CmFueXRoaW5nIGV4Y2VwdCB0aGUgRFQg
+Zm9yIGEgY29uZmlndXJhdGlvbi4gQW5kIHdlIGNhbiBtYWtlIGl0IHRvIGV2b2x2ZQp3aXRob3V0
+IGhhdmluZyB0byBjaGFuZ2UgYWxsIHRoZSB0aGVybWFsIGZyYW1ld29yayBpbnRlcm5hbHMuCgpG
+cm9tIGEgRFQgcG9pbnQgb2YgdmlldywgYSB2aXJ0dWFsIHNlbnNvciBkZXZpY2UgY3VvbGQgaGF2
+ZSBwaGFuZGxlcyB0bwp0aGUgZGlmZmVyZW50IHNlbnNvcnMgYW5kIGxldCdzIHNheSBhIHByb3Bl
+cnR5IHRlbGxpbmcgd2hhdCBkbyB0byAoYXZnLAptaW4sIG1heCwgLi4uKS4gVGhlIHRoZXJtYWwg
+em9uZSB3aWxsIHBvaW50IHRvIHRoZSB2aXJ0dWFsIGRldmljZS4KCkluIHRoZSBkcml2ZXIgaXRz
+ZWxmLCB0aGUgZ2V0X3RlbXAgd2lsbCBqdXN0IGNhbGwgZ2V0X3RlbXAgb2YgYWxsIHRoZQpzZW5z
+b3JzIGFuZCBkbyB0aGUgb3BlcmF0aW9uIHNwZWNpZmllZCBpbiB0aGUgcHJvcGVydHkuCgpXaXRo
+IHRoYXQsIHRoZSBkcml2ZXJzIHN0YXkgY29uc2lzdGVudCBhbmQgd2UgaGF2ZSB0aGUgZmxleGli
+aWxpdHkgdG8gZG8Kd2hhdGV2ZXIgd2Ugd2FudC4KCkRvZXMgaXQgbWFrZSBzZW5zZSA/CgoKCi0t
+IAo8aHR0cDovL3d3dy5saW5hcm8ub3JnLz4gTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29m
+dHdhcmUgZm9yIEFSTSBTb0NzCgpGb2xsb3cgTGluYXJvOiAgPGh0dHA6Ly93d3cuZmFjZWJvb2su
+Y29tL3BhZ2VzL0xpbmFybz4gRmFjZWJvb2sgfAo8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xpbmFy
+b29yZz4gVHdpdHRlciB8CjxodHRwOi8vd3d3LmxpbmFyby5vcmcvbGluYXJvLWJsb2cvPiBCbG9n
+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
+ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
+dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
+Cg==
