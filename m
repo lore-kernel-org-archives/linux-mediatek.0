@@ -2,91 +2,85 @@ Return-Path: <SRS0=ZvcN=NH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C049AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 10:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25F22C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 10:28:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 814DC61875
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 10:01:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 814DC61875
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id DE40261AA3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 10:28:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE40261AA3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2KeVWmbv6N/W1mGGQrNSn2bERuSifrL3ZzUKPIJbgGI=; b=3c0EjSsEj0ya6O
-	1h7ym1bG7GCjLLxCrtObf0bmkqcRiE82uEZTGWWNZKz/PLIuls0x+VSCb6B5Pb4dAE72lQexmPvsy
-	N2Uxou8jKQ/yEnb3Mr5WuFLr7IPH2y8AjG5/zX+ZcyjCL+qxzoyVAAPLvBaHXXTvRvfUOwGXL399W
-	m+zwGTPulIvgq68Q22iRNiY0D1QNntdF5XBobAkexbK/DrZJUIJNmExR8rHeGtivivuYmMfxI1Ska
-	PQNUBgjIRfOAm0qac8cgQP0zeTaNCGoi3mXd3z17qOtpTp6EZwqb80HDcg4mQrwf6r8xb2st2godG
-	mGWBNwC/RTRtraKL+ykA==;
+	List-Owner; bh=t8RUA57gIHa6mvx8xJML6GWB2FkfUjHqQ91+f/ZlkQg=; b=3iAeiJ/OKrh5si
+	uL2nFwkWawWmNBl2eeB+0pAVHppytCF7fD04sBNDBht3E6tBOGkkhLJ//fYhNhUBTKg4Tv/b0T77a
+	ZInc9Gd2anZpxSQEnUhW2x8gpanzdDdgKT21aJilXHjREZgJdmwtHL2z+X9q7oB/KwLAhaFEqoh1e
+	fWyJuahAsmafSMmnNZUH7S7OvdNBaiZV+bHB9LtG7ja7kgpavI9noUQlS/bvXhRWg/qAemvQPCbDj
+	M/3aWowtwlT1fETf52+Hlo9Ms66fAAeuINbewtCDLZlhN20bKE4vWnkwErBGO7eP0QzQqBbUVkSnr
+	Tl0ppajafwTHFbRZ1+dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFZR2-00Gefb-6X; Mon, 16 Aug 2021 10:01:36 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1mFZqY-00Ghh0-92; Mon, 16 Aug 2021 10:27:58 +0000
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFZPt-00GeCt-Uw
- for linux-mediatek@lists.infradead.org; Mon, 16 Aug 2021 10:00:29 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id q6so11212808wrv.6
- for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 03:00:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=X8lsgvvE/dE0upzVkpvexrKU095gGKWW3Ww3Z5U5AlU=;
- b=Zh6dg0wFD5xYcTWGWreyhZoCuq2kQiGlEepIyUhmoaeriMX4rH7QnyXO+ys+hLUU2q
- RmOsNYEX8+9YCjK6kRCJDhI1vHLDUD+urRr7eXsyPB2Jxjd3fv9Up7J7Vbj0V0ypwL4j
- 9C7kLGkIrMrFD6XVoQGdM28dH9AVDbwIL/ex9Lwh+eJdfB34nZ6/VmFFcixnyZ00irA3
- VlKGkQmMyM5oZKBPom1F2EKI/9NxCMt5wRW0op4FiRdPn9tQ8ocz3kB11kKx2hLPCQjU
- zKBmrCRqcaWQw7wauqZt0rwTv9N9mlDuSGHoVy8YcYgYvCHBWzx1R5KOUTu/SbIauQ5n
- +p2Q==
+ id 1mFZqI-00Ghf2-MF
+ for linux-mediatek@lists.infradead.org; Mon, 16 Aug 2021 10:27:46 +0000
+Received: by mail-ua1-x92d.google.com with SMTP id y14so7324925uai.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 03:27:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pRH4TVFPj1g2bLXry7U6Q5PGawo78fbiYn7oa4P7TUE=;
+ b=wUONjgu57oYf3OfxDDScC3ZokM5dNXLU+0GsEWRZ3QVzsyATXYqT58BpdtitRkQkIH
+ 9j4dHB+IpVqScnNr9gIh/8BBpPPN1oyuqGiBT28prUs0TV2sjtlrXSEKM44kpi29mtgm
+ hsFDminvf3C0rKryy/W0IFmoq+mJr3YJ2W9yriAbTRxX9XMEUC0KHf/vO6t4PmpcBVwV
+ eHlohxqA6fWnbXgZMYVKahwwM+7oOdp60WFDNSxi1+1S4L3v05kNYa3zKRhdV51s5eyf
+ 6A1sXyDRMjedq0EvnMhnzh20FFACX3TsDX7epWJFWhh3U9Q8UvF+J3vSXdfACqnJmYBH
+ 0W0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=X8lsgvvE/dE0upzVkpvexrKU095gGKWW3Ww3Z5U5AlU=;
- b=gcKzgVzEXdevfFujDyNQcaX1IxKkabNJPcCftOo5q1r/tqSfFVVnvmBZZHTDbwXnbG
- 0f5lL/nEYRCt3beBSZr/DZ9vVURxEZLKPUxDMhJ+e9z/tp0adI5Okyl0klVOTrCghAHK
- Rsiq4cosnU6EpC8e7qmiHczxzGwykVGuOMulA/vMwLXdUY937sSrWgp7xKIkWJ/ORrPh
- So10iwO2rXcmJGf1/hrbJrB9T8Lb005/AnrhW13OPkPah0XENqC8oRtcSNIcOdw/W0A2
- rYYN8gJu1ydk49iL9tNY88dVV3T/8i41oY1QDnVZV4RogIriWQRwA16QnpyCI1fyLB1o
- CLxQ==
-X-Gm-Message-State: AOAM532Tno1Zsor+FZ7C4u1W2QETumMpoyUIBvueJRnBBXzFgW0vp7cF
- K2iKIHDoaZaHU/v6c51NuA+VXw==
-X-Google-Smtp-Source: ABdhPJw26+ebv36BQwFzYLXiMKflLWgvck2mVR8uRjAtsQoh2Tnn+SM1XtRqcUIdgXMFd+kxgRzJ1A==
-X-Received: by 2002:adf:f707:: with SMTP id r7mr16989703wrp.175.1629108019509; 
- Mon, 16 Aug 2021 03:00:19 -0700 (PDT)
-Received: from groot.home ([2a01:cb19:826e:8e00:92b1:d3c2:1204:85e2])
- by smtp.gmail.com with ESMTPSA id u10sm1916645wrt.14.2021.08.16.03.00.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Aug 2021 03:00:19 -0700 (PDT)
-From: Mattijs Korpershoek <mkorpershoek@baylibre.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Fabien Parent <fparent@baylibre.com>, Kevin Hilman <khilman@baylibre.com>,
- linux-input@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Mattijs Korpershoek <mkorpershoek@baylibre.com>
-Subject: [PATCH RESEND v3 3/4] Input: mtk-pmic-keys - add support for MT6358
-Date: Mon, 16 Aug 2021 12:00:12 +0200
-Message-Id: <20210816100013.100412-4-mkorpershoek@baylibre.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210816100013.100412-1-mkorpershoek@baylibre.com>
-References: <20210816100013.100412-1-mkorpershoek@baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pRH4TVFPj1g2bLXry7U6Q5PGawo78fbiYn7oa4P7TUE=;
+ b=HZwUF7wJ3MzaXb3+M741+HnrijLi4s3yoU0xbJcKR7Yc/3snhQyj9BmHOG2P6PIpp6
+ LU1PAtru/lTqalzcPwN847ELNxCeZq+0POUtjTdt26MmkFYX3eWR6PlCxDz29NOTeaF1
+ Kpwzvr5sZQDmDR2AxMpTXURxIWg99roLF1CcJqDgrJLA+74DXM/E1zgUen1iOs4O547Y
+ YylIyhsPyHPyZmLAWK84nOexOV6zsY0o4otNt2EDp5/jztU8jl2CliUcM0CssdQ+g0CS
+ WC3xYHfXJ+7lvfsigdBvRoaZ8IzRPW3pLxeFYdhzduDDUKg8SHajhxcQvn6SyCfHVB0E
+ CwMQ==
+X-Gm-Message-State: AOAM53353VT9QG1LXZ96z/Ocwh7y4DaPFsC5wIR2zWAwGUNKwq5kgYWM
+ rozvrsUE3lged/XKSElL0U01yPJuTLHQdUU86qPwFw==
+X-Google-Smtp-Source: ABdhPJx12b+Bqmk2bxuZlUu8XnA8FFpwLQVJjtElcHZQSIpFTlWvmHagxQPgWDu9OhRbbdZgmffyA5kUa3yLHHrPYLQ=
+X-Received: by 2002:a9f:25a7:: with SMTP id 36mr8092627uaf.129.1629109660385; 
+ Mon, 16 Aug 2021 03:27:40 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210809072315.1127-1-derong.liu@mediatek.com>
+In-Reply-To: <20210809072315.1127-1-derong.liu@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 16 Aug 2021 12:27:04 +0200
+Message-ID: <CAPDyKFq3_eia7cvo-1Ajj5wcrfEHtp_EsMp27uL4dC_n+vPWZQ@mail.gmail.com>
+Subject: Re: [PATCH v2] mmc: mediatek: add wait dma stop done flow
+To: Derong Liu <derong.liu@mediatek.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mmc <linux-mmc@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ wsp_upstream@mediatek.com, Peng Zhou <peng.zhou@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_030026_039555_D26328D6 
-X-CRM114-Status: GOOD (  19.35  )
+X-CRM114-CacheID: sfid-20210816_032742_771657_FE5BECC7 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,133 +97,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT6358 pmic keys behave differently than mt6397 and mt6323: there are
-two interrupts per key: one for press, the other one for release (_r)
+On Mon, 9 Aug 2021 at 09:25, Derong Liu <derong.liu@mediatek.com> wrote:
+>
+> We found this issue on a 5G platform, during CMDQ error handling, if DMA status is active when it call msdc_reset_hw, it means mmc host hw reset and DMA transfer will be parallel, mmc host may access sram region unexpectedly.
+>
+> According to the programming guide of mtk mmc host,it needs to wait for dma stop done after set dma stop.
+> This change should be applied to all SoCs.
+>
+> Signed-off-by: Derong Liu <derong.liu@mediatek.com>
+> ---
+>  drivers/mmc/host/mtk-sd.c | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 4dfc246c5f95..1dfd2842471b 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2339,6 +2339,8 @@ static void msdc_cqe_disable(struct mmc_host *mmc, bool recovery)
+>         if (recovery) {
+>                 sdr_set_field(host->base + MSDC_DMA_CTRL,
+>                               MSDC_DMA_CTRL_STOP, 1);
+> +               while (readl(host->base + MSDC_DMA_CFG) & MSDC_DMA_CFG_STS)
+> +                       cpu_relax();
 
-Signed-off-by: Mattijs Korpershoek <mkorpershoek@baylibre.com>
----
- drivers/input/keyboard/mtk-pmic-keys.c | 49 ++++++++++++++++++++++++--
- 1 file changed, 47 insertions(+), 2 deletions(-)
+I suggest you look into using readl_poll_timeout() - as we don't want
+to hang indefinitely, no matter what.
 
-diff --git a/drivers/input/keyboard/mtk-pmic-keys.c b/drivers/input/keyboard/mtk-pmic-keys.c
-index d1abf95d5701..5496a7020104 100644
---- a/drivers/input/keyboard/mtk-pmic-keys.c
-+++ b/drivers/input/keyboard/mtk-pmic-keys.c
-@@ -9,6 +9,7 @@
- #include <linux/interrupt.h>
- #include <linux/kernel.h>
- #include <linux/mfd/mt6323/registers.h>
-+#include <linux/mfd/mt6358/registers.h>
- #include <linux/mfd/mt6397/core.h>
- #include <linux/mfd/mt6397/registers.h>
- #include <linux/module.h>
-@@ -74,11 +75,22 @@ static const struct mtk_pmic_regs mt6323_regs = {
- 	.pmic_rst_reg = MT6323_TOP_RST_MISC,
- };
- 
-+static const struct mtk_pmic_regs mt6358_regs = {
-+	.keys_regs[MTK_PMIC_PWRKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+		0x2, MT6358_PSC_TOP_INT_CON0, 0x5),
-+	.keys_regs[MTK_PMIC_HOMEKEY_INDEX] =
-+		MTK_PMIC_KEYS_REGS(MT6358_TOPSTATUS,
-+		0x8, MT6358_PSC_TOP_INT_CON0, 0xa),
-+	.pmic_rst_reg = MT6358_TOP_RST_MISC,
-+};
-+
- struct mtk_pmic_keys_info {
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_keys_regs *regs;
- 	unsigned int keycode;
- 	int irq;
-+	int irq_r; /* optional: release irq if different */
- 	bool wakeup:1;
- };
- 
-@@ -188,6 +200,19 @@ static int mtk_pmic_key_setup(struct mtk_pmic_keys *keys,
- 		return ret;
- 	}
- 
-+	if (info->irq_r > 0) {
-+		ret = devm_request_threaded_irq(
-+			keys->dev, info->irq_r, NULL,
-+			mtk_pmic_keys_irq_handler_thread,
-+			IRQF_ONESHOT | IRQF_TRIGGER_HIGH, "mtk-pmic-keys",
-+			info);
-+		if (ret) {
-+			dev_err(keys->dev, "Failed to request IRQ_r: %d: %d\n",
-+				info->irq, ret);
-+			return ret;
-+		}
-+	}
-+
- 	input_set_capability(keys->input_dev, EV_KEY, info->keycode);
- 
- 	return 0;
-@@ -199,8 +224,11 @@ static int __maybe_unused mtk_pmic_keys_suspend(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			enable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				enable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -212,8 +240,11 @@ static int __maybe_unused mtk_pmic_keys_resume(struct device *dev)
- 	int index;
- 
- 	for (index = 0; index < MTK_PMIC_MAX_KEY_COUNT; index++) {
--		if (keys->keys[index].wakeup)
-+		if (keys->keys[index].wakeup) {
- 			disable_irq_wake(keys->keys[index].irq);
-+			if (keys->keys[index].irq_r > 0)
-+				disable_irq_wake(keys->keys[index].irq_r);
-+		}
- 	}
- 
- 	return 0;
-@@ -229,6 +260,9 @@ static const struct of_device_id of_mtk_pmic_keys_match_tbl[] = {
- 	}, {
- 		.compatible = "mediatek,mt6323-keys",
- 		.data = &mt6323_regs,
-+	}, {
-+		.compatible = "mediatek,mt6358-keys",
-+		.data = &mt6358_regs,
- 	}, {
- 		/* sentinel */
- 	}
-@@ -242,6 +276,7 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 	struct mt6397_chip *pmic_chip = dev_get_drvdata(pdev->dev.parent);
- 	struct device_node *node = pdev->dev.of_node, *child;
- 	static const char *const irqnames[] = { "powerkey", "homekey" };
-+	static const char *const irqnames_r[] = { "powerkey_r", "homekey_r" };
- 	struct mtk_pmic_keys *keys;
- 	const struct mtk_pmic_regs *mtk_pmic_regs;
- 	struct input_dev *input_dev;
-@@ -285,6 +320,16 @@ static int mtk_pmic_keys_probe(struct platform_device *pdev)
- 			return keys->keys[index].irq;
- 		}
- 
-+		if (of_device_is_compatible(node, "mediatek,mt6358-keys")) {
-+			keys->keys[index].irq_r = platform_get_irq_byname(
-+				pdev, irqnames_r[index]);
-+
-+			if (keys->keys[index].irq_r < 0) {
-+				of_node_put(child);
-+				return keys->keys[index].irq_r;
-+			}
-+		}
-+
- 		error = of_property_read_u32(child,
- 			"linux,keycodes", &keys->keys[index].keycode);
- 		if (error) {
--- 
-2.30.2
+>                 msdc_reset_hw(host);
+>         }
+>  }
+> --
+> 2.18.0
 
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-mediatek mailing list
