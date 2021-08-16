@@ -2,19 +2,19 @@ Return-Path: <SRS0=ZvcN=NH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A5FDC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 12:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB948C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 13:02:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 383C463219
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 12:12:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 383C463219
+	by mail.kernel.org (Postfix) with ESMTPS id 7A1DF63290
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Aug 2021 13:02:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7A1DF63290
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eZfucw+bTFG97WBO6BQtHqYudkpr29Q9sDqJEUl1F6E=; b=PmqeABKuR8Iy8y
-	0/JmXHWK0/7PgvVZm+zepQOIJP2RwbAnpGg9pY51QWBb9oRG1WGupa6bY3VIbEzBpmw37daF1o6fY
-	/SlmwFk+ELPonHjZvb03BwwDlUntlOw7xf6SaZnhACgqHqupNlQSjrawnOfy/IwMnbcLz/NN5Mf6r
-	NQXRMhAKZKhMe56h+DicAdAArJJBA70Z/XWv1Q6rjsZlFrmM/apJLh4bzF9VrQQlFK9orkCWibuiY
-	I2nv6dFhElg7dvo8gtHLd2qpsZyhEcIuX0BU4M6U4FI1ewvwGl3bfd5n/534T32zkaNkyPnrDXkta
-	JBJYoFSr/JijX//oBnMQ==;
+	List-Owner; bh=WBa8EeZwM2cA4vCuL2JTZ5q1DEcwn2wt9d9pPiZn8MI=; b=xuz1/d65mT8Jo6
+	KR68wlvADKgmvbPtofypJCBV36CmGiItnivDWr4Wj5QRMO7rH/px9gZDB0cWeWjzF0ui1jypCthK2
+	ZBQZYdNjz/tW7jbXiqObY1lnfSjAnndqx60e9D1uDOz3s3Pr8p1gU50vIsIVy61sP3LzOcr0WY3dU
+	cS0bCh76yjvVRNujlm2X7fb1dEtC0OMOb0pr0W/kXQNF7RatHwNGvCehr9t7hmpGVavdhnJNdEI38
+	pNjaOrGuysTtpamf4naHUtY9qmU8HQjt8ZC4oMgj85HB+3I9Ye+yHThtj0WwQK4eA7uR4AO7h7sQB
+	MCEzrFQhuBNrffxhRnmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFbTK-00GvRu-37; Mon, 16 Aug 2021 12:12:06 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mFcFg-00H0uj-Cc; Mon, 16 Aug 2021 13:02:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFbT5-00GvQQ-90; Mon, 16 Aug 2021 12:11:55 +0000
-X-UUID: b31474f86231490fa6d1827f547818ee-20210816
+ id 1mFcFa-00H0px-26; Mon, 16 Aug 2021 13:02:02 +0000
+X-UUID: 429be09f2ce44f5da17557c444a19e24-20210816
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=kkysPn/5aJXvWrgV2Um/G5eKzXBq7Ohp9jMuEy/5iYQ=; 
- b=Fjqo8WY5cgB2jePVO0i542gfEym99HrP0JrThjvjeUrpf1HG5tX6ExGpoS0qX4jaY0eodyMVtT+2MOPhMmEKwfEWvwsuh+2Js21ZqOfbKWqLNLza2rUKXLMVhAqEsWmTrcBzavSfo2uRFgw88Qw9pIDH3Y1JGycIdN6Y7MR91FA=;
-X-UUID: b31474f86231490fa6d1827f547818ee-20210816
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <hsin-hsiung.wang@mediatek.com>)
+ bh=JiUWHQhw3d/c8if14OCuLpHPMoZZhOFQBgPIahZNMuE=; 
+ b=OFjMW6op+2zwuImOItFOr6TUMVAQammj9xfTOEn5GxrkKdL8ooiKKBJvBVZH5nE2oPdYyfE/FDPeOK5LcFwV1mqwW95xpKTLgO2MZN9Z57bF4M57Y74IoMdDCnKO3IAetX012eJXmyKte8U0x0DNrYOqyHTptN5fCnEyv7nnDbk=;
+X-UUID: 429be09f2ce44f5da17557c444a19e24-20210816
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1483893401; Mon, 16 Aug 2021 05:11:41 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1259682483; Mon, 16 Aug 2021 06:01:52 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 05:11:39 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 20:11:38 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Mon, 16 Aug 2021 05:56:36 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 Aug 2021 20:56:34 +0800
+Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 16 Aug 2021 20:11:38 +0800
-Message-ID: <1629115898.29907.3.camel@mtksdaap41>
-Subject: Re: [PATCH v10 3/5] spmi: mediatek: Add support for MT6873/8192
-From: Hsin-hsiung Wang <hsin-hsiung.wang@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 16 Aug 2021 20:11:38 +0800
-In-Reply-To: <162853170949.1975443.12492156194100139076@swboyd.mtv.corp.google.com>
-References: <1627972461-2627-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1627972461-2627-4-git-send-email-hsin-hsiung.wang@mediatek.com>
- <162853170949.1975443.12492156194100139076@swboyd.mtv.corp.google.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ Transport; Mon, 16 Aug 2021 20:56:34 +0800
+Message-ID: <1629118594.3246.13.camel@mtkswgap22>
+Subject: Re: [PATCH v13 2/2] cpufreq: mediatek-hw: Add support for CPUFREQ HW
+From: Hector Yuan <hector.yuan@mediatek.com>
+To: Viresh Kumar <viresh.kumar@linaro.org>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rafael
+ J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <wsd_upstream@mediatek.com>
+Date: Mon, 16 Aug 2021 20:56:34 +0800
+In-Reply-To: <20210803071302.b4ttoqgqdq4dfmwe@vireshk-i7>
+References: <1627574891-26514-1-git-send-email-hector.yuan@mediatek.com>
+ <1627574891-26514-3-git-send-email-hector.yuan@mediatek.com>
+ <20210803071302.b4ttoqgqdq4dfmwe@vireshk-i7>
+X-Mailer: Evolution 3.2.3-0ubuntu6 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_051151_373279_09C1F510 
-X-CRM114-Status: GOOD (  30.79  )
+X-CRM114-CacheID: sfid-20210816_060158_164643_322A88B8 
+X-CRM114-Status: GOOD (  38.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,332 +91,514 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Mon, 2021-08-09 at 10:55 -0700, Stephen Boyd wrote:
-> Quoting Hsin-Hsiung Wang (2021-08-02 23:34:19)
-> > diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+On Tue, 2021-08-03 at 12:43 +0530, Viresh Kumar wrote:
+> On 30-07-21, 00:08, Hector Yuan wrote:
+> > From: "Hector.Yuan" <hector.yuan@mediatek.com>
+> > 
+> > Add cpufreq HW support
+> 
+> Please write a proper commit log, what you are adding and which SoCs
+> it will apply to. Also add a full stop (.) at the end.
+> 
+OK, I will write down more details
+> > Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> > ---
+> >  drivers/cpufreq/Kconfig.arm           |   12 ++
+> >  drivers/cpufreq/Makefile              |    1 +
+> >  drivers/cpufreq/mediatek-cpufreq-hw.c |  357 +++++++++++++++++++++++++++++++++
+> >  include/linux/cpufreq.h               |   39 ++++
+> 
+> The changes to cpufreq.h should be done in a separate patch.
+> 
+OK, will separate .h to another patch
+> > diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
 > > new file mode 100644
-> > index 000000000000..94c45d46ab0c
+> > index 0000000..ca50a3a
 > > --- /dev/null
-> > +++ b/drivers/spmi/spmi-mtk-pmif.c
-> > @@ -0,0 +1,465 @@
+> > +++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
+> > @@ -0,0 +1,357 @@
 > > +// SPDX-License-Identifier: GPL-2.0
-> > +//
-> > +// Copyright (c) 2021 MediaTek Inc.
+> > +/*
+> > + * Copyright (c) 2020 MediaTek Inc.
+> > + */
 > > +
-> > +#include <linux/clk.h>
+> > +#include <linux/bitfield.h>
+> > +#include <linux/cpufreq.h>
+> > +#include <linux/energy_model.h>
+> > +#include <linux/init.h>
 > > +#include <linux/iopoll.h>
+> > +#include <linux/kernel.h>
 > > +#include <linux/module.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/of_platform.h>
+> > +#include <linux/pm_qos.h>
+> > +#include <linux/slab.h>
+> > +
+> > +#define LUT_MAX_ENTRIES			32U
+> > +#define LUT_FREQ			GENMASK(11, 0)
+> > +#define LUT_ROW_SIZE			0x4
+> > +#define CPUFREQ_HW_STATUS		BIT(0)
+> > +#define SVS_HW_STATUS			BIT(1)
+> > +#define POLL_USEC			1000
+> > +#define TIMEOUT_USEC			300000
+> > +
+> > +enum {
+> > +	REG_FREQ_LUT_TABLE,
+> > +	REG_FREQ_ENABLE,
+> > +	REG_FREQ_PERF_STATE,
+> > +	REG_FREQ_HW_STATE,
+> > +	REG_EM_POWER_TBL,
+> > +	REG_FREQ_LATENCY,
+> > +
+> > +	REG_ARRAY_SIZE,
+> > +};
+> > +
+> > +struct cpufreq_mtk {
+> > +	struct cpufreq_frequency_table *table;
+> > +	void __iomem *reg_bases[REG_ARRAY_SIZE];
+> > +	int nr_opp;
+> > +	cpumask_t related_cpus;
+> > +};
+> > +
+> > +static const u16 cpufreq_mtk_offsets[REG_ARRAY_SIZE] = {
+> > +	[REG_FREQ_LUT_TABLE]	= 0x0,
+> > +	[REG_FREQ_ENABLE]	= 0x84,
+> > +	[REG_FREQ_PERF_STATE]	= 0x88,
+> > +	[REG_FREQ_HW_STATE]	= 0x8c,
+> > +	[REG_EM_POWER_TBL]	= 0x90,
+> > +	[REG_FREQ_LATENCY]	= 0x110,
+> > +};
+> > +
+> > +static struct cpufreq_mtk *mtk_freq_domain_map[NR_CPUS];
+> > +
+> > +static int __maybe_unused
+> > +mtk_cpufreq_get_cpu_power(unsigned long *mW,
+> > +			  unsigned long *KHz, struct device *cpu_dev)
+> > +{
+> > +	struct cpufreq_mtk *c;
+> > +	struct cpufreq_policy *policy;
+> > +	int i;
+> > +
+> > +	policy = cpufreq_cpu_get_raw(cpu_dev->id);
+> > +	if (!policy)
+> > +		return 0;
+> > +
+> > +	c = mtk_freq_domain_map[policy->cpu];
+> > +
+> > +	for (i = 0; i < c->nr_opp; i++) {
+> > +		if (c->table[i].frequency < *KHz)
+> > +			break;
+> > +	}
+> > +	i--;
+> > +
+> > +	*KHz = c->table[i].frequency;
+> > +	*mW = readl_relaxed(c->reg_bases[REG_EM_POWER_TBL] +
+> > +			    i * LUT_ROW_SIZE) / 1000;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_cpufreq_hw_target_index(struct cpufreq_policy *policy,
+> > +				       unsigned int index)
+> > +{
+> > +	struct cpufreq_mtk *c = policy->driver_data;
+> > +
+> > +	writel_relaxed(index, c->reg_bases[REG_FREQ_PERF_STATE]);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static unsigned int mtk_cpufreq_hw_get(unsigned int cpu)
+> > +{
+> > +	struct cpufreq_mtk *c;
+> > +	struct cpufreq_policy *policy;
+> > +	unsigned int index;
+> > +
+> > +	policy = cpufreq_cpu_get_raw(cpu);
+> > +	if (!policy)
+> > +		return 0;
+> > +
+> > +	c = mtk_freq_domain_map[policy->cpu];
+> > +
+> > +	index = readl_relaxed(c->reg_bases[REG_FREQ_PERF_STATE]);
+> > +	index = min(index, LUT_MAX_ENTRIES - 1);
+> > +
+> > +	return c->table[index].frequency;
+> > +}
+> > +
+> > +static unsigned int mtk_cpufreq_hw_fast_switch(struct cpufreq_policy *policy,
+> > +					       unsigned int target_freq)
+> > +{
+> > +	struct cpufreq_mtk *c = policy->driver_data;
+> > +	unsigned int index;
+> > +
+> > +	index = cpufreq_table_find_index_dl(policy, target_freq);
+> > +
+> > +	writel_relaxed(index, c->reg_bases[REG_FREQ_PERF_STATE]);
+> > +
+> > +	return policy->freq_table[index].frequency;
+> > +}
+> > +
+> > +static int mtk_cpu_create_freq_table(struct platform_device *pdev,
+> > +				     struct cpufreq_mtk *c)
+> > +{
+> > +	struct device *dev = &pdev->dev;
+> > +	void __iomem *base_table;
+> > +	u32 data, i, freq, prev_freq = 0;
+> > +
+> > +	c->table = devm_kcalloc(dev, LUT_MAX_ENTRIES + 1,
+> > +				sizeof(*c->table), GFP_KERNEL);
+> > +	if (!c->table)
+> > +		return -ENOMEM;
+> > +
+> > +	base_table = c->reg_bases[REG_FREQ_LUT_TABLE];
+> > +
+> > +	for (i = 0; i < LUT_MAX_ENTRIES; i++) {
+> > +		data = readl_relaxed(base_table + (i * LUT_ROW_SIZE));
+> > +		freq = FIELD_GET(LUT_FREQ, data) * 1000;
+> > +
+> > +		if (freq == prev_freq)
+> > +			break;
+> > +
+> > +		c->table[i].frequency = freq;
+> > +
+> > +		dev_dbg(dev, "index=%d freq=%d\n",
+> > +			i, c->table[i].frequency);
+> 
+> Won't this fit in a single line ?
+> 
+OK, will modify to single line
+> > +
+> > +		prev_freq = freq;
+> > +	}
+> > +
+> > +	c->table[i].frequency = CPUFREQ_TABLE_END;
+> > +	c->nr_opp = i;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_cpu_resources_init(struct platform_device *pdev,
+> > +				  unsigned int cpu, int index,
+> > +				  const u16 *offsets)
+> > +{
+> > +	struct cpufreq_mtk *c;
+> > +	struct device *dev = &pdev->dev;
+> > +	int ret, i;
+> > +	void __iomem *base;
+> > +
+> > +	if (mtk_freq_domain_map[cpu])
+> 
+> This should not happen anymore, isn't it ?
+> 
+Will remove cpu map.
+> > +		return 0;
+> > +
+> > +	c = devm_kzalloc(dev, sizeof(*c), GFP_KERNEL);
+> > +	if (!c)
+> > +		return -ENOMEM;
+> > +
+> > +	base = devm_platform_ioremap_resource(pdev, index);
+> > +	if (IS_ERR(base))
+> > +		return PTR_ERR(base);
+> > +
+> > +	for (i = REG_FREQ_LUT_TABLE; i < REG_ARRAY_SIZE; i++)
+> > +		c->reg_bases[i] = base + offsets[i];
+> > +
+> > +	ret = of_perf_domain_get_sharing_cpumask(index, "performance-domains",
+> 
+> Instead of parsing parsing "performance-domains" twice, I would rather
+> pass a CPU number here instead of index.
+> 
+Sorry, could you give me more details? For now, will use index to parse
+per-cpu to related cpus.You mean pass policy->cpu or? Thanks.
+> > +						 "#performance-domain-cells",
+> > +						 &c->related_cpus);
+> 
+> You could have directly passed policy->cpus here instead.
+> 
+will replace it.
+> > +	if (ret) {
+> > +		dev_info(dev, "Domain-%d failed to get related CPUs\n", index);
+> > +		return ret;
+> > +	}
+> > +
+> > +	ret = mtk_cpu_create_freq_table(pdev, c);
+> > +	if (ret) {
+> > +		dev_info(dev, "Domain-%d failed to create freq table\n", index);
+> > +		return ret;
+> > +	}
+> > +
+> > +	mtk_freq_domain_map[cpu] = c;
+> 
+> I will rather use policy->driver_data to store this now.
+> 
+OK
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
+> > +{
+> > +	struct platform_device *pdev = cpufreq_get_driver_data();
+> > +	struct cpufreq_mtk *c;
+> > +	struct device *cpu_dev;
+> > +	struct em_data_callback em_cb = EM_DATA_CB(mtk_cpufreq_get_cpu_power);
+> > +	struct pm_qos_request *qos_request;
+> > +	struct device_node *cpu_np;
+> > +	struct of_phandle_args args;
+> > +	const u16 *offsets;
+> > +	unsigned int latency;
+> > +	int sig, pwr_hw = CPUFREQ_HW_STATUS | SVS_HW_STATUS;
+> > +	int ret;
+> 
+> It looks much more organized when the variable definitions are in
+> decreasing order of their length, instead of the random order as it is
+> right now.
+> 
+OK, will sort it.
+> > +
+> > +	offsets = of_device_get_match_data(&pdev->dev);
+> > +	if (!offsets)
+> > +		return -EINVAL;
+> > +
+> > +	cpu_np = of_cpu_device_node_get(policy->cpu);
+> > +	if (!cpu_np) {
+> > +		dev_info(&pdev->dev, "Failed to get cpu %d device\n",
+> > +			 policy->cpu);
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	ret = of_parse_phandle_with_args(cpu_np, "performance-domains",
+> > +					 "#performance-domain-cells", 0,
+> > +					 &args);
+> > +	if (ret < 0)
+> 
+> What about dropping cpu_np and same later in the code as well ?
+> 
+OK, Will add it.
+> > +		return ret;
+> > +
+> > +	/* Get the bases of cpufreq for domains */
+> > +	ret = mtk_cpu_resources_init(pdev, policy->cpu, args.args[0], offsets);
+> > +	if (ret) {
+> > +		dev_info(&pdev->dev, "CPUFreq resource init failed\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	cpu_dev = get_cpu_device(policy->cpu);
+> > +	if (!cpu_dev) {
+> > +		pr_err("failed to get cpu%d device\n", policy->cpu);
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	c = mtk_freq_domain_map[policy->cpu];
+> > +	if (!c) {
+> > +		pr_err("No scaling support for CPU%d\n", policy->cpu);
+> > +		return -ENODEV;
+> > +	}
+> > +
+> > +	cpumask_copy(policy->cpus, &c->related_cpus);
+> > +
+> > +	policy->freq_table = c->table;
+> > +	policy->driver_data = c;
+> 
+> Oh you already do this, you can remove mtk_freq_domain_map array now.
+> 
+OK, will remove map.
+> > +
+> > +	latency = readl_relaxed(c->reg_bases[REG_FREQ_LATENCY]);
+> > +	if (!latency)
+> > +		latency = CPUFREQ_ETERNAL;
+> > +
+> > +	/* us convert to ns */
+> > +	policy->cpuinfo.transition_latency = latency * 1000;
+> 
+> You want to multiple CPUFREQ_ETERNAL too ?
+> 
+Yes, may be different power domain with different transition latency.
+> > +
+> > +	policy->fast_switch_possible = true;
+> > +
+> > +	qos_request = kzalloc(sizeof(*qos_request), GFP_KERNEL);
+> 
+> This is a small structure, why not allocate it on stack instead ?
+> 
+For qos part, we'd like to take more time to re-consider the SW flow and
+put this to another patch set.Is this okay to you?
+> > +	if (!qos_request)
+> > +		return -ENOMEM;
+> > +
+> > +	/* Let CPUs leave idle-off state for SVS CPU initializing */
+> > +	cpu_latency_qos_add_request(qos_request, 0);
+> > +
+> > +	/* HW should be in enabled state to proceed now */
+> > +	writel_relaxed(0x1, c->reg_bases[REG_FREQ_ENABLE]);
+> > +
+> > +	if (readl_poll_timeout(c->reg_bases[REG_FREQ_HW_STATE], sig,
+> > +			       (sig & pwr_hw) == pwr_hw, POLL_USEC,
+> > +			       TIMEOUT_USEC)) {
+> > +		if (!(sig & CPUFREQ_HW_STATUS)) {
+> > +			pr_info("cpufreq hardware of CPU%d is not enabled\n",
+> > +				policy->cpu);
+> > +			return -ENODEV;
+> > +		}
+> > +
+> > +		pr_info("SVS of CPU%d is not enabled\n", policy->cpu);
+> > +	}
+> > +
+> > +	cpu_latency_qos_remove_request(qos_request);
+> > +
+> > +	em_dev_register_perf_domain(cpu_dev, c->nr_opp, &em_cb, policy->cpus, true);
+> > +
+> > +	kfree(qos_request);
+> 
+> Why free after registering for em ? And also move the entire qos thing
+> into a separate routine instead of adding it to ->init().
+> 
+If you agree, we'll consider to put it in another patch set.
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_cpufreq_hw_cpu_exit(struct cpufreq_policy *policy)
+> > +{
+> > +	struct cpufreq_mtk *c;
+> > +
+> > +	c = mtk_freq_domain_map[policy->cpu];
+> > +
+> > +	/* HW should be in paused state now */
+> > +	writel_relaxed(0x0, c->reg_bases[REG_FREQ_ENABLE]);
+> 
+> Please make sure each and every resource is freed here and in probe on
+> failures.
+> 
+OK, will free all resources as probe.
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static struct cpufreq_driver cpufreq_mtk_hw_driver = {
+> > +	.flags		= CPUFREQ_NEED_INITIAL_FREQ_CHECK |
+> > +			  CPUFREQ_HAVE_GOVERNOR_PER_POLICY |
+> > +			  CPUFREQ_IS_COOLING_DEV,
+> > +	.verify		= cpufreq_generic_frequency_table_verify,
+> > +	.target_index	= mtk_cpufreq_hw_target_index,
+> > +	.get		= mtk_cpufreq_hw_get,
+> > +	.init		= mtk_cpufreq_hw_cpu_init,
+> > +	.exit		= mtk_cpufreq_hw_cpu_exit,
+> > +	.fast_switch	= mtk_cpufreq_hw_fast_switch,
+> > +	.name		= "mtk-cpufreq-hw",
+> > +	.attr		= cpufreq_generic_attr,
+> > +};
+> > +
+> > +static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
+> > +{
+> > +	int ret;
+> > +
+> > +	cpufreq_mtk_hw_driver.driver_data = pdev;
+> > +
+> > +	ret = cpufreq_register_driver(&cpufreq_mtk_hw_driver);
+> > +	if (ret) {
+> > +		dev_err(&pdev->dev, "CPUFreq HW driver failed to register\n");
+> > +		return ret;
+> > +	}
+> > +
+> > +	return 0;
+> 
+> You can do return ret here and drop the earlier return and its {}.
+> 
+okay.
+> > +}
+> > +
+> > +static int mtk_cpufreq_hw_driver_remove(struct platform_device *pdev)
+> > +{
+> > +	return cpufreq_unregister_driver(&cpufreq_mtk_hw_driver);
+> > +}
+> > +
+> > +static const struct of_device_id mtk_cpufreq_hw_match[] = {
+> > +	{ .compatible = "mediatek,cpufreq-hw", .data = &cpufreq_mtk_offsets },
+> > +	{}
+> > +};
+> > +
+> > +static struct platform_driver mtk_cpufreq_hw_driver = {
+> > +	.probe = mtk_cpufreq_hw_driver_probe,
+> > +	.remove = mtk_cpufreq_hw_driver_remove,
+> > +	.driver = {
+> > +		.name = "mtk-cpufreq-hw",
+> > +		.of_match_table = mtk_cpufreq_hw_match,
+> > +	},
+> > +};
+> > +module_platform_driver(mtk_cpufreq_hw_driver);
+> > +
+> > +MODULE_DESCRIPTION("Mediatek cpufreq-hw driver");
+> > +MODULE_LICENSE("GPL v2");
+> 
+> You can add Module-author as well here if you want.
+> 
+OK.
+> > diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
+> > index 9fd7194..4916d70 100644
+> > --- a/include/linux/cpufreq.h
+> > +++ b/include/linux/cpufreq.h
+> > @@ -13,6 +13,8 @@
+> >  #include <linux/completion.h>
+> >  #include <linux/kobject.h>
+> >  #include <linux/notifier.h>
+> > +#include <linux/of.h>
 > > +#include <linux/of_device.h>
+> >  #include <linux/pm_qos.h>
+> >  #include <linux/spinlock.h>
+> >  #include <linux/sysfs.h>
+> > @@ -1036,6 +1038,43 @@ void arch_set_freq_scale(const struct cpumask *cpus,
+> >  }
+> >  #endif
+> >  
+> > +#ifdef CONFIG_CPU_FREQ
 > 
-> include platform_device.h for the platform device driver that this is.
+> There is another CONFIG_CPU_FREQ a few lines above, please use the
+> same block for this routine as well.
 > 
-Thanks for the commit, I will update it in the next patch.
-
-> > +#include <linux/spmi.h>
-> > +
-> > +#define SWINF_IDLE     0x00
-> > +#define SWINF_WFVLDCLR 0x06
-> > +
-> > +#define GET_SWINF(x)   (((x) >> 1) & 0x7)
-> > +
-> > +#define PMIF_CMD_REG_0         0
-> > +#define PMIF_CMD_REG           1
-> > +#define PMIF_CMD_EXT_REG       2
-> > +#define PMIF_CMD_EXT_REG_LONG  3
-> > +
-> > +#define PMIF_DELAY_US   10
-> > +#define PMIF_TIMEOUT_US (10 * 1000)
-> > +
-> > +#define PMIF_CHAN_OFFSET 0x5
-> > +
-> > +#define PMIF_MAX_CLKS  3
-> > +
-> > +#define SPMI_OP_ST_BUSY 1
-> > +
-> > +struct ch_reg {
-> > +       u32 ch_sta;
-> > +       u32 wdata;
-> > +       u32 rdata;
-> > +       u32 ch_send;
-> > +       u32 ch_rdy;
-> > +};
-> > +
-> > +struct pmif_data {
-> > +       const u32       *regs;
-> > +       const u32       *spmimst_regs;
-> > +       u32     soc_chan;
-> > +};
-> > +
-> > +struct pmif {
-> > +       void __iomem    *base;
-> > +       void __iomem    *spmimst_base;
-> > +       struct ch_reg   chan;
-> > +       struct clk_bulk_data clks[PMIF_MAX_CLKS];
-> > +       u32 nclks;
-> 
-> size_t? Surely 32-bits isn't important.
-> 
-
-Thanks. I will use size_t in the next patch.
-
-> > +       const struct pmif_data *data;
-> > +};
-> > +
-> > +static const char * const pmif_clock_names[] = {
-> > +       "pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
-> > +};
-> [...]
-> > +
-> > +static bool pmif_is_fsm_vldclr(struct pmif *arb)
+OK, will move it to the above.
+> > +static inline int of_perf_domain_get_sharing_cpumask(int index, const char *list_name,
+> > +						     const char *cell_name,
+> > +						     struct cpumask *cpumask)
 > > +{
-> > +       u32 reg_rdata;
+> > +	struct device_node *cpu_np;
+> > +	struct of_phandle_args args;
+> > +	int cpu, ret;
 > > +
-> > +       reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
-> 
-> Newline here please.
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +       return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
+> > +	for_each_possible_cpu(cpu) {
+> > +		cpu_np = of_cpu_device_node_get(cpu);
+> > +		if (!cpu_np)
+> > +			continue;
+> > +
+> > +		ret = of_parse_phandle_with_args(cpu_np, list_name,
+> > +						 cell_name, 0,
+> > +						 &args);
+> > +
+> > +		of_node_put(cpu_np);
+> > +		if (ret < 0)
+> > +			continue;
+> > +
+> > +		if (index == args.args[0])
+> > +			cpumask_set_cpu(cpu, cpumask);
+> > +	}
+> > +
+> > +	return 0;
 > > +}
-> > +
-> > +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
+> > +#else
+> > +static inline int of_perf_domain_get_sharing_cpumask(int index, const char *list_name,
+> > +						     const char *cell_name,
+> > +						     struct cpumask *cpumask)
 > > +{
-> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> > +       u32 rdata, cmd;
-> > +       int ret;
-> > +
-> > +       /* Check the opcode */
-> > +       if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
-> > +               return -EINVAL;
-> > +
-> > +       cmd = opc - SPMI_CMD_RESET;
-> > +
-> > +       mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
-> > +       ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
-> > +                                       rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
-> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> > +       if (ret < 0)
-> > +               dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
-> > +
-> > +       return ret;
+> > +	return 0;
+> 
+> 	return -EOPNOTSUPP;
+> 
 > > +}
-> > +
-> > +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-> > +                             u16 addr, u8 *buf, size_t len)
-> > +{
-> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> > +       struct ch_reg *inf_reg;
-> > +       int ret;
-> > +       u32 data, cmd;
-> > +
-> > +       /* Check for argument validation. */
-> > +       if (sid & ~0xf) {
-> > +               dev_err(&ctrl->dev, "exceed the max slv id\n");
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       if (len > 4) {
-> > +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> > +#endif
 > 
-> Missing newline
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       if (opc >= 0x60 && opc <= 0x7f)
-> > +               opc = PMIF_CMD_REG;
-> > +       else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
-> > +               opc = PMIF_CMD_EXT_REG_LONG;
-> > +       else
-> > +               return -EINVAL;
-> > +
-> > +       /* Wait for Software Interface FSM state to be IDLE. */
-> > +       inf_reg = &arb->chan;
-> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> > +                                       data, GET_SWINF(data) == SWINF_IDLE,
-> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> > +       if (ret < 0) {
-> > +               /* set channel ready if the data has transferred */
-> > +               if (pmif_is_fsm_vldclr(arb))
-> > +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-> > +               goto out;
-> > +       }
-> > +
-> > +       /* Send the command. */
-> > +       cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
-> > +       pmif_writel(arb, cmd, inf_reg->ch_send);
-> > +
-> > +       /*
-> > +        * Wait for Software Interface FSM state to be WFVLDCLR,
-> > +        * read the data and clear the valid flag.
-> > +        */
-> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> > +                                       data, GET_SWINF(data) == SWINF_WFVLDCLR,
-> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> > +       if (ret < 0) {
-> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
-> > +               goto out;
-> > +       }
-> > +
-> > +       data = pmif_readl(arb, inf_reg->rdata);
-> > +       memcpy(buf, &data, len);
-> > +       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> > +
-> > +out:
-> > +       if (ret < 0)
-> > +               return ret;
-> > +
-> > +       return 0;
-> > +}
-> > +
-> > +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-> > +                              u16 addr, const u8 *buf, size_t len)
-> > +{
-> > +       struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-> > +       struct ch_reg *inf_reg;
-> > +       int ret;
-> > +       u32 data, cmd;
-> > +
-> > +       if (len > 4) {
-> > +               dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-> 
-> Missing newline
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +               return -EINVAL;
-> > +       }
-> > +
-> > +       /* Check the opcode */
-> > +       if (opc >= 0x40 && opc <= 0x5F)
-> > +               opc = PMIF_CMD_REG;
-> > +       else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
-> > +               opc = PMIF_CMD_EXT_REG_LONG;
-> > +       else if (opc >= 0x80)
-> > +               opc = PMIF_CMD_REG_0;
-> > +       else
-> > +               return -EINVAL;
-> > +
-> > +       /* Wait for Software Interface FSM state to be IDLE. */
-> > +       inf_reg = &arb->chan;
-> > +       ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-> > +                                       data, GET_SWINF(data) == SWINF_IDLE,
-> > +                                       PMIF_DELAY_US, PMIF_TIMEOUT_US);
-> > +       if (ret < 0) {
-> > +               /* set channel ready if the data has transferred */
-> > +               if (pmif_is_fsm_vldclr(arb))
-> > +                       pmif_writel(arb, 1, inf_reg->ch_rdy);
-> > +               dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-> > +               goto out;
-> > +       }
-> > +
-> > +       /* Set the write data. */
-> > +       memcpy(&data, buf, len);
-> > +       pmif_writel(arb, data, inf_reg->wdata);
-> > +
-> > +       /* Send the command. */
-> > +       cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
-> > +       pmif_writel(arb, cmd, inf_reg->ch_send);
-> > +
-> > +out:
-> > +       if (ret < 0)
-> > +               return ret;
-> > +
-> > +       return 0;
-> 
-> Simplify to 
-> 
-> 	out:
-> 		return ret;
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +}
-> > +
-> > +static const struct pmif_data mt6873_pmif_arb = {
-> > +       .regs = mt6873_regs,
-> > +       .spmimst_regs = mt6873_spmi_regs,
-> > +       .soc_chan = 2,
-> > +};
-> > +
-> > +static int mtk_spmi_probe(struct platform_device *pdev)
-> > +{
-> > +       struct pmif *arb;
-> > +       struct spmi_controller *ctrl;
-> > +       int err, i;
-> > +       u32 chan_offset;
-> > +
-> > +       ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*arb));
-> > +       if (!ctrl)
-> > +               return -ENOMEM;
-> > +
-> > +       arb = spmi_controller_get_drvdata(ctrl);
-> > +       arb->data = of_device_get_match_data(&pdev->dev);
-> 
-> Use device_get_match_data() instead please.
-> 
-
-Thanks, I will change to use device_get_match_data in the next patch.
-
-> > +       if (!arb->data) {
-> > +               err = -EINVAL;
-> > +               dev_err(&pdev->dev, "Cannot get drv_data\n");
-> > +               goto err_put_ctrl;
-> > +       }
-> > +
-> > +       arb->base = devm_platform_ioremap_resource_byname(pdev, "pmif");
-> > +       if (IS_ERR(arb->base)) {
-> > +               err = PTR_ERR(arb->base);
-> > +               dev_err(&pdev->dev, "pmif failed to get the remappped memory\n");
-> 
-> Please drop print as the API already prints errors for every problem.
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +               goto err_put_ctrl;
-> > +       }
-> > +
-> > +       arb->spmimst_base = devm_platform_ioremap_resource_byname(pdev, "spmimst");
-> > +       if (IS_ERR(arb->spmimst_base)) {
-> > +               err = PTR_ERR(arb->spmimst_base);
-> > +               dev_err(&pdev->dev, "spmimst failed to get the remappped memory\n");
-> 
-> Please drop print as the API already prints errors for every problem.
-> 
-
-Thanks, I will update it in the next patch.
-
-> > +               goto err_put_ctrl;
-> > +       }
-> > +
-> > +       arb->nclks = ARRAY_SIZE(pmif_clock_names);
-> > +       if (arb->nclks > PMIF_MAX_CLKS) {
-> > +               err = -EINVAL;
-> > +               dev_err(&pdev->dev, "exceed the max clock numbers\n");
-> 
-> Do we really care? The dt schema should be checking this instead of the
-> driver.
-> 
-
-Thanks, I will remove the check in the next patch.
-
-> > +               goto err_put_ctrl;
-> > +       }
-> > +
-> > +       for (i = 0; i < arb->nclks; i++)
-> > +               arb->clks[i].id = pmif_clock_names[i];
-> > +
 
 _______________________________________________
 Linux-mediatek mailing list
