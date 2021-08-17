@@ -2,78 +2,75 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF4D3C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 09:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFD48C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 09:50:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A9D8960F38
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 09:49:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A9D8960F38
+	by mail.kernel.org (Postfix) with ESMTPS id 925FA60F38
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 09:50:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 925FA60F38
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HVHRwBwB6cpq1H5c99O4myzHBCuljxDE7rCzequ6bF4=; b=AGcB3mNRSO8Nj1
-	FOUbKmdquWbzsutvmVd3pSTRtQLZkJw3clrg8iM8ySBgknL5Rr/5+cYEPOA0lOCzViPhCO89jNTmj
-	YKy6/VYPyNbUIvZrd7cpcamDWs1h0dphckjALNRDFyx3NyZTQtinXa11XEoAN1senKUWN2dnv5S2/
-	S3s0P1EjjFiej5NhZRJwRGcIV00qmD6HxWEC8vZ9uTvMJW95pEZZbuYD3+NUKE2OZxU38Uvl0cJZg
-	OB2I7Fkq185t6nZrwiqZZGnMORT/FUTS9MbwKHNhjeRTTlU9qy1BABpZ4IF5ekCuvZF59XP3sO7UR
-	kHz5XkjvLygGTHghmisQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=twG2h9YWRav02hoTz7x3cXKtUY865D6C2V2k9P1h4TE=; b=icT+MWGRHRcMqs
+	MbicTHSYHhlI/TeLdkfh3WRvLcjo1IUVSOvu19GX/1LHJ1yj21XwdCWhMkOzKtGl61OD07/nWHvb/
+	3BcDr6mfD4IdvK75CSC4LULIuTGaDUILh6SqehiuZ1dpSdOqPQT3M+m0C9KqOjpOWQyjmxhAPTCCe
+	CUCzNDvxD7BEJRquxiEz/N8YcOf9zzmFIrW3OAJUMckp9dKz9u2+rlV7o46CMsYVHA8F7LrVminbr
+	qhvvfkI/SI51HuzKRwbGcx1sx3OQOxhQ2VO6McOtgA9HL+Or5epfbJTDkBSPZSble6LIazFiXpr+5
+	T+vybF9lnMwOnUrM6RSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFvj9-001usK-3V; Tue, 17 Aug 2021 09:49:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mFvjB-001ut1-5c; Tue, 17 Aug 2021 09:49:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFvgm-001tvu-JS; Tue, 17 Aug 2021 09:47:27 +0000
-X-UUID: 3d3f811f4d284f18b03cdffe7929dcbc-20210817
+ id 1mFvgn-001tsl-N8; Tue, 17 Aug 2021 09:47:28 +0000
+X-UUID: 433bb53eb80e4204a7d200bf7ce3781d-20210817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=MUeSsour3W6UOFT60tVnO7VFsB/7OwprT+vxod35Mqg=; 
- b=PD7wmhrvYMSJsU1Rpd9opNcdIPj2AhtUhnREOjEuMCZwW5opz4d5JAPDLNWPuDAqr3Y4Yk0wf/zduBX/HU0vDdZtF97S+F0GEaH8gtyyzoo9+1ldPh0wsK4obhH1cxjZATpuL5AVN9mtMzxgQHZ5rOuCMz59hDfvlU9Hb0ezcoY=;
-X-UUID: 3d3f811f4d284f18b03cdffe7929dcbc-20210817
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=qwyQxJFBLVo0v9Jr70hlkF8FMq102qJELMblx4FyqNw=; 
+ b=smqipnvNjCGv1vJl6Gqbaho01Mk0ad+SOi+2EXuvwtRMQWoG0AA83k82mJ31zd+3wwBRNSl05/ysQqMoPYg45ro8EWfAPXoOd11OD164DYWo2T6Yxef/DFv5HamD+Q5RymrsMevYnjIbU6k1ni+8KG9i4wzYZZtUL9xUi+mLdqU=;
+X-UUID: 433bb53eb80e4204a7d200bf7ce3781d-20210817
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <hsin-hsiung.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1809139974; Tue, 17 Aug 2021 02:47:16 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1061767326; Tue, 17 Aug 2021 02:47:15 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 02:47:15 -0700
+ 15.0.1497.2; Tue, 17 Aug 2021 02:47:13 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 17:47:13 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 17:47:12 +0800
 Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 17 Aug 2021 17:47:13 +0800
+ Frontend Transport; Tue, 17 Aug 2021 17:47:12 +0800
 From: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
 CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <james.lo@mediatek.com>, Henry Chen <henryc.chen@mediatek.com>
-Subject: [PATCH v11 4/5] spmi: mediatek: Add support for MT8195
-Date: Tue, 17 Aug 2021 17:47:09 +0800
-Message-ID: <1629193630-19994-5-git-send-email-hsin-hsiung.wang@mediatek.com>
+ <james.lo@mediatek.com>
+Subject: [PATCH v11 0/5] Add SPMI support for Mediatek SoC IC
+Date: Tue, 17 Aug 2021 17:47:05 +0800
+Message-ID: <1629193630-19994-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1629193630-19994-1-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1629193630-19994-1-git-send-email-hsin-hsiung.wang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_024720_684568_37D12FE4 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20210817_024721_814516_F2A4AD54 
+X-CRM114-Status: GOOD (  12.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,147 +87,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Henry Chen <henryc.chen@mediatek.com>
+This series adds support for new SoC MT6873/MT8192/MT8195 to the spmi driver.
+This series is based on Chun-Jie's patches[1][2].
 
-Add spmi support for MT8195.
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=521127
+[2] https://patchwork.kernel.org/project/linux-mediatek/list/?series=521655
 
-Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
----
 changes since v10:
-- add sign-off.
-- correct mt8195 driver.
----
- drivers/spmi/spmi-mtk-pmif.c | 88 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 88 insertions(+)
+- rebase to v5.14-rc6.
+- remove the unnecessary check for clk and drop debug log.
+- update correct mt8195 spmi driver.
 
-diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-index 35d338a19d76..5b9665031a6e 100644
---- a/drivers/spmi/spmi-mtk-pmif.c
-+++ b/drivers/spmi/spmi-mtk-pmif.c
-@@ -152,6 +152,54 @@ static const u32 mt6873_regs[] = {
- 	[PMIF_SWINF_3_STA] =	0x0CE8,
- };
- 
-+static const u32 mt8195_regs[] = {
-+	[PMIF_INIT_DONE] =			0x0000,
-+	[PMIF_INF_EN] =				0x0024,
-+	[PMIF_ARB_EN] =				0x0150,
-+	[PMIF_CMDISSUE_EN] =			0x03B8,
-+	[PMIF_TIMER_CTRL] =			0x03E4,
-+	[PMIF_SPI_MODE_CTRL] =			0x0408,
-+	[PMIF_IRQ_EVENT_EN_0] =			0x0420,
-+	[PMIF_IRQ_FLAG_0] =			0x0428,
-+	[PMIF_IRQ_CLR_0] =			0x042C,
-+	[PMIF_IRQ_EVENT_EN_1] =			0x0430,
-+	[PMIF_IRQ_FLAG_1] =			0x0438,
-+	[PMIF_IRQ_CLR_1] =			0x043C,
-+	[PMIF_IRQ_EVENT_EN_2] =			0x0440,
-+	[PMIF_IRQ_FLAG_2] =			0x0448,
-+	[PMIF_IRQ_CLR_2] =			0x044C,
-+	[PMIF_IRQ_EVENT_EN_3] =			0x0450,
-+	[PMIF_IRQ_FLAG_3] =			0x0458,
-+	[PMIF_IRQ_CLR_3] =			0x045C,
-+	[PMIF_IRQ_EVENT_EN_4] =			0x0460,
-+	[PMIF_IRQ_FLAG_4] =			0x0468,
-+	[PMIF_IRQ_CLR_4] =			0x046C,
-+	[PMIF_WDT_EVENT_EN_0] =			0x0474,
-+	[PMIF_WDT_FLAG_0] =			0x0478,
-+	[PMIF_WDT_EVENT_EN_1] =			0x047C,
-+	[PMIF_WDT_FLAG_1] =			0x0480,
-+	[PMIF_SWINF_0_ACC] =			0x0800,
-+	[PMIF_SWINF_0_WDATA_31_0] =		0x0804,
-+	[PMIF_SWINF_0_RDATA_31_0] =		0x0814,
-+	[PMIF_SWINF_0_VLD_CLR] =		0x0824,
-+	[PMIF_SWINF_0_STA] =			0x0828,
-+	[PMIF_SWINF_1_ACC] =			0x0840,
-+	[PMIF_SWINF_1_WDATA_31_0] =		0x0844,
-+	[PMIF_SWINF_1_RDATA_31_0] =		0x0854,
-+	[PMIF_SWINF_1_VLD_CLR] =		0x0864,
-+	[PMIF_SWINF_1_STA] =			0x0868,
-+	[PMIF_SWINF_2_ACC] =			0x0880,
-+	[PMIF_SWINF_2_WDATA_31_0] =		0x0884,
-+	[PMIF_SWINF_2_RDATA_31_0] =		0x0894,
-+	[PMIF_SWINF_2_VLD_CLR] =		0x08A4,
-+	[PMIF_SWINF_2_STA] =			0x08A8,
-+	[PMIF_SWINF_3_ACC] =			0x08C0,
-+	[PMIF_SWINF_3_WDATA_31_0] =		0x08C4,
-+	[PMIF_SWINF_3_RDATA_31_0] =		0x08D4,
-+	[PMIF_SWINF_3_VLD_CLR] =		0x08E4,
-+	[PMIF_SWINF_3_STA] =			0x08E8,
-+};
-+
- enum spmi_regs {
- 	SPMI_OP_ST_CTRL,
- 	SPMI_GRP_ID_EN,
-@@ -165,6 +213,15 @@ enum spmi_regs {
- 	SPMI_REC3,
- 	SPMI_REC4,
- 	SPMI_MST_DBG,
-+
-+	/* MT8195 spmi regs */
-+	SPMI_MST_RCS_CTRL,
-+	SPMI_SLV_3_0_EINT,
-+	SPMI_SLV_7_4_EINT,
-+	SPMI_SLV_B_8_EINT,
-+	SPMI_SLV_F_C_EINT,
-+	SPMI_REC_CMD_DEC,
-+	SPMI_DEC_DBG,
- };
- 
- static const u32 mt6873_spmi_regs[] = {
-@@ -182,6 +239,28 @@ static const u32 mt6873_spmi_regs[] = {
- 	[SPMI_MST_DBG] =	0x00fc,
- };
- 
-+static const u32 mt8195_spmi_regs[] = {
-+	[SPMI_OP_ST_CTRL] =	0x0000,
-+	[SPMI_GRP_ID_EN] =	0x0004,
-+	[SPMI_OP_ST_STA] =	0x0008,
-+	[SPMI_MST_SAMPL] =	0x000C,
-+	[SPMI_MST_REQ_EN] =	0x0010,
-+	[SPMI_MST_RCS_CTRL] =	0x0014,
-+	[SPMI_SLV_3_0_EINT] =	0x0020,
-+	[SPMI_SLV_7_4_EINT] =	0x0024,
-+	[SPMI_SLV_B_8_EINT] =	0x0028,
-+	[SPMI_SLV_F_C_EINT] =	0x002C,
-+	[SPMI_REC_CTRL] =	0x0040,
-+	[SPMI_REC0] =		0x0044,
-+	[SPMI_REC1] =		0x0048,
-+	[SPMI_REC2] =		0x004C,
-+	[SPMI_REC3] =		0x0050,
-+	[SPMI_REC4] =		0x0054,
-+	[SPMI_REC_CMD_DEC] =	0x005C,
-+	[SPMI_DEC_DBG] =	0x00F8,
-+	[SPMI_MST_DBG] =	0x00FC,
-+};
-+
- static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
- {
- 	return readl(arb->base + arb->data->regs[reg]);
-@@ -350,6 +429,12 @@ static const struct pmif_data mt6873_pmif_arb = {
- 	.soc_chan = 2,
- };
- 
-+static const struct pmif_data mt8195_pmif_arb = {
-+	.regs = mt8195_regs,
-+	.spmimst_regs = mt8195_spmi_regs,
-+	.soc_chan = 2,
-+};
-+
- static int mtk_spmi_probe(struct platform_device *pdev)
- {
- 	struct pmif *arb;
-@@ -438,6 +523,9 @@ static const struct of_device_id mtk_spmi_match_table[] = {
- 	{
- 		.compatible = "mediatek,mt6873-spmi",
- 		.data = &mt6873_pmif_arb,
-+	}, {
-+		.compatible = "mediatek,mt8195-spmi",
-+		.data = &mt8195_pmif_arb,
- 	}, {
- 		/* sentinel */
- 	},
+Henry Chen (1):
+  spmi: mediatek: Add support for MT8195
+
+Hsin-Hsiung Wang (4):
+  dt-bindings: spmi: modify the constraint 'maxItems' to 'minItems'
+  dt-bindings: spmi: document binding for the Mediatek SPMI controller
+  spmi: mediatek: Add support for MT6873/8192
+  arm64: dts: mt8192: add spmi node
+
+ .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      |  76 +++
+ .../devicetree/bindings/spmi/spmi.yaml        |   2 +-
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  17 +
+ drivers/spmi/Kconfig                          |  10 +
+ drivers/spmi/Makefile                         |   2 +
+ drivers/spmi/spmi-mtk-pmif.c                  | 547 ++++++++++++++++++
+ 6 files changed, 653 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+ create mode 100644 drivers/spmi/spmi-mtk-pmif.c
+
+
+base-commit: 794c7931a2428a656551f2179e6a093233a6e0aa
+prerequisite-patch-id: 8e70d378642e084a14296dbaa2aa4e07c1d30563
+prerequisite-patch-id: 82ced16215cdd31201c6146ddb5c30bc17525996
+prerequisite-patch-id: 7f2137e77cfc439c2e4b4e4369a6d6b48fec1ece
+prerequisite-patch-id: 15f52bb664f0f0436627d056a53afefb0b99f67a
+prerequisite-patch-id: 479b44dfdc6d7b367c0d441d8635d2dc02466057
+prerequisite-patch-id: 5df1858972e343d3750cdda1063655fc232eb831
+prerequisite-patch-id: 7e63a29430f65c2a0d56d7353df884645d70ed8c
+prerequisite-patch-id: 2a6200e8a05329d51aaa4fd63aacfbba66d16177
+prerequisite-patch-id: 604d2702c4217b77de3dc305ff08f630ba38fdb4
+prerequisite-patch-id: d3ece2688dbd45eee248a8c6ba3206c0c673c904
+prerequisite-patch-id: 1bebe1cd9b267c974cae50c3df8c0f8f4f0b0b3d
+prerequisite-patch-id: 3b34fe85667da5287bde9fd2378359be4a126266
+prerequisite-patch-id: 5d3d139212ab304739b75f7638251703b95948d5
+prerequisite-patch-id: 621291b21be177a63eaf6769aa6d2ee8ddb2ea2b
+prerequisite-patch-id: 024f786586b409420782d24218b15f05f6476667
+prerequisite-patch-id: 946aae93303bde26226289dc389c94de96a9dacd
+prerequisite-patch-id: b3ddf6f2079c3c269bd24091243030a971c43cbc
+prerequisite-patch-id: 5c0e0308aa8eb06ca6df6f5467bc925f2cc106ad
+prerequisite-patch-id: d4e481acd8b970f08d3e4da9c8fc0ad6e1fff551
+prerequisite-patch-id: 99db7309fbe1b9f73a07e25d5174db8976c77a2c
+prerequisite-patch-id: cffbc99e9e60f6db43cf7879f17e05c5b041d312
+prerequisite-patch-id: 69871b871ab339881b50a2d6988173050b6c7a4f
+prerequisite-patch-id: 4f5900b98a0c7cbe62694f2477a6cb410187714b
 -- 
 2.18.0
 _______________________________________________
