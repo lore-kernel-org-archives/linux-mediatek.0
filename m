@@ -2,178 +2,76 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A456C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 51184C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:37:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C69760F58
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:06:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1C69760F58
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=cadence.com
+	by mail.kernel.org (Postfix) with ESMTPS id C13FE60F5E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:37:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C13FE60F5E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JPiANUjLbhNoKuUBl/6BKCVEDREyGIkvTGbD/gojGPs=; b=MAL+jfSqHoyFEA
-	LS3aMLbnudXXJgdTJdmjTiK30RspUsdIIR2o0aDb4eustk31To+B8LHWYK+QvWezWvVcPNEYGp/jl
-	BJUUp/+wtYo0JISYW3wY1aIYdzMqehZVNeJ+H0hn9Gchposhrr/J5AQOdAOrFUl9eaVaufBO9rRWV
-	U3udYKmGZJVjCJh6EA9Qh7rFIoSzYFcUs7d0mLkSCdVzhh+YbERpf89Y1IKdlaqdBZNccyhmQxwos
-	ZPaBv13h9r0hSat9mgkNBtQpNz6wULzOQ3gW07fuUWOcfjusyXPmZelnrRcgqOM/M6FFWOX//W6lU
-	k9BtS/PKebyKokd8v8OA==;
+	List-Owner; bh=sm0b0jykctJm/HT9BMpMuDWIwgAd1qXpCk1TcWbFW9E=; b=chj8+DnWj9ZJm1
+	wlJW8KTvHdd1gNBcIyTyFJuHazqqrIF9YX8NJcsrok7s7gF3vQgxtcQF6U7PiQUZV2dK3qM1wtGWa
+	T7uxe9afj5wVcIbA/Q6G6Zfz7Fy52pQ9A/fVSe/LW8yqc0s2PKj0+jK3Gi0B0wKQIe+MIKN63Y0Ke
+	xNAwe0h65CdrT+GVkQce/rPZNjuZbFQkAUGRlN3nwZSK28ZXt32Om/9ze81kTxsx38gDoU8uKr/gC
+	Zebfk4BwBASH4alMc9FLRllU3Iv04u69YOhuJse/byvprtVcF/YEMjwpBfVL6Wea6O4PyVXFwwAdw
+	dPoFc71GRO9Aa4dfK4MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFrII-0019NQ-Uj; Tue, 17 Aug 2021 05:05:46 +0000
-Received: from mx0a-0014ca01.pphosted.com ([208.84.65.235])
+	id 1mFrmW-001CR2-9I; Tue, 17 Aug 2021 05:37:00 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFrID-0019Mq-OM; Tue, 17 Aug 2021 05:05:45 +0000
-Received: from pps.filterd (m0042385.ppops.net [127.0.0.1])
- by mx0a-0014ca01.pphosted.com (8.16.1.2/8.16.0.43) with SMTP id 17GKhwpU029012;
- Mon, 16 Aug 2021 22:05:28 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cadence.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=proofpoint;
- bh=MtFeXoHPRVo3zIHQIa/jFoPHlqpLvvowa2mwvL+fHU4=;
- b=Y25OOy/vtQKZhjehEWYoXKiEWNHBtpMB/YgvWJgyzIgOJ0+NtQrqYMPxrn8qrm7BeZO/
- 7jwcwNeoetaRxQEI9Weuzznr+3lyKMGOKMqPaTOaBYW9haauTnD0DsnKfFRqDHnRlkHq
- AmJcchDLs5LRg/e0sltEFKKdlLyH3jliGi5Fff+RUFNn+3tFRIrNyZT18OjmLx/a+bD5
- vURh//oJT4JfS18cqVnJ5xaBPi+sIF94nSf97kLdZfbdnXMXC6j5gPVeB50i9JTyIvbO
- 9Yc0sIc+7wEEfyU3lC2UuwXucE4h2RBoSTJoQf/1OPCqB/hURIwtbBsBl+xstgWF4QBu 2Q== 
-Received: from nam11-co1-obe.outbound.protection.outlook.com
- (mail-co1nam11lp2174.outbound.protection.outlook.com [104.47.56.174])
- by mx0a-0014ca01.pphosted.com with ESMTP id 3afyahs26v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 16 Aug 2021 22:05:28 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NxgK5hbyRvElSPNy8ffnMVAN68jX6W1a99C9aoFPx9FyoD+jz/wiJfQCaQUtPld0vpA0NLlAR8kSGgrdh8Tc+K2XS5BDXkpN6JG5gQ4IVWcHGHquUBZ9rlz4roipW/cRzp3819GrgvZN1WsAMODoh6OMNTaJbnWX7K08RxLE1WDDuYI+4e+rZUOOcojt18KnOo3voxcaaTpRRcm8inF3qF3dO4A7BQR+ow+9D6ktngyQlIA5E6G7GENGHNuwVAwjAakxvX7D0UQWjF3YE+cw2fWY8v8XVo+OBZrcWp3TpGNZP5Nc751jDhmnz3k8Cn2M+SiOGw5jHSgUokWxGdrwAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MtFeXoHPRVo3zIHQIa/jFoPHlqpLvvowa2mwvL+fHU4=;
- b=k8xfVVynycrD4xsnlh8HlQvwebezUfMEHeotxtIcaWnSwv1OphqyCxDho2d0E8gz5dwGsnt7I06rP6b9cKXgEJaQaAtcJSFTeGNm9wEBNpnwMZ/tNztwTpBtlA955hljYnS6fw2W09wkNesTeDsWRXeLI73WVE3aTkS7boSAmhCbk/GYzi0U+RxnxH+Ixnf6kIQgTDfFtbId0s6bfFsR3V1SxDB88019JugjB7Lwf84lzh8Ct08OGuDw0UDn2qowC525AKp2xK4W9ldM4f+VHg1/G3MFscJb46oyTPTsJmv1DrFYSIoJIGRpryZ9AgTbQGupgMMDkpEY0PcK1ip54A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=cadence.com; dmarc=pass action=none header.from=cadence.com;
- dkim=pass header.d=cadence.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cadence.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MtFeXoHPRVo3zIHQIa/jFoPHlqpLvvowa2mwvL+fHU4=;
- b=m5cDEmIK3Ni2/YgMJ8usAF4bnUn74MK3FJJbvA5Clil71q3HmXFKvk2IKJeO3XsaIWEUdE9slHIHpBow9H0+kWJfwu5pM2ns3hr85gfmjxpvJUw1rMVvIpN3OLLMlGcw5kKKueVKxOgsqF+/qSB4smehrnQYAKWJYNW/Ig2WhVQ=
-Received: from BYAPR07MB5381.namprd07.prod.outlook.com (2603:10b6:a03:6d::24)
- by BYAPR07MB4662.namprd07.prod.outlook.com (2603:10b6:a02:f1::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4415.16; Tue, 17 Aug
- 2021 05:05:26 +0000
-Received: from BYAPR07MB5381.namprd07.prod.outlook.com
- ([fe80::9c3b:e79f:87da:34ee]) by BYAPR07MB5381.namprd07.prod.outlook.com
- ([fe80::9c3b:e79f:87da:34ee%7]) with mapi id 15.20.4415.024; Tue, 17 Aug 2021
- 05:05:26 +0000
-From: Pawel Laszczak <pawell@cadence.com>
-To: Felipe Balbi <balbi@kernel.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Al Cooper
- <alcooperx@gmail.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan
- Hunter <jonathanh@nvidia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Yang Yingliang
- <yangyingliang@huawei.com>, Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "bcm-kernel-feedback-list@broadcom.com"
- <bcm-kernel-feedback-list@broadcom.com>, "linux-tegra@vger.kernel.org"
- <linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- Eddie Hung <eddie.hung@mediatek.com>
-Subject: RE: [PATCH 3/6] usb: cdnsp: fix the wrong mult value for HS isoc or
- intr
-Thread-Topic: [PATCH 3/6] usb: cdnsp: fix the wrong mult value for HS isoc or
- intr
-Thread-Index: AQHXjyrfpZtBA2WHu0CYToBU7vJUratvbn+AgAe9KXA=
-Date: Tue, 17 Aug 2021 05:05:26 +0000
-Message-ID: <BYAPR07MB53815317736C694887D51BE8DDFE9@BYAPR07MB5381.namprd07.prod.outlook.com>
-References: <1628739182-30089-1-git-send-email-chunfeng.yun@mediatek.com>
- <1628739182-30089-3-git-send-email-chunfeng.yun@mediatek.com>
- <87mtpnyx3g.fsf@kernel.org>
-In-Reply-To: <87mtpnyx3g.fsf@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-dg-ref: PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNccGF3ZWxsXGFwcGRhdGFccm9hbWluZ1wwOWQ4NDliNi0zMmQzLTRhNDAtODVlZS02Yjg0YmEyOWUzNWJcbXNnc1xtc2ctYjk1NjQzNTUtZmYxOC0xMWViLTg3OTYtYTQ0Y2M4MWIwYzU1XGFtZS10ZXN0XGI5NTY0MzU3LWZmMTgtMTFlYi04Nzk2LWE0NGNjODFiMGM1NWJvZHkudHh0IiBzej0iMTMzMiIgdD0iMTMyNzM2NTAzMjI4ODI0OTEwIiBoPSJuSFk2UmhwdGhoTjZpTG8vemFqNlo5Q0tMaVk9IiBpZD0iIiBibD0iMCIgYm89IjEiLz48L21ldGE+
-x-dg-rorf: true
-authentication-results: kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=none action=none header.from=cadence.com;
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 611e0ef9-b99c-4988-5459-08d9613ca028
-x-ms-traffictypediagnostic: BYAPR07MB4662:
-x-microsoft-antispam-prvs: <BYAPR07MB46622B02E5289956C05488BDDDFE9@BYAPR07MB4662.namprd07.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4714;
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: iXXrKdUcIZDDN+Z58ygogWqH481SueCbqgtpgiJ1Cx8xyMht9FVF3XbxdiQaoZkO40L/xJcy/ewKJz2Byup62jM0pgNttv7RLrCDF53KVsHGs6k8D4lKV0W1QAAlTl3WRcUMTZYvripW0gvqy7RHWdVzaR5S6HBzJuNaqEma+li3v4QPPYYeEB0z+L6WoS4v1LuyE4PdDMACF44AIeocAxku/fCcPjQhWwVgtp5B5/5gq5tTE55SiU4jJKfuRbcDxVO8ymq4VF0Y+LRECeWxLK2wlelKTQnh1NgZf5qRNmg5zX+EAl0zAhqKKifCO0sblRXXEM7a0sj1AgMOl6jFZYMl6wDfODNJgjO8o60YykLq7JwvcUycT/iSB/SlG7/hGww9ZP7EBRdkhEp3939s9y0ZKCskcC4Wl9l9fexKg3FaFe7M2YQnZX9CbJBOU3v1FHJXhC4xZq7q/FTqSBJK78AAHgXpBm0aE098iUN8PFimwytQu6WvPge56qd03YYI/TBLr8Q0DAJ+qmKvD0/NzvZCF/78/O38G3y4nSMs9VBFYJI7khUkLxUOI7AAbFi1bZqRNK5yq7S/DgJGlk1clVFsunCUu79540dLhobtPUq8dumT7Gi50r/D4jrc4dRh5Y5Rd+fGWjRplAjr48BCBspWg/2gbfFgAas95KjLIRW75gZ6npdx19/eykJcPR+w9oxssTTEJeiyJ/8mtgV6grS3vp3Y7HSQISFszb64Hkk=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR07MB5381.namprd07.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(136003)(39860400002)(366004)(376002)(346002)(36092001)(478600001)(8936002)(7696005)(7416002)(33656002)(8676002)(122000001)(4326008)(38070700005)(71200400001)(38100700002)(83380400001)(26005)(5660300002)(110136005)(52536014)(54906003)(316002)(55016002)(6506007)(186003)(66446008)(2906002)(76116006)(9686003)(66476007)(66946007)(86362001)(64756008)(66556008);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?R2oxc52uZghqRo8ltVqCIHqBjmO1fkBXI/M76SgWUBImqB+4eAsgR1w+zQK9?=
- =?us-ascii?Q?6BMQzEbakIJgGNyeOwmn/GotLIGQQBA4dJMg7R0SF9/dIBSPhbiy75y2CNry?=
- =?us-ascii?Q?VfH9CO9jWXCOWZlgAWA+XO9/BvMT5715sgq9rl0rjAjVQl44qDygM0uqjZLW?=
- =?us-ascii?Q?Bk7pAzZumSenHm8/jFtibA7u32SK5Z4QK76wulFoGa5OpdhKd47kEdN8Kf0+?=
- =?us-ascii?Q?U/ILi2N6PrCNH5PZYZSN0QNhD5+Kj6Cx6nkndGOlIm0kb0The/7/UjRlVPte?=
- =?us-ascii?Q?tHRDHo7J2in9I+R5yc5LRiScQSDf0KRjclY4YNrQ5PPOQQHFA+DDuY+TvTGN?=
- =?us-ascii?Q?uk3aln7uZUCGNeI2OcUga1Qj1BxqNMNrjSNgx+0i4PJB6xXu3WSKzbDcrvBI?=
- =?us-ascii?Q?PcGRw9IUCY4IgWFdSsGSo7NeAlyMZCQF3WkomI4W2oJkYAY/te7/VknZYnUG?=
- =?us-ascii?Q?DMjpb44X2iT+wCRNU/emnyBTbOHkISUAW864+XuoBzPfIaSpibCOQlng49/7?=
- =?us-ascii?Q?I+4toIF93kg/T5HsfjAO+Qq3Oq8VoY5cmoWETSB9b1JmQ5N3TbOfrtideoP9?=
- =?us-ascii?Q?sLbryEi7XUlrZqfdWyP3tZ4mx6Zcjo5EyPM7X3nWHOjqgpuqcXXN5P6N4e05?=
- =?us-ascii?Q?mTa9dma0x6gGxzyHzLKXUNfElYZq2h7K/iIYDK2wmA4lgBnVbyiAv6Eqbb9b?=
- =?us-ascii?Q?ntzUlhYfaZrPQX9rb6YHi1YbHHZE/GX5zOFPsxdTSufBPTctCXseXKuZZoDb?=
- =?us-ascii?Q?QlUYZwZ1FZQ2d2vVmeoWgNozpjlrtelhGdIbXFzdeQ4/HsLOzTDRzzfdi1lN?=
- =?us-ascii?Q?47nUjMqKRf08bb8ByGDgaBOi5qciafJn3FAAb+h+e61XuCLVvngc+Goq8HWk?=
- =?us-ascii?Q?xVFwC4s2f33Ux/HsTetkpFxeknYSU+uVE8/Xfxe0opPnwtxG4ee4sPNiaUsi?=
- =?us-ascii?Q?tY1Tu8imjJ/bdaSD6vp9d57bu21F3u8PpNPsAYLJIdDuICo0Sob9k9PpwkC1?=
- =?us-ascii?Q?s5ehM3fRmGGBOEYlQxByGsYoGt8nD9LJWLGpmqfYWWPbAQUuqH3PKKPC3Pvq?=
- =?us-ascii?Q?7O/34t24LrSY3vAEnhE5zjk16/XWElLLu4ElPXOc14cxi2/3oFoVKd2k4VXZ?=
- =?us-ascii?Q?4Wo5kCjbkNByYRvtG6HcOH7QayVg74Vibi8eMoXCzpGrdMFyMsP9GWCf8YN/?=
- =?us-ascii?Q?G2wvKHy8vGu6b7PNnx8Mt1D6ol4/zvy9LIfql1AOqN+/VpN0hVeuwM8B2+0W?=
- =?us-ascii?Q?YbICdaHXXGVdiHMUwLkwb/WWRgePkR+D2F6qGo4pO2K963sCA1b8GQwc9YWJ?=
- =?us-ascii?Q?kKXE+DZfru83Lu97bifZgB5a?=
-x-ms-exchange-transport-forked: True
+ id 1mFrmQ-001CPy-PL; Tue, 17 Aug 2021 05:36:58 +0000
+X-UUID: 2421fb8de49e489d9168e6057a170e34-20210816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=b328J144zpOevt/q/w5Rgs8faNaGXzgEa4YLoCNwF6w=; 
+ b=S+xSEupC5vSrgKHhRJrL1U0CDOVhSM0yeVcKUpBVyXq0GY2qSr81HVM6DU3q3XUl/6RvSuAjfM4eSv4y5mJ/VisfFvL0nuMzCSkzhNI/nXENI4b3dtUso+Er2TWhnAzuVfY8DtQ0dmUHAUcjJUYKfRG1zr6ukVOmUPo8jTUhZvQ=;
+X-UUID: 2421fb8de49e489d9168e6057a170e34-20210816
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 341603215; Mon, 16 Aug 2021 22:36:48 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 Aug 2021 22:36:46 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 13:36:45 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 17 Aug 2021 13:36:45 +0800
+Message-ID: <1629178605.7579.3.camel@mtksdaap41>
+Subject: Re: [RFC PATCH 5/5] drm/mediatek: Add mt8195 DisplayPort driver
+From: CK Hu <ck.hu@mediatek.com>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Tue, 17 Aug 2021 13:36:45 +0800
+In-Reply-To: <20210816192523.1739365-6-msp@baylibre.com>
+References: <20210816192523.1739365-1-msp@baylibre.com>
+ <20210816192523.1739365-6-msp@baylibre.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
-X-OriginatorOrg: cadence.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR07MB5381.namprd07.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 611e0ef9-b99c-4988-5459-08d9613ca028
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Aug 2021 05:05:26.1586 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: d36035c5-6ce6-4662-a3dc-e762e61ae4c9
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: s0ewYtzLpin7p+DxO4F+yv4BDVorPnsHXZzC1+88UdCRzDKQXaLbuxZhYkDBWKLwem3th44t/obuxIFVWf3wqOIkuR/wlWDaeMzVrlELmts=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR07MB4662
-X-Proofpoint-ORIG-GUID: VBkvKkaK0pwR11ItLl7f9K5hQCmugEcl
-X-Proofpoint-GUID: VBkvKkaK0pwR11ItLl7f9K5hQCmugEcl
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.182.1,Aquarius:18.0.790,Hydra:6.0.391,FMLib:17.0.607.475
- definitions=2021-08-17_01,2021-08-16_02,2020-04-07_01
-X-Proofpoint-Spam-Details: rule=outbound_check_notspam policy=outbound_check
- score=0 clxscore=1011
- mlxscore=0 impostorscore=0 spamscore=0 mlxlogscore=999 priorityscore=1501
- bulkscore=0 lowpriorityscore=0 suspectscore=0 malwarescore=0 adultscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2107140000 definitions=main-2108170031
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_220541_991433_6CAB6713 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20210816_223654_872632_17CE7370 
+X-CRM114-Status: GOOD (  19.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -190,44 +88,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->
->Chunfeng Yun <chunfeng.yun@mediatek.com> writes:
->
->> usb_endpoint_maxp() only returns the bit[10:0] of wMaxPacketSize
->> of endpoint descriptor, not include bit[12:11] anymore, so use
->> usb_endpoint_maxp_mult() instead.
->>
->> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
->> ---
->>  drivers/usb/cdns3/cdnsp-mem.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/usb/cdns3/cdnsp-mem.c b/drivers/usb/cdns3/cdnsp-mem.c
->> index a47948a1623f..ad9aee3f1e39 100644
->> --- a/drivers/usb/cdns3/cdnsp-mem.c
->> +++ b/drivers/usb/cdns3/cdnsp-mem.c
->> @@ -882,7 +882,7 @@ static u32 cdnsp_get_endpoint_max_burst(struct usb_gadget *g,
->>  	if (g->speed == USB_SPEED_HIGH &&
->>  	    (usb_endpoint_xfer_isoc(pep->endpoint.desc) ||
->>  	     usb_endpoint_xfer_int(pep->endpoint.desc)))
->> -		return (usb_endpoint_maxp(pep->endpoint.desc) & 0x1800) >> 11;
->> +		return usb_endpoint_maxp_mult(pep->endpoint.desc) - 1;
->
->this looks like a bugfix. Do we need to Cc stable here?
->
->In any case:
->
->Acked-by: Felipe Balbi <balbi@kernel.org>
->
+Hi, Markus:
 
-It's not a bugfix. The result is the same.
+On Mon, 2021-08-16 at 21:25 +0200, Markus Schneider-Pargmann wrote:
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> 
+> It supports both functional units on the mt8195, the embedded
+> DisplayPort as well as the external DisplayPort units. It offers
+> hot-plug-detection, audio up to 8 channels, and DisplayPort 1.4 with up
+> to 4 lanes.
+> 
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
 
-Acked-by: Pawel Laszczak <pawell@cadence.com>
+[snip]
 
---
+> +
+> +static const struct of_device_id mtk_dp_of_match[] = {
+> +	{
+> +		.compatible = "mediatek,mt8195-dp_tx",
 
-Thanks 
-Pawel Laszczak
+Where is the binding document of "mediatek,mt8195-dp_tx"?
+
+> +		.data = &mt8195_dp_driver_data,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mt8195-edp_tx",
+
+Where is the binding document of "mediatek,mt8195-edp_tx"?
+
+> +		.data = &mt8195_edp_driver_data,
+> +	},
+> +	{},
+> +};
+> +MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
+> +
+> +struct platform_driver mtk_dp_driver = {
+> +	.probe = mtk_dp_probe,
+> +	.remove = mtk_dp_remove,
+> +	.driver = {
+> +		.name = "mediatek-drm-dp",
+> +		.of_match_table = mtk_dp_of_match,
+> +		.pm = &mtk_dp_pm_ops,
+> +	},
+> +};
+> +
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> new file mode 100644
+> index 000000000000..83afc79d98ff
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
+> @@ -0,0 +1,3095 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+> + * Copyright (c) 2021 BayLibre
+> + */
+> +#ifndef _MTK_DP_REG_H_
+> +#define _MTK_DP_REG_H_
+> +
+> +#define MTK_DP_SIP_CONTROL_AARCH32 0x82000523
+> +# define MTK_DP_SIP_ATF_VIDEO_UNMUTE 0x20
+> +# define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE 0x21
+> +# define MTK_DP_SIP_ATF_REG_WRITE 0x22
+> +# define MTK_DP_SIP_ATF_REG_READ 0x23
+> +# define MTK_DP_SIP_ATF_CMD_COUNT 0x24
+> +
+> +#define TOP_OFFSET		0x2000
+> +#define ENC0_OFFSET		0x3000
+> +#define ENC1_OFFSET		0x3200
+> +#define TRANS_OFFSET		0x3400
+> +#define AUX_OFFSET		0x3600
+> +#define SEC_OFFSET		0x4000
+> +
+> +#define MTK_DP_HPD_DISCONNECT	BIT(1)
+> +#define MTK_DP_HPD_CONNECT	BIT(2)
+> +#define MTK_DP_HPD_INTERRUPT	BIT(3)
+> +
+> +#define MTK_DP_ENC0_P0_3000              (ENC0_OFFSET + 0x000)
+> +# define LANE_NUM_DP_ENC0_P0_MASK                                      0x3
+> +# define LANE_NUM_DP_ENC0_P0_SHIFT                                     0
+> +# define VIDEO_MUTE_SW_DP_ENC0_P0_MASK                                 0x4
+> +# define VIDEO_MUTE_SW_DP_ENC0_P0_SHIFT                                2
+> +# define VIDEO_MUTE_SEL_DP_ENC0_P0_MASK                                0x8
+> +# define VIDEO_MUTE_SEL_DP_ENC0_P0_SHIFT                               3
+> +# define ENHANCED_FRAME_EN_DP_ENC0_P0_MASK                             0x10
+> +# define ENHANCED_FRAME_EN_DP_ENC0_P0_SHIFT                            4
+> +# define HDCP_FRAME_EN_DP_ENC0_P0_MASK                                 0x20
+> +# define HDCP_FRAME_EN_DP_ENC0_P0_SHIFT                                5
+> +# define IDP_EN_DP_ENC0_P0_MASK                                        0x40
+
+Remove useless definition.
+
+Regards,
+CK.
+
+> +# define IDP_EN_DP_ENC0_P0_SHIFT                                       6
+> +# define BS_SYMBOL_CNT_RESET_DP_ENC0_P0_MASK                           0x80
+> +# define BS_SYMBOL_CNT_RESET_DP_ENC0_P0_SHIFT                          7
+> +# define MIXER_DUMMY_DATA_DP_ENC0_P0_MASK                              0xff00
+> +# define MIXER_DUMMY_DATA_DP_ENC0_P0_SHIFT                             8
+> +
+
+> +
+> +#endif /*_MTK_DP_REG_H_*/
 
 _______________________________________________
 Linux-mediatek mailing list
