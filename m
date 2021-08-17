@@ -2,72 +2,106 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DC8CC432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 20:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A4FAC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 20:10:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFF2F60F41
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 20:09:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CFF2F60F41
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 5250B60F41
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 20:10:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5250B60F41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ttOgneseVBsCXdPXrpu9a3U5mMR+jXpQSuQi8D2XRFo=; b=fy+25q55DzKZ8mD/SBVUq5o7a1
-	RasR7iDn/n1qj8dfTPHGwrmMy+GVpn2E+aUD+YOqI6AWl5p3mC1xg7XLX1Chmhz1nXxDRojFTV0mQ
-	GDLCqNEDTzDyZnE2N++08zcfooj9/Fkph2qnljICsE+DeZwg7O5bRtr9gNTparjAXbfvNnJYSXlfB
-	gtSQSmH8aRbazQiHjKjnlgv5E4I1Cxn5xpv9CAas9YU1UF7e+9FhwpY/Yy8KChvfPjZXmJNjEz6/K
-	XszdhFEldXdDq34pq/VoU/BkWEauUeNfjrAAsGvNLFAe+ElnkpC5Kh4kLKz9HlY6bNgdwcXL+iBJO
-	PNn7c4OQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NCEITnM4aaSmW5KZjZFITRhNgNseIX3lQzF7gOFP9bI=; b=S0BOneimpSUXQg
+	AsecH+i7esMD4ZWLaQqWKlI+g/xahjgk1Jf8ggTK/3R+sW+HhnBURhrTFrGfMX6ieTSIwKI+inGoh
+	smleQ6N7YMMnuJAvTrcT6hJpMzxBc1jp/FRKY8ws1n2VVjhKYeaUwAgVNkiwMGroEkvm221Az23C7
+	yRzDzLYh0bdGjJpgI/LGSbv0PRp3rM+0/OTm+EgMWKWBUik2R4/2OIorqhvEEVn+/Od1zn//pnLPy
+	a7k4GFfzQZ5yt3ITZht2S8zcxKddfoWDq5uH2JLSsFQVBX1K5CseJeIVSrN0QLKKMlpkDbukNQ3on
+	W3JIBkHuDQnVJ9LDVKmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mG5On-003M1l-RN; Tue, 17 Aug 2021 20:09:25 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mG5PD-003M9S-SS; Tue, 17 Aug 2021 20:09:51 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mG5Oa-003Lzu-HX; Tue, 17 Aug 2021 20:09:13 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7FF0E60F35;
- Tue, 17 Aug 2021 20:09:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629230952;
- bh=1mBxSLmpdpOV1fOv7ziL7hOsqQXQWzH33HEO1fBbdl0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pLurhdNOPcrzDsVFf2CMqdwYDpN9yrVjzKPfXz8V9M/vvmSKzdSgihEJ9X3UHbTMg
- UARWrAjfbbMzcCFGcrJeQ3wbjMjI08yyGkzgF9c1j8vC2imDY2RRcLTiA/AWMHX0wn
- uC9acoQkBizmGlKzwylbD0lSI65d0AngpqlREWKC4stbKt5Sq3v3BxWwvSENF1zT74
- eiwWstcFOQbaabOHsE4i1p2CMQh1gdimAGHkF/FCXigE95cIYln+F8Oi7yBHRJaT+E
- 5w5AFrarc8i6Cz6q6G7OqFUcHToc9Ebz+ORlR0ZoUpyLx+SkOml/oGkGmX5sAmfCnK
- NzUr+K9yOhLFw==
-Date: Tue, 17 Aug 2021 22:09:09 +0200
-From: Wolfram Sang <wsa@kernel.org>
-To: Sergey Shtylyov <s.shtylyov@omp.ru>
-Cc: linux-i2c@vger.kernel.org, Qii Wang <qii.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 2/5] i2c: mt65xx: fix IRQ check
-Message-ID: <YRwXZVxORTpddj2k@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, linux-i2c@vger.kernel.org,
- Qii Wang <qii.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <3712e871-bf2f-32c5-f9c2-2968c42087f8@omp.ru>
- <bab29007-8d74-0a68-2378-9db6ba0bc576@omp.ru>
+ id 1mG5Ow-003M3j-Sy
+ for linux-mediatek@lists.infradead.org; Tue, 17 Aug 2021 20:09:38 +0000
+Received: by mail-lf1-x133.google.com with SMTP id p38so43839903lfa.0
+ for <linux-mediatek@lists.infradead.org>; Tue, 17 Aug 2021 13:09:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=k8AfVuCGxDrAVAQEMwEyKZr/585805GvK2MzsN/gS3A=;
+ b=CZPAZB5/x6SSKO3/e4ljoCjcPsrNGDpLblZMD69HhLBEw4EpEnaMCLjsSRVWWn5c8R
+ 6qK/hjUcTlz7tWO+lSjquayDXvuIN/47A6alfgci5XZp4ZVck4LIDSG8X7Q4SDpoCz7q
+ LZldLdE0hvD9Rs6Nr3Up4gkhyI3fIuSToGWAn4IZ92cR4YbsAltHiAVd+9v9BeE0nzik
+ ZPzZ6EjD8WwP1T0XpfKHkv1ra0lT7gDQWjVvNmU6cMwDo70qRzQnBhZIsfPpSsi6FIQy
+ DycVicbxZ8DEKI/CY5OzuH7cofexceLkH5ljhdve4pmcRWOn6+KyDnNaqxa4SUW4vZA7
+ vfLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=k8AfVuCGxDrAVAQEMwEyKZr/585805GvK2MzsN/gS3A=;
+ b=asORiWHgPynqRN1lSCAv/ylZ/SN6/2QFXyUq+kUZhSaHDkhlMZB60+jeM5rYcY8DAQ
+ TJa7KJDKOTNUvGJwTvrZP3+VOBtZETcqXSeuuvpWXPOmPN4emxOcpiB2BLo4Rlq8DQ+t
+ 9Fic+aS6x7/VwuGA1wAD+y2QeD5CFz2OYZSxLgJhnifABfciURl/8OUrY6vr//tk1/NC
+ FQIAZRkAe4emBiGQL77MeATB6HsuAhelNHT/1jI+J4yM0FCJ6lXyNHL2sv3mtzx84L0G
+ 7QF8tFIZmDnO1NWDmuJNz9iNYeSprUsFyxHqEJFhgvybYAPES5NdY5pHaES60zQRQSj+
+ 0CWw==
+X-Gm-Message-State: AOAM532+9ZngbqFIV+oc5NhozYj83qvz+xwLq7GLyXqVzbTRqnfx1OLn
+ 7kXTLtxAdh3L1Tmh7x+2pnFi8Iv0Gf8Zqn7uCuJfmQ==
+X-Google-Smtp-Source: ABdhPJxghIUV5K9nnRKPIlLjW0aY8CAvGBeUp9sBilijN+pjZbbOVx9RaTN3WM8sx4gBVuvt9YsAcirfPdhwGO8Ypzw=
+X-Received: by 2002:ac2:58d4:: with SMTP id u20mr3489426lfo.157.1629230973143; 
+ Tue, 17 Aug 2021 13:09:33 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <bab29007-8d74-0a68-2378-9db6ba0bc576@omp.ru>
+References: <20210710081722.1828-1-zhiyong.tao@mediatek.com>
+ <20210710081722.1828-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5GXg0RuOQkh4vaRmcLpehZiXnEUXBvEaObiatAa1sXvaA@mail.gmail.com>
+ <1626940470.29611.9.camel@mhfsdcap03>
+ <CAGXv+5F_-W4aNt0WVSDBGLo_t8orNUq59GMKk_4xVr+hMb9Ctg@mail.gmail.com>
+ <07388dac4e25e0f260725e8f80ba099d5aa80949.camel@mediatek.com>
+ <CAGXv+5EagmhYYpri+nzo6WgGz8A=oiU3Vy+2AVjho=eo6Z+DLw@mail.gmail.com>
+ <CACRpkdZ4k9Km3vBtdN6AnBM89c4355GtPMzCQ0_YHaTb4V5cKA@mail.gmail.com>
+ <CAGXv+5HohMwU8jow5QXO5MK1tO+u=5YsfhArBWCP4Dgm1Q8igg@mail.gmail.com>
+ <4fd12d5c53f6492e5fa3ba94a78b9a149f5b6ed9.camel@mediatek.com>
+ <CAGXv+5GCuNK=-z9VAOjkpJdZLUSZFPfUsQ09m1FhfTsbCYLLRw@mail.gmail.com>
+ <CACRpkdbZKh8cqqiDRUik6Ooo33e+feGwYsLjcLRvBQnT3x5M3A@mail.gmail.com>
+ <a7c8ab68ac3513865698cde27e665bdd554f459e.camel@mediatek.com>
+ <CAGXv+5FtL2zaSWx4tUymx6mpCSb5dXG4XNWM9AJL+b6Ok3dxMg@mail.gmail.com>
+ <d40f6d5fd26aedb13e7a393202e5794b1893ecf8.camel@mediatek.com>
+In-Reply-To: <d40f6d5fd26aedb13e7a393202e5794b1893ecf8.camel@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 17 Aug 2021 22:09:21 +0200
+Message-ID: <CACRpkdYkwXr76Kq5WYdz=1KkLTpaByAL1vJFo8V+2mncqs8-3Q@mail.gmail.com>
+Subject: Re: [PATCH v10 1/2] dt-bindings: pinctrl: mt8195: add rsel define
+To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ hui.liu@mediatek.com, 
+ Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
+ Biao Huang <biao.huang@mediatek.com>,
+ Hongzhou Yang <hongzhou.yang@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
+ Devicetree List <devicetree@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_130912_646040_5F900481 
-X-CRM114-Status: GOOD (  15.71  )
+X-CRM114-CacheID: sfid-20210817_130935_002095_9D4FEC85 
+X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,88 +113,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8847142202553331884=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Aug 17, 2021 at 9:51 AM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
 
---===============8847142202553331884==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0yY7MVuXzIX4oSrC"
-Content-Disposition: inline
+> In one chip, If GPIO is different, the MTXXXX_PULL_UP_RSEL_001 may
+> means different actual bias resistance setting.
+>
+> For example,
+>
+> KPROW IO
+> Paramters       Descriptions                   Min      Typ     Max
+>  UNIT
+> Rpd     Input pull-down resistance      40      75      190     Kohm
+> Rpu     Input pull-up resistance        40      75      190     Kohm
+> Rpd     Input pull-down resistance      0.8     1.6     2       Kohm
+> Rpu     Input pull-up resistance        0.8     1.6     2       Kohm
 
+This is exactly why we should try to use SI units in the device tree.
+I assume that the software can eventually configure which resistance
+it gets?
 
---0yY7MVuXzIX4oSrC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The electronics people will say make sure it is pulled down by around
+80 kOhm, they can put that on the device tree and your code can
+say, "hm 40 < 80 < 190 this is OK" and let the value pass.
 
-On Sun, Jul 04, 2021 at 05:38:45PM +0300, Sergey Shtylyov wrote:
-> Iff platform_get_irq() returns 0, the driver's probe() method will return=
- 0
-> early (as if the method's call was successful).  Let's consider IRQ0 valid
-> for simplicity -- devm_request_irq() can always override that decision...
->=20
-> Fixes: ce38815d39ea ("I2C: mediatek: Add driver for MediaTek I2C controll=
-er")
-> Signed-off-by: Sergey Shtylyov <s.shtylyov@omprussia.ru>
+We do not define these exact semantics, it is up to the driver code
+to decide what to do with the Ohm value 80000 in this case, but
+it makes perfect sent for me to let it pass and fail if someone
+for example requests 20 kOhm, or at least print a helpful warning:
 
-Qii Wang, do you like this patch?
+dev_warn(dev, "the requested resistance %d is out of range, supported
+range %d to %d kOhm\n",
+                 val, low, high);
 
->=20
-> ---
->  drivers/i2c/busses/i2c-mt65xx.c |    2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> Index: linux/drivers/i2c/busses/i2c-mt65xx.c
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> --- linux.orig/drivers/i2c/busses/i2c-mt65xx.c
-> +++ linux/drivers/i2c/busses/i2c-mt65xx.c
-> @@ -1211,7 +1211,7 @@ static int mtk_i2c_probe(struct platform
->  		return PTR_ERR(i2c->pdmabase);
-> =20
->  	irq =3D platform_get_irq(pdev, 0);
-> -	if (irq <=3D 0)
-> +	if (irq < 0)
->  		return irq;
-> =20
->  	init_completion(&i2c->msg_complete);
+This is what makes the SI units really helpful for people writing device
+trees: solve real integration tasks and make it easy to do the right thing.
 
---0yY7MVuXzIX4oSrC
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmEcF2UACgkQFA3kzBSg
-KbaS4BAAkuQqKBfaT+tbSEvRQ0R7x/ilbpIC+nlWrCwPD18yUSWkgzIJPL08yqZR
-dMLEkeLFQjNTgkk3M6YvD3soi50s0EohVG97o7YFXMV9QI1di3+RpTw73nuKDEl7
-e5CYpNCnGST3/iElUj5aJZweQnrZ4DYw6XDOK7qhS+hhNZQiOIR6J5Z8mFBmKfwx
-oXMtyUQnyhyqGzSTA2yM0+Q/u7KIS21bMwePSwpjyqS2/eS3YkqjvnmhiCKnPwR0
-AQfX7m2Cg1qbgOqu1oEOfp+oCh4BDVZpPIY31NhodoUFb2/JMelIDc7FDlEs4Nrs
-pyuW/9tRr6JGiRTzTQ/b11xuNQYW5PTD5krQas19SpsMOXOeOfUkg9Ewx6yaPJRN
-z+h/48Xw7zAi1YGEx8k5RtGZ/2cVPL7CMcSjtyIkqzuP+//62UmsJJFWsqVgQpt1
-1LpTqiYYF03hggNbWv8ql1F1uR78kDIXE6tOnoQn/YgvshjEm5owM3jXwniODI1N
-G/XtmPrQpdE6YkJrKl2SfNkTqacf8Nou2qwGdzGK2b/ghfduV62TZHbHqLsvSsK5
-1cwZBw8zxmQYamzC3loUT8vqnXRBXfJDi8d1GLuLJB636viHtFBn+bRmK/CncTl2
-0JjO1knFr4E+rxSqdHmQYNiKKLzvDqO5i6OxiFLpWKXentDqDDQ=
-=+38Z
------END PGP SIGNATURE-----
-
---0yY7MVuXzIX4oSrC--
-
-
---===============8847142202553331884==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8847142202553331884==--
-
