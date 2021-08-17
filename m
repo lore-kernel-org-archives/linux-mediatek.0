@@ -2,88 +2,99 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CA3CC4320A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D6E6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:54:17 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D28386023B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:52:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D28386023B
+	by mail.kernel.org (Postfix) with ESMTPS id 2DA556023B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:54:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2DA556023B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VKW6cATEMlwNQw0EkC4vBNXraBBBO06Gil7DLhZQCas=; b=e07fAqDs8J9cxT
-	glGQQ2bVdGqIl1304xkozyr4OBjYMBdrK67eL4ei8zGECeNjpIJjeVpDG1MBYVSJ4tA5+m09eYA08
-	O4SBZ3HAx19j5S+vDG3UVwbH3KGV6tXZy/YXtM+TXvnHD864El5tlsYVeVcrUkEITYdWKtK4mUlvR
-	UlIO3dw6AS8pbLINqeEbSN+bFg/ytXq5aVjKJohqb+R7pHGSr808VNbUbMBIGsuo6F+eLiHzY2z5S
-	g2LRx+tKmspYQC/mnzhUdmwXmb3N2g3M+v4Kd2quKw5NwyGCjAWUSkXs1O/NS1UP++h8jH5RlYDrF
-	0Mji9Ebebx+VtruDczvA==;
+	List-Owner; bh=dmQ020LUj6ZVgsE9nKLSxF26Pu8n7eJBxStYHgD+mhE=; b=zrCt8ZxX7EWe39
+	sSsEMoani1AaGkqCHA8IY20twX96kday8vL+poNke3bZ0NSHmBlsX5MiEzJMvyzhVcpB6uyYvTjzU
+	UnVA9QKYlFlYJt9ejMIxXbJgisRTHOxnwaR3tvo946SHPke5He7VQOvAA8oJN7O4mrZAiKSf8wxog
+	Nt8cRADS2ZbFzRoZG/R+O2u+jUjdRc7Iq+XEWWt1dhz96W3XkVNS3DUQUGqaWXiW4EKmtx8u5t/k9
+	rRIrMA4k9ERCEBydTXC0xaVYwEeLRte4YE+cVrhMjsLhSbh5U+QMaYyccVkhtAaeQfH7ySjnDQEgD
+	ngrnvSCVkDyBUHYOMvwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFtt7-001PWp-Mc; Tue, 17 Aug 2021 07:51:57 +0000
+	id 1mFtvB-001QRo-Lb; Tue, 17 Aug 2021 07:54:05 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFto7-001Mu5-7V; Tue, 17 Aug 2021 07:46:49 +0000
-X-UUID: ed6fd40dd436477286f382de002e5ee4-20210817
+ id 1mFttA-001PY9-H8; Tue, 17 Aug 2021 07:52:04 +0000
+X-UUID: 9ab70512c25e4fc0a9fed895be87e26d-20210817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=uL6Q2fmye7t56I9vNOE/AX4e8bhaIEZnYBUXMQS+rvI=; 
- b=JAhKZjf9veZBKZYUt7cY/YoUzrRKcVmZEAZh6GtsENLtoPKN8CqP1NkdJeaV8s5iYXlwLF8CpNzCe0uB4P0ff/qQxMECq+Q9orcg6mnod8su9JuishimGWwKEteRXhhWRPesYxeGZBx+sBQ2zZ6qZ17ZsrllG5Ouit/xnYJ2c1w=;
-X-UUID: ed6fd40dd436477286f382de002e5ee4-20210817
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=km+HQapEnj97cGmlAY2k+L6aikO6tJLQDG1ewnsIXg8=; 
+ b=o0CGDNmBlHz5pRFsBeMMJ1Fdb0+J7ga3AMIBTbizXZtkhpNJJeqi3dFuWKsLWA6Cc8G4sQ8bDg6YOzgW18KuQ+OBlG1x9cKODWzuRGP4jKMzjQBh+w6/xvqOjuYdYlZy/qFft2nT0iYC/DkZA+rUd5mPK0KFJMYNT7eAl9veqeM=;
+X-UUID: 9ab70512c25e4fc0a9fed895be87e26d-20210817
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 580973862; Tue, 17 Aug 2021 00:46:43 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ with ESMTP id 1080609125; Tue, 17 Aug 2021 00:51:57 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 00:46:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 17 Aug 2021 15:46:39 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 17 Aug 2021 15:46:39 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>, Herbert Xu
- <herbert@gondor.apana.org.au>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
- Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-crypto@vger.kernel.org>,
- <linux-serial@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <linux-clk@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
- Shih" <sam.shih@mediatek.com>
-Subject: [v2,12/12] arm64: dts: mediatek: add mt7986b support
-Date: Tue, 17 Aug 2021 15:45:57 +0800
-Message-ID: <20210817074557.30953-13-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210817074557.30953-1-sam.shih@mediatek.com>
-References: <20210817074557.30953-1-sam.shih@mediatek.com>
+ 15.0.1497.2; Tue, 17 Aug 2021 00:51:56 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 15:51:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 17 Aug 2021 15:51:53 +0800
+Message-ID: <d40f6d5fd26aedb13e7a393202e5794b1893ecf8.camel@mediatek.com>
+Subject: Re: [PATCH v10 1/2] dt-bindings: pinctrl: mt8195: add rsel define
+From: zhiyong.tao <zhiyong.tao@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: <zhiyong.tao@mediatek.com>, Linus Walleij <linus.walleij@linaro.org>, "Rob
+ Herring" <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>,
+ "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>, "Eddie
+ Huang" <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
+ Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang
+ <hongzhou.yang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "Seiya
+ Wang" <seiya.wang@mediatek.com>, Devicetree List
+ <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, "moderated
+ list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM"
+ <linux-gpio@vger.kernel.org>
+Date: Tue, 17 Aug 2021 15:51:54 +0800
+In-Reply-To: <CAGXv+5FtL2zaSWx4tUymx6mpCSb5dXG4XNWM9AJL+b6Ok3dxMg@mail.gmail.com>
+References: <20210710081722.1828-1-zhiyong.tao@mediatek.com>
+ <20210710081722.1828-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5GXg0RuOQkh4vaRmcLpehZiXnEUXBvEaObiatAa1sXvaA@mail.gmail.com>
+ <1626940470.29611.9.camel@mhfsdcap03>
+ <CAGXv+5F_-W4aNt0WVSDBGLo_t8orNUq59GMKk_4xVr+hMb9Ctg@mail.gmail.com>
+ <07388dac4e25e0f260725e8f80ba099d5aa80949.camel@mediatek.com>
+ <CAGXv+5EagmhYYpri+nzo6WgGz8A=oiU3Vy+2AVjho=eo6Z+DLw@mail.gmail.com>
+ <CACRpkdZ4k9Km3vBtdN6AnBM89c4355GtPMzCQ0_YHaTb4V5cKA@mail.gmail.com>
+ <CAGXv+5HohMwU8jow5QXO5MK1tO+u=5YsfhArBWCP4Dgm1Q8igg@mail.gmail.com>
+ <4fd12d5c53f6492e5fa3ba94a78b9a149f5b6ed9.camel@mediatek.com>
+ <CAGXv+5GCuNK=-z9VAOjkpJdZLUSZFPfUsQ09m1FhfTsbCYLLRw@mail.gmail.com>
+ <CACRpkdbZKh8cqqiDRUik6Ooo33e+feGwYsLjcLRvBQnT3x5M3A@mail.gmail.com>
+ <a7c8ab68ac3513865698cde27e665bdd554f459e.camel@mediatek.com>
+ <CAGXv+5FtL2zaSWx4tUymx6mpCSb5dXG4XNWM9AJL+b6Ok3dxMg@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_004647_346067_4003D83E 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20210817_005200_651993_344B39D7 
+X-CRM114-Status: GOOD (  39.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,303 +111,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic chip support for Mediatek mt7986b, include
-uart nodes with correct clocks, rng node with correct clock,
-and watchdog node and mt7986b pinctrl node.
+On Tue, 2021-08-17 at 13:44 +0800, Chen-Yu Tsai wrote:
+> On Tue, Aug 17, 2021 at 10:21 AM zhiyong.tao <
+> zhiyong.tao@mediatek.com> wrote:
+> > 
+> > On Tue, 2021-08-17 at 01:00 +0200, Linus Walleij wrote:
+> > > On Mon, Aug 16, 2021 at 5:38 PM Chen-Yu Tsai <wenst@chromium.org>
+> > > wrote:
+> > > > On Mon, Aug 16, 2021 at 6:48 PM zhiyong.tao <
+> > > > zhiyong.tao@mediatek.com> wrote:
+> > > > > > I'll take that as "use SI units whenever possible and
+> > > > > > reasonable".
+> > > > > 
+> > > > > ==> so It doesn't need to change the define, is it right?
+> > > > > we will keep the common define.
+> > > > 
+> > > > Actually I think it would be possible and reasonable to use SI
+> > > > units
+> > > > in this case, since you are the vendor and have the resistor
+> > > > values
+> > > > to implement the support. Having different sets of values for
+> > > > different
+> > > > chips is nothing out of the ordinary. We already have to
+> > > > account
+> > > > for
+> > > > different number of pins and different pin functions. That is
+> > > > what
+> > > > compatible strings are for.
+> > > 
+> > > I fully agree with Chen-Yu's analysis here.
+> > > 
+> > > Zhiyong can you make an attempt to use SI units (Ohms) and see
+> > > what it will look like? I think it will look better for users and
+> > > it
+> > > will
+> > > be less risk to make mistakes.
+> > > 
+> > > Yours,
+> > > Linus Walleij
+> > 
+> > Hi Linus & chen-yu,
+> > 
+> > The rsel actual bias resistance of each setting is different in
+> > different IC. For example, in mt8195, the rsel actual bias
+> > resistance
+> > setting like as:
+> > MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> > MTK_PULL_SET
+> > _RSEL_001:10k in PU, 5k in PD;
+> > MTK_PULL_SET_RSEL_010:5k in PU, 75k in
+> > PD;
+> > MTK_PULL_SET_RSEL_011:4k in PU, 5K in PD;
+> > MTK_PULL_SET_RSEL_100:3k in
+> > PU, 75k in PD;
+> > MTK_PULL_SET_RSEL_101:2k in PU, 5K in PD;
+> > MTK_PULL_SET_RSE
+> > L_110:1.5k in PU, 75k in PD;
+> > MTK_PULL_SET_RSEL_111:1k in PU, 5k in PD.
+> > 
+> > but in mt8192, the rsel actual bias resistance setting like as:
+> > MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> > MTK_PULL_SET_RSEL_001:3k in PU, 5k in PD;
+> > MTK_PULL_SET_RSEL_010:10k in PU, 75k in PD;
+> > MTK_PULL_SET_RSEL_011:1k in PU, 5K in PD;
+> > 
+> > Can you help me to provide a suggestion common define for the all
+> > different IC?
+> > It seems that we should add a new define, if we upstream a new IC
+> > pinctrl driver in the future.
+> 
+> I assume you mean the macros used in the device tree?
+> 
+> The point of using SI units is to get rid of the macros. Instead of:
+> 
+>     bias-pull-up = <MTK_PULL_SET_RSEL_000>;
+> 
+> and
+> 
+>     bias-pull-down = <MTK_PULL_SET_RSEL_011>;
+> 
+> We want:
+> 
+>     bias-pull-up = <75000>;
+> 
+> and
+> 
+>     bias-pull-down = <5000>;
+> 
+> And the pinctrl driver then converts the real values in the device
+> tree
+> into register values using some lookup table.
+> 
+> The DT schema could then enumerate all the valid resistor values,
+> and get proper validity checking.
+> 
+> Now if you really wanted to keep some symbols for mapping hardware
+> register values to resistor values, you could have
+> 
+>     #define MT8192_PULL_UP_RSEL_001      75000
+>     #define MT8192_PULL_DOWN_RSEL_001     5000
+> 
+> or have them all named MTK_PULL_{UP,DOWN}_RSEL_NNN, but split into
+> different header files, one per SoC.
+> 
+> Personally I think having the macros is a bad idea if proper values
+> are available. It just adds another layer of indirection, and another
+> area where errors can creep in.
+> 
+> 
+> Regards
+> ChenYu
 
-Add cpu node, timer node, gic node, psci and reserved-memory node
-for ARM Trusted Firmware,
+Hi Chenyu,
 
-Add clock controller nodes, include 40M clock source, topckgen, infracfg,
-apmixedsys and ethernet subsystem.
+In one chip, If GPIO is different, the MTXXXX_PULL_UP_RSEL_001 may
+means different actual bias resistance setting.
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+For example,
 
----
-v2: modified clock and uart node due to clock driver updated
+KPROW IO                                        
+Paramters       Descriptions                   Min      Typ     Max    
+ UNIT
+Rpd     Input pull-down resistance      40      75      190     Kohm
+Rpu     Input pull-up resistance        40      75      190     Kohm
+Rpd     Input pull-down resistance      0.8     1.6     2       Kohm
+Rpu     Input pull-up resistance        0.8     1.6     2       Kohm
+                                        
+                                        
+KPCOL IO                                        
+Paramters       Descriptions                   Min      Typ     Max    
+ UNIT
+Rpd     Input pull-down resistance      40      75      190     Kohm
+Rpu     Input pull-up resistance        40      75      190     Kohm
+Rpd     Input pull-down resistance      200     260     400     Kohm
+Rpu     Input pull-up resistance        200     260     400     Kohm
+                                        
+                                        
+MSDC1 IO                                        
+Paramters       Descriptions                    Min     Typ     Max    
+ UNIT
+Rpd     Input pull-down resistance      5       7.5     10      Kohm
+Rpu     Input pull-up resistance        5       7.5     10      Kohm
+Rpd     Input pull-down resistance      10      50      100     Kohm
+Rpu     Input pull-up resistance        10      50      100     Kohm
 
----
- arch/arm64/boot/dts/mediatek/Makefile        |   1 +
- arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts |  21 ++
- arch/arm64/boot/dts/mediatek/mt7986b.dtsi    | 227 +++++++++++++++++++
- 3 files changed, 249 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+we think that we can't define like this.
 
-diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index e6c3a73b9e4a..d555e43d1ccc 100644
---- a/arch/arm64/boot/dts/mediatek/Makefile
-+++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-new file mode 100644
-index 000000000000..8296f1d27e77
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-@@ -0,0 +1,21 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Sam.Shih <sam.shih@mediatek.com>
-+ */
-+
-+/dts-v1/;
-+#include "mt7986b.dtsi"
-+
-+/ {
-+	model = "MediaTek MT7986b RFB";
-+	compatible = "mediatek,mt7986b-rfb";
-+	chosen {
-+		bootargs = "console=ttyS0,115200n1 loglevel=8  \
-+				earlycon=uart8250,mmio32,0x11002000";
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-new file mode 100644
-index 000000000000..1fd98fb7ba84
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-@@ -0,0 +1,227 @@
-+// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-+/*
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Sam.Shih <sam.shih@mediatek.com>
-+ */
-+
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/clock/mt7986-clk.h>
-+
-+/ {
-+	compatible = "mediatek,mt7986b";
-+	interrupt-parent = <&gic>;
-+	#address-cells = <2>;
-+	#size-cells = <2>;
-+
-+	clk40m: oscillator@0 {
-+		compatible = "fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <40000000>;
-+		clock-output-names = "clkxtal";
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		cpu0: cpu@0 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x0>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu1: cpu@1 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x1>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu2: cpu@2 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a53";
-+			enable-method = "psci";
-+			reg = <0x2>;
-+			#cooling-cells = <2>;
-+		};
-+
-+		cpu3: cpu@3 {
-+			device_type = "cpu";
-+			enable-method = "psci";
-+			compatible = "arm,cortex-a53";
-+			reg = <0x3>;
-+			#cooling-cells = <2>;
-+		};
-+	};
-+
-+	psci {
-+		compatible  = "arm,psci-0.2";
-+		method      = "smc";
-+	};
-+
-+	reserved-memory {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		ranges;
-+		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-+		secmon_reserved: secmon@43000000 {
-+			reg = <0 0x43000000 0 0x30000>;
-+			no-map;
-+		};
-+	};
-+
-+	timer {
-+		compatible = "arm,armv8-timer";
-+		interrupt-parent = <&gic>;
-+		clock-frequency = <13000000>;
-+		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+
-+	soc {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+		compatible = "simple-bus";
-+		ranges;
-+
-+		gic: interrupt-controller@c000000 {
-+			compatible = "arm,gic-v3";
-+			#interrupt-cells = <3>;
-+			interrupt-parent = <&gic>;
-+			interrupt-controller;
-+			reg = <0 0x0c000000 0 0x40000>,
-+			      <0 0x0c080000 0 0x200000>;
-+			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+		};
-+
-+		infracfg: infracfg@10001000 {
-+			compatible = "mediatek,mt7986-infracfg", "syscon";
-+			reg = <0 0x10001000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		topckgen: topckgen@1001b000 {
-+			compatible = "mediatek,mt7986-topckgen", "syscon";
-+			reg = <0 0x1001B000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		watchdog: watchdog@1001c000 {
-+			compatible = "mediatek,mt7986-wdt",
-+				     "mediatek,mt6589-wdt";
-+			reg = <0 0x1001c000 0 0x1000>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-+			#reset-cells = <1>;
-+			status = "disabled";
-+		};
-+
-+		apmixedsys: apmixedsys@1001e000 {
-+			compatible = "mediatek,mt7986-apmixedsys";
-+			reg = <0 0x1001E000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		pio: pinctrl@1001f000 {
-+			compatible = "mediatek,mt7986b-pinctrl";
-+			reg = <0 0x1001f000 0 0x1000>,
-+			      <0 0x11c30000 0 0x1000>,
-+			      <0 0x11c40000 0 0x1000>,
-+			      <0 0x11e20000 0 0x1000>,
-+			      <0 0x11e30000 0 0x1000>,
-+			      <0 0x11f00000 0 0x1000>,
-+			      <0 0x11f10000 0 0x1000>,
-+			      <0 0x1000b000 0 0x1000>;
-+			reg-names = "gpio_base", "iocfg_rt_base", "iocfg_rb_base",
-+				    "iocfg_lt_base", "iocfg_lb_base", "iocfg_tr_base",
-+				    "iocfg_tl_base", "eint";
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			gpio-ranges = <&pio 0 0 41>, <&pio 66 66 35>;
-+			interrupt-controller;
-+			interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-parent = <&gic>;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		sgmiisys0: syscon@10060000 {
-+			compatible = "mediatek,mt7986-sgmiisys_0",
-+				     "syscon";
-+			reg = <0 0x10060000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		sgmiisys1: syscon@10070000 {
-+			compatible = "mediatek,mt7986-sgmiisys_1",
-+				     "syscon";
-+			reg = <0 0x10070000 0 0x1000>;
-+			#clock-cells = <1>;
-+		};
-+
-+		trng: trng@1020f000 {
-+			compatible = "mediatek,mt7986-rng",
-+				     "mediatek,mt7623-rng";
-+			reg = <0 0x1020f000 0 0x100>;
-+			clocks = <&infracfg CLK_INFRA_TRNG_CK>;
-+			clock-names = "rng";
-+			status = "disabled";
-+		};
-+
-+		uart0: serial@11002000 {
-+			compatible = "mediatek,mt7986-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11002000 0 0x400>;
-+			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
-+				 <&infracfg CLK_INFRA_UART0_CK>;
-+			clock-names = "baud", "bus";
-+			assigned-clocks = <&topckgen CLK_TOP_UART_SEL>,
-+					  <&infracfg CLK_INFRA_UART0_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_XTAL>,
-+						 <&topckgen CLK_TOP_UART_SEL>;
-+			status = "disabled";
-+		};
-+
-+		uart1: serial@11003000 {
-+			compatible = "mediatek,mt7986-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11003000 0 0x400>;
-+			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
-+				 <&infracfg CLK_INFRA_UART1_CK>;
-+			clock-names = "baud", "bus";
-+			assigned-clocks = <&infracfg CLK_INFRA_UART1_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_F26M_SEL>;
-+			status = "disabled";
-+		};
-+
-+		uart2: serial@11004000 {
-+			compatible = "mediatek,mt7986-uart",
-+				     "mediatek,mt6577-uart";
-+			reg = <0 0x11004000 0 0x400>;
-+			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
-+				 <&infracfg CLK_INFRA_UART2_CK>;
-+			clock-names = "baud", "bus";
-+			assigned-clocks = <&infracfg CLK_INFRA_UART2_SEL>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_F26M_SEL>;
-+			status = "disabled";
-+		};
-+
-+		ethsys: syscon@15000000 {
-+			 #address-cells = <1>;
-+			 #size-cells = <1>;
-+			 compatible = "mediatek,mt7986-ethsys",
-+				      "syscon";
-+			 reg = <0 0x15000000 0 0x1000>;
-+			 #clock-cells = <1>;
-+			 #reset-cells = <1>;
-+		};
-+
-+	};
-+
-+};
--- 
-2.29.2
+Thanks.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
