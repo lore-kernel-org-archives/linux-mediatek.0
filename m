@@ -2,109 +2,87 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4BBEC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3173C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:42:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B92160462
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:36:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5B92160462
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7C11160FA0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:42:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C11160FA0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=lmDpR57lwq5IzNG1+JR7ZLyGwVwp6lUMjFO9FbJOnVY=; b=h50K9ydZAy5QpI
-	T2po0UpOKaI4st9HSBlkfIw5RxfNJNm5ggFt87kVDWPXNXoxjRwZSzZ6Y3H1XwHWNh/gATSGNxcEx
-	6iAdtv1t5xFnRP94Xec5qndx4tkwkZgTXjhOgqupVJQxjRtDqqphqi6m5l/uFin23WR1X5cLAK43Y
-	wekg4f9n96s1vHD4XlhGTl22dKkeoG9PfYAZttklYy5xD95qJW5F5xOGGjtGVfPbIhV1Jgldl7GEK
-	auW3oUxz914lYbVD23DyLLESN+t7QZINSbuN7Hxjj28DRFywb5gXGeKrHiIAsc1YPYAnMfSGcZVUw
-	g3h30nWOXKuAwZrPVtuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4GofcnQ5OVlZ2wzpCqvTq+LcJbsIF9Z700gxgAvhwyI=; b=2PdISjpByZxvkG
+	VbuTljKqCsNYpDRsTvDLqOnR9vilKnaFeWG09QhonxKkxlfedfEzJ5FxC2I7iFTOwqs9o+zNgyjrs
+	LmjyM+GjI8fFApdtnTQUnBAkhD89CRjdwcl+Rws0xz3zME/Ubp3qpyh30rf338bZfXiHH0ceSXTmT
+	aHP/LYeYLyHUhVRsTrjQEW5lUshJsxz2TXO0tQf19U8cz1MFifkuLG1sXvlyG0z+LEqtk2Uzu8N+A
+	Q0YK+QnkljDvwZ65RPME/oj8MXdOMVFwxbUWh9Wvp3ELs7gNewwSNHt12q+WaLU0qNWULyDl9gzFU
+	PGfqDuswiDAD6JZ799Kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFpta-000xyX-Ok; Tue, 17 Aug 2021 03:36:10 +0000
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat
- Linux)) id 1mFpO4-000tQp-2y; Tue, 17 Aug 2021 03:03:38 +0000
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 17H33JsyC012210,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexh36502.realtek.com.tw[172.21.6.25])
- by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 17H33JsyC012210
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Tue, 17 Aug 2021 11:03:19 +0800
-Received: from RTEXMBS03.realtek.com.tw (172.21.6.96) by
- RTEXH36502.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Tue, 17 Aug 2021 11:03:19 +0800
-Received: from localhost (172.21.132.198) by RTEXMBS03.realtek.com.tw
- (172.21.6.96) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Tue, 17 Aug
- 2021 11:03:18 +0800
-From: <max.chou@realtek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>, 
- <matthias.bgg@gmail.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-CC: <alex_lu@realsil.com.cn>, <hildawu@realtek.com>, <kidman@realtek.com>,
- <apusaka@chromium.org>, <abhishekpandit@chromium.org>,
- <josephsih@chromium.org>, <max.chou@realtek.com>
-Subject: [PATCH v3] Bluetooth: btusb: Remove WAKEUP_DISABLE and add
- WAKEUP_AUTOSUSPEND for Realtek devices
-Date: Tue, 17 Aug 2021 11:03:12 +0800
-Message-ID: <20210817030312.27755-1-max.chou@realtek.com>
-X-Mailer: git-send-email 2.17.1
+	id 1mFpzC-000zTR-66; Tue, 17 Aug 2021 03:41:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mFpwS-000yTR-K4; Tue, 17 Aug 2021 03:39:12 +0000
+X-UUID: 36c476d0988b475b9fc640beca310a6a-20210816
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ZUQNFXr5FuKXewOx8S7z3P+aw6QvJPCFepRGuOLx3Rw=; 
+ b=oI1rkoI7jAHlX2gyV+B/ulTxcBBzRL/bQv74OkKi292s0hpOGO4leSoe81x+j9cLPdZ95VfR/6oxJJcuZZvgI1RY6FUlEDaF7vJSPDtF38hN6I5JANGgrMjLUWNk8fBZw+65JeTGNFJWcjBVx1aPoZo+SxMQeoqrUa7HkLeCzDA=;
+X-UUID: 36c476d0988b475b9fc640beca310a6a-20210816
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1392090614; Mon, 16 Aug 2021 20:39:02 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 16 Aug 2021 20:39:00 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 11:38:58 +0800
+Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 17 Aug 2021 11:38:57 +0800
+Message-ID: <2f680f94ef4d41f7a916ba0c920ec1c9121fe583.camel@mediatek.com>
+Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
+ dt-bindings for mt8192
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <linux-mediatek@lists.infradead.org>, Alexandre Courbot
+ <acourbot@chromium.org>, <linux-kernel@vger.kernel.org>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Tomasz Figa <tfiga@google.com>,
+ <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Rob Herring <robh+dt@kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, "Hsin-Yi
+ Wang" <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ George Sun <george.sun@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Irui Wang
+ <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>
+Date: Tue, 17 Aug 2021 11:38:58 +0800
+In-Reply-To: <1628702693.304754.3975941.nullmailer@robh.at.kernel.org>
+References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
+ <20210811025801.21597-14-yunfei.dong@mediatek.com>
+ <1628702693.304754.3975941.nullmailer@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-Originating-IP: [172.21.132.198]
-X-ClientProxiedBy: RTEXMBS02.realtek.com.tw (172.21.6.95) To
- RTEXMBS03.realtek.com.tw (172.21.6.96)
-X-KSE-ServerInfo: RTEXMBS03.realtek.com.tw, 9
-X-KSE-AntiSpam-Interceptor-Info: trusted connection
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Deterministic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 08/17/2021 02:36:00
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: =?big5?B?Q2xlYW4sIGJhc2VzOiAyMDIxLzgvMTYgpFWkyCAxMDowMDowMA==?=
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-KSE-ServerInfo: RTEXH36502.realtek.com.tw, 9
-X-KSE-Attachment-Filter-Triggered-Rules: Clean
-X-KSE-Attachment-Filter-Triggered-Filters: Clean
-X-KSE-BulkMessagesFiltering-Scan-Result: protection disabled
-X-KSE-AntiSpam-Outbound-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 5.9.20, Database issued on: 08/17/2021 02:48:32
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 165596 [Aug 17 2021]
-X-KSE-AntiSpam-Info: Version: 5.9.20.0
-X-KSE-AntiSpam-Info: Envelope from: max.chou@realtek.com
-X-KSE-AntiSpam-Info: LuaCore: 454 454 39c6e442fd417993330528e7f9d13ac1bf7fdf8c
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: d41d8cd98f00b204e9800998ecf8427e.com:7.1.1;
- realtek.com:7.1.1; 127.0.0.199:7.1.2
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-AntiSpam-Info: Auth:dkim=none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Heuristic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 08/17/2021 02:51:00
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_200336_339610_4D1DFA18 
-X-CRM114-Status: GOOD (  16.95  )
+X-CRM114-CacheID: sfid-20210816_203908_713661_568B166C 
+X-CRM114-Status: GOOD (  25.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,115 +99,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Max Chou <max.chou@realtek.com>
+Hi Rob,
 
-For the commit of 9e45524a011107a73bc2cdde8370c61e82e93a4d, wakeup is
-always disabled for Realtek devices. However, there's the capability
-for Realtek devices to apply USB wakeup.
+Thanks for your detail suggestion.
 
-In this commit, remove WAKEUP_DISABLE feature for Realtek devices.
-If users would switch wakeup, they should access
-"/sys/bus/usb/.../power/wakeup"
+For the header file(dt-bindings/clock/mt8192-clk.h) is included in:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
 
-In this commit, it also adds the feature as WAKEUP_AUTOSUSPEND
-for Realtek devices because it should set do_remote_wakeup on autosuspend.
+Need to depend on this patch, do you have any suggestion about how to
+add it?
 
-Signed-off-by: Max Chou <max.chou@realtek.com>
-Tested-by: Hilda Wu <hildawu@realtek.com>
-Reviewed-by: Archie Pusaka <apusaka@chromium.org>
-Reviewed-by: Abhishek Pandit-Subedi <abhishekpandit@chromium.org>
----
-Changes in v2:
--fix the compiling error due to the incorrect patch file submited
+Thanks.
 
-Changes in v3:
--do rebase and make the patch on the latest revision
----
- drivers/bluetooth/btusb.c | 28 +++++++++-------------------
- 1 file changed, 9 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 2336f731dbc7..60d2fce59a71 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -527,7 +527,7 @@ static const struct dmi_system_id btusb_needs_reset_resume_table[] = {
- #define BTUSB_OOB_WAKE_ENABLED	11
- #define BTUSB_HW_RESET_ACTIVE	12
- #define BTUSB_TX_WAIT_VND_EVT	13
--#define BTUSB_WAKEUP_DISABLE	14
-+#define BTUSB_WAKEUP_AUTOSUSPEND	14
- #define BTUSB_USE_ALT3_FOR_WBS	15
- 
- struct btusb_data {
-@@ -1350,13 +1350,6 @@ static int btusb_open(struct hci_dev *hdev)
- 
- 	data->intf->needs_remote_wakeup = 1;
- 
--	/* Disable device remote wakeup when host is suspended
--	 * For Realtek chips, global suspend without
--	 * SET_FEATURE (DEVICE_REMOTE_WAKEUP) can save more power in device.
--	 */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
--		device_wakeup_disable(&data->udev->dev);
--
- 	if (test_and_set_bit(BTUSB_INTR_RUNNING, &data->flags))
- 		goto done;
- 
-@@ -1423,7 +1416,7 @@ static int btusb_close(struct hci_dev *hdev)
- 	data->intf->needs_remote_wakeup = 0;
- 
- 	/* Enable remote wake up for auto-suspend */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
-+	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags))
- 		data->intf->needs_remote_wakeup = 1;
- 
- 	usb_autopm_put_interface(data->intf);
-@@ -3602,9 +3595,6 @@ static bool btusb_prevent_wake(struct hci_dev *hdev)
- {
- 	struct btusb_data *data = hci_get_drvdata(hdev);
- 
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags))
--		return true;
--
- 	return !device_may_wakeup(&data->udev->dev);
- }
- 
-@@ -3882,11 +3872,8 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->shutdown = btrtl_shutdown_realtek;
- 		hdev->cmd_timeout = btusb_rtl_cmd_timeout;
- 
--		/* Realtek devices lose their updated firmware over global
--		 * suspend that means host doesn't send SET_FEATURE
--		 * (DEVICE_REMOTE_WAKEUP)
--		 */
--		set_bit(BTUSB_WAKEUP_DISABLE, &data->flags);
-+		/* Realtek devices need to set remote wakeup on auto-suspend */
-+		set_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags);
- 		set_bit(BTUSB_USE_ALT3_FOR_WBS, &data->flags);
- 	}
- 
-@@ -4062,12 +4049,15 @@ static int btusb_suspend(struct usb_interface *intf, pm_message_t message)
- 	 * Actually, it depends on whether the usb host sends
- 	 * set feature (enable wakeup) or not.
- 	 */
--	if (test_bit(BTUSB_WAKEUP_DISABLE, &data->flags)) {
-+	if (test_bit(BTUSB_WAKEUP_AUTOSUSPEND, &data->flags)) {
- 		if (PMSG_IS_AUTO(message) &&
- 		    device_can_wakeup(&data->udev->dev))
- 			data->udev->do_remote_wakeup = 1;
--		else if (!PMSG_IS_AUTO(message))
-+		else if (!PMSG_IS_AUTO(message) &&
-+			 !device_may_wakeup(&data->udev->dev)) {
-+			data->udev->do_remote_wakeup = 0;
- 			data->udev->reset_resume = 1;
-+		}
- 	}
- 
- 	return 0;
--- 
-2.17.1
-
-
+On Wed, 2021-08-11 at 11:24 -0600, Rob Herring wrote:
+> On Wed, 11 Aug 2021 10:57:59 +0800, Yunfei Dong wrote:
+> > Adds decoder dt-bindings for mt8192.
+> > 
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > ---
+> > v5: no changes
+> > 
+> > This patch depends on "Mediatek MT8192 clock support"[1].
+> > 
+> > The definition of decoder clocks are in mt8192-clk.h, need to
+> > include them in case of build fail [1].
+> > 
+> > [1]
+> > https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
+> > ---
+> >  .../media/mediatek,vcodec-comp-decoder.yaml   | 172
+> > ++++++++++++++++++
+> >  1 file changed, 172 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> > decoder.yaml
+> > 
+> 
+> My bot found errors running 'make DT_CHECKER_FLAGS=-m
+> dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> ./Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> decoder.yaml: $id: relative path/filename doesn't match actual path
+> or filename
+> 	expected: 
+> http://devicetree.org/schemas/media/mediatek,vcodec-comp-decoder.yaml#
+> Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> decoder.example.dts:22:18: fatal error: dt-bindings/clock/mt8192-
+> clk.h: No such file or directory
+>    22 |         #include <dt-bindings/clock/mt8192-clk.h>
+>       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> compilation terminated.
+> make[1]: *** [scripts/Makefile.lib:380:
+> Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> decoder.example.dt.yaml] Error 1
+> make[1]: *** Waiting for unfinished jobs....
+> make: *** [Makefile:1419: dt_binding_check] Error 2
+> 
+> doc reference errors (make refcheckdocs):
+> 
+> See https://patchwork.ozlabs.org/patch/1515556
+> 
+> This check can fail if there are any dependencies. The base for a
+> patch
+> series is generally the most recent rc1.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up
+> to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit.
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
