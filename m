@@ -2,76 +2,102 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51184C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2493C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:44:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C13FE60F5E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:37:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C13FE60F5E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AB31360F22
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 05:44:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AB31360F22
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sm0b0jykctJm/HT9BMpMuDWIwgAd1qXpCk1TcWbFW9E=; b=chj8+DnWj9ZJm1
-	wlJW8KTvHdd1gNBcIyTyFJuHazqqrIF9YX8NJcsrok7s7gF3vQgxtcQF6U7PiQUZV2dK3qM1wtGWa
-	T7uxe9afj5wVcIbA/Q6G6Zfz7Fy52pQ9A/fVSe/LW8yqc0s2PKj0+jK3Gi0B0wKQIe+MIKN63Y0Ke
-	xNAwe0h65CdrT+GVkQce/rPZNjuZbFQkAUGRlN3nwZSK28ZXt32Om/9ze81kTxsx38gDoU8uKr/gC
-	Zebfk4BwBASH4alMc9FLRllU3Iv04u69YOhuJse/byvprtVcF/YEMjwpBfVL6Wea6O4PyVXFwwAdw
-	dPoFc71GRO9Aa4dfK4MQ==;
+	List-Owner; bh=tnPdFrwBz4v5lhF2zpubACoy0QhFAtDDslH6S/sr6AU=; b=H9ASK8zi9piX7I
+	qpaSDYfAbzeT8CfSfyRGaF1tqAFHtMaWgCdIdCyWfqTNtwSkzmNmLXGNvRo1kyLyVap5kqL3dzfHf
+	GWUF9kXyUdjquI6g7coSGTTMV2aH0TR8snSD/Bn5QNxjiDet9XKTnFY44Np05w47XZSLNPKFI5knU
+	yJ84WSwtT7G3qqz9pzQGTpNFK5BoZNGoWyS49ngUKijUvJxIHMorQs68+RV5k67X2o1ACBSKOhn3P
+	tW9836fUhI4kKIbBE7jfdalZjiroWy052t+iSxdYquwnhglP5zJ3868Jh4rQcqfjZpZN0k4lOvgFA
+	kQg2brUPbcGmbiztuDDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFrmW-001CR2-9I; Tue, 17 Aug 2021 05:37:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mFrto-001D2T-A0; Tue, 17 Aug 2021 05:44:32 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFrmQ-001CPy-PL; Tue, 17 Aug 2021 05:36:58 +0000
-X-UUID: 2421fb8de49e489d9168e6057a170e34-20210816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=b328J144zpOevt/q/w5Rgs8faNaGXzgEa4YLoCNwF6w=; 
- b=S+xSEupC5vSrgKHhRJrL1U0CDOVhSM0yeVcKUpBVyXq0GY2qSr81HVM6DU3q3XUl/6RvSuAjfM4eSv4y5mJ/VisfFvL0nuMzCSkzhNI/nXENI4b3dtUso+Er2TWhnAzuVfY8DtQ0dmUHAUcjJUYKfRG1zr6ukVOmUPo8jTUhZvQ=;
-X-UUID: 2421fb8de49e489d9168e6057a170e34-20210816
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <ck.hu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 341603215; Mon, 16 Aug 2021 22:36:48 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 22:36:46 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 13:36:45 +0800
-Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 17 Aug 2021 13:36:45 +0800
-Message-ID: <1629178605.7579.3.camel@mtksdaap41>
-Subject: Re: [RFC PATCH 5/5] drm/mediatek: Add mt8195 DisplayPort driver
-From: CK Hu <ck.hu@mediatek.com>
-To: Markus Schneider-Pargmann <msp@baylibre.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 17 Aug 2021 13:36:45 +0800
-In-Reply-To: <20210816192523.1739365-6-msp@baylibre.com>
-References: <20210816192523.1739365-1-msp@baylibre.com>
- <20210816192523.1739365-6-msp@baylibre.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1mFrtj-001D10-21
+ for linux-mediatek@lists.infradead.org; Tue, 17 Aug 2021 05:44:31 +0000
+Received: by mail-lj1-x236.google.com with SMTP id c12so18007303ljr.5
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 22:44:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YOKejl87y0ski0VdMRkyNRA2v7H+vqyupx7Esp13/wE=;
+ b=a6IvKzyOyIQZqQYz+g/aLPoRbm5h20bCZsjIxf2QcwFz0VIyf7oEIDWaVkrgyH8dVy
+ h4m6QRA7pfehKCUKoALq+XGDZt5U7OBbb0gKEDtP7fuIogf7goHUm/xLrW3OSFHRYE/2
+ l/S0skrt0NKW06MSkEcsSsY+vfCoBhM6F24NE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YOKejl87y0ski0VdMRkyNRA2v7H+vqyupx7Esp13/wE=;
+ b=i00Wx5PLRc7FgmKSGlPueUpr56uH51CGqWPKD8XXEbDS54a6/IT3FTFSdNX0dmgcw7
+ G3Q3U7n+3kYKJRjgD/LNbdxZJGpoxR0OrTHiDXTKBhVt7psRKLcsm05rHhNErQUFIyco
+ qKypwZg/qC95j8MSOXp1le0tWQaMK69MevmQZgPW4Xl0zPSXb069k4PRnysvOD3go9nv
+ TZzVHM4lna217f2ZTyh6I+AZynMqbCzp0LHixBjE6ug8beOLAEZrAhzWiYfvVnPsitc/
+ QECeQlxMGQxZsT8G5UIA4E3TBrkSjM9Sc1fJtya5yL02zJw+AC90x1IQM64gmXP8wGcu
+ matg==
+X-Gm-Message-State: AOAM5312iQ+GqDp5ryT2ECWuI8mtkNrNXHclrjFyFx8J+EL8l1tFtEIA
+ 9yaLGqvTYTQcZhANRqMvJEtXPRlcsqIrRrvWzK/OiA==
+X-Google-Smtp-Source: ABdhPJwDdjRJIqMRTx/tVA7vEY9ayN6r0dWnuWHx5K0aCWGb+5ATkAUHpOt5qq3zzCPruae3ZI8O0IO36YD+eRA8lIM=
+X-Received: by 2002:a05:651c:1785:: with SMTP id
+ bn5mr1677465ljb.18.1629179065185; 
+ Mon, 16 Aug 2021 22:44:25 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210710081722.1828-1-zhiyong.tao@mediatek.com>
+ <20210710081722.1828-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5GXg0RuOQkh4vaRmcLpehZiXnEUXBvEaObiatAa1sXvaA@mail.gmail.com>
+ <1626940470.29611.9.camel@mhfsdcap03>
+ <CAGXv+5F_-W4aNt0WVSDBGLo_t8orNUq59GMKk_4xVr+hMb9Ctg@mail.gmail.com>
+ <07388dac4e25e0f260725e8f80ba099d5aa80949.camel@mediatek.com>
+ <CAGXv+5EagmhYYpri+nzo6WgGz8A=oiU3Vy+2AVjho=eo6Z+DLw@mail.gmail.com>
+ <CACRpkdZ4k9Km3vBtdN6AnBM89c4355GtPMzCQ0_YHaTb4V5cKA@mail.gmail.com>
+ <CAGXv+5HohMwU8jow5QXO5MK1tO+u=5YsfhArBWCP4Dgm1Q8igg@mail.gmail.com>
+ <4fd12d5c53f6492e5fa3ba94a78b9a149f5b6ed9.camel@mediatek.com>
+ <CAGXv+5GCuNK=-z9VAOjkpJdZLUSZFPfUsQ09m1FhfTsbCYLLRw@mail.gmail.com>
+ <CACRpkdbZKh8cqqiDRUik6Ooo33e+feGwYsLjcLRvBQnT3x5M3A@mail.gmail.com>
+ <a7c8ab68ac3513865698cde27e665bdd554f459e.camel@mediatek.com>
+In-Reply-To: <a7c8ab68ac3513865698cde27e665bdd554f459e.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 17 Aug 2021 13:44:13 +0800
+Message-ID: <CAGXv+5FtL2zaSWx4tUymx6mpCSb5dXG4XNWM9AJL+b6Ok3dxMg@mail.gmail.com>
+Subject: Re: [PATCH v10 1/2] dt-bindings: pinctrl: mt8195: add rsel define
+To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
+ hui.liu@mediatek.com, 
+ Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
+ Biao Huang <biao.huang@mediatek.com>,
+ Hongzhou Yang <hongzhou.yang@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
+ Devicetree List <devicetree@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_223654_872632_17CE7370 
-X-CRM114-Status: GOOD (  19.51  )
+X-CRM114-CacheID: sfid-20210816_224427_157835_978EDE3C 
+X-CRM114-Status: GOOD (  34.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,113 +114,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Markus:
+On Tue, Aug 17, 2021 at 10:21 AM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
+>
+> On Tue, 2021-08-17 at 01:00 +0200, Linus Walleij wrote:
+> > On Mon, Aug 16, 2021 at 5:38 PM Chen-Yu Tsai <wenst@chromium.org>
+> > wrote:
+> > > On Mon, Aug 16, 2021 at 6:48 PM zhiyong.tao <
+> > > zhiyong.tao@mediatek.com> wrote:
+> > > > > I'll take that as "use SI units whenever possible and
+> > > > > reasonable".
+> > > >
+> > > > ==> so It doesn't need to change the define, is it right?
+> > > > we will keep the common define.
+> > >
+> > > Actually I think it would be possible and reasonable to use SI
+> > > units
+> > > in this case, since you are the vendor and have the resistor values
+> > > to implement the support. Having different sets of values for
+> > > different
+> > > chips is nothing out of the ordinary. We already have to account
+> > > for
+> > > different number of pins and different pin functions. That is what
+> > > compatible strings are for.
+> >
+> > I fully agree with Chen-Yu's analysis here.
+> >
+> > Zhiyong can you make an attempt to use SI units (Ohms) and see
+> > what it will look like? I think it will look better for users and it
+> > will
+> > be less risk to make mistakes.
+> >
+> > Yours,
+> > Linus Walleij
+>
+> Hi Linus & chen-yu,
+>
+> The rsel actual bias resistance of each setting is different in
+> different IC. For example, in mt8195, the rsel actual bias resistance
+> setting like as:
+> MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> MTK_PULL_SET
+> _RSEL_001:10k in PU, 5k in PD;
+> MTK_PULL_SET_RSEL_010:5k in PU, 75k in
+> PD;
+> MTK_PULL_SET_RSEL_011:4k in PU, 5K in PD;
+> MTK_PULL_SET_RSEL_100:3k in
+> PU, 75k in PD;
+> MTK_PULL_SET_RSEL_101:2k in PU, 5K in PD;
+> MTK_PULL_SET_RSE
+> L_110:1.5k in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_111:1k in PU, 5k in PD.
+>
+> but in mt8192, the rsel actual bias resistance setting like as:
+> MTK_PULL_SET_RSEL_000:75K in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_001:3k in PU, 5k in PD;
+> MTK_PULL_SET_RSEL_010:10k in PU, 75k in PD;
+> MTK_PULL_SET_RSEL_011:1k in PU, 5K in PD;
+>
+> Can you help me to provide a suggestion common define for the all
+> different IC?
+> It seems that we should add a new define, if we upstream a new IC
+> pinctrl driver in the future.
 
-On Mon, 2021-08-16 at 21:25 +0200, Markus Schneider-Pargmann wrote:
-> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
-> 
-> It supports both functional units on the mt8195, the embedded
-> DisplayPort as well as the external DisplayPort units. It offers
-> hot-plug-detection, audio up to 8 channels, and DisplayPort 1.4 with up
-> to 4 lanes.
-> 
-> This driver is based on an initial version by
-> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> ---
+I assume you mean the macros used in the device tree?
 
-[snip]
+The point of using SI units is to get rid of the macros. Instead of:
 
-> +
-> +static const struct of_device_id mtk_dp_of_match[] = {
-> +	{
-> +		.compatible = "mediatek,mt8195-dp_tx",
+    bias-pull-up = <MTK_PULL_SET_RSEL_000>;
 
-Where is the binding document of "mediatek,mt8195-dp_tx"?
+and
 
-> +		.data = &mt8195_dp_driver_data,
-> +	},
-> +	{
-> +		.compatible = "mediatek,mt8195-edp_tx",
+    bias-pull-down = <MTK_PULL_SET_RSEL_011>;
 
-Where is the binding document of "mediatek,mt8195-edp_tx"?
+We want:
 
-> +		.data = &mt8195_edp_driver_data,
-> +	},
-> +	{},
-> +};
-> +MODULE_DEVICE_TABLE(of, mtk_dp_of_match);
-> +
-> +struct platform_driver mtk_dp_driver = {
-> +	.probe = mtk_dp_probe,
-> +	.remove = mtk_dp_remove,
-> +	.driver = {
-> +		.name = "mediatek-drm-dp",
-> +		.of_match_table = mtk_dp_of_match,
-> +		.pm = &mtk_dp_pm_ops,
-> +	},
-> +};
-> +
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dp_reg.h b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> new file mode 100644
-> index 000000000000..83afc79d98ff
-> --- /dev/null
-> +++ b/drivers/gpu/drm/mediatek/mtk_dp_reg.h
-> @@ -0,0 +1,3095 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2019 MediaTek Inc.
-> + * Copyright (c) 2021 BayLibre
-> + */
-> +#ifndef _MTK_DP_REG_H_
-> +#define _MTK_DP_REG_H_
-> +
-> +#define MTK_DP_SIP_CONTROL_AARCH32 0x82000523
-> +# define MTK_DP_SIP_ATF_VIDEO_UNMUTE 0x20
-> +# define MTK_DP_SIP_ATF_EDP_VIDEO_UNMUTE 0x21
-> +# define MTK_DP_SIP_ATF_REG_WRITE 0x22
-> +# define MTK_DP_SIP_ATF_REG_READ 0x23
-> +# define MTK_DP_SIP_ATF_CMD_COUNT 0x24
-> +
-> +#define TOP_OFFSET		0x2000
-> +#define ENC0_OFFSET		0x3000
-> +#define ENC1_OFFSET		0x3200
-> +#define TRANS_OFFSET		0x3400
-> +#define AUX_OFFSET		0x3600
-> +#define SEC_OFFSET		0x4000
-> +
-> +#define MTK_DP_HPD_DISCONNECT	BIT(1)
-> +#define MTK_DP_HPD_CONNECT	BIT(2)
-> +#define MTK_DP_HPD_INTERRUPT	BIT(3)
-> +
-> +#define MTK_DP_ENC0_P0_3000              (ENC0_OFFSET + 0x000)
-> +# define LANE_NUM_DP_ENC0_P0_MASK                                      0x3
-> +# define LANE_NUM_DP_ENC0_P0_SHIFT                                     0
-> +# define VIDEO_MUTE_SW_DP_ENC0_P0_MASK                                 0x4
-> +# define VIDEO_MUTE_SW_DP_ENC0_P0_SHIFT                                2
-> +# define VIDEO_MUTE_SEL_DP_ENC0_P0_MASK                                0x8
-> +# define VIDEO_MUTE_SEL_DP_ENC0_P0_SHIFT                               3
-> +# define ENHANCED_FRAME_EN_DP_ENC0_P0_MASK                             0x10
-> +# define ENHANCED_FRAME_EN_DP_ENC0_P0_SHIFT                            4
-> +# define HDCP_FRAME_EN_DP_ENC0_P0_MASK                                 0x20
-> +# define HDCP_FRAME_EN_DP_ENC0_P0_SHIFT                                5
-> +# define IDP_EN_DP_ENC0_P0_MASK                                        0x40
+    bias-pull-up = <75000>;
 
-Remove useless definition.
+and
 
-Regards,
-CK.
+    bias-pull-down = <5000>;
 
-> +# define IDP_EN_DP_ENC0_P0_SHIFT                                       6
-> +# define BS_SYMBOL_CNT_RESET_DP_ENC0_P0_MASK                           0x80
-> +# define BS_SYMBOL_CNT_RESET_DP_ENC0_P0_SHIFT                          7
-> +# define MIXER_DUMMY_DATA_DP_ENC0_P0_MASK                              0xff00
-> +# define MIXER_DUMMY_DATA_DP_ENC0_P0_SHIFT                             8
-> +
+And the pinctrl driver then converts the real values in the device tree
+into register values using some lookup table.
 
-> +
-> +#endif /*_MTK_DP_REG_H_*/
+The DT schema could then enumerate all the valid resistor values,
+and get proper validity checking.
+
+Now if you really wanted to keep some symbols for mapping hardware
+register values to resistor values, you could have
+
+    #define MT8192_PULL_UP_RSEL_001      75000
+    #define MT8192_PULL_DOWN_RSEL_001     5000
+
+or have them all named MTK_PULL_{UP,DOWN}_RSEL_NNN, but split into
+different header files, one per SoC.
+
+Personally I think having the macros is a bad idea if proper values
+are available. It just adds another layer of indirection, and another
+area where errors can creep in.
+
+
+Regards
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
