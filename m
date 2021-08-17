@@ -7,54 +7,54 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8860DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 08:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BABADC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 08:37:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6100260FD7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 08:37:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6100260FD7
+	by mail.kernel.org (Postfix) with ESMTPS id 8BA6160EFE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 08:37:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8BA6160EFE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=v8NRX4fst3Zmaa9IWSikQCYZcevDLHQcNQRN6AXef98=; b=vL6q8KNzNhJ/aM
-	95KikaN+WMQ1fg2T6Pz3jtARQ7riCcSB/Ck6qrmMPk9tKtDpR0Yot95tEP1NN4YihdLygRjQAmcpk
-	yoQuiQwkxYj1OI0Kltm8HzmEwavO5LCad/t1QdfZYRnydu0IougF0YPG+2hKi7saShFj0GXcbM2WM
-	2EKegW1sd5G32XiPUV9IokPOLng4pdlWiuySg+8qHRjBW5vId1jvqF/7tyOPZxGzxM/0Nso3GbiZW
-	XQeEOPq+/1QpEP5MXOkZjZNwoDy6T8kYUc0oEzK075StZ5A0pW6cIPy0rpq3B38iKyhJpu8XhPasZ
-	8G//VyljvITM8hIU3EPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ofinm4XS3BbUn/Pqq5wW+3vQcLbiieD1oOMbG7axJ9U=; b=apOB019eUmBi3U
+	R885F6y3xnVtWreysmqCx1L/oPmT6wGx4hbb4pU8ZvhqmhXlamJllQKpZCbFPG8ULlIertC4o/DnL
+	BgnWLUxj/r2GHvcLN6AAfGHzNsHjNgzz1MLO1OpycaXya1zREIxk8AppxTb/mJnlSX68ULtFMJ6oc
+	mIKOJ/+x7RFVKHFxzs7ipm1j2C4v8lEcgaII0aOompZHGniY3tF1TeJzKM/IUhR92bbuPxCbvQhTx
+	TMYEiMKdCe5SKrbhYjpaKA0+zxqCj9axQZ6lO6OXy84YxlwkZp+v68Gz5ryIROKHdORBdYfOA/osY
+	ApbmOqSpWitZEy4gELHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFuav-001dk9-0N; Tue, 17 Aug 2021 08:37:13 +0000
+	id 1mFubG-001duG-SV; Tue, 17 Aug 2021 08:37:34 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFuaZ-001daS-5N; Tue, 17 Aug 2021 08:36:55 +0000
-X-UUID: 9e9ef40e6bb44b2283bed2871615a480-20210817
+ id 1mFuae-001dbp-4p; Tue, 17 Aug 2021 08:37:00 +0000
+X-UUID: b98ee138bbbd480696b671372ca0727d-20210817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=jdPSH9B//dK9U6T9NNtlsj3wTVFm/iiVzKsoE4lfoC0=; 
- b=RN2GpbKqMSWuCVIq2WSzuNSRnYgq1Kc8qwwJrqt/yJU1tqSKFxNdR/F2JldQgrHgJnPS+ClUghsLrivPI9Z+d8ZsUVhPboMBLYLZgCufv2gpq30MyUf8w/QjOPkR0jfmxiV4/JxijqNeoPMrqJSYMzuT8w+0IiIbuDMbvjVfaiM=;
-X-UUID: 9e9ef40e6bb44b2283bed2871615a480-20210817
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=HuNSyD8vUU5hNZqQtPalwKZvvS1ZRv1/JQC8FUHTw34=; 
+ b=jZKO73hitoSCqt55zpGHg+TqRbVxDInaJVqWdH+gHbRbJyIolxi7NxDDF64li199uysWyXGKeAz8Y7A3zzpF8vIi9hTA3Go8KNvKo72XRdNCdXJEQ4WLAIKWLeaykaz+rm/usmG7OrLANc6x4S7Dt7C3BrnN1Ex3J9ze1rslcNc=;
+X-UUID: b98ee138bbbd480696b671372ca0727d-20210817
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 149543242; Tue, 17 Aug 2021 01:36:47 -0700
+ with ESMTP id 1067502200; Tue, 17 Aug 2021 01:36:52 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 01:36:46 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 01:36:51 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 16:36:44 +0800
+ 15.0.1497.2; Tue, 17 Aug 2021 16:36:49 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 17 Aug 2021 16:36:43 +0800
+ Transport; Tue, 17 Aug 2021 16:36:49 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Mathias Nyman <mathias.nyman@intel.com>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
@@ -62,16 +62,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
  <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Subject: [PATCH RESEND 1/9] dt-bindings: usb: mtk-xhci: add optional property
- to disable usb2 ports
-Date: Tue, 17 Aug 2021 16:36:21 +0800
-Message-ID: <1629189389-18779-1-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [PATCH RESEND 7/9] usb: xhci-mtk: check boundary before check tt
+Date: Tue, 17 Aug 2021 16:36:27 +0800
+Message-ID: <1629189389-18779-7-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1629189389-18779-1-git-send-email-chunfeng.yun@mediatek.com>
+References: <1629189389-18779-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_013651_248251_FF1E30F1 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20210817_013656_256844_EE214850 
+X-CRM114-Status: GOOD (  11.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,32 +89,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support to disable specific usb2 host ports, it's useful when
-a usb2 port is disabled on some platforms, but enabled on others for
-the same SoC, another case is that the different package may support
-different number of ports.
+check_sch_tt() will access fs_bus_bw[] array, check boundary
+firstly to avoid out-of-bounds issue.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/usb/host/xhci-mtk-sch.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-index 49729aab6d1a..61a0e550b5d6 100644
---- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-+++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-@@ -154,6 +154,11 @@ properties:
-     description: The mask to disable u3ports, bit0 for u3port0,
-       bit1 for u3port1, ... etc
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 10c0f0f6461f..c2f13d69c607 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -600,13 +600,14 @@ static int check_sch_bw(struct mu3h_sch_bw_info *sch_bw,
+ 	 * and find a microframe where its worst bandwidth is minimum.
+ 	 */
+ 	for (offset = 0; offset < sch_ep->esit; offset++) {
+-		ret = check_sch_tt(sch_ep, offset);
+-		if (ret)
+-			continue;
  
-+  mediatek,u2p-dis-msk:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    description: The mask to disable u2ports, bit0 for u2port0,
-+      bit1 for u2port1, ... etc
+ 		if ((offset + sch_ep->num_budget_microframes) > esit_boundary)
+ 			break;
+ 
++		ret = check_sch_tt(sch_ep, offset);
++		if (ret)
++			continue;
 +
-   "#address-cells":
-     const: 1
- 
+ 		worst_bw = get_max_bw(sch_bw, sch_ep, offset);
+ 		if (worst_bw > bw_boundary)
+ 			continue;
 -- 
 2.18.0
 _______________________________________________
