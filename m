@@ -2,81 +2,94 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDCD1C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 18:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98406C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 18:35:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B7BB56103A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 18:18:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B7BB56103A
+	by mail.kernel.org (Postfix) with ESMTPS id 6986261051
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 18:35:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6986261051
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zRyv8+e72njSoqEzwkuLRZgsK94VDAfCVH8sUVtYGjc=; b=bqgE7piTn7OAGy
-	GtE7OQUHoxh96BXMKQS/uBlpL+eyf2DxyBAQjkYHsYMR7yxLjYpfPJcoKRW3ArgItlab/sTsIIG2q
-	t0RoxkrLacLfHMPQaH64uWnBlwwGfSyvO1yXeBv+V68p0Q5LIgt0u3kUSmB2/D48kZfh8AQSXG0la
-	nFQUwG7P5t41lrMrPpan+KqG6aVc+QlqYwWbG+GTjaoOY1VDyLr3T+jY9D6V5zgqrXbG0291ZuWDk
-	9bXE1hNM+XoX0J3FGm9yt83mzoTamw8jLrfIUZZyjEAR7FEgdjB4SRzGvvuHLo7YThKzT7La9pD/x
-	usfV3pjZWB5dCGyOyIhQ==;
+	List-Owner; bh=gv9Hiw3v97v01Aq1pK+GsBEj37CU1FH7isq7Plevs3E=; b=01f/Y86dIbi3Xt
+	jDE9sJOOi3lhtdz7Iy4ZcC2PrMI9Kmq1AlFnUHUx+3DsclE7kzyh3MrwSF9QkV6dO8Df4i4dmDtIC
+	dAZFCjUbud5fIBBiHXeG9pZ52ujcWZHq4xHUhMguxEsXOKW1wN9qVl29dqNrxE0n/A6YdV+4/cY1q
+	VDzGwJAVKxGeJxjnhOm7hyiXQXsfT4oBMfqsgg791Krjawh5GWRKdUMHv6f1PTiYABC6FXI3Kvpu0
+	+ZLkoEQezk7SikdEqtgTCqqI9OVKKHrLlMMWAsWJR+u9/eeb1wkr/QIpKoeQpikf19ypCuyL3K5yo
+	CY/QZPP97KpvbaoqJqjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mG3ew-003DZ9-J4; Tue, 17 Aug 2021 18:17:58 +0000
-Received: from mail-oo1-f41.google.com ([209.85.161.41])
+	id 1mG3vl-003Eh5-93; Tue, 17 Aug 2021 18:35:21 +0000
+Received: from mail-oi1-f179.google.com ([209.85.167.179])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mG3er-003DYD-H2; Tue, 17 Aug 2021 18:17:57 +0000
-Received: by mail-oo1-f41.google.com with SMTP id
- w2-20020a4a9e420000b02902859adadf0fso6162791ook.1; 
- Tue, 17 Aug 2021 11:17:52 -0700 (PDT)
+ id 1mG3vg-003Efi-7s; Tue, 17 Aug 2021 18:35:19 +0000
+Received: by mail-oi1-f179.google.com with SMTP id bf25so450345oib.10;
+ Tue, 17 Aug 2021 11:35:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=DLWFI+GPG5JMvw8QB510k7IFEr+jZGWWgLmkQQbrRKo=;
- b=duY2tnjBnz7o8ZWpfEl4KVOxZg/MDIm9wth9QVmw/xzJGYJ74SQwUAtc4iGkN2in/o
- m2jp9Ak1eKzZUcxNjAo5NDFLBAE10ZfFPn2dGsXbXxkWHcAh9IYmGXkw7drWPDwQSdqt
- oI+jTYmiVBpU2YQq86nptaaZVk/mY0h6/8C03xiBqJAYhrOcFRl3989bG3gV6v7f14TI
- pu72t4qP+9QdYNNXtVSM6jQ351fzf8slMcaATNbemWYQcdTA4EdjQI19EnxIBUhubNKZ
- I6+QK6pBnapb1h6tkIb/Qky7N+KKIzJYqzsMKW98+e+81fVaG/wYUQiQAqa5tBTxvgEQ
- vhhA==
-X-Gm-Message-State: AOAM533r1t0Sh5R/i6bLLOI5zu0c5K5Il4g4M92197/6cnIkUAYFiREY
- z4SCRwCVWHHKzfgyJJGs6Q==
-X-Google-Smtp-Source: ABdhPJxKzWPRH2R4lMGCh2vpZEkEho1oQHFMv1Kw1X5iQCV+eQQriQ5tWlVqpdSC0eCYWsRUHu3sEw==
-X-Received: by 2002:a4a:e874:: with SMTP id m20mr3537958oom.29.1629224272205; 
- Tue, 17 Aug 2021 11:17:52 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=/UUvHVstpSmeWABSjaVWOHHhgWPHGVYAwroY70/1r94=;
+ b=OhRjFjZJa+TiJjXJadySgQa7yKMYQPsEC2vWnH9H5P0Vm4TZwFr5s8nQLBC5tPtjsZ
+ neWmgf1X0xva5CaBY2elz/kvFfBu5hnWKYAjQ32UU9KHlFrg5mMBGZdaG1zKTymBDExq
+ 8J3XnwW4lGzrEu3LSSMb8CCGEmHjPPvsA7XbsxGc5HymbdCZ9CvDJpDvSu8c8xQqbT/h
+ xkEphu9TJB+8o/Lzk8EA5i9mT8pCZwq8iPY+B+J9/mogJLgrZDEsTE+3ZkYM9xPS9OPN
+ XGgmjcKgm17w+fLsJ3I9CheaM6CxBpPI9O9/Tnk739F3VISeNfY6qBnhEL404oD+FAjy
+ 23Rg==
+X-Gm-Message-State: AOAM532lRaDRJHjJVUsncB0VlEk1FqrH2oRUtOtJpMqYG2XZoQqKq54h
+ Xinaqb5ATLCsFx0UiwweLg==
+X-Google-Smtp-Source: ABdhPJxHDyYdGDQTyFagNlU1mVrzpbwIf8BHui2z91Z+R5Jv1ubcn+BSVtrJieSjNOPPeBcp9iqtag==
+X-Received: by 2002:a05:6808:1807:: with SMTP id
+ bh7mr3621195oib.52.1629225314988; 
+ Tue, 17 Aug 2021 11:35:14 -0700 (PDT)
 Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
  [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id e2sm526769otk.14.2021.08.17.11.17.51
+ by smtp.gmail.com with ESMTPSA id p2sm634161oip.35.2021.08.17.11.35.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Aug 2021 11:17:51 -0700 (PDT)
-Received: (nullmailer pid 589512 invoked by uid 1000);
- Tue, 17 Aug 2021 18:17:50 -0000
+ Tue, 17 Aug 2021 11:35:14 -0700 (PDT)
+Received: (nullmailer pid 618703 invoked by uid 1000);
+ Tue, 17 Aug 2021 18:35:12 -0000
+Date: Tue, 17 Aug 2021 13:35:12 -0500
 From: Rob Herring <robh@kernel.org>
-To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, james.lo@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>
-In-Reply-To: <1629193630-19994-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-References: <1629193630-19994-1-git-send-email-hsin-hsiung.wang@mediatek.com>
- <1629193630-19994-3-git-send-email-hsin-hsiung.wang@mediatek.com>
-Subject: Re: [PATCH v11 2/5] dt-bindings: spmi: document binding for the
- Mediatek SPMI controller
-Date: Tue, 17 Aug 2021 13:17:50 -0500
-Message-Id: <1629224270.762546.589511.nullmailer@robh.at.kernel.org>
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>,
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ linux-clk@vger.kernel.org, John Crispin <john@phrozen.org>,
+ Ryder Lee <Ryder.Lee@mediatek.com>
+Subject: Re: [v2,08/12] dt-bindings: rng: mediatek: add mt7986 to mtk rng
+ binding
+Message-ID: <YRwBYJmfAQ/3hGuI@robh.at.kernel.org>
+References: <20210817074557.30953-1-sam.shih@mediatek.com>
+ <20210817074557.30953-9-sam.shih@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20210817074557.30953-9-sam.shih@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_111753_614052_60A671D3 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20210817_113516_325469_CD87BBF1 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,55 +101,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 17 Aug 2021 17:47:07 +0800, Hsin-Hsiung Wang wrote:
-> This adds documentation for the SPMI controller found on Mediatek SoCs.
+On Tue, Aug 17, 2021 at 03:45:53PM +0800, Sam Shih wrote:
+> Add RNG binding for MT7986 SoC.
 > 
-> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
-> changes since v10:
-> - No change.
-> ---
->  .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      | 76 +++++++++++++++++++
->  1 file changed, 76 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > 
+> ---
+> v2: patch v1 has been applied
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Then don't send the patch again.
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.example.dts:19:18: fatal error: dt-bindings/clock/mt8192-clk.h: No such file or directory
-   19 |         #include <dt-bindings/clock/mt8192-clk.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:380: Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1419: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1517677
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
