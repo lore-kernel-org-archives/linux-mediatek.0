@@ -5,17 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03A1DC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 55F70C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:48:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7B4560FA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:47:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C7B4560FA0
+	by mail.kernel.org (Postfix) with ESMTPS id 1DBA460F5E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 07:48:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1DBA460F5E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zm15Ho8hC694NCGEH16bp6lnGosgPV7S3RYJZbi/65I=; b=026LdSS9EEopFq
-	yCPn3qcQ8ecbxfgWCXM4HKSHQNtsVcsOxdOAKQjxgApg21cyzWP+fyLJYGDf5ACqLCLWV8PnrkmZs
-	BnQht8ICDXfFnb11oBj+fh5cz96Uho31pO7IymAvuSzGmvI7TUnCxseMgLWeRe/bMHw3twLVtujGe
-	Q11sDIg24S8PwqVYRi3RVqMoGkCV6OlHw2uiUN4fQsPGVqGjENN0O400NhM3WtCMkILKD6j2fVlaB
-	NrRP44Pe0C0B0ly+jObpmAQNRuAsTyryqjDq29qOLg+hs0oaWnoN5JL3ZLmW6LGYmwwzo8Z+qVjm0
-	uZKbMpmtw6TNC5fnlwBg==;
+	List-Owner; bh=nh1/zkLhNl6nwvHdntnUatuszm1iE8GsTqaLOghNlFY=; b=P/zWGpzD/n/JLS
+	afMJR0Cfa0GBTBoRr1IEyDivMtKQszb1tTu+/pQ0MfAQb5SSODTScSWP7kIRcZmXumM5TEWMjAZ2T
+	yruNRhNeMswN4u0tfVdC6Ph86guxuzFcgTaRHD3uLu+4ZxEmp/UpSWjxHcSH0QXcJsMK+49wGKe+P
+	vttOvZTCfFh6m/pnyJuhLK2lpKq3r9eyOpIR4A/XDAno/mBNpmTuhUrdwJ6clQIQ3DDH4txnTZYpn
+	y02xOchxjvnBdpjf9kYmKl0ypqqXsyFdfZDMcrp8Uho+5bzG5QTljddB1nbNCMIjcEdfk2ol5e5bT
+	ZvBzfl4dcV47o3lo6wjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFtp0-001NJo-1M; Tue, 17 Aug 2021 07:47:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mFtpQ-001NZM-LL; Tue, 17 Aug 2021 07:48:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFtnm-001Mkf-Rr; Tue, 17 Aug 2021 07:46:30 +0000
-X-UUID: 98bf5147938f445abdd1c0778e3e3346-20210817
+ id 1mFtns-001Mmn-7p; Tue, 17 Aug 2021 07:46:33 +0000
+X-UUID: a9c5c16e09484c6dabfd363444179256-20210817
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=XNTfqqOfEVt3w+q/2DJLyjXDolNDrydhNAWCFAyZrEU=; 
- b=FUEk8FM1mCGy3NHj/L6HPrPndXid1S7UrDal2sIqfqzpI/gAIBkFoiWs6Gczk7CsRj5XHiQKbTS2I4D81CvQFw8a6D3Kc/9ZLPL7eIVlpu/Q2lX4HJ+EUNLDC25jxLOcnds/BsEFnT6/2bDQKiBoNcJK7yVVXNWbvWL6xU1EV1g=;
-X-UUID: 98bf5147938f445abdd1c0778e3e3346-20210817
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=EKIcU9R5SmMA35xMVs/TbsV/5X0bd3LZCry+LdoPNCM=; 
+ b=Ym8q1zZzir15pXxWJIJ0JJc5qhWETlltMr6lCvvaTGTL2p6PV5GhwJ9v0KyVG4uhDNaNfs/Yc84zK/mq37JtThtCtxRVrzfBClHHx4IuBe/rYAus4VdBK6o+m49pu8NeVAsm2xvsfAOkGS3VFy3Uj/9Brc8hdIzCpZeFrKHZfG8=;
+X-UUID: a9c5c16e09484c6dabfd363444179256-20210817
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 653326398; Tue, 17 Aug 2021 00:46:24 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1000202718; Tue, 17 Aug 2021 00:46:30 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 00:46:23 -0700
+ 15.0.1497.2; Tue, 17 Aug 2021 00:46:29 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 15:46:21 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 17 Aug 2021 15:46:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 17 Aug 2021 15:46:21 +0800
+ Frontend Transport; Tue, 17 Aug 2021 15:46:27 +0800
 From: Sam Shih <sam.shih@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  Walleij" <linus.walleij@linaro.org>, Matthias Brugger
@@ -73,17 +72,17 @@ To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  <linux-clk@vger.kernel.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
  Shih" <sam.shih@mediatek.com>
-Subject: [v2,05/12] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Date: Tue, 17 Aug 2021 15:45:50 +0800
-Message-ID: <20210817074557.30953-6-sam.shih@mediatek.com>
+Subject: [v2,07/12] dt-bindings: arm64: dts: mediatek: Add mt7986 series
+Date: Tue, 17 Aug 2021 15:45:52 +0800
+Message-ID: <20210817074557.30953-8-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210817074557.30953-1-sam.shih@mediatek.com>
 References: <20210817074557.30953-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210817_004626_963765_0D898034 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20210817_004632_393397_BD360D45 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,207 +99,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This updates bindings for MT7986 pinctrl driver.
-The difference of pinctrl between mt7986a and mt7986b
-is that pin-41 to pin-65 do not exist on mt7986b
+MT7986 is Mediatek's new 4-core SoC, which is mainly for wifi-router
+application. The difference between mt7986a and mt7986b is that some
+pins do not exist on mt7986b.
 
 Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 
 ---
-v2 : deleted the redundant description of mt7986a/mt7986b
+v2: added an Acked-by tag
 
 ---
- .../bindings/pinctrl/pinctrl-mt7622.txt       | 170 ++++++++++++++++++
- 1 file changed, 170 insertions(+)
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-index 7a7aca1ed705..4711dfb2ea77 100644
---- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt7622.txt
-@@ -4,6 +4,8 @@ Required properties for the root node:
-  - compatible: Should be one of the following
- 	       "mediatek,mt7622-pinctrl" for MT7622 SoC
- 	       "mediatek,mt7629-pinctrl" for MT7629 SoC
-+	       "mediatek,mt7986a-pinctrl" for MT7986a SoC
-+	       "mediatek,mt7986b-pinctrl" for MT7986b SoC
-  - reg: offset and length of the pinctrl space
- 
-  - gpio-controller: Marks the device node as a GPIO controller.
-@@ -455,6 +457,174 @@ Valid values for groups are:
- 	"wf0_5g"			"wifi"		0, 1, 2, 3, 4, 5, 6,
- 							7, 8, 9, 10
- 
-+== Valid values for pins, function and groups on MT7986a and MT7986b  ==
-+
-+Valid values for pins are:
-+pins can be referenced via the pin names as the below table shown and the
-+related physical number is also put ahead of those names which helps cross
-+references to pins between groups to know whether pins assignment conflict
-+happens among devices try to acquire those available pins.
-+
-+	Pin #:  Valid values for pins
-+	-----------------------------
-+	PIN 0: "SYS_WATCHDOG"
-+	PIN 1: "WF2G_LED"
-+	PIN 2: "WF5G_LED"
-+	PIN 3: "I2C_SCL"
-+	PIN 4: "I2C_SDA"
-+	PIN 5: "GPIO_0"
-+	PIN 6: "GPIO_1"
-+	PIN 7: "GPIO_2"
-+	PIN 8: "GPIO_3"
-+	PIN 9: "GPIO_4"
-+	PIN 10: "GPIO_5"
-+	PIN 11: "GPIO_6"
-+	PIN 12: "GPIO_7"
-+	PIN 13: "GPIO_8"
-+	PIN 14: "GPIO_9"
-+	PIN 15: "GPIO_10"
-+	PIN 16: "GPIO_11"
-+	PIN 17: "GPIO_12"
-+	PIN 18: "GPIO_13"
-+	PIN 19: "GPIO_14"
-+	PIN 20: "GPIO_15"
-+	PIN 21: "PWM0"
-+	PIN 22: "PWM1"
-+	PIN 23: "SPI0_CLK"
-+	PIN 24: "SPI0_MOSI"
-+	PIN 25: "SPI0_MISO"
-+	PIN 26: "SPI0_CS"
-+	PIN 27: "SPI0_HOLD"
-+	PIN 28: "SPI0_WP"
-+	PIN 29: "SPI1_CLK"
-+	PIN 30: "SPI1_MOSI"
-+	PIN 31: "SPI1_MISO"
-+	PIN 32: "SPI1_CS"
-+	PIN 33: "SPI2_CLK"
-+	PIN 34: "SPI2_MOSI"
-+	PIN 35: "SPI2_MISO"
-+	PIN 36: "SPI2_CS"
-+	PIN 37: "SPI2_HOLD"
-+	PIN 38: "SPI2_WP"
-+	PIN 39: "UART0_RXD"
-+	PIN 40: "UART0_TXD"
-+	PIN 41: "PCIE_PERESET_N"
-+	PIN 42: "UART1_RXD"
-+	PIN 43: "UART1_TXD"
-+	PIN 44: "UART1_CTS"
-+	PIN 45: "UART1_RTS"
-+	PIN 46: "UART2_RXD"
-+	PIN 47: "UART2_TXD"
-+	PIN 48: "UART2_CTS"
-+	PIN 49: "UART2_RTS"
-+	PIN 50: "EMMC_DATA_0"
-+	PIN 51: "EMMC_DATA_1"
-+	PIN 52: "EMMC_DATA_2"
-+	PIN 53: "EMMC_DATA_3"
-+	PIN 54: "EMMC_DATA_4"
-+	PIN 55: "EMMC_DATA_5"
-+	PIN 56: "EMMC_DATA_6"
-+	PIN 57: "EMMC_DATA_7"
-+	PIN 58: "EMMC_CMD"
-+	PIN 59: "EMMC_CK"
-+	PIN 60: "EMMC_DSL"
-+	PIN 61: "EMMC_RSTB"
-+	PIN 62: "PCM_DTX"
-+	PIN 63: "PCM_DRX"
-+	PIN 64: "PCM_CLK"
-+	PIN 65: "PCM_FS"
-+	PIN 66: "MT7531_INT"
-+	PIN 67: "SMI_MDC"
-+	PIN 68: "SMI_MDIO"
-+	PIN 69: "WF0_DIG_RESETB"
-+	PIN 70: "WF0_CBA_RESETB"
-+	PIN 71: "WF0_XO_REQ"
-+	PIN 72: "WF0_TOP_CLK"
-+	PIN 73: "WF0_TOP_DATA"
-+	PIN 74: "WF0_HB1"
-+	PIN 75: "WF0_HB2"
-+	PIN 76: "WF0_HB3"
-+	PIN 77: "WF0_HB4"
-+	PIN 78: "WF0_HB0"
-+	PIN 79: "WF0_HB0_B"
-+	PIN 80: "WF0_HB5"
-+	PIN 81: "WF0_HB6"
-+	PIN 82: "WF0_HB7"
-+	PIN 83: "WF0_HB8"
-+	PIN 84: "WF0_HB9"
-+	PIN 85: "WF0_HB10"
-+	PIN 86: "WF1_DIG_RESETB"
-+	PIN 87: "WF1_CBA_RESETB"
-+	PIN 88: "WF1_XO_REQ"
-+	PIN 89: "WF1_TOP_CLK"
-+	PIN 90: "WF1_TOP_DATA"
-+	PIN 91: "WF1_HB1"
-+	PIN 92: "WF1_HB2"
-+	PIN 93: "WF1_HB3"
-+	PIN 94: "WF1_HB4"
-+	PIN 95: "WF1_HB0"
-+	PIN 96: "WF1_HB0_B"
-+	PIN 97: "WF1_HB5"
-+	PIN 98: "WF1_HB6"
-+	PIN 99: "WF1_HB7"
-+	PIN 100: "WF1_HB8"
-+
-+There is no PIN 41 to PIN 65 above on mt7686b, you can only use those
-+pins on mt7986a.
-+
-+Valid values for function are:
-+	"audio, "emmc", "eth", "i2c", "wifi", "led", "flash", "pcie",
-+	"pwm", "spi", "uart", "watchdog"
-+
-+There is no "audio", "pcie" functions above on mt7986b, you can only
-+use those functions on mt7986a.
-+
-+Valid values for groups are:
-+additional data is put followingly with valid value allowing us to know which
-+applicable function and which relevant pins (in pin#) are able applied for that
-+group.
-+
-+	Valid value			function	pins (in pin#)
-+	-------------------------------------------------------------------------
-+	"watchdog"			"watchdog"	0
-+	"wifi_led"			"led"		1, 2
-+	"i2c"				"i2c"		3, 4
-+	"uart1_0"			"uart"		7, 8, 9, 10
-+	"pcie_clk"			"pcie"		9
-+	"pcie_wake"			"pcie"		10
-+	"spi1_0"			"spi"		11, 12, 13, 14
-+	"pwm1_1"			"pwm"		20,
-+	"pwm0"				"pwm"		21,
-+	"pwm1_0"			"pwm"		22,
-+	"snfi"				"flash"		23, 24, 25, 26, 27, 28
-+	"spi1_2"			"spi"		29, 30, 31, 32
-+	"emmc_45"			"emmc"		22, 23, 24, 25, 26, 27,
-+							28, 29, 30, 31, 32
-+	"spi1_1"			"spi"		23, 24, 25, 26
-+	"uart1_2"			"uart"		29, 30, 31, 32
-+	"uart1_1"			"uart"		23, 24, 25, 26
-+	"uart2_0"			"uart"		29, 30, 31, 32
-+	"spi0"				"spi"		33, 34, 35, 36
-+	"spi0_wp_hold"			"spi"		37, 38
-+	"uart1_3_rx_tx"			"uart"		35, 36
-+	"uart1_3_cts_rts"		"uart"		37, 38
-+	"uart2_1"			"uart"		33, 34, 35, 36
-+	"spi1_3"			"spi"		33, 34, 35, 36
-+	"uart0"				"uart"		39, 40
-+	"pcie_pereset"			"pcie"		41
-+	"uart1"				"uart"		42, 43, 44, 45
-+	"uart2"				"uart"		46, 47, 48, 49
-+	"emmc_51"			"emmc"		50, 51, 52, 53, 54, 55,
-+							56, 57, 57, 59, 60, 61
-+	"pcm"				"audio"		62, 63, 64, 65
-+	"i2s"				"audio"		62, 63, 64, 65
-+	"switch_int"			"eth"		66
-+	"mdc_mdio"			"eth"		67
-+
-+There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm", and "i2s" groups
-+above on mt7986b, you can only use those groups on mt7986a.
-+
-+
- Example:
- 
- 	pio: pinctrl@10211000 {
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 80a05f6fee85..a9a778269684 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -76,6 +76,14 @@ properties:
+           - enum:
+               - mediatek,mt7629-rfb
+           - const: mediatek,mt7629
++      - items:
++          - enum:
++              - mediatek,mt7986a-rfb
++          - const: mediatek,mt7986a
++      - items:
++          - enum:
++              - mediatek,mt7986b-rfb
++          - const: mediatek,mt7986b
+       - items:
+           - enum:
+               - mediatek,mt8127-moose
 -- 
 2.29.2
 _______________________________________________
