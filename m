@@ -2,87 +2,95 @@ Return-Path: <SRS0=tEpm=NI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3173C432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F218C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:45:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C11160FA0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:42:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C11160FA0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F13C060EE0
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Aug 2021 03:45:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F13C060EE0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4GofcnQ5OVlZ2wzpCqvTq+LcJbsIF9Z700gxgAvhwyI=; b=2PdISjpByZxvkG
-	VbuTljKqCsNYpDRsTvDLqOnR9vilKnaFeWG09QhonxKkxlfedfEzJ5FxC2I7iFTOwqs9o+zNgyjrs
-	LmjyM+GjI8fFApdtnTQUnBAkhD89CRjdwcl+Rws0xz3zME/Ubp3qpyh30rf338bZfXiHH0ceSXTmT
-	aHP/LYeYLyHUhVRsTrjQEW5lUshJsxz2TXO0tQf19U8cz1MFifkuLG1sXvlyG0z+LEqtk2Uzu8N+A
-	Q0YK+QnkljDvwZ65RPME/oj8MXdOMVFwxbUWh9Wvp3ELs7gNewwSNHt12q+WaLU0qNWULyDl9gzFU
-	PGfqDuswiDAD6JZ799Kg==;
+	List-Owner; bh=ObYOrRzhIDVfxgZknYg6flR2rBE68Bzm1jlMzxNpsiY=; b=UoMTeBU64QlHn9
+	unyTsQOiIVNzmVTUerKUJTHQ+q90Ti2DoRTFv3Sa4eWE6w4RjKVbQOWh0tVzTzC7LDm59pBucoKbq
+	sDVVc/SHqEqFTFEGaTqH9L0NVcNuT23h8ycQLEsiSd4vBahjGhNZ/5QdjWS9ZkGNXRXF8XB2J2te8
+	Mt3RVYjVBx26VtDzUJ4LSrLnSkRjm7iaab8d9gnCkzK/Mg9TqfTC6HjsYRsxpgqsX80HDzZ7ON7og
+	BU+5Z/UlkLrSKHzrkXnychb9J7lgrKDTMBujVBgqZv2dfh8ZAxru/UnBsDG4vbBRwp3Ag+Iy2y02z
+	aGVH+KSMsuNnKPqJao1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mFpzC-000zTR-66; Tue, 17 Aug 2021 03:41:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mFq29-0010Aa-Fr; Tue, 17 Aug 2021 03:45:01 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mFpwS-000yTR-K4; Tue, 17 Aug 2021 03:39:12 +0000
-X-UUID: 36c476d0988b475b9fc640beca310a6a-20210816
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ZUQNFXr5FuKXewOx8S7z3P+aw6QvJPCFepRGuOLx3Rw=; 
- b=oI1rkoI7jAHlX2gyV+B/ulTxcBBzRL/bQv74OkKi292s0hpOGO4leSoe81x+j9cLPdZ95VfR/6oxJJcuZZvgI1RY6FUlEDaF7vJSPDtF38hN6I5JANGgrMjLUWNk8fBZw+65JeTGNFJWcjBVx1aPoZo+SxMQeoqrUa7HkLeCzDA=;
-X-UUID: 36c476d0988b475b9fc640beca310a6a-20210816
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1392090614; Mon, 16 Aug 2021 20:39:02 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 16 Aug 2021 20:39:00 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 17 Aug 2021 11:38:58 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 17 Aug 2021 11:38:57 +0800
-Message-ID: <2f680f94ef4d41f7a916ba0c920ec1c9121fe583.camel@mediatek.com>
-Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
- dt-bindings for mt8192
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <linux-mediatek@lists.infradead.org>, Alexandre Courbot
- <acourbot@chromium.org>, <linux-kernel@vger.kernel.org>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Tomasz Figa <tfiga@google.com>,
- <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Rob Herring <robh+dt@kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, "Hsin-Yi
- Wang" <hsinyi@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- George Sun <george.sun@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Irui Wang
- <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>
-Date: Tue, 17 Aug 2021 11:38:58 +0800
-In-Reply-To: <1628702693.304754.3975941.nullmailer@robh.at.kernel.org>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <20210811025801.21597-14-yunfei.dong@mediatek.com>
- <1628702693.304754.3975941.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mFpzS-000zYw-Ty
+ for linux-mediatek@lists.infradead.org; Tue, 17 Aug 2021 03:42:19 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id
+ hv22-20020a17090ae416b0290178c579e424so3983636pjb.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 16 Aug 2021 20:42:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=JCOFQBT2H8r+cJYdeiAd3yX79xIHiz7jSYTg79TH8Rw=;
+ b=NlkUBJq6j28D7GK7CAAupxV+5tfzRl1Ucoc41Ew3cXEWi2jH4mjRk1YkvUYoUx7zez
+ J0qtw4OHsY3c4vNj2606aEZntzQqv/UaLZyu6hLnklVZKhU+oMnc7Ht4GSF4whS6IKrR
+ 31XqyQNn3IuLIbGBJpd9QB3j2Q6KlxF9Sft+ZArDUu+WcQ46nLWTs4vYwcmCQckS+qUK
+ axU8ZcYkgr6+ZL9nIlAvD9ulIlSkcO+IRsvRYlu9jpErze9Xy+AIyS3CXvTLE8m4jtRu
+ 9TgyjNx4fM6pAoIHI3//UPctkkHXBxmaclE4UZR7tRjsM4ECzBvQT6mZCCMyWhNdQ5ua
+ qyVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=JCOFQBT2H8r+cJYdeiAd3yX79xIHiz7jSYTg79TH8Rw=;
+ b=qraTr0Krc7g4tp5dkSCOCdQOo9fhclar5Sz4Nq+24+3QD4Y7hMBFK5tc3lqUnO5tl6
+ Br+aUPlAmj0TH7t0ylVmG11dIyuwTRuQ2SJ9B0xEyZiZB/uANIIjyTey+F7nZRs/eegF
+ uTJMBM+BN3Iw6Hrj9bUubwSehdwj4oYr4XaFLuL7lZPyeI3xuh/lYAZNzVWsntLGCSoV
+ CaeQRE6Conp0QGPzmyEDSYQl91oMfL5sVa9BQezndWcTJRC5m9jjCreG0UwDDGOJlyG+
+ Y3hMbXHflfivGfgjam1p6g4vaS0lTWft5S1IwBFEaLmRjK2iOCzs1Y74MywGI2vpWEcm
+ Wv4w==
+X-Gm-Message-State: AOAM531vZYaOOkgrqsbtgvvx25wtfPlPnHMFZ7XNPLhV8ZtB16C1c0n9
+ Iue4ZI7eYizdlrvbBFI0J1Ebzg==
+X-Google-Smtp-Source: ABdhPJyBcs3PMQO6TNBu95yHIEU0AGNrEDxs8TdvoQSKr14DVGi5d/593wOkeOBqc07k1cdbKSyiZw==
+X-Received: by 2002:a05:6a00:24c1:b0:3e2:1171:34dd with SMTP id
+ d1-20020a056a0024c100b003e2117134ddmr1484836pfv.27.1629171732105; 
+ Mon, 16 Aug 2021 20:42:12 -0700 (PDT)
+Received: from localhost ([122.172.201.85])
+ by smtp.gmail.com with ESMTPSA id h17sm601338pfh.192.2021.08.16.20.42.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Aug 2021 20:42:11 -0700 (PDT)
+Date: Tue, 17 Aug 2021 09:12:06 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH v13 2/2] cpufreq: mediatek-hw: Add support for CPUFREQ HW
+Message-ID: <20210817034206.hmpjdz4bqvwxfn3c@vireshk-i7>
+References: <1627574891-26514-1-git-send-email-hector.yuan@mediatek.com>
+ <1627574891-26514-3-git-send-email-hector.yuan@mediatek.com>
+ <20210803071302.b4ttoqgqdq4dfmwe@vireshk-i7>
+ <1629118594.3246.13.camel@mtkswgap22>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <1629118594.3246.13.camel@mtkswgap22>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210816_203908_713661_568B166C 
-X-CRM114-Status: GOOD (  25.20  )
+X-CRM114-CacheID: sfid-20210816_204215_084299_29AE8549 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,83 +107,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-Thanks for your detail suggestion.
-
-For the header file(dt-bindings/clock/mt8192-clk.h) is included in:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
-
-Need to depend on this patch, do you have any suggestion about how to
-add it?
-
-Thanks.
-
-On Wed, 2021-08-11 at 11:24 -0600, Rob Herring wrote:
-> On Wed, 11 Aug 2021 10:57:59 +0800, Yunfei Dong wrote:
-> > Adds decoder dt-bindings for mt8192.
+On 16-08-21, 20:56, Hector Yuan wrote:
+> On Tue, 2021-08-03 at 12:43 +0530, Viresh Kumar wrote:
+> > On 30-07-21, 00:08, Hector Yuan wrote:
+> > > +	for (i = REG_FREQ_LUT_TABLE; i < REG_ARRAY_SIZE; i++)
+> > > +		c->reg_bases[i] = base + offsets[i];
+> > > +
+> > > +	ret = of_perf_domain_get_sharing_cpumask(index, "performance-domains",
 > > 
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > ---
-> > v5: no changes
+> > Instead of parsing parsing "performance-domains" twice, I would rather
+> > pass a CPU number here instead of index.
 > > 
-> > This patch depends on "Mediatek MT8192 clock support"[1].
+> Sorry, could you give me more details? For now, will use index to parse
+> per-cpu to related cpus.You mean pass policy->cpu or? Thanks.
+
+Yes, pass the cpu number from policy->cpu instead.
+
+> > > +	latency = readl_relaxed(c->reg_bases[REG_FREQ_LATENCY]);
+> > > +	if (!latency)
+> > > +		latency = CPUFREQ_ETERNAL;
+> > > +
+> > > +	/* us convert to ns */
+> > > +	policy->cpuinfo.transition_latency = latency * 1000;
 > > 
-> > The definition of decoder clocks are in mt8192-clk.h, need to
-> > include them in case of build fail [1].
+> > You want to multiple CPUFREQ_ETERNAL too ?
+
+s/multiple/multiply/
+
+Sorry about this.
+
+> Yes, may be different power domain with different transition latency.
+> > > +
+> > > +	policy->fast_switch_possible = true;
+> > > +
+> > > +	qos_request = kzalloc(sizeof(*qos_request), GFP_KERNEL);
 > > 
-> > [1]
-> > https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
-> > ---
-> >  .../media/mediatek,vcodec-comp-decoder.yaml   | 172
-> > ++++++++++++++++++
-> >  1 file changed, 172 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> > decoder.yaml
+> > This is a small structure, why not allocate it on stack instead ?
 > > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> ./Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> decoder.yaml: $id: relative path/filename doesn't match actual path
-> or filename
-> 	expected: 
-> http://devicetree.org/schemas/media/mediatek,vcodec-comp-decoder.yaml#
-> Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> decoder.example.dts:22:18: fatal error: dt-bindings/clock/mt8192-
-> clk.h: No such file or directory
->    22 |         #include <dt-bindings/clock/mt8192-clk.h>
->       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> compilation terminated.
-> make[1]: *** [scripts/Makefile.lib:380:
-> Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> decoder.example.dt.yaml] Error 1
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1419: dt_binding_check] Error 2
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/patch/1515556
-> 
-> This check can fail if there are any dependencies. The base for a
-> patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up
-> to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
-> 
+> For qos part, we'd like to take more time to re-consider the SW flow and
+> put this to another patch set.Is this okay to you?
+
+So you will drop entire qos stuff ? Fine by me.
+
+-- 
+viresh
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
