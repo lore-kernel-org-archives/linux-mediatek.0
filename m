@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B00F9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BED63C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:25:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7AA9A600D4
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:25:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7AA9A600D4
+	by mail.kernel.org (Postfix) with ESMTPS id 8AE95600D4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:25:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8AE95600D4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ioUki1AABDMMM86g0qp+2NzE6nLv8ZCGgVVhFwOJU64=; b=ZES3Oogfhw2n20
-	OzLWz0cW22Qtf903xt/RwfEVlxIIR4ZJTSNRsco8ISHllxHn2EXBkQkO9K+Ws8EnW422hv6LCfHoP
-	jz8l0G87ldEQz0RhCIhCTSLPWyuA9El4futF/0jexziTqxViGoAuB7PXofq8Rnb/i1XqWJzzJJ/Wd
-	j8L1a3gtL22fWWjMKZkzWEYlQZrYp07jXrjzb+rQGOkMPvYeovDFsQV2vySKDZZzuHjHr5j5uvafF
-	qhjTxNNdYJTTj7tP9kd47Saq87aNn6QKcceCsxuJNAAyShGrdaKBYRlvCV22nB/9tM/sCp+HFgWtY
-	UBSI/l1IOwiPzCq1weuw==;
+	List-Owner; bh=h+nz+m7CimolffGTN5kWdyDyilwxruZtm+OzO1MdNQY=; b=lmKzOh0VZ4USZS
+	WfmMFrhUvYgMUSnA/dJ7VSZbGBgNDHeIW5ZPnut51wBMYXESOUEsW+E+R6ocV1FGVASV8mDBw3KDH
+	x2vOatHtcilDSQe2kflzCNusXeIEM7bQPhWX7TM9W1nGPzpgtypjClmZKzh1e35OLNzOYRoxk7eCI
+	csqElO9GYEg9YNP+yPP7/iQDGs7CoQjNXZgHm2x7K+VFIO7CC2S69hteOw3+8OJCy/6gqAdwCmv1g
+	iv8eOOp5lCF5vd8KRCrvm/S2VUPlRr4kD2p5KJucoSHZIkznHa/V9h5Q/Kji+4orGn1HZ1xD8sKgv
+	uBQZlW/Q5ZIh3qXqGcZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGHoo-004sHW-Fm; Wed, 18 Aug 2021 09:25:06 +0000
+	id 1mGHor-004sIh-8A; Wed, 18 Aug 2021 09:25:09 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGHj1-004pUb-JR; Wed, 18 Aug 2021 09:19:10 +0000
-X-UUID: 4e0644b4fa8740349686235da103be34-20210818
+ id 1mGHj1-004pUn-Sb; Wed, 18 Aug 2021 09:19:12 +0000
+X-UUID: 5e35c9cd21994490ad13c208c4bf1d00-20210818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=SzZY9oLikz4zmnsFriX1H3tMqpTNFEn35f8eEBrITkw=; 
- b=b6cZEu0uXWC+pjW5Nfz/Vj3ZxjGZTxWj1V+bj5jd8qOV/JTYJ176CqMcRzsciYoK2lfVdFJ7kTmX2xBy4Vx0uRb5PJs59NnG4uOra+3zLJ2Tqx/RnGnXlK7/cX7kjkcdDOX63tLQTLkVtJII3VNkyKKA8IqPSmvK+znso6kHLzg=;
-X-UUID: 4e0644b4fa8740349686235da103be34-20210818
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=lzKKV84Rc5v2IKyJuV1/1ZMnofJ8abIDKOVTyhNs7Z4=; 
+ b=W75pIGcKk1XKD9oNMal1DoTGErYd5Lr9JRmZacAlqTxi2QfVEQjnBeClt0urr+2+cTqfpEGSTlxJ3W8QN96CsC7TPEb+KthC/1AsBeMHWJ418FGdAoL/e06s1cl4+1yhb/kiOh/qmnqQmN8lDsaZv688ewoDhFFkmcdYaFwthWo=;
+X-UUID: 5e35c9cd21994490ad13c208c4bf1d00-20210818
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1134842004; Wed, 18 Aug 2021 02:18:52 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 02:18:51 -0700
+ with ESMTP id 916102422; Wed, 18 Aug 2021 02:18:53 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Aug 2021 02:18:52 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 17:18:50 +0800
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Aug 2021 17:18:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 18 Aug 2021 17:18:50 +0800
+ Frontend Transport; Wed, 18 Aug 2021 17:18:51 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>
 CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
@@ -67,17 +67,17 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v3 06/15] arm64: dts: mt8195: add display node for vdosys1
-Date: Wed, 18 Aug 2021 17:18:38 +0800
-Message-ID: <20210818091847.8060-7-nancy.lin@mediatek.com>
+Subject: [PATCH v3 13/15] drm/mediatek: add ovl_adaptor support for MT8195
+Date: Wed, 18 Aug 2021 17:18:45 +0800
+Message-ID: <20210818091847.8060-14-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210818091847.8060-1-nancy.lin@mediatek.com>
 References: <20210818091847.8060-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_021907_734403_EE96C3AB 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20210818_021908_044179_5E50948C 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,256 +94,594 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add display node for vdosys1.
+Add ovl_adaptor driver for MT8195.
+Ovl_adaptor is an encapsulated module and designed for simplified
+DRM control flow. This module is composed of 8 RDMAs, 4 MERGEs and
+an ETHDR. Two RDMAs merge into one layer, so this module support 4
+layers.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 217 +++++++++++++++++++++++
- 1 file changed, 217 insertions(+)
+ drivers/gpu/drm/mediatek/Makefile             |   3 +-
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 528 ++++++++++++++++++
+ .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.h   |  19 +
+ 3 files changed, 549 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.h
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index aa2a7849b822..b2e377515a52 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -10,6 +10,7 @@
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/power/mt8195-power.h>
-+#include <dt-bindings/reset/mt8195-resets.h>
+diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+index 38ec2354a894..f04ac86c9593 100644
+--- a/drivers/gpu/drm/mediatek/Makefile
++++ b/drivers/gpu/drm/mediatek/Makefile
+@@ -13,7 +13,8 @@ mediatek-drm-y := mtk_disp_ccorr.o \
+ 		  mtk_drm_plane.o \
+ 		  mtk_dsi.o \
+ 		  mtk_dpi.o \
+-		  mtk_mdp_rdma.o
++		  mtk_mdp_rdma.o \
++		  mtk_disp_ovl_adaptor.o
  
- / {
- 	compatible = "mediatek,mt8195";
-@@ -20,6 +21,21 @@
- 	aliases {
- 		gce0 = &gce0;
- 		gce1 = &gce1;
-+		mutex0 = &mutex;
-+		mutex1 = &mutex1;
-+		merge1 = &merge1;
-+		merge2 = &merge2;
-+		merge3 = &merge3;
-+		merge4 = &merge4;
-+		merge5 = &merge5;
-+		vdo1_rdma0 = &vdo1_rdma0;
-+		vdo1_rdma1 = &vdo1_rdma1;
-+		vdo1_rdma2 = &vdo1_rdma2;
-+		vdo1_rdma3 = &vdo1_rdma3;
-+		vdo1_rdma4 = &vdo1_rdma4;
-+		vdo1_rdma5 = &vdo1_rdma5;
-+		vdo1_rdma6 = &vdo1_rdma6;
-+		vdo1_rdma7 = &vdo1_rdma7;
- 	};
+ obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
  
- 	clocks {
-@@ -1275,7 +1291,208 @@
- 		vdosys1: syscon@1c100000 {
- 			compatible = "mediatek,mt8195-vdosys1", "syscon";
- 			reg = <0 0x1c100000 0 0x1000>;
-+			mboxes = <&gce1 1 CMDQ_THR_PRIO_4>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x0000 0x1000>;
- 			#clock-cells = <1>;
-+			#reset-cells = <1>;
-+		};
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+new file mode 100644
+index 000000000000..8222ec5ff799
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+@@ -0,0 +1,528 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
 +
-+		mutex1: disp_mutex0@1c101000 {
-+			compatible = "mediatek,mt8195-disp-mutex";
-+			reg = <0 0x1c101000 0 0x1000>;
-+			reg-names = "vdo1_mutex";
-+			interrupts = <GIC_SPI 494 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			clocks = <&vdosys1 CLK_VDO1_DISP_MUTEX>;
-+			clock-names = "vdo1_mutex";
-+			mediatek,gce-events = <CMDQ_EVENT_VDO1_STREAM_DONE_ENG_0>;
-+		};
++#include <drm/drm_fourcc.h>
++#include <linux/clk.h>
++#include <linux/reset.h>
++#include <linux/component.h>
++#include <linux/of_device.h>
++#include <linux/of_address.h>
++#include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
++#include <linux/soc/mediatek/mtk-mmsys.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
 +
-+		vdo1_rdma0: vdo1_rdma@1c104000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c104000 0 0x1000>;
-+			interrupts = <GIC_SPI 495 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA0>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x4000 0x1000>;
-+		};
++#include "mtk_drm_drv.h"
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
++#include "mtk_disp_drv.h"
++#include "mtk_disp_ovl_adaptor.h"
 +
-+		vdo1_rdma1: vdo1_rdma@1c105000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c105000 0 0x1000>;
-+			interrupts = <GIC_SPI 496 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA1>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vpp M4U_PORT_L3_MDP_RDMA1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x5000 0x1000>;
-+		};
++#define DISP_MERGE_ENABLE	0x0
++	#define MERGE_ENABLE BIT(0)
++#define DISP_MERGE_CFG_0	0x10
++#define DISP_MERGE_CFG_1	0x14
++#define DISP_MERGE_CFG_4	0x20
++#define DISP_MERGE_CFG_5	0x24
++#define DISP_MERGE_CFG_10	0x38
++	#define CFG_10_NO_SWAP 0
++#define DISP_MERGE_CFG_12	0x40
++	#define CFG12_10_10_1PI_2PO_BUF_MODE 6
++	#define CFG12_11_10_1PI_2PO_MERGE 18
++#define DISP_MERGE_CFG_24	0x70
++#define DISP_MERGE_CFG_25	0x74
++#define DISP_MERGE_CFG_26	0x78
++#define DISP_MERGE_CFG_27	0x7c
++#define DISP_MERGE_MUTE_0	0xf00
 +
-+		vdo1_rdma2: vdo1_rdma@1c106000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c106000 0 0x1000>;
-+			interrupts = <GIC_SPI 497 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA2>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA2>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x6000 0x1000>;
-+		};
++#define MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH 1920
++#define MTK_OVL_ADAPTOR_LAYER_NUM 4
 +
-+		vdo1_rdma3: vdo1_rdma@1c107000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c107000 0 0x1000>;
-+			interrupts = <GIC_SPI 498 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA3>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vpp M4U_PORT_L3_MDP_RDMA3>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x7000 0x1000>;
-+		};
++enum mtk_ovl_adaptor_comp_type {
++	OVL_ADAPTOR_TYPE_RDMA = 0,
++	OVL_ADAPTOR_TYPE_MERGE,
++	OVL_ADAPTOR_TYPE_NUM,
++};
 +
-+		vdo1_rdma4: vdo1_rdma@1c108000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c108000 0 0x1000>;
-+			interrupts = <GIC_SPI 499 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA4>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA4>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x8000 0x1000>;
-+		};
++enum mtk_ovl_adaptor_comp_id {
++	OVL_ADAPTOR_MDP_RDMA0,
++	OVL_ADAPTOR_MDP_RDMA1,
++	OVL_ADAPTOR_MDP_RDMA2,
++	OVL_ADAPTOR_MDP_RDMA3,
++	OVL_ADAPTOR_MDP_RDMA4,
++	OVL_ADAPTOR_MDP_RDMA5,
++	OVL_ADAPTOR_MDP_RDMA6,
++	OVL_ADAPTOR_MDP_RDMA7,
++	OVL_ADAPTOR_MERGE0,
++	OVL_ADAPTOR_MERGE1,
++	OVL_ADAPTOR_MERGE2,
++	OVL_ADAPTOR_MERGE3,
++	OVL_ADAPTOR_ID_MAX
++};
 +
-+		vdo1_rdma5: vdo1_rdma@1c109000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c109000 0 0x1000>;
-+			interrupts = <GIC_SPI 500 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA5>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vpp M4U_PORT_L3_MDP_RDMA5>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0x9000 0x1000>;
-+		};
++struct ovl_adaptor_comp_match {
++	enum mtk_ovl_adaptor_comp_type type;
++	int alias_id;
++};
 +
-+		vdo1_rdma6: vdo1_rdma@1c10a000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c10a000 0 0x1000>;
-+			interrupts = <GIC_SPI 501 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA6>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vdo M4U_PORT_L2_MDP_RDMA6>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xa000 0x1000>;
-+		};
++struct ovl_adaptor_merge_config {
++	unsigned int fmt;
++	unsigned int merge_mode;
++	unsigned int in_w[2];
++	unsigned int out_w[2];
++	unsigned int in_h;
++};
 +
-+		vdo1_rdma7: vdo1_rdma@1c10b000 {
-+			compatible = "mediatek,mt8195-vdo1-rdma";
-+			reg = <0 0x1c10b000 0 0x1000>;
-+			interrupts = <GIC_SPI 502 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_MDP_RDMA7>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vpp M4U_PORT_L3_MDP_RDMA7>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xb000 0x1000>;
-+		};
++struct mtk_ovl_adaptor_comp {
++	struct device *dev;
++	struct clk *clks[2];
++	struct cmdq_client_reg cmdq_base;
++	void __iomem *regs;
++};
 +
-+		merge1: disp_vpp_merge@1c10c000 {
-+			compatible = "mediatek,mt8195-vdo1-merge";
-+			reg = <0 0x1c10c000 0 0x1000>;
-+			interrupts = <GIC_SPI 503 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_VPP_MERGE0>,
-+				 <&vdosys1 CLK_VDO1_MERGE0_DL_ASYNC>;
-+			clock-names = "merge","merge_async";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xc000 0x1000>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE0_DL_ASYNC>;
-+		};
++struct mtk_disp_ovl_adaptor {
++	struct mtk_ovl_adaptor_comp ovl_adaptor_comp[OVL_ADAPTOR_ID_MAX];
++	struct device *mmsys_dev;
++};
 +
-+		merge2: disp_vpp_merge@1c10d000 {
-+			compatible = "mediatek,mt8195-vdo1-merge";
-+			reg = <0 0x1c10d000 0 0x1000>;
-+			interrupts = <GIC_SPI 504 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_VPP_MERGE1>,
-+				 <&vdosys1 CLK_VDO1_MERGE1_DL_ASYNC>;
-+			clock-names = "merge","merge_async";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xd000 0x1000>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE1_DL_ASYNC>;
-+		};
++static const char * const ovl_adaptor_comp_str[] = {
++	"OVL_ADAPTOR_MDP_RDMA0",
++	"OVL_ADAPTOR_MDP_RDMA1",
++	"OVL_ADAPTOR_MDP_RDMA2",
++	"OVL_ADAPTOR_MDP_RDMA3",
++	"OVL_ADAPTOR_MDP_RDMA4",
++	"OVL_ADAPTOR_MDP_RDMA5",
++	"OVL_ADAPTOR_MDP_RDMA6",
++	"OVL_ADAPTOR_MDP_RDMA7",
++	"OVL_ADAPTOR_MERGE0",
++	"OVL_ADAPTOR_MERGE1",
++	"OVL_ADAPTOR_MERGE2",
++	"OVL_ADAPTOR_MERGE3",
++	"OVL_ADAPTOR_ID_MAX"
++};
 +
-+		merge3: disp_vpp_merge@1c10e000 {
-+			compatible = "mediatek,mt8195-vdo1-merge";
-+			reg = <0 0x1c10e000 0 0x1000>;
-+			interrupts = <GIC_SPI 505 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_VPP_MERGE2>,
-+				 <&vdosys1 CLK_VDO1_MERGE2_DL_ASYNC>;
-+			clock-names = "merge","merge_async";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xe000 0x1000>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE2_DL_ASYNC>;
-+		};
++static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM] = {
++	[OVL_ADAPTOR_TYPE_RDMA] = "vdo1_rdma",
++	[OVL_ADAPTOR_TYPE_MERGE] = "merge",
++};
 +
-+		merge4: disp_vpp_merge@1c10f000 {
-+			compatible = "mediatek,mt8195-vdo1-merge";
-+			reg = <0 0x1c10f000 0 0x1000>;
-+			interrupts = <GIC_SPI 506 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_VPP_MERGE3>,
-+				 <&vdosys1 CLK_VDO1_MERGE3_DL_ASYNC>;
-+			clock-names = "merge","merge_async";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c10XXXX 0xf000 0x1000>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE3_DL_ASYNC>;
-+		};
++static const struct ovl_adaptor_comp_match comp_matches[OVL_ADAPTOR_ID_MAX] = {
++	[OVL_ADAPTOR_MDP_RDMA0] =	{ OVL_ADAPTOR_TYPE_RDMA, 0 },
++	[OVL_ADAPTOR_MDP_RDMA1] =	{ OVL_ADAPTOR_TYPE_RDMA, 1 },
++	[OVL_ADAPTOR_MDP_RDMA2] =	{ OVL_ADAPTOR_TYPE_RDMA, 2 },
++	[OVL_ADAPTOR_MDP_RDMA3] =	{ OVL_ADAPTOR_TYPE_RDMA, 3 },
++	[OVL_ADAPTOR_MDP_RDMA4] =	{ OVL_ADAPTOR_TYPE_RDMA, 4 },
++	[OVL_ADAPTOR_MDP_RDMA5] =	{ OVL_ADAPTOR_TYPE_RDMA, 5 },
++	[OVL_ADAPTOR_MDP_RDMA6] =	{ OVL_ADAPTOR_TYPE_RDMA, 6 },
++	[OVL_ADAPTOR_MDP_RDMA7] =	{ OVL_ADAPTOR_TYPE_RDMA, 7 },
++	[OVL_ADAPTOR_MERGE0] =	{ OVL_ADAPTOR_TYPE_MERGE, 1 },
++	[OVL_ADAPTOR_MERGE1] =	{ OVL_ADAPTOR_TYPE_MERGE, 2 },
++	[OVL_ADAPTOR_MERGE2] =	{ OVL_ADAPTOR_TYPE_MERGE, 3 },
++	[OVL_ADAPTOR_MERGE3] =	{ OVL_ADAPTOR_TYPE_MERGE, 4 },
++};
 +
-+		merge5: disp_vpp_merge5@1c110000 {
-+			compatible = "mediatek,mt8195-disp-merge";
-+			reg = <0 0x1c110000 0 0x1000>;
-+			interrupts = <GIC_SPI 507 IRQ_TYPE_LEVEL_HIGH 0>;
-+			clocks = <&vdosys1 CLK_VDO1_VPP_MERGE4>,
-+				 <&vdosys1 CLK_VDO1_MERGE4_DL_ASYNC>;
-+			clock-names = "merge","merge_async";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c11XXXX 0x0000 0x1000>;
-+			mediatek,merge-fifo-en = <1>;
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW0_RST_B_MERGE4_DL_ASYNC>;
-+		};
++static void mtk_ovl_adaptor_merge_config(struct mtk_ovl_adaptor_comp *comp,
++					 struct ovl_adaptor_merge_config *merge_cfg,
++					 struct cmdq_pkt *cmdq_pkt)
++{
++	switch (merge_cfg->merge_mode) {
++	case 6:
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_0);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->out_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_4);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_24);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_25);
++		break;
++	case 18:
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_0);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[1]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_1);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->out_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_4);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_24);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[1]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_25);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[0]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_26);
++		mtk_ddp_write(cmdq_pkt, (merge_cfg->in_h << 16 | merge_cfg->in_w[1]),
++			      &comp->cmdq_base, comp->regs, DISP_MERGE_CFG_27);
++		break;
++	default:
++		break;
++	}
 +
-+		disp_ethdr@1c114000 {
-+			compatible = "mediatek,mt8195-disp-ethdr";
-+			reg = <0 0x1c114000 0 0x1000>,
-+			      <0 0x1c115000 0 0x1000>,
-+			      <0 0x1c117000 0 0x1000>,
-+			      <0 0x1c119000 0 0x1000>,
-+			      <0 0x1c11A000 0 0x1000>,
-+			      <0 0x1c11B000 0 0x1000>,
-+			      <0 0x1c11C000 0 0x1000>;
-+			reg-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+				    "vdo_be", "adl_ds";
-+			mediatek,gce-client-reg = <&gce1 SUBSYS_1c11XXXX 0x4000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0x5000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0x7000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0x9000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0xA000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0xB000 0x1000>,
-+						  <&gce1 SUBSYS_1c11XXXX 0xC000 0x1000>;
-+			clocks = <&vdosys1 CLK_VDO1_DISP_MIXER>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_FE0>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_FE1>,
-+				 <&vdosys1 CLK_VDO1_HDR_GFX_FE0>,
-+				 <&vdosys1 CLK_VDO1_HDR_GFX_FE1>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_BE>,
-+				 <&vdosys1 CLK_VDO1_26M_SLOW>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_FE0_DL_ASYNC>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_FE1_DL_ASYNC>,
-+				 <&vdosys1 CLK_VDO1_HDR_GFX_FE0_DL_ASYNC>,
-+				 <&vdosys1 CLK_VDO1_HDR_GFX_FE1_DL_ASYNC>,
-+				 <&vdosys1 CLK_VDO1_HDR_VDO_BE_DL_ASYNC>,
-+				 <&topckgen CLK_TOP_ETHDR_SEL>;
-+			clock-names = "mixer", "vdo_fe0", "vdo_fe1", "gfx_fe0", "gfx_fe1",
-+				      "vdo_be", "adl_ds", "vdo_fe0_async", "vdo_fe1_async",
-+				      "gfx_fe0_async", "gfx_fe1_async","vdo_be_async",
-+				      "ethdr_top";
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
-+			iommus = <&iommu_vpp M4U_PORT_L3_HDR_DS>,
-+				 <&iommu_vpp M4U_PORT_L3_HDR_ADL>;
-+			interrupts = <GIC_SPI 517 IRQ_TYPE_LEVEL_HIGH 0>; /* disp mixer */
-+			resets = <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE0_DL_ASYNC>,
-+				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_FE1_DL_ASYNC>,
-+				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE0_DL_ASYNC>,
-+				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_GFX_FE1_DL_ASYNC>,
-+				 <&vdosys1 MT8195_VDOSYS1_SW1_RST_B_HDR_VDO_BE_DL_ASYNC>;
- 		};
- 	};
- 
++	mtk_ddp_write(cmdq_pkt, merge_cfg->merge_mode, &comp->cmdq_base,
++		      comp->regs, DISP_MERGE_CFG_12);
++	mtk_ddp_write(cmdq_pkt, CFG_10_NO_SWAP, &comp->cmdq_base,
++		      comp->regs, DISP_MERGE_CFG_10);
++	mtk_ddp_write_mask(cmdq_pkt, 1, &comp->cmdq_base, comp->regs,
++			   DISP_MERGE_ENABLE, MERGE_ENABLE);
++}
++
++void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
++				  struct mtk_plane_state *state,
++				  struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	struct mtk_plane_pending_state *pending = &state->pending;
++	struct ovl_adaptor_merge_config merge_cfg = {0};
++	struct mtk_mdp_rdma_cfg rdma_config = {0};
++	struct mtk_ovl_adaptor_comp *rdma_l;
++	struct mtk_ovl_adaptor_comp *rdma_r;
++	struct mtk_ovl_adaptor_comp *merge;
++	const struct drm_format_info *fmt_info = drm_format_info(pending->format);
++	bool use_dual_pipe = false;
++
++	dev_dbg(dev, "%s+ idx:%d, enable:%d, fmt:0x%x\n", __func__, idx,
++		pending->enable, pending->format);
++	dev_dbg(dev, "addr 0x%lx, fb w:%d, {%d,%d,%d,%d}\n",
++		pending->addr, (pending->pitch / fmt_info->cpp[0]),
++		pending->x, pending->y, pending->width, pending->height);
++
++	rdma_l = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx];
++	rdma_r = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * idx + 1];
++	merge = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + idx];
++
++	if (!pending->enable) {
++		mtk_ddp_write_mask(cmdq_pkt, 0x0, &merge->cmdq_base, merge->regs,
++				   DISP_MERGE_ENABLE, MERGE_ENABLE);
++		mtk_mdp_rdma_stop(rdma_l->regs, cmdq_pkt, &rdma_l->cmdq_base);
++		mtk_mdp_rdma_stop(rdma_r->regs, cmdq_pkt, &rdma_r->cmdq_base);
++		return;
++	}
++
++	if (pending->width > MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH)
++		use_dual_pipe = true;
++
++	merge_cfg.out_w[0] = pending->width;
++	merge_cfg.in_h = pending->height;
++	merge_cfg.fmt = pending->format;
++	if (use_dual_pipe) {
++		merge_cfg.merge_mode = CFG12_11_10_1PI_2PO_MERGE;
++		merge_cfg.in_w[0] = (pending->width / 2) + ((pending->width / 2) % 2);
++		merge_cfg.in_w[1] = (pending->width / 2) - ((pending->width / 2) % 2);
++	} else {
++		merge_cfg.merge_mode = CFG12_10_10_1PI_2PO_BUF_MODE;
++		merge_cfg.in_w[0] = pending->width;
++	}
++	mtk_ovl_adaptor_merge_config(merge, &merge_cfg, cmdq_pkt);
++
++	mtk_mmsys_ddp_config(ovl_adaptor->mmsys_dev, MMSYS_CONFIG_MERGE_ASYNC_WIDTH,
++			     idx, pending->width / 2, cmdq_pkt);
++	mtk_mmsys_ddp_config(ovl_adaptor->mmsys_dev, MMSYS_CONFIG_MERGE_ASYNC_HEIGHT,
++			     idx, pending->height, cmdq_pkt);
++
++	rdma_config.source_width = pending->pitch / fmt_info->cpp[0];
++	rdma_config.csc_enable = fmt_info->is_yuv ? true : false;
++	rdma_config.profile = RDMA_CSC_FULL709_TO_RGB;
++	rdma_config.width = merge_cfg.in_w[0];
++	rdma_config.height = pending->height;
++	rdma_config.addr0 = pending->addr;
++	rdma_config.pitch = pending->pitch;
++	rdma_config.fmt = pending->format;
++	mtk_mdp_rdma_config(rdma_l->regs, &rdma_config, cmdq_pkt, &rdma_l->cmdq_base);
++
++	rdma_config.x_left = merge_cfg.in_w[0];
++	rdma_config.width = merge_cfg.in_w[1];
++	mtk_mdp_rdma_config(rdma_r->regs, &rdma_config, cmdq_pkt, &rdma_r->cmdq_base);
++
++	mtk_ddp_write_mask(cmdq_pkt, 0x1, &merge->cmdq_base, merge->regs,
++			   DISP_MERGE_ENABLE, MERGE_ENABLE);
++	mtk_ddp_write_mask(cmdq_pkt, 0x0, &merge->cmdq_base, merge->regs,
++			   DISP_MERGE_MUTE_0, 0x1);
++
++	mtk_mdp_rdma_start(rdma_l->regs, cmdq_pkt, &rdma_l->cmdq_base);
++	if (use_dual_pipe)
++		mtk_mdp_rdma_start(rdma_r->regs, cmdq_pkt, &rdma_r->cmdq_base);
++	else
++		mtk_mdp_rdma_stop(rdma_r->regs, cmdq_pkt, &rdma_r->cmdq_base);
++}
++
++void mtk_ovl_adaptor_stop(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	struct mtk_ovl_adaptor_comp *rdma_l;
++	struct mtk_ovl_adaptor_comp *rdma_r;
++	struct mtk_ovl_adaptor_comp *merge;
++	unsigned int reg;
++	u32 i;
++
++	for (i = 0; i < MTK_OVL_ADAPTOR_LAYER_NUM; i++) {
++		rdma_l = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * i];
++		rdma_r = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * i + 1];
++		merge = &ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + i];
++
++		mtk_mdp_rdma_stop(rdma_l->regs, NULL, &rdma_l->cmdq_base);
++		mtk_mdp_rdma_stop(rdma_r->regs, NULL, &rdma_r->cmdq_base);
++
++		reg = readl(merge->regs + DISP_MERGE_ENABLE);
++		reg = reg & ~MERGE_ENABLE;
++		writel_relaxed(reg, merge->regs + DISP_MERGE_ENABLE);
++
++		device_reset_optional(merge->dev);
++	}
++}
++
++int mtk_ovl_adaptor_clk_enable(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	struct mtk_ovl_adaptor_comp *comp;
++	int ret;
++	int i;
++	int j;
++
++	for (i = OVL_ADAPTOR_MDP_RDMA0; i < OVL_ADAPTOR_ID_MAX; i++) {
++		comp = &ovl_adaptor->ovl_adaptor_comp[i];
++		if (!comp->dev)
++			continue;
++
++		/* Need to power on for private rdma devices */
++		if (i < OVL_ADAPTOR_MERGE0) {
++			ret = pm_runtime_get_sync(comp->dev);
++			if (ret < 0)
++				dev_err(dev,
++					"Failed to power on, err %d-%s\n",
++					ret, ovl_adaptor_comp_str[i]);
++		}
++
++		for (j = 0; j < ARRAY_SIZE(comp->clks); j++) {
++			if (IS_ERR(comp->clks[j]))
++				break;
++
++			ret = clk_prepare_enable(comp->clks[j]);
++			if (ret)
++				dev_err(dev,
++					"Failed to enable clock %d, err %d-%s\n",
++					i, ret, ovl_adaptor_comp_str[i]);
++		}
++	}
++
++	return ret;
++}
++
++void mtk_ovl_adaptor_clk_disable(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(dev);
++	struct mtk_ovl_adaptor_comp *comp;
++	int ret;
++	int i;
++	int j;
++
++	for (i = OVL_ADAPTOR_MDP_RDMA0; i < OVL_ADAPTOR_ID_MAX; i++) {
++		comp = &ovl_adaptor->ovl_adaptor_comp[i];
++		if (!comp->dev)
++			continue;
++
++		for (j = 0; i < ARRAY_SIZE(comp->clks); j++) {
++			if (IS_ERR(comp->clks[j]))
++				break;
++			clk_disable_unprepare(comp->clks[j]);
++		}
++
++		/* Need to power off for private rdma devices */
++		if (i < OVL_ADAPTOR_MERGE0) {
++			ret = pm_runtime_put(comp->dev);
++			if (ret < 0)
++				dev_err(dev,
++					"Failed to power off, err-%s\n",
++					ret, ovl_adaptor_comp_str[i]);
++		}
++	}
++}
++
++static int ovl_adaptor_comp_get_id(struct device *dev, struct device_node *node,
++				   enum mtk_ovl_adaptor_comp_type type)
++{
++	int alias_id = of_alias_get_id(node, private_comp_stem[type]);
++	int ret;
++	int i;
++
++	for (i = 0; i < ARRAY_SIZE(comp_matches); i++)
++		if (comp_matches[i].type == type &&
++		    comp_matches[i].alias_id == alias_id)
++			return i;
++
++	dev_err(dev, "Failed to get id. type: %d, alias: %d\n", type, alias_id);
++	return -EINVAL;
++}
++
++static int private_comp_init(struct device *dev, struct device_node *node,
++			     struct mtk_ovl_adaptor_comp *comp,
++			     enum mtk_ovl_adaptor_comp_id id)
++{
++	struct platform_device *comp_pdev;
++	int ret;
++	int i;
++
++	if (id < 0 || id >= OVL_ADAPTOR_ID_MAX) {
++		dev_err(dev, "Invalid component id %d\n", id);
++		return -EINVAL;
++	}
++
++	comp_pdev = of_find_device_by_node(node);
++	if (!comp_pdev) {
++		dev_warn(dev, "can't find platform device of node:%s\n",
++			 node->name);
++		return -ENODEV;
++	}
++	comp->dev = &comp_pdev->dev;
++	comp->regs = of_iomap(node, 0);
++
++	for (i = 0; i < ARRAY_SIZE(comp->clks); i++) {
++		comp->clks[i] = of_clk_get(node, i);
++		if (IS_ERR(comp->clks[i]))
++			break;
++	}
++
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(comp->dev, &comp->cmdq_base, 0);
++	if (ret)
++		dev_info(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++
++	if (id < OVL_ADAPTOR_MERGE0)
++		pm_runtime_enable(comp->dev);
++
++	dev_info(dev, "[DRM]regs:0x%p, node:%s\n", comp->regs, ovl_adaptor_comp_str[id]);
++
++	return 0;
++}
++
++static int mtk_disp_ovl_adaptor_comp_probe(struct platform_device *pdev)
++{
++	return 0;
++}
++
++static int mtk_disp_ovl_adaptor_comp_remove(struct platform_device *pdev)
++{
++	return 0;
++}
++
++static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
++	{
++		.compatible = "mediatek,mt8195-vdo1-rdma",
++		.data = (void *)OVL_ADAPTOR_TYPE_RDMA,
++	}, {
++		.compatible = "mediatek,mt8195-vdo1-merge",
++		.data = (void *)OVL_ADAPTOR_TYPE_MERGE,
++	},
++	{},
++};
++
++static struct platform_driver mtk_disp_ovl_adaptor_comp_driver = {
++	.probe		= mtk_disp_ovl_adaptor_comp_probe,
++	.remove		= mtk_disp_ovl_adaptor_comp_remove,
++	.driver = {
++		.name	= "mediatek-disp-ovl-adaptor-comp",
++		.owner	= THIS_MODULE,
++		.of_match_table = mtk_ovl_adaptor_comp_dt_ids,
++	},
++};
++module_platform_driver(mtk_disp_ovl_adaptor_comp_driver);
++
++static int ovl_adaptor_comp_init(struct device *dev)
++{
++	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
++	struct device_node *node, *parent;
++	int i, ret;
++
++	parent = dev->parent->of_node->parent;
++
++	for_each_child_of_node(parent, node) {
++		const struct of_device_id *of_id;
++		enum mtk_ovl_adaptor_comp_type type;
++		struct mtk_ovl_adaptor_comp *comp;
++		int id;
++
++		of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids, node);
++		if (!of_id)
++			continue;
++
++		if (!of_device_is_available(node)) {
++			dev_info(dev, "Skipping disabled component %pOF\n",
++				 node);
++			continue;
++		}
++
++		type = (enum mtk_ovl_adaptor_comp_type)of_id->data;
++		id = ovl_adaptor_comp_get_id(dev, node, type);
++		if (id < 0) {
++			dev_warn(dev, "Skipping unknown component %pOF\n",
++				 node);
++			continue;
++		}
++
++		ret = private_comp_init(dev, node, &priv->ovl_adaptor_comp[id], id);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
++static const struct of_device_id ovl_adaptor_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8195-disp-ethdr"},
++	{},
++};
++MODULE_DEVICE_TABLE(of, mtk_disp_ovl_adaptor_driver_dt_match);
++
++static int mtk_disp_ovl_adaptor_probe(struct platform_device *pdev)
++{
++	struct mtk_disp_ovl_adaptor *priv;
++	struct device *dev = &pdev->dev;
++	struct device_node *phandle = dev->parent->of_node;
++	const struct of_device_id *of_id;
++	int ret;
++	int i;
++
++	dev_info(dev, "%s+\n", __func__);
++
++	of_id = of_match_node(ovl_adaptor_driver_dt_match, phandle);
++	if (!of_id)
++		return -ENODEV;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	priv->mmsys_dev = pdev->dev.platform_data;
++
++	platform_set_drvdata(pdev, priv);
++
++	ret = ovl_adaptor_comp_init(dev);
++	if (ret) {
++		dev_notice(dev, "ovl_adaptor comp init fail\n");
++		return ret;
++	}
++
++	dev_info(dev, "%s-\n", __func__);
++	return ret;
++}
++
++static int mtk_disp_ovl_adaptor_remove(struct platform_device *pdev)
++{
++	struct mtk_disp_ovl_adaptor *ovl_adaptor = dev_get_drvdata(&pdev->dev);
++	int i;
++
++	for (i = OVL_ADAPTOR_MDP_RDMA0; i < OVL_ADAPTOR_MERGE0; i++)
++		pm_runtime_disable(ovl_adaptor->ovl_adaptor_comp[i].dev);
++
++	return 0;
++}
++
++struct platform_driver mtk_disp_ovl_adaptor_driver = {
++	.probe = mtk_disp_ovl_adaptor_probe,
++	.remove = mtk_disp_ovl_adaptor_remove,
++	.driver = {
++			.name = "mediatek-disp-ovl-adaptor",
++			.owner = THIS_MODULE,
++		},
++};
++module_platform_driver(mtk_disp_ovl_adaptor_driver);
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.h b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.h
+new file mode 100644
+index 000000000000..7d757be1f491
+--- /dev/null
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#ifndef __MTK_DISP_OVL_ADAPTOR_H__
++#define __MTK_DISP_OVL_ADAPTOR_H__
++
++#include <drm/mediatek_drm.h>
++
++void mtk_ovl_adaptor_stop(struct device *dev);
++int mtk_ovl_adaptor_clk_enable(struct device *dev);
++void mtk_ovl_adaptor_clk_disable(struct device *dev);
++void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int idx,
++				  struct mtk_plane_state *state,
++				  struct cmdq_pkt *cmdq_pkt);
++
++#endif
++
 -- 
 2.18.0
 _______________________________________________
