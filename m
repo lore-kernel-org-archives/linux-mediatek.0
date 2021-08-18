@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 972F9C4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 240CBC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:33:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67F7C60551
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:32:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 67F7C60551
+	by mail.kernel.org (Postfix) with ESMTPS id E01AE60462
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:33:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E01AE60462
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,34 +24,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GBP38LPXXDQ2+NSfJiNBCeHmenF/pGGucnEEBbl0LKQ=; b=2eEZUuYjmjCu3i
-	LuZsuDo61S93itL22xYZ0k7+lnyayA+zQB7pWpP8PbErMUOPBdTAT/Je3xQFwVGl2P41jJPkLuuxu
-	7PtYfWQ8T6/3oREBjaFdFiRcibWDnibRQTOzJR8ahsZml3OTVadOh5VgrrKHDNUZjeIIWpuGT68zr
-	mFR/NbD7jat9Z+ddzNtqDs3/z9RFwt2StXUQ6FjngRjIAf9FWTZh6Uxepqlq1PD/6bCtp983S/e7U
-	CR6NnKPzcvdtJ/Z0q6u2p1i8dw/j6P0dB8PQgBexcwbp9T4p52RLvBZAWZT+iqHQbAIDphusjzuaP
-	gvAh09mZPf9ckZOsHvCg==;
+	List-Owner; bh=4SoEJ6ijnqbxDo0F5kj7RSAu4ho9YkhFS7maaUki3SU=; b=vdaOLIG+AUc5p2
+	ok3zBzGn7mBsalis7prdY2ZfNjKKp543I7/ZRKKboymYkGVDDJr0RRl0kn0G2yPGj7gRCgeWuXdKR
+	IAzhgAZgIpJrxhPrUNAj4+iYWN+/gL5RUxq+ZlYvr+7hrH9XIgUi5sbH96XSEOqdXuSsDgEj4dWQA
+	ssN+XAbisvhqQqbXKEIJWzwDq22Qjfn/hZq6MDFcXoRNo25c3U1TroTdtuiC+nyUvai4/Sao0s0UH
+	wl2f944PTvSF4rEMi6awHqMhN4kxYnco4evukSPjblOrLwSN0LnV6eqGNyUj8c7tbqBRudoCVod29
+	gjmYY/LJFJuJ3f+mRHVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGHvN-004uzu-Ch; Wed, 18 Aug 2021 09:31:53 +0000
+	id 1mGHwo-004vYS-87; Wed, 18 Aug 2021 09:33:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGHj9-004pUk-6n; Wed, 18 Aug 2021 09:19:19 +0000
-X-UUID: cefa1f2b1c0a40c7a7ed550550dc23b9-20210818
+ id 1mGHjD-004pUk-CQ; Wed, 18 Aug 2021 09:19:21 +0000
+X-UUID: ead3326f43be4d2f9974f2c468f5646c-20210818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=cO9+70TvLwDS6HtEzgAE5wj3hhj4CV8sl4i0KzAnzso=; 
- b=jm29IJNZLSFavL27UH7MKmOpeT4TAXpBPE1CGq+lznShNIEGusAx8S08TOdCt8HGi33GKLqLI2CJ07+NUNUh0yBCo+1A2jfPfJUx4cpWjPtung8WGyUKLNuChfWl2yLOXvAxHACznXPXtfr72yftt/OWn+ZUlcmCK+VWMKZ7pu8=;
-X-UUID: cefa1f2b1c0a40c7a7ed550550dc23b9-20210818
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=AvSg9+PAXKyT/E/gvyO49yBHwXkOX54wJVc8LqORiM8=; 
+ b=DKiNeqxJ+Oq8GcDFsGJxLJPlALevgWwjUl0Xo/cJ68yyayUsb5kZ41bVcrRMDi56njiFzcG56Jum4f9v49jnKvwFCEBAmx7iimJF8c0FH5SS+PpmeX+MFO569Wi37oWgrf/n8lLMM3HkuvqxuctSuAA1IQHoK7NAbVO4qdCHx6c=;
+X-UUID: ead3326f43be4d2f9974f2c468f5646c-20210818
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1082750707; Wed, 18 Aug 2021 02:18:53 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 02:18:52 -0700
+ with ESMTP id 835588638; Wed, 18 Aug 2021 02:18:55 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Aug 2021 02:18:54 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 18 Aug 2021 17:18:51 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -67,17 +67,17 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v3 12/15] drm/mediatek: add display MDP RDMA support for MT8195
-Date: Wed, 18 Aug 2021 17:18:44 +0800
-Message-ID: <20210818091847.8060-13-nancy.lin@mediatek.com>
+Subject: [PATCH v3 14/15] drm/mediatek: add ETHDR support for MT8195
+Date: Wed, 18 Aug 2021 17:18:46 +0800
+Message-ID: <20210818091847.8060-15-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210818091847.8060-1-nancy.lin@mediatek.com>
 References: <20210818091847.8060-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_021915_368293_6CB41AD0 
-X-CRM114-Status: GOOD (  20.01  )
+X-CRM114-CacheID: sfid-20210818_021919_492449_C5B39964 
+X-CRM114-Status: GOOD (  25.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,387 +94,542 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MDP_RDMA driver for MT8195. MDP_RDMA is the DMA engine of
-the ovl_adaptor component.
+ETHDR is a part of ovl_adaptor.
+ETHDR is designed for HDR video and graphics conversion in the external
+display path. It handles multiple HDR input types and performs tone
+mapping, color space/color format conversion, and then combine
+different layers, output the required HDR or SDR signal to the
+subsequent display path.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
  drivers/gpu/drm/mediatek/Makefile       |   3 +-
- drivers/gpu/drm/mediatek/mtk_disp_drv.h |  12 ++
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.c | 275 ++++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_mdp_rdma.h |  39 ++++
- 4 files changed, 328 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
- create mode 100644 drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h |  16 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   3 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   1 +
+ drivers/gpu/drm/mediatek/mtk_ethdr.c    | 440 ++++++++++++++++++++++++
+ 5 files changed, 462 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_ethdr.c
 
 diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 538e0087a44c..38ec2354a894 100644
+index f04ac86c9593..c42d0623e629 100644
 --- a/drivers/gpu/drm/mediatek/Makefile
 +++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -12,7 +12,8 @@ mediatek-drm-y := mtk_disp_ccorr.o \
- 		  mtk_drm_gem.o \
- 		  mtk_drm_plane.o \
+@@ -14,7 +14,8 @@ mediatek-drm-y := mtk_disp_ccorr.o \
  		  mtk_dsi.o \
--		  mtk_dpi.o
-+		  mtk_dpi.o \
-+		  mtk_mdp_rdma.o
+ 		  mtk_dpi.o \
+ 		  mtk_mdp_rdma.o \
+-		  mtk_disp_ovl_adaptor.o
++		  mtk_disp_ovl_adaptor.o \
++		  mtk_ethdr.o
  
  obj-$(CONFIG_DRM_MEDIATEK) += mediatek-drm.o
  
 diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index f407cd9d873e..7129ba061ecb 100644
+index 7129ba061ecb..964d0ad2b81d 100644
 --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
 +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -8,6 +8,7 @@
- 
- #include <linux/soc/mediatek/mtk-cmdq.h>
- #include "mtk_drm_plane.h"
-+#include "mtk_mdp_rdma.h"
- 
- void mtk_ccorr_ctm_set(struct device *dev, struct drm_crtc_state *state);
- int mtk_ccorr_clk_enable(struct device *dev);
-@@ -97,4 +98,15 @@ void mtk_rdma_enable_vblank(struct device *dev,
+@@ -98,6 +98,22 @@ void mtk_rdma_enable_vblank(struct device *dev,
  			    void *vblank_cb_data);
  void mtk_rdma_disable_vblank(struct device *dev);
  
-+void mtk_mdp_rdma_start(void __iomem *base,
-+			struct cmdq_pkt *cmdq_pkt,
-+			struct cmdq_client_reg *cmdq_base);
-+void mtk_mdp_rdma_stop(void __iomem *base,
-+		       struct cmdq_pkt *cmdq_pkt,
-+		       struct cmdq_client_reg *cmdq_base);
-+void mtk_mdp_rdma_config(void __iomem *base,
-+			 struct mtk_mdp_rdma_cfg *cfg,
-+			 struct cmdq_pkt *cmdq_pkt,
-+			 struct cmdq_client_reg *cmdq_base);
++int mtk_ethdr_clk_enable(struct device *dev);
++void mtk_ethdr_clk_disable(struct device *dev);
++void mtk_ethdr_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
++void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
++			    struct mtk_plane_state *state,
++			    struct cmdq_pkt *cmdq_pkt);
++void mtk_ethdr_enable_vblank(struct device *dev,
++			     void (*vblank_cb)(void *),
++			     void *vblank_cb_data);
++void mtk_ethdr_disable_vblank(struct device *dev);
++void mtk_ethdr_start(struct device *dev);
++void mtk_ethdr_stop(struct device *dev);
++unsigned int mtk_ethdr_layer_nr(struct device *dev);
 +
- #endif
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
+ void mtk_mdp_rdma_start(void __iomem *base,
+ 			struct cmdq_pkt *cmdq_pkt,
+ 			struct cmdq_client_reg *cmdq_base);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 9aebf73144c6..6a18c12fe04e 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -452,6 +452,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_OVL },
+ 	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+ 	  .data = (void *)MTK_DISP_OVL_2L },
++	{ .compatible = "mediatek,mt8195-disp-ethdr",
++	  .data = (void *)MTK_DISP_OVL_ADAPTOR },
+ 	{ .compatible = "mediatek,mt2701-disp-pwm",
+ 	  .data = (void *)MTK_DISP_BLS },
+ 	{ .compatible = "mediatek,mt8173-disp-pwm",
+@@ -674,6 +676,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
+ 	&mtk_dpi_driver,
+ 	&mtk_drm_platform_driver,
+ 	&mtk_dsi_driver,
++	&mtk_ethdr_driver,
+ };
+ 
+ static int __init mtk_drm_init(void)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+index 0fa417219a69..7b09fe6db067 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
+@@ -54,5 +54,6 @@ extern struct platform_driver mtk_disp_ovl_driver;
+ extern struct platform_driver mtk_disp_rdma_driver;
+ extern struct platform_driver mtk_dpi_driver;
+ extern struct platform_driver mtk_dsi_driver;
++extern struct platform_driver mtk_ethdr_driver;
+ 
+ #endif /* MTK_DRM_DRV_H */
+diff --git a/drivers/gpu/drm/mediatek/mtk_ethdr.c b/drivers/gpu/drm/mediatek/mtk_ethdr.c
 new file mode 100644
-index 000000000000..95e762eda4a8
+index 000000000000..05035b6015d8
 --- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.c
-@@ -0,0 +1,275 @@
++++ b/drivers/gpu/drm/mediatek/mtk_ethdr.c
+@@ -0,0 +1,440 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
 + * Copyright (c) 2021 MediaTek Inc.
 + */
 +
 +#include <drm/drm_fourcc.h>
++#include <linux/clk.h>
++#include <linux/reset.h>
++#include <linux/component.h>
++#include <linux/of_device.h>
++#include <linux/of_address.h>
++#include <linux/pm_runtime.h>
++#include <linux/platform_device.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++#include <linux/soc/mediatek/mtk-mmsys.h>
++
++#include "mtk_drm_crtc.h"
++#include "mtk_drm_ddp_comp.h"
 +#include "mtk_drm_drv.h"
-+#include "mtk_mdp_rdma.h"
++#include "mtk_disp_ovl_adaptor.h"
 +
-+#define REG_FLD(width, shift) \
-+	((unsigned int)((((width) & 0xff) << 16) | ((shift) & 0xff)))
++#define MIX_INTEN		0x4
++	#define MIX_FME_CPL_INTEN	BIT(1)
++#define MIX_INTSTA		0x8
++#define MIX_EN			0xc
++#define MIX_RST			0x14
++#define MIX_ROI_SIZE		0x18
++#define MIX_DATAPATH_CON	0x1c
++	#define OUTPUT_NO_RND	BIT(3)
++	#define SOURCE_RGB_SEL	BIT(7)
++	#define BACKGROUND_RELAY	(4 << 9)
++#define MIX_ROI_BGCLR		0x20
++	#define BGCLR_BLACK	0xff000000
++#define MIX_SRC_CON		0x24
++	#define MIX_SRC_L0_EN	BIT(0)
++#define MIX_L_SRC_CON(n)	(0x28 + 0x18 * (n))
++	#define NON_PREMULTI_SOURCE (2 << 12)
++#define MIX_L_SRC_SIZE(n)	(0x30 + 0x18 * (n))
++#define MIX_L_SRC_OFFSET(n)	(0x34 + 0x18 * (n))
++#define MIX_FUNC_DCM0		0x120
++#define MIX_FUNC_DCM1		0x124
++	#define MIX_FUNC_DCM_ENABLE 0xffffffff
 +
-+#define REG_FLD_WIDTH(field) ((unsigned int)(((field) >> 16) & 0xff))
++#define HDR_VDO_FE_0804_HDR_DM_FE	0x804
++	#define HDR_VDO_FE_0804_BYPASS_ALL	0xfd
++#define HDR_GFX_FE_0204_GFX_HDR_FE	0x204
++	#define HDR_GFX_FE_0204_BYPASS_ALL	0xfd
++#define HDR_VDO_BE_0204_VDO_DM_BE	0x204
++	#define HDR_VDO_BE_0204_BYPASS_ALL	0x7e
 +
-+#define REG_FLD_SHIFT(field) ((unsigned int)((field) & 0xff))
++#define MIXER_INx_MODE_BYPASS 0
++#define MIXER_INx_MODE_EVEN_EXTEND 1
++#define MIXER_INx_MODE_ODD_EXTEND 2
++#define DEFAULT_9BIT_ALPHA	0x100
++#define	MIXER_ALPHA_AEN		BIT(8)
++#define	MIXER_ALPHA		0xff
++#define ETHDR_CLK_NUM		13
 +
-+#define REG_FLD_MASK(field) \
-+	((unsigned int)((1ULL << REG_FLD_WIDTH(field)) - 1) \
-+	 << REG_FLD_SHIFT(field))
-+
-+#define REG_FLD_VAL(field, val) \
-+	(((val) << REG_FLD_SHIFT(field)) & REG_FLD_MASK(field))
-+
-+#define MDP_RDMA_EN                                            0x000
-+#define FLD_ROT_ENABLE                            REG_FLD(1, 0)
-+
-+#define MDP_RDMA_RESET                                         0x008
-+
-+#define MDP_RDMA_CON                                           0x020
-+#define FLD_OUTPUT_10B                            REG_FLD(1, 5)
-+#define FLD_SIMPLE_MODE                           REG_FLD(1, 4)
-+
-+#define MDP_RDMA_GMCIF_CON                                     0x028
-+#define FLD_EXT_ULTRA_EN                          REG_FLD(1, 18)
-+#define FLD_PRE_ULTRA_EN                          REG_FLD(2, 16)
-+#define FLD_ULTRA_EN                              REG_FLD(2, 12)
-+#define FLD_RD_REQ_TYPE                           REG_FLD(4, 4)
-+#define VAL_RD_REQ_TYPE_BURST_8_ACCESS       7
-+#define FLD_EXT_PREULTRA_EN                       REG_FLD(1, 3)
-+#define FLD_COMMAND_DIV                           REG_FLD(1, 0)
-+
-+#define MDP_RDMA_SRC_CON                                       0x030
-+#define FLD_OUTPUT_ARGB                           REG_FLD(1, 25)
-+#define FLD_BIT_NUMBER                            REG_FLD(2, 18)
-+#define FLD_UNIFORM_CONFIG                        REG_FLD(1, 17)
-+#define FLD_SWAP                                  REG_FLD(1, 14)
-+#define FLD_SRC_FORMAT                            REG_FLD(4, 0)
-+
-+#define MDP_RDMA_COMP_CON                                      0x038
-+#define FLD_AFBC_EN                               REG_FLD(1, 22)
-+#define FLD_AFBC_YUV_TRANSFORM                    REG_FLD(1, 21)
-+#define FLD_UFBDC_EN                              REG_FLD(1, 12)
-+
-+#define MDP_RDMA_MF_BKGD_SIZE_IN_BYTE                          0x060
-+#define FLD_MF_BKGD_WB                            REG_FLD(23, 0)
-+
-+#define MDP_RDMA_MF_BKGD_SIZE_IN_PIXEL                         0x068
-+#define FLD_MF_BKGD_WP                            REG_FLD(23, 0)
-+
-+#define MDP_RDMA_MF_SRC_SIZE                                   0x070
-+#define FLD_MF_SRC_H                              REG_FLD(15, 16)
-+#define FLD_MF_SRC_W                              REG_FLD(15, 0)
-+
-+#define MDP_RDMA_MF_CLIP_SIZE                                  0x078
-+#define FLD_MF_CLIP_H                             REG_FLD(15, 16)
-+#define FLD_MF_CLIP_W                             REG_FLD(15, 0)
-+
-+#define MDP_RDMA_TARGET_LINE                                   0x0a0
-+#define FLD_LINE_THRESHOLD                        REG_FLD(15, 17)
-+#define FLD_TARGET_LINE_EN                        REG_FLD(1, 16)
-+
-+#define MDP_RDMA_SRC_OFFSET_0                                  0x118
-+#define FLD_SRC_OFFSET_0                          REG_FLD(32, 0)
-+
-+#define MDP_RDMA_TRANSFORM_0                                   0x200
-+#define FLD_INT_MATRIX_SEL                        REG_FLD(5, 23)
-+#define FLD_TRANS_EN                              REG_FLD(1, 16)
-+
-+#define MDP_RDMA_UTRA_H_CON_0                                  0x248
-+#define FLD_PREUTRA_H_OFS_0                       REG_FLD(10, 10)
-+
-+#define MDP_RDMA_UTRA_L_CON_0                                  0x250
-+#define FLD_PREUTRA_L_OFS_0                       REG_FLD(10, 10)
-+
-+#define MDP_RDMA_SRC_BASE_0                                    0xf00
-+#define FLD_SRC_BASE_0                            REG_FLD(32, 0)
-+
-+#define RDMA_INPUT_SWAP		BIT(14)
-+#define RDMA_INPUT_10BIT	BIT(18)
-+
-+enum rdma_format {
-+	RDMA_INPUT_FORMAT_RGB565 = 0,
-+	RDMA_INPUT_FORMAT_RGB888 = 1,
-+	RDMA_INPUT_FORMAT_RGBA8888 = 2,
-+	RDMA_INPUT_FORMAT_ARGB8888 = 3,
-+	RDMA_INPUT_FORMAT_UYVY = 4,
-+	RDMA_INPUT_FORMAT_YUY2 = 5,
-+	RDMA_INPUT_FORMAT_Y8 = 7,
-+	RDMA_INPUT_FORMAT_YV12 = 8,
-+	RDMA_INPUT_FORMAT_UYVY_3PL = 9,
-+	RDMA_INPUT_FORMAT_NV12 = 12,
-+	RDMA_INPUT_FORMAT_UYVY_2PL = 13,
-+	RDMA_INPUT_FORMAT_Y410 = 14
++enum mtk_ethdr_comp_id {
++	ETHDR_MIXER,
++	ETHDR_VDO_FE0,
++	ETHDR_VDO_FE1,
++	ETHDR_GFX_FE0,
++	ETHDR_GFX_FE1,
++	ETHDR_VDO_BE,
++	ETHDR_ADL_DS,
++	ETHDR_ID_MAX
 +};
 +
-+static unsigned int rdma_fmt_convert(unsigned int fmt)
++struct mtk_ethdr_comp {
++	struct device *dev;
++	void __iomem *regs;
++	struct cmdq_client_reg cmdq_base;
++};
++
++struct mtk_ethdr {
++	struct mtk_ethdr_comp ethdr_comp[ETHDR_ID_MAX];
++	struct clk_bulk_data ethdr_clk[ETHDR_CLK_NUM];
++	struct device *ovl_adaptor_dev;
++	struct device *mmsys_dev;
++	spinlock_t lock; /* protects vblank_cb and vblank_cb_data */
++	void (*vblank_cb)(void *data);
++	void *vblank_cb_data;
++	int irq;
++};
++
++static const char * const ethdr_comp_str[] = {
++	"ETHDR_MIXER",
++	"ETHDR_VDO_FE0",
++	"ETHDR_VDO_FE1",
++	"ETHDR_GFX_FE0",
++	"ETHDR_GFX_FE1",
++	"ETHDR_VDO_BE",
++	"ETHDR_ADL_DS",
++	"ETHDR_ID_MAX"
++};
++
++static const char * const ethdr_clk_str[] = {
++	"ethdr_top",
++	"mixer",
++	"vdo_fe0",
++	"vdo_fe1",
++	"gfx_fe0",
++	"gfx_fe1",
++	"vdo_be",
++	"adl_ds",
++	"vdo_fe0_async",
++	"vdo_fe1_async",
++	"gfx_fe0_async",
++	"gfx_fe1_async",
++	"vdo_be_async",
++};
++
++void mtk_ethdr_enable_vblank(struct device *dev,
++			     void (*vblank_cb)(void *),
++			     void *vblank_cb_data)
 +{
-+	switch (fmt) {
-+	default:
-+	case DRM_FORMAT_RGB565:
-+		return RDMA_INPUT_FORMAT_RGB565;
-+	case DRM_FORMAT_BGR565:
-+		return RDMA_INPUT_FORMAT_RGB565 | RDMA_INPUT_SWAP;
-+	case DRM_FORMAT_RGB888:
-+		return RDMA_INPUT_FORMAT_RGB888;
-+	case DRM_FORMAT_BGR888:
-+		return RDMA_INPUT_FORMAT_RGB888 | RDMA_INPUT_SWAP;
-+	case DRM_FORMAT_RGBX8888:
-+	case DRM_FORMAT_RGBA8888:
-+		return RDMA_INPUT_FORMAT_ARGB8888;
-+	case DRM_FORMAT_BGRX8888:
-+	case DRM_FORMAT_BGRA8888:
-+		return RDMA_INPUT_FORMAT_ARGB8888 | RDMA_INPUT_SWAP;
-+	case DRM_FORMAT_XRGB8888:
-+	case DRM_FORMAT_ARGB8888:
-+		return RDMA_INPUT_FORMAT_RGBA8888;
-+	case DRM_FORMAT_XBGR8888:
-+	case DRM_FORMAT_ABGR8888:
-+		return RDMA_INPUT_FORMAT_RGBA8888 | RDMA_INPUT_SWAP;
-+	case DRM_FORMAT_ABGR2101010:
-+		return RDMA_INPUT_FORMAT_RGBA8888 | RDMA_INPUT_SWAP |
-+				RDMA_INPUT_10BIT;
-+	case DRM_FORMAT_ARGB2101010:
-+		return RDMA_INPUT_FORMAT_RGBA8888 | RDMA_INPUT_10BIT;
-+	case DRM_FORMAT_RGBA1010102:
-+		return RDMA_INPUT_FORMAT_ARGB8888 | RDMA_INPUT_SWAP |
-+				RDMA_INPUT_10BIT;
-+	case DRM_FORMAT_BGRA1010102:
-+		return RDMA_INPUT_FORMAT_ARGB8888 | RDMA_INPUT_10BIT;
-+	case DRM_FORMAT_UYVY:
-+		return RDMA_INPUT_FORMAT_UYVY;
-+	case DRM_FORMAT_YUYV:
-+		return RDMA_INPUT_FORMAT_YUY2;
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	unsigned long flags;
++
++	spin_lock_irqsave(&priv->lock, flags);
++	priv->vblank_cb = vblank_cb;
++	priv->vblank_cb_data = vblank_cb_data;
++	spin_unlock_irqrestore(&priv->lock, flags);
++
++	writel(MIX_FME_CPL_INTEN, priv->ethdr_comp[ETHDR_MIXER].regs + MIX_INTEN);
++}
++
++void mtk_ethdr_disable_vblank(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	unsigned long flags;
++
++	spin_lock_irqsave(&priv->lock, flags);
++	priv->vblank_cb = NULL;
++	priv->vblank_cb_data = NULL;
++	spin_unlock_irqrestore(&priv->lock, flags);
++
++	writel(0x0, priv->ethdr_comp[ETHDR_MIXER].regs + MIX_INTEN);
++}
++
++static irqreturn_t mtk_ethdr_irq_handler(int irq, void *dev_id)
++{
++	struct mtk_ethdr *priv = dev_id;
++	unsigned long flags;
++
++	writel(0x0, priv->ethdr_comp[ETHDR_MIXER].regs + MIX_INTSTA);
++
++	spin_lock_irqsave(&priv->lock, flags);
++	if (!priv->vblank_cb) {
++		spin_unlock_irqrestore(&priv->lock, flags);
++		return IRQ_NONE;
 +	}
++
++	priv->vblank_cb(priv->vblank_cb_data);
++	spin_unlock_irqrestore(&priv->lock, flags);
++
++	return IRQ_HANDLED;
 +}
 +
-+static void mtk_mdp_rdma_fifo_config(void __iomem *base, struct cmdq_pkt *cmdq_pkt,
-+				     struct cmdq_client_reg *cmdq_base)
++void mtk_ethdr_layer_config(struct device *dev, unsigned int idx,
++			    struct mtk_plane_state *state,
++			    struct cmdq_pkt *cmdq_pkt)
 +{
-+	unsigned int pre_ultra_h = 156;
-+	unsigned int pre_ultra_l = 104;
-+	unsigned int reg_mask;
-+	unsigned int reg_val;
-+	unsigned int reg;
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
++	struct mtk_plane_pending_state *pending = &state->pending;
++	unsigned int offset = (pending->y << 16) | pending->x;
++	unsigned int mixer_pad_mode = MIXER_INx_MODE_BYPASS;
++	unsigned int alpha_con = 0;
++	unsigned int fmt = 0;
++	unsigned int src_size;
++	bool x_offset_odd = false;
 +
-+	reg = MDP_RDMA_GMCIF_CON;
-+	reg_val = REG_FLD_VAL(FLD_RD_REQ_TYPE, VAL_RD_REQ_TYPE_BURST_8_ACCESS) |
-+		  REG_FLD_VAL(FLD_COMMAND_DIV, 1) |
-+		  REG_FLD_VAL(FLD_EXT_PREULTRA_EN, 1) |
-+		  REG_FLD_VAL(FLD_ULTRA_EN, 0) |
-+		  REG_FLD_VAL(FLD_PRE_ULTRA_EN, 1) |
-+		  REG_FLD_VAL(FLD_EXT_ULTRA_EN, 1);
-+	reg_mask = REG_FLD_MASK(FLD_RD_REQ_TYPE) |
-+		   REG_FLD_MASK(FLD_COMMAND_DIV) |
-+		   REG_FLD_MASK(FLD_EXT_PREULTRA_EN) |
-+		   REG_FLD_MASK(FLD_ULTRA_EN) |
-+		   REG_FLD_MASK(FLD_PRE_ULTRA_EN) |
-+		   REG_FLD_MASK(FLD_EXT_ULTRA_EN);
-+	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
++	dev_dbg(dev, "%s+ idx:%d", __func__, idx);
 +
-+	reg = MDP_RDMA_UTRA_H_CON_0;
-+	reg_val = REG_FLD_VAL(FLD_PREUTRA_H_OFS_0, pre_ultra_h);
-+	reg_mask = REG_FLD_MASK(FLD_PREUTRA_H_OFS_0);
-+	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
++	if (idx >= 4)
++		return;
 +
-+	reg = MDP_RDMA_UTRA_L_CON_0;
-+	reg_val = REG_FLD_VAL(FLD_PREUTRA_L_OFS_0, pre_ultra_l);
-+	reg_mask = REG_FLD_MASK(FLD_PREUTRA_L_OFS_0);
-+	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
++	/* ETHDR is in 1T2P domain, width needs to be 2 pixels align */
++	pending->width = ALIGN_DOWN(pending->width, 2);
++	src_size = (pending->height << 16) | pending->width;
++
++	mtk_ovl_adaptor_layer_config(priv->ovl_adaptor_dev, idx, state, cmdq_pkt);
++
++	if (!pending->enable) {
++		mtk_ddp_write(cmdq_pkt, 0, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(idx));
++		mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_MODE,
++				     idx + 1, MIXER_INx_MODE_BYPASS, cmdq_pkt);
++		mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_BIWIDTH,
++				     idx + 1, 0, cmdq_pkt);
++		return;
++	}
++
++	if (pending->x % 2) {
++		x_offset_odd = true;
++		mixer_pad_mode = MIXER_INx_MODE_EVEN_EXTEND;
++	}
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_MODE,
++			     idx + 1, mixer_pad_mode, cmdq_pkt);
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_BIWIDTH,
++			     idx + 1, pending->width / 2 - 1, cmdq_pkt);
++
++	if (state->base.fb && state->base.fb->format->has_alpha) {
++		alpha_con = MIXER_ALPHA_AEN | MIXER_ALPHA;
++		mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_HDR_ALPHA_SEL,
++				     idx + 1, 0, cmdq_pkt);
++	} else {
++		mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_HDR_ALPHA_SEL,
++				     idx + 1, 1, cmdq_pkt);
++	}
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_ALPHA_ODD, idx + 1,
++			     DEFAULT_9BIT_ALPHA, cmdq_pkt);
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_ALPHA_EVEN, idx + 1,
++			     DEFAULT_9BIT_ALPHA, cmdq_pkt);
++
++	mtk_ddp_write(cmdq_pkt, src_size, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(idx));
++	mtk_ddp_write(cmdq_pkt, (x_offset_odd << 31) | offset, &mixer->cmdq_base,
++		      mixer->regs, MIX_L_SRC_OFFSET(idx));
++	mtk_ddp_write_mask(cmdq_pkt, alpha_con, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_CON(idx),
++			   0x1ff);
++	mtk_ddp_write_mask(cmdq_pkt, BIT(idx), &mixer->cmdq_base, mixer->regs, MIX_SRC_CON,
++			   BIT(idx));
 +}
 +
-+void mtk_mdp_rdma_start(void __iomem *base, struct cmdq_pkt *cmdq_pkt,
-+			struct cmdq_client_reg *cmdq_base)
++void mtk_ethdr_config(struct device *dev, unsigned int w,
++		      unsigned int h, unsigned int vrefresh,
++		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
 +{
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_ROT_ENABLE, 1), cmdq_base,
-+			   base, MDP_RDMA_EN, REG_FLD_MASK(FLD_ROT_ENABLE));
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	struct mtk_ethdr_comp *vdo_fe0 = &priv->ethdr_comp[ETHDR_VDO_FE0];
++	struct mtk_ethdr_comp *vdo_fe1 = &priv->ethdr_comp[ETHDR_VDO_FE1];
++	struct mtk_ethdr_comp *gfx_fe0 = &priv->ethdr_comp[ETHDR_GFX_FE0];
++	struct mtk_ethdr_comp *gfx_fe1 = &priv->ethdr_comp[ETHDR_GFX_FE1];
++	struct mtk_ethdr_comp *vdo_be = &priv->ethdr_comp[ETHDR_VDO_BE];
++	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
++
++	dev_dbg(dev, "%s-w:%d, h:%d\n", __func__, w, h);
++
++	mtk_ddp_write(cmdq_pkt, HDR_VDO_FE_0804_BYPASS_ALL, &vdo_fe0->cmdq_base,
++		      vdo_fe0->regs, HDR_VDO_FE_0804_HDR_DM_FE);
++
++	mtk_ddp_write(cmdq_pkt, HDR_VDO_FE_0804_BYPASS_ALL, &vdo_fe1->cmdq_base,
++		      vdo_fe1->regs, HDR_VDO_FE_0804_HDR_DM_FE);
++
++	mtk_ddp_write(cmdq_pkt, HDR_GFX_FE_0204_BYPASS_ALL, &gfx_fe0->cmdq_base,
++		      gfx_fe0->regs, HDR_GFX_FE_0204_GFX_HDR_FE);
++
++	mtk_ddp_write(cmdq_pkt, HDR_GFX_FE_0204_BYPASS_ALL, &gfx_fe1->cmdq_base,
++		      gfx_fe1->regs, HDR_GFX_FE_0204_GFX_HDR_FE);
++
++	mtk_ddp_write(cmdq_pkt, HDR_VDO_BE_0204_BYPASS_ALL, &vdo_be->cmdq_base,
++		      vdo_be->regs, HDR_VDO_BE_0204_VDO_DM_BE);
++
++	mtk_ddp_write(cmdq_pkt, MIX_FUNC_DCM_ENABLE, &mixer->cmdq_base, mixer->regs, MIX_FUNC_DCM0);
++	mtk_ddp_write(cmdq_pkt, MIX_FUNC_DCM_ENABLE, &mixer->cmdq_base, mixer->regs, MIX_FUNC_DCM1);
++	mtk_ddp_write(cmdq_pkt, (h << 16 | w), &mixer->cmdq_base, mixer->regs, MIX_ROI_SIZE);
++	mtk_ddp_write(cmdq_pkt, BGCLR_BLACK, &mixer->cmdq_base, mixer->regs, MIX_ROI_BGCLR);
++	mtk_ddp_write(cmdq_pkt, NON_PREMULTI_SOURCE, &mixer->cmdq_base, mixer->regs,
++		      MIX_L_SRC_CON(0));
++	mtk_ddp_write(cmdq_pkt, NON_PREMULTI_SOURCE, &mixer->cmdq_base, mixer->regs,
++		      MIX_L_SRC_CON(1));
++	mtk_ddp_write(cmdq_pkt, NON_PREMULTI_SOURCE, &mixer->cmdq_base, mixer->regs,
++		      MIX_L_SRC_CON(2));
++	mtk_ddp_write(cmdq_pkt, NON_PREMULTI_SOURCE, &mixer->cmdq_base, mixer->regs,
++		      MIX_L_SRC_CON(3));
++	mtk_ddp_write(cmdq_pkt, 0x0, &mixer->cmdq_base, mixer->regs, MIX_L_SRC_SIZE(0));
++	mtk_ddp_write(cmdq_pkt, OUTPUT_NO_RND | SOURCE_RGB_SEL | BACKGROUND_RELAY,
++		      &mixer->cmdq_base, mixer->regs, MIX_DATAPATH_CON);
++	mtk_ddp_write_mask(cmdq_pkt, MIX_SRC_L0_EN, &mixer->cmdq_base, mixer->regs,
++			   MIX_SRC_CON, MIX_SRC_L0_EN);
++
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_HDR_BE_ASYNC_WIDTH, 0,
++			     w / 2, cmdq_pkt);
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_HDR_BE_ASYNC_HEIGHT, 0,
++			     h, cmdq_pkt);
++	mtk_mmsys_ddp_config(priv->mmsys_dev, MMSYS_CONFIG_MIXER_IN_CH_SWAP, 4, 0, cmdq_pkt);
 +}
 +
-+void mtk_mdp_rdma_stop(void __iomem *base, struct cmdq_pkt *cmdq_pkt,
-+		       struct cmdq_client_reg *cmdq_base)
++void mtk_ethdr_start(struct device *dev)
 +{
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_ROT_ENABLE, 0), cmdq_base,
-+			   base, MDP_RDMA_EN, REG_FLD_MASK(FLD_ROT_ENABLE));
-+	mtk_ddp_write(cmdq_pkt, 1, cmdq_base, base, MDP_RDMA_RESET);
-+	mtk_ddp_write(cmdq_pkt, 0, cmdq_base, base, MDP_RDMA_RESET);
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
++
++	writel(1, mixer->regs + MIX_EN);
 +}
 +
-+void mtk_mdp_rdma_config(void __iomem *base, struct mtk_mdp_rdma_cfg *cfg,
-+			 struct cmdq_pkt *cmdq_pkt,
-+			 struct cmdq_client_reg *cmdq_base)
++void mtk_ethdr_stop(struct device *dev)
 +{
-+	const struct drm_format_info *fmt_info = drm_format_info(cfg->fmt);
-+	unsigned int src_pitch_y = cfg->pitch;
-+	unsigned int bpp_y = fmt_info->cpp[0] * 8;
-+	unsigned int offset_y = 0;
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
 +
-+	mtk_mdp_rdma_fifo_config(base, cmdq_pkt, cmdq_base);
++	mtk_ovl_adaptor_stop(priv->ovl_adaptor_dev);
 +
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_UNIFORM_CONFIG, 1),
-+			   cmdq_base, base, MDP_RDMA_SRC_CON,
-+			   REG_FLD_MASK(FLD_UNIFORM_CONFIG));
-+	mtk_ddp_write_mask(cmdq_pkt, rdma_fmt_convert(cfg->fmt), cmdq_base,
-+			   base, MDP_RDMA_SRC_CON, REG_FLD_MASK(FLD_SWAP) |
-+			   REG_FLD_MASK(FLD_SRC_FORMAT) |
-+			   REG_FLD_MASK(FLD_BIT_NUMBER));
-+
-+	if (!cfg->csc_enable && fmt_info->has_alpha)
-+		mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_OUTPUT_ARGB, 1),
-+				   cmdq_base, base, MDP_RDMA_SRC_CON,
-+				   REG_FLD_MASK(FLD_OUTPUT_ARGB));
-+	else
-+		mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_OUTPUT_ARGB, 0),
-+				   cmdq_base, base, MDP_RDMA_SRC_CON,
-+				   REG_FLD_MASK(FLD_OUTPUT_ARGB));
-+
-+	mtk_ddp_write_mask(cmdq_pkt, cfg->addr0, cmdq_base, base,
-+			   MDP_RDMA_SRC_BASE_0, REG_FLD_MASK(FLD_SRC_BASE_0));
-+
-+	mtk_ddp_write_mask(cmdq_pkt, src_pitch_y, cmdq_base, base,
-+			   MDP_RDMA_MF_BKGD_SIZE_IN_BYTE,
-+			   REG_FLD_MASK(FLD_MF_BKGD_WB));
-+
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_AFBC_YUV_TRANSFORM, 0),
-+			   cmdq_base, base, MDP_RDMA_COMP_CON,
-+			   REG_FLD_MASK(FLD_AFBC_YUV_TRANSFORM));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_UFBDC_EN, 0), cmdq_base,
-+			   base, MDP_RDMA_COMP_CON, REG_FLD_MASK(FLD_UFBDC_EN));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_AFBC_EN, 0), cmdq_base,
-+			   base, MDP_RDMA_COMP_CON, REG_FLD_MASK(FLD_AFBC_EN));
-+
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_OUTPUT_10B, 1), cmdq_base,
-+			   base, MDP_RDMA_CON, REG_FLD_MASK(FLD_OUTPUT_10B));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_SIMPLE_MODE, 1), cmdq_base,
-+			   base, MDP_RDMA_CON, REG_FLD_MASK(FLD_SIMPLE_MODE));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_TRANS_EN, cfg->csc_enable),
-+			   cmdq_base, base, MDP_RDMA_TRANSFORM_0,
-+			   REG_FLD_MASK(FLD_TRANS_EN));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_INT_MATRIX_SEL, cfg->profile),
-+			   cmdq_base, base, MDP_RDMA_TRANSFORM_0,
-+			   REG_FLD_MASK(FLD_INT_MATRIX_SEL));
-+
-+	offset_y  = (cfg->x_left * bpp_y >> 3) + cfg->y_top * src_pitch_y;
-+
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_SRC_OFFSET_0, offset_y),
-+			   cmdq_base, base, MDP_RDMA_SRC_OFFSET_0,
-+			   REG_FLD_MASK(FLD_SRC_OFFSET_0));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_MF_SRC_W, cfg->width),
-+			   cmdq_base, base, MDP_RDMA_MF_SRC_SIZE,
-+			   REG_FLD_MASK(FLD_MF_SRC_W));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_MF_SRC_H, cfg->height),
-+			   cmdq_base, base, MDP_RDMA_MF_SRC_SIZE,
-+			   REG_FLD_MASK(FLD_MF_SRC_H));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_MF_CLIP_W, cfg->width),
-+			   cmdq_base, base, MDP_RDMA_MF_CLIP_SIZE,
-+			   REG_FLD_MASK(FLD_MF_CLIP_W));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_MF_CLIP_H, cfg->height),
-+			   cmdq_base, base, MDP_RDMA_MF_CLIP_SIZE,
-+			   REG_FLD_MASK(FLD_MF_CLIP_H));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_LINE_THRESHOLD, cfg->height),
-+			   cmdq_base, base, MDP_RDMA_TARGET_LINE,
-+			   REG_FLD_MASK(FLD_LINE_THRESHOLD));
-+	mtk_ddp_write_mask(cmdq_pkt, REG_FLD_VAL(FLD_TARGET_LINE_EN, 1),
-+			   cmdq_base, base, MDP_RDMA_TARGET_LINE,
-+			   REG_FLD_MASK(FLD_TARGET_LINE_EN));
++	writel(0, mixer->regs + MIX_EN);
++	writel(1, mixer->regs + MIX_RST);
++	reset_control_reset(devm_reset_control_array_get(dev, true, true));
++	writel(0, mixer->regs + MIX_RST);
 +}
-diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-new file mode 100644
-index 000000000000..50fa6e18d244
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
-@@ -0,0 +1,39 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
 +
-+#ifndef __MTK_MDP_RDMA_H__
-+#define __MTK_MDP_RDMA_H__
++int mtk_ethdr_clk_enable(struct device *dev)
++{
++	int ret;
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
 +
-+enum mtk_mdp_rdma_profile {
-+	RDMA_CSC_RGB_TO_JPEG = 0,
-+	RDMA_CSC_RGB_TO_FULL709 = 1,
-+	RDMA_CSC_RGB_TO_BT601 = 2,
-+	RDMA_CSC_RGB_TO_BT709 = 3,
-+	RDMA_CSC_JPEG_TO_RGB = 4,
-+	RDMA_CSC_FULL709_TO_RGB = 5,
-+	RDMA_CSC_BT601_TO_RGB = 6,
-+	RDMA_CSC_BT709_TO_RGB = 7,
-+	RDMA_CSC_JPEG_TO_BT601 = 8,
-+	RDMA_CSC_JPEG_TO_BT709 = 9,
-+	RDMA_CSC_BT601_TO_JPEG = 10,
-+	RDMA_CSC_BT709_TO_BT601 = 11,
-+	RDMA_CSC_BT601_TO_BT709 = 12
++	mtk_ovl_adaptor_clk_enable(priv->ovl_adaptor_dev);
++
++	ret = clk_bulk_prepare_enable(ETHDR_CLK_NUM, priv->ethdr_clk);
++	if (ret)
++		dev_err(dev,
++			"ethdr_clk prepare enable failed\n");
++	return ret;
++}
++
++void mtk_ethdr_clk_disable(struct device *dev)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++
++	mtk_ovl_adaptor_clk_disable(priv->ovl_adaptor_dev);
++
++	clk_bulk_disable_unprepare(ETHDR_CLK_NUM, priv->ethdr_clk);
++}
++
++unsigned int mtk_ethdr_layer_nr(struct device *dev)
++{
++	return 4;
++}
++
++static int mtk_ethdr_bind(struct device *dev, struct device *master,
++			  void *data)
++{
++	struct mtk_ethdr *priv = dev_get_drvdata(dev);
++	struct platform_device *ovl_adaptor;
++	struct drm_device *drm_dev = data;
++	struct mtk_drm_private *drm_private = drm_dev->dev_private;
++
++	priv->mmsys_dev = drm_private->mmsys_dev;
++
++	/* Bring up ovl adaptor rdma and merge */
++	ovl_adaptor = platform_device_register_data(dev, "mediatek-disp-ovl-adaptor",
++						    PLATFORM_DEVID_AUTO, (void *)priv->mmsys_dev,
++						    sizeof(*priv->mmsys_dev));
++	if (IS_ERR(ovl_adaptor))
++		return PTR_ERR(ovl_adaptor);
++
++	priv->ovl_adaptor_dev = &ovl_adaptor->dev;
++
++	return 0;
++}
++
++static void mtk_ethdr_unbind(struct device *dev, struct device *master, void *data)
++{
++}
++
++static const struct component_ops mtk_ethdr_component_ops = {
++	.bind	= mtk_ethdr_bind,
++	.unbind = mtk_ethdr_unbind,
 +};
 +
-+struct mtk_mdp_rdma_cfg {
-+	enum mtk_mdp_rdma_profile profile;
-+	unsigned int source_width;
-+	unsigned int pitch;
-+	unsigned int addr0;
-+	unsigned int width;
-+	unsigned int height;
-+	unsigned int x_left;
-+	unsigned int y_top;
-+	bool csc_enable;
-+	int fmt;
++static int mtk_ethdr_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_ethdr *priv;
++	int ret;
++	int i;
++
++	dev_info(dev, "%s+\n", __func__);
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	for (i = 0; i < ETHDR_ID_MAX; i++) {
++		priv->ethdr_comp[i].dev = dev;
++		priv->ethdr_comp[i].regs = of_iomap(dev->of_node, i);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++		ret = cmdq_dev_get_client_reg(dev,
++					      &priv->ethdr_comp[i].cmdq_base, i);
++		if (ret)
++			dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
++#endif
++		dev_info(dev, "[DRM]regs:0x%x, node:%s\n",
++			 priv->ethdr_comp[i].regs, ethdr_comp_str[i]);
++	}
++
++	for (i = 0; i < ETHDR_CLK_NUM; i++)
++		priv->ethdr_clk[i].id = ethdr_clk_str[i];
++	ret = devm_clk_bulk_get_optional(dev, ETHDR_CLK_NUM, priv->ethdr_clk);
++	if (ret)
++		return ret;
++
++	priv->irq = platform_get_irq(pdev, 0);
++	if (priv->irq < 0)
++		priv->irq = 0;
++
++	if (priv->irq) {
++		ret = devm_request_irq(dev, priv->irq, mtk_ethdr_irq_handler,
++				       IRQF_TRIGGER_NONE, dev_name(dev), priv);
++		if (ret < 0) {
++			dev_err(dev, "Failed to request irq %d: %d\n", priv->irq, ret);
++			return ret;
++		}
++	}
++
++	spin_lock_init(&priv->lock);
++	platform_set_drvdata(pdev, priv);
++
++	ret = component_add(dev, &mtk_ethdr_component_ops);
++	if (ret)
++		dev_notice(dev, "Failed to add component: %d\n", ret);
++
++	dev_info(dev, "%s-\n", __func__);
++	pm_runtime_enable(dev);
++
++	return ret;
++}
++
++static int mtk_ethdr_remove(struct platform_device *pdev)
++{
++	component_del(&pdev->dev, &mtk_ethdr_component_ops);
++	pm_runtime_disable(&pdev->dev);
++	return 0;
++}
++
++static const struct of_device_id mtk_ethdr_driver_dt_match[] = {
++	{ .compatible = "mediatek,mt8195-disp-ethdr"},
++	{},
 +};
 +
-+#endif // __MTK_MDP_RDMA_H__
++MODULE_DEVICE_TABLE(of, mtk_ethdr_driver_dt_match);
 +
++struct platform_driver mtk_ethdr_driver = {
++	.probe = mtk_ethdr_probe,
++	.remove = mtk_ethdr_remove,
++	.driver = {
++			.name = "mediatek-disp-ethdr",
++			.owner = THIS_MODULE,
++			.of_match_table = mtk_ethdr_driver_dt_match,
++		},
++};
 -- 
 2.18.0
 _______________________________________________
