@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68998C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 10:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03F9CC432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 10:33:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 292BF6103A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 10:33:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 292BF6103A
+	by mail.kernel.org (Postfix) with ESMTPS id C1EDC6103A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 10:33:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C1EDC6103A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ineozBYq90HhyH/x7ikmNIJRO0X1p48ta0z3mXzyGQY=; b=VyepGYMqCpPKm3
-	PoU//ONdP9kRkLN1E0OiasbuffI2/Hkt1w8kgCCI+wSxQ11JdPTNeCWyMpEc17zEi/Cgt031OSbID
-	sF3LahMBdTrYeBtHaHrQRaaR6yka+FA1xLY5KvWbSZC5KoAWV4/tmFP6bxt3gBITYcN87ji40L9M/
-	pTOlROWX8S0vCIuJXdtvK1FoK9EXX/nXi3fEQmquQbegR0L5b9CNFVm8CBWhA8xmGCF0oWVwYQCm5
-	xvIU6nGm9cLGbqW34c3kyrh43RdeSuT76zZ5l5xD8Hyvmqrh2n/RAv8Hf2OI5FIRMlbMnsHZEzBue
-	sk9RydGg1yykeUuP4hPQ==;
+	List-Owner; bh=7Iz2hibbgxIwfJriyeLfj7mbsMFI8zCmCWFsXt2Krfc=; b=yV2kmgWxy6LDbA
+	C9J7DHIc8+RkXG/HkklSyWPDQS7FjcyksHitzBPhDphMPTE7rJFRa5lZszR80bqC7iMMEcTh9kaQV
+	ZyVgMah0dsu2wCoUcgEc0oytVoYEEE8WxI27Ds/ejcOh9/fNUL21azTEbYNutnyihjaSy9uAvEE3T
+	lqjGTJBAeINNuCSwuyJih5zHR9GKpX8ss/iP5T+AOifeHee30QiB4EH2j/rOdYb53DnkNWiOkdaMt
+	Wd7DoPu6ztXQ16uGr1/fUTG4lBvfBIATY9/1zcUmBY3LZ6PmPdrpwvGYuSja9fZL+VcjGUx8/NwpT
+	iYoa01lQDmc2irExdQzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGIsf-0058JR-92; Wed, 18 Aug 2021 10:33:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mGIsv-0058Qu-Rb; Wed, 18 Aug 2021 10:33:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGIs2-00586W-W6; Wed, 18 Aug 2021 10:32:34 +0000
-X-UUID: c0570302053d421687f5472115907346-20210818
+ id 1mGIs3-00587k-8b; Wed, 18 Aug 2021 10:32:35 +0000
+X-UUID: 491fe20049b54e4e86504c79435b2abf-20210818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=IXSmtchYV38Gja073mGHduofqeymDTyyl5YgCc1/tmk=; 
- b=TFTsm3j1r1OETUGXih8q399Jfo046silmjyfHuyXvsF989YVBFFuoX9SEpHQsEO6Zs4pgB418DigYPglt9hC3xWSdRIApxcU7N0978JtFfFcXouFzTT4+8toUdJgGWXFS9pb6qs2sshs6FKS+Xzpj56is/eafdCLRdG1Hno53f8=;
-X-UUID: c0570302053d421687f5472115907346-20210818
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ bh=jAACT/u3ryxjbgKwnVyDlaI5Uq379l6+zwVkwtXSpQQ=; 
+ b=u1UPsS9DuEarWdb55Cqs7gv/KEyRLOlO2nUtJ7AK24Uk/LT8p5GMxqPf25Ak15FLndL+subyv8k6bXJ3mfTGWwAPbNoou0ezvPaEAjcHjhdRA5YlSMFann1UdJuD3KEUAPk6TZKEr2z7NVPTOISgkUk23756cefEgeuYG0USUfc=;
+X-UUID: 491fe20049b54e4e86504c79435b2abf-20210818
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 823920115; Wed, 18 Aug 2021 03:32:24 -0700
+ with ESMTP id 1525124922; Wed, 18 Aug 2021 03:32:25 -0700
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 03:32:23 -0700
+ 15.0.1497.2; Wed, 18 Aug 2021 03:32:24 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 18:32:21 +0800
+ 15.0.1497.2; Wed, 18 Aug 2021 18:32:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 18 Aug 2021 18:32:21 +0800
+ Frontend Transport; Wed, 18 Aug 2021 18:32:22 +0800
 From: Trevor Wu <trevor.wu@mediatek.com>
 To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
  <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
@@ -64,17 +64,17 @@ CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <bicycle.tsai@mediatek.com>, <jiaxin.yu@mediatek.com>, <cychiang@google.com>, 
  <aaronyu@google.com>, <wenst@chromium.org>
-Subject: [PATCH v4 02/11] ASoC: mediatek: mt8195: support audsys clock control
-Date: Wed, 18 Aug 2021 18:32:06 +0800
-Message-ID: <20210818103215.9186-3-trevor.wu@mediatek.com>
+Subject: [PATCH v4 07/11] dt-bindings: mediatek: mt8195: add audio afe document
+Date: Wed, 18 Aug 2021 18:32:11 +0800
+Message-ID: <20210818103215.9186-8-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210818103215.9186-1-trevor.wu@mediatek.com>
 References: <20210818103215.9186-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_033231_071438_6C09A6AF 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20210818_033231_366248_7F1F207D 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,360 +91,219 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds mt8195 audio cg control.
-Audio clock gates are registered to CCF for reference count and
-clock parent management.
+This patch adds mt8195 audio afe document.
+
+In order to support dynamic clock reparenting for ADDA and ETDM, PLL
+and MUX clocks are requested even though they are not consumed by afe
+directly.
 
 Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-audsys-clk.c | 214 ++++++++++++++++++
- sound/soc/mediatek/mt8195/mt8195-audsys-clk.h |  15 ++
- .../soc/mediatek/mt8195/mt8195-audsys-clkid.h |  93 ++++++++
- 3 files changed, 322 insertions(+)
- create mode 100644 sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
- create mode 100644 sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
- create mode 100644 sound/soc/mediatek/mt8195/mt8195-audsys-clkid.h
+This patch depends on the following series that have not been accepted.
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
+[1] Mediatek MT8195 clock support
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=501923
+(dt-bindings/clock/mt8195-clk.h is included)
+
+[2] Mediatek MT8195 power domain support
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=500709
+(dt-bindings/power/mt8195-power.h is included)
+---
+---
+ .../bindings/sound/mt8195-afe-pcm.yaml        | 184 ++++++++++++++++++
+ 1 file changed, 184 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml
+
+diff --git a/Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml
 new file mode 100644
-index 000000000000..740aa6ddda0e
+index 000000000000..53e9434a6d9d
 --- /dev/null
-+++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
-@@ -0,0 +1,214 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * mt8195-audsys-clk.h  --  Mediatek 8195 audsys clock control
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Trevor Wu <trevor.wu@mediatek.com>
-+ */
++++ b/Documentation/devicetree/bindings/sound/mt8195-afe-pcm.yaml
+@@ -0,0 +1,184 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/mt8195-afe-pcm.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#include <linux/clk.h>
-+#include <linux/clk-provider.h>
-+#include <linux/clkdev.h>
-+#include "mt8195-afe-common.h"
-+#include "mt8195-audsys-clk.h"
-+#include "mt8195-audsys-clkid.h"
-+#include "mt8195-reg.h"
++title: Mediatek AFE PCM controller for mt8195
 +
-+struct afe_gate {
-+	int id;
-+	const char *name;
-+	const char *parent_name;
-+	int reg;
-+	u8 bit;
-+	const struct clk_ops *ops;
-+	unsigned long flags;
-+	u8 cg_flags;
-+};
++maintainers:
++  - Trevor Wu <trevor.wu@mediatek.com>
 +
-+#define GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit, _flags, _cgflags) {\
-+		.id = _id,					\
-+		.name = _name,					\
-+		.parent_name = _parent,				\
-+		.reg = _reg,					\
-+		.bit = _bit,					\
-+		.flags = _flags,				\
-+		.cg_flags = _cgflags,				\
-+	}
++properties:
++  compatible:
++    const: mediatek,mt8195-audio
 +
-+#define GATE_AFE(_id, _name, _parent, _reg, _bit)		\
-+	GATE_AFE_FLAGS(_id, _name, _parent, _reg, _bit,		\
-+		       CLK_SET_RATE_PARENT, CLK_GATE_SET_TO_DISABLE)
++  reg:
++    maxItems: 1
 +
-+#define GATE_AUD0(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON0, _bit)
++  interrupts:
++    maxItems: 1
 +
-+#define GATE_AUD1(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON1, _bit)
++  mediatek,topckgen:
++    $ref: "/schemas/types.yaml#/definitions/phandle"
++    description: The phandle of the mediatek topckgen controller
 +
-+#define GATE_AUD3(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON3, _bit)
++  power-domains:
++    maxItems: 1
 +
-+#define GATE_AUD4(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON4, _bit)
++  clocks:
++    items:
++      - description: 26M clock
++      - description: audio pll1 clock
++      - description: audio pll2 clock
++      - description: clock divider for i2si1_mck
++      - description: clock divider for i2si2_mck
++      - description: clock divider for i2so1_mck
++      - description: clock divider for i2so2_mck
++      - description: clock divider for dptx_mck
++      - description: a1sys hoping clock
++      - description: audio intbus clock
++      - description: audio hires clock
++      - description: audio local bus clock
++      - description: mux for dptx_mck
++      - description: mux for i2so1_mck
++      - description: mux for i2so2_mck
++      - description: mux for i2si1_mck
++      - description: mux for i2si2_mck
++      - description: audio infra 26M clock
++      - description: infra bus clock
 +
-+#define GATE_AUD5(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON5, _bit)
++  clock-names:
++    items:
++      - const: clk26m
++      - const: apll1_ck
++      - const: apll2_ck
++      - const: apll12_div0
++      - const: apll12_div1
++      - const: apll12_div2
++      - const: apll12_div3
++      - const: apll12_div9
++      - const: a1sys_hp_sel
++      - const: aud_intbus_sel
++      - const: audio_h_sel
++      - const: audio_local_bus_sel
++      - const: dptx_m_sel
++      - const: i2so1_m_sel
++      - const: i2so2_m_sel
++      - const: i2si1_m_sel
++      - const: i2si2_m_sel
++      - const: infra_ao_audio_26m_b
++      - const: scp_adsp_audiodsp
 +
-+#define GATE_AUD6(_id, _name, _parent, _bit)			\
-+	GATE_AFE(_id, _name, _parent, AUDIO_TOP_CON6, _bit)
++  mediatek,etdm-in1-chn-disabled:
++    $ref: /schemas/types.yaml#/definitions/uint8-array
++    maxItems: 24
++    description: Specify which input channel should be disabled.
 +
-+static const struct afe_gate aud_clks[CLK_AUD_NR_CLK] = {
-+	/* AUD0 */
-+	GATE_AUD0(CLK_AUD_AFE, "aud_afe", "a1sys_hp_sel", 2),
-+	GATE_AUD0(CLK_AUD_LRCK_CNT, "aud_lrck_cnt", "a1sys_hp_sel", 4),
-+	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_APLL, "aud_spdifin_tuner_apll", "apll4_sel", 10),
-+	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_DBG, "aud_spdifin_tuner_dbg", "apll4_sel", 11),
-+	GATE_AUD0(CLK_AUD_UL_TML, "aud_ul_tml", "a1sys_hp_sel", 18),
-+	GATE_AUD0(CLK_AUD_APLL1_TUNER, "aud_apll1_tuner", "apll1_sel", 19),
-+	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner", "apll2_sel", 20),
-+	GATE_AUD0(CLK_AUD_TOP0_SPDF, "aud_top0_spdf", "aud_iec_sel", 21),
-+	GATE_AUD0(CLK_AUD_APLL, "aud_apll", "apll1_sel", 23),
-+	GATE_AUD0(CLK_AUD_APLL2, "aud_apll2", "apll2_sel", 24),
-+	GATE_AUD0(CLK_AUD_DAC, "aud_dac", "a1sys_hp_sel", 25),
-+	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis", "a1sys_hp_sel", 26),
-+	GATE_AUD0(CLK_AUD_TML, "aud_tml", "a1sys_hp_sel", 27),
-+	GATE_AUD0(CLK_AUD_ADC, "aud_adc", "a1sys_hp_sel", 28),
-+	GATE_AUD0(CLK_AUD_DAC_HIRES, "aud_dac_hires", "audio_h_sel", 31),
++  mediatek,etdm-in2-chn-disabled:
++    $ref: /schemas/types.yaml#/definitions/uint8-array
++    maxItems: 16
++    description: Specify which input channel should be disabled.
 +
-+	/* AUD1 */
-+	GATE_AUD1(CLK_AUD_A1SYS_HP, "aud_a1sys_hp", "a1sys_hp_sel", 2),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC1, "aud_afe_dmic1", "a1sys_hp_sel", 10),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC2, "aud_afe_dmic2", "a1sys_hp_sel", 11),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC3, "aud_afe_dmic3", "a1sys_hp_sel", 12),
-+	GATE_AUD1(CLK_AUD_AFE_DMIC4, "aud_afe_dmic4", "a1sys_hp_sel", 13),
-+	GATE_AUD1(CLK_AUD_AFE_26M_DMIC_TM, "aud_afe_26m_dmic_tm", "a1sys_hp_sel", 14),
-+	GATE_AUD1(CLK_AUD_UL_TML_HIRES, "aud_ul_tml_hires", "audio_h_sel", 16),
-+	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires", "audio_h_sel", 17),
-+	GATE_AUD1(CLK_AUD_ADDA6_ADC, "aud_adda6_adc", "a1sys_hp_sel", 18),
-+	GATE_AUD1(CLK_AUD_ADDA6_ADC_HIRES, "aud_adda6_adc_hires", "audio_h_sel", 19),
++patternProperties:
++  "^mediatek,etdm-in[1-2]-mclk-always-on-rate-hz$":
++    description: Specify etdm in mclk output rate for always on case.
 +
-+	/* AUD3 */
-+	GATE_AUD3(CLK_AUD_LINEIN_TUNER, "aud_linein_tuner", "apll5_sel", 5),
-+	GATE_AUD3(CLK_AUD_EARC_TUNER, "aud_earc_tuner", "apll3_sel", 7),
++  "^mediatek,etdm-out[1-3]-mclk-always-on-rate-hz$":
++    description: Specify etdm out mclk output rate for always on case.
 +
-+	/* AUD4 */
-+	GATE_AUD4(CLK_AUD_I2SIN, "aud_i2sin", "a1sys_hp_sel", 0),
-+	GATE_AUD4(CLK_AUD_TDM_IN, "aud_tdm_in", "a1sys_hp_sel", 1),
-+	GATE_AUD4(CLK_AUD_I2S_OUT, "aud_i2s_out", "a1sys_hp_sel", 6),
-+	GATE_AUD4(CLK_AUD_TDM_OUT, "aud_tdm_out", "a1sys_hp_sel", 7),
-+	GATE_AUD4(CLK_AUD_HDMI_OUT, "aud_hdmi_out", "a1sys_hp_sel", 8),
-+	GATE_AUD4(CLK_AUD_ASRC11, "aud_asrc11", "a1sys_hp_sel", 16),
-+	GATE_AUD4(CLK_AUD_ASRC12, "aud_asrc12", "a1sys_hp_sel", 17),
-+	GATE_AUD4(CLK_AUD_MULTI_IN, "aud_multi_in", "mphone_slave_b", 19),
-+	GATE_AUD4(CLK_AUD_INTDIR, "aud_intdir", "intdir_sel", 20),
-+	GATE_AUD4(CLK_AUD_A1SYS, "aud_a1sys", "a1sys_hp_sel", 21),
-+	GATE_AUD4(CLK_AUD_A2SYS, "aud_a2sys", "a2sys_sel", 22),
-+	GATE_AUD4(CLK_AUD_PCMIF, "aud_pcmif", "a1sys_hp_sel", 24),
-+	GATE_AUD4(CLK_AUD_A3SYS, "aud_a3sys", "a3sys_sel", 30),
-+	GATE_AUD4(CLK_AUD_A4SYS, "aud_a4sys", "a4sys_sel", 31),
++  "^mediatek,etdm-in[1-2]-multi-pin-mode$":
++    type: boolean
++    description: if present, the etdm data mode is I2S.
 +
-+	/* AUD5 */
-+	GATE_AUD5(CLK_AUD_MEMIF_UL1, "aud_memif_ul1", "a1sys_hp_sel", 0),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL2, "aud_memif_ul2", "a1sys_hp_sel", 1),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL3, "aud_memif_ul3", "a1sys_hp_sel", 2),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL4, "aud_memif_ul4", "a1sys_hp_sel", 3),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL5, "aud_memif_ul5", "a1sys_hp_sel", 4),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL6, "aud_memif_ul6", "a1sys_hp_sel", 5),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL8, "aud_memif_ul8", "a1sys_hp_sel", 7),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL9, "aud_memif_ul9", "a1sys_hp_sel", 8),
-+	GATE_AUD5(CLK_AUD_MEMIF_UL10, "aud_memif_ul10", "a1sys_hp_sel", 9),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL2, "aud_memif_dl2", "a1sys_hp_sel", 18),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL3, "aud_memif_dl3", "a1sys_hp_sel", 19),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL6, "aud_memif_dl6", "a1sys_hp_sel", 22),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL7, "aud_memif_dl7", "a1sys_hp_sel", 23),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL8, "aud_memif_dl8", "a1sys_hp_sel", 24),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL10, "aud_memif_dl10", "a1sys_hp_sel", 26),
-+	GATE_AUD5(CLK_AUD_MEMIF_DL11, "aud_memif_dl11", "a1sys_hp_sel", 27),
++  "^mediatek,etdm-out[1-3]-multi-pin-mode$":
++    type: boolean
++    description: if present, the etdm data mode is I2S.
 +
-+	/* AUD6 */
-+	GATE_AUD6(CLK_AUD_GASRC0, "aud_gasrc0", "asm_h_sel", 0),
-+	GATE_AUD6(CLK_AUD_GASRC1, "aud_gasrc1", "asm_h_sel", 1),
-+	GATE_AUD6(CLK_AUD_GASRC2, "aud_gasrc2", "asm_h_sel", 2),
-+	GATE_AUD6(CLK_AUD_GASRC3, "aud_gasrc3", "asm_h_sel", 3),
-+	GATE_AUD6(CLK_AUD_GASRC4, "aud_gasrc4", "asm_h_sel", 4),
-+	GATE_AUD6(CLK_AUD_GASRC5, "aud_gasrc5", "asm_h_sel", 5),
-+	GATE_AUD6(CLK_AUD_GASRC6, "aud_gasrc6", "asm_h_sel", 6),
-+	GATE_AUD6(CLK_AUD_GASRC7, "aud_gasrc7", "asm_h_sel", 7),
-+	GATE_AUD6(CLK_AUD_GASRC8, "aud_gasrc8", "asm_h_sel", 8),
-+	GATE_AUD6(CLK_AUD_GASRC9, "aud_gasrc9", "asm_h_sel", 9),
-+	GATE_AUD6(CLK_AUD_GASRC10, "aud_gasrc10", "asm_h_sel", 10),
-+	GATE_AUD6(CLK_AUD_GASRC11, "aud_gasrc11", "asm_h_sel", 11),
-+	GATE_AUD6(CLK_AUD_GASRC12, "aud_gasrc12", "asm_h_sel", 12),
-+	GATE_AUD6(CLK_AUD_GASRC13, "aud_gasrc13", "asm_h_sel", 13),
-+	GATE_AUD6(CLK_AUD_GASRC14, "aud_gasrc14", "asm_h_sel", 14),
-+	GATE_AUD6(CLK_AUD_GASRC15, "aud_gasrc15", "asm_h_sel", 15),
-+	GATE_AUD6(CLK_AUD_GASRC16, "aud_gasrc16", "asm_h_sel", 16),
-+	GATE_AUD6(CLK_AUD_GASRC17, "aud_gasrc17", "asm_h_sel", 17),
-+	GATE_AUD6(CLK_AUD_GASRC18, "aud_gasrc18", "asm_h_sel", 18),
-+	GATE_AUD6(CLK_AUD_GASRC19, "aud_gasrc19", "asm_h_sel", 19),
-+};
++  "^mediatek,etdm-in[1-2]-cowork-source$":
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: |
++      etdm modules can share the same external clock pin. Specify
++      which etdm clock source is required by this etdm in moudule.
++    enum:
++      - 0 # etdm1_in
++      - 1 # etdm2_in
++      - 2 # etdm1_out
++      - 3 # etdm2_out
 +
-+int mt8195_audsys_clk_register(struct mtk_base_afe *afe)
-+{
-+	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk;
-+	struct clk_lookup *cl;
-+	int i;
++  "^mediatek,etdm-out[1-2]-cowork-source$":
++    $ref: /schemas/types.yaml#/definitions/uint32
++    description: |
++      etdm modules can share the same external clock pin. Specify
++      which etdm clock source is required by this etdm out moudule.
++    enum:
++      - 0 # etdm1_in
++      - 1 # etdm2_in
++      - 2 # etdm1_out
++      - 3 # etdm2_out
 +
-+	afe_priv->lookup = devm_kcalloc(afe->dev, CLK_AUD_NR_CLK,
-+					sizeof(*afe_priv->lookup),
-+					GFP_KERNEL);
++required:
++  - compatible
++  - reg
++  - interrupts
++  - mediatek,topckgen
++  - power-domains
++  - clocks
++  - clock-names
 +
-+	if (!afe_priv->lookup)
-+		return -ENOMEM;
++additionalProperties: false
 +
-+	for (i = 0; i < ARRAY_SIZE(aud_clks); i++) {
-+		const struct afe_gate *gate = &aud_clks[i];
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt8195-power.h>
 +
-+		clk = clk_register_gate(afe->dev, gate->name, gate->parent_name,
-+					gate->flags, afe->base_addr + gate->reg,
-+					gate->bit, gate->cg_flags, NULL);
++    afe: mt8195-afe-pcm@10890000 {
++        compatible = "mediatek,mt8195-audio";
++        reg = <0x10890000 0x10000>;
++        interrupts = <GIC_SPI 822 IRQ_TYPE_LEVEL_HIGH 0>;
++        mediatek,topckgen = <&topckgen>;
++        power-domains = <&spm MT8195_POWER_DOMAIN_AUDIO>;
++        clocks = <&clk26m>,
++                 <&topckgen CLK_TOP_APLL1>,
++                 <&topckgen CLK_TOP_APLL2>,
++                 <&topckgen CLK_TOP_APLL12_DIV0>,
++                 <&topckgen CLK_TOP_APLL12_DIV1>,
++                 <&topckgen CLK_TOP_APLL12_DIV2>,
++                 <&topckgen CLK_TOP_APLL12_DIV3>,
++                 <&topckgen CLK_TOP_APLL12_DIV9>,
++                 <&topckgen CLK_TOP_A1SYS_HP_SEL>,
++                 <&topckgen CLK_TOP_AUD_INTBUS_SEL>,
++                 <&topckgen CLK_TOP_AUDIO_H_SEL>,
++                 <&topckgen CLK_TOP_AUDIO_LOCAL_BUS_SEL>,
++                 <&topckgen CLK_TOP_DPTX_M_SEL>,
++                 <&topckgen CLK_TOP_I2SO1_M_SEL>,
++                 <&topckgen CLK_TOP_I2SO2_M_SEL>,
++                 <&topckgen CLK_TOP_I2SI1_M_SEL>,
++                 <&topckgen CLK_TOP_I2SI2_M_SEL>,
++                 <&infracfg_ao CLK_INFRA_AO_AUDIO_26M_B>,
++                 <&scp_adsp CLK_SCP_ADSP_AUDIODSP>;
++        clock-names = "clk26m",
++                      "apll1_ck",
++                      "apll2_ck",
++                      "apll12_div0",
++                      "apll12_div1",
++                      "apll12_div2",
++                      "apll12_div3",
++                      "apll12_div9",
++                      "a1sys_hp_sel",
++                      "aud_intbus_sel",
++                      "audio_h_sel",
++                      "audio_local_bus_sel",
++                      "dptx_m_sel",
++                      "i2so1_m_sel",
++                      "i2so2_m_sel",
++                      "i2si1_m_sel",
++                      "i2si2_m_sel",
++                      "infra_ao_audio_26m_b",
++                      "scp_adsp_audiodsp";
++    };
 +
-+		if (IS_ERR(clk)) {
-+			dev_err(afe->dev, "Failed to register clk %s: %ld\n",
-+				gate->name, PTR_ERR(clk));
-+			continue;
-+		}
-+
-+		/* add clk_lookup for devm_clk_get(SND_SOC_DAPM_CLOCK_SUPPLY) */
-+		cl = kzalloc(sizeof(*cl), GFP_KERNEL);
-+		if (!cl)
-+			return -ENOMEM;
-+
-+		cl->clk = clk;
-+		cl->con_id = gate->name;
-+		cl->dev_id = dev_name(afe->dev);
-+		clkdev_add(cl);
-+
-+		afe_priv->lookup[i] = cl;
-+	}
-+
-+	return 0;
-+}
-+
-+void mt8195_audsys_clk_unregister(struct mtk_base_afe *afe)
-+{
-+	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-+	struct clk *clk;
-+	struct clk_lookup *cl;
-+	int i;
-+
-+	if (!afe_priv)
-+		return;
-+
-+	for (i = 0; i < CLK_AUD_NR_CLK; i++) {
-+		cl = afe_priv->lookup[i];
-+		if (!cl)
-+			continue;
-+
-+		clk = cl->clk;
-+		clk_unregister_gate(clk);
-+
-+		clkdev_drop(cl);
-+	}
-+}
-diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
-new file mode 100644
-index 000000000000..239d31016ba7
---- /dev/null
-+++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.h
-@@ -0,0 +1,15 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8195-audsys-clk.h  --  Mediatek 8195 audsys clock definition
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Trevor Wu <trevor.wu@mediatek.com>
-+ */
-+
-+#ifndef _MT8195_AUDSYS_CLK_H_
-+#define _MT8195_AUDSYS_CLK_H_
-+
-+int mt8195_audsys_clk_register(struct mtk_base_afe *afe);
-+void mt8195_audsys_clk_unregister(struct mtk_base_afe *afe);
-+
-+#endif
-diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clkid.h b/sound/soc/mediatek/mt8195/mt8195-audsys-clkid.h
-new file mode 100644
-index 000000000000..4dd0a5c8b8fa
---- /dev/null
-+++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clkid.h
-@@ -0,0 +1,93 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * mt8195-audsys-clkid.h  --  Mediatek 8195 audsys clock id definition
-+ *
-+ * Copyright (c) 2021 MediaTek Inc.
-+ * Author: Trevor Wu <trevor.wu@mediatek.com>
-+ */
-+
-+#ifndef _MT8195_AUDSYS_CLKID_H_
-+#define _MT8195_AUDSYS_CLKID_H_
-+
-+enum{
-+	CLK_AUD_AFE,
-+	CLK_AUD_LRCK_CNT,
-+	CLK_AUD_SPDIFIN_TUNER_APLL,
-+	CLK_AUD_SPDIFIN_TUNER_DBG,
-+	CLK_AUD_UL_TML,
-+	CLK_AUD_APLL1_TUNER,
-+	CLK_AUD_APLL2_TUNER,
-+	CLK_AUD_TOP0_SPDF,
-+	CLK_AUD_APLL,
-+	CLK_AUD_APLL2,
-+	CLK_AUD_DAC,
-+	CLK_AUD_DAC_PREDIS,
-+	CLK_AUD_TML,
-+	CLK_AUD_ADC,
-+	CLK_AUD_DAC_HIRES,
-+	CLK_AUD_A1SYS_HP,
-+	CLK_AUD_AFE_DMIC1,
-+	CLK_AUD_AFE_DMIC2,
-+	CLK_AUD_AFE_DMIC3,
-+	CLK_AUD_AFE_DMIC4,
-+	CLK_AUD_AFE_26M_DMIC_TM,
-+	CLK_AUD_UL_TML_HIRES,
-+	CLK_AUD_ADC_HIRES,
-+	CLK_AUD_ADDA6_ADC,
-+	CLK_AUD_ADDA6_ADC_HIRES,
-+	CLK_AUD_LINEIN_TUNER,
-+	CLK_AUD_EARC_TUNER,
-+	CLK_AUD_I2SIN,
-+	CLK_AUD_TDM_IN,
-+	CLK_AUD_I2S_OUT,
-+	CLK_AUD_TDM_OUT,
-+	CLK_AUD_HDMI_OUT,
-+	CLK_AUD_ASRC11,
-+	CLK_AUD_ASRC12,
-+	CLK_AUD_MULTI_IN,
-+	CLK_AUD_INTDIR,
-+	CLK_AUD_A1SYS,
-+	CLK_AUD_A2SYS,
-+	CLK_AUD_PCMIF,
-+	CLK_AUD_A3SYS,
-+	CLK_AUD_A4SYS,
-+	CLK_AUD_MEMIF_UL1,
-+	CLK_AUD_MEMIF_UL2,
-+	CLK_AUD_MEMIF_UL3,
-+	CLK_AUD_MEMIF_UL4,
-+	CLK_AUD_MEMIF_UL5,
-+	CLK_AUD_MEMIF_UL6,
-+	CLK_AUD_MEMIF_UL8,
-+	CLK_AUD_MEMIF_UL9,
-+	CLK_AUD_MEMIF_UL10,
-+	CLK_AUD_MEMIF_DL2,
-+	CLK_AUD_MEMIF_DL3,
-+	CLK_AUD_MEMIF_DL6,
-+	CLK_AUD_MEMIF_DL7,
-+	CLK_AUD_MEMIF_DL8,
-+	CLK_AUD_MEMIF_DL10,
-+	CLK_AUD_MEMIF_DL11,
-+	CLK_AUD_GASRC0,
-+	CLK_AUD_GASRC1,
-+	CLK_AUD_GASRC2,
-+	CLK_AUD_GASRC3,
-+	CLK_AUD_GASRC4,
-+	CLK_AUD_GASRC5,
-+	CLK_AUD_GASRC6,
-+	CLK_AUD_GASRC7,
-+	CLK_AUD_GASRC8,
-+	CLK_AUD_GASRC9,
-+	CLK_AUD_GASRC10,
-+	CLK_AUD_GASRC11,
-+	CLK_AUD_GASRC12,
-+	CLK_AUD_GASRC13,
-+	CLK_AUD_GASRC14,
-+	CLK_AUD_GASRC15,
-+	CLK_AUD_GASRC16,
-+	CLK_AUD_GASRC17,
-+	CLK_AUD_GASRC18,
-+	CLK_AUD_GASRC19,
-+	CLK_AUD_NR_CLK,
-+};
-+
-+#endif
++...
 -- 
 2.18.0
 _______________________________________________
