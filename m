@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B22BCC4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:21:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DFC21C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:21:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C4C3610C9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:21:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C4C3610C9
+	by mail.kernel.org (Postfix) with ESMTPS id B2DE6610A6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Aug 2021 09:21:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B2DE6610A6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +23,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W4MwaPdi9IjH8K7GtJMYklUrqvfr7V0H1cW46SxV71M=; b=za7sLNQygkDkaM
-	OTIl/VGqfAi8hdTiiuI9eKdqT6VBI7H9Edi//OFU/YseVuSri4Kfc+Ok6OLpsKWr6yaigrJu46xQB
-	xxlKx/pjs5l4P0d/oAG6XuKcMMAsws3k0sDs8A+AF/isiZEZQdehpnTSeqAZPJcsRTE1+51nTXgQC
-	uxgDaZLHkSGi1OupRWCarLZ2ZtgWKBxhpcWN15R5laXuNtB1LLqQFvNnb2xRlQ+W4gQMqpJTLCg5F
-	nK2vVnVuaJ8B/LTnHbmL1rY5Z1cBI2VOMjEFIuaeUCo/PfvTXILH1eaFi/8FTz8SNd0doqo8sWrO0
-	+zv3OkmIEjlM+1iG5o6A==;
+	List-Owner; bh=RAvm4XLwiPgdhGALUXui30p8I+HSeJmljdBsUZkI0As=; b=u0gESZxN295kXH
+	2jn8EUoA/Ka3lA+Ql4J5UjWwXUBS1I1eG5OFx9dbcVN7XvSSPKfm6jgleC7Z30LyQzPPDaEdOR/lX
+	S8fQ62Tu2P1SgsCr6aqllU5bdEpuK+UfBAAJTnQamuYX1KWRE5lrewVqM9u7IxNGsiYU4SoPEMnFG
+	yQV4T4juGiT+XVjmgPhobu42/4P1NyDgzU/w1ZoKPIdfR1lbJs0cr1Zan9Rz1y/0GCMrkQlEqI29R
+	xhk7rCzzp9z2wvS7GWxyrH7nx3E0Ur4Gul/C0yInufAKXQSUJdX35G8bb4opPzmgeOIKSVquYIve1
+	oTQdN2FzVNrLntc1GVaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGHkl-004qGE-WC; Wed, 18 Aug 2021 09:20:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mGHko-004qHG-0B; Wed, 18 Aug 2021 09:20:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGHiu-004pUb-Pr; Wed, 18 Aug 2021 09:19:07 +0000
-X-UUID: a01f6ab3f9ef4012b2e4d02a81f32d77-20210818
+ id 1mGHiv-004pUk-DD; Wed, 18 Aug 2021 09:19:07 +0000
+X-UUID: 38863848ff0b40029797fcc9136eacc4-20210818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=Q81MdAgdLOSEhqGLnasBysFfmhfhgJlJCTxahXj0d+g=; 
- b=BtFtMhgzLPRG7ws10Zbm+oAwZhF8IeI3w6CTTiFonDLOgSBRKJU+KZ2ac7HrAsmtB0rFozkc7d/CUGW6srbuNHSYHR/XDVwylwOCUbDrvcGKANYPsqp1+bTOTxpAYE0wxVXIxI3GqaycW/8VlXmeg+NxCufZF9eQOLlnOG1o/xk=;
-X-UUID: a01f6ab3f9ef4012b2e4d02a81f32d77-20210818
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=ZM/0oNemx/VCFtUWAIDSm9VAeVwUMax26O+6TXNFMkE=; 
+ b=CNDEuJmPZmMFWG7p+g+qd2ErqOAlxTKRNmvw7oOakhMPwNTkyCg8gDbPtGMMy3frVNgB4/8Krm/ub8d/n2Fgy2VcVHZpZt0cRsyGiaENfOjGJfnSo5RnNsV5MB24z+9ZYIQjW/4xgRJjBuAM1WPtWoWGVdifEFLaoh+/GbYCwT4=;
+X-UUID: 38863848ff0b40029797fcc9136eacc4-20210818
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1948191354; Wed, 18 Aug 2021 02:18:52 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 02:18:50 -0700
+ with ESMTP id 1569034702; Wed, 18 Aug 2021 02:18:52 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Aug 2021 02:18:51 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 18 Aug 2021 17:18:49 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -66,19 +66,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v3 02/15] dt-bindings: mediatek: add vdosys1 MERGE definition
- for mt8195
-Date: Wed, 18 Aug 2021 17:18:34 +0800
-Message-ID: <20210818091847.8060-3-nancy.lin@mediatek.com>
+Subject: [PATCH v3 04/15] dt-bindings: mediatek: Add #reset-cells to mmsys
+ system controller
+Date: Wed, 18 Aug 2021 17:18:36 +0800
+Message-ID: <20210818091847.8060-5-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210818091847.8060-1-nancy.lin@mediatek.com>
 References: <20210818091847.8060-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_021900_891134_EE9F0BE3 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210818_021901_494958_378DE372 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,26 +94,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add vdosys1 MERGE definition.
+The mmsys system controller exposes a set of memory client resets and
+needs to specify the #reset-cells property in order to advertise the
+number of cells needed to describe each of the resets
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,merge.yaml    | 2 ++
- 1 file changed, 2 insertions(+)
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml       | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index 1a27b037086b..ba1e0c837988 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -23,6 +23,8 @@ properties:
-           - const: mediatek,mt8173-disp-merge
-       - items:
-           - const: mediatek,mt8195-disp-merge
-+      - items:
-+          - const: mediatek,mt8195-vdo1-merge
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 68cb330d7595..5678d55b032a 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -50,6 +50,9 @@ properties:
+   "#clock-cells":
+     const: 1
  
-   reg:
-     maxItems: 1
++  "#reset-cells":
++    const: 1
++
+ required:
+   - compatible
+   - reg
 -- 
 2.18.0
 _______________________________________________
