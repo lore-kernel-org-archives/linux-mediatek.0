@@ -2,86 +2,83 @@ Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 25FBBC4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22ED9C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:26:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DD22D60560
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:20:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DD22D60560
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E7D4A610A1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:26:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E7D4A610A1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GT45AUVs4UVp8JeQdyhWpRE53quxzEIZ6LnyD4fq30c=; b=5D1qb73JUdrN6T
-	1hpB5fbZriLEdv8njaUQGIzFgG9aqaLC/mC3Hovfyp4lEU7PmFUygA06/4+T5gmMWpGm6Kem3YzoJ
-	xRjfL/efrrRBQFV9dWVbq/xetAfrHKSAzXns6lP8bQLsVx9vwmT9rQGXJsE1rxJCJlwJqQkcpVLHc
-	XuIOGkDe6T1EOO9uvbI2ix6rSNFurVkJKyIwAu2AFLfL9vOHXcBezuuFDQniT+aJNOYoLe197C8qD
-	jxE5ax4RD72qADQ5XXnCoPOdSO4wLQdWdzwgLbLMDaCqLque3EiY1IRVpA+bdac6HXYMYEmJ6b6hw
-	J12c7qH5dcX+rJf9/tCw==;
+	List-Owner; bh=n98T88BhIIj0WgBn81iWoxZ8wwAc13Cy7ZaqwTRVZvE=; b=A215XeIT87Chan
+	WmrduVQX9lqEhmuhy4FRjTZnS9f5l3LRcGCj0p/BEjeyKvjRvkrXSGMjyCEyEw06yU9U9iQ/lEbPA
+	yAqMJ72X4wSP1kiwOkU9fJg9uuZuDj5qrnPuhj9VBuAVxdIDGWqEEJNBwzcsKVvdQTMBqTVatM5OC
+	Q0N78np8Z6FpdhqbJjOoECiAxdfMvnVFvzudQws8TkiESK3o/Z5FtUeiqZWGbgh87bhe05tQb+c5R
+	e/9B9WBXs0GAMDB9FUoLlimb+O32iuTJitKWRLgX/Uyy1OutRB68xyqv/yElNemMnoSFm72gaLz4I
+	k9xs9YHDTDafUc1VE0mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGrL2-009jIq-Ue; Thu, 19 Aug 2021 23:20:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mGrPz-009jrI-8Z; Thu, 19 Aug 2021 23:25:51 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGrKn-009jGn-Fw; Thu, 19 Aug 2021 23:20:33 +0000
-X-UUID: 2d75b0caf2cb4164a68ba3d702f8516f-20210819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=QfeDJW3m4L57kRx1ekiwSC66ZVnjMitRsEcL77yqUug=; 
- b=h7lLzP6r8j9QVwh0abLzRZYUGWTNl1b5cM4qRCRgD364hb8GohNxIXYOYsk5tdb0Qeja+dyvrJ474JYdVZ0gMMOYTL1/Ownbt6GFuWGBVdl8pDp8874ArEWWFgoTeo7OazhTiqTQV/LTNgqEatWFGiDAQiZi91Wgi65EN64E7qM=;
-X-UUID: 2d75b0caf2cb4164a68ba3d702f8516f-20210819
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <houlong.wei@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1263005613; Thu, 19 Aug 2021 16:20:23 -0700
-Received: from MTKMBS33N2.mediatek.inc (172.27.4.76) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 16:20:21 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS33N2.mediatek.inc
- (172.27.4.76) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 20 Aug 2021 07:20:13 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 20 Aug 2021 07:20:12 +0800
-Message-ID: <6cb09965bce5bffe97fc00faecfffae9d3b38b3d.camel@mediatek.com>
-Subject: Re: [PATCH] media: mtk-vpu: Fix a resource leak in the error
- handling path of 'mtk_vpu_probe()'
-From: houlong wei <houlong.wei@mediatek.com>
-To: Christophe JAILLET <christophe.jaillet@wanadoo.fr>, Minghsiu Tsai
- =?UTF-8?Q?=28=E8=94=A1=E6=98=8E=E4=BF=AE=29?= <Minghsiu.Tsai@mediatek.com>,
- Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=
- <Andrew-CT.Chen@mediatek.com>, Tiffany Lin
- =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?= <tiffany.lin@mediatek.com>,
- "mchehab@kernel.org" <mchehab@kernel.org>, "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>, "hans.verkuil@cisco.com" <hans.verkuil@cisco.com>
-CC: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "kernel-janitors@vger.kernel.org"
- <kernel-janitors@vger.kernel.org>, <houlong.wei@mediatek.com>
-Date: Fri, 20 Aug 2021 07:20:13 +0800
-In-Reply-To: <3d4ba5d254044567653a006b18971658ec69560f.1629404378.git.christophe.jaillet@wanadoo.fr>
-References: <3d4ba5d254044567653a006b18971658ec69560f.1629404378.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mGrPl-009joe-Et; Thu, 19 Aug 2021 23:25:38 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 0EEB7610A1;
+ Thu, 19 Aug 2021 23:25:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1629415537;
+ bh=lDfLcMkKaHulnTMCEIwuK3Wkmz0K0OakW2zzDWc2MXQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=FY0wZTfrZOjvTnYhmIPdjOI29K571ATtN2aYf4k/tGQKyIwJwp+Ygjb0ZymaDAJF0
+ 4KfTUAUg6RRvQbQI6nhYkj88XF8OGaGzYo7hTA+l+tO6n7FOiSOYrBvRJ4gPstlQc+
+ /A7as4FtfgWNv1csr6zGnv6paUBj4MEi+8Kfo+kErXzeCnPWNfKba2Be16HBcBOQyb
+ nG3NFuy+HTKrRvHKm006BGLR41CPqAukZsRLH5i5NbQ6M3mX9z7l2TnmwTrhcJyQLi
+ q8Dw9mgcwuCaI7Kwo5LUt3bIpNZ7CUeVKZljDag08xUJo8XToCrOApmbdEeBoFdjkz
+ b1MKB8+gfkviA==
+Received: by mail-ed1-f52.google.com with SMTP id q3so11244345edt.5;
+ Thu, 19 Aug 2021 16:25:36 -0700 (PDT)
+X-Gm-Message-State: AOAM530cpdnMiMyX1NdWCrfHD7kPaL1PdCS6LnvyhUH8FGNigdv3rXs3
+ oim3qWsVdTklu2lSQ+oHKAGadUYW6Js8jTLWkg==
+X-Google-Smtp-Source: ABdhPJyqRKlKwq4wRR1ZLhH+D2awtd0tuQOpfkaT7U6/ZK+Er3r1zuqlZaXZ1G3+33lsQ6QF7lMQ2EOc1u8R/uHA4WA=
+X-Received: by 2002:aa7:c7c2:: with SMTP id o2mr18981861eds.166.1629415535694; 
+ Thu, 19 Aug 2021 16:25:35 -0700 (PDT)
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 814C1EEA859FBE07EB023142BB288BF8A660564BFC7F2A04322B36A3694EEE642000:8
-X-MTK: N
+References: <20210818091847.8060-1-nancy.lin@mediatek.com>
+ <20210818091847.8060-3-nancy.lin@mediatek.com>
+In-Reply-To: <20210818091847.8060-3-nancy.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 20 Aug 2021 07:25:24 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
+Message-ID: <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
+Subject: Re: [PATCH v3 02/15] dt-bindings: mediatek: add vdosys1 MERGE
+ definition for mt8195
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ DTML <devicetree@vger.kernel.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, singo.chang@mediatek.com, 
+ srv_heupstream <srv_heupstream@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_162029_564696_A69F3FF5 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20210819_162537_559594_980DF999 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +90,30 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-08-20 at 04:21 +0800, Christophe JAILLET wrote:
-> A successful 'clk_prepare()' call should be balanced by a
-> corresponding
-> 'clk_unprepare()' call in the error handling path of the probe, as
-> already
-> done in the remove function.
-> 
-> Update the error handling path accordingly.
-> 
-> Fixes: 3003a180ef6b ("[media] VPU: mediatek: support Mediatek VPU")
-> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-> ---
-> 
-Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
-
->  drivers/media/platform/mtk-vpu/mtk_vpu.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> index ec290dde59cf..7f1647da0ade 100644
-> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> @@ -848,7 +848,8 @@ static int mtk_vpu_probe(struct platform_device
-> *pdev)
->  	vpu->wdt.wq = create_singlethread_workqueue("vpu_wdt");
->  	if (!vpu->wdt.wq) {
->  		dev_err(dev, "initialize wdt workqueue failed\n");
-> -		return -ENOMEM;
-> +		ret = -ENOMEM;
-> +		goto clk_unprepare;
->  	}
->  	INIT_WORK(&vpu->wdt.ws, vpu_wdt_reset_func);
->  	mutex_init(&vpu->vpu_mutex);
-> @@ -942,6 +943,8 @@ static int mtk_vpu_probe(struct platform_device
-> *pdev)
->  	vpu_clock_disable(vpu);
->  workqueue_destroy:
->  	destroy_workqueue(vpu->wdt.wq);
-> +clk_unprepare:
-> +	clk_unprepare(vpu->clk);
->  
->  	return ret;
->  }
-> -- 
-> 2.30.2
-> 
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE5hbmN5OgoKTmFuY3kuTGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
+tDjmnIgxOOaXpSDpgLHkuIkg5LiL5Y2INToxOOWvq+mBk++8mgo+Cj4gQWRkIHZkb3N5czEgTUVS
+R0UgZGVmaW5pdGlvbi4KPgo+IFNpZ25lZC1vZmYtYnk6IE5hbmN5LkxpbiA8bmFuY3kubGluQG1l
+ZGlhdGVrLmNvbT4KPiAtLS0KPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRp
+YXRlay9tZWRpYXRlayxtZXJnZS55YW1sICAgIHwgMiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBp
+bnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssbWVyZ2UueWFtbCBiL0RvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLG1lcmdlLnlh
+bWwKPiBpbmRleCAxYTI3YjAzNzA4NmIuLmJhMWUwYzgzNzk4OCAxMDA2NDQKPiAtLS0gYS9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxt
+ZXJnZS55YW1sCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvbWVkaWF0ZWsvbWVkaWF0ZWssbWVyZ2UueWFtbAo+IEBAIC0yMyw2ICsyMyw4IEBAIHByb3Bl
+cnRpZXM6Cj4gICAgICAgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxNzMtZGlzcC1tZXJnZQo+
+ICAgICAgICAtIGl0ZW1zOgo+ICAgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWssbXQ4MTk1LWRp
+c3AtbWVyZ2UKPiArICAgICAgLSBpdGVtczoKPiArICAgICAgICAgIC0gY29uc3Q6IG1lZGlhdGVr
+LG10ODE5NS12ZG8xLW1lcmdlCgpJIGRvbid0IGtub3cgd2h5IGNyZWF0ZSBhIG5ldyBtZXJnZSBm
+b3IgbXQ4MTk1LiBQcm92aWRlIG1vcmUKaW5mb3JtYXRpb24gYWJvdXQgdGhlIGRpZmZlcmVuY2Ug
+b2YgdGhlc2UgdHdvIG1lcmdlLgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4KPiAgICByZWc6Cj4g
+ICAgICBtYXhJdGVtczogMQo+IC0tCj4gMi4xOC4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
+eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
