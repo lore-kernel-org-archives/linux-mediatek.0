@@ -2,84 +2,179 @@ Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EEF8C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 02:33:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 651D9C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 05:35:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C9B36610FA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 02:33:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C9B36610FA
+	by mail.kernel.org (Postfix) with ESMTPS id 2C94B610FA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 05:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C94B610FA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
+	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1G8gZvyWhydXIgJdw5C30V73zWOArO6yA8E7P/BASL4=; b=QYRCql3pFPScHC
-	tVBOJ59ADfGG6CNGlzRruihJMPc97JTDywhruPrKhFImLme4EDajFlwUObEKf/dAWF3iNUJxUDdT4
-	cHDhdsIScCJTbrvz3nHgdacdxyRMcG2TDe809aW6nF73idHlI/Z8RG077uvknSwwsvn4+Qba6i7XK
-	/XGu/lzJwjjPvpqjX+KfYi3XDy9uWOYJPeLfJ4tULcA/IHed1GkbpmoHZnHUA51NOn7qTvCPjawBV
-	OPNrfIlkYLJL48OovSOGDnAMww2Dpg7eXfU69FYnt2Bl9iTUUkWkovAu8JhTdkdvmR/oVs844eviX
-	hKLK8TVGI2EcL8onKMdg==;
+	List-Owner; bh=b2C87uG6A5pfbZBnkNGLwXYcurNX0kypViwZvyo0xHs=; b=c0vXX4tcpmkUr8
+	ePQDmOgYClTYiGz4nopFT/TeLA+meWnFcO3BhJMXAeOQOJYgBmjjzjvEOD5AP72kRlzXtUCEVInoY
+	m7HLwD62eu+FoRc6vSDiZbE0z8+3pssMvyob2ATBF312j9GE4O9cL1ff7TpFT3AzvL2b3edFqyfKw
+	GLOz90HcrSVXXMCfVybnOeDXsS4mo4uwaMmicb2pGFNjp+etA1QTjtrEcejijHBitXCsQnqbXqekh
+	ii5gcZYVmwSiYjJiU6m6yGt4IXMgUvquEP9e8jA4Uv08/8kyzyoJrdySOG7QB6pM6ojUqOjc7Ru19
+	elNwA1BllwUKpwATnu/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGXsA-0074EP-7O; Thu, 19 Aug 2021 02:33:38 +0000
+	id 1mGahv-007HGz-Mv; Thu, 19 Aug 2021 05:35:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGXiz-006zri-9O; Thu, 19 Aug 2021 02:24:12 +0000
-X-UUID: 66388732c3dc4038b06574ac7aa2c491-20210818
+ id 1mGahc-007HDR-B2; Thu, 19 Aug 2021 05:35:01 +0000
+X-UUID: d39c6761da484c978cfc6289830c041c-20210818
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=bmI8e+2B5IYReFJrKYDgtdskHTgGDuAlTIFP/B7FmPA=; 
- b=d3wc2KRwTQgiL4/7c6grohXatWxuC+SEIth+ZQWeca/8XevGDCcjHdP4cXjmPlM273CUliqGiP+Sk+n9MV9ZNMlmclfOfDGlIIn/NF6IKLKCWv9vn19F72vxFLe7nn76815IMzh12A8N53d10vkUzYprMpSOJ8UhCkj3HwYlCzM=;
-X-UUID: 66388732c3dc4038b06574ac7aa2c491-20210818
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From;
+ bh=m9bp4O6+k9Tk1a0NJEL/0pD/rptC2O9OYRXyH59LgPw=; 
+ b=Y8Vwpj/ggPH5K38W7cSFBsiBxj8STgB98XJxMPadVUR7KXlM+sGQ0Ot3RlVbHxyEjOV4qOG4TVWwEuwKBRAnCde6r+LNQSO004Q8Q8olpyKSHXC57KGXemny0ONNO7n9L6LRmaoZrKdVquqA5RMFzyXWbI4kr0lEkOkHKzq9Xd4=;
+X-UUID: d39c6761da484c978cfc6289830c041c-20210818
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 915833171; Wed, 18 Aug 2021 19:23:50 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 18 Aug 2021 19:23:49 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 10:23:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 19 Aug 2021 10:23:46 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- <fshao@chromium.org>
-CC: Philipp Zabel <p.zabel@pengutronix.de>, Enric Balletbo i Serra
- <enric.balletbo@collabora.com>, David Airlie <airlied@linux.ie>, "Daniel
- Vetter" <daniel@ffwll.ch>, Fabien Parent <fparent@baylibre.com>,
- <hsinyi@chromium.org>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, Jitao shi
- <jitao.shi@mediatek.com>, <nancy.lin@mediatek.com>,
- <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v8 10/13] drm/mediatek: adjust to the alphabetic order for
- mediatek-drm
-Date: Thu, 19 Aug 2021 10:23:24 +0800
-Message-ID: <20210819022327.13040-11-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210819022327.13040-1-jason-jh.lin@mediatek.com>
-References: <20210819022327.13040-1-jason-jh.lin@mediatek.com>
+ with ESMTP id 2119396811; Wed, 18 Aug 2021 22:34:51 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 18 Aug 2021 22:34:49 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 13:34:48 +0800
+Received: from APC01-SG2-obe.outbound.protection.outlook.com (172.21.101.239)
+ by mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP
+ Server id
+ 15.2.792.15 via Frontend Transport; Thu, 19 Aug 2021 13:34:48 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Qx7FsEpcJz6HtX4B+l2V8QSiaAk6rIT2snVz0pueT4WlXI/lcDjtCWvUNyjg52GBj5/UEmFiVU5cvz9D91NOU+afccomWGbxZGjFl+I0Up4IsXPtgUNzEzptZnkJd+si/ll2hkdWq1JtxYCSUiXeLtMijYqKUg52Mf1nw8OJWlRbxIT4IXsPInzsLy/fYb0sW2MZsy5HpMrOlyigBHqYAQBWyQYteBJqWnM/iUEl1AKT+8F7uqkYeEY2mWBcNlLa8bU2WGVv4cP0PcjH2gESMnzdSuKCyygJWAcsScShck6MDIXbqr0MTNV9vANu7JuEQVRrFhwWNJ0D/Dk0CozEzg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m9bp4O6+k9Tk1a0NJEL/0pD/rptC2O9OYRXyH59LgPw=;
+ b=B9u7Iq0LwhVkZmtKDMXeNoZPaBg+S425LhqE4RxYk3S+iw8XGa7pzDS8p4NAV6ksb9crj7KInT4woVBZf1FJifDL4xAVwVgE2yW8SyQIJhwPlLzNQ4do5bOlHltAKHYccXqoGiUFsyhegHFj8AN2u9z+WKMG6+dBaiYSC0L9mERNBI+zxzgzaA0y3jC6fPn468XM5T1+smgBtgROS5F9/ZudajH2v8uU+TpWGv09s899oLBV/5HgJs6Ku+Ln/Owa+vG2aHdRI/KnJ/iNYpk90q3oGik5Vs7GNlNgELd55wcDEuxLaKroaLWcCJKsJ8SQJPZbA57KUUYdf2TNhbngEw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=m9bp4O6+k9Tk1a0NJEL/0pD/rptC2O9OYRXyH59LgPw=;
+ b=TAI8Z448en9IoXU6Vpj1OQviLVDa6+M2jxQ6eOw/hUdjCa6TKm6zmBywxukq2W5vNIZ88Z8k4lvNwM1fG01QQJNPSvhAqHtpcBuu9f5puAiCTNjshkdAwjG9HxDNC+MTxWCXFRsHbjbIigBuaxBm1bB/EOvx7pEwmG5s1cTw34s=
+Received: from HK0PR03MB3139.apcprd03.prod.outlook.com (2603:1096:203:4b::11)
+ by HK2PR0302MB2499.apcprd03.prod.outlook.com (2603:1096:202:3::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4436.15; Thu, 19 Aug
+ 2021 05:34:34 +0000
+Received: from HK0PR03MB3139.apcprd03.prod.outlook.com
+ ([fe80::9108:efd1:31ac:c6b0]) by HK0PR03MB3139.apcprd03.prod.outlook.com
+ ([fe80::9108:efd1:31ac:c6b0%7]) with mapi id 15.20.4436.018; Thu, 19 Aug 2021
+ 05:34:34 +0000
+From: =?utf-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>
+To: "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ "krzysztof.kozlowski@canonical.com" <krzysztof.kozlowski@canonical.com>,
+ "robh+dt@kernel.org" <robh+dt@kernel.org>
+CC: "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+ "tfiga@chromium.org" <tfiga@chromium.org>,
+ =?utf-8?B?WW91bGluIFBlaSAo6KO05Y+L5p6XKQ==?= <youlin.pei@mediatek.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "krzk@kernel.org" <krzk@kernel.org>, =?utf-8?B?WWkgS3VvICjpg63mh78p?=
+ <Yi.Kuo@mediatek.com>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, =?utf-8?B?QW5hbiBTdW4gKOWtmeWuieWuiSk=?=
+ <Anan.Sun@mediatek.com>, =?utf-8?B?QW50aG9ueSBIdWFuZyAo6buD5bu65ZiJKQ==?=
+ <Anthony.Huang@mediatek.com>, "robin.murphy@arm.com" <robin.murphy@arm.com>,
+ "joro@8bytes.org" <joro@8bytes.org>, "iommu@lists.linux-foundation.org"
+ <iommu@lists.linux-foundation.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "ikjn@chromium.org"
+ <ikjn@chromium.org>, =?utf-8?B?TWluZy1GYW4gQ2hlbiAo6Zmz5piO5rGOKQ==?=
+ <Ming-Fan.Chen@mediatek.com>, "will@kernel.org" <will@kernel.org>
+Subject: Re: [PATCH v3 00/13] MT8195 SMI support
+Thread-Topic: [PATCH v3 00/13] MT8195 SMI support
+Thread-Index: AQHXjb8Hll+XizX+WEmkps1CcJVtHKt5x2YAgACU4IA=
+Date: Thu, 19 Aug 2021 05:34:34 +0000
+Message-ID: <5f4c25b27f347a1ae0e2941ab3e3584730a9970a.camel@mediatek.com>
+References: <20210810080859.29511-1-yong.wu@mediatek.com>
+ <1a160afd-ceeb-04a3-8213-fe781ec18e30@canonical.com>
+In-Reply-To: <1a160afd-ceeb-04a3-8213-fe781ec18e30@canonical.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+authentication-results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: fbc40bb0-fe2f-4c25-b69c-08d962d3071d
+x-ms-traffictypediagnostic: HK2PR0302MB2499:
+x-ld-processed: a7687ede-7a6b-4ef6-bace-642f677fbe31,ExtAddr
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <HK2PR0302MB24991E45028B5617BF5557D598C09@HK2PR0302MB2499.apcprd03.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: sydXY7e5t8B/F7mHOhSUynyn5v+h+XGNj4xvaLmwjtGNUI6TDfyGGZxhue+iaBjP7XhAIQZtXQrPcP4BT+EWmaWpLCgEls+thwuVGRXjTNSNbKLAHl5V2wcK0Tr2N7naRkeiK1bK9Z1VdOMwrKosh8Fdjfiy+3/RqXLH8mtXNbd2ujw3I40OVECqzKYBKPlVHn9Wj+/WpLbRorOjgq4RXNl1t8K2G0j8bY5Vp37un3zBtRabkar8/Y+ENirGCSZUZ3jRU+KaPZ0E1/gq1C6gSRiJ8KGykfJZzUYigLos7xWbSddq3jlndfVO9mnY8pv+dzLuqZ5fVrVU7wlOrhsDsPVm1vy6sMbswaDCVBRWdk8UhhevpLexjhX7tghMvF14ZEiulBw27dLjWXYV0wVMoaW+c5B6dG6c9kJpHezeD2DmHGdQDQ4rhbCUhv9tM0bYom2tOwqsakjqzF4i1baO4A5LQM5+k2FwcH+vgol495+pnlaMietj48V9dskB++AKXHoHhvCKYRNow1dGwEQCkYaGS3LkNFXja+byGufibxNARinWo3xt6DT9k0Na+xj5ycQ3HMrPe/5tUet9xwKYz1a7VK1Xi5c034SvTRZXr30/PDqQx2QuQtOdXcJrKzFlUBJONa1BrZOwO7uP2M3P2bxyJcbJhtAavKmgSPnr3aacYXwcuZHXiIy8qCH4tB+2iv62DsxHpyV8Tzcn3sVLjDtP5OcopubOjFlE9RGOJ38=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HK0PR03MB3139.apcprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(86362001)(6506007)(8936002)(4326008)(36756003)(5660300002)(7416002)(64756008)(26005)(8676002)(110136005)(316002)(2906002)(186003)(38100700002)(6512007)(76116006)(53546011)(2616005)(85182001)(6486002)(71200400001)(54906003)(122000001)(508600001)(83380400001)(38070700005)(66556008)(66476007)(66446008)(66946007)(99106002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZE1KSW00dzAweG4rOFArTkxtYklEUVdrM3hJTmFZOGljQWxjdHJPcVhOU0hL?=
+ =?utf-8?B?dHlxZnU5TnpCVm5RNStBYkJKWk9CUzl6VGRrRVFKUVdvcC9yYXNFam1SNkxH?=
+ =?utf-8?B?VWJ5MzNnanlmZ2wya1ZkMzdDZFA2NzlybUFWSGt6eHJhcW5sQjYwdzQ1Tk9K?=
+ =?utf-8?B?QWJraTNrVGxuUjJtRUQ4amNTNWIzWkNRSklGemRpdWtsVUlOM090b0lJZ2lJ?=
+ =?utf-8?B?N1F4bWZCMEhIdWlFaHRtWEJRbFhpVkJpaWhhNUY0eUhnVXhtYnZBK1g5a3V0?=
+ =?utf-8?B?SU1yamY0N3Z5UXVqU3JmdXFSSHFkbnlwQmxyZWZKTkhVYnhtamR4a2hmMG1J?=
+ =?utf-8?B?bVltUUZHemNtMkVxMHhNVzdpWGRCaHc1R2dSYlIrZENPZk9ZczMzUVlGcDM2?=
+ =?utf-8?B?V0tGYmpyb1NCaStvNGRFUGpTelJKWUtVR2N3emJqTXBoRTBKbm9XRFJYRDRz?=
+ =?utf-8?B?RmNMWHVXcHRkT1I1d2o1Q2RQUDYrMEpqWXNmOERHTHlJT3kwN1pwbkxHaW83?=
+ =?utf-8?B?V3lGZXJmMU1YYUdwa21KZ3hRUEx5T1AvdEkxS2J1dkJxSFY3dE5zTmZGbEZC?=
+ =?utf-8?B?TG1NQW1tS2VTODdSZGs4aVpDd1VCcDVSd1BYNC9GMFczYUR3N3ozSUgrNUlJ?=
+ =?utf-8?B?d28yMnBQb1pxQXBqcTIxeDlDK2JTcUxLcjlPWjU4bXVuZER3YmRVMnRpSVpK?=
+ =?utf-8?B?V2RqU29MQmk3WWptaXJSV3gzdUZRejh2SGw5ZUNNNHVGL3B2SnI4dExZeGFj?=
+ =?utf-8?B?azhhWGVsVW5LdEFOVHBISVY5WG1qYlYxWHhNVlRrUDZ0UG1IWkxDMnVGeldB?=
+ =?utf-8?B?VGYxZ2VzQ3F5SXVDVVN0TGk5QmF3T2pwSjE4c3ZabjJqTEc4Zi9MUFhPeGF4?=
+ =?utf-8?B?N1pITUZ3amJKQUp5RVJmWStlZktVcEJqdjdveXVMR2pQRnkwYmsvOUpTMkdk?=
+ =?utf-8?B?TnB2OVNJUkJWbUg1ZHBmMjRhUTBtQVMrTnpWRCtrZGtIVVdLaGh0UGwxN1Ra?=
+ =?utf-8?B?V0NScDFKZGdaTnNpNmJoUnUwWnZYWCtoZU5SQVk0SHBGeXdMV1Ftd0NTKytC?=
+ =?utf-8?B?djNoVDIwRnNrbFVLaVlnck96UWxIc1krZjNmVSt6TjNFUVhadnlsVHRxY2w2?=
+ =?utf-8?B?WitpMmE4azlyZmpUR1hEaWdYQUNJbE9TWGQvL1RNUi85djdJcGwrU05raUdF?=
+ =?utf-8?B?ZnM2RHJ0YWE2WmszYkhJMDhIcnlWK0MxQndJWnNIZjd2UUFxVUdtTXcxYXN1?=
+ =?utf-8?B?WG5XVnFoaG5qYWVJMFhZMXc1KzFuTG5aRkRCL2lTMHVkUURKNzdCYWJTVXE4?=
+ =?utf-8?B?UnFQUkU5QnhwbUREMTMrMVhFQmZrQUwzZUJKakZVY0g3WDRjL1FrdStsMUM1?=
+ =?utf-8?B?L0pxWG5IblN0dkdoRjVhRjVTK0R0d1NvZFRLa05VUUN0eUljVG84YUVDMGZx?=
+ =?utf-8?B?R2dyLzZ0S3AxS0JIVys5aVVieUt1WFlxdE8vdno2cEFxOTRUUTNnWGU1MzU3?=
+ =?utf-8?B?TUR6Q1BoTXNiTVZaWjNVN0RxYTU2Yll0WnV2VWI0QW5MQkc1M01XZEVnNCth?=
+ =?utf-8?B?QWJtbUhidWpYTHg1aWdaY3JJam9HRjdpaktTdG9DVmUwVGh2Y3BUaW5rVHBo?=
+ =?utf-8?B?UUZjeG85dWcvMENGeFd6VDMvSEpLbTJBYVNhOEljRE1uUDBsSWNDRnZHL0kr?=
+ =?utf-8?B?Uzk0a1l0Y0lQY0NiY2gwQmlWZ1pQQlE4eks0R0o4UEFYRnphSEd0bVUxVGF5?=
+ =?utf-8?Q?qIFxWq2sCrJRtvvC+ZxUKKfFriLP1dZCQ7Ke/gX?=
+Content-ID: <3F805D9607951246BE421B3EF4D3E1A1@apcprd03.prod.outlook.com>
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: HK0PR03MB3139.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fbc40bb0-fe2f-4c25-b69c-08d962d3071d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Aug 2021 05:34:34.5915 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kxegxedq2MzOIRd7FYu7LDx5ENlqBQ7ybOrRNzFswpOLBj1Ce6XqadWt6FLbgxzPOLjDKhN2I+iT9gOvFNyUaA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HK2PR0302MB2499
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210818_192409_401525_8DB9F285 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20210818_223457_935942_25AFDFF8 
+X-CRM114-Status: GOOD (  22.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,386 +191,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adjust to the alphabetic order for the define, function, struct
-and array in mediatek-drm driver
+On Wed, 2021-08-18 at 22:41 +0200, Krzysztof Kozlowski wrote:
+> On 10/08/2021 10:08, Yong Wu wrote:
+> > This patchset mainly adds SMI support for mt8195.
+> > 
+> > Comparing with the previous version, add two new functions:
+> > a) add smi sub common
+> > b) add initial setting for smi-common and smi-larb.
+> > 
+> > Change note:
+> > v3:1) In the dt-binding:
+> >        a. Change mediatek,smi type from phandle-array to phandle
+> > from Rob.
+> >        b. Add a new bool property (mediatek,smi_sub_common)
+> >           to indicate if this is smi-sub-common.
+> >    2) Change the clock using bulk parting.
+> >       keep the smi-common's has_gals flag. more strict.
+> >    3) More comment about larb initial setting.
+> >    4) Add a maintain patch
+> 
+> The patchset looks good to me but I saw now comments from Rob, so I
+> expect a resend. Therefore there is also time for additional review -
+> maybe continued by Ikjoon Jang?
+> 
+> If you sent a v4 with fixes rather soon and get ack from Rob, I could
+> still try to get it into next merge window. After this weekend I
+> won't
+> be taking patches for this cycle and it will wait for the merge
+> window
+> to finish.
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 133 ++++++++++----------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  22 ++--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |  76 +++++------
- 3 files changed, 115 insertions(+), 116 deletions(-)
+Hi Krzysztof,
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 93beb980414f..28bc42fd0b8a 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -20,17 +20,9 @@
- #include "mtk_drm_ddp_comp.h"
- #include "mtk_drm_crtc.h"
- 
--#define DISP_REG_OD_EN				0x0000
--#define DISP_REG_OD_CFG				0x0020
--#define DISP_REG_OD_SIZE			0x0030
--#define DISP_REG_DITHER_5			0x0114
--#define DISP_REG_DITHER_7			0x011c
--#define DISP_REG_DITHER_15			0x013c
--#define DISP_REG_DITHER_16			0x0140
--
--#define DISP_REG_UFO_START			0x0000
- 
- #define DISP_REG_AAL_EN				0x0000
-+#define AAL_EN					BIT(0)
- #define DISP_REG_AAL_SIZE			0x0030
- 
- #define DISP_REG_DITHER_EN			0x0000
-@@ -38,23 +30,29 @@
- #define DISP_REG_DITHER_CFG			0x0020
- #define DITHER_RELAY_MODE			BIT(0)
- #define DITHER_ENGINE_EN			BIT(1)
--#define DISP_REG_DITHER_SIZE			0x0030
--
--#define OD_RELAYMODE				BIT(0)
--
--#define UFO_BYPASS				BIT(2)
--
--#define AAL_EN					BIT(0)
- 
- #define DISP_DITHERING				BIT(2)
-+#define DISP_REG_DITHER_SIZE			0x0030
-+#define DISP_REG_DITHER_5			0x0114
-+#define DISP_REG_DITHER_7			0x011c
-+#define DISP_REG_DITHER_15			0x013c
- #define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
- #define DITHER_ADD_LSHIFT_R(x)			(((x) & 0x7) << 20)
- #define DITHER_NEW_BIT_MODE			BIT(0)
-+#define DISP_REG_DITHER_16			0x0140
- #define DITHER_LSB_ERR_SHIFT_B(x)		(((x) & 0x7) << 28)
- #define DITHER_ADD_LSHIFT_B(x)			(((x) & 0x7) << 20)
- #define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
- 
-+#define DISP_REG_OD_EN				0x0000
-+#define DISP_REG_OD_CFG				0x0020
-+#define OD_RELAYMODE				BIT(0)
-+#define DISP_REG_OD_SIZE			0x0030
-+
-+#define DISP_REG_UFO_START			0x0000
-+#define UFO_BYPASS				BIT(2)
-+
- struct mtk_ddp_comp_dev {
- 	struct clk *clk;
- 	void __iomem *regs;
-@@ -106,20 +104,6 @@ void mtk_ddp_write_mask(struct cmdq_pkt *cmdq_pkt, unsigned int value,
- #endif
- }
- 
--static int mtk_ddp_clk_enable(struct device *dev)
--{
--	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
--
--	return clk_prepare_enable(priv->clk);
--}
--
--static void mtk_ddp_clk_disable(struct device *dev)
--{
--	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
--
--	clk_disable_unprepare(priv->clk);
--}
--
- void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
- 			   unsigned int bpc, unsigned int cfg,
- 			   unsigned int dither_en, struct cmdq_pkt *cmdq_pkt)
-@@ -146,38 +130,19 @@ void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
- 	}
- }
- 
--static void mtk_dither_set(struct device *dev, unsigned int bpc,
--		    unsigned int cfg, struct cmdq_pkt *cmdq_pkt)
--{
--	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
--
--	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, cfg,
--			      DISP_DITHERING, cmdq_pkt);
--}
--
--static void mtk_od_config(struct device *dev, unsigned int w,
--			  unsigned int h, unsigned int vrefresh,
--			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
--{
--	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
--
--	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_REG_OD_SIZE);
--	mtk_ddp_write(cmdq_pkt, OD_RELAYMODE, &priv->cmdq_reg, priv->regs, DISP_REG_OD_CFG);
--	mtk_dither_set(dev, bpc, DISP_REG_OD_CFG, cmdq_pkt);
--}
- 
--static void mtk_od_start(struct device *dev)
-+static int mtk_ddp_clk_enable(struct device *dev)
- {
- 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
- 
--	writel(1, priv->regs + DISP_REG_OD_EN);
-+	return clk_prepare_enable(priv->clk);
- }
- 
--static void mtk_ufoe_start(struct device *dev)
-+static void mtk_ddp_clk_disable(struct device *dev)
- {
- 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
- 
--	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
-+	clk_disable_unprepare(priv->clk);
- }
- 
- static void mtk_aal_config(struct device *dev, unsigned int w,
-@@ -237,6 +202,40 @@ static void mtk_dither_stop(struct device *dev)
- 	writel_relaxed(0x0, priv->regs + DISP_REG_DITHER_EN);
- }
- 
-+static void mtk_dither_set(struct device *dev, unsigned int bpc,
-+			   unsigned int cfg, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, cfg,
-+			      DISP_DITHERING, cmdq_pkt);
-+}
-+
-+static void mtk_od_config(struct device *dev, unsigned int w,
-+			  unsigned int h, unsigned int vrefresh,
-+			  unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	mtk_ddp_write(cmdq_pkt, w << 16 | h, &priv->cmdq_reg, priv->regs, DISP_REG_OD_SIZE);
-+	mtk_ddp_write(cmdq_pkt, OD_RELAYMODE, &priv->cmdq_reg, priv->regs, DISP_REG_OD_CFG);
-+	mtk_dither_set(dev, bpc, DISP_REG_OD_CFG, cmdq_pkt);
-+}
-+
-+static void mtk_od_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(1, priv->regs + DISP_REG_OD_EN);
-+}
-+
-+static void mtk_ufoe_start(struct device *dev)
-+{
-+	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
-+
-+	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
-+}
-+
- static const struct mtk_ddp_comp_funcs ddp_aal = {
- 	.clk_enable = mtk_ddp_clk_enable,
- 	.clk_disable = mtk_ddp_clk_disable,
-@@ -331,22 +330,22 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe = {
- };
- 
- static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
-+	[MTK_DISP_AAL] = "aal",
-+	[MTK_DISP_BLS] = "bls",
-+	[MTK_DISP_CCORR] = "ccorr",
-+	[MTK_DISP_COLOR] = "color",
-+	[MTK_DISP_DITHER] = "dither",
-+	[MTK_DISP_GAMMA] = "gamma",
-+	[MTK_DISP_MUTEX] = "mutex",
-+	[MTK_DISP_OD] = "od",
- 	[MTK_DISP_OVL] = "ovl",
- 	[MTK_DISP_OVL_2L] = "ovl-2l",
-+	[MTK_DISP_PWM] = "pwm",
- 	[MTK_DISP_RDMA] = "rdma",
--	[MTK_DISP_WDMA] = "wdma",
--	[MTK_DISP_COLOR] = "color",
--	[MTK_DISP_CCORR] = "ccorr",
--	[MTK_DISP_AAL] = "aal",
--	[MTK_DISP_GAMMA] = "gamma",
--	[MTK_DISP_DITHER] = "dither",
- 	[MTK_DISP_UFOE] = "ufoe",
--	[MTK_DSI] = "dsi",
-+	[MTK_DISP_WDMA] = "wdma",
- 	[MTK_DPI] = "dpi",
--	[MTK_DISP_PWM] = "pwm",
--	[MTK_DISP_MUTEX] = "mutex",
--	[MTK_DISP_OD] = "od",
--	[MTK_DISP_BLS] = "bls",
-+	[MTK_DSI] = "dsi",
- };
- 
- struct mtk_ddp_comp_match {
-@@ -500,12 +499,12 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DISP_CCORR ||
- 	    type == MTK_DISP_COLOR ||
- 	    type == MTK_DISP_GAMMA ||
--	    type == MTK_DPI ||
--	    type == MTK_DSI ||
- 	    type == MTK_DISP_OVL ||
- 	    type == MTK_DISP_OVL_2L ||
- 	    type == MTK_DISP_PWM ||
--	    type == MTK_DISP_RDMA)
-+	    type == MTK_DISP_RDMA ||
-+	    type == MTK_DPI ||
-+	    type == MTK_DSI)
- 		return 0;
- 
- 	priv = devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index bb914d976cf5..d317b944df66 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -18,22 +18,22 @@ struct mtk_plane_state;
- struct drm_crtc_state;
- 
- enum mtk_ddp_comp_type {
--	MTK_DISP_OVL,
--	MTK_DISP_OVL_2L,
--	MTK_DISP_RDMA,
--	MTK_DISP_WDMA,
--	MTK_DISP_COLOR,
-+	MTK_DISP_AAL,
-+	MTK_DISP_BLS,
- 	MTK_DISP_CCORR,
-+	MTK_DISP_COLOR,
- 	MTK_DISP_DITHER,
--	MTK_DISP_AAL,
- 	MTK_DISP_GAMMA,
--	MTK_DISP_UFOE,
--	MTK_DSI,
--	MTK_DPI,
--	MTK_DISP_PWM,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
--	MTK_DISP_BLS,
-+	MTK_DISP_OVL,
-+	MTK_DISP_OVL_2L,
-+	MTK_DISP_PWM,
-+	MTK_DISP_RDMA,
-+	MTK_DISP_UFOE,
-+	MTK_DISP_WDMA,
-+	MTK_DPI,
-+	MTK_DSI,
- 	MTK_DDP_COMP_TYPE_MAX,
- };
- 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index b46bdb8985da..a95dc1006b82 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -396,50 +396,20 @@ static const struct component_master_ops mtk_drm_ops = {
- };
- 
- static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
--	{ .compatible = "mediatek,mt2701-disp-ovl",
--	  .data = (void *)MTK_DISP_OVL },
--	{ .compatible = "mediatek,mt8173-disp-ovl",
--	  .data = (void *)MTK_DISP_OVL },
--	{ .compatible = "mediatek,mt8183-disp-ovl",
--	  .data = (void *)MTK_DISP_OVL },
--	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
--	  .data = (void *)MTK_DISP_OVL_2L },
--	{ .compatible = "mediatek,mt2701-disp-rdma",
--	  .data = (void *)MTK_DISP_RDMA },
--	{ .compatible = "mediatek,mt8173-disp-rdma",
--	  .data = (void *)MTK_DISP_RDMA },
--	{ .compatible = "mediatek,mt8183-disp-rdma",
--	  .data = (void *)MTK_DISP_RDMA },
--	{ .compatible = "mediatek,mt8173-disp-wdma",
--	  .data = (void *)MTK_DISP_WDMA },
-+	{ .compatible = "mediatek,mt8173-disp-aal",
-+	  .data = (void *)MTK_DISP_AAL},
- 	{ .compatible = "mediatek,mt8183-disp-ccorr",
- 	  .data = (void *)MTK_DISP_CCORR },
- 	{ .compatible = "mediatek,mt2701-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
- 	{ .compatible = "mediatek,mt8173-disp-color",
- 	  .data = (void *)MTK_DISP_COLOR },
--	{ .compatible = "mediatek,mt8173-disp-aal",
--	  .data = (void *)MTK_DISP_AAL},
-+	{ .compatible = "mediatek,mt8183-disp-dither",
-+	  .data = (void *)MTK_DISP_DITHER },
- 	{ .compatible = "mediatek,mt8173-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
- 	{ .compatible = "mediatek,mt8183-disp-gamma",
- 	  .data = (void *)MTK_DISP_GAMMA, },
--	{ .compatible = "mediatek,mt8183-disp-dither",
--	  .data = (void *)MTK_DISP_DITHER },
--	{ .compatible = "mediatek,mt8173-disp-ufoe",
--	  .data = (void *)MTK_DISP_UFOE },
--	{ .compatible = "mediatek,mt2701-dsi",
--	  .data = (void *)MTK_DSI },
--	{ .compatible = "mediatek,mt8173-dsi",
--	  .data = (void *)MTK_DSI },
--	{ .compatible = "mediatek,mt8183-dsi",
--	  .data = (void *)MTK_DSI },
--	{ .compatible = "mediatek,mt2701-dpi",
--	  .data = (void *)MTK_DPI },
--	{ .compatible = "mediatek,mt8173-dpi",
--	  .data = (void *)MTK_DPI },
--	{ .compatible = "mediatek,mt8183-dpi",
--	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt2701-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt2712-disp-mutex",
-@@ -448,12 +418,42 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DISP_MUTEX },
- 	{ .compatible = "mediatek,mt8183-disp-mutex",
- 	  .data = (void *)MTK_DISP_MUTEX },
-+	{ .compatible = "mediatek,mt8173-disp-od",
-+	  .data = (void *)MTK_DISP_OD },
-+	{ .compatible = "mediatek,mt2701-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8173-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8183-disp-ovl",
-+	  .data = (void *)MTK_DISP_OVL },
-+	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
-+	  .data = (void *)MTK_DISP_OVL_2L },
- 	{ .compatible = "mediatek,mt2701-disp-pwm",
- 	  .data = (void *)MTK_DISP_BLS },
- 	{ .compatible = "mediatek,mt8173-disp-pwm",
- 	  .data = (void *)MTK_DISP_PWM },
--	{ .compatible = "mediatek,mt8173-disp-od",
--	  .data = (void *)MTK_DISP_OD },
-+	{ .compatible = "mediatek,mt2701-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8173-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8183-disp-rdma",
-+	  .data = (void *)MTK_DISP_RDMA },
-+	{ .compatible = "mediatek,mt8173-disp-ufoe",
-+	  .data = (void *)MTK_DISP_UFOE },
-+	{ .compatible = "mediatek,mt8173-disp-wdma",
-+	  .data = (void *)MTK_DISP_WDMA },
-+	{ .compatible = "mediatek,mt2701-dpi",
-+	  .data = (void *)MTK_DPI },
-+	{ .compatible = "mediatek,mt8173-dpi",
-+	  .data = (void *)MTK_DPI },
-+	{ .compatible = "mediatek,mt8183-dpi",
-+	  .data = (void *)MTK_DPI },
-+	{ .compatible = "mediatek,mt2701-dsi",
-+	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8173-dsi",
-+	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8183-dsi",
-+	  .data = (void *)MTK_DSI },
- 	{ }
- };
- 
-@@ -542,8 +542,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DISP_OVL ||
- 		    comp_type == MTK_DISP_OVL_2L ||
- 		    comp_type == MTK_DISP_RDMA ||
--		    comp_type == MTK_DSI ||
--		    comp_type == MTK_DPI) {
-+		    comp_type == MTK_DPI ||
-+		    comp_type == MTK_DSI) {
- 			dev_info(dev, "Adding component match for %pOF\n",
- 				 node);
- 			drm_of_component_match_add(dev, &match, compare_of,
--- 
-2.18.0
+Thanks very much for your information.
+
+It looks the time is too short to get Rob's ack in this weekend. I will
+wait for one or two weeks to see if there is other comments, then
+resend.
+
+> 
+> 
+> Best regards,
+> Krzysztof
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
