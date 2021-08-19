@@ -2,90 +2,77 @@ Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 790B3C4320E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 12:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EE36C4338F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 13:00:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C10B6112D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 12:49:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3C10B6112D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 06E3261152
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 13:00:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 06E3261152
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LTaIkho0gJIiL4h0GQIU8MSbvrVwQGgnKzGjkUxe2Y4=; b=kFGU4dGoUcGqty
-	ea/ktmYaBz3rwjzMHCY71hAe2q8v1yqMJ6C+zVBdbCzUncC3axdmup0RFmynk0oKwvvc76OATpDmx
-	9KRu5vlx10cymkT13zFiiizl81u+yqea0fC2BPiwni09JhYIp6yFIQsp9cadEvXgB73nv1XqEtg0T
-	5iFTPUdqByEaxbe2Yv08b3w5Lm4sX7P7p6wrUWCFAViyYNsKqXdg7/8epmxs7YCcLaFVZbfEx3VRP
-	1HwMA8MEpy8s4jZNpeb2A1FGcHuEPm5B6vdO8/4yQi3SH2KyfI/iwEl24aBWPRQV/7DDNRAY65Ahd
-	/bXAwa4PynMJMp9TVARg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=L8bT6SaZflmD5AO/WnPqL1n9FRllLsST60An2mCXy2g=; b=jkaudYuxd2l139
+	kYv+3lys9oKHdfn1v/eCpAPnQAp8K/mp8BDbqnSgWGQdLl5nNbjaeTgNvYThT/jz/8YoDpG16m2OS
+	n8A2m9d6QLOmIl3RExQT7l4gpFoQz4vO7uH2WMSSrSg+oNUDQyPS9pc5VvIv5eHcR+Sz7rTyRDttJ
+	OJGAFUXKldONzujQPQXqFFt9OBE2myql6qxOrd8DmEkbyhWZMjeLsSu/SUOf5lXxZi6nKKQBeknXW
+	PycgMXMZJ4RKEYihMwPiD34QE6iiwUUtxc+bEcRfBUU+qjePUK88G7j6UPYI3R2WqTnqhjJf4wTv1
+	LSQMHF5CulpkeUuOG+5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGhTz-008Ns6-UQ; Thu, 19 Aug 2021 12:49:19 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1mGheH-008P2V-Rh; Thu, 19 Aug 2021 12:59:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGhTt-008NqF-Q9; Thu, 19 Aug 2021 12:49:18 +0000
-Received: by mail-ot1-f52.google.com with SMTP id
- r38-20020a05683044a600b0051a2c6dd421so8575740otv.3; 
- Thu, 19 Aug 2021 05:49:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=ZNMlpd5elTsi6B8hZyA4f6ldMNMZe0l4iu+9KL9MAls=;
- b=DQ0LqqsuYy4ALAX1pIeEMjurfbVygnUb510zAOir2RW4qt+XCFWD6h2u0sXHR0qqLC
- 3jIr1a0694TfMIUtOnujnZCod01zq6i2W/vv9sDly9CtN03wJAd67cmyn+oj+/laIJFW
- 8x9sPPWt8fRs0CCmTvb+Q2AdsKgJfelIjUVrHrM3dcfTcigKGmZmhH2CF1vE6J5xObH2
- oiSehTeDuPeVCPiAI/QDpCi58RDDdYFiNRxa3NhtVMxaNd4suL5CMBdiwDPf37SjdKhs
- UycCk6OWTyNZsm+2RM/FXJMvNgUSMJIObAKBLmvFN4O2bPYC0SY1AMOvSNGTDQwZuztd
- Sfxg==
-X-Gm-Message-State: AOAM53079/eQtnWv1mp/LpYkdu3EzsHcR2YkfbzR0f8w/yR/9+0cfkyJ
- sgZ+oVcAHLjHEufcwBGWoA==
-X-Google-Smtp-Source: ABdhPJx3jDL4kYXzHNo10aYXPmecs8RlS3lgGSDuZYyaYvNJSUU0W1uDlCeC1BzxHjCr+IqeAl5AoA==
-X-Received: by 2002:a05:6830:12c1:: with SMTP id
- a1mr12254350otq.231.1629377351101; 
- Thu, 19 Aug 2021 05:49:11 -0700 (PDT)
-Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
- [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id n4sm555536ooe.10.2021.08.19.05.49.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 05:49:10 -0700 (PDT)
-Received: (nullmailer pid 288208 invoked by uid 1000);
- Thu, 19 Aug 2021 12:49:09 -0000
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, devicetree@vger.kernel.org,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, acourbot@chromium.org,
- pihsun@chromium.org, daoyuan huang <daoyuan.huang@mediatek.com>,
- Rob Landley <rob@landley.net>, drinkcat@chromium.org,
- Maoguang Meng <maoguang.meng@mediatek.com>, sj.huang@mediatek.com,
- menghui.lin@mediatek.com, tfiga@chromium.org,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, hsinyi@google.com,
- Rob Herring <robh+dt@kernel.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, randy.wu@mediatek.com,
- srv_heupstream@mediatek.com, Jernej Skrabec <jernej.skrabec@siol.net>,
- linux-mediatek@lists.infradead.org, ben.lok@mediatek.com,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20210819070954.16679-4-moudy.ho@mediatek.com>
-References: <20210819070954.16679-1-moudy.ho@mediatek.com>
- <20210819070954.16679-4-moudy.ho@mediatek.com>
-Subject: Re: [PATCH v6 3/5] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
-Date: Thu, 19 Aug 2021 07:49:09 -0500
-Message-Id: <1629377349.142826.288207.nullmailer@robh.at.kernel.org>
+ id 1mGheD-008P0b-0R; Thu, 19 Aug 2021 12:59:56 +0000
+X-UUID: f2286f7e61be46bf98f9bff5df148226-20210819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=65Qg+yTQ6Hh/FJ4xd+jM/c5MgTUeXVzdFkImksb4vw4=; 
+ b=ZwajC2bOjbf7HOhtX1gqqUw6uEhkQFmmCVPYylzJNSoHwTumGVFe+BZzzw4v4VIXD9PUbsAPgIblTwfGeNaZYHIClIR9PAKfin0cBJhv9B0dhxzbZ2SJmiRQ9fa9qV/SlWUC2fbr4/spDTrn3EDII/HLh/yYSdyxbZrBpVxd/Tw=;
+X-UUID: f2286f7e61be46bf98f9bff5df148226-20210819
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <jianjun.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 674967990; Thu, 19 Aug 2021 05:59:48 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 05:59:46 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 20:59:45 +0800
+Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 19 Aug 2021 20:59:44 +0800
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Wilczyski <kw@linux.com>, Bjorn Helgaas
+ <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ Jianjun Wang <jianjun.wang@mediatek.com>, <qizhong.cheng@mediatek.com>,
+ <Ryan-JH.Yu@mediatek.com>
+Subject: [PATCH] PCI: mediatek-gen3: Disable DVFSRC voltage request
+Date: Thu, 19 Aug 2021 20:59:39 +0800
+Message-ID: <20210819125939.21253-1-jianjun.wang@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_054913_874996_5BCBE276 
-X-CRM114-Status: GOOD (  14.37  )
+X-CRM114-CacheID: sfid-20210819_055953_097322_0D5FA5F3 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,82 +84,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Aug 2021 15:09:52 +0800, Moudy Ho wrote:
-> This patch adds DT binding document for Media Data Path 3 (MDP3)
-> a unit in multimedia system used for scaling and color format convert.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  .../bindings/media/mediatek,mdp3-ccorr.yaml   |  58 +++++
->  .../bindings/media/mediatek,mdp3-rdma.yaml    | 241 ++++++++++++++++++
->  .../bindings/media/mediatek,mdp3-rsz.yaml     |  66 +++++
->  .../bindings/media/mediatek,mdp3-wdma.yaml    |  71 ++++++
->  .../bindings/media/mediatek,mdp3-wrot.yaml    |  71 ++++++
->  5 files changed, 507 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ccorr.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> 
+When the DVFSRC feature is not implemented, the MAC layer will
+assert a voltage request signal when exit from the L1ss state,
+but cannot receive the voltage ready signal, which will cause
+the link to fail to exit the L1ss state correctly.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Disable DVFSRC voltage request by default, we need to find
+a common way to enable it in the future.
 
-yamllint warnings/errors:
+Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+---
+ drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-dtschema/dtc warnings/errors:
-make[1]: *** Deleting file 'Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.example.dts'
-Traceback (most recent call last):
-  File "/usr/local/bin/dt-extract-example", line 45, in <module>
-    binding = yaml.load(open(args.yamlfile, encoding='utf-8').read())
-  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 434, in load
-    return constructor.get_single_data()
-  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 120, in get_single_data
-    node = self.composer.get_single_node()
-  File "_ruamel_yaml.pyx", line 706, in _ruamel_yaml.CParser.get_single_node
-  File "_ruamel_yaml.pyx", line 724, in _ruamel_yaml.CParser._compose_document
-  File "_ruamel_yaml.pyx", line 775, in _ruamel_yaml.CParser._compose_node
-  File "_ruamel_yaml.pyx", line 889, in _ruamel_yaml.CParser._compose_mapping_node
-  File "_ruamel_yaml.pyx", line 773, in _ruamel_yaml.CParser._compose_node
-  File "_ruamel_yaml.pyx", line 848, in _ruamel_yaml.CParser._compose_sequence_node
-  File "_ruamel_yaml.pyx", line 904, in _ruamel_yaml.CParser._parse_next_event
-ruamel.yaml.scanner.ScannerError: while scanning a block scalar
-  in "<unicode string>", line 171, column 5
-found a tab character where an indentation space is expected
-  in "<unicode string>", line 183, column 1
-make[1]: *** [Documentation/devicetree/bindings/Makefile:20: Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.example.dts] Error 1
-make[1]: *** Waiting for unfinished jobs....
-./Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml:  while scanning a block scalar
-  in "<unicode string>", line 171, column 5
-found a tab character where an indentation space is expected
-  in "<unicode string>", line 183, column 1
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml: ignoring, error parsing file
-warning: no schema found in file: ./Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-make: *** [Makefile:1419: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1518477
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
-
+diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+index f3aeb8d4eaca..79fb12fca6a9 100644
+--- a/drivers/pci/controller/pcie-mediatek-gen3.c
++++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+@@ -79,6 +79,9 @@
+ #define PCIE_ICMD_PM_REG		0x198
+ #define PCIE_TURN_OFF_LINK		BIT(4)
+ 
++#define PCIE_MISC_CTRL_REG		0x348
++#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
++
+ #define PCIE_TRANS_TABLE_BASE_REG	0x800
+ #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+ #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
+@@ -297,6 +300,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+ 	val &= ~PCIE_INTX_ENABLE;
+ 	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
+ 
++	/* Disable DVFSRC voltage request */
++	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
++	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
++	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
++
+ 	/* Assert all reset signals */
+ 	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+ 	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
