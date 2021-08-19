@@ -2,90 +2,78 @@ Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A00E6C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 07:14:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E1C5C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 08:44:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5CA716112D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 07:14:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5CA716112D
+	by mail.kernel.org (Postfix) with ESMTPS id 3775861101
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 08:44:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3775861101
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z4rWkisPC0RULXoIdnw49JmIXjIV6/GbiMUbHe5uEy4=; b=gRY1L3Xv213jdd
-	vL4BqHOhmsO7kAGsqGLp4mEbOh75GEPQhg9Ne49/w8sDvKK+gXTItC7coVrjspVtGEulzc6/PUmuD
-	YfPLRbRnZKBja/VLiPS+kOarARZNjMBiqOI0gb9sRg1sQhEX3LfcCYt6w59heTZgwCGxTTY5Ks6og
-	BDh+lEj4MY0oQeaGxcvNb3JBz0VXCUDyroIkPKHTwxQgkBb6Prlg1a0azb0vIOImKXaa59vzVoIwL
-	0CMNZpjQ7LIuAWAp8hwV2KpWZAYBsCpoaK3iG2z9rW7YsOql4lhex9Fb+Rq3xwkrDo7e2mGz0MBA9
-	el+iPmWAc3oOxtR4jmKw==;
+	List-Owner; bh=2vASmn/GDm+nS6YfWiLOtbH+qbcRxZP7SA4wwrd82OI=; b=Ko5Zn/MQ9vqWs7
+	jn9GCOC2Blt+vUzfn0xFCCRQHZZIbYZnCGkPl5wbIyVkV2D7v2gW6oCb5b/py6p1es83TBK7ln+p1
+	a+OLE4PpNKi1iB9K1AI7x2IaRbseAvKcH8+cijBlLje2KXQJsyAyjdFABHfOXy/iThQloOm3hz9Hx
+	LbA7ICyztL8a2MhkguK9M0rt7FU1nqtLVyJquRMVprD8Ox4DvA1QdH4g1xfYoNnm1WyJZ82/Nv+y2
+	EIe2lshjN0HgiGf6kz2XZdUzRuUPsPXROWWjJcRHLzx1P1BcxfyIgvNESgY2YszCnBUidkUET7Mnm
+	ojIXYwt6ZHzZtxf7cpZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGcFY-007TL1-Ln; Thu, 19 Aug 2021 07:14:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mGdeM-007icS-5g; Thu, 19 Aug 2021 08:43:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGcFR-007THZ-SG; Thu, 19 Aug 2021 07:14:03 +0000
-X-UUID: 18e32963019142ab8691515eb9e6990d-20210819
+ id 1mGddt-007iUo-Qp; Thu, 19 Aug 2021 08:43:21 +0000
+X-UUID: 65b1c4fa1b2f433f88364237e3e99a09-20210819
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=/muT9XpC+z47+tIQYbGjPzGaimqcXokZABmz7lDUyYU=; 
- b=E69u6PyE118kmWIHFOuoYNQ7dyk903A//Kg2LPsBFx/iR1brQIbH3fwtUFyEInYUVbMtIMjdJa0KUASI0uvp+U2DHLqSL2j9f0OKJOI9+TktnL7egWkUrRWjPizBODhLQPLOC50NlYglRZIPRjY+XZYXCN5I+bZFA5BiOuGXsgs=;
-X-UUID: 18e32963019142ab8691515eb9e6990d-20210819
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=TEzVbA6H9OgqKrUI1gVwrs0AjxSfMMwErSeyQnhWNTI=; 
+ b=tVnoRDdwl81sl2VFSneN8vOQxEKCTZrhB831IF6skCrrC22VtnI+7avq3wytH69Y8kjs8iTXNaZwek36yfB4SoyXI+7Licv6xX0tXxy7uArkg3ZdCXHkd0VwU4fGIQqXJHR9bL/wAuPV0U/hu+AAsJ7QO8lNe4RUwtaKQ/RxG8U=;
+X-UUID: 65b1c4fa1b2f433f88364237e3e99a09-20210819
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1152915; Thu, 19 Aug 2021 00:13:52 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 00:13:50 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 15:13:48 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 19 Aug 2021 15:13:47 +0800
-Message-ID: <1b79a67b703d2c894bc4d9458c760e082fc42958.camel@mediatek.com>
-Subject: Re: [PATCH v5, 00/15] Using component framework to support multi
- hardware decode
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>
-CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
- linux-media <linux-media@vger.kernel.org>, devicetree
- <devicetree@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, srv_heupstream
- <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
- <george.sun@mediatek.com>
-Date: Thu, 19 Aug 2021 15:13:48 +0800
-In-Reply-To: <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1053516413; Thu, 19 Aug 2021 01:43:11 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 01:43:09 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 16:43:08 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 19 Aug 2021 16:43:08 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
+ <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <bicycle.tsai@mediatek.com>, <jiaxin.yu@mediatek.com>, <cychiang@google.com>, 
+ <aaronyu@google.com>, <wenst@chromium.org>
+Subject: [PATCH v5 01/11] ASoC: mediatek: mt8195: update mediatek common driver
+Date: Thu, 19 Aug 2021 16:41:34 +0800
+Message-ID: <20210819084144.18483-2-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210819084144.18483-1-trevor.wu@mediatek.com>
+References: <20210819084144.18483-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_001357_962207_94FBBBF5 
-X-CRM114-Status: GOOD (  25.24  )
+X-CRM114-CacheID: sfid-20210819_014317_946497_3B631095 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,59 +90,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel,
+Update mediatek common driver to support MT8195
 
-Thanks for your suggestion.
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Reported-by: kernel test robot <lkp@intel.com>
+---
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 22 +++++++++++++++++++---
+ sound/soc/mediatek/common/mtk-base-afe.h   | 10 ++++++++--
+ 2 files changed, 27 insertions(+), 5 deletions(-)
 
-On Wed, 2021-08-18 at 11:11 -0300, Ezequiel Garcia wrote:
-> +danvet
-> 
-> Hi,
-> 
-> On Tue, 10 Aug 2021 at 23:58, Yunfei Dong <yunfei.dong@mediatek.com>
-> wrote:
-> > 
-> > This series adds support for multi hardware decode into mtk-vcodec, 
-> > by first
-> > adding component framework to manage each hardware information:
-> > interrupt,
-> > clock, register bases and power. Secondly add core thread to deal
-> > with core
-> > hardware message, at the same time, add msg queue for different
-> > hardware
-> > share messages. Lastly, the architecture of different specs are not
-> > the same,
-> > using specs type to separate them.
-> > 
-> 
-> I don't think it's a good idea to introduce the component API in the
-> media subsystem. It doesn't seem to be maintained, IRC there's not
-> even
-> a maintainer for it, and it has some issues that were never
-> addressed.
-> 
-> It would be really important to avoid it. Is it really needed in the
-> first place?
-> 
-> Thanks,
-> Ezequiel
-
-For there are many hardware need to use, mt8192 is three and mt8195 is
-five. Maybe need more to be used in the feature.
-
-Each hardware has independent clk/power/iommu port/irq.
-Use component interface in prob to get each component's information.
-Just enable the hardware when need to use it, very convenient and
-simple.
-
-I found that there are many modules use component to manage hardware
-information, such as iommu and drm etc.
-
-Do you have any other suggestion for this architecture?
-
-Thanks
-Yunfei Dong
-
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+index 3cb2adf420bb..baaa5881b1d4 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+@@ -139,7 +139,7 @@ int mtk_afe_fe_hw_params(struct snd_pcm_substream *substream,
+ 		substream->runtime->dma_area,
+ 		substream->runtime->dma_bytes);
+ 
+-	memset_io(substream->runtime->dma_area, 0,
++	memset_io((void __force __iomem *)substream->runtime->dma_area, 0,
+ 		  substream->runtime->dma_bytes);
+ 
+ 	/* set addr */
+@@ -433,11 +433,20 @@ int mtk_memif_set_addr(struct mtk_base_afe *afe, int id,
+ 				 phys_buf_addr_upper_32);
+ 	}
+ 
+-	/* set MSB to 33-bit */
+-	if (memif->data->msb_reg >= 0)
++	/*
++	 * set MSB to 33-bit, for memif address
++	 * only for memif base address, if msb_end_reg exists
++	 */
++	if (memif->data->msb_reg)
+ 		mtk_regmap_update_bits(afe->regmap, memif->data->msb_reg,
+ 				       1, msb_at_bit33, memif->data->msb_shift);
+ 
++	/* set MSB to 33-bit, for memif end address */
++	if (memif->data->msb_end_reg)
++		mtk_regmap_update_bits(afe->regmap, memif->data->msb_end_reg,
++				       1, msb_at_bit33,
++				       memif->data->msb_end_shift);
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mtk_memif_set_addr);
+@@ -464,6 +473,13 @@ int mtk_memif_set_channel(struct mtk_base_afe *afe,
+ 	else
+ 		mono = (channel == 1) ? 1 : 0;
+ 
++	/* for specific configuration of memif mono mode */
++	if (memif->data->int_odd_flag_reg)
++		mtk_regmap_update_bits(afe->regmap,
++				       memif->data->int_odd_flag_reg,
++				       1, mono,
++				       memif->data->int_odd_flag_shift);
++
+ 	return mtk_regmap_update_bits(afe->regmap, memif->data->mono_reg,
+ 				      1, mono, memif->data->mono_shift);
+ }
+diff --git a/sound/soc/mediatek/common/mtk-base-afe.h b/sound/soc/mediatek/common/mtk-base-afe.h
+index a6f68c68581c..ef83e78c22a8 100644
+--- a/sound/soc/mediatek/common/mtk-base-afe.h
++++ b/sound/soc/mediatek/common/mtk-base-afe.h
+@@ -29,6 +29,8 @@ struct mtk_base_memif_data {
+ 	int quad_ch_reg;
+ 	int quad_ch_mask;
+ 	int quad_ch_shift;
++	int int_odd_flag_reg;
++	int int_odd_flag_shift;
+ 	int enable_reg;
+ 	int enable_shift;
+ 	int hd_reg;
+@@ -37,10 +39,13 @@ struct mtk_base_memif_data {
+ 	int hd_align_mshift;
+ 	int msb_reg;
+ 	int msb_shift;
+-	int msb2_reg;
+-	int msb2_shift;
++	int msb_end_reg;
++	int msb_end_shift;
+ 	int agent_disable_reg;
+ 	int agent_disable_shift;
++	int ch_num_reg;
++	int ch_num_shift;
++	int ch_num_maskbit;
+ 	/* playback memif only */
+ 	int pbuf_reg;
+ 	int pbuf_mask;
+@@ -62,6 +67,7 @@ struct mtk_base_irq_data {
+ 	int irq_en_shift;
+ 	int irq_clr_reg;
+ 	int irq_clr_shift;
++	int irq_status_shift;
+ };
+ 
+ struct device;
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
