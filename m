@@ -2,78 +2,90 @@ Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E4F2C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 08:48:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 790B3C4320E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 12:49:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 442F660E90
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 08:48:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 442F660E90
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3C10B6112D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 12:49:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3C10B6112D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SCECNINrfXFWgUnshEyWJBpQOIWHFCSn4Wrs3ra0c8Y=; b=qYj+NIjSLcUO7I
-	GrYdJysJ12k8XRHL13gjVS4nNPUm22krEnZBCqoEqhpAWstRhb3ltvFNiTFTI69a5ydyPCRxIQNid
-	54zyEIptRsFUVvpm49VVWMNKa4T1zAcDU7QbKdYwwv7O5s3ZS2hei4hsCzftaX8xzrxnOrRG3O5xy
-	4WZNNmTxqOSV7gxvUTwACrS3zx3zqFukWOIEw/ZTZlqSGSxpSALtRrPVsM60yuL8CS0Gnouqw7qs5
-	fD9G6ckrnjNE7+9ZVI7GzpvvXbTB+0ChkRR29PJp1aBgXku4IqMQkJkUPOtcqixCoj1YeLDJn+qwo
-	tmeHI1YYPMGZ47NxH2mA==;
+	List-Owner; bh=LTaIkho0gJIiL4h0GQIU8MSbvrVwQGgnKzGjkUxe2Y4=; b=kFGU4dGoUcGqty
+	ea/ktmYaBz3rwjzMHCY71hAe2q8v1yqMJ6C+zVBdbCzUncC3axdmup0RFmynk0oKwvvc76OATpDmx
+	9KRu5vlx10cymkT13zFiiizl81u+yqea0fC2BPiwni09JhYIp6yFIQsp9cadEvXgB73nv1XqEtg0T
+	5iFTPUdqByEaxbe2Yv08b3w5Lm4sX7P7p6wrUWCFAViyYNsKqXdg7/8epmxs7YCcLaFVZbfEx3VRP
+	1HwMA8MEpy8s4jZNpeb2A1FGcHuEPm5B6vdO8/4yQi3SH2KyfI/iwEl24aBWPRQV/7DDNRAY65Ahd
+	/bXAwa4PynMJMp9TVARg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGdiQ-007kxX-Lp; Thu, 19 Aug 2021 08:47:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mGhTz-008Ns6-UQ; Thu, 19 Aug 2021 12:49:19 +0000
+Received: from mail-ot1-f52.google.com ([209.85.210.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGde6-007iUi-6P; Thu, 19 Aug 2021 08:43:34 +0000
-X-UUID: c6adf06d1cb442538b79e10f5320512a-20210819
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=6f63r2snCy7Qa12UdqnrRoQq1RQldZhgz6Z/W0fZ4Xc=; 
- b=SRpvGekvpVh2zeOdAbLB96nRfHDuuZf9DiqxSr7bb7OzOHXLdhcB0U39Kgok538t38B9wh4bRd6jU5kax0NgE1ofjzoX+z+A5ejyKu2dPTo1TAdGEE7DKhbF1kEAQNfyGuaLosIIkOdGZ/9gXj43PZdFT8C84sXZHfNWQ6X+3gM=;
-X-UUID: c6adf06d1cb442538b79e10f5320512a-20210819
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1470318296; Thu, 19 Aug 2021 01:43:14 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 01:43:12 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 19 Aug 2021 16:43:09 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 19 Aug 2021 16:43:09 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <lgirdwood@gmail.com>, <tiwai@suse.com>,
- <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <bicycle.tsai@mediatek.com>, <jiaxin.yu@mediatek.com>, <cychiang@google.com>, 
- <aaronyu@google.com>, <wenst@chromium.org>
-Subject: [PATCH v5 09/11] ASoC: mediatek: mt8195: add DPTX audio support
-Date: Thu, 19 Aug 2021 16:41:42 +0800
-Message-ID: <20210819084144.18483-10-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210819084144.18483-1-trevor.wu@mediatek.com>
-References: <20210819084144.18483-1-trevor.wu@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1mGhTt-008NqF-Q9; Thu, 19 Aug 2021 12:49:18 +0000
+Received: by mail-ot1-f52.google.com with SMTP id
+ r38-20020a05683044a600b0051a2c6dd421so8575740otv.3; 
+ Thu, 19 Aug 2021 05:49:11 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=ZNMlpd5elTsi6B8hZyA4f6ldMNMZe0l4iu+9KL9MAls=;
+ b=DQ0LqqsuYy4ALAX1pIeEMjurfbVygnUb510zAOir2RW4qt+XCFWD6h2u0sXHR0qqLC
+ 3jIr1a0694TfMIUtOnujnZCod01zq6i2W/vv9sDly9CtN03wJAd67cmyn+oj+/laIJFW
+ 8x9sPPWt8fRs0CCmTvb+Q2AdsKgJfelIjUVrHrM3dcfTcigKGmZmhH2CF1vE6J5xObH2
+ oiSehTeDuPeVCPiAI/QDpCi58RDDdYFiNRxa3NhtVMxaNd4suL5CMBdiwDPf37SjdKhs
+ UycCk6OWTyNZsm+2RM/FXJMvNgUSMJIObAKBLmvFN4O2bPYC0SY1AMOvSNGTDQwZuztd
+ Sfxg==
+X-Gm-Message-State: AOAM53079/eQtnWv1mp/LpYkdu3EzsHcR2YkfbzR0f8w/yR/9+0cfkyJ
+ sgZ+oVcAHLjHEufcwBGWoA==
+X-Google-Smtp-Source: ABdhPJx3jDL4kYXzHNo10aYXPmecs8RlS3lgGSDuZYyaYvNJSUU0W1uDlCeC1BzxHjCr+IqeAl5AoA==
+X-Received: by 2002:a05:6830:12c1:: with SMTP id
+ a1mr12254350otq.231.1629377351101; 
+ Thu, 19 Aug 2021 05:49:11 -0700 (PDT)
+Received: from robh.at.kernel.org (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id n4sm555536ooe.10.2021.08.19.05.49.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Aug 2021 05:49:10 -0700 (PDT)
+Received: (nullmailer pid 288208 invoked by uid 1000);
+ Thu, 19 Aug 2021 12:49:09 -0000
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, devicetree@vger.kernel.org,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, acourbot@chromium.org,
+ pihsun@chromium.org, daoyuan huang <daoyuan.huang@mediatek.com>,
+ Rob Landley <rob@landley.net>, drinkcat@chromium.org,
+ Maoguang Meng <maoguang.meng@mediatek.com>, sj.huang@mediatek.com,
+ menghui.lin@mediatek.com, tfiga@chromium.org,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, hsinyi@google.com,
+ Rob Herring <robh+dt@kernel.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, randy.wu@mediatek.com,
+ srv_heupstream@mediatek.com, Jernej Skrabec <jernej.skrabec@siol.net>,
+ linux-mediatek@lists.infradead.org, ben.lok@mediatek.com,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20210819070954.16679-4-moudy.ho@mediatek.com>
+References: <20210819070954.16679-1-moudy.ho@mediatek.com>
+ <20210819070954.16679-4-moudy.ho@mediatek.com>
+Subject: Re: [PATCH v6 3/5] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
+Date: Thu, 19 Aug 2021 07:49:09 -0500
+Message-Id: <1629377349.142826.288207.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_014330_277100_0301EB2A 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20210819_054913_874996_5BCBE276 
+X-CRM114-Status: GOOD (  14.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,181 +97,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds DPTX audio support on mt8195-mt6359-rt1019-rt5682 board.
+On Thu, 19 Aug 2021 15:09:52 +0800, Moudy Ho wrote:
+> This patch adds DT binding document for Media Data Path 3 (MDP3)
+> a unit in multimedia system used for scaling and color format convert.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../bindings/media/mediatek,mdp3-ccorr.yaml   |  58 +++++
+>  .../bindings/media/mediatek,mdp3-rdma.yaml    | 241 ++++++++++++++++++
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     |  66 +++++
+>  .../bindings/media/mediatek,mdp3-wdma.yaml    |  71 ++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    |  71 ++++++
+>  5 files changed, 507 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ccorr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+> 
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/Kconfig                    |  1 +
- .../mt8195/mt8195-mt6359-rt1019-rt5682.c      | 88 +++++++++++++++++--
- 2 files changed, 84 insertions(+), 5 deletions(-)
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-index bfee954d0c7c..cf567a89f421 100644
---- a/sound/soc/mediatek/Kconfig
-+++ b/sound/soc/mediatek/Kconfig
-@@ -202,6 +202,7 @@ config SND_SOC_MT8195_MT6359_RT1019_RT5682
- 	select SND_SOC_RT1015P
- 	select SND_SOC_RT5682_I2C
- 	select SND_SOC_DMIC
-+	select SND_SOC_HDMI_CODEC
- 	help
- 	  This adds ASoC driver for Mediatek MT8195 boards
- 	  with the MT6359 RT1019 RT5682 audio codec.
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-index 39b33aecc1e9..d853bc445753 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-@@ -27,6 +27,7 @@
- 
- struct mt8195_mt6359_rt1019_rt5682_priv {
- 	struct snd_soc_jack headset_jack;
-+	struct snd_soc_jack dp_jack;
- };
- 
- static const struct snd_soc_dapm_widget
-@@ -327,6 +328,52 @@ static int mt8195_etdm_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
- 	return 0;
- }
- 
-+static int mt8195_hdmitx_dptx_startup(struct snd_pcm_substream *substream)
-+{
-+	static const unsigned int rates[] = {
-+		48000
-+	};
-+	static const unsigned int channels[] = {
-+		2, 4, 6, 8
-+	};
-+	static const struct snd_pcm_hw_constraint_list constraints_rates = {
-+		.count = ARRAY_SIZE(rates),
-+		.list  = rates,
-+		.mask = 0,
-+	};
-+	static const struct snd_pcm_hw_constraint_list constraints_channels = {
-+		.count = ARRAY_SIZE(channels),
-+		.list  = channels,
-+		.mask = 0,
-+	};
-+
-+	struct snd_soc_pcm_runtime *rtd = asoc_substream_to_rtd(substream);
-+	struct snd_pcm_runtime *runtime = substream->runtime;
-+	int ret;
-+
-+	ret = snd_pcm_hw_constraint_list(runtime, 0,
-+					 SNDRV_PCM_HW_PARAM_RATE,
-+					 &constraints_rates);
-+	if (ret < 0) {
-+		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
-+		return ret;
-+	}
-+
-+	ret = snd_pcm_hw_constraint_list(runtime, 0,
-+					 SNDRV_PCM_HW_PARAM_CHANNELS,
-+					 &constraints_channels);
-+	if (ret < 0) {
-+		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct snd_soc_ops mt8195_hdmitx_dptx_playback_ops = {
-+	.startup = mt8195_hdmitx_dptx_startup,
-+};
-+
- static int mt8195_dptx_hw_params(struct snd_pcm_substream *substream,
- 				 struct snd_pcm_hw_params *params)
- {
-@@ -344,8 +391,25 @@ static struct snd_soc_ops mt8195_dptx_ops = {
- 	.hw_params = mt8195_dptx_hw_params,
- };
- 
--static int mt8195_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
--				       struct snd_pcm_hw_params *params)
-+static int mt8195_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
-+{
-+	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
-+		snd_soc_card_get_drvdata(rtd->card);
-+	struct snd_soc_component *cmpnt_codec =
-+		asoc_rtd_to_codec(rtd, 0)->component;
-+	int ret = 0;
-+
-+	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
-+				    &priv->dp_jack, NULL, 0);
-+	if (ret)
-+		return ret;
-+
-+	return snd_soc_component_set_jack(cmpnt_codec, &priv->dp_jack, NULL);
-+}
-+
-+static int mt8195_hdmitx_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
-+					      struct snd_pcm_hw_params *params)
-+
- {
- 	/* fix BE i2s format to 32bit, clean param mask first */
- 	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
-@@ -687,6 +751,7 @@ static struct snd_soc_dai_link mt8195_mt6359_rt1019_rt5682_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.dpcm_playback = 1,
-+		.ops = &mt8195_hdmitx_dptx_playback_ops,
- 		SND_SOC_DAILINK_REG(DL10_FE),
- 	},
- 	[DAI_LINK_DL11_FE] = {
-@@ -820,7 +885,7 @@ static struct snd_soc_dai_link mt8195_mt6359_rt1019_rt5682_dai_links[] = {
- 		.no_pcm = 1,
- 		.dpcm_playback = 1,
- 		.ops = &mt8195_dptx_ops,
--		.be_hw_params_fixup = mt8195_dptx_hw_params_fixup,
-+		.be_hw_params_fixup = mt8195_hdmitx_dptx_hw_params_fixup,
- 		SND_SOC_DAILINK_REG(DPTX_BE),
- 	},
- 	[DAI_LINK_ETDM1_IN_BE] = {
-@@ -915,7 +980,6 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 	struct device_node *platform_node;
- 	struct snd_soc_dai_link *dai_link;
- 	struct mt8195_mt6359_rt1019_rt5682_priv *priv = NULL;
--
- 	int ret, i;
- 
- 	card->dev = &pdev->dev;
-@@ -930,6 +994,20 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 	for_each_card_prelinks(card, i, dai_link) {
- 		if (!dai_link->platforms->name)
- 			dai_link->platforms->of_node = platform_node;
-+
-+		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
-+			dai_link->codecs->of_node =
-+				of_parse_phandle(pdev->dev.of_node,
-+						 "mediatek,dptx-codec", 0);
-+			if (!dai_link->codecs->of_node) {
-+				dev_err(&pdev->dev, "Property 'dptx-codec' missing or invalid\n");
-+				return -EINVAL;
-+			}
-+
-+			dai_link->codecs->name = NULL;
-+			dai_link->codecs->dai_name = "i2s-hifi";
-+			dai_link->init = mt8195_dptx_codec_init;
-+		}
- 	}
- 
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-@@ -940,7 +1018,7 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 
- 	ret = devm_snd_soc_register_card(&pdev->dev, card);
- 	if (ret)
--		dev_dbg(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-+		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
- 			__func__, ret);
- 	return ret;
- }
--- 
-2.18.0
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+make[1]: *** Deleting file 'Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.example.dts'
+Traceback (most recent call last):
+  File "/usr/local/bin/dt-extract-example", line 45, in <module>
+    binding = yaml.load(open(args.yamlfile, encoding='utf-8').read())
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/main.py", line 434, in load
+    return constructor.get_single_data()
+  File "/usr/local/lib/python3.8/dist-packages/ruamel/yaml/constructor.py", line 120, in get_single_data
+    node = self.composer.get_single_node()
+  File "_ruamel_yaml.pyx", line 706, in _ruamel_yaml.CParser.get_single_node
+  File "_ruamel_yaml.pyx", line 724, in _ruamel_yaml.CParser._compose_document
+  File "_ruamel_yaml.pyx", line 775, in _ruamel_yaml.CParser._compose_node
+  File "_ruamel_yaml.pyx", line 889, in _ruamel_yaml.CParser._compose_mapping_node
+  File "_ruamel_yaml.pyx", line 773, in _ruamel_yaml.CParser._compose_node
+  File "_ruamel_yaml.pyx", line 848, in _ruamel_yaml.CParser._compose_sequence_node
+  File "_ruamel_yaml.pyx", line 904, in _ruamel_yaml.CParser._parse_next_event
+ruamel.yaml.scanner.ScannerError: while scanning a block scalar
+  in "<unicode string>", line 171, column 5
+found a tab character where an indentation space is expected
+  in "<unicode string>", line 183, column 1
+make[1]: *** [Documentation/devicetree/bindings/Makefile:20: Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.example.dts] Error 1
+make[1]: *** Waiting for unfinished jobs....
+./Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml:  while scanning a block scalar
+  in "<unicode string>", line 171, column 5
+found a tab character where an indentation space is expected
+  in "<unicode string>", line 183, column 1
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml: ignoring, error parsing file
+warning: no schema found in file: ./Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+make: *** [Makefile:1419: dt_binding_check] Error 2
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1518477
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
