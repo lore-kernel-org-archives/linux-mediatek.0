@@ -2,81 +2,83 @@ Return-Path: <SRS0=yE1p=NL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E019AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 09:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81763C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 10:26:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9CEE4610CB
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 09:53:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9CEE4610CB
+	by mail.kernel.org (Postfix) with ESMTPS id 47DC7610D2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 10:26:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 47DC7610D2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2dFGQ0XFwqK4w4651gx/TUOrhNQcvkQEqpNiZkNiWhs=; b=u+SdRiO1qK+dqc
-	AUXIk30DyHyiJR3+1sgAD3HXwuxMafYxYjKJWEGb9bC1XJsyZpqLjO13sENNcc2Cg/WdbkQbJ6/Cn
-	ETa8QMK1bUqsZoggB9NEgU/p+2IMu9I/Opqp/rpZGnwIuUXUkMA32dIxM/e3wWW37G2qRn9+qjjGe
-	r51aDL9rq1lPAPv0FmJWzUM+eNGxHlMLRF99kGKMycKJM2OJ2nIK1p+Toi/S16zt/iopTxbUbh+ui
-	cK99BDoxFgsoJu6oUd/KIKR5t89TPBl1NVGoUJ3Igq86yH5rx7z4ObMd702qWrO/msdRrVUNYF+Rv
-	YKA9M3jXNTpG/HQiZ0cQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tnQr6Ns5jGOqzt7BEQqqXpetRWT3GsiI7n7AxQyYsVY=; b=fek913uDfQRItC
+	t00ubebLjlBYS0gIG4m9Mo0gGFoimfBfeORCDpy/OoX5MX9GPGl1smTcJ/hxzJwBpjung9HL3YMsh
+	D3oejyVleT5YMXILlNmhiIDgOVSsOnMKjdcDUnBHIfZNCVsRlces2JfvW29DGeDuIiajLrFS3gJmr
+	8/7qn6GZb6AD1Aiztqw2vcFOOh3mxp368u8dkU8G8t3jz6l7CTvt9fdkATmvuWHLsh+djzHNZmQG2
+	VBTShl9L0DcU1p2Ymx0Z4uDIv+RE1lX/f+/iXa39Vj668ope4MroD5BWHERoBV1tNysBavkRFN4O2
+	b5DoJLvCQOh+s3cog8Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mH1Ch-00AZ3v-NE; Fri, 20 Aug 2021 09:52:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mH1id-00AezR-FM; Fri, 20 Aug 2021 10:25:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mH1CI-00AYxu-T6; Fri, 20 Aug 2021 09:52:28 +0000
-X-UUID: 737360920b534f8b8c27aab8fd45dcb9-20210820
+ id 1mH1iK-00AeuM-QA; Fri, 20 Aug 2021 10:25:33 +0000
+X-UUID: 5301d98c19be48e294cd8d072695cff3-20210820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=GF22g9hL4OX9bosBYidtQxTnGL2rjf+G/t7cNOIZFDo=; 
- b=lG7RVtbwshCh9RvEYPP2p7VPVRioHR/ZMkv0yxj5dqTDCZ7svGKsnhbvSt4BCyD4vFN4wkWrtbipFi2DRfgW52xbKp1xl+/QKOdd3Jz12qGUrMEIYVay5r6MdC1rbfOaVEsSnEfHdcYH3NMCBUs38r58T9Go6lP3kwYs1DhETvE=;
-X-UUID: 737360920b534f8b8c27aab8fd45dcb9-20210820
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <ben.tseng@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Hg+A9wC5xVUwpu1LLCJpp1r0a/s3BDtm8w7sWFDT+xg=; 
+ b=WDYUpP0SZHri4ELOj51yB0VlcI/2DBYXSCnztNTrZyOay3nI58vMgNutcBGrOqRsn4kdky4eiyRN/E8t4QGFrvsDwDM3J7zt19sO7+edxDSne76zbRDX++RiIe1JAlZIGCJRpv1GcrQI3hnSLnUDB1X3U0TAIhEgDaQjD7W23qg=;
+X-UUID: 5301d98c19be48e294cd8d072695cff3-20210820
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1724757827; Fri, 20 Aug 2021 02:52:17 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 02:52:15 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 17:52:13 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 20 Aug 2021 17:52:12 +0800
-From: Ben Tseng <ben.tseng@mediatek.com>
-To: Fan Chen <fan.chen@mediatek.com>, Zhang Rui <rui.zhang@intel.com>, "Daniel
- Lezcano" <daniel.lezcano@linaro.org>, <linux-pm@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
+ with ESMTP id 510481722; Fri, 20 Aug 2021 03:25:25 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 Aug 2021 03:25:23 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 Aug 2021 18:25:21 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 20 Aug 2021 18:25:21 +0800
+Message-ID: <1629455122.11260.2.camel@mtksdaap41>
+Subject: Re: [PATCH v3 12/15] drm/mediatek: add display MDP RDMA support for
+ MT8195
+From: CK Hu <ck.hu@mediatek.com>
+To: Nancy.Lin <nancy.lin@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Michael Kao
- <michael.kao@mediatek.com>, Ben Tseng <ben.tseng@mediatek.com>
-Subject: [PATCH v9] thermal: mediatek: add another get_temp ops for thermal
- sensors
-Date: Fri, 20 Aug 2021 17:52:06 +0800
-Message-ID: <20210820095206.30981-1-ben.tseng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Fri, 20 Aug 2021 18:25:22 +0800
+In-Reply-To: <20210818091847.8060-13-nancy.lin@mediatek.com>
+References: <20210818091847.8060-1-nancy.lin@mediatek.com>
+ <20210818091847.8060-13-nancy.lin@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210820_025224_414331_07260924 
-X-CRM114-Status: GOOD (  29.34  )
+X-CRM114-CacheID: sfid-20210820_032529_253400_E92E1C13 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,306 +95,206 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Michael Kao <michael.kao@mediatek.com>
 
-Provide thermal zone to read thermal sensor
-in the SoC. We can read all the thermal sensors
-value in the SoC by the node /sys/class/thermal/
+Hi, Nancy:
 
-In mtk_thermal_bank_temperature, return -EAGAIN instead of -EACCESS
-on the first read of sensor that often are bogus values.
-This can avoid following warning on boot:
+On Wed, 2021-08-18 at 17:18 +0800, Nancy.Lin wrote:
+> Add MDP_RDMA driver for MT8195. MDP_RDMA is the DMA engine of
+> the ovl_adaptor component.
+> 
+> Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> ---
 
-  thermal thermal_zone6: failed to read out thermal zone (-13)
+[snip]
 
-Signed-off-by: Michael Kao <michael.kao@mediatek.com>
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
----
+> +
+> +#define MDP_RDMA_EN                                            0x000
+> +#define FLD_ROT_ENABLE                            REG_FLD(1, 0)
 
-This patchset supports for MT8183 chip to mtk_thermal.c.
-Add thermal zone of all the thermal sensor in SoC for
-another get temperatrue. They don't need to thermal throttle.
-And we bind coolers for thermal zone nodes of cpu_thermal.
+I would like the bitwise definition has one more indent than the byte
+definition.
 
-Changes in V9:
-    - Rebase to kernel-v5.14-rc1
-    - Bind raw_to_mcelsius_v1 or raw_to_mcelsius_v2 to compatible
-      data of struct mtk_thermal_data
-    - Remove duplicate struct 'mtk_thermal_bank'
-    - Remove unnecessary if condition check
-    - Return error if any thermal zone fail to register
+> +
+> +#define MDP_RDMA_RESET                                         0x008
+> +
+> +#define MDP_RDMA_CON                                           0x020
+> +#define FLD_OUTPUT_10B                            REG_FLD(1, 5)
+> +#define FLD_SIMPLE_MODE                           REG_FLD(1, 4)
+> +
+> +#define MDP_RDMA_GMCIF_CON                                     0x028
+> +#define FLD_EXT_ULTRA_EN                          REG_FLD(1, 18)
+> +#define FLD_PRE_ULTRA_EN                          REG_FLD(2, 16)
+> +#define FLD_ULTRA_EN                              REG_FLD(2, 12)
+> +#define FLD_RD_REQ_TYPE                           REG_FLD(4, 4)
+> +#define VAL_RD_REQ_TYPE_BURST_8_ACCESS       7
+> +#define FLD_EXT_PREULTRA_EN                       REG_FLD(1, 3)
+> +#define FLD_COMMAND_DIV                           REG_FLD(1, 0)
+> +
+> +#define MDP_RDMA_SRC_CON                                       0x030
+> +#define FLD_OUTPUT_ARGB                           REG_FLD(1, 25)
+> +#define FLD_BIT_NUMBER                            REG_FLD(2, 18)
+> +#define FLD_UNIFORM_CONFIG                        REG_FLD(1, 17)
+> +#define FLD_SWAP                                  REG_FLD(1, 14)
+> +#define FLD_SRC_FORMAT                            REG_FLD(4, 0)
+> +
+> +#define MDP_RDMA_COMP_CON                                      0x038
+> +#define FLD_AFBC_EN                               REG_FLD(1, 22)
+> +#define FLD_AFBC_YUV_TRANSFORM                    REG_FLD(1, 21)
+> +#define FLD_UFBDC_EN                              REG_FLD(1, 12)
+> +
+> +#define MDP_RDMA_MF_BKGD_SIZE_IN_BYTE                          0x060
+> +#define FLD_MF_BKGD_WB                            REG_FLD(23, 0)
+> +
+> +#define MDP_RDMA_MF_BKGD_SIZE_IN_PIXEL                         0x068
+> +#define FLD_MF_BKGD_WP                            REG_FLD(23, 0)
+> +
+> +#define MDP_RDMA_MF_SRC_SIZE                                   0x070
+> +#define FLD_MF_SRC_H                              REG_FLD(15, 16)
+> +#define FLD_MF_SRC_W                              REG_FLD(15, 0)
+> +
+> +#define MDP_RDMA_MF_CLIP_SIZE                                  0x078
+> +#define FLD_MF_CLIP_H                             REG_FLD(15, 16)
+> +#define FLD_MF_CLIP_W                             REG_FLD(15, 0)
+> +
+> +#define MDP_RDMA_TARGET_LINE                                   0x0a0
+> +#define FLD_LINE_THRESHOLD                        REG_FLD(15, 17)
+> +#define FLD_TARGET_LINE_EN                        REG_FLD(1, 16)
+> +
+> +#define MDP_RDMA_SRC_OFFSET_0                                  0x118
+> +#define FLD_SRC_OFFSET_0                          REG_FLD(32, 0)
+> +
+> +#define MDP_RDMA_TRANSFORM_0                                   0x200
+> +#define FLD_INT_MATRIX_SEL                        REG_FLD(5, 23)
+> +#define FLD_TRANS_EN                              REG_FLD(1, 16)
+> +
+> +#define MDP_RDMA_UTRA_H_CON_0                                  0x248
+> +#define FLD_PREUTRA_H_OFS_0                       REG_FLD(10, 10)
+> +
+> +#define MDP_RDMA_UTRA_L_CON_0                                  0x250
+> +#define FLD_PREUTRA_L_OFS_0                       REG_FLD(10, 10)
+> +
+> +#define MDP_RDMA_SRC_BASE_0                                    0xf00
+> +#define FLD_SRC_BASE_0                            REG_FLD(32, 0)
+> +
+> +#define RDMA_INPUT_SWAP		BIT(14)
+> +#define RDMA_INPUT_10BIT	BIT(18)
+> +
 
-Changes in V8:
-    - Rebase to kernel-v5.13-rc1
-    - Resend
+[snip]
 
-Changes in v7:
-    - Fix build error in v6.
+> +
+> +static void mtk_mdp_rdma_fifo_config(void __iomem *base, struct cmdq_pkt *cmdq_pkt,
+> +				     struct cmdq_client_reg *cmdq_base)
+> +{
+> +	unsigned int pre_ultra_h = 156;
+> +	unsigned int pre_ultra_l = 104;
 
-Changes in v6:
-    - Rebase to kernel-5.11-rc1.
-    - [1/3]
-        - add interrupts property.
-    - [2/3]
-        - add the Tested-by in the commit message.
-    - [3/3]
-        - use the mt->conf->msr[id] instead of conf->msr[id] in the
-          _get_sensor_temp and mtk_thermal_bank_temperature.
-        - remove the redundant space in _get_sensor_temp and
-          mtk_read_sensor_temp.
-        - change kmalloc to dev_kmalloc in mtk_thermal_probe.
+Give the reason why this value. You could refer to merge [1].
 
-Changes in v5:
-    - Rebase to kernel-5.9-rc1.
-    - Revise the title of cover letter.
-    - Drop "[v4,7/7] thermal: mediatek: use spinlock to protect PTPCORESEL"
-    - [2/2]
-        -  Add the judgement to the version of raw_to_mcelsius.
+[1]
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210819022327.13040-13-jason-jh.lin@mediatek.com/
 
-Changes in v4:
-    - Rebase to kernel-5.6-rc1.
-    - [1/7]
-        - Squash thermal zone settings in the dtsi from [v3,5/8]
-          arm64: dts: mt8183: Increase polling frequency for CPU thermal zone.
-        - Remove the property of interrupts and mediatek,hw-reset-temp.
-    - [2/7]
-        - Correct commit message.
-    - [4/7]
-        - Change the target temperature to the 80C and change the commit message.
-    - [6/7]
-        - Adjust newline alignment.
-        - Fix the judgement on the return value of registering thermal zone.
+> +	unsigned int reg_mask;
+> +	unsigned int reg_val;
+> +	unsigned int reg;
+> +
+> +	reg = MDP_RDMA_GMCIF_CON;
+> +	reg_val = REG_FLD_VAL(FLD_RD_REQ_TYPE, VAL_RD_REQ_TYPE_BURST_8_ACCESS) |
+> +		  REG_FLD_VAL(FLD_COMMAND_DIV, 1) |
+> +		  REG_FLD_VAL(FLD_EXT_PREULTRA_EN, 1) |
+> +		  REG_FLD_VAL(FLD_ULTRA_EN, 0) |
+> +		  REG_FLD_VAL(FLD_PRE_ULTRA_EN, 1) |
+> +		  REG_FLD_VAL(FLD_EXT_ULTRA_EN, 1);
+> +	reg_mask = REG_FLD_MASK(FLD_RD_REQ_TYPE) |
+> +		   REG_FLD_MASK(FLD_COMMAND_DIV) |
+> +		   REG_FLD_MASK(FLD_EXT_PREULTRA_EN) |
+> +		   REG_FLD_MASK(FLD_ULTRA_EN) |
+> +		   REG_FLD_MASK(FLD_PRE_ULTRA_EN) |
+> +		   REG_FLD_MASK(FLD_EXT_ULTRA_EN);
+> +	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
 
-Changes in v3:
-    - Rebase to kernel-5.5-rc1.
-    - [1/8]
-        - Update sustainable power of cpu, tzts1~5 and tztsABB.
-    - [7/8]
-        - Bypass the failure that non cpu_thermal sensor is not find in thermal-zones
-          in dts, which is normal for mt8173, so prompt a warning here instead of
-          failing.
+#define FLD_COMMAND_DIV         BIT(0)
+#define FLD_EXT_PREULTRA_EN     BIT(3)
+#define FLD_RD_REQ_TYPE         GENMASK(7, 4)
+#define FLD_ULTRA_EN            GENMASK(13, 12)
+#define FLD_PRE_ULTRA_EN        GENMASK(17, 16)
+#define FLD_PRE_ULTRA_EN_ENABLE     1
+#define FLD_EXT_ULTRA_EN        BIT(18)
 
-	Return -EAGAIN instead of -EACCESS on the first read of sensor that
-        often are bogus values. This can avoid following warning on boot:
+mtk_ddp_write_mask(cmdq_pkt, FLD_EXT_ULTRA_EN | FLD_PRE_ULTRA_EN_ENABLE
+<< 16 | VAL_RD_REQ_TYPE_BURST_8_ACCESS << 4 | FLD_EXT_PREULTRA_EN |
+FLD_COMMAND_DIV, cmdq_base, base, MDP_RDMA_GMCIF_CON, FLD_EXT_ULTRA_EN |
+FLD_PRE_ULTRA_EN | FLD_ULTRA_EN | FLD_RD_REQ_TYPE | FLD_EXT_PREULTRA_EN
+| FLD_COMMAND_DIV);
 
-          thermal thermal_zone6: failed to read out thermal zone (-13)
+> +
+> +	reg = MDP_RDMA_UTRA_H_CON_0;
+> +	reg_val = REG_FLD_VAL(FLD_PREUTRA_H_OFS_0, pre_ultra_h);
+> +	reg_mask = REG_FLD_MASK(FLD_PREUTRA_H_OFS_0);
+> +	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
+> +
+> +	reg = MDP_RDMA_UTRA_L_CON_0;
+> +	reg_val = REG_FLD_VAL(FLD_PREUTRA_L_OFS_0, pre_ultra_l);
+> +	reg_mask = REG_FLD_MASK(FLD_PREUTRA_L_OFS_0);
+> +	mtk_ddp_write_mask(cmdq_pkt, reg_val, cmdq_base, base, reg, reg_mask);
+> +}
+> +
 
-Changes in v2:
-    - [1/8]
-        - Add the sustainable-power,trips,cooling-maps to the tzts1~tztsABB.
-    - [4/8]
-        - Add the min opp of cpu throttle.
+[snip]
 
-Matthias Kaehlcke (1):
-  arm64: dts: mt8183: Configure CPU cooling
+> diff --git a/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
+> new file mode 100644
+> index 000000000000..50fa6e18d244
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/mtk_mdp_rdma.h
+> @@ -0,0 +1,39 @@
+> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
+> +
+> +#ifndef __MTK_MDP_RDMA_H__
+> +#define __MTK_MDP_RDMA_H__
+> +
+> +enum mtk_mdp_rdma_profile {
+> +	RDMA_CSC_RGB_TO_JPEG = 0,
+> +	RDMA_CSC_RGB_TO_FULL709 = 1,
+> +	RDMA_CSC_RGB_TO_BT601 = 2,
+> +	RDMA_CSC_RGB_TO_BT709 = 3,
+> +	RDMA_CSC_JPEG_TO_RGB = 4,
+> +	RDMA_CSC_FULL709_TO_RGB = 5,
+> +	RDMA_CSC_BT601_TO_RGB = 6,
+> +	RDMA_CSC_BT709_TO_RGB = 7,
+> +	RDMA_CSC_JPEG_TO_BT601 = 8,
+> +	RDMA_CSC_JPEG_TO_BT709 = 9,
+> +	RDMA_CSC_BT601_TO_JPEG = 10,
+> +	RDMA_CSC_BT709_TO_BT601 = 11,
+> +	RDMA_CSC_BT601_TO_BT709 = 12
+> +};
+> +
+> +struct mtk_mdp_rdma_cfg {
+> +	enum mtk_mdp_rdma_profile profile;
+> +	unsigned int source_width;
 
-Michael Kao (2):
-  thermal: mediatek: add another get_temp ops for thermal sensors
-  arm64: dts: mt8183: add thermal zone node
----
- drivers/thermal/mtk_thermal.c | 95 +++++++++++++++++++++++++++++++------------
- 1 file changed, 70 insertions(+), 25 deletions(-)
+source_width is useless, so remove.
 
-diff --git a/drivers/thermal/mtk_thermal.c b/drivers/thermal/mtk_thermal.c
-index ede94ea..8bb0bb2 100644
---- a/drivers/thermal/mtk_thermal.c
-+++ b/drivers/thermal/mtk_thermal.c
-@@ -271,6 +271,7 @@ struct mtk_thermal_data {
- 	bool need_switch_bank;
- 	struct thermal_bank_cfg bank_data[MAX_NUM_ZONES];
- 	enum mtk_thermal_version version;
-+	int (*raw_to_mcelsius)(struct mtk_thermal *mt, int sensno, s32 raw);
- };
- 
- struct mtk_thermal {
-@@ -294,6 +295,9 @@ struct mtk_thermal {
- 	struct mtk_thermal_bank banks[MAX_NUM_ZONES];
- };
- 
-+static int raw_to_mcelsius_v1(struct mtk_thermal *mt, int sensno, s32 raw);
-+static int raw_to_mcelsius_v2(struct mtk_thermal *mt, int sensno, s32 raw);
-+
- /* MT8183 thermal sensor data */
- static const int mt8183_bank_data[MT8183_NUM_SENSORS] = {
- 	MT8183_TS1, MT8183_TS2, MT8183_TS3, MT8183_TS4, MT8183_TS5, MT8183_TSABB
-@@ -427,6 +431,7 @@ struct mtk_thermal {
- 	.adcpnp = mt8173_adcpnp,
- 	.sensor_mux_values = mt8173_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -458,6 +463,7 @@ struct mtk_thermal {
- 	.adcpnp = mt2701_adcpnp,
- 	.sensor_mux_values = mt2701_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -489,6 +495,7 @@ struct mtk_thermal {
- 	.adcpnp = mt2712_adcpnp,
- 	.sensor_mux_values = mt2712_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /*
-@@ -514,6 +521,7 @@ struct mtk_thermal {
- 	.adcpnp = mt7622_adcpnp,
- 	.sensor_mux_values = mt7622_mux_values,
- 	.version = MTK_THERMAL_V2,
-+	.raw_to_mcelsius = raw_to_mcelsius_v2,
- };
- 
- /*
-@@ -547,6 +555,7 @@ struct mtk_thermal {
- 	.adcpnp = mt8183_adcpnp,
- 	.sensor_mux_values = mt8183_mux_values,
- 	.version = MTK_THERMAL_V1,
-+	.raw_to_mcelsius = raw_to_mcelsius_v1,
- };
- 
- /**
-@@ -639,6 +648,27 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
- 		mutex_unlock(&mt->lock);
- }
- 
-+static u32 _get_sensor_temp(struct mtk_thermal *mt, int id)
-+{
-+	u32 raw;
-+	int temp;
-+
-+	raw = readl(mt->thermal_base + mt->conf->msr[id]);
-+
-+	temp = mt->conf->raw_to_mcelsius(mt, id, raw);
-+
-+	/*
-+	 * The first read of a sensor often contains very high bogus
-+	 * temperature value. Filter these out so that the system does
-+	 * not immediately shut down.
-+	 */
-+
-+	if (temp > 200000)
-+		return -EAGAIN;
-+	else
-+		return temp;
-+}
-+
- /**
-  * mtk_thermal_bank_temperature - get the temperature of a bank
-  * @bank:	The bank
-@@ -649,28 +679,11 @@ static void mtk_thermal_put_bank(struct mtk_thermal_bank *bank)
- static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- {
- 	struct mtk_thermal *mt = bank->mt;
--	const struct mtk_thermal_data *conf = mt->conf;
- 	int i, temp = INT_MIN, max = INT_MIN;
--	u32 raw;
--
--	for (i = 0; i < conf->bank_data[bank->id].num_sensors; i++) {
--		raw = readl(mt->thermal_base + conf->msr[i]);
- 
--		if (mt->conf->version == MTK_THERMAL_V1) {
--			temp = raw_to_mcelsius_v1(
--				mt, conf->bank_data[bank->id].sensors[i], raw);
--		} else {
--			temp = raw_to_mcelsius_v2(
--				mt, conf->bank_data[bank->id].sensors[i], raw);
--		}
-+	for (i = 0; i < mt->conf->bank_data[bank->id].num_sensors; i++) {
- 
--		/*
--		 * The first read of a sensor often contains very high bogus
--		 * temperature value. Filter these out so that the system does
--		 * not immediately shut down.
--		 */
--		if (temp > 200000)
--			temp = 0;
-+		temp = _get_sensor_temp(mt, i);
- 
- 		if (temp > max)
- 			max = temp;
-@@ -681,7 +694,8 @@ static int mtk_thermal_bank_temperature(struct mtk_thermal_bank *bank)
- 
- static int mtk_read_temp(void *data, int *temperature)
- {
--	struct mtk_thermal *mt = data;
-+	struct mtk_thermal_bank *tz = data;
-+	struct mtk_thermal *mt = tz->mt;
- 	int i;
- 	int tempmax = INT_MIN;
- 
-@@ -700,10 +714,25 @@ static int mtk_read_temp(void *data, int *temperature)
- 	return 0;
- }
- 
-+static int mtk_read_sensor_temp(void *data, int *temperature)
-+{
-+	struct mtk_thermal_bank *tz = data;
-+	struct mtk_thermal *mt = tz->mt;
-+	int id = tz->id - 1;
-+
-+	*temperature = _get_sensor_temp(mt, id);
-+
-+	return 0;
-+}
-+
- static const struct thermal_zone_of_device_ops mtk_thermal_ops = {
- 	.get_temp = mtk_read_temp,
- };
- 
-+static const struct thermal_zone_of_device_ops mtk_thermal_sensor_ops = {
-+	.get_temp = mtk_read_sensor_temp,
-+};
-+
- static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
- 				  u32 apmixed_phys_base, u32 auxadc_phys_base,
- 				  int ctrl_id)
-@@ -994,6 +1023,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 	u64 auxadc_phys_base, apmixed_phys_base;
- 	struct thermal_zone_device *tzdev;
- 	void __iomem *apmixed_base, *auxadc_base;
-+	struct mtk_thermal_bank *tz;
- 
- 	mt = devm_kzalloc(&pdev->dev, sizeof(*mt), GFP_KERNEL);
- 	if (!mt)
-@@ -1082,11 +1112,26 @@ static int mtk_thermal_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, mt);
- 
--	tzdev = devm_thermal_zone_of_sensor_register(&pdev->dev, 0, mt,
--						     &mtk_thermal_ops);
--	if (IS_ERR(tzdev)) {
--		ret = PTR_ERR(tzdev);
--		goto err_disable_clk_peri_therm;
-+	for (i = 0; i < mt->conf->num_sensors + 1; i++) {
-+		tz = devm_kmalloc(&pdev->dev, sizeof(*tz), GFP_KERNEL);
-+		if (!tz)
-+			return -ENOMEM;
-+
-+		tz->mt = mt;
-+		tz->id = i;
-+
-+		tzdev = devm_thermal_zone_of_sensor_register(
-+						&pdev->dev, i, tz, (i == 0) ?
-+						&mtk_thermal_ops :
-+						&mtk_thermal_sensor_ops);
-+
-+		if (IS_ERR(tzdev)) {
-+			ret = PTR_ERR(tzdev);
-+			dev_err(&pdev->dev,
-+				"Error: Failed to register thermal zone %d, ret = %d\n",
-+				i, ret);
-+			goto err_disable_clk_peri_therm;
-+		}
- 	}
- 
- 	ret = devm_thermal_add_hwmon_sysfs(tzdev);
--- 
-1.8.1.1.dirty
+Regards,
+CK.
+
+> +	unsigned int pitch;
+> +	unsigned int addr0;
+> +	unsigned int width;
+> +	unsigned int height;
+> +	unsigned int x_left;
+> +	unsigned int y_top;
+> +	bool csc_enable;
+> +	int fmt;
+> +};
+> +
+> +#endif // __MTK_MDP_RDMA_H__
+> +
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
