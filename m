@@ -2,92 +2,100 @@ Return-Path: <SRS0=yE1p=NL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_2
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2434BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 08:00:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33D0DC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 08:16:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9F45610D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 08:00:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D9F45610D2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id ECE6161051
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 08:16:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ECE6161051
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6kiqmuQHcQcwVoJDcoqX2CG0gjDPw3cHpPhxej6Ga6E=; b=18GHMXNjToPeSS
-	L2xPoms8EFkNv3bJ87A8YfwjK4Hk5MaWkxhIJ400mU8IxvHaTfuofYfSoOdamRxeQAbERRJpOVFIe
-	hlB7BDji8y6xUkxcenmzgP4t5QY1tZI4iM/xcIBwbaoq9cc5CAdepvOcGsgAxukEvmvkw28+VqVDz
-	e1PfW0ISVX6JIwoMT1FJGKOtbg/vxCwBLbjnbH4X0m1/gLC4mTeiKUL2ZKIY0ImfeVyisHJ/dv+h7
-	zL1UhhjD53ererYhF31hgnFYV91r8rT4UQfV6Slvz0E8k7OanGvbcFE9dnjx+oYH8L7Ebv6Lt6bZo
-	AVTUhCMJpv6vjWrbMWew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=YzwaT2N9AqqbRwB3Xq2DrCIpRXis9SscG5YzgjDksak=; b=KCKPbhN3YWe4Uk
+	7McbloPX2oHzEpVA7IODsEK8wzX+nYmrvMOji662EyPYcG+2oUwT/C7ADlxB5Ji211Cd+hrzOpjZH
+	+YkzykZDQGJNKEtvT+bt3sChknZsdn8UEHlCme7KTZWocPlpSg+VNEw31CTjOFrWqgbOrtU26Xewu
+	AlpAPRDcTTLfAbDdkmhhYqAW47njc9DMwtNNimzoPe3sZixauosxbNaK/GyWDxNF3aVLAaXfgWedV
+	j51rfoc0KXbiB7EQHoiBF66L1FzJTNmeE8hWjXAS1wuu0IycH6Yg8xVT2/v2FyJFqiLmEhDWBDHrj
+	+syhfhO+AOznhT+CPg5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGzRR-00AJCC-BO; Fri, 20 Aug 2021 07:59:53 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mGzhg-00ALPK-NE; Fri, 20 Aug 2021 08:16:40 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGzRL-00AJ9d-Ic; Fri, 20 Aug 2021 07:59:51 +0000
-X-UUID: 50099b786e1e4e0897e857541368c2ae-20210820
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=VluiAbKGQy/3Yr6UxPnDDXbjlygkyrql8mDiSJPOAdY=; 
- b=LPVMUZKIbzNmwh6UA7bElSNPEJjOfmB61Wl+xWz0BGBqWOAXm+Zs+ZsXxTE5jFvC9PGPdk/3VGu22whRwyzPuyeqMfRqwSV1pOsQrn6B8F8VJ1VDxFKifiF/0CccidC9v//FOs5K43vv63Ta5DqPMzDgBRD05qtYtpE1x4iD6aY=;
-X-UUID: 50099b786e1e4e0897e857541368c2ae-20210820
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 924475716; Fri, 20 Aug 2021 00:59:44 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 00:59:42 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 15:59:40 +0800
-Received: from [10.17.3.153] (10.17.3.153) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 20 Aug 2021 15:59:38 +0800
-Message-ID: <1629446378.18871.27.camel@mhfsdcap03>
-Subject: Re: [PATCH v5, 00/15] Using component framework to support multi
- hardware decode
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-CC: Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Alexandre Courbot <acourbot@chromium.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, "Andrew-CT
- Chen" <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Irui Wang
- <irui.wang@mediatek.com>, linux-media <linux-media@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, srv_heupstream
- <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
- <george.sun@mediatek.com>
-Date: Fri, 20 Aug 2021 15:59:38 +0800
-In-Reply-To: <CAAEAJfCTrKj9AFExN-L-TKww4E=us1VVh8LHtZ8Q0j_eaCD4Eg@mail.gmail.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
- <1b79a67b703d2c894bc4d9458c760e082fc42958.camel@mediatek.com>
- <CAAEAJfCTrKj9AFExN-L-TKww4E=us1VVh8LHtZ8Q0j_eaCD4Eg@mail.gmail.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+ id 1mGzhM-00ALI9-Te
+ for linux-mediatek@lists.infradead.org; Fri, 20 Aug 2021 08:16:24 +0000
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id C20944075E
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 Aug 2021 08:16:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1629447379;
+ bh=OmtSKxexi252yLpsd09SnFUuzqXU2/zeUXsYaGlChyE=;
+ h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+ b=pmN7qgHi+EARqniZH47Yo17cxIVOm/IfX3R7dZro17DaQWzlGaAbNEkj8szan4gCb
+ lpe0S1v0TW4zc01rnTbF0V3i+D3kznsuWZBHGIzg+k6ldxePImRO3Y8ri5qujO0/d3
+ BmvNMwq42rRH8rsQZNVnO49+7HIlLGy7m4nHmH2+a31e/X3McNbRmvXaE8geIzvTip
+ XZpGlyI256ouiQvMlCURAVZ9s8fROKILiMn9KPOysSvTLxExGHRjnwa5IPZpFktRGI
+ 4gUFndtKkcLzT1lKTytUzWeSIZquzo8C/8snlz6MGJYBu1R1dir5GkS7Su6FW23MbV
+ LmxrR1gur0EoQ==
+Received: by mail-ed1-f71.google.com with SMTP id
+ bx23-20020a0564020b5700b003bf2eb11718so4145676edb.20
+ for <linux-mediatek@lists.infradead.org>; Fri, 20 Aug 2021 01:16:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OmtSKxexi252yLpsd09SnFUuzqXU2/zeUXsYaGlChyE=;
+ b=USJ2T7IKiUQqPhs57urrUPWMcE6Sy5Npb3SNsbjym6QXJQGT1sLGJrbZH8t7/F3csk
+ 9XT8Oe5LzwqWUt4dmzjsW3jg8smIBC/A4uwnYom1NX/u13PwB1Lp1wOGVWg8R+mbotUl
+ Xig5ibHgWwajzfkdihi5U1lQJMwxJeC6v15gMLm2BvNGdM8BxxBHfocMauiEKur2FX9E
+ iq1w2t1R43bO7Yy9VeIOnyp3RB0Qr/kJiGyTWCQmriODHXE/FeGqZSSLCcXMXMybWOCQ
+ cU6fkLg+JVPlj7270blWDW6uWtEMYbOePbZdYEgZSIvlvl3bnubdA3mNfV1wseKLPVHi
+ d3og==
+X-Gm-Message-State: AOAM533UkqA9+olEMwuqFxZDumDK+Ul8QFrJVSb7YWXZgzM+KJn2Oe9I
+ RFkHCba5ejQEhdC+nLINLAMmcvBXlu7Hd21kYIwJLWdkBXCtPwJhdI50P7vcK2rQoMjQEiWCwY5
+ SHHpFYFoZiXS9pwQlniC7gV19fdmoYbQVtZgR7i9JB81T5tyLVA==
+X-Received: by 2002:a05:6402:152:: with SMTP id
+ s18mr20736025edu.221.1629447379439; 
+ Fri, 20 Aug 2021 01:16:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCE7w2Hupb+KqkRVqDnp7hgDcT/qC/auwCzygTdxXxygjTPKNmYAIQZ65smv9XcUCZyL7j5g==
+X-Received: by 2002:a05:6402:152:: with SMTP id
+ s18mr20736014edu.221.1629447379330; 
+ Fri, 20 Aug 2021 01:16:19 -0700 (PDT)
+Received: from localhost.localdomain ([86.32.42.198])
+ by smtp.gmail.com with ESMTPSA id w13sm351632edx.67.2021.08.20.01.16.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Aug 2021 01:16:19 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Subject: [PATCH 1/2] arm64: dts: mediatek: align operating-points table name
+ with dtschema
+Date: Fri, 20 Aug 2021 10:16:15 +0200
+Message-Id: <20210820081616.83674-1-krzysztof.kozlowski@canonical.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210820_005947_669541_56BD9F3F 
-X-CRM114-Status: GOOD (  43.55  )
+X-CRM114-CacheID: sfid-20210820_011621_120164_A89D84A4 
+X-CRM114-Status: GOOD (  12.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,121 +112,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel,
+Align the name of operating-points node to dtschema to fix warnings like:
 
-Thanks for your detail feedback. 
+  arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml:
+    opp_table0: $nodename:0: 'opp_table0' does not match '^opp-table(-[a-z0-9]+)?$'
 
-On Thu, 2021-08-19 at 11:10 -0300, Ezequiel Garcia wrote:
-> On Thu, 19 Aug 2021 at 04:13, yunfei.dong@mediatek.com
-> <yunfei.dong@mediatek.com> wrote:
-> >
-> > Hi Ezequiel,
-> >
-> > Thanks for your suggestion.
-> >
-> > On Wed, 2021-08-18 at 11:11 -0300, Ezequiel Garcia wrote:
-> > > +danvet
-> > >
-> > > Hi,
-> > >
-> > > On Tue, 10 Aug 2021 at 23:58, Yunfei Dong <yunfei.dong@mediatek.com>
-> > > wrote:
-> > > >
-> > > > This series adds support for multi hardware decode into mtk-vcodec,
-> > > > by first
-> > > > adding component framework to manage each hardware information:
-> > > > interrupt,
-> > > > clock, register bases and power. Secondly add core thread to deal
-> > > > with core
-> > > > hardware message, at the same time, add msg queue for different
-> > > > hardware
-> > > > share messages. Lastly, the architecture of different specs are not
-> > > > the same,
-> > > > using specs type to separate them.
-> > > >
-> > >
-> > > I don't think it's a good idea to introduce the component API in the
-> > > media subsystem. It doesn't seem to be maintained, IRC there's not
-> > > even
-> > > a maintainer for it, and it has some issues that were never
-> > > addressed.
-> > >
-> > > It would be really important to avoid it. Is it really needed in the
-> > > first place?
-> > >
-> > > Thanks,
-> > > Ezequiel
-> >
-> > For there are many hardware need to use, mt8192 is three and mt8195 is
-> > five. Maybe need more to be used in the feature.
-> >
-> > Each hardware has independent clk/power/iommu port/irq.
-> > Use component interface in prob to get each component's information.
-> > Just enable the hardware when need to use it, very convenient and
-> > simple.
-> >
-> > I found that there are many modules use component to manage hardware
-> > information, such as iommu and drm etc.
-> >
-> 
-> Many drivers support multiple hardware variants, where each variant
-> has a different number of clocks or interrupts, see for instance
-> struct hantro_variant which allows to expose different codec cores,
-> some having both decoder/encoder, and some having just a decoder.
-> 
-> The component API is mostly used by DRM to aggregate independent
-> subdevices (called components) into an aggregated driver.
-> 
-> For instance, a DRM driver needs to glue together the HDMI, MIPI,
-> and plany controller, or any other hardware arrangement where
-> devices can be described independently.
-> 
-The usage scenario is very similar with drm and iommu, So decide to use
-component framework.
-Decode has three/five or more hardwares, these hardware are independent.
-For mt8183 just need core hardware to decode, but mt8192 has lat,soc and
-core hardware to decode. When lat need to use, just enable lat hardware,
-core is the same.And mt8195 will has two cores, each core can work well
-independent.
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-For each component device just used to open their power/clk/iommu
-port/irq when master need to enable it. The main logic is in master
-device.
-
-> The component API may look simple but has some issues, it's not easy
-> to debug, and can cause troubles if not used as expected [1].
-> It's worth making sure you actually need a framework
-> to glue different devices together.
-> 
-Each hardware has its index, master can get hardware information
-according these index, looks not complex. What do you mean about not
-easy to debug?
-
-> > Do you have any other suggestion for this architecture?
-> >
-> 
-> Looking at the different patchsets that are posted, it's not clear
-> to me what exactly are the different architectures that you intend
-> to support, can you some documentation which clarifies that?
-> 
-Have five hardwares lat,soc,core0,core1 and main. Lat thread can use lat
-soc and main, core thread can use soc,lat, core0 and core1. Core thread
-can be used or not for different project. Also Need to use these
-hardware dynamic at the same time. So I use component framework, just
-need to know the used  hardware index according to different
-project.Need not to do complex logic to manage these hardwares.
-
-
-> Thanks,
-> Ezequiel
-> 
-> [1] https://patchwork.kernel.org/project/linux-rockchip/cover/20200120170602.3832-1-ezequiel@collabora.com/
-
-
-Thanks,
-Yunfei Dong
-
-
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index d9e005ae5bb0..49c6b6a5b489 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -57,7 +57,7 @@ aliases {
+ 		serial3 = &uart3;
+ 	};
+ 
+-	cluster0_opp: opp_table0 {
++	cluster0_opp: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp-507000000 {
+@@ -94,7 +94,7 @@ opp-1703000000 {
+ 		};
+ 	};
+ 
+-	cluster1_opp: opp_table1 {
++	cluster1_opp: opp-table-1 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 		opp-507000000 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+index 409cf827970c..caab109add28 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+@@ -197,7 +197,7 @@ CLUSTER_SLEEP1: cluster-sleep-1 {
+ 		};
+ 	};
+ 
+-	gpu_opp_table: opp_table0 {
++	gpu_opp_table: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+-- 
+2.30.2
 
 
 _______________________________________________
