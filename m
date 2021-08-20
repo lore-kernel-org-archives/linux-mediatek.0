@@ -1,84 +1,81 @@
-Return-Path: <SRS0=ccVP=NK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=yE1p=NL=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 22ED9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48A84C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 01:29:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E7D4A610A1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Aug 2021 23:26:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E7D4A610A1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0B31961106
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 01:29:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0B31961106
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n98T88BhIIj0WgBn81iWoxZ8wwAc13Cy7ZaqwTRVZvE=; b=A215XeIT87Chan
-	WmrduVQX9lqEhmuhy4FRjTZnS9f5l3LRcGCj0p/BEjeyKvjRvkrXSGMjyCEyEw06yU9U9iQ/lEbPA
-	yAqMJ72X4wSP1kiwOkU9fJg9uuZuDj5qrnPuhj9VBuAVxdIDGWqEEJNBwzcsKVvdQTMBqTVatM5OC
-	Q0N78np8Z6FpdhqbJjOoECiAxdfMvnVFvzudQws8TkiESK3o/Z5FtUeiqZWGbgh87bhe05tQb+c5R
-	e/9B9WBXs0GAMDB9FUoLlimb+O32iuTJitKWRLgX/Uyy1OutRB68xyqv/yElNemMnoSFm72gaLz4I
-	k9xs9YHDTDafUc1VE0mg==;
+	List-Owner; bh=kzDgVrj9BfkujEjwNAl8Y2GjtSsj4o+BGQb0UBRmhkU=; b=ls2mRpNMVuWZXu
+	91xo3oraVgttXpTRmMaCxWtsAgbwEUZuTKT3UifKnPZE4F0xfeN1KRea1JlRrKEoOh8msVmxVqjTL
+	VJn7IYHVeffSyvrsuk3jk9QQUKQ3RajARKBwiDvisEsodkaoHaBtXwEiDxRApVrsq/m85aH2Yt6Vh
+	gCuRkFktwZRi1JuxNGAyrl5PqZ19mKu+fega01EKPT3Js1jwiE4OqXfZpb71drFBW45qauBuKO7YY
+	R7vLiL1K8zcipQfbYZq1ULFGeuhxgi3H7rrJauCWklu27EabRg19jneimb2RsK0q2MOnHBS4nU6yX
+	SGuDm16MiklQx9RJuUjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGrPz-009jrI-8Z; Thu, 19 Aug 2021 23:25:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mGtLN-009qN8-IK; Fri, 20 Aug 2021 01:29:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGrPl-009joe-Et; Thu, 19 Aug 2021 23:25:38 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0EEB7610A1;
- Thu, 19 Aug 2021 23:25:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629415537;
- bh=lDfLcMkKaHulnTMCEIwuK3Wkmz0K0OakW2zzDWc2MXQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=FY0wZTfrZOjvTnYhmIPdjOI29K571ATtN2aYf4k/tGQKyIwJwp+Ygjb0ZymaDAJF0
- 4KfTUAUg6RRvQbQI6nhYkj88XF8OGaGzYo7hTA+l+tO6n7FOiSOYrBvRJ4gPstlQc+
- /A7as4FtfgWNv1csr6zGnv6paUBj4MEi+8Kfo+kErXzeCnPWNfKba2Be16HBcBOQyb
- nG3NFuy+HTKrRvHKm006BGLR41CPqAukZsRLH5i5NbQ6M3mX9z7l2TnmwTrhcJyQLi
- q8Dw9mgcwuCaI7Kwo5LUt3bIpNZ7CUeVKZljDag08xUJo8XToCrOApmbdEeBoFdjkz
- b1MKB8+gfkviA==
-Received: by mail-ed1-f52.google.com with SMTP id q3so11244345edt.5;
- Thu, 19 Aug 2021 16:25:36 -0700 (PDT)
-X-Gm-Message-State: AOAM530cpdnMiMyX1NdWCrfHD7kPaL1PdCS6LnvyhUH8FGNigdv3rXs3
- oim3qWsVdTklu2lSQ+oHKAGadUYW6Js8jTLWkg==
-X-Google-Smtp-Source: ABdhPJyqRKlKwq4wRR1ZLhH+D2awtd0tuQOpfkaT7U6/ZK+Er3r1zuqlZaXZ1G3+33lsQ6QF7lMQ2EOc1u8R/uHA4WA=
-X-Received: by 2002:aa7:c7c2:: with SMTP id o2mr18981861eds.166.1629415535694; 
- Thu, 19 Aug 2021 16:25:35 -0700 (PDT)
+ id 1mGtLH-009qM2-35
+ for linux-mediatek@lists.infradead.org; Fri, 20 Aug 2021 01:29:12 +0000
+X-UUID: d12f3ef991824f4d81fe844c77cecdc9-20210819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=3uIDSbynqZ+e8h4IIwd7j0R/OKDKxqtlUSN4a8VEEGA=; 
+ b=FxslAXbxvRHIdlpYKSIZjguSejZBV+EqfZ20OunfOGMSn+nFUDMohodnMcwCxamJkBxk8sfL+77g6vm6cgXxkFwzEK0U3XUNQdTe14d77ohg+xjHx7LkDSrxun/5Qp/SV3B2tQYL7idtM5JI++EudcQZY39Rpt+PCgO8AmwTl6s=;
+X-UUID: d12f3ef991824f4d81fe844c77cecdc9-20210819
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 721476089; Thu, 19 Aug 2021 18:29:03 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 18:29:02 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 Aug 2021 09:29:00 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 20 Aug 2021 09:29:00 +0800
+Message-ID: <45c67ffb65debdd62a417c0b68af2ba7f1932195.camel@mediatek.com>
+Subject: Re: [PATCH 2/4] mt76: mt7615: checkpatch cleanup
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Kalle Valo <kvalo@codeaurora.org>
+CC: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Shayne Chen <shayne.chen@mediatek.com>,
+ "Evelyn Tsai" <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Date: Fri, 20 Aug 2021 09:29:00 +0800
+In-Reply-To: <87wnoha1rd.fsf@tynnyri.adurom.net>
+References: <77372f644903053e09d671325c0cd44cf75e14ac.1628301615.git.ryder.lee@mediatek.com>
+ <1991c856459c2014386d1a16f6657e9ba82b6d1f.1628301615.git.ryder.lee@mediatek.com>
+ <87wnoha1rd.fsf@tynnyri.adurom.net>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210818091847.8060-1-nancy.lin@mediatek.com>
- <20210818091847.8060-3-nancy.lin@mediatek.com>
-In-Reply-To: <20210818091847.8060-3-nancy.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Fri, 20 Aug 2021 07:25:24 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
-Message-ID: <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
-Subject: Re: [PATCH v3 02/15] dt-bindings: mediatek: add vdosys1 MERGE
- definition for mt8195
-To: "Nancy.Lin" <nancy.lin@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
- Yongqiang Niu <yongqiang.niu@mediatek.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, singo.chang@mediatek.com, 
- srv_heupstream <srv_heupstream@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_162537_559594_980DF999 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20210819_182908_638498_31ACE7C6 
+X-CRM114-Status: UNSURE (   5.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,30 +87,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5hbmN5OgoKTmFuY3kuTGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
-tDjmnIgxOOaXpSDpgLHkuIkg5LiL5Y2INToxOOWvq+mBk++8mgo+Cj4gQWRkIHZkb3N5czEgTUVS
-R0UgZGVmaW5pdGlvbi4KPgo+IFNpZ25lZC1vZmYtYnk6IE5hbmN5LkxpbiA8bmFuY3kubGluQG1l
-ZGlhdGVrLmNvbT4KPiAtLS0KPiAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRp
-YXRlay9tZWRpYXRlayxtZXJnZS55YW1sICAgIHwgMiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBp
-bnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssbWVyZ2UueWFtbCBiL0RvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLG1lcmdlLnlh
-bWwKPiBpbmRleCAxYTI3YjAzNzA4NmIuLmJhMWUwYzgzNzk4OCAxMDA2NDQKPiAtLS0gYS9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxt
-ZXJnZS55YW1sCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvbWVkaWF0ZWsvbWVkaWF0ZWssbWVyZ2UueWFtbAo+IEBAIC0yMyw2ICsyMyw4IEBAIHByb3Bl
-cnRpZXM6Cj4gICAgICAgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxNzMtZGlzcC1tZXJnZQo+
-ICAgICAgICAtIGl0ZW1zOgo+ICAgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWssbXQ4MTk1LWRp
-c3AtbWVyZ2UKPiArICAgICAgLSBpdGVtczoKPiArICAgICAgICAgIC0gY29uc3Q6IG1lZGlhdGVr
-LG10ODE5NS12ZG8xLW1lcmdlCgpJIGRvbid0IGtub3cgd2h5IGNyZWF0ZSBhIG5ldyBtZXJnZSBm
-b3IgbXQ4MTk1LiBQcm92aWRlIG1vcmUKaW5mb3JtYXRpb24gYWJvdXQgdGhlIGRpZmZlcmVuY2Ug
-b2YgdGhlc2UgdHdvIG1lcmdlLgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4KPiAgICByZWc6Cj4g
-ICAgICBtYXhJdGVtczogMQo+IC0tCj4gMi4xOC4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Thu, 2021-08-19 at 18:32 +0300, Kalle Valo wrote:
+> Ryder Lee <ryder.lee@mediatek.com> writes:
+> 
+> > Fix reasonable checkpatch warnings.
+> > 
+> > Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> 
+> One logical change per patch, please.
+> 
+
+I prefer collection all checkpatch warnings into the single patch.
+
+Ryder
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
