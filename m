@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2ABCC4338F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 11:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B79FC4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 11:33:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DB3361075
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 11:31:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DB3361075
+	by mail.kernel.org (Postfix) with ESMTPS id 4D6AE61051
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 11:33:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4D6AE61051
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1jb0UBL6oeVWYDJCg6+uQTV/gSRi6TnLSN6XqmgRH9Y=; b=Ssx1SJUOcGSnQo
-	Nlw1BD0AyfYWzjhmX7urfsNP9GJX28a/7LUcneBRlWaFEgLS5OnDGcKJCb+w0OtiUe6LU1WUA1hAl
-	4EvbWhZu+AeYsMJc1rkD8OnSueiOYVg1pH1aD1BuPei7mHLlmajIrrlXQ3kMmteXa+OOe+yIEoDqG
-	AxpB2TPC0sjNSzd7cfbno5qePu563yRviIuINAk4yZEQJSafdQk+1/eidPvpvhxQpw1fajlnAFFvS
-	6cp3sehS76hMKl+J53qg2j7ZTB6Ip5H8oj2/oyr0LNHevgR5pc5Ee6VEFm5Aq1msEEDcf2cE8KSnw
-	qfFW0eb8qkKNoEa3hMKg==;
+	List-Owner; bh=HXyzv7ChLroxvfcN8OBAkiBDUWM77Db15ypjD2/Z+ps=; b=zSXylZOueESl2N
+	YGGZDbNFP+9+KDvIG0uBhi+wZoAnoMZCPRaQQrL/5y9TPgnNP+oDLTkXjJa15VwI5+cPfMSvuqoAF
+	DK0Uis778HJg/R6qGhl9ewwttPHJm4nGP4Fz2l/BK0KnZwuyuOSW5IaJWhU7SbSye7QzxNn153uoY
+	ZFFyQarZLXCSQhSn28rqC++7KCpFo9VtC/DMTEaK1tEylzaL5Z2zt5Q6d/OQG9S1CHYvzeEoqWlV4
+	wOVma4XtJrD4ApABlY0lmWPqurcNHJzLGu7oshCboWnp8WGntSP/+3VJOgUU93Xmc3gXU92MH78LV
+	E0sCXv5c66akZ1uB0mOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mH2k7-00AsEE-8j; Fri, 20 Aug 2021 11:31:23 +0000
+	id 1mH2lt-00AsvQ-84; Fri, 20 Aug 2021 11:33:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mH2Wz-00AmJ3-1G; Fri, 20 Aug 2021 11:17:53 +0000
-X-UUID: 610b269fe2274dfb8348d144596b7150-20210820
+ id 1mH2X8-00AmOm-0k; Fri, 20 Aug 2021 11:18:03 +0000
+X-UUID: cbc2b71ea4b643279361cecb7d8d0fe9-20210820
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=gFL5+G3o6DETNA5hNCBkL38FCXHdgkJXMjp9r9kpKl4=; 
- b=uxX7sgvcwoFfyKd8oe8C00B1nDsV6CWiJKYo5HoPhK1e0Q/aeu8C+QA1XTz+zK087FjhSSnoKLSSnVpBkx9zvNgOSHvA5w6q21XQkclUnC4yOd7FyShePnFbs0I1A6sYwQC45uMIvpvEz+Y4YArKKkypKI1bwDkP0Fni7ZSSrU4=;
-X-UUID: 610b269fe2274dfb8348d144596b7150-20210820
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=jnnUVtu9kTzlkFzvXyijazzxV8ku60SorVfzRXG/K08=; 
+ b=GN3O1rSNq3MMN4BxIbppEbEXMHwyknbxxZ7JDhaE03Ay98MRcWO+1y7MIFv3FiPR/t5pd/AzErgTBlGWEyAez+6ibAM9QDkMdaJSxPptz9Vt6jy1Ehl0Wvn5MeR80/GdYUGwxoDLNPG0lGOd8BEZ0ghnJ79a0J+UWwcKT/TQmKY=;
+X-UUID: cbc2b71ea4b643279361cecb7d8d0fe9-20210820
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1552843065; Fri, 20 Aug 2021 04:17:47 -0700
+ with ESMTP id 545216837; Fri, 20 Aug 2021 04:17:56 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 04:17:46 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 Aug 2021 04:17:54 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 20 Aug 2021 19:17:44 +0800
+ 15.0.1497.2; Fri, 20 Aug 2021 19:17:52 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 20 Aug 2021 19:17:44 +0800
+ Frontend Transport; Fri, 20 Aug 2021 19:17:52 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -65,17 +65,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>
-Subject: [v2 19/24] clk: mediatek: Add MT8195 vencsys clock support
-Date: Fri, 20 Aug 2021 19:14:59 +0800
-Message-ID: <20210820111504.350-20-chun-jie.chen@mediatek.com>
+Subject: [v2 22/24] clk: mediatek: Add MT8195 wpesys clock support
+Date: Fri, 20 Aug 2021 19:15:02 +0800
+Message-ID: <20210820111504.350-23-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210820111504.350-1-chun-jie.chen@mediatek.com>
 References: <20210820111504.350-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210820_041749_155121_DBC66220 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20210820_041758_141678_8768DC9F 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,34 +92,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8195 vencsys clock controller which provide clock gate
-control for video encoder.
+Add MT8195 wpesys clock controllers which provide clock gate
+control in Wrapping Engine.
 
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 ---
- drivers/clk/mediatek/Makefile          |  2 +-
- drivers/clk/mediatek/clk-mt8195-venc.c | 69 ++++++++++++++++++++++++++
- 2 files changed, 70 insertions(+), 1 deletion(-)
- create mode 100644 drivers/clk/mediatek/clk-mt8195-venc.c
+ drivers/clk/mediatek/Makefile         |   2 +-
+ drivers/clk/mediatek/clk-mt8195-wpe.c | 143 ++++++++++++++++++++++++++
+ 2 files changed, 144 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8195-wpe.c
 
 diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-index 3c8c8cdbd3ef..82ffcc4f2c52 100644
+index 402a809ff6ac..dfe7047c6795 100644
 --- a/drivers/clk/mediatek/Makefile
 +++ b/drivers/clk/mediatek/Makefile
-@@ -82,6 +82,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
- obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
+@@ -83,6 +83,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
  obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o clk-mt8195-peri_ao.o clk-mt8195-infra_ao.o clk-mt8195-cam.o \
  					clk-mt8195-ccu.o clk-mt8195-img.o clk-mt8195-ipe.o clk-mt8195-mfg.o clk-mt8195-scp_adsp.o \
--					clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o
-+					clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o clk-mt8195-venc.o
+ 					clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o clk-mt8195-venc.o clk-mt8195-vpp0.o \
+-					clk-mt8195-vpp1.o
++					clk-mt8195-vpp1.o clk-mt8195-wpe.o
  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-diff --git a/drivers/clk/mediatek/clk-mt8195-venc.c b/drivers/clk/mediatek/clk-mt8195-venc.c
+diff --git a/drivers/clk/mediatek/clk-mt8195-wpe.c b/drivers/clk/mediatek/clk-mt8195-wpe.c
 new file mode 100644
-index 000000000000..10702a4ad5ff
+index 000000000000..7e92a3cab497
 --- /dev/null
-+++ b/drivers/clk/mediatek/clk-mt8195-venc.c
-@@ -0,0 +1,69 @@
++++ b/drivers/clk/mediatek/clk-mt8195-wpe.c
+@@ -0,0 +1,143 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +//
 +// Copyright (c) 2021 MediaTek Inc.
@@ -132,63 +132,137 @@ index 000000000000..10702a4ad5ff
 +#include <linux/clk-provider.h>
 +#include <linux/platform_device.h>
 +
-+static const struct mtk_gate_regs venc_cg_regs = {
-+	.set_ofs = 0x4,
-+	.clr_ofs = 0x8,
++static const struct mtk_gate_regs wpe_cg_regs = {
++	.set_ofs = 0x0,
++	.clr_ofs = 0x0,
 +	.sta_ofs = 0x0,
 +};
 +
-+#define GATE_VENC(_id, _name, _parent, _shift)			\
-+	GATE_MTK(_id, _name, _parent, &venc_cg_regs, _shift, &mtk_clk_gate_ops_setclr_inv)
-+
-+static const struct mtk_gate venc_clks[] = {
-+	GATE_VENC(CLK_VENC_LARB, "venc_larb", "top_venc", 0),
-+	GATE_VENC(CLK_VENC_VENC, "venc_venc", "top_venc", 4),
-+	GATE_VENC(CLK_VENC_JPGENC, "venc_jpgenc", "top_venc", 8),
-+	GATE_VENC(CLK_VENC_JPGDEC, "venc_jpgdec", "top_venc", 12),
-+	GATE_VENC(CLK_VENC_JPGDEC_C1, "venc_jpgdec_c1", "top_venc", 16),
-+	GATE_VENC(CLK_VENC_GALS, "venc_gals", "top_venc", 28),
++static const struct mtk_gate_regs wpe_vpp0_cg_regs = {
++	.set_ofs = 0x58,
++	.clr_ofs = 0x58,
++	.sta_ofs = 0x58,
 +};
 +
-+static const struct mtk_gate venc_core1_clks[] = {
-+	GATE_VENC(CLK_VENC_CORE1_LARB, "venc_core1_larb", "top_venc", 0),
-+	GATE_VENC(CLK_VENC_CORE1_VENC, "venc_core1_venc", "top_venc", 4),
-+	GATE_VENC(CLK_VENC_CORE1_JPGENC, "venc_core1_jpgenc", "top_venc", 8),
-+	GATE_VENC(CLK_VENC_CORE1_JPGDEC, "venc_core1_jpgdec", "top_venc", 12),
-+	GATE_VENC(CLK_VENC_CORE1_JPGDEC_C1, "venc_core1_jpgdec_c1", "top_venc", 16),
-+	GATE_VENC(CLK_VENC_CORE1_GALS, "venc_core1_gals", "top_venc", 28),
++static const struct mtk_gate_regs wpe_vpp1_cg_regs = {
++	.set_ofs = 0x5c,
++	.clr_ofs = 0x5c,
++	.sta_ofs = 0x5c,
 +};
 +
-+static const struct mtk_clk_desc venc_desc = {
-+	.clks = venc_clks,
-+	.num_clks = ARRAY_SIZE(venc_clks),
++#define GATE_WPE(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &wpe_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
++
++#define GATE_WPE_VPP0(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &wpe_vpp0_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
++
++#define GATE_WPE_VPP1(_id, _name, _parent, _shift)			\
++	GATE_MTK(_id, _name, _parent, &wpe_vpp1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
++
++static const struct mtk_gate wpe_clks[] = {
++	GATE_WPE(CLK_WPE_VPP0, "wpe_vpp0", "top_wpe_vpp", 16),
++	GATE_WPE(CLK_WPE_VPP1, "wpe_vpp1", "top_wpe_vpp", 17),
++	GATE_WPE(CLK_WPE_SMI_LARB7, "wpe_smi_larb7", "top_wpe_vpp", 18),
++	GATE_WPE(CLK_WPE_SMI_LARB8, "wpe_smi_larb8", "top_wpe_vpp", 19),
++	GATE_WPE(CLK_WPE_EVENT_TX, "wpe_event_tx", "top_wpe_vpp", 20),
++	GATE_WPE(CLK_WPE_SMI_LARB7_P, "wpe_smi_larb7_p", "top_wpe_vpp", 24),
++	GATE_WPE(CLK_WPE_SMI_LARB8_P, "wpe_smi_larb8_p", "top_wpe_vpp", 25),
 +};
 +
-+static const struct mtk_clk_desc venc_core1_desc = {
-+	.clks = venc_core1_clks,
-+	.num_clks = ARRAY_SIZE(venc_core1_clks),
++static const struct mtk_gate wpe_vpp0_clks[] = {
++	/* WPE_VPP0 */
++	GATE_WPE_VPP0(CLK_WPE_VPP0_VGEN, "wpe_vpp0_vgen", "top_img", 0),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_EXT, "wpe_vpp0_ext", "top_img", 1),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_VFC, "wpe_vpp0_vfc", "top_img", 2),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH0_TOP, "wpe_vpp0_cach0_top", "top_img", 3),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH0_DMA, "wpe_vpp0_cach0_dma", "top_img", 4),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH1_TOP, "wpe_vpp0_cach1_top", "top_img", 5),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH1_DMA, "wpe_vpp0_cach1_dma", "top_img", 6),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH2_TOP, "wpe_vpp0_cach2_top", "top_img", 7),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH2_DMA, "wpe_vpp0_cach2_dma", "top_img", 8),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH3_TOP, "wpe_vpp0_cach3_top", "top_img", 9),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_CACH3_DMA, "wpe_vpp0_cach3_dma", "top_img", 10),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_PSP, "wpe_vpp0_psp", "top_img", 11),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_PSP2, "wpe_vpp0_psp2", "top_img", 12),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_SYNC, "wpe_vpp0_sync", "top_img", 13),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_C24, "wpe_vpp0_c24", "top_img", 14),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_MDP_CROP, "wpe_vpp0_mdp_crop", "top_img", 15),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_ISP_CROP, "wpe_vpp0_isp_crop", "top_img", 16),
++	GATE_WPE_VPP0(CLK_WPE_VPP0_TOP, "wpe_vpp0_top", "top_img", 17),
++	/* WPE_VPP1 */
++	GATE_WPE_VPP1(CLK_WPE_VPP0_VECI, "wpe_vpp0_veci", "top_img", 0),
++	GATE_WPE_VPP1(CLK_WPE_VPP0_VEC2I, "wpe_vpp0_vec2i", "top_img", 1),
++	GATE_WPE_VPP1(CLK_WPE_VPP0_VEC3I, "wpe_vpp0_vec3i", "top_img", 2),
++	GATE_WPE_VPP1(CLK_WPE_VPP0_WPEO, "wpe_vpp0_wpeo", "top_img", 3),
++	GATE_WPE_VPP1(CLK_WPE_VPP0_MSKO, "wpe_vpp0_msko", "top_img", 4),
 +};
 +
-+static const struct of_device_id of_match_clk_mt8195_venc[] = {
++static const struct mtk_gate wpe_vpp1_clks[] = {
++	/* WPE_VPP0 */
++	GATE_WPE_VPP0(CLK_WPE_VPP1_VGEN, "wpe_vpp1_vgen", "top_img", 0),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_EXT, "wpe_vpp1_ext", "top_img", 1),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_VFC, "wpe_vpp1_vfc", "top_img", 2),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH0_TOP, "wpe_vpp1_cach0_top", "top_img", 3),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH0_DMA, "wpe_vpp1_cach0_dma", "top_img", 4),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH1_TOP, "wpe_vpp1_cach1_top", "top_img", 5),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH1_DMA, "wpe_vpp1_cach1_dma", "top_img", 6),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH2_TOP, "wpe_vpp1_cach2_top", "top_img", 7),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH2_DMA, "wpe_vpp1_cach2_dma", "top_img", 8),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH3_TOP, "wpe_vpp1_cach3_top", "top_img", 9),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_CACH3_DMA, "wpe_vpp1_cach3_dma", "top_img", 10),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_PSP, "wpe_vpp1_psp", "top_img", 11),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_PSP2, "wpe_vpp1_psp2", "top_img", 12),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_SYNC, "wpe_vpp1_sync", "top_img", 13),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_C24, "wpe_vpp1_c24", "top_img", 14),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_MDP_CROP, "wpe_vpp1_mdp_crop", "top_img", 15),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_ISP_CROP, "wpe_vpp1_isp_crop", "top_img", 16),
++	GATE_WPE_VPP0(CLK_WPE_VPP1_TOP, "wpe_vpp1_top", "top_img", 17),
++	/* WPE_VPP1 */
++	GATE_WPE_VPP1(CLK_WPE_VPP1_VECI, "wpe_vpp1_veci", "top_img", 0),
++	GATE_WPE_VPP1(CLK_WPE_VPP1_VEC2I, "wpe_vpp1_vec2i", "top_img", 1),
++	GATE_WPE_VPP1(CLK_WPE_VPP1_VEC3I, "wpe_vpp1_vec3i", "top_img", 2),
++	GATE_WPE_VPP1(CLK_WPE_VPP1_WPEO, "wpe_vpp1_wpeo", "top_img", 3),
++	GATE_WPE_VPP1(CLK_WPE_VPP1_MSKO, "wpe_vpp1_msko", "top_img", 4),
++};
++
++static const struct mtk_clk_desc wpe_desc = {
++	.clks = wpe_clks,
++	.num_clks = ARRAY_SIZE(wpe_clks),
++};
++
++static const struct mtk_clk_desc wpe_vpp0_desc = {
++	.clks = wpe_vpp0_clks,
++	.num_clks = ARRAY_SIZE(wpe_vpp0_clks),
++};
++
++static const struct mtk_clk_desc wpe_vpp1_desc = {
++	.clks = wpe_vpp1_clks,
++	.num_clks = ARRAY_SIZE(wpe_vpp1_clks),
++};
++
++static const struct of_device_id of_match_clk_mt8195_wpe[] = {
 +	{
-+		.compatible = "mediatek,mt8195-vencsys",
-+		.data = &venc_desc,
++		.compatible = "mediatek,mt8195-wpesys",
++		.data = &wpe_desc,
 +	}, {
-+		.compatible = "mediatek,mt8195-vencsys_core1",
-+		.data = &venc_core1_desc,
++		.compatible = "mediatek,mt8195-wpesys_vpp0",
++		.data = &wpe_vpp0_desc,
++	}, {
++		.compatible = "mediatek,mt8195-wpesys_vpp1",
++		.data = &wpe_vpp1_desc,
 +	}, {
 +		/* sentinel */
 +	}
 +};
 +
-+static struct platform_driver clk_mt8195_venc_drv = {
++static struct platform_driver clk_mt8195_wpe_drv = {
 +	.probe = mtk_clk_simple_probe,
 +	.driver = {
-+		.name = "clk-mt8195-venc",
-+		.of_match_table = of_match_clk_mt8195_venc,
++		.name = "clk-mt8195-wpe",
++		.of_match_table = of_match_clk_mt8195_wpe,
 +	},
 +};
-+builtin_platform_driver(clk_mt8195_venc_drv);
++builtin_platform_driver(clk_mt8195_wpe_drv);
 -- 
 2.18.0
 _______________________________________________
