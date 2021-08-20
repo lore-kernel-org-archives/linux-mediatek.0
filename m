@@ -2,104 +2,77 @@ Return-Path: <SRS0=yE1p=NL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38E25C4320E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 03:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCDE3C4338F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 06:59:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0622E60FE8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 03:30:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0622E60FE8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6A58C61056
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Aug 2021 06:59:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6A58C61056
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WZPFY1Ffcw0d46lFHwGm63WW4fN3wTaaFNa7LT2f4B0=; b=hTSOCV0Fxz9Qwp
-	uKECGBSXd1r/2pj0X2GbSimq76JKQlkGwQ0mfdhA0xMftjfJ5zfRt+N7iEYBcnTSPdaR2y0cflIXt
-	EiS7QGjGJnVDaXnNQr2tRitkPE9jJ4NgmAXgspcLYb44n9BsbERcG326yFuoWi1LEivkBlPxcnBLY
-	AQbn7vI/ctLohuZovLnbWiXl2+PCGcRM1oPtMwctscUu4/Q9tmFH58MhvHVYT+sgLD/ud3B64XSLV
-	SkUWf94LPsv8sJ1z4tIG1SlMq9ZriJ/4ZlsBOrVYgFfKv1NpOpC78/lGSrzTeNZ6mPBHAEhxk6aV1
-	NKDfnKTTzqSvGjdNDnsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EOw59/s8kOtQzM60ARrpxxvmL3YimO45860ZMA+xXU0=; b=BFDAvcmzbHwvXH
+	SogRJvE3t7nDa/FShs7ZpD9M7aIecptMud30k0IkBKYAWw2K8C72k7ZLSSYOciuWmyb3H5f2JTFqI
+	bOIjxAeowTXhHa5V2Rold0NmH67J513AiqFjLKyH2E8FLFg/GImUXXwZ2FeGOLRTotT7a47UeKOSb
+	7OWzSBwfsqKa+3ptLuLEFzPSILaoNyo/v+uHX5RzYOD1gdU191/0wXBm+9kg1YyKrEOL1ouNQCvq0
+	UdHK0pzAW2XZxtKhRXmoVdbxnBjfPpsf07kaCQWzIGw7OS4UIZhxm+l4WJmrlWcN7PMnY7Cl2N4Qf
+	9kzxMXqrR6bHhKXmLTlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mGvE9-00A0F9-FR; Fri, 20 Aug 2021 03:29:53 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1mGyUz-00ACZw-M8; Fri, 20 Aug 2021 06:59:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mGvDu-00A0AG-5b
- for linux-mediatek@lists.infradead.org; Fri, 20 Aug 2021 03:29:39 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id l11so5195606plk.6
- for <linux-mediatek@lists.infradead.org>; Thu, 19 Aug 2021 20:29:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=m0sG6HNEqWhqC0CeVVryRPgZqvHD/ht80kWZ9SsRV5Q=;
- b=D00ouktdQh5MbXzxcNc6u9fD9+yFYjduyXj/ggJG2HjjkeiB6ybDKUgSwcv1gbKSpV
- jq1SU1lO9XHuwcb2aFzzAhIuPSUsiE70Bp74Qo4zTlUIRiGwsAujiFed2M5zKISDeD1v
- ci94pzNGtWzMuN5Cy32TGj85vvbN1bKIoruAhxen2YVEO7i3OZ7XJJ+B9CTcse9FyK+c
- DxiUqPuEjRZeQkoKziqQzf8K8hR5aAIh87qQ/k+WkAcc/tQk5/NO/g+tElhuscvLEmau
- UsYy+DVAEUeWW0d7QVPnfNe2u1Jnu5/K2XexzZdcJb5U2K18yHYnf+8Ne8nhCJHl3Yz1
- PITw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=m0sG6HNEqWhqC0CeVVryRPgZqvHD/ht80kWZ9SsRV5Q=;
- b=MyMdBnJ1haJ9SA8Wwccrprbzaioxl6e1Hyo+g1a88BjJr/8AtMfLN5u2NIB5/GofDh
- 3trhPZZ2HCspa8mwSgdFiKUY5xJDwzDWDf3tZsn7Irwm4H5616RxfmhxJ4yvGf35TXcZ
- KYCuGlIEYofdpz7z+rjyjh/+lnIe9JFBwDo44xqbhhs22jXyuIzE2fYpRoiGNsAi5xN7
- w+n7R3jun/qEexBRubm4gTsui7X1LkuTwhpcD8iU0n3sDRiX+ErbiNeu1fwvmQKI+If9
- K5Z86PjpebH15kOnRM0t8e0rmUQEH6hrAb5XXW4UdKQaNzmHkAzEYrqBCG0Y+3XQWEy/
- H3Pw==
-X-Gm-Message-State: AOAM533LkFK4ujGs54Q9Uj8Sg9ieRjma64fiyV3oWbBtqpFqEKDvdlSJ
- Hzr5r8j/Xdf2GPLfgh4i9t2ynQ==
-X-Google-Smtp-Source: ABdhPJzsWONpn/nU+p39za84qQxpK6KZY9p6xu70i+SP/EhBA6Jmd3xqATtzwKo2xEmQ8jepckPaLA==
-X-Received: by 2002:a17:90a:fb97:: with SMTP id
- cp23mr2346062pjb.93.1629430177117; 
- Thu, 19 Aug 2021 20:29:37 -0700 (PDT)
-Received: from google.com ([2401:fa00:1:10:549a:ad5a:e5bd:8c8a])
- by smtp.gmail.com with ESMTPSA id l2sm4864369pfc.157.2021.08.19.20.29.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Aug 2021 20:29:36 -0700 (PDT)
-Date: Fri, 20 Aug 2021 11:29:32 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- George Sun <george.sun@mediatek.com>
-Subject: Re: [PATCH v5, 01/15] media: mtk-vcodec: Get numbers of register
- bases from DT
-Message-ID: <YR8hnAiKHLpa1bri@google.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <20210811025801.21597-2-yunfei.dong@mediatek.com>
+ id 1mGyUu-00ACWw-Ec; Fri, 20 Aug 2021 06:59:28 +0000
+X-UUID: 2275eadfd93e4a81979dc11c45041282-20210819
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=H/+fmvrgjx1du64X2cJmf7CTlGIzeDGQnwtLwePrLzs=; 
+ b=qul5Qs7ChI4sCkE9WDSq/9ppny2ck1jWFhwmIFNhaJXB8EckazBcQCslkXdtXx4Sr5Tx0EYoI/kdMmDJGdbyl311WqnAwpOGAGQ1BQWAyvnDyxUDZWP9u8FoR9oOmmwAHFNbeFqgiaN2pTwK/NHEJCXxGITpDIGD1lsKOQmBMuY=;
+X-UUID: 2275eadfd93e4a81979dc11c45041282-20210819
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 358857505; Thu, 19 Aug 2021 23:59:17 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 19 Aug 2021 23:59:15 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 20 Aug 2021 14:59:14 +0800
+Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 20 Aug 2021 14:59:14 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+CC: Mathias Nyman <mathias.nyman@intel.com>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Ikjoon
+ Jang" <ikjn@chromium.org>
+Subject: [PATCH next 1/2] Revert "usb: xhci-mtk: relax TT periodic bandwidth
+ allocation"
+Date: Fri, 20 Aug 2021 14:59:12 +0800
+Message-ID: <20210820065913.64490-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210811025801.21597-2-yunfei.dong@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210819_202938_280380_9D74ED39 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210819_235924_541239_1D02E45A 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,10 +89,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 11, 2021 at 10:57:47AM +0800, Yunfei Dong wrote:
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+As discussed in following patch:
+https://patchwork.kernel.org/patch/12420339
 
+No need calculate number of uframes again, but should use value
+form check_sch_tt(), if we plan to remove extra CS, also can do
+it in check_sch_tt(). So revert this patch, and prepare to send
+new patch for it.
+
+This reverts commit 548011957d1d72e0b662300c8b32b81d593b796e.
+
+Cc: Ikjoon Jang <ikjn@chromium.org>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ drivers/usb/host/xhci-mtk-sch.c | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 46cbf5d54f4f..f9b4d27ce449 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -459,17 +459,16 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
+ 	u32 num_esit, tmp;
+ 	int base;
+ 	int i, j;
+-	u8 uframes = DIV_ROUND_UP(sch_ep->maxpkt, FS_PAYLOAD_MAX);
+ 
+ 	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
+-
+-	if (sch_ep->ep_type == INT_IN_EP || sch_ep->ep_type == ISOC_IN_EP)
+-		offset++;
+-
+ 	for (i = 0; i < num_esit; i++) {
+ 		base = offset + i * sch_ep->esit;
+ 
+-		for (j = 0; j < uframes; j++) {
++		/*
++		 * Compared with hs bus, no matter what ep type,
++		 * the hub will always delay one uframe to send data
++		 */
++		for (j = 0; j < sch_ep->cs_count; j++) {
+ 			tmp = tt->fs_bus_bw[base + j] + sch_ep->bw_cost_per_microframe;
+ 			if (tmp > FS_PAYLOAD_MAX)
+ 				return -ESCH_BW_OVERFLOW;
+@@ -547,8 +546,6 @@ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
+ 	u32 base, num_esit;
+ 	int bw_updated;
+ 	int i, j;
+-	int offset = sch_ep->offset;
+-	u8 uframes = DIV_ROUND_UP(sch_ep->maxpkt, FS_PAYLOAD_MAX);
+ 
+ 	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
+ 
+@@ -557,13 +554,10 @@ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
+ 	else
+ 		bw_updated = -sch_ep->bw_cost_per_microframe;
+ 
+-	if (sch_ep->ep_type == INT_IN_EP || sch_ep->ep_type == ISOC_IN_EP)
+-		offset++;
+-
+ 	for (i = 0; i < num_esit; i++) {
+-		base = offset + i * sch_ep->esit;
++		base = sch_ep->offset + i * sch_ep->esit;
+ 
+-		for (j = 0; j < uframes; j++)
++		for (j = 0; j < sch_ep->cs_count; j++)
+ 			tt->fs_bus_bw[base + j] += bw_updated;
+ 	}
+ 
+-- 
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
