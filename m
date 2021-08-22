@@ -2,64 +2,103 @@ Return-Path: <SRS0=dV3g=NN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B27CEC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 07:48:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED18EC4338F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 14:33:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 512FB6126A
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 07:48:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 512FB6126A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=wanadoo.fr
+	by mail.kernel.org (Postfix) with ESMTPS id A4B5F61242
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 14:33:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A4B5F61242
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hyIKRCCtJNAeIZfrQqlXCRF5GEOvTsa2iR6iLgK3PlQ=; b=lZ+3Dz0JLeCz/p
-	NMnnt7aDba8Hm9ocpCSNzc73JgEwg5peU9c1C7NyBQDYhM5yXF9A16Zg03ZSRMBqgI3KRCWuW5xZe
-	uYKQxzhaKftGQoULr0DsRUu3P2n9i3oFF4OwyHyQbYfZtkSGTsZokHAgF6mfLS5oGLmyuGqa//mcd
-	VXx8Ra9dongLKfnOUFX4AiGLdl3Wci5F0k2ZzUG4bsmbDB1nN0ygxb/P20GZpN38gqVAZuvwTD54G
-	pW4d2OCsdDYdtPGEDBWRhU6keUO/hXCkfbZVPMmVYIlZMD3qzVNcLiEcprM3XTO7kOP5bncX6MVib
-	yb7kp6rq8adBJAgKHiIw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NRXQHTZZGIpDGEuWngrNyVDyJei2FdwkgLSU/2B1NEY=; b=yXcxDkZ7OB1DmS
+	bpuywV/5fvV7cttb0mDbLrjxYlUuV4SnGsjyvLJG83j0ENKKccVjSGp42PyWvlAPAgFhYWeHTUkVV
+	uibi+r7pJgveuA6++3INn/nk/EFwjN3VONFYLzC8zPW2XZJhcLYD34Q9a52+PDdSKSSSeoXv3XzCd
+	VZU21xxeis2O/u7R91hQuXNUuFuxMBnPyIfne1ZrOdGZ1xjvClWrf8U9DuGtzTjLPOsIQ6t+C8Nep
+	P+LNEkt/c+DTqv7Y1PV73Gp11CV+7XA3975nCm83pj8gPd8/TRe20h1QrKwASAcX01pvFMZgjWVdd
+	kzWb/3ZZtkZWd250Iizw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHiCq-00DfA2-N5; Sun, 22 Aug 2021 07:47:48 +0000
-Received: from out02.smtpout.orange.fr ([193.252.22.211]
- helo=out.smtpout.orange.fr)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHiCY-00Df92-Hz
- for linux-mediatek@lists.infradead.org; Sun, 22 Aug 2021 07:47:34 +0000
-Received: from pop-os.home ([90.126.253.178]) by mwinf5d59 with ME
- id kXfn2500K3riaq203XfnP5; Sun, 22 Aug 2021 09:39:50 +0200
-X-ME-Helo: pop-os.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sun, 22 Aug 2021 09:39:50 +0200
-X-ME-IP: 90.126.253.178
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- davem@davemloft.net, kvalo@codeaurora.org, kuba@kernel.org,
- matthias.bgg@gmail.com
-Cc: linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] mt76: switch from 'pci_' to 'dma_' API
-Date: Sun, 22 Aug 2021 09:39:45 +0200
-Message-Id: <83b2da6ff8a07d576fa3627051daa705aba37a3c.1629617782.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.30.2
+	id 1mHoWy-00EESm-FN; Sun, 22 Aug 2021 14:33:00 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mHoWl-00EEQL-Lx
+ for linux-mediatek@lists.infradead.org; Sun, 22 Aug 2021 14:32:49 +0000
+Received: by mail-ej1-x630.google.com with SMTP id w5so31142751ejq.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 22 Aug 2021 07:32:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Vg4WCN3mkUp7qTb1jC4H7HoR8bVBq2cRQ0LNC0/9UWg=;
+ b=ARWJ7A13oKc6fIxvw1k6Tm3IRISZ4Wl5pRZGhmInO+/UuRhfXxmF4UlzkQq6B9PNd0
+ 3PbIuOwy4cG1+RlEY8Lmu5vYXOV5RWJmfjS7A+kKcKk75gYQ1fDNfHMyWr42KbESHSpy
+ /DCZOECf5bc0aT0KIHganVfoCgkWEq94J9NsBr3eIYkBsRVkfPnb2RpwVgBuuwhCnV4g
+ +NnbEzb83r2TRzwKZk4qSx8gVgeRpH+ZYAqBFZk/hlTuiiK/ir3OtEQ5sZ47+icwDPKc
+ oReth/2/pskOUmmLo5yDUF4GlOpSQTOXgiS+ZPZcT11jisTUj4DV2P+sjWE3mAfcKFX8
+ HaFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Vg4WCN3mkUp7qTb1jC4H7HoR8bVBq2cRQ0LNC0/9UWg=;
+ b=Dnzg7DXDURf1sOSfnWYP0St790rR8tgRZ5Zx0DcI9s2Vt0H+yESAKHRNwPJZJlKiBl
+ Mxo8hnRGRZxvqkviN5DSTJDvCj2vkzOFov1zZTc/3we5GR8U9reLPGCoaCOcBnrBuYUe
+ v4PKV4zyMWb//Ba2j89XuKX5lZ+W9/dEATxDMmce79/N/TqkEkoqWcvSBK+awarySR/Y
+ +ibuQBzISkRrcaxKe7CSkHufqHFKOeH7SJOkjmq844TZwBKqw0AqYWsyCGH5B9ztDFeC
+ 1OXXvfJ/SC6RgP+H9JA0eo232jM7fVPqUCuS85bnYMGkJMpML0FgUBPcyAPurD8ui6/l
+ ozyA==
+X-Gm-Message-State: AOAM530z76Bbpde53FbC0+t/iZj26wkbv6CkKkf34wPdQJ7Snm7tVK0y
+ BAKQP5xziYmGA2Vku2B8wny8m1rQuClR08+RXFRHgw==
+X-Google-Smtp-Source: ABdhPJw5LCjDQ9tRbHA/p3KiLXSnjc2x8oAhJStrqYw99HufdNCAiPBvAvvFJ1Z/wM2OjbFxyQQwDSve9mRXAa+1qmw=
+X-Received: by 2002:a17:906:2ad5:: with SMTP id
+ m21mr31110981eje.88.1629642763303; 
+ Sun, 22 Aug 2021 07:32:43 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
+ <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
+ <1b79a67b703d2c894bc4d9458c760e082fc42958.camel@mediatek.com>
+ <CAAEAJfCTrKj9AFExN-L-TKww4E=us1VVh8LHtZ8Q0j_eaCD4Eg@mail.gmail.com>
+ <1629446378.18871.27.camel@mhfsdcap03>
+In-Reply-To: <1629446378.18871.27.camel@mhfsdcap03>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Sun, 22 Aug 2021 11:32:32 -0300
+Message-ID: <CAAEAJfCdvj4drV+YSbvyR30b0+50RpJcOYdEoNODTdrAoL6+vA@mail.gmail.com>
+Subject: Re: [PATCH v5, 00/15] Using component framework to support multi
+ hardware decode
+To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+Cc: Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>, 
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>, 
+ linux-media <linux-media@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, 
+ George Sun <george.sun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210822_004730_895740_76596518 
-X-CRM114-Status: UNSURE (   9.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210822_073247_771626_644DE78E 
+X-CRM114-Status: GOOD (  49.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,223 +115,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The wrappers in include/linux/pci-dma-compat.h should go away.
+On Fri, 20 Aug 2021 at 04:59, yunfei.dong@mediatek.com
+<yunfei.dong@mediatek.com> wrote:
+>
+> Hi Ezequiel,
+>
+> Thanks for your detail feedback.
+>
+> On Thu, 2021-08-19 at 11:10 -0300, Ezequiel Garcia wrote:
+> > On Thu, 19 Aug 2021 at 04:13, yunfei.dong@mediatek.com
+> > <yunfei.dong@mediatek.com> wrote:
+> > >
+> > > Hi Ezequiel,
+> > >
+> > > Thanks for your suggestion.
+> > >
+> > > On Wed, 2021-08-18 at 11:11 -0300, Ezequiel Garcia wrote:
+> > > > +danvet
+> > > >
+> > > > Hi,
+> > > >
+> > > > On Tue, 10 Aug 2021 at 23:58, Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > wrote:
+> > > > >
+> > > > > This series adds support for multi hardware decode into mtk-vcodec,
+> > > > > by first
+> > > > > adding component framework to manage each hardware information:
+> > > > > interrupt,
+> > > > > clock, register bases and power. Secondly add core thread to deal
+> > > > > with core
+> > > > > hardware message, at the same time, add msg queue for different
+> > > > > hardware
+> > > > > share messages. Lastly, the architecture of different specs are not
+> > > > > the same,
+> > > > > using specs type to separate them.
+> > > > >
+> > > >
+> > > > I don't think it's a good idea to introduce the component API in the
+> > > > media subsystem. It doesn't seem to be maintained, IRC there's not
+> > > > even
+> > > > a maintainer for it, and it has some issues that were never
+> > > > addressed.
+> > > >
+> > > > It would be really important to avoid it. Is it really needed in the
+> > > > first place?
+> > > >
+> > > > Thanks,
+> > > > Ezequiel
+> > >
+> > > For there are many hardware need to use, mt8192 is three and mt8195 is
+> > > five. Maybe need more to be used in the feature.
+> > >
+> > > Each hardware has independent clk/power/iommu port/irq.
+> > > Use component interface in prob to get each component's information.
+> > > Just enable the hardware when need to use it, very convenient and
+> > > simple.
+> > >
+> > > I found that there are many modules use component to manage hardware
+> > > information, such as iommu and drm etc.
+> > >
+> >
+> > Many drivers support multiple hardware variants, where each variant
+> > has a different number of clocks or interrupts, see for instance
+> > struct hantro_variant which allows to expose different codec cores,
+> > some having both decoder/encoder, and some having just a decoder.
+> >
+> > The component API is mostly used by DRM to aggregate independent
+> > subdevices (called components) into an aggregated driver.
+> >
+> > For instance, a DRM driver needs to glue together the HDMI, MIPI,
+> > and plany controller, or any other hardware arrangement where
+> > devices can be described independently.
+> >
+> The usage scenario is very similar with drm and iommu, So decide to use
+> component framework.
+> Decode has three/five or more hardwares, these hardware are independent.
+> For mt8183 just need core hardware to decode, but mt8192 has lat,soc and
+> core hardware to decode. When lat need to use, just enable lat hardware,
+> core is the same.And mt8195 will has two cores, each core can work well
+> independent.
+>
+> For each component device just used to open their power/clk/iommu
+> port/irq when master need to enable it. The main logic is in master
+> device.
+>
+> > The component API may look simple but has some issues, it's not easy
+> > to debug, and can cause troubles if not used as expected [1].
+> > It's worth making sure you actually need a framework
+> > to glue different devices together.
+> >
+> Each hardware has its index, master can get hardware information
+> according these index, looks not complex. What do you mean about not
+> easy to debug?
+>
+> > > Do you have any other suggestion for this architecture?
+> > >
+> >
+> > Looking at the different patchsets that are posted, it's not clear
+> > to me what exactly are the different architectures that you intend
+> > to support, can you some documentation which clarifies that?
+> >
+> Have five hardwares lat,soc,core0,core1 and main. Lat thread can use lat
+> soc and main, core thread can use soc,lat, core0 and core1. Core thread
+> can be used or not for different project.
 
-The patch has been generated with the coccinelle script below.
+Can you explain what are these lat,soc and core threads for?
 
-It has been compile tested.
+> Also Need to use these
+> hardware dynamic at the same time. So I use component framework, just
+> need to know the used  hardware index according to different
+> project.Need not to do complex logic to manage these hardwares.
+>
 
+I am not thrilled to see the component framework introduced to the
+media subsystem. Like I said, it has no clear maintainer, and it's not
+easy to use.
 
-@@
-@@
--    PCI_DMA_BIDIRECTIONAL
-+    DMA_BIDIRECTIONAL
+The media subsystem has some support which AFAIK does the same thing,
+see v4l2-async, which is maintained by media people.
 
-@@
-@@
--    PCI_DMA_TODEVICE
-+    DMA_TO_DEVICE
+Please push a branch based on media/master containing these changes.
+I see there are other patch series for this device, but it's hard to track
+which goes first, etc.
 
-@@
-@@
--    PCI_DMA_FROMDEVICE
-+    DMA_FROM_DEVICE
-
-@@
-@@
--    PCI_DMA_NONE
-+    DMA_NONE
-
-@@
-expression e1, e2, e3;
-@@
--    pci_alloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-
-@@
-expression e1, e2, e3;
-@@
--    pci_zalloc_consistent(e1, e2, e3)
-+    dma_alloc_coherent(&e1->dev, e2, e3, GFP_)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_free_consistent(e1, e2, e3, e4)
-+    dma_free_coherent(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_single(e1, e2, e3, e4)
-+    dma_map_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_single(e1, e2, e3, e4)
-+    dma_unmap_single(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4, e5;
-@@
--    pci_map_page(e1, e2, e3, e4, e5)
-+    dma_map_page(&e1->dev, e2, e3, e4, e5)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_page(e1, e2, e3, e4)
-+    dma_unmap_page(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_map_sg(e1, e2, e3, e4)
-+    dma_map_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_unmap_sg(e1, e2, e3, e4)
-+    dma_unmap_sg(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_cpu(e1, e2, e3, e4)
-+    dma_sync_single_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_single_for_device(e1, e2, e3, e4)
-+    dma_sync_single_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_cpu(e1, e2, e3, e4)
-+    dma_sync_sg_for_cpu(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2, e3, e4;
-@@
--    pci_dma_sync_sg_for_device(e1, e2, e3, e4)
-+    dma_sync_sg_for_device(&e1->dev, e2, e3, e4)
-
-@@
-expression e1, e2;
-@@
--    pci_dma_mapping_error(e1, e2)
-+    dma_mapping_error(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_dma_mask(e1, e2)
-+    dma_set_mask(&e1->dev, e2)
-
-@@
-expression e1, e2;
-@@
--    pci_set_consistent_dma_mask(e1, e2)
-+    dma_set_coherent_mask(&e1->dev, e2)
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-If needed, see post from Christoph Hellwig on the kernel-janitors ML:
-   https://marc.info/?l=kernel-janitors&m=158745678307186&w=4
----
- drivers/net/wireless/mediatek/mt76/mt7603/pci.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7615/pci.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x0/pci.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt76x2/pci.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/pci.c | 2 +-
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 +-
- 6 files changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-index aa6cb668b012..3d94cdb4314a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/pci.c
-@@ -28,7 +28,7 @@ mt76pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	pci_set_master(pdev);
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-index 11f169cdd603..7a54ea6a86d0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci.c
-@@ -39,7 +39,7 @@ static int mt7615_pci_probe(struct pci_dev *pdev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		goto error;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-index b795e7245c07..92ddb8c68938 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-@@ -176,7 +176,7 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	pci_set_master(pdev);
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-index adf288e50e21..fb8de1833937 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci.c
-@@ -47,7 +47,7 @@ mt76x2e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	pci_set_master(pdev);
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 340b364da5f0..c79b526346e7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -251,7 +251,7 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
- 
- 	pci_set_master(pdev);
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		return ret;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index c3905bcab360..7e8cff3a1b94 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -128,7 +128,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
- 	if (ret < 0)
- 		return ret;
- 
--	ret = pci_set_dma_mask(pdev, DMA_BIT_MASK(32));
-+	ret = dma_set_mask(&pdev->dev, DMA_BIT_MASK(32));
- 	if (ret)
- 		goto err_free_pci_vec;
- 
--- 
-2.30.2
-
+Thanks,
+Ezequiel
 
 _______________________________________________
 Linux-mediatek mailing list
