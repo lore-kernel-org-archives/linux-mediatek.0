@@ -2,84 +2,84 @@ Return-Path: <SRS0=dV3g=NN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A467C4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 01:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A32C3C4338F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 04:14:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F247761266
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 01:15:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F247761266
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6BFAC6126A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 04:14:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6BFAC6126A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gorani.run
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rclul4mBH8xjfXRaXcwK6CL165FnYZD91lWy+uA2u5o=; b=1wNmDxOIUmJcVo
-	o34l1k9L88fZqwoLmUOX/+lwMbiMrOSex+53eXnH3H2YN1ePTNFeJbHdo3TC2+FL6WMKVLlHcoEqP
-	twGisl3eldOeLYg/SoOQ7OJTHMcoULOCusEtDkpuDLUEsPOpZws33o7HCjA4pTTiXLrZFuGqcdwPF
-	OtcGIw+Tf+9E53v87wV9PzCVFI94s7h1qeFZZY63wC5862VPvg5Kn93FidPkQ15/DzaRfRxvR53i9
-	qz7jzsEHsJaNwxYyzkSTJj4ToFREpsLdh7z6V1B8y9iEekSIcTmNhUarucr5Oj8vGRIK23aYzqcY+
-	TdetsnrkddfMhIV3uctA==;
+	List-Owner; bh=VFs2QApneRk6aPLxIbYF1CH2udUbzsIvs3VxIPnt9NQ=; b=wBIVWJUftawxYQ
+	mcnnCdkAT38epgLx9vQ7E7AqzJyVz3sm5dgCZAjcP2MKqrXuwPKl+cSeneCzw8JVxOt1ErwpRMbGk
+	ViqOEOU3CKM/Lso43XVcqIPFxFiOUT4tFomHTvjhjvEgCVSkjKbsgGiiYoE1td8csA7GY3lGEyPe0
+	jdFAD0mHS+CapQCy3CRXiIjSXIRC5EaFxc58VfHFfElRbOeliF7rqkQuG7gJDqdTA6TlQmDs8gBkD
+	3VSTaW5lJTSoPwMtwCDdHO4lhtL6a7e9rc/DK9ywwEA/AsmPVPJrk7t1NcADMYBDN0ihMt5KvZLrw
+	KjwBHitZbiwQ10KSc4jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHc4a-00DNY8-BV; Sun, 22 Aug 2021 01:14:52 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mHesY-00DUaT-Jr; Sun, 22 Aug 2021 04:14:38 +0000
+Received: from mout-p-103.mailbox.org ([80.241.56.161])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHc4N-00DNWJ-3e; Sun, 22 Aug 2021 01:14:40 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 14FDC61354;
- Sun, 22 Aug 2021 01:14:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629594877;
- bh=zCzuD/gSEAZz6whQU8OxleDxwzLhRBG1uIqnRGpvqP8=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=o7jAL41cV1Q05ea7fZSRvzv0vZ5APxyLyXwqZQX5/Qab2O1tdaSDk66vm/LNZy8fo
- U0wrcOc69+Sfa1T/XIcGMMf8oR5/fPHm+Vk+TDsqcrYosh8V+5qdko8InUVg+19TwD
- zWTmsHpkn+PPv4mbUgW6RZ5P7yUSNikeFdOcZ6DKmhm3k0+s6Janm0YtbJ6PlFG3uR
- UQM+8zDahpFfnfm0AljOy2ZR4ana+oP+ZWw8HPdRCjHNHZQqFGLXKZfnSYqjRE7osf
- tzfLxf/C2/NFw/n/U1dSm6059t7bAu6T1APRfPPyg/S4WI0C35xLNLuyxptlp34MHe
- lbQJxoXBsePkQ==
-Received: by mail-ej1-f41.google.com with SMTP id d11so28373156eja.8;
- Sat, 21 Aug 2021 18:14:36 -0700 (PDT)
-X-Gm-Message-State: AOAM531sRlUhUIDOGS0UItqzW9yAQaOA2ph7m8hnETAKlva2tiePMw5a
- 0RzuWmE/TM7XyN8iw4deLuk3C5LKucxJBMIl3g==
-X-Google-Smtp-Source: ABdhPJwurie+/j4gMgYRtvN6TgPa5fnIdmGdu2j/ak4r2YT1v1vuwSfGu0NBvpD/c6uzXnaqD7U33HlKS+77I74lBsU=
-X-Received: by 2002:a17:906:b18e:: with SMTP id
- w14mr28931433ejy.63.1629594875631; 
- Sat, 21 Aug 2021 18:14:35 -0700 (PDT)
+ id 1mHesJ-00DUY0-76; Sun, 22 Aug 2021 04:14:27 +0000
+Received: from smtp1.mailbox.org (smtp1.mailbox.org
+ [IPv6:2001:67c:2050:105:465:1:1:0])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
+ SHA256) (No client certificate requested)
+ by mout-p-103.mailbox.org (Postfix) with ESMTPS id 4GshpJ6fHzzQk3j;
+ Sun, 22 Aug 2021 06:14:16 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at heinlein-support.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gorani.run; s=MBO0001; 
+ t=1629605655;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fpRlG5MqIG/F4622ScTOdfuZ4bsOknUt+3o0exi/l40=;
+ b=I99RWDYF/bsIVjXTq1x3pIoRSdchsNNgkzDO9EP7TTJHuKjlTEHxeo9B95jvYPu1zKsFni
+ sJDJKQWuqnoDP3DSggm1I8G/ziXaWvwpJ5bHzJqz1qRlRK7YPSOjMUF/7cLSz1sNvMHJ8R
+ EcjZZqNBv6L4kkbcuYggPmzo5RZbVQxl3cR/8q5EPEJg0wEvJDSFY9kz5FPERqZLwmShwY
+ wmM3xpb87DtlaqboZ6fGVTE1B4hByBFZdb2PGvNsxCdkQe6RkkzLdcE5yZVCElxD3Ouhk6
+ 9392+A6ZROHxe7g51TMJB3ngGPhj8mc3O8Uuijn9+/vT1XH/M9CRbCx4Dt7kUw==
+Received: from smtp1.mailbox.org ([80.241.60.240])
+ by hefe.heinlein-support.de (hefe.heinlein-support.de [91.198.250.172])
+ (amavisd-new, port 10030)
+ with ESMTP id rR8IlFxswEMY; Sun, 22 Aug 2021 06:14:13 +0200 (CEST)
+From: Sungbo Eo <mans0n@gorani.run>
+To: linux-mediatek@lists.infradead.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
+ Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sungbo Eo <mans0n@gorani.run>
+Subject: [PATCH v3 0/1] Add MUSB for MT7623
+Date: Sun, 22 Aug 2021 13:13:32 +0900
+Message-Id: <20210822041333.5264-1-mans0n@gorani.run>
+In-Reply-To: <20210808123840.176738-1-mans0n@gorani.run>
+References: <20210808123840.176738-1-mans0n@gorani.run>
 MIME-Version: 1.0
-References: <20210818091847.8060-1-nancy.lin@mediatek.com>
- <20210818091847.8060-16-nancy.lin@mediatek.com>
-In-Reply-To: <20210818091847.8060-16-nancy.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 22 Aug 2021 09:14:24 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_99QLpRHLei2PzD8vsuoOaZae++NqczPCM+r9YMZ01btw@mail.gmail.com>
-Message-ID: <CAAOTY_99QLpRHLei2PzD8vsuoOaZae++NqczPCM+r9YMZ01btw@mail.gmail.com>
-Subject: Re: [PATCH v3 15/15] drm/mediatek: add mediatek-drm of vdosys1
- support for MT8195
-To: "Nancy.Lin" <nancy.lin@mediatek.com>
-Cc: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
- Yongqiang Niu <yongqiang.niu@mediatek.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, singo.chang@mediatek.com, 
- srv_heupstream <srv_heupstream@mediatek.com>
+X-Rspamd-Queue-Id: BDE161899
+X-Rspamd-UID: 33c264
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210821_181439_213088_45DE78B9 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20210821_211423_514932_A96AF127 
+X-CRM114-Status: UNSURE (   9.20  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +91,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE5hbmN5OgoKTmFuY3kuTGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
-tDjmnIgxOOaXpSDpgLHkuIkg5LiL5Y2INToxOOWvq+mBk++8mgo+Cj4gQWRkIGRyaXZlciBkYXRh
-IG9mIG10ODE5NSB2ZG9zeXMxIHRvIG1lZGlhdGVrLWRybSBhbmQgbW9kaWZ5IGRybSBmb3IKPiBt
-dWx0aS1tbXN5cyBzdXBwb3J0LiBUaGUgdHdvIG1tc3lzICh2ZG9zeXMwIGFuZCB2ZG9zeXMxKSB3
-aWxsIGJyaW5nCj4gdXAgdHdvIGRybSBkcml2ZXJzLCBvbmx5IG9uZSBkcm0gZHJpdmVyIHJlZ2lz
-dGVyIGFzIHRoZSBkcm0gZGV2aWNlLgo+IEVhY2ggZHJtIGRyaXZlciBiaW5kcyBpdHMgb3duIGNv
-bXBvbmVudC4gVGhlIGZpcnN0IGJpbmQgZHJtIGRyaXZlcgo+IHdpbGwgYWxsb2NhdGUgdGhlIGRy
-bSBkZXZpY2UsIGFuZCB0aGUgbGFzdCBiaW5kIGRybSBkcml2ZXIgcmVnaXN0ZXJzCj4gdGhlIGRy
-bSBkZXZpY2UgdG8gZHJtIGNvcmUuIEVhY2ggY3J0YyBwYXRoIGlzIGNyZWF0ZWQgd2l0aCB0aGUK
-PiBjb3JyZXNwb25kaW5nIGRybSBkcml2ZXIgZGF0YS4KPgo+IFNpZ25lZC1vZmYtYnk6IE5hbmN5
-LkxpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNvbT4KPgo+Cj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qg
-bXRrX2RkcF9jb21wX2Z1bmNzIGRkcF9vdmxfYWRhcHRvciA9IHsKPiArICAgICAgIC5jbGtfZW5h
-YmxlID0gbXRrX2V0aGRyX2Nsa19lbmFibGUsCj4gKyAgICAgICAuY2xrX2Rpc2FibGUgPSBtdGtf
-ZXRoZHJfY2xrX2Rpc2FibGUsCj4gKyAgICAgICAuY29uZmlnID0gbXRrX2V0aGRyX2NvbmZpZywK
-PiArICAgICAgIC5zdGFydCA9IG10a19ldGhkcl9zdGFydCwKPiArICAgICAgIC5zdG9wID0gbXRr
-X2V0aGRyX3N0b3AsCj4gKyAgICAgICAubGF5ZXJfbnIgPSBtdGtfZXRoZHJfbGF5ZXJfbnIsCj4g
-KyAgICAgICAubGF5ZXJfY29uZmlnID0gbXRrX2V0aGRyX2xheWVyX2NvbmZpZywKPiArICAgICAg
-IC5lbmFibGVfdmJsYW5rID0gbXRrX2V0aGRyX2VuYWJsZV92YmxhbmssCj4gKyAgICAgICAuZGlz
-YWJsZV92YmxhbmsgPSBtdGtfZXRoZHJfZGlzYWJsZV92YmxhbmssCj4gK307CgpJIHRoaW5rIGV0
-aGRyIGlzIGluc2lkZSB0aGUgZ3JvdXAgb2Ygb3ZsX2FkcGF0b3IuIEkgcHJldGVyIHRoaXMKZnVu
-Y3Rpb24gaXMgaW1wbGVtZW50ZWQgYnkgb3ZsX2FkYXB0b3IsIGFuZCBvdmxfYWRhcHRvciBjb250
-cm9sIHJkbWEsCm1lcmdlLCBldGhkci4KClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+ICsKPgoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
-ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+These patches add support for the MUSB controller on Mediatek MT7623.
+Tested on Mercury RUSH-318AC Wi-Fi router.
+
+v3:
+* dt-bindings
+  * remove the queued patch
+* DTS
+  * remove unnecessary status=okay from u2port2
+
+v2:
+* dt-bindings
+  * add reviewed by Matthias
+* DTS
+  * rename usb3 label to usb0
+  * move usb0 & u2phy1 nodes to the right sorted place
+  * disable u2phy1 by default
+  * correct u2port2 node name to match its reg address
+
+Sungbo Eo (1):
+  arm: dts: mt7623: add musb device nodes
+
+ arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
+ arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
+ 2 files changed, 37 insertions(+)
+
+-- 
+2.33.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
