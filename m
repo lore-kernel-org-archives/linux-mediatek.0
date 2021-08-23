@@ -2,103 +2,86 @@ Return-Path: <SRS0=it3p=NO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D2B9C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 10:17:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FF4EC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 11:17:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D6DC361248
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 10:17:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D6DC361248
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id EFD0B610D1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 11:17:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EFD0B610D1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKuPC/J8okwYWIxJpLMPw9m/EWVG+0apLPSMR3IphKc=; b=UwyZTLvbt01aJZ
-	46Qb+7IjiC6Qg3vgLlDNJ0YH4cBgGQJuNUPe44MWLreNmNxrrbY+ZPTKkEcYYlMAb00ERd77X/k65
-	Fk4jWco/zoshSUMz1YHvJOONtR2eqW1Jdt6R1p/eA4+pv49rmAufnQXxk4CfMMHydKd+oTfuMrGRq
-	jTVHqUQIXH4m9OzXktBLl+9eYmLpFpeblF6Oee4jB1KJGuIRmpOSmrzv/X6saAiH/mBhXNexd0vM8
-	lvPpuWLNA2O0qZz1rZAIodp68pH6ef6hMGiF9H/JvbbZxLqEVpm7TneVJTCBbuK34vbGJCbTEn0Mp
-	+p6jtsGUE/pgxmKBQtPw==;
+	List-Owner; bh=th+1x8ndyoZWBvC9f+nfofy6W41QlWUP9jqnnGjTrMs=; b=PQmBz5weQRKljY
+	gKH1yS9ZjEy+zCDnhYqGDt7vwT1I/cuZbG0NjkWh1dC2YqULYuIwS/zqpGJzx7bSuv4V8yetRqtKw
+	DKQVHLrndWwGsp38wI93vuogpaxCp4CG6h28+Ri9ypQ51PagkrdqL70ej8oCvcUyWVz0w0ViK+aUx
+	TiwpvFnkKYQy5L964CyBhSH1SIYnKgv7K4w9O3Ix23AnNvFTvh6615QFThDYWraX5nJ+9kjzFRmfB
+	BM1YTx3sWMUSOIZyzQ+cGfpc53CVsa6LzMGR3ZqsgfFYoyNn8Hg8Be5DeMzn9nPzK0hDxa/gctDsh
+	a7rYlEljeFdeZNWS0eaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI70v-00GJbx-SU; Mon, 23 Aug 2021 10:17:09 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1mI7xO-00GX5G-SE; Mon, 23 Aug 2021 11:17:34 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI70f-00GJVv-Cy
- for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 10:16:54 +0000
-Received: by mail-pf1-x432.google.com with SMTP id 18so14933519pfh.9
- for <linux-mediatek@lists.infradead.org>; Mon, 23 Aug 2021 03:16:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=9sK/RO+vAHWLBWoM3ZyA29r4bWb/1hcnS47SNH5khGc=;
- b=wQBC/gwt1+LStQC2ASYvn+IHLUg1RkDC7LLqbN852KwAQDHhT7TvSognZ5nzBxFR8Y
- f0+WCGa4TsHPsSI+esH7OPVRGqU+gOqsgyi1cGgx7DgMOZEfpQFzmsCpo9clJte0DI0J
- D46kyX45RpcOK6WNk0hwAQht6Z5+xpZ3dti1KfOfkQMdru5v7J7VFz16cmeTisU8/xXQ
- QtE0Wp0V3ZTjmQjs8NosQQrxYcGkKaCBgniW6eKWE5bHk5T0uKP6qpVX2QKuNtHzjWmz
- 800yWoY4Rb0KzL6mX1yGLo0lMU7DQKPDGylyPd84FsF1ar8fBlPeeeF5JHq039hw5qtJ
- BXhQ==
+ id 1mI7xA-00GX1C-Uo
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 11:17:24 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id k5so37184557lfu.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 23 Aug 2021 04:17:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8iLaZTWeQJl6iGd266WbOlLff6luDbqFrxB/cAn80YQ=;
+ b=TcCgBTHb/Rs9nRpQG++G77unwTBKtjJ4Dp7AZlW7FIncIs94bCVvQ5U4sDTfvgf9Xt
+ KV9b4PeuzP5DeplauxcUhcDxI+g8ZQ5ax6ytlADE2+L1eWBrNdaOeAtgMjjwwoHQiosB
+ Sj4NtVNfk2tA4/djiKPnhoeM1poW2B29JjvWI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=9sK/RO+vAHWLBWoM3ZyA29r4bWb/1hcnS47SNH5khGc=;
- b=S93HSVLncPZmmgRPT1ESTxB811x4W/hVQhmZNJRPlvk3DikY1XYr+VaWYJ+n5XYPKv
- zuQ9MfzamGubkLYmtdH990PiVQfx4w5A8jiAq0NsBGmKIdgoLoRPVMkcLTESe3nvGUEC
- qoz8nHIElDNLvasgoRsJD3IaJG+DZY9gGmO313c1GWqB2If+3IQcf3gFvQiJGFQkL8n8
- zWYcRGwZSUrRjTcijwLaCE5UTkWMb30wkM6CMGnIxzd1v5q/jP5TiH6sM6oLfagGFBwl
- k6ZN8KUUwKQZUsC8+mPxIFfRklUwjWTSn/oz2mRo2+sa1TT1DKrda7vOA1iVQJG4mIu+
- Jotw==
-X-Gm-Message-State: AOAM533xWgJvKziUHwBXcr0lYbR8d7sjqJvm1Ot7F3qDhESlkbOjP0X/
- V/3M9BwciFgPmVckMgrxEU+Atw==
-X-Google-Smtp-Source: ABdhPJyRWj7JJ3uSCqHFjtFJri25dJ4A+gm2UzaZ6kNWYFkB1lyGxchigxCWWxBH8xmZnrvu7go3+g==
-X-Received: by 2002:a63:5f88:: with SMTP id t130mr31596784pgb.6.1629713812275; 
- Mon, 23 Aug 2021 03:16:52 -0700 (PDT)
-Received: from google.com ([2401:fa00:1:10:bc5a:af6a:3f08:a084])
- by smtp.gmail.com with ESMTPSA id x42sm15258542pfh.205.2021.08.23.03.16.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Aug 2021 03:16:51 -0700 (PDT)
-Date: Mon, 23 Aug 2021 18:16:47 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: Irui Wang <irui.wang@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>,
- Fritz Koenig <frkoenig@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH 3/9] media: mtk-vcodec: Rewrite venc power manage interface
-Message-ID: <YSN1j7o5+Tzk0HlH@google.com>
-References: <20210816105934.28265-1-irui.wang@mediatek.com>
- <20210816105934.28265-4-irui.wang@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8iLaZTWeQJl6iGd266WbOlLff6luDbqFrxB/cAn80YQ=;
+ b=XeO/ZoGTIPOxCDQGRMb/Swar33KJOl8iZlK10w7CVNByOn1ir94xyLGPHytBzJnA0N
+ 9Fbqh/FjNL0kNPcDcPiMuwvXK7MzLEZBGeRMTKLifmSpHvf4UHy+eu5vxED9kj0XuyS1
+ xUZWl8r72q0FYvIwN7FA+NxHzvirUYzCzbs4Qagx/liKEBrAsMedGq3USD/0ufQAHlEQ
+ bPpl8oi4wwyTdc1JWKwVfzFxHGZdLQHU0S9UG3EqDfCGCTZs5qkcEpL+cnx0ui+2j2me
+ 67PNo8x7xSRCnIYg4eeb8ECsylIbnRLnbAQdJJKX8yv/oxyJLjVgBHEpXXve6GRHzlpk
+ Oktw==
+X-Gm-Message-State: AOAM5307mMFeeZdFlWV9qmXkFUS/3kQFNAHH2xdapVboSSr7Nc3zpZSs
+ NjuHKTbl9+VGCrylXesBK9nyiXmg32P6N2xe1hbvfA==
+X-Google-Smtp-Source: ABdhPJxMxt92OJ2YG0/F1XWWeVdd/8FS5KcGSQF5fZ9YbMu+oL61YlsJqouyFzi4LPLGPqg4hSE5facaGcpocjicWqg=
+X-Received: by 2002:a05:6512:3b98:: with SMTP id
+ g24mr17084296lfv.276.1629717427045; 
+ Mon, 23 Aug 2021 04:17:07 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210816105934.28265-4-irui.wang@mediatek.com>
+References: <20210820111504.350-1-chun-jie.chen@mediatek.com>
+ <20210820111504.350-8-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210820111504.350-8-chun-jie.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 23 Aug 2021 19:16:56 +0800
+Message-ID: <CAGXv+5GaUBWV0tD4uP6Gx6Pg7BvF_Dzp5pdV73b_0MD1kYr03A@mail.gmail.com>
+Subject: Re: [v2 07/24] clk: mediatek: Add MT8195 topckgen clock support
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-clk@vger.kernel.org, Devicetree List <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_031653_474154_8346DEB4 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20210823_041721_027467_DDD90B37 
+X-CRM114-Status: GOOD (  35.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,19 +98,288 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 16, 2021 at 06:59:28PM +0800, Irui Wang wrote:
-> @@ -105,6 +106,14 @@ static int mtk_venc_comp_probe(struct platform_device *pdev)
->  
->  	comp_dev->plat_dev = pdev;
->  
-> +	ret = mtk_vcodec_init_enc_pm(pdev, &comp_dev->pm);
-> +	if (ret < 0) {
-> +		dev_err(&pdev->dev, "Failed to get venc component clock source!");
-> +		return ret;
-> +	}
+On Fri, Aug 20, 2021 at 7:20 PM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> Add MT8195 topckgen clock controller which provides muxes, dividers
+> to handle variety clock selection in other IP blocks.
+>
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> ---
+> The changes as follow:
+> 1. remove 1 on 1 divider
+> 2. merge parent source data in muxes
+> 3. add some comment if the clock is not model by CCF or has special flag
+> 4. remove _SEL suffix in clock name
+> ---
+>  drivers/clk/mediatek/Makefile              |    2 +-
+>  drivers/clk/mediatek/clk-mt8195-topckgen.c | 1298 ++++++++++++++++++++
+>  2 files changed, 1299 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8195-topckgen.c
+>
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index d4157cfca865..a142342a0cea 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -80,6 +80,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_MSDC) += clk-mt8192-msdc.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_SCP_ADSP) += clk-mt8192-scp_adsp.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
+> -obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o
+> +obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+> diff --git a/drivers/clk/mediatek/clk-mt8195-topckgen.c b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> new file mode 100644
+> index 000000000000..3cf113544f59
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8195-topckgen.c
+> @@ -0,0 +1,1298 @@
+
+[...]
+
+> +static const char * const dsp_parents[] = {
+> +       "clk26m",
+> +       "univpll_d6_d2",
+> +       "univpll_d4_d2",
+> +       "univpll_d5",
+> +       "univpll_d4",
+> +       "mmpll_d4",
+> +       "mainpll_d3",
+> +       "univpll_d3"
+> +};
 > +
-> +	pm_runtime_enable(&pdev->dev);
-mtk_vcodec_init_enc_pm() and mtk_vcodec_release_enc_pm() is more like a pair.  Does it make more sense to call pm_runtime_enable() in mtk_vcodec_init_enc_pm()?
+> +static const char * const dsp1_parents[] = {
+> +       "clk26m",
+> +       "univpll_d6_d2",
+> +       "mainpll_d4_d2",
+> +       "univpll_d5",
+> +       "mmpll_d5",
+> +       "univpll_d4",
+> +       "mainpll_d3",
+> +       "univpll_d3"
+> +};
+> +
+> +static const char * const dsp2_parents[] = {
+> +       "clk26m",
+> +       "univpll_d6_d2",
+> +       "univpll_d4_d2",
+> +       "mainpll_d4",
+> +       "univpll_d4",
+> +       "mmpll_d4",
+> +       "mainpll_d3",
+> +       "univpll_d3"
+> +};
+> +
+> +static const char * const dsp3_parents[] = {
+> +       "clk26m",
+> +       "univpll_d6_d2",
+> +       "univpll_d4_d2",
+> +       "univpll_d5",
+> +       "univpll_d4",
+> +       "mmpll_d4",
+> +       "mainpll_d3",
+> +       "univpll_d3"
+> +};
+
+dsp3_parents looks like it matches dsp_parents. If so, please deduplicate.
+
+[...]
+
+> +static const struct mtk_mux top_mtk_muxes[] = {
+
+[...]
+
+> +       /* CLK_CFG_29 */
+> +       MUX_GATE_CLR_SET_UPD(CLK_TOP_DVIO_DGI_REF, "top_dvio_dgi_ref",
+> +               dvio_dgi_ref_parents, 0x017C, 0x0180, 0x0184, 0, 3, 7, 0x010, 20),
+> +       MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_ULPOSC, "top_ulposc",
+> +               ulposc_parents, 0x017C, 0x0180, 0x0184, 8, 2, 15, 0x010, 21, CLK_IS_CRITICAL),
+> +       MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_ULPOSC_CORE, "top_ulposc_core",
+> +               ulposc_core_parents, 0x017C, 0x0180, 0x0184, 16, 2, 23, 0x010, 22, CLK_IS_CRITICAL),
+> +       MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_SRCK, "top_srck",
+> +               srck_parents, 0x017C, 0x0180, 0x0184, 24, 1, 31, 0x010, 23, CLK_IS_CRITICAL),
+
+Any comments regarding the three critical clocks?
+
+> +       /*
+> +        * the clocks in CLK_CFG_30 ~ 37 are backup clock source, no need to handled
+> +        * by Linux.
+> +        */
+> +};
+> +
+> +static struct mtk_composite top_muxes[] = {
+> +       /* CLK_MISC_CFG_3 */
+> +       MUX(CLK_TOP_MFG_CK_FAST_REF, "mfg_ck_fast_ref", mfg_fast_parents, 0x0250, 8, 1),
+> +};
+> +
+> +/*
+> + * apll12_div5 ~ 9 are not used in MT8195.
+> + */
+> +static const struct mtk_composite top_adj_divs[] = {
+> +       DIV_GATE(CLK_TOP_APLL12_DIV0, "apll12_div0", "top_i2si1_mck", 0x0320, 0, 0x0328, 8, 0),
+> +       DIV_GATE(CLK_TOP_APLL12_DIV1, "apll12_div1", "top_i2si2_mck", 0x0320, 1, 0x0328, 8, 8),
+> +       DIV_GATE(CLK_TOP_APLL12_DIV2, "apll12_div2", "top_i2so1_mck", 0x0320, 2, 0x0328, 8, 16),
+> +       DIV_GATE(CLK_TOP_APLL12_DIV3, "apll12_div3", "top_i2so2_mck", 0x0320, 3, 0x0328, 8, 24),
+> +       DIV_GATE(CLK_TOP_APLL12_DIV4, "apll12_div4", "top_aud_iec_clk", 0x0320, 4, 0x0334, 8, 0),
+
+The comment could be inlined here directly:
+
+          /* apll12_div5 ~ 9 are not used in MT8195 */
+
+> +       DIV_GATE(CLK_TOP_APLL12_DIV9, "apll12_div9", "top_dptx_mck", 0x0320, 9, 0x0338, 8, 8),
+> +};
+> +
+> +static const struct mtk_gate_regs top0_cg_regs = {
+> +       .set_ofs = 0x238,
+> +       .clr_ofs = 0x238,
+> +       .sta_ofs = 0x238,
+> +};
+> +
+> +static const struct mtk_gate_regs top1_cg_regs = {
+> +       .set_ofs = 0x250,
+> +       .clr_ofs = 0x250,
+> +       .sta_ofs = 0x250,
+> +};
+> +
+> +#define GATE_TOP0_FLAGS(_id, _name, _parent, _shift, _flag)            \
+> +       GATE_MTK_FLAGS(_id, _name, _parent, &top0_cg_regs, _shift,      \
+> +               &mtk_clk_gate_ops_no_setclr_inv, _flag)
+> +
+> +#define GATE_TOP0(_id, _name, _parent, _shift)                 \
+> +       GATE_TOP0_FLAGS(_id, _name, _parent, _shift, 0)
+> +
+> +#define GATE_TOP1(_id, _name, _parent, _shift)                 \
+> +       GATE_MTK(_id, _name, _parent, &top1_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+> +
+> +/*
+> + * cfg_axi_east, cfg_axi_east_north, cfg_axi_north and cfg_axi_south
+> + * are peripheral bus clock branches.
+> + */
+> +static const struct mtk_gate top_clks[] = {
+> +       /* TOP0 */
+> +       GATE_TOP0(CLK_TOP_CFG_VPP0, "cfg_vpp0", "top_vpp", 0),
+> +       GATE_TOP0(CLK_TOP_CFG_VPP1, "cfg_vpp1", "top_vpp", 1),
+> +       GATE_TOP0(CLK_TOP_CFG_VDO0, "cfg_vdo0", "top_vpp", 2),
+> +       GATE_TOP0(CLK_TOP_CFG_VDO1, "cfg_vdo1", "top_vpp", 3),
+> +       GATE_TOP0(CLK_TOP_CFG_UNIPLL_SES, "cfg_unipll_ses", "univpll_d2", 4),
+> +       GATE_TOP0(CLK_TOP_CFG_26M_VPP0, "cfg_26m_vpp0", "clk26m", 5),
+> +       GATE_TOP0(CLK_TOP_CFG_26M_VPP1, "cfg_26m_vpp1", "clk26m", 6),
+> +       GATE_TOP0(CLK_TOP_CFG_26M_AUD, "cfg_26m_aud", "clk26m", 9),
+> +       GATE_TOP0_FLAGS(CLK_TOP_CFG_AXI_EAST, "cfg_axi_east", "top_axi", 10, CLK_IS_CRITICAL),
+> +       GATE_TOP0_FLAGS(CLK_TOP_CFG_AXI_EAST_NORTH, "cfg_axi_east_north", "top_axi", 11,
+> +               CLK_IS_CRITICAL),
+> +       GATE_TOP0_FLAGS(CLK_TOP_CFG_AXI_NORTH, "cfg_axi_north", "top_axi", 12, CLK_IS_CRITICAL),
+> +       GATE_TOP0_FLAGS(CLK_TOP_CFG_AXI_SOUTH, "cfg_axi_south", "top_axi", 13, CLK_IS_CRITICAL),
+> +       GATE_TOP0(CLK_TOP_CFG_EXT_TEST, "cfg_ext_test", "msdcpll_d2", 15),
+> +       /* TOP1 */
+> +       GATE_TOP1(CLK_TOP_SSUSB_REF, "ssusb_ref", "clk26m", 0),
+> +       GATE_TOP1(CLK_TOP_SSUSB_PHY_REF, "ssusb_phy_ref", "clk26m", 1),
+> +       GATE_TOP1(CLK_TOP_SSUSB_P1_REF, "ssusb_p1_ref", "clk26m", 2),
+> +       GATE_TOP1(CLK_TOP_SSUSB_PHY_P1_REF, "ssusb_phy_p1_ref", "clk26m", 3),
+> +       GATE_TOP1(CLK_TOP_SSUSB_P2_REF, "ssusb_p2_ref", "clk26m", 4),
+> +       GATE_TOP1(CLK_TOP_SSUSB_PHY_P2_REF, "ssusb_phy_p2_ref", "clk26m", 5),
+> +       GATE_TOP1(CLK_TOP_SSUSB_P3_REF, "ssusb_p3_ref", "clk26m", 6),
+> +       GATE_TOP1(CLK_TOP_SSUSB_PHY_P3_REF, "ssusb_phy_p3_ref", "clk26m", 7),
+> +};
+> +
+> +static struct clk_onecell_data *top_clk_data;
+> +
+> +static void clk_mt8195_top_init_early(struct device_node *node)
+> +{
+> +       int i;
+> +
+> +       top_clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
+> +       if (!top_clk_data)
+> +               return;
+> +
+> +       for (i = 0; i < CLK_TOP_NR_CLK; i++)
+> +               top_clk_data->clks[i] = ERR_PTR(-EPROBE_DEFER);
+> +
+> +       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs), top_clk_data);
+
+It's still not clear to me why this is needed...
+
+> +
+> +       if (of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data)) {
+> +               mtk_free_clk_data(top_clk_data);
+> +               top_clk_data = NULL;
+> +       }
+> +}
+> +
+> +CLK_OF_DECLARE_DRIVER(mt8195_topckgen, "mediatek,mt8195-topckgen",
+> +                       clk_mt8195_top_init_early);
+> +
+> +static const struct of_device_id of_match_clk_mt8195_topck[] = {
+> +       { .compatible = "mediatek,mt8195-topckgen", },
+> +       {}
+> +};
+> +
+> +static int clk_mt8195_topck_probe(struct platform_device *pdev)
+> +{
+> +       struct device_node *node = pdev->dev.of_node;
+> +       int r;
+> +       void __iomem *base;
+> +
+> +       if (!top_clk_data)
+> +               return -EFAULT;
+
+-ENODEV is more appropriate. -EFAULT signals a bad address (access).
+
+See include/uapi/asm-generic/errno-base.h
+
+> +
+> +       base = devm_platform_ioremap_resource(pdev, 0);
+> +       if (IS_ERR(base))
+> +               return PTR_ERR(base);
+> +
+> +       mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
+> +                                       top_clk_data);
+> +       mtk_clk_register_factors(top_early_divs, ARRAY_SIZE(top_early_divs), top_clk_data);
+
+And this second invocation will fail because the same clocks have already
+been registered. It seems like this invocation is enough to have "clk26m_d2"
+registered before all of its children.
+
+If so then CLK_OF_DECLARE_DRIVER is not necessary, that part could be
+dropped, and the clk_data initialization moved into this probe function.
+And `top_early_divs` could be merged with `top_divs`.
+
+> +       mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), top_clk_data);
+> +       mtk_clk_register_muxes(top_mtk_muxes, ARRAY_SIZE(top_mtk_muxes), node,
+> +                                       &mt8195_clk_lock, top_clk_data);
+> +       mtk_clk_register_composites(top_muxes, ARRAY_SIZE(top_muxes), base,
+> +                                       &mt8195_clk_lock, top_clk_data);
+> +       mtk_clk_register_composites(top_adj_divs, ARRAY_SIZE(top_adj_divs), base,
+> +                                       &mt8195_clk_lock, top_clk_data);
+
+Please align wrapped lines with the opening parenthesis.
+
+
+Regards
+ChenYu
+
+> +       r = mtk_clk_register_gates(node, top_clks, ARRAY_SIZE(top_clks), top_clk_data);
+> +       if (r)
+> +               return r;
+> +
+> +       return of_clk_add_provider(node, of_clk_src_onecell_get, top_clk_data);
+> +}
+> +
+> +static struct platform_driver clk_mt8195_topck_drv = {
+> +       .probe = clk_mt8195_topck_probe,
+> +       .driver = {
+> +               .name = "clk-mt8195-topck",
+> +               .of_match_table = of_match_clk_mt8195_topck,
+> +       },
+> +};
+> +builtin_platform_driver(clk_mt8195_topck_drv);
+> --
+> 2.18.0
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
