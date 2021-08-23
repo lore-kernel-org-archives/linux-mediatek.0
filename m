@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B8A6AC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F881C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:10:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 888736126A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:08:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 888736126A
+	by mail.kernel.org (Postfix) with ESMTPS id 5C4EE61374
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:10:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5C4EE61374
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q1Utu+th8N0MScZ0Zb8YcUUBycsKdVb9snBYuaj1Pio=; b=ghnjoavnRO+i+Z
-	98V01q94ZulvPBecIXqU9Os+kX5ORcvdablUfqtxnabJUGqmvS3yD5C4QCshlmUv201Dj0oWLLt8o
-	Of0hzUPIm9OXbZiTEYJ4dp/4CVeug+eApnXg1BowjVCY+eNQAOz2SfLcy/ZvfE9wxU3puynPDTHLr
-	cbntFaIDpgqa7qWXzJMKd24E6g8tk7RsvDfW0RhUJ84vb6/Xa415PceL8EZZZOVCSSXgQHuh0LRBS
-	CyMfX8BgSgrR/Gt2Q2dRThskmMJTtusFa1L/s65WSrzySJ2nbViQ3ZuvZZLk7pC8JJknLo93zEX0Y
-	OfqFAf+JIdscLSNyILDg==;
+	List-Owner; bh=Nep8xw+7ow8qu0xxu6gjGHvwucj3t9Q8UodbiDTAJZU=; b=MzI3pWe+xzWNLq
+	9lDOreoasLJ+SE9U10tyjVBqZxFOQl6QyYUQ3eA96XQJA9zOxkWSVYcm8Yr8OuLgHwsgycqo1/Umh
+	If2DVTr45/CN8t+SPsTRPHIPffETILnA6aB/njC/6Z0mCJAHl1oKWGysGQtSyHzc4UQjm6Csurrep
+	9XFhCeKizgZosTSLILInYdndXst602alZff7MTmcUkBIW9RKqckrII3DNMtXKrxSGVArIV1Z9bnDY
+	XP/eCF7G+Q4swMJHdKGPcJRMlt0i6TA7sYjvg1LKJKbA5ew64LVJ6ux6l75jmccoqhlnQCETU+OjB
+	3VbRZC4qivR+dKRNUpLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI9gZ-00GwLS-Sw; Mon, 23 Aug 2021 13:08:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mI9i0-00Gx1f-4h; Mon, 23 Aug 2021 13:09:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI9eM-00GvW6-3O; Mon, 23 Aug 2021 13:06:06 +0000
-X-UUID: 890e4787c13c42ef98aad66a774e7dfd-20210823
+ id 1mI9eQ-00GvXM-As; Mon, 23 Aug 2021 13:06:10 +0000
+X-UUID: c1a61e830f914c1b9431dff686178d71-20210823
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=9fD9nFF82Qtb+Zijl/uWXFtq5XzFQqnDZroMmHoEGZg=; 
- b=LBMcUy4zzD4yrJ10z891phRW9GyFIIfUiuO6WXHLXozNbPvGxwj4seBLPBKxR1RPLHY0SKEHy3Ftj8EbIa5lfW1nNPE81/yS5MVkjaSgzm+zNZg992EbYew1Z/bTld4U8hb+qrI/zlpA0jlX7KF1oZNhKxCVYq/bgw+/edwlzao=;
-X-UUID: 890e4787c13c42ef98aad66a774e7dfd-20210823
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=IbTEnbR0LQ21QCHwaBeJjI/lzOn5+X3NmVVB5zRyMWU=; 
+ b=iFgtPQaVM/JUSZNTYyO3pErvkta57p7jGYNB9MZR2bRcN4vxVQ01WnTpg6sGBiRnazhRUzSmJbAhmoI771uLRps37qcVVYOdrtJURnnF41873zALIhSktEpURedFJ/11DmJoPYoPvJlRLVZYScsLuTpMUoX7Perc+INZRLNnl0M=;
+X-UUID: c1a61e830f914c1b9431dff686178d71-20210823
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1943337506; Mon, 23 Aug 2021 06:05:51 -0700
+ with ESMTP id 514890292; Mon, 23 Aug 2021 06:05:47 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 06:05:49 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 Aug 2021 06:05:45 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 21:05:47 +0800
+ 15.0.1497.2; Mon, 23 Aug 2021 21:05:43 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 Aug 2021 21:05:46 +0800
+ Transport; Mon, 23 Aug 2021 21:05:42 +0800
 From: Kewei Xu <kewei.xu@mediatek.com>
 To: <wsa@the-dreams.de>
 CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
@@ -65,17 +65,17 @@ CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
  <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
  <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>,
  <kewei.xu@mediatek.com>
-Subject: [PATCH 7/7] i2c: mediatek: modify bus speed calculation formula
-Date: Mon, 23 Aug 2021 21:05:37 +0800
-Message-ID: <1629723937-10839-8-git-send-email-kewei.xu@mediatek.com>
+Subject: [PATCH 3/7] i2c: mediatek: Dump i2c/dma register when a timeout occurs
+Date: Mon, 23 Aug 2021 21:05:33 +0800
+Message-ID: <1629723937-10839-4-git-send-email-kewei.xu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1629723937-10839-1-git-send-email-kewei.xu@mediatek.com>
 References: <1629723937-10839-1-git-send-email-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_060602_217059_C76ABE76 
-X-CRM114-Status: GOOD (  15.69  )
+X-CRM114-CacheID: sfid-20210823_060606_449533_2D71D3E8 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,102 +92,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When clock-div is 0 or greater than 1, the bus speed
-calculated by the old speed calculation formula will be
-larger than the target speed. So we update the formula.
+When a timeout error occurs in i2c transter, it is usually related
+to the i2c/dma IP hardware configuration. Therefore, the purpose of
+this patch is to dump the key register values of i2c/dma when a
+timeout occurs in i2c for debugging.
 
 Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 35 +++++++++++++++++++++++++----------
- 1 file changed, 25 insertions(+), 10 deletions(-)
+ drivers/i2c/busses/i2c-mt65xx.c | 56 ++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 55 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 18b5659..0b42acd8 100644
+index abda525..633bce4 100644
 --- a/drivers/i2c/busses/i2c-mt65xx.c
 +++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -69,11 +69,12 @@
- #define I2C_DEFAULT_CLK_DIV		5
- #define MAX_SAMPLE_CNT_DIV		8
- #define MAX_STEP_CNT_DIV		64
--#define MAX_CLOCK_DIV			256
-+#define MAX_CLOCK_DIV_8BITS		256
-+#define MAX_CLOCK_DIV_5BITS		32
- #define MAX_HS_STEP_CNT_DIV		8
--#define I2C_STANDARD_MODE_BUFFER	(1000 / 2)
--#define I2C_FAST_MODE_BUFFER		(300 / 2)
--#define I2C_FAST_MODE_PLUS_BUFFER	(20 / 2)
-+#define I2C_STANDARD_MODE_BUFFER	(1000 / 3)
-+#define I2C_FAST_MODE_BUFFER		(300 / 3)
-+#define I2C_FAST_MODE_PLUS_BUFFER	(20 / 3)
- 
- #define I2C_CONTROL_RS                  (0x1 << 1)
- #define I2C_CONTROL_DMA_EN              (0x1 << 2)
-@@ -725,14 +726,26 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	unsigned int best_mul;
- 	unsigned int cnt_mul;
- 	int ret = -EINVAL;
-+	int clock_div_constraint = 0;
- 
- 	if (target_speed > I2C_MAX_HIGH_SPEED_MODE_FREQ)
- 		target_speed = I2C_MAX_HIGH_SPEED_MODE_FREQ;
- 
-+	if (i2c->use_default_timing) {
-+		clock_div_constraint = 0;
-+	} else if (i2c->dev_comp->ltiming_adjust &&
-+		   i2c->ac_timing.inter_clk_div > 1) {
-+		clock_div_constraint = 1;
-+	} else if (i2c->dev_comp->ltiming_adjust &&
-+		   i2c->ac_timing.inter_clk_div == 0) {
-+		clock_div_constraint = -1;
-+	}
-+
- 	max_step_cnt = mtk_i2c_max_step_cnt(target_speed);
- 	base_step_cnt = max_step_cnt;
- 	/* Find the best combination */
--	opt_div = DIV_ROUND_UP(clk_src >> 1, target_speed);
-+	opt_div = DIV_ROUND_UP(clk_src >> 1, target_speed) +
-+		  clock_div_constraint;
- 	best_mul = MAX_SAMPLE_CNT_DIV * max_step_cnt;
- 
- 	/* Search for the best pair (sample_cnt, step_cnt) with
-@@ -767,7 +780,8 @@ static int mtk_i2c_calculate_speed(struct mtk_i2c *i2c, unsigned int clk_src,
- 	sample_cnt = base_sample_cnt;
- 	step_cnt = base_step_cnt;
- 
--	if ((clk_src / (2 * sample_cnt * step_cnt)) > target_speed) {
-+	if ((clk_src / (2 * (sample_cnt * step_cnt - clock_div_constraint))) >
-+		 target_speed) {
- 		/* In this case, hardware can't support such
- 		 * low i2c_bus_freq
- 		 */
-@@ -854,13 +868,16 @@ static int mtk_i2c_set_speed_adjust_timing(struct mtk_i2c *i2c,
- 	target_speed = i2c->speed_hz;
- 	parent_clk /= i2c->clk_src_div;
- 
--	if (i2c->dev_comp->timing_adjust)
--		max_clk_div = MAX_CLOCK_DIV;
-+	if (i2c->dev_comp->timing_adjust && i2c->dev_comp->ltiming_adjust)
-+		max_clk_div = MAX_CLOCK_DIV_5BITS;
-+	else if (i2c->dev_comp->timing_adjust)
-+		max_clk_div = MAX_CLOCK_DIV_8BITS;
- 	else
- 		max_clk_div = 1;
- 
- 	for (clk_div = 1; clk_div <= max_clk_div; clk_div++) {
- 		clk_src = parent_clk / clk_div;
-+		i2c->ac_timing.inter_clk_div = clk_div - 1;
- 
- 		if (target_speed > I2C_MAX_FAST_MODE_PLUS_FREQ) {
- 			/* Set master code speed register */
-@@ -907,8 +924,6 @@ static int mtk_i2c_set_speed_adjust_timing(struct mtk_i2c *i2c,
- 		break;
- 	}
- 
--	i2c->ac_timing.inter_clk_div = clk_div - 1;
--
+@@ -129,6 +129,7 @@ enum I2C_REGS_OFFSET {
+ 	OFFSET_HS,
+ 	OFFSET_SOFTRESET,
+ 	OFFSET_DCM_EN,
++	OFFSET_MULTI_DMA,
+ 	OFFSET_PATH_DIR,
+ 	OFFSET_DEBUGSTAT,
+ 	OFFSET_DEBUGCTRL,
+@@ -196,6 +197,7 @@ enum I2C_REGS_OFFSET {
+ 	[OFFSET_TRANSFER_LEN_AUX] = 0x44,
+ 	[OFFSET_CLOCK_DIV] = 0x48,
+ 	[OFFSET_SOFTRESET] = 0x50,
++	[OFFSET_MULTI_DMA] = 0x8c,
+ 	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
+ 	[OFFSET_DEBUGSTAT] = 0xe4,
+ 	[OFFSET_DEBUGCTRL] = 0xe8,
+@@ -837,6 +839,57 @@ static int mtk_i2c_set_speed(struct mtk_i2c *i2c, unsigned int parent_clk)
  	return 0;
  }
  
++static void i2c_dump_register(struct mtk_i2c *i2c)
++{
++	dev_err(i2c->dev, "SLAVE_ADDR: 0x%x, INTR_MASK: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_SLAVE_ADDR),
++		mtk_i2c_readw(i2c, OFFSET_INTR_MASK));
++	dev_err(i2c->dev, "INTR_STAT: 0x%x, CONTROL: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_INTR_STAT),
++		mtk_i2c_readw(i2c, OFFSET_CONTROL));
++	dev_err(i2c->dev, "TRANSFER_LEN: 0x%x, TRANSAC_LEN: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_TRANSFER_LEN),
++		mtk_i2c_readw(i2c, OFFSET_TRANSAC_LEN));
++	dev_err(i2c->dev, "DELAY_LEN: 0x%x, HTIMING: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_DELAY_LEN),
++		mtk_i2c_readw(i2c, OFFSET_TIMING));
++	dev_err(i2c->dev, "START: 0x%x, EXT_CONF: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_START),
++		mtk_i2c_readw(i2c, OFFSET_EXT_CONF));
++	dev_err(i2c->dev, "HS: 0x%x, IO_CONFIG: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_HS),
++		mtk_i2c_readw(i2c, OFFSET_IO_CONFIG));
++	dev_err(i2c->dev, "DCM_EN: 0x%x, TRANSFER_LEN_AUX: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_DCM_EN),
++		mtk_i2c_readw(i2c, OFFSET_TRANSFER_LEN_AUX));
++	dev_err(i2c->dev, "CLOCK_DIV: 0x%x, FIFO_STAT: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_CLOCK_DIV),
++		mtk_i2c_readw(i2c, OFFSET_FIFO_STAT));
++	dev_err(i2c->dev, "DEBUGCTRL : 0x%x, DEBUGSTAT: 0x%x\n",
++		mtk_i2c_readw(i2c, OFFSET_DEBUGCTRL),
++		mtk_i2c_readw(i2c, OFFSET_DEBUGSTAT));
++	if (i2c->dev_comp->regs == mt_i2c_regs_v2) {
++		dev_err(i2c->dev, "LTIMING: 0x%x, MULTI_DMA: 0x%x\n",
++			mtk_i2c_readw(i2c, OFFSET_LTIMING),
++			mtk_i2c_readw(i2c, OFFSET_MULTI_DMA));
++	}
++	dev_err(i2c->dev, "\nDMA_INT_FLAG: 0x%x, DMA_INT_EN: 0x%x\n",
++		readl(i2c->pdmabase + OFFSET_INT_FLAG),
++		readl(i2c->pdmabase + OFFSET_INT_EN));
++	dev_err(i2c->dev, "DMA_EN: 0x%x, DMA_CON: 0x%x\n",
++		readl(i2c->pdmabase + OFFSET_EN),
++		readl(i2c->pdmabase + OFFSET_CON));
++	dev_err(i2c->dev, "DMA_TX_MEM_ADDR: 0x%x, DMA_RX_MEM_ADDR: 0x%x\n",
++		readl(i2c->pdmabase + OFFSET_TX_MEM_ADDR),
++		readl(i2c->pdmabase + OFFSET_RX_MEM_ADDR));
++	dev_err(i2c->dev, "DMA_TX_LEN: 0x%x, DMA_RX_LEN: 0x%x\n",
++		readl(i2c->pdmabase + OFFSET_TX_LEN),
++		readl(i2c->pdmabase + OFFSET_RX_LEN));
++	dev_err(i2c->dev, "DMA_TX_4G_MODE: 0x%x, DMA_RX_4G_MODE: 0x%x",
++		readl(i2c->pdmabase + OFFSET_TX_4G_MODE),
++		readl(i2c->pdmabase + OFFSET_RX_4G_MODE));
++}
++
+ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 			       int num, int left_num)
+ {
+@@ -1065,7 +1118,8 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	}
+ 
+ 	if (ret == 0) {
+-		dev_dbg(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
++		dev_err(i2c->dev, "addr: %x, transfer timeout\n", msgs->addr);
++		i2c_dump_register(i2c);
+ 		mtk_i2c_init_hw(i2c);
+ 		return -ETIMEDOUT;
+ 	}
 -- 
 1.9.1
 _______________________________________________
